@@ -32,5 +32,7 @@ void hlavicka(char *title, FILE * expt, short int level = 0, short int spec = 0)
 void patka(void);
 void patka(FILE * expt);
 
+void myhpage_init_globals();
+
 #endif /* __MYHPAGE_H_ */
 

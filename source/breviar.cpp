@@ -13345,6 +13345,7 @@ int main(int argc, char **argv){
 	 *
 	 * 2009-08-05: prerobenie ËÌtania jazyka (skopÌrovanÈ eöte na jedno vyööie miesto); uû by sa <title> malo vypisovaù pri generovanÌ inojazyËn˝ch modlitieb spr·vne
 	 */
+    myhpage_init_globals();
 	_global_opt[OPT_0_SPECIALNE] = GLOBAL_OPTION_NULL;
 	_global_opt[OPT_1_CASTI_MODLITBY] = GLOBAL_OPTION_NULL;
 	_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
@@ -13352,6 +13353,19 @@ int main(int argc, char **argv){
 	_global_opt[OPT_2_HTML_EXPORT] = GLOBAL_OPTION_NULL;
 
 	_global_opt_append = NIE;
+
+	_global_opt_tedeum = NIE;
+	_global_pocet_slava_otcu = 0;
+	_global_ant_mcd_rovnake = NIE;
+	_global_opt_export_date_format = EXPORT_DATE_SIMPLE;
+	_global_opt_batch_monthly = NIE;
+	_global_hlavicka_Export = 0;
+	export_monthly_druh = 0;
+	export_month_zaciatok = NIE;
+	export_month_nova_modlitba = NIE;
+
+	strcpy(pom_LIT_OBD, STR_EMPTY);
+	strcpy(pom_LIT_ROK, STR_EMPTY);
 
 	strcpy(pom_QUERY_TYPE, STR_EMPTY);
 	strcpy(pom_DEN, STR_EMPTY);

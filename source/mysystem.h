@@ -13,8 +13,11 @@
 
 #undef USE_UNCGI
 
+#ifndef MODEL_SELECTED_IN_MAKEFILE
+
 #undef MODEL_linux
 #undef MODEL_linux_commandline
+#undef MODEL_android
 #undef MODEL_Windows_RUBY
 #undef MODEL_Windows_commandline
 
@@ -42,6 +45,8 @@
 /* Modely pre debugovanie -- for debug */
 //#define MODEL_DEBUG_linux
 //#define MODEL_DEBUG_linux_commandline
+
+#endif
 
 /***************************************************************/
 /*                                                             */
@@ -83,6 +88,9 @@
  *		- žiadne logovanie, export do stdout, systém linux
  *		- debug verzia (s výpismi na stdout do HTML súboru ako poznámky): MODEL_DEBUG_linux
  *
+ * MODEL_android - verzia pre android. Ako MODEL_linux, ale s pouzitim IO
+ *                 wrappera pre android.
+ *
  * MODEL_linux_commandline - off-line command-line verzia pre linux: 
  *		- žiadne logovanie, export do súboru, systém linux 
  *		  (použitie pre off-line ruèné generovanie HTML stránok, 
@@ -121,6 +129,7 @@
 
 #undef BEHAVIOUR_WEB /* 2010-06-07: správanie ako na webe: export príp. logovanie ide na STDOUT (t. j. ako output pre web browser) */
 #undef BEHAVIOUR_CMDLINE /* 2010-06-07: správanie pre command-line verziu: export príp. logovanie ide do súboru/súborov (t. j. ako output pre batch mód) */
+#undef IO_ANDROID
 
 /* ostry linux: */
 #if defined(MODEL_linux)
@@ -129,6 +138,14 @@
 	#undef LOGGING
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_TO_STDOUT
+/* android: */
+#elif defined(MODEL_android)
+	#define BEHAVIOUR_WEB
+	#define OS_linux
+	#undef LOGGING
+	#define EXPORT_HTML_FILENAME_ANCHOR
+	#define EXPORT_TO_FILE
+	#define IO_ANDROID
 /* ostré Windows/RUBY: */
 #elif defined(MODEL_Windows_RUBY)
 	#define BEHAVIOUR_WEB

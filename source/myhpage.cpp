@@ -69,6 +69,10 @@ char file_name_pom[MAX_STR];
 char *ptr;
 short int _local_modlitba;
 
+void myhpage_init_globals() {
+  bol_content_type_text_html = NIE;
+}
+
 /* exportuje hlavicku HTML dokumentu, kam pojde vysledok query */
 void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Log("_hlavicka() -- zaèiatok...\n");
@@ -359,7 +363,7 @@ void _patka(FILE * expt){
 		Export_to_file(expt, "<"HTML_P_PATKA">%s\n", gpage[_global_jazyk]);
 		/* Export_to_file(expt, "(%s). ", ctime(&t) + 4); */
 		/* 2008-12-22: odvetvené - pre commandline export (do súboru) sa netlaèí èasová zložka, kedy bolo HTML generované */
-#if defined(EXPORT_TO_FILE)
+#if defined(EXPORT_TO_FILE) && !defined(IO_ANDROID)
 		Export_to_file(expt, (char *)datum_template[_global_jazyk],
 			dnes.tm_mday,
 			nazov_mesiaca(dnes.tm_mon) /* nm[dnes.tm_mon] */,
