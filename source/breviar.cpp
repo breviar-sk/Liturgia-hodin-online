@@ -295,6 +295,8 @@
 #include "myexpt.h" /* export do suboru alebo na konzolu printf */
 #include "myhpage.h" /* hlavicka(); patka(); */
 
+#include "android.h"
+
 /* 2005-03-28: Pridane, pokusy nahradit uncgi */
 char *_global_buf; /* 2006-08-01: t˙to premenn˙ tieû alokujeme */
 char *_global_buf2; /* 2006-08-01: vytvorenÈ; t˙to premenn˙ tieû alokujeme */
@@ -320,6 +322,12 @@ char *_global_buf2; /* 2006-08-01: vytvorenÈ; t˙to premenn˙ tieû alokujeme */
 // #ifndef OS_linux
 #include "breviar.h" /* su tam deklarovane nasledovne globalne premenne a main() */
 // #endif
+
+#ifdef IO_ANDROID
+#define STDIN_FILE stdin_pipe
+#else
+#define STDIN_FILE stdin
+#endif
 
 /* ------------------------------------------------------------------- */
 /* globalne premenne -- deklarovane v liturgia.h, definovane tu */
@@ -682,7 +690,7 @@ short int postread(void){
 	}
 	do
 	{
-		got = fread(buf + sofar, 1, size - sofar, stdin);
+		got = fread(buf + sofar, 1, size - sofar, STDIN_FILE);
 		sofar += got;
 	} while (got && sofar < size);
 
@@ -13330,6 +13338,7 @@ void setConfigDefaults(short int jazyk){
  */
 int main(int argc, char **argv){
 	short int i;
+
 	/* 2011-04-20: naplnenie _global_system */
 #if defined(OS_linux)
 	_global_system = SYSTEM_LINUX;
@@ -13345,7 +13354,7 @@ int main(int argc, char **argv){
 	 *
 	 * 2009-08-05: prerobenie ËÌtania jazyka (skopÌrovanÈ eöte na jedno vyööie miesto); uû by sa <title> malo vypisovaù pri generovanÌ inojazyËn˝ch modlitieb spr·vne
 	 */
-    myhpage_init_globals();
+	myhpage_init_globals();
 	_global_opt[OPT_0_SPECIALNE] = GLOBAL_OPTION_NULL;
 	_global_opt[OPT_1_CASTI_MODLITBY] = GLOBAL_OPTION_NULL;
 	_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
@@ -13353,7 +13362,6 @@ int main(int argc, char **argv){
 	_global_opt[OPT_2_HTML_EXPORT] = GLOBAL_OPTION_NULL;
 
 	_global_opt_append = NIE;
-
 	_global_opt_tedeum = NIE;
 	_global_pocet_slava_otcu = 0;
 	_global_ant_mcd_rovnake = NIE;
@@ -13382,6 +13390,60 @@ int main(int argc, char **argv){
 	strcpy(pom_FONT_SIZE, STR_EMPTY); /* 2011-05-13: PridanÈ kvÙli rÙznym veækostiam fontov */
 	strcpy(pom_MODL_OPT_DATE_FORMAT, STR_EMPTY); /* 2009-08-03: PridanÈ kvÙli rÙznym spÙsobom exportovania form·tu d·tumu */
 	strcpy(pom_EXPORT_MONTHLY, STR_EMPTY); /* 2009-08-03: PridanÈ kvÙli rÙznym spÙsobom exportu po mesiacoch, prepÌnaË -M */
+    _global_modlitba = MODL_NEURCENA;
+
+    memset(_global_optf, 0, sizeof(_global_optf));
+    memset(_global_opt_specialne, 0, sizeof(_global_opt_specialne));
+    memset(_global_opt_casti_modlitby, 0, sizeof(_global_opt_casti_modlitby));
+    memset(_global_opt_html_export, 0, sizeof(_global_opt_html_export));
+    memset(_global_opt_offline_export, 0, sizeof(_global_opt_offline_export));
+
+    _global_jazyk = 0;
+    _global_kalendar = 0;
+    _global_css = 0;
+    _global_font = 0;
+    _global_font_size = 0;
+
+    _global_pocet_zalmov_kompletorium = 0;
+
+    strcpy(_global_export_navig_hore, DEFAULT_MONTH_EXPORT);
+    strcpy(_global_export_navig_hore_month, DEFAULT_MONTH_EXPORT);
+    strcpy(_global_export_navig_hore_day, DEFAULT_MONTH_EXPORT);
+    strcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SERIF);
+    strcpy(_global_css_font_size, STR_EMPTY);
+
+    _global_skip_in_prayer = NIE;
+    _global_skip_in_prayer_2 = NIE;
+    _global_skip_in_prayer_vnpc = NIE;
+
+    params = 0;
+
+    strcpy(pom_MODL_OPT_APPEND, STR_EMPTY);
+    strcpy(pom_KALENDAR, STR_EMPTY);
+
+    memset(pom_MODL_OPT, 0, sizeof(pom_MODL_OPT));
+    memset(pom_MODL_OPTF, 0, sizeof(pom_MODL_OPTF));
+    memset(pom_MODL_OPTF_SPECIALNE, 0, sizeof(pom_MODL_OPTF_SPECIALNE));
+    memset(pom_MODL_OPTF_CASTI_MODLITBY, 0, sizeof(pom_MODL_OPTF_CASTI_MODLITBY));
+    memset(pom_MODL_OPTF_HTML_EXPORT, 0, sizeof(pom_MODL_OPTF_HTML_EXPORT));
+    memset(pom_MODL_OPTF_OFFLINE_EXPORT, 0, sizeof(pom_MODL_OPTF_OFFLINE_EXPORT));
+
+    strcpy(bad_param_str, STR_EMPTY);
+    strcpy(file_export, STR_EMPTY);
+    strcpy(include_dir, STR_EMPTY);
+    strcpy(name_binary_executable, STR_EMPTY);
+    strcpy(name_batch_file, STR_EMPTY);
+    strcpy(name_batch_html_file, STR_EMPTY);
+    strcpy(dir_name, STR_EMPTY);
+    strcpy(name_batch_month_file, STR_EMPTY);
+    strcpy(system_command, STR_EMPTY);
+
+    memset(param, 0, sizeof(param));
+    batch_file = NULL;
+    batch_html_file = NULL;
+    batch_month_file = NULL;
+    index_pre_mesiac_otvoreny = NIE;
+
 	/* koniec inicializacie globalnych premennych; teraz samotna main()
 	 * 11/04/2000A.D.
 	 */

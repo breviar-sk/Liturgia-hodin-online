@@ -9,6 +9,7 @@
 #include <string.h>
 #include <errno.h>
 #include "myexpt.h"
+#include "liturgia.h"
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
@@ -16,7 +17,9 @@
 #include <android/log.h>
 
 static char *environment = NULL;
+static char *environment2 = NULL;
 static int envlen;
+static int envlen2;
 static jobject inst = NULL;
 FILE *stdin_pipe = NULL;
 static jobject out_fd;
@@ -85,7 +88,7 @@ FILE *fopen(const char *path, const char *mode) {
     }
 
     if (path[0] == '/') path++;
-    // __android_log_print(ANDROID_LOG_INFO, "Breviar", path);
+    //__android_log_print(ANDROID_LOG_INFO, "Breviar", path);
     
     jobject jfn = jenv->NewStringUTF(path);
     if (!jenv->CallIntMethod(inst, checkfile, jfn)) {
@@ -106,17 +109,43 @@ char *getenv(const char *name) {
     // CONTENT_TYPE
     // CONTENT_LENTGTH
   char *i;
-  int l = strlen(name);
-  // __android_log_print(ANDROID_LOG_INFO, "Breviar", "getenv:");
-  // __android_log_print(ANDROID_LOG_INFO, "Breviar", name);
-  for (i=environment; i-environment<envlen; i += strlen(i)+1) {
-    if (strncmp(i, name, l)==0 && i[l]=='=') {
-      // __android_log_print(ANDROID_LOG_INFO, "Breviar", "getenv return:");
-      // __android_log_print(ANDROID_LOG_INFO, "Breviar", i+l+1);
-      return (i+l+1);
+  int l, j;
+  char *S[2] = { environment2, environment };
+  int L[2] = { envlen2, envlen };
+
+  l = strlen(name);
+
+  //__android_log_print(ANDROID_LOG_INFO, "Breviar", "getenv:");
+  //__android_log_print(ANDROID_LOG_INFO, "Breviar", name);
+
+  for (j=0; j<2; j++) {
+    for (i=S[j]; i-S[j] < L[j]; i += strlen(i)+1) {
+      if (strncmp(i, name, l)==0 && i[l]=='=') {
+        //__android_log_print(ANDROID_LOG_INFO, "Breviar", "getenv return:");
+        //__android_log_print(ANDROID_LOG_INFO, "Breviar", i+l+1);
+        return (i+l+1);
+      }
     }
   }
   return NULL;
+}
+
+int putenv(const char *string) {
+  char *env3;
+  int envlen3;
+  int len = strlen(string);
+
+  //__android_log_print(ANDROID_LOG_INFO, "Breviar", "putenv:");
+  //__android_log_print(ANDROID_LOG_INFO, "Breviar", string);
+
+  envlen3 = len+1 + envlen2;
+  if (! (env3 = (char *)malloc(envlen3)) ) return 0;
+  strcpy(env3, string);
+  if (envlen2) memcpy(env3+len+1, environment2, envlen2);
+  free(environment2);
+  environment2 = env3;
+  envlen2 = envlen3;
+  return 1;
 }
 
 int main(int argc, const char **argv);
@@ -127,25 +156,33 @@ void closeFd(JNIEnv* env, jobject fd) {
 
 extern "C" {
 
-JNIEXPORT void JNICALL Java_sk_breviar_android_Server_main(JNIEnv* env, jobject thiz, jobject outfd, jobject infd, jstring environ) {
+JNIEXPORT jstring JNICALL Java_sk_breviar_android_Server_main(JNIEnv* env, jobject thiz, jobject outfd, jobject infd, jstring environ) {
   const char* params[] = { "breviar.cgi", NULL };
+  jstring jout;
 
   inst = thiz;
   environment = (char *)env->GetStringUTFChars(environ, NULL);
   envlen = env->GetStringUTFLength(environ);
+  environment2 = NULL;
+  envlen2 = 0;
   for (char *i = environment; *i; i++)
     if (*i==1) *i = 0;
   jenv = env;
   out_fd = outfd;
-  //stdin_pipe = fdopen(getFd(env, infd), "r");
-  int nullfd = open("/dev/null", O_RDONLY);
-  stdin_pipe = fdopen(nullfd, "r");
+  stdin_pipe = fdopen(getFd(env, infd), "r");
+  //int nullfd = open("/dev/null", O_RDONLY);
+  //stdin_pipe = fdopen(nullfd, "r");
   
   //__android_log_print(ANDROID_LOG_INFO, "Breviar", "calling main");
   main(1, params);
+  char pom2[MAX_STR], pom3[MAX_STR];
+  strcpy(pom2, ""); strcpy(pom3, "");
+  prilep_request_options(pom2, pom3, ANO);
+  jout = env->NewStringUTF(pom2);
 
   //__android_log_print(ANDROID_LOG_INFO, "Breviar", "main finished");
   env->ReleaseStringUTFChars(environ, environment);
+  if (envlen2) free(environment2);
   inst = NULL;
 
   fclose(stdin_pipe);
@@ -154,6 +191,8 @@ JNIEXPORT void JNICALL Java_sk_breviar_android_Server_main(JNIEnv* env, jobject 
   // should be closed by main
   out_fd = NULL;
   jenv = NULL;
+
+  return jout;
 }
 
 JNIEXPORT void JNICALL Java_sk_breviar_android_FdInputStream_closefd(JNIEnv* env, jclass thiz, jobject fd) { closeFd(env, fd); }
