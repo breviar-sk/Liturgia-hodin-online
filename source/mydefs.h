@@ -59,11 +59,10 @@
 /*   2003-07-15a.D. | RUN_MODLITBA_CEZ_DEN definovane          */
 /*   2003-07-15a.D. | vlozeny do mydefs.h                      */
 /*   2003-08-13a.D. | odstranenie RUN_MODLITBA_CEZ_DEN         */
+/*   2011-07-11a.D. | BUILD_DATE presunut˝ do mybuild.h        */
 /*                                                             */
 /***************************************************************/
 #include <stdio.h>
-
-#define BUILD_DATE "2011-06-14"
 
 #define BYTES 250
 #define SMALL 80
@@ -545,6 +544,14 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 	#define STR_MODL_OPTF1_ZALMY_SV "of1zsv"
 #endif
 
+// dlhöie zakonËenie responzÛria
+#define MODL_OPTF1_PLNE_RESP 80
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF1_PLNE_RESP "MODL_OPTF1_PLNE_RESP"
+#else
+	#define STR_MODL_OPTF1_PLNE_RESP "of1pr"
+#endif
+
 /* pre force option 2 jednotlivÈ bit-komponenty (parci·lne voæby) */
 
 // ISO form·t d·tumu
@@ -585,6 +592,14 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 	#define STR_MODL_OPTF2_FONT_SIZE "MODL_OPTF2_FONT_SIZE"
 #else
 	#define STR_MODL_OPTF2_FONT_SIZE "of2fs"
+#endif
+
+// zobrazovaù navig·ciu v textoch modlitieb
+#define MODL_OPTF2_NAVIGATION 86
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF2_NAVIGATION "MODL_OPTF2_NAVIGATION"
+#else
+	#define STR_MODL_OPTF2_NAVIGATION "of2nav"
 #endif
 
 /* 2008-08-08: PridanÈ kvÙli rÙznym css */

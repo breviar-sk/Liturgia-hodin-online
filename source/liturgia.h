@@ -432,6 +432,8 @@ extern const char *TEMPLAT[POCET_MODLITIEB /* + 1 */];
 #define PARAM_MODL_SPOMPOST "MODL_SPOMPOST"
 /* 2011-03-16: pridanÈ kvÙli spomienkam a æubovoæn˝m spomienkam v pÙstnom obdobÌ (zobrazenie po 2. ËÌtanÌ v posv. ËÌtanÌ) */
 #define PARAM_CITANIE2_SPOMPOST "CITANIE2_SPOMPOST"
+/* 2011-07-03: pridanÈ kvÙli navig·cii v modlitbe */
+#define PARAM_NAVIGACIA     "NAVIGACIA"
 
 /* dalsie parametre: specificke pre obdobie */
 /* Od nedele P·novho zm‡tvychvstania aû do Druhej veækonoËnej nedele vr·tane,
@@ -500,6 +502,10 @@ extern const char *TEMPLAT[POCET_MODLITIEB /* + 1 */];
 #define PARAM_VN_VYNECHAJ_BEGIN             "VELK_NEDELA_VYNECHAJ_BEGIN"
 #define PARAM_VN_VYNECHAJ_END               "VELK_NEDELA_VYNECHAJ_END"
 
+/* 2011-07-07: doplnenÈ kvÙli zobrazovaniu/skr˝vaniu dlhöÌch z·verov responzÛriÌ v posv‰tnom ËÌtanÌ */
+#define PARAM_PLNE_RESP                     "PLNE_RESP"
+#define PARAM_PLNE_RESP_BODKA               "PLNE_RESP_BODKA"
+
 /* 2011-04-04: doplnenÈ zobrazenie/skrytie ËÌslovania veröov v ûalmoch, chv·lospevoch a biblick˝ch ËÌtaniach */
 #define PARAM_CISLO_VERSA_BEGIN				"v"
 #define PARAM_CISLO_VERSA_END				"/v"
@@ -507,6 +513,9 @@ extern const char *TEMPLAT[POCET_MODLITIEB /* + 1 */];
 /* 2011-04-05: doplnenÈ dplnenie referencie podæa biblickÈho odkazu na str·nky dkc.kbs.sk (Biblia -- Mat˙ö Brilla) */
 #define PARAM_REFERENCIA_BEGIN				"r"
 #define PARAM_REFERENCIA_END				"/r"
+
+/* 2011-07-08: doplnenÈ zobrazovanie/nezobrazenie krÌûika (antifÛna totoûn· s veröom ûalmu/chv·lospevu) */
+#define PARAM_KRIZIK				        "KRIZIK"
 
 /* stringy parametrov vstupu pre MODL_OPT..., ktore generovanie modlitby
  * ovplyvnuju */
@@ -859,7 +868,9 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_POZS_NAGYSZ_PATRON       54
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON       55
 #define LOKAL_SLAV_PECSI_EGYH               56
-#define LOKAL_SLAV_PECSI_EGYH_VEDO          57
+#define LOKAL_SLAV_PECSI_EGYH_PATRON        57
+#define LOKAL_SLAV_SZEGED_CSAN_EGYH         58
+#define LOKAL_SLAV_VESZPREMI_EGYH_PATRON    59
 
 /* 2010-08-03: pridan˝ kalend·r */
 #define KALENDAR_NEURCENY                   0
@@ -1188,7 +1199,7 @@ extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_VERSE                     1
 #define BIT_OPT_0_REFERENCIE                2
 
-#define POCET_OPT_1_CASTI_MODLITBY          9 /* jednotlivÈ komponenty option 1 -- bity pre force option 1 */
+#define POCET_OPT_1_CASTI_MODLITBY         10 /* jednotlivÈ komponenty option 1 -- bity pre force option 1 */
 extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 /* 2011-04-11: ˙prava v˝znamu (a interpret·cie) option 1 == OPT_1_CASTI_MODLITBY (zobraziù/nezobraziù najm‰ pevnÈ/nemennÈ s˙Ëasti modlitieb, ale aj inÈ, Ëo s˙/nie s˙ v LH) */
 #define BIT_OPT_1_TEDEUM                    1
@@ -1200,8 +1211,9 @@ extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_PC_VIGILIA               64
 #define BIT_OPT_1_SKRY_POPIS              128
 #define BIT_OPT_1_ZALMY_ZO_SVIATKU        256
+#define BIT_OPT_1_PLNE_RESP               512
 
-#define POCET_OPT_2_HTML_EXPORT             5 /* jednotlivÈ komponenty option 2 -- bity pre force option 2 */
+#define POCET_OPT_2_HTML_EXPORT             6 /* jednotlivÈ komponenty option 2 -- bity pre force option 2 */
 extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 /* 2011-04-12: ˙prava v˝znamu (a interpret·cie) option 2 (rozliËnÈ prepÌnaËe pre [online aj offline] export, napr. tlaËidl·, zobrazenie d·tumov a podobne) */
 #define BIT_OPT_2_ISO_DATUM                 1
@@ -1209,6 +1221,7 @@ extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_FONT_FAMILY               4 // 0 = Serif, 1 = Sans Serif
 #define BIT_OPT_2_FONT_NAME_CHOOSER         8 // 1 = zobraziù drop-down list s moûnosùou voæby font (family) name
 #define BIT_OPT_2_FONT_SIZE_CHOOSER        16 // 1 = zobraziù drop-down list s moûnosùou voæby veækosti fontu
+#define BIT_OPT_2_NAVIGATION               32 // 1 = zobraziù navig·ciu v modlitbe (predoöl·, nasledovn· modlitba a pod.)
 
 #define POCET_OPT_4_OFFLINE_EXPORT          1 /* jednotlivÈ komponenty option 4 -- bity pre force option 4 */
 extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];

@@ -46,6 +46,7 @@
 #include "mylog.h"
 #include "breviar.h" /* 2006-07-31 kvôli jazyku a css (2008-08-08) */
 #include "liturgia.h" /* 2006-07-31 kvôli jazyku */
+#include "mybuild.h" // 2011-07-11: pridané, kvôli BUILD_DATE
 
 short int bol_content_type_text_html = NIE;
 
@@ -259,7 +260,7 @@ const char *gpage[POCET_JAZYKOV + 1] = {"Generované: ", "Generováno: ", "Generat
 // Generované + dátum: "%d. %s %d, %02d:%02d:%02d" -- pôvodne to bolo v zátvorkách
 const char *datum_cas_template[POCET_JAZYKOV + 1] = {"%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d"};
 // Build: "Build: %s. "
-const char *build_template[POCET_JAZYKOV + 1] = {"<!--Verzia: %s.-->", "<!--Verze: %s.-->", "<!--Build: %s.-->", "<!--Build: %s.-->", "<!--Build: %s.-->", "<!--Verze: %s.-->", "<!--Build: %s.-->"};
+const char *build_template[POCET_JAZYKOV + 1] = {"<!--Verzia: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->"};
 // Generované + dátum (bez èasu - pre batch mód, aby sa ¾ahko porovnávali vygenerované modlitby): "%d. %s %d"
 const char *datum_template[POCET_JAZYKOV + 1] = {"%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d"};
 
@@ -276,6 +277,11 @@ void _patka(FILE * expt){
 		_local_modlitba = MODL_VESPERY;
 	if((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM))
 		_local_modlitba = MODL_KOMPLETORIUM;
+
+	/* 2011-07-01: viackrát sa pri exporte modlitby do HTML exportovala pätka; pridaná kontrola */
+	if(_global_patka_Export > 0)
+		return;
+	_global_patka_Export++;
 
 	time_t t;
 	struct tm dnes;
@@ -355,12 +361,13 @@ void _patka(FILE * expt){
 	}
 
 	Export("\n");
-	/* 2010-02-15: celé zapoznámkované */
-	if(1 == 1 || _global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
-		Export_to_file(expt, "<"HTML_P_PATKA">\n");
-	}
-	else{
-		Export_to_file(expt, "<"HTML_P_PATKA">%s\n", gpage[_global_jazyk]);
+	/* 2010-02-15: celé zapoznámkované 
+	 * 2011-07-01: pre web sa exportuje
+	 */
+	Export_to_file(expt, "<"HTML_P_PATKA">\n");
+#ifdef BEHAVIOUR_WEB
+	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
+		Export_to_file(expt, "%s\n", gpage[_global_jazyk]);
 		/* Export_to_file(expt, "(%s). ", ctime(&t) + 4); */
 		/* 2008-12-22: odvetvené - pre commandline export (do súboru) sa netlaèí èasová zložka, kedy bolo HTML generované */
 #if defined(EXPORT_TO_FILE) && !defined(IO_ANDROID)
@@ -380,14 +387,14 @@ void _patka(FILE * expt){
 			);
 #endif
 		Export_to_file(expt, ". ");
-
-		/* nezabudni zmenit #define BUILD_DATE v mydefs.h (2003-07-15) */
-		Export_to_file(expt, (char *)build_template[_global_jazyk], BUILD_DATE);
-
-		/* zapoznamkovane, 2003-06-30 */
-		/* Export_to_file(expt, "Kódovanie Windows-1250 (Central European).\n"); */
-		Export_to_file(expt, "<br>\n");
 	}
+	/* nezabudni zmenit #define BUILD_DATE v mydefs.h (2003-07-15) */
+	Export_to_file(expt, (char *)build_template[_global_jazyk], BUILD_DATE);
+
+	/* zapoznamkovane, 2003-06-30 */
+	/* Export_to_file(expt, "Kódovanie Windows-1250 (Central European).\n"); */
+	Export_to_file(expt, "<br>\n");
+#endif
 
 	/* pridana stranka cfg_HTTP_ADDRESS_default, 12/04/2000A.D. */
 	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" target=\"_top\">%s</a>\n", cfg_HTTP_ADDRESS_default, cfg_HTTP_DISPLAY_ADDRESS_default);

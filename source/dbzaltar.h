@@ -291,7 +291,8 @@ extern const char *text_JUL_04_CZ[POCET_JAZYKOV + 1];
 extern const char *text_JUL_05[POCET_JAZYKOV + 1];
 extern const char *text_JUL_06[POCET_JAZYKOV + 1];
 extern const char *text_JUL_06_CZOP[POCET_JAZYKOV + 1];
-extern const char *text_JUL_07[POCET_JAZYKOV + 1];
+extern const char *text_JUL_07_SK[POCET_JAZYKOV + 1];
+extern const char *text_JUL_08_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUL_09[POCET_JAZYKOV + 1];
 extern const char *text_JUL_09_CZOP[POCET_JAZYKOV + 1];
 extern const char *text_JUL_11[POCET_JAZYKOV + 1];
@@ -304,11 +305,13 @@ extern const char *text_JUL_16_CZ[POCET_JAZYKOV + 1];
 extern const char *text_JUL_17_SK[POCET_JAZYKOV + 1];
 extern const char *text_JUL_17_CZ[POCET_JAZYKOV + 1];
 extern const char *text_JUL_17_CZOP[POCET_JAZYKOV + 1];
+extern const char *text_JUL_18_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUL_20[POCET_JAZYKOV + 1];
 extern const char *text_JUL_21[POCET_JAZYKOV + 1];
 extern const char *text_JUL_22[POCET_JAZYKOV + 1];
 extern const char *text_JUL_23[POCET_JAZYKOV + 1];
 extern const char *text_JUL_24[POCET_JAZYKOV + 1];
+extern const char *text_JUL_24_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUL_25[POCET_JAZYKOV + 1];
 extern const char *text_JUL_26[POCET_JAZYKOV + 1];
 extern const char *text_JUL_27[POCET_JAZYKOV + 1];
@@ -583,6 +586,10 @@ extern const char *text_JUN_16_2_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_17_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_26_OFM[POCET_JAZYKOV + 1];
 extern const char *text_NEPOSKVRNENEHO_SRDCA_PM_OFM[POCET_JAZYKOV + 1];
+extern const char *text_JUL_09_OFM[POCET_JAZYKOV + 1];
+extern const char *text_JUL_10_OFM[POCET_JAZYKOV + 1];
+extern const char *text_JUL_14_OFM[POCET_JAZYKOV + 1];
+extern const char *text_JUL_15_OFM[POCET_JAZYKOV + 1];
 
 #endif /* __DBZALTAR_H_ */
 
