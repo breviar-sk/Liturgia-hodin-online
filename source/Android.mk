@@ -5,7 +5,8 @@ LOCAL_MODULE    := libbreviar
 
 LOCAL_SRC_FILES := android.cpp breviar.cpp cgiutils.cpp dbzaltar.cpp \
                    liturgia.cpp myconf.cpp mydefs.cpp myexpt.cpp \
-		   mygetopt.cpp myhpage.cpp mylog.cpp mystring.cpp
+		   mygetopt.cpp myhpage.cpp mylog.cpp mystring.cpp \
+                   citania.cpp
 
 LOCAL_LDLIBS    := -llog
 LOCAL_CFLAGS    := -DMODEL_SELECTED_IN_MAKEFILE -DMODEL_android

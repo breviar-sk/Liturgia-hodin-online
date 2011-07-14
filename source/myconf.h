@@ -21,6 +21,7 @@
 #define __MYCONF_H_
 
 #include "mysystem.h"
+#include "mysysdef.h"
 
 #define MAX_HTTP_STR	80
 #define MAX_MAIL_STR	50

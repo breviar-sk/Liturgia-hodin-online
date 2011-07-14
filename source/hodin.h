@@ -1437,6 +1437,28 @@ const char *html_text_option0_referencie_explain[POCET_JAZYKOV + 1] =
  ""
 };
 
+#ifdef LITURGICKE_CITANIA
+const char *html_text_option0_citania[POCET_JAZYKOV + 1] = 
+{"liturgické èítania",
+ "liturgické èítania"
+ "liturgical readings",
+ "liturgical readings",
+ "",
+ "liturgické èítania",
+ "hu_liturgicke citania"
+};
+
+const char *html_text_option0_citania_explain[POCET_JAZYKOV + 1] = 
+{"Zobrazí odkaz na liturgické èítania.", 
+ "", 
+ "", 
+ "",
+ "", 
+ "", 
+ ""
+};
+#endif
+
 const char *html_text_option1_chvalospevy[POCET_JAZYKOV + 1] = 
 {"evanjeliové chválospevy (Benediktus, Magnifikat, Nunk dimittis)", 
  "evangelijní kantika (Mariino, Zachariášovo, Simeonovo)", 

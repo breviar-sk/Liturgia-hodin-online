@@ -50,7 +50,7 @@ short int used;
  * vracia: on success, returns 0
  *         on error, returns 1
  */
-short int initLog(char *fname){
+short int initLog(const char *fname){
 	fileLog();
 #if defined(LOG_TO_FILE)
 	logfile = fopen(fname, "wt");
@@ -88,7 +88,7 @@ short int closeLog(void){
 	return ret;
 }
 
-short int __Log(char *fmt, ...)
+short int __Log(const char *fmt, ...)
 {
 	va_list argptr;
 	short int cnt;
@@ -151,18 +151,18 @@ void Logint(short int c){
 
 #else /* nie LOGGING */
 
-short int initLog(char *fname){return 0;}
+short int initLog(const char *fname){return 0;}
 /* void bothLogs(void){} */
 /* void fileLog(void){} */
 short int closeLog(void){return 0;}
-short int __Log(char *fmt, ...){return 0;}
+short int __Log(const char *fmt, ...){return 0;}
 void Logint(short int c){};
 
 #endif /* LOGGING */
 
 /* ------------------------------------------------------------------- */
 /* empty log - nerobi nic, ale ma vstup (...) */
-short int NoLog(char *fmt, ...){
+short int NoLog(const char *fmt, ...){
 	return(fmt == 0); /* aby nehlasilo param `fmt' not used */
 }
 

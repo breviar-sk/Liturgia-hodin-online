@@ -974,7 +974,7 @@ char pismenko_modlitby(short int modlitba){
 	return 0;
 }/* pismenko_modlitby(); */
 
-void anchor_name_zaltar(short int den, short int tyzzal, short int modlitba, char *anchor){
+void anchor_name_zaltar(short int den, short int tyzzal, short int modlitba, const char *anchor){
 	sprintf(_anchor, "_%d%s%c_%s",
 		tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor);
 }
@@ -8401,7 +8401,7 @@ void _spolocna_cast_2cit_viac(short int kolko, char *_anchor_head, char *_anchor
  * - II. zväzok (ve¾ká noc),
  * - III. a IV. zväzok (obdobie cez rok).
  */
-void _spolocna_cast_1cit_zvazok(short int modlitba, char *_anchor_pom, char *_anchor_zvazok, char *_anchor, char *_file, short int brat_1citanie = NIE){
+void _spolocna_cast_1cit_zvazok(short int modlitba, const char *_anchor_pom, const char *_anchor_zvazok, const char *_anchor, const char *_file, short int brat_1citanie = NIE){
 	char _anchor_lokal[SMALL]; /* 2005-08-08: lokálna premenná */
 	Log("_spolocna_cast_1cit_zvazok: zaèiatok\n");
 	Log("\tmodlitba == %s\n", nazov_modlitby(modlitba));

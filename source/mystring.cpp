@@ -20,6 +20,7 @@
 #include <ctype.h>
 #include "mystring.h"
 #include "mysystem.h"
+#include "mysysdef.h"
 
 /* funkcia mystrcpy()
  * 1. zisti velkost dest -- sizeof(dest)

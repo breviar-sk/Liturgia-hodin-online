@@ -72,6 +72,7 @@
 #define __LITURGIA_H_
 
 #include "mysystem.h"
+#include "mysysdef.h"
 #include "mydefs.h"
 #include "mylog.h"
 #include <time.h>
@@ -1193,7 +1194,12 @@ extern short int _global_pocet_svatych;
 /* glob·lna premenn· -- pole -- obsahuj˙ca options; pÙvodne to boli glob·lne premennÈ _global_opt 1..9 atÔ., obsahuj˙ pom_MODL_OPT... */
 extern short int _global_opt[POCET_GLOBAL_OPT];
 
+#ifdef LITURGICKE_CITANIA
+#define POCET_OPT_0_SPECIALNE               3 /* jednotlivÈ komponenty option 0 -- bity pre force option 0 */
+#define BIT_OPT_0_CITANIA                   4
+#else
 #define POCET_OPT_0_SPECIALNE               2 /* jednotlivÈ komponenty option 0 -- bity pre force option 0 */
+#endif
 extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 /* 2011-04-08: ˙prava v˝znamu (a interpret·cie) option 0 ==  OPT_0_SPECIALNE (zobraziù/nezobraziù "pridan˙ hodnotu" oproti papierovej LH) */
 #define BIT_OPT_0_VERSE                     1
@@ -1326,6 +1332,8 @@ _struct_den_mesiac prva_adventna_nedela(short int rok);
 short int nedelny_cyklus(short int por, short int rok);
 short int nedelny_cyklus(short int den, short int mesiac, short int rok);
 short int nedelny_cyklus(_struct_den_mesiac den_a_mesiac, short int rok);
+short int ferialny_cyklus(short int por, short int rok);
+short int ferialny_cyklus(short int den, short int mesiac, short int rok);
 _struct_dm por_den_mesiac_dm(short int poradie, short int rok);
 short int tyzden_cez_rok_po_vn(short int rok);
 short int cislo_nedele_cez_rok_po_vn(short int rok);

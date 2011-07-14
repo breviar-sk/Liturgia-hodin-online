@@ -37,6 +37,7 @@
 #include "myexpt.h"
 #include "mydefs.h"
 #include "mysystem.h"
+#include "mysysdef.h"
 #include "mystring.h"
 #include <ctype.h>
 
@@ -1123,21 +1124,35 @@ _struct_den_mesiac prva_adventna_nedela(short int rok){
  * ktory uz moze byt inym liturgickym rokom. to nie je osetrene ani
  * vo funkcii nedelny_cyklus(_struct_den_mesiac, int);
  */
-short int nedelny_cyklus(short int por, short int rok){
+short int vseobecny_cyklus(short int por, short int rok, short int perioda){
 	_struct_den_mesiac pan;
 	short int porpan;
 	pan = prva_adventna_nedela(rok);
 	porpan = poradie(pan.den, pan.mesiac, rok);
 	if(por < porpan)
-		return ((rok - 1) MOD 3);
+		return ((rok - 1) MOD perioda);
 	else
-		return (rok MOD 3);
+		return (rok MOD perioda);
+}
+
+short int nedelny_cyklus(short int por, short int rok){
+	return vseobecny_cyklus(por, rok, 3);
+}
+
+short int ferialny_cyklus(short int por, short int rok){
+	return vseobecny_cyklus(por, rok, 2);
 }
 
 short int nedelny_cyklus(short int den, short int mesiac, short int rok){
 	short int por;
 	por = poradie(den, mesiac, rok);
 	return nedelny_cyklus(por, rok);
+}
+
+short int ferialny_cyklus(short int den, short int mesiac, short int rok){
+	short int por;
+	por = poradie(den, mesiac, rok);
+	return ferialny_cyklus(por, rok);
 }
 
 short int nedelny_cyklus(_struct_den_mesiac den_a_mesiac, short int rok){

@@ -28,7 +28,7 @@
 #define DEFAULT_HTML_EXPORT "zoznam.htm" // "export2.htm"
 #define DEFAULT_MONTH_EXPORT "index.htm" // "^ hore"
 
-short int Export(char *fmt, ...);
+short int Export(const char *fmt, ...);
 short int Export_to_file(FILE * expt, char *fmt, ...);
 
 void bothExports(void);
@@ -42,7 +42,7 @@ extern short int exptused;
 extern FILE *exportfile;
 
 short int initExport(void); /* nechapem, preco to tu chybalo; 22/02/2000A.D. */
-short int initExport(char *expt_filename); /* pridane, 13/03/2000A.D.; pozor na nazvy suborov "" (STR_EMPTY) a "+" */
+short int initExport(const char *expt_filename); /* pridane, 13/03/2000A.D.; pozor na nazvy suborov "" (STR_EMPTY) a "+" */
 short int closeExport(void); /* pridane, urobi fclose(); 13/03/2000A.D. */
 /* navratove hodnoty su prerobene na int-y; vysledok SUCCESS resp. FAILURE */
 

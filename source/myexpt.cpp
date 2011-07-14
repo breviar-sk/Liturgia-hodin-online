@@ -81,7 +81,7 @@ short int initExport(void){
 	return exptused;
 }
 
-short int initExport(char *expt_filename){ /* pridane, 13/03/2000A.D. */
+short int initExport(const char *expt_filename){ /* pridane, 13/03/2000A.D. */
 	if(exptused == SUCCESS){
 		closeExport();
 	}
@@ -111,7 +111,7 @@ void dumpFile(char *fname){
  *    naviac ak isbothExports, tak sa posiela vystup aj na konzolu (stdout),
  * ak premenna exptused je 1,  tak sa posiela vystup iba na konzolu (stdout)
  */
-short int Export(char *fmt, ...){
+short int Export(const char *fmt, ...){
 	va_list argptr;
 	short int cnt;
 
