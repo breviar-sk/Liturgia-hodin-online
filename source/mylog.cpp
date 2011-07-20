@@ -43,6 +43,10 @@ short int isbothLogs(void){ return both; }
 
 #ifdef LOGGING
 
+#ifdef LOG_TO_ANDROID
+#include <android/log.h>
+#endif //LOG_TO_ANDROID
+
 FILE *logfile;
 short int used;
 
@@ -58,6 +62,8 @@ short int initLog(const char *fname){
 #elif defined(LOG_TO_STDOUT)
 	logfile = stdout;
 	used = 0;
+#elif defined(LOG_TO_ANDROID)
+        used = 0;
 #else
 	#error Unsupported logging model (use _LOG_TO_STDOUT or _LOG_TO_FILE)
 #endif
@@ -77,6 +83,8 @@ short int closeLog(void){
 			fprintf(stderr, "Cannot close log file\n");
 #elif defined(LOG_TO_STDOUT)
 		fprintf(stderr, "Log finished, I do not close log file (stdout)\n");
+#elif defined(LOG_TO_ANDROID)
+		// nothing to do
 #else
 	#error Unsupported logging model (use _LOG_TO_STDOUT or _LOG_TO_FILE)
 #endif
@@ -99,6 +107,10 @@ short int __Log(const char *fmt, ...)
 #endif
 
 	va_start(argptr, fmt);
+#ifdef LOG_TO_ANDROID
+        __android_log_vprint(ANDROID_LOG_VERBOSE, "Breviar", fmt, argptr);
+
+#else // not LOG_TO_ANDROID
 	if(used == 0){
 		cnt = vfprintf(logfile, fmt, argptr);
 		if(both)
@@ -106,6 +118,7 @@ short int __Log(const char *fmt, ...)
 	}
 	else
 		cnt = vprintf(fmt, argptr);
+#endif // LOG_TO_ANDROID
 	va_end(argptr);
 
 #if defined(LOG_TO_STDOUT)

@@ -516,7 +516,10 @@ extern const char *TEMPLAT[POCET_MODLITIEB /* + 1 */];
 #define PARAM_REFERENCIA_END				"/r"
 
 /* 2011-07-08: doplnenÈ zobrazovanie/nezobrazenie krÌûika (antifÛna totoûn· s veröom ûalmu/chv·lospevu) */
-#define PARAM_KRIZIK				        "KRIZIK"
+#define PARAM_KRIZIK                        "KRIZIK"
+
+/* 2011-07-14: doplnenÈ zobrazovanie/nezobrazenie zalomen˝ch textov tak, ako je v tlaËenom vydanÌ LH (dlhÈ riadky-veröe ûalmov/chv·lospevov a pod.) */
+#define PARAM_ZALOMENIE                     "ZALOMENIE"
 
 /* stringy parametrov vstupu pre MODL_OPT..., ktore generovanie modlitby
  * ovplyvnuju */
@@ -1219,7 +1222,7 @@ extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_ZALMY_ZO_SVIATKU        256
 #define BIT_OPT_1_PLNE_RESP               512
 
-#define POCET_OPT_2_HTML_EXPORT             6 /* jednotlivÈ komponenty option 2 -- bity pre force option 2 */
+#define POCET_OPT_2_HTML_EXPORT             7 /* jednotlivÈ komponenty option 2 -- bity pre force option 2 */
 extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 /* 2011-04-12: ˙prava v˝znamu (a interpret·cie) option 2 (rozliËnÈ prepÌnaËe pre [online aj offline] export, napr. tlaËidl·, zobrazenie d·tumov a podobne) */
 #define BIT_OPT_2_ISO_DATUM                 1
@@ -1228,6 +1231,7 @@ extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_FONT_NAME_CHOOSER         8 // 1 = zobraziù drop-down list s moûnosùou voæby font (family) name
 #define BIT_OPT_2_FONT_SIZE_CHOOSER        16 // 1 = zobraziù drop-down list s moûnosùou voæby veækosti fontu
 #define BIT_OPT_2_NAVIGATION               32 // 1 = zobraziù navig·ciu v modlitbe (predoöl·, nasledovn· modlitba a pod.)
+#define BIT_OPT_2_TEXT_WRAP                64 // 1 = zobraziù zalomenie v textoch modlitby podæa tlaËenej LH
 
 #define POCET_OPT_4_OFFLINE_EXPORT          1 /* jednotlivÈ komponenty option 4 -- bity pre force option 4 */
 extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];

@@ -316,7 +316,7 @@ char *_global_buf2; /* 2006-08-01: vytvorenÈ; t˙to premenn˙ tieû alokujeme */
 #define ishex(x) (((x) >= '0' && (x) <= '9') || ((x) >= 'a' && (x) <= 'f') || \
 		  ((x) >= 'A' && (x) <= 'F'))
 
-#define MAX_BUFFER 50
+#define MAX_BUFFER 80
 
 #define ANCHOR_VYSVETLIVKY "VYSVETLIVKY"
 #define FILE_VYSVETLIVKY "vysvetl.htm"
@@ -1151,6 +1151,7 @@ short int setForm(void){
 				case 3: strcat(local_str, STR_MODL_OPTF2_FONT_NAME_CHOOSER); break;
 				// case 4: strcat(local_str, STR_MODL_OPTF2_FONT_SIZE); break;
 				case 5: strcat(local_str, STR_MODL_OPTF2_NAVIGATION); break;
+				case 6: strcat(local_str, STR_MODL_OPTF2_TEXT_WRAP); break;
 			}// switch(i)
 			strcat(local_str, "=");
 			strcat(local_str, pom_MODL_OPTF_HTML_EXPORT[i]);
@@ -1448,6 +1449,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				DetailLog("\trest     == %s\n", rest);
 				DetailLog("\tmodlparam== %s\n", modlparam);
 
+				// Export("[INPUT:paramname=%s|fname=%s|modlparam=%s|READ:strbuff=%s|rest=%s]", paramname, fname, modlparam, strbuff, rest);
+
 				if(equalsi(rest, modlparam)){
 #if defined(EXPORT_HTML_FILENAME_ANCHOR)
 					Export("[%s|%s:%s]", fname, strbuff, modlparam);
@@ -1574,6 +1577,26 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 						strcpy(refrest, STR_EMPTY);
 					}/* upraviù referencie na hyperlinky */
+
+					/* 2011-07-14: zobraziù/nezobraziù zalomenie veröov podæa tlaËenej LH */
+					if(equals(strbuff, PARAM_ZALOMENIE) && (vnutri_inkludovaneho == 1)){
+						/*
+#if defined(EXPORT_HTML_FILENAME_ANCHOR)
+						Export("[%s:%s|rest=%s]", strbuff, modlparam, (rest == NULL) ? STR_EMPTY: rest);
+#elif defined(EXPORT_HTML_ANCHOR)
+						Export("%s:%s", strbuff, modlparam);
+#endif
+						*/
+						if((_global_optf[OPT_2_HTML_EXPORT] & BIT_OPT_2_TEXT_WRAP) == BIT_OPT_2_TEXT_WRAP){
+							// MAX_BUFFER bol zv˝öen˝, lebo strbuff bol v tomto prÌpade veæmi dlh˝
+							Export("zalomenie-->%s<!--zalomenie", rest);
+						}
+						else{
+#if defined(EXPORT_HTML_SPECIALS)
+							Export("zalomenie-nie");
+#endif
+						}
+					}/* zobraziù/nezobraziù zalomenie veröov podæa tlaËenej LH */
 
 					/* 2011-04-04: zobraziù/nezobraziù ËÌslovanie veröov */
 					if(equals(strbuff, PARAM_CISLO_VERSA_BEGIN) && (vnutri_inkludovaneho == 1)){
@@ -4617,7 +4640,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	short int liturgicka_farba_alt = LIT_FARBA_NEURCENA; /* 2011-03-24: pridanÈ */
         struct citanie *cit = NULL;
 
-	Log("-- init_global_string(EXPORT_DNA_%d, %d, %s, %s) -- zaËiatok\n", typ, poradie_svateho, nazov_modlitby(modlitba), aj_citanie);
+	Log("-- init_global_string(EXPORT_DNA_%d, %d, %s, %d) -- zaËiatok\n", typ, poradie_svateho, nazov_modlitby(modlitba), aj_citanie);
 	Log("   (inicializuje tri _global_string* premennÈ)\n");
 	/* -------------------------------------------------------------------- */
 	/* najprv priradime do _local_den to, co tam ma byt */
@@ -5203,7 +5226,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 
 	Log("  -- _global_string_farba == %s\n", _global_string_farba);
 
-	Log("-- init_global_string(EXPORT_DNA_%d, %d, %s, %s) -- returning SUCCESS\n", typ, poradie_svateho, nazov_modlitby(modlitba), aj_citanie);
+	Log("-- init_global_string(EXPORT_DNA_%d, %d, %s, %d) -- returning SUCCESS\n", typ, poradie_svateho, nazov_modlitby(modlitba), aj_citanie);
 	return SUCCESS;
 }/* init_global_string(); -- 3 vstupy  */
 
@@ -7074,6 +7097,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF2_NAVIGATION, NIE);
 		Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF2_NAVIGATION, ANO, html_text_option2_navigation_explain[_global_jazyk], ((_global_optf[OPT_2_HTML_EXPORT] & BIT_OPT_2_NAVIGATION) == BIT_OPT_2_NAVIGATION)? html_option_checked: STR_EMPTY);
 		Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option2_navigation_explain[_global_jazyk], html_text_option2_navigation[_global_jazyk]);
+	}
+
+	if((_global_system == SYSTEM_RUBY) || (_global_jazyk == JAZYK_SK)){
+		/* pole (checkbox) WWW_MODL_OPTF2_TEXT_WRAP */
+		Export("<br>");
+		Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF2_TEXT_WRAP, NIE);
+		Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF2_TEXT_WRAP, ANO, html_text_option2_textwrap_explain[_global_jazyk], ((_global_optf[OPT_2_HTML_EXPORT] & BIT_OPT_2_TEXT_WRAP) == BIT_OPT_2_TEXT_WRAP)? html_option_checked: STR_EMPTY);
+		Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option2_textwrap_explain[_global_jazyk], html_text_option2_textwrap[_global_jazyk]);
 	}
 
 	Export("</td></tr>\n");
@@ -12255,6 +12286,7 @@ short int getForm(void){
 			case 3: strcat(local_str, STR_MODL_OPTF2_FONT_NAME_CHOOSER); break;
 			// case 4: strcat(local_str, STR_MODL_OPTF2_FONT_SIZE); break;
 			case 5: strcat(local_str, STR_MODL_OPTF2_NAVIGATION); break;
+			case 6: strcat(local_str, STR_MODL_OPTF2_TEXT_WRAP); break;
 		}/* switch(i) */
 		ptr = getenv(local_str);
 		/* ak nie je vytvorena, ak t.j. ptr == NULL, tak nas to netrapi,
@@ -13038,6 +13070,7 @@ short int parseQueryString(void){
 			case 3: strcat(local_str, STR_MODL_OPTF2_FONT_NAME_CHOOSER); break;
 			// case 4: strcat(local_str, STR_MODL_OPTF2_FONT_SIZE); break;
 			case 5: strcat(local_str, STR_MODL_OPTF2_NAVIGATION); break;
+			case 6: strcat(local_str, STR_MODL_OPTF2_TEXT_WRAP); break;
 		}/* switch(j) */
 		/* premenn· WWW_MODL_OPT2_... (nepovinn·), j = 0 aû POCET_OPT_2_HTML_EXPORT */
 		i = 0; /* param[0] by mal sÌce obsahovaù query type, ale radöej kontrolujeme od 0 */

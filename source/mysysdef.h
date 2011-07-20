@@ -115,6 +115,16 @@
 	#define EXPORT_TO_FILE
 	#define IO_ANDROID
 	#define LITURGICKE_CITANIA
+/* android + debug log: */
+#elif defined(MODEL_android_debug)
+	#define BEHAVIOUR_WEB
+	#define OS_linux
+	#define LOGGING
+	#define LOG_TO_ANDROID
+	#define EXPORT_HTML_FILENAME_ANCHOR
+	#define EXPORT_TO_FILE
+	#define IO_ANDROID
+	#define LITURGICKE_CITANIA
 /* ostré Windows/RUBY: */
 #elif defined(MODEL_Windows_RUBY)
 	#define BEHAVIOUR_WEB

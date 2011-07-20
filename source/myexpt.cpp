@@ -129,7 +129,7 @@ short int Export(const char *fmt, ...){
 	return(cnt);
 }
 
-short int Export_to_file(FILE * expt, char *fmt, ...){
+short int Export_to_file(FILE * expt, const char *fmt, ...){
 	va_list argptr;
 	short int cnt;
 

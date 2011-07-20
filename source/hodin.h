@@ -1746,6 +1746,26 @@ const char *html_text_option2_navigation_explain[POCET_JAZYKOV + 1] =
  "xxx", 
  "xxx", 
 };
+
+const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] = 
+{"zalamova dlhé riadky ako v tlaèenom vydaní (poetické èasti)",
+ "xxx", 
+ "xxx", 
+ "",
+ "",
+ "xxx", 
+ "xxx", 
+};
+const char *html_text_option2_textwrap_explain[POCET_JAZYKOV + 1] = 
+{"Èi sa majú v texte modlitby dlhé riadky almov, chválospevov a inıch poetickıch èastí zalamova ako v tlaèenom vydaní.", 
+ "xxx", 
+ "xxx", 
+ "",
+ "", 
+ "xxx", 
+ "xxx", 
+};
+
 /* 2011-05-06: doplnené */
 const char *html_text_font_name[POCET_JAZYKOV + 1] = 
 {"alebo poui písmo", 
@@ -4191,7 +4211,7 @@ const char *text_JUL_18_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Boldog Hedvig királyné",
+ "Szent Hedvig királyné",
  };
 const char *text_JUL_20[POCET_JAZYKOV + 1] = 
 {"Sv. Apolinára, biskupa a muèeníka",

@@ -613,6 +613,14 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 	#define STR_MODL_OPTF2_NAVIGATION "of2nav"
 #endif
 
+// zobrazovaù zalomenie v textoch modlitieb podæa tlaËenej LH
+#define MODL_OPTF2_TEXT_WRAP 87
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF2_TEXT_WRAP "MODL_OPTF2_TEXT_WRAP"
+#else
+	#define STR_MODL_OPTF2_TEXT_WRAP "of2tw"
+#endif
+
 /* 2008-08-08: PridanÈ kvÙli rÙznym css */
 #define CSS 40
 #ifdef LONG_PARAM_NAMES

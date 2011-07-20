@@ -29,7 +29,7 @@
 #define DEFAULT_MONTH_EXPORT "index.htm" // "^ hore"
 
 short int Export(const char *fmt, ...);
-short int Export_to_file(FILE * expt, char *fmt, ...);
+short int Export_to_file(FILE * expt, const char *fmt, ...);
 
 void bothExports(void);
 void dumpFile(char *fname);
