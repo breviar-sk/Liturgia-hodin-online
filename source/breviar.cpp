@@ -4753,17 +4753,17 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			break; /* case 0: */
 	}/* switch(poradie_svateho) */
 
-        int ma_nazov = 0;
+	int ma_nazov = 0;
 #ifdef LITURGICKE_CITANIA
 	if (!cit){
 		Log("nepodarilo sa naËÌtaù cit, preto pouûijem default...\n");
 		Export("<!-- DEF... -->");
 		cit = najdiCitanie(getCode(&_global_den));
 		if (!cit){
-		}
 			Log("nepodarilo sa naËÌtaù ani len default pre cit.\n");
 			Export("<!-- DEF NOT FOUND -->");
-	}
+		}// if (!cit); 2. pokus
+	}// if (!cit)
 #endif // LITURGICKE_CITANIA
 	Log("1:_local_den.meno == %s\n", _local_den.meno); /* 08/03/2000A.D. */
 
