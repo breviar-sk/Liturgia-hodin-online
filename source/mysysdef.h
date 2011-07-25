@@ -133,6 +133,7 @@
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
+	#define LITURGICKE_CITANIA
 /* debugovanie Windows/RUBY -- vsetko sa vypisuje na stdout */
 #elif defined(MODEL_DEBUG_Windows_RUBY)
 	#define BEHAVIOUR_WEB
@@ -143,6 +144,7 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
 	#define DEBUG
+	#define LITURGICKE_CITANIA
 /* debugovanie linux -- vsetko sa vypisuje na stdout */
 #elif defined(MODEL_DEBUG_linux)
 	#define BEHAVIOUR_WEB

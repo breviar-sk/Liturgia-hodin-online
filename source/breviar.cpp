@@ -4638,7 +4638,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	short int obyc = NIE;
 	short int liturgicka_farba = LIT_FARBA_NEURCENA; /* 2006-08-19: pridanÈ */
 	short int liturgicka_farba_alt = LIT_FARBA_NEURCENA; /* 2011-03-24: pridanÈ */
-        struct citanie *cit = NULL;
+	struct citanie *cit = NULL;
 
 	Log("-- init_global_string(EXPORT_DNA_%d, %d, %s, %d) -- zaËiatok\n", typ, poradie_svateho, nazov_modlitby(modlitba), aj_citanie);
 	Log("   (inicializuje tri _global_string* premennÈ)\n");
@@ -4723,6 +4723,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			/* 2010-09-28: odvetvenÈ kvÙli t˝m prÌpadom, keÔ na nedeæu padne sviatok p·na, ale pouûÌva sa poradie_svaty == UNKNOWN_PORADIE_SVATEHO == 0 
 			 *             Ëasù prevzat· z: liturgicke_obdobie(), zaËiatok funkcie; hoci tu sa pouûije len pre smer == 5 (sviatky p·na); sl·vnosti sa rieöia samostatne
 			 * 2011-06-30: cyril a metod odvetven˝ pre SK a CZ only
+			 * 2011-07-22: doplnenÈ pre HU: 20AUG
 			 */
 			Log("_global_den.smer == %d\n", _global_den.smer);
 			Log("_global_svaty1.smer == %d\n", _global_svaty1.smer);
@@ -4731,6 +4732,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				((_global_den.den == 15) && (_global_den.mesiac - 1 == MES_AUG)) ||
 				((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) ||
 				((_global_den.den == 5) && (_global_den.mesiac - 1 == MES_JUL) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) ||
+				((_global_den.den == 20) && (_global_den.mesiac - 1 == MES_AUG) && (_global_jazyk == JAZYK_HU)) ||
 				((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) ||
 				((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP) ) ||
 				((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV))
@@ -4753,7 +4755,15 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 
         int ma_nazov = 0;
 #ifdef LITURGICKE_CITANIA
-	if (!cit) cit = najdiCitanie(getCode(&_global_den));
+	if (!cit){
+		Log("nepodarilo sa naËÌtaù cit, preto pouûijem default...\n");
+		Export("<!-- DEF... -->");
+		cit = najdiCitanie(getCode(&_global_den));
+		if (!cit){
+		}
+			Log("nepodarilo sa naËÌtaù ani len default pre cit.\n");
+			Export("<!-- DEF NOT FOUND -->");
+	}
 #endif // LITURGICKE_CITANIA
 	Log("1:_local_den.meno == %s\n", _local_den.meno); /* 08/03/2000A.D. */
 
@@ -5100,33 +5110,42 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			strcat(_global_string, pom);
 		}
 #ifdef LITURGICKE_CITANIA
-                if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_CITANIA) == BIT_OPT_0_CITANIA) {
-                  if (cit && aj_citanie) {
-                    if (typ == EXPORT_DNA_DNES || typ == EXPORT_DNA_JEDEN_DEN || typ == EXPORT_DNA_VIAC_DNI) {
-                      if (ma_nazov) strcat(_global_string, "<br>");
+		if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_CITANIA) == BIT_OPT_0_CITANIA) {
+			if (cit && aj_citanie) {
+				if (typ == EXPORT_DNA_DNES || typ == EXPORT_DNA_JEDEN_DEN || typ == EXPORT_DNA_VIAC_DNI) {
+					if (ma_nazov) strcat(_global_string, "<br>");
 #ifdef IO_ANDROID
-                      sprintf(pom, "<a href=\"svpismo://svpismo.riso.ksp.sk/?d=%d&amp;m=%d&amp;y=%d&amp;c=", _local_den.den, _local_den.mesiac, _local_den.rok);
+					sprintf(pom, "<a href=\"svpismo://svpismo.riso.ksp.sk/?d=%d&amp;m=%d&amp;y=%d&amp;c=", _local_den.den, _local_den.mesiac, _local_den.rok);
 #else
-                      sprintf(pom, "<a href=\"http://dkc.kbs.sk/dkc.php?in=");
+					sprintf(pom, "<a href=\"http://dkc.kbs.sk/dkc.php?in=");
 #endif
-                      strcat(_global_string, pom);
-                      strcat(_global_string, StringEncode(remove_diacritics(cit->citania)));
-
+					strcat(_global_string, pom);
+					strcat(_global_string, StringEncode(remove_diacritics(cit->citania)));
 #ifdef IO_ANDROID
-                      sprintf(pom, "&amp;zalm=");
-                      strcat(_global_string, pom);
-                      strcat(_global_string, StringEncode(toUtf(cit->zalm)));
-
-                      sprintf(pom, "&amp;aleluja=");
-                      strcat(_global_string, pom);
-                      strcat(_global_string, StringEncode(toUtf(cit->aleluja)));
+					sprintf(pom, "&amp;zalm=");
+					strcat(_global_string, pom);
+					strcat(_global_string, StringEncode(toUtf(cit->zalm)));
+					//
+					sprintf(pom, "&amp;aleluja=");
+					strcat(_global_string, pom);
+					strcat(_global_string, StringEncode(toUtf(cit->aleluja)));
 #endif
-
-                      sprintf(pom, "\">%s</a>", cit->citania);
-                      strcat(_global_string, pom);
-                    }
-                  }
-                }
+					sprintf(pom, "\">%s</a>", cit->citania);
+					strcat(_global_string, pom);
+				}
+			}// if (cit && aj_citanie)
+			else{
+#ifndef IO_ANDROID
+				if(cit)
+					sprintf(pom, "<!--lit.citania (cit)-->");
+				else if(aj_citanie)
+					sprintf(pom, "<!--lit.citania (aj_citanie)%s-->", getCode(&_global_den));
+				else
+					sprintf(pom, "<!--lit.citania!!!-->");
+				strcat(_global_string, pom);
+#endif
+			}
+		}// if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_CITANIA) == BIT_OPT_0_CITANIA)
 #endif
 	}/* lokaliz·cia sl·venia a kalend·r */
 
