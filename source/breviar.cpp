@@ -305,9 +305,9 @@
 #include "android.h"
 #endif // IO_ANDROID
 
-#ifdef LITURGICKE_CITANIA
+#ifdef LITURGICKE_CITANIA_ANDROID
 #include "citania.h"
-#endif // LITURGICKE_CITANIA
+#endif // LITURGICKE_CITANIA_ANDROID
 
 /* 2005-03-28: Pridane, pokusy nahradit uncgi */
 char *_global_buf; /* 2006-08-01: t˙to premenn˙ tieû alokujeme */
@@ -1100,9 +1100,7 @@ short int setForm(void){
 			switch(i){
 				case 0: strcat(local_str, STR_MODL_OPTF0_VERSE); break;
 				case 1: strcat(local_str, STR_MODL_OPTF0_REF); break;
-#ifdef LITURGICKE_CITANIA
 				case 2: strcat(local_str, STR_MODL_OPTF0_CIT); break;
-#endif
 			}// switch(i)
 			strcat(local_str, "=");
 			strcat(local_str, pom_MODL_OPTF_SPECIALNE[i]);
@@ -4666,18 +4664,18 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		case 1:
 			/* do _local_den priradim dane slavenie */
 			_local_den = _global_svaty1;
-#ifdef LITURGICKE_CITANIA
+#ifdef LITURGICKE_CITANIA_ANDROID
 			cit = najdiCitanie(getCode(&_global_svaty1));
-#endif // LITURGICKE_CITANIA
+#endif // LITURGICKE_CITANIA_ANDROID
 			Log("priradujem _local_den = _global_svaty1;\n");
 			break; /* case 1: */
 		case 2:
 			if(_global_pocet_svatych > 1){
 				/* do _local_den priradim dane slavenie */
 				_local_den = _global_svaty2;
-#ifdef LITURGICKE_CITANIA
+#ifdef LITURGICKE_CITANIA_ANDROID
 				cit = najdiCitanie(getCode(&_global_svaty2));
-#endif // LITURGICKE_CITANIA
+#endif // LITURGICKE_CITANIA_ANDROID
 				Log("priradujem _local_den = _global_svaty2;\n");
 			}
 			else{
@@ -4695,9 +4693,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			if(_global_pocet_svatych > 2){
 				/* teraz do _local_den priradim dane slavenie */
 				_local_den = _global_svaty3;
-#ifdef LITURGICKE_CITANIA
+#ifdef LITURGICKE_CITANIA_ANDROID
 				cit = najdiCitanie(getCode(&_global_svaty3));
-#endif // LITURGICKE_CITANIA
+#endif // LITURGICKE_CITANIA_ANDROID
 				Log("priradujem _local_den = _global_svaty3;\n");
 			}
 			else{
@@ -4739,9 +4737,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				)){
 				/* do _local_den priradim dane slavenie */
 				_local_den = _global_svaty1;
-#ifdef LITURGICKE_CITANIA
+#ifdef LITURGICKE_CITANIA_ANDROID
 				cit = najdiCitanie(getCode(&_global_svaty1));
-#endif // LITURGICKE_CITANIA
+#endif // LITURGICKE_CITANIA_ANDROID
 				Log("priradujem _local_den = _global_svaty1;\n");
 			}
 			else{
@@ -4754,17 +4752,15 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	}/* switch(poradie_svateho) */
 
 	int ma_nazov = 0;
-#ifdef LITURGICKE_CITANIA
+#ifdef LITURGICKE_CITANIA_ANDROID
 	if (!cit){
 		Log("nepodarilo sa naËÌtaù cit, preto pouûijem default...\n");
-		Export("<!-- DEF... -->");
 		cit = najdiCitanie(getCode(&_global_den));
 		if (!cit){
 			Log("nepodarilo sa naËÌtaù ani len default pre cit.\n");
-			Export("<!-- DEF NOT FOUND -->");
 		}// if (!cit); 2. pokus
 	}// if (!cit)
-#endif // LITURGICKE_CITANIA
+#endif // LITURGICKE_CITANIA_ANDROID
 	Log("1:_local_den.meno == %s\n", _local_den.meno); /* 08/03/2000A.D. */
 
 	/* 21/03/2000A.D.
@@ -5109,15 +5105,15 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			sprintf(pom, "<!-- kalend·r nie je urËen˝ spr·vne -->");
 			strcat(_global_string, pom);
 		}
-#ifdef LITURGICKE_CITANIA
 		if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_CITANIA) == BIT_OPT_0_CITANIA) {
+#ifdef LITURGICKE_CITANIA_ANDROID
 			if (cit && aj_citanie) {
 				if (typ == EXPORT_DNA_DNES || typ == EXPORT_DNA_JEDEN_DEN || typ == EXPORT_DNA_VIAC_DNI) {
 					if (ma_nazov) strcat(_global_string, "<br>");
 #ifdef IO_ANDROID
 					sprintf(pom, "<a href=\"svpismo://svpismo.riso.ksp.sk/?d=%d&amp;m=%d&amp;y=%d&amp;c=", _local_den.den, _local_den.mesiac, _local_den.rok);
 #else
-					sprintf(pom, "<a href=\"http://dkc.kbs.sk/dkc.php?in=");
+					sprintf(pom, "<a target=\"_blank\" "HTML_CLASS_QUIET" href=\"http://dkc.kbs.sk/?in=");
 #endif
 					strcat(_global_string, pom);
 					strcat(_global_string, StringEncode(remove_diacritics(cit->citania)));
@@ -5136,32 +5132,40 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			}// if (cit && aj_citanie)
 			else{
 #ifndef IO_ANDROID
-				if(cit)
-					sprintf(pom, "<!--lit.citania (cit)-->");
-				else if(aj_citanie)
-					sprintf(pom, "<!--lit.citania (aj_citanie)%s-->", getCode(&_global_den));
-				else
-					sprintf(pom, "<!--lit.citania!!!-->");
-				strcat(_global_string, pom);
+				if(cit){
+					Log("cit is not NULL\n");
+				}
+				else if(aj_citanie){
+					Log("aj_citanie is TRUE\n");
+				}
+				else{
+					Log("cit is NULL && aj_citanie is FALSE\n");
+				}
 #endif
-			}
+			}// if (cit && aj_citanie)
+#elif defined(BEHAVIOUR_WEB)
+			// 2011-07-26: doplnenÈ pre BEHAVIOUR_WEB in·Ë ako pre ANDROID
+			sprintf(pom, "<br><"HTML_SPAN_ITALIC">");
+			strcat(_global_string, pom);
+			sprintf(pom, "<a target=\"_blank\" href=\"http://lc.kbs.sk/?den%04d%02d%02d=", _local_den.rok, _local_den.mesiac, _local_den.den);
+			strcat(_global_string, pom);
+			sprintf(pom, "\">%s</a>", (char *)html_text_option0_citania[_global_jazyk]);
+			strcat(_global_string, pom);
+			sprintf(pom, "</span>");
+			strcat(_global_string, pom);
+#endif // not LITURGICKE_CITANIA_ANDROID // BEHAVIOUR_WEB
 		}// if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_CITANIA) == BIT_OPT_0_CITANIA)
-#endif
 	}/* lokaliz·cia sl·venia a kalend·r */
 
 	Log("  -- _global_string == %s\n", _global_string);
 
 	/* inicializujem _global_string2 */
 	if(((_global_r._POPOLCOVA_STREDA.den == _local_den.den) &&
-		 (_global_r._POPOLCOVA_STREDA.mesiac == _local_den.mesiac)) ||
-		/* popolcova streda */
-		((_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) &&
-		 (typ == EXPORT_DNA_VIAC_DNI)) ||
-		/* pondelok -- streda velkeho tyzdna */
-		(_local_den.smer > 8)){
-		/* nie slavnosti ani sviatky ani nedele */
-		mystrcpy(_global_string2,
-			rimskymi_tyzden_zaltara[tyzden_zaltara(_global_den.tyzden)], MAX_GLOBAL_STR2);
+		(_global_r._POPOLCOVA_STREDA.mesiac == _local_den.mesiac)) || // popolcova streda
+		((_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (typ == EXPORT_DNA_VIAC_DNI)) || // pondelok -- streda velkeho tyzdna
+		(_local_den.smer > 8)) // nie slavnosti ani sviatky ani nedele
+	{
+		mystrcpy(_global_string2, rimskymi_tyzden_zaltara[tyzden_zaltara(_global_den.tyzden)], MAX_GLOBAL_STR2);
 	}
 	else if(_local_den.denvt == DEN_NEDELA){
 		/* 13/03/2000A.D. -- pridane, aby aj nedele mali tyzden zaltara */
@@ -7022,7 +7026,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF0_REF, NIE);
 		Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF0_REF, ANO, html_text_option0_referencie_explain[_global_jazyk], ((_global_optf[OPT_0_SPECIALNE] & BIT_OPT_0_REFERENCIE) == BIT_OPT_0_REFERENCIE)? html_option_checked: STR_EMPTY);
 		Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option0_referencie_explain[_global_jazyk], html_text_option0_referencie[_global_jazyk]);
-#ifdef LITURGICKE_CITANIA
+#ifdef BEHAVIOUR_WEB
 		/* pole (checkbox) WWW_MODL_OPTF0_CIT */
 		Export("<br>");
 		Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF0_CIT, NIE);
@@ -12254,9 +12258,7 @@ short int getForm(void){
 		switch(i){
 			case 0: strcat(local_str, STR_MODL_OPTF0_VERSE); break;
 			case 1: strcat(local_str, STR_MODL_OPTF0_REF); break;
-#ifdef LITURGICKE_CITANIA
 			case 2: strcat(local_str, STR_MODL_OPTF0_CIT); break;
-#endif
 		}/* switch(i) */
 		ptr = getenv(local_str);
 		/* ak nie je vytvorena, ak t.j. ptr == NULL, tak nas to netrapi,
@@ -13022,9 +13024,7 @@ short int parseQueryString(void){
 		switch(j){
 			case 0: strcat(local_str, STR_MODL_OPTF0_VERSE); break;
 			case 1: strcat(local_str, STR_MODL_OPTF0_REF); break;
-#ifdef LITURGICKE_CITANIA
 			case 2: strcat(local_str, STR_MODL_OPTF0_CIT); break;
-#endif
 		}/* switch(j) */
 		/* premenn· WWW_MODL_OPTF0_... (nepovinn·), j = 0 aû POCET_OPT_0_SPECIALNE */
 		i = 0; /* param[0] by mal sÌce obsahovaù query type, ale radöej kontrolujeme od 0 */

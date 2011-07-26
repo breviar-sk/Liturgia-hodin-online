@@ -97,7 +97,7 @@
 #undef BEHAVIOUR_WEB /* 2010-06-07: správanie ako na webe: export príp. logovanie ide na STDOUT (t. j. ako output pre web browser) */
 #undef BEHAVIOUR_CMDLINE /* 2010-06-07: správanie pre command-line verziu: export príp. logovanie ide do súboru/súborov (t. j. ako output pre batch mód) */
 #undef IO_ANDROID
-#undef LITURGICKE_CITANIA
+#undef LITURGICKE_CITANIA_ANDROID
 
 /* ostry linux: */
 #if defined(MODEL_linux)
@@ -114,7 +114,7 @@
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_TO_FILE
 	#define IO_ANDROID
-	#define LITURGICKE_CITANIA
+	#define LITURGICKE_CITANIA_ANDROID
 /* android + debug log: */
 #elif defined(MODEL_android_debug)
 	#define BEHAVIOUR_WEB
@@ -124,7 +124,7 @@
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_TO_FILE
 	#define IO_ANDROID
-	#define LITURGICKE_CITANIA
+	#define LITURGICKE_CITANIA_ANDROID
 /* ostré Windows/RUBY: */
 #elif defined(MODEL_Windows_RUBY)
 	#define BEHAVIOUR_WEB
@@ -133,7 +133,6 @@
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
-	#define LITURGICKE_CITANIA
 /* debugovanie Windows/RUBY -- vsetko sa vypisuje na stdout */
 #elif defined(MODEL_DEBUG_Windows_RUBY)
 	#define BEHAVIOUR_WEB
@@ -144,7 +143,6 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
 	#define DEBUG
-	#define LITURGICKE_CITANIA
 /* debugovanie linux -- vsetko sa vypisuje na stdout */
 #elif defined(MODEL_DEBUG_linux)
 	#define BEHAVIOUR_WEB

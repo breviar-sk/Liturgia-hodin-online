@@ -5,14 +5,16 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifdef LITURGICKE_CITANIA
+#ifdef LITURGICKE_CITANIA_ANDROID
 
-static struct citanie Citania[] = {
+#define POCET_CITANIA 1128 // [ToDo] dorieši krajšie
+
+static struct citanie Citania[POCET_CITANIA] = {
 #include "citania-gen.cpp"
   { NULL, NULL, NULL, NULL }
 };
 
-static int nc = -1;
+static short int nc = POCET_CITANIA - 1;
 
 static int cmpcitanie(const void *a, const void *b) {
   return strcmp((const char *)a, ((struct citanie *)b)->kod);
@@ -156,4 +158,4 @@ char *toUtf(const char *in) {
   return out;
 }
 
-#endif // LITURGICKE_CITANIA
+#endif // LITURGICKE_CITANIA_ANDROID

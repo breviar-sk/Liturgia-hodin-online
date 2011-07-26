@@ -471,14 +471,12 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 	#define STR_MODL_OPTF0_REF "of0r"
 #endif
 
-// liturgicke citania 
-#ifdef LITURGICKE_CITANIA
+// liturgické èítania
 #define MODL_OPTF0_CIT 63
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF0_CIT "MODL_OPTF0_CIT"
 #else
 	#define STR_MODL_OPTF0_CIT "of0cit"
-#endif
 #endif
 
 /* pre force option 1 jednotlivé bit-komponenty (parciálne vo¾by) */
@@ -695,6 +693,7 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 #define HTML_VERTICAL_BAR "|"
 
 #define HTML_SPAN_NORMAL    "span class=\"normal\""
+#define HTML_SPAN_ITALIC    "span class=\"it\""
 #define HTML_SPAN_BOLD      "span class=\"bold\""
 #define HTML_SPAN_BOLD_IT   "span class=\"boldit\""
 #define HTML_SPAN_RED       "span class=\"red\""
