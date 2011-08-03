@@ -84,18 +84,23 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		_local_modlitba = MODL_KOMPLETORIUM;
 
 	/* 2009-08-04: viackrát sa pri exporte modlitby do HTML exportovala hlavièka; pridaná kontrola */
-	if(_global_hlavicka_Export > 0)
+	if(_global_hlavicka_Export > 0){
+		Log("return... (_global_hlavicka_Export > 0)\n");
 		return;
+	}
 	_global_hlavicka_Export++;
 	/* 
 	 * 2003-07-01, pridane pripadne citanie zo suboru
 	 * 2008-08-08: èítanie zo súboru odstránené
 	 */
 	const char *nazov_css_suboru;
-	if(_global_css == CSS_UNDEF)
+	if(_global_css == CSS_UNDEF){
 		nazov_css_suboru = nazov_css[CSS_breviar_sk];
-	else
+	}// _global_css == CSS_UNDEF
+	else{
 		nazov_css_suboru = nazov_css[_global_css];
+	}// else
+	Log("nazov_css_suboru == %s...\n", nazov_css_suboru);
 
 	/*
 	 * 2011-05-05: nastavenie font-family
@@ -112,10 +117,11 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}/* (_global_font == FONT_UNDEF)  || (_global_font == FONT_CHECKBOX) */
 	else if(_global_font == FONT_CSS){
 		mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_INHERIT, MAX_STR);
-	}/* (_global_font == FONT_CSS) */
+	}// (_global_font == FONT_CSS)
 	else{
 		mystrcpy(_global_css_font_family, nazov_fontu[_global_font], MAX_STR);
-	}/* else */
+	}// else
+	Log("_global_css_font_family == %s...\n", _global_css_font_family);
 	/*
 	 * 2011-05-13: doplnené: nastavenie font-size
 	 */
@@ -124,10 +130,11 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}/* (_global_font_size == FONT_SIZE_UNDEF) */
 	else if(_global_font_size == FONT_SIZE_CSS){
 		mystrcpy(_global_css_font_size, DEFAULT_FONT_SIZE_INHERIT, MAX_STR);
-	}/* (_global_font_size == FONT_SIZE_CSS) */
+	}// (_global_font_size == FONT_SIZE_CSS)
 	else{
 		mystrcpy(_global_css_font_size, nazov_font_size_css[_global_font_size], MAX_STR);
-	}/* else */
+	}// else
+	Log("_global_css_font_size == %s...\n", _global_css_font_size);
 
 	if(bol_content_type_text_html == NIE){
 #if defined(OS_linux)
@@ -145,6 +152,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	 * 2010-02-15: statické texty do konštánt
 	 * 2011-05-18: charset sa nastaví pod¾a jazyka
 	 */
+	Log("<head>...\n");
 	Export_to_file(expt, (char *)html_header_1, charset_jazyka[_global_jazyk]);
 #ifdef	EXPORT_CMDLINE_CSS
 	// pre command-line použitie (aj pre batch mód): "./breviar.css" resp. ".\breviar.css"
@@ -171,7 +179,9 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Export_to_file(expt, "%s\">\n", nazov_css_suboru); // názov css súboru
 	Export_to_file(expt, "<title>%s</title>\n", title);
 	Export_to_file(expt, "</head>\n\n");
+	Log("</head>...\n");
 
+	Log("<body>...\n");
 	/* 2011-05-05: pridanie font-family 
 	 * 2011-05-06: font sa nepridáva vždy
 	 */

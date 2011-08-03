@@ -5110,14 +5110,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			if (cit && aj_citanie) {
 				if (typ == EXPORT_DNA_DNES || typ == EXPORT_DNA_JEDEN_DEN || typ == EXPORT_DNA_VIAC_DNI) {
 					if (ma_nazov) strcat(_global_string, "<br>");
-#ifdef IO_ANDROID
 					sprintf(pom, "<a href=\"svpismo://svpismo.riso.ksp.sk/?d=%d&amp;m=%d&amp;y=%d&amp;c=", _local_den.den, _local_den.mesiac, _local_den.rok);
-#else
-					sprintf(pom, "<a target=\"_blank\" "HTML_CLASS_QUIET" href=\"http://dkc.kbs.sk/?in=");
-#endif
 					strcat(_global_string, pom);
 					strcat(_global_string, StringEncode(remove_diacritics(cit->citania)));
-#ifdef IO_ANDROID
 					sprintf(pom, "&amp;zalm=");
 					strcat(_global_string, pom);
 					strcat(_global_string, StringEncode(toUtf(cit->zalm)));
@@ -5125,29 +5120,15 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 					sprintf(pom, "&amp;aleluja=");
 					strcat(_global_string, pom);
 					strcat(_global_string, StringEncode(toUtf(cit->aleluja)));
-#endif
 					sprintf(pom, "\">%s</a>", cit->citania);
 					strcat(_global_string, pom);
 				}
-			}// if (cit && aj_citanie)
-			else{
-#ifndef IO_ANDROID
-				if(cit){
-					Log("cit is not NULL\n");
-				}
-				else if(aj_citanie){
-					Log("aj_citanie is TRUE\n");
-				}
-				else{
-					Log("cit is NULL && aj_citanie is FALSE\n");
-				}
-#endif
 			}// if (cit && aj_citanie)
 #elif defined(BEHAVIOUR_WEB)
 			// 2011-07-26: doplnenÈ pre BEHAVIOUR_WEB in·Ë ako pre ANDROID
 			sprintf(pom, "<br><"HTML_SPAN_ITALIC">");
 			strcat(_global_string, pom);
-			sprintf(pom, "<a target=\"_blank\" href=\"http://lc.kbs.sk/?den%04d%02d%02d=", _local_den.rok, _local_den.mesiac, _local_den.den);
+			sprintf(pom, "<a target=\"_blank\" href=\"http://lc.kbs.sk/?den=%04d%02d%02d", _local_den.rok, _local_den.mesiac, _local_den.den);
 			strcat(_global_string, pom);
 			sprintf(pom, "\">%s</a>", (char *)html_text_option0_citania[_global_jazyk]);
 			strcat(_global_string, pom);
@@ -7114,7 +7095,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("</select>\n");
 	}/* if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_SIZE_CHOOSER) == BIT_OPT_2_FONT_SIZE_CHOOSER) */
 
-	if((_global_system == SYSTEM_RUBY) || (_global_jazyk == JAZYK_SK)){
+	if((_global_system == SYSTEM_RUBY) || (_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 		/* pole (checkbox) WWW_MODL_OPTF2_NAVIGATION */
 		Export("<br>");
 		Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF2_NAVIGATION, NIE);
@@ -10976,7 +10957,7 @@ void _main_batch_mode(
 		if(strcmp(name_batch_file, STR_EMPTY) != 0){
 			batch_file = fopen(name_batch_file, "wt");
 			if(batch_file != NULL){
-				Log("batch mode: File `%s' opened for writing...\n", name_batch_file);
+				Log("batch mode: File `%s' opened for writing... (batch_file)\n", name_batch_file);
 				/* teraz zacina cela sranda :)) ... */
 				/* 2004-03-16: vystupny zoznam sa pripadne zapisuje aj ako HTML do suboru 
 				 * na zapisovanie do batch_html_file nevyuzivame Export() */
@@ -10984,7 +10965,11 @@ void _main_batch_mode(
 					mystrcpy(name_batch_html_file, DEFAULT_HTML_EXPORT, MAX_STR);
 				batch_html_file = fopen(name_batch_html_file, "wt");
 				if(batch_html_file != NULL){
-					Log("batch mode: File `%s' opened for writing...\n", name_batch_html_file);
+					Log("batch mode: File `%s' opened for writing... (batch_html_file)\n", name_batch_html_file);
+					// 2011-08-02: doplnenÈ vynulovanie
+					_global_hlavicka_Export = 0;
+					_global_patka_Export = 0;
+					myhpage_init_globals(); // bol_content_type_text_html = NIE;
 					hlavicka((char *)html_title_batch_mode[_global_jazyk], batch_html_file, -1 /* t.j. bez ˙prav linky */, _global_opt_batch_monthly /* element <body> öpeci·lne */);
 					/* 2010-02-15: doplnenÈ "zr˝chlenÈ voæby" 
 					 * 2010-12-03: opravenÈ, nakoæko na niektor˝ch mobiln˝ch zariadeniach JavaScript funkcie 
@@ -11140,7 +11125,7 @@ void _main_batch_mode(
 									/* 2009-08-03: otvorÌm aj s˙bor pre jednotliv˝ mesiac */
 									batch_month_file = fopen(name_batch_month_file, "wt");
 									if(batch_month_file != NULL){
-										Log("batch mode: File `%s' opened for writing...\n", name_batch_month_file);
+										Log("batch mode: File `%s' opened for writing... (batch_month_file/1)\n", name_batch_month_file);
 										// mÙûeme upraviù n·zov tak, ako ho budeme printovaù do dokumentov -- aby obsahoval STR_PATH_SEPARATOR_HTML namiesto STR_PATH_SEPARATOR
 										// pre pouûitie vo funkcii execute_batch_command()
 										mystrcpy(name_batch_month_file, dir_name, MAX_STR);
@@ -11234,7 +11219,7 @@ void _main_batch_mode(
 							strcat(name_batch_month_file, _global_export_navig_hore /* DEFAULT_MONTH_EXPORT */);
 							batch_month_file = fopen(name_batch_month_file, "wt");
 							if(batch_month_file != NULL){
-								Log("batch mode: File `%s' opened for writing...\n", name_batch_month_file);
+								Log("batch mode: File `%s' opened for writing... (batch_month_file/2)\n", name_batch_month_file);
 								hlavicka((char *)html_title_batch_mode[_global_jazyk], batch_month_file, 1);
 								fprintf(batch_month_file, "\n");
 								fprintf(batch_month_file, "<center><h2>");
@@ -11296,7 +11281,7 @@ void _main_batch_mode(
 									strcat(name_batch_month_file, _global_export_navig_hore /* DEFAULT_MONTH_EXPORT */);
 									batch_month_file = fopen(name_batch_month_file, "wt");
 									if(batch_month_file != NULL){
-										Log("batch mode: File `%s' opened for writing...\n", name_batch_month_file);
+										Log("batch mode: File `%s' opened for writing... (batch_month_file/3)\n", name_batch_month_file);
 										hlavicka((char *)html_title_batch_mode[_global_jazyk], batch_month_file, 1);
 										fprintf(batch_month_file, "\n");
 										fprintf(batch_month_file, "<center><h2>");
@@ -11363,7 +11348,7 @@ void _main_batch_mode(
 										strcat(name_batch_month_file, _global_export_navig_hore /* DEFAULT_MONTH_EXPORT */);
 										batch_month_file = fopen(name_batch_month_file, "wt");
 										if(batch_month_file != NULL){
-											Log("batch mode: File `%s' opened for writing...\n", name_batch_month_file);
+											Log("batch mode: File `%s' opened for writing... (batch_month_file/4)\n", name_batch_month_file);
 											hlavicka((char *)html_title_batch_mode[_global_jazyk], batch_month_file, 1);
 											fprintf(batch_month_file, "\n");
 											fprintf(batch_month_file, "<center><h2>");
@@ -11429,7 +11414,7 @@ void _main_batch_mode(
 									strcat(name_batch_month_file, DEFAULT_MONTH_EXPORT);
 									batch_month_file = fopen(name_batch_month_file, "wt");
 									if(batch_month_file != NULL){
-										Log("batch mode: File `%s' opened for writing...\n", name_batch_month_file);
+										Log("batch mode: File `%s' opened for writing... (batch_month_file/5)\n", name_batch_month_file);
 										hlavicka((char *)html_title_batch_mode[_global_jazyk], batch_month_file, 1);
 										fprintf(batch_month_file, "\n");
 										fprintf(batch_month_file, "<center><h2>");
@@ -11494,7 +11479,7 @@ void _main_batch_mode(
 									strcat(name_batch_month_file, _global_export_navig_hore /* DEFAULT_MONTH_EXPORT */);
 									batch_month_file = fopen(name_batch_month_file, "wt");
 									if(batch_month_file != NULL){
-										Log("batch mode: File `%s' opened for writing...\n", name_batch_month_file);
+										Log("batch mode: File `%s' opened for writing... (batch_month_file/6)\n", name_batch_month_file);
 										hlavicka((char *)html_title_batch_mode[_global_jazyk], batch_month_file, 1);
 										fprintf(batch_month_file, "\n");
 										fprintf(batch_month_file, "<center><h2>");

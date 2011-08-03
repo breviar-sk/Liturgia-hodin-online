@@ -140,7 +140,7 @@ short int Export_to_file(FILE * expt, const char *fmt, ...){
 
 	va_start(argptr, fmt);
 	if(expt != NULL){
-		cnt = vfprintf(exportfile, fmt, argptr);
+		cnt = vfprintf(expt, fmt, argptr);
 		if(isbothExports)
 			cnt = vprintf(fmt, argptr);
 	}

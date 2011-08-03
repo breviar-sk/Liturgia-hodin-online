@@ -844,12 +844,12 @@ const short int format_datumu[POCET_JAZYKOV + 1] = {
 const char *nazov_css[POCET_CSS + 1] =
 {"(css neurèené)", "breviar.css", "breviar-invert.css", "breviar-kbd.css", "ebreviar-cz.css", "breviar-cz-op.css"
 	, "breviar-2003-07-16.css", "breviar-2005-10-13.css", "breviar-2007-08-10.css", "breviar-2008-05-07.css"
-	, "breviar-jm-krize-cz.css"};
+	, "breviar-jm-krize-cz.css", "breviar-kbs.css"};
 
 const char *skratka_css[POCET_CSS + 1] =
 {"__", "def", "invert", "kbd", "cz", "czop"
 	, "2003", "2005", "2007", "2008"
-	, "jmkcz"};
+	, "jmkcz", "kbs"};
 
 /* language charset (encoding); used for HTML heading */
 const char *charset_jazyka[POCET_JAZYKOV + 1] =
@@ -1031,12 +1031,12 @@ const char *html_text_alebo_pre[POCET_JAZYKOV + 1] = {"alebo pre", "anebo pro", 
 const char *html_text_dnesok[POCET_JAZYKOV + 1] = {"dnešok", "dnešní den", "today", "hodie", "", "dnešní den", "a mai nap imaórái"};
 
 /* 2010-02-15: pridané kvôli "zoznam.htm" batch mode */
-const char *html_text_Breviar_dnes[POCET_JAZYKOV + 1] = {"Breviár dnes", "Breviáø dnes", "Breviary today", "Liturgia horarum hodie", "", "Breviáø dnes", "hu_"};
-const char *html_text_Dnesne_modlitby[POCET_JAZYKOV + 1] = {"Dnešné modlitby", "Dnešní modlitby", "Today's prayers", "la_hodie", "", "Dnešní modlitby", "hu_"};
-const char *html_text_Prehlad_mesiaca[POCET_JAZYKOV + 1] = {"Preh¾ad mesiaca", "Pøehled mìsíce", "Current month", "la_", "", "Pøehled mìsíce", "hu_"};
+const char *html_text_Breviar_dnes[POCET_JAZYKOV + 1] = {"Breviár dnes", "Breviáø dnes", "Breviary today", "Liturgia horarum hodie", "", "Breviáø dnes", "A mai nap imaórája"};
+const char *html_text_Dnesne_modlitby[POCET_JAZYKOV + 1] = {"Dnešné modlitby", "Dnešní modlitby", "Today's prayers", "la_hodie", "", "Dnešní modlitby", "A mai nap imái"};
+const char *html_text_Prehlad_mesiaca[POCET_JAZYKOV + 1] = {"Preh¾ad mesiaca", "Pøehled mìsíce", "Current month", "la_", "", "Pøehled mìsíce", "A hónap áttekintése"};
 /* 2011-03-18: pridané do "zoznam.htm" batch mode -- kalendáre a hlavnı nadpis */
-const char *html_text_batch_mode_h1[POCET_JAZYKOV + 1] = {"Liturgia hodín - Predgenerované modlitby", "Liturgie hodin - Pøedgenerovány modlitby", "Liturgy of Hours - Pregenerated prayers", "la_", "", "Liturgie hodin - Pøedgenerovány modlitby", "Az Imaórák Liturgiája - hu_"};
-const char *html_text_Kalendar[POCET_JAZYKOV + 1] = {"Kalendár", "Kalendáø", "Proprietary calendary", "Propria", "", "Kalendáø", "hu_"};
+const char *html_text_batch_mode_h1[POCET_JAZYKOV + 1] = {"Liturgia hodín - Predgenerované modlitby", "Liturgie hodin - Pøedgenerovány modlitby", "Liturgy of Hours - Pregenerated prayers", "la_", "", "Liturgie hodin - Pøedgenerovány modlitby", "Az Imaórák Liturgiája - Elõre generált imák"};
+const char *html_text_Kalendar[POCET_JAZYKOV + 1] = {"Kalendár", "Kalendáø", "Proprietary calendary", "Propria", "", "Kalendáø", "Naptár"};
 
 const char *html_text_Vysvetlivky[POCET_JAZYKOV + 1] = {"Vysvetlivky", "Vysvìtlivky", "Legenda", "Legenda", "", "Vysvìtlivky", "Jelmagyarázat"};
 
@@ -1735,21 +1735,21 @@ const char *html_text_option2_font_family_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_option2_navigation[POCET_JAZYKOV + 1] = 
 {"zobrazi navigáciu v textoch modlitieb",
- "xxx", 
+ "zobrazit navigaci v textech modliteb", 
  "xxx", 
  "",
  "",
- "xxx", 
- "xxx", 
+ "zobrazit navigaci v textech modliteb", 
+ "navigáció", 
 };
 const char *html_text_option2_navigation_explain[POCET_JAZYKOV + 1] = 
 {"Èi sa majú zobrazova hypertextové odkazy na ostatné modlitby daného dòa, príp. predošlı/nasledovnı deò priamo v texte modlitby.", 
- "xxx", 
+ "Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. pøedešlı/následující den pøímo v textu modlitby.", 
  "xxx", 
  "",
  "", 
- "xxx", 
- "xxx", 
+ "Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. pøedešlı/následující den pøímo v textu modlitby.", 
+ "navigáció", 
 };
 
 const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] = 
@@ -1859,11 +1859,11 @@ const char *html_text_inv_slavaotcu[POCET_JAZYKOV + 1] =
 };
 
 /* 2009-08-04, doplnené: pre batch mód */
-const char *html_text_batch_Zoznam1[POCET_JAZYKOV + 1] = {"Zoznam modlitieb", "Seznam modliteb", "List of prayers", "", "", "Seznam modliteb", "hu_"};
-const char *html_text_batch_Zoznam1m[POCET_JAZYKOV + 1] = {"Zoznam modlitieb po mesiacoch", "Seznam modliteb dle mìsícù", "List of prayers by months", "", "", "Seznam modliteb dle mìsícù", "hu_"};
+const char *html_text_batch_Zoznam1[POCET_JAZYKOV + 1] = {"Zoznam modlitieb", "Seznam modliteb", "List of prayers", "", "", "Seznam modliteb", "Az imák jegyzéke"};
+const char *html_text_batch_Zoznam1m[POCET_JAZYKOV + 1] = {"Zoznam modlitieb po mesiacoch", "Seznam modliteb dle mìsícù", "List of prayers by months", "", "", "Seznam modliteb dle mìsícù", "Az imák jegyzéke hónapok szerint"};
 const char *html_text_batch_obdobie1m[POCET_JAZYKOV + 1] = {"("/*obdobie */"od %d. %s %d do %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d -- %d. %s %d)", "(%d. %s %d -- %d. %s %d)", "(%d. %s %d -- %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "hu_(%d. %s %d -- %d. %s %d)"};
 const char *html_text_batch_Zoznam2[POCET_JAZYKOV + 1] = {/* Zoznam modlitieb pre */"%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d"};
-const char *html_text_batch_Back[POCET_JAZYKOV + 1] = {"^ hore", "^ nahoru", "^ up", "", "", "^ nahoru", "^ hu_"};
+const char *html_text_batch_Back[POCET_JAZYKOV + 1] = {"^ hore", "^ nahoru", "^ up", "", "", "^ nahoru", "^ felfelé"};
 const char *html_text_batch_Prev[POCET_JAZYKOV + 1] = {"&lt;&lt;", "&lt;&lt;", "&lt;&lt;", "&lt;&lt;", "&lt;&lt;", "&lt;&lt;", "&lt;&lt;"};
 const char *html_text_batch_Next[POCET_JAZYKOV + 1] = {"&gt;&gt;", "&gt;&gt;", "&gt;&gt;", "&gt;&gt;", "&gt;&gt;", "&gt;&gt;", "&gt;&gt;"};
 
@@ -4360,7 +4360,7 @@ const char *text_CSSR_TITUL_KONGREGACIE[POCET_JAZYKOV + 1] =
 /* --------------- 08 august --------------- */
 
 const char *text_AUG_01[POCET_JAZYKOV + 1] = 
-{"Sv. Alfonza Márie de Liguori, biskupa a uèite¾a Cirkvi",
+{"Sv. Alfonza Márie de’ Liguori, biskupa a uèite¾a Cirkvi",
  "Sv. Alfonsa z Liguori, biskupa a uèitele církve",
  "",
  "",
@@ -4369,7 +4369,7 @@ const char *text_AUG_01[POCET_JAZYKOV + 1] =
  "Liguori Szent Alfonz Mária püspök és egyháztanító",
  };
 const char *text_AUG_01_CSSR[POCET_JAZYKOV + 1] = 
-{"Sv. Alfonza Márie de Liguori, biskupa a uèite¾a Cirkvi, zakladate¾a kongregácie",
+{"Sv. Alfonza Márie de’ Liguori, biskupa a uèite¾a Cirkvi, zakladate¾a kongregácie",
  "",
  "",
  "",
