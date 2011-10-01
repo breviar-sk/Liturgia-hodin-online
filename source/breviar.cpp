@@ -1368,8 +1368,6 @@ void _main_prazdny_formular(void){
 #define DetailLog emptyLog
 #define MAX_ZAKONCENIE 200
 #define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis))
-// #define EXPORT_MYSLIENKA (!vnutri_myslienky || je_myslienka)
-// #define EXPORT_NADPIS (!vnutri_nadpisu || je_nadpis)
 short int antifona_pocet = 0; // 2011-07-08: poËet antifÛn (ant1, ant2, ant3 pre psalmÛdiu a ant. na benediktus/magnifikat kvÙli krÌûikom)
 char rest_krizik[MAX_BUFFER] = STR_EMPTY; // 2011-07-08: pre to, Ëo je za krÌûikom v antifÛne
 void includeFile(short int type, const char *paramname, const char *fname, const char *modlparam){
@@ -1622,6 +1620,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						strcpy(refrest, STR_EMPTY);
 					}// upraviù referencie na hyperlinky -- PARAM_REFERENCIA_END
 
+#if defined(BEHAVIOUR_WEB) && !defined(IO_ANDROID)
 					// 2011-09-01: upraviù odkazy na katechÈzy (zatiaæ napojenÈ na BIT_OPT_0_REFERENCIE a EXPORT_REFERENCIA ako referencie)
 					if(equals(strbuff, PARAM_KATECHEZA_BEGIN) && (vnutri_inkludovaneho == 1)){
 						vnutri_katechezy = ANO;
@@ -1671,6 +1670,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 						strcpy(katrest, STR_EMPTY);
 					}// upraviù odkazy na katechÈzy na hyperlinky -- PARAM_KATECHEZA_END
+#endif
 
 					// 2011-09-06: upraviù odkaz na ûalm 95 (zatiaæ napojenÈ na BEHAVIOUR_WEB)
 					if(equals(strbuff, PARAM_LINK_ZALM95_BEGIN) && (vnutri_inkludovaneho == 1)){
