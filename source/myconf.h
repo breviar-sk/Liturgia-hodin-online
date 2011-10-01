@@ -48,6 +48,7 @@
 extern char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR];
 extern char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR];
 extern char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR];
+extern char cfg_MAIL_ADDRESS_default_HU[MAX_MAIL_STR];
 extern char cfg_INCLUDE_DIR_default [MAX_INCD_STR];
 
 extern short int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];

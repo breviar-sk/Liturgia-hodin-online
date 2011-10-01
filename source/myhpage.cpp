@@ -77,13 +77,14 @@ void myhpage_init_globals() {
 /* exportuje hlavicku HTML dokumentu, kam pojde vysledok query */
 void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Log("_hlavicka() -- zaèiatok...\n");
+
 	_local_modlitba = _global_modlitba;
 	if((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY))
 		_local_modlitba = MODL_VESPERY;
 	if((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM))
 		_local_modlitba = MODL_KOMPLETORIUM;
 
-	/* 2009-08-04: viackrát sa pri exporte modlitby do HTML exportovala hlavièka; pridaná kontrola */
+	// 2009-08-04: viackrát sa pri exporte modlitby do HTML exportovala hlavièka; pridaná kontrola
 	if(_global_hlavicka_Export > 0){
 		Log("return... (_global_hlavicka_Export > 0)\n");
 		return;
@@ -108,31 +109,37 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	 * 2011-05-06: doplnené: najprv sa testuje nastavenie _global_font; následne sa prípadne nastavia defaulty
 	 */
 	if((_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)){
+		Log("(_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)...\n");
 		if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY) == BIT_OPT_2_FONT_FAMILY){
-			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SANS_SERIF, MAX_STR);
+			Log("_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY...\n");
+			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SANS_SERIF, SMALL);
 		}
 		else{
-			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SERIF, MAX_STR);
+			Log("NOT _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY...\n");
+			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SERIF, SMALL);
 		}
 	}/* (_global_font == FONT_UNDEF)  || (_global_font == FONT_CHECKBOX) */
 	else if(_global_font == FONT_CSS){
-		mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_INHERIT, MAX_STR);
+		Log("_global_font == FONT_CSS...\n");
+		mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_INHERIT, SMALL);
 	}// (_global_font == FONT_CSS)
 	else{
-		mystrcpy(_global_css_font_family, nazov_fontu[_global_font], MAX_STR);
+		Log("_global_font != FONT_CSS...\n");
+		mystrcpy(_global_css_font_family, nazov_fontu[_global_font], SMALL);
 	}// else
 	Log("_global_css_font_family == %s...\n", _global_css_font_family);
+
 	/*
 	 * 2011-05-13: doplnené: nastavenie font-size
 	 */
 	if(_global_font_size == FONT_SIZE_UNDEF){
-		mystrcpy(_global_css_font_size, STR_EMPTY, MAX_STR);
+		mystrcpy(_global_css_font_size, STR_EMPTY, SMALL);
 	}/* (_global_font_size == FONT_SIZE_UNDEF) */
 	else if(_global_font_size == FONT_SIZE_CSS){
-		mystrcpy(_global_css_font_size, DEFAULT_FONT_SIZE_INHERIT, MAX_STR);
+		mystrcpy(_global_css_font_size, DEFAULT_FONT_SIZE_INHERIT, SMALL);
 	}// (_global_font_size == FONT_SIZE_CSS)
 	else{
-		mystrcpy(_global_css_font_size, nazov_font_size_css[_global_font_size], MAX_STR);
+		mystrcpy(_global_css_font_size, nazov_font_size_css[_global_font_size], SMALL);
 	}// else
 	Log("_global_css_font_size == %s...\n", _global_css_font_size);
 
@@ -255,7 +262,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}/* << predošlá | ^ hore | nasledovná >> */
 	Log("_hlavicka() -- koniec.\n");
 	return;
-}/* _hlavicka() */
+}// _hlavicka()
 
 void hlavicka(char *title, short int level, short int spec){
 	_hlavicka(title, NULL, level, spec);
@@ -281,6 +288,7 @@ const char *html_mail_label_short = "J. V.";
 
 /* exportuje patku HTML dokumentu (vysledok query) */
 void _patka(FILE * expt){
+	char mail_addr[MAX_MAIL_STR] = "";
 	Log("_patka() -- zaèiatok...\n");
 	_local_modlitba = _global_modlitba;
 	if((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY))
@@ -408,14 +416,23 @@ void _patka(FILE * expt){
 
 	/* pridana stranka cfg_HTTP_ADDRESS_default, 12/04/2000A.D. */
 	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" target=\"_top\">%s</a>\n", cfg_HTTP_ADDRESS_default, cfg_HTTP_DISPLAY_ADDRESS_default);
-	Export_to_file(expt, "&#169; %d%s <"HTML_LINK_NORMAL" href=\"mailto:%s\">%s</a>\n", baserok, rok, cfg_MAIL_ADDRESS_default, html_mail_label);
+	if(_global_jazyk == JAZYK_HU){
+		Log("cfg_MAIL_ADDRESS_default_HU == %s\n", cfg_MAIL_ADDRESS_default_HU);
+		mystrcpy(mail_addr, cfg_MAIL_ADDRESS_default_HU, MAX_MAIL_STR);
+	}
+	else{
+		Log("cfg_MAIL_ADDRESS_default == %s\n", cfg_MAIL_ADDRESS_default);
+		mystrcpy(mail_addr, cfg_MAIL_ADDRESS_default, MAX_MAIL_STR);
+	}
+	Log("mail_addr == %s\n", mail_addr);
+	Export_to_file(expt, "&#169; %d%s <"HTML_LINK_NORMAL" href=\"mailto:%s\">%s</a>\n", baserok, rok, mail_addr, html_mail_label);
 
 	Export_to_file(expt, "</p>\n"); /* pridane kvoli tomu, ze cele to bude <p class="patka">, 2003-07-02 */
 
 	Export_to_file(expt, "</body>\n</html>\n");
 	Log("_patka() -- koniec.\n");
 	return;
-}/* _patka() */
+}// _patka()
 
 void patka(void){
 	_patka(NULL);

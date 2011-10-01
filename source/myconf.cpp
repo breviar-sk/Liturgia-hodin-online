@@ -41,9 +41,13 @@
 #include "mystring.h"
 #include "liturgia.h"
 
+#define MAIL_ADDRESS_DEFAULT "videky@breviar.sk"
+#define MAIL_ADDRESS_DEFAULT_HU "videky-hu@breviar.sk"
+
 char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR] = "http://www.breviar.sk/";
 char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "http://www.breviar.sk/";
-char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = "videky@breviar.sk";
+char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = STR_EMPTY;
+char cfg_MAIL_ADDRESS_default_HU[MAX_MAIL_STR] = STR_EMPTY;
 char cfg_INCLUDE_DIR_default[MAX_INCD_STR] = "../include/";
 
 short int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
@@ -203,6 +207,13 @@ void readConfig(void)
 	fclose(subor);
 
 	Log("============================ súbor `%s' ============================\n", CONFIG_FILE);
+	if(equalsi(cfg_MAIL_ADDRESS_default, STR_EMPTY)){
+		mystrcpy(cfg_MAIL_ADDRESS_default, MAIL_ADDRESS_DEFAULT, MAX_MAIL_STR);
+	}
+	Log("cfg_MAIL_ADDRESS_default == %s\n", cfg_MAIL_ADDRESS_default);
+	mystrcpy(cfg_MAIL_ADDRESS_default_HU, MAIL_ADDRESS_DEFAULT_HU, MAX_MAIL_STR);
+	Log("cfg_MAIL_ADDRESS_default_HU == %s\n", cfg_MAIL_ADDRESS_default_HU);
+
 	Log("readConfig() -- koniec.\n");
 
 	return;

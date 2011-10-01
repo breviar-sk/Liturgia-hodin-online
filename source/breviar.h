@@ -54,6 +54,9 @@ extern void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes = 
 
 extern short int _global_pocet_navigacia; /* 2011-07-03: poèet prejdených/spracovaných parametrov PARAM_NAVIGACIA */
 
+extern short int index_pre_mesiac_otvoreny;
+// extern short int export_monthly_druh;
+
 /* globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
  * pouziva ju void nove_rozbor_dna() funkcia */
 

@@ -178,7 +178,7 @@
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
 /* debugovanie linux/command-line -- vsetko sa loguje do suboru */
-#elif defined(MODEL_DEBUG_Windows_commandline)
+#elif defined(MODEL_DEBUG_linux_commandline)
 	#define BEHAVIOUR_CMDLINE
 	#define OS_linux
 	#define LOGGING
@@ -187,7 +187,6 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
-
 #else
 	#error Unsupported system model (see mysystem.h) - Nepodporovaný systémový model (pozri súbor mysystem.h)
 #endif
@@ -239,13 +238,14 @@
 
 /* 2007-05-29: upravené; pre Ruby on Windows tiež separátor ako pod linuxom
  * 2011-05-16: pri debugovaní Ruby on Windows treba backslashe
+ * 2011-08-12: pri debugovaní Ruby on Windows treba backslashe -> naèo? zapoznámkované!
  */
 #if defined(OS_linux)
 	#define		PATH_SEPARATOR	PATH_SEPARATOR_linux
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_linux
-#elif defined(OS_Windows_Ruby) && defined(DEBUG)
-	#define		PATH_SEPARATOR	PATH_SEPARATOR_Windows
-	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_Windows
+//#elif defined(OS_Windows_Ruby) && defined(DEBUG)
+//	#define		PATH_SEPARATOR	PATH_SEPARATOR_Windows
+//	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_Windows
 #elif defined(OS_Windows_Ruby)
 	#define		PATH_SEPARATOR	PATH_SEPARATOR_linux
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_linux

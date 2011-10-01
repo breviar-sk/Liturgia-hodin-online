@@ -522,11 +522,11 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 #endif
 
 // doplnková psalmódia pre modlitbu cez deò
-#define MODL_OPTF1_MCD_DPS 76
+#define MODL_OPTF1_MCD_ZALMY_INE 76
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF1_MCD_DPS "MODL_OPTF1_MCD_DPS"
+	#define STR_MODL_OPTF1_MCD_ZALMY_INE "MODL_OPTF1_MCD_ZALMY_INE"
 #else
-	#define STR_MODL_OPTF1_MCD_DPS "of1dps"
+	#define STR_MODL_OPTF1_MCD_ZALMY_INE "of1dps"
 #endif
 
 // vigília v posvätnom èítaní
@@ -554,11 +554,19 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 #endif
 
 // dlhšie zakonèenie responzória
-#define MODL_OPTF1_PLNE_RESP 80
+#define MODL_OPTF1_PLNE_RESP 90
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF1_PLNE_RESP "MODL_OPTF1_PLNE_RESP"
 #else
 	#define STR_MODL_OPTF1_PLNE_RESP "of1pr"
+#endif
+
+// žalm 95 pre ranné chvály/vešpery namiesto ž 24, 67, 100
+#define MODL_OPTF1_ZALM95 91
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF1_ZALM95 "MODL_OPTF1_ZALM95"
+#else
+	#define STR_MODL_OPTF1_ZALM95 "of1z95"
 #endif
 
 /* pre force option 2 jednotlivé bit-komponenty (parciálne vo¾by) */
@@ -705,6 +713,8 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 #define HTML_SPAN_EXPLAIN   "span class=\"explain\""
 #define HTML_SPAN_PARAMETER "span class=\"parameter\""
 #define HTML_SPAN_VALUE     "span class=\"value\""
+#define HTML_SPAN_SMALLCAPS "span class=\"smallcaps\""
+#define HTML_SPAN_XS_CAPS   "span class=\"xsmallcaps\""
 
 #define HTML_SPAN_TOOLTIP   "span title=\"%s\"" // obsahuje %s
 #define HTML_SPAN_BOLD_TOOLTIP   "span class=\"bold\" title=\"%s\"" // obsahuje %s

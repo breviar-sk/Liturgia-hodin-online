@@ -477,51 +477,69 @@ extern const char *TEMPLAT[POCET_MODLITIEB /* + 1 */];
 #define PARAM_TEDEUM_END                    "TEDEUM_END"
 #define PARAM_JE_TEDEUM_BEGIN               "JE_TEDEUM_BEGIN"
 #define PARAM_JE_TEDEUM_END                 "JE_TEDEUM_END"
-/* 2007-10-02: doplnenÈ skrytie rovnak˝ch antifÛn pre mcd */
+// 2007-10-02: doplnenÈ skrytie rovnak˝ch antifÛn pre mcd
 #define PARAM_SKRY_ANTIFONU_BEGIN           "SKRY_ANTIFONU_BEGIN"
 #define PARAM_SKRY_ANTIFONU_END             "SKRY_ANTIFONU_END"
-/* 2009-04-08, doplnenÈ: zakonËenie modlitby trojakÈ, kr·tke resp. dlhÈ */
+// 2009-04-08, doplnenÈ: zakonËenie modlitby trojakÈ, kr·tke resp. dlhÈ
 #define PARAM_ZAKONCENIE_SKRZE              "ZAKONCENIE_SKRZE"
 #define PARAM_ZAKONCENIE_LEBO_TY            "ZAKONCENIE_LEBO_TY"
 #define PARAM_ZAKONCENIE_LEBO_ON            "ZAKONCENIE_LEBO_ON"
-/* 2009-12-14, doplnenÈ: zakonËenie modlitby trojakÈ, kr·tke resp. dlhÈ s mal˝m pÌsmenkom na zaËiatku */
+// 2009-12-14, doplnenÈ: zakonËenie modlitby trojakÈ, kr·tke resp. dlhÈ s mal˝m pÌsmenkom na zaËiatku
 #define PARAM_ZAKONCENIE_SKRZE_MALE         "ZAKONCENIE_SKRZE_MALE"
 #define PARAM_ZAKONCENIE_LEBO_TY_MALE       "ZAKONCENIE_LEBO_TY_MALE"
 #define PARAM_ZAKONCENIE_LEBO_ON_MALE       "ZAKONCENIE_LEBO_ON_MALE"
-/* 2010-06-07, doplnenÈ: eöte jedno zakonËenie modlitby pre slovenËinu, kr·tke resp. dlhÈ (POST1_MODLITBA5NE) */
+// 2010-06-07, doplnenÈ: eöte jedno zakonËenie modlitby pre slovenËinu, kr·tke resp. dlhÈ (POST1_MODLITBA5NE)
 #define PARAM_ZAKONCENIE_ON_JE              "ZAKONCENIE_ON_JE"
-/* 2010-01-14, doplnenÈ: eöte jedno zakonËenie modlitby pre slovenËinu, kr·tke resp. dlhÈ */
+// 2010-01-14, doplnenÈ: eöte jedno zakonËenie modlitby pre slovenËinu, kr·tke resp. dlhÈ
 #define PARAM_ZAKONCENIE_KTORY_JE           "ZAKONCENIE_KTORY_JE"
-/* 2010-05-21: doplnenÈ zobrazenie antifÛny a modlitby pre spomienku sv‰tca v pÙstnom obdobÌ */
+// 2010-05-21: doplnenÈ zobrazenie antifÛny a modlitby pre spomienku sv‰tca v pÙstnom obdobÌ
 #define PARAM_POST_SPOMIENKA_BEGIN          "POST_SPOMIENKA_BEGIN"
 #define PARAM_POST_SPOMIENKA_END            "POST_SPOMIENKA_END"
-/* 2011-01-12: doplnenÈ zobrazenie/skrytie alternatÌvnej antifÛny ûalmu/chv·lospevu ("myölienka k ûalmu" podæa bodu 111 VSLH) */
-#define PARAM_MYSLIENKA_K_ZALMU             "MYSLIENKA_K_ZALMU"
+// 2011-01-12: doplnenÈ zobrazenie/skrytie myölienky k ûalmu -- pre cezroËnÈ obdobie alternatÌvnej antifÛny ûalmu/chv·lospevu ("myölienka k ûalmu" podæa bodu 111 a 114 VSLH)
+#define PARAM_PSALMODIA_MYSLIENKA           "PSALMODIA_MYSLIENKA" // 2011-08-31: zmenenÈ; pÙvodne bolo: PARAM_MYSLIENKA_K_ZALMU "MYSLIENKA_K_ZALMU"
+// 2011-08-31: doplnenÈ zobrazenie/skrytie nadpisu k ûalmu/chv·lospevu ("nadpis k ûalmu" podæa bodu 111 VSLH)
+#define PARAM_PSALMODIA_NADPIS              "PSALMODIA_NADPIS"
 
 #define PARAM_RUBRIKA_BEGIN                 "RUBRIKA_BEGIN"
 #define PARAM_RUBRIKA_END                   "RUBRIKA_END"
 
-/* 2011-05-03: doplnenÈ kvÙli posv‰tnÈmu ËÌtaniu na veækonoËn˙ nedeæu */
+// 2011-05-03: doplnenÈ kvÙli posv‰tnÈmu ËÌtaniu na veækonoËn˙ nedeæu
 #define PARAM_VN_VYNECHAJ_BEGIN             "VELK_NEDELA_VYNECHAJ_BEGIN"
 #define PARAM_VN_VYNECHAJ_END               "VELK_NEDELA_VYNECHAJ_END"
 
-/* 2011-07-07: doplnenÈ kvÙli zobrazovaniu/skr˝vaniu dlhöÌch z·verov responzÛriÌ v posv‰tnom ËÌtanÌ */
+// 2011-07-07: doplnenÈ kvÙli zobrazovaniu/skr˝vaniu dlhöÌch z·verov responzÛriÌ v posv‰tnom ËÌtanÌ
 #define PARAM_PLNE_RESP                     "PLNE_RESP"
 #define PARAM_PLNE_RESP_BODKA               "PLNE_RESP_BODKA"
 
-/* 2011-04-04: doplnenÈ zobrazenie/skrytie ËÌslovania veröov v ûalmoch, chv·lospevoch a biblick˝ch ËÌtaniach */
+// 2011-04-04: doplnenÈ zobrazenie/skrytie ËÌslovania veröov v ûalmoch, chv·lospevoch a biblick˝ch ËÌtaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
 #define PARAM_CISLO_VERSA_END				"/v"
 
-/* 2011-04-05: doplnenÈ dplnenie referencie podæa biblickÈho odkazu na str·nky dkc.kbs.sk (Biblia -- Mat˙ö Brilla) */
+// 2011-04-05: doplnenie referencie podæa biblickÈho odkazu na str·nky dkc.kbs.sk (Biblia -- Mat˙ö Brilla)
 #define PARAM_REFERENCIA_BEGIN				"r"
 #define PARAM_REFERENCIA_END				"/r"
 
-/* 2011-07-08: doplnenÈ zobrazovanie/nezobrazenie krÌûika (antifÛna totoûn· s veröom ûalmu/chv·lospevu) */
+// 2011-09-01: doplnenie odkazu na katechÈzy (pÙvodne v HTML zdroj·koch bola subscript hviezdiËka za nadpisom)
+#define PARAM_KATECHEZA_BEGIN				"k"
+#define PARAM_KATECHEZA_END					"/k"
+
+// 2011-09-06: doplnenie odkazu na ûalm 95 (pÙvodne v HTML zdroj·koch pre ûalmy 24, 67, 100 bol natvrdo <a href> odkaz)
+#define PARAM_LINK_ZALM95_BEGIN				"z95"
+#define PARAM_LINK_ZALM95_END				"/z95"
+
+// 2011-07-08: doplnenÈ zobrazovanie/nezobrazenie krÌûika (antifÛna totoûn· s veröom ûalmu/chv·lospevu)
 #define PARAM_KRIZIK                        "KRIZIK"
 
-/* 2011-07-14: doplnenÈ zobrazovanie/nezobrazenie zalomen˝ch textov tak, ako je v tlaËenom vydanÌ LH (dlhÈ riadky-veröe ûalmov/chv·lospevov a pod.) */
+// 2011-07-14: doplnenÈ zobrazovanie/nezobrazenie zalomen˝ch textov tak, ako je v tlaËenom vydanÌ LH (dlhÈ riadky-veröe ûalmov/chv·lospevov a pod.)
 #define PARAM_ZALOMENIE                     "ZALOMENIE"
+
+// 2011-08-15: force pre jednotlivÈ Ëasti modlitby, funkcie _set_spolocna_cast()...
+#define FORCE_BRAT_ANTIFONY      1
+#define FORCE_BRAT_ZALMY         2
+#define FORCE_BRAT_KCIT_1CIT     4 // kr·tke ËÌtanie pre rch+v; 1. ËÌtanie pre posv‰tnÈ ËÌtanie
+#define FORCE_BRAT_KRESP_PROSBY  8
+#define FORCE_BRAT_2CITANIE     16
+#define FORCE_BRAT_ANTIFONY_MCD 32
 
 /* stringy parametrov vstupu pre MODL_OPT..., ktore generovanie modlitby
  * ovplyvnuju */
@@ -883,6 +901,10 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_KAL_KECS_FOEGYH          63
 #define LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH    64
 #define LOKAL_SLAV_KAL_KECS_FELSZ           65
+#define LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ   66
+#define LOKAL_SLAV_VACI_PATRON              67
+#define LOKAL_SLAV_SZEGED_CSAN_PATRON2      68
+#define LOKAL_SLAV_VESZPREM_FOEGYH          69
 
 /* 2010-08-03: pridan˝ kalend·r */
 #define KALENDAR_NEURCENY                   0
@@ -1212,7 +1234,7 @@ extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_REFERENCIE                2
 #define BIT_OPT_0_CITANIA                   4
 
-#define POCET_OPT_1_CASTI_MODLITBY         10 /* jednotlivÈ komponenty option 1 -- bity pre force option 1 */
+#define POCET_OPT_1_CASTI_MODLITBY         11 /* jednotlivÈ komponenty option 1 -- bity pre force option 1 */
 extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 /* 2011-04-11: ˙prava v˝znamu (a interpret·cie) option 1 == OPT_1_CASTI_MODLITBY (zobraziù/nezobraziù najm‰ pevnÈ/nemennÈ s˙Ëasti modlitieb, ale aj inÈ, Ëo s˙/nie s˙ v LH) */
 #define BIT_OPT_1_TEDEUM                    1
@@ -1220,11 +1242,12 @@ extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_CHVALOSPEVY               4
 #define BIT_OPT_1_SLAVA_OTCU                8
 #define BIT_OPT_1_OTCENAS                  16
-#define BIT_OPT_1_MCD_DOPLNKOVA_PSALMODIA  32
+#define BIT_OPT_1_MCD_ZALMY_INE            32 // pouûÌva sa pre modlitbu cez deÚ -- alternatÌvna, doplnkov· psalmÛdia
 #define BIT_OPT_1_PC_VIGILIA               64
 #define BIT_OPT_1_SKRY_POPIS              128
 #define BIT_OPT_1_ZALMY_ZO_SVIATKU        256
 #define BIT_OPT_1_PLNE_RESP               512
+#define BIT_OPT_1_ZALM95                 1024 // pouûÌva sa pre rannÈ chv·ly a veöpery -- Ëi vziaù namiesto ûalmov 24, 67, 100 ûalm 95
 
 #define POCET_OPT_2_HTML_EXPORT             7 /* jednotlivÈ komponenty option 2 -- bity pre force option 2 */
 extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
@@ -1389,8 +1412,8 @@ void _init_dm(_struct_dm a);
 	a.prik = NEPRIKAZANY_SVIATOK;      /* ci je to prikazany sviatok alebo nie: PRIKAZANY_SVIATOK resp. NEPRIKAZANY_SVIATOK */\
 	a.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA); /* MODL_SPOL_CAST_NEURCENA; spolocna cast -- zakodovane data pre svatych o tom, z akej spolocnej casti sa ma modlit */\
 	mystrcpy(a.meno, STR_UNDEF, MENO_SVIATKU); /* nazov prip. sviatku */\
-	a.farba = LIT_FARBA_NEURCENA; /* 2006-08-19: pridanÈ */\
-	a.kalendar = KALENDAR_NEURCENY; /* 2010-08-03: pridanÈ */\
+	a.farba = LIT_FARBA_NEURCENA;\
+	a.kalendar = KALENDAR_NEURCENY;\
 }
 
 /* inicializacne definy pridane 2003-08-13 */
