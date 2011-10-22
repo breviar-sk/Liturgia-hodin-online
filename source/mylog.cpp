@@ -173,7 +173,7 @@ void Logint(short int c){};
 
 #endif /* LOGGING */
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* empty log - nerobi nic, ale ma vstup (...) */
 short int NoLog(const char *fmt, ...){
 	return(fmt == 0); /* aby nehlasilo param `fmt' not used */

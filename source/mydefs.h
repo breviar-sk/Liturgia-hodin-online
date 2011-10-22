@@ -546,11 +546,11 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 #endif
 
 // ûalmy zo sviatku
-#define MODL_OPTF1_ZALMY_SV 79
+#define MODL_OPTF1_SPOMIENKA_SPOL_CAST 79
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF1_ZALMY_SV "MODL_OPTF1_ZALMY_SV"
+	#define STR_MODL_OPTF1_SPOMIENKA_SPOL_CAST "MODL_OPTF1_SPOMIENKA_SPOL_CAST"
 #else
-	#define STR_MODL_OPTF1_ZALMY_SV "of1zsv"
+	#define STR_MODL_OPTF1_SPOMIENKA_SPOL_CAST "of1spspc"
 #endif
 
 // dlhöie zakonËenie responzÛria
@@ -567,6 +567,14 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 	#define STR_MODL_OPTF1_ZALM95 "MODL_OPTF1_ZALM95"
 #else
 	#define STR_MODL_OPTF1_ZALM95 "of1z95"
+#endif
+
+// zvolanie v prosb·ch zobraziù (opakovaù) po kaûdej prosbe
+#define MODL_OPTF1_PROSBY_ZVOLANIE 92
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF1_PROSBY_ZVOLANIE "MODL_OPTF1_PROSBY_ZVOLANIE"
+#else
+	#define STR_MODL_OPTF1_PROSBY_ZVOLANIE "of1prz"
 #endif
 
 /* pre force option 2 jednotlivÈ bit-komponenty (parci·lne voæby) */
@@ -627,6 +635,14 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 	#define STR_MODL_OPTF2_TEXT_WRAP "of2tw"
 #endif
 
+// zobraziù buttony pre modlitby v ˙spornej podobe (tabuæka) kvÙli mobiln˝m zariadeniam
+#define MODL_OPTF2_BUTTONY_USPORNE 88
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF2_BUTTONY_USPORNE "MODL_OPTF2_BUTTONY_USPORNE"
+#else
+	#define STR_MODL_OPTF2_BUTTONY_USPORNE "of2btnu"
+#endif
+
 /* 2008-08-08: PridanÈ kvÙli rÙznym css */
 #define CSS 40
 #ifdef LONG_PARAM_NAMES
@@ -678,14 +694,14 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 
 #define ALERT	Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_MAIL_ADDRESS_default)
 
-/* HTML stringy - casti stringov sustredene na tomto mieste; pridane 2003-07-02; rozöÌrenÈ 2011-01-27 */
+// HTML stringy - casti stringov sustredene na tomto mieste; pridane 2003-07-02; rozöÌrenÈ 2011-01-27
 #define HTML_FORM_INPUT_SUBMIT   "input type=\"submit\" class=\"button\""
 #define HTML_FORM_INPUT_RESET    "input type=\"reset\" class=\"reset\""
 #define HTML_FORM_INPUT_RADIO    "input type=\"radio\" class=\"radio\""
 #define HTML_FORM_INPUT_TEXT     "input type=\"text\" class=\"text\""
 #define HTML_FORM_INPUT_TEXT_ROK "input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
 #define HTML_FORM_INPUT_CHECKBOX "input type=\"checkbox\" class=\"checkbox\""
-/* 2011-01-27: pridanÈ buttony (0. level: pre predoöl˝/nasledovn˝; 1. level: button "dnes"; 2. level: pouûitÈ pre menej dÙleûitÈ buttony) */
+// 2011-01-27: pridanÈ buttony (0. level: pre predoöl˝/nasledovn˝; 1. level: button "dnes"; 2. level: pouûitÈ pre menej dÙleûitÈ buttony)
 #define HTML_FORM_INPUT_SUBMIT0  "input type=\"submit\" class=\"button0\""
 #define HTML_FORM_INPUT_RESET0   "input type=\"reset\" class=\"reset0\""
 #define HTML_FORM_INPUT_SUBMIT1  "input type=\"submit\" class=\"button1\""
@@ -726,6 +742,7 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 #define HTML_CLASS_BOLD_IT  "class=\"boldit\""
 #define HTML_CLASS_LEVEL1   "class=\"level1\""
 #define HTML_CLASS_TT       "class=\"tt\""
+#define HTML_CLASS_BUTTON   "class=\"button\""
 
 /* pridane 2003-07-09, zmenene v cestach pre skript */
 #define HTML_AMPERSAND          "&amp;"
@@ -751,7 +768,7 @@ extern short int query_type; /* premenna obsahujuca PRM_... */
 
 /* 2007-06-01: niektorÈ definy presunutÈ z liturgia.h */
 
-/* option 2 */
+// option 2
 #define MODL_ZALMY_ZO_DNA 0
 #define MODL_ZALMY_ZO_SV  1
 

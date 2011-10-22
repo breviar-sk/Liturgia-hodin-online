@@ -64,9 +64,9 @@ void printConfigOptions(void){
 		Log("=== Jazyk `%s' (%s): Default hodnoty option parametrov (konfiguraèný súbor %s) ===\n", skratka_jazyka[j], nazov_jazyka[j], CONFIG_FILE);
 		for(o = 0; o < POCET_GLOBAL_OPT; o++){
 			Log("cfg_option_default[%d][%d] == `%d'\n", o, j, cfg_option_default[o][j]);
-		}/* for o */
-	}/* for j */
-}/* printConfigOptions() */
+		}// for o
+	}// for j
+}// printConfigOptions()
 
 void readConfig(void)
 {
@@ -84,8 +84,8 @@ void readConfig(void)
 	for(o = 0; o < POCET_GLOBAL_OPT; o++){
 		for(j = 0; j <= POCET_JAZYKOV; j++){
 			cfg_option_default[o][j] = GLOBAL_OPTION_NULL;
-		}/* for j */
-	}/* for o */
+		}// for j
+	}// for o
 
 	if(! (subor = fopen(CONFIG_FILE, "r")) ){
 		Log("Nemôžem otvori súbor `%s'.\n", CONFIG_FILE);
@@ -193,8 +193,8 @@ void readConfig(void)
 							}
 						}/* if(!strcmp(option, nazov_option)) */
 					}
-				}/* for j */
-			}/* for o */
+				}// for j
+			}// for o
 		}
 		for(; (znak != EOF) && (znak != '\n'); znak = fgetc(subor) );
 
@@ -217,24 +217,24 @@ void readConfig(void)
 	Log("readConfig() -- koniec.\n");
 
 	return;
-}/* readConfig() */
+}// readConfig()
 
-/* 2007-06-01: kedze pribuda mnoho konfiguracnych parametrov, je uzitocne spravit funkciu na ich vypis */
+// 2007-06-01: kedze pribuda mnoho konfiguracnych parametrov, je uzitocne spravit funkciu na ich vypis
 void printConfig(void){
 	Log("\n");
 	Log("=== BEGIN:configuration (%s) ===\n", CONFIG_FILE);
 
-	/* 2007-06-01: niekolko prvych parametrov: prevzate z breviar.cpp::main() */
+	// 2007-06-01: niekolko prvych parametrov: prevzate z breviar.cpp::main()
 	Log("cfg_HTTP_ADDRESS_default == `%s'\n", cfg_HTTP_ADDRESS_default);
-	Log("cfg_HTTP_DISPLAY_ADDRESS_default == `%s'\n", cfg_HTTP_DISPLAY_ADDRESS_default); /* 2007-05-24, JUV: pridane */
+	Log("cfg_HTTP_DISPLAY_ADDRESS_default == `%s'\n", cfg_HTTP_DISPLAY_ADDRESS_default); // 2007-05-24, JUV: pridane
 	Log("cfg_MAIL_ADDRESS_default == `%s'\n", cfg_MAIL_ADDRESS_default);
-	/* 2004-03-17 pridane cfg_INCLUDE_DIR_default */
+	// 2004-03-17 pridane cfg_INCLUDE_DIR_default
 	Log("cfg_INCLUDE_DIR_default == `%s'\n", cfg_INCLUDE_DIR_default);
-	/* 2007-06-01: nasleduju nové parametre */
+	// 2007-06-01: nasleduju nové parametre
 	printConfigOptions();
 	Log("=== END:configuration (%s) ===\n", CONFIG_FILE);
 	Log("\n");
-}/* printConfig() */
+}// printConfig()
 
 #endif /* __MYCONF_CPP_ */
 

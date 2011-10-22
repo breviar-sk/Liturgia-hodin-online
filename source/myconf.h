@@ -31,7 +31,9 @@
 
 #ifdef OS_Windows_Ruby
 #define CONFIG_FILE "breviar-local.cfg"
-#else
+#elif defined(BEHAVIOUR_CMDLINE)
+#define CONFIG_FILE "breviar-cmdline.cfg"
+#else // defined(BEHAVIOUR_WEB)
 #define CONFIG_FILE "breviar-web.cfg"
 #endif
 

@@ -153,7 +153,7 @@ char *toUtf(const char *in) {
       case '\xdc': strcpy(i, "\xc3\x9c"); break;
       case '\xd6': strcpy(i, "\xc3\x96"); break;
       default: i[0] = *s; i[1] = 0;
-    }/* switch */
+    }// switch
   }
   return out;
 }

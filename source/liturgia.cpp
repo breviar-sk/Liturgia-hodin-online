@@ -42,7 +42,7 @@
 #include <ctype.h>
 
 /* globalne premenne prehodene do liturgia.h, 17/02/2000A.D. */
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 short int _allocate_global_var(void){
 	short int ret = SUCCESS;
 	Log("Allocating memory...\n");
@@ -301,7 +301,7 @@ short int _deallocate_global_var(void){
 	return SUCCESS;
 }/* _deallocate_global_var() */
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* vezme retazec a porovna s nazvami mesiaca; ak najde, vrati, inak 0 */
 short int cislo_mesiaca(char *mesiac){
 	short int ret = 0;
@@ -313,7 +313,7 @@ short int cislo_mesiaca(char *mesiac){
 	return ret;
 }/* cislo_mesiaca() */
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* urobi velke pismena 
  * 2011-01-31: nesmie pritom v HTML stringoch upravova kódové mená, napr. &mdash; na ve¾ké písmená
  */
@@ -375,7 +375,7 @@ char *caps_BIG(const char *input){
 	return (_global_pom_str);
 }/* caps_BIG() */
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* odstráni diakritiku
  * 2011-04-05: nesmie pritom v HTML stringoch upravova kódové mená, napr. &mdash;
  * 2011-04-06: zmení aj dlhé pomlèky na obyèajný spojovník (znak mínus)
@@ -451,7 +451,7 @@ char *remove_diacritics(const char *input){
 				case 'Õ': c = 'O'; break;
 				case 'Ü': c = 'U'; break;
 				case 'Ö': c = 'O'; break;
-			}/* switch */
+			}// switch
 		}/* ok == TRUE */
 		if(_global_pom_str[i] != c)
 			_global_pom_str[i] = c;
@@ -460,7 +460,7 @@ char *remove_diacritics(const char *input){
 	return (_global_pom_str);
 }/* remove_diacritics() */
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* konvertuje underscore na nezlomite¾né medzery
  * 2011-05-02: vytvorené
  * 2011-05-16: opravené (char sa musí najprv konvertova na char * a až potom appendova strcat)
@@ -558,7 +558,7 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 				case OPT_2_HTML_EXPORT:		strcat(local_str, STR_MODL_OPT2); break;
 				case OPT_3_SPOLOCNA_CAST:	strcat(local_str, STR_MODL_OPT3); break;
 				case OPT_4_OFFLINE_EXPORT:	strcat(local_str, STR_MODL_OPT4); break;
-			}/* switch(i) */
+			}// switch(i)
 			sprintf(pom3, HTML_AMPERSAND"%s=%d", local_str, _global_opt[i]);
 			strcat(pom2, pom3);
 			Log("\tPrilepil som aj opt%d: `%s'\n", i, pom3);
@@ -673,21 +673,21 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			sprintf(pom, "?%s=%s"HTML_AMPERSAND, STR_QUERY_TYPE, STR_PRM_DATUM);
 			strcat(_global_link, pom);
 
-			/* den */
+			// deò
 			if(den == VSETKY_DNI)
 				sprintf(pom, "%s=%s"HTML_AMPERSAND, STR_DEN, STR_VSETKY_DNI);
 			else
 				sprintf(pom, "%s=%d"HTML_AMPERSAND, STR_DEN, den);
 			strcat(_global_link, pom);
 
-			/* mesiac */
+			// mesiac
 			if(mesiac == VSETKY_MESIACE)
 				sprintf(pom, "%s=%s"HTML_AMPERSAND, STR_MESIAC, STR_VSETKY_MESIACE);
 			else
 				sprintf(pom, "%s=%d"HTML_AMPERSAND, STR_MESIAC, mesiac);
 			strcat(_global_link, pom);
 
-			/* rok */
+			// rok
 			sprintf(pom, "%s=%d", STR_ROK, rok);
 			strcat(_global_link, pom);
 
@@ -706,7 +706,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			strcat(_global_link, ".htm");
 		}/* linka nie */
 
-		prilep_request_options(_global_link, pom2, ANO); /* prilep_request_options(pom2, pom3, prvy_ampersand) */
+		prilep_request_options(_global_link, pom2, ANO); // prilep_request_options(pom2, pom3, prvy_ampersand)
 
 	}/* if(_global_opt_batch_monthly == NIE) */
 	else{
@@ -836,22 +836,36 @@ short int pocet_dni_v_roku(short int rok){
 		return POCET_DNI_V_ROKU;
 }
 
-/* vrati poradove cislo dna v roku,
- * 1.1. == 1, 2.1. == 2, ..., 31.12. == 365/366
- * ocakava cislo mesiaca 1-12 (pozn. 2003-07-04)
- */
+// vrati poradove cislo dna v roku, 1.1. == 1, 2.1. == 2, ..., 31.12. == 365/366 | ocakava cislo mesiaca 1-12 (pozn. 2003-07-04)
 short int poradie(short int den, short int mesiac, short int rok){
 	if(mesiac > 2)
 		return prvy_den[mesiac - 1] + den - 1 + prestupny(rok);
 	else
 		return prvy_den[mesiac - 1] + den - 1;
-}
+}// poradie()
 
 short int poradie(_struct_den_mesiac den_a_mesiac, short int rok){
 	return poradie(den_a_mesiac.den, den_a_mesiac.mesiac, rok);
-}
+}// poradie()
 
-/* ------------------------------------------------------------------- */
+short int zjavenie_pana(short int rok){
+	// 2011-10-18: pod¾a èasti kódu v _rozbor_dna()
+	short int ZJAVENIE_PANA; // zjavenie Pána
+	char nedelne_pismenko = _global_r.p1;
+	if(_global_jazyk == JAZYK_HU){
+		if(nedelne_pismenko == 'A'){
+			nedelne_pismenko = 'h'; // aby vyšla nede¾a Zjavenia Pána na 8.1.
+		}
+		Log("Zjavenie Pána sa slávi v nede¾u; %c/%c\n", _global_r.p1, nedelne_pismenko);
+		ZJAVENIE_PANA = poradie((nedelne_pismenko - 'a') + 1, 1, rok); // nede¾a medzi 2. a 8. januárom
+	}
+	else{
+		ZJAVENIE_PANA = poradie(6, 1, rok);
+	}
+	return ZJAVENIE_PANA;
+}// zjavenie_pana()
+
+//---------------------------------------------------------------------
 
 /* Francuzsky vedec Joseph Scaliger vydal v roku 1583 traktat
  * "Nova praca o zdokonaleni letopoctu". Zaviedol juliansky datum
@@ -884,7 +898,7 @@ long juliansky_datum(short int den, short int mesiac, short int rok){
 	return juliansky_datum(por, rok);
 }
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* nasledujuce funkcie zistuju datum velkonocnej nedele */
 
 /* urcenie datumu VELKONOCNA_NEDELA podla Gaussovho pravidla */
@@ -946,7 +960,7 @@ short int _velkonocna_nedela(short int rok){
 	return poradie(result, rok);
 }
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* nasledujuce funkcie podla velkonocnej nedele urcia den v tyzdni */
 
 /* vrati cislo dna v tyzdni zodpovedajuce datumu,
@@ -968,7 +982,7 @@ short int den_v_tyzdni(_struct_den_mesiac den_a_mesiac, short int rok){
 	return den_v_tyzdni(den_a_mesiac.den, den_a_mesiac.mesiac, rok);
 }
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* nasledujuce funkcie urcia nedelne pismeno/pismena roka resp. dna v roku */
 
 /* vrati nedelne pismeno pre dany rok;
@@ -1026,7 +1040,7 @@ char nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok){
 	return char_nedelne_pismeno[_nedelne_pismeno(den_a_mesiac, rok)];
 }/* nedelne_pismeno() */
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 
 /* z poradoveho cisla dna v roku urobi datum,
  * 1 == 1.1., 2 == 2.1., 32 == 1.2., ... 365 == 31.12./30.12.
@@ -1050,7 +1064,7 @@ _struct_den_mesiac por_den_mesiac(short int poradie, short int rok){
 	return result;
 }
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* nasledujuce short int _...() funkcie vracaju poradove cislo dna v roku */
 
 /* vrati poradove cislo dna, kt. zodpoveda sviatku sv. rodiny */
@@ -1109,14 +1123,14 @@ short int _prva_adventna_nedela(short int rok){
 	return (PRVA_ADVENTNA_NEDELA_b + p + prestupny(rok));
 }
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* nasledujuce _struct_den_mesiac ...() funkcie vracaju <den, mesiac> */
 
 _struct_den_mesiac prva_adventna_nedela(short int rok){
 	return (por_den_mesiac(_prva_adventna_nedela(rok), rok));
 }
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 
 /* vrati 0 == rok A, 1 == rok B, 2 == rok C */
 /* pozor!
@@ -1192,7 +1206,7 @@ _struct_dm por_den_mesiac_dm(short int poradie, short int rok){
 	return result;
 }
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 
 /* vrati cislo tyzdna v obdobi cez rok, ktory nasleduje po nedeli zoslania
  * ducha sv. - teda po konci velkonocneho obdobia
@@ -1223,7 +1237,7 @@ void init_global_pm_sobota(void){
 	_global_pm_sobota.tyzden = _global_den.tyzden;
 	_global_pm_sobota.tyzzal = _global_den.tyzzal;
 	/* a teraz vlastne udaje */
-	_global_pm_sobota.smer = 12; /* lubovolna spomienka */
+	_global_pm_sobota.smer = 12; // ¾ubovo¾né spomienky
 	_global_pm_sobota.typslav = SLAV_LUB_SPOMIENKA; /* lubovolna spomienka */
 	_global_pm_sobota.typslav_lokal = LOKAL_SLAV_NEURCENE; /* nie je obmedzenie na lokalitu, pridané 2005-07-27 */
 	mystrcpy(_global_pm_sobota.meno, text_SPOMIENKA_PM_V_SOBOTU[_global_jazyk], MENO_SVIATKU); /* 2003-08-11 zmenena na mystrcpy */
@@ -1234,7 +1248,7 @@ void init_global_pm_sobota(void){
 	_global_pm_sobota.kalendar = KALENDAR_VSEOBECNY;
 }
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* nasledujuce void _dm_...() funkcie strukturu dm zapisu do _global_result */
 void _dm_popolcova_streda(short int rok, short int _vn){
 
@@ -1384,7 +1398,7 @@ void _dm_velkonocna_nedela(short int rok, short int _vn){
 void _init_dm(_struct_dm a){
 	a.den = 0;        /* cislo dna mesiaca (1--31) */
 	a.mesiac = 0;     /* cislo mesiaca (1--12) */
-	a.rok = 0;        /* rok */
+	a.rok = 0;        // rok
 	a.denvt = -1;     /* cislo dna v tyzdni (0--6) DEN_... */ /* deò v roku */
 	a.denvr = 0;      /* cislo dna v roku (1--365/366) */
 	a.litrok = 0;     /* liturgicky rok ('A'--'C') */
@@ -1406,7 +1420,7 @@ void _init_dm(_struct_dm a){
 }
 #endif
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* analyzuj_rok()
  *
  * vstup:  short int year
@@ -1585,7 +1599,7 @@ void Log(struct tmodlitba5 t){
 	Log_struktura_tm5("   modlitba          file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
 }
 
-/*---------------------------------------------------------------------*/
+//---------------------------------------------------------------------
 /* popis:
  *
  * int _struct_dm::spolcast obsahuje zakodovane data pre svatych o tom,

@@ -80,48 +80,47 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 #define ANCHOR_BENEDIKTUS   "BENEDIKTUS" /* antifona na benediktus */
 #define ANCHOR_PROSBY       "PROSBY"
 #define ANCHOR_MODLITBA     "MODLITBA"
-/* pridane 2003-11-20 */
 #define ANCHOR_CITANIE1     "CIT1"
 #define ANCHOR_CITANIE2     "CIT2"
 
-/* special identifiers */
+// special identifiers
 #define SPOM_PM_SOBOTA "SPMVS"
-/* special filename indentifiers */
-/* podobne ako v liturgia.h::char *nazov_obd_htm[] */
-#define FILE_SPOM_PM_SOBOTA "spmvs.htm" /* 2006-02-02: nachádzajú sa tam aj posv. èítania */
+// special filename indentifiers
+// podobne ako v liturgia.h::char *nazov_obd_htm[]
+#define FILE_SPOM_PM_SOBOTA "spmvs.htm" // 2006-02-02: nachádzajú sa tam aj posv. èítania
 
-#define ANCHOR_NANEBOVSTUPENIE "NAN" /* 2007-11-14: doplenné kvôli invitatóriu */
-#define FILE_NANEBOVSTUPENIE "nan.htm" /* 10/03/2000A.D. -- kotvy v nom su podla OBD_VELKONOCNE_I */
+#define ANCHOR_NANEBOVSTUPENIE "NAN" // 2007-11-14: doplenné kvôli invitatóriu
+#define FILE_NANEBOVSTUPENIE "nan.htm" // kotvy v òom sú pod¾a OBD_VELKONOCNE_I
 
 #define ANCHOR_ZOSLANIE_DUCHA_SV "ZDS"
-#define FILE_ZOSLANIE_DUCHA_SV "zds.htm" /* 10/03/2000A.D. -- kotvy v nom su podla OBD_VELKONOCNE_II, ANCHOR_ZOSLANIE_DUCHA_SV */
+#define FILE_ZOSLANIE_DUCHA_SV "zds.htm" // kotvy v òom sú pod¾a OBD_VELKONOCNE_II, ANCHOR_ZOSLANIE_DUCHA_SV
 
 #define ANCHOR_NAJSV_TROJICE "TROJ"
-#define FILE_NAJSV_TROJICE "troj.htm" /* 10/03/2000A.D. -- kotvy v nom su podla ANCHOR_NAJSV_TROJICE */
+#define FILE_NAJSV_TROJICE "troj.htm" // kotvy v òom sú pod¾a ANCHOR_NAJSV_TROJICE
 
 #define ANCHOR_KRISTA_KRALA "KRKRALA"
-#define FILE_KRISTA_KRALA "krkrala.htm" /* 10/03/2000A.D. -- kotvy v nom su podla ANCHOR_KRISTA_KRALA */
+#define FILE_KRISTA_KRALA "krkrala.htm" // kotvy v òom sú pod¾a ANCHOR_KRISTA_KRALA
 
 #define ANCHOR_TELA_A_KRVI "TK"
-#define FILE_TELA_A_KRVI "tk.htm" /* 10/03/2000A.D. -- kotvy v nom su podla ANCHOR_TELA_A_KRVI */
+#define FILE_TELA_A_KRVI "tk.htm" // kotvy v òom sú pod¾a ANCHOR_TELA_A_KRVI
 
 #define ANCHOR_SRDCA "SRDCA"
-#define FILE_SRDCA "srdca.htm" /* 10/03/2000A.D. -- kotvy v nom su podla ANCHOR_SRDCA */
+#define FILE_SRDCA "srdca.htm" // kotvy v òom sú pod¾a ANCHOR_SRDCA
 
 #define ANCHOR_SRDCA_PM "SRDCAPM"
-#define FILE_SRDCA_PM "nspm.htm" /* 10/03/2000A.D. -- kotvy v nom su podla ANCHOR_SRDCA_PM */
+#define FILE_SRDCA_PM "nspm.htm" // kotvy v òom sú pod¾a ANCHOR_SRDCA_PM
 
 #define ANCHOR_PM_BOHOROD "PMB"
-#define FILE_PM_BOHOROD "pmb.htm" /* 14/03/2000A.D. -- kotvy v nom su podla ANCHOR_PM_BOHOROD */
+#define FILE_PM_BOHOROD "pmb.htm" // kotvy v òom sú pod¾a ANCHOR_PM_BOHOROD
 
-#define ANCHOR_2NE_PO_NAR "2NE" /* 14/03/2000A.D. */
-#define ANCHOR_ZJAVENIE_PANA "ZJV" /* 14/03/2000A.D. */
+#define ANCHOR_2NE_PO_NAR "2NE"
+#define ANCHOR_ZJAVENIE_PANA "ZJV"
 
 #define ANCHOR_SV_RODINY "SVROD"
-#define FILE_SV_RODINY "svrod.htm" /* 14/03/2000A.D. -- kotvy v nom su podla ANCHOR_SV_RODINY */
+#define FILE_SV_RODINY "svrod.htm" // kotvy v òom sú pod¾a ANCHOR_SV_RODINY
 
 #define ANCHOR_KRST_PANA "KRST"
-#define FILE_KRST_PANA "krst.htm" /* 14/03/2000A.D. -- kotvy v nom su podla ANCHOR_KRST_PANA */
+#define FILE_KRST_PANA "krst.htm" // kotvy v òom sú pod¾a ANCHOR_KRST_PANA
 
 #define ANCHOR_DOPLNKOVA_PSALMODIA "PSCOM"
 #define FILE_DOPLNKOVA_PSALMODIA "pscom.htm"
@@ -412,16 +411,20 @@ extern const char *text_OKT_17[POCET_JAZYKOV + 1];
 extern const char *text_OKT_18[POCET_JAZYKOV + 1];
 extern const char *text_OKT_19_1[POCET_JAZYKOV + 1];
 extern const char *text_OKT_19_2[POCET_JAZYKOV + 1];
+extern const char *text_OKT_22_HU[POCET_JAZYKOV + 1];
 extern const char *text_OKT_22_CZOP[POCET_JAZYKOV + 1];
 extern const char *text_OKT_23[POCET_JAZYKOV + 1];
 extern const char *text_OKT_24[POCET_JAZYKOV + 1];
+extern const char *text_OKT_24_HU[POCET_JAZYKOV + 1];
 extern const char *text_OKT_25_SK[POCET_JAZYKOV + 1];
+extern const char *text_OKT_25_HU[POCET_JAZYKOV + 1];
 extern const char *text_OKT_26[POCET_JAZYKOV + 1];
 extern const char *text_OKT_27_SK[POCET_JAZYKOV + 1];
 extern const char *text_OKT_28[POCET_JAZYKOV + 1];
 extern const char *text_OKT_29_CZ[POCET_JAZYKOV + 1];
 extern const char *text_OKT_30_CZ[POCET_JAZYKOV + 1];
 extern const char *text_OKT_31_CZ[POCET_JAZYKOV + 1];
+extern const char *text_OKT_31_HU[POCET_JAZYKOV + 1];
 
 extern const char *text_NOV_01[POCET_JAZYKOV + 1];
 extern const char *text_NOV_02[POCET_JAZYKOV + 1];
@@ -471,7 +474,7 @@ extern const char *text_DEC_28[POCET_JAZYKOV + 1];
 extern const char *text_DEC_29[POCET_JAZYKOV + 1];
 extern const char *text_DEC_31[POCET_JAZYKOV + 1];
 
-/* --------------- CSSR propriá --------------- */
+// --------------- CSSR propriá ---------------
 extern const char *text_JAN_05_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_JAN_14_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_MAR_15_CSSR[POCET_JAZYKOV + 1];
@@ -482,11 +485,11 @@ extern const char *text_AUG_01_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_SEP_26_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_OKT_16_CSSR[POCET_JAZYKOV + 1];
 
-/* --------------- SVD propriá --------------- */
+// --------------- SVD propriá ---------------
 extern const char *text_JAN_15_SVD[POCET_JAZYKOV + 1];
 extern const char *text_JAN_29_SVD[POCET_JAZYKOV + 1];
 
-/* --------------- SDB propriá --------------- */
+// --------------- SDB propriá ---------------
 extern const char *text_JAN_15_SDB[POCET_JAZYKOV + 1];
 extern const char *text_JAN_22_SDB[POCET_JAZYKOV + 1];
 extern const char *text_JAN_24_SDB[POCET_JAZYKOV + 1];
@@ -519,7 +522,7 @@ extern const char *text_NOV_15_SDB[POCET_JAZYKOV + 1];
 extern const char *text_NOV_25_SDB[POCET_JAZYKOV + 1];
 extern const char *text_DEC_05_SDB[POCET_JAZYKOV + 1];
 
-/* --------------- SJ propriá --------------- */
+// --------------- SJ propriá ---------------
 extern const char *text_JAN_01_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JAN_19_SJ[POCET_JAZYKOV + 1];
 extern const char *text_FEB_04_SJ[POCET_JAZYKOV + 1];
@@ -555,7 +558,7 @@ extern const char *text_NOV_26_SJ[POCET_JAZYKOV + 1];
 extern const char *text_DEC_01_SJ[POCET_JAZYKOV + 1];
 extern const char *text_DEC_03_SJ[POCET_JAZYKOV + 1];
 
-/* --------------- OFM propriá --------------- */
+// --------------- OFM propriá ---------------
 extern const char *text_JAN_04_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_05_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_12_OFM[POCET_JAZYKOV + 1];

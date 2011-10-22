@@ -56,7 +56,7 @@ int substring(char *str1, char *str2){
 	return (strstr(str1, str2) != NULL);
 }
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* string comparator -- pre vsetky kombinacie dvojic
  * [const] char, [const] char
  */

@@ -32,7 +32,7 @@
 #include "mysystem.h"
 #include "mysysdef.h"
 
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 /* globalne premenne -- deklarovane v liturgia.h, definovane tu */
 /* 18/02/2000A.D. */
 
@@ -43,8 +43,9 @@ extern short int _global_poradie_svaty;
 
 extern short int query_type; /* premenna obsahujuca PRM_..., deklarovana v mydefs.h */
 
-#define EXPORT_DNA_VIAC_DNI_TXT 4 /* 2011-02-02: pridané */
-#define EXPORT_DNA_VIAC_DNI_SIMPLE 3 /* 2005-03-21: Pridany dalsi typ exportu; 2011-04-13: nerozumiem naèo; asi sa nepoužíva... */
+#define EXPORT_DNA_JEDEN_DEN_LOCAL 5 // 2011-10-03: pridané
+#define EXPORT_DNA_VIAC_DNI_TXT 4 // 2011-02-02: pridané
+#define EXPORT_DNA_VIAC_DNI_SIMPLE 3 // 2005-03-21: Pridany dalsi typ exportu; 2011-04-13: nerozumiem naèo; asi sa nepoužíva...
 #define EXPORT_DNA_JEDEN_DEN 1
 #define EXPORT_DNA_VIAC_DNI 2
 #define EXPORT_DNA_DNES 0
@@ -165,10 +166,12 @@ extern short int _global_opt[POCET_GLOBAL_OPT];
 extern char *_global_string;
 extern char *_global_string2; /* obsahuje I, II, III, IV, V alebo pismeno roka */
 extern char *_global_string_farba; /* 2006-08-19: doplnené */
+// 2011-10-04: pridané, pre titulok modlitby (už sa nepriliepa do _global_string)
+extern char _global_string_modlitba[SMALL];
 
 extern char *_global_buf; /* 2006-08-01: túto premennú tiež alokujeme */
 extern char *_global_buf2; /* 2006-08-01: túto premennú tiež alokujeme */
-/* ------------------------------------------------------------------- */
+//---------------------------------------------------------------------
 
 /* 2006-07-11: Pridané kvôli jazykovým mutáciám (breviar.cpp)
  * 2010-08-04: zmenené _global_language na _global_jazyk (doteraz bolo len pomocou #define)
@@ -185,13 +188,13 @@ extern short int _global_font_size; /* 2011-05-13: Pridané kvôli rôznym ve¾kosti
 /* 2006-10-17: Pridané kvôli kompletóriu: niekedy obsahuje až dva žalmy */
 extern short int _global_pocet_zalmov_kompletorium;
 
-/* 2009-08-03, pridané */
+// 2009-08-03, pridané
 extern short int _global_opt_batch_monthly;
 
-/* 2009-08-05, pridané */
+// 2009-08-05, pridané
 extern short int _global_hlavicka_Export;
 // extern char name_batch_html_file[MAX_STR];
-/* 2011-07-01, pridané */
+// 2011-07-01, pridané
 extern short int _global_patka_Export;
 
 /* 2011-05-05: kvôli možnosti serif/sans serif override (z css sme odstránili font-family) */
@@ -241,15 +244,15 @@ extern short int _global_opt_export_date_format;
 ) \
 ))
 
-/* 2011-02-02: presunuté do #define -- kontrola, ktorá zabezpeèuje, že normálne správanie sa slávení nie je prebité pre "CZOP miestne slávenia" */
+// 2011-02-02: presunuté do #define -- kontrola, ktorá zabezpeèuje, že normálne správanie sa slávení nie je prebité pre "CZOP miestne slávenia"
 #define MIESTNE_SLAVENIE_CZOP_SVATY1 ((_global_svaty1.kalendar == KALENDAR_CZ_OP) && ((_global_svaty1.smer == 4) || (_global_svaty1.smer == 8) || (_global_svaty1.smer == 11)))
 #define MIESTNE_SLAVENIE_CZOP_SVATY2 ((_global_svaty2.kalendar == KALENDAR_CZ_OP) && ((_global_svaty2.smer == 4) || (_global_svaty2.smer == 8) || (_global_svaty2.smer == 11)))
 #define MIESTNE_SLAVENIE_CZOP_SVATY3 ((_global_svaty3.kalendar == KALENDAR_CZ_OP) && ((_global_svaty3.smer == 4) || (_global_svaty3.smer == 8) || (_global_svaty3.smer == 11)))
 
-/* 2011-03-07: MIESTNE_SLAVENIE_CZOP_SVATY1 až 3 aj pre slovenské, ktoré majú nastavené "lokálne" verzie */
-#define MIESTNE_SLAVENIE_LOKAL_SVATY1 (((_global_svaty1.kalendar == KALENDAR_CZ_OP) || (_global_svaty1.typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty1.smer == 4) || (_global_svaty1.smer == 8) || (_global_svaty1.smer == 11)))
-#define MIESTNE_SLAVENIE_LOKAL_SVATY2 (((_global_svaty2.kalendar == KALENDAR_CZ_OP) || (_global_svaty2.typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty2.smer == 4) || (_global_svaty2.smer == 8) || (_global_svaty2.smer == 11)))
-#define MIESTNE_SLAVENIE_LOKAL_SVATY3 (((_global_svaty3.kalendar == KALENDAR_CZ_OP) || (_global_svaty3.typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty3.smer == 4) || (_global_svaty3.smer == 8) || (_global_svaty3.smer == 11)))
+// 2011-03-07: MIESTNE_SLAVENIE_CZOP_SVATY1 až 3 aj pre slovenské, ktoré majú nastavené "lokálne" verzie
+#define MIESTNE_SLAVENIE_LOKAL_SVATY1 (((_global_svaty1.kalendar == KALENDAR_CZ_OP) || (_global_svaty1.kalendar == KALENDAR_SK_CSSR) || (_global_svaty1.kalendar == KALENDAR_SK_SVD) || (_global_svaty1.kalendar == KALENDAR_SK_SJ) || (_global_svaty1.kalendar == KALENDAR_SK_SDB) || (_global_svaty1.kalendar == KALENDAR_SK_OFM) || (_global_svaty1.typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty1.smer == 4) || (_global_svaty1.smer == 8) || (_global_svaty1.smer == 11)))
+#define MIESTNE_SLAVENIE_LOKAL_SVATY2 (((_global_svaty1.kalendar == KALENDAR_CZ_OP) || (_global_svaty1.kalendar == KALENDAR_SK_CSSR) || (_global_svaty1.kalendar == KALENDAR_SK_SVD) || (_global_svaty1.kalendar == KALENDAR_SK_SJ) || (_global_svaty1.kalendar == KALENDAR_SK_SDB) || (_global_svaty1.kalendar == KALENDAR_SK_OFM) || (_global_svaty2.typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty2.smer == 4) || (_global_svaty2.smer == 8) || (_global_svaty2.smer == 11)))
+#define MIESTNE_SLAVENIE_LOKAL_SVATY3 (((_global_svaty1.kalendar == KALENDAR_CZ_OP) || (_global_svaty1.kalendar == KALENDAR_SK_CSSR) || (_global_svaty1.kalendar == KALENDAR_SK_SVD) || (_global_svaty1.kalendar == KALENDAR_SK_SJ) || (_global_svaty1.kalendar == KALENDAR_SK_SDB) || (_global_svaty1.kalendar == KALENDAR_SK_OFM) || (_global_svaty3.typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty3.smer == 4) || (_global_svaty3.smer == 8) || (_global_svaty3.smer == 11)))
 
 /* 2011-03-18: presunuté samostatne na jedno jediné miesto */
 #define PODMIENKA_EXPORTOVAT_KALENDAR ( \

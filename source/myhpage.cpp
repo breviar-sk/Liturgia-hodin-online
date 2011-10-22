@@ -229,7 +229,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 				sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba - 1]);
 				strncpy(ptr, pismeno_prev, 1);
 			}
-			Export_to_file(expt, "<a href=\"%s\">", file_name_pom);
+			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
 			Export_to_file(expt, (char *)html_text_batch_Prev[_global_jazyk]);
 			Export_to_file(expt, " ");
 			Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba - 1));
@@ -238,7 +238,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		// |
 		Export_to_file(expt, " | ");
 		// ^ hore
-		Export_to_file(expt, "<a href=\".%s%s\">", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore); // v tom istom adresári
+		Export_to_file(expt, "<a href=\".%s%s\" "HTML_CLASS_BUTTON">", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore); // v tom istom adresári
 		Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
 		Export_to_file(expt, "</a>");
 		// |
@@ -251,7 +251,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 				sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba + 1]);
 				strncpy(ptr, pismeno_next, 1);
 			}
-			Export_to_file(expt, "<a href=\"%s\">", file_name_pom);
+			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
 			Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba + 1));
 			Export_to_file(expt, " ");
 			Export_to_file(expt, (char *)html_text_batch_Next[_global_jazyk]);
@@ -336,7 +336,7 @@ void _patka(FILE * expt){
 				sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba - 1]);
 				strncpy(ptr, pismeno_prev, 1);
 			}
-			Export_to_file(expt, "<a href=\"%s\">", file_name_pom);
+			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
 			Export_to_file(expt, (char *)html_text_batch_Prev[_global_jazyk]);
 			Export_to_file(expt, " ");
 			Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba - 1));
@@ -345,7 +345,7 @@ void _patka(FILE * expt){
 		// |
 		Export_to_file(expt, " | ");
 		// ^ hore
-		Export_to_file(expt, "<a href=\".%s%s\">", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore); // v tom istom adresári
+		Export_to_file(expt, "<a href=\".%s%s\" "HTML_CLASS_BUTTON">", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore); // v tom istom adresári
 		Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
 		Export_to_file(expt, "</a>");
 		// |
@@ -358,7 +358,7 @@ void _patka(FILE * expt){
 				sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba + 1]);
 				strncpy(ptr, pismeno_next, 1);
 			}
-			Export_to_file(expt, "<a href=\"%s\">", file_name_pom);
+			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
 			Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba + 1));
 			Export_to_file(expt, " ");
 			Export_to_file(expt, (char *)html_text_batch_Next[_global_jazyk]);
