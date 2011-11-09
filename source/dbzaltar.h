@@ -439,6 +439,7 @@ extern const char *text_NOV_10[POCET_JAZYKOV + 1];
 extern const char *text_NOV_11[POCET_JAZYKOV + 1];
 extern const char *text_NOV_12[POCET_JAZYKOV + 1];
 extern const char *text_NOV_13_CZ[POCET_JAZYKOV + 1];
+extern const char *text_NOV_13_HU[POCET_JAZYKOV + 1];
 extern const char *text_NOV_15[POCET_JAZYKOV + 1];
 extern const char *text_NOV_16_1[POCET_JAZYKOV + 1];
 extern const char *text_NOV_16_2[POCET_JAZYKOV + 1];
@@ -451,6 +452,7 @@ extern const char *text_NOV_23_1[POCET_JAZYKOV + 1];
 extern const char *text_NOV_23_2[POCET_JAZYKOV + 1];
 extern const char *text_NOV_24[POCET_JAZYKOV + 1];
 extern const char *text_NOV_25[POCET_JAZYKOV + 1];
+extern const char *text_NOV_25_HU[POCET_JAZYKOV + 1];
 extern const char *text_NOV_30[POCET_JAZYKOV + 1];
 
 extern const char *text_DEC_01_CZ[POCET_JAZYKOV + 1];

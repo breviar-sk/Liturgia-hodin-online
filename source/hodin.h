@@ -430,12 +430,10 @@ const char *nazov_slavenia_lokal_kalendar[POCET_KALENDAROV + 1] =
 };
 
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
-/* 2005-07-27: doplnené
- * 2007-08-31: upravené TT -> BA-TT
- * 2008-06-23: upravené vzh¾adom k novému usporiadaniu diecéz (intuitívne)
- * 2010-03-16: doplnené BA
- * 2011-07-25: doplnené názvy èíselnıch konštánt
- */
+// 2007-08-31: upravené TT -> BA-TT
+// 2008-06-23: upravené vzh¾adom k novému usporiadaniu diecéz (intuitívne)
+// 2010-03-16: doplnené BA
+// 2011-07-25: doplnené názvy èíselnıch konštánt
 const char *nazov_slavenia_lokal[] =
 {""                                                                                                             // LOKAL_SLAV_NEURCENE
 ,"len v roòavskej katedrále"                                                                                   // LOKAL_SLAV_ROZNAVA_KATEDRALA
@@ -507,9 +505,11 @@ const char *nazov_slavenia_lokal[] =
 ,"A Váci egyházmegyében: Szent Mihály fõangyal, az egyházmegye védõszentje"                                     // LOKAL_SLAV_VACI_PATRON
 ,"A Szeged-Csanád: az egyházmegye védõszentje; fõünnep"                                                         // LOKAL_SLAV_SZEGED_CSAN_PATRON2
 ,"A Veszprém, a fõszékesegyházban; fõünnep"															            // LOKAL_SLAV_VESZPREM_FOEGYH
-,"csak a felszentelt templomkban"                                                                               // LOKAL_SLAV_KONSEKR_KOSTOLY_HU
+,"csak a felszentelt templomokban"                                                                              // LOKAL_SLAV_KONSEKR_KOSTOLY_HU
 ,"A Szeged-Csanád: A székesegyházban; fõünnep"                                                                  // LOKAL_SLAV_SZEGED_CSAN_EGYH2
-,"A Pécsi egyházmegyében: A Pécsi egyházmegye társvédöszentje; fõünnep"                                         // LOKAL_SLAV_PECS_PATRON
+,"A Pécsi egyházmegyében: A Pécsi egyházmegye társvédõszentje; fõünnep"                                         // LOKAL_SLAV_PECS_PATRON
+,"Szombathely: Az egyházmegye védõszentje; fõünnep"                                                             // LOKAL_SLAV_SZOMBATHELYI_PATRON
+,"Székesfehérvár: A székesegyházban; fõünnep"                                                                   // LOKAL_SLAV_SZEKESFEHERVAR_EGYH
 };
 
 // names of liturgical colors
@@ -1477,6 +1477,66 @@ const char *html_text_option0_citania_explain[POCET_JAZYKOV + 1] =
  "Liturgikus olvasmányok (katolikus.hu)."
 };
 
+const char *html_text_option0_zjv_ne[POCET_JAZYKOV + 1] = 
+{"Zjavenie Pána slávi v nede¾u medzi 2. a 8. januárom",
+ "Zjevení Pánì slavit v nedìli mezi 2. a 8. lednem",
+ "",
+ "",
+ "",
+ "Zjevení Pánì slavit v nedìli mezi 2. a 8. lednem",
+ "Urunk megjelenése (Vízkereszt) megünneplése vasárnap, január 2. és 8. között"
+};
+
+const char *html_text_option0_zjv_ne_explain[POCET_JAZYKOV + 1] = 
+{"Zjavenie Pána sa slávi dòa 6. januára; v niektorıch krajinách sa slávi v nede¾u medzi 2. a 8. januárom.", 
+ "", 
+ "", 
+ "",
+ "", 
+ "", 
+ "Urunk megjelenése (Vízkereszt) január 6.-án van; egyes országokban azonban vasárnap, január 2. és 8. között ünneplik."
+};
+
+const char *html_text_option0_nan_ne[POCET_JAZYKOV + 1] = 
+{"Nanebovstúpenie Pána slávi v nede¾u",
+ "Nanebevstoupení Pánì slavit v nedìli",
+ "",
+ "",
+ "",
+ "Nanebevstoupení Pánì slavit v nedìli",
+ "Urunk mennybemenetelét vasárnap ünnepelni"
+};
+
+const char *html_text_option0_nan_ne_explain[POCET_JAZYKOV + 1] = 
+{"Nanebovstúpenie Pána sa slávi 40. deò po Ve¾kej noci (teda vo štvrtok); v niektorıch krajinách sa slávenie prekladá na najblišiu nede¾u (nahrádza 7. ve¾konoènú nede¾u).", 
+ "", 
+ "", 
+ "",
+ "", 
+ "", 
+ "Urunk mennybemenetelét húsvét után a 40. napon van (tehát csütörtökön); egyes országokban azonban a legközelebbi vasárnapon ünneplik (vagyis Húsvét 7. vasárnapján)."
+};
+
+const char *html_text_option0_tk_ne[POCET_JAZYKOV + 1] = 
+{"Najsv. Kristovho tela a krvi slávi v nede¾u",
+ "Tìla a krve Pánì slavit v nedìli",
+ "",
+ "",
+ "",
+ "Tìla a krve Pánì slavit v nedìli",
+ "Krisztus Szent Teste és Vére ünnepe vasárnapra téve"
+};
+
+const char *html_text_option0_tk_ne_explain[POCET_JAZYKOV + 1] = 
+{"Najsv. Kristovho tela a krvi sa slávi 11. deò po Zoslaní Ducha Svätého (teda vo štvrtok po Najsv. Trojici); v niektorıch krajinách sa slávenie prekladá na najblišiu nede¾u.", 
+ "", 
+ "", 
+ "",
+ "", 
+ "", 
+ "Krisztus Szent Teste és Vére Pünkösd után a 11. napon van (tehát Szentháromság utáni csütörtökön); egyes országokban azonban a legközelebbi vasárnapon ünneplik."
+};
+
 const char *html_text_option1_chvalospevy[POCET_JAZYKOV + 1] = 
 {"evanjeliové chválospevy (Benediktus, Magnifikat, Nunk dimittis)", 
  "evangelijní kantika (Mariino, Zachariášovo, Simeonovo)", 
@@ -1574,11 +1634,11 @@ const char *html_text_option1_tedeum_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_option1_plne_resp[POCET_JAZYKOV + 1] = 
 {"plné znenie responzórií pre posvätné èítania", 
- "plné znìní krátkıch zpìvù v modlitbe se ètením", 
+ "plné znìní krátkıch zpìvù v modlitbì se ètením", 
  "", 
  "",
  "",
- "plné znìní responsorií v modlitbe se ètením", 
+ "plné znìní responsorií v modlitbì se ètením", 
  "a válaszos énekek teljes szövege"
 };
 const char *html_text_option1_plne_resp_explain[POCET_JAZYKOV + 1] = 
@@ -1805,39 +1865,39 @@ const char *html_text_option2_navigation_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] = 
 {"zalamova dlhé riadky ako v tlaèenom vydaní (poetické èasti)",
- "xxx", 
+ "zalomit dlouhé øádky poetickıch textù jako v tištìném vydání", 
  "xxx", 
  "",
  "",
- "xxx", 
+ "zalomit dlouhé øádky poetickıch textù jako v tištìném vydání", 
  "hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)", 
 };
 const char *html_text_option2_textwrap_explain[POCET_JAZYKOV + 1] = 
 {"Èi sa majú v texte modlitby dlhé riadky almov, chválospevov a inıch poetickıch èastí zalamova ako v tlaèenom vydaní.", 
- "xxx", 
+ "Zda zalomit dlouhé øádky poetickıch textù jako v tištìném vydání (normálnì: nezalamovat).", 
  "xxx", 
  "",
  "", 
- "xxx", 
+ "Zda zalomit dlouhé øádky poetickıch textù jako v tištìném vydání (normálnì: nezalamovat).", 
  "Legyenek-e tördelve az imaórák szövegében  a zsoltárok, kantikumok és más versrészek hosszú sorai, mint a nyomtatott kiadásban.", 
 };
 
 const char *html_text_option2_buttons_usporne[POCET_JAZYKOV + 1] = 
 {"tlaèidlá pre modlitby zobrazi úsporne",
- "xxx", 
+ "tlaèítka pro modlitby zobrazit úspornì", 
  "xxx", 
  "",
  "",
- "xxx", 
+ "tlaèítka pro modlitby zobrazit úspornì", 
  "az imaórák gombjainak gazdaságos elhelyezése", 
 };
 const char *html_text_option2_buttons_usporne_explain[POCET_JAZYKOV + 1] = 
 {"Èi sa majú tlaèidlá pre modlitby zobrazi úsporne, v tabu¾ke (menšia šírka) kvôli mobilnım zariadeniam.", 
- "xxx", 
+ "Zda se mají tlaèítka pro modlitby zobrazit úspornì, v tabulce (menší šíøka) pro mobilní zaøízení.", 
  "xxx", 
  "",
  "", 
- "xxx", 
+ "Zda se mají tlaèítka pro modlitby zobrazit úspornì, v tabulce (menší šíøka) pro mobilní zaøízení.", 
  "Legyenek-e az imaórák gombjai gazdaságosan elhelyezve, táblázatban (kisebb szélesség) a mobli készülékek céljából.", 
 };
 
@@ -2066,7 +2126,7 @@ const char *text_JAN_03[POCET_JAZYKOV + 1] =
  "",
  "",
  "Nejsvìtìjšího Jména Jeíš",
- "(Najsvätejšieho mena Jeiš)",
+ "Jézus szent neve",
  };
 const char *text_JAN_04_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Angely z Foligna, reho¾níèky, èlenky 3. rádu",
@@ -2095,7 +2155,7 @@ const char *text_JAN_05_OFM[POCET_JAZYKOV + 1] =
  "",
  "",
  };
-const char *text_JAN_06[POCET_JAZYKOV + 1] = 
+const char *text_JAN_06[POCET_JAZYKOV + 1] = // 6. januára | alebo nede¾u medzi 2. a 8. januárom
 {"Zjavenie Pána",
  "Zjevení Pánì",
  "",
@@ -2113,7 +2173,7 @@ const char *text_JAN_07[POCET_JAZYKOV + 1] =
  "Sv. Rajmunda z Peòafortu, knìze",
  "Penyaforti Szent Rajmund áldozópap",
  };
-const char *text_JAN_KRST[POCET_JAZYKOV + 1] = 
+const char *text_JAN_KRST[POCET_JAZYKOV + 1] = // v nede¾u po 6. januári | (v nede¾u po Zjavení Pána) alebo: ak však táto nede¾a (zrejme Zjavenia Pána) padne na deò 7. alebo 8. januára, ofícium sa slávi v nasledujúci deò
 {"Krst Krista Pána",
  "Køtu Pánì",
  "",
@@ -2165,7 +2225,7 @@ const char *text_JAN_15[POCET_JAZYKOV + 1] =
  "la_",
  "",
  "Sv. Františka Fernándeze de Capillas, knìze, Petra Sanse, biskupa, a druhù, èínskıch muèedníkù",
- "Remete Szent Pál", // 2010-05-17: pozor, nieèo úplne iné ako pre czop!
+ "Remete Szent Pál szerzetes", // 2010-05-17: pozor, nieèo úplne iné ako pre czop!
  };
 const char *text_JAN_15_SVD[POCET_JAZYKOV + 1] = 
 {"Sv. Arnolda Janssena, kòaza a zakladate¾a troch misijnıch reho¾nıch spoloèností",
@@ -5743,6 +5803,15 @@ const char *text_NOV_13_CZ[POCET_JAZYKOV + 1] =
  "Sv. Aneky Èeské, panny",
  "(nincs Magyarországon)",
  };
+const char *text_NOV_13_HU[POCET_JAZYKOV + 1] = 
+{"",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "Magyar szentek és boldogok",
+ };
 const char *text_NOV_14_SJ[POCET_JAZYKOV + 1] = 
 {"Sv. Jozefa Pignatelliho, kòaza",
  "",
@@ -5813,7 +5882,7 @@ const char *text_NOV_18[POCET_JAZYKOV + 1] =
  "",
  "",
  "Posvìcení øímskıch bazilik svatıch apoštolù Petra a Pavla",
- "Szent Péter- és Szent Pál-Bazilikák felszentelése",
+ "Szent Péter- és Szent Pál-bazilikák felszentelése",
  };
 const char *text_NOV_20_SK[POCET_JAZYKOV + 1] = 
 {"Vıroèie posviacky katedrálneho chrámu v Nitre",
@@ -5886,6 +5955,15 @@ const char *text_NOV_25[POCET_JAZYKOV + 1] =
  "",
  "Sv. Kateøiny Alexandrijské, panny a muèednice",
  "Alexandriai Szent Katalin szûz és vértanú",
+ };
+const char *text_NOV_25_HU[POCET_JAZYKOV + 1] = 
+{"",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "A bazilika-székesegyház felszentelése",
  };
 const char *text_NOV_25_SDB[POCET_JAZYKOV + 1] = 
 {"Všetkıch zomrelıch rodièov saleziánov",
@@ -6182,4 +6260,4 @@ const char *text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1] =
  "Karácsony nyolcadában",
  };
 
-#endif /* __HODIN_H_ */
+#endif // __HODIN_H_

@@ -129,7 +129,7 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 
 #define	POCET_FONTOV	9
 
-/* 2011-05-06: jednotlivÈ fonty na v˝ber v drop-down liste */
+// 2011-05-06: jednotlivÈ fonty na v˝ber v drop-down liste
 #define FONT_UNDEF		0
 #define FONT_CSS		1
 #define FONT_CHECKBOX	2
@@ -143,7 +143,7 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 
 #define	POCET_FONT_SIZE	8
 
-/* 2011-05-13: jednotlivÈ fonty na v˝ber v drop-down liste */
+// 2011-05-13: jednotlivÈ fonty na v˝ber v drop-down liste
 #define FONT_SIZE_UNDEF		0
 #define FONT_SIZE_CSS		1 // inherit
 #define FONT_SIZE_XX_SMALL	2
@@ -368,9 +368,7 @@ extern const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 extern const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_MODLITBY(a)	nazov_MODLITBY_jazyk[a][_global_jazyk]
 
-/* ... a file templates (suborove vzory) pre modlitby
- * 2011-01-25: premenovanÈ (aby mali spoloËn˝ prefix)
- */
+// ... a file templates (suborove vzory) pre modlitby | 2011-01-25: premenovanÈ (aby mali spoloËn˝ prefix)
 #define TEMPLAT_INVITATORIUM     "m_invitat.htm"
 #define TEMPLAT_POSV_CITANIE     "m_posvcit.htm"
 #define TEMPLAT_RANNE_CHVALY     "m_rchvaly.htm"
@@ -381,7 +379,7 @@ extern const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define TEMPLAT_KOMPLETORIUM     "m_komplet.htm"
 #define TEMPLAT_NEURCENY         "" // 2011-10-03: doplnenÈ kvÙli MODL_VSETKY
 
-/* pridanÈ 2006-10-24 pre kompletÛrium */
+// pridanÈ 2006-10-24 pre kompletÛrium
 #define nazov_obd_KOMPLETORIUM   "cezrok_k.htm"
 
 extern const char *TEMPLAT[POCET_MODLITIEB + 1];
@@ -395,17 +393,16 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define CHAR_KEYWORD2_END    '>'
 */
 
-/* znak '_' pouûÌvame ako z·stupn˝ pre nezlomiteæn˙ medzeru (exportuje sa ako HTML_NONBREAKING_SPACE == "&nbsp;" definovanÈ v mydefs.h) 
- * 2011-05-02: pridanÈ; nevadÌ, ûe je duplicita s UNDERSCORE resp. CHAR_MODL_NEURCENA 
- */
+// znak '_' pouûÌvame ako z·stupn˝ pre nezlomiteæn˙ medzeru (exportuje sa ako HTML_NONBREAKING_SPACE == "&nbsp;" definovanÈ v mydefs.h) 
+// 2011-05-02: pridanÈ; nevadÌ, ûe je duplicita s UNDERSCORE resp. CHAR_MODL_NEURCENA 
 #define CHAR_NONBREAKING_SPACE '_'
 
 // include parameters (parametre v inkludovanych suboroch)
-#define INCLUDE_BEGIN   "BEGIN" /* zaciatok */
-#define INCLUDE_END     "END"   /* koniec */
+#define INCLUDE_BEGIN   "BEGIN" // zaciatok
+#define INCLUDE_END     "END"   // koniec
 
 // parameter identifiers
-#define PARAM_POPIS         "POPIS" // pridane 05/04/2000A.D.
+#define PARAM_POPIS         "POPIS"
 #define PARAM_HYMNUS        "HYMNUS"
 #define PARAM_ANTIFONA1     "ANTIFONA1"
 #define PARAM_ANTIFONA2     "ANTIFONA2"
@@ -443,21 +440,19 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_NADPIS        "NADPIS"
 
 // dalsie parametre: specificke pre obdobie
-/* Od nedele P·novho zm‡tvychvstania aû do Druhej veækonoËnej nedele vr·tane,
- * ako aj na druhÈ veöpery sl·vnosti Zoslania Ducha Sv‰tÈho */
+// Od nedele P·novho zm‡tvychvstania aû do Druhej veækonoËnej nedele vr·tane, ako aj na druhÈ veöpery sl·vnosti Zoslania Ducha Sv‰tÈho
 #define PARAM_ALELUJA_ALELUJA_BEGIN         "ALELUJA_ALELUJA_BEGIN"
 #define PARAM_ALELUJA_ALELUJA_END           "ALELUJA_ALELUJA_END"
-#define PARAM_ALELUJA_NIE_V_POSTE           "ALELUJA_NIE_V_POSTE" /* pouûÌva sa v inkludovan˝ch s˙boroch, napr. v r·mci antifÛn */
+#define PARAM_ALELUJA_NIE_V_POSTE           "ALELUJA_NIE_V_POSTE" // pouûÌva sa v inkludovan˝ch s˙boroch, napr. v r·mci antifÛn
 #define PARAM_ALELUJA_NIE_V_POSTE_BEGIN     "ALELUJA_NIE_V_POSTE_BEGIN"
 #define PARAM_ALELUJA_NIE_V_POSTE_END       "ALELUJA_NIE_V_POSTE_END"
-#define PARAM_ALELUJA_VO_VELKONOCNOM        "V_O_ALELUJA" /* pouûÌva sa v inkludovan˝ch s˙boroch, napr. v r·mci antifÛn */
-#define PARAM_ALELUJA_VO_VELKONOCNOM_BEGIN  "V_O_ALELUJA_BEGIN" /* pouûÌvaj˙ sa v templ·tach */
+#define PARAM_ALELUJA_VO_VELKONOCNOM        "V_O_ALELUJA" // pouûÌva sa v inkludovan˝ch s˙boroch, napr. v r·mci antifÛn
+#define PARAM_ALELUJA_VO_VELKONOCNOM_BEGIN  "V_O_ALELUJA_BEGIN" // pouûÌvaj˙ sa v templ·tach
 #define PARAM_ALELUJA_VO_VELKONOCNOM_END    "V_O_ALELUJA_END"
-/* 2005-08-15: DoplnenÈ parametre pre voænÈ, inÈ hymny v 34. t˝ûdni OCR */
+// 2005-08-15: DoplnenÈ parametre pre voænÈ, inÈ hymny v 34. t˝ûdni OCR
 #define PARAM_HYMNUS_34_OCR_INY_BEGIN       "HYMNUS_34_OCR_INY_BEGIN"
 #define PARAM_HYMNUS_34_OCR_INY_END         "HYMNUS_34_OCR_INY_END"
-/* nasleduju casti, ktore sa mozu pri generovani modlitby vynechat
- * alebo doplnit podla lubovole */
+// nasleduju casti, ktore sa mozu pri generovani modlitby vynechat alebo doplnit podla lubovole
 #define PARAM_OTCENAS_BEGIN                 "OTCENAS_BEGIN"
 #define PARAM_OTCENAS_END                   "OTCENAS_END"
 #define PARAM_CHVALOSPEV_BEGIN              "CHVALOSPEV_BEGIN"
@@ -466,17 +461,15 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_ZAKONCENIE_END                "ZAKONCENIE_END"
 #define PARAM_KOMPLETORIUM_DVA_ZALMY_BEGIN	"KOMPLETORIUM_DVA_ZALMY_BEGIN"
 #define PARAM_KOMPLETORIUM_DVA_ZALMY_END	"KOMPLETORIUM_DVA_ZALMY_END"
-/* 2007-03-23: doplnenÈ Sl·va Otcu */
 #define PARAM_SLAVAOTCU_BEGIN               "SLAVAOTCU_BEGIN"
 #define PARAM_SLAVAOTCU_END                 "SLAVAOTCU_END"
-/* 2011-04-29: doplnenÈ Sl·va Otcu "öpeci·lne" pre ˙Ëely chv·lospevu Dan 3, 57-88. 56, kde nie je "Sl·va Otcu" (pÙvodne to bolo danÈ poradÌm, ale templ·ty pre rÙzne jazyky maj˙ rozliËnÈ poradie tohto "Sl·va Otcu") */
+// 2011-04-29: doplnenÈ Sl·va Otcu "öpeci·lne" pre ˙Ëely chv·lospevu Dan 3, 57-88. 56, kde nie je "Sl·va Otcu" (pÙvodne to bolo danÈ poradÌm, ale templ·ty pre rÙzne jazyky maj˙ rozliËnÈ poradie tohto "Sl·va Otcu")
 #define PARAM_SLAVAOTCU_SPEC_BEGIN          "SLAVAOTCU_SPEC_BEGIN"
 #define PARAM_SLAVAOTCU_SPEC_END            "SLAVAOTCU_SPEC_END"
-/* 2007-06-28: doplnenÈ Te Deum; nemÙûe sa riadiù rovnak˝mi pravidlami ako chv·lospevy 
- * 2011-04-11: pridan˝ ÔalöÌ p·r parametrov
- *             JE_TEDEUM_BEGIN a END hovoria, Ëi v danej modlitbe m· vÙbec byù zobrazen· Ëo i len zmienka o Te Deum (riadenÈ podmienkou je_tedeum);
- *             TEDEUM_BEGIN a END hovoria, ûe ak m· byù Te Deum (je_tedeum), tak ak chce pouûÌvateæ zobraziù pln˝ text, ohraniËuj˙ ho
- */
+// 2007-06-28: doplnenÈ Te Deum; nemÙûe sa riadiù rovnak˝mi pravidlami ako chv·lospevy 
+// 2011-04-11: pridan˝ ÔalöÌ p·r parametrov
+//             JE_TEDEUM_BEGIN a END hovoria, Ëi v danej modlitbe m· vÙbec byù zobrazen· Ëo i len zmienka o Te Deum (riadenÈ podmienkou je_tedeum);
+//             TEDEUM_BEGIN a END hovoria, ûe ak m· byù Te Deum (je_tedeum), tak ak chce pouûÌvateæ zobraziù pln˝ text, ohraniËuj˙ ho
 #define PARAM_TEDEUM_BEGIN                  "TEDEUM_BEGIN"
 #define PARAM_TEDEUM_END                    "TEDEUM_END"
 #define PARAM_JE_TEDEUM_BEGIN               "JE_TEDEUM_BEGIN"
@@ -506,6 +499,9 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 
 // 2011-10-05: doplnenÈ kvÙli zobrazovaniu/skr˝vaniu opakovanÈho zvolania v prosb·ch (rannÈ chv·ly, veöpery)
 #define PARAM_ZVOLANIE                      "ZVOLANIE"
+
+// 2011-10-26: doplnenÈ rubriky priamo v includovan˝ch HTML s˙boroch
+#define PARAM_RUBRIKA                       "RUBRIKA"
 
 // 2011-04-04: doplnenÈ zobrazenie/skrytie ËÌslovania veröov v ûalmoch, chv·lospevoch a biblick˝ch ËÌtaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
@@ -553,8 +549,7 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define FORCE_BRAT_2CITANIE     16
 #define FORCE_BRAT_ANTIFONY_MCD 32
 
-/* stringy parametrov vstupu pre MODL_OPT..., ktore generovanie modlitby
- * ovplyvnuju */
+// stringy parametrov vstupu pre MODL_OPT..., ktore generovanie modlitby ovplyvnuju
 // option 1
 //#define STR_ANO "·no"
 extern const char *str_ano[POCET_JAZYKOV + 1];
@@ -583,11 +578,9 @@ extern const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #define		STR_MODL_ZALMY_ZO_SV 	str_modl_zalmy_zo_sv[_global_jazyk]
 #endif
 
-/* option 3 -- tieto nasledujuce definicie definuju to, co je sucastou
- * _struct_dm::spolcast */
+// option 3 -- tieto nasledujuce definicie definuju to, co je sucastou _struct_dm::spolcast
 #define MAX_MODL_SPOL_CAST  28
-/* najviac MAX_MODL_SPOL_CAST "spolocnych casti", t.j. identifikatorov MODL_SPOL_CAST_...;
- * musi byt o jedno vacsia ako poslena, t.j. MODL_SPOL_CAST_NEBRAT */
+// najviac MAX_MODL_SPOL_CAST "spolocnych casti", t.j. identifikatorov MODL_SPOL_CAST_...; musi byt o jedno vacsia ako poslena, t.j. MODL_SPOL_CAST_NEBRAT
 
 #define MODL_SPOL_CAST_NEURCENA           0
 #define MODL_SPOL_CAST_DUCH_PAST_KNAZ     1
@@ -595,32 +588,29 @@ extern const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #define MODL_SPOL_CAST_DUCH_PAST_PAPEZ    3
 #define MODL_SPOL_CAST_UCITEL_CIRKVI      4
 #define MODL_SPOL_CAST_APOSTOL            5
-#define MODL_SPOL_CAST_MUCENIK            6 /* muz */
+#define MODL_SPOL_CAST_MUCENIK            6 // muz
 #define MODL_SPOL_CAST_VIAC_MUCENIKOV     7
 #define MODL_SPOL_CAST_PANNA_MARIA        8
 #define MODL_SPOL_CAST_SV_MUZ_REHOLNIK    9
-#define MODL_SPOL_CAST_SV_MUZ            10 /* jeden */
-#define MODL_SPOL_CAST_PANNA             11 /* jedna */
+#define MODL_SPOL_CAST_SV_MUZ            10 // jeden
+#define MODL_SPOL_CAST_PANNA             11 // jedna
 #define MODL_SPOL_CAST_SV_ZENA_REHOLNIK  12
-#define MODL_SPOL_CAST_SV_ZENA           13 /* jedna */
+#define MODL_SPOL_CAST_SV_ZENA           13 // jedna
 #define MODL_SPOL_CAST_DUCH_PAST_VIACERI 14
-#define MODL_SPOL_CAST_MUCENICA          15 /* zena */
+#define MODL_SPOL_CAST_MUCENICA          15 // zena
 #define MODL_SPOL_CAST_SV_ZENA_VYCH      16
 #define MODL_SPOL_CAST_SV_MUZ_VYCH       17
 #define MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL 18
 #define MODL_SPOL_CAST_SV_MUZ_SKUTKYMIL  19
 #define MODL_SPOL_CAST_SV_ZENA_VIACERE   20
-#define MODL_SPOL_CAST_SV_MUZ_VIACERI    21 /* viaceri */
-#define MODL_SPOL_CAST_PANNY_VIACERE     22 /* viacere */
-/* nasledovne dve pridane 29/03/2000A.D. */
+#define MODL_SPOL_CAST_SV_MUZ_VIACERI    21 // viaceri
+#define MODL_SPOL_CAST_PANNY_VIACERE     22 // viacere
 #define MODL_SPOL_CAST_POSVIACKA_CHRAMU  23
 #define MODL_SPOL_CAST_ZA_ZOSNULYCH      24
-/* MODL_SPOL_CAST_NEBRAT musi byt posledna, napr. kvoli "while"
- * v dnes.cpp::showPrayer();
- * ale predsa mensia ako MAX_MODL_SPOL_CAST */
-#define MODL_SPOL_CAST_SV_ZENA_MANZ      25 /* pridanÈ 2006-08-07 pre t˝ch, Ëo ûili v manûelstve */
-#define MODL_SPOL_CAST_SV_MUZ_MANZ       26 /* pridanÈ 2006-08-07 pre t˝ch, Ëo ûili v manûelstve */
-#define MODL_SPOL_CAST_NEBRAT            27 /* nechce zo spol. casti */
+// MODL_SPOL_CAST_NEBRAT musi byt posledna, napr. kvoli "while" v dnes.cpp::showPrayer(); ale predsa mensia ako MAX_MODL_SPOL_CAST
+#define MODL_SPOL_CAST_SV_ZENA_MANZ      25 // pre t˝ch, Ëo ûili v manûelstve
+#define MODL_SPOL_CAST_SV_MUZ_MANZ       26 // pre t˝ch, Ëo ûili v manûelstve
+#define MODL_SPOL_CAST_NEBRAT            27 // nechce zo spol. casti
 #define POCET_SPOL_CASTI	MAX_MODL_SPOL_CAST - 1
 
 //#define STR_MODL_CEZ_DEN_ZALMY_ZO_DNA        "beûnej"
@@ -634,39 +624,34 @@ extern const char *str_modl_cez_den_doplnkova_psalmodia[POCET_JAZYKOV + 1];
 #define		STR_MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA	str_modl_cez_den_doplnkova_psalmodia[_global_jazyk]
 #endif
 
-/* a pre tieto - vyssie uvedene - konstanty aj retazce...
- * -- malo by ich byt do MAX_MODL_SPOL_CAST */
+// a pre tieto - vyssie uvedene - konstanty aj retazce... -- malo by ich byt do MAX_MODL_SPOL_CAST
 //extern const char *nazov_spolc[MODL_SPOL_CAST_NEBRAT + 1];
 extern const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1];
 #ifndef		nazov_spolc
 #define		nazov_spolc(a)	nazov_spolc_jazyk[a][_global_jazyk]
 #endif
 
-/* a pre tieto konstanty aj retazce -- nazvy suborov
- * -- malo by ich byt do MAX_MODL_SPOL_CAST */
-/* sc_rh == spolocna cast pre reholnikov / reholnice;
- * sc_skm == spolocna cast pre tych, co konali skutky milosrdenstva ;
- * sc_vv == spolocna cast pre vychovavatelov;
- * zosnuli == oficium za zosnulych;
- */
+// a pre tieto konstanty aj retazce -- nazvy suborov -- malo by ich byt do MAX_MODL_SPOL_CAST
+// sc_rh == spolocna cast pre reholnikov / reholnice;
+// sc_skm == spolocna cast pre tych, co konali skutky milosrdenstva ;
+// sc_vv == spolocna cast pre vychovavatelov;
+// zosnuli == oficium za zosnulych;
 extern const char *nazov_spolc_htm[MODL_SPOL_CAST_NEBRAT + 1];
-/* a pre tieto konstanty aj retazce -- nazvy kotiev
- * -- malo by ich byt do MAX_MODL_SPOL_CAST */
+// a pre tieto konstanty aj retazce -- nazvy kotiev -- malo by ich byt do MAX_MODL_SPOL_CAST
 extern const char *nazov_spolc_ANCHOR[MODL_SPOL_CAST_NEBRAT + 1];
 
-#define ANCHOR_SPOL_CAST_DUCH_PAST "SCDP" /* 23/02/2000A.D. */
-/* vacsinu veci maju duchovni pastieri spolocnych;
- * odlisnosti: su v nazov_spolc_ANCHOR[] */
-#define ANCHOR_SPOL_CAST_JEDEN_MUCENIK "SCJM" /* 23/02/2000A.D. */
-/* na sviatok jedneho mucenika sa rozhoduje, ci ide o muza alebo zenu
- * v niektorych pripadoch; odlisnosti: su v nazov_spolc_ANCHOR[] */
-#define ANCHOR_SPOL_CAST_PANNA_MUCENICA "SCAM" /* 23/02/2000A.D. */
-/* na sviatok vychovavatelov: nevieme (a je jedno), ci ide o muza alebo
- * zenu -- ked berieme z fajlu sc_vv.htm; 29/02/2000A.D.
+#define ANCHOR_SPOL_CAST_DUCH_PAST "SCDP"
+// vacsinu veci maju duchovni pastieri spolocnych; odlisnosti: su v nazov_spolc_ANCHOR[]
+#define ANCHOR_SPOL_CAST_JEDEN_MUCENIK "SCJM"
+// na sviatok jedneho mucenika sa rozhoduje, ci ide o muza alebo zenu | v niektorych pripadoch; odlisnosti: su v nazov_spolc_ANCHOR[]
+#define ANCHOR_SPOL_CAST_PANNA_MUCENICA "SCAM"
+//  na sviatok vychovavatelov: nevieme (a je jedno), ci ide o muza alebo zenu -- ked berieme z fajlu sc_vv.htm
+/*
 #define ANCHOR_SPOL_CAST_VYCHOVAVATEL "SCVV"
-#define FILE_SPOL_CAST_VYCHOVAVATEL "sc_vv.htm" */
-/* na sviatok tych, co konali skutky milosrdenstva: nevieme (a je jedno),
- * ci ide o muza alebo zenu -- ked berieme z fajlu sc_skm.htm; 29/02/2000A.D.
+#define FILE_SPOL_CAST_VYCHOVAVATEL "sc_vv.htm"
+*/
+// na sviatok tych, co konali skutky milosrdenstva: nevieme (a je jedno), ci ide o muza alebo zenu -- ked berieme z fajlu sc_skm.htm
+/*
 #define ANCHOR_SPOL_CAST_SKUTKYMIL "SCSKM"
 #define FILE_SPOL_CAST_SKUTKYMIL "sc_skm.htm"
 */ // je to v poli... v hodin.h
@@ -678,49 +663,33 @@ struct sc{
 };
 typedef struct sc _struct_sc;
 
-/* 2005-07-27: zaveden· nov· premenn· v ötrukt˙re: typslav_lokal
- * urËen· niesù öpeci·lnu inform·ciu o tom, Ëi danÈ sl·venie je lok·lne.
- * ötandardne 0 = bez öpeci·lnej lokaliz·cie.
- *
- * 2006-08-19: pridan· premenn· pre liturgick˙ farbu
- *
- * 2010-08-03: pridan· premenn· pre öpecifik·ciu, o ak˝ kalend·r ide (kalendar): vöeobecn˝ danej cirkevnej provincie alebo nejak˝ rehoæn˝ a pod.
- *
- */
+// 2005-07-27: zaveden· nov· premenn· v ötrukt˙re: typslav_lokal urËen· niesù öpeci·lnu inform·ciu o tom, Ëi danÈ sl·venie je lok·lne.
+// ötandardne 0 = bez öpeci·lnej lokaliz·cie.
+// 2006-08-19: pridan· premenn· pre liturgick˙ farbu
+// 2010-08-03: pridan· premenn· pre öpecifik·ciu, o ak˝ kalend·r ide (kalendar): vöeobecn˝ danej cirkevnej provincie alebo nejak˝ rehoæn˝ a pod.
 struct dm{
-	short int den;        /* cislo dna mesiaca (1--31) */
-	short int mesiac;     /* cislo mesiaca (1--12) */
+	short int den;        // cislo dna mesiaca (1--31)
+	short int mesiac;     // cislo mesiaca (1--12)
 	short int rok;        // rok
-	short int denvt;      /* cislo dna v tyzdni (0--6) DEN_... */
-	short int denvr;      /* cislo dna v roku (1--365/366) */ /* deÚ v roku */
-	/* toto boli "obcianske" zalezitosti */
-	char litrok;    /* liturgicky rok ('A'--'C') */
-	short int tyzden;     /* tyzden v danom liturgickom obdobi */
-	short int tyzzal;     /* tyzden v zaltari (vacsinou ((tyzden - 1) % 4) + 1) */
-	short int litobd;     /* liturgicke obdobie, OBD_... */
-	short int typslav;    /* typ slavenia (1--5): SLAV_... */
-	short int typslav_lokal;    /* lok·lny typ slavenia : LOKAL_SLAV_... */
-	short int smer;       /* poradove cislo z c.59 Vseobecnych smernic
-						  * o liturgii hodin a kalendari */
-	short int prik;		 /* ci je to prikazany sviatok alebo nie:
-						  * PRIKAZANY_SVIATOK resp. NEPRIKAZANY_SVIATOK */
-	int spolcast;		 /* spolocna cast -- pridane 09/02/2000A.D.,
-						  * zakodovane data pre svatych o tom, z akej spolocnej
-						  * casti sa ma modlit;
-						  * obsahuje max. 3 spolocne casti vo formate
-						  *
-						  * spolcast == a1 + a2 * MAX + a3 * MAX * MAX,
-						  *
-						  * kde
-						  * - MAX je MAX_MODL_SPOL_CAST,
-						  * - a1, a2, a3 su konstanty MODL_SPOL_CAST_...
-						  *   (v poradi a1, ak druhe tak a2, ak tretie tak aj a3)
-						  *
-						  * _encode_..., _decode_spol_cast();
-						  */
-	char meno[MENO_SVIATKU]; /* nazov prip. sviatku */
-	short int farba;     /* liturgick· farba pre sl·venie */
-	short int kalendar;  /* öpecifik·cia, o ak˝ kalend·r ide: vöeobecn˝ danej cirkevnej provincie alebo nejak˝ rehoæn˝ a pod. */
+	short int denvt;      // cislo dna v tyzdni (0--6) DEN_...
+	short int denvr;      // cislo dna v roku (1--365/366) -- deÚ v roku
+	// toto boli "obcianske" zalezitosti
+	char litrok;          // liturgicky rok ('A'--'C')
+	short int tyzden;     // tyzden v danom liturgickom obdobi
+	short int tyzzal;     // tyzden v zaltari (vacsinou ((tyzden - 1) % 4) + 1)
+	short int litobd;     // liturgicke obdobie, OBD_...
+	short int typslav;    // typ slavenia (1--5): SLAV_...
+	short int typslav_lokal; // lok·lny typ slavenia : LOKAL_SLAV_...
+	short int smer;       // poradove cislo z c.59 Vseobecnych smernic o liturgii hodin a kalendari
+	short int prik;		  // ci je to prikazany sviatok alebo nie: PRIKAZANY_SVIATOK resp. NEPRIKAZANY_SVIATOK
+	int spolcast;		  // spolocna cast -- zakodovane data pre svatych o tom, z akej spolocnej casti sa ma modlit;
+						  // obsahuje max. 3 spolocne casti vo formate spolcast == a1 + a2 * MAX + a3 * MAX * MAX,
+						  // kde -- MAX je MAX_MODL_SPOL_CAST,
+						  //     -- a1, a2, a3 su konstanty MODL_SPOL_CAST_... (v poradi a1, ak druhe tak a2, ak tretie tak aj a3)
+						  // _encode_..., _decode_spol_cast();
+	char meno[MENO_SVIATKU]; // nazov prip. sviatku
+	short int farba;      // liturgick· farba pre sl·venie
+	short int kalendar;   // öpecifik·cia, o ak˝ kalend·r ide: vöeobecn˝ danej cirkevnej provincie alebo nejak˝ rehoæn˝ a pod.
 };
 typedef struct dm _struct_dm;
 
@@ -751,36 +720,36 @@ typedef struct dm _struct_dm;
 #define MES_OKT 9
 #define MES_NOV 10
 #define MES_DEC 11
-/* neznamy mesiac */
+// neznamy mesiac
 #define UNKNOWN_MESIAC	12
 #define POCET_MESIACOV	12
-/* vsetky mesiace */
+// vsetky mesiace
 #define VSETKY_MESIACE	13
 #define STR_VSETKY_MESIACE  "*"
-/* vsetky dni */
+// vsetky dni
 #define VSETKY_DNI   32
 #define STR_VSETKY_DNI  "*"
 
 // liturgickÈ obdobia 
 // 2011-01-26: ËÌsla konötant·m pridelenÈ tak, aby reöpektovali plynulosù liturgickÈho roka od zv‰zku I brevi·ra
 //OBD_ADVENTNE
-#define OBD_ADVENTNE_I             0 /* do 16. decembra */
-#define OBD_ADVENTNE_II            1 /* po 16. decembri */
+#define OBD_ADVENTNE_I             0 // do 16. decembra
+#define OBD_ADVENTNE_II            1 // po 16. decembri
 //OBD_VIANOCNE
-#define OBD_OKTAVA_NARODENIA       2 /* narodenie Pana -- 1. jan. */
-#define OBD_VIANOCNE_I             3 /* do slavnosti zjavenia pana */
-#define OBD_VIANOCNE_II            4 /* po slavnosti zjavenia pana */
+#define OBD_OKTAVA_NARODENIA       2 // narodenie Pana -- 1. jan.
+#define OBD_VIANOCNE_I             3 // do slavnosti zjavenia pana
+#define OBD_VIANOCNE_II            4 // po slavnosti zjavenia pana
 //OBD_CEZ_ROK
 #define OBD_CEZ_ROK                5
 //OBD_POSTNE
-#define OBD_POSTNE_I               6 /* do soboty v piatom tyzdni */
-#define OBD_POSTNE_II_VELKY_TYZDEN 7 /* velky tyzden */
+#define OBD_POSTNE_I               6 // do soboty v piatom tyzdni
+#define OBD_POSTNE_II_VELKY_TYZDEN 7 // velky tyzden
 //OBD_VELKONOCNE_TROJDNIE
-#define OBD_VELKONOCNE_TROJDNIE    8 /* umucenia a zmrtvychvstania Pana */
+#define OBD_VELKONOCNE_TROJDNIE    8 // umucenia a zmrtvychvstania Pana
 //OBD_VELKONOCNE
-#define OBD_VELKONOCNA_OKTAVA      9 /* velkonocna nedela -- 2. velk. ne */
-#define OBD_VELKONOCNE_I          10 /* do nanebovstupenia pana */
-#define OBD_VELKONOCNE_II         11 /* po nanebovstupeni pana */
+#define OBD_VELKONOCNA_OKTAVA      9 // velkonocna nedela -- 2. velk. ne
+#define OBD_VELKONOCNE_I          10 // do nanebovstupenia pana
+#define OBD_VELKONOCNE_II         11 // po nanebovstupeni pana
 
 #define	POCET_OBDOBI	11
 
@@ -916,6 +885,8 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_KONSEKR_KOSTOLY_HU		70
 #define LOKAL_SLAV_SZEGED_CSAN_EGYH2        71
 #define LOKAL_SLAV_PECS_PATRON              72
+#define LOKAL_SLAV_SZOMBATHELYI_PATRON      73
+#define LOKAL_SLAV_SZEKESFEHERVAR_EGYH      74
 
 // 2010-08-03: pridan˝ kalend·r
 #define KALENDAR_NEURCENY                   0
@@ -1002,6 +973,7 @@ extern const char char_nedelny_cyklus[POCET_NEDELNY_CYKLUS];
 
 #define	OD_VELKEJ_NOCI_PO_POPOLCOVU_STR		-46
 #define OD_VELKEJ_NOCI_PO_NANEBOSTUPENIE	39
+#define OD_VELKEJ_NOCI_PO_NANEBOSTUPENIE_NE	42
 #define	OD_VELKEJ_NOCI_PO_ZOSLANIE_DUCHA	49
 
 // sposob pisania slov
@@ -1052,7 +1024,7 @@ extern const char *nazov_Mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 extern const char *nazov_MESIACA_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_MESIACA(a)	nazov_MESIACA_jazyk[a][_global_jazyk]
 
-/* 2007-03-20: pridan˝ genitÌv n·zvu mesiaca kvÙli latinËine */
+// 2007-03-20: pridan˝ genitÌv n·zvu mesiaca kvÙli latinËine
 extern const char *nazov_mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca_gen(a)	nazov_mesiaca_gen_jazyk[a][_global_jazyk]
 
@@ -1115,35 +1087,33 @@ typedef struct lrok _struct_lrok;
 //---------------------------------------------------------------------
 // globalne premenne -- su definovane v dnes.cpp (18/02/2000A.D.)
 
-/* globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
- * pouziva ju void nove_rozbor_dna() funkcia */
+// globalna premenna, do ktorej sa ukladaju info o analyzovanom dni pouziva ju void nove_rozbor_dna() funkcia
 
 extern _struct_dm *_global_den_ptr;
 /*extern _struct_dm _global_den;*/
 #define _global_den (*_global_den_ptr)
 
-/* globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu */
+// globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu
 
 extern _struct_dm *_global_pm_sobota_ptr;
 /*extern _struct_dm _global_pm_sobota;*/
 #define _global_pm_sobota (*_global_pm_sobota_ptr)
 
-/* globalne premenne, do ktorych sa ukladaju info o analyzovanom dni
- * o sviatkoch svatych */
+// globalne premenne, do ktorych sa ukladaju info o analyzovanom dni o sviatkoch svatych
 
 extern _struct_dm *_global_svaty1_ptr;
 /*extern _struct_dm _global_svaty1;*/
 #define _global_svaty1 (*_global_svaty1_ptr)
 
 extern _struct_dm *_global_svaty2_ptr;
-/*extern _struct_dm _global_svaty2;*/ /* v pripade, ze je viac lubovolnych spomienok */
+/*extern _struct_dm _global_svaty2;*/ // v pripade, ze je viac lubovolnych spomienok
 #define _global_svaty2 (*_global_svaty2_ptr)
 
 extern _struct_dm *_global_svaty3_ptr;
-/*extern _struct_dm _global_svaty3;*/ /* v pripade, ze je viac lubovolnych spomienok */
+/*extern _struct_dm _global_svaty3;*/ // v pripade, ze je viac lubovolnych spomienok
 #define _global_svaty3 (*_global_svaty3_ptr)
 
-/* globalne premenne obsahujuce data modlitbach */
+// globalne premenne obsahujuce data modlitbach
 
 extern _type_1vespery     *_global_modl_prve_vespery_ptr;
 /*extern _type_1vespery      _global_modl_prve_vespery;*/
@@ -1157,7 +1127,6 @@ extern _type_invitatorium *_global_modl_invitatorium_ptr;
 /*extern _type_invitatorium  _global_modl_invitatorium;*/
 #define _global_modl_invitatorium (*_global_modl_invitatorium_ptr)
 
-/* 2003-08-13 pridane posvatne citanie */
 extern _type_posv_citanie *_global_modl_posv_citanie_ptr;
 #define _global_modl_posv_citanie (*_global_modl_posv_citanie_ptr)
 
@@ -1175,7 +1144,7 @@ extern _type_cez_den_3     *_global_modl_cez_den_3_ptr;
 /*extern _type_cez_den_3     _global_modl_cez_den_3;*/
 #define _global_modl_cez_den_3 (*_global_modl_cez_den_3_ptr)
 
-/* pridane 2003-08-13 pre lahsie pouzitie */
+// pridane 2003-08-13 pre lahsie pouzitie
 #define _global_modl_predpol  _global_modl_cez_den_9
 #define _global_modl_napol    _global_modl_cez_den_12
 #define _global_modl_popol    _global_modl_cez_den_3
@@ -1188,37 +1157,29 @@ extern _type_kompletorium *_global_modl_kompletorium_ptr;
 /*extern _type_kompletorium _global_modl_kompletorium;*/
 #define _global_modl_kompletorium (*_global_modl_kompletorium_ptr)
 
-/* globalna premenna, ktora obsahuje MODL_... */
+// globalna premenna, ktora obsahuje MODL_...
 extern short int _global_modlitba;
 
-/* globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_...
- * linku tvaru PATH_CGI(SCRIPT_NAME) ++ "?param1=val&param2=val&..." */
+// globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru PATH_CGI(SCRIPT_NAME) ++ "?param1=val&param2=val&..."
 extern char *_global_link_ptr;
 /*extern char _global_link[MAX_STR];*/
 #define _global_link _global_link_ptr
 
-extern char *_global_pom_str; /* pomocny string pre velke pismena */
+extern char *_global_pom_str; // pomocny string pre velke pismena
 /*extern char _global_pom_str[MAX_STR];*/
 
-/* globalna premenna, do ktorej sa ukladaju info o jednotlivych
- * vyznacnych liturgickych dni, pouzivaju void _dm_...() funkcie
- * a void analyzuj_rok() funkcia */
+// globalna premenna, do ktorej sa ukladaju info o jednotlivych vyznacnych liturgickych dni, pouzivaju void _dm_...() funkcie a void analyzuj_rok() funkcia
 extern _struct_dm *_global_result_ptr;
 /*extern _struct_dm _global_result;*/
 #define _global_result (*_global_result_ptr)
 
-/* globalna premenna, do ktorej sa uklada info o liturgickom roku
- * pouziva void analyzuj_rok() funkcia */
+// globalna premenna, do ktorej sa uklada info o liturgickom roku pouziva void analyzuj_rok() funkcia
 extern _struct_lrok *_global_r_ptr;
 /*extern _struct_lrok _global_r;*/
 #define _global_r (*_global_r_ptr)
 
-/* globalna premenna, do ktorej sviatky_svatych() uklada
- * pocet sviatkov (de facto lubovolnych spomienok), ktore
- * pripadaju na dany den
- * -- v podstate neuklada do nej, ale v _rozbor_dna() sa do nej priradi
- * vysledok (navratova hodnota) z sviatky_svatych()
- */
+// globalna premenna, do ktorej sviatky_svatych() uklada pocet sviatkov (de facto lubovolnych spomienok), ktore pripadaju na dany den
+// -- v podstate neuklada do nej, ale v _rozbor_dna() sa do nej priradi vysledok (navratova hodnota) z sviatky_svatych()
 extern short int _global_pocet_svatych;
 
 #define OPT_0_SPECIALNE            0
@@ -1230,12 +1191,15 @@ extern short int _global_pocet_svatych;
 // glob·lna premenn· -- pole -- obsahuj˙ca options; pÙvodne to boli glob·lne premennÈ _global_opt 1..9 atÔ., obsahuj˙ pom_MODL_OPT...
 extern short int _global_opt[POCET_GLOBAL_OPT];
 
-#define POCET_OPT_0_SPECIALNE               3 // jednotlivÈ komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               6 // jednotlivÈ komponenty option 0 -- bity pre force option 0
 extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: ˙prava v˝znamu (a interpret·cie) option 0 ==  OPT_0_SPECIALNE (zobraziù/nezobraziù "pridan˙ hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                     1
 #define BIT_OPT_0_REFERENCIE                2
 #define BIT_OPT_0_CITANIA                   4
+#define BIT_OPT_0_ZJAVENIE_PANA_NEDELA      8 // Ëi sa Zjavenie P·na sl·vi v nedeæu (1) alebo nie (teda 6. janu·ra; hodnota 0 == default)
+#define BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA  16 // Ëi sa Nanebovst˙penie P·na sl·vi v nedeæu (1) alebo nie (teda vo ötvrtok, na 40.-ty deÚ po VeækonoËnej nedeli; hodnota 0 == default)
+#define BIT_OPT_0_TELAKRVI_NEDELA          32 // Ëi sa Najsv. Kristovho tela a krvi sl·vi v nedeæu (1) alebo nie (teda vo ötvrtok, 11.-ty deÚ po ZoslanÌ Ducha Sv.; hodnota 0 == default)
 
 #define POCET_OPT_1_CASTI_MODLITBY         12 // jednotlivÈ komponenty option 1 -- bity pre force option 1
 extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
@@ -1281,12 +1245,10 @@ extern char _global_string_modlitba[SMALL];
 extern char *_global_buf; // 2006-08-01: t˙to premenn˙ tieû alokujeme
 extern char *_global_buf2; // 2006-08-01: t˙to premenn˙ tieû alokujeme
 
-// pridane 13/04/2000A.D.; definovane v breviar.cpp
 extern short int _global_linky;
 
-/* 2006-07-11: PridanÈ kvÙli jazykov˝m mut·ci·m (breviar.cpp) 
- * 2010-08-04: zmenenÈ _global_language na _global_jazyk (doteraz bolo len pomocou #define)
- */
+// 2006-07-11: PridanÈ kvÙli jazykov˝m mut·ci·m (breviar.cpp) 
+// 2010-08-04: zmenenÈ _global_language na _global_jazyk (doteraz bolo len pomocou #define)
 extern short int _global_jazyk;
 // 2010-08-04: pridanÈ kvÙli kalend·rom (napr. rehoæn˝), s˙visÌ s jazykov˝mi mut·ciami
 extern short int _global_kalendar;
@@ -1321,7 +1283,7 @@ extern const char *nazov_font_size_css[POCET_FONT_SIZE + 1];
 //---------------------------------------------------------------------
 
 //---------------------------------------------------------------------
-/* tu nasleduju funkcie(), ibaze by som inkludoval "liturgia.cpp" */
+// tu nasleduju funkcie(), ibaze by som inkludoval "liturgia.cpp"
 
 short int _allocate_global_var(void);
 short int _deallocate_global_var(void);
@@ -1332,11 +1294,11 @@ char *remove_diacritics(const char *input);
 char *convert_nonbreaking_spaces(const char *input);
 
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
-/* podæa toho, ako sa funkcia vol·, urËÌm case (pouûitie veæk˝ch/mal˝ch pÌsmen) */
+// podæa toho, ako sa funkcia vol·, urËÌm case (pouûitie veæk˝ch/mal˝ch pÌsmen)
 #define vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align)
 #define Vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_Case, typ, align)
 #define VYTVOR_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_CASE, typ, align)
-/* 2011-05-11: doplnen˝ nov˝ parameter align -- Ëi zarovnaù jednocifernÈ d·tumy (ËÌslovka dÚa) medzerou zæava */
+// 2011-05-11: doplnen˝ nov˝ parameter align -- Ëi zarovnaù jednocifernÈ d·tumy (ËÌslovka dÚa) medzerou zæava
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
 
 void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int prvy_ampersand);
@@ -1362,10 +1324,12 @@ unsigned char _nedelne_pismeno(short int den, short int mesiac, short int rok);
 unsigned char _nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok);
 char nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok);
 _struct_den_mesiac por_den_mesiac(short int poradie, short int rok);
+#ifdef FUNKCIE_PRE_SPECIALNE_DNI
 short int _svatej_rodiny(short int rok);
 short int _krst_krista_pana(short int rok);
 short int _popolcova_streda(short int rok);
 short int _nanebovstupenie(short int rok);
+#endif
 short int _zoslanie_ducha(short int rok);
 short int _prva_adventna_nedela(short int rok);
 _struct_den_mesiac prva_adventna_nedela(short int rok);
@@ -1388,18 +1352,10 @@ void _dm_velkonocna_nedela(short int rok, short int _vn);
 
 void analyzuj_rok(short int year);
 
-/* pridana 2003-08-07 */
-/* zapoznamkovana 2003-08-11 */
-#undef ZAPOZNAMKOVANE_2003_08_11
-#ifdef ZAPOZNAMKOVANE_2003_08_11
-void _init_dm(_struct_dm a);
-#endif
-
 #define UNKNOWN_PORADIE_SVATEHO 0
-/* 28/03/2000A.D.: naschval < 0, aby nebol problem s porovnanim s _global_pocet_svatych v _rozbor_dna() 
- * 2009-03-19: presunutÈ z breviar.cpp
- * 2009-03-27: po z˙fal˝ch pokusoch dnes - napokon som zistil, ûe uû je ˙plne jedno, ak˙ hodnotu bude t·to konötanta maù, preto som ju dal op‰ù na 0
- */
+// 28/03/2000A.D.: naschval < 0, aby nebol problem s porovnanim s _global_pocet_svatych v _rozbor_dna() 
+// 2009-03-19: presunutÈ z breviar.cpp
+// 2009-03-27: po z˙fal˝ch pokusoch dnes - napokon som zistil, ûe uû je ˙plne jedno, ak˙ hodnotu bude t·to konötanta maù, preto som ju dal op‰ù na 0
 
 // definovany 2003-08-11 na zaklade funkcie _init_dm() 
 // upravenÈ 2007-08-16, pretoûe sa pouûÌva aj v _main_dnes()
@@ -1571,5 +1527,5 @@ extern const char *html_text_batch_Back[POCET_JAZYKOV + 1];
 extern const char *html_text_batch_Prev[POCET_JAZYKOV + 1];
 extern const char *html_text_batch_Next[POCET_JAZYKOV + 1];
 
-#endif /* __LITURGIA_H_ */
+#endif // __LITURGIA_H_
 

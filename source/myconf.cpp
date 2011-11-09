@@ -192,7 +192,7 @@ void readConfig(void)
 								cfg_option_default[o][j] = atoi(hodnota);
 							}
 						}/* if(!strcmp(option, nazov_option)) */
-					}
+					}// if
 				}// for j
 			}// for o
 		}
