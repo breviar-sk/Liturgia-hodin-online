@@ -5657,7 +5657,7 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 			Log("\treùazec pom == %s; doplnkova_psalmodia == %d\n", pom, doplnkova_psalmodia);
 			if((doplnkova_psalmodia != MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA)){
 				if((som_v_tabulke == ANO) && (typ != EXPORT_DNA_JEDEN_DEN_LOCAL)){
-					Export("<form action=\"%s\">\n", pom);
+					Export("<form action=\"%s\" method=\"post\">\n", pom);
 				}
 				else{
 					Export("<br><a href=\"%s\" "HTML_CLASS_BUTTON">\n", pom);
@@ -5701,7 +5701,7 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 			Log("\treùazec pom == %s; doplnkova_psalmodia == %d\n", pom, doplnkova_psalmodia);
 			// 2011-12-01: pÙvodne tu bola copy-paste podmienka if((doplnkova_psalmodia != MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA)), avöak nesmie tu byù
 			if((som_v_tabulke == ANO) && (typ != EXPORT_DNA_JEDEN_DEN_LOCAL)){
-				Export("<form action=\"%s\">\n", pom);
+				Export("<form action=\"%s\" method=\"post\">\n", pom);
 			}
 			else{
 				Export("<br><a href=\"%s\" "HTML_CLASS_BUTTON">\n", pom);
