@@ -129,12 +129,10 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}// else
 	Log("_global_css_font_family == %s...\n", _global_css_font_family);
 
-	/*
-	 * 2011-05-13: doplnené: nastavenie font-size
-	 */
+	// 2011-05-13: doplnené: nastavenie font-size
 	if(_global_font_size == FONT_SIZE_UNDEF){
 		mystrcpy(_global_css_font_size, STR_EMPTY, SMALL);
-	}/* (_global_font_size == FONT_SIZE_UNDEF) */
+	}// (_global_font_size == FONT_SIZE_UNDEF)
 	else if(_global_font_size == FONT_SIZE_CSS){
 		mystrcpy(_global_css_font_size, DEFAULT_FONT_SIZE_INHERIT, SMALL);
 	}// (_global_font_size == FONT_SIZE_CSS)

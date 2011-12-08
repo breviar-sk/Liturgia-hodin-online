@@ -254,19 +254,21 @@ extern short int _global_opt_export_date_format;
 #define MIESTNE_SLAVENIE_LOKAL_SVATY2 (((_global_svaty1.kalendar == KALENDAR_CZ_OP) || (_global_svaty1.kalendar == KALENDAR_SK_CSSR) || (_global_svaty1.kalendar == KALENDAR_SK_SVD) || (_global_svaty1.kalendar == KALENDAR_SK_SJ) || (_global_svaty1.kalendar == KALENDAR_SK_SDB) || (_global_svaty1.kalendar == KALENDAR_SK_OFM) || (_global_svaty2.typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty2.smer == 4) || (_global_svaty2.smer == 8) || (_global_svaty2.smer == 11)))
 #define MIESTNE_SLAVENIE_LOKAL_SVATY3 (((_global_svaty1.kalendar == KALENDAR_CZ_OP) || (_global_svaty1.kalendar == KALENDAR_SK_CSSR) || (_global_svaty1.kalendar == KALENDAR_SK_SVD) || (_global_svaty1.kalendar == KALENDAR_SK_SJ) || (_global_svaty1.kalendar == KALENDAR_SK_SDB) || (_global_svaty1.kalendar == KALENDAR_SK_OFM) || (_global_svaty3.typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty3.smer == 4) || (_global_svaty3.smer == 8) || (_global_svaty3.smer == 11)))
 
-/* 2011-03-18: presunuté samostatne na jedno jediné miesto */
+// 2011-03-18: presunuté samostatne na jedno jediné miesto
 #define PODMIENKA_EXPORTOVAT_KALENDAR ( \
 ((_global_jazyk == JAZYK_SK) && !((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK) )) \
 || ((_global_jazyk == JAZYK_CZ) && !((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ) )) \
 || ((_global_jazyk == JAZYK_CZ_OP) && !((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ) || (_global_kalendar == KALENDAR_CZ_OP) )) \
 )
 
+#define PODMIENKA_EXPORTOVAT_FONTSIZE ( (_global_font_size != FONT_SIZE_UNDEF) && (_global_font_size != FONT_SIZE_CSS) )
+
+#define PODMIENKA_EXPORTOVAT_FONT ( (_global_font != FONT_UNDEF) && (_global_font != FONT_CSS) && (_global_font != FONT_CHECKBOX) )
+
 #ifndef OS_linux
-/* kedysi bolo void main;
- * 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 
- */
+// kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 
 int main(int argc, char **argv);
-#endif /* OS_linux */
+#endif // OS_linux
 
 #if (_MSC_VER >= 1400)       // VC8+ 2007-02-12 kvôli vc++ 2005 express edition
 	#pragma warning(disable : 4996)    // disable all deprecation warnings

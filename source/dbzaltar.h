@@ -24,19 +24,19 @@
 
 #include "liturgia.h"
 
-#include "myexpt.h" /* export do suboru alebo na konzolu printf */
+#include "myexpt.h" // export do suboru alebo na konzolu printf
 #include "mylog.h"
 #include <string.h>
-#include "myhpage.h" /* kvôli hlavicka() ¡*/
+#include "myhpage.h" // kvôli hlavicka()
 
-/* aby sa dala pouzivat v zaltar(); */
+// aby sa dala pouzivat v zaltar();
 short int sviatky_svatych(short int, short int);
 short int sviatky_svatych(short int, short int, short int);
-short int sviatky_svatych(short int, short int, short int, short int); /* spustam druhykrat */
+short int sviatky_svatych(short int, short int, short int, short int); // spustam druhykrat
 
 extern const char *html_title[POCET_JAZYKOV + 1];
 
-void set_popis_dummy(void); /* pridane 05/04/2000A.D. */
+void set_popis_dummy(void);
 
 /* zaltar();
  *
@@ -58,19 +58,21 @@ void zaltar_zvazok(short int den, short int tyzzal, short int obdobie);
 
 void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short int tyzzal, short int poradie_svateho);
 
-/* nasledujuce boli v dbzaltar.cpp, presunute 2003-08-13 */
+short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
+
+// nasledujuce boli v dbzaltar.cpp, presunute 2003-08-13
 
 #define VELKONOCNA_PRIPONA  "VE"
 #define POSTNA_PRIPONA      "PO"
 #define CEZROCNA_PRIPONA    "CR"
 
-/* anchor identifiers */
-#define ANCHOR_POPIS        "POPIS" /* pridane 05/04/2000A.D. */
+// anchor identifiers
+#define ANCHOR_POPIS        "POPIS"
 #define ANCHOR_HYMNUS       "HYMNUS"
 #define ANCHOR_ANTIFONA1    "ANT1"
 #define ANCHOR_ANTIFONA2    "ANT2"
 #define ANCHOR_ANTIFONA3    "ANT3"
-#define ANCHOR_ANTIFONY     "ANTx" /* pridané 2007-10-02 pre rovnaké antifóny 1., 2. a 3. - modlitba cez deò */
+#define ANCHOR_ANTIFONY     "ANTx" // pridané 2007-10-02 pre rovnaké antifóny 1., 2. a 3. - modlitba cez deò
 #define ANCHOR_ANTIFONA1V   "ANT1V"
 #define ANCHOR_ANTIFONA2V   "ANT2V"
 #define ANCHOR_ANTIFONA3V   "ANT3V"

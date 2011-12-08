@@ -74,7 +74,7 @@ const char *str_modlitby[POCET_MODLITIEB + 1] =
 
 // the names of the prayers, lowercase (sample text)
 const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
-{{"invitatÛrium", "invitato¯", "Invitatory", "invitatorium", "", "Pozv·nÌ k modlitbÏ", "im·ds·gra hÌv·s" }
+{{"invitatÛrium", "uvedenÌ do prvnÌ modlitby dne", "Invitatory", "invitatorium", "", "Pozv·nÌ k modlitbÏ", "im·ds·gra hÌv·s" }
 , {"posv‰tnÈ ËÌtanie", "modlitba se ËtenÌm", "Office of Readings", "officium lectionis", "", "Modlitba se ËtenÌm", "olvasm·nyos imaÛra" }
 , {"rannÈ chv·ly", "rannÌ chv·ly", "Laudes", "laudes matutinae", "", "RannÌ chv·ly", "reggeli dicsÈret" }
 , {"modlitba predpoludnÌm", "modlitba dopoledne", "Terce", "tertia", "", "Tercie", "dÈlelıtt" }
@@ -97,7 +97,7 @@ const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 
 // the names of the prayers, sentence case (Sample text)
 const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
-{{"InvitatÛrium", "Invitato¯", "Invitatory", "Invitatorium", "", "Pozv·nÌ k modlitbÏ" , "Im·ds·gra hÌv·s" }
+{{"InvitatÛrium", "UvedenÌ do prvnÌ modlitby dne", "Invitatory", "Invitatorium", "", "Pozv·nÌ k modlitbÏ" , "Im·ds·gra hÌv·s" }
 , {"Posv‰tnÈ ËÌtanie", "Modlitba se ËtenÌm", "Office of Readings", "Officium lectionis", "", "Modlitba se ËtenÌm" , "Olvasm·nyos imaÛra" }
 , {"RannÈ chv·ly", "RannÌ chv·ly", "Laudes", "Laudes matutinae", "", "RannÌ chv·ly" , "Reggeli dicsÈret" }
 , {"Modlitba predpoludnÌm", "Modlitba dopoledne", "Terce", "Tertia", "", "Tercie" , "DÈlelıtt" }
@@ -105,7 +105,7 @@ const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , {"Modlitba popoludnÌ", "Modlitba odpoledne", "None", "Nona", "", "Nona" , "DÈlut·n" }
 , {"Veöpery", "Neöpory", "Vesperae", "Vesperae", "", "VeËernÌ chv·ly" , "Esti dicsÈret" }
 , {"KompletÛrium", "Komplet·¯", "Completary", "Completorio", "", "Komplet·¯" , "Befejezı imaÛra" }
-, {"Neureen·", "Neureena", "not-defined", "No data", "", "NeurËen·" , "Nem azonosÌtott"}
+, {"NeurËen·", "NeurËena", "not-defined", "No data", "", "NeurËen·" , "Nem azonosÌtott"}
 , {"PrvÈ veöpery", "PrvnÌ neöpory", "1st Vesperae", "I Vesperae", "", "PrvnÌ veËernÌ chv·ly" , "I. Esti dicsÈret" }
 , {"KompletÛrium po prv˝ch veöper·ch", "Komplet·¯ po prvnÌch neöpor·ch", "1st Completary", "I Completorio", "", "Komplet·¯ po prvnÌch veËernÌch chv·l·ch" , "Befejezı imaÛra I.e.d.ut·n" }
 , {"DruhÈ veöpery", "DruhÈ neöpory", "2nd Vesperae", "II Vesperae", "", "DruhÈ veËernÌ chv·ly" , "II. Esti dicsÈret" }
@@ -118,7 +118,7 @@ const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 
 // the names of the prayers, all caps case (SAMPLE TEXT)
 const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
-{{"INVITAT”RIUM", "INVITATOÿ", "INVITATORY", "INVITATORIUM", "", "POZV¡NÕ K MODLITBÃ" , "IM¡DS¡GRA HÕV¡S" }
+{{"INVITAT”RIUM", "UVEDENÕ DO PRVNÕ MODLITBY DNE", "INVITATORY", "INVITATORIUM", "", "POZV¡NÕ K MODLITBÃ" , "IM¡DS¡GRA HÕV¡S" }
 , {"POSVƒTN… »ÕTANIE", "MODLITBA SE »TENÕM", "OFFICE OF READINGS", "OFFICIUM LECTIONIS", "", "MODLITBA SE »TENÕM" , "OLVASM¡NYOS IMA”RA" }
 , {"RANN… CHV¡LY", "RANNÕ CHV¡LY", "LAUDES", "LAUDES MATUTINAE", "", "RANNÕ CHV¡LY" , "REGGELI DICS…RET" }
 , {"MODLITBA PREDPOLUDNÕM", "MODLITBA DOPOLEDNE", "TERCE", "TERTIA", "", "TERCIE" , "D…LEL’TT" }
@@ -126,7 +126,7 @@ const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , {"MODLITBA POPOLUDNÕ", "MODLITBA ODPOLEDNE", "NONE", "NONA", "", "NONA" , "D…LUT¡N" }
 , {"VEäPERY", "NEäPORY", "VESPERAE", "VESPERAE", "", "VE»ERNÕ CHV¡LY" , "ESTI DICS…RET" }
 , {"KOMPLET”RIUM", "KOMPLET¡ÿ", "COMPLETARY", "COMPLETORIO", "", "KOMPLET¡ÿ" , "BEFEJEZ’ IMA”RA" }
-, {"NEUREEN¡", "NEUREENA", "NOT-DEFINED", "NO DATA", "", "NEUR»EN¡" , "NEM AZONOSÕTOTT"}
+, {"NEUR»EN¡", "NEUR»ENA", "NOT-DEFINED", "NO DATA", "", "NEUR»EN¡" , "NEM AZONOSÕTOTT"}
 , {"PRV… VEäPERY", "PRVNÕ NEäPORY", "1ST VESPERAE", "I VESPERAE", "", "PRVNÕ VE»ERNÕ CHV¡LY" , "I. ESTI DICS…RET" }
 , {"KOMPLET”RIUM PO PRV›CH VEäPER¡CH", "KOMPLET¡ÿ PO PRVNÕCH NEäPOR¡CH", "1ST COMPLETARY", "I COMPLETORIO", "", "KOMPLET¡ÿ PO PRVNÕCH VE»ERNÕCH CHV¡L¡CH" , "BEFEJEZ’ IMA”RA I.E.D.UT¡N" }
 , {"DRUH… VEäPERY", "DRUH… NEäPORY", "2ND VESPERAE", "II VESPERAE", "", "DRUH… VE»ERNÕ CHV¡LY" , "II. ESTI DICS…RET" }
@@ -438,9 +438,9 @@ const char *nazov_slavenia_lokal[] =
 {""                                                                                                             // LOKAL_SLAV_NEURCENE
 ,"len v roûÚavskej katedr·le"                                                                                   // LOKAL_SLAV_ROZNAVA_KATEDRALA
 ,"hlavn˝ patrÛn Trnavskej arcidiecÈzy"                                                                          // LOKAL_SLAV_TRNAVA_PATRON
-,"v Bratislavskej a Trnavskej arcidiecÈze <br>a v Banskobystrickej, Koöickej, Nitrianskej a RoûÚavskej diecÈze" // LOKAL_SLAV_TT_BB_KE_NR_RO
+,"v Bratislavskej, Trnavskej a Koöickej arcidiecÈze <br>a v Banskobystrickej, Nitrianskej a RoûÚavskej diecÈze" // LOKAL_SLAV_TT_BB_KE_NR_RO
 ,"v Nitrianskej diecÈze sviatok hlavn˝ch patrÛnov"                                                              // LOKAL_SLAV_NITRA_PATRON
-,"len v Koöickej diecÈze"                                                                                       // LOKAL_SLAV_KOSICE
+,"len v Koöickej arcidiecÈze"                                                                                   // LOKAL_SLAV_KOSICE
 ,"len v Nitrianskej diecÈze"                                                                                    // LOKAL_SLAV_NITRA
 ,"len v Banskobystrickej diecÈze"                                                                               // LOKAL_SLAV_BYSTRICA
 ,"len v Spiöskej diecÈze"                                                                                       // LOKAL_SLAV_SPIS
@@ -450,7 +450,7 @@ const char *nazov_slavenia_lokal[] =
 ,"v Spiöskej diecÈze sviatok hlavnÈho patrÛna"                                                                  // LOKAL_SLAV_SPIS_PATRON
 ,"v Banskobystrickej diecÈze sviatok hlavnÈho patrÛna"                                                          // LOKAL_SLAV_BYSTRICA_PATRON
 ,"v Bratislavskej a Trnavskej arcidiecÈze <br>a v Banskobystrickej, Nitrianskej a RoûÚavskej diecÈze"           // LOKAL_SLAV_TT_BB_NR_RO
-,"v Koöickej diecÈze sviatok hlavnÈho patrÛna"                                                                  // LOKAL_SLAV_KOSICE_PATRON
+,"v Koöickej arcidiecÈze sviatok hlavnÈho patrÛna"                                                              // LOKAL_SLAV_KOSICE_PATRON
 ,"na Slovensku 5. j˙la, sl·vnosù; v EurÛpe sviatok"                                                             // LOKAL_SLAV_14_FEB_CYRIL_METOD
 ,"v RoûÚavskej diecÈze sviatok hlavnÈho patrÛna"                                                                // LOKAL_SLAV_ROZNAVA_PATRON
 ,"len v konsekrovan˝ch kostoloch"                                                                               // LOKAL_SLAV_KONSEKR_KOSTOLY
@@ -1277,12 +1277,15 @@ const char *html_text_Jednotlive_mesiace_roku[POCET_JAZYKOV + 1] = {
 	"<"HTML_SPAN_RED">Egyes hÛnapok %s-ben(-ban):</span>\n",
 };
 
+const char *str_doplnkova_psalmodia[POCET_JAZYKOV + 1] = 
+{"doplnkov· psalmÛdia", "ûalmy z doplÚovacÌho cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplnkov· psalmodie", "xxx" };
+
 const char *str_modl_cez_den_zalmy_zo_dna[POCET_JAZYKOV + 1] = 
 	{"beûnej psalmÛdie", "bÏûnÈ psalmodie", "ordinary psalmody", "___", "", "bÏûnÈ psalmodie", "hu_ordinary-psalter"};
 #define		STR_MODL_CEZ_DEN_ZALMY_ZO_DNA 	str_modl_cez_den_zalmy_zo_dna[_global_jazyk]
 
 const char *str_modl_cez_den_doplnkova_psalmodia[POCET_JAZYKOV + 1] = 
-	{"doplnkovej psalmÛdie", "doplÚkovÈ psalmodie", "supplementary psalmody", "psalmodia complementaris", "", "doplÚkovÈ psalmodie", "hu_suppl.-psalter"};
+	{"doplnkovej psalmÛdie", "doplÚovacÌho cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplÚkovÈ psalmodie", "hu_suppl.-psalter"};
 #define		STR_MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA 	str_modl_cez_den_doplnkova_psalmodia[_global_jazyk]
 
 const char *str_modl_zalmy_zo_dna[POCET_JAZYKOV + 1] = 
@@ -1514,7 +1517,7 @@ const char *html_text_option0_nan_ne_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "", 
- "Urunk mennybemenetelÈt h˙svÈt ut·n a 40. napon van (teh·t cs¸tˆrtˆkˆn); egyes orsz·gokban azonban a legkˆzelebbi vas·rnapon ¸nneplik (vagyis H˙svÈt 7. vas·rnapj·n)."
+ "Urunk mennybemenetele h˙svÈt ut·n a 40. napon van (teh·t cs¸tˆrtˆkˆn); egyes orsz·gokban azonban a legkˆzelebbi vas·rnapon ¸nneplik (vagyis H˙svÈt 7. vas·rnapj·n)."
 };
 
 const char *html_text_option0_tk_ne[POCET_JAZYKOV + 1] = 

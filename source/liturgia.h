@@ -613,6 +613,7 @@ extern const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #define MODL_SPOL_CAST_NEBRAT            27 // nechce zo spol. casti
 #define POCET_SPOL_CASTI	MAX_MODL_SPOL_CAST - 1
 
+extern const char *str_doplnkova_psalmodia[POCET_JAZYKOV + 1];
 //#define STR_MODL_CEZ_DEN_ZALMY_ZO_DNA        "bežnej"
 extern const char *str_modl_cez_den_zalmy_zo_dna[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_CEZ_DEN_ZALMY_ZO_DNA
