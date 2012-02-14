@@ -1333,6 +1333,26 @@ const char *html_text_detaily_uvod[POCET_JAZYKOV + 1] =
  "Ez a választási lehetõség befolyásolja a megszerkesztett ima megjelenítését és tartalmát.\nVálassz a szerkeszthetõ lehetõségek közül."
 };
 
+const char *html_text_option1_kalendar[POCET_JAZYKOV + 1] = 
+{"nastavenia pre liturgickı kalendár",
+ "volby pro liturgickı kalendáø",
+ "options for liturgical calendar",
+ "", 
+ "", 
+ "volby pro liturgickı kalendáø",
+ "hu_nastavenia pre liturgickı kalendár"
+};
+
+const char *html_text_option1_kalendar_explain[POCET_JAZYKOV + 1] = 
+{"Liturgia hodín ponúka monos slávenia niektorıch slávení dvojakım spôsobom; závisí od danej krajiny, ako rozhodla príslušná konferencia biskupov.",
+ "Volby pro liturgickı kalendáø ovlivòují datumy nìkterıch slavení.",
+ "Options for liturgical calendar...",
+ "", 
+ "", 
+ "Volby pro liturgickı kalendáø ovlivòují datumy nìkterıch slavení.",
+ "hu_nastavenia pre liturgickı kalendár_explain"
+};
+
 const char *html_text_option1_nemenne_sucasti[POCET_JAZYKOV + 1] = 
 {"zobrazi nasledovné súèasti modlitby?",
  "zobrazit <i>nemìnné souèásti</i> modlitby?",
