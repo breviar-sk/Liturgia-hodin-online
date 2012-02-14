@@ -10,6 +10,7 @@
 #include <errno.h>
 #include "myexpt.h"
 #include "liturgia.h"
+#include "citania.h"
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
@@ -160,6 +161,7 @@ JNIEXPORT jstring JNICALL Java_sk_breviar_android_Server_main(JNIEnv* env, jobje
   const char* params[] = { "breviar.cgi", NULL };
   jstring jout;
 
+//  __android_log_print(ANDROID_LOG_INFO, "Breviar", "starting Server.main");
   inst = thiz;
   environment = (char *)env->GetStringUTFChars(environ, NULL);
   envlen = env->GetStringUTFLength(environ);
@@ -173,14 +175,15 @@ JNIEXPORT jstring JNICALL Java_sk_breviar_android_Server_main(JNIEnv* env, jobje
   //int nullfd = open("/dev/null", O_RDONLY);
   //stdin_pipe = fdopen(nullfd, "r");
   
-  //__android_log_print(ANDROID_LOG_INFO, "Breviar", "calling main");
+//  __android_log_print(ANDROID_LOG_INFO, "Breviar", "calling main");
   main(1, params);
+//  __android_log_print(ANDROID_LOG_INFO, "Breviar", "main finished");
   char pom2[MAX_STR], pom3[MAX_STR];
   strcpy(pom2, ""); strcpy(pom3, "");
   prilep_request_options(pom2, pom3, ANO);
-  jout = env->NewStringUTF(pom2);
+  jout = env->NewStringUTF(StringEncode(pom2, true));
+//  __android_log_print(ANDROID_LOG_INFO, "Breviar", "prilep_request_options finished");
 
-  //__android_log_print(ANDROID_LOG_INFO, "Breviar", "main finished");
   env->ReleaseStringUTFChars(environ, environment);
   if (envlen2) free(environment2);
   inst = NULL;

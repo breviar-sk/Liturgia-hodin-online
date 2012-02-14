@@ -54,7 +54,8 @@ short int bol_content_type_text_html = NIE;
 #define __MYHPAGE_CPP_HTML_CONST
 
 // obsahuje %s
-const char *html_header_1 = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj VidÈky\">\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
+const char *html_header_1 = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj VidÈky\">\n";
+const char *html_header_css = "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
 const char *html_footer_1 = STR_EMPTY; // "<p><center>______</center>"; // "<hr>";
 
 #endif /* __MYHPAGE_CPP_HTML_CONST */
@@ -72,6 +73,33 @@ short int _local_modlitba;
 
 void myhpage_init_globals() {
   bol_content_type_text_html = NIE;
+}
+
+void _header_css(FILE* expt, short int level, const char* nazov_css_suboru) {
+	Export_to_file(expt, html_header_css);
+#ifdef	EXPORT_CMDLINE_CSS
+	// pre command-line pouûitie (aj pre batch mÛd): "./breviar.css" resp. ".\breviar.css"
+	/* 2009-08-03: level oznaËuje poËet adres·rov, o ktorÈ je treba Ìsù "hore" (pre mesaËn˝ export) */
+	if(level == 0 && _global_opt_batch_monthly == ANO)
+		level = 1;
+	if(level < 0 || level > 5)
+		level = 0;
+	if(level == 0)
+		Export_to_file(expt, ".");
+	else{
+		while(level > 1){
+			Export_to_file(expt, "..");
+			Export_to_file(expt, STR_PATH_SEPARATOR_HTML);
+			level--;
+		}
+		Export_to_file(expt, "..");
+	}
+	Export_to_file(expt, STR_PATH_SEPARATOR_HTML);
+#else
+	// pre web-pouûitie (aj pre ruby): "/breviar.css"
+	Export_to_file(expt, "/");
+#endif
+	Export_to_file(expt, "%s\">\n", nazov_css_suboru); // n·zov css s˙boru
 }
 
 /* exportuje hlavicku HTML dokumentu, kam pojde vysledok query */
@@ -159,29 +187,10 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	 */
 	Log("<head>...\n");
 	Export_to_file(expt, (char *)html_header_1, charset_jazyka[_global_jazyk]);
-#ifdef	EXPORT_CMDLINE_CSS
-	// pre command-line pouûitie (aj pre batch mÛd): "./breviar.css" resp. ".\breviar.css"
-	/* 2009-08-03: level oznaËuje poËet adres·rov, o ktorÈ je treba Ìsù "hore" (pre mesaËn˝ export) */
-	if(level == 0 && _global_opt_batch_monthly == ANO)
-		level = 1;
-	if(level < 0 || level > 5)
-		level = 0;
-	if(level == 0)
-		Export_to_file(expt, ".");
-	else{
-		while(level > 1){
-			Export_to_file(expt, "..");
-			Export_to_file(expt, STR_PATH_SEPARATOR_HTML);
-			level--;
-		}
-		Export_to_file(expt, "..");
-	}
-	Export_to_file(expt, STR_PATH_SEPARATOR_HTML);
-#else
-	// pre web-pouûitie (aj pre ruby): "/breviar.css"
-	Export_to_file(expt, "/");
-#endif
-	Export_to_file(expt, "%s\">\n", nazov_css_suboru); // n·zov css s˙boru
+        _header_css(expt, level, nazov_css_suboru);
+        if (_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_NOCNY_REZIM) {
+          _header_css(expt, level, nazov_css_invert_colors);
+        }
 	Export_to_file(expt, "<title>%s</title>\n", title);
 	Export_to_file(expt, "</head>\n\n");
 	Log("</head>...\n");

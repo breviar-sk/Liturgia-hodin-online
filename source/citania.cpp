@@ -69,17 +69,18 @@ char *getCode(_struct_dm *d) {
   return buf;
 }
 
-char *StringEncode(const char *in) {
+char *StringEncode(const char *in, bool utf_safe) {
   static unsigned char tab[17]="0123456789ABCDEF";
   int i;
   const char *s;
   static char out[65536];
 
   for (s=(const char *)in,i=0; i<(int)sizeof(out)-5 && *s; s++) {
-    if (
+    if ( 
         ( (*s>='a')&&(*s<='z') ) ||
         ( (*s>='A')&&(*s<='Z') ) ||
-        ( (*s>='0')&&(*s<='9') )
+        ( (*s>='0')&&(*s<='9') ) ||
+        ( (*s<=127)&&(utf_safe) )
        ) {
       out[i]=*s;
       i+=1;

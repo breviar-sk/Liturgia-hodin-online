@@ -81,14 +81,14 @@
 #define NIE   0
 
 #define MAX_GLOBAL_STR		2048 // _global_string; 31/03/2000A.D.; 2010-12-07: rozöÌrenÈ; 2011-01-31: rozöÌrenÈ kvÙli text_JAN_31_SDB[]; 2011-02-02: rozöÌrenÈ kvÙli text_FEB_04_SJ[];
-#define MAX_GLOBAL_STR2		20 // _global_string2, pridanÈ 2006-08-19
-#define MAX_GLOBAL_STR_FARBA 350 // _global_string_farba, pridanÈ 2006-08-19; 2011-03-24: rozöÌrenÈ kvÙli dvojkombin·ci·m
+#define MAX_GLOBAL_STR2		200 // _global_string2, pridanÈ 2006-08-19
+#define MAX_GLOBAL_STR_FARBA 3500 // _global_string_farba, pridanÈ 2006-08-19; 2011-03-24: rozöÌrenÈ kvÙli dvojkombin·ci·m
 #define MAX_QUERY_STR		2000 // query_string
-#define MAX_POM_QUERY_TYPE	300 // pom_QUERY_TYPE
-#define MAX_GLOBAL_LINK		300 // maximalna dlzka retazca _global_link
+#define MAX_POM_QUERY_TYPE	2000 // pom_QUERY_TYPE
+#define MAX_GLOBAL_LINK		2000 // maximalna dlzka retazca _global_link
 //#define MAX_ENV	100 // maximalna dlzka environmentalnej premennej | 2006-08-01: nepouûÌva sa
-#define MAX_VARIABLES		60 // maximalny pocet syst. premennych WWW_..., zvyseny 2003-08-07 a op‰tovne 2006-08-01 a op‰ù 2011-01-26 a zas 2011-04-11 a 2011-04-12 (na 50)
-#define MAX_GLOBAL_BUFFER	500 // _global_buf, pridanÈ 2005-08-01
+#define MAX_VARIABLES		600 // maximalny pocet syst. premennych WWW_..., zvyseny 2003-08-07 a op‰tovne 2006-08-01 a op‰ù 2011-01-26 a zas 2011-04-11 a 2011-04-12 (na 50)
+#define MAX_GLOBAL_BUFFER	4000 // _global_buf, pridanÈ 2005-08-01
 //***************************************************************
 //* EOF of former file mybase.h                                 *
 //***************************************************************
@@ -659,6 +659,14 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_BUTTONY_USPORNE "MODL_OPTF_2_BUTTONY_USPORNE"
 #else
 	#define STR_MODL_OPTF_2_BUTTONY_USPORNE "of2btnu"
+#endif
+
+// nocny rezim - svetly text na tmavom pozadi
+#define MODL_OPTF_2_NOCNY_REZIM 89
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_2_NOCNY_REZIM "MODL_OPTF_2_NOCNY_REZIM"
+#else
+	#define STR_MODL_OPTF_2_NOCNY_REZIM "of2nr"
 #endif
 
 // 2008-08-08: PridanÈ kvÙli rÙznym css

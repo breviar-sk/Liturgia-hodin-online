@@ -631,13 +631,13 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 		// doterajöie spr·vanie pre slovenËinu a Ëeötinu
 		switch(_case){
 			case CASE_case:
-				sprintf(pom, "%s%d. %s", vypln, den, nazov_mesiaca(mesiac - 1));
+				sprintf(pom, "%s%d. %s", vypln, den, (typ == LINK_DEN_MESIAC_GEN)? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1));
 				break;
 			case CASE_Case:
-				sprintf(pom, "%s%d. %s", vypln, den, nazov_Mesiaca(mesiac - 1));
+				sprintf(pom, "%s%d. %s", vypln, den, (typ == LINK_DEN_MESIAC_GEN)? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1));
 				break;
 			case CASE_CASE:
-				sprintf(pom, "%s%d. %s", vypln, den, nazov_MESIACA(mesiac - 1));
+				sprintf(pom, "%s%d. %s", vypln, den, /* (typ == LINK_DEN_MESIAC_GEN)? nazov_MESIACA_gen(mesiac - 1) : */ nazov_MESIACA(mesiac - 1));
 				break;
 		}// switch(_case)
 		if(typ == LINK_DEN_MESIAC_ROK){
@@ -870,6 +870,7 @@ short int zjavenie_pana(short int rok){
 	// 2011-10-18: podæa Ëasti kÛdu v _rozbor_dna()
 	short int ZJAVENIE_PANA; // zjavenie P·na
 	char nedelne_pismenko = _global_r.p1;
+
 	if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA){ // if(_global_jazyk == JAZYK_HU){
 		if(nedelne_pismenko == 'A'){
 			nedelne_pismenko = 'h'; // aby vyöla nedeæa Zjavenia P·na na 8.1.
@@ -1371,8 +1372,9 @@ void _dm_svatej_rodiny(short int rok){
 
 void _dm_krst_krista_pana(short int rok){
 	// 2011-10-26: namiesto napevno danÈho Zjavenia P·na poradie(6, 1, rok) pouûijeme zjavenie_pana(short int rok)
-	static short int _zjavenie_pana = zjavenie_pana(rok);
+	short int _zjavenie_pana = zjavenie_pana(rok); // bolo tu static, ale pre viacn·sobnÈ volanie z analyzuj_rok() pre tabuæku tu 'static' nesmie byù
 	short int _krst = _zjavenie_pana + 1;
+
 	if(!(((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA) && ((_zjavenie_pana == 7) || (_zjavenie_pana == 8)))){
 		while(den_v_tyzdni(_krst, rok) != DEN_NEDELA){
 			_krst++;
@@ -1514,8 +1516,8 @@ void Log(struct tmodlitba1 t){
 	Log_struktura_tm1("   bened/magnifikat  file `%s', anchor `%s'\n", t.benediktus.file, t.benediktus.anchor); // antifona na benediktus/magnifikat
 	Log_struktura_tm1("   prosby            file `%s', anchor `%s'\n", t.prosby.file, t.prosby.anchor);
 	Log_struktura_tm1("   modlitba          file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
-	Log_struktura_tm1("   ant_spompost      file `%s', anchor `%s'\n", t.ant_spompost.file, t.ant_spompost.anchor);
-	Log_struktura_tm1("   modlitba_spompost file `%s', anchor `%s'\n", t.modlitba_spompost.file, t.modlitba_spompost.anchor);
+	Log_struktura_tm1("   ant_spomprivileg      file `%s', anchor `%s'\n", t.ant_spomprivileg.file, t.ant_spomprivileg.anchor);
+	Log_struktura_tm1("   modlitba_spomprivileg file `%s', anchor `%s'\n", t.modlitba_spomprivileg.file, t.modlitba_spomprivileg.anchor);
 }
 
 void Log(struct tmodlitba2 t){
@@ -1570,7 +1572,7 @@ void Log(struct tmodlitba5 t){
 	Log_struktura_tm5("   kresponz          file `%s', anchor `%s'\n", t.kresponz.file, t.kresponz.anchor);
 	Log_struktura_tm5("   1. citanie        file `%s', anchor `%s'\n", t.citanie1.file, t.citanie1.anchor);
 	Log_struktura_tm5("   2. citanie        file `%s', anchor `%s'\n", t.citanie2.file, t.citanie2.anchor);
-	Log_struktura_tm5("   citanie_spompost  file `%s', anchor `%s'\n", t.citanie_spompost.file, t.citanie_spompost.anchor);
+	Log_struktura_tm5("   citanie_spomprivileg  file `%s', anchor `%s'\n", t.citanie_spomprivileg.file, t.citanie_spomprivileg.anchor);
 	Log_struktura_tm5("   ant_chval         file `%s', anchor `%s'\n", t.ant_chval.file, t.ant_chval.anchor);
 	Log_struktura_tm5("   chval1            file `%s', anchor `%s'\n", t.chval1.file, t.chval1.anchor);
 	Log_struktura_tm5("   chval2            file `%s', anchor `%s'\n", t.chval2.file, t.chval2.anchor);
