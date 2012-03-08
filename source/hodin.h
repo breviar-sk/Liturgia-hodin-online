@@ -1340,7 +1340,7 @@ const char *html_text_option1_kalendar[POCET_JAZYKOV + 1] =
  "", 
  "", 
  "volby pro liturgický kalendáø",
- "hu_nastavenia pre liturgický kalendár"
+ "a liturgikus naptár beállításai"
 };
 
 const char *html_text_option1_kalendar_explain[POCET_JAZYKOV + 1] = 
@@ -1350,7 +1350,7 @@ const char *html_text_option1_kalendar_explain[POCET_JAZYKOV + 1] =
  "", 
  "", 
  "Volby pro liturgický kalendáø ovlivòují datumy nìkterých slavení.",
- "hu_nastavenia pre liturgický kalendár_explain"
+ "Az Imaórák liturgiája megadja a lehetõséget, hogy némely ünnepek kétféle képen legyenek megünnepelve; az adott országtól függ, ahogy az adott püspöki konferencia döntött."
 };
 
 const char *html_text_option1_nemenne_sucasti[POCET_JAZYKOV + 1] = 
@@ -6462,7 +6462,7 @@ const char *text_PO_POPOLCOVEJ_STREDE[POCET_JAZYKOV + 1] =
  "",
  "",
  "po Popeleèní støedì",
- "hu_name",
+ "Hamvazószerda után",
  };
 const char *text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1] = 
 {"v oktáve Narodenia Pána",
