@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* breviar.h                                                   */
-/* (c)1999-2011 | Juraj Videky | videky@breviar.sk             */
+/* (c)1999-2012 | Juraj Videky | videky@breviar.sk             */
 /*                                                             */
 /* description | obsahuje deklaracie globalnych premennych     */
 /*               a funkciu main() z dnes.cpp kde su definovane */
@@ -19,6 +19,7 @@
 /*   2011-03-07a.D. | zadef. MIESTNE_SLAVENIE_LOKAL_SVATY1..3  */
 /*   2011-03-18a.D. | zadef. PODMIENKA_EXPORTOVAT_KALENDAR     */
 /*   2011-03-30a.D. | zadef. prilep_request_options            */
+/*   2012-04-02a.D. | presunuté dôležité defines z breviar.cpp */
 /*                                                             */
 /*                                                             */
 /***************************************************************/
@@ -33,18 +34,17 @@
 #include "mysysdef.h"
 
 //---------------------------------------------------------------------
-/* globalne premenne -- deklarovane v liturgia.h, definovane tu */
-/* 18/02/2000A.D. */
+// globalne premenne -- deklarovane v liturgia.h, definovane tu
 
 extern short int _global_vstup_den;
 extern short int _global_vstup_mesiac;
 extern short int _global_vstup_rok;
 extern short int _global_poradie_svaty;
 
-extern short int query_type; /* premenna obsahujuca PRM_..., deklarovana v mydefs.h */
+extern short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydefs.h
 
-#define EXPORT_DNA_JEDEN_DEN_LOCAL 5 // 2011-10-03: pridané
-#define EXPORT_DNA_VIAC_DNI_TXT 4 // 2011-02-02: pridané
+#define EXPORT_DNA_JEDEN_DEN_LOCAL 5
+#define EXPORT_DNA_VIAC_DNI_TXT 4
 #define EXPORT_DNA_VIAC_DNI_SIMPLE 3 // 2005-03-21: Pridany dalsi typ exportu; 2011-04-13: nerozumiem naèo; asi sa nepoužíva...
 #define EXPORT_DNA_JEDEN_DEN 1
 #define EXPORT_DNA_VIAC_DNI 2
@@ -53,139 +53,124 @@ extern short int query_type; /* premenna obsahujuca PRM_..., deklarovana v mydef
 extern void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short int den_zoznam = ANO);
 extern void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes = ANO);
 
-extern short int _global_pocet_navigacia; /* 2011-07-03: poèet prejdených/spracovaných parametrov PARAM_NAVIGACIA */
+extern short int _global_pocet_navigacia; // 2011-07-03: poèet prejdených/spracovaných parametrov PARAM_NAVIGACIA
 
 extern short int index_pre_mesiac_otvoreny;
 // extern short int export_monthly_druh;
 
-/* globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
- * pouziva ju void nove_rozbor_dna() funkcia */
-
+// globalna premenna, do ktorej sa ukladaju info o analyzovanom dni pouziva ju void nove_rozbor_dna() funkcia
 extern _struct_dm *_global_den_ptr;
-/*_struct_dm _global_den;*/
+// _struct_dm _global_den;
 #define _global_den (*_global_den_ptr)
 
-/* globalne premenne, do ktorych sa ukladaju info o analyzovanom dni
- * o sviatkoch svatych */
-
+// globalne premenne, do ktorych sa ukladaju info o analyzovanom dni o sviatkoch svatych
 extern _struct_dm *_global_svaty1_ptr;
-/*_struct_dm _global_svaty1;*/
+// _struct_dm _global_svaty1;
 #define _global_svaty1 (*_global_svaty1_ptr)
 
 extern _struct_dm *_global_svaty2_ptr;
-/*_struct_dm _global_svaty2;*/ /* v pripade, ze je viac lubovolnych spomienok */
+// _struct_dm _global_svaty2; // v pripade, ze je viac lubovolnych spomienok
 #define _global_svaty2 (*_global_svaty2_ptr)
 
 extern _struct_dm *_global_svaty3_ptr;
-/*_struct_dm _global_svaty3;*/ /* v pripade, ze je viac lubovolnych spomienok */
+// _struct_dm _global_svaty3; // v pripade, ze je viac lubovolnych spomienok
 #define _global_svaty3 (*_global_svaty3_ptr)
 
-/* globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu */
-
+// globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu
 extern _struct_dm *_global_pm_sobota_ptr;
-/*_struct_dm _global_pm_sobota;*/
+// _struct_dm _global_pm_sobota;
 #define _global_pm_sobota (*_global_pm_sobota_ptr)
 
-/* globalne premenne obsahujuce data modlitbach */
+// globalne premenne obsahujuce data modlitbach
 
 extern _type_1vespery     *_global_modl_prve_vespery_ptr;
-/*_type_1vespery      _global_modl_prve_vespery;*/
+// _type_1vespery      _global_modl_prve_vespery;
 #define _global_modl_prve_vespery (*_global_modl_prve_vespery_ptr)
 
 extern _type_1kompletorium *_global_modl_1kompletorium_ptr;
-/*_type_1kompletorium _global_modl_prve_kompletorium;*/
+// _type_1kompletorium _global_modl_prve_kompletorium;
 #define _global_modl_prve_kompletorium (*_global_modl_1kompletorium_ptr)
 
 extern _type_invitatorium *_global_modl_invitatorium_ptr;
-/*_type_invitatorium  _global_modl_invitatorium;*/
+// _type_invitatorium  _global_modl_invitatorium;
 #define _global_modl_invitatorium (*_global_modl_invitatorium_ptr)
 
-/* 2003-08-13 pridane posvatne citanie */
 extern _type_posv_citanie *_global_modl_posv_citanie_ptr;
 #define _global_modl_posv_citanie (*_global_modl_posv_citanie_ptr)
 
 extern _type_ranne_chvaly *_global_modl_ranne_chvaly_ptr;
-/*_type_ranne_chvaly  _global_modl_ranne_chvaly;*/
+// _type_ranne_chvaly  _global_modl_ranne_chvaly;
 #define _global_modl_ranne_chvaly (*_global_modl_ranne_chvaly_ptr)
 
 extern _type_cez_den_9     *_global_modl_cez_den_9_ptr;
-/*_type_cez_den_9     _global_modl_cez_den_9;*/
+// _type_cez_den_9     _global_modl_cez_den_9;
 #define _global_modl_cez_den_9 (*_global_modl_cez_den_9_ptr)
 extern _type_cez_den_12     *_global_modl_cez_den_12_ptr;
-/*_type_cez_den_12     _global_modl_cez_den_12;*/
+// _type_cez_den_12     _global_modl_cez_den_12;
 #define _global_modl_cez_den_12 (*_global_modl_cez_den_12_ptr)
 extern _type_cez_den_3     *_global_modl_cez_den_3_ptr;
-/*_type_cez_den_3     _global_modl_cez_den_3;*/
+// _type_cez_den_3     _global_modl_cez_den_3;
 #define _global_modl_cez_den_3 (*_global_modl_cez_den_3_ptr)
 
 extern _type_vespery      *_global_modl_vespery_ptr;
-/*_type_vespery       _global_modl_vespery;*/
+// _type_vespery       _global_modl_vespery;
 #define _global_modl_vespery (*_global_modl_vespery_ptr)
 
 extern _type_kompletorium *_global_modl_kompletorium_ptr;
-/*_type_kompletorium _global_modl_kompletorium;*/
+// _type_kompletorium _global_modl_kompletorium;
 #define _global_modl_kompletorium (*_global_modl_kompletorium_ptr)
 
-/* globalna premenna, ktora obsahuje MODL_... */
+// globalna premenna, ktora obsahuje MODL_...
 extern short int _global_modlitba;
 
-/* globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_...
- * linku tvaru PATH_CGI(SCRIPT_NAME) ++ "?param1=val&param2=val&..." */
+// globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru PATH_CGI(SCRIPT_NAME) ++ "?param1=val&param2=val&..."
 extern char *_global_link_ptr;
-/*char _global_link[MAX_STR];*/
+// char _global_link[MAX_STR];
 #define _global_link _global_link_ptr
 
-extern char *_global_pom_str; /* pomocny string pre velke pismena */
-/*char _global_pom_str[MAX_STR];*/
+extern char *_global_pom_str; // pomocny string pre velke pismena
+// char _global_pom_str[MAX_STR];
 
-/* globalna premenna, do ktorej sa ukladaju info o jednotlivych
- * vyznacnych liturgickych dni, pouzivaju void _dm_...() funkcie
- * a void analyzuj_rok() funkcia */
+// globalna premenna, do ktorej sa ukladaju info o jednotlivych vyznacnych liturgickych dni, pouzivaju void _dm_...() funkcie a void analyzuj_rok() funkcia
 extern _struct_dm *_global_result_ptr;
-/*_struct_dm _global_result;*/
+// _struct_dm _global_result;
 #define _global_result (*_global_result_ptr)
 
-/* globalna premenna, do ktorej sa uklada info o liturgickom roku
- * pouziva void analyzuj_rok() funkcia */
+// globalna premenna, do ktorej sa uklada info o liturgickom roku pouziva void analyzuj_rok() funkcia
 extern _struct_lrok *_global_r_ptr;
-/*_struct_lrok _global_r;*/
+// _struct_lrok _global_r;
 #define _global_r (*_global_r_ptr)
 
-/* globalna premenna, do ktorej sviatky_svatych() uklada
- * pocet sviatkov (de facto lubovolnych spomienok), ktore
- * pripadaju na dany den
- * -- v podstate neuklada do nej, ale v _rozbor_dna() sa do nej priradi
- * vysledok (navratova hodnota) z sviatky_svatych()
- */
+// globalna premenna, do ktorej sviatky_svatych() uklada pocet sviatkov (de facto lubovolnych spomienok), ktore pripadaju na dany den
+// -- v podstate neuklada do nej, ale v _rozbor_dna() sa do nej priradi vysledok (navratova hodnota) z sviatky_svatych()
 extern short int _global_pocet_svatych;
 
-/* globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atï., obsahujú pom_MODL_OPT... */
+// globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atï., obsahujú pom_MODL_OPT...
 extern short int _global_opt[POCET_GLOBAL_OPT];
 
-/* globalna premenna, co obsahuje string vypisany na obsazovku */
+// globalna premenna, co obsahuje string vypisany na obsazovku
 extern char *_global_string;
-extern char *_global_string2; /* obsahuje I, II, III, IV, V alebo pismeno roka */
-extern char *_global_string_farba; /* 2006-08-19: doplnené */
+extern char *_global_string2; // obsahuje I, II, III, IV, V alebo pismeno roka
+extern char *_global_string_farba;
 // 2011-10-04: pridané, pre titulok modlitby (už sa nepriliepa do _global_string)
-extern char _global_string_modlitba[SMALL];
+// extern char _global_string_modlitba[SMALL];
 
-extern char *_global_buf; /* 2006-08-01: túto premennú tiež alokujeme */
-extern char *_global_buf2; /* 2006-08-01: túto premennú tiež alokujeme */
+extern char *_global_buf; // 2006-08-01: túto premennú tiež alokujeme
+extern char *_global_buf2; // 2006-08-01: túto premennú tiež alokujeme
 //---------------------------------------------------------------------
 
-/* 2006-07-11: Pridané kvôli jazykovým mutáciám (breviar.cpp)
- * 2010-08-04: zmenené _global_language na _global_jazyk (doteraz bolo len pomocou #define)
- */
+// 2006-07-11: Pridané kvôli jazykovým mutáciám (breviar.cpp)
+// 2010-08-04: zmenené _global_language na _global_jazyk (doteraz bolo len pomocou #define)
 extern short int _global_jazyk;
-/* 2010-08-04: pridané kvôli kalendárom (napr. reho¾ný), súvisí s jazykovými mutáciami */
+// 2010-08-04: pridané kvôli kalendárom (napr. reho¾ný), súvisí s jazykovými mutáciami
 extern short int _global_kalendar;
 
-extern short int _global_css; /* 2008-08-08: Pridané kvôli rôznym css */
+extern short int _global_css; // 2008-08-08: Pridané kvôli rôznym css
 
-extern short int _global_font; /* 2011-05-06: Pridané kvôli rôznym fontom */
-extern short int _global_font_size; /* 2011-05-13: Pridané kvôli rôznym ve¾kostiam fontov */
+extern short int _global_font; // 2011-05-06: Pridané kvôli rôznym fontom
+extern short int _global_font_size; // 2011-05-13: Pridané kvôli rôznym ve¾kostiam fontov
 
-/* 2006-10-17: Pridané kvôli kompletóriu: niekedy obsahuje až dva žalmy */
+// 2006-10-17: Pridané kvôli kompletóriu: niekedy obsahuje až dva žalmy
 extern short int _global_pocet_zalmov_kompletorium;
 
 // 2009-08-03, pridané
@@ -197,12 +182,12 @@ extern short int _global_hlavicka_Export;
 // 2011-07-01, pridané
 extern short int _global_patka_Export;
 
-/* 2011-05-05: kvôli možnosti serif/sans serif override (z css sme odstránili font-family) */
+// 2011-05-05: kvôli možnosti serif/sans serif override (z css sme odstránili font-family)
 extern char _global_css_font_family[SMALL];
-/* 2011-05-13: kvôli možnosti vo¾by ve¾kosti písma */
+// 2011-05-13: kvôli možnosti vo¾by ve¾kosti písma
 extern char _global_css_font_size[SMALL];
 
-/* 2009-08-12, pridané */
+// 2009-08-12, pridané
 extern char _global_export_navig_hore[SMALL];
 extern short int _global_opt_export_date_format;
 
@@ -264,6 +249,38 @@ extern short int _global_opt_export_date_format;
 
 #define PODMIENKA_EXPORTOVAT_FONT ( (_global_font != FONT_UNDEF) && (_global_font != FONT_CSS) && (_global_font != FONT_CHECKBOX) )
 
+//---------------------------------------------------------------------
+// definicie pre _rozbor_dna():
+//
+// obsahuju sviatky, ktore su bud pevne alebo pohyblive, v kazdom pripade su to dolezite "hranicne" dni medzi obdobiami
+//
+// 2011-05-03: predsunuté pred interpretParameter(), lebo sa tu používajú
+// 2012-04-02: presunuté do breviar.h, lebo sa používa aj v includeFile(), tam používame VELKONOCNA_NEDELA
+
+// 2006-08-01: pozor, koncovky sú pre každý jazyk odlišné
+#define koncovka_dna_asci(denvt) ((nazov_dna((denvt))[strlen(nazov_dna((denvt))) - 1] == 'a')? 'a': 'y')
+#define koncovka_dna(denvt) ((nazov_dna((denvt))[strlen(nazov_dna((denvt))) - 1] == 'a')? 'á': 'ý')
+#define KRST _global_r._KRST_KRISTA_PANA.denvr                          // nede¾a po 6. januári; v krajinách, kde sa Zjavenie Pána slávi v nede¾u, a ak táto pripadne na 7. alebo 8. januára, Krst Krista Pána sa slávi nasledujúci pondelok
+#define POPOLCOVA_STREDA  _global_r._POPOLCOVA_STREDA.denvr             // popolcová streda
+#define VELKONOCNA_NEDELA   _global_r._VELKONOCNA_NEDELA.denvr          // ve¾konoèná nede¾a
+#define KVETNA_NEDELA (VELKONOCNA_NEDELA - 7)                           // kvetná nede¾a
+#define ZELENY_STVRTOK   (VELKONOCNA_NEDELA - 3)                        // zelený štvrtok
+#define VELKY_PIATOK   (VELKONOCNA_NEDELA - 2)                          // ve¾ký piatok
+#define BIELA_SOBOTA   (VELKONOCNA_NEDELA - 1)                          // biela sobota
+#define VELKONOCNY_PONDELOK (VELKONOCNA_NEDELA + 1)                     // ve¾konoèný pondelok
+#define DRUHA_VELKONOCNA_NEDELA  (VELKONOCNA_NEDELA + 7)                // nede¾a vo ve¾konoènej oktáve
+#define NANEBOVSTUPENIE  _global_r._NANEBOVSTUPENIE_PANA.denvr          // nanebovstúpenie Pána (štvrtok, 40. deò po ve¾kej noci, alebo v krajinách, kde sa presúva na nasledujúcu nede¾u ("7. ve¾konoèná nede¾a")
+#define PRVA_ADVENTNA_NEDELA  _global_r._PRVA_ADVENTNA_NEDELA.denvr     // prvá adventná nede¾a
+#define ZOSLANIE_DUCHA_SV  _global_r._ZOSLANIE_DUCHA_SV.denvr           // zoslanie Ducha Svätého
+#define SV_RODINY  _global_r._SVATEJ_RODINY.denvr                       // sviatok svätej rodiny
+#define TROJICA (ZOSLANIE_DUCHA_SV + 7)                                 // prvá nede¾a po ZOSLANIE_DUCHA_SV: najsv. Trojice
+// #define TELAKRVI (ZOSLANIE_DUCHA_SV + 11)                               // štvrtok po Trojici: Kristovho tela a krvi (alebo: v krajinách, kde sa presúva na nede¾u)
+#define SRDCA (ZOSLANIE_DUCHA_SV + 19)                                  // piatok po druhej nedeli po ZOSLANIE_DUCHA_SV: najsv. srdca Ježišovho
+#define SRDPM (ZOSLANIE_DUCHA_SV + 20)                                  // sobota po druhej nedeli po ZOSLANIE_DUCHA_SV: nepoškvrneného srdca prebl. p. márie
+// 2006-08-22: kvôli ružovej farbe rúcha potrebujeme define aj pre 3. adventnú nede¾u a 4. pôstnu nede¾u
+#define TRETIA_ADVENTNA_NEDELA (PRVA_ADVENTNA_NEDELA + 14)              // tretia adventná nede¾a - dva týždne po prvej adventnej nedeli (PRVA_ADVENTNA_NEDELA)
+#define STVRTA_POSTNA_NEDELA (VELKONOCNA_NEDELA - 21)                   // štvrtá pôstna nede¾a - tri týždne pred VELKONOCNA_NEDELA
+
 #ifndef OS_linux
 // kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 
 int main(int argc, char **argv);
@@ -274,5 +291,5 @@ int main(int argc, char **argv);
 	#define putenv _putenv
 #endif   // VC8+
 
-#endif /* __BREVIAR_H_ */
+#endif // __BREVIAR_H_
 

@@ -1,7 +1,7 @@
 /***********************************************************************/
 /*                                                                     */
 /* myexpt.h                                                            */
-/* (c)1999-2011 | Juraj Videky | videky@breviar.sk                     */
+/* (c)1999-2012 | Juraj Videky | videky@breviar.sk                     */
 /*                                                                     */
 /* description | obsahuje exportne rutinky na export                   */
 /*               do suboru FILE_EXPORT alebo stdout                    */
