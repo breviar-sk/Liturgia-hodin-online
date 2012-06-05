@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Breviár</string>
+    <string name="back">Späť</string>
+    <string name="forward">Vpred</string>
+    <string name="today">Dnes</string>
+    <string name="pgup">Hore</string>
+    <string name="pgdn">Ďalej</string>
+    <string name="news">
+     Novinky vo verzii 1.7.14:\n
+     - Aktualizácie zo stránky www.breviar.sk\n\n
+     Novinky vo verzii 1.7.13:\n
+     - Opravené CSS v Českej verzii\n\n
+     Novinky vo verzii 1.7.9 - 1.7.12:\n
+     - Aktualizácie zo stránky www.breviar.sk\n\n
+     Novinky vo verzii 1.7.8:\n
+     - Nočný režim\n
+     - Aktualizácie zo stránky www.breviar.sk\n\n
+    </string>
+</resources>

@@ -442,6 +442,12 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_NADPIS        "NADPIS"
 // 2012-04-03: pridaný podnadpis v modlitbe (napr. pre MCD: doplnková psalmódia)
 #define PARAM_PODNADPIS     "PODNADPIS"
+// 2012-05-24: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní
+#define PARAM_ANTIFONA_VIG  "ANTIFONA_VIG"
+#define PARAM_CHVALOSPEV1   "CHVALOSPEV1"
+#define PARAM_CHVALOSPEV2   "CHVALOSPEV2"
+#define PARAM_CHVALOSPEV3   "CHVALOSPEV3"
+#define PARAM_EVANJELIUM    "EVANJELIUM"
 
 // dalsie parametre: specificke pre obdobie
 // Od nedele Pánovho zmàtvychvstania až do Druhej ve¾konoènej nedele vrátane, ako aj na druhé vešpery slávnosti Zoslania Ducha Svätého
@@ -481,6 +487,9 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 // 2007-10-02: doplnené skrytie rovnakých antifón pre mcd
 #define PARAM_SKRY_ANTIFONU_BEGIN           "SKRY_ANTIFONU_BEGIN"
 #define PARAM_SKRY_ANTIFONU_END             "SKRY_ANTIFONU_END"
+// 2012-05-24: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní
+#define PARAM_JE_VIGILIA_BEGIN              "JE_VIGILIA_BEGIN"
+#define PARAM_JE_VIGILIA_END                "JE_VIGILIA_END"
 
 // 2010-05-21: doplnené zobrazenie antifóny a modlitby pre spomienku svätca v pôstnom období
 // 2012-02-09: zovšeobecnené v zmysle VSLH è. 238 (Spomienky pripadajúce na privilegované dni)
@@ -902,6 +911,9 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_ESZTERGOM_EML            76
 #define LOKAL_SLAV_GYOR_EGYH                77
 #define LOKAL_SLAV_ESZTERGOM_FOEGYH         78
+#define LOKAL_SLAV_EGER_FOEGYH2             79
+#define LOKAL_SLAV_VESZPREM_FOEGYH_T        80
+#define LOKAL_SLAV_SZATMAR                  81
 
 // 2010-08-03: pridaný kalendár
 #define KALENDAR_NEURCENY                   0

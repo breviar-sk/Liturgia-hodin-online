@@ -227,6 +227,25 @@ extern short int _global_opt_export_date_format;
 	(strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_UNDEF) != 0) \
 ) \
 ))
+// 2012-05-24: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní
+#define je_vigilia \
+(_global_modlitba == MODL_POSV_CITANIE &&  \
+	(_global_modl_posv_citanie.ant_chval.anchor != NULL) && (_global_modl_posv_citanie.ant_chval.file != NULL) && \
+	(strcmp(_global_modl_posv_citanie.ant_chval.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.ant_chval.anchor, STR_UNDEF) != 0) &&  \
+	(strcmp(_global_modl_posv_citanie.ant_chval.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.ant_chval.file, STR_UNDEF) != 0) && \
+	(_global_modl_posv_citanie.chval1.anchor != NULL) && (_global_modl_posv_citanie.chval1.file != NULL) && \
+	(strcmp(_global_modl_posv_citanie.chval1.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.chval1.anchor, STR_UNDEF) != 0) &&  \
+	(strcmp(_global_modl_posv_citanie.chval1.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.chval1.file, STR_UNDEF) != 0) && \
+	(_global_modl_posv_citanie.chval2.anchor != NULL) && (_global_modl_posv_citanie.chval2.file != NULL) && \
+	(strcmp(_global_modl_posv_citanie.chval2.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.chval2.anchor, STR_UNDEF) != 0) &&  \
+	(strcmp(_global_modl_posv_citanie.chval2.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.chval2.file, STR_UNDEF) != 0) && \
+	(_global_modl_posv_citanie.chval3.anchor != NULL) && (_global_modl_posv_citanie.chval3.file != NULL) && \
+	(strcmp(_global_modl_posv_citanie.chval3.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.chval3.anchor, STR_UNDEF) != 0) &&  \
+	(strcmp(_global_modl_posv_citanie.chval3.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.chval3.file, STR_UNDEF) != 0) && \
+	(_global_modl_posv_citanie.evanjelium.anchor != NULL) && (_global_modl_posv_citanie.evanjelium.file != NULL) && \
+	(strcmp(_global_modl_posv_citanie.evanjelium.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.evanjelium.anchor, STR_UNDEF) != 0) &&  \
+	(strcmp(_global_modl_posv_citanie.evanjelium.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.evanjelium.file, STR_UNDEF) != 0) \
+)
 
 // 2011-02-02: presunuté do #define -- kontrola, ktorá zabezpeèuje, že normálne správanie sa slávení nie je prebité pre "CZOP miestne slávenia"
 #define MIESTNE_SLAVENIE_CZOP_SVATY1 ((_global_svaty1.kalendar == KALENDAR_CZ_OP) && ((_global_svaty1.smer == 4) || (_global_svaty1.smer == 8) || (_global_svaty1.smer == 11)))

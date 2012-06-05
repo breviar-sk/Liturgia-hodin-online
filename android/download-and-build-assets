@@ -1,0 +1,64 @@
+#!/bin/bash
+
+ROOT=`dirname $0`
+
+# Setup symlinks for includes
+for inc in include include_cz include_hu; do
+  pushd $ROOT/assets/$inc
+  rm -f *
+  wget -r -l 1 http://www.breviar.sk/$inc
+  for i www.breviar.sk/$inc/*; do
+    mv "www.breviar.sk/$inc/`basename $i`" "`basename "$i" | sed 's/^_/x/'`"
+  done
+  rm -rf www.breviar.sk
+  rm index.htm
+  popd
+  rm -f $ROOT/assets/$inc/index.htm
+done
+
+### Setup symlinks for docs
+
+# SK
+rm -f $ROOT/assets/docs/*
+for i in kat-2001-03-28.htm ord-inv.htm ord-k3.htm ord-km.htm ord-vesp.htm \
+         uvodmp.htm kat-2001-04-04.htm ord-k0.htm ord-k4.htm ord-komp.htm \
+         smernice_lh.htm kratkep.htm ord-k1.htm ord-k5.htm ord-pc.htm \
+         smernice_lrk.htm laudis-canticum.htm ord-k2.htm ord-k6.htm \
+         ord-rch.htm ukonkaj.htm; do
+  wget http://www.breviar.sk/docs/$i -O $ROOT/assets/docs/$i
+done
+
+# CZ
+rm -f $ROOT/assets/cz/ordinar/*
+for i in full_ordinar.htm ord-k0.htm ord-k2.htm ord-k4.htm ord-k6.htm \
+         ord-komp.htm ord-rch.htm ord-inv.htm ord-k1.htm ord-k3.htm ord-k5.htm \
+         ord-km.htm ord-pc.htm ord-vesp.htm; do
+  wget http://www.breviar.sk/cz/ordinar/$i -O $ROOT/assets/cz/ordinar/$i
+done
+
+
+# HU
+rm -f $ROOT/assets/hu/docs/*
+for i in kratkep.htm ord-k1.htm ord-k4.htm ord-km.htm ord-rch.htm ukonkaj.htm \
+         ord-inv.htm ord-k2.htm ord-k5.htm ord-komp.htm ord-vesp.htm uvodmp.htm \
+         ord-k0.htm ord-k3.htm ord-k6.htm ord-pc.htm; do
+  wget http://www.breviar.sk/hu/docs/$i -O $ROOT/assets/hu/docs/$i
+done
+
+if [ -f $ROOT/../hu/docs/smernice_lh.htm ]; then
+  cp $ROOT/assets/hu/docs/smernice_lh.htm $ROOT/assets/hu/docs/smernice_lh.htm
+else
+  cp $ROOT/assets/docs/smernice_lh.htm $ROOT/assets/hu/docs/smernice_lh.htm
+fi
+
+rm -f $ROOT/assets/katechezy.htm
+wget http://www.breviar.sk/katechezy.htm -O $ROOT/assets/katechezy.htm
+
+rm -f $ROOT/assets/breviar-web.cfg
+cp $ROOT/../cgi-bin/breviar-web.cfg $ROOT/assets/breviar-web.cfg
+
+pushd $ROOT/assets
+patch -p0 --merge <../assets.diff
+find . -name "*.orig" | xargs rm -f
+popd
+

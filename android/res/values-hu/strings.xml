@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lang_sk">SK</string>
+    <string name="lang_cz">CZ</string>
+    <string name="lang_hu">HU</string>
+    <string name="hu_beta_warning">
+    Hungarian version is in beta - thus, many source texts are not yet
+    available. Also some special cases for Hungarian liturgical calendar are
+    not yet finished. Expected date of finishing: mid of 2012. If you may help
+    us with completing HTML source files, please contact us (HTML base
+    knowledge is required).\n\n
+
+    Best wishes,\n
+    Juraj Vidéky (videky@breviar.sk), Richard Královič (riso@ksp.sk)
+    </string>
+
+    <string name="app_name">Imaórák liturgiája</string>
+    <string name="back">Vissza</string>
+    <string name="forward">Előre</string>
+    <string name="today">Ma</string>
+    <string name="pgup">Fel</string>
+    <string name="pgdn">Le</string>
+</resources>

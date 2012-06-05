@@ -512,7 +512,7 @@ short int _global_poradie_svaty = 0;
 
 short int _global_pocet_navigacia = 0; // 2011-07-03: poËet prejden˝ch/spracovan˝ch parametrov PARAM_NAVIGACIA
 
-short int _global_pocet_volani_interpretTemplate= 0; // 2012-04-19: poËet volanÌ _global_pocet_volani_interpretTemplate()
+short int _global_pocet_volani_interpretTemplate = 0; // 2012-04-19: poËet volanÌ _global_pocet_volani_interpretTemplate()
 //---------------------------------------------------------------------
 
 //---------------------------------------------------------------------
@@ -528,6 +528,7 @@ short int _global_pocet_volani_interpretTemplate= 0; // 2012-04-19: poËet volanÌ
 short int _global_skip_in_prayer = NIE;
 short int _global_skip_in_prayer_2 = NIE; // 2011-04-07: kvÙli ËÌslovaniu veröov v Ëastiach, kde sa pouûÌva _global_skip_in_prayer
 short int _global_skip_in_prayer_vnpc = NIE; // 2011-05-03: kvÙli veækonoËnej nedeli, posv‰tnÈ ËÌtanie
+short int _global_som_vo_vigilii = NIE;
 
 // globalna premenna, ktora hovori, ci generujeme modlitbu
 //int _global_gen_modlitba; == (_global_modlitba == MODL_NEURCENA)
@@ -2401,7 +2402,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	}// if(equals(paramname, PARAM_JE_TEDEUM_BEGIN))
 	else if(equals(paramname, PARAM_JE_TEDEUM_END)){
 		if(_global_opt_tedeum == NIE){
-			/* nezobrazovat Te Deum */
+			// nezobrazovat Te Deum
 			_global_skip_in_prayer = NIE;
 			Log("  `Te Deum' heading skipped.\n");
 		}
@@ -2412,6 +2413,40 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Log("  `Te Deum' heading copied.\n");
 		}
 	}// if(equals(paramname, PARAM_JE_TEDEUM_END))
+
+	// 2012-05-24: doplnenÈ -- predÂûenÈ sl·venie vigÌliÌ v r·mci posv‰tn˝ch ËÌtanÌ
+	else if(equals(paramname, PARAM_JE_VIGILIA_BEGIN)){
+		_global_som_vo_vigilii = ANO;
+		if((_global_opt_tedeum == NIE) || ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PC_VIGILIA) != BIT_OPT_1_PC_VIGILIA) || !(je_vigilia)){
+			// nezobrazovaù vigÌliu
+			_global_skip_in_prayer = ANO;
+#if defined(EXPORT_HTML_SPECIALS)
+			Export("nem· byù vigÌlia");
+#endif
+			Log("  `vigÌlia' heading skipping...\n");
+		}
+		else{
+#if defined(EXPORT_HTML_SPECIALS)
+			Export("m· byù vigÌlia");
+#endif
+			Log("  `vigÌlia' heading: begin...\n");
+		}
+	}// if(equals(paramname, PARAM_JE_VIGILIA_BEGIN))
+	else if(equals(paramname, PARAM_JE_VIGILIA_END)){
+		_global_som_vo_vigilii = NIE;
+		if((_global_opt_tedeum == NIE) || ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PC_VIGILIA) != BIT_OPT_1_PC_VIGILIA) || !(je_vigilia)){
+			// nezobrazovaù vigÌliu
+			_global_skip_in_prayer = NIE;
+			Log("  `vigÌlia' heading skipped.\n");
+		}
+		else{
+#if defined(EXPORT_HTML_SPECIALS)
+			Export("m· byù vigÌlia");
+#endif
+			Log("  `vigÌlia' heading copied.\n");
+		}
+	}// if(equals(paramname, PARAM_JE_VIGILIA_END))
+
 	else if(equals(paramname, PARAM_ZAKONCENIE_BEGIN)){
 		if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_RUBRIKY) != BIT_OPT_1_RUBRIKY){
 			// nezobrazit zakoncenie
@@ -2543,7 +2578,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}
 
-	else if(equals(paramname, PARAM_SLAVAOTCU_BEGIN) || equals(paramname, PARAM_SLAVAOTCU_SPEC_BEGIN)){
+	// 2012-05-24: podmienka zosilnen· kvÙli sl·va otcu vo vigÌli·ch (vtedy preskakujeme)
+	else if((equals(paramname, PARAM_SLAVAOTCU_BEGIN) || equals(paramname, PARAM_SLAVAOTCU_SPEC_BEGIN)) && (!((_global_som_vo_vigilii == ANO) && (((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PC_VIGILIA) != BIT_OPT_1_PC_VIGILIA) || !(je_vigilia))))){
 		_global_pocet_slava_otcu = _global_pocet_slava_otcu + 1;
 		// 2007-05-18: zosilnen· podmienka, aby Sl·va Otcu nebolo pre öpeci·lne prÌpady 
 		// 2007-12-04: opraven· podmienka, pretoûe nefungovala pre modlitby odliönÈ od rann˝ch chv·l
@@ -2571,7 +2607,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Log("  `Slava Otcu' skipping...\n");
 		}
 	}
-	else if(equals(paramname, PARAM_SLAVAOTCU_END) || equals(paramname, PARAM_SLAVAOTCU_SPEC_END)){
+	// 2012-05-24: podmienka zosilnen· kvÙli sl·va otcu vo vigÌli·ch (vtedy preskakujeme)
+	else if((equals(paramname, PARAM_SLAVAOTCU_END) || equals(paramname, PARAM_SLAVAOTCU_SPEC_END)) && (!((_global_som_vo_vigilii == ANO) && (((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PC_VIGILIA) != BIT_OPT_1_PC_VIGILIA) || !(je_vigilia))))){
 		// 2007-05-18: zosilnen· podmienka, aby Sl·va Otcu nebolo pre öpeci·lne prÌpady 
 		// 2007-12-04: opraven· podmienka, pretoûe nefungovala pre modlitby odliönÈ od rann˝ch chv·l
 		// 2011-04-28: doplnenÌm ÔalöÌch "Sl·va Otcu", ktorÈ sa rozbaæuj˙, sa posunulo ËÌslovanie, a tak radöej podmienku "_global_pocet_slava_otcu == 2" zruöÌme
@@ -3561,6 +3598,63 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				break;
 		}// switch
 	}// PARAM_CITANIE2_SPOMPRIVILEG
+
+	// 2012-05-24: doplnenÈ -- predÂûenÈ sl·venie vigÌliÌ v r·mci posv‰tn˝ch ËÌtanÌ
+	else if(equals(paramname, PARAM_ANTIFONA_VIG)){
+		switch(type){
+			case MODL_POSV_CITANIE:
+				strcat(path, _global_modl_posv_citanie.ant_chval.file);
+				includeFile(type, paramname, path, _global_modl_posv_citanie.ant_chval.anchor);
+				break;
+			default:
+				// tieto modlitby nemaj˙ moûnosù predÂûenÈho sl·venia vigÌlie
+				break;
+		}// switch
+	}// PARAM_ANTIFONA_VIG
+	else if(equals(paramname, PARAM_CHVALOSPEV1)){
+		switch(type){
+			case MODL_POSV_CITANIE:
+				strcat(path, _global_modl_posv_citanie.chval1.file);
+				includeFile(type, paramname, path, _global_modl_posv_citanie.chval1.anchor);
+				break;
+			default:
+				// tieto modlitby nemaj˙ moûnosù predÂûenÈho sl·venia vigÌlie
+				break;
+		}// switch
+	}// PARAM_CHVALOSPEV1
+	else if(equals(paramname, PARAM_CHVALOSPEV2)){
+		switch(type){
+			case MODL_POSV_CITANIE:
+				strcat(path, _global_modl_posv_citanie.chval2.file);
+				includeFile(type, paramname, path, _global_modl_posv_citanie.chval2.anchor);
+				break;
+			default:
+				// tieto modlitby nemaj˙ moûnosù predÂûenÈho sl·venia vigÌlie
+				break;
+		}// switch
+	}// PARAM_CHVALOSPEV2
+	else if(equals(paramname, PARAM_CHVALOSPEV3)){
+		switch(type){
+			case MODL_POSV_CITANIE:
+				strcat(path, _global_modl_posv_citanie.chval3.file);
+				includeFile(type, paramname, path, _global_modl_posv_citanie.chval3.anchor);
+				break;
+			default:
+				// tieto modlitby nemaj˙ moûnosù predÂûenÈho sl·venia vigÌlie
+				break;
+		}// switch
+	}// PARAM_CHVALOSPEV3
+	else if(equals(paramname, PARAM_EVANJELIUM)){
+		switch(type){
+			case MODL_POSV_CITANIE:
+				strcat(path, _global_modl_posv_citanie.evanjelium.file);
+				includeFile(type, paramname, path, _global_modl_posv_citanie.evanjelium.anchor);
+				break;
+			default:
+				// tieto modlitby nemaj˙ moûnosù predÂûenÈho sl·venia vigÌlie
+				break;
+		}// switch
+	}// PARAM_EVANJELIUM
 
 	/* netreba...
 	if(_local_skip_in_prayer != _global_skip_in_prayer){
@@ -14125,6 +14219,7 @@ int main(int argc, char **argv){
     _global_font_size = 0;
 
 	_global_pocet_navigacia = 0;
+	_global_pocet_volani_interpretTemplate = 0;
 
     _global_pocet_zalmov_kompletorium = 0;
 
@@ -14137,6 +14232,7 @@ int main(int argc, char **argv){
     _global_skip_in_prayer = NIE;
     _global_skip_in_prayer_2 = NIE;
     _global_skip_in_prayer_vnpc = NIE;
+	_global_som_vo_vigilii = NIE;
 
     params = 0;
 

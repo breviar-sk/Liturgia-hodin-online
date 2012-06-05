@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="version">v1.7.14</string>
+
+    <string name="lang_sk">SK</string>
+    <string name="lang_cz">CZ</string>
+    <string name="lang_hu">HU</string>
+    <string name="hu_beta_warning">
+    Hungarian version is in beta - thus, many source texts are not yet
+    available. Also some special cases for Hungarian liturgical calendar are
+    not yet finished. Expected date of finishing: mid of 2012. If you may help
+    us with completing HTML source files, please contact us (HTML base
+    knowledge is required).\n\n
+
+    Best wishes,\n
+    Juraj Vidéky (videky@breviar.sk), Richard Královič (riso@ksp.sk)
+    </string>
+
+    <string name="app_name">Breviary</string>
+    <string name="back">Back</string>
+    <string name="forward">Forward</string>
+    <string name="today">Today</string>
+    <string name="pgup">PgUp</string>
+    <string name="pgdn">PgDn</string>
+    <string name="news">
+     News in v1.7.14:\n
+     - Updates from www.breviar.sk\n\n
+     News in v1.7.13:\n
+     - Fixed CSS in Czech version\n\n
+     News in v1.7.9 - v1.7.12:\n
+     - Updates from www.breviar.sk\n\n
+     News in v1.7.8:\n
+     - Night mode\n
+     - Updates from www.breviar.sk\n\n
+    </string>
+</resources>

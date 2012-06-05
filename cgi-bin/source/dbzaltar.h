@@ -84,6 +84,8 @@ short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 #define ANCHOR_MODLITBA     "MODLITBA"
 #define ANCHOR_CITANIE1     "CIT1"
 #define ANCHOR_CITANIE2     "CIT2"
+#define ANCHOR_ANTIFONA_VIG "ANTV"
+#define ANCHOR_EVANJELIUM   "EV"
 
 // special identifiers
 #define SPOM_PM_SOBOTA "SPMVS"
@@ -207,7 +209,10 @@ extern const char *text_APR_30_2[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_01[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_02[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_03[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_04_HU[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_06[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_07_HU_1[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_07_HU_2[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_08_CZ[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_10_CZOP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_11_SK[POCET_JAZYKOV + 1];
@@ -218,6 +223,7 @@ extern const char *text_MAJ_13[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_14[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_15_CZOP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_16[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_17_HU[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_18[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_20_CZ[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_20[POCET_JAZYKOV + 1];
@@ -225,6 +231,8 @@ extern const char *text_MAJ_21_CZ[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_21[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_21_CZOP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_22[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_23_HU[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_24[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_24_CZOP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_25_1[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_25_2[POCET_JAZYKOV + 1];
@@ -232,6 +240,7 @@ extern const char *text_MAJ_25_3[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_26[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_27[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_30_CZ[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_30_HU[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_31[POCET_JAZYKOV + 1];
 
 extern const char *text_NANEBOVSTUPENIE_PANA[POCET_JAZYKOV + 1];
@@ -507,7 +516,6 @@ extern const char *text_MAJ_06_SDB[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_13_SDB[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_16_SDB[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_18_SDB[POCET_JAZYKOV + 1];
-extern const char *text_MAJ_24_SDB[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_29_SDB[POCET_JAZYKOV + 1];
 extern const char *text_JUN_12_SDB[POCET_JAZYKOV + 1];
 extern const char *text_JUN_23_SDB[POCET_JAZYKOV + 1];

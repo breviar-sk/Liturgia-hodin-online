@@ -1,0 +1,76 @@
+diff -ur docs/laudis-canticum.htm docs/laudis-canticum.htm
+--- docs/laudis-canticum.htm	2012-01-04 13:32:59.619460167 +0100
++++ docs/laudis-canticum.htm	2011-10-20 00:29:57.775779661 +0200
+@@ -13,7 +13,6 @@
+ <h2>Pavol VI., apoštolská konštitúcia <span class="it">Pieseò chvály</span></h2>
+ <a href="smernice_lh.htm"><b><i>Všeobecné smernice o Liturgii hodín</i></b></a> &gt;&gt
+ <br><a href="smernice_lrk.htm"><b><i>Všeobecné smernice o liturgickom roku a o kalendári</i></b></a> &gt;&gt<br>
+-^ <a href="index.htm#oficial">Dokumenty o Liturgii hodín</a>
+ <p>
+ </center>
+ </p>
+diff -ur docs/smernice_lh.htm docs/smernice_lh.htm
+--- docs/smernice_lh.htm	2012-01-04 13:32:59.619460167 +0100
++++ docs/smernice_lh.htm	2011-10-20 00:29:57.775779661 +0200
+@@ -12,7 +12,6 @@
+ <h2>Všeobecné smernice o Liturgii hodín</h2>
+ &lt;&lt <a href="laudis-canticum.htm">Pavol VI., <span class="it"><b><i>Pieseò chvály</i></b></span></a>
+ <br><a href="smernice_lrk.htm"><b><i>Všeobecné smernice o liturgickom roku a o kalendári</i></b></a> &gt;&gt<br>
+-^ <a href="index.htm#oficial">Dokumenty o Liturgii hodín</a>
+ </center>
+ 
+ <h3 align="center"><font color="#FF0000">PRVÁ KAPITOLA</font></h3>
+diff -ur docs/smernice_lrk.htm docs/smernice_lrk.htm
+--- docs/smernice_lrk.htm	2012-01-04 13:32:59.619460167 +0100
++++ docs/smernice_lrk.htm	2011-10-20 00:29:57.775779661 +0200
+@@ -13,7 +13,6 @@
+ &lt;&lt <a href="laudis-canticum.htm">Pavol VI., <span class="it"><b>Pieseò chvály</b></span></a><br>
+  &lt;&lt <a href="smernice_lh.htm"><b><i>Všeobecné smernice o Liturgii hodín<br>
+ </i></b></a> 
+-^ <a href="index.htm#oficial">Dokumenty o Liturgii hodín</a>
+ </center>
+ 
+ <center><h3>Hlava I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LITURGICKİ ROK</h3></center>
+diff -ur katechezy.htm katechezy.htm
+--- katechezy.htm	2012-01-04 13:32:59.859458543 +0100
++++ katechezy.htm	2011-10-20 00:29:57.885779640 +0200
+@@ -11,10 +11,9 @@
+ <body>
+ <center>
+ <h2>Katechézy k almom a chválospevom</h2>
+-^ <a href="main.htm">Hlavná stránka</a>
+ </center>
+ <p>&nbsp;
+-<table width="66%" align="center">
++<table width="100%" align="center">
+ <tr><td>
+ <p>Táto stránka obsahuje katechézy pápeov Jána Pavla II. a Benedikta XVI., ktoré boli prednesené
+ na všeobecnıch audienciách pre veriacich (na Námestí svätého Petra, v aule Pavla VI. resp. na inıch miestach)
+--- breviar-web.cfg	2012-01-04 14:23:59.338948391 +0100
++++ breviar-web.cfg	2012-01-04 13:32:59.549460641 +0100
+@@ -6,14 +6,14 @@
+ http_adresa_def="/"
+ 
+ # adresa, ktorá sa zobrazuje v pätke
++http_zobraz_adr_def=""
+-http_zobraz_adr_def="www.breviar.sk"
+ 
+ # mailová adresa autora
+ mail_adresa_def="videky@breviar.sk"
+ 
+ # include adresár pre default jazyk (sk).
+ # Toto je lepšie da do úvodzoviek, lebo ináè to vypíše koncovı slash na stdout
++incldir_def="include/"
+-incldir_def="../include/"
+ 
+ # === SK: Hodnoty option parametrov pre JAZYK_SK ===
+ # Tieto parametre ovplyvòujú obsah vygenerovanej modlitby
+@@ -21,7 +21,7 @@
+ # OPT0: špeciálne èasti modlitieb 
+ # 1. bit (1): èíslovanie (èísla) veršov v almoch, chválospevoch a biblickıch èítaniach 
+ # 2. bit (2): biblické referencie na dkc.kbs.sk
++# 3. bit (4): liturgické èítania (odkaz na lc.kbs.sk alebo androidove sv. Pismo)
+-# 3. bit (4): liturgické èítania (odkaz na lc.kbs.sk)
+ # 4. bit (8): èi sa slávi Zjavenie Pána 6.1. (0 = default) alebo v nede¾u medzi 2. a 8. januárom (1)
+ # 5. bit (16): èi sa slávi Nanebovstúpenie Pána vo štvrtok (40. deò po Ve¾kej noci, 0 = default) alebo sa prenáša na nasledujúcu nede¾u (1)
+ # 6. bit (32): èi sa Najsv. Kristovho Tela a Krvi slávi vo štvrtok, 11.-ty deò po Zoslaní Ducha Sv. (0 == default) alebo v nasledujúcu nede¾u (1)

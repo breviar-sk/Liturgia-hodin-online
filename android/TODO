@@ -1,0 +1,5 @@
+- liturgicke citania (skompletizovat, skontrolovat)
+- nocny rezim: fix v statickych strankach, v liturgickych citaniach, lepsie prepinane (cez menu)
+- pri rotacii si pamatat poziciu (v starych androidoch)
+- prerobit server (spustat ako service) - snad pomoze ako workaround v Android 3
+- moznost robit si poznamky / zvyraznit text

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/lang_cz"
+        android:title="@string/lang_cz">
+<!--        android:icon="@drawable/panel"> //-->
+    </item>
+
+    <item android:id="@+id/lang_hu"
+        android:title="@string/lang_hu">
+<!--        android:icon="@drawable/panel"> //-->
+    </item>
+
+    <item android:id="@+id/lang_sk"
+        android:title="@string/lang_sk">
+<!--        android:icon="@drawable/panel"> //-->
+    </item>
+
+</menu>
+
+
