@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.7.14</string>
+    <string name="version">v1.7.17</string>
 
     <string name="lang_sk">SK</string>
     <string name="lang_cz">CZ</string>
@@ -23,7 +23,7 @@
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
     <string name="news">
-     News in v1.7.14:\n
+     News in v1.7.14 - v1.7.16:\n
      - Updates from www.breviar.sk\n\n
      News in v1.7.13:\n
      - Fixed CSS in Czech version\n\n
