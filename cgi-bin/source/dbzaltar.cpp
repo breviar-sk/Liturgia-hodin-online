@@ -27257,10 +27257,10 @@ label_8_DEC:
 			// definovanie parametrov pre modlitbu
 			if(query_type != PRM_DETAILY)
 			set_spolocna_cast(sc, poradie_svaty);
-			// ZNOVUNASTAVENIE_POPISU_NA_DUMMY, 2003-06-30; 2009-06-10: zapoznámkované
-			// Log("vo funkcii sviatky_svatych() spustam set_popis_dummy(); - kvoli spomienke neposkvrneneho srdca panny marie...\n");
-			// set_popis_dummy();
-			// Log("set_popis_dummy() skoncila.\n");
+			// ZNOVUNASTAVENIE_POPISU_NA_DUMMY, 2003-06-30; 2009-06-10: zapoznámkované | 2012-06-18: opätovne odpoznámkované, lebo 16.06.2012 tam dalo pre MCD popis (sk) 16JUN_POPIS
+			Log("vo funkcii sviatky_svatych() spustam set_popis_dummy(); - kvoli spomienke neposkvrneneho srdca panny marie...\n");
+			set_popis_dummy();
+			Log("set_popis_dummy() skoncila.\n");
 
 			mystrcpy(_file, FILE_SRDCA_PM, MAX_STR_AF_FILE);
 			mystrcpy(_anchor, ANCHOR_SRDCA_PM, MAX_STR_AF_ANCHOR);

@@ -4391,7 +4391,7 @@ const char *text_JUN_22_2[POCET_JAZYKOV + 1] =
  "Nolai Szent Paulínusz püspök",
  };
 const char *text_JUN_22_1[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Fishera, biskupa, a sv. Tomáša Mórusa, muèeníkov",
+{"Sv. Jána Fishera, biskupa, a sv. Tomáša Morusa, muèeníkov", // Mórusa
  "Sv. Jana Fishera, biskupa, a Tomáše Mora, muèedníkù",
  "",
  "",
