@@ -25,6 +25,7 @@ public class Server extends Thread
     public Server(Context _ctx, String sn, String lang, String opts) throws IOException {
       int i;
       boolean ok = true;
+      Log.v("breviar", "Server: constructor");
       scriptname = sn;
       language = lang;
       persistentOpts = opts;
@@ -40,8 +41,9 @@ public class Server extends Thread
       }
       if (!ok) throw new IOException();
       port = i;
+      Log.v("breviar", "Server: socket opened at port " + port);
       running = true;
-      setDaemon(true);
+      // setDaemon(true);
     }
 
     public synchronized void setLanguage(String lang) {
@@ -57,15 +59,18 @@ public class Server extends Thread
     }
 
     public void run() {
+      Log.v("breviar", "Server: run started");
       while (running) {
         try {
           Socket client = listener.accept();
+          Log.v("breviar", "Server: handling connection");
           handle(client);
           client.close();
         } catch (IOException e) {
           Log.v("Breviar: Server:", "run failed: " + e.getMessage());
         }
       }
+      Log.v("breviar", "Server: run finished");
     }
 
     public void stopServer() {

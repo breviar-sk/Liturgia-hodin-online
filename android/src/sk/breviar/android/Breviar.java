@@ -40,7 +40,8 @@ public class Breviar extends Activity {
     boolean initialized, clearHistory;
 
     void goHome() {
-      wv.loadUrl("http://localhost:" + S.port + "/" + scriptname + "?qt=pdnes" + Html.fromHtml(S.getOpts()));
+      wv.loadUrl("http://localhost:" + S.port + "/" + scriptname + 
+                 "?qt=pdnes" + Html.fromHtml(S.getOpts()));
     }
 
     void resetLanguage() {
@@ -64,6 +65,7 @@ public class Breviar extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+      Log.v("breviar", "onCreate");
       super.onCreate(savedInstanceState);
 
       requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -74,7 +76,7 @@ public class Breviar extends Activity {
       scale = settings.getInt("scale", 100);
       String opts = settings.getString("params", "");
 
-      if (S==null) {
+//      if (S==null) {
         try {
           S = new Server(this, scriptname, language, opts);
         } catch (IOException e) {
@@ -83,7 +85,7 @@ public class Breviar extends Activity {
           return;
         }
         S.start();
-      }
+//      }
       setContentView(R.layout.breviar);
 
       wv = (WebView)findViewById(R.id.wv);
@@ -222,7 +224,9 @@ public class Breviar extends Activity {
 
     @Override
     public void onDestroy() {
+      Log.v("breviar", "onDestroy");
       if (S != null) S.stopServer();
+      S = null;
       super.onDestroy();
     }
 
