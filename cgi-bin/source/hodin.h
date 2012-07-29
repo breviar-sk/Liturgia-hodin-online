@@ -525,6 +525,7 @@ const char *nazov_slavenia_lokal[] =
 ,"Az Egri fõegyházmegyében"                                                                                     // LOKAL_SLAV_EGER_FOEGYH2
 ,"A Veszprém, a fõegyházmegye társvédõszentje; fõünnep"                                                         // LOKAL_SLAV_VESZPREM_FOEGYH_T
 ,"A Szatmári egyházmegyében; emléknap"                                                                          // LOKAL_SLAV_SZATMAR
+,"v ostatních èeskıch diecézích a v brnìnské diecézi: památka; <br>na Moravì mimo brnìnskou diecézi: nezávazná památka" // LOKAL_SLAV_CESKO_BRNO
 };
 
 // names of liturgical colors
@@ -1335,6 +1336,26 @@ const char *str_ano[POCET_JAZYKOV + 1] =
 const char *str_nie[POCET_JAZYKOV + 1] = 
 	{"nie", "ne", "no", "non", "___", "ne", "nem"};
 #define		STR_NIE		str_nie[_global_jazyk]
+
+const char *html_text_jazyk[POCET_JAZYKOV + 1] = 
+{"Liturgia hodín v jazyku:",
+ "Liturgie hodin pro jazyk:",
+ "Liturgy of hours in language:",
+ "LH in lingua:",
+ "",
+ "Liturgie hodin pro jazyk:",
+ ""
+};
+
+const char *html_text_jazyk_explain[POCET_JAZYKOV + 1] = 
+{"Liturgia hodín pre inı jazyk.",
+ "Liturgie hodin pro jinı jazyk.",
+ "Liturgy of hours in other languages.",
+ "LH in lingua...",
+ "",
+ "Liturgie hodin pro jinı jazyk.",
+ ""
+};
 
 const char *html_text_detaily_uvod[POCET_JAZYKOV + 1] = 
 {"Nasledovné monosti ovplyvnia vzh¾ad i obsah vygenerovanej modlitby.\nVyberte tie monosti, pod¾a ktorıch sa má modlitba vygenerova.", 

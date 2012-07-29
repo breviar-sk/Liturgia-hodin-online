@@ -17715,7 +17715,7 @@ label_25_MAR:
 						_global_svaty1.kalendar = KALENDAR_SK_SDB;
 					}// kalendár pre KALENDAR_SK_SDB
 					break;
-				case 30: // MES_MAY
+				case 30: // MES_MAY -- 30MAJ
 					if(_global_jazyk == JAZYK_HU){
 						if(poradie_svaty == 1){
 
@@ -17755,9 +17755,10 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_hymnus; // v èeskom breviári má vlastný hymnus; 2009-08-13
-							_vlastna_cast_benediktus;
-							_vlastna_cast_modlitba;
+							_vlastna_cast_full_okrem_prosieb(modlitba);
+							if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+								_vlastna_cast_kresponz_ve;
+							}
 
 							modlitba = MODL_POSV_CITANIE;
 							_vlastna_cast_hymnus; // v èeskom breviári má vlastný hymnus; 2009-08-13
@@ -17765,19 +17766,58 @@ label_25_MAR:
 							_vlastna_cast_2citanie;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_hymnus; // v èeskom breviári má vlastný hymnus; 2009-08-13
-							_vlastna_cast_magnifikat;
-							_vlastna_cast_modlitba;
-
+							_vlastna_cast_full_okrem_prosieb(modlitba);
+							if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+								_vlastna_cast_kresponz_ve;
+							}
+							
 							break;
 						}
 						_global_svaty1.typslav = SLAV_SPOMIENKA;
-						_global_svaty1.smer = 10; // povinné spomienky pod¾a všeobecného kalendára
+						_global_svaty1.smer = 11; // miestne povinné spomienky
+						_global_svaty1.typslav_lokal = LOKAL_SLAV_CESKO_BRNO;
 						mystrcpy(_global_svaty1.meno, text_MAJ_30_CZ[(_global_jazyk == JAZYK_CZ_OP)? JAZYK_CZ: _global_jazyk], MENO_SVIATKU);
 						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA);
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_CZ;
 					}
+					if(_global_jazyk == JAZYK_CZ){
+						// 2012-07-23: odvetvené pre èeskú verziu
+						if(poradie_svaty == 2){
+							// definovanie parametrov pre modlitbu
+							if(query_type != PRM_DETAILY)
+								set_spolocna_cast(sc, poradie_svaty);
+
+							modlitba = MODL_RANNE_CHVALY;
+							_vlastna_cast_full_okrem_prosieb(modlitba);
+							if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+								_vlastna_cast_kresponz_ve;
+							}
+
+							modlitba = MODL_POSV_CITANIE;
+							_vlastna_cast_hymnus;
+							_vlastna_cast_2citanie;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_VESPERY;
+							_vlastna_cast_full_okrem_prosieb(modlitba);
+							if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+								_vlastna_cast_kresponz_ve;
+							}
+
+							_vlastna_cast_mcd_modlitba;
+
+							break;
+						}
+						pocet = 2;
+						_global_svaty2.typslav = SLAV_SVIATOK;
+						_global_svaty2.smer = 8; // miestne sviatky
+						_global_svaty2.typslav_lokal = LOKAL_SLAV_LITOMERICE;
+						mystrcpy(_global_svaty2.meno, text_MAJ_30_CZ[_global_jazyk], MENO_SVIATKU);
+						_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA);
+						_global_svaty2.farba = LIT_FARBA_BIELA;
+						_global_svaty2.kalendar = KALENDAR_VSEOBECNY_CZ;
+					}// cz only
 					if(_global_jazyk == JAZYK_CZ_OP){
 						// 2009-07-10: odvetvené pre dominikánov;
 						// 2010-03-15: pre dominikánov samostatne
@@ -17787,7 +17827,10 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_full(modlitba);
+							_vlastna_cast_full_okrem_prosieb(modlitba);
+							if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+								_vlastna_cast_kresponz_ve;
+							}
 
 							modlitba = MODL_POSV_CITANIE;
 							_vlastna_cast_hymnus;
@@ -17795,7 +17838,12 @@ label_25_MAR:
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_full(modlitba);
+							_vlastna_cast_full_okrem_prosieb(modlitba);
+							if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+								_vlastna_cast_kresponz_ve;
+							}
+
+							_vlastna_cast_mcd_modlitba;
 
 							break;
 						}
