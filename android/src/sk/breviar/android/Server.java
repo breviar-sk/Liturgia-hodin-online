@@ -155,7 +155,7 @@ public class Server extends Thread
         cntlen = 0;
         buf = new byte[0];
       }
-      // Log.v("breviar", "document = " + dokument);
+      Log.v("breviar", "handle connection: document = " + dokument);
 
       if (dokument.length() >=scriptname.length() && 
           dokument.substring(0,scriptname.length()).equals(scriptname)) {

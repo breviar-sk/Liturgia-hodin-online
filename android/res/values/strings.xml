@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.7.18</string>
+    <string name="version">v1.7.19</string>
 
     <string name="lang_sk">SK</string>
     <string name="lang_cz">CZ</string>
@@ -23,6 +23,9 @@
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
     <string name="news">
+     News in v1.7.19:\n
+     - Updates from www.breviar.sk\n
+     - Better rotation handling\n\n
      News in v1.7.18:\n
      - Updates from www.breviar.sk\n
      - More robust webserver restarts\n\n
@@ -30,7 +33,5 @@
      - Updates from www.breviar.sk\n\n
      News in v1.7.13:\n
      - Fixed CSS in Czech version\n\n
-     News in v1.7.9 - v1.7.12:\n
-     - Updates from www.breviar.sk\n\n
     </string>
 </resources>

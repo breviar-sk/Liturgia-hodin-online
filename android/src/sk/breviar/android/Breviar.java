@@ -40,7 +40,8 @@ public class Breviar extends Activity {
     boolean initialized, clearHistory;
 
     void goHome() {
-      wv.loadUrl("http://localhost:" + S.port + "/" + scriptname + 
+      Log.v("breviar", "goHome");
+      wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname + 
                  "?qt=pdnes" + Html.fromHtml(S.getOpts()));
     }
 
@@ -48,7 +49,7 @@ public class Breviar extends Activity {
       S.setLanguage(language);
       // musime zahodit aj nastavenia, mozu byt ine. A zresetovalo by to aj jazyk spat.
       clearHistory = true;
-      wv.loadUrl("http://localhost:" + S.port + "/" + scriptname + "?qt=pdnes");
+      wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname + "?qt=pdnes");
       syncPreferences();
     }
 
@@ -66,9 +67,6 @@ public class Breviar extends Activity {
     public void onCreate(Bundle savedInstanceState)
     {
       Log.v("breviar", "onCreate");
-      super.onCreate(savedInstanceState);
-
-      requestWindowFeature(Window.FEATURE_NO_TITLE);
 
       // Restore preferences
       SharedPreferences settings = getSharedPreferences(prefname, 0);
@@ -76,20 +74,25 @@ public class Breviar extends Activity {
       scale = settings.getInt("scale", 100);
       String opts = settings.getString("params", "");
 
-//      if (S==null) {
-        try {
-          S = new Server(this, scriptname, language, opts);
-        } catch (IOException e) {
-          Log.v("breviar", "Can not initialize server!");
-          finish();
-          return;
-        }
-        S.start();
-//      }
+      // Initialize server very early, to avoid races
+      try {
+        S = new Server(this, scriptname, language, opts);
+      } catch (IOException e) {
+        Log.v("breviar", "Can not initialize server!");
+        finish();
+        return;
+      }
+      S.start();
+
+      super.onCreate(savedInstanceState);
+      requestWindowFeature(Window.FEATURE_NO_TITLE);
+
       setContentView(R.layout.breviar);
 
       wv = (WebView)findViewById(R.id.wv);
+      wv.clearCache(true);
       wv.getSettings().setBuiltInZoomControls(true);
+      wv.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
       wv.setInitialScale(scale);
       initialized = false;
       Log.v("breviar", "setting scale = " + scale);
@@ -130,7 +133,7 @@ public class Breviar extends Activity {
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
-          Log.v("breviar", "onPageStarted");
+          Log.v("breviar", "onPageStarted " + url);
           if (parent.initialized) parent.syncScale();
           parent.initialized = true;
           super.onPageStarted(view, url, favicon);
@@ -138,7 +141,7 @@ public class Breviar extends Activity {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-          Log.v("breviar", "onPageFinished");
+          Log.v("breviar", "onPageFinished " + url);
           if (parent.clearHistory) view.clearHistory();
           parent.clearHistory = false;
           super.onPageFinished(view, url);

@@ -555,12 +555,20 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_VIGILIA "of1v"
 #endif
 
-// vigÌlia v posv‰tnom ËÌtanÌ
+// popis (ûivotopis) pre modlitbu sv‰tÈho
 #define MODL_OPTF_1_SKRY_POPIS 78
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_SKRY_POPIS "MODL_OPTF_1_SKRY_POPIS"
 #else
 	#define STR_MODL_OPTF_1_SKRY_POPIS "of1sp"
+#endif
+
+// zobraziù rubriku s textom, odkiaæ sa ber˙ spoloËnÈ Ëasti
+#define MODL_OPTF_1_ZOBRAZ_SPOL_CAST 80
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST "MODL_OPTF_1_ZOBRAZ_SPOL_CAST"
+#else
+	#define STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST "of1zspc"
 #endif
 
 // ûalmy zo sviatku
