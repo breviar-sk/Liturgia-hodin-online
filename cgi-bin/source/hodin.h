@@ -154,7 +154,7 @@ const char *nazov_spolc_vyrocie_jazyk[POCET_JAZYKOV + 1] =
 
 // the --OR-- (alternative) for common parts of celebration
 const char *nazov_spolc_alebo_jazyk[POCET_JAZYKOV + 1] =
-{"alebo", "nebo", "or", "", "", "nebo", ""};
+{"<br />alebo", "<br />nebo", "<br />or", "", "", "<br />nebo", ""};
 
 // the names of the common texts (e.g.: for bishops, for saint men, for apostles...)
 const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
@@ -4308,7 +4308,7 @@ const char *text_JUN_03[POCET_JAZYKOV + 1] =
  "Sv. Karla Lwangy a druhù, muèedníkù",
  "Lwanga Szent Károly és társai, vértanúk",
  };
-const char *text_JUN_04_CZ[POCET_JAZYKOV + 1] = 
+const char *text_JUN_04_OP[POCET_JAZYKOV + 1] = 
 {"Sv. Petra Veronského, kòaza a muèeníka",
  "",
  "",

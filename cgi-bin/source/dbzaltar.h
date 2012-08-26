@@ -656,7 +656,7 @@ extern const char *text_MAJ_28_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_29_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_30_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUN_02_OP[POCET_JAZYKOV + 1];
-extern const char *text_JUN_04_CZ[POCET_JAZYKOV + 1];
+extern const char *text_JUN_04_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUN_08_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUN_10_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUN_12_OP[POCET_JAZYKOV + 1];

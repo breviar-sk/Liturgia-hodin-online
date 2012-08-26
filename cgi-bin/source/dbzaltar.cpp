@@ -8163,8 +8163,8 @@ short int _spol_cast_je_panna(_struct_sc sc){
 	sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
 	_set_modlitba(modlitba, _file, _anchor);\
 	set_LOG_svsv;}
-// modlitba -- ina pre prve vespery ako rano i vecer dna
-#define _vlastna_cast_modlitba_prve_vesp {\
+// modlitba -- niekedy mÙûe byù in· napr. pre prvÈ veöpery (odliön· od modlitby pre rannÈ chv·ly a veöpery), niekedy odliön· pre rannÈ chv·ly a veöpery
+#define _vlastna_cast_modlitba_ina {\
 	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MODLITBA);\
 	_set_modlitba(modlitba, _file, _anchor);\
 	set_LOG_svsv;}
@@ -8181,6 +8181,11 @@ short int _spol_cast_je_panna(_struct_sc sc){
 // modlitba -- na spomienku sv‰tca v pÙste
 #define _vlastna_cast_modlitba_spomprivileg {\
 	sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+	_set_modlitba_spomprivileg(modlitba, _file, _anchor);\
+	set_LOG_svsv;}
+// modlitba -- na spomienku sv‰tca v pÙste (ak je odliön· modlitba pre rannÈ chv·ly a veöpery)
+#define _vlastna_cast_modlitba_spomprivileg_ina {\
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MODLITBA);\
 	_set_modlitba_spomprivileg(modlitba, _file, _anchor);\
 	set_LOG_svsv;}
 // posv‰tnÈ ËÌtanie (2. hagiografickÈ ËÌtanie) -- na spomienku sv‰tca v pÙste
@@ -8335,7 +8340,7 @@ short int _spol_cast_je_panna(_struct_sc sc){
 #define _spolocna_cast_magnifikat		_vlastna_cast_magnifikat
 #define _spolocna_cast_prosby			_vlastna_cast_prosby
 #define _spolocna_cast_modlitba			_vlastna_cast_modlitba
-#define _spolocna_cast_modlitba_prve_vesp _vlastna_cast_modlitba_prve_vesp
+#define _spolocna_cast_modlitba_prve_vesp _vlastna_cast_modlitba_ina
 /* #define _spolocna_cast_antifony		_vlastna_cast_antifony*/
 // ... az na antifony...
 // 2009-11-10: upravenÈ pre modlitbu cez deÚ
@@ -9929,7 +9934,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 	Log("_set_spolocna_cast(%s) -- end\n", nazov_spolc(a));
 }// _set_spolocna_cast(); -- dva argumenty
 
-void set_popis_svaty_rch_mcd_pc_vesp(){
+void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty){
 	Log("set_popis_svaty_rch_mcd_pc_vesp() -- zaËiatok...\n");
 	// Log("  teraz nastavujem POPIS (pre daneho svateho)...\n");
 	mystrcpy(_anchor, _anchor_head, MAX_STR_AF_ANCHOR);
@@ -9939,9 +9944,12 @@ void set_popis_svaty_rch_mcd_pc_vesp(){
 	set_popis(MODL_VESPERY, _file, _anchor);
 	set_popis(MODL_POSV_CITANIE, _file, _anchor);
 	// 2006-01-27: PridanÈ popisy pre modlitby cez deÚ
-	set_popis(MODL_PREDPOLUDNIM, _file, _anchor);
-	set_popis(MODL_NAPOLUDNIE, _file, _anchor);
-	set_popis(MODL_POPOLUDNI, _file, _anchor);
+	// 2012-08-21: pre æubovoænÈ aj z·v‰znÈ spomienky nem· v˝znam | Ë. 236 VSLH: V modlitbe cez deÚ, Ëiûe predpoludnÌm, napoludnie a popoludnÌ, a v kompletÛriu sa neberie niË z ofÌcia o sv‰tom, vöetko je zo vöednÈho dÚa.
+	if((_global_den.typslav != SLAV_LUB_SPOMIENKA) && (_global_den.typslav != SLAV_SPOMIENKA)){
+		set_popis(MODL_PREDPOLUDNIM, _file, _anchor);
+		set_popis(MODL_NAPOLUDNIE, _file, _anchor);
+		set_popis(MODL_POPOLUDNI, _file, _anchor);
+	}
 	Log("set_popis_svaty_rch_mcd_pc_vesp() -- koniec.\n");
 }// set_popis_svaty_rch_mcd_pc_vesp()
 
@@ -9970,7 +9978,7 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 
 	// 2011-03-17: tu bolo nastavenie popisu pre danÈho sv‰tÈho; presunutÈ do samostatnej Ëasti, nakoæko sa to pouûÌva aj pre spomienky v pÙste, kde sa set_spolocna_cast) nevol·
 	Log("teraz nastavujem POPIS (pre danÈho sv‰tÈho) -- vol·m set_popis_svaty_rch_mcd_pc_vesp()...\n");
-	set_popis_svaty_rch_mcd_pc_vesp();
+	set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 	// 2003-06-30: tento POPIS nie je dobre nastaveny pre spomienku
 	// "NepoökvrnenÈho Srdca prebl. Panny M·rie" -> "NepoökvrnenÈho Srdca Panny M·rie", preto je tam nastaveny este raz na dummy, vid ZNOVUNASTAVENIE_POPISU_NA_DUMMY
@@ -10461,10 +10469,11 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_POSV_CITANIE;
 							_vlastna_cast_hymnus;
 							_vlastna_cast_2citanie;
-							_vlastna_cast_modlitba;
+							_vlastna_cast_modlitba; // alebo ako na rannÈ chv·ly
 
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+							_vlastna_cast_modlitba_ina; // alebo ako na veöpery
 
 							break;
 						}
@@ -10995,6 +11004,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							}
 							else{
 								_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+								// _vlastna_cast_modlitba_ina; // Alebo ako na veöpery.
 							}
 
 							modlitba = MODL_POSV_CITANIE;
@@ -11002,7 +11012,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 								_vlastna_cast_full(modlitba);
 							}
 							else{
-								_vlastna_cast_modlitba;
+								_vlastna_cast_modlitba; // Modlitba ako na rannÈ chv·ly alebo na veöpery.
 								_vlastna_cast_2citanie;
 							}
 
@@ -11012,6 +11022,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							}
 							else{
 								_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+								_vlastna_cast_modlitba_ina; // Alebo ako na rannÈ chv·ly.
 							}
 
 							break;
@@ -12227,7 +12238,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -12282,7 +12293,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -12349,7 +12360,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -12404,7 +12415,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniù antifÛnu zo spoloËnej Ëasti (do vlastnej Ëasti) a odpozn·mkovaù tento kÛd, aby bolo spr·vne zobrazenÈ zakonËenie
@@ -12451,7 +12462,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -12498,7 +12509,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -12536,7 +12547,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniù antifÛnu zo spoloËnej Ëasti (do vlastnej Ëasti) a odpozn·mkovaù tento kÛd, aby bolo spr·vne zobrazenÈ zakonËenie
@@ -12592,7 +12603,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniù antifÛnu zo spoloËnej Ëasti (do vlastnej Ëasti) a odpozn·mkovaù tento kÛd, aby bolo spr·vne zobrazenÈ zakonËenie
@@ -12638,7 +12649,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -12689,7 +12700,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -12744,7 +12755,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -12804,7 +12815,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -12861,7 +12872,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -12932,7 +12943,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -12981,7 +12992,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniù antifÛnu zo spoloËnej Ëasti (do vlastnej Ëasti) a odpozn·mkovaù tento kÛd, aby bolo spr·vne zobrazenÈ zakonËenie
@@ -13034,7 +13045,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -13089,7 +13100,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -13097,7 +13108,12 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 								modlitba = MODL_VESPERY;
 								_vlastna_cast_magnifikat_spomprivileg;
-								_vlastna_cast_modlitba_spomprivileg;
+								if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+									_vlastna_cast_modlitba_spomprivileg_ina;
+								}
+								else{
+									_vlastna_cast_modlitba_spomprivileg;
+								}
 
 								modlitba = MODL_POSV_CITANIE;
 								_vlastna_cast_2citanie_spomprivileg;
@@ -13119,7 +13135,12 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 								modlitba = MODL_VESPERY;
 								_vlastna_cast_magnifikat;
-								_vlastna_cast_modlitba;
+								if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+									_vlastna_cast_modlitba_ina;
+								}
+								else{
+									_vlastna_cast_modlitba;
+								}
 							}// nie je_privileg
 							break;
 						}
@@ -13149,7 +13170,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniù antifÛnu zo spoloËnej Ëasti (do vlastnej Ëasti) a odpozn·mkovaù tento kÛd, aby bolo spr·vne zobrazenÈ zakonËenie
@@ -13207,7 +13228,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniù antifÛnu zo spoloËnej Ëasti (do vlastnej Ëasti) a odpozn·mkovaù tento kÛd, aby bolo spr·vne zobrazenÈ zakonËenie
@@ -13260,7 +13281,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -13339,7 +13360,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -13394,7 +13415,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniù antifÛnu zo spoloËnej Ëasti (do vlastnej Ëasti) a odpozn·mkovaù tento kÛd, aby bolo spr·vne zobrazenÈ zakonËenie
@@ -13538,7 +13559,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -13587,7 +13608,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -13637,7 +13658,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_modlitba_spomprivileg;
@@ -13682,7 +13703,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -13732,7 +13753,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -13782,7 +13803,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -13834,7 +13855,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -13887,7 +13908,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -13961,7 +13982,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -13989,7 +14010,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniù antifÛnu zo spoloËnej Ëasti (do vlastnej Ëasti) a odpozn·mkovaù tento kÛd, aby bolo spr·vne zobrazenÈ zakonËenie
@@ -14022,7 +14043,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -14051,7 +14072,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus_spomprivileg;
@@ -14168,7 +14189,7 @@ label_19_MAR:
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -14330,7 +14351,7 @@ label_25_MAR:
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -14359,7 +14380,7 @@ label_25_MAR:
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -14407,7 +14428,7 @@ label_25_MAR:
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -14453,7 +14474,7 @@ label_25_MAR:
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -14503,7 +14524,7 @@ label_25_MAR:
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_modlitba_spomprivileg;
@@ -14546,7 +14567,7 @@ label_25_MAR:
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -14592,7 +14613,7 @@ label_25_MAR:
 						// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -14640,7 +14661,7 @@ label_25_MAR:
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_modlitba_spomprivileg;
@@ -14687,7 +14708,7 @@ label_25_MAR:
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_modlitba_spomprivileg;
@@ -14731,7 +14752,7 @@ label_25_MAR:
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniù antifÛnu zo spoloËnej Ëasti (do vlastnej Ëasti) a odpozn·mkovaù tento kÛd, aby bolo spr·vne zobrazenÈ zakonËenie
@@ -14783,7 +14804,7 @@ label_25_MAR:
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_modlitba_spomprivileg;
@@ -14818,7 +14839,7 @@ label_25_MAR:
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_modlitba_spomprivileg;
@@ -14873,7 +14894,7 @@ label_25_MAR:
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_modlitba_spomprivileg;
@@ -14908,7 +14929,7 @@ label_25_MAR:
 							// na spomienku v privilegovan˝ deÚ (spomienka v pÙste)
 							if(je_privileg){
 								if(query_type != PRM_DETAILY)
-									set_popis_svaty_rch_mcd_pc_vesp();
+									set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_modlitba_spomprivileg;
@@ -14957,6 +14978,10 @@ label_25_MAR:
 				case 20: // MES_APR -- 20APR
 					if((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 						if(poradie_svaty == 1){
+
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+								file_name_vlastny_kalendar(_global_kalendar);
+							}
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
@@ -15600,6 +15625,7 @@ label_25_MAR:
 
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_full(modlitba);
+							_vlastna_cast_modlitba_ina; // Alebo ako na rannÈ chv·ly.
 							// 2012-04-02: doplnenÈ ûalmy, ktorÈ zatiaæ nikde inde nie s˙ v tomto radenÌ pouûitÈ
 							set_zalm(1, modlitba, "z31.htm", "ZALM31,20-25");
 							set_zalm(2, modlitba, "z84.htm", "ZALM84_OP");
@@ -16521,6 +16547,10 @@ label_25_MAR:
 				case 10: // MES_MAY -- 10MAJ
 					if((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 						if(poradie_svaty == 1){
+
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+								file_name_vlastny_kalendar(_global_kalendar);
+							}
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
@@ -17775,6 +17805,10 @@ label_25_MAR:
 					// 2011-03-17: doplnenÈ pre SK OFM
 					if((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 						if(poradie_svaty == 1){
+
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+								file_name_vlastny_kalendar(_global_kalendar);
+							}
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
@@ -18560,6 +18594,10 @@ label_25_MAR:
 				case 4: // MES_JUN -- 04JUN
 					if((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 						if(poradie_svaty == 1){
+
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+								file_name_vlastny_kalendar(_global_kalendar);
+							}
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
@@ -18584,12 +18622,12 @@ label_25_MAR:
 						_global_svaty1.smer = 11; // miestne povinnÈ spomienky
 						if(_global_jazyk == JAZYK_CZ_OP){
 							mystrcpy(_global_svaty1.meno, text_PRO_OP[_global_jazyk], MENO_SVIATKU);
-							strcat(_global_svaty1.meno, text_JUN_04_CZ[_global_jazyk]);
+							strcat(_global_svaty1.meno, text_JUN_04_OP[_global_jazyk]);
 							_global_svaty1.kalendar = KALENDAR_CZ_OP;
 						}
 						else
 						{
-							mystrcpy(_global_svaty1.meno, text_JUN_04_CZ[_global_jazyk], MENO_SVIATKU);
+							mystrcpy(_global_svaty1.meno, text_JUN_04_OP[_global_jazyk], MENO_SVIATKU);
 							_global_svaty1.kalendar = KALENDAR_SK_OP;
 						}
 						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
@@ -18714,6 +18752,10 @@ label_25_MAR:
 					}// HU only
 					if((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 						if(poradie_svaty == 1){
+							
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+								file_name_vlastny_kalendar(_global_kalendar);
+							}
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
@@ -18834,6 +18876,10 @@ label_25_MAR:
 				case 10: // MES_JUN -- 10JUN
 					if((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 						if(poradie_svaty == 1){
+
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+								file_name_vlastny_kalendar(_global_kalendar);
+							}
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
@@ -19604,7 +19650,7 @@ label_25_MAR:
 
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
-						_vlastna_cast_modlitba_prve_vesp;
+						_vlastna_cast_modlitba_ina;
 						_set_zalmy_sviatok_sv_muzov(modlitba);
 
 						modlitba = MODL_INVITATORIUM;
@@ -19900,7 +19946,7 @@ label_25_MAR:
 
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
-						_vlastna_cast_modlitba_prve_vesp;
+						_vlastna_cast_modlitba_ina;
 						_set_zalmy_sviatok_apostolov(modlitba);
 
 						modlitba = MODL_PRVE_KOMPLETORIUM;
@@ -20640,7 +20686,12 @@ label_25_MAR:
 
 					if((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 						pocet = 2;
+
 						if(poradie_svaty == 2){
+
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+								file_name_vlastny_kalendar(_global_kalendar);
+							}
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
@@ -22542,7 +22593,7 @@ label_25_MAR:
 
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
-						_vlastna_cast_modlitba_prve_vesp;
+						_vlastna_cast_modlitba_ina;
 						_set_zalmy_sviatok_panien(modlitba);
 
 						modlitba = MODL_INVITATORIUM;
@@ -27964,7 +28015,7 @@ label_8_DEC:
 						// na spomienku v privilegovan˝ deÚ (spomienka v advente v dÚoch 17.-24. decembra)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -28028,7 +28079,7 @@ label_8_DEC:
 						// na spomienku v privilegovan˝ deÚ (spomienka v advente v dÚoch 17.-24. decembra)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -28164,7 +28215,7 @@ label_8_DEC:
 						// na spomienku v privilegovan˝ deÚ (spomienka vo VianoËnej okt·ve)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
@@ -28213,7 +28264,7 @@ label_8_DEC:
 						// na spomienku v privilegovan˝ deÚ (spomienka vo VianoËnej okt·ve)
 						if(je_privileg){
 							if(query_type != PRM_DETAILY)
-								set_popis_svaty_rch_mcd_pc_vesp();
+								set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus_spomprivileg;
