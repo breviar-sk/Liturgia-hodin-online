@@ -542,13 +542,16 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR] /*, short i
 
 	// 2011-01-26: pridané odovzdanie parametrov pre options1 atï.
     // 2011-04-07: upravené -- použitie polí
+	// 2012-08-27: aj pre hodnotu 3 sa vykonáva
 	char local_str[SMALL];
 	short int local_opt_default;
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){
 		Log("i == %d...\n", i);
-		if(i == 3)
+/*		if(i == 3)
 			continue;
+*/
 		local_opt_default = CFG_OPTION_DEFAULT(i);
+		Log("_global_opt[%d] == %d; CFG_OPTION_DEFAULT(%d) == %d;\n", i, _global_opt[i], i, local_opt_default);
 		if(_global_opt[i] != local_opt_default){
 			strcpy(local_str, STR_EMPTY);
 			switch(i){

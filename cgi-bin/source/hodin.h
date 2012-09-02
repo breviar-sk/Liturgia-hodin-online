@@ -2115,13 +2115,13 @@ const char *html_text_detaily_explain[POCET_JAZYKOV + 1] =
 
 // 2010-06-04: doplnený text pre popis do invitatória
 const char *html_text_inv_slavaotcu[POCET_JAZYKOV + 1] = 
-{"<p>&nbsp;&nbsp;&nbsp; <font size=\"-1\"><font color=\"#ff0000\">Nasleduje </font>Sláva Otcu<font color=\"#ff0000\"> a opakuje sa antifóna.</font></font>", 
- "<p>&nbsp;&nbsp;&nbsp; <font size=\"-1\"><font color=\"#ff0000\">Následuje </font>Sláva Otci<font color=\"#ff0000\"> a opakuje se antifona.</font></font>", 
- "<p>&nbsp;&nbsp;&nbsp; <font size=\"-1\"><font color=\"#ff0000\">Follows </font>Glory...<font color=\"#ff0000\"> a opakuje sa antifóna.</font></font>", 
- "<p>&nbsp;&nbsp;&nbsp; <font size=\"-1\"><font color=\"#ff0000\">Nasleduje </font>Gloria Patri<font color=\"#ff0000\"> a opakuje sa antifóna.</font></font>", 
- "<p>&nbsp;&nbsp;&nbsp; <font size=\"-1\"><font color=\"#ff0000\">Nasleduje </font>Sláva Otcu<font color=\"#ff0000\"> a opakuje sa antifóna.</font></font>", 
- "<p>&nbsp;&nbsp;&nbsp; <font size=\"-1\"><font color=\"#ff0000\">Následuje </font>Sláva Otci<font color=\"#ff0000\"> a opakuje se antifona.</font></font>", 
- "<p>&nbsp;&nbsp;&nbsp; <font size=\"-1\"><font color=\"#ff0000\">Következik a </font>Dicsõség az Atyának<font color=\"#ff0000\"> és megismételjük az antifónát.</font></font>", 
+{"<p>&nbsp;&nbsp;&nbsp; <span class=\"redsmall\">Nasleduje</span> <span class=\"small\">Sláva Otcu</span> <span class=\"redsmall\">a opakuje sa antifóna.</span>", 
+ "<p>&nbsp;&nbsp;&nbsp; <span class=\"redsmall\">Následuje</span> <span class=\"small\">Sláva Otci</span> <span class=\"redsmall\">a opakuje se antifona.</span>", 
+ "<p>&nbsp;&nbsp;&nbsp; <span class=\"redsmall\">Follows</span> <span class=\"small\">Glory...</span> <span class=\"redsmall\">a opakuje sa antifóna.</span>", 
+ "<p>&nbsp;&nbsp;&nbsp; <span class=\"redsmall\">Nasleduje</span> <span class=\"small\">Gloria Patri</span> <span class=\"redsmall\">a opakuje sa antifóna.</span>", 
+ "<p>&nbsp;&nbsp;&nbsp; <span class=\"redsmall\">Nasleduje</span> <span class=\"small\">Sláva Otcu</span> <span class=\"redsmall\">a opakuje sa antifóna.</span>", 
+ "<p>&nbsp;&nbsp;&nbsp; <span class=\"redsmall\">Následuje</span> <span class=\"small\">Sláva Otci</span> <span class=\"redsmall\">a opakuje se antifona.</span>", 
+ "<p>&nbsp;&nbsp;&nbsp; <span class=\"redsmall\">Következik a</span> <span class=\"small\">Dicsõség az Atyának</span> <span class=\"redsmall\">és megismételjük az antifónát.</span>", 
 };
 
 // 2009-08-04, doplnené: pre batch mód
