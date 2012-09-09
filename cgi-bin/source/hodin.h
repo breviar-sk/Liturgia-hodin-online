@@ -1827,22 +1827,22 @@ const char *html_text_option1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_option1_spolc_svaty[POCET_JAZYKOV + 1] = 
 {"zobrazi, odkia¾ sa berú èasti zo spoloènej èasti k modlitbe svätého", 
- "", 
+ "zobrazit, odkud se berou spoleèné texty", 
  "display communia info", 
  "", 
  "", 
- "",
- ""
+ "zobrazit, odkud se berou spoleèné texty",
+ "megmutatni, honnan lettek véve a közös részek a szentek zsolozsmájához"
 };
 
 const char *html_text_option1_spolc_svaty_explain[POCET_JAZYKOV + 1] = 
-{"Rubrika obsahujúca informáciu, z akej spoloènej èasti sa berú èasti zo spoloènej èasti k modlitbe svätého", 
- "", 
+{"Rubrika obsahujúca informáciu, z akej spoloènej èasti sa berú èasti zo spoloènej èasti k modlitbe svätého.", 
+ "Rubrika, která pro modlitby svatıch informuje, které spoleèné texty jsou uity.", 
  "Displays communia info.", 
  "", 
  "", 
- "",
- ""
+ "Rubrika, která pro modlitby svatıch informuje, které spoleèné texty jsou uity.",
+ "Rubrika, amely azt az információt tartalmazza, hogy melyik közös részbõl vannak véve a szentek zsolozsmájához tartozó közös részek."
 };
 
 const char *html_text_option1_vigilia[POCET_JAZYKOV + 1] = 
@@ -1978,6 +1978,25 @@ const char *html_text_option2_navigation_explain[POCET_JAZYKOV + 1] =
  "", 
  "Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. pøedešlı/následující den pøímo v textu modlitby.", 
  "Legyen-e hiperhivatkozás a nap többi imaórájára is,  illetve mutassa-e az elõzõ és következõ nap imaóráit is közvetlenül a szövegben.", 
+};
+
+const char *html_text_option2_moznosti[POCET_JAZYKOV + 1] = 
+{"zobrazi v textoch modlitieb rozlièné monosti",
+ "zobrazit v textech modliteb rozlièné volby", 
+ "xxx", 
+ "",
+ "",
+ "zobrazit v textech modliteb rozlièné volby", 
+ "xxx", 
+};
+const char *html_text_option2_moznosti_explain[POCET_JAZYKOV + 1] = 
+{"Èi sa majú zobrazova hypertextové odkazy na iné zobrazenie tej istej modlitby priamo v texte modlitby (napr. pre modlitbu cez deò na verziu s doplnkovou psalmódiou).", 
+ "Zda zobrazit hypertextové odkazy na jiné zobrazení modlitby daného dne pøímo v textu modlitby (napø. pro modlitbu uprostrìd dne verzi se almy z doplòujícího cyklu).", 
+ "xxx", 
+ "",
+ "", 
+ "Zda zobrazit hypertextové odkazy na jiné zobrazení modlitby daného dne pøímo v textu modlitby (napø. pro modlitbu uprostrìd dne verzi se almy z doplòujícího cyklu).", 
+ "xxx", 
 };
 
 const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] = 

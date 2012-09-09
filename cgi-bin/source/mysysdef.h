@@ -82,31 +82,31 @@
  *
  */
 
-/* OS_...    - uz ani nie su potrebne (kedysi pre cesty) */
-/* MODEL_... - model kompilacie */
+// OS_...    - uz ani nie su potrebne (kedysi pre cesty)
+// MODEL_... - model kompilacie
 
-/* --------------------------------------------------------------------- */
-/* prerobene 23/02/2000A.D. -- 24/02/2000A.D. */
-/* 2006-01-28: pridané define pre spôsob výpisu kotiev a názvov súborov do HTML výsledku */
+// ---------------------------------------------------------------------
+// prerobene 23/02/2000A.D. -- 24/02/2000A.D.
+// 2006-01-28: pridané define pre spôsob výpisu kotiev a názvov súborov do HTML výsledku
 #undef EXPORT_HTML_FILENAME_ANCHOR
 #undef EXPORT_HTML_FILENAME
 #undef EXPORT_HTML_ANCHOR
-#undef EXPORT_HTML_SPECIALS /* 2007-11-20: vytvorené, kvôli výpisom do výsledného HTML vo funkcii interpretParameter(), napr. "nie je velkonocne obdobie" */
-#undef EXPORT_CMDLINE_CSS /* 2008-08-08: doplnené kvôli tomu, èi exportova v hlavièke /breviar.css alebo ./breviar.css */
+#undef EXPORT_HTML_SPECIALS // 2007-11-20: vytvorené, kvôli výpisom do výsledného HTML vo funkcii interpretParameter(), napr. "nie je velkonocne obdobie"
+#undef EXPORT_CMDLINE_CSS // 2008-08-08: doplnené kvôli tomu, èi exportova v hlavièke /breviar.css alebo ./breviar.css
 
-#undef BEHAVIOUR_WEB /* 2010-06-07: správanie ako na webe: export príp. logovanie ide na STDOUT (t. j. ako output pre web browser) */
-#undef BEHAVIOUR_CMDLINE /* 2010-06-07: správanie pre command-line verziu: export príp. logovanie ide do súboru/súborov (t. j. ako output pre batch mód) */
+#undef BEHAVIOUR_WEB // 2010-06-07: správanie ako na webe: export príp. logovanie ide na STDOUT (t. j. ako output pre web browser)
+#undef BEHAVIOUR_CMDLINE // 2010-06-07: správanie pre command-line verziu: export príp. logovanie ide do súboru/súborov (t. j. ako output pre batch mód)
 #undef IO_ANDROID
 #undef LITURGICKE_CITANIA_ANDROID
 
-/* ostry linux: */
+// ostry linux:
 #if defined(MODEL_linux)
 	#define BEHAVIOUR_WEB
 	#define OS_linux
 	#undef LOGGING
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_TO_STDOUT
-/* android: */
+// android:
 #elif defined(MODEL_android)
 	#define BEHAVIOUR_WEB
 	#define OS_linux
@@ -115,7 +115,7 @@
 	#define EXPORT_TO_FILE
 	#define IO_ANDROID
 	#define LITURGICKE_CITANIA_ANDROID
-/* android + debug log: */
+// android + debug log:
 #elif defined(MODEL_android_debug)
 	#define BEHAVIOUR_WEB
 	#define OS_linux
@@ -125,7 +125,7 @@
 	#define EXPORT_TO_FILE
 	#define IO_ANDROID
 	#define LITURGICKE_CITANIA_ANDROID
-/* ostré Windows/RUBY: */
+// ostré Windows/RUBY:
 #elif defined(MODEL_Windows_RUBY)
 	#define BEHAVIOUR_WEB
 	#define OS_Windows_Ruby
@@ -133,7 +133,7 @@
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
-/* debugovanie Windows/RUBY -- vsetko sa vypisuje na stdout */
+// debugovanie Windows/RUBY -- vsetko sa vypisuje na stdout
 #elif defined(MODEL_DEBUG_Windows_RUBY)
 	#define BEHAVIOUR_WEB
 	#define OS_Windows_Ruby
@@ -143,7 +143,7 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
 	#define DEBUG
-/* debugovanie linux -- vsetko sa vypisuje na stdout */
+// debugovanie linux -- vsetko sa vypisuje na stdout
 #elif defined(MODEL_DEBUG_linux)
 	#define BEHAVIOUR_WEB
 	#define OS_linux
@@ -153,14 +153,14 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
 	#define DEBUG
-/* ostry Windows (command-line verzia): */
+// ostry Windows (command-line verzia):
 #elif defined(MODEL_Windows_commandline)
 	#define BEHAVIOUR_CMDLINE
 	#define OS_Windows
 	#undef LOGGING
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
-/* debugovanie Windows/command-line -- vsetko sa loguje do suboru */
+// debugovanie Windows/command-line -- vsetko sa loguje do suboru
 #elif defined(MODEL_DEBUG_Windows_commandline)
 	#define BEHAVIOUR_CMDLINE
 	#define OS_Windows
@@ -170,14 +170,14 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
-/* ostry linux (command-line verzia): */
+// ostry linux (command-line verzia):
 #elif defined(MODEL_linux_commandline)
 	#define BEHAVIOUR_CMDLINE
 	#define OS_linux
 	#undef LOGGING
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
-/* debugovanie linux/command-line -- vsetko sa loguje do suboru */
+// debugovanie linux/command-line -- vsetko sa loguje do suboru
 #elif defined(MODEL_DEBUG_linux_commandline)
 	#define BEHAVIOUR_CMDLINE
 	#define OS_linux
@@ -219,27 +219,27 @@
 	#define Log __Log
 #endif
 
+// v DOSe
 #ifdef OS_DOS
-	#define DEFINED_strcmpi /* v DOSe */
+	#define DEFINED_strcmpi
 #endif
 
-/* 2006-07-17: Pridané */
+// 2006-07-17: Pridané/
 #define		PATH_SEPARATOR_linux	'/'
 #define		PATH_SEPARATOR_Windows	'\\'
-/* 2008-08-08: Pridané */
+// 2008-08-08: Pridané
 #define		STR_PATH_SEPARATOR_linux	"/"
 #define		STR_PATH_SEPARATOR_Windows	"\\"
-/* 2009-08-03: pridané pre HTML súbory */
+// 2009-08-03: pridané pre HTML súbory
 #define		STR_PATH_SEPARATOR_HTML	STR_PATH_SEPARATOR_linux
 
 #define		SYSTEM_RUBY    0
 #define		SYSTEM_LINUX   1
 #define		SYSTEM_WINDOWS 2
 
-/* 2007-05-29: upravené; pre Ruby on Windows tiež separátor ako pod linuxom
- * 2011-05-16: pri debugovaní Ruby on Windows treba backslashe
- * 2011-08-12: pri debugovaní Ruby on Windows treba backslashe -> naèo? zapoznámkované!
- */
+// 2007-05-29: upravené; pre Ruby on Windows tiež separátor ako pod linuxom
+// 2011-05-16: pri debugovaní Ruby on Windows treba backslashe
+// 2011-08-12: pri debugovaní Ruby on Windows treba backslashe -> naèo? zapoznámkované!
 #if defined(OS_linux)
 	#define		PATH_SEPARATOR	PATH_SEPARATOR_linux
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_linux
@@ -254,17 +254,16 @@
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_Windows
 #endif
 
-/* 2006-07-31: Pridané */
+// 2006-07-31: Pridané
 #define		UNDERSCORE	'_'
 
-/* 2006-07-31: kvôli jazykovým mutáciám; zmenené 2008-08-15 na 5 
- * 2009-01-29: zmenené na 6 (maïarèina)
- * 2011-04-13: presunuté sem spolu s POCET_GLOBAL_OPT aj MAX_STR, GLOBAL_OPTION_NULL
- */
+// 2006-07-31: kvôli jazykovým mutáciám; zmenené 2008-08-15 na 5 
+// 2009-01-29: zmenené na 6 (maïarèina)
+// 2011-04-13: presunuté sem spolu s POCET_GLOBAL_OPT aj MAX_STR, GLOBAL_OPTION_NULL
 #define	POCET_JAZYKOV	     6
 #define POCET_GLOBAL_OPT     5
-#define MAX_STR            300 /* maximalna dlzka retazca */
-#define GLOBAL_OPTION_NULL  -1 /* neurèená hodnota pre global option */
+#define MAX_STR            300 // maximalna dlzka retazca
+#define GLOBAL_OPTION_NULL  -1 // neurèená hodnota pre global option
 
 
 #endif // __MYSYSDEF_H_

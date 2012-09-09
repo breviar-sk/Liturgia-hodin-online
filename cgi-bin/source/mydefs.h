@@ -677,6 +677,14 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_NOCNY_REZIM "of2nr"
 #endif
 
+// nocny rezim - svetly text na tmavom pozadi
+#define MODL_OPTF_2_ROZNE_MOZNOSTI 93
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_2_ROZNE_MOZNOSTI "MODL_OPTF_2_ROZNE_MOZNOSTI"
+#else
+	#define STR_MODL_OPTF_2_ROZNE_MOZNOSTI "of2rm"
+#endif
+
 // 2008-08-08: Pridané kvôli rôznym css
 #define CSS 40
 #ifdef LONG_PARAM_NAMES

@@ -450,6 +450,8 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_CHVALOSPEV2   "CHVALOSPEV2"
 #define PARAM_CHVALOSPEV3   "CHVALOSPEV3"
 #define PARAM_EVANJELIUM    "EVANJELIUM"
+// 2012-09-05: moûnosù zobraziù pre doplnkov˙ psalmÛdiu priamy URL odkaz (na prepnutie)
+#define PARAM_DOPLNKOVA_PSALMODIA     "DOPLNKOVA_PSALMODIA"
 
 // dalsie parametre: specificke pre obdobie
 // Od nedele P·novho zm‡tvychvstania aû do Druhej veækonoËnej nedele vr·tane, ako aj na druhÈ veöpery sl·vnosti Zoslania Ducha Sv‰tÈho
@@ -1255,7 +1257,7 @@ extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_SKRY_POPIS             2048
 #define BIT_OPT_1_ZOBRAZ_SPOL_CAST       4096
 
-#define POCET_OPT_2_HTML_EXPORT             9 // jednotlivÈ komponenty option 2 -- bity pre force option 2
+#define POCET_OPT_2_HTML_EXPORT            10 // jednotlivÈ komponenty option 2 -- bity pre force option 2
 extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: ˙prava v˝znamu (a interpret·cie) option 2 (rozliËnÈ prepÌnaËe pre [online aj offline] export, napr. tlaËidl·, zobrazenie d·tumov a podobne)
 #define BIT_OPT_2_ISO_DATUM                 1
@@ -1267,6 +1269,7 @@ extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_TEXT_WRAP                64 // 1 = zobraziù zalomenie v textoch modlitby podæa tlaËenej LH
 #define BIT_OPT_2_BUTTONY_USPORNE         128 // 1 = zobraziù buttony pre modlitby v ˙spornej podobe (tabuæka) kvÙli mobiln˝m zariadeniam
 #define BIT_OPT_2_NOCNY_REZIM             256 // 1 = zobraziù invertovane farby (biele na ciernom)
+#define BIT_OPT_2_ROZNE_MOZNOSTI          512 // 1 = zobraziù rozliËnÈ "hypertextovÈ odkazy" v modlitbe (napr. pre modlitbu cez deÚ moûnosù doplnkovej psalmÛdie)
 
 #define POCET_OPT_4_OFFLINE_EXPORT          1 // jednotlivÈ komponenty option 4 -- bity pre force option 4
 extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
