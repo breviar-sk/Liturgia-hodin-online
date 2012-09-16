@@ -23582,10 +23582,15 @@ label_25_MAR:
 
 							break;
 						}
-						if((_global_jazyk == JAZYK_SK)  || (_global_jazyk == JAZYK_HU)){ // 2006-09-12: odvetvené pre Slovensko; 2011-08-23: pridané aj HU
+						if(_global_jazyk == JAZYK_HU){ // 2011-08-23: pridané aj HU | 2012-09-12: pre HU sviatok
+							_global_svaty1.typslav = SLAV_SVIATOK;
+							_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+							_global_svaty1.kalendar = KALENDAR_VSEOBECNY_HU;
+						}
+						else if(_global_jazyk == JAZYK_SK){ // 2006-09-12: odvetvené pre Slovensko
 							_global_svaty1.typslav = SLAV_SPOMIENKA;
 							_global_svaty1.smer = 10; // povinné spomienky pod¾a všeobecného kalendára
-							_global_svaty1.kalendar = (_global_jazyk == JAZYK_SK)? KALENDAR_VSEOBECNY_SK : KALENDAR_VSEOBECNY_HU;
+							_global_svaty1.kalendar = KALENDAR_VSEOBECNY_SK;
 						}
 						else if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 							// 2006-09-12: odvetvené pre Èesko 

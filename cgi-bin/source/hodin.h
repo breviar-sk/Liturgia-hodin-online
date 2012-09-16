@@ -1748,14 +1748,23 @@ const char *html_text_option1_plne_resp_explain[POCET_JAZYKOV + 1] =
  "Az Imaórák Liturgiája az olvasmányos imaórák válaszos énekeinek teljes szövegét nem mutatja (a második ismétlõdõ rész nyomtatott kiadásban rövidített)."
 };
 
+const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] = 
+{"pre modlitbu cez deò poui psalmódiu zo dòa", 
+ "pro modlitbu bìhem dne pouít almy z bìného dne", 
+ "xxx", 
+ "psalmodia from ordinary day",
+ "",
+ "pro modlitbu bìhem dne pouít psalmodii z bìného dne", 
+ "a Napközi imaórában az adott napi zsoltározást venni"
+};
 const char *html_text_option1_mcd_zalmy_ine[POCET_JAZYKOV + 1] = 
 {"pre modlitbu cez deò poui doplnkovú psalmódiu", 
  "pro modlitbu bìhem dne pouít almy z doplòovacího cyklu", 
  "xxx", 
- "supplementaris psalmodia",
+ "psalmodia from ordinary day",
  "",
- "pro modlitbu bìhem dne pouít almy z doplòovacího cyklu", 
- "a Napközi imaórában a kiegészítõ zsoltárokat vegyék"
+ "pro modlitbu bìhem dne pouít doplòkovou psalmodii", 
+ "a Napközi imaórában a kiegészítõ zsoltárokat venni"
 };
 const char *html_text_option1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] = 
 {"Pokia¾ sa niekto modlí viac modlitieb cez deò, v prvej vezme benú psalmódiu; v ostatnıch sa pouije doplnková psalmódia. Zahàòa 3 série tzv. graduálnych almov ( 120 – 129).", 
@@ -1964,7 +1973,7 @@ const char *html_text_option2_font_family_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option2_navigation[POCET_JAZYKOV + 1] = 
 {"zobrazi navigáciu v textoch modlitieb",
  "zobrazit navigaci v textech modliteb", 
- "xxx", 
+ "display navigation buttons in prayer", 
  "",
  "",
  "zobrazit navigaci v textech modliteb", 
@@ -1973,7 +1982,7 @@ const char *html_text_option2_navigation[POCET_JAZYKOV + 1] =
 const char *html_text_option2_navigation_explain[POCET_JAZYKOV + 1] = 
 {"Èi sa majú zobrazova hypertextové odkazy na ostatné modlitby daného dòa, príp. predošlı/nasledovnı deò priamo v texte modlitby.", 
  "Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. pøedešlı/následující den pøímo v textu modlitby.", 
- "xxx", 
+ "Whether hypertext links (as buttons) to other prayers of the selected celebration should be displayed.", 
  "",
  "", 
  "Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. pøedešlı/následující den pøímo v textu modlitby.", 
@@ -1981,22 +1990,22 @@ const char *html_text_option2_navigation_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option2_moznosti[POCET_JAZYKOV + 1] = 
-{"zobrazi v textoch modlitieb rozlièné monosti",
- "zobrazit v textech modliteb rozlièné volby", 
- "xxx", 
+{"zobrazi rozlièné monosti priamo v textoch modlitieb",
+ "zobrazit rozlièné volby v textech modliteb", 
+ "display various options in prayers", 
  "",
  "",
- "zobrazit v textech modliteb rozlièné volby", 
- "xxx", 
+ "zobrazit rozlièné volby v textech modliteb", 
+ "az imák szövegében megmutatni a különbözõ lehetõségeket", 
 };
 const char *html_text_option2_moznosti_explain[POCET_JAZYKOV + 1] = 
-{"Èi sa majú zobrazova hypertextové odkazy na iné zobrazenie tej istej modlitby priamo v texte modlitby (napr. pre modlitbu cez deò na verziu s doplnkovou psalmódiou).", 
+{"Èi sa majú zobrazova hypertextové odkazy na iné zobrazenie tej istej modlitby priamo v texte modlitby (napr. pre modlitbu cez deò na verziu s doplnkovou psalmódiou).", // Vtedy nie je potrebné, aby boli zobrazené prepínaèe na titulnej stránke.
  "Zda zobrazit hypertextové odkazy na jiné zobrazení modlitby daného dne pøímo v textu modlitby (napø. pro modlitbu uprostrìd dne verzi se almy z doplòujícího cyklu).", 
- "xxx", 
+ "Whether various options should be displayed directly in the prayer's texts.", 
  "",
  "", 
  "Zda zobrazit hypertextové odkazy na jiné zobrazení modlitby daného dne pøímo v textu modlitby (napø. pro modlitbu uprostrìd dne verzi se almy z doplòujícího cyklu).", 
- "xxx", 
+ "Hogy mutatkozzanak-e a hipertextus utalások a jelenlegi ima másabb ábrázolására közvetlenül az ima szövegében (pld. a napközi imához a kiegészítõ zsoltárral való verzióra is.", 
 };
 
 const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] = 

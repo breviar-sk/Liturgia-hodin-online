@@ -1761,54 +1761,64 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #endif
 					}// upraviù odkaz na ûalm 95 na hyperlink -- PARAM_LINK_ZALM95_BEGIN
 					if(equals(strbuff, PARAM_LINK_ZALM95_END) && (vnutri_inkludovaneho == 1)){
-						z95buff[z95_index] = '\0';
+						Log("  _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI == %d: \n", _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI);
+						if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI) == BIT_OPT_2_ROZNE_MOZNOSTI){ // len ak je t·to moûnosù (zobrazovanie vöeliËoho) zvolen·
+							z95buff[z95_index] = '\0';
 #ifdef BEHAVIOUR_WEB
-						// najprv upravÌme o1
-						_global_opt_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY]; // backup pÙvodnej hodnoty
-						// nastavenie parametra o1: prid·me bit pre alternatÌvnu psalmÛdiu
-						if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALM95) != BIT_OPT_1_ZALM95){
-							Log("Pre option 1 odstraÚujem bit pre û95, pomocn· premenn· to bude obsahovaù\n");
-							_global_opt[OPT_1_CASTI_MODLITBY] += BIT_OPT_1_ZALM95;
-							_global_opt_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY] - BIT_OPT_1_ZALM95;
+							// najprv upravÌme o1
+							_global_opt_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY]; // backup pÙvodnej hodnoty
+							// nastavenie parametra o1: prid·me bit pre alternatÌvnu psalmÛdiu
+							if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALM95) != BIT_OPT_1_ZALM95){
+								Log("Pre option 1 odstraÚujem bit pre û95 (pÙvodn˙ hodnotu som si zapam‰tal)\n");
+								_global_opt[OPT_1_CASTI_MODLITBY] += BIT_OPT_1_ZALM95;
+							}
+							else{
+								Log("Pre option 1 prid·vam bit pre û95 (pÙvodn˙ hodnotu som si zapam‰tal)\n");
+								_global_opt[OPT_1_CASTI_MODLITBY] -= BIT_OPT_1_ZALM95;
+							}
+							// prilepenie poradia sv‰tca
+							if(_global_poradie_svaty > 0){
+								sprintf(pom, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, _global_poradie_svaty);
+							}// _global_poradie_svaty > 0
+							else{
+								mystrcpy(pom, STR_EMPTY, MAX_STR);
+							}// !(_global_poradie_svaty > 0)
+							// teraz vytvorÌme reùazec s options
+							prilep_request_options(pom, pompom);
+							// export hyperlinku
+							// ToDo: hyperlink podæa toho, Ëi bolo volanÈ pre PRM_DNES => PRM_DATUM alebo pre PRM_LIT_OBD
+							// ToDo: prÌpadne v hyperlinku daù aj #z95 a do z95.htm doplniù <a name>...
+							Export("<p>\n<"HTML_SPAN_RED_SMALL">\n<a href=\"%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%s%s\"",
+								script_name,
+								STR_QUERY_TYPE, STR_PRM_DATUM,
+								STR_DEN, _global_den.den,
+								STR_MESIAC, _global_den.mesiac,
+								STR_ROK, _global_den.rok,
+								STR_MODLITBA, str_modlitby[_global_modlitba],
+								pom);
+							// napokon o1 vr·time sp‰ù
+							_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_casti_modlitby_orig; // restore pÙvodnej hodnoty
+							/*
+							// pre ûalm 95 by nemalo za referenciou nasledovaù niË; ak, tak to nevypisujeme
+							DetailLog("\trest     == %s\n", rest);
+							DetailLog("\tz95rest  == %s\n", z95rest);
+							if((z95rest != NULL) && !(equals(z95rest, STR_EMPTY))){
+								// Export("%s", z95rest);
+							}
+							*/
+							Export(" "HTML_CLASS_QUIET">"); // a.quiet { text-decoration:none; color: inherit; }
+#endif
+							Export("%s", z95buff);
+#ifdef BEHAVIOUR_WEB
+							Export("</a>");
+#endif
 						}
-						// prilepenie poradia sv‰tca
-						if(_global_poradie_svaty > 0){
-							sprintf(pom, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, _global_poradie_svaty);
-						}// _global_poradie_svaty > 0
 						else{
-							mystrcpy(pom, STR_EMPTY, MAX_STR);
-						}// !(_global_poradie_svaty > 0)
-						// teraz vytvorÌme reùazec s options
-						prilep_request_options(pom, pompom);
-						// export hyperlinku
-						// ToDo: hyperlink podæa toho, Ëi bolo volanÈ pre PRM_DNES => PRM_DATUM alebo pre PRM_LIT_OBD
-						// ToDo: prÌpadne v hyperlinku daù aj #z95 a do z95.htm doplniù <a name>...
-						Export("<a href=\"%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%s%s\"",
-							script_name,
-							STR_QUERY_TYPE, STR_PRM_DATUM,
-							STR_DEN, _global_den.den,
-							STR_MESIAC, _global_den.mesiac,
-							STR_ROK, _global_den.rok,
-							STR_MODLITBA, str_modlitby[_global_modlitba],
-							pom);
-						// napokon o1 vr·time sp‰ù
-						_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_casti_modlitby_orig; // restore pÙvodnej hodnoty
-						/*
-						// pre ûalm 95 by nemalo za referenciou nasledovaù niË; ak, tak to nevypisujeme
-						DetailLog("\trest     == %s\n", rest);
-						DetailLog("\tz95rest  == %s\n", z95rest);
-						if((z95rest != NULL) && !(equals(z95rest, STR_EMPTY))){
-							// Export("%s", z95rest);
+#if defined(EXPORT_HTML_SPECIALS)
+							Export("<!--%s-->", PARAM_LINK_ZALM95_BEGIN);
+#endif
 						}
-						*/
-						Export(" "HTML_CLASS_QUIET">"); // a.quiet { text-decoration:none; color: inherit; }
-#endif
-						Export("%s", z95buff);
-#ifdef BEHAVIOUR_WEB
-						Export("</a>");
-#endif
 						vnutri_z95 = NIE;
-
 						// prevzatÈ z Ëasti pre referencie: 2011-05-02: doplnenÈ kvÙli referenci·m, ktorÈ s˙ v r·mci myölienok, Ëo sa nemaj˙ zobrazovaù
 						write = ANO;
 						strcpy(z95rest, STR_EMPTY);
@@ -2852,7 +2862,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		if((!((_global_den.typslav == SLAV_SLAVNOST) || (_global_den.smer < 5))) // nie pre sl·vnosti
 			&& ((_global_modlitba == MODL_PREDPOLUDNIM) || (_global_modlitba == MODL_NAPOLUDNIE) || (_global_modlitba == MODL_POPOLUDNI)) // len pre MCD
 			&& ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI) == BIT_OPT_2_ROZNE_MOZNOSTI) // len ak je t·to moûnosù (zobrazovanie vöeliËoho) zvolen·
-			&& ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALMY_INE) != BIT_OPT_1_MCD_ZALMY_INE) // m· zmysel, len ak nebola doplnkov· psalmÛdia explicitne vyûiadan· // ToDo: moûno prerobiù tak, aby v takom prÌpade d·valo "psalmÛdia z beûnÈho dÚa"
 			){ 
 			Log("including DOPLNKOVA_PSALMODIA\n");
 			Export("doplnkova_psalmodia:begin-->");
@@ -2863,8 +2872,11 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALMY_INE) != BIT_OPT_1_MCD_ZALMY_INE){
 				Log("Pre option 1 nastavujem bit pre 'doplnkov˙ psalmÛdiu'\n");
 				_global_opt[OPT_1_CASTI_MODLITBY] += BIT_OPT_1_MCD_ZALMY_INE;
-				// _global_opt_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY] - BIT_OPT_1_MCD_ZALMY_INE;
 			}// zmena: pouûitie doplnkovej psalmÛdie
+			else{
+				Log("Pre option 1 ruöÌm bit pre 'doplnkov˙ psalmÛdiu'\n");
+				_global_opt[OPT_1_CASTI_MODLITBY] -= BIT_OPT_1_MCD_ZALMY_INE;
+			}
 			// prilepenie poradia sv‰tca
 			if(_global_poradie_svaty > 0){
 				sprintf(pom, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, _global_poradie_svaty);
@@ -2889,7 +2901,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_casti_modlitby_orig; // restore pÙvodnej hodnoty
 			Export(" "HTML_CLASS_QUIET">"); // a.quiet { text-decoration:none; color: inherit; }
 #endif
-			Export("(%s)", html_text_option1_mcd_zalmy_ine[_global_jazyk]);
+			Export("(%s)", ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALMY_INE) != BIT_OPT_1_MCD_ZALMY_INE)? html_text_option1_mcd_zalmy_ine[_global_jazyk]: html_text_option1_mcd_zalmy_nie_ine[_global_jazyk]);
 #ifdef BEHAVIOUR_WEB
 			Export("</a>");
 			Export("</span>\n");
@@ -7595,17 +7607,21 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF_1_SKRY_POPIS, ANO, html_text_option1_skryt_popis_svaty_explain[_global_jazyk], ((_global_optf[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS) == BIT_OPT_1_SKRY_POPIS)? html_option_checked: STR_EMPTY);
 	Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option1_skryt_popis_svaty_explain[_global_jazyk], html_text_option1_skryt_popis_svaty[_global_jazyk]);
 
-	// pole (checkbox) WWW_MODL_OPTF_1_MCD_ZALMY_INE
-	Export("<br>");
-	Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_1_MCD_ZALMY_INE, NIE);
-	Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF_1_MCD_ZALMY_INE, ANO, html_text_option1_mcd_zalmy_ine_explain[_global_jazyk], ((_global_optf[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALMY_INE) == BIT_OPT_1_MCD_ZALMY_INE)? html_option_checked: STR_EMPTY);
-	Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option1_mcd_zalmy_ine_explain[_global_jazyk], html_text_option1_mcd_zalmy_ine[_global_jazyk]);
+	if((_global_optf[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI) != BIT_OPT_2_ROZNE_MOZNOSTI){ // len ak NIE JE t·to moûnosù (zobrazovanie vöeliËoho) zvolen·
+		// pole (checkbox) WWW_MODL_OPTF_1_MCD_ZALMY_INE
+		Export("<br>");
+		Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_1_MCD_ZALMY_INE, NIE);
+		Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF_1_MCD_ZALMY_INE, ANO, html_text_option1_mcd_zalmy_ine_explain[_global_jazyk], ((_global_optf[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALMY_INE) == BIT_OPT_1_MCD_ZALMY_INE)? html_option_checked: STR_EMPTY);
+		Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option1_mcd_zalmy_ine_explain[_global_jazyk], html_text_option1_mcd_zalmy_ine[_global_jazyk]);
+	}
 
-	// pole (checkbox) WWW_MODL_OPTF_1_ZALM95
-	Export("<br>");
-	Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_1_ZALM95, NIE);
-	Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF_1_ZALM95, ANO, html_text_option1_zalm95_explain[_global_jazyk], ((_global_optf[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALM95) == BIT_OPT_1_ZALM95)? html_option_checked: STR_EMPTY);
-	Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option1_zalm95_explain[_global_jazyk], html_text_option1_zalm95[_global_jazyk]);
+	if((_global_optf[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI) != BIT_OPT_2_ROZNE_MOZNOSTI){ // len ak NIE JE t·to moûnosù (zobrazovanie vöeliËoho) zvolen·
+		// pole (checkbox) WWW_MODL_OPTF_1_ZALM95
+		Export("<br>");
+		Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_1_ZALM95, NIE);
+		Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF_1_ZALM95, ANO, html_text_option1_zalm95_explain[_global_jazyk], ((_global_optf[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALM95) == BIT_OPT_1_ZALM95)? html_option_checked: STR_EMPTY);
+		Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option1_zalm95_explain[_global_jazyk], html_text_option1_zalm95[_global_jazyk]);
+	}
 
 	// pole (checkbox) WWW_MODL_OPTF_1_PROSBY_ZVOLANIE
 	Export("<br>");
