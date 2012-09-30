@@ -452,6 +452,11 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_EVANJELIUM    "EVANJELIUM"
 // 2012-09-05: moûnosù zobraziù pre doplnkov˙ psalmÛdiu priamy URL odkaz (na prepnutie)
 #define PARAM_DOPLNKOVA_PSALMODIA     "DOPLNKOVA_PSALMODIA"
+// 2012-09-27: moûnosù zobraziù chv·lospev, hymnus Te Deum, OtËen·ö (na prepnutie)
+#define PARAM_CHVALOSPEV    "CHVALOSPEV"
+#define PARAM_HYMNUS_TEDEUM "HYMNUS_TEDEUM"
+#define PARAM_OTCENAS       "OTCENAS"
+#define PARAM_ZVOLANIA      "ZVOLANIA"
 
 // dalsie parametre: specificke pre obdobie
 // Od nedele P·novho zm‡tvychvstania aû do Druhej veækonoËnej nedele vr·tane, ako aj na druhÈ veöpery sl·vnosti Zoslania Ducha Sv‰tÈho

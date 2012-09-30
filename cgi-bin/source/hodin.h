@@ -1748,6 +1748,25 @@ const char *html_text_option1_plne_resp_explain[POCET_JAZYKOV + 1] =
  "Az Imaórák Liturgiája az olvasmányos imaórák válaszos énekeinek teljes szövegét nem mutatja (a második ismétlõdõ rész nyomtatott kiadásban rövidített)."
 };
 
+const char *html_text_option_zobrazit[POCET_JAZYKOV + 1] = 
+{"zobrazi", 
+ "zobrazit", 
+ "xxx", 
+ "show",
+ "",
+ "zobrazit", 
+ "megmutatni"
+};
+const char *html_text_option_skryt[POCET_JAZYKOV + 1] = 
+{"skry", 
+ "skrıt", 
+ "xxx", 
+ "hide",
+ "",
+ "skrıt", 
+ "elrejteni"
+};
+
 const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] = 
 {"pre modlitbu cez deò poui psalmódiu zo dòa", 
  "pro modlitbu bìhem dne pouít almy z bìného dne", 
@@ -1795,11 +1814,30 @@ const char *html_text_option1_zalm95_explain[POCET_JAZYKOV + 1] =
  "Ha a reggeli és az esti dicséretben, vagy az olvasmányos imaórában elõfordul a 23., 66. illetve 99. zsoltár, amely az Imádságra hívásban már imádkozva volt, akkor az adott imádságban a 94. zsoltár kerül helyébe."
 };
 
+const char *html_text_option_zobrazit_zvolania[POCET_JAZYKOV + 1] = 
+{"opakova zvolanie po kadej prosbe", 
+ "zopakovat zvolání po kadé prosbì", 
+ "xxx", 
+ "repeat invocation after each appeal",
+ "",
+ "zopakovat zvolání po kadé prosbì", 
+ "megismételni a választ minden könyörgés után"
+};
+const char *html_text_option_skryt_zvolania[POCET_JAZYKOV + 1] = 
+{"skry zvolanie po kadej prosbe", 
+ "skrıt zvolání po kadé prosbì", 
+ "xxx", 
+ "hide invocation after each appeal",
+ "",
+ "skrıt zvolání po kadé prosbì", 
+ "elrejteni a választ minden könyörgés után"
+};
+
 const char *html_text_option1_prosby_zvolanie[POCET_JAZYKOV + 1] = 
 {"zvolanie v prosbách opakova po kadej prosbe", 
  "zvolání v prosbách zopakovat po kadé prosbì", 
  "xxx", 
- "xxx",
+ "invocation repeat after each appeal",
  "",
  "zvolání v prosbách zopakovat po kadé prosbì", 
  "minden fohász után ismételni a választ"
@@ -1808,7 +1846,7 @@ const char *html_text_option1_prosby_zvolanie_explain[POCET_JAZYKOV + 1] =
 {"V rannıch chválach a vešperách opakova zvolanie v prosbách po kadej prosbe.", 
  "V ranních chválách a nešporách opakovat svolání v prosbách po kadé prosbì.", 
  "xxx", 
- "xxx",
+ "In morning and evening prayer repeat invocation after each appeal.",
  "xxx", 
  "V ranních a veèerních chválách opakovat svolání v prosbách po kadé prosbì.", 
  "A reggeli és az esti dicséretben minden fohász után ismételni a választ."
@@ -5921,7 +5959,7 @@ const char *text_SEP_28_2[POCET_JAZYKOV + 1] =
  "",
  "",
  "(pro dominikány není - 26.9.)",
- "Ruiz Szent Lôrinc és társai, Fülöp-szigeteki vértanúk",
+ "Ruiz Szent Lõrinc és társai, Fülöp-szigeteki vértanúk",
  };
 const char *text_SEP_29[POCET_JAZYKOV + 1] = 
 {"Sv. Michala, Gabriela a Rafaela, archanjelov",
