@@ -191,6 +191,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
         if (_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_NOCNY_REZIM) {
           _header_css(expt, level, nazov_css_invert_colors);
         }
+	Export_to_file(expt, "\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=yes, initial-scale=1.0\" />\n");
 	Export_to_file(expt, "<title>%s</title>\n", title);
 	Export_to_file(expt, "</head>\n\n");
 	Log("</head>...\n");
@@ -227,7 +228,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 			pismeno_modlitby = char_modlitby[_local_modlitba];
 		sprintf(ext, "%c", pismeno_modlitby);
 		strcat(ext, ".htm");
-		Export_to_file(expt, "<p>");
+		Export_to_file(expt, HTML_NEW_PARAGRAPH);
 		// << prev
 		mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
 		ptr = strstr(file_name_pom, ext);
@@ -334,7 +335,7 @@ void _patka(FILE * expt){
 			pismeno_modlitby = char_modlitby[_local_modlitba];
 		sprintf(ext, "%c", pismeno_modlitby);
 		strcat(ext, ".htm");
-		Export_to_file(expt, "<p>");
+		Export_to_file(expt, HTML_NEW_PARAGRAPH);
 		// << prev
 		mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
 		ptr = strstr(file_name_pom, ext);

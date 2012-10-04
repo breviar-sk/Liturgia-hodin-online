@@ -677,12 +677,44 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_NOCNY_REZIM "of2nr"
 #endif
 
-// nocny rezim - svetly text na tmavom pozadi
+// rÙzne moûnosti zobrazovaù priamo v texte modlitieb (najm‰ pre android)
 #define MODL_OPTF_2_ROZNE_MOZNOSTI 93
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_ROZNE_MOZNOSTI "MODL_OPTF_2_ROZNE_MOZNOSTI"
 #else
 	#define STR_MODL_OPTF_2_ROZNE_MOZNOSTI "of2rm"
+#endif
+
+// skryù navig·ciu -- BIT_OPT_2_HIDE_NAVIG_BUTTONS
+#define MODL_OPTF_2_HIDE_NAVIG_BUTTONS 94
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS "MODL_OPTF_2_HIDE_NAVIG_BUTTONS"
+#else
+	#define STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS "of2hnb"
+#endif
+
+// skryù kalend·r -- BIT_OPT_2_HIDE_KALENDAR
+#define MODL_OPTF_2_HIDE_KALENDAR 95
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_2_HIDE_KALENDAR "MODL_OPTF_2_HIDE_KALENDAR"
+#else
+	#define STR_MODL_OPTF_2_HIDE_KALENDAR "of2hk"
+#endif
+
+// skryù options, prv· Ëasù -- BIT_OPT_2_HIDE_OPTIONS1
+#define MODL_OPTF_2_HIDE_OPTIONS1 96
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_2_HIDE_OPTIONS1 "MODL_OPTF_2_HIDE_OPTIONS1"
+#else
+	#define STR_MODL_OPTF_2_HIDE_OPTIONS1 "of2ho1"
+#endif
+
+// skryù options, druh· Ëasù -- BIT_OPT_2_HIDE_OPTIONS2
+#define MODL_OPTF_2_HIDE_OPTIONS2 97
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_2_HIDE_OPTIONS2 "MODL_OPTF_2_HIDE_OPTIONS2"
+#else
+	#define STR_MODL_OPTF_2_HIDE_OPTIONS2 "of2ho2"
 #endif
 
 // 2008-08-08: PridanÈ kvÙli rÙznym css
@@ -755,7 +787,10 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_LINK_NORMAL "a"
 
 #define HTML_NONBREAKING_SPACE "&nbsp;"
+#define HTML_SPACE " "
 #define HTML_VERTICAL_BAR "|"
+#define HTML_LINE_BREAK "<br />"
+#define HTML_NEW_PARAGRAPH "<p>"
 
 #define HTML_SPAN_NORMAL    "span class=\"normal\""
 #define HTML_SPAN_ITALIC    "span class=\"it\""
@@ -784,6 +819,14 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_CLASS_LEVEL1   "class=\"level1\""
 #define HTML_CLASS_TT       "class=\"tt\""
 #define HTML_CLASS_BUTTON   "class=\"button\""
+#define HTML_CLASS_SMALL    "class=\"small\""
+
+#define HTML_ALIGN_CENTER   "align=\"center\""
+#define HTML_ALIGN_LEFT     "align=\"left\""
+#define HTML_ALIGN_RIGHT    "align=\"right\""
+#define HTML_VALIGN_MIDDLE  "valign=\"middle\""
+#define HTML_VALIGN_TOP     "valign=\"top\""
+#define HTML_VALIGN_BASE    "valign=\"baseline\""
 
 // pridane 2003-07-09, zmenene v cestach pre skript
 #define HTML_AMPERSAND          "&amp;"
@@ -797,6 +840,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 
 #define HTML_LINK_CALL1         "%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
 #define HTML_LINK_CALL2         "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
+#define HTML_LINK_CALL_PARAM    HTML_AMPERSAND"%s=%s"
 // 2011-01-26: pridanÈ jednoduchÈ öÌpky væavo/vpravo
 #define HTML_LEFT_ARROW_SINGLE	"&lsaquo;"
 #define HTML_RIGHT_ARROW_SINGLE	"&rsaquo;"

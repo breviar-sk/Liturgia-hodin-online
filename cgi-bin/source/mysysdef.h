@@ -187,6 +187,12 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
+#elif defined(MODEL_linux_strexport)
+	#define BEHAVIOUR_WEB
+	#define OS_linux
+	#undef LOGGING
+	#define EXPORT_HTML_FILENAME_ANCHOR
+	#define EXPORT_TO_STRING
 #else
 	#error Unsupported system model (see mysystem.h) - Nepodporovaný systémový model (pozri súbor mysystem.h)
 #endif

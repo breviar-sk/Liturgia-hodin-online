@@ -54,6 +54,9 @@ void bothExports(void){
 short int exptused;
 FILE *exportfile;
 
+char *exptstr = NULL;
+int exptstrlen = 0;
+
 short int initExport(void){
 #if defined(EXPORT_TO_FILE)
 	/* zapisovanie vyslednej stranky do suboru; pozor na nazvy suborov "" (STR_EMPTY) a "+" */
@@ -74,6 +77,11 @@ short int initExport(void){
 		exportfile = stdout;
 #elif defined(EXPORT_TO_STDOUT)
 	exportfile = stdout;
+	exptused = SUCCESS;
+#elif defined(EXPORT_TO_STRING)
+	free(exptstr);
+	exptstr = NULL;
+	exptstrlen = 0;
 	exptused = SUCCESS;
 #else
 	#error Unsupported export model (use _EXPORT_TO_STDOUT or _EXPORT_TO_FILE)
@@ -106,6 +114,33 @@ void dumpFile(char *fname){
 	}
 }
 
+// used from http://bytes.com/topic/c/answers/215169-va_copy-implementation | similar answer at http://stackoverflow.com/questions/558223/va-copy-porting-to-visual-c
+// #ifndef va_copy
+#ifdef _MSC_VER 
+// WARNING - DANGER - ASSUMES TYPICAL STACK MACHINE
+#define va_copy(dst, src) ((void)((dst) = (src)))
+#endif
+
+short int Export_to_string(const char *fmt, va_list argptr) {
+	short int cnt;
+	va_list argptr2;
+	
+	va_copy(argptr2, argptr);
+	cnt = vsnprintf(NULL, 0, fmt, argptr2);
+	va_end(argptr2);
+
+	exptstr = (char *)realloc(exptstr, exptstrlen+cnt+1);
+	if (!exptstr) {
+		exptstrlen = 0;
+		return 0;
+	}
+	
+	cnt = vsnprintf(exptstr + exptstrlen, cnt+1, fmt, argptr);
+	exptstrlen += cnt;
+
+	return cnt;
+}
+
 /* vsetko sa posiela do suboru (handle == exportfile),
  * ak premenna exptused je 0,
  *    naviac ak isbothExports, tak sa posiela vystup aj na konzolu (stdout),
@@ -116,6 +151,9 @@ short int Export(const char *fmt, ...){
 	short int cnt;
 
 	va_start(argptr, fmt);
+#ifdef EXPORT_TO_STRING
+	cnt = Export_to_string(fmt, argptr);
+#else
 	if(exptused == SUCCESS){
 		cnt = vfprintf(exportfile, fmt, argptr);
 		if(isbothExports)
@@ -124,6 +162,7 @@ short int Export(const char *fmt, ...){
 	else{
 		cnt = vprintf(fmt, argptr);
 	}
+#endif /* EXPORT_TO_STRING */
 	va_end(argptr);
 
 	return(cnt);
@@ -145,11 +184,19 @@ short int Export_to_file(FILE * expt, const char *fmt, ...){
 			cnt = vprintf(fmt, argptr);
 	}
 	else{
+#ifdef EXPORT_TO_STRING
+		cnt = Export_to_string(fmt, argptr);
+#else
 		cnt = vprintf(fmt, argptr);
+#endif /* EXPORT_TO_STRING */
 	}
 	va_end(argptr);
 
 	return(cnt);
+}
+
+char *getExportedString(void) {
+	return exptstr;
 }
 
 #define YYdefault() { { \

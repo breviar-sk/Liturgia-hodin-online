@@ -574,6 +574,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 	// 2011-05-11: vytiahnut˝ z _vytvor_global_pom_str() ako samostatn· funkcia
 	// 2011-05-12: Ëasom by sa moûno mohli pouûiù konötanty FORMAT_DATUMU_DEN_MESIAC_ROK a Ôalöie
 	// 2011-11-12: [ToDo] pouûiù konötanty ako v _main_rozbor_dna()
+	// 2012-10-02: doplnen· moûnosù tlaËiù aj iba mesiac+rok (VSETKY_DNI)
 	/*
 				if(format_datumu[_global_jazyk] == FORMAT_DATUMU_ROK_MESIAC_DEN){
 					// 2011-05-12: pÙvodne bolo: 2010-05-21: doplnenÈ pre maÔarËinu: 1999. augusztus 1. -- http://en.wikipedia.org/wiki/Date_and_time_notation_by_country#Hungary [2010-05-24]
@@ -594,13 +595,26 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 	*/
 	char pom[MAX_STR] = STR_EMPTY;
 	char vypln[SMALL] = STR_EMPTY;
+	char strden[SMALL] = STR_EMPTY;
 	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
 	// pre export medzery pre jednocifernÈ ËÌsla dnÌ zarovn·me nezlomiteænou medzerou
 	if((align != NIE) && (den < 10)){
 		mystrcpy(vypln, HTML_NONBREAKING_SPACE, SMALL);
 	}
+	if(den != VSETKY_DNI){
+		if(_global_jazyk == JAZYK_EN){
+			sprintf(strden, " %s%d", vypln, den);
+		}
+		else if(_global_jazyk == JAZYK_HU){
+			sprintf(strden, " %s%d.", vypln, den);
+		}
+		else{
+			// default pre JAZYK_LA, JAZYK_SK, JAZYK_CZ, JAZYK_CZ_OP
+			sprintf(strden, "%s%d. ", vypln, den);
+		}
+	}
 	if(_global_jazyk == JAZYK_LA){
-		sprintf(pom, "%s%d. %s", vypln, den, nazov_Mesiaca_gen(mesiac - 1));
+		sprintf(pom, "%s%s", strden, nazov_Mesiaca_gen(mesiac - 1));
 		if(typ == LINK_DEN_MESIAC_ROK){
 			// pridame aj rok
 			strcat(_global_pom_str, pom);
@@ -608,7 +622,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 		}
 	}
 	else if(_global_jazyk == JAZYK_EN){
-		sprintf(pom, "%s %s%d", nazov_Mesiaca(mesiac - 1), vypln, den);
+		sprintf(pom, "%s%s", nazov_Mesiaca(mesiac - 1), strden);
 		if(typ == LINK_DEN_MESIAC_ROK){
 			// pridame aj rok
 			strcat(_global_pom_str, pom);
@@ -623,23 +637,20 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 			strcat(_global_pom_str, pom);
 		}
 		sprintf(pom, "%s", nazov_Mesiaca(mesiac - 1));
-		// 2011-05-17: ToDo: zatiaæ sa pre VSETKY_DNI nepouûÌva; predpripravenÈ modelovÈ volanie (treba dorobiù pre vöetky jazyky) z _main_rozbor_dna()
-		if(den != VSETKY_DNI){
-			strcat(_global_pom_str, pom);
-			sprintf(pom, " %s%d.", vypln, den);
-		}
+		strcat(_global_pom_str, pom);
+		sprintf(pom, "%s", strden);
 	}
 	else{
 		// doterajöie spr·vanie pre slovenËinu a Ëeötinu
 		switch(_case){
 			case CASE_case:
-				sprintf(pom, "%s%d. %s", vypln, den, (typ == LINK_DEN_MESIAC_GEN)? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1));
+				sprintf(pom, "%s%s", strden, (typ == LINK_DEN_MESIAC_GEN)? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1));
 				break;
 			case CASE_Case:
-				sprintf(pom, "%s%d. %s", vypln, den, (typ == LINK_DEN_MESIAC_GEN)? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1));
+				sprintf(pom, "%s%s", strden, (typ == LINK_DEN_MESIAC_GEN)? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1));
 				break;
 			case CASE_CASE:
-				sprintf(pom, "%s%d. %s", vypln, den, /* (typ == LINK_DEN_MESIAC_GEN)? nazov_MESIACA_gen(mesiac - 1) : */ nazov_MESIACA(mesiac - 1));
+				sprintf(pom, "%s%s", strden, /* (typ == LINK_DEN_MESIAC_GEN)? nazov_MESIACA_gen(mesiac - 1) : */ nazov_MESIACA(mesiac - 1));
 				break;
 		}// switch(_case)
 		if(typ == LINK_DEN_MESIAC_ROK){

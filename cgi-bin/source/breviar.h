@@ -55,6 +55,16 @@ extern short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydef
 
 extern void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short int den_zoznam = ANO, short int zobrazit_mcd = ANO);
 extern void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes = ANO);
+#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
+	#define _export_rozbor_dna_buttons_dni_call _export_rozbor_dna_buttons_dni_compact
+#else
+	#define _export_rozbor_dna_buttons_dni_call _export_rozbor_dna_buttons_dni_orig
+#endif
+extern void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes = ANO);
+extern void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes = ANO);
+
+extern void _export_rozbor_dna_kalendar_orig(short int typ);
+extern void _export_rozbor_dna_kalendar(short int typ);
 
 extern short int _global_pocet_navigacia; // 2011-07-03: poèet prejdených/spracovaných parametrov PARAM_NAVIGACIA
 
@@ -249,6 +259,48 @@ extern short int _global_opt_export_date_format;
 	(strcmp(_global_modl_posv_citanie.evanjelium.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.evanjelium.anchor, STR_UNDEF) != 0) &&  \
 	(strcmp(_global_modl_posv_citanie.evanjelium.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.evanjelium.file, STR_UNDEF) != 0) \
 )
+// 2012-10-01: doplnené
+#define je_popis (( \
+(_global_modlitba == MODL_RANNE_CHVALY &&  \
+	(_global_modl_ranne_chvaly.popis.anchor != NULL) && (_global_modl_ranne_chvaly.popis.file != NULL) && \
+	!(equals(_global_modl_ranne_chvaly.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_ranne_chvaly.popis.file, STR_DUMMY)) \
+) \
+||  \
+(_global_modlitba == MODL_VESPERY &&  \
+	(_global_modl_vespery.popis.anchor != NULL) && (_global_modl_vespery.popis.file != NULL) && \
+	!(equals(_global_modl_vespery.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_vespery.popis.file, STR_DUMMY)) \
+) \
+||  \
+(_global_modlitba == MODL_POSV_CITANIE &&  \
+	(_global_modl_posv_citanie.popis.anchor != NULL) && (_global_modl_posv_citanie.popis.file != NULL) && \
+	!(equals(_global_modl_posv_citanie.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_posv_citanie.popis.file, STR_DUMMY)) \
+) \
+||  \
+(_global_modlitba == MODL_PREDPOLUDNIM &&  \
+	(_global_modl_cez_den_9.popis.anchor != NULL) && (_global_modl_cez_den_9.popis.file != NULL) && \
+	!(equals(_global_modl_cez_den_9.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_cez_den_9.popis.file, STR_DUMMY)) \
+) \
+||  \
+(_global_modlitba == MODL_NAPOLUDNIE &&  \
+	(_global_modl_cez_den_12.popis.anchor != NULL) && (_global_modl_cez_den_12.popis.file != NULL) && \
+	!(equals(_global_modl_cez_den_12.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_cez_den_12.popis.file, STR_DUMMY)) \
+) \
+||  \
+(_global_modlitba == MODL_POPOLUDNI &&  \
+	(_global_modl_cez_den_3.popis.anchor != NULL) && (_global_modl_cez_den_3.popis.file != NULL) && \
+	!(equals(_global_modl_cez_den_3.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_cez_den_3.popis.file, STR_DUMMY)) \
+) \
+||  \
+(_global_modlitba == MODL_INVITATORIUM &&  \
+	(_global_modl_invitatorium.popis.anchor != NULL) && (_global_modl_invitatorium.popis.file != NULL) && \
+	!(equals(_global_modl_invitatorium.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_invitatorium.popis.file, STR_DUMMY)) \
+) \
+||  \
+(_global_modlitba == MODL_KOMPLETORIUM &&  \
+	(_global_modl_kompletorium.popis.anchor != NULL) && (_global_modl_kompletorium.popis.file != NULL) && \
+	!(equals(_global_modl_kompletorium.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_kompletorium.popis.file, STR_DUMMY)) \
+) \
+))
 
 // 2011-02-02: presunuté do #define -- kontrola, ktorá zabezpeèuje, že normálne správanie sa slávení nie je prebité pre "CZOP miestne slávenia"
 #define MIESTNE_SLAVENIE_CZOP_SVATY1 ((_global_svaty1.kalendar == KALENDAR_CZ_OP) && ((_global_svaty1.smer == 4) || (_global_svaty1.smer == 8) || (_global_svaty1.smer == 11)))
@@ -307,6 +359,8 @@ extern short int _global_opt_export_date_format;
 // kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 
 int main(int argc, char **argv);
 #endif // OS_linux
+
+int breviar_main(int argc, char **argv);
 
 #if (_MSC_VER >= 1400)       // VC8+ 2007-02-12 kvôli vc++ 2005 express edition
 	#pragma warning(disable : 4996)    // disable all deprecation warnings

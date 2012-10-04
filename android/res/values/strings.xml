@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.7.21</string>
+    <string name="version">v1.7.23</string>
 
     <string name="lang_sk">SK</string>
     <string name="lang_cz">CZ</string>
@@ -23,7 +23,7 @@
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
     <string name="news">
-     News in v1.7.20 - v1.7.21:\n
+     News in v1.7.20 - v1.7.22:\n
      - Updates from www.breviar.sk\n\n
      News in v1.7.19:\n
      - Updates from www.breviar.sk\n

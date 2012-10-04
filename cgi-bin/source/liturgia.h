@@ -401,6 +401,9 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define INCLUDE_BEGIN   "BEGIN" // zaciatok
 #define INCLUDE_END     "END"   // koniec
 
+// dummy anchor, filename
+#define STR_DUMMY "dummy"
+
 // parameter identifiers
 #define PARAM_POPIS         "POPIS"
 #define PARAM_HYMNUS        "HYMNUS"
@@ -451,12 +454,14 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_CHVALOSPEV3   "CHVALOSPEV3"
 #define PARAM_EVANJELIUM    "EVANJELIUM"
 // 2012-09-05: moûnosù zobraziù pre doplnkov˙ psalmÛdiu priamy URL odkaz (na prepnutie)
-#define PARAM_DOPLNKOVA_PSALMODIA     "DOPLNKOVA_PSALMODIA"
-// 2012-09-27: moûnosù zobraziù chv·lospev, hymnus Te Deum, OtËen·ö (na prepnutie)
+#define PARAM_DOPLNKOVA_PSALMODIA     "DOPLNKOVA-PSALMODIA" // 2012-10-01: _ sa menilo na &nbsp; preto som zmenil na -
+// 2012-09-27: moûnosù zobraziù chv·lospev, hymnus Te Deum, OtËen·ö (na prepnutie), opakovanÈ zvolania v prosb·ach, Sl·va Otcu, plnÈ znenie responzÛriÌ pre posv‰tnÈ ËÌtania...
 #define PARAM_CHVALOSPEV    "CHVALOSPEV"
-#define PARAM_HYMNUS_TEDEUM "HYMNUS_TEDEUM"
+#define PARAM_TEDEUM        "TEDEUM"
 #define PARAM_OTCENAS       "OTCENAS"
 #define PARAM_ZVOLANIA      "ZVOLANIA"
+#define PARAM_SLAVAOTCU	    "SLAVAOTCU"
+#define PARAM_RESPONZ       "RESPONZ" // PARAM_PLNE_RESP je uû obsadenÈ...
 
 // dalsie parametre: specificke pre obdobie
 // Od nedele P·novho zm‡tvychvstania aû do Druhej veækonoËnej nedele vr·tane, ako aj na druhÈ veöpery sl·vnosti Zoslania Ducha Sv‰tÈho
@@ -1262,9 +1267,10 @@ extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_SKRY_POPIS             2048
 #define BIT_OPT_1_ZOBRAZ_SPOL_CAST       4096
 
-#define POCET_OPT_2_HTML_EXPORT            10 // jednotlivÈ komponenty option 2 -- bity pre force option 2
+#define POCET_OPT_2_HTML_EXPORT            14 // jednotlivÈ komponenty option 2 -- bity pre force option 2
 extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: ˙prava v˝znamu (a interpret·cie) option 2 (rozliËnÈ prepÌnaËe pre [online aj offline] export, napr. tlaËidl·, zobrazenie d·tumov a podobne)
+// 2012-10-01: doplnenÈ Ôalöie komponenty najm‰ pre vzhæad ˙vodnej obrazovky
 #define BIT_OPT_2_ISO_DATUM                 1
 #define BIT_OPT_2_BUTTON_PRVE_VESPERY       2
 #define BIT_OPT_2_FONT_FAMILY               4 // 0 = Serif, 1 = Sans Serif
@@ -1275,6 +1281,10 @@ extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_BUTTONY_USPORNE         128 // 1 = zobraziù buttony pre modlitby v ˙spornej podobe (tabuæka) kvÙli mobiln˝m zariadeniam
 #define BIT_OPT_2_NOCNY_REZIM             256 // 1 = zobraziù invertovane farby (biele na ciernom)
 #define BIT_OPT_2_ROZNE_MOZNOSTI          512 // 1 = zobraziù rozliËnÈ "hypertextovÈ odkazy" v modlitbe (napr. pre modlitbu cez deÚ moûnosù doplnkovej psalmÛdie)
+#define BIT_OPT_2_HIDE_NAVIG_BUTTONS     1024 // 1 = moûnosù zobraziù/skryù navig·ciu (tlaËidl·) v modlitbe a pre "dnes", ak je zvolen˝ 6. bit (BIT_OPT_2_NAVIGATION)
+#define BIT_OPT_2_HIDE_KALENDAR          2048 // 1 = skryù kalend·rik pre "dnes"
+#define BIT_OPT_2_HIDE_OPTIONS1          4096 // 1 = skryù html_text_dalsie_moznosti_1[] pre "dnes"
+#define BIT_OPT_2_HIDE_OPTIONS2          8192 // 1 = skryù html_text_dalsie_moznosti_2[] pre "dnes"
 
 #define POCET_OPT_4_OFFLINE_EXPORT          1 // jednotlivÈ komponenty option 4 -- bity pre force option 4
 extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];

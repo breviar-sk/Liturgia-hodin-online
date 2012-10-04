@@ -44,6 +44,7 @@ extern FILE *exportfile;
 short int initExport(void); /* nechapem, preco to tu chybalo; 22/02/2000A.D. */
 short int initExport(const char *expt_filename); /* pridane, 13/03/2000A.D.; pozor na nazvy suborov "" (STR_EMPTY) a "+" */
 short int closeExport(void); /* pridane, urobi fclose(); 13/03/2000A.D. */
+char *getExportedString(void);
 /* navratove hodnoty su prerobene na int-y; vysledok SUCCESS resp. FAILURE */
 
 #endif /*__MYEXPT_H_*/
