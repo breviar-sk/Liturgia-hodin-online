@@ -6078,6 +6078,15 @@ const char *text_OKT_05_SDB[POCET_JAZYKOV + 1] =
  "",
  "hu_",
  };
+const char *text_OKT_05_CSSR[POCET_JAZYKOV + 1] = 
+{"Bl. Františka Xaverského Seelosa, kòaza",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
 const char *text_OKT_05_HU[POCET_JAZYKOV + 1] = 
 {"",
  "",

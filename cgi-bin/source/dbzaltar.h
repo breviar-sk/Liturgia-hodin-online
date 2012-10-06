@@ -488,6 +488,7 @@ extern const char *text_JUN_30_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_CSSR_TITUL_KONGREGACIE[POCET_JAZYKOV + 1]; // JUL
 extern const char *text_AUG_01_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_SEP_26_CSSR[POCET_JAZYKOV + 1];
+extern const char *text_OKT_05_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_OKT_16_CSSR[POCET_JAZYKOV + 1];
 
 // --------------- SVD propriá ---------------

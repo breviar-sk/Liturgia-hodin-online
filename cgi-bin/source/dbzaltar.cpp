@@ -24974,6 +24974,34 @@ label_25_MAR:
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_SK_SDB;
 					}// kalendár pre KALENDAR_SK_SDB
+					if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CSSR)){
+						if(poradie_svaty == 1){
+
+							file_name_vlastny_kalendar(_global_kalendar);
+
+							// definovanie parametrov pre modlitbu
+							if(query_type != PRM_DETAILY)
+								set_spolocna_cast(sc, poradie_svaty);
+
+							modlitba = MODL_POSV_CITANIE;
+							_vlastna_cast_2citanie;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_RANNE_CHVALY;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_VESPERY;
+							_vlastna_cast_modlitba;
+
+							break;
+						}
+						_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
+						_global_svaty1.smer = 12; // ¾ubovo¾né spomienky
+						mystrcpy(_global_svaty1.meno, text_OKT_05_CSSR[_global_jazyk], MENO_SVIATKU);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+						_global_svaty1.farba = LIT_FARBA_BIELA;
+						_global_svaty1.kalendar = KALENDAR_SK_CSSR;
+					}// kalendár pre KALENDAR_SK_CSSR
 					// else
 					if(_global_jazyk == JAZYK_HU){
 						if(poradie_svaty == 1){
