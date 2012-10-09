@@ -1797,7 +1797,7 @@ const char *html_text_option_skryt[POCET_JAZYKOV + 1] =
  "hide",
  "",
  "skrýt", 
- "elrejteni"
+ "elrejtés"
 };
 
 const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] = 
