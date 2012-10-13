@@ -878,5 +878,38 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define FILENAME_EXPORT_MONTH_SIMPLE "%.2d%.2d"
 #define FILENAME_EXPORT_MONTH_FULL   "%.4d-%.2d"
 
-#endif /*__MYDEFS_H_*/
+#define HTML_ISO_FORMAT "%04d-%02d-%02d"
+
+#define XML_DAY              "CalendarDay"
+#define XML_CELEBRATION      "Celebration"
+#define XML_CELEBRATION_ID   "Id"
+#define XML_DATE_ISO         "DateISO"
+#define XML_DATE_DAY         "DateDay"
+#define XML_DATE_MONTH       "DateMonth"
+#define XML_DATE_YEAR        "DateYear"
+#define XML_STRING_TITLE     "StringTitle"
+#define XML_STRING_COMMUNIA  "StringCommunia"
+#define XML_STRING_VOLUME    "StringVolume"
+#define XML_DAY_OF_YEAR      "DayOfYear"
+#define XML_DAY_OF_WEEK      "DayOfWeek"
+#define XML_LIT_YEAR_LETTER  "LiturgicalYearLetter"
+#define XML_LIT_SEASON       "LiturgicalSeason"
+#define XML_LIT_WEEK         "LiturgicalWeek"
+#define XML_LIT_WEEK_PSALT   "LiturgicalWeekOfPsalter"
+#define XML_LIT_TYPE         "LiturgicalCelebrationType"
+#define XML_LIT_TYPE_LOCAL   "LiturgicalCelebrationTypeLocal"
+#define XML_LIT_LEVEL        "LiturgicalCelebrationLevel"
+#define XML_LIT_REQUIRED     "LiturgicalCelebrationRequired"
+#define XML_LIT_COMMUNIA     "LiturgicalCelebrationCommunia"
+#define XML_LIT_NAME         "LiturgicalCelebrationName"
+#define XML_LIT_COLOR        "LiturgicalCelebrationColor"
+#define XML_LIT_CALENDAR     "LiturgicalCalendar"
+
+// starting, closing element (XML, HTML)
+#define ELEM_BEGIN(elem)     "<"elem">"
+#define ELEM_END(elem)       "</"elem">"
+
+#define ELEMID_BEGIN(elem)   "<"elem" Id=\"%d\">"
+
+#endif // __MYDEFS_H_
 

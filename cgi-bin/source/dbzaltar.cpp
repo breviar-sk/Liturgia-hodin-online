@@ -7784,6 +7784,7 @@ label_24_DEC:
 #endif
 	// --------------------------------------------------------------------
 	// nasledujuca cast berie do uvahy, kedy sa ma `robit' svaty | je to cast prevzata z dnes.cpp::init_global_string();
+	// ToDo: bolo by dobré, aby sa to robilo iba na jedinom mieste (2012-10-12)
 	_struct_dm _local_den;
 	_INIT_DM(_local_den);
 

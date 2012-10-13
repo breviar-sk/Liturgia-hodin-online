@@ -823,7 +823,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 				sprintf(pom, "%d</a>", den);
 			break;
 		case LINK_ISO_8601: // 2005-31-21: Pridane
-				sprintf(pom, "%04d-%02d-%02d</a>", rok, mesiac, den);
+				sprintf(pom, HTML_ISO_FORMAT"</a>", rok, mesiac, den);
 			break;
 		default:
 				switch(_case){

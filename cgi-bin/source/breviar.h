@@ -43,6 +43,7 @@ extern short int _global_poradie_svaty;
 
 extern short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydefs.h
 
+#define EXPORT_DNA_XML 6 // 2012-10-12: kvôli iOS
 #define EXPORT_DNA_JEDEN_DEN_LOCAL 5
 #define EXPORT_DNA_VIAC_DNI_TXT 4
 #define EXPORT_DNA_VIAC_DNI_SIMPLE 3 // 2005-03-21: Pridany dalsi typ exportu; 2011-04-13: nerozumiem naèo; asi sa nepoužíva...
