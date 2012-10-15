@@ -10056,7 +10056,8 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 
 	// lokalne premenne, v ktorych sa pamata to, co vrati _rozbor_dna()
 	// lokalna premenna, do ktorej sa ukladaju info o analyzovanom dni pouziva ju void nove_rozbor_dna() funkcia
-	// _struct_dm _local_den; // 2012-10-12: uû je glob·lna
+	_struct_dm _local_den; // 2012-10-12: uû je glob·lna 
+	// 2012-10-14: hoci jestvuje aj glob·lna premenn·, t· sa prepl·cava napr. v init_global_string(), Ëo bolo zle (negenerovali sa spr·vne prvÈ veöpery), preto vr·ten· sem sp‰ù lok·lna premenn·
 	_INIT_DM(_local_den); // 2003-08-07 pridana
 
 	// lokalne premenne obsahujuce data modlitbach -- 23/02/2000A.D. | prerobene, aby sa alokovali dynamicky
