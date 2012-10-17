@@ -7813,10 +7813,9 @@ label_24_DEC:
 				}
 				else{
 					// sice chce svateho c. 2, ale mam len jedneho
-					hlavicka((char *)html_title[_global_jazyk]);
 					Log("-- Error: _global_svaty2 not assigned\n");
-					Export("Error: _global_svaty2 not assigned\n");
 					ALERT;
+					Export("Error: _global_svaty2 not assigned\n");
 				}
 				break; // case 2:
 			case 3:
@@ -7828,17 +7827,15 @@ label_24_DEC:
 				}
 				else{
 					// sice chce svateho c. 3, ale nemam troch
-					hlavicka((char *)html_title[_global_jazyk]);
 					Log("-- Error: _global_svaty3 not assigned\n");
-					Export("Error: _global_svaty3 not assigned\n");
 					ALERT;
+					Export("Error: _global_svaty3 not assigned\n");
 				}
 				break; // case 3:
 			case 5:
-				hlavicka((char *)html_title[_global_jazyk]);
 				Log("-- Error: poradie_svateho == 5\n");
-				Export("Error: poradie_svateho == 5\n");
 				ALERT;
+				Export("Error: poradie_svateho == 5\n");
 				break;
 			case 0:
 				// [ToDo]: je smiesne, ze case 0 tu vobec je: ved toto je mrtvy kus kodu!
@@ -7850,10 +7847,9 @@ label_24_DEC:
 				}
 				else{
 					// sice chce obycajny den, ale nemoze byt
-					hlavicka((char *)html_title[_global_jazyk]);
 					Log("-- Error: _global_den not assigned\n");
-					Export("%s\n", "Error: _global_den not assigned");
 					ALERT;
+					Export("%s\n", "Error: _global_den not assigned");
 				}
 				break; // case 0:
 		}// switch(poradie_svateho)
@@ -10031,10 +10027,9 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 							}
 							else{
 							// sem by to nemalo prÌsù
-								hlavicka((char *)html_title[_global_jazyk]);
 								set_LOG_sc("-- Error: sc (a1, a2, a3) su sice urcene, ale _global_opt[OPT_3_SPOLOCNA_CAST] sa nerovna ani jednej z nich!\n");
-								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1, a2, a3 -- ok)\n");
 								ALERT;
+								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1, a2, a3 -- ok)\n");
 								return;
 							}
 						}
@@ -10047,10 +10042,9 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 						else{
 						// sem by to nemalo prÌsù
 							if(poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
-								hlavicka((char *)html_title[_global_jazyk]);
 								set_LOG_sc("-- Error: sc (a1, a2) su sice urcene, ale _global_opt[OPT_3_SPOLOCNA_CAST] sa nerovna ani jednej z nich!\n");
-								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1, a2 -- ok)\n");
 								ALERT;
+								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1, a2 -- ok)\n");
 								return;
 							}
 						}
@@ -10065,10 +10059,9 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 				else{
 				// sem by to nemalo prÌsù
 					if(poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
-						hlavicka((char *)html_title[_global_jazyk]);
 						set_LOG_sc("-- Error: sc (a1) je sice urcena, ale _global_opt[OPT_3_SPOLOCNA_CAST] sa jej nerovna!\n");
-						Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1 -- ok)\n");
 						ALERT;
+						Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1 -- ok)\n");
 						return;
 					}
 				}
@@ -10078,10 +10071,9 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 	else{
 		// sem by to nemalo prÌsù
 		if(poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
-			hlavicka((char *)html_title[_global_jazyk]);
 			Log("-- Error: sc (a1) nie je urcene; _global_opt[OPT_3_SPOLOCNA_CAST] == %s\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]));
-			Export("Error: a1 (member of sc) unassigned | _global_opt[OPT_3_SPOLOCNA_CAST] == %s\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]));
 			ALERT;
+			Export("Error: a1 (member of sc) unassigned | _global_opt[OPT_3_SPOLOCNA_CAST] == %s\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]));
 			return;
 		}
 	}

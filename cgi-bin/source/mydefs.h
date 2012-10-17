@@ -210,22 +210,24 @@ extern short int query_type; // premenna obsahujuca PRM_...
 
 #define PRM_TXT 	20
 #ifdef LONG_PARAM_NAMES
-	#define STR_PRM_TXT "PRM_DATUM_TXT"
+	#define STR_PRM_TXT "PRM_TXT_EXPORT"
 #else
 	#define STR_PRM_TXT "ptxt"
 #endif
 
-/* nasleduju parametre z formularov pre vsetky typy dotazov,
- * kedysi bolo pre kazdy STR_... definovane WWW_STR_...,
- * teraz ADD_WWW_PREFIX_(STR_...) 
- * 
- * 2004-08-14, duurko
- * definicia ADD_WWW_PREFIX_(a) ("WWW_"##a) 
- * ktora bola OK na g++ (gcc version 2.95.4 20011002)
- * sposobovala problemy 
- * na g++ (gcc version 3.3.3 20040412)
- * preto zmenene na ADD_WWW_PREFIX_(a) ("WWW_"a)
- */
+#define PRM_XML 	19
+#ifdef LONG_PARAM_NAMES
+	#define STR_PRM_XML "PRM_XML_EXPORT"
+#else
+	#define STR_PRM_XML "pxml"
+#endif
+
+// nasleduju parametre z formularov pre vsetky typy dotazov,
+// kedysi bolo pre kazdy STR_... definovane WWW_STR_..., teraz ADD_WWW_PREFIX_(STR_...) 
+// 2004-08-14: 
+// definicia ADD_WWW_PREFIX_(a) ("WWW_"##a) ktora bola OK na g++ (gcc version 2.95.4 20011002)
+// sposobovala problemy na g++ (gcc version 3.3.3 20040412)
+// preto zmenene na ADD_WWW_PREFIX_(a) ("WWW_"a)
 #define WWW_PREFIX "WWW_"
 #define ADD_WWW_PREFIX_(a) ("WWW_"a)
 
@@ -765,7 +767,11 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_QUERY_TYPE "qt"
 #endif
 
-#define ALERT	Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_MAIL_ADDRESS_default)
+// 2012-10-16: upraven˝ tento define tak, ûe vûdy musÌ byù pred volanÌm funkcie Export(); doÚho dovn˙tra som dal volanie hlaviËky
+#define ALERT	{\
+	hlavicka((char *)html_title[_global_jazyk]);\
+	Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_MAIL_ADDRESS_default);\
+	}
 
 // HTML stringy - casti stringov sustredene na tomto mieste; pridane 2003-07-02; rozöÌrenÈ 2011-01-27
 #define HTML_FORM_INPUT_SUBMIT   "input type=\"submit\" class=\"button\""
@@ -878,8 +884,15 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define FILENAME_EXPORT_MONTH_SIMPLE "%.2d%.2d"
 #define FILENAME_EXPORT_MONTH_FULL   "%.4d-%.2d"
 
-#define HTML_ISO_FORMAT "%04d-%02d-%02d"
+#define HTML_ISO_FORMAT      "%04d-%02d-%02d"
 
+#define TEXT_COPYRIGHT       "(c) 1999-2012 Juraj VidÈky"
+#define TEXT_EMAIL           "videky@breviar.sk"
+
+// main XML element
+#define XML_MAIN             "LHData"
+
+// element XML_DAY with sub-elements
 #define XML_DAY              "CalendarDay"
 #define XML_CELEBRATION      "Celebration"
 #define XML_CELEBRATION_ID   "Id"
@@ -904,6 +917,13 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_LIT_NAME         "LiturgicalCelebrationName"
 #define XML_LIT_COLOR        "LiturgicalCelebrationColor"
 #define XML_LIT_CALENDAR     "LiturgicalCalendar"
+
+// element XML_INFO with sub-elements
+#define XML_INFO             "Info"
+#define XML_COPYRIGHT        "Copyright"
+#define XML_ADDRESS          "Address"
+#define XML_BUILD_DATE       "BuildDate"
+#define XML_GENERATED        "Generated"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<"elem">"
