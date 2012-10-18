@@ -1381,6 +1381,10 @@ const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1] =
 	{"sviatku", "svátku", "celebration", "___", "", "svátku", "ünneptõl"};
 #define		STR_MODL_ZALMY_ZO_SV 	str_modl_zalmy_zo_sv[_global_jazyk]
 
+#define STR_VALUE_TRUE  "1"
+#define STR_VALUE_FALSE "0"
+#define STR_VALUE_ZERO  "0"
+
 const char *str_ano[POCET_JAZYKOV + 1] = 
 	{"áno", "ano", "yes", "sic", "___", "ano", "igen"};
 #define		STR_ANO		str_ano[_global_jazyk]

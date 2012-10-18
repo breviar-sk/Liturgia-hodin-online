@@ -925,11 +925,64 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_BUILD_DATE       "BuildDate"
 #define XML_GENERATED        "Generated"
 
+// element XML_OPTIONS with sub-elements
+#define XML_OPTIONS          "Options"
+
+// POCET_GLOBAL_OPT
+#define XML_OPT_0_SPECIALNE                     "Opt0Special"
+#define XML_OPT_1_CASTI_MODLITBY                "Opt1PrayerPortions"
+#define XML_OPT_2_HTML_EXPORT                   "Opt2Export"
+#define XML_OPT_3_SPOLOCNA_CAST                 "Opt3Communia"
+#define XML_OPT_4_OFFLINE_EXPORT                "Opt4OfflineExport"
+
+// POCET_OPT_0_SPECIALNE
+#define XML_BIT_OPT_0_VERSE                     "BitOpt0VerseNumbers"
+#define XML_BIT_OPT_0_REFERENCIE                "BitOpt0References"
+#define XML_BIT_OPT_0_CITANIA                   "BitOpt0Readings"
+#define XML_BIT_OPT_0_ZJAVENIE_PANA_NEDELA      "BitOpt0EpiphanyOnSunday"
+#define XML_BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA   "BitOpt0AssumptionOnSunday"
+#define XML_BIT_OPT_0_TELAKRVI_NEDELA           "BitOpt0CorpusChristiOnSunday"
+
+// POCET_OPT_1_CASTI_MODLITBY
+#define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"
+#define XML_BIT_OPT_1_RUBRIKY                   "BitOpt1Rubrics"
+#define XML_BIT_OPT_1_CHVALOSPEVY               "BitOpt1Canticles"
+#define XML_BIT_OPT_1_SLAVA_OTCU                "BitOpt1GloryPrayer"
+#define XML_BIT_OPT_1_OTCENAS                   "BitOpt1OurFatherPrayer"
+#define XML_BIT_OPT_1_MCD_ZALMY_INE             "BitOpt1SupplPsalmodyDuringDay"
+#define XML_BIT_OPT_1_PC_VIGILIA                "BitOpt1VigilAfterReadings"
+#define XML_BIT_OPT_1_SPOMIENKA_SPOL_CAST       "BitOpt1MemoriesTakeFromCommunia"
+#define XML_BIT_OPT_1_PLNE_RESP                 "BitOpt1FullResponses"
+#define XML_BIT_OPT_1_ZALM95                    "BitOpt1InvitatoryUsePsalm95"
+#define XML_BIT_OPT_1_PROSBY_ZVOLANIE           "BitOpt1Repeat"
+#define XML_BIT_OPT_1_SKRY_POPIS                "BitOpt1HideDescription"
+#define XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST          "BitOpt1ShowCommuniaDescription"
+
+// POCET_OPT_2_HTML_EXPORT
+#define XML_BIT_OPT_2_ISO_DATUM                 "BitOpt2ISOFormat"
+#define XML_BIT_OPT_2_BUTTON_PRVE_VESPERY       "BitOpt2FirstVespersButton"
+#define XML_BIT_OPT_2_FONT_FAMILY               "BitOpt2FontFamily"
+#define XML_BIT_OPT_2_FONT_NAME_CHOOSER         "BitOpt2FontNameChooser"
+#define XML_BIT_OPT_2_FONT_SIZE_CHOOSER         "BitOpt2FontSizeChooser"
+#define XML_BIT_OPT_2_NAVIGATION                "BitOpt2Navigation"
+#define XML_BIT_OPT_2_TEXT_WRAP                 "BitOpt2TextWrap"
+#define XML_BIT_OPT_2_BUTTONY_USPORNE           "BitOpt2ButtonsCondensed"
+#define XML_BIT_OPT_2_NOCNY_REZIM               "BitOpt2NightMode"
+#define XML_BIT_OPT_2_ROZNE_MOZNOSTI            "BitOpt2OptionsWithinPrayer"
+#define XML_BIT_OPT_2_HIDE_NAVIG_BUTTONS        "BitOpt2HideNavigationButtons"
+#define XML_BIT_OPT_2_HIDE_KALENDAR             "BitOpt2HideCalendar"
+#define XML_BIT_OPT_2_HIDE_OPTIONS1             "BitOpt2HideOptionsPart1"
+#define XML_BIT_OPT_2_HIDE_OPTIONS2             "BitOpt2HideOptionsPart2"
+
+// POCET_OPT_4_OFFLINE_EXPORT
+#define XML_BIT_OPT_4_MESIAC_RIADOK             "BitOpt4MonthAtLine"
+
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<"elem">"
 #define ELEM_END(elem)       "</"elem">"
 
 #define ELEMID_BEGIN(elem)   "<"elem" Id=\"%d\">"
+#define ELEMVAL_BEGIN(elem)  "<"elem" Value=\"%d\">"
 
 #endif // __MYDEFS_H_
 

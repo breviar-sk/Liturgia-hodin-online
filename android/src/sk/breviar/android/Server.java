@@ -134,16 +134,16 @@ public class Server extends Thread
 
         if (s.equals("")) break;
 
-        if (s.substring(0, 3).equals("GET")) {
+        if (s.startsWith("GET")) {
           int leerstelle = s.indexOf(" HTTP/");
           dokument = s.substring(5,leerstelle);
           dokument = dokument.replaceAll("[/]+","/");
-        } else if (s.substring(0, 4).equals("POST")) {
+        } else if (s.startsWith("POST")) {
           int leerstelle = s.indexOf(" HTTP/");
           dokument = s.substring(6,leerstelle);
           dokument = dokument.replaceAll("[/]+","/");
           postmethod = true;
-        } else if (s.substring(0, 14).equals("Content-Length")) {
+        } else if (s.startsWith("Content-Length")) {
           cntlen = Integer.parseInt(s.substring(16));
         }
       }
