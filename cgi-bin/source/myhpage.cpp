@@ -449,15 +449,9 @@ void _patka(FILE * expt){
 #endif
 
 	// pridana stranka cfg_HTTP_ADDRESS_default, 12/04/2000A.D.
-	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" target=\"_top\">%s</a>\n", cfg_HTTP_ADDRESS_default, cfg_HTTP_DISPLAY_ADDRESS_default);
-	if(_global_jazyk == JAZYK_HU){
-		Log("cfg_MAIL_ADDRESS_default_HU == %s\n", cfg_MAIL_ADDRESS_default_HU);
-		mystrcpy(mail_addr, cfg_MAIL_ADDRESS_default_HU, MAX_MAIL_STR);
-	}
-	else{
-		Log("cfg_MAIL_ADDRESS_default == %s\n", cfg_MAIL_ADDRESS_default);
-		mystrcpy(mail_addr, cfg_MAIL_ADDRESS_default, MAX_MAIL_STR);
-	}
+	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" target=\"_top\">%s</a>\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
+	Log("cfg_mail_address_default[%s] == %s\n", cfg_mail_address_default[_global_jazyk], skratka_jazyka[_global_jazyk]);
+	mystrcpy(mail_addr, cfg_mail_address_default[_global_jazyk], MAX_MAIL_STR);
 	Log("mail_addr == %s\n", mail_addr);
 	Export_to_file(expt, "&#169; %d%s <"HTML_LINK_NORMAL" href=\"mailto:%s\">%s</a>\n", baserok, rok, mail_addr, html_mail_label);
 

@@ -47,13 +47,15 @@
 #define DEFAULT_FONT_FAMILY_INHERIT "inherit"
 #define DEFAULT_FONT_SIZE_INHERIT "inherit"
 
-extern char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR];
-extern char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR];
-extern char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR];
-extern char cfg_MAIL_ADDRESS_default_HU[MAX_MAIL_STR];
 extern char cfg_INCLUDE_DIR_default [MAX_INCD_STR];
 
 extern short int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
+
+#define POCET_DALSICH_CONF 3
+
+extern char cfg_http_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
+extern char cfg_http_display_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
+extern char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
 
 #define CFG_OPTION_DEFAULT(i) cfg_option_default[i][_global_jazyk]
 

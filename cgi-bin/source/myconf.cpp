@@ -42,18 +42,20 @@
 #include "liturgia.h"
 
 #define MAIL_ADDRESS_DEFAULT "videky@breviar.sk"
-#define MAIL_ADDRESS_DEFAULT_HU "videky-hu@breviar.sk"
 
-char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR] = "http://www.breviar.sk/";
-char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "http://www.breviar.sk/";
+char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR] = "http://breviar.sk/";
+char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "http://breviar.sk/";
 char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = STR_EMPTY;
-char cfg_MAIL_ADDRESS_default_HU[MAX_MAIL_STR] = STR_EMPTY;
 char cfg_INCLUDE_DIR_default[MAX_INCD_STR] = "../include/";
 
 short int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
 
-const char *cfg_option_prefix[POCET_GLOBAL_OPT] = 
-{"specialne", "casti_modlitby", "html_export", "", "offline_export"};
+char cfg_http_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
+char cfg_http_display_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
+char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
+
+const char *cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] = 
+{"specialne", "casti_modlitby", "html_export", "", "offline_export", "http_adresa", "http_zobraz_adr", "mail_adresa"};
 #define ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX "_"
 const char *cfg_option_postfix[POCET_JAZYKOV + 1] = 
 {"def", "cz", "en", "la", "", "czop", "hu"};
@@ -62,8 +64,17 @@ void printConfigOptions(void){
 	short int j = 0, o = 0;
 	for(j = 0; j <= POCET_JAZYKOV; j++){
 		Log("=== Jazyk `%s' (%s): Default hodnoty option parametrov (konfiguraèný súbor %s) ===\n", skratka_jazyka[j], nazov_jazyka[j], CONFIG_FILE);
-		for(o = 0; o < POCET_GLOBAL_OPT; o++){
-			Log("cfg_option_default[%d][%d] == `%d'\n", o, j, cfg_option_default[o][j]);
+		for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++){
+			if(o < POCET_GLOBAL_OPT){
+				Log("cfg_option_default[%d][%d] == `%d'\n", o, j, cfg_option_default[o][j]);
+			}
+			else{
+				switch(o - POCET_GLOBAL_OPT){
+					case 0: Log("http address: %s\n", cfg_http_address_default[j]); break;
+					case 1: Log("http display address: %s\n", cfg_http_display_address_default[j]); break;
+					case 2: Log("mail address: %s\n", cfg_mail_address_default[j]); break;
+				}// switch()
+			}
 		}// for o
 	}// for j
 }// printConfigOptions()
@@ -167,7 +178,7 @@ void readConfig(void)
 
 		Log("Parsovaná option  == `%s'\n", option);
 		Log("Parsovaná hodnota == `%s'\n", hodnota);
-		if (!strcmp(option, "http_adresa_def")){
+/*		if (!strcmp(option, "http_adresa_def")){
 			strncpy(cfg_HTTP_ADDRESS_default, hodnota, MAX_HTTP_STR);
 		}
 		else if (!strcmp(option, "http_zobraz_adr_def")){
@@ -179,23 +190,33 @@ void readConfig(void)
 		else if (!strcmp(option, "incldir_def")){
 			strcpy(cfg_INCLUDE_DIR_default, hodnota);
 		}
-		else {
-			for(o = 0; o < POCET_GLOBAL_OPT; o++){
-				for(j = 0; j <= POCET_JAZYKOV; j++){
-					if(!equals(cfg_option_prefix[o], STR_EMPTY) && !equals(cfg_option_postfix[j], STR_EMPTY)){
-						// vyskladaj názov option pre jazyk j a option o
-						mystrcpy(nazov_option, cfg_option_prefix[o], MAX_STR);
-						strcat(nazov_option, ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX);
-						strcat(nazov_option, cfg_option_postfix[j]);
-						if(!strcmp(option, nazov_option)){
-							if(isdigit(hodnota[0])){
-								cfg_option_default[o][j] = atoi(hodnota);
-							}
-						}/* if(!strcmp(option, nazov_option)) */
-					}// if
-				}// for j
-			}// for o
-		}
+		else */
+		for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++){
+			for(j = 0; j <= POCET_JAZYKOV; j++){
+				if(!equals(cfg_option_prefix[o], STR_EMPTY) && !equals(cfg_option_postfix[j], STR_EMPTY)){
+					// vyskladaj názov option pre jazyk j a option o (natvrdo definované možnosti)
+					mystrcpy(nazov_option, cfg_option_prefix[o], MAX_STR);
+					strcat(nazov_option, ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX);
+					strcat(nazov_option, cfg_option_postfix[j]);
+					if(!strcmp(option, nazov_option)){
+						if(o < POCET_GLOBAL_OPT){
+							if(!strcmp(option, nazov_option)){
+								if(isdigit(hodnota[0])){
+									cfg_option_default[o][j] = atoi(hodnota);
+								}
+							}// if(!strcmp(option, nazov_option))
+						}// if -- štandardná option
+						else{
+							switch(o - POCET_GLOBAL_OPT){
+								case 0: mystrcpy(cfg_http_address_default[j], hodnota, MAX_HTTP_STR); break;
+								case 1: mystrcpy(cfg_http_display_address_default[j], hodnota, MAX_HTTP_STR); break;
+								case 2: mystrcpy(cfg_mail_address_default[j], hodnota, MAX_MAIL_STR); break;
+							}// switch()
+						}// else -- natvrdo definovaná option
+					}// if(!strcmp(option, nazov_option))
+				}// if
+			}// for j
+		}// for o
 		for(; (znak != EOF) && (znak != '\n'); znak = fgetc(subor) );
 
 		if(znak == EOF){
@@ -211,8 +232,24 @@ void readConfig(void)
 		mystrcpy(cfg_MAIL_ADDRESS_default, MAIL_ADDRESS_DEFAULT, MAX_MAIL_STR);
 	}
 	Log("cfg_MAIL_ADDRESS_default == %s\n", cfg_MAIL_ADDRESS_default);
-	mystrcpy(cfg_MAIL_ADDRESS_default_HU, MAIL_ADDRESS_DEFAULT_HU, MAX_MAIL_STR);
-	Log("cfg_MAIL_ADDRESS_default_HU == %s\n", cfg_MAIL_ADDRESS_default_HU);
+	for(j = 0; j <= POCET_JAZYKOV; j++){
+		Log("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
+		Log("http address: %s\n", cfg_http_address_default[j]);
+		if(equals(cfg_http_address_default[j], STR_EMPTY)){
+			strcpy(cfg_http_address_default[j], cfg_HTTP_ADDRESS_default);
+			Log("http address CHANGED: %s\n", cfg_http_address_default[j]);
+		}
+		Log("http display address: %s\n", cfg_http_display_address_default[j]);
+		if(equals(cfg_http_display_address_default[j], STR_EMPTY)){
+			strcpy(cfg_http_display_address_default[j], cfg_HTTP_DISPLAY_ADDRESS_default);
+			Log("http display address CHANGED: %s\n", cfg_http_display_address_default[j]);
+		}
+		Log("mail address: %s\n", cfg_mail_address_default[j]);
+		if(equals(cfg_mail_address_default[j], STR_EMPTY)){
+			strcpy(cfg_mail_address_default[j], cfg_MAIL_ADDRESS_default);
+			Log("mail address CHANGED: %s\n", cfg_mail_address_default[j]);
+		}
+	}
 
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 	// 2012-10-03: pre android upravené defaulty pre zobrazovanie
@@ -265,10 +302,6 @@ void printConfig(void){
 	Log("\n");
 	Log("=== BEGIN:configuration (%s) ===\n", CONFIG_FILE);
 
-	// 2007-06-01: niekolko prvych parametrov: prevzate z breviar.cpp::main()
-	Log("cfg_HTTP_ADDRESS_default == `%s'\n", cfg_HTTP_ADDRESS_default);
-	Log("cfg_HTTP_DISPLAY_ADDRESS_default == `%s'\n", cfg_HTTP_DISPLAY_ADDRESS_default); // 2007-05-24, JUV: pridane
-	Log("cfg_MAIL_ADDRESS_default == `%s'\n", cfg_MAIL_ADDRESS_default);
 	// 2004-03-17 pridane cfg_INCLUDE_DIR_default
 	Log("cfg_INCLUDE_DIR_default == `%s'\n", cfg_INCLUDE_DIR_default);
 	// 2007-06-01: nasleduju nové parametre

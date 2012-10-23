@@ -5210,11 +5210,13 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 			// nasledovn· ˙prava _global_opt[OPT_3_SPOLOCNA_CAST] presunut· sem z Ëasti, kedy "SVATY_VEDIE", aby sa aplikovala aj na druh˙ vetvu
 			// pridanÈ 2006-02-06; upravujeme premenn˙ _global_opt[OPT_3_SPOLOCNA_CAST] ak nebola nastaven· MODL_SPOL_CAST_NEBRAT
 			// treba nastaviù podæa toho, ktor˝ sv‰t˝ je (mÙûe byù 1--3)  a z·roveÚ braù do ˙vahy eventu·lne prednastavenie od pouûÌvateæa
-			_rozbor_dna_LOG("\tPremenn· _global_opt[OPT_3_SPOLOCNA_CAST] pred ˙pravou == %d (%s)...\n", 
-				_global_opt[OPT_3_SPOLOCNA_CAST], 
-				_global_opt[OPT_3_SPOLOCNA_CAST] <= MODL_SPOL_CAST_NEBRAT ? nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]) : STR_EMPTY);
+			// 2012-10-22: doplnen˝ case 0 vo switch-i, spÙsobovalo problÈmy pre sl·vnosti, ktorÈ maj˙ nastaven˙ spoloËn˙ Ëasù priamo v _global_den (napr. 15. septembra) | upozornil Vlado Kiö
+			_rozbor_dna_LOG("Premenn· _global_opt[OPT_3_SPOLOCNA_CAST] pred ˙pravou == %d (%s)...(poradie_svaty == %d)\n", _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_3_SPOLOCNA_CAST] <= MODL_SPOL_CAST_NEBRAT ? nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]) : STR_EMPTY, poradie_svaty);
 			if(_global_opt[OPT_3_SPOLOCNA_CAST] != MODL_SPOL_CAST_NEBRAT){
 				switch(poradie_svaty){
+					case 0:
+						sc = _decode_spol_cast(_global_den.spolcast);
+						break;
 					case 1:
 						sc = _decode_spol_cast(_global_svaty1.spolcast);
 						break;
@@ -5417,12 +5419,12 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			break;
 		case UNKNOWN_PORADIE_SVATEHO:
 		default:
-			/* 2010-09-28: odvetvenÈ kvÙli t˝m prÌpadom, keÔ na nedeæu padne sviatok p·na, ale pouûÌva sa poradie_svaty == UNKNOWN_PORADIE_SVATEHO == 0 
-			 *             Ëasù prevzat· z: liturgicke_obdobie(), zaËiatok funkcie; hoci tu sa pouûije len pre smer == 5 (sviatky p·na); sl·vnosti sa rieöia samostatne
-			 * 2011-06-30: cyril a metod odvetven˝ pre SK a CZ only
-			 * 2011-07-22: doplnenÈ pre HU: 20AUG
-			 * 2011-10-13: zapozn·mkovanÈ 14SEP kvÙli CZ // nesp˙öùalo sa totiû zaltar_zvazok(), a teda ani zaltar_kompletorium()
-			 */
+			// 2010-09-28: odvetvenÈ kvÙli t˝m prÌpadom, keÔ na nedeæu padne sviatok p·na, ale pouûÌva sa poradie_svaty == UNKNOWN_PORADIE_SVATEHO == 0 
+			//             Ëasù prevzat· z: liturgicke_obdobie(), zaËiatok funkcie; hoci tu sa pouûije len pre smer == 5 (sviatky p·na); sl·vnosti sa rieöia samostatne
+			// 2011-06-30: cyril a metod odvetven˝ pre SK a CZ only
+			// 2011-07-22: doplnenÈ pre HU: 20AUG
+			// 2011-10-13: zapozn·mkovanÈ 14SEP kvÙli CZ // nesp˙öùalo sa totiû zaltar_zvazok(), a teda ani zaltar_kompletorium()
+			// 2012-10-22: odpozn·mkovanÈ 14SEP -- napr. pre rok 2014 potom ned·valo prvÈ veöpery, ak padne na nedeæu!
 			Log("_global_den.smer == %d\n", _global_den.smer);
 			Log("_global_svaty1.smer == %d\n", _global_svaty1.smer);
 			if((_global_svaty1.smer == 5) && (
@@ -5432,7 +5434,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				((_global_den.den == 5) && (_global_den.mesiac - 1 == MES_JUL) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) ||
 				((_global_den.den == 20) && (_global_den.mesiac - 1 == MES_AUG) && (_global_jazyk == JAZYK_HU)) ||
 				((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) ||
-				// ((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP) ) ||
+				((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP) && (_global_jazyk != JAZYK_CZ) ) ||
 				((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV))
 				)){
 				// do _local_den priradim dane slavenie
@@ -9875,15 +9877,15 @@ void _export_rozbor_dna(short int typ){
 			Export("<!--END: kalend·rik-->\n");
 
 			Export("\n<!--BEGIN: veæk· tabuæka s kalend·rom a hlavn˝m formul·rom-->\n");
-#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
-#else
+/*
+			// 2012-10-22: ˙plne zapozn·mkovanÈ
 			if(_global_linky == ANO){
 				// 2008-01-22: podæa Vladovho n·vrhu presunut˝ nadpis sem
 				Export("<p "HTML_CLASS_BOLD_IT" "HTML_ALIGN_CENTER">\n");
 				Export((char *)html_text_dalsie_moznosti[_global_jazyk]); // 2006-08-02: jazykovÈ mut·cie; \n presunut˝ pred <table>; staröia pozn·mka: 2003-07-16; kedysi tu bolo "Chcem zobraziù"
 				Export("</p>\n");
 			}// if(_global_linky == ANO)
-#endif
+*/
 			Log("_global_opt_batch_monthly == %d [2011-04-13]\n", _global_opt_batch_monthly);
 			Log("export_monthly_druh == %d [2011-04-13]\n", export_monthly_druh);
 
@@ -10077,6 +10079,9 @@ short int je_mozne_spol_cast_nebrat(short int poradie_svaty){
 			break;
 		case 3: if((_global_svaty3.typslav == SLAV_SLAVNOST) || (_global_svaty3.typslav == SLAV_SVIATOK))
 					ret = FALSE;
+			break;
+		case 4:
+			// 2012-10-22: spomienka PM v sobotu je vûdy æubovoæn· spomienka
 			break;
 	}// swicht(poradie_svaty)
 	if((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)){
@@ -11883,7 +11888,7 @@ void _main_dnes(char *modlitba, char *poradie_svaty){
 #else
 				(char *)HTML_COMMENT_BEGIN,
 #endif
-				(_global_linky == ANO)? cfg_HTTP_ADDRESS_default: MESSAGE_FOLDER,
+				(_global_linky == ANO)? cfg_http_address_default[_global_jazyk]: MESSAGE_FOLDER,
 				FILE_JULIANSKY_DATUM,
 				jd_dnes,
 #ifdef ZOBRAZ_JULIANSKY_DATUM
@@ -12313,7 +12318,7 @@ void _main_analyza_roku(char *rok){
 
 	// 13/04/2000A.D.: pridane rozhodovanie podla _global_linky
 	if(_global_linky == ANO)
-		mystrcpy(pom, cfg_HTTP_ADDRESS_default, MAX_STR);
+		mystrcpy(pom, cfg_http_address_default[_global_jazyk], MAX_STR);
 	else // _global_linky == NIE
 		mystrcpy(pom, MESSAGE_FOLDER, MAX_STR);
 

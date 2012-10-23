@@ -18,18 +18,19 @@
 
 #include "mydefs.h"
 #include <string.h>
-#include "mystring.h" /* pridane 2003-08-13 */
+#include "mystring.h"
+#include "breviar.h"
 
 char script_name[MAX_STR] = STR_EMPTY; // = cfg_HTTP_ADDRESS_default + SCRIPT_PATH(SCRIPT_NAME)
 char uncgi_name[MAX_STR] = STR_EMPTY;  // = cfg_HTTP_ADDRESS_default + UNCGI_SCRIPT_NAME
 
 void updateScriptName(void){
-	strcpy(script_name, cfg_HTTP_ADDRESS_default);
+	strcpy(script_name, cfg_http_address_default[_global_jazyk]);
 	strcat(script_name, SCRIPT_PATH(SCRIPT_NAME));
 }
 
 void updateUnCGIName(void){
-	strcpy(uncgi_name, cfg_HTTP_ADDRESS_default);
+	strcpy(uncgi_name, cfg_http_address_default[_global_jazyk]);
 	strcat(uncgi_name, UNCGI_SCRIPT_NAME);
 }
 

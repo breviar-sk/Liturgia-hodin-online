@@ -770,7 +770,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 // 2012-10-16: upravenı tento define tak, e vdy musí by pred volaním funkcie Export(); doòho dovnútra som dal volanie hlavièky
 #define ALERT	{\
 	hlavicka((char *)html_title[_global_jazyk]);\
-	Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_MAIL_ADDRESS_default);\
+	Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_mail_address_default[_global_jazyk]);\
 	}
 
 // HTML stringy - casti stringov sustredene na tomto mieste; pridane 2003-07-02; rozšírené 2011-01-27
