@@ -187,36 +187,38 @@ void readConfig(void)
 		else if (!strcmp(option, "mail_adresa_def")){
 			strcpy(cfg_MAIL_ADDRESS_default, hodnota);
 		}
-		else if (!strcmp(option, "incldir_def")){
+*/
+		if (!strcmp(option, "incldir_def")){
 			strcpy(cfg_INCLUDE_DIR_default, hodnota);
 		}
-		else */
-		for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++){
-			for(j = 0; j <= POCET_JAZYKOV; j++){
-				if(!equals(cfg_option_prefix[o], STR_EMPTY) && !equals(cfg_option_postfix[j], STR_EMPTY)){
-					// vyskladaj názov option pre jazyk j a option o (natvrdo definované možnosti)
-					mystrcpy(nazov_option, cfg_option_prefix[o], MAX_STR);
-					strcat(nazov_option, ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX);
-					strcat(nazov_option, cfg_option_postfix[j]);
-					if(!strcmp(option, nazov_option)){
-						if(o < POCET_GLOBAL_OPT){
-							if(!strcmp(option, nazov_option)){
-								if(isdigit(hodnota[0])){
-									cfg_option_default[o][j] = atoi(hodnota);
-								}
-							}// if(!strcmp(option, nazov_option))
-						}// if -- štandardná option
-						else{
-							switch(o - POCET_GLOBAL_OPT){
-								case 0: mystrcpy(cfg_http_address_default[j], hodnota, MAX_HTTP_STR); break;
-								case 1: mystrcpy(cfg_http_display_address_default[j], hodnota, MAX_HTTP_STR); break;
-								case 2: mystrcpy(cfg_mail_address_default[j], hodnota, MAX_MAIL_STR); break;
-							}// switch()
-						}// else -- natvrdo definovaná option
-					}// if(!strcmp(option, nazov_option))
-				}// if
-			}// for j
-		}// for o
+		else{
+			for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++){
+				for(j = 0; j <= POCET_JAZYKOV; j++){
+					if(!equals(cfg_option_prefix[o], STR_EMPTY) && !equals(cfg_option_postfix[j], STR_EMPTY)){
+						// vyskladaj názov option pre jazyk j a option o (natvrdo definované možnosti)
+						mystrcpy(nazov_option, cfg_option_prefix[o], MAX_STR);
+						strcat(nazov_option, ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX);
+						strcat(nazov_option, cfg_option_postfix[j]);
+						if(!strcmp(option, nazov_option)){
+							if(o < POCET_GLOBAL_OPT){
+								if(!strcmp(option, nazov_option)){
+									if(isdigit(hodnota[0])){
+										cfg_option_default[o][j] = atoi(hodnota);
+									}
+								}// if(!strcmp(option, nazov_option))
+							}// if -- štandardná option
+							else{
+								switch(o - POCET_GLOBAL_OPT){
+									case 0: mystrcpy(cfg_http_address_default[j], hodnota, MAX_HTTP_STR); break;
+									case 1: mystrcpy(cfg_http_display_address_default[j], hodnota, MAX_HTTP_STR); break;
+									case 2: mystrcpy(cfg_mail_address_default[j], hodnota, MAX_MAIL_STR); break;
+								}// switch()
+							}// else -- natvrdo definovaná option
+						}// if(!strcmp(option, nazov_option))
+					}// if
+				}// for j
+			}// for o
+		}
 		for(; (znak != EOF) && (znak != '\n'); znak = fgetc(subor) );
 
 		if(znak == EOF){
