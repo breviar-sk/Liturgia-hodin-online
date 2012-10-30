@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.DialogInterface;
 import android.app.Dialog;
@@ -20,24 +19,34 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+
 import java.io.IOException;
+
+import sk.breviar.android.Alarms;
+import sk.breviar.android.LangSelect;
 import sk.breviar.android.Server;
+import sk.breviar.android.Util;
 
 public class Breviar extends Activity {
     static String scriptname = "cgi-bin/l.cgi";
-    static final String prefname = "BreviarPrefs";
     static final int DIALOG_HU_BETA = 1;
     static final int DIALOG_NEWS = 2;
 
+    // Server singleton
+    static Server S = null;
+
     WebView wv;
     int scale;
-    Server S = null;
     String language;
     boolean initialized, clearHistory;
+    boolean fullscreen = false;
+
+    int appEventId = -1;
 
     void goHome() {
       Log.v("breviar", "goHome");
@@ -45,11 +54,28 @@ public class Breviar extends Activity {
                  "?qt=pdnes" + Html.fromHtml(S.getOpts()));
     }
 
+    synchronized void initServer(String opts) {
+      if (S != null) return;
+      try {
+        S = new Server(this, scriptname, language, opts);
+      } catch (IOException e) {
+        Log.v("breviar", "Can not initialize server!");
+        finish();
+        return;
+      }
+      S.start();
+    }
+
     void resetLanguage() {
       S.setLanguage(language);
-      // musime zahodit aj nastavenia, mozu byt ine. A zresetovalo by to aj jazyk spat.
       clearHistory = true;
-      wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname + "?qt=pdnes");
+      // povodne sme zahadzovali cele nastavenia:
+      // wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname + "?qt=pdnes");
+      // namiesto toho sa snazime z nich iba dat prec co je nekompatibilne. Toto je prvy pokus.
+      wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname +
+                 "?qt=pdnes" + Html.fromHtml(S.getOpts()
+                     .replaceAll("&amp;c=[^&]*&amp;", "&amp;")
+                     .replaceAll("&amp;j=[^&]*&amp;", "&amp;")));
       syncPreferences();
     }
 
@@ -68,21 +94,17 @@ public class Breviar extends Activity {
     {
       Log.v("breviar", "onCreate");
 
+      appEventId = BreviarApp.getEventId();
+
       // Restore preferences
-      SharedPreferences settings = getSharedPreferences(prefname, 0);
+      SharedPreferences settings = getSharedPreferences(Util.prefname, 0);
       language = settings.getString("language", "sk");
       scale = settings.getInt("scale", 100);
+      fullscreen = settings.getBoolean("fullscreen", false);
       String opts = settings.getString("params", "");
 
       // Initialize server very early, to avoid races
-      try {
-        S = new Server(this, scriptname, language, opts);
-      } catch (IOException e) {
-        Log.v("breviar", "Can not initialize server!");
-        finish();
-        return;
-      }
-      S.start();
+      initServer(opts);
 
       super.onCreate(savedInstanceState);
       requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -179,7 +201,44 @@ public class Breviar extends Activity {
         markVersion();
       }
 
-      if (wv.restoreState(savedInstanceState) == null) goHome();
+      int id = -1;
+      Intent intent = getIntent();
+      if (intent.getAction().equals("sk.breviar.android.action.SHOW")) {
+        id = intent.getIntExtra("id", -1);
+      }
+
+      Log.v("breviar", "onCreate: intent id = " + id);
+
+      if (id >=0 && id < Util.events.length) {
+        wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname + 
+                   "?qt=pdnes&p=" + Util.events[id].p + Html.fromHtml(S.getOpts()));
+      } else {
+        if (wv.restoreState(savedInstanceState) == null) goHome();
+      }
+      updateFullscreen();
+    }
+
+    @Override
+    protected void onResume() {
+      if (appEventId < BreviarApp.getEventId()) {
+        appEventId = BreviarApp.getEventId();
+        recreate();
+      }
+      super.onResume();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+      int id = -1;
+      if (intent.getAction().equals("sk.breviar.android.action.SHOW")) {
+        id = intent.getIntExtra("id", -1);
+      }
+      Log.v("breviar", "onNewIntent: id = " + id);
+
+      if (id >=0 && id < Util.events.length) {
+        wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname + 
+                   "?qt=pdnes&p=" + Util.events[id].p + Html.fromHtml(S.getOpts()));
+      }
     }
 
     protected void onSaveInstanceState(Bundle outState) {
@@ -193,10 +252,11 @@ public class Breviar extends Activity {
     void syncPreferences() {
       // We need an Editor object to make preference changes.
       // All objects are from android.context.Context
-      SharedPreferences settings = getSharedPreferences(prefname, 0);
+      SharedPreferences settings = getSharedPreferences(Util.prefname, 0);
       SharedPreferences.Editor editor = settings.edit();
       editor.putString("language", language);
       editor.putInt("scale", scale);
+      editor.putBoolean("fullscreen", fullscreen);
       if (S != null) {
         editor.putString("params", S.getOpts());
       }
@@ -206,7 +266,7 @@ public class Breviar extends Activity {
     }
 
     void markVersion() {
-      SharedPreferences settings = getSharedPreferences(prefname, 0);
+      SharedPreferences settings = getSharedPreferences(Util.prefname, 0);
       SharedPreferences.Editor editor = settings.edit();
       editor.putString("version", getResources().getString(R.string.version));
       editor.commit();
@@ -228,8 +288,6 @@ public class Breviar extends Activity {
     @Override
     public void onDestroy() {
       Log.v("breviar", "onDestroy");
-      if (S != null) S.stopServer();
-      S = null;
       super.onDestroy();
     }
 
@@ -244,9 +302,9 @@ public class Breviar extends Activity {
     @Override
     protected Dialog onCreateDialog(int id) {
       switch(id) {
-        case DIALOG_HU_BETA:
+        case DIALOG_NEWS:
           return new AlertDialog.Builder(this)
-                 .setMessage(R.string.hu_beta_warning)
+                 .setMessage(R.string.news)
                  .setCancelable(false)
                  .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                      public void onClick(DialogInterface dialog, int id) {
@@ -254,9 +312,9 @@ public class Breviar extends Activity {
                      }
                  })
                  .create();
-        case DIALOG_NEWS:
+        case DIALOG_HU_BETA:
           return new AlertDialog.Builder(this)
-                 .setMessage(R.string.news)
+                 .setMessage(R.string.hu_beta_warning)
                  .setCancelable(false)
                  .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                      public void onClick(DialogInterface dialog, int id) {
@@ -271,25 +329,56 @@ public class Breviar extends Activity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+      if (resultCode == RESULT_OK) {
+        language = data.getStringExtra("lang");
+        if (language == null) language = "sk";
+        resetLanguage();
+        if (language.equals("hu")) showDialog(DIALOG_HU_BETA);
+      }
+    }
+
+    void updateFullscreen() {
+      WindowManager.LayoutParams params = getWindow().getAttributes();
+      if (fullscreen) {
+        findViewById(R.id.navbar).setVisibility(View.GONE);
+        params.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+      } else {
+        findViewById(R.id.navbar).setVisibility(View.VISIBLE);
+        params.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+      }
+      getWindow().setAttributes(params);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
       // Handle item selection
       switch (item.getItemId()) {
-        case R.id.lang_sk:
-          language = "sk";
-          resetLanguage();
+        case R.id.lang_select:
+          Intent selectLang = new Intent(this, LangSelect.class);
+          startActivityForResult(selectLang, 0);
           return true;
-        case R.id.lang_cz:
-          language = "cz";
-          resetLanguage();
+        case R.id.fullscreen_toggle:
+          fullscreen = !fullscreen;
+          updateFullscreen();
+          syncPreferences();
           return true;
-        case R.id.lang_hu:
-          language = "hu";
-          resetLanguage();
-          showDialog(DIALOG_HU_BETA);
+        case R.id.alarms:
+          startActivity(new Intent("sk.breviar.android.ALARMS"));
           return true;
         default:
           return super.onOptionsItemSelected(item);
       }
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+      if (fullscreen) {
+        menu.findItem(R.id.fullscreen_toggle).setTitle(R.string.fullscreenOff);
+      } else {
+        menu.findItem(R.id.fullscreen_toggle).setTitle(R.string.fullscreenOn);
+      }
+      return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

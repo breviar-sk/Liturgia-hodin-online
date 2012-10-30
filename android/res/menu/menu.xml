@@ -2,18 +2,16 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/lang_cz"
-        android:title="@string/lang_cz">
-<!--        android:icon="@drawable/panel"> //-->
+    <item android:id="@+id/lang_select"
+        android:title="@string/lang_select">
     </item>
 
-    <item android:id="@+id/lang_hu"
-        android:title="@string/lang_hu">
-<!--        android:icon="@drawable/panel"> //-->
+    <item android:id="@+id/fullscreen_toggle"
+        android:title="@string/fullscreenOn">
     </item>
 
-    <item android:id="@+id/lang_sk"
-        android:title="@string/lang_sk">
+    <item android:id="@+id/alarms"
+        android:title="@string/alarms">
 <!--        android:icon="@drawable/panel"> //-->
     </item>
 

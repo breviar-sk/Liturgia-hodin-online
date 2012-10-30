@@ -15,32 +15,23 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical">
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <WebView android:id="@+id/wv"
-            android:layout_width="match_parent" android:layout_height="match_parent"
-            android:paddingLeft="4dip" android_paddingRight="4dip" android:layout_weight="1"/>
+    <TextView android:text="@string/lang_select_title" style="@android:style/TextAppearance.Large"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <LinearLayout android:id="@+id/navbar"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    <Button android:id="@+id/lang_cz" android:text="@string/lang_cz" 
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-      <Button android:id="@+id/pgupBtn" android:text="@string/pgup" style="?android:attr/buttonStyleSmall"
+    <Button android:id="@+id/lang_hu" android:text="@string/lang_hu" 
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <Button android:id="@+id/lang_sk" android:text="@string/lang_sk" 
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/override_locale_check" android:text="@string/override_locale" 
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
   
-      <Button android:id="@+id/todayBtn" android:text="@string/today" style="?android:attr/buttonStyleSmall" 
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
-
-      <Button android:id="@+id/forwardBtn" android:text="@string/forward" style="?android:attr/buttonStyleSmall" 
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
-
-      <Button android:id="@+id/pgdnBtn" android:text="@string/pgdn" style="?android:attr/buttonStyleSmall" 
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
-  
-    </LinearLayout>
-
 
 </LinearLayout>
-
-

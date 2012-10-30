@@ -6,6 +6,39 @@
     <string name="today">Dnes</string>
     <string name="pgup">Hore</string>
     <string name="pgdn">Ďalej</string>
+
+    <string name="lang_select">Jazyk</string>
+    <string name="lang_select_title">Výber jazyka:</string>
+    <string name="lang_cz">Čeština</string>
+    <string name="lang_sk">Slovenčina</string>
+    <string name="lang_hu">Maďarčina</string>
+    <string name="override_locale">Použiť tento jazyk aj v ovládacích prvkoch</string>
+
+    <string name="alarms">Upozornenia</string>
+    <string name="alarms_title">Nastavenie upozornení:</string>
+    <string name="alarmOff">nepripomínať</string>
+
+    <string name="fullscreenOn">Celá obrazovka</string>
+    <string name="fullscreenOff">Zobraz navigáciu</string>
+
+    <string name="inv">Invitatórium</string>
+    <string name="rch">Ranné chvály</string>
+    <string name="vesp">Vešpery</string>
+    <string name="kompl">Kompletórium</string>
+    <string name="read">Posvätné čítanie</string>
+    <string name="h9">Modlitba predpoludním</string>
+    <string name="h12">Modlitba napoludnie</string>
+    <string name="h15">Modlitba popoludní</string>
+
+    <string name="inv_notify">Je čas na invitatórium!</string>
+    <string name="rch_notify">Je čas na ranné chvály!</string>
+    <string name="vesp_notify">Je čas na vešpery!</string>
+    <string name="kompl_notify">Je čas na kompletórium!</string>
+    <string name="read_notify">Je čas na posvätné čítania!</string>
+    <string name="h9_notify">Je čas na modlitbu predpoludním!</string>
+    <string name="h12_notify">Je čas na poludňajšiu modlitbu!</string>
+    <string name="h15_notify">Je čas na popoludňajšiu modlitbu!</string>
+
     <string name="news">
      Novinky vo verzii v1.7.20 - v1.7.25:\n
      - Aktualizácie zo stránky www.breviar.sk\n\n
