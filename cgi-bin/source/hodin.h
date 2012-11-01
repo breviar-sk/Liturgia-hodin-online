@@ -6298,6 +6298,15 @@ const char *text_OKT_19_2[POCET_JAZYKOV + 1] =
  "Sv. Pavla od Køíže, knìze",
  "Keresztes Szent Pál áldozópap",
  };
+const char *text_OKT_21_CZ[POCET_JAZYKOV + 1] = 
+{"",
+ "Bl. Karla Rakouského",
+ "",
+ "",
+ "",
+ "Bl. Karla Rakouského",
+ "",
+ };
 const char *text_OKT_22_CZOP[POCET_JAZYKOV + 1] = 
 {"",
  "",
@@ -6307,13 +6316,13 @@ const char *text_OKT_22_CZOP[POCET_JAZYKOV + 1] =
  "Výroèí posvìcení klášterního kostela",
  "hu_",
  };
-const char *text_OKT_22_HU[POCET_JAZYKOV + 1] = 
+const char *text_OKT_22[POCET_JAZYKOV + 1] = 
 {"",
+ "Bl. Jana Pavla II., papeže",
  "",
  "",
  "",
- "",
- "",
+ "Bl. Jana Pavla II., papeže",
  "Boldog II. János Pál pápa",
  };
 const char *text_OKT_23[POCET_JAZYKOV + 1] = 
