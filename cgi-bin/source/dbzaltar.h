@@ -29,7 +29,6 @@
 #include <string.h>
 #include "myhpage.h" // kvôli hlavicka()
 
-// aby sa dala pouzivat v zaltar();
 short int sviatky_svatych(short int, short int);
 short int sviatky_svatych(short int, short int, short int);
 short int sviatky_svatych(short int, short int, short int, short int); // spustam druhykrat
@@ -37,6 +36,7 @@ short int sviatky_svatych(short int, short int, short int, short int); // spusta
 extern const char *html_title[POCET_JAZYKOV + 1];
 
 void set_popis_dummy(void);
+void _set_prosby_dodatok(short int den, short int force_prve_vespery = NIE);
 
 /* zaltar();
  *
@@ -128,6 +128,8 @@ short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 
 #define ANCHOR_DOPLNKOVA_PSALMODIA "PSCOM"
 #define FILE_DOPLNKOVA_PSALMODIA "pscom.htm"
+
+#define FILE_DODATOK_PROSBY "dodprosby.htm"
 
 #define ANCHOR_CSSR_TITUL "TITUL"
 
@@ -435,9 +437,6 @@ extern const char *text_NOV_02[POCET_JAZYKOV + 1];
 extern const char *text_NOV_03[POCET_JAZYKOV + 1];
 extern const char *text_NOV_04[POCET_JAZYKOV + 1];
 extern const char *text_NOV_05_SK[POCET_JAZYKOV + 1];
-extern const char *text_NOV_06_CZOP[POCET_JAZYKOV + 1];
-extern const char *text_NOV_07_CZOP[POCET_JAZYKOV + 1];
-extern const char *text_NOV_08_CZOP[POCET_JAZYKOV + 1];
 extern const char *text_NOV_09[POCET_JAZYKOV + 1];
 extern const char *text_NOV_10[POCET_JAZYKOV + 1];
 extern const char *text_NOV_11[POCET_JAZYKOV + 1];
@@ -675,5 +674,18 @@ extern const char *text_JUL_18_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUL_24_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUL_24_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUL_27_OP[POCET_JAZYKOV + 1];
+
+extern const char *text_NOV_05_OP[POCET_JAZYKOV + 1];
+extern const char *text_NOV_06_OP[POCET_JAZYKOV + 1];
+extern const char *text_NOV_07_OP[POCET_JAZYKOV + 1];
+extern const char *text_NOV_08_OP[POCET_JAZYKOV + 1];
+extern const char *text_NOV_14_1_OP[POCET_JAZYKOV + 1];
+extern const char *text_NOV_14_2_OP[POCET_JAZYKOV + 1];
+extern const char *text_NOV_19_OP[POCET_JAZYKOV + 1];
+extern const char *text_NOV_24_OP[POCET_JAZYKOV + 1];
+extern const char *text_NOV_27_OP[POCET_JAZYKOV + 1];
+extern const char *text_DEC_01_OP[POCET_JAZYKOV + 1];
+extern const char *text_DEC_16_OP[POCET_JAZYKOV + 1];
+extern const char *text_DEC_22_OP[POCET_JAZYKOV + 1];
 
 #endif // __DBZALTAR_H_
