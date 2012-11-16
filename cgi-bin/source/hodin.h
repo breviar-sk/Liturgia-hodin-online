@@ -185,7 +185,7 @@ const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
  {"zosnulıch", "za zemøelé", "", "", "","Za zemøelé", "halottakért"}, 
  {"svätıch ien: pre tie, èo ili v manelstve", "o svatıch enách (které ily v manelství)", "", "", "", "O svatıch enách – o enì, která ila v manelství", "házas szent asszonyok"}, 
  {"svätıch muov: pre tıch, èo ili v manelstve", "svatıch muích (kterí ili v manelství)", "", "", "", "O svatıch muích – o mui, kterı il v manelství", "házas szent férfiak"}, 
- {"nebra", "nevzít", "do not use", "", "", "nevzít", "mindent sajátból"}
+ {"nebra", "nepouít", "do not use", "", "", "nepouít", "mindent sajátból"}
 };
 
 #define		nazov_spolc(a)	nazov_spolc_jazyk[a][_global_jazyk]
@@ -1950,21 +1950,21 @@ const char *html_text_option1_spolc_svaty_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_option1_vesp_kratsie_prosby[POCET_JAZYKOV + 1] = 
 {"pre vešpery poui kratšie prosby z dodatku", 
- "pro nešpory vzít kratší prosby z dodatku", 
+ "pro nešpory pouít kratší prosby z dodatku", 
  "use shorten prayers for vespers", 
  "", 
  "", 
- "pro veèerní chvály vzít kratší prosby z dodatku", 
+ "pro veèerní chvály pouít kratší prosby z dodatku", 
  "hu_"
 };
 
 const char *html_text_option1_vesp_kratsie_prosby_explain[POCET_JAZYKOV + 1] = 
 {"Pre vešpery poui kratšie prosby z dodatku namiesto tıch, ktoré sú urèené pre vešpery daného dòa.", 
- "Pro nešpory vzít kratší prosby z dodatku místo urèenıch pro danı den.", 
+ "Pro nešpory pouít kratší prosby z dodatku místo urèenıch pro pøíslušnı den.", 
  "Use shorten prayers for vespers instead of those prescribed for the day.", 
  "", 
  "", 
- "Pro veèerní chvály vzít kratší prosby z dodatku místo urèenıch pro danı den.",
+ "Pro veèerní chvály pouít kratší prosby z dodatku místo urèenıch pro pøíslušnı den.",
  "hu_"
 };
 
