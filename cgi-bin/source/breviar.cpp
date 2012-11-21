@@ -346,8 +346,7 @@ char *_global_buf2; // 2006-08-01: vytvorenÈ; t˙to premenn˙ tieû alokujeme
 
 short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydefs.h
 
-// globalna premenna, do ktorej sa ukladaju info o analyzovanom dni | pouziva ju void nove_rozbor_dna() funkcia
-
+// globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
 _struct_dm *_global_den_ptr;
 /*_struct_dm _global_den;*/
 #define _global_den (*_global_den_ptr)
@@ -2908,12 +2907,17 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		zobrazit = ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST) == BIT_OPT_1_ZOBRAZ_SPOL_CAST);
 		if(zobrazit == ANO){
 			// Ôalöie rozhodovanie
+			Log("_global_poradie_svaty == %d...\n", _global_poradie_svaty);
 			// 2012-08-21: pre æubovoænÈ aj z·v‰znÈ spomienky nem· v˝znam | Ë. 236 VSLH: V modlitbe cez deÚ, Ëiûe predpoludnÌm, napoludnie a popoludnÌ, a v kompletÛriu sa neberie niË z ofÌcia o sv‰tom, vöetko je zo vöednÈho dÚa.
 			if(_global_poradie_svaty == 0){
 				zobrazit = (((_global_den.typslav != SLAV_LUB_SPOMIENKA) && (_global_den.typslav != SLAV_SPOMIENKA)) || ((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI) && (_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM)));
+				Log("_global_den.spolcast == %d\n", _global_den.spolcast);
+				Log("zobrazit == %d...\n", zobrazit);
 				// napokon rozkÛdujeme, Ëo je v _global_den.spolcast
 				sc = _decode_spol_cast(_global_den.spolcast);
+				Log("sc.a1 == %d (%s)...\n", sc.a1, nazov_spolc(sc.a1));
 				zobrazit &= ((sc.a1 != MODL_SPOL_CAST_NEURCENA) && (sc.a1 != MODL_SPOL_CAST_NEBRAT));
+				Log("zobrazit == %d...\n", zobrazit);
 			}
 			// 2012-09-07: pre miestne sviatky m· zmysel pre MCD (nie pre kompletÛrium)
 			else{
@@ -5321,13 +5325,11 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok){
 #define COLOR_RED   3
 #define COLOR_BLACK 2
 
-// lokalna premenna, do ktorej sa ukladaju info o analyzovanom dni pouziva ju void nove_rozbor_dna() funkcia
+// lokalna premenna, do ktorej sa ukladaju info o analyzovanom dni
 // 2012-10-12: z funkcie init_global_string() som ju spravil glob·lnou kvÙli tomu, aby sme ju mohli pouûÌvaù v 
 _struct_dm _local_den;
 
 short int init_global_string(short int typ, short int poradie_svateho, short int modlitba, short int aj_citanie = NIE) {
-	// 2003-07-07: obavam sa, ze nove_rozbor_dna() je alebo _rozbor_dna alebo _rozbor_dna_s_modlitbou... lebo nic take neexistuje 
-	// skoda, ze som neaktualizoval aj komentare. teraz je ten odkaz nezrozumitelny.
 	_INIT_DM(_local_den); // 2003-08-07 pridana
 
 	char pom[MAX_STR], pom2[MAX_STR], pom3[SMALL]; // pom2 doplnenÈ 2011-02-02; pom3 doplnenÈ 2011-03-23
@@ -6347,6 +6349,14 @@ short int _rozbor_dna_s_modlitbou(_struct_den_mesiac datum, short int rok, short
 		Log("init_global_string() returned FAILURE, so returning FAILURE...\n");
 		return FAILURE;
 	}
+
+	// 2012-11-20: doplnenÈ podæa vzoru v rozbor_dna_s_modlitbou()
+	Log("nastavujem _global_string_modlitba... _rozbor_dna_s_modlitbou()\n");
+	init_global_string_modlitba(_global_modlitba);
+	Log("nastavujem _global_string_podnadpis... _rozbor_dna_s_modlitbou()\n");
+	init_global_string_podnadpis(_global_modlitba);
+	Log("nastavujem _global_string_spol_cast... _rozbor_dna_s_modlitbou()\n");
+	ret_sc = init_global_string_spol_cast(((_global_modlitba == MODL_DETAILY) || (_global_modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], poradie_svateho);
 
 	// urËenie d·t k modlitbe
 	Log("spustam liturgicke_obdobie(%s, %d. tyzden, %s, %d. tyzden zaltara; svaty: %d)...\n", nazov_obdobia_ext(_global_den.litobd),// nazov_obdobia_
@@ -10261,7 +10271,7 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 	short int ret = SUCCESS;
 
 	// lokalne premenne, v ktorych sa pamata to, co vrati _rozbor_dna()
-	// lokalna premenna, do ktorej sa ukladaju info o analyzovanom dni pouziva ju void nove_rozbor_dna() funkcia
+	// lokalna premenna, do ktorej sa ukladaju info o analyzovanom dni
 	_struct_dm _local_den; // 2012-10-12: uû je glob·lna 
 	// 2012-10-14: hoci jestvuje aj glob·lna premenn·, t· sa prepl·cava napr. v init_global_string(), Ëo bolo zle (negenerovali sa spr·vne prvÈ veöpery), preto vr·ten· sem sp‰ù lok·lna premenn·
 	_INIT_DM(_local_den); // 2003-08-07 pridana
@@ -10337,9 +10347,10 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 	Log("-- rozbor_dna_s_modlitbou(int, int, int, int, int): begin (%d.%d %d, %d; %d)\n", den, mesiac, rok, modlitba, poradie_svaty);
 	_struct_den_mesiac datum;
 
+	short int svaty_dalsi_den = UNKNOWN_PORADIE_SVATEHO;
 	if((modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM)){
 		// najprv analyzujem nasledujuci den - kvoli prvym vesperam resp. kompletoriu
-		Log("kedze modlitba je vespery alebo kompletorium, robim tuto cast...\n");
+		Log("kedze modlitba je vespery alebo kompletorium, robim tuto cast... (naplnenie _local_den)\n");
 		_local_rok = rok;
 		// do premennej datum dame datum nasledujuceho dna
 		if(den == pocet_dni[mesiac - 1]){
@@ -10361,7 +10372,7 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 		LOG_ciara;
 
 		// 2009-04-02: kvÙli öpecialite: 8.11.2008 na veöpery a kompletÛrium treba braù pre sviatok 9.11.
-		short int svaty_dalsi_den = UNKNOWN_PORADIE_SVATEHO;
+		// 2012-11-20: nejak˝ veæk˝ hack...
 		short int denvt_dalsi_den = den_v_tyzdni(datum.den, datum.mesiac, _local_rok);
 		if((datum.den == 9) && (datum.mesiac == MES_NOV + 1) && (denvt_dalsi_den == DEN_NEDELA)){
 			Log("˙prava kvÙli rozliËn˝m sl·veniam [9. november, ktor˝ padne na nedeæu]: svaty_dalsi_den = 1...\n");
@@ -10374,7 +10385,7 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 			Log("_rozbor_dna_s_modlitbou() pre nasledujuci den returned FAILURE, so...\n");
 			Log("-- rozbor_dna_s_modlitbou(int, int, int, int): uncomplete end\n");
 			goto LABEL_s_modlitbou_DEALLOCATE;
-		}/* ret == FAILURE */
+		}// ret == FAILURE
 		Log("analyza nasledujuceho dna (%d. %s %d) skoncila.\n", datum.den, nazov_mesiaca(datum.mesiac - 1), rok);
 		LOG_ciara;
 
@@ -10427,19 +10438,17 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 	/* 2009-03-19: debugovanie kvÙli kompletÛriu po prv˝ch veöper·ch 18. marca - sv. Jozefa */
 	// Log("(2) _global_modl_prve_kompletorium:\n"); Log(_global_modl_prve_kompletorium);
 
+	Log("nastavujem _global_string_modlitba...\n");
+	init_global_string_modlitba(modlitba);
+	Log("nastavujem _global_string_podnadpis...\n");
+	init_global_string_podnadpis(modlitba);
+	Log("nastavujem _global_string_spol_cast...\n");
+	ret_sc = init_global_string_spol_cast(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty);
+
 	// 2011-03-22: doplnenÈ; boli explicitne vyûiadanÈ prvÈ veöpery resp. kompletÛrium po prv˝ch veöper·ch
-	// 2011-10-04: neprilepujeme do _global_string, ale do novej premennej (bez ohæadu na modlitbu)
 	if((modlitba == MODL_PRVE_VESPERY) || (modlitba == MODL_PRVE_KOMPLETORIUM)){
 		Log("-- explicitne vyûiadanÈ MODL_PRVE_VESPERY || MODL_PRVE_KOMPLETORIUM\n");
-		/*
-		// sprintf(pom, " (%s)", nazov_Modlitby(_global_modlitba));
-		// Log("pom == %s -- rozbor_dna_s_modlitbou()...\n", pom);
-		// strcat(_global_string, pom);
-		*/
 	}// if((modlitba == MODL_PRVE_VESPERY) || (modlitba == MODL_PRVE_KOMPLETORIUM))
-	init_global_string_modlitba(modlitba);
-	init_global_string_podnadpis(modlitba);
-	ret_sc = init_global_string_spol_cast(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty);
 
 	// ak ma nasledujuci den prioritu pred dnesnym dnom
 	if((modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM)){
@@ -10522,13 +10531,12 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 				Log("-- MODL_DRUHE_KOMPLETORIUM\n");
 			}
 			// Spomienka vsetkych vernych zosnulych -- nevypisem, ze su druhe vespery -- zapracovanÈ do init_global_string_modlitba()
-			// 2011-10-04: neprilepujeme do _global_string, ale do novej premennej
-			/*
-			// sprintf(pom, " (%s)", nazov_Modlitby(_global_modlitba));
-			// strcat(_global_string, pom);
-			*/
+
+			Log("nastavujem _global_string_modlitba... if((_global_den.smer < 5) || ...\n");
 			init_global_string_modlitba(modlitba);
+			Log("nastavujem _global_string_podnadpis... if((_global_den.smer < 5) || ...\n");
 			init_global_string_podnadpis(modlitba);
+			Log("nastavujem _global_string_spol_cast... if((_global_den.smer < 5) || ...\n");
 			ret_sc = init_global_string_spol_cast(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty);
 		}// _global_den ma dvoje vespery/kompletorium, teda musime brat DRUHE
 
@@ -10565,6 +10573,8 @@ LABEL_ZMENA:
 				_global_modl_prve_vespery = _local_modl_prve_vespery;
 				_global_modl_prve_kompletorium = _local_modl_prve_kompletorium;
 				//??? -- divna pasaz!
+				// 2012-11-20: doplnenÈ priradenie, lebo sa zmenila premenn· _global_den
+				_global_poradie_svaty = svaty_dalsi_den;
 
 				// 2012-11-08: pretoûe sl·vnosù alebo nedeæa m· pre prvÈ veöpery nastvenÈ vlastnÈ prosby, je potrebnÈ op‰tovne nastaviù pre veöpery, ak je zvolen· t·to moûnosù, kratöie prosby z dodatku (moûno ich pouûiù v ktor˝koævek deÚ v roku)
 				if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_VESP_KRATSIE_PROSBY) == BIT_OPT_1_VESP_KRATSIE_PROSBY){
@@ -10589,16 +10599,15 @@ LABEL_ZMENA:
 					_global_modl_vespery = _global_modl_prve_vespery;
 					_global_modl_kompletorium = _global_modl_prve_kompletorium;
 				}
+
+				Log("v Ëasti LABEL_ZMENA nastavujem _global_string...\n");
 				mystrcpy(_global_string, _local_string, MAX_GLOBAL_STR); // veækosù 2011-09-27 opraven· podæa _global_string
-				// 2011-10-04: neprilepujeme do _global_string, ale do novej premennej
-				/*
-				// sprintf(pom, " (%s)", nazov_Modlitby(_global_modlitba));
-				// Log("pom == %s -- rozbor_dna_s_modlitbou()...\n", pom);
-				// strcat(_global_string, pom);
-				*/
+				Log("v Ëasti LABEL_ZMENA nastavujem _global_string_modlitba...\n");
 				init_global_string_modlitba(modlitba);
+				Log("v Ëasti LABEL_ZMENA nastavujem _global_string_podnadpis...\n");
 				init_global_string_podnadpis(modlitba);
-				ret_sc = init_global_string_spol_cast(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty);
+				Log("v Ëasti LABEL_ZMENA nastavujem _global_string_spol_cast...\n"); // potrebnÈ pouûiù svaty_dalsi_den
+				ret_sc = init_global_string_spol_cast(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], _global_poradie_svaty /* svaty_dalsi_den */);
 			}
 		}// _local_den ma dvoje vespery/kompletorium, teda musime brat PRVE
 	}// vespery alebo kompletorium, zistovanie priority
@@ -12241,16 +12250,11 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		return ret;
 	}
 
-	if((_global_modlitba == MODL_PRVE_VESPERY) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_VESPERY) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM)){
-		// 2011-10-04: neprilepujeme do _global_string, ale do novej premennej
-		/*
-		sprintf(pom, " (%s)", nazov_Modlitby(_global_modlitba));
-		Log("pom == %s -- _main_liturgicke_obdobie()...\n", pom);
-		strcat(_global_string, pom);
-		*/
-	}
+	Log("nastavujem _global_string_modlitba...\n");
 	init_global_string_modlitba(_global_modlitba);
+	Log("nastavujem _global_string_podnadpis...\n");
 	init_global_string_podnadpis(_global_modlitba);
+	Log("nastavujem _global_string_spol_cast...\n");
 	ret_sc = init_global_string_spol_cast(((_global_modlitba == MODL_DETAILY) || (_global_modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], poradie_svateho);
 
 	_export_heading_center(_global_string);

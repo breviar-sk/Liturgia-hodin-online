@@ -72,7 +72,7 @@ extern short int _global_pocet_navigacia; // 2011-07-03: poèet prejdených/spraco
 extern short int index_pre_mesiac_otvoreny;
 // extern short int export_monthly_druh;
 
-// globalna premenna, do ktorej sa ukladaju info o analyzovanom dni pouziva ju void nove_rozbor_dna() funkcia
+// globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
 extern _struct_dm *_global_den_ptr;
 // _struct_dm _global_den;
 #define _global_den (*_global_den_ptr)

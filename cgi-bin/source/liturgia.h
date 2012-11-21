@@ -1136,8 +1136,7 @@ typedef struct lrok _struct_lrok;
 //---------------------------------------------------------------------
 // globalne premenne -- su definovane v dnes.cpp (18/02/2000A.D.)
 
-// globalna premenna, do ktorej sa ukladaju info o analyzovanom dni pouziva ju void nove_rozbor_dna() funkcia
-
+// globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
 extern _struct_dm *_global_den_ptr;
 // extern _struct_dm _global_den;
 #define _global_den (*_global_den_ptr)

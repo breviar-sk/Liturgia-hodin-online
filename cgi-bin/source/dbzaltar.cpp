@@ -28898,31 +28898,24 @@ label_8_DEC:
 	}
 	else{
 		Log("slávenie je urèené, poèet == %d\n", pocet);
-		Log("\tštruktúra sc == ({%s, %s, %s})\n",
-			nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
+		Log("\tštruktúra sc == ({%s, %s, %s})\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
 
+		Log(_global_svaty1);
 		_global_svaty1.den = den;
 		_global_svaty1.mesiac = mesiac;
-		Log("  %d. %d: %s (typslav = %d) [smer = %d]\n", _global_svaty1.den,	_global_svaty1.mesiac, _global_svaty1.meno,	_global_svaty1.typslav, _global_svaty1.smer);
-#ifdef DETAIL_LOG_SVATY
-		Log(_global_svaty1);
-#endif
+		Log("  %d. %d: %s (typslav = %d) [smer = %d]\n", _global_svaty1.den, _global_svaty1.mesiac, _global_svaty1.meno, _global_svaty1.typslav, _global_svaty1.smer);
 		// mozno je druha lubovolna spomienka
 		if(pocet > 1){
+			Log(_global_svaty2);
 			_global_svaty2.den = den;
 			_global_svaty2.mesiac = mesiac;
-			Log("  %d. %d: %s (typslav = %d) [smer = %d]\n", _global_svaty2.den,	_global_svaty2.mesiac, _global_svaty2.meno, _global_svaty2.typslav, _global_svaty2.smer);
-#ifdef DETAIL_LOG_SVATY
-			Log(_global_svaty2);
-#endif
+			Log("  %d. %d: %s (typslav = %d) [smer = %d]\n", _global_svaty2.den, _global_svaty2.mesiac, _global_svaty2.meno, _global_svaty2.typslav, _global_svaty2.smer);
 			// este dalsi
 			if(pocet > 2){
+				Log(_global_svaty3);
 				_global_svaty3.den = den;
 				_global_svaty3.mesiac = mesiac;
-				Log("  %d. %d: %s (typslav = %d) [smer = %d]\n", _global_svaty3.den,	_global_svaty3.mesiac, _global_svaty3.meno,	_global_svaty3.typslav, _global_svaty3.smer);
-#ifdef DETAIL_LOG_SVATY
-				Log(_global_svaty3);
-#endif
+				Log("  %d. %d: %s (typslav = %d) [smer = %d]\n", _global_svaty3.den, _global_svaty3.mesiac, _global_svaty3.meno, _global_svaty3.typslav, _global_svaty3.smer);
 			}
 		}
 	}
