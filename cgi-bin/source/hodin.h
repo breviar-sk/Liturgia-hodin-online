@@ -1091,7 +1091,7 @@ const char *html_button_dnes[POCET_JAZYKOV + 1] = {"dnes", "dnes", "today", "hod
 const char *html_button_Dnes[POCET_JAZYKOV + 1] = {"Dnes", "Dnes", "Today", "Hodie", "", "Dnes", "Ma"};
 const char *html_button_hore[POCET_JAZYKOV + 1] = {"^ ", "^ ", "^ ", "^ ", "^ ", "^ ", "^ "};
 
-const char *html_button_tento_den[POCET_JAZYKOV + 1] = {"tento deò", "tento den", "this day", "hodie", "", "tento den", "TODO:THIS DAY"};
+const char *html_button_tento_den[POCET_JAZYKOV + 1] = {"tento deò", "tento den", "this day", "hodie", "", "tento den", "ez a nap"};
 
 // basic words: day, month, year
 const char *html_text_den[POCET_JAZYKOV + 1] = {"deò", "den", "day", "die", "", "den", "nap"};
@@ -1877,7 +1877,7 @@ const char *html_text_option_zobrazit_kratsie_prosby[POCET_JAZYKOV + 1] =
  "use shorten prayers",
  "",
  "zobrazit kratší prosby z dodatku", 
- "hu_"
+ "használja a rövidebb könyörgéseket a függelékbõl"
 };
 const char *html_text_option_skryt_kratsie_prosby[POCET_JAZYKOV + 1] = 
 {"nepoui kratšie prosby z dodatku", 
@@ -1886,7 +1886,7 @@ const char *html_text_option_skryt_kratsie_prosby[POCET_JAZYKOV + 1] =
  "do not use shorten prayers",
  "",
  "nezobrazit kratší prosby z dodatku", 
- "hu_"
+ "ne használja a rövidebb könyörgéseket a függelékbõl"
 };
 
 const char *html_text_option1_prosby_zvolanie[POCET_JAZYKOV + 1] = 
@@ -1955,7 +1955,7 @@ const char *html_text_option1_vesp_kratsie_prosby[POCET_JAZYKOV + 1] =
  "", 
  "", 
  "pro veèerní chvály pouít kratší prosby z dodatku", 
- "hu_"
+ "Esti dicséretre használja a rövidebb közbenjáró fohászokat a függelékbõl"
 };
 
 const char *html_text_option1_vesp_kratsie_prosby_explain[POCET_JAZYKOV + 1] = 
@@ -1965,7 +1965,7 @@ const char *html_text_option1_vesp_kratsie_prosby_explain[POCET_JAZYKOV + 1] =
  "", 
  "", 
  "Pro veèerní chvály pouít kratší prosby z dodatku místo urèenıch pro pøíslušnı den.",
- "hu_"
+ "Esti dicséretre használja a rövidebb közbenjáró fohászokat a függelékbõl, a napra meghatározott helyett."
 };
 
 const char *html_text_option1_vigilia[POCET_JAZYKOV + 1] = 
