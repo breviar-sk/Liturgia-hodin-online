@@ -387,6 +387,14 @@ public class Breviar extends Activity {
         wv.goBack();
         return true;
       }
+      if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP) && BreviarApp.getVolButtons(this)) {
+        wv.pageUp(false);
+        return true;
+      }
+      if ((keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) && BreviarApp.getVolButtons(this)) {
+        wv.pageDown(false);
+        return true;
+      }
       return super.onKeyDown(keyCode, event);
     }
 }

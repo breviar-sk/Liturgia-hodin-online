@@ -36,6 +36,18 @@ public class BreviarApp extends Application {
     initLocale(ctx);
   }
 
+  static public boolean getVolButtons(Context ctx) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    return settings.getBoolean("vol_buttons", false);
+  }
+
+  static public void setVolButtons(Context ctx, boolean use_for_scrolling) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    SharedPreferences.Editor editor = settings.edit();
+    editor.putBoolean("vol_buttons", use_for_scrolling);
+    editor.commit();
+  }
+
   static public void initLocale(Context ctx) {
     Configuration cfg = new Configuration();
     if (getOverrideLocale(ctx)) {

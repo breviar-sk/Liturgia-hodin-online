@@ -1883,8 +1883,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							}// !(_global_poradie_svaty > 0)
 							// teraz vytvorÌme reùazec s options
 							prilep_request_options(pom, pompom);
+
+							// v hyperlinku prilepÌme aj #ZALM95 (do z95.htm a ostatn˝ch sme doplnili <a name...>) // napokon prilepÌme #anchor // 2012-10-01 -> 2012-11-23 podobne ako v _export_link_show_hide()
+							sprintf(pompom, "#%s", PARAM_ZALM95);
+							strcat(pom, pompom);
+
 							// export hyperlinku
-							// ToDo: prÌpadne v hyperlinku daù aj #z95 a do z95.htm doplniù <a name>...
 							if(query_type == PRM_DATUM){
 								Export("%s\n<"HTML_SPAN_RED_SMALL">\n<a href=\"%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%s%s\"",
 									specific_string,

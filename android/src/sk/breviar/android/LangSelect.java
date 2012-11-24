@@ -50,5 +50,15 @@ public class LangSelect extends Activity {
       });
 
       override_check.setChecked(BreviarApp.getOverrideLocale(getApplicationContext()));
+
+      CheckBox vol_buttons_check = (CheckBox)findViewById(R.id.vol_buttons_check);
+
+      vol_buttons_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          BreviarApp.setVolButtons(getApplicationContext(), ((CheckBox)v).isChecked());
+        }
+      });
+
+      vol_buttons_check.setChecked(BreviarApp.getVolButtons(getApplicationContext()));
     }
 }

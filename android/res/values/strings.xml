@@ -2,12 +2,13 @@
 <resources>
     <string name="version">v1.7.25</string>
 
-    <string name="lang_select">Language</string>
+    <string name="lang_select">Settings</string>
     <string name="lang_select_title">Select language:</string>
     <string name="lang_cz">Czech</string>
     <string name="lang_sk">Slovak</string>
     <string name="lang_hu">Hungarian</string>
     <string name="override_locale">Override system-wide language settings</string>
+    <string name="vol_buttons">Use volume buttons for scrolling</string>
 
     <string name="alarms">Notifications</string>
     <string name="alarms_title">Notification settings:</string>
@@ -52,15 +53,14 @@
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
     <string name="news">
-     News in v1.7.20 - v1.7.25:\n
+     News in v1.8.0:\n
+     - Support for notifications\n
+     - Volume buttons can be used for scrolling\n
+       (see setting)\n
+     - Fullscreen mode\n
+     - System-wide locale can be overriden\n
      - Updates from www.breviar.sk\n\n
-     News in v1.7.19:\n
-     - Updates from www.breviar.sk\n
-     - Better rotation handling\n\n
-     News in v1.7.18:\n
-     - Updates from www.breviar.sk\n
-     - More robust webserver restarts\n\n
-     News in v1.7.14 - v1.7.17:\n
+     News in v1.7.20 - v1.7.25:\n
      - Updates from www.breviar.sk\n\n
     </string>
 </resources>

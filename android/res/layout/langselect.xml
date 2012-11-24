@@ -33,5 +33,7 @@
     <CheckBox android:id="@+id/override_locale_check" android:text="@string/override_locale" 
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
   
+    <CheckBox android:id="@+id/vol_buttons_check" android:text="@string/vol_buttons"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
 </LinearLayout>
