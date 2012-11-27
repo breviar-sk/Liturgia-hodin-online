@@ -991,7 +991,8 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define ELEM_END(elem)       "</"elem">"
 
 #define ELEMID_BEGIN(elem)   "<"elem" Id=\"%d\">"
-#define ELEMVAL_BEGIN(elem)  "<"elem" Value=\"%d\">"
+#define ELEMVAL_BEGIN(elem)  "<"elem" Value=\"%d\" Name=\"%s\" ForceName=\"%s\">"
+#define ELEMOPT_BEGIN(elem)  "<"elem" Id=\"%d\" ForceName=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_MODL_OPTF_0_VERSE
 
 #endif // __MYDEFS_H_
 

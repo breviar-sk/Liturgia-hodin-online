@@ -27734,8 +27734,8 @@ label_25_MAR:
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_full_okrem_prosieb_a_hymnu(modlitba);
 						}
-						_global_svaty1.typslav = SLAV_SVIATOK;
-						_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+						_global_svaty1.typslav = SLAV_SPOMIENKA;
+						_global_svaty1.smer = 10; // povinné spomienky pod¾a všeobecného kalendára
 						mystrcpy(_global_svaty1.meno, text_NOV_24_OP[_global_jazyk], MENO_SVIATKU);
 						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
 						_global_svaty1.farba = LIT_FARBA_BIELA;
