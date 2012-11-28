@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="lang_sk">SK</string>
-    <string name="lang_cz">CZ</string>
-    <string name="lang_hu">HU</string>
+    <string name="lang_select">Beállítás</string>
+    <string name="lang_select_title">Nyelvválasztás:</string>
+    <string name="lang_cz">Cseh</string>
+    <string name="lang_sk">Szlovák</string>
+    <string name="lang_hu">Magyar</string>
+    <string name="override_locale">Rendszerszintű nyelvi beállítások felülírása</string>
+    <string name="vol_buttons">Hangerőt állító gombok használata görgetéshez</string>
+
+    <string name="alarms">Értesítések</string>
+    <string name="alarms_title">Értesítések beállítása:</string>
+    <string name="alarmOff">letitlva</string>
+
+    <string name="fullscreenOn">Teljes képernyő</string>
+    <string name="fullscreenOff">Teljes képernyő elhagyása</string>
+
+    <string name="inv">Imádságra hívás</string>
+    <string name="rch">Reggeli dicséret</string>
+    <string name="vesp">Esti dicséret</string>
+    <string name="kompl">Befejező imaóra</string>
+    <string name="read">Olvasmányos imaóra</string>
+    <string name="h9">Napközi imaóra, délelőtt</string>
+    <string name="h12">Napközi imaóra, délben</string>
+    <string name="h15">Napközi imaóra, délután</string>
+
+    <string name="inv_notify">Itt az idő az Imádságra hívásra!</string>
+    <string name="rch_notify">Itt az idő a Reggeli dicséretre!</string>
+    <string name="vesp_notify">Itt az idő az Esti dicséretre!</string>
+    <string name="kompl_notify">Itt az idő a Befejező imaórára!</string>
+    <string name="read_notify">Itt az idő az Olvasmányos imaórára!</string>
+    <string name="h9_notify">Itt az idő a délelőtti napközi imaórára!</string>
+    <string name="h12_notify">Itt az idő a déli napközi imaórára!</string>
+    <string name="h15_notify">Itt az idő a délután napközi imaórára!</string>
+
     <string name="hu_beta_warning">
-    Hungarian version is in beta - thus, many source texts are not yet
-    available. Also some special cases for Hungarian liturgical calendar are
-    not yet finished. Expected date of finishing: mid of 2012. If you may help
-    us with completing HTML source files, please contact us (HTML base
-    knowledge is required).\n\n
+    Hungarian version is almost complete. Some special cases 
+    for Hungarian liturgical calendar are not yet finished. 
+    Expected date of finishing: end of 2012.\n\n
 
     Best wishes,\n
     Juraj Vidéky (videky@breviar.sk), Richard Královič (riso@ksp.sk)
@@ -20,4 +48,16 @@
     <string name="today">Ma</string>
     <string name="pgup">Fel</string>
     <string name="pgdn">Le</string>
+	
+	<string name="news">
+     Újdonságok az 1.8.0 verzióban:\n
+     - Értesítések lehetősége\n
+     - A hangerő gombokkal lehet görgetni is\n
+       (lásd a beállításoknál)\n
+     - Teljes képernyős mód\n
+     - Rendszer szintű beállítások felülírása\n
+     - Frissítések zsolozsma.katolikus.hu-ról\n\n
+     Újdonságok az 1.7.20 - 1.7.25 verziókban:\n
+     - Frissítések a zsolozsma.katolikus.hu-ról\n\n
+    </string>
 </resources>
