@@ -49,7 +49,11 @@
     <string name="pgup">Fel</string>
     <string name="pgdn">Le</string>
 	
-	<string name="news">
+     <string name="news">
+     Újdonságok az 1.8.1 verzióban:\n
+     - Updates from www.breviar.sk\n
+     - Do not play sound when scrolling with\n
+       volume keys\n\n
      Újdonságok az 1.8.0 verzióban:\n
      - Értesítések lehetősége\n
      - A hangerő gombokkal lehet görgetni is\n
@@ -57,7 +61,5 @@
      - Teljes képernyős mód\n
      - Rendszer szintű beállítások felülírása\n
      - Frissítések zsolozsma.katolikus.hu-ról\n\n
-     Újdonságok az 1.7.20 - 1.7.25 verziókban:\n
-     - Frissítések a zsolozsma.katolikus.hu-ról\n\n
     </string>
 </resources>

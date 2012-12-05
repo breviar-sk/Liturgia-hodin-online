@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -222,7 +223,7 @@ public class Breviar extends Activity {
     protected void onResume() {
       if (appEventId < BreviarApp.getEventId()) {
         appEventId = BreviarApp.getEventId();
-        recreate();
+        if (Build.VERSION.SDK_INT >= 11) recreate();
       }
       super.onResume();
     }
@@ -396,5 +397,16 @@ public class Breviar extends Activity {
         return true;
       }
       return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+      if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP) && BreviarApp.getVolButtons(this)) {
+        return true;
+      }
+      if ((keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) && BreviarApp.getVolButtons(this)) {
+        return true;
+      }
+      return super.onKeyUp(keyCode, event);
     }
 }
