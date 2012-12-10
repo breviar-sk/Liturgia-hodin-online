@@ -7016,7 +7016,7 @@ const char *text_DEC_07[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Ambrože, biskupa a uèitele Církve",
- "Szent Ambrus püspök és egháztanító",
+ "Szent Ambrus püspök és egyháztanító",
  };
 const char *text_DEC_08[POCET_JAZYKOV + 1] = 
 {"Nepoškvrnené poèatie Panny Márie",
