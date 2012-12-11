@@ -1120,6 +1120,26 @@ void _set_evanjelium(short int modlitba, const char *file, const char *anchor){
 	}// switch(modlitba)
 }
 
+// chválospevy pre predåžené slávenie vigílií
+
+void _set_chvalospev_vig_adv(short int modlitba){
+	_set_chvalospev1(modlitba, "ch_iz40.htm", "CHVAL_IZ40V");
+	_set_chvalospev2(modlitba, "ch_iz42.htm", "CHVAL_IZ42V");
+	_set_chvalospev3(modlitba, "ch_iz49.htm", "CHVAL_IZ49");
+}// _set_chvalospev_vig_adv()
+
+void _set_chvalospev_vig_vian(short int modlitba){
+	_set_chvalospev1(modlitba, "ch_iz26.htm", "CHVAL_IZ26V");
+	_set_chvalospev2(modlitba, "ch_iz40.htm", "CHVAL_IZ40V1");
+	_set_chvalospev3(modlitba, "ch_iz66.htm", "CHVAL_IZ66V");
+}// _set_chvalospev_vig_vian()
+
+void _set_chvalospev_vig_ocr(short int modlitba){
+	_set_chvalospev1(modlitba, "ch_iz33.htm", "CHVAL_IZ33V1");
+	_set_chvalospev2(modlitba, "ch_iz33.htm", "CHVAL_IZ33V");
+	_set_chvalospev3(modlitba, "ch_sir36.htm", "CHVAL_SIR36V");
+}// _set_chvalospev_vig_ocr()
+
 //---------------------------------------------------------------------
 
 // files - nazvy suborov pre zaltar styroch tyzdnov
@@ -4152,9 +4172,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
 				_set_antifona_vig(modlitba, _file_pc, _anchor);
 				set_LOG_litobd_pc;
-				_set_chvalospev1(modlitba, "ch_iz40.htm", "CHVAL_IZ40V");
-				_set_chvalospev2(modlitba, "ch_iz42.htm", "CHVAL_IZ42V");
-				_set_chvalospev3(modlitba, "ch_iz49.htm", "CHVAL_IZ49");
+				_set_chvalospev_vig_adv(modlitba);
 				sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
 				_set_evanjelium(modlitba, _file_pc, _anchor);
 				set_LOG_litobd_pc;
@@ -4550,9 +4568,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
 				_set_antifona_vig(modlitba, _file_pc, _anchor);
 				set_LOG_litobd_pc;
-				_set_chvalospev1(modlitba, "ch_iz40.htm", "CHVAL_IZ40V");
-				_set_chvalospev2(modlitba, "ch_iz42.htm", "CHVAL_IZ42V");
-				_set_chvalospev3(modlitba, "ch_iz49.htm", "CHVAL_IZ49");
+				_set_chvalospev_vig_adv(modlitba);
 				sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
 				_set_evanjelium(modlitba, _file_pc, _anchor);
 				set_LOG_litobd_pc;
@@ -5180,7 +5196,18 @@ label_24_DEC:
 			_vian1_modlitba;
 
 			if(litobd == OBD_OKTAVA_NARODENIA){
-				if(_global_den.den == 25){  // narodenie Pana
+				if(_global_den.den == 25){  // narodenie Pána
+					Log("narodenie Pána...\n");
+					// 2012-12-10: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní | modlitba = MODL_POSV_CITANIE;
+					modlitba = MODL_POSV_CITANIE;
+					sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
+					_set_antifona_vig(modlitba, _file_pc, _anchor);
+					set_LOG_litobd_pc;
+					_set_chvalospev_vig_vian(modlitba);
+					sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
+					_set_evanjelium(modlitba, _file_pc, _anchor);
+					set_LOG_litobd_pc;
+
 					// kompletórium
 					modlitba = MODL_PRVE_KOMPLETORIUM;
 					_set_kompletorium_slavnost(modlitba, litobd);
@@ -5206,7 +5233,7 @@ label_24_DEC:
 					_set_zalmy_narodenie(modlitba);
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_narodenie(modlitba);
-				}
+				}// 25. 12. // 25DEC
 
 				// ranné chvály
 				modlitba = MODL_RANNE_CHVALY;
@@ -5276,6 +5303,14 @@ label_24_DEC:
 				_vlastne_slavenie_ine_1citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_ine_2citanie(_anchor_vlastne_slavenie);
 				_bohorod_modlitba;
+				// 2012-12-10: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní | modlitba = MODL_POSV_CITANIE;
+				sprintf(_anchor, "%s%c_%s", _anchor_vlastne_slavenie, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
+				_set_antifona_vig(modlitba, _file_pc, _anchor);
+				set_LOG_litobd_pc;
+				_set_chvalospev_vig_vian(modlitba);
+				sprintf(_anchor, "%s%c_%s", _anchor_vlastne_slavenie, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
+				_set_evanjelium(modlitba, _file_pc, _anchor);
+				set_LOG_litobd_pc;
 
 				// doplnené modlitby cez deò
 				modlitba = MODL_PREDPOLUDNIM;
@@ -5326,6 +5361,17 @@ label_24_DEC:
 				_vian1_2ne_kcitanie;
 				_vian1_kresponz;
 				_vian1_2ne_modlitba;
+
+				// 2012-12-10: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní | modlitba = MODL_POSV_CITANIE;
+				modlitba = MODL_POSV_CITANIE;
+				sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
+				_set_antifona_vig(modlitba, _file_pc, _anchor);
+				set_LOG_litobd_pc;
+				_set_chvalospev_vig_vian(modlitba);
+				sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
+				_set_evanjelium(modlitba, _file_pc, _anchor);
+				set_LOG_litobd_pc;
+
 			}// druha nedela po narodeni pana - 2. NEDE¼A PO NARODENÍ PÁNA
 			else if(_global_den.denvr == _global_r._SVATEJ_RODINY.denvr){
 				// sviatok svatej rodiny
@@ -5378,6 +5424,15 @@ label_24_DEC:
 				_vlastne_slavenie_ine_1citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_ine_2citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+				// 2012-12-10: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní | modlitba = MODL_POSV_CITANIE;
+				sprintf(_anchor, "%s%c_%s", _anchor_vlastne_slavenie, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
+				_set_antifona_vig(modlitba, _file_pc, _anchor);
+				set_LOG_litobd_pc;
+				_set_chvalospev_vig_vian(modlitba);
+				sprintf(_anchor, "%s%c_%s", _anchor_vlastne_slavenie, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
+				_set_evanjelium(modlitba, _file_pc, _anchor);
+				set_LOG_litobd_pc;
+
 
 				// modlitba cez deò
 				modlitba = MODL_PREDPOLUDNIM;
@@ -5627,10 +5682,20 @@ label_24_DEC:
 				_set_zalmy_zjv(modlitba);
 				_zjv_kcitanie;
 				_zjv_antifony;
+
 				// posvätné èítanie
 				modlitba = MODL_POSV_CITANIE;
 				_set_zalmy_zjv(modlitba);
 				_zjv_antifony;
+				// 2012-12-10: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní | modlitba = MODL_POSV_CITANIE;
+				sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
+				_set_antifona_vig(modlitba, _file_pc, _anchor);
+				set_LOG_litobd_pc;
+				_set_chvalospev_vig_vian(modlitba);
+				sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
+				_set_evanjelium(modlitba, _file_pc, _anchor);
+				set_LOG_litobd_pc;
+
 				// modlitby cez deò
 				modlitba = MODL_PREDPOLUDNIM;
 				_set_zalmy_zjv(modlitba);
@@ -5759,6 +5824,14 @@ label_24_DEC:
 					_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+					// 2012-12-10: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní | modlitba = MODL_POSV_CITANIE;
+					sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
+					_set_antifona_vig(modlitba, _file_pc, _anchor);
+					set_LOG_litobd_pc;
+					_set_chvalospev_vig_ocr(modlitba);
+					sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], ((tyzden MOD 8) == 0)? 8: (tyzden MOD 8), pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
+					_set_evanjelium(modlitba, _file_pc, _anchor);
+					set_LOG_litobd_pc;
 
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_sviatok_krstu(modlitba);
@@ -5935,6 +6008,15 @@ label_24_DEC:
 					_set_citanie2(modlitba, _file_pc_tyzden, _anchor);
 					set_LOG_litobd_pc_tyzden;
 					// Log(_global_modl_posv_citanie);
+
+					// 2012-12-10: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní | modlitba = MODL_POSV_CITANIE;
+					sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
+					_set_antifona_vig(modlitba, _file_pc, _anchor);
+					set_LOG_litobd_pc;
+					_set_chvalospev_vig_ocr(modlitba);
+					sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], ((tyzden MOD 8) == 0)? 8: (tyzden MOD 8), pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
+					_set_evanjelium(modlitba, _file_pc, _anchor);
+					set_LOG_litobd_pc;
 
 					if(_global_den.denvr == (_global_r._ZOSLANIE_DUCHA_SV.denvr + 7)){
 						// najsv. trojice
