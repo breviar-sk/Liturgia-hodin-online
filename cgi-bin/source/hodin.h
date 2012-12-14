@@ -4289,8 +4289,8 @@ const char *text_VELKONOCNA_NEDELA[POCET_JAZYKOV + 1] =
  "Nedìle Zmrtvýchvstání Pánì",
  "Húsvétvasárnap",
  };
-const char *text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1] = 
-{" &mdash; Nede¾a Pánovho zmàtvychvstania",
+const char *text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1] = // 2012-12-13: XML nepodporuje &mdash; -- použitý èíselný kód &#8212; http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
+{" &#8212; Nede¾a Pánovho zmàtvychvstania",
  "",
  "",
  "",

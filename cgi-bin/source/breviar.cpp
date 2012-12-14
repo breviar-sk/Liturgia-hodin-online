@@ -5628,7 +5628,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				strcat(pom, "</span>");
 			}
 			strcat(_global_string, pom);
-                        ma_nazov = 1;
+			ma_nazov = 1;
 		}// nede¾a
 		else{ // nie nede¾a
 			Log("deò iný ako nede¾a, ktorý nemá vlastný názov... (_global_string == %s)\n", _global_string);
@@ -5707,6 +5707,17 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 						strcat(pom, pom2);
 						sprintf(pom2, html_text_tyzden_cislo[_global_jazyk], _local_den.tyzden);
 						strcat(pom, pom2);
+						if(typ != EXPORT_DNA_VIAC_DNI_TXT){
+							sprintf(pom2, HTML_LINE_BREAK"<"HTML_SPAN_SMALL">");
+						}
+						else{
+							mystrcpy(pom2, STR_EMPTY, MAX_STR);
+						}
+						strcat(pom, pom2);
+						if(typ != EXPORT_DNA_VIAC_DNI_TXT){
+							sprintf(pom2, html_text_tyzden_zaltara_cislo[_global_jazyk], tyzden_zaltara(_local_den.tyzden));
+							strcat(pom, pom2);
+						}
 					}// ((_local_den.litobd == OBD_ADVENTNE_II) && (typ != EXPORT_DNA_VIAC_DNI))
 					else{
 						Log("else...\n");
@@ -5730,7 +5741,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 					}// default, cezroèné obdobie a ostatné "obyèajné" dni
 #endif
 					strcat(_global_string, pom);
-                                        ma_nazov = 1;
+					ma_nazov = 1;
 				}// nie export na viac dní
 				else 
 					Log("else [ (typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE) ] \n");
@@ -5740,7 +5751,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 						sprintf(pom2, html_text_tyzden_zaltara_cislo[_global_jazyk], _local_den.tyzden);
 						strcat(pom, pom2);
 						strcat(_global_string, pom);
-                                                ma_nazov = 1;
+						ma_nazov = 1;
 					}
 				// inak ostane string prazdny
 
@@ -5770,7 +5781,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			strcat(_global_string, caps_BIG(_local_den.meno));
 		else
 			strcat(_global_string, _local_den.meno);
-                ma_nazov = 1;
+		ma_nazov = 1;
 
 		if((farba == COLOR_RED) && (typ != EXPORT_DNA_VIAC_DNI_TXT)){
 			// zmenene <font color> na <span>, 2003-07-02
@@ -5863,7 +5874,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 #ifdef LITURGICKE_CITANIA_ANDROID
 			if (cit && aj_citanie) {
 				if (typ == EXPORT_DNA_DNES || typ == EXPORT_DNA_JEDEN_DEN || typ == EXPORT_DNA_VIAC_DNI) {
-					if (ma_nazov) strcat(_global_string, HTML_LINE_BREAK);
+					if(ma_nazov){
+						strcat(_global_string, HTML_LINE_BREAK);
+					}
 					sprintf(pom, "<a href=\"svpismo://svpismo.riso.ksp.sk/?d=%d&amp;m=%d&amp;y=%d&amp;c=", _local_den.den, _local_den.mesiac, _local_den.rok);
 					strcat(_global_string, pom);
 					strcat(_global_string, StringEncode(remove_diacritics(cit->citania)));
