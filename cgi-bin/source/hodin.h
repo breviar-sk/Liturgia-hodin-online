@@ -1578,7 +1578,7 @@ const char *html_text_option0_referencie[POCET_JAZYKOV + 1] =
  "Bible references",
  "",
  "biblické odkazy",
- "hu_bible references"
+ "hu_bible references to kereszteny.hu"
 };
 
 const char *html_text_option0_referencie_explain[POCET_JAZYKOV + 1] = 
@@ -1588,7 +1588,7 @@ const char *html_text_option0_referencie_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "", 
- ""
+ "hu_bible references to kereszteny.hu"
 };
 
 const char *html_text_option0_citania[POCET_JAZYKOV + 1] = 

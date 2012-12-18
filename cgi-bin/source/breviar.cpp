@@ -1760,7 +1760,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_REFERENCIE) == BIT_OPT_0_REFERENCIE){
 							// ToDo: Ëasom daù odkaz napr. do konfiguraËnÈho s˙boru
 							if(EXPORT_REFERENCIA){
-								Export("<a href=\"http://dkc.kbs.sk/?in=");
+								if(_global_jazyk == JAZYK_HU){
+									Export("<a href=\"http://www.kereszteny.hu/biblia/searchbible.php?&reftrans=1&texttosearch=");
+								}
+								else{
+									Export("<a href=\"http://dkc.kbs.sk/?in=");
+								}
 							}
 							DetailLog("\trest     == %s\n", rest);
 							DetailLog("\trefrest  == %s\n", refrest);
@@ -8656,7 +8661,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF_0_VERSE, ANO, html_text_option0_verse_explain[_global_jazyk], ((_global_optf[OPT_0_SPECIALNE] & BIT_OPT_0_VERSE) == BIT_OPT_0_VERSE)? html_option_checked: STR_EMPTY);
 		Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option0_verse_explain[_global_jazyk], html_text_option0_verse[_global_jazyk]);
 
-		if(_global_jazyk == JAZYK_SK){
+		if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)){
 			// pole (checkbox) WWW_MODL_OPTF_0_REF
 			Export(HTML_LINE_BREAK);
 			Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_0_REF, NIE);
