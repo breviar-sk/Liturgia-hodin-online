@@ -23699,12 +23699,17 @@ label_25_MAR:
 
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
-						_vlastna_cast_2citanie;
 						_vlastna_cast_1citanie;
-						// hymnus ako na vešpery
-						sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS);
-						_set_hymnus(modlitba, _file, _anchor);
-						set_LOG_svsv;
+						_vlastna_cast_2citanie;
+						if(_global_jazyk == JAZYK_CZ){
+							_vlastna_cast_hymnus;
+						}
+						else{
+							// hymnus ako na vešpery
+							sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS);
+							_set_hymnus(modlitba, _file, _anchor);
+							set_LOG_svsv;
+						}
 
 						_vlastna_cast_mcd_ant_kcitresp_modl;
 
