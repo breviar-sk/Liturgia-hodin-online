@@ -50,6 +50,9 @@
     <string name="pgdn">Le</string>
 	
      <string name="news">
+     News in v1.8.2:\n
+     - Updates from www.breviar.sk\n
+     - More stable application restore\n\n
      Újdonságok az 1.8.1 verzióban:\n
      - Updates from www.breviar.sk\n
      - Do not play sound when scrolling with\n
