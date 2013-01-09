@@ -8136,11 +8136,14 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 		Log("--- _export_rozbor_dna_kalendar_orig(): idem tlacit kalendar...\n");
 		short int i, j, k;
 
-		char before[SMALL] = STR_EMPTY;
-		sprintf(before, "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">");
-		char after[SMALL] = STR_EMPTY;
-		mystrcpy(after, "</p>", SMALL);
-		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR, (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], STR_EMPTY, HTML_CLASS_QUIET, before, after, STR_EMPTY);
+		// 2013-01-08: hypertextov˝ odkaz "(skryù)" sa neexportuje pre batch mÛd; nestaËÌ porovnanie query_type != PRM_BATCH_MODE, pretoûe sa vol· napr. "..\breviar.exe -i..\..\..\breviar.sk\include\ -qpdt -d6 -m1 -r2013 -u0 -e130106.htm -00 -15184 -2224 -30 -40 -jsk -M2 -I1301.htm"
+		if(_global_opt_batch_monthly != ANO && query_type != PRM_BATCH_MODE){
+			char before[SMALL] = STR_EMPTY;
+			sprintf(before, "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">");
+			char after[SMALL] = STR_EMPTY;
+			mystrcpy(after, "</p>", SMALL);
+			_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR, (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], STR_EMPTY, HTML_CLASS_QUIET, before, after, STR_EMPTY);
+		}
 
 		char pom2[MAX_STR];
 		mystrcpy(pom2, STR_EMPTY, MAX_STR);
@@ -9296,37 +9299,39 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
-	Log("Exportujem kalend·r: `%s'\n", export_dalsie_parametre);
+	Log("Exportujem kalend·r: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// 2011-11-30: exportovanie parametra F (_global_font)
 	if(PODMIENKA_EXPORTOVAT_FONT){
 		sprintf(pom, " -F%s", nazov_fontu[_global_font]);
 	}
 	else{
-		Log("\tNetreba prilepiù font (kalend·r == %s)\n", nazov_fontu[_global_font]);
+		Log("\tNetreba prilepiù font (font == %s)\n", nazov_fontu[_global_font]);
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
-	Log("Exportujem font: `%s'\n", export_dalsie_parametre);
+	Log("Exportujem font: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// 2011-11-30: exportovanie parametra S (_global_font_size)
 	if(PODMIENKA_EXPORTOVAT_FONTSIZE){
 		sprintf(pom, " -S%s", nazov_font_size_css[_global_font_size]);
 	}
 	else{
-		Log("\tNetreba prilepiù font size (kalend·r == %s)\n", nazov_font_size_css[_global_font_size]);
+		Log("\tNetreba prilepiù font size (font size == %s)\n", nazov_font_size_css[_global_font_size]);
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
-	Log("Exportujem font size: `%s'\n", export_dalsie_parametre);
+	Log("Exportujem font size: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// 2009-08-03: exportovanie do adres·rov po mesiacoch
 	if(_global_opt_batch_monthly == ANO){
+		Log("_global_opt_batch_monthly == ANO\n");
 		if(export_monthly_druh >= 2)
 			mystrcpy(_local_export_navig_hore,_global_export_navig_hore_day, SMALL);
 		else
 			mystrcpy(_local_export_navig_hore,_global_export_navig_hore, SMALL);
 		if(index_pre_mesiac_otvoreny == ANO){
+			Log("index_pre_mesiac_otvoreny == ANO\n");
 			// najskÙr do zoznamu mesiacov vyprintujeme odkaz na index.htm danÈho mesiaca (ak bolo prvÈho resp. zaËiatok exportu)...
 			if((_global_den.den == 1 && ((export_monthly_druh >= 1 && modlitba == MODL_INVITATORIUM) || export_monthly_druh != 1)) || export_month_zaciatok == ANO){
 				// sem sa uû name_batch_month_file dostane s upraven˝m oddeæovaËom STR_PATH_SEPARATOR_HTML; upravenÈ v _main_batch_mode()
@@ -9338,14 +9343,20 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 		}// if(index_pre_mesiac_otvoreny == ANO)
 		else{
 			// 2009-08-05: netreba; pretoûe DEFAULT_MONTH_EXPORT sa zatiaæ ned· meniù
-			// 2009-08-12: doplnen· premenn· _global_export_navig_hore; pÙvodne bolo: // mystrcpy(parameter_M, " -M", SMALL);
-			sprintf(parameter_M, " -M%d", export_monthly_druh);
-			if(!(equals(_local_export_navig_hore, STR_EMPTY) || equals(_local_export_navig_hore, DEFAULT_MONTH_EXPORT))){
-				sprintf(parameter_I, " -I%s", _local_export_navig_hore);
-				strcat(parameter_M, parameter_I);
-			}
 			batch_export_file = batch_html_file;
 		}// else if(index_pre_mesiac_otvoreny == ANO)
+
+		// 2009-08-12: doplnen· premenn· _global_export_navig_hore; pÙvodne bolo: // mystrcpy(parameter_M, " -M", SMALL);
+		// 2013-01-07: t·to Ëasù bola v predoölom "else"; nefungovalo to spr·vne (napr. pri command-line prÌkaze: breviar.exe -qpbm -d1 -m1 -r2013 -f31 -g12 -p2013 -brobSK.bat -jsk -nbreviar.exe -i..\..\breviar.sk\include\ -usimple -M2 -00 -15184 -2224)
+		Log("2:parameter_M...\n");
+		sprintf(parameter_M, " -M%d", export_monthly_druh);
+		Log("parameter_M == `%s'...\n", parameter_M);
+		if(!(equals(_local_export_navig_hore, STR_EMPTY) || equals(_local_export_navig_hore, DEFAULT_MONTH_EXPORT))){
+			sprintf(parameter_I, " -I%s", _local_export_navig_hore);
+			Log("parameter_I == `%s'...\n", parameter_I);
+			strcat(parameter_M, parameter_I);
+			Log("parameter_M == `%s'...\n", parameter_M);
+		}
 	}// if(_global_opt_batch_monthly == ANO)
 	else{
 		batch_export_file = batch_html_file;
@@ -9384,6 +9395,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 					else{
 						sprintf(export_fname_pattern, "%s%d%cd.htm", batch_command, a, char_modlitby[i]);
 					}
+					Log("1:parameter_M == `%s'...\n", parameter_M);
 					fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s%s\n", export_fname_pattern, 
 						_global_opt[OPT_0_SPECIALNE], _global_opt_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
 						a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
@@ -9401,6 +9413,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 				else{
 					sprintf(export_fname_pattern, "%s%d%c.htm", batch_command, a, char_modlitby[i]);
 				}
+				Log("2:parameter_M == `%s'...\n", parameter_M);
 				fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s%s\n", export_fname_pattern, 
 					_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
 					a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
@@ -9442,6 +9455,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 					// 2011-04-12: pouûÌva sa option 1 (jej upraven· hodnota _global_opt_casti_modlitby_orig)
 					// 2011-04-13: nemÙûeme porovn·vaù s _global_opt[1] (bola oËisten·), ale s _global_opt_casti_modlitby_orig (obsahuje pÙvodn˙ hodnotu)
 					if(((_global_opt_casti_modlitby_orig & BIT_OPT_1_MCD_ZALMY_INE) == BIT_OPT_1_MCD_ZALMY_INE) && ((i == MODL_PREDPOLUDNIM) || (i == MODL_NAPOLUDNIE) || (i == MODL_POPOLUDNI))){
+						Log("3:parameter_M == `%s'...\n", parameter_M);
 						fprintf(batch_file, "%s%d%cd.htm -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s%s\n", batch_command, a, char_modlitby[i], 
 							_global_opt[OPT_0_SPECIALNE], _global_opt_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
 							a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
@@ -9454,6 +9468,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 						strcpy(export_doplnkova_psalmodia, STR_EMPTY);
 					}
 					// 2009-08-03: doplnen· moûnosù exportovaù parameter -M ak exportuje batch mÛd pre jednotlivÈ mesiace kvÙli hlaviËke jednotlivej modlitby
+					Log("4:parameter_M == `%s'...\n", parameter_M);
 					fprintf(batch_file, "%s%d%c.htm -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s%s\n", batch_command, a, char_modlitby[i], 
 						_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
 						a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
@@ -10038,32 +10053,33 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
-	Log("Exportujem kalend·r: `%s'\n", export_dalsie_parametre);
+	Log("Exportujem kalend·r: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// 2011-11-30: exportovanie parametra F (_global_font)
 	if(PODMIENKA_EXPORTOVAT_FONT){
 		sprintf(pom, " -F%s", nazov_fontu[_global_font]);
 	}
 	else{
-		Log("\tNetreba prilepiù font (kalend·r == %s)\n", nazov_fontu[_global_font]);
+		Log("\tNetreba prilepiù font (font == %s)\n", nazov_fontu[_global_font]);
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
-	Log("Exportujem font: `%s'\n", export_dalsie_parametre);
+	Log("Exportujem font: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// 2011-11-30: exportovanie parametra S (_global_font_size)
 	if(PODMIENKA_EXPORTOVAT_FONTSIZE){
 		sprintf(pom, " -S%s", nazov_font_size_css[_global_font_size]);
 	}
 	else{
-		Log("\tNetreba prilepiù font size (kalend·r == %s)\n", nazov_font_size_css[_global_font_size]);
+		Log("\tNetreba prilepiù font size (size == %s)\n", nazov_font_size_css[_global_font_size]);
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
-	Log("Exportujem font size: `%s'\n", export_dalsie_parametre);
+	Log("Exportujem font size: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// reùazec pre deÚ a pre n·zov s˙boru
 	if(d != VSETKY_DNI){
+		Log("deÚ d == %d...\n", d);
 		sprintf(str_den, "%d", d);
 		if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
 			sprintf(str_subor, FILENAME_EXPORT_DATE_SIMPLE, r % 100, m, d);
@@ -10073,6 +10089,7 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 	}
 	else{
 		// d == VSETKY_DNI
+		Log("deÚ d == VSETKY_DNI...\n");
 		mystrcpy(str_den, STR_VSETKY_DNI, SMALL);
 		if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
 			sprintf(str_subor, FILENAME_EXPORT_MONTH_SIMPLE, r % 100, m);
@@ -10089,9 +10106,10 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 		fprintf(batch_html_file, "<li><a href=\"%s%s.htm\">%s %d</a></li>\n", str_month, str_subor, nazov_mesiaca(m - 1), r);
 	}
 	if(_global_opt_append != YES){
-		// pripravime si command line string pre dan˝ mesiac
-		sprintf(batch_command, "%s -i%s -qpdt -d%s -m%d -r%d -u%d -e%s.htm", 
-			name_binary_executable, include_dir, str_den, m, r, _global_opt_export_date_format, str_subor);
+		Log("pripravÌme si command-line string pre dan˝ mesiac...\n");
+		// pripravÌme si command-line string pre dan˝ mesiac
+		sprintf(batch_command, "%s -i%s -qpdt -d%s -m%d -r%d -u%d -e%s.htm", name_binary_executable, include_dir, str_den, m, r, _global_opt_export_date_format, str_subor);
+		Log("batch_command == `%s'...\n", batch_command);
 	}
 
 	// Ëasù podæa execute_batch_command() 
@@ -10099,10 +10117,15 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 	char parameter_M[SMALL] = STR_EMPTY; // parametre pre v˝slednÈ HTML (parameter 'M' a parametre pre odkazy na s˙bory, napr. 'I')
 	char parameter_I[SMALL] = STR_EMPTY;
 	if(_global_opt_batch_monthly == ANO){
+		Log("1:parameter_M...\n");
 		sprintf(parameter_M, " -M%d", export_monthly_druh);
+		Log("parameter_M == `%s'...\n", parameter_M);
 		if(!(equals(_local_export_navig_hore, STR_EMPTY) || equals(_local_export_navig_hore, DEFAULT_MONTH_EXPORT))){
+			Log("parameter_I...\n");
 			sprintf(parameter_I, " -I%s", _local_export_navig_hore);
+			Log("parameter_I == `%s'...\n", parameter_I);
 			strcat(parameter_M, parameter_I);
+			Log("parameter_M == `%s'...\n", parameter_M);
 		}
 		batch_export_file = batch_html_file;
 	}// if(_global_opt_batch_monthly == ANO)
@@ -10115,6 +10138,8 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 	// 2011-04-13: doplnenÈ exportovanie ch˝baj˙cich option 0 aû 4
 	// 2012-12-12: nie pre append (mohla by tam byù cel· Ëasù kÛdu od prÌpravy batch_command)
 	if(_global_opt_append != YES){
+		Log("zapisujem do batch_file...\n");
+		Log("5:parameter_M == `%s'...\n", parameter_M);
 		fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -j%s%s%s\n", batch_command, 
 			_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
 			skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre);
@@ -15537,10 +15562,13 @@ short int parseQueryString(void){
 	}\
 }
 
+short int counter_setConfigDefaults = 0;
+
 // 2011-04-13: vytvorenÈ kvÙli tomu, ûe config s˙bor nemusÌ obsahovaù hodnoty pre vöetky options
 void setConfigDefaults(short int jazyk){
 	short int sk_default, o;
-	Log("setConfigDefaults(%d) -- zaËiatok...\n", jazyk);
+	counter_setConfigDefaults++;
+	Log("setConfigDefaults(%d) -- zaËiatok (%d. volanie)...\n", jazyk, counter_setConfigDefaults);
 	// 2011-04-13: ak s˙ niektorÈ options GLOBAL_OPTION_NULL, je potrebnÈ ich na nieËo nastaviù
 	for(o = 0; o < POCET_GLOBAL_OPT; o++){
 		if(jazyk != JAZYK_SK)
@@ -15552,7 +15580,7 @@ void setConfigDefaults(short int jazyk){
 			Log("keÔûe cfg_option_default[%d][%d] bolo GLOBAL_OPTION_NULL, nastavujem podæa program defaults na %d...\n", o, jazyk, cfg_option_default[o][jazyk]);
 		}
 	}// for o
-	Log("setConfigDefaults(%d) -- koniec.\n", jazyk);
+	Log("setConfigDefaults(%d) -- koniec (%d. volanie).\n", jazyk, counter_setConfigDefaults);
 }// setConfigDefaults()
 
 int breviar_main(int argc, char **argv){
@@ -15575,6 +15603,7 @@ int breviar_main(int argc, char **argv){
 	_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
 	_global_opt[OPT_4_OFFLINE_EXPORT] = NIE;
 	_global_opt[OPT_2_HTML_EXPORT] = GLOBAL_OPTION_NULL;
+	counter_setConfigDefaults = 0;
 
 	_global_opt_append = NIE;
 	_global_opt_tedeum = NIE;
@@ -15805,7 +15834,7 @@ int breviar_main(int argc, char **argv){
 				_main_LOG_to_Export("spat po skonceni getForm()\n");
 			}
 			break;
-		}
+		}// SCRIPT_PARAM_FROM_FORM
 		case SCRIPT_PARAM_FROM_ARGV:{
 			_main_LOG("params == SCRIPT_PARAM_FROM_ARGV\n");
 			_main_LOG("spustam getArgv();\n");
@@ -15824,6 +15853,10 @@ int breviar_main(int argc, char **argv){
 
 				_main_LOG_to_Export("sp˙öùam setConfigDefaults()...\n");
 				setConfigDefaults(_global_jazyk); // 2011-04-13: doplnenÈ
+
+				// 2013-01-08: sem presunutÈ volanie _rozparsuj_parametre_OPT(); kvÙli tomu, ûe volanie hlaviËky potrebuje uû nastavenÈ napr. o2 (batch mÛd, Ëi pouûiù noËn˝ reûim)
+				Log("vol·m _rozparsuj_parametre_OPT()...\n");
+				_rozparsuj_parametre_OPT();
 
 				// 2010-08-04: pridanÈ parsovanie jazyka kvÙli jazykov˝m mut·ci·m -- kalend·r, napr. rehoæn˝ (danÈ aj niûöe, ako jazyk)
 				_main_LOG_to_Export("zisùujem kalend·r (pom_KALENDAR == %s)...\n", pom_KALENDAR);
@@ -15889,7 +15922,7 @@ int breviar_main(int argc, char **argv){
 			}
 
 			break;
-		}
+		}// SCRIPT_PARAM_FROM_ARGV
 		case SCRIPT_PARAM_FROM_QS:{
 
 			_main_LOG_to_Export("params == SCRIPT_PARAM_FROM_QS\n");
@@ -15937,7 +15970,7 @@ _main_SIMULACIA_QS:
 			}
 
 			break;
-		}
+		}// SCRIPT_PARAM_FROM_QS
 	}// switch(params)
 
 	_main_LOG_to_Export("query_type == ");
@@ -15988,6 +16021,9 @@ _main_SIMULACIA_QS:
 
 			_main_LOG_to_Export("sp˙öùam setConfigDefaults()...\n");
 			setConfigDefaults(_global_jazyk); // 2011-04-13: doplnenÈ
+			// 2013-01-08: sem presunutÈ volanie _rozparsuj_parametre_OPT(); kvÙli tomu, ûe volanie hlaviËky potrebuje uû nastavenÈ napr. o2 (batch mÛd, Ëi pouûiù noËn˝ reûim)
+			Log("vol·m _rozparsuj_parametre_OPT()...\n");
+			_rozparsuj_parametre_OPT();
 
 			// 2010-08-04: pridanÈ parsovanie jazyka kvÙli jazykov˝m mut·ci·m -- kalend·r, napr. rehoæn˝ (danÈ aj vyööie, ako jazyk)
 			_main_LOG_to_Export("zisùujem kalend·r (pom_KALENDAR == %s)...\n", pom_KALENDAR);
@@ -16172,6 +16208,7 @@ _main_SIMULACIA_QS:
 			// rozparsovanie parametrov opt...
 			// 2007-06-01: upravenÈ tak, aby sa v prÌpade nenastavenia dala hodnota GLOBAL_OPTION_NULL
 			// 2011-05-05: presunutÈ sem z jednotliv˝ch proced˙r: _main_rozbor_dna(), _main_dnes(), _main_liturgicke_obdobie(), _main_analyza_roku(), _main_tabulka(), _main_batch_mode()
+			// 2013-01-08: tu sa nach·dzalo volanie _rozparsuj_parametre_OPT(); ktorÈ som presunul vyööie kvÙli tomu, ûe volanie hlaviËky potrebuje uû nastavenÈ napr. o2 (batch mÛd, Ëi pouûiù noËn˝ reûim)
 			Log("vol·m _rozparsuj_parametre_OPT z main()...\n");
 			_rozparsuj_parametre_OPT();
 
