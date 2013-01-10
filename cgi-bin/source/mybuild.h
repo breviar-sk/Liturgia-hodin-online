@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* mybuild.h                                                   */
-/* (c)1999-2012 | Juraj Videky | videky@breviar.sk             */
+/* (c)1999-2013 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | obsahuje dátum buildu                         */
 /* document history                                            */
@@ -9,5 +9,5 @@
 /*                                                             */
 /***************************************************************/
 
-#define BUILD_DATE "2012-12-19"
+#define BUILD_DATE "2013-01-09"
 

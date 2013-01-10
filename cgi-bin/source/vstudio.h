@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* vstudio.h                                                   */
-/* (c)2007 | Juraj Videky | videky@breviar.sk                  */
+/* (c)2007 | Juraj Vidéky | videky@breviar.sk                  */
 /*                                                             */
 /* description | kvôli Visual Studio 2005 Express Edition      */
 /*               systeme program pracuje; ovplyvnuje tvorbu    */

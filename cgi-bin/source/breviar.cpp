@@ -1,7 +1,7 @@
 /***************************************************************************/
 /*                                                                         */
 /* breviar.cpp                                                             */
-/* (c)1999-2012 | Juraj Videky | videky@breviar.sk                         */
+/* (c)1999-2013 | Juraj VidÈky | videky@breviar.sk                         */
 /*                                                                         */
 /*                http://www.breviar.sk                                    */
 /*                                                                         */
@@ -213,7 +213,7 @@
 /*                  - tlaËidlo "Detaily" netreba, ZOBRAZ_BUTTON_DETAILY    */
 /*   2011-04-13a.D. | ˙prava konfiguraËnÈho s˙boru, dokonËenie zl˙Ëenia    */
 /*                    options, rozdelenie force options na bit-komponenty  */
-/*                  - v exporte zruöenÈ \n v sekvencii <br>\n (kvÙli IE)   */
+/*                  - v exporte zruöenÈ \n v sekvencii <br/>\n (kvÙli IE) */
 /*                  - ˙prava vo funkcii stuffenv()                         */
 /*   2011-04-20a.D. | zobrazenie _global_opt 2 vo formul·ri, naËÌtanie     */
 /*   2011-04-29a.D. | doplnenÈ Sl·va Otcu "öpeci·lne" kvÙli chv·lospevu    */
@@ -2089,7 +2089,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							Export("zvolanie(stop)");
 #endif
 							if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PROSBY_ZVOLANIE) == BIT_OPT_1_PROSBY_ZVOLANIE){
-								Export("--><br /><!--"); // 2012-09-07: doplnenÈ, aby sa to podobalo na tie prosby, kde v LH je zvolanie opakovanÈ (napr. SCAP_rPROSBY) | 2012-09-28: presunutÈ vypisovanie len ak sa zvolania opakuj˙
+								Export("--><br/><!--"); // 2012-09-07: doplnenÈ, aby sa to podobalo na tie prosby, kde v LH je zvolanie opakovanÈ (napr. SCAP_rPROSBY) | 2012-09-28: presunutÈ vypisovanie len ak sa zvolania opakuj˙
 							}
 							else{
 								write = ANO;
@@ -5805,9 +5805,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		if(typ != EXPORT_DNA_VIAC_DNI_TXT){
 #define TYPSLAV_NOVY_RIADOK
 #if defined(TYPSLAV_NOVY_RIADOK_CIARKA)
-			sprintf(pom, ", <br />");
+			sprintf(pom, ", <br/>");
 #elif defined(TYPSLAV_NOVY_RIADOK)
-			sprintf(pom, " <br />");
+			sprintf(pom, " <br/>");
 #else
 			sprintf(pom, ", ");
 #endif
@@ -9209,7 +9209,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 #endif
 	// -------------------------------------------
 
-		// predtym tu bolo <br>, ale kedze hore som dal <table align="center">,  tak tu musi byt <center> kvoli buttonom; 2003-07-09
+		// predtym tu bolo <br/>, ale kedze hore som dal <table align="center">,  tak tu musi byt <center> kvoli buttonom; 2003-07-09
 		// 2012-07-23: upravenÈ, aby sa stalo s˙Ëasùou tabuæky s moûnosùami voæby
 		Export("<!-- riadok pre button Zobraziù/VyËistiù (choices)-->\n");
 		Export("<tr "HTML_ALIGN_CENTER">\n<td>\n");
@@ -9528,7 +9528,7 @@ void init_zoznam(void){
 void Log_zoznam(void){
 	for(int i = 0; i < POCET_ZOZNAM; i++){
 		Log("zoznam[%d] == %d\n", i, zoznam[i]);
-		// Export("zoznam[%d] == %d<br />\n", i, zoznam[i]);
+		// Export("zoznam[%d] == %d<br/>\n", i, zoznam[i]);
 	}
 }// Log_zoznam()
 
@@ -9965,7 +9965,7 @@ void _export_rozbor_dna(short int typ){
 
 			if(_global_linky == ANO){
 				// Export("\n<!-- pr·zdny riadok ako oddelenie -->\n");
-				// Export("<br />\n");
+				// Export("<br/>\n");
 				Export("<!--nasleduje formul·r-->\n");
 				_export_main_formular(_global_den.den, _global_den.mesiac, _global_den.rok, _global_den.denvt);
 			}// if(_global_linky == ANO)
@@ -12123,7 +12123,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 
 	if(lr > 'C' || lr < 'A'){
 		ALERT;
-		Export("NevhodnÈ ˙daje:"HTML_LINE_BREAK"<br>\n<ul>");
+		Export("NevhodnÈ ˙daje:"HTML_LINE_BREAK"<br/>\n<ul>");
 		// tyzden
 		if(equals(tyzden, STR_EMPTY)){
 			Export("<li>tak˝ liturgick˝ rok nemoûno ûiadaù</li>\n");

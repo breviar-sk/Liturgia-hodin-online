@@ -3,7 +3,7 @@
 /* mygetopt.h                                                  */
 /* Copyright (C) 1989,90,91,92,93,94,96,97                     */
 /*                              Free Software Foundation, Inc. */
-/* (c)1999-2012 | Juraj Videky | videky@breviar.sk             */
+/* (c)1999-2013 | Juraj Vidéky | videky@breviar.sk             */
 /* description | obsahuje exportne rutinky na export           */
 /*               do suboru FILE_EXPORT alebo stdout            */
 /* document history                                            */

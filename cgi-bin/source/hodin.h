@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* hodin.h                                                     */
-/* (c)1999-2012 | Juraj Videky | videky@breviar.sk             */
+/* (c)1999-2013 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | definovane stringove kontanty                 */
 /* document history                                            */
@@ -154,7 +154,7 @@ const char *nazov_spolc_vyrocie_jazyk[POCET_JAZYKOV + 1] =
 
 // the --OR-- (alternative) for common parts of celebration
 const char *nazov_spolc_alebo_jazyk[POCET_JAZYKOV + 1] =
-{"<br />alebo", "<br />nebo", "<br />or", "", "", "<br />nebo", ""};
+{"<br/>alebo", "<br/>nebo", "<br/>or", "", "", "<br/>nebo", ""};
 
 // the names of the common texts (e.g.: for bishops, for saint men, for apostles...)
 const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
@@ -1164,7 +1164,7 @@ const char *html_text_tyzden_cislo[POCET_JAZYKOV + 1] = {"%d. týždeò", "%d. týde
 const char *html_text_tyzden[POCET_JAZYKOV + 1] = {". týždeò", ". týden", ". week", "hebdomada ", "", ". týden", ". hét"};
 const char *html_text_v_tyzdni_zaltara[POCET_JAZYKOV + 1] = {". týždni žaltára", ". týdnu žaltáøe", "week of Psaltary", "hebdomada", "", ". týdnu žaltáøe", ". zsoltáros hét"};
 const char *html_text_pre[POCET_JAZYKOV + 1] = {"pre", "pro", "for", "per", "", "pro", ""};
-// in the following: you MUST keep all HTML elements, e.g. <a href...>, <br /> etc.
+// in the following: you MUST keep all HTML elements, e.g. <a href...>, <br/> etc.
 const char *html_text_dnes_je_atd[POCET_JAZYKOV + 1] = 
 {"Dnes je %d. deò v roku%s, <a href=\"%s%s\">juliánsky dátum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
  "Dnes je %d. den v roku%s, <a href=\"%s%s\">juliánské datum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
@@ -1578,7 +1578,7 @@ const char *html_text_option0_referencie[POCET_JAZYKOV + 1] =
  "Bible references",
  "",
  "biblické odkazy",
- "hu_bible references to kereszteny.hu"
+ "Bibliai hivatkozások a kereszteny.hu oldalon"
 };
 
 const char *html_text_option0_referencie_explain[POCET_JAZYKOV + 1] = 
@@ -1588,7 +1588,7 @@ const char *html_text_option0_referencie_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "", 
- "hu_bible references to kereszteny.hu"
+ "Az imák szövegében minden bibliai utalás (például Jn 3, 16) aktív linkként a kereszteny.hu katolikus bibliafordításának megfellõ részére mutat. (A Szent István Társulat fordítását használjuk.)"
 };
 
 const char *html_text_option0_citania[POCET_JAZYKOV + 1] = 

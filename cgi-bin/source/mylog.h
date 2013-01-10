@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* mylog.h                                                     */
-/* (c)1999-2012 | Juraj Videky | videky@breviar.sk             */
+/* (c)1999-2013 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | logovanie                                     */
 /* document history                                            */
