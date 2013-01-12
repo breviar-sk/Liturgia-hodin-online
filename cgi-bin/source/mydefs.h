@@ -797,6 +797,10 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_FORM_INPUT_RESET2   "input type=\"reset\" class=\"reset2\""
 #define HTML_FORM_INPUT_HIDDEN   "input type=\"hidden\""
 
+// #define HTML_FORM_METHOD_GET  "<form action=\"%s\">\n"
+#define HTML_FORM_METHOD_GET     "<form action=\"%s\" method=\"get\">\n"
+#define HTML_FORM_METHOD_POST    "<form action=\"%s\" method=\"post\">\n"
+
 #define HTML_LINK_RED    "a class=\"red\""
 #define HTML_LINK_NORMAL "a"
 

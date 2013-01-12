@@ -9,6 +9,7 @@
 /*   06/09/2001A.D. | tento popis                              */
 /*   2009-08-05a.D. | pridan· funkcia substring()              */
 /*   2011-04-13a.D. | sem presunutÈ reùazcovÈ funkcie equals() */
+/*   2013-01-11a.D. | nov· funkcia: replace all substrings     */
 /*                                                             */
 /***************************************************************/
 
@@ -18,15 +19,17 @@
 #define __MYSTRING_CPP_
 
 #include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "mystring.h"
 #include "mysystem.h"
 #include "mysysdef.h"
 
-/* funkcia mystrcpy()
- * 1. zisti velkost dest -- sizeof(dest)
- * 2. kopiruje nanajvys count - 1 znakov z src do dest (pomocou strncpy)
- * 3. v kazdom pripade prida na koniec v dest '\0' (terminating null)
- */
+// funkcia mystrcpy()
+// 1. zisti velkost dest -- sizeof(dest)
+// 2. kopiruje nanajvys count - 1 znakov z src do dest (pomocou strncpy)
+// 3. v kazdom pripade prida na koniec v dest '\0' (terminating null)
 char *mystrcpy(char *dest, char *src, short int count){
 	char *ret;
 	/* sizeof(dest) nefunguje pre char *dest */
@@ -41,25 +44,20 @@ char *mystrcpy(char *dest, const char *src, short int count){
 	dest[count - 1] = '\0';
 	return ret;
 }
-
-/* The strncpy function copies the initial count characters of strSource to strDest 
- * and returns strDest. If count is less than or equal to the length of strSource, 
- * a null character is not appended automatically to the copied string. 
- * If count is greater than the length of strSource, the destination string is padded 
- * with null characters up to length count. 
- * The behavior of strncpy is undefined if the source and destination strings overlap.
- * This function returns strDest. No return value is reserved to indicate an error.
- */
+// The strncpy function copies the initial count characters of strSource to strDest 
+// and returns strDest. If count is less than or equal to the length of strSource, 
+// a null character is not appended automatically to the copied string. 
+// If count is greater than the length of strSource, the destination string is padded 
+// with null characters up to length count. 
+// The behavior of strncpy is undefined if the source and destination strings overlap.
+// This function returns strDest. No return value is reserved to indicate an error.
 
 int substring(char *str1, char *str2){
 	// vr·ti true, ak str2 je substring v reùazci str1
 	return (strstr(str1, str2) != NULL);
 }
 
-//---------------------------------------------------------------------
-/* string comparator -- pre vsetky kombinacie dvojic
- * [const] char, [const] char
- */
+// string comparator -- pre vsetky kombinacie dvojic [const] char, [const] char
 short int equals(char *s1, char *s2){
 	if(strcmp(s1, s2) == 0)
 		return 1;
@@ -88,10 +86,7 @@ short int equals(char *s1, const char *s2){
 		return 0;
 }
 
-/* string comparator without case sensitivity  -- pre vsetky kombinacie
- * dvojic [const] char, [const] char
- */
-
+// string comparator without case sensitivity  -- pre vsetky kombinacie dvojic [const] char, [const] char
 short int equalsi(char *is1, char *is2){
 #if defined(DEFINED_strcmpi)
 	if(strcmpi(is1, is2) == 0)
@@ -184,5 +179,34 @@ short int equalsi(char *is1, const char *is2){
 #endif
 }
 
-#endif /* __MYSTRING_CPP_ */
+// funkcia mystr_replace() nahradÌ vöetky v˝skyty podreùazca substr v reùazci string reùazcom replacement
+// http://coding.debuntu.org/c-implementing-str_replace-replace-all-occurrences-substring | 2013-01-11
+char *mystr_replace ( const char *string, const char *substr, const char *replacement ){
+	char *tok = NULL;
+	char *newstr = NULL;
+	char *oldstr = NULL;
+	char *head = NULL;
+	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
+	if ( substr == NULL || replacement == NULL ) return strdup (string);
+	newstr = strdup (string);
+	head = newstr;
+	while ( (tok = strstr ( head, substr ))){
+		oldstr = newstr;
+		newstr = (char *) malloc ( strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ) + 1 );
+		/* failed to alloc mem, free old string and return NULL */
+		if ( newstr == NULL ){
+			free (oldstr);
+			return NULL;
+		}
+		memcpy ( newstr, oldstr, tok - oldstr );
+		memcpy ( newstr + (tok - oldstr), replacement, strlen ( replacement ) );
+		memcpy ( newstr + (tok - oldstr) + strlen( replacement ), tok + strlen ( substr ), strlen ( oldstr ) - strlen ( substr ) - ( tok - oldstr ) );
+		memset ( newstr + strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ) , 0, 1 );
+		/* move back head right after the last replacement */
+		head = newstr + (tok - oldstr) + strlen( replacement );
+		free (oldstr);
+	}
+	return newstr;
+}
 
+#endif /* __MYSTRING_CPP_ */
