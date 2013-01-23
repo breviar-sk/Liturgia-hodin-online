@@ -14089,9 +14089,9 @@ short int getArgv(int argc, char **argv){
 			// 2012-12-12: nie pre append (netreba vytv·raù adres·re [mkdir] ani po nich chodiù [cd])
 			if(_global_opt_append != YES){
 				// musÌme upraviù n·zov executable, lebo budeme meniù adres·r v _main_batch_mode()
-				mystrcpy(pom_name_binary_executable, "..\\", MAX_STR);
+				mystrcpy(pom_name_binary_executable, ".."STR_PATH_SEPARATOR, MAX_STR);
 				// musÌme upraviù n·zov adres·ra s include, lebo budeme meniù adres·r v _main_batch_mode()
-				mystrcpy(pom_include_dir, "..\\", MAX_STR);
+				mystrcpy(pom_include_dir, ".."STR_PATH_SEPARATOR, MAX_STR);
 			}
 			strcat(pom_name_binary_executable, name_binary_executable);
 			mystrcpy(name_binary_executable, pom_name_binary_executable, MAX_STR);
@@ -15752,14 +15752,13 @@ int breviar_main(int argc, char **argv){
 
 	// koniec inicializacie globalnych premennych; teraz samotna main()
 
-#if defined(OS_linux)
-	_global_linky = 1; // zobrazovat linky
-#elif defined(OS_Windows_Ruby)
-	_global_linky = 1; // zobrazovat linky
-#elif defined(OS_Windows)
-	_global_linky = 0; // nezobrazovat linky
+	// 2013-01-22: oprava inicializ·cie _global_linky
+#if defined(BEHAVIOUR_WEB)
+	_global_linky = 1; // zobrazovaù linky (pre batch mÛd: pouûiù URL)
+#elif defined(BEHAVIOUR_CMDLINE)
+	_global_linky = 0; // nezobrazovaù linky (pre batch mÛd: pouûiù filenames)
 #else
-	#error Unsupported operating system (not defined in mysystem.h)
+	#error Unsupported behaviour (not defined in mysystem.h/mysysdef.h)
 #endif
 
 	short int ret; // navratova hodnota
@@ -16125,21 +16124,21 @@ _main_SIMULACIA_QS:
 
 			LOG_ciara;
 
+			// 2013-01-22: oprava inicializ·cie _global_linky
 			_main_LOG_to_Export("pom_LINKY == `%s'\n", pom_LINKY);
-#if defined(OS_linux)
-			_global_linky = 1; // zobrazovat linky
-			_main_LOG_to_Export("/* linux: teraz som nastavil _global_linky == %d */\n", _global_linky);
-#elif defined(OS_Windows_Ruby)
-			_global_linky = 1; // zobrazovat linky
-			_main_LOG_to_Export("/* Windows/Ruby: teraz som nastavil _global_linky == %d */\n", _global_linky);
-#elif defined(OS_Windows)
-			if(pom_LINKY != NULL)
-				_global_linky = atoi(pom_LINKY);
-			_main_LOG_to_Export("/* Windows: teraz som nastavil _global_linky == %d */\n", _global_linky);
-#elif defined(OS_DOS)
+#if defined(OS_linux) || defined(OS_Windows_Ruby)
+#if defined(BEHAVIOUR_WEB)
+			_global_linky = 1; // zobrazovaù linky (pre batch mÛd: pouûiù URL)
+#elif defined(BEHAVIOUR_CMDLINE)
+			_global_linky = 0; // nezobrazovaù linky (pre batch mÛd: pouûiù filenames)
+#else
+			#error Unsupported behaviour (not defined in mysystem.h/mysysdef.h)
+#endif
+			_main_LOG_to_Export("/* linux resp. Windows/Ruby: teraz som nastavil _global_linky == %d */\n", _global_linky);
+#elif defined(OS_Windows) || defined(OS_DOS)
 			if((pom_LINKY != NULL) && (!equals(pom_LINKY, STR_EMPTY))){
 				_global_linky = atoi(pom_LINKY);
-				_main_LOG_to_Export("/* DOS: teraz som nastavil _global_linky == %d */\n", _global_linky);
+				_main_LOG_to_Export("/* Windows resp. DOS: teraz som nastavil _global_linky == %d */\n", _global_linky);
 			}
 #else
 	#error Unsupported operating system (not defined in mysystem.h)
