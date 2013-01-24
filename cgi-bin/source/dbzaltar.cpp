@@ -11476,7 +11476,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						_global_svaty2.smer = 12; // ¾ubovo¾né spomienky
 						pocet = 2;
 						mystrcpy(_global_svaty2.meno, text_JAN_22_HU[_global_jazyk], MENO_SVIATKU);
-						_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
+						_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
 						_global_svaty2.farba = LIT_FARBA_BIELA;
 						_global_svaty2.kalendar = KALENDAR_VSEOBECNY_HU;
 					}// HU only
