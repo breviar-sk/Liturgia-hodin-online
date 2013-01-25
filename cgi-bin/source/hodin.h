@@ -139,22 +139,22 @@ const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 
 // the prefix for common parts of celebration
 const char *nazov_spolc_zospolc_jazyk[POCET_JAZYKOV + 1] =
-{"Zo spoloènej èasti", "Spoleèné texty", "", "", "", "", ""};
+{"Zo spoloènej èasti", "Spoleèné texty", "", "", "", "Spoleèné texty", "közös zsolozsmája"};
 
 const char *nazov_spolc_oficiumza_jazyk[POCET_JAZYKOV + 1] =
-{"Ofícium za", "Spoleèné texty", "", "", "", "", ""};
+{"Ofícium za", "Spoleèné texty", "", "", "", "Spoleèné texty", "közös zsolozsmája"};
 
 // the --CELEBRATION-- for common parts of celebration
 const char *nazov_spolc_sviatky_jazyk[POCET_JAZYKOV + 1] =
-{"na sviatky", "", "", "", "", "", ""};
+{"na sviatky", "na svátky", "", "", "", "na svátky", ""};
 
 // the --ANNIVERSARY-- for common parts of celebration
 const char *nazov_spolc_vyrocie_jazyk[POCET_JAZYKOV + 1] =
-{"na výroèie", "", "", "", "", "", ""};
+{"na výroèie", "na výroèí", "", "", "", "na výroèí", ""};
 
 // the --OR-- (alternative) for common parts of celebration
 const char *nazov_spolc_alebo_jazyk[POCET_JAZYKOV + 1] =
-{"<br/>alebo", "<br/>nebo", "<br/>or", "", "", "<br/>nebo", ""};
+{"<br/>alebo", "<br/>nebo", "<br/>or", "", "", "<br/>nebo", "<br/>vagy"};
 
 // the names of the common texts (e.g.: for bishops, for saint men, for apostles...)
 const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
@@ -197,7 +197,8 @@ const char *nazov_bit_opt_1_spomienka_spol_cast_jazyk[POCET_JAZYKOV + 1] =
  "", 
  "", 
  "byla zvolena možnost vzít pøi slavení památky nìkteré èasti ze dne podle Všeobecných pokynù k denní modlitbì Církve, è. 235 písm. b", 
- ""};
+ "az a lehetõség volt választva, hogy az emléknapoknál bizonyos részek vehetõk a soros köznapról; Általános Rendelkezések az Imaórák Liturgiájáról, 235 b"
+};
 
 // filenames - same for all languages (based on Slovak)
 const char *nazov_spolc_htm[POCET_SPOL_CASTI + 1] =

@@ -45,5 +45,9 @@ short int equalsi(char *, const char *);
 // funkcia mystr_replace() nahradí všetky vıskyty podreazca substr v reazci string reazcom replacement
 char *mystr_replace ( const char *string, const char *substr, const char *replacement );
 
-#endif /* __MYSTRING_H_ */
+// funkcia mystr_first_lower() aplikuje tolower() na prvı znak reazca
+char *mystr_first_lower ( const char *string );
+// funkcia mystr_first_upper() aplikuje toupper() na prvı znak reazca
+char *mystr_first_upper ( const char *string );
 
+#endif // __MYSTRING_H_

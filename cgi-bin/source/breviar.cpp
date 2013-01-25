@@ -1417,6 +1417,53 @@ void _export_link_show_hide(short int opt, short int bit, char popis_show[SMALL]
 	_global_opt[opt] = _global_opt_orig; // restore pÙvodnej hodnoty
 }
 
+// funkcia vyexportuje (vr·tane form·tovania) reùazec napr. "Zo spoloËnej Ëasti na sviatky duchovn˝ch pastierov: pre biskupov" s prÌpadn˝m dovetkom "pri sl·venÌ spomienky vziaù Ëasti zo dÚa podæa Vöeobecn˝ch smernÌc, Ë. 235 pÌsm. b"
+// parameter aj_vslh_235b: 
+// ANO == pouûitie v konkrÈtnej modlitbe, funkcia interpretParameter()
+// NIE == pouûitie v prehæade pre dan˝ d·tum, funkcia _export_rozbor_dna_buttons()
+void _export_global_string_spol_cast(short int aj_vslh_235b){
+	char pom[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	Log("-- _export_global_string_spol_cast(aj_vslh_235b == %d): zaËiatok...\n", aj_vslh_235b);
+
+	if(!equals(_global_string_spol_cast, STR_EMPTY)){
+		Log("-- _export_global_string_spol_cast(): exportujem reùazec `%s'...\n", _global_string_spol_cast);
+
+		// text o VSLH Ë. 235 b (pÙvodne sa prid·valo do reùazca _global_string_spol_cast vo funkcii init_global_string_spol_cast()
+		if((aj_vslh_235b == ANO) && ((_global_den.smer > 9) && ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)))){
+			if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SPOMIENKA_SPOL_CAST) != BIT_OPT_1_SPOMIENKA_SPOL_CAST){
+				strcat(pom, " (");
+				strcat(pom, nazov_bit_opt_1_spomienka_spol_cast_jazyk[_global_jazyk]);
+				strcat(pom, ")");
+			}// nebraù Ëasti zo spol. Ëasti
+		}// ide nanajv˝ö o spomienku (ak je to sl·venie s vyööÌm stupÚom, nem· zmysel voæba BIT_OPT_1_SPOMIENKA_SPOL_CAST)
+
+		Export("<"HTML_SPAN_RED_SMALL">");
+
+		// pre HU in˝ slovosled
+		if(_global_jazyk == JAZYK_HU){
+			Export("%s %s %s%s.", 
+				(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH)? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU)? nazov_spolc_vyrocie_jazyk[_global_jazyk]: nazov_spolc_sviatky_jazyk[_global_jazyk]): STR_EMPTY,
+				mystr_first_upper(_global_string_spol_cast),
+				(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH)? nazov_spolc_oficiumza_jazyk[_global_jazyk]: nazov_spolc_zospolc_jazyk[_global_jazyk],
+				pom);
+		}
+		else{
+			Export("%s %s %s%s.", 
+				(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH)? nazov_spolc_oficiumza_jazyk[_global_jazyk]: nazov_spolc_zospolc_jazyk[_global_jazyk], 
+				(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH)? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU)? nazov_spolc_vyrocie_jazyk[_global_jazyk]: nazov_spolc_sviatky_jazyk[_global_jazyk]): STR_EMPTY,
+				_global_string_spol_cast, 
+				pom);
+		}
+
+		Export("</span>\n");
+	}
+	else{
+		Log("-- _export_global_string_spol_cast(): pr·zdny reùazec.\n");
+	}
+	Log("-- _export_global_string_spol_cast(aj_vslh_235b == %d): koniec.\n", aj_vslh_235b);
+}// _export_global_string_spol_cast()
+
 //---------------------------------------------------------------------
 /*
  * _main_prazdny_formular();
@@ -2295,10 +2342,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	// short int _local_skip_in_prayer = _global_skip_in_prayer; // 2011-04-07: zapam‰t·me si pÙvodn˝ stav
 	// short int _global_opt_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deÚ (doplnkov· psalmÛdia)
 
-	char pom[MAX_STR];
-	mystrcpy(pom, STR_EMPTY, MAX_STR);
-	char pompom[MAX_STR];
-	mystrcpy(pompom, STR_EMPTY, MAX_STR);
 	short int zobrazit = NIE;
 	_struct_sc sc;
 
@@ -2966,12 +3009,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		if(zobrazit == ANO){
 			Log("including SPOL_CAST\n");
 			Export("spol_cast:begin-->");
-			if(!equals(_global_string_spol_cast, STR_EMPTY)){
-				Export("<p><"HTML_SPAN_RED_SMALL">%s %s %s.</span>\n", 
-					(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH)? nazov_spolc_oficiumza_jazyk[_global_jazyk]: nazov_spolc_zospolc_jazyk[_global_jazyk], 
-					(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH)? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU)? nazov_spolc_vyrocie_jazyk[_global_jazyk]: nazov_spolc_sviatky_jazyk[_global_jazyk]): STR_EMPTY,
-					_global_string_spol_cast);
-			}
+			Export(HTML_NEW_PARAGRAPH);
+			_export_global_string_spol_cast(ANO);
 			Export("<!--spol_cast:end");
 		}
 		else{
@@ -6084,30 +6123,23 @@ short int init_global_string_spol_cast(short int sc_jedna, short int poradie_sva
 
 		if((sc.a1 != MODL_SPOL_CAST_NEURCENA) && (sc.a1 != MODL_SPOL_CAST_NEBRAT)){
 			ret_sc = sc.a1;
-			strcat(_global_string_spol_cast, nazov_spolc(sc.a1));
+			strcat(_global_string_spol_cast, mystr_first_lower(nazov_spolc(sc.a1)));
 			if(sc.a2 != MODL_SPOL_CAST_NEURCENA){
 				strcat(_global_string_spol_cast, ", ");
 				strcat(_global_string_spol_cast, nazov_spolc_alebo_jazyk[_global_jazyk]);
 				strcat(_global_string_spol_cast, " ");
-				strcat(_global_string_spol_cast, nazov_spolc(sc.a2));
+				strcat(_global_string_spol_cast, mystr_first_lower(nazov_spolc(sc.a2)));
 				if(sc.a3 != MODL_SPOL_CAST_NEURCENA){
 					strcat(_global_string_spol_cast, ", ");
 					strcat(_global_string_spol_cast, nazov_spolc_alebo_jazyk[_global_jazyk]);
 					strcat(_global_string_spol_cast, " ");
-					strcat(_global_string_spol_cast, nazov_spolc(sc.a3));
+					strcat(_global_string_spol_cast, mystr_first_lower(nazov_spolc(sc.a3)));
 				}
 			}
 		}
 	}
 	else if((sc_jedna != MODL_SPOL_CAST_NEURCENA) && (sc_jedna != MODL_SPOL_CAST_NEBRAT)){
-		sprintf(_global_string_spol_cast, "%s", nazov_spolc(sc_jedna));
-		if((_global_den.smer > 9) && ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA))){
-			if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SPOMIENKA_SPOL_CAST) != BIT_OPT_1_SPOMIENKA_SPOL_CAST){
-				strcat(_global_string_spol_cast, " (");
-				strcat(_global_string_spol_cast, nazov_bit_opt_1_spomienka_spol_cast_jazyk[_global_jazyk]);
-				strcat(_global_string_spol_cast, ")");
-			}// nebraù Ëasti zo spol. Ëasti
-		}// ide nanajv˝ö o spomienku (ak je to sl·venie s vyööÌm stupÚom, nem· zmysel voæba BIT_OPT_1_SPOMIENKA_SPOL_CAST)
+		sprintf(_global_string_spol_cast, "%s", mystr_first_lower(nazov_spolc(sc_jedna)));
 	}
 	else{
 		mystrcpy(_global_string_spol_cast, STR_EMPTY, SMALL);
@@ -6701,10 +6733,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 					else{
 						Export("<!-- BEGIN:_global_string_spol_cast -->");
 					}
-					Export("<"HTML_SPAN_RED_SMALL">%s %s %s.</span>\n", 
-						(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH)? nazov_spolc_oficiumza_jazyk[_global_jazyk]: nazov_spolc_zospolc_jazyk[_global_jazyk], 
-						(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH)? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU)? nazov_spolc_vyrocie_jazyk[_global_jazyk]: nazov_spolc_sviatky_jazyk[_global_jazyk]): STR_EMPTY,
-						_global_string_spol_cast);
+					_export_global_string_spol_cast(NIE);
 					if(typ == EXPORT_DNA_XML){
 						Export(ELEM_END(XML_STRING_COMMUNIA)"\n");
 					}

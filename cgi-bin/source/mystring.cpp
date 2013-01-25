@@ -209,4 +209,29 @@ char *mystr_replace ( const char *string, const char *substr, const char *replac
 	return newstr;
 }
 
-#endif /* __MYSTRING_CPP_ */
+// funkcia mystr_first_lower() aplikuje tolower() na prvı znak reazca
+char *mystr_first_lower ( const char *string ){
+	char *newstr = NULL;
+	char c;
+	newstr = strdup (string);
+	c = newstr[0];
+	if (isupper(c)){
+		c = tolower(c);
+		newstr[0] = c;
+	}
+	return newstr;
+}
+// funkcia mystr_first_upper() aplikuje toupper() na prvı znak reazca
+char *mystr_first_upper ( const char *string ){
+	char *newstr = NULL;
+	char c;
+	newstr = strdup (string);
+	c = newstr[0];
+	if (islower(c)){
+		c = toupper(c);
+		newstr[0] = c;
+	}
+	return newstr;
+}
+
+#endif // __MYSTRING_CPP_
