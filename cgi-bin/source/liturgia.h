@@ -464,6 +464,7 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_RESPONZ       "RESPONZ" // PARAM_PLNE_RESP je už obsadené...
 #define PARAM_KRATSIE_PROSBY "KRATSIE-PROSBY" // 2012-11-15: _ sa menilo na &nbsp; preto som zmenil na -
 #define PARAM_ZALM95        "ZALM95" // 2012-11-23: kvôli <a name...>
+#define PARAM_VIGILIA       "VIGILIA"
 
 // dalsie parametre: specificke pre obdobie
 // Od nedele Pánovho zmàtvychvstania až do Druhej ve¾konoènej nedele vrátane, ako aj na druhé vešpery slávnosti Zoslania Ducha Svätého

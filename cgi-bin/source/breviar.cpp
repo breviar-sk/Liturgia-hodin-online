@@ -3029,6 +3029,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		|| (equals(paramname, PARAM_RESPONZ))
 		|| (equals(paramname, PARAM_NADPIS))
 		|| (equals(paramname, PARAM_KRATSIE_PROSBY))
+		|| (equals(paramname, PARAM_VIGILIA)) 
 		){
 		Log("  _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI == %d: \n", _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI);
 
@@ -3104,6 +3105,13 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			mystrcpy(specific_string, HTML_LINE_BREAK, SMALL);
 			sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option1_rubriky[_global_jazyk]);
 			sprintf(popis_hide, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_rubriky[_global_jazyk]);
+		}
+		else if(equals(paramname, PARAM_VIGILIA)){
+			bit = BIT_OPT_1_PC_VIGILIA;
+			podmienka &= (je_vigilia); // 2013-01-25: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní (prepínanie)
+			mystrcpy(specific_string, HTML_NEW_PARAGRAPH, SMALL);
+			sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option1_vigilia[_global_jazyk]);
+			sprintf(popis_hide, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_vigilia[_global_jazyk]);
 		}
 
 		// má zmysel len ak platí daná podmienka
@@ -8666,13 +8674,13 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY, NIE);
 			Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY, ANO, html_text_option1_vesp_kratsie_prosby_explain[_global_jazyk], ((_global_optf[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_VESP_KRATSIE_PROSBY) == BIT_OPT_1_VESP_KRATSIE_PROSBY)? html_option_checked: STR_EMPTY);
 			Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option1_vesp_kratsie_prosby_explain[_global_jazyk], html_text_option1_vesp_kratsie_prosby[_global_jazyk]);
-		}
 
-		// pole (checkbox) WWW_MODL_OPTF_1_VIGILIA
-		Export(HTML_LINE_BREAK);
-		Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_1_VIGILIA, NIE);
-		Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF_1_VIGILIA, ANO, html_text_option1_vigilia_explain[_global_jazyk], ((_global_optf[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PC_VIGILIA) == BIT_OPT_1_PC_VIGILIA)? html_option_checked: STR_EMPTY);
-		Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option1_vigilia_explain[_global_jazyk], html_text_option1_vigilia[_global_jazyk]);
+			// pole (checkbox) WWW_MODL_OPTF_1_VIGILIA
+			Export(HTML_LINE_BREAK);
+			Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_1_VIGILIA, NIE);
+			Export("<"HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s>\n", STR_MODL_OPTF_1_VIGILIA, ANO, html_text_option1_vigilia_explain[_global_jazyk], ((_global_optf[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PC_VIGILIA) == BIT_OPT_1_PC_VIGILIA)? html_option_checked: STR_EMPTY);
+			Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_option1_vigilia_explain[_global_jazyk], html_text_option1_vigilia[_global_jazyk]);
+		}
 
 		Export("</td></tr>\n");
 
