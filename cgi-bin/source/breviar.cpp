@@ -9340,7 +9340,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	char export_doplnkova_psalmodia[SMALL] = STR_EMPTY; // reùazec pre alternatÌvny s˙bor modlitby cez deÚ obsahuj˙ci doplnkov˙ psalmÛdiu
 	char pom[SMALL] = STR_EMPTY; // pomocn˝ reùazec (priliepanie parametrov do export_dalsie_parametre)
 	char export_dalsie_parametre[SMALL] = STR_EMPTY; // reùazec pre kalend·r (export_kalendar); 2011-11-30: pridan˝ do toho istÈho reùazca aj font
-	char export_fname_pattern[SMALL] = STR_EMPTY; // reùazec, ktor˝ sa prilepuje na koniec n·zvu s˙boru pre ne-append mÛd
+	char export_fname_pattern[MAX_STR] = STR_EMPTY; // reùazec, ktor˝ sa prilepuje na koniec n·zvu s˙boru pre ne-append mÛd // 2013-01-27: rozöÌrenÈ; pÙvodne bolo SMALL, Ëo ale niekedy nepostaËovalo (upozornil peter.chodelka@gmail.com)
 
 	Log("execute_batch_command(): zaËiatok...\n");
 
@@ -9483,6 +9483,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 					_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
 					a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
 				if(export_monthly_druh == 1){
+					Log("mY: export_monthly_druh == 1...\n");
 					if(a > 0)
 						sprintf(poradie_svateho, "/%d", a);
 					else
@@ -9496,6 +9497,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 		}// generovaù modlitbu
 	}
 	else{
+		Log("mY: modlitba urËen·...\n");
 		Log("execute_batch_command(): pre vöetky modlitby...\n");
 		fprintf(batch_export_file, "<li>%d. %s %d: \n", _global_den.den, nazov_mesiaca(_global_den.mesiac - 1), _global_den.rok);
 		for(i = MODL_INVITATORIUM; i < MODL_NEURCENA; i++){

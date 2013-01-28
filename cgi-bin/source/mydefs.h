@@ -65,7 +65,6 @@
 /***************************************************************/
 #include <stdio.h>
 
-#define BYTES 250
 #define SMALL 80
 #define VERY_SMALL 8
 
