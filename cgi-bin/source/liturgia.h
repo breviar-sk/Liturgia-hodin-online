@@ -401,9 +401,6 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define INCLUDE_BEGIN   "BEGIN" // zaciatok
 #define INCLUDE_END     "END"   // koniec
 
-// dummy anchor, filename
-#define STR_DUMMY "dummy"
-
 // parameter identifiers
 #define PARAM_POPIS         "POPIS"
 #define PARAM_HYMNUS        "HYMNUS"

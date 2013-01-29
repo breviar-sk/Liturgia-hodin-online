@@ -1650,8 +1650,8 @@ void set_popis(short int modlitba, char *file, char *anchor){
 
 void set_popis_dummy(void){
 	Log("  teraz nastavujem POPIS (dummy)...\n");
-	mystrcpy(_file, STR_DUMMY, MAX_STR_AF_FILE);
-	mystrcpy(_anchor, STR_DUMMY, MAX_STR_AF_ANCHOR);
+	mystrcpy(_file, STR_UNDEF, MAX_STR_AF_FILE);
+	mystrcpy(_anchor, STR_UNDEF, MAX_STR_AF_ANCHOR);
 	set_popis(MODL_RANNE_CHVALY, _file, _anchor); 
 	set_popis(MODL_POSV_CITANIE, _file, _anchor);
 	set_popis(MODL_VESPERY, _file, _anchor);

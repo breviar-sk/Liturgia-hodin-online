@@ -264,42 +264,42 @@ extern short int _global_opt_export_date_format;
 #define je_popis (( \
 (_global_modlitba == MODL_RANNE_CHVALY &&  \
 	(_global_modl_ranne_chvaly.popis.anchor != NULL) && (_global_modl_ranne_chvaly.popis.file != NULL) && \
-	!(equals(_global_modl_ranne_chvaly.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_ranne_chvaly.popis.file, STR_DUMMY)) \
+	!(equals(_global_modl_ranne_chvaly.popis.anchor, STR_UNDEF)) && !(equals(_global_modl_ranne_chvaly.popis.file, STR_UNDEF)) \
 ) \
 ||  \
 (_global_modlitba == MODL_VESPERY &&  \
 	(_global_modl_vespery.popis.anchor != NULL) && (_global_modl_vespery.popis.file != NULL) && \
-	!(equals(_global_modl_vespery.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_vespery.popis.file, STR_DUMMY)) \
+	!(equals(_global_modl_vespery.popis.anchor, STR_UNDEF)) && !(equals(_global_modl_vespery.popis.file, STR_UNDEF)) \
 ) \
 ||  \
 (_global_modlitba == MODL_POSV_CITANIE &&  \
 	(_global_modl_posv_citanie.popis.anchor != NULL) && (_global_modl_posv_citanie.popis.file != NULL) && \
-	!(equals(_global_modl_posv_citanie.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_posv_citanie.popis.file, STR_DUMMY)) \
+	!(equals(_global_modl_posv_citanie.popis.anchor, STR_UNDEF)) && !(equals(_global_modl_posv_citanie.popis.file, STR_UNDEF)) \
 ) \
 ||  \
 (_global_modlitba == MODL_PREDPOLUDNIM &&  \
 	(_global_modl_cez_den_9.popis.anchor != NULL) && (_global_modl_cez_den_9.popis.file != NULL) && \
-	!(equals(_global_modl_cez_den_9.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_cez_den_9.popis.file, STR_DUMMY)) \
+	!(equals(_global_modl_cez_den_9.popis.anchor, STR_UNDEF)) && !(equals(_global_modl_cez_den_9.popis.file, STR_UNDEF)) \
 ) \
 ||  \
 (_global_modlitba == MODL_NAPOLUDNIE &&  \
 	(_global_modl_cez_den_12.popis.anchor != NULL) && (_global_modl_cez_den_12.popis.file != NULL) && \
-	!(equals(_global_modl_cez_den_12.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_cez_den_12.popis.file, STR_DUMMY)) \
+	!(equals(_global_modl_cez_den_12.popis.anchor, STR_UNDEF)) && !(equals(_global_modl_cez_den_12.popis.file, STR_UNDEF)) \
 ) \
 ||  \
 (_global_modlitba == MODL_POPOLUDNI &&  \
 	(_global_modl_cez_den_3.popis.anchor != NULL) && (_global_modl_cez_den_3.popis.file != NULL) && \
-	!(equals(_global_modl_cez_den_3.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_cez_den_3.popis.file, STR_DUMMY)) \
+	!(equals(_global_modl_cez_den_3.popis.anchor, STR_UNDEF)) && !(equals(_global_modl_cez_den_3.popis.file, STR_UNDEF)) \
 ) \
 ||  \
 (_global_modlitba == MODL_INVITATORIUM &&  \
 	(_global_modl_invitatorium.popis.anchor != NULL) && (_global_modl_invitatorium.popis.file != NULL) && \
-	!(equals(_global_modl_invitatorium.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_invitatorium.popis.file, STR_DUMMY)) \
+	!(equals(_global_modl_invitatorium.popis.anchor, STR_UNDEF)) && !(equals(_global_modl_invitatorium.popis.file, STR_UNDEF)) \
 ) \
 ||  \
 (_global_modlitba == MODL_KOMPLETORIUM &&  \
 	(_global_modl_kompletorium.popis.anchor != NULL) && (_global_modl_kompletorium.popis.file != NULL) && \
-	!(equals(_global_modl_kompletorium.popis.anchor, STR_DUMMY)) && !(equals(_global_modl_kompletorium.popis.file, STR_DUMMY)) \
+	!(equals(_global_modl_kompletorium.popis.anchor, STR_UNDEF)) && !(equals(_global_modl_kompletorium.popis.file, STR_UNDEF)) \
 ) \
 ))
 
