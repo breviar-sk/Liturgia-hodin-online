@@ -1055,10 +1055,16 @@ const char *html_button_dnes_show[POCET_JAZYKOV + 1] = {"Zobrazi", "Uka", "Sho
 #define HTML_BUTTON_DNES_DEFAULTS	HTML_BUTTON_DET_DEFAULTS
 #endif
 
-// special button (today): Apply setting options
+// special button (today): Apply settings/options
 const char *html_button_dnes_apply[POCET_JAZYKOV + 1] = {"Potvrdi", "Potvrdit", "Apply", "___", "", "Potvrdit", "Alkalmaz"};
-#ifndef HTML_BUTTON_DNES_APPLY
-#define HTML_BUTTON_DNES_APPLY	html_button_dnes_apply[_global_jazyk]
+#ifndef HTML_BUTTON_DNES_APPLY_SETTINGS
+#define HTML_BUTTON_DNES_APPLY_SETTINGS	html_button_dnes_apply[_global_jazyk]
+#endif
+
+// special button (today): Apply options 2 (various choices)
+const char *html_button_dnes_apply2[POCET_JAZYKOV + 1] = {"Uloi", "Uloit", "Save", "___", "", "Uloit", "Alkalmaz"};
+#ifndef HTML_BUTTON_DNES_APPLY_CHOICES
+#define HTML_BUTTON_DNES_APPLY_CHOICES html_button_dnes_apply2[_global_jazyk]
 #endif
 
 // special button (today): Morning prayer with canticum of Zekariah
@@ -1142,21 +1148,21 @@ const char *html_text_dalsie_moznosti[POCET_JAZYKOV + 1] =
  "További lehetõségek választása:"};
 
 const char *html_text_dalsie_moznosti_1[POCET_JAZYKOV + 1] = 
-{"Vo¾by vybranıch detailov" /*(ovplyvnia všetky zvolené modlitby)*/, 
- "Volby pro vybrané detaily" /*(ovlivní všechny modlitby)*/, 
- "Choose from above (buttons)" /* or from the following options*/, 
+{"Nastavenia", 
+ "Nastavení", 
+ "Settings", 
  "", 
  "", 
- "Volby pro vybrané detaily" /*(ovlivní všechny modlitby)*/, 
- "Egyes részletek választása" /*(befolyásolja az összes kiválasztott imaórát)*/};
+ "Nastavení", 
+ "Beállítások"};
 
 const char *html_text_dalsie_moznosti_2[POCET_JAZYKOV + 1] = 
-{"Vo¾by pre ïalšie zobrazenia", 
- "Volby pro další zobrazení", 
- "Choose from above (buttons) or from the following options", 
+{"Ïalšie zobrazenia", 
+ "Další zobrazení", 
+ "Other options", 
  "", 
  "", 
- "Volby pro další zobrazení", 
+ "Další zobrazení", 
  "Más megjelenítési lehetõségek"};
 
 const char *html_text_prik_sviatky_atd[POCET_JAZYKOV + 1] = {"prikázané sviatky a slávnosti Pána v roku ", "zasvìcené svátky a slavnosti Pánì v roce ", "obligatory celebrations in year ", "", "", "zasvìcené svátky a slavnosti Pánì v roce", "kötelezõ ünnepek"};
@@ -1473,17 +1479,17 @@ const char *html_text_option1_nemenne_sucasti_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option1_dalsie_prepinace[POCET_JAZYKOV + 1] = 
-{"ïalšie monosti pre vısledné modlitby",
- "další monosti pro vısledné modlitby",
- "futher options for generated prayers",
+{"monosti pre vısledné modlitby",
+ "monosti pro vısledné modlitby",
+ "options for generated prayers",
  "", 
  "", 
- "další monosti pro vısledné modlitby",
+ "monosti pro vısledné modlitby",
  "egyéb választási lehetõségek:"
 };
 
 const char *html_text_option1_dalsie_prepinace_explain[POCET_JAZYKOV + 1] = 
-{"Rozlièné alterantívne vıbery pre vısledné modlitby.", 
+{"Rozlièné monosti/vıbery pre vısledné modlitby.", 
  "", 
  "", 
  "",
@@ -2194,6 +2200,66 @@ const char *html_text_option2_nocny_rezim_explain[POCET_JAZYKOV + 1] =
  "Zobrazí svìtlı text na tmavém pozadí.",
  "Megmutatja világos szöveg sötét háttér.",
 };
+
+const char *html_text_option2_alternatives[POCET_JAZYKOV + 1] = 
+{"alternatívy",
+ "alternativy",
+ "alternatives", 
+ "",
+ "",
+ "alternativy",
+ "hu_alternatívy", 
+};
+const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] = 
+{"Zobrazí v texte modlitieb iba jednu monos, napr. hymnus pre kompletórium (dá sa prepína).",
+ "Zobrazí v textu modliteb jenom jedno monost (je moné pøepínat).",
+ "xxx", 
+ "",
+ "", 
+ "Zobrazí v textu modliteb jenom jedno monost (je moné pøepínat).",
+ "Megmutatja ...",
+};
+
+const char *html_text_option5_KomplHymnusA[POCET_JAZYKOV + 1] = 
+{"hymnus Na sklonku dòa",
+ "hymnus A",
+ "hymnus A", 
+ "",
+ "",
+ "hymnus A",
+ "hymnus A", 
+};
+
+const char *html_text_option5_KomplHymnusB[POCET_JAZYKOV + 1] = 
+{"hymnus Kriste, ty svetlo",
+ "hymnus B",
+ "hymnus B", 
+ "",
+ "",
+ "hymnus B",
+ "hymnus B", 
+};
+
+const char *html_text_option5_PCHymnusI[POCET_JAZYKOV + 1] = 
+{"hymnus I. Ak je posvätné èítanie v_noci alebo vèasráno",
+ "hymnus I.",
+ "hymnus I.",
+ "",
+ "",
+ "hymnus I.",
+ "hymnus I.",
+};
+
+const char *html_text_option5_PCHymnusII[POCET_JAZYKOV + 1] = 
+{"hymnus II. Ak je posvätné èítanie cez deò",
+ "hymnus II.",
+ "hymnus II.",
+ "",
+ "",
+ "hymnus II.",
+ "hymnus II.",
+};
+
 
 // 2011-05-06: doplnené
 const char *html_text_font_name[POCET_JAZYKOV + 1] = 

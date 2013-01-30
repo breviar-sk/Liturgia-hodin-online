@@ -55,7 +55,7 @@ char cfg_http_display_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
 
 const char *cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] = 
-{"specialne", "casti_modlitby", "html_export", "", "offline_export", "http_adresa", "http_zobraz_adr", "mail_adresa"};
+{"specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "http_adresa", "http_zobraz_adr", "mail_adresa"};
 #define ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX "_"
 const char *cfg_option_postfix[POCET_JAZYKOV + 1] = 
 {"def", "cz", "en", "la", "", "czop", "hu"};
@@ -287,6 +287,10 @@ void readConfig(void)
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_HIDE_OPTIONS2) != BIT_OPT_2_HIDE_OPTIONS2){
 				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_HIDE_OPTIONS2;
+			}
+			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_ALTERNATIVES) != BIT_OPT_2_ALTERNATIVES){
+				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES);
+				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_ALTERNATIVES;
 			}
 		}
 		else{

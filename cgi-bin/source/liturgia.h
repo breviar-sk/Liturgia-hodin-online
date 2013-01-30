@@ -63,6 +63,7 @@
 /*   2011-04-13a.D. | reùazcovÈ funkcie equals() presunutÈ     */
 /*   2011-05-11a.D. | vytvorenÈ: _vytvor_string_z_datumu()     */
 /*   2011-10-07a.D. | vymenenÈ konötanty RCH <-> posv.ËÌt.     */
+/*   2013-01-29a.D. | option 5 pre alternatÌvy v textoch       */
 /*                                                             */
 /*                                                             */
 /***************************************************************/
@@ -154,6 +155,10 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define FONT_SIZE_X_LARGE 	7
 #define FONT_SIZE_XX_LARGE	8
 
+// 2013-01-29: alternatÌvy pre niektorÈ Ëasti modlitby
+#define BIT_ALT_HYMNUS     1
+#define BIT_ALT_ANTCHVAL   2
+
 // nasledovne 2 definovane 2003-08-13; zmenene 2004-04-28 (12->16)
 #define MAX_STR_AF_FILE   16
 #define MAX_STR_AF_ANCHOR 23
@@ -181,6 +186,7 @@ typedef struct _anchor_and_file _struct_anchor_and_file;
 // prosby ostavaju pre posvatne citania nedefinovane
 
 struct tmodlitba1{
+	short int alternativy; // bitovÈ komponenty hovoria, ktorÈ Ëasti mÙûu maù alternatÌvy
 	_struct_anchor_and_file popis     ;
 	_struct_anchor_and_file hymnus    ;
 	_struct_anchor_and_file antifona1 ;
@@ -203,6 +209,7 @@ typedef struct tmodlitba1 _type_1vespery;
 // typedef struct tmodlitba1 _type_posv_citanie;
 
 struct tmodlitba2{
+	short int alternativy; // bitovÈ komponenty hovoria, ktorÈ Ëasti mÙûu maù alternatÌvy
 	_struct_anchor_and_file popis     ;
 	_struct_anchor_and_file hymnus    ;
 	_struct_anchor_and_file antifona1 ;
@@ -224,6 +231,7 @@ typedef struct tmodlitba2 _type_cez_den_na;
 typedef struct tmodlitba2 _type_cez_den_po;
 
 struct tmodlitba3{
+	short int alternativy; // bitovÈ komponenty hovoria, ktorÈ Ëasti mÙûu maù alternatÌvy
 	short int pocet_zalmov            ; // pridanÈ 2006-10-18; niekedy s˙ aû 2 ûalmy
 	_struct_anchor_and_file popis     ; // pridanÈ 2006-10-11; zruöenÈ antifona2, zalm2 a modlitba
 	_struct_anchor_and_file hymnus    ;
@@ -247,6 +255,7 @@ typedef struct tmodlitba4 _type_invitatorium;
 
 // 2011-03-25: pre posv‰tnÈ ËÌtanie kvÙli sl·veniu vigÌliÌ nov˝ typ
 struct tmodlitba5{
+	short int alternativy; // bitovÈ komponenty hovoria, ktorÈ Ëasti mÙûu maù alternatÌvy
 	_struct_anchor_and_file popis     ;
 	_struct_anchor_and_file hymnus    ;
 	_struct_anchor_and_file antifona1 ;
@@ -462,6 +471,8 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_KRATSIE_PROSBY "KRATSIE-PROSBY" // 2012-11-15: _ sa menilo na &nbsp; preto som zmenil na -
 #define PARAM_ZALM95        "ZALM95" // 2012-11-23: kvÙli <a name...>
 #define PARAM_VIGILIA       "VIGILIA"
+
+#define PARAM_ALT_HYMNUS    "ALT-HYMNUS"
 
 // dalsie parametre: specificke pre obdobie
 // Od nedele P·novho zm‡tvychvstania aû do Druhej veækonoËnej nedele vr·tane, ako aj na druhÈ veöpery sl·vnosti Zoslania Ducha Sv‰tÈho
@@ -1234,6 +1245,7 @@ extern short int _global_pocet_svatych;
 #define OPT_2_HTML_EXPORT          2
 #define OPT_3_SPOLOCNA_CAST        3
 #define OPT_4_OFFLINE_EXPORT       4
+#define OPT_5_ALTERNATIVES         5
 
 // glob·lna premenn· -- pole -- obsahuj˙ca options; pÙvodne to boli glob·lne premennÈ _global_opt 1..9 atÔ., obsahuj˙ pom_MODL_OPT...
 extern short int _global_opt[POCET_GLOBAL_OPT];
@@ -1267,7 +1279,7 @@ extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_ZOBRAZ_SPOL_CAST       4096
 #define BIT_OPT_1_VESP_KRATSIE_PROSBY    8192 // 1 = pouûiù (pre ktor˝koævek deÚ v roku) kratöie prosby k veöper·m
 
-#define POCET_OPT_2_HTML_EXPORT            14 // jednotlivÈ komponenty option 2 -- bity pre force option 2
+#define POCET_OPT_2_HTML_EXPORT            15 // jednotlivÈ komponenty option 2 -- bity pre force option 2
 extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: ˙prava v˝znamu (a interpret·cie) option 2 (rozliËnÈ prepÌnaËe pre [online aj offline] export, napr. tlaËidl·, zobrazenie d·tumov a podobne)
 // 2012-10-01: doplnenÈ Ôalöie komponenty najm‰ pre vzhæad ˙vodnej obrazovky
@@ -1285,11 +1297,17 @@ extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_HIDE_KALENDAR          2048 // 1 = skryù kalend·rik pre "dnes"
 #define BIT_OPT_2_HIDE_OPTIONS1          4096 // 1 = skryù html_text_dalsie_moznosti_1[] pre "dnes"
 #define BIT_OPT_2_HIDE_OPTIONS2          8192 // 1 = skryù html_text_dalsie_moznosti_2[] pre "dnes"
+#define BIT_OPT_2_ALTERNATIVES          16384 // 1 = uk·zaù iba jednu alternatÌvu (0 = ako doteraz; buÔ systÈm vyberie, alebo uk·ûe vöetky moûnosti)
 
 #define POCET_OPT_4_OFFLINE_EXPORT          1 // jednotlivÈ komponenty option 4 -- bity pre force option 4
 extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: ˙prava v˝znamu (a interpret·cie) option 4 (rozliËnÈ prepÌnaËe pre offline export, napr. aj batch mÛd)
 #define BIT_OPT_4_MESIAC_RIADOK             1
+
+#define POCET_OPT_5_ALTERNATIVES            2 // jednotlivÈ komponenty option 5 -- bity pre force option 5
+extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
+#define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletÛrium (CezroËnÈ obdobie, A/B)
+#define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posv‰tnÈ ËÌtanie (CezroËnÈ obdobie, I./II.)
 
 // globalna premenna, co obsahuje string vypisany na obsazovku
 extern char *_global_string;
@@ -1444,6 +1462,7 @@ void analyzuj_rok(short int year);
 
 // 2010-05-21: rozöÌrenÈ kvÙli spomienkam a æubovoæn˝m spomienkam v pÙstnom obdobÌ (zobrazenie po modlitbe dÚa pÙstnej fÈrie)
 #define _INIT_TMODLITBA1(a) {\
+	a.alternativy = 0; \
 	_INIT_ANCHOR_AND_FILE(a.popis); \
 	_INIT_ANCHOR_AND_FILE(a.hymnus); \
 	_INIT_ANCHOR_AND_FILE(a.antifona1); \
@@ -1462,6 +1481,7 @@ void analyzuj_rok(short int year);
 };
 
 #define _INIT_TMODLITBA2(a) {\
+	a.alternativy = 0; \
 	_INIT_ANCHOR_AND_FILE(a.popis); \
 	_INIT_ANCHOR_AND_FILE(a.hymnus); \
 	_INIT_ANCHOR_AND_FILE(a.antifona1); \
@@ -1477,6 +1497,7 @@ void analyzuj_rok(short int year);
 
 // 2006-10-11 doplnenÈ
 #define _INIT_TMODLITBA3(a) {\
+	a.alternativy = 0; \
 	a.pocet_zalmov = 1;\
 	_INIT_ANCHOR_AND_FILE(a.popis); \
 	_INIT_ANCHOR_AND_FILE(a.hymnus); \
@@ -1498,6 +1519,7 @@ void analyzuj_rok(short int year);
 
 // 2011-03-25: doplnenÈ pre posv‰tnÈ ËÌtanie
 #define _INIT_TMODLITBA5(a) {\
+	a.alternativy = 0; \
 	_INIT_ANCHOR_AND_FILE(a.popis); \
 	_INIT_ANCHOR_AND_FILE(a.hymnus); \
 	_INIT_ANCHOR_AND_FILE(a.antifona1); \
