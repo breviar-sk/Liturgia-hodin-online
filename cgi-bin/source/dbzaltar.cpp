@@ -583,6 +583,38 @@ void _set_hymnus_alternativy(short int modlitba){
 	}// switch(modlitba)
 }// _set_hymnus_alternativy()
 
+void _set_hymnus_alternativy_NO(short int modlitba){
+	switch(modlitba){
+		case MODL_PRVE_KOMPLETORIUM:
+			_global_modl_prve_kompletorium.alternativy -= ((_global_modl_prve_kompletorium.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
+			break;
+		case MODL_KOMPLETORIUM:
+			_global_modl_kompletorium.alternativy -= ((_global_modl_kompletorium.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
+			break;
+		case MODL_RANNE_CHVALY:
+			_global_modl_ranne_chvaly.alternativy -= ((_global_modl_ranne_chvaly.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
+			break;
+		case MODL_POSV_CITANIE:
+			_global_modl_posv_citanie.alternativy -= ((_global_modl_posv_citanie.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
+			break;
+		case MODL_CEZ_DEN_9:
+			_global_modl_cez_den_9.alternativy -= ((_global_modl_cez_den_9.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
+			break;
+		case MODL_CEZ_DEN_12:
+			_global_modl_cez_den_12.alternativy -= ((_global_modl_cez_den_12.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
+			break;
+		case MODL_CEZ_DEN_3:
+			_global_modl_cez_den_3.alternativy -= ((_global_modl_cez_den_3.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
+			break;
+		case MODL_VESPERY:
+			_global_modl_vespery.alternativy -= ((_global_modl_vespery.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
+			break;
+		case MODL_PRVE_VESPERY:
+			_global_modl_prve_vespery.alternativy -= ((_global_modl_prve_vespery.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
+			break;
+	}// switch(modlitba)
+}// _set_hymnus_alternativy_NO()
+
 void _set_hymnus(short int modlitba, const char *file, const char *anchor){
 	switch(modlitba){
 		case MODL_PRVE_KOMPLETORIUM:
@@ -1237,8 +1269,11 @@ char pismenko_modlitby(short int modlitba){
 }// pismenko_modlitby();
 
 void anchor_name_zaltar(short int den, short int tyzzal, short int modlitba, const char *anchor){
-	sprintf(_anchor, "_%d%s%c_%s",
-		tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor);
+	sprintf(_anchor, "_%d%s%c_%s", tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor);
+}
+
+void anchor_name_zaltar_alt(short int den, short int tyzzal, short int modlitba, const char *anchor, short int alt){
+	sprintf(_anchor, "_%d%s%c_%s%d", tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor, alt);
 }
 
 // 2007-09-27: kvÙli debugovaniu pod Ruby zruöenÈ koment·re vo v˝pisoch
@@ -1250,6 +1285,7 @@ void anchor_name_zaltar(short int den, short int tyzzal, short int modlitba, con
 void set_hymnus(short int den, short int tyzzal, short int modlitba){
 	Log("set_hymnus(): zaËiatok\n");
 	short int ktory; // 0 alebo 1
+	short int bit;
 	// 2006-10-13: pridanÈ Ëasti pre kompletÛrium
 	// 2006-12-04: hymnus pre kompletÛrium je v Ëeskej verzii pre kaûd˝ deÚ in˝
 	// 2008-12-16: toto vöak neplatÌ pre Ëesk˝ dominik·nsk˝ brevi·¯
@@ -1280,7 +1316,10 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba){
 			){ // 2008-12-20: predpÌsan˝ v 1., 3. a 5. t˝ûdni "Na sklonku dÚa", pre 2. a 4. t˝ûdeÚ hymnus "Kriste, ty svetlo"
 				ktory = (tyzzal + 1) % 2;
 			}
-			else if(_global_jazyk != JAZYK_CZ_OP){
+			// 2013-01-30: pÙvodne chceli ËeskÌ dominik·ni, aby sa hymnus striedal po t˝ûdÚoch:
+			// ktory = (tyzzal) % 2;
+			// preto to bola eöte jedna podmienka; keÔûe je moûnosù to vyberaù, bolo zruöenÈ
+			else{
 				Log("set_hymnus(): kompletÛrium...\n");
 				// 2013-01-29: pÙvodne tu bol n·hodn˝ v˝ber (podæa (den + tyzzal) % 2); upravenÈ, ak si Ëlovek s·m volÌ alternatÌvy
 				if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ALTERNATIVES) == BIT_OPT_2_ALTERNATIVES){
@@ -1293,10 +1332,6 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba){
 					ktory = 2; // obidva!
 				}
 			}
-			else{
-				// (_global_jazyk == JAZYK_CZ_OP)
-				ktory = (tyzzal) % 2;
-			}
 			sprintf(_anchor, "%c_%s_%d", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, ktory);
 		}
 		_set_hymnus(modlitba, _file, _anchor);
@@ -1307,32 +1342,55 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba){
 		// 2003-08-15: pridana modlitba cez den, ma hymny rovnake pre cele obdobie cez rok 
 		// 2008-04-08: pre mcd v Ëeskom brevi·ri je pre cezroËnÈ obdobie moûnÈ braù buÔ hymnus zo ûalt·ra,
 		//             alebo pre 1./3. (1) resp. 2./4. (2) t˝ûdeÚ ûalt·ra z "vlastnej Ëasti" pre 
+		switch(modlitba){
+			case MODL_PREDPOLUDNIM: bit = BIT_OPT_5_HYMNUS_MCD_PREDPOL; break;
+			case MODL_NAPOLUDNIE:   bit = BIT_OPT_5_HYMNUS_MCD_NAPOL; break;
+			case MODL_POPOLUDNI:    bit = BIT_OPT_5_HYMNUS_MCD_POPOL; break;
+		}// switch(modlitba)
 		file_name_litobd(OBD_CEZ_ROK);
 		if(_global_jazyk == JAZYK_CZ){
-			sprintf(_anchor, "%c_%s_%d_%s", 
-				pismenko_modlitby(modlitba), ANCHOR_HYMNUS, (2 - (tyzzal % 2)), nazov_DN_asci[den]);
+			sprintf(_anchor, "%c_%s_%d_%s", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, (2 - (tyzzal % 2)), nazov_DN_asci[den]);
 		}
-		else if(_global_jazyk != JAZYK_CZ_OP){
-			sprintf(_anchor, "%c_%s_%d", 
-				pismenko_modlitby(modlitba), ANCHOR_HYMNUS, (den + tyzzal) % 2);
-		}
-		else /* if(_global_jazyk == JAZYK_CZ_OP) */{
-			sprintf(_anchor, "%c_%s_%d", 
-				pismenko_modlitby(modlitba), ANCHOR_HYMNUS, (tyzzal) % 2);
+		// 2013-01-30: pÙvodne chceli ËeskÌ dominik·ni, aby sa hymnus striedal po t˝ûdÚoch:
+		// ktory = (tyzzal) % 2;
+		// preto to bola eöte jedna podmienka; keÔûe je moûnosù to vyberaù, bolo zruöenÈ
+		else{
+			Log("set_hymnus(): modlitba cez deÚ...\n");
+			// 2013-01-29: pÙvodne tu bol n·hodn˝ v˝ber (podæa (den + tyzzal) % 2); upravenÈ, ak si Ëlovek s·m volÌ alternatÌvy
+			if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ALTERNATIVES) == BIT_OPT_2_ALTERNATIVES){
+				// podæa nastavenia _global_opt[OPT_5_ALTERNATIVES]
+				ktory = ((_global_opt[OPT_5_ALTERNATIVES] & bit) == bit)? 1: 0;
+				Log("2013-01-29: som tu (%d)...\n", ktory);
+			}
+			else{
+				// n·hodn˝ v˝ber | ktory = (den + tyzzal) % 2;
+				ktory = 2; // obidva!
+			}
+			sprintf(_anchor, "%c_%s_%d", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, ktory);
 		}
 		_set_hymnus(modlitba, _file, _anchor);
 		set_LOG_zaltar;
 	}// mcd
 	else{ // nie modlitba cez den
-		// prvy a treti, resp. druhy a stvrty tyzden maju rovnake
-		if(tyzzal == 3)
-			tyzzal = 1;
-		else if(tyzzal == 4)
-			tyzzal = 2;
+		// prv˝ a tretÌ, resp. druh˝ a ötvrt˝ t˝ûdeÚ maj˙ rovnakÈ hymny | pre tyzzal == 3 d· tyzzal = 1; pre tyzzal == 4 d· tyzzal = 2
+		if((tyzzal == 3) || (tyzzal == 4)){
+			tyzzal -= 2;
+		}
 		// 2005-03-26: Pridane odvetvenie pre posvatne citania
 		if(modlitba == MODL_POSV_CITANIE){
+			Log("set_hymnus(): posv. ËÌtanie...\n");
 			file_name_litobd_pc(OBD_CEZ_ROK);
-			anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_HYMNUS);
+			// pre Ëesk˙ LH nie s˙ ötandardnÈ hymny
+			if((_global_jazyk != JAZYK_CZ) && ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ALTERNATIVES) == BIT_OPT_2_ALTERNATIVES)){
+				// podæa nastavenia _global_opt[OPT_5_ALTERNATIVES]
+				ktory = ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_HYMNUS_PC) == BIT_OPT_5_HYMNUS_PC)? 1: 0;
+				Log("2013-01-30: som tu (%d)...\n", ktory);
+				anchor_name_zaltar_alt(den, tyzzal, modlitba, ANCHOR_HYMNUS, ktory);
+			}
+			else{
+				ktory = 2; // obidva (neprilepuje sa, ost·va pÙvodn· kotva bez ËÌsla)
+				anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_HYMNUS);
+			}
 			_set_hymnus(modlitba, _file_pc, _anchor);
 			set_LOG_litobd_pc;
 		}
@@ -1647,11 +1705,10 @@ void set_modlitba(short int den, short int tyzzal, short int modlitba, short int
 	}
 	else{
 		if((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI)){
-			// 2005-03-27: pre modlitbu cez den: prvy a treti, resp. druhy a stvrty tyzden maju rovnake
-			if(tyzzal == 3)
-				tyzzal = 1;
-			else if(tyzzal == 4)
-				tyzzal = 2;
+			// 2005-03-27: pre modlitbu cez deÚ: prv˝ a tretÌ, resp. druh˝ a ötvrt˝ t˝ûdeÚ maj˙ rovnakÈ
+			if((tyzzal == 3) || (tyzzal == 4)){
+				tyzzal -= 2;
+			}
 		}
 		file_name_zaltar(den, tyzzal);
 		anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_MODLITBA);
@@ -1662,11 +1719,10 @@ void set_modlitba(short int den, short int tyzzal, short int modlitba, short int
 }// set_modlitba()
 
 void set_benediktus(short int den, short int tyzzal, short int modlitba){
-	// prvy a treti, resp. druhy a stvrty tyzden maju rovnake
-	if(tyzzal == 3)
-		tyzzal = 1;
-	else if(tyzzal == 4)
-		tyzzal = 2;
+	// prv˝ a tretÌ, resp. druh˝ a ötvrt˝ t˝ûdeÚ maj˙ rovnakÈ
+	if((tyzzal == 3) || (tyzzal == 4)){
+		tyzzal -= 2;
+	}
 	file_name_zaltar(den, tyzzal);
 	anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_BENEDIKTUS);
 	_set_benediktus(modlitba, _file, _anchor);
@@ -1674,11 +1730,10 @@ void set_benediktus(short int den, short int tyzzal, short int modlitba){
 }// set_benediktus();
 
 void set_magnifikat(short int den, short int tyzzal, short int modlitba){
-	// prvy a treti, resp. druhy a stvrty tyzden maju rovnake
-	if(tyzzal == 3)
-		tyzzal = 1;
-	else if(tyzzal == 4)
-		tyzzal = 2;
+	// prv˝ a tretÌ, resp. druh˝ a ötvrt˝ t˝ûdeÚ maj˙ rovnakÈ
+	if((tyzzal == 3) || (tyzzal == 4)){
+		tyzzal -= 2;
+	}
 	file_name_zaltar(den, tyzzal);
 	anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_MAGNIFIKAT);
 	_set_magnifikat(modlitba, _file, _anchor);
@@ -3812,17 +3867,18 @@ void _set_zalmy_sviatok_muc_ofm(short int modlitba){
 	set_LOG_litobd;\
 }
 
-/* 2007-11-14: zjednotenÈ definy pre pÙvodnÈ: 
- * 	_troj_hymnus     , _troj_kresponz     , _troj_ne_antifony     
- * 	_krkrala_hymnus  , _krkrala_kresponz  , _krkrala_ne_antifony 
- * 	_telakrvi_hymnus , _telakrvi_kresponz , _telakrvi_ne_antifony
- * 	_srdca_hymnus    , _srdca_kresponz    , _srdca_ne_antifony   
- * 	_krst_hymnus     , _krst_kresponz     , _krst_ne_antifony    
- * 	_zds_hymnus      , _zds_kresponz      , _zds_antifony        
- * samostatne ostali jedine: _bohorod_hymnus a _sv_rodiny_hymnus
- * resp. _bohorod_kresponz a _sv_rodiny_kresponz
- */
+// 2007-11-14: zjednotenÈ definy pre pÙvodnÈ: 
+// 	_troj_hymnus     , _troj_kresponz     , _troj_ne_antifony     
+// 	_krkrala_hymnus  , _krkrala_kresponz  , _krkrala_ne_antifony 
+// 	_telakrvi_hymnus , _telakrvi_kresponz , _telakrvi_ne_antifony
+// 	_srdca_hymnus    , _srdca_kresponz    , _srdca_ne_antifony   
+// 	_krst_hymnus     , _krst_kresponz     , _krst_ne_antifony    
+// 	_zds_hymnus      , _zds_kresponz      , _zds_antifony        
+// samostatne ostali jedine: _bohorod_hymnus a _sv_rodiny_hymnus
+// resp. _bohorod_kresponz a _sv_rodiny_kresponz
+// 2013-01-30: pre CezroËnÈ obdobie treba zruöiù moûnosù braù alternatÌvy hymnov (I. resp. II.)
 #define _vlastne_slavenie_hymnus(vlastny_anchor) {\
+	_set_hymnus_alternativy_NO(modlitba);\
 	sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 	_set_hymnus(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
@@ -5806,7 +5862,13 @@ label_24_DEC:
 	// 2006-01-24: tu v skutoËnosti zaËÌna CEZRO»N… OBDOBIE
 
 			// 2013-01-29: nastavenie moûnosti alternatÌvnych hymnov pre posv. ËÌtanie a kompletÛrium
-			_set_hymnus_alternativy(MODL_KOMPLETORIUM);
+			if(_global_jazyk != JAZYK_CZ){
+				_set_hymnus_alternativy(MODL_KOMPLETORIUM);
+				_set_hymnus_alternativy(MODL_PREDPOLUDNIM);
+				_set_hymnus_alternativy(MODL_NAPOLUDNIE);
+				_set_hymnus_alternativy(MODL_POPOLUDNI);
+				_set_hymnus_alternativy(MODL_POSV_CITANIE);
+			}
 
 			// najprv treba skontrolovat, ci nejde o nedelu, na ktoru pripadol sviatok Premenenia Pana (6. augusta); 
 			// ak ano, tak nenastavuj nic, lebo vsetko sa nastavilo vo funkcii sviatky_svatych()
@@ -8221,10 +8283,16 @@ short int _spol_cast_je_panna(_struct_sc sc){
 // nastavenie jednotlivych parametrov modlitby -- predpoklad je, ze premenna modlitba ma spravne nastavenu konstantu MODL_...
 
 // hymnus
+// 2013-01-30: pre CezroËnÈ obdobie treba zruöiù moûnosù braù alternatÌvy hymnov (posv. ËÌtanie, I. resp. II.)
 #define _vlastna_cast_hymnus {\
+	_set_hymnus_alternativy_NO(modlitba);\
 	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
-	if(modlitba == MODL_POSV_CITANIE){_set_hymnus(modlitba, _file_pc, _anchor);}\
-	else{_set_hymnus(modlitba, _file, _anchor);}\
+	if(modlitba == MODL_POSV_CITANIE){\
+		_set_hymnus(modlitba, _file_pc, _anchor);\
+	}\
+	else{\
+		_set_hymnus(modlitba, _file, _anchor);\
+	}\
 	set_LOG_svsv;}
 // antifÛny
 // kedysi tam pred celym blokom bolo if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) 
@@ -8522,17 +8590,14 @@ short int _spol_cast_je_panna(_struct_sc sc){
 	set_LOG_svsv;\
 }
 
-/* ... a spolocnu cast full 
- * 2005-07-27: upravenÈ / nahradenÈ _vlastna_cast_kresponz reùazcom _spolocna_cast_kresponz
- * kvÙli posv‰tn˝m ËÌtaniam, viÔ niûöie 
- * 2005-08-16: nahraden· "_vlastna_cast_hymnus" novou funkciou "_spolocna_cast_hymnus"
- *
- * 2009-01-07: dorobenÈ debug v˝pisy
- * 2009-09-18: novÈ parametre; Log("brat_antifony == %d\n", brat_antifony);
- * 2010-09-10: pre posv. ËÌtanie sa responz medzi psalmÛdiou a 1. ËÌtanÌm berie len v prÌpade, ûe sa berie vlastnÈ 1. ËÌtanie
- * 2011-08-12: doplnenÈ pouûitie pre modlitbu cez deÚ; modlitba sa pouûije zo spoloËnej Ëasti len pre sl·vnosti a sviatky (in·Ë sa MCD berie zo dÚa, bod Ë. 236 vöeobecn˝ch smernÌc)
- * 2011-08-13: zohæadnenie bodov 229, 232, 236
- */
+// ... a spolocnu cast full 
+// 2005-07-27: upravenÈ / nahradenÈ _vlastna_cast_kresponz reùazcom _spolocna_cast_kresponz kvÙli posv‰tn˝m ËÌtaniam, viÔ niûöie 
+// 2005-08-16: nahraden· "_vlastna_cast_hymnus" novou funkciou "_spolocna_cast_hymnus"
+// 2009-01-07: dorobenÈ debug v˝pisy
+// 2009-09-18: novÈ parametre; Log("brat_antifony == %d\n", brat_antifony);
+// 2010-09-10: pre posv. ËÌtanie sa responz medzi psalmÛdiou a 1. ËÌtanÌm berie len v prÌpade, ûe sa berie vlastnÈ 1. ËÌtanie
+// 2011-08-12: doplnenÈ pouûitie pre modlitbu cez deÚ; modlitba sa pouûije zo spoloËnej Ëasti len pre sl·vnosti a sviatky (in·Ë sa MCD berie zo dÚa, bod Ë. 236 vöeobecn˝ch smernÌc)
+// 2011-08-13: zohæadnenie bodov 229, 232, 236
 #define _spolocna_cast_full(modl) {\
 	Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);\
 	Log("force = %d\n", force);\
@@ -8616,8 +8681,10 @@ short int _spol_cast_je_panna(_struct_sc sc){
 }
 
 // 2005-08-08: potrebujeme individualny hymnus pre spolocnu cast - berie sa z ineho suboru ako vlastna cast
+// 2013-01-30: pre CezroËnÈ obdobie treba zruöiù moûnosù braù alternatÌvy hymnov (posv. ËÌtanie, I. resp. II.)
 #define _spolocna_cast_hymnus {\
 	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){\
+		_set_hymnus_alternativy_NO(modlitba);\
 		sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 		_set_hymnus(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
@@ -26471,6 +26538,9 @@ label_25_MAR:
 						modlitba = MODL_POSV_CITANIE;
 						// 2010-01-08: ak padne toto sl·venie na nedeæu, berie sa nedeænÈ ofÌcium
 						if(_global_den.denvt != DEN_NEDELA){
+							// 2013-01-30: pre CezroËnÈ obdobie treba zruöiù moûnosù braù alternatÌvy hymnov (posv. ËÌtanie, I. resp. II.)
+							// _set_hymnus_alternativy_NO(modlitba);
+							// nastavenÈ v _spolocna_cast_hymnus()
 							_vlastna_cast_2citanie;
 							if(_global_jazyk != JAZYK_CZ_OP){
 								// 2009-11-20: odvetvenÈ pre Ëesk˝ dominik·nsk˝ brevi·¯ (vöetko sa tam berie zo spol. Ëasti)

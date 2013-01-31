@@ -764,6 +764,27 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_5_HYMNUS_PC "of5hpc"
 #endif
 
+#define MODL_OPTF_5_HYMNUS_MCD_PREDPOL 103
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_5_HYMNUS_MCD_PREDPOL "STR_MODL_OPTF_5_HYMNUS_MCD_PREDPOL"
+#else
+	#define STR_MODL_OPTF_5_HYMNUS_MCD_PREDPOL "of5hpred"
+#endif
+
+#define MODL_OPTF_5_HYMNUS_MCD_NAPOL 104
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_5_HYMNUS_MCD_NAPOL "STR_MODL_OPTF_5_HYMNUS_MCD_NAPOL"
+#else
+	#define STR_MODL_OPTF_5_HYMNUS_MCD_NAPOL "of5hna"
+#endif
+
+#define MODL_OPTF_5_HYMNUS_MCD_POPOL 105
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_5_HYMNUS_MCD_POPOL "STR_MODL_OPTF_5_HYMNUS_MCD_POPOL"
+#else
+	#define STR_MODL_OPTF_5_HYMNUS_MCD_POPOL "of5hpo"
+#endif
+
 
 // 2008-08-08: Pridané kvôli rôznym css
 #define CSS 40
@@ -847,6 +868,9 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_VERTICAL_BAR "|"
 #define HTML_LINE_BREAK "<br/>"
 #define HTML_NEW_PARAGRAPH "<p>"
+#define HTML_SLASH "/"
+#define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+#define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE))
 
 #define HTML_SPAN_NORMAL    "span class=\"normal\""
 #define HTML_SPAN_ITALIC    "span class=\"it\""
@@ -866,6 +890,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 
 #define HTML_SPAN_TOOLTIP   "span title=\"%s\"" // obsahuje %s
 #define HTML_SPAN_BOLD_TOOLTIP   "span class=\"bold\" title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_NORMAL_TOOLTIP   "span class=\"normal\" title=\"%s\"" // obsahuje %s
 
 #define HTML_SUP_RED        "sup class=\"red\""
 
@@ -984,6 +1009,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_OPT_2_HTML_EXPORT                   "Opt2Export"
 #define XML_OPT_3_SPOLOCNA_CAST                 "Opt3Communia"
 #define XML_OPT_4_OFFLINE_EXPORT                "Opt4OfflineExport"
+#define XML_OPT_5_ALTERNATIVES                  "Opt5Alternatives"
 
 // POCET_OPT_0_SPECIALNE
 #define XML_BIT_OPT_0_VERSE                     "BitOpt0VerseNumbers"
@@ -1026,8 +1052,12 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_BIT_OPT_2_HIDE_OPTIONS2             "BitOpt2HideOptionsPart2"
 #define XML_BIT_OPT_2_ALTERNATIVES              "BitOpt2Alternatives"
 
-// POCET_OPT_4_OFFLINE_EXPORT
-#define XML_BIT_OPT_4_MESIAC_RIADOK             "BitOpt4MonthAtLine"
+// POCET_OPT_5_ALTERNATIVES
+#define XML_BIT_OPT_5_HYMNUS_KOMPL              "BitOpt5HymnCompl"
+#define XML_BIT_OPT_5_HYMNUS_PC                 "BitOpt5HymnRead"
+#define XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL        "BitOpt5Hymn9h"
+#define XML_BIT_OPT_5_HYMNUS_MCD_NAPOL          "BitOpt5Hymn12h"
+#define XML_BIT_OPT_5_HYMNUS_MCD_POPOL          "BitOpt5Hymn15h"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<"elem">"

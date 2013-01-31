@@ -1304,10 +1304,13 @@ extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: úprava významu (a interpretácie) option 4 (rozlièné prepínaèe pre offline export, napr. aj batch mód)
 #define BIT_OPT_4_MESIAC_RIADOK             1
 
-#define POCET_OPT_5_ALTERNATIVES            2 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES            5 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezroèné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné èítanie (Cezroèné obdobie, I./II.)
+#define BIT_OPT_5_HYMNUS_MCD_PREDPOL        3 // hymnus pre modlitbu cez deò, predpoludním (Cezroèné obdobie)
+#define BIT_OPT_5_HYMNUS_MCD_NAPOL          4 // hymnus pre modlitbu cez deò, napoludnie (Cezroèné obdobie)
+#define BIT_OPT_5_HYMNUS_MCD_POPOL          5 // hymnus pre modlitbu cez deò, popoludní (Cezroèné obdobie)
 
 // globalna premenna, co obsahuje string vypisany na obsazovku
 extern char *_global_string;

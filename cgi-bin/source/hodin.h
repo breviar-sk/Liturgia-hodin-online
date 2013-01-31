@@ -959,66 +959,24 @@ const char *nazov_font_size_jazyk[POCET_FONT_SIZE + 1][POCET_JAZYKOV + 1] = {
 const char *nazov_font_size_css[POCET_FONT_SIZE + 1] = 
 {"", "inherit", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large"};
 
-// strings of buttons - abbreviations of prayer names
-// 2006-10-11: definovanie reazcov aj pre invitatórium a kompletórium
-const char *html_button_invitatorium[POCET_JAZYKOV + 1] = {"Inv.", "Inv.", "Inv.", "Inv.", "", "Inv.", "Imád.h."};
-#ifndef HTML_BUTTON_INVITATORIUM
-#define HTML_BUTTON_INVITATORIUM	html_button_invitatorium[_global_jazyk]
-#endif
-
-const char *html_button_kompletorium[POCET_JAZYKOV + 1] = {"Kompl.", "Kompl.", "Compl.", "Compl.", "", "Kompl.", "Bef."};
-#ifndef HTML_BUTTON_KOMPLETORIUM
-#define HTML_BUTTON_KOMPLETORIUM	html_button_kompletorium[_global_jazyk]
-#endif
-
-// definície HTML prvkov upravené a presunuté z mydefs.h, 2006-08-01
-const char *html_button_ranne_chvaly[POCET_JAZYKOV + 1] = {"Ranné chvály", "Ranní chvály", "Morning prayer", "Laudes", "", "Ranní chvály", "Reggeli dicséret"};
-#ifndef HTML_BUTTON_RANNE_CHVALY
-#define HTML_BUTTON_RANNE_CHVALY	html_button_ranne_chvaly[_global_jazyk]
-#endif
-
-const char *html_button_predpoludnim[POCET_JAZYKOV + 1] = {"9h", "9h", "9h", "Tertia", "", "Tercie", "Délelõtt"};
-#ifndef HTML_BUTTON_PREDPOLUDNIM
-#define HTML_BUTTON_PREDPOLUDNIM	html_button_predpoludnim[_global_jazyk]
-#endif
-
-const char *html_button_napoludnie[POCET_JAZYKOV + 1] = {"12h", "12h", "12h", "Sexta", "", "Sexta", "Délben"};
-#ifndef HTML_BUTTON_NAPOLUDNIE
-#define HTML_BUTTON_NAPOLUDNIE	html_button_napoludnie[_global_jazyk]
-#endif
-
-const char *html_button_popoludni[POCET_JAZYKOV + 1] = {"15h", "15h", "15h", "Nona", "", "Nona", "Délután"};
-#ifndef HTML_BUTTON_POPOLUDNI
-#define HTML_BUTTON_POPOLUDNI	html_button_popoludni[_global_jazyk]
-#endif
-
-const char *html_button_vespery[POCET_JAZYKOV + 1] = {"Vešpery", "Nešpory", "Vesperae", "Vesperae", "", "Veèerní chvály", "Esti dicséret"};
-#ifndef HTML_BUTTON_VESPERY
-#define HTML_BUTTON_VESPERY	html_button_vespery[_global_jazyk]
-#endif
-
-const char *html_button_posv_citanie[POCET_JAZYKOV + 1] = {"Posv. èít.", "Ètení", "Reading", "Off. lect.", "", "Ètení", "Olvasmányos imaóra"};
-#ifndef HTML_BUTTON_POSV_CITANIE
-#define HTML_BUTTON_POSV_CITANIE	html_button_posv_citanie[_global_jazyk]
-#endif
-
+// strings of buttons - abbreviations of prayer names // shortened because of usage on mobile devices (Android)
 const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
 { {"Inv.", "Inv.", "Inv.", "Inv.", "", "Inv.", "Imád."}
-, {"Posv. èít.", "Ètení", "Reading", "Off. lect.", "", "Ètení", "Olvasmányos imaóra"}
-, {"Ranné chvály", "Ranní chvály", "Morning prayer", "Laudes", "", "Ranní chvály", "Reggeli dicséret"}
+, {"Posv. èít.", "Ètení", "Reading", "Off. lect.", "", "Ètení", "Olvasm. i."}
+, {"Ranné chv.", "Ranní chv.", "Morning pr.", "Laudes", "", "Ranní chv.", "Reggeli dics."}
 , {"9h", "9h", "9h", "Tertia", "", "Tercie", "Délelõtt"}
 , {"12h", "12h", "12h", "Sexta", "", "Sexta", "Délben"}
 , {"15h", "15h", "15h", "Nona", "", "Nona", "Délután"}
-, {"Vešpery", "Nešpory", "Vesperae", "Vesperae", "", "Veèerní chvály", "Esti dicséret"}
+, {"Vešpery", "Nešpory", "Vesperae", "Vesperae", "", "Veèerní chv.", "Esti dics."}
 , {"Kompl.", "Kompl.", "Compl.", "Compl.", "", "Kompl.", "Befejezõ i."}
 // táto sa pre HTML buttony nepouíva
 	, {"neurèená", "neurèena", "not-defined", "no data", "", "neurèena", "nem azonosított"}
-, {"Prvé vešpery", "První nešpory", "1st Vesperae", "I vesperae", "", "První veèerní chvály", "I. esti dicséret" }
+, {"Prvé vešp.", "První nešpory", "1st Vesperae", "I vesperae", "", "První veèerní chv.", "I. esti dics." }
 , {"Kompl. po prvıch vešp.", "Kompl. po prv. nešp.", "Compl.", "Compl.", "", "Kompl. po prvních v. chv.", "Kompl."}
 // táto sa pre HTML buttony nepouíva
-	, {"druhé vešpery", "druhé nešpory", "2nd Vesperae", "II vesperae", "", "Druhé veèerní chvály", "II. esti dicséret" }
+	, {"druhé vešp.", "druhé nešpory", "2nd Vesperae", "II vesperae", "", "Druhé veèerní chv.", "II. esti dics." }
 // táto sa pre HTML buttony nepouíva
-	, {"kompletórium po druhıch vešperách", "kompletáø po druhıch nešporách", "2nd Completary", "II completorio", "", "Kompletáø po druhıch veèerních chválách", "Befejezõ imaóra II.e.d.után" }
+	, {"kompl. po druhıch vešperách", "kompl. po druhıch nešp.", "2nd Completary", "II completorio", "", "Kompl. po druhıch veèerních chv.", "Befejezõ imaóra II.e.d.után" }
 // , {"Vo¾ba detailov...", "Podrobnìji...", "Details...", "Optiónes...", "", "Podrobnìji...", "Részletek..."} // 2011-10-03: prakticky je to teraz len o vıbere spoloènıch èastí
 , {"vıber spoloènej èasti...", "vıbìr spoleèné èásti...", "common texts...", "optiónes...", "", "vıbìr spoleèné èásti...", "közös rész kiválasztása..."}
 , {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
@@ -2208,7 +2166,7 @@ const char *html_text_option2_alternatives[POCET_JAZYKOV + 1] =
  "",
  "",
  "alternativy",
- "hu_alternatívy", 
+ "alternatívák", 
 };
 const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] = 
 {"Zobrazí v texte modlitieb iba jednu monos, napr. hymnus pre kompletórium (dá sa prepína).",
@@ -2221,43 +2179,103 @@ const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option5_KomplHymnusA[POCET_JAZYKOV + 1] = 
-{"hymnus Na sklonku dòa",
- "hymnus A",
+{"hymnus A: Na sklonku dòa a úprimne",
+ "hymnus A: Na sklonku dne tì upøímnì",
  "hymnus A", 
  "",
  "",
- "hymnus A",
- "hymnus A", 
+ "hymnus A: Na sklonku dne tì upøímnì",
+ "himnusz A: Immár a nap leáldozott", 
 };
 
 const char *html_text_option5_KomplHymnusB[POCET_JAZYKOV + 1] = 
-{"hymnus Kriste, ty svetlo",
- "hymnus B",
+{"hymnus B: Kriste, ty svetlo a náš deò",
+ "hymnus B: Ty, Kriste, svìtlo, jasnı dni",
  "hymnus B", 
  "",
  "",
- "hymnus B",
- "hymnus B", 
+ "hymnus B: Ty, Kriste, svìtlo, jasnı dni",
+ "himnusz B: Krisztus, tündöklõ nappalunk", 
 };
 
 const char *html_text_option5_PCHymnusI[POCET_JAZYKOV + 1] = 
-{"hymnus I. Ak je posvätné èítanie v_noci alebo vèasráno",
- "hymnus I.",
+{"hymnus I. [Ak je posvätné èítanie v noci alebo vèasráno]",
+ "hymnus I. [V noci a èasnì ráno]",
  "hymnus I.",
  "",
  "",
- "hymnus I.",
- "hymnus I.",
+ "hymnus I. [V noci a èasnì ráno]",
+ "himnusz I. [Amikor az imaórát éjszaka vagy kora hajnalban mondják]",
 };
 
 const char *html_text_option5_PCHymnusII[POCET_JAZYKOV + 1] = 
-{"hymnus II. Ak je posvätné èítanie cez deò",
- "hymnus II.",
+{"hymnus II. [Ak je posvätné èítanie cez deò]",
+ "hymnus II. [Bìhem dne]",
  "hymnus II.",
  "",
  "",
- "hymnus II.",
- "hymnus II.",
+ "hymnus II. [Bìhem dne]",
+ "himnusz II. [Amikor az imaórát a nap nem reggeli órájában végzik]",
+};
+
+const char *html_text_option5_MCDPredHymnus1[POCET_JAZYKOV + 1] = 
+{"hymnus Príï, Duchu Svätı",
+ "hymnus K nám, Duchu Svatı, nyní spìj",
+ "hymnus 1",
+ "",
+ "",
+ "hymnus K nám, Duchu Svatı, nyní spìj",
+ "himnusz Most jöjj, Szentlélek, szállj közénk",
+};
+
+const char *html_text_option5_MCDPredHymnus2[POCET_JAZYKOV + 1] = 
+{"hymnus Deviata je u hodina",
+ "hymnus Je tøetí denní hodina",
+ "hymnus 2",
+ "",
+ "",
+ "hymnus Je tøetí denní hodina",
+ "himnusz Idõk rendjét megtartva most",
+};
+
+const char *html_text_option5_MCDNaHymnus1[POCET_JAZYKOV + 1] = 
+{"hymnus Mocnı Vládca, vernı Boe",
+ "hymnus Jsi mocnı Vládce, vìrnı Bùh",
+ "hymnus 1",
+ "",
+ "",
+ "hymnus Jsi mocnı Vládce, vìrnı Bùh",
+ "himnusz Urunk, felséges Istenünk",
+};
+
+const char *html_text_option5_MCDNaHymnus2[POCET_JAZYKOV + 1] = 
+{"hymnus Na nebi slnko vrcholí",
+ "hymnus Teï Pánu chvály zpívejme",
+ "hymnus 2",
+ "",
+ "",
+ "hymnus Teï Pánu chvály zpívejme",
+ "himnusz Dicsérjük dallal az Urat",
+};
+
+const char *html_text_option5_MCDPoHymnus1[POCET_JAZYKOV + 1] = 
+{"hymnus Celı svet v pohyb uvádzaš",
+ "hymnus Svìt celı v pohyb uvádíš",
+ "hymnus 1",
+ "",
+ "",
+ "hymnus Svìt celı v pohyb uvádíš",
+ "himnusz Világfenntartó Istenünk",
+};
+
+const char *html_text_option5_MCDPoHymnus2[POCET_JAZYKOV + 1] = 
+{"hymnus Z Boej milosti tretí raz",
+ "hymnus Hodina tøetí z poledne",
+ "hymnus 2",
+ "",
+ "",
+ "hymnus Hodina tøetí z poledne",
+ "himnusz Háromszor három óra már",
 };
 
 
