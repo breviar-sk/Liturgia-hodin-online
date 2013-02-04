@@ -3996,8 +3996,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	short int modlitba, t, tyzden_pom, litobd_pom;
 	char _anchor_vlastne_slavenie[SMALL];
 
-	Log("-- liturgicke_obdobie(%d, %d, %d, %d: svaty: %d) -- zaciatok\n",
-		litobd, tyzden, den, tyzzal, poradie_svateho);
+	Log("-- liturgicke_obdobie(%d, %d, %d, %d: svaty: %d) -- zaèiatok\n", litobd, tyzden, den, tyzzal, poradie_svateho);
 
 	/* if((_global_den.smer > 5) || (_global_den.smer == 2)) */
 		/* najprv spustime zaltar(); */
@@ -5764,8 +5763,10 @@ label_24_DEC:
 				// kompletórium
 				modlitba = MODL_PRVE_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba, litobd);
+
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba, litobd);
+
 				// invitatórium; 2007-11-14: netreba, nako¾ko antifóna je rovnaká pre celé obdobie po zjavení pána
 				// ranné chvály
 				modlitba = MODL_RANNE_CHVALY;
@@ -5972,6 +5973,7 @@ label_24_DEC:
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba, litobd);
 
+				// prvé vešpery
 				modlitba = MODL_PRVE_VESPERY;
 				_set_zalmy_telakrvi(modlitba);
 				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie);
@@ -6382,6 +6384,7 @@ label_24_DEC:
 					modlitba = MODL_KOMPLETORIUM;
 					_set_kompletorium_slavnost(modlitba, litobd);
 
+					// prvé vešpery
 					modlitba = MODL_PRVE_VESPERY;
 					_set_zalmy_srdca(modlitba);
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie);
@@ -12142,6 +12145,13 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						if((poradie_svaty == 1) &&
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
+
+						// kompletórium: 2013-02-03: doplnené
+						modlitba = MODL_PRVE_KOMPLETORIUM;
+						_set_kompletorium_slavnost(modlitba, _global_den.litobd);
+
+						modlitba = MODL_KOMPLETORIUM;
+						_set_kompletorium_slavnost(modlitba, _global_den.litobd);
 
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);

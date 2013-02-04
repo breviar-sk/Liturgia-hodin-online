@@ -2203,12 +2203,11 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}// INCLUDE_END
 					}// rubriky
 
-					/* 2011-01-12: doplnené volite¾né zobrazovanie/skrývanie alternatívnej antifóny pre žalmy/chválospevy 
-					 * 2011-01-17: upravené tak, aby sa nezobrazovalo len pre spomienky svätých [tam spadajú aj liturgické slávenia 1.1. a pod.]
-					 * 2011-03-01: upravené tak, že sa nezobrazuje len pre slávnosti a sviatky; pre spomienky sa zobrazuje (smer < 5: pre trojdnie)
-					 * 2011-04-30: doplnené, aby sa nezobrazovalo vo Ve¾konoènej oktáve
-					 * 2011-05-03: upravené, aby sa nastavovalo vnutri_myslienky kvôli tomu, že z viacerých miest sa nastavovalo write
-					 */
+					// 2011-01-12: doplnené volite¾né zobrazovanie/skrývanie alternatívnej antifóny pre žalmy/chválospevy 
+					// 2011-01-17: upravené tak, aby sa nezobrazovalo len pre spomienky svätých [tam spadajú aj liturgické slávenia 1.1. a pod.]
+					// 2011-03-01: upravené tak, že sa nezobrazuje len pre slávnosti a sviatky; pre spomienky sa zobrazuje (smer < 5: pre trojdnie)
+					// 2011-04-30: doplnené, aby sa nezobrazovalo vo Ve¾konoènej oktáve
+					// 2011-05-03: upravené, aby sa nastavovalo vnutri_myslienky kvôli tomu, že z viacerých miest sa nastavovalo write
 					if(equals(rest, PARAM_PSALMODIA_MYSLIENKA)){
 						if(je_myslienka){
 #if defined(EXPORT_HTML_SPECIALS)
@@ -5295,7 +5294,14 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 			if((_global_modlitba != MODL_NEURCENA) && 
 				(
 					(poradie_svaty != UNKNOWN_PORADIE_SVATEHO) || // 08/03/2000A.D. -- pridané; 2009-03-27: zmenená konštanta 0 na UNKNOWN_PORADIE_SVATEHO
-					((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) && (_global_svaty1.smer < 5)
+					((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) 
+						// a je to alebo slávnos, alebo sviatok Pána v Cezroènom období, ktorý padne na nede¾u (2013-02-03: opravené) -- napr. kvôli Obetovaniu Pána 2.2.2003/2014, prvé vešpery
+						&& ((_global_svaty1.smer < 5) ||
+								((_global_svaty1.smer == 5) && (_global_den.denvt == DEN_NEDELA) &&
+								((_global_den.litobd == OBD_CEZ_ROK) ||
+								 (_global_den.litobd == OBD_VIANOCNE_I) ||
+								 (_global_den.litobd == OBD_VIANOCNE_II)))
+						)
 						// a neplatí, že ide o lokálnu slávnos: tá nesmie prebi všedný deò
 						// 2010-10-06: upravené; nesmie ís o lokálnu slávnos (smer == 4) lebo nemá prebíja "globálnu" v danom kalendári [napr. czop pre 22.10.]
 						// 2011-02-02: zadefinované MIESTNE_SLAVENIE_CZOP_SVATY1 až 3, aby sa zjednodušila podmienka (platí len pre CZOP)
@@ -5308,6 +5314,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				// menim, lebo svaty ma prednost
 				// 2006-02-06: pre viacero ¾ubovo¾ných spomienok treba by obozretnejší
 				_rozbor_dna_LOG("\tporadie_svaty == %d\n", poradie_svaty);
+				_rozbor_dna_LOG("\t_global_svaty1.smer == %d, _global_den.denvt == %d (%s), _global_den.litobd == %d (%s)...\n", _global_svaty1.smer, _global_den.denvt, nazov_dna(_global_den.denvt), _global_den.litobd, nazov_obdobia_ext(_global_den.litobd));
 				_rozbor_dna_LOG("menim, lebo `%s' ma prednost...\n", 
 					poradie_svaty == 1 ? _global_svaty1.meno :
 					(poradie_svaty == 2 ? _global_svaty2.meno : 
@@ -6492,7 +6499,7 @@ short int _rozbor_dna_s_modlitbou(_struct_den_mesiac datum, short int rok, short
 	}
 
 	// teraz nasleduje nieèo, èo nahrádza export -- avšak dáta ukladá do stringu _global_string
-	Log("spustam init_global_string(EXPORT_DNA_JEDEN_DEN, svaty == %d, modlitba == %s)...\n", poradie_svateho, nazov_modlitby(modlitba));
+	Log("1:spustam init_global_string(EXPORT_DNA_JEDEN_DEN, svaty == %d, modlitba == %s)...\n", poradie_svateho, nazov_modlitby(modlitba));
 	ret = init_global_string(EXPORT_DNA_JEDEN_DEN, poradie_svateho, modlitba, /* aj_citanie */ NIE);
 
 	if(ret == FAILURE){
@@ -10656,14 +10663,6 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 		analyzuj_rok(_local_rok); // výsledok dá do _global_r
 		LOG_ciara;
 
-		// 2009-04-02: kvôli špecialite: 8.11.2008 na vešpery a kompletórium treba bra pre sviatok 9.11.
-		// 2012-11-20: nejaký ve¾ký hack...
-		short int denvt_dalsi_den = den_v_tyzdni(datum.den, datum.mesiac, _local_rok);
-		if((datum.den == 9) && (datum.mesiac == MES_NOV + 1) && (denvt_dalsi_den == DEN_NEDELA)){
-			Log("úprava kvôli rozlièným sláveniam [9. november, ktorý padne na nede¾u]: svaty_dalsi_den = 1...\n");
-			svaty_dalsi_den = 1;
-		}
-
 		Log("spustam analyzu nasledujuceho dna (%d. %s %d), poradie_svaty == %d...\n", datum.den, nazov_mesiaca(datum.mesiac - 1), _local_rok, svaty_dalsi_den);
 		ret = _rozbor_dna_s_modlitbou(datum, _local_rok, modlitba, svaty_dalsi_den);
 		if(ret == FAILURE){
@@ -12326,9 +12325,8 @@ void _main_zaltar(char *den, char *tyzden, char *modlitba){
 		}
 	}
 	if(p == MODL_NEURCENA){
-		/* 2005-08-15: Kvôli simulácii porovnávame aj s konštantami STR_MODL_... 
-		 * 2006-10-11: pridané invitatórium a kompletórium
-		 */
+		// 2005-08-15: Kvôli simulácii porovnávame aj s konštantami STR_MODL_... 
+		// 2006-10-11: pridané invitatórium a kompletórium
 		if(equals(modlitba, STR_MODL_RANNE_CHVALY))
 			p = MODL_RANNE_CHVALY;
 		else if(equals(modlitba, STR_MODL_POSV_CITANIE))
@@ -12342,9 +12340,9 @@ void _main_zaltar(char *den, char *tyzden, char *modlitba){
 		else if(equals(modlitba, STR_MODL_POPOLUDNI))
 			p = MODL_POPOLUDNI;
 		else if(equals(modlitba, STR_MODL_INVITATORIUM))
-			p = MODL_KOMPLETORIUM;
+			p = MODL_INVITATORIUM;
 		else if(equals(modlitba, STR_MODL_KOMPLETORIUM))
-			p = MODL_POPOLUDNI;
+			p = MODL_KOMPLETORIUM;
 	}
 	if(p == MODL_NEURCENA){
 		Export("Nevhodné údaje: nie je urèená modlitba.\n");
@@ -12386,6 +12384,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	d = atodenvt(den);
 	t = atoi(tyzden);
 	tz = ((t + 3) MOD 4) + 1;
+	Log("lr == %c, lo == %d, d == %d, t == %d, tz == %d...\n", lr, lo, d, t, tz);
 
 	// do budúcnosti treba rieši niektoré špeciality, napr. adv. obd. II alebo vian. obd. II (dni urèené dátumom); triduum a pod.
 
@@ -12402,6 +12401,81 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		Export("</ul>\n");
 		return FAILURE;
 	}
+
+	Log("nastavenie p (modlitba == %s)...\n", modlitba);
+	p = MODL_NEURCENA;
+	for(i = MODL_INVITATORIUM; i <= MODL_DRUHE_KOMPLETORIUM; i++){
+		if(equals(modlitba, nazov_modlitby(i))){
+			p = i;
+			continue; // exit from loop
+		}
+	}
+	Log("1:p == %d (%s)...\n", p, nazov_modlitby(p));
+	if(p == MODL_NEURCENA){
+		// 2005-08-15: Kvôli simulácii porovnávame aj s konštantami STR_MODL_... 
+		// 2006-10-11: pridané invitatórium a kompletórium | 2013-02-03: opravená fatálna copy-paste chyba
+		if(equals(modlitba, STR_MODL_RANNE_CHVALY))
+			p = MODL_RANNE_CHVALY;
+		else if(equals(modlitba, STR_MODL_POSV_CITANIE))
+			p = MODL_POSV_CITANIE;
+		else if(equals(modlitba, STR_MODL_VESPERY))
+			p = MODL_VESPERY;
+		else if(equals(modlitba, STR_MODL_PREDPOLUDNIM))
+			p = MODL_PREDPOLUDNIM;
+		else if(equals(modlitba, STR_MODL_NAPOLUDNIE))
+			p = MODL_NAPOLUDNIE;
+		else if(equals(modlitba, STR_MODL_POPOLUDNI))
+			p = MODL_POPOLUDNI;
+		else if(equals(modlitba, STR_MODL_INVITATORIUM))
+			p = MODL_INVITATORIUM;
+		else if(equals(modlitba, STR_MODL_KOMPLETORIUM))
+			p = MODL_KOMPLETORIUM;
+		else if(equals(modlitba, STR_MODL_VSETKY))
+			p = MODL_VSETKY;
+	}
+	Log("2:p == %d (%s)...\n", p, nazov_modlitby(p));
+	if(p == MODL_NEURCENA){
+		Export("Nevhodné údaje: nie je urèená modlitba.\n");
+		return FAILURE;
+	}
+
+	Log("nastavenie do _global_modlitba I. ...\n");
+	_global_modlitba = p;
+	// vstupom pre showPrayer() je iba zakladny typ modlitby; zvysna informacia (ci ide o prve/druhe vespery/kompl.) sa uchova v premennej _global_modlitba
+	if((p == MODL_PRVE_VESPERY) || (p == MODL_DRUHE_VESPERY)){
+		p = MODL_VESPERY;
+	}
+	if((p == MODL_PRVE_KOMPLETORIUM) || (p == MODL_DRUHE_KOMPLETORIUM)){
+		p = MODL_KOMPLETORIUM;
+	}
+
+	// ak je to sobota a požadujú sa vešpery alebo kompletórium, zmeò nastavenia na nede¾u, prvé vešpery resp. prvé kompletórium (2013-02-03)
+	if((d == DEN_SOBOTA) && ((p == MODL_VESPERY) || (p == MODL_KOMPLETORIUM))){
+		Log("ak je to sobota a požadujú sa vešpery alebo kompletórium, zmeò nastavenia na nede¾u, prvé vešpery resp. prvé kompletórium...\n");
+		d = DEN_NEDELA;
+		p = (p == MODL_VESPERY)? MODL_PRVE_VESPERY: MODL_PRVE_KOMPLETORIUM;
+		Log("nastavenie do _global_modlitba II. ...\n");
+		_global_modlitba = p;
+		t += 1;
+		tz = ((t + 3) MOD 4) + 1;
+	}
+
+	// ked nejde o nedelu, nema zmysel rozlisovat prve/druhe vespery/kompl. | ToDo: slávnosti, sviatky Pána
+	if(d != DEN_NEDELA){
+		if(p == MODL_VESPERY){
+			Log("nastavenie do _global_modlitba III. ...\n");
+			_global_modlitba = MODL_VESPERY;
+		}
+		if(p == MODL_KOMPLETORIUM){
+			Log("nastavenie do _global_modlitba IV. ...\n");
+			_global_modlitba = MODL_KOMPLETORIUM;
+		}
+	}// nie je to nedela
+
+	Log("p == %d (%s); _global_modlitba == %d (%s)...\n", p, nazov_modlitby(p), _global_modlitba, nazov_modlitby(_global_modlitba));
+
+	// kontrola, èi týždeò daného liturgického obdobia neprekraèuje poèet týždòov daného obdobia | 2013-02-03: presunutá sem
+	Log("kontrola, èi týždeò daného liturgického obdobia neprekraèuje poèet týždòov daného obdobia...\n");
 	if(t > lit_obd_pocet_tyzdnov[lo]){
 		ALERT;
 		Export("Nevhodné údaje:"HTML_LINE_BREAK"\n<ul>");
@@ -12418,6 +12492,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		Export("</ul>\n");
 		return FAILURE;
 	}
+
 	// pôstne obdobie nezaèína nede¾ou, ale popolcovou stredou; technicky ide o 0. týždeò pôstneho obdobia
 	if((d < DEN_NEDELA) || (d > DEN_SOBOTA) || ((t < 0) || ((t == 0) && ((lo != OBD_POSTNE_I) && (d < DEN_STREDA)))) || (t > POCET_NEDIEL_CEZ_ROK)){
 		ALERT;
@@ -12444,53 +12519,6 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		Export("</ul>\n");
 		return FAILURE;
 	}
-	p = MODL_NEURCENA;
-	for(i = MODL_INVITATORIUM; i <= MODL_DRUHE_KOMPLETORIUM; i++){
-		if(equals(modlitba, nazov_modlitby(i))){
-			p = i;
-			continue; // exit from loop
-		}
-	}
-	if(p == MODL_NEURCENA){
-		/* 2005-08-15: Kvôli simulácii porovnávame aj s konštantami STR_MODL_... 
-		 * 2006-10-11: pridané invitatórium a kompletórium
-		 */
-		if(equals(modlitba, STR_MODL_RANNE_CHVALY))
-			p = MODL_RANNE_CHVALY;
-		else if(equals(modlitba, STR_MODL_POSV_CITANIE))
-			p = MODL_POSV_CITANIE;
-		else if(equals(modlitba, STR_MODL_VESPERY))
-			p = MODL_VESPERY;
-		else if(equals(modlitba, STR_MODL_PREDPOLUDNIM))
-			p = MODL_PREDPOLUDNIM;
-		else if(equals(modlitba, STR_MODL_NAPOLUDNIE))
-			p = MODL_NAPOLUDNIE;
-		else if(equals(modlitba, STR_MODL_POPOLUDNI))
-			p = MODL_POPOLUDNI;
-		else if(equals(modlitba, STR_MODL_INVITATORIUM))
-			p = MODL_KOMPLETORIUM;
-		else if(equals(modlitba, STR_MODL_KOMPLETORIUM))
-			p = MODL_POPOLUDNI;
-		else if(equals(modlitba, STR_MODL_VSETKY))
-			p = MODL_VSETKY;
-	}
-	if(p == MODL_NEURCENA){
-		Export("Nevhodné údaje: nie je urèená modlitba.\n");
-		return FAILURE;
-	}
-	_global_modlitba = p;
-	// vstupom pre showPrayer() je iba zakladny typ modlitby; zvysna informacia (ci ide o prve/druhe vespery/kompl.) sa uchova v premennej _global_modlitba
-	if((p == MODL_PRVE_VESPERY) || (p == MODL_DRUHE_VESPERY))
-		p = MODL_VESPERY;
-	if((p == MODL_PRVE_KOMPLETORIUM) || (p == MODL_DRUHE_KOMPLETORIUM))
-		p = MODL_KOMPLETORIUM;
-	// ked nejde o nedelu, nema zmysel rozlisovat prve/druhe vespery/kompl.
-	if(d != DEN_NEDELA){
-		if(p == MODL_VESPERY)
-			_global_modlitba = MODL_VESPERY;
-		if(p == MODL_KOMPLETORIUM)
-			_global_modlitba = MODL_KOMPLETORIUM;
-	}// nie je to nedela
 
 	// 2011-01-26: nastavenie niektorých atribútov pre _global_den
 	_global_den.denvt = d;
@@ -12500,6 +12528,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	_global_den.litrok = lr; // default: litrok  = (char)('A' + nedelny_cyklus(den, mesiac, rok));
 	mystrcpy(_global_den.meno, STR_EMPTY, MENO_SVIATKU);
 	// špeciálne nastavenie hodnoty smer
+	Log("špeciálne nastavenie hodnoty smer... switch(%d | %s):\n", lo, nazov_obdobia_ext(lo));
 	switch(lo){
 		case OBD_VELKONOCNE_TROJDNIE:
 			_global_den.smer = 1; // trojdnie
@@ -12582,11 +12611,11 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 			break;
 	}// switch(lo)
 
-	// treba nejako hack-ova a nastavi aj tieto: _global_den.den pre adv2 a vian1 (25, 26 atd.) | devr pre špeciality cezroèného
+	// treba nejako hack-ova a nastavi aj tieto: _global_den.den pre adv2 a vian1 (25, 26 atd.) | denvr pre špeciality cezroèného
 	liturgicke_obdobie(lo, t, d, tz, poradie_svateho);
 
 	// 2011-01-26: skopírované pod¾a funkcie _rozbor_dna_s_modlitbou(); ukladá heading do stringu _global_string
-	Log("spustam init_global_string(EXPORT_DNA_JEDEN_DEN, svaty == %d, modlitba == %s)...\n", poradie_svateho, nazov_modlitby(_global_modlitba));
+	Log("2:spustam init_global_string(EXPORT_DNA_JEDEN_DEN, svaty == %d, modlitba == %s)...\n", poradie_svateho, nazov_modlitby(_global_modlitba));
 	ret = init_global_string(EXPORT_DNA_JEDEN_DEN, poradie_svateho, _global_modlitba, /* aj_citanie */ NIE);
 
 	if(ret == FAILURE){
@@ -13817,14 +13846,10 @@ void write(void){
 }
 
 //---------------------------------------------------------------------
-/* popis: zisti, ktory z parametrov je pouzity; ostatne sa zisti z WWW_...
- * vracia: on error, returns PRM_NONE or PRM_UNKNOWN
- *         on success, returns PRM_DATUM, PRM_SVIATOK or PRM_CEZ_ROK
- *                     (09/02/2000A.D.: pridane PRM_DETAILY)
- *                     2011-01-25: pridane PRM_LIT_OBD
- *
- *         return values #define'd in mydefs.h
- */
+// popis: zisti, ktory z parametrov je pouzity; ostatne sa zisti z WWW_...
+// vracia: on error, returns PRM_NONE or PRM_UNKNOWN
+//         on success, returns PRM_DATUM, PRM_SVIATOK or PRM_CEZ_ROK | (09/02/2000A.D.: pridane PRM_DETAILY) | 2011-01-25: pridane PRM_LIT_OBD
+// return values #define'd in mydefs.h
 short int getQueryTypeFrom_QS(char *qs){
 	Log("getQueryTypeFrom_QS() -- begin\n");
 	Log("  qs == %s\n", qs);
