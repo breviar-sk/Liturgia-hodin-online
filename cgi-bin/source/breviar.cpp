@@ -5082,6 +5082,11 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						_global_den.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
 						_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_PANNA_MARIA;
 						// 2003-06-30: porov. pasaz venovanu srdcu pm vo funkcii dbzaltar.cpp::sviatky_svatych(); -- 2 vstupy
+
+						// nemá popis; 2013-02-04: doplnené
+						if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+							set_popis_dummy();
+						}
 					}
 					else{
 						_global_den.smer = 13; // vsedne dni `cez rok'

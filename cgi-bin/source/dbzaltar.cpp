@@ -11709,6 +11709,11 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						if(query_type != PRM_DETAILY)
 							set_spolocna_cast(sc, poradie_svaty);
 
+						// nemá popis; 2013-02-04: doplnené
+						if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+							set_popis_dummy();
+						}
+
 						modlitba = MODL_INVITATORIUM;
 						_vlastna_cast_antifona_inv;
 
@@ -12145,6 +12150,11 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						if((poradie_svaty == 1) &&
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
+
+						// nemá popis; 2013-02-04: doplnené
+						if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+							set_popis_dummy();
+						}
 
 						// kompletórium: 2013-02-03: doplnené
 						modlitba = MODL_PRVE_KOMPLETORIUM;
@@ -14309,6 +14319,9 @@ label_19_MAR:
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
 
+						// nemá popis; 2013-02-04: doplnené
+						set_popis_dummy();
+
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
 						if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
@@ -14436,6 +14449,9 @@ label_25_MAR:
 						if((poradie_svaty == 1) &&
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
+
+						// nemá popis; 2013-02-04: doplnené
+						set_popis_dummy();
 
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
@@ -17014,6 +17030,9 @@ label_25_MAR:
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
+
+							// nemá popis; 2013-02-04: doplnené
+							set_popis_dummy();
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_modlitba;
@@ -19844,6 +19863,11 @@ label_25_MAR:
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
 
+						// nemá popis; 2013-02-04: doplnené
+						if(_global_jazyk != JAZYK_CZ_OP){
+							set_popis_dummy();
+						}
+
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
 						_vlastna_cast_modlitba_ina;
@@ -20139,6 +20163,11 @@ label_25_MAR:
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
 
+						// nemá popis; 2013-02-04: doplnené
+						if(_global_jazyk != JAZYK_CZ_OP){
+							set_popis_dummy();
+						}
+
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
 						_vlastna_cast_modlitba_ina;
@@ -20317,6 +20346,11 @@ label_25_MAR:
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
+
+							// nemá popis; 2013-02-04: doplnené
+							if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+								set_popis_dummy();
+							}
 
 							modlitba = MODL_INVITATORIUM;
 							_vlastna_cast_antifona_inv;
@@ -22779,6 +22813,11 @@ label_25_MAR:
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
 
+						// nemá popis; 2013-02-04: doplnené
+						if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+							set_popis_dummy();
+						}
+
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
 						_vlastna_cast_modlitba_ina;
@@ -23555,6 +23594,11 @@ label_25_MAR:
 						if(query_type != PRM_DETAILY)
 							set_spolocna_cast(sc, poradie_svaty);
 
+						// nemá popis; 2013-02-04: doplnené
+						if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+							set_popis_dummy();
+						}
+
 						modlitba = MODL_INVITATORIUM;
 						_vlastna_cast_antifona_inv;
 
@@ -24048,6 +24092,11 @@ label_25_MAR:
 						if(/*(poradie_svaty == 1) && */ // 23/02/2000A.D. -- prevzate z Petra a Pavla, 28/03/2000A.D.
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
+
+						// nemá popis; 2013-02-04: doplnené
+						if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+							set_popis_dummy();
+						}
 
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
@@ -24981,6 +25030,9 @@ label_25_MAR:
 						// definovanie parametrov pre modlitbu
 						if(query_type != PRM_DETAILY)
 							set_spolocna_cast(sc, poradie_svaty);
+
+						// nemá popis; 2013-02-04: doplnené
+						set_popis_dummy();
 
 						modlitba = MODL_INVITATORIUM;
 						_vlastna_cast_antifona_inv;
@@ -26467,6 +26519,9 @@ label_25_MAR:
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
 
+						// nemá popis; 2013-02-04: doplnené
+						set_popis_dummy();
+
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
 						_set_zalmy_vsetkych_svatych(modlitba);
@@ -26534,6 +26589,13 @@ label_25_MAR:
 						// definovanie parametrov pre modlitbu
 						if(query_type != PRM_DETAILY)
 							set_spolocna_cast(sc, poradie_svaty);
+						/*
+						// nemá popis; 2013-02-04: doplnené
+						// pre SK je tam rubrika... radšej to tu nechám len pre istotu do budúcnosti
+						if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+							set_popis_dummy();
+						}
+						*/
 
 						modlitba = MODL_RANNE_CHVALY;
 						if(_global_jazyk == JAZYK_CZ){
@@ -28451,6 +28513,11 @@ label_8_DEC:
 						  (query_type != PRM_DETAILY))
 							set_spolocna_cast(sc, poradie_svaty);
 
+						// nemá popis; 2013-02-04: doplnené
+						if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+							set_popis_dummy();
+						}
+
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
 						_set_zalmy_sviatok_panien(modlitba);
@@ -29017,12 +29084,18 @@ label_8_DEC:
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-			_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+			// popis má len pre CZ; 2013-02-04: upravené
+			if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+				_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+			}
 
 			modlitba = MODL_POSV_CITANIE;
 			_srdca_pm_2cit;
 			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-			_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+			// popis má len pre CZ; 2013-02-04: upravené
+			if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+				_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+			}
 
 			if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
 				// 2011-03-21: doplnené pre OFM
@@ -29044,6 +29117,7 @@ label_8_DEC:
 				_vlastne_slavenie_invitat(_anchor_vlastne_slavenie);
 
 				modlitba = MODL_POSV_CITANIE;
+				// popis má len pre CZ; 2013-02-04: upravené
 				_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
