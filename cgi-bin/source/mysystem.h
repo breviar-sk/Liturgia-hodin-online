@@ -27,6 +27,11 @@
 #undef MODEL_DEBUG_Windows_RUBY
 #undef MODEL_DEBUG_Windows_commandline
 
+#undef MODEL_LH_commandline
+// if you want to build command-line version on your system, uncomment the following define
+//#define MODEL_LH_commandline
+
+#ifndef MODEL_LH_commandline
 // --------------------------------------------------
 // použitie ako CGI skript (Windows/RUBY, linux)
 
@@ -56,7 +61,7 @@
 
 #endif // linux
 
-/*
+#else // MODEL_LH_commandline defined
 // --------------------------------------------------
 // použitie ako command-line (Windows/RUBY, linux)
 // Modely pre Windows
@@ -84,7 +89,7 @@
 #endif // _DEBUG
 
 #endif // linux
-*/
+#endif // MODEL_LH_commandline
 
 #endif // MODEL_SELECTED_IN_MAKEFILE
 

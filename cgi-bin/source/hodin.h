@@ -3177,6 +3177,15 @@ const char *text_FEB_15_SJ[POCET_JAZYKOV + 1] =
  "",
  "",
  };
+const char *text_FEB_15_CZ[POCET_JAZYKOV + 1] = 
+{"",
+ "Bl. Bedøicha Bachsteina a druhù, muèedníkù",
+ "",
+ "",
+ "",
+ "Bl. Bedøicha Bachsteina a druhù, muèedníkù",
+ "",
+ };
 const char *text_FEB_16_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Mikuláša Pagliu, kòaza",
  "",

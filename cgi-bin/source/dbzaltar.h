@@ -168,6 +168,7 @@ extern const char *text_FEB_08_2[POCET_JAZYKOV + 1];
 extern const char *text_FEB_10[POCET_JAZYKOV + 1];
 extern const char *text_FEB_11[POCET_JAZYKOV + 1];
 extern const char *text_FEB_14[POCET_JAZYKOV + 1];
+extern const char *text_FEB_15_CZ[POCET_JAZYKOV + 1];
 extern const char *text_FEB_17[POCET_JAZYKOV + 1];
 extern const char *text_FEB_21[POCET_JAZYKOV + 1];
 extern const char *text_FEB_22[POCET_JAZYKOV + 1];
