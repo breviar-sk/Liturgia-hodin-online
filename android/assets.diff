@@ -4,7 +4,7 @@ diff -ur docs/laudis-canticum.htm docs/laudis-canticum.htm
 @@ -13,7 +13,6 @@
  <h2>Pavol VI., apoštolská konštitúcia <span class="it">Pieseò chvály</span></h2>
  <a href="smernice_lh.htm"><b><i>Všeobecné smernice o Liturgii hodín</i></b></a> &gt;&gt
- <br><a href="smernice_lrk.htm"><b><i>Všeobecné smernice o liturgickom roku a o kalendári</i></b></a> &gt;&gt<br>
+ <br/><a href="smernice_lrk.htm"><b><i>Všeobecné smernice o liturgickom roku a o kalendári</i></b></a> &gt;&gt<br/>
 -^ <a href="index.htm#oficial">Dokumenty o Liturgii hodín</a>
  <p>
  </center>
@@ -15,7 +15,7 @@ diff -ur docs/smernice_lh.htm docs/smernice_lh.htm
 @@ -12,7 +12,6 @@
  <h2>Všeobecné smernice o Liturgii hodín</h2>
  &lt;&lt <a href="laudis-canticum.htm">Pavol VI., <span class="it"><b><i>Pieseò chvály</i></b></span></a>
- <br><a href="smernice_lrk.htm"><b><i>Všeobecné smernice o liturgickom roku a o kalendári</i></b></a> &gt;&gt<br>
+ <br/><a href="smernice_lrk.htm"><b><i>Všeobecné smernice o liturgickom roku a o kalendári</i></b></a> &gt;&gt<br/>
 -^ <a href="index.htm#oficial">Dokumenty o Liturgii hodín</a>
  </center>
  

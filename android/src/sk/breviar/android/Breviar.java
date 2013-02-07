@@ -67,6 +67,14 @@ public class Breviar extends Activity {
       S.start();
     }
 
+    synchronized void stopServer() {
+      Log.v("breviar", "stopServer called");
+      if (S == null) return;
+      S.stopServer();
+      Log.v("breviar", "Server stopped");
+      S = null;
+    }
+
     void resetLanguage() {
       S.setLanguage(language);
       clearHistory = true;
@@ -320,6 +328,7 @@ public class Breviar extends Activity {
     @Override
     public void onDestroy() {
       Log.v("breviar", "onDestroy");
+      stopServer();
       super.onDestroy();
     }
 

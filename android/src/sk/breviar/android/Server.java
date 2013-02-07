@@ -76,6 +76,7 @@ public class Server extends Thread
     public void stopServer() {
       boolean intr;
 
+      Log.v("breviar: Server:", "stopServer() called");
       running = false;
       try {
         listener.close();
@@ -84,7 +85,7 @@ public class Server extends Thread
           try { this.join(); } catch (java.lang.InterruptedException e) { intr = true; }
         } while (intr);
       } catch (IOException e) {
-        Log.v("Breviar: Server:", "stopServer failed: " + e.getMessage());
+        Log.v("breviar: Server:", "stopServer failed: " + e.getMessage());
       }
     }
 
