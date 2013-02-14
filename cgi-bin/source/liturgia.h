@@ -156,8 +156,9 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define FONT_SIZE_XX_LARGE	8
 
 // 2013-01-29: alternatívy pre niektoré èasti modlitby
-#define BIT_ALT_HYMNUS     1
-#define BIT_ALT_ANTCHVAL   2
+#define BIT_ALT_HYMNUS                  1
+#define BIT_ALT_ANTCHVAL                2
+#define BIT_ALT_LEN_DOPLNKOVA_PSALMODIA 4
 
 // nasledovne 2 definovane 2003-08-13; zmenene 2004-04-28 (12->16)
 #define MAX_STR_AF_FILE   16

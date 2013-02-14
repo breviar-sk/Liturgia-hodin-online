@@ -3101,7 +3101,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Log("  _global_den.typslav == %d (%s)...\n", _global_den.typslav, nazov_slavenia(_global_den.typslav));
 			Log("  _global_den.smer == %d...\n", _global_den.smer);
 			// pre slávnosti nemá význam | è. 134 VSLH: (...) Na modlitbu cez deò slávností, okrem tých, o ktorých sa už hovorilo, a ak nepripadnú na nede¾u, berú sa žalmy z doplnkového cyklu (graduálne).
-			podmienka &= (!((_global_den.typslav == SLAV_SLAVNOST) || (_global_den.smer < 5))); // nie pre slávnosti
+			// OLD: podmienka &= (!((_global_den.typslav == SLAV_SLAVNOST) || (_global_den.smer < 5))); // nie pre slávnosti
+			// nemá význam jedine vtedy, ak je predpísaná doplnová psalmódia; nastavuje sa vo funkcii _set_zalmy_mcd_doplnkova_psalmodia() funkciou _set_mcd_doplnkova_psalmodia_alternativy()
+			podmienka &= (!(je_len_doplnkova_psalmodia(_global_modlitba))); // nemá zmysel jedine vtedy, ak je predpísaná doplnková psalmódia
 			podmienka &= ((_global_modlitba == MODL_PREDPOLUDNIM) || (_global_modlitba == MODL_NAPOLUDNIE) || (_global_modlitba == MODL_POPOLUDNI)); // len pre MCD
 			mystrcpy(specific_string, HTML_NEW_PARAGRAPH, SMALL);
 			mystrcpy(popis_show, html_text_option1_mcd_zalmy_ine[_global_jazyk], SMALL);
