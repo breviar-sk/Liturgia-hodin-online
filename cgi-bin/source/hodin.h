@@ -3107,11 +3107,11 @@ const char *text_FEB_08_1[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_08_2[POCET_JAZYKOV + 1] = 
 {"Sv. Jozefíny Bakhita, panny",
- "Sv. Josefíny Bakhity, panny",
+ "Sv. Josefiny Bakhity, panny",
  "",
  "",
  "",
- "Sv. Josefíny Bakhity, panny",
+ "Sv. Josefiny Bakhity, panny",
  "Bakhita Szent Jozefina szûz",
  };
 const char *text_FEB_09_SDB[POCET_JAZYKOV + 1] = 
@@ -5486,14 +5486,23 @@ const char *text_AUG_02_2[POCET_JAZYKOV + 1] =
  "Sv. Petra Juliána Eymarda, knìze",
  "Szent Eymard Julián Péter áldozópap",
  };
-const char *text_AUG_02_CZOP[POCET_JAZYKOV + 1] = 
-{"",
+const char *text_AUG_02_OP[POCET_JAZYKOV + 1] = 
+{"Bl. Jany z Azy, matky sv. otca Dominika",
  "",
  "",
- "la_",
+ "",
  "",
  "Bl. Jany, matky sv. Otce Dominika",
- "hu_",
+ "",
+ };
+const char *text_AUG_03_OP[POCET_JAZYKOV + 1] = 
+{"Bl. Augustína Kazotiæa, biskupa",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
  };
 const char *text_AUG_02_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Augustína Czartoryského, kòaza",
@@ -5567,6 +5576,15 @@ const char *text_AUG_08[POCET_JAZYKOV + 1] =
  "Sv. Otce Dominika, knìze",
  "Szent Domonkos áldozópap",
  };
+const char *text_AUG_08_OP[POCET_JAZYKOV + 1] = 
+{"Sv. Dominika, kòaza, zakladate¾a rehole",
+ "Sv. Dominika, knìze",
+ "",
+ "",
+ "",
+ "Sv. Otce Dominika, knìze",
+ "Szent Domonkos áldozópap",
+ };
 const char *text_AUG_09[POCET_JAZYKOV + 1] = 
 {"Sv. Terézie Benedikty, reho¾níèky a muèenice, spolupatrónky Európy",
  "Sv. Terezie Benedikty, panny a muèednice, patronky Evropy",
@@ -5602,6 +5620,33 @@ const char *text_AUG_12[POCET_JAZYKOV + 1] =
  "",
  "Sv. Jany Františky de Chantal, øeholnice",
  "Chantal szent Johanna Franciska szerzetesnõ",
+ };
+const char *text_AUG_12_1_OP[POCET_JAZYKOV + 1] = 
+{"Bl. Jána zo Salerna, kòaza",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_AUG_12_2_OP[POCET_JAZYKOV + 1] = 
+{"Bl. Aimona Taparelliho, kòaza",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_AUG_12_3_OP[POCET_JAZYKOV + 1] = 
+{"Bl. Jána Juraja Rehma, kòaza a muèeníka",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
  };
 const char *text_AUG_13[POCET_JAZYKOV + 1] = 
 {"Sv. Ponciána, pápeža, a sv. Hypolita, kòaza, muèeníkov",
@@ -5648,14 +5693,14 @@ const char *text_AUG_16[POCET_JAZYKOV + 1] =
  "Sv. Štìpána Uherského",
  "Szent István király, Magyarország fõvédõszentje",
  };
-const char *text_AUG_17_CZOP[POCET_JAZYKOV + 1] = 
-{"",
+const char *text_AUG_17_OP[POCET_JAZYKOV + 1] = 
+{"Sv. Hyacinta Po¾ského, kòaza",
  "",
  "",
- "la_",
+ "",
  "",
  "Sv. Hyacinta z Polska, knìze",
- "hu_",
+ "",
  };
 const char *text_AUG_17_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -5684,14 +5729,14 @@ const char *text_AUG_18_SJ[POCET_JAZYKOV + 1] =
  "",
  "",
  };
-const char *text_AUG_18_CZOP[POCET_JAZYKOV + 1] = 
-{"",
+const char *text_AUG_18_OP[POCET_JAZYKOV + 1] = 
+{"Bl. Manesa, kòaza, brata sv. otca Dominika",
  "",
  "",
- "la_",
+ "",
  "",
  "Bl. Mannesa neboli Mamesa, knìze, bratra sv. Otce Dominika",
- "hu_",
+ "",
  };
 const char *text_AUG_19[POCET_JAZYKOV + 1] = 
 {"Sv. Jána Eudes, kòaza",
@@ -5701,6 +5746,15 @@ const char *text_AUG_19[POCET_JAZYKOV + 1] =
  "",
  "Sv. Jana Eudese, knìze",
  "Eudes Szent János áldozópap",
+ };
+const char *text_AUG_19_OP[POCET_JAZYKOV + 1] = 
+{"Bl. Jordána z Pisy, kòaza",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
  };
 const char *text_AUG_20[POCET_JAZYKOV + 1] = 
 {"Sv. Bernarda, opáta a uèite¾a Cirkvi",
@@ -5785,6 +5839,15 @@ const char *text_AUG_25_HU[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_26_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Zefirína Namuncurá, mladíka",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_AUG_26_OP[POCET_JAZYKOV + 1] = 
+{"Bl. Jakuba z Bevagna, kòaza",
  "",
  "",
  "",

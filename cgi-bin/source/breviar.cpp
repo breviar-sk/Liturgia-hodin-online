@@ -3102,7 +3102,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Log("  _global_den.smer == %d...\n", _global_den.smer);
 			// pre slávnosti nemá význam | è. 134 VSLH: (...) Na modlitbu cez deò slávností, okrem tých, o ktorých sa už hovorilo, a ak nepripadnú na nede¾u, berú sa žalmy z doplnkového cyklu (graduálne).
 			// OLD: podmienka &= (!((_global_den.typslav == SLAV_SLAVNOST) || (_global_den.smer < 5))); // nie pre slávnosti
-			// nemá význam jedine vtedy, ak je predpísaná doplnová psalmódia; nastavuje sa vo funkcii _set_zalmy_mcd_doplnkova_psalmodia() funkciou _set_mcd_doplnkova_psalmodia_alternativy()
+			// nemá význam jedine vtedy, ak je predpísaná doplnová psalmódia; nastavuje sa vo funkcii _set_zalmy_mcd_doplnkova_psalmodia() funkciou _set_mcd_len_doplnkova_psalmodia()
 			podmienka &= (!(je_len_doplnkova_psalmodia(_global_modlitba))); // nemá zmysel jedine vtedy, ak je predpísaná doplnková psalmódia
 			podmienka &= ((_global_modlitba == MODL_PREDPOLUDNIM) || (_global_modlitba == MODL_NAPOLUDNIE) || (_global_modlitba == MODL_POPOLUDNI)); // len pre MCD
 			mystrcpy(specific_string, HTML_NEW_PARAGRAPH, SMALL);
@@ -6644,7 +6644,7 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 #ifndef BEHAVIOUR_WEB
 	if(orig_doplnkova_psalmodia == MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA){
 		doplnkova_psalmodia = orig_doplnkova_psalmodia;
-		if((_global_opt[1] & BIT_OPT_1_MCD_ZALMY_INE) == BIT_OPT_1_MCD_ZALMY_INE){
+		if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALMY_INE) == BIT_OPT_1_MCD_ZALMY_INE){
 			// BEGIN: opakuje sa pôvodné INIT_POM()
 			if(typ == EXPORT_DNA_JEDEN_DEN_LOCAL){
 				sprintf(pom, "#m-%c", char_modlitby[modl]);
@@ -9613,7 +9613,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 				// 2011-03-14: nastavenie parametra o5 (_global_opt 5) pre modlitbu cez deò (bežná alebo doplnková psalmódia) 
 				// 2011-03-16: upravené tak, že je to len fakultatívne (ako odlišný súbor)
 				// 2011-04-12: používa sa option 1 (jej upravená hodnota _global_opt_casti_modlitby_orig)
-				// 2011-04-13: nemôžeme porovnáva s _global_opt[1] (bola oèistená), ale s _global_opt_casti_modlitby_orig (obsahuje pôvodnú hodnotu)
+				// 2011-04-13: nemôžeme porovnáva s _global_opt[OPT_1_CASTI_MODLITBY] (bola oèistená), ale s _global_opt_casti_modlitby_orig (obsahuje pôvodnú hodnotu)
 				// 2012-12-12: oprava pre append batch mód; export_fname_pattern
 				if(((_global_opt_casti_modlitby_orig & BIT_OPT_1_MCD_ZALMY_INE) == BIT_OPT_1_MCD_ZALMY_INE) && ((i == MODL_PREDPOLUDNIM) || (i == MODL_NAPOLUDNIE) || (i == MODL_POPOLUDNI))){
 					if(_global_opt_append == YES){
@@ -9682,7 +9682,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 					// 2011-03-14: nastavenie parametra o5 (_global_opt 5) pre modlitbu cez deò (bežná alebo doplnková psalmódia) 
 					// 2011-03-16: upravené tak, že je to len fakultatívne (ako odlišný súbor)
 					// 2011-04-12: používa sa option 1 (jej upravená hodnota _global_opt_casti_modlitby_orig)
-					// 2011-04-13: nemôžeme porovnáva s _global_opt[1] (bola oèistená), ale s _global_opt_casti_modlitby_orig (obsahuje pôvodnú hodnotu)
+					// 2011-04-13: nemôžeme porovnáva s _global_opt[OPT_1_CASTI_MODLITBY] (bola oèistená), ale s _global_opt_casti_modlitby_orig (obsahuje pôvodnú hodnotu)
 					if(((_global_opt_casti_modlitby_orig & BIT_OPT_1_MCD_ZALMY_INE) == BIT_OPT_1_MCD_ZALMY_INE) && ((i == MODL_PREDPOLUDNIM) || (i == MODL_NAPOLUDNIE) || (i == MODL_POPOLUDNI))){
 						Log("3:parameter_M == `%s'...\n", parameter_M);
 						fprintf(batch_file, "%s%d%cd.htm -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s%s\n", batch_command, a, char_modlitby[i], 
