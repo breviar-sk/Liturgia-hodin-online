@@ -2162,7 +2162,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							Export("zvolanie(stop)");
 #endif
 							if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PROSBY_ZVOLANIE) == BIT_OPT_1_PROSBY_ZVOLANIE){
-								Export("--><br/><!--"); // 2012-09-07: doplnenÈ, aby sa to podobalo na tie prosby, kde v LH je zvolanie opakovanÈ (napr. SCAP_rPROSBY) | 2012-09-28: presunutÈ vypisovanie len ak sa zvolania opakuj˙
+								Export("-->"HTML_LINE_BREAK"<!--"); // 2012-09-07: doplnenÈ, aby sa to podobalo na tie prosby, kde v LH je zvolanie opakovanÈ (napr. SCAP_rPROSBY) | 2012-09-28: presunutÈ vypisovanie len ak sa zvolania opakuj˙
 							}
 							else{
 								write = ANO;
@@ -5927,9 +5927,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		if(typ != EXPORT_DNA_VIAC_DNI_TXT){
 #define TYPSLAV_NOVY_RIADOK
 #if defined(TYPSLAV_NOVY_RIADOK_CIARKA)
-			sprintf(pom, ", <br/>");
+			sprintf(pom, ", "HTML_LINE_BREAK);
 #elif defined(TYPSLAV_NOVY_RIADOK)
-			sprintf(pom, " <br/>");
+			sprintf(pom, " "HTML_LINE_BREAK);
 #else
 			sprintf(pom, ", ");
 #endif
@@ -8608,9 +8608,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// 2011-09-26: predsunut· pred vöetky ostatnÈ options (Igor Gal·d)
 		if(_global_jazyk == JAZYK_SK){
 
-//			Export("<tr>\n<td>\n");
-//			Export("<!-- tabuæka pre v˝ber kalend·ra (propri·) -->\n");
-//			Export("<table "HTML_ALIGN_LEFT">\n"); // table option kalendar
+			Export("<!-- v˝ber kalend·ra (propri·) -->\n");
 
 			Export("<tr><td>\n");
 			// formular pre v˝ber kalend·ra
@@ -8620,13 +8618,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 			Export(HTML_LINE_BREAK);
 #endif
-	
+
 			// drop-down list pre v˝ber kalend·ra (propri·)
 			// pole WWW_KALENDAR
 			Export("<select name=\"%s\" title=\"%s\">\n", STR_KALENDAR, html_text_kalendar_miestny_explain[_global_jazyk]);
 
+			// upraven· podmienka, lebo uû je veæa vlastn˝ch kalend·rov
 			Export("<option%s>%s\n", 
-				((_global_kalendar == KALENDAR_SK_CSSR) || (_global_kalendar == KALENDAR_SK_SVD) || (_global_kalendar == KALENDAR_SK_SJ))? STR_EMPTY: html_option_selected,
+				((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK))? html_option_selected: STR_EMPTY,
 				nazov_slavenia_lokal_kalendar[KALENDAR_VSEOBECNY_SK] /* nazov_kalendara[KALENDAR_VSEOBECNY_SK][_global_jazyk] */); // ToDo -- pre viacerÈ jazyky
 			Export("<option%s>%s\n", 
 				(_global_kalendar == KALENDAR_SK_CSSR)? html_option_selected: STR_EMPTY,
@@ -8634,22 +8633,19 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("<option%s>%s\n", 
 				(_global_kalendar == KALENDAR_SK_SVD)? html_option_selected: STR_EMPTY,
 				nazov_slavenia_lokal_kalendar[KALENDAR_SK_SVD] /* nazov_kalendara[KALENDAR_SK_SVD] */);
-			// 2010-12-17: odvetvenÈ, aby sa to nedostalo na web (tam OS_linux); 2011-03-16: pridanÌ frantiök·ni (OFM); 2011-03-21: OFM pre verejnosù (hoci nekompletnÈ)
-#ifdef OS_Windows_Ruby
-			Export("<option%s>%s\n", 
-				(_global_kalendar == KALENDAR_SK_SJ)? html_option_selected: STR_EMPTY,
-				nazov_slavenia_lokal_kalendar[KALENDAR_SK_SJ]);
-#endif
 			Export("<option%s>%s\n", 
 				(_global_kalendar == KALENDAR_SK_OFM)? html_option_selected: STR_EMPTY,
 				nazov_slavenia_lokal_kalendar[KALENDAR_SK_OFM]);
 			Export("<option%s>%s\n", 
 				(_global_kalendar == KALENDAR_SK_SDB)? html_option_selected: STR_EMPTY,
 				nazov_slavenia_lokal_kalendar[KALENDAR_SK_SDB]);
-#ifdef OS_Windows_Ruby
 			Export("<option%s>%s\n", 
 				(_global_kalendar == KALENDAR_SK_OP)? html_option_selected: STR_EMPTY,
 				nazov_slavenia_lokal_kalendar[KALENDAR_SK_OP]);
+#ifdef OS_Windows_Ruby
+			Export("<option%s>%s\n", 
+				(_global_kalendar == KALENDAR_SK_SJ)? html_option_selected: STR_EMPTY,
+				nazov_slavenia_lokal_kalendar[KALENDAR_SK_SJ]);
 			Export("<option%s>%s\n", 
 				(_global_kalendar == KALENDAR_SK_CM)? html_option_selected: STR_EMPTY,
 				nazov_slavenia_lokal_kalendar[KALENDAR_SK_CM]);
@@ -8658,8 +8654,6 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			Export("</td></tr>\n");
 
-//			Export("</table>\n"); // table option kalendar
-//			Export("</td></tr>\n\n");
 		}// if(_global_jazyk == JAZYK_SK)
 
 		// 2013-01-29: predsunutÈ sem...
@@ -9757,7 +9751,7 @@ void init_zoznam(void){
 void Log_zoznam(void){
 	for(int i = 0; i < POCET_ZOZNAM; i++){
 		Log("zoznam[%d] == %d\n", i, zoznam[i]);
-		// Export("zoznam[%d] == %d<br/>\n", i, zoznam[i]);
+		// Export("zoznam[%d] == %d"HTML_LINE_BREAK"\n", i, zoznam[i]);
 	}
 }// Log_zoznam()
 
@@ -12397,7 +12391,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 
 	if(lr > 'C' || lr < 'A'){
 		ALERT;
-		Export("NevhodnÈ ˙daje:"HTML_LINE_BREAK"<br/>\n<ul>");
+		Export("NevhodnÈ ˙daje:"HTML_LINE_BREAK"\n<ul>");
 		// tyzden
 		if(equals(tyzden, STR_EMPTY)){
 			Export("<li>tak˝ liturgick˝ rok nemoûno ûiadaù</li>\n");

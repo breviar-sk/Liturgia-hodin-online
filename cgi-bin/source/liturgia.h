@@ -82,11 +82,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-// 2009-03-24: rozšírené kvôli text_SEP_26_CZOP[]; 
-// 2009-03-24: rozšírené kvôli text_PRO_OP[] 
-// 2010-12-07: rozšírené kvôli text_JAN_19_SJ[]; (plus 34)
-// 2011-01-31: rozšírené kvôli text_JAN_31_SDB[]; 
-// 2011-02-02: rozšírené kvôli text_FEB_04_SJ[];
 #define MENO_SVIATKU 250
 
 // 2006-07-11: Pridané kvôli jazykovým mutáciám 
@@ -943,6 +938,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SZATMAR                  81
 #define LOKAL_SLAV_CESKO_BRNO               82
 #define LOKAL_SLAV_SVIATOK_OP_ZENY          83
+#define LOKAL_SLAV_ZILINA                   84
 
 // 2010-08-03: pridaný kalendár
 #define KALENDAR_NEURCENY                   0
