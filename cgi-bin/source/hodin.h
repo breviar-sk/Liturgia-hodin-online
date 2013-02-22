@@ -35,7 +35,7 @@
 /*   2009-05-15a.D. | pridané text_PRO_OP[]                    */
 /*   2009-08-26a.D. | pridané html_button_nazov_modlitby()     */
 /*   2010-05-17a.D. | pridané niektoré maïarské slávenia       */
-/*   2010-10-11a.D. | pridané nazov_slavenia_lokal_kalendar[]  */
+/*   2010-10-11a.D. | pridané nazov_kalendara_long[]           */
 /*   2011-01-14a.D. | pridané ZAKONCENIE_KTORY_JE              */
 /*   2011-01-26a.D. | upravené poradie konštánt pre lit. obd.  */
 /*   2011-05-18a.D. | doplnené charset_jazyka[]                */
@@ -421,7 +421,16 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 {"na spomienku", "pro pøipomínku", "", "in memoria", "","pro pøipomínku", "megemlékezésül"};
 
 // 2010-08-03: pridanı kalendár
-const char *nazov_kalendara[POCET_KALENDAROV + 1] =
+
+// calendar codes; internal usage for HTTP requests
+const char *skratka_kalendara[POCET_KALENDAROV + 1] =
+{"??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem"};
+
+// filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
+const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
+{"", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm"};
+
+const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {"neurèenı"
 ,"všeobecnı"
 ,"všeobecnı SK"
@@ -435,22 +444,15 @@ const char *nazov_kalendara[POCET_KALENDAROV + 1] =
 ,"SK OFM"
 ,"SK OP"
 ,"SK CM"
+,"CZ OPRAEM"
 };
 
-// calendar codes; internal usage for HTTP requests
-const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{"??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm"};
-
-// filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
-const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{"", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm"};
-
 // doplnené 2010-10-11
-const char *nazov_slavenia_lokal_kalendar[POCET_KALENDAROV + 1] =
+const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 {""
 ,""
 ,"všeobecnı [pre Slovensko]"
-,""
+,"obecní [pro ÈR]"
 ,""
 ,"pre Kongregáciu najsv. Vykupite¾a — redemptoristov (CSsR)" // bol ve¾mi dlhı combo-box, keï bolo: "pre Kongregáciu najsvätejšieho Vykupite¾a — redemptoristov (CSsR)"
 ,""
@@ -462,6 +464,7 @@ const char *nazov_slavenia_lokal_kalendar[POCET_KALENDAROV + 1] =
 ,"pre františkánsku rodinu"
 ,"pre Reho¾u kazate¾ov — dominikánov (OP)"
 ,"pre Misijnú spoloènos sv. Vincenta de Paul — lazaristov (CM)"
+,"pro premonstráty (OPraem)"
 };
 
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
@@ -2337,17 +2340,17 @@ const char *html_text_kalendar[POCET_JAZYKOV + 1] =
 };
 // 2010-09-14: doplnené
 const char *html_text_kalendar_miestny[POCET_JAZYKOV + 1] = 
-{"kalendár Liturgie hodín poui: ", 
- "kalendáø obecní nebo místní: ", 
+{"kalendár Liturgie hodín: ",
+ "kalendáø Liturgie hodin: ",
  "local or general calendar: ", 
  "calendario per Liturgia horarum: ",
  "",
- "kalendáø obecní nebo místní: ",
+ "kalendáø Liturgie hodin: ",
  "Az imaórák liturgiája (AK SA DÁ, DA VİBER SEM) naptárát használják"
 };
 const char *html_text_kalendar_miestny_explain[POCET_JAZYKOV + 1] = 
-{"Je moné zvoli miestny kalendár niektorej reho¾nej rodiny, rádu, inštitútu.", 
- "", 
+{"Je moné zvoli miestny kalendár (propriá) reho¾nej rodiny, rádu, kongregácie, inštitútu...", 
+ "Je moné vzít místní kalendáø øeholní rodiny, øádu, kongregace, institutu...", 
  "", 
  "",
  "", 
@@ -2638,6 +2641,15 @@ const char *text_JAN_14_CSSR[POCET_JAZYKOV + 1] =
 const char *text_JAN_14_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Odorika z Pordenone, kòaza, èlena 1. rádu",
  "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_JAN_14_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Sv. Gotfrída, øeholníka z premonstrátského øádu",
  "",
  "",
  "",
@@ -3176,7 +3188,7 @@ const char *text_FEB_14[POCET_JAZYKOV + 1] =
  "Ss. Cyrilli, monachi, et Methodii, ep.",
  "",
  "",
- "Szent Cirill szerzetes és Szent Metód püspök,"HTML_LINE_BREAK"Európa társ védõszentjei",
+ "Szent Cirill szerzetes és Szent Metód püspök,"HTML_LINE_BREAK"Európa társvédõszentjei",
  };
 const char *text_FEB_15_SJ[POCET_JAZYKOV + 1] = 
 {"Sv. Klaudia La Colombi&egrave;ra, kòaza",

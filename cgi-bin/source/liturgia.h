@@ -58,7 +58,7 @@
 /*                    öpecifik·ciu, o ak˝ kalend·r ide:        */
 /*                    vöeobecn˝ danej cirkevnej provincie      */
 /*                    alebo nejak˝ rehoæn˝ a pod.              */
-/*   2010-10-11a.D. | pridanÈ nazov_slavenia_lokal_kalendar[]  */
+/*   2010-10-11a.D. | pridanÈ nazov_kalendara_long[]           */
 /*   2011-01-25a.D. | premenovanÈ niektorÈ HTML s˙bory         */
 /*   2011-04-13a.D. | reùazcovÈ funkcie equals() presunutÈ     */
 /*   2011-05-11a.D. | vytvorenÈ: _vytvor_string_z_datumu()     */
@@ -954,13 +954,14 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_SK_OFM                    10
 #define KALENDAR_SK_OP                     11
 #define KALENDAR_SK_CM                     12
+#define KALENDAR_CZ_OPRAEM                 13
 
-#define POCET_KALENDAROV                   12
+#define POCET_KALENDAROV                   13
 
 // filenames for special calendars / n·zov s˙bora pre kalend·re
 extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];
 
-extern const char *nazov_slavenia_lokal_kalendar[POCET_KALENDAROV + 1];
+extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
 
 // prikazany / neprikazany sviatok / æubovoæn· spomienka bez z·v‰znosti (blahoslavenÌ napr. pre SK_OP)
 #define PRIKAZANY_SVIATOK           0
@@ -1339,7 +1340,7 @@ extern const char *nazov_jazyka[POCET_JAZYKOV + 1];
 extern const char *skratka_jazyka[POCET_JAZYKOV + 1];
 extern const char *postfix_jazyka[POCET_JAZYKOV + 1];
 
-extern const char *nazov_kalendara[POCET_KALENDAROV + 1];
+extern const char *nazov_kalendara_short[POCET_KALENDAROV + 1];
 extern const char *skratka_kalendara[POCET_KALENDAROV + 1];
 
 extern const char *nazov_css[POCET_CSS + 1];
