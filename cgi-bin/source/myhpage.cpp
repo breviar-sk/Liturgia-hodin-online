@@ -218,6 +218,8 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}
 	Export_to_file(expt, ">\n");
 
+	Export_to_file(expt, HTML_ANAME_TOP"\n");
+
 	// 2010-02-15: doplnené predošlá a nasledovná modlitba
 	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
 		Export_to_file(expt, "<center>\n");
@@ -312,8 +314,6 @@ const char *datum_cas_template[POCET_JAZYKOV + 1] = {"%d. %s %d, %02d:%02d", "%d
 const char *build_template[POCET_JAZYKOV + 1] = {"<!--Verzia: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->"};
 // Generované + dátum (bez èasu - pre batch mód, aby sa ¾ahko porovnávali vygenerované modlitby): "%d. %s %d"
 const char *datum_template[POCET_JAZYKOV + 1] = {"%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d"};
-
-#define HTML_P_PATKA "p class=\"patka\""
 
 const char *html_mail_label_long = "Juraj Vidéky";
 const char *html_mail_label_short = "J. V.";
@@ -456,6 +456,8 @@ void _patka(FILE * expt){
 	Export_to_file(expt, "&#169; %d%s <"HTML_LINK_NORMAL" href=\"mailto:%s\">%s</a>\n", baserok, rok, mail_addr, html_mail_label);
 
 	Export_to_file(expt, "</p>\n"); // pridane kvoli tomu, ze cele to bude <p class="patka">, 2003-07-02
+
+	Export_to_file(expt, HTML_ANAME_BOTTOM"\n");
 
 	Export_to_file(expt, "</body>\n</html>\n");
 	Log("_patka() -- koniec.\n");

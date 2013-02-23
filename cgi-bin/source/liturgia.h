@@ -467,6 +467,7 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_KRATSIE_PROSBY "KRATSIE-PROSBY" // 2012-11-15: _ sa menilo na &nbsp; preto som zmenil na -
 #define PARAM_ZALM95        "ZALM95" // 2012-11-23: kvôli <a name...>
 #define PARAM_VIGILIA       "VIGILIA"
+#define PARAM_SPOL_CAST_SPOM "SPOL-CAST-SPOM"
 
 #define PARAM_ALT_HYMNUS    "ALT-HYMNUS"
 
