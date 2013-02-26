@@ -3201,7 +3201,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			sprintf(before, "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">");
 			char after[SMALL] = STR_EMPTY;
 			mystrcpy(after, "</p>", SMALL);
-			_export_link_show_hide(opt, bit, /* opaèné nastavenie kvôli špeciálnej podmienke, defaulty */ popis_hide, popis_show, HTML_SPAN_RED_SMALL, HTML_CLASS_QUIET, specific_string, STR_EMPTY, anchor);
+			_export_link_show_hide(opt, bit, /* opaèné nastavenie kvôli špeciálnej podmienke, defaulty */ popis_hide, popis_show, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, specific_string, (char *)STR_EMPTY, anchor);
 
 			Export("<!--%s:end", paramname);
 		}
@@ -3221,7 +3221,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				Export("navigácia:begin-->\n");
 				Export("<!-- navigácia %d -->\n", _global_pocet_navigacia);
 				if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2)){
-					_export_rozbor_dna_navig_top_bottom(HTML_BOTTOM, html_text_bottom[_global_jazyk]);
+					_export_rozbor_dna_navig_top_bottom((char *)HTML_BOTTOM, html_text_bottom[_global_jazyk]);
 
 					_export_rozbor_dna_buttons_dni(EXPORT_DNA_JEDEN_DEN, NIE);
 					
@@ -3232,7 +3232,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 					Export("</td></tr>\n</table>\n");
 				}// if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2))
 				else{
-					_export_rozbor_dna_navig_top_bottom(HTML_TOP, html_text_top[_global_jazyk]);
+					_export_rozbor_dna_navig_top_bottom((char *)HTML_TOP, html_text_top[_global_jazyk]);
 
 					Export("<table "HTML_ALIGN_CENTER">\n<tr><td>\n");
 					_export_rozbor_dna_buttons(EXPORT_DNA_JEDEN_DEN, _global_poradie_svaty, NIE);
@@ -7377,7 +7377,7 @@ void _export_rozbor_dna_buttons_dni_dnes(short int typ, short int dnes_dnes, sho
 				char hide[MAX_STR] = STR_EMPTY;
 				sprintf(show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
 				sprintf(hide, "%s %s", html_text_option_skryt[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
-				_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, HTML_SPAN_SMALL, HTML_CLASS_QUIET, STR_EMPTY, STR_EMPTY, STR_EMPTY);
+				_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, (char *)HTML_SPAN_SMALL, (char *)HTML_CLASS_QUIET, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY);
 			}
 		}
 		Export("</form>\n");
@@ -7420,7 +7420,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 		sprintf(before, "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">");
 		char after[SMALL] = STR_EMPTY;
 		mystrcpy(after, "</p>", SMALL);
-		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, STR_EMPTY, HTML_CLASS_QUIET, before, after, STR_EMPTY);
+		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY);
 	}
 }// _export_rozbor_dna_buttons_dni()
 
@@ -8306,7 +8306,7 @@ void _export_rozbor_dna_kalendar(short int typ){
 		sprintf(before, "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">");
 		char after[SMALL] = STR_EMPTY;
 		mystrcpy(after, "</p>", SMALL);
-		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR, show, hide, STR_EMPTY, HTML_CLASS_QUIET, before, after, STR_EMPTY);
+		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR, show, hide, (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY);
 	}
 }// _export_rozbor_dna_kalendar()
 
@@ -8324,7 +8324,7 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 			sprintf(before, "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">");
 			char after[SMALL] = STR_EMPTY;
 			mystrcpy(after, "</p>", SMALL);
-			_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR, (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], STR_EMPTY, HTML_CLASS_QUIET, before, after, STR_EMPTY);
+			_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR, (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY);
 		}
 
 		char pom2[MAX_STR];
@@ -8617,7 +8617,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export("<tr>\n<td>\n");
 	Export("<!-- heading -->\n");
 
-	_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1, /* opaèné nastavenie kvôli špeciálnej podmienke, defaulty */ (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], STR_EMPTY, HTML_CLASS_QUIET, before, after, STR_EMPTY);
+	_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1, /* opaèné nastavenie kvôli špeciálnej podmienke, defaulty */ (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY);
 
 	Export("<"HTML_SPAN_BOLD_IT">");
 	Export((char *)html_text_dalsie_moznosti_1[_global_jazyk]);
@@ -9138,7 +9138,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export("<tr>\n<td>\n");
 	Export("<!-- heading -->\n");
 
-	_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2, /* opaèné nastavenie kvôli špeciálnej podmienke, defaulty */ (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], STR_EMPTY, HTML_CLASS_QUIET, before, after, STR_EMPTY);
+	_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2, /* opaèné nastavenie kvôli špeciálnej podmienke, defaulty */ (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY);
 
 	Export("<"HTML_SPAN_BOLD_IT">");
 	Export((char *)html_text_dalsie_moznosti_2[_global_jazyk]);
@@ -10153,7 +10153,7 @@ void _export_rozbor_dna(short int typ){
 	// 2012-08-23: kód presunutý do funkcie _export_rozbor_dna_zoznam(); a _export_rozbor_dna_interpretuj_zoznam();
 	_export_rozbor_dna_zoznam(typ);
 	// Log_zoznam();
-	_export_rozbor_dna_interpretuj_zoznam(EXPORT_TYP_WEB_MODE, typ, som_v_tabulke, STR_EMPTY, 0, 0);
+	_export_rozbor_dna_interpretuj_zoznam(EXPORT_TYP_WEB_MODE, typ, som_v_tabulke, (char *)STR_EMPTY, 0, 0);
 
 	if(typ == EXPORT_DNA_VIAC_DNI){
 		// ïalší ståpec: rímske èíslo pod¾a týždòa žaltára, pre nedele aj liturgický rok A, B resp. C
