@@ -41,6 +41,9 @@
     <string name="h15_notify">Je čas na popoludňajšiu modlitbu!</string>
 
     <string name="news">
+     Novinky vo verzii v1.8.4:\n
+     - Aktualizácie zo stránky breviar.sk\n
+     - Nové ikonky\n\n
      Novinky vo verzii v1.8.3:\n
      - Aktualizácie zo stránky www.breviar.sk\n\n
      Novinky vo verzii v1.8.2:\n
@@ -50,12 +53,5 @@
      - Aktualizácie zo stránky www.breviar.sk\n
      - Vypnutý zvuk pri posúvaní tlačidlami\n
        hlasitosti\n\n
-     Novinky vo verzii v1.8.0:\n
-     - Pripomienky pre čas modlitby\n
-     - Tlačidlá hlasitosti sa môžu používať\n
-       na listovanie (viď. nastavenia)\n
-     - Zobrazenie na celú obrazovku
-     - Jazyk rozhrania sa dá prispôsobiť\n
-     - Aktualizácie zo stránky www.breviar.sk\n\n
     </string>
 </resources>

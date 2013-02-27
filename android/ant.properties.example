@@ -16,4 +16,4 @@
 # The password will be asked during the build when you use the 'release' target.
 
 key.alias=main
-key.store=/home/riso/rk.keystore
+key.store=/home/build/rk.keystore

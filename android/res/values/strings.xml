@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.8.3</string>
+    <string name="version">v1.8.4</string>
 
     <string name="lang_select">Settings</string>
     <string name="lang_select_title">Select language:</string>
@@ -53,21 +53,17 @@
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
     <string name="news">
+     News in v1.8.4:\n
+     - Updates from breviar.sk\n
+     - New icons\n\n
      News in v1.8.3:\n
-     - Updates from www.breviar.sk\n\n
+     - Updates from breviar.sk\n\n
      News in v1.8.2:\n
-     - Updates from www.breviar.sk\n
+     - Updates from breviar.sk\n
      - More stable application restore\n\n
      News in v1.8.1:\n
-     - Updates from www.breviar.sk\n
+     - Updates from breviar.sk\n
      - Do not play sound when scrolling with\n
        volume keys\n\n
-     News in v1.8.0:\n
-     - Support for notifications\n
-     - Volume buttons can be used for scrolling\n
-       (see setting)\n
-     - Fullscreen mode\n
-     - System-wide locale can be overriden\n
-     - Updates from www.breviar.sk\n\n
     </string>
 </resources>

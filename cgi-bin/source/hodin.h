@@ -2283,6 +2283,66 @@ const char *html_text_option5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
  "himnusz H·romszor h·rom Ûra m·r",
 };
 
+const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] = 
+{"namiesto ûalmu 122 braù ûalm 129",
+ "mÌsto ûalmu 122 vzÌt ûalm 129",
+ "",
+ "",
+ "",
+ "mÌsto ûalmu 122 vzÌt ûalm 129",
+ "hu_Ps 121 128",
+};
+
+const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] = 
+{"namiesto ûalmu 127 braù ûalm 131",
+ "mÌsto ûalmu 127 vzÌt ûalm 131",
+ "",
+ "",
+ "",
+ "mÌsto ûalmu 127 vzÌt ûalm 131",
+ "hu_Ps 126 130",
+};
+
+const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] = 
+{"braù ûalm 122 z doplnkovej psalmÛdie",
+ "vzÌt ûalm 122 z doplÚovacÌho cyklu",
+ "",
+ "",
+ "",
+ "vzÌt ûalm 122 z doplÚovacÌho cyklu",
+ "hu_take psalm 122 ordinary",
+};
+
+const char *html_text_option5_DPsalmZ127_NORMAL[POCET_JAZYKOV + 1] = 
+{"braù ûalm 127 z doplnkovej psalmÛdie",
+ "vzÌt ûalm 127 z doplÚovacÌho cyklu",
+ "",
+ "",
+ "",
+ "vzÌt ûalm 127 z doplÚovacÌho cyklu",
+ "hu_take psalm 127 ordinary",
+};
+
+const char *html_text_option5_DPsalmZ122_129_explain[POCET_JAZYKOV + 1] = 
+{"V doplnkovej psalmÛdii namiesto ûalmu 122 moûno braù ûalm 129.",
+ "Pro doplÚovacÌ cyklus ûalm˘ mÌsto ûalmu 122 (121) vzÌt ûalm 129 (128).",
+ "",
+ "",
+ "",
+ "Pro doplÚovacÌ cyklus ûalm˘ mÌsto ûalmu 122 (121) vzÌt ûalm 129 (128).",
+ "hu_Ps 121 128",
+};
+
+const char *html_text_option5_DPsalmZ127_131_explain[POCET_JAZYKOV + 1] = 
+{"V doplnkovej psalmÛdii namiesto ûalmu 127 moûno braù ûalm 131.",
+ "Pro doplÚovacÌ cyklus ûalm˘ mÌsto ûalmu 127 (126) vzÌt ûalm 131 (130).",
+ "",
+ "",
+ "",
+ "Pro doplÚovacÌ cyklus ûalm˘ mÌsto ûalmu 127 (126) vzÌt ûalm 131 (130).",
+ "hu_Ps 126 130",
+};
+
 
 // 2011-05-06
 const char *html_text_font_name[POCET_JAZYKOV + 1] = 

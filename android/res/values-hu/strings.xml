@@ -49,22 +49,4 @@
     <string name="pgup">Fel</string>
     <string name="pgdn">Le</string>
 	
-     <string name="news">
-     News in v1.8.3:\n
-     - Updates from www.breviar.sk\n\n
-     News in v1.8.2:\n
-     - Updates from www.breviar.sk\n
-     - More stable application restore\n\n
-     Újdonságok az 1.8.1 verzióban:\n
-     - Updates from www.breviar.sk\n
-     - Do not play sound when scrolling with\n
-       volume keys\n\n
-     Újdonságok az 1.8.0 verzióban:\n
-     - Értesítések lehetősége\n
-     - A hangerő gombokkal lehet görgetni is\n
-       (lásd a beállításoknál)\n
-     - Teljes képernyős mód\n
-     - Rendszer szintű beállítások felülírása\n
-     - Frissítések zsolozsma.katolikus.hu-ról\n\n
-    </string>
 </resources>

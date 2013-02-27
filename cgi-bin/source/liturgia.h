@@ -154,6 +154,8 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define BIT_ALT_HYMNUS                  1
 #define BIT_ALT_ANTCHVAL                2
 #define BIT_ALT_LEN_DOPLNKOVA_PSALMODIA 4
+#define BIT_ALT_DOPLNK_PSALM_122_129    8
+#define BIT_ALT_DOPLNK_PSALM_127_131   16
 
 // nasledovne 2 definovane 2003-08-13; zmenene 2004-04-28 (12->16)
 #define MAX_STR_AF_FILE   16
@@ -456,20 +458,23 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_CHVALOSPEV3   "CHVALOSPEV3"
 #define PARAM_EVANJELIUM    "EVANJELIUM"
 // 2012-09-05: moûnosù zobraziù pre doplnkov˙ psalmÛdiu priamy URL odkaz (na prepnutie)
-#define PARAM_DOPLNKOVA_PSALMODIA     "DOPLNKOVA-PSALMODIA" // 2012-10-01: _ sa menilo na &nbsp; preto som zmenil na -
+#define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // 2012-10-01: _ sa menilo na &nbsp; preto som zmenil na -
 // 2012-09-27: moûnosù zobraziù chv·lospev, hymnus Te Deum, OtËen·ö (na prepnutie), opakovanÈ zvolania v prosb·ach, Sl·va Otcu, plnÈ znenie responzÛriÌ pre posv‰tnÈ ËÌtania...
-#define PARAM_CHVALOSPEV    "CHVALOSPEV"
-#define PARAM_TEDEUM        "TEDEUM"
-#define PARAM_OTCENAS       "OTCENAS"
-#define PARAM_ZVOLANIA      "ZVOLANIA"
-#define PARAM_SLAVAOTCU	    "SLAVAOTCU"
-#define PARAM_RESPONZ       "RESPONZ" // PARAM_PLNE_RESP je uû obsadenÈ...
-#define PARAM_KRATSIE_PROSBY "KRATSIE-PROSBY" // 2012-11-15: _ sa menilo na &nbsp; preto som zmenil na -
-#define PARAM_ZALM95        "ZALM95" // 2012-11-23: kvÙli <a name...>
-#define PARAM_VIGILIA       "VIGILIA"
-#define PARAM_SPOL_CAST_SPOM "SPOL-CAST-SPOM"
-
-#define PARAM_ALT_HYMNUS    "ALT-HYMNUS"
+#define PARAM_CHVALOSPEV               "CHVALOSPEV"
+#define PARAM_TEDEUM		           "TEDEUM"
+#define PARAM_OTCENAS                  "OTCENAS"
+#define PARAM_ZVOLANIA                 "ZVOLANIA"
+#define PARAM_SLAVAOTCU	               "SLAVAOTCU"
+#define PARAM_RESPONZ                  "RESPONZ" // PARAM_PLNE_RESP je uû obsadenÈ...
+#define PARAM_KRATSIE_PROSBY           "KRATSIE-PROSBY" // 2012-11-15: _ sa menilo na &nbsp; preto som zmenil na -
+#define PARAM_ZALM95                   "ZALM95" // 2012-11-23: kvÙli <a name...>
+#define PARAM_VIGILIA                  "VIGILIA"
+#define PARAM_SPOL_CAST_SPOM           "SPOL-CAST-SPOM"
+#define PARAM_ALT_HYMNUS               "ALT-HYMNUS"
+#define PARAM_ZALM122                  "ZALM122"
+#define PARAM_ZALM127                  "ZALM127"
+#define PARAM_ZALM129                  "ZALM129"
+#define PARAM_ZALM131                  "ZALM131"
 
 // dalsie parametre: specificke pre obdobie
 // Od nedele P·novho zm‡tvychvstania aû do Druhej veækonoËnej nedele vr·tane, ako aj na druhÈ veöpery sl·vnosti Zoslania Ducha Sv‰tÈho
@@ -547,36 +552,40 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_REFERENCIA_BEGIN				"r"
 #define PARAM_REFERENCIA_END				"/r"
 
-// 2011-09-01: doplnenie odkazu na katechÈzy (pÙvodne v HTML zdroj·koch bola subscript hviezdiËka za nadpisom)
+// 2011-09-01: odkaz na katechÈzy (pÙvodne v HTML zdroj·koch bola subscript hviezdiËka za nadpisom)
 #define PARAM_KATECHEZA_BEGIN				"k"
 #define PARAM_KATECHEZA_END					"/k"
 
-// 2011-09-06: doplnenie odkazu na ûalm 95 (pÙvodne v HTML zdroj·koch pre ûalmy 24, 67, 100 bol natvrdo <a href> odkaz)
+// 2011-09-06: odkaz na ûalm 95 (pÙvodne v HTML zdroj·koch pre ûalmy 24, 67, 100 bol natvrdo <a href> odkaz)
 #define PARAM_LINK_ZALM95_BEGIN				"z95"
 #define PARAM_LINK_ZALM95_END				"/z95"
 
-// 2011-07-08: doplnenÈ zobrazovanie/nezobrazenie krÌûika (antifÛna totoûn· s veröom ûalmu/chv·lospevu)
+// 2011-07-08: zobrazovanie/nezobrazenie krÌûika (antifÛna totoûn· s veröom ûalmu/chv·lospevu)
 #define PARAM_KRIZIK                        "KRIZIK"
 
-// 2011-07-14: doplnenÈ zobrazovanie/nezobrazenie zalomen˝ch textov tak, ako je v tlaËenom vydanÌ LH (dlhÈ riadky-veröe ûalmov/chv·lospevov a pod.)
+// 2011-07-14: zobrazovanie/nezobrazenie zalomen˝ch textov tak, ako je v tlaËenom vydanÌ LH (dlhÈ riadky-veröe ûalmov/chv·lospevov a pod.)
 #define PARAM_ZALOMENIE                     "ZALOMENIE"
 
-// 2011-10-07: doplnenÈ zakonËenie modlitieb (skrze, lebo on, lebo ty...) in·Ë (jednoduchöie, bez begin-end)
+// 2011-10-07: zakonËenie modlitieb (skrze, lebo on, lebo ty...) in·Ë (jednoduchöie, bez begin-end)
 #define PARAM_ZAKONCENIE                    "ZAKONCENIE"
 
-// 2009-04-08, doplnenÈ: zakonËenie modlitby trojakÈ, kr·tke resp. dlhÈ
+// 2013-02-26: doplnkov· psalmÛdia, alternatÌvne ûalmy
+#define PARAM_DOPLNK_PSALM_122_129          "DPSALM-122-129"
+#define PARAM_DOPLNK_PSALM_127_131          "DPSALM-127-131"
+
+// 2009-04-08: zakonËenie modlitby trojakÈ, kr·tke resp. dlhÈ
 #define PARAM_ZAKONCENIE_SKRZE              "SKRZE"
 #define PARAM_ZAKONCENIE_LEBO_TY            "LEBO_TY"
 #define PARAM_ZAKONCENIE_LEBO_ON            "LEBO_ON"
-// 2009-12-14, doplnenÈ: zakonËenie modlitby trojakÈ, kr·tke resp. dlhÈ s mal˝m pÌsmenkom na zaËiatku
+// 2009-12-14: zakonËenie modlitby trojakÈ, kr·tke resp. dlhÈ s mal˝m pÌsmenkom na zaËiatku
 #define PARAM_ZAKONCENIE_SKRZE_MALE         "SKRZE_MALE"
 #define PARAM_ZAKONCENIE_LEBO_TY_MALE       "LEBO_TY_MALE"
 #define PARAM_ZAKONCENIE_LEBO_ON_MALE       "LEBO_ON_MALE"
-// 2010-06-07, doplnenÈ: eöte jedno zakonËenie modlitby pre slovenËinu, kr·tke resp. dlhÈ (POST1_MODLITBA5NE)
+// 2010-06-07: eöte jedno zakonËenie modlitby pre slovenËinu, kr·tke resp. dlhÈ (POST1_MODLITBA5NE)
 #define PARAM_ZAKONCENIE_ON_JE              "ON_JE"
-// 2010-01-14, doplnenÈ: eöte jedno zakonËenie modlitby pre slovenËinu, kr·tke resp. dlhÈ
+// 2010-01-14: eöte jedno zakonËenie modlitby pre slovenËinu, kr·tke resp. dlhÈ
 #define PARAM_ZAKONCENIE_KTORY_JE           "KTORY_JE"
-// 2012-03-16, doplnenÈ: predslovy k zakonËeniam, ktorÈ sa pre fÈrie nemaj˙ zobraziù, ak sa sl·vi spomienka v privilegovan˝ch dÚoch
+// 2012-03-16: predslovy k zakonËeniam, ktorÈ sa pre fÈrie nemaj˙ zobraziù, ak sa sl·vi spomienka v privilegovan˝ch dÚoch
 #define PARAM_ZAKONCENIE_O_TO_TA_PROSIME    "O_TO_TA_PROSIME"
 
 // 2011-08-15: force pre jednotlivÈ Ëasti modlitby, funkcie _set_spolocna_cast()...
@@ -1303,13 +1312,15 @@ extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: ˙prava v˝znamu (a interpret·cie) option 4 (rozliËnÈ prepÌnaËe pre offline export, napr. aj batch mÛd)
 #define BIT_OPT_4_MESIAC_RIADOK             1
 
-#define POCET_OPT_5_ALTERNATIVES            5 // jednotlivÈ komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES            7 // jednotlivÈ komponenty option 5 -- bity pre force option 5
 extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletÛrium (CezroËnÈ obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posv‰tnÈ ËÌtanie (CezroËnÈ obdobie, I./II.)
-#define BIT_OPT_5_HYMNUS_MCD_PREDPOL        3 // hymnus pre modlitbu cez deÚ, predpoludnÌm (CezroËnÈ obdobie)
-#define BIT_OPT_5_HYMNUS_MCD_NAPOL          4 // hymnus pre modlitbu cez deÚ, napoludnie (CezroËnÈ obdobie)
-#define BIT_OPT_5_HYMNUS_MCD_POPOL          5 // hymnus pre modlitbu cez deÚ, popoludnÌ (CezroËnÈ obdobie)
+#define BIT_OPT_5_HYMNUS_MCD_PREDPOL        4 // hymnus pre modlitbu cez deÚ, predpoludnÌm (CezroËnÈ obdobie)
+#define BIT_OPT_5_HYMNUS_MCD_NAPOL          8 // hymnus pre modlitbu cez deÚ, napoludnie (CezroËnÈ obdobie)
+#define BIT_OPT_5_HYMNUS_MCD_POPOL         16 // hymnus pre modlitbu cez deÚ, popoludnÌ (CezroËnÈ obdobie)
+#define BIT_OPT_5_DOPLNK_PSALM_122_129     32 // pre modlitbu cez deÚ v doplnkovej psalmÛdii namiesto ûalmu 122 moûno braù ûalm 129
+#define BIT_OPT_5_DOPLNK_PSALM_127_131     64 // pre modlitbu cez deÚ v doplnkovej psalmÛdii namiesto ûalmu 127 moûno braù ûalm 131
 
 // globalna premenna, co obsahuje string vypisany na obsazovku
 extern char *_global_string;

@@ -25,4 +25,4 @@
 	#endif /* _CRT_NONSTDC_NO_DEPRECATE */
 #endif   // VC8+
 
-#endif /* __VSTUDIO_H */
+#endif // __VSTUDIO_H

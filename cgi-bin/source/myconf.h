@@ -31,6 +31,8 @@
 
 #ifdef OS_Windows_Ruby
 #define CONFIG_FILE "breviar-local.cfg"
+#elif defined(IO_ANDROID)
+#define CONFIG_FILE "breviar-android.cfg"
 #elif defined(BEHAVIOUR_CMDLINE)
 #define CONFIG_FILE "breviar-cmdline.cfg"
 #else // defined(BEHAVIOUR_WEB)
