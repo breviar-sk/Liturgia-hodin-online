@@ -2290,7 +2290,7 @@ const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] =
  "",
  "",
  "místo žalmu 122 vzít žalm 129",
- "hu_Ps 121 128",
+ "a 121. helyett vehetõ a 128. zsoltár",
 };
 
 const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] = 
@@ -2300,7 +2300,7 @@ const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] =
  "",
  "",
  "místo žalmu 127 vzít žalm 131",
- "hu_Ps 126 130",
+ "a 126. helyett vehetõ a 130. zsoltár",
 };
 
 const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] = 
@@ -2310,7 +2310,7 @@ const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] =
  "",
  "",
  "vzít žalm 122 z doplòovacího cyklu",
- "hu_take psalm 122 ordinary",
+ "hu_take 121. zsoltár from kiegészítõ zsoltároknál",
 };
 
 const char *html_text_option5_DPsalmZ127_NORMAL[POCET_JAZYKOV + 1] = 
@@ -2320,7 +2320,7 @@ const char *html_text_option5_DPsalmZ127_NORMAL[POCET_JAZYKOV + 1] =
  "",
  "",
  "vzít žalm 127 z doplòovacího cyklu",
- "hu_take psalm 127 ordinary",
+ "hu_take 126. zsoltár from kiegészítõ zsoltároknál",
 };
 
 const char *html_text_option5_DPsalmZ122_129_explain[POCET_JAZYKOV + 1] = 
@@ -2330,7 +2330,7 @@ const char *html_text_option5_DPsalmZ122_129_explain[POCET_JAZYKOV + 1] =
  "",
  "",
  "Pro doplòovací cyklus žalmù místo žalmu 122 (121) vzít žalm 129 (128).",
- "hu_Ps 121 128",
+ "A kiegészítõ zsoltároknál a 121. helyett vehetõ a 128. zsoltár.",
 };
 
 const char *html_text_option5_DPsalmZ127_131_explain[POCET_JAZYKOV + 1] = 
@@ -2340,7 +2340,7 @@ const char *html_text_option5_DPsalmZ127_131_explain[POCET_JAZYKOV + 1] =
  "",
  "",
  "Pro doplòovací cyklus žalmù místo žalmu 127 (126) vzít žalm 131 (130).",
- "hu_Ps 126 130",
+ "A kiegészítõ zsoltároknál a 126. helyett vehetõ a 130. zsoltár.",
 };
 
 
