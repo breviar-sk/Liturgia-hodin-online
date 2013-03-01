@@ -2704,7 +2704,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	// 2012-05-24: doplnené -- predåené slávenie vigílií v rámci posvätnıch èítaní
 	else if(equals(paramname, PARAM_JE_VIGILIA_BEGIN)){
 		_global_som_vo_vigilii = ANO;
-		if((_global_opt_tedeum == NIE) || ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PC_VIGILIA) != BIT_OPT_1_PC_VIGILIA) || !(je_vigilia)){
+		// 2013-02-28: nechápem, preèo tu bola podmienka aj na Te Deum, ktoré napr. v Pôstnom období nie je, hoci je tam predåené slávenie vigílie
+		if(((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PC_VIGILIA) != BIT_OPT_1_PC_VIGILIA) || !(je_vigilia)){
 			// nezobrazova vigíliu
 			_global_skip_in_prayer = ANO;
 #if defined(EXPORT_HTML_SPECIALS)
