@@ -170,10 +170,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Log("_global_css_font_size == %s...\n", _global_css_font_size);
 
 	if(bol_content_type_text_html == NIE){
-#if defined(OS_linux)
-		Export_to_file(expt, "Content-type: text/html\n");
-		Export_to_file(expt, "\n");
-#elif defined(OS_Windows_Ruby)
+#if defined(BEHAVIOUR_WEB)
 		Export_to_file(expt, "Content-type: text/html\n");
 		Export_to_file(expt, "\n");
 #endif

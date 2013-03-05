@@ -220,8 +220,13 @@ public class Breviar extends Activity {
 
       int id = -1;
       Intent intent = getIntent();
-      if (intent.getAction().equals("sk.breviar.android.action.SHOW")) {
-        id = intent.getIntExtra("id", -1);
+      if (intent != null) {
+        String action = intent.getAction();
+        if (action != null) {
+          if (action.equals("sk.breviar.android.action.SHOW")) {
+            id = intent.getIntExtra("id", -1);
+          }
+        }
       }
 
       Log.v("breviar", "onCreate: intent id = " + id);

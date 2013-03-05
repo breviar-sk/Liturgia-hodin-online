@@ -1,0 +1,81 @@
+#!/bin/bash
+
+. /etc/profile
+
+start_emulator() {
+  avd=$1
+  pidfile=/tmp/$avd.pid
+  /sbin/start-stop-daemon -S -m -p $pidfile -b -x `which emulator` \
+    -- -avd $avd -no-window -wipe-data
+  sleep 240
+  adb push testing/orng /data/orng >/dev/null 2>/dev/null
+}
+
+stop_emulator() {
+  avd=$1
+  pidfile=/tmp/$avd.pid
+  /sbin/start-stop-daemon -K -p $pidfile
+}
+
+(
+
+echo "Running nightlies."
+
+LOCK=/tmp/breviar-nightlies.lck
+ROOT=/home/build/testing/nightlies
+(
+  flock -n 9 || (echo "Unable to get lock!"; exit 1)
+  pushd .. >/dev/null
+
+  COMMIT=`git branch -v --no-abbrev | egrep "^. master" | sed "s/. master *//;s/ .*//"`
+  DATE=`date +%F`
+  VERSION=`cat AndroidManifest.xml | grep "android:versionName" | sed "s/.*versionName=\"//;s/\".*//"`
+
+  rm -rf $ROOT/$DATE
+  mkdir -p $ROOT/$DATE
+  echo $COMMIT >$ROOT/$DATE/commit
+  LOG=$ROOT/$DATE/log
+  
+  sudo /usr/local/bin/build-access.sh
+
+  echo "Git fetch and merge."
+  if ( git fetch --all && git merge origin/master ) >>$LOG 2>&1; then 
+    echo "Git merge successful."
+  else 
+    echo "Git merge failed! Log follows:"
+    echo
+    cat $LOG
+    exit 0
+  fi
+
+  echo "Build."
+  rm -rf bin
+  if (./build-assets && ndk-build && ant debug && ant release) >>$LOG 2>&1; then 
+    echo "Build finished successfully."
+  else
+    echo "Build failed! Log follows:"
+    echo
+    cat $LOG
+    exit 0
+  fi
+
+  cp bin/Breviar-release.apk $ROOT/$DATE/breviar.apk
+  echo "Nightly package is at: kralovic.org:$ROOT/$DATE/breviar.apk"
+  echo "Or: http://kralovic.org/~riso/testing/$DATE/breviar.apk"
+
+  export ANDROID_SDK_HOME=/home/build/
+  start_emulator galaxy_nexus_4.2
+
+  echo "Running tests."
+  TEST_LOG=$ROOT/$DATE/test_log
+  mkdir -p $TEST_LOG
+  monkeyrunner testing/run_tests.py $TEST_LOG $DATE $COMMIT $VERSION
+
+  stop_emulator galaxy_nexus_4.2
+
+  echo "Test results are available at http://kralovic.org/~riso/testing/nightlies/$DATE/test_log/index.html"
+  popd >/dev/null
+) 9>$LOCK
+
+rm -f $LOCK
+) | mail -s "Breviar nightly" android@breviar.sk
