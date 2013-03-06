@@ -25,7 +25,7 @@ a.explain { color: #330000; }
 a.button { 
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
 	color: #333333; 
-	border: solid 1px #CCCCCC; }
+	border: solid 0px #CCCCCC; }
 
 table { color: #CCCCCC; }
 td { color: #CCCCCC; }
@@ -40,25 +40,25 @@ input { color: #CCCCCC; }
 input.button, input.reset { 
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
 	color: #333333; 
-	border: solid 1px #CCCCCC; }
+	border: solid 0px #CCCCCC; }
 
 /* << >> */
 input.button0, input.reset0 { 
 	background: #C0C0C0; /* #3366CC; #3399ff; */
 	color: #404040;
-	border: solid 1px #A0A0A0; }
+	border: solid 0px #A0A0A0; }
 
 /* dnes */
 input.button1, input.reset1 { 
 	background: #C0C0C0; /* #3366CC; #3399ff; */
 	color: #404040;
-	border: solid 1px #A0A0A0; }
+	border: solid 0px #A0A0A0; }
 
 /* menej podstatné buttony */
 input.button2, input.reset2 { 
 	background: #CC9966; /* #ff9933; */
 	color: #333333;
-	border: solid 1px #CCCCCC; }
+	border: solid 0px #CCCCCC; }
 
 input.text { background: #333333; }
 

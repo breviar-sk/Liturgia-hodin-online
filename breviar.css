@@ -62,7 +62,7 @@ a.button {
 	font-style: normal;
 	text-decoration: none; 
 	color: #000000; 
-	border: solid 1px #000000; }
+	border: solid 0px #000000; }
 
 table { color: #505000; }
 tr.paragraph { text-indent: 3em; line-height: 120%; }
@@ -87,7 +87,7 @@ input.button, input.reset {
 	font-style: normal;
 	text-decoration: none; 
 	color: #000000; 
-	border: solid 1px #000000; }
+	border: solid 0px #000000; }
 
 /* << >> */
 input.button0, input.reset0 { 
@@ -125,7 +125,7 @@ input.button2, input.reset2 {
 	font-style: italic;
 	text-decoration: none; 
 	color: #000000; 
-	border: solid 1px #000000; }
+	border: solid 0px #000000; }
 
 input.text { border-style: solid; background: white; }
 
