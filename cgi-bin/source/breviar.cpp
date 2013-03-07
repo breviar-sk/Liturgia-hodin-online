@@ -8638,11 +8638,16 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 	Export("<!-- combobox pre v˝ber jazyka -->\n");
 
-// #if defined(IO_ANDROID)
+#if defined(IO_ANDROID)
+	Export("<!-- button Nastaviù/Potvrdiù (jazyk)-->\n"); // 2013-03-06: pre Android netreba aj popis, aj button
+	// button Nastaviù/Potvrdiù
+	Export("<"HTML_FORM_INPUT_SUBMIT" value=\"");
+	Export(html_text_jazyk_android);
+	Export("\">");
+#else
 	Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_jazyk_explain[_global_jazyk], html_text_jazyk_android);
-// #else
-//	Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_jazyk_explain[_global_jazyk], html_text_jazyk[_global_jazyk]);
-// #endif
+	// Export("<"HTML_SPAN_TOOLTIP">%s</span>", html_text_jazyk_explain[_global_jazyk], html_text_jazyk[_global_jazyk]);
+#endif
 	Export(" ");
 	// drop-down list pre v˝ber jazyka
 	// pole WWW_JAZYK
@@ -8663,11 +8668,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	}
 	Export("</select>\n");
 
-	Export("<!-- button Nastaviù/Potvrdiù (jazyk)-->\n");
+#if defined(IO_ANDROID)
+#else
+	Export("<!-- button Nastaviù/Potvrdiù (jazyk)-->\n"); // 2013-03-06: pre Android netreba aj popis, aj button
 	// button Nastaviù/Potvrdiù
 	Export("<"HTML_FORM_INPUT_SUBMIT" value=\"");
 	Export((char *)HTML_BUTTON_DNES_APPLY_SETTINGS);
 	Export("\">");
+#endif
 
 	Export("</form>\n\n");
 	Export("</td>\n</tr>\n</table>\n");
