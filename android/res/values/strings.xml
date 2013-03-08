@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.8.6</string>
+    <string name="version">v1.8.7</string>
 
     <string name="lang_select">Settings</string>
     <string name="lang_select_title">Select language:</string>
@@ -53,7 +53,7 @@
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
     <string name="news">
-     News in v1.8.6:\n
+     News in v1.8.6 - v1.8.7:\n
      - Updates from breviar.sk\n\n
      News in v1.8.4:\n
      - Updates from breviar.sk\n

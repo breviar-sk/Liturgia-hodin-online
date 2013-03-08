@@ -61,7 +61,7 @@ ROOT=/home/build/testing/nightlies
 
   cp bin/Breviar-release.apk $ROOT/$DATE/breviar.apk
   echo "Nightly package is at: kralovic.org:$ROOT/$DATE/breviar.apk"
-  echo "Or: http://kralovic.org/~riso/testing/$DATE/breviar.apk"
+  echo "Or: http://kralovic.org/~riso/testing/nightlies/$DATE/breviar.apk"
 
   export ANDROID_SDK_HOME=/home/build/
   start_emulator galaxy_nexus_4.2

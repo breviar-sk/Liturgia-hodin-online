@@ -89,6 +89,7 @@ out.write("""
 <tr> <td>Commit id:</td><td>%s</td> </tr>
 <tr> <td>Version:</td><td>%s</td> </tr>
 <tr> <td>Ran on:</td><td>%s</td> </tr>
+<tr> <td>Apk:</td><td><a href="../breviar.apk">breviar.apk</a></td> </tr>
 </table>
 
 <p>
@@ -106,7 +107,9 @@ Links: <a href="../..">all nightlies</a>, <a href="../../../releases">all releas
 
 <h2>Make release</h2>
 <p>
-<a href="release.php">Release this nightly!</a>
+<form action="release.php" method="post">
+  <input type="submit" value="Release this nightly!">
+</form>
 
 </body>
 </html>""" % (date_str, date_str, commit_id, version,

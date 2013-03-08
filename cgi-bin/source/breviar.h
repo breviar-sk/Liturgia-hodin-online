@@ -161,6 +161,8 @@ extern short int _global_pocet_svatych;
 
 // globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atï., obsahujú pom_MODL_OPT...
 extern short int _global_opt[POCET_GLOBAL_OPT];
+// globálna premenná -- pole -- obsahujúca force options; pôvodne to boli globálne premenné _global_optf 1..9 atï., obsahujú pom_MODL_OPTF...
+extern short int _global_optf[POCET_GLOBAL_OPT];
 
 // globalna premenna, co obsahuje string vypisany na obsazovku
 extern char *_global_string;

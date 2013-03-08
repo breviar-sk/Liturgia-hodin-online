@@ -1734,7 +1734,7 @@ void set_prosby(short int den, short int tyzzal, short int modlitba){
 }
 
 // 2012-11-08: nastavenie prosieb pre vešpery z dodatku
-void _set_prosby_dodatok(short int den, short int force_prve_vespery){
+void _set_prosby_dodatok(short int den, short int force_prve_vespery /* default = NIE */){
 	Log("_set_prosby_dodatok(den == %d, %s%s) -- begin\n", den, nazov_dna(den), (force_prve_vespery == ANO)? " force": "");
 
 	char file[SMALL]; // nazov súboru

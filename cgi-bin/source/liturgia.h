@@ -1257,6 +1257,8 @@ extern short int _global_pocet_svatych;
 
 // glob·lna premenn· -- pole -- obsahuj˙ca options; pÙvodne to boli glob·lne premennÈ _global_opt 1..9 atÔ., obsahuj˙ pom_MODL_OPT...
 extern short int _global_opt[POCET_GLOBAL_OPT];
+// glob·lna premenn· -- pole -- obsahuj˙ca force options; pÙvodne to boli glob·lne premennÈ _global_optf 1..9 atÔ., obsahuj˙ pom_MODL_OPTF...
+extern short int _global_optf[POCET_GLOBAL_OPT];
 
 #define POCET_OPT_0_SPECIALNE               6 // jednotlivÈ komponenty option 0 -- bity pre force option 0
 extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
@@ -1321,6 +1323,10 @@ extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_MCD_POPOL         16 // hymnus pre modlitbu cez deÚ, popoludnÌ (CezroËnÈ obdobie)
 #define BIT_OPT_5_DOPLNK_PSALM_122_129     32 // pre modlitbu cez deÚ v doplnkovej psalmÛdii namiesto ûalmu 122 moûno braù ûalm 129
 #define BIT_OPT_5_DOPLNK_PSALM_127_131     64 // pre modlitbu cez deÚ v doplnkovej psalmÛdii namiesto ûalmu 127 moûno braù ûalm 131
+
+#define MAX_POCET_OPT                      16 // malo by to byù aspoÚ maximum z POCET_OPT_0_... aû POCET_OPT_5_...
+
+const short int pocet_opt[POCET_GLOBAL_OPT] = {POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nem· bitovÈ komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES};
 
 // globalna premenna, co obsahuje string vypisany na obsazovku
 extern char *_global_string;
@@ -1389,7 +1395,10 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 // 2011-05-11: doplnen˝ nov˝ parameter align -- Ëi zarovnaù jednocifernÈ d·tumy (ËÌslovka dÚa) medzerou zæava
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
 
-void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR]);
+#define PRILEP_REQUEST_OPTIONS_DEFAULT   0
+#define PRILEP_REQUEST_OPTIONS_AJ_FORCE  1
+#define PRILEP_REQUEST_OPTIONS_LEN_FORCE 2
+void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int force_opt = PRILEP_REQUEST_OPTIONS_DEFAULT); // 2013-03-07: pokus; pravdepodobne PRILEP_REQUEST_OPTIONS_LEN_FORCE je neuûitoËnÈ a PRILEP_REQUEST_OPTIONS_AJ_FORCE moûno trocha riskantnÈ...
 
 short int prestupny(short int);
 short int pocet_dni_v_roku(short int);
