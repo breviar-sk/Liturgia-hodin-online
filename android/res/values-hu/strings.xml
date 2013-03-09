@@ -33,15 +33,6 @@
     <string name="h12_notify">Itt az idő a déli napközi imaórára!</string>
     <string name="h15_notify">Itt az idő a délután napközi imaórára!</string>
 
-    <string name="hu_beta_warning">
-    Hungarian version is almost complete. Some special cases 
-    for Hungarian liturgical calendar are not yet finished. 
-    Expected date of finishing: end of 2012.\n\n
-
-    Best wishes,\n
-    Juraj Vidéky (videky@breviar.sk), Richard Královič (riso@ksp.sk)
-    </string>
-
     <string name="app_name">Imaórák liturgiája</string>
     <string name="back">Vissza</string>
     <string name="forward">Előre</string>

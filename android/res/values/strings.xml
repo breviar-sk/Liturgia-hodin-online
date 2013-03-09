@@ -35,17 +35,6 @@
     <string name="h12_notify">Time for Sext!</string>
     <string name="h15_notify">Time for None!</string>
 
-    <string name="hu_beta_warning">
-    Hungarian version is in beta - thus, many source texts are not yet
-    available. Also some special cases for Hungarian liturgical calendar are
-    not yet finished. Expected date of finishing: mid of 2012. If you may help
-    us with completing HTML source files, please contact us (HTML base
-    knowledge is required).\n\n
-
-    Best wishes,\n
-    Juraj Vidéky (videky@breviar.sk), Richard Královič (riso@ksp.sk)
-    </string>
-
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
     <string name="forward">Forward</string>

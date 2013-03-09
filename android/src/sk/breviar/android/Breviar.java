@@ -35,7 +35,6 @@ import sk.breviar.android.Util;
 
 public class Breviar extends Activity {
     static String scriptname = "cgi-bin/l.cgi";
-    static final int DIALOG_HU_BETA = 1;
     static final int DIALOG_NEWS = 2;
 
     // Server singleton
@@ -84,7 +83,9 @@ public class Breviar extends Activity {
       wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname +
                  "?qt=pdnes" + Html.fromHtml(S.getOpts()
                      .replaceAll("&amp;c=[^&]*&amp;", "&amp;")
-                     .replaceAll("&amp;j=[^&]*&amp;", "&amp;")));
+                     .replaceAll("&amp;c=[^&]*$", "")
+                     .replaceAll("&amp;j=[^&]*&amp;", "&amp;")
+                     .replaceAll("&amp;j=[^&]*$", "")));
       syncPreferences();
       BreviarApp.initLocale(this);
       recreateIfNeeded();
@@ -358,16 +359,6 @@ public class Breviar extends Activity {
                      }
                  })
                  .create();
-        case DIALOG_HU_BETA:
-          return new AlertDialog.Builder(this)
-                 .setMessage(R.string.hu_beta_warning)
-                 .setCancelable(false)
-                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                     public void onClick(DialogInterface dialog, int id) {
-                          dialog.cancel();
-                     }
-                 })
-                 .create();
         default:
           // fall through
       }
@@ -380,7 +371,6 @@ public class Breviar extends Activity {
         language = data.getStringExtra("lang");
         if (language == null) language = "sk";
         resetLanguage();
-        if (language.equals("hu")) showDialog(DIALOG_HU_BETA);
       }
     }
 
