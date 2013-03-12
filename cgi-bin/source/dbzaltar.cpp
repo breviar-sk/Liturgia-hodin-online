@@ -2196,6 +2196,8 @@ void zaltar_kompletorium(short int den, short int obdobie, short int specialne, 
 	else{
 		_global_modl_kompletorium.pocet_zalmov = 1;
 	}
+	Log("_global_modl_kompletorium.pocet_zalmov == %d; _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_kompletorium.pocet_zalmov, _global_modl_prve_kompletorium.pocet_zalmov);
+
 	if(specialne == ZALTAR_VSETKO){
 		Log("ZALTAR_VSETKO -- takže nastavujem všetko zo žaltára...\n");
 		// 2006-10-13: pridané èasti pre kompletórium
