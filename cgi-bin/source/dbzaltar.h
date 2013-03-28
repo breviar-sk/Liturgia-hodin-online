@@ -724,5 +724,14 @@ extern const char *text_DEC_22_OP[POCET_JAZYKOV + 1];
 
 // --------------- OPraem propriá ---------------
 extern const char *text_JAN_14_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_FEB_04_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_FEB_10_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_FEB_17_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_APR_24_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_APR_26_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_02_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_JUN_06_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_JUN_16_OPRAEM[POCET_JAZYKOV + 1];
 
 #endif // __DBZALTAR_H_

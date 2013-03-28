@@ -8595,13 +8595,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		// 2011-01-31: sem presunut· moûnosù v˝beru liturgickÈho kalend·ra
 		// 2011-09-26: predsunut· pred vöetky ostatnÈ options (Igor Gal·d)
-		if((_global_jazyk == JAZYK_SK) || 
-#if defined(OS_Windows_Ruby) 
-			(_global_jazyk == JAZYK_CZ)
-#else
-			NIE
-#endif
-			){
+		if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ)){
 
 			Export("<!-- v˝ber kalend·ra (propri·) -->\n");
 
