@@ -560,6 +560,10 @@ const char *nazov_slavenia_lokal[] =
 ,"len v Žilinskej diecéze"                                                                                      // LOKAL_SLAV_ZILINA
 ,"na Strahovì: svátek, Nová Øíše: památka"                                                                      // LOKAL_SLAV_OPRAEM_SVIATOK_STRAHOV
 ,"kanonie Teplá: slavnost"                                                                                      // LOKAL_SLAV_OPRAEM_SLAVNOST_TEPLA
+,"jen kanonie Nová Øíše"                                                                                        // LOKAL_SLAV_OPRAEM_NOVA_RISE
+,"jen kanonie Strahov a Nová Øíše"                                                                              // LOKAL_SLAV_OPRAEM_STRAHOV_NOVA_RISE
+,"jen kanonie Želiv"                                                                                            // LOKAL_SLAV_OPRAEM_ZELIV
+,"jen kanonie Strahov"                                                                                          // LOKAL_SLAV_OPRAEM_STRAHOV
 };
 
 // names of liturgical colors
@@ -3799,7 +3803,7 @@ const char *text_APR_25[POCET_JAZYKOV + 1] =
  };
 const char *text_APR_26_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Ludolfa, biskupa a muèedníka z premonstrátského øádu",
+ "Sv. Ludolfa, biskupa a muèedníka "HTML_LINE_BREAK"z premonstrátského øádu",
  "",
  "",
  "",
@@ -6262,6 +6266,15 @@ const char *text_SEP_10_CZ[POCET_JAZYKOV + 1] =
  "Bl. Karla Spinoly, knìze a muèedníka",
  "",
  };
+const char *text_SEP_11_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Výroèí posvìcení opatského kostela",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
 const char *text_SEP_12[POCET_JAZYKOV + 1] = 
 {"Najsv. mena Panny Márie", // pod¾a Direktória 2012, str. 192; pôvodne bolo: 'Mena prebl. Panny Márie'
  "Jména Panny Marie",
@@ -6270,6 +6283,15 @@ const char *text_SEP_12[POCET_JAZYKOV + 1] =
  "",
  "Jména Panny Marie",
  "Szûz Mária Szent Neve",
+ };
+const char *text_SEP_12_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Nejsvìtìjšího jména Panny Marie",
+ "",
+ "",
+ "",
+ "",
+ "",
  };
 const char *text_SEP_13[POCET_JAZYKOV + 1] = 
 {"Sv. Jána Zlatoústeho, biskupa a uèite¾a Cirkvi",
@@ -6679,6 +6701,15 @@ const char *text_OKT_07[POCET_JAZYKOV + 1] =
  "Panny Marie Rùžencové",
  "Rózsafüzér Királynõje",
  };
+const char *text_OKT_07_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Výroèí posvìcení opatského kostela",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
 const char *text_OKT_08_HU[POCET_JAZYKOV + 1] = 
 {"",
  "",
@@ -6733,6 +6764,15 @@ const char *text_OKT_09_OP[POCET_JAZYKOV + 1] =
  "Sv. Ludvíka Bertrána, knìze",
  "",
  };
+const char *text_OKT_10_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Sv. Gereona a druhù, muèedníkù",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
 const char *text_OKT_11[POCET_JAZYKOV + 1] = 
 {"Bl. Jána XXIII., pápeža",
  "",
@@ -6781,6 +6821,15 @@ const char *text_OKT_13_OP[POCET_JAZYKOV + 1] =
 const char *text_OKT_13_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Alexandry Márie da Costovej",
  "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_OKT_13_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Bl. Petra Adriána Toulorge, knìze a muèedníka "HTML_LINE_BREAK"z premonstrátského øádu",
  "",
  "",
  "",
@@ -6898,6 +6947,15 @@ const char *text_OKT_19_SJ[POCET_JAZYKOV + 1] =
 const char *text_OKT_19_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Agnesy Galandovej de Langeac, panny",
  "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Sv. Jakuba Kerna, knìze z premonstrátského øádu",
  "",
  "",
  "",
@@ -7024,6 +7082,15 @@ const char *text_OKT_26[POCET_JAZYKOV + 1] =
 const char *text_OKT_26_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Damiána z Finale, kòaza",
  "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_OKT_26_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Sv. Gilberta, opata z premonstrátského øádu",
  "",
  "",
  "",

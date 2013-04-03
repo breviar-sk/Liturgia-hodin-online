@@ -739,5 +739,12 @@ extern const char *text_AUG_13_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_27_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_28_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_30_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_SEP_11_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_SEP_12_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_OKT_07_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_OKT_10_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_OKT_13_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_OKT_20_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_OKT_26_OPRAEM[POCET_JAZYKOV + 1];
 
 #endif // __DBZALTAR_H_
