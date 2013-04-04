@@ -35,24 +35,27 @@
     <string name="rch_notify">Je čas na ranné chvály!</string>
     <string name="vesp_notify">Je čas na vešpery!</string>
     <string name="kompl_notify">Je čas na kompletórium!</string>
-    <string name="read_notify">Je čas na posvätné čítania!</string>
+    <string name="read_notify">Je čas na posvätné čítanie!</string>
     <string name="h9_notify">Je čas na modlitbu predpoludním!</string>
     <string name="h12_notify">Je čas na poludňajšiu modlitbu!</string>
     <string name="h15_notify">Je čas na popoludňajšiu modlitbu!</string>
 
     <string name="news">
+     Novinky vo verzii v1.9.0:\n
+     - Upravené nové ikonky\n
+     - Aktualizácie zo stránky breviar.sk\n\n
      Novinky vo verzii v1.8.6 - v1.8.7:\n
      - Aktualizácie zo stránky breviar.sk\n\n
      Novinky vo verzii v1.8.4:\n
      - Aktualizácie zo stránky breviar.sk\n
      - Nové ikonky\n\n
      Novinky vo verzii v1.8.3:\n
-     - Aktualizácie zo stránky www.breviar.sk\n\n
+     - Aktualizácie zo stránky breviar.sk\n\n
      Novinky vo verzii v1.8.2:\n
-     - Aktualizácie zo stránky www.breviar.sk\n
+     - Aktualizácie zo stránky breviar.sk\n
      - Stabilnejšie obnovenie stavu aplikácie\n\n
      Novinky vo verzii v1.8.1:\n
-     - Aktualizácie zo stránky www.breviar.sk\n
+     - Aktualizácie zo stránky breviar.sk\n
      - Vypnutý zvuk pri posúvaní tlačidlami\n
        hlasitosti\n\n
     </string>

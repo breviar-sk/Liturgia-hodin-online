@@ -7316,6 +7316,15 @@ const char *text_NOV_08_OP[POCET_JAZYKOV + 1] =
  "Všech zemøelých bratøí a sester"HTML_LINE_BREAK"Øádu bratøí kazatelù",
  "",
  };
+const char *text_NOV_08_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Všech svatých premonstrátského øádu "HTML_LINE_BREAK"a všech svatých z øádù øeholních kanovníkù",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
 const char *text_NOV_09[POCET_JAZYKOV + 1] = 
 {"Výroèie posviacky Lateránskej baziliky",
  "Posvìcení lateránské baziliky",
@@ -7391,6 +7400,15 @@ const char *text_NOV_13_HU[POCET_JAZYKOV + 1] =
 const char *text_NOV_14_SJ[POCET_JAZYKOV + 1] = 
 {"Sv. Jozefa Pignatelliho, kòaza",
  "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_NOV_14_OPRAEM[POCET_JAZYKOV + 1] = 
+{"",
+ "Sv. Siarda, opata z premonstrátského øádu",
  "",
  "",
  "",

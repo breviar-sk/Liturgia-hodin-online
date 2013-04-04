@@ -2067,8 +2067,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 					}// zobraziù/nezobraziù ËÌslovanie veröov
 
-					if(((_global_den.litobd != OBD_VELKONOCNE_I) && (_global_den.litobd != OBD_VELKONOCNE_II)) &&
-						(equals(rest, PARAM_ALELUJA_VO_VELKONOCNOM))){
+					// 2013-04-03: prenesen· oprava z interpretParameter(): 2008-05-08: opravenÈ, aby sa spr·vne pouûÌvalo - ant. na nunk dimittis pre kompletÛrium
+					if((!(je_velka_noc)) && (equals(rest, PARAM_ALELUJA_VO_VELKONOCNOM))){
 						if(equals(strbuff, INCLUDE_BEGIN) && (vnutri_inkludovaneho == 1)){
 							write = NIE;
 #if defined(EXPORT_HTML_SPECIALS)
@@ -3932,6 +3932,20 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		else // ostatnÈ modlitby nemaj˙ rann˝ chv·lospev
 		;
 	}// PARAM_RCHVALOSPEV
+	else if(equals(paramname, PARAM_NUNC_DIMITTIS)){
+		if(((type == MODL_KOMPLETORIUM) || (type == MODL_PRVE_KOMPLETORIUM)) && (_global_skip_in_prayer != ANO)){
+			if(type == MODL_KOMPLETORIUM){
+				strcat(path, _global_modl_kompletorium.nunc_dimittis.file);
+				includeFile(type, paramname, path, _global_modl_kompletorium.nunc_dimittis.anchor);
+			}
+			else{
+				strcat(path, _global_modl_prve_kompletorium.nunc_dimittis.file);
+				includeFile(type, paramname, path, _global_modl_prve_kompletorium.nunc_dimittis.anchor);
+			}
+		}
+		else // ostatnÈ modlitby nemaj˙ Nunc dimittis
+		;
+	}// PARAM_NUNC_DIMITTIS
 	else if(equals(paramname, PARAM_PROSBY)){
 		switch(type){
 			case MODL_RANNE_CHVALY:

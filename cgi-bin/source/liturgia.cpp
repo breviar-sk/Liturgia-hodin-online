@@ -1519,19 +1519,19 @@ void Log(_struct_dm g){
 void Log(struct tmodlitba1 t){
 	Log_struktura_tm1("struktura tmodlitba1:\n");
 	Log_struktura_tm1("   alternativy = %d\n", t.alternativy);
-	Log_struktura_tm1("   popis             file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
-	Log_struktura_tm1("   hymnus            file `%s', anchor `%s'\n", t.hymnus.file, t.hymnus.anchor);
-	Log_struktura_tm1("   antifona1         file `%s', anchor `%s'\n", t.antifona1.file, t.antifona1.anchor);
-	Log_struktura_tm1("   zalm1             file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);
-	Log_struktura_tm1("   antifona2         file `%s', anchor `%s'\n", t.antifona2.file, t.antifona2.anchor);
-	Log_struktura_tm1("   zalm2             file `%s', anchor `%s'\n", t.zalm2.file, t.zalm2.anchor);
-	Log_struktura_tm1("   antifona3         file `%s', anchor `%s'\n", t.antifona3.file, t.antifona3.anchor);
-	Log_struktura_tm1("   zalm3             file `%s', anchor `%s'\n", t.zalm3.file, t.zalm3.anchor);
-	Log_struktura_tm1("   kcitanie          file `%s', anchor `%s'\n", t.kcitanie.file, t.kcitanie.anchor);
-	Log_struktura_tm1("   kresponz          file `%s', anchor `%s'\n", t.kresponz.file, t.kresponz.anchor);
-	Log_struktura_tm1("   bened/magnifikat  file `%s', anchor `%s'\n", t.benediktus.file, t.benediktus.anchor); // antifona na benediktus/magnifikat
-	Log_struktura_tm1("   prosby            file `%s', anchor `%s'\n", t.prosby.file, t.prosby.anchor);
-	Log_struktura_tm1("   modlitba          file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
+	Log_struktura_tm1("   popis                 file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
+	Log_struktura_tm1("   hymnus                file `%s', anchor `%s'\n", t.hymnus.file, t.hymnus.anchor);
+	Log_struktura_tm1("   antifona1             file `%s', anchor `%s'\n", t.antifona1.file, t.antifona1.anchor);
+	Log_struktura_tm1("   zalm1                 file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);
+	Log_struktura_tm1("   antifona2             file `%s', anchor `%s'\n", t.antifona2.file, t.antifona2.anchor);
+	Log_struktura_tm1("   zalm2                 file `%s', anchor `%s'\n", t.zalm2.file, t.zalm2.anchor);
+	Log_struktura_tm1("   antifona3             file `%s', anchor `%s'\n", t.antifona3.file, t.antifona3.anchor);
+	Log_struktura_tm1("   zalm3                 file `%s', anchor `%s'\n", t.zalm3.file, t.zalm3.anchor);
+	Log_struktura_tm1("   kcitanie              file `%s', anchor `%s'\n", t.kcitanie.file, t.kcitanie.anchor);
+	Log_struktura_tm1("   kresponz              file `%s', anchor `%s'\n", t.kresponz.file, t.kresponz.anchor);
+	Log_struktura_tm1("   bened/magnifikat      file `%s', anchor `%s'\n", t.benediktus.file, t.benediktus.anchor); // antifona na benediktus/magnifikat
+	Log_struktura_tm1("   prosby                file `%s', anchor `%s'\n", t.prosby.file, t.prosby.anchor);
+	Log_struktura_tm1("   modlitba              file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
 	Log_struktura_tm1("   ant_spomprivileg      file `%s', anchor `%s'\n", t.ant_spomprivileg.file, t.ant_spomprivileg.anchor);
 	Log_struktura_tm1("   modlitba_spomprivileg file `%s', anchor `%s'\n", t.modlitba_spomprivileg.file, t.modlitba_spomprivileg.anchor);
 }
@@ -1557,20 +1557,21 @@ void Log(struct tmodlitba3 t){
 	Log_struktura_tm3("struktura tmodlitba3:\n");
 	Log_struktura_tm3("   alternativy = %d\n", t.alternativy);
 	Log_struktura_tm3("   pocet_zalmov = %d\n", t.pocet_zalmov);
-	Log_struktura_tm3("   popis        file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
-	Log_struktura_tm3("   hymnus       file `%s', anchor `%s'\n", t.hymnus.file, t.hymnus.anchor);
-	Log_struktura_tm3("   antifona1    file `%s', anchor `%s'\n", t.antifona1.file, t.antifona1.anchor);
-	Log_struktura_tm3("   zalm1        file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);
-	Log_struktura_tm3("   antifona2    file `%s', anchor `%s'\n", t.antifona2.file, t.antifona2.anchor);
-	Log_struktura_tm3("   zalm2        file `%s', anchor `%s'\n", t.zalm2.file, t.zalm2.anchor);
-	Log_struktura_tm3("   kcitanie     file `%s', anchor `%s'\n", t.kcitanie.file, t.kcitanie.anchor);
-	Log_struktura_tm3("   kresponz     file `%s', anchor `%s'\n", t.kresponz.file, t.kresponz.anchor);
-	Log_struktura_tm3("   modlitba     file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
+	Log_struktura_tm3("   popis          file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
+	Log_struktura_tm3("   hymnus         file `%s', anchor `%s'\n", t.hymnus.file, t.hymnus.anchor);
+	Log_struktura_tm3("   antifona1      file `%s', anchor `%s'\n", t.antifona1.file, t.antifona1.anchor);
+	Log_struktura_tm3("   zalm1          file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);
+	Log_struktura_tm3("   antifona2      file `%s', anchor `%s'\n", t.antifona2.file, t.antifona2.anchor);
+	Log_struktura_tm3("   zalm2          file `%s', anchor `%s'\n", t.zalm2.file, t.zalm2.anchor);
+	Log_struktura_tm3("   kcitanie       file `%s', anchor `%s'\n", t.kcitanie.file, t.kcitanie.anchor);
+	Log_struktura_tm3("   kresponz       file `%s', anchor `%s'\n", t.kresponz.file, t.kresponz.anchor);
+	Log_struktura_tm3("   nunc_dimittis  file `%s', anchor `%s'\n", t.nunc_dimittis.file, t.nunc_dimittis.anchor);
+	Log_struktura_tm3("   modlitba       file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
 }
 
 // 2006-10-13 doplnené
 void Log(struct tmodlitba4 t){
-	Log_struktura_tm4("struktura tmodlitba3:\n");
+	Log_struktura_tm4("struktura tmodlitba4:\n");
 	Log_struktura_tm4("   popis        file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
 	Log_struktura_tm4("   antifona1    file `%s', anchor `%s'\n", t.antifona1.file, t.antifona1.anchor);
 	Log_struktura_tm4("   zalm1        file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);
@@ -1580,24 +1581,24 @@ void Log(struct tmodlitba4 t){
 void Log(struct tmodlitba5 t){
 	Log_struktura_tm5("struktura tmodlitba5:\n");
 	Log_struktura_tm5("   alternativy = %d\n", t.alternativy);
-	Log_struktura_tm5("   popis             file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
-	Log_struktura_tm5("   hymnus            file `%s', anchor `%s'\n", t.hymnus.file, t.hymnus.anchor);
-	Log_struktura_tm5("   antifona1         file `%s', anchor `%s'\n", t.antifona1.file, t.antifona1.anchor);
-	Log_struktura_tm5("   zalm1             file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);
-	Log_struktura_tm5("   antifona2         file `%s', anchor `%s'\n", t.antifona2.file, t.antifona2.anchor);
-	Log_struktura_tm5("   zalm2             file `%s', anchor `%s'\n", t.zalm2.file, t.zalm2.anchor);
-	Log_struktura_tm5("   antifona3         file `%s', anchor `%s'\n", t.antifona3.file, t.antifona3.anchor);
-	Log_struktura_tm5("   zalm3             file `%s', anchor `%s'\n", t.zalm3.file, t.zalm3.anchor);
-	Log_struktura_tm5("   kresponz          file `%s', anchor `%s'\n", t.kresponz.file, t.kresponz.anchor);
-	Log_struktura_tm5("   1. citanie        file `%s', anchor `%s'\n", t.citanie1.file, t.citanie1.anchor);
-	Log_struktura_tm5("   2. citanie        file `%s', anchor `%s'\n", t.citanie2.file, t.citanie2.anchor);
+	Log_struktura_tm5("   popis                 file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
+	Log_struktura_tm5("   hymnus                file `%s', anchor `%s'\n", t.hymnus.file, t.hymnus.anchor);
+	Log_struktura_tm5("   antifona1             file `%s', anchor `%s'\n", t.antifona1.file, t.antifona1.anchor);
+	Log_struktura_tm5("   zalm1                 file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);
+	Log_struktura_tm5("   antifona2             file `%s', anchor `%s'\n", t.antifona2.file, t.antifona2.anchor);
+	Log_struktura_tm5("   zalm2                 file `%s', anchor `%s'\n", t.zalm2.file, t.zalm2.anchor);
+	Log_struktura_tm5("   antifona3             file `%s', anchor `%s'\n", t.antifona3.file, t.antifona3.anchor);
+	Log_struktura_tm5("   zalm3                 file `%s', anchor `%s'\n", t.zalm3.file, t.zalm3.anchor);
+	Log_struktura_tm5("   kresponz              file `%s', anchor `%s'\n", t.kresponz.file, t.kresponz.anchor);
+	Log_struktura_tm5("   1. citanie            file `%s', anchor `%s'\n", t.citanie1.file, t.citanie1.anchor);
+	Log_struktura_tm5("   2. citanie            file `%s', anchor `%s'\n", t.citanie2.file, t.citanie2.anchor);
 	Log_struktura_tm5("   citanie_spomprivileg  file `%s', anchor `%s'\n", t.citanie_spomprivileg.file, t.citanie_spomprivileg.anchor);
-	Log_struktura_tm5("   ant_chval         file `%s', anchor `%s'\n", t.ant_chval.file, t.ant_chval.anchor);
-	Log_struktura_tm5("   chval1            file `%s', anchor `%s'\n", t.chval1.file, t.chval1.anchor);
-	Log_struktura_tm5("   chval2            file `%s', anchor `%s'\n", t.chval2.file, t.chval2.anchor);
-	Log_struktura_tm5("   chval3            file `%s', anchor `%s'\n", t.chval3.file, t.chval3.anchor);
-	Log_struktura_tm5("   evanjelium        file `%s', anchor `%s'\n", t.evanjelium.file, t.evanjelium.anchor);
-	Log_struktura_tm5("   modlitba          file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
+	Log_struktura_tm5("   ant_chval             file `%s', anchor `%s'\n", t.ant_chval.file, t.ant_chval.anchor);
+	Log_struktura_tm5("   chval1                file `%s', anchor `%s'\n", t.chval1.file, t.chval1.anchor);
+	Log_struktura_tm5("   chval2                file `%s', anchor `%s'\n", t.chval2.file, t.chval2.anchor);
+	Log_struktura_tm5("   chval3                file `%s', anchor `%s'\n", t.chval3.file, t.chval3.anchor);
+	Log_struktura_tm5("   evanjelium            file `%s', anchor `%s'\n", t.evanjelium.file, t.evanjelium.anchor);
+	Log_struktura_tm5("   modlitba              file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
 }
 
 //---------------------------------------------------------------------

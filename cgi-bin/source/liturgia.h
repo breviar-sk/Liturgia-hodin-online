@@ -193,9 +193,9 @@ struct tmodlitba1{
 	_struct_anchor_and_file zalm2     ;
 	_struct_anchor_and_file antifona3 ;
 	_struct_anchor_and_file zalm3     ;
-	_struct_anchor_and_file kcitanie  ; // 1. citanie pre posvatne citanie
+	_struct_anchor_and_file kcitanie  ;
 	_struct_anchor_and_file kresponz  ; 
-	_struct_anchor_and_file benediktus; // antifona na benediktus/magnifikat/nunc dimittis; 2. citanie pre posvatne citanie
+	_struct_anchor_and_file benediktus; // antifona na benediktus/magnifikat
 	_struct_anchor_and_file prosby    ; // pre posvatne citanie nedefinovane; 2011-03-16: "zneužité" (použité) pre hagiografické èítanie (¾ubovo¾nej) spomienky svätca v pôste
 	_struct_anchor_and_file modlitba  ;
 	_struct_anchor_and_file ant_spomprivileg; // 2010-05-21: pridané kvôli spomienkam a ¾ubovo¾ným spomienkam v pôstnom období (zobrazenie po modlitbe dòa pôstnej férie) // 2012-02-09: zovšeobecnené v zmysle VSLH è. 238 (Spomienky pripadajúce na privilegované dni)
@@ -239,6 +239,7 @@ struct tmodlitba3{
 	_struct_anchor_and_file zalm2     ;
 	_struct_anchor_and_file kcitanie  ;
 	_struct_anchor_and_file kresponz  ;
+	_struct_anchor_and_file nunc_dimittis; // antifóna na nunc dimittis; pridané 2013-04-03 (kvôli OPRAEM, 08dec)
 	_struct_anchor_and_file modlitba  ;
 };
 typedef struct tmodlitba3 _type_kompletorium;
@@ -423,8 +424,9 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_VCHVALOSPEV   "VCHVALOSPEV" // vlastne ZALM3
 #define PARAM_KCITANIE      "KCITANIE"
 #define PARAM_KRESPONZ      "KRESPONZ"
-#define PARAM_MAGNIFIKAT    "MAGNIFIKAT" // antifona na magnifikat
-#define PARAM_BENEDIKTUS    "BENEDIKTUS" // antifona na benediktus
+#define PARAM_MAGNIFIKAT    "MAGNIFIKAT" // antifóna na Magnifikat
+#define PARAM_BENEDIKTUS    "BENEDIKTUS" // antifóna na Benediktus
+#define PARAM_NUNC_DIMITTIS "NUNCDIMITTIS" // antifóna na Nunc dimittis
 #define PARAM_PROSBY        "PROSBY"
 #define PARAM_MODLITBA      "MODLITBA"
 // pridane 2003-08-06, upravene 2003-08-21
@@ -1535,6 +1537,7 @@ void analyzuj_rok(short int year);
 	_INIT_ANCHOR_AND_FILE(a.zalm2); \
 	_INIT_ANCHOR_AND_FILE(a.kcitanie); \
 	_INIT_ANCHOR_AND_FILE(a.kresponz); \
+	_INIT_ANCHOR_AND_FILE(a.nunc_dimittis); \
 	_INIT_ANCHOR_AND_FILE(a.modlitba); \
 };
 
