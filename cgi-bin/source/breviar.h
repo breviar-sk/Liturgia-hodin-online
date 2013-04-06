@@ -305,6 +305,11 @@ extern short int _global_opt_export_date_format;
 ) \
 ))
 
+// 2013-04-05: doplnenÈ -- Ëi sa NEMAJ⁄ zobrazovaù veöpery; doteraz sa kontrolovalo len to, Ëi je sobota -- opravenÈ pre Veæk˙ (bielu) sobotu
+#define nie_su_vespery ( \
+	(_global_den.denvt == DEN_SOBOTA) && (!((_global_den.denvt == DEN_SOBOTA) && (_global_den.litobd == OBD_VELKONOCNE_TROJDNIE))) \
+)
+
 #define je_alternativa_hymnus ( \
 (_global_modlitba == MODL_PRVE_KOMPLETORIUM && ((_global_modl_prve_kompletorium.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
 ||  \

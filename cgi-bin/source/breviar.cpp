@@ -6574,12 +6574,21 @@ void Export_HtmlFormPOST(char* action){
 
 // #define prilep_request_options(pom2, pom3) v breviar.h
 
-void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho, short int modl, char pom[MAX_STR], short int doplnkova_psalmodia, short int som_v_tabulke){
+void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho, short int modl, char pom[MAX_STR], short int doplnkova_psalmodia, short int som_v_tabulke, short int modl_visible = MODL_NEURCENA){
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 	short int orig_doplnkova_psalmodia = doplnkova_psalmodia;
 	if(orig_doplnkova_psalmodia == MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA){
 		doplnkova_psalmodia = MODL_CEZ_DEN_ZALMY_ZO_DNA;
+	}
+
+	// ak nie je nastaven· modlitba pre zobrazenie (napr. druhÈ veöpery), pouûije sa vstup modl (default spr·vanie)
+	if(modl_visible == MODL_NEURCENA){
+		modl_visible = modl;
+		Log("modl_visible zmenen· (default na modl == %s)...\n", nazov_modlitby(modl));
+	}
+	else{
+		Log("modl_visible == %s...\n", nazov_modlitby(modl_visible));
 	}
 
 	if(query_type == PRM_LIT_OBD){
@@ -6636,17 +6645,17 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 	}// !(query_type == PRM_LIT_OBD)
 
 	if((som_v_tabulke == ANO) && (typ != EXPORT_DNA_JEDEN_DEN_LOCAL)){
-		Export("<"HTML_FORM_INPUT_SUBMIT" title=\"%s\" value=\"", nazov_modlitby(modl));
-		Export("%s", html_button_nazov_modlitby(modl));
+		Export("<"HTML_FORM_INPUT_SUBMIT" title=\"%s\" value=\"", nazov_modlitby(modl_visible));
+		Export("%s", html_button_nazov_modlitby(modl_visible));
 		Export("\">\n");
 		Export("</form>\n");
 	}
 	else{
 		if(typ == EXPORT_DNA_JEDEN_DEN_LOCAL){
-			Export("%s", html_button_nazov_modlitby(modl));
+			Export("%s", html_button_nazov_modlitby(modl_visible));
 		}
 		else{
-			Export("%s", nazov_modlitby(modl));
+			Export("%s", nazov_modlitby(modl_visible));
 		}
 		Export("</a>\n");
 	}
@@ -6801,6 +6810,8 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 	short int _pom_den = _global_den.den;
 	short int _pom_mesiac = _global_den.mesiac;
 	short int _pom_rok = _global_den.rok;
+
+	short int su_prve_vespery = NIE; // 2013-04-05: pomocn· premenn·, do ktorej sa uloûÌ, Ëi sa exportovali aj buttony pre prvÈ veöpery a prvÈ kompletÛrium; podæa toho sa potom zmenÌ label pre druhÈ veöpery
 
 	// XML export -- zaËiatok danÈho sl·venia
 	if(typ == EXPORT_DNA_XML){
@@ -6974,7 +6985,8 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 			Export("<tbody>\n");
 		}
 
-		// 2011-03-22: doplnenÈ prvÈ veöpery; mÙûu byù pre smer < 5 ale nie pre vöetky dni, preto t·to podmienka... | odvetvenÈ len ak je _global_opt 8 == ANO
+		// 2011-03-22: doplnenÈ "prvÈ veöpery"; mÙûu byù pre smer < 5 ale nie pre vöetky dni, preto t·to podmienka... | odvetvenÈ len ak je _global_opt 8 == ANO
+		// 2013-04-05: ToDo: dorieöiù pre vöelijakÈ öpeci·lne "konflikty", napr. 8. aprÌl 2013 (presunut· sl·vnosù Zvestovania P·na na pondelok po VeækonoËnej okt·ve) -- m· maù prvÈ veöpery? a pod.77
 		if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY){
 			// if((_global_den.smer > _global_svaty1.smer) || (_global_den.smer > _global_svaty2.smer) || (_global_den.smer > _global_svaty3.smer)){
 			smer = _global_den.smer;
@@ -7001,7 +7013,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 				)
 			)
 			&& !(
-				((_global_den.denvr <= VELKONOCNA_NEDELA + 5) && (_global_den.denvr >= KVETNA_NEDELA + 1)) // vöednÈ dni veækÈho t˝ûdÚa poËn˙c pondelkom, veækonoËnÈ trojdnie od veækÈho piatka do veækonoËnej okt·vy, piatka
+				((_global_den.denvr <= VELKONOCNA_NEDELA + 6) && (_global_den.denvr >= KVETNA_NEDELA + 1)) // vöednÈ dni veækÈho t˝ûdÚa poËn˙c pondelkom, veækonoËnÈ trojdnie od veækÈho piatka do veækonoËnej okt·vy, soboty (2013-04-05: opravenÈ; bolo len + 5, do piatka)
 				|| (_global_den.denvr == POPOLCOVA_STREDA) // popolcov· streda
 			)){
 				// oddelenie riadka
@@ -7028,6 +7040,9 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 					Export("</td>");
 					Export("</tr>\n");
 				}
+
+				su_prve_vespery = ANO; // aby sa pri norm·lnych veöper·ch (v Ôalöom) vedelo, ûe to s˙ "druhÈ veöpery"
+
 			}// if(_global_den.smer < 5)...
 			else{
 				// Log Export("nemÙûu byù prvÈ veöpery (smer == %d, denvt == %d, denvr == %d, VELKONOCNA_NEDELA == %d, KVETNA_NEDELA == %d, POPOLCOVA_STREDA == %d)...\n", _global_den.smer, _global_den.denvt, _global_den.denvr, VELKONOCNA_NEDELA, KVETNA_NEDELA, POPOLCOVA_STREDA);
@@ -7180,12 +7195,13 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		// 2003-07-15: spr·vne odsadenÈ
 		// 2011-03-23: ak je (_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY, zobrazuj˙ sa prvÈ veöpery pre nedele a sl·vnosti priamo pre tie dni
 		// 2012-08-27: veöpery a kompletÛrium nem· zmysel zobrazovaù, ak ide o sobotu a Ôalöieho sv‰tÈho (pri viacer˝ch æubovoæn˝ch spomienkach)
-		if((poradie_svateho != 4) && !(((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY) && (_global_den.denvt == DEN_SOBOTA))
+		// 2013-04-05: zavedenÈ "nie_su_vespery" kvÙli Bielej (veækej) sobote
+		if((poradie_svateho != 4) && !(((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY) && (nie_su_vespery))
 			&& (((zobrazit_mcd == ANO) || (_global_den.denvt != DEN_SOBOTA)) || (poradie_svateho == 0))
 			){
 			// veöpery -- button
 			i = MODL_VESPERY;
-			_export_rozbor_dna_button_modlitba(typ, poradie_svateho, i, pom, /* doplnkova_psalmodia */ NIE, som_v_tabulke);
+			_export_rozbor_dna_button_modlitba(typ, poradie_svateho, i, pom, /* doplnkova_psalmodia */ NIE, som_v_tabulke, (su_prve_vespery == ANO)? MODL_DRUHE_VESPERY: i);
 
 			// oddelenie
 			if(som_v_tabulke == ANO){
@@ -7201,7 +7217,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 			if((zobrazit_mcd == ANO) || (poradie_svateho == 0)){
 				// kompletÛrium -- button
 				i = MODL_KOMPLETORIUM;
-				_export_rozbor_dna_button_modlitba(typ, poradie_svateho, i, pom, /* doplnkova_psalmodia */ NIE, som_v_tabulke);
+				_export_rozbor_dna_button_modlitba(typ, poradie_svateho, i, pom, /* doplnkova_psalmodia */ NIE, som_v_tabulke, (su_prve_vespery == ANO)? MODL_DRUHE_KOMPLETORIUM: i);
 			}// zobraziù buttony pre modlitbu cez deÚ + kompletÛrium
 			else{
 				Export("<!-- nezobraziù kompletÛrium -->\n");
@@ -9738,7 +9754,8 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 			Log("/* generujem: %d `%s'... */\n", i, nazov_modlitby(i));
 			// 2011-03-23: upravenÈ: negenerovaù veöpery pre soboty, ak je nastavenÈ (_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY
 			// 2012-08-27: veöpery a kompletÛrium nem· zmysel zobrazovaù, ak ide o sobotu a Ôalöieho sv‰tÈho (pri viacer˝ch æubovoæn˝ch spomienkach)
-			if(((a != 4) || (a == 4 && (i != MODL_VESPERY && i != MODL_KOMPLETORIUM))) && !(((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY) && (_global_den.denvt == DEN_SOBOTA))
+			// 2013-04-05: zavedenÈ "nie_su_vespery" kvÙli Bielej (veækej) sobote
+			if(((a != 4) || (a == 4 && (i != MODL_VESPERY && i != MODL_KOMPLETORIUM))) && !(((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY) && (nie_su_vespery))
 				&& (((zobrazit_mcd == ANO) || (_global_den.denvt != DEN_SOBOTA)) || (a == 0))
 				){ // 2006-01-31-TUTOLA; 2008-04-09 presunutÈ
 				if(_global_opt_append == YES){

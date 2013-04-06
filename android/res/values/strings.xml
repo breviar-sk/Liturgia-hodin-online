@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.8.7</string>
+    <string name="version">v1.9.0</string>
+
+    <string name="app_name">Breviary</string>
+    <string name="back">Back</string>
+    <string name="forward">Forward</string>
+    <string name="today">Today</string>
+    <string name="pgup">PgUp</string>
+    <string name="pgdn">PgDn</string>
 
     <string name="lang_select">Settings</string>
     <string name="lang_select_title">Select language:</string>
@@ -35,12 +42,6 @@
     <string name="h12_notify">Time for Sext!</string>
     <string name="h15_notify">Time for None!</string>
 
-    <string name="app_name">Breviary</string>
-    <string name="back">Back</string>
-    <string name="forward">Forward</string>
-    <string name="today">Today</string>
-    <string name="pgup">PgUp</string>
-    <string name="pgdn">PgDn</string>
     <string name="news">
      News in v1.9.0:\n
      - Refined new icons\n

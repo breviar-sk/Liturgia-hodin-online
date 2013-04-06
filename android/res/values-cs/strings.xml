@@ -1,45 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Breviář</string>
-    <string name="back">Spátky</string>
+    <string name="back">Zpátky</string>
     <string name="forward">Vpřed</string>
     <string name="today">Dnes</string>
     <string name="pgup">Nahoru</string>
     <string name="pgdn">Dál</string>
 
-    <string name="lang_select">Nastavenia</string>
-    <string name="lang_select_title">Výber jazyka:</string>
+    <string name="lang_select">Nastavení</string>
+    <string name="lang_select_title">Výběr jazyka:</string>
     <string name="lang_cz">Čeština</string>
-    <string name="lang_sk">Slovenčina</string>
-    <string name="lang_hu">Maďarčina</string>
-    <string name="override_locale">Použiť tento jazyk aj v ovládacích prvkoch</string>
-    <string name="vol_buttons">Použiť tlačidlá hlasitosti na listovanie</string>
+    <string name="lang_sk">Slovenština</string>
+    <string name="lang_hu">Maďarština</string>
+    <string name="override_locale">Použít tento jazyk také v ovládacích prvcích</string>
+    <string name="vol_buttons">Použít tlačítka hlasitosti na listování</string>
 
-    <string name="alarms">Upozornenia</string>
-    <string name="alarms_title">Nastavenie upozornení:</string>
-    <string name="alarmOff">nepripomínať</string>
+    <string name="alarms">Notifikace</string>
+    <string name="alarms_title">Nastavení notifikací:</string>
+    <string name="alarmOff">nepřipomínat</string>
 
     <string name="fullscreenOn">Celá obrazovka</string>
-    <string name="fullscreenOff">Zobraz navigáciu</string>
+    <string name="fullscreenOff">Zobraz navigaci</string>
 
-    <string name="inv">Invitatórium</string>
-    <string name="rch">Ranné chvály</string>
-    <string name="vesp">Vešpery</string>
-    <string name="kompl">Kompletórium</string>
-    <string name="read">Posvätné čítanie</string>
-    <string name="h9">Modlitba predpoludním</string>
-    <string name="h12">Modlitba napoludnie</string>
-    <string name="h15">Modlitba popoludní</string>
+    <string name="inv">Invitatoř</string>
+    <string name="rch">Ranní chvály</string>
+    <string name="vesp">Nešpory</string>
+    <string name="kompl">Kompletář</string>
+    <string name="read">Modlitba se čtením</string>
+    <string name="h9">Modlitba dopoledne</string>
+    <string name="h12">Modlitba napoledne</string>
+    <string name="h15">Modlitba odpoledne</string>
 
-    <string name="inv_notify">Je čas na invitatórium!</string>
-    <string name="rch_notify">Je čas na ranné chvály!</string>
-    <string name="vesp_notify">Je čas na vešpery!</string>
-    <string name="kompl_notify">Je čas na kompletórium!</string>
-    <string name="read_notify">Je čas na posvätné čítania!</string>
-    <string name="h9_notify">Je čas na modlitbu predpoludním!</string>
-    <string name="h12_notify">Je čas na poludňajšiu modlitbu!</string>
-    <string name="h15_notify">Je čas na popoludňajšiu modlitbu!</string>
-
+    <string name="inv_notify">Je čas na invitatoř!</string>
+    <string name="rch_notify">Je čas na ranní chvály!</string>
+    <string name="vesp_notify">Je čas na nešpory!</string>
+    <string name="kompl_notify">Je čas na kompletář!</string>
+    <string name="read_notify">Je čas na posvátná čtení!</string>
+    <string name="h9_notify">Je čas na odpolední modlitbu!</string>
+    <string name="h12_notify">Je čas na polední modlitbu!</string>
+    <string name="h15_notify">Je čas na popolední modlitbu!</string>
 
     <string name="news">
      Nové ve verzi v1.9.0:\n

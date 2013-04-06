@@ -983,10 +983,8 @@ const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 	, {"neurèená", "neurèena", "not-defined", "no data", "", "neurèena", "nem azonosított"}
 , {"Prvé vešp.", "První nešp.", "1st Vesperae", "I vesperae", "", "První v. chv.", "I. esti dics." }
 , {"Prvé kompl.", "První kompl.", "Compl.", "Compl.", "", "První kompl.", "Bef. i. I.e.d.után"}
-// táto sa pre HTML buttony nepoužíva
-	, {"druhé vešp.", "druhé nešpory", "2nd Vesperae", "II vesperae", "", "Druhé veèerní chv.", "II. esti dics." }
-// táto sa pre HTML buttony nepoužíva
-	, {"kompl. po druhých vešperách", "kompl. po druhých nešp.", "2nd Completary", "II completorio", "", "Kompl. po druhých veèerních chv.", "Bef. i. II.e.d.után" }
+, {"Druhé vešp.", "Druhé nešpory", "2nd Vesperae", "II vesperae", "", "Druhé veèerní chv.", "II. esti dics." }
+, {"Druhé kompl.", "Druhý kompl.", "2nd Completary", "II completorio", "", "Druhý kompl.", "Bef. i. II.e.d.után" }
 // , {"Vo¾ba detailov...", "Podrobnìji...", "Details...", "Optiónes...", "", "Podrobnìji...", "Részletek..."} // 2011-10-03: prakticky je to teraz len o výbere spoloèných èastí
 , {"výber spoloènej èasti...", "výbìr spoleèné èásti...", "common texts...", "optiónes...", "", "výbìr spoleèné èásti...", "közös rész kiválasztása..."}
 , {"všetky", "všechny", "all", "all", "", "všechny", "összes" }

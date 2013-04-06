@@ -1291,31 +1291,31 @@ extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_PC_VIGILIA               64
 #define BIT_OPT_1_SPOMIENKA_SPOL_CAST     128 // pri sl·venÌ spomienky moûno podæa vöeobecn˝ch smernÌc, Ë. 235 b), vziaù niektorÈ Ëasti alebo zo spoloËnej Ëasti (1), alebo zo dÚa (0)
 #define BIT_OPT_1_PLNE_RESP               256
-#define BIT_OPT_1_ZALM95                  512 // pouûÌva sa pre rannÈ chv·ly a veöpery -- 1 = vziaù namiesto ûalmov 24, 67, 100 ûalm 95
-#define BIT_OPT_1_PROSBY_ZVOLANIE        1024 // 1 = zvolanie v prosb·ch zobraziù (opakovaù) po kaûdej prosbe
+#define BIT_OPT_1_ZALM95                  512 // pouûÌva sa pre rannÈ chv·ly a veöpery -- 1 = vziaù namiesto ûalmov 24, 67, 100 ûalm 95 (0 = braù prÌsluön˝ ûalm 24, 67 resp. 100)
+#define BIT_OPT_1_PROSBY_ZVOLANIE        1024 // zvolanie v prosb·ch zobraziù (opakovaù) po kaûdej prosbe
 #define BIT_OPT_1_SKRY_POPIS             2048
 #define BIT_OPT_1_ZOBRAZ_SPOL_CAST       4096
-#define BIT_OPT_1_VESP_KRATSIE_PROSBY    8192 // 1 = pouûiù (pre ktor˝koævek deÚ v roku) kratöie prosby k veöper·m
+#define BIT_OPT_1_VESP_KRATSIE_PROSBY    8192 // pouûiù (pre ktor˝koævek deÚ v roku) kratöie prosby k veöper·m z dodatku (0 = default, zo dÚa)
 
 #define POCET_OPT_2_HTML_EXPORT            15 // jednotlivÈ komponenty option 2 -- bity pre force option 2
 extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: ˙prava v˝znamu (a interpret·cie) option 2 (rozliËnÈ prepÌnaËe pre [online aj offline] export, napr. tlaËidl·, zobrazenie d·tumov a podobne)
 // 2012-10-01: doplnenÈ Ôalöie komponenty najm‰ pre vzhæad ˙vodnej obrazovky
-#define BIT_OPT_2_ISO_DATUM                 1
-#define BIT_OPT_2_BUTTON_PRVE_VESPERY       2
+#define BIT_OPT_2_ISO_DATUM                 1 // zobrazovaù d·tum v ISO form·te YYYY-MM-DD (0 = iba ËÌslo dÚa)
+#define BIT_OPT_2_BUTTON_PRVE_VESPERY       2 // zobrazovaù prvÈ veöpery (a kompletÛrium po nich) pre ten deÚ, pre ktor˝ patria (teda pre nedeæu/sl·vnosù)
 #define BIT_OPT_2_FONT_FAMILY               4 // 0 = Serif, 1 = Sans Serif
-#define BIT_OPT_2_FONT_NAME_CHOOSER         8 // 1 = zobraziù drop-down list s moûnosùou voæby font (family) name
-#define BIT_OPT_2_FONT_SIZE_CHOOSER        16 // 1 = zobraziù drop-down list s moûnosùou voæby veækosti fontu
-#define BIT_OPT_2_NAVIGATION               32 // 1 = zobraziù navig·ciu v modlitbe (predoöl·, nasledovn· modlitba a pod.)
-#define BIT_OPT_2_TEXT_WRAP                64 // 1 = zobraziù zalomenie v textoch modlitby podæa tlaËenej LH
-#define BIT_OPT_2_BUTTONY_USPORNE         128 // 1 = zobraziù buttony pre modlitby v ˙spornej podobe (tabuæka) kvÙli mobiln˝m zariadeniam
-#define BIT_OPT_2_NOCNY_REZIM             256 // 1 = zobraziù invertovane farby (biele na ciernom)
-#define BIT_OPT_2_ROZNE_MOZNOSTI          512 // 1 = zobraziù rozliËnÈ "hypertextovÈ odkazy" v modlitbe (napr. pre modlitbu cez deÚ moûnosù doplnkovej psalmÛdie)
-#define BIT_OPT_2_HIDE_NAVIG_BUTTONS     1024 // 1 = moûnosù zobraziù/skryù navig·ciu (tlaËidl·) v modlitbe a pre "dnes", ak je zvolen˝ 6. bit (BIT_OPT_2_NAVIGATION)
-#define BIT_OPT_2_HIDE_KALENDAR          2048 // 1 = skryù kalend·rik pre "dnes"
-#define BIT_OPT_2_HIDE_OPTIONS1          4096 // 1 = skryù html_text_dalsie_moznosti_1[] pre "dnes"
-#define BIT_OPT_2_HIDE_OPTIONS2          8192 // 1 = skryù html_text_dalsie_moznosti_2[] pre "dnes"
-#define BIT_OPT_2_ALTERNATIVES          16384 // 1 = uk·zaù iba jednu alternatÌvu (0 = ako doteraz; buÔ systÈm vyberie, alebo uk·ûe vöetky moûnosti)
+#define BIT_OPT_2_FONT_NAME_CHOOSER         8 // zobraziù drop-down list s moûnosùou voæby font (family) name
+#define BIT_OPT_2_FONT_SIZE_CHOOSER        16 // zobraziù drop-down list s moûnosùou voæby veækosti fontu
+#define BIT_OPT_2_NAVIGATION               32 // zobraziù navig·ciu v modlitbe (predoöl·, nasledovn· modlitba a pod.)
+#define BIT_OPT_2_TEXT_WRAP                64 // zobraziù zalomenie v textoch modlitby podæa tlaËenej LH
+#define BIT_OPT_2_BUTTONY_USPORNE         128 // zobraziù buttony pre modlitby v ˙spornej podobe (tabuæka) kvÙli mobiln˝m zariadeniam
+#define BIT_OPT_2_NOCNY_REZIM             256 // zobraziù invertovane farby (biele na ciernom)
+#define BIT_OPT_2_ROZNE_MOZNOSTI          512 // zobraziù rozliËnÈ "hypertextovÈ odkazy" v modlitbe (napr. pre modlitbu cez deÚ moûnosù doplnkovej psalmÛdie)
+#define BIT_OPT_2_HIDE_NAVIG_BUTTONS     1024 // moûnosù zobraziù/skryù navig·ciu (tlaËidl·) v modlitbe a pre "dnes", ak je zvolen˝ 6. bit (BIT_OPT_2_NAVIGATION)
+#define BIT_OPT_2_HIDE_KALENDAR          2048 // skryù kalend·rik pre "dnes" (0 = zobraziù)
+#define BIT_OPT_2_HIDE_OPTIONS1          4096 // skryù html_text_dalsie_moznosti_1[] pre "dnes" (0 = zobraziù)
+#define BIT_OPT_2_HIDE_OPTIONS2          8192 // skryù html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziù)
+#define BIT_OPT_2_ALTERNATIVES          16384 // uk·zaù iba jednu alternatÌvu (0 = ako doteraz; buÔ systÈm vyberie, alebo uk·ûe vöetky moûnosti)
 
 #define POCET_OPT_4_OFFLINE_EXPORT          1 // jednotlivÈ komponenty option 4 -- bity pre force option 4
 extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
