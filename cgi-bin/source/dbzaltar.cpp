@@ -1489,7 +1489,7 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba){
 		}
 	}
 	Log("set_hymnus(): koniec\n");
-}
+}// set_hymnus();
 
 #define _set_antifony_velk_pc(den, tyzzal, modlitba) {\
 		/* 1. antifona */\
@@ -1866,6 +1866,7 @@ void set_popis_dummy(void){
 
 // 2007-12-05: pridan· funkcia kvÙli kompletÛriu napr. v pÙstnom obdobÌ
 void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modlitba, short int litobd){
+	Log("set_hymnus_kompletorium_obd(): zaËiatok\n");
 	// hymnusy s˙ rovnakÈ v pÙstnom obdobÌ ako pre cezroËnÈ obdobie; hymnus pre veækonoËnÈ obdobie je jedin˝, odliön˝
 	short int pom_litobd = litobd;
 	file_name_zapamataj();
@@ -1898,6 +1899,7 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 	_set_hymnus(modlitba, _file, _anchor);
 	set_LOG_zaltar;
 	file_name_obnov();
+	Log("set_hymnus_kompletorium_obd(): koniec.\n");
 }// set_hymnus_kompletorium_obd()
 
 // 2007-12-06: odliönÈ pre veækonoËnÈ obdobie:
@@ -2056,6 +2058,7 @@ void _set_kompletorium_nedela_spolocne(short int modlitba){
 		_global_modl_kompletorium.pocet_zalmov = 1;
 		set_zalm(1, modlitba, "z91.htm", "ZALM91");
 	}
+	// ToDo: nemalo by tu byù radöej: set_hymnus_kompletorium_obd()?
 	set_hymnus(DEN_NEDELA, _global_den.tyzzal, modlitba);
 	set_antifony(DEN_NEDELA, _global_den.tyzzal, 2 /* zvazok - pre kompletÛrium sa nepouûÌva, len kvÙli posv. ËÌtaniu */, modlitba);
 	Log("_set_kompletorium_nedela_spolocne(%d) -- end\n", modlitba);
@@ -2124,6 +2127,7 @@ void _set_kompletorium_slavnost_oktava(short int modlitba, short int litobd, sho
 		_global_modl_kompletorium.pocet_zalmov = 2;
 		set_zalm(1, modlitba, "z4.htm", "ZALM4");
 		set_zalm(2, modlitba, "z134.htm", "ZALM134");
+		// ToDo: nemalo by tu byù radöej: set_hymnus_kompletorium_obd()?
 		set_hymnus(DEN_NEDELA, _global_den.tyzzal, modlitba);
 		set_antifony(DEN_NEDELA, _global_den.tyzzal, 9 /* zvazok - pre kompletÛrium sa nepouûÌvalo, vyuûitÈ na öpeci·lne nastavenie */, modlitba);
 		// 2009-04-16: opraven· modlitba pre veækonoËn˙ okt·vu
@@ -2222,6 +2226,7 @@ void zaltar_kompletorium(short int den, short int obdobie, short int specialne, 
 		Log("ZALTAR_VSETKO -- takûe nastavujem vöetko zo ûalt·ra...\n");
 		// 2006-10-13: pridanÈ Ëasti pre kompletÛrium
 		// 2010-08-03: pridan· premenn· tyzzal
+		// ToDo: nemalo by tu byù radöej: set_hymnus_kompletorium_obd()?
 		set_hymnus(den, tyzzal, MODL_KOMPLETORIUM);
 		set_hymnus(den, tyzzal, MODL_PRVE_KOMPLETORIUM);
 		// 2006-10-13: pridanÈ Ôalöie Ëasti pre kompletÛrium
@@ -8601,6 +8606,12 @@ short int _spol_cast_je_panna(_struct_sc sc){
 	else{\
 		_set_hymnus(modlitba, _file, _anchor);\
 	}\
+	set_LOG_svsv;}
+
+// 2013-04-09: hymnus (napr. pre posv. ËÌtanie) ako na veöpery
+#define _vlastna_cast_hymnus_ako_na_vespery {\
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS); \
+	_set_hymnus(modlitba, _file, _anchor); \
 	set_LOG_svsv;}
 
 // antifÛny
@@ -21495,7 +21506,7 @@ label_25_MAR:
 								_set_zalmy_slavnost_Cyrila_a_Metoda(modlitba);
 							else
 								_set_zalmy_sviatok_duch_past(modlitba);
-							// hymnus ako na veöpery
+							// hymnus ako na veöpery: prÌpadne rozöÌriù a pouûiù _vlastna_cast_hymnus_ako_na_vespery;
 							// 2010-07-06: pre CZ a CZOP hymnus ako na 1. veöpery
 							sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby((_global_jazyk == JAZYK_SK)? MODL_VESPERY: MODL_PRVE_VESPERY), ANCHOR_HYMNUS);
 							_set_hymnus(modlitba, _file, _anchor);
@@ -22560,10 +22571,7 @@ label_25_MAR:
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
-						// hymnus ako na veöpery
-						sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS);
-						_set_hymnus(modlitba, _file, _anchor);
-						set_LOG_svsv;
+						_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na veöpery -- musÌ byù posledn˝ pre dan˙ modlitbu
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_hymnus;
@@ -22781,10 +22789,7 @@ label_25_MAR:
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
-						// hymnus ako na veöpery
-						sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS);
-						_set_hymnus(modlitba, _file, _anchor);
-						set_LOG_svsv;
+						_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na veöpery -- musÌ byù posledn˝ pre dan˙ modlitbu
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
@@ -22912,10 +22917,7 @@ label_25_MAR:
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
-						// hymnus ako na veöpery
-						sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS);
-						_set_hymnus(modlitba, _file, _anchor);
-						set_LOG_svsv;
+						_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na veöpery -- musÌ byù posledn˝ pre dan˙ modlitbu
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_hymnus;
@@ -23688,16 +23690,14 @@ label_25_MAR:
 						}
 
 						modlitba = MODL_POSV_CITANIE;
-						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)) // v slovenskom brevi·ri m· vlastn˝ hymnus, v Ëeskom nie; 2008-09-09
+						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom brevi·ri m· vlastn˝ hymnus, v Ëeskom nie; 2008-09-09
 							_vlastna_cast_hymnus;
+						}
 						_vlastna_cast_modlitba;
 						_vlastna_cast_1citanie;
 						_vlastna_cast_2citanie;
 						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom brevi·ri m· vlastn˝ hymnus, v Ëeskom nie; 2008-09-09
-							// hymnus ako na veöpery
-							sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS);
-							_set_hymnus(modlitba, _file, _anchor);
-							set_LOG_svsv;
+							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na veöpery -- musÌ byù posledn˝ pre dan˙ modlitbu
 						}
 
 						_vlastna_cast_mcd_kcitresp_modl; // modlitba cez deÚ, doplnenÈ 2011-08-10
@@ -24970,11 +24970,8 @@ label_25_MAR:
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
 						if(_global_jazyk == JAZYK_SK){ // 2009-03-19: odvetvenÈ len pre Slovensko
-							// hymnus ako na veöpery
-							sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS);
-							_set_hymnus(modlitba, _file, _anchor);
+							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na veöpery -- musÌ byù posledn˝ pre dan˙ modlitbu
 						}
-						set_LOG_svsv;
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_full(modlitba);
@@ -25387,10 +25384,7 @@ label_25_MAR:
 							_vlastna_cast_hymnus;
 						}
 						else{
-							// hymnus ako na veöpery
-							sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS);
-							_set_hymnus(modlitba, _file, _anchor);
-							set_LOG_svsv;
+							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na veöpery -- musÌ byù posledn˝ pre dan˙ modlitbu
 						}
 
 						_vlastna_cast_mcd_ant_kcitresp_modl;
@@ -29751,9 +29745,7 @@ label_25_MAR:
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
 						if(_global_jazyk == JAZYK_SK){ // 2008-11-29: odvetvenÈ len pre Slovensko
-							// hymnus ako na veöpery
-							sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS);
-							_set_hymnus(modlitba, _file, _anchor);
+							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na veöpery -- musÌ byù posledn˝ pre dan˙ modlitbu
 						}
 
 						modlitba = MODL_VESPERY;
