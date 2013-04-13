@@ -12422,6 +12422,9 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
 
+							modlitba = MODL_PRVE_VESPERY;
+							_vlastna_cast_modlitba;
+
 							modlitba = MODL_POSV_CITANIE;
 							_vlastna_cast_2citanie;
 							_vlastna_cast_modlitba;
@@ -12435,7 +12438,8 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							break;
 						}
 						_global_svaty1.typslav = SLAV_SLAVNOST;
-						_global_svaty1.smer = 4; // miestne slávnosti pod¾a miestneho kalendára
+						_global_svaty1.smer = 3; // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+						// _global_svaty1.smer = 4; // miestne slávnosti pod¾a miestneho kalendára
 						mystrcpy(_global_svaty1.meno, text_JAN_31_SDB[_global_jazyk], MENO_SVIATKU);
 						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_VYCH);
 						_global_svaty1.farba = LIT_FARBA_BIELA;
@@ -18849,6 +18853,9 @@ label_25_MAR:
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
 
+							modlitba = MODL_PRVE_VESPERY;
+							_vlastna_cast_modlitba;
+
 							modlitba = MODL_POSV_CITANIE;
 							// _vlastna_cast_2citanie;
 							_vlastna_cast_modlitba;
@@ -18862,7 +18869,8 @@ label_25_MAR:
 							break;
 						}
 						_global_svaty1.typslav = SLAV_SLAVNOST;
-						_global_svaty1.smer = 4; // miestne slávnosti pod¾a miestneho kalendára
+						_global_svaty1.smer = 3; // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+						// _global_svaty1.smer = 4; // miestne slávnosti pod¾a miestneho kalendára
 						mystrcpy(_global_svaty1.meno, text_MAJ_24[_global_jazyk], MENO_SVIATKU);
 						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
 						_global_svaty1.farba = LIT_FARBA_BIELA;
