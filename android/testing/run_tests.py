@@ -177,7 +177,7 @@ if (is_dir($dir)) {
   echo "This version already exists in releases!";
   die(0);
 } else {
-  exec("rm -rf $dir; mkdir -p $dir; cp -R %s/.. $dir; chmod -R go+rX $dir");
+  exec("rm -rf $dir; mkdir -p $dir; cp -R %s/.. $dir; chmod -R go+rX $dir; chmod -R g+w $dir");
 }
 ?>
 Released, check 

@@ -2,6 +2,8 @@
 
 . /etc/profile
 
+umask 002
+
 start_emulator() {
   avd=$1
   pidfile=/tmp/$avd.pid
