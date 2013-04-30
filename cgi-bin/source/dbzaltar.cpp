@@ -16597,7 +16597,8 @@ label_25_MAR:
 							_vlastna_cast_magnifikat;
 							_vlastna_cast_modlitba;
 
-							_vlastna_cast_mcd_kcitresp_modl;
+							// _vlastna_cast_mcd_kcitresp_modl; // krátke èítanie a krátke resp. zo spoloènej èasti (2013-04-29)
+							_vlastna_cast_mcd_modlitba;
 
 							break;
 						}
@@ -19984,6 +19985,8 @@ label_25_MAR:
 						// 2005-08-27: sviatok apoštola Barnabáša - almy a antifóny zo dòa - ale len pre ranné chvály; 
 						// preto vlastne to ignorujeme, nech sa napr. posvätné èítanie alebo vešpery berú z apoštolov - preto sme zapoznámkovali nasledovné priradenie:
 						// _global_opt 2 = MODL_ZALMY_ZO_DNA; - almy a antifóny zo dòa - ale len pre ranné chvály 
+
+						// LH uvádza: ako na sviatok sv. Marka 25APR okrem toho, èo nasleduje
 						if(query_type != PRM_DETAILY)
 							set_spolocna_cast(sc, poradie_svaty);
 
@@ -23699,7 +23702,8 @@ label_25_MAR:
 							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
 						}
 
-						_vlastna_cast_mcd_kcitresp_modl; // modlitba cez deò, doplnené 2011-08-10
+						// _vlastna_cast_mcd_kcitresp_modl; // modlitba cez deò, doplnené 2011-08-10 // krátke èítanie a krátke resp. zo spoloènej èasti (2013-04-29)
+						_vlastna_cast_mcd_modlitba;
 
 						modlitba = MODL_VESPERY;
 						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastnı hymnus, v èeskom nie; 2008-09-09
