@@ -133,8 +133,8 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define 	SCRIPT_PARAM_FROM_ARGV	   202 // z argumentov
 
 // nasleduju typy dotazov
-#define PRM_UNKNOWN		 100
-#define PRM_NONE		 110
+#define PRM_UNKNOWN		 190
+#define PRM_NONE		 191
 
 #define PRM_SIMULACIA_QS 12
 #ifdef LONG_PARAM_NAMES
@@ -799,6 +799,27 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_5_DOPLNK_PSALM_127_131 "of5ps71"
 #endif
 
+#define MODL_OPTF_5_HYMNUS_VN_PC 108
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_5_HYMNUS_VN_PC "STR_MODL_OPTF_5_HYMNUS_VN_PC"
+#else
+	#define STR_MODL_OPTF_5_HYMNUS_VN_PC "of5vnpc"
+#endif
+
+#define MODL_OPTF_5_HYMNUS_VN_RCH 109
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_5_HYMNUS_VN_RCH "STR_MODL_OPTF_5_HYMNUS_VN_RCH"
+#else
+	#define STR_MODL_OPTF_5_HYMNUS_VN_RCH "of5vnhrch"
+#endif
+
+#define MODL_OPTF_5_HYMNUS_VN_VESP 110
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_5_HYMNUS_VN_VESP "STR_MODL_OPTF_5_HYMNUS_VN_VESP"
+#else
+	#define STR_MODL_OPTF_5_HYMNUS_VN_VESP "of5vnv"
+#endif
+
 
 // 2008-08-08: Pridané kvôli rôznym css
 #define CSS 40
@@ -1075,6 +1096,9 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_BIT_OPT_5_HYMNUS_MCD_POPOL          "BitOpt5Hymn15h"
 #define XML_BIT_OPT_5_DOPLNK_PSALM_122_129      "BitOpt5Psalm122or129"
 #define XML_BIT_OPT_5_DOPLNK_PSALM_127_131      "BitOpt5Psalm127or131"
+#define XML_BIT_OPT_5_HYMNUS_VN_PC              "BitOpt5HymnTPRead"
+#define XML_BIT_OPT_5_HYMNUS_VN_RCH             "BitOpt5HymnTPLaud"
+#define XML_BIT_OPT_5_HYMNUS_VN_VESP            "BitOpt5HymnTPVesp"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<"elem">"

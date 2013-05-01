@@ -1322,7 +1322,7 @@ extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: úprava vıznamu (a interpretácie) option 4 (rozlièné prepínaèe pre offline export, napr. aj batch mód)
 #define BIT_OPT_4_MESIAC_RIADOK             1
 
-#define POCET_OPT_5_ALTERNATIVES            7 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES           10 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezroèné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné èítanie (Cezroèné obdobie, I./II.)
@@ -1331,6 +1331,9 @@ extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_MCD_POPOL         16 // hymnus pre modlitbu cez deò, popoludní (Cezroèné obdobie)
 #define BIT_OPT_5_DOPLNK_PSALM_122_129     32 // pre modlitbu cez deò v doplnkovej psalmódii namiesto almu 122 mono bra alm 129
 #define BIT_OPT_5_DOPLNK_PSALM_127_131     64 // pre modlitbu cez deò v doplnkovej psalmódii namiesto almu 127 mono bra alm 131
+#define BIT_OPT_5_HYMNUS_VN_PC            128 // hymnus pre posvätné èítanie (Ve¾konoèné obdobie I. po Oktáve: nede¾nı alebo z férie)
+#define BIT_OPT_5_HYMNUS_VN_RCH           256 // hymnus pre ranné chvály (Ve¾konoèné obdobie I. po Oktáve: nede¾nı alebo z férie)
+#define BIT_OPT_5_HYMNUS_VN_VESP          512 // hymnus pre vešpery (Ve¾konoèné obdobie I. po Oktáve: nede¾nı alebo z férie)
 
 #define MAX_POCET_OPT                      16 // malo by to by aspoò maximum z POCET_OPT_0_... a POCET_OPT_5_...
 
