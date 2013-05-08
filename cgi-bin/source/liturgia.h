@@ -156,6 +156,7 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define BIT_ALT_LEN_DOPLNKOVA_PSALMODIA 4
 #define BIT_ALT_DOPLNK_PSALM_122_129    8
 #define BIT_ALT_DOPLNK_PSALM_127_131   16
+#define BIT_ALT_DOPLNK_PSALM_126_129   32
 
 // nasledovne 2 definovane 2003-08-13; zmenene 2004-04-28 (12->16)
 #define MAX_STR_AF_FILE   16
@@ -474,6 +475,7 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_SPOL_CAST_SPOM           "SPOL-CAST-SPOM"
 #define PARAM_ALT_HYMNUS               "ALT-HYMNUS"
 #define PARAM_ZALM122                  "ZALM122"
+#define PARAM_ZALM126                  "ZALM126"
 #define PARAM_ZALM127                  "ZALM127"
 #define PARAM_ZALM129                  "ZALM129"
 #define PARAM_ZALM131                  "ZALM131"
@@ -573,6 +575,7 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 
 // 2013-02-26: doplnkov· psalmÛdia, alternatÌvne ûalmy
 #define PARAM_DOPLNK_PSALM_122_129          "DPSALM-122-129"
+#define PARAM_DOPLNK_PSALM_126_129          "DPSALM-126-129"
 #define PARAM_DOPLNK_PSALM_127_131          "DPSALM-127-131"
 
 // 2009-04-08: zakonËenie modlitby trojakÈ, kr·tke resp. dlhÈ
@@ -1322,7 +1325,7 @@ extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: ˙prava v˝znamu (a interpret·cie) option 4 (rozliËnÈ prepÌnaËe pre offline export, napr. aj batch mÛd)
 #define BIT_OPT_4_MESIAC_RIADOK             1
 
-#define POCET_OPT_5_ALTERNATIVES           10 // jednotlivÈ komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES           11 // jednotlivÈ komponenty option 5 -- bity pre force option 5
 extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletÛrium (CezroËnÈ obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posv‰tnÈ ËÌtanie (CezroËnÈ obdobie, I./II.)
@@ -1331,9 +1334,10 @@ extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_MCD_POPOL         16 // hymnus pre modlitbu cez deÚ, popoludnÌ (CezroËnÈ obdobie)
 #define BIT_OPT_5_DOPLNK_PSALM_122_129     32 // pre modlitbu cez deÚ v doplnkovej psalmÛdii namiesto ûalmu 122 moûno braù ûalm 129
 #define BIT_OPT_5_DOPLNK_PSALM_127_131     64 // pre modlitbu cez deÚ v doplnkovej psalmÛdii namiesto ûalmu 127 moûno braù ûalm 131
-#define BIT_OPT_5_HYMNUS_VN_PC            128 // hymnus pre posv‰tnÈ ËÌtanie (VeækonoËnÈ obdobie I. po Okt·ve: nedeæn˝ alebo z fÈrie)
-#define BIT_OPT_5_HYMNUS_VN_RCH           256 // hymnus pre rannÈ chv·ly (VeækonoËnÈ obdobie I. po Okt·ve: nedeæn˝ alebo z fÈrie)
-#define BIT_OPT_5_HYMNUS_VN_VESP          512 // hymnus pre veöpery (VeækonoËnÈ obdobie I. po Okt·ve: nedeæn˝ alebo z fÈrie)
+#define BIT_OPT_5_DOPLNK_PSALM_126_129    128 // pre modlitbu cez deÚ v doplnkovej psalmÛdii namiesto ûalmu 126 moûno braù ûalm 129
+#define BIT_OPT_5_HYMNUS_VN_PC            256 // hymnus pre posv‰tnÈ ËÌtanie (VeækonoËnÈ obdobie I. po Okt·ve: nedeæn˝ alebo z fÈrie)
+#define BIT_OPT_5_HYMNUS_VN_RCH           512 // hymnus pre rannÈ chv·ly (VeækonoËnÈ obdobie I. po Okt·ve: nedeæn˝ alebo z fÈrie)
+#define BIT_OPT_5_HYMNUS_VN_VESP         1024 // hymnus pre veöpery (VeækonoËnÈ obdobie I. po Okt·ve: nedeæn˝ alebo z fÈrie)
 
 #define MAX_POCET_OPT                      16 // malo by to byù aspoÚ maximum z POCET_OPT_0_... aû POCET_OPT_5_...
 

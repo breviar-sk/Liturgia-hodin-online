@@ -2297,6 +2297,16 @@ const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] =
  "a 121. helyett vehetı a 128. zsolt·r",
 };
 
+const char *html_text_option5_DPsalmZ126_129[POCET_JAZYKOV + 1] = 
+{"namiesto ûalmu 126 braù ûalm 129",
+ "mÌsto ûalmu 126 vzÌt ûalm 129",
+ "",
+ "",
+ "",
+ "mÌsto ûalmu 126 vzÌt ûalm 129",
+ "a 125. helyett vehetı a 128. zsolt·r",
+};
+
 const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] = 
 {"namiesto ûalmu 127 braù ûalm 131",
  "mÌsto ûalmu 127 vzÌt ûalm 131",
@@ -2317,6 +2327,16 @@ const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] =
  "hu_take 121. zsolt·r from kiegÈszÌtı zsolt·rokn·l",
 };
 
+const char *html_text_option5_DPsalmZ126_NORMAL[POCET_JAZYKOV + 1] = 
+{"braù ûalm 126 z doplnkovej psalmÛdie",
+ "vzÌt ûalm 126 z doplÚovacÌho cyklu",
+ "",
+ "",
+ "",
+ "vzÌt ûalm 126 z doplÚovacÌho cyklu",
+ "hu_take 125. zsolt·r from kiegÈszÌtı zsolt·rokn·l",
+};
+
 const char *html_text_option5_DPsalmZ127_NORMAL[POCET_JAZYKOV + 1] = 
 {"braù ûalm 127 z doplnkovej psalmÛdie",
  "vzÌt ûalm 127 z doplÚovacÌho cyklu",
@@ -2335,6 +2355,16 @@ const char *html_text_option5_DPsalmZ122_129_explain[POCET_JAZYKOV + 1] =
  "",
  "Pro doplÚovacÌ cyklus ûalm˘ mÌsto ûalmu 122 (121) vzÌt ûalm 129 (128).",
  "A kiegÈszÌtı zsolt·rokn·l a 121. helyett vehetı a 128. zsolt·r.",
+};
+
+const char *html_text_option5_DPsalmZ126_129_explain[POCET_JAZYKOV + 1] = 
+{"V doplnkovej psalmÛdii namiesto ûalmu 126 moûno braù ûalm 129.",
+ "Pro doplÚovacÌ cyklus ûalm˘ mÌsto ûalmu 126 (125) vzÌt ûalm 129 (128).",
+ "",
+ "",
+ "",
+ "Pro doplÚovacÌ cyklus ûalm˘ mÌsto ûalmu 126 (125) vzÌt ûalm 129 (128).",
+ "A kiegÈszÌtı zsolt·rokn·l a 125. helyett vehetı a 128. zsolt·r.",
 };
 
 const char *html_text_option5_DPsalmZ127_131_explain[POCET_JAZYKOV + 1] = 

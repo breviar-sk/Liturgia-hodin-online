@@ -799,21 +799,28 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_5_DOPLNK_PSALM_127_131 "of5ps71"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_VN_PC 108
+#define MODL_OPTF_5_DOPLNK_PSALM_126_129 108
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_5_DOPLNK_PSALM_126_129 "STR_MODL_OPTF_5_DOPLNK_PSALM_126_129"
+#else
+	#define STR_MODL_OPTF_5_DOPLNK_PSALM_126_129 "of5ps69"
+#endif
+
+#define MODL_OPTF_5_HYMNUS_VN_PC 109
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_5_HYMNUS_VN_PC "STR_MODL_OPTF_5_HYMNUS_VN_PC"
 #else
 	#define STR_MODL_OPTF_5_HYMNUS_VN_PC "of5vnpc"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_VN_RCH 109
+#define MODL_OPTF_5_HYMNUS_VN_RCH 110
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_5_HYMNUS_VN_RCH "STR_MODL_OPTF_5_HYMNUS_VN_RCH"
 #else
 	#define STR_MODL_OPTF_5_HYMNUS_VN_RCH "of5vnhrch"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_VN_VESP 110
+#define MODL_OPTF_5_HYMNUS_VN_VESP 111
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_5_HYMNUS_VN_VESP "STR_MODL_OPTF_5_HYMNUS_VN_VESP"
 #else
@@ -1095,6 +1102,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_BIT_OPT_5_HYMNUS_MCD_NAPOL          "BitOpt5Hymn12h"
 #define XML_BIT_OPT_5_HYMNUS_MCD_POPOL          "BitOpt5Hymn15h"
 #define XML_BIT_OPT_5_DOPLNK_PSALM_122_129      "BitOpt5Psalm122or129"
+#define XML_BIT_OPT_5_DOPLNK_PSALM_126_129      "BitOpt5Psalm126or129"
 #define XML_BIT_OPT_5_DOPLNK_PSALM_127_131      "BitOpt5Psalm127or131"
 #define XML_BIT_OPT_5_HYMNUS_VN_PC              "BitOpt5HymnTPRead"
 #define XML_BIT_OPT_5_HYMNUS_VN_RCH             "BitOpt5HymnTPLaud"
