@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.9.0</string>
+    <string name="version">v1.9.1</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -43,15 +43,12 @@
     <string name="h15_notify">Time for None!</string>
 
     <string name="news">
+     News in v1.9.1:\n
+     - Updates from breviar.sk\n\n
      News in v1.9.0:\n
      - Refined new icons\n
      - Updates from breviar.sk\n\n
-     News in v1.8.6 - v1.8.7:\n
-     - Updates from breviar.sk\n\n
-     News in v1.8.4:\n
-     - Updates from breviar.sk\n
-     - New icons\n\n
-     News in v1.8.3:\n
+     News in v1.8.3 - v1.8.7:\n
      - Updates from breviar.sk\n\n
      News in v1.8.2:\n
      - Updates from breviar.sk\n
