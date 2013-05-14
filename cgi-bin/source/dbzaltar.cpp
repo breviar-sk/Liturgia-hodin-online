@@ -12943,7 +12943,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_RANNE_CHVALY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období 
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. III, p. 1194-1195, nemá vlastné antifóny; ani SK
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -12953,7 +12953,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_VESPERY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období 
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. III, p. 1194-1195, nemá vlastné antifóny; ani SK
 							_vlastna_cast_modlitba;
 						}// nie je_privileg
 						break;
@@ -13402,7 +13402,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 								// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 								// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
 								// naviac, ant. na vešpery vo zväzku pre 10.2. chýba; je len v zväzku II... (III predpokladá použitie zo spol. èasti)
-								_vlastna_cast_magnifikat;
+								// 2013-05-13: antifóna veru vo zväzku III nie je vlastná
 								_vlastna_cast_modlitba;
 							}// nie je_privileg
 							break;
@@ -14196,7 +14196,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_RANNE_CHVALY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. III, p. 1208-1210, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -14206,7 +14206,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_VESPERY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. III, p. 1208-1210, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 						}// nie je_privileg
 						break;
@@ -14523,7 +14523,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_RANNE_CHVALY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. III, p. 1223-1225, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -14533,7 +14533,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_VESPERY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. III, p. 1223-1225, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 						}// nie je_privileg
 						break;
@@ -14618,7 +14618,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_RANNE_CHVALY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. III, p. 1225-1227, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -14628,7 +14628,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_VESPERY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. III, p. 1225-1227, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 						}// nie je_privileg
 						break;
@@ -14668,7 +14668,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_RANNE_CHVALY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. III, p. 1227-1229, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -14678,7 +14678,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_VESPERY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. III, p. 1227-1229, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 						}// nie je_privileg
 						break;
@@ -14718,7 +14718,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_RANNE_CHVALY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. III, p. 1229-1232, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -14728,7 +14728,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_VESPERY;
 							// 2010-05-14: antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
 							// 2011-02-18: tak je to vo zväzku II (pôst+ve¾ká noc); avak v III je to normálne, vlastná ant.; opravené
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. III, p. 1229-1232, vlastnú ant. nemá
 							_vlastna_cast_modlitba;
 						}// nie je_privileg
 						break;
@@ -15262,6 +15262,25 @@ label_25_MAR:
 							_vlastna_cast_modlitba;
 
 						}// je_privileg
+						else{
+							// definovanie parametrov pre modlitbu
+							if(query_type != PRM_DETAILY)
+								set_spolocna_cast(sc, poradie_svaty);
+
+							modlitba = MODL_RANNE_CHVALY;
+							// 2013-05-13: LA LH, vol. II, p. 1388-1399, uvádza ant. aj pre Ve¾konoèné obdobie
+							_vlastna_cast_benediktus;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_VESPERY;
+							// 2013-05-13: LA LH, vol. II, p. 1388-1399, uvádza ant. aj pre Ve¾konoèné obdobie
+							_vlastna_cast_magnifikat;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_POSV_CITANIE;
+							_vlastna_cast_2citanie;
+							_vlastna_cast_modlitba;
+						}// nie je pôst
 						break;
 					}
 					_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
@@ -15297,11 +15316,11 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. II, p. 1391, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. II, p. 1391, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -15345,11 +15364,11 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. II, p. 1393, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. II, p. 1393, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -15391,11 +15410,11 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. II, p. 1395-1396, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. II, p. 1395-1396, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -15484,11 +15503,11 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. II, p. 1398, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. II, p. 1398, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -15530,11 +15549,11 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_benediktus;
+							// 2013-05-13: LA LH, vol. II, p. 1400, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_magnifikat;
+							// 2013-05-13: LA LH, vol. II, p. 1400, uvádza ant. len "pro commemoratione"
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -15920,6 +15939,7 @@ label_25_MAR:
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 					}// czop only, kalendár pre KALENDAR_SK_OP
 					break;
+// 20APR/21APR: poènúc týmto dòom (21. apríla) LA LH, vol. II, p. 1401, neuvádza antifóny "pro commemoratione"
 				case 21: // MES_APR -- 21APR
 					if(poradie_svaty == 1){
 						// definovanie parametrov pre modlitbu

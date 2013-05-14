@@ -29,6 +29,7 @@ import android.widget.Button;
 import java.io.IOException;
 
 import sk.breviar.android.Alarms;
+import sk.breviar.android.CompatibilityHelper11;
 import sk.breviar.android.LangSelect;
 import sk.breviar.android.Server;
 import sk.breviar.android.Util;
@@ -259,7 +260,9 @@ public class Breviar extends Activity {
 
     void recreateIfNeeded() {
       appEventId = BreviarApp.getEventId();
-      if (Build.VERSION.SDK_INT >= 11) recreate();
+      if (Build.VERSION.SDK_INT >= 11) {
+        new CompatibilityHelper11().recreate(this);
+      }
     }
 
     @Override
