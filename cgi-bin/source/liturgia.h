@@ -157,6 +157,7 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define BIT_ALT_DOPLNK_PSALM_122_129    8
 #define BIT_ALT_DOPLNK_PSALM_127_131   16
 #define BIT_ALT_DOPLNK_PSALM_126_129   32
+#define BIT_ALT_HYMNUS_VN              64
 
 // nasledovne 2 definovane 2003-08-13; zmenene 2004-04-28 (12->16)
 #define MAX_STR_AF_FILE   16
