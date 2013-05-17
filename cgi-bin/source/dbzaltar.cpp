@@ -4355,8 +4355,8 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd){
 		case MODL_VESPERY:      bit = BIT_OPT_5_HYMNUS_VN_VESP; break;
 	}// switch(modlitba)
 
-	if(((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI)) && (litobd = OBD_VELKONOCNE_II)){
-		// pre vn2.htm sa používa len pre modlitbu cez deò
+	if((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI)){
+		// pre vn1.htm je len jeden hymnus pre modlitbu cez deò; používa sa aj vo vn2.htm
 		ktory = -1;
 	}
 	else if((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI) || (_global_jazyk == JAZYK_CZ)){
