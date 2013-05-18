@@ -4413,12 +4413,13 @@ short int atolitobd(char *lo){
 	short int i = 0;
 	Log("lo == '%s'\n", lo);
 	do{
+		// Log("nazov_obdobia_ext(%d) == %s...\n", i, nazov_obdobia_ext(i));
 		if(equals(lo, nazov_obdobia_ext(i))){
 			Log("atolitobd: returning %d\n", i);
 			return i;
 		}
 		i++;
-	}while(i < POCET_OBDOBI);
+	}while(i <= POCET_OBDOBI);
 	// 2011-05-11: ak sa nenašlo obdobie porovnaním s reazcom, skúsim prekonvertova na èíslo
 	i = atoi(lo);
 	i = ((i < OBD_ADVENTNE_I) || (i > OBD_VELKONOCNE_II)) ? OBD_CEZ_ROK : i;
@@ -4490,7 +4491,7 @@ short int atomes(char *mesiac){
 					i++;
 				}while(i < UNKNOWN_MESIAC);
 			}
-		}while(j < POCET_JAZYKOV);
+		}while(j <= POCET_JAZYKOV);
 	}
 	return UNKNOWN_MESIAC;
 }// atomes()
@@ -5841,14 +5842,23 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 						Log("(_local_den.litobd == OBD_ADVENTNE_II) && (typ != EXPORT_DNA_VIAC_DNI)\n");
 
 						// 2011-12-19: pôvodne: sprintf(pom, "%d. %s, %s, ", _local_den.den, nazov_mesiaca_gen(_local_den.mesiac - 1), nazov_obdobia(_local_den.litobd));
+
 						// najprv názov dòa (pondelok, utorok...)...
 						sprintf(pom, "%s, ", nazov_Dna(_local_den.denvt));
+
 						// ...potom dátum + genitív mesiaca...
-						sprintf(pom2, _vytvor_string_z_datumu(_local_den.den, _local_den.mesiac, _local_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_HU))? CASE_Case : CASE_case, LINK_DEN_MESIAC_GEN, NIE));
-						strcat(pom, pom2);
+						// 2013-05-17: ale iba v takom prípade, e mesiac je december (pre pouitie "liturgické obdobie" je dátum neinicializovanı, teda 1. januára
+						if((_local_den.mesiac == MES_DEC) && (_local_den.den >= 16) && (_local_den.den <= 24)){
+							sprintf(pom2, _vytvor_string_z_datumu(_local_den.den, _local_den.mesiac, _local_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_HU))? CASE_Case : CASE_case, LINK_DEN_MESIAC_GEN, NIE));
+							strcat(pom, pom2);
+							sprintf(pom2, ", ");
+							strcat(pom, pom2);
+						}
+
 						// ...liturgické obdobie (adventné)...
-						sprintf(pom2, ", %s, ", nazov_obdobia(_local_den.litobd));
+						sprintf(pom2, "%s, ", nazov_obdobia(_local_den.litobd));
 						strcat(pom, pom2);
+
 						// ...a napokon tıdeò altára
 						if(typ != EXPORT_DNA_VIAC_DNI_TXT){
 							sprintf(pom2, "</span>");
@@ -12538,18 +12548,21 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 
 	// kontrola, èi tıdeò daného liturgického obdobia neprekraèuje poèet tıdòov daného obdobia | 2013-02-03: presunutá sem
 	Log("kontrola, èi tıdeò daného liturgického obdobia neprekraèuje poèet tıdòov daného obdobia...\n");
-	if(t > lit_obd_pocet_tyzdnov[lo]){
+	// 2013-05-17: pre OBD_VELKONOCNE_II je tıdeò 6 resp. 7, preto treba samostatne kontrolova, ale neupravova premennú t
+	if(((lo != OBD_VELKONOCNE_II) && (lo != OBD_POSTNE_II_VELKY_TYZDEN) && (lo != OBD_VELKONOCNE_TROJDNIE) && (lo != OBD_VIANOCNE_II) && (lo != OBD_ADVENTNE_II) && (t > lit_obd_pocet_tyzdnov[lo])) 
+			|| ((lo == OBD_VELKONOCNE_II) && (t - 5 > lit_obd_pocet_tyzdnov[lo]))
+			|| (((lo == OBD_POSTNE_II_VELKY_TYZDEN) || (lo == OBD_VELKONOCNE_TROJDNIE)) && (t - 6 > lit_obd_pocet_tyzdnov[lo]))
+			|| ((lo == OBD_VIANOCNE_II) && (t - 1 > lit_obd_pocet_tyzdnov[lo]))
+			|| ((lo == OBD_ADVENTNE_II) && (t - 3 > lit_obd_pocet_tyzdnov[lo]))
+		){
 		ALERT;
 		Export("Nevhodné údaje:"HTML_LINE_BREAK"\n<ul>");
 		// tyzden
 		if(equals(tyzden, STR_EMPTY)){
 			Export("<li>takı tıdeò nemono iada</li>\n");
 		}
-		else if(t > lit_obd_pocet_tyzdnov[lo]){
+		else{
 			Export("<li>tıdeò = <"HTML_SPAN_BOLD">%s</span>; takı tıdeò nemono iada pre dané liturgické obdobie: %s</li>\n", tyzden, nazov_obdobia_ext(lo));
-		}
-		else {
-			Export("<li>chyba: tıdeò %s nemono iada</li>\n", tyzden);
 		}
 		Export("</ul>\n");
 		return FAILURE;
