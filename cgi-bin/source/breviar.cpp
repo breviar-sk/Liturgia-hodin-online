@@ -1851,7 +1851,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							// ToDo: Ëasom daù odkaz napr. do konfiguraËnÈho s˙boru
 							if(EXPORT_REFERENCIA){
 								if(_global_jazyk == JAZYK_HU){
-									Export("<a href=\"http://www.kereszteny.hu/biblia/searchbible.php?&reftrans=1&texttosearch=");
+									Export("<a href=\"http://www.szentiras.hu/SZIT/");
 								}
 								else{
 									Export("<a href=\"http://dkc.kbs.sk/?in=");
