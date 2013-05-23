@@ -3224,7 +3224,7 @@ const char *text_FEB_04_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_05[POCET_JAZYKOV + 1] = 
-{"Sv. Agaty, panny a muèenice",
+{"Sv. Agáty, panny a muèenice", // direktóriá uvádzajú Agáta s dlhým "á"; LH s krátkym "a" Agata
  "Sv. Agáty, panny a muèednice",
  "",
  "S. Agathae, virg. et mart.",
