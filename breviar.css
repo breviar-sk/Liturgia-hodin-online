@@ -1,3 +1,7 @@
+/* new 2013.05.24 */
+#psalm p.verse {padding-left: 1.5em;    text-indent: -1.5em;    -webkit-margin-before: 0em;    -webkit-margin-after: 0em;}
+#psalm p.emptyline {    -webkit-margin-after: 1em;}
+
 /* new 2013.05.19 */
 .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { color: #ff0000; font-size: 80%; }
 .antiphon { font-weight: bold; margin-top: 1em; margin-bottom: 1em; }
