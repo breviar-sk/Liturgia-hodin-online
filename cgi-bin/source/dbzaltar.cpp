@@ -12608,6 +12608,12 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_modlitba;
 
+							modlitba = MODL_PRVE_KOMPLETORIUM;
+							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
+
+							modlitba = MODL_KOMPLETORIUM;
+							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
+
 							break;
 						}
 						_global_svaty1.typslav = SLAV_SLAVNOST;
@@ -19065,6 +19071,12 @@ label_25_MAR:
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_modlitba;
 
+							modlitba = MODL_PRVE_KOMPLETORIUM;
+							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
+
+							modlitba = MODL_KOMPLETORIUM;
+							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
+
 							break;
 						}
 						_global_svaty1.typslav = SLAV_SLAVNOST;
@@ -19945,6 +19957,12 @@ label_25_MAR:
 
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_full(modlitba);
+
+							modlitba = MODL_PRVE_KOMPLETORIUM;
+							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
+
+							modlitba = MODL_KOMPLETORIUM;
+							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
 
 							break;
 						}
@@ -25083,6 +25101,12 @@ label_25_MAR:
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_full(modlitba);
 
+							modlitba = MODL_PRVE_KOMPLETORIUM;
+							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
+
+							modlitba = MODL_KOMPLETORIUM;
+							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
+
 							break;
 						}
 						_global_svaty1.typslav = SLAV_SLAVNOST;
@@ -27496,6 +27520,9 @@ label_25_MAR:
 
 								modlitba = MODL_VESPERY;
 								_vlastna_cast_full(modlitba);
+
+								modlitba = MODL_PRVE_KOMPLETORIUM;
+								_set_kompletorium_slavnost(modlitba, _global_den.litobd);
 
 								modlitba = MODL_KOMPLETORIUM;
 								_set_kompletorium_slavnost(modlitba, _global_den.litobd);

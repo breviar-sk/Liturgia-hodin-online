@@ -6804,7 +6804,7 @@ short int ma_na_vyber_spolocne_casti(short int poradie_svateho){
 	sc.a2 = MODL_SPOL_CAST_NEURCENA;
 	sc.a3 = MODL_SPOL_CAST_NEURCENA;
 
-	Log("ma_na_vyber_spolocne_casti(%d) -- zaËiatok...\n");
+	Log("ma_na_vyber_spolocne_casti(%d) -- zaËiatok...\n", poradie_svateho);
 	/*
 	if(poradie_svateho == 4){
 		ret = NIE;
@@ -6831,7 +6831,7 @@ short int ma_na_vyber_spolocne_casti(short int poradie_svateho){
 	if((sc.a1 != MODL_SPOL_CAST_NEURCENA) && (sc.a1 != MODL_SPOL_CAST_NEBRAT)){ // staËÌ, ûe m· jednu spoloËn˙ Ëasù nastaven˙
 		ret = ANO;
 	}
-	Log("ma_na_vyber_spolocne_casti(%d) -- koniec: %d.\n", ret);
+	Log("ma_na_vyber_spolocne_casti(%d) -- koniec: %d.\n", poradie_svateho, ret);
 	return ret;
 }// ma_na_vyber_spolocne_casti();
 
