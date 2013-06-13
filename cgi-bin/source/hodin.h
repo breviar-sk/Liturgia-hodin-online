@@ -192,11 +192,11 @@ const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
 
 const char *nazov_bit_opt_1_spomienka_spol_cast_jazyk[POCET_JAZYKOV + 1] =
 {"bola zvolená monos niektoré èasti pri slávení spomienky vzia zo dòa pod¾a Všeobecnıch smerníc, è. 235 písm. b", 
- "byla zvolena monost vzít pøi slavení památky nìkteré èasti ze dne podle Všeobecnıch pokynù k denní modlitbì církve, è. 235 písm. b", 
+ "byla zvolena monost vzít pøi slavení památky nìkteré èásti ze dne podle Všeobecnıch pokynù k denní modlitbì církve, è. 235 písm. b", 
  "", 
  "", 
  "", 
- "byla zvolena monost vzít pøi slavení památky nìkteré èasti ze dne podle Všeobecnıch pokynù k denní modlitbì Církve, è. 235 písm. b", 
+ "byla zvolena monost vzít pøi slavení památky nìkteré èásti ze dne podle Všeobecnıch pokynù k denní modlitbì Církve, è. 235 písm. b", 
  "az a lehetõség volt választva, hogy az emléknapoknál bizonyos részek vehetõk a soros köznapról; Általános Rendelkezések az Imaórák Liturgiájáról, 235 b"
 };
 

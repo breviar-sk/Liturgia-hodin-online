@@ -1862,11 +1862,11 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							if((refrest != NULL) && !(equals(refrest, STR_EMPTY))){
 								// [ToDo]: doplni nevypisovanie refbuff, ak refrest obsahuje medzeru
 								if(EXPORT_REFERENCIA){
-									Export("%s", remove_diacritics(refrest));
+									Export("%s", refrest); // 2013-06-12: pôvodne sa odstraòovala diakritika; remove_diacritics(refrest)
 								}
 							}// naèítanie na zaèiatok referencie
 							if(EXPORT_REFERENCIA){
-								Export("%s\" target=\"_blank\" "HTML_CLASS_QUIET">", remove_diacritics(refbuff)); // a.quiet { text-decoration:none; color: inherit; }
+								Export("%s\" target=\"_blank\" "HTML_CLASS_QUIET">", refbuff); // a.quiet { text-decoration:none; color: inherit; } // 2013-06-12: pôvodne sa odstraòovala diakritika; remove_diacritics(refbuff)
 							}
 						}
 						if(EXPORT_REFERENCIA){
