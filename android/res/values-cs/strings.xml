@@ -41,20 +41,13 @@
     <string name="h15_notify">Je čas na popolední modlitbu!</string>
 
     <string name="news">
+     Nové ve verzi v1.9.2:\n
+     - Aktualizace z breviar.sk/ebreviar.cz\n
      Nové ve verzi v1.9.1:\n
      - Aktualizace z breviar.sk/ebreviar.cz\n\n
      Nové ve verzi v1.9.0:\n
      - Upravené nové ikonky\n
      - Vlastní texty pro premonstrátský řád\n
      - Aktualizace z breviar.sk/ebreviar.cz\n\n
-     Nové ve verzi v1.8.3 - v1.8.7:\n
-     - Aktualizace z breviar.sk/ebreviar.cz\n\n
-     Nové ve verzi v1.8.2:\n
-     - Aktualizace z breviar.sk/ebreviar.cz\n
-     - Stabilnější obnovení stavu aplikace\n\n
-     Nové ve verzi v1.8.1:\n
-     - Aktualizace z breviar.sk/ebreviar.cz\n
-     - Vypnutý zvuk při rolování tlačítky\n
-       hlasitosti\n\n
     </string>
 </resources>
