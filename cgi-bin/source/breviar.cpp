@@ -2061,7 +2061,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					// 2011-04-04: zobraziù/nezobraziù ËÌslovanie veröov
 					if(equals(strbuff, PARAM_CISLO_VERSA_BEGIN) && (vnutri_inkludovaneho == 1)){
 						if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VERSE) == BIT_OPT_0_VERSE){
-							Export("</b><"HTML_SUP_RED">");
+							// Export("</b><"HTML_SUP_RED">");
+							Export("<sup>");
 						}
 						else{
 							write = NIE;
@@ -2073,7 +2074,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					}// zobraziù/nezobraziù ËÌslovanie veröov
 					if(equals(strbuff, PARAM_CISLO_VERSA_END) && (vnutri_inkludovaneho == 1)){
 						if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VERSE) == BIT_OPT_0_VERSE){
-							Export("</sup><b>");
+							// Export("</sup><b>");
+							Export("</sup>");
 						}
 						else{
 							write = ANO;
@@ -2385,7 +2387,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	if(equals(paramname, PARAM_CISLO_VERSA_BEGIN)){
 		if(_global_skip_in_prayer != ANO){
 			if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VERSE) == BIT_OPT_0_VERSE){
-				Export("</b><"HTML_SUP_RED">");
+				// Export("</b><"HTML_SUP_RED">");
+				Export("<sup>");
 			}
 			else{
 				// Log("  ruöÌm writing to export file, kvÙli PARAM_CISLO_VERSA_BEGIN...\n");
@@ -2397,7 +2400,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	else if(equals(paramname, PARAM_CISLO_VERSA_END)){
 		if(_global_skip_in_prayer != ANO){
 			if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VERSE) == BIT_OPT_0_VERSE){
-				Export("</sup><b>");
+				// Export("</sup><b>");
+				Export("</sup>");
 			}
 			else{
 				// Log("  op‰ù writing to export file, PARAM_CISLO_VERSA_END...\n");

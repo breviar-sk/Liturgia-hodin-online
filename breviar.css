@@ -1,6 +1,15 @@
+/* new 2013.06.16 */
+#psalm p.verse-start { padding-left: 3.0em; text-indent: -3.0em; margin:0; font-weight: bold; -webkit-margin-before: 0em; -webkit-margin-after: 0em; }
+#psalm p.verse-cont { padding-left: 3.0em; text-indent: -1.5em; margin:0; font-weight: bold; -webkit-margin-before: 0em; -webkit-margin-after: 0em; }
+#psalm p.verse-last { padding-left: 3.0em; padding-bottom: 1em; text-indent: -1.5em; margin:0; font-weight: bold; -webkit-margin-before: 0em; -webkit-margin-after: 0em; }
+#psalm p.verse-first { padding-top: 1em; padding-left: 3.0em; text-indent: -3.0em; margin:0; font-weight: bold; -webkit-margin-before: 0em; -webkit-margin-after: 0em; }
+#psalm sup { vertical-align: baseline; font-size: 0.7em; position: relative; top: -0.4em; color:red; font-weight: normal; }
+
+p.verse-last:after { content:" —"; color:red; font-weight: normal; }
+
 /* new 2013.05.24 */
-#psalm p.verse {padding-left: 1.5em;    text-indent: -1.5em;    -webkit-margin-before: 0em;    -webkit-margin-after: 0em;}
-#psalm p.emptyline {    -webkit-margin-after: 1em;}
+#psalm p.verse {padding-left: 1.5em; text-indent: -1.5em; -webkit-margin-before: 0em; -webkit-margin-after: 0em;}
+#psalm p.emptyline { -webkit-margin-after: 1em;}
 
 /* new 2013.05.19 */
 .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { color: #ff0000; font-size: 80%; }
@@ -13,7 +22,7 @@
 
 /* new 2013.04.02 */
 #week-day .day-title {font-weight: bold; font-size: larger; text-align: center;}
-.evening-praise > .title, .daytime-praise > .title, .morning-praise > .title, .ending-praise > .title, .invit-praise > .title, .reading-praise > .title  {text-align:  center; /*font-weight: bold;*/ margin-top: 20px;}  
+.evening-praise > .title, .daytime-praise > .title, .morning-praise > .title, .ending-praise > .title, .invit-praise > .title, .reading-praise > .title {text-align: center; /*font-weight: bold;*/ margin-top: 20px;} 
 #week-day .title {font-weight: bold; margin-top: 16px;}
 #week-day br {clear: both; display: block; height: 1px;}
 div.biblereference {color: red; text-align: right;}
@@ -60,7 +69,7 @@ p { font-family: inherit; color: #000000; font-style: normal; }
 p.patka { 
 	font-size: 80%; 
 	text-align: center; 
-	text-indent: 0em;  
+	text-indent: 0em; 
 	margin-top: -1mm; 
 	letter-spacing: 0mm }
 
@@ -176,4 +185,5 @@ sup {
 	font-size: 0.7em;
 	position: relative;
 	top: -0.4em;
+	color:red; 
 }
