@@ -1,33 +1,38 @@
-/* new 2013.06.16 */
-#psalm p.verse-start { padding-left: 3.0em; text-indent: -3.0em; margin:0; font-weight: bold; -webkit-margin-before: 0em; -webkit-margin-after: 0em; }
-#psalm p.verse-cont { padding-left: 3.0em; text-indent: -1.5em; margin:0; font-weight: bold; -webkit-margin-before: 0em; -webkit-margin-after: 0em; }
-#psalm p.verse-last { padding-left: 3.0em; padding-bottom: 1em; text-indent: -1.5em; margin:0; font-weight: bold; -webkit-margin-before: 0em; -webkit-margin-after: 0em; }
-#psalm p.verse-first { padding-top: 1em; padding-left: 3.0em; text-indent: -3.0em; margin:0; font-weight: bold; -webkit-margin-before: 0em; -webkit-margin-after: 0em; }
-#psalm sup { vertical-align: baseline; font-size: 0.7em; position: relative; top: -0.4em; color:red; font-weight: normal; }
+/* new 2013-06-19 */
+#psalm .psalm-name { text-align: center; font-weight: bold; color: #ff0000; }
+#psalm .psalm-idea { padding-top: 1em; text-align: left; font-weight: normal; color: #000000; }
 
-p.verse-last:after { content:" —"; color:red; font-weight: normal; }
+/* new 2013-06.16 / updated 2013-06-19 */
+#psalm p { font-weight: normal; }
+#psalm p.verse { text-indent: -3.0em; padding-left: 3.0em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: bold; }
+#psalm p.start { }
+#psalm p.cont { text-indent: -1.5em; }
+#psalm p.last { text-indent: -1.5em; padding-bottom: 1em; }
+#psalm p.first { padding-top: 1em; }
 
-/* new 2013.05.24 */
-#psalm p.verse {padding-left: 1.5em; text-indent: -1.5em; -webkit-margin-before: 0em; -webkit-margin-after: 0em;}
-#psalm p.emptyline { -webkit-margin-after: 1em;}
+#psalm sup { vertical-align: baseline; font-size: 0.7em; position: relative; top: -0.4em; color: #ff0000; font-weight: normal; }
 
-/* new 2013.05.19 */
+p.last:after { content: '\00a0\2014'; color: #ff0000; font-weight: normal; } /* &nbsp;&emdash; -- em dash at the end of stanza */
+
+/* new 2013-05-24 */
+#psalm p.emptyline { -webkit-margin-after: 1em; }
+
+/* new 2013-05-19 */
 .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { color: #ff0000; font-size: 80%; }
 .antiphon { font-weight: bold; margin-top: 1em; margin-bottom: 1em; }
 
+/* new 2013-04-18 */
+#psalm .psalm-title { text-align: center; font-weight: bold; color: #ff0000; font-size: larger; }
+#psalm .psalm-subtitle { text-align: center; color: #ff0000; font-weight: normal; }
 
-/* new 2013.04.18 */
-#psalm .psalm-title {text-align: center; font-weight: bold; color: red; font-size: larger}
-#psalm .psalm-subtitle {text-align: center; color: red;}
-
-/* new 2013.04.02 */
+/* new 2013-04-02 */
 #week-day .day-title {font-weight: bold; font-size: larger; text-align: center;}
 .evening-praise > .title, .daytime-praise > .title, .morning-praise > .title, .ending-praise > .title, .invit-praise > .title, .reading-praise > .title {text-align: center; /*font-weight: bold;*/ margin-top: 20px;} 
 #week-day .title {font-weight: bold; margin-top: 16px;}
 #week-day br {clear: both; display: block; height: 1px;}
-div.biblereference {color: red; text-align: right;}
+div.biblereference {color: #ff0000; text-align: right;}
 .daytime-praise .time {text-align: center; margin-top: 10px; text-decoration: underline}
-/* replace 2013.02.17 */ 
+/* replace 2013-02-17 */ 
 .indent {width: 20px; display:inline; float: left; height: 1em}
 .indent15 {width: 15px; display:inline; float: left; height: 1em}
 
@@ -54,11 +59,12 @@ div.biblereference {color: red; text-align: right;}
 .xsmallcaps { font-variant: small-caps; font-size: 70%; }
 
 /* 2003-07-09; 2004-03-23; 2008-02-27 */
-/* apply to all elements */ { font-family: inherit; font-size: 100%; }
+/* apply to all elements */ { font-family: inherit; font-size: 100%; font-weight: normal; }
 body, html { 
 	background-color: #FFFFCC;
 	color: #000000;
 	font-family: Cambria, Constantia, Georgia, Lido STF, DejaVu, Liberation, GentiumPlus, Gentium, Garamond, Serif;
+	font-weight: normal; 
 }
 p { font-family: inherit; color: #000000; font-style: normal; }
 
@@ -180,10 +186,5 @@ h2 { font-size: 150%; }
 h3 { font-size: 100%; }
 h4 { font-size: 100%; }
 
-sup {
-	vertical-align: baseline;
-	font-size: 0.7em;
-	position: relative;
-	top: -0.4em;
-	color:red; 
-}
+sup { vertical-align: baseline; font-size: 0.7em; position: relative; top: -0.4em; color: #ff0000; }
+
