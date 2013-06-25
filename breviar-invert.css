@@ -1,20 +1,38 @@
-/* new 2013.05.19 */
-.hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { color: #ff0000; font-size: 80%; }
+/* new 2013-06-19 */
+#psalm .psalm-name { text-align: center; font-weight: bold; color: #FF3333; }
+#psalm .psalm-idea { padding-top: 1em; text-align: left; font-weight: normal; color: #CCCCCC; }
+
+/* new 2013-06.16 / updated 2013-06-19 and 2013-06-24 */
+#psalm p { font-weight: normal; }
+#psalm p.verse { text-indent: -2.4em; padding-left: 2.4em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: bold; }
+#psalm p.start { }
+#psalm p.cont { text-indent: -1.2em; }
+#psalm p.last { padding-bottom: 1em; } /* used with cont; rarely also with start */
+#psalm p.first { padding-top: 1em; }
+
+#psalm sup { vertical-align: baseline; font-size: 0.7em; position: relative; top: -0.4em; color: #FF3333; font-weight: normal; }
+
+p.last:after { content: '\00a0\2014'; color: #FF3333; font-weight: normal; } /* &nbsp;&emdash; -- em dash at the end of stanza */
+
+/* new 2013-05-24 */
+#psalm p.emptyline { -webkit-margin-after: 1em; }
+
+/* new 2013-05-19 */
+.hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { color: #FF3333; font-size: 80%; }
 .antiphon { font-weight: bold; margin-top: 1em; margin-bottom: 1em; }
 
-
-/* new 2013.04.18 */
+/* new 2013-04-18 */
 #psalm .psalm-title {text-align: center; font-weight: bold; color: red; font-size: larger}
 #psalm .psalm-subtitle {text-align: center; color: red;}
 
-/* new 2013.04.02 */
+/* new 2013-04-02 */
 #week-day .day-title {font-weight: bold; font-size: larger; text-align: center;}
 .evening-praise > .title, .daytime-praise > .title, .morning-praise > .title, .ending-praise > .title, .invit-praise > .title, .reading-praise > .title  {text-align:  center; /*font-weight: bold;*/ margin-top: 20px;}  
 #week-day .title {font-weight: bold; margin-top: 16px;}
 #week-day br {clear: both; display: block; height: 1px;}
 div.biblereference {color: red; text-align: right;}
 .daytime-praise .time {text-align: center; margin-top: 10px; text-decoration: underline}
-/* replace 2013.02.17 */ 
+/* replace 2013-02-17 */ 
 .indent {width: 20px; display:inline; float: left; height: 1em}
 .indent15 {width: 15px; display:inline; float: left; height: 1em}
 

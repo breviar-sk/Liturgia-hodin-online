@@ -1,3 +1,15 @@
+/* new 2013-06-19 */
+#psalm .psalm-name { color: #FF3333; }
+#psalm .psalm-idea { color: #CCCCCC; }
+
+/* new 2013-06.16 / updated 2013-06-19 and 2013-06-24 */
+#psalm sup { color: #FF3333; }
+
+p.last:after { color: #FF3333; }
+
+/* new 2013-05-19 */
+.hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { color: #FF3333; }
+
 /* override color settings for "night-mode" (inverted colors) */
 .red { color: #FF3333; }
 .redit { color: #FF3333; font-style: italic; }
