@@ -3,7 +3,7 @@
 #psalm .psalm-idea { color: #CCCCCC; }
 
 /* new 2013-06.16 / updated 2013-06-19 and 2013-06-24 */
-#psalm sup { color: #FF3333; }
+sup { color: #FF3333; }
 
 p.last:after { color: #FF3333; }
 

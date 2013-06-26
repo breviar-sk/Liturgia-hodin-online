@@ -10,8 +10,6 @@
 #psalm p.last { padding-bottom: 1em; } /* used with cont; rarely also with start */
 #psalm p.first { padding-top: 1em; }
 
-#psalm sup { vertical-align: baseline; font-size: 0.7em; position: relative; top: -0.4em; color: #ff0000; font-weight: normal; }
-
 p.last:after { content: '\00a0\2014'; color: #ff0000; font-weight: normal; } /* &nbsp;&emdash; -- em dash at the end of stanza */
 
 /* new 2013-05-24 */
@@ -186,5 +184,5 @@ h2 { font-size: 150%; }
 h3 { font-size: 100%; }
 h4 { font-size: 100%; }
 
-sup { vertical-align: baseline; font-size: 0.7em; position: relative; top: -0.4em; color: #ff0000; }
+sup { vertical-align: baseline; font-size: 0.5em; position: relative; top: -0.8em; color: #ff0000; font-weight: normal; }
 

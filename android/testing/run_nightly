@@ -80,4 +80,4 @@ ROOT=/home/build/testing/nightlies
 ) 9>$LOCK
 
 rm -f $LOCK
-) | mail -s "Breviar nightly" android@breviar.sk videky@breviar.sk
+) 2>&1 | mail -s "Breviar nightly" android@breviar.sk videky@breviar.sk
