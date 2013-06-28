@@ -530,24 +530,26 @@ int _getopt_internal(
 	  optind++;
 	  if (*nameend)
 	    {
-	      /* Don't test has_arg with >, because some C compilers don't
-		 allow it to be used on enums.  */
+	      /* Don't test has_arg with >, because some C compilers don't allow it to be used on enums.  */
 	      if (pfound->has_arg)
 		optarg = nameend + 1;
 	      else
 		{
-		  if (opterr)
-		   if (argv[optind - 1][1] == '-')
+		  // 2013-06-27: vyriešenie warningu g++ | mygetopt.cpp:539: warning: suggest explicit braces to avoid ambiguous 'else'
+		  if (opterr){
+		   if (argv[optind - 1][1] == '-'){
 		    /* --option */
 		    fprintf (stderr,
 		     _("%s: option `--%s' doesn't allow an argument\n"),
 		     argv[0], pfound->name);
-		   else
+		   }
+		   else{
 		    /* +option or -option */
 		    fprintf (stderr,
 		     _("%s: option `%c%s' doesn't allow an argument\n"),
 		     argv[0], argv[optind - 1][0], pfound->name);
-
+		   }
+		  }
 		  nextchar += strlen (nextchar);
 
 		  optopt = pfound->val;
