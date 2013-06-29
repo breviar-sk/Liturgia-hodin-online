@@ -2183,6 +2183,7 @@ void _set_kompletorium_nedela_spolocne(short int modlitba){
 	// ToDo: nemalo by tu byù radöej: set_hymnus_kompletorium_obd()?
 	set_hymnus(DEN_NEDELA, _global_den.tyzzal, modlitba);
 	set_antifony(DEN_NEDELA, _global_den.tyzzal, 2 /* zvazok - pre kompletÛrium sa nepouûÌva, len kvÙli posv. ËÌtaniu */, modlitba);
+	set_nunc_dimittis(modlitba); // 2013-06-28: doplnenÈ podæa zaltar_kompletorium()
 	Log("_set_kompletorium_nedela_spolocne(%d) -- end\n", modlitba);
 }// _set_kompletorium_nedela_spolocne()
 

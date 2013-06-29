@@ -530,7 +530,7 @@ const char *nazov_slavenia_lokal[] =
 ,"Pozsonyi fõegyházmegye és a Nagyszombati egyházmegye fõpátronusa"                                             // LOKAL_SLAV_POZS_NAGYSZ_PATRON
 ,"A Szeged-Csanádi egyházmegye északi részében: az egyházmegye védõszentje; fõünnep"                            // LOKAL_SLAV_SZEGED_CSAN_PATRON // 2013-06-27: ??? neviem, odkia¾ sa to tu vzalo
 ,"A Pécsi egyházmegyében"                                                                                       // LOKAL_SLAV_PECSI_EGYH
-,"A Pécsi egyházmegyében: az egyházmegye védõszentje; ünnep"                                                    // LOKAL_SLAV_PECSI_EGYH_PATRON
+,"A Pécsi egyházmegyében: az egyházmegye védõszentje; fõünnep"                                                  // LOKAL_SLAV_PECSI_EGYH_PATRON
 ,"A Szeged-Csanádi egyházmegye északi részében; ünnep"                                                          // LOKAL_SLAV_SZEGED_CSAN_EGYH
 ,"A Veszprémi egyházmegyében: Szent Anna, az egyházmegye védõszentje; ünnep"                                    // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
 ,"A gyõri és székesfehérvári egyházmegyében: az egyházmegye védõszentje"                                        // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH

@@ -20,15 +20,15 @@ p.last:after { content: '\00a0\2014'; color: #FF3333; font-weight: normal; } /* 
 .antiphon { font-weight: bold; margin-top: 1em; margin-bottom: 1em; }
 
 /* new 2013-04-18 */
-#psalm .psalm-title {text-align: center; font-weight: bold; color: red; font-size: larger}
-#psalm .psalm-subtitle {text-align: center; color: red;}
+#psalm .psalm-title {text-align: center; font-weight: bold; color: #FF3333; font-size: larger; }
+#psalm .psalm-subtitle {text-align: center; color: #FF3333; }
 
 /* new 2013-04-02 */
 #week-day .day-title {font-weight: bold; font-size: larger; text-align: center;}
 .evening-praise > .title, .daytime-praise > .title, .morning-praise > .title, .ending-praise > .title, .invit-praise > .title, .reading-praise > .title  {text-align:  center; /*font-weight: bold;*/ margin-top: 20px;}  
 #week-day .title {font-weight: bold; margin-top: 16px;}
 #week-day br {clear: both; display: block; height: 1px;}
-div.biblereference {color: red; text-align: right;}
+div.biblereference {color: #FF3333; text-align: right;}
 .daytime-praise .time {text-align: center; margin-top: 10px; text-decoration: underline}
 /* replace 2013-02-17 */ 
 .indent {width: 20px; display:inline; float: left; height: 1em}
