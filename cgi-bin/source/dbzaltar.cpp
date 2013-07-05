@@ -2064,7 +2064,42 @@ void set_popis_dummy(void){
 
 // 2013-04-25: funkcie set_hymnus_kompletorium_obd(), set_kresponz_kompletorium_obd(), set_antifony_kompletorium_obd() presunutÈ vyööie, aby ich mohli volaù funkcie set_hymnus(), set_kresponz(), set_antifony()
 
-// nasledovnÈ funkcie pouûÌvame pre öpeci·lne nastavenia (ktorÈ sa Ëasto pouûÌvaj˙), 2007-12-06
+// tieto funkcie pouûÌvame pre öpeci·lne nastavenia (ktorÈ sa Ëasto pouûÌvaj˙), 2007-12-06
+
+// 2013-07-04: pre doplnkov˙ psalmÛdiu treba prÌpadne ponastavovaù odliönÈ ûalmy (é 129 resp. é 131 namiesto é 122, 126 resp. 127), pretoûe ûalmy sa pre sl·venia s niûöou prioritou nastavuj˙ zo ûalt·ra; doplnkov· psalmÛdia sa preto nastavuje prv, ako sa nastavilo je_alternativa_doplnkova_psalmodia_z...()
+
+// 2013-07-04: doplnenÈ
+void _set_zalmy_mcd_doplnkova_psalmodia_alternativy(short int modlitba){
+	Log("_set_zalmy_mcd_doplnkova_psalmodia_alternativy %s: ...\n", nazov_modlitby(modlitba));
+	if(modlitba == MODL_PREDPOLUDNIM){
+		// nastaviù: ak je moûnosù v doplnkovej psalmÛdii nahradiù ûalm 122 ûalmom 129
+		Log("je_alternativa_doplnkova_psalmodia_z122_129 == %d...\n", je_alternativa_doplnkova_psalmodia_z122_129(modlitba));
+		Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129) == %d (BIT_OPT_5_DOPLNK_PSALM_122_129 == %d)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129), BIT_OPT_5_DOPLNK_PSALM_122_129);
+		if((je_alternativa_doplnkova_psalmodia_z122_129(modlitba)) && ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129) == BIT_OPT_5_DOPLNK_PSALM_122_129)){
+			Log("nastavujem namiesto ûalmu 122 ûalm 129...\n");
+			set_zalm(3, modlitba, "z129.htm", "ZALM129");
+		}
+	}
+	else if(modlitba == MODL_NAPOLUDNIE){
+		;
+	}
+	else if(modlitba == MODL_POPOLUDNI){
+		// nastaviù: ak je moûnosù v doplnkovej psalmÛdii nahradiù ûalm 126 ûalmom 129
+		Log("je_alternativa_doplnkova_psalmodia_z126_129 == %d...\n", je_alternativa_doplnkova_psalmodia_z126_129(modlitba));
+		Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129) == %d (BIT_OPT_5_DOPLNK_PSALM_126_129 == %d)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129), BIT_OPT_5_DOPLNK_PSALM_126_129);
+		if((je_alternativa_doplnkova_psalmodia_z126_129(modlitba)) && ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129) == BIT_OPT_5_DOPLNK_PSALM_126_129)){
+			Log("nastavujem namiesto ûalmu 126 ûalm 129...\n");
+			set_zalm(1, modlitba, "z129.htm", "ZALM129");
+		}
+		// nastaviù: ak je moûnosù v doplnkovej psalmÛdii nahradiù ûalm 127 ûalmom 131
+		Log("je_alternativa_doplnkova_psalmodia_z127_131 == %d...\n", je_alternativa_doplnkova_psalmodia_z127_131(modlitba));
+		Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131) == %d (BIT_OPT_5_DOPLNK_PSALM_127_131 == %d)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131), BIT_OPT_5_DOPLNK_PSALM_127_131);
+		if((je_alternativa_doplnkova_psalmodia_z127_131(modlitba)) && ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131) == BIT_OPT_5_DOPLNK_PSALM_127_131)){
+			Log("nastavujem namiesto ûalmu 127 ûalm 131...\n");
+			set_zalm(2, modlitba, "z131.htm", "ZALM131");
+		}
+	}
+}// _set_zalmy_mcd_doplnkova_psalmodia_alternativy()
 
 void _set_zalmy_mcd_doplnkova_psalmodia(short int je_predpisana_povinne = ANO){
 	// 2013-02-13: rozöÌrenÈ o default vstupn˝ parameter, ktor˝ hovorÌ, Ëi je doplnkov· psalmÛdia predpÌsan· pre danÈ sl·venie (napr. pre sl·vnosù), alebo nie (teda NIE == bola zvolen· ako alternatÌva k psalmÛdii z beûnÈho dÚa)
@@ -2079,12 +2114,7 @@ void _set_zalmy_mcd_doplnkova_psalmodia(short int je_predpisana_povinne = ANO){
 	set_zalm(1, modlitba, "z120.htm", "ZALM120");
 	set_zalm(2, modlitba, "z121.htm", "ZALM121");
 	set_zalm(3, modlitba, "z122.htm", "ZALM122");
-	// nastaviù: ak je moûnosù v doplnkovej psalmÛdii nahradiù ûalm 122 ûalmom 129
-	Log("je_alternativa_doplnkova_psalmodia_z122_129 == %d...\n", je_alternativa_doplnkova_psalmodia_z122_129(modlitba));
-	Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129) == %d (BIT_OPT_5_DOPLNK_PSALM_122_129 == %d)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129), BIT_OPT_5_DOPLNK_PSALM_122_129);
-	if((je_alternativa_doplnkova_psalmodia_z122_129(modlitba)) && ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129) == BIT_OPT_5_DOPLNK_PSALM_122_129)){
-		set_zalm(3, modlitba, "z129.htm", "ZALM129");
-	}
+	_set_zalmy_mcd_doplnkova_psalmodia_alternativy(modlitba);
 
 	modlitba = MODL_NAPOLUDNIE;
 	// ak sa berie len doplnkov· psalmÛdia (t. j. ak je predpÌsan·), nem· zmysel daù moûnosù vziaù ûalmy z doplnkovej psalmÛdie
@@ -2105,18 +2135,7 @@ void _set_zalmy_mcd_doplnkova_psalmodia(short int je_predpisana_povinne = ANO){
 	set_zalm(1, modlitba, "z126.htm", "ZALM126");
 	set_zalm(2, modlitba, "z127.htm", "ZALM127");
 	set_zalm(3, modlitba, "z128.htm", "ZALM128");
-	// nastaviù: ak je moûnosù v doplnkovej psalmÛdii nahradiù ûalm 126 ûalmom 129
-	Log("je_alternativa_doplnkova_psalmodia_z126_129 == %d...\n", je_alternativa_doplnkova_psalmodia_z126_129(modlitba));
-	Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129) == %d (BIT_OPT_5_DOPLNK_PSALM_126_129 == %d)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129), BIT_OPT_5_DOPLNK_PSALM_126_129);
-	if((je_alternativa_doplnkova_psalmodia_z126_129(modlitba)) && ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129) == BIT_OPT_5_DOPLNK_PSALM_126_129)){
-		set_zalm(1, modlitba, "z129.htm", "ZALM129");
-	}
-	// nastaviù: ak je moûnosù v doplnkovej psalmÛdii nahradiù ûalm 127 ûalmom 131
-	Log("je_alternativa_doplnkova_psalmodia_z127_131 == %d...\n", je_alternativa_doplnkova_psalmodia_z127_131(modlitba));
-	Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131) == %d (BIT_OPT_5_DOPLNK_PSALM_127_131 == %d)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131), BIT_OPT_5_DOPLNK_PSALM_127_131);
-	if((je_alternativa_doplnkova_psalmodia_z127_131(modlitba)) && ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131) == BIT_OPT_5_DOPLNK_PSALM_127_131)){
-		set_zalm(2, modlitba, "z131.htm", "ZALM131");
-	}
+	_set_zalmy_mcd_doplnkova_psalmodia_alternativy(modlitba);
 
 	Log("_set_zalmy_mcd_doplnkova_psalmodia() -- end\n");
 	// antifÛny nastavuje funkcia _set_antifony_mcd_doplnkova_psalmodia() -- ale len pre cezroËnÈ obdobie; pre vlastnÈ sa pouûÌva define _vlastna_cast_mcd_ant_kcitresp_modl;
@@ -3447,9 +3466,9 @@ void _set_zalmy_posviacka_chramu(short int modlitba){
 		else{
 			_set_zalmy_mcd_doplnkova_psalmodia();
 		}
-		_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
 		_set_zalmy_mcd_doplnkova_psalmodia(!je_len_doplnkova_psalmodia(modlitba)); // toto je potrebnÈ z technickÈho dÙvodu, pretoûe doplnkov· psalmÛdia bola nastaven· eöte pri nastavovanÌ ûalt·ra (pred vlastn˝mi Ëasùami sv‰t˝ch)
 	}
+	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM); // 2013-07-04: vyÚatÈ mimo konkrÈtnej modlitby | oprava z·sahu z 2013-05-15 (oprava: pre 14MAJ sa omylom na MCD brali ûalmy z doplnkovej psalmÛdie) | nevadÌ, ûe sa vykon·/nastavÌ viackr·t...
 	Log("_set_zalmy_posviacka_chramu(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_posviacka_chramu()
 
@@ -3751,9 +3770,9 @@ void _set_zalmy_sviatok_apostolov(short int modlitba){
 		_set_zalmy_1nedele_rch();
 	}
 	else if((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI)){
-		_set_mcd_doplnkova_psalmodia_z126_129(MODL_POPOLUDNI);
 		_set_zalmy_mcd_doplnkova_psalmodia(!je_len_doplnkova_psalmodia(modlitba)); // toto je potrebnÈ z technickÈho dÙvodu, pretoûe doplnkov· psalmÛdia bola nastaven· eöte pri nastavovanÌ ûalt·ra (pred vlastn˝mi Ëasùami sv‰t˝ch)
 	}
+	_set_mcd_doplnkova_psalmodia_z126_129(MODL_POPOLUDNI); // 2013-07-04: vyÚatÈ mimo konkrÈtnej modlitby | oprava z·sahu z 2013-05-15 (oprava: pre 14MAJ sa omylom na MCD brali ûalmy z doplnkovej psalmÛdie) | nevadÌ, ûe sa vykon·/nastavÌ viackr·t...
 	Log("_set_zalmy_sviatok_apostolov(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_sviatok_apostolov()
 
@@ -3798,10 +3817,11 @@ void _set_zalmy_sviatok_panien(short int modlitba){
 		set_zalm(3, modlitba, "z45.htm", "ZALM45_II");
 	}
 	else if((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI)){
-		_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
-		_set_mcd_doplnkova_psalmodia_z127_131(MODL_POPOLUDNI);
 		_set_zalmy_mcd_doplnkova_psalmodia(!je_len_doplnkova_psalmodia(modlitba)); // toto je potrebnÈ z technickÈho dÙvodu, pretoûe doplnkov· psalmÛdia bola nastaven· eöte pri nastavovanÌ ûalt·ra (pred vlastn˝mi Ëasùami sv‰t˝ch)
 	}
+	// 2013-07-04: vyÚatÈ mimo konkrÈtnej modlitby | oprava z·sahu z 2013-05-15 (oprava: pre 14MAJ sa omylom na MCD brali ûalmy z doplnkovej psalmÛdie) | nevadÌ, ûe sa vykon·/nastavÌ viackr·t...
+	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
+	_set_mcd_doplnkova_psalmodia_z127_131(MODL_POPOLUDNI);
 	Log("_set_zalmy_sviatok_panien(%s) -- end [pouûÌva sa aj pre sviatky sv‰t˝ch ûien]\n", nazov_modlitby(modlitba));
 }// _set_zalmy_sviatok_panien()
 
@@ -3822,6 +3842,9 @@ void _set_zalmy_sviatok_marie(short int modlitba){
 		set_zalm(2, modlitba, "z46.htm", "ZALM46");
 		set_zalm(3, modlitba, "z87.htm", "ZALM87");
 	}
+	// 2013-07-04: vyÚatÈ mimo konkrÈtnej modlitby | oprava z·sahu z 2013-05-15 (oprava: pre 14MAJ sa omylom na MCD brali ûalmy z doplnkovej psalmÛdie) | nevadÌ, ûe sa vykon·/nastavÌ viackr·t...
+	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
+	_set_mcd_doplnkova_psalmodia_z127_131(MODL_POPOLUDNI);
 	Log("_set_zalmy_sviatok_marie(%s) -- end\n", nazov_modlitby(modlitba));
 }
 
@@ -9102,14 +9125,15 @@ short int _spol_cast_je_panna(_struct_sc sc){
 // 2010-09-10: pre posv. ËÌtanie sa responz medzi psalmÛdiou a 1. ËÌtanÌm berie len v prÌpade, ûe sa berie vlastnÈ 1. ËÌtanie
 // 2011-08-12: doplnenÈ pouûitie pre modlitbu cez deÚ; modlitba sa pouûije zo spoloËnej Ëasti len pre sl·vnosti a sviatky (in·Ë sa MCD berie zo dÚa, bod Ë. 236 vöeobecn˝ch smernÌc)
 // 2011-08-13: zohæadnenie bodov 229, 232, 236
+// 2013-07-04: pre doplnkov˙ psalmÛdiu treba prÌpadne ponastavovaù odliönÈ ûalmy (é 129 resp. é 131 namiesto é 122, 126 resp. 127), pretoûe ûalmy sa pre sl·venia s niûöou prioritou nastavuj˙ zo ûalt·ra; doplnkov· psalmÛdia sa preto nastavuje prv, ako sa nastavilo je_alternativa_doplnkova_psalmodia_z...()
 #define _spolocna_cast_full(modl) {\
+	Log("_spolocna_cast_full(%s): zaËiatok...\n", nazov_modlitby(modl));\
 	Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);\
 	Log("force = %d\n", force);\
 	Log("_global_den.typslav = %d\n", _global_den.typslav);\
 	Log("_global_svaty1.typslav = %d\n", _global_svaty1.typslav);\
 	Log("_global_svaty2.typslav = %d\n", _global_svaty2.typslav);\
 	Log("_global_svaty3.typslav = %d\n", _global_svaty3.typslav);\
-	Log("_spolocna_cast_full(%s)\n", nazov_modlitby(modl));\
 	if(!((modl == MODL_PREDPOLUDNIM) || (modl == MODL_NAPOLUDNIE) || (modl == MODL_POPOLUDNI))){\
 		_spolocna_cast_hymnus(modl, _global_den.litobd);\
 	}\
@@ -9127,6 +9151,10 @@ short int _spol_cast_je_panna(_struct_sc sc){
 		Log("_spolocna_cast_antifony(%s) - NEBER⁄ SA!\n", nazov_modlitby(modl));\
 	}\
 	if((modl == MODL_PREDPOLUDNIM) || (modl == MODL_NAPOLUDNIE) || (modl == MODL_POPOLUDNI)){\
+		Log("idem sk˙siù zohæadniù _set_zalmy_mcd_doplnkova_psalmodia_alternativy(%s)\n", nazov_modlitby(modl));\
+		if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALMY_INE) == BIT_OPT_1_MCD_ZALMY_INE){\
+			_set_zalmy_mcd_doplnkova_psalmodia_alternativy(modlitba);\
+		}\
 		if(su_kcit_kresp_modlitba_mcd_vlastne(modl)){\
 			_vlastna_cast_kcitanie;\
 			_spolocna_cast_kresponz;\
@@ -9172,6 +9200,7 @@ short int _spol_cast_je_panna(_struct_sc sc){
 	else{\
 		_vlastna_cast_modlitba;\
 	}\
+	Log("_spolocna_cast_full(%s): koniec.\n", nazov_modlitby(modl));\
 }
 // _spolocna_cast_full()
 
@@ -9486,6 +9515,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 	// -- preto sa pouûÌva _spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
 	// 2009-09-18: doplnen˝ nepovinn˝ tretÌ parameter, ktor˝m sa daj˙ vyn˙tiù antifÛny zo spoloËnej Ëasti, aj ak je to len spomienka alebo æubovoæn· spomienka
 	// 2011-08-15: "force" parametre, Ëi napriek vöetkÈmu explicitne braù nasledovnÈ Ëasti zo spol. Ëasti (boli pÙvodne viacerÈ; bitovo pouûitÈ ako jedin˝ vstup)
+	// 2013-07-04: upravenÈ poradie modlitieb na spr·vne; technicky potrebnÈ kvÙli tomu, ûe niektorÈ nastavenia psalmÛdie (pre posv. ËÌtanie) musia prebehn˙ù prv, ako sa nastavuje modlitba cez deÚ | kvÙli pouûitiu é 129 resp. é 131 namiesto é 122, 126 resp. 127 pre doplnkov˙ psalmÛdiu
 
 	// anchors - nazvy kotiev pre zaltar styroch tyzdnov
 	char _anchor[SMALL];
@@ -9517,10 +9547,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		Log("/* spolocna cast na sviatky apostolov */\n");
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv(modlitba);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
@@ -9529,6 +9555,10 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		}
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_modlitba_prve_vesp;
+
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv(modlitba);
 
 		// 2005-08-05: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
 		sprintf(_anchor_pom, "%s", STR_EMPTY);
@@ -9619,10 +9649,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		}
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv(modlitba);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-02-04_ZALMY_ZO_SVIATKU_FIX; 2010-06-04/2009-09-18: doplnenÈ brat_zalmy
@@ -9632,6 +9658,23 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
 		_spolocna_cast_modlitba_prve_vesp;
+
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv(modlitba);
+
+		// posv‰tnÈ ËÌtanie
+		modlitba = MODL_POSV_CITANIE;
+		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
+			Log("  _set_zalmy_sviatok_duch_past(%s)...\n", nazov_modlitby(modlitba));
+			_set_zalmy_sviatok_duch_past(modlitba);
+		}
+		_spolocna_cast_full(modlitba);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		// 2005-07-22: ToDo: skontrolovaù, Ëi pre öpeci·lne obdobia nie s˙ öpeci·lne Ëasti z obdobia
+
+		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
+		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
 
 		// rannÈ chv·ly
 		modlitba = MODL_RANNE_CHVALY;
@@ -9651,20 +9694,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_full(modlitba);
 		modlitba = MODL_POPOLUDNI;
 		_spolocna_cast_full(modlitba);
-
-		// posv‰tnÈ ËÌtanie
-		modlitba = MODL_POSV_CITANIE;
-		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
-			Log("  _set_zalmy_sviatok_duch_past(%s)...\n", nazov_modlitby(modlitba));
-			_set_zalmy_sviatok_duch_past(modlitba);
-		}
-		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2005-07-22: ToDo: skontrolovaù, Ëi pre öpeci·lne obdobia nie s˙ öpeci·lne Ëasti z obdobia
-
-		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
-		// 2005-08-27: doplnenÈ druhÈ ËÌtanie
-		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
 
 		// veöpery
 		if(_global_den.litobd != OBD_OKTAVA_NARODENIA){
@@ -9702,6 +9731,24 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		modlitba = MODL_INVITATORIUM;
 		_spolocna_cast_antifona_inv(modlitba);
 
+		// posv‰tnÈ ËÌtanie
+		modlitba = MODL_POSV_CITANIE;
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
+
+		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
+		Log("  _anchor_pom == %s\n", _anchor_pom);
+		// 2005-08-05: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
+		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
+		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
+		}
+		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
+
+		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
+		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+			_spolocna_cast_2citanie;
+		}
+
 		// rannÈ chv·ly
 		modlitba = MODL_RANNE_CHVALY;
 		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
@@ -9728,24 +9775,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_vlastna_cast_kresponz_ve;
 		}
 
-		// posv‰tnÈ ËÌtanie
-		modlitba = MODL_POSV_CITANIE;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
-
-		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
-		Log("  _anchor_pom == %s\n", _anchor_pom);
-		// 2005-08-05: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
-		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
-			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
-		}
-		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
-
-		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
-			_spolocna_cast_2citanie;
-		}
-
 	}// MODL_SPOL_CAST_UCITEL_CIRKVI
 
 	// spolocna cast na sviatky jedneho mucenika
@@ -9768,10 +9797,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		}
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv(modlitba);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-02-04_ZALMY_ZO_SVIATKU_FIX; 2010-06-04/2009-09-18: doplnenÈ brat_zalmy
@@ -9784,6 +9809,21 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_spolocna_cast_kcit_kresp_chval_ve;
 		}
 		_spolocna_cast_modlitba_prve_vesp;
+
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv(modlitba);
+
+		// posv‰tnÈ ËÌtanie
+		modlitba = MODL_POSV_CITANIE;
+		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
+			Log("  _set_zalmy_sviatok_muc(%s)...\n", nazov_modlitby(modlitba));
+			_set_zalmy_sviatok_muc(modlitba);
+		}
+		_spolocna_cast_full(modlitba);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		// 2005-08-16: Zmenen˝ _anchor_pom na _anchor_head.
+		_spolocna_cast_1cit_zvazok(modlitba, _anchor_head, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
 
 		// rannÈ chv·ly
 		modlitba = MODL_RANNE_CHVALY;
@@ -9803,17 +9843,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_full(modlitba);
 		modlitba = MODL_POPOLUDNI;
 		_spolocna_cast_full(modlitba);
-
-		// posv‰tnÈ ËÌtanie
-		modlitba = MODL_POSV_CITANIE;
-		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
-			Log("  _set_zalmy_sviatok_muc(%s)...\n", nazov_modlitby(modlitba));
-			_set_zalmy_sviatok_muc(modlitba);
-		}
-		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2005-08-16: Zmenen˝ _anchor_pom na _anchor_head.
-		_spolocna_cast_1cit_zvazok(modlitba, _anchor_head, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
 
 		// veöpery
 		if(_global_den.litobd != OBD_OKTAVA_NARODENIA){
@@ -9845,10 +9874,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		}
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv(modlitba);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-02-04_ZALMY_ZO_SVIATKU_FIX; 2010-06-04/2009-09-18: doplnenÈ brat_zalmy
@@ -9860,6 +9885,20 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_spolocna_cast_kcit_kresp_chval_ve;
 		}
 		_spolocna_cast_modlitba_prve_vesp;
+
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv(modlitba);
+
+		// posv‰tnÈ ËÌtanie
+		modlitba = MODL_POSV_CITANIE;
+		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
+			Log("  _set_zalmy_sviatok_muc(%s, 2)...\n", nazov_modlitby(modlitba));
+			_set_zalmy_sviatok_muc(modlitba, 2);
+		}
+		_spolocna_cast_full(modlitba);
+
+		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
 
 		// rannÈ chv·ly
 		modlitba = MODL_RANNE_CHVALY;
@@ -9881,16 +9920,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_full(modlitba);
 		modlitba = MODL_POPOLUDNI;
 		_spolocna_cast_full(modlitba);
-
-		// posv‰tnÈ ËÌtanie
-		modlitba = MODL_POSV_CITANIE;
-		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
-			Log("  _set_zalmy_sviatok_muc(%s, 2)...\n", nazov_modlitby(modlitba));
-			_set_zalmy_sviatok_muc(modlitba, 2);
-		}
-		_spolocna_cast_full(modlitba);
-
-		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
 
 		// veöpery
 		if(_global_den.litobd != OBD_OKTAVA_NARODENIA){
@@ -9973,6 +10002,16 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_magnifikat;
 		_spolocna_cast_modlitba;
 
+		// posv‰tnÈ ËÌtanie
+		modlitba = MODL_POSV_CITANIE;
+
+		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
+		Log("  _anchor_pom == %s\n", _anchor_pom);
+
+		// 2006-08-08: tÌ Ëo konali skutky milosrdenstva nemaj˙ samostatnÈ 1. ËÌtanie
+		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
+		// 2006-08-08: tÌ Ëo konali skutky milosrdenstva maj˙ rovnakÈ 2. ËÌtanie
+
 		// rannÈ chv·ly
 		modlitba = MODL_RANNE_CHVALY;
 		_spolocna_cast_benediktus;
@@ -9984,16 +10023,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		modlitba = MODL_VESPERY;
 		_spolocna_cast_magnifikat;
 		_spolocna_cast_modlitba;
-
-		// posv‰tnÈ ËÌtanie
-		modlitba = MODL_POSV_CITANIE;
-
-		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
-		Log("  _anchor_pom == %s\n", _anchor_pom);
-
-		// 2006-08-08: tÌ Ëo konali skutky milosrdenstva nemaj˙ samostatnÈ 1. ËÌtanie
-		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2006-08-08: tÌ Ëo konali skutky milosrdenstva maj˙ rovnakÈ 2. ËÌtanie
 
 	}// MODL_SPOL_CAST_SV_MUZ/ZENA_VYCH
 
@@ -10022,18 +10051,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_magnifikat;
 		_spolocna_cast_modlitba;
 
-		// rannÈ chv·ly
-		modlitba = MODL_RANNE_CHVALY;
-		_spolocna_cast_benediktus;
-		_spolocna_cast_modlitba;
-
-		// modlitba cez deÚ
-
-		// veöpery
-		modlitba = MODL_VESPERY;
-		_spolocna_cast_magnifikat;
-		_spolocna_cast_modlitba;
-
 		// posv‰tnÈ ËÌtanie
 		modlitba = MODL_POSV_CITANIE;
 
@@ -10050,6 +10067,18 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		// 2006-08-08: tÌ Ëo konali skutky milosrdenstva maj˙ v I. a II. zv‰zku rovnakÈ 1. ËÌtanie; v III. a IV. inÈ rovnakÈ 1. ËÌtanie
 		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
 		// 2006-08-08: tÌ Ëo konali skutky milosrdenstva maj˙ rovnakÈ 2. ËÌtanie
+
+		// rannÈ chv·ly
+		modlitba = MODL_RANNE_CHVALY;
+		_spolocna_cast_benediktus;
+		_spolocna_cast_modlitba;
+
+		// modlitba cez deÚ
+
+		// veöpery
+		modlitba = MODL_VESPERY;
+		_spolocna_cast_magnifikat;
+		_spolocna_cast_modlitba;
 
 	}// MODL_SPOL_CAST_SV_MUZ/ZENA_SKUTKYMIL
 
@@ -10073,29 +10102,15 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		}
 		// ...a teraz vlastnu cast reholnikov
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
 		_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file);
 		_spolocna_cast_modlitba;
 
-		// rannÈ chv·ly
-		modlitba = MODL_RANNE_CHVALY;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
-		_spolocna_cast_benediktus_viac(2, _anchor_head, _anchor, _file);
-		_spolocna_cast_modlitba;
-
-		// modlitba cez deÚ
-
-		// veöpery
-		modlitba = MODL_VESPERY;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
-		_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file);
-		_spolocna_cast_modlitba;
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv_viac(modlitba, 2);
 
 		// posv‰tnÈ ËÌtanie
 		modlitba = MODL_POSV_CITANIE;
@@ -10114,6 +10129,20 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
 		// 2006-08-08: rehoænÌci maj˙ rovnakÈ 2. ËÌtanie
 
+		// rannÈ chv·ly
+		modlitba = MODL_RANNE_CHVALY;
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
+		_spolocna_cast_benediktus_viac(2, _anchor_head, _anchor, _file);
+		_spolocna_cast_modlitba;
+
+		// modlitba cez deÚ
+
+		// veöpery
+		modlitba = MODL_VESPERY;
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
+		_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file);
+		_spolocna_cast_modlitba;
+
 	}// MODL_SPOL_CAST_SV_MUZ/ZENA_REHOLNIK
 
 	// spolocna cast na sviatky svatych muzov
@@ -10127,10 +10156,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
 		Log("  _anchor_pom == %s\n", _anchor_pom);
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-02-04_ZALMY_ZO_SVIATKU_FIX; 2010-06-04/2009-09-18: doplnenÈ brat_zalmy
@@ -10138,6 +10163,29 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_duch_past(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv_viac(modlitba, 2);
+
+		// posv‰tnÈ ËÌtanie
+		modlitba = MODL_POSV_CITANIE;
+		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
+			Log("  _set_zalmy_sviatok_duch_past(%s)...\n", nazov_modlitby(modlitba));
+			_set_zalmy_sviatok_duch_past(modlitba);
+		}
+
+		// 2005-08-05: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
+		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
+		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
+		}
+		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
+
+		_spolocna_cast_full(modlitba);
+
+		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
 
 		// rannÈ chv·ly
@@ -10160,25 +10208,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_full(modlitba);
 		modlitba = MODL_POPOLUDNI;
 		_spolocna_cast_full(modlitba);
-
-		// posv‰tnÈ ËÌtanie
-		modlitba = MODL_POSV_CITANIE;
-		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
-			Log("  _set_zalmy_sviatok_duch_past(%s)...\n", nazov_modlitby(modlitba));
-			_set_zalmy_sviatok_duch_past(modlitba);
-		}
-
-		// 2005-08-05: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
-		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
-			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
-		}
-		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
-
-		_spolocna_cast_full(modlitba);
-
-		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
 
 		// veöpery
 		if(_global_den.litobd != OBD_OKTAVA_NARODENIA){
@@ -10208,10 +10237,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
 		Log("  _anchor_pom == %s\n", _anchor_pom);
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-02-04_ZALMY_ZO_SVIATKU_FIX; 2010-06-04/2009-09-18: doplnenÈ brat_zalmy
@@ -10219,6 +10244,29 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_panien(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv_viac(modlitba, 2);
+
+		// posv‰tnÈ ËÌtanie
+		modlitba = MODL_POSV_CITANIE;
+		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
+			Log("  _set_zalmy_sviatok_panien(%s)...\n", nazov_modlitby(modlitba));
+			_set_zalmy_sviatok_panien(modlitba);
+		}
+
+		// 2005-08-05: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
+		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
+		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
+		}
+		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
+
+		_spolocna_cast_full(modlitba);
+
+		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
 
 		// rannÈ chv·ly
@@ -10239,25 +10287,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_full(modlitba);
 		modlitba = MODL_POPOLUDNI;
 		_spolocna_cast_full(modlitba);
-
-		// posv‰tnÈ ËÌtanie
-		modlitba = MODL_POSV_CITANIE;
-		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
-			Log("  _set_zalmy_sviatok_panien(%s)...\n", nazov_modlitby(modlitba));
-			_set_zalmy_sviatok_panien(modlitba);
-		}
-
-		// 2005-08-05: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
-		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
-			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
-		}
-		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
-
-		_spolocna_cast_full(modlitba);
-
-		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
 
 		// veöpery
 		if(_global_den.litobd != OBD_OKTAVA_NARODENIA){
@@ -10282,10 +10311,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		Log("/* spolocna cast na sviatky panien */\n");
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-02-04_ZALMY_ZO_SVIATKU_FIX; 2010-06-04/2009-09-18: doplnenÈ brat_zalmy
@@ -10297,6 +10322,21 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
+
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv_viac(modlitba, 2);
+
+		// posv‰tnÈ ËÌtanie
+		modlitba = MODL_POSV_CITANIE;
+		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
+			Log("  _set_zalmy_sviatok_panien(%s)...\n", nazov_modlitby(modlitba));
+			_set_zalmy_sviatok_panien(modlitba);
+		}
+		_spolocna_cast_full(modlitba);
+		// 2005-07-22: ToDo: skontrolovaù, Ëi pre öpeci·lne obdobia nie s˙ öpeci·lne Ëasti z obdobia
+		// _spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		// 2005-08-27: 1. ËÌtanie je rovnakÈ pre vöetky obdobia a zv‰zky ûalt·ra :-)
 
 		// rannÈ chv·ly
 		modlitba = MODL_RANNE_CHVALY;
@@ -10315,17 +10355,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_full(modlitba);
 		modlitba = MODL_POPOLUDNI;
 		_spolocna_cast_full(modlitba);
-
-		// posv‰tnÈ ËÌtanie
-		modlitba = MODL_POSV_CITANIE;
-		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
-			Log("  _set_zalmy_sviatok_panien(%s)...\n", nazov_modlitby(modlitba));
-			_set_zalmy_sviatok_panien(modlitba);
-		}
-		_spolocna_cast_full(modlitba);
-		// 2005-07-22: ToDo: skontrolovaù, Ëi pre öpeci·lne obdobia nie s˙ öpeci·lne Ëasti z obdobia
-		// _spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2005-08-27: 1. ËÌtanie je rovnakÈ pre vöetky obdobia a zv‰zky ûalt·ra :-)
 
 		// veöpery
 		if(_global_den.litobd != OBD_OKTAVA_NARODENIA){
@@ -10347,10 +10376,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		Log("/* spolocna cast na sviatky Panny Marie */\n");
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-02-04_ZALMY_ZO_SVIATKU_FIX; 2010-06-04/2009-09-18: doplnenÈ brat_zalmy
@@ -10363,16 +10388,9 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_spolocna_cast_kresp_ve;
 		}
 
-		// rannÈ chv·ly
-		modlitba = MODL_RANNE_CHVALY;
-		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnenÈ brat_zalmy
-			_set_zalmy_1nedele_rch();
-		}
-		_spolocna_cast_full(modlitba);
-		_spolocna_cast_prosby_viac(2, _anchor_head, _anchor, _file, force);
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
-			_spolocna_cast_kresp_ve;
-		}
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv_viac(modlitba, 2);
 
 		// 2005-08-25: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
 		sprintf(_anchor_pom, "%s", STR_EMPTY);
@@ -10382,14 +10400,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
 		}
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
-
-		// modlitba cez deÚ
-		modlitba = MODL_PREDPOLUDNIM;
-		_spolocna_cast_full(modlitba);
-		modlitba = MODL_NAPOLUDNIE;
-		_spolocna_cast_full(modlitba);
-		modlitba = MODL_POPOLUDNI;
-		_spolocna_cast_full(modlitba);
 
 		// posv‰tnÈ ËÌtanie
 		modlitba = MODL_POSV_CITANIE;
@@ -10407,6 +10417,25 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		// 2009-09-18/2005-08-27: doplnenÈ druhÈ ËÌtanie;
 		// 2011-02-09: opravenÈ _spolocna_cast_2cit_rozne -> _spolocna_cast_2citanie
 		_spolocna_cast_2citanie; // _spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
+
+		// rannÈ chv·ly
+		modlitba = MODL_RANNE_CHVALY;
+		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnenÈ brat_zalmy
+			_set_zalmy_1nedele_rch();
+		}
+		_spolocna_cast_full(modlitba);
+		_spolocna_cast_prosby_viac(2, _anchor_head, _anchor, _file, force);
+		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+			_spolocna_cast_kresp_ve;
+		}
+
+		// modlitba cez deÚ
+		modlitba = MODL_PREDPOLUDNIM;
+		_spolocna_cast_full(modlitba);
+		modlitba = MODL_NAPOLUDNIE;
+		_spolocna_cast_full(modlitba);
+		modlitba = MODL_POPOLUDNI;
+		_spolocna_cast_full(modlitba);
 
 		// veöpery
 		if(_global_den.litobd != OBD_OKTAVA_NARODENIA){
@@ -10444,6 +10473,33 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		// invitatÛrium
 		modlitba = MODL_INVITATORIUM;
 		_spolocna_cast_antifona_inv(modlitba);
+
+		// 2007-11-08 / 2005-08-25: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
+		sprintf(_anchor_pom, "%s", STR_EMPTY);
+		Log("  _anchor_pom == %s\n", _anchor_pom);
+		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
+		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
+		}
+		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
+
+		// posv‰tnÈ ËÌtanie
+		modlitba = MODL_POSV_CITANIE;
+		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
+			Log("  _set_zalmy_za_zosnulych(%s)...\n", nazov_modlitby(modlitba));
+			_set_zalmy_za_zosnulych(modlitba);
+		}
+		_spolocna_cast_full(modlitba);
+		// 2005-08-25: 1. ËÌtanie je zv‰Ëöa odliönÈ pre spoloËnÈ Ëasti sviatkov sv‰t˝ch nasledovne:
+		// - I. zv‰zok (advent, vianoce) a II. zv‰zok (pÙst),
+		// - II. zv‰zok (veæk· noc),
+		// - III. a IV. zv‰zok (obdobie cez rok).
+		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
+
+		/*
+		Log("// upravenÈ tak, ûe spoloËn· Ëasù na ofÌcium za zosnul˝ch vûdy berie vlastnÈ ûalmy; vraciam sp‰ù nastavenie _global_opt 1\n");
+		_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_1_pom;
+		*/
 
 		// rannÈ chv·ly
 		modlitba = MODL_RANNE_CHVALY;
@@ -10495,33 +10551,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			}
 		}// v OBD_OKTAVA_NARODENIA -- veöpery s˙ zo dÚa
 
-		// 2007-11-08 / 2005-08-25: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
-		sprintf(_anchor_pom, "%s", STR_EMPTY);
-		Log("  _anchor_pom == %s\n", _anchor_pom);
-		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
-			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
-		}
-		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
-
-		// posv‰tnÈ ËÌtanie
-		modlitba = MODL_POSV_CITANIE;
-		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
-			Log("  _set_zalmy_za_zosnulych(%s)...\n", nazov_modlitby(modlitba));
-			_set_zalmy_za_zosnulych(modlitba);
-		}
-		_spolocna_cast_full(modlitba);
-		// 2005-08-25: 1. ËÌtanie je zv‰Ëöa odliönÈ pre spoloËnÈ Ëasti sviatkov sv‰t˝ch nasledovne:
-		// - I. zv‰zok (advent, vianoce) a II. zv‰zok (pÙst),
-		// - II. zv‰zok (veæk· noc),
-		// - III. a IV. zv‰zok (obdobie cez rok).
-		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
-
-		/*
-		Log("// upravenÈ tak, ûe spoloËn· Ëasù na ofÌcium za zosnul˝ch vûdy berie vlastnÈ ûalmy; vraciam sp‰ù nastavenie _global_opt 1\n");
-		_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_1_pom;
-		*/
-
 		// 2011-11-08: kompletÛrium z nedele
 		modlitba = MODL_KOMPLETORIUM;
 		if(_global_den.den != DEN_NEDELA){
@@ -10537,10 +10566,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		Log("/* spolocna cast na sviatky posviacky chramu */\n");
 
-		// invitatÛrium
-		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
-
 		// prvÈ veöpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){ // 2006-02-04_ZALMY_ZO_SVIATKU_FIX; 2010-06-04/2009-09-18: doplnenÈ brat_zalmy
@@ -10555,15 +10580,9 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_spolocna_cast_ant1_3_po;
 		}
 
-		// rannÈ chv·ly
-		modlitba = MODL_RANNE_CHVALY;
-		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
-			Log("  _set_zalmy_posviacka_chramu(%s)...\n", nazov_modlitby(modlitba));
-			_set_zalmy_posviacka_chramu(modlitba);
-		}
-		_spolocna_cast_full(modlitba);
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II))
-			_spolocna_cast_kresp_ve;
+		// invitatÛrium
+		modlitba = MODL_INVITATORIUM;
+		_spolocna_cast_antifona_inv_viac(modlitba, 2);
 
 		// 2005-08-25: pridan˝ ÔalöÌ pomocn˝ anchor, ktor˝ pojedn·va o zv‰zku brevi·ra kvÙli posv. ËÌtaniam
 		sprintf(_anchor_pom, "%s", STR_EMPTY);
@@ -10586,6 +10605,16 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		// - II. zv‰zok (veæk· noc),
 		// - III. a IV. zv‰zok (obdobie cez rok).
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
+
+		// rannÈ chv·ly
+		modlitba = MODL_RANNE_CHVALY;
+		if(su_zalmy_vlastne(modlitba) || /* ((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZALMY_ZO_SVIATKU) == BIT_OPT_1_ZALMY_ZO_SVIATKU) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
+			Log("  _set_zalmy_posviacka_chramu(%s)...\n", nazov_modlitby(modlitba));
+			_set_zalmy_posviacka_chramu(modlitba);
+		}
+		_spolocna_cast_full(modlitba);
+		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II))
+			_spolocna_cast_kresp_ve;
 
 		// modlitba cez deÚ, pridanÈ 2009-01-07; ûalmy a antifÛny sa ber˙ ako vo vöedn˝ deÚ 
 		// 2009-11-10: antifÛny z vlastnej Ëasti
