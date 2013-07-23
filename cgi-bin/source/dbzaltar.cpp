@@ -2491,7 +2491,7 @@ void zaltar_zvazok(short int den, short int tyzzal, short int obdobie, short int
 			set_zalm(1, MODL_VESPERY, "z110.htm", "ZALM110");
 			// nedelny ranny hymnus je rovnaky v prvom a tretom, resp. druhom a stvrtom tyzdni
 			if((tyzzal == 1) || (tyzzal == 3)){
-				set_zalm(2, MODL_RANNE_CHVALY, "ch_dan3_57.htm", "DAN3,57-88.56");
+				set_zalm(2, MODL_RANNE_CHVALY, "ch_dan3_57.htm", "CHVAL_DAN3,57-88.56");
 				// modlitba cez deò
 				_set_zalmy_1nedele_mcd(); // 2007-01-11 nahradené volaním funkcie
 				/*
@@ -2502,7 +2502,7 @@ void zaltar_zvazok(short int den, short int tyzzal, short int obdobie, short int
 			}
 			else{ // if((tyzzal == 2) || (tyzzal == 4))
 				set_zalm(1, MODL_RANNE_CHVALY, "z118.htm", "ZALM118");
-				set_zalm(2, MODL_RANNE_CHVALY, "ch_dan3_52.htm", "DAN3,52-57");
+				set_zalm(2, MODL_RANNE_CHVALY, "ch_dan3_52.htm", "CHVAL_DAN3,52-57");
 				set_zalm(3, MODL_RANNE_CHVALY, "z150.htm", "ZALM150");
 				// modlitba cez deò
 				_set_zalmy_2nedele_mcd(); // 2007-01-11 nahradené volaním funkcie; 2007-03-29 opravené
@@ -3250,7 +3250,7 @@ void _set_zalmy_za_zosnulych(short int modlitba){
 void _set_zalmy_1nedele_rch(void){// ranné chvály
 	Log("_set_zalmy_1nedele_rch() -- begin\n");
 	set_zalm(1, MODL_RANNE_CHVALY, "z63.htm", "ZALM63");
-	set_zalm(2, MODL_RANNE_CHVALY, "ch_dan3_57.htm", "DAN3,57-88.56");
+	set_zalm(2, MODL_RANNE_CHVALY, "ch_dan3_57.htm", "CHVAL_DAN3,57-88.56");
 	set_zalm(3, MODL_RANNE_CHVALY, "z149.htm", "ZALM149");
 	Log("_set_zalmy_1nedele_rch() -- end\n");
 }// _set_zalmy_1nedele_rch()
