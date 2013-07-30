@@ -221,8 +221,15 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
 		Export_to_file(expt, "<center>\n");
 		pismeno_modlitby = CHAR_MODL_NEURCENA;
-		if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM))
-			pismeno_modlitby = char_modlitby[_local_modlitba];
+		if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)){
+			// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
+			if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+				pismeno_modlitby = char_modlitby[_local_modlitba];
+			}
+			else{
+				pismeno_modlitby = _local_modlitba + '0';
+			}
+		}
 		sprintf(ext, "%c", pismeno_modlitby);
 		strcat(ext, ".htm");
 		Export_to_file(expt, HTML_NEW_PARAGRAPH);
@@ -231,7 +238,13 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		ptr = strstr(file_name_pom, ext);
 		if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba > MODL_INVITATORIUM)){
 			if(ptr != NULL){
-				sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba - 1]);
+				// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
+				if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+					sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba - 1]);
+				}
+				else{
+					sprintf(pismeno_prev, "%d", _local_modlitba - 1);
+				}
 				strncpy(ptr, pismeno_prev, 1);
 			}
 			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
@@ -253,7 +266,13 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		ptr = strstr(file_name_pom, ext);
 		if((_local_modlitba != MODL_NEURCENA) && (_local_modlitba < MODL_KOMPLETORIUM)){
 			if(ptr != NULL){
-				sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba + 1]);
+				// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
+				if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+					sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba + 1]);
+				}
+				else{
+					sprintf(pismeno_next, "%d", _local_modlitba + 1);
+				}
 				strncpy(ptr, pismeno_next, 1);
 			}
 			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);

@@ -6440,18 +6440,27 @@ label_24_DEC:
 
 				modlitba = MODL_PREDPOLUDNIM;
 				_set_zalmy_telakrvi(modlitba);
+				if(_global_jazyk == JAZYK_CZ){
+					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
+				}
 				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				modlitba = MODL_NAPOLUDNIE;
 				_set_zalmy_telakrvi(modlitba);
+				if(_global_jazyk == JAZYK_CZ){
+					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
+				}
 				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				modlitba = MODL_POPOLUDNI;
 				_set_zalmy_telakrvi(modlitba);
+				if(_global_jazyk == JAZYK_CZ){
+					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
+				}
 				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
@@ -22911,7 +22920,7 @@ label_25_MAR:
 						_global_svaty1.typslav = SLAV_SPOMIENKA;
 						_global_svaty1.smer = 10; // povinnÈ spomienky podæa vöeobecnÈho kalend·ra
 						mystrcpy(_global_svaty1.meno, text_JUL_24_HU[_global_jazyk], MENO_SVIATKU);
-						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_VIACERI);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_HU;
 					}// HU only
@@ -26532,34 +26541,11 @@ label_25_MAR:
 					else if(_global_jazyk == JAZYK_HU){
 						// SZENT GELL…RT P‹SP÷K …S V…RTAN⁄ | ‹nnep
 						// A SZEGED-CSAN¡DI EGYH¡ZMEGY…BEN: SZENT GELL…RT P‹SP÷K …S V…RTAN⁄, A SZEGED-CSAN¡DI EGYH¡ZMEGYE V…D’SZENTJE
-						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
-						_global_svaty1.farba = LIT_FARBA_CERVENA;
-						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_HU;
-						_global_svaty1.typslav = SLAV_SLAVNOST;
-						_global_svaty1.typslav_lokal = LOKAL_SLAV_SZEGED_CSAN_PATRON2;
-						_global_den.typslav = SLAV_SLAVNOST; // 2010-07-06: doplnenÈ kvÙli spr·vnemu fungovaniu set_spolocna_cast(), t. j. tamojöÌch kontrol, Ëi napr. s˙ ûalmy vlastnÈ
-						_global_svaty1.smer = 3; // sl·vnosti P·na, preblahoslavenej Panny M·rie a sv‰t˝ch, uvedenÈ vo vöeobecnom kalend·ri
-						mystrcpy(_global_svaty1.meno, text_SEP_24_HU[_global_jazyk], MENO_SVIATKU);
-						if((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) || (poradie_svaty == 1)){
-							// preto 0 -> UNKNOWN_PORADIE_SVATEHO, ze aj ked nie je svaty urceny, ide o slavnost, ktora ma takmer najvacsiu prioritu, a preto ma aj prve vespery - a vtedy by to normalne nefungovalo; nastavenie veci pre modlitbu by sa muselo diat v predoslom dni, co je neciste riesenie
-							// definovanie parametrov pre modlitbu
-							sc = _decode_spol_cast(_global_svaty1.spolcast);
-							Log("HU: GellÈrt: sc: {%s, %s, %s}, svaty == %d\n\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3), poradie_svaty);
 
+						// 2013-07-29, oprava: nie je sl·vnosù vo vöeobecnom maÔarskom kalend·ri, ale len sviatok | upozornila Julianna BlahÛ
+						if(poradie_svaty == 1){
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
-
-							modlitba = MODL_PRVE_KOMPLETORIUM;
-							if(den != DEN_NEDELA){
-								_set_kompletorium_slavnost(modlitba, _global_svaty1.litobd);
-							}
-							else{
-								_set_kompletorium_nedela(modlitba);
-							}
-
-							modlitba = MODL_PRVE_VESPERY;
-							_vlastna_cast_full(modlitba);
-							_set_zalmy_sviatok_muc(modlitba);
 
 							modlitba = MODL_INVITATORIUM;
 							_vlastna_cast_antifona_inv;
@@ -26574,27 +26560,17 @@ label_25_MAR:
 
 							_vlastna_cast_mcd_ant_kcitresp_modl;
 
-							if(_global_den.denvt != DEN_NEDELA) {
-								_set_zalmy_mcd_doplnkova_psalmodia();
-							}
-							else {
-								_set_zalmy_1nedele_mcd();
-							}
-
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_full(modlitba);
 							_set_zalmy_sviatok_muc(modlitba);
-
-							modlitba = MODL_KOMPLETORIUM;
-							if(den != DEN_NEDELA){
-								_set_kompletorium_slavnost(modlitba, _global_svaty1.litobd);
-							}
-							else{
-								_set_kompletorium_nedela(modlitba);
-							}
-
-							if(poradie_svaty != UNKNOWN_PORADIE_SVATEHO) break;
 						}
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
+						_global_svaty1.farba = LIT_FARBA_CERVENA;
+						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_HU;
+						_global_svaty1.typslav = SLAV_SVIATOK;
+						_global_svaty1.typslav_lokal = LOKAL_SLAV_SZEGED_CSAN_PATRON2;
+						_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny M·rie a sv‰t˝ch, uvedenÈ vo vöeobecnom kalend·ri
+						mystrcpy(_global_svaty1.meno, text_SEP_24_HU[_global_jazyk], MENO_SVIATKU);
 					}// HU only
 					if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
 						if(poradie_svaty == 2){
@@ -26803,7 +26779,6 @@ label_25_MAR:
 					break;
 				case 28: // MES_SEP -- 28SEP
 					if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){ // 2008-10-09: odvetvenÈ len pre »esko; prevzatÈ podæa cyrila a metoda
-
 						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
 						_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_MUCENIK; // 2009-10-27: doplnenÈ, aby sa to mohlo pouûiù v set_spolocna_cast()
 						_global_svaty1.typslav = SLAV_SLAVNOST;

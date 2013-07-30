@@ -1322,10 +1322,11 @@ extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_HIDE_OPTIONS2          8192 // skryù html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziù)
 #define BIT_OPT_2_ALTERNATIVES          16384 // uk·zaù iba jednu alternatÌvu (0 = ako doteraz; buÔ systÈm vyberie, alebo uk·ûe vöetky moûnosti)
 
-#define POCET_OPT_4_OFFLINE_EXPORT          1 // jednotlivÈ komponenty option 4 -- bity pre force option 4
+#define POCET_OPT_4_OFFLINE_EXPORT          2 // jednotlivÈ komponenty option 4 -- bity pre force option 4
 extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: ˙prava v˝znamu (a interpret·cie) option 4 (rozliËnÈ prepÌnaËe pre offline export, napr. aj batch mÛd)
 #define BIT_OPT_4_MESIAC_RIADOK             1
+#define BIT_OPT_4_FNAME_MODL_ID             2 // Ëi pre n·zov s˙boru pouûiù (ËÌselnÈ) ID modlitby alebo pÌsmenko modlitby (default)
 
 #define POCET_OPT_5_ALTERNATIVES           11 // jednotlivÈ komponenty option 5 -- bity pre force option 5
 extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
