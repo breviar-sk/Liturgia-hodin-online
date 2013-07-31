@@ -9311,6 +9311,12 @@ void _spolocna_cast_2cit_rozne(short int modlitba, char *_anchor_pom, char *_anc
 	_set_citanie2(modlitba, _file, _anchor);
 	set_LOG_svsv;
 }
+// 2013-07-30: kvÙli modlitbe pre pannu-muËenicu
+void _spolocna_cast_modlitba_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file){
+	sprintf(_anchor, "%s%s", _anchor_pom, ANCHOR_MODLITBA);
+	_set_modlitba(modlitba, _file, _anchor);
+	set_LOG_svsv;
+}
 
 // specialne veci pre sviatky jedneho mucenika
 #define _spolocna_cast_kcit_kresp_chval_ve {\
@@ -9791,6 +9797,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		(a == MODL_SPOL_CAST_MUCENICA)){
 
 		Log("/* spolocna cast na sviatky jedneho mucenika */\n");
+		// 2013-07-30: doplnen· moûnosù braù modlitbu pre pannu-muËenicu (doteraz bol takto iba hymnus)
 
 		sprintf(_anchor_head, "%s_", ANCHOR_SPOL_CAST_JEDEN_MUCENIK);
 		Log("  _anchor_head == %s\n", _anchor_head);
@@ -9814,6 +9821,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		}
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kcit_kresp_chval_ve;
 		}
@@ -9831,6 +9839,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		}
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
 		// 2005-08-16: Zmenen˝ _anchor_pom na _anchor_head.
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_head, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
 
@@ -9841,6 +9850,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		}
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kcit_kresp_chval_ve;
 		}
@@ -9862,6 +9872,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			}
 			_spolocna_cast_full(modlitba);
 			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+			_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_kcit_kresp_chval_ve;
 			}
@@ -20704,6 +20715,22 @@ label_25_MAR:
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_CZ_OPRAEM;
 					}// kalend·r pre KALENDAR_CZ_OPRAEM
+					else if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+						if(poradie_svaty == 1){
+							// definovanie parametrov pre modlitbu
+							if(query_type != PRM_DETAILY)
+								set_spolocna_cast(sc, poradie_svaty);
+							break;
+							// vöetko je zo spoloËnej Ëasti
+						}
+						_global_svaty1.typslav = SLAV_SPOMIENKA;
+						_global_svaty1.smer = 11; // miestne povinnÈ spomienky
+						_global_svaty1.typslav_lokal = LOKAL_SLAV_OSTRAVA_OPAVA;
+						mystrcpy(_global_svaty1.meno, text_JUN_16_CZ[_global_jazyk], MENO_SVIATKU);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENICA, MODL_SPOL_CAST_PANNA);
+						_global_svaty1.farba = LIT_FARBA_CERVENA;
+						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_CZ;
+					}// kalend·r pre CZ
 					break;
 				case 17: // MES_JUN -- 17JUN
 					if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
@@ -22538,7 +22565,7 @@ label_25_MAR:
 						mystrcpy(_global_svaty2.meno, text_JUL_16_CZ[_global_jazyk], MENO_SVIATKU);
 						_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 						_global_svaty2.farba = LIT_FARBA_BIELA;
-						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_CZ;
+						_global_svaty2.kalendar = KALENDAR_VSEOBECNY_CZ;
 					}
 					break;
 				case 17: // MES_JUL -- 17JUL
@@ -23176,14 +23203,18 @@ label_25_MAR:
 							set_spolocna_cast(sc, poradie_svaty);
 
 						modlitba = MODL_RANNE_CHVALY;
-						_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+						if(_global_jazyk != JAZYK_CZ){
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+						}
 						_vlastna_cast_benediktus;
 						_vlastna_cast_modlitba;
 
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
-						_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na veöpery -- musÌ byù posledn˝ pre dan˙ modlitbu
+						if(_global_jazyk != JAZYK_CZ){
+							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na veöpery -- musÌ byù posledn˝ pre dan˙ modlitbu
+						}
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -28264,7 +28295,7 @@ label_25_MAR:
 						if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 							// 2006-09-19: odvetvenÈ len pre »esko
 							// 2008-11-29: pridanÈ czop - dominik·nsk˝ brevi·¯
-							_global_svaty2.typslav_lokal = LOKAL_SLAV_SLEZSKO_SVATEK;
+							_global_svaty2.typslav_lokal = LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST;
 						}
 						_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL, MODL_SPOL_CAST_SV_ZENA_REHOLNIK, MODL_SPOL_CAST_SV_ZENA_MANZ);
 						_global_svaty2.farba = LIT_FARBA_BIELA;

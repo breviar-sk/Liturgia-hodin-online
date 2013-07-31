@@ -510,7 +510,7 @@ const char *nazov_slavenia_lokal[] =
 ,"v královéhradecké diecézi"                                                                                    // LOKAL_SLAV_HRADEC_KRALOVE
 ,"jen v posvìcených kostelích"                                                                                  // LOKAL_SLAV_KONSEKR_KOSTOLY_CZ 
 ,"v plzeòské diecézi"                                                                                           // LOKAL_SLAV_PLZEN 
-,"ve Slezsku svátek"                                                                                            // LOKAL_SLAV_SLEZSKO_SVATEK
+,"v ostravsko-opavské diecézi slavnost"                                                                         // LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST
 ,"v èeskobudìjovické diecézi památka"                                                                           // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
 ,"v Bratislavskej arcidiecéze a v Spišskej diecéze sviatok hlavného patróna"                                    // LOKAL_SLAV_SPIS_BA_PATRON
 ,"v Bratislavskej arcidiecéze"                                                                                  // LOKAL_SLAV_BRATISLAVA
@@ -5032,6 +5032,15 @@ const char *text_JUN_16_OFM[POCET_JAZYKOV + 1] =
 const char *text_JUN_16_2_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Aniceta Koplina, kòaza, a spoloèníkov, muèeníkov, èlenov 1. rádu",
  "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_JUN_16_CZ[POCET_JAZYKOV + 1] = 
+{"",
+ "Bl. Marie Antoníny Kratochvílové, muèednice",
  "",
  "",
  "",
