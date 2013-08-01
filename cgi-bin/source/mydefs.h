@@ -877,9 +877,15 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #endif
 
 // 2012-10-16: upraven˝ tento define tak, ûe vûdy musÌ byù pred volanÌm funkcie Export(); doÚho dovn˙tra som dal volanie hlaviËky
+// Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_mail_address_default[_global_jazyk]);
 #define ALERT	{\
 	hlavicka((char *)html_title[_global_jazyk]);\
-	Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_mail_address_default[_global_jazyk]);\
+	char pom2[MAX_STR];\
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);\
+	char pom3[MAX_STR];\
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);\
+	prilep_request_options(pom2, pom3);\
+	_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNA_DNES, 2 /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
 	}
 
 // HTML stringy - casti stringov sustredene na tomto mieste; pridane 2003-07-02; rozöÌrenÈ 2011-01-27

@@ -605,7 +605,7 @@ char pom_LIT_OBD [SMALL] = STR_EMPTY;
 // 2011-01-26: pridanÈ pre liturgick˝ rok
 char pom_LIT_ROK [SMALL] = STR_EMPTY;
 
-char bad_param_str[MAX_STR] = STR_EMPTY; // inicializacia pridana 2003-08-13
+char bad_param_str[MAX_STR] = STR_EMPTY;
 
 urlvariable param[MAX_VARIABLES];
 // struktura oznacujuca dvojice <meno, hodnota> z query stringu, napr. QUERY_STRING=QUERY_TYPE=PRM_DATUM&DEN=7&MESIAC=5&ROK=1976...
@@ -7411,7 +7411,7 @@ void _export_rozbor_dna_buttons_dni_dnes(short int typ, short int dnes_dnes, sho
 		else{
 			Export("<center>\n");
 		}
-		if(dnes_dnes == ANO){
+		if(dnes_dnes >= ANO){
 			sprintf(action, "%s?%s=%s%s", script_name, STR_QUERY_TYPE, STR_PRM_DNES, pom2);
 			// Export("<form action=\"%s?%s=%s%s\" method=\"post\">\n", script_name, STR_QUERY_TYPE, STR_PRM_DNES, pom2);
 			Export_HtmlForm(action);
@@ -7422,7 +7422,12 @@ void _export_rozbor_dna_buttons_dni_dnes(short int typ, short int dnes_dnes, sho
 			Export_HtmlForm(action);
 			Export("<"HTML_FORM_INPUT_SUBMIT1" title=\"%s\" value=\"", /* html_button_tento_den[_global_jazyk] */ _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN))? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 		}
-		if(dnes_dnes == ANO){
+		if(dnes_dnes == 2){
+			Export((char *)html_text_batch_Prev[_global_jazyk]);
+			Export(HTML_NONBREAKING_SPACE);
+			Export((char *)html_button_tento_den[_global_jazyk]);
+		}
+		else if(dnes_dnes == ANO){
 #ifdef VYPISOVAT_PREDCHADZAJUCI_NASLEDUJUCI_BUTTON
 			Export((char *)html_button_Dnes[_global_jazyk]);
 #else
@@ -15080,6 +15085,8 @@ short int parseQueryString(void){
 	short int i, pocet, ok;
 	char local_str[SMALL] = STR_EMPTY;
 	short int j; // kvÙli prilep_request_options
+	short int ret; // n·vratov· hodnota
+	char errmsg[SMALL] = STR_EMPTY;
 
 	Log("parseQueryString() -- begin\n");
 	if(query_string != NULL)
@@ -15256,15 +15263,7 @@ short int parseQueryString(void){
 		i++;
 	}// while
 
-	if(ok != ANO){
-		ALERT;
-		// ani jeden z parametrov neobsahuje query type alebo obsahuje nezn·my qt
-		if(i >= pocet)
-			Export("Ch˝baj˙ci parameter pre query type.\n");
-		else // sÌce bol query type parameter, ale hodnota je chybn·
-			Export("Chybn˝ parameter: %s\n", param[i - 1].name);
-		return FAILURE;
-	}
+	// 2013-07-31: pÙvodne tu bola kontrola na "ok"; presunutÈ aû po parsovanÌ option premenn˝ch niûöie
 
 	// 2011-01-26: premennÈ opt_1 aû opt7 sa ËÌtaj˙ vûdy; ak nie s˙ zadanÈ, nevadÌ
 	//             doteraz sa ËÌtali len pre niektorÈ query_type: PRM_DNES, PRM_DETAILY, PRM_DATUM
@@ -15457,7 +15456,7 @@ short int parseQueryString(void){
 		}// switch(j)
 		// premenn· WWW_MODL_OPTF_5_... (nepovinn·), j = 0 aû POCET_OPT_5_ALTERNATIVES
 		i = 0; // param[0] by mal sÌce obsahovaù query type, ale radöej kontrolujeme od 0
-		Log("pok˙öam sa zistiù hodnotu parametra %s... parseQueryString(), force, bit-komponenty 0\n", local_str);
+		Log("pok˙öam sa zistiù hodnotu parametra %s... parseQueryString(), force, bit-komponenty 5\n", local_str);
 		while((equalsi(pom_MODL_OPTF[j], STR_EMPTY)) && (i < pocet)){
 			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if(equals(param[i].name, local_str)){
@@ -15471,6 +15470,19 @@ short int parseQueryString(void){
 			Log("Nebola zadan· premenn· %s (nevadÌ).\n", local_str);
 		}
 	}// for j
+
+	// 2013-07-31: presunutÈ sem spred parsovania option premenn˝ch
+	if(ok != ANO){
+		// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+		// ani jeden z parametrov neobsahuje query type alebo obsahuje nezn·my qt
+		if(i >= pocet)
+			mystrcpy(errmsg, "Ch˝baj˙ci parameter pre query type.\n", SMALL);
+		else // sÌce bol query type parameter, ale hodnota je chybn·
+			sprintf(errmsg, "Chybn˝ parameter: %s\n", param[i - 1].name);
+		strcat(bad_param_str, errmsg);
+		ret = FAILURE;
+		goto END_parseQueryString;
+	}
 
 	Log("\tswitch(query_type)...\n");
 	switch(query_type){
@@ -15557,9 +15569,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_DEN, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_DEN);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_DEN);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· MESIAC 
@@ -15575,9 +15589,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_MESIAC, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_MESIAC);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_MESIAC);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· ROK
@@ -15593,9 +15609,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_ROK, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_ROK);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_ROK);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· MODLITBA (nepovinn·)
@@ -15649,9 +15667,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_DEN_V_TYZDNI, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_DEN_V_TYZDNI);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_DEN_V_TYZDNI);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· TYZDEN 
@@ -15667,9 +15687,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_TYZDEN, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_TYZDEN);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_TYZDEN);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· MODLITBA 
@@ -15685,9 +15707,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_MODLITBA, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_MODLITBA);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_MODLITBA);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			break; // case
@@ -15709,9 +15733,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_DEN_V_TYZDNI, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_DEN_V_TYZDNI);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_DEN_V_TYZDNI);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· TYZDEN 
@@ -15727,9 +15753,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_TYZDEN, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_TYZDEN);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_TYZDEN);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· MODLITBA 
@@ -15745,9 +15773,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_MODLITBA, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_MODLITBA);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_MODLITBA);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· LIT_OBD 
@@ -15763,9 +15793,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_LIT_OBD, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_LIT_OBD);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_LIT_OBD);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· LIT_ROK
@@ -15781,9 +15813,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_LIT_ROK, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_LIT_ROK);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_LIT_ROK);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			break; // case
@@ -15805,9 +15839,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_SVIATOK, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_NAZOV_SVIATOK);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_NAZOV_SVIATOK);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			break; // case
@@ -15829,9 +15865,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_ANALYZA_ROKU, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_ANALYZA_ROKU);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_ANALYZA_ROKU);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			break; // case
@@ -15853,9 +15891,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_MESIAC, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_MESIAC_ROKA);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_MESIAC_ROKA);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· ROK
@@ -15871,9 +15911,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_ROK, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_ROK_ROKA);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_ROK_ROKA);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			break; // case
@@ -15895,9 +15937,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_ROK_FROM, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_ROK_FROM);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_ROK_FROM);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· ROK_TO
@@ -15913,9 +15957,11 @@ short int parseQueryString(void){
 				i++;
 			}
 			if(equalsi(pom_ROK_TO, STR_EMPTY)){
-				ALERT;
-				Export("Nebola zadan· premenn· %s.\n", STR_ROK_TO);
-				return FAILURE; // failure
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_ROK_TO);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
 			}
 
 			// premenn· TABULKA_LINKY (nepovinn·)
@@ -15938,8 +15984,11 @@ short int parseQueryString(void){
 		}
 
 	}
-	Log("parseQueryString() -- end, returning SUCCESS\n");
-	return SUCCESS;
+	ret = SUCCESS;
+
+END_parseQueryString:
+	Log("parseQueryString() -- end, returning %d.\n", ret);
+	return ret;
 }// parseQueryString();
 
 // KOMPILACIA -- idiotuv pruvodce kompilovanim tohoto gigantu
@@ -16156,7 +16205,7 @@ int breviar_main(int argc, char **argv){
 	#error Unsupported behaviour (not defined in mysystem.h/mysysdef.h)
 #endif
 
-	short int ret; // navratova hodnota
+	short int ret, ret_pom; // n·vratov· hodnota
 	short int len; // dÂûka
 
 	initLog(FILE_LOG);
@@ -16304,7 +16353,7 @@ int breviar_main(int argc, char **argv){
 				setConfigDefaults(_global_jazyk); // 2011-04-13: doplnenÈ
 
 				// 2013-01-08: sem presunutÈ volanie _rozparsuj_parametre_OPT(); kvÙli tomu, ûe volanie hlaviËky potrebuje uû nastavenÈ napr. o2 (batch mÛd, Ëi pouûiù noËn˝ reûim)
-				Log("vol·m _rozparsuj_parametre_OPT()...\n");
+				Log("vol·m _rozparsuj_parametre_OPT()... | case SCRIPT_PARAM_FROM_ARGV\n");
 				_rozparsuj_parametre_OPT();
 
 				// 2010-08-04: pridanÈ parsovanie jazyka kvÙli jazykov˝m mut·ci·m -- kalend·r, napr. rehoæn˝ (danÈ aj niûöe, ako jazyk)
@@ -16383,7 +16432,7 @@ _main_SIMULACIA_QS:
 			_main_LOG_to_Export("---getting query type from query string: finished.\n");
 
 			_main_LOG_to_Export("---parsing query string:\n");
-			ret = parseQueryString();
+			ret_pom = parseQueryString();
 			_main_LOG_to_Export("---parsing query string: finished.\n");
 
 			_main_LOG_to_Export("---query_type == %d\n", query_type);
@@ -16448,6 +16497,77 @@ _main_SIMULACIA_QS:
 		query_type = PRM_DATUM;
 	}
 
+// BEGIN_presunut·_Ëasù_2013_07_31
+	// 2013-07-31: t·to Ëasù bola vn˙tri, if(query_type != PRM_UNKNOWN) ... if(ret == SUCCESS) | presunutÈ sem kvÙli tomu, aby sa rozparsovali options, aj ak ch˝ba napr. query_type
+
+	// 2006-07-12: pridanÈ parsovanie jazyka kvÙli jazykov˝m mut·ci·m 
+	// 2009-08-05: predsunutÈ vyööie (aj tu sme to pre istotu ponechali)
+	_main_LOG_to_Export("zisùujem jazyk (pom_JAZYK == %s)...\n", pom_JAZYK);
+	_global_jazyk = atojazyk(pom_JAZYK);
+	if(_global_jazyk == JAZYK_UNDEF){
+		_global_jazyk = JAZYK_SK;
+		_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu jazyku pouûÌvam default)\n");
+	}
+	_main_LOG_to_Export("...jazyk (%s) = %i, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
+
+	_main_LOG_to_Export("sp˙öùam setConfigDefaults()...\n");
+	setConfigDefaults(_global_jazyk); // 2011-04-13: doplnenÈ
+	// 2013-01-08: sem presunutÈ volanie _rozparsuj_parametre_OPT(); kvÙli tomu, ûe volanie hlaviËky potrebuje uû nastavenÈ napr. o2 (batch mÛd, Ëi pouûiù noËn˝ reûim)
+	Log("vol·m _rozparsuj_parametre_OPT()...\n");
+	_rozparsuj_parametre_OPT();
+
+	// 2010-08-04: pridanÈ parsovanie jazyka kvÙli jazykov˝m mut·ci·m -- kalend·r, napr. rehoæn˝ (danÈ aj vyööie, ako jazyk)
+	_main_LOG_to_Export("zisùujem kalend·r (pom_KALENDAR == %s)...\n", pom_KALENDAR);
+	_global_kalendar = atokalendar(pom_KALENDAR);
+	if(_global_kalendar == KALENDAR_NEURCENY){
+		_global_kalendar = KALENDAR_VSEOBECNY;
+		_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu kalend·ru pouûÌvam default -- vöeobecn˝ kalend·r)\n");
+	}
+	_main_LOG_to_Export("...kalend·r (%s) = %i, teda %s (%s)\n", pom_KALENDAR, _global_kalendar, nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar]);
+
+	// 2008-08-08: PridanÈ naËÌtanie css kvÙli rÙznym css
+	_main_LOG_to_Export("zisùujem css...\n");
+	_global_css = atocss(pom_CSS);
+	if(_global_css == CSS_UNDEF){
+		// 2012-04-03: doplnenÈ default CSS pre dan˝ jazyk
+		_global_css = default_css_jazyk[_global_jazyk];
+		if(_global_css == CSS_UNDEF){
+			_global_css = CSS_breviar_sk;
+			_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default)\n");
+		}
+		else{
+			_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default pre dan˝ jazyk)\n");
+		}
+	}
+	_main_LOG_to_Export("...css (%s) = %i, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
+
+	// 2011-05-06: PridanÈ naËÌtanie n·zvu fontu kvÙli rÙznym fontom
+	_main_LOG_to_Export("zisùujem font...\n");
+	_global_font = atofont(pom_FONT);
+	if(_global_font == FONT_UNDEF){
+		_global_font = FONT_CSS;
+		_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu fontu pouûÌvam default -- braù font z CSS)\n");
+	}
+	_main_LOG_to_Export("...font (%s) = %i, teda %s\n", pom_FONT, _global_font, nazov_fontu[_global_font]);
+
+	// 2011-05-13: PridanÈ naËÌtanie veækosti fontu
+	_main_LOG_to_Export("zisùujem font size...\n");
+	_global_font_size = atofontsize(pom_FONT_SIZE);
+	if(_global_font_size == FONT_SIZE_UNDEF){
+		_global_font_size = FONT_SIZE_CSS;
+		_main_LOG_to_Export("\t(vzhæadom k neurËenej font size pouûÌvam default -- braù font size z CSS)\n");
+	}
+	_main_LOG_to_Export("...font size (%s) = %i, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
+
+	LOG_ciara;
+// END_presunut·_Ëasù_2013_07_31
+
+	if(ret_pom != SUCCESS){
+		ALERT;
+		Export("Neboli zadanÈ vhodnÈ parametre.\n");
+		Export("<p>Chyba: %s\n", bad_param_str);
+	}
+
 	if(query_type != PRM_UNKNOWN){
 
 		if(ret == SUCCESS){
@@ -16456,67 +16576,7 @@ _main_SIMULACIA_QS:
 			if(_allocate_global_var() == FAILURE)
 				goto _main_end;
 
-			LOG_ciara;
-
-			// 2006-07-12: pridanÈ parsovanie jazyka kvÙli jazykov˝m mut·ci·m 
-			// 2009-08-05: predsunutÈ vyööie (aj tu sme to pre istotu ponechali)
-			_main_LOG_to_Export("zisùujem jazyk (pom_JAZYK == %s)...\n", pom_JAZYK);
-			_global_jazyk = atojazyk(pom_JAZYK);
-			if(_global_jazyk == JAZYK_UNDEF){
-				_global_jazyk = JAZYK_SK;
-				_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu jazyku pouûÌvam default)\n");
-			}
-			_main_LOG_to_Export("...jazyk (%s) = %i, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
-
-			_main_LOG_to_Export("sp˙öùam setConfigDefaults()...\n");
-			setConfigDefaults(_global_jazyk); // 2011-04-13: doplnenÈ
-			// 2013-01-08: sem presunutÈ volanie _rozparsuj_parametre_OPT(); kvÙli tomu, ûe volanie hlaviËky potrebuje uû nastavenÈ napr. o2 (batch mÛd, Ëi pouûiù noËn˝ reûim)
-			Log("vol·m _rozparsuj_parametre_OPT()...\n");
-			_rozparsuj_parametre_OPT();
-
-			// 2010-08-04: pridanÈ parsovanie jazyka kvÙli jazykov˝m mut·ci·m -- kalend·r, napr. rehoæn˝ (danÈ aj vyööie, ako jazyk)
-			_main_LOG_to_Export("zisùujem kalend·r (pom_KALENDAR == %s)...\n", pom_KALENDAR);
-			_global_kalendar = atokalendar(pom_KALENDAR);
-			if(_global_kalendar == KALENDAR_NEURCENY){
-				_global_kalendar = KALENDAR_VSEOBECNY;
-				_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu kalend·ru pouûÌvam default -- vöeobecn˝ kalend·r)\n");
-			}
-			_main_LOG_to_Export("...kalend·r (%s) = %i, teda %s (%s)\n", pom_KALENDAR, _global_kalendar, nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar]);
-
-			// 2008-08-08: PridanÈ naËÌtanie css kvÙli rÙznym css
-			_main_LOG_to_Export("zisùujem css...\n");
-			_global_css = atocss(pom_CSS);
-			if(_global_css == CSS_UNDEF){
-				// 2012-04-03: doplnenÈ default CSS pre dan˝ jazyk
-				_global_css = default_css_jazyk[_global_jazyk];
-				if(_global_css == CSS_UNDEF){
-					_global_css = CSS_breviar_sk;
-					_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default)\n");
-				}
-				else{
-					_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default pre dan˝ jazyk)\n");
-				}
-			}
-			_main_LOG_to_Export("...css (%s) = %i, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
-
-			// 2011-05-06: PridanÈ naËÌtanie n·zvu fontu kvÙli rÙznym fontom
-			_main_LOG_to_Export("zisùujem font...\n");
-			_global_font = atofont(pom_FONT);
-			if(_global_font == FONT_UNDEF){
-				_global_font = FONT_CSS;
-				_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu fontu pouûÌvam default -- braù font z CSS)\n");
-			}
-			_main_LOG_to_Export("...font (%s) = %i, teda %s\n", pom_FONT, _global_font, nazov_fontu[_global_font]);
-
-			// 2011-05-13: PridanÈ naËÌtanie veækosti fontu
-			_main_LOG_to_Export("zisùujem font size...\n");
-			_global_font_size = atofontsize(pom_FONT_SIZE);
-			if(_global_font_size == FONT_SIZE_UNDEF){
-				_global_font_size = FONT_SIZE_CSS;
-				_main_LOG_to_Export("\t(vzhæadom k neurËenej font size pouûÌvam default -- braù font size z CSS)\n");
-			}
-			_main_LOG_to_Export("...font size (%s) = %i, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
-
+			// presunut·_Ëasù_2013_07_31 vyööie
 			LOG_ciara;
 
 			// 2013-01-22: oprava inicializ·cie _global_linky
@@ -16591,20 +16651,7 @@ _main_SIMULACIA_QS:
 			else{
 				_main_LOG_to_Export("include_dir_pom == NULL (teda include_dir[] neobsahuje postfix_jazyka (%s))\n", postfix_jazyka[_global_jazyk]);
 			}
-/*
-			if(
-				(
-					(include_dir[len] == (short int)PATH_SEPARATOR) &&
-					(include_dir[len - 1] == (short int)postfix_jazyka[_global_jazyk][1]) &&
-					(include_dir[len - 2] == (short int)postfix_jazyka[_global_jazyk][0])
-				) ||
-				(
-					(include_dir[len + 1] == (short int)PATH_SEPARATOR) &&
-					(include_dir[len] == (short int)postfix_jazyka[_global_jazyk][1]) &&
-					(include_dir[len - 1] == (short int)postfix_jazyka[_global_jazyk][0])
-				)
-			)
-*/
+
 			if(kontrola_prilepenia_postfix_jazyka == ANO)
 			{
 				_main_LOG_to_Export("include adres·r konËÌ reùazcom `%s' - nie je potrebnÈ prid·vaù\n", postfix_jazyka[_global_jazyk]);
@@ -16789,9 +16836,12 @@ _main_SIMULACIA_QS:
 		}
 	}// if(query_type != PRM_UNKNOWN)
 	else{
-		ALERT;
-		Export("ObsluûnÈmu programu neboli zadanÈ vhodnÈ parametre.\n");
-		Export("<p>Nezn·my parameter: %s.\n", bad_param_str);
+		if(ret_pom == SUCCESS){
+			ALERT;
+			Export("Neboli zadanÈ vhodnÈ parametre.\n");
+			Export("<p>Chyba: %s\n", bad_param_str);
+		}
+		// else: netreba vypisovaù, lebo sa vypÌsalo uû vyööie
 	}
 
 	_main_LOG_to_Export("Deallocating memory...\n");

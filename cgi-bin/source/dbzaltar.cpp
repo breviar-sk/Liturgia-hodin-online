@@ -8808,7 +8808,8 @@ short int _spol_cast_je_panna(_struct_sc sc){
 	set_LOG_svsv;}
 
 // 2013-04-09: hymnus (napr. pre posv. èítanie) ako na vešpery
-#define _vlastna_cast_hymnus_ako_na_vespery {\
+#define _vlastna_cast_hymnus_ako_na_vespery(modlitba, litobd) {\
+	_set_hymnus_alternativy_NO(modlitba, litobd);\
 	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_VESPERY), ANCHOR_HYMNUS); \
 	_set_hymnus(modlitba, _file, _anchor); \
 	set_LOG_svsv;}
@@ -21799,7 +21800,9 @@ label_25_MAR:
 								_set_zalmy_slavnost_Cyrila_a_Metoda(modlitba);
 							else
 								_set_zalmy_sviatok_duch_past(modlitba);
-							// hymnus ako na vešpery: prípadne rozšíri a poui _vlastna_cast_hymnus_ako_na_vespery;
+
+							// hymnus ako na vešpery
+							_set_hymnus_alternativy_NO(modlitba, _global_den.litobd); // 2013-07-31: doplnené, nako¾ko bolo doplnené do _vlastna_cast_hymnus_ako_na_vespery() a _vlastna_cast_hymnus()
 							// 2010-07-06: pre CZ a CZOP hymnus ako na 1. vešpery
 							sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby((_global_jazyk == JAZYK_SK)? MODL_VESPERY: MODL_PRVE_VESPERY), ANCHOR_HYMNUS);
 							_set_hymnus(modlitba, _file, _anchor);
@@ -22864,7 +22867,7 @@ label_25_MAR:
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
-						_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
+						_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -23082,7 +23085,7 @@ label_25_MAR:
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
-						_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
+						_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
@@ -23213,7 +23216,7 @@ label_25_MAR:
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
 						if(_global_jazyk != JAZYK_CZ){
-							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
+							_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
 						}
 
 						modlitba = MODL_VESPERY;
@@ -23994,7 +23997,7 @@ label_25_MAR:
 						_vlastna_cast_1citanie;
 						_vlastna_cast_2citanie;
 						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastnı hymnus, v èeskom nie; 2008-09-09
-							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
+							_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
 						}
 
 						// _vlastna_cast_mcd_kcitresp_modl; // modlitba cez deò, doplnené 2011-08-10 // krátke èítanie a krátke resp. zo spoloènej èasti (2013-04-29)
@@ -25274,7 +25277,7 @@ label_25_MAR:
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
 						if(_global_jazyk == JAZYK_SK){ // 2009-03-19: odvetvené len pre Slovensko
-							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
+							_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
 						}
 
 						modlitba = MODL_VESPERY;
@@ -25688,7 +25691,7 @@ label_25_MAR:
 							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 						}
 						else{
-							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
+							_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
 						}
 
 						_vlastna_cast_mcd_ant_kcitresp_modl;
@@ -30015,7 +30018,7 @@ label_25_MAR:
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
 						if(_global_jazyk == JAZYK_SK){ // 2008-11-29: odvetvené len pre Slovensko
-							_vlastna_cast_hymnus_ako_na_vespery; // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
+							_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí by poslednı pre danú modlitbu
 						}
 
 						modlitba = MODL_VESPERY;
