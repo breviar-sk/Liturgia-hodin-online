@@ -2009,6 +2009,15 @@ const char *html_text_option2_html_export_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option2_prve_vespery[POCET_JAZYKOV + 1] = 
+{"zobrazi tlaèidlo pre prvé vešpery pre nedele a slávnosti v deò slávenia",
+ "zobrazit tlaèítko pro první nešpory pro nedìle a slavnosti v den slavení",
+ "display button for first vesperas for Sundays and solemnitas for the day of celebration",
+ "",
+ "",
+ "zobrazit tlaèítko pro první veèerní chvály pro nedìle a slavnosti v den slavení",
+ "vasárnapok és fõünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg"
+};
+/*
 {"zobrazi tlaèidlo pre prvé vešpery <!--(a kompletórium po nich)--> pre nedele a slávnosti v deò slávenia",
  "zobrazit tlaèítko pro první nešpory <!--(a kompletáø po nich)--> pro nedìle a slavnosti v den slavení",
  "display button for first vesperas <!--(and completory after them)--> for Sundays and solemnitas for the day of celebration",
@@ -2017,6 +2026,7 @@ const char *html_text_option2_prve_vespery[POCET_JAZYKOV + 1] =
  "zobrazit tlaèítko pro první veèerní chvály <!--(a kompletáø po nich)--> pro nedìle a slavnosti v den slavení",
  "vasárnapok és fõünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg"
 };
+*/
 const char *html_text_option2_prve_vespery_explain[POCET_JAZYKOV + 1] = 
 {"Keïe základnım kritériom pre zobrazovanie modlitieb daného dòa je dátum, formálne prvé vešpery nedie¾ a slávností (a tie kompletórium po nich) nespadajú pod danı dátum, ale pre predošlı deò, kde sa zobrazujú ako bené vešpery. Pre sobotné slávenie sa nebude tlaèidlo pre vešpery (a kompletórium) zobrazova.", 
  "Jeliko základním kritériem pro zobrazování ponuky modliteb daného dne je datum, první nešpory nedìl a slavností (a také kompletáø po nich) nespadají pod danı datum, nıbr pro pøedcházející den, kde jsou zobrazeny jako bìné nešpory. Pro sobotní slavení se tlaèítko pro nešpory (a kompletáø) nebude zobrazovat.", 
