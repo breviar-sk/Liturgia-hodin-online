@@ -54,7 +54,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_den_ptr'\n", sizeof(_struct_dm));
-		_INIT_DM(_global_den); // 2003-08-07 pridana, 2003-08-11 nahradena #definom
+		_INIT_DM(_global_den);
 	}
 
 // _global_result_ptr
@@ -64,7 +64,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_result_ptr'\n", sizeof(_struct_dm));
-		_INIT_DM(_global_result); // 2003-08-07 pridana, 2003-08-11 nahradena #definom
+		_INIT_DM(_global_result);
 	}
 
 // _global_pm_sobota_ptr
@@ -74,37 +74,19 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_pm_sobota_ptr'\n", sizeof(_struct_dm));
-		_INIT_DM(_global_pm_sobota); // 2003-08-07 pridana, 2003-08-11 nahradena #definom
+		_INIT_DM(_global_pm_sobota);
 	}
 
-// _global_svaty1_ptr
-	if((_global_svaty1_ptr = (_struct_dm*) malloc(sizeof(_struct_dm))) == NULL){
-		Log("  Not enough memory to allocate buffer for `_global_svaty1_ptr'\n");
-		ret = FAILURE;
-	}
-	else{
-		Log("  %d bytes for `_global_svaty1_ptr'\n", sizeof(_struct_dm));
-		_INIT_DM(_global_svaty1); // 2003-08-07 pridana, 2003-08-11 nahradena #definom
-	}
-
-// _global_svaty2_ptr
-	if((_global_svaty2_ptr = (_struct_dm*) malloc(sizeof(_struct_dm))) == NULL){
-		Log("  Not enough memory to allocate buffer for `_global_svaty2_ptr'\n");
-		ret = FAILURE;
-	}
-	else{
-		Log("  %d bytes for `_global_svaty2_ptr'\n", sizeof(_struct_dm));
-		_INIT_DM(_global_svaty2); // 2003-08-07 pridana, 2003-08-11 nahradena #definom
-	}
-
-// _global_svaty3_ptr
-	if((_global_svaty3_ptr = (_struct_dm*) malloc(sizeof(_struct_dm))) == NULL){
-		Log("  Not enough memory to allocate buffer for `_global_svaty3_ptr'\n");
-		ret = FAILURE;
-	}
-	else{
-		Log("  %d bytes for `_global_svaty3_ptr'\n", sizeof(_struct_dm));
-		_INIT_DM(_global_svaty3); // 2003-08-07 pridana, 2003-08-11 nahradena #definom
+	for(short int i = 0; i < MAX_POCET_SVATY; i++){
+	// _global_svaty(i)_ptr
+		if((_global_svaty_ptr[i] = (_struct_dm*) malloc(sizeof(_struct_dm))) == NULL){
+			Log("  Not enough memory to allocate buffer for `_global_svaty_ptr[%d]'\n", i);
+			ret = FAILURE;
+		}
+		else{
+			Log("  %d bytes for `_global_svaty_ptr[%d]'\n", sizeof(_struct_dm), i);
+			_INIT_DM((_global_svaty(i + 1)));
+		}
 	}
 
 // _global_modl_prve_vespery_ptr
@@ -114,7 +96,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_prve_vespery_ptr'\n", sizeof(_type_1vespery));
-		_INIT_TMODLITBA1(_global_modl_prve_vespery); // pridana 2003-08-13
+		_INIT_TMODLITBA1(_global_modl_prve_vespery);
 	}
 
 // _global_modl_1kompletorium_ptr
@@ -124,7 +106,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_1kompletorium_ptr'\n", sizeof(_type_1kompletorium));
-		_INIT_TMODLITBA3(_global_modl_prve_kompletorium); // pridané 2003-10-17
+		_INIT_TMODLITBA3(_global_modl_prve_kompletorium);
 	}
 
 // _global_modl_invitatorium_ptr
@@ -134,7 +116,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_invitatorium_ptr'\n", sizeof(_type_invitatorium));
-		_INIT_TMODLITBA4(_global_modl_invitatorium); // pridané 2006-10-11
+		_INIT_TMODLITBA4(_global_modl_invitatorium);
 	}
 
 // _global_modl_ranne_chvaly_ptr
@@ -144,9 +126,9 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_ranne_chvaly_ptr'\n", sizeof(_type_ranne_chvaly));
-		_INIT_TMODLITBA1(_global_modl_ranne_chvaly); // pridana 2003-08-13
+		_INIT_TMODLITBA1(_global_modl_ranne_chvaly);
 	}
-// pridane 2003-08-13
+
 // _global_modl_posv_citanie_ptr
 	if((_global_modl_posv_citanie_ptr = (_type_posv_citanie*) malloc(sizeof(_type_posv_citanie))) == NULL){
 		Log("  Not enough memory to allocate buffer for `_global_modl_posv_citanie_ptr'\n");
@@ -154,7 +136,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_posv_citanie_ptr'\n", sizeof(_type_posv_citanie));
-		_INIT_TMODLITBA5(_global_modl_posv_citanie); // pridana 2003-08-13
+		_INIT_TMODLITBA5(_global_modl_posv_citanie);
 	}
 
 // _global_modl_cez_den_9_ptr
@@ -164,7 +146,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_cez_den_9_ptr'\n", sizeof(_type_cez_den_9));
-		_INIT_TMODLITBA2(_global_modl_cez_den_9); // pridana 2003-08-13
+		_INIT_TMODLITBA2(_global_modl_cez_den_9);
 	}
 
 // _global_modl_cez_den_12_ptr
@@ -174,7 +156,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_cez_den_12_ptr'\n", sizeof(_type_cez_den_12));
-		_INIT_TMODLITBA2(_global_modl_cez_den_12); // pridana 2003-08-13
+		_INIT_TMODLITBA2(_global_modl_cez_den_12);
 	}
 
 // _global_modl_cez_den_3_ptr
@@ -184,7 +166,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_cez_den_3_ptr'\n", sizeof(_type_cez_den_3));
-		_INIT_TMODLITBA2(_global_modl_cez_den_3); // pridana 2003-08-13
+		_INIT_TMODLITBA2(_global_modl_cez_den_3);
 	}
 
 // _global_modl_vespery_ptr
@@ -194,7 +176,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_vespery_ptr'\n", sizeof(_type_vespery));
-		_INIT_TMODLITBA1(_global_modl_vespery); // pridana 2003-08-13
+		_INIT_TMODLITBA1(_global_modl_vespery);
 	}
 
 // _global_modl_kompletorium_ptr
@@ -204,7 +186,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_modl_kompletorium_ptr'\n", sizeof(_type_kompletorium));
-		_INIT_TMODLITBA3(_global_modl_kompletorium); // pridané 2006-10-11
+		_INIT_TMODLITBA3(_global_modl_kompletorium);
 	}
 
 // _global_r_ptr
@@ -223,7 +205,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_link_ptr'\n", MAX_GLOBAL_LINK);
-		mystrcpy(_global_link_ptr, STR_UNDEF, MAX_GLOBAL_LINK); // pridane 2003-08-11, zmenene 2003-08-13
+		mystrcpy(_global_link_ptr, STR_UNDEF, MAX_GLOBAL_LINK);
 	}
 
 // _global_pom_str
@@ -233,7 +215,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_pom_str'\n", MAX_STR);
-		mystrcpy(_global_pom_str, STR_UNDEF, MAX_STR); // pridane 2003-08-11, zmenene 2003-08-13
+		mystrcpy(_global_pom_str, STR_UNDEF, MAX_STR);
 	}
 
 // _global_string
@@ -243,7 +225,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_string'\n", MAX_GLOBAL_STR);
-		mystrcpy(_global_string, STR_UNDEF, MAX_GLOBAL_STR); // pridane 2003-08-11, zmenene 2003-08-13
+		mystrcpy(_global_string, STR_UNDEF, MAX_GLOBAL_STR);
 	}
 
 // _global_string2
@@ -253,7 +235,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_string2'\n", MAX_GLOBAL_STR2);
-		mystrcpy(_global_string2, STR_EMPTY, MAX_GLOBAL_STR2); /* pridane 2003-08-11 */
+		mystrcpy(_global_string2, STR_EMPTY, MAX_GLOBAL_STR2);
 	}
 
 // _global_string_farba
@@ -263,7 +245,7 @@ short int _allocate_global_var(void){
 	}
 	else{
 		Log("  %d bytes for `_global_string_farba'\n", MAX_GLOBAL_STR_FARBA);
-		mystrcpy(_global_string_farba, STR_EMPTY, MAX_GLOBAL_STR_FARBA); /* pridané 2006-08-19 */
+		mystrcpy(_global_string_farba, STR_EMPTY, MAX_GLOBAL_STR_FARBA);
 	}
 
 	Log("...done.\n");
@@ -276,14 +258,14 @@ short int _deallocate_global_var(void){
 	Log("_global_den_ptr\n"); free(_global_den_ptr);
 	Log("_global_result_ptr\n"); free(_global_result_ptr);
 	Log("_global_pm_sobota_ptr\n"); free(_global_pm_sobota_ptr);
-	Log("_global_svaty1_ptr\n"); free(_global_svaty1_ptr);
-	Log("_global_svaty2_ptr\n"); free(_global_svaty2_ptr);
-	Log("_global_svaty3_ptr\n"); free(_global_svaty3_ptr);
+	for(short int i = 0; i < MAX_POCET_SVATY; i++){
+		Log("_global_svaty_ptr[%d]\n", i); free(_global_svaty_ptr[i]);
+	}
 	Log("_global_modl_prve_vespery_ptr\n"); free(_global_modl_prve_vespery_ptr);
 	Log("_global_modl_1kompletorium_ptr\n"); free(_global_modl_1kompletorium_ptr);
 	Log("_global_modl_invitatorium_ptr\n"); free(_global_modl_invitatorium_ptr);
 	Log("_global_modl_ranne_chvaly_ptr\n"); free(_global_modl_ranne_chvaly_ptr);
-	Log("_global_modl_posv_citanie_ptr\n"); free(_global_modl_posv_citanie_ptr); // 2011-03-29: doplnené
+	Log("_global_modl_posv_citanie_ptr\n"); free(_global_modl_posv_citanie_ptr);
 	Log("_global_modl_cez_den_9_ptr\n"); free(_global_modl_cez_den_9_ptr);
 	Log("_global_modl_cez_den_12_ptr\n"); free(_global_modl_cez_den_12_ptr);
 	Log("_global_modl_cez_den_3_ptr\n"); free(_global_modl_cez_den_3_ptr);

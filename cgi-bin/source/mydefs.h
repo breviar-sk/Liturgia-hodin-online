@@ -92,6 +92,9 @@
 //* EOF of former file mybase.h                                 *
 //***************************************************************
 
+#define MAX_POCET_SVATY 5
+#define PORADIE_PM_SOBOTA  (MAX_POCET_SVATY + 1)
+
 // Nazvy programov, suborov, skriptov...
 #define SCRIPT_NAME          "l.cgi"
 #define SCRIPT_PATH(a)       "cgi-bin/"a
@@ -879,6 +882,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 // 2012-10-16: upraven˝ tento define tak, ûe vûdy musÌ byù pred volanÌm funkcie Export(); doÚho dovn˙tra som dal volanie hlaviËky
 // Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_mail_address_default[_global_jazyk]);
 #define ALERT	{\
+	Log("ALERT\n");\
 	hlavicka((char *)html_title[_global_jazyk]);\
 	char pom2[MAX_STR];\
 	mystrcpy(pom2, STR_EMPTY, MAX_STR);\
