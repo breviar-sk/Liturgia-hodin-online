@@ -357,6 +357,8 @@ _struct_dm *(_global_svaty_ptr[MAX_POCET_SVATY]); // an array of '_struct_dm' po
 #define _global_svaty1 (*_global_svaty_ptr[0])
 #define _global_svaty2 (*_global_svaty_ptr[1])
 #define _global_svaty3 (*_global_svaty_ptr[2])
+#define _global_svaty4 (*_global_svaty_ptr[3])
+#define _global_svaty5 (*_global_svaty_ptr[4])
 
 // globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu
 
@@ -5320,21 +5322,25 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						&& !MIESTNE_SLAVENIE_LOKAL_SVATY(1)
 					) // slavnosti
 				)
-				){ // 15/03/2000A.D. -- modifikovane; POKUS 2006-12-08: vyòatá podmienka (_global_modlitba != MODL_NEURCENA) &&  nepomohla, len pokazila
-				// tato pasaz je cela divna...
+			){
+				short int poradie_svaty_pom = 1;
+				if(poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
+					poradie_svaty_pom = poradie_svaty;
+				}
+				_rozbor_dna_LOG("bola splnená podmienka...\n");
 				// menim, lebo svaty ma prednost
-				// 2006-02-06: pre viacero ¾ubovo¾ných spomienok treba by obozretnejší
-				_rozbor_dna_LOG("\tporadie_svaty == %d\n", poradie_svaty);
-				_rozbor_dna_LOG("\t_global_svaty1.smer == %d, _global_den.denvt == %d (%s), _global_den.litobd == %d (%s)...\n", _global_svaty1.smer, _global_den.denvt, nazov_dna(_global_den.denvt), _global_den.litobd, nazov_obdobia_ext(_global_den.litobd));
-				_rozbor_dna_LOG("menim, lebo svaty `%d' ma prednost...\n", poradie_svaty);
+				// 2006-02-06: pre viacero ¾ubovo¾ných spomienok treba by obozretnejší | 2013-08-05: snáï opravené
+				_rozbor_dna_LOG("\tporadie_svaty == %d; poradie_svaty_pom == %d\n", poradie_svaty, poradie_svaty_pom);
+				_rozbor_dna_LOG("\t_global_svaty(%d).smer == %d, _global_den.denvt == %d (%s), _global_den.litobd == %d (%s)...\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).smer, _global_den.denvt, nazov_dna(_global_den.denvt), _global_den.litobd, nazov_obdobia_ext(_global_den.litobd));
+				_rozbor_dna_LOG("mením, lebo svätý `%d'/`%d' má prednos...\n", poradie_svaty, poradie_svaty_pom);
 
-				Log("do _global_den priraïujem _global_svaty1... (`%s')\n", _global_svaty1.meno);
-				mystrcpy(_global_den.meno, _global_svaty1.meno, MENO_SVIATKU); // priradenie názvu dòa
-				_global_den.smer = _global_svaty1.smer; // dôležitos sviatku pod¾a smerníc
-				_global_den.typslav = _global_svaty1.typslav;
-				_global_den.typslav_lokal = _global_svaty1.typslav_lokal;
-				_global_den.spolcast = _global_svaty1.spolcast;
-				_global_den.prik = _global_svaty1.prik;
+				Log("do _global_den priraïujem _global_svaty(%d)... (`%s')\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).meno);
+				mystrcpy(_global_den.meno, _global_svaty(poradie_svaty_pom).meno, MENO_SVIATKU); // priradenie názvu dòa
+				_global_den.smer = _global_svaty(poradie_svaty_pom).smer; // dôležitos sviatku pod¾a smerníc
+				_global_den.typslav = _global_svaty(poradie_svaty_pom).typslav;
+				_global_den.typslav_lokal = _global_svaty(poradie_svaty_pom).typslav_lokal;
+				_global_den.spolcast = _global_svaty(poradie_svaty_pom).spolcast;
+				_global_den.prik = _global_svaty(poradie_svaty_pom).prik;
 				// Log(_global_den); // kvôli pátraniu pridané 2006-02-06
 			}// koniec menenia pre _global_modlitba != MODL_NEURCENA a svaty > 0 resp. slavnost
 		}
@@ -9843,9 +9849,11 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	} \
 }
 
-// 2012-08-23
-#define POCET_ZOZNAM 6
-short int zoznam[POCET_ZOZNAM] = {0, -1, -1, -1, -1, -1}; // prvá hodnota, t. j. zoznam[0], urèuje poèet; ak je èíslo > 10, znamená to, že ide o * 10 kvôli informácii o tom, že sa neexportuje modlitba cez deò a kompletórium pre ¾ubovo¾né spomienky
+// 2012-08-23; upravené 2013-08-05 | zoznam[0] znaèí poèet; zoznam[1] = _global_den; zoznam[2] až [MAX_POCET_SVATY+1] = _global_svaty(1)..._global_svaty(MAX_POCET_SVATY); zoznam[POCET_ZOZNAM-1] = _global_pm_sobota
+#define POCET_ZOZNAM (MAX_POCET_SVATY + 3)
+short int zoznam[POCET_ZOZNAM]; 
+// prvá hodnota, t. j. zoznam[0], urèuje poèet; ak je èíslo > 10, znamená to, že ide o * 10 kvôli informácii o tom, že sa neexportuje modlitba cez deò a kompletórium pre ¾ubovo¾né spomienky
+// od druhej hodnoty reprezentuje: _global_den, _global_svaty(1)..._global_svaty(MAX_POCET_SVATY), _global_pm_sobota
 
 void init_zoznam(void){
 	zoznam[0] = 0;

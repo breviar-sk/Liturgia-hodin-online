@@ -83,6 +83,8 @@ extern _struct_dm *(_global_svaty_ptr[MAX_POCET_SVATY]); // an array of '_struct
 #define _global_svaty1 (*_global_svaty_ptr[0])
 #define _global_svaty2 (*_global_svaty_ptr[1])
 #define _global_svaty3 (*_global_svaty_ptr[2])
+#define _global_svaty4 (*_global_svaty_ptr[3])
+#define _global_svaty5 (*_global_svaty_ptr[4])
 
 // globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu
 extern _struct_dm *_global_pm_sobota_ptr;
