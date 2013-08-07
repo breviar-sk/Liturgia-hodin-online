@@ -3061,7 +3061,7 @@ const char *text_JAN_27[POCET_JAZYKOV + 1] =
  "Merici Szent Angéla szûz",
  };
 const char *text_JAN_27_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Markolína z Forl&igrave;, kòaza",
+{"Bl. Markolína z Forl&#236;, kòaza", // &igrave;
  "",
  "",
  "",
@@ -3172,7 +3172,7 @@ const char *text_FEB_03_2[POCET_JAZYKOV + 1] =
  "Szent Anszgár (Oszkár) püspök",
  };
 const char *text_FEB_03_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Petra z Ruff&igrave;a, kòaza a muèeníka",
+{"Bl. Petra z Ruff&#236;a, kòaza a muèeníka", // &igrave;
  "",
  "",
  "",
@@ -6135,6 +6135,15 @@ const char *text_AUG_25_CZ[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Benedikta, Jana, Matouše, Izáka a Kristina, muèedníkù",
+ "",
+ };
+const char *text_AUG_25_2_CZ[POCET_JAZYKOV + 1] = 
+{"",
+ "Bl. Metodìje Dominika Trèky, muèedníka",
+ "",
+ "",
+ "",
+ "Bl. Metodìje Dominika Trèky, muèedníka",
  "",
  };
 const char *text_AUG_25_HU[POCET_JAZYKOV + 1] = 

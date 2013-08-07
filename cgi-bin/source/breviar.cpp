@@ -5331,17 +5331,23 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				// menim, lebo svaty ma prednost
 				// 2006-02-06: pre viacero ¾ubovo¾nıch spomienok treba by obozretnejší | 2013-08-05: snáï opravené
 				_rozbor_dna_LOG("\tporadie_svaty == %d; poradie_svaty_pom == %d\n", poradie_svaty, poradie_svaty_pom);
-				_rozbor_dna_LOG("\t_global_svaty(%d).smer == %d, _global_den.denvt == %d (%s), _global_den.litobd == %d (%s)...\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).smer, _global_den.denvt, nazov_dna(_global_den.denvt), _global_den.litobd, nazov_obdobia_ext(_global_den.litobd));
+				_rozbor_dna_LOG("\t_global_den.denvt == %d (%s), _global_den.litobd == %d (%s)...\n", _global_den.denvt, nazov_dna(_global_den.denvt), _global_den.litobd, nazov_obdobia_ext(_global_den.litobd));
 				_rozbor_dna_LOG("mením, lebo svätı `%d'/`%d' má prednos...\n", poradie_svaty, poradie_svaty_pom);
+				
+				if(poradie_svaty_pom != PORADIE_PM_SOBOTA){
+					_rozbor_dna_LOG("\t_global_svaty(%d).smer == %d...\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).smer);
 
-				Log("do _global_den priraïujem _global_svaty(%d)... (`%s')\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).meno);
-				mystrcpy(_global_den.meno, _global_svaty(poradie_svaty_pom).meno, MENO_SVIATKU); // priradenie názvu dòa
-				_global_den.smer = _global_svaty(poradie_svaty_pom).smer; // dôleitos sviatku pod¾a smerníc
-				_global_den.typslav = _global_svaty(poradie_svaty_pom).typslav;
-				_global_den.typslav_lokal = _global_svaty(poradie_svaty_pom).typslav_lokal;
-				_global_den.spolcast = _global_svaty(poradie_svaty_pom).spolcast;
-				_global_den.prik = _global_svaty(poradie_svaty_pom).prik;
-				// Log(_global_den); // kvôli pátraniu pridané 2006-02-06
+					Log("do _global_den priraïujem _global_svaty(%d)... (`%s')\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).meno);
+					mystrcpy(_global_den.meno, _global_svaty(poradie_svaty_pom).meno, MENO_SVIATKU); // priradenie názvu dòa
+					_global_den.smer = _global_svaty(poradie_svaty_pom).smer; // dôleitos sviatku pod¾a smerníc
+					_global_den.typslav = _global_svaty(poradie_svaty_pom).typslav;
+					_global_den.typslav_lokal = _global_svaty(poradie_svaty_pom).typslav_lokal;
+					_global_den.spolcast = _global_svaty(poradie_svaty_pom).spolcast;
+					_global_den.prik = _global_svaty(poradie_svaty_pom).prik;
+				}
+				else{
+					Log("do _global_den by som mal priradi _global_pm_sobota (%d)... (`%s') -- PRESKAKUJEM, ANI DOTERAZ SA TO NEROBILO!\n", poradie_svaty_pom, _global_pm_sobota.meno);
+				}
 			}// koniec menenia pre _global_modlitba != MODL_NEURCENA a svaty > 0 resp. slavnost
 		}
 		else{
@@ -9869,6 +9875,8 @@ void Log_zoznam(void){
 	}
 }// Log_zoznam()
 
+#define LOG_ZOZNAM /* zoznam[0] = pocet; */ Log_zoznam();
+
 void _export_rozbor_dna_zoznam(short int typ){
 	short int pocet = 1; // poèet záznamov, ktoré sa exportujú (èi u riadky tabu¾ky alebo len zoznam)
 	short int poradie_svaty, poradie_svaty_vedie;
@@ -9891,11 +9899,17 @@ void _export_rozbor_dna_zoznam(short int typ){
 			podmienka_svaty_vedie_pom = ANO;
 		}
 	}
+	Log("podmienka_svaty_vedie == %d\n", podmienka_svaty_vedie);
+	Log("podmienka_svaty_vedie_pom == %d\n", podmienka_svaty_vedie_pom);
+	Log("poradie_svaty_vedie == %d\n", poradie_svaty_vedie);
 
+	Log("poèet == %d\n", pocet);
 	// pozor, hoci je nedela, predsa na nu mohlo pripadnut slavenie s vyssou prioritou
 	if((_global_den.denvt == DEN_NEDELA) ||
 		(_global_den.prik == PRIKAZANY_SVIATOK) ||
 		(_global_den.smer < 5)){
+
+		Log("nedele a prikázané sviatky...\n");
 		// nedele a prikazane sviatky - cervenou, velkymi pismenami
 		// slavnosti - velkymi pismenami
 
@@ -9908,27 +9922,35 @@ void _export_rozbor_dna_zoznam(short int typ){
 		// 2011-02-02: zadefinované MIESTNE_SLAVENIE_CZOP_SVATY(i), aby sa zjednodušila podmienka (platí len pre CZOP)
 		// 2011-03-07: MIESTNE_SLAVENIE_CZOP_SVATY(i) pouité aj pre iné lokálne slávenia ako MIESTNE_SLAVENIE_LOKAL_SVATY(i)
 		if(podmienka_svaty_vedie == ANO){
+			Log("podmienka_svaty_vedie == ANO...\n");
 			poradie_svaty = poradie_svaty_vedie;
 			zoznam[pocet] = poradie_svaty;
+			LOG_ZOZNAM;
 		}
 		else{
+			Log("podmienka_svaty_vedie == NIE...\n");
 			poradie_svaty = 0;
 			zoznam[pocet] = poradie_svaty;
+			LOG_ZOZNAM;
 			// 2010-10-06: upravené; v tejto vetve rozhodovania treba rieši to, e je splnená základná podmienka (nede¾a alebo prikázanı sviatok alebo smer < 5),
 			//             avšak nebola splnená vyššie uvedená novo-upravená podmienka o "prebití" nedele napr. lokálnou slávnosou
 			if(podmienka_svaty_vedie_pom == ANO){
-				pocet = 2;
+				Log("podmienka_svaty_vedie_pom == ANO...\n");
+				pocet = 2; // mono by bolo lepšie, keby tu bolo: pocet++;
 				poradie_svaty = poradie_svaty_vedie;
 				zoznam[pocet] = poradie_svaty;
+				LOG_ZOZNAM;
 			}
 		}
 	}// if((_global_den.denvt == DEN_NEDELA) || (_global_den.prik == PRIKAZANY_SVIATOK) || (_global_den.smer < 5))
 	else if(_global_pocet_svatych > 0){
+		Log("NIE nedele a prikázané sviatky; _global_pocet_svatych (%d) > 0...\n", _global_pocet_svatych);
 		// sviatky (spomienky, ls) svatych
 		// 2010-07-28: doplnené alternatívne porovnanie aj s _global_svaty2.smer (kvôli dominikánskej slávnosti 8.8.)
 		if((podmienka_svaty_vedie_pom == ANO) ||
 			((_global_den.smer == 9) && (_global_svaty1.smer == 12))){
-		// svaty
+			Log("svätı má prednos...\n");
+			// svaty
 			// 2009-01-05: Vlado K. ma upozornil, e ak je smer svätı == 12, ale deò je 9 (bod 59. smerníc o LH a kalendári, è. 12), bolo by lepšie ponúknu najprv deò a a potom ostatné slávenia 
 			// 2010-05-21: Rastislav Hamráèek SDB <rastohamracek@sdb.sk> upozornil defacto na to isté ako Vlado: aby to bolo pod¾a direktória
 			// ----------------------------------------------------------------------------
@@ -9943,22 +9965,29 @@ void _export_rozbor_dna_zoznam(short int typ){
 			// 2012-08-21: cdoplnená premenná (kvôli tomu, èi sa majú pre svätca 1 zobrazi buttons modlitba cez deò)
 			aj_feria = NIE;
 			if(((_global_svaty1.smer >= 12) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (typ != EXPORT_DNA_VIAC_DNI)){
+				Log("nastavujem: aj féria...\n");
 				// ak je to iba lubovolna spomienka, tak vsedny den
 				// 2010-05-21: NEWLINE; bolo pred; musíme ho zaradi za :)
 				aj_feria = ANO;
 			}
 			if(aj_feria == ANO){
+				Log("spracúvam, keïe je aj féria (pocet == %d)...\n", pocet);
 				// ak je to iba lubovolna spomienka, tak vsedny den
 				poradie_svaty = 0;
 				zoznam[pocet] = poradie_svaty;
 				pocet++;
+				LOG_ZOZNAM;
 			}
 			// 2010-05-21: pôvodne bolo: "sviatok, spomienka alebo ¾ubovo¾ná spomienka svätého/svätıch, ide prv ako všednı deò"; dnes ide prv len ak je to sviatok alebo spomienka 
 			// (a vlastne vtedy sa všednı deò vypisuje len pre lokálne sviatky resp. spomienky) 
 			for(short int i = 0; i < MAX_POCET_SVATY; i++){
+				Log("i == %d; pocet == %d...\n", i, pocet);
 				if(_global_pocet_svatych > i){
+					Log("_global_pocet_svatych (%d) > i (%d)...\n", _global_pocet_svatych, i);
 					poradie_svaty = i + 1;
+					Log("poradie_svaty == %d...\n", poradie_svaty);
 					if(poradie_svaty == 1){
+						// podmienka pre 1. svätého je iná ako pre 2. a ïalšieho
 						if((aj_feria) && (!MIESTNE_SLAVENIE_LOKAL_SVATY(poradie_svaty))){
 							poradie_svaty *= 10;
 						}
@@ -9968,30 +9997,41 @@ void _export_rozbor_dna_zoznam(short int typ){
 							poradie_svaty *= 10;
 						}
 					}
-					pocet++;
+					if((poradie_svaty != 1) && (poradie_svaty != 10)){
+						pocet++;
+					}
 					zoznam[pocet] = poradie_svaty;
+					LOG_ZOZNAM;
 				}
 			}
 		}// svaty ma prednost
 		else{
-		// prednost ma den
+			Log("prednos má deò...\n");
+			// prednost ma den
 			poradie_svaty = 0;
 			zoznam[pocet] = poradie_svaty;
-		}
+			LOG_ZOZNAM;
+		}// prednost ma den
 	}// if(_global_pocet_svatych > 0)
 	else{
+		Log("NIE nedele a prikázané sviatky; obyèajnı deò | _global_pocet_svatych (%d) == 0...\n", _global_pocet_svatych);
 		// obycajne dni, nie sviatok
 		poradie_svaty = 0;
 		zoznam[pocet] = poradie_svaty;
+		LOG_ZOZNAM;
 	}// if(equals(_global_den.meno, STR_EMPTY))
+
+	Log("poèet == %d (pred kontrolou PM v sobotu; POCET_ZOZNAM == %d)\n", pocet, POCET_ZOZNAM);
 
 	// este spomienka panny marie v sobotu, cl. 15
 	if((_global_den.litobd == OBD_CEZ_ROK) &&
 		(_global_den.denvt == DEN_SOBOTA) &&
 		(
 			((_global_den.smer >= 11) && (_global_pocet_svatych == 0)) ||
-			(((_global_svaty1.smer >= 12) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (_global_pocet_svatych > 0))) &&
+			(((_global_svaty1.smer >= 12) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (_global_pocet_svatych > 0))
+		) && 
 		(typ != EXPORT_DNA_VIAC_DNI)){
+		Log("je aj spomienka PM v sobotu...\n");
 		// 2005-08-22: pôvodne sa tu porovnávalo s 12, ale aj pre 11 (lokálne slávenia) by mal systém ponúknu (v sobotu) spomienku p. márie - keï je to napr. v inej diecéze 
 		// 2006-02-02: pridané posv. èítania a upravené; keïe smer == 11 pouívame pre lokálne povinné spomienky, upravili sme kontrolu z 12 na 11
 		// 2011-02-02: zadefinované MIESTNE_SLAVENIE_CZOP_SVATY(i), aby sa zjednodušila podmienka (platí len pre CZOP)
@@ -10000,10 +10040,12 @@ void _export_rozbor_dna_zoznam(short int typ){
 		poradie_svaty *= 10;
 		pocet++;
 		zoznam[pocet] = poradie_svaty;
+		LOG_ZOZNAM;
 	}
 	zoznam[0] = pocet;
 	Log("poèet == %d\n", pocet);
 	Log("_export_rozbor_dna_zoznam(): koniec.\n");
+	LOG_ZOZNAM;
 }// _export_rozbor_dna_zoznam()
 
 void _export_rozbor_dna_interpretuj_zoznam(short int export_typ, short int typ, short int som_v_tabulke, char batch_command[MAX_STR], short int modlitba, short int d_from_m_from_r_from){

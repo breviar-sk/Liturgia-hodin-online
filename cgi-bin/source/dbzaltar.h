@@ -356,6 +356,7 @@ extern const char *text_AUG_24[POCET_JAZYKOV + 1];
 extern const char *text_AUG_25_1[POCET_JAZYKOV + 1];
 extern const char *text_AUG_25_2[POCET_JAZYKOV + 1];
 extern const char *text_AUG_25_CZ[POCET_JAZYKOV + 1];
+extern const char *text_AUG_25_2_CZ[POCET_JAZYKOV + 1];
 extern const char *text_AUG_25_HU[POCET_JAZYKOV + 1];
 extern const char *text_AUG_27[POCET_JAZYKOV + 1];
 extern const char *text_AUG_28[POCET_JAZYKOV + 1];
