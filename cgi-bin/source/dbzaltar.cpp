@@ -10770,6 +10770,27 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 	_vlastna_cast_modlitba;\
 }
 
+#define _vlastna_cast_mcd_full {\
+	modlitba = MODL_PREDPOLUDNIM;\
+	_vlastna_cast_hymnus(modlitba, _global_den.litobd);\
+	_vlastna_cast_antifony_rovnake;\
+	_vlastna_cast_kcitanie;\
+	_vlastna_cast_kresponz;\
+	_vlastna_cast_modlitba;\
+	modlitba = MODL_NAPOLUDNIE;\
+	_vlastna_cast_hymnus(modlitba, _global_den.litobd);\
+	_vlastna_cast_antifony_rovnake;\
+	_vlastna_cast_kcitanie;\
+	_vlastna_cast_kresponz;\
+	_vlastna_cast_modlitba;\
+	modlitba = MODL_POPOLUDNI;\
+	_vlastna_cast_hymnus(modlitba, _global_den.litobd);\
+	_vlastna_cast_antifony_rovnake;\
+	_vlastna_cast_kcitanie;\
+	_vlastna_cast_kresponz;\
+	_vlastna_cast_modlitba;\
+}
+
 #define _vlastna_cast_mcd_kcitresp_modl {\
 	modlitba = MODL_PREDPOLUDNIM;\
 	_vlastna_cast_kcitanie;\
@@ -23621,8 +23642,13 @@ label_25_MAR:
 						modlitba = MODL_INVITATORIUM;
 						_vlastna_cast_antifona_inv;
 
-						// 2013-08-06: žalmy sú z bežného dòa (LH, zv. IV, str. 1306)
-						_vlastna_cast_mcd_ant_kcitresp_modl;
+						if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+							_vlastna_cast_mcd_full;
+						}
+						else{
+							// 2013-08-06: žalmy sú z bežného dòa (LH, zv. IV, str. 1306)
+							_vlastna_cast_mcd_ant_kcitresp_modl;
+						}
 
 						modlitba = MODL_RANNE_CHVALY;
 						_vlastna_cast_full(modlitba);

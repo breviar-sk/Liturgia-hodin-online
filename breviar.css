@@ -6,6 +6,7 @@
 #psalm p { font-weight: normal; }
 #psalm p.verse { text-indent: -2.4em; padding-left: 2.4em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: bold; }
 #psalm p.start { }
+#psalm p.solo { padding-bottom: 1em; }
 #psalm p.cont { text-indent: -1.2em; }
 #psalm p.last { padding-bottom: 1em; } /* used with cont; rarely also with start */
 #psalm p.first { padding-top: 1em; }
