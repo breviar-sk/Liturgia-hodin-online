@@ -641,37 +641,6 @@ void _set_hymnus_alternativy(short int modlitba, short int litobd){
 // pre Cezroèné obdobie
 void _set_hymnus_alternativy(short int modlitba){
 	_set_hymnus_alternativy(modlitba, OBD_CEZ_ROK);
-	/*
-	switch(modlitba){
-		case MODL_PRVE_KOMPLETORIUM:
-			_global_modl_prve_kompletorium.alternativy += ((_global_modl_prve_kompletorium.alternativy & BIT_ALT_HYMNUS) != BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
-			break;
-		case MODL_KOMPLETORIUM:
-			_global_modl_kompletorium.alternativy += ((_global_modl_kompletorium.alternativy & BIT_ALT_HYMNUS) != BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
-			break;
-		case MODL_RANNE_CHVALY:
-			_global_modl_ranne_chvaly.alternativy += ((_global_modl_ranne_chvaly.alternativy & BIT_ALT_HYMNUS) != BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
-			break;
-		case MODL_POSV_CITANIE:
-			_global_modl_posv_citanie.alternativy += ((_global_modl_posv_citanie.alternativy & BIT_ALT_HYMNUS) != BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
-			break;
-		case MODL_CEZ_DEN_9:
-			_global_modl_cez_den_9.alternativy += ((_global_modl_cez_den_9.alternativy & BIT_ALT_HYMNUS) != BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
-			break;
-		case MODL_CEZ_DEN_12:
-			_global_modl_cez_den_12.alternativy += ((_global_modl_cez_den_12.alternativy & BIT_ALT_HYMNUS) != BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
-			break;
-		case MODL_CEZ_DEN_3:
-			_global_modl_cez_den_3.alternativy += ((_global_modl_cez_den_3.alternativy & BIT_ALT_HYMNUS) != BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
-			break;
-		case MODL_VESPERY:
-			_global_modl_vespery.alternativy += ((_global_modl_vespery.alternativy & BIT_ALT_HYMNUS) != BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
-			break;
-		case MODL_PRVE_VESPERY:
-			_global_modl_prve_vespery.alternativy += ((_global_modl_prve_vespery.alternativy & BIT_ALT_HYMNUS) != BIT_ALT_HYMNUS)? BIT_ALT_HYMNUS : 0;
-			break;
-	}// switch(modlitba)
-	*/
 }// _set_hymnus_alternativy()
 
 void _set_hymnus_alternativy_NO(short int modlitba, short int litobd){
@@ -8595,6 +8564,7 @@ label_24_DEC:
 		sprintf(_anchor, "%s%c_%s%d", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_HYMNUS, tyzzal MOD 3);
 		_set_hymnus(modlitba, _file, _anchor);
 		set_LOG_litobd;
+		_set_hymnus_alternativy_NO(modlitba, _global_den.litobd); // 2013-08-09: doplnené
 		// antifóny, žalmy, verš a prvé èítanie s responzóriom sa berie z príslušnej soboty
 		// druhé èítanie
 		// sú štyri hymny, preto ich dáme pod¾a tyzzal MOD 4 (0, 1, 2, 3)
