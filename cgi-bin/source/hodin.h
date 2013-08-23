@@ -1780,6 +1780,15 @@ const char *html_text_option_skryt[POCET_JAZYKOV + 1] =
  "elrejtés"
 };
 
+const char *html_text_option1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] = 
+{"poui psalmódiu zo dòa", 
+ "pouít almy z bìného dne", 
+ "xxx", 
+ "psalmodia from ordinary day",
+ "",
+ "pouít psalmodii z bìného dne", 
+ "az adott napi zsoltározást venni"
+};
 const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] = 
 {"pre modlitbu cez deò poui psalmódiu zo dòa", 
  "pro modlitbu bìhem dne pouít almy z bìného dne", 
@@ -1788,6 +1797,15 @@ const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] =
  "",
  "pro modlitbu bìhem dne pouít psalmodii z bìného dne", 
  "a Napközi imaórában az adott napi zsoltározást venni"
+};
+const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] = 
+{"poui doplnkovú psalmódiu", 
+ "pouít almy z doplòovacího cyklu", 
+ "xxx", 
+ "psalmodia from ordinary day",
+ "",
+ "dne pouít doplòkovou psalmodii", 
+ "a kiegészítõ zsoltárokat venni"
 };
 const char *html_text_option1_mcd_zalmy_ine[POCET_JAZYKOV + 1] = 
 {"pre modlitbu cez deò poui doplnkovú psalmódiu", 
@@ -1806,6 +1824,52 @@ const char *html_text_option1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] =
  "", 
  "Doplòovací cyklus almù obsahuje 3 série tzv. graduálních almù ( 120 – 129), které je mono pouít místo almù ze altáøe.", 
  "Aki több Napközi imaórát mond, az egyik imaórában a soros zsoltárösszeállítást veszi, a többin a kiegészítõt. Ez az úgynevezett „zarándokzsoltárokból“ vett három-három zsoltárból áll (Zsolt 119 – 127)."
+};
+
+const char *html_text_option1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] = 
+{"poui psalmódiu z daného tıdòa altára pre všetky tri modlitby cez deò", 
+ "pouít almy daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
+ "", 
+ "",
+ "",
+ "pouít psalmodii daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
+ "xxx"
+};
+const char *html_text_option1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] = 
+{"pre modlitbu cez deò poui psalmódiu z daného tıdòa altára pre všetky tri modlitby cez deò", 
+ "pro modlitbu bìhem dne pouít almy daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
+ "", 
+ "",
+ "",
+ "pro modlitbu bìhem dne pouít psalmodii daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
+ "xxx"
+};
+const char *html_text_option1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] = 
+{"poui psalmódiu z troch tıdòov altára: aktuálny, predchádzajúci, nasledujúci", 
+ "pouít almy z tøí tıdnù ze altáøe: aktuální, pøedchozí, následující", 
+ "", 
+ "",
+ "",
+ "pouít psalmodii z tøí tıdnù ze altáøe: aktuální, pøedchozí, následující", 
+ "xxx"
+};
+const char *html_text_option1_mcd_zalmy_tri[POCET_JAZYKOV + 1] = 
+{"pre modlitbu cez deò poui psalmódiu z troch tıdòov altára [aktuálny, predchádzajúci, nasledujúci]", 
+ "pro modlitbu bìhem dne pouít almy z tøí tıdnù ze altáøe [aktuální, pøedchozí, následující]", 
+ "", 
+ "",
+ "",
+ "pro modlitbu bìhem dne pouít psalmodii z tøí tıdnù ze altáøe [aktuální, pøedchozí, následující]", 
+ "xxx"
+};
+const char *html_text_option1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] = 
+{"Pokia¾ sa niekto modlí viac modlitieb cez deò, psalmódia sa pouíva z troch tıdòov altára (aktuálny, predchádzajúci, nasledujúci tıdeò altára).\nNemá úèinok, ak je zvolená monos poui doplnkovú psalmódiu.", 
+ "xxx", 
+ "", 
+ "",
+ "", 
+ "xxx", 
+ "xxx"
 };
 
 const char *html_text_option1_zalm95[POCET_JAZYKOV + 1] = 

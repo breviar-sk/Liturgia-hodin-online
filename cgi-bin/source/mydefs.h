@@ -558,11 +558,11 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #endif
 
 // doplnková psalmódia pre modlitbu cez deò
-#define MODL_OPTF_1_MCD_ZALMY_INE 76
+#define MODL_OPTF_1_MCD_DOPLNKOVA 76
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_MCD_ZALMY_INE "MODL_OPTF_1_MCD_ZALMY_INE"
+	#define STR_MODL_OPTF_1_MCD_DOPLNKOVA "MODL_OPTF_1_MCD_DOPLNKOVA"
 #else
-	#define STR_MODL_OPTF_1_MCD_ZALMY_INE "of1dps"
+	#define STR_MODL_OPTF_1_MCD_DOPLNKOVA "of1dps"
 #endif
 
 // vigília v posvätnom èítaní
@@ -596,6 +596,15 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #else
 	#define STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY "of1vkp"
 #endif
+
+// psalmódia pre modlitbu cez deò z troch týždòov žaltára (aktuálny, predchádzajúci, nasledujúci)
+#define MODL_OPTF_1_MCD_ZALTAR_TRI 112
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_1_MCD_ZALTAR_TRI "MODL_OPTF_1_MCD_ZALTAR_TRI"
+#else
+	#define STR_MODL_OPTF_1_MCD_ZALTAR_TRI "of1ps3"
+#endif
+
 
 // žalmy zo sviatku
 #define MODL_OPTF_1_SPOMIENKA_SPOL_CAST 79
@@ -1078,7 +1087,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_BIT_OPT_1_CHVALOSPEVY               "BitOpt1Canticles"
 #define XML_BIT_OPT_1_SLAVA_OTCU                "BitOpt1GloryPrayer"
 #define XML_BIT_OPT_1_OTCENAS                   "BitOpt1OurFatherPrayer"
-#define XML_BIT_OPT_1_MCD_ZALMY_INE             "BitOpt1SupplPsalmodyDuringDay"
+#define XML_BIT_OPT_1_MCD_DOPLNKOVA             "BitOpt1SupplPsalmodyDuringDay"
 #define XML_BIT_OPT_1_PC_VIGILIA                "BitOpt1VigilAfterReadings"
 #define XML_BIT_OPT_1_SPOMIENKA_SPOL_CAST       "BitOpt1MemoriesTakeFromCommunia"
 #define XML_BIT_OPT_1_PLNE_RESP                 "BitOpt1FullResponses"
@@ -1087,6 +1096,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_BIT_OPT_1_SKRY_POPIS                "BitOpt1HideDescription"
 #define XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST          "BitOpt1ShowCommuniaDescription"
 #define XML_BIT_OPT_1_VESP_KRATSIE_PROSBY       "BitOpt1UseVespShortenPrayers"
+#define XML_BIT_OPT_1_MCD_ZALTAR_TRI            "BitOpt1PsalmsDuringDayPsalt3Weeks"
 
 // POCET_OPT_2_HTML_EXPORT
 #define XML_BIT_OPT_2_ISO_DATUM                 "BitOpt2ISOFormat"

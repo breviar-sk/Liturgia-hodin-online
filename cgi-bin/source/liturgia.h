@@ -463,6 +463,8 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_EVANJELIUM    "EVANJELIUM"
 // 2012-09-05: moûnosù zobraziù pre doplnkov˙ psalmÛdiu priamy URL odkaz (na prepnutie)
 #define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // 2012-10-01: _ sa menilo na &nbsp; preto som zmenil na -
+// 2013-08-22: moûnosù zobraziù priamy URL odkaz (na prepnutie) pre ûalmy z troch t˝ûdÚov ûalt·ra
+#define PARAM_PSALMODIA_TRI_TYZDNE     "PSALMODIA-TRI-TYZDNE"
 // 2012-09-27: moûnosù zobraziù chv·lospev, hymnus Te Deum, OtËen·ö (na prepnutie), opakovanÈ zvolania v prosb·ach, Sl·va Otcu, plnÈ znenie responzÛriÌ pre posv‰tnÈ ËÌtania...
 #define PARAM_CHVALOSPEV               "CHVALOSPEV"
 #define PARAM_TEDEUM		           "TEDEUM"
@@ -1281,7 +1283,7 @@ extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA  16 // Ëi sa Nanebovst˙penie P·na sl·vi v nedeæu (1) alebo nie (teda vo ötvrtok, na 40.-ty deÚ po VeækonoËnej nedeli; hodnota 0 == default)
 #define BIT_OPT_0_TELAKRVI_NEDELA          32 // Ëi sa Najsv. Kristovho tela a krvi sl·vi v nedeæu (1) alebo nie (teda vo ötvrtok, 11.-ty deÚ po ZoslanÌ Ducha Sv.; hodnota 0 == default)
 
-#define POCET_OPT_1_CASTI_MODLITBY         14 // jednotlivÈ komponenty option 1 -- bity pre force option 1
+#define POCET_OPT_1_CASTI_MODLITBY         15 // jednotlivÈ komponenty option 1 -- bity pre force option 1
 extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 // 2011-04-11: ˙prava v˝znamu (a interpret·cie) option 1 == OPT_1_CASTI_MODLITBY (zobraziù/nezobraziù najm‰ pevnÈ/nemennÈ s˙Ëasti modlitieb, ale aj inÈ, Ëo s˙/nie s˙ v LH)
 // 2011-10-10: ˙prava niektor˝ch bitov, posunutie popisu na koniec
@@ -1290,7 +1292,7 @@ extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_CHVALOSPEVY               4
 #define BIT_OPT_1_SLAVA_OTCU                8
 #define BIT_OPT_1_OTCENAS                  16
-#define BIT_OPT_1_MCD_ZALMY_INE            32 // pouûÌva sa pre modlitbu cez deÚ -- 1 = alternatÌvna, doplnkov· psalmÛdia
+#define BIT_OPT_1_MCD_DOPLNKOVA            32 // pouûÌva sa pre modlitbu cez deÚ -- 1 = alternatÌvna, doplnkov· psalmÛdia
 #define BIT_OPT_1_PC_VIGILIA               64
 #define BIT_OPT_1_SPOMIENKA_SPOL_CAST     128 // pri sl·venÌ spomienky moûno podæa vöeobecn˝ch smernÌc, Ë. 235 b), vziaù niektorÈ Ëasti alebo zo spoloËnej Ëasti (1), alebo zo dÚa (0)
 #define BIT_OPT_1_PLNE_RESP               256
@@ -1299,6 +1301,7 @@ extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_SKRY_POPIS             2048
 #define BIT_OPT_1_ZOBRAZ_SPOL_CAST       4096
 #define BIT_OPT_1_VESP_KRATSIE_PROSBY    8192 // pouûiù (pre ktor˝koævek deÚ v roku) kratöie prosby k veöper·m z dodatku (0 = default, zo dÚa)
+#define BIT_OPT_1_MCD_ZALTAR_TRI        16384 // pouûÌva sa pre modlitbu cez deÚ -- 1 = psalmÛdia sa pouûÌva z troch t˝ûdÚov ûalt·ra (aktu·lny, predch·dzaj˙ci, nasleduj˙ci)
 
 #define POCET_OPT_2_HTML_EXPORT            15 // jednotlivÈ komponenty option 2 -- bity pre force option 2
 extern short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];

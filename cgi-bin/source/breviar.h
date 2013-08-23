@@ -33,6 +33,10 @@
 #include "mysystem.h"
 #include "mysysdef.h"
 
+#define TYZZAL(t)					(((t + 3) MOD 4) + 1)
+#define TYZZAL_PREDCHADZAJUCI(t)	(((t + 2) MOD 4) + 1)
+#define TYZZAL_NASLEDUJUCI(t)		(((t + 4) MOD 4) + 1)
+
 //---------------------------------------------------------------------
 // globalne premenne -- deklarovane v liturgia.h, definovane tu
 
