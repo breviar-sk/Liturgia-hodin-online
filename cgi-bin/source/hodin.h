@@ -1791,11 +1791,11 @@ const char *html_text_option1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] =
 };
 const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] = 
 {"pre modlitbu cez deò poui psalmódiu zo dòa", 
- "pro modlitbu bìhem dne pouít almy z bìného dne", 
+ "pro modlitbu uprostøed dne pouít almy z bìného dne", 
  "xxx", 
  "psalmodia from ordinary day",
  "",
- "pro modlitbu bìhem dne pouít psalmodii z bìného dne", 
+ "pro modlitbu uprostøed dne pouít psalmodii z bìného dne", 
  "a Napközi imaórában az adott napi zsoltározást venni"
 };
 const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] = 
@@ -1809,11 +1809,11 @@ const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
 };
 const char *html_text_option1_mcd_zalmy_ine[POCET_JAZYKOV + 1] = 
 {"pre modlitbu cez deò poui doplnkovú psalmódiu", 
- "pro modlitbu bìhem dne pouít almy z doplòovacího cyklu", 
+ "pro modlitbu uprostøed dne pouít almy z doplòovacího cyklu", 
  "xxx", 
  "psalmodia from ordinary day",
  "",
- "pro modlitbu bìhem dne pouít doplòkovou psalmodii", 
+ "pro modlitbu uprostøed dne pouít doplòkovou psalmodii", 
  "a Napközi imaórában a kiegészítõ zsoltárokat venni"
 };
 const char *html_text_option1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] = 
@@ -1828,21 +1828,21 @@ const char *html_text_option1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_option1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] = 
 {"poui psalmódiu z daného tıdòa altára pre všetky tri modlitby cez deò", 
- "pouít almy daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
+ "pouít almy daného tıdne ze altáøe pro všechny tøi modlitby uprostøed dne", 
  "", 
  "",
  "",
- "pouít psalmodii daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
- "xxx"
+ "pouít psalmodii daného tıdne ze altáøe pro všechny tøi modlitby uprostøed dne", 
+ "az adott hét zsoltározását alkalmazni mindhárom napközi imánál"
 };
 const char *html_text_option1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] = 
 {"pre modlitbu cez deò poui psalmódiu z daného tıdòa altára pre všetky tri modlitby cez deò", 
- "pro modlitbu bìhem dne pouít almy daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
+ "pro modlitbu uprostøed dne pouít almy daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
  "", 
  "",
  "",
- "pro modlitbu bìhem dne pouít psalmodii daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
- "xxx"
+ "pro modlitbu uprostøed dne pouít psalmodii daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
+ "a Napközi imaórában az adott hét zsoltározását alkalmazni mindhárom napközi imánál"
 };
 const char *html_text_option1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] = 
 {"poui psalmódiu z troch tıdòov altára: aktuálny, predchádzajúci, nasledujúci", 
@@ -1851,25 +1851,25 @@ const char *html_text_option1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] =
  "",
  "",
  "pouít psalmodii z tøí tıdnù ze altáøe: aktuální, pøedchozí, následující", 
- "xxx"
+ "a három heti [aktuális, elõzõ, következõ] zsoltározást alkalmazni"
 };
 const char *html_text_option1_mcd_zalmy_tri[POCET_JAZYKOV + 1] = 
-{"pre modlitbu cez deò poui psalmódiu z troch tıdòov altára [aktuálny, predchádzajúci, nasledujúci]", 
- "pro modlitbu bìhem dne pouít almy z tøí tıdnù ze altáøe [aktuální, pøedchozí, následující]", 
+{"pre modlitbu cez deò poui psalmódiu z troch tıdòov altára (aktuálny, predchádzajúci, nasledujúci)", 
+ "pro modlitbu uprostøed dne pouít almy z tøí tıdnù ze altáøe (aktuální, pøedchozí, následující)", 
  "", 
  "",
  "",
- "pro modlitbu bìhem dne pouít psalmodii z tøí tıdnù ze altáøe [aktuální, pøedchozí, následující]", 
- "xxx"
+ "pro modlitbu uprostøed dne pouít psalmodii z tøí tıdnù ze altáøe (aktuální, pøedchozí, následující)", 
+ "a Napközi imaórában a három heti (aktuális, elõzõ, következõ) zsoltározást alkalmazni"
 };
 const char *html_text_option1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] = 
 {"Pokia¾ sa niekto modlí viac modlitieb cez deò, psalmódia sa pouíva z troch tıdòov altára (aktuálny, predchádzajúci, nasledujúci tıdeò altára).\nNemá úèinok, ak je zvolená monos poui doplnkovú psalmódiu.", 
- "xxx", 
+ "Pokud se nìkdo modlí více èástí modlitby uprostøed dne, mùe nejprve pouít psalmodii daného dne a potom psalmodii pøedchozího, nebo následujícího tıdne.", 
  "", 
  "",
  "", 
- "xxx", 
- "xxx"
+ "Pokud se nìkdo modlí více èástí modlitby uprostøed dne, mùe nejprve pouít psalmodii daného dne a potom psalmodii pøedchozího, nebo následujícího tıdne.", 
+ "Ha valaki többször naponta mondja a napközi imát, a zsoltározás három hétbõl (aktuális, elõzõ, következõ) van alkalmazva.\nNincs hatása, ha ki van választva a kiegészítõ zsoltárok alkalmazása."
 };
 
 const char *html_text_option1_zalm95[POCET_JAZYKOV + 1] = 
