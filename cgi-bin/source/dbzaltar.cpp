@@ -2214,7 +2214,12 @@ void _set_kompletorium_slavnost_oktava(short int modlitba, short int litobd, sho
 	} \
 	else{ \
 		set_hymnus  (den, tyzzal, m); \
-		set_antifony(den, tyzzal, zvazok, m); \
+		if(((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALTAR_TRI) == BIT_OPT_1_MCD_ZALTAR_TRI) && ((m == MODL_PREDPOLUDNIM) || (m == MODL_NAPOLUDNIE) || (m == MODL_POPOLUDNI))){ \
+			set_antifony(den, UPRAV_TYZZAL(tyzzal, m), zvazok, m); \
+		} \
+		else{ \
+			set_antifony(den, tyzzal, zvazok, m); \
+		} \
 		set_kcitanie(den, tyzzal, m); \
 		set_kresponz(den, tyzzal, m); \
 		set_prosby  (den, tyzzal, m); \
@@ -2234,7 +2239,12 @@ void _set_kompletorium_slavnost_oktava(short int modlitba, short int litobd, sho
 	} \
 	else{ \
 		set_hymnus  (den, tyzzal, m); \
-		set_antifony(den, tyzzal, zvazok, m); \
+		if(((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALTAR_TRI) == BIT_OPT_1_MCD_ZALTAR_TRI) && ((m == MODL_PREDPOLUDNIM) || (m == MODL_NAPOLUDNIE) || (m == MODL_POPOLUDNI))){ \
+			set_antifony(den, UPRAV_TYZZAL(tyzzal, m), zvazok, m); \
+		} \
+		else{ \
+			set_antifony(den, tyzzal, zvazok, m); \
+		} \
 		set_kcitanie(den, tyzzal, m); \
 		set_kresponz(den, tyzzal, m); \
 		set_modlitba(den, tyzzal, m); \
@@ -2483,9 +2493,14 @@ void _set_zalmy_mcd_zaltar(short int den, short int tyzzal, short int modlitba){
 void set_zalmy_mcd_zaltar(short int den, short int tyzzal){
 	Log("set_zalmy_mcd_zaltar(%d, %d) -- begin\n", den, tyzzal);
 	if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_MCD_ZALTAR_TRI) == BIT_OPT_1_MCD_ZALTAR_TRI){
+		/*
 		_set_zalmy_mcd_zaltar(den, tyzzal, MODL_PREDPOLUDNIM);
 		_set_zalmy_mcd_zaltar(den, TYZZAL_PREDCHADZAJUCI(tyzzal), MODL_NAPOLUDNIE);
 		_set_zalmy_mcd_zaltar(den, TYZZAL_NASLEDUJUCI(tyzzal), MODL_POPOLUDNI);
+		*/
+		_set_zalmy_mcd_zaltar(den, UPRAV_TYZZAL(tyzzal, MODL_PREDPOLUDNIM), MODL_PREDPOLUDNIM);
+		_set_zalmy_mcd_zaltar(den, UPRAV_TYZZAL(tyzzal, MODL_NAPOLUDNIE), MODL_NAPOLUDNIE);
+		_set_zalmy_mcd_zaltar(den, UPRAV_TYZZAL(tyzzal, MODL_POPOLUDNI), MODL_POPOLUDNI);
 	}
 	else{
 		_set_zalmy_mcd_zaltar(den, tyzzal, MODL_CEZ_DEN_VSETKY);

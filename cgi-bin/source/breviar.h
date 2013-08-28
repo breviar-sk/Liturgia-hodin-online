@@ -37,6 +37,8 @@
 #define TYZZAL_PREDCHADZAJUCI(t)	(((t + 2) MOD 4) + 1)
 #define TYZZAL_NASLEDUJUCI(t)		(((t + 4) MOD 4) + 1)
 
+#define UPRAV_TYZZAL(t, m)			( (m == MODL_NAPOLUDNIE)? TYZZAL_PREDCHADZAJUCI(t) : ((m == MODL_POPOLUDNI)? TYZZAL_NASLEDUJUCI(t) : TYZZAL(t)) )
+
 //---------------------------------------------------------------------
 // globalne premenne -- deklarovane v liturgia.h, definovane tu
 
