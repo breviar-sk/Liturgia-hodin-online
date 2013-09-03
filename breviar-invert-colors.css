@@ -1,6 +1,6 @@
 /* new 2013-06-19 */
-#psalm .psalm-name .psalm-subtitle { color: #FF3333; }
-#psalm .psalm-idea { color: #CCCCCC; }
+.psalm .psalm-name .psalm-subtitle { color: #FF3333; }
+.psalm .psalm-idea { color: #CCCCCC; }
 
 /* new 2013-06.16 / updated 2013-06-19 and 2013-06-24 */
 sup { color: #FF3333; }
@@ -31,7 +31,7 @@ p { color: #CCCCCC; }
 h1, h2, h3 { color: #FFFFCC; }
 
 a { color: #CCCCCC; }
-a:hover { color: white; background-color: #CC9966; } // #ff6633; }
+a:hover { color: white; background-color: #CC9966; } /* #ff6633; */
 a:active { color: gray; }
 a.explain { color: #330000; }
 a.button { 

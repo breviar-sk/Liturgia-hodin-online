@@ -8,9 +8,9 @@
 .bold { font-weight: bold; }
 .boldit { font-weight: bold; font-style: italic; }
 .it { font-style: italic; }
-.normal { color: #000000; }
+.normal { color: #1a1a1a; }
 .tt { font-family: Monospace; }
-.parameter { font-weight: bold; font-style: normal; font-family: Monospace; color: black; }
+.parameter { font-weight: bold; font-style: normal; font-family: Monospace; color: #1a1a1a; }
 .value { font-weight: bold; font-style: normal; font-family: Monospace; color: brown; }
 .explain { font-size: 90%; color: #330000; }
 .small { font-size: 80%; }
@@ -21,10 +21,10 @@
 /* apply to all elements */ { font-family: inherit; font-size: 100%; }
 body, html { 
 	background-color: #FFFFCC;
-	color: #000000;
+	color: #1a1a1a;
 	font-family: Sans-Serif, Candara, Verdana, Tahoma, Helvetica, Arial;
 }
-p { font-family: inherit; color: #000000; font-style: normal; }
+p { font-family: inherit; color: #1a1a1a; font-style: normal; }
 
 .duoraz { 
 	font-weight: bold; }
@@ -43,8 +43,8 @@ a.quiet:hover { text-decoration:none; color: inherit; }
 a.quiet:visited { text-decoration:none; color: inherit; }
 a.quiet:active { text-decoration:none; color: inherit; }
 
-a { font-family: inherit; color: #000000; text-decoration: underline; }
-a:hover { color: white; background-color: #663300; text-decoration:none; }
+a { font-family: inherit; color: #1a1a1a; text-decoration: none; border-bottom: 1px dotted; }
+a:hover { color: white; background-color: #663300; text-decoration: none; border: none; }
 a:active { color: gray; text-decoration: underline; }
 a img { border: none }
 a.explain { color: #330000; font-size: 100%; }
@@ -57,21 +57,21 @@ a.button {
 	font-size : 90%; 
 	font-style: normal;
 	text-decoration: none; 
-	color: #000000; 
-	border: solid 0px #000000; }
+	color: #1a1a1a; 
+	border: solid 0px #1a1a1a; }
 
 table { color: #505000; }
 tr.paragraph { text-indent: 3em; line-height: 120%; }
-td { font-family: inherit; font-size: 95%; color: #000000}
+td { font-family: inherit; font-size: 95%; color: #1a1a1a}
 
 hr {	height: 0.2mm;
 	size: 1px;
 	width: 33%; 
 	color: gray; }
 
-select { background: white; font-family: inherit; font-size : 95%; color: #000000}
+select { background: white; font-family: inherit; font-size : 95%; color: #1a1a1a}
 
-input { border: 1px; font-family: inherit; font-size : 95%; color: #000000; }
+input { border: 1px; font-family: inherit; font-size : 95%; color: #1a1a1a; }
 
 /* modlitby */
 input.button, input.reset { 
@@ -82,8 +82,8 @@ input.button, input.reset {
 	font-size : 90%; 
 	font-style: normal;
 	text-decoration: none; 
-	color: #000000; 
-	border: solid 0px #000000; }
+	color: #1a1a1a; 
+	border: solid 0px #1a1a1a; }
 
 /* << >> */
 input.button0, input.reset0 { 
@@ -95,7 +95,7 @@ input.button0, input.reset0 {
 	font-style: normal;
 	text-decoration: none; 
 	color: White; 
-	border: solid 0px #000000; }
+	border: solid 0px #1a1a1a; }
 
 /* dnes */
 input.button1, input.reset1 { 
@@ -109,7 +109,7 @@ input.button1, input.reset1 {
 	font-variant: none;
 	text-decoration: none; 
 	color: White;
-	border: solid 0px #000000; }
+	border: solid 0px #1a1a1a; }
 
 /* menej podstatné buttony */
 input.button2, input.reset2 { 
@@ -120,8 +120,8 @@ input.button2, input.reset2 {
 	font-size : 90%; 
 	font-style: italic;
 	text-decoration: none; 
-	color: #000000; 
-	border: solid 0px #000000; }
+	color: #1a1a1a; 
+	border: solid 0px #1a1a1a; }
 
 input.text { border-style: solid; background: white; }
 

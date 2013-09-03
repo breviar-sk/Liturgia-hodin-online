@@ -1,28 +1,29 @@
+/* 2013-09-02 #psalm changed to class .psalm; instead of black color used #1a1a1a; */
 /* new 2013-06-19 */
-#psalm .psalm-name { text-align: center; font-weight: bold; color: #ff0000; }
-#psalm .psalm-idea { padding-top: 1em; text-align: left; font-weight: normal; color: #000000; }
+.psalm .psalm-name { text-align: center; font-weight: bold; color: #ff0000; }
+.psalm .psalm-idea { padding-top: 1em; text-align: left; font-weight: normal; color: #1a1a1a; }
 
 /* new 2013-06.16 / updated 2013-06-19 and 2013-06-24 */
-#psalm p { font-weight: normal; }
-#psalm p.verse { text-indent: -2.4em; padding-left: 2.4em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: bold; }
-#psalm p.start { }
-#psalm p.solo { padding-bottom: 1em; }
-#psalm p.cont { text-indent: -1.2em; }
-#psalm p.last { padding-bottom: 1em; } /* used with cont; rarely also with start */
-#psalm p.first { padding-top: 1em; }
+.psalm p { font-weight: normal; }
+.psalm p.verse { text-indent: -2.4em; padding-left: 2.4em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: bold; }
+.psalm p.start { }
+.psalm p.solo { padding-bottom: 1em; }
+.psalm p.cont { text-indent: -1.2em; }
+.psalm p.last { padding-bottom: 1em; } /* used with cont; rarely also with start */
+.psalm p.first { padding-top: 1em; }
 
-p.last:after { content: '\00a0\2014'; color: #ff0000; font-weight: normal; } /* &nbsp;&emdash; -- em dash at the end of stanza */
+.psalm p.last:after { content: '\00a0\2014'; color: #ff0000; font-weight: normal; } /* &nbsp;&emdash; -- em dash at the end of stanza */
 
 /* new 2013-05-24 */
-#psalm p.emptyline { -webkit-margin-after: 1em; }
+.psalm p.emptyline { -webkit-margin-after: 1em; }
 
 /* new 2013-05-19 */
 .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { color: #ff0000; font-size: 80%; }
 .antiphon { font-weight: bold; margin-top: 1em; margin-bottom: 1em; }
 
 /* new 2013-04-18 */
-#psalm .psalm-title { text-align: center; font-weight: bold; color: #ff0000; font-size: larger; }
-#psalm .psalm-subtitle { text-align: center; color: #ff0000; font-weight: normal; }
+.psalm .psalm-title { text-align: center; font-weight: bold; color: #ff0000; font-size: larger; }
+.psalm .psalm-subtitle { text-align: center; color: #ff0000; font-weight: normal; }
 
 /* new 2013-04-02 */
 #week-day .day-title {font-weight: bold; font-size: larger; text-align: center;}
@@ -45,9 +46,9 @@ div.biblereference {color: #ff0000; text-align: right;}
 .bold { font-weight: bold; }
 .boldit { font-weight: bold; font-style: italic; }
 .it { font-style: italic; }
-.normal { color: #000000; }
+.normal { color: #1a1a1a; }
 .tt { font-family: Monospace; }
-.parameter { font-weight: bold; font-style: normal; font-family: Monospace; color: black; }
+.parameter { font-weight: bold; font-style: normal; font-family: Monospace; color: #1a1a1a; }
 .value { font-weight: bold; font-style: normal; font-family: Monospace; color: brown; }
 .brown { color: brown; }
 .brownsmall { font-size: 85%; color: brown; }
@@ -61,11 +62,11 @@ div.biblereference {color: #ff0000; text-align: right;}
 /* apply to all elements */ { font-family: inherit; font-size: 100%; font-weight: normal; }
 body, html { 
 	background-color: #FFFFCC;
-	color: #000000;
+	color: #1a1a1a;
 	font-family: Cambria, Constantia, Georgia, Lido STF, DejaVu, Liberation, GentiumPlus, Gentium, Garamond, Serif;
 	font-weight: normal; 
 }
-p { font-family: inherit; color: #000000; font-style: normal; }
+p { font-family: inherit; color: #1a1a1a; font-style: normal; }
 
 
 .duoraz { 
@@ -85,8 +86,8 @@ a.quiet:hover { text-decoration:none; color: inherit; }
 a.quiet:visited { text-decoration:none; color: inherit; }
 a.quiet:active { text-decoration:none; color: inherit; }
 
-a { font-family: inherit; color: #000000; text-decoration: underline; }
-a:hover { color: white; background-color: #663300; text-decoration:none; }
+a { font-family: inherit; color: #1a1a1a; text-decoration: none; border-bottom: 1px dotted; }
+a:hover { color: white; background-color: #663300; text-decoration: none; border: none; }
 a:active { color: gray; text-decoration: underline; }
 a img { border: none }
 a.explain { color: #330000; font-size: 100%; }
@@ -99,21 +100,21 @@ a.button {
 	font-size : 90%; 
 	font-style: normal;
 	text-decoration: none; 
-	color: #000000; 
-	border: solid 0px #000000; }
+	color: #1a1a1a; 
+	border: solid 0px #1a1a1a; }
 
 table { color: #505000; }
 tr.paragraph { text-indent: 3em; line-height: 120%; }
-td { font-family: inherit; font-size: 95%; color: #000000}
+td { font-family: inherit; font-size: 95%; color: #1a1a1a}
 
 hr {	height: 0.2mm;
 	size: 1px;
 	width: 33%; 
 	color: gray; }
 
-select { background: white; font-family: inherit; font-size : 95%; color: #000000}
+select { background: white; font-family: inherit; font-size : 95%; color: #1a1a1a}
 
-input { border: 1px; font-family: inherit; font-size : 95%; color: #000000; }
+input { border: 1px; font-family: inherit; font-size : 95%; color: #1a1a1a; }
 
 /* modlitby */
 input.button, input.reset { 
@@ -124,8 +125,8 @@ input.button, input.reset {
 	font-size : 90%; 
 	font-style: normal;
 	text-decoration: none; 
-	color: #000000; 
-	border: solid 0px #000000; }
+	color: #1a1a1a; 
+	border: solid 0px #1a1a1a; }
 
 /* << >> */
 input.button0, input.reset0 { 
@@ -137,7 +138,7 @@ input.button0, input.reset0 {
 	font-style: normal;
 	text-decoration: none; 
 	color: White; 
-	border: solid 0px #000000; }
+	border: solid 0px #1a1a1a; }
 
 /* dnes */
 input.button1, input.reset1 { 
@@ -151,7 +152,7 @@ input.button1, input.reset1 {
 	font-variant: none;
 	text-decoration: none; 
 	color: White;
-	border: solid 0px #000000; }
+	border: solid 0px #1a1a1a; }
 
 /* menej podstatné buttony */
 input.button2, input.reset2 { 
@@ -162,8 +163,8 @@ input.button2, input.reset2 {
 	font-size : 90%; 
 	font-style: italic;
 	text-decoration: none; 
-	color: #000000; 
-	border: solid 0px #000000; }
+	color: #1a1a1a; 
+	border: solid 0px #1a1a1a; }
 
 input.text { border-style: solid; background: white; }
 
