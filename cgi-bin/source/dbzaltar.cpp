@@ -4108,7 +4108,7 @@ void _set_zalmy_pc_40_27(short int modlitba){
 	if(modlitba == MODL_POSV_CITANIE){
 		set_zalm(1, modlitba, "z40.htm", "ZALM40_I");
 		set_zalm(2, modlitba, "z40.htm", "ZALM40_II");
-		set_zalm(3, modlitba, "z27.htm", "ZALM27,1-9");
+		set_zalm(3, modlitba, "z27.htm", "ZALM27,1-6");
 	}
 	Log("_set_zalmy_pc_40_27(%s) -- end\n", nazov_modlitby(modlitba));
 }
@@ -12484,7 +12484,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							_vlastna_cast_full(modlitba);
 
 							modlitba = MODL_POSV_CITANIE;
-							// 2012-02-06: vlastná psalmódia: Žalm 40, 2–14. 17–18; Žalm 27, 1–9
+							// 2012-02-06: vlastná psalmódia: Žalm 40, 2–14. 17–18; Žalm 27, 1-6 (chybne v tlaèenom propriu uvedené na str. 42: 1–9)
 							_set_zalmy_pc_40_27(modlitba);
 							_vlastna_cast_full(modlitba);
 
