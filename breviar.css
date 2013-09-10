@@ -1,3 +1,10 @@
+/* 2013-09-09 class .preces for prayers and intercessions */
+.preces p { font-weight: normal; }
+.preces p.partR, p.partV, p.intro { text-indent: -1.2em; padding-left: 1.2em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: bold; }
+.preces p.resp { padding-left: 1.2em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: normal; font-style: italic; }
+.preces p.partV:before { content: '\2014\00a0'; color: #ff0000; font-weight: normal; }
+.preces p.first { padding-bottom: 1em; }
+
 /* 2013-09-02 #psalm changed to class .psalm; instead of black color used #1a1a1a; */
 /* new 2013-06-19 */
 .psalm .psalm-name { text-align: center; font-weight: bold; color: #ff0000; }
@@ -38,6 +45,7 @@ div.biblereference {color: #ff0000; text-align: right;}
 
 /* apply to all elements, used for <span> (character style) and <div> (paragraph style), 2005-07-27 */
 .red { color: #ff0000; }
+.rednormal { color: #ff0000; font-weight: normal; }
 .redit { color: #ff0000; font-style: italic; }
 .blue { color: #0066ff; }
 .redsmall { color: #ff0000; font-size: 80%; }

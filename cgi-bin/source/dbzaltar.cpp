@@ -24144,7 +24144,8 @@ label_25_MAR:
 							break;
 						}
 						_global_svaty1.typslav = SLAV_SLAVNOST;
-						_global_svaty1.smer = 4; // miestne slávnosti pod¾a miestneho kalendára
+						_global_svaty1.smer = 3; // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+						// _global_svaty1.smer = 4; // miestne slávnosti pod¾a miestneho kalendára
 						mystrcpy(_global_svaty1.meno, text_AUG_08_OP[_global_jazyk], MENO_SVIATKU);
 						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 						_global_svaty1.farba = LIT_FARBA_BIELA;
