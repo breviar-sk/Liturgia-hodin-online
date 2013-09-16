@@ -26700,6 +26700,7 @@ label_25_MAR:
 
 						// 2008-12-09: doplnenÈ kompletÛrium 
 						// 2010-09-28: kompletÛrium öpeci·lne nastavenÈ len ak sviatok padne na nedeæu
+						// 2013-09-15: kompletÛrium öpeci·lne nastavenÈ aj ak je to sobota (treba vziaù kompletÛrium po druh˝ch veöper·ch; neberie sa kompletÛrium po prv˝ch veöper·ch)
 						if(_global_den.denvt == DEN_NEDELA){
 							modlitba = MODL_PRVE_KOMPLETORIUM;
 							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
@@ -26707,6 +26708,11 @@ label_25_MAR:
 							modlitba = MODL_KOMPLETORIUM;
 							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
 						}// DEN_NEDELA
+						else if(_global_den.denvt == DEN_SOBOTA){
+							modlitba = MODL_KOMPLETORIUM;
+							_set_kompletorium_slavnost(modlitba, _global_den.litobd);
+						}// DEN_SOBOTA
+
 						if(poradie_svaty != UNKNOWN_PORADIE_SVATEHO) break;
 					}
 					_global_svaty1.typslav = SLAV_SVIATOK;
