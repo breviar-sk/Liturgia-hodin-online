@@ -1316,8 +1316,8 @@ char _file_pc[SMALL]; // nazov fajlu pre posvatne citania
 char _file_pc_tyzden[SMALL]; // nazov fajlu pre posvatne citania v zavislosti od tyzdna (obdobie cez rok)
 char _file_orig[SMALL]; // nazov súboru, do ktorého sa v prípade kompletória doèasne odloží pôvodný súbor
 // 2008-01-18: doplnené "funkcie" na store/restore pôvodného filename
-#define file_name_zapamataj()	sprintf(_file_orig, _file);
-#define file_name_obnov()		sprintf(_file, _file_orig);
+#define file_name_zapamataj()	strcpy(_file_orig, _file);
+#define file_name_obnov()		strcpy(_file, _file_orig);
 
 // tyzzal == 1 .. 4, den == 0 (DEN_NEDELA) .. 6 (DEN_SOBOTA)
 void file_name_zaltar(short int den, short int tyzzal){
