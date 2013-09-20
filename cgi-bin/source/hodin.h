@@ -598,10 +598,6 @@ const char *html_farba_popredie[POCET_FARIEB_REALNYCH + 1] =
 const char *html_farba_okraj[POCET_FARIEB_REALNYCH + 1] =
 {"#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* black */};
 
-// 2011-03-24: pridané pre kalendárik
-const char *html_farba_pozadie_cal = "#000000";
-const char *html_farba_popredie_cal = "#ffffff";
-
 // codes for number of the week from psaltery (psalterium per quattuor hebdomadas distributum)
 const char *rimskymi_tyzden_zaltara[ZVAZKY_LH + 1] =
 {"_", "I", "II", "III", "IV"};

@@ -923,6 +923,8 @@ extern short int query_type; // premenna obsahujuca PRM_...
 
 #define HTML_LINK_RED    "a class=\"red\""
 #define HTML_LINK_NORMAL "a"
+#define HTML_LINK_CLASS_B "a class=\""
+#define HTML_LINK_CLASS_E "\""
 
 #define HTML_NONBREAKING_SPACE "&nbsp;"
 #define HTML_SPACE " "
@@ -949,6 +951,15 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_SPAN_VALUE     "span class=\"value\""
 #define HTML_SPAN_SMALLCAPS "span class=\"smallcaps\""
 #define HTML_SPAN_XS_CAPS   "span class=\"xsmallcaps\""
+
+#define HTML_CALENDAR_HEADING "span class=\"calendar heading\""
+#define HTML_CALENDAR_DAYS   "span class=\"calendar day_name\""
+#define HTML_CALENDAR_TODAY_SUNDAY   "span class=\"calendar today bold\""
+#define HTML_CALENDAR_TODAY   "span class=\"calendar today\""
+#define HTML_CLASS_NAME_CALENDAR_TODAY_SUNDAY "calendar today bold"
+#define HTML_CLASS_NAME_CALENDAR_TODAY "calendar today"
+#define HTML_CLASS_NAME_CALENDAR_SUNDAY "calendar day bold"
+#define HTML_CLASS_NAME_CALENDAR_DAY "calendar day"
 
 #define HTML_SPAN_TOOLTIP   "span title=\"%s\"" // obsahuje %s
 #define HTML_SPAN_BOLD_TOOLTIP   "span class=\"bold\" title=\"%s\"" // obsahuje %s
@@ -980,6 +991,9 @@ extern short int query_type; // premenna obsahujuca PRM_...
 // 2007-03-19: pridané namiesto gt a lt html znakov
 #define HTML_LEFT_ARROW			"&laquo;"
 #define HTML_RIGHT_ARROW		"&raquo;"
+
+#define HTML_LEFT_ARROW_WIDE	"&nbsp;&laquo;&nbsp;"
+#define HTML_RIGHT_ARROW_WIDE	"&nbsp;&raquo;&nbsp;"
 
 #define HTML_LINK_CALL1         "%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
 #define HTML_LINK_CALL2         "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"

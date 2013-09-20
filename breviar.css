@@ -1,3 +1,10 @@
+/* 2013-09-19 class for calendar */
+.calendar { padding: 4px 4px 4px 0; }
+.calendar.heading { display: inline !important; padding: 4px 4px 0px 0; display: block; border-top: 0px; border-bottom: 0px; border-left: 1px; border-right: 1px; width: 22px; font-weight: bold; }
+.calendar.day_name { padding: 4px 4px 0px 0; display: block; border-top: 0px; border-bottom: 0px; border-left: 1px; border-right: 1px; width: 22px; font-style: italic; }
+.calendar.day { display: block; border-top: 1px dotted; border-bottom: 1px dotted; border-left: 1px dotted; border-right: 1px dotted; width: 22px; }
+.calendar.today { display: block; border-top: 1px dotted; border-bottom: 1px dotted; border-left: 1px dotted; border-right: 1px dotted; width: 22px; color: #FFFFCC; background-color: #1a1a1a; }
+
 /* 2013-09-09 class .preces for prayers and intercessions */
 .preces p { font-weight: normal; }
 .preces p.partR, p.partV, p.intro { text-indent: -1.2em; padding-left: 1.2em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: bold; }
@@ -95,7 +102,7 @@ a.quiet:visited { text-decoration:none; color: inherit; }
 a.quiet:active { text-decoration:none; color: inherit; }
 
 a { font-family: inherit; color: #1a1a1a; text-decoration: none; border-bottom: 1px dotted; }
-a:hover { color: white; background-color: #663300; text-decoration: none; border: none; }
+a:hover { color: white; background-color: #663300; text-decoration: none; }
 a:active { color: gray; text-decoration: underline; }
 a img { border: none }
 a.explain { color: #330000; font-size: 100%; }

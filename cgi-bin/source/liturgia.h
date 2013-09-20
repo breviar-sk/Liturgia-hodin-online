@@ -1409,10 +1409,12 @@ char *convert_nonbreaking_spaces(const char *input);
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
 // podæa toho, ako sa funkcia vol·, urËÌm case (pouûitie veæk˝ch/mal˝ch pÌsmen)
 #define vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align)
+#define vytvor_global_link_class(den, mesiac, rok, typ, align, html_class)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align, html_class)
 #define Vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_Case, typ, align)
 #define VYTVOR_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_CASE, typ, align)
 // 2011-05-11: doplnen˝ nov˝ parameter align -- Ëi zarovnaù jednocifernÈ d·tumy (ËÌslovka dÚa) medzerou zæava
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class);
 
 #define PRILEP_REQUEST_OPTIONS_DEFAULT   0
 #define PRILEP_REQUEST_OPTIONS_AJ_FORCE  1

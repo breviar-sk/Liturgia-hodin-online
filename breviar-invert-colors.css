@@ -1,3 +1,5 @@
+.calendar.today { display: block; border-top: 1px dotted; border-bottom: 1px dotted; border-left: 1px dotted; border-right: 1px dotted; width: 22px; color: #333333; background-color: #CCCCCC; }
+
 .preces p.partV:before { content: '\2014\00a0'; color: #FF3333; font-weight: normal; }
 .psalm p.last:after { content: '\00a0\2014'; color: #FF3333; font-weight: normal; }
 
@@ -18,8 +20,6 @@ p.last:after { color: #FF3333; }
 .redit { color: #FF3333; font-style: italic; }
 .redsmall { color: #FF3333; }
 .redbold { color: #FF3333; }
-.bold { color: #FFFFCC; }
-.boldit { color: #FFFFCC; }
 .normal { color: #CCCCCC; }
 .parameter { font-family: Monospace; color: #CCCCCC; }
 .value { font-family: Monospace; color: yellow; }

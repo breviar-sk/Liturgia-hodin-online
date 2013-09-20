@@ -683,6 +683,14 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
  *
  */
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align){
+	Log("_vytvor_global_link(orig): volám s hodnotou html_class == NULL...\n");
+	_vytvor_global_link(den, mesiac, rok, _case, typ, align, NULL);
+	Log("_vytvor_global_link(orig): koniec.\n");
+}
+
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class){
+	Log("_vytvor_global_link(new): zaèiatok...\n");
+	Log("den == %d, mesiac == %d, rok == %d...\n", den, mesiac, rok);
 	// 2003-07-09 zmeneny & na HTML_AMPERSAND kvoli HTML 4.01
 	char pom[MAX_STR];
 	mystrcpy(pom, STR_EMPTY, MAX_STR);
@@ -694,10 +702,17 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 	char str_month[SMALL] = STR_EMPTY;
 
 	// ak pozadujeme vytvorenie linku s inou farbou pre prestupny rok, 2003-07-02
-	if(typ == LINK_DEN_MESIAC_ROK_PRESTUP)
-		mystrcpy(_global_link, "<"HTML_LINK_RED" href=\"", MAX_GLOBAL_LINK); // 2003-08-11 zmenene na mystrcpy(...,MAX_GLOBAL_LINK)
-	else // inak normalny a href, toto tu bolo predtym; 2003-07-02
-		mystrcpy(_global_link, "<"HTML_LINK_NORMAL" href=\"", MAX_GLOBAL_LINK); // 2003-08-11 zmenene na mystrcpy(...,MAX_GLOBAL_LINK)
+	if(typ == LINK_DEN_MESIAC_ROK_PRESTUP){
+		mystrcpy(_global_link, "<"HTML_LINK_RED" href=\"", MAX_GLOBAL_LINK);
+	}
+	else{ // inak normalny a href, toto tu bolo predtym; 2003-07-02
+		if((html_class != NULL) && (strlen(html_class) > 0)){
+			sprintf(_global_link, "<"HTML_LINK_CLASS_B"%s"HTML_LINK_CLASS_E" href=\"", html_class);
+		}
+		else{
+			mystrcpy(_global_link, "<"HTML_LINK_NORMAL" href=\"", MAX_GLOBAL_LINK);
+		}
+	}
 
 	if(_global_opt_batch_monthly == NIE){ 
 		// 13/04/2000A.D.: podla toho, co je v _global_linky, sa bud zobrazi to co klasicky (linka), alebo linka na subor FILE_NAME_POKEC + "d"/"m"/"r" + ".htm"
@@ -791,10 +806,12 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 				if(mesiac == VSETKY_MESIACE)
 					sprintf(pom, "%d</a>", rok);
 				else{
-					if(typ == LINK_DEN_MESIAC_PREDOSLY)
-						sprintf(pom, ""HTML_LEFT_ARROW"");
-					else if(typ == LINK_DEN_MESIAC_NASLEDOVNY)
-						sprintf(pom, ""HTML_RIGHT_ARROW"");
+					if(typ == LINK_DEN_MESIAC_PREDOSLY){
+						sprintf(pom, ""HTML_LEFT_ARROW_WIDE"");
+					}
+					else if(typ == LINK_DEN_MESIAC_NASLEDOVNY){
+						sprintf(pom, ""HTML_RIGHT_ARROW_WIDE"");
+					}
 					else{
 						switch(_case){
 							case CASE_case:
@@ -817,10 +834,12 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 				}// mesiac != VSETKY_MESIACE
 			}// if(den == VSETKY_DNI)
 			else{
-				if(typ == LINK_DEN_MESIAC_PREDOSLY)
-					sprintf(pom, ""HTML_LEFT_ARROW"");
-				else if(typ == LINK_DEN_MESIAC_NASLEDOVNY)
-					sprintf(pom, ""HTML_RIGHT_ARROW"");
+				if(typ == LINK_DEN_MESIAC_PREDOSLY){
+					sprintf(pom, ""HTML_LEFT_ARROW_WIDE"");
+				}
+				else if(typ == LINK_DEN_MESIAC_NASLEDOVNY){
+					sprintf(pom, ""HTML_RIGHT_ARROW_WIDE"");
+				}
 				else{
 					// 2011-05-11: vytiahnuté do _vytvor_string_z_datumu() ako samostatná funkcia
 					strcpy(pom, _vytvor_string_z_datumu(den, mesiac, rok, _case, typ, align));
@@ -850,7 +869,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 	}// switch(typ)
 
 	strcat(_global_link, pom);
-
+	Log("_vytvor_global_link(new): koniec.\n");
 }// _vytvor_global_link();
 
 // vrati 1, ak je rok priestupny, inak vrati 0

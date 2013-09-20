@@ -8302,49 +8302,7 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 		// teraz vytvorÌme reùazec s options
 		prilep_request_options(pom2, pom3);
 
-		// 2007-08-15: pokus o krajöie zobrazenie formou kalend·ra
-#undef ZOZNAM_DNI_MESIACOV_OLD
-#ifdef ZOZNAM_DNI_MESIACOV_OLD
-		// zoznam ËÌsel dnÌ
-		Export("<"HTML_SPAN_SMALL">\n");
-
-		Vytvor_global_link(VSETKY_DNI, _global_den.mesiac, _global_den.rok, LINK_DEN_MESIAC, NIE);
-		Export("<"HTML_SPAN_BOLD">%s:</span> ", _global_link);
-		for(i = 1; i <= pocet_dni[_global_den.mesiac - 1]; i++){
-			if(i == _global_den.den){
-				if(((i + _global_den.denvt - _global_den.den) MOD 7) == 0)
-					// nedeæa
-					Export("<"HTML_SPAN_BLUE_BOLD">%d</span> ", i);
-				else
-					Export("<"HTML_SPAN_BLUE">%d</span> ", i);
-			}
-			else{
-				vytvor_global_link(i, _global_den.mesiac, _global_den.rok, LINK_DEN, NIE);
-				if(((i + _global_den.denvt - _global_den.den) MOD 7) == 0)
-					// nedeæa
-					Export("<"HTML_SPAN_BOLD">%s</span> ", _global_link);
-				else
-					Export("%s ", _global_link);
-			}
-		}
-		Export(HTML_LINE_BREAK);
-
-		// teraz zoznam mesiacov
-		Vytvor_global_link(VSETKY_DNI, VSETKY_MESIACE, _global_den.rok, LINK_DEN_MESIAC, NIE);
-		Export("<"HTML_SPAN_BOLD">%s:</span> ", _global_link);
-		for(i = 1; i <= 12; i++){
-			if(i == _global_den.mesiac){
-				Export("<"HTML_SPAN_BLUE">%s</span> ", nazov_Mesiaca(i - 1));
-			}
-			else{
-				Vytvor_global_link(VSETKY_DNI, i, _global_den.rok, LINK_DEN_MESIAC, NIE);
-				Export("%s ", _global_link);
-			}
-		}
-		
-		Export("\n</span>\n"); // n·protivok span small
-#else
-
+		Export("\n<div class=\"kalendar\">\n");
 		// zoznam dnÌ vo forme kalend·rika
 		Export("\n<table "HTML_ALIGN_CENTER">\n");
 
@@ -8365,13 +8323,13 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 		else
 			i = _global_den.den;
 		Vytvor_global_link(i, j, k, LINK_DEN_MESIAC_PREDOSLY, NIE);
-		Export("<"HTML_SPAN_BOLD">%s</span>", _global_link);
+		Export("<"HTML_CALENDAR_HEADING">%s</span>", _global_link);
 
 		Export(HTML_NONBREAKING_SPACE); // oddelenie << a mesiaca
 
 		// n·zov mesiaca
 		Vytvor_global_link(VSETKY_DNI, _global_den.mesiac, _global_den.rok, LINK_DEN_MESIAC, NIE);
-		Export("<"HTML_SPAN_BOLD">%s</span>", _global_link);
+		Export("<"HTML_CALENDAR_HEADING">%s</span>", _global_link);
 
 		Export(HTML_NONBREAKING_SPACE); // oddelenie mesiaca a roka
 
@@ -8383,7 +8341,7 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 			// 2009-08-12: pre batch mÛd export vytlaËÌme len rok bez linku
 			sprintf(_global_link, "%d", _global_den.rok);
 		}// else if(_global_opt_batch_monthly == NIE)
-		Export("<"HTML_SPAN_BOLD">%s</span>", _global_link);
+		Export("<"HTML_CALENDAR_HEADING">%s</span>", _global_link);
 
 		Export(HTML_NONBREAKING_SPACE); // oddelenie roka a >>
 
@@ -8401,14 +8359,14 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 		else
 			i = _global_den.den;
 		Vytvor_global_link(i, j, k, LINK_DEN_MESIAC_NASLEDOVNY, NIE);
-		Export("<"HTML_SPAN_BOLD">%s</span>", _global_link);
+		Export("<"HTML_CALENDAR_HEADING">%s</span>", _global_link);
 
 		Export("</th>\n</tr>\n");
 
 		// prv˝ riadok tabuæky "hlaviËka" so skratkami dnÌ v t˝ûdni
 		Export("<tr><!--(hlaviËka)-->\n");
 		for(k = DEN_NEDELA; k <= DEN_SOBOTA; k++){
-			Export("<td "HTML_ALIGN_RIGHT">%s</td>", (char *)nazov_Dn(k));
+			Export("<td "HTML_ALIGN_RIGHT"><"HTML_CALENDAR_DAYS">%s</span></td>", (char *)nazov_Dn(k));
 		}
 		Export("</tr>\n");
 
@@ -8431,21 +8389,24 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 					Export("</tr>\n");
 					Export("<tr><!--(ÔalöÌ riadok)-->\n");
 					// nedeæa
-					Export("<td "HTML_ALIGN_RIGHT" bgcolor=\"%s\"><font color=\"%s\"><b>%d</b></font></td> ", (char *)html_farba_pozadie_cal, (char *)html_farba_popredie_cal, i);
+					Export("<td "HTML_ALIGN_RIGHT"><"HTML_CALENDAR_TODAY_SUNDAY">%d</span></td> ", i);
 				}
-				else
-					Export("<td "HTML_ALIGN_RIGHT" bgcolor=\"%s\"><font color=\"%s\">%d</font></td> ", (char *)html_farba_pozadie_cal, (char *)html_farba_popredie_cal, i);
+				else{
+					Export("<td "HTML_ALIGN_RIGHT"><"HTML_CALENDAR_TODAY">%d</span></td> ", i);
+				}
 			}
 			else{
-				vytvor_global_link(i, _global_den.mesiac, _global_den.rok, LINK_DEN, NIE);
 				if(((i + _global_den.denvt - _global_den.den) MOD 7) == 0){
+					vytvor_global_link_class(i, _global_den.mesiac, _global_den.rok, LINK_DEN, NIE, HTML_CLASS_NAME_CALENDAR_SUNDAY);
 					Export("</tr>\n");
 					Export("<tr><!--(ÔalöÌ riadok)-->\n");
 					// nedeæa
-					Export("<td "HTML_ALIGN_RIGHT"><"HTML_SPAN_BOLD">%s</span></td> ", _global_link);
-				}
-				else
 					Export("<td "HTML_ALIGN_RIGHT">%s</td> ", _global_link);
+				}
+				else{
+					vytvor_global_link_class(i, _global_den.mesiac, _global_den.rok, LINK_DEN, NIE, HTML_CLASS_NAME_CALENDAR_DAY);
+					Export("<td "HTML_ALIGN_RIGHT">%s</td> ", _global_link);
+				}
 			}
 		}
 
@@ -8461,8 +8422,7 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 
 		Export("</tr>\n");
 		Export("</table>\n");
-#endif
-
+		Export("</div>\n");
 	}// if(typ)
 	else{
 		// inak kalendar nedavam
