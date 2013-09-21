@@ -27,7 +27,7 @@ static jobject out_fd;
 static JNIEnv* jenv;
 
 static void err(const char *msg) {
-  __android_log_print(ANDROID_LOG_INFO, "Breviar", msg);
+  __android_log_print(ANDROID_LOG_INFO, "Breviar", "%s", msg);
   exit(1);
 }
 
@@ -212,7 +212,7 @@ JNIEXPORT jobjectArray JNICALL Java_sk_breviar_android_Server_createPipe(JNIEnv*
   }
 
   if (pipe(fd)) {
-    __android_log_print(ANDROID_LOG_INFO, "Breviar", strerror(errno));
+    __android_log_print(ANDROID_LOG_INFO, "Breviar", "%s", strerror(errno));
     return NULL;
   }
   res = env->NewObjectArray(2, fdcls, NULL);
