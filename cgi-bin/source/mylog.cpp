@@ -164,12 +164,22 @@ void Logint(short int c){
 
 #else /* nie LOGGING */
 
-short int initLog(const char *fname){return 0;}
+short int initLog(const char *fname){
+	Q_UNUSED(fname);
+	return 0;
+}
 /* void bothLogs(void){} */
 /* void fileLog(void){} */
-short int closeLog(void){return 0;}
-short int __Log(const char *fmt, ...){return 0;}
-void Logint(short int c){};
+short int closeLog(void){
+	return 0;
+}
+short int __Log(const char *fmt, ...){
+	Q_UNUSED(fmt);
+	return 0;
+}
+void Logint(short int c){
+	Q_UNUSED(c);
+};
 
 #endif /* LOGGING */
 

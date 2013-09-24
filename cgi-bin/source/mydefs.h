@@ -65,6 +65,8 @@
 /***************************************************************/
 #include <stdio.h>
 
+#define Q_UNUSED(arg) (void)arg;
+
 #define SMALL 80
 #define VERY_SMALL 8
 
@@ -898,7 +900,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	char pom3[MAX_STR];\
 	mystrcpy(pom3, STR_EMPTY, MAX_STR);\
 	prilep_request_options(pom2, pom3);\
-	_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNA_DNES, 2 /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
+	_export_rozbor_dna_buttons_dni_dnes(2 /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
 	}
 
 // HTML stringy - casti stringov sustredene na tomto mieste; pridane 2003-07-02; rozšírené 2011-01-27
@@ -952,6 +954,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_SPAN_SMALLCAPS "span class=\"smallcaps\""
 #define HTML_SPAN_XS_CAPS   "span class=\"xsmallcaps\""
 
+#define HTML_CLASS_CALENDAR "class=\"calendar\""
 #define HTML_CALENDAR_HEADING "span class=\"calendar heading\""
 #define HTML_CALENDAR_DAYS   "span class=\"calendar day_name\""
 #define HTML_CALENDAR_TODAY_SUNDAY   "span class=\"calendar today bold\""

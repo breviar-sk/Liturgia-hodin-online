@@ -2316,7 +2316,9 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				}
 				// DetailLog("%c", c);
 			}
-			else ; //skip
+			else{
+				; //skip
+			}
 		}// if(!isbuff)
 		else{
 			strbuff[buff_index++] = (char)c;
@@ -3892,16 +3894,18 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			includeFile(type, paramname, path, _global_modl_posv_citanie.citanie1.anchor);
 			Log("interpretParameter(): equals(paramname, PARAM_CITANIE1), po spustenÌ includeFile().\n");
 		}
-		else // ostatnÈ modlitby 1. ËÌtanie nemaj˙
-		;
+		else{
+			; // ostatnÈ modlitby 1. ËÌtanie nemaj˙
+		}
 	}// PARAM_CITANIE1
 	else if(equals(paramname, PARAM_CITANIE2)){
 		if(type == MODL_POSV_CITANIE){
 			strcat(path, _global_modl_posv_citanie.citanie2.file);
 			includeFile(type, paramname, path, _global_modl_posv_citanie.citanie2.anchor);
 		}
-		else // ostatnÈ modlitby 2. ËÌtanie nemaj˙
-		;
+		else{
+			; // ostatnÈ modlitby 2. ËÌtanie nemaj˙
+		}
 	}// PARAM_CITANIE2
 	else if(equals(paramname, PARAM_MAGNIFIKAT)){
 		// ak _global_skip_in_prayer je ANO, tak preskoc Magnifikat
@@ -3915,8 +3919,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				includeFile(type, paramname, path, _global_modl_prve_vespery.magnifikat.anchor);
 			}
 		}
-		else // ostatnÈ modlitby nemaj˙ veËern˝ chv·lospev
-		;
+		else{
+			; // ostatnÈ modlitby nemaj˙ veËern˝ chv·lospev
+		}
 	}// PARAM_MAGNIFIKAT
 	else if(equals(paramname, PARAM_ANTVCHVAL)){
 		antifona_pocet++;
@@ -3928,8 +3933,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			strcat(path, _global_modl_prve_vespery.antifona3.file);
 			includeFile(type, paramname, path, _global_modl_prve_vespery.antifona3.anchor);
 		}
-		else // ostatnÈ modlitby nemaj˙ veËern˝ chv·lospev
-		;
+		else{
+			; // ostatnÈ modlitby nemaj˙ veËern˝ chv·lospev
+		}
 	}// PARAM_ANTVCHVAL
 	else if(equals(paramname, PARAM_VCHVALOSPEV)){
 		if(type == MODL_VESPERY){
@@ -3940,8 +3946,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			strcat(path, _global_modl_prve_vespery.zalm3.file);
 			includeFile(type, paramname, path, _global_modl_prve_vespery.zalm3.anchor);
 		}
-		else // ostatnÈ modlitby nemaj˙ veËern˝ chv·lospev
-		;
+		else{
+			; // ostatnÈ modlitby nemaj˙ veËern˝ chv·lospev
+		}
 	}// PARAM_VCHVALOSPEV
 	else if(equals(paramname, PARAM_BENEDIKTUS)){
 		// ak _global_skip_in_prayer je ANO, tak preskoc Benediktus
@@ -3949,8 +3956,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			strcat(path, _global_modl_ranne_chvaly.benediktus.file);
 			includeFile(type, paramname, path, _global_modl_ranne_chvaly.benediktus.anchor);
 		}
-		else // ostatnÈ modlitby nemaj˙ rann˝ chv·lospev
-		;
+		else{
+			; // ostatnÈ modlitby nemaj˙ rann˝ chv·lospev
+		}
 	}// PARAM_BENEDIKTUS
 	else if(equals(paramname, PARAM_ANTRCHVAL)){
 		antifona_pocet++;
@@ -3958,16 +3966,18 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			strcat(path, _global_modl_ranne_chvaly.antifona2.file);
 			includeFile(type, paramname, path, _global_modl_ranne_chvaly.antifona2.anchor);
 		}
-		else // ostatnÈ modlitby nemaj˙ rann˝ chv·lospev
-		;
+		else{
+			; // ostatnÈ modlitby nemaj˙ rann˝ chv·lospev
+		}
 	}// PARAM_ANTRCHVAL
 	else if(equals(paramname, PARAM_RCHVALOSPEV)){
 		if(type == MODL_RANNE_CHVALY){
 			strcat(path, _global_modl_ranne_chvaly.zalm2.file);
 			includeFile(type, paramname, path, _global_modl_ranne_chvaly.zalm2.anchor);
 		}
-		else // ostatnÈ modlitby nemaj˙ rann˝ chv·lospev
-		;
+		else{
+			; // ostatnÈ modlitby nemaj˙ rann˝ chv·lospev
+		}
 	}// PARAM_RCHVALOSPEV
 	else if(equals(paramname, PARAM_NUNC_DIMITTIS)){
 		if(((type == MODL_KOMPLETORIUM) || (type == MODL_PRVE_KOMPLETORIUM)) && (_global_skip_in_prayer != ANO)){
@@ -3980,8 +3990,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				includeFile(type, paramname, path, _global_modl_prve_kompletorium.nunc_dimittis.anchor);
 			}
 		}
-		else // ostatnÈ modlitby nemaj˙ Nunc dimittis
-		;
+		else{
+			; // ostatnÈ modlitby nemaj˙ Nunc dimittis
+		}
 	}// PARAM_NUNC_DIMITTIS
 	else if(equals(paramname, PARAM_PROSBY)){
 		switch(type){
@@ -6691,7 +6702,7 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 #endif
 }// _export_rozbor_dna_button_modlitba();
 
-void _export_rozbor_dna_button_modlitba2(short int modl, char pom[MAX_STR], short int som_v_tabulke){
+void _export_rozbor_dna_button_modlitba2(short int modl, char pom[MAX_STR]){
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 	if((query_type == PRM_LIT_OBD) && (modl == MODL_VSETKY)){
@@ -7224,7 +7235,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		// button 'Vöetky modlitby...'
 		i = MODL_VSETKY;
 		if(_global_linky == ANO){
-			_export_rozbor_dna_button_modlitba2(i, pom, som_v_tabulke);
+			_export_rozbor_dna_button_modlitba2(i, pom);
 		}
 #endif
 
@@ -7248,7 +7259,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 			// button 'Detaily...'
 			i = MODL_DETAILY;
 			if(_global_linky == ANO){
-				_export_rozbor_dna_button_modlitba2(i, pom, som_v_tabulke);
+				_export_rozbor_dna_button_modlitba2(i, pom);
 			}// ak nie zobrazovat linky na internet (2009-08-11: teda napr. pre batch mÛd), tlacidlo `Detaily...' je zbytocne
 		}// ma_na_vyber_spolocne_casti(poradie_svateho)
 		else{
@@ -7296,7 +7307,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 	Log("--- _export_rozbor_dna_buttons(typ == %d) -- end\n", typ);
 }// _export_rozbor_dna_buttons()
 
-void _export_rozbor_dna_buttons_dni_dnes(short int typ, short int dnes_dnes, short int som_v_tabulke, char pom2[MAX_STR], short int zobraz_odkaz_na_skrytie){
+void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_tabulke, char pom2[MAX_STR], short int zobraz_odkaz_na_skrytie){
 #ifdef OS_Windows_Ruby
 	Export("\n<!--buttons/dni/dnes:begin-->\n");
 #endif
@@ -7421,14 +7432,14 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 
 	if(query_type == PRM_LIT_OBD){
 		Log("pre query_type == PRM_LIT_OBD sa dni netlaËia (nem·m nastaven˝ d·tum), iba 'dnes'...\n");
-		_export_rozbor_dna_buttons_dni_dnes(typ, ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+		_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 		return;
 	}// query_type == PRM_LIT_OBD
 
 	if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2)){
 		// najprv dnes, potom ostatnÈ
 		if((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)){
-			_export_rozbor_dna_buttons_dni_dnes(typ, ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 		}
 	}// if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2))
 
@@ -7617,7 +7628,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 
 		// 2007-03-19: DorobenÈ tlaËidlo pre dneöok
 		// 2011-10-07: presunutÈ do samostatnej funkcie
-		_export_rozbor_dna_buttons_dni_dnes(typ, dnes_dnes, som_v_tabulke, pom2, NIE);
+		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, som_v_tabulke, pom2, NIE);
 
 		// vypoËÌtanie nasleduj˙ceho dÚa
 		zmena_mesiaca = NIE;
@@ -7781,7 +7792,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 	if((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2)){
 		// najprv ostatnÈ, potom dnes
 		if((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)){
-			_export_rozbor_dna_buttons_dni_dnes(typ, ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 		}
 	}// if((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2))
 
@@ -7824,14 +7835,14 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 
 	if(query_type == PRM_LIT_OBD){
 		Log("pre query_type == PRM_LIT_OBD sa dni netlaËia (nem·m nastaven˝ d·tum), iba 'dnes'...\n");
-		_export_rozbor_dna_buttons_dni_dnes(typ, ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+		_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 		return;
 	}// query_type == PRM_LIT_OBD
 
 	if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2)){
 		// najprv dnes, potom ostatnÈ
 		if((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)){
-			_export_rozbor_dna_buttons_dni_dnes(typ, ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 		}
 	}// if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2))
 
@@ -7941,7 +7952,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 		// ---------------------------------------------------
 		// 2007-03-19: DorobenÈ tlaËidlo pre dneöok
 		// 2011-10-07: presunutÈ do samostatnej funkcie
-		_export_rozbor_dna_buttons_dni_dnes(typ, dnes_dnes, som_v_tabulke, pom2, NIE);
+		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, som_v_tabulke, pom2, NIE);
 
 		// ---------------------------------------------------
 		// vypoËÌtanie nasleduj˙ceho dÚa
@@ -8237,7 +8248,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 	if((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2)){
 		// najprv ostatnÈ, potom dnes
 		if((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)){
-			_export_rozbor_dna_buttons_dni_dnes(typ, ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 		}
 	}// if((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2))
 
@@ -8302,7 +8313,7 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 		// teraz vytvorÌme reùazec s options
 		prilep_request_options(pom2, pom3);
 
-		Export("\n<div class=\"kalendar\">\n");
+		Export("\n<div "HTML_CLASS_CALENDAR">\n");
 		// zoznam dnÌ vo forme kalend·rika
 		Export("\n<table "HTML_ALIGN_CENTER">\n");
 

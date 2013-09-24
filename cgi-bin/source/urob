@@ -1,6 +1,6 @@
 date
 chmod u=rwx *.*
-g++ -Wall breviar.cpp dbzaltar.cpp liturgia.cpp mygetopt.cpp mylog.cpp myhpage.cpp myexpt.cpp cgiutils.cpp myconf.cpp mydefs.cpp mystring.cpp citania.cpp
+g++ -Wall -W breviar.cpp dbzaltar.cpp liturgia.cpp mygetopt.cpp mylog.cpp myhpage.cpp myexpt.cpp cgiutils.cpp myconf.cpp mydefs.cpp mystring.cpp citania.cpp
 mv a.out l.cgi
 chmod u=rw *.cpp
 chmod u=rw *.h

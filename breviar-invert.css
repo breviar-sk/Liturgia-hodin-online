@@ -1,198 +1,579 @@
 /* 2013-09-19 class for calendar */
-.calendar { padding: 4px 4px 4px 0; }
-.calendar.heading { display: inline !important; padding: 4px 4px 0px 0; display: block; border-top: 0px; border-bottom: 0px; border-left: 1px; border-right: 1px; width: 22px; font-weight: bold; }
-.calendar.day_name { padding: 4px 4px 0px 0; display: block; border-top: 0px; border-bottom: 0px; border-left: 1px; border-right: 1px; width: 22px; font-style: italic; }
-.calendar.day { display: block; border-top: 1px dotted; border-bottom: 1px dotted; border-left: 1px dotted; border-right: 1px dotted; width: 22px; }
-.calendar.today { display: block; border-top: 1px dotted; border-bottom: 1px dotted; border-left: 1px dotted; border-right: 1px dotted; width: 22px; color: #333333; background-color: #CCCCCC; }
+.calendar { 
+	padding: 4px 4px 4px 0; 
+}
+
+.calendar.heading { 
+	border-bottom: 0px; 
+	border-left: 1px; 
+	border-right: 1px; 
+	border-top: 0px; 
+	display: inline; 
+	font-weight: bold; 
+	padding: 4px 4px 0px 0; 
+	width: 22px; 
+}
+
+.calendar.day_name { 
+	border-bottom: 0px; 
+	border-left: 1px; 
+	border-right: 1px; 
+	border-top: 0px; 
+	display: block; 
+	font-style: italic; 
+	padding: 4px 4px 0px 0; 
+	width: 22px; 
+}
+
+.calendar.day { 
+	border-bottom: 1px dotted; 
+	border-left: 1px dotted; 
+	border-right: 1px dotted; 
+	border-top: 1px dotted; 
+	display: block; 
+	width: 22px; 
+}
+
+.calendar.today { 
+	background-color: #CCCCCC; 
+	border-bottom: 1px dotted; 
+	border-left: 1px dotted; 
+	border-right: 1px dotted; 
+	border-top: 1px dotted; 
+	color: #333333; 
+	display: block; 
+	width: 22px; 
+}
 
 /* 2013-09-09 class .preces for prayers and intercessions */
-.preces p { font-weight: normal; }
-.preces p.partR, p.partV, p.intro { text-indent: -1.2em; padding-left: 1.2em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: bold; }
-.preces p.resp { padding-left: 1.2em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: normal; font-style: italic; }
-.preces p.partV:before { content: '\2014\00a0'; color: #FF3333; font-weight: normal; }
-.preces p.first { padding-bottom: 1em; }
+.preces p { 
+	font-weight: normal; 
+}
+
+.preces p.partR, p.partV, p.intro { 
+	font-weight: bold; 
+	margin: 0; 
+	padding-left: 1.2em; 
+	text-indent: -1.2em; 
+	-webkit-margin-after: 0em; 
+	-webkit-margin-before: 0em; 
+}
+
+.preces p.resp { 
+	font-style: italic; 
+	font-weight: normal; 
+	margin: 0; 
+	padding-left: 1.2em; 
+	-webkit-margin-after: 0em; 
+	-webkit-margin-before: 0em; 
+}
+
+.preces p.partV:before { 
+	color: #FF3333; 
+	content: '\2014\00a0'; 
+	font-weight: normal; 
+}
+
+.preces p.first { 
+	padding-bottom: 1em; 
+}
+
+.preces p.vel { 
+	color: #FF3333; 
+	font-style: normal; 
+	font-weight: normal; 
+	margin: 0; 
+}
 
 /* 2013-09-02 #psalm changed to class .psalm */
-.psalm .psalm-name { text-align: center; font-weight: bold; color: #FF3333; }
-.psalm .psalm-idea { padding-top: 1em; text-align: left; font-weight: normal; color: #CCCCCC; }
+.psalm .psalm-name { 
+	color: #FF3333; 
+	font-weight: bold; 
+	text-align: center; 
+}
+
+.psalm .psalm-idea { 
+	color: #CCCCCC; 
+	font-weight: normal; 
+	padding-top: 1em; 
+	text-align: left; 
+}
 
 /* new 2013-06.16 / updated 2013-06-19 and 2013-06-24 */
-.psalm p { font-weight: normal; }
-.psalm p.verse { text-indent: -2.4em; padding-left: 2.4em; margin:0; -webkit-margin-before: 0em; -webkit-margin-after: 0em; font-weight: bold; }
-.psalm p.start { }
-.psalm p.cont { text-indent: -1.2em; }
-.psalm p.last { padding-bottom: 1em; } /* used with cont; rarely also with start */
-.psalm p.first { padding-top: 1em; }
+.psalm p { 
+	font-weight: normal; 
+}
 
-p.last:after { content: '\00a0\2014'; color: #FF3333; font-weight: normal; } /* &nbsp;&emdash; -- em dash at the end of stanza */
+.psalm p.verse { 
+	font-weight: bold; 
+	margin:0; 
+	padding-left: 2.4em; 
+	text-indent: -2.4em; 
+	-webkit-margin-after: 0em; 
+	-webkit-margin-before: 0em; 
+}
+
+.psalm p.start { }
+
+.psalm p.solo { 
+	padding-bottom: 1em; 
+}
+
+.psalm p.cont { 
+	text-indent: -1.2em; 
+}
+
+.psalm p.last { /* used with cont; rarely also with start */
+	padding-bottom: 1em; 
+}
+
+.psalm p.first { 
+	padding-top: 1em; 
+}
+
+.psalm p.last:after { /* &nbsp;&emdash; -- em dash at the end of stanza */
+	color: #FF3333; 
+	content: '\00a0\2014'; 
+	font-weight: normal; 
+}
 
 /* new 2013-05-24 */
-.psalm p.emptyline { -webkit-margin-after: 1em; }
+.psalm p.emptyline { 
+	-webkit-margin-after: 1em; 
+}
 
 /* new 2013-05-19 */
-.hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { color: #FF3333; font-size: 80%; }
-.antiphon { font-weight: bold; margin-top: 1em; margin-bottom: 1em; }
+.hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
+	color: #FF3333; 
+	font-size: 80%; 
+}
+
+.antiphon { 
+	font-weight: bold; 
+	margin-bottom: 1em; 
+	margin-top: 1em; 
+}
 
 /* new 2013-04-18 */
-.psalm .psalm-title {text-align: center; font-weight: bold; color: #FF3333; font-size: larger; }
-.psalm .psalm-subtitle {text-align: center; color: #FF3333; }
+.psalm .psalm-title { 
+	color: #FF3333; 
+	font-size: larger; 
+	font-weight: bold; 
+	text-align: center; 
+}
+
+.psalm .psalm-subtitle { 
+	color: #FF3333; 
+	font-weight: normal; 
+	text-align: center; 
+}
 
 /* new 2013-04-02 */
-#week-day .day-title {font-weight: bold; font-size: larger; text-align: center;}
-.evening-praise > .title, .daytime-praise > .title, .morning-praise > .title, .ending-praise > .title, .invit-praise > .title, .reading-praise > .title  {text-align:  center; /*font-weight: bold;*/ margin-top: 20px;}  
-#week-day .title {font-weight: bold; margin-top: 16px;}
-#week-day br {clear: both; display: block; height: 1px;}
-div.biblereference {color: #FF3333; text-align: right;}
-.daytime-praise .time {text-align: center; margin-top: 10px; text-decoration: underline}
+#week-day .day-title { 
+	font-size: larger; 
+	font-weight: bold; 
+	text-align: center; 
+}
+
+.evening-praise > .title, .daytime-praise > .title, .morning-praise > .title, .ending-praise > .title, .invit-praise > .title, .reading-praise > .title { 
+	/*font-weight: bold;*/ 
+	margin-top: 20px; 
+	text-align: center; 
+}
+
+#week-day .title { 
+	margin-top: 16px; 
+	font-weight: bold; 
+}
+
+#week-day br { 
+	clear: both; 
+	display: block; 
+	height: 1px; 
+}
+
+div.biblereference { 
+	color: #FF3333; 
+	text-align: right; 
+}
+
+.daytime-praise .time { 
+	margin-top: 10px; 
+	text-align: center; 
+	text-decoration: underline; 
+}
+
 /* replace 2013-02-17 */ 
-.indent {width: 20px; display:inline; float: left; height: 1em}
-.indent15 {width: 15px; display:inline; float: left; height: 1em}
+.indent { 
+	display: inline; 
+	float: left; 
+	height: 1em; 
+	width: 20px; 
+}
+
+.indent15 { 
+	display: inline; 
+	float: left; 
+	height: 1em; 
+	width: 15px; 
+}
 
 /* apply to all elements, used for <span> (character style) and <div> (paragraph style) */
-.red { color: #FF3333; }
-.redit { color: #FF3333; font-style: italic; }
-.blue { color: #0066ff; }
-.redsmall { color: #FF3333; font-size: 80%; }
-.redbold { color: #FF3333; font-weight: bold; }
-.bluebold { color: #0066ff; font-weight: bold; }
-.bold { font-weight: bold; }
-.boldit { font-weight: bold; font-style: italic; }
-.it { font-style: italic; }
-.normal { color: #CCCCCC; }
-.tt { font-family: Monospace; }
-.parameter { font-weight: bold; font-style: normal; font-family: Monospace; color: #CCCCCC; }
-.value { font-weight: bold; font-style: normal; font-family: Monospace; color: yellow; }
-.explain { font-size: 90%; color: gray; }
-.small { font-size: 80%; }
-.verysmall { font-size: 60%; }
-.smallcaps { font-variant: small-caps; }
-.xsmallcaps { font-variant: small-caps; font-size: 70%; }
+.red { 
+	color: #FF3333; 
+}
 
-/* apply to all elements */ { font-family: inherit; font-size: 100%; }
+.rednormal { 
+	color: #FF3333; 
+	font-style: normal; 
+	font-weight: normal; 
+}
+
+.redit { 
+	color: #FF3333; 
+	font-style: italic; 
+}
+
+.blue { 
+	color: #0066ff; 
+}
+
+.redsmall { 
+	color: #FF3333; 
+	font-size: 80%; 
+}
+
+.redbold { 
+	color: #FF3333; 
+	font-weight: bold; 
+}
+
+.bluebold { 
+	color: #0066ff; 
+	font-weight: bold; 
+}
+
+.bold { 
+	font-weight: bold; 
+}
+
+.boldit { 
+	font-style: italic; 
+	font-weight: bold; 
+}
+
+.it { 
+	font-style: italic; 
+}
+
+.normal { 
+	color: #CCCCCC; 
+}
+
+.tt { 
+	font-family: Monospace; 
+}
+
+.parameter { 
+	color: #CCCCCC; 
+	font-family: Monospace; 
+	font-style: normal; 
+	font-weight: bold; 
+}
+
+.value { 
+	color: yellow; 
+	font-family: Monospace; 
+	font-style: normal; 
+	font-weight: bold; 
+}
+
+.brown { 
+	color: yellow; 
+}
+
+.brownsmall { 
+	color: yellow; 
+	font-size: 85%; 
+}
+
+.explain { 
+	color: gray; 
+	font-size: 90%; 
+}
+
+.small { 
+	font-size: 80%; 
+}
+
+.verysmall { 
+	font-size: 60%; 
+}
+
+.smallcaps { 
+	font-variant: small-caps; 
+}
+
+.xsmallcaps { 
+	font-variant: small-caps; 
+	font-size: 70%; 
+}
+
+/* apply to all elements */ 
+{ 
+	font-family: inherit; 
+	font-size: 100%; 
+	font-weight: normal; 
+}
+
 body, html { 
 	background-color: #333333;
 	color: #CCCCCC;
 	font-family: Cambria, Constantia, Georgia, Lido STF, DejaVu, Liberation, GentiumPlus, Gentium, Garamond, Serif;
 	font-weight: normal; 
 }
-p { font-family: inherit; color: #CCCCCC; font-style: normal; }
 
+p { 
+	color: #CCCCCC; 
+	font-family: inherit; 
+	font-style: normal; 
+}
 
 .duoraz { 
-	font-weight: bold; }
+	font-weight: bold; 
+}
 
 p.patka { 
 	font-size: 80%; 
+	letter-spacing: 0mm; 
+	margin-top: -1mm; 
 	text-align: center; 
 	text-indent: 0em; 
-	margin-top: -1mm; 
-	letter-spacing: 0mm }
+}
 
 /* inherit nefunguje v IE 7 */
-a.quiet { text-decoration:none; color: inherit; }
-a.quiet:link { text-decoration:none; color: inherit; }
-a.quiet:hover { text-decoration:none; color: inherit; }
-a.quiet:visited { text-decoration:none; color: inherit; }
-a.quiet:active { text-decoration:none; color: inherit; }
+a.quiet { 
+	color: inherit; 
+	text-decoration: none; 
+}
 
-a { font-family: inherit; color: #CCCCCC; text-decoration: none; border-bottom: 1px dotted; }
-a:hover { color: white; background-color: #ff6633; text-decoration: none; border: none; }
-a:active { color: gray; text-decoration: underline; }
-a img { border: none }
-a.explain { color: #330000; font-size: 100%; }
-a.nounderline { text-decoration:none; }
+a.quiet:link { 
+	color: inherit; 
+	text-decoration: none; 
+}
+
+a.quiet:hover { 
+	color: inherit; 
+	text-decoration: none; 
+}
+
+a.quiet:visited { 
+	color: inherit; 
+	text-decoration: none; 
+}
+
+a.quiet:active { 
+	color: inherit; 
+	text-decoration: none; 
+}
+
+a { 
+	border-bottom: 1px dotted; 
+	color: #CCCCCC; 
+	font-family: inherit; 
+	text-decoration: none; 
+}
+
+a:hover { 
+	background-color: #ff6633; 
+	border: none; 
+	color: white; 
+	text-decoration: none; 
+}
+
+a:active { 
+	color: gray; 
+	text-decoration: underline; 
+}
+
+a img { 
+	border: none; 
+}
+
+a.explain { 
+	color: #330000; 
+	font-size: 100%; 
+}
+
+a.nounderline { 
+	text-decoration: none; 
+}
+
 a.button { 
-	cursor: pointer;
-	margin-left: 0px!important;
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
+	border: solid 0px #CCCCCC; 
+	color: #333333; 
+	cursor: pointer;
 	font-family: inherit; 
 	font-size : 90%; 
 	font-style: normal;
+	margin-left: 0px!important;
 	text-decoration: none; 
-	color: #333333; 
-	border: solid 0px #CCCCCC; }
+}
 
-table { color: #CCCCCC; }
-tr.paragraph { text-indent: 3em; line-height: 120%; }
-td { font-family: inherit; font-size: 95%; color: #CCCCCC; }
+table { 
+	color: #CCCCCC; 
+}
 
-hr {	height: 0.2mm;
+tr.paragraph { 
+	line-height: 120%; 
+	text-indent: 3em; 
+}
+
+td { 
+	color: #CCCCCC; 
+	font-family: inherit; 
+	font-size: 95%; 
+}
+
+hr { 
+	color: gray; 
+	height: 0.2mm;
 	size: 1px;
 	width: 33%; 
-	color: gray; }
+}
 
-select { background: #333333; font-family: inherit; font-size : 95%; color: #CCCCCC; }
+select { 
+	background: #333333; 
+	color: #CCCCCC; 
+	font-family: inherit; 
+	font-size : 95%; 
+}
 
-input { border: 1px; font-family: inherit; font-size : 95%; color: #CCCCCC; }
+input { 
+	border: 1px; 
+	color: #CCCCCC; 
+	font-family: inherit; 
+	font-size : 95%; 
+}
 
 /* modlitby */
 input.button, input.reset { 
-	cursor: pointer;
-	margin-left: 0px!important;
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
+	border: solid 0px #CCCCCC; 
+	color: #333333; 
+	cursor: pointer;
 	font-family: inherit; 
 	font-size : 90%; 
 	font-style: normal;
+	margin-left: 0px !important;
 	text-decoration: none; 
-	color: #333333; 
-	border: solid 0px #CCCCCC; }
+}
 
 /* << >> */
 input.button0, input.reset0 { 
-	cursor: pointer;
-	margin-left: 0px!important;
 	background: #C0C0C0; /* #3366CC; #3399ff; */
+	border: solid 0px #A0A0A0; 
+	color: #404040;
+	cursor: pointer;
 	font-family: inherit; 
 	font-size : 85%; 
 	font-style: normal;
+	margin-left: 0px !important;
 	text-decoration: none; 
-	color: #404040;
-	border: solid 0px #A0A0A0; }
+}
 
 /* dnes */
 input.button1, input.reset1 { 
-	cursor: pointer;
-	margin-left: 0px!important;
 	background: #C0C0C0; /* #3366CC; #3399ff; */
+	border: solid 0px #A0A0A0; 
+	color: #404040;
+	cursor: pointer;
 	font-family: inherit; 
 	font-size : 85%; 
 	font-style: normal;
-	font-weight: bold;
 	font-variant: none;
+	font-weight: bold;
+	margin-left: 0px !important;
 	text-decoration: none; 
-	color: #404040;
-	border: solid 0px #A0A0A0; }
+}
 
 /* menej podstatné buttony */
 input.button2, input.reset2 { 
-	cursor: pointer;
-	margin-left: 0px!important;
 	background: #CC9966; /* #ff9933; */
+	border: solid 0px #CCCCCC; 
+	color: #333333;
+	cursor: pointer;
 	font-family: inherit; 
 	font-size : 90%; 
 	font-style: italic;
+	margin-left: 0px !important;
 	text-decoration: none; 
-	color: #333333;
-	border: solid 0px #CCCCCC; }
+}
 
-input.text { border-style: solid; background: #333333; }
+input.text { 
+	background: #333333; 
+	border-style: solid; 
+}
 
 input.radio { }
+
 input.checkbox { }
 
-ol.level1 { list-style-type: decimal; }
-ol.level2 { list-style-type: lower-roman; }
-ol.level3 { list-style-type: decimal; }
-ul.level0 { list-style-type: none; }
-ul.level1 { list-style-type: disc; }
-ul.level2 { list-style-type: circle; }
-ul.level3 { list-style-type: square; }
+ol.level1 { 
+	list-style-type: decimal; 
+}
 
-li { font-size: 95%; }
+ol.level2 { 
+	list-style-type: lower-roman; 
+}
 
-h1 { font-size: 180%; }
-h2 { font-size: 150%; }
-h3 { font-size: 100%; }
-h4 { font-size: 100%; }
+ol.level3 { 
+	list-style-type: decimal; 
+}
 
-sup { vertical-align: baseline; font-size: 0.5em; position: relative; top: -0.8em; color: #FF3333; font-weight: normal; }
+ul.level0 { 
+	list-style-type: none; 
+}
+
+ul.level1 { 
+	list-style-type: disc; 
+}
+
+ul.level2 { 
+	list-style-type: circle; 
+}
+
+ul.level3 { 
+	list-style-type: square; 
+}
+
+li { 
+	font-size: 95%; 
+}
+
+h1 { 
+	font-size: 180%; 
+}
+
+h2 { 
+	font-size: 150%; 
+}
+
+h3 { 
+	font-size: 100%; 
+}
+
+h4 { 
+	font-size: 100%; 
+}
+
+sup { 
+	color: #FF3333; 
+	font-size: 0.5em; 
+	font-weight: normal; 
+	position: relative; 
+	top: -0.8em; 
+	vertical-align: baseline; 
+}
+

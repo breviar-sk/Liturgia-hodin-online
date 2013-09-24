@@ -252,18 +252,13 @@ static void exchange(char **argv){
 /* Initialize the internal data when the first call is made.  */
 
 static const char *_getopt_initialize(
-	int argc,
-	char *const *argv,
+/*	int argc,
+	char *const *argv, */
 	const char *optstring)
 {
   /* Start processing options with ARGV-element 1 (since ARGV-element 0
      is the program name); the sequence of previously skipped
      non-option ARGV-elements is empty.  */
-  /* tieto riadky pridane, aby nehlasil, ze param not used */
-/*
-  if(argc);
-  if(argv);
-*/
 
   first_nonopt = last_nonopt = optind;
 
@@ -361,7 +356,7 @@ int _getopt_internal(
     {
       if (optind == 0)
 	optind = 1;	/* Don't scan ARGV[0], the program name.  */
-      optstring = _getopt_initialize (argc, argv, optstring);
+      optstring = _getopt_initialize (/* argc, argv, */ optstring);
       __getopt_initialized = 1;
     }
 

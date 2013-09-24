@@ -100,6 +100,7 @@ void _header_css(FILE* expt, short int level, const char* nazov_css_suboru) {
 	}
 	Export_to_file(expt, STR_PATH_SEPARATOR_HTML);
 #else
+	Q_UNUSED(level);
 	// pre web-použitie (aj pre ruby): "/breviar.css"
 	Export_to_file(expt, "/");
 #endif

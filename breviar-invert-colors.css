@@ -1,79 +1,165 @@
-.calendar.today { display: block; border-top: 1px dotted; border-bottom: 1px dotted; border-left: 1px dotted; border-right: 1px dotted; width: 22px; color: #333333; background-color: #CCCCCC; }
+.calendar.today { 
+	background-color: #CCCCCC; 
+	color: #333333; 
+}
 
-.preces p.partV:before { content: '\2014\00a0'; color: #FF3333; font-weight: normal; }
-.psalm p.last:after { content: '\00a0\2014'; color: #FF3333; font-weight: normal; }
+.preces p.partV:before { 
+	color: #FF3333; 
+}
+
+.preces p.vel { 
+	color: #FF3333; 
+}
+
+.psalm p.last:after { 
+	color: #FF3333; 
+}
 
 /* new 2013-06-19 */
-.psalm .psalm-name .psalm-subtitle { color: #FF3333; }
-.psalm .psalm-idea { color: #CCCCCC; }
+.psalm .psalm-name .psalm-subtitle { 
+	color: #FF3333; 
+}
+.psalm .psalm-idea { 
+	color: #CCCCCC; 
+}
 
 /* new 2013-06.16 / updated 2013-06-19 and 2013-06-24 */
-sup { color: #FF3333; }
+sup { 
+	color: #FF3333; 
+}
 
-p.last:after { color: #FF3333; }
+p.last:after { 
+	color: #FF3333; 
+}
 
 /* new 2013-05-19 */
-.hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { color: #FF3333; }
+.hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
+	color: #FF3333; 
+}
 
 /* override color settings for "night-mode" (inverted colors) */
-.red { color: #FF3333; }
-.redit { color: #FF3333; font-style: italic; }
-.redsmall { color: #FF3333; }
-.redbold { color: #FF3333; }
-.normal { color: #CCCCCC; }
-.parameter { font-family: Monospace; color: #CCCCCC; }
-.value { font-family: Monospace; color: yellow; }
-.explain { font-size: 90%; color: gray; }
+.red { 
+	color: #FF3333; 
+}
+
+.rednormal { 
+	color: #FF3333; 
+}
+
+.redit { 
+	color: #FF3333; 
+}
+
+.redsmall { 
+	color: #FF3333; 
+}
+
+.redbold { 
+	color: #FF3333; 
+}
+
+.normal { 
+	color: #CCCCCC; 
+}
+
+.parameter { 
+	color: #CCCCCC; 
+}
+
+.value { 
+	color: yellow; 
+}
+
+.explain { 
+	color: gray; 
+}
 
 body, html { 
 	background-color: #333333;
 	color: #CCCCCC;
 }
-p { color: #CCCCCC; }
 
-h1, h2, h3 { color: #FFFFCC; }
+p { 
+	color: #CCCCCC; 
+}
 
-a { color: #CCCCCC; }
-a:hover { color: white; background-color: #CC9966; } /* #ff6633; */
-a:active { color: gray; }
-a.explain { color: #330000; }
+h1, h2, h3 { 
+	color: #FFFFCC; 
+}
+
+a { 
+	color: #CCCCCC; 
+}
+
+a:hover { 
+	background-color: #CC9966; /* #ff6633; */
+	color: white; 
+}
+
+a:active { 
+	color: gray; 
+}
+
+a.explain { 
+	color: #330000; 
+}
+
 a.button { 
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
+	border: solid 0px #CCCCCC; 
 	color: #333333; 
-	border: solid 0px #CCCCCC; }
+}
 
-table { color: #CCCCCC; }
-td { color: #CCCCCC; }
+table { 
+	color: #CCCCCC; 
+}
 
-hr { color: gray; }
+td { 
+	color: #CCCCCC; 
+}
 
-select { background: #333333; color: #CCCCCC; }
+hr { 
+	color: gray; 
+}
 
-input { color: #CCCCCC; }
+select { 
+	background: #333333; 
+	color: #CCCCCC; 
+}
+
+input { 
+	color: #CCCCCC; 
+}
 
 /* modlitby */
 input.button, input.reset { 
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
+	border: solid 0px #CCCCCC; 
 	color: #333333; 
-	border: solid 0px #CCCCCC; }
+}
 
 /* << >> */
 input.button0, input.reset0 { 
 	background: #C0C0C0; /* #3366CC; #3399ff; */
+	border: solid 0px #A0A0A0; 
 	color: #404040;
-	border: solid 0px #A0A0A0; }
+}
 
 /* dnes */
 input.button1, input.reset1 { 
 	background: #C0C0C0; /* #3366CC; #3399ff; */
+	border: solid 0px #A0A0A0; 
 	color: #404040;
-	border: solid 0px #A0A0A0; }
+}
 
 /* menej podstatné buttony */
 input.button2, input.reset2 { 
 	background: #CC9966; /* #ff9933; */
+	border: solid 0px #CCCCCC; 
 	color: #333333;
-	border: solid 0px #CCCCCC; }
+}
 
-input.text { background: #333333; }
+input.text { 
+	background: #333333; 
+}
 
