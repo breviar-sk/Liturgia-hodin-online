@@ -2183,7 +2183,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							Export("zvolanie(stop)");
 #endif
 							if((_global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_PROSBY_ZVOLANIE) == BIT_OPT_1_PROSBY_ZVOLANIE){
-								Export("-->"HTML_LINE_BREAK"<!--"); // 2012-09-07: doplnené, aby sa to podobalo na tie prosby, kde v LH je zvolanie opakované (napr. SCAP_rPROSBY) | 2012-09-28: presunuté vypisovanie len ak sa zvolania opakujú
+								// Export("-->"HTML_LINE_BREAK"<!--"); // 2012-09-07: doplnené, aby sa to podobalo na tie prosby, kde v LH je zvolanie opakované (napr. SCAP_rPROSBY) | 2012-09-28: presunuté vypisovanie len ak sa zvolania opakujú
 							}
 							else{
 								write = ANO;

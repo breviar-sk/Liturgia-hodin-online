@@ -63,6 +63,7 @@
 	font-style: italic; 
 	font-weight: normal; 
 	margin: 0; 
+	padding-bottom: 0.6em; 
 	padding-left: 1.2em; 
 	-webkit-margin-after: 0em; 
 	-webkit-margin-before: 0em; 
@@ -72,10 +73,6 @@
 	color: #FF3333; 
 	content: '\2014\00a0'; 
 	font-weight: normal; 
-}
-
-.preces p.first { 
-	padding-bottom: 1em; 
 }
 
 .preces p.vel { 
