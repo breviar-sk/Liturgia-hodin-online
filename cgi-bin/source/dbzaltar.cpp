@@ -27743,7 +27743,7 @@ label_25_MAR:
 							_vlastna_cast_antifona_inv;
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_full_okrem_antifon(modlitba);
+							_vlastna_cast_full(modlitba);
 							_set_zalmy_1nedele_rch();
 
 							modlitba = MODL_POSV_CITANIE;

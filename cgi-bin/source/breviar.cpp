@@ -9682,7 +9682,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	// 2009-08-04: in˝ export
 	if(export_monthly_druh >= 1 && modlitba != MODL_NEURCENA){
 		i = modlitba;
-		Log("/* generujem len modlitbu %d `%s'...*/\n", i, nazov_modlitby(i));
+		Log("/* generujem len modlitbu i == %d `%s' (export_monthly_druh >= 1)...*/\n", i, nazov_modlitby(i));
 
 		// 2013-07-29: generovanie n·zvu s˙boru s pÌsmenkom modlitby (default) alebo s ID modlitby
 		if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
@@ -9691,6 +9691,9 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 		else{
 			sprintf(export_fname_modl_str, "%d", i);
 		}
+		Log("export_fname_modl_str == %s...\n", export_fname_modl_str);
+
+		Log("a == %d, i == %d, zobrazit_mcd == %d...\n", a, i, zobrazit_mcd);
 
 		// 2012-08-23: generovaù modlitbu cez deÚ + kompletÛrium len ak nejde o æubovoæn˙ spomienku (vtedy nemaj˙ v˝znam)
 		if(!((zobrazit_mcd == ANO) || (a == 0)) && ((i == MODL_PREDPOLUDNIM) || (i == MODL_NAPOLUDNIE) || (i == MODL_POPOLUDNI) || (i == MODL_KOMPLETORIUM) || (i == MODL_PRVE_KOMPLETORIUM) || (i == MODL_DRUHE_KOMPLETORIUM))){
@@ -9705,9 +9708,15 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 			// 2011-03-23: upravenÈ: negenerovaù veöpery pre soboty, ak je nastavenÈ (_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY
 			// 2012-08-27: veöpery a kompletÛrium nem· zmysel zobrazovaù, ak ide o sobotu a Ôalöieho sv‰tÈho (pri viacer˝ch æubovoæn˝ch spomienkach)
 			// 2013-06-27: pridanÈ z·tvorky okolo prvej podmienky, aby && v druhom riadku viazalo sa na obe "||" moûnosti s "a"-Ëkom | breviar.cpp:9804: warning: suggest parentheses around '&&' within '||'
+			// 2013-09-30: namiesto prostej podmienky B:(zobrazit_mcd == ANO) pouûit· podmienen· implik·cia A => B (A:modlitba cez deÚ) vo forme (non A) OR B
 			if(((a != PORADIE_PM_SOBOTA) || (a == PORADIE_PM_SOBOTA && (i != MODL_VESPERY && i != MODL_KOMPLETORIUM)))
-				&& (((zobrazit_mcd == ANO) || (_global_den.denvt != DEN_SOBOTA)) || (a == 0))
-				){ // 2006-01-31-TUTOLA; 2008-04-09 presunutÈ
+				&& !(((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY) && (nie_su_vespery))
+				&& (
+					(/*non A*/ !((i == MODL_PREDPOLUDNIM) || (i == MODL_NAPOLUDNIE) || (i == MODL_POPOLUDNI)) || /*B*/(zobrazit_mcd == ANO))
+					|| (_global_den.denvt != DEN_SOBOTA) 
+					|| (a == 0)
+				)
+			){ // 2006-01-31-TUTOLA; 2008-04-09 presunutÈ
 				// 2011-03-14: nastavenie parametra o5 (_global_opt 5) pre modlitbu cez deÚ (beûn· alebo doplnkov· psalmÛdia) 
 				// 2011-03-16: upravenÈ tak, ûe je to len fakultatÌvne (ako odliön˝ s˙bor)
 				// 2011-04-12: pouûÌva sa option 1 (jej upraven· hodnota _global_opt_casti_modlitby_orig)
@@ -9754,6 +9763,9 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 						fprintf(batch_export_file, "<a href=\""FILENAME_EXPORT_DATE_FULL"_%d%s.htm\">%d%s</a>%s | ", _global_den.rok, _global_den.mesiac, _global_den.den, a, export_fname_modl_str /* char_modlitby[i] */, _global_den.den, /* char */ poradie_svateho, export_doplnkova_psalmodia);
 				}// if(export_monthly_druh == 1)
 			}
+			else{
+				Log("niË sa nedeje.\n");
+			}
 		}// generovaù modlitbu
 	}
 	else{
@@ -9778,9 +9790,15 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 			// 2011-03-23: upravenÈ: negenerovaù veöpery pre soboty, ak je nastavenÈ (_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY
 			// 2012-08-27: veöpery a kompletÛrium nem· zmysel zobrazovaù, ak ide o sobotu a Ôalöieho sv‰tÈho (pri viacer˝ch æubovoæn˝ch spomienkach)
 			// 2013-04-05: zavedenÈ "nie_su_vespery" kvÙli Bielej (veækej) sobote
-			if(((a != PORADIE_PM_SOBOTA) || (a == PORADIE_PM_SOBOTA && (i != MODL_VESPERY && i != MODL_KOMPLETORIUM))) && !(((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY) && (nie_su_vespery))
-				&& (((zobrazit_mcd == ANO) || (_global_den.denvt != DEN_SOBOTA)) || (a == 0))
-				){ // 2006-01-31-TUTOLA; 2008-04-09 presunutÈ
+			// 2013-09-30: namiesto prostej podmienky B:(zobrazit_mcd == ANO) pouûit· podmienen· implik·cia A => B (A:modlitba cez deÚ) vo forme (non A) OR B
+			if(((a != PORADIE_PM_SOBOTA) || (a == PORADIE_PM_SOBOTA && (i != MODL_VESPERY && i != MODL_KOMPLETORIUM))) 
+				&& !(((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTON_PRVE_VESPERY) == BIT_OPT_2_BUTTON_PRVE_VESPERY) && (nie_su_vespery))
+				&& (
+					(/*non A*/ !((i == MODL_PREDPOLUDNIM) || (i == MODL_NAPOLUDNIE) || (i == MODL_POPOLUDNI)) || /*B*/(zobrazit_mcd == ANO))
+					|| (_global_den.denvt != DEN_SOBOTA) 
+					|| (a == 0)
+				)
+			){ // 2006-01-31-TUTOLA; 2008-04-09 presunutÈ
 				if(_global_opt_append == YES){
 					fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s\n", batch_command, 
 						_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
@@ -10048,13 +10066,15 @@ void _export_rozbor_dna_interpretuj_zoznam(short int export_typ, short int typ, 
 	short int poradie_svaty;
 	short int zobrazit_mcd = ANO;
 	short int pocet = zoznam[0];
-	Log("_export_rozbor_dna_interpretuj_zoznam(): zaËiatok...\n");
+	Log("_export_rozbor_dna_interpretuj_zoznam(): zaËiatok (pocet == %d)...\n", pocet);
 	if(pocet > POCET_ZOZNAM - 1){
 		pocet = POCET_ZOZNAM - 1;
 	}
 	for(int i = 1; i <= pocet; i++){
 		poradie_svaty = zoznam[i];
 		zobrazit_mcd = ANO;
+
+		Log("i == %d, poradie_svaty == zoznam[i] == %d...\n", i, poradie_svaty);
 
 		if(poradie_svaty < 0)
 			continue;
@@ -10440,6 +10460,7 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 
 	// reùazec pre deÚ a pre n·zov s˙boru
 	if(d != VSETKY_DNI){
+		LOG_ciara;
 		Log("deÚ d == %d...\n", d);
 		sprintf(str_den, "%d", d);
 		if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
@@ -14182,7 +14203,7 @@ short int getArgv(int argc, char **argv){
 						mystrcpy(file_export, optarg, SMALL);
 					}
 					Log("option %c with value `%s'\n", c, optarg); break;
-			// zmenene: povodne tu boli pri kazdom parametri aj '1' -- '5'; teraz: vyhodene case '1' -- '5', ktorezto '1' -- '4' su pre options, vid dalej
+				// zmenene: povodne tu boli pri kazdom parametri aj '1' -- '5'; teraz: vyhodene case '1' -- '5', ktorezto '1' -- '4' su pre options, vid dalej
 				case 's': // debuggovanie, query string
 					if(optarg != NULL){
 						Log("--copying `%s' to query_string...", optarg);
@@ -14395,6 +14416,13 @@ short int getArgv(int argc, char **argv){
 			Log("query_type != PRM_SIMULACIA_QS, so running getQueryTypeFrom_QS(%s)...\n", pom_QUERY_TYPE);
 			query_type = getQueryTypeFrom_QS(pom_QUERY_TYPE);
 		}
+
+		// 2013-09-30: ak je query type OK, tak vymaûeme chybov˝ oznam
+		if(query_type != PRM_UNKNOWN){
+			Log("query_type OK, ËistÌm bad_param_str...\n");
+			mystrcpy(bad_param_str, STR_EMPTY, MAX_STR);
+		}
+
 		// 2009-08-02: pri exportovanÌ do adres·rov po mesiacoch je potrebnÈ upraviù name_binary_executable resp. include_dir 
 		// 2009-08-03: ale len v batch mÛde (teda nie pre jednotliv˙ generovan˙ modlitbu) -- preto presunutÈ aû sem, za zistenie query_type
 		if(query_type == PRM_BATCH_MODE && _global_opt_batch_monthly == ANO){
@@ -14417,8 +14445,7 @@ short int getArgv(int argc, char **argv){
 	Log("deallocating memory for option_string...\n");
 	free(option_string);
 
-	Log("-- getArgv(): end, query_type == %d, query_string == %s\n",
-		query_type, query_string);
+	Log("-- getArgv(): end, query_type == %d, query_string == %s, bad_param_str == %s\n", query_type, query_string, bad_param_str);
 
 	return SUCCESS;
 }// getArgv();
@@ -16313,7 +16340,7 @@ int breviar_main(int argc, char **argv){
 			}
 			else{
 				_main_LOG_to_Export("spustam getForm();\n");
-				ret = getForm();
+				ret_pom = ret = getForm();
 				_main_LOG_to_Export("spat po skonceni getForm()\n");
 			}
 			break;
@@ -16322,7 +16349,7 @@ int breviar_main(int argc, char **argv){
 			_main_LOG("params == SCRIPT_PARAM_FROM_ARGV\n");
 			_main_LOG("spustam getArgv();\n");
 			// query_type sa nastavi priamo vovnutri
-			ret = getArgv(argc, argv);
+			ret_pom = ret = getArgv(argc, argv);
 			if(ret == SUCCESS){ // 13/03/2000A.D. -- aby mohlo exportovat do file_export
 				// 2006-07-12: pridanÈ parsovanie jazyka kvÙli jazykov˝m mut·ci·m 
 				// 2009-08-05: predsunutÈ aj sem vyööie
@@ -16549,7 +16576,7 @@ _main_SIMULACIA_QS:
 
 	if(ret_pom != SUCCESS){
 		ALERT;
-		Export("Neboli zadanÈ vhodnÈ parametre.\n");
+		Export("Neboli zadanÈ vhodnÈ parametre (1).\n");
 		Export("<p>Chyba: %s\n", bad_param_str);
 	}
 
@@ -16821,9 +16848,9 @@ _main_SIMULACIA_QS:
 		}
 	}// if(query_type != PRM_UNKNOWN)
 	else{
-		if(ret_pom == SUCCESS){
+		if(ret_pom != SUCCESS){
 			ALERT;
-			Export("Neboli zadanÈ vhodnÈ parametre.\n");
+			Export("Neboli zadanÈ vhodnÈ parametre (2).\n");
 			Export("<p>Chyba: %s\n", bad_param_str);
 		}
 		// else: netreba vypisovaù, lebo sa vypÌsalo uû vyööie
