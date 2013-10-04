@@ -22599,7 +22599,7 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_full_okrem_kcit(modlitba);
+							_vlastna_cast_full(modlitba);
 
 							modlitba = MODL_POSV_CITANIE;
 							_vlastna_cast_modlitba;
@@ -22607,10 +22607,7 @@ label_25_MAR:
 							_vlastna_cast_1citanie;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-							_vlastna_cast_antifony;
-							_vlastna_cast_magnifikat;
-							_vlastna_cast_modlitba;
+							_vlastna_cast_full(modlitba);
 
 							break;
 						}
