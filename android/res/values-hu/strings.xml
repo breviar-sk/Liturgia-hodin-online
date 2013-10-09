@@ -10,7 +10,7 @@
 
     <string name="alarms">Értesítések</string>
     <string name="alarms_title">Értesítések beállítása:</string>
-    <string name="alarmOff">letitlva</string>
+    <string name="alarmOff">letiltás</string>
 
     <string name="fullscreenOn">Teljes képernyő</string>
     <string name="fullscreenOff">Teljes képernyő elhagyása</string>

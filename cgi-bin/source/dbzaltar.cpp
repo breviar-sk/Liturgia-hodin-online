@@ -28487,8 +28487,15 @@ label_25_MAR:
 					else{
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
-							if(query_type != PRM_DETAILY)
-								set_spolocna_cast(sc, poradie_svaty);
+							if(query_type != PRM_DETAILY){
+								if(_global_jazyk != JAZYK_CZ){
+									set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_KRESP_PROSBY); // prosby zo spoloènej èasti
+								}
+								else{
+									// predpísané sú prosby zo spoloènej èasti
+									set_spolocna_cast(sc, poradie_svaty);
+								}
+							}
 
 							modlitba = MODL_RANNE_CHVALY;
 							if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // 2008-10-15: odvetvené len pre Slovensko; 2009-07-09: pridané aj pre CZ_OP

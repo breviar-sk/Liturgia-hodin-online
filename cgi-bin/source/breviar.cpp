@@ -3155,9 +3155,11 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			sprintf(popis_hide, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_rubriky[_global_jazyk]);
 		}
 		else if(equals(paramname, PARAM_SPOL_CAST_SPOM)){
-			// 2013-02-22: doplnen· moûnosù pre spomienky a æubovoænÈ spomienky prepÌnaù, Ëi braù Ëasti zo spol. Ëasti alebo zo dÚa
+			// 2013-02-22: doplnen· moûnosù pre spomienky a æubovoænÈ spomienky prepÌnaù, Ëi braù Ëasti zo spol. Ëasti alebo zo dÚa 
+			// 2013-10-08: prepÌnaË m· zmysel len vtedy, ak je spoloËn· Ëasù nastaven·
 			bit = BIT_OPT_1_SPOMIENKA_SPOL_CAST;
 			podmienka &= ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA));
+			podmienka &= ((_global_den.spolcast != MODL_SPOL_CAST_NEBRAT) && (_global_den.spolcast != MODL_SPOL_CAST_NEURCENA) && (_global_den.spolcast != MODL_SPOL_CAST_NULL));
 			mystrcpy(specific_string, HTML_LINE_BREAK, SMALL);
 			sprintf(popis_show, "%s", html_text_option1_spomienka_spolcast[_global_jazyk]);
 			sprintf(popis_hide, "%s", html_text_option1_spomienka_spolcast_NIE[_global_jazyk]);

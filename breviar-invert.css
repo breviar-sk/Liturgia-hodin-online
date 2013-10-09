@@ -59,12 +59,17 @@
 	-webkit-margin-before: 0em; 
 }
 
+.preces p.partR { 
+	padding-top: 0.3em; 
+}
+
 .preces p.resp { 
 	font-style: italic; 
 	font-weight: normal; 
 	margin: 0; 
-	padding-bottom: 0.6em; 
+	padding-bottom: 0.3em; 
 	padding-left: 1.2em; 
+	padding-top: 0.3em; 
 	-webkit-margin-after: 0em; 
 	-webkit-margin-before: 0em; 
 }
