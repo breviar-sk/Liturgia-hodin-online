@@ -39,5 +39,16 @@
     <string name="today">Ma</string>
     <string name="pgup">Fel</string>
     <string name="pgdn">Le</string>
+    
+    <string name="news">
+     Változások a v1.9.3-ban:\n
+     - Zsoltárok jobb tördelése\n
+     - Gépelési hibák javítása\n
+     - Frissítések a honlapról\n
+     Változások a v1.9.2-ben:\n
+     - Frissítések a honlapról\n
+     Változások a v1.9.1-ben:\n
+     - Frissítések a honlapról\n\n
+    </string>
 	
 </resources>
