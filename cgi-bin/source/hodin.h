@@ -7190,7 +7190,7 @@ const char *text_OKT_08_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_09_1[POCET_JAZYKOV + 1] = 
-{"Sv. Dionýzia, biskupa, a spoloèníkov, muèeníkov",
+{"Sv. Dionýza, biskupa, a spoloèníkov, muèeníkov",
  "Sv. Dionýsia, biskupa, a druhù, muèedníkù",
  "",
  "",

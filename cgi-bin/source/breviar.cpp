@@ -16219,7 +16219,7 @@ int breviar_main(int argc, char **argv){
 	#error Unsupported behaviour (not defined in mysystem.h/mysysdef.h)
 #endif
 
-	short int ret, ret_pom; // návratová hodnota
+	short int ret, ret_pom = FAILURE; // návratová hodnota
 	short int len; // dåžka
 
 	initLog(FILE_LOG);
@@ -16324,6 +16324,7 @@ int breviar_main(int argc, char **argv){
 	// 2. zistit (a rozparsovat) QUERY_STRING
 
 	ret = NO_RESULT;
+	ret_pom = FAILURE;
 	switch(params){
 	// v tomto switch() naplnime premennu query_type a naviac (ak su) premenne pom_...
 		case SCRIPT_PARAM_FROM_FORM:{
