@@ -1,3 +1,8 @@
+/* 2013-10-21 */
+div.hymn, div.responsory, div.readings {
+    font-weight: bold;
+}
+
 /* 2013-09-19 class for calendar */
 .calendar { 
 	padding: 4px 4px 4px 0; 
@@ -146,9 +151,11 @@
 }
 
 /* new 2013-05-19 */
+/* added 2013-10-21: font-weight: normal; */
 .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
 	color: #ff0000; 
 	font-size: 80%; 
+    font-weight: normal;
 }
 
 .antiphon { 
@@ -158,9 +165,10 @@
 }
 
 /* new 2013-04-18 */
+/* updated 2013-10-21 font-size:larger; -> font-size:normal; */
 .psalm .psalm-title { 
 	color: #ff0000; 
-	font-size: larger; 
+	font-size: normal;
 	font-weight: bold; 
 	text-align: center; 
 }

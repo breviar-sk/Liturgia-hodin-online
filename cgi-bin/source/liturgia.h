@@ -521,6 +521,9 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 // 2007-10-02: doplnené skrytie rovnakých antifón pre mcd
 #define PARAM_SKRY_ANTIFONU_BEGIN           "SKRY_ANTIFONU_BEGIN"
 #define PARAM_SKRY_ANTIFONU_END             "SKRY_ANTIFONU_END"
+// 2013-10-21: doplnené: inverzia pre skrytie rovnakých antifón pre mcd
+#define PARAM_ZOBRAZ_ANTIFONU_BEGIN         "ZOBRAZ_ANTIFONU_BEGIN"
+#define PARAM_ZOBRAZ_ANTIFONU_END           "ZOBRAZ_ANTIFONU_END"
 // 2012-05-24: doplnené -- predåžené slávenie vigílií v rámci posvätných èítaní
 #define PARAM_JE_VIGILIA_BEGIN              "JE_VIGILIA_BEGIN"
 #define PARAM_JE_VIGILIA_END                "JE_VIGILIA_END"

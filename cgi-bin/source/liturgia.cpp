@@ -645,7 +645,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 			sprintf(pom, "%d. ", rok);
 			strcat(_global_pom_str, pom);
 		}
-		sprintf(pom, "%s", nazov_Mesiaca(mesiac - 1));
+		sprintf(pom, "%s", nazov_mesiaca(mesiac - 1));
 		strcat(_global_pom_str, pom);
 		sprintf(pom, "%s", strden);
 	}

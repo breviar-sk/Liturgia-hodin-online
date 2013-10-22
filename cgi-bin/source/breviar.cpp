@@ -2949,6 +2949,41 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}
 
+	// 2013-10-21: pridanÈ: zobrazovanie "Ant." a pod., keÔ s˙ rovnakÈ antifÛny na mcd | ToDo: vyrieöiù krajöie
+	else if(equals(paramname, PARAM_ZOBRAZ_ANTIFONU_BEGIN)){
+		if(_global_ant_mcd_rovnake == ANO){
+			// zobrazit nazvy antifon
+#if defined(EXPORT_HTML_SPECIALS)
+			Export("zobraziù 1 ant.");
+#endif
+			Export("-->");
+			Log("  `Ant.': begin...\n");
+		}
+		else{
+			// zobrazovat nazvy antifon
+			_global_skip_in_prayer = ANO;
+#if defined(EXPORT_HTML_SPECIALS)
+			Export("nezobraziù ant.");
+#endif
+			Log("  `Ant.' skipping...\n");
+		}
+	}
+	else if(equals(paramname, PARAM_ZOBRAZ_ANTIFONU_END)){
+		if(_global_ant_mcd_rovnake == ANO){
+			// zobrazit nazvy antifon
+			Export("<!--");
+#if defined(EXPORT_HTML_SPECIALS)
+			Export("zobraziù 1 ant.");
+#endif
+			Log("  `Ant.': copied.\n");
+		}
+		else{
+			// zobrazovat nazvy antifon
+			_global_skip_in_prayer = NIE;
+			Log("  `Ant.' skipped.\n");
+		}
+	}
+
 	// 2010-05-21: pridanÈ voliteænÈ zobrazovanie antifÛny a modlitby pre spomienku sv‰tca v pÙstnom obdobÌ 
 	// 2010-05-24: podmienka zosilnen·, aby sa v pÙste nezobrazovalo "Ant." Ëervenou farbou z templ·ty, ak nie je nastaven· t· ant. + modlitba pre spomienku
 	else if(equals(paramname, PARAM_SPOMIENKA_PRIVILEG_BEGIN)){
@@ -3664,13 +3699,28 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	else if(equals(paramname, PARAM_ANTIFONA1k)){
 		// 2008-04-03: pridanÈ kvÙli kompletÛriu vo veækonoËnom obdobÌ, Ëi pri druhej antifÛne zobraziù dvojku alebo nie 
 		// 2011-07-09: opraven· podmienka
+		// 2013-10-21: pre HU, CZ upravenÈ | ToDo: vyrieöiù krajöie
 		if((((type == MODL_KOMPLETORIUM) && (_global_modl_kompletorium.pocet_zalmov == 2)) || ((type == MODL_PRVE_KOMPLETORIUM) && (_global_modl_prve_kompletorium.pocet_zalmov == 2))) && (_global_ant_mcd_rovnake == NIE)){
-			Export("-->1<!--");
+			Export("-->");
+			if((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_CZ)){
+				Export("1. ant.");
+			}
+			else{
+				Export("1");
+			}
+			Export("<!--");
 		}
 		else{
+			if((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_CZ)){
+				Export("-->");
+				Export("Ant.");
+				Export("<!--");
+			}
+			else{
 #if defined(EXPORT_HTML_SPECIALS)
-			Export("nie je 1. antifona v kompletku");
+				Export("nie je 1. antifona v kompletku");
 #endif
+			}
 			Log("nie je 1. antifona v kompletku");
 		}
 	}// ANTIFONA1_KOMPLET
