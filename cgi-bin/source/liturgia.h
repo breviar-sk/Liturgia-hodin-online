@@ -972,6 +972,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SVIATOK_OFS              94
 #define LOKAL_SLAV_SPOMIENKA_OFMCONV_OFMCAP 95
 #define LOKAL_SLAV_SPOMIENKA_OSC            96
+#define LOKAL_SLAV_NEDOVOLENE               97
 
 // 2010-08-03: pridaný kalendár
 #define KALENDAR_NEURCENY                   0
