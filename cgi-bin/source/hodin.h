@@ -908,7 +908,7 @@ const char *poradie_SLOVOM_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] =
 // the names of languages
 // 2006-07-11: Pridané kvôli jazykovým mutáciám
 const char *nazov_jazyka[POCET_JAZYKOV + 1] =
-{"slovenèina", "èeština", "English", "lingua latina", "(neurèený)", "èeština (dominikáni)", "magyarul"};
+{"slovenèina", "èeština", "English", "lingua latina", "(neurèený)", "èeština-dominikáni", "magyar"};
 
 // language codes; internal usage for HTTP requests
 const char *skratka_jazyka[POCET_JAZYKOV + 1] =
@@ -1378,6 +1378,16 @@ const char *str_nie[POCET_JAZYKOV + 1] =
 const char *html_text_jazyk_android = "SK/CZ/HU:";
 
 const char *html_text_jazyk[POCET_JAZYKOV + 1] = 
+{"Jazyk:",
+ "Jazyk:",
+ "Language:",
+ "Lingua:",
+ "",
+ "Jazyk:",
+ "Nyelv:"
+};
+
+const char *html_text_jazyk_long[POCET_JAZYKOV + 1] = 
 {"Liturgia hodín v jazyku:",
  "Liturgie hodin pro jazyk:",
  "Liturgy of hours in language:",
