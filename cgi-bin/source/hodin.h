@@ -95,6 +95,29 @@ const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 
 #define		nazov_modlitby(a)	nazov_modlitby_jazyk[a][_global_jazyk]
 
+// the names of the prayers, lowercase (sample text)
+const char *nazov_modlitby_short_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
+{{"invitatórium", "uvedení do 1. modl. dne", "Invitatory", "invitatorium", "", "Pozvání k modl.", "imádságra hívás" }
+, {"posvätné èítanie", "modl. se ètením", "Office of Readings", "officium lectionis", "", "modl. se ètením", "olvasmányos imaóra" }
+, {"ranné chvály", "ranní chvály", "Laudes", "laudes matutinae", "", "Ranní chvály", "reggeli dicséret" }
+, {"modl. predpoludním", "modl. dopoledne", "Terce", "tertia", "", "Tercie", "délelõtt" }
+, {"modl. napoludnie", "modl. v poledne", "Sext", "sexta", "", "Sexta", "délben" }
+, {"modl. popoludní", "modl. odpoledne", "None", "nona", "", "Nona", "délután" }
+, {"vešpery", "nešpory", "Vesperae", "vesperae", "", "Veèerní chvály", "esti dicséret" }
+, {"kompletórium", "kompletáø", "Completary", "completorio", "", "Kompletáø", "befejezõ imaóra" }
+, {"neurèená", "neurèena", "not-defined", "no data", "", "neurèena", "nem azonosított"}
+, {"prvé vešpery", "první nešpory", "1st Vesperae", "I vesperae", "", "První veèerní chvály", "I. esti dicséret" }
+	// 2007-12-05: zmenené, kedysi bolo: "prvé kompletórium"
+, {"kompletórium po 1. vešp.", "kompletáø po 1. nešp.", "1st Completary", "I completorio", "", "Kompletáø po 1. v. chv.", "befejezõ imaóra I.e.d.ut." }
+, {"(druhé) vešpery", "druhé nešpory", "2nd Vesperae", "II vesperae", "", "Druhé veèerní chvály", "II. esti dicséret" }
+	// 2007-12-05: zmenené, kedysi bolo: "druhé kompletórium"
+, {"kompletórium (po 2. vešp.)", "kompletáø po 2. nešp.", "2nd Completary", "II completorio", "", "Kompletáø po 2. v. chv.", "befejezõ imaóra II.e.d.ut." }
+, {"detaily", "detaily", "Details", "details", "", "detaily", "részletek" }
+, {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
+};
+
+#define		nazov_modlitby_short(a)	nazov_modlitby_short_jazyk[a][_global_jazyk]
+
 // the names of the prayers, sentence case (Sample text)
 const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
 {{"Invitatórium", "Uvedení do první modlitby dne", "Invitatory", "Invitatorium", "", "Pozvání k modlitbì" , "Imádságra hívás" }
@@ -286,21 +309,40 @@ const char *nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 // the names of liturgical periods (usually lowecase) / nazov_obdobia: string pre názov liturgického obdobia, rozšírenı
 const char *nazov_obdobia_ext_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
- {"adventné obdobie I (do 16. decembra)", "doba adventní I", "", "tempus adventus I", "", "doba adventní I", "adventi idõ I (dec.16-ig)"},
- {"adventné obdobie II (po 16. decembri)", "doba adventní II", "", "tempus adventus II", "", "doba adventní II", "adventi idõ II (dec.16 után)"},
- {"oktáva Narodenia Pána", "oktáv Narození Pánì", "", "octava nativitatis", "", "oktáv Narození Pánì", "karácsony nyolcada"},
- {"vianoèné obdobie I (do Zjavenia Pána)", "doba vánoèní I", "", "tempus nativitatis I", "", "doba vánoèní II", "karácsonyi idõ I (Urunk megjelenéséig)"},
- {"vianoèné obdobie II (po Zjavení Pána)", "doba vánoèní II", "", "tempus nativitatis II", "", "doba vánoèní II", "karácsonyi idõ II (Urunk megjelenése után)"},
- {"cezroèné obdobie", "mezidobí", "", "tempus per annum", "", "mezidobí", "évközi idõ"},
- {"pôstne obdobie I (do Kvetnej nedele)", "doba postní I", "", "tempus quadragesimae I", "", "doba postní I", "nagyböjti idõ I (Virágvasárnapig)"},
- {"pôstne obdobie II (ve¾kı tıdeò)", "Svatı tıden", "", "hebdomada sancta", "", "Svatı tıden", "nagyböjti idõ II (Nagyhét)"},
- {"ve¾konoèné trojdnie", "Velikonoèní triduum", "", "sacrum triduum paschale", "", "Velikonoèní triduum", "szent három nap"},
- {"ve¾konoèná oktáva", "velikonoèní oktáv", "", "octava paschae", "", "velikonoèní oktáv", "húsvét nyolcada"},
- {"ve¾konoèné obdobie I (do Nanebovstúpenia Pána)", "doba velikonoèní I", "", "tempus paschale I", "", "doba velikonoèní I", "húsvéti idõ I (Urunk mennybemeneteléig)"},
- {"ve¾konoèné obdobie II (po Nanebovstúpení Pána)", "doba velikonoèní II", "", "tempus paschale II", "", "doba velikonoèní II", "húsvéti idõ II (Urunk mennybemenetele után)"},
+ {"Adventné obdobie I (do 16. decembra)", "doba adventní I", "", "tempus adventus I", "", "doba adventní I", "adventi idõ I (dec.16-ig)"},
+ {"Adventné obdobie II (po 16. decembri)", "doba adventní II", "", "tempus adventus II", "", "doba adventní II", "adventi idõ II (dec.16 után)"},
+ {"Oktáva Narodenia Pána", "oktáv Narození Pánì", "", "octava nativitatis", "", "oktáv Narození Pánì", "karácsony nyolcada"},
+ {"Vianoèné obdobie I (do Zjavenia Pána)", "doba vánoèní I", "", "tempus nativitatis I", "", "doba vánoèní II", "karácsonyi idõ I (Urunk megjelenéséig)"},
+ {"Vianoèné obdobie II (po Zjavení Pána)", "doba vánoèní II", "", "tempus nativitatis II", "", "doba vánoèní II", "karácsonyi idõ II (Urunk megjelenése után)"},
+ {"Cezroèné obdobie", "mezidobí", "", "tempus per annum", "", "mezidobí", "évközi idõ"},
+ {"Pôstne obdobie I (do Kvetnej nedele)", "doba postní I", "", "tempus quadragesimae I", "", "doba postní I", "nagyböjti idõ I (Virágvasárnapig)"},
+ {"Pôstne obdobie II (ve¾kı tıdeò)", "Svatı tıden", "", "hebdomada sancta", "", "Svatı tıden", "nagyböjti idõ II (Nagyhét)"},
+ {"Ve¾konoèné trojdnie", "Velikonoèní triduum", "", "sacrum triduum paschale", "", "Velikonoèní triduum", "szent három nap"},
+ {"Ve¾konoèná oktáva", "velikonoèní oktáv", "", "octava paschae", "", "velikonoèní oktáv", "húsvét nyolcada"},
+ {"Ve¾konoèné obdobie I (do Nanebovstúpenia Pána)", "doba velikonoèní I", "", "tempus paschale I", "", "doba velikonoèní I", "húsvéti idõ I (Urunk mennybemeneteléig)"},
+ {"Ve¾konoèné obdobie II (po Nanebovstúpení Pána)", "doba velikonoèní II", "", "tempus paschale II", "", "doba velikonoèní II", "húsvéti idõ II (Urunk mennybemenetele után)"},
 };
 
 #define		nazov_obdobia_ext(a)	nazov_obdobia_ext_jazyk[a][_global_jazyk]
+
+// the names of liturgical periods (usually lowecase) full-shortened / nazov_obdobia: string pre názov liturgického obdobia, struènı ale plnı
+const char *nazov_obdobia_short_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
+{
+ {"Adventné obd. I", "doba adventní I", "", "tempus adventus I", "", "doba adventní I", "adventi idõ I"},
+ {"Adventné obd. II", "doba adventní II", "", "tempus adventus II", "", "doba adventní II", "adventi idõ II"},
+ {"Oktáva Narodenia Pána", "oktáv Narození Pánì", "", "octava nativitatis", "", "oktáv Narození Pánì", "karácsony nyolcada"},
+ {"Vianoèné obd. I", "doba vánoèní I", "", "tempus nativitatis I", "", "doba vánoèní II", "karácsonyi idõ I"},
+ {"Vianoèné obd. II", "doba vánoèní II", "", "tempus nativitatis II", "", "doba vánoèní II", "karácsonyi idõ II"},
+ {"Cezroèné obd.", "mezidobí", "", "tempus per annum", "", "mezidobí", "évközi idõ"},
+ {"Pôstne obd. I", "doba postní I", "", "tempus quadragesimae I", "", "doba postní I", "nagyböjti idõ I"},
+ {"Ve¾kı tıdeò", "Svatı tıden", "", "hebdomada sancta", "", "Svatı tıden", "Nagyhét"},
+ {"Ve¾konoèné trojdnie", "Velikonoèní triduum", "", "sacrum triduum paschale", "", "Velikonoèní triduum", "szent három nap"},
+ {"Ve¾konoèná oktáva", "velikonoèní oktáv", "", "octava paschae", "", "velikonoèní oktáv", "húsvét nyolcada"},
+ {"Ve¾konoèné obd. I", "doba velikonoèní I", "", "tempus paschale I", "", "doba velikonoèní I", "húsvéti idõ I"},
+ {"Ve¾konoèné obd. II", "doba velikonoèní II", "", "tempus paschale II", "", "doba velikonoèní II", "húsvéti idõ II"},
+};
+
+#define		nazov_obdobia_short(a)	nazov_obdobia_short_jazyk[a][_global_jazyk]
 
 // the names of liturgical periods for debugging, only in Slovak; no need to translate
 const char *nazov_obdobia_[POCET_OBDOBI + 1] = // debuggovacie - preto netreba preklada; 2006-08-03

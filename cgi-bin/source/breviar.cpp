@@ -4485,6 +4485,10 @@ short int atolitobd(char *lo){
 			Log("atolitobd: returning %d\n", i);
 			return i;
 		}
+		if(equals(lo, nazov_obdobia_short(i))){
+			Log("atolitobd: returning %d\n", i);
+			return i;
+		}
 		i++;
 	}while(i <= POCET_OBDOBI);
 	// 2011-05-11: ak sa nenašlo obdobie porovnaním s reazcom, skúsim prekonvertova na èíslo
@@ -4654,7 +4658,7 @@ short int atomodlitba(char *modlitba){
 		p = MODL_VSETKY;
 	else if(equals(modlitba, STR_MODL_DETAILY))
 		p = MODL_DETAILY;
-	else if((equals(modlitba, STR_MODL_INVITATORIUM)) || (equals(modlitba, STR_VALUE_ZERO)))
+	else if(equals(modlitba, STR_MODL_INVITATORIUM))
 		p = MODL_INVITATORIUM;
 	else if(equals(modlitba, STR_MODL_RANNE_CHVALY))
 		p = MODL_RANNE_CHVALY;
@@ -4689,6 +4693,7 @@ short int atomodlitba(char *modlitba){
 			for(pom_i = MODL_INVITATORIUM; pom_i <= MODL_VSETKY; pom_i++){
 				Log("\tstep: %d `%s'...\n", pom_i, nazov_modlitby(pom_i));
 				if(equals(modlitba, nazov_modlitby(pom_i)) || 
+					equals(modlitba, nazov_modlitby_short(pom_i)) || 
 					equals(modlitba, nazov_Modlitby(pom_i)) || 
 					equals(modlitba, nazov_MODLITBY(pom_i))){
 					// ak je zhoda, potom prirad do p a ukonci `for'
@@ -9440,16 +9445,16 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		// pole WWW_MODLITBA
 		Export("<select name=\"%s\">\n", STR_MODLITBA);
-		Export("<option>%s\n", nazov_modlitby(MODL_PRVE_VESPERY));
-		Export("<option>%s\n", nazov_modlitby(MODL_PRVE_KOMPLETORIUM));
-		Export("<option>%s\n", nazov_modlitby(MODL_INVITATORIUM));
-		Export("<option selected>%s\n", nazov_modlitby(MODL_POSV_CITANIE));
-		Export("<option>%s\n", nazov_modlitby(MODL_RANNE_CHVALY));
-		Export("<option>%s\n", nazov_modlitby(MODL_PREDPOLUDNIM));
-		Export("<option>%s\n", nazov_modlitby(MODL_NAPOLUDNIE));
-		Export("<option>%s\n", nazov_modlitby(MODL_POPOLUDNI));
-		Export("<option>%s\n", nazov_modlitby(MODL_DRUHE_VESPERY));
-		Export("<option>%s\n", nazov_modlitby(MODL_DRUHE_KOMPLETORIUM));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_PRVE_VESPERY));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_PRVE_KOMPLETORIUM));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_INVITATORIUM));
+		Export("<option selected>%s\n", nazov_modlitby_short(MODL_POSV_CITANIE));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_RANNE_CHVALY));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_PREDPOLUDNIM));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_NAPOLUDNIE));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_POPOLUDNI));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_DRUHE_VESPERY));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_DRUHE_KOMPLETORIUM));
 		Export("</select>\n");
 
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
@@ -9507,7 +9512,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole WWW_LIT_OBD
 		Export("<select name=\"%s\">\n", STR_LIT_OBD);
 		for(lo = 0; lo <= POCET_OBDOBI; lo++){
-			Export("<option%s>%s\n", (lo == _global_den.litobd)? html_option_selected: STR_EMPTY, nazov_obdobia_ext(lo));
+			Export("<option%s>%s\n", (lo == _global_den.litobd)? html_option_selected: STR_EMPTY, nazov_obdobia_short(lo));
 		}
 		Export("\n</select>\n");
 
@@ -12408,7 +12413,7 @@ void _main_dnes(char *modlitba, char *poradie_svaty){
 //---------------------------------------------------------------------
 // _main_zaltar()
 void _main_zaltar(char *den, char *tyzden, char *modlitba){
-	short int d, t, p, i;
+	short int d, t, p;
 	d = atodenvt(den);
 	t = atoi(tyzden);
 	if((d < 0) || (d > 6) || (t < 1) || (t > 4)){
@@ -12427,35 +12432,9 @@ void _main_zaltar(char *den, char *tyzden, char *modlitba){
 		Export("</ul>\n");
 		return;
 	}
-	p = MODL_NEURCENA;
-	for(i = MODL_INVITATORIUM; i <= MODL_DRUHE_KOMPLETORIUM; i++){
-		if(equals(modlitba, nazov_modlitby(i))){
-			p = i;
-			continue; // exit from loop
-		}
-	}
-	if(p == MODL_NEURCENA){
-		// 2005-08-15: Kvôli simulácii porovnávame aj s konštantami STR_MODL_... 
-		// 2006-10-11: pridané invitatórium a kompletórium
-		if(equals(modlitba, STR_MODL_RANNE_CHVALY))
-			p = MODL_RANNE_CHVALY;
-		else if(equals(modlitba, STR_MODL_POSV_CITANIE))
-			p = MODL_POSV_CITANIE;
-		else if(equals(modlitba, STR_MODL_VESPERY))
-			p = MODL_VESPERY;
-		else if(equals(modlitba, STR_MODL_PREDPOLUDNIM))
-			p = MODL_PREDPOLUDNIM;
-		else if(equals(modlitba, STR_MODL_NAPOLUDNIE))
-			p = MODL_NAPOLUDNIE;
-		else if(equals(modlitba, STR_MODL_POPOLUDNI))
-			p = MODL_POPOLUDNI;
-		else if(equals(modlitba, STR_MODL_INVITATORIUM))
-			p = MODL_INVITATORIUM;
-		else if(equals(modlitba, STR_MODL_KOMPLETORIUM))
-			p = MODL_KOMPLETORIUM;
-	}
-	if(p == MODL_NEURCENA){
-		Export("Nevhodné údaje: nie je urèená modlitba.\n");
+	p = atomodlitba(modlitba);
+	if((p == MODL_NEURCENA) || (p < MODL_INVITATORIUM) || (p > MODL_DRUHE_KOMPLETORIUM)){
+		Export("Nevhodné údaje: nie je urèená modlitba (%s).\n", modlitba);
 		return;
 	}
 	_global_modlitba = p;
@@ -12484,7 +12463,7 @@ void _main_zaltar(char *den, char *tyzden, char *modlitba){
 //---------------------------------------------------------------------
 // _main_liturgicke_obdobie() pod¾a _main_zaltar()
 short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char *litobd, char *litrok){
-	short int d, t, p, i, lo, tz, poradie_svateho = 0, ret;
+	short int d, t, p, lo, tz, poradie_svateho = 0, ret;
 	char lr;
 	// char pom[MAX_STR];
 	Log("_main_liturgicke_obdobie(): zaèiatok...\n");
@@ -12513,39 +12492,9 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	}
 
 	Log("nastavenie p (modlitba == %s)...\n", modlitba);
-	p = MODL_NEURCENA;
-	for(i = MODL_INVITATORIUM; i <= MODL_DRUHE_KOMPLETORIUM; i++){
-		if(equals(modlitba, nazov_modlitby(i))){
-			p = i;
-			continue; // exit from loop
-		}
-	}
-	Log("1:p == %d (%s)...\n", p, nazov_modlitby(p));
-	if(p == MODL_NEURCENA){
-		// 2005-08-15: Kvôli simulácii porovnávame aj s konštantami STR_MODL_... 
-		// 2006-10-11: pridané invitatórium a kompletórium | 2013-02-03: opravená fatálna copy-paste chyba
-		if(equals(modlitba, STR_MODL_RANNE_CHVALY))
-			p = MODL_RANNE_CHVALY;
-		else if(equals(modlitba, STR_MODL_POSV_CITANIE))
-			p = MODL_POSV_CITANIE;
-		else if(equals(modlitba, STR_MODL_VESPERY))
-			p = MODL_VESPERY;
-		else if(equals(modlitba, STR_MODL_PREDPOLUDNIM))
-			p = MODL_PREDPOLUDNIM;
-		else if(equals(modlitba, STR_MODL_NAPOLUDNIE))
-			p = MODL_NAPOLUDNIE;
-		else if(equals(modlitba, STR_MODL_POPOLUDNI))
-			p = MODL_POPOLUDNI;
-		else if(equals(modlitba, STR_MODL_INVITATORIUM))
-			p = MODL_INVITATORIUM;
-		else if(equals(modlitba, STR_MODL_KOMPLETORIUM))
-			p = MODL_KOMPLETORIUM;
-		else if(equals(modlitba, STR_MODL_VSETKY))
-			p = MODL_VSETKY;
-	}
-	Log("2:p == %d (%s)...\n", p, nazov_modlitby(p));
-	if(p == MODL_NEURCENA){
-		Export("Nevhodné údaje: nie je urèená modlitba.\n");
+	p = atomodlitba(modlitba);
+	if((p == MODL_NEURCENA) || (p < MODL_INVITATORIUM) || (p > MODL_DRUHE_KOMPLETORIUM)){
+		Export("Nevhodné údaje: nie je urèená modlitba (%s).\n", modlitba);
 		return FAILURE;
 	}
 
