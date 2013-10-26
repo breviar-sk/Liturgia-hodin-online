@@ -6096,9 +6096,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	}
 	else if(_local_den.denvt == DEN_NEDELA){
 		// 13/03/2000A.D. -- pridane, aby aj nedele mali tyzden zaltara
-		sprintf(_global_string2, "%c, %s", 
-			_local_den.litrok, 
-			rimskymi_tyzden_zaltara[tyzden_zaltara(_global_den.tyzden)]);
+		sprintf(_global_string2, "%c, %s", _local_den.litrok, rimskymi_tyzden_zaltara[tyzden_zaltara(_global_den.tyzden)]);
 	}
 	else{
 		mystrcpy(_global_string2, "V", MAX_GLOBAL_STR2);
@@ -10970,7 +10968,7 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 			_local_den.den, _local_den.mesiac,
 			_local_den.smer, nazov_dna(_local_den.denvt), nazov_obdobia_ext(_local_den.litobd), _local_den.smer);
 		// Log(_local_den);
-		Log("_local_modl_prve_vespery obsahuje:\n"); Log(_local_modl_prve_vespery);
+		// Log("_local_modl_prve_vespery obsahuje:\n"); Log(_local_modl_prve_vespery);
 		// Log("_local_modl_prve_kompletorium obsahuje:\n"); Log(_local_modl_prve_kompletorium);
 		
 		Log("tento deÚ (%d.%d.): _global_den.smer == %d, _global_den.denvt == %s, _global_den.litobd == %s (%d)\n",
@@ -10979,7 +10977,7 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 		// 2003-06-30
 		// Log(_global_den);
 		// Log("(3) _global_modl_prve_vespery obsahuje:\n"); Log(_global_modl_prve_vespery);
-		Log("(3) _global_modl_prve_kompletorium obsahuje:\n"); Log(_global_modl_prve_kompletorium);
+		// Log("(3) _global_modl_prve_kompletorium obsahuje:\n"); Log(_global_modl_prve_kompletorium);
 
 		// if VYNIMKY: porov. nizsie. 14/03/2000A.D.
 		if((_global_den.smer > _local_den.smer) ||
@@ -11051,14 +11049,24 @@ LABEL_ZMENA:
 					)
 				)
 			){
-				Log("priradujem %s z dalsieho dna\n", nazov_modlitby(modlitba));
+				Log("Ël. 61 VSLH: beriem veöpery z nasleduj˙ceho dÚa...\n");
+
 				_global_den = _local_den;
-				_global_modl_vespery = _local_modl_prve_vespery;
-				_global_modl_kompletorium = _local_modl_prve_kompletorium;
-				//???
-				_global_modl_prve_vespery = _local_modl_prve_vespery;
-				_global_modl_prve_kompletorium = _local_modl_prve_kompletorium;
-				//??? -- divna pasaz!
+
+				if((modlitba == MODL_VESPERY) || (modlitba == MODL_PRVE_VESPERY) || (modlitba == MODL_DRUHE_VESPERY)){
+					Log("priraÔujem %s z Ôalöieho dÚa:\n", nazov_modlitby(modlitba));
+					_global_modl_prve_vespery = _local_modl_prve_vespery;
+					_global_modl_vespery = _local_modl_prve_vespery;
+				}
+
+				if((modlitba == MODL_KOMPLETORIUM) || (modlitba == MODL_PRVE_KOMPLETORIUM) || (modlitba == MODL_DRUHE_KOMPLETORIUM)){
+					Log("priraÔujem %s z Ôalöieho dÚa, ale iba ak ide o sl·vnosù!\n", nazov_modlitby(modlitba));
+					if(_local_den.smer < 5){
+						_global_modl_prve_kompletorium = _local_modl_prve_kompletorium;
+						_global_modl_kompletorium = _local_modl_prve_kompletorium;
+					}
+				}
+
 				// 2012-11-20: doplnenÈ priradenie, lebo sa zmenila premenn· _global_den
 				_global_poradie_svaty = svaty_dalsi_den;
 
@@ -11068,9 +11076,9 @@ LABEL_ZMENA:
 					_set_prosby_dodatok(_global_den.denvt, ANO);
 				}
 
-				Log("prve vespery:\n");
+				Log("CURRENT: prvÈ veöpery:\n");
 				Log(_global_modl_prve_vespery);
-				Log("vespery:\n");
+				Log("CURRENT: veöpery:\n");
 				Log(_global_modl_vespery);
 				
 				if(modlitba == MODL_VESPERY){
@@ -11094,6 +11102,9 @@ LABEL_ZMENA:
 				init_global_string_podnadpis(modlitba);
 				Log("v Ëasti LABEL_ZMENA nastavujem _global_string_spol_cast...\n"); // potrebnÈ pouûiù svaty_dalsi_den
 				ret_sc = init_global_string_spol_cast(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], _global_poradie_svaty /* svaty_dalsi_den */);
+			}
+			else{
+				Log("niË sa nedeje...\n");
 			}
 		}// _local_den ma dvoje vespery/kompletorium, teda musime brat PRVE
 	}// vespery alebo kompletorium, zistovanie priority

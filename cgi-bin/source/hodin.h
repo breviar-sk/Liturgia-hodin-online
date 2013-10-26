@@ -613,6 +613,8 @@ const char *nazov_slavenia_lokal[] =
 ,"pre OFMConv., OFMCap: spomienka"                                                                              // LOKAL_SLAV_SPOMIENKA_OFMCONV_OFMCAP
 ,"pre OSC: sl·vnosù"                                                                                            // LOKAL_SLAV_SPOMIENKA_OSC
 ,"pre Slovensko zatiaæ nedovolenÈ sl·venie"                                                                     // LOKAL_SLAV_NEDOVOLENE
+,"Katonai Ordinari·tus: "HTML_LINE_BREAK"Az Ordinari·tus vÈdıszentje; fı¸nnep"                                  // LOKAL_SLAV_KATONAI_ORDINARIAT
+,"Debrecen-NyÌregyh·za: "HTML_LINE_BREAK"A szÈkesegyh·z felszentelÈse; fı¸nnep"                                 // LOKAL_SLAV_DEBR_NYIREGY
 };
 
 // names of liturgical colors
