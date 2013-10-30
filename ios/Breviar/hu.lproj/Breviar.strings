@@ -1,0 +1,80 @@
+// Prayer titles
+"mi"		= "Imádságra hívás";
+"mpc"		= "Olvasmányos imaóra";
+"mrch"		= "Reggeli dicséret";
+"mpred"		= "Délelőtt";
+"mna"		= "Délben";
+"mpo"		= "Délután";
+"mv"		= "Esti dicséret";
+"mk"		= "Befejező imaóra";
+
+// Sections in Settings screen
+"appearance"	= "Megjelenés";
+"common_parts"	= "Állandó részek megjelenítése";
+"prayer_text"	= "Imaóra szövege";
+"calendar"		= "Liturgikus naptár";
+"other"			= "Egyéb";
+
+// Appearance settings
+"j"			= "Zsolozsma nyelve";
+"j.cz"		= "Čeština";
+"j.en"		= "English";
+"j.hu"		= "Magyarul";
+"j.la"		= "Lingua latina";
+"j.sk"		= "Slovenčina";
+
+// Prayer parts settings
+"of1c"		= "Evangéliumi kantikumok";
+"of1s"		= "Dicsőség az Atyának";
+"of1r"		= "Rubrikák";
+"of1o"		= "Az Úr imádsága (Miatyánk)";
+"of1t"		= "Téged, Isten, dicsérünk... himnusz";
+"of1pr"		= "A válaszos énekek teljes szövege";
+
+// Prayer text settings
+"of0v"		= "Versek száma";
+"of0cit"	= "Liturgikus olvasmányok";
+
+// Liturgic calendar settings
+"of0zjvne"	= "Urunk megjelenése (Vízkereszt) megünneplése vasárnap, január 2. és 8. között";
+"of0nanne"	= "Urunk mennybemenetelét vasárnap ünnepelni";
+"of0tkne"	= "Krisztus Szent Teste és Vére megünneplése vasárnap";
+
+// Other settings
+"of3"		= "Közös részből";
+"of3.0"		= "lelkipásztorok - papok";
+"of3.1"		= "lelkipásztorok - püspökök";
+"of3.2"		= "pásztorok - pápa";
+"of3.3"		= "egyháztanítók";
+"of3.4"		= "apostolok";
+"of3.5"		= "vértanú";
+"of3.6"		= "vértanúk";
+"of3.7"		= "Szűz Mária";
+"of3.8"		= "szerzetes";
+"of3.9"		= "szent férfiak";
+"of3.10"	= "szűz";
+"of3.11"	= "apáca";
+"of3.12"	= "szent asszonyok";
+"of3.13"	= "több lelkipásztor";
+"of3.14"	= "vértanú";
+"of3.15"	= "egyháztanító férfiak";
+"of3.16"	= "egyháztanító asszonyok";
+"of3.17"	= "jótékonykodó asszonyok";
+"of3.18"	= "jótékonykodó férfiak";
+"of3.19"	= "több szent asszony";
+"of3.20"	= "több szent férfi";
+"of3.21"	= "szüzek";
+"of3.22"	= "templomszentelés";
+"of3.23"	= "halottakért";
+"of3.24"	= "házas szent asszonyok";
+"of3.25"	= "házas szent férfiak";
+
+"of1zspc"	= "Közös részek helyének mutatása a szentek zsolozsmájában";
+"of1spspc"	= "Emléknapon a jelzett részeket a közös részből venni";
+"of1sp"		= "Szent életrajzok, jegyzetek elrejtése";
+"of1dps"	= "Kiegészítő zsoltárok használata a Napközi imaórában";
+"of1z95"	= "A 23., 66. illetve a 99. zsoltár helyett legyen a 94.";
+"of1prz"	= "Minden fohász után ismételni a választ";
+"of1vkp"	= "Esti dicséretre használja a rövidebb közbenjáró fohászokat a függelékből";
+"of1v"		= "Hosszabb vigíliás ünneplés Olvasmányos imaórával";
+"of2a"		= "Alternatívák mutatása";

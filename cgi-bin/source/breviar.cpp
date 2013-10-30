@@ -10247,7 +10247,7 @@ void _export_rozbor_dna(short int typ){
 		mystrcpy(_global_link, STR_EMPTY, MAX_STR);
 	}
 	else{
-		vytvor_global_link(_global_den.den, _global_den.mesiac, _global_den.rok, i, NIE);
+		vytvor_global_link_class(_global_den.den, _global_den.mesiac, _global_den.rok, i, NIE, HTML_CLASS_NAME_CALENDAR_DAY);
 		// 2006-08-19: okrem premennej _global_string táto funkcia ešte naplní aj _global_string2 a _global_string_farba
 	}
 

@@ -427,7 +427,6 @@ a.button {
 	color: #1a1a1a; 
 	cursor: pointer;
 	font-family: inherit; 
-	font-size : 90%; 
 	font-style: normal;
 	margin-left: 0px!important;
 	text-decoration: none; 
@@ -459,14 +458,12 @@ select {
 	background: white; 
 	color: #1a1a1a;
 	font-family: inherit; 
-	font-size : 95%; 
 }
 
 input { 
 	border: 1px; 
 	color: #1a1a1a; 
 	font-family: inherit; 
-	font-size : 95%; 
 }
 
 /* modlitby */
@@ -476,9 +473,11 @@ input.button, input.reset {
 	color: #1a1a1a; 
 	cursor: pointer;
 	font-family: inherit; 
-	font-size : 90%; 
 	font-style: normal;
 	margin-left: 0px !important;
+	min-height: 20px;
+	min-width: 70px;
+	padding: 4px 4px;
 	text-decoration: none; 
 }
 
@@ -489,9 +488,11 @@ input.button0, input.reset0 {
 	color: White; 
 	cursor: pointer;
 	font-family: inherit; 
-	font-size : 85%; 
 	font-style: normal;
 	margin-left: 0px !important;
+	min-height: 20px;
+	min-width: 70px;
+	padding: 4px 4px;
 	text-decoration: none; 
 }
 
@@ -502,11 +503,13 @@ input.button1, input.reset1 {
 	color: White;
 	cursor: pointer;
 	font-family: inherit; 
-	font-size : 85%; 
 	font-style: normal;
 	font-variant: none;
 	font-weight: bold;
+	min-height: 20px;
+	min-width: 70px;
 	margin-left: 0px !important;
+	padding: 4px 4px;
 	text-decoration: none; 
 }
 
@@ -517,9 +520,11 @@ input.button2, input.reset2 {
 	color: #1a1a1a; 
 	cursor: pointer;
 	font-family: inherit; 
-	font-size : 90%; 
 	font-style: italic;
+	min-height: 20px;
+	min-width: 70px;
 	margin-left: 0px !important;
+	padding: 4px 4px;
 	text-decoration: none; 
 }
 

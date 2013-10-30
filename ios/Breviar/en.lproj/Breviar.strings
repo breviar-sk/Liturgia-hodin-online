@@ -1,0 +1,80 @@
+// Prayer titles
+"mi"		= "Invitatory";
+"mpc"		= "Office of Readings";
+"mrch"		= "Morning Prayer";
+"mpred"		= "Mid-Morning Prayer";
+"mna"		= "Midday Prayer";
+"mpo"		= "Mid-Afternoon Prayer";
+"mv"		= "Evening Prayer";
+"mk"		= "Compline";
+
+// Sections in Settings screen
+"appearance"	= "Appearance";
+"common_parts"	= "Non-changeable parts";
+"prayer_text"	= "Prayer text";
+"calendar"		= "Liturgical calendar";
+"other"			= "Other";
+
+// Appearance settings
+"j"			= "Breviary language";
+"j.cz"		= "Čeština";
+"j.en"		= "English";
+"j.hu"		= "Magyarul";
+"j.la"		= "Lingua latina";
+"j.sk"		= "Slovenčina";
+
+// Prayer parts settings
+"of1c"		= "Gospel canticles";
+"of1s"		= "Gloria to the Father";
+"of1r"		= "Rubrics";
+"of1o"		= "Lord's Prayer (Our Father)";
+"of1t"		= "Te Deum hymn";
+"of1pr"		= "Complete responsory texts";
+
+// Prayer text settings
+"of0v"		= "Verse numbers";
+"of0cit"	= "Liturgical readings";
+
+// Liturgic calendar settings
+"of0zjvne"	= "Celebrate Epiphany on Sunday, between January 2 and 8";
+"of0nanne"	= "Celebrate Ascension of Jesus on Sunday";
+"of0tkne"	= "Celebrate Corpus Christi on Sunday";
+
+// Other settings
+"of3"		= "Common parts";
+"of3.0"		= "duchovných pastierov: pre kňazov";
+"of3.1"		= "duchovných pastierov: pre biskupov";
+"of3.2"		= "duchovných pastierov: pre pápežov";
+"of3.3"		= "učiteľov Cirkvi";
+"of3.4"		= "apoštolov";
+"of3.5"		= "jedného mučeníka";
+"of3.6"		= "viacerých mučeníkov";
+"of3.7"		= "Panny Márie";
+"of3.8"		= "svätých mužov: pre rehoľníkov";
+"of3.9"		= "svätých mužov";
+"of3.10"	= "panien";
+"of3.11"	= "svätých žien: pre rehoľnice";
+"of3.12"	= "svätých žien";
+"of3.13"	= "duchovných pastierov: pre viacerých";
+"of3.14"	= "jednej mučenice";
+"of3.15"	= "svätých žien: pre vychovávateľky";
+"of3.16"	= "svätých mužov: pre vychovávateľov";
+"of3.17"	= "svätých žien: pre tie, čo konali skutky milosrdenstva";
+"of3.18"	= "svätých mužov: pre tých, čo konali skutky milosrdenstva";
+"of3.19"	= "svätých žien: pre viaceré";
+"of3.20"	= "svätých mužov: pre viacerých";
+"of3.21"	= "viacerých panien";
+"of3.22"	= "posviacky chrámu";
+"of3.23"	= "zosnulých";
+"of3.24"	= "svätých žien: pre tie, čo žili v manželstve";
+"of3.25"	= "svätých mužov: pre tých, čo žili v manželstve";
+
+"of1zspc"	= "Display the source of communia texts in the breviary of saints";
+"of1spspc"	= "Take parts from celebration (commmons)";
+"of1sp"		= "Do not display description for prayer for the saints";
+"of1dps"	= "Psalmodia from ordinary day";
+"of1z95"	= "Psalm 95 instead of psalms 24, 67 and 100";
+"of1prz"	= "Repeat invocation after each appeal";
+"of1vkp"	= "Use shorter prayers for vespers";
+"of1v"		= "Celebrating of vigily for prayer with readings";
+"of2a"		= "Alternatívák mutatása";

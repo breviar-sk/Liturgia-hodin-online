@@ -1,0 +1,72 @@
+
+/* Class = "IBUINavigationItem"; title = "Choose Date"; ObjectID = "1wq-Ug-wdo"; */
+"1wq-Ug-wdo.title" = "Vyberte dátum";
+
+/* Class = "IBUIButton"; normalTitle = "Sexta"; ObjectID = "2GD-F9-tgN"; */
+"2GD-F9-tgN.normalTitle" = "12h";
+
+/* Class = "IBUILabel"; text = "Font"; ObjectID = "4od-Hd-klg"; */
+"4od-Hd-klg.text" = "Písmo";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "6e2-LU-4fh"; */
+"6e2-LU-4fh.text" = "Label";
+
+/* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "A4r-s2-3MT"; */
+"A4r-s2-3MT.title" = "Hotovo";
+
+/* Class = "IBUIButton"; normalTitle = "Invitatory"; ObjectID = "SNQ-T1-lFZ"; */
+"SNQ-T1-lFZ.normalTitle" = "Inv.";
+
+/* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "T2k-yS-At2"; */
+"T2k-yS-At2.text" = "Subtitle";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "TfH-i2-D5A"; */
+"TfH-i2-D5A.text" = "Title";
+
+/* Class = "IBUINavigationItem"; title = "Prayer"; ObjectID = "TrN-Fa-K2y"; */
+"TrN-Fa-K2y.title" = "Prayer";
+
+/* Class = "IBUIButton"; normalTitle = "Yesterday"; ObjectID = "U5N-Eu-vrn"; */
+"U5N-Eu-vrn.normalTitle" = "Včera";
+
+/* Class = "IBUIButton"; normalTitle = "Vespers"; ObjectID = "ZbK-jB-IIC"; */
+"ZbK-jB-IIC.normalTitle" = "Vešpery";
+
+/* Class = "IBUIButton"; normalTitle = "Laudes"; ObjectID = "aBW-Bn-pqV"; */
+"aBW-Bn-pqV.normalTitle" = "Ranné chv.";
+
+/* Class = "IBUILabel"; text = "Settings"; ObjectID = "bs7-JS-LyG"; */
+"bs7-JS-LyG.text" = "Nastavenia";
+
+/* Class = "IBUINavigationItem"; title = "Settings"; ObjectID = "dem-NS-65I"; */
+"dem-NS-65I.title" = "Nastavenia";
+
+/* Class = "IBUIButton"; normalTitle = "Nona"; ObjectID = "fa9-WS-Icb"; */
+"fa9-WS-Icb.normalTitle" = "15h";
+
+/* Class = "IBUINavigationItem"; title = "Breviar"; ObjectID = "iKT-jq-jdv"; */
+"iKT-jq-jdv.title" = "Breviár";
+
+/* Class = "IBUIButton"; normalTitle = "Tomorrow"; ObjectID = "j1v-Yf-cVL"; */
+"j1v-Yf-cVL.normalTitle" = "Zajtra";
+
+/* Class = "IBUIButton"; normalTitle = "Compline"; ObjectID = "jxu-Gx-tDQ"; */
+"jxu-Gx-tDQ.normalTitle" = "Kompl.";
+
+/* Class = "IBUIButton"; normalTitle = "Today"; ObjectID = "lU9-My-Hu7"; */
+"lU9-My-Hu7.normalTitle" = "Dnes";
+
+/* Class = "IBUILabel"; text = "Helvetica, 15pt"; ObjectID = "qAg-Yd-fOI"; */
+"qAg-Yd-fOI.text" = "Helvetica, 15pt";
+
+/* Class = "IBUILabel"; text = "Current Date"; ObjectID = "qVr-PG-X5y"; */
+"qVr-PG-X5y.text" = "Current Date";
+
+/* Class = "IBUIButton"; normalTitle = "Tertia"; ObjectID = "qdw-Ih-Pg9"; */
+"qdw-Ih-Pg9.normalTitle" = "9h";
+
+/* Class = "IBUINavigationItem"; title = "Choose Font"; ObjectID = "tbI-Tf-ghO"; */
+"tbI-Tf-ghO.title" = "Vyberte písmo";
+
+/* Class = "IBUIButton"; normalTitle = "Readings"; ObjectID = "yqh-5F-5Hn"; */
+"yqh-5F-5Hn.normalTitle" = "Posv. čít.";

@@ -1,0 +1,80 @@
+// Prayer titles
+"mi"		= "Uvedení do první modlitby dne";
+"mpc"		= "Modlitba se čtením";
+"mrch"		= "Ranní chvály";
+"mpred"		= "Modlitba dopoledne";
+"mna"		= "Modlitba v poledne";
+"mpo"		= "Modlitba odpoledne";
+"mv"		= "Nešpory";
+"mk"		= "Kompletář";
+
+// Sections in Settings screen
+"appearance"	= "Vzhled";
+"common_parts"	= "zobrazit neměnné součásti modlitby";
+"prayer_text"	= "V textu modliteb zobrazit";
+"calendar"		= "Volby pro liturgický kalendář";
+"other"			= "Další možnosti pro výsledné modlitby";
+
+// Appearance settings
+"j"			= "Breviary language";
+"j.cz"		= "Čeština";
+"j.en"		= "English";
+"j.hu"		= "Magyarul";
+"j.la"		= "Lingua latina";
+"j.sk"		= "Slovenčina";
+
+// Prayer parts settings
+"of1c"		= "Evangelijní kantika";
+"of1s"		= "Sláva Otci";
+"of1r"		= "Rubriky";
+"of1o"		= "Modlitba Páně (Otčenáš)";
+"of1t"		= "Hymnus Te Deum";
+"of1pr"		= "Plné znění krátkých zpěvů v modlitbě se čtením";
+
+// Prayer text settings
+"of0v"		= "Číslování veršů";
+"of0cit"	= "Liturgická čtení";
+
+// Liturgic calendar settings
+"of0zjvne"	= "Zjevení Páně slavit v neděli mezi 2. a 8. lednem";
+"of0nanne"	= "Nanebevstoupení Páně slavit v neděli";
+"of0tkne"	= "Těla a krve Páně slavit v neděli";
+
+// Other settings
+"of3"		= "Části modlitby ze společné části";
+"of3.0"		= "o duchovních pastýřích (o kněžích)";
+"of3.1"		= "o duchovních pastýřích (o biskupech)";
+"of3.2"		= "o duchovních pastýřích (o papeži)";
+"of3.3"		= "o učitelích církve";
+"of3.4"		= "o apoštolech";
+"of3.5"		= "o jednom mučedníkovi";
+"of3.6"		= "o více mučednících";
+"of3.7"		= "o Panně Marii";
+"of3.8"		= "o svatých mužech (o řeholnících)";
+"of3.9"		= "o svatých mužích";
+"of3.10"	= "o pannách";
+"of3.11"	= "svatých ženách (o řeholnicích)";
+"of3.12"	= "o svatých ženách";
+"of3.13"	= "o duchovních pastýřích";
+"of3.14"	= "o jedné mučednici";
+"of3.15"	= "o svatých ženách (o vychovatelkách)";
+"of3.16"	= "o svatých mužích (o vychovatelích)";
+"of3.17"	= "o svatých ženách (které vynikaly milosrdnými skutky)";
+"of3.18"	= "o svatých mužích (kterí vynikali milosrdnými skutky)";
+"of3.19"	= "o svatých ženách (o více ženách)";
+"of3.20"	= "svatých mužů – o více mužích";
+"of3.21"	= "o pannách";
+"of3.22"	= "o posvěcení kostela";
+"of3.23"	= "za zemřelé";
+"of3.24"	= "o svatých ženách (které žily v manželství)";
+"of3.25"	= "svatých mužích (kterí žili v manželství)";
+
+"of1zspc"	= "Zobrazit, odkud se berou společné texty";
+"of1spspc"	= "Na památky použít části ze společných částí";
+"of1sp"		= "Nezobrazit popis při modlitbě ke cti světce";
+"of1dps"	= "Pro modlitbu během dne použít žalmy z doplňovacího cyklu";
+"of1z95"	= "Místo žalmů 24, 67 resp. 100 použít žalm 95";
+"of1prz"	= "Zopakovat zvolání po každé prosbě";
+"of1vkp"	= "Pro nešpory použít kratší prosby z dodatku";
+"of1v"		= "Prodloužené slavení vigilie pro modlitbu se čtením";
+"of2a"		= "Alternativy";
