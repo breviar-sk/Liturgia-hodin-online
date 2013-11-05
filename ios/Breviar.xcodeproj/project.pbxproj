@@ -477,6 +477,11 @@
 			attributes = {
 				CLASSPREFIX = BR;
 				LastUpgradeCheck = 0440;
+				TargetAttributes = {
+					7061B08615FA8E1A00A83E0A = {
+						DevelopmentTeam = 3K775ZSA59;
+					};
+				};
 			};
 			buildConfigurationList = 7061B08115FA8E1A00A83E0A /* Build configuration list for PBXProject "Breviar" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -783,10 +788,14 @@
 		7061B0A915FA8E1A00A83E0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Breviar/Breviar-Prefix.pch";
 				INFOPLIST_FILE = "Breviar/Breviar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -794,10 +803,14 @@
 		7061B0AA15FA8E1A00A83E0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Breviar/Breviar-Prefix.pch";
 				INFOPLIST_FILE = "Breviar/Breviar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

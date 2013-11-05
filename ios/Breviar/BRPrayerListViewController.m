@@ -139,7 +139,7 @@ static NSString *liturgicalColorImages[] = {
 	NSString *sectionType = [self.sections objectAtIndex:indexPath.section];
 	
 	if ([sectionType isEqualToString:@"PrayerListCell"]) {
-		return 168;
+		return 125;
 	}
 	else {
 		return 44;

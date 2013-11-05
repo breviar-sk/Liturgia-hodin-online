@@ -13,6 +13,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	// Initialize UI
+	[UINavigationBar appearance].barTintColor = [UIColor colorWithRed:123.0/255 green:37.0/255 blue:34.0/255 alpha:1.0];
+	[UINavigationBar appearance].tintColor = [UIColor whiteColor];
+	[UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    
 	// Initialize data source
 	BRDataSource *dataSource = [BRDataSource instance];
 	dataSource.language = @"hu"; // TODO: get from build flags

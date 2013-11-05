@@ -28,7 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+	UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHideNavbar:)];
+	[self.view addGestureRecognizer:tapGesture];
 }
 
 - (void)viewDidUnload
@@ -63,6 +65,12 @@
 	
 	NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
 	[self.webView loadHTMLString:body baseURL:baseURL];
+}
+
+- (void)showHideNavbar:(id)sender
+{
+	BOOL navbarHidden = self.navigationController.navigationBarHidden;
+	[self.navigationController setNavigationBarHidden:!navbarHidden animated:YES];
 }
 
 @end
