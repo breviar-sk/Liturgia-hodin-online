@@ -1,3 +1,45 @@
+/* 2013-11-03 class .respons for responsories */
+.respons p { 
+	font-weight: normal; 
+}
+
+.respons p.respR, p.respV, p.respO, p.respF { 
+	font-weight: bold; 
+	margin: 0; 
+	-webkit-margin-after: 0em; 
+	-webkit-margin-before: 0em; 
+}
+
+/* for SK & LA, R/V is used; for CZ, O/V is used; for HU, V/F is used */
+.respons p.respR:before { 
+	color: #FF3333; 
+	content: 'R. '; 
+	font-weight: bold; 
+}
+
+.respons p.respV:before { 
+	color: #FF3333; 
+	content: 'V. '; 
+	font-weight: bold; 
+}
+
+.respons p.respO:before { 
+	color: #FF3333; 
+	content: 'O. '; 
+	font-weight: bold; 
+}
+
+.respons p.respF:before { 
+	color: #FF3333; 
+	content: 'F. '; 
+	font-weight: bold; 
+}
+
+/* 2013-10-21 */
+div.hymn, div.responsory, div.readings {
+    font-weight: bold;
+}
+
 /* 2013-09-19 class for calendar */
 .calendar { 
 	padding: 4px 4px 4px 0; 

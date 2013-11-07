@@ -1,3 +1,7 @@
+.respons p.respR:before .respons p.respV:before .respons p.respO:before .respons p.respF:before { 
+	color: #FF3333; 
+}
+
 .calendar.today { 
 	background-color: #CCCCCC; 
 	color: #333333; 
