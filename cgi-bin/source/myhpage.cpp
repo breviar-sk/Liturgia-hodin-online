@@ -460,9 +460,8 @@ void _patka(FILE * expt){
 	// nezabudni zmenit #define BUILD_DATE v mydefs.h (2003-07-15)
 	Export_to_file(expt, (char *)build_template[_global_jazyk], BUILD_DATE);
 
-	// zapoznamkovane, 2003-06-30
-	// Export_to_file(expt, "Kódovanie Windows-1250 (Central European).\n");
-	Export_to_file(expt, HTML_LINE_BREAK"\n");
+	// Export_to_file(expt, "Kódovanie Windows-1250 (Central European).\n"); // zapoznamkovane, 2003-06-30
+	// Export_to_file(expt, HTML_LINE_BREAK"\n"); // commented, 2013-11-12
 #endif
 
 	// pridana stranka cfg_HTTP_ADDRESS_default, 12/04/2000A.D.

@@ -348,9 +348,8 @@ p {
 }
 
 p.patka { 
-	font-size: 80%; 
+	font-size: 70%; 
 	letter-spacing: 0mm; 
-	margin-top: -1mm; 
 	text-align: center; 
 	text-indent: 0em; 
 }
