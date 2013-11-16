@@ -31499,6 +31499,9 @@ label_25_MAR:
 							}
 
 							modlitba = MODL_POSV_CITANIE;
+							if(_global_jazyk == JAZYK_CZ){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 							_vlastna_cast_modlitba;
 							_vlastna_cast_1citanie;
 							_vlastna_cast_2citanie;
@@ -31576,7 +31579,7 @@ label_25_MAR:
 						_global_svaty1.typslav = SLAV_SPOMIENKA;
 						_global_svaty1.smer = 11; // miestne povinné spomienky
 						mystrcpy(_global_svaty1.meno, text_NOV_13_HU[_global_jazyk], MENO_SVIATKU);
-						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_VIACERI);
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_HU;
 					}// HU only

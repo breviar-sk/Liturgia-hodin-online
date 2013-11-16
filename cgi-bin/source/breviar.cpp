@@ -7522,7 +7522,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 		short int _local_rok;
 
 		if(dnes_dnes == ANO){
-			Export("<!-- tabu¾ka s buttonmi predošlý, nasledovný rok/mesiac/deò presunutá pred rozbor daného dòa (teda navrh stránky) -->\n");
+			Export("<!-- tabu¾ka s buttonmi predošlý, nasledovný rok/mesiac/deò presunutá pred rozbor daného dòa (teda navrch stránky) -->\n");
 		}
 		else{
 			Export("<!-- tabu¾ka s buttonmi predošlý, nasledovný deò -->\n");
@@ -7925,7 +7925,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 		short int _local_rok;
 
 		if(dnes_dnes == ANO){
-			Export("<!-- tabu¾ka s buttonmi predošlý, nasledovný rok/mesiac/deò presunutá pred rozbor daného dòa (teda navrh stránky) -->\n");
+			Export("<!-- tabu¾ka s buttonmi predošlý, nasledovný rok/mesiac/deò presunutá pred rozbor daného dòa (teda navrch stránky) -->\n");
 		}
 		else{
 			Export("<!-- tabu¾ka s buttonmi predošlý, nasledovný deò -->\n");
