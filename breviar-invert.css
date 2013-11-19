@@ -52,8 +52,8 @@ div.hymn, div.responsory, div.readings {
 	border-top: 0px; 
 	display: inline; 
 	font-weight: bold; 
+	min-width: 22px; 
 	padding: 4px 4px 0px 0; 
-	width: 22px; 
 }
 
 .calendar.day_name { 
@@ -63,8 +63,8 @@ div.hymn, div.responsory, div.readings {
 	border-top: 0px; 
 	display: block; 
 	font-style: italic; 
+	min-width: 22px; 
 	padding: 4px 4px 0px 0; 
-	width: 22px; 
 }
 
 .calendar.day { 
@@ -73,7 +73,7 @@ div.hymn, div.responsory, div.readings {
 	border-right: 1px dotted; 
 	border-top: 1px dotted; 
 	display: block; 
-	width: 22px; 
+	min-width: 22px; 
 }
 
 .calendar.today { 
@@ -84,7 +84,7 @@ div.hymn, div.responsory, div.readings {
 	border-top: 1px dotted; 
 	color: #333333; 
 	display: block; 
-	width: 22px; 
+	min-width: 22px; 
 }
 
 /* 2013-09-09 class .preces for prayers and intercessions */
