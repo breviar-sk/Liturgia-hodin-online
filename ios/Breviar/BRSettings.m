@@ -7,6 +7,7 @@
 //
 
 #import "BRSettings.h"
+#import "BRUtil.h"
 #import "BRFontHelper.h"
 
 #define LANG_OPTION @"j"

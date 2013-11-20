@@ -7,6 +7,7 @@
 //
 
 #import "BRCGIQuery.h"
+#import "BRUtil.h"
 #include "breviar.h"
 #include "myexpt.h"
 
@@ -14,10 +15,15 @@
 
 +(NSString *)queryWithArgs:(NSDictionary *)args {
 	NSMutableString *queryString = [[NSMutableString alloc] init];
+	NSMutableString *result = [[NSMutableString alloc] init];
 	
 	// Generate query string
 	int i=0;
 	for (NSString *key in args) {
+#if DEBUG_SETTINGS
+		[result appendFormat:@"%@=%@<br>", key, [args objectForKey:key]];
+#endif
+		
 		if (i++ == 0) {
 			[queryString appendFormat:@"-s%@=%@", key, [args objectForKey:key]];
 		}
@@ -40,8 +46,9 @@
 	};
 	breviar_main(argc, (char **)argv);
 	
-	return [NSString stringWithCString:getExportedString() encoding:NSWindowsCP1250StringEncoding];
-
+	NSString *prayerBody = [NSString stringWithCString:getExportedString() encoding:NSWindowsCP1250StringEncoding];
+	[result appendString:prayerBody];
+	return result;
 }
 
 @end
