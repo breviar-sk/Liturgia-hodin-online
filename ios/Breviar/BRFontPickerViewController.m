@@ -130,7 +130,7 @@ static CGFloat componentSizes[] = {
 					  @"<!DOCTYPE html>\n"
 					  "<html><body>"
 					  "<body style='font: %dpx %@'>"
-					  "<p>Te Deum laudamus:<br>te Dominum confitemur.<br>Te aeternum Patrem<br>omnis terra veneratur.<br>Tibi omnes Angeli;tibi caeli et universae Potestates;<br>Tibi Cherubim et Seraphim<br>incessabili voce proclamant:<br>Sanctus, Sanctus, Sanctus,Dominus Deus Sabaoth.</p>"
+					  "<p>Te Deum laudamus:<br>te Dominum confitemur.<br>Te aeternum Patrem<br>omnis terra veneratur.<br>Tibi omnes Angeli; tibi caeli et universae Potestates;<br>Tibi Cherubim et Seraphim<br>incessabili voce proclamant:<br>Sanctus, Sanctus, Sanctus, Dominus Deus Sabaoth.</p>"
 					  "</body></html>",
 					  self.fontSize, self.fontFamily];
 	[self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://breviar.sk"]];
