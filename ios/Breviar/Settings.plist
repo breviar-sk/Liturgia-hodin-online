@@ -245,6 +245,14 @@
 				</dict>
 				<dict>
 					<key>id</key>
+					<string>of1ps3</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
 					<string>of1v</string>
 					<key>type</key>
 					<string>bool</string>

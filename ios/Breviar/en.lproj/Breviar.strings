@@ -25,7 +25,7 @@
 
 // Prayer parts settings
 "of1c"		= "Gospel canticles";
-"of1s"		= "Gloria to the Father";
+"of1s"		= "Glory to the Father";
 "of1r"		= "Rubrics";
 "of1o"		= "Lord's Prayer (Our Father)";
 "of1t"		= "Te Deum hymn";
@@ -72,9 +72,10 @@
 "of1zspc"	= "Display the source of communia texts in the breviary of saints";
 "of1spspc"	= "Take parts from celebration (commmons)";
 "of1sp"		= "Do not display description for prayer for the saints";
-"of1dps"	= "Psalmodia from ordinary day";
+"of1dps"	= "Supplementary psalmodia for prayer during the day";
 "of1z95"	= "Psalm 95 instead of psalms 24, 67 and 100";
 "of1prz"	= "Repeat invocation after each appeal";
 "of1vkp"	= "Use shorter prayers for vespers";
+"of1ps3"	= "For prayer during the day use psalmody from three weeks of psalter (current, previous, next)";
 "of1v"		= "Celebrating of vigily for prayer with readings";
-"of2a"		= "Alternatívák mutatása";
+"of2a"		= "Alternatives";

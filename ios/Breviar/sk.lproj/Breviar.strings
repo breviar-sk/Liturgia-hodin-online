@@ -69,12 +69,13 @@
 "of3.24"	= "svätých žien: pre tie, čo žili v manželstve";
 "of3.25"	= "svätých mužov: pre tých, čo žili v manželstve";
 
-"of1zspc"	= "Zobraziť, odkiaľ sa berú časti zo spoločnej časti k modlitbe svätého";
+"of1zspc"	= "Zobraziť, odkiaľ sa berú spoločné časti k modlitbe svätého";
 "of1spspc"	= "Na spomienky použiť časti zo spoločných častí";
 "of1sp"		= "Nezobraziť popis k modlitbe svätého";
 "of1dps"	= "Pre modlitbu cez deň použiť doplnkovú psalmódiu";
 "of1z95"	= "Namiesto žalmov 24, 67 resp. 100 použiť žalm 95";
 "of1prz"	= "Opakovať zvolanie po každej prosbe";
 "of1vkp"	= "Pre vešpery použiť kratšie prosby z dodatku";
+"of1ps3"	= "Pre modlitbu cez deň použiť psalmódiu z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)";
 "of1v"		= "Predĺžené slávenie vigílie pre posvätné čítanie";
 "of2a"		= "Alternatívy";

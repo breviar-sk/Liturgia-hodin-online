@@ -193,7 +193,7 @@ const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
  {"svätıch muov: pre reho¾níkov", "o svatıch muech (o øeholnících)", "", "", "", "O øeholnících", "szerzetes"}, 
  {"svätıch muov", "o svatıch muích", "", "", "","O svatıch muích", "szent férfiak"}, 
  {"panien", "o pannách", "", "", "","O pannách", "szûz"}, 
- {"svätıch ien: pre reho¾nice", "svatıch enách (o øeholnicích)", "", "", "", "O svatıch enách - o øeholnicích", "apáca"}, 
+ {"svätıch ien: pre reho¾nice", "o svatıch enách (o øeholnicích)", "", "", "", "O svatıch enách - o øeholnicích", "apáca"}, 
  {"svätıch ien", "o svatıch enách", "", "", "", "O svatıch enách", "szent asszonyok"}, 
  {"duchovnıch pastierov: pre viacerıch", "o duchovních pastıøích", "", "", "", "O duchovních pastıøích", "több lelkipásztor"}, 
  {"jednej muèenice", "o jedné muèednici", "", "", "", "O muèednici", "vértanú"}, 
@@ -202,12 +202,12 @@ const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
  {"svätıch ien: pre tie, èo konali skutky milosrdenstva", "o svatıch enách (které vynikaly milosrdnımi skutky)", "", "", "", "O svatıch enách – o enì, která vynikala milosrdnımi skutky", "jótékonykodó asszonyok"}, 
  {"svätıch muov: pre tıch, èo konali skutky milosrdenstva", "o svatıch muích (kterí vynikali milosrdnımi skutky)", "", "", "", "O svatıch muích – o mui, kterı vynikal milosrdnımi skutky", "jótékonykodó férfiak"}, 
  {"svätıch ien: pre viaceré", "o svatıch enách (o více enách)", "", "", "", "O svatıch enách", "több szent asszony"}, 
- {"svätıch muov: pre viacerıch", "svatıch muù – o více muích", "", "", "", "O svatıch muích", "több szent férfi"}, 
+ {"svätıch muov: pre viacerıch", "o svatıch muích – o více muích", "", "", "", "O svatıch muích", "több szent férfi"}, 
  {"viacerıch panien", "o pannách", "", "", "","O pannách", "szüzek"}, 
  {"posviacky chrámu", "o posvìcení kostela", "", "", "", "Posvìcení kostela", "templomszentelés"}, 
  {"zosnulıch", "za zemøelé", "", "", "","Za zemøelé", "halottakért"}, 
  {"svätıch ien: pre tie, èo ili v manelstve", "o svatıch enách (které ily v manelství)", "", "", "", "O svatıch enách – o enì, která ila v manelství", "házas szent asszonyok"}, 
- {"svätıch muov: pre tıch, èo ili v manelstve", "svatıch muích (kterí ili v manelství)", "", "", "", "O svatıch muích – o mui, kterı il v manelství", "házas szent férfiak"}, 
+ {"svätıch muov: pre tıch, èo ili v manelstve", "o svatıch muích (kterí ili v manelství)", "", "", "", "O svatıch muích – o mui, kterı il v manelství", "házas szent férfiak"}, 
  {"nebra", "nepouít", "do not use", "", "", "nepouít", "mindent sajátból"}
 };
 
@@ -1542,7 +1542,7 @@ const char *html_text_zalmy_brat_zo_okrem_mcd[POCET_JAZYKOV + 1] =
 
 const char *html_text_spol_casti_vziat_zo[POCET_JAZYKOV + 1] = 
 {"èasti modlitby zo spoloènej èasti ", 
- "èásti modlitby ze spoleèné èásti ", 
+ "èásti modlitby ze spoleènıch textù ", 
  "parts of prayer from the common part ", 
  "",
  "",
@@ -1720,7 +1720,7 @@ const char *html_text_option1_chvalospevy_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option1_slava_otcu[POCET_JAZYKOV + 1] = 
 {"Sláva Otcu" /*[na konci almov a chválospevov]*/, 
  "Sláva Otci" /*[na konci almù a kantik]*/, 
- "Gloria to the Father" /*at the end of psalms and canticles]*/, 
+ "Glory to the Father" /*at the end of psalms and canticles]*/, 
  "",
  "",
  "Sláva Otci" /*[na konci almù a chvalozpìvù]*/, 
@@ -1853,7 +1853,7 @@ const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
 {"poui doplnkovú psalmódiu", 
  "pouít almy z doplòovacího cyklu", 
  "xxx", 
- "psalmodia from ordinary day",
+ "supplementary psalmodia",
  "",
  "dne pouít doplòkovou psalmodii", 
  "a kiegészítõ zsoltárokat venni"
@@ -1862,7 +1862,7 @@ const char *html_text_option1_mcd_zalmy_ine[POCET_JAZYKOV + 1] =
 {"pre modlitbu cez deò poui doplnkovú psalmódiu", 
  "pro modlitbu uprostøed dne pouít almy z doplòovacího cyklu", 
  "xxx", 
- "psalmodia from ordinary day",
+ "supplementary psalmodia",
  "",
  "pro modlitbu uprostøed dne pouít doplòkovou psalmodii", 
  "a Napközi imaórában a kiegészítõ zsoltárokat venni"
@@ -2020,7 +2020,7 @@ const char *html_text_option1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option1_spolc_svaty[POCET_JAZYKOV + 1] = 
-{"zobrazi, odkia¾ sa berú èasti zo spoloènej èasti k modlitbe svätého", 
+{"zobrazi, odkia¾ sa berú spoloèné èasti k modlitbe svätého", 
  "zobrazit, odkud se berou spoleèné texty", 
  "display communia info", 
  "", 
@@ -2030,7 +2030,7 @@ const char *html_text_option1_spolc_svaty[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option1_spolc_svaty_explain[POCET_JAZYKOV + 1] = 
-{"Rubrika obsahujúca informáciu, z akej spoloènej èasti sa berú èasti zo spoloènej èasti k modlitbe svätého.", 
+{"Rubrika obsahujúca informáciu, odkia¾ sa berú spoloèné èasti k modlitbe svätého.", 
  "Rubrika, která pro modlitby svatıch informuje, které spoleèné texty jsou uity.", 
  "Displays communia info.", 
  "", 
@@ -2080,7 +2080,7 @@ const char *html_text_option1_vigilia_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_option1_spomienka_spolcast[POCET_JAZYKOV + 1] = 
 {"na spomienky poui èasti zo spoloènıch èastí", 
- "na památky pouít èásti ze spoleènıch èástí", 
+ "na památky pouít èásti ze spoleènıch textù", 
  "take parts from celebration -- commmons", 
  "", 
  "", 
@@ -2100,7 +2100,7 @@ const char *html_text_option1_spomienka_spolcast_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_option1_spomienka_spolcast_NIE[POCET_JAZYKOV + 1] = 
 {"na spomienky poui èasti zo dòa, nie zo spoloènıch èastí", 
- "na památky pouít èásti z bìného dne, ne ze spoleènıch èástí", 
+ "na památky pouít èásti z bìného dne, ne ze spoleènıch textù", 
  "take parts from feria -- not commmons", 
  "", 
  "", 

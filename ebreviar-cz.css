@@ -335,6 +335,7 @@ body, html {
 	color: #1a1a1a;
 	font-family: Sans-Serif, Candara, Verdana, Tahoma, Helvetica, Arial;
 	font-weight: normal; 
+	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
 }
 
 p { 

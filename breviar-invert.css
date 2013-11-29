@@ -375,6 +375,7 @@ body, html {
 	color: #CCCCCC;
 	font-family: Cambria, Constantia, Georgia, Lido STF, DejaVu, Liberation, GentiumPlus, Gentium, Garamond, Serif;
 	font-weight: normal; 
+	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
 }
 
 p { 
