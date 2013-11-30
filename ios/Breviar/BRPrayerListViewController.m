@@ -35,6 +35,7 @@ static NSString *liturgicalColorImages[] = {
 {
     [super viewDidLoad];
 	self.date = [NSDate date];
+	
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
 		self.sections = @[@"Date", @"PrayerListCell", @"Settings"];
 	}
@@ -58,6 +59,10 @@ static NSString *liturgicalColorImages[] = {
 		self.celebrationIndex = 0;
 	}
 	
+	// Show date in title
+	[self updateTitleView];
+	
+	// Update data
 	[self.tableView reloadData];
 }
 
@@ -71,13 +76,51 @@ static NSString *liturgicalColorImages[] = {
 }
 
 #pragma mark -
+#pragma mark Title view
+
+- (void)updateTitleView
+{
+	self.navigationItem.title = [self getDateLabel];
+	self.navigationItem.titleView = [self getTitleView];
+}
+
+- (UIView *)getTitleView
+{
+	UIButton *btn = [[UIButton alloc] init];
+	[btn setTitle:[self getDateLabel] forState:UIControlStateNormal];
+	btn.titleLabel.font = [UIFont boldSystemFontOfSize:18.0];
+	[btn addTarget:self action:@selector(showDatePicker:) forControlEvents:UIControlEventTouchUpInside];
+	return btn;
+}
+
+- (NSString *)getDateLabel
+{
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+	NSInteger currentDay = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:[NSDate date]];
+	NSInteger selectedDay = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:self.date];
+    
+    int dayDiff = ABS(currentDay - selectedDay);
+	
+	if (dayDiff < 3) {
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		dateFormatter.dateFormat = @"EEEE";
+		return [[dateFormatter stringFromDate:self.date] capitalizedString];
+	}
+	else {
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateStyle:NSDateFormatterLongStyle];
+		return [dateFormatter stringFromDate:self.date];
+	}
+}
+
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	NSString *sectionType = [self.sections objectAtIndex:section];
 	
 	if ([sectionType isEqualToString:@"Date"]) {
-		return self.day.celebrations.count + 1;
+		return self.day.celebrations.count;
 	}
 	else if ([sectionType isEqualToString:@"PrayerList"]) {
 		return 8;
@@ -91,29 +134,16 @@ static NSString *liturgicalColorImages[] = {
 	NSString *sectionType = [self.sections objectAtIndex:indexPath.section];
 	
 	if ([sectionType isEqualToString:@"Date"]) {
-		if (indexPath.row == 0) {
-			// Date cell
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DateCell"];
-
-			NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-			formatter.dateStyle = NSDateFormatterLongStyle;
-			formatter.timeStyle = NSDateFormatterNoStyle;
-			
-			cell.textLabel.text = [formatter stringFromDate:self.date];
-			return cell;
-		}
-		else {
-			// Celebration cell
-			BRCelebrationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CelebrationCell"];
-			
-			BRCelebration *celebration = [self.day.celebrations objectAtIndex:indexPath.row-1];
-			cell.celebrationNameLabel.text = celebration.title;
-			cell.celebrationDescriptionLabel.text = celebration.subtitle;
-			cell.liturgicalColorView.image = [UIImage imageNamed:liturgicalColorImages[celebration.liturgicalColor]];
-			cell.accessoryType = (self.celebrationIndex == indexPath.row-1 ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone);
-			
-			return cell;
-		}
+		// Celebration cell
+		BRCelebrationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CelebrationCell"];
+		
+		BRCelebration *celebration = [self.day.celebrations objectAtIndex:indexPath.row];
+		cell.celebrationNameLabel.text = celebration.title;
+		cell.celebrationDescriptionLabel.text = celebration.subtitle;
+		cell.liturgicalColorView.image = [UIImage imageNamed:liturgicalColorImages[celebration.liturgicalColor]];
+		cell.accessoryType = (self.celebrationIndex == indexPath.row ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone);
+		
+		return cell;
 	}
 	else if ([sectionType isEqualToString:@"PrayerListCell"]) {
 		// Prayer list cell
@@ -153,21 +183,47 @@ static NSString *liturgicalColorImages[] = {
 	NSString *sectionType = [self.sections objectAtIndex:indexPath.section];
 	
 	if ([sectionType isEqualToString:@"Date"]) {
-		if (indexPath.row == 0 && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-			// Show date picker.
-			// NOTE: This is a hack for iPad: Storybord cannot show popovers for dynamic cells, so we show it for a hidden button.
-			[self performSegueWithIdentifier:@"ShowDatePicker" sender:self.showDatePickerButton];
-		}
-		else if (indexPath.row > 0) {
-			// Select celebration
-			NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:self.celebrationIndex+1 inSection:indexPath.section];
-			[self.tableView cellForRowAtIndexPath:oldIndexPath].accessoryType = UITableViewCellAccessoryNone;
-			[self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-			
-			self.celebrationIndex = indexPath.row-1;
-			[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-		}
+		// Select celebration
+		NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:self.celebrationIndex inSection:indexPath.section];
+		[self.tableView cellForRowAtIndexPath:oldIndexPath].accessoryType = UITableViewCellAccessoryNone;
+		[self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+		
+		self.celebrationIndex = indexPath.row;
+		[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 	}
+}
+
+#pragma mark -
+#pragma mark Date selection
+
+- (void)showDatePicker:(id)sender
+{
+	[self performSegueWithIdentifier:@"ShowDatePicker" sender:self];
+}
+
+- (void)jumpDate:(int)dayDiff
+{
+	NSDateComponents *components = [[NSDateComponents alloc] init];
+	[components setDay:dayDiff];
+	
+	self.date = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:self.date options:0];
+	self.day = [[BRDataSource instance] dayForDate:self.date];
+	self.celebrationIndex = 0;
+	
+	[self updateTitleView];
+	
+	NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.sections.count)];
+	[self.tableView reloadSections:indexSet withRowAnimation:(dayDiff > 0 ? UITableViewRowAnimationLeft : UITableViewRowAnimationRight)];
+}
+
+- (IBAction)prevDayPressed:(id)sender
+{
+	[self jumpDate:-1];
+}
+
+- (IBAction)nextDayPressed:(id)sender
+{
+	[self jumpDate:1];
 }
 
 #pragma mark -
@@ -178,7 +234,8 @@ static NSString *liturgicalColorImages[] = {
 	NSString *segueId = segue.identifier;
 	
 	if ([segueId isEqualToString:@"ShowDatePicker"]) {
-		BRDatePickerViewController *destController = segue.destinationViewController;
+		UINavigationController *navController = segue.destinationViewController;
+		BRDatePickerViewController *destController = [navController.viewControllers objectAtIndex:0];
 		destController.initialDate = self.date;
 		destController.datePickerDelegate = self;
 		
@@ -213,6 +270,7 @@ static NSString *liturgicalColorImages[] = {
 	}
 	else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		[self.datePickerPopover dismissPopoverAnimated:YES];
+		[self updateTitleView];
 		[self.tableView reloadData];
 		self.datePickerPopover = nil;
 	}

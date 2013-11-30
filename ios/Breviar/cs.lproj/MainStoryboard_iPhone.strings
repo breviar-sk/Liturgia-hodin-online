@@ -1,6 +1,6 @@
 
 /* Class = "IBUINavigationItem"; title = "Choose Date"; ObjectID = "1wq-Ug-wdo"; */
-"1wq-Ug-wdo.title" = "Zvolte datum";
+"wY9-57-G0V.title" = "Zvolte datum";
 
 /* Class = "IBUIButton"; normalTitle = "Sexta"; ObjectID = "2GD-F9-tgN"; */
 "2GD-F9-tgN.normalTitle" = "12h";
@@ -15,7 +15,7 @@
 "8uK-F8-z5B.text" = "Title";
 
 /* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "A4r-s2-3MT"; */
-"A4r-s2-3MT.title" = "Hotový";
+"MSd-Ib-Mhh.title" = "Hotový";
 
 /* Class = "IBUILabel"; text = "Detail"; ObjectID = "Gfg-aQ-Rv1"; */
 "Gfg-aQ-Rv1.text" = "Detail";

@@ -989,6 +989,9 @@ const short int default_css_jazyk[POCET_JAZYKOV + 1] =
 // CSS obsahujuci invertovane farby
 const char *nazov_css_invert_colors = "breviar-invert-colors.css";
 
+// CSS obsahujuci force normal font weight
+const char *nazov_css_normal_font_weight = "breviar-normal-font.css";
+
 // language charset (encoding); used for HTML heading
 const char *charset_jazyka[POCET_JAZYKOV + 1] =
 {"windows-1250", "windows-1250", "windows-1251", "windows-1251", "utf-8", "windows-1250", "windows-1250"};
@@ -1698,6 +1701,26 @@ const char *html_text_option0_tk_ne_explain[POCET_JAZYKOV + 1] =
  "Krisztus Szent Teste és Vére Pünkösd után a 11. napon van (tehát Szentháromság utáni csütörtökön); egyes országokban azonban a legközelebbi vasárnapon ünneplik."
 };
 
+const char *html_text_option0_font_normal[POCET_JAZYKOV + 1] = 
+{"všade poui obyèajné písmo (nie tuèné)",
+ "všude pouít obyèejné písmo (ne tuèné)",
+ "force normal font weight (no bold)",
+ "",
+ "",
+ "všude pouít obyèejné písmo (ne tuèné)",
+ "normál betûtípus használata (félkövér helyett)"
+};
+
+const char *html_text_option0_font_normal_explain[POCET_JAZYKOV + 1] = 
+{"Liturgia hodín pouíva tuèné písmo pre texty, ktoré sa priamo èítajú, a tie aj pre niektoré medzinadpisy. Táto vo¾ba potlaèí pouitie tuèného písma.", 
+ "", 
+ "", 
+ "",
+ "", 
+ "", 
+ ""
+};
+
 const char *html_text_option1_chvalospevy[POCET_JAZYKOV + 1] = 
 {"evanjeliové chválospevy (Benediktus, Magnifikat, Nunk dimittis)", 
  "evangelijní kantika (Mariino, Zachariášovo, Simeonovo)", 
@@ -1908,7 +1931,7 @@ const char *html_text_option1_mcd_zalmy_tri[POCET_JAZYKOV + 1] =
 {"pre modlitbu cez deò poui psalmódiu z troch tıdòov altára (aktuálny, predchádzajúci, nasledujúci)", 
  "pro modlitbu uprostøed dne pouít almy z tøí tıdnù ze altáøe (aktuální, pøedchozí, následující)", 
  "", 
- "",
+ "for prayer during the day use psalmody from three weeks of psalter (current, previous, next)",
  "",
  "pro modlitbu uprostøed dne pouít psalmodii z tøí tıdnù ze altáøe (aktuální, pøedchozí, následující)", 
  "a Napközi imaórában a három heti (aktuális, elõzõ, következõ) zsoltározást alkalmazni"
@@ -2311,7 +2334,7 @@ const char *html_text_option2_alternatives[POCET_JAZYKOV + 1] =
 const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] = 
 {"Zobrazí v texte modlitieb iba jednu monos, napr. hymnus pre kompletórium (dá sa prepína).",
  "Zobrazí v textu modliteb jenom jedno monost (je moné pøepínat).",
- "xxx", 
+ "", 
  "",
  "", 
  "Zobrazí v textu modliteb jenom jedno monost (je moné pøepínat).",
@@ -2321,7 +2344,7 @@ const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option5_KomplHymnusA[POCET_JAZYKOV + 1] = 
 {"hymnus A: Na sklonku dòa a úprimne",
  "hymnus A: Na sklonku dne tì upøímnì",
- "hymnus A", 
+ "hymn A", 
  "",
  "",
  "hymnus A: Na sklonku dne tì upøímnì",
@@ -2331,7 +2354,7 @@ const char *html_text_option5_KomplHymnusA[POCET_JAZYKOV + 1] =
 const char *html_text_option5_KomplHymnusB[POCET_JAZYKOV + 1] = 
 {"hymnus B: Kriste, ty svetlo a náš deò",
  "hymnus B: Ty, Kriste, svìtlo, jasnı dni",
- "hymnus B", 
+ "hymn B", 
  "",
  "",
  "hymnus B: Ty, Kriste, svìtlo, jasnı dni",
@@ -2341,7 +2364,7 @@ const char *html_text_option5_KomplHymnusB[POCET_JAZYKOV + 1] =
 const char *html_text_option5_PCHymnusI[POCET_JAZYKOV + 1] = 
 {"hymnus I. [Ak je posvätné èítanie v noci alebo vèasráno]",
  "hymnus I. [V noci a èasnì ráno]",
- "hymnus I.",
+ "hymn I. [during the night and early in the morning]",
  "",
  "",
  "hymnus I. [V noci a èasnì ráno]",
@@ -2351,7 +2374,7 @@ const char *html_text_option5_PCHymnusI[POCET_JAZYKOV + 1] =
 const char *html_text_option5_PCHymnusII[POCET_JAZYKOV + 1] = 
 {"hymnus II. [Ak je posvätné èítanie cez deò]",
  "hymnus II. [Bìhem dne]",
- "hymnus II.",
+ "hymn II. [during the day]",
  "",
  "",
  "hymnus II. [Bìhem dne]",
@@ -2361,7 +2384,7 @@ const char *html_text_option5_PCHymnusII[POCET_JAZYKOV + 1] =
 const char *html_text_option5_PCHymnusVNnedela[POCET_JAZYKOV + 1] = 
 {"hymnus Toto je pravı Boí deò",
  "hymnus nedìlní",
- "hymnus NE",
+ "Sunday's hymn",
  "",
  "",
  "hymnus nedìlní",
@@ -2421,7 +2444,7 @@ const char *html_text_option5_VespHymnusVNferia[POCET_JAZYKOV + 1] =
 const char *html_text_option5_MCDPredHymnus1[POCET_JAZYKOV + 1] = 
 {"hymnus Príï, Duchu Svätı",
  "hymnus K nám, Duchu Svatı, nyní spìj",
- "hymnus 1",
+ "hymn 1",
  "",
  "",
  "hymnus K nám, Duchu Svatı, nyní spìj",
@@ -2431,7 +2454,7 @@ const char *html_text_option5_MCDPredHymnus1[POCET_JAZYKOV + 1] =
 const char *html_text_option5_MCDPredHymnus2[POCET_JAZYKOV + 1] = 
 {"hymnus Deviata je u hodina",
  "hymnus Je tøetí denní hodina",
- "hymnus 2",
+ "hymn 2",
  "",
  "",
  "hymnus Je tøetí denní hodina",
@@ -2441,7 +2464,7 @@ const char *html_text_option5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
 const char *html_text_option5_MCDNaHymnus1[POCET_JAZYKOV + 1] = 
 {"hymnus Mocnı Vládca, vernı Boe",
  "hymnus Jsi mocnı Vládce, vìrnı Bùh",
- "hymnus 1",
+ "hymn 1",
  "",
  "",
  "hymnus Jsi mocnı Vládce, vìrnı Bùh",
@@ -2451,7 +2474,7 @@ const char *html_text_option5_MCDNaHymnus1[POCET_JAZYKOV + 1] =
 const char *html_text_option5_MCDNaHymnus2[POCET_JAZYKOV + 1] = 
 {"hymnus Na nebi slnko vrcholí",
  "hymnus Teï Pánu chvály zpívejme",
- "hymnus 2",
+ "hymn 2",
  "",
  "",
  "hymnus Teï Pánu chvály zpívejme",
@@ -2461,7 +2484,7 @@ const char *html_text_option5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
 const char *html_text_option5_MCDPoHymnus1[POCET_JAZYKOV + 1] = 
 {"hymnus Celı svet v pohyb uvádzaš",
  "hymnus Svìt celı v pohyb uvádíš",
- "hymnus 1",
+ "hymn 1",
  "",
  "",
  "hymnus Svìt celı v pohyb uvádíš",
@@ -2471,7 +2494,7 @@ const char *html_text_option5_MCDPoHymnus1[POCET_JAZYKOV + 1] =
 const char *html_text_option5_MCDPoHymnus2[POCET_JAZYKOV + 1] = 
 {"hymnus Z Boej milosti tretí raz",
  "hymnus Hodina tøetí z poledne",
- "hymnus 2",
+ "hymn 2",
  "",
  "",
  "hymnus Hodina tøetí z poledne",
@@ -2481,7 +2504,7 @@ const char *html_text_option5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
 const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] = 
 {"namiesto almu 122 bra alm 129",
  "místo almu 122 vzít alm 129",
- "",
+ "instead of psalm 122 use 129",
  "",
  "",
  "místo almu 122 vzít alm 129",
@@ -2491,7 +2514,7 @@ const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] =
 const char *html_text_option5_DPsalmZ126_129[POCET_JAZYKOV + 1] = 
 {"namiesto almu 126 bra alm 129",
  "místo almu 126 vzít alm 129",
- "",
+ "instead of psalm 126 use 129",
  "",
  "",
  "místo almu 126 vzít alm 129",
@@ -2501,7 +2524,7 @@ const char *html_text_option5_DPsalmZ126_129[POCET_JAZYKOV + 1] =
 const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] = 
 {"namiesto almu 127 bra alm 131",
  "místo almu 127 vzít alm 131",
- "",
+ "instead of psalm 127 use 131",
  "",
  "",
  "místo almu 127 vzít alm 131",
@@ -2511,7 +2534,7 @@ const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] =
 const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] = 
 {"bra alm 122 z doplnkovej psalmódie",
  "vzít alm 122 z doplòovacího cyklu",
- "",
+ "use psalm 122 from complementary psalmody",
  "",
  "",
  "vzít alm 122 z doplòovacího cyklu",
@@ -2521,7 +2544,7 @@ const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] =
 const char *html_text_option5_DPsalmZ126_NORMAL[POCET_JAZYKOV + 1] = 
 {"bra alm 126 z doplnkovej psalmódie",
  "vzít alm 126 z doplòovacího cyklu",
- "",
+ "use psalm 126 from complementary psalmody",
  "",
  "",
  "vzít alm 126 z doplòovacího cyklu",
@@ -2531,7 +2554,7 @@ const char *html_text_option5_DPsalmZ126_NORMAL[POCET_JAZYKOV + 1] =
 const char *html_text_option5_DPsalmZ127_NORMAL[POCET_JAZYKOV + 1] = 
 {"bra alm 127 z doplnkovej psalmódie",
  "vzít alm 127 z doplòovacího cyklu",
- "",
+ "use psalm 127 from complementary psalmody",
  "",
  "",
  "vzít alm 127 z doplòovacího cyklu",

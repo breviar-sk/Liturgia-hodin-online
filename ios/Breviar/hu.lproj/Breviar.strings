@@ -14,6 +14,7 @@
 "prayer_text"	= "Imaóra szövege";
 "calendar"		= "Liturgikus naptár";
 "other"			= "Egyéb";
+"alternatives"		= "Alternatívák textus";
 
 // Appearance settings
 "j"			= "Zsolozsma nyelve";
@@ -22,6 +23,10 @@
 "j.hu"		= "Magyarul";
 "j.la"		= "Lingua latina";
 "j.sk"		= "Slovenčina";
+
+"of2nr"		= "Éjszakai mód"
+"of0fn"		= "Normál betűtípus használata (félkövér helyett)"
+"of2tw"		= "Hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)"
 
 // Prayer parts settings
 "of1c"		= "Evangéliumi kantikumok";
@@ -73,9 +78,27 @@
 "of1spspc"	= "Emléknapon a jelzett részeket a közös részből venni";
 "of1sp"		= "Szent életrajzok, jegyzetek elrejtése";
 "of1dps"	= "Kiegészítő zsoltárok használata a Napközi imaórában";
+"of1ps3"	= "A Napközi imaórában a három heti (aktuális, előző, következő) zsoltározást alkalmazni";
 "of1z95"	= "A 23., 66. illetve a 99. zsoltár helyett legyen a 94.";
 "of1prz"	= "Minden fohász után ismételni a választ";
 "of1vkp"	= "Esti dicséretre használja a rövidebb közbenjáró fohászokat a függelékből";
-"of1ps3"	= "A Napközi imaórában a három heti (aktuális, előző, következő) zsoltározást alkalmazni";
 "of1v"		= "Hosszabb vigíliás ünneplés Olvasmányos imaórával";
+
+// Alternatives
 "of2a"		= "Alternatívák mutatása";
+"of5ps29"		= "A 121. helyett vehető a 128. zsoltár";
+"of5ps69"		= "A 125. helyett vehető a 128. zsoltár";
+"of5ps71"		= "A 126. helyett vehető a 130. zsoltár";
+"of5hpc"		= "Olvasmányos imaóra (évközi idő): himnusz I. [Amikor az imaórát éjszaka vagy kora hajnalban mondják] / himnusz II. [Amikor az imaórát a nap nem reggeli órájában végzik]";
+"of5hpred"		= "Délelőtt: himnusz Most jöjj, Szentlélek, szállj közénk / himnusz Idők rendjét megtartva most";
+"of5hna"		= "Délben: himnusz Urunk, felséges Istenünk / himnusz Dicsérjük dallal az Urat";
+"of5hpo"		= "Délután: himnusz Világfenntartó Istenünk / himnusz Háromszor három óra már";
+"of5hk"		= "Befejező imaóra: himnusz A: Immár a nap leáldozott / himnusz B: Krisztus, tündöklő nappalunk";
+"of5vnpc"		= "Olvasmányos imaóra (húsvéti idő): himnusz Urunknak áldott napja ez / himnusz Örvendj, ég, messzi csillagok";
+"of5vnhrch"		= "Reggeli dicséret (húsvéti idő): himnusz Rózsálló hajnalfény ragyog / himnusz Az új Sionnak kórusa";
+"of5vnv"		= "esti dicséret (húsvéti idő): himnusz Ím, vár a Bárány asztala / himnusz Örök Királyunk, szent Urunk";
+
+// Not shown (hidden) options
+"of2id"		= "A dátum ISO 8601 formátumban"
+"of2btnu"		= "Az imaórák gombjainak gazdaságos elhelyezése"
+"of2nav"		= "A navigáció mutatása az imaszövegben"

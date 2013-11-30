@@ -11,6 +11,20 @@
 			<array>
 				<dict>
 					<key>id</key>
+					<string>j</string>
+					<key>type</key>
+					<string>stringOption</string>
+					<key>default</key>
+					<string>sk</string>
+					<key>options</key>
+					<array>
+						<string>cz</string>
+						<string>hu</string>
+						<string>sk</string>
+					</array>
+				</dict>
+				<dict>
+					<key>id</key>
 					<string>prayerFont</string>
 					<key>type</key>
 					<string>font</string>
@@ -26,17 +40,57 @@
 				</dict>
 				<dict>
 					<key>id</key>
-					<string>j</string>
+					<string>of2nr</string>
 					<key>type</key>
-					<string>stringOption</string>
+					<string>bool</string>
 					<key>default</key>
-					<string>sk</string>
-					<key>options</key>
-					<array>
-						<string>cz</string>
-						<string>hu</string>
-						<string>sk</string>
-					</array>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of0fn</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of2tw</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of2id</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+					<key>hidden</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of2btnu</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<true/>
+					<key>hidden</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of2nav</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+					<key>hidden</key>
+					<true/>
 				</dict>
 			</array>
 		</dict>
@@ -51,7 +105,7 @@
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<true/>
+					<false/>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -59,7 +113,7 @@
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<true/>
+					<false/>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -67,7 +121,7 @@
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<true/>
+					<false/>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -75,7 +129,7 @@
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<true/>
+					<false/>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -83,7 +137,7 @@
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<true/>
+					<false/>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -110,41 +164,22 @@
 				</dict>
 				<dict>
 					<key>id</key>
+					<string>of0r</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+					<key>hidden</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>id</key>
 					<string>of0cit</string>
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<true/>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>calendar</string>
-			<key>items</key>
-			<array>
-				<dict>
-					<key>id</key>
-					<string>of0zjvne</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<true/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of0nanne</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<true/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of0tkne</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
+					<false/>
+					<key>hidden</key>
 					<true/>
 				</dict>
 			</array>
@@ -154,6 +189,78 @@
 			<string>other</string>
 			<key>items</key>
 			<array>
+				<dict>
+					<key>id</key>
+					<string>of1zspc</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of1spspc</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of1sp</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of1dps</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of1ps3</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of1z95</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of1prz</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of1vkp</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of1v</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
 				<dict>
 					<key>id</key>
 					<string>of3</string>
@@ -187,85 +294,139 @@
 						<string>21</string>
 					</array>
 				</dict>
-				<dict>
-					<key>id</key>
-					<string>of1zspc</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<false/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of1spspc</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<true/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of1sp</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<false/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of1dps</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<false/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of1z95</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<false/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of1prz</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<true/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of1vkp</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<false/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of1ps3</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<false/>
-				</dict>
-				<dict>
-					<key>id</key>
-					<string>of1v</string>
-					<key>type</key>
-					<string>bool</string>
-					<key>default</key>
-					<false/>
-				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>alternatives</string>
+			<key>items</key>
+			<array>
 				<dict>
 					<key>id</key>
 					<string>of2a</string>
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5ps29</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
 					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5ps69</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5ps71</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5hpc</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5hpred</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5hna</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5hpo</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5hk</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5vnpc</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5vnhrch</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of5vnv</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>calendar</string>
+			<key>items</key>
+			<array>
+				<dict>
+					<key>id</key>
+					<string>of0zjvne</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of0nanne</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>of0tkne</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<true/>
 				</dict>
 			</array>
 		</dict>

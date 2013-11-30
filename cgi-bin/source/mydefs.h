@@ -517,6 +517,14 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_0_TK_NED "of0tkne"
 #endif
 
+// najsv. kristovho tela a krvi -- Ëi sl·viù vo ötvrtok (11. deÚ po ZDS) alebo v nedeæu
+#define MODL_OPTF_0_FONT_NORMAL 67
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_0_FONT_NORMAL "MODL_OPTF_0_FONT_NORMAL"
+#else
+	#define STR_MODL_OPTF_0_FONT_NORMAL "of0fn"
+#endif
+
 // pre force option 1 jednotlivÈ bit-komponenty (parci·lne voæby)
 
 // evanjeliovÈ chv·lospevy (benediktus, magnifikat, nunk dimittis)
@@ -1097,6 +1105,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_BIT_OPT_0_ZJAVENIE_PANA_NEDELA      "BitOpt0EpiphanyOnSunday"
 #define XML_BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA   "BitOpt0AssumptionOnSunday"
 #define XML_BIT_OPT_0_TELAKRVI_NEDELA           "BitOpt0CorpusChristiOnSunday"
+#define XML_BIT_OPT_0_FONT_NORMAL               "BitOpt0ForceNormalFontWeight"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"

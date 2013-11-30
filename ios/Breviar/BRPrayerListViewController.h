@@ -22,4 +22,7 @@
 @property(strong) NSArray *sections;
 @property NSInteger celebrationIndex;
 
+- (IBAction)prevDayPressed:(id)sender;
+- (IBAction)nextDayPressed:(id)sender;
+
 @end

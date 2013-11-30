@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="r6Z-rP-I8n">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -52,7 +52,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="zZg-Vr-cVP" kind="modal" identifier="ShowDatePicker" id="xL8-9N-6BW"/>
+                                    <segue destination="j7k-zU-Do3" kind="modal" identifier="ShowDatePicker" id="Tqn-7r-VqD"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="CelebrationCell" editingAccessoryType="checkmark" rowHeight="44" id="lRr-Pj-phQ" customClass="BRCelebrationCell">
@@ -231,7 +231,18 @@
                             <outlet property="delegate" destination="jRd-ik-NDq" id="W3h-3Z-dAZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Breviar" id="iKT-jq-jdv"/>
+                    <navigationItem key="navigationItem" title="Breviar" id="iKT-jq-jdv">
+                        <barButtonItem key="leftBarButtonItem" image="back.png" id="9Sr-u2-xsu">
+                            <connections>
+                                <action selector="prevDayPressed:" destination="jRd-ik-NDq" id="Nzp-f0-Uvo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="forward.png" id="ltA-sv-CyZ">
+                            <connections>
+                                <action selector="nextDayPressed:" destination="jRd-ik-NDq" id="OMU-6O-CtD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="1Ta-iU-6rs" id="hbf-90-rQQ"/>
                     </connections>
@@ -240,7 +251,26 @@
             </objects>
             <point key="canvasLocation" x="639" y="-147"/>
         </scene>
-        <!--Date Picker View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="fgc-xq-bAU">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="j7k-zU-Do3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NIr-BO-3cc">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ZUg-Vo-Fbr">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="zZg-Vr-cVP" kind="relationship" relationship="rootViewController" id="jmH-wl-SH8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQ1-Xj-QJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="335" y="-771"/>
+        </scene>
+        <!--Date Picker View Controller - Choose Date-->
         <scene sceneID="Y5h-HN-H2c">
             <objects>
                 <viewController id="zZg-Vr-cVP" customClass="BRDatePickerViewController" sceneMemberID="viewController">
@@ -252,7 +282,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wSu-HC-5DA">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wSu-HC-5DA">
                                 <rect key="frame" x="0.0" y="127" width="320" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="216" id="njc-9I-lIb"/>
@@ -282,19 +312,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                                 </timeZone>
                             </datePicker>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDn-Lm-F5Z">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Choose Date" id="1wq-Ug-wdo">
-                                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="A4r-s2-3MT">
-                                            <connections>
-                                                <action selector="donePressed:" destination="zZg-Vr-cVP" id="TSa-cV-O4W"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5N-Eu-vrn">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5N-Eu-vrn">
                                 <rect key="frame" x="37" y="351" width="67" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="7xa-Yy-KGP"/>
@@ -306,7 +324,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <action selector="yesterdayPressed:" destination="zZg-Vr-cVP" eventType="touchUpInside" id="fTC-pX-AQR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lU9-My-Hu7">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lU9-My-Hu7">
                                 <rect key="frame" x="112" y="351" width="96" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="96" id="6lu-GV-fLK"/>
@@ -318,7 +336,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <action selector="todayPressed:" destination="zZg-Vr-cVP" eventType="touchUpInside" id="lfu-0K-M05"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1v-Yf-cVL">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1v-Yf-cVL">
                                 <rect key="frame" x="216" y="351" width="99" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="99" id="ucz-4G-2iT"/>
@@ -331,28 +349,28 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98823535442352295" green="0.98823535442352295" blue="0.87450987100601196" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="VDn-Lm-F5Z" firstAttribute="trailing" secondItem="5Jf-Hd-xf3" secondAttribute="trailing" id="4QQ-Au-4I2"/>
                             <constraint firstItem="lU9-My-Hu7" firstAttribute="centerX" secondItem="wSu-HC-5DA" secondAttribute="centerX" id="7kG-dZ-sWc"/>
-                            <constraint firstItem="VDn-Lm-F5Z" firstAttribute="leading" secondItem="5Jf-Hd-xf3" secondAttribute="leading" id="DTl-8H-Uk4"/>
                             <constraint firstItem="wSu-HC-5DA" firstAttribute="leading" secondItem="5Jf-Hd-xf3" secondAttribute="leading" id="Dzm-TN-fvf"/>
                             <constraint firstItem="lU9-My-Hu7" firstAttribute="leading" secondItem="U5N-Eu-vrn" secondAttribute="trailing" constant="8" symbolic="YES" id="HW8-sv-2I0"/>
-                            <constraint firstItem="VDn-Lm-F5Z" firstAttribute="top" secondItem="5Jf-Hd-xf3" secondAttribute="top" id="IIQ-pr-625"/>
                             <constraint firstItem="j1v-Yf-cVL" firstAttribute="top" secondItem="wSu-HC-5DA" secondAttribute="bottom" constant="8" symbolic="YES" id="Ix5-ij-IyF"/>
                             <constraint firstItem="U5N-Eu-vrn" firstAttribute="top" secondItem="wSu-HC-5DA" secondAttribute="bottom" constant="8" symbolic="YES" id="Oi0-Fb-s1o"/>
                             <constraint firstItem="lU9-My-Hu7" firstAttribute="bottom" secondItem="U5N-Eu-vrn" secondAttribute="bottom" id="STc-Rg-cph"/>
                             <constraint firstItem="lU9-My-Hu7" firstAttribute="top" secondItem="wSu-HC-5DA" secondAttribute="bottom" constant="8" symbolic="YES" id="WEW-be-vJg"/>
-                            <constraint firstItem="wSu-HC-5DA" firstAttribute="trailing" secondItem="5Jf-Hd-xf3" secondAttribute="trailing" id="cAa-JB-ba7"/>
                             <constraint firstItem="wSu-HC-5DA" firstAttribute="top" secondItem="5Jf-Hd-xf3" secondAttribute="top" constant="127" id="jPo-Yc-Tds"/>
                             <constraint firstItem="lU9-My-Hu7" firstAttribute="bottom" secondItem="j1v-Yf-cVL" secondAttribute="bottom" id="vMM-hS-l83"/>
                             <constraint firstItem="j1v-Yf-cVL" firstAttribute="leading" secondItem="lU9-My-Hu7" secondAttribute="trailing" constant="8" symbolic="YES" id="xGl-lu-di8"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="done" id="sCN-mO-NrV"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="wY9-57-G0V"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Choose Date" id="wY9-57-G0V">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="MSd-Ib-Mhh">
+                            <connections>
+                                <action selector="donePressed:" destination="zZg-Vr-cVP" id="p71-Jm-MB5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="wSu-HC-5DA" id="Pxh-hC-RG9"/>
@@ -365,7 +383,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Prayer View Controller - Prayer-->
         <scene sceneID="mNQ-Uh-QpY">
             <objects>
-                <viewController id="N9h-r0-k8T" customClass="BRPrayerViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="N9h-r0-k8T" customClass="BRPrayerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xeY-7i-kwU"/>
                         <viewControllerLayoutGuide type="bottom" id="3c4-n7-hqg"/>
@@ -614,6 +632,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="1477" y="1044"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back.png" width="13" height="22"/>
+        <image name="forward.png" width="13" height="22"/>
+    </resources>
     <color key="tintColor" red="0.57254904508590698" green="0.19215688109397888" blue="0.16862745583057404" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

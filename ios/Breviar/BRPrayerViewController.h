@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BRPrayer.h"
 
-@interface BRPrayerViewController : UIViewController
+@interface BRPrayerViewController : UIViewController <UIGestureRecognizerDelegate>
 @property(strong) BRPrayer *prayer;
 @property(strong) IBOutlet UIWebView *webView;
 @end

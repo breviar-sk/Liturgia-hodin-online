@@ -1,6 +1,6 @@
 
 /* Class = "IBUINavigationItem"; title = "Choose Date"; ObjectID = "1wq-Ug-wdo"; */
-"1wq-Ug-wdo.title" = "Dátum választása";
+"wY9-57-G0V.title" = "Dátum választása";
 
 /* Class = "IBUIButton"; normalTitle = "Sexta"; ObjectID = "2GD-F9-tgN"; */
 "2GD-F9-tgN.normalTitle" = "Délben";
@@ -12,7 +12,7 @@
 "6e2-LU-4fh.text" = "Label";
 
 /* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "A4r-s2-3MT"; */
-"A4r-s2-3MT.title" = "Kész";
+"MSd-Ib-Mhh.title" = "Kész";
 
 /* Class = "IBUIButton"; normalTitle = "Invitatory"; ObjectID = "SNQ-T1-lFZ"; */
 "SNQ-T1-lFZ.normalTitle" = "Imád.";

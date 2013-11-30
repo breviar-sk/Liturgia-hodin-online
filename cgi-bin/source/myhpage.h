@@ -25,10 +25,10 @@
 // #define FILE_FOOTER "_footer.htm"
 
 #define HTML_TOP "p-top"
-#define HTML_ANAME_TOP "<a name=\""HTML_TOP"\"></a>"
+#define HTML_ANAME_TOP "<div id=\"contentRoot\"><a name=\""HTML_TOP"\"></a>"
 
 #define HTML_BOTTOM "p-bottom"
-#define HTML_ANAME_BOTTOM "<a name=\""HTML_BOTTOM"\"></a>"
+#define HTML_ANAME_BOTTOM "<a name=\""HTML_BOTTOM"\"></a></div>"
 
 #define HTML_P_PATKA "p class=\"patka\""
 
