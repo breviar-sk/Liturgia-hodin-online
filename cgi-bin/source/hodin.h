@@ -1721,6 +1721,26 @@ const char *html_text_option0_font_normal_explain[POCET_JAZYKOV + 1] =
  ""
 };
 
+const char *html_text_option0_buttons_order[POCET_JAZYKOV + 1] = 
+{"dátumové navigaèné tlaèidlá zobrazi a pod tlaèidlami pre modlitby",
+ "navigaèní tlaèítka pro datum zobrazit a pod tlaèítky pro modlitby",
+ "date buttons display after buttons for prayers",
+ "",
+ "",
+ "navigaèní tlaèítka pro datum zobrazit a pod tlaèítky pro modlitby",
+ "hu: date buttons display after buttons for prayers"
+};
+
+const char *html_text_option0_buttons_order_explain[POCET_JAZYKOV + 1] = 
+{"Liturgia hodín pouíva tuèné písmo pre texty, ktoré sa priamo èítajú, a tie aj pre niektoré medzinadpisy. Táto vo¾ba potlaèí pouitie tuèného písma.", 
+ "", 
+ "", 
+ "",
+ "", 
+ "", 
+ ""
+};
+
 const char *html_text_option1_chvalospevy[POCET_JAZYKOV + 1] = 
 {"evanjeliové chválospevy (Benediktus, Magnifikat, Nunk dimittis)", 
  "evangelijní kantika (Mariino, Zachariášovo, Simeonovo)", 

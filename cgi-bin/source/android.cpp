@@ -32,19 +32,18 @@ static void err(const char *msg) {
 }
 
 jobject createFd(JNIEnv *env, int fdnum) {
-  static jclass FDclass = NULL;
-  static jmethodID cid = NULL;
-  static jfieldID mDescriptor = NULL;
+  jclass FDclass = NULL;
+  jmethodID cid = NULL;
+  jfieldID mDescriptor = NULL;
   jobject fd;
 
-  if (!FDclass) {
-    FDclass = env->FindClass("java/io/FileDescriptor");
-    if (!FDclass) err("createFd: Cannot find class FileDescriptor");
-    cid = env->GetMethodID(FDclass, "<init>", "()V");
-    if (!cid) err("createFd: Cannot find constructor");
-    mDescriptor = env->GetFieldID(FDclass, "descriptor", "I");
-    if (!mDescriptor) err("createFd: Cannot find field descriptor");
-  }
+  FDclass = env->FindClass("java/io/FileDescriptor");
+  if (!FDclass) err("createFd: Cannot find class FileDescriptor");
+  cid = env->GetMethodID(FDclass, "<init>", "()V");
+  if (!cid) err("createFd: Cannot find constructor");
+  mDescriptor = env->GetFieldID(FDclass, "descriptor", "I");
+  if (!mDescriptor) err("createFd: Cannot find field descriptor");
+
   fd = env->NewObject(FDclass, cid);
   env->SetIntField(fd, mDescriptor, fdnum);
 
@@ -52,14 +51,12 @@ jobject createFd(JNIEnv *env, int fdnum) {
 }
 
 int getFd(JNIEnv* env, jobject fd) {
-  static jfieldID mDescriptor = NULL;
-  if (mDescriptor==NULL) {
-    jclass clazz;
-    clazz = env->FindClass("java/io/FileDescriptor");
-    if (!clazz) err("getFd: Cannot find class FileDescriptor");
-    mDescriptor = env->GetFieldID(clazz, "descriptor", "I");
-    if (!mDescriptor) err("getFd: Cannot find field descriptor");
-  }
+  jfieldID mDescriptor = NULL;
+  jclass clazz;
+  clazz = env->FindClass("java/io/FileDescriptor");
+  if (!clazz) err("getFd: Cannot find class FileDescriptor");
+  mDescriptor = env->GetFieldID(clazz, "descriptor", "I");
+  if (!mDescriptor) err("getFd: Cannot find field descriptor");
   return env->GetIntField(fd, mDescriptor);
 }
 
@@ -204,7 +201,7 @@ JNIEXPORT void JNICALL Java_sk_breviar_android_FdOutputStream_closefd(JNIEnv* en
 JNIEXPORT jobjectArray JNICALL Java_sk_breviar_android_Server_createPipe(JNIEnv* env, jobject thiz) {
   int fd[2];
   jobjectArray res;
-  static jclass fdcls = NULL;
+  jclass fdcls = NULL;
 
   if (!fdcls) {
     fdcls = env->FindClass("java/io/FileDescriptor");

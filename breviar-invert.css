@@ -133,6 +133,7 @@ div.hymn, div.responsory, div.readings {
 .psalm .psalm-name { 
 	color: #FF3333; 
 	font-weight: bold; 
+	padding-top: 1em; 
 	text-align: center; 
 }
 

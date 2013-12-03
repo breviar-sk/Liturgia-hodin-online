@@ -134,6 +134,7 @@ div.hymn, div.responsory, div.readings {
 .psalm .psalm-name { 
 	color: #ff0000; 
 	font-weight: bold; 
+	padding-top: 1em; 
 	text-align: center; 
 }
 

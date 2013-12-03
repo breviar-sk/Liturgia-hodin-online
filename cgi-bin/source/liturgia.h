@@ -1279,7 +1279,7 @@ extern short int _global_opt[POCET_GLOBAL_OPT];
 // glob·lna premenn· -- pole -- obsahuj˙ca force options; pÙvodne to boli glob·lne premennÈ _global_optf 1..9 atÔ., obsahuj˙ pom_MODL_OPTF...
 extern short int _global_optf[POCET_GLOBAL_OPT];
 
-#define POCET_OPT_0_SPECIALNE               7 // jednotlivÈ komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               8 // jednotlivÈ komponenty option 0 -- bity pre force option 0
 extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: ˙prava v˝znamu (a interpret·cie) option 0 ==  OPT_0_SPECIALNE (zobraziù/nezobraziù "pridan˙ hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                     1
@@ -1289,6 +1289,7 @@ extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA  16 // Ëi sa Nanebovst˙penie P·na sl·vi v nedeæu (1) alebo nie (teda vo ötvrtok, na 40.-ty deÚ po VeækonoËnej nedeli; hodnota 0 == default)
 #define BIT_OPT_0_TELAKRVI_NEDELA          32 // Ëi sa Najsv. Kristovho tela a krvi sl·vi v nedeæu (1) alebo nie (teda vo ötvrtok, 11.-ty deÚ po ZoslanÌ Ducha Sv.; hodnota 0 == default)
 #define BIT_OPT_0_FONT_NORMAL              64 // force font-weight: normal; // malo by byù v r·mci OPT_2_HTML_EXPORT, avöak t· uû je pln· (signed short int max. 32767)
+#define BIT_OPT_0_BUTTONS_ORDER           128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
 
 #define POCET_OPT_1_CASTI_MODLITBY         15 // jednotlivÈ komponenty option 1 -- bity pre force option 1
 extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];

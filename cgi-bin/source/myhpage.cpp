@@ -55,7 +55,12 @@ short int bol_content_type_text_xml = NIE;
 #define __MYHPAGE_CPP_HTML_CONST
 
 // obsahuje %s
-const char *html_header_1 = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj Vidéky\">\n";
+const char *html_header_1 =
+// Android KitKat nevie javascriptom zalamovat text, ak je specifikovany tento doctype.
+#ifndef MODEL_android
+    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n"
+#endif
+    "<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj Vidéky\">\n";
 const char *html_header_css = "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
 const char *html_footer_1 = STR_EMPTY; // "<p><center>______</center>"; // "<hr>";
 

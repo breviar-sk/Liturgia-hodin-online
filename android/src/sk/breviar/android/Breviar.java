@@ -129,11 +129,12 @@ public class Breviar extends Activity {
       wv.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
       wv.getSettings().setBuiltInZoomControls(true);
       wv.getSettings().setSupportZoom(true);
+      wv.getSettings().setJavaScriptEnabled(true);
       // TODO(riso): replace constants by symbolic values after sdk upgrade
       if (Build.VERSION.SDK_INT < 19) {  // pre-KitKat
         wv.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
       } else {
-        wv.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+        wv.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
       }
       wv.getSettings().setUseWideViewPort(false);
       wv.setInitialScale(scale);
@@ -142,6 +143,8 @@ public class Breviar extends Activity {
 
       final Breviar parent = this;
       wv.setWebViewClient(new WebViewClient() {
+        boolean scaleChangedRunning = false;
+
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
           if (url.startsWith("mailto:")) {
@@ -175,6 +178,17 @@ public class Breviar extends Activity {
           Log.v("breviar", "onScaleChanged: setting scale = " + scale);
           if (Build.VERSION.SDK_INT < 19) {  // pre-KitKat
             view.setInitialScale(parent.scale);
+          } else {
+            if (scaleChangedRunning) return;
+            scaleChangedRunning = true;
+            final WebView final_view = view;
+            view.postDelayed(new Runnable() {
+              @Override
+              public void run() {
+                final_view.evaluateJavascript("document.getElementById('contentRoot').style.width = window.innerWidth;", null);
+                scaleChangedRunning = false;
+              }
+            }, 100);
           }
           super.onScaleChanged(view, oldSc, newSc);
         }
