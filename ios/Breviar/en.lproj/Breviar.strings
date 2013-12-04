@@ -14,7 +14,7 @@
 "prayer_text"	= "Prayer text";
 "calendar"		= "Liturgical calendar";
 "other"			= "Other";
-"alternatives"		= "Alternative texts";
+"alternatives"	= "Alternative texts";
 
 // Appearance settings
 "j"			= "Breviary language";
@@ -24,9 +24,9 @@
 "j.la"		= "Lingua latina";
 "j.sk"		= "Slovenčina";
 
-"of2nr"		= "Night mode"
-"of0fn"		= "Force normal font (no bold)"
-"of2tw"		= "Verse layout as in printed edition"
+"of2nr"		= "Night mode";
+"of0fn"		= "Force normal font (no bold)";
+"of2tw"		= "Verse layout as in printed edition";
 
 // Prayer parts settings
 "of1c"		= "Gospel canticles";
@@ -85,7 +85,7 @@
 "of1v"		= "Celebrating of vigily for prayer with readings";
 
 // Alternatives
-"of2a"		= "Alternatives";
+"of2a"			= "Alternatives";
 "of5ps29"		= "Instead of psalm 122 use 129";
 "of5ps69"		= "Instead of psalm 126 use 129";
 "of5ps71"		= "Instead of psalm 127 use 131";
@@ -93,12 +93,12 @@
 "of5hpred"		= "9h: Hymn I / II";
 "of5hna"		= "12h: Hymn I / II";
 "of5hpo"		= "15h: Hymn I / II";
-"of5hk"		= "Compline: Hymn A / B";
+"of5hk"			= "Compline: Hymn A / B";
 "of5vnpc"		= "Readings in Easter: Sunday's hymn / Ferial hymn";
 "of5vnhrch"		= "Laudes in Easter: Sunday's hymn / Ferial hymn";
 "of5vnv"		= "Vespers in Easter: Sunday's hymn / Ferial hymn";
 
 // Not shown (hidden) options
-"of2id"		= "Date format in ISO 8601"
-"of2btnu"		= "Tight prayer buttons"
-"of2nav"		= "Display navigation buttons in prayers"
+"of2id"			= "Date format in ISO 8601";
+"of2btnu"		= "Tight prayer buttons";
+"of2nav"		= "Display navigation buttons in prayers";

@@ -1,0 +1,3 @@
+[submodule "ios/RaptureXML"]
+	path = RaptureXML
+	url = git://github.com/ZaBlanc/RaptureXML.git

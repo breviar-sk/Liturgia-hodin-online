@@ -66,9 +66,17 @@
 	return section;
 }
 
+- (NSArray *)visibleOptionsForSection:(NSDictionary *)section {
+	NSArray *allOptions = [section objectForKey:@"items"];
+	return [allOptions filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
+		NSNumber *hidden = [item objectForKey:@"hidden"];
+		return [hidden integerValue] != 1;
+	}]];
+}
+
 - (NSDictionary *)optionForIndexPath:(NSIndexPath *)indexPath {
 	NSDictionary *section = [[BRSettings instance].sections objectAtIndex:indexPath.section];
-	NSArray *options = [section objectForKey:@"items"];
+	NSArray *options = [self visibleOptionsForSection:section];
 	NSDictionary *option = [options objectAtIndex:indexPath.row];
 	return option;
 }
@@ -88,7 +96,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	NSDictionary *sectionObj = [[BRSettings instance].sections objectAtIndex:section];
-	NSArray *sectionItems = [sectionObj objectForKey:@"items"];
+	NSArray *sectionItems = [self visibleOptionsForSection:sectionObj];
 	return sectionItems.count;
 }
 
@@ -99,7 +107,7 @@
 	
 	if ([optionType isEqualToString:@"bool"] && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
 		// Boolean option for iPhone
-		NSArray *opts = [section objectForKey:@"items"];
+		NSArray *opts = [self visibleOptionsForSection:section];
 		NSString *optId = [[opts objectAtIndex:indexPath.row] objectForKey:@"id"];
 		NSString *optTitle = BREVIAR_STR(optId);
 		

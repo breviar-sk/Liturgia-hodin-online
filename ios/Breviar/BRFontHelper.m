@@ -25,17 +25,27 @@ static BRFontHelper *_instance;
 		self.availableFonts = [NSArray arrayWithObjects:
 							   @"HelveticaNeue",
 							   @"HelveticaNeue-Light",
-							   @"Verdana",
 							   @"TimesNewRomanPSMT",
 							   @"Baskerville",
+							   @"Didot",
+							   @"GillSans",
+							   @"HoeflerText-Regular",
+							   @"Palatino",
+							   @"TrebuchetMS",
+							   @"Verdana",
 							   nil];
 		
 		self.fontNames = [NSDictionary dictionaryWithObjectsAndKeys:
 						  @"Helvetica",        @"HelveticaNeue",
 						  @"Helvetica Light",  @"HelveticaNeue-Light",
-						  @"Verdana",          @"Verdana",
 						  @"Times",            @"TimesNewRomanPSMT",
 						  @"Baskerville",      @"Baskerville",
+						  @"Didot",            @"Didot",
+						  @"Gill Sans",        @"GillSans",
+						  @"Hoefler Text",     @"HoeflerText-Regular",
+						  @"Palatino",         @"Palatino",
+						  @"Trebuchet MS",     @"TrebuchetMS",
+						  @"Verdana",          @"Verdana",
 						  nil];
 		
 		self.availableSizes = [NSArray arrayWithObjects:

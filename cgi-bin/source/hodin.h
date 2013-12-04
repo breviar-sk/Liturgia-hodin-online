@@ -1728,7 +1728,7 @@ const char *html_text_option0_buttons_order[POCET_JAZYKOV + 1] =
  "",
  "",
  "navigaèní tlaèítka pro datum zobrazit až pod tlaèítky pro modlitby",
- "hu: date buttons display after buttons for prayers"
+ "a dátum gombokat az imákra vonatkozó gombok után mutatni"
 };
 
 const char *html_text_option0_buttons_order_explain[POCET_JAZYKOV + 1] = 
