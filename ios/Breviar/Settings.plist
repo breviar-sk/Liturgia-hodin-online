@@ -410,7 +410,7 @@
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<true/>
+					<false/>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -418,7 +418,7 @@
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<true/>
+					<false/>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -426,7 +426,7 @@
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<true/>
+					<false/>
 				</dict>
 			</array>
 		</dict>

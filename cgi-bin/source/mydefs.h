@@ -947,6 +947,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_NONBREAKING_SPACE "&nbsp;"
 #define HTML_SPACE " "
 #define HTML_VERTICAL_BAR "|"
+#define HTML_CROSS "†"
 #define HTML_LINE_BREAK "<br/>"
 #define HTML_CRLF_LINE_BREAK "\n<br/>"
 #define HTML_NEW_PARAGRAPH "<p>"

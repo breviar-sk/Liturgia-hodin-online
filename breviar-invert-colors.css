@@ -1,4 +1,16 @@
-.respons p.respR:before .respons p.respV:before .respons p.respO:before .respons p.respF:before { 
+.respons p.respR:before { 
+	color: #FF3333; 
+}
+
+.respons p.respV:before { 
+	color: #FF3333; 
+}
+
+.respons p.respO:before { 
+	color: #FF3333; 
+}
+
+.respons p.respF:before { 
 	color: #FF3333; 
 }
 
@@ -20,7 +32,10 @@
 }
 
 /* new 2013-06-19 */
-.psalm .psalm-name .psalm-subtitle { 
+.psalm .psalm-name { 
+	color: #FF3333; 
+}
+.psalm .psalm-subtitle { 
 	color: #FF3333; 
 }
 .psalm .psalm-idea { 

@@ -72,8 +72,8 @@ div.hymn, div.responsory, div.readings {
 	border-left: 1px dotted; 
 	border-right: 1px dotted; 
 	border-top: 1px dotted; 
-	min-width: 22px; 
 	display: block; 
+	min-width: 22px; 
 }
 
 .calendar.today { 

@@ -315,7 +315,7 @@ char *_global_buf2; // 2006-08-01: vytvorené; túto premennú tiež alokujeme
 #define ishex(x) (((x) >= '0' && (x) <= '9') || ((x) >= 'a' && (x) <= 'f') || \
 		  ((x) >= 'A' && (x) <= 'F'))
 
-#define MAX_BUFFER 80
+#define MAX_BUFFER 160
 
 #define ANCHOR_VYSVETLIVKY "VYSVETLIVKY"
 #define FILE_VYSVETLIVKY "vysvetl.htm"
@@ -1660,7 +1660,13 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							}
 							if(write_krizik == ANO){
 								Export("-->");
-								Export(" <font color=\"#FF0000\">†</font> ");
+								if(je_antifona == ANO){
+									Export(HTML_NONBREAKING_SPACE); // pre krížik na zaèiatku žalmu/chválospevu medzeru netreba
+								}
+								Export("<"HTML_SPAN_RED">"HTML_CROSS"</span>");
+								if(je_antifona != ANO){
+									Export(HTML_NONBREAKING_SPACE); // pre krížik na konci chválospevu medzeru netreba
+								}
 								Export("<!--");
 							}
 						}
