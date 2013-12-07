@@ -15,7 +15,7 @@
 "8uK-F8-z5B.text" = "Title";
 
 /* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "A4r-s2-3MT"; */
-"MSd-Ib-Mhh.title" = "Hotový";
+"MSd-Ib-Mhh.title" = "Hotovo";
 
 /* Class = "IBUILabel"; text = "Detail"; ObjectID = "Gfg-aQ-Rv1"; */
 "Gfg-aQ-Rv1.text" = "Detail";
@@ -54,7 +54,7 @@
 "gQ2-f3-F7b.text" = "Title";
 
 /* Class = "IBUINavigationItem"; title = "Breviar"; ObjectID = "iKT-jq-jdv"; */
-"iKT-jq-jdv.title" = "Breviár";
+"iKT-jq-jdv.title" = "Breviář";
 
 /* Class = "IBUIButton"; normalTitle = "Tomorrow"; ObjectID = "j1v-Yf-cVL"; */
 "j1v-Yf-cVL.normalTitle" = "Zítra";

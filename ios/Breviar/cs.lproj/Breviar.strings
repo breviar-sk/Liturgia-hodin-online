@@ -17,7 +17,7 @@
 "alternatives"	= "Alternativní texty";
 
 // Appearance settings
-"j"			= "Breviary language";
+"j"			= "Jazyk breviáře";
 "j.cz"		= "Čeština";
 "j.en"		= "English";
 "j.hu"		= "Magyarul";

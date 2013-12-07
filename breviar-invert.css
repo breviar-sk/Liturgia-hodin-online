@@ -500,7 +500,7 @@ input {
 }
 
 /* modlitby */
-input.button, input.reset { 
+input.button, input.reset, .button { 
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
 	border: solid 0px #CCCCCC; 
 	color: #333333; 
@@ -515,7 +515,7 @@ input.button, input.reset {
 }
 
 /* << >> */
-input.button0, input.reset0 { 
+input.button0, input.reset0, .button0 { 
 	background: #C0C0C0; /* #3366CC; #3399ff; */
 	border: solid 0px #A0A0A0; 
 	color: #404040;
@@ -530,7 +530,7 @@ input.button0, input.reset0 {
 }
 
 /* dnes */
-input.button1, input.reset1 { 
+input.button1, input.reset1, .button1 { 
 	background: #C0C0C0; /* #3366CC; #3399ff; */
 	border: solid 0px #A0A0A0; 
 	color: #404040;
@@ -547,7 +547,7 @@ input.button1, input.reset1 {
 }
 
 /* menej podstatné buttony */
-input.button2, input.reset2 { 
+input.button2, input.reset2, .button2 { 
 	background: #CC9966; /* #ff9933; */
 	border: solid 0px #CCCCCC; 
 	color: #333333;

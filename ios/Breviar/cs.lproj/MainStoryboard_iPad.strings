@@ -33,7 +33,7 @@
 "WAd-SK-urD.title" = "Dnes";
 
 /* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "aU0-uD-EGa"; */
-"aU0-uD-EGa.title" = "Hotový";
+"aU0-uD-EGa.title" = "Hotovo";
 
 /* Class = "IBUILabel"; text = "Title"; ObjectID = "bnI-Pe-ySX"; */
 "bnI-Pe-ySX.text" = "Title";
@@ -42,10 +42,10 @@
 "edp-ZK-Vdl.text" = "Subtitle";
 
 /* Class = "IBUINavigationItem"; title = "Breviar"; ObjectID = "hUW-c4-5zz"; */
-"hUW-c4-5zz.title" = "Breviár";
+"hUW-c4-5zz.title" = "Breviář";
 
 /* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "lie-qQ-qWs"; */
-"lie-qQ-qWs.title" = "Hotový";
+"lie-qQ-qWs.title" = "Hotovo";
 
 /* Class = "IBUILabel"; text = "Detail"; ObjectID = "lwB-1O-9iA"; */
 "lwB-1O-9iA.text" = "Detail";
@@ -57,7 +57,7 @@
 "pes-Cl-IP0.text" = "Title";
 
 /* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "ut3-Z4-Rh4"; */
-"ut3-Z4-Rh4.title" = "Hotový";
+"ut3-Z4-Rh4.title" = "Hotovo";
 
 /* Class = "IBUIButton"; normalTitle = "Set current date"; ObjectID = "wcZ-nN-lqr"; */
 "wcZ-nN-lqr.normalTitle" = "Set current date";
