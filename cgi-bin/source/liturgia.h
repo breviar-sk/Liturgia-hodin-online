@@ -104,24 +104,14 @@
 extern const short int format_datumu[POCET_JAZYKOV + 1];
 
 // 2008-08-15: PridanÈ POCET_CSS, aby mohol byù "dolnÌk" (CSS_UNDEF) hodnota 0
-#define POCET_CSS	11
+#define POCET_CSS	4
 // 2006-08-08: PridanÈ kvÙli rÙznym css-k·m 
-// 2009-04-02: pridanÈ historickÈ css-k·
-// 2010-02-25: pridanÈ css pre webstr·nky http://www.jm-krize.cz/
 // 2011-05-24: pridan˝ "inverzn˝" öt˝l pre mobilnÈ zariadenia (Ëierne pozadie, biely text)
-// 2011-07-26: pridan˝ vzhæad ako http://www.kbs.sk
 #define CSS_UNDEF				0
 #define CSS_breviar_sk			1
 #define CSS_breviar_sk_invert	2
 #define CSS_kbd_sk				3
 #define CSS_ebreviar_cz			4
-#define CSS_breviar_cz_op		5
-#define CSS_breviar_hist_2003	6
-#define CSS_breviar_hist_2005	7
-#define CSS_breviar_hist_2007	8
-#define CSS_breviar_hist_2008	9
-#define CSS_jm_krize_cz			10
-#define CSS_kbs_sk				11
 
 #define	POCET_FONTOV	9
 
@@ -975,6 +965,9 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_NEDOVOLENE               97
 #define LOKAL_SLAV_KATONAI_ORDINARIAT       98
 #define LOKAL_SLAV_DEBR_NYIREGY             99
+#define LOKAL_SLAV_OPRAEM_DOKSANY          100
+#define LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV    101
+#define LOKAL_SLAV_OPRAEM_TEPLA            102
 
 // 2010-08-03: pridan˝ kalend·r
 #define KALENDAR_NEURCENY                   0

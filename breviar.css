@@ -470,6 +470,12 @@ a.button {
 	text-decoration: none; 
 }
 
+form {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
 table { 
 	color: #505000; 
 }

@@ -58,7 +58,8 @@ short int bol_content_type_text_xml = NIE;
 const char *html_header_1 =
 // Android KitKat nevie javascriptom zalamovat text, ak je specifikovany tento doctype.
 #ifndef MODEL_android
-    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n"
+//    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n"
+	"<!DOCTYPE html>\n"
 #endif
     "<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj Vidéky\">\n";
 const char *html_header_css = "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
@@ -128,8 +129,11 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		return;
 	}
 	_global_hlavicka_Export++;
-	// 2003-07-01, pridane pripadne citanie zo suboru
-	// 2008-08-08: èítanie zo súboru odstránené
+
+	// 2013-12-09: iné CSS budú len "doplnky" (overrides) k hlavnému CSS
+	if(_global_css != CSS_breviar_sk){
+		Log("ako prvý bude exportovaný nazov_css_suboru == %s...\n", nazov_css[CSS_breviar_sk]);
+	}
 	const char *nazov_css_suboru;
 	if(_global_css == CSS_UNDEF){
 		nazov_css_suboru = nazov_css[CSS_breviar_sk];
@@ -189,13 +193,21 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	// 2011-05-18: charset sa nastaví pod¾a jazyka
 	Log("element <head>...\n");
 	Export_to_file(expt, (char *)html_header_1, charset_jazyka[_global_jazyk]);
+
+	// CSS (1 resp. 2)
+	if(_global_css != CSS_breviar_sk){
+		_header_css(expt, level, nazov_css[CSS_breviar_sk]);
+	}
     _header_css(expt, level, nazov_css_suboru);
+	// CSS override night mode
     if ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_NOCNY_REZIM) == BIT_OPT_2_NOCNY_REZIM) {
         _header_css(expt, level, nazov_css_invert_colors);
     }
+	// CSS override normal font (no bold)
     if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_FONT_NORMAL) == BIT_OPT_0_FONT_NORMAL) {
         _header_css(expt, level, nazov_css_normal_font_weight);
     }
+
 	Export_to_file(expt, "\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=yes, initial-scale=1.0\" />\n");
 	Export_to_file(expt, "<title>%s</title>\n", title);
 	Export_to_file(expt, "</head>\n\n");
