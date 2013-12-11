@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.9.3</string>
+    <string name="version">v1.9.4</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -43,13 +43,12 @@
     <string name="h15_notify">Time for None!</string>
 
     <string name="news">
-     News in v1.9.3:\n
-     - Updates from breviar.sk\n
-     - CSS changes\n\n
-     News in v1.9.1--1.9.2:\n
-     - Updates from breviar.sk\n\n
-     News in v1.9.0:\n
-     - Refined new icons\n
-     - Updates from breviar.sk\n\n
+News in v1.9.4:\n
+- New option: use normal font only (no bold)\n
+- Fixes for Android 4.4 Kit-Kat\n\n
+News in v1.9.3:\n
+- CSS changes\n\n
+News in v1.9.0:\n
+- Refined new icons\n
     </string>
 </resources>

@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	// Initialize UI
-	[UINavigationBar appearance].barTintColor = [UIColor colorWithRed:123.0/255 green:37.0/255 blue:34.0/255 alpha:1.0];
+	[UINavigationBar appearance].barTintColor = [UIColor colorWithRed:131.0/255 green:58.0/255 blue:57.0/255 alpha:1.0]; // #833a39
 	[UINavigationBar appearance].tintColor = [UIColor whiteColor];
 	[UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     

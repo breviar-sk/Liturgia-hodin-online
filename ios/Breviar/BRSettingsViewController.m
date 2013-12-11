@@ -111,9 +111,13 @@
 		NSString *optId = [[opts objectAtIndex:indexPath.row] objectForKey:@"id"];
 		NSString *optTitle = BREVIAR_STR(optId);
 		
-		UIFont *font = [UIFont systemFontOfSize:[UIFont labelFontSize]];
-		CGSize size = [optTitle sizeWithFont:font constrainedToSize:CGSizeMake(CELL_LABEL_WIDTH, CGFLOAT_MAX)];
-		return size.height + CELL_LABEL_MARGIN;
+		BRBoolSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BoolCell"];
+		cell.label.text = optTitle;
+		[cell.contentView setNeedsLayout];
+		[cell.contentView layoutIfNeeded];
+		
+		CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+		return height + 2;
 	}
 	else {
 		return CELL_NORMAL_HEIGHT;

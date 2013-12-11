@@ -30,7 +30,7 @@ static BRFontHelper *_instance;
 							   @"Didot",
 							   @"GillSans",
 							   @"HoeflerText-Regular",
-							   @"Palatino",
+							   @"Palatino-Roman",
 							   @"TrebuchetMS",
 							   @"Verdana",
 							   nil];
@@ -43,7 +43,7 @@ static BRFontHelper *_instance;
 						  @"Didot",            @"Didot",
 						  @"Gill Sans",        @"GillSans",
 						  @"Hoefler Text",     @"HoeflerText-Regular",
-						  @"Palatino",         @"Palatino",
+						  @"Palatino",         @"Palatino-Roman",
 						  @"Trebuchet MS",     @"TrebuchetMS",
 						  @"Verdana",          @"Verdana",
 						  nil];

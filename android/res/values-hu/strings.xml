@@ -41,14 +41,13 @@
     <string name="pgdn">Le</string>
     
     <string name="news">
-     Változások a v1.9.3-ban:\n
-     - Zsoltárok jobb tördelése\n
-     - Gépelési hibák javítása\n
-     - Frissítések a honlapról\n\n
-     Változások a v1.9.2-ben:\n
-     - Frissítések a honlapról\n\n
-     Változások a v1.9.1-ben:\n
-     - Frissítések a honlapról\n\n
+Újdonságok a v1.9.4 verzióban:\n
+- Új beállítások: közönséges (nem kövér) betűk alkalmazása\n
+- Javítások az Android 4.4 Kit-Kat részére\n\n
+Változások a v1.9.3-ban:\n
+- Zsoltárok jobb tördelése\n
+- Gépelési hibák javítása\n
+- Frissítések a honlapról\n\n
     </string>
 	
 </resources>

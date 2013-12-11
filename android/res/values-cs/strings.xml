@@ -41,14 +41,13 @@
     <string name="h15_notify">Je čas na popolední modlitbu!</string>
 
     <string name="news">
-     Nové ve verzi v1.9.3:\n
-     - Aktualizace z breviar.sk/ebreviar.cz\n
-     - CSS změny: formátovaní proseb, kalendář\n\n
-     Nové ve verzi v1.9.1--1.9.2:\n
-     - Aktualizace z breviar.sk/ebreviar.cz\n\n
-     Nové ve verzi v1.9.0:\n
-     - Upravené nové ikonky\n
-     - Vlastní texty pro premonstrátský řád\n
-     - Aktualizace z breviar.sk/ebreviar.cz\n\n
+Nové ve verzi v1.9.4:\n
+- Nové nastavení: použít jen obyčejné písmo (ne tučné)\n
+- Opravy pro Android 4.4 Kit-Kat\n\n
+Nové ve verzi v1.9.3:\n
+- CSS změny: formátovaní proseb, kalendář\n\n
+Nové ve verzi v1.9.0:\n
+- Upravené nové ikonky\n
+- Vlastní texty pro premonstrátský řád\n\n
     </string>
 </resources>
