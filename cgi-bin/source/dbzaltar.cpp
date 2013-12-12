@@ -24811,6 +24811,37 @@ label_25_MAR:
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 					}
+
+					if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)){
+						// 2013-12-11, e-mail od Mareka OPraem: památka sv. Rocha (16. srpna): texty ze Spoleènıch textù o svatıch muích: o svatıch, lkteøí vynikali milosrdnımi skutky. (Pozn.: V našem „propriu“, èili v té A5 èervené knize, je odkaz na tyto spoleèné texty; vlastní je pouze modlitba – ta se však mùe vzít ze spoleènıch textù…).
+						if(poradie_svaty == 2){
+
+							file_name_vlastny_kalendar(_global_kalendar);
+
+							// definovanie parametrov pre modlitbu
+							if(query_type != PRM_DETAILY)
+								set_spolocna_cast(sc, poradie_svaty);
+
+							modlitba = MODL_RANNE_CHVALY;
+							// _vlastna_cast_modlitba;
+
+							modlitba = MODL_VESPERY;
+							// _vlastna_cast_modlitba;
+
+							modlitba = MODL_POSV_CITANIE;
+							// _vlastna_cast_modlitba;
+							break;
+						}
+						pocet = 2;
+						_global_svaty2.typslav = SLAV_SPOMIENKA;
+						_global_svaty2.smer = 11; // miestne povinné spomienky
+						_global_svaty2.typslav_lokal = LOKAL_SLAV_OPRAEM_STRAHOV;
+						mystrcpy(_global_svaty2.meno, text_AUG_16_OPRAEM[_global_jazyk], MENO_SVIATKU);
+						_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_SKUTKYMIL);
+						_global_svaty2.farba = LIT_FARBA_BIELA;
+						_global_svaty2.kalendar = KALENDAR_CZ_OPRAEM;
+						break;
+					}// kalendár pre KALENDAR_CZ_OPRAEM
 					break;
 				case 17: // MES_AUG -- 17AUG
 					if((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
@@ -29742,6 +29773,7 @@ label_25_MAR:
 					}// CZ only
 
 					if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)){
+						// 2013-12-11, e-mail od Mareka OPraem: památka sv. Voršily (21. øíjna): texty ze Spoleènıch textù o více muèednících vyjma 2. ètení v Modlitbì se ètením. Toto 2. ètení v modlitbì se ètením se má vybrat z nìkolika nabízenıch dle propria – navrhl bych, aby se vybralo jedno, a nastálo se pak uvádìlo v mobilní verzi; zde bych navrhl 2. ètení pro památku sv. Stanislava, biskupa a muèedníka (11. dubna). Ti pak, kdo uívají bìné tištìné texty, a si vyberou dle nabídky v knize propria…
 						if(poradie_svaty == 2){
 							
 							file_name_vlastny_kalendar(_global_kalendar);
@@ -29751,13 +29783,14 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_POSV_CITANIE;
-							_vlastna_cast_modlitba;
+							_vlastna_cast_2citanie;
+							// _vlastna_cast_modlitba;
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_modlitba;
+							// _vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_modlitba;
+							// _vlastna_cast_modlitba;
 
 							break;
 						}
