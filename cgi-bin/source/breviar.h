@@ -404,6 +404,8 @@ extern short int _global_opt_export_date_format;
 
 #define PODMIENKA_EXPORTOVAT_FONT ( (_global_font != FONT_UNDEF) && (_global_font != FONT_CSS) && (_global_font != FONT_CHECKBOX) )
 
+#define PODMIENKA_EXPORTOVAT_CSS ( (_global_css != CSS_UNDEF) && (_global_css != CSS_breviar_sk) )
+
 //---------------------------------------------------------------------
 // definicie pre _rozbor_dna():
 //

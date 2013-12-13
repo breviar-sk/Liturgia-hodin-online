@@ -154,4 +154,8 @@ static BRSettings *_instance;
 	return [option objectForKey:@"options"];
 }
 
+- (id)valueForKey:(NSString *)key {
+	return [self stringForOption:key];
+}
+
 @end

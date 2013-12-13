@@ -9625,6 +9625,17 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem font size: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
+	// 2013-12-12: exportovanie parametra c (_global_css)
+	if(PODMIENKA_EXPORTOVAT_CSS){
+		sprintf(pom, " -c%s", skratka_css[_global_css]); // nazov_css[_global_css]
+	}
+	else{
+		Log("\tNetreba prilepiù css (css == %s/%s)\n", skratka_css[_global_css], nazov_css[_global_css]);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem css: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
 	// 2009-08-03: exportovanie do adres·rov po mesiacoch
 	if(_global_opt_batch_monthly == ANO){
 		Log("_global_opt_batch_monthly == ANO\n");
@@ -10437,6 +10448,17 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 	}
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem font size: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
+	// 2013-12-12: exportovanie parametra c (_global_css)
+	if(PODMIENKA_EXPORTOVAT_CSS){
+		sprintf(pom, " -c%s", skratka_css[_global_css]); // nazov_css[_global_css]
+	}
+	else{
+		Log("\tNetreba prilepiù css (css == %s/%s)\n", skratka_css[_global_css], nazov_css[_global_css]);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem css: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// reùazec pre deÚ a pre n·zov s˙boru
 	if(d != VSETKY_DNI){
@@ -16348,6 +16370,22 @@ int breviar_main(int argc, char **argv){
 				}
 				_main_LOG_to_Export("...font size (%s) = %i, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
 
+				// 2013-12-12: PridanÈ naËÌtanie css | podæa: 2008-08-08: PridanÈ naËÌtanie css kvÙli rÙznym css
+				_main_LOG_to_Export("zisùujem css...\n");
+				_global_css = atocss(pom_CSS);
+				if(_global_css == CSS_UNDEF){
+					// 2012-04-03: doplnenÈ default CSS pre dan˝ jazyk
+					_global_css = default_css_jazyk[_global_jazyk];
+					if(_global_css == CSS_UNDEF){
+						_global_css = CSS_breviar_sk;
+						_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default)\n");
+					}
+					else{
+						_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default pre dan˝ jazyk)\n");
+					}
+				}
+				_main_LOG_to_Export("...css (%s) = %i, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
+
 				Log("file_export == `%s'...\n", file_export);
 				if(equals(file_export, STR_EMPTY) || equals(file_export, "+")){
 					// "+" -- error, chce pridavat do nicoho
@@ -16490,22 +16528,6 @@ _main_SIMULACIA_QS:
 	}
 	_main_LOG_to_Export("...kalend·r (%s) = %i, teda %s (%s)\n", pom_KALENDAR, _global_kalendar, nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar]);
 
-	// 2008-08-08: PridanÈ naËÌtanie css kvÙli rÙznym css
-	_main_LOG_to_Export("zisùujem css...\n");
-	_global_css = atocss(pom_CSS);
-	if(_global_css == CSS_UNDEF){
-		// 2012-04-03: doplnenÈ default CSS pre dan˝ jazyk
-		_global_css = default_css_jazyk[_global_jazyk];
-		if(_global_css == CSS_UNDEF){
-			_global_css = CSS_breviar_sk;
-			_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default)\n");
-		}
-		else{
-			_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default pre dan˝ jazyk)\n");
-		}
-	}
-	_main_LOG_to_Export("...css (%s) = %i, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
-
 	// 2011-05-06: PridanÈ naËÌtanie n·zvu fontu kvÙli rÙznym fontom
 	_main_LOG_to_Export("zisùujem font...\n");
 	_global_font = atofont(pom_FONT);
@@ -16523,6 +16545,22 @@ _main_SIMULACIA_QS:
 		_main_LOG_to_Export("\t(vzhæadom k neurËenej font size pouûÌvam default -- braù font size z CSS)\n");
 	}
 	_main_LOG_to_Export("...font size (%s) = %i, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
+
+	// 2008-08-08: PridanÈ naËÌtanie css kvÙli rÙznym css
+	_main_LOG_to_Export("zisùujem css...\n");
+	_global_css = atocss(pom_CSS);
+	if(_global_css == CSS_UNDEF){
+		// 2012-04-03: doplnenÈ default CSS pre dan˝ jazyk
+		_global_css = default_css_jazyk[_global_jazyk];
+		if(_global_css == CSS_UNDEF){
+			_global_css = CSS_breviar_sk;
+			_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default)\n");
+		}
+		else{
+			_main_LOG_to_Export("\t(vzhæadom k neurËenÈmu CSS pouûÌvam default pre dan˝ jazyk)\n");
+		}
+	}
+	_main_LOG_to_Export("...css (%s) = %i, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
 
 	LOG_ciara;
 // END_presunut·_Ëasù_2013_07_31

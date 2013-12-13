@@ -69,8 +69,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
-					<key>hidden</key>
-					<true/>
+					<key>visibility</key>
+					<string>FALSEPREDICATE</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -79,8 +79,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<true/>
-					<key>hidden</key>
-					<true/>
+					<key>visibility</key>
+					<string>FALSEPREDICATE</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -89,8 +89,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
-					<key>hidden</key>
-					<true/>
+					<key>visibility</key>
+					<string>FALSEPREDICATE</string>
 				</dict>
 			</array>
 		</dict>
@@ -169,8 +169,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
-					<key>hidden</key>
-					<true/>
+					<key>visibility</key>
+					<string>FALSEPREDICATE</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -179,8 +179,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
-					<key>hidden</key>
-					<true/>
+					<key>visibility</key>
+					<string>FALSEPREDICATE</string>
 				</dict>
 			</array>
 		</dict>
@@ -316,6 +316,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -324,6 +326,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -332,6 +336,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -340,6 +346,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot; &amp;&amp; j != &quot;cz&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -348,6 +356,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot; &amp;&amp; j != &quot;cz&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -356,6 +366,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot; &amp;&amp; j != &quot;cz&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -364,6 +376,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot; &amp;&amp; j != &quot;cz&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -372,6 +386,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot; &amp;&amp; j != &quot;cz&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -380,6 +396,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot; &amp;&amp; j != &quot;cz&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -388,6 +406,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot; &amp;&amp; j != &quot;cz&quot;</string>
 				</dict>
 				<dict>
 					<key>id</key>
@@ -396,6 +416,8 @@
 					<string>bool</string>
 					<key>default</key>
 					<false/>
+					<key>visibility</key>
+					<string>of2a == &quot;1&quot; &amp;&amp; j != &quot;cz&quot;</string>
 				</dict>
 			</array>
 		</dict>

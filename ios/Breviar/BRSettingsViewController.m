@@ -50,6 +50,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+	[self calculateVisibleOptions];
 	[self.tableView reloadData];
 }
 
@@ -66,18 +67,9 @@
 	return section;
 }
 
-- (NSArray *)visibleOptionsForSection:(NSDictionary *)section {
-	NSArray *allOptions = [section objectForKey:@"items"];
-	return [allOptions filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary *item, NSDictionary *bindings) {
-		NSNumber *hidden = [item objectForKey:@"hidden"];
-		return [hidden integerValue] != 1;
-	}]];
-}
-
 - (NSDictionary *)optionForIndexPath:(NSIndexPath *)indexPath {
-	NSDictionary *section = [[BRSettings instance].sections objectAtIndex:indexPath.section];
-	NSArray *options = [self visibleOptionsForSection:section];
-	NSDictionary *option = [options objectAtIndex:indexPath.row];
+	NSArray *section = [self.visibleOptionsPerSection objectAtIndex:indexPath.section];
+	NSDictionary *option = [section objectAtIndex:indexPath.row];
 	return option;
 }
 
@@ -95,20 +87,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	NSDictionary *sectionObj = [[BRSettings instance].sections objectAtIndex:section];
-	NSArray *sectionItems = [self visibleOptionsForSection:sectionObj];
+	NSArray *sectionItems = [self.visibleOptionsPerSection objectAtIndex:section];
 	return sectionItems.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSDictionary *section = [self sectionForIndexPath:indexPath];
 	NSDictionary *option = [self optionForIndexPath:indexPath];
 	NSString *optionType = [option objectForKey:@"type"];
 	
 	if ([optionType isEqualToString:@"bool"] && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
 		// Boolean option for iPhone
-		NSArray *opts = [self visibleOptionsForSection:section];
-		NSString *optId = [[opts objectAtIndex:indexPath.row] objectForKey:@"id"];
+		NSString *optId = [option objectForKey:@"id"];
 		NSString *optTitle = BREVIAR_STR(optId);
 		
 		BRBoolSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BoolCell"];
@@ -151,6 +140,7 @@
 		cell.optionId = optionId;
 		cell.label.text = BREVIAR_STR(optionId);
 		cell.switcher.on = [settings boolForOption:optionId];
+		cell.delegate = self;
 		
 		return cell;
 	}
@@ -165,6 +155,81 @@
 	}
 	
 	return nil;
+}
+
+#pragma mark -
+#pragma mark Option visibility
+
+- (void)calculateVisibleOptions
+{
+	NSInteger sectionId, rowId;
+	BRSettings *settings = [BRSettings instance];
+	NSMutableDictionary *visibleOptionIndexPaths = [[NSMutableDictionary alloc] init];
+	NSMutableArray *visibleOptionsPerSection = [[NSMutableArray alloc] init];
+	
+	sectionId = 0;
+	for (NSDictionary *section in [BRSettings instance].sections) {
+		NSMutableArray *items = [[NSMutableArray alloc] init];
+		
+		rowId = 0;
+		for (NSDictionary *item in [section objectForKey:@"items"]) {
+			NSString *visibility = [item objectForKey:@"visibility"];
+			BOOL visible;
+			
+			if (visibility) {
+				NSPredicate *predicate = [NSPredicate predicateWithFormat:visibility];
+				visible = [predicate evaluateWithObject:settings];
+			} else {
+				visible = YES;
+			}
+
+			if (visible) {
+				[items addObject:item];
+				NSIndexPath *indexPath = [NSIndexPath indexPathForItem:rowId inSection:sectionId];
+				[visibleOptionIndexPaths setObject:indexPath forKey:[item objectForKey:@"id"]];
+				rowId++;
+			}
+		}
+		[visibleOptionsPerSection addObject:items];
+		sectionId++;
+	}
+	
+	self.visibleOptionIndexPaths = visibleOptionIndexPaths;
+	self.visibleOptionsPerSection = visibleOptionsPerSection;
+}
+
+- (void)boolOptionChanged:(NSString *)optionId toValue:(BOOL)newValue
+{
+	// Get old list of visible options
+	NSDictionary *oldVisibleOptionIndexPaths = self.visibleOptionIndexPaths;
+	
+	// Get new list of visible options
+	[self calculateVisibleOptions];
+	NSDictionary *newVisibleOptionIndexPaths = self.visibleOptionIndexPaths;
+	
+	// Calculate diff
+	NSMutableArray *rowsToDelete = [[NSMutableArray alloc] init];
+	NSMutableArray *rowsToAdd = [[NSMutableArray alloc] init];
+	
+	for (NSString *optionId in oldVisibleOptionIndexPaths) {
+		if (![newVisibleOptionIndexPaths objectForKey:optionId]) {
+			[rowsToDelete addObject:[oldVisibleOptionIndexPaths objectForKey:optionId]];
+		}
+	}
+
+	for (NSString *optionId in newVisibleOptionIndexPaths) {
+		if (![oldVisibleOptionIndexPaths objectForKey:optionId]) {
+			[rowsToAdd addObject:[newVisibleOptionIndexPaths objectForKey:optionId]];
+		}
+	}
+	
+	// Apply diff to table
+	if (rowsToAdd.count > 0 || rowsToDelete.count > 0) {
+		[self.tableView beginUpdates];
+		[self.tableView deleteRowsAtIndexPaths:rowsToDelete withRowAnimation:UITableViewRowAnimationFade];
+		[self.tableView insertRowsAtIndexPaths:rowsToAdd withRowAnimation:UITableViewRowAnimationBottom];
+		[self.tableView endUpdates];
+	}
 }
 
 #pragma mark -
