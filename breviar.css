@@ -1,3 +1,48 @@
+/* 2013-12-13 class .antiphon for antihpons */
+/* for SK first/second/third-ant is used; for HU/CZ ant-first/second/third is used */
+.antiphon.first-ant:before {
+    color: #ff0000;
+    content: '1. ant. ';
+    font-weight: bold;
+}
+
+.antiphon.second-ant:before {
+    color: #ff0000;
+    content: '2. ant. ';
+    font-weight: bold;
+}
+
+.antiphon.third-ant:before {
+    color: #ff0000;
+    content: '3. ant. ';
+    font-weight: bold;
+}
+
+.antiphon.ant:before, {
+    color: #ff0000;
+    content: 'Ant. ';
+    font-weight: bold;
+}
+
+.antiphon.ant-first:before {
+    color: #ff0000;
+    content: 'Ant. 1 ';
+    font-weight: bold;
+}
+
+.antiphon.ant-second:before {
+    color: #ff0000;
+    content: 'Ant. 2 ';
+    font-weight: bold;
+}
+
+.antiphon.ant-third:before {
+    color: #ff0000;
+    content: 'Ant. 3 ';
+    font-weight: bold;
+}
+
+
 /* 2013-11-03 class .respons for responsories */
 .respons p { 
 	font-weight: normal; 
@@ -9,6 +54,7 @@
 	-webkit-margin-after: 0em; 
 	-webkit-margin-before: 0em; 
 }
+
 
 /* for SK & LA, R/V is used; for CZ, O/V is used; for HU, V/F is used */
 .respons p.respR:before { 
