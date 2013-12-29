@@ -6056,7 +6056,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 					}
 					sprintf(pom, "<a href=\"svpismo://svpismo.riso.ksp.sk/?d=%d&amp;m=%d&amp;y=%d&amp;c=", _local_den.den, _local_den.mesiac, _local_den.rok);
 					strcat(_global_string, pom);
-					strcat(_global_string, StringEncode(remove_diacritics(cit->citania)));
+					strcat(_global_string, StringEncode(toUtf(cit->citania)));
 					sprintf(pom, "&amp;zalm=");
 					strcat(_global_string, pom);
 					strcat(_global_string, StringEncode(toUtf(cit->zalm)));
@@ -16822,7 +16822,9 @@ _main_SIMULACIA_QS:
 				xml_patka();
 			}
 
+#ifndef MODEL_linux_citania
 			_deallocate_global_var();
+#endif
 
 		}// if(ret == SUCCESS)
 		else if(ret == FAILURE){

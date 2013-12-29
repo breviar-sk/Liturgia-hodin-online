@@ -11,6 +11,7 @@ struct citanie {
   const char *kod, *citania, *zalm, *aleluja;
 };
 
+void checkCitania();
 struct citanie *najdiCitanie(const char *kod);
 char *getCode(_struct_dm *d);
 

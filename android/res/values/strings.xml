@@ -42,6 +42,12 @@
     <string name="h12_notify">Time for Sext!</string>
     <string name="h15_notify">Time for None!</string>
 
+    <string name="about">About</string>
+    <string name="about_text">
+    Info about app.\n
+    ...
+    </string>
+
     <string name="news">
 News in v1.9.4:\n
 - New option: use normal font only (no bold)\n

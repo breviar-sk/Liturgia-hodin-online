@@ -98,10 +98,13 @@ short int initExport(const char *expt_filename){ /* pridane, 13/03/2000A.D. */
 }
 
 short int closeExport(void){ /* pridane, urobi fclose(); 13/03/2000A.D. */
-	short int ret = EOF; /* error closing file */
+	short int ret = 0;
+#if defined(EXPORT_TO_FILE)
+        ret = EOF;  /* error closing file */
 	if(exptused == SUCCESS){
 		ret = fclose(exportfile);
 	}
+#endif
 	return ret;
 }
 

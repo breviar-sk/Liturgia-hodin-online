@@ -7,24 +7,35 @@
 
 #ifdef LITURGICKE_CITANIA_ANDROID
 
-#define POCET_CITANIA 1128 // [ToDo] dorieši krajšie
-
-static struct citanie Citania[POCET_CITANIA] = {
-#include "citania-gen.cpp"
+static struct citanie Citania[] = {
+#include "citania-merged.cpp"
   { NULL, NULL, NULL, NULL }
 };
 
-static short int nc = POCET_CITANIA - 1;
+static short int nc = -1;
 
 static int cmpcitanie(const void *a, const void *b) {
   return strcmp((const char *)a, ((struct citanie *)b)->kod);
 }
 
+static void initCitania() {
+  if (nc == -1) {
+    for (nc = 0; Citania[nc].kod; ++nc);
+  }
+}  
+
+void checkCitania() {
+  initCitania();
+  for (nc=0; Citania[nc].kod; nc++) {
+    if (nc > 0 && strcmp(Citania[nc - 1].kod, Citania[nc].kod) > 0) {
+      fprintf(stderr, "Citania nie su utriedene! %s >= %s\n", Citania[nc - 1].kod, Citania[nc].kod);
+    }
+  }
+}
+
 struct citanie *najdiCitanie(const char *kod) {
   struct citanie *c;
-  if (nc == -1) {
-    for (nc=0; Citania[nc].kod; nc++);
-  }
+  initCitania();
   c = (citanie *)bsearch(kod, Citania, nc, sizeof(struct citanie), cmpcitanie);
   if (!c) return NULL;
   if (!c->citania[0]) return NULL;
@@ -58,13 +69,22 @@ char *getCode(_struct_dm *d) {
   } else if (d->smer <= 9) {
     if (d->smer == 9 && d->mesiac == 12 && d->den <=24) { // na konci adventu rozhoduje kalendarny datum
       sprintf(buf, "%02d%02d%02d", d->smer, d->litobd, d->den);
+    } else if (d->litobd == OBD_OKTAVA_NARODENIA) {
+      // V oktave Vianoc sa citania beru podla dna v oktave.
+      sprintf(buf, "%02d%02d%d", d->smer, d->litobd, d->den - 24);
     } else {
       sprintf(buf, "%02d%c%02d%02d%02d", d->smer, ferialnyCyklus(d), d->litobd, d->tyzden, d->denvt);
     }
   } else if (d->smer <= 12) {
     sprintf(buf, "%02d%s", d->smer, remove_diacritics(d->meno));
   } else {
-    sprintf(buf, "%02d%c%02d%02d%02d", d->smer, ferialnyCyklus(d), d->litobd, d->tyzden, d->denvt);
+    if (d->litobd == OBD_VIANOCNE_I || d->litobd == OBD_VIANOCNE_II) {
+      // Ferie vo Vianocnom obdobi su predpisane na dni kalendara.
+      sprintf(buf, "%02d%c%02d%02d%02d", d->smer, ferialnyCyklus(d), d->litobd, d->den, d->mesiac);
+    } else {
+      // Ostatne ferie sa viazu na dni v tyzdni.
+      sprintf(buf, "%02d%c%02d%02d%02d", d->smer, ferialnyCyklus(d), d->litobd, d->tyzden, d->denvt);
+    }
   }
   return buf;
 }

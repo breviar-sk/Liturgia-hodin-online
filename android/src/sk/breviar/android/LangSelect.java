@@ -1,6 +1,10 @@
 package sk.breviar.android;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +14,7 @@ import android.widget.CheckBox;
 import sk.breviar.android.BreviarApp;
 
 public class LangSelect extends Activity {
+    static final int DIALOG_ABOUT = 1;
 
     /** Called when the activity is first created. */
     @Override
@@ -60,5 +65,30 @@ public class LangSelect extends Activity {
       });
 
       vol_buttons_check.setChecked(BreviarApp.getVolButtons(getApplicationContext()));
+
+      ((Button)findViewById(R.id.about)).setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          showDialog(DIALOG_ABOUT);
+        }
+      });
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+      switch(id) {
+        case DIALOG_ABOUT:
+          return new AlertDialog.Builder(this)
+                 .setMessage(R.string.about_text)
+                 .setCancelable(false)
+                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                     public void onClick(DialogInterface dialog, int id) {
+                          dialog.cancel();
+                     }
+                 })
+                 .create();
+        default:
+          // fall through
+      }
+      return null;
     }
 }

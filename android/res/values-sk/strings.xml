@@ -40,6 +40,12 @@
     <string name="h12_notify">Je čas na poludňajšiu modlitbu!</string>
     <string name="h15_notify">Je čas na popoludňajšiu modlitbu!</string>
 
+    <string name="about">O aplikácii</string>
+    <string name="about_text">
+    Info o aplikácii.\n
+    ...
+    </string>
+
     <string name="news">
 Nové vo verzii v1.9.4:\n
 - Nové nastavenie: použiť len obyčajné písmo (nie tučné)\n

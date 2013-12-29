@@ -106,6 +106,14 @@
 	#undef LOGGING
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_TO_STDOUT
+// pomocne funkcie pre liturgicke citania:
+#elif defined(MODEL_linux_citania)
+	#define BEHAVIOUR_WEB
+	#define OS_linux
+	#undef LOGGING
+	#define EXPORT_HTML_FILENAME_ANCHOR
+	#define EXPORT_TO_STRING
+	#define LITURGICKE_CITANIA_ANDROID
 // android:
 #elif defined(MODEL_android)
 	#define BEHAVIOUR_WEB
