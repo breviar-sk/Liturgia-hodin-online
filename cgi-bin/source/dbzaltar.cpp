@@ -1,7 +1,7 @@
 /************************************************************************/
 /*                                                                      */
 /* dbzaltar.cpp                                                         */
-/* (c)1999-2013 | Juraj Vidéky | videky@breviar.sk                      */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk                      */
 /*                                                                      */
 /* description | program tvoriaci stranky pre liturgiu hodin            */
 /* document history                                                     */
@@ -5905,7 +5905,7 @@ label_24_DEC:
 				_narodenie_antifony;
 			}
 
-			if((_global_den.den == 1) && (_global_den.mesiac == 1)){ // Panny Marie Bohorodicky
+			if((_global_den.den == 1) && (_global_den.mesiac == 1)){ // Panny Márie Bohorodièky | BOHORODICKY_PANNY_MARIE
 				mystrcpy(_file, FILE_PM_BOHOROD, MAX_STR_AF_FILE);
 				mystrcpy(_file_pc, FILE_PM_BOHOROD, MAX_STR_AF_FILE);
 				mystrcpy(_anchor, ANCHOR_PM_BOHOROD, MAX_STR_AF_ANCHOR);
@@ -5981,6 +5981,10 @@ label_24_DEC:
 				modlitba = MODL_POPOLUDNI;
 				_bohorod_kcitanie(_anchor_vlastne_slavenie);
 				_bohorod_modlitba;
+				// 2014-01-02: doplnená psalmódia: Ak nie je nede¾a, berie sa doplnková psalmódia. (LH, zv. I, str. 372)
+				if(_global_den.denvt != DEN_NEDELA){
+					_set_zalmy_mcd_doplnkova_psalmodia();
+				}
 			}// Panny Marie Bohorodicky
 			else if((_global_den.denvt == DEN_NEDELA) && (_global_den.mesiac - 1 == MES_JAN) && (_global_jazyk != JAZYK_HU)){ // druha nedela po narodeni pana - 2. NEDE¼A PO NARODENÍ PÁNA
 				// prvé vešpery
@@ -28435,6 +28439,35 @@ label_25_MAR:
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_SK_CSSR;
 					}// kalendár pre KALENDAR_SK_CSSR
+					if((_global_jazyk == JAZYK_SK) && ((_global_kalendar == KALENDAR_VSEOBECNY_SK) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_NEURCENY))){
+						if(poradie_svaty == 1){
+
+							// definovanie parametrov pre modlitbu
+							if(query_type != PRM_DETAILY)
+								set_spolocna_cast(sc, poradie_svaty);
+
+							modlitba = MODL_POSV_CITANIE;
+							_vlastna_cast_2citanie;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_RANNE_CHVALY;
+							_vlastna_cast_benediktus;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_VESPERY;
+							_vlastna_cast_magnifikat;
+							_vlastna_cast_modlitba;
+
+							break;
+						}
+						_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
+						_global_svaty1.typslav_lokal = LOKAL_SLAV_KONGREGACIA_SMBM;
+						_global_svaty1.smer = 12; // ¾ubovo¾né spomienky
+						mystrcpy(_global_svaty1.meno, text_OKT_05_SK[_global_jazyk], MENO_SVIATKU);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
+						_global_svaty1.farba = LIT_FARBA_BIELA;
+						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_SK;
+					}// kalendár pre KALENDAR_SK_SDB
 					// else
 					if(_global_jazyk == JAZYK_HU){
 						if(poradie_svaty == 1){

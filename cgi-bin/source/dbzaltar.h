@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* dbzaltar.h                                                  */
-/* (c)1999-2013 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description |                                               */
 /* document history                                            */
@@ -397,6 +397,7 @@ extern const char *text_SEP_30[POCET_JAZYKOV + 1];
 extern const char *text_OKT_01[POCET_JAZYKOV + 1];
 extern const char *text_OKT_02[POCET_JAZYKOV + 1];
 extern const char *text_OKT_04[POCET_JAZYKOV + 1];
+extern const char *text_OKT_05_SK[POCET_JAZYKOV + 1];
 extern const char *text_OKT_05_HU[POCET_JAZYKOV + 1];
 extern const char *text_OKT_06[POCET_JAZYKOV + 1];
 extern const char *text_OKT_07[POCET_JAZYKOV + 1];

@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* liturgia.h                                                  */
-/* (c)1999-2013 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | obsahuje zakladne vecicky pre liturgiu hodin  */
 /* document history                                            */
@@ -968,6 +968,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_OPRAEM_DOKSANY          100
 #define LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV    101
 #define LOKAL_SLAV_OPRAEM_TEPLA            102
+#define LOKAL_SLAV_KONGREGACIA_SMBM        103
 
 // 2010-08-03: pridaný kalendár
 #define KALENDAR_NEURCENY                   0

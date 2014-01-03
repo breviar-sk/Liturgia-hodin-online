@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* hodin.h                                                     */
-/* (c)1999-2013 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | definovane stringove kontanty                 */
 /* document history                                            */
@@ -618,6 +618,7 @@ const char *nazov_slavenia_lokal[] =
 ,"jen kanonie Doksany"                                                                                          // LOKAL_SLAV_OPRAEM_DOKSANY
 ,"jen kanonie Doksany a Želiv"                                                                                  // LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV
 ,"jen kanonie Teplá"                                                                                            // LOKAL_SLAV_OPRAEM_TEPLA
+,"len pre len pre Kongregáciu sestier Matky Božieho Milosrdenstva"                                              // LOKAL_SLAV_KONGREGACIA_SMBM
 };
 
 // names of liturgical colors
@@ -7241,6 +7242,15 @@ const char *text_OKT_05_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "Veszprém: A bazilika-fõszékesegyház felszentelése",
+ };
+const char *text_OKT_05_SK[POCET_JAZYKOV + 1] = 
+{"Sv. Faustíny Kowalskej, panny",
+ "",
+ "",
+ "",
+ "",
+ "",
+ "",
  };
 const char *text_OKT_05_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Rajmunda z Kapuy, kòaza",
