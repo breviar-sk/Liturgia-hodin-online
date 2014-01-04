@@ -377,7 +377,7 @@ public class Breviar extends Activity {
           return new AlertDialog.Builder(this)
                  .setMessage(R.string.news)
                  .setCancelable(false)
-                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
                      public void onClick(DialogInterface dialog, int id) {
                           dialog.cancel();
                      }

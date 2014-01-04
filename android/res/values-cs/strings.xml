@@ -40,20 +40,52 @@
     <string name="h12_notify">Je čas na polední modlitbu!</string>
     <string name="h15_notify">Je čas na popolední modlitbu!</string>
 
-    <string name="about">O aplikácii</string>
+    <string name="about">O aplikacii</string>
     <string name="about_text">
-    Info o aplikácii.\n
-    ...
+Český překlad Liturgie hodin © Arcibiskupství pražské. \n
+Podlicenční smlouva na použití textů ze dne 14. 5. 2012.\n
+\n
+Poděkování patří všem, kteří se jakýmkoliv způsobem přičinili o převod textů Denní modlitby církve do elektronické podoby; největší zásluhu na českém projektu má p. Jan Franta. Děkuji za všechny podněty, upozornění na chyby, připomínky a náměty na zlepšení.\n
+\n
+\n
+Credits\n
+\n
+Un-CGI 1.10: 1994 © Steven Grimm.\n
+cgiutils 1.1: 1995-1996 © William E. Weinman.\n
+Partial source code: 1999 © Miroslav Murgaš, 2007 © Marek Eliáš.\n
+\n
+Android version: 2011-2014 © Richard Královič.\n
+iOS version: 2013-2014 © Ákos Gyimesi.\n
+\n
+Ruby support: 2005-2010 © Jozef Fülöp.\n
+git support: 2011 © Jozef Fülöp.\n
+\n
+breviar.sk logo: 2013 © Petr Kononov.\n
+\n
+HTML texts (SK): Juraj Vidéky et al.\n
+HTML texts (CZ): Jan Franta, Juraj Vidéky.\n
+HTML texts (HU): Julianna Blahó, László Elek SJ, Juraj Vidéky.\n
+\n
+\n
+Copyright 1999-2014 © Juraj Vidéky. All rights reserved.\n
+\n
+OAMDG 
     </string>
 
     <string name="news">
+Nové ve verzi v1.9.5:\n
+- Liturgické čtení (jenom SK): úpravy a doplnění\n
+- Informace o aplikaci\n
+- Nová ikona\n
+\n
 Nové ve verzi v1.9.4:\n
 - Nové nastavení: použít jen obyčejné písmo (ne tučné)\n
-- Opravy pro Android 4.4 Kit-Kat\n\n
+- Opravy pro Android 4.4 Kit-Kat\n
+\n
 Nové ve verzi v1.9.3:\n
-- CSS změny: formátovaní proseb, kalendář\n\n
+- CSS změny: formátovaní proseb, kalendář\n
+\n
 Nové ve verzi v1.9.0:\n
-- Upravené nové ikonky\n
-- Vlastní texty pro premonstrátský řád\n\n
+- Vlastní texty pro premonstrátský řád\n
     </string>
 </resources>

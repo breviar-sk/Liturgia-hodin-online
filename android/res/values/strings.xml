@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.9.4</string>
+    <string name="version">v1.9.5</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -44,17 +44,51 @@
 
     <string name="about">About</string>
     <string name="about_text">
-    Info about app.\n
-    ...
+SK: Slovenský preklad Liturgie hodín © Konferencia biskupov Slovenska (KBS).\n
+Texty sú publikované s vedomím KBS ako pracovná verzia.\n
+\n
+CZ: Český překlad Liturgie hodin © Arcibiskupství pražské. \n
+Podlicenční smlouva na použití textů ze dne 14. 5. 2012.\n
+\n
+HU: Magyar Imaórák Liturgiája © Magyar Katolikus Püspöki Konferencia (MKPK).\n
+A MKPK jóváhagyávásal.\n
+\n
+\n
+Credits\n
+\n
+Un-CGI 1.10: 1994 © Steven Grimm.\n
+cgiutils 1.1: 1995-1996 © William E. Weinman.\n
+Partial source code: 1999 © Miroslav Murgaš, 2007 © Marek Eliáš.\n
+\n
+Android version: 2011-2014 © Richard Královič.\n
+iOS version: 2013-2014 © Ákos Gyimesi.\n
+\n
+Ruby support: 2005-2010 © Jozef Fülöp.\n
+git support: 2011 © Jozef Fülöp.\n
+\n
+breviar.sk logo: 2013 © Petr Kononov.\n
+\n
+HTML texts (SK): Juraj Vidéky et al.\n
+HTML texts (CZ): Jan Franta, Juraj Vidéky.\n
+HTML texts (HU): Julianna Blahó, László Elek SJ, Juraj Vidéky.\n
+\n
+\n
+Copyright 1999-2014 © Juraj Vidéky. All rights reserved.\n
+\n
+OAMDG 
     </string>
 
     <string name="news">
+News in v1.9.5:\n
+- Liturgical readings (SK only)\n
+- About info\n
+- New icon\n
+\n
 News in v1.9.4:\n
 - New option: use normal font only (no bold)\n
-- Fixes for Android 4.4 Kit-Kat\n\n
+- Fixes for Android 4.4 Kit-Kat\n
+\n
 News in v1.9.3:\n
-- CSS changes\n\n
-News in v1.9.0:\n
-- Refined new icons\n
+- CSS changes\n
     </string>
 </resources>

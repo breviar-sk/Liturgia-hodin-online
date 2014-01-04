@@ -80,7 +80,7 @@ public class LangSelect extends Activity {
           return new AlertDialog.Builder(this)
                  .setMessage(R.string.about_text)
                  .setCancelable(false)
-                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
                      public void onClick(DialogInterface dialog, int id) {
                           dialog.cancel();
                      }
