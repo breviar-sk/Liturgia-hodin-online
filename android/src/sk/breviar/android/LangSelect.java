@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 
@@ -77,8 +78,17 @@ public class LangSelect extends Activity {
     protected Dialog onCreateDialog(int id) {
       switch(id) {
         case DIALOG_ABOUT:
+          WebView wv = new WebView(this);
+          try {
+            wv.loadData(android.util.Base64.encodeToString(
+                            getString(R.string.about_text).getBytes("UTF-8"),
+                            android.util.Base64.DEFAULT),
+                        "text/html; charset=utf-8", "base64");
+          } catch (java.io.UnsupportedEncodingException e) {
+            wv.loadData("unsupported encoding utf-8", "text/html", null);
+          }
           return new AlertDialog.Builder(this)
-                 .setMessage(R.string.about_text)
+                 .setView(wv)
                  .setCancelable(false)
                  .setNeutralButton("OK", new DialogInterface.OnClickListener() {
                      public void onClick(DialogInterface dialog, int id) {

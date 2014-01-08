@@ -43,52 +43,80 @@
     <string name="h15_notify">Time for None!</string>
 
     <string name="about">About</string>
-    <string name="about_text">
-SK: Slovenský preklad Liturgie hodín © Konferencia biskupov Slovenska (KBS).\n
-Texty sú publikované s vedomím KBS ako pracovná verzia.\n
-\n
-CZ: Český překlad Liturgie hodin © Arcibiskupství pražské. \n
-Podlicenční smlouva na použití textů ze dne 14. 5. 2012.\n
-\n
-HU: Magyar Imaórák Liturgiája © Magyar Katolikus Püspöki Konferencia (MKPK).\n
-A MKPK jóváhagyávásal.\n
-\n
-\n
-Credits\n
-\n
-Un-CGI 1.10: 1994 © Steven Grimm.\n
-cgiutils 1.1: 1995-1996 © William E. Weinman.\n
-Partial source code: 1999 © Miroslav Murgaš, 2007 © Marek Eliáš.\n
-\n
-Android version: 2011-2014 © Richard Královič.\n
-iOS version: 2013-2014 © Ákos Gyimesi.\n
-\n
-Ruby support: 2005-2010 © Jozef Fülöp.\n
-git support: 2011 © Jozef Fülöp.\n
-\n
-breviar.sk logo: 2013 © Petr Kononov.\n
-\n
-HTML texts (SK): Juraj Vidéky et al.\n
-HTML texts (CZ): Jan Franta, Juraj Vidéky.\n
-HTML texts (HU): Julianna Blahó, László Elek SJ, Juraj Vidéky.\n
-\n
-\n
-Copyright 1999-2014 © Juraj Vidéky. All rights reserved.\n
-\n
-OAMDG 
-    </string>
+    <string name="about_text"><![CDATA[
+<html>
+<head>
+<style type="text/css">
+body { background-color: #000000; color: #cccccc; }
+</style>
+</head>
+<body>
+<p>
+<b>SK: Slovenský preklad Liturgie hodín</b> ©&nbsp;Konferencia biskupov Slovenska (KBS).<br/>
+Texty sú publikované s vedomím KBS ako pracovná verzia.<br/>
+<p>
+<b>CZ: Český překlad Liturgie hodin</b> ©&nbsp;Arcibiskupství pražské. <br/>
+Podlicenční smlouva na použití textů ze dne 14. 5. 2012.<br/>
+<p>
+<b>HU: Magyar Imaórák Liturgiája</b> ©&nbsp;Magyar Katolikus Püspöki Konferencia (MKPK).<br/>
+A MKPK jóváhagyávásal.<br/>
 
-    <string name="news">
-News in v1.9.5:\n
-- Liturgical readings (SK only)\n
-- About info\n
-- New icon\n
-\n
-News in v1.9.4:\n
-- New option: use normal font only (no bold)\n
-- Fixes for Android 4.4 Kit-Kat\n
-\n
-News in v1.9.3:\n
-- CSS changes\n
-    </string>
+<p>
+Poďakovanie patrí všetkým, ktorí sa akýmkoľvek spôsobom pričinili o prevod
+textov Liturgie hodín do elektronickej podoby, najväčšiu zásluhu na maďarskej
+verzii má Laci Elek. Ďakujem za všetky podnety, upozornenia na chyby,
+pripomienky a námety na zlepšenia.
+
+<h3>Credits</h3>
+<p>
+<b>Un-CGI 1.10:</b> 1994 ©&nbsp;Steven Grimm.<br/>
+<b>cgiutils 1.1:</b> 1995-1996 ©&nbsp;William E. Weinman.<br/>
+<b>Partial source code:</b> 1999 ©&nbsp;Miroslav Murgaš, 2007 © Marek Eliáš.<br/>
+<p>
+<b>Android version:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
+<b>iOS version:</b> 2013-2014 ©&nbsp;Ákos Gyimesi.<br/>
+<p>
+<b>Ruby support:</b> 2005-2010 ©&nbsp;Jozef Fülöp.<br/>
+<b>git support:</b> 2011 ©&nbsp;Jozef Fülöp.<br/>
+<p>
+<b>breviar.sk logo:</b> 2013 ©&nbsp;Petr Kononov.<br/>
+<p>
+<b>HTML texts (SK):</b> Juraj Vidéky et al.<br/>
+<b>HTML texts (CZ):</b> Jan Franta, Juraj Vidéky.<br/>
+<b>HTML texts (HU):</b> Julianna Blahó, László Elek SJ, Juraj Vidéky.<br/>
+<p>
+Copyright 1999-2014 © Juraj Vidéky. All rights reserved.<br/>
+<p>
+OAMDG 
+</body></html>
+    ]]></string>
+
+    <string name="news"><![CDATA[
+<html>
+<head>
+<style type="text/css">
+body { background-color: #000000; color: #cccccc; }
+</style>
+</head>
+<body>
+<p>
+<b>News in v1.9.5:</b>
+<ul>
+<li> Liturgical readings (SK only)
+<li> About info
+<li> New icon
+</ul>
+
+<p><b>News in v1.9.4:</b>
+<ul>
+<li> New option: use normal font only (no bold)
+<li> Fixes for Android 4.4 Kit-Kat
+</ul>
+
+<p><b>News in v1.9.3:</b>
+<ul>
+<li> CSS changes
+</ul>
+</body></html>
+    ]]></string>
 </resources>

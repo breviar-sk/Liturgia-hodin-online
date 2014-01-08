@@ -41,51 +41,38 @@
     <string name="h15_notify">Je čas na popoludňajšiu modlitbu!</string>
 
     <string name="about">O aplikácii</string>
-    <string name="about_text">
-Slovenský preklad Liturgie hodín © Konferencia biskupov Slovenska (KBS).\n
-Texty sú publikované s vedomím KBS ako pracovná verzia.\n
-\n
-Poďakovanie patrí všetkým, ktorí sa akýmkoľvek spôsobom pričinili o prevod textov Liturgie hodín do elektronickej podoby. Ďakujem za všetky podnety, upozornenia na chyby, pripomienky a námety na zlepšenia.\n
-\n
-\n
-Credits\n
-\n
-Un-CGI 1.10: 1994 © Steven Grimm.\n
-cgiutils 1.1: 1995-1996 © William E. Weinman.\n
-Partial source code: 1999 © Miroslav Murgaš, 2007 © Marek Eliáš.\n
-\n
-Android version: 2011-2014 © Richard Královič.\n
-iOS version: 2013-2014 © Ákos Gyimesi.\n
-\n
-Ruby support: 2005-2010 © Jozef Fülöp.\n
-git support: 2011 © Jozef Fülöp.\n
-\n
-breviar.sk logo: 2013 © Petr Kononov.\n
-\n
-HTML texts (SK): Juraj Vidéky et al.\n
-HTML texts (CZ): Jan Franta, Juraj Vidéky.\n
-HTML texts (HU): Julianna Blahó, László Elek SJ, Juraj Vidéky.\n
-\n
-\n
-Copyright 1999-2014 © Juraj Vidéky. All rights reserved.\n
-\n
-OAMDG 
-    </string>
 
-    <string name="news">
-Nové vo verzii v1.9.5:\n
-- Liturgické čítania: úpravy a doplnenia\n
-- Informácie o aplikácii\n
-- Nová ikona\n
-\n
-Nové vo verzii v1.9.4:\n
-- Nové nastavenie: použiť len obyčajné písmo (nie tučné)\n
-- Opravy pre Android 4.4 Kit-Kat\n
-\n
-Nové vo verzii v1.9.3:\n
-- CSS úpravy: formátovanie žalmov, chválospevov, prosieb; kalendár\n
-\n
-Nové vo verzii v1.9.1:\n
-- Texty LH sú publikované s vedomím KBS ako pracovná verzia.\n
-    </string>
+    <string name="news"><![CDATA[
+<html>
+<head>
+<style type="text/css">
+body { background-color: #000000; color: #cccccc; }
+</style>
+</head>
+<body>
+<p>
+<b>Nové vo verzii v1.9.5:</b>
+<ul>
+<li> Liturgické čítania: úpravy a doplnenia
+<li> Informácie o aplikácii
+<li> Nová ikona
+</ul>
+
+<p><b>Nové vo verzii v1.9.4:</b>
+<ul>
+<li> Nové nastavenie: použiť len obyčajné písmo (nie tučné)
+<li> Opravy pre Android 4.4 Kit-Kat
+</ul>
+
+<p><b>Nové vo verzii v1.9.3:</b>
+<ul>
+<li> CSS úpravy: formátovanie žalmov, chválospevov, prosieb; kalendár
+</ul>
+
+<p><b>Nové vo verzii v1.9.1:</b>
+<ul>
+<li> Texty LH sú publikované s vedomím KBS ako pracovná verzia.
+</ul>
+</body></html>
+    ]]></string>
 </resources>

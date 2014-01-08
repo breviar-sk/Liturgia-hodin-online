@@ -41,50 +41,35 @@
     <string name="h15_notify">Itt az idő a délután napközi imaórára!</string>
 
     <string name="about">Névjegy</string>
-    <string name="about_text">
-Magyar Imaórák Liturgiája © Magyar Katolikus Püspöki Konferencia (MKPK).\n
-A MKPK jóváhagyávásal.\n
-\n
-Poďakovanie patrí všetkým, ktorí sa akýmkoľvek spôsobom pričinili o prevod textov Liturgie hodín do elektronickej podoby, najväčšiu zásluhu na maďarskej verzii má Laci Elek. Ďakujem za všetky podnety, upozornenia na chyby, pripomienky a námety na zlepšenia.\n
-\n
-\n
-Credits\n
-\n
-Un-CGI 1.10: 1994 © Steven Grimm.\n
-cgiutils 1.1: 1995-1996 © William E. Weinman.\n
-Partial source code: 1999 © Miroslav Murgaš, 2007 © Marek Eliáš.\n
-\n
-Android version: 2011-2014 © Richard Královič.\n
-iOS version: 2013-2014 © Ákos Gyimesi.\n
-\n
-Ruby support: 2005-2010 © Jozef Fülöp.\n
-git support: 2011 © Jozef Fülöp.\n
-\n
-breviar.sk logo: 2013 © Petr Kononov.\n
-\n
-HTML texts (SK): Juraj Vidéky et al.\n
-HTML texts (CZ): Jan Franta, Juraj Vidéky.\n
-HTML texts (HU): Julianna Blahó, László Elek SJ, Juraj Vidéky.\n
-\n
-\n
-Copyright 1999-2014 © Juraj Vidéky. All rights reserved.\n
-\n
-OAMDG 
-    </string>
 
-    <string name="news">
-Újdonságok a v1.9.5 verzióban:\n
-- Új ikon\n
-- Az alkalmazásról (névjegy)\n
-\n
-Újdonságok a v1.9.4 verzióban:\n
-- Új beállítások: közönséges (nem kövér) betűk alkalmazása\n
-- Javítások az Android 4.4 Kit-Kat részére\n
-\n
-Változások a v1.9.3-ban:\n
-- Zsoltárok jobb tördelése\n
-- Gépelési hibák javítása\n
-- Frissítések a honlapról\n
-    </string>
+    <string name="news"><![CDATA[
+<html>
+<head>
+<style type="text/css">
+body { background-color: #000000; color: #cccccc; }
+</style>
+</head>
+<body>
+<p>
+<b>Újdonságok a v1.9.5 verzióban:</b>
+<ul>
+<li> Új ikon
+<li> Az alkalmazásról (névjegy)
+</ul>
+
+<p><b>Újdonságok a v1.9.4 verzióban:</b>
+<ul>
+<li> Új beállítások: közönséges (nem kövér) betűk alkalmazása
+<li> Javítások az Android 4.4 Kit-Kat részére
+</ul>
+
+<p><b>Változások a v1.9.3-ban:</b>
+<ul>
+<li> Zsoltárok jobb tördelése
+<li> Gépelési hibák javítása
+<li> Frissítések a honlapról
+</ul>
+</body></html>
+    ]]></string>
 
 </resources>

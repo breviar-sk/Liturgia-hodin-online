@@ -25,6 +25,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -92,9 +93,16 @@ public class Breviar extends Activity {
       recreateIfNeeded();
     }
 
+    // Hack: parse opts to get night mode. This should be replaced by proper option parsing.
+    boolean isNightmode() {
+      String o2 = S.getOpts().replaceAll(".*&amp;o2=", "").replaceAll("&.*", "");
+      return (Integer.parseInt(o2) & 256) != 0;
+    }
+
     public boolean tryOpenBible(String url) {
       try {
-        startActivity(new Intent("sk.ksp.riso.svpismo.action.SHOW", Uri.parse(url)));
+        startActivity(new Intent("sk.ksp.riso.svpismo.action.SHOW", Uri.parse(url))
+                          .putExtra("nightmode", isNightmode()));
       } catch (android.content.ActivityNotFoundException e) {
         return false;
       }
@@ -374,8 +382,20 @@ public class Breviar extends Activity {
     protected Dialog onCreateDialog(int id) {
       switch(id) {
         case DIALOG_NEWS:
+          // TextView is faster, but does not understand many tags
+          // TextView tv = new TextView(this);
+          // tv.setText(Html.fromHtml(getString(R.string.news)));
+          WebView wv = new WebView(this);
+          try {
+            wv.loadData(android.util.Base64.encodeToString(
+                            getString(R.string.news).getBytes("UTF-8"),
+                            android.util.Base64.DEFAULT),
+                        "text/html;charset=utf-8", "base64");
+          } catch (java.io.UnsupportedEncodingException e) {
+            wv.loadData("unsupported encoding utf-8", "text/html", null);
+          }
           return new AlertDialog.Builder(this)
-                 .setMessage(R.string.news)
+                 .setView(wv)
                  .setCancelable(false)
                  .setNeutralButton("OK", new DialogInterface.OnClickListener() {
                      public void onClick(DialogInterface dialog, int id) {
