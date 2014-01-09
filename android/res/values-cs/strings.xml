@@ -35,20 +35,26 @@
     <string name="rch_notify">Je čas na ranní chvály!</string>
     <string name="vesp_notify">Je čas na nešpory!</string>
     <string name="kompl_notify">Je čas na kompletář!</string>
-    <string name="read_notify">Je čas na posvátná čtení!</string>
+    <string name="read_notify">Je čas na modlitbu se čtením!</string>
     <string name="h9_notify">Je čas na odpolední modlitbu!</string>
     <string name="h12_notify">Je čas na polední modlitbu!</string>
     <string name="h15_notify">Je čas na popolední modlitbu!</string>
 
-    <string name="about">O aplikacii</string>
+    <string name="menu_about">O...</string>
+    <string name="about">O aplikaci</string>
     <string name="about_text"><![CDATA[
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style type="text/css">
 body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<h3>Aplikace Breviář</h3>
+<p>
+ebreviar.cz | Online Liturgie hodin<br/>
+Copyright 1999-2014 © Juraj Vidéky
 <p>
 <b>SK: Slovenský preklad Liturgie hodín</b> ©&nbsp;Konferencia biskupov Slovenska (KBS).<br/>
 Texty sú publikované s vedomím KBS ako pracovná verzia.<br/>
@@ -60,25 +66,30 @@ Podlicenční smlouva na použití textů ze dne 14. 5. 2012.<br/>
 A MKPK jóváhagyávásal.<br/>
 
 <p>
-Poděkování patří všem, kteří se jakýmkoliv způsobem přičinili o převod textů Denní modlitby církve do elektronické podoby; největší zásluhu na českém projektu má p. Jan Franta. Děkuji za všechny podněty, upozornění na chyby, připomínky a náměty na zlepšení.
+Poděkování patří všem, kteří se jakýmkoliv způsobem přičinili o převod textů Denní modlitby církve do elektronické podoby; 
+největší zásluhu na českém projektu má p. Jan Franta. 
+Děkuji za všechny podněty, upozornění na chyby, připomínky a náměty na zlepšení.
+
+<p>
+Děkuji za souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.
 
 <h3>Credits</h3>
 <p>
-<b>Un-CGI 1.10:</b> 1994 ©&nbsp;Steven Grimm.<br/>
-<b>cgiutils 1.1:</b> 1995-1996 ©&nbsp;William E. Weinman.<br/>
-<b>Partial source code:</b> 1999 ©&nbsp;Miroslav Murgaš, 2007 © Marek Eliáš.<br/>
+<b>HTML texts</b><br/>
+SK: Juraj Vidéky et al.<br/>
+CZ: Jan Franta, Juraj Vidéky.<br/>
+HU: Julianna Blahó, Izing Gabriel, László Elek SJ, Juraj Vidéky.<br/>
 <p>
-<b>Android version:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
-<b>iOS version:</b> 2013-2014 ©&nbsp;Ákos Gyimesi.<br/>
+<b>Android app:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
+<b>iOS app:</b> 2013-2014 ©&nbsp;Ákos Gyimesi, Oto Komiňák.<br/>
 <p>
-<b>Ruby support:</b> 2005-2010 ©&nbsp;Jozef Fülöp.<br/>
-<b>git support:</b> 2011 ©&nbsp;Jozef Fülöp.<br/>
+<b>Git & Ruby support:</b> 2005-2011 ©&nbsp;Jozef Fülöp.<br/>
 <p>
 <b>breviar.sk logo:</b> 2013 ©&nbsp;Petr Kononov.<br/>
 <p>
-<b>HTML texts (SK):</b> Juraj Vidéky et al.<br/>
-<b>HTML texts (CZ):</b> Jan Franta, Juraj Vidéky.<br/>
-<b>HTML texts (HU):</b> Julianna Blahó, László Elek SJ, Juraj Vidéky.<br/>
+<b>Un-CGI 1.10:</b> 1994 ©&nbsp;Steven Grimm.<br/>
+<b>cgiutils 1.1:</b> 1995-1996 ©&nbsp;William E. Weinman.<br/>
+<b>Partial source code:</b> 1999 ©&nbsp;Miroslav Murgaš; 2007 © Marek Eliáš.<br/>
 <p>
 Copyright 1999-2014 © Juraj Vidéky. All rights reserved.<br/>
 <p>
@@ -86,9 +97,11 @@ OAMDG
 </body></html>
     ]]></string>
 
+    <string name="btn_news">Co je nové</string>
     <string name="news"><![CDATA[
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style type="text/css">
 body { background-color: #000000; color: #cccccc; }
 </style>
@@ -97,8 +110,7 @@ body { background-color: #000000; color: #cccccc; }
 <p>
 <b>Nové ve verzi v1.9.5:</b>
 <ul>
-<li> Liturgické čtení (jenom SK): úpravy a doplnění
-<li> Informace o aplikaci
+<li> Informace o aplikaci, rozšíření menu
 <li> Nová ikona
 </ul>
 
@@ -119,4 +131,5 @@ body { background-color: #000000; color: #cccccc; }
 </ul>
 </body></html>
     ]]></string>
+
 </resources>

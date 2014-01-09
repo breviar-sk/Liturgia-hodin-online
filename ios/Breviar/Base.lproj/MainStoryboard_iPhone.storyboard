@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.98823535439999999" green="0.98823535439999999" blue="0.87450987099999999" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="sectionIndexTrackingBackgroundColor" red="0.98823535439999999" green="0.98823535439999999" blue="0.87450987099999999" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.98431372549019602" green="0.9882352941176471" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="qVr-PG-X5y" style="IBUITableViewCellStyleDefault" id="9Oo-uu-uqg">
                                 <rect key="frame" x="0.0" y="119" width="320" height="44"/>
@@ -433,10 +433,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLk-eY-qd7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <color key="backgroundColor" red="0.98823535439999999" green="0.98823535439999999" blue="0.87450987099999999" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.98431372549019602" green="0.9882352941176471" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98431372549019602" green="0.9882352941176471" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gLk-eY-qd7" firstAttribute="leading" secondItem="i4k-ux-YSh" secondAttribute="leading" id="BZP-5V-3hc"/>
                             <constraint firstItem="3c4-n7-hqg" firstAttribute="top" secondItem="gLk-eY-qd7" secondAttribute="bottom" id="KgC-bK-p4F"/>

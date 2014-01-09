@@ -37,6 +37,7 @@ import sk.breviar.android.Util;
 
 public class Breviar extends Activity {
     static String scriptname = "cgi-bin/l.cgi";
+    static final int DIALOG_ABOUT = 1;
     static final int DIALOG_NEWS = 2;
 
     // Server singleton
@@ -380,33 +381,18 @@ public class Breviar extends Activity {
 
     @Override
     protected Dialog onCreateDialog(int id) {
+      String content = null;
       switch(id) {
+        case DIALOG_ABOUT:
+          content = getString(R.string.about_text);
+          break;
         case DIALOG_NEWS:
-          // TextView is faster, but does not understand many tags
-          // TextView tv = new TextView(this);
-          // tv.setText(Html.fromHtml(getString(R.string.news)));
-          WebView wv = new WebView(this);
-          try {
-            wv.loadData(android.util.Base64.encodeToString(
-                            getString(R.string.news).getBytes("UTF-8"),
-                            android.util.Base64.DEFAULT),
-                        "text/html;charset=utf-8", "base64");
-          } catch (java.io.UnsupportedEncodingException e) {
-            wv.loadData("unsupported encoding utf-8", "text/html", null);
-          }
-          return new AlertDialog.Builder(this)
-                 .setView(wv)
-                 .setCancelable(false)
-                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                     public void onClick(DialogInterface dialog, int id) {
-                          dialog.cancel();
-                     }
-                 })
-                 .create();
+          content = getString(R.string.news);
+          break;
         default:
           // fall through
       }
-      return null;
+      return Util.createHtmlDialog(this, content);
     }
 
     @Override
@@ -445,6 +431,9 @@ public class Breviar extends Activity {
           return true;
         case R.id.alarms:
           startActivity(new Intent("sk.breviar.android.ALARMS"));
+          return true;
+        case R.id.menu_about:
+          showDialog(DIALOG_ABOUT);
           return true;
         default:
           return super.onOptionsItemSelected(item);

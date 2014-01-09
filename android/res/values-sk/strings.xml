@@ -37,14 +37,17 @@
     <string name="kompl_notify">Je čas na kompletórium!</string>
     <string name="read_notify">Je čas na posvätné čítanie!</string>
     <string name="h9_notify">Je čas na modlitbu predpoludním!</string>
-    <string name="h12_notify">Je čas na poludňajšiu modlitbu!</string>
-    <string name="h15_notify">Je čas na popoludňajšiu modlitbu!</string>
+    <string name="h12_notify">Je čas na modlitbu napoludnie!</string>
+    <string name="h15_notify">Je čas na modlitbu popoludní!</string>
 
+    <string name="menu_about">O...</string>
     <string name="about">O aplikácii</string>
 
+    <string name="btn_news">Čo je nové</string>
     <string name="news"><![CDATA[
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style type="text/css">
 body { background-color: #000000; color: #cccccc; }
 </style>
@@ -54,7 +57,7 @@ body { background-color: #000000; color: #cccccc; }
 <b>Nové vo verzii v1.9.5:</b>
 <ul>
 <li> Liturgické čítania: úpravy a doplnenia
-<li> Informácie o aplikácii
+<li> Informácie o aplikácii, rozšírenie menu
 <li> Nová ikona
 </ul>
 
@@ -75,4 +78,5 @@ body { background-color: #000000; color: #cccccc; }
 </ul>
 </body></html>
     ]]></string>
+
 </resources>

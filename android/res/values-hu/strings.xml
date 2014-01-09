@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Imaórák liturgiája</string>
+    <string name="app_name">Zsolozsma</string>
     <string name="back">Vissza</string>
     <string name="forward">Előre</string>
     <string name="today">Ma</string>
@@ -40,11 +40,68 @@
     <string name="h12_notify">Itt az idő a déli napközi imaórára!</string>
     <string name="h15_notify">Itt az idő a délután napközi imaórára!</string>
 
+    <string name="menu_about">Névjegy</string>
     <string name="about">Névjegy</string>
+    <string name="about_text"><![CDATA[
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style type="text/css">
+body { background-color: #000000; color: #cccccc; }
+</style>
+</head>
+<body>
+<h3>Zsolozsma alkalmazás</h3>
+<p>
+zsolozsma.katolikus.hu | Az Imaórák Liturgiája<br/>
+Copyright 1999-2014 © Juraj Vidéky
+<p>
+<b>SK: Slovenský preklad Liturgie hodín</b> ©&nbsp;Konferencia biskupov Slovenska (KBS).<br/>
+Texty sú publikované s vedomím KBS ako pracovná verzia.<br/>
+<p>
+<b>CZ: Český překlad Liturgie hodin</b> ©&nbsp;Arcibiskupství pražské. <br/>
+Podlicenční smlouva na použití textů ze dne 14. 5. 2012.<br/>
+<p>
+<b>HU: Magyar Imaórák Liturgiája</b> ©&nbsp;Magyar Katolikus Püspöki Konferencia (MKPK).<br/>
+A MKPK jóváhagyávásal.<br/>
 
+<p>
+A köszönet mindenkinek szól, főleg azoknak, akik bármiképpen hozzájárultak a Imaórák Liturgiája elektronikus szövegeinek elkészítésében, 
+a legnagyobb érdem a magyar verzió elkészítésében Elek Lacié. 
+Köszönök minden indítékot, hibákra való figyelmeztetést, észrevételt és javaslatot az újításokra.
+
+<p>
+Speciális köszönet: Andrea Fülöpová, Julianna Blahó.
+
+<h3>Credits</h3>
+<p>
+<b>HTML texts</b><br/>
+SK: Juraj Vidéky et al.<br/>
+CZ: Jan Franta, Juraj Vidéky.<br/>
+HU: Julianna Blahó, Izing Gabriel, László Elek SJ, Juraj Vidéky.<br/>
+<p>
+<b>Android app:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
+<b>iOS app:</b> 2013-2014 ©&nbsp;Ákos Gyimesi, Oto Komiňák.<br/>
+<p>
+<b>Git & Ruby support:</b> 2005-2011 ©&nbsp;Jozef Fülöp.<br/>
+<p>
+<b>breviar.sk logo:</b> 2013 ©&nbsp;Petr Kononov.<br/>
+<p>
+<b>Un-CGI 1.10:</b> 1994 ©&nbsp;Steven Grimm.<br/>
+<b>cgiutils 1.1:</b> 1995-1996 ©&nbsp;William E. Weinman.<br/>
+<b>Partial source code:</b> 1999 ©&nbsp;Miroslav Murgaš; 2007 © Marek Eliáš.<br/>
+<p>
+Copyright 1999-2014 © Juraj Vidéky. All rights reserved.<br/>
+<p>
+OAMDG 
+</body></html>
+    ]]></string>
+
+    <string name="btn_news">Újdonságok</string>
     <string name="news"><![CDATA[
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style type="text/css">
 body { background-color: #000000; color: #cccccc; }
 </style>

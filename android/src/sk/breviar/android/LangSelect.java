@@ -16,6 +16,7 @@ import sk.breviar.android.BreviarApp;
 
 public class LangSelect extends Activity {
     static final int DIALOG_ABOUT = 1;
+    static final int DIALOG_NEWS = 2;
 
     /** Called when the activity is first created. */
     @Override
@@ -72,33 +73,27 @@ public class LangSelect extends Activity {
           showDialog(DIALOG_ABOUT);
         }
       });
+
+      ((Button)findViewById(R.id.btn_news)).setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          showDialog(DIALOG_NEWS);
+        }
+      });
     }
 
     @Override
     protected Dialog onCreateDialog(int id) {
+      String content = null;
       switch(id) {
         case DIALOG_ABOUT:
-          WebView wv = new WebView(this);
-          try {
-            wv.loadData(android.util.Base64.encodeToString(
-                            getString(R.string.about_text).getBytes("UTF-8"),
-                            android.util.Base64.DEFAULT),
-                        "text/html; charset=utf-8", "base64");
-          } catch (java.io.UnsupportedEncodingException e) {
-            wv.loadData("unsupported encoding utf-8", "text/html", null);
-          }
-          return new AlertDialog.Builder(this)
-                 .setView(wv)
-                 .setCancelable(false)
-                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                     public void onClick(DialogInterface dialog, int id) {
-                          dialog.cancel();
-                     }
-                 })
-                 .create();
+          content = getString(R.string.about_text);
+          break;
+        case DIALOG_NEWS:
+          content = getString(R.string.news);
+          break;
         default:
           // fall through
       }
-      return null;
+      return Util.createHtmlDialog(this, content);
     }
 }

@@ -155,7 +155,7 @@ static BRSettings *_instance;
 }
 
 - (id)valueForKey:(NSString *)key {
-	return [self stringForOption:key];
+	return [[NSUserDefaults standardUserDefaults] valueForKey:key];
 }
 
 @end

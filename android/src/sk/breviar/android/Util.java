@@ -1,11 +1,17 @@
 package sk.breviar.android;
 
+import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.webkit.WebView;
 import android.widget.CheckBox;
 
 import java.util.GregorianCalendar;
@@ -133,4 +139,26 @@ public class Util {
     new EventInfo(R.id.vesp_check,  "alarm-vesp",  "mv",    R.string.vesp,  R.string.vesp_notify,  18, 00),
     new EventInfo(R.id.kompl_check, "alarm-kompl", "mk",    R.string.kompl, R.string.kompl_notify, 22, 00)
   };
+
+  static public Dialog createHtmlDialog(Activity act, String content) {
+    if (content == null) return null;
+      WebView wv = new WebView(act);
+      try {
+        wv.loadData(android.util.Base64.encodeToString(
+                        content.getBytes("UTF-8"),
+                        android.util.Base64.DEFAULT),
+                    "text/html; charset=utf-8", "base64");
+      } catch (java.io.UnsupportedEncodingException e) {
+        wv.loadData("unsupported encoding utf-8", "text/html", null);
+      }
+      return new AlertDialog.Builder(act)
+             .setView(wv)
+             .setCancelable(false)
+             .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                 public void onClick(DialogInterface dialog, int id) {
+                      dialog.cancel();
+                 }
+             })
+             .create();
+  }
 }

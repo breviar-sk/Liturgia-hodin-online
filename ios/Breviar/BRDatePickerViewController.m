@@ -10,6 +10,9 @@
 
 @interface BRDatePickerViewController ()
 
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *toolbarCenteringItem;
+
 @end
 
 @implementation BRDatePickerViewController
@@ -43,6 +46,14 @@
 {
 	[super viewWillAppear:animated];
 	self.datePicker.date = self.initialDate;
+
+    // Center the toolbar content in iPad popover (Yesterday/Today/Tomorrow)
+    if (self.toolbarCenteringItem) {
+        UIView *doneButtonView = self.toolbar.subviews.lastObject;
+        if (doneButtonView) {
+            self.toolbarCenteringItem.width = doneButtonView.frame.size.width;
+        }
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

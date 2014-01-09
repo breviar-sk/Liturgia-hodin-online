@@ -234,8 +234,15 @@ static NSString *liturgicalColorImages[] = {
 	NSString *segueId = segue.identifier;
 	
 	if ([segueId isEqualToString:@"ShowDatePicker"]) {
-		UINavigationController *navController = segue.destinationViewController;
-		BRDatePickerViewController *destController = [navController.viewControllers objectAtIndex:0];
+		BRDatePickerViewController *destController;
+        
+        if ([segue.destinationViewController isKindOfClass:[BRDatePickerViewController class]]) {
+            destController = segue.destinationViewController;
+        } else {
+            UINavigationController *navController = segue.destinationViewController;
+            destController = [navController.viewControllers objectAtIndex:0];
+        }
+        
 		destController.initialDate = self.date;
 		destController.datePickerDelegate = self;
 		

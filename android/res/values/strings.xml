@@ -24,7 +24,7 @@
     <string name="fullscreenOn">Fullscreen</string>
     <string name="fullscreenOff">No fullscreen</string>
 
-    <string name="inv">Invitatiorium</string>
+    <string name="inv">Invitatory</string>
     <string name="rch">Lauds</string>
     <string name="vesp">Vespers</string>
     <string name="kompl">Compline</string>
@@ -42,15 +42,21 @@
     <string name="h12_notify">Time for Sext!</string>
     <string name="h15_notify">Time for None!</string>
 
-    <string name="about">About</string>
+    <string name="menu_about">About...</string>
+    <string name="about">About app</string>
     <string name="about_text"><![CDATA[
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style type="text/css">
 body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<h3>Aplikácia Breviár</h3>
+<p>
+breviar.sk | Online Liturgia hodín<br/>
+Copyright 1999-2014 © Juraj Vidéky
 <p>
 <b>SK: Slovenský preklad Liturgie hodín</b> ©&nbsp;Konferencia biskupov Slovenska (KBS).<br/>
 Texty sú publikované s vedomím KBS ako pracovná verzia.<br/>
@@ -62,28 +68,27 @@ Podlicenční smlouva na použití textů ze dne 14. 5. 2012.<br/>
 A MKPK jóváhagyávásal.<br/>
 
 <p>
-Poďakovanie patrí všetkým, ktorí sa akýmkoľvek spôsobom pričinili o prevod
-textov Liturgie hodín do elektronickej podoby, najväčšiu zásluhu na maďarskej
-verzii má Laci Elek. Ďakujem za všetky podnety, upozornenia na chyby,
-pripomienky a námety na zlepšenia.
+Poďakovanie patrí všetkým, ktorí sa akýmkoľvek spôsobom pričinili o prevod textov Liturgie hodín do elektronickej podoby, 
+najväčšiu zásluhu na maďarskej verzii má Laci Elek. 
+Ďakujem za všetky podnety, upozornenia na chyby, pripomienky a námety na zlepšenia.
 
 <h3>Credits</h3>
 <p>
-<b>Un-CGI 1.10:</b> 1994 ©&nbsp;Steven Grimm.<br/>
-<b>cgiutils 1.1:</b> 1995-1996 ©&nbsp;William E. Weinman.<br/>
-<b>Partial source code:</b> 1999 ©&nbsp;Miroslav Murgaš, 2007 © Marek Eliáš.<br/>
+<b>HTML texts</b><br/>
+SK: Juraj Vidéky et al.<br/>
+CZ: Jan Franta, Juraj Vidéky.<br/>
+HU: Julianna Blahó, Izing Gabriel, László Elek SJ, Juraj Vidéky.<br/>
 <p>
-<b>Android version:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
-<b>iOS version:</b> 2013-2014 ©&nbsp;Ákos Gyimesi.<br/>
+<b>Android app:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
+<b>iOS app:</b> 2013-2014 ©&nbsp;Ákos Gyimesi, Oto Komiňák.<br/>
 <p>
-<b>Ruby support:</b> 2005-2010 ©&nbsp;Jozef Fülöp.<br/>
-<b>git support:</b> 2011 ©&nbsp;Jozef Fülöp.<br/>
+<b>Git & Ruby support:</b> 2005-2011 ©&nbsp;Jozef Fülöp.<br/>
 <p>
 <b>breviar.sk logo:</b> 2013 ©&nbsp;Petr Kononov.<br/>
 <p>
-<b>HTML texts (SK):</b> Juraj Vidéky et al.<br/>
-<b>HTML texts (CZ):</b> Jan Franta, Juraj Vidéky.<br/>
-<b>HTML texts (HU):</b> Julianna Blahó, László Elek SJ, Juraj Vidéky.<br/>
+<b>Un-CGI 1.10:</b> 1994 ©&nbsp;Steven Grimm.<br/>
+<b>cgiutils 1.1:</b> 1995-1996 ©&nbsp;William E. Weinman.<br/>
+<b>Partial source code:</b> 1999 ©&nbsp;Miroslav Murgaš; 2007 © Marek Eliáš.<br/>
 <p>
 Copyright 1999-2014 © Juraj Vidéky. All rights reserved.<br/>
 <p>
@@ -91,9 +96,11 @@ OAMDG
 </body></html>
     ]]></string>
 
+    <string name="btn_news">What\'s new</string>
     <string name="news"><![CDATA[
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style type="text/css">
 body { background-color: #000000; color: #cccccc; }
 </style>
@@ -103,7 +110,7 @@ body { background-color: #000000; color: #cccccc; }
 <b>News in v1.9.5:</b>
 <ul>
 <li> Liturgical readings (SK only)
-<li> About info
+<li> About info, new menu items
 <li> New icon
 </ul>
 
@@ -119,4 +126,5 @@ body { background-color: #000000; color: #cccccc; }
 </ul>
 </body></html>
     ]]></string>
+
 </resources>
