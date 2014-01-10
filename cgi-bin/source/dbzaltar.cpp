@@ -4566,6 +4566,11 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	short int modlitba, t, tyzden_pom, litobd_pom;
 	char _anchor_vlastne_slavenie[SMALL];
 
+	// 2014-01-09: uchovanie pÙvodn˝ch hodnÙt (obËas sa upravuj˙)
+	short int _pom_den = _global_den.den;
+	short int _pom_mesiac = _global_den.mesiac;
+	short int _pom_rok = _global_den.rok;
+
 	Log("-- liturgicke_obdobie(%d, %d, %d, %d: svaty: %d) -- zaËiatok\n", litobd, tyzden, den, tyzzal, poradie_svateho);
 
 	/* if((_global_den.smer > 5) || (_global_den.smer == 2)) */
@@ -5905,7 +5910,7 @@ label_24_DEC:
 				_narodenie_antifony;
 			}
 
-			if((_global_den.den == 1) && (_global_den.mesiac == 1)){ // Panny M·rie BohorodiËky | BOHORODICKY_PANNY_MARIE
+			if((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_JAN)){ // Panny M·rie BohorodiËky | BOHORODICKY_PANNY_MARIE | 01JAN
 				mystrcpy(_file, FILE_PM_BOHOROD, MAX_STR_AF_FILE);
 				mystrcpy(_file_pc, FILE_PM_BOHOROD, MAX_STR_AF_FILE);
 				mystrcpy(_anchor, ANCHOR_PM_BOHOROD, MAX_STR_AF_ANCHOR);
@@ -5986,7 +5991,9 @@ label_24_DEC:
 					_set_zalmy_mcd_doplnkova_psalmodia();
 				}
 			}// Panny Marie Bohorodicky
-			else if((_global_den.denvt == DEN_NEDELA) && (_global_den.mesiac - 1 == MES_JAN) && (_global_jazyk != JAZYK_HU)){ // druha nedela po narodeni pana - 2. NEDEºA PO NARODENÕ P¡NA
+
+			// druha nedela po narodeni pana - 2. NEDEºA PO NARODENÕ P¡NA | nie pre krajiny, kde sa Zjavenie P·na sl·vi v nedeæu medzi 2. a 8. janu·rom | BIT_OPT_0_ZJAVENIE_PANA_NEDELA
+			else if((_global_den.denvt == DEN_NEDELA) && (_global_den.mesiac - 1 == MES_JAN) && (!((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA))){
 				// prvÈ veöpery
 				modlitba = MODL_PRVE_VESPERY;
 				_vian1_hymnus;
@@ -6036,6 +6043,7 @@ label_24_DEC:
 				set_LOG_litobd_pc;
 
 			}// druha nedela po narodeni pana - 2. NEDEºA PO NARODENÕ P¡NA
+
 			else if(_global_den.denvr == _global_r._SVATEJ_RODINY.denvr){
 				// sviatok svatej rodiny
 				mystrcpy(_file, FILE_SV_RODINY, MAX_STR_AF_FILE);
@@ -6302,7 +6310,7 @@ label_24_DEC:
 			_vian2_kresponz;
 			_vian2_modlitba;
 
-			if(_global_den.denvr == zjavenie_pana(_global_den.rok)){ // zjavenie P·na; bolo tu kedysi: if((_global_den.den == 6) && (_global_den.mesiac == 1))
+			if(_global_den.denvr == zjavenie_pana(_global_den.rok)){ // zjavenie P·na; bolo tu kedysi: if((_global_den.den == 6) && (_global_den.mesiac - 1 == MES_JAN))
 
 				// 2011-10-26: odliönÈ nastavenie kotiev na prÌsluönom mieste pre krajiny, kde sa Zjavenie P·na sl·vi v nedeæu medzi 2. a 8. janu·rom | BIT_OPT_0_ZJAVENIE_PANA_NEDELA
 
@@ -6365,6 +6373,8 @@ label_24_DEC:
 				// vsedny den vianocneho obdobia II -- citania podla vian.obd.I 
 				// 2006-02-07: presne takto isto sa spr·vaj˙ aj kr·tke ËÌtania pre modlitbu cez deÚ (ako pre kr·tke ËÌtanie na rannÈ chv·ly)
 				file_name_litobd(OBD_VIANOCNE_I);
+
+				// t·to ˙prava _global_den.den sa uk·zala ako nebezpeËn· -- po zmene treba vr·tiù pÙvodn˙ hodnotu
 				if(_global_den.den == 8){
 					modlitba = MODL_RANNE_CHVALY;
 					_global_den.den = 31;
@@ -6409,6 +6419,10 @@ label_24_DEC:
 				}
 			}// obycajny den vian. obd. II -- priradenie citania
 
+			// 2014-01-09: sp‰ù pÙvodnÈ nastavenia (pre niektorÈ dni vianoËnÈho obdobia boli zmenenÈ); upozornil lamborghini2003@gmail.com
+			_global_den.den = _pom_den;
+			_global_den.mesiac = _pom_mesiac;
+			_global_den.rok = _pom_rok;
 		}
 		break;
 // switch(litobd), case OBD_VIANOCNE_II -- end ------------------------------------------------

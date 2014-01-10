@@ -4744,7 +4744,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 	short int BOHORODICKY_PANNY_MARIE = poradie(1, 1, rok); // panny marie bohorodicky
 	short int ZJAVENIE_PANA; // zjavenie Pána
 	char nedelne_pismenko = _global_r.p1;
-	if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA){ // if(_global_jazyk == JAZYK_HU){
+	if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA){
 		if(nedelne_pismenko == 'A'){
 			nedelne_pismenko = 'h'; // aby vyšla nede¾a Zjavenia Pána na 8.1.
 		}
@@ -7559,7 +7559,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 			datum.den = _global_den.den;
 			datum.mesiac = _global_den.mesiac;
 			_local_rok = _global_den.rok - 1;
-			if((_global_den.den == 29) && (_global_den.mesiac == 2)){
+			if((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_FEB)){ // 29FEB
 				if(!prestupny(_local_rok))
 					datum.den = 28;
 			}
@@ -7639,7 +7639,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 		_local_rok = _global_den.rok;
 		if(_global_den.den == 1){
 			zmena_mesiaca = ANO;
-			if(_global_den.mesiac == 1){ // prveho januara
+			if(_global_den.mesiac - 1 == MES_JAN){ // 01JAN
 				datum.mesiac = 12;
 				_local_rok = _global_den.rok - 1;
 			}
@@ -7709,7 +7709,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 		if(_global_den.den == pocet_dni[_global_den.mesiac - 1]){
 			zmena_mesiaca = ANO;
 			datum.den = 1;
-			if(_global_den.mesiac == 12){
+			if(_global_den.mesiac - 1 == MES_DEC){
 				datum.mesiac = 1;
 				_local_rok = _global_den.rok + 1;
 			}
@@ -7815,7 +7815,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 			datum.den = _global_den.den;
 			datum.mesiac = _global_den.mesiac;
 			_local_rok = _global_den.rok + 1;
-			if((_global_den.den == 29) && (_global_den.mesiac == 2)){
+			if((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_FEB)){ // 29FEB
 				if(!prestupny(_local_rok))
 					datum.den = 28;
 			}
@@ -7965,7 +7965,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 		_local_rok = _global_den.rok;
 		if(_global_den.den == 1){
 			zmena_mesiaca = ANO;
-			if(_global_den.mesiac == 1){ // prveho januara
+			if(_global_den.mesiac - 1 == MES_JAN){ // 01JAN
 				datum.mesiac = 12;
 				_local_rok = _global_den.rok - 1;
 			}
@@ -8034,7 +8034,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 		if(_global_den.den == pocet_dni[_global_den.mesiac - 1]){
 			zmena_mesiaca = ANO;
 			datum.den = 1;
-			if(_global_den.mesiac == 12){
+			if(_global_den.mesiac - 1 == MES_DEC){
 				datum.mesiac = 1;
 				_local_rok = _global_den.rok + 1;
 			}
@@ -8230,7 +8230,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 			datum.den = _global_den.den;
 			datum.mesiac = _global_den.mesiac;
 			_local_rok = _global_den.rok - 1;
-			if((_global_den.den == 29) && (_global_den.mesiac == 2)){
+			if((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_FEB)){ // 29FEB
 				if(!prestupny(_local_rok))
 					datum.den = 28;
 			}
@@ -8271,7 +8271,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 			datum.den = _global_den.den;
 			datum.mesiac = _global_den.mesiac;
 			_local_rok = _global_den.rok + 1;
-			if((_global_den.den == 29) && (_global_den.mesiac == 2)){
+			if((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_FEB)){ // 29FEB
 				if(!prestupny(_local_rok))
 					datum.den = 28;
 			}

@@ -1,5 +1,5 @@
 /* 2013-12-13 class .antiphon for antihpons */
-/* for SK first/second/third-ant is used; for HU/CZ ant-first/second/third is used */
+/* for HU/CZ first/second/third-ant is used; for SK ant-first/second/third is used */
 .antiphon.first-ant:before {
     color: #ff0000;
     content: '1. ant. ';

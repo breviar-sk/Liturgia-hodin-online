@@ -909,7 +909,7 @@ short int zjavenie_pana(short int rok){
 	short int ZJAVENIE_PANA; // zjavenie Pána
 	char nedelne_pismenko = _global_r.p1;
 
-	if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA){ // if(_global_jazyk == JAZYK_HU){
+	if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA){
 		if(nedelne_pismenko == 'A'){
 			nedelne_pismenko = 'h'; // aby vyšla nede¾a Zjavenia Pána na 8.1.
 		}
