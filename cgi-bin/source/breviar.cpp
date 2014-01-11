@@ -8732,6 +8732,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export("<option%s>%s\n", 
 					(_global_kalendar == KALENDAR_CZ_OPRAEM)? html_option_selected: STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_OPRAEM]);
+				Export("<option%s>%s\n", 
+					(_global_kalendar == KALENDAR_CZ_OFMCAP)? html_option_selected: STR_EMPTY,
+					nazov_kalendara_long[KALENDAR_CZ_OFMCAP]);
 			}// CZ
 			Export("</select>\n");
 

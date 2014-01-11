@@ -466,11 +466,11 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{"??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem"};
+{"??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap"};
 
 // filenames for special calendars / n·zov s˙bora pre kalend·re -- "pro" == propri·
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{"", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm"};
+{"", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm"};
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {"neurËen˝"
@@ -487,6 +487,7 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 ,"SK OP"
 ,"SK CM"
 ,"CZ OPRAEM"
+,"CZ OFMCAP"
 };
 
 // doplnenÈ 2010-10-11
@@ -507,6 +508,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 ,"pre Rehoæu kazateæov ó dominik·nov (OP)"
 ,"pre Misijn˙ spoloËnosù sv. Vincenta de Paul ó lazaristov (CM)"
 ,"s vlastnÌmi texty premonstr·tskÈho ¯·du (OPraem)" // "pro premonstr·ty (OPraem)"
+,"s vlastnÌmi kapucÌnsk˝mi texty (OFMCap)"
 };
 
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
@@ -2884,7 +2886,7 @@ const char *text_JAN_05_CSSR[POCET_JAZYKOV + 1] =
  };
 const char *text_JAN_05_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Didaka Jozefa z C·dizu, kÚaza, Ëlena 1. r·du",
- "",
+ "Bl. Diega Josefa z C·dizu, knÏze",
  "",
  "",
  "",
@@ -2947,7 +2949,7 @@ const char *text_JAN_KRST[POCET_JAZYKOV + 1] = // v nedeæu po 6. janu·ri | (v ne
  };
 const char *text_JAN_12_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Bernarda z Corleone, rehoænÌka, Ëlena 1. r·du",
- "",
+ "Sv. Bernarda z Corleone, ¯eholnÌka",
  "",
  "",
  "",
@@ -3028,7 +3030,7 @@ const char *text_JAN_15_SDB[POCET_JAZYKOV + 1] =
  };
 const char *text_JAN_16_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Berarda, kÚaza, a spoloËnÌkov, prv˝ch frantiök·nskych muËenÌkov",
- "",
+ "Sv. Berarda, knÏze, a druh˘, muËednÌk˘",
  "",
  "",
  "",
@@ -3271,7 +3273,7 @@ const char *text_JAN_30_SDB[POCET_JAZYKOV + 1] =
  };
 const char *text_JAN_30_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Hyacinty Mariscottiovej, panny, Ëlenky 3. r·du",
- "",
+ "Sv. Hyacinty Mariscotti, panny",
  "",
  "",
  "",
@@ -3427,7 +3429,7 @@ const char *text_FEB_06_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_06_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Petra Baptistu, kÚaza, a spoloËnÌkov, frantiök·nskych muËenÌkov",
- "",
+ "Sv. Petra K¯titele, Pavla Mikiho a druh˘, muËednÌk˘",
  "",
  "",
  "",
@@ -3454,7 +3456,7 @@ const char *text_FEB_07_SDB[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_07_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Kolety z Corbie, panny, Ëlenky 2. r·du",
- "",
+ "Sv. Kolety z Corbie, panny",
  "",
  "",
  "",
@@ -3482,6 +3484,15 @@ const char *text_FEB_08_2[POCET_JAZYKOV + 1] =
 const char *text_FEB_09_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. EuzÈbie Palominovej Yenes, panny",
  "",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_FEB_09_OFMCAP[POCET_JAZYKOV + 1] = 
+{"",
+ "Bl. Leopolda z Alpandeire, ¯eholnÌka",
  "",
  "",
  "",
@@ -3985,7 +3996,7 @@ const char *text_APR_21[POCET_JAZYKOV + 1] =
  };
 const char *text_APR_21_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Konr·da z Parzhamu, rehoænÌka, Ëlena 1. r·du",
- "",
+ "Sv. Konr·da z Parzhamu, ¯eholnÌka",
  "",
  "",
  "",
@@ -4048,7 +4059,7 @@ const char *text_APR_24_2[POCET_JAZYKOV + 1] =
  };
 const char *text_APR_24_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Fidela zo Sigmaringenu, kÚaza a muËenÌka, Ëlena 1. r·du",
- "",
+ "Sv. Fidela ze Sigmaringy, knÏze a muËednÌka",
  "",
  "",
  "",
@@ -4147,7 +4158,7 @@ const char *text_APR_30_CZ[POCET_JAZYKOV + 1] =
  };
 const char *text_APR_30_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Benedikta z Urbina, kÚaza, Ëlena 1. r·du",
- "",
+ "Bl. Benedikta z Urbina, knÏze",
  "",
  "",
  "",
