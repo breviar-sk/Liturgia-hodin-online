@@ -97,7 +97,14 @@ public class Breviar extends Activity {
     // Hack: parse opts to get night mode. This should be replaced by proper option parsing.
     boolean isNightmode() {
       String o2 = S.getOpts().replaceAll(".*&amp;o2=", "").replaceAll("&.*", "");
-      return (Integer.parseInt(o2) & 256) != 0;
+      boolean out;
+      try {
+        out = (Integer.parseInt(o2) & 256) != 0;
+      } catch (java.lang.NumberFormatException e) {
+        out = false;
+        Log.v("breviar", "Cannot parse nightmode. Opts = " + S.getOpts());
+      }
+      return out;
     }
 
     public boolean tryOpenBible(String url) {

@@ -6371,6 +6371,88 @@ label_24_DEC:
 				_zjv_kcitanie;
 
 			}// zjavenie pana
+
+			// 2014-01-13: pÙvodne bolo v cezroËnom obdobÌ; presunutÈ sem
+			else if(/* (tyzden == 1) && */(_global_den.denvr == _global_r._KRST_KRISTA_PANA.denvr)){
+				// krst krista pana -- 1. nedela obdobia `cez rok'
+				// niekedy mÙûe padn˙ù aj na pondelok (ak sa Zjavenie P·na sl·vi v nedeæu, ktor· padne na 7. alebo 8. janu·ra)
+				mystrcpy(_file, FILE_KRST_PANA, MAX_STR_AF_FILE);
+				mystrcpy(_anchor, ANCHOR_KRST_PANA, MAX_STR_AF_ANCHOR);
+				mystrcpy(_anchor_vlastne_slavenie, ANCHOR_KRST_PANA, MAX_STR_AF_ANCHOR);
+				Log("  ide o sviatok Krstu Krista P·na: _file = `%s', _anchor = %s...\n", _file, _anchor);
+
+				modlitba = MODL_PRVE_VESPERY;
+				_set_zalmy_sviatok_krstu(modlitba);
+				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
+				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+
+				// invitatÛrium
+				modlitba = MODL_INVITATORIUM;
+				_vlastne_slavenie_invitat(_anchor_vlastne_slavenie);
+
+				modlitba = MODL_RANNE_CHVALY;
+				_set_zalmy_sviatok_krstu(modlitba);
+				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
+				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+
+				modlitba = MODL_VESPERY;
+				_set_zalmy_sviatok_krstu(modlitba);
+				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
+				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+
+				modlitba = MODL_POSV_CITANIE;
+				_set_zalmy_sviatok_krstu(modlitba);
+				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
+				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				// hoci by mohli byù nastavenÈ ako 1. nedeæa cezroËnÈho obdobia vyööie, predsa pouûijeme samostatn˝ s˙bor a samostatne ich nastavÌme; 2006-02-07
+				_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+				// 2012-12-10: doplnenÈ -- predÂûenÈ sl·venie vigÌliÌ v r·mci posv‰tn˝ch ËÌtanÌ | modlitba = MODL_POSV_CITANIE;
+				sprintf(_anchor, "%s_%c%s", _anchor_vlastne_slavenie, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
+				_set_antifona_vig(modlitba, _file, _anchor);
+				set_LOG_litobd_pc;
+				_set_chvalospev_vig_vian(modlitba);
+				sprintf(_anchor, "%s%d_%c%s", nazov_OBD[OBD_CEZ_ROK], ((tyzden MOD 8) == 0)? 8: (tyzden MOD 8), pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); // ako 1. cezroËn· nedeæa
+				_set_evanjelium(modlitba, _file_pc, _anchor);
+				set_LOG_litobd_pc;
+
+				modlitba = MODL_PREDPOLUDNIM;
+				_set_zalmy_sviatok_krstu(modlitba);
+				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+				modlitba = MODL_NAPOLUDNIE;
+				_set_zalmy_sviatok_krstu(modlitba);
+				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+				modlitba = MODL_POPOLUDNI;
+				_set_zalmy_sviatok_krstu(modlitba);
+				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+			}// krst krista pana
+
 			else{
 				// vsedny den vianocneho obdobia II -- citania podla vian.obd.I 
 				// 2006-02-07: presne takto isto sa spr·vaj˙ aj kr·tke ËÌtania pre modlitbu cez deÚ (ako pre kr·tke ËÌtanie na rannÈ chv·ly)
@@ -6450,89 +6532,13 @@ label_24_DEC:
 				Log("premenenie pana, so break...\n");
 				break;
 			}
+			// tu bolo:
 			// 2011-11-07: Krst Krista P·na je zvyËajne nedeæa, ale mÙûe pripadn˙ù na pondelok 8. alebo 9. janu·ra (v krajin·ch, kde sa Zjavenie P·na sl·vi v nedeæu, ak t·to pripadne na 7. alebo 8. janu·ra)
-			if((tyzden == 1) && (_global_den.denvr == _global_r._KRST_KRISTA_PANA.denvr)){
-				// krst krista pana -- 1. nedela obdobia `cez rok'
-				// niekedy mÙûe padn˙ù aj na pondelok (ak sa Zjavenie P·na sl·vi v nedeæu, ktor· padne na 7. alebo 8. janu·ra)
-				mystrcpy(_file, FILE_KRST_PANA, MAX_STR_AF_FILE);
-				mystrcpy(_anchor, ANCHOR_KRST_PANA, MAX_STR_AF_ANCHOR);
-				mystrcpy(_anchor_vlastne_slavenie, ANCHOR_KRST_PANA, MAX_STR_AF_ANCHOR);
-				Log("  ide o sviatok Krstu Krista P·na: _file = `%s', _anchor = %s...\n", _file, _anchor);
+			// 2014-01-13: presunutÈ do vianoËnÈho obdobia (OBD_VIANOCNE_II)
 
-				modlitba = MODL_PRVE_VESPERY;
-				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
-				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
-
-				// invitatÛrium
-				modlitba = MODL_INVITATORIUM;
-				_vlastne_slavenie_invitat(_anchor_vlastne_slavenie);
-
-				modlitba = MODL_RANNE_CHVALY;
-				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
-				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
-
-				modlitba = MODL_VESPERY;
-				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
-				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
-
-				modlitba = MODL_POSV_CITANIE;
-				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
-				// hoci by mohli byù nastavenÈ ako 1. nedeæa cezroËnÈho obdobia vyööie, predsa pouûijeme samostatn˝ s˙bor a samostatne ich nastavÌme; 2006-02-07
-				_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				// 2012-12-10: doplnenÈ -- predÂûenÈ sl·venie vigÌliÌ v r·mci posv‰tn˝ch ËÌtanÌ | modlitba = MODL_POSV_CITANIE;
-				sprintf(_anchor, "%s_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG);
-				_set_antifona_vig(modlitba, _file_pc, _anchor);
-				set_LOG_litobd_pc;
-				_set_chvalospev_vig_ocr(modlitba);
-				sprintf(_anchor, "%s%d_%c%s", nazov_OBD[litobd], ((tyzden MOD 8) == 0)? 8: (tyzden MOD 8), pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
-				_set_evanjelium(modlitba, _file_pc, _anchor);
-				set_LOG_litobd_pc;
-
-				modlitba = MODL_PREDPOLUDNIM;
-				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				modlitba = MODL_NAPOLUDNIE;
-				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				modlitba = MODL_POPOLUDNI;
-				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-			}// krst krista pana
 			// 2011-11-07: Najsv. Kristovho tela a krvi je zvyËajne ötvrtok (11.-ty deÚ po ZDS), ale v krajin·ch, kde nie je prik·zan˝m sviatkom, sl·vi sa v nedeæu
 			// 2008-05-08: v breviar.cpp sa pouûÌva define TELAKRVI; 2011-11-07: upravenÈ
-			else if(_global_den.denvr == (_global_r._ZOSLANIE_DUCHA_SV.denvr + (((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_TELAKRVI_NEDELA) == BIT_OPT_0_TELAKRVI_NEDELA)? 14: 11))){
+			if(_global_den.denvr == (_global_r._ZOSLANIE_DUCHA_SV.denvr + (((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_TELAKRVI_NEDELA) == BIT_OPT_0_TELAKRVI_NEDELA)? 14: 11))){
 				// najsv. kristovho tela a krvi
 				mystrcpy(_file, FILE_TELA_A_KRVI, MAX_STR_AF_FILE);
 				mystrcpy(_anchor, ANCHOR_TELA_A_KRVI, MAX_STR_AF_ANCHOR);
@@ -13293,6 +13299,10 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// 2010-05-14: antifÛna na benediktus/magnifikat: vlastn· sa berie iba na spomienku v pÙstnom obdobÌ 
 							// 2011-02-18: tak je to vo zv‰zku II (pÙst+veæk· noc); avak v III je to norm·lne, vlastn· ant.; opravenÈ
 							// 2013-05-13: LA LH, vol. III, p. 1194-1195, nem· vlastnÈ antifÛny; ani SK
+							// 2014-01-13: pre SK OFM resp. CZ OFMCap je vlastn· antifÛna
+							if(((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP))){
+								_vlastna_cast_benediktus;
+							}
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -13303,6 +13313,10 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// 2010-05-14: antifÛna na benediktus/magnifikat: vlastn· sa berie iba na spomienku v pÙstnom obdobÌ 
 							// 2011-02-18: tak je to vo zv‰zku II (pÙst+veæk· noc); avak v III je to norm·lne, vlastn· ant.; opravenÈ
 							// 2013-05-13: LA LH, vol. III, p. 1194-1195, nem· vlastnÈ antifÛny; ani SK
+							// 2014-01-13: pre SK OFM resp. CZ OFMCap je vlastn· antifÛna
+							if(((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP))){
+								_vlastna_cast_magnifikat;
+							}
 							_vlastna_cast_modlitba;
 						}// nie je_privileg
 						break;
