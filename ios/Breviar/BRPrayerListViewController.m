@@ -171,6 +171,21 @@ static NSString *liturgicalColorImages[] = {
 	if ([sectionType isEqualToString:@"PrayerListCell"]) {
 		return 125;
 	}
+	else if ([sectionType isEqualToString:@"Date"]) {
+		BRCelebrationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CelebrationCell"];
+		cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
+		
+		BRCelebration *celebration = [self.day.celebrations objectAtIndex:indexPath.row];
+		cell.celebrationNameLabel.text = celebration.title;
+		cell.celebrationDescriptionLabel.text = celebration.subtitle;
+		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+
+		[cell.contentView setNeedsLayout];
+		[cell.contentView layoutIfNeeded];
+		
+		CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+		return height + 2;
+	}
 	else {
 		return 44;
 	}
@@ -257,7 +272,7 @@ static NSString *liturgicalColorImages[] = {
 		BRCelebration *celebration = [self.day.celebrations objectAtIndex:self.celebrationIndex];
 		destController.prayer = [celebration.prayers objectAtIndex:prayerType];
 	}
-	else if ([[segueId substringToIndex:11] isEqualToString:@"ShowPrayer."]) {
+	else if (segueId.length > 11 && [[segueId substringToIndex:11] isEqualToString:@"ShowPrayer."]) {
 		BRPrayerViewController *destController = segue.destinationViewController;
 		NSString *prayerQueryId = [segueId substringFromIndex:11];
 		BRPrayerType prayerType = [BRPrayer prayerTypeFromQueryId:prayerQueryId];

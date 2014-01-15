@@ -95,7 +95,7 @@
 	NSDictionary *option = [self optionForIndexPath:indexPath];
 	NSString *optionType = [option objectForKey:@"type"];
 	
-	if ([optionType isEqualToString:@"bool"] && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+	if ([optionType isEqualToString:@"bool"]) {
 		// Boolean option for iPhone
 		NSString *optId = [option objectForKey:@"id"];
 		NSString *optTitle = BREVIAR_STR(optId);

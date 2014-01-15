@@ -16,9 +16,8 @@
 
 @interface BRDatePickerViewController : UIViewController
 
-@property(strong) IBOutlet UIDatePicker *datePicker;
-@property(weak) IBOutlet NSObject<BRDatePickerDelegate> *datePickerDelegate;
-@property(strong) NSDate *initialDate;
+@property (weak, nonatomic) IBOutlet NSObject<BRDatePickerDelegate> *datePickerDelegate;
+@property (strong, nonatomic) NSDate *initialDate;
 
 - (IBAction)donePressed:(id)sender;
 - (IBAction)todayPressed:(id)sender;

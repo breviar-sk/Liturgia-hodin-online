@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		544E694C187D285E0070DEC0 /* BRUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 544E694B187D285E0070DEC0 /* BRUI.m */; };
+		544E6951187D2A850070DEC0 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 544E6950187D2A850070DEC0 /* UIColor+HexColor.m */; };
 		703200E8180F2E9000675F09 /* breviar-ios.css in Resources */ = {isa = PBXBuildFile; fileRef = 703200E7180F2E9000675F09 /* breviar-ios.css */; };
 		7034597D15FCE84D000A1711 /* BRFontHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7034597C15FCE84D000A1711 /* BRFontHelper.m */; };
 		7042905716408A5E00663A7D /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7042905316408A1100663A7D /* libxml2.dylib */; };
@@ -92,6 +94,8 @@
 		70CAFA9C187CBC1C000410AC /* bullet_violet_or_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CAFA93187CBC1C000410AC /* bullet_violet_or_white@2x.png */; };
 		70CAFA9D187CBC1C000410AC /* bullet_violet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CAFA94187CBC1C000410AC /* bullet_violet@2x.png */; };
 		70CAFA9E187CBC1C000410AC /* bullet_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CAFA95187CBC1C000410AC /* bullet_white@2x.png */; };
+		70CAFAA418849462000410AC /* BRWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CAFAA318849462000410AC /* BRWebViewController.m */; };
+		70CAFAA9188499F3000410AC /* BRAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CAFAA8188499F3000410AC /* BRAboutViewController.m */; };
 		70D7A519183AD44E0011BCE8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D7A517183AD44E0011BCE8 /* back.png */; };
 		70D7A51A183AD44E0011BCE8 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D7A518183AD44E0011BCE8 /* back@2x.png */; };
 		70D7A51D183AD4CA0011BCE8 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D7A51B183AD4C90011BCE8 /* forward.png */; };
@@ -128,6 +132,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		544E694A187D285E0070DEC0 /* BRUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRUI.h; sourceTree = "<group>"; };
+		544E694B187D285E0070DEC0 /* BRUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRUI.m; sourceTree = "<group>"; };
+		544E694F187D2A850070DEC0 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
+		544E6950187D2A850070DEC0 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		703200E7180F2E9000675F09 /* breviar-ios.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "breviar-ios.css"; sourceTree = "<group>"; };
 		7034597B15FCE84D000A1711 /* BRFontHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRFontHelper.h; sourceTree = "<group>"; };
 		7034597C15FCE84D000A1711 /* BRFontHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRFontHelper.m; sourceTree = "<group>"; };
@@ -196,7 +204,6 @@
 		707A64A4171A1F650065F98E /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Breviar.strings; sourceTree = "<group>"; };
 		707A64A9171A1FEC0065F98E /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		707A64AB171A1FEC0065F98E /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Breviar.strings; sourceTree = "<group>"; };
-		707A64AF171A205D0065F98E /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/MainStoryboard_iPhone.strings; sourceTree = "<group>"; };
 		707A64B1171A20600065F98E /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/MainStoryboard_iPhone.strings; sourceTree = "<group>"; };
 		707A64B2171AA5BF0065F98E /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		707A64B4171AD44C0065F98E /* BRUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRUtil.h; sourceTree = "<group>"; };
@@ -252,6 +259,11 @@
 		70CAFA93187CBC1C000410AC /* bullet_violet_or_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bullet_violet_or_white@2x.png"; path = "Resources/bullet_violet_or_white@2x.png"; sourceTree = "<group>"; };
 		70CAFA94187CBC1C000410AC /* bullet_violet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bullet_violet@2x.png"; path = "Resources/bullet_violet@2x.png"; sourceTree = "<group>"; };
 		70CAFA95187CBC1C000410AC /* bullet_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bullet_white@2x.png"; path = "Resources/bullet_white@2x.png"; sourceTree = "<group>"; };
+		70CAFAA218849462000410AC /* BRWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRWebViewController.h; sourceTree = "<group>"; };
+		70CAFAA318849462000410AC /* BRWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRWebViewController.m; sourceTree = "<group>"; };
+		70CAFAA7188499F3000410AC /* BRAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRAboutViewController.h; sourceTree = "<group>"; };
+		70CAFAA8188499F3000410AC /* BRAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRAboutViewController.m; sourceTree = "<group>"; };
+		70CAFAAB1884A74C000410AC /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/MainStoryboard_iPhone.strings; sourceTree = "<group>"; };
 		70D7A517183AD44E0011BCE8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = Resources/back.png; sourceTree = "<group>"; };
 		70D7A518183AD44E0011BCE8 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "Resources/back@2x.png"; sourceTree = "<group>"; };
 		70D7A51B183AD4C90011BCE8 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forward.png; path = Resources/forward.png; sourceTree = "<group>"; };
@@ -413,6 +425,10 @@
 				7054369315FBF1D0005854DC /* BRFontPickerViewController.m */,
 				707A64B5171AD8020065F98E /* BRStringOptionPickerViewController.h */,
 				707A64B6171AD8020065F98E /* BRStringOptionPickerViewController.m */,
+				70CAFAA218849462000410AC /* BRWebViewController.h */,
+				70CAFAA318849462000410AC /* BRWebViewController.m */,
+				70CAFAA7188499F3000410AC /* BRAboutViewController.h */,
+				70CAFAA8188499F3000410AC /* BRAboutViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -433,6 +449,10 @@
 				70C962D416B45C3E00A399B9 /* BRFontSettingsCell.h */,
 				70C962D516B45C3E00A399B9 /* BRFontSettingsCell.m */,
 				707A64B4171AD44C0065F98E /* BRUtil.h */,
+				544E694A187D285E0070DEC0 /* BRUI.h */,
+				544E694B187D285E0070DEC0 /* BRUI.m */,
+				544E694F187D2A850070DEC0 /* UIColor+HexColor.h */,
+				544E6950187D2A850070DEC0 /* UIColor+HexColor.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -743,6 +763,7 @@
 				7061B0A515FA8E1A00A83E0A /* BRViewController.m in Sources */,
 				7061B0B115FAA18C00A83E0A /* BRPrayerListViewController.m in Sources */,
 				7061B0B515FAA34100A83E0A /* BRPrayerViewController.m in Sources */,
+				70CAFAA418849462000410AC /* BRWebViewController.m in Sources */,
 				7061B0B815FAA3C500A83E0A /* BRPrayer.m in Sources */,
 				7061B0D315FB929300A83E0A /* breviar.cpp in Sources */,
 				7061B0D415FB929300A83E0A /* cgiutils.cpp in Sources */,
@@ -755,8 +776,11 @@
 				7061B0DB15FB929300A83E0A /* mygetopt.cpp in Sources */,
 				7061B0DC15FB929300A83E0A /* myhpage.cpp in Sources */,
 				7061B0DD15FB929300A83E0A /* mylog.cpp in Sources */,
+				70CAFAA9188499F3000410AC /* BRAboutViewController.m in Sources */,
+				544E6951187D2A850070DEC0 /* UIColor+HexColor.m in Sources */,
 				7061B0E015FB932000A83E0A /* mystring.cpp in Sources */,
 				7054368D15FBDD69005854DC /* BRDatePickerViewController.m in Sources */,
+				544E694C187D285E0070DEC0 /* BRUI.m in Sources */,
 				7054369115FBF1B1005854DC /* BRSettingsViewController.m in Sources */,
 				7054369415FBF1D1005854DC /* BRFontPickerViewController.m in Sources */,
 				70AAAA4E15FBFBE4008D314D /* BRSettings.m in Sources */,
@@ -804,9 +828,9 @@
 			children = (
 				707A6495171A1B9E0065F98E /* Base */,
 				707A649F171A1E850065F98E /* en */,
-				707A64AF171A205D0065F98E /* hu */,
 				707A64B1171A20600065F98E /* sk */,
 				707A64C6171B12AC0065F98E /* cs */,
+				70CAFAAB1884A74C000410AC /* hu */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";

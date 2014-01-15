@@ -48,13 +48,11 @@ static BRFontHelper *_instance;
 						  @"Verdana",          @"Verdana",
 						  nil];
 		
-		self.availableSizes = [NSArray arrayWithObjects:
-							   [NSNumber numberWithInt:14],
-							   [NSNumber numberWithInt:16],
-							   [NSNumber numberWithInt:18],
-							   [NSNumber numberWithInt:20],
-							   [NSNumber numberWithInt:22],
-							   nil];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            self.availableSizes = @[ @(14), @(16), @(18), @(20), @(22), @(24), @(26), @(28), @(30), @(32) ];
+        } else {
+            self.availableSizes = @[ @(14), @(16), @(18), @(20), @(22) ];
+        }
 	}
 	return self;
 }
