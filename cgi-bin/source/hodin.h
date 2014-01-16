@@ -4314,7 +4314,7 @@ const char *text_MAJ_08_2_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_08_3_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Jeremiáša z Valašska, reho¾níka, èlena 1. rádu",
- "",
+ "Bl. Jeremiáše z Valachie, øeholníka",
  "",
  "",
  "",
@@ -4350,7 +4350,7 @@ const char *text_MAJ_11_SK[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_11_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Ignáca z Laconie, reho¾níka, èlena 1. rádu",
- "",
+ "Sv. Ignáce z Laconi, øeholníka",
  "",
  "",
  "",
@@ -4395,7 +4395,7 @@ const char *text_MAJ_12_CZ[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_12_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Leopolda Mandiæa, kòaza, èlena 1. rádu",
- "",
+ "Sv. Leopolda Mandièe, knìze",
  "",
  "",
  "",
@@ -4503,7 +4503,7 @@ const char *text_MAJ_16_SDB[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_16_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Margity z Cortony, kajúcnice, èlenky 3. rádu",
- "",
+ "Sv. Markéty z Cortony, kajícnice 3. øádu", // CZ OFM: slávi sa 15MAJ
  "",
  "",
  "",
@@ -4512,7 +4512,7 @@ const char *text_MAJ_16_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_17_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Paschala Baylona, reho¾níka, èlena 1. rádu",
- "",
+ "Sv. Paskala Baylóna, øeholníka",
  "",
  "",
  "",
@@ -4548,7 +4548,7 @@ const char *text_MAJ_18_SDB[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_18_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Felixa z Cantalicie, reho¾níka, èlena 1. rádu",
- "",
+ "Sv. Felixe z Cantalice, øeholníka",
  "",
  "",
  "",
@@ -4557,7 +4557,7 @@ const char *text_MAJ_18_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_19_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Krišpína z Viterba, reho¾níka, èlena 1. rádu",
- "",
+ "Sv. Kryšpína z Viterba, øeholníka",
  "",
  "",
  "",
@@ -4593,7 +4593,7 @@ const char *text_MAJ_20[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_20_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Bernardína Sienského, kòaza, èlena 1. rádu",
- "",
+ "Sv. Bernardina ze Sieny, knìze",
  "",
  "",
  "",
@@ -4674,7 +4674,7 @@ const char *text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_24_OFM[POCET_JAZYKOV + 1] = 
 {"Výroèie posviacky Baziliky sv. Františka v Assisi",
- "",
+ "Posvìcení baziliky sv. Františka v Assisi",
  "",
  "",
  "",
@@ -4982,7 +4982,7 @@ const char *text_JUN_02[POCET_JAZYKOV + 1] =
  };
 const char *text_JUN_02_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Felixa z Nikózie, reho¾níka, èlena 1. rádu",
- "",
+ "Sv. Felixe z Nicosie, øeholníka",
  "",
  "",
  "",
@@ -5063,7 +5063,7 @@ const char *text_JUN_08_HU[POCET_JAZYKOV + 1] =
  };
 const char *text_JUN_08_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Mikuláša z Gesturi, reho¾níka, èlena 1. rádu",
- "",
+ "Bl. Mikuláše z Gesturi, øeholníka",
  "",
  "",
  "",
@@ -5135,7 +5135,7 @@ const char *text_JUN_12_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_JUN_12_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Jolandy Uhorskej, reho¾níèky, èlenky 2. rádu",
- "",
+ "Bl. Jolanty Uherské, øeholnice",
  "",
  "",
  "",
@@ -5144,7 +5144,7 @@ const char *text_JUN_12_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_JUN_12_2_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Floridy Cevoliovej, panny, èlenky 2. rádu",
- "",
+ "Bl. Floridy Cevoli, panny",
  "",
  "",
  "",
@@ -5162,7 +5162,7 @@ const char *text_JUN_12_3_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_JUN_13_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Antona Paduánskeho, kòaza a uèite¾a Cirkvi, èlena 1. rádu",
- "",
+ "Sv. Antonína z Padovy, knìze a uèitele církve",
  "",
  "",
  "",
@@ -5225,7 +5225,7 @@ const char *text_JUN_16_1_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_JUN_16_2_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Aniceta Koplina, kòaza, a spoloèníkov, muèeníkov, èlenov 1. rádu",
- "",
+ "Bl. Aniceta Kopliñského a druhù, muèedníkù",
  "",
  "",
  "",
@@ -5369,7 +5369,7 @@ const char *text_JUN_24[POCET_JAZYKOV + 1] =
  };
 const char *text_JUN_26_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Andreja Hyacinta Longina, biskupa, èlena 1. rádu",
- "",
+ "Bl. Ondøeje Hyacinta Longhina, biskupa",
  "",
  "",
  "",
