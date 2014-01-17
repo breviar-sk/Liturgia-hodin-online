@@ -28,6 +28,8 @@
 "of0fn"		= "Všude použít obyčejné písmo (ne tučné)";
 "of2tw"		= "Zalomit dlouhé řádky poetických textů jako v tištěném vydání";
 
+"prayersAsCells" = "Velká tlačítka modliteb";
+
 // Prayer parts settings
 "of1c"		= "Evangelijní kantika";
 "of1s"		= "Sláva Otci";
@@ -103,3 +105,6 @@
 "of2id"			= "Zobrazit datum v ISO 8601 formátu";
 "of2btnu"		= "Tlačítka pro modlitby zobrazit úsporně";
 "of2nav"		= "Zobrazit navigaci v textech modliteb";
+
+// Other
+"today"         = "Dnes";

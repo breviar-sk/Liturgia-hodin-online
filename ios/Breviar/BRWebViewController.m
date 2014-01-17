@@ -27,7 +27,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Use shared web view. Hide it now, and show it using animation once the content is loaded
+    self.webView.frame = self.view.bounds;
+    self.webView.alpha = 0;
+    self.webView.delegate = self;
     self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+    
+    [self.webView removeFromSuperview];
+    [self.view addSubview:self.webView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -44,7 +52,10 @@
 		[extraStylesheets appendString:@"<link rel='stylesheet' type='text/css' href='html/breviar-invert-colors.css'>"];
         self.view.backgroundColor = [UIColor colorWithHex:0x333333];
         self.webView.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-	}
+    } else {
+        self.view.backgroundColor = [UIColor colorWithHex:0xFBFCD7];
+        self.webView.scrollView.indicatorStyle = UIScrollViewIndicatorStyleDefault;
+    }
 	
 	NSString *body =
 	[NSString stringWithFormat:
@@ -64,6 +75,12 @@
 	
 	NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
 	[self.webView loadHTMLString:body baseURL:baseURL];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+        self.webView.alpha = 1;
+    } completion:nil];
 }
 
 @end

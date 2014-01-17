@@ -430,6 +430,7 @@ extern short int _global_opt_export_date_format;
 #define PRVA_ADVENTNA_NEDELA  _global_r._PRVA_ADVENTNA_NEDELA.denvr     // prvá adventná nede¾a
 #define ZOSLANIE_DUCHA_SV  _global_r._ZOSLANIE_DUCHA_SV.denvr           // zoslanie Ducha Svätého
 #define SV_RODINY  _global_r._SVATEJ_RODINY.denvr                       // sviatok svätej rodiny
+#define KRISTA_KNAZA (ZOSLANIE_DUCHA_SV + 4)                            // štvrtok po Zoslaní Ducha Svätého (ZOSLANIE_DUCHA_SV): sviatok Nášho Pána Ježiša Krista, najvyššieho a veèného kòaza (http://www.tkkbs.sk/view.php?cisloclanku=20140115028)
 #define TROJICA (ZOSLANIE_DUCHA_SV + 7)                                 // prvá nede¾a po ZOSLANIE_DUCHA_SV: najsv. Trojice
 // #define TELAKRVI (ZOSLANIE_DUCHA_SV + 11)                               // štvrtok po Trojici: Kristovho tela a krvi (alebo: v krajinách, kde sa presúva na nede¾u)
 #define SRDCA (ZOSLANIE_DUCHA_SV + 19)                                  // piatok po druhej nedeli po ZOSLANIE_DUCHA_SV: najsv. srdca Ježišovho

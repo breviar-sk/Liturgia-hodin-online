@@ -21,10 +21,12 @@ static CGFloat componentSizes[] = {
 
 @interface BRFontPickerViewController ()
 
+@property(strong) IBOutlet UIWebView *webView;
+@property(strong) IBOutlet UIPickerView *pickerView;
+
 @end
 
 @implementation BRFontPickerViewController
-@synthesize webView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

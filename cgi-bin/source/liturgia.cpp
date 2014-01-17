@@ -1401,7 +1401,7 @@ void _dm_krst_krista_pana(short int rok){
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
 	_global_result.litobd  = OBD_VIANOCNE_II; // 2014-01-13: pôvodne tu bolo OBD_CEZ_ROK; avšak kvôli hymnom MCD (tie sú z vianoèného obdobia) je to ako vianoèné obdobie; aj to je vo zväzku I LH
 	_global_result.tyzden  = 1; // 1. nede¾a "cez rok" (resp. v krajinách, kde sa Zjavenie Pána slávi v nede¾u, prièom táto pripadne na 7. alebo 8. januára, je to pondelok)
-	_global_result.smer    = 5;
+	_global_result.smer    = 5; // sviatky Pána uvedené vo všeobecnom kalendári
 	mystrcpy(_global_result.meno, text_JAN_KRST[_global_jazyk], MENO_SVIATKU); // 2003-08-11 zmenena na mystrcpy
 	_global_result.spolcast= _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	_global_result.prik    = NIE_JE_PRIKAZANY_SVIATOK;

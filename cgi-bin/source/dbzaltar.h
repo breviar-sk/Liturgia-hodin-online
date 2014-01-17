@@ -109,6 +109,9 @@ short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 #define ANCHOR_TELA_A_KRVI "TK"
 #define FILE_TELA_A_KRVI "tk.htm" // kotvy v òom sú pod¾a ANCHOR_TELA_A_KRVI
 
+#define ANCHOR_KNAZA "KNAZA"
+#define FILE_KNAZA "knaza.htm" // kotvy v òom sú pod¾a ANCHOR_KNAZA
+
 #define ANCHOR_SRDCA "SRDCA"
 #define FILE_SRDCA "srdca.htm" // kotvy v òom sú pod¾a ANCHOR_SRDCA
 

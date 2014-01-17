@@ -11,6 +11,9 @@
 
 @interface BRStringOptionPickerViewController ()
 
+@property(weak) IBOutlet UITableView *tableView;
+@property(weak) IBOutlet UINavigationBar *navigationBar;
+
 @end
 
 @implementation BRStringOptionPickerViewController

@@ -92,6 +92,16 @@
 					<key>visibility</key>
 					<string>FALSEPREDICATE</string>
 				</dict>
+				<dict>
+					<key>id</key>
+					<string>prayersAsCells</string>
+					<key>type</key>
+					<string>bool</string>
+					<key>default</key>
+					<false/>
+					<key>visibility</key>
+					<string>iPhoneOnly</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>

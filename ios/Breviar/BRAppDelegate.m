@@ -23,6 +23,11 @@
 	// Initialize data source
 	BRDataSource *dataSource = [BRDataSource instance];
 	dataSource.language = @"hu"; // TODO: get from build flags
+    
+    // Initialize WebKit
+    UIWebView *webView = [[UIWebView alloc] init];
+    [webView loadHTMLString:@"(empty)" baseURL:nil];
+    
     return YES;
 }
 							

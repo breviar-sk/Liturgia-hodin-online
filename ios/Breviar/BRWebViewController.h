@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BRWebViewController : UIViewController
+@interface BRWebViewController : UIViewController <UIWebViewDelegate>
 @property(strong) IBOutlet UIWebView *webView;
 @property(strong) NSString *htmlContent;
 @end

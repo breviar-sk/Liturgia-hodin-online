@@ -13,8 +13,4 @@
 
 @interface BRSettingsViewController : UITableViewController <BRFontPickerDelegate, BRStringOptionPickerDelegate, UITableViewDelegate, UITableViewDataSource, BRBoolSettingsCellDelegate>
 
-@property(strong) NSString *currentOptionId;
-@property(strong) NSDictionary *visibleOptionIndexPaths;
-@property(strong) NSArray *visibleOptionsPerSection;
-
 @end

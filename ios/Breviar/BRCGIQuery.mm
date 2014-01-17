@@ -44,10 +44,13 @@
 		queryString.UTF8String,
 		includeString.UTF8String
 	};
-	breviar_main(argc, (char **)argv);
 	
-	NSString *prayerBody = [NSString stringWithCString:getExportedString() encoding:NSWindowsCP1250StringEncoding];
-	[result appendString:prayerBody];
+	@synchronized ([BRCGIQuery class]) {
+		breviar_main(argc, (char **)argv);
+
+		NSString *prayerBody = [NSString stringWithCString:getExportedString() encoding:NSWindowsCP1250StringEncoding];
+		[result appendString:prayerBody];
+	}
 	return result;
 }
 

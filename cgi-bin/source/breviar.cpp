@@ -5182,6 +5182,14 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						_global_den.typslav = SLAV_SLAVNOST;
 						mystrcpy(_global_den.meno, text_NAJSV_SRDCA_JEZISOVHO[_global_jazyk], MENO_SVIATKU);
 					}
+					else if(_global_den.denvr == KRISTA_KNAZA){
+						// KRISTA_KNAZA (ZOSLANIE_DUCHA_SV + 4)
+						_global_den.farba = LIT_FARBA_BIELA;
+						_rozbor_dna_LOG("/* Krista kòaza */\n");
+						_global_den.smer = 5; // sviatky Pána uvedené vo všeobecnom kalendári
+						_global_den.typslav = SLAV_SVIATOK;
+						mystrcpy(_global_den.meno, text_NPJK_NAJ_KNAZA[_global_jazyk], MENO_SVIATKU);
+					}
 					else if(_global_den.denvr == SRDPM){
 						// srdca prebl. panny marie == ZOSLANIE_DUCHA_SV + 20
 						_global_den.farba = LIT_FARBA_BIELA;

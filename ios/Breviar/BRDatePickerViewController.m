@@ -20,10 +20,6 @@
 
 @implementation BRDatePickerViewController
 
-@synthesize datePicker;
-@synthesize datePickerDelegate;
-@synthesize initialDate;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -55,6 +51,7 @@
         
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            self.datePicker.frame = self.datePickerPlaceholder.bounds;
             [self.datePickerPlaceholder addSubview:self.datePicker];
         }
         

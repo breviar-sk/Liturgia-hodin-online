@@ -28,6 +28,8 @@
 "of0fn"		= "Všade použiť normálne písmo (nie tučné)";
 "of2tw"		= "Zalamovať dlhé riadky ako v tlačenom vydaní (poetické časti)";
 
+"prayersAsCells" = "Veľké tlačidlá modlitieb";
+
 // Prayer parts settings
 "of1c"		= "Evanjeliové chválospevy";
 "of1s"		= "Sláva Otcu";
@@ -102,3 +104,6 @@
 "of2id"			= "Zobraziť dátum v ISO 8601 formáte";
 "of2btnu"		= "Tlačidlá pre modlitby zobraziť úsporne";
 "of2nav"		= "Zobraziť navigáciu v textoch modlitieb";
+
+// Other
+"today"         = "Dnes";

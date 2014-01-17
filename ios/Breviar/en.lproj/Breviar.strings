@@ -28,6 +28,8 @@
 "of0fn"		= "Force normal font (no bold)";
 "of2tw"		= "Verse layout as in printed edition";
 
+"prayersAsCells" = "Large prayer buttons";
+
 // Prayer parts settings
 "of1c"		= "Gospel canticles";
 "of1s"		= "Glory to the Father";
@@ -102,3 +104,6 @@
 "of2id"			= "Date format in ISO 8601";
 "of2btnu"		= "Tight prayer buttons";
 "of2nav"		= "Display navigation buttons in prayers";
+
+// Other
+"today"         = "Today";

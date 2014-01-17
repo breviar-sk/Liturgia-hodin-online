@@ -4860,6 +4860,15 @@ const char *text_HU_VELKONOCNY_PONDELOK = "Húsvéthétfõ"; // pre HU špeciálny náz
 
 const char *text_HU_VELKY_TYZDEN_PREFIX = "Nagy"; // pre HU špeciálne názvy dní ve¾kného týždòa (pondelok až streda)
 
+const char *text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] = 
+{"Nášho Pána Ježiša Krista,<br/>najvyššieho a veèného kòaza",
+ "Našeho Pána Ježíše Krista,<br/>nejvyššího a vìèného knìze",
+ "",
+ "",
+ "",
+ "Našeho Pána Ježíše Krista,<br/>nejvyššího a vìèného knìze",
+ "hu_XXX",
+ };
 const char *text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1] = 
 {"Najsvätejšej Trojice",
  "Nejsvìtìjší Trojice",
@@ -5624,7 +5633,7 @@ const char *text_JUL_09_OPRAEM[POCET_JAZYKOV + 1] =
  };
 const char *text_JUL_10_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Veroniky Giulianiovej, panny, èlenky 2. rádu",
- "",
+ "Sv. Veroniky Giuliani, panny",
  "",
  "",
  "",
@@ -5669,7 +5678,7 @@ const char *text_JUL_14[POCET_JAZYKOV + 1] =
  };
 const char *text_JUL_14_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Františka Solanského, kòaza, èlena 1. rádu",
- "",
+ "Sv. Františka Solana, knìze",
  "",
  "",
  "",
@@ -5705,7 +5714,7 @@ const char *text_JUL_15[POCET_JAZYKOV + 1] =
  };
 const char *text_JUL_15_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Bonaventúru z Bagnoregia, biskupa a uèite¾a Cirkvi, èlena 1. rádu",
- "",
+ "Sv. Bonaventury z Bagnoregia, biskupa a uèitele církve",
  "",
  "",
  "",
@@ -5813,7 +5822,7 @@ const char *text_JUL_21[POCET_JAZYKOV + 1] =
  };
 const char *text_JUL_21_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Vavrinca z Brindisi, kòaza a uèite¾a Cirkvi, èlena 1. rádu",
- "Sv. Vavøince z Brindisi, knìze a uèitele církve, èlena 1. øádu",
+ "Sv. Vavøince z Brindisi, knìze a uèitele církve",
  "",
  "",
  "",
@@ -5921,7 +5930,7 @@ const char *text_JUL_27_OP[POCET_JAZYKOV + 1] = // SK OP: 28JUL
  };
 const char *text_JUL_27_OFM[POCET_JAZYKOV + 1] =
 {"Bl. Márie Magdalény Martinengovej, panny, èlenky 2. rádu",
- "",
+ "Bl. Marie Magdalény Martinengo, panny", // CZ OFMCap: 28JUL
  "",
  "",
  "",

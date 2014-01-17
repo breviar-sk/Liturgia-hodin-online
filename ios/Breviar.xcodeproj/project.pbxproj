@@ -173,30 +173,30 @@
 		7061B0B415FAA34100A83E0A /* BRPrayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRPrayerViewController.m; sourceTree = "<group>"; };
 		7061B0B615FAA3C500A83E0A /* BRPrayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRPrayer.h; sourceTree = "<group>"; };
 		7061B0B715FAA3C500A83E0A /* BRPrayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRPrayer.m; sourceTree = "<group>"; };
-		7061B0BD15FB929300A83E0A /* breviar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = breviar.cpp; path = "../../cgi-bin/source/breviar.cpp"; sourceTree = "<group>"; };
-		7061B0BE15FB929300A83E0A /* breviar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = breviar.h; path = "../../cgi-bin/source/breviar.h"; sourceTree = "<group>"; };
-		7061B0BF15FB929300A83E0A /* cgiutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cgiutils.cpp; path = "../../cgi-bin/source/cgiutils.cpp"; sourceTree = "<group>"; };
-		7061B0C015FB929300A83E0A /* cgiutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cgiutils.h; path = "../../cgi-bin/source/cgiutils.h"; sourceTree = "<group>"; };
-		7061B0C115FB929300A83E0A /* citania.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = citania.cpp; path = "../../cgi-bin/source/citania.cpp"; sourceTree = "<group>"; };
-		7061B0C215FB929300A83E0A /* citania.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = citania.h; path = "../../cgi-bin/source/citania.h"; sourceTree = "<group>"; };
-		7061B0C315FB929300A83E0A /* dbzaltar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dbzaltar.cpp; path = "../../cgi-bin/source/dbzaltar.cpp"; sourceTree = "<group>"; };
-		7061B0C415FB929300A83E0A /* dbzaltar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dbzaltar.h; path = "../../cgi-bin/source/dbzaltar.h"; sourceTree = "<group>"; };
-		7061B0C515FB929300A83E0A /* liturgia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = liturgia.cpp; path = "../../cgi-bin/source/liturgia.cpp"; sourceTree = "<group>"; };
-		7061B0C615FB929300A83E0A /* liturgia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = liturgia.h; path = "../../cgi-bin/source/liturgia.h"; sourceTree = "<group>"; };
-		7061B0C715FB929300A83E0A /* myconf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = myconf.cpp; path = "../../cgi-bin/source/myconf.cpp"; sourceTree = "<group>"; };
-		7061B0C815FB929300A83E0A /* myconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myconf.h; path = "../../cgi-bin/source/myconf.h"; sourceTree = "<group>"; };
-		7061B0C915FB929300A83E0A /* mydefs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mydefs.cpp; path = "../../cgi-bin/source/mydefs.cpp"; sourceTree = "<group>"; };
-		7061B0CA15FB929300A83E0A /* mydefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mydefs.h; path = "../../cgi-bin/source/mydefs.h"; sourceTree = "<group>"; };
-		7061B0CB15FB929300A83E0A /* myexpt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = myexpt.cpp; path = "../../cgi-bin/source/myexpt.cpp"; sourceTree = "<group>"; };
-		7061B0CC15FB929300A83E0A /* myexpt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myexpt.h; path = "../../cgi-bin/source/myexpt.h"; sourceTree = "<group>"; };
-		7061B0CD15FB929300A83E0A /* mygetopt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mygetopt.cpp; path = "../../cgi-bin/source/mygetopt.cpp"; sourceTree = "<group>"; };
-		7061B0CE15FB929300A83E0A /* mygetopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mygetopt.h; path = "../../cgi-bin/source/mygetopt.h"; sourceTree = "<group>"; };
-		7061B0CF15FB929300A83E0A /* myhpage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = myhpage.cpp; path = "../../cgi-bin/source/myhpage.cpp"; sourceTree = "<group>"; };
-		7061B0D015FB929300A83E0A /* myhpage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myhpage.h; path = "../../cgi-bin/source/myhpage.h"; sourceTree = "<group>"; };
-		7061B0D115FB929300A83E0A /* mylog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mylog.cpp; path = "../../cgi-bin/source/mylog.cpp"; sourceTree = "<group>"; };
-		7061B0D215FB929300A83E0A /* mylog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mylog.h; path = "../../cgi-bin/source/mylog.h"; sourceTree = "<group>"; };
-		7061B0DE15FB932000A83E0A /* mystring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mystring.cpp; path = "../../cgi-bin/source/mystring.cpp"; sourceTree = "<group>"; };
-		7061B0DF15FB932000A83E0A /* mystring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mystring.h; path = "../../cgi-bin/source/mystring.h"; sourceTree = "<group>"; };
+		7061B0BD15FB929300A83E0A /* breviar.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = breviar.cpp; path = "../../cgi-bin/source/breviar.cpp"; sourceTree = "<group>"; };
+		7061B0BE15FB929300A83E0A /* breviar.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = breviar.h; path = "../../cgi-bin/source/breviar.h"; sourceTree = "<group>"; };
+		7061B0BF15FB929300A83E0A /* cgiutils.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = cgiutils.cpp; path = "../../cgi-bin/source/cgiutils.cpp"; sourceTree = "<group>"; };
+		7061B0C015FB929300A83E0A /* cgiutils.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = cgiutils.h; path = "../../cgi-bin/source/cgiutils.h"; sourceTree = "<group>"; };
+		7061B0C115FB929300A83E0A /* citania.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = citania.cpp; path = "../../cgi-bin/source/citania.cpp"; sourceTree = "<group>"; };
+		7061B0C215FB929300A83E0A /* citania.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = citania.h; path = "../../cgi-bin/source/citania.h"; sourceTree = "<group>"; };
+		7061B0C315FB929300A83E0A /* dbzaltar.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = dbzaltar.cpp; path = "../../cgi-bin/source/dbzaltar.cpp"; sourceTree = "<group>"; };
+		7061B0C415FB929300A83E0A /* dbzaltar.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = dbzaltar.h; path = "../../cgi-bin/source/dbzaltar.h"; sourceTree = "<group>"; };
+		7061B0C515FB929300A83E0A /* liturgia.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = liturgia.cpp; path = "../../cgi-bin/source/liturgia.cpp"; sourceTree = "<group>"; };
+		7061B0C615FB929300A83E0A /* liturgia.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = liturgia.h; path = "../../cgi-bin/source/liturgia.h"; sourceTree = "<group>"; };
+		7061B0C715FB929300A83E0A /* myconf.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = myconf.cpp; path = "../../cgi-bin/source/myconf.cpp"; sourceTree = "<group>"; };
+		7061B0C815FB929300A83E0A /* myconf.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = myconf.h; path = "../../cgi-bin/source/myconf.h"; sourceTree = "<group>"; };
+		7061B0C915FB929300A83E0A /* mydefs.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = mydefs.cpp; path = "../../cgi-bin/source/mydefs.cpp"; sourceTree = "<group>"; };
+		7061B0CA15FB929300A83E0A /* mydefs.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = mydefs.h; path = "../../cgi-bin/source/mydefs.h"; sourceTree = "<group>"; };
+		7061B0CB15FB929300A83E0A /* myexpt.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = myexpt.cpp; path = "../../cgi-bin/source/myexpt.cpp"; sourceTree = "<group>"; };
+		7061B0CC15FB929300A83E0A /* myexpt.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = myexpt.h; path = "../../cgi-bin/source/myexpt.h"; sourceTree = "<group>"; };
+		7061B0CD15FB929300A83E0A /* mygetopt.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = mygetopt.cpp; path = "../../cgi-bin/source/mygetopt.cpp"; sourceTree = "<group>"; };
+		7061B0CE15FB929300A83E0A /* mygetopt.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = mygetopt.h; path = "../../cgi-bin/source/mygetopt.h"; sourceTree = "<group>"; };
+		7061B0CF15FB929300A83E0A /* myhpage.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = myhpage.cpp; path = "../../cgi-bin/source/myhpage.cpp"; sourceTree = "<group>"; };
+		7061B0D015FB929300A83E0A /* myhpage.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = myhpage.h; path = "../../cgi-bin/source/myhpage.h"; sourceTree = "<group>"; };
+		7061B0D115FB929300A83E0A /* mylog.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = mylog.cpp; path = "../../cgi-bin/source/mylog.cpp"; sourceTree = "<group>"; };
+		7061B0D215FB929300A83E0A /* mylog.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = mylog.h; path = "../../cgi-bin/source/mylog.h"; sourceTree = "<group>"; };
+		7061B0DE15FB932000A83E0A /* mystring.cpp */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.cpp.cpp; name = mystring.cpp; path = "../../cgi-bin/source/mystring.cpp"; sourceTree = "<group>"; };
+		7061B0DF15FB932000A83E0A /* mystring.h */ = {isa = PBXFileReference; fileEncoding = 15; lastKnownFileType = sourcecode.c.h; name = mystring.h; path = "../../cgi-bin/source/mystring.h"; sourceTree = "<group>"; };
 		707A6495171A1B9E0065F98E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		707A6498171A1C180065F98E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		707A649F171A1E850065F98E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainStoryboard_iPhone.strings; sourceTree = "<group>"; };
@@ -619,7 +619,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BR;
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					7061B08615FA8E1A00A83E0A = {
 						DevelopmentTeam = 3K775ZSA59;
@@ -926,9 +926,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++98";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -945,11 +949,15 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -961,9 +969,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++98";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
@@ -975,8 +987,11 @@
 					SKIP_MAIN,
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;

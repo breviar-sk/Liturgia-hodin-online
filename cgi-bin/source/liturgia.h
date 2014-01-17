@@ -1149,6 +1149,8 @@ extern const char *poradie_SLOVOM_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1];
 #define _ZOSLANIE_DUCHA_SV        _den[idx_ZOSLANIE_DUCHA_SV]
 #define _SVATEJ_RODINY            _den[idx_SVATEJ_RODINY]
 
+#undef YES
+#undef NO
 #define YES 1
 #define NO  0
 

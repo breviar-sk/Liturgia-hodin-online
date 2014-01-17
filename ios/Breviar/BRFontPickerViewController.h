@@ -16,13 +16,8 @@
 
 @interface BRFontPickerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
-@property(strong) IBOutlet UIWebView *webView;
-@property(strong) IBOutlet UIPickerView *pickerView;
-
 @property(strong) NSString *fontFamily;
 @property NSInteger fontSize;
 @property(weak) NSObject<BRFontPickerDelegate> *delegate;
-
-- (IBAction)donePressed:(id)sender;
 
 @end

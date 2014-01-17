@@ -11,6 +11,9 @@
 /* Class = "IBUIBarButtonItem"; title = "Settings"; ObjectID = "FBN-Gp-lnG"; */
 "FBN-Gp-lnG.title" = "Settings";
 
+/* Class = "IBUILabel"; text = "Settings"; ObjectID = "GCi-VM-Lss"; */
+"GCi-VM-Lss.text" = "Settings";
+
 /* Class = "IBUIBarButtonItem"; title = "Yesterday"; ObjectID = "J2f-LS-lMc"; */
 "J2f-LS-lMc.title" = "Yesterday";
 
@@ -61,3 +64,9 @@
 
 /* Class = "IBUIButton"; normalTitle = "Set current date"; ObjectID = "wcZ-nN-lqr"; */
 "wcZ-nN-lqr.normalTitle" = "Set current date";
+
+/* Class = "IBUIButton"; normalTitle = "About Breviary"; ObjectID = "OFv-mv-Mvk"; */
+"OFv-mv-Mvk.normalTitle" = "About Breviary";
+
+/* Class = "IBUINavigationItem"; title = "About"; ObjectID = "N6p-nX-hUB"; */
+"N6p-nX-hUB.title" = "About";

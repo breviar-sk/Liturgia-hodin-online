@@ -13,6 +13,7 @@
 #import "BRStringOptionPickerViewController.h"
 #import "BRSettings.h"
 #import "BRUtil.h"
+#import "BRPrayerListViewController.h"
 
 #define CELL_NORMAL_HEIGHT			44
 #define CELL_LABEL_WIDTH			192
@@ -24,6 +25,10 @@
 #define SECT_OTHER					3
 
 @interface BRSettingsViewController ()
+
+@property(strong) NSString *currentOptionId;
+@property(strong) NSDictionary *visibleOptionIndexPaths;
+@property(strong) NSArray *visibleOptionsPerSection;
 
 @end
 
@@ -52,6 +57,14 @@
 	[super viewWillAppear:animated];
 	[self calculateVisibleOptions];
 	[self.tableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    // Going back to BRPrayerListViewController? Reload the whole table because
+    if ([self.navigationController.topViewController isKindOfClass:[BRPrayerListViewController class]]) {
+        BRPrayerListViewController *parent = (BRPrayerListViewController *)self.navigationController.topViewController;
+        [parent loadSelectedDateAndReloadTable:YES resetCelebrationIndex:NO];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -176,7 +189,9 @@
 			NSString *visibility = [item objectForKey:@"visibility"];
 			BOOL visible;
 			
-			if (visibility) {
+            if ([visibility isEqualToString:@"iPhoneOnly"]) {
+                visible = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+            } else if (visibility) {
 				NSPredicate *predicate = [NSPredicate predicateWithFormat:visibility];
 				visible = [predicate evaluateWithObject:settings];
 			} else {

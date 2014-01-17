@@ -6,3 +6,7 @@ body, html {
 	font-weight: bold;
 	font-size: 1.2em;
 }
+
+#about b {
+	font-weight: bold !important;
+}

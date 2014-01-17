@@ -12,17 +12,6 @@
 
 @interface BRPrayerListViewController : UIViewController <BRDatePickerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property(weak) IBOutlet UITableView *tableView;
-@property(weak) IBOutlet UIButton *showDatePickerButton;
-
-@property(strong) UIPopoverController *datePickerPopover;
-
-@property(strong) NSDate *date;
-@property(strong) BRDay *day;
-@property(strong) NSArray *sections;
-@property NSInteger celebrationIndex;
-
-- (IBAction)prevDayPressed:(id)sender;
-- (IBAction)nextDayPressed:(id)sender;
+- (void)loadSelectedDateAndReloadTable:(BOOL)reload resetCelebrationIndex:(BOOL)resetCelebration;
 
 @end

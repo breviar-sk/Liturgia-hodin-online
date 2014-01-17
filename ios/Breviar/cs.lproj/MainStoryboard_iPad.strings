@@ -26,6 +26,9 @@
 /* Class = "IBUINavigationItem"; title = "Settings"; ObjectID = "Ucr-K2-AtJ"; */
 "Ucr-K2-AtJ.title" = "Nastavení";
 
+/* Class = "IBUILabel"; text = "Settings"; ObjectID = "GCi-VM-Lss"; */
+"GCi-VM-Lss.text" = "Nastavení";
+
 /* Class = "IBUILabel"; text = "Current Date"; ObjectID = "UsM-OV-UTU"; */
 "UsM-OV-UTU.text" = "Current Date";
 
@@ -61,3 +64,9 @@
 
 /* Class = "IBUIButton"; normalTitle = "Set current date"; ObjectID = "wcZ-nN-lqr"; */
 "wcZ-nN-lqr.normalTitle" = "Set current date";
+
+/* Class = "IBUIButton"; normalTitle = "About Breviary"; ObjectID = "OFv-mv-Mvk"; */
+"OFv-mv-Mvk.normalTitle" = "About Breviary";
+
+/* Class = "IBUINavigationItem"; title = "About"; ObjectID = "N6p-nX-hUB"; */
+"N6p-nX-hUB.title" = "About";

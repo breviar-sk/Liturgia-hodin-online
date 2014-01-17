@@ -78,7 +78,10 @@ static BRSettings *_instance;
 				[self setString:countryCode forOption:LANG_OPTION];
 			}
 		}
+        
+        [userDefaults synchronize];
 	}
+    
 	return self;
 }
 
@@ -91,6 +94,7 @@ static BRSettings *_instance;
 	NSMutableDictionary *font = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"prayerFont"] mutableCopy];
 	[font setObject:prayerFontFamily forKey:@"family"];
 	[[NSUserDefaults standardUserDefaults] setObject:font forKey:@"prayerFont"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSInteger)prayerFontSize {
@@ -103,6 +107,7 @@ static BRSettings *_instance;
 	NSMutableDictionary *font = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"prayerFont"] mutableCopy];
 	[font setObject:[NSNumber numberWithInteger:prayerFontSize] forKey:@"size"];
 	[[NSUserDefaults standardUserDefaults] setObject:font forKey:@"prayerFont"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (BOOL)boolForOption:(NSString *)optionId {
@@ -111,6 +116,7 @@ static BRSettings *_instance;
 
 - (void)setBool:(BOOL)value forOption:(NSString *)optionId {
 	[[NSUserDefaults standardUserDefaults] setBool:value forKey:optionId];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (UIFont *)fontForOption:(NSString *)optionId {
@@ -126,6 +132,7 @@ static BRSettings *_instance;
 		@"size":[NSNumber numberWithInteger:value.pointSize]
 	};
 	[[NSUserDefaults standardUserDefaults] setObject:fontData forKey:optionId];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSDictionary *)prayerQueryOptions {
@@ -147,6 +154,7 @@ static BRSettings *_instance;
 
 - (void)setString:(NSString *)value forOption:(NSString *)optionId {
 	[[NSUserDefaults standardUserDefaults] setObject:value forKey:optionId];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSArray *)stringOptionsForOption:(NSString *)optionId {

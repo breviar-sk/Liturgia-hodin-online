@@ -28,6 +28,8 @@
 "of0fn"		= "Normál betűtípus használata (félkövér helyett)";
 "of2tw"		= "Hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)";
 
+"prayersAsCells" = "Nagy imaválasztó gombok";
+
 // Prayer parts settings
 "of1c"		= "Evangéliumi kantikumok";
 "of1s"		= "Dicsőség az Atyának";
@@ -102,3 +104,6 @@
 "of2id"			= "A dátum ISO 8601 formátumban";
 "of2btnu"		= "Az imaórák gombjainak gazdaságos elhelyezése";
 "of2nav"		= "A navigáció mutatása az imaszövegben";
+
+// Other
+"today"         = "Ma";
