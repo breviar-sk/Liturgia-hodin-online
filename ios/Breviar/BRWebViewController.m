@@ -78,7 +78,7 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.webView.alpha = 1;
     } completion:nil];
 }

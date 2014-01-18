@@ -46,7 +46,7 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <segue destination="T2K-80-ICh" kind="push" id="6OH-x9-gDC"/>
+                                        <segue destination="T2K-80-ICh" kind="push" identifier="ShowAbout" id="6OH-x9-gDC"/>
                                     </connections>
                                 </button>
                                 <prototypes>

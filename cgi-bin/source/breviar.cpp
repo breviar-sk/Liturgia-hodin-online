@@ -340,6 +340,31 @@ char *_global_buf2; // 2006-08-01: vytvorené; túto premennú tiež alokujeme
 #define STDIN_FILE stdin
 #endif
 
+#ifdef __unix__
+// Overwrite putenv() because it causes crashes if breviar_main() is called multiple times:
+// unlike setenv(), the argument of putenv() is not copied (at least not on BSD), so
+// getenv() is likely to crash after the buffers are freed / reused.
+static int my_putenv(char *s) {
+	char *key = strdup(s);
+	if (!key) {
+		return 0;
+	}
+
+	char *val = strchr(key, '=');
+	if (!val) {
+		free(key);
+		return 0;
+	}
+
+	*(val++) = 0;
+	int res = setenv(key, val, 1);
+
+	free(key);
+	return res;
+}
+#define putenv my_putenv
+#endif /* __unix__ */
+
 //---------------------------------------------------------------------
 // globalne premenne -- deklarovane v liturgia.h, definovane tu
 

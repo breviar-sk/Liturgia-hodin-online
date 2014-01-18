@@ -30,12 +30,19 @@
 					<string>font</string>
 					<key>inPrayerQuery</key>
 					<false/>
-					<key>default</key>
+					<key>default-iPhone</key>
 					<dict>
 						<key>family</key>
-						<string>HelveticaNeue</string>
+						<string>Palatino-Roman</string>
 						<key>size</key>
-						<integer>14</integer>
+						<integer>16</integer>
+					</dict>
+					<key>default-iPad</key>
+					<dict>
+						<key>family</key>
+						<string>Palatino-Roman</string>
+						<key>size</key>
+						<integer>18</integer>
 					</dict>
 				</dict>
 				<dict>

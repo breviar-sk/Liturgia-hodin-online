@@ -2,11 +2,3 @@ body, html {
 	background-color: #FBFCD7;
 }
 
-#about h3 {
-	font-weight: bold;
-	font-size: 1.2em;
-}
-
-#about b {
-	font-weight: bold !important;
-}

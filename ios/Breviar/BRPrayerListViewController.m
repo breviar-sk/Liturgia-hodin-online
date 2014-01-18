@@ -266,13 +266,16 @@ static NSString *liturgicalColorImages[] = {
     
     int dayDiff = ABS(currentDay - selectedDay);
 	
-    if (dayDiff == 0) {
-        return BREVIAR_STR(@"today");
-    }
-    else if (dayDiff < 3) {
+    if (dayDiff < 3) {
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 		dateFormatter.dateFormat = @"EEEE";
-		return [[dateFormatter stringFromDate:self.date] capitalizedString];
+        NSString *day = [[dateFormatter stringFromDate:self.date] capitalizedString];
+        
+        if (dayDiff == 0) {
+            return [NSString stringWithFormat:@"%@ (%@)", day, BREVIAR_STR(@"today")];
+        } else {
+            return day;
+        }
 	}
 	else {
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

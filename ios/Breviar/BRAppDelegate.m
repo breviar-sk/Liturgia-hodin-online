@@ -13,6 +13,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Google Analytics
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 60;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker.
+    __unused id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47206216-1"];
+    
+    
 	// Initialize UI
     if ([UINavigationBar instancesRespondToSelector:@selector(barTintColor)]) {
         [UINavigationBar appearance].barTintColor = [UIColor colorWithHex:0x833a39];

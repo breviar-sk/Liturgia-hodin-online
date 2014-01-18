@@ -38,7 +38,16 @@ static BRSettings *_instance;
 		for (NSDictionary *section in self.sections) {
 			for (NSDictionary *option in [section objectForKey:@"items"]) {
 				NSString *optionId = [option objectForKey:@"id"];
+				
 				NSObject *defaultValue = [option objectForKey:@"default"];
+				if (!defaultValue) {
+					if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+						defaultValue = [option objectForKey:@"default-iPhone"];
+					}
+					else {
+						defaultValue = [option objectForKey:@"default-iPad"];
+					}
+				}
 				
 				[options setObject:option forKey:optionId];
 				if (defaultValue != nil && ![userDefaults objectForKey:optionId]) {

@@ -298,6 +298,16 @@ div.biblereference {
 	text-decoration: underline; 
 }
 
+/* new 2014-01-16 */
+#about h3 {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#about b {
+    font-weight: bold !important;
+}
+
 /* replace 2013-02-17 */ 
 .indent { 
 	display: inline; 
