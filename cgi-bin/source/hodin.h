@@ -5854,7 +5854,7 @@ const char *text_JUL_24[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Šarbela Makhlúfa, knìze",
- "Szent Charbel Makhlouf áldozópap",
+ "Szent Charbel Makhlouf áldozópap", // HU: 27JUL
  };
 const char *text_JUL_24_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -5863,7 +5863,7 @@ const char *text_JUL_24_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Árpád-házi szent Kinga szûz", // 2011-07-05: sv. Sarbela v HU majú 27. júla
+ "Árpád-házi szent Kinga szûz", // 2011-07-05: sv. Sarbela v HU: 27JUL
  };
 const char *text_JUL_24_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Antona Lucciho, biskupa, èlena 1. rádu",
@@ -6053,7 +6053,7 @@ const char *text_AUG_02_2[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_02_OFM[POCET_JAZYKOV + 1] = 
 {"Preblahoslavenej Panny Márie Anjelskej v Porciunkule",
- "",
+ "Panny Marie Královny andìlù",
  "",
  "",
  "",
@@ -6143,7 +6143,7 @@ const char *text_AUG_07_2[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_07_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Agatangela a Kasiána, kòazov a muèeníkov,"HTML_LINE_BREAK"èlenov 1. rádu",
- "",
+ "Bl. Agathangela a Kassiána, knìží a muèedníkù",
  "",
  "",
  "",
@@ -6206,7 +6206,7 @@ const char *text_AUG_11[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_11_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Kláry z Assisi, panny, èlenky 2. rádu",
- "Sv. Kláry, panny",
+ "Sv. Kláry z Assisi, panny",
  "",
  "",
  "",
@@ -6278,7 +6278,7 @@ const char *text_AUG_13_OPRAEM[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_13_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Marka z Aviana, kòaza, èlena 1. rádu",
- "",
+ "Bl. Marka z Aviana, knìze",
  "",
  "",
  "",
@@ -6395,7 +6395,7 @@ const char *text_AUG_18_1_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_18_2_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Jána, Protáza a Sebastiána, kòazov,"HTML_LINE_BREAK"èlenov 1. rádu, a spoloèníkov, muèeníkov",
- "",
+ "Bl. Jana Ludvíka, Protasia a Sebastiana, knìží a muèedníkù",
  "",
  "",
  "",
@@ -6422,7 +6422,7 @@ const char *text_AUG_19_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_19_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. ¼udovíta, biskupa, èlena 1. rádu",
- "",
+ "Sv. Ludvíka z Anjou, biskupa",
  "",
  "",
  "",
@@ -6476,7 +6476,7 @@ const char *text_AUG_23[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_23_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Bernarda z Offidy, reho¾níka, èlena 1. rádu",
- "",
+ "Bl. Bernarda z Offidy, øeholníka",
  "",
  "",
  "",
@@ -6512,7 +6512,7 @@ const char *text_AUG_25_2[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_25_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. ¼udovíta IX., krá¾a, èlena 3. rádu",
- "",
+ "Sv. Ludvíka IX., krále, patrona 3. øádu",
  "",
  "",
  "",
@@ -6668,7 +6668,7 @@ const char *text_SEP_02_1_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_02_2_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Apolinára z Posatu, kòaza, èlena 1. rádu,"HTML_LINE_BREAK"a spoloèníkov, muèeníkov",
- "",
+ "Bl. Apolináøe z Posaty a druhù, muèedníkù",
  "",
  "",
  "",
@@ -6893,7 +6893,7 @@ const char *text_SEP_17_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_17_OFM[POCET_JAZYKOV + 1] = 
 {"Stigmatizácia nášho otca sv. Františka",
- "",
+ "Vtisknutí stigmat našemu sv. Otci Františkovi",
  "",
  "",
  "",
@@ -6902,7 +6902,7 @@ const char *text_SEP_17_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_18_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Jozefa Kupertínskeho, kòaza, èlena 1. rádu",
- "",
+ "Sv. Josefa z Kupertina, knìze",
  "",
  "",
  "",
@@ -6938,7 +6938,7 @@ const char *text_SEP_19[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_19_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Františka Márie z Camporossa,"HTML_LINE_BREAK"reho¾níka, èlena 1. rádu",
- "",
+ "Sv. Františka Marie z Camporossa, øeholníka",
  "",
  "",
  "",
@@ -7001,7 +7001,7 @@ const char *text_SEP_22_2_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_22_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Ignáca zo Santhie, kòaza, èlena 1. rádu",
- "",
+ "Sv. Ignáce ze Santhi&agrave;, knìze",
  "",
  "",
  "",
@@ -7071,6 +7071,15 @@ const char *text_SEP_25_OP[POCET_JAZYKOV + 1] =
  "",
  "",
  };
+const char *text_SEP_25_OFM[POCET_JAZYKOV + 1] = 
+{"",
+ "Bl. Inocence z Berza, knìze",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
 const char *text_SEP_26[POCET_JAZYKOV + 1] = 
 {"Sv. Kozmu a Damiána, muèeníkov",
  "Sv. Kosmy a Damiána, muèedníkù",
@@ -7100,7 +7109,7 @@ const char *text_SEP_26_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_26_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Aurélia z Vinalesy, kòaza, a spoloèníkov,"HTML_LINE_BREAK"muèeníkov, èlenov 1. rádu",
- "",
+ "Bl. Aurela z Vinalesy, knìze, a druhù, muèedníkù",
  "",
  "",
  "",
@@ -7220,7 +7229,7 @@ const char *text_OKT_04[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_04_OFM[POCET_JAZYKOV + 1] = 
 {"Nášho otca sv. Františka, diakona,"HTML_LINE_BREAK"zakladate¾a troch rádov",
- "",
+ "Sv. Františka, jáhna, zakladatele tøí øádù",
  "",
  "",
  "",
@@ -7427,7 +7436,7 @@ const char *text_OKT_12_CZ[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_12_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Serafína z Montegranara, reho¾níka, èlena 1. rádu",
- "",
+ "Sv. Serafína z Montegranara, øeholníka",
  "",
  "",
  "",
@@ -7436,7 +7445,7 @@ const char *text_OKT_12_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_13_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Honoráta Ko¿miñského, kòaza, èlena 1. rádu",
- "",
+ "Bl. Honoráta Kožmiòského, knìze",
  "",
  "",
  "",
@@ -7589,7 +7598,7 @@ const char *text_OKT_19_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_19_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Petra z Alcantary, kòaza, èlena 1. rádu",
- "",
+ "Sv. Petra z Alkantary, knìze",
  "",
  "",
  "",
@@ -7670,7 +7679,7 @@ const char *text_OKT_23[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_23_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Jána Kapistránskeho, kòaza, èlena 1. rádu",
- "",
+ "Sv. Jana z Capestrana, knìze",
  "",
  "",
  "",
@@ -7715,7 +7724,7 @@ const char *text_OKT_25_SK[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_25_SDB[POCET_JAZYKOV + 1] = 
 {"Výroèie posviacky vlastného chrámu (keï sa nepozná dátum posviacky)",
- "",
+ "Výroèí posvìcení vlastního kostela", // OFMCap.
  "",
  "",
  "",
@@ -7877,7 +7886,7 @@ const char *text_OKT_31_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_31_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Angela z Acri, kòaza, èlena 1. rádu",
- "",
+ "Bl. Andìla z Acri, knìze",
  "",
  "",
  "",
@@ -7943,7 +7952,7 @@ const char *text_NOV_03_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_03_OFM[POCET_JAZYKOV + 1] = 
 {"Spomienka na všetkých zosnulých"HTML_LINE_BREAK"troch františkánskych rádov",
- "",
+ "Vzpomínka na všechny zemøelé serafínského øádu",
  "",
  "",
  "",
@@ -8024,7 +8033,7 @@ const char *text_NOV_07_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_08_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Jána Dunsa Scota, kòaza, èlena 1. rádu",
- "",
+ "Bl. Jana z Dunsu, knìze",
  "",
  "",
  "",
@@ -8168,7 +8177,7 @@ const char *text_NOV_14_2_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_14_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Mikuláša Taveliæa a spoloèníkov,"HTML_LINE_BREAK"kòazov a muèeníkov, èlenov 1. rádu",
- "",
+ "Sv. Mikuláše Tavelièe, knìze, a druhù, muèedníkù",
  "",
  "",
  "",
@@ -8231,7 +8240,7 @@ const char *text_NOV_17[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_17_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Alžbety Uhorskej, reho¾níèky,"HTML_LINE_BREAK"patrónky františkánskeho svetského rádu",
- "",
+ "Sv. Alžbìty Uherské, patronky 3. øádu",
  "",
  "",
  "",
@@ -8384,7 +8393,7 @@ const char *text_NOV_26_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_26_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Leonarda z Porto Mauricia, kòaza, èlena 1. rádu",
- "",
+ "Sv. Leonarda z Porta Mauritia, knìze",
  "",
  "",
  "",
@@ -8393,7 +8402,7 @@ const char *text_NOV_26_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_27_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Františka Antona Fasaniho, kòaza, èlena 1. rádu",
- "",
+ "Sv. Františka Antonína Fasaniho, knìze",
  "",
  "",
  "",
@@ -8411,7 +8420,7 @@ const char *text_NOV_27_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_28_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Jakuba z Marky, kòaza, èlena 1. rádu",
- "",
+ "Sv. Jakuba z Marky, knìze",
  "",
  "",
  "",
@@ -8420,7 +8429,7 @@ const char *text_NOV_28_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_29_OFM[POCET_JAZYKOV + 1] = 
 {"Všetkých svätých troch františkánskych rádov",
- "",
+ "Všech svatých serafínského øádu",
  "",
  "",
  "",
@@ -8486,7 +8495,7 @@ const char *text_DEC_02_1_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_DEC_02_2_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Angely Márie Astorchovej, panny, èlenky 2. rádu",
- "",
+ "Bl. Marie Andìly Astorch, panny",
  "",
  "",
  "",
