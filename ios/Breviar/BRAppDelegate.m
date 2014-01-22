@@ -8,6 +8,7 @@
 
 #import "BRAppDelegate.h"
 #import "BRDataSource.h"
+#import "BRPrayerListViewController.h"
 
 @implementation BRAppDelegate
 

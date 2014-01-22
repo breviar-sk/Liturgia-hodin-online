@@ -12,6 +12,6 @@
 
 @interface BRPrayerListViewController : UIViewController <BRDatePickerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-- (void)loadSelectedDateAndReloadTable:(BOOL)reload resetCelebrationIndex:(BOOL)resetCelebration;
+- (void)loadSelectedDateAndReloadTable:(BOOL)reload resetCelebrationIndex:(BOOL)resetCelebration forcePrayerRegeneration:(BOOL)regenerate;
 
 @end

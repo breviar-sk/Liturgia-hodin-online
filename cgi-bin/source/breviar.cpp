@@ -340,7 +340,7 @@ char *_global_buf2; // 2006-08-01: vytvorené; túto premennú tiež alokujeme
 #define STDIN_FILE stdin
 #endif
 
-#ifdef __unix__
+#if defined(__APPLE__) || defined(__linux) || defined(__unix) || defined(__posix)
 // Overwrite putenv() because it causes crashes if breviar_main() is called multiple times:
 // unlike setenv(), the argument of putenv() is not copied (at least not on BSD), so
 // getenv() is likely to crash after the buffers are freed / reused.
@@ -363,7 +363,7 @@ static int my_putenv(char *s) {
 	return res;
 }
 #define putenv my_putenv
-#endif /* __unix__ */
+#endif /* unix */
 
 //---------------------------------------------------------------------
 // globalne premenne -- deklarovane v liturgia.h, definovane tu

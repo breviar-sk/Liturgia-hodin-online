@@ -29,7 +29,6 @@
     [super viewDidLoad];
     
     // Use shared web view. Hide it now, and show it using animation once the content is loaded
-    self.webView.frame = self.view.bounds;
     self.webView.alpha = 0;
     self.webView.delegate = self;
     self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
@@ -41,6 +40,9 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
+    self.webView.frame = self.view.bounds;
+    self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
 	BRSettings *settings = [BRSettings instance];
 	
 	NSMutableString *extraStylesheets = [[NSMutableString alloc] init];

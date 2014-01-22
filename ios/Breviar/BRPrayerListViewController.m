@@ -34,6 +34,8 @@ static NSString *liturgicalColorImages[] = {
 @property (nonatomic, strong) UIPopoverController *datePickerPopover;
 
 @property (nonatomic, strong) UIWebView *sharedWebView;
+@property (nonatomic, strong) BRCelebrationCell *celebrationCellPortrait;
+@property (nonatomic, strong) BRCelebrationCell *celebrationCellLanscape;
 
 @property (strong) NSDate *date;
 @property (strong) BRDay *day;
@@ -58,6 +60,11 @@ static NSString *liturgicalColorImages[] = {
     self.sharedWebView.backgroundColor = [UIColor clearColor];
     self.sharedWebView.opaque = NO;
     [self.view addSubview:self.sharedWebView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
 }
 
 - (void)viewDidUnload
@@ -71,17 +78,26 @@ static NSString *liturgicalColorImages[] = {
 	
 	// Load celebrations for date (if not already loaded for the very same date, e.g. when going back from prayer VC)
     if (!self.day) {
-        [self loadSelectedDateAndReloadTable:YES resetCelebrationIndex:YES];
-    }
-    // Deselect row when returning from subcontroller to give the user a sense of context
-    else if (self.tableView.indexPathForSelectedRow) {
-        [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+        [self loadSelectedDateAndReloadTable:YES resetCelebrationIndex:YES forcePrayerRegeneration:NO];
+    } else {
+        [self updateTitleView];
+        
+        // Deselect row when returning from subcontroller to give the user a sense of context
+        if (self.tableView.indexPathForSelectedRow) {
+            [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+        }
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (void)applicationWillEnterForeground:(NSNotification *)notification {
+    if (self.day && self.navigationController.topViewController == self) {
+        [self updateTitleView];
+    }
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	[self.tableView reloadData];
 }
 
 #pragma mark - Data Source, Loader, etc.
@@ -98,8 +114,9 @@ static NSString *liturgicalColorImages[] = {
 	}
 }
 
-- (void)loadSelectedDateAndReloadTable:(BOOL)reload resetCelebrationIndex:(BOOL)resetCelebration {
-	if (!self.day || ![[self dayComponentsForDate:self.day.date] isEqual:[self dayComponentsForDate:self.date]]) {
+- (void)loadSelectedDateAndReloadTable:(BOOL)reload resetCelebrationIndex:(BOOL)resetCelebration forcePrayerRegeneration:(BOOL)regenerate {
+    
+	if (regenerate || !self.day || ![[self dayComponentsForDate:self.day.date] isEqual:[self dayComponentsForDate:self.date]]) {
 		self.day = [[BRDataSource instance] dayForDate:self.date];
 		
         if (self.celebrationIndex > self.day.celebrations.count - 1) {
@@ -161,12 +178,16 @@ static NSString *liturgicalColorImages[] = {
 	}
 }
 
+- (NSString *)celebrationCellType {
+	return UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? @"CelebrationCellPortrait" : @"CelebrationCellLandscape";
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *sectionType = [self.sections objectAtIndex:indexPath.section];
 	
 	if ([sectionType isEqualToString:@"Date"]) {
 		// Celebration cell
-		BRCelebrationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CelebrationCell"];
+		BRCelebrationCell *cell = [tableView dequeueReusableCellWithIdentifier:[self celebrationCellType]];
 		
 		BRCelebration *celebration = [self.day.celebrations objectAtIndex:indexPath.row];
 		cell.celebrationNameLabel.text = celebration.title;
@@ -204,7 +225,7 @@ static NSString *liturgicalColorImages[] = {
 		return 125;
 	}
 	else if ([sectionType isEqualToString:@"Date"]) {
-		BRCelebrationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CelebrationCell"];
+		BRCelebrationCell *cell = [tableView dequeueReusableCellWithIdentifier:[self celebrationCellType]];
 		cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
 		
 		BRCelebration *celebration = [self.day.celebrations objectAtIndex:indexPath.row];
@@ -245,8 +266,10 @@ static NSString *liturgicalColorImages[] = {
 
 - (void)updateTitleView
 {
-	self.navigationItem.title = [self getDateLabel];
-	self.navigationItem.titleView = [self getTitleView];
+    if (![self.navigationItem.title isEqualToString:[self getDateLabel]]) {
+        self.navigationItem.title = [self getDateLabel];
+        self.navigationItem.titleView = [self getTitleView];
+    }
 }
 
 - (UIView *)getTitleView
@@ -298,7 +321,7 @@ static NSString *liturgicalColorImages[] = {
 	[components setDay:dayDiff];
 	
 	self.date = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:self.date options:0];
-    [self loadSelectedDateAndReloadTable:NO resetCelebrationIndex:YES];
+    [self loadSelectedDateAndReloadTable:NO resetCelebrationIndex:YES forcePrayerRegeneration:NO];
 	
     // Animate only the celebrations section
 	NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 1)];
@@ -374,7 +397,7 @@ static NSString *liturgicalColorImages[] = {
 		self.datePickerPopover = nil;
 	}
     
-    [self loadSelectedDateAndReloadTable:YES resetCelebrationIndex:YES];
+    [self loadSelectedDateAndReloadTable:YES resetCelebrationIndex:YES forcePrayerRegeneration:NO];
 }
 
 @end

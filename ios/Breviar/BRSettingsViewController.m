@@ -63,13 +63,14 @@
     // Going back to BRPrayerListViewController? Reload the whole table because
     if ([self.navigationController.topViewController isKindOfClass:[BRPrayerListViewController class]]) {
         BRPrayerListViewController *parent = (BRPrayerListViewController *)self.navigationController.topViewController;
-        [parent loadSelectedDateAndReloadTable:YES resetCelebrationIndex:NO];
+        [parent loadSelectedDateAndReloadTable:YES resetCelebrationIndex:NO forcePrayerRegeneration:YES];
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	[self.tableView reloadData];
 }
 
 #pragma mark -
@@ -104,6 +105,11 @@
 	return sectionItems.count;
 }
 
+- (NSString *)boolCellType
+{
+	return UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? @"BoolCellPortrait" : @"BoolCellLandscape";
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSDictionary *option = [self optionForIndexPath:indexPath];
 	NSString *optionType = [option objectForKey:@"type"];
@@ -113,7 +119,7 @@
 		NSString *optId = [option objectForKey:@"id"];
 		NSString *optTitle = BREVIAR_STR(optId);
 		
-		BRBoolSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BoolCell"];
+		BRBoolSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:[self boolCellType]];
 		cell.label.text = optTitle;
 		[cell.contentView setNeedsLayout];
 		[cell.contentView layoutIfNeeded];
@@ -149,7 +155,7 @@
 	}
 	else if ([optionType isEqualToString:@"bool"]) {
 		// Boolean option
-		BRBoolSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BoolCell"];
+		BRBoolSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:[self boolCellType]];
 		cell.optionId = optionId;
 		cell.label.text = BREVIAR_STR(optionId);
 		cell.switcher.on = [settings boolForOption:optionId];
