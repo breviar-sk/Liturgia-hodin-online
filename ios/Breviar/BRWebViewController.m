@@ -85,4 +85,9 @@
     } completion:nil];
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+	// Allow requests to local files only
+	return request.URL.isFileURL;
+}
+
 @end

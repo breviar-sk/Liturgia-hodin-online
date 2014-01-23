@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BRViewController.h"
 #import "BRDatePickerViewController.h"
 #import "BRDay.h"
 
-@interface BRPrayerListViewController : UIViewController <BRDatePickerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface BRPrayerListViewController : BRViewController <BRDatePickerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 - (void)loadSelectedDateAndReloadTable:(BOOL)reload resetCelebrationIndex:(BOOL)resetCelebration forcePrayerRegeneration:(BOOL)regenerate;
 

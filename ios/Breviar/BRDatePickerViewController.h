@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BRViewController.h"
 
 @class BRDatePickerViewController;
 
@@ -14,7 +15,7 @@
 - (void)datePicker:(BRDatePickerViewController *)datePicker pickedDate:(NSDate *)date;
 @end
 
-@interface BRDatePickerViewController : UIViewController
+@interface BRDatePickerViewController : BRViewController
 
 @property (weak, nonatomic) IBOutlet NSObject<BRDatePickerDelegate> *datePickerDelegate;
 @property (strong, nonatomic) NSDate *initialDate;

@@ -60,6 +60,9 @@
 		707A64B7171AD8030065F98E /* BRStringOptionPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707A64B6171AD8020065F98E /* BRStringOptionPickerViewController.m */; };
 		707A64C1171B12790065F98E /* Breviar.strings in Resources */ = {isa = PBXBuildFile; fileRef = 707A64BB171B12790065F98E /* Breviar.strings */; };
 		707A64C2171B12790065F98E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 707A64BD171B12790065F98E /* InfoPlist.strings */; };
+		709994CF188F206E00729A21 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 709994C9188F206E00729A21 /* libTestFlight.a */; };
+		709994D0188F206F00729A21 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 709994CA188F206E00729A21 /* README.md */; };
+		709994D1188F206F00729A21 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 709994CB188F206E00729A21 /* release_notes.md */; };
 		709BE1E7185673B100B6190E /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 709BE1D6185673B100B6190E /* Icon-60.png */; };
 		709BE1E8185673B100B6190E /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 709BE1D7185673B100B6190E /* Icon-60@2x.png */; };
 		709BE1E9185673B100B6190E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 709BE1D8185673B100B6190E /* Icon-72.png */; };
@@ -251,6 +254,12 @@
 		707A64BC171B12790065F98E /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = Breviar.strings; sourceTree = "<group>"; };
 		707A64BE171B12790065F98E /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = InfoPlist.strings; sourceTree = "<group>"; };
 		707A64C6171B12AC0065F98E /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/MainStoryboard_iPhone.strings; sourceTree = "<group>"; };
+		709994C9188F206E00729A21 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		709994CA188F206E00729A21 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		709994CB188F206E00729A21 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		709994CC188F206E00729A21 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		709994CD188F206E00729A21 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		709994CE188F206E00729A21 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		709BE1D6185673B100B6190E /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		709BE1D7185673B100B6190E /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		709BE1D8185673B100B6190E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -327,6 +336,7 @@
 			files = (
 				5426227A1887B17500CA7AC4 /* AdSupport.framework in Frameworks */,
 				542622781887AFD700CA7AC4 /* SystemConfiguration.framework in Frameworks */,
+				709994CF188F206E00729A21 /* libTestFlight.a in Frameworks */,
 				542622761887AFC700CA7AC4 /* CoreData.framework in Frameworks */,
 				7042905916408BF600663A7D /* libRaptureXML.a in Frameworks */,
 				7042905816408A6300663A7D /* libz.dylib in Frameworks */,
@@ -359,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				5426226A1887AFA500CA7AC4 /* GoogleAnalytics */,
+				709994C8188F206E00729A21 /* TestFlight */,
 				704290441640887100663A7D /* RaptureXML.xcodeproj */,
 			);
 			name = Thirdparty;
@@ -580,6 +591,19 @@
 			path = cs.lproj;
 			sourceTree = "<group>";
 		};
+		709994C8188F206E00729A21 /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				709994C9188F206E00729A21 /* libTestFlight.a */,
+				709994CA188F206E00729A21 /* README.md */,
+				709994CB188F206E00729A21 /* release_notes.md */,
+				709994CC188F206E00729A21 /* TestFlight+AsyncLogging.h */,
+				709994CD188F206E00729A21 /* TestFlight+ManualSessions.h */,
+				709994CE188F206E00729A21 /* TestFlight.h */,
+			);
+			path = TestFlight;
+			sourceTree = "<group>";
+		};
 		709BE1D5185673A400B6190E /* App Icon */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +677,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7061B0A815FA8E1A00A83E0A /* Build configuration list for PBXNativeTarget "Breviar" */;
 			buildPhases = (
+				709994D3188F2ACC00729A21 /* ShellScript */,
 				7061B08315FA8E1A00A83E0A /* Sources */,
 				7061B08415FA8E1A00A83E0A /* Frameworks */,
 				7061B08515FA8E1A00A83E0A /* Resources */,
@@ -733,6 +758,7 @@
 			files = (
 				70CAFA9C187CBC1C000410AC /* bullet_violet_or_white@2x.png in Resources */,
 				70CAFA96187CBC1C000410AC /* bullet_black@2x.png in Resources */,
+				709994D1188F206F00729A21 /* release_notes.md in Resources */,
 				709BE1E7185673B100B6190E /* Icon-60.png in Resources */,
 				7061B09615FA8E1A00A83E0A /* InfoPlist.strings in Resources */,
 				709BE1ED185673B100B6190E /* Icon-Small-40.png in Resources */,
@@ -773,6 +799,7 @@
 				542622A31887D10500CA7AC4 /* Default.png in Resources */,
 				709BE1EF185673B100B6190E /* Icon-Small-50.png in Resources */,
 				707A64A5171A1F650065F98E /* InfoPlist.strings in Resources */,
+				709994D0188F206F00729A21 /* README.md in Resources */,
 				709BE1E9185673B100B6190E /* Icon-72.png in Resources */,
 				70CAFA9D187CBC1C000410AC /* bullet_violet@2x.png in Resources */,
 				709BE1F7185673B100B6190E /* iTunesArtwork@2x in Resources */,
@@ -805,7 +832,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rf \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/html\"\nmkdir \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/html\"\nfor dir in include include_hu include_cz; do\n    cp -r ../$dir \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/html/\"\ndone\ncp ../breviar.css ../breviar-normal-font.css ../breviar-invert-colors.css \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/html/\"";
+			shellScript = "rm -rf \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/html\"\nmkdir \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/html\"\nfor dir in include include_hu include_cz; do\n    cp -r ../$dir \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/html/\"\ndone\ncp ../breviar.css ../breviar-normal-font.css ../breviar-invert-colors.css ../about.htm \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/html/\"\n\n./buildno.sh";
+		};
+		709994D3188F2ACC00729A21 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+				Breviar/config.build.h,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ./buildno.sh;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1132,6 +1173,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GoogleAnalytics",
+					"/Users/akos/opensource/Breviar/breviar-ios/TestFlight",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1151,6 +1193,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GoogleAnalytics",
+					"/Users/akos/opensource/Breviar/breviar-ios/TestFlight",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -32,8 +32,27 @@ static NSString *prayerQueryIds[] = {
 	[BRCompline]           = @"mk"
 };
 
+static NSString *prayerNames[] = {
+	[BRInvitatory]         = @"Invitatory",
+	[BROfficeOfReadings]   = @"Readings",
+	[BRMorningPrayer]      = @"Laudes",
+	[BRMidMorningPrayer]   = @"Tertia",
+	[BRMiddayPrayer]       = @"Sexta",
+	[BRMidAfternoonPrayer] = @"Nona",
+	[BREveningPrayer]      = @"Vespers",
+	[BRCompline]           = @"Compline"
+};
+
 - (NSString *)title {
 	return BREVIAR_STR(prayerQueryIds[self.prayerType]);
+}
+
+- (NSString *)prayerName {
+	return prayerNames[self.prayerType];
+}
+
+- (NSString *)queryId {
+	return prayerQueryIds[self.prayerType];
 }
 
 - (NSString *)body {

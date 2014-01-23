@@ -362,7 +362,7 @@
 					<key>type</key>
 					<string>bool</string>
 					<key>default</key>
-					<false/>
+					<true/>
 					<key>visibility</key>
 					<string>of2a == TRUE &amp;&amp; j != &quot;cz&quot;</string>
 				</dict>

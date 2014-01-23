@@ -3089,7 +3089,7 @@ const char *text_JAN_20_1[POCET_JAZYKOV + 1] =
  "S. Fabiani, papae et mart.",
  "",
  "Sv. Fabiána, papeže a muèedníka",
- "Szent Fábián pápa év vértanú",
+ "Szent Fábián pápa és vértanú",
  };
 const char *text_JAN_20_2[POCET_JAZYKOV + 1] = 
 {"Sv. Šebastiána, muèeníka",

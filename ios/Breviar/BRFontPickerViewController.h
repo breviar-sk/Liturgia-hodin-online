@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BRViewController.h"
 
 @class BRFontPickerViewController;
 
@@ -14,7 +15,7 @@
 - (void)fontPicker:(BRFontPickerViewController *)fontPicker didPickFont:(UIFont *)font;
 @end
 
-@interface BRFontPickerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface BRFontPickerViewController : BRViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property(strong) NSString *fontFamily;
 @property NSInteger fontSize;

@@ -9,25 +9,21 @@
 #import "BRAppDelegate.h"
 #import "BRDataSource.h"
 #import "BRPrayerListViewController.h"
+#import "BRSettings.h"
+#import "TestFlight.h"
 
 @implementation BRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Google Analytics
-    
-    // Optional: automatically send uncaught exceptions to Google Analytics.
+    // Initialize Google Analytics
     [GAI sharedInstance].trackUncaughtExceptions = YES;
-    
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 60;
-    
-    // Optional: set Logger to VERBOSE for debug information.
-//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    
-    // Initialize tracker.
-    __unused id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47206216-1"];
-    
+    [GAI sharedInstance].dispatchInterval = 20;
+    // [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+	__unused id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-47206216-1"];
+	
+	// Initialize TestFlight
+	[TestFlight takeOff:@"73264b41-5b39-4179-bf3d-b58a5e4f1185"];
     
 	// Initialize UI
     if ([UINavigationBar instancesRespondToSelector:@selector(barTintColor)]) {

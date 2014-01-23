@@ -422,7 +422,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x3m-tj-Gcz">
+                                        <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x3m-tj-Gcz">
                                             <rect key="frame" x="956" y="6" width="51" height="31"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="49" id="OBQ-em-yhq"/>
@@ -433,9 +433,9 @@
                                         </switch>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="x3m-tj-Gcz" secondAttribute="trailing" constant="19" id="7Ze-k4-ytS"/>
                                         <constraint firstAttribute="bottom" secondItem="HK7-hD-kTK" secondAttribute="bottom" constant="11" id="kUU-xq-8Ry"/>
                                         <constraint firstItem="HK7-hD-kTK" firstAttribute="leading" secondItem="Z4R-s3-SOS" secondAttribute="leading" constant="15" id="nSt-Gu-job"/>
+                                        <constraint firstItem="x3m-tj-Gcz" firstAttribute="leading" secondItem="HK7-hD-kTK" secondAttribute="trailing" constant="15" id="p8f-u1-5VA"/>
                                         <constraint firstAttribute="centerY" secondItem="x3m-tj-Gcz" secondAttribute="centerY" id="ql4-1k-uuz"/>
                                         <constraint firstItem="HK7-hD-kTK" firstAttribute="top" secondItem="Z4R-s3-SOS" secondAttribute="top" constant="11" id="yX6-bB-mOx"/>
                                     </constraints>

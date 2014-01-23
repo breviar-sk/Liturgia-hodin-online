@@ -14,6 +14,9 @@
 #import "BRSettings.h"
 #import "BRUtil.h"
 #import "BRPrayerListViewController.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 
 #define CELL_NORMAL_HEIGHT			44
 #define CELL_LABEL_WIDTH			192
@@ -57,6 +60,10 @@
 	[super viewWillAppear:animated];
 	[self calculateVisibleOptions];
 	[self.tableView reloadData];
+	
+	id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+	[tracker set:kGAIScreenName value:@"Settings"];
+	[tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -251,6 +258,13 @@
 		[self.tableView insertRowsAtIndexPaths:rowsToAdd withRowAnimation:UITableViewRowAnimationBottom];
 		[self.tableView endUpdates];
 	}
+	
+	// Track changes in GA
+	id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+	[tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Settings"
+														  action:@"SetBoolOption"
+														   label:optionId
+														   value:[NSNumber numberWithBool:newValue]] build]];
 }
 
 #pragma mark -
@@ -285,12 +299,26 @@
 {
 	[[BRSettings instance] setFont:font forOption:self.currentOptionId];
 	[self.tableView reloadData];
+
+	// Track changes in GA
+	id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+	[tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Settings"
+														  action:@"SetFont"
+														   label:[font description]
+														   value:nil] build]];
 }
 
 - (void)stringOptionPicker:(BRStringOptionPickerViewController *)picker didPickOption:(NSString *)value
 {
 	[[BRSettings instance] setString:value forOption:self.currentOptionId];
 	[self.tableView reloadData];
+
+	// Track changes in GA
+	id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+	[tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Settings"
+														  action:@"SetStringOption"
+														   label:self.currentOptionId
+														   value:nil] build]];
 }
 
 @end
