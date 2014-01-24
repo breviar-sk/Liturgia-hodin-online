@@ -8658,7 +8658,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			continue;
 		if(i == JAZYK_UNDEF)
 			continue;
-#if defined(IO_ANDROID)
+#if !defined(OS_Windows_Ruby)
 		if(i == JAZYK_CZ_OP)
 			continue;
 #endif
