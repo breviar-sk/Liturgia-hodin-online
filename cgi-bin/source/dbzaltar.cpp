@@ -4112,6 +4112,25 @@ void _set_zalmy_op_dominik(short int modlitba){
 	Log("_set_zalmy_op_dominik(%s) -- end\n", nazov_modlitby(modlitba));
 }
 
+// 2014-01-24: doplnené pre OFMCap (08AUG)
+void _set_zalmy_ofmcap_dominik(short int modlitba){
+	Log("_set_zalmy_ofmcap_dominik(%s) -- begin\n", nazov_modlitby(modlitba));
+	if(modlitba == MODL_VESPERY){ // ako _set_zalmy_sviatok_duch_past()
+		set_zalm(1, modlitba, "z15.htm", "ZALM15");
+		set_zalm(2, modlitba, "z112.htm", "ZALM112");
+		set_zalm(3, modlitba, "ch_zjv15.htm", "CHVAL_ZJV15");
+	}
+	else if(modlitba == MODL_RANNE_CHVALY){
+		_set_zalmy_1nedele_rch();
+	}
+	else if(modlitba == MODL_POSV_CITANIE){
+		set_zalm(1, modlitba, "z1.htm", "ZALM1");
+		set_zalm(2, modlitba, "z21.htm", "ZALM21");
+		set_zalm(3, modlitba, "z24.htm", "ZALM24");
+	}
+	Log("_set_zalmy_ofmcap_dominik(%s) -- end\n", nazov_modlitby(modlitba));
+}
+
 // 2013-02-20: doplnené pre OP (04OKT), používa ich aj 07NOV pre CZOP; používa ich aj sv. František (04OKT pre OFM)
 void _set_zalmy_pc_1_8_16(short int modlitba){
 	Log("_set_zalmy_pc_1_8_16(%s) -- begin\n", nazov_modlitby(modlitba));
@@ -24821,14 +24840,24 @@ label_25_MAR:
 							_vlastna_cast_antifona_inv;
 
 							modlitba = MODL_POSV_CITANIE;
-							_set_zalmy_op_dominik(modlitba);
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
+								_set_zalmy_op_dominik(modlitba);
+							}// KALENDAR_SK_OFM
+							else{
+								_set_zalmy_ofmcap_dominik(modlitba);
+							}// KALENDAR_CZ_OFMCAP
 							_vlastna_cast_full(modlitba);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_full(modlitba);
 
 							modlitba = MODL_VESPERY;
-							_set_zalmy_op_dominik(modlitba);
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
+								_set_zalmy_op_dominik(modlitba);
+							}// KALENDAR_SK_OFM
+							else{
+								_set_zalmy_ofmcap_dominik(modlitba);
+							}// KALENDAR_CZ_OFMCAP
 							_vlastna_cast_full(modlitba);
 
 							_vlastna_cast_mcd_kcitresp_modl;
@@ -25017,7 +25046,13 @@ label_25_MAR:
 							_vlastna_cast_full(modlitba);
 
 							modlitba = MODL_VESPERY;
-							_set_zalmy_sviatok_panien(modlitba);
+							if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
+								_set_zalmy_sviatok_panien(modlitba);
+							}// KALENDAR_SK_OFM
+							else{
+								_set_zalmy_vesp_113_146_ef(modlitba);
+							}// KALENDAR_CZ_OFMCAP
+
 							_vlastna_cast_full(modlitba);
 
 							_vlastna_cast_mcd_kcitresp_modl; // Antifóny a žalmy sú z bežného dòa. Krátke èítanie je zo spoloènej èasti na sviatky panien. Modlitba ako na ranné chvály.
@@ -25283,6 +25318,9 @@ label_25_MAR:
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+								_vlastna_cast_benediktus;
+							}// KALENDAR_CZ_OFMCAP
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -26106,6 +26144,9 @@ label_25_MAR:
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_benediktus;
+								if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+									_vlastna_cast_prosby;
+								}// KALENDAR_CZ_OFMCAP
 								_vlastna_cast_modlitba;
 
 								modlitba = MODL_POSV_CITANIE;
@@ -26114,6 +26155,9 @@ label_25_MAR:
 
 								modlitba = MODL_VESPERY;
 								_vlastna_cast_magnifikat;
+								if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+									_vlastna_cast_prosby;
+								}// KALENDAR_CZ_OFMCAP
 								_vlastna_cast_modlitba;
 
 								break;
@@ -26204,8 +26248,16 @@ label_25_MAR:
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
 
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+								modlitba = MODL_INVITATORIUM;
+								_vlastna_cast_antifona_inv;
+							}// KALENDAR_CZ_OFMCAP
+
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus;
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}// KALENDAR_CZ_OFMCAP
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -26214,8 +26266,13 @@ label_25_MAR:
 							_vlastna_cast_2citanie;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_magnifikat;
-							_vlastna_cast_modlitba;
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+								_vlastna_cast_full_okrem_antifon(modlitba);
+							}// KALENDAR_CZ_OFMCAP
+							else{
+								_vlastna_cast_magnifikat;
+								_vlastna_cast_modlitba;
+							}// KALENDAR_SK_OFM
 
 							break;
 						}

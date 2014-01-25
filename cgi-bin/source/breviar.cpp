@@ -341,9 +341,14 @@ char *_global_buf2; // 2006-08-01: vytvorené; túto premennú tiež alokujeme
 #endif
 
 #if defined(__APPLE__) || defined(__linux) || defined(__unix) || defined(__posix)
+#ifndef LIBC_BIONIC
 // Overwrite putenv() because it causes crashes if breviar_main() is called multiple times:
 // unlike setenv(), the argument of putenv() is not copied (at least not on BSD), so
 // getenv() is likely to crash after the buffers are freed / reused.
+//
+// Android libc (bionic) has no such problems, putenv copies the values as
+// well. On the other hand, setenv seems to be not working properly there, so
+// we disable this logic for android.
 static int my_putenv(char *s) {
 	char *key = strdup(s);
 	if (!key) {
@@ -363,6 +368,7 @@ static int my_putenv(char *s) {
 	return res;
 }
 #define putenv my_putenv
+#endif /* LIBC_BIONIC */
 #endif /* unix */
 
 //---------------------------------------------------------------------

@@ -123,6 +123,7 @@
 	#define EXPORT_TO_FILE
 	#define IO_ANDROID
 	#define LITURGICKE_CITANIA_ANDROID
+	#define LIBC_BIONIC
 // android + debug log:
 #elif defined(MODEL_android_debug)
 	#define BEHAVIOUR_WEB
@@ -133,6 +134,7 @@
 	#define EXPORT_TO_FILE
 	#define IO_ANDROID
 	#define LITURGICKE_CITANIA_ANDROID
+	#define LIBC_BIONIC
 // ostré Windows/RUBY:
 #elif defined(MODEL_Windows_RUBY)
 	#define BEHAVIOUR_WEB

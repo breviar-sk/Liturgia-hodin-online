@@ -471,11 +471,16 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 	Log("prilep_request_options() -- zaèiatok...\n");
 
 	// 2006-07-31: pridané odovzdanie parametra pre jazyk
+	// 2014-01-24: fix pre Android (nastavenie jazyka v menu vs. v HTML forme): vdy nastavova (prilepova) jazyk
+#ifndef IO_ANDROID
 	if(_global_jazyk != JAZYK_SK){
+#endif
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_JAZYK, skratka_jazyka[_global_jazyk]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj jazyk: `%s' (2006-07-31)\n", pom3);
+#ifndef IO_ANDROID
 	}
+#endif
 
 	// 2010-08-04: pridané odovzdanie parametra pre kalendár
 	// 2010-09-14: podmienka opravená; ak nie je kalendár urèenı resp. je všeobecnı pre danı jazyk, nie je potrebné ho exportova
