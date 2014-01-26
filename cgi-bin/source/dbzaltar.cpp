@@ -27868,7 +27868,15 @@ label_25_MAR:
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
 
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+								modlitba = MODL_INVITATORIUM;
+								_vlastna_cast_antifona_inv;
+							}// KALENDAR_CZ_OFMCAP
+
 							modlitba = MODL_RANNE_CHVALY;
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}// KALENDAR_CZ_OFMCAP
 							_vlastna_cast_benediktus;
 							_vlastna_cast_modlitba;
 
@@ -27877,8 +27885,13 @@ label_25_MAR:
 							_vlastna_cast_2citanie;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_magnifikat;
-							_vlastna_cast_modlitba;
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+								_vlastna_cast_full_okrem_antifon(modlitba);
+							}// KALENDAR_CZ_OFMCAP
+							else{
+								_vlastna_cast_magnifikat;
+								_vlastna_cast_modlitba;
+							}// KALENDAR_SK_OFM
 
 							break;
 						}
@@ -28437,6 +28450,7 @@ label_25_MAR:
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_benediktus;
+							_vlastna_cast_prosby;
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -28445,6 +28459,7 @@ label_25_MAR:
 
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_magnifikat;
+							_vlastna_cast_prosby;
 							_vlastna_cast_modlitba;
 
 							break;
