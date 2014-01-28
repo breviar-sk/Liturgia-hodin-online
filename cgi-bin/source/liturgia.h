@@ -596,6 +596,7 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define FORCE_BRAT_KRESP_PROSBY  8
 #define FORCE_BRAT_2CITANIE     16
 #define FORCE_BRAT_ANTIFONY_MCD 32
+#define FORCE_BRAT_HYMNUS       64
 
 // stringy parametrov vstupu pre MODL_OPT..., ktore generovanie modlitby ovplyvnuju
 // option 1
