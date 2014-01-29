@@ -107,8 +107,13 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p>
-<b>Nové ve verzi v1.9.5:</b>
+<p><b>Nové ve verzi v1.9.6:</b>
+<ul>
+<li> Vlastní kapucínské texty
+<li> Opravy chyb
+</ul>
+
+<p><b>Nové ve verzi v1.9.5:</b>
 <ul>
 <li> Informace o aplikaci, rozšíření menu
 <li> Nová ikona

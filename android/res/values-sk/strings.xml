@@ -53,8 +53,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p>
-<b>Nové vo verzii v1.9.5:</b>
+<p><b>Nové vo verzii v1.9.6:</b>
+<ul>
+<li> Rozličné opravy chýb
+</ul>
+
+<p><b>Nové vo verzii v1.9.5:</b>
 <ul>
 <li> Liturgické čítania: úpravy a doplnenia
 <li> Informácie o aplikácii, rozšírenie menu

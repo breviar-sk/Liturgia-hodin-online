@@ -10,7 +10,7 @@
 #import "BRSettings.h"
 
 @interface BRWebViewController ()
-
+@property(strong) NSString *oldHtmlSource;
 @end
 
 @implementation BRWebViewController
@@ -59,7 +59,7 @@
         self.webView.scrollView.indicatorStyle = UIScrollViewIndicatorStyleDefault;
     }
 	
-	NSString *body =
+	NSString *htmlSource =
 	[NSString stringWithFormat:
 	 @"<!DOCTYPE html>\n"
 	 "<html><head>\n"
@@ -75,8 +75,11 @@
 	 settings.prayerFontFamily,
 	 self.htmlContent];
 	
-	NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-	[self.webView loadHTMLString:body baseURL:baseURL];
+	if (![htmlSource isEqual:self.oldHtmlSource]) {
+		NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+		[self.webView loadHTMLString:htmlSource baseURL:baseURL];
+		self.oldHtmlSource = htmlSource;
+	}
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

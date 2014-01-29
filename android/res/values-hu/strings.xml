@@ -107,8 +107,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p>
-<b>Újdonságok a v1.9.5 verzióban:</b>
+<p><b>Újdonságok a v1.9.6 verzióban:</b>
+<ul>
+<li> Különböző javítások
+</ul>
+
+<p><b>Újdonságok a v1.9.5 verzióban:</b>
 <ul>
 <li> Új ikon
 <li> Az alkalmazásról (névjegy)

@@ -21,21 +21,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	// Get current language (based on UI language)
-	NSArray *availableLanguages = @[@"sk", @"cs", @"hu", @"en"];
-	NSString *lang = @"en";
-	for (NSString *l in [NSLocale preferredLanguages]) {
-		if ([availableLanguages containsObject:l]) {
-			lang = l;
-			break;
-		}
-	}
-	
 	// Determine about.htm location
+	BRSettings *settings = [BRSettings instance];
+	
+	NSString *lang = [settings stringForOption:@"j"];
 	NSDictionary *langDirs = @{@"sk": @"html/include",
 							   @"cs": @"html/include_cz",
-							   @"hu": @"html/include_hu",
-							   @"en": @"html"};
+							   @"hu": @"html/include_hu"};
 	
 	NSString *filename = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"htm" inDirectory:[langDirs objectForKey:lang]];
 	

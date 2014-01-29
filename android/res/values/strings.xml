@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.9.5</string>
+    <string name="version">v1.9.6</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -106,8 +106,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p>
-<b>News in v1.9.5:</b>
+<p><b>News in v1.9.6:</b>
+<ul>
+<li> Various fixes
+</ul>
+
+<p><b>News in v1.9.5:</b>
 <ul>
 <li> Liturgical readings (SK only)
 <li> About info, new menu items
