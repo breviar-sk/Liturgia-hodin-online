@@ -31,6 +31,7 @@ import java.io.IOException;
 
 import sk.breviar.android.Alarms;
 import sk.breviar.android.CompatibilityHelper11;
+import sk.breviar.android.CompatibilityHelper19;
 import sk.breviar.android.LangSelect;
 import sk.breviar.android.Server;
 import sk.breviar.android.Util;
@@ -150,7 +151,7 @@ public class Breviar extends Activity {
       if (Build.VERSION.SDK_INT < 19) {  // pre-KitKat
         wv.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
       } else {
-        wv.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
+        CompatibilityHelper19.SetLayoutAlgorithmTextAutosizing(wv);
       }
       wv.getSettings().setUseWideViewPort(false);
       wv.setInitialScale(scale);

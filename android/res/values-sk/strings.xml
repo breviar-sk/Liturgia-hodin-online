@@ -53,6 +53,11 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<p><b>Nové vo verzii v1.9.7:</b>
+<ul>
+<li> Opravená kompatibilita s Android 2.1 a starším.
+</ul>
+
 <p><b>Nové vo verzii v1.9.6:</b>
 <ul>
 <li> Kompletné propriá pre františkánsku rodinu

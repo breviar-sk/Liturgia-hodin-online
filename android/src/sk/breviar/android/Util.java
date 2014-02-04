@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.util.Log;
 import android.webkit.WebView;
 import android.widget.CheckBox;
@@ -17,6 +18,7 @@ import android.widget.CheckBox;
 import java.util.GregorianCalendar;
 
 import sk.breviar.android.AlarmReceiver;
+import sk.breviar.android.CompatibilityHelper8;
 
 public class Util {
   static final String prefname = "BreviarPrefs";
@@ -142,23 +144,27 @@ public class Util {
 
   static public Dialog createHtmlDialog(Activity act, String content) {
     if (content == null) return null;
-      WebView wv = new WebView(act);
+    WebView wv = new WebView(act);
+    if (Build.VERSION.SDK_INT < 8) {
+      wv.loadData(content, "text/html; charset=utf-8", "utf-8");
+    } else {
+      
       try {
-        wv.loadData(android.util.Base64.encodeToString(
-                        content.getBytes("UTF-8"),
-                        android.util.Base64.DEFAULT),
+        wv.loadData(CompatibilityHelper8.Base64EncodeToString(
+                        content.getBytes("UTF-8")),
                     "text/html; charset=utf-8", "base64");
       } catch (java.io.UnsupportedEncodingException e) {
         wv.loadData("unsupported encoding utf-8", "text/html", null);
       }
-      return new AlertDialog.Builder(act)
-             .setView(wv)
-             .setCancelable(false)
-             .setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                 public void onClick(DialogInterface dialog, int id) {
-                      dialog.cancel();
-                 }
-             })
-             .create();
+    }
+    return new AlertDialog.Builder(act)
+           .setView(wv)
+           .setCancelable(false)
+           .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+               public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+               }
+           })
+           .create();
   }
 }
