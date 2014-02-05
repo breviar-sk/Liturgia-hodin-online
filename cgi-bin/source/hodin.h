@@ -3384,7 +3384,7 @@ const char *text_FEB_04_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_04_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Jozefa z Leonissy, kòaza, èlena 1. rádu",
- "",
+ "Sv. Josefa z Leonessy, knìze",
  "",
  "",
  "",

@@ -1,3 +1,7 @@
+.appeal {
+	font-weight: bold;
+}
+
 /* 2013-12-13 class .antiphon for antihpons */
 /* for HU/CZ first/second/third-ant is used; for SK ant-first/second/third is used */
 .antiphon.first-ant:before {
@@ -18,7 +22,7 @@
     font-weight: bold;
 }
 
-.antiphon.ant:before, {
+.antiphon.ant:before {
     color: #ff0000;
     content: 'Ant. ';
     font-weight: bold;
@@ -134,8 +138,8 @@ div.hymn, div.responsory, div.readings {
 }
 
 /* 2013-09-09 class .preces for prayers and intercessions */
-.preces p { 
-	font-weight: normal; 
+.preces  { 
+	font-weight: bold; 
 }
 
 .preces p.partR, p.partV, p.intro { 
@@ -153,7 +157,7 @@ div.hymn, div.responsory, div.readings {
 
 .preces p.resp { 
 	font-style: italic; 
-	font-weight: normal; 
+	font-weight: bold; 
 	margin: 0; 
 	padding-bottom: 0.3em; 
 	padding-left: 1.2em; 
