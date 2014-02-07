@@ -987,8 +987,9 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_SK_CM                     12
 #define KALENDAR_CZ_OPRAEM                 13
 #define KALENDAR_CZ_OFMCAP                 14
+#define KALENDAR_CZ_CSSR                   15
 
-#define POCET_KALENDAROV                   14
+#define POCET_KALENDAROV                   15
 
 // filenames for special calendars / názov súbora pre kalendáre
 extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];
