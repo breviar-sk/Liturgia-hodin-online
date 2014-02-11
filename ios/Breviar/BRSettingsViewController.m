@@ -156,7 +156,7 @@
 		
 		cell.optionId = optionId;
 		cell.fontLabel.font = font;
-		cell.fontLabel.text = [NSString stringWithFormat:@"%@, %dpx", fontName, fontSize];
+		cell.fontLabel.text = [NSString stringWithFormat:@"%@, %ldpx", fontName, (long)fontSize];
 		
 		return cell;
 	}

@@ -26,7 +26,7 @@
 	
 	NSString *lang = [settings stringForOption:@"j"];
 	NSDictionary *langDirs = @{@"sk": @"html/include",
-							   @"cs": @"html/include_cz",
+							   @"cz": @"html/include_cz",
 							   @"hu": @"html/include_hu"};
 	
 	NSString *filename = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"htm" inDirectory:[langDirs objectForKey:lang]];

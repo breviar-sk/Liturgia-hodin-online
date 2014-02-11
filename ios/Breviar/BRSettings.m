@@ -61,6 +61,14 @@ static BRSettings *_instance;
 		// Set default language by locale
 		// (the block above already set a language, but we may override it)
 		if (lang == nil) {
+#ifdef BREVIAR_LANG
+#define xstr(s) str(s)
+#define str(s) #s
+			[self setString:[NSString stringWithCString:xstr(BREVIAR_LANG) encoding:NSUTF8StringEncoding] forOption:LANG_OPTION];
+			[self setBool:NO forOption:@"multiLang"];
+#else
+			[self setBool:YES forOption:@"multiLang"];
+			
 			NSArray *supportedLanguages = [self stringOptionsForOption:LANG_OPTION];
 			NSLocale *locale = [NSLocale currentLocale];
 			
@@ -86,6 +94,7 @@ static BRSettings *_instance;
 			else if ([supportedLanguages containsObject:countryCode]) {
 				[self setString:countryCode forOption:LANG_OPTION];
 			}
+#endif
 		}
         
         [userDefaults synchronize];

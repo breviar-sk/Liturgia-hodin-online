@@ -58,6 +58,14 @@
         self.view.backgroundColor = [UIColor colorWithHex:0xFBFCD7];
         self.webView.scrollView.indicatorStyle = UIScrollViewIndicatorStyleDefault;
     }
+    
+    // Padding for iPad
+    NSString *padding;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        padding = @"64px 50px 0px 50px";
+    } else {
+        padding = @"64px 0px 0px 0px";
+    }
 	
 	NSString *htmlSource =
 	[NSString stringWithFormat:
@@ -68,10 +76,11 @@
 	 "	<link rel='stylesheet' type='text/css' href='breviar-ios.css'>\n"
 	 "  %@\n"
 	 "</head>\n"
-	 "<body style='padding-top: 64px; font: %dpx %@'>%@</body>\n"
+	 "<body style='padding: %@; font: %ldpx %@;'>%@</body>\n"
 	 "</html>",
 	 extraStylesheets,
-	 settings.prayerFontSize,
+     padding,
+	 (long)settings.prayerFontSize,
 	 settings.prayerFontFamily,
 	 self.htmlContent];
 	

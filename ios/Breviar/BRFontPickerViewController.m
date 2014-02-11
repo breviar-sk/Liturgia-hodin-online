@@ -58,7 +58,7 @@ static CGFloat componentSizes[] = {
 	if (familyIndex != NSNotFound) {
 		[self.pickerView selectRow:familyIndex inComponent:BRFontFamilyComponent animated:NO];
 	}
-	NSUInteger sizeIndex = [[BRFontHelper instance].availableSizes indexOfObject:[NSNumber numberWithInt:self.fontSize]];
+	NSUInteger sizeIndex = [[BRFontHelper instance].availableSizes indexOfObject:@(self.fontSize)];
 	if (sizeIndex != NSNotFound) {
 		[self.pickerView selectRow:sizeIndex inComponent:BRFontSizeComponent animated:NO];
 	}
@@ -126,10 +126,10 @@ static CGFloat componentSizes[] = {
 	NSString *html = [NSString stringWithFormat:
 					  @"<!DOCTYPE html>\n"
 					  "<html><body>"
-					  "<body style='font: %dpx %@; -webkit-text-size-adjust: none;'>"
+					  "<body style='font: %ldpx %@; -webkit-text-size-adjust: none;'>"
 					  "<p>Te Deum laudamus:<br>te Dominum confitemur.<br>Te aeternum Patrem<br>omnis terra veneratur.<br>Tibi omnes Angeli; tibi caeli et universae Potestates;<br>Tibi Cherubim et Seraphim<br>incessabili voce proclamant:<br>Sanctus, Sanctus, Sanctus, Dominus Deus Sabaoth.</p>"
 					  "</body></html>",
-					  self.fontSize, self.fontFamily];
+					  (long)self.fontSize, self.fontFamily];
 	[self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://breviar.sk"]];
 }
 

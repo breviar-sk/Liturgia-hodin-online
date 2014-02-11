@@ -292,7 +292,7 @@ static NSString *liturgicalColorImages[] = {
 	NSInteger currentDay = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:[NSDate date]];
 	NSInteger selectedDay = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:self.date];
     
-    int dayDiff = ABS(currentDay - selectedDay);
+    NSInteger dayDiff = ABS(currentDay - selectedDay);
 	
     if (dayDiff < 3) {
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

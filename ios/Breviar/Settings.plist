@@ -16,6 +16,8 @@
 					<string>stringOption</string>
 					<key>default</key>
 					<string>sk</string>
+					<key>visibility</key>
+					<string>multiLang == TRUE</string>
 					<key>options</key>
 					<array>
 						<string>cz</string>

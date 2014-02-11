@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>${UI_LANG}</string>
 	<key>CFBundleDisplayName</key>
 	<string>Breviary</string>
 	<key>CFBundleExecutable</key>
@@ -51,7 +51,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>sk.breviar</string>
+	<string>${APP_BUNDLE_ID}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
