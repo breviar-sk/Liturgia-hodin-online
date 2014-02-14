@@ -2114,8 +2114,8 @@ void _set_kompletorium_nedela_spolocne(short int modlitba){
 		_global_modl_kompletorium.pocet_zalmov = 1;
 		set_zalm(1, modlitba, "z91.htm", "ZALM91");
 	}
-	// ToDo: nemalo by tu by radšej: set_hymnus_kompletorium_obd()?
-	set_hymnus(DEN_NEDELA, _global_den.tyzzal, modlitba);
+	// hymnus pre CZ: pre prvé kompletórium bude kotva 'p_HYMNUS_NE' = 'k_HYMNUS_SO', pre druhé kompletórium kotva 'k_HYMNUS_NE'
+	set_hymnus(DEN_NEDELA, _global_den.tyzzal, modlitba); // set_hymnus() v skutoènosti volá pre kompletórium funkciu set_hymnus_kompletorium_obd()
 	set_antifony(DEN_NEDELA, _global_den.tyzzal, 2 /* zvazok - pre kompletórium sa nepouíva, len kvôli posv. èítaniu */, modlitba);
 	set_nunc_dimittis(modlitba); // 2013-06-28: doplnené pod¾a zaltar_kompletorium()
 	Log("_set_kompletorium_nedela_spolocne(%d) -- end\n", modlitba);
@@ -2156,8 +2156,7 @@ void _set_kompletorium_slavnost(short int modlitba){
 	Log("_set_kompletorium_slavnost(%d) -- end\n", modlitba);
 }// _set_kompletorium_slavnost()
 
-// 2009-01-05: vo ve¾konoènej a vianoènej oktáve sa pre bené dni berie 1. alebo 2. nede¾né kompletórium; 
-// doteraz však nebola monos bra "prvé kompletórium", preto som dorobil túto funkciu
+// 2009-01-05: vo ve¾konoènej a vianoènej oktáve sa pre bené dni berie 1. alebo 2. nede¾né kompletórium; doteraz však nebola monos bra "prvé kompletórium", preto som dorobil túto funkciu
 void _set_kompletorium_slavnost_oktava(short int modlitba, short int litobd, short int ktore){
 	// popis parametrov:
 	//	- "ktore" -		urèuje, èi ide o kompletórium po prvıch vešperách slávnosti (1) alebo po druhıch vešperách (2) 
@@ -2183,7 +2182,9 @@ void _set_kompletorium_slavnost_oktava(short int modlitba, short int litobd, sho
 		_global_modl_kompletorium.pocet_zalmov = 2;
 		set_zalm(1, modlitba, "z4.htm", "ZALM4");
 		set_zalm(2, modlitba, "z134.htm", "ZALM134");
-		set_hymnus(DEN_NEDELA, _global_den.tyzzal, modlitba); // set_hymnus() v skutoènosti volá pre kompletórium funkciu set_hymnus_kompletorium_obd()
+		// 2014-02-13: keïe funkcia sa pouíva napevno s modlitba == MODL_KOMPLETORIUM, pre prvé kompletórium je kvôli CZ hymnom potrebné nastavi deò na sobotu / alebo modlitbu na prvé kompletórium | upozornil Václav Slouk <slouk@biskupstvi.cz>
+		// hymnus pre CZ: pre prvé kompletórium bude kotva 'p_HYMNUS_NE' = 'k_HYMNUS_SO', pre druhé kompletórium kotva 'k_HYMNUS_NE'
+		set_hymnus(DEN_SOBOTA, _global_den.tyzzal, modlitba); // set_hymnus() v skutoènosti volá pre kompletórium funkciu set_hymnus_kompletorium_obd()
 		set_antifony(DEN_NEDELA, _global_den.tyzzal, 9 /* zvazok - pre kompletórium sa nepouívalo, vyuité na špeciálne nastavenie */, modlitba);
 		// 2009-04-16: opravená modlitba pre ve¾konoènú oktávu
 		// 2011-04-29: aj pre vianoènú oktávu
@@ -25589,7 +25590,7 @@ label_25_MAR:
 					}
 
 					if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)){
-						// 2013-12-11, e-mail od Mareka OPraem: památka sv. Rocha (16. srpna): texty ze Spoleènıch textù o svatıch muích: o svatıch, lkteøí vynikali milosrdnımi skutky. (Pozn.: V našem „propriu“, èili v té A5 èervené knize, je odkaz na tyto spoleèné texty; vlastní je pouze modlitba – ta se však mùe vzít ze spoleènıch textù…).
+						// 2013-12-11, e-mail od Mareka OPraem: památka sv. Rocha (16. srpna): texty ze Spoleènıch textù o svatıch muích: o svatıch, kteøí vynikali milosrdnımi skutky. (Pozn.: V našem „propriu“, èili v té A5 èervené knize, je odkaz na tyto spoleèné texty; vlastní je pouze modlitba – ta se však mùe vzít ze spoleènıch textù…).
 						if(poradie_svaty == 2){
 
 							file_name_vlastny_kalendar(_global_kalendar);
@@ -33506,9 +33507,7 @@ label_03NOV:
 						_vlastna_cast_2citanie;
 
 						modlitba = MODL_VESPERY;
-						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)){ // 2008-11-29: odvetvené len pre Slovensko; 2011-11-08: pridané aj HU
-							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-						}
+						_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 						_vlastna_cast_magnifikat;
 						_vlastna_cast_modlitba;
 
@@ -34418,7 +34417,13 @@ label_8_DEC:
 						_set_zalmy_sviatok_marie(modlitba);
 						// 2006-02-03: celkom dobrá intuícia :) almy nastavené
 
-						_vlastna_cast_mcd_ant_kcitresp_modl;
+						// 2014-02-13: CZ má vlastnı hymnus
+						if(_global_jazyk == JAZYK_CZ){
+							_vlastna_cast_mcd_full;
+						}
+						else{
+							_vlastna_cast_mcd_ant_kcitresp_modl;
+						}
 
 						// 2006-02-04: ak je modlitba cez deò na slávnos, tak by sa mali poui almy z doplnkovej psalmódie
 						if(_global_den.denvt != DEN_NEDELA) {
