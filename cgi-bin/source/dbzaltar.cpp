@@ -14199,8 +14199,8 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							}// nie je_privileg
 							break;
 						}
-						_global_svaty1.typslav = SLAV_SPOMIENKA;
-						_global_svaty1.smer = 10; // povinnÈ spomienky podæa vöeobecnÈho kalend·ra
+						_global_svaty1.typslav = SLAV_SVIATOK;
+						_global_svaty1.smer = 8; // miestne sviatky | 2014-02-14: D. Dian upozornil, ûe to uû nie je vo vöeobecnom slovenskom kalend·ri, iba ako votÌvna sv. omöa (t. j. ani æubovoæn· spomienka)
 						_global_svaty1.typslav_lokal = LOKAL_SLAV_14_FEB_CYRIL_METOD;
 						mystrcpy(_global_svaty1.meno, text_FEB_14[_global_jazyk], MENO_SVIATKU);
 						// 2010-11-22: Ëesk˝ brevi·r nem· moûnosù pre duch. pastierov "pre viacer˝ch" -- MODL_SPOL_CAST_DUCH_PAST_VIACERI // nie je to tu treba, lebo je to vetva len pre SK; ponechanÈ historicky
