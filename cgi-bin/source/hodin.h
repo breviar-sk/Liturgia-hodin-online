@@ -7645,7 +7645,7 @@ const char *text_OKT_21_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_21_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Voršíly a jejich družek, muèednic",
+ "Sv. Voršily a jejich družek, muèednic",
  "",
  "",
  "",
