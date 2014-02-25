@@ -33319,6 +33319,10 @@ label_03NOV:
 						_vlastna_cast_modlitba;
 
 						modlitba = MODL_POSV_CITANIE;
+						if(_global_jazyk == JAZYK_CZ){
+							// 2014-02-24: odvetvené pre èeský breviáø
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+						}
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
 
