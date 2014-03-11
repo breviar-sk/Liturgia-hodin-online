@@ -9602,6 +9602,11 @@ void _spolocna_cast_modlitba_rozne(short int modlitba, char *_anchor_pom, char *
 	_set_antifona3(modlitba, _file, _anchor);\
 	set_LOG_svsv;\
 }
+#define _spolocna_cast_ant_iba_3_po {\
+	sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3, POSTNA_PRIPONA);\
+	_set_antifona3(modlitba, _file, _anchor);\
+	set_LOG_svsv;\
+}
 // specialne veci pre sviatky viacerych mucenikov
 #define _spolocna_cast_ant2_po {\
 	sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA2, POSTNA_PRIPONA);\
@@ -10923,7 +10928,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			}
 			_spolocna_cast_full(modlitba);
 			if((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN)){
-				_spolocna_cast_ant1_3_po;
+				_spolocna_cast_ant_iba_3_po;
 			}
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_kresp_ve;
@@ -15346,6 +15351,10 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
+
+							// nemá popis; 2014-03-10: doplnené
+							set_popis_dummy();
+
 							break;
 							// všetko je zo spoloènej èasti na výroèie posviacky chrámu
 						}
