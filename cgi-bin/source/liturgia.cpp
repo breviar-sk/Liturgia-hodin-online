@@ -1255,6 +1255,7 @@ _struct_dm por_den_mesiac_dm(short int poradie, short int rok){
 	result.spolcast =
 		_encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	mystrcpy(result.meno, STR_EMPTY, MENO_SVIATKU);
+	mystrcpy(result.lc_str_id, STR_EMPTY, MAX_LC_STR_ID);
 	return result;
 }
 
@@ -1293,6 +1294,7 @@ void init_global_pm_sobota(void){
 	_global_pm_sobota.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	_global_pm_sobota.farba = LIT_FARBA_BIELA;
 	_global_pm_sobota.kalendar = KALENDAR_VSEOBECNY;
+	mystrcpy(_global_pm_sobota.lc_str_id, _global_den.lc_str_id, MAX_LC_STR_ID);
 }
 
 //---------------------------------------------------------------------
@@ -1311,6 +1313,7 @@ void _dm_popolcova_streda(short int rok, short int _vn){
 	_global_result.spolcast= _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	_global_result.farba = LIT_FARBA_FIALOVA;
 	_global_result.kalendar = KALENDAR_VSEOBECNY;
+	mystrcpy(_global_result.lc_str_id, "0P3", MAX_LC_STR_ID);
 }// _dm_popolcova_streda()
 
 void _dm_nanebovstupenie(short int rok, short int _vn){
@@ -1334,6 +1337,7 @@ void _dm_nanebovstupenie(short int rok, short int _vn){
 	_global_result.spolcast= _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	_global_result.farba = LIT_FARBA_BIELA;
 	_global_result.kalendar = KALENDAR_VSEOBECNY;
+	mystrcpy(_global_result.lc_str_id, "6V4", MAX_LC_STR_ID);
 }// _dm_nanebovstupenie()
 
 void _dm_zoslanie_ducha(short int rok, short int _vn){
@@ -1349,6 +1353,7 @@ void _dm_zoslanie_ducha(short int rok, short int _vn){
 	_global_result.spolcast= _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	_global_result.farba = LIT_FARBA_CERVENA;
 	_global_result.kalendar = KALENDAR_VSEOBECNY;
+	mystrcpy(_global_result.lc_str_id, "8V", MAX_LC_STR_ID);
 }// _dm_zoslanie_ducha()
 
 void _dm_prva_adventna_nedela(short int rok, short int p2){
@@ -1364,6 +1369,7 @@ void _dm_prva_adventna_nedela(short int rok, short int p2){
 	_global_result.tyzzal  = 1;
 	_global_result.farba = LIT_FARBA_FIALOVA;
 	_global_result.kalendar = KALENDAR_VSEOBECNY;
+	mystrcpy(_global_result.lc_str_id, "1A", MAX_LC_STR_ID);
 }// _dm_prva_adventna_nedela()
 
 void _dm_svatej_rodiny(short int rok){
@@ -1389,6 +1395,7 @@ void _dm_svatej_rodiny(short int rok){
 	_global_result.tyzzal  = 1;
 	_global_result.farba = LIT_FARBA_BIELA;
 	_global_result.kalendar = KALENDAR_VSEOBECNY;
+	mystrcpy(_global_result.lc_str_id, "SvR", MAX_LC_STR_ID);
 }// _dm_svatej_rodiny()
 
 void _dm_krst_krista_pana(short int rok){
@@ -1413,6 +1420,7 @@ void _dm_krst_krista_pana(short int rok){
 	_global_result.tyzzal  = 1;
 	_global_result.farba = LIT_FARBA_BIELA;
 	_global_result.kalendar = KALENDAR_VSEOBECNY;
+	mystrcpy(_global_result.lc_str_id, "1C", MAX_LC_STR_ID);
 }// _dm_krst_krista_pana()
 
 void _dm_velkonocna_nedela(short int rok, short int _vn){
@@ -1429,6 +1437,7 @@ void _dm_velkonocna_nedela(short int rok, short int _vn){
 	_global_result.tyzzal  = 1;
 	_global_result.farba = LIT_FARBA_BIELA;
 	_global_result.kalendar = KALENDAR_VSEOBECNY;
+	mystrcpy(_global_result.lc_str_id, "1V", MAX_LC_STR_ID);
 }// _dm_velkonocna_nedela()
 
 //---------------------------------------------------------------------
@@ -1519,6 +1528,7 @@ void Log(_struct_dm g){
 	Log_struktura_dm("   meno:   %s\n", g.meno);
 	_struct_sc sc = _decode_spol_cast(g.spolcast);
 	Log_struktura_dm("   spolcast: (%d) %s, (%d) %s, (%d) %s\n", sc.a1, nazov_spolc(sc.a1), sc.a2, nazov_spolc(sc.a2), sc.a3, nazov_spolc(sc.a3));
+	Log_struktura_dm("   lc_str_id: %s\n", g.lc_str_id);
 }
 
 // 2010-05-21: rozšírené kvôli spomienkam a ¾ubovo¾ným spomienkam v pôstnom období (zobrazenie po modlitbe dòa pôstnej férie)

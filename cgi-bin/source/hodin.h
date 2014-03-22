@@ -3076,7 +3076,7 @@ const char *text_JAN_19_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_19_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Jakuba Sal&egrave;sa a Viliama Saultemouchea, Ignáca de Azevedo a spoloèníkov, "HTML_LINE_BREAK"Jakuba Bonnauda a spoloèníkov, muèeníkov",
+{"Bl. Jakuba Sal&#232;sa a Viliama Saultemouchea, Ignáca de Azevedo a spoloèníkov, "HTML_LINE_BREAK"Jakuba Bonnauda a spoloèníkov, muèeníkov", // &egrave;
  "",
  "",
  "",
@@ -3556,7 +3556,7 @@ const char *text_FEB_14[POCET_JAZYKOV + 1] =
  "Szent Cirill szerzetes és Szent Metód püspök,"HTML_LINE_BREAK"Európa társvédõszentjei",
  };
 const char *text_FEB_15_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Klaudia La Colombi&egrave;ra, kòaza",
+{"Sv. Klaudia La Colombi&#232;ra, kòaza", // &egrave;
  "",
  "",
  "",
@@ -3916,7 +3916,7 @@ const char *text_APR_13[POCET_JAZYKOV + 1] =
  "Szent I. Márton pápa és vértanú",
  };
 const char *text_APR_13_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Margity z Citt&agrave; di Castello, panny",
+{"Bl. Margity z Citt&#224; di Castello, panny", // &agrave;
  "",
  "",
  "",
@@ -7003,7 +7003,7 @@ const char *text_SEP_22_2_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_22_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Ignáca zo Santhie, kòaza, èlena 1. rádu",
- "Sv. Ignáce ze Santhi&agrave;, knìze",
+ "Sv. Ignáce ze Santhi&#224;, knìze", // &agrave;
  "",
  "",
  "",
@@ -7635,7 +7635,7 @@ const char *text_OKT_21_CZ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_21_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Petra z Citt&agrave; di Castello, kòaza",
+{"Bl. Petra z Citt&#224; di Castello, kòaza", // &agrave;
  "",
  "",
  "",

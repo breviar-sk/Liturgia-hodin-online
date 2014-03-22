@@ -1088,6 +1088,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_LIT_NAME         "LiturgicalCelebrationName"
 #define XML_LIT_COLOR        "LiturgicalCelebrationColor"
 #define XML_LIT_CALENDAR     "LiturgicalCalendar"
+#define XML_LIT_READINGS     "LiturgicalReadingsId"
 
 // element XML_INFO with sub-elements
 #define XML_INFO             "Info"

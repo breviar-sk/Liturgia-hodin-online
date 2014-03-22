@@ -83,6 +83,7 @@
 #include <stdlib.h>
 
 #define MENO_SVIATKU 250
+#define MAX_LC_STR_ID 50
 
 // 2006-07-11: Pridané kvôli jazykovým mutáciám 
 // 2006-12-12: Pridaná latinèina, kódy sú pod¾a ISO 639-1 (až na èeštinu)
@@ -741,6 +742,7 @@ struct dm{
 	char meno[MENO_SVIATKU]; // nazov prip. sviatku
 	short int farba;      // liturgická farba pre slávenie
 	short int kalendar;   // špecifikácia, o aký kalendár ide: všeobecný danej cirkevnej provincie alebo nejaký reho¾ný a pod.
+	char lc_str_id[MAX_LC_STR_ID]; // liturgické èítania: identifikátor pod¾a lc.kbs.sk
 };
 typedef struct dm _struct_dm;
 

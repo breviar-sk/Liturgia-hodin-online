@@ -8812,9 +8812,9 @@ label_24_DEC:
 			}
 		}// poradie_svateho < PORADIE_PM_SOBOTA
 		else{
-			Log("-- Error: poradie_svateho == %d (max.: %d)\n", poradie_svateho, PORADIE_PM_SOBOTA);
+			Log("-- Error/liturgicke_obdobie: poradie_svateho == %d (max.: %d)\n", poradie_svateho, PORADIE_PM_SOBOTA);
 			ALERT;
-			Export("Error: poradie_svateho == %d (max.: %d)\n", poradie_svateho, PORADIE_PM_SOBOTA);
+			Export("Error/liturgicke_obdobie: poradie_svateho == %d (max.: %d)\n", poradie_svateho, PORADIE_PM_SOBOTA);
 		}// poradie_svateho > PORADIE_PM_SOBOTA
 	}// if(poradie_svateho > 0)
 	// v ïalších èastiach 'else' platí, že poradie_svateho == 0 (UNKNOWN_PORADIE_SVATEHO)
@@ -11234,6 +11234,8 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 			Log("nastavil som _global_svaty(%d) na default (bud neurcene alebo z _global_den)\n", p);
 			_global_svaty(p).farba = LIT_FARBA_NEURCENA;
 			_global_svaty(p).kalendar = KALENDAR_NEURCENY;
+			// 2014-03-21: nastavenie lc_str_id
+			mystrcpy(_global_svaty(p).lc_str_id, STR_EMPTY, MAX_LC_STR_ID);
 		}
 	}
 	else{
@@ -35072,6 +35074,8 @@ label_8_DEC:
 			mystrcpy(_global_svaty1.meno, text_NEPOSKVRNENEHO_SRDCA_PM[_global_jazyk], MENO_SVIATKU);
 		}
 		_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+		// 2014-03-21: nastavenie lc_str_id pre spomienku Nepoškvrneného Srdca Panny Márie
+		mystrcpy(_global_svaty1.lc_str_id, "10V6", MAX_LC_STR_ID);
 	}// srdca panny marie
 
 	if(_global_svaty1.typslav == SLAV_NEURCENE){
@@ -35088,6 +35092,8 @@ label_8_DEC:
 				_global_svaty(i + 1).den = den;
 				_global_svaty(i + 1).mesiac = mesiac;
 				Log("  %d. %d: %s (typslav = %d) [smer = %d]\n", _global_svaty(i + 1).den, _global_svaty(i + 1).mesiac, _global_svaty(i + 1).meno, _global_svaty(i + 1).typslav, _global_svaty(i + 1).smer);
+				// 2014-03-21: nastavenie lc_str_id pre sviatky svätých
+				sprintf(_global_svaty(i + 1).lc_str_id, "%d.%d.", den, mesiac);
 			}
 		}
 	}
