@@ -9997,6 +9997,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 
 // 2012-08-23; upravenÈ 2013-08-05 | zoznam[0] znaËÌ poËet; zoznam[1] = _global_den; zoznam[2] aû [MAX_POCET_SVATY+1] = _global_svaty(1)..._global_svaty(MAX_POCET_SVATY); zoznam[POCET_ZOZNAM-1] = _global_pm_sobota
 #define POCET_ZOZNAM (MAX_POCET_SVATY + 3)
+#define PORADIE_SVATY_NULL -1
 short int zoznam[POCET_ZOZNAM]; 
 // prv· hodnota, t. j. zoznam[0], urËuje poËet; ak je ËÌslo > 10, znamen· to, ûe ide o * 10 kvÙli inform·cii o tom, ûe sa neexportuje modlitba cez deÚ a kompletÛrium pre æubovoænÈ spomienky
 // od druhej hodnoty reprezentuje: _global_den, _global_svaty(1)..._global_svaty(MAX_POCET_SVATY), _global_pm_sobota
@@ -10004,7 +10005,7 @@ short int zoznam[POCET_ZOZNAM];
 void init_zoznam(void){
 	zoznam[0] = 0;
 	for(int i = 1; i < POCET_ZOZNAM; i++){
-		zoznam[i] = -1;
+		zoznam[i] = PORADIE_SVATY_NULL;
 	}
 }// init_zoznam()
 
@@ -10019,7 +10020,7 @@ void Log_zoznam(void){
 
 void _export_rozbor_dna_zoznam(short int typ){
 	short int pocet = 1; // poËet z·znamov, ktorÈ sa exportuj˙ (Ëi uû riadky tabuæky alebo len zoznam)
-	short int poradie_svaty, poradie_svaty_vedie;
+	short int poradie_svaty = PORADIE_SVATY_NULL, poradie_svaty_vedie = PORADIE_SVATY_NULL;
 	short int aj_feria = NIE;
 
 	Log("_export_rozbor_dna_zoznam(): zaËiatok...\n");
@@ -10035,7 +10036,7 @@ void _export_rozbor_dna_zoznam(short int typ){
 			podmienka_svaty_vedie = ANO;
 			poradie_svaty_vedie = i + 1; // vyberie posledn˝!!!
 		}
-		else if(_global_den.smer > _global_svaty(i + 1).smer){
+		if(_global_den.smer > _global_svaty(i + 1).smer){
 			podmienka_svaty_vedie_pom = ANO;
 			poradie_svaty_vedie = i + 1; // vyberie posledn˝!!!
 		}
@@ -10088,6 +10089,7 @@ void _export_rozbor_dna_zoznam(short int typ){
 		Log("NIE nedele a prik·zanÈ sviatky; _global_pocet_svatych (%d) > 0...\n", _global_pocet_svatych);
 		// sviatky (spomienky, ls) svatych
 		// 2010-07-28: doplnenÈ alternatÌvne porovnanie aj s _global_svaty2.smer (kvÙli dominik·nskej sl·vnosti 8.8.)
+		// 2014-03-22: v skutoËnosti mÙûe byù podmienka_svaty_vedie_pom == ANO, a pritom podmienka_svaty_vedie == NIE
 		if((podmienka_svaty_vedie_pom == ANO) ||
 			((_global_den.smer == 9) && (_global_svaty1.smer == 12))){
 			Log("sv‰t˝ m· prednosù...\n");
@@ -10203,7 +10205,7 @@ void _export_rozbor_dna_interpretuj_zoznam(short int export_typ, short int typ, 
 
 		Log("_export_rozbor_dna_interpretuj_zoznam(): i == %d, poradie_svaty == zoznam[i] == %d...\n", i, poradie_svaty);
 
-		if(poradie_svaty < 0)
+		if(poradie_svaty <= PORADIE_SVATY_NULL)
 			continue;
 
 		if(poradie_svaty >= 10){
