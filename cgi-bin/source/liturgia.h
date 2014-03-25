@@ -1505,8 +1505,9 @@ void analyzuj_rok(short int year);
 	a.prik = NIE_JE_PRIKAZANY_SVIATOK; \
 	a.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA); \
 	mystrcpy(a.meno, STR_UNDEF, MENO_SVIATKU); \
-	a.farba = LIT_FARBA_NEURCENA;\
-	a.kalendar = KALENDAR_NEURCENY;\
+	a.farba = LIT_FARBA_NEURCENA; \
+	a.kalendar = KALENDAR_NEURCENY; \
+	mystrcpy(a.lc_str_id, STR_EMPTY, MAX_LC_STR_ID); \
 }
 
 // inicializacne definy pridane 2003-08-13

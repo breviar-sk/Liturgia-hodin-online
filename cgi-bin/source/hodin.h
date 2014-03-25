@@ -1357,13 +1357,13 @@ const char *html_text_Nedelne_pismeno[POCET_JAZYKOV + 1] = {"Nede¾né písmeno", "
 const char *html_text_Nedelne_pismena[POCET_JAZYKOV + 1] = {"Nede¾né písmená", "Nedìlní písmena", "Sunday letters", "", "", "Nedìlní písmena", "A vasárnap betûje"};
 
 const char *html_text_Od_prvej_adv_atd[POCET_JAZYKOV + 1] = {
-	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c</span>.\n",
-	"Od první nedìle adventní v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c</span>.\n",
-	"From the 1st Advent Sunday in the year %d (%s) continues <a href=\"%s%s\">liturgical year</a> <"HTML_SPAN_BOLD">%c</span>.\n",
-	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c</span>.\n",
+	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
+	"Od první nedìle adventní v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
+	"From the 1st Advent Sunday in the year %d (%s) continues <a href=\"%s%s\">liturgical year</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
+	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
 	"",
-	"Od první nedìle adventní v roce %d (%s) pokraèuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c</span>.\n",
-	"%d (%s) advent elsõ vasárnapjától az <"HTML_SPAN_BOLD">%c</span> <a href=\"%s%s\">liturgikus év</a> folytatódik.\n",
+	"Od první nedìle adventní v roce %d (%s) pokraèuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
+	"%d (%s) advent elsõ vasárnapjától az <"HTML_SPAN_BOLD">%c"HTML_SPAN_END" <a href=\"%s%s\">liturgikus év</a> folytatódik.\n",
 };
 
 const char *html_text_Po_Velkej_noci_atd[POCET_JAZYKOV + 1] = {
@@ -1377,23 +1377,23 @@ const char *html_text_Po_Velkej_noci_atd[POCET_JAZYKOV + 1] = {
 };
 
 const char *html_text_Prikazane_sviatky_v_roku[POCET_JAZYKOV + 1] = {
-	"<p><"HTML_SPAN_RED">Prikázané sviatky v roku %s:</span>\n",
-	"<p><"HTML_SPAN_RED">Pøikázané svátky v roce %s:</span>\n",
-	"<p><"HTML_SPAN_RED">Obliged celebrations in the year %s:</span>\n",
-	"<p><"HTML_SPAN_RED">Prikázané sviatky v roku %s:</span>\n",
-	"<p><"HTML_SPAN_RED">Prikázané sviatky v roku %s:</span>\n",
-	"<p><"HTML_SPAN_RED">Pøikázané svátky v roce %s:</span>\n",
-	"<p><"HTML_SPAN_RED">%s kötelezõ ünnepei:</span>\n",
+	"<p><"HTML_SPAN_RED">Prikázané sviatky v roku %s:"HTML_SPAN_END"\n",
+	"<p><"HTML_SPAN_RED">Pøikázané svátky v roce %s:"HTML_SPAN_END"\n",
+	"<p><"HTML_SPAN_RED">Obliged celebrations in the year %s:"HTML_SPAN_END"\n",
+	"<p><"HTML_SPAN_RED">Prikázané sviatky v roku %s:"HTML_SPAN_END"\n",
+	"<p><"HTML_SPAN_RED">Prikázané sviatky v roku %s:"HTML_SPAN_END"\n",
+	"<p><"HTML_SPAN_RED">Pøikázané svátky v roce %s:"HTML_SPAN_END"\n",
+	"<p><"HTML_SPAN_RED">%s kötelezõ ünnepei:"HTML_SPAN_END"\n",
 };
 
 const char *html_text_Jednotlive_mesiace_roku[POCET_JAZYKOV + 1] = {
-	"<"HTML_SPAN_RED">Jednotlivé mesiace roku %s:</span>\n",
-	"<"HTML_SPAN_RED">Jednotlivé mìsíce v roce %s:</span>\n",
-	"<"HTML_SPAN_RED">Individual months of the year %s:</span>\n",
-	"<"HTML_SPAN_RED">Jednotlivé mesiace roku %s:</span>\n",
-	"<"HTML_SPAN_RED">Jednotlivé mesiace roku %s:</span>\n",
-	"<"HTML_SPAN_RED">Jednotlivé mìsíce v roce %s:</span>\n",
-	"<"HTML_SPAN_RED">Egyes hónapok %s-ben(-ban):</span>\n",
+	"<"HTML_SPAN_RED">Jednotlivé mesiace roku %s:"HTML_SPAN_END"\n",
+	"<"HTML_SPAN_RED">Jednotlivé mìsíce v roce %s:"HTML_SPAN_END"\n",
+	"<"HTML_SPAN_RED">Individual months of the year %s:"HTML_SPAN_END"\n",
+	"<"HTML_SPAN_RED">Jednotlivé mesiace roku %s:"HTML_SPAN_END"\n",
+	"<"HTML_SPAN_RED">Jednotlivé mesiace roku %s:"HTML_SPAN_END"\n",
+	"<"HTML_SPAN_RED">Jednotlivé mìsíce v roce %s:"HTML_SPAN_END"\n",
+	"<"HTML_SPAN_RED">Egyes hónapok %s-ben(-ban):"HTML_SPAN_END"\n",
 };
 
 const char *str_doplnkova_psalmodia[POCET_JAZYKOV + 1] = 
@@ -2704,13 +2704,13 @@ const char *html_text_detaily_explain[POCET_JAZYKOV + 1] =
 
 // 2010-06-04: text pre popis do invitatória
 const char *html_text_inv_slavaotcu[POCET_JAZYKOV + 1] = 
-{"<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Nasleduje</span> <span class=\"small\">Sláva Otcu</span> <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna.</span>", 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Následuje</span> <span class=\"small\">Sláva Otci</span> <"HTML_SPAN_RED_SMALL">a opakuje se antifona.</span>", 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Follows</span> <span class=\"small\">Glory...</span> <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna.</span>", 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Nasleduje</span> <span class=\"small\">Gloria Patri</span> <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna.</span>", 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Nasleduje</span> <span class=\"small\">Sláva Otcu</span> <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna.</span>", 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Následuje</span> <span class=\"small\">Sláva Otci</span> <"HTML_SPAN_RED_SMALL">a opakuje se antifona.</span>", 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Következik a</span> <span class=\"small\">Dicsõség az Atyának</span> <"HTML_SPAN_RED_SMALL">és megismételjük az antifónát.</span>", 
+{"<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END, 
+ "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
+ "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Follows"HTML_SPAN_END" <span class=\"small\">Glory..."HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END, 
+ "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Gloria Patri"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END, 
+ "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END, 
+ "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
+ "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Következik a"HTML_SPAN_END" <span class=\"small\">Dicsõség az Atyának"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">és megismételjük az antifónát."HTML_SPAN_END, 
 };
 
 // 2013-02-22: page navigation (top, bottom)

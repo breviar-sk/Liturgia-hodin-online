@@ -955,6 +955,11 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 #define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE))
 
+#define HTML_DIV_RED_SMALL  "div class=\"redsmall\""
+#define HTML_DIV_END  "</div>"
+
+#define HTML_SPAN_END "</span>"
+
 #define HTML_SPAN_NORMAL    "span class=\"normal\""
 #define HTML_SPAN_ITALIC    "span class=\"it\""
 #define HTML_SPAN_BOLD      "span class=\"bold\""
