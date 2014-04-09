@@ -4668,47 +4668,33 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	// 2008-07-03: nemusí to nutne by nede¾a; vtedy si to všetko slávnosti musia nastavi samotné - bolo tu "(_global_den.denvt == DEN_NEDELA) && " - odstránené | ponechané jedine pre modlitbu cez deò, ktorá v slávnosti padne mimo nedele
 	// 2008-07-11: doplnená aj slávnos sv. cyrila a metoda (mono by bolo lepšie, ak by to bolo pod¾a stupòa (sviatok pána resp. slávnos svätca) v cezroènom období)
 	// 2008-10-09: doplnená pre èeskı breviáø slávnos sv. václava
-	// 2009-01-06: doplnená poznámka k Premeneniu Pána
 	// 2010-09-28: èas prevzatá do: init_global_string(), hoci tam sa pouije len pre smer == 5 (sviatky pána); slávnosti sa riešia samostatne
-    // 2011-06-30: cyril a metod odvetvenı pre SK a CZ only
-	// 2011-07-22: doplnené pre HU: 20AUG
-	// 2011-10-13: zapoznámkované 14SEP kvôli CZ // nespúšalo sa toti zaltar_zvazok(), a teda ani zaltar_kompletorium()
-	// 2012-10-22: odpoznámkované 14SEP -- napr. pre rok 2014 potom nedávalo prvé vešpery, ak padne na nede¾u!
-	// 2014-01-10: doplnené 02FEB (ak padne na nede¾u, má prvé vešpery)
 	Log("najprv treba skontrolova, èi nejde o deò [pôvodne nede¾u], na ktorú pripadol sviatok premenenia pána a podobné... (ak áno, nenastavuj niè)\n");
-	if(
-		((_global_den.den == 6) && (_global_den.mesiac - 1 == MES_AUG)) ||
-		((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)) ||
-		((_global_den.den == 15) && (_global_den.mesiac - 1 == MES_AUG)) ||
-		((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) ||
-		((_global_den.den == 5) && (_global_den.mesiac - 1 == MES_JUL) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) ||
-		((_global_den.den == 20) && (_global_den.mesiac - 1 == MES_AUG) && (_global_jazyk == JAZYK_HU)) ||
-		((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) ||
-		((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP) && (_global_jazyk != JAZYK_CZ) ) ||
-		((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV))
-		){
-			Log("premenenie pána || obetovanie pána || petra a pavla || povıšenie sv. kría || všetkıch svätıch || nanebovzatia PM...\n");
-			if((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI)){
-				Log("keïe nejde o modlitbu cez deò, preskakujeme nastavenia (všetky boli nastavené z vlastnej èasti)...\n");
-				// 2009-01-06: pre Premenenie Pána chıbalo nastavenie kompletória vo vlastnej èasti, preto sa dávalo chybne; doplnené na príslušnom mieste
-				return;
-			}
-			else 
-				if(_global_den.denvt == DEN_NEDELA){
-					Log("keïe ide o modlitbu cez deò, nastavujeme len almy z nedele pre MCD a preskakujeme ostatné nastavenia (všetky ostatné boli nastavené z vlastnej èasti)...\n");
-					if((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)){
-						Log(" pre modlitbu cez deò 02FEB nastavujeme aj antifóny k psalmódii zo dòa...\n");
-						zaltar_zvazok(den, tyzzal, _global_den.litobd, ZALTAR_ANT_ZALMY_HYMNUS_MCD);
-					}
-					else{
-						zaltar_zvazok(den, tyzzal, _global_den.litobd, ZALTAR_IBA_ZALMY_HYMNUS_MCD);
-					}
-					return;
+	// 2014-04-08: presunuté do #define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST | sviatky Pána a svätıch, ktoré majú prednos pred Cezroènou nede¾ou a majú (ak padnú na nede¾u) svoje vlastné prvé vešpery
+	if(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST){
+		Log("premenenie pána || obetovanie pána || petra a pavla || povıšenie sv. kría || všetkıch svätıch || nanebovzatia PM...\n");
+		if((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI)){
+			Log("keïe nejde o modlitbu cez deò, preskakujeme nastavenia (všetky boli nastavené z vlastnej èasti)...\n");
+			// 2009-01-06: pre Premenenie Pána chıbalo nastavenie kompletória vo vlastnej èasti, preto sa dávalo chybne; doplnené na príslušnom mieste
+			return;
+		}
+		else{
+			if(_global_den.denvt == DEN_NEDELA){
+				Log("keïe ide o modlitbu cez deò, nastavujeme len almy z nedele pre MCD a preskakujeme ostatné nastavenia (všetky ostatné boli nastavené z vlastnej èasti)...\n");
+				if((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)){
+					Log(" pre modlitbu cez deò 02FEB nastavujeme aj antifóny k psalmódii zo dòa...\n");
+					zaltar_zvazok(den, tyzzal, _global_den.litobd, ZALTAR_ANT_ZALMY_HYMNUS_MCD);
 				}
 				else{
-					Log("keïe ide o modlitbu cez deò MIMO nedele, nastavujeme všetky èasti ak nasleduje - zo dòa...\n");
-					// iaden return :)
+					zaltar_zvazok(den, tyzzal, _global_den.litobd, ZALTAR_IBA_ZALMY_HYMNUS_MCD);
 				}
+				return;
+			}
+			else{
+				Log("keïe ide o modlitbu cez deò MIMO nedele, nastavujeme všetky èasti ak nasleduje - zo dòa...\n");
+				// iaden return :)
+			}
+		}
 	}
 	else{
 		Log("NEjde o: premenenie pána || obetovanie pána || petra a pavla || povıšenie sv. kría || všetkıch svätıch || nanebovzatia PM...\n");

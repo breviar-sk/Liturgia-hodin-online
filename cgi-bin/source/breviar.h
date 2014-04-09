@@ -394,6 +394,26 @@ extern short int _global_opt_export_date_format;
 // 2014-03-21: aj pre SK vöeobecnÈ kvÙli 2014-10-26 | bolo: #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) (((_global_svaty(i).kalendar == KALENDAR_CZ_OFMCAP) || (_global_svaty(i).kalendar == KALENDAR_CZ_OPRAEM) || (_global_svaty(i).kalendar == KALENDAR_SK_OP) || (_global_svaty(i).kalendar == KALENDAR_CZ_OP) || (_global_svaty(i).kalendar == KALENDAR_SK_CSSR) || (_global_svaty(i).kalendar == KALENDAR_SK_SVD) || (_global_svaty(i).kalendar == KALENDAR_SK_SJ) || (_global_svaty(i).kalendar == KALENDAR_SK_SDB) || (_global_svaty(i).kalendar == KALENDAR_SK_OFM) || (_global_svaty(i).typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty(i).smer == 4) || (_global_svaty(i).smer == 8) || (_global_svaty(i).smer == 11)))
 #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) ((_global_svaty(i).smer == 4) || (_global_svaty(i).smer == 8) || (_global_svaty(i).smer == 11))
 
+// 2014-04-08: presunutÈ do #define -- bolo na 2 rÙznych miestach | sviatky P·na a sv‰t˝ch, ktorÈ maj˙ prednosù pred CezroËnou nedeæou a maj˙ (ak padn˙ na nedeæu) svoje vlastnÈ prvÈ veöpery
+// ------------- pÙvodnÈ pozn·mky ------------- 
+// 2011-06-30: cyril a metod odvetven˝ pre SK a CZ only
+// 2011-07-22: doplnenÈ pre HU: 20AUG
+// 2011-10-13: zapozn·mkovanÈ 14SEP kvÙli CZ // nesp˙öùalo sa totiû zaltar_zvazok(), a teda ani zaltar_kompletorium()
+// 2012-10-22: odpozn·mkovanÈ 14SEP -- napr. pre rok 2014 potom ned·valo prvÈ veöpery, ak padne na nedeæu!
+// 2014-01-10: doplnenÈ 02FEB (ak padne na nedeæu, m· prvÈ veöpery)
+// 2014-04-08: 14SEP platÌ aj pre CZ (ak padne na nedeæu, m· prvÈ veöpery)
+#define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST (\
+((_global_den.den == 6) && (_global_den.mesiac - 1 == MES_AUG)) || \
+((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)) || \
+((_global_den.den == 15) && (_global_den.mesiac - 1 == MES_AUG)) || \
+((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) || \
+((_global_den.den == 5) && (_global_den.mesiac - 1 == MES_JUL) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
+((_global_den.den == 20) && (_global_den.mesiac - 1 == MES_AUG) && (_global_jazyk == JAZYK_HU)) || \
+((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
+((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP)) || \
+((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV)) \
+)
+
 // 2011-03-18: presunutÈ samostatne na jedno jedinÈ miesto
 #define PODMIENKA_EXPORTOVAT_KALENDAR ( \
 ((_global_jazyk == JAZYK_SK) && !((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK) )) \

@@ -5736,22 +5736,10 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		// poradie_svateho == UNKNOWN_PORADIE_SVATEHO
 		// 2010-09-28: odvetvenÈ kvÙli t˝m prÌpadom, keÔ na nedeæu padne sviatok p·na, ale pouûÌva sa poradie_svaty == UNKNOWN_PORADIE_SVATEHO == 0 
 		//             Ëasù prevzat· z: liturgicke_obdobie(), zaËiatok funkcie; hoci tu sa pouûije len pre smer == 5 (sviatky p·na); sl·vnosti sa rieöia samostatne
-		// 2011-06-30: cyril a metod odvetven˝ pre SK a CZ only
-		// 2011-07-22: doplnenÈ pre HU: 20AUG
-		// 2011-10-13: zapozn·mkovanÈ 14SEP kvÙli CZ // nesp˙öùalo sa totiû zaltar_zvazok(), a teda ani zaltar_kompletorium()
-		// 2012-10-22: odpozn·mkovanÈ 14SEP -- napr. pre rok 2014 potom ned·valo prvÈ veöpery, ak padne na nedeæu!
 		Log("_global_den.smer == %d\n", _global_den.smer);
 		Log("_global_svaty1.smer == %d\n", _global_svaty1.smer);
-		if((_global_svaty1.smer == 5) && (
-			((_global_den.den == 6) && (_global_den.mesiac - 1 == MES_AUG)) ||
-			((_global_den.den == 15) && (_global_den.mesiac - 1 == MES_AUG)) ||
-			((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) ||
-			((_global_den.den == 5) && (_global_den.mesiac - 1 == MES_JUL) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) ||
-			((_global_den.den == 20) && (_global_den.mesiac - 1 == MES_AUG) && (_global_jazyk == JAZYK_HU)) ||
-			((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) ||
-			((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP) && (_global_jazyk != JAZYK_CZ) ) ||
-			((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV))
-			)){
+		// 2014-04-08: presunutÈ do #define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST | sviatky P·na a sv‰t˝ch, ktorÈ maj˙ prednosù pred CezroËnou nedeæou a maj˙ (ak padn˙ na nedeæu) svoje vlastnÈ prvÈ veöpery
+		if((_global_svaty1.smer == 5) && (PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST)){
 			// do _local_den priradim dane slavenie
 			_local_den = _global_svaty(1);
 #ifdef LITURGICKE_CITANIA_ANDROID
