@@ -1964,7 +1964,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							}
 						}
 						if(EXPORT_REFERENCIA){
-							Export("%s", katbuff);
+							// 2014-04-10: nezlomite¾né medzery
+							Export("%s", convert_nonbreaking_spaces(katbuff));
 						}
 						if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_REFERENCIE) == BIT_OPT_0_REFERENCIE){
 							if(EXPORT_REFERENCIA){
