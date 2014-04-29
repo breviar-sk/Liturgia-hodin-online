@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -36,7 +37,7 @@ import sk.breviar.android.LangSelect;
 import sk.breviar.android.Server;
 import sk.breviar.android.Util;
 
-public class Breviar extends Activity {
+public class Breviar extends Activity implements View.OnLongClickListener {
     static String scriptname = "cgi-bin/l.cgi";
     static final int DIALOG_ABOUT = 1;
     static final int DIALOG_NEWS = 2;
@@ -51,6 +52,7 @@ public class Breviar extends Activity {
     boolean fullscreen = false;
 
     int appEventId = -1;
+    PowerManager.WakeLock lock;
 
     void goHome() {
       Log.v("breviar", "goHome");
@@ -133,6 +135,9 @@ public class Breviar extends Activity {
       fullscreen = settings.getBoolean("fullscreen", false);
       String opts = settings.getString("params", "");
 
+      lock = ((PowerManager)getSystemService(POWER_SERVICE))
+                 .newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "breviar");
+
       // Initialize server very early, to avoid races
       initServer(opts);
 
@@ -202,7 +207,7 @@ public class Breviar extends Activity {
             view.postDelayed(new Runnable() {
               @Override
               public void run() {
-                final_view.evaluateJavascript("document.getElementById('contentRoot').style.width = window.innerWidth;", null);
+                final_view.evaluateJavascript("document.getElementById('contentRoot').style.width = window.innerWidth - 8;", null);
                 scaleChangedRunning = false;
               }
             }, 100);
@@ -226,6 +231,9 @@ public class Breviar extends Activity {
           super.onPageFinished(view, url);
         }
       } );
+
+      wv.setOnLongClickListener(this);
+      wv.setLongClickable(true);
 
       ((Button)findViewById(R.id.forwardBtn)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
@@ -305,8 +313,19 @@ public class Breviar extends Activity {
 
     @Override
     protected void onResume() {
+      if (BreviarApp.getDimLock(this)) {
+        lock.acquire();
+      }
       if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
       super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+      super.onPause();
+      if (BreviarApp.getDimLock(this)) {
+        lock.release();
+      }
     }
 
     @Override
@@ -484,5 +503,20 @@ public class Breviar extends Activity {
         return true;
       }
       return super.onKeyUp(keyCode, event);
+    }
+
+    // handle long click in webview
+    public boolean onLongClick (View v) {
+      if (!fullscreen) {
+        boolean shown = !BreviarApp.getNavBarShown(this);
+        BreviarApp.setNavBarShown(this, shown);
+        if (shown) {
+          findViewById(R.id.navbar).setVisibility(View.VISIBLE);
+        } else {
+          findViewById(R.id.navbar).setVisibility(View.GONE);
+        }
+        return true;
+      }
+      return false;
     }
 }

@@ -48,6 +48,30 @@ public class BreviarApp extends Application {
     editor.commit();
   }
 
+  static public boolean getDimLock(Context ctx) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    return settings.getBoolean("dim_lock", true);
+  }
+
+  static public void setDimLock(Context ctx, boolean dim_lock) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    SharedPreferences.Editor editor = settings.edit();
+    editor.putBoolean("dim_lock", dim_lock);
+    editor.commit();
+  }
+
+  static public boolean getNavBarShown(Context ctx) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    return settings.getBoolean("nav_bar_shown", true);
+  }
+
+  static public void setNavBarShown(Context ctx, boolean shown) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    SharedPreferences.Editor editor = settings.edit();
+    editor.putBoolean("nav_bar_shown", shown);
+    editor.commit();
+  }
+
   static public void initLocale(Context ctx) {
     Configuration cfg = new Configuration();
     if (getOverrideLocale(ctx)) {

@@ -14,6 +14,7 @@
     <string name="lang_hu">Maďarčina</string>
     <string name="override_locale">Použiť tento jazyk aj v ovládacích prvkoch</string>
     <string name="vol_buttons">Použiť tlačidlá hlasitosti na listovanie</string>
+    <string name="dimlock">Nezhasínať obrazovku</string>
 
     <string name="alarms">Upozornenia</string>
     <string name="alarms_title">Nastavenie upozornení:</string>
@@ -53,6 +54,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<p><b>Nové vo verzii v1.9.8:</b>
+<ul>
+<li> Dlhé stlačenie skryje navigačnú lištu.
+<li> Pridaná možnosť nezhasínať obrazovku.
+</ul>
+
 <p><b>Nové vo verzii v1.9.7:</b>
 <ul>
 <li> Opravená kompatibilita s Android 2.1 a starším.

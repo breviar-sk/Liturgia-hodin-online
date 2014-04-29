@@ -68,6 +68,16 @@ public class LangSelect extends Activity {
 
       vol_buttons_check.setChecked(BreviarApp.getVolButtons(getApplicationContext()));
 
+      CheckBox dimlock_check = (CheckBox)findViewById(R.id.dimlock_check);
+
+      dimlock_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          BreviarApp.setDimLock(getApplicationContext(), ((CheckBox)v).isChecked());
+        }
+      });
+
+      dimlock_check.setChecked(BreviarApp.getDimLock(getApplicationContext()));
+
       ((Button)findViewById(R.id.about)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
           showDialog(DIALOG_ABOUT);

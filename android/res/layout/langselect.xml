@@ -36,6 +36,9 @@
     <CheckBox android:id="@+id/vol_buttons_check" android:text="@string/vol_buttons"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+    <CheckBox android:id="@+id/dimlock_check" android:text="@string/dimlock"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <Button android:id="@+id/about" android:text="@string/about" 
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 

@@ -92,3 +92,64 @@
  { "132050703", "Jak 4,13-17;  49,2-3.6-11; Mk 9,38-40", "Blahoslavení chudobní v duchu, lebo ich je nebeské krá¾ovstvo", "" },  /* 2014-02-26  */
  { "132050704", "Jak 5,1-6;  49,14-20; Mk 9,41-43.45.47-50", "Blahoslavení chudobní v duchu, lebo ich je nebeské krá¾ovstvo", "" },  /* 2014-02-27  */
  { "132050705", "Jak 5,9-12;  103,1-4.8-9.11-12; Mk 10,1-12", "Milostivı a milosrdnı je Pán", "" },  /* 2014-02-28  */
+ { "132050706", "Jak 5,13-20;  141,1-3.8; Mk 10,13-16", "Moja modlitba nech sa vznáša k tebe ako kadidlo", "" },  /* 2014-03-01  */
+ { "06A0508", "Iz 49,14-15;  62,2-3.6-9; 1Kor 4,1-5; Mt 6,24-34", "Iba v Bohu spoèiò, duša moja", "" },  /* 2014-03-02  */
+ { "132050801", "1Pt 1,3-9;  111,1-2.5-6.9-10; Mk 10,17-27", "Pán je milosrdnı a milostivı, svoju zmluvu má stále na mysli", "" },  /* 2014-03-03  */
+ { "132050802", "1Pt 1,10-16;  98,1-4; Mk 10,28-31", "Uzreli všetky konèiny zeme spásu nášho Boha", "" },  /* 2014-03-04  */
+ { "02APopolcova streda", "Joel 2,12-18;  51,3-6.12-14.17; 2Kor 5,20-6,2; Mt 6,1-6.16-18", "Zmiluj sa, Pane, lebo sme zhrešili", "" },  /* 2014-03-05 Popolcová streda */
+ { "092060004", "Dt 30,15-20;  1,1-4.6; Lk 9,22-25", "Blaenı èlovek, èo v Pána skladá dôveru", "" },  /* 2014-03-06  */
+ { "092060005", "Iz 58,1-9b;  51,3-6.18-19; Mt 9,14-15", "Boe, ty nepohàdaš srdcom skrúšenım a poníenım", "" },  /* 2014-03-07  */
+ { "092060006", "Iz 58,9c-14;  86,1-6; Lk 5,27-32", "Uká mi, Pane, svoju cestu a budem kráèa v tvojej pravde", "" },  /* 2014-03-08  */
+ { "02A060100", "Gn 2,7-9.3,1-7a;  51,3-6.12-14.17; Rim 5,12-19 /kr./ Rim 5,12.17-19; Mt 4,1-11", "Zmiluj sa, Pane, lebo sme zhrešili", "" },  /* 2014-03-09  */
+ { "092060101", "Lv 19,1-2.11-18;  19,8-10.15; Mt 25,31-46", "Tvoje slová, Pane, sú Duch a ivot", "" },  /* 2014-03-10  */
+ { "092060102", "Iz 55,10-11;  34,4-7.16-17. 18-19; Mt 6,7-15", "Pán vyslobodí spravodlivıch zo všetkıch tiesní", "" },  /* 2014-03-11  */
+ { "092060103", "Jon 3,1-10;  51,3-4.12-13.18-19; Lk 11,29-32", "Boe, ty nepohàdaš srdcom skrúšenım a poníenım", "" },  /* 2014-03-12  */
+ { "092060104", "Est 4,17;  138,1-8; Mt 7,7-12", "Vyslyš ma, Pane, veï a vzıvam", "" },  /* 2014-03-13  */
+ { "092060105", "Ez 18,21-28;  130,1-8; Mt 5,20-26", "Pane, ty si milostivı a my ti chceme v bázni slúi", "" },  /* 2014-03-14  */
+ { "092060106", "Dt 26,16-19;  119,1-2.4-5.7-8; Mt 5,43-48", "Blaenı, kto kráèa pod¾a zákona Pánovho", "" },  /* 2014-03-15  */
+ { "02A060200", "Gn 12,1-4a;  33,4.5.18-20.22; 2Tim 1,8b-10; Mt 17,1-9", "Tvoje milosrdenstvo, Pane, nech je nad nami, ako dúfame v teba", "" },  /* 2014-03-16  */
+ { "092060201", "Dan 9,4b-10;  79,8-9.11.13; Lk 6,36-38", "Pane, nezaobchádzaj s nami pod¾a našich hriechov", "" },  /* 2014-03-17  */
+ { "092060202", "Iz 1,10.16-20;  50,8-9.16-17.21.23; Mt 23,1-12", "Uká nám, Pane, cestu spásy", "" },  /* 2014-03-18  */
+ { "03ASv. Jozefa, zenicha Panny Marie", "2Sam 7,4-5a.12-14a.16;  89,2-5.27.29; Rim 4,13.16-18.22; Mt 1,16.18-21.24a /al./ Lk 2,41-51a", "Jeho rod bude trva naveky", "" },  /* 2014-03-19 Sv. Jozefa, enícha Panny Márie */
+ { "092060204", "Jer 17,5-10;  1,1-4.6; Lk 16,19-31", "Blaenı èlovek èo v Pána skladá dôveru", "" },  /* 2014-03-20  */
+ { "092060205", "Gen 37,3-4.12-13a.17b-28;  105,16-21; Mt 21,33-43.45-46", "Pamätáme, Pane, na divy, èo si uèinil", "" },  /* 2014-03-21  */
+ { "092060206", "Mich 7,14-15.18-20;  103,1-4.9-12; Lk 15,1-3.11-32", "Milostivı a milosrdnı je Pán", "" },  /* 2014-03-22  */
+ { "02A060300", "Ex 17,3-7;  95,1-2.6-9; Rim 5,1-2.5-8; Jn 4,5-42 /kr./ Jn 4,5-15.19b-26.39a.40-42", "Pane, daj aby sme poèúvali tvoj hlas a nezatvrdzovali si srdcia", "" },  /* 2014-03-23  */
+ { "092060301", "2Kr 5,1-15a;  42,2-3.43,3-4; Lk 4,24-30", "Po Bohu ízni moja duša, po Bohu ivom", "" },  /* 2014-03-24  */
+ { "03AZvestovanie Pana", "Iz 7,10-14.8,10c;  40,7-11; Hebr 10,4-10; Lk 1,26-38", "H¾a prichádza Pán plni Boiu vô¾u", "" },  /* 2014-03-25 Zvestovanie Pána */
+ { "092060303", "Dt 4,1.5-9;  147,12-13.15-16.19-20; Mt 5,17-19", "Chvá¾, Jeruzalem, Pána, oslavuj, Sion, svojho Boha", "" },  /* 2014-03-26  */
+ { "092060304", "Jer 7,23-28;  95,1-2.6-9; Lk 11,14-23", "Pane, daj, aby sme poèúvali tvoj hlas a nezatvrdzovali si srdcia", "" },  /* 2014-03-27  */
+ { "092060305", "Oz 14,2-10;  81,6c-11b.14.17; Mk 12,28b-34", "Pane, ty máš slová veèného ivota", "" },  /* 2014-03-28  */
+ { "092060306", "Oz 6,1-6;  51,3-4.18-19.20-21a; Lk 18,9-14", "Boe, ty máš zá¾ubu v srdci úprimnom", "" },  /* 2014-03-29  */
+ { "02A060400", "1Sam 16,1b.6-7.10-13a;  23,1-6; Ef 5,8-14; Jn 9,1-41; /kr./ Jn 9,1.6-9.13-17.34-18", "Pán je môj pastier, niè mi nechıba", "" },  /* 2014-03-30  */
+ { "092060401", "Iz 65,17-21;  30,2.4-6.11-13b; Jn 4,43-54", "Budeme a, Pane, oslavova, e si ma vyslobodil", "" },  /* 2014-03-31  */
+ { "092060402", "Ez 47,1-9.12;  46,2-3.5-6.8-9; Jn 5,1-3.5-16", "S nami je Pán zástupov, naším útoèišom je Pán, náš Boh", "" },  /* 2014-04-01  */
+ { "092060403", "Iz 49,8-15;  145,8-9.13c-14.17-18; Jn 5,17-30", "Milostivı a milosrdnı je Pán, zhovievavı a ve¾mi láskavı", "" },  /* 2014-04-02  */
+ { "092060404", "Ex 32,7-14;  106,19-23; Jn 5,31-47", "Odpus, Pane, vinu svojmu ¾udu", "" },  /* 2014-04-03  */
+ { "092060405", "Múd 2,1a.12-22;  34,17-21.23; Jn 7,1-2.10.25-30", "Pane, buï pri tıch, èo majú srdce skrúšené", "" },  /* 2014-04-04  */
+ { "092060406", "Jer 11,18-20;  7,2-3.9b-12; Jn 7,40-53", "Pane, Boe môj, k tebe sa utiekam", "" },  /* 2014-04-05  */
+ { "02A060500", "Ez 37,12b-14;  130,1-8; Rim 8,8-11; Jn 11,1-45 /kr./ Jn 11,3-7.17.20-27.33b-45", "U Pána je milosrdenstvo a hojné vykúpenie", "" },  /* 2014-04-06  */
+ { "092060501", "Dan 13,1-9.15-17.19-30.33-62 /kr./ Dan 13,41c-62;  23,1-6; Jn 8,1-11", "Pane, nebudem sa bá zlého, lebo ty si so mnou", "" },  /* 2014-04-07  */
+ { "092060502", "Nm 21,4-9;  102,2-3.16-21; Jn 8,21-30", "Pane, vyslyš moju modlitbu a moje volanie nech dôjde ku tebe", "" },  /* 2014-04-08  */
+ { "092060503", "Dan 3,14-20.91-92.95; () Dan 3,52-56; Jn 8,31-42", "Chvála ti a sláva naveky", "" },  /* 2014-04-09  */
+ { "092060504", "Gn 17,3-9;  105,4-9; Jn 8,51-59", "Pán veène pamätá na svoju zmluvu", "" },  /* 2014-04-10  */
+ { "092060505", "Jer 20,10-13;  18,2-7; Jn 10,31-42", "V úzkosti som a vzıval, Pane, zachráò ma", "" },  /* 2014-04-11  */
+ { "092060506", "Ez 37,21-28; () Jer 31,10-13; Jn 11,45-56", "Pán nás bude strái ako pastier svoje stádo", "" },  /* 2014-04-12  */
+ { "02AKvetna nedela", "Iz 50,4-7;  22,8-9.17-20.23-24; Flp 2,6-11; Mt 26,14-27,66 /kr./ Mt 27,1-49 /; na sprievod:/ Mt 21,1-11", "Boe môj, Boe môj, preèo si ma opustil?", "" },  /* 2014-04-13 Kvetná nede¾a */
+ { "02A070601", "Iz 42,1-7;  27,1-3.13-14; Jn 12,1-11", "Pán je moje svetlo a moja spása", "" },  /* 2014-04-14  */
+ { "02A070602", "Iz 49,1-6;  71,1-6.15.17; Jn 13,21-33.36-38", "Moje ústa, Pane, budú hlása tvoju spásu", "" },  /* 2014-04-15  */
+ { "02A070603", "Iz 50,4-9b;  69,8-10.21-22.31.33-34; Mt 26,14-25", "Vo svojej ve¾kej láske vyslyš ma, Pane", "" },  /* 2014-04-16  */
+ { "02AZeleny (velky) stvrtok - Pamiatka Panovej vecere", "Ex 12,1-8.11-14;  116,12-13.15-18; 1Kor 11,23-26; Jn 13,1-15", "Tento kalich dobroreèenia je úèasou na Kristovej krvi", "" },  /* 2014-04-17 Zelenı (ve¾kı) štvrtok – Pamiatka Pánovej veèere; TODO: omša svätenia olejov */
+ { "01085", "Iz 52,13-53,12;  31,2-25; Hebr 4,14-16.5,7-9; Jn 18,1-19,42", "Otèe, do tvojich rúk porúèam svojho ducha.", "" },  /* 2014-04-18 Ve¾kı piatok */
+ { "01086", "Gn 1,1-2,2;   104,1-2a.5-6.10.12-14b.24.35c /al./	 33,4-7.12-13.20.22; Gn 22,1-18;  16,5.8-11; Ex 14,15-15,1a; () Ex 15,1b-6.17-18; Iz 54,5-14;  30,2.4-6.11-13b;  Iz 55,1-11; () Iz 12,2-6; Bar 3,9-15.32-4,4;  19,8-11; Ez 36,16-28;  42,3.5.43,3-4; Rim 6,3-11;  118,1-2.16-17.22-23; Mt 28,1-10", "", "" },  /* 2014-04-19 Biela (ve¾ká) sobota TODO: responzoria: Pane, zošli svojho Ducha a obnov tvárnos zeme; /al./ Milosti Pánovej plná je zem*/
+ { "01080", "Sk 10,34a.37-43;  118,1-2.16-23; Kol 3,1-4 /al./ 1Kor 5,6b-8; Jn 20,1-9 /al./ Mt 28,1-10 /al. veèer/ Lk 24, 13-35", "Totoje deò Krísta Pána, radujme sa, aleluja.", "" },  /* 2014-04-20 Ve¾konoèná nede¾a<br/> &#8212; Nede¾a Pánovho zmàtvychvstania */
+ { "02AVelkonocny pondelok", "Sk 2,14. 22-32;  16,1-2a.5.7-11; Mt 28,8-15", "Moje srdce sa raduje a plesá moja duša", "" },  /* 2014-04-21 Ve¾konoènı pondelok */
+ { "02AVelkonocny utorok", "Sk 2,36-41;  33,4-5.18-19.20.22; Jn 20,11-18", "Milosti Pánovej plná je zem", "" },  /* 2014-04-22 Ve¾konoènı utorok */
+ { "02AVelkonocna streda", "Sk 3,1-10;  105,1-4.6-9; Lk 24,13-35", "S radosou spievajme Pánovi a oslavujme ho", "" },  /* 2014-04-23 Ve¾konoèná streda */
+ { "02AVelkonocny stvrtok", "Sk 3,11-26;  8,2.5-9; Lk 24,35-48", "Aké vznešené je tvoje meno, Pane, Boe náš", "" },  /* 2014-04-24 Ve¾konoènı štvrtok */
+ { "02AVelkonocny piatok", "Sk 4,1-12;  118,1-2.4.22-27a; Jn 21,1-14", "Kameò, èo stavitelia zavrhli, stal sa kameòom uholnım", "" },  /* 2014-04-25 Ve¾konoènı piatok */
+ { "02AVelkonocna sobota", "Sk 4,13-21;  118,1.14-16a.18-21; Mk 16,9-15", "Vzdávame ti vïaky, Pane, Boe milosrdnı", "" },  /* 2014-04-26 Ve¾konoèná sobota */
+ { "02ANedela vo Velkonocnej oktave", "Sk 2,42-47;  118,2-4.13-15.22-24; 1Pt 1,3-9; Jn 20,19-31", "Oslavujme Pána, lebo je dobrı, lebo jeho milosrdenstvo trvá naveky", "" },  /* 2014-04-27 Nede¾a vo Ve¾konoènej oktáve */
+ { "132100201", "Sk 4,23-31;  2,1-9; Jn 3,1-8", "Šastní sú všetci, èo sa spoliehajú na Pána", "" },  /* 2014-04-28  */
+ { "132100202", "Sk 4,32-37;  93,1-2.5; Jn 3,7b-15", "Pán kra¾uje, oslavujme ho", "" },  /* 2014-04-29  */
+ { "132100203", "Sk 5,17-26;  34,2-29; Jn 3,16-21", "Pán ma vyslobodil zo všetkej hrôzy", "" },  /* 2014-04-30  */

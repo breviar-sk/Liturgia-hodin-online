@@ -77,7 +77,7 @@ Speciális köszönet: Andrea Fülöpová, Julianna Blahó.
 <p>
 <b>HTML texts</b><br/>
 SK: Juraj Vidéky et al.<br/>
-CZ: Jan Franta, Juraj Vidéky.<br/>
+CZ: Jan Franta, Vladimír Koronthály, Juraj Vidéky.<br/>
 HU: Julianna Blahó, Izing Gabriel, László Elek SJ, Juraj Vidéky.<br/>
 <p>
 <b>Android app:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
@@ -107,9 +107,15 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<p><b>Újdonságok a v1.9.8 verzióban:</b>
+<ul>
+<li> Hosszan nyomja elrejti a navigációs sávon.
+<li> Hozzáadott opció képernyőn nem olt.
+</ul>
+
 <p><b>Újdonságok a v1.9.7 verzióban:</b>
 <ul>
-<li> Különböző javítások
+<li> Korrigált kompatibilitás Android 2.1 és az idősebb.
 </ul>
 
 <p><b>Újdonságok a v1.9.6 verzióban:</b>

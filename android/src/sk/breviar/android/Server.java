@@ -33,7 +33,12 @@ public class Server extends Thread
       for (i=50000; i>20000; i--) {
         ok = true;
         try {
-          listener = new ServerSocket(i, 50, java.net.Inet4Address.getLocalHost());
+          byte[] lo = new byte[4];
+          lo[0] = 127;
+          lo[1] = 0;
+          lo[2] = 0;
+          lo[3] = 1;
+          listener = new ServerSocket(i, 50, java.net.Inet4Address.getByAddress(lo));
         } catch (IOException e) {
           ok = false;
         }
