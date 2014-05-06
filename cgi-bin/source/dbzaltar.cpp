@@ -17348,11 +17348,15 @@ label_25_MAR:
 								_vlastna_cast_modlitba;
 
 								modlitba = MODL_RANNE_CHVALY;
-								_vlastna_cast_benediktus;
+								if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
+									_vlastna_cast_benediktus;
+								}
 								_vlastna_cast_modlitba;
 
 								modlitba = MODL_VESPERY;
-								_vlastna_cast_magnifikat;
+								if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
+									_vlastna_cast_magnifikat;
+								}
 								_vlastna_cast_modlitba;
 
 								break;
@@ -17430,11 +17434,15 @@ label_25_MAR:
 								_vlastna_cast_modlitba;
 
 								modlitba = MODL_RANNE_CHVALY;
-								_vlastna_cast_benediktus;
+								if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
+									_vlastna_cast_benediktus;
+								}
 								_vlastna_cast_modlitba;
 
 								modlitba = MODL_VESPERY;
-								_vlastna_cast_magnifikat;
+								if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
+									_vlastna_cast_magnifikat;
+								}
 								_vlastna_cast_modlitba;
 
 								break;
