@@ -69,8 +69,7 @@ Podlicenční smlouva na použití textů ze dne 14. 5. 2012.<br/>
 A MKPK jóváhagyávásal.<br/>
 
 <p>
-Poďakovanie patrí všetkým, ktorí sa akýmkoľvek spôsobom pričinili o prevod textov Liturgie hodín do elektronickej podoby, 
-najväčšiu zásluhu na maďarskej verzii má Laci Elek. 
+Poďakovanie patrí všetkým, ktorí sa akýmkoľvek spôsobom pričinili o prevod textov Liturgie hodín do elektronickej podoby.
 Ďakujem za všetky podnety, upozornenia na chyby, pripomienky a námety na zlepšenia.
 
 <h3>Credits</h3>
@@ -111,6 +110,9 @@ body { background-color: #000000; color: #cccccc; }
 <ul>
 <li> Long tap hides bottom navigation bar.
 <li> Added option for not-dimming screen.
+<li> SK: Various fixes.
+<li> CZ: CSS formatting of psalms and canticles.
+<li> HU: Plenty of small fixes.
 </ul>
 
 <p><b>News in v1.9.7:</b>

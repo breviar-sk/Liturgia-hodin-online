@@ -72,7 +72,8 @@ největší zásluhu na českém projektu má p. Jan Franta.
 Děkuji za všechny podněty, upozornění na chyby, připomínky a náměty na zlepšení.
 
 <p>
-Děkuji za souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.
+Děkuji za souhlas na publikování textů Arcibiskupství pražskému, za podporu Arcibiskupství olomouckému 
+a pomoc p. Koronthálymu z Arcibiskupství pražského při úpravě textů žalmů a kantik.
 
 <h3>Credits</h3>
 <p>
@@ -110,7 +111,7 @@ body { background-color: #000000; color: #cccccc; }
 <body>
 <p><b>Nové vo verzii v1.9.8:</b>
 <ul>
-<li> Zalamování žalmů a kantik přepracováno.
+<li> CSS změny: Zalamování žalmů a kantik přepracováno.
 <li> Doplněno číslování veršů žalmů a kantik.
 <li> Dlouhé stlačení skryje spodní navigační lištu.
 <li> Přidaná možnost nezhasínat obrazovku.

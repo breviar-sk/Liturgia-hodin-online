@@ -109,8 +109,9 @@ body { background-color: #000000; color: #cccccc; }
 <body>
 <p><b>Újdonságok a v1.9.8 verzióban:</b>
 <ul>
-<li> Hosszan nyomja elrejti a navigációs sávon.
-<li> Hozzáadott opció képernyőn nem olt.
+<li> Hosszú érintésre elrejti az alsó navigációs sávot.
+<li> Új opció: a kijelző ne sötétüljön el.
+<li> Sok apró javítás.
 </ul>
 
 <p><b>Újdonságok a v1.9.7 verzióban:</b>

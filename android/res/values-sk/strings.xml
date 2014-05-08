@@ -58,6 +58,7 @@ body { background-color: #000000; color: #cccccc; }
 <ul>
 <li> Dlhé stlačenie skryje navigačnú lištu.
 <li> Pridaná možnosť nezhasínať obrazovku.
+<li> Drobné opravy chýb v textoch a v generovaní modlitieb.
 </ul>
 
 <p><b>Nové vo verzii v1.9.7:</b>
