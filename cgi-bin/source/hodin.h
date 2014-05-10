@@ -466,11 +466,11 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{"??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr"};
+{"??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb"};
 
 // filenames for special calendars / n·zov s˙bora pre kalend·re -- "pro" == propri·
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{"", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm"};
+{"", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm"};
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {"neurËen˝"
@@ -489,6 +489,7 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 ,"CZ OPRAEM"
 ,"CZ OFMCAP"
 ,"CZ CSSR"
+,"CZ SDB"
 };
 
 // doplnenÈ 2010-10-11
@@ -511,6 +512,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 ,"s vlastnÌmi texty premonstr·tskÈho ¯·du (OPraem)" // "pro premonstr·ty (OPraem)"
 ,"s vlastnÌmi kapucÌnsk˝mi texty (OFMCap)"
 ,"s vlastnÌmi texty Kongregace nejsv. Vykupitele ó redemptorist˘ (CSsR)"
+,"s vlastnÌmi texty pro salesi·nskou rodinu (SDB, FMA, ASC)"
 };
 
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
@@ -623,6 +625,10 @@ const char *nazov_slavenia_lokal[] =
 ,"jen kanonie Doksany a éeliv"                                                                                  // LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV
 ,"jen kanonie Tepl·"                                                                                            // LOKAL_SLAV_OPRAEM_TEPLA
 ,"len pre len pre Kongreg·ciu sestier Matky Boûieho Milosrdenstva"                                              // LOKAL_SLAV_KONGREGACIA_SMBM
+,"pro FMA pam·tka"                                                                                              // LOKAL_SLAV_SPOMIENKA_FMA_CZ
+,"pro FMA nez·vazn· pam·tka"                                                                                    // LOKAL_SLAV_LUB_SPOMIENKA_FMA_CZ
+,"pro VDB sv·tek"                                                                                               // LOKAL_SLAV_SVIATOK_VDB_CZ
+,"pro FMA slavnost"                                                                                             // LOKAL_SLAV_SLAVNOST_FMA_CZ
 };
 
 // names of liturgical colors
@@ -3023,7 +3029,7 @@ const char *text_JAN_15_SVD[POCET_JAZYKOV + 1] =
  };
 const char *text_JAN_15_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Alojza Variaru, kÚaza",
- "",
+ "Bl. Aloise Variary, knÏze",
  "",
  "la_",
  "",
@@ -3158,7 +3164,7 @@ const char *text_JAN_22_HU[POCET_JAZYKOV + 1] =
  };
 const char *text_JAN_22_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Laury VicuÚovej, panny a muËenice",
- "",
+ "Bl. Laury VicuÚi, panny a muËednice",
  "",
  "",
  "",
@@ -3194,7 +3200,7 @@ const char *text_JAN_24[POCET_JAZYKOV + 1] =
  };
 const char *text_JAN_24_SDB[POCET_JAZYKOV + 1] = 
 {"Sv. Frantiöka SaleskÈho, biskupa a uËiteæa Cirkvi,"HTML_LINE_BREAK"titul·rneho patrÛna salezi·nskej rodiny",
- "",
+ "Sv. Frantiöka SaleskÈho, biskupa a uËitele cÌrkve,"HTML_LINE_BREAK"titul·rnÌho patrona SpoleËnosti sv. Frantiöka SaleskÈho",
  "",
  "",
  "",
@@ -3293,7 +3299,7 @@ const char *text_JAN_31[POCET_JAZYKOV + 1] =
  };
 const char *text_JAN_31_SDB[POCET_JAZYKOV + 1] = 
 {"Sv. J·na Boska, kÚaza, otca a uËiteæa ml·deûe,"HTML_LINE_BREAK"zakladateæa SpoloËnosti sv‰tÈho Frantiöka SaleskÈho,"HTML_LINE_BREAK"Inötit˙tu dcÈr M·rie Pomocnice"HTML_LINE_BREAK"a salezi·nov spolupracovnÌkov",
- "",
+ "Sv. Jana Boska, knÏze, otce a uËitele ml·deûe,"HTML_LINE_BREAK"zakladatele SpoleËnosti sv. Frantiöka SaleskÈho,"HTML_LINE_BREAK"Institutu Dcer Panny Marie Pomocnice"HTML_LINE_BREAK"a Salesi·n˘ spolupracovnÌk˘",
  "",
  "",
  "",
@@ -3305,7 +3311,7 @@ const char *text_JAN_31_SDB[POCET_JAZYKOV + 1] =
 
 const char *text_FEB_01_SDB[POCET_JAZYKOV + 1] = 
 {"Vöetk˝ch neboh˝ch Ëlenov SpoloËnosti sv‰tÈho Frantiöka SaleskÈho",
- "",
+ "P¯ipomÌnka zem¯el˝ch salesi·n˘",
  "",
  "",
  "",
@@ -3485,7 +3491,7 @@ const char *text_FEB_08_2[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_09_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. EuzÈbie Palominovej Yenes, panny",
- "",
+ "Bl. Eusebie Palomino, ¯eholnice",
  "",
  "",
  "",
@@ -3674,7 +3680,7 @@ const char *text_FEB_24_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_25_SDB[POCET_JAZYKOV + 1] = 
 {"Sv. Alojza Versigliu, biskupa, a Kalixta Caravaria, kÚaza, "HTML_LINE_BREAK"prv˝ch salezi·nskych muËenÌkov",
- "",
+ "Sv. Aloise Versiglii, biskup a Kalista Caravaria, knÏze, "HTML_LINE_BREAK"prvnÌch salesi·nsk˝ch muËednÌk˘",
  "",
  "",
  "",
@@ -4244,7 +4250,7 @@ const char *text_MAJ_06_CZ[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_06_SDB[POCET_JAZYKOV + 1] = 
 {"Sv. Dominika Savia, mladÌka",
- "",
+ "Sv. Dominika Savia, chlapce",
  "",
  "",
  "",
@@ -4424,7 +4430,7 @@ const char *text_MAJ_13[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_13_SDB[POCET_JAZYKOV + 1] = 
 {"Sv. M·rie Dominiky Mazzarellovej, panny, "HTML_LINE_BREAK"spoluzakladateæky Inötit˙tu dcÈr M·rie Pomocnice",
- "",
+ "Sv. Marie Dominiky MazzarellovÈ, panny "HTML_LINE_BREAK"a spoluzakladatelky Institutu Dcer Panny Marie Pomocnice",
  "",
  "",
  "",
@@ -4496,7 +4502,7 @@ const char *text_MAJ_16[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_16_SDB[POCET_JAZYKOV + 1] = 
 {"Sv. Alojza Orioneho, kÚaza",
- "",
+ "Sv. Aloise Orione, knÏze",
  "",
  "",
  "",
@@ -4541,7 +4547,7 @@ const char *text_MAJ_18[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_18_SDB[POCET_JAZYKOV + 1] = 
 {"Sv. Leonarda Murialda, kÚaza",
- "",
+ "Sv. Leonarda Murialda, knÏze",
  "",
  "",
  "",
@@ -4683,9 +4689,9 @@ const char *text_MAJ_24_OFM[POCET_JAZYKOV + 1] =
  "",
  "",
  };
-const char *text_MAJ_24[POCET_JAZYKOV + 1] = 
+const char *text_MAJ_24[POCET_JAZYKOV + 1] = // ToDo rozdeliù pre vöeobecn˝ kalend·r a pre SDB
 {"Panny M·rie, Pomocnice kresùanov, "HTML_LINE_BREAK"hlavnej patrÛnky Inötit˙tu dcÈr M·rie Pomocnice "HTML_LINE_BREAK"a celej salezi·nskej rodiny",
- "",
+ "Panny Marie Pomocnice k¯esùan˘, "HTML_LINE_BREAK"hlavnÌ patronky SpoleËnosti sv. Frantiöka SaleskÈho, Institutu Dcer Panny Marie "HTML_LINE_BREAK"a Sekul·rnÌho institutu Volont·riÌ Dona Boska",
  "",
  "",
  "",
@@ -4766,7 +4772,7 @@ const char *text_MAJ_29_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_29_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Jozefa KowalskÈho, muËenÌka",
- "",
+ "Bl. Josefa KowalskÈho, knÏze, muËednÌka",
  "",
  "",
  "",
@@ -5353,7 +5359,7 @@ const char *text_JUN_22_HU[POCET_JAZYKOV + 1] =
  };
 const char *text_JUN_23_SDB[POCET_JAZYKOV + 1] = 
 {"Sv. Jozefa Cafassa, kÚaza",
- "",
+ "Sv. Josefa Cafassa, knÏze",
  "",
  "",
  "",
@@ -5563,7 +5569,7 @@ const char *text_JUL_07_SK[POCET_JAZYKOV + 1] = // vo vöeobecnom kalend·ri sa sl
  };
 const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. M·rie Romerovej Meneses, panny",
- "",
+ "Bl. Marie Romero Meneses, panny",
  "",
  "",
  "",
@@ -6082,7 +6088,7 @@ const char *text_AUG_03_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_02_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. AugustÌna CzartoryskÈho, kÚaza",
- "",
+ "Bl. Augustina CzartoryskÈho, knÏze",
  "",
  "",
  "",
@@ -7012,7 +7018,7 @@ const char *text_SEP_22_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_22_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Jozefa Calasanza a Enrica Saiz Aparicio, kÚazov, "HTML_LINE_BREAK"a 93 spoloËnÌkov, muËenÌkov",
- "",
+ "Bl. Josefa Calasanz MarquÈs "HTML_LINE_BREAK"a Enrica Saiz Aparicio, knÏûÌ, a 93 druh˘",
  "",
  "",
  "",
@@ -7464,8 +7470,8 @@ const char *text_OKT_13_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_13_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Alexandry M·rie da Costovej",
- "",
+{"Bl. Alexandry M·rie da Costovej, panny", // podæa CZ SDB doplnenÈ: "panny"
+ "Bl. Alexandry Marie da Costa, panny",
  "",
  "",
  "",
@@ -7699,7 +7705,7 @@ const char *text_OKT_24[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_24_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Alojza Guanellu, kÚaza",
- "",
+ "Bl. Aloise Guanelly, knÏze",
  "",
  "",
  "",
@@ -7825,7 +7831,7 @@ const char *text_OKT_28[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_29_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Michala Ruu, kÚaza",
- "",
+ "Bl. Michala Ruy, knÏze",
  "",
  "",
  "",
@@ -7990,7 +7996,7 @@ const char *text_NOV_05_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_05_SDB[POCET_JAZYKOV + 1] = 
 {"Vöetk˝ch zomrel˝ch dobrodincov Salezi·nskej rodiny",
- "",
+ "P¯ipomÌnka zem¯el˝ch dobrodinc˘ a Ëlen˘ salesi·nskÈ rodiny",
  "",
  "",
  "",
@@ -8098,7 +8104,7 @@ const char *text_NOV_12[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_13_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Artemida Zattiho",
- "",
+ "Bl. Artemide Zattiho, koadjutora",
  "",
  "",
  "",
@@ -8197,7 +8203,7 @@ const char *text_NOV_15[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_15_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. MagdalÈny Moranovej, panny",
- "",
+ "Bl. MagdalÈny Morano, panny",
  "",
  "",
  "",
@@ -8377,7 +8383,7 @@ const char *text_NOV_25_HU[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_25_SDB[POCET_JAZYKOV + 1] = 
 {"Vöetk˝ch zomrel˝ch rodiËov salezi·nov",
- "",
+ "P¯ipomÌnka zem¯el˝ch rodiË˘ salesi·n˘",
  "",
  "",
  "",
@@ -8533,7 +8539,7 @@ const char *text_DEC_04[POCET_JAZYKOV + 1] =
  };
 const char *text_DEC_05_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Filipa Rinaldiho, kÚaza, "HTML_LINE_BREAK"zakladateæa Sekul·rneho inötit˙tu dobrovoænÌËok dona Bosca",
- "",
+ "Bl. Filipa Rinaldiho, knÏze, "HTML_LINE_BREAK"zakladatele Sekul·rnÌho institutu Volont·riÌ Dona Boska",
  "",
  "",
  "",

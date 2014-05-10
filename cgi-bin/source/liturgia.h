@@ -972,6 +972,10 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV    101
 #define LOKAL_SLAV_OPRAEM_TEPLA            102
 #define LOKAL_SLAV_KONGREGACIA_SMBM        103
+#define LOKAL_SLAV_SPOMIENKA_FMA_CZ	       104
+#define LOKAL_SLAV_LUB_SPOMIENKA_FMA_CZ    105
+#define LOKAL_SLAV_SVIATOK_VDB_CZ          106
+#define LOKAL_SLAV_SLAVNOST_FMA_CZ         107
 
 // 2010-08-03: pridaný kalendár
 #define KALENDAR_NEURCENY                   0
@@ -990,8 +994,9 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_CZ_OPRAEM                 13
 #define KALENDAR_CZ_OFMCAP                 14
 #define KALENDAR_CZ_CSSR                   15
+#define KALENDAR_CZ_SDB                    16
 
-#define POCET_KALENDAROV                   15
+#define POCET_KALENDAROV                   16
 
 // filenames for special calendars / názov súbora pre kalendáre
 extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];
