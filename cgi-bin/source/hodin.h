@@ -512,7 +512,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 ,"s vlastními texty premonstrátského øádu (OPraem)" // "pro premonstráty (OPraem)"
 ,"s vlastními kapucínskımi texty (OFMCap)"
 ,"s vlastními texty Kongregace nejsv. Vykupitele — redemptoristù (CSsR)"
-,"s vlastními texty pro salesiánskou rodinu (SDB, FMA, ASC)"
+,"s vlastními texty pro salesiánskou rodinu" // (SDB, FMA, VDB, ASC)
 };
 
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
@@ -3272,7 +3272,7 @@ const char *text_JAN_29_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_JAN_30_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Bronislava Markiewicza, kòaza",
- "",
+ "Bl. Bronislava Markiewicze, knìze",
  "",
  "",
  "",
@@ -3455,7 +3455,7 @@ const char *text_FEB_07_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_07_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Pia IX., pápea",
- "",
+ "Bl. Pia IX., papee",
  "",
  "",
  "",
@@ -3680,7 +3680,7 @@ const char *text_FEB_24_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_25_SDB[POCET_JAZYKOV + 1] = 
 {"Sv. Alojza Versigliu, biskupa, a Kalixta Caravaria, kòaza, "HTML_LINE_BREAK"prvıch saleziánskych muèeníkov",
- "Sv. Aloise Versiglii, biskup a Kalista Caravaria, knìze, "HTML_LINE_BREAK"prvních salesiánskıch muèedníkù",
+ "Sv. Aloise Versiglii, biskupa, a Kalista Caravaria, knìze, "HTML_LINE_BREAK"prvních salesiánskıch muèedníkù",
  "",
  "",
  "",
@@ -4691,7 +4691,7 @@ const char *text_MAJ_24_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_24[POCET_JAZYKOV + 1] = // ToDo rozdeli pre všeobecnı kalendár a pre SDB
 {"Panny Márie, Pomocnice kresanov, "HTML_LINE_BREAK"hlavnej patrónky Inštitútu dcér Márie Pomocnice "HTML_LINE_BREAK"a celej saleziánskej rodiny",
- "Panny Marie Pomocnice køesanù, "HTML_LINE_BREAK"hlavní patronky Spoleènosti sv. Františka Saleského, Institutu Dcer Panny Marie "HTML_LINE_BREAK"a Sekulárního institutu Volontárií Dona Boska",
+ "Panny Marie Pomocnice køesanù, "HTML_LINE_BREAK"hlavní patronky Spoleènosti sv. Františka Saleského, "HTML_LINE_BREAK"Institutu Dcer Panny Marie "HTML_LINE_BREAK"a Sekulárního institutu Volontárií Dona Boska",
  "",
  "",
  "",
@@ -5081,6 +5081,15 @@ const char *text_JUN_08_HU[POCET_JAZYKOV + 1] =
 const char *text_JUN_08_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Mikuláša z Gesturi, reho¾níka, èlena 1. rádu",
  "Bl. Mikuláše z Gesturi, øeholníka",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
+const char *text_JUN_08_SDB[POCET_JAZYKOV + 1] = 
+{"Bl. Istvána Sándora, muèeníka",
+ "Bl. Istvána Sándora, muèedníka",
  "",
  "",
  "",
@@ -6554,9 +6563,18 @@ const char *text_AUG_25_HU[POCET_JAZYKOV + 1] =
  "",
  "Kalocsa-Kecskemét: A fõszékesegyház felszentelése",
  };
+const char *text_AUG_25_SDB[POCET_JAZYKOV + 1] = 
+{"Bl. Márie Troncatti, panny",
+ "Bl. Marie Troncatti, panny",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
 const char *text_AUG_26_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Zefirína Namuncurá, mladíka",
- "",
+ "Bl. Zefyrina Namuncurá, chlapce",
  "",
  "",
  "",
@@ -7255,7 +7273,7 @@ const char *text_OKT_04_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_05_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Alberta Marvelliho",
- "",
+ "Bl. Alberta Marvelliho",
  "",
  "",
  "",
