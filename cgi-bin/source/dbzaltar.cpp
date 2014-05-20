@@ -17894,19 +17894,17 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							// _vlastna_cast_full_okrem_prosieb(modlitba); // 2011-05-13: keÔ bud˙ dodanÈ texty, treba upraviù
-							_vlastna_cast_benediktus;
-							_vlastna_cast_modlitba;
+							_vlastna_cast_full_okrem_prosieb(modlitba);
+							_set_zalmy_1nedele_rch();
 
 							modlitba = MODL_POSV_CITANIE;
-							// 2011-05-13: keÔ bud˙ dodanÈ texty, treba skontrolovaù
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 							_vlastna_cast_modlitba;
 							_vlastna_cast_2citanie;
 
 							modlitba = MODL_VESPERY;
-							// _vlastna_cast_full_okrem_kresp_a_prosieb(modlitba); // 2011-05-13: keÔ bud˙ dodanÈ texty, treba upraviù
-							_vlastna_cast_magnifikat;
-							_vlastna_cast_modlitba;
+							_vlastna_cast_full_okrem_kcit_kresp_a_prosieb(modlitba);
+							_set_zalmy_sviatok_muc(modlitba);
 
 							break;
 						}
@@ -18931,6 +18929,10 @@ label_25_MAR:
 								*/
 							}
 
+							if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+								_vlastna_cast_mcd_modlitba;
+							}
+
 							modlitba = MODL_VESPERY;
 							if(_global_jazyk == JAZYK_HU){
 								_vlastna_cast_full_okrem_kcit_kresp_a_prosieb(modlitba);
@@ -18945,9 +18947,8 @@ label_25_MAR:
 
 							break;
 						}
-						if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
-							_vlastna_cast_mcd_modlitba;
 
+						if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 							_global_svaty1.typslav = SLAV_SVIATOK;
 							_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny M·rie a sv‰t˝ch, uvedenÈ vo vöeobecnom kalend·ri
 						}
