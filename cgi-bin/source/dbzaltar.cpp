@@ -11110,6 +11110,24 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 	_vlastna_cast_modlitba;\
 }
 
+#define _vlastna_cast_mcd_full_okrem_hymnu {\
+	modlitba = MODL_PREDPOLUDNIM;\
+	_vlastna_cast_antifony_rovnake;\
+	_vlastna_cast_kcitanie;\
+	_vlastna_cast_kresponz;\
+	_vlastna_cast_modlitba;\
+	modlitba = MODL_NAPOLUDNIE;\
+	_vlastna_cast_antifony_rovnake;\
+	_vlastna_cast_kcitanie;\
+	_vlastna_cast_kresponz;\
+	_vlastna_cast_modlitba;\
+	modlitba = MODL_POPOLUDNI;\
+	_vlastna_cast_antifony_rovnake;\
+	_vlastna_cast_kcitanie;\
+	_vlastna_cast_kresponz;\
+	_vlastna_cast_modlitba;\
+}
+
 #define _vlastna_cast_mcd_full_okrem_ant {\
 	modlitba = MODL_PREDPOLUDNIM;\
 	_vlastna_cast_hymnus(modlitba, _global_den.litobd);\
@@ -12369,14 +12387,37 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_POSV_CITANIE;
-							// _vlastna_cast_2citanie;
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)){
+								_vlastna_cast_kresponz;
+								_vlastna_cast_1citanie;
+								_vlastna_cast_2citanie;
+							}
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_RANNE_CHVALY;
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)){
+								_vlastna_cast_kresponz;
+								_vlastna_cast_kcitanie;
+								_vlastna_cast_benediktus;
+								_vlastna_cast_prosby;
+							}
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)){
+								_vlastna_cast_kresponz;
+								_vlastna_cast_kcitanie;
+								_vlastna_cast_magnifikat;
+								_vlastna_cast_prosby;
+							}
 							_vlastna_cast_modlitba;
+
+							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)){
+								modlitba = MODL_INVITATORIUM;
+								_vlastna_cast_antifona_inv;
+
+								_vlastna_cast_mcd_full_okrem_hymnu;
+							}
 
 							break;
 						}
