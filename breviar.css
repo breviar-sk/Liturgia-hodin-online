@@ -87,7 +87,7 @@
 
 /* 2013-10-21 */
 div.hymn, div.responsory, div.readings {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 /* 2013-09-19 class for calendar */
@@ -179,6 +179,39 @@ div.hymn, div.responsory, div.readings {
 	margin: 0; 
 }
 
+/* 2014-06-02 class .hymn according to psalm */
+.hymn p { 
+	font-weight: bold; 
+	margin:0; 
+	padding-left: 2.4em; 
+	text-indent: -2.4em; 
+	-webkit-margin-after: 0em; 
+	-webkit-margin-before: 0em; 
+}
+
+.hymn p.cont { 
+	text-indent: -1.2em; 
+}
+
+.hymn p.last {
+	padding-bottom: 1em; 
+}
+
+.hymn p.first { 
+	padding-top: 1em; 
+}
+
+.hymn p.comment { 
+	font-size: 80%; 
+	font-weight: normal; 
+}
+
+.hymn p.rubric { 
+	color: #ff0000; 
+	font-size: 80%; 
+	font-weight: normal; 
+}
+
 /* 2013-09-02 #psalm changed to class .psalm; instead of black color used #1a1a1a; */
 /* new 2013-06-19 */
 .psalm .psalm-name { 
@@ -243,7 +276,7 @@ div.hymn, div.responsory, div.readings {
 .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
 	color: #ff0000; 
 	font-size: 80%; 
-    font-weight: normal;
+	font-weight: normal;
 }
 
 .antiphon { 
