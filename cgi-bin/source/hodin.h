@@ -5141,9 +5141,18 @@ const char *text_JUN_11[POCET_JAZYKOV + 1] =
  "Sv. Barnabáše, apoštola",
  "Szent Barnabás apostol",
  };
+const char *text_JUN_12_CZ[POCET_JAZYKOV + 1] = 
+{"",
+ "Bl. Marie Antoníny Kratochvílové, panny, a druhù muèedníkù",
+ "",
+ "",
+ "",
+ "",
+ "",
+ };
 const char *text_JUN_12_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Františka K&#281;syho a spoloèníkov, muèeníkov", // Bl. Františka Kesyho a spoloèníkov, muèeníkov (small latin letter e with ogonek)
- "",
+ "Bl. Františka K&#281;syho a druhù, muèedníkù ",
  "",
  "",
  "",
@@ -5252,15 +5261,6 @@ const char *text_JUN_16_1_OFM[POCET_JAZYKOV + 1] =
 const char *text_JUN_16_2_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Aniceta Koplina, kòaza, a spoloèníkov, muèeníkov, èlenov 1. rádu",
  "Bl. Aniceta Kopliñského a druhù, muèedníkù",
- "",
- "",
- "",
- "",
- "",
- };
-const char *text_JUN_16_CZ[POCET_JAZYKOV + 1] = 
-{"",
- "Bl. Marie Antoníny Kratochvílové, muèednice",
  "",
  "",
  "",

@@ -21007,8 +21007,38 @@ label_25_MAR:
 					_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 					break;
 				case 12: // MES_JUN -- 12JUN
-					if(((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))){
+					if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 						if(poradie_svaty == 1){
+							// definovanie parametrov pre modlitbu
+							if(query_type != PRM_DETAILY)
+								set_spolocna_cast(sc, poradie_svaty);
+
+							modlitba = MODL_POSV_CITANIE;
+							_vlastna_cast_2citanie;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_RANNE_CHVALY;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_VESPERY;
+							_vlastna_cast_modlitba;
+
+							break;
+						}
+						_global_svaty1.typslav = SLAV_SPOMIENKA;
+						_global_svaty1.smer = 11; // miestne povinné spomienky
+						_global_svaty1.typslav_lokal = LOKAL_SLAV_OSTRAVA_OPAVA;
+						mystrcpy(_global_svaty1.meno, text_JUN_12_CZ[_global_jazyk], MENO_SVIATKU);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
+						_global_svaty1.farba = LIT_FARBA_CERVENA;
+						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_CZ;
+					}// kalendár pre CZ
+
+					if(((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))){
+						// 2014-06-04: CZ má ako poradie == 1 text_JUN_12_CZ
+						short je_cz = (_global_jazyk == JAZYK_CZ)? 1 : 0;
+
+						if(poradie_svaty == 1 + je_cz){
 
 							file_name_vlastny_kalendar(_global_kalendar);
 
@@ -21028,15 +21058,20 @@ label_25_MAR:
 
 							break;
 						}
-						_global_svaty1.typslav = SLAV_SPOMIENKA;
-						_global_svaty1.smer = 11; // miestne povinné spomienky
-						mystrcpy(_global_svaty1.meno, text_JUN_12_SDB[_global_jazyk], MENO_SVIATKU);
-						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
-						_global_svaty1.farba = LIT_FARBA_CERVENA;
-						_global_svaty1.kalendar = (_global_jazyk == JAZYK_SK) ? KALENDAR_SK_SDB : KALENDAR_CZ_SDB;
+						if(_global_jazyk == JAZYK_CZ){
+							pocet = 2;
+						}
+						_global_svaty(1 + je_cz).typslav = SLAV_SPOMIENKA;
+						_global_svaty(1 + je_cz).smer = 11; // miestne povinné spomienky
+						mystrcpy(_global_svaty(1 + je_cz).meno, text_JUN_12_SDB[_global_jazyk], MENO_SVIATKU);
+						_global_svaty(1 + je_cz).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
+						_global_svaty(1 + je_cz).farba = LIT_FARBA_CERVENA;
+						_global_svaty(1 + je_cz).kalendar = (_global_jazyk == JAZYK_SK) ? KALENDAR_SK_SDB : KALENDAR_CZ_SDB;
 					}// kalendár pre KALENDAR_SK_SDB a KALENDAR_CZ_SDB
+
 					if(((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP))){
-						if(poradie_svaty == 1){
+						short je_cz = (_global_jazyk == JAZYK_CZ)? 1 : 0;
+						if(poradie_svaty == 1 + je_cz){
 							
 							file_name_vlastny_kalendar(_global_kalendar);
 
@@ -21058,7 +21093,7 @@ label_25_MAR:
 
 							break;
 						}
-						else if(poradie_svaty == 2){
+						else if(poradie_svaty == 2 + je_cz){
 
 							file_name_vlastny_kalendar(_global_kalendar);
 
@@ -21098,25 +21133,25 @@ label_25_MAR:
 
 							break;
 						}
-						_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
-						_global_svaty1.smer = 12; // ¾ubovo¾né spomienky
-						mystrcpy(_global_svaty1.meno, text_JUN_12_OFM[_global_jazyk], MENO_SVIATKU);
-						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
-						_global_svaty1.farba = LIT_FARBA_BIELA;
-						_global_svaty1.kalendar = _global_kalendar;
+						_global_svaty(1 + je_cz).typslav = SLAV_LUB_SPOMIENKA;
+						_global_svaty(1 + je_cz).smer = 12; // ¾ubovo¾né spomienky
+						mystrcpy(_global_svaty(1 + je_cz).meno, text_JUN_12_OFM[_global_jazyk], MENO_SVIATKU);
+						_global_svaty(1 + je_cz).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+						_global_svaty(1 + je_cz).farba = LIT_FARBA_BIELA;
+						_global_svaty(1 + je_cz).kalendar = _global_kalendar;
 
-						_global_svaty2.typslav = SLAV_LUB_SPOMIENKA;
-						_global_svaty2.smer = 12; // ¾ubovo¾né spomienky
-						mystrcpy(_global_svaty2.meno, text_JUN_12_2_OFM[_global_jazyk], MENO_SVIATKU);
-						_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
-						_global_svaty2.farba = LIT_FARBA_BIELA;
-						_global_svaty2.kalendar = _global_kalendar;
+						_global_svaty(2 + je_cz).typslav = SLAV_LUB_SPOMIENKA;
+						_global_svaty(2 + je_cz).smer = 12; // ¾ubovo¾né spomienky
+						mystrcpy(_global_svaty(2 + je_cz).meno, text_JUN_12_2_OFM[_global_jazyk], MENO_SVIATKU);
+						_global_svaty(2 + je_cz).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+						_global_svaty(2 + je_cz).farba = LIT_FARBA_BIELA;
+						_global_svaty(2 + je_cz).kalendar = _global_kalendar;
 
 						if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
 							pocet = 3;
 						}
 						else{
-							pocet = 2;
+							pocet = 2 + je_cz;
 						}
 						if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
 							_global_svaty3.typslav = SLAV_LUB_SPOMIENKA;
@@ -21127,6 +21162,7 @@ label_25_MAR:
 							_global_svaty3.kalendar = KALENDAR_SK_OFM;
 						}
 					}// kalendár pre KALENDAR_SK_OFM a KALENDAR_CZ_OFMCAP
+
 					if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
 						if(poradie_svaty == 1){
 
@@ -21439,22 +21475,6 @@ label_25_MAR:
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_CZ_OPRAEM;
 					}// kalendár pre KALENDAR_CZ_OPRAEM
-					else if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
-						if(poradie_svaty == 1){
-							// definovanie parametrov pre modlitbu
-							if(query_type != PRM_DETAILY)
-								set_spolocna_cast(sc, poradie_svaty);
-							break;
-							// všetko je zo spoloènej èasti
-						}
-						_global_svaty1.typslav = SLAV_SPOMIENKA;
-						_global_svaty1.smer = 11; // miestne povinné spomienky
-						_global_svaty1.typslav_lokal = LOKAL_SLAV_OSTRAVA_OPAVA;
-						mystrcpy(_global_svaty1.meno, text_JUN_16_CZ[_global_jazyk], MENO_SVIATKU);
-						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENICA, MODL_SPOL_CAST_PANNA);
-						_global_svaty1.farba = LIT_FARBA_CERVENA;
-						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_CZ;
-					}// kalendár pre CZ
 					if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
 						// SK OFM: poradie 1 je text_JUN_16_SK; poradie 2 text_JUN_16_1_OFM; poradie 3 text_JUN_16_2_OFM
 						// CZ OFMCap: poradie 1 je text_JUN_16_CZ; poradie 2 text_JUN_16_2_OFM
