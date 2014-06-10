@@ -5797,6 +5797,18 @@ label_24_DEC:
 	_set_modlitba(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
+// 2014-06-05: pridané pre popis prvého kompletória Narodenia Pána // tam sa dá litobd == OBD_OKTAVA_NARODENIA
+#define _vian1_popis {\
+	sprintf(_anchor, "%s_%c%s%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_POPIS, _global_den.den);\
+	if(modlitba == MODL_POSV_CITANIE){\
+		set_popis(modlitba, _file_pc, _anchor);\
+		set_LOG_litobd_pc;\
+	}\
+	else{\
+		set_popis(modlitba, _file, _anchor);\
+		set_LOG_litobd;\
+	}\
+}
 #define _narodenie_antifony {\
 	sprintf(_anchor, "%s_%c%s", nazov_OBD[OBD_OKTAVA_NARODENIA], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
 	_set_antifona1(modlitba, _file, _anchor);\
@@ -5941,6 +5953,8 @@ label_24_DEC:
 					// kompletórium
 					modlitba = MODL_PRVE_KOMPLETORIUM;
 					_set_kompletorium_slavnost(modlitba);
+					// 2014-06-05: pridaný popis k prvému kompletóriu Narodenia Pána
+					_vian1_popis;
 
 					modlitba = MODL_KOMPLETORIUM;
 					_set_kompletorium_slavnost(modlitba);
