@@ -9580,16 +9580,16 @@ void _spolocna_cast_modlitba_rozne(short int modlitba, char *_anchor_pom, char *
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, VELKONOCNA_PRIPONA);\
 		_set_kresponz(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-	}\
-	if(modlitba == MODL_RANNE_CHVALY){\
-		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS, VELKONOCNA_PRIPONA);\
-		_set_benediktus(modlitba, _file, _anchor);\
-		set_LOG_svsv;\
-	}\
-	else if((modlitba == MODL_VESPERY) || (modlitba == MODL_PRVE_VESPERY)){\
-		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT, VELKONOCNA_PRIPONA);\
-		_set_magnifikat(modlitba, _file, _anchor);\
-		set_LOG_svsv;\
+		if(modlitba == MODL_RANNE_CHVALY){\
+			sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS, VELKONOCNA_PRIPONA);\
+			_set_benediktus(modlitba, _file, _anchor);\
+			set_LOG_svsv;\
+		}\
+		else if((modlitba == MODL_VESPERY) || (modlitba == MODL_PRVE_VESPERY)){\
+			sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT, VELKONOCNA_PRIPONA);\
+			_set_magnifikat(modlitba, _file, _anchor);\
+			set_LOG_svsv;\
+		}\
 	}\
 }
 
