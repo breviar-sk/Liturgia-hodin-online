@@ -922,7 +922,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SVIATOK_SCSC				51
 #define LOKAL_SLAV_DRUHA_VELK_NEDELA_HU		52
 #define LOKAL_SLAV_SZOMBATHELYI_EGYH        53
-#define LOKAL_SLAV_POZS_NAGYSZ_PATRON       54
+#define LOKAL_SLAV_NAGYSZ_PATRON       54
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON       55
 #define LOKAL_SLAV_PECSI_EGYH               56
 #define LOKAL_SLAV_PECSI_EGYH_PATRON        57

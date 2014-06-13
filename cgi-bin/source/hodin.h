@@ -575,7 +575,7 @@ const char *nazov_slavenia_lokal[] =
 ,"pre SCSC: sviatok"                                                                                            // LOKAL_SLAV_SVIATOK_SCSC
 ,"Húsvét 2. vasárnapja — Az Isteni Irgalmasság vasárnapja"                                                      // LOKAL_SLAV_DRUHA_VELK_NEDELA_HU
 ,"A Szombathelyi egyházmegyében"                                                                                // LOKAL_SLAV_SZOMBATHELYI_EGYH
-,"Pozsonyi fõegyházmegye és a Nagyszombati egyházmegye fõpátronusa"                                             // LOKAL_SLAV_POZS_NAGYSZ_PATRON
+,"Nagyszombat: az egyházmegye fõvédõszentje"                                                                    // LOKAL_SLAV_NAGYSZ_PATRON
 ,"A Szeged-Csanádi egyházmegye északi részében: az egyházmegye védõszentje; fõünnep"                            // LOKAL_SLAV_SZEGED_CSAN_PATRON // 2013-06-27: ??? neviem, odkia¾ sa to tu vzalo
 ,"A Pécsi egyházmegyében"                                                                                       // LOKAL_SLAV_PECSI_EGYH
 ,"A Pécsi egyházmegyében: az egyházmegye védõszentje; fõünnep"                                                  // LOKAL_SLAV_PECSI_EGYH_PATRON
