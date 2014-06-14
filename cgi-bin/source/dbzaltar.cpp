@@ -4472,7 +4472,7 @@ void _set_zalmy_vian_oktava(short int den, short int modlitba){
 	set_LOG_litobd;\
 }
 // 2007-10-02: upravenÈ antifÛny pre modlitbu cez deÚ - s˙ rovnakÈ, pouûit˝ anchor ANCHOR_ANTIFONY
-#define _vlastne_slavenie_ne_antifony(vlastny_anchor) {\
+#define _vlastne_slavenie_antifony(vlastny_anchor) {\
 	sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA1);\
 	_set_antifona1(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
@@ -6467,7 +6467,7 @@ label_24_DEC:
 				_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 				// invitatÛrium
 				modlitba = MODL_INVITATORIUM;
@@ -6481,7 +6481,7 @@ label_24_DEC:
 				_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 				modlitba = MODL_VESPERY;
 				_set_zalmy_sviatok_krstu(modlitba);
@@ -6491,12 +6491,12 @@ label_24_DEC:
 				_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 				modlitba = MODL_POSV_CITANIE;
 				_set_zalmy_sviatok_krstu(modlitba);
 				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 				// hoci by mohli byù nastavenÈ ako 1. nedeæa cezroËnÈho obdobia vyööie, predsa pouûijeme samostatn˝ s˙bor a samostatne ich nastavÌme; 2006-02-07
 				_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
@@ -6513,19 +6513,19 @@ label_24_DEC:
 
 				modlitba = MODL_PREDPOLUDNIM;
 				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				modlitba = MODL_NAPOLUDNIE;
 				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				modlitba = MODL_POPOLUDNI;
 				_set_zalmy_sviatok_krstu(modlitba);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
@@ -6639,7 +6639,7 @@ label_24_DEC:
 				_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 				// invitatÛrium
 				modlitba = MODL_INVITATORIUM;
@@ -6653,7 +6653,7 @@ label_24_DEC:
 				_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 				modlitba = MODL_VESPERY;
 				_set_zalmy_telakrvi(modlitba);
@@ -6663,13 +6663,13 @@ label_24_DEC:
 				_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 				modlitba = MODL_POSV_CITANIE;
 				_set_zalmy_telakrvi(modlitba);
 				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
@@ -6687,7 +6687,7 @@ label_24_DEC:
 				if(_global_jazyk == JAZYK_CZ){
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 				}
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
@@ -6696,7 +6696,7 @@ label_24_DEC:
 				if(_global_jazyk == JAZYK_CZ){
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 				}
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
@@ -6705,7 +6705,7 @@ label_24_DEC:
 				if(_global_jazyk == JAZYK_CZ){
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 				}
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
@@ -6811,7 +6811,7 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					// invitatÛrium
 					modlitba = MODL_INVITATORIUM;
@@ -6825,7 +6825,7 @@ label_24_DEC:
 					_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_VESPERY;
 					_set_zalmy_najsv_trojice(modlitba);
@@ -6835,12 +6835,12 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_POSV_CITANIE;
 					_set_zalmy_najsv_trojice(modlitba);
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
@@ -6848,19 +6848,19 @@ label_24_DEC:
 
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_najsv_trojice(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_NAPOLUDNIE;
 					_set_zalmy_najsv_trojice(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_najsv_trojice(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
@@ -6880,7 +6880,7 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_INVITATORIUM;
 					_vlastne_slavenie_invitat(_anchor_vlastne_slavenie);
@@ -6892,7 +6892,7 @@ label_24_DEC:
 					_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_RANNE_CHVALY;
 					_set_zalmy_cssr_titul(modlitba);
@@ -6902,7 +6902,7 @@ label_24_DEC:
 					_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_VESPERY;
 					_set_zalmy_cssr_titul(modlitba);
@@ -6912,23 +6912,23 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_1nedele_mcd();
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_NAPOLUDNIE;
 					_set_zalmy_1nedele_mcd();
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_1nedele_mcd();
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
@@ -6949,7 +6949,7 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					// invitatÛrium
 					modlitba = MODL_INVITATORIUM;
@@ -6963,7 +6963,7 @@ label_24_DEC:
 					_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					// 2005-08-12: pridanÈ posv‰tnÈ ËÌtanie; opravenÈ 2006-01-24
 					modlitba = MODL_POSV_CITANIE;
@@ -6975,7 +6975,7 @@ label_24_DEC:
 					// _vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_VESPERY;
 					_set_zalmy_krista_krala(modlitba);
@@ -6985,23 +6985,23 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_krista_krala(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_NAPOLUDNIE;
 					_set_zalmy_krista_krala(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_krista_krala(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
@@ -7067,7 +7067,7 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					// invitatÛrium
 					modlitba = MODL_INVITATORIUM;
@@ -7081,7 +7081,7 @@ label_24_DEC:
 					_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_VESPERY;
 					_set_zalmy_srdca(modlitba);
@@ -7091,32 +7091,32 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_POSV_CITANIE;
 					_set_zalmy_srdca(modlitba);
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_NAPOLUDNIE;
 					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
@@ -7128,12 +7128,6 @@ label_24_DEC:
 					mystrcpy(_anchor_vlastne_slavenie, ANCHOR_KNAZA, MAX_STR_AF_ANCHOR);
 					Log("  ide o sviatok N·öho P·na Jeûiöa Krista, najvyööieho a veËnÈho kÚaza: _file = `%s', _anchor = %s...\n", _file, _anchor);
 
-					// ToDo: 2014-01-16: psalmÛdia!
-
-					// kompletÛrium
-					modlitba = MODL_KOMPLETORIUM;
-					_set_kompletorium_slavnost(modlitba);
-
 					// invitatÛrium
 					modlitba = MODL_INVITATORIUM;
 					_vlastne_slavenie_invitat(_anchor_vlastne_slavenie);
@@ -7146,7 +7140,7 @@ label_24_DEC:
 					_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_VESPERY;
 					_set_zalmy_knaza(modlitba);
@@ -7156,29 +7150,32 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_POSV_CITANIE;
 					_set_zalmy_knaza(modlitba);
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_PREDPOLUDNIM;
-					// psalmÛdia zo vöednÈho dÚa
+					// psalmÛdia zo vöednÈho dÚa okrem antifÛn
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_NAPOLUDNIE;
-					// psalmÛdia zo vöednÈho dÚa
+					// psalmÛdia zo vöednÈho dÚa okrem antifÛn
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_POPOLUDNI;
-					// psalmÛdia zo vöednÈho dÚa
+					// psalmÛdia zo vöednÈho dÚa okrem antifÛn
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
@@ -8499,7 +8496,7 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_zds_modlitba;
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					// invitatÛrium
 					modlitba = MODL_INVITATORIUM;
@@ -8513,7 +8510,7 @@ label_24_DEC:
 					_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_zds_modlitba;
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_VESPERY;
 					_set_zalmy_zoslanie_ducha_sv(modlitba);
@@ -8523,12 +8520,12 @@ label_24_DEC:
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_zds_modlitba;
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					// posv‰tnÈ ËÌtanie
 					modlitba = MODL_POSV_CITANIE;
 					_set_zalmy_zoslanie_ducha_sv(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 					_vlastne_slavenie_ine_1citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_ine_2citanie(_anchor_vlastne_slavenie);
@@ -8547,21 +8544,21 @@ label_24_DEC:
 					// modlitba cez deÚ
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_zoslanie_ducha_sv(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_zds_modlitba;
 					modlitba = MODL_NAPOLUDNIE;
 					_set_zalmy_zoslanie_ducha_sv(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_zds_modlitba;
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_zoslanie_ducha_sv(modlitba);
-					_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, litobd);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
@@ -35233,7 +35230,7 @@ label_8_DEC:
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_hymnus(_anchor_vlastne_slavenie, _global_den.litobd);
-				_vlastne_slavenie_ne_antifony(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 				_set_zalmy_1nedele_rch();
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
