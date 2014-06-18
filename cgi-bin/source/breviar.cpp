@@ -7806,7 +7806,12 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 			Export("</td>\n");
 		}
 		else{
-			Export("<a href=\"%s\">"HTML_LEFT_ARROW_SINGLE" %s %s %s</a>\n", pom, html_button_predchadzajuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN))? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			if(_global_jazyk == JAZYK_HU){
+				Export("<a href=\"%s\">"HTML_LEFT_ARROW_SINGLE" %s %s: %s</a>\n", pom, html_button_predchadzajuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN))? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			}
+			else{
+				Export("<a href=\"%s\">"HTML_LEFT_ARROW_SINGLE" %s %s %s</a>\n", pom, html_button_predchadzajuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN))? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			}
 			Export(HTML_NONBREAKING_SPACE); Export(HTML_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 		}
 
@@ -7876,7 +7881,12 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 			Export("</td>\n");
 		}
 		else{
-			Export("<a href=\"%s\">%s %s %s "HTML_RIGHT_ARROW_SINGLE"</a>\n", pom, html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN))? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			if(_global_jazyk == JAZYK_HU){
+				Export("<a href=\"%s\">%s %s: %s "HTML_RIGHT_ARROW_SINGLE"</a>\n", pom, html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN))? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			}
+			else{
+				Export("<a href=\"%s\">%s %s %s "HTML_RIGHT_ARROW_SINGLE"</a>\n", pom, html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN))? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			}
 			Export(HTML_NONBREAKING_SPACE); Export(HTML_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 		}
 
@@ -9770,7 +9780,12 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 			// najskÙr do zoznamu mesiacov vyprintujeme odkaz na index.htm danÈho mesiaca (ak bolo prvÈho resp. zaËiatok exportu)...
 			if((_global_den.den == 1 && ((export_monthly_druh >= 1 && modlitba == MODL_INVITATORIUM) || export_monthly_druh != 1)) || export_month_zaciatok == ANO){
 				// sem sa uû name_batch_month_file dostane s upraven˝m oddeæovaËom STR_PATH_SEPARATOR_HTML; upravenÈ v _main_batch_mode()
-				fprintf(batch_html_file, "<li><a href=\"%s\">%s %d</a></li>\n", name_batch_month_file, nazov_mesiaca(_global_den.mesiac - 1), _global_den.rok);
+				if(_global_jazyk == JAZYK_HU){
+					fprintf(batch_html_file, "<li><a href=\"%s\">%d. %s</a></li>\n", name_batch_month_file,  _global_den.rok, nazov_mesiaca(_global_den.mesiac - 1));
+				}
+				else{
+					fprintf(batch_html_file, "<li><a href=\"%s\">%s %d</a></li>\n", name_batch_month_file, nazov_mesiaca(_global_den.mesiac - 1), _global_den.rok);
+				}
 				export_month_zaciatok = NIE;
 			}
 			// ... a presmerujeme v˝stup pre dan˝ deÚ do index.htm danÈho mesiaca; potrebujeme si poslaù n·zov, kam m· pre jednotliv˙ modlitbu ukazovaù ^ hore
@@ -10612,7 +10627,12 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 		else // EXPORT_DATE_FULL
 			sprintf(str_month, "."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_FULL""STR_PATH_SEPARATOR_HTML, r, m, nazov_mesiaca_asci(m - 1));
 		Log("str_month == %s\n", str_month);
-		fprintf(batch_html_file, "<li><a href=\"%s%s.htm\">%s %d</a></li>\n", str_month, str_subor, nazov_mesiaca(m - 1), r);
+		if(_global_jazyk == JAZYK_HU){
+			fprintf(batch_html_file, "<li><a href=\"%s%s.htm\">%d. %s</a></li>\n", str_month, str_subor, r, nazov_mesiaca(m - 1));
+		}
+		else{
+			fprintf(batch_html_file, "<li><a href=\"%s%s.htm\">%s %d</a></li>\n", str_month, str_subor, nazov_mesiaca(m - 1), r);
+		}
 	}
 	if(_global_opt_append != YES){
 		Log("pripravÌme si command-line string pre dan˝ mesiac...\n");
@@ -13391,9 +13411,19 @@ void _main_batch_mode(
 						fprintf(batch_html_file, "\n");
 						fprintf(batch_html_file, "var output='';\n");
 						fprintf(batch_html_file, "\n");
-						fprintf(batch_html_file, "output = output + '<ul><li> '+tag1+cestax+'>%s ('+den+'. '+mesiac+'. 20'+rok+')'+tag2+'"HTML_LINE_BREAK"</li>';\n", (char *)html_text_Dnesne_modlitby[_global_jazyk]);
+						if(_global_jazyk == JAZYK_HU){
+							fprintf(batch_html_file, "output = output + '<ul><li> '+tag1+cestax+'>%s (20'+rok+'. '+mesiac+'. '+den+'.)'+tag2+'"HTML_LINE_BREAK"</li>';\n", (char *)html_text_Dnesne_modlitby[_global_jazyk]);
+						}
+						else {
+							fprintf(batch_html_file, "output = output + '<ul><li> '+tag1+cestax+'>%s ('+den+'. '+mesiac+'. 20'+rok+')'+tag2+'"HTML_LINE_BREAK"</li>';\n", (char *)html_text_Dnesne_modlitby[_global_jazyk]);
+						}
 						fprintf(batch_html_file, "\n");
-						fprintf(batch_html_file, "output = output + '<li>'+tag1+cesta_mesiac+'>%s ('+mesiac+'/20'+rok+')'+tag2+'</li></ul>';\n", (char *)html_text_Prehlad_mesiaca[_global_jazyk]);
+						if(_global_jazyk == JAZYK_HU){
+							fprintf(batch_html_file, "output = output + '<li>'+tag1+cesta_mesiac+'>%s (20'+rok+'/'+mesiac+')'+tag2+'</li></ul>';\n", (char *)html_text_Prehlad_mesiaca[_global_jazyk]);
+						}
+						else {
+							fprintf(batch_html_file, "output = output + '<li>'+tag1+cesta_mesiac+'>%s ('+mesiac+'/20'+rok+')'+tag2+'</li></ul>';\n", (char *)html_text_Prehlad_mesiaca[_global_jazyk]);
+						}
 						fprintf(batch_html_file, "\n");
 						fprintf(batch_html_file, "document.write(output);\n");
 						fprintf(batch_html_file, "</script>\n");
@@ -13411,7 +13441,12 @@ void _main_batch_mode(
 
 					if(_global_opt_batch_monthly == ANO){
 						fprintf(batch_html_file, "<center><h4>");
-						fprintf(batch_html_file, (const char *)html_text_batch_obdobie1m[_global_jazyk], d_from, nazov_mesiaca_gen(m_from), r_from, d_to, nazov_mesiaca_gen(m_to), r_to);
+						if(_global_jazyk == JAZYK_HU){
+							fprintf(batch_html_file, (const char *)html_text_batch_obdobie1m[_global_jazyk], r_from, nazov_mesiaca_gen(m_from), d_from, r_to, nazov_mesiaca_gen(m_to), d_to);
+						}
+						else{
+							fprintf(batch_html_file, (const char *)html_text_batch_obdobie1m[_global_jazyk], d_from, nazov_mesiaca_gen(m_from), r_from, d_to, nazov_mesiaca_gen(m_to), r_to);
+						}
 						fprintf(batch_html_file, "</h4></center>\n");
 					}
 					fprintf(batch_html_file, "<ul>\n");

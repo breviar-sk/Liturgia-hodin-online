@@ -2135,7 +2135,7 @@ const char *html_text_option1_vigilia_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option1_spomienka_spolcast[POCET_JAZYKOV + 1] = 
 {"na spomienky poui èasti zo spoloènıch èastí", 
  "na památky pouít èásti ze spoleènıch textù", 
- "take parts from celebration -- commmons", 
+ "take parts from celebration &#x2013; commmons", 
  "", 
  "", 
  "na památky pouít èásti ze spoleènıch èástí", 
@@ -2155,7 +2155,7 @@ const char *html_text_option1_spomienka_spolcast_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option1_spomienka_spolcast_NIE[POCET_JAZYKOV + 1] = 
 {"na spomienky poui èasti zo dòa, nie zo spoloènıch èastí", 
  "na památky pouít èásti z bìného dne, ne ze spoleènıch textù", 
- "take parts from feria -- not commmons", 
+ "take parts from feria &#x2013; not commmons", 
  "", 
  "", 
  "na památky pouít èásti z bìného dne, ne ze spoleènıch èástí", 
@@ -2726,7 +2726,7 @@ const char *html_text_bottom[POCET_JAZYKOV + 1] = {"&darr; naspodok", "&darr; do
 // 2009-08-04: pre batch mód
 const char *html_text_batch_Zoznam1[POCET_JAZYKOV + 1] = {"Zoznam modlitieb", "Seznam modliteb", "List of prayers", "", "", "Seznam modliteb", "Az imák jegyzéke"};
 const char *html_text_batch_Zoznam1m[POCET_JAZYKOV + 1] = {"Zoznam modlitieb po mesiacoch", "Seznam modliteb dle mìsícù", "List of prayers by months", "", "", "Seznam modliteb dle mìsícù", "Az imák jegyzéke hónapok szerint"};
-const char *html_text_batch_obdobie1m[POCET_JAZYKOV + 1] = {"("/*obdobie */"od %d. %s %d do %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d -- %d. %s %d)", "(%d. %s %d -- %d. %s %d)", "(%d. %s %d -- %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d -- %d. %s %d)"};
+const char *html_text_batch_obdobie1m[POCET_JAZYKOV + 1] = {"("/*obdobie */"od %d. %s %d do %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)"};
 const char *html_text_batch_Zoznam2[POCET_JAZYKOV + 1] = {/* Zoznam modlitieb pre */"%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d"};
 const char *html_text_batch_Back[POCET_JAZYKOV + 1] = {"^ hore", "^ nahoru", "^ up", "", "", "^ nahoru", "^ felfelé"};
 const char *html_text_batch_Prev[POCET_JAZYKOV + 1] = {"&lt;&lt;", "&lt;&lt;", "&lt;&lt;", "&lt;&lt;", "&lt;&lt;", "&lt;&lt;", "&lt;&lt;"};
