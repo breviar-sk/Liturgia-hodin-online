@@ -21222,7 +21222,7 @@ label_25_MAR:
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_full(modlitba);
 
-							_vlastna_cast_mcd_ant_kcitresp_modl;
+							_vlastna_cast_mcd_kcitresp_modl;
 
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_full(modlitba);
