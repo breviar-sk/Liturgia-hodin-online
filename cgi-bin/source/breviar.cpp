@@ -7661,7 +7661,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 		if(som_v_tabulke == ANO)
 			Export("\n<table "HTML_ALIGN_CENTER">\n<tr>\n");
 		else{
-			Export("\n<p>\n");
+			Export("\n<center><p>\n");
 			Export(HTML_NONBREAKING_SPACE); Export(HTML_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 		}
 
@@ -11978,7 +11978,7 @@ void _main_rozbor_dna(char *den, char *mesiac, char *rok, char *modlitba, char *
 				if(som_v_tabulke == ANO)
 					Export("\n<table "HTML_ALIGN_CENTER">\n");
 				else{
-					Export("\n<p>\n");
+					Export("\n<p><center>\n");
 					Export(HTML_NONBREAKING_SPACE); Export(HTML_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 				}
 
@@ -12022,11 +12022,21 @@ void _main_rozbor_dna(char *den, char *mesiac, char *rok, char *modlitba, char *
 					Export("<td "HTML_ALIGN_RIGHT">");
 					Export_HtmlForm(pom);
 					// 2007-03-19: << zmenené na HTML_LEFT_ARROW
-					Export("<"HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %s %d\">\n", nazov_Mesiaca(pm - 1), pr);
+					if(_global_jazyk == JAZYK_HU){
+						Export("<"HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %d. %s\">\n", pr, nazov_mesiaca(pm - 1));
+					}
+					else{
+						Export("<"HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %s %d\">\n", nazov_Mesiaca(pm - 1), pr);
+					}
 					Export("</form></td>\n");
 				}			
 				else{
-					Export("<a href=\"%s\">"HTML_LEFT_ARROW" %s %d</a>\n", pom, nazov_Mesiaca(pm - 1), pr);
+					if(_global_jazyk == JAZYK_HU){
+						Export("<a href=\"%s\">"HTML_LEFT_ARROW" %d. %s</a>\n", pom, pr, nazov_mesiaca(pm - 1));
+					}
+					else{
+						Export("<a href=\"%s\">"HTML_LEFT_ARROW" %s %d</a>\n", pom, nazov_Mesiaca(pm - 1), pr);
+					}
 					Export(HTML_NONBREAKING_SPACE); Export(HTML_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 				}
 
@@ -12065,11 +12075,21 @@ void _main_rozbor_dna(char *den, char *mesiac, char *rok, char *modlitba, char *
 					Export("<td "HTML_ALIGN_LEFT">");
 					Export_HtmlForm(pom);
 					// 2007-03-19: >> zmenené na HTML_RIGHT_ARROW
-					Export("<"HTML_FORM_INPUT_SUBMIT0" value=\"%s %d "HTML_RIGHT_ARROW"\">\n", nazov_Mesiaca(pm - 1), pr);
+					if(_global_jazyk == JAZYK_HU){
+						Export("<"HTML_FORM_INPUT_SUBMIT0" value=\"%d. %s "HTML_RIGHT_ARROW"\">\n", pr, nazov_mesiaca(pm - 1));
+					}
+					else{
+						Export("<"HTML_FORM_INPUT_SUBMIT0" value=\"%s %d "HTML_RIGHT_ARROW"\">\n", nazov_Mesiaca(pm - 1), pr);
+					}
 					Export("</form></td>\n");
 				}
 				else{
-					Export("<a href=\"%s\">%s %d "HTML_RIGHT_ARROW"</a>\n", pom, nazov_Mesiaca(pm - 1), pr);
+					if(_global_jazyk == JAZYK_HU){
+						Export("<a href=\"%s\">%d. %s "HTML_RIGHT_ARROW"</a>\n", pom, pr, nazov_mesiaca(pm - 1));
+					}
+					else{
+						Export("<a href=\"%s\">%s %d "HTML_RIGHT_ARROW"</a>\n", pom, nazov_Mesiaca(pm - 1), pr);
+					}
 					Export(HTML_NONBREAKING_SPACE); Export(HTML_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 				}
 
@@ -12078,7 +12098,7 @@ void _main_rozbor_dna(char *den, char *mesiac, char *rok, char *modlitba, char *
 					// odtia¾to export <tr> presunutý až do samotného exportu...
 				}
 				else{
-					Export(HTML_LINE_BREAK);
+					Export("</center>"HTML_LINE_BREAK);
 				}
 
 				// ten istý mesiac pred rokom -- button
