@@ -21488,8 +21488,8 @@ label_25_MAR:
 					}// kalendár pre KALENDAR_CZ_OPRAEM
 					if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
 						// SK OFM: poradie 1 je text_JUN_16_SK; poradie 2 text_JUN_16_1_OFM; poradie 3 text_JUN_16_2_OFM
-						// CZ OFMCap: poradie 1 je text_JUN_16_CZ; poradie 2 text_JUN_16_2_OFM
-						if(poradie_svaty == 2){
+						// CZ OFMCap: poradie 1 je text_JUN_16_2_OFM
+						if(poradie_svaty == 1){
 							
 							file_name_vlastny_kalendar(_global_kalendar);
 
@@ -21509,13 +21509,12 @@ label_25_MAR:
 
 							break;
 						}
-						pocet = 2;
-						_global_svaty2.typslav = SLAV_LUB_SPOMIENKA;
-						_global_svaty2.smer = 12; // ¾ubovo¾né spomienky
-						mystrcpy(_global_svaty2.meno, text_JUN_16_2_OFM[_global_jazyk], MENO_SVIATKU);
-						_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
-						_global_svaty2.farba = LIT_FARBA_CERVENA;
-						_global_svaty2.kalendar = KALENDAR_CZ_OFMCAP;
+						_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
+						_global_svaty1.smer = 12; // ¾ubovo¾né spomienky
+						mystrcpy(_global_svaty1.meno, text_JUN_16_2_OFM[_global_jazyk], MENO_SVIATKU);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
+						_global_svaty1.farba = LIT_FARBA_CERVENA;
+						_global_svaty1.kalendar = KALENDAR_CZ_OFMCAP;
 					}// kalendár pre KALENDAR_CZ_OFMCAP
 					break;
 				case 17: // MES_JUN -- 17JUN
