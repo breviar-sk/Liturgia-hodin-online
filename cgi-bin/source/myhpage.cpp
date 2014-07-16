@@ -240,7 +240,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 
 	// 2010-02-15: doplnené predošlá a nasledovná modlitba
 	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
-		Export_to_file(expt, "<center>\n");
+		Export_to_file(expt, "<center>");
 		pismeno_modlitby = CHAR_MODL_NEURCENA;
 		if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)){
 			// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
@@ -393,7 +393,7 @@ void _patka(FILE * expt){
 
 	// 2010-02-15: vložené "^ hore" pod¾a hlavicka(); doplnené predošlá a nasledovná modlitba
 	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
-		Export_to_file(expt, "<center>\n");
+		Export_to_file(expt, "\n<center>");
 		pismeno_modlitby = CHAR_MODL_NEURCENA;
 		if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM))
 			pismeno_modlitby = char_modlitby[_local_modlitba];

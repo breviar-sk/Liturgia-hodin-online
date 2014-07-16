@@ -85,10 +85,10 @@ const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , {"neurèená", "neurèena", "not-defined", "no data", "", "neurèena", "nem azonosított"}
 , {"prvé vešpery", "první nešpory", "1st Vesperae", "I vesperae", "", "První veèerní chvály", "I. esti dicséret" }
 	// 2007-12-05: zmenené, kedysi bolo: "prvé kompletórium"
-, {"kompletórium po prvıch vešperách", "kompletáø po prvních nešporách", "1st Completary", "I completorio", "", "Kompletáø po prvních veèerních chválách", "befejezõ imaóra I.e.d.után" }
+, {"kompletórium po prvıch vešperách", "kompletáø po prvních nešporách", "1st Completary", "I completorio", "", "Kompletáø po prvních veèerních chválách", "befejezõ imaóra I. e. d. után" }
 , {"druhé vešpery", "druhé nešpory", "2nd Vesperae", "II vesperae", "", "Druhé veèerní chvály", "II. esti dicséret" }
 	// 2007-12-05: zmenené, kedysi bolo: "druhé kompletórium"
-, {"kompletórium po druhıch vešperách", "kompletáø po druhıch nešporách", "2nd Completary", "II completorio", "", "Kompletáø po druhıch veèerních chválách", "befejezõ imaóra II.e.d.után" }
+, {"kompletórium po druhıch vešperách", "kompletáø po druhıch nešporách", "2nd Completary", "II completorio", "", "Kompletáø po druhıch veèerních chválách", "befejezõ imaóra II. e. d. után" }
 , {"detaily", "detaily", "Details", "details", "", "detaily", "részletek" }
 , {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
 };
@@ -108,10 +108,10 @@ const char *nazov_modlitby_short_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , {"neurèená", "neurèena", "not-defined", "no data", "", "neurèena", "nem azonosított"}
 , {"prvé vešpery", "první nešpory", "1st Vesperae", "I vesperae", "", "První veèerní chvály", "I. esti dicséret" }
 	// 2007-12-05: zmenené, kedysi bolo: "prvé kompletórium"
-, {"kompletórium po 1. vešp.", "kompletáø po 1. nešp.", "1st Completary", "I completorio", "", "Kompletáø po 1. v. chv.", "befejezõ imaóra I.e.d.ut." }
+, {"kompletórium po 1. vešp.", "kompletáø po 1. nešp.", "1st Completary", "I completorio", "", "Kompletáø po 1. v. chv.", "befejezõ imaóra I. e. d. ut." }
 , {"(druhé) vešpery", "druhé nešpory", "2nd Vesperae", "II vesperae", "", "Druhé veèerní chvály", "II. esti dicséret" }
 	// 2007-12-05: zmenené, kedysi bolo: "druhé kompletórium"
-, {"kompletórium (po 2. vešp.)", "kompletáø po 2. nešp.", "2nd Completary", "II completorio", "", "Kompletáø po 2. v. chv.", "befejezõ imaóra II.e.d.ut." }
+, {"kompletórium (po 2. vešp.)", "kompletáø po 2. nešp.", "2nd Completary", "II completorio", "", "Kompletáø po 2. v. chv.", "befejezõ imaóra II. e. d. ut." }
 , {"detaily", "detaily", "Details", "details", "", "detaily", "részletek" }
 , {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
 };
@@ -130,9 +130,9 @@ const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , {"Kompletórium", "Kompletáø", "Completary", "Completorio", "", "Kompletáø" , "Befejezõ imaóra" }
 , {"Neurèená", "Neurèena", "not-defined", "No data", "", "Neurèená" , "Nem azonosított"}
 , {"Prvé vešpery", "První nešpory", "1st Vesperae", "I Vesperae", "", "První veèerní chvály" , "I. Esti dicséret" }
-, {"Kompletórium po prvıch vešperách", "Kompletáø po prvních nešporách", "1st Completary", "I Completorio", "", "Kompletáø po prvních veèerních chválách" , "Befejezõ imaóra I.e.d.után" }
+, {"Kompletórium po prvıch vešperách", "Kompletáø po prvních nešporách", "1st Completary", "I Completorio", "", "Kompletáø po prvních veèerních chválách" , "Befejezõ imaóra I. e. d. után" }
 , {"Druhé vešpery", "Druhé nešpory", "2nd Vesperae", "II Vesperae", "", "Druhé veèerní chvály" , "II. Esti dicséret" }
-, {"Kompletórium po druhıch vešperách", "Kompletáø po druhıch nešporách", "2nd Completary", "II Completorio", "", "Kompletáø po druhıch veèerních chválách" , "Befejezõ imaóra II.e.d.után" }
+, {"Kompletórium po druhıch vešperách", "Kompletáø po druhıch nešporách", "2nd Completary", "II Completorio", "", "Kompletáø po druhıch veèerních chválách" , "Befejezõ imaóra II. e. d. után" }
 , {"Detaily", "Detaily", "Details", "Details", "", "Detaily", "Részletek" }
 , {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
 };
@@ -151,9 +151,9 @@ const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , {"KOMPLETÓRIUM", "KOMPLETÁØ", "COMPLETARY", "COMPLETORIO", "", "KOMPLETÁØ" , "BEFEJEZÕ IMAÓRA" }
 , {"NEURÈENÁ", "NEURÈENA", "NOT-DEFINED", "NO DATA", "", "NEURÈENÁ" , "NEM AZONOSÍTOTT"}
 , {"PRVÉ VEŠPERY", "PRVNÍ NEŠPORY", "1ST VESPERAE", "I VESPERAE", "", "PRVNÍ VEÈERNÍ CHVÁLY" , "I. ESTI DICSÉRET" }
-, {"KOMPLETÓRIUM PO PRVİCH VEŠPERÁCH", "KOMPLETÁØ PO PRVNÍCH NEŠPORÁCH", "1ST COMPLETARY", "I COMPLETORIO", "", "KOMPLETÁØ PO PRVNÍCH VEÈERNÍCH CHVÁLÁCH" , "BEFEJEZÕ IMAÓRA I.E.D.UTÁN" }
+, {"KOMPLETÓRIUM PO PRVİCH VEŠPERÁCH", "KOMPLETÁØ PO PRVNÍCH NEŠPORÁCH", "1ST COMPLETARY", "I COMPLETORIO", "", "KOMPLETÁØ PO PRVNÍCH VEÈERNÍCH CHVÁLÁCH" , "BEFEJEZÕ IMAÓRA I. E. D. UTÁN" }
 , {"DRUHÉ VEŠPERY", "DRUHÉ NEŠPORY", "2ND VESPERAE", "II VESPERAE", "", "DRUHÉ VEÈERNÍ CHVÁLY" , "II. ESTI DICSÉRET" }
-, {"KOMPLETÓRIUM PO DRUHİCH VEŠPERÁCH", "KOMPLETÁØ PO DRUHİCH NEŠPORÁCH", "2ND COMPLETARY", "II COMPLETORIO", "", "KOMPLETÁØ PO DRUHİCH VEÈERNÍCH CHVÁLÁCH" , "BEFEJEZÕ IMAÓRA II.E.D.UTÁN" }
+, {"KOMPLETÓRIUM PO DRUHİCH VEŠPERÁCH", "KOMPLETÁØ PO DRUHİCH NEŠPORÁCH", "2ND COMPLETARY", "II COMPLETORIO", "", "KOMPLETÁØ PO DRUHİCH VEÈERNÍCH CHVÁLÁCH" , "BEFEJEZÕ IMAÓRA II. E. D. UTÁN" }
 , {"DETAILY", "DETAILY", "DETAILS", "DETAILS", "", "DETAILY", "RÉSZLETEK" }
 , {"VŠETKY", "VŠECHNY", "ALL", "ALL", "", "VŠECHNY", "ÖSSZES" }
 };
@@ -309,8 +309,8 @@ const char *nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 // the names of liturgical periods (usually lowecase) / nazov_obdobia: string pre názov liturgického obdobia, rozšírenı
 const char *nazov_obdobia_ext_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
- {"Adventné obdobie I (do 16. decembra)", "doba adventní I", "", "tempus adventus I", "", "doba adventní I", "adventi idõ I (dec.16-ig)"},
- {"Adventné obdobie II (po 16. decembri)", "doba adventní II", "", "tempus adventus II", "", "doba adventní II", "adventi idõ II (dec.16 után)"},
+ {"Adventné obdobie I (do 16. decembra)", "doba adventní I", "", "tempus adventus I", "", "doba adventní I", "adventi idõ I (dec. 16-ig)"},
+ {"Adventné obdobie II (po 16. decembri)", "doba adventní II", "", "tempus adventus II", "", "doba adventní II", "adventi idõ II (dec. 16 után)"},
  {"Oktáva Narodenia Pána", "oktáv Narození Pánì", "", "octava nativitatis", "", "oktáv Narození Pánì", "karácsony nyolcada"},
  {"Vianoèné obdobie I (do Zjavenia Pána)", "doba vánoèní I", "", "tempus nativitatis I", "", "doba vánoèní II", "karácsonyi idõ I (Urunk megjelenéséig)"},
  {"Vianoèné obdobie II (po Zjavení Pána)", "doba vánoèní II", "", "tempus nativitatis II", "", "doba vánoèní II", "karácsonyi idõ II (Urunk megjelenése után)"},
@@ -551,7 +551,7 @@ const char *nazov_slavenia_lokal[] =
 ,"v praské katedrále slavnost"                                                                                 // LOKAL_SLAV_PRAHA_KATEDRALA
 ,"v èeskobudìjovické diecézi"                                                                                   // LOKAL_SLAV_CESKE_BUDEJOVICE
 ,"v olomoucké arcidiecézi"                                                                                      // LOKAL_SLAV_OLOMOUC
-,"v Èechách svátek"                                                                                             // LOKAL_SLAV_CECHY_SPOMIENKA
+,"v Èechách závazná památka"                                                                                    // LOKAL_SLAV_CECHY_SPOMIENKA
 ,"v plzeòské diecézi svátek hlavního patrona"                                                                   // LOKAL_SLAV_PLZEN_PATRON
 ,"v ostravsko-opavské diecézi"                                                                                  // LOKAL_SLAV_OSTRAVA_OPAVA
 ,"v litomìøické diecézi"                                                                                        // LOKAL_SLAV_LITOMERICE
@@ -562,7 +562,7 @@ const char *nazov_slavenia_lokal[] =
 ,"v èeskobudìjovické diecézi památka"                                                                           // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
 ,"v Bratislavskej arcidiecéze a v Spišskej diecéze sviatok hlavného patróna"                                    // LOKAL_SLAV_SPIS_BA_PATRON
 ,"v Bratislavskej arcidiecéze"                                                                                  // LOKAL_SLAV_BRATISLAVA
-,"Karácsony nyolcada-Kiskarácsony"                                                                              // LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU
+,"Karácsony nyolcada – Kiskarácsony"                                                                              // LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU
 ,"len pre Inštitút milosrdnıch sestier Sv. kría"                                                               // LOKAL_SLAV_KONGREGACIA_SSK // 2013-08-12: pôvodne bolo: "len pre Kongregáciu milosrdnıch sestier Sv. kría"
 ,"pre OFMCap: spomienka"                                                                                        // LOKAL_SLAV_SPOMIENKA_OFMCAP
 ,"pre OFM: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_OFM
@@ -573,35 +573,35 @@ const char *nazov_slavenia_lokal[] =
 ,"pre SDB: slávnos"                                                                                            // LOKAL_SLAV_SLAVNOST_SDB
 ,"pre ASC: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_VDB // VDB -> ASC
 ,"pre SCSC: sviatok"                                                                                            // LOKAL_SLAV_SVIATOK_SCSC
-,"Húsvét 2. vasárnapja — Az Isteni Irgalmasság vasárnapja"                                                      // LOKAL_SLAV_DRUHA_VELK_NEDELA_HU
+,"Húsvét 2. vasárnapja – Az Isteni Irgalmasság vasárnapja"                                                      // LOKAL_SLAV_DRUHA_VELK_NEDELA_HU
 ,"A Szombathelyi egyházmegyében"                                                                                // LOKAL_SLAV_SZOMBATHELYI_EGYH
-,"Nagyszombat: az egyházmegye fõvédõszentje"                                                                    // LOKAL_SLAV_NAGYSZ_PATRON
+,"A Nagyszombati fõegyházmegyében: a fõegyházmegye fõvédõszentje"                                                                    // LOKAL_SLAV_NAGYSZ_PATRON
 ,"A Szeged-Csanádi egyházmegye északi részében: az egyházmegye védõszentje; fõünnep"                            // LOKAL_SLAV_SZEGED_CSAN_PATRON // 2013-06-27: ??? neviem, odkia¾ sa to tu vzalo
 ,"A Pécsi egyházmegyében"                                                                                       // LOKAL_SLAV_PECSI_EGYH
 ,"A Pécsi egyházmegyében: az egyházmegye védõszentje; fõünnep"                                                  // LOKAL_SLAV_PECSI_EGYH_PATRON
 ,"A Szeged-Csanádi egyházmegye északi részében; ünnep"                                                          // LOKAL_SLAV_SZEGED_CSAN_EGYH
-,"A Veszprémi egyházmegyében: Szent Anna, az egyházmegye védõszentje; ünnep"                                    // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
-,"A gyõri és székesfehérvári egyházmegyében: az egyházmegye védõszentje"                                        // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH
+,"A Veszprémi fõegyházmegyében: Szent Anna, a fõegyházmegye védõszentje; ünnep"                                    // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
+,"A Gyõri és Székesfehérvári egyházmegyében: az egyházmegye védõszentje"                                        // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH
 ,"A Kaposvári egyházmegyében; ünnep"                                                                            // LOKAL_SLAV_KAPORSVAR_FELSZ
 ,"A Váci egyházmegyében; ünnep"                                                                                 // LOKAL_SLAV_VACI_FELSZ
-,"Kalocsa-Kecskemét: a fõegyházmegye védõszentje; fõünnep"                                                      // LOKAL_SLAV_KAL_KECS_FOEGYH
-,"A Esztergom-Budapest, a fõszékesegyházban; fõünnep"                                                           // LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH
-,"A fôszékesegyházban; fõünnep"                                                                                 // LOKAL_SLAV_KAL_KECS_FELSZ
-,"A Gyõri egyházmegyében: székesegyház felszentelése; ünnep"                                                    // LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ
+,"A Kalocsa-Kecskeméti fõegyházmegyében: a fõegyházmegye védõszentje; fõünnep"                                                      // LOKAL_SLAV_KAL_KECS_FOEGYH
+,"A Esztergom-Budapesti fõegyházmegyében: a fõszékesegyházban; fõünnep"                                                           // LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH
+,"A fõszékesegyházban; fõünnep"                                                                                 // LOKAL_SLAV_KAL_KECS_FELSZ
+,"A Gyõri egyházmegyében: a székesegyház felszentelése; ünnep"                                                    // LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ
 ,"A Váci egyházmegyében: Szent Mihály fõangyal, az egyházmegye védõszentje"                                     // LOKAL_SLAV_VACI_PATRON
-,"A Szeged-Csanád: az egyházmegye védõszentje; fõünnep"                                                         // LOKAL_SLAV_SZEGED_CSAN_PATRON2
-,"A Veszprém, a fõszékesegyházban; fõünnep"															            // LOKAL_SLAV_VESZPREM_FOEGYH
+,"A Szeged-Csanádi egyházmegyében: az egyházmegye védõszentje; fõünnep"                                                         // LOKAL_SLAV_SZEGED_CSAN_PATRON2
+,"A Veszprémi fõegyházmegyében: a fõszékesegyházban; fõünnep"															            // LOKAL_SLAV_VESZPREM_FOEGYH
 ,"csak a felszentelt templomokban"                                                                              // LOKAL_SLAV_KONSEKR_KOSTOLY_HU
-,"A Szeged-Csanád: A székesegyházban; fõünnep"                                                                  // LOKAL_SLAV_SZEGED_CSAN_EGYH2
-,"A Pécsi egyházmegyében: A Pécsi egyházmegye társvédõszentje; fõünnep"                                         // LOKAL_SLAV_PECS_PATRON
-,"Szombathely: Az egyházmegye védõszentje; fõünnep"                                                             // LOKAL_SLAV_SZOMBATHELYI_PATRON
-,"Székesfehérvár: A székesegyházban; fõünnep"                                                                   // LOKAL_SLAV_SZEKESFEHERVAR_EGYH
-,"Az Egri fõegyházmegyében: A fõegyházmegye védõszentje; ünnep"                                                 // LOKAL_SLAV_EGER_FOEGYH
+,"A Szeged-Csanádi egyházmegyében: a székesegyházban; fõünnep"                                                                  // LOKAL_SLAV_SZEGED_CSAN_EGYH2
+,"A Pécsi egyházmegyében: a Pécsi egyházmegye társvédõszentje; fõünnep"                                         // LOKAL_SLAV_PECS_PATRON
+,"A Szombathelyi egyházmegyébe: az egyházmegye védõszentje; fõünnep"                                                             // LOKAL_SLAV_SZOMBATHELYI_PATRON
+,"Székesfehérvár: a székesegyházban; fõünnep"                                                                   // LOKAL_SLAV_SZEKESFEHERVAR_EGYH
+,"Az Egri fõegyházmegyében: a fõegyházmegye védõszentje; ünnep"                                                 // LOKAL_SLAV_EGER_FOEGYH
 ,"Az Esztergomi fõegyházmegyében; emléknap"                                                                     // LOKAL_SLAV_ESZTERGOM_EML
 ,"A Gyõri egyházmegyében"                                                                                       // LOKAL_SLAV_GYOR_EGYH
 ,"Az Esztergomi fõegyházmegyében"                                                                               // LOKAL_SLAV_ESZTERGOM_FOEGYH
 ,"Az Egri fõegyházmegyében"                                                                                     // LOKAL_SLAV_EGER_FOEGYH2
-,"A Veszprém, a fõegyházmegye társvédõszentje; fõünnep"                                                         // LOKAL_SLAV_VESZPREM_FOEGYH_T
+,"A Veszprémi fõegyházmegyében: a fõegyházmegye társvédõszentje; fõünnep"                                                         // LOKAL_SLAV_VESZPREM_FOEGYH_T
 ,"A Szatmári egyházmegyében; emléknap"                                                                          // LOKAL_SLAV_SZATMAR
 ,"v ostatních èeskıch diecézích a v brnìnské diecézi: památka; "HTML_LINE_BREAK"na Moravì mimo brnìnskou diecézi: nezávazná památka" // LOKAL_SLAV_CESKO_BRNO
 ,"sviatok hlavnej patrónky "HTML_LINE_BREAK"(slovenskej) Kongregácie sestier dominikánok bl. Imeldy"            // LOKAL_SLAV_SVIATOK_OP_ZENY
@@ -1043,9 +1043,9 @@ const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 // táto sa pre HTML buttony nepouíva
 	, {"neurèená", "neurèena", "not-defined", "no data", "", "neurèena", "nem azonosított"}
 , {"Prvé vešp.", "První nešp.", "1st Vesperae", "I vesperae", "", "První v. chv.", "I. esti dics." }
-, {"Prvé kompl.", "První kompl.", "Compl.", "Compl.", "", "První kompl.", "Bef. i. I.e.d.után"}
+, {"Prvé kompl.", "První kompl.", "Compl.", "Compl.", "", "První kompl.", "Bef. i. I. e. d. után"}
 , {"Druhé vešp.", "Druhé nešpory", "2nd Vesperae", "II vesperae", "", "Druhé veèerní chv.", "II. esti dics." }
-, {"Druhé kompl.", "Druhı kompl.", "2nd Completary", "II completorio", "", "Druhı kompl.", "Bef. i. II.e.d.után" }
+, {"Druhé kompl.", "Druhı kompl.", "2nd Completary", "II completorio", "", "Druhı kompl.", "Bef. i. II. e. d. után" }
 // , {"Vo¾ba detailov...", "Podrobnìji...", "Details...", "Optiónes...", "", "Podrobnìji...", "Részletek..."} // 2011-10-03: prakticky je to teraz len o vıbere spoloènıch èastí
 , {"vıber spoloènej èasti...", "vıbìr spoleèné èásti...", "common texts...", "optiónes...", "", "vıbìr spoleèné èásti...", "közös rész kiválasztása..."}
 , {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
@@ -1059,7 +1059,7 @@ const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 #endif
 
 // special button: Show prayer
-const char *html_button_det_show[POCET_JAZYKOV + 1] = {"Zobraz modlitbu", "Uka modlitbu", "Show prayer", "xxx", "", "Uka modlitbu", "Mutasd az imát"};
+const char *html_button_det_show[POCET_JAZYKOV + 1] = {"Zobraz modlitbu", "Uka modlitbu", "Show prayer", "xxx", "", "Uka modlitbu", "Ima megjelenítése"};
 #ifndef HTML_BUTTON_DET_SHOW
 #define HTML_BUTTON_DET_SHOW	html_button_det_show[_global_jazyk]
 #endif
@@ -1071,7 +1071,7 @@ const char *html_button_det_defaults[POCET_JAZYKOV + 1] = {"Pôvodné hodnoty", "P
 #endif
 
 // special button (today): Show
-const char *html_button_dnes_show[POCET_JAZYKOV + 1] = {"Zobrazi", "Uka", "Show", "___", "", "Uka", "Mutasd"};
+const char *html_button_dnes_show[POCET_JAZYKOV + 1] = {"Zobrazi", "Uka", "Show", "___", "", "Uka", "Megjelenítés"};
 #ifndef HTML_BUTTON_DNES_SHOW
 #define HTML_BUTTON_DNES_SHOW	html_button_dnes_show[_global_jazyk]
 #endif
@@ -1119,10 +1119,10 @@ const char *html_button_kompletorium_nunkdim[POCET_JAZYKOV + 1] = {"Kompletórium
 const char *html_title[POCET_JAZYKOV + 1] = {"Liturgia hodín", "Liturgie hodin", "Liturgy of Hours", "Liturgia horarum", "", "Liturgie hodin", "Az Imaórák Liturgiája"};
 // 2009-08-04: upravené pre batch mód
 // const char *html_title_batch_mode[POCET_JAZYKOV + 1] = {"Batch mód", "Dávkovı reim", "Batch mode", "la_", "", "Dávkovı reim", "Kötegelt mód"};
-const char *html_title_batch_mode[POCET_JAZYKOV + 1] = {"Liturgia hodín - statické texty", "Liturgie hodin - statické texty", "Liturgy of Hours - static texts", "la_", "", "Liturgie hodin - statické texty", "Az Imaórák Liturgiája - állandó szövegek"};
+const char *html_title_batch_mode[POCET_JAZYKOV + 1] = {"Liturgia hodín – statické texty", "Liturgie hodin – statické texty", "Liturgy of Hours – static texts", "la_", "", "Liturgie hodin – statické texty", "Az Imaórák Liturgiája – állandó szövegek"};
 
 // doplnené, 2011-05-16
-const char *html_error_template[POCET_JAZYKOV + 1] = {"Šablóna pre modlitbu sa nenašla. Zrejme neexistuje súbor `%s'.", "Šablona pro modlitbu se nenašla. Patrnì neexistuje soubor `%s'.", "Template for prayer not found. File `%s' does not exist.", "Template for prayer not found. File `%s' does not exist.", "", "Šablona pro modlitbu se nenašla. Patrnì neexistuje soubor `%s'.", "Template for prayer not found. File `%s' does not exist."};
+const char *html_error_template[POCET_JAZYKOV + 1] = {"Šablóna pre modlitbu sa nenašla. Zrejme neexistuje súbor `%s'.", "Šablona pro modlitbu se nenašla. Patrnì neexistuje soubor `%s'.", "Template for prayer not found. File `%s' does not exist.", "Template for prayer not found. File `%s' does not exist.", "", "Šablona pro modlitbu se nenašla. Patrnì neexistuje soubor `%s'.", "Nem található sablon az imához. %s' fájl nem létezik."};
 
 // navigation buttons/texts: previous, next, today
 const char *html_button_predchadzajuci_[POCET_JAZYKOV + 1] = {"Predchádzajúci", "Pøedchozí", "Previous", "Praecedénte", "", "Pøedchozí", "Elõzõ"};
@@ -1139,7 +1139,7 @@ const char *html_text_mesiac[POCET_JAZYKOV + 1] = {"mesiac", "mìsíc", "month", "
 const char *html_text_rok[POCET_JAZYKOV + 1] = {"rok", "rok", "year", "anno", "", "rok", "év"};
 const char *html_text_Rok[POCET_JAZYKOV + 1] = {"Rok", "Rok", "Year", "Anno", "", "Rok", "Év"};
 // in the following: you MUST keep all %d, %c, %s etc. variables - these are replaced by numbers, characters, strings, etc. respectively
-const char *html_text_Rok_x[POCET_JAZYKOV + 1] = {"Rok %d", "Rok %d", "Year %d", "Anno %d", "%d", "Rok %d", "Év %d"};
+const char *html_text_Rok_x[POCET_JAZYKOV + 1] = {"Rok %d", "Rok %d", "Year %d", "Anno %d", "%d", "Rok %d", "%.d év"};
 
 const char *html_text_zoznam_mesiacov[POCET_JAZYKOV + 1] = {"zoznam mesiacov", "seznam mìsícù", "list of months", "", "", "seznam mìsícù", "hónapok listája"};
 
@@ -1227,7 +1227,7 @@ const char *html_text_den_v_roku[POCET_JAZYKOV + 1] = {"%d. deò v roku", "%d. de
 const char *html_text_zacina[POCET_JAZYKOV + 1] = {"zaèína", "zaèíná", "starts", "", "", "zaèíná", "kezdõdik"};
 const char *html_text_liturgicky_rok[POCET_JAZYKOV + 1] = {"liturgickı rok", "liturgickı rok", "liturgical year", "anno liturgico", "", "liturgickı rok", "liturgikus év"};
 
-const char *html_text_txt_export[POCET_JAZYKOV + 1] = {"Textovı vıstup: ", "Textovı vıstup: ", "Text export: ", "Text export:", "", "Textovı vıstup: ", "Text export: "};
+const char *html_text_txt_export[POCET_JAZYKOV + 1] = {"Textovı vıstup: ", "Textovı vıstup: ", "Text export: ", "Text export:", "", "Textovı vıstup: ", "Szöveg exportálása: "};
 
 const char *html_text_pohyblive1[POCET_JAZYKOV + 1] = {
 	"<td "HTML_ALIGN_CENTER">Rok"HTML_LINE_BREAK"Pána</td>\n",
@@ -1472,7 +1472,7 @@ const char *html_text_detaily_uvod[POCET_JAZYKOV + 1] =
  "",
  "",
  "Následující monosti mají vliv na vzhled i obsah vygenerované modlitby.\nVyberte si monosti, podle kterıch má bıt modlitba vygenerována.",
- "Ez a választási lehetõség befolyásolja a megszerkesztett ima megjelenítését és tartalmát.\nVálassz a szerkeszthetõ lehetõségek közül."
+ "Ez a választási lehetõség befolyásolja a megszerkesztett ima megjelenítését és tartalmát.\nVálasszon a szerkeszthetõ lehetõségek közül."
 };
 
 const char *html_text_option1_kalendar[POCET_JAZYKOV + 1] = 
@@ -1492,7 +1492,7 @@ const char *html_text_option1_kalendar_explain[POCET_JAZYKOV + 1] =
  "", 
  "", 
  "Volby pro liturgickı kalendáø ovlivòují datumy nìkterıch slavení.",
- "Az Imaórák liturgiája megadja a lehetõséget, hogy némely ünnepek kétféle képen legyenek megünnepelve; az adott országtól függ, ahogy az adott püspöki konferencia döntött."
+ "Az Imaórák liturgiája megadja a lehetõséget, hogy némely ünnepek kétféleképpen legyenek megünnepelve; az adott országtól függ, ahogy az adott püspöki konferencia döntött."
 };
 
 const char *html_text_option1_nemenne_sucasti[POCET_JAZYKOV + 1] = 
@@ -1569,7 +1569,7 @@ const char *html_text_spol_casti_vziat_zo_explain[POCET_JAZYKOV + 1] =
  "",
  "",
  "O svátku ke cti svìtce/svìtice se podle liturgickıch pravidel berou èásti, které se nenachází ve vlastních textech, ze spoleènıch textù, nìkdy je moné vybrat si z více spoleènıch textù; navíc je monost modlit se tyto èásti ze všedního dne.",
- "A szentek ünnepén, a liturgikus elõírások szerint, azok az ima részek, amelyek nem találhatók meg a zsolozsma saját részében,  tetszés szerint vehetõk vagy a  közös részbõl, néha több közös részbõl lehet választani, vagy a köznapról."
+ "A szentek ünnepén, a liturgikus elõírások szerint, azok az imarészek, amelyek nem találhatók meg a zsolozsma saját részében, tetszés szerint vehetõk vagy a közös részbõl, néha több közös részbõl lehet választani, vagy a köznapról."
 };
 
 const char *html_text_option0_specialne[POCET_JAZYKOV + 1] = 
@@ -1629,7 +1629,7 @@ const char *html_text_option0_referencie_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "", 
- "Az imák szövegében minden bibliai utalás (például Jn 3, 16) aktív linkként a szentiras.hu katolikus bibliafordításának megfellõ részére mutat. (A Szent István Társulat fordítását használjuk.)"
+ "Az imák szövegében minden bibliai utalás (például Jn 3, 16) aktív linkként a szentiras.hu katolikus bibliafordításának megfelelõ részére mutat. (A Szent István Társulat fordítását használjuk.)"
 };
 
 const char *html_text_option0_citania[POCET_JAZYKOV + 1] = 
@@ -1669,7 +1669,7 @@ const char *html_text_option0_zjv_ne_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "", 
- "Urunk megjelenése (Vízkereszt) január 6.-án van; egyes országokban azonban vasárnap, január 2. és 8. között ünneplik."
+ "Urunk megjelenése (Vízkereszt) január 6-án van; egyes országokban azonban vasárnap, január 2. és 8. között ünneplik."
 };
 
 const char *html_text_option0_nan_ne[POCET_JAZYKOV + 1] = 
@@ -1787,7 +1787,7 @@ const char *html_text_option1_slava_otcu_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "Liturgie hodin modlitbu Sláva Otci na konci almù a chvalozpìvù neuvádí.", 
- "Az imaórák liturgiája a Dicsõség az Atyának ... dicsõítõ verset a zsoltárok és kantikumok végén alaphelyzetben nem mutatja."
+ "Az imaórák liturgiája a Dicsõség az Atyának… dicsõítõ verset a zsoltárok és kantikumok végén alaphelyzetben nem mutatja."
 };
 
 const char *html_text_option1_rubriky[POCET_JAZYKOV + 1] = 
@@ -1835,7 +1835,7 @@ const char *html_text_option1_tedeum[POCET_JAZYKOV + 1] =
  "",
  "",
  "hymnus Te Deum", 
- "Téged, Isten, dicsérünk ... himnusz"
+ "Téged, Isten, dicsérünk… himnusz"
 };
 const char *html_text_option1_tedeum_explain[POCET_JAZYKOV + 1] = 
 {"Liturgia hodín hymnus Te Deum v posvätnom èítaní v plnom znení neuvádza.", 
@@ -1844,7 +1844,7 @@ const char *html_text_option1_tedeum_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "Liturgie hodin hymnus Te Deum na pøíslušnıch místech v plném znìní neuvádí.", 
- "Az imaórák liturgiája a Téged, Isten, dicsérünk ... himnuszt az Olvasmányos imaórában alaphelyzetben nem mutatja."
+ "Az imaórák liturgiája a Téged, Isten, dicsérünk… himnuszt az Olvasmányos imaórában alaphelyzetben nem mutatja."
 };
 
 const char *html_text_option1_plne_resp[POCET_JAZYKOV + 1] = 
@@ -1873,7 +1873,7 @@ const char *html_text_option_zobrazit[POCET_JAZYKOV + 1] =
  "show",
  "",
  "zobrazit", 
- "megmutatni"
+ "megjelenítés"
 };
 const char *html_text_option_skryt[POCET_JAZYKOV + 1] = 
 {"skry", 
@@ -2110,7 +2110,7 @@ const char *html_text_option1_vesp_kratsie_prosby_explain[POCET_JAZYKOV + 1] =
  "", 
  "", 
  "Pro veèerní chvály pouít kratší prosby z dodatku místo urèenıch pro pøíslušnı den.",
- "Esti dicséretre használja a rövidebb közbenjáró fohászokat a függelékbõl, a napra meghatározott helyett."
+ "Esti dicséretben használja a rövidebb közbenjáró fohászokat a függelékbõl, a napra meghatározott helyett."
 };
 
 const char *html_text_option1_vigilia[POCET_JAZYKOV + 1] = 
@@ -2246,7 +2246,7 @@ const char *html_text_option2_font_family_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "", 
- "Válasszon talpas (Serif) vagy talp nélküli (Sans Serif) betût, kényelem szerint. A böngészõ ablakban mutatott betûtípus az alapértelmezett."
+ "Válasszon talpas (Serif) vagy talp nélküli (Sans Serif) betût, kényelem szerint. A böngészõablakban mutatott betûtípus az alapértelmezett."
 };
 
 const char *html_text_navig_buttons[POCET_JAZYKOV + 1] = 
@@ -2293,7 +2293,7 @@ const char *html_text_option2_moznosti_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "Zda zobrazit hypertextové odkazy na jiné zobrazení modlitby daného dne pøímo v textu modlitby (napø. pro modlitbu uprostrìd dne verzi se almy z doplòujícího cyklu).", 
- "Hogy mutatkozzanak-e a hipertextus utalások a jelenlegi ima másabb ábrázolására közvetlenül az ima szövegében (pld. a napközi imához a kiegészítõ zsoltárral való verzióra is.", 
+ "Megjelenjenek-e közvetlenül különbözõ lehetõségek az ima szövegében (pl. napközi imaóránál a kiegészítõ zsoltár).", 
 };
 
 const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] = 
@@ -2312,7 +2312,7 @@ const char *html_text_option2_textwrap_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "Zda zalomit dlouhé øádky poetickıch textù jako v tištìném vydání (normálnì: nezalamovat).", 
- "Legyenek-e tördelve az imaórák szövegében  a zsoltárok, kantikumok és más versrészek hosszú sorai, mint a nyomtatott kiadásban.", 
+ "Legyenek-e tördelve az imaórák szövegében a zsoltárok, kantikumok és más versrészek hosszú sorai, mint a nyomtatott kiadásban.", 
 };
 
 const char *html_text_option2_buttons_usporne[POCET_JAZYKOV + 1] = 
@@ -2331,7 +2331,7 @@ const char *html_text_option2_buttons_usporne_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "Zda se mají tlaèítka pro modlitby zobrazit úspornì, v tabulce (menší šíøka) pro mobilní zaøízení.", 
- "Legyenek-e az imaórák gombjai gazdaságosan elhelyezve, táblázatban (kisebb szélesség) a mobli készülékek céljából.", 
+ "Legyenek-e az imaórák gombjai gazdaságosan elhelyezve, táblázatban (kisebb szélesség) mobilkészülékekhez.", 
 };
 
 const char *html_text_option2_nocny_rezim[POCET_JAZYKOV + 1] = 
@@ -2350,7 +2350,7 @@ const char *html_text_option2_nocny_rezim_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "Zobrazí svìtlı text na tmavém pozadí.",
- "Megmutatja világos szöveg sötét háttér.",
+ "Világos szöveg megjelenítése sötét háttéren.",
 };
 
 const char *html_text_option2_alternatives[POCET_JAZYKOV + 1] = 
@@ -2369,7 +2369,7 @@ const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "Zobrazí v textu modliteb jenom jedno monost (je moné pøepínat).",
- "Megmutatja ...",
+ "Megmutatja…",
 };
 
 const char *html_text_option5_KomplHymnusA[POCET_JAZYKOV + 1] = 
@@ -2631,7 +2631,7 @@ const char *html_text_font_name[POCET_JAZYKOV + 1] =
  "vel font",
  "",
  "nebo pouij písmo", 
- "betûtípus választása"
+ "betûtípus kiválasztása"
 };
 const char *html_text_font_name_explain[POCET_JAZYKOV + 1] = 
 {"Ak nie je zvolené konkrétne písmo, pouije sa predvolené písmo prehliadaèa (pätkové alebo bezpätkové pod¾a predchádzajúcej vo¾by zaškrtávacieho políèka).", 
@@ -2640,7 +2640,7 @@ const char *html_text_font_name_explain[POCET_JAZYKOV + 1] =
  "",
  "", 
  "", 
- "Ha nem választunk betûtípust, akkor a böngészõ ablakban látható az alapértelmezett (talpas vagy talpatlan az elõzõ kiválasztás szerint)."
+ "Ha nem választunk betûtípust, akkor a böngészõablakban látható az alapértelmezett (talpas vagy talpatlan az elõzõ kiválasztás szerint)."
 };
 
 // 2011-05-13
@@ -3070,7 +3070,7 @@ const char *text_JAN_18[POCET_JAZYKOV + 1] =
  "la_",
  "",
  "Sv. Markéty Uherské, panny, mnišky", // CZOP 19. januára kvôli text_JAN_18_CZ
- "Árpádházi Szent Margit szûz",
+ "Árpád-házi Szent Margit szûz",
  };
 const char *text_JAN_19_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Andreja z Peschiera, kòaza",
@@ -3124,7 +3124,7 @@ const char *text_JAN_20_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Esztergomi boldog Özséb áldozópap",
+ "Esztergomi Boldog Özséb áldozópap",
  };
 const char *text_JAN_21[POCET_JAZYKOV + 1] = 
 {"Sv. Agnesy, panny a muèenice",
@@ -3946,7 +3946,7 @@ const char *text_APR_16[POCET_JAZYKOV + 1] =
  "S. Marii Bernadette Soubirous, virg.",
  "",
  "Sv. Marie Bernadetty Soubirous, panny",
- "Soubirous szent Mária Bernadett szûz",
+ "Soubirous Szent Mária Bernadett szûz",
  };
 const char *text_APR_17_1_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Kláry Gambacortovej, reho¾níèky",
@@ -4090,7 +4090,7 @@ const char *text_APR_25[POCET_JAZYKOV + 1] =
  "S. Marci, evangelistae",
  "",
  "Sv. Marka, evangelisty",
- "Szent Márk evangelista",
+ "Szent Márk evangélista",
  };
 const char *text_APR_26_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
@@ -4723,7 +4723,7 @@ const char *text_MAJ_25_3[POCET_JAZYKOV + 1] =
  "S. Mariae Magdalenae de’ Pazzi, virg.",
  "",
  "Sv. Marie Magdalény de’ Pazzi, panny",
- "Pazzi Szent Mária Magdolna Szûz",
+ "Pazzi Szent Mária Magdolna szûz",
  };
 const char *text_MAJ_26[POCET_JAZYKOV + 1] = 
 {"Sv. Filipa Neriho, kòaza",
@@ -4965,7 +4965,7 @@ const char *text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Rodiny Jeíše, Marie a Josefa",
- "A Szent család: Jézus, Mária és József", // "Szent Család ünnepe"
+ "A Szent Család: Jézus, Mária és József", // "Szent Család ünnepe"
  };
 const char *text_SPOMIENKA_PM_V_SOBOTU[POCET_JAZYKOV + 1] = 
 {"Spomienka Panny Márie v sobotu",
@@ -5076,7 +5076,7 @@ const char *text_JUN_08_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Prágai szent Ágnes szûz",
+ "Prágai Szent Ágnes szûz",
  };
 const char *text_JUN_08_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Mikuláša z Gesturi, reho¾níka, èlena 1. rádu",
@@ -5238,7 +5238,7 @@ const char *text_JUN_15_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Árpád-házi boldog Jolán szerzetesnõ",
+ "Árpád-házi Boldog Jolán szerzetesnõ",
  };
 const char *text_JUN_16_SK[POCET_JAZYKOV + 1] = 
 {"Sv. Neita, muèeníka",
@@ -5283,7 +5283,7 @@ const char *text_JUN_16_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Tours-i szent Márton püspök ereklyéinek átvitele",
+ "Tours-i Szent Márton püspök ereklyéinek átvitele",
  };
 const char *text_JUN_17_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Alberta Chmielowského, reho¾níka, èlena 3. rádu",
@@ -5409,7 +5409,7 @@ const char *text_JUN_27[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Cyrila Alexandrijského, biskupa a uèitele církve",
- "Alexandriai szent Cirill püspök és egyháztanító", // HU: 26JUN
+ "Alexandriai Szent Cirill püspök és egyháztanító", // HU: 26JUN
  };
 const char *text_JUN_27_SK_HU[POCET_JAZYKOV + 1] = 
 {"Sv. Ladislava",
@@ -5574,7 +5574,7 @@ const char *text_JUL_07_SK[POCET_JAZYKOV + 1] = // vo všeobecnom kalendári sa sl
  "",
  "",
  "",
- "Zaccaria szent Antal Mária áldozópap",
+ "Zaccaria Szent Antal Mária áldozópap",
  };
 const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Márie Romerovej Meneses, panny",
@@ -5610,7 +5610,7 @@ const char *text_JUL_08_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "A Székesegyház felszentelése",
+ "A székesegyház felszentelése",
  };
 const char *text_JUL_09[POCET_JAZYKOV + 1] = 
 {"Sv. Augustína Zhao Rong, kòaza,"HTML_LINE_BREAK"a spoloèníkov, muèeníkov",
@@ -5835,7 +5835,7 @@ const char *text_JUL_21[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Vavøince z Brindisi, knìze a uèitele Církve",
- "Brindisi Szent Lõrinc Áldozópap és egyháztanító",
+ "Brindisi Szent Lõrinc áldozópap és egyháztanító",
  };
 const char *text_JUL_21_OFM[POCET_JAZYKOV + 1] = 
 {"Sv. Vavrinca z Brindisi, kòaza a uèite¾a Cirkvi, èlena 1. rádu",
@@ -5844,7 +5844,7 @@ const char *text_JUL_21_OFM[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Vavøince z Brindisi, knìze a uèitele Církve, èlena 1. øádu",
- "Brindisi Szent Lõrinc Áldozópap és egyháztanító",
+ "Brindisi Szent Lõrinc áldozópap és egyháztanító",
  };
 const char *text_JUL_22[POCET_JAZYKOV + 1] = 
 {"Sv. Márie Magdalény",
@@ -6138,7 +6138,7 @@ const char *text_AUG_06[POCET_JAZYKOV + 1] =
  "",
  "",
  "Promìnìní Pánì",
- "Urunk Színeváltozása",
+ "Urunk színeváltozása",
  };
 const char *text_AUG_07_1[POCET_JAZYKOV + 1] = 
 {"Sv. Sixta II., pápea, a jeho spoloèníkov, muèeníkov",
@@ -6273,7 +6273,7 @@ const char *text_AUG_13[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Ponciána, papee, a Hippolyta, knìze, muèedníkù",
- "Szent Ponciánusz pápa és szent Hippolitusz áldozópap és vértanúk", // HU: 16AUG
+ "Szent Ponciánusz pápa és Szent Hippolitusz áldozópap és vértanúk", // HU: 16AUG
  };
 const char *text_AUG_13_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -6789,7 +6789,7 @@ const char *text_SEP_08[POCET_JAZYKOV + 1] =
  "",
  "",
  "Narození Panny Marie",
- "Szûz Mária Születése (Kisboldogasszony)",
+ "Szûz Mária születése (Kisboldogasszony)",
  };
 const char *text_SEP_09[POCET_JAZYKOV + 1] = 
 {"Sv. Petra Clavera, kòaza",
@@ -6996,7 +6996,7 @@ const char *text_SEP_21[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Matouše, apoštola a evangelisty",
- "Szent Máté apostol és evangelista",
+ "Szent Máté apostol és evangélista",
  };
 const char *text_SEP_22[POCET_JAZYKOV + 1] = 
 {"Sv. Emeráma, biskupa a muèeníka",
@@ -7215,7 +7215,7 @@ const char *text_OKT_01[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Terezie od Dítìte Jeíše, panny",
- "A Gyermek Jézusról nevezett (Lisieux-i) Szent Teréz Szûz",
+ "A Gyermek Jézusról nevezett (Lisieux-i) Szent Teréz szûz",
  };
 const char *text_OKT_02[POCET_JAZYKOV + 1] = 
 {"Svätıch anjelov strácov",
@@ -7584,7 +7584,7 @@ const char *text_OKT_18[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Lukáše, evangelisty",
- "Szent Lukács evangelista",
+ "Szent Lukács evangélista",
  };
 const char *text_OKT_19_1[POCET_JAZYKOV + 1] = 
 {"Sv. Jána de Brébeuf a Izáka Jogues, kòazov,"HTML_LINE_BREAK"a spoloèníkov, muèeníkov", //  // 'sv. Izáka', pod¾a Direktória 2012, str. 210 nie je 'sv.'
@@ -7737,7 +7737,7 @@ const char *text_OKT_24_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "A Székesegyház felszentelése",
+ "A székesegyház felszentelése",
  };
 const char *text_OKT_25_SK[POCET_JAZYKOV + 1] = 
 {"Vıroèie posviacky katedrálneho chrámu v Spišskom Podhradí", // ToDo: 'sv. Martina z Tours', pod¾a Direktória 2012, str. 213
@@ -8697,7 +8697,7 @@ const char *text_DEC_27[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Jana, apoštola a evangelisty",
- "Szent János apostol és evangelista",
+ "Szent János apostol és evangélista",
  };
 const char *text_DEC_28[POCET_JAZYKOV + 1] = 
 {"Svätıch Neviniatok, muèeníkov",

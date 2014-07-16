@@ -10370,7 +10370,6 @@ if (!((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BUTTONS_ORDER) == BIT_OPT_0_BUTT
 	else{
 		if((typ != EXPORT_DNA_JEDEN_DEN) && (typ != EXPORT_DNA_VIAC_DNI_TXT) && (typ != EXPORT_DNA_XML)){
 			Export(HTML_NONBREAKING_SPACE);
-			Export("\n");
 		}
 	}
 	
@@ -11965,7 +11964,10 @@ void _main_rozbor_dna(char *den, char *mesiac, char *rok, char *modlitba, char *
 			}
 			_export_heading_center(pom);
 
-			Export("<center><"HTML_SPAN_RED_BOLD">%s"HTML_SPAN_END"</center>\n", nazov_MESIACA(m - 1));
+			// Name of the month in the monthly page.
+			// Disabled, because the year and the month have been
+			// already printed above this.
+			//Export("<center><"HTML_SPAN_RED_BOLD">%s"HTML_SPAN_END"</center>\n", nazov_MESIACA(m - 1));
 
 			rozbor_mesiaca(m, r);
 

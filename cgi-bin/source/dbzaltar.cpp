@@ -22432,7 +22432,12 @@ label_25_MAR:
 							set_spolocna_cast(sc, poradie_svaty);
 
 						modlitba = MODL_RANNE_CHVALY;
-						_vlastna_cast_full_okrem_prosieb(modlitba);
+						if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+							_vlastna_cast_full_okrem_kcit_kresp_a_prosieb(modlitba);
+						}
+						else{
+							_vlastna_cast_full_okrem_prosieb(modlitba);
+						}
 
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
@@ -22446,9 +22451,14 @@ label_25_MAR:
 						_vlastna_cast_mcd_modlitba;
 
 						modlitba = MODL_VESPERY;
+						if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+						}
 						_vlastna_cast_antifony_ako_na_ranne_chvaly;
-						_vlastna_cast_kcitanie;
-						_vlastna_cast_kresponz;
+						if(!((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))){
+							_vlastna_cast_kcitanie;
+							_vlastna_cast_kresponz;
+						}
 						_vlastna_cast_magnifikat;
 						_vlastna_cast_modlitba;
 
