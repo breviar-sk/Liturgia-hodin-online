@@ -535,7 +535,7 @@ const char *nazov_slavenia_lokal[] =
 ,"len v DÛme sv. Martina v Bratislave"                                                                          // LOKAL_SLAV_DOM_SV_MARTINA
 ,"v Spiöskej diecÈze sviatok hlavnÈho patrÛna"                                                                  // LOKAL_SLAV_SPIS_PATRON
 ,"v Banskobystrickej diecÈze sviatok hlavnÈho patrÛna"                                                          // LOKAL_SLAV_BYSTRICA_PATRON
-,"v Bratislavskej a Trnavskej arcidiecÈze "HTML_LINE_BREAK"a v Banskobystrickej, Nitrianskej a RoûÚavskej diecÈze"           // LOKAL_SLAV_TT_BB_NR_RO
+,"v Bratislavskej a Trnavskej arcidiecÈze "HTML_LINE_BREAK"a v Banskobystrickej, Nitrianskej a RoûÚavskej diecÈze" // LOKAL_SLAV_TT_BB_NR_RO
 ,"v Koöickej arcidiecÈze sviatok hlavnÈho patrÛna"                                                              // LOKAL_SLAV_KOSICE_PATRON
 ,"v éilinskej diecÈze sviatok hlavn˝ch patrÛnov; "HTML_LINE_BREAK"na Slovensku sa sl·vi 5. j˙la, sl·vnosù; v EurÛpe sviatok" // LOKAL_SLAV_14_FEB_CYRIL_METOD
 ,"v RoûÚavskej diecÈze sviatok hlavnÈho patrÛna"                                                                // LOKAL_SLAV_ROZNAVA_PATRON
@@ -562,7 +562,7 @@ const char *nazov_slavenia_lokal[] =
 ,"v ËeskobudÏjovickÈ diecÈzi pam·tka"                                                                           // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
 ,"v Bratislavskej arcidiecÈze a v Spiöskej diecÈze sviatok hlavnÈho patrÛna"                                    // LOKAL_SLAV_SPIS_BA_PATRON
 ,"v Bratislavskej arcidiecÈze"                                                                                  // LOKAL_SLAV_BRATISLAVA
-,"Kar·csony nyolcada ñ Kiskar·csony"                                                                              // LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU
+,"Kar·csony nyolcada ñ Kiskar·csony"                                                                            // LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU
 ,"len pre Inötit˙t milosrdn˝ch sestier Sv. krÌûa"                                                               // LOKAL_SLAV_KONGREGACIA_SSK // 2013-08-12: pÙvodne bolo: "len pre Kongreg·ciu milosrdn˝ch sestier Sv. krÌûa"
 ,"pre OFMCap: spomienka"                                                                                        // LOKAL_SLAV_SPOMIENKA_OFMCAP
 ,"pre OFM: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_OFM
@@ -575,33 +575,33 @@ const char *nazov_slavenia_lokal[] =
 ,"pre SCSC: sviatok"                                                                                            // LOKAL_SLAV_SVIATOK_SCSC
 ,"H˙svÈt 2. vas·rnapja ñ Az Isteni Irgalmass·g vas·rnapja"                                                      // LOKAL_SLAV_DRUHA_VELK_NEDELA_HU
 ,"A Szombathelyi egyh·zmegyÈben"                                                                                // LOKAL_SLAV_SZOMBATHELYI_EGYH
-,"A Nagyszombati fıegyh·zmegyÈben: a fıegyh·zmegye fıvÈdıszentje"                                                                    // LOKAL_SLAV_NAGYSZ_PATRON
+,"A Nagyszombati fıegyh·zmegyÈben: a fıegyh·zmegye fıvÈdıszentje"                                               // LOKAL_SLAV_NAGYSZ_PATRON
 ,"A Szeged-Csan·di egyh·zmegye Èszaki rÈszÈben: az egyh·zmegye vÈdıszentje; fı¸nnep"                            // LOKAL_SLAV_SZEGED_CSAN_PATRON // 2013-06-27: ??? neviem, odkiaæ sa to tu vzalo
 ,"A PÈcsi egyh·zmegyÈben"                                                                                       // LOKAL_SLAV_PECSI_EGYH
 ,"A PÈcsi egyh·zmegyÈben: az egyh·zmegye vÈdıszentje; fı¸nnep"                                                  // LOKAL_SLAV_PECSI_EGYH_PATRON
 ,"A Szeged-Csan·di egyh·zmegye Èszaki rÈszÈben; ¸nnep"                                                          // LOKAL_SLAV_SZEGED_CSAN_EGYH
-,"A VeszprÈmi fıegyh·zmegyÈben: Szent Anna, a fıegyh·zmegye vÈdıszentje; ¸nnep"                                    // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
+,"A VeszprÈmi fıegyh·zmegyÈben: Szent Anna, a fıegyh·zmegye vÈdıszentje; ¸nnep"                                 // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
 ,"A Gyıri Ès SzÈkesfehÈrv·ri egyh·zmegyÈben: az egyh·zmegye vÈdıszentje"                                        // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH
 ,"A Kaposv·ri egyh·zmegyÈben; ¸nnep"                                                                            // LOKAL_SLAV_KAPORSVAR_FELSZ
 ,"A V·ci egyh·zmegyÈben; ¸nnep"                                                                                 // LOKAL_SLAV_VACI_FELSZ
-,"A Kalocsa-KecskemÈti fıegyh·zmegyÈben: a fıegyh·zmegye vÈdıszentje; fı¸nnep"                                                      // LOKAL_SLAV_KAL_KECS_FOEGYH
-,"A Esztergom-Budapesti fıegyh·zmegyÈben: a fıszÈkesegyh·zban; fı¸nnep"                                                           // LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH
+,"A Kalocsa-KecskemÈti fıegyh·zmegyÈben: a fıegyh·zmegye vÈdıszentje; fı¸nnep"                                  // LOKAL_SLAV_KAL_KECS_FOEGYH
+,"A Esztergom-Budapesti fıegyh·zmegyÈben: a fıszÈkesegyh·zban; fı¸nnep"                                         // LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH
 ,"A fıszÈkesegyh·zban; fı¸nnep"                                                                                 // LOKAL_SLAV_KAL_KECS_FELSZ
-,"A Gyıri egyh·zmegyÈben: a szÈkesegyh·z felszentelÈse; ¸nnep"                                                    // LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ
+,"A Gyıri egyh·zmegyÈben: a szÈkesegyh·z felszentelÈse; ¸nnep"                                                  // LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ
 ,"A V·ci egyh·zmegyÈben: Szent Mih·ly fıangyal, az egyh·zmegye vÈdıszentje"                                     // LOKAL_SLAV_VACI_PATRON
-,"A Szeged-Csan·di egyh·zmegyÈben: az egyh·zmegye vÈdıszentje; fı¸nnep"                                                         // LOKAL_SLAV_SZEGED_CSAN_PATRON2
-,"A VeszprÈmi fıegyh·zmegyÈben: a fıszÈkesegyh·zban; fı¸nnep"															            // LOKAL_SLAV_VESZPREM_FOEGYH
+,"A Szeged-Csan·di egyh·zmegyÈben: az egyh·zmegye vÈdıszentje; fı¸nnep"                                         // LOKAL_SLAV_SZEGED_CSAN_PATRON2
+,"A VeszprÈmi fıegyh·zmegyÈben: a fıszÈkesegyh·zban; fı¸nnep"													// LOKAL_SLAV_VESZPREM_FOEGYH
 ,"csak a felszentelt templomokban"                                                                              // LOKAL_SLAV_KONSEKR_KOSTOLY_HU
-,"A Szeged-Csan·di egyh·zmegyÈben: a szÈkesegyh·zban; fı¸nnep"                                                                  // LOKAL_SLAV_SZEGED_CSAN_EGYH2
+,"A Szeged-Csan·di egyh·zmegyÈben: a szÈkesegyh·zban; fı¸nnep"                                                  // LOKAL_SLAV_SZEGED_CSAN_EGYH2
 ,"A PÈcsi egyh·zmegyÈben: a PÈcsi egyh·zmegye t·rsvÈdıszentje; fı¸nnep"                                         // LOKAL_SLAV_PECS_PATRON
-,"A Szombathelyi egyh·zmegyÈbe: az egyh·zmegye vÈdıszentje; fı¸nnep"                                                             // LOKAL_SLAV_SZOMBATHELYI_PATRON
+,"A Szombathelyi egyh·zmegyÈbe: az egyh·zmegye vÈdıszentje; fı¸nnep"                                            // LOKAL_SLAV_SZOMBATHELYI_PATRON
 ,"SzÈkesfehÈrv·r: a szÈkesegyh·zban; fı¸nnep"                                                                   // LOKAL_SLAV_SZEKESFEHERVAR_EGYH
 ,"Az Egri fıegyh·zmegyÈben: a fıegyh·zmegye vÈdıszentje; ¸nnep"                                                 // LOKAL_SLAV_EGER_FOEGYH
 ,"Az Esztergomi fıegyh·zmegyÈben; emlÈknap"                                                                     // LOKAL_SLAV_ESZTERGOM_EML
 ,"A Gyıri egyh·zmegyÈben"                                                                                       // LOKAL_SLAV_GYOR_EGYH
 ,"Az Esztergomi fıegyh·zmegyÈben"                                                                               // LOKAL_SLAV_ESZTERGOM_FOEGYH
 ,"Az Egri fıegyh·zmegyÈben"                                                                                     // LOKAL_SLAV_EGER_FOEGYH2
-,"A VeszprÈmi fıegyh·zmegyÈben: a fıegyh·zmegye t·rsvÈdıszentje; fı¸nnep"                                                         // LOKAL_SLAV_VESZPREM_FOEGYH_T
+,"A VeszprÈmi fıegyh·zmegyÈben: a fıegyh·zmegye t·rsvÈdıszentje; fı¸nnep"                                       // LOKAL_SLAV_VESZPREM_FOEGYH_T
 ,"A Szatm·ri egyh·zmegyÈben; emlÈknap"                                                                          // LOKAL_SLAV_SZATMAR
 ,"v ostatnÌch Ëesk˝ch diecÈzÌch a v brnÏnskÈ diecÈzi: pam·tka; "HTML_LINE_BREAK"na MoravÏ mimo brnÏnskou diecÈzi: nez·vazn· pam·tka" // LOKAL_SLAV_CESKO_BRNO
 ,"sviatok hlavnej patrÛnky "HTML_LINE_BREAK"(slovenskej) Kongreg·cie sestier dominik·nok bl. Imeldy"            // LOKAL_SLAV_SVIATOK_OP_ZENY

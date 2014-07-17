@@ -22433,7 +22433,9 @@ label_25_MAR:
 
 						modlitba = MODL_RANNE_CHVALY;
 						if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
-							_vlastna_cast_full_okrem_kcit_kresp_a_prosieb(modlitba);
+							_vlastna_cast_antifony;
+							_vlastna_cast_benediktus;
+							_vlastna_cast_modlitba;
 						}
 						else{
 							_vlastna_cast_full_okrem_prosieb(modlitba);
