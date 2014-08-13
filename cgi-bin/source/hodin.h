@@ -5880,7 +5880,7 @@ const char *text_JUL_24_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Árpád-házi szent Kinga szûz", // 2011-07-05: sv. Sarbela v HU: 27JUL
+ "Árpád-házi Szent Kinga szûz", // 2011-07-05: sv. Sarbela v HU: 27JUL
  };
 const char *text_JUL_24_OFM[POCET_JAZYKOV + 1] = 
 {"Bl. Antona Lucciho, biskupa, èlena 1. rádu",
@@ -6237,7 +6237,7 @@ const char *text_AUG_12[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Jany Františky de Chantal, øeholnice",
- "Chantal szent Johanna Franciska szerzetesnõ",
+ "Chantal Szent Johanna Franciska szerzetesnõ",
  };
 const char *text_AUG_12_1_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Jána zo Salerna, kòaza",
