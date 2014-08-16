@@ -274,6 +274,7 @@ div.hymn, div.responsory, div.readings {
 /* new 2013-05-19 */
 /* added 2013-10-21: font-weight: normal; */
 .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
+	margin-top: 2em;
 	color: #ff0000; 
 	font-size: 80%; 
 	font-weight: normal;
@@ -326,6 +327,7 @@ div.hymn, div.responsory, div.readings {
 
 div.biblereference { 
 	color: #ff0000; 
+	font-weight: normal;
 	text-align: right; 
 }
 
