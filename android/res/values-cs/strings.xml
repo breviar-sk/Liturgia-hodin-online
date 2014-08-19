@@ -80,7 +80,7 @@ a pomoc p. Koronthálymu z Arcibiskupství pražského při úpravě textů žal
 <b>HTML texts</b><br/>
 SK: Juraj Vidéky et al.<br/>
 CZ: Jan Franta, Vladimír Koronthály, Juraj Vidéky.<br/>
-HU: Julianna Blahó, Izing Gabriel, László Elek SJ, Juraj Vidéky.<br/>
+HU: Julianna Blahó, Izing Gabriel, László Dvornik, László Elek SJ, Juraj Vidéky.<br/>
 <p>
 <b>Android app:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
 <b>iOS app:</b> 2013-2014 ©&nbsp;Ákos Gyimesi, Oto Komiňák.<br/>
@@ -109,7 +109,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p><b>Nové vo verzii v1.9.8:</b>
+<p><b>Nové ve verzi v1.9.9:</b>
+<ul>
+<li> Drobné opravy chyb v generování modliteb a překlepů v textech.
+</ul>
+
+<p><b>Nové ve verzi v1.9.8:</b>
 <ul>
 <li> CSS změny: Zalamování žalmů a kantik přepracováno.
 <li> Doplněno číslování veršů žalmů a kantik.

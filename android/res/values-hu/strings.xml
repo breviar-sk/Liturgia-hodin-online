@@ -78,7 +78,7 @@ Speciális köszönet: Andrea Fülöpová, Julianna Blahó.
 <b>HTML texts</b><br/>
 SK: Juraj Vidéky et al.<br/>
 CZ: Jan Franta, Vladimír Koronthály, Juraj Vidéky.<br/>
-HU: Julianna Blahó, Izing Gabriel, László Elek SJ, Juraj Vidéky.<br/>
+HU: Julianna Blahó, Izing Gabriel, László Dvornik, László Elek SJ, Juraj Vidéky.<br/>
 <p>
 <b>Android app:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
 <b>iOS app:</b> 2013-2014 ©&nbsp;Ákos Gyimesi, Oto Komiňák.<br/>
@@ -107,6 +107,11 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<p><b>Újdonságok a v1.9.9 verzióban:</b>
+<ul>
+<li> Plenty of small fixes & CSS formatting.
+</ul>
+
 <p><b>Újdonságok a v1.9.8 verzióban:</b>
 <ul>
 <li> Hosszú érintésre elrejti az alsó navigációs sávot.

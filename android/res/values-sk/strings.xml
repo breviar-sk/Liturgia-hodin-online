@@ -54,6 +54,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<p><b>Nové vo verzii v1.9.9:</b>
+<ul>
+<li> Formátovanie hymnusov (CSS).
+<li> Drobné opravy chýb v textoch a v generovaní modlitieb.
+</ul>
+
 <p><b>Nové vo verzii v1.9.8:</b>
 <ul>
 <li> Dlhé stlačenie skryje navigačnú lištu.

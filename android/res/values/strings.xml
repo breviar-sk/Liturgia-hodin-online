@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.9.8</string>
+    <string name="version">v1.9.9</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -77,7 +77,7 @@ Poďakovanie patrí všetkým, ktorí sa akýmkoľvek spôsobom pričinili o pre
 <b>HTML texts</b><br/>
 SK: Juraj Vidéky et al.<br/>
 CZ: Jan Franta, Vladimír Koronthály, Juraj Vidéky.<br/>
-HU: Julianna Blahó, Izing Gabriel, László Elek SJ, Juraj Vidéky.<br/>
+HU: Julianna Blahó, Izing Gabriel, László Dvornik, László Elek SJ, Juraj Vidéky.<br/>
 <p>
 <b>Android app:</b> 2011-2014 ©&nbsp;Richard Královič.<br/>
 <b>iOS app:</b> 2013-2014 ©&nbsp;Ákos Gyimesi, Oto Komiňák.<br/>
@@ -106,6 +106,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<p><b>News in v1.9.9:</b>
+<ul>
+<li> SK: CSS formatting of hymns.
+<li> HU: Plenty of small fixes & CSS formatting.
+</ul>
+
 <p><b>News in v1.9.8:</b>
 <ul>
 <li> Long tap hides bottom navigation bar.
