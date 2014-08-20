@@ -66,9 +66,9 @@ Podlicenční smlouva na použití textů ze dne 14. 5. 2012.<br/>
 A MKPK jóváhagyávásal.<br/>
 
 <p>
-A köszönet mindenkinek szól, főleg azoknak, akik bármiképpen hozzájárultak a Imaórák Liturgiája elektronikus szövegeinek elkészítésében, 
+A köszönet mindenkinek szól, főleg azoknak, akik bármiképpen hozzájárultak a Imaórák Liturgiája elektronikus szövegeinek elkészítéséhez, 
 a legnagyobb érdem a magyar verzió elkészítésében Elek Lacié. 
-Köszönök minden indítékot, hibákra való figyelmeztetést, észrevételt és javaslatot az újításokra.
+Köszönök minden tanácsot, hibákra való figyelmeztetést, észrevételt és javaslatot az újításokra.
 
 <p>
 Speciális köszönet: Andrea Fülöpová, Julianna Blahó.
@@ -107,45 +107,49 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p><b>Újdonságok a v1.9.9 verzióban:</b>
+<p><b>Újdonságok az 1.9.9-es verzióban:</b>
 <ul>
-<li> Plenty of small fixes & CSS formatting.
+<li> A befejező imaóra kantikuma félkövéren jelenik meg.
+<li> Hármaspont karakter használata.
+<li> Magyar helyesírás szerinti gondolatjel az angolszász helyett.
+<li> Himnuszok, igehelyek és imaóra részek formázása.
+<li> Gépelési hibák javítása.
 </ul>
 
-<p><b>Újdonságok a v1.9.8 verzióban:</b>
+<p><b>Újdonságok az 1.9.8-as verzióban:</b>
 <ul>
 <li> Hosszú érintésre elrejti az alsó navigációs sávot.
 <li> Új opció: a kijelző ne sötétüljön el.
 <li> Sok apró javítás.
 </ul>
 
-<p><b>Újdonságok a v1.9.7 verzióban:</b>
+<p><b>Újdonságok az 1.9.7-es verzióban:</b>
 <ul>
-<li> Korrigált kompatibilitás Android 2.1 és az idősebb.
+<li> Javított kompatibilitás Android 2.1 és újabb rendszereken.
 </ul>
 
-<p><b>Újdonságok a v1.9.6 verzióban:</b>
+<p><b>Újdonságok az 1.9.6-os verzióban:</b>
 <ul>
-<li> Különböző javítások
+<li> Különböző javítások.
 </ul>
 
-<p><b>Újdonságok a v1.9.5 verzióban:</b>
+<p><b>Újdonságok az 1.9.5-ös verzióban:</b>
 <ul>
-<li> Új ikon
-<li> Az alkalmazásról (névjegy)
+<li> Új ikon.
+<li> Névjegy az alkalmazásról.
 </ul>
 
-<p><b>Újdonságok a v1.9.4 verzióban:</b>
+<p><b>Újdonságok az 1.9.4-es verzióban:</b>
 <ul>
-<li> Új beállítások: közönséges (nem kövér) betűk alkalmazása
-<li> Javítások az Android 4.4 Kit-Kat részére
+<li> Új beállítás: normál (nem félkövér) betűk alkalmazása.
+<li> Javítások az Android 4.4 Kit-Kat részére.
 </ul>
 
-<p><b>Változások a v1.9.3-ban:</b>
+<p><b>Újdonságok az 1.9.3-as verzióban:</b>
 <ul>
-<li> Zsoltárok jobb tördelése
-<li> Gépelési hibák javítása
-<li> Frissítések a honlapról
+<li> Zsoltárok jobb tördelése.
+<li> Gépelési hibák javítása.
+<li> Frissítések a honlapról.
 </ul>
 </body></html>
     ]]></string>
