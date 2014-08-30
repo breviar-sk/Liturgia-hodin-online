@@ -72,6 +72,18 @@ public class BreviarApp extends Application {
     editor.commit();
   }
 
+  static public boolean getMute(Context ctx) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    return settings.getBoolean("mute", false);
+  }
+
+  static public void setMute(Context ctx, boolean mute) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    SharedPreferences.Editor editor = settings.edit();
+    editor.putBoolean("mute", mute);
+    editor.commit();
+  }
+
   static public void initLocale(Context ctx) {
     Configuration cfg = new Configuration();
     if (getOverrideLocale(ctx)) {

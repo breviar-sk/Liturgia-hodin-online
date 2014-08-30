@@ -78,6 +78,16 @@ public class LangSelect extends Activity {
 
       dimlock_check.setChecked(BreviarApp.getDimLock(getApplicationContext()));
 
+      CheckBox mute_check = (CheckBox)findViewById(R.id.mute_check);
+
+      mute_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          BreviarApp.setMute(getApplicationContext(), ((CheckBox)v).isChecked());
+        }
+      });
+
+      mute_check.setChecked(BreviarApp.getMute(getApplicationContext()));
+
       ((Button)findViewById(R.id.about)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
           showDialog(DIALOG_ABOUT);

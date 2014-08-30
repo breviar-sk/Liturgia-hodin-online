@@ -17,6 +17,7 @@
     <string name="override_locale">Override system-wide language settings</string>
     <string name="vol_buttons">Use volume buttons for scrolling</string>
     <string name="dimlock">Do not dim screen</string>
+    <string name="mute">Put phone to silent mode</string>
 
     <string name="alarms">Notifications</string>
     <string name="alarms_title">Notification settings:</string>
@@ -106,6 +107,11 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<p><b>News in v?.?.?:</b>
+<ul>
+<li> Settings for turning on silent mode when praying.
+</ul>
+
 <p><b>News in v1.9.9:</b>
 <ul>
 <li> SK: CSS formatting of hymns.

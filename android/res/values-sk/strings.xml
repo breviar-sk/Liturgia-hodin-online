@@ -15,6 +15,7 @@
     <string name="override_locale">Použiť tento jazyk aj v ovládacích prvkoch</string>
     <string name="vol_buttons">Použiť tlačidlá hlasitosti na listovanie</string>
     <string name="dimlock">Nezhasínať obrazovku</string>
+    <string name="mute">Vypnúť zvonenie</string>
 
     <string name="alarms">Upozornenia</string>
     <string name="alarms_title">Nastavenie upozornení:</string>
@@ -54,6 +55,11 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<p><b>Nové vo verzii v?.?.?:</b>
+<ul>
+<li> Možnosť vypnúť zvonenie počas modlitby.
+</ul>
+
 <p><b>Nové vo verzii v1.9.9:</b>
 <ul>
 <li> Formátovanie hymnusov (CSS).

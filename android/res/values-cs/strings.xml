@@ -15,6 +15,7 @@
     <string name="override_locale">Použít tento jazyk také v ovládacích prvcích</string>
     <string name="vol_buttons">Použít tlačítka hlasitosti na listování</string>
     <string name="dimlock">Nezhasínat obrazovku</string>
+    <string name="mute">Vypnúť zvonenie</string>
 
     <string name="alarms">Notifikace</string>
     <string name="alarms_title">Nastavení notifikací:</string>

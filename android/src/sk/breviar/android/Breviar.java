@@ -3,11 +3,13 @@ package sk.breviar.android;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.DialogInterface;
 import android.app.Dialog;
 import android.graphics.Bitmap;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.net.Uri;
 import android.os.Build;
@@ -53,6 +55,8 @@ public class Breviar extends Activity implements View.OnLongClickListener {
 
     int appEventId = -1;
     PowerManager.WakeLock lock;
+
+    int ringMode = -1;
 
     void goHome() {
       Log.v("breviar", "goHome");
@@ -316,6 +320,13 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       if (BreviarApp.getDimLock(this)) {
         lock.acquire();
       }
+      if (BreviarApp.getMute(this)) {
+        AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        ringMode = manager.getRingerMode();
+        manager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+      } else {
+        ringMode = -1;
+      }
       if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
       super.onResume();
     }
@@ -325,6 +336,11 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       super.onPause();
       if (BreviarApp.getDimLock(this)) {
         lock.release();
+      }
+      if (ringMode != -1) {
+        AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        manager.setRingerMode(ringMode);
+        ringMode = -1;
       }
     }
 
