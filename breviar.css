@@ -212,6 +212,13 @@ div.hymn, div.responsory, div.readings {
 	font-weight: normal; 
 }
 
+.hymn p.rubric-first {
+	color: #ff0000;
+	font-size: 80%;
+	font-weight: normal;
+	padding-top: 1em;
+}
+
 /* 2013-09-02 #psalm changed to class .psalm; instead of black color used #1a1a1a; */
 /* new 2013-06-19 */
 .psalm .psalm-name { 
@@ -277,6 +284,13 @@ div.hymn, div.responsory, div.readings {
 	margin-top: 2em;
 	color: #ff0000; 
 	font-size: 80%; 
+	font-weight: normal;
+}
+
+.psalm .titlehu {
+	margin-top: 1em;
+	color: #ff0000;
+	font-size: 80%;
 	font-weight: normal;
 }
 

@@ -55,9 +55,10 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p><b>Nové vo verzii v?.?.?:</b>
+<p><b>Nové vo verzii v1.9.10:</b>
 <ul>
-<li> Možnosť vypnúť zvonenie počas modlitby.
+<li> Možnosť vypnúť zvonenie počas modlitby (automatické prepnutie do tichého režimu).
+<li> Nové nastavenie: voľba hymnusu pre prvé vešpery Cezročného obdobia.
 </ul>
 
 <p><b>Nové vo verzii v1.9.9:</b>

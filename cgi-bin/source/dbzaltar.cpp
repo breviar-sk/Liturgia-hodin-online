@@ -641,7 +641,7 @@ void _set_hymnus_alternativy(short int modlitba, short int litobd){
 		}// switch(modlitba)
 	}
 	Log("_set_hymnus_alternativy(): koniec; bit == %d\n", bit);
-}// _set_hymnus_alternativy() -- dva parametree
+}// _set_hymnus_alternativy() -- dva parametre
 
 // pre Cezroèné obdobie
 void _set_hymnus_alternativy(short int modlitba){
@@ -694,7 +694,7 @@ void _set_hymnus_alternativy_NO(short int modlitba, short int litobd){
 		}// switch(modlitba)
 	}
 	Log("_set_hymnus_alternativy_NO(): koniec; bit == %d\n", bit);
-}// _set_hymnus_alternativy_NO() -- dva parametree
+}// _set_hymnus_alternativy_NO() -- dva parametre
 
 // pre Cezroèné obdobie
 void _set_hymnus_alternativy_NO(short int modlitba){
@@ -1583,6 +1583,34 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba){
 				anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_HYMNUS);
 			}
 			_set_hymnus(modlitba, _file_pc, _anchor);
+			set_LOG_litobd_pc;
+		}
+		// 2014-09-02: Pridané odvetvenie pre prvé vešpery
+		else if(modlitba == MODL_PRVE_VESPERY){
+			Log("set_hymnus(): prvé vešpery...\n");
+			file_name_litobd_pc(OBD_CEZ_ROK);
+			// pre èeskú LH nie sú štandardné hymny
+			if((_global_jazyk != JAZYK_CZ) && ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ALTERNATIVES) == BIT_OPT_2_ALTERNATIVES)){
+				// pod¾a nastavenia _global_opt[OPT_5_ALTERNATIVES]
+				ktory = ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_HYMNUS_1VESP) == BIT_OPT_5_HYMNUS_1VESP)? 1: 0;
+				Log("2014-09-02: som tu (%d)...\n", ktory);
+				if(ktory == 0){
+					// hymnus pre prvé vešpery zo žaltára
+					anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_HYMNUS);
+					_set_hymnus(modlitba, _file, _anchor);
+				}
+				else{
+					// hymnus pre prvé vešpery ako pre posv. èítanie (cez deò)
+					anchor_name_zaltar_alt(DEN_NEDELA, tyzzal, MODL_POSV_CITANIE, ANCHOR_HYMNUS, 1);
+					_set_hymnus(modlitba, _file_pc, _anchor);
+				}
+				anchor_name_zaltar_alt(den, tyzzal, modlitba, ANCHOR_HYMNUS, ktory);
+			}
+			else{
+				ktory = 2; // obidva (neprilepuje sa, ostáva pôvodná kotva bez èísla)
+				anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_HYMNUS);
+				_set_hymnus(modlitba, _file, _anchor);
+			}
 			set_LOG_litobd_pc;
 		}
 		else{
@@ -6615,6 +6643,7 @@ label_24_DEC:
 				_set_hymnus_alternativy(MODL_NAPOLUDNIE);
 				_set_hymnus_alternativy(MODL_POPOLUDNI);
 				_set_hymnus_alternativy(MODL_POSV_CITANIE);
+				_set_hymnus_alternativy(MODL_PRVE_VESPERY);
 			}
 
 			// najprv treba skontrolovat, ci nejde o nedelu, na ktoru pripadol sviatok Premenenia Pana (6. augusta); 

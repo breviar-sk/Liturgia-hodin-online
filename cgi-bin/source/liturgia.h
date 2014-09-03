@@ -1344,7 +1344,7 @@ extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 #define BIT_OPT_4_MESIAC_RIADOK             1
 #define BIT_OPT_4_FNAME_MODL_ID             2 // èi pre názov súboru poui (èíselné) ID modlitby alebo písmenko modlitby (default)
 
-#define POCET_OPT_5_ALTERNATIVES           11 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES           12 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezroèné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné èítanie (Cezroèné obdobie, I./II.)
@@ -1357,6 +1357,7 @@ extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_VN_PC            256 // hymnus pre posvätné èítanie (Ve¾konoèné obdobie I. po Oktáve: nede¾nı alebo z férie)
 #define BIT_OPT_5_HYMNUS_VN_RCH           512 // hymnus pre ranné chvály (Ve¾konoèné obdobie I. po Oktáve: nede¾nı alebo z férie)
 #define BIT_OPT_5_HYMNUS_VN_VESP         1024 // hymnus pre vešpery (Ve¾konoèné obdobie I. po Oktáve: nede¾nı alebo z férie)
+#define BIT_OPT_5_HYMNUS_1VESP           2048 // hymnus pre prvé vešpery (Cezroèné obdobie: nede¾nı alebo z posv. èítania)
 
 #define MAX_POCET_OPT                      16 // malo by to by aspoò maximum z POCET_OPT_0_... a POCET_OPT_5_...
 

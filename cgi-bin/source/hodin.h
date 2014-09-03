@@ -2532,6 +2532,26 @@ const char *html_text_option5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
  "himnusz Háromszor három óra már",
 };
 
+const char *html_text_option5_1VHymnusNe[POCET_JAZYKOV + 1] = 
+{"hymnus pre prvé vešpery",
+ "hymnus pro první nešpory",
+ "hymn for first vespers",
+ "",
+ "",
+ "hymnus pro první veèerní chvály",
+ "I. Esti dicséret himnusza",
+};
+
+const char *html_text_option5_1VHymnusPC[POCET_JAZYKOV + 1] = 
+{"hymnus ako je pre posvätné èítanie [cez deò]",
+ "hymnus pro ètení [bìhem dne]",
+ "hymn from readings [during the day]",
+ "",
+ "",
+ "hymnus pro ètení [bìhem dne]",
+ "Olvasmányos imaóra himnusza [napközben]",
+};
+
 const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] = 
 {"namiesto almu 122 bra alm 129",
  "místo almu 122 vzít alm 129",

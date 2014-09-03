@@ -16,7 +16,7 @@
 
 .calendar.today { 
 	background-color: #CCCCCC; 
-	color: #333333; 
+	color: #191919; /* #333333; */
 }
 
 .preces p.partV:before { 
@@ -94,7 +94,7 @@ p.last:after {
 }
 
 body, html { 
-	background-color: #333333;
+	background-color: #191919; /* #333333; */
 	color: #CCCCCC;
 }
 
@@ -126,7 +126,7 @@ a.explain {
 a.button { 
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
 	border: solid 0px #CCCCCC; 
-	color: #333333; 
+	color: #191919; /* #333333; */
 }
 
 table { 
@@ -142,7 +142,7 @@ hr {
 }
 
 select { 
-	background: #333333; 
+	background: #191919; /* #333333; */
 	color: #CCCCCC; 
 }
 
@@ -154,7 +154,7 @@ input {
 input.button, input.reset, .button { 
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
 	border: solid 0px #CCCCCC; 
-	color: #333333; 
+	color: #191919; /* #333333; */
 }
 
 /* << >> */
@@ -175,10 +175,10 @@ input.button1, input.reset1, .button1 {
 input.button2, input.reset2, .button2 { 
 	background: #CC9966; /* #ff9933; */
 	border: solid 0px #CCCCCC; 
-	color: #333333;
+	color: #191919; /* #333333; */
 }
 
 input.text { 
-	background: #333333; 
+	background: #191919; /* #333333; */
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.9.9</string>
+    <string name="version">v1.9.10</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -107,9 +107,10 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p><b>News in v?.?.?:</b>
+<p><b>News in v1.9.10:</b>
 <ul>
-<li> Settings for turning on silent mode when praying.
+<li> Setting for automatic turning on silent mode when praying.
+<li> SK + HU: New option for first vespers hymn (ordinary time).
 </ul>
 
 <p><b>News in v1.9.9:</b>

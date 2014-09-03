@@ -14,6 +14,8 @@
     <string name="lang_hu">Magyar</string>
     <string name="override_locale">Rendszerszintű nyelvi beállítások felülírása</string>
     <string name="vol_buttons">Hangerőt állító gombok használata görgetéshez</string>
+    <string name="dimlock">Ne sötétüljön el a képernyő</string>
+    <string name="mute">A telefon csendes módba kapcsolása</string>
 
     <string name="alarms">Értesítések</string>
     <string name="alarms_title">Értesítések beállítása:</string>
@@ -107,6 +109,13 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+<p><b>Újdonságok az 1.9.10-es verzióban:</b>
+<ul>
+<li> Új beállítási lehetőség: automatikus csendes módba kapcsolás imádság közben.
+<li> Új beállítási lehetőség: I. Esti dicséret himnusza (évközi időben).
+<li> Fohászok formázása.
+</ul>
+
 <p><b>Újdonságok az 1.9.9-es verzióban:</b>
 <ul>
 <li> A befejező imaóra kantikuma félkövéren jelenik meg.
@@ -119,7 +128,7 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Újdonságok az 1.9.8-as verzióban:</b>
 <ul>
 <li> Hosszú érintésre elrejti az alsó navigációs sávot.
-<li> Új opció: a kijelző ne sötétüljön el.
+<li> Új opció: a képernyő ne sötétüljön el.
 <li> Sok apró javítás.
 </ul>
 
