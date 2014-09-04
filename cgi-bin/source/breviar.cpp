@@ -6354,6 +6354,9 @@ void init_global_string_podnadpis(short int modlitba){
 	Log("-- init_global_string_podnadpis(%d, %s) -- koniec\n", modlitba, nazov_modlitby(modlitba));
 }// init_global_string_podnadpis()
 
+// 2014-09-03: prvÈ pÌsmeno veækÈ maj˙ len n·zvy vlastn˝ch ËastÌ pre CZOP (pre SK chybne d·valo: "panny M·rie")
+#define lowered_nazov_spolc(a) ((_global_jazyk == JAZYK_CZ_OP)? mystr_first_lower(nazov_spolc(a)) : nazov_spolc(a))
+
 short int init_global_string_spol_cast(short int sc_jedna, short int poradie_svateho){
 	// 2012-08-16: vytvorenÈ
 	short int ret_sc = sc_jedna; // obsahuje nejak˙ hodnotu MODL_SPOL_CAST_...: buÔ spol. Ëasù na vstupe alebo ak bol MODL_SPOL_CAST_NULL (-1), tak prv˙ zo zoznamu
@@ -6376,23 +6379,23 @@ short int init_global_string_spol_cast(short int sc_jedna, short int poradie_sva
 
 		if((sc.a1 != MODL_SPOL_CAST_NEURCENA) && (sc.a1 != MODL_SPOL_CAST_NEBRAT)){
 			ret_sc = sc.a1;
-			strcat(_global_string_spol_cast, mystr_first_lower(nazov_spolc(sc.a1)));
+			strcat(_global_string_spol_cast, lowered_nazov_spolc(sc.a1));
 			if(sc.a2 != MODL_SPOL_CAST_NEURCENA){
 				strcat(_global_string_spol_cast, ", ");
 				strcat(_global_string_spol_cast, nazov_spolc_alebo_jazyk[_global_jazyk]);
 				strcat(_global_string_spol_cast, " ");
-				strcat(_global_string_spol_cast, mystr_first_lower(nazov_spolc(sc.a2)));
+				strcat(_global_string_spol_cast, lowered_nazov_spolc(sc.a2));
 				if(sc.a3 != MODL_SPOL_CAST_NEURCENA){
 					strcat(_global_string_spol_cast, ", ");
 					strcat(_global_string_spol_cast, nazov_spolc_alebo_jazyk[_global_jazyk]);
 					strcat(_global_string_spol_cast, " ");
-					strcat(_global_string_spol_cast, mystr_first_lower(nazov_spolc(sc.a3)));
+					strcat(_global_string_spol_cast, lowered_nazov_spolc(sc.a3));
 				}
 			}
 		}
 	}
 	else if((sc_jedna != MODL_SPOL_CAST_NEURCENA) && (sc_jedna != MODL_SPOL_CAST_NEBRAT)){
-		sprintf(_global_string_spol_cast, "%s", mystr_first_lower(nazov_spolc(sc_jedna)));
+		sprintf(_global_string_spol_cast, "%s", lowered_nazov_spolc(sc_jedna));
 	}
 	else{
 		mystrcpy(_global_string_spol_cast, STR_EMPTY, SMALL);
@@ -10904,6 +10907,8 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 	_type_kompletorium *_local_modl_kompletorium_ptr;
 #define _local_modl_kompletorium (*_local_modl_kompletorium_ptr)
 
+	short _local_spol_cast = MODL_SPOL_CAST_NEURCENA;
+
 	Log("Allocating memory...\n");
 // _local_modl_prve_vespery_ptr
 	if((_local_modl_prve_vespery_ptr = (_type_1vespery*) malloc(sizeof(_type_1vespery))) == NULL){
@@ -10994,7 +10999,7 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 		LOG_ciara;
 
 		_local_den = _global_den;
-
+		_local_spol_cast = _global_opt[OPT_3_SPOLOCNA_CAST]; // 2014-09-03: uchovanie prÌpadne zmenenej spoloËnej Ëasti
 		_local_modl_prve_vespery = _global_modl_prve_vespery;
 		_local_modl_prve_kompletorium = _global_modl_prve_kompletorium;
 		_local_modl_vespery = _global_modl_vespery;
@@ -11138,8 +11143,19 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 
 			Log("nastavujem _global_string_modlitba... if((_global_den.smer < 5) || ...\n");
 			init_global_string_modlitba(modlitba);
+
 			Log("nastavujem _global_string_podnadpis... if((_global_den.smer < 5) || ...\n");
 			init_global_string_podnadpis(modlitba);
+
+			Log("kontrolujem _global_opt[OPT_3_SPOLOCNA_CAST]... if((_global_den.smer < 5) || : ");
+			if(_local_spol_cast != MODL_SPOL_CAST_NEURCENA){
+				_global_opt[OPT_3_SPOLOCNA_CAST] = _local_spol_cast;
+				Log("upravenÈ podæa _local_spol_cast na %s (%d)\n", nazov_spolc(_local_spol_cast), _local_spol_cast);
+			}
+			else{
+				Log("bez ˙pravy.\n");
+			}
+
 			Log("nastavujem _global_string_spol_cast... if((_global_den.smer < 5) || ...\n");
 			ret_sc = init_global_string_spol_cast(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty);
 		}// _global_den ma dvoje vespery/kompletorium, teda musime brat DRUHE
@@ -11216,10 +11232,22 @@ LABEL_ZMENA:
 
 				Log("v Ëasti LABEL_ZMENA nastavujem _global_string...\n");
 				mystrcpy(_global_string, _local_string, MAX_GLOBAL_STR); // veækosù 2011-09-27 opraven· podæa _global_string
+
 				Log("v Ëasti LABEL_ZMENA nastavujem _global_string_modlitba...\n");
 				init_global_string_modlitba(modlitba);
+
 				Log("v Ëasti LABEL_ZMENA nastavujem _global_string_podnadpis...\n");
 				init_global_string_podnadpis(modlitba);
+
+				Log("v Ëasti LABEL_ZMENA kontrolujem _global_opt[OPT_3_SPOLOCNA_CAST]: ");
+				if(_local_spol_cast != MODL_SPOL_CAST_NEURCENA){
+					_global_opt[OPT_3_SPOLOCNA_CAST] = _local_spol_cast;
+					Log("upravenÈ podæa _local_spol_cast na %s (%d)\n", nazov_spolc(_local_spol_cast), _local_spol_cast);
+				}
+				else{
+					Log("bez ˙pravy.\n");
+				}
+
 				Log("v Ëasti LABEL_ZMENA nastavujem _global_string_spol_cast...\n"); // potrebnÈ pouûiù svaty_dalsi_den
 				ret_sc = init_global_string_spol_cast(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA))? MODL_SPOL_CAST_NULL: _global_opt[OPT_3_SPOLOCNA_CAST], _global_poradie_svaty /* svaty_dalsi_den */);
 			}
