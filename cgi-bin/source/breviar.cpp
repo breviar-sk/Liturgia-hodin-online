@@ -6633,7 +6633,7 @@ void xml_export_options(void){
 							Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_VN_VESP)"%d"ELEM_END(XML_BIT_OPT_5_HYMNUS_VN_VESP)"\n", BIT_OPT_5_HYMNUS_VN_VESP, STR_MODL_OPTF_5_HYMNUS_VN_VESP, html_text_option5_VespHymnusVNnedela[_global_jazyk], html_text_option5_VespHymnusVNferia[_global_jazyk], ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_HYMNUS_VN_VESP) == BIT_OPT_5_HYMNUS_VN_VESP));
 							break;
 						case 11: // BIT_OPT_5_HYMNUS_1VESP
-							Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_1VESP)"%d"ELEM_END(XML_BIT_OPT_5_HYMNUS_1VESP)"\n", BIT_OPT_5_HYMNUS_1VESP, STR_MODL_OPTF_5_HYMNUS_VN_VESP, html_text_option5_1VHymnusNe[_global_jazyk], html_text_option5_1VHymnusPC[_global_jazyk], ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_HYMNUS_1VESP) == BIT_OPT_5_HYMNUS_1VESP));
+							Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_1VESP)"%d"ELEM_END(XML_BIT_OPT_5_HYMNUS_1VESP)"\n", BIT_OPT_5_HYMNUS_1VESP, STR_MODL_OPTF_5_HYMNUS_1VESP, html_text_option5_1VHymnusNe[_global_jazyk], html_text_option5_1VHymnusPC[_global_jazyk], ((_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_HYMNUS_1VESP) == BIT_OPT_5_HYMNUS_1VESP));
 							break;
 					}// switch(j)
 				}// for j
