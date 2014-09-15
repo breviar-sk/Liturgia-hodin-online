@@ -4750,6 +4750,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	// 2014-04-08: presunuté do #define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST | sviatky Pána a svätıch, ktoré majú prednos pred Cezroènou nede¾ou a majú (ak padnú na nede¾u) svoje vlastné prvé vešpery
 	if(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST){
 		Log("premenenie pána || obetovanie pána || petra a pavla || povıšenie sv. kría || všetkıch svätıch || nanebovzatia PM...\n");
+		// 2014-09-14: pre sviatky Pána (svätıch), ktoré padnú na nede¾u (a majú prednos pred Cezroènou nede¾ou), je potrebné nastavi prvé aj druhé nede¾né kompletórium
+		if((_global_den.denvt == DEN_NEDELA) && (_global_svaty(1).smer >= 5)){
+			Log("pre sviatky Pána (svätıch), ktoré padnú na nede¾u (a majú prednos pred Cezroènou nede¾ou), je potrebné nastavi prvé aj druhé nede¾né kompletórium...\n");
+			_set_kompletorium_nedela(MODL_PRVE_KOMPLETORIUM);
+			_set_kompletorium_nedela(MODL_KOMPLETORIUM);
+		}
 		if((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI)){
 			Log("keïe nejde o modlitbu cez deò, preskakujeme nastavenia (všetky boli nastavené z vlastnej èasti)...\n");
 			// 2009-01-06: pre Premenenie Pána chıbalo nastavenie kompletória vo vlastnej èasti, preto sa dávalo chybne; doplnené na príslušnom mieste
@@ -27907,7 +27913,13 @@ label_25_MAR:
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
 						_set_zalmy_sv_kriz(modlitba);
-
+/*
+						// 2014-09-14: doplnené prvé (ak padne na nede¾u)
+						if(_global_den.denvt == DEN_NEDELA){
+							modlitba = MODL_PRVE_KOMPLETORIUM;
+							_set_kompletorium_nedela(modlitba);
+						}
+*/
 						modlitba = MODL_INVITATORIUM;
 						_vlastna_cast_antifona_inv;
 

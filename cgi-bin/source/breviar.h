@@ -407,14 +407,14 @@ extern short int _global_opt_export_date_format;
 // 2014-01-10: doplnené 02FEB (ak padne na nede¾u, má prvé vešpery)
 // 2014-04-08: 14SEP platí aj pre CZ (ak padne na nede¾u, má prvé vešpery)
 #define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST (\
-((_global_den.den == 6) && (_global_den.mesiac - 1 == MES_AUG)) || \
 ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)) || \
-((_global_den.den == 15) && (_global_den.mesiac - 1 == MES_AUG)) || \
 ((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) || \
 ((_global_den.den == 5) && (_global_den.mesiac - 1 == MES_JUL) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
+((_global_den.den == 6) && (_global_den.mesiac - 1 == MES_AUG)) || \
+((_global_den.den == 15) && (_global_den.mesiac - 1 == MES_AUG)) || \
 ((_global_den.den == 20) && (_global_den.mesiac - 1 == MES_AUG) && (_global_jazyk == JAZYK_HU)) || \
-((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
 ((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP)) || \
+((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
 ((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV)) \
 )
 
