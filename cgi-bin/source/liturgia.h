@@ -965,7 +965,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SVIATOK_OFS              94
 #define LOKAL_SLAV_SPOMIENKA_OFMCONV_OFMCAP 95
 #define LOKAL_SLAV_SPOMIENKA_OSC            96
-#define LOKAL_SLAV_NEDOVOLENE               97
+#define LOKAL_SLAV_NEDOVOLENE_SK            97
 #define LOKAL_SLAV_KATONAI_ORDINARIAT       98
 #define LOKAL_SLAV_DEBR_NYIREGY             99
 #define LOKAL_SLAV_OPRAEM_DOKSANY          100

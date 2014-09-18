@@ -618,7 +618,7 @@ const char *nazov_slavenia_lokal[] =
 ,"pre OFS: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_OFS
 ,"pre OFMConv., OFMCap: spomienka"                                                                              // LOKAL_SLAV_SPOMIENKA_OFMCONV_OFMCAP
 ,"pre OSC: sl·vnosù"                                                                                            // LOKAL_SLAV_SPOMIENKA_OSC
-,"pre Slovensko zatiaæ nedovolenÈ sl·venie"                                                                     // LOKAL_SLAV_NEDOVOLENE
+,"pre Slovensko zatiaæ nedovolenÈ sl·venie"                                                                     // LOKAL_SLAV_NEDOVOLENE_SK
 ,"Katonai Ordinari·tus: "HTML_LINE_BREAK"Az Ordinari·tus vÈdıszentje; fı¸nnep"                                  // LOKAL_SLAV_KATONAI_ORDINARIAT
 ,"Debrecen-NyÌregyh·za: "HTML_LINE_BREAK"A szÈkesegyh·z felszentelÈse; fı¸nnep"                                 // LOKAL_SLAV_DEBR_NYIREGY
 ,"jen kanonie Doksany"                                                                                          // LOKAL_SLAV_OPRAEM_DOKSANY
@@ -7437,7 +7437,7 @@ const char *text_OKT_10_OPRAEM[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_11[POCET_JAZYKOV + 1] = 
 {"Bl. J·na XXIII., p·peûa",
- "",
+ "Bl. Jana XXIII., papeûe",
  "",
  "",
  "",
