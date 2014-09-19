@@ -7436,16 +7436,16 @@ const char *text_OKT_10_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_11[POCET_JAZYKOV + 1] = 
-{"Bl. Jána XXIII., pápeža",
- "Bl. Jana XXIII., papeže",
+{"Sv. Jána XXIII., pápeža",
+ "Sv. Jana XXIII., papeže",
  "",
  "",
  "",
  "",
- "Boldog XXIII. János pápa",
+ "Szent XXIII. János pápa",
  };
 const char *text_OKT_11_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jána XXIII., pápeža, èlena 3. rádu",
+{"Sv. Jána XXIII., pápeža, èlena 3. rádu",
  "",
  "",
  "",
@@ -7706,13 +7706,13 @@ const char *text_OKT_22_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_22[POCET_JAZYKOV + 1] = 
-{"Bl. Jána Pavla II., pápeža",
- "Bl. Jana Pavla II., papeže",
+{"Sv. Jána Pavla II., pápeža",
+ "Sv. Jana Pavla II., papeže",
  "",
  "",
  "",
- "Bl. Jana Pavla II., papeže",
- "Boldog II. János Pál pápa",
+ "Sv. Jana Pavla II., papeže",
+ "Szent II. János Pál pápa",
  };
 const char *text_OKT_23[POCET_JAZYKOV + 1] = 
 {"Sv. Jána Kapistránskeho, kòaza",
