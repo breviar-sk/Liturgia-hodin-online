@@ -85,6 +85,10 @@
 #define MENO_SVIATKU 250
 #define MAX_LC_STR_ID 50
 
+// 2014-09-22: príprava pre viaceré ríty
+#define RITUS_RIM_KAT   0
+#define RITUS_GR_KAT    1
+
 // 2006-07-11: Pridané kvôli jazykovým mutáciám 
 // 2006-12-12: Pridaná latinèina, kódy sú pod¾a ISO 639-1 (až na èeštinu)
 // 2008-08-15: Pridaná "dominikánska èeština"; presunuté sem bezprostredne za definíciu POCET_JAZYKOV
@@ -96,6 +100,10 @@
 #define JAZYK_UNDEF 4
 #define JAZYK_CZ_OP 5
 #define JAZYK_HU    6
+
+// rite for languages
+const short int ritus_jazyka[POCET_JAZYKOV + 1] =
+{RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT};
 
 // 2011-05-12: formáty vypisovania dátumu, kvôli maïarèine, angliètine...
 #define FORMAT_DATUMU_DEN_MESIAC_ROK 0 // DD. MM RRRR
@@ -997,6 +1005,10 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_CZ_SDB                    16
 
 #define POCET_KALENDAROV                   16
+
+// default calendar for language (general)
+const short int default_kalendar[POCET_JAZYKOV + 1] = 
+{KALENDAR_VSEOBECNY_SK, KALENDAR_VSEOBECNY_CZ, /* ToDo */ KALENDAR_VSEOBECNY, /* ToDo */ KALENDAR_VSEOBECNY, KALENDAR_NEURCENY, KALENDAR_CZ_OP, KALENDAR_VSEOBECNY_HU};
 
 // filenames for special calendars / názov súbora pre kalendáre
 extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];

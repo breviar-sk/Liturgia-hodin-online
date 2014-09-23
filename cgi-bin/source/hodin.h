@@ -500,7 +500,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 ,"obecnı [pro Èechy a Moravu]"
 ,""
 ,"pre Kongregáciu najsv. Vykupite¾a — redemptoristov (CSsR)" // bol ve¾mi dlhı combo-box, keï bolo: "pre Kongregáciu najsvätejšieho Vykupite¾a — redemptoristov (CSsR)"
-,""
+,"általános [Magyarország]"
 ,"pre Spoloènos Boieho Slova — verbistov (SVD)"
 ,"pre Spoloènos Jeišovu — jezuitov (SJ)"
 ,"pre saleziánsku rodinu — SDB, FMA, ASC" // bolo VDB -> ASC; saleziáni spolupracovníci majú skratku ASC - Associazione dei salesiani cooperatori - teda Zdruzenie salezianov spolupravovnikov (upozornil Mao Linhart, 2012-02-13)
@@ -514,6 +514,8 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 ,"s vlastními texty Kongregace nejsv. Vykupitele — redemptoristù (CSsR)"
 ,"s vlastními texty pro salesiánskou rodinu" // (SDB, FMA, VDB, ASC)
 };
+
+#define nazov_kalendara(kalendar) ((kalendar == KALENDAR_NEURCENY) || (kalendar == KALENDAR_VSEOBECNY) || (equals(nazov_kalendara_long[kalendar], STR_EMPTY))? nazov_kalendara_long[default_kalendar[_global_jazyk]] : nazov_kalendara_long[kalendar])
 
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
 // 2007-08-31: upravené TT -> BA-TT
@@ -963,6 +965,18 @@ const char *poradie_SLOVOM_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] =
 , {"34. ", "34", "34", "34", "34", "34", "34."}
 };
 
+// the names of rites
+const char *nazov_ritu_jazyka[POCET_JAZYKOV + 1][POCET_RITOV + 1] =
+{{"rímskokatolícky", "gréckokatolícky"},
+ {"øímskokatolickı", "øeckokatolickı"},
+ {"Roman catholic", "Greek catholic"},
+ {"Roman catholic", "Greek catholic"},
+ {"Roman catholic", "Greek catholic"},
+ {"øímskokatolickı", "øeckokatolickı"},
+ {"római katolikus", "görög katolikus"},
+};
+#define nazov_ritu(a) nazov_ritu_jazyka[_global_jazyk][a]
+
 // the names of languages
 // 2006-07-11: Pridané kvôli jazykovım mutáciám
 const char *nazov_jazyka[POCET_JAZYKOV + 1] =
@@ -1222,6 +1236,8 @@ const char *html_text_nie_je[POCET_JAZYKOV + 1] = {"nie je", "není", "is not", "
 const char *html_text_prestupny[POCET_JAZYKOV + 1] = {"prestupnı", "pøestupnı", "...", "...", "", "pøestupnı", "szökõév"};
 const char *html_text_datumy_pohyblivych_slaveni[POCET_JAZYKOV + 1] = {"Dátumy pohyblivıch slávení", "Dáta promìnlivıch slávení", "Dates for movable celebrations", "", "", "Data promìnlivıch slavení", "A mozgó (változó) ünnepek dátumai"};
 
+const char *html_text_ritus[POCET_JAZYKOV + 1] = {"Rítus", "Obøad", "Ritus", "Ritus", "", "Ritus", "Szertartás"};
+
 const char *html_text_den_v_roku[POCET_JAZYKOV + 1] = {"%d. deò v roku", "%d. den v roce", "%d. day of the year", "%d. ", "%d. ", "%d. den v roce", "az év %d. napja"};
 
 const char *html_text_zacina[POCET_JAZYKOV + 1] = {"zaèína", "zaèíná", "starts", "", "", "zaèíná", "kezdõdik"};
@@ -1363,43 +1379,43 @@ const char *html_text_Nedelne_pismeno[POCET_JAZYKOV + 1] = {"Nede¾né písmeno", "
 const char *html_text_Nedelne_pismena[POCET_JAZYKOV + 1] = {"Nede¾né písmená", "Nedìlní písmena", "Sunday letters", "", "", "Nedìlní písmena", "A vasárnap betûje"};
 
 const char *html_text_Od_prvej_adv_atd[POCET_JAZYKOV + 1] = {
-	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
-	"Od první nedìle adventní v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
-	"From the 1st Advent Sunday in the year %d (%s) continues <a href=\"%s%s\">liturgical year</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
-	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
+	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"Od první nedìle adventní v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"From the 1st Advent Sunday in the year %d (%s) continues <a href=\"%s%s\">liturgical year</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
 	"",
-	"Od první nedìle adventní v roce %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".\n",
-	"%d (%s) advent elsõ vasárnapjától az <"HTML_SPAN_BOLD">%c"HTML_SPAN_END" <a href=\"%s%s\">liturgikus év</a> folytatódik.\n",
+	"Od první nedìle adventní v roce %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"%d (%s) advent elsõ vasárnapjától az <"HTML_SPAN_BOLD">%c"HTML_SPAN_END" <a href=\"%s%s\">liturgikus év</a> folytatódik.",
 };
 
 const char *html_text_Po_Velkej_noci_atd[POCET_JAZYKOV + 1] = {
-	"Po Ve¾kej noci nasleduje %d. %s v cezroènom období.\n",
-	"Po Velikonocích následuje %d. %s v mezibdobí.\n",
-	"After Easter follows %d. %s per annum.\n",
-	"Po Ve¾kej noci nasleduje %d. %s per annum.\n",
-	"Po Ve¾kej noci nasleduje %d. %s v cezroènom období.\n", // v období „cez rok“
-	"Po Velikonocích následuje %d. %s v mezibdobí.\n",
-	"Húsvét után az évközi idõ %d. %sja következik.\n", // vasárnapja, nede¾a = vasárnap
+	"Po Ve¾kej noci nasleduje %d. %s v cezroènom období.",
+	"Po Velikonocích následuje %d. %s v mezibdobí.",
+	"After Easter follows %d. %s per annum.",
+	"Po Ve¾kej noci nasleduje %d. %s per annum.",
+	"Po Ve¾kej noci nasleduje %d. %s v cezroènom období.", // v období „cez rok“
+	"Po Velikonocích následuje %d. %s v mezibdobí.",
+	"Húsvét után az évközi idõ %d. %sja következik.", // vasárnapja, nede¾a = vasárnap
 };
 
 const char *html_text_Prikazane_sviatky_v_roku[POCET_JAZYKOV + 1] = {
-	"<p><"HTML_SPAN_RED">Prikázané sviatky v roku %s:"HTML_SPAN_END"\n",
-	"<p><"HTML_SPAN_RED">Pøikázané svátky v roce %s:"HTML_SPAN_END"\n",
-	"<p><"HTML_SPAN_RED">Obliged celebrations in the year %s:"HTML_SPAN_END"\n",
-	"<p><"HTML_SPAN_RED">Prikázané sviatky v roku %s:"HTML_SPAN_END"\n",
-	"<p><"HTML_SPAN_RED">Prikázané sviatky v roku %s:"HTML_SPAN_END"\n",
-	"<p><"HTML_SPAN_RED">Pøikázané svátky v roce %s:"HTML_SPAN_END"\n",
-	"<p><"HTML_SPAN_RED">%s kötelezõ ünnepei:"HTML_SPAN_END"\n",
+	"Prikázané sviatky v roku %s",
+	"Pøikázané svátky v roce %s",
+	"Obliged celebrations in the year %s",
+	"Prikázané sviatky v roku %s",
+	"Prikázané sviatky v roku %s",
+	"Pøikázané svátky v roce %s",
+	"%s kötelezõ ünnepei",
 };
 
 const char *html_text_Jednotlive_mesiace_roku[POCET_JAZYKOV + 1] = {
-	"<"HTML_SPAN_RED">Jednotlivé mesiace roku %s:"HTML_SPAN_END"\n",
-	"<"HTML_SPAN_RED">Jednotlivé mìsíce v roce %s:"HTML_SPAN_END"\n",
-	"<"HTML_SPAN_RED">Individual months of the year %s:"HTML_SPAN_END"\n",
-	"<"HTML_SPAN_RED">Jednotlivé mesiace roku %s:"HTML_SPAN_END"\n",
-	"<"HTML_SPAN_RED">Jednotlivé mesiace roku %s:"HTML_SPAN_END"\n",
-	"<"HTML_SPAN_RED">Jednotlivé mìsíce v roce %s:"HTML_SPAN_END"\n",
-	"<"HTML_SPAN_RED">Egyes hónapok %s-ben(-ban):"HTML_SPAN_END"\n",
+	"Jednotlivé mesiace roku %s",
+	"Jednotlivé mìsíce v roce %s",
+	"Individual months of the year %s",
+	"Jednotlivé mesiace roku %s",
+	"Jednotlivé mesiace roku %s",
+	"Jednotlivé mìsíce v roce %s",
+	"Egyes hónapok %s-ben(-ban)",
 };
 
 const char *str_doplnkova_psalmodia[POCET_JAZYKOV + 1] = 
@@ -1436,13 +1452,13 @@ const char *str_nie[POCET_JAZYKOV + 1] =
 // const char *html_text_jazyk_android = "SK/CZ/HU:";
 
 const char *html_text_jazyk[POCET_JAZYKOV + 1] = 
-{"Jazyk:",
- "Jazyk:",
- "Language:",
- "Lingua:",
- "",
- "Jazyk:",
- "Nyelv:"
+{"Jazyk",
+ "Jazyk",
+ "Language",
+ "Lingua",
+ "Language",
+ "Jazyk",
+ "Nyelv"
 };
 
 const char *html_text_jazyk_long[POCET_JAZYKOV + 1] = 
@@ -2700,14 +2716,24 @@ const char *html_text_kalendar[POCET_JAZYKOV + 1] =
 };
 // 2010-09-14
 const char *html_text_kalendar_miestny[POCET_JAZYKOV + 1] = 
-{"kalendár Liturgie hodín: ",
- "kalendáø Liturgie hodin: ",
- "local or general calendar: ", 
- "calendario per Liturgia horarum: ",
+{"Kalendár Liturgie hodín",
+ "Kalendáø Liturgie hodin",
+ "Local or general calendar", 
+ "Calendario per Liturgia horarum",
  "",
- "kalendáø Liturgie hodin: ",
- "Az imaórák liturgiája (AK SA DÁ, DA VİBER SEM) naptárát használják"
+ "Kalendáø Liturgie hodin",
+ "Az imaórák liturgiája"
 };
+const char *html_text_kalendar_miestny_post[POCET_JAZYKOV + 1] = 
+{"",
+ "",
+ "", 
+ "",
+ "",
+ "",
+ "naptárát használják"
+};
+
 const char *html_text_kalendar_miestny_explain[POCET_JAZYKOV + 1] = 
 {"Je moné zvoli miestny kalendár (propriá) reho¾nej rodiny, rádu, kongregácie, inštitútu...", 
  "Je moné vzít místní kalendáø øeholní rodiny, øádu, kongregace, institutu...", 

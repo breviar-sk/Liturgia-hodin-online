@@ -176,6 +176,8 @@ extern char *_global_buf2; // 2006-08-01: túto premennú tiež alokujeme
 extern short int _global_jazyk;
 // 2010-08-04: pridané kvôli kalendárom (napr. reho¾ný), súvisí s jazykovými mutáciami
 extern short int _global_kalendar;
+// 2014-09-22: pridané
+extern short int _global_ritus;
 
 extern short int _global_css; // 2008-08-08: Pridané kvôli rôznym css
 
@@ -203,6 +205,9 @@ extern char _global_css_font_size[SMALL];
 extern char _global_export_navig_hore[SMALL];
 extern short int _global_opt_export_date_format;
 
+#define set_tyzzal_1_2(tyzzal) ((tyzzal > 2)? (tyzzal - 2) : tyzzal)
+#define je_modlitba_cez_den(modlitba) ((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI))
+#define je_kompletorium12(modlitba) ((modlitba == MODL_KOMPLETORIUM) || (modlitba == MODL_PRVE_KOMPLETORIUM) || (modlitba == MODL_DRUHE_KOMPLETORIUM))
 // 2009-01-28: jednotlivé define týkajúce sa riadenia modlitby presunuté sem na zaèiatok súboru, nako¾ko ich používa nielen interpretParameter() alebo showPrayer(), ale aj includeFile()
 // 2009-08-11: opravená podmienka pre je_tedeum (odstránené nepotrebné 9.11.)
 // 2010-05-14: definy presunuté z breviar.cpp

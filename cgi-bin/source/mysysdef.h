@@ -276,6 +276,7 @@
 // 2006-07-31: kvôli jazykovým mutáciám; zmenené 2008-08-15 na 5 
 // 2009-01-29: zmenené na 6 (maïarèina)
 // 2011-04-13: presunuté sem spolu s POCET_GLOBAL_OPT aj MAX_STR, GLOBAL_OPTION_NULL
+#define	POCET_RITOV	         1
 #define	POCET_JAZYKOV	     6
 #define POCET_GLOBAL_OPT     6
 #define MAX_STR            300 // maximalna dlzka retazca

@@ -529,9 +529,6 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 	short int podmienka;
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){
 		Log("i == %d...\n", i);
-/*		if(i == 3)
-			continue;
-*/
 		local_opt_default = CFG_OPTION_DEFAULT(i);
 		if(force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE){
 			Log("_global_opt[%d] == %d; CFG_OPTION_DEFAULT(%d) == %d;\n", i, _global_opt[i], i, local_opt_default);
