@@ -29248,6 +29248,11 @@ label_25_MAR:
 						if(query_type != PRM_DETAILY)
 							set_spolocna_cast(sc, poradie_svaty);
 
+						// nemá popis; 2014-09-30: doplnené
+						if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+							set_popis_dummy();
+						}
+
 						modlitba = MODL_INVITATORIUM;
 						_vlastna_cast_antifona_inv;
 
