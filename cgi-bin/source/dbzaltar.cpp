@@ -14366,6 +14366,8 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							_vlastna_cast_modlitba;
 							_vlastna_cast_2citanie;
 
+							_vlastna_cast_mcd_modlitba;
+
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_magnifikat;
 							_vlastna_cast_modlitba;
