@@ -206,19 +206,23 @@ extern char _global_export_navig_hore[SMALL];
 extern short int _global_opt_export_date_format;
 
 #define set_tyzzal_1_2(tyzzal) ((tyzzal > 2)? (tyzzal - 2) : tyzzal)
+
 #define je_modlitba_cez_den(modlitba) ((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI))
 #define je_kompletorium12(modlitba) ((modlitba == MODL_KOMPLETORIUM) || (modlitba == MODL_PRVE_KOMPLETORIUM) || (modlitba == MODL_DRUHE_KOMPLETORIUM))
-// 2009-01-28: jednotlivé define týkajúce sa riadenia modlitby presunuté sem na zaèiatok súboru, nako¾ko ich používa nielen interpretParameter() alebo showPrayer(), ale aj includeFile()
-// 2009-08-11: opravená podmienka pre je_tedeum (odstránené nepotrebné 9.11.)
-// 2010-05-14: definy presunuté z breviar.cpp
-// 2012-02-09: definované je_privileg pre testovanie, èi ide o privilegované dni (VSLH è. 238-239): to isté ako je_post + december poènúc 17.-tym (všedné di od 17. do 24. decembra a Vianoèná oktáva); striktne by tu nemal by ve¾ký týždeò a ve¾konoèné trojdnie, ale nezaškodí to tu
-#define je_privileg ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))) || ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den >= 17)))
+
+#define je_modlitba_ok_buttons(modlitba) ((modlitba >= MODL_INVITATORIUM) && (modlitba < MODL_NEURCENA))
+
+#define je_vianocne(litobd) ((litobd == OBD_VIANOCNE_I) || (litobd == OBD_VIANOCNE_II))
+
 #define je_post ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))))
 #define je_velka_noc ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && (_global_den.denvt == DEN_NEDELA)) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA))
 #define je_aleluja_aleluja ((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && (_global_den.denvt == DEN_NEDELA)) || ((_global_den.denvr == _global_r._ZOSLANIE_DUCHA_SV.denvr) && ((_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_DRUHE_VESPERY))))
 #define je_34_ocr ((_global_den.litobd == OBD_CEZ_ROK) && (_global_den.tyzden == 34) && (_global_den.denvt != DEN_NEDELA))
 #define je_tedeum (type == MODL_POSV_CITANIE) && (((_global_den.denvt == DEN_NEDELA) && (_global_den.litobd != OBD_POSTNE_I) && (_global_den.litobd != OBD_POSTNE_II_VELKY_TYZDEN)) || (_global_den.typslav == SLAV_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA))
-// 2010-05-24: doplnené; 2011-03-16: rozšírené o posvätné èítanie
+
+// 2012-02-09: definované je_privileg pre testovanie, èi ide o privilegované dni (VSLH è. 238-239): to isté ako je_post + december poènúc 17.-tym (všedné di od 17. do 24. decembra a Vianoèná oktáva); striktne by tu nemal by ve¾ký týždeò a ve¾konoèné trojdnie, ale nezaškodí to tu
+#define je_privileg ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))) || ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den >= 17)))
+
 #define je_ant_modl_spomprivileg (( \
 (_global_modlitba == MODL_RANNE_CHVALY &&  \
 	(_global_modl_ranne_chvaly.ant_spomprivileg.anchor != NULL) && (_global_modl_ranne_chvaly.ant_spomprivileg.file != NULL) && \

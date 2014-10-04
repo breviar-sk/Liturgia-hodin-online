@@ -1355,6 +1355,7 @@ extern short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: úprava vıznamu (a interpretácie) option 4 (rozlièné prepínaèe pre offline export, napr. aj batch mód)
 #define BIT_OPT_4_MESIAC_RIADOK             1
 #define BIT_OPT_4_FNAME_MODL_ID             2 // èi pre názov súboru poui (èíselné) ID modlitby alebo písmenko modlitby (default)
+#define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // èi sa pri generovaní tlaèidla pre predchádzajúcu/nasledujúcu modlitbu majú preskoèi odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavova kvôli ¾ubovo¾nım spomienkam do batch módu]
 
 #define POCET_OPT_5_ALTERNATIVES           12 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
@@ -1497,6 +1498,9 @@ void _dm_prva_adventna_nedela(short int rok, short int p2);
 void _dm_svatej_rodiny(short int rok);
 void _dm_krst_krista_pana(short int rok);
 void _dm_velkonocna_nedela(short int rok, short int _vn);
+
+short int modlitba_predchadzajuca(short int modlitba, short int exclude_mcd_komplet = NIE);
+short int modlitba_nasledujuca(short int modlitba, short int exclude_mcd_komplet = NIE);
 
 void analyzuj_rok(short int year);
 

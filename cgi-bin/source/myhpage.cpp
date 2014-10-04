@@ -113,6 +113,78 @@ void _header_css(FILE* expt, short int level, const char* nazov_css_suboru) {
 	Export_to_file(expt, "%s\">\n", nazov_css_suboru); // názov css súboru
 }
 
+// exportuje buttony pre predchádzajúcu a nasledujúcu modlitbu | bolo v _hlavicka() aj _patka()
+void _buttons_prev_up_next(FILE * expt){
+	short int _local_modlitba_prev, _local_modlitba_next;
+	_local_modlitba_prev = modlitba_predchadzajuca(_local_modlitba, ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_EXCLUDE_MCD_KOMPLET) == BIT_OPT_4_EXCLUDE_MCD_KOMPLET));
+	_local_modlitba_next = modlitba_nasledujuca(_local_modlitba, ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_EXCLUDE_MCD_KOMPLET) == BIT_OPT_4_EXCLUDE_MCD_KOMPLET));
+
+	Export_to_file(expt, "\n<center>");
+	pismeno_modlitby = CHAR_MODL_NEURCENA;
+	if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)){
+		// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
+		if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+			pismeno_modlitby = char_modlitby[_local_modlitba];
+		}
+		else{
+			pismeno_modlitby = _local_modlitba + '0';
+		}
+	}
+	sprintf(ext, "%c", pismeno_modlitby);
+	strcat(ext, ".htm");
+	Export_to_file(expt, HTML_NEW_PARAGRAPH);
+	// << prev
+	mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
+	ptr = strstr(file_name_pom, ext);
+	if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba > MODL_INVITATORIUM) && (_local_modlitba_prev < MODL_NEURCENA)){
+		if(ptr != NULL){
+			// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
+			if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+				sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba_prev]);
+			}
+			else{
+				sprintf(pismeno_prev, "%d", _local_modlitba_prev);
+			}
+			strncpy(ptr, pismeno_prev, 1);
+		}
+		Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
+		Export_to_file(expt, (char *)html_text_batch_Prev[_global_jazyk]);
+		Export_to_file(expt, " ");
+		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_prev));
+		Export_to_file(expt, "</a>");
+	}
+	// |
+	Export_to_file(expt, " | ");
+	// ^ hore
+	Export_to_file(expt, "<a href=\".%s%s\" "HTML_CLASS_BUTTON">", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore); // v tom istom adresári
+	Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
+	Export_to_file(expt, "</a>");
+	// |
+	Export_to_file(expt, " | ");
+	// >> next
+	mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
+	ptr = strstr(file_name_pom, ext);
+	if((_local_modlitba != MODL_NEURCENA) && (_local_modlitba < MODL_KOMPLETORIUM) && (_local_modlitba_next < MODL_NEURCENA)){
+		if(ptr != NULL){
+			// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
+			if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+				sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba_next]);
+			}
+			else{
+				sprintf(pismeno_next, "%d", _local_modlitba_next);
+			}
+			strncpy(ptr, pismeno_next, 1);
+		}
+		Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
+		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_next));
+		Export_to_file(expt, " ");
+		Export_to_file(expt, (char *)html_text_batch_Next[_global_jazyk]);
+		Export_to_file(expt, "</a>");
+	}
+	Export_to_file(expt, "</p>");
+	Export_to_file(expt, "</center>\n");
+}
+
 // exportuje hlavicku HTML dokumentu, kam pojde vysledok query
 void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Log("_hlavicka() -- zaèiatok...\n");
@@ -242,71 +314,9 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 
 	// 2010-02-15: doplnené predošlá a nasledovná modlitba
 	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
-		Export_to_file(expt, "<center>");
-		pismeno_modlitby = CHAR_MODL_NEURCENA;
-		if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)){
-			// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
-			if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
-				pismeno_modlitby = char_modlitby[_local_modlitba];
-			}
-			else{
-				pismeno_modlitby = _local_modlitba + '0';
-			}
-		}
-		sprintf(ext, "%c", pismeno_modlitby);
-		strcat(ext, ".htm");
-		Export_to_file(expt, HTML_NEW_PARAGRAPH);
-		// << prev
-		mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
-		ptr = strstr(file_name_pom, ext);
-		if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba > MODL_INVITATORIUM)){
-			if(ptr != NULL){
-				// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
-				if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
-					sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba - 1]);
-				}
-				else{
-					sprintf(pismeno_prev, "%d", _local_modlitba - 1);
-				}
-				strncpy(ptr, pismeno_prev, 1);
-			}
-			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
-			Export_to_file(expt, (char *)html_text_batch_Prev[_global_jazyk]);
-			Export_to_file(expt, " ");
-			Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba - 1));
-			Export_to_file(expt, "</a>");
-		}
-		// |
-		Export_to_file(expt, " | ");
-		// ^ hore
-		Export_to_file(expt, "<a href=\".%s%s\" "HTML_CLASS_BUTTON">", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore); // v tom istom adresári
-		Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
-		Export_to_file(expt, "</a>");
-		// |
-		Export_to_file(expt, " | ");
-		// >> next
-		mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
-		ptr = strstr(file_name_pom, ext);
-		if((_local_modlitba != MODL_NEURCENA) && (_local_modlitba < MODL_KOMPLETORIUM)){
-			if(ptr != NULL){
-				// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
-				if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
-					sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba + 1]);
-				}
-				else{
-					sprintf(pismeno_next, "%d", _local_modlitba + 1);
-				}
-				strncpy(ptr, pismeno_next, 1);
-			}
-			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
-			Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba + 1));
-			Export_to_file(expt, " ");
-			Export_to_file(expt, (char *)html_text_batch_Next[_global_jazyk]);
-			Export_to_file(expt, "</a>");
-		}
-		Export_to_file(expt, "</p>");
-		Export_to_file(expt, "</center>\n");
+		_buttons_prev_up_next(expt);
 	}// << predošlá | ^ hore | nasledovná >>
+
 	Log("_hlavicka() -- koniec.\n");
 	return;
 }// _hlavicka()
@@ -395,51 +405,7 @@ void _patka(FILE * expt){
 
 	// 2010-02-15: vložené "^ hore" pod¾a hlavicka(); doplnené predošlá a nasledovná modlitba
 	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
-		Export_to_file(expt, "\n<center>");
-		pismeno_modlitby = CHAR_MODL_NEURCENA;
-		if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM))
-			pismeno_modlitby = char_modlitby[_local_modlitba];
-		sprintf(ext, "%c", pismeno_modlitby);
-		strcat(ext, ".htm");
-		Export_to_file(expt, HTML_NEW_PARAGRAPH);
-		// << prev
-		mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
-		ptr = strstr(file_name_pom, ext);
-		if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba > MODL_INVITATORIUM)){
-			if(ptr != NULL){
-				sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba - 1]);
-				strncpy(ptr, pismeno_prev, 1);
-			}
-			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
-			Export_to_file(expt, (char *)html_text_batch_Prev[_global_jazyk]);
-			Export_to_file(expt, " ");
-			Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba - 1));
-			Export_to_file(expt, "</a>");
-		}
-		// |
-		Export_to_file(expt, " | ");
-		// ^ hore
-		Export_to_file(expt, "<a href=\".%s%s\" "HTML_CLASS_BUTTON">", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore); // v tom istom adresári
-		Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
-		Export_to_file(expt, "</a>");
-		// |
-		Export_to_file(expt, " | ");
-		// >> next
-		mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
-		ptr = strstr(file_name_pom, ext);
-		if((_local_modlitba != MODL_NEURCENA) && (_local_modlitba < MODL_KOMPLETORIUM)){
-			if(ptr != NULL){
-				sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba + 1]);
-				strncpy(ptr, pismeno_next, 1);
-			}
-			Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
-			Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba + 1));
-			Export_to_file(expt, " ");
-			Export_to_file(expt, (char *)html_text_batch_Next[_global_jazyk]);
-			Export_to_file(expt, "</a>");
-		}
-		Export_to_file(expt, "</p>");
-		Export_to_file(expt, "</center>\n");
+		_buttons_prev_up_next(expt);
 	}// << predošlá | ^ hore | nasledovná >>
 
 	Export_to_file(expt, (char *)html_footer_1);

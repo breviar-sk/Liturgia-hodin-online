@@ -1437,6 +1437,44 @@ void _dm_velkonocna_nedela(short int rok, short int _vn){
 	mystrcpy(_global_result.lc_str_id, "1V", MAX_LC_STR_ID);
 }// _dm_velkonocna_nedela()
 
+short int modlitba_predchadzajuca(short int modlitba, short int exclude_mcd_komplet){
+	short int ret = modlitba - 1;
+
+	if(exclude_mcd_komplet == ANO){
+		if(je_modlitba_cez_den(ret)){
+			ret = MODL_RANNE_CHVALY;
+		}
+		else if(je_kompletorium12(ret)){
+			;
+		}
+	}
+
+	// kontrola
+	if(!je_modlitba_ok_buttons(ret)){
+		ret = MODL_NEURCENA;
+	}
+	return ret;
+}// modlitba_predchadzajuca()
+
+short int modlitba_nasledujuca(short int modlitba, short int exclude_mcd_komplet){
+	short int ret = modlitba + 1;
+
+	if(exclude_mcd_komplet == ANO){
+		if(je_modlitba_cez_den(ret)){
+			ret = MODL_VESPERY;
+		}
+		else if(je_kompletorium12(ret)){
+			ret = MODL_NEURCENA;
+		}
+	}
+
+	// kontrola
+	if(!je_modlitba_ok_buttons(ret)){
+		ret = MODL_NEURCENA;
+	}
+	return ret;
+}// modlitba_nasledujuca()
+
 //---------------------------------------------------------------------
 /* analyzuj_rok()
  *
