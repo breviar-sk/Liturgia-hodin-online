@@ -122,6 +122,12 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define CSS_kbd_sk				3
 #define CSS_ebreviar_cz			4
 
+// static texts
+#define POCET_STATIC_TEXTOV               1
+
+#define STATIC_TEXT_UNDEF                 0
+#define STATIC_TEXT_MARIANSKE_ANTIFONY    1
+
 #define	POCET_FONTOV	9
 
 // 2011-05-06: jednotlivÈ fonty na v˝ber v drop-down liste
@@ -158,9 +164,8 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define BIT_ALT_DOPLNK_PSALM_126_129   32
 #define BIT_ALT_HYMNUS_VN              64
 
-// nasledovne 2 definovane 2003-08-13; zmenene 2004-04-28 (12->16)
-#define MAX_STR_AF_FILE   16
-#define MAX_STR_AF_ANCHOR 23
+#define MAX_STR_AF_FILE   64
+#define MAX_STR_AF_ANCHOR 32
 struct _anchor_and_file{
 	char file[MAX_STR_AF_FILE];
 	char anchor[MAX_STR_AF_ANCHOR];
@@ -386,7 +391,8 @@ extern const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define TEMPLAT_CEZ_DEN_3        "m_popol.htm"
 #define TEMPLAT_VESPERY          "m_vespery.htm"
 #define TEMPLAT_KOMPLETORIUM     "m_komplet.htm"
-#define TEMPLAT_NEURCENY         "" // 2011-10-03: doplnenÈ kvÙli MODL_VSETKY
+#define TEMPLAT_EMPTY            STR_EMPTY // MODL_VSETKY + MODL_DETAILY
+#define TEMPLAT_STATIC_TEXT      "m_text.htm" // MODL_NEURCENA
 
 // pridanÈ 2006-10-24 pre kompletÛrium
 #define nazov_obd_KOMPLETORIUM   "cezrok_k.htm"
@@ -460,6 +466,9 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define PARAM_CHVALOSPEV2   "CHVALOSPEV2"
 #define PARAM_CHVALOSPEV3   "CHVALOSPEV3"
 #define PARAM_EVANJELIUM    "EVANJELIUM"
+// 2014-10-09: nov· öablÛna m_text.htm pre include statickÈho textu
+#define PARAM_TEXT          "TEXT" // static text included into single file
+#define PARAM_MARIANSKE_ANTIFONY_LINK "MARIANSKE_ANTIFONY_LINK" // hyperlink to Maria antiphones (static HTML text or dynamically generated URL
 // 2012-09-05: moûnosù zobraziù pre doplnkov˙ psalmÛdiu priamy URL odkaz (na prepnutie)
 #define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // 2012-10-01: _ sa menilo na &nbsp; preto som zmenil na -
 // 2013-08-22: moûnosù zobraziù priamy URL odkaz (na prepnutie) pre ûalmy z troch t˝ûdÚov ûalt·ra
@@ -1261,6 +1270,9 @@ extern _type_kompletorium *_global_modl_kompletorium_ptr;
 // extern _type_kompletorium _global_modl_kompletorium;
 #define _global_modl_kompletorium (*_global_modl_kompletorium_ptr)
 
+extern _struct_anchor_and_file *_global_include_static_text_ptr;
+#define _global_include_static_text (*_global_include_static_text_ptr)
+
 // globalna premenna, ktora obsahuje MODL_...
 extern short int _global_modlitba;
 
@@ -1633,6 +1645,8 @@ void Log(struct tmodlitba3);
 void Log(struct tmodlitba4);
 #define Log_struktura_tm5 Log("  <tm5>"); Log
 void Log(struct tmodlitba5);
+
+extern void Log_filename_anchor(_struct_anchor_and_file af);
 
 int _encode_spol_cast(short int, short int, short int);
 int _encode_spol_cast(short int, short int);

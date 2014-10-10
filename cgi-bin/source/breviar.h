@@ -130,6 +130,9 @@ extern _type_kompletorium *_global_modl_kompletorium_ptr;
 // _type_kompletorium _global_modl_kompletorium;
 #define _global_modl_kompletorium (*_global_modl_kompletorium_ptr)
 
+extern _struct_anchor_and_file *_global_include_static_text_ptr;
+#define _global_include_static_text (*_global_include_static_text_ptr)
+
 // globalna premenna, ktora obsahuje MODL_...
 extern short int _global_modlitba;
 

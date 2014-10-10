@@ -122,13 +122,15 @@ void updateUnCGIName(void);
 extern char FILE_PATH[MAX_STR]; // inicializovane v breviar.cpp
  */
 
-#define MESSAGE_FOLDER "msg/"
-#define FILE_PRESTUPNY_ROK		MESSAGE_FOLDER"prestupn.htm"
-#define FILE_JULIANSKY_DATUM	MESSAGE_FOLDER"juldat.htm"
-#define FILE_NEDELNE_PISMENO	MESSAGE_FOLDER"nedpism.htm"
-#define FILE_LITURGICKY_ROK	    MESSAGE_FOLDER"lr-pism.htm"
-#define FILE_NAME_POKEC         MESSAGE_FOLDER"xxx"
-#define FILE_NAME_CHYBA         MESSAGE_FOLDER"chyba.htm"
+#define DOCS_FOLDER "docs"
+
+#define MESSAGE_FOLDER "msg"
+#define FILE_PRESTUPNY_ROK		MESSAGE_FOLDER""STR_PATH_SEPARATOR_HTML"prestupn.htm"
+#define FILE_JULIANSKY_DATUM	MESSAGE_FOLDER""STR_PATH_SEPARATOR_HTML"juldat.htm"
+#define FILE_NEDELNE_PISMENO	MESSAGE_FOLDER""STR_PATH_SEPARATOR_HTML"nedpism.htm"
+#define FILE_LITURGICKY_ROK	    MESSAGE_FOLDER""STR_PATH_SEPARATOR_HTML"lr-pism.htm"
+#define FILE_NAME_POKEC         MESSAGE_FOLDER""STR_PATH_SEPARATOR_HTML"xxx"
+#define FILE_NAME_CHYBA         MESSAGE_FOLDER""STR_PATH_SEPARATOR_HTML"chyba.htm"
 
 extern short int query_type; // premenna obsahujuca PRM_...
 
@@ -204,7 +206,6 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_PRM_MESIAC_ROKA "pmr"
 #endif
 
-// pridana konstanta pre batch mode; 2003-07-04
 #define PRM_BATCH_MODE 21
 #ifdef LONG_PARAM_NAMES
 	#define STR_PRM_BATCH_MODE "PRM_BATCH_MODE"
@@ -224,6 +225,13 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_PRM_XML "PRM_XML_EXPORT"
 #else
 	#define STR_PRM_XML "pxml"
+#endif
+
+#define PRM_STATIC_TEXT 	22
+#ifdef LONG_PARAM_NAMES
+	#define STR_PRM_STATIC_TEXT "PRM_STATIC_TEXT"
+#else
+	#define STR_PRM_STATIC_TEXT "pst"
 #endif
 
 // nasleduju parametre z formularov pre vsetky typy dotazov,
@@ -353,6 +361,16 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #else
 	#define STR_TABULKA_LINKY "hl" // od 'hyperlinks'
 #endif
+
+// nasleduju parametre z formularov pre dotaz PRM_STATIC_TEXT
+#define STATIC_TEXT 14
+#ifdef LONG_PARAM_NAMES
+	#define STR_STATIC_TEXT "STATIC_TEXT"
+#else
+	#define STR_STATIC_TEXT "st"
+#endif
+
+//
 
 #define PRM_DETAILY 30 // dotaz na konkretny datum, to iste ako PRM_DATUM
 #ifdef LONG_PARAM_NAMES
@@ -1029,6 +1047,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 
 #define HTML_LINK_CALL1         "%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
 #define HTML_LINK_CALL2         "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
+#define HTML_LINK_CALL3         "%s?%s=%s"HTML_AMPERSAND"%s=%s%s"
 #define HTML_LINK_CALL_PARAM    HTML_AMPERSAND"%s=%s"
 // 2011-01-26: pridané jednoduché šípky v¾avo/vpravo
 #define HTML_LEFT_ARROW_SINGLE	"&lsaquo;"

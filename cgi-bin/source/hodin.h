@@ -53,9 +53,9 @@
 const char *TEMPLAT[POCET_MODLITIEB + 1] =
 {TEMPLAT_INVITATORIUM, TEMPLAT_POSV_CITANIE, TEMPLAT_RANNE_CHVALY,
  TEMPLAT_CEZ_DEN_9, TEMPLAT_CEZ_DEN_12, TEMPLAT_CEZ_DEN_3,
- TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM, STR_EMPTY,
+ TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM, TEMPLAT_STATIC_TEXT,
  TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM, 
- TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM, TEMPLAT_NEURCENY, TEMPLAT_NEURCENY};
+ TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM, TEMPLAT_EMPTY, TEMPLAT_EMPTY};
 
 // 2008-04-09: doplnené pre batch generovanie modlitieb
 const char char_modlitby[POCET_MODLITIEB + 1] =
@@ -1020,6 +1020,9 @@ const char *nazov_css_normal_font_weight = "breviar-normal-font.css";
 // language charset (encoding); used for HTML heading
 const char *charset_jazyka[POCET_JAZYKOV + 1] =
 {"windows-1250", "windows-1250", "windows-1251", "windows-1251", "utf-8", "windows-1250", "windows-1250"};
+
+const char *skratka_static_text[POCET_STATIC_TEXTOV + 1] = 
+{"", "ma"};
 
 // 2011-05-06: pridané kvôli možnosti vo¾by písma
 const char *nazov_fontu[POCET_FONTOV + 1] =

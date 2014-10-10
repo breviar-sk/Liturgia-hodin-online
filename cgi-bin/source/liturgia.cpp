@@ -189,6 +189,16 @@ short int _allocate_global_var(void){
 		_INIT_TMODLITBA3(_global_modl_kompletorium);
 	}
 
+// _global_include_static_text_ptr
+	if((_global_include_static_text_ptr = (_struct_anchor_and_file*) malloc(sizeof(_struct_anchor_and_file))) == NULL){
+		Log("  Not enough memory to allocate buffer for `_global_include_static_text_ptr'\n");
+		ret = FAILURE;
+	}
+	else{
+		Log("  %d bytes for `_global_include_static_text_ptr'\n", sizeof(_struct_anchor_and_file));
+		_INIT_ANCHOR_AND_FILE(_global_include_static_text);
+	}
+
 // _global_r_ptr
 	if((_global_r_ptr = (_struct_lrok*) malloc(sizeof(_struct_lrok))) == NULL){
 		Log("  Not enough memory to allocate buffer for `_global_r_ptr'\n");
@@ -1650,6 +1660,10 @@ void Log(struct tmodlitba5 t){
 	Log_struktura_tm5("   chval3                file `%s', anchor `%s'\n", t.chval3.file, t.chval3.anchor);
 	Log_struktura_tm5("   evanjelium            file `%s', anchor `%s'\n", t.evanjelium.file, t.evanjelium.anchor);
 	Log_struktura_tm5("   modlitba              file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
+}
+
+void Log_filename_anchor(_struct_anchor_and_file af){
+	Log("file `%s', anchor `%s'\n", af.file, af.anchor);
 }
 
 //---------------------------------------------------------------------

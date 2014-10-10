@@ -135,6 +135,9 @@ short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 
 #define FILE_DODATOK_PROSBY "dodprosby.htm"
 
+#define ANCHOR_MARIANSKE_ANTIFONY "MARIANSKE_ANTIFONY"
+#define FILE_MARIANSKE_ANTIFONY "ord-km.htm"
+
 #define ANCHOR_CSSR_TITUL "TITUL"
 
 extern const char *text_JAN_01[POCET_JAZYKOV + 1];

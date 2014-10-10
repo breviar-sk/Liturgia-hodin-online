@@ -437,6 +437,9 @@ _type_kompletorium *_global_modl_kompletorium_ptr;
 // _type_kompletorium _global_modl_kompletorium;
 #define _global_modl_kompletorium (*_global_modl_kompletorium_ptr)
 
+_struct_anchor_and_file *_global_include_static_text_ptr;
+#define _global_include_static_text (*_global_include_static_text_ptr)
+
 // globalna premenna, ktora obsahuje MODL_...
 short int _global_modlitba = MODL_NEURCENA;
 // 2006-12-08: ch˝bala inicializ·cia
@@ -579,6 +582,7 @@ char pom_QUERY_TYPE [MAX_POM_QUERY_TYPE] = STR_EMPTY; // typ dotazu, retazec
 char pom_DEN        [SMALL] = STR_EMPTY; // sluzi aj ako pom_DEN_V_TYZDNI a pom_SVIATOK
 #define pom_DEN_V_TYZDNI	pom_DEN
 #define pom_SVIATOK			pom_DEN
+#define pom_STATIC_TEXT     pom_DEN
 char pom_MESIAC     [SMALL] = STR_EMPTY; // sluzi aj ako pom_TYZDEN aj ako mesiac roka
 #define pom_TYZDEN		pom_MESIAC
 char pom_ROK        [SMALL] = STR_EMPTY; // sluzi aj ako pom_ANALYZA_ROKU
@@ -2392,6 +2396,38 @@ void _export_rozbor_dna_navig_top_bottom(char *target, const char *text){
 	Export("</p>");
 }// _export_rozbor_dna_navig_top_bottom()
 
+// --------------------------------------------------------------------
+
+void init_marianske_anfifony_file(_struct_anchor_and_file &af){
+	mystrcpy(af.anchor, ANCHOR_MARIANSKE_ANTIFONY, MAX_STR_AF_ANCHOR);
+	mystrcpy(af.file, ".."STR_PATH_SEPARATOR_HTML, MAX_STR_AF_FILE);
+	if(strlen(postfix_jazyka[_global_jazyk]) > 0){
+		strcat(af.file, postfix_jazyka[_global_jazyk]);
+		strcat(af.file, STR_PATH_SEPARATOR_HTML);
+	}
+	strcat(af.file, DOCS_FOLDER""STR_PATH_SEPARATOR_HTML);
+	strcat(af.file, FILE_MARIANSKE_ANTIFONY);
+	Log_filename_anchor(af);
+	return;
+}
+
+void init_url_marianske_antifony(char url[MAX_STR]){
+	Log("init_url_marianske_antifony(): zaËiatok...\n");
+	char pom2[MAX_STR];
+	char pom3[MAX_STR];
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+	prilep_request_options(pom2, pom3);
+
+	sprintf(pom3, HTML_LINK_CALL3, script_name, STR_QUERY_TYPE, STR_PRM_STATIC_TEXT, STR_STATIC_TEXT, skratka_static_text[STATIC_TEXT_MARIANSKE_ANTIFONY], pom2);
+	
+	mystrcpy(url, pom3, MAX_STR);
+	Log("URL == %s\n", url);
+
+	Log("init_url_marianske_antifony(): koniec.\n");
+}
+
 //---------------------------------------------------------------------
 // definicie pre _rozbor_dna():
 // obsahuju sviatky, ktore su bud pevne alebo pohyblive, v kazdom pripade su to dolezite "hranicne" dni medzi obdobiami
@@ -4095,6 +4131,22 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			; // ostatnÈ modlitby nemaj˙ Nunc dimittis
 		}
 	}// PARAM_NUNC_DIMITTIS
+	else if(equals(paramname, PARAM_MARIANSKE_ANTIFONY_LINK)){
+		if((je_kompletorium12(type)) && (_global_skip_in_prayer != ANO)){
+			// vyuûijeme parameter path, ktor˝ sa nepouûÌva
+#ifndef BEHAVIOUR_WEB
+			_struct_anchor_and_file af;
+			init_marianske_anfifony_file(af);
+			mystrcpy(path, af.file);
+#else
+			init_url_marianske_antifony(path);
+#endif
+			Export("--><a href=\"%s\"><!--", path);
+		}
+		else{
+			; // ostatnÈ modlitby nemaj˙ link na mari·nske antifÛny
+		}
+	}// PARAM_MARIANSKE_ANTIFONY_LINK
 	else if(equals(paramname, PARAM_PROSBY)){
 		switch(type){
 			case MODL_RANNE_CHVALY:
@@ -4267,13 +4319,10 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				break;
 		}// switch
 	}// PARAM_EVANJELIUM
-
-	/* netreba...
-	if(_local_skip_in_prayer != _global_skip_in_prayer){
-		// ak sa zmenilo nastavenie _global_skip_in_prayer, potrebnÈ je zruöiù _global_skip_in_prayer_2
-		// _global_skip_in_prayer_2 = NIE;
-	}// if(_local_skip_in_prayer != _global_skip_in_prayer)
-	*/
+	else if(equals(paramname, PARAM_TEXT)){
+		// bez ohæadu na type, ktor˝ nie je nastaven˝, sa includuje nastaven˝ s˙bor; nepouûÌva sa strcat(path) na zaËiatok reùazca
+		includeFile(type, paramname, _global_include_static_text.file, _global_include_static_text.anchor);
+	}// PARAM_TEXT
 
 	Log("interpretParameter(%s): Dumped by %s - OK.\n", paramname, paramname);
 }// interpretParameter()
@@ -4347,10 +4396,14 @@ void showPrayer(short int type, short int aj_navigacia = ANO){
 	char templat[SMALL];
 	char path[MAX_STR] = STR_EMPTY;
 	mystrcpy(path, include_dir, MAX_STR);
-	// 2004-03-17 // strcat(path, FILE_PATH); // prerobene 05/06/2000A.D.
 	short int i = 0;
 
-	Log("/* teraz nasleduje zobrazenie modlitby */\n");
+	if(type == MODL_NEURCENA){
+		Log("/* teraz nasleduje zobrazenie textu (type == MODL_NEURCENA) */\n");
+	}
+	else{
+		Log("/* teraz nasleduje zobrazenie modlitby %d */\n", type);
+	}
 	Log("showPrayer(): begin\n");
 
 	Log("2006-10-18: _global_pocet_zalmov_kompletorium == %d\n", _global_pocet_zalmov_kompletorium);
@@ -4399,7 +4452,8 @@ void showPrayer(short int type, short int aj_navigacia = ANO){
 	// samotne vypisanie, o aku modlitbu ide
 	Log("showPrayer(type %i, %s), _global_modlitba == %s\n", type, nazov_modlitby(type), nazov_modlitby(_global_modlitba));
 
-	if( ((type > MODL_PRVE_KOMPLETORIUM) || (type < MODL_INVITATORIUM)) || (type == MODL_NEURCENA) ){
+	// umoûnÌme aj MODL_NEURCENA -- pre statickÈ texty
+	if(((type > MODL_PRVE_KOMPLETORIUM) || (type < MODL_INVITATORIUM))){
 		ALERT;
 		Export("Nezn·my typ modlitby.\n");
 		return;
@@ -4407,20 +4461,16 @@ void showPrayer(short int type, short int aj_navigacia = ANO){
 
 	if(_global_modlitba != type){
 		// zrejme ide o prvÈ/druhÈ veöpery Ëi kompletÛrium
-		if((_global_modlitba == MODL_PRVE_VESPERY) &&
-			(type == MODL_VESPERY)){
+		if((_global_modlitba == MODL_PRVE_VESPERY) && (type == MODL_VESPERY)){
 			_global_modl_vespery = _global_modl_prve_vespery;
 		}
-		else if((_global_modlitba == MODL_PRVE_KOMPLETORIUM) &&
-				  (type == MODL_KOMPLETORIUM)){
+		else if((_global_modlitba == MODL_PRVE_KOMPLETORIUM) && (type == MODL_KOMPLETORIUM)){
 			_global_modl_kompletorium = _global_modl_prve_kompletorium;
 		}
-		else if((_global_modlitba == MODL_DRUHE_VESPERY) &&
-			(type == MODL_VESPERY)){
+		else if((_global_modlitba == MODL_DRUHE_VESPERY) && (type == MODL_VESPERY)){
 			// v poriadku: vöetko je v _global_modl_vespery
 		}
-		else if((_global_modlitba == MODL_DRUHE_KOMPLETORIUM) &&
-				  (type == MODL_KOMPLETORIUM)){
+		else if((_global_modlitba == MODL_DRUHE_KOMPLETORIUM) && (type == MODL_KOMPLETORIUM)){
 			// v poriadku: vöetko je v _global_modl_kompletorium
 		}
 		else{
@@ -4695,6 +4745,19 @@ short int atofontsize(char *font){
 	}while(i <= POCET_FONT_SIZE);
 	return FONT_SIZE_UNDEF;
 }// atofontsize()
+
+// popis: vr·ti ËÌslo statickÈho textu
+//        inak vr·ti STATIC_TEXT_UNDEF
+short int atoStaticText(char *css){
+	short int i = 0;
+	do{
+		if(equalsi(css, skratka_static_text[i])){
+			return i;
+		}
+		i++;
+	}while(i <= POCET_STATIC_TEXTOV);
+	return STATIC_TEXT_UNDEF;
+}// atoStaticText()
 
 // 2006-02-10: nov˝ define; pouûÌva premennÈ int i, p 
 // 2006-10-11: odpozn·mkovanÈ invitatÛrium a kompletÛrium
@@ -12948,6 +13011,66 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 }// _main_liturgicke_obdobie()
 
 //---------------------------------------------------------------------
+// _main_static_text()
+short int  _main_static_text(char *static_text){
+
+	short int st, ret = FAILURE;
+	_struct_anchor_and_file af;
+	_INIT_ANCHOR_AND_FILE(af);
+	mystrcpy(_global_include_static_text.anchor, STR_EMPTY, MAX_STR_AF_ANCHOR);
+	mystrcpy(_global_include_static_text.file, STR_EMPTY, MAX_STR_AF_FILE);
+
+	char pom[MAX_STR];
+	char pom2[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+	char action[MAX_STR];
+	mystrcpy(action, STR_EMPTY, MAX_STR);
+
+	Log("-- _main_static_text(): zaËiatok\n");
+
+	if(equals(static_text, STR_EMPTY)){
+		ALERT;
+		Export("NevhodnÈ ˙daje: ch˝ba ˙daj o statickom texte");
+		return ret;
+	}
+	_global_modlitba = MODL_NEURCENA;
+
+	st = atoStaticText(static_text);
+
+	if(st <= STATIC_TEXT_UNDEF || st > POCET_STATIC_TEXTOV){
+		ALERT;
+		_export_heading("StatickÈ texty");
+		Export("Nevhodn˝ ˙daj: ");
+		Export("chybnÈ ËÌslo %d (%s).\n", st, static_text);
+		return ret;
+	}
+
+	// treba nastaviù premenn˙ _global_include_static_text
+
+	// ToDo: use array instead of if-else for multiple texts
+	if(st == STATIC_TEXT_MARIANSKE_ANTIFONY){
+		_main_LOG_to_Export("STATIC_TEXT_MARIANSKE_ANTIFONY...\n");
+		init_marianske_anfifony_file(_global_include_static_text);
+	}
+
+	_main_LOG_to_Export("\t_global_include_static_text: \n");
+	Log_filename_anchor(_global_include_static_text);
+
+	LOG_ciara;
+	showPrayer(_global_modlitba);
+	LOG_ciara;
+
+	ret = SUCCESS;
+
+	Log("_main_static_text(): koniec (%d)\n", ret);
+	return ret;
+}// _main_static_text()
+
+//---------------------------------------------------------------------
 // _main_sviatok()
 void _main_sviatok(char *sviatok){
 	// [ToDo]
@@ -12991,12 +13114,15 @@ void _main_analyza_roku(char *rok){
 		ALERT;
 		_export_heading("Anal˝za roku");
 		Export("Nevhodn˝ ˙daj: ");
-		if(equals(rok, STR_EMPTY))
+		if(equals(rok, STR_EMPTY)){
 			Export("nezadan˝ rok.\n");
-		else if(equals(rok, STR_VALUE_ZERO))
+		}
+		else if(equals(rok, STR_VALUE_ZERO)){
 			Export("nepozn·m rok <"HTML_SPAN_BOLD">"STR_VALUE_ZERO""HTML_SPAN_END".\n");
-		else
+		}
+		else{
 			Export("chybnÈ ËÌslo (%s).\n", rok);
+		}
 		return;
 	}
 
@@ -15051,8 +15177,7 @@ short int getForm(void){
 			if(strcmp(ptr, STR_EMPTY) != 0)
 				mystrcpy(pom_DALSI_SVATY, ptr, SMALL);
 		}
-
-	}// (query_type == PRM_DATUM) || (query_type == PRM_DETAILY)
+	}// (query_type == PRM_DATUM) || (query_type == PRM_DETAILY) || (query_type == PRM_TXT) || (query_type == PRM_XML)
 
 	else if(query_type == PRM_CEZ_ROK){
 		// cez rok: treba nacitat den v tyzdni a cislo tyzdna
@@ -15113,7 +15238,6 @@ short int getForm(void){
 		else{
 			Log("Premenn· pom_MODLITBA je uû naplnen· (%s). NeËÌtam z %s...\n", pom_MODLITBA, ADD_WWW_PREFIX_(STR_MODLITBA));
 		}
-
 	}// query_type == PRM_CEZ_ROK
 
 	else if(query_type == PRM_LIT_OBD){
@@ -15213,7 +15337,6 @@ short int getForm(void){
 		else{
 			Log("Premenn· pom_LIT_ROK je uû naplnen· (%s). NeËÌtam z %s...\n", pom_LIT_ROK, ADD_WWW_PREFIX_(STR_LIT_ROK));
 		}
-
 	}// query_type == PRM_LIT_OBD
 
 	else if(query_type == PRM_SVIATOK){
@@ -15237,8 +15360,28 @@ short int getForm(void){
 		else{
 			Log("Premenn· pom_SVIATOK je uû naplnen· (%s). NeËÌtam z %s...\n", pom_SVIATOK, ADD_WWW_PREFIX_(STR_NAZOV_SVIATOK));
 		}
-
 	}// query_type == PRM_SVIATOK
+
+	else if(query_type == PRM_STATIC_TEXT){
+		// premenna WWW_STATIC_TEXT
+		// ak je naplnena pom_STATIC_TEXT, znamena to, ze uz bola naplnena, preto nemusi existovat
+		if(equals(pom_STATIC_TEXT, STR_EMPTY)){
+			ptr = getenv(ADD_WWW_PREFIX_(STR_STATIC_TEXT));
+			if(ptr == NULL){
+				DEBUG_GET_FORM("%s neexistuje.\n", ADD_WWW_PREFIX_(STR_STATIC_TEXT));
+				// 2013-08-04: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola vytvoren· systÈmov· premenn· %s.\n", ADD_WWW_PREFIX_(STR_STATIC_TEXT));
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_getForm;
+			}
+			if(strcmp(ptr, STR_EMPTY) != 0)
+				mystrcpy(pom_STATIC_TEXT, ptr, SMALL);
+		}
+		else{
+			Log("Premenn· pom_STATIC_TEXT je uû naplnen· (%s). NeËÌtam z %s...\n", pom_STATIC_TEXT, ADD_WWW_PREFIX_(STR_STATIC_TEXT));
+		}
+	}// query_type == PRM_STATIC_TEXT
 
 	else if(query_type == PRM_ANALYZA_ROKU){
 		// cez rok: treba nacitat nazov sviatku
@@ -15261,7 +15404,6 @@ short int getForm(void){
 		else{
 			Log("Premenn· pom_ANALYZA_ROKU je uû naplnen· (%s). NeËÌtam z %s...\n", pom_ANALYZA_ROKU, ADD_WWW_PREFIX_(STR_ANALYZA_ROKU));
 		}
-
 	}// query_type == PRM_ANALYZA_ROKU
 
 	else if(query_type == PRM_MESIAC_ROKA){
@@ -15307,7 +15449,6 @@ short int getForm(void){
 		else{
 			Log("Premenn· pom_ROK je uû naplnen· (%s). NeËÌtam z %s...\n", pom_ROK, ADD_WWW_PREFIX_(STR_ROK_ROKA));
 		}
-
 	}// query_type == PRM_MESIAC_ROKA
 
 	else if(query_type == PRM_TABULKA){
@@ -15534,9 +15675,12 @@ short int parseQueryString(void){
 				// ide o parameter STR_PRM_XML; pridanÈ 2012-10-16
 				query_type = PRM_XML;
 			}
+			else if(equals(param[i].val, STR_PRM_STATIC_TEXT)){
+				// ide o parameter STR_PRM_STATIC_TEXT; pridanÈ 2014-10-09
+				query_type = PRM_STATIC_TEXT;
+			}
 			else if(equals(param[i].val, STR_PRM_DETAILY)){
-				// ide o parameter STR_PRM_DETAILY
-				// pridany 09/02/2000A.D. ako alternativa k PRM_DATUM
+				// ide o parameter STR_PRM_DETAILY | alternativa k PRM_DATUM
 				query_type = PRM_DETAILY;
 			}
 			else if(equals(param[i].val, STR_PRM_CEZ_ROK)){
@@ -15853,7 +15997,35 @@ short int parseQueryString(void){
 			}
 
 			break; // case
-		}
+		}// PRM_DNES
+
+		case PRM_STATIC_TEXT:{
+			// 2014-10-09: doplnenÈ kvÙli moûnosti includovaù statick˝ text
+			Log("\tcase PRM_STATIC_TEXT...\n");
+
+			// premenn· STATIC_TEXT 
+			i = 0; // param[0] by mal sÌce obsahovaù query type, ale radöej kontrolujeme od 0
+			Log("pok˙öam sa zistiù hodnotu parametra %s...\n", STR_STATIC_TEXT);
+			while((equalsi(pom_STATIC_TEXT, STR_EMPTY)) && (i < pocet)){
+				Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+				if(equals(param[i].name, STR_STATIC_TEXT)){
+					// ide o parameter STR_NAZOV_SVIATOK
+					mystrcpy(pom_STATIC_TEXT, param[i].val, SMALL);
+					Log("hodnota parametra %s je %s.\n", STR_STATIC_TEXT, pom_STATIC_TEXT);
+				}
+				i++;
+			}
+			if(equalsi(pom_STATIC_TEXT, STR_EMPTY)){
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s.\n", STR_STATIC_TEXT);
+				strcat(bad_param_str, errmsg);
+				ret = FAILURE;
+				goto END_parseQueryString;
+			}
+
+			break; // case
+		}// PRM_STATIC_TEXT
+
 		case PRM_DETAILY:
 			// presne to iste co PRM_DATUM s jedinkym rozdielom: co sa tyka formularov, prvy (uvodny) formular pre PRM_DATUM vycisti modlitbu 
 			// (premenna pom_MODLITBA, ktora sa nacita zo systemovej premennej WWW_MODLITBA) -- pretoze z inej casti fomrulara sa tam nieco dostane...
@@ -15986,7 +16158,7 @@ short int parseQueryString(void){
 			}
 
 			break; // case
-		}
+		}// PRM_DETAILY | PRM_TXT | PRM_XML | PRM_DATUM
 
 		case PRM_CEZ_ROK:{
 		// pripad, ze ide o tyzden cez rok
@@ -16052,10 +16224,10 @@ short int parseQueryString(void){
 			}
 
 			break; // case
-		}
+		}// PRM_CEZ_ROK
 
 		case PRM_LIT_OBD:{
-		// 2011-01-25: doplnenÈ; prÌpad, ûe ide o v˝ber dÚa v liturgickom obdobÌ
+			// 2011-01-25: doplnenÈ; prÌpad, ûe ide o v˝ber dÚa v liturgickom obdobÌ
 
 			// premenn· DEN_V_TYZDNI
 			i = 0; // param[0] by mal sÌce obsahovaù query type, ale radöej kontrolujeme od 0
@@ -16158,7 +16330,7 @@ short int parseQueryString(void){
 			}
 
 			break; // case
-		}
+		}// PRM_LIT_OBD
 
 		case PRM_SVIATOK:{
 		// pripad, ze ide o sviatok
@@ -16184,7 +16356,7 @@ short int parseQueryString(void){
 			}
 
 			break; // case
-		}
+		}// PRM_SVIATOK
 
 		case PRM_ANALYZA_ROKU:{
 		// prÌpad, ûe ide o anal˝zu roka
@@ -16210,7 +16382,7 @@ short int parseQueryString(void){
 			}
 
 			break; // case
-		}
+		}// PRM_ANALYZA_ROKU
 
 		case PRM_MESIAC_ROKA:{
 		// pripad, ze ide o mesiac roka
@@ -16256,7 +16428,7 @@ short int parseQueryString(void){
 			}
 
 			break; // case
-		}
+		}// PRM_MESIAC_ROKA
 
 		case PRM_TABULKA:{
 		// pripad, ze ide o tabulku pohyblivych slaveni
@@ -16318,8 +16490,7 @@ short int parseQueryString(void){
 			}
 
 			break; // case
-		}
-
+		}// PRM_TABULKA
 	}
 	ret = SUCCESS;
 
@@ -16832,6 +17003,7 @@ _main_SIMULACIA_QS:
 		case PRM_TABULKA:		_main_LOG_to_Export("PRM_TABULKA\n"); break;
 		case PRM_TXT:			_main_LOG_to_Export("PRM_TXT\n"); break;
 		case PRM_XML:			_main_LOG_to_Export("PRM_XML\n"); break;
+		case PRM_STATIC_TEXT:	_main_LOG_to_Export("PRM_STATIC_TEXT\n"); break;
 		case PRM_NONE:			_main_LOG_to_Export("PRM_NONE\n"); break;
 		case PRM_DATUM:			_main_LOG_to_Export("PRM_DATUM\n"); break;
 		case PRM_DETAILY:		_main_LOG_to_Export("PRM_DETAILY\n"); break;
@@ -16930,8 +17102,9 @@ _main_SIMULACIA_QS:
 		if(ret == SUCCESS){
 
 			_main_LOG_to_Export("now allocating memory...\n");
-			if(_allocate_global_var() == FAILURE)
+			if(_allocate_global_var() == FAILURE){
 				goto _main_end;
+			}
 
 			// presunut·_Ëasù_2013_07_31 vyööie
 			LOG_ciara;
@@ -16966,8 +17139,9 @@ _main_SIMULACIA_QS:
 				_main_LOG_to_Export("\tberiem cfg_INCLUDE_DIR_default...\n");
 				mystrcpy(include_dir, cfg_INCLUDE_DIR_default, MAX_STR);
 			}
-			else
+			else{
 				_main_LOG_to_Export("\tberiem include_dir...\n");
+			}
 
 			// 2006-07-17: prv· kontrola, Ëi include_dir konËÌ na backslash resp. slash
 			len = strlen(include_dir) - 1;
@@ -16994,13 +17168,15 @@ _main_SIMULACIA_QS:
 				_main_LOG_to_Export("len_postfix_jazyka = %d; include_dir_pom = %s\n", len_postfix_jazyka, include_dir_pom);
 				if(include_dir[len] == (short int)PATH_SEPARATOR){
 					_main_LOG_to_Export("include_dir[len] == (short int)PATH_SEPARATOR\n");
-					if((short int)strlen(include_dir_pom) == len_postfix_jazyka + 1)
+					if((short int)strlen(include_dir_pom) == len_postfix_jazyka + 1){
 						kontrola_prilepenia_postfix_jazyka = ANO;
+					}
 				}
 				else if(include_dir[len + 1] == (short int)PATH_SEPARATOR){
 					_main_LOG_to_Export("include_dir[len + 1] == (short int)PATH_SEPARATOR\n");
-					if((short int)strlen(include_dir_pom) == len_postfix_jazyka)
+					if((short int)strlen(include_dir_pom) == len_postfix_jazyka){
 						kontrola_prilepenia_postfix_jazyka = ANO;
+					}
 				}
 				else
 					_main_LOG_to_Export("include_dir[len/len + 1] != (short int)PATH_SEPARATOR\n");
@@ -17038,7 +17214,7 @@ _main_SIMULACIA_QS:
 				_main_LOG_to_Export("\tok.\n");
 			}
 
-			_main_LOG_to_Export("include s˙bory bud˙ z adres·ra `%s'\n", include_dir);
+			_main_LOG_to_Export("include s˙bory bud˙ z adres·ra include_dir = `%s'\n", include_dir);
 
 			LOG_ciara;
 
@@ -17097,6 +17273,11 @@ _main_SIMULACIA_QS:
 					_main_LOG_to_Export("spustam _main_rozbor_dna_txt(typ == %d; stringy: pom_DEN = %s, pom_MESIAC = %s, pom_ROK = %s);\n", query_type, pom_DEN, pom_MESIAC, pom_ROK);
 					_main_rozbor_dna_txt(query_type, pom_DEN, pom_MESIAC, pom_ROK);
 					_main_LOG_to_Export("spat po skonceni _main_rozbor_dna_txt(%s, %s, %s, %s);\n", pom_DEN, pom_MESIAC, pom_ROK);
+					break;
+				case PRM_STATIC_TEXT: // 2014-10-09: doplnenÈ; includovanie statickÈho textu
+					_main_LOG_to_Export("spustam _main_static_text(pom_STATIC_TEXT = %s);\n", pom_STATIC_TEXT);
+					_main_static_text(pom_STATIC_TEXT);
+					_main_LOG_to_Export("spat po skonceni _main_static_text(%s);\n", pom_STATIC_TEXT);
 					break;
 				case PRM_CEZ_ROK:
 					_main_LOG_to_Export("spustam _main_zaltar(%s, %s, %s);\n", pom_DEN_V_TYZDNI, pom_TYZDEN, pom_MODLITBA);
