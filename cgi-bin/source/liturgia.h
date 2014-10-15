@@ -123,10 +123,11 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define CSS_ebreviar_cz			4
 
 // static texts
-#define POCET_STATIC_TEXTOV               1
+#define POCET_STATIC_TEXTOV               2
 
 #define STATIC_TEXT_UNDEF                 0
 #define STATIC_TEXT_MARIANSKE_ANTIFONY    1
+#define STATIC_TEXT_ORDINARIUM            2
 
 #define	POCET_FONTOV	9
 
@@ -398,6 +399,19 @@ extern const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define nazov_obd_KOMPLETORIUM   "cezrok_k.htm"
 
 extern const char *TEMPLAT[POCET_MODLITIEB + 1];
+
+#define ORDINARIUM_INVITATORIUM     "ord_invitat.htm"
+#define ORDINARIUM_POSV_CITANIE     "ord_posvcit.htm"
+#define ORDINARIUM_RANNE_CHVALY     "ord_rchvaly.htm"
+#define ORDINARIUM_CEZ_DEN          "ord_mcd.htm"
+#define ORDINARIUM_VESPERY          "ord_vespery.htm"
+#define ORDINARIUM_KOMPLETORIUM     "ord_komplet.htm"
+#define ORDINARIUM_EMPTY            STR_EMPTY // MODL_VSETKY + MODL_DETAILY
+
+extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
+
+#define SHOW_TEMPLAT_MODLITBA      1 // use TEMPLAT[]
+#define SHOW_TEMPLAT_STATIC_TEXT   2 // use ORDINARIUM[]
 
 // znaky, ktore znacia (pre interpretovanie templatu) zaciatok a koniec klucoveho slova
 #define CHAR_KEYWORD_BEGIN   '{'

@@ -582,12 +582,13 @@ char pom_QUERY_TYPE [MAX_POM_QUERY_TYPE] = STR_EMPTY; // typ dotazu, retazec
 char pom_DEN        [SMALL] = STR_EMPTY; // sluzi aj ako pom_DEN_V_TYZDNI a pom_SVIATOK
 #define pom_DEN_V_TYZDNI	pom_DEN
 #define pom_SVIATOK			pom_DEN
-#define pom_STATIC_TEXT     pom_DEN
 char pom_MESIAC     [SMALL] = STR_EMPTY; // sluzi aj ako pom_TYZDEN aj ako mesiac roka
 #define pom_TYZDEN		pom_MESIAC
 char pom_ROK        [SMALL] = STR_EMPTY; // sluzi aj ako pom_ANALYZA_ROKU
 #define pom_ANALYZA_ROKU	pom_ROK
+#define pom_STATIC_TEXT     pom_ROK
 char pom_MODLITBA   [SMALL] = STR_EMPTY;
+#define pom_MODL_ORDINARIUM	pom_MODLITBA
 
 char pom_MODL_OPT[POCET_GLOBAL_OPT][SMALL];
 char pom_MODL_OPTF[POCET_GLOBAL_OPT][SMALL]; // 2011-01-26: doplnenÈ force verzie pre options; 2011-04-07: prepracovanÈ na pole
@@ -2400,6 +2401,8 @@ void _export_rozbor_dna_navig_top_bottom(char *target, const char *text){
 
 void init_marianske_anfifony_file(_struct_anchor_and_file &af){
 	mystrcpy(af.anchor, ANCHOR_MARIANSKE_ANTIFONY, MAX_STR_AF_ANCHOR);
+	mystrcpy(af.file, FILE_MARIANSKE_ANTIFONY, MAX_STR_AF_FILE);
+	/*
 	mystrcpy(af.file, ".."STR_PATH_SEPARATOR_HTML, MAX_STR_AF_FILE);
 	if(strlen(postfix_jazyka[_global_jazyk]) > 0){
 		strcat(af.file, postfix_jazyka[_global_jazyk]);
@@ -2407,6 +2410,7 @@ void init_marianske_anfifony_file(_struct_anchor_and_file &af){
 	}
 	strcat(af.file, DOCS_FOLDER""STR_PATH_SEPARATOR_HTML);
 	strcat(af.file, FILE_MARIANSKE_ANTIFONY);
+	*/
 	Log_filename_anchor(af);
 	return;
 }
@@ -2427,6 +2431,14 @@ void init_url_marianske_antifony(char url[MAX_STR]){
 
 	Log("init_url_marianske_antifony(): koniec.\n");
 }
+
+void init_ordinarium_file(_struct_anchor_and_file &af, short int modlitba){
+	mystrcpy(af.anchor, ANCHOR_ORDINARIUM, MAX_STR_AF_ANCHOR);
+	mystrcpy(af.file, ORDINARIUM[modlitba], MAX_STR_AF_FILE);
+	Log_filename_anchor(af);
+	return;
+}
+
 
 //---------------------------------------------------------------------
 // definicie pre _rozbor_dna():
@@ -4320,8 +4332,10 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}// switch
 	}// PARAM_EVANJELIUM
 	else if(equals(paramname, PARAM_TEXT)){
-		// bez ohæadu na type, ktor˝ nie je nastaven˝, sa includuje nastaven˝ s˙bor; nepouûÌva sa strcat(path) na zaËiatok reùazca
-		includeFile(type, paramname, _global_include_static_text.file, _global_include_static_text.anchor);
+		// bez ohæadu na type, ktor˝ nie je nastaven˝, sa includuje nastaven˝ s˙bor
+		strcat(path, _global_include_static_text.file);
+		Log("vol·m includeFile(%d, %s, file = %s, anchor = %s)...\n", type, paramname, _global_include_static_text.file, _global_include_static_text.anchor);
+		includeFile(type, paramname, path, _global_include_static_text.anchor);
 	}// PARAM_TEXT
 
 	Log("interpretParameter(%s): Dumped by %s - OK.\n", paramname, paramname);
@@ -4392,7 +4406,7 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 // podla typu modlitby pripravi templat a spusti interpretTemplate()
 //
 // ak je vstupom typ vespery resp. kompletorium, a v _global_modlitba je nieco ine (t.j. prve/druhe), vtedy predpokladam, ze v premennych _global_[prve_]kompletorium/vespery su spravne data
-void showPrayer(short int type, short int aj_navigacia = ANO){
+void showPrayer(short int type, short int ktore_templaty = SHOW_TEMPLAT_MODLITBA, short int aj_navigacia = ANO){
 	char templat[SMALL];
 	char path[MAX_STR] = STR_EMPTY;
 	mystrcpy(path, include_dir, MAX_STR);
@@ -4480,8 +4494,17 @@ void showPrayer(short int type, short int aj_navigacia = ANO){
 			return;
 		}// chyba
 	}// _global_modlitba != type
-	mystrcpy(templat, TEMPLAT[type], SMALL);
+
+	// podæa parametra ktore_templaty sa rozhodneme, ktor˝ templ·t pouûiù
+	if(ktore_templaty == SHOW_TEMPLAT_MODLITBA){
+		mystrcpy(templat, TEMPLAT[type], SMALL);
+	}
+	else if(ktore_templaty == SHOW_TEMPLAT_STATIC_TEXT){
+		mystrcpy(templat, TEMPLAT_STATIC_TEXT, SMALL);
+	}
+	Log("showPrayer: pouûÌvam öablÛnu %s...\n", templat);
 	strcat(path, templat);
+	Log("showPrayer: po prilepenÌ cesty: %s...\n", path);
 	
 	// 2007-10-02: doplnenÈ nezobrazovanie rovnakej antifÛny v modlitbe cez deÚ; keÔûe je dan˝ jedin˝ typ modlitby, nie je potrebnÈ pole pre jednotlivÈ modlitby 
 	// 2008-03-30: doplnenÈ pre kompletÛrium vo veækonoËnej okt·ve a celom veækonoËnom obdobÌ
@@ -8813,15 +8836,19 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export("<select name=\"%s\" title=\"%s\">\n", STR_JAZYK, html_text_jazyk_explain[_global_jazyk]);
 
 	for(int i = 0; i <= POCET_JAZYKOV; i++){
-		if(i == JAZYK_EN)
+		if(i == JAZYK_EN){
 			continue;
-		if(i == JAZYK_LA)
+		}
+		if(i == JAZYK_LA){
 			continue;
-		if(i == JAZYK_UNDEF)
+		}
+		if(i == JAZYK_UNDEF){
 			continue;
+		}
 #if !defined(OS_Windows_Ruby)
-		if(i == JAZYK_CZ_OP)
+		if(i == JAZYK_CZ_OP){
 			continue;
+		}
 #endif
 		Export("<option%s>%s\n", (i != _global_jazyk)? STR_EMPTY: html_option_selected, nazov_jazyka[i]);
 	}
@@ -9600,6 +9627,40 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("</td></tr></table>\n");
 		Export("</td>\n");
 		Export("</tr>\n\n");
+
+	// -------------------------------------------
+		Export("<tr>\n<td>\n");
+		Export("<table "HTML_ALIGN_LEFT">\n<tr><td "HTML_VALIGN_TOP">\n");
+		// formul·r pre PRM_STATIC_TEXT, parameter 
+		radio_checked = ANO;
+		Export("<"HTML_FORM_INPUT_RADIO" name=\"%s\" value=\"%s\"%s>", STR_QUERY_TYPE, STR_PRM_STATIC_TEXT, radio_checked? html_option_checked: STR_EMPTY);
+		radio_checked = NIE;
+		Export("</td><td>\n");
+		// Export(HTML_NONBREAKING_SPACE); // netreba, je to v tabuæke
+		Export((char *)html_text_ordinarium[_global_jazyk]);
+		Export(HTML_NONBREAKING_SPACE);
+		Export((char *)html_text_pre[_global_jazyk]);
+		Export(HTML_NONBREAKING_SPACE);
+		Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%s\">\n", STR_STATIC_TEXT, skratka_static_text[STATIC_TEXT_ORDINARIUM]);
+
+		Export("</td><td "HTML_ALIGN_LEFT">\n");
+
+		// pole WWW_MODL_ORDINARIUM
+		Export("<select name=\"%s\">\n", STR_MODL_ORDINARIUM);
+		Export("<option>%s\n", nazov_modlitby_short(MODL_INVITATORIUM));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_POSV_CITANIE));
+		Export("<option selected>%s\n", nazov_modlitby_short(MODL_RANNE_CHVALY));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_PREDPOLUDNIM));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_NAPOLUDNIE));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_POPOLUDNI));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_VESPERY));
+		Export("<option>%s\n", nazov_modlitby_short(MODL_KOMPLETORIUM));
+		Export("</select>\n");
+
+		Export("</td></tr></table>\n");
+		Export("</td>\n");
+		Export("</tr>\n\n");
+	// -------------------------------------------
 
 #define formular_PRM_LIT_OBD
 #ifdef formular_PRM_LIT_OBD
@@ -11451,7 +11512,7 @@ LABEL_NIE_INE_VESPERY: // 08/03/2000A.D.
 		Log("spustam showPrayer(%s) z funkcie rozbor_dna_s_modlitbou()...\n", nazov_modlitby(_global_modlitba));
 		// predpokladam, ze aj _global_modlitba je prve/druhe vespery, v _global_prve_vespery su spravne udaje (podobne kompletorium)
 		LOG_ciara;
-		showPrayer(modlitba, aj_navigacia);
+		showPrayer(modlitba, SHOW_TEMPLAT_MODLITBA, aj_navigacia);
 		LOG_ciara;
 		Log("...po n·vrate zo showPrayer(%s) vo funkcii rozbor_dna_s_modlitbou().\n", nazov_modlitby(_global_modlitba));
 	}// pre konkrÈtnu modlitbu
@@ -11515,7 +11576,7 @@ void showAllPrayers(short int den, short int mesiac, short int rok, short int po
 			}// zmena: pouûitie doplnkovej psalmÛdie
 		}// mcd
 
-		Log("sp˙öùam showPrayer(%s) z funkcie showAllPrayers()...\n", nazov_modlitby(_global_modlitba));
+		Log("sp˙öùam showPrayer(%s)->rozbor_dna_s_modlitbou() z funkcie showAllPrayers()...\n", nazov_modlitby(_global_modlitba));
 
 		LOG_ciara;
 
@@ -11534,7 +11595,7 @@ void showAllPrayers(short int den, short int mesiac, short int rok, short int po
 
 		LOG_ciara;
 
-		Log("...po n·vrate zo showPrayer(%s) vo funkcii showAllPrayers().\n", nazov_modlitby(_global_modlitba));
+		Log("...po n·vrate zo showPrayer(%s)->rozbor_dna_s_modlitbou() vo funkcii showAllPrayers().\n", nazov_modlitby(_global_modlitba));
 
 		if(_global_opt[OPT_1_CASTI_MODLITBY] != opt_1){
 			_global_opt[OPT_1_CASTI_MODLITBY] = opt_1; // restore pÙvodnej hodnoty
@@ -12897,30 +12958,37 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 			_global_den.farba = LIT_FARBA_BIELA;
 			break;
 		case OBD_ADVENTNE_I:
-			if(d == DEN_NEDELA)
+			if(d == DEN_NEDELA){
 				_global_den.smer = 2; // nedele adventnÈ
-			else
+			}
+			else{
 				_global_den.smer = 13; // vöednÈ dni adventnÈ
+			}
 			_global_den.farba = LIT_FARBA_FIALOVA;
 			break;
 		case OBD_ADVENTNE_II:
-			if(d == DEN_NEDELA)
+			if(d == DEN_NEDELA){
 				_global_den.smer = 2; // nedele adventnÈ
-			else
+			}
+			else{
 				_global_den.smer = 9; // vöednÈ dni od 17. do 24. decembra
+			}
 			_global_den.farba = LIT_FARBA_FIALOVA;
 			break;
 		case OBD_VELKONOCNA_OKTAVA:
 			_global_den.smer = 2; // veækonoËn· okt·va
 			break;
 		case OBD_POSTNE_I:
-			if(d == DEN_NEDELA)
+			if(d == DEN_NEDELA){
 				_global_den.smer = 2; // nedele pÙstne
+			}
 			else{
-				if((d == DEN_STREDA) && (t == 0))
+				if((d == DEN_STREDA) && (t == 0)){
 					_global_den.smer = 2; // popolcov· streda
-				else
+				}
+				else{
 					_global_den.smer = 9; // vöednÈ dni v pÙste
+				}
 			}
 			_global_den.farba = LIT_FARBA_FIALOVA;
 			break;
@@ -12929,31 +12997,39 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 			_global_den.farba = LIT_FARBA_FIALOVA;
 			break;
 		case OBD_VELKONOCNE_I:
-			if(d == DEN_NEDELA)
+			if(d == DEN_NEDELA){
 				_global_den.smer = 2; // nedele veækonoËnÈ
-			else
+			}
+			else{
 				_global_den.smer = 13; // vöednÈ dni veækonoËnÈ od pondelka po veækonoËnej okt·ve aû do soboty pred ZoslanÌm Ducha Sv‰tÈho vËÌtane
+			}
 			_global_den.farba = LIT_FARBA_BIELA;
 			break;
 		case OBD_VELKONOCNE_II:
-			if(d == DEN_NEDELA)
+			if(d == DEN_NEDELA){
 				_global_den.smer = 2; // nedele veækonoËnÈ
-			else
+			}
+			else{
 				_global_den.smer = 13; // vöednÈ dni veækonoËnÈ od pondelka po veækonoËnej okt·ve aû do soboty pred ZoslanÌm Ducha Sv‰tÈho vËÌtane
+			}
 			_global_den.farba = LIT_FARBA_BIELA;
 			break;
 		case OBD_VIANOCNE_I:
-			if(d == DEN_NEDELA)
+			if(d == DEN_NEDELA){
 				_global_den.smer = 6; // nedele vianoËnÈ
-			else
+			}
+			else{
 				_global_den.smer = 13; // vöednÈ dni vianoËnÈ
+			}
 			_global_den.farba = LIT_FARBA_BIELA;
 			break;
 		case OBD_VIANOCNE_II:
-			if(d == DEN_NEDELA)
+			if(d == DEN_NEDELA){
 				_global_den.smer = 6; // nedele vianoËnÈ
-			else
+			}
+			else{
 				_global_den.smer = 13; // vöednÈ dni vianoËnÈ
+			}
 			_global_den.farba = LIT_FARBA_BIELA;
 			break;
 		case OBD_OKTAVA_NARODENIA:
@@ -12961,10 +13037,12 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 			_global_den.farba = LIT_FARBA_BIELA;
 			break;
 		case OBD_CEZ_ROK:
-			if(d == DEN_NEDELA)
+			if(d == DEN_NEDELA){
 				_global_den.smer = 6; // nedele cezroËnÈ
-			else
+			}
+			else{
 				_global_den.smer = 13; // vöednÈ dni cezroËnÈ
+			}
 			_global_den.farba = LIT_FARBA_ZELENA;
 			break;
 		default:
@@ -13012,13 +13090,15 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 
 //---------------------------------------------------------------------
 // _main_static_text()
-short int  _main_static_text(char *static_text){
+short int _main_static_text(char *static_text, char *modlitba){
 
 	short int st, ret = FAILURE;
 	_struct_anchor_and_file af;
 	_INIT_ANCHOR_AND_FILE(af);
 	mystrcpy(_global_include_static_text.anchor, STR_EMPTY, MAX_STR_AF_ANCHOR);
 	mystrcpy(_global_include_static_text.file, STR_EMPTY, MAX_STR_AF_FILE);
+
+	short int p;
 
 	char pom[MAX_STR];
 	char pom2[MAX_STR];
@@ -13039,7 +13119,16 @@ short int  _main_static_text(char *static_text){
 	}
 	_global_modlitba = MODL_NEURCENA;
 
+	// rozparsovanie parametra static_text
+	Log("volanie atoStaticText() z _main_static_text()...\n");
 	st = atoStaticText(static_text);
+	Log("st == `%s' (%d)\n", static_text, st);
+
+	// rozparsovanie parametra modlitba
+	Log("volanie atomodlitba() z _main_static_text()...\n");
+	p = atomodlitba(modlitba);
+	Log("p == `%s' (%d)\n", modlitba, p);
+	_global_modlitba = p;
 
 	if(st <= STATIC_TEXT_UNDEF || st > POCET_STATIC_TEXTOV){
 		ALERT;
@@ -13051,17 +13140,22 @@ short int  _main_static_text(char *static_text){
 
 	// treba nastaviù premenn˙ _global_include_static_text
 
-	// ToDo: use array instead of if-else for multiple texts
+	// ToDo (enhancement): use array instead of if-else for multiple texts
 	if(st == STATIC_TEXT_MARIANSKE_ANTIFONY){
 		_main_LOG_to_Export("STATIC_TEXT_MARIANSKE_ANTIFONY...\n");
 		init_marianske_anfifony_file(_global_include_static_text);
+		_global_modlitba = p = MODL_NEURCENA; // ak aj bola urËen·, vymaûeme ju
+	}
+	else if(st == STATIC_TEXT_ORDINARIUM){
+		_main_LOG_to_Export("STATIC_TEXT_ORDINARIUM...\n");
+		init_ordinarium_file(_global_include_static_text, p);
 	}
 
 	_main_LOG_to_Export("\t_global_include_static_text: \n");
 	Log_filename_anchor(_global_include_static_text);
 
 	LOG_ciara;
-	showPrayer(_global_modlitba);
+	showPrayer(_global_modlitba, SHOW_TEMPLAT_STATIC_TEXT);
 	LOG_ciara;
 
 	ret = SUCCESS;
@@ -14909,36 +15003,41 @@ short int getForm(void){
 	// premenn· WWW_JAZYK pridan· 2006-07-11 kvÙli jazykov˝m mut·ci·m
 	ptr = getenv(ADD_WWW_PREFIX_(STR_JAZYK));
 	if(ptr != NULL){
-		if(strcmp(ptr, STR_EMPTY) != 0)
+		if(strcmp(ptr, STR_EMPTY) != 0){
 			mystrcpy(pom_JAZYK, ptr, SMALL);
+		}
 	}
 
 	// premenn· STR_KALENDAR pridan· 2010-08-04 kvÙli jazykov˝m mut·ci·m
 	ptr = getenv(ADD_WWW_PREFIX_(STR_KALENDAR));
 	if(ptr != NULL){
-		if(strcmp(ptr, STR_EMPTY) != 0)
+		if(strcmp(ptr, STR_EMPTY) != 0){
 			mystrcpy(pom_KALENDAR, ptr, SMALL);
+		}
 	}
 
 	// premenn· WWW_CSS pridan· 2008-08-08 kvÙli rÙznym css
 	ptr = getenv(ADD_WWW_PREFIX_(STR_CSS));
 	if(ptr != NULL){
-		if(strcmp(ptr, STR_EMPTY) != 0)
+		if(strcmp(ptr, STR_EMPTY) != 0){
 			mystrcpy(pom_CSS, ptr, SMALL);
+		}
 	}
 
 	// premenn· WWW_FONT_NAME pridan· 2011-05-06 kvÙli rÙznym fontom
 	ptr = getenv(ADD_WWW_PREFIX_(STR_FONT_NAME));
 	if(ptr != NULL){
-		if(strcmp(ptr, STR_EMPTY) != 0)
+		if(strcmp(ptr, STR_EMPTY) != 0){
 			mystrcpy(pom_FONT, ptr, SMALL);
+		}
 	}
 
 	// premenn· WWW_FONT_SIZE pridan· 2011-05-13 kvÙli rÙznym veækostiam fontov
 	ptr = getenv(ADD_WWW_PREFIX_(STR_FONT_SIZE));
 	if(ptr != NULL){
-		if(strcmp(ptr, STR_EMPTY) != 0)
+		if(strcmp(ptr, STR_EMPTY) != 0){
 			mystrcpy(pom_FONT_SIZE, ptr, SMALL);
+		}
 	}
 
 	// premennÈ WWW_MODL_OPT... presunutÈ sem, aby sa ËÌtali vûdy (2011-01-26); tieû doplnenÈ force verzie (opt_0 aû opt_4); niektorÈ sa pouûÌvali aj v PRM_MESIAC_ROKA
@@ -14957,8 +15056,9 @@ short int getForm(void){
 		}// switch(i)
 		ptr = getenv(local_str);
 		if(ptr != NULL){
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MODL_OPT[i], ptr, SMALL);
+			}
 		}
 	}// for i
 
@@ -14976,8 +15076,9 @@ short int getForm(void){
 		}// switch(i)
 		ptr = getenv(local_str);
 		if(ptr != NULL){
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MODL_OPTF[i], ptr, SMALL);
+			}
 		}
 	}// for i
 
@@ -14998,8 +15099,9 @@ short int getForm(void){
 		}// switch(i)
 		ptr = getenv(local_str);
 		if(ptr != NULL){
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MODL_OPTF_SPECIALNE[i], ptr, SMALL);
+			}
 		}
 	}// for i
 
@@ -15027,8 +15129,9 @@ short int getForm(void){
 		}// switch(i)
 		ptr = getenv(local_str);
 		if(ptr != NULL){
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MODL_OPTF_CASTI_MODLITBY[i], ptr, SMALL);
+			}
 		}
 	}// for i
 
@@ -15056,8 +15159,9 @@ short int getForm(void){
 		}// switch(i)
 		ptr = getenv(local_str);
 		if(ptr != NULL){
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MODL_OPTF_HTML_EXPORT[i], ptr, SMALL);
+			}
 		}
 	}// for i
 
@@ -15082,8 +15186,9 @@ short int getForm(void){
 		}// switch(i)
 		ptr = getenv(local_str);
 		if(ptr != NULL){
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MODL_OPTF_ALTERNATIVES[i], ptr, SMALL);
+			}
 		}
 	}// for i
 
@@ -15102,8 +15207,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_DEN, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_DEN je uû naplnen· (%s). NeËÌtam z %s...\n", pom_DEN, ADD_WWW_PREFIX_(STR_DEN));
@@ -15121,8 +15227,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MESIAC, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_MESIAC je uû naplnen· (%s). NeËÌtam z %s...\n", pom_MESIAC, ADD_WWW_PREFIX_(STR_MESIAC));
@@ -15140,8 +15247,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_ROK, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_ROK je uû naplnen· (%s). NeËÌtam z %s...\n", pom_ROK, ADD_WWW_PREFIX_(STR_ROK));
@@ -15152,8 +15260,9 @@ short int getForm(void){
 		// premenna WWW_MODLITBA
 		ptr = getenv(ADD_WWW_PREFIX_(STR_MODLITBA));
 		if(ptr != NULL){
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MODLITBA, ptr, SMALL);
+			}
 		}
 		// treba otestovat, ci (v pripade, ze sa jedna o prvy vstupny formular, t.j. PRM_DATUM) je modlitba nastavena -- v takom pripade treba nastavit modlitbu na MODL_NEURCENA;
 		// ak je druhy formular -- Detaily (t.j. PRM_DETAILY), tak modlitba ostane ponechana
@@ -15174,8 +15283,9 @@ short int getForm(void){
 		// premenna WWW_DALSI_SVATY
 		ptr = getenv(ADD_WWW_PREFIX_(STR_DALSI_SVATY));
 		if(ptr != NULL){
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_DALSI_SVATY, ptr, SMALL);
+			}
 		}
 	}// (query_type == PRM_DATUM) || (query_type == PRM_DETAILY) || (query_type == PRM_TXT) || (query_type == PRM_XML)
 
@@ -15194,8 +15304,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_DEN_V_TYZDNI, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_DEN_V_TYZDNI je uû naplnen· (%s). NeËÌtam z %s...\n", pom_DEN_V_TYZDNI, ADD_WWW_PREFIX_(STR_DEN_V_TYZDNI));
@@ -15213,8 +15324,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_TYZDEN, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_TYZDEN je uû naplnen· (%s). NeËÌtam z %s...\n", pom_TYZDEN, ADD_WWW_PREFIX_(STR_TYZDEN));
@@ -15232,8 +15344,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MODLITBA, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_MODLITBA je uû naplnen· (%s). NeËÌtam z %s...\n", pom_MODLITBA, ADD_WWW_PREFIX_(STR_MODLITBA));
@@ -15255,8 +15368,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_DEN_V_TYZDNI, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_DEN_V_TYZDNI je uû naplnen· (%s). NeËÌtam z %s...\n", pom_DEN_V_TYZDNI, ADD_WWW_PREFIX_(STR_DEN_V_TYZDNI));
@@ -15274,8 +15388,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_TYZDEN, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_TYZDEN je uû naplnen· (%s). NeËÌtam z %s...\n", pom_TYZDEN, ADD_WWW_PREFIX_(STR_TYZDEN));
@@ -15293,8 +15408,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MODLITBA, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_MODLITBA je uû naplnen· (%s). NeËÌtam z %s...\n", pom_MODLITBA, ADD_WWW_PREFIX_(STR_MODLITBA));
@@ -15312,8 +15428,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_LIT_OBD, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_LIT_OBD je uû naplnen· (%s). NeËÌtam z %s...\n", pom_LIT_OBD, ADD_WWW_PREFIX_(STR_LIT_OBD));
@@ -15331,8 +15448,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_LIT_ROK, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_LIT_ROK je uû naplnen· (%s). NeËÌtam z %s...\n", pom_LIT_ROK, ADD_WWW_PREFIX_(STR_LIT_ROK));
@@ -15354,8 +15472,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_SVIATOK, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_SVIATOK je uû naplnen· (%s). NeËÌtam z %s...\n", pom_SVIATOK, ADD_WWW_PREFIX_(STR_NAZOV_SVIATOK));
@@ -15375,13 +15494,28 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_STATIC_TEXT, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_STATIC_TEXT je uû naplnen· (%s). NeËÌtam z %s...\n", pom_STATIC_TEXT, ADD_WWW_PREFIX_(STR_STATIC_TEXT));
 		}
-	}// query_type == PRM_STATIC_TEXT
+
+		// premenna WWW_MODL_ORDINARIUM
+		// ak je naplnena MODL_ORDINARIUM, znamena to, ze uz bola naplnena, preto nemusi existovat
+		if(equals(pom_MODL_ORDINARIUM, STR_EMPTY)){
+			ptr = getenv(ADD_WWW_PREFIX_(STR_MODL_ORDINARIUM));
+			if(ptr != NULL){
+				if(strcmp(ptr, STR_EMPTY) != 0){
+					mystrcpy(pom_MODL_ORDINARIUM, ptr, SMALL);
+				}
+			}
+		}
+		else{
+			Log("Premenn· pom_MODL_ORDINARIUM je uû naplnen· (%s). NeËÌtam z %s...\n", pom_MODL_ORDINARIUM, ADD_WWW_PREFIX_(STR_MODL_ORDINARIUM));
+		}
+}// query_type == PRM_STATIC_TEXT
 
 	else if(query_type == PRM_ANALYZA_ROKU){
 		// cez rok: treba nacitat nazov sviatku
@@ -15398,8 +15532,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_ANALYZA_ROKU, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_ANALYZA_ROKU je uû naplnen· (%s). NeËÌtam z %s...\n", pom_ANALYZA_ROKU, ADD_WWW_PREFIX_(STR_ANALYZA_ROKU));
@@ -15424,8 +15559,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_MESIAC, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_MESIAC je uû naplnen· (%s). NeËÌtam z %s...\n", pom_MESIAC, ADD_WWW_PREFIX_(STR_MESIAC_ROKA));
@@ -15443,8 +15579,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_ROK, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_ROK je uû naplnen· (%s). NeËÌtam z %s...\n", pom_ROK, ADD_WWW_PREFIX_(STR_ROK_ROKA));
@@ -15466,8 +15603,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_ROK_FROM, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_ROK_FROM je uû naplnen· (%s). NeËÌtam z %s...\n", pom_ROK_FROM, ADD_WWW_PREFIX_(STR_ROK_FROM));
@@ -15486,8 +15624,9 @@ short int getForm(void){
 				ret = FAILURE;
 				goto END_getForm;
 			}
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_ROK_TO, ptr, SMALL);
+			}
 		}
 		else{
 			Log("Premenn· pom_ROK_TO je uû naplnen· (%s). NeËÌtam z %s...\n", pom_ROK_TO, ADD_WWW_PREFIX_(STR_ROK_TO));
@@ -15496,8 +15635,9 @@ short int getForm(void){
 		// premenna WWW_TABULKA_LINKY
 		ptr = getenv(ADD_WWW_PREFIX_(STR_TABULKA_LINKY));
 		if(ptr != NULL){
-			if(strcmp(ptr, STR_EMPTY) != 0)
+			if(strcmp(ptr, STR_EMPTY) != 0){
 				mystrcpy(pom_LINKY, ptr, SMALL);
+			}
 		}
 	}// query_type == PRM_TABULKA
 
@@ -16000,10 +16140,10 @@ short int parseQueryString(void){
 		}// PRM_DNES
 
 		case PRM_STATIC_TEXT:{
-			// 2014-10-09: doplnenÈ kvÙli moûnosti includovaù statick˝ text
+			// 2014-10-09: doplnenÈ kvÙli moûnosti includovaù statick˝ text/ordin·rium
 			Log("\tcase PRM_STATIC_TEXT...\n");
 
-			// premenn· STATIC_TEXT 
+			// premenn· STATIC_TEXT
 			i = 0; // param[0] by mal sÌce obsahovaù query type, ale radöej kontrolujeme od 0
 			Log("pok˙öam sa zistiù hodnotu parametra %s...\n", STR_STATIC_TEXT);
 			while((equalsi(pom_STATIC_TEXT, STR_EMPTY)) && (i < pocet)){
@@ -16021,6 +16161,23 @@ short int parseQueryString(void){
 				strcat(bad_param_str, errmsg);
 				ret = FAILURE;
 				goto END_parseQueryString;
+			}
+
+			// premenn· MODL_ORDINARIUM (nepovinn·)
+			i = 0; // param[0] by mal sÌce obsahovaù query type, ale radöej kontrolujeme od 0
+			Log("pok˙öam sa zistiù hodnotu parametra %s...\n", STR_MODL_ORDINARIUM);
+			while((equalsi(pom_MODL_ORDINARIUM, STR_EMPTY)) && (i < pocet)){
+				Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+				if(equals(param[i].name, STR_MODL_ORDINARIUM)){
+					// ide o parameter STR_NAZOV_SVIATOK
+					mystrcpy(pom_MODL_ORDINARIUM, param[i].val, SMALL);
+					Log("hodnota parametra %s je %s.\n", STR_MODL_ORDINARIUM, pom_MODL_ORDINARIUM);
+				}
+				i++;
+			}
+			if(equalsi(pom_MODL_ORDINARIUM, STR_EMPTY)){
+				// 2013-07-31: samotnÈ vypÌsanie nieËoho presunutÈ do hlavnej funkcie
+				sprintf(errmsg, "Nebola zadan· premenn· %s (nevadÌ).\n", STR_MODL_ORDINARIUM);
 			}
 
 			break; // case
@@ -17275,9 +17432,9 @@ _main_SIMULACIA_QS:
 					_main_LOG_to_Export("spat po skonceni _main_rozbor_dna_txt(%s, %s, %s, %s);\n", pom_DEN, pom_MESIAC, pom_ROK);
 					break;
 				case PRM_STATIC_TEXT: // 2014-10-09: doplnenÈ; includovanie statickÈho textu
-					_main_LOG_to_Export("spustam _main_static_text(pom_STATIC_TEXT = %s);\n", pom_STATIC_TEXT);
-					_main_static_text(pom_STATIC_TEXT);
-					_main_LOG_to_Export("spat po skonceni _main_static_text(%s);\n", pom_STATIC_TEXT);
+					_main_LOG_to_Export("spustam _main_static_text(pom_STATIC_TEXT = %s, pom_MODL_ORDINARIUM = %s);\n", pom_STATIC_TEXT, pom_MODL_ORDINARIUM);
+					_main_static_text(pom_STATIC_TEXT, pom_MODL_ORDINARIUM);
+					_main_LOG_to_Export("spat po skonceni _main_static_text(%s, %s);\n", pom_STATIC_TEXT, pom_MODL_ORDINARIUM);
 					break;
 				case PRM_CEZ_ROK:
 					_main_LOG_to_Export("spustam _main_zaltar(%s, %s, %s);\n", pom_DEN_V_TYZDNI, pom_TYZDEN, pom_MODLITBA);

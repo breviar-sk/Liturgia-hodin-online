@@ -57,6 +57,13 @@ const char *TEMPLAT[POCET_MODLITIEB + 1] =
  TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM, 
  TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM, TEMPLAT_EMPTY, TEMPLAT_EMPTY};
 
+const char *ORDINARIUM[POCET_MODLITIEB + 1] =
+{ORDINARIUM_INVITATORIUM, ORDINARIUM_POSV_CITANIE, ORDINARIUM_RANNE_CHVALY,
+ ORDINARIUM_CEZ_DEN, ORDINARIUM_CEZ_DEN, ORDINARIUM_CEZ_DEN,
+ ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM, ORDINARIUM_EMPTY,
+ ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM, 
+ ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM, ORDINARIUM_EMPTY, ORDINARIUM_EMPTY};
+
 // 2008-04-09: doplnené pre batch generovanie modlitieb
 const char char_modlitby[POCET_MODLITIEB + 1] =
 {CHAR_MODL_INVITATORIUM, CHAR_MODL_POSV_CITANIE, CHAR_MODL_RANNE_CHVALY, 
@@ -1022,7 +1029,7 @@ const char *charset_jazyka[POCET_JAZYKOV + 1] =
 {"windows-1250", "windows-1250", "windows-1251", "windows-1251", "utf-8", "windows-1250", "windows-1250"};
 
 const char *skratka_static_text[POCET_STATIC_TEXTOV + 1] = 
-{"", "ma"};
+{"", "ma", "ord"};
 
 // 2011-05-06: pridané kvôli možnosti vo¾by písma
 const char *nazov_fontu[POCET_FONTOV + 1] =
@@ -1221,6 +1228,7 @@ const char *html_text_tyzden_cislo[POCET_JAZYKOV + 1] = {"%d. týždeò", "%d. týde
 const char *html_text_tyzden[POCET_JAZYKOV + 1] = {". týždeò", ". týden", ". week", "hebdomada ", "", ". týden", ". hét"};
 const char *html_text_v_tyzdni_zaltara[POCET_JAZYKOV + 1] = {". týždni žaltára", ". týdnu žaltáøe", "week of Psaltary", "hebdomada", "", ". týdnu žaltáøe", ". zsoltáros hét"};
 const char *html_text_pre[POCET_JAZYKOV + 1] = {"pre", "pro", "for", "per", "", "pro", ""};
+const char *html_text_ordinarium[POCET_JAZYKOV + 1] = {"ordinárium", "uspoøádání", "ordinary", "ordinarium", "", "ordinárium", "általános rész:"};
 // in the following: you MUST keep all HTML elements, e.g. <a href...>, <br/> etc.
 const char *html_text_dnes_je_atd[POCET_JAZYKOV + 1] = 
 {"Dnes je %d. deò v roku%s, <a href=\"%s%s\">juliánsky dátum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",

@@ -370,6 +370,13 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_STATIC_TEXT "st"
 #endif
 
+#define MODL_ORDINARIUM 39
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_ORDINARIUM "MODL_ORDINARIUM"
+#else
+	#define STR_MODL_ORDINARIUM "pp"
+#endif
+
 //
 
 #define PRM_DETAILY 30 // dotaz na konkretny datum, to iste ako PRM_DATUM
