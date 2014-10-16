@@ -13500,22 +13500,16 @@ void _main_tabulka(char *rok_from, char *rok_to, char *tab_linky){
 	Export("<center><table border CELLSPACING=1>\n");
 	Export("<tr>\n");
 	// 2008-08-15: doplnené; 2008-09-11: prepracované na jazykové mutácie
-	Export((char *)html_text_pohyblive1[_global_jazyk]);
-	Export((char *)html_text_pohyblive2[_global_jazyk]);
-	Export((char *)html_text_pohyblive3[_global_jazyk]);
-	if(((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA)){
-		Export((char *)html_text_pohyblive3b[_global_jazyk]);
-	}// pre krajiny, kde je Zjavenie Pána pohyblivé
-	Export((char *)html_text_pohyblive4[_global_jazyk]);
-	Export((char *)html_text_pohyblive5[_global_jazyk]); // súbor vysvetlivky_tabulka();
-	Export((char *)html_text_pohyblive6[_global_jazyk]);
-	Export((char *)html_text_pohyblive7[_global_jazyk]);
-	Export((char *)html_text_pohyblive8[_global_jazyk]);
-	Export((char *)html_text_pohyblive9[_global_jazyk]);
-	Export((char *)html_text_pohyblive10[_global_jazyk]); // súbor vysvetlivky_tabulka();
-	Export((char *)html_text_pohyblive11[_global_jazyk]);
-	Export((char *)html_text_pohyblive12[_global_jazyk]);
-
+	for(short int i = 0; i <= POCET_HTML_TEXT_POHYBLIVE; i++){
+		if((i == HTML_TEXT_POHYBLIVE_ZJAVENIE_PANA) && ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) != BIT_OPT_0_ZJAVENIE_PANA_NEDELA)){
+			continue;
+		}// nezobrazuj pre krajiny, kde NIE JE Zjavenie Pána pohyblivé
+		Export("<td "HTML_ALIGN_CENTER">");
+		Export((char *)html_text_pohyblive[i][_global_jazyk]);
+		Export("</td>\n");
+	}
+	Export("<tr>\n");
+	
 	for(year = rfrom; year <= rto; year++){
 		LOG("-- _main_tabulka(): vchadzam do analyzuj_rok()...\n");
 		analyzuj_rok(year); // výsledok dá do _global_r

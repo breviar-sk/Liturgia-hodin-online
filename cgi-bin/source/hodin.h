@@ -1256,134 +1256,127 @@ const char *html_text_liturgicky_rok[POCET_JAZYKOV + 1] = {"liturgický rok", "li
 
 const char *html_text_txt_export[POCET_JAZYKOV + 1] = {"Textový výstup: ", "Textový výstup: ", "Text export: ", "Text export:", "", "Textový výstup: ", "Szöveg exportálása: "};
 
-const char *html_text_pohyblive1[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Rok"HTML_LINE_BREAK"Pána</td>\n",
-	"<td "HTML_ALIGN_CENTER">Léto"HTML_LINE_BREAK"Pánì</td>\n", 
-	"<td "HTML_ALIGN_CENTER">Anno"HTML_LINE_BREAK"Domini</td>\n",
-	"<td "HTML_ALIGN_CENTER">Anno"HTML_LINE_BREAK"Domini</td>\n",
-	"",
-	"<td "HTML_ALIGN_CENTER">Léto"HTML_LINE_BREAK"Pánì</td>\n",
-	"<td "HTML_ALIGN_CENTER">Naptári"HTML_LINE_BREAK"év</td>\n"
-};
+#define POCET_HTML_TEXT_POHYBLIVE 12
+#define HTML_TEXT_POHYBLIVE_ZJAVENIE_PANA 3
 
-const char *html_text_pohyblive2[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Nede¾ná"HTML_LINE_BREAK"litera</td>\n",
-	"<td "HTML_ALIGN_CENTER">Nedìlní"HTML_LINE_BREAK"písmeno</td>\n", 
-	"<td "HTML_ALIGN_CENTER">Sunday"HTML_LINE_BREAK"Letter</td>\n",
-	"<td "HTML_ALIGN_CENTER">Let."HTML_LINE_BREAK"Dom.</td>\n",
+const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1] = {
+{
+	"Rok"HTML_LINE_BREAK"Pána",
+	"Léto"HTML_LINE_BREAK"Pánì", 
+	"Anno"HTML_LINE_BREAK"Domini",
+	"Anno"HTML_LINE_BREAK"Domini",
 	"",
-	"<td "HTML_ALIGN_CENTER">Nedìlní"HTML_LINE_BREAK"písmeno</td>\n",
-	"<td "HTML_ALIGN_CENTER">Vasárnap"HTML_LINE_BREAK"betûje</td>\n"
-};
-
-const char *html_text_pohyblive3[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Nede¾ný"HTML_LINE_BREAK"cyklus</td>\n",
-	"<td "HTML_ALIGN_CENTER">Nedìlní"HTML_LINE_BREAK"cyklus</td>\n", 
-	"<td "HTML_ALIGN_CENTER">Sunday"HTML_LINE_BREAK"cycle</td>\n",
-	"<td "HTML_ALIGN_CENTER">Cycl."HTML_LINE_BREAK"Dom.</td>\n",
+	"Léto"HTML_LINE_BREAK"Pánì",
+	"Naptári"HTML_LINE_BREAK"év"
+},
+{
+	"Nede¾ná"HTML_LINE_BREAK"litera",
+	"Nedìlní"HTML_LINE_BREAK"písmeno", 
+	"Sunday"HTML_LINE_BREAK"Letter",
+	"Let."HTML_LINE_BREAK"Dom.",
 	"",
-	"<td "HTML_ALIGN_CENTER">Nedìlní"HTML_LINE_BREAK"cyklus</td>\n",
-	"<td "HTML_ALIGN_CENTER">Vasárnapi"HTML_LINE_BREAK"ciklus</td>\n"
-};
-
-const char *html_text_pohyblive3b[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Zjavenie"HTML_LINE_BREAK"Pána</td>\n",
-	"<td "HTML_ALIGN_CENTER">Zjevení"HTML_LINE_BREAK"Pánì</td>\n", 
-	"<td "HTML_ALIGN_CENTER">Epiphany</td>\n",
-	"<td "HTML_ALIGN_CENTER">Epiphania"HTML_LINE_BREAK"Domini</td>\n",
+	"Nedìlní"HTML_LINE_BREAK"písmeno",
+	"Vasár-"HTML_LINE_BREAK"nap"HTML_LINE_BREAK"betûje"
+},
+{
+	"Nede¾ný"HTML_LINE_BREAK"cyklus",
+	"Nedìlní"HTML_LINE_BREAK"cyklus", 
+	"Sunday"HTML_LINE_BREAK"cycle",
+	"Cycl."HTML_LINE_BREAK"Dom.",
 	"",
-	"<td "HTML_ALIGN_CENTER">Zjevení"HTML_LINE_BREAK"Pánì</td>\n",
-	"<td "HTML_ALIGN_CENTER">Urunk"HTML_LINE_BREAK"megjelenése"HTML_LINE_BREAK"(Vízkereszt)</td>\n"
-};
-
-const char *html_text_pohyblive4[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Krst Krista"HTML_LINE_BREAK"Pána</td>\n",
-	"<td "HTML_ALIGN_CENTER">Køest Krista"HTML_LINE_BREAK"Pánì</td>\n", 
-	"<td "HTML_ALIGN_CENTER">Bapt. of"HTML_LINE_BREAK"the Lord</td>\n",
-	"<td "HTML_ALIGN_CENTER">Bapt."HTML_LINE_BREAK"Domini</td>\n",
+	"Nedìlní"HTML_LINE_BREAK"cyklus",
+	"Vasár-"HTML_LINE_BREAK"napi"HTML_LINE_BREAK"ciklus"
+},
+{
+	"Zjavenie"HTML_LINE_BREAK"Pána",
+	"Zjevení"HTML_LINE_BREAK"Pánì", 
+	"Epiphany",
+	"Epiphania"HTML_LINE_BREAK"Domini",
 	"",
-	"<td "HTML_ALIGN_CENTER">Køest Krista"HTML_LINE_BREAK"Pánì</td>\n",
-	"<td "HTML_ALIGN_CENTER">Urunk"HTML_LINE_BREAK"megkeresztel-"HTML_LINE_BREAK"kedése</td>\n"
-};
-
-const char *html_text_pohyblive5[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER"><a href=\"#explain\">OCR"HTML_LINE_BREAK"pred"HTML_LINE_BREAK"PO</a></td>\n",
-	"<td "HTML_ALIGN_CENTER"><a href=\"#explain\">OCR"HTML_LINE_BREAK"pøed"HTML_LINE_BREAK"postem</a></td>\n", 
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
-	"<td "HTML_ALIGN_CENTER">PA fest.</td>\n",
+	"Zjevení"HTML_LINE_BREAK"Pánì",
+	"Urunk"HTML_LINE_BREAK"megjelenése"HTML_LINE_BREAK"(Vízkereszt)"
+},
+{
+	"Krst"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"Pána",
+	"Køest"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"Pánì", 
+	"Bapt. of"HTML_LINE_BREAK"the Lord",
+	"Bapt."HTML_LINE_BREAK"Domini",
 	"",
-	"<td "HTML_ALIGN_CENTER"><a href=\"#explain\">OCR"HTML_LINE_BREAK"pøed"HTML_LINE_BREAK"postem</a></td>\n",
-	"<td "HTML_ALIGN_CENTER">EK a HSZ elõtt</td>\n"
-};
-
-const char *html_text_pohyblive6[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Popolcová"HTML_LINE_BREAK"streda</td>\n",
-	"<td "HTML_ALIGN_CENTER">Popeleèní"HTML_LINE_BREAK"støeda</td>\n", 
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
+	"Køest"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"Pánì",
+	"Urunk"HTML_LINE_BREAK"megkeresztel-"HTML_LINE_BREAK"kedése"
+},
+{
+	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"pred"HTML_LINE_BREAK"PO</a>",
+	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"pøed"HTML_LINE_BREAK"postem</a>", 
+	"...",
+	"PA fest.",
 	"",
-	"<td "HTML_ALIGN_CENTER">Popeleèní"HTML_LINE_BREAK"støeda</td>\n",
-	"<td "HTML_ALIGN_CENTER">Hamvazó-"HTML_LINE_BREAK"szerda</td>\n"
-};
-
-const char *html_text_pohyblive7[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Ve¾ká"HTML_LINE_BREAK"noc</td>\n",
-	"<td "HTML_ALIGN_CENTER">Veliko-"HTML_LINE_BREAK"noce</td>\n", 
-	"<td "HTML_ALIGN_CENTER">Easter</td>\n",
-	"<td "HTML_ALIGN_CENTER">Pascha</td>\n",
+	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"pøed"HTML_LINE_BREAK"postem</a>",
+	"EK"HTML_LINE_BREAK"a HSZ"HTML_LINE_BREAK"elõtt"
+},
+{
+	"Popolcová"HTML_LINE_BREAK"streda",
+	"Popeleèní"HTML_LINE_BREAK"støeda", 
+	"...",
+	"...",
 	"",
-	"<td "HTML_ALIGN_CENTER">Veliko-"HTML_LINE_BREAK"noce</td>\n",
-	"<td "HTML_ALIGN_CENTER">Húsvét</td>\n"
-};
-
-const char *html_text_pohyblive8[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Nanebo-"HTML_LINE_BREAK"vstúpenie"HTML_LINE_BREAK"Pána</td>\n",
-	"<td "HTML_ALIGN_CENTER">Nanebe-"HTML_LINE_BREAK"vstoupení"HTML_LINE_BREAK"Pánì</td>\n", 
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
+	"Popeleèní"HTML_LINE_BREAK"støeda",
+	"Hamvazó-"HTML_LINE_BREAK"szerda"
+},
+{
+	"Ve¾ká"HTML_LINE_BREAK"noc",
+	"Veliko-"HTML_LINE_BREAK"noce", 
+	"Easter",
+	"Pascha",
 	"",
-	"<td "HTML_ALIGN_CENTER">Nanebe-"HTML_LINE_BREAK"vstoupení"HTML_LINE_BREAK"Pánì</td>\n",
-	"<td "HTML_ALIGN_CENTER">Urunk"HTML_LINE_BREAK"menny-"HTML_LINE_BREAK"bemenetele</td>\n"
-};
-
-const char *html_text_pohyblive9[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Zoslanie"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svätého</td>\n",
-	"<td "HTML_ALIGN_CENTER">Seslání"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svatého</td>\n", 
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
+	"Veliko-"HTML_LINE_BREAK"noce",
+	"Húsvét"
+},
+{
+	"Nanebo-"HTML_LINE_BREAK"vstúpenie"HTML_LINE_BREAK"Pána",
+	"Nanebe-"HTML_LINE_BREAK"vstoupení"HTML_LINE_BREAK"Pánì", 
+	"...",
+	"...",
 	"",
-	"<td "HTML_ALIGN_CENTER">Seslání"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svatého</td>\n",
-	"<td "HTML_ALIGN_CENTER">Pünkösd</td>\n"
-};
-
-const char *html_text_pohyblive10[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER"><a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a></td>\n",
-	"<td "HTML_ALIGN_CENTER"><a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a></td>\n", 
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
+	"Nanebe-"HTML_LINE_BREAK"vstoupení"HTML_LINE_BREAK"Pánì",
+	"Urunk"HTML_LINE_BREAK"menny-"HTML_LINE_BREAK"bemenetele"
+},
+{
+	"Zoslanie"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svätého",
+	"Seslání"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svatého", 
+	"...",
+	"...",
 	"",
-	"<td "HTML_ALIGN_CENTER"><a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a></td>\n",
-	"<td "HTML_ALIGN_CENTER">EK a HU után</td>\n"
-};
-
-const char *html_text_pohyblive11[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Prvá"HTML_LINE_BREAK"adventná"HTML_LINE_BREAK"nede¾a</td>\n",
-	"<td "HTML_ALIGN_CENTER">První"HTML_LINE_BREAK"adventní"HTML_LINE_BREAK"nedìle</td>\n", 
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
+	"Seslání"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svatého",
+	"Pünkösd"
+},
+{
+	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a>",
+	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a>", 
+	"...",
+	"...",
 	"",
-	"<td "HTML_ALIGN_CENTER">První"HTML_LINE_BREAK"adventní"HTML_LINE_BREAK"nedìle</td>\n",
-	"<td "HTML_ALIGN_CENTER">Advent elsõ"HTML_LINE_BREAK"vasárnapja</td>\n"
-};
-
-const char *html_text_pohyblive12[POCET_JAZYKOV + 1] = {
-	"<td "HTML_ALIGN_CENTER">Nede¾a Svätej"HTML_LINE_BREAK"rodiny</td></tr>\n",
-	"<td "HTML_ALIGN_CENTER">Nedìle Svaté"HTML_LINE_BREAK"rodiny</td></tr>\n", 
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
-	"<td "HTML_ALIGN_CENTER">...</td>\n",
+	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a>",
+	"EK"HTML_LINE_BREAK"a HU"HTML_LINE_BREAK"után"
+},
+{
+	"Prvá"HTML_LINE_BREAK"adventná"HTML_LINE_BREAK"nede¾a",
+	"První"HTML_LINE_BREAK"adventní"HTML_LINE_BREAK"nedìle", 
+	"...",
+	"...",
 	"",
-	"<td "HTML_ALIGN_CENTER">Nedìle Svaté"HTML_LINE_BREAK"rodiny</td></tr>\n",
-	"<td "HTML_ALIGN_CENTER">Szent"HTML_LINE_BREAK"Család"HTML_LINE_BREAK"ünnepe</td>\n"
+	"První"HTML_LINE_BREAK"adventní"HTML_LINE_BREAK"nedìle",
+	"Advent"HTML_LINE_BREAK"elsõ"HTML_LINE_BREAK"vasárnapja"
+},
+{
+	"Nede¾a"HTML_LINE_BREAK"Svätej"HTML_LINE_BREAK"rodiny",
+	"Nedìle"HTML_LINE_BREAK"Svaté"HTML_LINE_BREAK"rodiny", 
+	"...",
+	"...",
+	"",
+	"Nedìle"HTML_LINE_BREAK"Svaté"HTML_LINE_BREAK"rodiny",
+	"Szent"HTML_LINE_BREAK"Család"HTML_LINE_BREAK"ünnepe"
+}
 };
 
 const char *html_text_Nedelne_pismeno[POCET_JAZYKOV + 1] = {"Nede¾né písmeno", "Nedìlní písmeno", "Sunday letter", "", "", "Nedìlní písmeno", "A vasárnap betûje"};
