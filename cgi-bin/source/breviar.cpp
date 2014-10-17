@@ -1075,6 +1075,7 @@ short int setForm(void){
 				case 5: strcat(local_str, STR_MODL_OPTF_0_TK_NED); break; // BIT_OPT_0_TELAKRVI_NEDELA
 				case 6: strcat(local_str, STR_MODL_OPTF_0_FONT_NORMAL); break; // BIT_OPT_0_FONT_NORMAL
 				case 7: strcat(local_str, STR_MODL_OPTF_0_BUTTONS_ORDER); break; // BIT_OPT_0_BUTTONS_ORDER
+				case 8: strcat(local_str, STR_MODL_OPTF_0_BLIND_FRIENDLY); break; // BIT_OPT_0_BLIND_FRIENDLY
 			}// switch(i)
 			strcat(local_str, "=");
 			strcat(local_str, pom_MODL_OPTF_SPECIALNE[i]);
@@ -1454,7 +1455,13 @@ void _export_global_string_spol_cast(short int aj_vslh_235b){
 			}// nebraù Ëasti zo spol. Ëasti
 		}// ide nanajv˝ö o spomienku (ak je to sl·venie s vyööÌm stupÚom, nem· zmysel voæba BIT_OPT_1_SPOMIENKA_SPOL_CAST)
 
-		Export("<"HTML_DIV_RED_SMALL">");
+		// (aj_vslh_235b == ANO) means function is called from the generated prayer (for blind-friendly export is not necessary to export it at all) -- use different CSS style
+		if(aj_vslh_235b == ANO){
+			Export("<"HTML_DIV_RED_SMALL">");
+		}
+		else{
+			Export("<"HTML_DIV_RED_SUBTITLE">");
+		}
 
 		// pre HU in˝ slovosled
 		if(_global_jazyk == JAZYK_HU){
@@ -1491,6 +1498,34 @@ void _main_prazdny_formular(void){
 }// _main_prazdny_formular()
 
 //---------------------------------------------------------------------
+void ExportChar(int c){
+	// ToDo: consider special behaviour for 'plain' text export
+
+	// blind-friendly export
+	if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY) == BIT_OPT_0_BLIND_FRIENDLY){
+		if((c == CHAR_PRAYER_ASTERISK) || (c == CHAR_PRAYER_CROSS) || (c == CHAR_PRAYER_CROSS_ALT)){
+			; // skip special characters for blind-friendly version
+		}
+		else if(c == CHAR_NONBREAKING_SPACE){
+			Export("%c", CHAR_SPACE);
+		}
+		else{
+			Export("%c", c);
+		}
+		return;
+	}
+
+	// ordinary behaviour
+	if(c == CHAR_NONBREAKING_SPACE){
+		Export(HTML_NONBREAKING_SPACE);
+	}
+	else{
+		Export("%c", c);
+	}
+	return;
+}// ExportChar()
+
+//---------------------------------------------------------------------
 // includeFile():
 // podla parametra paramname (PARAM_...)
 // 
@@ -1507,7 +1542,7 @@ short int antifona_pocet = 0; // 2011-07-08: poËet antifÛn (ant1, ant2, ant3 pre
 char rest_krizik[MAX_BUFFER] = STR_EMPTY; // 2011-07-08: pre to, Ëo je za krÌûikom v antifÛne
 char rest_zakoncenie[MAX_BUFFER] = STR_EMPTY;
 void includeFile(short int type, const char *paramname, const char *fname, const char *modlparam){
-	short int c, buff_index = 0, ref_index = 0, kat_index = 0, z95_index = 0;
+	int c, buff_index = 0, ref_index = 0, kat_index = 0, z95_index = 0;
 	char strbuff[MAX_BUFFER];
 	char rest[MAX_BUFFER];
 	char isbuff = 0;
@@ -1587,7 +1622,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 	// 2011-05-03: nastavenie toho, Ëi sa m· zobrazovaù myölienka k ûalmom/chv·lospevom
 	// 2011-08-31: doplnenÈ aj nastavenie pre zobrazenie nadpisu pre ûalm/chv·lospev (zatiaæ rovnako ako pre myölienku)
-	if((_global_den.typslav == SLAV_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK) || (_global_den.typslav == SLAV_VLASTNE) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.smer == 1) /* && (_global_den.spolcast != _encode_spol_cast(MODL_SPOL_CAST_NEURCENA)) */){
+	if(((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY) == BIT_OPT_0_BLIND_FRIENDLY) || (_global_den.typslav == SLAV_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK) || (_global_den.typslav == SLAV_VLASTNE) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.smer == 1) /* && (_global_den.spolcast != _encode_spol_cast(MODL_SPOL_CAST_NEURCENA)) */){
 		je_myslienka = NIE;
 		je_nadpis = NIE;
 	}
@@ -2357,12 +2392,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 			}
 			if(write == ANO){
 				// 2011-05-02: nezlomiteænÈ medzery; v DetailLog logujeme 1:1 presne znak bez transform·cie
-				if(c == CHAR_NONBREAKING_SPACE){
-					Export(HTML_NONBREAKING_SPACE);
-				}
-				else{
-					Export("%c", c); // fputc(c, exportfile);
-				}
+				ExportChar(c);
 				// DetailLog("%c", c);
 			}
 			else{
@@ -4385,12 +4415,7 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 		}// switch(c)
 		if(!isbuff){
 			if((_global_skip_in_prayer != ANO) && (_global_skip_in_prayer_2 != ANO) && (_global_skip_in_prayer_vnpc != ANO)){
-				if(c == CHAR_NONBREAKING_SPACE){
-					Export(HTML_NONBREAKING_SPACE);
-				}
-				else{
-					Export("%c", c); // fputc(c, exportfile);
-				}
+				ExportChar(c);
 			}// !_global_skip_in_prayer && !_global_skip_in_prayer_2
 		}// if(!isbuff)
 		else{
@@ -5931,8 +5956,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	}
 
 	if((farba == COLOR_RED) && (typ != EXPORT_DNA_VIAC_DNI_TXT)){
-		// zmenene <font color> na <span>, 2003-07-02
-		strcat(_global_string, "<"HTML_SPAN_RED">");
+		strcat(_global_string, "<"HTML_SPAN_RED_TITLE">");
 	}
 	Log("4:_local_den.meno == %s\n", _local_den.meno);
 
@@ -6176,9 +6200,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			sprintf(pom, ", ");
 		}
 		strcat(_global_string, pom);
-		// zmenene <font color> na <span>, 2003-07-02
+
 		if(typ != EXPORT_DNA_VIAC_DNI_TXT){
-			sprintf(pom, "<"HTML_SPAN_RED">");
+			sprintf(pom, "<"HTML_SPAN_RED_TITLE">");
 		}
 		else{
 			mystrcpy(pom, STR_EMPTY, MAX_STR);
@@ -6211,9 +6235,10 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		strlen_popisok_kalendar = strlen(popisok_kalendar);
 		strlen_popisok_lokal = strlen(popisok_lokal);
 		if(strlen_popisok_kalendar + strlen_popisok_lokal > 0){
-			if((strlen_popisok_kalendar > 0) && (strlen_popisok_lokal > 0))
+			if((strlen_popisok_kalendar > 0) && (strlen_popisok_lokal > 0)){
 				strcat(popisok_kalendar, " | ");
-			sprintf(pom, "\n"HTML_LINE_BREAK"<"HTML_SPAN_RED_SMALL">(%s%s)"HTML_SPAN_END"\n", popisok_kalendar, popisok_lokal);
+			}
+			sprintf(pom, "\n"HTML_LINE_BREAK"<"HTML_SPAN_RED_SUBTITLE">(%s%s)"HTML_SPAN_END"\n", popisok_kalendar, popisok_lokal);
 			Log("prid·vam lokaliz·ciu sl·venia resp. pozn·mku o lok·lnom kalend·ri: %s\n", pom);
 			strcat(_global_string, pom);
 		}
@@ -6560,6 +6585,9 @@ void xml_export_options(void){
 							break;
 						case 7: // BIT_OPT_0_BUTTONS_ORDER
 							Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_BUTTONS_ORDER)"%d"ELEM_END(XML_BIT_OPT_0_BUTTONS_ORDER)"\n", BIT_OPT_0_BUTTONS_ORDER, STR_MODL_OPTF_0_BUTTONS_ORDER, html_text_option0_buttons_order[_global_jazyk], ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BUTTONS_ORDER) == BIT_OPT_0_BUTTONS_ORDER));
+							break;
+						case 8: // BIT_OPT_0_BLIND_FRIENDLY
+							Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_BLIND_FRIENDLY)"%d"ELEM_END(XML_BIT_OPT_0_BLIND_FRIENDLY)"\n", BIT_OPT_0_BLIND_FRIENDLY, STR_MODL_OPTF_0_BLIND_FRIENDLY, html_text_option0_blind_friendly[_global_jazyk], ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY) == BIT_OPT_0_BLIND_FRIENDLY));
 							break;
 					}// switch(j)
 				}// for j
@@ -9353,6 +9381,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		// pole (checkbox) WWW_/STR_MODL_OPTF_0_FONT_NORMAL
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL, STR_MODL_OPTF_0_FONT_NORMAL, html_text_option0_font_normal[_global_jazyk], html_text_option0_font_normal_explain[_global_jazyk]);
+
+		// pole (checkbox) WWW_/STR_MODL_OPTF_0_FONT_NORMAL
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY, STR_MODL_OPTF_0_BLIND_FRIENDLY, html_text_option0_blind_friendly[_global_jazyk], html_text_option0_blind_friendly_explain[_global_jazyk]);
 
 		// pole (checkbox) WWW_/STR_MODL_OPTF_0_BUTTONS_ORDER
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_BUTTONS_ORDER, STR_MODL_OPTF_0_BUTTONS_ORDER, html_text_option0_buttons_order[_global_jazyk], html_text_option0_buttons_order_explain[_global_jazyk]);
@@ -15090,6 +15121,7 @@ short int getForm(void){
 			case 5: strcat(local_str, STR_MODL_OPTF_0_TK_NED); break; // BIT_OPT_0_TELAKRVI_NEDELA
 			case 6: strcat(local_str, STR_MODL_OPTF_0_FONT_NORMAL); break; // BIT_OPT_0_FONT_NORMAL
 			case 7: strcat(local_str, STR_MODL_OPTF_0_BUTTONS_ORDER); break; // BIT_OPT_0_BUTTONS_ORDER
+			case 8: strcat(local_str, STR_MODL_OPTF_0_BLIND_FRIENDLY); break; // BIT_OPT_0_BLIND_FRIENDLY
 		}// switch(i)
 		ptr = getenv(local_str);
 		if(ptr != NULL){
@@ -15937,6 +15969,7 @@ short int parseQueryString(void){
 			case 5: strcat(local_str, STR_MODL_OPTF_0_TK_NED); break; // BIT_OPT_0_TELAKRVI_NEDELA
 			case 6: strcat(local_str, STR_MODL_OPTF_0_FONT_NORMAL); break; // BIT_OPT_0_FONT_NORMAL
 			case 7: strcat(local_str, STR_MODL_OPTF_0_BUTTONS_ORDER); break; // BIT_OPT_0_BUTTONS_ORDER
+			case 8: strcat(local_str, STR_MODL_OPTF_0_BLIND_FRIENDLY); break; // BIT_OPT_0_BLIND_FRIENDLY
 		}// switch(j)
 		// premenn· WWW_MODL_OPTF_0_... (nepovinn·), j = 0 aû POCET_OPT_0_SPECIALNE
 		i = pocet; // backwards; param[0] by mal sÌce obsahovaù query type, ale radöej kontrolujeme aû po 0

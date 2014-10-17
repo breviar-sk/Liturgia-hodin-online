@@ -424,7 +424,12 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 
 // znak '_' pouûÌvame ako z·stupn˝ pre nezlomiteæn˙ medzeru (exportuje sa ako HTML_NONBREAKING_SPACE == "&nbsp;" definovanÈ v mydefs.h) 
 // 2011-05-02: pridanÈ; nevadÌ, ûe je duplicita s UNDERSCORE resp. CHAR_MODL_NEURCENA 
+// special characters in prayer texts (some of them to be removed for blind-friendly version)
 #define CHAR_NONBREAKING_SPACE '_'
+#define CHAR_SPACE             ' '
+#define CHAR_PRAYER_ASTERISK   '*'
+#define CHAR_PRAYER_CROSS      134 // '\x86' // '\u271D' // 'Ü' // NOTE: holds only for windows-1250 and windows-1251 encoding!
+#define CHAR_PRAYER_CROSS_ALT  '+'
 
 // include parameters (parametre v inkludovanych suboroch)
 #define INCLUDE_BEGIN   "BEGIN" // zaciatok
@@ -1324,7 +1329,7 @@ extern short int _global_opt[POCET_GLOBAL_OPT];
 // glob·lna premenn· -- pole -- obsahuj˙ca force options; pÙvodne to boli glob·lne premennÈ _global_optf 1..9 atÔ., obsahuj˙ pom_MODL_OPTF...
 extern short int _global_optf[POCET_GLOBAL_OPT];
 
-#define POCET_OPT_0_SPECIALNE               8 // jednotlivÈ komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               9 // jednotlivÈ komponenty option 0 -- bity pre force option 0
 extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: ˙prava v˝znamu (a interpret·cie) option 0 ==  OPT_0_SPECIALNE (zobraziù/nezobraziù "pridan˙ hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                     1
@@ -1335,6 +1340,7 @@ extern short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_TELAKRVI_NEDELA          32 // Ëi sa Najsv. Kristovho tela a krvi sl·vi v nedeæu (1) alebo nie (teda vo ötvrtok, 11.-ty deÚ po ZoslanÌ Ducha Sv.; hodnota 0 == default)
 #define BIT_OPT_0_FONT_NORMAL              64 // force font-weight: normal; // malo by byù v r·mci OPT_2_HTML_EXPORT, avöak t· uû je pln· (signed short int max. 32767)
 #define BIT_OPT_0_BUTTONS_ORDER           128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
+#define BIT_OPT_0_BLIND_FRIENDLY          256 // blind-friendly mode: 1 = use special CSS override to hide all red texts (rubrics)
 
 #define POCET_OPT_1_CASTI_MODLITBY         15 // jednotlivÈ komponenty option 1 -- bity pre force option 1
 extern short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
@@ -1439,7 +1445,7 @@ extern const char *nazov_css[POCET_CSS + 1];
 extern const char *skratka_css[POCET_CSS + 1];
 extern const char *nazov_css_invert_colors;
 extern const char *nazov_css_normal_font_weight;
-
+extern const char *nazov_css_blind_friendly;
 
 extern const char *charset_jazyka[POCET_JAZYKOV + 1];
 

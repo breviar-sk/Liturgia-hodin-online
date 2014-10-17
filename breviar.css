@@ -206,14 +206,14 @@ div.hymn, div.responsory, div.readings {
 	font-weight: normal; 
 }
 
-.hymn p.rubric { 
+.hymn p.rubric, .hymn p.rubric-always-display { 
 	color: #ff0000; 
 	font-size: 80%; 
 	font-weight: normal; 
 }
 
-.hymn p.rubric-first {
-	color: #ff0000;
+.hymn p.rubric-first, .hymn p.rubric-first-always-display {
+	color: #ff0000; 
 	font-size: 80%;
 	font-weight: normal;
 	padding-top: 1em;
@@ -377,7 +377,7 @@ div.biblereference {
 }
 
 /* apply to all elements, used for <span> (character style) and <div> (paragraph style), 2005-07-27 */
-.red { 
+.red, .redtitle { 
 	color: #ff0000; 
 }
 
@@ -396,7 +396,7 @@ div.biblereference {
 	color: #0066ff; 
 }
 
-.redsmall { 
+.redsmall, .redsubtitle { 
 	color: #ff0000; 
 	font-size: 80%; 
 }

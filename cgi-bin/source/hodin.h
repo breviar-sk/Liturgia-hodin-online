@@ -68,7 +68,7 @@ const char *ORDINARIUM[POCET_MODLITIEB + 1] =
 const char char_modlitby[POCET_MODLITIEB + 1] =
 {CHAR_MODL_INVITATORIUM, CHAR_MODL_POSV_CITANIE, CHAR_MODL_RANNE_CHVALY, 
  CHAR_MODL_CEZ_DEN_9, CHAR_MODL_CEZ_DEN_12, CHAR_MODL_CEZ_DEN_3,
- CHAR_MODL_VESPERY, CHAR_MODL_KOMPLETORIUM, 32 /* ' ' */,
+ CHAR_MODL_VESPERY, CHAR_MODL_KOMPLETORIUM, CHAR_SPACE,
  CHAR_MODL_PRVE_VESPERY, CHAR_MODL_PRVE_KOMPLETORIUM, 
  CHAR_MODL_VESPERY, CHAR_MODL_KOMPLETORIUM, CHAR_MODL_NEURCENA, CHAR_MODL_VSETKY};
 
@@ -1018,11 +1018,14 @@ const char *skratka_css[POCET_CSS + 1] =
 const short int default_css_jazyk[POCET_JAZYKOV + 1] =
 {CSS_breviar_sk, CSS_ebreviar_cz, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_ebreviar_cz, CSS_breviar_sk};
 
-// CSS obsahujuci invertovane farby
+// CSS obsahujuci invertovane farby | CSS for "night mode" (inverted colors) - includes ONLY ammendment to base css (breviar.css)
 const char *nazov_css_invert_colors = "breviar-invert-colors.css";
 
-// CSS obsahujuci force normal font weight
+// CSS obsahujuci force normal font weight | CSS for "no-bold mode" (only normal font) - includes ONLY ammendment to base css (breviar.css)
 const char *nazov_css_normal_font_weight = "breviar-normal-font.css";
+
+// blind-friendly CSS | includes ONLY ammendment to base css (breviar.css)
+const char *nazov_css_blind_friendly = "breviar-blind-friendly.css";
 
 // language charset (encoding); used for HTML heading
 const char *charset_jazyka[POCET_JAZYKOV + 1] =
@@ -1764,6 +1767,26 @@ const char *html_text_option0_buttons_order[POCET_JAZYKOV + 1] =
 
 const char *html_text_option0_buttons_order_explain[POCET_JAZYKOV + 1] = 
 {"Liturgia hodÌn pouûÌva tuËnÈ pÌsmo pre texty, ktorÈ sa priamo ËÌtaj˙, a tieû aj pre niektorÈ medzinadpisy. T·to voæba potlaËÌ pouûitie tuËnÈho pÌsma.", 
+ "", 
+ "", 
+ "",
+ "", 
+ "", 
+ ""
+};
+
+const char *html_text_option0_blind_friendly[POCET_JAZYKOV + 1] = 
+{"zobraziù iba text modlitieb (pre nevidiacich a slabozrak˝ch) bez rubrÌk",
+ "zobrazit jenom text modliteb (pro slepÈ a slabozrakÈ) bez rubrik",
+ "blind-friendly text (without rubrics)",
+ "",
+ "",
+ "zobrazit jenom text modliteb (pro slepÈ a slabozrakÈ) bez rubrik",
+ "hu_blind-friendly"
+};
+
+const char *html_text_option0_blind_friendly_explain[POCET_JAZYKOV + 1] = 
+{"Vo v˝slednej modlitbe bude zobrazen˝ len ten text, ktor˝ sa ËÌta; nebud˙ zobrazenÈ ûiadne rubriky alebo n·zvy ËastÌ modlitieb. Toto je vhodnÈ pre hlasov˝ v˝stup napr. pre nevidiacich a slabozrak˝ch.", 
  "", 
  "", 
  "",
@@ -2760,13 +2783,13 @@ const char *html_text_detaily_explain[POCET_JAZYKOV + 1] =
 
 // 2010-06-04: text pre popis do invitatÛria
 const char *html_text_inv_slavaotcu[POCET_JAZYKOV + 1] = 
-{"<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sl·va Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÛna."HTML_SPAN_END, 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">N·sleduje"HTML_SPAN_END" <span class=\"small\">Sl·va Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Follows"HTML_SPAN_END" <span class=\"small\">Glory..."HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÛna."HTML_SPAN_END, 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Gloria Patri"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÛna."HTML_SPAN_END, 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sl·va Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÛna."HTML_SPAN_END, 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">N·sleduje"HTML_SPAN_END" <span class=\"small\">Sl·va Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
- "<p>&nbsp;&nbsp;&nbsp; <"HTML_SPAN_RED_SMALL">Kˆvetkezik a"HTML_SPAN_END" <span class=\"small\">DicsısÈg az Aty·nak"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">Ès megismÈtelj¸k az antifÛn·t."HTML_SPAN_END, 
+{"<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sl·va Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÛna."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">N·sleduje"HTML_SPAN_END" <span class=\"small\">Sl·va Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">Follows"HTML_SPAN_END" <span class=\"small\">Glory..."HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÛna."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Gloria Patri"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÛna."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sl·va Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÛna."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">N·sleduje"HTML_SPAN_END" <span class=\"small\">Sl·va Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">Kˆvetkezik a"HTML_SPAN_END" <span class=\"small\">DicsısÈg az Aty·nak"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">Ès megismÈtelj¸k az antifÛn·t."HTML_SPAN_END, 
 };
 
 // 2013-02-22: page navigation (top, bottom)

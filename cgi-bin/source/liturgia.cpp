@@ -560,7 +560,7 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 			}// switch(i)
 			sprintf(pom3, HTML_AMPERSAND"%s=%d", local_str, (force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE)? _global_opt[i]: _global_optf[i]);
 			strcat(pom2, pom3);
-			Log("\tPrilepil som aj opt%c %d: `%s'\n", (force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE)? ' ': 'f', i, pom3);
+			Log("\tPrilepil som aj opt%c %d: `%s'\n", (force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE)? CHAR_SPACE: 'f', i, pom3);
 		}
 	}// for i
 

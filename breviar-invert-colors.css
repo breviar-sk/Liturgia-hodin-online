@@ -27,6 +27,14 @@
 	color: #FF3333; 
 }
 
+.hymn p.rubric, .hymn p.rubric-always-display { 
+	color: #FF3333; 
+}
+
+.hymn p.rubric-first, .hymn p.rubric-first-always-display {
+	color: #FF3333; 
+}
+
 .psalm p.last:after { 
 	color: #FF3333; 
 }
@@ -57,7 +65,7 @@ p.last:after {
 }
 
 /* override color settings for "night-mode" (inverted colors) */
-.red { 
+.red, .redtitle { 
 	color: #FF3333; 
 }
 
@@ -69,7 +77,7 @@ p.last:after {
 	color: #FF3333; 
 }
 
-.redsmall { 
+.redsmall, .redsubtitle { 
 	color: #FF3333; 
 }
 

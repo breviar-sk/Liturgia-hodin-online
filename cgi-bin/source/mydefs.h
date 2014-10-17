@@ -551,11 +551,19 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #endif
 
 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
-#define MODL_OPTF_0_BUTTONS_ORDER
+#define MODL_OPTF_0_BUTTONS_ORDER 68
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_0_BUTTONS_ORDER "MODL_OPTF_0_BUTTONS_ORDER"
 #else
 	#define STR_MODL_OPTF_0_BUTTONS_ORDER "of0bo"
+#endif
+
+// blind-friendly mode
+#define MODL_OPTF_0_BLIND_FRIENDLY 69
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_0_BLIND_FRIENDLY "MODL_OPTF_0_BLIND_FRIENDLY"
+#else
+	#define STR_MODL_OPTF_0_BLIND_FRIENDLY "of0bf"
 #endif
 
 // pre force option 1 jednotlivé bit-komponenty (parciálne vo¾by)
@@ -987,26 +995,30 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 #define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE))
 
-#define HTML_DIV_RED_SMALL  "div class=\"redsmall\""
-#define HTML_DIV_END  "</div>"
+#define HTML_DIV_END             "</div>"
 
-#define HTML_SPAN_END "</span>"
+#define HTML_DIV_RED_SMALL       "div class=\"redsmall\""
+#define HTML_DIV_RED_SUBTITLE    "div class=\"redsubtitle\""
 
-#define HTML_SPAN_NORMAL    "span class=\"normal\""
-#define HTML_SPAN_ITALIC    "span class=\"it\""
-#define HTML_SPAN_BOLD      "span class=\"bold\""
-#define HTML_SPAN_BOLD_IT   "span class=\"boldit\""
-#define HTML_SPAN_RED       "span class=\"red\""
-#define HTML_SPAN_RED_BOLD  "span class=\"redbold\""
-#define HTML_SPAN_BLUE      "span class=\"blue\""
-#define HTML_SPAN_BLUE_BOLD "span class=\"bluebold\""
-#define HTML_SPAN_RED_SMALL "span class=\"redsmall\""
-#define HTML_SPAN_SMALL     "span class=\"small\""
-#define HTML_SPAN_EXPLAIN   "span class=\"explain\""
-#define HTML_SPAN_PARAMETER "span class=\"parameter\""
-#define HTML_SPAN_VALUE     "span class=\"value\""
-#define HTML_SPAN_SMALLCAPS "span class=\"smallcaps\""
-#define HTML_SPAN_XS_CAPS   "span class=\"xsmallcaps\""
+#define HTML_SPAN_END            "</span>"
+
+#define HTML_SPAN_NORMAL         "span class=\"normal\""
+#define HTML_SPAN_ITALIC         "span class=\"it\""
+#define HTML_SPAN_BOLD           "span class=\"bold\""
+#define HTML_SPAN_BOLD_IT        "span class=\"boldit\""
+#define HTML_SPAN_RED_TITLE      "span class=\"redtitle\""
+#define HTML_SPAN_RED            "span class=\"red\""
+#define HTML_SPAN_RED_BOLD       "span class=\"redbold\""
+#define HTML_SPAN_BLUE           "span class=\"blue\""
+#define HTML_SPAN_BLUE_BOLD      "span class=\"bluebold\""
+#define HTML_SPAN_RED_SMALL      "span class=\"redsmall\""
+#define HTML_SPAN_RED_SUBTITLE   "span class=\"redsubtitle\""
+#define HTML_SPAN_SMALL          "span class=\"small\""
+#define HTML_SPAN_EXPLAIN        "span class=\"explain\""
+#define HTML_SPAN_PARAMETER      "span class=\"parameter\""
+#define HTML_SPAN_VALUE          "span class=\"value\""
+#define HTML_SPAN_SMALLCAPS      "span class=\"smallcaps\""
+#define HTML_SPAN_XS_CAPS        "span class=\"xsmallcaps\""
 
 #define HTML_CLASS_CALENDAR "class=\"calendar\""
 #define HTML_CALENDAR_HEADING "span class=\"calendar heading\""
@@ -1155,6 +1167,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_BIT_OPT_0_TELAKRVI_NEDELA           "BitOpt0CorpusChristiOnSunday"
 #define XML_BIT_OPT_0_FONT_NORMAL               "BitOpt0ForceNormalFontWeight"
 #define XML_BIT_OPT_0_BUTTONS_ORDER             "BitOpt0ButtonsOrder"
+#define XML_BIT_OPT_0_BLIND_FRIENDLY            "BitOpt0BlindFriendly"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"

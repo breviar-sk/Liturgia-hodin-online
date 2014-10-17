@@ -131,7 +131,7 @@ void readConfig(void)
 #ifdef LOG_READCONFIG
 			Log("znak == `%c'\n", znak);
 #endif
-			if(znak == ' ') // v prípade medzery preskoè, èítaj ïalej
+			if(znak == CHAR_SPACE) // v prípade medzery preskoè, èítaj ïalej
 				// aby tu mohlo by znak = fgetc(subor); je potrebné, aby sme skontrolovali, èi nie sme na konci
 				i--;
 			else{
@@ -164,7 +164,7 @@ void readConfig(void)
 #ifdef LOG_READCONFIG
 			Log("znak == `%c'\n", znak);
 #endif
-			if(znak == ' ') // v prípade medzery preskoè, èítaj ïalej
+			if(znak == CHAR_SPACE) // v prípade medzery preskoè, èítaj ïalej
 				// aby tu mohlo by znak = fgetc(subor); je potrebné, aby sme skontrolovali, èi nie sme na konci
 				i--;
 			else{

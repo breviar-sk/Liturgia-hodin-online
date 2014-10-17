@@ -268,7 +268,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Log("element <head>...\n");
 	Export_to_file(expt, (char *)html_header_1, charset_jazyka[_global_jazyk]);
 
-	// CSS (1 resp. 2)
+	// CSS (one or more)
 	if(_global_css != CSS_breviar_sk){
 		_header_css(expt, level, nazov_css[CSS_breviar_sk]);
 	}
@@ -280,6 +280,10 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	// CSS override normal font (no bold)
     if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_FONT_NORMAL) == BIT_OPT_0_FONT_NORMAL) {
         _header_css(expt, level, nazov_css_normal_font_weight);
+    }
+	// blind-friendly CSS (no red text)
+    if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY) == BIT_OPT_0_BLIND_FRIENDLY) {
+        _header_css(expt, level, nazov_css_blind_friendly);
     }
 
 	Export_to_file(expt, "\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=yes, initial-scale=1.0\" />\n");
