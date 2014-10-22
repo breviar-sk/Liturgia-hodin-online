@@ -62,7 +62,7 @@ extern short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydef
 
 extern void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short int den_zoznam = ANO, short int zobrazit_mcd = ANO);
 extern void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_tabulke, char pom2[MAX_STR], short int zobraz_odkaz_na_skrytie);
-extern void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes = ANO);
+extern void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes = ANO, short int aj_navigacia = ANO);
 extern void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes = ANO);
 extern void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes = ANO);
 extern void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dnes = ANO);

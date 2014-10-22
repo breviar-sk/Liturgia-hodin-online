@@ -80,6 +80,7 @@
 #define FALSE 0
 #define ANO   1
 #define NIE   0
+#define CIASTOCNE 2
 
 #define MAX_GLOBAL_STR		2048 // _global_string; 31/03/2000A.D.; 2010-12-07: rozšírené; 2011-01-31: rozšírené kvôli text_JAN_31_SDB[]; 2011-02-02: rozšírené kvôli text_FEB_04_SJ[];
 #define MAX_GLOBAL_STR2		200 // _global_string2, pridané 2006-08-19
