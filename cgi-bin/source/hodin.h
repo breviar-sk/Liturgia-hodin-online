@@ -1782,7 +1782,7 @@ const char *html_text_option0_blind_friendly[POCET_JAZYKOV + 1] =
  "",
  "",
  "zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik",
- "hu_blind-friendly"
+ "megmutatni csak az imaszövegeket (vakok és gyengénlátók részére) rubrikák nélkül"
 };
 
 const char *html_text_option0_blind_friendly_explain[POCET_JAZYKOV + 1] = 
