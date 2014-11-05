@@ -2194,7 +2194,9 @@ void _set_kompletorium_slavnost(short int modlitba){
 	//	- "ktore" -		urËuje, Ëi ide o kompletÛrium po prv˝ch veöper·ch sl·vnosti (1) alebo po druh˝ch veöper·ch (2) 
 	//  2008-05-08: prerobenÈ, aby vstupom bol parameter "modlitba" (nie ako doteraz, "short int ktore (1, 2)")
 	Log("_set_kompletorium_slavnost(%d - %s) -- begin\n", modlitba, nazov_modlitby(modlitba));
-	if((_global_den.denvt == DEN_NEDELA) || (_global_den.denvt == DEN_SOBOTA)){ // ak padne sl·vnosù resp. sviatok P·na na sobotu, vtedy je tieû nedeænÈ kompletÛrium (po druh˝ch veöper·ch)
+
+	// ak padne sl·vnosù resp. sviatok P·na na sobotu, vtedy je tieû nedeænÈ kompletÛrium (po druh˝ch veöper·ch) -- ??? neplatÌ pre Vöetk˝ch sv‰t˝ch, 2014
+	if(_global_den.denvt == DEN_NEDELA){
 		// 2008-12-20: ak sl·vnosù padne na nedeæu, berie sa nedeænÈ kompletÛrium
 		Log("=> ak sl·vnosù padne na nedeæu, berie sa nedeænÈ kompletÛrium\n");
 		_set_kompletorium_nedela(modlitba);
@@ -30060,7 +30062,7 @@ label_25_MAR:
 						if(((poradie_svaty == UNKNOWN_PORADIE_SVATEHO)  || (poradie_svaty == 1)) && (_global_jazyk == JAZYK_HU)){
 							// definovanie parametrov pre modlitbu
 							sc = _decode_spol_cast(_global_svaty1.spolcast);
-							Log("08OKT | HU: Sz˚z M·ria, Magyarok nagyaszszonya, Magyarorsz·g fıp·tron·ja: sc: {%s, %s, %s}, svaty == %d\n\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3), poradie_svaty);
+							Log("08OKT | HU: Sz˚z M·ria, Magyarok Nagyasszonya, Magyarorsz·g fıp·tron·ja: sc: {%s, %s, %s}, svaty == %d\n\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3), poradie_svaty);
 
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);

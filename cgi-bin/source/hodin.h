@@ -1029,7 +1029,7 @@ const char *nazov_css_blind_friendly = "breviar-blind-friendly.css";
 
 // language charset (encoding); used for HTML heading
 const char *charset_jazyka[POCET_JAZYKOV + 1] =
-{"windows-1250", "windows-1250", "windows-1251", "windows-1251", "utf-8", "windows-1250", "windows-1250"};
+{"windows-1250", "windows-1250", "windows-1250", "windows-1250", "utf-8", "windows-1250", "windows-1250"};
 
 const char *skratka_static_text[POCET_STATIC_TEXTOV + 1] = 
 {"", "ma", "ord"};
@@ -7432,7 +7432,7 @@ const char *text_OKT_08_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Szûz Mária, Magyarok nagyaszszonya, Magyarország fõpátronája",
+ "Szûz Mária, Magyarok Nagyasszonya, Magyarország fõpátronája",
  };
 const char *text_OKT_08_1_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Ambróza Sansedoniho, kòaza",

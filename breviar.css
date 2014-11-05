@@ -381,6 +381,19 @@ div.biblereference {
 	color: #ff0000; 
 }
 
+.rubric, .rubric-always-display { 
+	color: #ff0000; 
+	font-size: 80%; 
+	font-weight: normal; 
+}
+
+.rubric-first, .rubric-first-always-display {
+	color: #ff0000; 
+	font-size: 80%;
+	font-weight: normal;
+	padding-top: 1em;
+}
+
 .rednormal { 
 	color: #ff0000; 
 	font-style: normal; 

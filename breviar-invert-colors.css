@@ -69,6 +69,14 @@ p.last:after {
 	color: #FF3333; 
 }
 
+.rubric, .rubric-always-display { 
+	color: #FF3333; 
+}
+
+.rubric-first, .rubric-first-always-display {
+	color: #FF3333; 
+}
+
 .rednormal { 
 	color: #FF3333; 
 }
