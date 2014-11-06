@@ -1,3 +1,8 @@
+- +- zrusit
+- listovanie malou sipkou
+- long click - optionally allow copy and paste
+
+
 - text to speech
 - nocne css v statickych strankach (marianske antifony)
 - CZ: broken "Usporadani denni modlitby cirkve"
@@ -5,7 +10,6 @@
 - check notifications (2.3.6, sometimes do not fire)
 
 - switch nocny rezim priamo v menu
-- +- zrusit
 
 
 ----------
