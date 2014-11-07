@@ -109,6 +109,14 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+
+<p><b>Újdonságok az 1.10-es verzióban:</b>
+<ul>
+<li> Setting for displaying text of prayer in blind-friendly mode (only prayer text, without headings & rubrics) suitable for text-to-speech output.
+<li> New option in main screen: Ordinarium.
+<li> Fix of night-mode for Mary antiphones (compline).
+</ul>
+
 <p><b>Újdonságok az 1.9.10-es verzióban:</b>
 <ul>
 <li> Új beállítási lehetőség: automatikus csendes módba kapcsolás imádság közben.
@@ -132,34 +140,6 @@ body { background-color: #000000; color: #cccccc; }
 <li> Sok apró javítás.
 </ul>
 
-<p><b>Újdonságok az 1.9.7-es verzióban:</b>
-<ul>
-<li> Javított kompatibilitás Android 2.1 és újabb rendszereken.
-</ul>
-
-<p><b>Újdonságok az 1.9.6-os verzióban:</b>
-<ul>
-<li> Különböző javítások.
-</ul>
-
-<p><b>Újdonságok az 1.9.5-ös verzióban:</b>
-<ul>
-<li> Új ikon.
-<li> Névjegy az alkalmazásról.
-</ul>
-
-<p><b>Újdonságok az 1.9.4-es verzióban:</b>
-<ul>
-<li> Új beállítás: normál (nem félkövér) betűk alkalmazása.
-<li> Javítások az Android 4.4 Kit-Kat részére.
-</ul>
-
-<p><b>Újdonságok az 1.9.3-as verzióban:</b>
-<ul>
-<li> Zsoltárok jobb tördelése.
-<li> Gépelési hibák javítása.
-<li> Frissítések a honlapról.
-</ul>
 </body></html>
     ]]></string>
 

@@ -4,29 +4,7 @@
 /* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk                      */
 /*                                                                      */
 /* description | obsahuje vypis hlavicky a patky HTML dokumentu         */
-/* document history                                                     */
-/*   28/10/1999A.D. | created                                           */
-/*   25/02/2000A.D. | zrusena funkcia linky()                           */
-/*   12/04/2000A.D. | pridana stranka cfg_HTTP_ADDRESS_default          */
-/*   06/09/2001A.D. | tento popis                                       */
-/*   2003-06-30a.D. | pridane vypisovanie BUILD_DATE (mybase.h)         */
-/*                  - tiez zapoznamkovane Kodovanie w-1250.             */
-/*   2003-07-01a.D. | citanie hlavicky zo suboru                        */
-/*   2003-07-02a.D. | trosku zmenena patka                              */
-/*   2003-07-15a.D. | trosku zmenena hlavicka (ako _header.htm)         */
-/*   2004-03-16a.D. | funkcie hlavicka a patka aj do suboru             */
-/*   2006-07-31a.D. | prvÈ kroky k jazykov˝m mut·ci·m                   */
-/*   2008-01-23a.D. | upravenÈ funkcie patka()                          */
-/*   2008-08-08a.D. | upravenÈ funkcie hlavicka() kvÙli css             */
-/*   2008-09-26a.D. | pridanÈ pouûitie nazov_mesiaca()                  */
-/*   2008-12-22a.D. | upravenÈ exportovanie p‰tky (Ëas)                 */
-/*   2009-08-05a.D. | upravenÈ exportovanie hlaviËky                    */
-/*   2010-02-15a.D. | upravenÈ hlaviËky aj p‰tky (navig·cia)            */
-/*   2011-05-13a.D. | doplnen· aj veækosù fontu                         */
-/*   2011-05-18a.D. | doplnenÈ pouûitie charset_jazyka[]                */
-/*   2011-05-18a.D. | upraven· a zjednoten· hlaviËka a p‰tka,           */
-/*                    _hlavicka() a _patka() pouûÌvaj˙ Export_to_file() */
-/*                                                                      */
+/*               HTML document generated header and footer              */
 /*                                                                      */
 /************************************************************************/
 
@@ -61,7 +39,7 @@ const char *html_header_1 =
 //    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n"
 	"<!DOCTYPE html>\n"
 #endif
-    "<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj VidÈky\">\n";
+    "<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj Videky\">\n";
 const char *html_header_css = "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
 const char *html_footer_1 = STR_EMPTY; // "<p><center>______</center>"; // "<hr>";
 
@@ -261,12 +239,11 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		bol_content_type_text_html = ANO;
 	}
 	Log("creating header...\n");
-	// 2003-07-15, zmenene na hlavicku pre css-ko; zrusene <style>
 	// 2008-08-08: pridanÈ dynamicky css-ko
 	// 2010-02-15: statickÈ texty do konöt·nt
 	// 2011-05-18: charset sa nastavÌ podæa jazyka
 	Log("element <head>...\n");
-	Export_to_file(expt, (char *)html_header_1, charset_jazyka[_global_jazyk]);
+	Export_to_file(expt, (char *)html_header_1, nazov_charset[charset_jazyka[_global_jazyk]]);
 
 	// CSS (one or more)
 	if(_global_css != CSS_breviar_sk){
@@ -346,7 +323,7 @@ void _xml_hlavicka(FILE * expt){
 #endif
 		bol_content_type_text_xml = ANO;
 	}
-	Export_to_file(expt, (char *)xml_header, charset_jazyka[_global_jazyk]);
+	Export_to_file(expt, (char *)xml_header, nazov_charset[charset_jazyka[_global_jazyk]]);
 	Export_to_file(expt, ELEM_BEGIN(XML_MAIN)"\n");
 	Log("_xml_hlavicka() -- koniec.\n");
 	return;
@@ -368,7 +345,7 @@ const char *build_template[POCET_JAZYKOV + 1] = {"<!--Verzia: %s -->", "<!--Verz
 // GenerovanÈ + d·tum (bez Ëasu - pre batch mÛd, aby sa æahko porovn·vali vygenerovanÈ modlitby): "%d. %s %d"
 const char *datum_template[POCET_JAZYKOV + 1] = {"%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d"};
 
-const char *html_mail_label_long = "Juraj VidÈky";
+const char *html_mail_label_long = "Juraj Vid&#233;ky";
 const char *html_mail_label_short = "J. V.";
 
 #define ROK 5

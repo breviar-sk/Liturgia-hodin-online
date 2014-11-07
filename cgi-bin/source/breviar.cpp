@@ -4187,7 +4187,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 #ifndef BEHAVIOUR_WEB
 			_struct_anchor_and_file af;
 			init_marianske_anfifony_file(af);
-			mystrcpy(path, af.file);
+			mystrcpy(path, af.file, SMALL);
 #else
 			init_url_marianske_antifony(path);
 #endif

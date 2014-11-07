@@ -110,17 +110,25 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p><b>Nové ve verzi v1.9.10:</b>
+
+<p><b>Nové ve verzi 1.10:</b>
+<ul>
+<li> Možnost zobrazit modlitby v režimu pro nevidomé a slabozraké (text modliteb bez nadpisů a rubrik), vhodné pro hlasový výstup.
+<li> Nová možnost na úvodní obrazovce: Ordinárium (Uspořádání).
+<li> Oprava mariánských antifon (kompletář/modlitba před spaním) pro noční režim.
+</ul>
+
+<p><b>Nové ve verzi 1.9.10:</b>
 <ul>
 <li> Možnost automatického přepnutí zařízení do tichého režimu počas modlitby.
 </ul>
 
-<p><b>Nové ve verzi v1.9.9:</b>
+<p><b>Nové ve verzi 1.9.9:</b>
 <ul>
 <li> Drobné opravy chyb v generování modliteb a překlepů v textech.
 </ul>
 
-<p><b>Nové ve verzi v1.9.8:</b>
+<p><b>Nové ve verzi 1.9.8:</b>
 <ul>
 <li> CSS změny: Zalamování žalmů a kantik přepracováno.
 <li> Doplněno číslování veršů žalmů a kantik.
@@ -128,38 +136,6 @@ body { background-color: #000000; color: #cccccc; }
 <li> Přidaná možnost nezhasínat obrazovku.
 </ul>
 
-<p><b>Nové ve verzi v1.9.7:</b>
-<ul>
-<li> Opravená kompatibilita s Android 2.1 a starším.
-</ul>
-
-<p><b>Nové ve verzi v1.9.6:</b>
-<ul>
-<li> Vlastní kapucínské texty
-<li> Opravy chyb
-</ul>
-
-<p><b>Nové ve verzi v1.9.5:</b>
-<ul>
-<li> Informace o aplikaci, rozšíření menu
-<li> Nová ikona
-</ul>
-
-<p><b>Nové ve verzi v1.9.4:</b>
-<ul>
-<li> Nové nastavení: použít jen obyčejné písmo (ne tučné)
-<li> Opravy pro Android 4.4 Kit-Kat
-</ul>
-
-<p><b>Nové ve verzi v1.9.3:</b>
-<ul>
-<li> CSS změny: formátovaní proseb, kalendář
-</ul>
-
-<p><b>Nové ve verzi v1.9.0:</b>
-<ul>
-<li> Vlastní texty pro premonstrátský řád
-</ul>
 </body></html>
     ]]></string>
 

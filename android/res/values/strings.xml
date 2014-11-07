@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.9.10</string>
+    <string name="version">v1.10</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -107,6 +107,14 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+
+<p><b>News in v1.10:</b>
+<ul>
+<li> Setting for displaying text of prayer in blind-friendly mode (only prayer text, without headings & rubrics) suitable for text-to-speech output.
+<li> New option in main screen: Ordinarium.
+<li> Fix of night-mode for Mary antiphones (compline).
+</ul>
+
 <p><b>News in v1.9.10:</b>
 <ul>
 <li> Setting for automatic turning on silent mode when praying.
@@ -128,35 +136,6 @@ body { background-color: #000000; color: #cccccc; }
 <li> HU: Plenty of small fixes.
 </ul>
 
-<p><b>News in v1.9.7:</b>
-<ul>
-<li> Fixed compatibility issues with Android 2.1 and older.
-</ul>
-
-<p><b>News in v1.9.6:</b>
-<ul>
-<li> Various fixes
-<li> SK: complete texts for OFM, OFMCap & OFMConv.
-<li> CZ: texts for OFMCap.
-</ul>
-
-<p><b>News in v1.9.5:</b>
-<ul>
-<li> Liturgical readings (SK only)
-<li> About info, new menu items
-<li> New icon
-</ul>
-
-<p><b>News in v1.9.4:</b>
-<ul>
-<li> New option: use normal font only (no bold)
-<li> Fixes for Android 4.4 Kit-Kat
-</ul>
-
-<p><b>News in v1.9.3:</b>
-<ul>
-<li> CSS changes
-</ul>
 </body></html>
     ]]></string>
 

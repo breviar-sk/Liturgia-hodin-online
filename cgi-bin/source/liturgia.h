@@ -4,67 +4,7 @@
 /* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
 /*                                                             */
 /* description | obsahuje zakladne vecicky pre liturgiu hodin  */
-/* document history                                            */
-/*   01/11/1999A.D. | created                                  */
-/*   01/02/2000A.D. | modified                                 */
-/*   18/02/2000A.D. | trosku prekopane | stringove kontanty su */
-/*                    tu iba deklarovane; definovane v hodin.h */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2003-07-02a.D. | pridana LINK_DEN_MESIAC_ROK_PRESTUP      */
-/*                    kvoli prestupnym rokom (iny _global_link)*/
-/*   2003-07-15a.D. | rozne definicie pre modlitbu cez den     */
-/*   2003-07-15a.D. | odstraneny #include "mybase.h"           */
-/*   2003-08-06a.D. | rozne definicie pre posvatne citanie     */
-/*   2003-08-07a.D. | pridana void _init_dm co nastavi dummy   */
-/*   2003-08-11a.D. | -Wall upozornila na / * within comments  */
-/*   2003-08-11a.D. | void _init_dm zapoznamkovana             */
-/*   2003-08-13a.D. | pridane logy pre modlitbu cez den        */
-/*                  - pridane MODL_CEZ_DEN_VSETKY              */
-/*   2003-08-21a.D. | definicie pre posvatne citania           */
-/*   2003-11-20a.D. | definicie pre posvatne citania zmenene   */
-/*   2004-04-28a.D. | MAX_STR_AF_FILE zmenene na 16            */
-/*   2004-08-14a.D. | char zmeneny na unsigned (_nedelne_p...) */
-/*   2005-03-27a.D. | CHAR_MODL_* z funkcie pismenko_modlitby  */
-/*   2005-07-27a.D. | pridanÈ nazov_slavenia_lokal[]           */
-/*   2005-08-05a.D. | pridanÈ zvazok_OBD[]                     */
-/*   2005-11-11a.D. | DoplnenÈ parametre pre Te Deum           */
-/*   2006-02-07a.D. | ZALTAR_... pre funkciu zaltar_zvazok();  */
-/*   2006-07-11a.D. | prvÈ kroky k jazykov˝m mut·ci·m          */
-/*   2006-08-01a.D. | zmenenÈ definÌcie konöt·nt (jaz.mut·cie) */
-/*   2006-08-07a.D. | pridanÈ sv. muûov/ûien, Ëo ûili v manû.  */
-/*   2006-08-18a.D. | zmena int na short int (staËÌ 32tis.)    */
-/*   2006-08-19a.D. | pridanie liturgickej farby               */
-/*   2006-10-11a.D. | pre invitatÛrium a kompletÛrium          */
-/*   2006-10-13a.D. | jazykovo z·vislÈ je aj nazov_Modlitby    */
-/*   2006-12-12a.D. | doplnenie latinËiny (la)                 */
-/*   2007-06-01a.D. | niektorÈ definy presunutÈ do mydefs.h    */
-/*   2007-06-28a.D. | doplnenÈ: PARAM_TEDEUM_BEGIN aj _END     */
-/*   2007-10-02a.D. | doplnenÈ: PARAM_SKRY_ANTIFONU_BEGIN/END  */
-/*                  - tieû PARAM_ANTIFONA1x a PARAM_ANTIFONA3x */
-/*   2008-01-03a.D. | doplnenÈ text_DRUHA_NEDELA_PO_NAR_PANA[] */
-/*   2008-01-05a.D. | doplnenÈ text_PO_POPOLCOVEJ_STREDE[]     */
-/*                  - a tieû text_V_OKTAVE_NARODENIA[]         */
-/*   2008-01-23a.D. | opravenÈ pole konöt·nt zvazok_breviara[] */
-/*   2008-06-24a.D. | doplnenÈ LOKAL_SLAV_SPIS_BA_PATRON       */
-/*   2008-08-15a.D. | pridan˝ ÔalöÌ "jazyk" (cz-op)            */
-/*   2009-01-29a.D. | pridan˝ ÔalöÌ jazyk - maÔarËina (hu)     */
-/*   2009-04-08a.D. | zakonËenie modlitby trojakÈ (kr·tke/dlhÈ)*/
-/*   2009-05-15a.D. | pridanÈ text_PRO_OP[]                    */
-/*   2009-12-14a.D. | zakonËenie modlitby s mal˝m pÌsmenkom na zaËiatku */
-/*   2010-03-16a.D. | doplnenÈ LOKAL_SLAV_BRATISLAVA           */
-/*   2010-05-17a.D. | pridanÈ niektorÈ maÔarskÈ sl·venia       */
-/*   2010-05-21a.D. | doplnenÈ: PARAM_SPOMIENKA_PRIVILEG_BEGIN/END */
-/*   2010-08-03a.D. | do ötrukt˙ry "dm" pridan· premenn· pre   */
-/*                    öpecifik·ciu, o ak˝ kalend·r ide:        */
-/*                    vöeobecn˝ danej cirkevnej provincie      */
-/*                    alebo nejak˝ rehoæn˝ a pod.              */
-/*   2010-10-11a.D. | pridanÈ nazov_kalendara_long[]           */
-/*   2011-01-25a.D. | premenovanÈ niektorÈ HTML s˙bory         */
-/*   2011-04-13a.D. | reùazcovÈ funkcie equals() presunutÈ     */
-/*   2011-05-11a.D. | vytvorenÈ: _vytvor_string_z_datumu()     */
-/*   2011-10-07a.D. | vymenenÈ konötanty RCH <-> posv.ËÌt.     */
-/*   2013-01-29a.D. | option 5 pre alternatÌvy v textoch       */
-/*                                                             */
+/*               originally used for liturgical "basics"       */
 /*                                                             */
 /***************************************************************/
 
@@ -1058,6 +998,12 @@ extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
 #define ZALTAR_IBA_ZALMY_HYMNUS_MCD  2
 #define ZALTAR_ANT_ZALMY_HYMNUS_MCD  3
 
+// 2014-11-06: charset constants
+#define CHARSET_UTF_8               0
+#define CHARSET_WINDOWS_1250        1
+
+#define POCET_CHARSET               1
+
 // 2006-08-19: pridanÈ liturgickÈ farby
 #define LIT_FARBA_NEURCENA			0
 #define LIT_FARBA_CERVENA			1
@@ -1447,7 +1393,8 @@ extern const char *nazov_css_invert_colors;
 extern const char *nazov_css_normal_font_weight;
 extern const char *nazov_css_blind_friendly;
 
-extern const char *charset_jazyka[POCET_JAZYKOV + 1];
+extern const short int charset_jazyka[POCET_JAZYKOV + 1];
+extern const char *nazov_charset[POCET_CHARSET + 1];
 
 extern const char *nazov_fontu[POCET_FONTOV + 1];
 extern const char *nazov_fontu_CHECKBOX[POCET_JAZYKOV + 1];

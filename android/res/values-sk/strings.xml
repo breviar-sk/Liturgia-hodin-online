@@ -55,58 +55,33 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
-<p><b>Nové vo verzii v1.9.10:</b>
+
+<p><b>Nové vo verzii 1.10:</b>
+<ul>
+<li> Možnosť zobraziť modlitby v režime pre nevidiacich a slabozrakých (text modlitieb bez nadpisov a rubrík), vhodné pre hlasový výstup.
+<li> Nová možnosť na úvodnej obrazovke: Ordinárium.
+<li> Oprava mariánskych antifón (kompletórium) pre nočný režim.
+</ul>
+
+<p><b>Nové vo verzii 1.9.10:</b>
 <ul>
 <li> Možnosť vypnúť zvonenie počas modlitby (automatické prepnutie do tichého režimu).
 <li> Nové nastavenie: voľba hymnusu pre prvé vešpery Cezročného obdobia.
 </ul>
 
-<p><b>Nové vo verzii v1.9.9:</b>
+<p><b>Nové vo verzii 1.9.9:</b>
 <ul>
 <li> Formátovanie hymnusov (CSS).
 <li> Drobné opravy chýb v textoch a v generovaní modlitieb.
 </ul>
 
-<p><b>Nové vo verzii v1.9.8:</b>
+<p><b>Nové vo verzii 1.9.8:</b>
 <ul>
 <li> Dlhé stlačenie skryje navigačnú lištu.
 <li> Pridaná možnosť nezhasínať obrazovku.
 <li> Drobné opravy chýb v textoch a v generovaní modlitieb.
 </ul>
 
-<p><b>Nové vo verzii v1.9.7:</b>
-<ul>
-<li> Opravená kompatibilita s Android 2.1 a starším.
-</ul>
-
-<p><b>Nové vo verzii v1.9.6:</b>
-<ul>
-<li> Kompletné propriá pre františkánsku rodinu
-<li> Rozličné opravy chýb
-</ul>
-
-<p><b>Nové vo verzii v1.9.5:</b>
-<ul>
-<li> Liturgické čítania: úpravy a doplnenia
-<li> Informácie o aplikácii, rozšírenie menu
-<li> Nová ikona
-</ul>
-
-<p><b>Nové vo verzii v1.9.4:</b>
-<ul>
-<li> Nové nastavenie: použiť len obyčajné písmo (nie tučné)
-<li> Opravy pre Android 4.4 Kit-Kat
-</ul>
-
-<p><b>Nové vo verzii v1.9.3:</b>
-<ul>
-<li> CSS úpravy: formátovanie žalmov, chválospevov, prosieb; kalendár
-</ul>
-
-<p><b>Nové vo verzii v1.9.1:</b>
-<ul>
-<li> Texty LH sú publikované s vedomím KBS ako pracovná verzia.
-</ul>
 </body></html>
     ]]></string>
 
