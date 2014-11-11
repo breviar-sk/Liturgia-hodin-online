@@ -112,9 +112,9 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Újdonságok az 1.10-es verzióban:</b>
 <ul>
-<li> Setting for displaying text of prayer in blind-friendly mode (only prayer text, without headings & rubrics) suitable for text-to-speech output.
-<li> New option in main screen: Ordinarium.
-<li> Fix of night-mode for Mary antiphones (compline).
+<li> Az imák egyszerűsített megjelenítése látássérütek számára (csak az imák szövege, címek és rubrikák nélkül). Felolvasó gépek használhatják.
+<li> Új lehetőség a főoldalon: Általános rész.
+<li> A Mária antifónák éjszakai módjának javítása.
 </ul>
 
 <p><b>Újdonságok az 1.9.10-es verzióban:</b>
