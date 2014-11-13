@@ -1,14 +1,14 @@
 /***************************************************************/
 /*                                                             */
 /* vstudio.h                                                   */
-/* (c)2007 | Juraj Vidéky | videky@breviar.sk                  */
+/* (c)2007 | Juraj VidÃ©ky | videky@breviar.sk                  */
 /*                                                             */
-/* description | kvôli Visual Studio 2005 Express Edition      */
+/* description | kvÃ´li Visual Studio 2005 Express Edition      */
 /*               systeme program pracuje; ovplyvnuje tvorbu    */
 /*               linkov, DEBUG #define, veci pre loggovanie a  */
 /*               export                                        */
 /* document history                                            */
-/*   2007-02-14a.D. | vytvorený                                */
+/*   2007-02-14a.D. | vytvorenÃ½                                */
 /*                                                             */
 /***************************************************************/
 

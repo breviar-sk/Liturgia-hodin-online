@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* mydefs.h                                                    */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
 /* description | obsahuje zakladne define'y                    */
 /* document history                                            */
@@ -21,12 +21,12 @@
 /*   2004-08-14a.D. | zmena definicie ADD_WWW_PREFIX_          */
 /*   2005-03-28a.D. | zmena definicie UNCGI_PATH               */
 /*   2005-07-27a.D. | pridane HTML_SPAN_RED_SMALL              */
-/*   2006-07-11a.D. | prvÈ kroky k jazykov˝m mut·ci·m          */
-/*   2006-08-18a.D. | zmena int na short int (staËÌ 32tis.)    */
-/*   2008-11-29a.D. | pridanÈ rÙzne moûnosti batch exportu     */
-/*   2009-08-12a.D. | pridanÈ Ôalöie moûnosti batch exportu    */
-/*   2010-08-04a.D. | pridanÈ KALENDAR a STR_KALENDAR          */
-/*   2011-04-13a.D. | definovanÈ HTML_FORM_INPUT_TEXT_ROK      */
+/*   2006-07-11a.D. | prv√© kroky k jazykov√Ωm mut√°ci√°m          */
+/*   2006-08-18a.D. | zmena int na short int (staƒç√≠ 32tis.)    */
+/*   2008-11-29a.D. | pridan√© r√¥zne mo≈ænosti batch exportu     */
+/*   2009-08-12a.D. | pridan√© ƒèal≈°ie mo≈ænosti batch exportu    */
+/*   2010-08-04a.D. | pridan√© KALENDAR a STR_KALENDAR          */
+/*   2011-04-13a.D. | definovan√© HTML_FORM_INPUT_TEXT_ROK      */
 /*                                                             */
 /*                                                             */
 /***************************************************************/
@@ -50,7 +50,7 @@
 /***************************************************************/
 /*                                                             */
 /* mybase.h                                                    */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
 /* description | obsahuje zakladne vecicky                     */
 /* document history                                            */
@@ -60,7 +60,7 @@
 /*   2003-07-15a.D. | RUN_MODLITBA_CEZ_DEN definovane          */
 /*   2003-07-15a.D. | vlozeny do mydefs.h                      */
 /*   2003-08-13a.D. | odstranenie RUN_MODLITBA_CEZ_DEN         */
-/*   2011-07-11a.D. | BUILD_DATE presunut˝ do mybuild.h        */
+/*   2011-07-11a.D. | BUILD_DATE presunut√Ω do mybuild.h        */
 /*                                                             */
 /***************************************************************/
 #include <stdio.h>
@@ -82,15 +82,15 @@
 #define NIE   0
 #define CIASTOCNE 2
 
-#define MAX_GLOBAL_STR		2048 // _global_string; 31/03/2000A.D.; 2010-12-07: rozöÌrenÈ; 2011-01-31: rozöÌrenÈ kvÙli text_JAN_31_SDB[]; 2011-02-02: rozöÌrenÈ kvÙli text_FEB_04_SJ[];
-#define MAX_GLOBAL_STR2		200 // _global_string2, pridanÈ 2006-08-19
-#define MAX_GLOBAL_STR_FARBA 3500 // _global_string_farba, pridanÈ 2006-08-19; 2011-03-24: rozöÌrenÈ kvÙli dvojkombin·ci·m
+#define MAX_GLOBAL_STR		2048 // _global_string; 31/03/2000A.D.; 2010-12-07: roz≈°√≠ren√©; 2011-01-31: roz≈°√≠ren√© kv√¥li text_JAN_31_SDB[]; 2011-02-02: roz≈°√≠ren√© kv√¥li text_FEB_04_SJ[];
+#define MAX_GLOBAL_STR2		200 // _global_string2, pridan√© 2006-08-19
+#define MAX_GLOBAL_STR_FARBA 3500 // _global_string_farba, pridan√© 2006-08-19; 2011-03-24: roz≈°√≠ren√© kv√¥li dvojkombin√°ci√°m
 #define MAX_QUERY_STR		2000 // query_string
 #define MAX_POM_QUERY_TYPE	2000 // pom_QUERY_TYPE
 #define MAX_GLOBAL_LINK		2000 // maximalna dlzka retazca _global_link
-//#define MAX_ENV	100 // maximalna dlzka environmentalnej premennej | 2006-08-01: nepouûÌva sa
-#define MAX_VARIABLES		600 // maximalny pocet syst. premennych WWW_..., zvyseny 2003-08-07 a op‰tovne 2006-08-01 a op‰ù 2011-01-26 a zas 2011-04-11 a 2011-04-12 (na 50)
-#define MAX_GLOBAL_BUFFER	4000 // _global_buf, pridanÈ 2005-08-01
+//#define MAX_ENV	100 // maximalna dlzka environmentalnej premennej | 2006-08-01: nepou≈æ√≠va sa
+#define MAX_VARIABLES		600 // maximalny pocet syst. premennych WWW_..., zvyseny 2003-08-07 a op√§tovne 2006-08-01 a op√§≈• 2011-01-26 a zas 2011-04-11 a 2011-04-12 (na 50)
+#define MAX_GLOBAL_BUFFER	4000 // _global_buf, pridan√© 2005-08-01
 //***************************************************************
 //* EOF of former file mybase.h                                 *
 //***************************************************************
@@ -193,7 +193,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_PRM_DNES "pdnes"
 #endif
 
-#define PRM_LIT_OBD 	5    // podæa pÙvodnÈho PRM_CEZ_ROK
+#define PRM_LIT_OBD 	5    // podƒæa p√¥vodn√©ho PRM_CEZ_ROK
 #ifdef LONG_PARAM_NAMES
 	#define STR_PRM_CEZ_ROK "PRM_LIT_OBD"
 #else
@@ -280,7 +280,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_DALSI_SVATY "ds"
 #endif
 
-// nasleduj˙ parametre z formul·rov pre dotaz PRM_CEZ_ROK -- pouûÌva ich aj PRM_LIT_OBD
+// nasleduj√∫ parametre z formul√°rov pre dotaz PRM_CEZ_ROK -- pou≈æ√≠va ich aj PRM_LIT_OBD
 #define DEN_V_TYZDNI 6         // dotaz na konkretny den
 #ifdef LONG_PARAM_NAMES
 	#define STR_DEN_V_TYZDNI "DEN_V_TYZDNI"
@@ -311,7 +311,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_ANALYZA_ROKU "ar"
 #endif
 
-// nasleduj˙ parametre z formul·rov pre dotaz PRM_LIT_OBD
+// nasleduj√∫ parametre z formul√°rov pre dotaz PRM_LIT_OBD
 #define LIT_OBD 10
 #ifdef LONG_PARAM_NAMES
 	#define STR_LIT_OBD "LIT_OBD"
@@ -390,7 +390,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 /* nasleduju parametre pre modlitbu (PRM_DATUM, PRM_DETAILY)
  * -- specialne options, ktore platia rovnako pre oboje, ale
  * de facto sa vyuzivaju len pre PRM_DETAILY 
- * 2011-01-26: doplnenÈ aj verzie "force" pre formul·r; pouûÌvaj˙ sa totiû aj na PRM_DNES hlavnom okne
+ * 2011-01-26: doplnen√© aj verzie "force" pre formul√°r; pou≈æ√≠vaj√∫ sa toti≈æ aj na PRM_DNES hlavnom okne
  */
 #define MODL_OPT_0 38
 #ifdef LONG_PARAM_NAMES
@@ -442,7 +442,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPT_APPEND "a"
 #endif
 
-// 2006-07-11: PridanÈ kvÙli jazykov˝m mut·ci·m
+// 2006-07-11: Pridan√© kv√¥li jazykov√Ωm mut√°ci√°m
 #define JAZYK 37
 #ifdef LONG_PARAM_NAMES
 	#define STR_JAZYK "JAZYK"
@@ -450,7 +450,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_JAZYK "j"
 #endif
 
-// --- force verzie pre option 0 aû 4 ---
+// --- force verzie pre option 0 a≈æ 4 ---
 #define MODL_OPTF_0 50
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_0 "MODL_OPTF_0"
@@ -493,9 +493,9 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_5 "of5"
 #endif
 
-// pre force option 0 jednotlivÈ bit-komponenty (parci·lne voæby)
+// pre force option 0 jednotliv√© bit-komponenty (parci√°lne voƒæby)
 
-// ËÌslovanie (ËÌsla) veröov
+// ƒç√≠slovanie (ƒç√≠sla) ver≈°ov
 #define MODL_OPTF_0_VERSE 61
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_0_VERSE "MODL_OPTF_0_VERSE"
@@ -503,7 +503,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_0_VERSE "of0v"
 #endif
 
-// referencie (biblickÈ odkazy)
+// referencie (biblick√© odkazy)
 #define MODL_OPTF_0_REF 62
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_0_REF "MODL_OPTF_0_REF"
@@ -511,7 +511,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_0_REF "of0r"
 #endif
 
-// liturgickÈ ËÌtania
+// liturgick√© ƒç√≠tania
 #define MODL_OPTF_0_CIT 63
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_0_CIT "MODL_OPTF_0_CIT"
@@ -519,7 +519,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_0_CIT "of0cit"
 #endif
 
-// zjavenie p·na -- Ëi sl·viù 6.1. alebo v nedeæu
+// zjavenie p√°na -- ƒçi sl√°vi≈• 6.1. alebo v nedeƒæu
 #define MODL_OPTF_0_ZJAV_NED 64
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_0_ZJAV_NED "MODL_OPTF_0_ZJAV_NED"
@@ -527,7 +527,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_0_ZJAV_NED "of0zjvne"
 #endif
 
-// nanebovst˙penie p·na -- Ëi sl·viù vo ötvrtok (40. deÚ po VN) alebo v nedeæu
+// nanebovst√∫penie p√°na -- ƒçi sl√°vi≈• vo ≈°tvrtok (40. de≈à po VN) alebo v nedeƒæu
 #define MODL_OPTF_0_NAN_NED 65
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_0_NAN_NED "MODL_OPTF_0_NANV_NED"
@@ -535,7 +535,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_0_NAN_NED "of0nanne"
 #endif
 
-// najsv. kristovho tela a krvi -- Ëi sl·viù vo ötvrtok (11. deÚ po ZDS) alebo v nedeæu
+// najsv. kristovho tela a krvi -- ƒçi sl√°vi≈• vo ≈°tvrtok (11. de≈à po ZDS) alebo v nedeƒæu
 #define MODL_OPTF_0_TK_NED 66
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_0_TK_NED "MODL_OPTF_0_TK_NED"
@@ -567,9 +567,9 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_0_BLIND_FRIENDLY "of0bf"
 #endif
 
-// pre force option 1 jednotlivÈ bit-komponenty (parci·lne voæby)
+// pre force option 1 jednotliv√© bit-komponenty (parci√°lne voƒæby)
 
-// evanjeliovÈ chv·lospevy (benediktus, magnifikat, nunk dimittis)
+// evanjeliov√© chv√°lospevy (benediktus, magnifikat, nunk dimittis)
 #define MODL_OPTF_1_CHV 71
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_CHV "MODL_OPTF_1_CHV"
@@ -577,7 +577,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_CHV "of1c"
 #endif
 
-// sl·va otcu na konci ûalmov a chv·lospevov
+// sl√°va otcu na konci ≈æalmov a chv√°lospevov
 #define MODL_OPTF_1_SL 72
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_SL "MODL_OPTF_1_SL"
@@ -593,7 +593,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_RUB "of1r"
 #endif
 
-// OtËen·ö
+// Otƒçen√°≈°
 #define MODL_OPTF_1_OT 74
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_OT "MODL_OPTF_1_OT"
@@ -609,7 +609,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_TD "of1t"
 #endif
 
-// doplnkov· psalmÛdia pre modlitbu cez deÚ
+// doplnkov√° psalm√≥dia pre modlitbu cez de≈à
 #define MODL_OPTF_1_MCD_DOPLNKOVA 76
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_MCD_DOPLNKOVA "MODL_OPTF_1_MCD_DOPLNKOVA"
@@ -617,7 +617,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_MCD_DOPLNKOVA "of1dps"
 #endif
 
-// vigÌlia v posv‰tnom ËÌtanÌ
+// vig√≠lia v posv√§tnom ƒç√≠tan√≠
 #define MODL_OPTF_1_VIGILIA 77
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_VIGILIA "MODL_OPTF_1_VIGILIA"
@@ -625,7 +625,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_VIGILIA "of1v"
 #endif
 
-// popis (ûivotopis) pre modlitbu sv‰tÈho
+// popis (≈æivotopis) pre modlitbu sv√§t√©ho
 #define MODL_OPTF_1_SKRY_POPIS 78
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_SKRY_POPIS "MODL_OPTF_1_SKRY_POPIS"
@@ -633,7 +633,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_SKRY_POPIS "of1sp"
 #endif
 
-// zobraziù rubriku s textom, odkiaæ sa ber˙ spoloËnÈ Ëasti
+// zobrazi≈• rubriku s textom, odkiaƒæ sa ber√∫ spoloƒçn√© ƒçasti
 #define MODL_OPTF_1_ZOBRAZ_SPOL_CAST 80
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST "MODL_OPTF_1_ZOBRAZ_SPOL_CAST"
@@ -641,7 +641,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST "of1zspc"
 #endif
 
-// pouûiù (pre ktor˝koævek deÚ v roku) kratöie prosby k veöper·m
+// pou≈æi≈• (pre ktor√Ωkoƒævek de≈à v roku) krat≈°ie prosby k ve≈°per√°m
 #define MODL_OPTF_1_VESP_KRATSIE_PROSBY 99
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY "MODL_OPTF_1_VESP_KRATSIE_PROSBY"
@@ -649,7 +649,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY "of1vkp"
 #endif
 
-// psalmÛdia pre modlitbu cez deÚ z troch t˝ûdÚov ûalt·ra (aktu·lny, predch·dzaj˙ci, nasleduj˙ci)
+// psalm√≥dia pre modlitbu cez de≈à z troch t√Ω≈æd≈àov ≈æalt√°ra (aktu√°lny, predch√°dzaj√∫ci, nasleduj√∫ci)
 #define MODL_OPTF_1_MCD_ZALTAR_TRI 112
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_MCD_ZALTAR_TRI "MODL_OPTF_1_MCD_ZALTAR_TRI"
@@ -658,7 +658,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #endif
 
 
-// ûalmy zo sviatku
+// ≈æalmy zo sviatku
 #define MODL_OPTF_1_SPOMIENKA_SPOL_CAST 79
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_SPOMIENKA_SPOL_CAST "MODL_OPTF_1_SPOMIENKA_SPOL_CAST"
@@ -666,7 +666,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_SPOMIENKA_SPOL_CAST "of1spspc"
 #endif
 
-// dlhöie zakonËenie responzÛria
+// dlh≈°ie zakonƒçenie responz√≥ria
 #define MODL_OPTF_1_PLNE_RESP 90
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_PLNE_RESP "MODL_OPTF_1_PLNE_RESP"
@@ -674,7 +674,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_PLNE_RESP "of1pr"
 #endif
 
-// ûalm 95 pre rannÈ chv·ly/veöpery namiesto û 24, 67, 100
+// ≈æalm 95 pre rann√© chv√°ly/ve≈°pery namiesto ≈æ 24, 67, 100
 #define MODL_OPTF_1_ZALM95 91
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_ZALM95 "MODL_OPTF_1_ZALM95"
@@ -682,7 +682,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_ZALM95 "of1z95"
 #endif
 
-// zvolanie v prosb·ch zobraziù (opakovaù) po kaûdej prosbe
+// zvolanie v prosb√°ch zobrazi≈• (opakova≈•) po ka≈ædej prosbe
 #define MODL_OPTF_1_PROSBY_ZVOLANIE 92
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_1_PROSBY_ZVOLANIE "MODL_OPTF_1_PROSBY_ZVOLANIE"
@@ -690,9 +690,9 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_1_PROSBY_ZVOLANIE "of1prz"
 #endif
 
-// pre force option 2 jednotlivÈ bit-komponenty (parci·lne voæby)
+// pre force option 2 jednotliv√© bit-komponenty (parci√°lne voƒæby)
 
-// ISO form·t d·tumu
+// ISO form√°t d√°tumu
 #define MODL_OPTF_2_ISO_DATUM 81
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_ISO_DATUM "MODL_OPTF_2_ISO_DATUM"
@@ -700,7 +700,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_ISO_DATUM "of2id"
 #endif
 
-// zobrazovaù button "prvÈ veöpery" v r·mci danÈho sl·venia (teda "ignoruj˙c d·tum")
+// zobrazova≈• button "prv√© ve≈°pery" v r√°mci dan√©ho sl√°venia (teda "ignoruj√∫c d√°tum")
 #define MODL_OPTF_2_PRVE_VESPERY 82
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_PRVE_VESPERY "MODL_OPTF_2_PRVE_VESPERY"
@@ -732,7 +732,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_FONT_SIZE "of2fs"
 #endif
 
-// zobrazovaù navig·ciu v textoch modlitieb
+// zobrazova≈• navig√°ciu v textoch modlitieb
 #define MODL_OPTF_2_NAVIGATION 86
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_NAVIGATION "MODL_OPTF_2_NAVIGATION"
@@ -740,7 +740,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_NAVIGATION "of2nav"
 #endif
 
-// zobrazovaù zalomenie v textoch modlitieb podæa tlaËenej LH
+// zobrazova≈• zalomenie v textoch modlitieb podƒæa tlaƒçenej LH
 #define MODL_OPTF_2_TEXT_WRAP 87
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_TEXT_WRAP "MODL_OPTF_2_TEXT_WRAP"
@@ -748,7 +748,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_TEXT_WRAP "of2tw"
 #endif
 
-// zobraziù buttony pre modlitby v ˙spornej podobe (tabuæka) kvÙli mobiln˝m zariadeniam
+// zobrazi≈• buttony pre modlitby v √∫spornej podobe (tabuƒæka) kv√¥li mobiln√Ωm zariadeniam
 #define MODL_OPTF_2_BUTTONY_USPORNE 88
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_BUTTONY_USPORNE "MODL_OPTF_2_BUTTONY_USPORNE"
@@ -764,7 +764,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_NOCNY_REZIM "of2nr"
 #endif
 
-// rÙzne moûnosti zobrazovaù priamo v texte modlitieb (najm‰ pre android)
+// r√¥zne mo≈ænosti zobrazova≈• priamo v texte modlitieb (najm√§ pre android)
 #define MODL_OPTF_2_ROZNE_MOZNOSTI 93
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_ROZNE_MOZNOSTI "MODL_OPTF_2_ROZNE_MOZNOSTI"
@@ -772,7 +772,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_ROZNE_MOZNOSTI "of2rm"
 #endif
 
-// skryù navig·ciu -- BIT_OPT_2_HIDE_NAVIG_BUTTONS
+// skry≈• navig√°ciu -- BIT_OPT_2_HIDE_NAVIG_BUTTONS
 #define MODL_OPTF_2_HIDE_NAVIG_BUTTONS 94
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS "MODL_OPTF_2_HIDE_NAVIG_BUTTONS"
@@ -780,7 +780,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS "of2hnb"
 #endif
 
-// skryù kalend·r -- BIT_OPT_2_HIDE_KALENDAR
+// skry≈• kalend√°r -- BIT_OPT_2_HIDE_KALENDAR
 #define MODL_OPTF_2_HIDE_KALENDAR 95
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_HIDE_KALENDAR "MODL_OPTF_2_HIDE_KALENDAR"
@@ -788,7 +788,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_HIDE_KALENDAR "of2hk"
 #endif
 
-// skryù options, prv· Ëasù -- BIT_OPT_2_HIDE_OPTIONS1
+// skry≈• options, prv√° ƒças≈• -- BIT_OPT_2_HIDE_OPTIONS1
 #define MODL_OPTF_2_HIDE_OPTIONS1 96
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_HIDE_OPTIONS1 "MODL_OPTF_2_HIDE_OPTIONS1"
@@ -796,7 +796,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_HIDE_OPTIONS1 "of2ho1"
 #endif
 
-// skryù options, druh· Ëasù -- BIT_OPT_2_HIDE_OPTIONS2
+// skry≈• options, druh√° ƒças≈• -- BIT_OPT_2_HIDE_OPTIONS2
 #define MODL_OPTF_2_HIDE_OPTIONS2 97
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_HIDE_OPTIONS2 "MODL_OPTF_2_HIDE_OPTIONS2"
@@ -804,7 +804,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_HIDE_OPTIONS2 "of2ho2"
 #endif
 
-// zobrazovaù jednu alternatÌvu -- BIT_OPT_2_ALTERNATIVES
+// zobrazova≈• jednu alternat√≠vu -- BIT_OPT_2_ALTERNATIVES
 #define MODL_OPTF_2_ALTERNATIVES 98
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPTF_2_ALTERNATIVES "MODL_OPTF_2_ALTERNATIVES"
@@ -812,7 +812,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_ALTERNATIVES "of2a"
 #endif
 
-// pre force option 5 jednotlivÈ bit-komponenty (parci·lne voæby)
+// pre force option 5 jednotliv√© bit-komponenty (parci√°lne voƒæby)
 
 #define MODL_OPTF_5_HYMNUS_KOMPL 101
 #ifdef LONG_PARAM_NAMES
@@ -899,7 +899,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #endif
 
 
-// 2008-08-08: PridanÈ kvÙli rÙznym css
+// 2008-08-08: Pridan√© kv√¥li r√¥znym css
 #define CSS 40
 #ifdef LONG_PARAM_NAMES
 	#define STR_CSS "CSS"
@@ -907,7 +907,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_CSS "c"
 #endif
 
-// 2008-11-29: PridanÈ: spÙsob zapisovania d·tumu pre s˙bory v batch mÛde
+// 2008-11-29: Pridan√©: sp√¥sob zapisovania d√°tumu pre s√∫bory v batch m√≥de
 #define MODL_OPT_DATE_FORMAT 41
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPT_DATE_FORMAT "MODL_OPT_DATE_FORMAT"
@@ -915,7 +915,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPT_DATE_FORMAT "u"
 #endif
 
-// 2010-08-04: PridanÈ kvÙli jazykov˝m mut·ci·m -- kalend·r (napr. rehoæn˝)
+// 2010-08-04: Pridan√© kv√¥li jazykov√Ωm mut√°ci√°m -- kalend√°r (napr. rehoƒæn√Ω)
 #define KALENDAR 42
 #ifdef LONG_PARAM_NAMES
 	#define STR_KALENDAR "KALENDAR"
@@ -923,7 +923,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_KALENDAR "k"
 #endif
 
-// n·zov fontu
+// n√°zov fontu
 #define FONT_NAME 43
 #ifdef LONG_PARAM_NAMES
 	#define STR_FONT_NAME "FONT_NAME"
@@ -931,7 +931,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_FONT_NAME "f"
 #endif
 
-// n·zov veækosti fontu
+// n√°zov veƒækosti fontu
 #define FONT_SIZE 44
 #ifdef LONG_PARAM_NAMES
 	#define STR_FONT_SIZE "FONT_SIZE"
@@ -947,7 +947,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_QUERY_TYPE "qt"
 #endif
 
-// 2012-10-16: upraven˝ tento define tak, ûe vûdy musÌ byù pred volanÌm funkcie Export(); doÚho dovn˙tra som dal volanie hlaviËky
+// 2012-10-16: upraven√Ω tento define tak, ≈æe v≈ædy mus√≠ by≈• pred volan√≠m funkcie Export(); do≈àho dovn√∫tra som dal volanie hlaviƒçky
 // Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_mail_address_default[_global_jazyk]);
 #define ALERT	{\
 	Log("ALERT\n");\
@@ -960,14 +960,14 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	_export_rozbor_dna_buttons_dni_dnes(2 /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
 	}
 
-// HTML stringy - casti stringov sustredene na tomto mieste; pridane 2003-07-02; rozöÌrenÈ 2011-01-27
+// HTML stringy - casti stringov sustredene na tomto mieste; pridane 2003-07-02; roz≈°√≠ren√© 2011-01-27
 #define HTML_FORM_INPUT_SUBMIT   "input type=\"submit\" class=\"button\""
 #define HTML_FORM_INPUT_RESET    "input type=\"reset\" class=\"reset\""
 #define HTML_FORM_INPUT_RADIO    "input type=\"radio\" class=\"radio\""
 #define HTML_FORM_INPUT_TEXT     "input type=\"text\" class=\"text\""
 #define HTML_FORM_INPUT_TEXT_ROK "input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
 #define HTML_FORM_INPUT_CHECKBOX "input type=\"checkbox\" class=\"checkbox\""
-// 2011-01-27: pridanÈ buttony (0. level: pre predoöl˝/nasledovn˝; 1. level: button "dnes"; 2. level: pouûitÈ pre menej dÙleûitÈ buttony)
+// 2011-01-27: pridan√© buttony (0. level: pre predo≈°l√Ω/nasledovn√Ω; 1. level: button "dnes"; 2. level: pou≈æit√© pre menej d√¥le≈æit√© buttony)
 #define HTML_FORM_INPUT_SUBMIT0  "input type=\"submit\" class=\"button0\""
 #define HTML_FORM_INPUT_RESET0   "input type=\"reset\" class=\"reset0\""
 #define HTML_FORM_INPUT_SUBMIT1  "input type=\"submit\" class=\"button1\""
@@ -988,7 +988,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_NONBREAKING_SPACE "&nbsp;"
 #define HTML_SPACE " "
 #define HTML_VERTICAL_BAR "|"
-#define HTML_CROSS "Ü"
+#define HTML_CROSS "‚Ä†"
 #define HTML_LINE_BREAK "<br/>"
 #define HTML_CRLF_LINE_BREAK "\n<br/>"
 #define HTML_NEW_PARAGRAPH "<p>"
@@ -1058,7 +1058,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_COMMENT_BEGIN		"<!--"
 #define HTML_COMMENT_END		"-->"
 #define HTML_FONT_SIZE_FARBA	"2"
-// 2007-03-19: pridanÈ namiesto gt a lt html znakov
+// 2007-03-19: pridan√© namiesto gt a lt html znakov
 #define HTML_LEFT_ARROW			"&laquo;"
 #define HTML_RIGHT_ARROW		"&raquo;"
 
@@ -1069,17 +1069,17 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_LINK_CALL2         "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
 #define HTML_LINK_CALL3         "%s?%s=%s"HTML_AMPERSAND"%s=%s%s"
 #define HTML_LINK_CALL_PARAM    HTML_AMPERSAND"%s=%s"
-// 2011-01-26: pridanÈ jednoduchÈ öÌpky væavo/vpravo
+// 2011-01-26: pridan√© jednoduch√© ≈°√≠pky vƒæavo/vpravo
 #define HTML_LEFT_ARROW_SINGLE	"&lsaquo;"
 #define HTML_RIGHT_ARROW_SINGLE	"&rsaquo;"
-// 2011-01-26: pridanÈ "trojitÈ" öÌpky væavo/vpravo
+// 2011-01-26: pridan√© "trojit√©" ≈°√≠pky vƒæavo/vpravo
 #define HTML_LEFT_ARROW_HUGE	"&lsaquo;&laquo;"
 #define HTML_RIGHT_ARROW_HUGE	"&raquo;&rsaquo;"
 
-// 2007-03-19: v˝pis "Dnes je..." sa zobrazÌ len pri tomto nastavenÌ, ak je 1
+// 2007-03-19: v√Ωpis "Dnes je..." sa zobraz√≠ len pri tomto nastaven√≠, ak je 1
 #define HTML_ZOBRAZIT_DNES_JE	0
 
-// 2007-06-01: niektorÈ definy presunutÈ z liturgia.h
+// 2007-06-01: niektor√© definy presunut√© z liturgia.h
 
 // option 2
 #define MODL_ZALMY_ZO_DNA 0
@@ -1089,26 +1089,26 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define MODL_CEZ_DEN_ZALMY_ZO_DNA         0
 #define MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA  1
 
-// 2008-11-29: pridanÈ rÙzne moûnosti batch exportu
+// 2008-11-29: pridan√© r√¥zne mo≈ænosti batch exportu
 #define	EXPORT_DATE_SIMPLE 0
 #define	EXPORT_DATE_FULL   1
 
 #define STR_SIMPLE "simple"
 #define STR_FULL   "full"
 
-// n·zov s˙boru (jeho zaËiatok) pre d·tum
+// n√°zov s√∫boru (jeho zaƒçiatok) pre d√°tum
 #define FILENAME_EXPORT_DATE_SIMPLE "%.2d%.2d%.2d"
 #define FILENAME_EXPORT_DATE_FULL   "%.4d-%.2d-%.2d"
-// n·zov adres·ra pre mesiac
+// n√°zov adres√°ra pre mesiac
 #define DIRNAME_EXPORT_MONTH_SIMPLE "%.2d%.2d-%s"
 #define DIRNAME_EXPORT_MONTH_FULL   "%.4d-%.2d-%s"
-// n·zov s˙boru (jeho zaËiatok) pre mesiac
+// n√°zov s√∫boru (jeho zaƒçiatok) pre mesiac
 #define FILENAME_EXPORT_MONTH_SIMPLE "%.2d%.2d"
 #define FILENAME_EXPORT_MONTH_FULL   "%.4d-%.2d"
 
 #define HTML_ISO_FORMAT      "%04d-%02d-%02d"
 
-#define TEXT_COPYRIGHT       "(c) 1999-2014 Juraj VidÈky"
+#define TEXT_COPYRIGHT       "(c) 1999-2014 Juraj Vid√©ky"
 #define TEXT_EMAIL           "videky@breviar.sk"
 
 // main XML element

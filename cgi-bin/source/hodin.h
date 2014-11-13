@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* hodin.h                                                     */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj VidÃ©ky | videky@breviar.sk             */
 /*                                                             */
 /* description | definovane stringove kontanty                 */
 /*               originally used for string constants          */
@@ -29,7 +29,7 @@ const char *ORDINARIUM[POCET_MODLITIEB + 1] =
  ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM, 
  ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM, ORDINARIUM_EMPTY, ORDINARIUM_EMPTY};
 
-// 2008-04-09: doplnené pre batch generovanie modlitieb
+// 2008-04-09: doplnenÃ© pre batch generovanie modlitieb
 const char char_modlitby[POCET_MODLITIEB + 1] =
 {CHAR_MODL_INVITATORIUM, CHAR_MODL_POSV_CITANIE, CHAR_MODL_RANNE_CHVALY, 
  CHAR_MODL_CEZ_DEN_9, CHAR_MODL_CEZ_DEN_12, CHAR_MODL_CEZ_DEN_3,
@@ -46,106 +46,106 @@ const char *str_modlitby[POCET_MODLITIEB + 1] =
 
 // the names of the prayers, lowercase (sample text)
 const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
-{{"invitatórium", "uvedení do první modlitby dne", "Invitatory", "invitatorium", "", "Pozvání k modlitbì", "imádságra hívás" }
-, {"posvätné èítanie", "modlitba se ètením", "Office of Readings", "officium lectionis", "", "Modlitba se ètením", "olvasmányos imaóra" }
-, {"ranné chvály", "ranní chvály", "Laudes", "laudes matutin&#230;", "", "Ranní chvály", "reggeli dicséret" }
-, {"modlitba predpoludním", "modlitba dopoledne", "Terce", "tertia", "", "Tercie", "délelõtt" }
-, {"modlitba napoludnie", "modlitba v poledne", "Sext", "sexta", "", "Sexta", "délben" }
-, {"modlitba popoludní", "modlitba odpoledne", "None", "nona", "", "Nona", "délután" }
-, {"vešpery", "nešpory", "Vesperae", "vesper&#230;", "", "Veèerní chvály", "esti dicséret" }
-, {"kompletórium", "kompletáø", "Completary", "completorio", "", "Kompletáø", "befejezõ imaóra" }
-, {"neurèená", "neurèena", "not-defined", "no data", "", "neurèena", "nem azonosított"}
-, {"prvé vešpery", "první nešpory", "1st Vesperae", "I vesper&#230;", "", "První veèerní chvály", "I. esti dicséret" }
-	// 2007-12-05: zmenené, kedysi bolo: "prvé kompletórium"
-, {"kompletórium po prvıch vešperách", "kompletáø po prvních nešporách", "1st Completary", "I completorio", "", "Kompletáø po prvních veèerních chválách", "befejezõ imaóra I. e. d. után" }
-, {"druhé vešpery", "druhé nešpory", "2nd Vesperae", "II vesper&#230;", "", "Druhé veèerní chvály", "II. esti dicséret" }
-	// 2007-12-05: zmenené, kedysi bolo: "druhé kompletórium"
-, {"kompletórium po druhıch vešperách", "kompletáø po druhıch nešporách", "2nd Completary", "II completorio", "", "Kompletáø po druhıch veèerních chválách", "befejezõ imaóra II. e. d. után" }
-, {"detaily", "detaily", "Details", "details", "", "detaily", "részletek" }
-, {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
+{{"invitatÃ³rium", "uvedenÃ­ do prvnÃ­ modlitby dne", "Invitatory", "invitatorium", "", "PozvÃ¡nÃ­ k modlitbÄ›", "imÃ¡dsÃ¡gra hÃ­vÃ¡s" }
+, {"posvÃ¤tnÃ© ÄÃ­tanie", "modlitba se ÄtenÃ­m", "Office of Readings", "officium lectionis", "", "Modlitba se ÄtenÃ­m", "olvasmÃ¡nyos imaÃ³ra" }
+, {"rannÃ© chvÃ¡ly", "rannÃ­ chvÃ¡ly", "Laudes", "laudes matutin&#230;", "", "RannÃ­ chvÃ¡ly", "reggeli dicsÃ©ret" }
+, {"modlitba predpoludnÃ­m", "modlitba dopoledne", "Terce", "tertia", "", "Tercie", "dÃ©lelÅ‘tt" }
+, {"modlitba napoludnie", "modlitba v poledne", "Sext", "sexta", "", "Sexta", "dÃ©lben" }
+, {"modlitba popoludnÃ­", "modlitba odpoledne", "None", "nona", "", "Nona", "dÃ©lutÃ¡n" }
+, {"veÅ¡pery", "neÅ¡pory", "Vesperae", "vesper&#230;", "", "VeÄernÃ­ chvÃ¡ly", "esti dicsÃ©ret" }
+, {"kompletÃ³rium", "kompletÃ¡Å™", "Completary", "completorio", "", "KompletÃ¡Å™", "befejezÅ‘ imaÃ³ra" }
+, {"neurÄenÃ¡", "neurÄena", "not-defined", "no data", "", "neurÄena", "nem azonosÃ­tott"}
+, {"prvÃ© veÅ¡pery", "prvnÃ­ neÅ¡pory", "1st Vesperae", "I vesper&#230;", "", "PrvnÃ­ veÄernÃ­ chvÃ¡ly", "I. esti dicsÃ©ret" }
+	// 2007-12-05: zmenenÃ©, kedysi bolo: "prvÃ© kompletÃ³rium"
+, {"kompletÃ³rium po prvÃ½ch veÅ¡perÃ¡ch", "kompletÃ¡Å™ po prvnÃ­ch neÅ¡porÃ¡ch", "1st Completary", "I completorio", "", "KompletÃ¡Å™ po prvnÃ­ch veÄernÃ­ch chvÃ¡lÃ¡ch", "befejezÅ‘ imaÃ³ra I. e. d. utÃ¡n" }
+, {"druhÃ© veÅ¡pery", "druhÃ© neÅ¡pory", "2nd Vesperae", "II vesper&#230;", "", "DruhÃ© veÄernÃ­ chvÃ¡ly", "II. esti dicsÃ©ret" }
+	// 2007-12-05: zmenenÃ©, kedysi bolo: "druhÃ© kompletÃ³rium"
+, {"kompletÃ³rium po druhÃ½ch veÅ¡perÃ¡ch", "kompletÃ¡Å™ po druhÃ½ch neÅ¡porÃ¡ch", "2nd Completary", "II completorio", "", "KompletÃ¡Å™ po druhÃ½ch veÄernÃ­ch chvÃ¡lÃ¡ch", "befejezÅ‘ imaÃ³ra II. e. d. utÃ¡n" }
+, {"detaily", "detaily", "Details", "details", "", "detaily", "rÃ©szletek" }
+, {"vÅ¡etky", "vÅ¡echny", "all", "all", "", "vÅ¡echny", "Ã¶sszes" }
 };
 
 #define		nazov_modlitby(a)	nazov_modlitby_jazyk[a][_global_jazyk]
 
 // the names of the prayers, lowercase (sample text)
 const char *nazov_modlitby_short_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
-{{"invitatórium", "uvedení do 1. modl. dne", "Invitatory", "invitatorium", "", "Pozvání k modl.", "imádságra hívás" }
-, {"posvätné èítanie", "modl. se ètením", "Office of Readings", "officium lectionis", "", "modl. se ètením", "olvasmányos imaóra" }
-, {"ranné chvály", "ranní chvály", "Laudes", "laudes matutin&#230;", "", "Ranní chvály", "reggeli dicséret" }
-, {"modl. predpoludním", "modl. dopoledne", "Terce", "tertia", "", "Tercie", "délelõtt" }
-, {"modl. napoludnie", "modl. v poledne", "Sext", "sexta", "", "Sexta", "délben" }
-, {"modl. popoludní", "modl. odpoledne", "None", "nona", "", "Nona", "délután" }
-, {"vešpery", "nešpory", "Vesperae", "vesper&#230;", "", "Veèerní chvály", "esti dicséret" }
-, {"kompletórium", "kompletáø", "Completary", "completorio", "", "Kompletáø", "befejezõ imaóra" }
-, {"neurèená", "neurèena", "not-defined", "no data", "", "neurèena", "nem azonosított"}
-, {"prvé vešpery", "první nešpory", "1st Vesperae", "I vesper&#230;", "", "První veèerní chvály", "I. esti dicséret" }
-	// 2007-12-05: zmenené, kedysi bolo: "prvé kompletórium"
-, {"kompletórium po 1. vešp.", "kompletáø po 1. nešp.", "1st Completary", "I completorio", "", "Kompletáø po 1. v. chv.", "befejezõ imaóra I. e. d. ut." }
-, {"(druhé) vešpery", "druhé nešpory", "2nd Vesperae", "II vesper&#230;", "", "Druhé veèerní chvály", "II. esti dicséret" }
-	// 2007-12-05: zmenené, kedysi bolo: "druhé kompletórium"
-, {"kompletórium (po 2. vešp.)", "kompletáø po 2. nešp.", "2nd Completary", "II completorio", "", "Kompletáø po 2. v. chv.", "befejezõ imaóra II. e. d. ut." }
-, {"detaily", "detaily", "Details", "details", "", "detaily", "részletek" }
-, {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
+{{"invitatÃ³rium", "uvedenÃ­ do 1. modl. dne", "Invitatory", "invitatorium", "", "PozvÃ¡nÃ­ k modl.", "imÃ¡dsÃ¡gra hÃ­vÃ¡s" }
+, {"posvÃ¤tnÃ© ÄÃ­tanie", "modl. se ÄtenÃ­m", "Office of Readings", "officium lectionis", "", "modl. se ÄtenÃ­m", "olvasmÃ¡nyos imaÃ³ra" }
+, {"rannÃ© chvÃ¡ly", "rannÃ­ chvÃ¡ly", "Laudes", "laudes matutin&#230;", "", "RannÃ­ chvÃ¡ly", "reggeli dicsÃ©ret" }
+, {"modl. predpoludnÃ­m", "modl. dopoledne", "Terce", "tertia", "", "Tercie", "dÃ©lelÅ‘tt" }
+, {"modl. napoludnie", "modl. v poledne", "Sext", "sexta", "", "Sexta", "dÃ©lben" }
+, {"modl. popoludnÃ­", "modl. odpoledne", "None", "nona", "", "Nona", "dÃ©lutÃ¡n" }
+, {"veÅ¡pery", "neÅ¡pory", "Vesperae", "vesper&#230;", "", "VeÄernÃ­ chvÃ¡ly", "esti dicsÃ©ret" }
+, {"kompletÃ³rium", "kompletÃ¡Å™", "Completary", "completorio", "", "KompletÃ¡Å™", "befejezÅ‘ imaÃ³ra" }
+, {"neurÄenÃ¡", "neurÄena", "not-defined", "no data", "", "neurÄena", "nem azonosÃ­tott"}
+, {"prvÃ© veÅ¡pery", "prvnÃ­ neÅ¡pory", "1st Vesperae", "I vesper&#230;", "", "PrvnÃ­ veÄernÃ­ chvÃ¡ly", "I. esti dicsÃ©ret" }
+	// 2007-12-05: zmenenÃ©, kedysi bolo: "prvÃ© kompletÃ³rium"
+, {"kompletÃ³rium po 1. veÅ¡p.", "kompletÃ¡Å™ po 1. neÅ¡p.", "1st Completary", "I completorio", "", "KompletÃ¡Å™ po 1. v. chv.", "befejezÅ‘ imaÃ³ra I. e. d. ut." }
+, {"(druhÃ©) veÅ¡pery", "druhÃ© neÅ¡pory", "2nd Vesperae", "II vesper&#230;", "", "DruhÃ© veÄernÃ­ chvÃ¡ly", "II. esti dicsÃ©ret" }
+	// 2007-12-05: zmenenÃ©, kedysi bolo: "druhÃ© kompletÃ³rium"
+, {"kompletÃ³rium (po 2. veÅ¡p.)", "kompletÃ¡Å™ po 2. neÅ¡p.", "2nd Completary", "II completorio", "", "KompletÃ¡Å™ po 2. v. chv.", "befejezÅ‘ imaÃ³ra II. e. d. ut." }
+, {"detaily", "detaily", "Details", "details", "", "detaily", "rÃ©szletek" }
+, {"vÅ¡etky", "vÅ¡echny", "all", "all", "", "vÅ¡echny", "Ã¶sszes" }
 };
 
 #define		nazov_modlitby_short(a)	nazov_modlitby_short_jazyk[a][_global_jazyk]
 
 // the names of the prayers, sentence case (Sample text)
 const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
-{{"Invitatórium", "Uvedení do první modlitby dne", "Invitatory", "Invitatorium", "", "Pozvání k modlitbì" , "Imádságra hívás" }
-, {"Posvätné èítanie", "Modlitba se ètením", "Office of Readings", "Officium lectionis", "", "Modlitba se ètením" , "Olvasmányos imaóra" }
-, {"Ranné chvály", "Ranní chvály", "Laudes", "Laudes matutin&#230;", "", "Ranní chvály" , "Reggeli dicséret" }
-, {"Modlitba predpoludním", "Modlitba dopoledne", "Terce", "Tertia", "", "Tercie" , "Délelõtt" }
-, {"Modlitba napoludnie", "Modlitba v poledne", "Sext", "Sexta", "", "Sexta" , "Délben" }
-, {"Modlitba popoludní", "Modlitba odpoledne", "None", "Nona", "", "Nona" , "Délután" }
-, {"Vešpery", "Nešpory", "Vesperae", "Vesper&#230;", "", "Veèerní chvály" , "Esti dicséret" }
-, {"Kompletórium", "Kompletáø", "Completary", "Completorio", "", "Kompletáø" , "Befejezõ imaóra" }
-, {"Neurèená", "Neurèena", "not-defined", "No data", "", "Neurèená" , "Nem azonosított"}
-, {"Prvé vešpery", "První nešpory", "1st Vesperae", "I Vesper&#230;", "", "První veèerní chvály" , "I. Esti dicséret" }
-, {"Kompletórium po prvıch vešperách", "Kompletáø po prvních nešporách", "1st Completary", "I Completorio", "", "Kompletáø po prvních veèerních chválách" , "Befejezõ imaóra I. e. d. után" }
-, {"Druhé vešpery", "Druhé nešpory", "2nd Vesperae", "II Vesper&#230;", "", "Druhé veèerní chvály" , "II. Esti dicséret" }
-, {"Kompletórium po druhıch vešperách", "Kompletáø po druhıch nešporách", "2nd Completary", "II Completorio", "", "Kompletáø po druhıch veèerních chválách" , "Befejezõ imaóra II. e. d. után" }
-, {"Detaily", "Detaily", "Details", "Details", "", "Detaily", "Részletek" }
-, {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
+{{"InvitatÃ³rium", "UvedenÃ­ do prvnÃ­ modlitby dne", "Invitatory", "Invitatorium", "", "PozvÃ¡nÃ­ k modlitbÄ›" , "ImÃ¡dsÃ¡gra hÃ­vÃ¡s" }
+, {"PosvÃ¤tnÃ© ÄÃ­tanie", "Modlitba se ÄtenÃ­m", "Office of Readings", "Officium lectionis", "", "Modlitba se ÄtenÃ­m" , "OlvasmÃ¡nyos imaÃ³ra" }
+, {"RannÃ© chvÃ¡ly", "RannÃ­ chvÃ¡ly", "Laudes", "Laudes matutin&#230;", "", "RannÃ­ chvÃ¡ly" , "Reggeli dicsÃ©ret" }
+, {"Modlitba predpoludnÃ­m", "Modlitba dopoledne", "Terce", "Tertia", "", "Tercie" , "DÃ©lelÅ‘tt" }
+, {"Modlitba napoludnie", "Modlitba v poledne", "Sext", "Sexta", "", "Sexta" , "DÃ©lben" }
+, {"Modlitba popoludnÃ­", "Modlitba odpoledne", "None", "Nona", "", "Nona" , "DÃ©lutÃ¡n" }
+, {"VeÅ¡pery", "NeÅ¡pory", "Vesperae", "Vesper&#230;", "", "VeÄernÃ­ chvÃ¡ly" , "Esti dicsÃ©ret" }
+, {"KompletÃ³rium", "KompletÃ¡Å™", "Completary", "Completorio", "", "KompletÃ¡Å™" , "BefejezÅ‘ imaÃ³ra" }
+, {"NeurÄenÃ¡", "NeurÄena", "not-defined", "No data", "", "NeurÄenÃ¡" , "Nem azonosÃ­tott"}
+, {"PrvÃ© veÅ¡pery", "PrvnÃ­ neÅ¡pory", "1st Vesperae", "I Vesper&#230;", "", "PrvnÃ­ veÄernÃ­ chvÃ¡ly" , "I. Esti dicsÃ©ret" }
+, {"KompletÃ³rium po prvÃ½ch veÅ¡perÃ¡ch", "KompletÃ¡Å™ po prvnÃ­ch neÅ¡porÃ¡ch", "1st Completary", "I Completorio", "", "KompletÃ¡Å™ po prvnÃ­ch veÄernÃ­ch chvÃ¡lÃ¡ch" , "BefejezÅ‘ imaÃ³ra I. e. d. utÃ¡n" }
+, {"DruhÃ© veÅ¡pery", "DruhÃ© neÅ¡pory", "2nd Vesperae", "II Vesper&#230;", "", "DruhÃ© veÄernÃ­ chvÃ¡ly" , "II. Esti dicsÃ©ret" }
+, {"KompletÃ³rium po druhÃ½ch veÅ¡perÃ¡ch", "KompletÃ¡Å™ po druhÃ½ch neÅ¡porÃ¡ch", "2nd Completary", "II Completorio", "", "KompletÃ¡Å™ po druhÃ½ch veÄernÃ­ch chvÃ¡lÃ¡ch" , "BefejezÅ‘ imaÃ³ra II. e. d. utÃ¡n" }
+, {"Detaily", "Detaily", "Details", "Details", "", "Detaily", "RÃ©szletek" }
+, {"vÅ¡etky", "vÅ¡echny", "all", "all", "", "vÅ¡echny", "Ã¶sszes" }
 };
 
 #define		nazov_Modlitby(a)	nazov_Modlitby_jazyk[a][_global_jazyk]
 
 // the names of the prayers, all caps case (SAMPLE TEXT)
 const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
-{{"INVITATÓRIUM", "UVEDENÍ DO PRVNÍ MODLITBY DNE", "INVITATORY", "INVITATORIUM", "", "POZVÁNÍ K MODLITBÌ" , "IMÁDSÁGRA HÍVÁS" }
-, {"POSVÄTNÉ ÈÍTANIE", "MODLITBA SE ÈTENÍM", "OFFICE OF READINGS", "OFFICIUM LECTIONIS", "", "MODLITBA SE ÈTENÍM" , "OLVASMÁNYOS IMAÓRA" }
-, {"RANNÉ CHVÁLY", "RANNÍ CHVÁLY", "LAUDES", "LAUDES MATUTIN&#198;", "", "RANNÍ CHVÁLY" , "REGGELI DICSÉRET" }
-, {"MODLITBA PREDPOLUDNÍM", "MODLITBA DOPOLEDNE", "TERCE", "TERTIA", "", "TERCIE" , "DÉLELÕTT" }
-, {"MODLITBA NAPOLUDNIE", "MODLITBA V POLEDNE", "SEXT", "SEXTA", "", "SEXTA" , "DÉLBEN" }
-, {"MODLITBA POPOLUDNÍ", "MODLITBA ODPOLEDNE", "NONE", "NONA", "", "NONA" , "DÉLUTÁN" }
-, {"VEŠPERY", "NEŠPORY", "VESPERAE", "VESPER&#198;", "", "VEÈERNÍ CHVÁLY" , "ESTI DICSÉRET" }
-, {"KOMPLETÓRIUM", "KOMPLETÁØ", "COMPLETARY", "COMPLETORIO", "", "KOMPLETÁØ" , "BEFEJEZÕ IMAÓRA" }
-, {"NEURÈENÁ", "NEURÈENA", "NOT-DEFINED", "NO DATA", "", "NEURÈENÁ" , "NEM AZONOSÍTOTT"}
-, {"PRVÉ VEŠPERY", "PRVNÍ NEŠPORY", "1ST VESPERAE", "I VESPER&#198;", "", "PRVNÍ VEÈERNÍ CHVÁLY" , "I. ESTI DICSÉRET" }
-, {"KOMPLETÓRIUM PO PRVİCH VEŠPERÁCH", "KOMPLETÁØ PO PRVNÍCH NEŠPORÁCH", "1ST COMPLETARY", "I COMPLETORIO", "", "KOMPLETÁØ PO PRVNÍCH VEÈERNÍCH CHVÁLÁCH" , "BEFEJEZÕ IMAÓRA I. E. D. UTÁN" }
-, {"DRUHÉ VEŠPERY", "DRUHÉ NEŠPORY", "2ND VESPERAE", "II VESPER&#198;", "", "DRUHÉ VEÈERNÍ CHVÁLY" , "II. ESTI DICSÉRET" }
-, {"KOMPLETÓRIUM PO DRUHİCH VEŠPERÁCH", "KOMPLETÁØ PO DRUHİCH NEŠPORÁCH", "2ND COMPLETARY", "II COMPLETORIO", "", "KOMPLETÁØ PO DRUHİCH VEÈERNÍCH CHVÁLÁCH" , "BEFEJEZÕ IMAÓRA II. E. D. UTÁN" }
-, {"DETAILY", "DETAILY", "DETAILS", "DETAILS", "", "DETAILY", "RÉSZLETEK" }
-, {"VŠETKY", "VŠECHNY", "ALL", "ALL", "", "VŠECHNY", "ÖSSZES" }
+{{"INVITATÃ“RIUM", "UVEDENÃ DO PRVNÃ MODLITBY DNE", "INVITATORY", "INVITATORIUM", "", "POZVÃNÃ K MODLITBÄš" , "IMÃDSÃGRA HÃVÃS" }
+, {"POSVÃ„TNÃ‰ ÄŒÃTANIE", "MODLITBA SE ÄŒTENÃM", "OFFICE OF READINGS", "OFFICIUM LECTIONIS", "", "MODLITBA SE ÄŒTENÃM" , "OLVASMÃNYOS IMAÃ“RA" }
+, {"RANNÃ‰ CHVÃLY", "RANNÃ CHVÃLY", "LAUDES", "LAUDES MATUTIN&#198;", "", "RANNÃ CHVÃLY" , "REGGELI DICSÃ‰RET" }
+, {"MODLITBA PREDPOLUDNÃM", "MODLITBA DOPOLEDNE", "TERCE", "TERTIA", "", "TERCIE" , "DÃ‰LELÅTT" }
+, {"MODLITBA NAPOLUDNIE", "MODLITBA V POLEDNE", "SEXT", "SEXTA", "", "SEXTA" , "DÃ‰LBEN" }
+, {"MODLITBA POPOLUDNÃ", "MODLITBA ODPOLEDNE", "NONE", "NONA", "", "NONA" , "DÃ‰LUTÃN" }
+, {"VEÅ PERY", "NEÅ PORY", "VESPERAE", "VESPER&#198;", "", "VEÄŒERNÃ CHVÃLY" , "ESTI DICSÃ‰RET" }
+, {"KOMPLETÃ“RIUM", "KOMPLETÃÅ˜", "COMPLETARY", "COMPLETORIO", "", "KOMPLETÃÅ˜" , "BEFEJEZÅ IMAÃ“RA" }
+, {"NEURÄŒENÃ", "NEURÄŒENA", "NOT-DEFINED", "NO DATA", "", "NEURÄŒENÃ" , "NEM AZONOSÃTOTT"}
+, {"PRVÃ‰ VEÅ PERY", "PRVNÃ NEÅ PORY", "1ST VESPERAE", "I VESPER&#198;", "", "PRVNÃ VEÄŒERNÃ CHVÃLY" , "I. ESTI DICSÃ‰RET" }
+, {"KOMPLETÃ“RIUM PO PRVÃCH VEÅ PERÃCH", "KOMPLETÃÅ˜ PO PRVNÃCH NEÅ PORÃCH", "1ST COMPLETARY", "I COMPLETORIO", "", "KOMPLETÃÅ˜ PO PRVNÃCH VEÄŒERNÃCH CHVÃLÃCH" , "BEFEJEZÅ IMAÃ“RA I. E. D. UTÃN" }
+, {"DRUHÃ‰ VEÅ PERY", "DRUHÃ‰ NEÅ PORY", "2ND VESPERAE", "II VESPER&#198;", "", "DRUHÃ‰ VEÄŒERNÃ CHVÃLY" , "II. ESTI DICSÃ‰RET" }
+, {"KOMPLETÃ“RIUM PO DRUHÃCH VEÅ PERÃCH", "KOMPLETÃÅ˜ PO DRUHÃCH NEÅ PORÃCH", "2ND COMPLETARY", "II COMPLETORIO", "", "KOMPLETÃÅ˜ PO DRUHÃCH VEÄŒERNÃCH CHVÃLÃCH" , "BEFEJEZÅ IMAÃ“RA II. E. D. UTÃN" }
+, {"DETAILY", "DETAILY", "DETAILS", "DETAILS", "", "DETAILY", "RÃ‰SZLETEK" }
+, {"VÅ ETKY", "VÅ ECHNY", "ALL", "ALL", "", "VÅ ECHNY", "Ã–SSZES" }
 };
 
 #define		nazov_MODLITBY(a)	nazov_MODLITBY_jazyk[a][_global_jazyk]
 
 // the prefix for common parts of celebration
 const char *nazov_spolc_zospolc_jazyk[POCET_JAZYKOV + 1] =
-{"Zo spoloènej èasti", "Spoleèné texty", "", "", "", "Spoleèné texty", "közös zsolozsmája"};
+{"Zo spoloÄnej Äasti", "SpoleÄnÃ© texty", "", "", "", "SpoleÄnÃ© texty", "kÃ¶zÃ¶s zsolozsmÃ¡ja"};
 
 const char *nazov_spolc_oficiumza_jazyk[POCET_JAZYKOV + 1] =
-{"Ofícium za", "Spoleèné texty", "", "", "", "Spoleèné texty", "közös zsolozsmája"};
+{"OfÃ­cium za", "SpoleÄnÃ© texty", "", "", "", "SpoleÄnÃ© texty", "kÃ¶zÃ¶s zsolozsmÃ¡ja"};
 
 // the --CELEBRATION-- for common parts of celebration
 const char *nazov_spolc_sviatky_jazyk[POCET_JAZYKOV + 1] =
-{"na sviatky", "na svátky", "", "", "", "na svátky", ""};
+{"na sviatky", "na svÃ¡tky", "", "", "", "na svÃ¡tky", ""};
 
 // the --ANNIVERSARY-- for common parts of celebration
 const char *nazov_spolc_vyrocie_jazyk[POCET_JAZYKOV + 1] =
-{"na vıroèie", "na vıroèí", "", "", "", "na vıroèí", ""};
+{"na vÃ½roÄie", "na vÃ½roÄÃ­", "", "", "", "na vÃ½roÄÃ­", ""};
 
 // the --OR-- (alternative) for common parts of celebration
 const char *nazov_spolc_alebo_jazyk[POCET_JAZYKOV + 1] =
@@ -153,46 +153,46 @@ const char *nazov_spolc_alebo_jazyk[POCET_JAZYKOV + 1] =
 
 // the names of the common texts (e.g.: for bishops, for saint men, for apostles...)
 const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
-{{"neurèená", "neurèena", "not decided", "", "", "", ""}, 
- {"duchovnıch pastierov: pre kòazov", "o duchovních pastıøích (o knìích)", "", "", "", "O duchovních pastıøích – o knìích", "lelkipásztorok – papok"}, 
- {"duchovnıch pastierov: pre biskupov", "o duchovních pastıøích (o biskupech)", "", "", "", "O duchovních pastıøích – o biskupech", "lelkipásztorok – püspökök"}, 
- {"duchovnıch pastierov: pre pápeov", "o duchovních pastıøích (o papei)", "", "", "", "O duchovních pastıøích – o papei", "pásztorok – pápa"}, 
- {"uèite¾ov Cirkvi", "o uèitelích církve", "", "", "", "O uèitelích Církve", "egyháztanítók"}, 
- {"apoštolov", "o apoštolech", "", "", "", "O apoštolech", "apostolok"}, 
- {"jedného muèeníka", "o jednom muèedníkovi", "", "", "", "O muèedníkovi", "vértanú"}, 
- {"viacerıch muèeníkov", "o více muèednících", "", "", "", "O více muèednících", "vértanúk"}, 
- {"Panny Márie", "o Pannì Marii", "", "", "", "O Pannì Marii", "Szûz Mária"}, 
- {"svätıch muov: pre reho¾níkov", "o svatıch muech (o øeholnících)", "", "", "", "O øeholnících", "szerzetes"}, 
- {"svätıch muov", "o svatıch muích", "", "", "","O svatıch muích", "szent férfiak"}, 
- {"panien", "o pannách", "", "", "","O pannách", "szûz"}, 
- {"svätıch ien: pre reho¾nice", "o svatıch enách (o øeholnicích)", "", "", "", "O svatıch enách - o øeholnicích", "apáca"}, 
- {"svätıch ien", "o svatıch enách", "", "", "", "O svatıch enách", "szent asszonyok"}, 
- {"duchovnıch pastierov: pre viacerıch", "o duchovních pastıøích", "", "", "", "O duchovních pastıøích", "több lelkipásztor"}, 
- {"jednej muèenice", "o jedné muèednici", "", "", "", "O muèednici", "vértanú"}, 
- {"svätıch ien: pre vychovávate¾ky", "o svatıch enách (o vychovatelkách)", "", "", "", "O svatıch enách - o vychovatelkách", "egyháztanító férfiak"}, 
- {"svätıch muov: pre vychovávate¾ov", "o svatıch muích (o vychovatelích)", "", "", "", "O svatıch muích – o vychovatelích", "egyháztanító asszonyok"}, 
- {"svätıch ien: pre tie, èo konali skutky milosrdenstva", "o svatıch enách (které vynikaly milosrdnımi skutky)", "", "", "", "O svatıch enách – o enì, která vynikala milosrdnımi skutky", "jótékonykodó asszonyok"}, 
- {"svätıch muov: pre tıch, èo konali skutky milosrdenstva", "o svatıch muích (kterí vynikali milosrdnımi skutky)", "", "", "", "O svatıch muích – o mui, kterı vynikal milosrdnımi skutky", "jótékonykodó férfiak"}, 
- {"svätıch ien: pre viaceré", "o svatıch enách (o více enách)", "", "", "", "O svatıch enách", "több szent asszony"}, 
- {"svätıch muov: pre viacerıch", "o svatıch muích – o více muích", "", "", "", "O svatıch muích", "több szent férfi"}, 
- {"viacerıch panien", "o pannách", "", "", "","O pannách", "szüzek"}, 
- {"posviacky chrámu", "o posvìcení kostela", "", "", "", "Posvìcení kostela", "templomszentelés"}, 
- {"zosnulıch", "za zemøelé", "", "", "","Za zemøelé", "halottakért"}, 
- {"svätıch ien: pre tie, èo ili v manelstve", "o svatıch enách (které ily v manelství)", "", "", "", "O svatıch enách – o enì, která ila v manelství", "házas szent asszonyok"}, 
- {"svätıch muov: pre tıch, èo ili v manelstve", "o svatıch muích (kterí ili v manelství)", "", "", "", "O svatıch muích – o mui, kterı il v manelství", "házas szent férfiak"}, 
- {"nebra", "nepouít", "do not use", "", "", "nepouít", "mindent sajátból"}
+{{"neurÄenÃ¡", "neurÄena", "not decided", "", "", "", ""}, 
+ {"duchovnÃ½ch pastierov: pre kÅˆazov", "o duchovnÃ­ch pastÃ½Å™Ã­ch (o knÄ›Å¾Ã­ch)", "", "", "", "O duchovnÃ­ch pastÃ½Å™Ã­ch â€“ o knÄ›Å¾Ã­ch", "lelkipÃ¡sztorok â€“ papok"}, 
+ {"duchovnÃ½ch pastierov: pre biskupov", "o duchovnÃ­ch pastÃ½Å™Ã­ch (o biskupech)", "", "", "", "O duchovnÃ­ch pastÃ½Å™Ã­ch â€“ o biskupech", "lelkipÃ¡sztorok â€“ pÃ¼spÃ¶kÃ¶k"}, 
+ {"duchovnÃ½ch pastierov: pre pÃ¡peÅ¾ov", "o duchovnÃ­ch pastÃ½Å™Ã­ch (o papeÅ¾i)", "", "", "", "O duchovnÃ­ch pastÃ½Å™Ã­ch â€“ o papeÅ¾i", "pÃ¡sztorok â€“ pÃ¡pa"}, 
+ {"uÄiteÄ¾ov Cirkvi", "o uÄitelÃ­ch cÃ­rkve", "", "", "", "O uÄitelÃ­ch CÃ­rkve", "egyhÃ¡ztanÃ­tÃ³k"}, 
+ {"apoÅ¡tolov", "o apoÅ¡tolech", "", "", "", "O apoÅ¡tolech", "apostolok"}, 
+ {"jednÃ©ho muÄenÃ­ka", "o jednom muÄednÃ­kovi", "", "", "", "O muÄednÃ­kovi", "vÃ©rtanÃº"}, 
+ {"viacerÃ½ch muÄenÃ­kov", "o vÃ­ce muÄednÃ­cÃ­ch", "", "", "", "O vÃ­ce muÄednÃ­cÃ­ch", "vÃ©rtanÃºk"}, 
+ {"Panny MÃ¡rie", "o PannÄ› Marii", "", "", "", "O PannÄ› Marii", "SzÅ±z MÃ¡ria"}, 
+ {"svÃ¤tÃ½ch muÅ¾ov: pre rehoÄ¾nÃ­kov", "o svatÃ½ch muÅ¾ech (o Å™eholnÃ­cÃ­ch)", "", "", "", "O Å™eholnÃ­cÃ­ch", "szerzetes"}, 
+ {"svÃ¤tÃ½ch muÅ¾ov", "o svatÃ½ch muÅ¾Ã­ch", "", "", "","O svatÃ½ch muÅ¾Ã­ch", "szent fÃ©rfiak"}, 
+ {"panien", "o pannÃ¡ch", "", "", "","O pannÃ¡ch", "szÅ±z"}, 
+ {"svÃ¤tÃ½ch Å¾ien: pre rehoÄ¾nice", "o svatÃ½ch Å¾enÃ¡ch (o Å™eholnicÃ­ch)", "", "", "", "O svatÃ½ch Å¾enÃ¡ch - o Å™eholnicÃ­ch", "apÃ¡ca"}, 
+ {"svÃ¤tÃ½ch Å¾ien", "o svatÃ½ch Å¾enÃ¡ch", "", "", "", "O svatÃ½ch Å¾enÃ¡ch", "szent asszonyok"}, 
+ {"duchovnÃ½ch pastierov: pre viacerÃ½ch", "o duchovnÃ­ch pastÃ½Å™Ã­ch", "", "", "", "O duchovnÃ­ch pastÃ½Å™Ã­ch", "tÃ¶bb lelkipÃ¡sztor"}, 
+ {"jednej muÄenice", "o jednÃ© muÄednici", "", "", "", "O muÄednici", "vÃ©rtanÃº"}, 
+ {"svÃ¤tÃ½ch Å¾ien: pre vychovÃ¡vateÄ¾ky", "o svatÃ½ch Å¾enÃ¡ch (o vychovatelkÃ¡ch)", "", "", "", "O svatÃ½ch Å¾enÃ¡ch - o vychovatelkÃ¡ch", "egyhÃ¡ztanÃ­tÃ³ fÃ©rfiak"}, 
+ {"svÃ¤tÃ½ch muÅ¾ov: pre vychovÃ¡vateÄ¾ov", "o svatÃ½ch muÅ¾Ã­ch (o vychovatelÃ­ch)", "", "", "", "O svatÃ½ch muÅ¾Ã­ch â€“ o vychovatelÃ­ch", "egyhÃ¡ztanÃ­tÃ³ asszonyok"}, 
+ {"svÃ¤tÃ½ch Å¾ien: pre tie, Äo konali skutky milosrdenstva", "o svatÃ½ch Å¾enÃ¡ch (kterÃ© vynikaly milosrdnÃ½mi skutky)", "", "", "", "O svatÃ½ch Å¾enÃ¡ch â€“ o Å¾enÄ›, kterÃ¡ vynikala milosrdnÃ½mi skutky", "jÃ³tÃ©konykodÃ³ asszonyok"}, 
+ {"svÃ¤tÃ½ch muÅ¾ov: pre tÃ½ch, Äo konali skutky milosrdenstva", "o svatÃ½ch muÅ¾Ã­ch (kterÃ­ vynikali milosrdnÃ½mi skutky)", "", "", "", "O svatÃ½ch muÅ¾Ã­ch â€“ o muÅ¾i, kterÃ½ vynikal milosrdnÃ½mi skutky", "jÃ³tÃ©konykodÃ³ fÃ©rfiak"}, 
+ {"svÃ¤tÃ½ch Å¾ien: pre viacerÃ©", "o svatÃ½ch Å¾enÃ¡ch (o vÃ­ce Å¾enÃ¡ch)", "", "", "", "O svatÃ½ch Å¾enÃ¡ch", "tÃ¶bb szent asszony"}, 
+ {"svÃ¤tÃ½ch muÅ¾ov: pre viacerÃ½ch", "o svatÃ½ch muÅ¾Ã­ch â€“ o vÃ­ce muÅ¾Ã­ch", "", "", "", "O svatÃ½ch muÅ¾Ã­ch", "tÃ¶bb szent fÃ©rfi"}, 
+ {"viacerÃ½ch panien", "o pannÃ¡ch", "", "", "","O pannÃ¡ch", "szÃ¼zek"}, 
+ {"posviacky chrÃ¡mu", "o posvÄ›cenÃ­ kostela", "", "", "", "PosvÄ›cenÃ­ kostela", "templomszentelÃ©s"}, 
+ {"zosnulÃ½ch", "za zemÅ™elÃ©", "", "", "","Za zemÅ™elÃ©", "halottakÃ©rt"}, 
+ {"svÃ¤tÃ½ch Å¾ien: pre tie, Äo Å¾ili v manÅ¾elstve", "o svatÃ½ch Å¾enÃ¡ch (kterÃ© Å¾ily v manÅ¾elstvÃ­)", "", "", "", "O svatÃ½ch Å¾enÃ¡ch â€“ o Å¾enÄ›, kterÃ¡ Å¾ila v manÅ¾elstvÃ­", "hÃ¡zas szent asszonyok"}, 
+ {"svÃ¤tÃ½ch muÅ¾ov: pre tÃ½ch, Äo Å¾ili v manÅ¾elstve", "o svatÃ½ch muÅ¾Ã­ch (kterÃ­ Å¾ili v manÅ¾elstvÃ­)", "", "", "", "O svatÃ½ch muÅ¾Ã­ch â€“ o muÅ¾i, kterÃ½ Å¾il v manÅ¾elstvÃ­", "hÃ¡zas szent fÃ©rfiak"}, 
+ {"nebraÅ¥", "nepouÅ¾Ã­t", "do not use", "", "", "nepouÅ¾Ã­t", "mindent sajÃ¡tbÃ³l"}
 };
 
 #define		nazov_spolc(a)	nazov_spolc_jazyk[a][_global_jazyk]
 
 const char *nazov_bit_opt_1_spomienka_spol_cast_jazyk[POCET_JAZYKOV + 1] =
-{"bola zvolená monos niektoré èasti pri slávení spomienky vzia zo dòa pod¾a Všeobecnıch smerníc, è. 235 písm. b", 
- "byla zvolena monost vzít pøi slavení památky nìkteré èásti ze dne podle Všeobecnıch pokynù k denní modlitbì církve, è. 235 písm. b", 
+{"bola zvolenÃ¡ moÅ¾nosÅ¥ niektorÃ© Äasti pri slÃ¡venÃ­ spomienky vziaÅ¥ zo dÅˆa podÄ¾a VÅ¡eobecnÃ½ch smernÃ­c, Ä. 235 pÃ­sm. b", 
+ "byla zvolena moÅ¾nost vzÃ­t pÅ™i slavenÃ­ pamÃ¡tky nÄ›kterÃ© ÄÃ¡sti ze dne podle VÅ¡eobecnÃ½ch pokynÅ¯ k dennÃ­ modlitbÄ› cÃ­rkve, Ä. 235 pÃ­sm. b", 
  "", 
  "", 
  "", 
- "byla zvolena monost vzít pøi slavení památky nìkteré èásti ze dne podle Všeobecnıch pokynù k denní modlitbì Církve, è. 235 písm. b", 
- "az a lehetõség volt választva, hogy az emléknapoknál bizonyos részek vehetõk a soros köznapról; Általános Rendelkezések az Imaórák Liturgiájáról, 235 b"
+ "byla zvolena moÅ¾nost vzÃ­t pÅ™i slavenÃ­ pamÃ¡tky nÄ›kterÃ© ÄÃ¡sti ze dne podle VÅ¡eobecnÃ½ch pokynÅ¯ k dennÃ­ modlitbÄ› CÃ­rkve, Ä. 235 pÃ­sm. b", 
+ "az a lehetÅ‘sÃ©g volt vÃ¡lasztva, hogy az emlÃ©knapoknÃ¡l bizonyos rÃ©szek vehetÅ‘k a soros kÃ¶znaprÃ³l; ÃltalÃ¡nos RendelkezÃ©sek az ImaÃ³rÃ¡k LiturgiÃ¡jÃ¡rÃ³l, 235 b"
 };
 
 // filenames - same for all languages (based on Slovak)
@@ -262,84 +262,84 @@ const char *nazov_spolc_ANCHOR[POCET_SPOL_CASTI + 1] =
 // the names of liturgical periods (usually lowecase) / nazov_obdobia: string pre nazov liturgickeho obdobia
 const char *nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
- {"adventné obdobie", "doba adventní", "", "tempus adventus", "", "doba adventní", "adventi idõ"},
- {"adventné obdobie", "doba adventní", "", "tempus adventus", "", "doba adventní", "adventi idõ"},
- {"oktáva Narodenia Pána", "oktáv Narození Pánì", "", "octava nativitatis", "", "oktáv Narození Pánì", "karácsony nyolcada"},
- {"vianoèné obdobie", "doba vánoèní", "", "tempus nativitatis", "", "doba vánoèní", "karácsonyi idõ"},
- {"vianoèné obdobie", "doba vánoèní", "", "tempus nativitatis", "", "doba vánoèní", "karácsonyi idõ"},
- {"cezroèné obdobie", "mezidobí", "", "tempus per annum", "", "mezidobí", "évközi idõ"},
- {"pôstne obdobie", "doba postní", "", "tempus quadragesim&#230;", "", "doba postní", "nagyböjti idõ"},
- {"Ve¾kı tıdeò", "Svatı tıden", "", "hebdomada sancta", "", "Svatı tıden", "nagyhét"},
- {"ve¾konoèné trojdnie", "Velikonoèní triduum", "", "sacrum triduum paschale", "", "Velikonoèní triduum", "szent három nap"},
- {"ve¾konoèná oktáva", "velikonoèní oktáv", "", "octava pasch&#230;", "", "velikonoèní oktáv", "húsvét nyolcada"},
- {"ve¾konoèné obdobie", "doba velikonoèní", "", "tempus paschale", "", "doba velikonoèní", "húsvéti idõ"},
- {"ve¾konoèné obdobie", "doba velikonoèní", "", "tempus paschale", "", "doba velikonoèní", "húsvéti idõ"},
+ {"adventnÃ© obdobie", "doba adventnÃ­", "", "tempus adventus", "", "doba adventnÃ­", "adventi idÅ‘"},
+ {"adventnÃ© obdobie", "doba adventnÃ­", "", "tempus adventus", "", "doba adventnÃ­", "adventi idÅ‘"},
+ {"oktÃ¡va Narodenia PÃ¡na", "oktÃ¡v NarozenÃ­ PÃ¡nÄ›", "", "octava nativitatis", "", "oktÃ¡v NarozenÃ­ PÃ¡nÄ›", "karÃ¡csony nyolcada"},
+ {"vianoÄnÃ© obdobie", "doba vÃ¡noÄnÃ­", "", "tempus nativitatis", "", "doba vÃ¡noÄnÃ­", "karÃ¡csonyi idÅ‘"},
+ {"vianoÄnÃ© obdobie", "doba vÃ¡noÄnÃ­", "", "tempus nativitatis", "", "doba vÃ¡noÄnÃ­", "karÃ¡csonyi idÅ‘"},
+ {"cezroÄnÃ© obdobie", "mezidobÃ­", "", "tempus per annum", "", "mezidobÃ­", "Ã©vkÃ¶zi idÅ‘"},
+ {"pÃ´stne obdobie", "doba postnÃ­", "", "tempus quadragesim&#230;", "", "doba postnÃ­", "nagybÃ¶jti idÅ‘"},
+ {"VeÄ¾kÃ½ tÃ½Å¾deÅˆ", "SvatÃ½ tÃ½den", "", "hebdomada sancta", "", "SvatÃ½ tÃ½den", "nagyhÃ©t"},
+ {"veÄ¾konoÄnÃ© trojdnie", "VelikonoÄnÃ­ triduum", "", "sacrum triduum paschale", "", "VelikonoÄnÃ­ triduum", "szent hÃ¡rom nap"},
+ {"veÄ¾konoÄnÃ¡ oktÃ¡va", "velikonoÄnÃ­ oktÃ¡v", "", "octava pasch&#230;", "", "velikonoÄnÃ­ oktÃ¡v", "hÃºsvÃ©t nyolcada"},
+ {"veÄ¾konoÄnÃ© obdobie", "doba velikonoÄnÃ­", "", "tempus paschale", "", "doba velikonoÄnÃ­", "hÃºsvÃ©ti idÅ‘"},
+ {"veÄ¾konoÄnÃ© obdobie", "doba velikonoÄnÃ­", "", "tempus paschale", "", "doba velikonoÄnÃ­", "hÃºsvÃ©ti idÅ‘"},
 };
 
 #define		nazov_obdobia(a)	nazov_obdobia_jazyk[a][_global_jazyk]
 
-// the names of liturgical periods (usually lowecase) / nazov_obdobia: string pre názov liturgického obdobia, rozšírenı
+// the names of liturgical periods (usually lowecase) / nazov_obdobia: string pre nÃ¡zov liturgickÃ©ho obdobia, rozÅ¡Ã­renÃ½
 const char *nazov_obdobia_ext_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
- {"Adventné obdobie I (do 16. decembra)", "doba adventní I", "", "tempus adventus I", "", "doba adventní I", "adventi idõ I (dec. 16-ig)"},
- {"Adventné obdobie II (po 16. decembri)", "doba adventní II", "", "tempus adventus II", "", "doba adventní II", "adventi idõ II (dec. 16 után)"},
- {"Oktáva Narodenia Pána", "oktáv Narození Pánì", "", "octava nativitatis", "", "oktáv Narození Pánì", "karácsony nyolcada"},
- {"Vianoèné obdobie I (do Zjavenia Pána)", "doba vánoèní I", "", "tempus nativitatis I", "", "doba vánoèní II", "karácsonyi idõ I (Urunk megjelenéséig)"},
- {"Vianoèné obdobie II (po Zjavení Pána)", "doba vánoèní II", "", "tempus nativitatis II", "", "doba vánoèní II", "karácsonyi idõ II (Urunk megjelenése után)"},
- {"Cezroèné obdobie", "mezidobí", "", "tempus per annum", "", "mezidobí", "évközi idõ"},
- {"Pôstne obdobie I (do Kvetnej nedele)", "doba postní I", "", "tempus quadragesim&#230; I", "", "doba postní I", "nagyböjti idõ I (Virágvasárnapig)"},
- {"Pôstne obdobie II (ve¾kı tıdeò)", "Svatı tıden", "", "hebdomada sancta", "", "Svatı tıden", "nagyböjti idõ II (Nagyhét)"},
- {"Ve¾konoèné trojdnie", "Velikonoèní triduum", "", "sacrum triduum paschale", "", "Velikonoèní triduum", "szent három nap"},
- {"Ve¾konoèná oktáva", "velikonoèní oktáv", "", "octava pasch&#230;", "", "velikonoèní oktáv", "húsvét nyolcada"},
- {"Ve¾konoèné obdobie I (do Nanebovstúpenia Pána)", "doba velikonoèní I", "", "tempus paschale I", "", "doba velikonoèní I", "húsvéti idõ I (Urunk mennybemeneteléig)"},
- {"Ve¾konoèné obdobie II (po Nanebovstúpení Pána)", "doba velikonoèní II", "", "tempus paschale II", "", "doba velikonoèní II", "húsvéti idõ II (Urunk mennybemenetele után)"},
+ {"AdventnÃ© obdobie I (do 16. decembra)", "doba adventnÃ­ I", "", "tempus adventus I", "", "doba adventnÃ­ I", "adventi idÅ‘ I (dec. 16-ig)"},
+ {"AdventnÃ© obdobie II (po 16. decembri)", "doba adventnÃ­ II", "", "tempus adventus II", "", "doba adventnÃ­ II", "adventi idÅ‘ II (dec. 16 utÃ¡n)"},
+ {"OktÃ¡va Narodenia PÃ¡na", "oktÃ¡v NarozenÃ­ PÃ¡nÄ›", "", "octava nativitatis", "", "oktÃ¡v NarozenÃ­ PÃ¡nÄ›", "karÃ¡csony nyolcada"},
+ {"VianoÄnÃ© obdobie I (do Zjavenia PÃ¡na)", "doba vÃ¡noÄnÃ­ I", "", "tempus nativitatis I", "", "doba vÃ¡noÄnÃ­ II", "karÃ¡csonyi idÅ‘ I (Urunk megjelenÃ©sÃ©ig)"},
+ {"VianoÄnÃ© obdobie II (po ZjavenÃ­ PÃ¡na)", "doba vÃ¡noÄnÃ­ II", "", "tempus nativitatis II", "", "doba vÃ¡noÄnÃ­ II", "karÃ¡csonyi idÅ‘ II (Urunk megjelenÃ©se utÃ¡n)"},
+ {"CezroÄnÃ© obdobie", "mezidobÃ­", "", "tempus per annum", "", "mezidobÃ­", "Ã©vkÃ¶zi idÅ‘"},
+ {"PÃ´stne obdobie I (do Kvetnej nedele)", "doba postnÃ­ I", "", "tempus quadragesim&#230; I", "", "doba postnÃ­ I", "nagybÃ¶jti idÅ‘ I (VirÃ¡gvasÃ¡rnapig)"},
+ {"PÃ´stne obdobie II (veÄ¾kÃ½ tÃ½Å¾deÅˆ)", "SvatÃ½ tÃ½den", "", "hebdomada sancta", "", "SvatÃ½ tÃ½den", "nagybÃ¶jti idÅ‘ II (NagyhÃ©t)"},
+ {"VeÄ¾konoÄnÃ© trojdnie", "VelikonoÄnÃ­ triduum", "", "sacrum triduum paschale", "", "VelikonoÄnÃ­ triduum", "szent hÃ¡rom nap"},
+ {"VeÄ¾konoÄnÃ¡ oktÃ¡va", "velikonoÄnÃ­ oktÃ¡v", "", "octava pasch&#230;", "", "velikonoÄnÃ­ oktÃ¡v", "hÃºsvÃ©t nyolcada"},
+ {"VeÄ¾konoÄnÃ© obdobie I (do NanebovstÃºpenia PÃ¡na)", "doba velikonoÄnÃ­ I", "", "tempus paschale I", "", "doba velikonoÄnÃ­ I", "hÃºsvÃ©ti idÅ‘ I (Urunk mennybemenetelÃ©ig)"},
+ {"VeÄ¾konoÄnÃ© obdobie II (po NanebovstÃºpenÃ­ PÃ¡na)", "doba velikonoÄnÃ­ II", "", "tempus paschale II", "", "doba velikonoÄnÃ­ II", "hÃºsvÃ©ti idÅ‘ II (Urunk mennybemenetele utÃ¡n)"},
 };
 
 #define		nazov_obdobia_ext(a)	nazov_obdobia_ext_jazyk[a][_global_jazyk]
 
-// the names of liturgical periods (usually lowecase) full-shortened / nazov_obdobia: string pre názov liturgického obdobia, struènı ale plnı
+// the names of liturgical periods (usually lowecase) full-shortened / nazov_obdobia: string pre nÃ¡zov liturgickÃ©ho obdobia, struÄnÃ½ ale plnÃ½
 const char *nazov_obdobia_short_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
- {"Adventné obd. I", "doba adventní I", "", "tempus adventus I", "", "doba adventní I", "adventi idõ I"},
- {"Adventné obd. II", "doba adventní II", "", "tempus adventus II", "", "doba adventní II", "adventi idõ II"},
- {"Oktáva Narodenia Pána", "oktáv Narození Pánì", "", "octava nativitatis", "", "oktáv Narození Pánì", "karácsony nyolcada"},
- {"Vianoèné obd. I", "doba vánoèní I", "", "tempus nativitatis I", "", "doba vánoèní II", "karácsonyi idõ I"},
- {"Vianoèné obd. II", "doba vánoèní II", "", "tempus nativitatis II", "", "doba vánoèní II", "karácsonyi idõ II"},
- {"Cezroèné obd.", "mezidobí", "", "tempus per annum", "", "mezidobí", "évközi idõ"},
- {"Pôstne obd. I", "doba postní I", "", "tempus quadragesim&#230; I", "", "doba postní I", "nagyböjti idõ I"},
- {"Ve¾kı tıdeò", "Svatı tıden", "", "hebdomada sancta", "", "Svatı tıden", "Nagyhét"},
- {"Ve¾konoèné trojdnie", "Velikonoèní triduum", "", "sacrum triduum paschale", "", "Velikonoèní triduum", "szent három nap"},
- {"Ve¾konoèná oktáva", "velikonoèní oktáv", "", "octava pasch&#230;", "", "velikonoèní oktáv", "húsvét nyolcada"},
- {"Ve¾konoèné obd. I", "doba velikonoèní I", "", "tempus paschale I", "", "doba velikonoèní I", "húsvéti idõ I"},
- {"Ve¾konoèné obd. II", "doba velikonoèní II", "", "tempus paschale II", "", "doba velikonoèní II", "húsvéti idõ II"},
+ {"AdventnÃ© obd. I", "doba adventnÃ­ I", "", "tempus adventus I", "", "doba adventnÃ­ I", "adventi idÅ‘ I"},
+ {"AdventnÃ© obd. II", "doba adventnÃ­ II", "", "tempus adventus II", "", "doba adventnÃ­ II", "adventi idÅ‘ II"},
+ {"OktÃ¡va Narodenia PÃ¡na", "oktÃ¡v NarozenÃ­ PÃ¡nÄ›", "", "octava nativitatis", "", "oktÃ¡v NarozenÃ­ PÃ¡nÄ›", "karÃ¡csony nyolcada"},
+ {"VianoÄnÃ© obd. I", "doba vÃ¡noÄnÃ­ I", "", "tempus nativitatis I", "", "doba vÃ¡noÄnÃ­ II", "karÃ¡csonyi idÅ‘ I"},
+ {"VianoÄnÃ© obd. II", "doba vÃ¡noÄnÃ­ II", "", "tempus nativitatis II", "", "doba vÃ¡noÄnÃ­ II", "karÃ¡csonyi idÅ‘ II"},
+ {"CezroÄnÃ© obd.", "mezidobÃ­", "", "tempus per annum", "", "mezidobÃ­", "Ã©vkÃ¶zi idÅ‘"},
+ {"PÃ´stne obd. I", "doba postnÃ­ I", "", "tempus quadragesim&#230; I", "", "doba postnÃ­ I", "nagybÃ¶jti idÅ‘ I"},
+ {"VeÄ¾kÃ½ tÃ½Å¾deÅˆ", "SvatÃ½ tÃ½den", "", "hebdomada sancta", "", "SvatÃ½ tÃ½den", "NagyhÃ©t"},
+ {"VeÄ¾konoÄnÃ© trojdnie", "VelikonoÄnÃ­ triduum", "", "sacrum triduum paschale", "", "VelikonoÄnÃ­ triduum", "szent hÃ¡rom nap"},
+ {"VeÄ¾konoÄnÃ¡ oktÃ¡va", "velikonoÄnÃ­ oktÃ¡v", "", "octava pasch&#230;", "", "velikonoÄnÃ­ oktÃ¡v", "hÃºsvÃ©t nyolcada"},
+ {"VeÄ¾konoÄnÃ© obd. I", "doba velikonoÄnÃ­ I", "", "tempus paschale I", "", "doba velikonoÄnÃ­ I", "hÃºsvÃ©ti idÅ‘ I"},
+ {"VeÄ¾konoÄnÃ© obd. II", "doba velikonoÄnÃ­ II", "", "tempus paschale II", "", "doba velikonoÄnÃ­ II", "hÃºsvÃ©ti idÅ‘ II"},
 };
 
 #define		nazov_obdobia_short(a)	nazov_obdobia_short_jazyk[a][_global_jazyk]
 
 // the names of liturgical periods for debugging, only in Slovak; no need to translate
-const char *nazov_obdobia_[POCET_OBDOBI + 1] = // debuggovacie - preto netreba preklada; 2006-08-03
+const char *nazov_obdobia_[POCET_OBDOBI + 1] = // debuggovacie - preto netreba prekladaÅ¥; 2006-08-03
 {
- "adventné obdobie I", "adventné obdobie II", "oktáva Narodenia Pána",
- "vianoèné obdobie I", "vianoèné obdobie II", "cezroèné obdobie", 
- "pôstne obdobie I", "pôstne obdobie II (Ve¾kı tıdeò)",
- "ve¾konoèné trojdnie", "ve¾konoèná oktáva", "ve¾konoèné obdobie I", "ve¾konoèné obdobie II",
+ "adventnÃ© obdobie I", "adventnÃ© obdobie II", "oktÃ¡va Narodenia PÃ¡na",
+ "vianoÄnÃ© obdobie I", "vianoÄnÃ© obdobie II", "cezroÄnÃ© obdobie", 
+ "pÃ´stne obdobie I", "pÃ´stne obdobie II (VeÄ¾kÃ½ tÃ½Å¾deÅˆ)",
+ "veÄ¾konoÄnÃ© trojdnie", "veÄ¾konoÄnÃ¡ oktÃ¡va", "veÄ¾konoÄnÃ© obdobie I", "veÄ¾konoÄnÃ© obdobie II",
 };
 
 // the names of liturgical periods in local grammatically 6.th declination? (usually lowecase); in English: "IN liturgical period" or "OF liturgical period" / lokal == 6. pad, v kom/com
 const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
- {"v adventnom období", "v dobì adventní", "", "", "", "v dobì adventní", "adventben"},
- {"v adventnom období", "v dobì adventní", "", "", "", "v dobì adventní", "adventben"},
- {"v oktáve Narodenia Pána", "v oktávu Narození Pánì", "", "", "", "v oktávu Narození Pánì", "Karácsony nyolcadában"},
- {"vo vianoènom období", "v dobì vánoèní", "", "", "", "v dobì vánoèní", "a karácsonyi idõben"},
- {"vo vianoènom období", "v dobì vánoèní", "", "", "", "v dobì vánoèní", "a karácsonyi idõben"},
- {"v cezroènom období", "v mezidobí", "", "per annum", "", "v mezidobí", "az évközi idõben"},
- {"v pôstnom období", "v dobì postní", "", "", "", "v dobì postní", "a nagyböjti idõben"},
- {"vo Ve¾kom tıdni", "ve Svatém tıdnu", "", "", "", "ve Svatém tıdnu", "a nagyhéten"},
- {"vo ve¾konoènom trojdní", "ve velikonoèním triduu", "", "", "", "ve velikonoèním triduu", "a szent három napban"},
- {"vo ve¾konoènej oktáve", "ve velikonoèním oktávu", "", "", "", "ve velikonoèním oktávu", "húsvét nyolcadában"},
- {"vo ve¾konoènom období", "v dobì velikonoèní", "", "", "", "v dobì velikonoèní", "a húsvéti idõben"},
- {"vo ve¾konoènom období", "v dobì velikonoèní", "", "", "", "v dobì velikonoèní", "a húsvéti idõben"},
+ {"v adventnom obdobÃ­", "v dobÄ› adventnÃ­", "", "", "", "v dobÄ› adventnÃ­", "adventben"},
+ {"v adventnom obdobÃ­", "v dobÄ› adventnÃ­", "", "", "", "v dobÄ› adventnÃ­", "adventben"},
+ {"v oktÃ¡ve Narodenia PÃ¡na", "v oktÃ¡vu NarozenÃ­ PÃ¡nÄ›", "", "", "", "v oktÃ¡vu NarozenÃ­ PÃ¡nÄ›", "KarÃ¡csony nyolcadÃ¡ban"},
+ {"vo vianoÄnom obdobÃ­", "v dobÄ› vÃ¡noÄnÃ­", "", "", "", "v dobÄ› vÃ¡noÄnÃ­", "a karÃ¡csonyi idÅ‘ben"},
+ {"vo vianoÄnom obdobÃ­", "v dobÄ› vÃ¡noÄnÃ­", "", "", "", "v dobÄ› vÃ¡noÄnÃ­", "a karÃ¡csonyi idÅ‘ben"},
+ {"v cezroÄnom obdobÃ­", "v mezidobÃ­", "", "per annum", "", "v mezidobÃ­", "az Ã©vkÃ¶zi idÅ‘ben"},
+ {"v pÃ´stnom obdobÃ­", "v dobÄ› postnÃ­", "", "", "", "v dobÄ› postnÃ­", "a nagybÃ¶jti idÅ‘ben"},
+ {"vo VeÄ¾kom tÃ½Å¾dni", "ve SvatÃ©m tÃ½dnu", "", "", "", "ve SvatÃ©m tÃ½dnu", "a nagyhÃ©ten"},
+ {"vo veÄ¾konoÄnom trojdnÃ­", "ve velikonoÄnÃ­m triduu", "", "", "", "ve velikonoÄnÃ­m triduu", "a szent hÃ¡rom napban"},
+ {"vo veÄ¾konoÄnej oktÃ¡ve", "ve velikonoÄnÃ­m oktÃ¡vu", "", "", "", "ve velikonoÄnÃ­m oktÃ¡vu", "hÃºsvÃ©t nyolcadÃ¡ban"},
+ {"vo veÄ¾konoÄnom obdobÃ­", "v dobÄ› velikonoÄnÃ­", "", "", "", "v dobÄ› velikonoÄnÃ­", "a hÃºsvÃ©ti idÅ‘ben"},
+ {"vo veÄ¾konoÄnom obdobÃ­", "v dobÄ› velikonoÄnÃ­", "", "", "", "v dobÄ› velikonoÄnÃ­", "a hÃºsvÃ©ti idÅ‘ben"},
 };
 
 #define		nazov_obdobia_v(a)	nazov_obdobia_v_jazyk[a][_global_jazyk]
@@ -347,38 +347,38 @@ const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 // the names of liturgical periods in local grammatically 6.th declination? (uppercase) / nazov_obdobia: string pre nazov liturgickeho obdobia
 const char *nazov_OBDOBIA_V_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
- {"V ADVENTNOM OBDOBÍ", "V DOBÌ ADVENTNÍ", "", "", "", "V DOBÌ ADVENTNÍ", "ADVENTBEN"},
- {"V ADVENTNOM OBDOBÍ", "V DOBÌ ADVENTNÍ", "", "", "", "V DOBÌ ADVENTNÍ", "ADVENTBEN"},
- {"V OKTÁVE NARODENIA PÁNA", "V OKTÁVU NAROZENÍ PÁNÌ", "", "", "", "V OKTÁVU NAROZENÍ PÁNÌ", "A KARÁCSONY NYOLCADÁBAN"},
- {"VO VIANOÈNOM OBDOBÍ", "V DOBÌ VÁNOÈNÍ", "", "", "", "V DOBÌ VÁNOÈNÍ", "A KARÁCSONYI IDÕBEN"},
- {"VO VIANOÈNOM OBDOBÍ", "V DOBÌ VÁNOÈNÍ", "", "", "", "V DOBÌ VÁNOÈNÍ", "A KARÁCSONYI IDÕBEN"},
- {"V CEZROÈNOM OBDOBÍ", "V MEZIDOBÍ", "", "", "", "BÌHEM ROKU", "AZ ÉVKÖZI IDÕBEN"},
- {"V PÔSTNOM OBDOBÍ", "V DOBÌ POSTNÍ", "", "", "", "V DOBÌ POSTNÍ", "A NAGYBÖJTI IDÕBEN"},
- {"VO VE¼KOM TİDNI", "VE SVATÉM TİDNU", "", "", "", "VE SVATÉM TİDNU", "A NAGYHÉTEN"},
- {"VO VE¼KONOÈNOM TROJDNÍ", "VE VELIKONOÈNÍM TRIDUU", "", "", "", "VE VELIKONOÈNÍM TRIDUU", "A SZENT HÁROM NAPBAN"},
- {"VO VE¼KONOÈNEJ OKTÁVE", "VE VELIKONOÈNÍM OKTÁVU", "", "", "", "V OKTÁVU VELIKONOÈNÍM", "HÚSVÉT NYOLCACADÁBAN"},
- {"VO VE¼KONOÈNOM OBDOBÍ", "V DOBÌ VELIKONOÈNÍ", "", "", "", "V DOBÌ VELIKONOÈNÍ", "A HÚSVÉTI IDÕBEN"},
- {"VO VE¼KONOÈNOM OBDOBÍ", "V DOBÌ VELIKONOÈNÍ", "", "", "", "V DOBÌ VELIKONOÈNÍ", "A HÚSVÉTI IDÕBEN"},
+ {"V ADVENTNOM OBDOBÃ", "V DOBÄš ADVENTNÃ", "", "", "", "V DOBÄš ADVENTNÃ", "ADVENTBEN"},
+ {"V ADVENTNOM OBDOBÃ", "V DOBÄš ADVENTNÃ", "", "", "", "V DOBÄš ADVENTNÃ", "ADVENTBEN"},
+ {"V OKTÃVE NARODENIA PÃNA", "V OKTÃVU NAROZENÃ PÃNÄš", "", "", "", "V OKTÃVU NAROZENÃ PÃNÄš", "A KARÃCSONY NYOLCADÃBAN"},
+ {"VO VIANOÄŒNOM OBDOBÃ", "V DOBÄš VÃNOÄŒNÃ", "", "", "", "V DOBÄš VÃNOÄŒNÃ", "A KARÃCSONYI IDÅBEN"},
+ {"VO VIANOÄŒNOM OBDOBÃ", "V DOBÄš VÃNOÄŒNÃ", "", "", "", "V DOBÄš VÃNOÄŒNÃ", "A KARÃCSONYI IDÅBEN"},
+ {"V CEZROÄŒNOM OBDOBÃ", "V MEZIDOBÃ", "", "", "", "BÄšHEM ROKU", "AZ Ã‰VKÃ–ZI IDÅBEN"},
+ {"V PÃ”STNOM OBDOBÃ", "V DOBÄš POSTNÃ", "", "", "", "V DOBÄš POSTNÃ", "A NAGYBÃ–JTI IDÅBEN"},
+ {"VO VEÄ½KOM TÃÅ½DNI", "VE SVATÃ‰M TÃDNU", "", "", "", "VE SVATÃ‰M TÃDNU", "A NAGYHÃ‰TEN"},
+ {"VO VEÄ½KONOÄŒNOM TROJDNÃ", "VE VELIKONOÄŒNÃM TRIDUU", "", "", "", "VE VELIKONOÄŒNÃM TRIDUU", "A SZENT HÃROM NAPBAN"},
+ {"VO VEÄ½KONOÄŒNEJ OKTÃVE", "VE VELIKONOÄŒNÃM OKTÃVU", "", "", "", "V OKTÃVU VELIKONOÄŒNÃM", "HÃšSVÃ‰T NYOLCACADÃBAN"},
+ {"VO VEÄ½KONOÄŒNOM OBDOBÃ", "V DOBÄš VELIKONOÄŒNÃ", "", "", "", "V DOBÄš VELIKONOÄŒNÃ", "A HÃšSVÃ‰TI IDÅBEN"},
+ {"VO VEÄ½KONOÄŒNOM OBDOBÃ", "V DOBÄš VELIKONOÄŒNÃ", "", "", "", "V DOBÄš VELIKONOÄŒNÃ", "A HÃšSVÃ‰TI IDÅBEN"},
 };
 
 #define		nazov_OBDOBIA_V(a)	nazov_OBDOBIA_V_jazyk[a][_global_jazyk]
 
 // used for Sundays - "which" Sunday for some of them, e.g. "dominica V paschae" for 5-th Sunday in that liturgical period (uppercase)
-// 2008-12-20: doplnené - pouíva sa v init_global_string() pre nedele niektorıch období [zatia¾ iba v slovenèine]
+// 2008-12-20: doplnenÃ© - pouÅ¾Ã­va sa v init_global_string() pre nedele niektorÃ½ch obdobÃ­ [zatiaÄ¾ iba v slovenÄine]
 const char *nazov_OBDOBIA_AKA_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
- {"ADVENTNÁ", "ADVENTNÍ", "", "", "", "ADVENTNÍ", "ADVENT"},
- {"ADVENTNÁ", "ADVENTNÍ", "", "", "", "ADVENTNÍ", "ADVENT"},
- {"V OKTÁVE NARODENIA PÁNA", "V OKTÁVU NAROZENÍ PÁNÌ", "", "", "", "V OKTÁVU NAROZENÍ PÁNÌ", "A KARÁCSONY NYOLCADÁBAN"}, // not used / nepouíva sa
- {"VIANOÈNÁ", "VÁNOÈNÍ", "", "", "", "VÁNOÈNÍ", "KARÁCSONY"},
- {"VIANOÈNÁ", "VÁNOÈNÍ", "", "", "", "VÁNOÈNÍ", "KARÁCSONY"},
- {"CEZROÈNÁ", "V MEZIDOBÍ", "", "", "", "BÌHEM ROKU", "ÉVKÖZI"},
- {"PÔSTNA", "POSTNÍ", "", "", "", "POSTNÍ", "NAGYBÖJT"},
- {"VO VE¼KOM TİDNI", "VE SVATÉM TİDNU", "", "", "", "VE SVATÉM TİDNU", "hu_"}, // not used / nepouíva sas
- {"VO VE¼KONOÈNOM TROJDNÍ", "VE VELIKONOÈNÍM TRIDUU", "", "", "", "VE VELIKONOÈNÍM TRIDUU", "hu_"}, // not used / nepouíva sa
- {"VO VE¼KONOÈNEJ OKTÁVE", "VE VELIKONOÈNÍM OKTÁVU", "", "", "", "V OKTÁVU VELIKONOÈNÍM", "HÚSVÉT NYOLCACADÁBAN"}, // not used / nepouíva sa
- {"VE¼KONOÈNÁ", "VELIKONOÈNÍ", "", "", "", "VELIKONOÈNÍ", "HÚSVÉT"},
- {"VE¼KONOÈNÁ", "VELIKONOÈNÍ", "", "", "", "VELIKONOÈNÍ", "HÚSVÉT"},
+ {"ADVENTNÃ", "ADVENTNÃ", "", "", "", "ADVENTNÃ", "ADVENT"},
+ {"ADVENTNÃ", "ADVENTNÃ", "", "", "", "ADVENTNÃ", "ADVENT"},
+ {"V OKTÃVE NARODENIA PÃNA", "V OKTÃVU NAROZENÃ PÃNÄš", "", "", "", "V OKTÃVU NAROZENÃ PÃNÄš", "A KARÃCSONY NYOLCADÃBAN"}, // not used / nepouÅ¾Ã­va sa
+ {"VIANOÄŒNÃ", "VÃNOÄŒNÃ", "", "", "", "VÃNOÄŒNÃ", "KARÃCSONY"},
+ {"VIANOÄŒNÃ", "VÃNOÄŒNÃ", "", "", "", "VÃNOÄŒNÃ", "KARÃCSONY"},
+ {"CEZROÄŒNÃ", "V MEZIDOBÃ", "", "", "", "BÄšHEM ROKU", "Ã‰VKÃ–ZI"},
+ {"PÃ”STNA", "POSTNÃ", "", "", "", "POSTNÃ", "NAGYBÃ–JT"},
+ {"VO VEÄ½KOM TÃÅ½DNI", "VE SVATÃ‰M TÃDNU", "", "", "", "VE SVATÃ‰M TÃDNU", "hu_"}, // not used / nepouÅ¾Ã­va sas
+ {"VO VEÄ½KONOÄŒNOM TROJDNÃ", "VE VELIKONOÄŒNÃM TRIDUU", "", "", "", "VE VELIKONOÄŒNÃM TRIDUU", "hu_"}, // not used / nepouÅ¾Ã­va sa
+ {"VO VEÄ½KONOÄŒNEJ OKTÃVE", "VE VELIKONOÄŒNÃM OKTÃVU", "", "", "", "V OKTÃVU VELIKONOÄŒNÃM", "HÃšSVÃ‰T NYOLCACADÃBAN"}, // not used / nepouÅ¾Ã­va sa
+ {"VEÄ½KONOÄŒNÃ", "VELIKONOÄŒNÃ", "", "", "", "VELIKONOÄŒNÃ", "HÃšSVÃ‰T"},
+ {"VEÄ½KONOÄŒNÃ", "VELIKONOÄŒNÃ", "", "", "", "VELIKONOÄŒNÃ", "HÃšSVÃ‰T"},
 };
 #define		nazov_OBDOBIA_AKA(a)	nazov_OBDOBIA_AKA_jazyk[a][_global_jazyk]
 
@@ -410,7 +410,7 @@ const char *nazov_obd_htm_pc[POCET_OBDOBI + 1] =
 };
 
 // anchor names in files used for 4 volumes of breviary - same for all languages (based on Slovak)
-// 2005-08-05: Pridané. zväzok breviára (LH) pre spoloèné èasti svätıch v kotvách
+// 2005-08-05: PridanÃ©. zvÃ¤zok breviÃ¡ra (LH) pre spoloÄnÃ© Äasti svÃ¤tÃ½ch v kotvÃ¡ch
 const char *zvazok_OBD[POCET_OBDOBI + 1] =
 {"ZVI", "ZVI", "ZVI",
  "ZVI", "ZVI", "OCR", // OCR je ZVIII aj ZVIV
@@ -420,38 +420,38 @@ const char *zvazok_OBD[POCET_OBDOBI + 1] =
 
 // the name of celebration
 const char *nazov_slavenia_jazyk[POCET_SLAVENI + 1][POCET_JAZYKOV + 1] =
-{{"féria", "férie", "feria", "feria", "férie", "féria", "féria"}, // zmenené z "___", 2012-10-12
- {"slávnos", "slavnost", "celebration", "sollemnitas", "","SLAVNOST", "fõünnep"},
- {"sviatok", "svátek", "", "festum", "","Svátek", "ünnep"},
- {"spomienka", "památka", "", "memoria", "","Památka", "emléknap"},
- {"¾ubovo¾ná spomienka", "nezávazná památka", "", "memoria ad libitum", "","nezávazná památka", "tetszés szerinti emléknap"},
- {"vlastné slávenie", "z vlastních textù", "", "textus proprius", "", "z vlastních textù", "saját szöveg"},
+{{"fÃ©ria", "fÃ©rie", "feria", "feria", "fÃ©rie", "fÃ©ria", "fÃ©ria"}, // zmenenÃ© z "___", 2012-10-12
+ {"slÃ¡vnosÅ¥", "slavnost", "celebration", "sollemnitas", "","SLAVNOST", "fÅ‘Ã¼nnep"},
+ {"sviatok", "svÃ¡tek", "", "festum", "","SvÃ¡tek", "Ã¼nnep"},
+ {"spomienka", "pamÃ¡tka", "", "memoria", "","PamÃ¡tka", "emlÃ©knap"},
+ {"Ä¾ubovoÄ¾nÃ¡ spomienka", "nezÃ¡vaznÃ¡ pamÃ¡tka", "", "memoria ad libitum", "","nezÃ¡vaznÃ¡ pamÃ¡tka", "tetszÃ©s szerinti emlÃ©knap"},
+ {"vlastnÃ© slÃ¡venie", "z vlastnÃ­ch textÅ¯", "", "textus proprius", "", "z vlastnÃ­ch textÅ¯", "sajÃ¡t szÃ¶veg"},
 };
 
 #define		nazov_slavenia(a)	nazov_slavenia_jazyk[a][_global_jazyk]
 
 // the name of celebration -- for memoria (in privileged days)
 const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
-{"na spomienku" /* Adam: lepšie by bolo: pripomienka */, "pro pøipomínku", "", "in memoria", "","pro pøipomínku", "megemlékezésül"};
+{"na spomienku" /* Adam: lepÅ¡ie by bolo: pripomienka */, "pro pÅ™ipomÃ­nku", "", "in memoria", "","pro pÅ™ipomÃ­nku", "megemlÃ©kezÃ©sÃ¼l"};
 
-// 2010-08-03: pridanı kalendár
+// 2010-08-03: pridanÃ½ kalendÃ¡r
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
 {"??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb"};
 
-// filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
+// filenames for special calendars / nÃ¡zov sÃºbora pre kalendÃ¡re -- "pro" == propriÃ¡
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
 {"", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm"};
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
-{"neurèenı"
-,"všeobecnı"
-,"všeobecnı SK"
-,"všeobecnı CZ"
+{"neurÄenÃ½"
+,"vÅ¡eobecnÃ½"
+,"vÅ¡eobecnÃ½ SK"
+,"vÅ¡eobecnÃ½ CZ"
 ,"CZOP"
 ,"SK CSSR"
-,"všeobecnı HU"
+,"vÅ¡eobecnÃ½ HU"
 ,"SK SVD"
 ,"SK SJ"
 ,"SK SDB"
@@ -464,161 +464,161 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 ,"CZ SDB"
 };
 
-// doplnené 2010-10-11
+// doplnenÃ© 2010-10-11
 const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 {""
 ,""
-,"všeobecnı [pre Slovensko]"
-,"obecnı [pro Èechy a Moravu]"
+,"vÅ¡eobecnÃ½ [pre Slovensko]"
+,"obecnÃ½ [pro ÄŒechy a Moravu]"
 ,""
-,"pre Kongregáciu najsv. Vykupite¾a — redemptoristov (CSsR)" // bol ve¾mi dlhı combo-box, keï bolo: "pre Kongregáciu najsvätejšieho Vykupite¾a — redemptoristov (CSsR)"
-,"általános [Magyarország]"
-,"pre Spoloènos Boieho Slova — verbistov (SVD)"
-,"pre Spoloènos Jeišovu — jezuitov (SJ)"
-,"pre saleziánsku rodinu — SDB, FMA, ASC" // bolo VDB -> ASC; saleziáni spolupracovníci majú skratku ASC - Associazione dei salesiani cooperatori - teda Zdruzenie salezianov spolupravovnikov (upozornil Mao Linhart, 2012-02-13)
-// ,"pre františkánsku rodinu — františkánov<!-- (OFM)-->, kapucínov<!-- (OFMCap)-->, minoritov<!-- (OFMConv.)-->" // 2011-03-21: nefungovalo porovnanie atokalendar lebo HTML odstránilo poznámky
-// ,"pre františkánsku rodinu — františkánov, kapucínov, minoritov" // 2011-03-22: sú tam aj mnohé ïalšie rehole a kongregácie, take ma br. Jakub OFM poprosil, aby ostalo iba "pre františkánsku rodinu"
-,"pre františkánsku rodinu"
-,"pre Reho¾u kazate¾ov — dominikánov (OP)"
-,"pre Misijnú spoloènos sv. Vincenta de Paul — lazaristov (CM)"
-,"s vlastními texty premonstrátského øádu (OPraem)" // "pro premonstráty (OPraem)"
-,"s vlastními kapucínskımi texty (OFMCap)"
-,"s vlastními texty Kongregace nejsv. Vykupitele — redemptoristù (CSsR)"
-,"s vlastními texty pro salesiánskou rodinu" // (SDB, FMA, VDB, ASC)
+,"pre KongregÃ¡ciu najsv. VykupiteÄ¾a â€” redemptoristov (CSsR)" // bol veÄ¾mi dlhÃ½ combo-box, keÄ bolo: "pre KongregÃ¡ciu najsvÃ¤tejÅ¡ieho VykupiteÄ¾a â€” redemptoristov (CSsR)"
+,"Ã¡ltalÃ¡nos [MagyarorszÃ¡g]"
+,"pre SpoloÄnosÅ¥ BoÅ¾ieho Slova â€” verbistov (SVD)"
+,"pre SpoloÄnosÅ¥ JeÅ¾iÅ¡ovu â€” jezuitov (SJ)"
+,"pre saleziÃ¡nsku rodinu â€” SDB, FMA, ASC" // bolo VDB -> ASC; saleziÃ¡ni spolupracovnÃ­ci majÃº skratku ASC - Associazione dei salesiani cooperatori - teda Zdruzenie salezianov spolupravovnikov (upozornil MaÅ¥o Linhart, 2012-02-13)
+// ,"pre frantiÅ¡kÃ¡nsku rodinu â€” frantiÅ¡kÃ¡nov<!-- (OFM)-->, kapucÃ­nov<!-- (OFMCap)-->, minoritov<!-- (OFMConv.)-->" // 2011-03-21: nefungovalo porovnanie atokalendar lebo HTML odstrÃ¡nilo poznÃ¡mky
+// ,"pre frantiÅ¡kÃ¡nsku rodinu â€” frantiÅ¡kÃ¡nov, kapucÃ­nov, minoritov" // 2011-03-22: sÃº tam aj mnohÃ© ÄalÅ¡ie rehole a kongregÃ¡cie, takÅ¾e ma br. Jakub OFM poprosil, aby ostalo iba "pre frantiÅ¡kÃ¡nsku rodinu"
+,"pre frantiÅ¡kÃ¡nsku rodinu"
+,"pre RehoÄ¾u kazateÄ¾ov â€” dominikÃ¡nov (OP)"
+,"pre MisijnÃº spoloÄnosÅ¥ sv. Vincenta de Paul â€” lazaristov (CM)"
+,"s vlastnÃ­mi texty premonstrÃ¡tskÃ©ho Å™Ã¡du (OPraem)" // "pro premonstrÃ¡ty (OPraem)"
+,"s vlastnÃ­mi kapucÃ­nskÃ½mi texty (OFMCap)"
+,"s vlastnÃ­mi texty Kongregace nejsv. Vykupitele â€” redemptoristÅ¯ (CSsR)"
+,"s vlastnÃ­mi texty pro salesiÃ¡nskou rodinu" // (SDB, FMA, VDB, ASC)
 };
 
 #define nazov_kalendara(kalendar) ((kalendar == KALENDAR_NEURCENY) || (kalendar == KALENDAR_VSEOBECNY) || (equals(nazov_kalendara_long[kalendar], STR_EMPTY))? nazov_kalendara_long[default_kalendar[_global_jazyk]] : nazov_kalendara_long[kalendar])
 
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
-// 2007-08-31: upravené TT -> BA-TT
-// 2008-06-23: upravené vzh¾adom k novému usporiadaniu diecéz (intuitívne)
-// 2010-03-16: doplnené BA
-// 2011-07-25: doplnené názvy èíselnıch konštánt
+// 2007-08-31: upravenÃ© TT -> BA-TT
+// 2008-06-23: upravenÃ© vzhÄ¾adom k novÃ©mu usporiadaniu diecÃ©z (intuitÃ­vne)
+// 2010-03-16: doplnenÃ© BA
+// 2011-07-25: doplnenÃ© nÃ¡zvy ÄÃ­selnÃ½ch konÅ¡tÃ¡nt
 const char *nazov_slavenia_lokal[] =
 {""                                                                                                             // LOKAL_SLAV_NEURCENE
-,"len v roòavskej katedrále"                                                                                   // LOKAL_SLAV_ROZNAVA_KATEDRALA
-,"hlavnı patrón Trnavskej arcidiecézy"                                                                          // LOKAL_SLAV_TRNAVA_PATRON
-,"v Bratislavskej, Trnavskej a Košickej arcidiecéze "HTML_LINE_BREAK"a v Banskobystrickej, Nitrianskej a Roòavskej diecéze" // LOKAL_SLAV_TT_BB_KE_NR_RO
-,"v Nitrianskej diecéze sviatok hlavnıch patrónov"                                                              // LOKAL_SLAV_NITRA_PATRON
-,"len v Košickej arcidiecéze"                                                                                   // LOKAL_SLAV_KOSICE
-,"len v Nitrianskej diecéze"                                                                                    // LOKAL_SLAV_NITRA
-,"len v Banskobystrickej diecéze"                                                                               // LOKAL_SLAV_BYSTRICA
-,"len v Spišskej diecéze"                                                                                       // LOKAL_SLAV_SPIS
-,"len v Roòavskej diecéze"                                                                                     // LOKAL_SLAV_ROZNAVA
-,"len v Trnavskej arcidiecéze"                                                                                  // LOKAL_SLAV_TRNAVA
-,"len v Dóme sv. Martina v Bratislave"                                                                          // LOKAL_SLAV_DOM_SV_MARTINA
-,"v Spišskej diecéze sviatok hlavného patróna"                                                                  // LOKAL_SLAV_SPIS_PATRON
-,"v Banskobystrickej diecéze sviatok hlavného patróna"                                                          // LOKAL_SLAV_BYSTRICA_PATRON
-,"v Bratislavskej a Trnavskej arcidiecéze "HTML_LINE_BREAK"a v Banskobystrickej, Nitrianskej a Roòavskej diecéze" // LOKAL_SLAV_TT_BB_NR_RO
-,"v Košickej arcidiecéze sviatok hlavného patróna"                                                              // LOKAL_SLAV_KOSICE_PATRON
-,"v ilinskej diecéze sviatok hlavnıch patrónov; "HTML_LINE_BREAK"na Slovensku sa slávi 5. júla, slávnos; v Európe sviatok" // LOKAL_SLAV_14_FEB_CYRIL_METOD
-,"v Roòavskej diecéze sviatok hlavného patróna"                                                                // LOKAL_SLAV_ROZNAVA_PATRON
-,"len v konsekrovanıch kostoloch"                                                                               // LOKAL_SLAV_KONSEKR_KOSTOLY
-,"Druhá ve¾konoèná nede¾a — Boieho milosrdenstva"                                                              // LOKAL_SLAV_DRUHA_VELK_NEDELA
-,"koniec Oktávy narodenia Pána"                                                                                 // LOKAL_SLAV_KONIEC_OKTAVY_NAR
-,"konec Oktávu Narození Pánì"                                                                                   // LOKAL_SLAV_KONIEC_OKTAVY_NAR_CZ
-,"hlavního patrona praské arcidiecéze"                                                                         // LOKAL_SLAV_PRAHA_PATRON
-,"v praské arcidiecézi"                                                                                        // LOKAL_SLAV_PRAHA
-,"v brnìnské diecézi"                                                                                           // LOKAL_SLAV_BRNO
-,"na Moravì památka"                                                                                            // LOKAL_SLAV_MORAVA_SPOMIENKA
-,"Druhá nedìle velikonoèní – Boího milosrdenství"                                                              // LOKAL_SLAV_DRUHA_VELK_NEDELA_CZ
-,"v praské katedrále slavnost"                                                                                 // LOKAL_SLAV_PRAHA_KATEDRALA
-,"v èeskobudìjovické diecézi"                                                                                   // LOKAL_SLAV_CESKE_BUDEJOVICE
-,"v olomoucké arcidiecézi"                                                                                      // LOKAL_SLAV_OLOMOUC
-,"v Èechách závazná památka"                                                                                    // LOKAL_SLAV_CECHY_SPOMIENKA
-,"v plzeòské diecézi svátek hlavního patrona"                                                                   // LOKAL_SLAV_PLZEN_PATRON
-,"v ostravsko-opavské diecézi"                                                                                  // LOKAL_SLAV_OSTRAVA_OPAVA
-,"v litomìøické diecézi"                                                                                        // LOKAL_SLAV_LITOMERICE
-,"v královéhradecké diecézi"                                                                                    // LOKAL_SLAV_HRADEC_KRALOVE
-,"jen v posvìcenıch kostelích"                                                                                  // LOKAL_SLAV_KONSEKR_KOSTOLY_CZ 
-,"v plzeòské diecézi"                                                                                           // LOKAL_SLAV_PLZEN 
-,"v ostravsko-opavské diecézi slavnost"                                                                         // LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST
-,"v èeskobudìjovické diecézi památka"                                                                           // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
-,"v Bratislavskej arcidiecéze a v Spišskej diecéze sviatok hlavného patróna"                                    // LOKAL_SLAV_SPIS_BA_PATRON
-,"v Bratislavskej arcidiecéze"                                                                                  // LOKAL_SLAV_BRATISLAVA
-,"Karácsony nyolcada – Kiskarácsony"                                                                            // LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU
-,"len pre Inštitút milosrdnıch sestier Sv. kría"                                                               // LOKAL_SLAV_KONGREGACIA_SSK // 2013-08-12: pôvodne bolo: "len pre Kongregáciu milosrdnıch sestier Sv. kría"
+,"len v roÅ¾Åˆavskej katedrÃ¡le"                                                                                   // LOKAL_SLAV_ROZNAVA_KATEDRALA
+,"hlavnÃ½ patrÃ³n Trnavskej arcidiecÃ©zy"                                                                          // LOKAL_SLAV_TRNAVA_PATRON
+,"v Bratislavskej, Trnavskej a KoÅ¡ickej arcidiecÃ©ze "HTML_LINE_BREAK"a v Banskobystrickej, Nitrianskej a RoÅ¾Åˆavskej diecÃ©ze" // LOKAL_SLAV_TT_BB_KE_NR_RO
+,"v Nitrianskej diecÃ©ze sviatok hlavnÃ½ch patrÃ³nov"                                                              // LOKAL_SLAV_NITRA_PATRON
+,"len v KoÅ¡ickej arcidiecÃ©ze"                                                                                   // LOKAL_SLAV_KOSICE
+,"len v Nitrianskej diecÃ©ze"                                                                                    // LOKAL_SLAV_NITRA
+,"len v Banskobystrickej diecÃ©ze"                                                                               // LOKAL_SLAV_BYSTRICA
+,"len v SpiÅ¡skej diecÃ©ze"                                                                                       // LOKAL_SLAV_SPIS
+,"len v RoÅ¾Åˆavskej diecÃ©ze"                                                                                     // LOKAL_SLAV_ROZNAVA
+,"len v Trnavskej arcidiecÃ©ze"                                                                                  // LOKAL_SLAV_TRNAVA
+,"len v DÃ³me sv. Martina v Bratislave"                                                                          // LOKAL_SLAV_DOM_SV_MARTINA
+,"v SpiÅ¡skej diecÃ©ze sviatok hlavnÃ©ho patrÃ³na"                                                                  // LOKAL_SLAV_SPIS_PATRON
+,"v Banskobystrickej diecÃ©ze sviatok hlavnÃ©ho patrÃ³na"                                                          // LOKAL_SLAV_BYSTRICA_PATRON
+,"v Bratislavskej a Trnavskej arcidiecÃ©ze "HTML_LINE_BREAK"a v Banskobystrickej, Nitrianskej a RoÅ¾Åˆavskej diecÃ©ze" // LOKAL_SLAV_TT_BB_NR_RO
+,"v KoÅ¡ickej arcidiecÃ©ze sviatok hlavnÃ©ho patrÃ³na"                                                              // LOKAL_SLAV_KOSICE_PATRON
+,"v Å½ilinskej diecÃ©ze sviatok hlavnÃ½ch patrÃ³nov; "HTML_LINE_BREAK"na Slovensku sa slÃ¡vi 5. jÃºla, slÃ¡vnosÅ¥; v EurÃ³pe sviatok" // LOKAL_SLAV_14_FEB_CYRIL_METOD
+,"v RoÅ¾Åˆavskej diecÃ©ze sviatok hlavnÃ©ho patrÃ³na"                                                                // LOKAL_SLAV_ROZNAVA_PATRON
+,"len v konsekrovanÃ½ch kostoloch"                                                                               // LOKAL_SLAV_KONSEKR_KOSTOLY
+,"DruhÃ¡ veÄ¾konoÄnÃ¡ nedeÄ¾a â€” BoÅ¾ieho milosrdenstva"                                                              // LOKAL_SLAV_DRUHA_VELK_NEDELA
+,"koniec OktÃ¡vy narodenia PÃ¡na"                                                                                 // LOKAL_SLAV_KONIEC_OKTAVY_NAR
+,"konec OktÃ¡vu NarozenÃ­ PÃ¡nÄ›"                                                                                   // LOKAL_SLAV_KONIEC_OKTAVY_NAR_CZ
+,"hlavnÃ­ho patrona praÅ¾skÃ© arcidiecÃ©ze"                                                                         // LOKAL_SLAV_PRAHA_PATRON
+,"v praÅ¾skÃ© arcidiecÃ©zi"                                                                                        // LOKAL_SLAV_PRAHA
+,"v brnÄ›nskÃ© diecÃ©zi"                                                                                           // LOKAL_SLAV_BRNO
+,"na MoravÄ› pamÃ¡tka"                                                                                            // LOKAL_SLAV_MORAVA_SPOMIENKA
+,"DruhÃ¡ nedÄ›le velikonoÄnÃ­ â€“ BoÅ¾Ã­ho milosrdenstvÃ­"                                                              // LOKAL_SLAV_DRUHA_VELK_NEDELA_CZ
+,"v praÅ¾skÃ© katedrÃ¡le slavnost"                                                                                 // LOKAL_SLAV_PRAHA_KATEDRALA
+,"v ÄeskobudÄ›jovickÃ© diecÃ©zi"                                                                                   // LOKAL_SLAV_CESKE_BUDEJOVICE
+,"v olomouckÃ© arcidiecÃ©zi"                                                                                      // LOKAL_SLAV_OLOMOUC
+,"v ÄŒechÃ¡ch zÃ¡vaznÃ¡ pamÃ¡tka"                                                                                    // LOKAL_SLAV_CECHY_SPOMIENKA
+,"v plzeÅˆskÃ© diecÃ©zi svÃ¡tek hlavnÃ­ho patrona"                                                                   // LOKAL_SLAV_PLZEN_PATRON
+,"v ostravsko-opavskÃ© diecÃ©zi"                                                                                  // LOKAL_SLAV_OSTRAVA_OPAVA
+,"v litomÄ›Å™ickÃ© diecÃ©zi"                                                                                        // LOKAL_SLAV_LITOMERICE
+,"v krÃ¡lovÃ©hradeckÃ© diecÃ©zi"                                                                                    // LOKAL_SLAV_HRADEC_KRALOVE
+,"jen v posvÄ›cenÃ½ch kostelÃ­ch"                                                                                  // LOKAL_SLAV_KONSEKR_KOSTOLY_CZ 
+,"v plzeÅˆskÃ© diecÃ©zi"                                                                                           // LOKAL_SLAV_PLZEN 
+,"v ostravsko-opavskÃ© diecÃ©zi slavnost"                                                                         // LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST
+,"v ÄeskobudÄ›jovickÃ© diecÃ©zi pamÃ¡tka"                                                                           // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
+,"v Bratislavskej arcidiecÃ©ze a v SpiÅ¡skej diecÃ©ze sviatok hlavnÃ©ho patrÃ³na"                                    // LOKAL_SLAV_SPIS_BA_PATRON
+,"v Bratislavskej arcidiecÃ©ze"                                                                                  // LOKAL_SLAV_BRATISLAVA
+,"KarÃ¡csony nyolcada â€“ KiskarÃ¡csony"                                                                            // LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU
+,"len pre InÅ¡titÃºt milosrdnÃ½ch sestier Sv. krÃ­Å¾a"                                                               // LOKAL_SLAV_KONGREGACIA_SSK // 2013-08-12: pÃ´vodne bolo: "len pre KongregÃ¡ciu milosrdnÃ½ch sestier Sv. krÃ­Å¾a"
 ,"pre OFMCap: spomienka"                                                                                        // LOKAL_SLAV_SPOMIENKA_OFMCAP
 ,"pre OFM: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_OFM
 ,"pre OFM: spomienka"                                                                                           // LOKAL_SLAV_SPOMIENKA_OFM
 ,"pre OFMCap: sviatok"                                                                                          // LOKAL_SLAV_SVIATOK_OFMCAP
 ,"pre FMA: spomienka"                                                                                           // LOKAL_SLAV_SPOMIENKA_FMA
-,"pre FMA: slávnos"                                                                                            // LOKAL_SLAV_SLAVNOST_FMA
-,"pre SDB: slávnos"                                                                                            // LOKAL_SLAV_SLAVNOST_SDB
+,"pre FMA: slÃ¡vnosÅ¥"                                                                                            // LOKAL_SLAV_SLAVNOST_FMA
+,"pre SDB: slÃ¡vnosÅ¥"                                                                                            // LOKAL_SLAV_SLAVNOST_SDB
 ,"pre ASC: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_VDB // VDB -> ASC
 ,"pre SCSC: sviatok"                                                                                            // LOKAL_SLAV_SVIATOK_SCSC
-,"Húsvét 2. vasárnapja – Az Isteni Irgalmasság vasárnapja"                                                      // LOKAL_SLAV_DRUHA_VELK_NEDELA_HU
-,"A Szombathelyi egyházmegyében"                                                                                // LOKAL_SLAV_SZOMBATHELYI_EGYH
-,"A Nagyszombati fõegyházmegyében: a fõegyházmegye fõvédõszentje"                                               // LOKAL_SLAV_NAGYSZ_PATRON
-,"A Szeged-Csanádi egyházmegye északi részében: az egyházmegye védõszentje; fõünnep"                            // LOKAL_SLAV_SZEGED_CSAN_PATRON // 2013-06-27: ??? neviem, odkia¾ sa to tu vzalo
-,"A Pécsi egyházmegyében"                                                                                       // LOKAL_SLAV_PECSI_EGYH
-,"A Pécsi egyházmegyében: az egyházmegye védõszentje; fõünnep"                                                  // LOKAL_SLAV_PECSI_EGYH_PATRON
-,"A Szeged-Csanádi egyházmegye északi részében; ünnep"                                                          // LOKAL_SLAV_SZEGED_CSAN_EGYH
-,"A Veszprémi fõegyházmegyében: Szent Anna, a fõegyházmegye védõszentje; ünnep"                                 // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
-,"A Gyõri és Székesfehérvári egyházmegyében: az egyházmegye védõszentje"                                        // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH
-,"A Kaposvári egyházmegyében; ünnep"                                                                            // LOKAL_SLAV_KAPORSVAR_FELSZ
-,"A Váci egyházmegyében; ünnep"                                                                                 // LOKAL_SLAV_VACI_FELSZ
-,"A Kalocsa-Kecskeméti fõegyházmegyében: a fõegyházmegye védõszentje; fõünnep"                                  // LOKAL_SLAV_KAL_KECS_FOEGYH
-,"A Esztergom-Budapesti fõegyházmegyében: a fõszékesegyházban; fõünnep"                                         // LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH
-,"A fõszékesegyházban; fõünnep"                                                                                 // LOKAL_SLAV_KAL_KECS_FELSZ
-,"A Gyõri egyházmegyében: a székesegyház felszentelése; ünnep"                                                  // LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ
-,"A Váci egyházmegyében: Szent Mihály fõangyal, az egyházmegye védõszentje"                                     // LOKAL_SLAV_VACI_PATRON
-,"A Szeged-Csanádi egyházmegyében: az egyházmegye védõszentje; fõünnep"                                         // LOKAL_SLAV_SZEGED_CSAN_PATRON2
-,"A Veszprémi fõegyházmegyében: a fõszékesegyházban; fõünnep"													// LOKAL_SLAV_VESZPREM_FOEGYH
+,"HÃºsvÃ©t 2. vasÃ¡rnapja â€“ Az Isteni IrgalmassÃ¡g vasÃ¡rnapja"                                                      // LOKAL_SLAV_DRUHA_VELK_NEDELA_HU
+,"A Szombathelyi egyhÃ¡zmegyÃ©ben"                                                                                // LOKAL_SLAV_SZOMBATHELYI_EGYH
+,"A Nagyszombati fÅ‘egyhÃ¡zmegyÃ©ben: a fÅ‘egyhÃ¡zmegye fÅ‘vÃ©dÅ‘szentje"                                               // LOKAL_SLAV_NAGYSZ_PATRON
+,"A Szeged-CsanÃ¡di egyhÃ¡zmegye Ã©szaki rÃ©szÃ©ben: az egyhÃ¡zmegye vÃ©dÅ‘szentje; fÅ‘Ã¼nnep"                            // LOKAL_SLAV_SZEGED_CSAN_PATRON // 2013-06-27: ??? neviem, odkiaÄ¾ sa to tu vzalo
+,"A PÃ©csi egyhÃ¡zmegyÃ©ben"                                                                                       // LOKAL_SLAV_PECSI_EGYH
+,"A PÃ©csi egyhÃ¡zmegyÃ©ben: az egyhÃ¡zmegye vÃ©dÅ‘szentje; fÅ‘Ã¼nnep"                                                  // LOKAL_SLAV_PECSI_EGYH_PATRON
+,"A Szeged-CsanÃ¡di egyhÃ¡zmegye Ã©szaki rÃ©szÃ©ben; Ã¼nnep"                                                          // LOKAL_SLAV_SZEGED_CSAN_EGYH
+,"A VeszprÃ©mi fÅ‘egyhÃ¡zmegyÃ©ben: Szent Anna, a fÅ‘egyhÃ¡zmegye vÃ©dÅ‘szentje; Ã¼nnep"                                 // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
+,"A GyÅ‘ri Ã©s SzÃ©kesfehÃ©rvÃ¡ri egyhÃ¡zmegyÃ©ben: az egyhÃ¡zmegye vÃ©dÅ‘szentje"                                        // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH
+,"A KaposvÃ¡ri egyhÃ¡zmegyÃ©ben; Ã¼nnep"                                                                            // LOKAL_SLAV_KAPORSVAR_FELSZ
+,"A VÃ¡ci egyhÃ¡zmegyÃ©ben; Ã¼nnep"                                                                                 // LOKAL_SLAV_VACI_FELSZ
+,"A Kalocsa-KecskemÃ©ti fÅ‘egyhÃ¡zmegyÃ©ben: a fÅ‘egyhÃ¡zmegye vÃ©dÅ‘szentje; fÅ‘Ã¼nnep"                                  // LOKAL_SLAV_KAL_KECS_FOEGYH
+,"A Esztergom-Budapesti fÅ‘egyhÃ¡zmegyÃ©ben: a fÅ‘szÃ©kesegyhÃ¡zban; fÅ‘Ã¼nnep"                                         // LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH
+,"A fÅ‘szÃ©kesegyhÃ¡zban; fÅ‘Ã¼nnep"                                                                                 // LOKAL_SLAV_KAL_KECS_FELSZ
+,"A GyÅ‘ri egyhÃ¡zmegyÃ©ben: a szÃ©kesegyhÃ¡z felszentelÃ©se; Ã¼nnep"                                                  // LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ
+,"A VÃ¡ci egyhÃ¡zmegyÃ©ben: Szent MihÃ¡ly fÅ‘angyal, az egyhÃ¡zmegye vÃ©dÅ‘szentje"                                     // LOKAL_SLAV_VACI_PATRON
+,"A Szeged-CsanÃ¡di egyhÃ¡zmegyÃ©ben: az egyhÃ¡zmegye vÃ©dÅ‘szentje; fÅ‘Ã¼nnep"                                         // LOKAL_SLAV_SZEGED_CSAN_PATRON2
+,"A VeszprÃ©mi fÅ‘egyhÃ¡zmegyÃ©ben: a fÅ‘szÃ©kesegyhÃ¡zban; fÅ‘Ã¼nnep"													// LOKAL_SLAV_VESZPREM_FOEGYH
 ,"csak a felszentelt templomokban"                                                                              // LOKAL_SLAV_KONSEKR_KOSTOLY_HU
-,"A Szeged-Csanádi egyházmegyében: a székesegyházban; fõünnep"                                                  // LOKAL_SLAV_SZEGED_CSAN_EGYH2
-,"A Pécsi egyházmegyében: a Pécsi egyházmegye társvédõszentje; fõünnep"                                         // LOKAL_SLAV_PECS_PATRON
-,"A Szombathelyi egyházmegyébe: az egyházmegye védõszentje; fõünnep"                                            // LOKAL_SLAV_SZOMBATHELYI_PATRON
-,"Székesfehérvár: a székesegyházban; fõünnep"                                                                   // LOKAL_SLAV_SZEKESFEHERVAR_EGYH
-,"Az Egri fõegyházmegyében: a fõegyházmegye védõszentje; ünnep"                                                 // LOKAL_SLAV_EGER_FOEGYH
-,"Az Esztergomi fõegyházmegyében; emléknap"                                                                     // LOKAL_SLAV_ESZTERGOM_EML
-,"A Gyõri egyházmegyében"                                                                                       // LOKAL_SLAV_GYOR_EGYH
-,"Az Esztergomi fõegyházmegyében"                                                                               // LOKAL_SLAV_ESZTERGOM_FOEGYH
-,"Az Egri fõegyházmegyében"                                                                                     // LOKAL_SLAV_EGER_FOEGYH2
-,"A Veszprémi fõegyházmegyében: a fõegyházmegye társvédõszentje; fõünnep"                                       // LOKAL_SLAV_VESZPREM_FOEGYH_T
-,"A Szatmári egyházmegyében; emléknap"                                                                          // LOKAL_SLAV_SZATMAR
-,"v ostatních èeskıch diecézích a v brnìnské diecézi: památka; "HTML_LINE_BREAK"na Moravì mimo brnìnskou diecézi: nezávazná památka" // LOKAL_SLAV_CESKO_BRNO
-,"sviatok hlavnej patrónky "HTML_LINE_BREAK"(slovenskej) Kongregácie sestier dominikánok bl. Imeldy"            // LOKAL_SLAV_SVIATOK_OP_ZENY
-,"len v ilinskej diecéze"                                                                                      // LOKAL_SLAV_ZILINA
-,"na Strahovì: svátek, Nová Øíše: památka"                                                                      // LOKAL_SLAV_OPRAEM_SVIATOK_STRAHOV
-,"kanonie Teplá: slavnost"                                                                                      // LOKAL_SLAV_OPRAEM_SLAVNOST_TEPLA
-,"jen kanonie Nová Øíše"                                                                                        // LOKAL_SLAV_OPRAEM_NOVA_RISE
-,"jen kanonie Strahov a Nová Øíše"                                                                              // LOKAL_SLAV_OPRAEM_STRAHOV_NOVA_RISE
-,"jen kanonie eliv"                                                                                            // LOKAL_SLAV_OPRAEM_ZELIV
+,"A Szeged-CsanÃ¡di egyhÃ¡zmegyÃ©ben: a szÃ©kesegyhÃ¡zban; fÅ‘Ã¼nnep"                                                  // LOKAL_SLAV_SZEGED_CSAN_EGYH2
+,"A PÃ©csi egyhÃ¡zmegyÃ©ben: a PÃ©csi egyhÃ¡zmegye tÃ¡rsvÃ©dÅ‘szentje; fÅ‘Ã¼nnep"                                         // LOKAL_SLAV_PECS_PATRON
+,"A Szombathelyi egyhÃ¡zmegyÃ©be: az egyhÃ¡zmegye vÃ©dÅ‘szentje; fÅ‘Ã¼nnep"                                            // LOKAL_SLAV_SZOMBATHELYI_PATRON
+,"SzÃ©kesfehÃ©rvÃ¡r: a szÃ©kesegyhÃ¡zban; fÅ‘Ã¼nnep"                                                                   // LOKAL_SLAV_SZEKESFEHERVAR_EGYH
+,"Az Egri fÅ‘egyhÃ¡zmegyÃ©ben: a fÅ‘egyhÃ¡zmegye vÃ©dÅ‘szentje; Ã¼nnep"                                                 // LOKAL_SLAV_EGER_FOEGYH
+,"Az Esztergomi fÅ‘egyhÃ¡zmegyÃ©ben; emlÃ©knap"                                                                     // LOKAL_SLAV_ESZTERGOM_EML
+,"A GyÅ‘ri egyhÃ¡zmegyÃ©ben"                                                                                       // LOKAL_SLAV_GYOR_EGYH
+,"Az Esztergomi fÅ‘egyhÃ¡zmegyÃ©ben"                                                                               // LOKAL_SLAV_ESZTERGOM_FOEGYH
+,"Az Egri fÅ‘egyhÃ¡zmegyÃ©ben"                                                                                     // LOKAL_SLAV_EGER_FOEGYH2
+,"A VeszprÃ©mi fÅ‘egyhÃ¡zmegyÃ©ben: a fÅ‘egyhÃ¡zmegye tÃ¡rsvÃ©dÅ‘szentje; fÅ‘Ã¼nnep"                                       // LOKAL_SLAV_VESZPREM_FOEGYH_T
+,"A SzatmÃ¡ri egyhÃ¡zmegyÃ©ben; emlÃ©knap"                                                                          // LOKAL_SLAV_SZATMAR
+,"v ostatnÃ­ch ÄeskÃ½ch diecÃ©zÃ­ch a v brnÄ›nskÃ© diecÃ©zi: pamÃ¡tka; "HTML_LINE_BREAK"na MoravÄ› mimo brnÄ›nskou diecÃ©zi: nezÃ¡vaznÃ¡ pamÃ¡tka" // LOKAL_SLAV_CESKO_BRNO
+,"sviatok hlavnej patrÃ³nky "HTML_LINE_BREAK"(slovenskej) KongregÃ¡cie sestier dominikÃ¡nok bl. Imeldy"            // LOKAL_SLAV_SVIATOK_OP_ZENY
+,"len v Å½ilinskej diecÃ©ze"                                                                                      // LOKAL_SLAV_ZILINA
+,"na StrahovÄ›: svÃ¡tek, NovÃ¡ Å˜Ã­Å¡e: pamÃ¡tka"                                                                      // LOKAL_SLAV_OPRAEM_SVIATOK_STRAHOV
+,"kanonie TeplÃ¡: slavnost"                                                                                      // LOKAL_SLAV_OPRAEM_SLAVNOST_TEPLA
+,"jen kanonie NovÃ¡ Å˜Ã­Å¡e"                                                                                        // LOKAL_SLAV_OPRAEM_NOVA_RISE
+,"jen kanonie Strahov a NovÃ¡ Å˜Ã­Å¡e"                                                                              // LOKAL_SLAV_OPRAEM_STRAHOV_NOVA_RISE
+,"jen kanonie Å½eliv"                                                                                            // LOKAL_SLAV_OPRAEM_ZELIV
 ,"jen kanonie Strahov"                                                                                          // LOKAL_SLAV_OPRAEM_STRAHOV
-,"Debrecen-Nyíregyháza és Kaposvár: "HTML_LINE_BREAK"Az egyházmegye védõszentje; fõünnep"                       // LOKAL_SLAV_SZ_LASZLO
-,"pre OSC: slávnos"                                                                                            // LOKAL_SLAV_SLAVNOST_OSC
+,"Debrecen-NyÃ­regyhÃ¡za Ã©s KaposvÃ¡r: "HTML_LINE_BREAK"Az egyhÃ¡zmegye vÃ©dÅ‘szentje; fÅ‘Ã¼nnep"                       // LOKAL_SLAV_SZ_LASZLO
+,"pre OSC: slÃ¡vnosÅ¥"                                                                                            // LOKAL_SLAV_SLAVNOST_OSC
 ,"pre OFMConv.: sviatok"                                                                                        // LOKAL_SLAV_SVIATOK_OFMCONV
 ,"pre OFS: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_OFS
 ,"pre OFMConv., OFMCap: spomienka"                                                                              // LOKAL_SLAV_SPOMIENKA_OFMCONV_OFMCAP
-,"pre OSC: slávnos"                                                                                            // LOKAL_SLAV_SPOMIENKA_OSC
-,"pre Slovensko zatia¾ nedovolené slávenie"                                                                     // LOKAL_SLAV_NEDOVOLENE_SK
-,"Katonai Ordinariátus: "HTML_LINE_BREAK"Az Ordinariátus védõszentje; fõünnep"                                  // LOKAL_SLAV_KATONAI_ORDINARIAT
-,"Debrecen-Nyíregyháza: "HTML_LINE_BREAK"A székesegyház felszentelése; fõünnep"                                 // LOKAL_SLAV_DEBR_NYIREGY
+,"pre OSC: slÃ¡vnosÅ¥"                                                                                            // LOKAL_SLAV_SPOMIENKA_OSC
+,"pre Slovensko zatiaÄ¾ nedovolenÃ© slÃ¡venie"                                                                     // LOKAL_SLAV_NEDOVOLENE_SK
+,"Katonai OrdinariÃ¡tus: "HTML_LINE_BREAK"Az OrdinariÃ¡tus vÃ©dÅ‘szentje; fÅ‘Ã¼nnep"                                  // LOKAL_SLAV_KATONAI_ORDINARIAT
+,"Debrecen-NyÃ­regyhÃ¡za: "HTML_LINE_BREAK"A szÃ©kesegyhÃ¡z felszentelÃ©se; fÅ‘Ã¼nnep"                                 // LOKAL_SLAV_DEBR_NYIREGY
 ,"jen kanonie Doksany"                                                                                          // LOKAL_SLAV_OPRAEM_DOKSANY
-,"jen kanonie Doksany a eliv"                                                                                  // LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV
-,"jen kanonie Teplá"                                                                                            // LOKAL_SLAV_OPRAEM_TEPLA
-,"len pre len pre Kongregáciu sestier Matky Boieho Milosrdenstva"                                              // LOKAL_SLAV_KONGREGACIA_SMBM
-,"pro FMA památka"                                                                                              // LOKAL_SLAV_SPOMIENKA_FMA_CZ
-,"pro FMA nezávazná památka"                                                                                    // LOKAL_SLAV_LUB_SPOMIENKA_FMA_CZ
-,"pro VDB svátek"                                                                                               // LOKAL_SLAV_SVIATOK_VDB_CZ
+,"jen kanonie Doksany a Å½eliv"                                                                                  // LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV
+,"jen kanonie TeplÃ¡"                                                                                            // LOKAL_SLAV_OPRAEM_TEPLA
+,"len pre len pre KongregÃ¡ciu sestier Matky BoÅ¾ieho Milosrdenstva"                                              // LOKAL_SLAV_KONGREGACIA_SMBM
+,"pro FMA pamÃ¡tka"                                                                                              // LOKAL_SLAV_SPOMIENKA_FMA_CZ
+,"pro FMA nezÃ¡vaznÃ¡ pamÃ¡tka"                                                                                    // LOKAL_SLAV_LUB_SPOMIENKA_FMA_CZ
+,"pro VDB svÃ¡tek"                                                                                               // LOKAL_SLAV_SVIATOK_VDB_CZ
 ,"pro FMA slavnost"                                                                                             // LOKAL_SLAV_SLAVNOST_FMA_CZ
 };
 
 // names of liturgical colors
 const char *nazov_farby_jazyk[POCET_FARIEB_REALNYCH + 1][POCET_JAZYKOV + 1] =
 {{"___", "___", "___", "___", "___", "___", "___"},
- {"èervená", "èervená", "red", "ruber", "", "èervená", "piros"},
- {"biela", "bílá", "white", "albus", "", "bílá", "fehér"},
- {"zelená", "zelená", "green", "viridis", "", "zelená", "zöld"},
- {"fialová", "fialová", "purple", "violaceus", "", "fialová", "lila"},
- {"ruová", "rùová", "rose", "rosaceus", "", "rùová", "rózsaszín"},
- {"èierna", "èerná", "black", "niger", "", "èerná", "fekete"},
+ {"ÄervenÃ¡", "ÄervenÃ¡", "red", "ruber", "", "ÄervenÃ¡", "piros"},
+ {"biela", "bÃ­lÃ¡", "white", "albus", "", "bÃ­lÃ¡", "fehÃ©r"},
+ {"zelenÃ¡", "zelenÃ¡", "green", "viridis", "", "zelenÃ¡", "zÃ¶ld"},
+ {"fialovÃ¡", "fialovÃ¡", "purple", "violaceus", "", "fialovÃ¡", "lila"},
+ {"ruÅ¾ovÃ¡", "rÅ¯Å¾ovÃ¡", "rose", "rosaceus", "", "rÅ¯Å¾ovÃ¡", "rÃ³zsaszÃ­n"},
+ {"Äierna", "ÄernÃ¡", "black", "niger", "", "ÄernÃ¡", "fekete"},
 };
 
 #define		nazov_farby(a)	nazov_farby_jazyk[a][_global_jazyk]
 
-// 2009-08-26: zmena na štandardné HTML elementy, aby sa dalo pouíva ako inline CSS style
+// 2009-08-26: zmena na Å¡tandardnÃ© HTML elementy, aby sa dalo pouÅ¾Ã­vaÅ¥ ako inline CSS style
 // codes for colors - HTML specific
 const char *html_farba_pozadie[POCET_FARIEB_REALNYCH + 1] =
 {"#000000" /* "black" */, "#ff0000" /* "red" */, "#ffffff" /* "white" */, "#008000" /* "green" */, "#800080" /* "purple" */, "#FF6699" /* "fuchsia" */, "#000000" /* black */};
@@ -654,14 +654,14 @@ const char char_nedelny_cyklus[POCET_NEDELNY_CYKLUS] =
 // names of the days in week, starting with Sunday (lowercase) / nazov_dna: string pre nazov dna; suhlasi s struct tm.tm_wday; 
 // Weekday (0--6; Sunday/nedela = 0)
 const char *nazov_dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1] = 
-{ {"nede¾a", "nedìle", "Sunday", "dominica", "", "nedìle", "vasárnap"}
-, {"pondelok" , "pondìlí", "Monday", "feria secunda", "", "pondìlí", "hétfõ"}
-, {"utorok" , "úterı", "Tuesday", "feria tertia", "", "úterı", "kedd"}
-, {"streda" , "støeda", "Wednesday", "feria quarta", "", "støeda", "szerda"}
-, {"štvrtok" , "ètvrtek", "Thursday", "feria quinta", "", "ètvrtek", "csütörtök"}
-, {"piatok" , "pátek", "Friday", "feria sexta", "", "pátek", "péntek"}
+{ {"nedeÄ¾a", "nedÄ›le", "Sunday", "dominica", "", "nedÄ›le", "vasÃ¡rnap"}
+, {"pondelok" , "pondÄ›lÃ­", "Monday", "feria secunda", "", "pondÄ›lÃ­", "hÃ©tfÅ‘"}
+, {"utorok" , "ÃºterÃ½", "Tuesday", "feria tertia", "", "ÃºterÃ½", "kedd"}
+, {"streda" , "stÅ™eda", "Wednesday", "feria quarta", "", "stÅ™eda", "szerda"}
+, {"Å¡tvrtok" , "Ätvrtek", "Thursday", "feria quinta", "", "Ätvrtek", "csÃ¼tÃ¶rtÃ¶k"}
+, {"piatok" , "pÃ¡tek", "Friday", "feria sexta", "", "pÃ¡tek", "pÃ©ntek"}
 , {"sobota" , "sobota", "Saturday", "sabbatum", "", "sobota", "szombat"}
-, {"neznámy" , "neznámı", "unknown", "???", "", "neznámı", "ismeretlen"}
+, {"neznÃ¡my" , "neznÃ¡mÃ½", "unknown", "???", "", "neznÃ¡mÃ½", "ismeretlen"}
 };
 
 #define		nazov_dna(a)	nazov_dna_jazyk[a][_global_jazyk]
@@ -682,44 +682,44 @@ const char *nazov_dna_asci_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1] =
 
 // names of the days in week, starting with Sunday (sentence case)
 const char *nazov_Dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1] = 
-{ {"Nede¾a", "Nedìle", "Sunday", "Dominica", "", "Nedìle", "Vasárnap"}
-, {"Pondelok" , "Pondìlí", "Monday", "Feria secunda", "", "Pondìlí", "Hétfõ"}
-, {"Utorok" , "Úterı", "Tuesday", "Feria tertia", "", "Úterı", "Kedd"}
-, {"Streda" , "Støeda", "Wednesday", "Feria quarta", "", "Støeda", "Szerda"}
-, {"Štvrtok" , "Ètvrtek", "Thursday", "Feria quinta", "", "Ètvrtek", "Csütörtök"}
-, {"Piatok" , "Pátek", "Friday", "Feria sexta", "", "Pátek", "Péntek"}
+{ {"NedeÄ¾a", "NedÄ›le", "Sunday", "Dominica", "", "NedÄ›le", "VasÃ¡rnap"}
+, {"Pondelok" , "PondÄ›lÃ­", "Monday", "Feria secunda", "", "PondÄ›lÃ­", "HÃ©tfÅ‘"}
+, {"Utorok" , "ÃšterÃ½", "Tuesday", "Feria tertia", "", "ÃšterÃ½", "Kedd"}
+, {"Streda" , "StÅ™eda", "Wednesday", "Feria quarta", "", "StÅ™eda", "Szerda"}
+, {"Å tvrtok" , "ÄŒtvrtek", "Thursday", "Feria quinta", "", "ÄŒtvrtek", "CsÃ¼tÃ¶rtÃ¶k"}
+, {"Piatok" , "PÃ¡tek", "Friday", "Feria sexta", "", "PÃ¡tek", "PÃ©ntek"}
 , {"Sobota" , "Sobota", "Saturday", "Sabbatum", "", "Sobota", "Szombat"}
-, {"Neznámy" , "Neznámı", "unknown", "???", "", "Neznámı", "Ismeretlen"}
+, {"NeznÃ¡my" , "NeznÃ¡mÃ½", "unknown", "???", "", "NeznÃ¡mÃ½", "Ismeretlen"}
 };
 
 #define		nazov_Dna(a)	nazov_Dna_jazyk[a][_global_jazyk]
 
 // names of the days in week, starting with Sunday (uppercase)
 const char *nazov_DNA_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1] = 
-{ {"NEDE¼A", "NEDÌLE", "SUNDAY", "DOMINICA", "", "NEDÌLE", "VASÁRNAP"}
-, {"PONDELOK" , "PONDÌLÍ", "MONDAY", "FERIA SECUNDA", "", "PONDÌLÍ", "HÉTFÕ"}
-, {"UTOROK" , "ÚTERİ", "TUESDAY", "FERIA TERTIA", "", "ÚTERİ", "KEDD"}
-, {"STREDA" , "STØEDA", "WEDNESDAY", "FERIA QUARTA", "", "STØEDA", "SZERDA"}
-, {"ŠTVRTOK" , "ÈTVRTEK", "THURSDAY", "FERIA QUINTA", "", "ÈTVRTEK", "CSÜTÖRTÖK"}
-, {"PIATOK" , "PÁTEK", "FRIDAY", "FERIA SEXTA", "", "PÁTEK", "PÉNTEK"}
+{ {"NEDEÄ½A", "NEDÄšLE", "SUNDAY", "DOMINICA", "", "NEDÄšLE", "VASÃRNAP"}
+, {"PONDELOK" , "PONDÄšLÃ", "MONDAY", "FERIA SECUNDA", "", "PONDÄšLÃ", "HÃ‰TFÅ"}
+, {"UTOROK" , "ÃšTERÃ", "TUESDAY", "FERIA TERTIA", "", "ÃšTERÃ", "KEDD"}
+, {"STREDA" , "STÅ˜EDA", "WEDNESDAY", "FERIA QUARTA", "", "STÅ˜EDA", "SZERDA"}
+, {"Å TVRTOK" , "ÄŒTVRTEK", "THURSDAY", "FERIA QUINTA", "", "ÄŒTVRTEK", "CSÃœTÃ–RTÃ–K"}
+, {"PIATOK" , "PÃTEK", "FRIDAY", "FERIA SEXTA", "", "PÃTEK", "PÃ‰NTEK"}
 , {"SOBOTA" , "SOBOTA", "SATURDAY", "SABBATUM", "", "SOBOTA", "SZOMBAT"}
-, {"NEZNÁMY" , "NEZNÁMİ", "UNKNOWN", "???", "", "NEZNÁMİ", "ISMERETLEN"}
+, {"NEZNÃMY" , "NEZNÃMÃ", "UNKNOWN", "???", "", "NEZNÃMÃ", "ISMERETLEN"}
 };
 
 #define		nazov_DNA(a)	nazov_DNA_jazyk[a][_global_jazyk]
 
-// 2011-05-17: doplnené
-#define KONCOVKA_DNA_HU "JA" // vasárnapja
+// 2011-05-17: doplnenÃ©
+#define KONCOVKA_DNA_HU "JA" // vasÃ¡rnapja
 #define KONCOVKA_DNA_HU_SMALL "ja"
 
 // two/three-letter abbreviations of the names of the days in week, starting with Sunday (sentence case)
 const char *nazov_Dn_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1] = 
 { {"Ne" , "Ne", "Sun", "Do", "", "Ne", "V"}
 , {"Po" , "Po", "Mon", "F2", "", "Po", "H"}
-, {"Ut" , "Út", "Tue", "F3", "", "Út", "K"}
+, {"Ut" , "Ãšt", "Tue", "F3", "", "Ãšt", "K"}
 , {"St" , "St", "Wed", "F4", "", "St", "Sze"}
-, {"Št" , "Èt", "Thu", "F5", "", "Èt", "Cs"}
-, {"Pi" , "Pá", "Fri", "F6", "", "Pá", "P"}
+, {"Å t" , "ÄŒt", "Thu", "F5", "", "ÄŒt", "Cs"}
+, {"Pi" , "PÃ¡", "Fri", "F6", "", "PÃ¡", "P"}
 , {"So" , "So", "Sat", "S&#225;", "", "So", "Szo"}
 , {"??" , "??", "???", "", "", "??", "??"}
 };
@@ -727,7 +727,7 @@ const char *nazov_Dn_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1] =
 #define		nazov_Dn(a)	nazov_Dn_jazyk[a][_global_jazyk]
 
 // two/three-letter abbreviations of the names of the days in week, starting with Sunday used for anchors (uppercase, no need to translate; based on Slovak)
-// 2006-08-01: pouíva sa pre HTML kotvy, ktoré nezávisia od jazykovej mutácie
+// 2006-08-01: pouÅ¾Ã­va sa pre HTML kotvy, ktorÃ© nezÃ¡visia od jazykovej mutÃ¡cie
 const char *nazov_DN_asci[POCET_DNI + 1] =
 {"NE", "PO", "UT", "STR", "STV", "PI", "SO", "??"};
 
@@ -738,19 +738,19 @@ const char *nazov_dn_asci[POCET_DNI + 1] =
 // the names of the months (lowecase) / nazov_mesiaca: string pre nazov dna; suhlasi s struct tm.tm_mon;
 // Month (0--11)
 const char *nazov_mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1] = 
-{ {"január", "leden", "January", "ianuarius", "", "leden", "január"}
-, {"február" , "únor", "February", "februarius", "", "únor", "február"}
-, {"marec" , "bøezen", "March", "martius", "", "bøezen", "március"}
-, {"apríl" , "duben", "April", "aprilis", "", "duben", "április"}
-, {"máj" , "kvìten", "May", "maius", "", "kvìten", "május"}
-, {"jún" , "èerven", "June", "iunius", "", "èerven", "június"}
-, {"júl" , "èervenec", "July", "iulius", "", "èervenec", "július"}
+{ {"januÃ¡r", "leden", "January", "ianuarius", "", "leden", "januÃ¡r"}
+, {"februÃ¡r" , "Ãºnor", "February", "februarius", "", "Ãºnor", "februÃ¡r"}
+, {"marec" , "bÅ™ezen", "March", "martius", "", "bÅ™ezen", "mÃ¡rcius"}
+, {"aprÃ­l" , "duben", "April", "aprilis", "", "duben", "Ã¡prilis"}
+, {"mÃ¡j" , "kvÄ›ten", "May", "maius", "", "kvÄ›ten", "mÃ¡jus"}
+, {"jÃºn" , "Äerven", "June", "iunius", "", "Äerven", "jÃºnius"}
+, {"jÃºl" , "Äervenec", "July", "iulius", "", "Äervenec", "jÃºlius"}
 , {"august" , "srpen", "August", "augustus", "", "srpen", "augusztus"}
-, {"september" , "záøí", "September", "september", "", "záøí", "szeptember"}
-, {"október" , "øíjen", "October", "october", "", "øíjen", "október"}
+, {"september" , "zÃ¡Å™Ã­", "September", "september", "", "zÃ¡Å™Ã­", "szeptember"}
+, {"oktÃ³ber" , "Å™Ã­jen", "October", "october", "", "Å™Ã­jen", "oktÃ³ber"}
 , {"november" , "listopad", "November", "november", "", "listopad", "november"}
 , {"december" , "prosinec", "December", "december", "", "prosinec", "december"}
-, {"neznámy" , "neznámı", "unknown", "___", "", "neznámı", "ismeretlen"}
+, {"neznÃ¡my" , "neznÃ¡mÃ½", "unknown", "___", "", "neznÃ¡mÃ½", "ismeretlen"}
 };
 
 #define		nazov_mesiaca(a)	nazov_mesiaca_jazyk[a][_global_jazyk]
@@ -776,78 +776,78 @@ const char *nazov_mesiaca_asci_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1] =
 
 // the names of the months (sentence case)
 const char *nazov_Mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1] = 
-{ {"Január", "Leden", "January", "Ianuarius", "", "Leden", "Január"}
-, {"Február" , "Únor", "February", "Februarius", "", "Únor", "Február"}
-, {"Marec", "Bøezen", "March", "Martius", "", "Bøezen", "Március"}
-, {"Apríl" , "Duben", "April", "Aprilis", "", "Duben", "Április"}
-, {"Máj" , "Kvìten", "May", "Maius", "", "Kvìten", "Május"}
-, {"Jún" , "Èerven", "June", "Iunius", "", "Èerven", "Június"}
-, {"Júl" , "Èervenec", "July", "Iulius", "", "Èervenec", "Július"}
+{ {"JanuÃ¡r", "Leden", "January", "Ianuarius", "", "Leden", "JanuÃ¡r"}
+, {"FebruÃ¡r" , "Ãšnor", "February", "Februarius", "", "Ãšnor", "FebruÃ¡r"}
+, {"Marec", "BÅ™ezen", "March", "Martius", "", "BÅ™ezen", "MÃ¡rcius"}
+, {"AprÃ­l" , "Duben", "April", "Aprilis", "", "Duben", "Ãprilis"}
+, {"MÃ¡j" , "KvÄ›ten", "May", "Maius", "", "KvÄ›ten", "MÃ¡jus"}
+, {"JÃºn" , "ÄŒerven", "June", "Iunius", "", "ÄŒerven", "JÃºnius"}
+, {"JÃºl" , "ÄŒervenec", "July", "Iulius", "", "ÄŒervenec", "JÃºlius"}
 , {"August" , "Srpen", "August", "Augustus", "", "Srpen", "Augusztus"}
-, {"September" , "Záøí", "September", "September", "", "Záøí", "Szeptember"}
-, {"Október" , "Øíjen", "October", "October", "", "Øíjen", "Október"}
+, {"September" , "ZÃ¡Å™Ã­", "September", "September", "", "ZÃ¡Å™Ã­", "Szeptember"}
+, {"OktÃ³ber" , "Å˜Ã­jen", "October", "October", "", "Å˜Ã­jen", "OktÃ³ber"}
 , {"November" , "Listopad", "November", "November", "", "Listopad", "November"}
 , {"December" , "Prosinec", "December", "December", "", "Prosinec", "December"}
-, {"Neznámy" , "Neznámı", "unknown", "???", "", "Neznámı", "Ismeretlen"}
+, {"NeznÃ¡my" , "NeznÃ¡mÃ½", "unknown", "???", "", "NeznÃ¡mÃ½", "Ismeretlen"}
 };
 
 #define		nazov_Mesiaca(a)	nazov_Mesiaca_jazyk[a][_global_jazyk]
 
 // the names of the months (uppercase)
 const char *nazov_MESIACA_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1] = 
-{ {"JANUÁR", "LEDEN", "JANUARY", "IANUARIUS", "", "LEDEN", "JANUÁR"}
-, {"FEBRUÁR" , "ÚNOR", "FEBRUARY", "FEBRUARIUS", "", "ÚNOR", "FEBRUÁR"}
-, {"MAREC", "BØEZEN", "MARCH", "MARTIUS", "", "BØEZEN", "MÁRCIUS"}
-, {"APRÍL" , "DUBEN", "APRIL", "APRILIS", "", "DUBEN", "ÁPRILIS"}
-, {"MÁJ" , "KVÌTEN", "MAY", "MAIUS", "", "KVÌTEN", "MÁJUS"}
-, {"JÚN" , "ÈERVEN", "JUNE", "IUNIUS", "", "ÈERVEN", "JÚNIUS"}
-, {"JÚL" , "ÈERVENEC", "JULY", "IULIUS", "", "ÈERVENEC", "JÚLIUS"}
+{ {"JANUÃR", "LEDEN", "JANUARY", "IANUARIUS", "", "LEDEN", "JANUÃR"}
+, {"FEBRUÃR" , "ÃšNOR", "FEBRUARY", "FEBRUARIUS", "", "ÃšNOR", "FEBRUÃR"}
+, {"MAREC", "BÅ˜EZEN", "MARCH", "MARTIUS", "", "BÅ˜EZEN", "MÃRCIUS"}
+, {"APRÃL" , "DUBEN", "APRIL", "APRILIS", "", "DUBEN", "ÃPRILIS"}
+, {"MÃJ" , "KVÄšTEN", "MAY", "MAIUS", "", "KVÄšTEN", "MÃJUS"}
+, {"JÃšN" , "ÄŒERVEN", "JUNE", "IUNIUS", "", "ÄŒERVEN", "JÃšNIUS"}
+, {"JÃšL" , "ÄŒERVENEC", "JULY", "IULIUS", "", "ÄŒERVENEC", "JÃšLIUS"}
 , {"AUGUST" , "SRPEN", "AUGUST", "AUGUSTUS", "", "SRPEN", "AUGUSZTUS"}
-, {"SEPTEMBER" , "ZÁØÍ", "SEPTEMBER", "SEPTEMBER", "", "ZÁØÍ", "SZEPTEMBER"}
-, {"OKTÓBER" , "ØÍJEN", "OCTOBER", "OCTOBER", "", "ØÍJEN", "OKTÓBER"}
+, {"SEPTEMBER" , "ZÃÅ˜Ã", "SEPTEMBER", "SEPTEMBER", "", "ZÃÅ˜Ã", "SZEPTEMBER"}
+, {"OKTÃ“BER" , "Å˜ÃJEN", "OCTOBER", "OCTOBER", "", "Å˜ÃJEN", "OKTÃ“BER"}
 , {"NOVEMBER" , "LISTOPAD", "NOVEMBER", "NOVEMBER", "", "LISTOPAD", "NOVEMBER"}
 , {"DECEMBER" , "PROSINEC", "DECEMBER", "DECEMBER", "", "PROSINEC", "DECEMBER"}
-, {"NEZNÁMY" , "NEZNÁMİ", "UNKNOWN", "???", "", "NEZNÁMİ", "ISMERETLEN"}
+, {"NEZNÃMY" , "NEZNÃMÃ", "UNKNOWN", "???", "", "NEZNÃMÃ", "ISMERETLEN"}
 };
 
 #define		nazov_MESIACA(a)	nazov_MESIACA_jazyk[a][_global_jazyk]
 
-// the names of the months (lowercase) in genitive grammatically 2.th declination?; in English: "IN that month" or "OF that month" / genitív == 2. pád, koho/èoho
-// usage: when generated string for date, e.g. en: "1st January 2000", sk: "1. januára 2000"
-// 2007-03-20: pridanı genitív názvu mesiaca kvôli latinèine
+// the names of the months (lowercase) in genitive grammatically 2.th declination?; in English: "IN that month" or "OF that month" / genitÃ­v == 2. pÃ¡d, koho/Äoho
+// usage: when generated string for date, e.g. en: "1st January 2000", sk: "1. januÃ¡ra 2000"
+// 2007-03-20: pridanÃ½ genitÃ­v nÃ¡zvu mesiaca kvÃ´li latinÄine
 const char *nazov_mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1] = 
-{ {"januára", "ledna", "January", "ianuarii", "", "ledna", "január"}
-, {"februára" , "února", "February", "februarii", "", "února", "február"}
-, {"marca" , "bøezna", "March", "martii", "", "bøezna", "március"}
-, {"apríla" , "dubna", "April", "aprilis", "", "dubna", "április"}
-, {"mája" , "kvìtna", "May", "maii", "", "kvìtna", "május"}
-, {"júna" , "èervna", "June", "iunii", "", "èervna", "június"}
-, {"júla" , "èervence", "July", "iulii", "", "èervence", "július"}
+{ {"januÃ¡ra", "ledna", "January", "ianuarii", "", "ledna", "januÃ¡r"}
+, {"februÃ¡ra" , "Ãºnora", "February", "februarii", "", "Ãºnora", "februÃ¡r"}
+, {"marca" , "bÅ™ezna", "March", "martii", "", "bÅ™ezna", "mÃ¡rcius"}
+, {"aprÃ­la" , "dubna", "April", "aprilis", "", "dubna", "Ã¡prilis"}
+, {"mÃ¡ja" , "kvÄ›tna", "May", "maii", "", "kvÄ›tna", "mÃ¡jus"}
+, {"jÃºna" , "Äervna", "June", "iunii", "", "Äervna", "jÃºnius"}
+, {"jÃºla" , "Äervence", "July", "iulii", "", "Äervence", "jÃºlius"}
 , {"augusta" , "srpna", "August", "augusti", "", "srpna", "augusztus"}
-, {"septembra" , "záøí", "September", "septembris", "", "záøí", "szeptember"}
-, {"októbra" , "øíjna", "October", "octobris", "", "øíjna", "október"}
+, {"septembra" , "zÃ¡Å™Ã­", "September", "septembris", "", "zÃ¡Å™Ã­", "szeptember"}
+, {"oktÃ³bra" , "Å™Ã­jna", "October", "octobris", "", "Å™Ã­jna", "oktÃ³ber"}
 , {"novembra" , "listopadu", "November", "novembris", "", "listopadu", "november"}
 , {"decembra" , "prosince", "December", "decembris", "", "prosince", "december"}
-, {"neznámeho" , "neznámého", "unknown", "___", "", "neznámého", "ismeretlen"}
+, {"neznÃ¡meho" , "neznÃ¡mÃ©ho", "unknown", "___", "", "neznÃ¡mÃ©ho", "ismeretlen"}
 };
 
 #define		nazov_mesiaca_gen(a)	nazov_mesiaca_gen_jazyk[a][_global_jazyk]
 
-// 2007-03-20: pridanı genitív názvu mesiaca kvôli latinèine
+// 2007-03-20: pridanÃ½ genitÃ­v nÃ¡zvu mesiaca kvÃ´li latinÄine
 const char *nazov_Mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1] = 
-{ {"Januára", "Ledna", "January", "Ianuarii", "", "Ledna", "Január"}
-, {"Februára" , "Února", "February", "Februarii", "", "Února", "Február"}
-, {"Marca" , "Bøezna", "March", "Martii", "", "Bøezna", "Március"}
-, {"Apríla" , "Dubna", "April", "Aprilis", "", "Dubna", "Április"}
-, {"Mája" , "Kvìtna", "May", "Maii", "", "Kvìtna", "Május"}
-, {"Júna" , "Èervna", "June", "Iunii", "", "Èervna", "Június"}
-, {"Júla" , "Èervence", "July", "Iulii", "", "Èervence", "Július"}
+{ {"JanuÃ¡ra", "Ledna", "January", "Ianuarii", "", "Ledna", "JanuÃ¡r"}
+, {"FebruÃ¡ra" , "Ãšnora", "February", "Februarii", "", "Ãšnora", "FebruÃ¡r"}
+, {"Marca" , "BÅ™ezna", "March", "Martii", "", "BÅ™ezna", "MÃ¡rcius"}
+, {"AprÃ­la" , "Dubna", "April", "Aprilis", "", "Dubna", "Ãprilis"}
+, {"MÃ¡ja" , "KvÄ›tna", "May", "Maii", "", "KvÄ›tna", "MÃ¡jus"}
+, {"JÃºna" , "ÄŒervna", "June", "Iunii", "", "ÄŒervna", "JÃºnius"}
+, {"JÃºla" , "ÄŒervence", "July", "Iulii", "", "ÄŒervence", "JÃºlius"}
 , {"Augusta" , "Srpna", "August", "Augusti", "", "Srpna", "Augusztus"}
-, {"Septembra" , "Záøí", "September", "Septembris", "", "Záøí", "Szeptember"}
-, {"Októbra" , "Øíjna", "October", "Octobris", "", "Øíjna", "Október"}
+, {"Septembra" , "ZÃ¡Å™Ã­", "September", "Septembris", "", "ZÃ¡Å™Ã­", "Szeptember"}
+, {"OktÃ³bra" , "Å˜Ã­jna", "October", "Octobris", "", "Å˜Ã­jna", "OktÃ³ber"}
 , {"Novembra" , "Listopadu", "November", "Novembris", "", "Listopadu", "November"}
 , {"Decembra" , "Prosince", "December", "Decembris", "", "Prosince", "December"}
-, {"Neznámeho" , "Neznámého", "Unknown", "___", "", "Neznámého", "Ismeretlen"}
+, {"NeznÃ¡meho" , "NeznÃ¡mÃ©ho", "Unknown", "___", "", "NeznÃ¡mÃ©ho", "Ismeretlen"}
 };
 
 #define		nazov_Mesiaca_gen(a)	nazov_Mesiaca_gen_jazyk[a][_global_jazyk]
@@ -861,18 +861,18 @@ const char *nazov_mes[POCET_MESIACOV + 1] =
 {"jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec", "___"};
 
 // ordinal numbers for first few Sundays (sentence case) - used for special occasions currently only in Slovak; no need to change
-// 2008-12-20: pridanı reazec pre poradové èíslo - pouíva sa v init_global_string() pre nedele niektorıch období [zatia¾ iba v slovenèine]
+// 2008-12-20: pridanÃ½ reÅ¥azec pre poradovÃ© ÄÃ­slo - pouÅ¾Ã­va sa v init_global_string() pre nedele niektorÃ½ch obdobÃ­ [zatiaÄ¾ iba v slovenÄine]
 const char *poradie_Slovom_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] = 
-{ {"Prvá", "První", "", "", "", "První", "1."}
-, {"Druhá" , "Druhá", "", "", "", "Druhá", "2."}
-, {"Tretia" , "Tøetí", "", "", "", "Tøetí", "3."}
-, {"Štvrtá" , "Ètvrtá", "", "", "", "Ètvrtá", "4."}
-, {"Piata" , "Pátá", "", "", "", "Pátá", "5."}
-, {"Šiesta" , "Šestá", "", "", "", "Šestá", "6."}
-, {"Siedma" , "Sedmá", "", "", "", "Sedmá", "7."}
-, {"Ôsma" , "Osmá", "", "", "", "Osmá", "8."}
-, {"Deviata" , "Devátá", "", "", "", "Devátá", "9."}
-, {"Desiata" , "Desátá", "", "", "", "Desátá", "10."}
+{ {"PrvÃ¡", "PrvnÃ­", "", "", "", "PrvnÃ­", "1."}
+, {"DruhÃ¡" , "DruhÃ¡", "", "", "", "DruhÃ¡", "2."}
+, {"Tretia" , "TÅ™etÃ­", "", "", "", "TÅ™etÃ­", "3."}
+, {"Å tvrtÃ¡" , "ÄŒtvrtÃ¡", "", "", "", "ÄŒtvrtÃ¡", "4."}
+, {"Piata" , "PÃ¡tÃ¡", "", "", "", "PÃ¡tÃ¡", "5."}
+, {"Å iesta" , "Å estÃ¡", "", "", "", "Å estÃ¡", "6."}
+, {"Siedma" , "SedmÃ¡", "", "", "", "SedmÃ¡", "7."}
+, {"Ã”sma" , "OsmÃ¡", "", "", "", "OsmÃ¡", "8."}
+, {"Deviata" , "DevÃ¡tÃ¡", "", "", "", "DevÃ¡tÃ¡", "9."}
+, {"Desiata" , "DesÃ¡tÃ¡", "", "", "", "DesÃ¡tÃ¡", "10."}
 , {"11. ", "11", "11", "11", "11", "11", "11."}
 , {"12. ", "12", "12", "12", "12", "12", "12."}
 , {"13. ", "13", "13", "13", "13", "13", "13."}
@@ -901,16 +901,16 @@ const char *poradie_Slovom_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] =
 
 // the same as "poradie_Slovom_jazyk" ordinal numbers for first few Sundays (uppercase) - used for special occasions currently only in Slovak; no need to change
 const char *poradie_SLOVOM_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] = 
-{ {"PRVÁ", "PRVNÍ", "", "", "", "PRVNÍ", "1."}
-, {"DRUHÁ" , "DRUHÁ", "", "", "", "DRUHÁ", "2."}
-, {"TRETIA" , "TØETÍ", "", "", "", "TØETÍ", "3."}
-, {"ŠTVRTÁ" , "ÈTVRTÁ", "", "", "", "ÈTVRTÁ", "4."}
-, {"PIATA" , "PÁTÁ", "", "", "", "PÁTÁ", "5."}
-, {"ŠIESTA" , "ŠESTÁ", "", "", "", "ŠESTÁ", "6."}
-, {"SIEDMA" , "SEDMÁ", "", "", "", "SEDMÁ", "7."}
-, {"OSMA" , "OSMÁ", "", "", "", "OSMÁ", "8."}
-, {"DEVIATA" , "DEVÁTÁ", "", "", "", "DEVÁTÁ", "9."}
-, {"DESIATA" , "DESÁTÁ", "", "", "", "DESÁTÁ", "10."}
+{ {"PRVÃ", "PRVNÃ", "", "", "", "PRVNÃ", "1."}
+, {"DRUHÃ" , "DRUHÃ", "", "", "", "DRUHÃ", "2."}
+, {"TRETIA" , "TÅ˜ETÃ", "", "", "", "TÅ˜ETÃ", "3."}
+, {"Å TVRTÃ" , "ÄŒTVRTÃ", "", "", "", "ÄŒTVRTÃ", "4."}
+, {"PIATA" , "PÃTÃ", "", "", "", "PÃTÃ", "5."}
+, {"Å IESTA" , "Å ESTÃ", "", "", "", "Å ESTÃ", "6."}
+, {"SIEDMA" , "SEDMÃ", "", "", "", "SEDMÃ", "7."}
+, {"OSMA" , "OSMÃ", "", "", "", "OSMÃ", "8."}
+, {"DEVIATA" , "DEVÃTÃ", "", "", "", "DEVÃTÃ", "9."}
+, {"DESIATA" , "DESÃTÃ", "", "", "", "DESÃTÃ", "10."}
 , {"11. ", "11", "11", "11", "11", "11", "11."}
 , {"12. ", "12", "12", "12", "12", "12", "12."}
 , {"13. ", "13", "13", "13", "13", "13", "13."}
@@ -939,30 +939,30 @@ const char *poradie_SLOVOM_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] =
 
 // the names of rites
 const char *nazov_ritu_jazyka[POCET_JAZYKOV + 1][POCET_RITOV + 1] =
-{{"rímskokatolícky", "gréckokatolícky"},
- {"øímskokatolickı", "øeckokatolickı"},
+{{"rÃ­mskokatolÃ­cky", "grÃ©ckokatolÃ­cky"},
+ {"Å™Ã­mskokatolickÃ½", "Å™eckokatolickÃ½"},
  {"Roman catholic", "Greek catholic"},
  {"Roman catholic", "Greek catholic"},
  {"Roman catholic", "Greek catholic"},
- {"øímskokatolickı", "øeckokatolickı"},
- {"római katolikus", "görög katolikus"},
+ {"Å™Ã­mskokatolickÃ½", "Å™eckokatolickÃ½"},
+ {"rÃ³mai katolikus", "gÃ¶rÃ¶g katolikus"},
 };
 #define nazov_ritu(a) nazov_ritu_jazyka[_global_jazyk][a]
 
 // the names of languages
-// 2006-07-11: Pridané kvôli jazykovım mutáciám
+// 2006-07-11: PridanÃ© kvÃ´li jazykovÃ½m mutÃ¡ciÃ¡m
 const char *nazov_jazyka[POCET_JAZYKOV + 1] =
-{"slovenèina", "èeština", "English", "lingua latina", "(neurèenı)", "èeština-dominikáni", "magyar"};
+{"slovenÄina", "ÄeÅ¡tina", "English", "lingua latina", "(neurÄenÃ½)", "ÄeÅ¡tina-dominikÃ¡ni", "magyar"};
 
 // language codes; internal usage for HTTP requests
 const char *skratka_jazyka[POCET_JAZYKOV + 1] =
 {"sk", "cz", "en", "la", "??", "c2", "hu"};
 
 // language codes; internal usage for include directories (postfix of directory/folder name); postfix MUST NOT contain slash/backslash
-// 2006-07-13 a 17: Pridané kvôli jazykovım mutáciám - postfix pre include adresár
+// 2006-07-13 a 17: PridanÃ© kvÃ´li jazykovÃ½m mutÃ¡ciÃ¡m - postfix pre include adresÃ¡r
 const char *postfix_jazyka[POCET_JAZYKOV + 1] =
 {"", "cz", "en", "la", "", "czop", "hu"};
-// Poznámka: Postfix nesmie obsahova na zaèiatku odde¾ovaè (slash resp. backslash); musí sa jedna o podadresár pod include
+// PoznÃ¡mka: Postfix nesmie obsahovaÅ¥ na zaÄiatku oddeÄ¾ovaÄ (slash resp. backslash); musÃ­ sa jednaÅ¥ o podadresÃ¡r pod include
 
 const short int format_datumu[POCET_JAZYKOV + 1] = {
 	/* sk */ FORMAT_DATUMU_DEN_MESIAC_ROK, /* cz */ FORMAT_DATUMU_DEN_MESIAC_ROK, /* en */ FORMAT_DATUMU_MESIAC_DEN_ROK,
@@ -971,15 +971,15 @@ const short int format_datumu[POCET_JAZYKOV + 1] = {
 };
 
 // filename of CSS file; the number of CSS does not directly correspond to the number of languages
-// 2006-08-08: Pridané kvôli rôznym css
+// 2006-08-08: PridanÃ© kvÃ´li rÃ´znym css
 // 2013-12-09: Always use "breviar.css" plus override eventually
 const char *nazov_css[POCET_CSS + 1] =
-{"(css neurèené)", "breviar.css", "breviar-invert-colors.css", "breviar-kbd.css", "ebreviar-cz.css"};
+{"(css neurÄenÃ©)", "breviar.css", "breviar-invert-colors.css", "breviar-kbd.css", "ebreviar-cz.css"};
 
 const char *skratka_css[POCET_CSS + 1] =
 {"__", "def", "invert", "kbd", "cz"};
 
-// 2012-04-03: Pridané kvôli jazykovım mutáciám -- default CSS pre danı jazyk | mono do budúcnosti monos default nastavenia v config (konfiguraènom súbore)
+// 2012-04-03: PridanÃ© kvÃ´li jazykovÃ½m mutÃ¡ciÃ¡m -- default CSS pre danÃ½ jazyk | moÅ¾no do budÃºcnosti moÅ¾nosÅ¥ default nastavenia v config (konfiguraÄnom sÃºbore)
 const short int default_css_jazyk[POCET_JAZYKOV + 1] =
 {CSS_breviar_sk, CSS_ebreviar_cz, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_ebreviar_cz, CSS_breviar_sk};
 
@@ -994,7 +994,7 @@ const char *nazov_css_blind_friendly = "breviar-blind-friendly.css";
 
 // language charset (encoding); used for HTML heading
 const short int charset_jazyka[POCET_JAZYKOV + 1] =
-{CHARSET_WINDOWS_1250, CHARSET_WINDOWS_1250, CHARSET_WINDOWS_1250, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_WINDOWS_1250, CHARSET_WINDOWS_1250};
+{CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8};
 
 const char *nazov_charset[POCET_CHARSET + 1] =
 {"utf-8", "windows-1250"};
@@ -1002,24 +1002,24 @@ const char *nazov_charset[POCET_CHARSET + 1] =
 const char *skratka_static_text[POCET_STATIC_TEXTOV + 1] = 
 {"", "ma", "ord"};
 
-// 2011-05-06: pridané kvôli monosti vo¾by písma
+// 2011-05-06: pridanÃ© kvÃ´li moÅ¾nosti voÄ¾by pÃ­sma
 const char *nazov_fontu[POCET_FONTOV + 1] =
-{"", "pod¾a CSS", "pod¾a vıberu", "Cambria", "Candara", "Georgia", "Tahoma", "Helvetica", "serif", "sans-serif"};
+{"", "podÄ¾a CSS", "podÄ¾a vÃ½beru", "Cambria", "Candara", "Georgia", "Tahoma", "Helvetica", "serif", "sans-serif"};
 const char *nazov_fontu_CHECKBOX[POCET_JAZYKOV + 1] =
-{"pod¾a vıberu", "podle vıbìru", "according to checkbox above", "checkbox", "", "podle vıbìru", "checkbox"};
+{"podÄ¾a vÃ½beru", "podle vÃ½bÄ›ru", "according to checkbox above", "checkbox", "", "podle vÃ½bÄ›ru", "checkbox"};
 const char *nazov_fontu_CSS[POCET_FONTOV + 1] =
-{"pod¾a CSS", "podle CSS", "according to CSS", "CSS", "CSS", "podle CSS", "CSS szerint"};
-// 2011-05-13: pridané kvôli monosti vo¾by ve¾kosti písma
+{"podÄ¾a CSS", "podle CSS", "according to CSS", "CSS", "CSS", "podle CSS", "CSS szerint"};
+// 2011-05-13: pridanÃ© kvÃ´li moÅ¾nosti voÄ¾by veÄ¾kosti pÃ­sma
 const char *nazov_font_size_jazyk[POCET_FONT_SIZE + 1][POCET_JAZYKOV + 1] = {
 {"", "", "", "", "", "", ""},
-{"pod¾a CSS", "podle CSS", "according to CSS", "CSS", "", "podle CSS", "CSS szerint"},
-{"malilinké", "malinkaté", "xx-small", "xx-small", "", "malinkaté", "apró"},
-{"ve¾mi malé", "velmi malé", "extra small", "extra small", "", "velmi malé", "nagyon kicsi"},
-{"malé", "malé", "small", "small", "", "malé", "kicsi"},
-{"stredné", "støední", "medium", "medium", "", "støední", "közepes"},
-{"ve¾ké", "veliké", "large", "large", "", "veliké", "nagy"},
-{"ve¾mi ve¾ké", "velmi veliké", "extra large", "extra large", "", "velmi veliké", "nagyon nagy"},
-{"obrovské", "obrovské", "xx-large", "xx-large", "", "obrovské", "óriási"}
+{"podÄ¾a CSS", "podle CSS", "according to CSS", "CSS", "", "podle CSS", "CSS szerint"},
+{"malilinkÃ©", "malinkatÃ©", "xx-small", "xx-small", "", "malinkatÃ©", "aprÃ³"},
+{"veÄ¾mi malÃ©", "velmi malÃ©", "extra small", "extra small", "", "velmi malÃ©", "nagyon kicsi"},
+{"malÃ©", "malÃ©", "small", "small", "", "malÃ©", "kicsi"},
+{"strednÃ©", "stÅ™ednÃ­", "medium", "medium", "", "stÅ™ednÃ­", "kÃ¶zepes"},
+{"veÄ¾kÃ©", "velikÃ©", "large", "large", "", "velikÃ©", "nagy"},
+{"veÄ¾mi veÄ¾kÃ©", "velmi velikÃ©", "extra large", "extra large", "", "velmi velikÃ©", "nagyon nagy"},
+{"obrovskÃ©", "obrovskÃ©", "xx-large", "xx-large", "", "obrovskÃ©", "Ã³riÃ¡si"}
 };
 #define nazov_font_size(a) nazov_font_size_jazyk[a][_global_jazyk]
 const char *nazov_font_size_css[POCET_FONT_SIZE + 1] = 
@@ -1027,23 +1027,23 @@ const char *nazov_font_size_css[POCET_FONT_SIZE + 1] =
 
 // strings of buttons - abbreviations of prayer names // shortened because of usage on mobile devices (Android)
 const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
-{ {"Inv.", "Inv.", "Inv.", "Inv.", "", "Inv.", "Imád."}
-, {"Posv. èít.", "Ètení", "Reading", "Off. lect.", "", "Ètení", "Olvasm. i."}
-, {"Ranné chv.", "Ranní chv.", "Morning pr.", "Laudes", "", "Ranní chv.", "Reggeli dics."}
-, {"9h", "9h", "9h", "Tertia", "", "Tercie", "Délelõtt"}
-, {"12h", "12h", "12h", "Sexta", "", "Sexta", "Délben"}
-, {"15h", "15h", "15h", "Nona", "", "Nona", "Délután"}
-, {"Vešpery", "Nešpory", "Vesperae", "Vesper&#230;", "", "Veèerní chv.", "Esti dics."}
-, {"Kompl.", "Kompl.", "Compl.", "Compl.", "", "Kompl.", "Befejezõ i."}
-// táto sa pre HTML buttony nepouíva
-	, {"neurèená", "neurèena", "not-defined", "no data", "", "neurèena", "nem azonosított"}
-, {"Prvé vešp.", "První nešp.", "1st Vesperae", "I vesper&#230;", "", "První v. chv.", "I. esti dics." }
-, {"Prvé kompl.", "První kompl.", "Compl.", "Compl.", "", "První kompl.", "Bef. i. I. e. d. után"}
-, {"Druhé vešp.", "Druhé nešpory", "2nd Vesperae", "II vesper&#230;", "", "Druhé veèerní chv.", "II. esti dics." }
-, {"Druhé kompl.", "Druhı kompl.", "2nd Completary", "II completorio", "", "Druhı kompl.", "Bef. i. II. e. d. után" }
-// , {"Vo¾ba detailov...", "Podrobnìji...", "Details...", "Optiónes...", "", "Podrobnìji...", "Részletek..."} // 2011-10-03: prakticky je to teraz len o vıbere spoloènıch èastí
-, {"vıber spoloènej èasti...", "vıbìr spoleèné èásti...", "common texts...", "optiónes...", "", "vıbìr spoleèné èásti...", "közös rész kiválasztása..."}
-, {"všetky", "všechny", "all", "all", "", "všechny", "összes" }
+{ {"Inv.", "Inv.", "Inv.", "Inv.", "", "Inv.", "ImÃ¡d."}
+, {"Posv. ÄÃ­t.", "ÄŒtenÃ­", "Reading", "Off. lect.", "", "ÄŒtenÃ­", "Olvasm. i."}
+, {"RannÃ© chv.", "RannÃ­ chv.", "Morning pr.", "Laudes", "", "RannÃ­ chv.", "Reggeli dics."}
+, {"9h", "9h", "9h", "Tertia", "", "Tercie", "DÃ©lelÅ‘tt"}
+, {"12h", "12h", "12h", "Sexta", "", "Sexta", "DÃ©lben"}
+, {"15h", "15h", "15h", "Nona", "", "Nona", "DÃ©lutÃ¡n"}
+, {"VeÅ¡pery", "NeÅ¡pory", "Vesperae", "Vesper&#230;", "", "VeÄernÃ­ chv.", "Esti dics."}
+, {"Kompl.", "Kompl.", "Compl.", "Compl.", "", "Kompl.", "BefejezÅ‘ i."}
+// tÃ¡to sa pre HTML buttony nepouÅ¾Ã­va
+	, {"neurÄenÃ¡", "neurÄena", "not-defined", "no data", "", "neurÄena", "nem azonosÃ­tott"}
+, {"PrvÃ© veÅ¡p.", "PrvnÃ­ neÅ¡p.", "1st Vesperae", "I vesper&#230;", "", "PrvnÃ­ v. chv.", "I. esti dics." }
+, {"PrvÃ© kompl.", "PrvnÃ­ kompl.", "Compl.", "Compl.", "", "PrvnÃ­ kompl.", "Bef. i. I. e. d. utÃ¡n"}
+, {"DruhÃ© veÅ¡p.", "DruhÃ© neÅ¡pory", "2nd Vesperae", "II vesper&#230;", "", "DruhÃ© veÄernÃ­ chv.", "II. esti dics." }
+, {"DruhÃ© kompl.", "DruhÃ½ kompl.", "2nd Completary", "II completorio", "", "DruhÃ½ kompl.", "Bef. i. II. e. d. utÃ¡n" }
+// , {"VoÄ¾ba detailov...", "PodrobnÄ›ji...", "Details...", "OptiÃ³nes...", "", "PodrobnÄ›ji...", "RÃ©szletek..."} // 2011-10-03: prakticky je to teraz len o vÃ½bere spoloÄnÃ½ch ÄastÃ­
+, {"vÃ½ber spoloÄnej Äasti...", "vÃ½bÄ›r spoleÄnÃ© ÄÃ¡sti...", "common texts...", "optiÃ³nes...", "", "vÃ½bÄ›r spoleÄnÃ© ÄÃ¡sti...", "kÃ¶zÃ¶s rÃ©sz kivÃ¡lasztÃ¡sa..."}
+, {"vÅ¡etky", "vÅ¡echny", "all", "all", "", "vÅ¡echny", "Ã¶sszes" }
 };
 
 #define		html_button_nazov_modlitby(a)	html_button_nazov_modlitby_jazyk[a][_global_jazyk]
@@ -1054,272 +1054,272 @@ const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 #endif
 
 // special button: Show prayer
-const char *html_button_det_show[POCET_JAZYKOV + 1] = {"Zobraz modlitbu", "Uka modlitbu", "Show prayer", "xxx", "", "Uka modlitbu", "Ima megjelenítése"};
+const char *html_button_det_show[POCET_JAZYKOV + 1] = {"Zobraz modlitbu", "UkaÅ¾ modlitbu", "Show prayer", "xxx", "", "UkaÅ¾ modlitbu", "Ima megjelenÃ­tÃ©se"};
 #ifndef HTML_BUTTON_DET_SHOW
 #define HTML_BUTTON_DET_SHOW	html_button_det_show[_global_jazyk]
 #endif
 
 // special button: Defaults
-const char *html_button_det_defaults[POCET_JAZYKOV + 1] = {"Pôvodné hodnoty", "Pùvodní hodnoty", "Defaults", "___", "", "Pùvodní hodnoty", "Alapértelmezett"};
+const char *html_button_det_defaults[POCET_JAZYKOV + 1] = {"PÃ´vodnÃ© hodnoty", "PÅ¯vodnÃ­ hodnoty", "Defaults", "___", "", "PÅ¯vodnÃ­ hodnoty", "AlapÃ©rtelmezett"};
 #ifndef HTML_BUTTON_DET_DEFAULTS
 #define HTML_BUTTON_DET_DEFAULTS	html_button_det_defaults[_global_jazyk]
 #endif
 
 // special button (today): Show
-const char *html_button_dnes_show[POCET_JAZYKOV + 1] = {"Zobrazi", "Uka", "Show", "___", "", "Uka", "Megjelenítés"};
+const char *html_button_dnes_show[POCET_JAZYKOV + 1] = {"ZobraziÅ¥", "UkaÅ¾", "Show", "___", "", "UkaÅ¾", "MegjelenÃ­tÃ©s"};
 #ifndef HTML_BUTTON_DNES_SHOW
 #define HTML_BUTTON_DNES_SHOW	html_button_dnes_show[_global_jazyk]
 #endif
 
 // special button (today): Defaults (clear form)
-// const char *html_button_dnes_defaults[POCET_JAZYKOV + 1] = {"Vyèisti", "Vyèisti", "Clear", "???", "", "Vyèisti", "Töröl"};
+// const char *html_button_dnes_defaults[POCET_JAZYKOV + 1] = {"VyÄisti", "VyÄisti", "Clear", "???", "", "VyÄisti", "TÃ¶rÃ¶l"};
 #ifndef HTML_BUTTON_DNES_DEFAULTS
 #define HTML_BUTTON_DNES_DEFAULTS	HTML_BUTTON_DET_DEFAULTS
 #endif
 
 // special button (today): Apply settings/options
-const char *html_button_dnes_apply[POCET_JAZYKOV + 1] = {"Potvrdi", "Potvrdit", "Apply", "___", "", "Potvrdit", "Alkalmaz"};
+const char *html_button_dnes_apply[POCET_JAZYKOV + 1] = {"PotvrdiÅ¥", "Potvrdit", "Apply", "___", "", "Potvrdit", "Alkalmaz"};
 #ifndef HTML_BUTTON_DNES_APPLY_SETTINGS
 #define HTML_BUTTON_DNES_APPLY_SETTINGS	html_button_dnes_apply[_global_jazyk]
 #endif
 
 // special button (today): Apply options 2 (various choices)
-const char *html_button_dnes_apply2[POCET_JAZYKOV + 1] = {"Uloi", "Uloit", "Save", "___", "", "Uloit", "Alkalmaz"};
+const char *html_button_dnes_apply2[POCET_JAZYKOV + 1] = {"UloÅ¾iÅ¥", "UloÅ¾it", "Save", "___", "", "UloÅ¾it", "Alkalmaz"};
 #ifndef HTML_BUTTON_DNES_APPLY_CHOICES
 #define HTML_BUTTON_DNES_APPLY_CHOICES html_button_dnes_apply2[_global_jazyk]
 #endif
 
 // special button (today): Morning prayer with canticum of Zekariah
-// doplnené, 2007-09-13
-const char *html_button_ranne_chvaly_benediktus[POCET_JAZYKOV + 1] = {"Ranné chvály + Benediktus", "Ranní chvály + Zach. kantikum", "Morning prayer with Benedictus", "Laudes + Benedictus", "", "Ranní chvály + Zach. kantikum", "Reggeli dicséret Benedictusszal"};
+// doplnenÃ©, 2007-09-13
+const char *html_button_ranne_chvaly_benediktus[POCET_JAZYKOV + 1] = {"RannÃ© chvÃ¡ly + Benediktus", "RannÃ­ chvÃ¡ly + Zach. kantikum", "Morning prayer with Benedictus", "Laudes + Benedictus", "", "RannÃ­ chvÃ¡ly + Zach. kantikum", "Reggeli dicsÃ©ret Benedictusszal"};
 #ifndef HTML_BUTTON_RANNE_CHVALY_BENEDIKTUS
 #define HTML_BUTTON_RANNE_CHVALY_BENEDIKTUS	html_button_ranne_chvaly_benediktus[_global_jazyk]
 #endif
 
 // special button (today): Evening prayer with canticum of Mary
-const char *html_button_vespery_magnifikat[POCET_JAZYKOV + 1] = {"Vešpery + Magnifikat", "Nešpory + Mariino kant.", "Vesperae + Magnificat", "Vesper&#230; + Magnificat", "", "Veèerní chvály + kant. Panny Marie", "Esti dicséret Magnificattal"};
+const char *html_button_vespery_magnifikat[POCET_JAZYKOV + 1] = {"VeÅ¡pery + Magnifikat", "NeÅ¡pory + Mariino kant.", "Vesperae + Magnificat", "Vesper&#230; + Magnificat", "", "VeÄernÃ­ chvÃ¡ly + kant. Panny Marie", "Esti dicsÃ©ret Magnificattal"};
 #ifndef HTML_BUTTON_VESPERY_MAGNIFIKAT
 #define HTML_BUTTON_VESPERY_MAGNIFIKAT	html_button_vespery_magnifikat[_global_jazyk]
 #endif
 
 // special button (today): Completory prayer with canticum of Simeon; is currently used only in Slovak
-// doplnené, 2008-12-20; nepouíva sa pre ostatné jazyky
-const char *html_button_kompletorium_nunkdim[POCET_JAZYKOV + 1] = {"Kompletórium + Nunk dimittis", "xxx", "xxx", "xxx", "", "xxx", "hu_xxx"};
+// doplnenÃ©, 2008-12-20; nepouÅ¾Ã­va sa pre ostatnÃ© jazyky
+const char *html_button_kompletorium_nunkdim[POCET_JAZYKOV + 1] = {"KompletÃ³rium + Nunk dimittis", "xxx", "xxx", "xxx", "", "xxx", "hu_xxx"};
 #ifndef HTML_BUTTON_KOMPLETORIUM_NUNKDIM
 #define HTML_BUTTON_KOMPLETORIUM_NUNKDIM	html_button_kompletorium_nunkdim[_global_jazyk]
 #endif
 
 // html <title> element for generated pages
-// doplnené, 2009-05-21
-const char *html_title[POCET_JAZYKOV + 1] = {"Liturgia hodín", "Liturgie hodin", "Liturgy of Hours", "Liturgia horarum", "", "Liturgie hodin", "Az Imaórák Liturgiája"};
-// 2009-08-04: upravené pre batch mód
-// const char *html_title_batch_mode[POCET_JAZYKOV + 1] = {"Batch mód", "Dávkovı reim", "Batch mode", "la_", "", "Dávkovı reim", "Kötegelt mód"};
-const char *html_title_batch_mode[POCET_JAZYKOV + 1] = {"Liturgia hodín – statické texty", "Liturgie hodin – statické texty", "Liturgy of Hours – static texts", "la_", "", "Liturgie hodin – statické texty", "Az Imaórák Liturgiája – állandó szövegek"};
+// doplnenÃ©, 2009-05-21
+const char *html_title[POCET_JAZYKOV + 1] = {"Liturgia hodÃ­n", "Liturgie hodin", "Liturgy of Hours", "Liturgia horarum", "", "Liturgie hodin", "Az ImaÃ³rÃ¡k LiturgiÃ¡ja"};
+// 2009-08-04: upravenÃ© pre batch mÃ³d
+// const char *html_title_batch_mode[POCET_JAZYKOV + 1] = {"Batch mÃ³d", "DÃ¡vkovÃ½ reÅ¾im", "Batch mode", "la_", "", "DÃ¡vkovÃ½ reÅ¾im", "KÃ¶tegelt mÃ³d"};
+const char *html_title_batch_mode[POCET_JAZYKOV + 1] = {"Liturgia hodÃ­n â€“ statickÃ© texty", "Liturgie hodin â€“ statickÃ© texty", "Liturgy of Hours â€“ static texts", "la_", "", "Liturgie hodin â€“ statickÃ© texty", "Az ImaÃ³rÃ¡k LiturgiÃ¡ja â€“ Ã¡llandÃ³ szÃ¶vegek"};
 
-// doplnené, 2011-05-16
-const char *html_error_template[POCET_JAZYKOV + 1] = {"Šablóna pre modlitbu sa nenašla. Zrejme neexistuje súbor `%s'.", "Šablona pro modlitbu se nenašla. Patrnì neexistuje soubor `%s'.", "Template for prayer not found. File `%s' does not exist.", "Template for prayer not found. File `%s' does not exist.", "", "Šablona pro modlitbu se nenašla. Patrnì neexistuje soubor `%s'.", "Nem található sablon az imához. %s' fájl nem létezik."};
+// doplnenÃ©, 2011-05-16
+const char *html_error_template[POCET_JAZYKOV + 1] = {"Å ablÃ³na pre modlitbu sa nenaÅ¡la. Zrejme neexistuje sÃºbor `%s'.", "Å ablona pro modlitbu se nenaÅ¡la. PatrnÄ› neexistuje soubor `%s'.", "Template for prayer not found. File `%s' does not exist.", "Template for prayer not found. File `%s' does not exist.", "", "Å ablona pro modlitbu se nenaÅ¡la. PatrnÄ› neexistuje soubor `%s'.", "Nem talÃ¡lhatÃ³ sablon az imÃ¡hoz. %s' fÃ¡jl nem lÃ©tezik."};
 
 // navigation buttons/texts: previous, next, today
-const char *html_button_predchadzajuci_[POCET_JAZYKOV + 1] = {"Predchádzajúci", "Pøedchozí", "Previous", "Pr&#230;ced&#233;nte", "", "Pøedchozí", "Elõzõ"};
-const char *html_button_nasledujuci_[POCET_JAZYKOV + 1] = {"Nasledujúci", "Následující", "Next", "Success&#237;vo", "", "Následující", "Következõ"};
+const char *html_button_predchadzajuci_[POCET_JAZYKOV + 1] = {"PredchÃ¡dzajÃºci", "PÅ™edchozÃ­", "Previous", "Pr&#230;ced&#233;nte", "", "PÅ™edchozÃ­", "ElÅ‘zÅ‘"};
+const char *html_button_nasledujuci_[POCET_JAZYKOV + 1] = {"NasledujÃºci", "NÃ¡sledujÃ­cÃ­", "Next", "Success&#237;vo", "", "NÃ¡sledujÃ­cÃ­", "KÃ¶vetkezÅ‘"};
 const char *html_button_dnes[POCET_JAZYKOV + 1] = {"dnes", "dnes", "today", "hodie", "", "dnes", "ma"};
 const char *html_button_Dnes[POCET_JAZYKOV + 1] = {"Dnes", "Dnes", "Today", "Hodie", "", "Dnes", "Ma"};
 const char *html_button_hore[POCET_JAZYKOV + 1] = {"^ ", "^ ", "^ ", "^ ", "^ ", "^ ", "^ "};
 
-const char *html_button_tento_den[POCET_JAZYKOV + 1] = {"tento deò", "tento den", "this day", "hodie", "", "tento den", "ez a nap"};
+const char *html_button_tento_den[POCET_JAZYKOV + 1] = {"tento deÅˆ", "tento den", "this day", "hodie", "", "tento den", "ez a nap"};
 
 // basic words: day, month, year
-const char *html_text_den[POCET_JAZYKOV + 1] = {"deò", "den", "day", "die", "", "den", "nap"};
-const char *html_text_mesiac[POCET_JAZYKOV + 1] = {"mesiac", "mìsíc", "month", "mensis", "", "mìsíc", "hó"};
-const char *html_text_rok[POCET_JAZYKOV + 1] = {"rok", "rok", "year", "anno", "", "rok", "év"};
-const char *html_text_Rok[POCET_JAZYKOV + 1] = {"Rok", "Rok", "Year", "Anno", "", "Rok", "Év"};
+const char *html_text_den[POCET_JAZYKOV + 1] = {"deÅˆ", "den", "day", "die", "", "den", "nap"};
+const char *html_text_mesiac[POCET_JAZYKOV + 1] = {"mesiac", "mÄ›sÃ­c", "month", "mensis", "", "mÄ›sÃ­c", "hÃ³"};
+const char *html_text_rok[POCET_JAZYKOV + 1] = {"rok", "rok", "year", "anno", "", "rok", "Ã©v"};
+const char *html_text_Rok[POCET_JAZYKOV + 1] = {"Rok", "Rok", "Year", "Anno", "", "Rok", "Ã‰v"};
 // in the following: you MUST keep all %d, %c, %s etc. variables - these are replaced by numbers, characters, strings, etc. respectively
-const char *html_text_Rok_x[POCET_JAZYKOV + 1] = {"Rok %d", "Rok %d", "Year %d", "Anno %d", "%d", "Rok %d", "%.d év"};
+const char *html_text_Rok_x[POCET_JAZYKOV + 1] = {"Rok %d", "Rok %d", "Year %d", "Anno %d", "%d", "Rok %d", "%.d Ã©v"};
 
-const char *html_text_zoznam_mesiacov[POCET_JAZYKOV + 1] = {"zoznam mesiacov", "seznam mìsícù", "list of months", "", "", "seznam mìsícù", "hónapok listája"};
+const char *html_text_zoznam_mesiacov[POCET_JAZYKOV + 1] = {"zoznam mesiacov", "seznam mÄ›sÃ­cÅ¯", "list of months", "", "", "seznam mÄ›sÃ­cÅ¯", "hÃ³napok listÃ¡ja"};
 
-const char *html_text_modlitba[POCET_JAZYKOV + 1] = {"modlitba", "modlitba", "prayer", "ora", "", "modlitba", "imádság"};
-const char *html_text_modlitby_pre_den[POCET_JAZYKOV + 1] = {"modlitby pre deò", "modlitby pro den", "prayers for date", "", "", "modlitby pro den", ""};
+const char *html_text_modlitba[POCET_JAZYKOV + 1] = {"modlitba", "modlitba", "prayer", "ora", "", "modlitba", "imÃ¡dsÃ¡g"};
+const char *html_text_modlitby_pre_den[POCET_JAZYKOV + 1] = {"modlitby pre deÅˆ", "modlitby pro den", "prayers for date", "", "", "modlitby pro den", ""};
 const char *html_text_alebo_pre[POCET_JAZYKOV + 1] = {"alebo pre", "anebo pro", "or for", "vel per", "", "anebo pro", "vagy"};
-const char *html_text_dnesok[POCET_JAZYKOV + 1] = {"dnešok", "dnešní den", "today", "hodie", "", "dnešní den", "a mai nap imaórái"};
+const char *html_text_dnesok[POCET_JAZYKOV + 1] = {"dneÅ¡ok", "dneÅ¡nÃ­ den", "today", "hodie", "", "dneÅ¡nÃ­ den", "a mai nap imaÃ³rÃ¡i"};
 
-// 2010-02-15: pridané kvôli "zoznam.htm" batch mode
-const char *html_text_Breviar_dnes[POCET_JAZYKOV + 1] = {"Breviár dnes", "Breviáø dnes", "Breviary today", "Liturgia horarum hodie", "", "Breviáø dnes", "A mai nap imaórája"};
-const char *html_text_Dnesne_modlitby[POCET_JAZYKOV + 1] = {"Dnešné modlitby", "Dnešní modlitby", "Today's prayers", "la_hodie", "", "Dnešní modlitby", "A mai nap imái"};
-const char *html_text_Prehlad_mesiaca[POCET_JAZYKOV + 1] = {"Preh¾ad mesiaca", "Pøehled mìsíce", "Current month", "la_", "", "Pøehled mìsíce", "A hónap áttekintése"};
-// 2011-03-18: pridané do "zoznam.htm" batch mode -- kalendáre a hlavnı nadpis
-const char *html_text_batch_mode_h1[POCET_JAZYKOV + 1] = {"Liturgia hodín – Predgenerované modlitby", "Liturgie hodin – Pøedgenerované modlitby", "Liturgy of Hours – Pregenerated prayers", "la_", "", "Liturgie hodin – Pøedgenerované modlitby", "Az Imaórák Liturgiája – Elõre generált imák"};
-const char *html_text_Kalendar[POCET_JAZYKOV + 1] = {"Kalendár", "Kalendáø", "Proprietary calendary", "Propria", "", "Kalendáø", "Naptár"};
+// 2010-02-15: pridanÃ© kvÃ´li "zoznam.htm" batch mode
+const char *html_text_Breviar_dnes[POCET_JAZYKOV + 1] = {"BreviÃ¡r dnes", "BreviÃ¡Å™ dnes", "Breviary today", "Liturgia horarum hodie", "", "BreviÃ¡Å™ dnes", "A mai nap imaÃ³rÃ¡ja"};
+const char *html_text_Dnesne_modlitby[POCET_JAZYKOV + 1] = {"DneÅ¡nÃ© modlitby", "DneÅ¡nÃ­ modlitby", "Today's prayers", "la_hodie", "", "DneÅ¡nÃ­ modlitby", "A mai nap imÃ¡i"};
+const char *html_text_Prehlad_mesiaca[POCET_JAZYKOV + 1] = {"PrehÄ¾ad mesiaca", "PÅ™ehled mÄ›sÃ­ce", "Current month", "la_", "", "PÅ™ehled mÄ›sÃ­ce", "A hÃ³nap Ã¡ttekintÃ©se"};
+// 2011-03-18: pridanÃ© do "zoznam.htm" batch mode -- kalendÃ¡re a hlavnÃ½ nadpis
+const char *html_text_batch_mode_h1[POCET_JAZYKOV + 1] = {"Liturgia hodÃ­n â€“ PredgenerovanÃ© modlitby", "Liturgie hodin â€“ PÅ™edgenerovanÃ© modlitby", "Liturgy of Hours â€“ Pregenerated prayers", "la_", "", "Liturgie hodin â€“ PÅ™edgenerovanÃ© modlitby", "Az ImaÃ³rÃ¡k LiturgiÃ¡ja â€“ ElÅ‘re generÃ¡lt imÃ¡k"};
+const char *html_text_Kalendar[POCET_JAZYKOV + 1] = {"KalendÃ¡r", "KalendÃ¡Å™", "Proprietary calendary", "Propria", "", "KalendÃ¡Å™", "NaptÃ¡r"};
 
 const char *html_text_Vysvetlivky[POCET_JAZYKOV + 1] = 
 {"Vysvetlivky", 
- "Vysvìtlivky", 
+ "VysvÄ›tlivky", 
  "Legenda", 
  "Legenda", 
  "", 
- "Vysvìtlivky", 
- "Jelmagyarázat"};
+ "VysvÄ›tlivky", 
+ "JelmagyarÃ¡zat"};
 
 const char *html_text_dalsie_moznosti[POCET_JAZYKOV + 1] = 
-{"Vıber ïalších moností", 
- "Další monosti vıbìru ", 
+{"VÃ½ber ÄalÅ¡Ã­ch moÅ¾nostÃ­", 
+ "DalÅ¡Ã­ moÅ¾nosti vÃ½bÄ›ru ", 
  "Choose from above (buttons) or from the following options: ", 
  "", 
  "", 
- "Další monosti vıbìru", 
- "További lehetõségek választása:"};
+ "DalÅ¡Ã­ moÅ¾nosti vÃ½bÄ›ru", 
+ "TovÃ¡bbi lehetÅ‘sÃ©gek vÃ¡lasztÃ¡sa:"};
 
 const char *html_text_dalsie_moznosti_1[POCET_JAZYKOV + 1] = 
 {"Nastavenia", 
- "Nastavení", 
+ "NastavenÃ­", 
  "Settings", 
  "", 
  "", 
- "Nastavení", 
- "Beállítások"};
+ "NastavenÃ­", 
+ "BeÃ¡llÃ­tÃ¡sok"};
 
 const char *html_text_dalsie_moznosti_2[POCET_JAZYKOV + 1] = 
-{"Ïalšie zobrazenia", 
- "Další zobrazení", 
+{"ÄalÅ¡ie zobrazenia", 
+ "DalÅ¡Ã­ zobrazenÃ­", 
  "Other options", 
  "", 
  "", 
- "Další zobrazení", 
- "Más megjelenítési lehetõségek"};
+ "DalÅ¡Ã­ zobrazenÃ­", 
+ "MÃ¡s megjelenÃ­tÃ©si lehetÅ‘sÃ©gek"};
 
-const char *html_text_prik_sviatky_atd[POCET_JAZYKOV + 1] = {"prikázané sviatky a slávnosti Pána v roku ", "zasvìcené svátky a slavnosti Pánì v roce ", "obligatory celebrations in year ", "", "", "zasvìcené svátky a slavnosti Pánì v roce", "kötelezõ ünnepek"};
-const char *html_text_lit_kalendar[POCET_JAZYKOV + 1] = {"liturgickı kalendár pre", "liturgickı kalendáø pro", "liturgical calendar for", "", "", "liturgickı kalendáø pro", "liturgikus naptár"};
+const char *html_text_prik_sviatky_atd[POCET_JAZYKOV + 1] = {"prikÃ¡zanÃ© sviatky a slÃ¡vnosti PÃ¡na v roku ", "zasvÄ›cenÃ© svÃ¡tky a slavnosti PÃ¡nÄ› v roce ", "obligatory celebrations in year ", "", "", "zasvÄ›cenÃ© svÃ¡tky a slavnosti PÃ¡nÄ› v roce", "kÃ¶telezÅ‘ Ã¼nnepek"};
+const char *html_text_lit_kalendar[POCET_JAZYKOV + 1] = {"liturgickÃ½ kalendÃ¡r pre", "liturgickÃ½ kalendÃ¡Å™ pro", "liturgical calendar for", "", "", "liturgickÃ½ kalendÃ¡Å™ pro", "liturgikus naptÃ¡r"};
 const char *html_text_roku[POCET_JAZYKOV + 1] = {"roku", "roku", "of year", "anno", "", "roku", ""};
-const char *html_text_tabulka_pohyblive_od[POCET_JAZYKOV + 1] = {"tabu¾ka dátumov pohyblivıch slávení od roku", "tabulka s daty promìnnıch slavností od roku", "table with dates of movable celebrations from year", "", "", "tabulka s daty promìnnıch slavností od roku", "a mozgó (változó) ünnepek táblázata a következõ években"};
+const char *html_text_tabulka_pohyblive_od[POCET_JAZYKOV + 1] = {"tabuÄ¾ka dÃ¡tumov pohyblivÃ½ch slÃ¡venÃ­ od roku", "tabulka s daty promÄ›nnÃ½ch slavnostÃ­ od roku", "table with dates of movable celebrations from year", "", "", "tabulka s daty promÄ›nnÃ½ch slavnostÃ­ od roku", "a mozgÃ³ (vÃ¡ltozÃ³) Ã¼nnepek tÃ¡blÃ¡zata a kÃ¶vetkezÅ‘ Ã©vekben"};
 const char *html_text_do_roku[POCET_JAZYKOV + 1] = {"do roku", "po rok", "till year", "", "", "po rok", ""};
-const char *html_text_zobrazit_linky[POCET_JAZYKOV + 1] = {"zobrazi tabu¾ku vrátane hypertextovıch odkazov na jednotlivé dni", "zobrazit tabulku s hypertextovımi odkazy pro jednotlivé dny", "display the table including hypertext links to each date", "", "", "zobrazit tabulku s hypertextovımi odkazy pro jednotlivé dny", "A táblázat megjelenítése az egyes napokhoz tartozó hiperhivatkozásokkal együtt."};
-const char *html_text_pre_cezrocne_obd[POCET_JAZYKOV + 1] = {"pre cezroèné obdobie", "pro mezidobí", "for ...", "per annum", "", "pro dobu bìhem roku", ""};
-const char *html_text_tyzden_zaltara_cislo[POCET_JAZYKOV + 1] = {"%d. tıdeò altára", "%d. tıden altáøe", "%d. week of Psaltary", "hebdomada %d psalterii", "%d", "%d. tıden altáøe", "%d. zsoltáros hét"};
-const char *html_text_tyzden_cislo[POCET_JAZYKOV + 1] = {"%d. tıdeò", "%d. tıden", "%d. week", "hebdomada %d", "%d", "%d. tıden", "%d. hét"};
-const char *html_text_tyzden[POCET_JAZYKOV + 1] = {". tıdeò", ". tıden", ". week", "hebdomada ", "", ". tıden", ". hét"};
-const char *html_text_v_tyzdni_zaltara[POCET_JAZYKOV + 1] = {". tıdni altára", ". tıdnu altáøe", "week of Psaltary", "hebdomada", "", ". tıdnu altáøe", ". zsoltáros hét"};
+const char *html_text_zobrazit_linky[POCET_JAZYKOV + 1] = {"zobraziÅ¥ tabuÄ¾ku vrÃ¡tane hypertextovÃ½ch odkazov na jednotlivÃ© dni", "zobrazit tabulku s hypertextovÃ½mi odkazy pro jednotlivÃ© dny", "display the table including hypertext links to each date", "", "", "zobrazit tabulku s hypertextovÃ½mi odkazy pro jednotlivÃ© dny", "A tÃ¡blÃ¡zat megjelenÃ­tÃ©se az egyes napokhoz tartozÃ³ hiperhivatkozÃ¡sokkal egyÃ¼tt."};
+const char *html_text_pre_cezrocne_obd[POCET_JAZYKOV + 1] = {"pre cezroÄnÃ© obdobie", "pro mezidobÃ­", "for ...", "per annum", "", "pro dobu bÄ›hem roku", ""};
+const char *html_text_tyzden_zaltara_cislo[POCET_JAZYKOV + 1] = {"%d. tÃ½Å¾deÅˆ Å¾altÃ¡ra", "%d. tÃ½den Å¾altÃ¡Å™e", "%d. week of Psaltary", "hebdomada %d psalterii", "%d", "%d. tÃ½den Å¾altÃ¡Å™e", "%d. zsoltÃ¡ros hÃ©t"};
+const char *html_text_tyzden_cislo[POCET_JAZYKOV + 1] = {"%d. tÃ½Å¾deÅˆ", "%d. tÃ½den", "%d. week", "hebdomada %d", "%d", "%d. tÃ½den", "%d. hÃ©t"};
+const char *html_text_tyzden[POCET_JAZYKOV + 1] = {". tÃ½Å¾deÅˆ", ". tÃ½den", ". week", "hebdomada ", "", ". tÃ½den", ". hÃ©t"};
+const char *html_text_v_tyzdni_zaltara[POCET_JAZYKOV + 1] = {". tÃ½Å¾dni Å¾altÃ¡ra", ". tÃ½dnu Å¾altÃ¡Å™e", "week of Psaltary", "hebdomada", "", ". tÃ½dnu Å¾altÃ¡Å™e", ". zsoltÃ¡ros hÃ©t"};
 const char *html_text_pre[POCET_JAZYKOV + 1] = {"pre", "pro", "for", "per", "", "pro", ""};
-const char *html_text_ordinarium[POCET_JAZYKOV + 1] = {"ordinárium", "uspoøádání", "ordinary", "ordinarium", "", "ordinárium", "általános rész:"};
+const char *html_text_ordinarium[POCET_JAZYKOV + 1] = {"ordinÃ¡rium", "uspoÅ™Ã¡dÃ¡nÃ­", "ordinary", "ordinarium", "", "ordinÃ¡rium", "Ã¡ltalÃ¡nos rÃ©sz:"};
 // in the following: you MUST keep all HTML elements, e.g. <a href...>, <br/> etc.
 const char *html_text_dnes_je_atd[POCET_JAZYKOV + 1] = 
-{"Dnes je %d. deò v roku%s, <a href=\"%s%s\">juliánsky dátum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
- "Dnes je %d. den v roku%s, <a href=\"%s%s\">juliánské datum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
+{"Dnes je %d. deÅˆ v roku%s, <a href=\"%s%s\">juliÃ¡nsky dÃ¡tum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
+ "Dnes je %d. den v roku%s, <a href=\"%s%s\">juliÃ¡nskÃ© datum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
  "Today is %d. day in the year%s, <a href=\"%s%s\">Julian date</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
  "Hodie est %d. die anno %s, <a href=\"%s%s\">Iulianus datum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
  "%d/%s<a href=\"%s%s\">JD</a> = %ld%s.\n"HTML_LINE_BREAK"\n",
- "Dnes je %d. den v roku%s, <a href=\"%s%s\">juliánské datum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
- "Ma %s %d. napja van, <a href=\"%s%s\">Julián naptár</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n"};
+ "Dnes je %d. den v roku%s, <a href=\"%s%s\">juliÃ¡nskÃ© datum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
+ "Ma %s %d. napja van, <a href=\"%s%s\">JuliÃ¡n naptÃ¡r</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n"};
 
 const char *html_text_alebo[POCET_JAZYKOV + 1] = {"alebo:", "nebo:", "or:", "", "", "nebo:", ""};
 
-const char *html_text_zakladne_info[POCET_JAZYKOV + 1] = {"Základné informácie", "Základní informace", "Basic info", "__info__", "", "Základní informace", "Alapvetõ információk"};
-const char *html_text_je[POCET_JAZYKOV + 1] = {"je", "je", "is", "est", "", "je", /* HU: van, ale nie pre prestupnı */ ""};
-const char *html_text_nie_je[POCET_JAZYKOV + 1] = {"nie je", "není", "is not", "non est", "", "není", /* HU: nincs, ale nie pre prestupnı */ "nem"};
-const char *html_text_prestupny[POCET_JAZYKOV + 1] = {"prestupnı", "pøestupnı", "...", "...", "", "pøestupnı", "szökõév"};
-const char *html_text_datumy_pohyblivych_slaveni[POCET_JAZYKOV + 1] = {"Dátumy pohyblivıch slávení", "Dáta promìnlivıch slávení", "Dates for movable celebrations", "", "", "Data promìnlivıch slavení", "A mozgó (változó) ünnepek dátumai"};
+const char *html_text_zakladne_info[POCET_JAZYKOV + 1] = {"ZÃ¡kladnÃ© informÃ¡cie", "ZÃ¡kladnÃ­ informace", "Basic info", "__info__", "", "ZÃ¡kladnÃ­ informace", "AlapvetÅ‘ informÃ¡ciÃ³k"};
+const char *html_text_je[POCET_JAZYKOV + 1] = {"je", "je", "is", "est", "", "je", /* HU: van, ale nie pre prestupnÃ½ */ ""};
+const char *html_text_nie_je[POCET_JAZYKOV + 1] = {"nie je", "nenÃ­", "is not", "non est", "", "nenÃ­", /* HU: nincs, ale nie pre prestupnÃ½ */ "nem"};
+const char *html_text_prestupny[POCET_JAZYKOV + 1] = {"prestupnÃ½", "pÅ™estupnÃ½", "...", "...", "", "pÅ™estupnÃ½", "szÃ¶kÅ‘Ã©v"};
+const char *html_text_datumy_pohyblivych_slaveni[POCET_JAZYKOV + 1] = {"DÃ¡tumy pohyblivÃ½ch slÃ¡venÃ­", "DÃ¡ta promÄ›nlivÃ½ch slÃ¡venÃ­", "Dates for movable celebrations", "", "", "Data promÄ›nlivÃ½ch slavenÃ­", "A mozgÃ³ (vÃ¡ltozÃ³) Ã¼nnepek dÃ¡tumai"};
 
-const char *html_text_ritus[POCET_JAZYKOV + 1] = {"Rítus", "Obøad", "Ritus", "Ritus", "", "Ritus", "Szertartás"};
+const char *html_text_ritus[POCET_JAZYKOV + 1] = {"RÃ­tus", "ObÅ™ad", "Ritus", "Ritus", "", "Ritus", "SzertartÃ¡s"};
 
-const char *html_text_den_v_roku[POCET_JAZYKOV + 1] = {"%d. deò v roku", "%d. den v roce", "%d. day of the year", "%d. ", "%d. ", "%d. den v roce", "az év %d. napja"};
+const char *html_text_den_v_roku[POCET_JAZYKOV + 1] = {"%d. deÅˆ v roku", "%d. den v roce", "%d. day of the year", "%d. ", "%d. ", "%d. den v roce", "az Ã©v %d. napja"};
 
-const char *html_text_zacina[POCET_JAZYKOV + 1] = {"zaèína", "zaèíná", "starts", "", "", "zaèíná", "kezdõdik"};
-const char *html_text_liturgicky_rok[POCET_JAZYKOV + 1] = {"liturgickı rok", "liturgickı rok", "liturgical year", "anno liturgico", "", "liturgickı rok", "liturgikus év"};
+const char *html_text_zacina[POCET_JAZYKOV + 1] = {"zaÄÃ­na", "zaÄÃ­nÃ¡", "starts", "", "", "zaÄÃ­nÃ¡", "kezdÅ‘dik"};
+const char *html_text_liturgicky_rok[POCET_JAZYKOV + 1] = {"liturgickÃ½ rok", "liturgickÃ½ rok", "liturgical year", "anno liturgico", "", "liturgickÃ½ rok", "liturgikus Ã©v"};
 
-const char *html_text_txt_export[POCET_JAZYKOV + 1] = {"Textovı vıstup: ", "Textovı vıstup: ", "Text export: ", "Text export:", "", "Textovı vıstup: ", "Szöveg exportálása: "};
+const char *html_text_txt_export[POCET_JAZYKOV + 1] = {"TextovÃ½ vÃ½stup: ", "TextovÃ½ vÃ½stup: ", "Text export: ", "Text export:", "", "TextovÃ½ vÃ½stup: ", "SzÃ¶veg exportÃ¡lÃ¡sa: "};
 
 #define POCET_HTML_TEXT_POHYBLIVE 12
 #define HTML_TEXT_POHYBLIVE_ZJAVENIE_PANA 3
 
 const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1] = {
 {
-	"Rok"HTML_LINE_BREAK"Pána",
-	"Léto"HTML_LINE_BREAK"Pánì", 
+	"Rok"HTML_LINE_BREAK"PÃ¡na",
+	"LÃ©to"HTML_LINE_BREAK"PÃ¡nÄ›", 
 	"Anno"HTML_LINE_BREAK"Domini",
 	"Anno"HTML_LINE_BREAK"Domini",
 	"",
-	"Léto"HTML_LINE_BREAK"Pánì",
-	"Naptári"HTML_LINE_BREAK"év"
+	"LÃ©to"HTML_LINE_BREAK"PÃ¡nÄ›",
+	"NaptÃ¡ri"HTML_LINE_BREAK"Ã©v"
 },
 {
-	"Nede¾ná"HTML_LINE_BREAK"litera",
-	"Nedìlní"HTML_LINE_BREAK"písmeno", 
+	"NedeÄ¾nÃ¡"HTML_LINE_BREAK"litera",
+	"NedÄ›lnÃ­"HTML_LINE_BREAK"pÃ­smeno", 
 	"Sunday"HTML_LINE_BREAK"Letter",
 	"Let."HTML_LINE_BREAK"Dom.",
 	"",
-	"Nedìlní"HTML_LINE_BREAK"písmeno",
-	"Vasár-"HTML_LINE_BREAK"nap"HTML_LINE_BREAK"betûje"
+	"NedÄ›lnÃ­"HTML_LINE_BREAK"pÃ­smeno",
+	"VasÃ¡r-"HTML_LINE_BREAK"nap"HTML_LINE_BREAK"betÅ±je"
 },
 {
-	"Nede¾nı"HTML_LINE_BREAK"cyklus",
-	"Nedìlní"HTML_LINE_BREAK"cyklus", 
+	"NedeÄ¾nÃ½"HTML_LINE_BREAK"cyklus",
+	"NedÄ›lnÃ­"HTML_LINE_BREAK"cyklus", 
 	"Sunday"HTML_LINE_BREAK"cycle",
 	"Cycl."HTML_LINE_BREAK"Dom.",
 	"",
-	"Nedìlní"HTML_LINE_BREAK"cyklus",
-	"Vasár-"HTML_LINE_BREAK"napi"HTML_LINE_BREAK"ciklus"
+	"NedÄ›lnÃ­"HTML_LINE_BREAK"cyklus",
+	"VasÃ¡r-"HTML_LINE_BREAK"napi"HTML_LINE_BREAK"ciklus"
 },
 {
-	"Zjavenie"HTML_LINE_BREAK"Pána",
-	"Zjevení"HTML_LINE_BREAK"Pánì", 
+	"Zjavenie"HTML_LINE_BREAK"PÃ¡na",
+	"ZjevenÃ­"HTML_LINE_BREAK"PÃ¡nÄ›", 
 	"Epiphany",
 	"Epiphania"HTML_LINE_BREAK"Domini",
 	"",
-	"Zjevení"HTML_LINE_BREAK"Pánì",
-	"Urunk"HTML_LINE_BREAK"megjelenése"HTML_LINE_BREAK"(Vízkereszt)"
+	"ZjevenÃ­"HTML_LINE_BREAK"PÃ¡nÄ›",
+	"Urunk"HTML_LINE_BREAK"megjelenÃ©se"HTML_LINE_BREAK"(VÃ­zkereszt)"
 },
 {
-	"Krst"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"Pána",
-	"Køest"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"Pánì", 
+	"Krst"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"PÃ¡na",
+	"KÅ™est"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"PÃ¡nÄ›", 
 	"Bapt. of"HTML_LINE_BREAK"the Lord",
 	"Bapt."HTML_LINE_BREAK"Domini",
 	"",
-	"Køest"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"Pánì",
-	"Urunk"HTML_LINE_BREAK"megkeresztel-"HTML_LINE_BREAK"kedése"
+	"KÅ™est"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"PÃ¡nÄ›",
+	"Urunk"HTML_LINE_BREAK"megkeresztel-"HTML_LINE_BREAK"kedÃ©se"
 },
 {
 	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"pred"HTML_LINE_BREAK"PO</a>",
-	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"pøed"HTML_LINE_BREAK"postem</a>", 
+	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"pÅ™ed"HTML_LINE_BREAK"postem</a>", 
 	"...",
 	"PA fest.",
 	"",
-	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"pøed"HTML_LINE_BREAK"postem</a>",
-	"EK"HTML_LINE_BREAK"a HSZ"HTML_LINE_BREAK"elõtt"
+	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"pÅ™ed"HTML_LINE_BREAK"postem</a>",
+	"EK"HTML_LINE_BREAK"a HSZ"HTML_LINE_BREAK"elÅ‘tt"
 },
 {
-	"Popolcová"HTML_LINE_BREAK"streda",
-	"Popeleèní"HTML_LINE_BREAK"støeda", 
+	"PopolcovÃ¡"HTML_LINE_BREAK"streda",
+	"PopeleÄnÃ­"HTML_LINE_BREAK"stÅ™eda", 
 	"...",
 	"...",
 	"",
-	"Popeleèní"HTML_LINE_BREAK"støeda",
-	"Hamvazó-"HTML_LINE_BREAK"szerda"
+	"PopeleÄnÃ­"HTML_LINE_BREAK"stÅ™eda",
+	"HamvazÃ³-"HTML_LINE_BREAK"szerda"
 },
 {
-	"Ve¾ká"HTML_LINE_BREAK"noc",
+	"VeÄ¾kÃ¡"HTML_LINE_BREAK"noc",
 	"Veliko-"HTML_LINE_BREAK"noce", 
 	"Easter",
 	"Pascha",
 	"",
 	"Veliko-"HTML_LINE_BREAK"noce",
-	"Húsvét"
+	"HÃºsvÃ©t"
 },
 {
-	"Nanebo-"HTML_LINE_BREAK"vstúpenie"HTML_LINE_BREAK"Pána",
-	"Nanebe-"HTML_LINE_BREAK"vstoupení"HTML_LINE_BREAK"Pánì", 
+	"Nanebo-"HTML_LINE_BREAK"vstÃºpenie"HTML_LINE_BREAK"PÃ¡na",
+	"Nanebe-"HTML_LINE_BREAK"vstoupenÃ­"HTML_LINE_BREAK"PÃ¡nÄ›", 
 	"...",
 	"...",
 	"",
-	"Nanebe-"HTML_LINE_BREAK"vstoupení"HTML_LINE_BREAK"Pánì",
+	"Nanebe-"HTML_LINE_BREAK"vstoupenÃ­"HTML_LINE_BREAK"PÃ¡nÄ›",
 	"Urunk"HTML_LINE_BREAK"menny-"HTML_LINE_BREAK"bemenetele"
 },
 {
-	"Zoslanie"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svätého",
-	"Seslání"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svatého", 
+	"Zoslanie"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"SvÃ¤tÃ©ho",
+	"SeslÃ¡nÃ­"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"SvatÃ©ho", 
 	"...",
 	"...",
 	"",
-	"Seslání"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svatého",
-	"Pünkösd"
+	"SeslÃ¡nÃ­"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"SvatÃ©ho",
+	"PÃ¼nkÃ¶sd"
 },
 {
 	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a>",
@@ -1328,88 +1328,88 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 	"...",
 	"",
 	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a>",
-	"EK"HTML_LINE_BREAK"a HU"HTML_LINE_BREAK"után"
+	"EK"HTML_LINE_BREAK"a HU"HTML_LINE_BREAK"utÃ¡n"
 },
 {
-	"Prvá"HTML_LINE_BREAK"adventná"HTML_LINE_BREAK"nede¾a",
-	"První"HTML_LINE_BREAK"adventní"HTML_LINE_BREAK"nedìle", 
+	"PrvÃ¡"HTML_LINE_BREAK"adventnÃ¡"HTML_LINE_BREAK"nedeÄ¾a",
+	"PrvnÃ­"HTML_LINE_BREAK"adventnÃ­"HTML_LINE_BREAK"nedÄ›le", 
 	"...",
 	"...",
 	"",
-	"První"HTML_LINE_BREAK"adventní"HTML_LINE_BREAK"nedìle",
-	"Advent"HTML_LINE_BREAK"elsõ"HTML_LINE_BREAK"vasárnapja"
+	"PrvnÃ­"HTML_LINE_BREAK"adventnÃ­"HTML_LINE_BREAK"nedÄ›le",
+	"Advent"HTML_LINE_BREAK"elsÅ‘"HTML_LINE_BREAK"vasÃ¡rnapja"
 },
 {
-	"Nede¾a"HTML_LINE_BREAK"Svätej"HTML_LINE_BREAK"rodiny",
-	"Nedìle"HTML_LINE_BREAK"Svaté"HTML_LINE_BREAK"rodiny", 
+	"NedeÄ¾a"HTML_LINE_BREAK"SvÃ¤tej"HTML_LINE_BREAK"rodiny",
+	"NedÄ›le"HTML_LINE_BREAK"SvatÃ©"HTML_LINE_BREAK"rodiny", 
 	"...",
 	"...",
 	"",
-	"Nedìle"HTML_LINE_BREAK"Svaté"HTML_LINE_BREAK"rodiny",
-	"Szent"HTML_LINE_BREAK"Család"HTML_LINE_BREAK"ünnepe"
+	"NedÄ›le"HTML_LINE_BREAK"SvatÃ©"HTML_LINE_BREAK"rodiny",
+	"Szent"HTML_LINE_BREAK"CsalÃ¡d"HTML_LINE_BREAK"Ã¼nnepe"
 }
 };
 
-const char *html_text_Nedelne_pismeno[POCET_JAZYKOV + 1] = {"Nede¾né písmeno", "Nedìlní písmeno", "Sunday letter", "", "", "Nedìlní písmeno", "A vasárnap betûje"};
-const char *html_text_Nedelne_pismena[POCET_JAZYKOV + 1] = {"Nede¾né písmená", "Nedìlní písmena", "Sunday letters", "", "", "Nedìlní písmena", "A vasárnap betûje"};
+const char *html_text_Nedelne_pismeno[POCET_JAZYKOV + 1] = {"NedeÄ¾nÃ© pÃ­smeno", "NedÄ›lnÃ­ pÃ­smeno", "Sunday letter", "", "", "NedÄ›lnÃ­ pÃ­smeno", "A vasÃ¡rnap betÅ±je"};
+const char *html_text_Nedelne_pismena[POCET_JAZYKOV + 1] = {"NedeÄ¾nÃ© pÃ­smenÃ¡", "NedÄ›lnÃ­ pÃ­smena", "Sunday letters", "", "", "NedÄ›lnÃ­ pÃ­smena", "A vasÃ¡rnap betÅ±je"};
 
 const char *html_text_Od_prvej_adv_atd[POCET_JAZYKOV + 1] = {
-	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
-	"Od první nedìle adventní v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"Od prvej adventnej nedele v roku %d (%s) pokraÄuje <a href=\"%s%s\">liturgickÃ½ rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"Od prvnÃ­ nedÄ›le adventnÃ­ v roku %d (%s) pokraÄuje <a href=\"%s%s\">liturgickÃ½ rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
 	"From the 1st Advent Sunday in the year %d (%s) continues <a href=\"%s%s\">liturgical year</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
-	"Od prvej adventnej nedele v roku %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"Od prvej adventnej nedele v roku %d (%s) pokraÄuje <a href=\"%s%s\">liturgickÃ½ rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
 	"",
-	"Od první nedìle adventní v roce %d (%s) pokraèuje <a href=\"%s%s\">liturgickı rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
-	"%d (%s) advent elsõ vasárnapjától az <"HTML_SPAN_BOLD">%c"HTML_SPAN_END" <a href=\"%s%s\">liturgikus év</a> folytatódik.",
+	"Od prvnÃ­ nedÄ›le adventnÃ­ v roce %d (%s) pokraÄuje <a href=\"%s%s\">liturgickÃ½ rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"%d (%s) advent elsÅ‘ vasÃ¡rnapjÃ¡tÃ³l az <"HTML_SPAN_BOLD">%c"HTML_SPAN_END" <a href=\"%s%s\">liturgikus Ã©v</a> folytatÃ³dik.",
 };
 
 const char *html_text_Po_Velkej_noci_atd[POCET_JAZYKOV + 1] = {
-	"Po Ve¾kej noci nasleduje %d. %s v cezroènom období.",
-	"Po Velikonocích následuje %d. %s v mezibdobí.",
+	"Po VeÄ¾kej noci nasleduje %d. %s v cezroÄnom obdobÃ­.",
+	"Po VelikonocÃ­ch nÃ¡sleduje %d. %s v mezibdobÃ­.",
 	"After Easter follows %d. %s per annum.",
-	"Po Ve¾kej noci nasleduje %d. %s per annum.",
-	"Po Ve¾kej noci nasleduje %d. %s v cezroènom období.", // v období „cez rok“
-	"Po Velikonocích následuje %d. %s v mezibdobí.",
-	"Húsvét után az évközi idõ %d. %sja következik.", // vasárnapja, nede¾a = vasárnap
+	"Po VeÄ¾kej noci nasleduje %d. %s per annum.",
+	"Po VeÄ¾kej noci nasleduje %d. %s v cezroÄnom obdobÃ­.", // v obdobÃ­ â€cez rokâ€œ
+	"Po VelikonocÃ­ch nÃ¡sleduje %d. %s v mezibdobÃ­.",
+	"HÃºsvÃ©t utÃ¡n az Ã©vkÃ¶zi idÅ‘ %d. %sja kÃ¶vetkezik.", // vasÃ¡rnapja, nedeÄ¾a = vasÃ¡rnap
 };
 
 const char *html_text_Prikazane_sviatky_v_roku[POCET_JAZYKOV + 1] = {
-	"Prikázané sviatky v roku %s",
-	"Pøikázané svátky v roce %s",
+	"PrikÃ¡zanÃ© sviatky v roku %s",
+	"PÅ™ikÃ¡zanÃ© svÃ¡tky v roce %s",
 	"Obliged celebrations in the year %s",
-	"Prikázané sviatky v roku %s",
-	"Prikázané sviatky v roku %s",
-	"Pøikázané svátky v roce %s",
-	"%s kötelezõ ünnepei",
+	"PrikÃ¡zanÃ© sviatky v roku %s",
+	"PrikÃ¡zanÃ© sviatky v roku %s",
+	"PÅ™ikÃ¡zanÃ© svÃ¡tky v roce %s",
+	"%s kÃ¶telezÅ‘ Ã¼nnepei",
 };
 
 const char *html_text_Jednotlive_mesiace_roku[POCET_JAZYKOV + 1] = {
-	"Jednotlivé mesiace roku %s",
-	"Jednotlivé mìsíce v roce %s",
+	"JednotlivÃ© mesiace roku %s",
+	"JednotlivÃ© mÄ›sÃ­ce v roce %s",
 	"Individual months of the year %s",
-	"Jednotlivé mesiace roku %s",
-	"Jednotlivé mesiace roku %s",
-	"Jednotlivé mìsíce v roce %s",
-	"Egyes hónapok %s-ben(-ban)",
+	"JednotlivÃ© mesiace roku %s",
+	"JednotlivÃ© mesiace roku %s",
+	"JednotlivÃ© mÄ›sÃ­ce v roce %s",
+	"Egyes hÃ³napok %s-ben(-ban)",
 };
 
 const char *str_doplnkova_psalmodia[POCET_JAZYKOV + 1] = 
-{"doplnková psalmódia", "almy z doplòovacího cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplnková psalmodie", "kiegészítõ zsoltárok" };
+{"doplnkovÃ¡ psalmÃ³dia", "Å¾almy z doplÅˆovacÃ­ho cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplnkovÃ¡ psalmodie", "kiegÃ©szÃ­tÅ‘ zsoltÃ¡rok" };
 
 const char *str_modl_cez_den_zalmy_zo_dna[POCET_JAZYKOV + 1] = 
-	{"benej psalmódie", "bìné psalmodie", "ordinary psalmody", "___", "", "bìné psalmodie", "soros zsoltárösszeállítást"};
+	{"beÅ¾nej psalmÃ³die", "bÄ›Å¾nÃ© psalmodie", "ordinary psalmody", "___", "", "bÄ›Å¾nÃ© psalmodie", "soros zsoltÃ¡rÃ¶sszeÃ¡llÃ­tÃ¡st"};
 #define		STR_MODL_CEZ_DEN_ZALMY_ZO_DNA 	str_modl_cez_den_zalmy_zo_dna[_global_jazyk]
 
 const char *str_modl_cez_den_doplnkova_psalmodia[POCET_JAZYKOV + 1] = 
-	{"doplnkovej psalmódie", "doplòovacího cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplòkové psalmodie", "kiegészítõ zsoltárok"};
+	{"doplnkovej psalmÃ³die", "doplÅˆovacÃ­ho cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplÅˆkovÃ© psalmodie", "kiegÃ©szÃ­tÅ‘ zsoltÃ¡rok"};
 #define		STR_MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA 	str_modl_cez_den_doplnkova_psalmodia[_global_jazyk]
 
 const char *str_modl_zalmy_zo_dna[POCET_JAZYKOV + 1] = 
-	{"dòa", "dne", "day", "die", "", "dne", "naptól"};
+	{"dÅˆa", "dne", "day", "die", "", "dne", "naptÃ³l"};
 #define		STR_MODL_ZALMY_ZO_DNA 	str_modl_zalmy_zo_dna[_global_jazyk]
 
 const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1] = 
-	{"sviatku", "svátku", "celebration", "___", "", "svátku", "ünneptõl"};
+	{"sviatku", "svÃ¡tku", "celebration", "___", "", "svÃ¡tku", "Ã¼nneptÅ‘l"};
 #define		STR_MODL_ZALMY_ZO_SV 	str_modl_zalmy_zo_sv[_global_jazyk]
 
 #define STR_VALUE_TRUE  "1"
@@ -1417,7 +1417,7 @@ const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1] =
 #define STR_VALUE_ZERO  "0"
 
 const char *str_ano[POCET_JAZYKOV + 1] = 
-	{"áno", "ano", "yes", "sic", "___", "ano", "igen"};
+	{"Ã¡no", "ano", "yes", "sic", "___", "ano", "igen"};
 #define		STR_ANO		str_ano[_global_jazyk]
 
 const char *str_nie[POCET_JAZYKOV + 1] = 
@@ -1437,7 +1437,7 @@ const char *html_text_jazyk[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_jazyk_long[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín v jazyku:",
+{"Liturgia hodÃ­n v jazyku:",
  "Liturgie hodin pro jazyk:",
  "Liturgy of hours in language:",
  "LH in lingua:",
@@ -1447,77 +1447,77 @@ const char *html_text_jazyk_long[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_jazyk_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín pre inı jazyk.",
- "Liturgie hodin pro jinı jazyk.",
+{"Liturgia hodÃ­n pre inÃ½ jazyk.",
+ "Liturgie hodin pro jinÃ½ jazyk.",
  "Liturgy of hours in other languages.",
  "LH in lingua...",
  "",
- "Liturgie hodin pro jinı jazyk.",
+ "Liturgie hodin pro jinÃ½ jazyk.",
  ""
 };
 
 const char *html_text_detaily_uvod[POCET_JAZYKOV + 1] = 
-{"Nasledovné monosti ovplyvnia vzh¾ad i obsah vygenerovanej modlitby.\nVyberte tie monosti, pod¾a ktorıch sa má modlitba vygenerova.", 
- "Následující monosti mají vliv na vzhled i obsah vygenerované modlitby.\nVyberte si monosti, podle kterıch má bıt modlitba vygenerována.", 
+{"NasledovnÃ© moÅ¾nosti ovplyvnia vzhÄ¾ad i obsah vygenerovanej modlitby.\nVyberte tie moÅ¾nosti, podÄ¾a ktorÃ½ch sa mÃ¡ modlitba vygenerovaÅ¥.", 
+ "NÃ¡sledujÃ­cÃ­ moÅ¾nosti majÃ­ vliv na vzhled i obsah vygenerovanÃ© modlitby.\nVyberte si moÅ¾nosti, podle kterÃ½ch mÃ¡ bÃ½t modlitba vygenerovÃ¡na.", 
  "The following options apply to the resulting generated text of the prayer.\nChoose options which fit your needs to the resulting prayer text.", 
  "",
  "",
- "Následující monosti mají vliv na vzhled i obsah vygenerované modlitby.\nVyberte si monosti, podle kterıch má bıt modlitba vygenerována.",
- "Ez a választási lehetõség befolyásolja a megszerkesztett ima megjelenítését és tartalmát.\nVálasszon a szerkeszthetõ lehetõségek közül."
+ "NÃ¡sledujÃ­cÃ­ moÅ¾nosti majÃ­ vliv na vzhled i obsah vygenerovanÃ© modlitby.\nVyberte si moÅ¾nosti, podle kterÃ½ch mÃ¡ bÃ½t modlitba vygenerovÃ¡na.",
+ "Ez a vÃ¡lasztÃ¡si lehetÅ‘sÃ©g befolyÃ¡solja a megszerkesztett ima megjelenÃ­tÃ©sÃ©t Ã©s tartalmÃ¡t.\nVÃ¡lasszon a szerkeszthetÅ‘ lehetÅ‘sÃ©gek kÃ¶zÃ¼l."
 };
 
 const char *html_text_option1_kalendar[POCET_JAZYKOV + 1] = 
-{"nastavenia pre liturgickı kalendár",
- "volby pro liturgickı kalendáø",
+{"nastavenia pre liturgickÃ½ kalendÃ¡r",
+ "volby pro liturgickÃ½ kalendÃ¡Å™",
  "options for liturgical calendar",
  "", 
  "", 
- "volby pro liturgickı kalendáø",
- "a liturgikus naptár beállításai"
+ "volby pro liturgickÃ½ kalendÃ¡Å™",
+ "a liturgikus naptÃ¡r beÃ¡llÃ­tÃ¡sai"
 };
 
 const char *html_text_option1_kalendar_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín ponúka monos slávenia niektorıch slávení dvojakım spôsobom; závisí od danej krajiny, ako rozhodla príslušná konferencia biskupov.",
- "Volby pro liturgickı kalendáø ovlivòují datumy nìkterıch slavení.",
+{"Liturgia hodÃ­n ponÃºka moÅ¾nosÅ¥ slÃ¡venia niektorÃ½ch slÃ¡venÃ­ dvojakÃ½m spÃ´sobom; zÃ¡visÃ­ od danej krajiny, ako rozhodla prÃ­sluÅ¡nÃ¡ konferencia biskupov.",
+ "Volby pro liturgickÃ½ kalendÃ¡Å™ ovlivÅˆujÃ­ datumy nÄ›kterÃ½ch slavenÃ­.",
  "Options for liturgical calendar...",
  "", 
  "", 
- "Volby pro liturgickı kalendáø ovlivòují datumy nìkterıch slavení.",
- "Az Imaórák liturgiája megadja a lehetõséget, hogy némely ünnepek kétféleképpen legyenek megünnepelve; az adott országtól függ, ahogy az adott püspöki konferencia döntött."
+ "Volby pro liturgickÃ½ kalendÃ¡Å™ ovlivÅˆujÃ­ datumy nÄ›kterÃ½ch slavenÃ­.",
+ "Az ImaÃ³rÃ¡k liturgiÃ¡ja megadja a lehetÅ‘sÃ©get, hogy nÃ©mely Ã¼nnepek kÃ©tfÃ©lekÃ©ppen legyenek megÃ¼nnepelve; az adott orszÃ¡gtÃ³l fÃ¼gg, ahogy az adott pÃ¼spÃ¶ki konferencia dÃ¶ntÃ¶tt."
 };
 
 const char *html_text_option1_nemenne_sucasti[POCET_JAZYKOV + 1] = 
-{"zobrazi nasledovné súèasti modlitby?",
- "zobrazit <i>nemìnné souèásti</i> modlitby?",
+{"zobraziÅ¥ nasledovnÃ© sÃºÄasti modlitby?",
+ "zobrazit <i>nemÄ›nnÃ© souÄÃ¡sti</i> modlitby?",
  "display <i>non-changeable parts</i> prayer?",
  "", 
  "", 
- "zobrazit <i>nemìnné souèásti</i> modlitby?",
- "jelenjenek meg az imaóra következõ elemei:"
+ "zobrazit <i>nemÄ›nnÃ© souÄÃ¡sti</i> modlitby?",
+ "jelenjenek meg az imaÃ³ra kÃ¶vetkezÅ‘ elemei:"
 };
 
 const char *html_text_option1_nemenne_sucasti_explain[POCET_JAZYKOV + 1] = 
-{"Kadé ranné chvály obsahujú Benediktus, vešpery Magnifikat, obe modlitby obsahujú Otèenáš a zakonèenie modlitby, a napokon posvätné èítanie obsahuje niekedy hymnus Te Deum; tieto èasti modlitby mono zobrazi alebo skry.", 
- "Kadé ranní chvály obsahují Zachariášovo kantikum, nešpory Mariin Magnifikat, obì modlitbu Pánì a zakonèení modlitby, a koneènì modlitba se ètením nìkdy obsahuje hymnus Te Deum; tyto èásti modliteb je moné zobrazit/skrıt.", 
+{"KaÅ¾dÃ© rannÃ© chvÃ¡ly obsahujÃº Benediktus, veÅ¡pery Magnifikat, obe modlitby obsahujÃº OtÄenÃ¡Å¡ a zakonÄenie modlitby, a napokon posvÃ¤tnÃ© ÄÃ­tanie obsahuje niekedy hymnus Te Deum; tieto Äasti modlitby moÅ¾no zobraziÅ¥ alebo skryÅ¥.", 
+ "KaÅ¾dÃ© rannÃ­ chvÃ¡ly obsahujÃ­ ZachariÃ¡Å¡ovo kantikum, neÅ¡pory Mariin Magnifikat, obÄ› modlitbu PÃ¡nÄ› a zakonÄenÃ­ modlitby, a koneÄnÄ› modlitba se ÄtenÃ­m nÄ›kdy obsahuje hymnus Te Deum; tyto ÄÃ¡sti modliteb je moÅ¾nÃ© zobrazit/skrÃ½t.", 
  "Each morning prayer contains Benedictus, vesperae contains Magnificat, both contain the Lord's Prayer and a conclusion of the prayer; finally, the holy reading sometimes contains the Te Deum hymnus; all these parts can be shown/hidden.", 
  "",
  "", 
- "Kadé ranní chvály obsahují Zachariášovo kantikum, veèerní chvály kantikum Panny Marie, obì modlitbu Pánì a zakonèení modlitby, a koneènì modlitba se ètením nìkdy obsahuje hymnus Te Deum; tyto èásti je moné zobrazit/skrıt.",
+ "KaÅ¾dÃ© rannÃ­ chvÃ¡ly obsahujÃ­ ZachariÃ¡Å¡ovo kantikum, veÄernÃ­ chvÃ¡ly kantikum Panny Marie, obÄ› modlitbu PÃ¡nÄ› a zakonÄenÃ­ modlitby, a koneÄnÄ› modlitba se ÄtenÃ­m nÄ›kdy obsahuje hymnus Te Deum; tyto ÄÃ¡sti je moÅ¾nÃ© zobrazit/skrÃ½t.",
  ""
 };
 
 const char *html_text_option1_dalsie_prepinace[POCET_JAZYKOV + 1] = 
-{"monosti pre vısledné modlitby",
- "monosti pro vısledné modlitby",
+{"moÅ¾nosti pre vÃ½slednÃ© modlitby",
+ "moÅ¾nosti pro vÃ½slednÃ© modlitby",
  "options for generated prayers",
  "", 
  "", 
- "monosti pro vısledné modlitby",
- "egyéb választási lehetõségek:"
+ "moÅ¾nosti pro vÃ½slednÃ© modlitby",
+ "egyÃ©b vÃ¡lasztÃ¡si lehetÅ‘sÃ©gek:"
 };
 
 const char *html_text_option1_dalsie_prepinace_explain[POCET_JAZYKOV + 1] = 
-{"Rozlièné monosti/vıbery pre vısledné modlitby.", 
+{"RozliÄnÃ© moÅ¾nosti/vÃ½bery pre vÃ½slednÃ© modlitby.", 
  "", 
  "", 
  "",
@@ -1527,54 +1527,54 @@ const char *html_text_option1_dalsie_prepinace_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_zalmy_brat_zo[POCET_JAZYKOV + 1] = 
-{"almy poui zo ", 
- "almy pouít ze ", 
+{"Å¾almy pouÅ¾iÅ¥ zo ", 
+ "Å¾almy pouÅ¾Ã­t ze ", 
  "take psalmody from ", 
  "", 
  "", 
- "almy pouít ze ",
- "zsoltárok a következõ helyrõl:"
+ "Å¾almy pouÅ¾Ã­t ze ",
+ "zsoltÃ¡rok a kÃ¶vetkezÅ‘ helyrÅ‘l:"
 };
 const char *html_text_zalmy_brat_zo_okrem_mcd[POCET_JAZYKOV + 1] = 
-{" (okrem modlitby cez deò)\n", 
- " (kromì modlitby pøes den)\n", 
+{" (okrem modlitby cez deÅˆ)\n", 
+ " (kromÄ› modlitby pÅ™es den)\n", 
  " (excluding the prayers during the day)\n", 
  "", 
  "", 
- " (kromì modlitby bìhem dne)\n",
- " (a Napközi imát kivéve)"
+ " (kromÄ› modlitby bÄ›hem dne)\n",
+ " (a NapkÃ¶zi imÃ¡t kivÃ©ve)"
 };
 
 const char *html_text_spol_casti_vziat_zo[POCET_JAZYKOV + 1] = 
-{"èasti modlitby zo spoloènej èasti ", 
- "èásti modlitby ze spoleènıch textù ", 
+{"Äasti modlitby zo spoloÄnej Äasti ", 
+ "ÄÃ¡sti modlitby ze spoleÄnÃ½ch textÅ¯ ", 
  "parts of prayer from the common part ", 
  "",
  "",
- "èásti modlitby ze spoleèné èásti ",
- "a közös részbõl"};
+ "ÄÃ¡sti modlitby ze spoleÄnÃ© ÄÃ¡sti ",
+ "a kÃ¶zÃ¶s rÃ©szbÅ‘l"};
 const char *html_text_spol_casti_vziat_zo_explain[POCET_JAZYKOV + 1] = 
-{"Na sviatok svätca/svätice sa pod¾a liturgickıch pravidiel berú èasti, ktoré sa nenachádzajú vo vlastnej èasti altára, zo spoloènej èasti sviatku, niekedy je monos vybra si z viacerıch spoloènıch èastí; naviac je monos modli sa tieto èasti zo všedného dòa.", 
- "Na svátek ke cti svìtce/svìtice se podle liturgickıch pravidel berou èásti, které se nenachází ve vlastních textech, ze spoleènıch textù, nìkdy je moné vybrat si z více spoleènıch textù; navíc je monost modlit se tyto èásti ze všedního dne.", 
+{"Na sviatok svÃ¤tca/svÃ¤tice sa podÄ¾a liturgickÃ½ch pravidiel berÃº Äasti, ktorÃ© sa nenachÃ¡dzajÃº vo vlastnej Äasti Å¾altÃ¡ra, zo spoloÄnej Äasti sviatku, niekedy je moÅ¾nosÅ¥ vybraÅ¥ si z viacerÃ½ch spoloÄnÃ½ch ÄastÃ­; naviac je moÅ¾nosÅ¥ modliÅ¥ sa tieto Äasti zo vÅ¡ednÃ©ho dÅˆa.", 
+ "Na svÃ¡tek ke cti svÄ›tce/svÄ›tice se podle liturgickÃ½ch pravidel berou ÄÃ¡sti, kterÃ© se nenachÃ¡zÃ­ ve vlastnÃ­ch textech, ze spoleÄnÃ½ch textÅ¯, nÄ›kdy je moÅ¾nÃ© vybrat si z vÃ­ce spoleÄnÃ½ch textÅ¯; navÃ­c je moÅ¾nost modlit se tyto ÄÃ¡sti ze vÅ¡ednÃ­ho dne.", 
  "", 
  "",
  "",
- "O svátku ke cti svìtce/svìtice se podle liturgickıch pravidel berou èásti, které se nenachází ve vlastních textech, ze spoleènıch textù, nìkdy je moné vybrat si z více spoleènıch textù; navíc je monost modlit se tyto èásti ze všedního dne.",
- "A szentek ünnepén, a liturgikus elõírások szerint, azok az imarészek, amelyek nem találhatók meg a zsolozsma saját részében, tetszés szerint vehetõk vagy a közös részbõl, néha több közös részbõl lehet választani, vagy a köznapról."
+ "O svÃ¡tku ke cti svÄ›tce/svÄ›tice se podle liturgickÃ½ch pravidel berou ÄÃ¡sti, kterÃ© se nenachÃ¡zÃ­ ve vlastnÃ­ch textech, ze spoleÄnÃ½ch textÅ¯, nÄ›kdy je moÅ¾nÃ© vybrat si z vÃ­ce spoleÄnÃ½ch textÅ¯; navÃ­c je moÅ¾nost modlit se tyto ÄÃ¡sti ze vÅ¡ednÃ­ho dne.",
+ "A szentek Ã¼nnepÃ©n, a liturgikus elÅ‘Ã­rÃ¡sok szerint, azok az imarÃ©szek, amelyek nem talÃ¡lhatÃ³k meg a zsolozsma sajÃ¡t rÃ©szÃ©ben, tetszÃ©s szerint vehetÅ‘k vagy a kÃ¶zÃ¶s rÃ©szbÅ‘l, nÃ©ha tÃ¶bb kÃ¶zÃ¶s rÃ©szbÅ‘l lehet vÃ¡lasztani, vagy a kÃ¶znaprÃ³l."
 };
 
 const char *html_text_option0_specialne[POCET_JAZYKOV + 1] = 
-{"v texte modlitieb zobrazi",
+{"v texte modlitieb zobraziÅ¥",
  "v textu modliteb zobrazit",
  "in the text of prayers display",
  "",
  "",
  "v textu modliteb zobrazit",
- "az imaóra szövegében jelenjen meg:"
+ "az imaÃ³ra szÃ¶vegÃ©ben jelenjen meg:"
 };
 
 const char *html_text_option0_specialne_explain[POCET_JAZYKOV + 1] = 
-{"Monos zobrazi ïalšie údaje v texte modlitieb (èísla veršov, referencie a pod.).",
+{"MoÅ¾nosÅ¥ zobraziÅ¥ ÄalÅ¡ie Ãºdaje v texte modlitieb (ÄÃ­sla verÅ¡ov, referencie a pod.).",
  "",
  "",
  "",
@@ -1584,137 +1584,137 @@ const char *html_text_option0_specialne_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option0_verse[POCET_JAZYKOV + 1] = 
-{"èíslovanie (èísla) veršov",
- "èíslování veršù",
+{"ÄÃ­slovanie (ÄÃ­sla) verÅ¡ov",
+ "ÄÃ­slovÃ¡nÃ­ verÅ¡Å¯",
  "verse numbering",
  "verse numbers",
  "",
- "èíslování veršù",
- "a versek száma"
+ "ÄÃ­slovÃ¡nÃ­ verÅ¡Å¯",
+ "a versek szÃ¡ma"
 };
 
 const char *html_text_option0_verse_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín (latinské typické vydanie) zobrazuje èíslovanie veršov v rámci almu, chválospevu alebo dlhšieho biblického èítania; niektoré vydania tieto èísla veršov neuvádzajú.", 
- "Liturgie hodin uvádí jako horní indexy èísla veršù biblickıch textù (almù, chvalozpìvù a prvních ètení), které mùe program zobrazit.", 
+{"Liturgia hodÃ­n (latinskÃ© typickÃ© vydanie) zobrazuje ÄÃ­slovanie verÅ¡ov v rÃ¡mci Å¾almu, chvÃ¡lospevu alebo dlhÅ¡ieho biblickÃ©ho ÄÃ­tania; niektorÃ© vydania tieto ÄÃ­sla verÅ¡ov neuvÃ¡dzajÃº.", 
+ "Liturgie hodin uvÃ¡dÃ­ jako hornÃ­ indexy ÄÃ­sla verÅ¡Å¯ biblickÃ½ch textÅ¯ (Å¾almÅ¯, chvalozpÄ›vÅ¯ a prvnÃ­ch ÄtenÃ­), kterÃ© mÅ¯Å¾e program zobrazit.", 
  "xxx", 
  "",
  "", 
- "Liturgie hodin uvádí jako horní indexy èísla veršù biblickıch textù (almù, chvalozpìvù a prvních ètení), které mùe program zobrazit.", 
- "Az imaórák liturgiája (latin tipikus kiadás) megjeleníti a zsoltárokban, kantikumokban és hosszabb szentírási olvasmányokban a versek számozását. Egyes kiadások e számozást nem tartalmazzák."
+ "Liturgie hodin uvÃ¡dÃ­ jako hornÃ­ indexy ÄÃ­sla verÅ¡Å¯ biblickÃ½ch textÅ¯ (Å¾almÅ¯, chvalozpÄ›vÅ¯ a prvnÃ­ch ÄtenÃ­), kterÃ© mÅ¯Å¾e program zobrazit.", 
+ "Az imaÃ³rÃ¡k liturgiÃ¡ja (latin tipikus kiadÃ¡s) megjelenÃ­ti a zsoltÃ¡rokban, kantikumokban Ã©s hosszabb szentÃ­rÃ¡si olvasmÃ¡nyokban a versek szÃ¡mozÃ¡sÃ¡t. Egyes kiadÃ¡sok e szÃ¡mozÃ¡st nem tartalmazzÃ¡k."
 };
 
 const char *html_text_option0_referencie[POCET_JAZYKOV + 1] = 
-{"biblické odkazy na dkc.kbs.sk",
- "biblické odkazy",
+{"biblickÃ© odkazy na dkc.kbs.sk",
+ "biblickÃ© odkazy",
  "biblical references",
  "Bible references",
  "",
- "biblické odkazy",
- "Bibliai hivatkozások a szentiras.hu oldalon"
+ "biblickÃ© odkazy",
+ "Bibliai hivatkozÃ¡sok a szentiras.hu oldalon"
 };
 
 const char *html_text_option0_referencie_explain[POCET_JAZYKOV + 1] = 
-{"Všetky biblické odkazy (napr. Jn 3, 16) v modlitbe budú aktívnymi odkazmi na text katolíckeho prekladu Biblie na adrese dkc.kbs.sk.", 
+{"VÅ¡etky biblickÃ© odkazy (napr. Jn 3, 16) v modlitbe budÃº aktÃ­vnymi odkazmi na text katolÃ­ckeho prekladu Biblie na adrese dkc.kbs.sk.", 
  "", 
  "", 
  "",
  "", 
  "", 
- "Az imák szövegében minden bibliai utalás (például Jn 3, 16) aktív linkként a szentiras.hu katolikus bibliafordításának megfelelõ részére mutat. (A Szent István Társulat fordítását használjuk.)"
+ "Az imÃ¡k szÃ¶vegÃ©ben minden bibliai utalÃ¡s (pÃ©ldÃ¡ul Jn 3, 16) aktÃ­v linkkÃ©nt a szentiras.hu katolikus bibliafordÃ­tÃ¡sÃ¡nak megfelelÅ‘ rÃ©szÃ©re mutat. (A Szent IstvÃ¡n TÃ¡rsulat fordÃ­tÃ¡sÃ¡t hasznÃ¡ljuk.)"
 };
 
 const char *html_text_option0_citania[POCET_JAZYKOV + 1] = 
-{"liturgické èítania",
- "liturgická ètení",
+{"liturgickÃ© ÄÃ­tania",
+ "liturgickÃ¡ ÄtenÃ­",
  "liturgical readings",
  "liturgical readings",
  "",
- "liturgická ètení",
- "liturgikus olvasmányok"
+ "liturgickÃ¡ ÄtenÃ­",
+ "liturgikus olvasmÃ¡nyok"
 };
 
 const char *html_text_option0_citania_explain[POCET_JAZYKOV + 1] = 
-{"Zobrazí odkaz na liturgické èítania (lc.kbs.sk).", 
- "Zobrazí odkaz na liturgická ètení (katolik.cz).", 
+{"ZobrazÃ­ odkaz na liturgickÃ© ÄÃ­tania (lc.kbs.sk).", 
+ "ZobrazÃ­ odkaz na liturgickÃ¡ ÄtenÃ­ (katolik.cz).", 
  "", 
  "",
  "", 
- "Zobrazí odkaz na liturgická ètení (katolik.cz).", 
- "Liturgikus olvasmányok (katolikus.hu)."
+ "ZobrazÃ­ odkaz na liturgickÃ¡ ÄtenÃ­ (katolik.cz).", 
+ "Liturgikus olvasmÃ¡nyok (katolikus.hu)."
 };
 
 const char *html_text_option0_zjv_ne[POCET_JAZYKOV + 1] = 
-{"Zjavenie Pána slávi v nede¾u medzi 2. a 8. januárom",
- "Zjevení Pánì slavit v nedìli mezi 2. a 8. lednem",
+{"Zjavenie PÃ¡na slÃ¡viÅ¥ v nedeÄ¾u medzi 2. a 8. januÃ¡rom",
+ "ZjevenÃ­ PÃ¡nÄ› slavit v nedÄ›li mezi 2. a 8. lednem",
  "",
  "",
  "",
- "Zjevení Pánì slavit v nedìli mezi 2. a 8. lednem",
- "Urunk megjelenése (Vízkereszt) megünneplése vasárnap, január 2. és 8. között"
+ "ZjevenÃ­ PÃ¡nÄ› slavit v nedÄ›li mezi 2. a 8. lednem",
+ "Urunk megjelenÃ©se (VÃ­zkereszt) megÃ¼nneplÃ©se vasÃ¡rnap, januÃ¡r 2. Ã©s 8. kÃ¶zÃ¶tt"
 };
 
 const char *html_text_option0_zjv_ne_explain[POCET_JAZYKOV + 1] = 
-{"Zjavenie Pána sa slávi dòa 6. januára; v niektorıch krajinách sa slávi v nede¾u medzi 2. a 8. januárom.", 
+{"Zjavenie PÃ¡na sa slÃ¡vi dÅˆa 6. januÃ¡ra; v niektorÃ½ch krajinÃ¡ch sa slÃ¡vi v nedeÄ¾u medzi 2. a 8. januÃ¡rom.", 
  "", 
  "", 
  "",
  "", 
  "", 
- "Urunk megjelenése (Vízkereszt) január 6-án van; egyes országokban azonban vasárnap, január 2. és 8. között ünneplik."
+ "Urunk megjelenÃ©se (VÃ­zkereszt) januÃ¡r 6-Ã¡n van; egyes orszÃ¡gokban azonban vasÃ¡rnap, januÃ¡r 2. Ã©s 8. kÃ¶zÃ¶tt Ã¼nneplik."
 };
 
 const char *html_text_option0_nan_ne[POCET_JAZYKOV + 1] = 
-{"Nanebovstúpenie Pána slávi v nede¾u",
- "Nanebevstoupení Pánì slavit v nedìli",
+{"NanebovstÃºpenie PÃ¡na slÃ¡viÅ¥ v nedeÄ¾u",
+ "NanebevstoupenÃ­ PÃ¡nÄ› slavit v nedÄ›li",
  "",
  "",
  "",
- "Nanebevstoupení Pánì slavit v nedìli",
- "Urunk mennybemenetelét vasárnap ünnepelni"
+ "NanebevstoupenÃ­ PÃ¡nÄ› slavit v nedÄ›li",
+ "Urunk mennybemenetelÃ©t vasÃ¡rnap Ã¼nnepelni"
 };
 
 const char *html_text_option0_nan_ne_explain[POCET_JAZYKOV + 1] = 
-{"Nanebovstúpenie Pána sa slávi 40. deò po Ve¾kej noci (teda vo štvrtok); v niektorıch krajinách sa slávenie prekladá na najblišiu nede¾u (nahrádza 7. ve¾konoènú nede¾u).", 
+{"NanebovstÃºpenie PÃ¡na sa slÃ¡vi 40. deÅˆ po VeÄ¾kej noci (teda vo Å¡tvrtok); v niektorÃ½ch krajinÃ¡ch sa slÃ¡venie prekladÃ¡ na najbliÅ¾Å¡iu nedeÄ¾u (nahrÃ¡dza 7. veÄ¾konoÄnÃº nedeÄ¾u).", 
  "", 
  "", 
  "",
  "", 
  "", 
- "Urunk mennybemenetele húsvét után a 40. napon van (tehát csütörtökön); egyes országokban azonban a legközelebbi vasárnapon ünneplik (vagyis Húsvét 7. vasárnapján)."
+ "Urunk mennybemenetele hÃºsvÃ©t utÃ¡n a 40. napon van (tehÃ¡t csÃ¼tÃ¶rtÃ¶kÃ¶n); egyes orszÃ¡gokban azonban a legkÃ¶zelebbi vasÃ¡rnapon Ã¼nneplik (vagyis HÃºsvÃ©t 7. vasÃ¡rnapjÃ¡n)."
 };
 
 const char *html_text_option0_tk_ne[POCET_JAZYKOV + 1] = 
-{"Najsv. Kristovho tela a krvi slávi v nede¾u",
- "Tìla a krve Pánì slavit v nedìli",
+{"Najsv. Kristovho tela a krvi slÃ¡viÅ¥ v nedeÄ¾u",
+ "TÄ›la a krve PÃ¡nÄ› slavit v nedÄ›li",
  "",
  "",
  "",
- "Tìla a krve Pánì slavit v nedìli",
- "Krisztus Szent Teste és Vére ünnepe vasárnapra téve"
+ "TÄ›la a krve PÃ¡nÄ› slavit v nedÄ›li",
+ "Krisztus Szent Teste Ã©s VÃ©re Ã¼nnepe vasÃ¡rnapra tÃ©ve"
 };
 
 const char *html_text_option0_tk_ne_explain[POCET_JAZYKOV + 1] = 
-{"Najsv. Kristovho tela a krvi sa slávi 11. deò po Zoslaní Ducha Svätého (teda vo štvrtok po Najsv. Trojici); v niektorıch krajinách sa slávenie prekladá na najblišiu nede¾u.", 
+{"Najsv. Kristovho tela a krvi sa slÃ¡vi 11. deÅˆ po ZoslanÃ­ Ducha SvÃ¤tÃ©ho (teda vo Å¡tvrtok po Najsv. Trojici); v niektorÃ½ch krajinÃ¡ch sa slÃ¡venie prekladÃ¡ na najbliÅ¾Å¡iu nedeÄ¾u.", 
  "", 
  "", 
  "",
  "", 
  "", 
- "Krisztus Szent Teste és Vére Pünkösd után a 11. napon van (tehát Szentháromság utáni csütörtökön); egyes országokban azonban a legközelebbi vasárnapon ünneplik."
+ "Krisztus Szent Teste Ã©s VÃ©re PÃ¼nkÃ¶sd utÃ¡n a 11. napon van (tehÃ¡t SzenthÃ¡romsÃ¡g utÃ¡ni csÃ¼tÃ¶rtÃ¶kÃ¶n); egyes orszÃ¡gokban azonban a legkÃ¶zelebbi vasÃ¡rnapon Ã¼nneplik."
 };
 
 const char *html_text_option0_font_normal[POCET_JAZYKOV + 1] = 
-{"všade poui obyèajné písmo (nie tuèné)",
- "všude pouít obyèejné písmo (ne tuèné)",
+{"vÅ¡ade pouÅ¾iÅ¥ obyÄajnÃ© pÃ­smo (nie tuÄnÃ©)",
+ "vÅ¡ude pouÅ¾Ã­t obyÄejnÃ© pÃ­smo (ne tuÄnÃ©)",
  "force normal font weight (no bold)",
  "",
  "",
- "všude pouít obyèejné písmo (ne tuèné)",
- "normál betûtípus használata (félkövér helyett)"
+ "vÅ¡ude pouÅ¾Ã­t obyÄejnÃ© pÃ­smo (ne tuÄnÃ©)",
+ "normÃ¡l betÅ±tÃ­pus hasznÃ¡lata (fÃ©lkÃ¶vÃ©r helyett)"
 };
 
 const char *html_text_option0_font_normal_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín pouíva tuèné písmo pre texty, ktoré sa priamo èítajú, a tie aj pre niektoré medzinadpisy. Táto vo¾ba potlaèí pouitie tuèného písma.", 
+{"Liturgia hodÃ­n pouÅ¾Ã­va tuÄnÃ© pÃ­smo pre texty, ktorÃ© sa priamo ÄÃ­tajÃº, a tieÅ¾ aj pre niektorÃ© medzinadpisy. TÃ¡to voÄ¾ba potlaÄÃ­ pouÅ¾itie tuÄnÃ©ho pÃ­sma.", 
  "", 
  "", 
  "",
@@ -1724,17 +1724,17 @@ const char *html_text_option0_font_normal_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option0_buttons_order[POCET_JAZYKOV + 1] = 
-{"dátumové navigaèné tlaèidlá zobrazi a pod tlaèidlami pre modlitby",
- "navigaèní tlaèítka pro datum zobrazit a pod tlaèítky pro modlitby",
+{"dÃ¡tumovÃ© navigaÄnÃ© tlaÄidlÃ¡ zobraziÅ¥ aÅ¾ pod tlaÄidlami pre modlitby",
+ "navigaÄnÃ­ tlaÄÃ­tka pro datum zobrazit aÅ¾ pod tlaÄÃ­tky pro modlitby",
  "date buttons display after buttons for prayers",
  "",
  "",
- "navigaèní tlaèítka pro datum zobrazit a pod tlaèítky pro modlitby",
- "a fejlécben a dátumválasztó gombok legyenek az imaóra választó gombok után"
+ "navigaÄnÃ­ tlaÄÃ­tka pro datum zobrazit aÅ¾ pod tlaÄÃ­tky pro modlitby",
+ "a fejlÃ©cben a dÃ¡tumvÃ¡lasztÃ³ gombok legyenek az imaÃ³ra vÃ¡lasztÃ³ gombok utÃ¡n"
 };
 
 const char *html_text_option0_buttons_order_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín pouíva tuèné písmo pre texty, ktoré sa priamo èítajú, a tie aj pre niektoré medzinadpisy. Táto vo¾ba potlaèí pouitie tuèného písma.", 
+{"Liturgia hodÃ­n pouÅ¾Ã­va tuÄnÃ© pÃ­smo pre texty, ktorÃ© sa priamo ÄÃ­tajÃº, a tieÅ¾ aj pre niektorÃ© medzinadpisy. TÃ¡to voÄ¾ba potlaÄÃ­ pouÅ¾itie tuÄnÃ©ho pÃ­sma.", 
  "", 
  "", 
  "",
@@ -1744,17 +1744,17 @@ const char *html_text_option0_buttons_order_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option0_blind_friendly[POCET_JAZYKOV + 1] = 
-{"zobrazi iba text modlitieb (pre nevidiacich a slabozrakıch) bez rubrík",
- "zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik",
+{"zobraziÅ¥ iba text modlitieb (pre nevidiacich a slabozrakÃ½ch) bez rubrÃ­k",
+ "zobrazit jenom text modliteb (pro slepÃ© a slabozrakÃ©) bez rubrik",
  "blind-friendly text (without rubrics)",
  "",
  "",
- "zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik",
- "megmutatni csak az imaszövegeket (vakok és gyengénlátók részére) rubrikák nélkül"
+ "zobrazit jenom text modliteb (pro slepÃ© a slabozrakÃ©) bez rubrik",
+ "megmutatni csak az imaszÃ¶vegeket (vakok Ã©s gyengÃ©nlÃ¡tÃ³k rÃ©szÃ©re) rubrikÃ¡k nÃ©lkÃ¼l"
 };
 
 const char *html_text_option0_blind_friendly_explain[POCET_JAZYKOV + 1] = 
-{"Vo vıslednej modlitbe bude zobrazenı len ten text, ktorı sa èíta; nebudú zobrazené iadne rubriky alebo názvy èastí modlitieb. Toto je vhodné pre hlasovı vıstup napr. pre nevidiacich a slabozrakıch.", 
+{"Vo vÃ½slednej modlitbe bude zobrazenÃ½ len ten text, ktorÃ½ sa ÄÃ­ta; nebudÃº zobrazenÃ© Å¾iadne rubriky alebo nÃ¡zvy ÄastÃ­ modlitieb. Toto je vhodnÃ© pre hlasovÃ½ vÃ½stup napr. pre nevidiacich a slabozrakÃ½ch.", 
  "", 
  "", 
  "",
@@ -1764,79 +1764,79 @@ const char *html_text_option0_blind_friendly_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option1_chvalospevy[POCET_JAZYKOV + 1] = 
-{"evanjeliové chválospevy (Benediktus, Magnifikat, Nunk dimittis)", 
- "evangelijní kantika (Mariino, Zachariášovo, Simeonovo)", 
+{"evanjeliovÃ© chvÃ¡lospevy (Benediktus, Magnifikat, Nunk dimittis)", 
+ "evangelijnÃ­ kantika (Mariino, ZachariÃ¡Å¡ovo, Simeonovo)", 
  "Gospel canticles (Benedictus, Magnificat, Nunc dimittis)", 
  "",
  "",
- "evangelijní chvalozpìvy (Benedictus, Magnificat, Nunc dimittis)", 
- "evangéliumi kantikumok (Benedictus, Magnificat, Nunc dimittis)"
+ "evangelijnÃ­ chvalozpÄ›vy (Benedictus, Magnificat, Nunc dimittis)", 
+ "evangÃ©liumi kantikumok (Benedictus, Magnificat, Nunc dimittis)"
 };
 const char *html_text_option1_chvalospevy_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín štandardne tieto evanjeliové chválospevy neuvádza.", 
- "Liturgie hodin evangelijní kantika v plném znìní obvykle neuvádí.", 
+{"Liturgia hodÃ­n Å¡tandardne tieto evanjeliovÃ© chvÃ¡lospevy neuvÃ¡dza.", 
+ "Liturgie hodin evangelijnÃ­ kantika v plnÃ©m znÄ›nÃ­ obvykle neuvÃ¡dÃ­.", 
  "", 
  "",
  "", 
- "Liturgie hodin evangelijní chvalozpìvy v plném znìní obvykle neuvádí.", 
- "Az imaórák liturgiája ezeket az evangéliumi kantikumokat alaphelyzetben nem mutatja."
+ "Liturgie hodin evangelijnÃ­ chvalozpÄ›vy v plnÃ©m znÄ›nÃ­ obvykle neuvÃ¡dÃ­.", 
+ "Az imaÃ³rÃ¡k liturgiÃ¡ja ezeket az evangÃ©liumi kantikumokat alaphelyzetben nem mutatja."
 };
 
 const char *html_text_option1_slava_otcu[POCET_JAZYKOV + 1] = 
-{"Sláva Otcu" /*[na konci almov a chválospevov]*/, 
- "Sláva Otci" /*[na konci almù a kantik]*/, 
+{"SlÃ¡va Otcu" /*[na konci Å¾almov a chvÃ¡lospevov]*/, 
+ "SlÃ¡va Otci" /*[na konci Å¾almÅ¯ a kantik]*/, 
  "Glory to the Father" /*at the end of psalms and canticles]*/, 
  "",
  "",
- "Sláva Otci" /*[na konci almù a chvalozpìvù]*/, 
- "Dicsõség az Atyának" /*[a zsoltárok és kantikumok végén]*/
+ "SlÃ¡va Otci" /*[na konci Å¾almÅ¯ a chvalozpÄ›vÅ¯]*/, 
+ "DicsÅ‘sÃ©g az AtyÃ¡nak" /*[a zsoltÃ¡rok Ã©s kantikumok vÃ©gÃ©n]*/
 };
 const char *html_text_option1_slava_otcu_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín štandardne Sláva Otcu na konci almov a chválospevov neuvádza.", 
- "Liturgie hodin modlitbu Sláva Otci na konci almù a chvalozpìvù neuvádí.", 
+{"Liturgia hodÃ­n Å¡tandardne SlÃ¡va Otcu na konci Å¾almov a chvÃ¡lospevov neuvÃ¡dza.", 
+ "Liturgie hodin modlitbu SlÃ¡va Otci na konci Å¾almÅ¯ a chvalozpÄ›vÅ¯ neuvÃ¡dÃ­.", 
  "", 
  "",
  "", 
- "Liturgie hodin modlitbu Sláva Otci na konci almù a chvalozpìvù neuvádí.", 
- "Az imaórák liturgiája a Dicsõség az Atyának… dicsõítõ verset a zsoltárok és kantikumok végén alaphelyzetben nem mutatja."
+ "Liturgie hodin modlitbu SlÃ¡va Otci na konci Å¾almÅ¯ a chvalozpÄ›vÅ¯ neuvÃ¡dÃ­.", 
+ "Az imaÃ³rÃ¡k liturgiÃ¡ja a DicsÅ‘sÃ©g az AtyÃ¡nakâ€¦ dicsÅ‘Ã­tÅ‘ verset a zsoltÃ¡rok Ã©s kantikumok vÃ©gÃ©n alaphelyzetben nem mutatja."
 };
 
 const char *html_text_option1_rubriky[POCET_JAZYKOV + 1] = 
-{"rubriky" /*(napr. závereèné poehnanie)*/, 
- "rubriky" /*(napø. závìreèné poehnání)*/, 
+{"rubriky" /*(napr. zÃ¡vereÄnÃ© poÅ¾ehnanie)*/, 
+ "rubriky" /*(napÅ™. zÃ¡vÄ›reÄnÃ© poÅ¾ehnÃ¡nÃ­)*/, 
  "rubrics", 
  "",
  "",
- "rubriky" /*(napø. závìreèné poehnání)*/, 
- "rubrikák" /*(pl. záró áldás)*/
+ "rubriky" /*(napÅ™. zÃ¡vÄ›reÄnÃ© poÅ¾ehnÃ¡nÃ­)*/, 
+ "rubrikÃ¡k" /*(pl. zÃ¡rÃ³ Ã¡ldÃ¡s)*/
 };
 const char *html_text_option1_rubriky_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín zobrazuje èervenım písmom rozlièné zvyèajne vysvet¾ujúce pokyny k modlitbe (pod¾a Všeobecnıch smerníc o LH).", 
- "Liturgie hodin uvádí èervenım písmem rozlièné pokyny k modlitbì (èasto podle Všeobecnıch pokynù k denní modlitbì církve).", 
+{"Liturgia hodÃ­n zobrazuje ÄervenÃ½m pÃ­smom rozliÄnÃ© zvyÄajne vysvetÄ¾ujÃºce pokyny k modlitbe (podÄ¾a VÅ¡eobecnÃ½ch smernÃ­c o LH).", 
+ "Liturgie hodin uvÃ¡dÃ­ ÄervenÃ½m pÃ­smem rozliÄnÃ© pokyny k modlitbÄ› (Äasto podle VÅ¡eobecnÃ½ch pokynÅ¯ k dennÃ­ modlitbÄ› cÃ­rkve).", 
  "", 
  "",
  "", 
- "Liturgie hodin uvádí èervenım písmem rozlièné pokyny k modlitbì (èasto podle Všeobecnıch pokynù k denní modlitbì Církve).", 
- "Az imaórák liturgiája piros betûvel különbözõ többnyire magyarázó vagy az imaórát (az „Általános rendelkezések Az imaórák liturgiájáról“ szerint) szabályozó szövegeket jelenít meg. Alaphelyzetben nem mutatja."
+ "Liturgie hodin uvÃ¡dÃ­ ÄervenÃ½m pÃ­smem rozliÄnÃ© pokyny k modlitbÄ› (Äasto podle VÅ¡eobecnÃ½ch pokynÅ¯ k dennÃ­ modlitbÄ› CÃ­rkve).", 
+ "Az imaÃ³rÃ¡k liturgiÃ¡ja piros betÅ±vel kÃ¼lÃ¶nbÃ¶zÅ‘ tÃ¶bbnyire magyarÃ¡zÃ³ vagy az imaÃ³rÃ¡t (az â€ÃltalÃ¡nos rendelkezÃ©sek Az imaÃ³rÃ¡k liturgiÃ¡jÃ¡rÃ³lâ€œ szerint) szabÃ¡lyozÃ³ szÃ¶vegeket jelenÃ­t meg. Alaphelyzetben nem mutatja."
 };
 
 const char *html_text_option1_otcenas[POCET_JAZYKOV + 1] = 
-{"modlitba Pána (Otèenáš)", 
- "modlitba Pánì (Otèenáš)", 
+{"modlitba PÃ¡na (OtÄenÃ¡Å¡)", 
+ "modlitba PÃ¡nÄ› (OtÄenÃ¡Å¡)", 
  "Lord's Prayer (Our Father)", 
  "",
  "",
- "modlitba Pánì (Otèenáš)", 
- "az Úr imádsága (Miatyánk)"
+ "modlitba PÃ¡nÄ› (OtÄenÃ¡Å¡)", 
+ "az Ãšr imÃ¡dsÃ¡ga (MiatyÃ¡nk)"
 };
 const char *html_text_option1_otcenas_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín štandardne modlitbu Pána (Otèenáš) v rannıch chválach a vešperách v plnom znení neuvádza.", 
- "Liturgie hodin modlitbu Pánì (Otèenáš) na pøíslušnıch místech v plném znìní neuvádí.", 
+{"Liturgia hodÃ­n Å¡tandardne modlitbu PÃ¡na (OtÄenÃ¡Å¡) v rannÃ½ch chvÃ¡lach a veÅ¡perÃ¡ch v plnom znenÃ­ neuvÃ¡dza.", 
+ "Liturgie hodin modlitbu PÃ¡nÄ› (OtÄenÃ¡Å¡) na pÅ™Ã­sluÅ¡nÃ½ch mÃ­stech v plnÃ©m znÄ›nÃ­ neuvÃ¡dÃ­.", 
  "", 
  "",
  "", 
- "Liturgie hodin modlitbu Pánì (Otèenáš) na pøíslušnıch místech v plném znìní neuvádí.", 
- "Az imaórák liturgiája az Úr imádságát (Miatyánkot) a Reggeli és Esti dicséretben alaphelyzetben nem mutatja."
+ "Liturgie hodin modlitbu PÃ¡nÄ› (OtÄenÃ¡Å¡) na pÅ™Ã­sluÅ¡nÃ½ch mÃ­stech v plnÃ©m znÄ›nÃ­ neuvÃ¡dÃ­.", 
+ "Az imaÃ³rÃ¡k liturgiÃ¡ja az Ãšr imÃ¡dsÃ¡gÃ¡t (MiatyÃ¡nkot) a Reggeli Ã©s Esti dicsÃ©retben alaphelyzetben nem mutatja."
 };
 
 const char *html_text_option1_tedeum[POCET_JAZYKOV + 1] = 
@@ -1846,390 +1846,390 @@ const char *html_text_option1_tedeum[POCET_JAZYKOV + 1] =
  "",
  "",
  "hymnus Te Deum", 
- "Téged, Isten, dicsérünk… himnusz"
+ "TÃ©ged, Isten, dicsÃ©rÃ¼nkâ€¦ himnusz"
 };
 const char *html_text_option1_tedeum_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín hymnus Te Deum v posvätnom èítaní v plnom znení neuvádza.", 
- "Liturgie hodin hymnus Te Deum na pøíslušnıch místech v plném znìní neuvádí.", 
+{"Liturgia hodÃ­n hymnus Te Deum v posvÃ¤tnom ÄÃ­tanÃ­ v plnom znenÃ­ neuvÃ¡dza.", 
+ "Liturgie hodin hymnus Te Deum na pÅ™Ã­sluÅ¡nÃ½ch mÃ­stech v plnÃ©m znÄ›nÃ­ neuvÃ¡dÃ­.", 
  "", 
  "",
  "", 
- "Liturgie hodin hymnus Te Deum na pøíslušnıch místech v plném znìní neuvádí.", 
- "Az imaórák liturgiája a Téged, Isten, dicsérünk… himnuszt az Olvasmányos imaórában alaphelyzetben nem mutatja."
+ "Liturgie hodin hymnus Te Deum na pÅ™Ã­sluÅ¡nÃ½ch mÃ­stech v plnÃ©m znÄ›nÃ­ neuvÃ¡dÃ­.", 
+ "Az imaÃ³rÃ¡k liturgiÃ¡ja a TÃ©ged, Isten, dicsÃ©rÃ¼nkâ€¦ himnuszt az OlvasmÃ¡nyos imaÃ³rÃ¡ban alaphelyzetben nem mutatja."
 };
 
 const char *html_text_option1_plne_resp[POCET_JAZYKOV + 1] = 
-{"plné znenie responzórií pre posvätné èítania", 
- "plné znìní krátkıch zpìvù v modlitbì se ètením", 
+{"plnÃ© znenie responzÃ³riÃ­ pre posvÃ¤tnÃ© ÄÃ­tania", 
+ "plnÃ© znÄ›nÃ­ krÃ¡tkÃ½ch zpÄ›vÅ¯ v modlitbÄ› se ÄtenÃ­m", 
  "", 
  "",
  "",
- "plné znìní responsorií v modlitbì se ètením", 
- "a válaszos énekek teljes szövege"
+ "plnÃ© znÄ›nÃ­ responsoriÃ­ v modlitbÄ› se ÄtenÃ­m", 
+ "a vÃ¡laszos Ã©nekek teljes szÃ¶vege"
 };
 const char *html_text_option1_plne_resp_explain[POCET_JAZYKOV + 1] = 
-{"Liturgia hodín responzóriá po èítaniach v posvätnom èítaní v plnom znení neuvádza (druhá, opakujúca sa èas, je v tlaèenej LH skrátená).", 
- "Liturgie hodin responsoria po èteních v modlitbe se ètením neuvádí v druhé, opakující se èásti, plné znìní.", 
+{"Liturgia hodÃ­n responzÃ³riÃ¡ po ÄÃ­taniach v posvÃ¤tnom ÄÃ­tanÃ­ v plnom znenÃ­ neuvÃ¡dza (druhÃ¡, opakujÃºca sa ÄasÅ¥, je v tlaÄenej LH skrÃ¡tenÃ¡).", 
+ "Liturgie hodin responsoria po ÄtenÃ­ch v modlitbe se ÄtenÃ­m neuvÃ¡dÃ­ v druhÃ©, opakujÃ­cÃ­ se ÄÃ¡sti, plnÃ© znÄ›nÃ­.", 
  "", 
  "",
  "", 
- "Liturgie hodin responsoria po èteních v modlitbe se ètením neuvádí v druhé, opakující se èásti, plné znìní.", 
- "Az Imaórák Liturgiája az olvasmányos imaórák válaszos énekeinek teljes szövegét nem mutatja (a második ismétlõdõ rész nyomtatott kiadásban rövidített)."
+ "Liturgie hodin responsoria po ÄtenÃ­ch v modlitbe se ÄtenÃ­m neuvÃ¡dÃ­ v druhÃ©, opakujÃ­cÃ­ se ÄÃ¡sti, plnÃ© znÄ›nÃ­.", 
+ "Az ImaÃ³rÃ¡k LiturgiÃ¡ja az olvasmÃ¡nyos imaÃ³rÃ¡k vÃ¡laszos Ã©nekeinek teljes szÃ¶vegÃ©t nem mutatja (a mÃ¡sodik ismÃ©tlÅ‘dÅ‘ rÃ©sz nyomtatott kiadÃ¡sban rÃ¶vidÃ­tett)."
 };
 
 const char *html_text_option_zobrazit[POCET_JAZYKOV + 1] = 
-{"zobrazi", 
+{"zobraziÅ¥", 
  "zobrazit", 
  "xxx", 
  "show",
  "",
  "zobrazit", 
- "megjelenítés"
+ "megjelenÃ­tÃ©s"
 };
 const char *html_text_option_skryt[POCET_JAZYKOV + 1] = 
-{"skry", 
- "skrıt", 
+{"skryÅ¥", 
+ "skrÃ½t", 
  "xxx", 
  "hide",
  "",
- "skrıt", 
- "elrejtés"
+ "skrÃ½t", 
+ "elrejtÃ©s"
 };
 
 const char *html_text_option1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] = 
-{"poui psalmódiu zo dòa", 
- "pouít almy z bìného dne", 
+{"pouÅ¾iÅ¥ psalmÃ³diu zo dÅˆa", 
+ "pouÅ¾Ã­t Å¾almy z bÄ›Å¾nÃ©ho dne", 
  "xxx", 
  "psalmodia from ordinary day",
  "",
- "pouít psalmodii z bìného dne", 
- "az adott napi zsoltározást venni"
+ "pouÅ¾Ã­t psalmodii z bÄ›Å¾nÃ©ho dne", 
+ "az adott napi zsoltÃ¡rozÃ¡st venni"
 };
 const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] = 
-{"pre modlitbu cez deò poui psalmódiu zo dòa", 
- "pro modlitbu uprostøed dne pouít almy z bìného dne", 
+{"pre modlitbu cez deÅˆ pouÅ¾iÅ¥ psalmÃ³diu zo dÅˆa", 
+ "pro modlitbu uprostÅ™ed dne pouÅ¾Ã­t Å¾almy z bÄ›Å¾nÃ©ho dne", 
  "xxx", 
  "psalmodia from ordinary day",
  "",
- "pro modlitbu uprostøed dne pouít psalmodii z bìného dne", 
- "a Napközi imaórában az adott napi zsoltározást venni"
+ "pro modlitbu uprostÅ™ed dne pouÅ¾Ã­t psalmodii z bÄ›Å¾nÃ©ho dne", 
+ "a NapkÃ¶zi imaÃ³rÃ¡ban az adott napi zsoltÃ¡rozÃ¡st venni"
 };
 const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] = 
-{"poui doplnkovú psalmódiu", 
- "pouít almy z doplòovacího cyklu", 
+{"pouÅ¾iÅ¥ doplnkovÃº psalmÃ³diu", 
+ "pouÅ¾Ã­t Å¾almy z doplÅˆovacÃ­ho cyklu", 
  "xxx", 
  "supplementary psalmodia",
  "",
- "dne pouít doplòkovou psalmodii", 
- "a kiegészítõ zsoltárokat venni"
+ "dne pouÅ¾Ã­t doplÅˆkovou psalmodii", 
+ "a kiegÃ©szÃ­tÅ‘ zsoltÃ¡rokat venni"
 };
 const char *html_text_option1_mcd_zalmy_ine[POCET_JAZYKOV + 1] = 
-{"pre modlitbu cez deò poui doplnkovú psalmódiu", 
- "pro modlitbu uprostøed dne pouít almy z doplòovacího cyklu", 
+{"pre modlitbu cez deÅˆ pouÅ¾iÅ¥ doplnkovÃº psalmÃ³diu", 
+ "pro modlitbu uprostÅ™ed dne pouÅ¾Ã­t Å¾almy z doplÅˆovacÃ­ho cyklu", 
  "xxx", 
  "supplementary psalmodia",
  "",
- "pro modlitbu uprostøed dne pouít doplòkovou psalmodii", 
- "vegye a napközi imaórákban a kiegészítõ zsoltárokat"
+ "pro modlitbu uprostÅ™ed dne pouÅ¾Ã­t doplÅˆkovou psalmodii", 
+ "vegye a napkÃ¶zi imaÃ³rÃ¡kban a kiegÃ©szÃ­tÅ‘ zsoltÃ¡rokat"
 };
 const char *html_text_option1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] = 
-{"Pokia¾ sa niekto modlí viac modlitieb cez deò, v prvej vezme benú psalmódiu; v ostatnıch sa pouije doplnková psalmódia. Zahàòa 3 série tzv. graduálnych almov ( 120 – 129).", 
- "Doplòovací cyklus almù obsahuje 3 série tzv. graduálních almù ( 120 – 129), které je mono pouít místo almù ze altáøe.", 
+{"PokiaÄ¾ sa niekto modlÃ­ viac modlitieb cez deÅˆ, v prvej vezme beÅ¾nÃº psalmÃ³diu; v ostatnÃ½ch sa pouÅ¾ije doplnkovÃ¡ psalmÃ³dia. ZahÅ•Åˆa 3 sÃ©rie tzv. graduÃ¡lnych Å¾almov (Å½ 120 â€“ 129).", 
+ "DoplÅˆovacÃ­ cyklus Å¾almÅ¯ obsahuje 3 sÃ©rie tzv. graduÃ¡lnÃ­ch Å¾almÅ¯ (Å½ 120 â€“ 129), kterÃ© je moÅ¾no pouÅ¾Ã­t mÃ­sto Å¾almÅ¯ ze Å¾altÃ¡Å™e.", 
  "", 
  "",
  "", 
- "Doplòovací cyklus almù obsahuje 3 série tzv. graduálních almù ( 120 – 129), které je mono pouít místo almù ze altáøe.", 
- "Aki több Napközi imaórát mond, az egyik imaórában a soros zsoltárösszeállítást veszi, a többin a kiegészítõt. Ez az úgynevezett „zarándokzsoltárokból“ vett három-három zsoltárból áll (Zsolt 119 – 127)."
+ "DoplÅˆovacÃ­ cyklus Å¾almÅ¯ obsahuje 3 sÃ©rie tzv. graduÃ¡lnÃ­ch Å¾almÅ¯ (Å½ 120 â€“ 129), kterÃ© je moÅ¾no pouÅ¾Ã­t mÃ­sto Å¾almÅ¯ ze Å¾altÃ¡Å™e.", 
+ "Aki tÃ¶bb NapkÃ¶zi imaÃ³rÃ¡t mond, az egyik imaÃ³rÃ¡ban a soros zsoltÃ¡rÃ¶sszeÃ¡llÃ­tÃ¡st veszi, a tÃ¶bbin a kiegÃ©szÃ­tÅ‘t. Ez az Ãºgynevezett â€zarÃ¡ndokzsoltÃ¡rokbÃ³lâ€œ vett hÃ¡rom-hÃ¡rom zsoltÃ¡rbÃ³l Ã¡ll (Zsolt 119 â€“ 127)."
 };
 
 const char *html_text_option1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] = 
-{"poui psalmódiu z daného tıdòa altára pre všetky tri modlitby cez deò", 
- "pouít almy daného tıdne ze altáøe pro všechny tøi modlitby uprostøed dne", 
+{"pouÅ¾iÅ¥ psalmÃ³diu z danÃ©ho tÃ½Å¾dÅˆa Å¾altÃ¡ra pre vÅ¡etky tri modlitby cez deÅˆ", 
+ "pouÅ¾Ã­t Å¾almy danÃ©ho tÃ½dne ze Å¾altÃ¡Å™e pro vÅ¡echny tÅ™i modlitby uprostÅ™ed dne", 
  "", 
  "",
  "",
- "pouít psalmodii daného tıdne ze altáøe pro všechny tøi modlitby uprostøed dne", 
- "az adott hét zsoltározását alkalmazni mindhárom napközi imánál"
+ "pouÅ¾Ã­t psalmodii danÃ©ho tÃ½dne ze Å¾altÃ¡Å™e pro vÅ¡echny tÅ™i modlitby uprostÅ™ed dne", 
+ "az adott hÃ©t zsoltÃ¡rozÃ¡sÃ¡t alkalmazni mindhÃ¡rom napkÃ¶zi imÃ¡nÃ¡l"
 };
 const char *html_text_option1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] = 
-{"pre modlitbu cez deò poui psalmódiu z daného tıdòa altára pre všetky tri modlitby cez deò", 
- "pro modlitbu uprostøed dne pouít almy daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
+{"pre modlitbu cez deÅˆ pouÅ¾iÅ¥ psalmÃ³diu z danÃ©ho tÃ½Å¾dÅˆa Å¾altÃ¡ra pre vÅ¡etky tri modlitby cez deÅˆ", 
+ "pro modlitbu uprostÅ™ed dne pouÅ¾Ã­t Å¾almy danÃ©ho tÃ½dne ze Å¾altÃ¡Å™e pro vÅ¡echny tÅ™i modlitby bÄ›hem dne", 
  "", 
  "",
  "",
- "pro modlitbu uprostøed dne pouít psalmodii daného tıdne ze altáøe pro všechny tøi modlitby bìhem dne", 
- "a Napközi imaórában az adott hét zsoltározását alkalmazni mindhárom napközi imánál"
+ "pro modlitbu uprostÅ™ed dne pouÅ¾Ã­t psalmodii danÃ©ho tÃ½dne ze Å¾altÃ¡Å™e pro vÅ¡echny tÅ™i modlitby bÄ›hem dne", 
+ "a NapkÃ¶zi imaÃ³rÃ¡ban az adott hÃ©t zsoltÃ¡rozÃ¡sÃ¡t alkalmazni mindhÃ¡rom napkÃ¶zi imÃ¡nÃ¡l"
 };
 const char *html_text_option1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] = 
-{"poui psalmódiu z troch tıdòov altára: aktuálny, predchádzajúci, nasledujúci", 
- "pouít almy z tøí tıdnù ze altáøe: aktuální, pøedchozí, následující", 
+{"pouÅ¾iÅ¥ psalmÃ³diu z troch tÃ½Å¾dÅˆov Å¾altÃ¡ra: aktuÃ¡lny, predchÃ¡dzajÃºci, nasledujÃºci", 
+ "pouÅ¾Ã­t Å¾almy z tÅ™Ã­ tÃ½dnÅ¯ ze Å¾altÃ¡Å™e: aktuÃ¡lnÃ­, pÅ™edchozÃ­, nÃ¡sledujÃ­cÃ­", 
  "", 
  "",
  "",
- "pouít psalmodii z tøí tıdnù ze altáøe: aktuální, pøedchozí, následující", 
- "a három heti [aktuális, elõzõ, következõ] zsoltározást alkalmazni"
+ "pouÅ¾Ã­t psalmodii z tÅ™Ã­ tÃ½dnÅ¯ ze Å¾altÃ¡Å™e: aktuÃ¡lnÃ­, pÅ™edchozÃ­, nÃ¡sledujÃ­cÃ­", 
+ "a hÃ¡rom heti [aktuÃ¡lis, elÅ‘zÅ‘, kÃ¶vetkezÅ‘] zsoltÃ¡rozÃ¡st alkalmazni"
 };
 const char *html_text_option1_mcd_zalmy_tri[POCET_JAZYKOV + 1] = 
-{"pre modlitbu cez deò poui psalmódiu z troch tıdòov altára (aktuálny, predchádzajúci, nasledujúci)", 
- "pro modlitbu uprostøed dne pouít almy z tøí tıdnù ze altáøe (aktuální, pøedchozí, následující)", 
+{"pre modlitbu cez deÅˆ pouÅ¾iÅ¥ psalmÃ³diu z troch tÃ½Å¾dÅˆov Å¾altÃ¡ra (aktuÃ¡lny, predchÃ¡dzajÃºci, nasledujÃºci)", 
+ "pro modlitbu uprostÅ™ed dne pouÅ¾Ã­t Å¾almy z tÅ™Ã­ tÃ½dnÅ¯ ze Å¾altÃ¡Å™e (aktuÃ¡lnÃ­, pÅ™edchozÃ­, nÃ¡sledujÃ­cÃ­)", 
  "", 
  "for prayer during the day use psalmody from three weeks of psalter (current, previous, next)",
  "",
- "pro modlitbu uprostøed dne pouít psalmodii z tøí tıdnù ze altáøe (aktuální, pøedchozí, následující)", 
- "a napközi imaórákban vegye az aktuális, az elõzõ és a következõ heti zsoltározást"
+ "pro modlitbu uprostÅ™ed dne pouÅ¾Ã­t psalmodii z tÅ™Ã­ tÃ½dnÅ¯ ze Å¾altÃ¡Å™e (aktuÃ¡lnÃ­, pÅ™edchozÃ­, nÃ¡sledujÃ­cÃ­)", 
+ "a napkÃ¶zi imaÃ³rÃ¡kban vegye az aktuÃ¡lis, az elÅ‘zÅ‘ Ã©s a kÃ¶vetkezÅ‘ heti zsoltÃ¡rozÃ¡st"
 };
 const char *html_text_option1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] = 
-{"Pokia¾ sa niekto modlí viac modlitieb cez deò, psalmódia sa pouíva z troch tıdòov altára (aktuálny, predchádzajúci, nasledujúci tıdeò altára).\nNemá úèinok, ak je zvolená monos poui doplnkovú psalmódiu.", 
- "Pokud se nìkdo modlí více èástí modlitby uprostøed dne, mùe nejprve pouít psalmodii daného dne a potom psalmodii pøedchozího, nebo následujícího tıdne.", 
+{"PokiaÄ¾ sa niekto modlÃ­ viac modlitieb cez deÅˆ, psalmÃ³dia sa pouÅ¾Ã­va z troch tÃ½Å¾dÅˆov Å¾altÃ¡ra (aktuÃ¡lny, predchÃ¡dzajÃºci, nasledujÃºci tÃ½Å¾deÅˆ Å¾altÃ¡ra).\nNemÃ¡ ÃºÄinok, ak je zvolenÃ¡ moÅ¾nosÅ¥ pouÅ¾iÅ¥ doplnkovÃº psalmÃ³diu.", 
+ "Pokud se nÄ›kdo modlÃ­ vÃ­ce ÄÃ¡stÃ­ modlitby uprostÅ™ed dne, mÅ¯Å¾e nejprve pouÅ¾Ã­t psalmodii danÃ©ho dne a potom psalmodii pÅ™edchozÃ­ho, nebo nÃ¡sledujÃ­cÃ­ho tÃ½dne.", 
  "", 
  "",
  "", 
- "Pokud se nìkdo modlí více èástí modlitby uprostøed dne, mùe nejprve pouít psalmodii daného dne a potom psalmodii pøedchozího, nebo následujícího tıdne.", 
- "Ha valaki többször naponta mondja a napközi imát, a zsoltározás három hétbõl (aktuális, elõzõ, következõ) van alkalmazva.\nNincs hatása, ha ki van választva a kiegészítõ zsoltárok alkalmazása."
+ "Pokud se nÄ›kdo modlÃ­ vÃ­ce ÄÃ¡stÃ­ modlitby uprostÅ™ed dne, mÅ¯Å¾e nejprve pouÅ¾Ã­t psalmodii danÃ©ho dne a potom psalmodii pÅ™edchozÃ­ho, nebo nÃ¡sledujÃ­cÃ­ho tÃ½dne.", 
+ "Ha valaki tÃ¶bbszÃ¶r naponta mondja a napkÃ¶zi imÃ¡t, a zsoltÃ¡rozÃ¡s hÃ¡rom hÃ©tbÅ‘l (aktuÃ¡lis, elÅ‘zÅ‘, kÃ¶vetkezÅ‘) van alkalmazva.\nNincs hatÃ¡sa, ha ki van vÃ¡lasztva a kiegÃ©szÃ­tÅ‘ zsoltÃ¡rok alkalmazÃ¡sa."
 };
 
 const char *html_text_option1_zalm95[POCET_JAZYKOV + 1] = 
-{"namiesto almov 24, 67 resp. 100 poui alm 95", 
- "místo almù 24, 67 resp. 100 pouít alm 95", 
+{"namiesto Å¾almov 24, 67 resp. 100 pouÅ¾iÅ¥ Å¾alm 95", 
+ "mÃ­sto Å¾almÅ¯ 24, 67 resp. 100 pouÅ¾Ã­t Å¾alm 95", 
  "xxx", 
  "psalm 95",
  "",
- "místo almù 24, 67 resp. 100 pouít alm 95", 
- "a 23., 66. illetve a 99.  zsoltár helyett legyen a 94."
+ "mÃ­sto Å¾almÅ¯ 24, 67 resp. 100 pouÅ¾Ã­t Å¾alm 95", 
+ "a 23., 66. illetve a 99.  zsoltÃ¡r helyett legyen a 94."
 };
 const char *html_text_option1_zalm95_explain[POCET_JAZYKOV + 1] = 
-{"Ak sa v rannıch chválach, vešperách alebo posvätnom èítaní vyskytne alm 24, 67 resp. 100, ktorı bol pouitı pre invitatórium, nahradí sa v príslušnej modlitbe almom 95.", 
- "Kdy se v ranních chválách, modlitbì se ètením nebo nešporách vyskytne alm 24, 67 resp. 100, kterı se pouil pro uvedení do první modlitby dne, nahradí se v pøíslušné modlitbì almem 95.", 
+{"Ak sa v rannÃ½ch chvÃ¡lach, veÅ¡perÃ¡ch alebo posvÃ¤tnom ÄÃ­tanÃ­ vyskytne Å¾alm 24, 67 resp. 100, ktorÃ½ bol pouÅ¾itÃ½ pre invitatÃ³rium, nahradÃ­ sa v prÃ­sluÅ¡nej modlitbe Å¾almom 95.", 
+ "KdyÅ¾ se v rannÃ­ch chvÃ¡lÃ¡ch, modlitbÄ› se ÄtenÃ­m nebo neÅ¡porÃ¡ch vyskytne Å¾alm 24, 67 resp. 100, kterÃ½ se pouÅ¾il pro uvedenÃ­ do prvnÃ­ modlitby dne, nahradÃ­ se v pÅ™Ã­sluÅ¡nÃ© modlitbÄ› Å¾almem 95.", 
  "xxx", 
  "xxx",
  "xxx", 
- "Kdy se v ranních chválách, modlitbì se ètením nebo veèerních chválách vyskytne alm 24, 67 resp. 100, kterı se pouil pro invitatorium, nahradí se v pøíslušné modlitbì almem 95.", 
- "Ha a reggeli és az esti dicséretben, vagy az olvasmányos imaórában elõfordul a 23., 66. illetve 99. zsoltár, amely az Imádságra hívásban már imádkozva volt, akkor az adott imádságban a 94. zsoltár kerül helyébe."
+ "KdyÅ¾ se v rannÃ­ch chvÃ¡lÃ¡ch, modlitbÄ› se ÄtenÃ­m nebo veÄernÃ­ch chvÃ¡lÃ¡ch vyskytne Å¾alm 24, 67 resp. 100, kterÃ½ se pouÅ¾il pro invitatorium, nahradÃ­ se v pÅ™Ã­sluÅ¡nÃ© modlitbÄ› Å¾almem 95.", 
+ "Ha a reggeli Ã©s az esti dicsÃ©retben, vagy az olvasmÃ¡nyos imaÃ³rÃ¡ban elÅ‘fordul a 23., 66. illetve 99. zsoltÃ¡r, amely az ImÃ¡dsÃ¡gra hÃ­vÃ¡sban mÃ¡r imÃ¡dkozva volt, akkor az adott imÃ¡dsÃ¡gban a 94. zsoltÃ¡r kerÃ¼l helyÃ©be."
 };
 
 const char *html_text_option_zobrazit_zvolania[POCET_JAZYKOV + 1] = 
-{"opakova zvolanie po kadej prosbe", 
- "zopakovat zvolání po kadé prosbì", 
+{"opakovaÅ¥ zvolanie po kaÅ¾dej prosbe", 
+ "zopakovat zvolÃ¡nÃ­ po kaÅ¾dÃ© prosbÄ›", 
  "xxx", 
  "repeat invocation after each appeal",
  "",
- "zopakovat zvolání po kadé prosbì", 
- "megismételni a választ minden könyörgés után"
+ "zopakovat zvolÃ¡nÃ­ po kaÅ¾dÃ© prosbÄ›", 
+ "megismÃ©telni a vÃ¡laszt minden kÃ¶nyÃ¶rgÃ©s utÃ¡n"
 };
 const char *html_text_option_skryt_zvolania[POCET_JAZYKOV + 1] = 
-{"skry zvolanie po kadej prosbe", 
- "skrıt zvolání po kadé prosbì", 
+{"skryÅ¥ zvolanie po kaÅ¾dej prosbe", 
+ "skrÃ½t zvolÃ¡nÃ­ po kaÅ¾dÃ© prosbÄ›", 
  "xxx", 
  "hide invocation after each appeal",
  "",
- "skrıt zvolání po kadé prosbì", 
- "elrejteni a választ minden könyörgés után"
+ "skrÃ½t zvolÃ¡nÃ­ po kaÅ¾dÃ© prosbÄ›", 
+ "elrejteni a vÃ¡laszt minden kÃ¶nyÃ¶rgÃ©s utÃ¡n"
 };
 
 const char *html_text_option_zobrazit_kratsie_prosby[POCET_JAZYKOV + 1] = 
-{"poui kratšie prosby z dodatku", 
- "zobrazit kratší prosby z dodatku", 
+{"pouÅ¾iÅ¥ kratÅ¡ie prosby z dodatku", 
+ "zobrazit kratÅ¡Ã­ prosby z dodatku", 
  "xxx", 
  "use shorten prayers",
  "",
- "zobrazit kratší prosby z dodatku", 
- "használja a rövidebb könyörgéseket a függelékbõl"
+ "zobrazit kratÅ¡Ã­ prosby z dodatku", 
+ "hasznÃ¡lja a rÃ¶videbb kÃ¶nyÃ¶rgÃ©seket a fÃ¼ggelÃ©kbÅ‘l"
 };
 const char *html_text_option_skryt_kratsie_prosby[POCET_JAZYKOV + 1] = 
-{"nepoui kratšie prosby z dodatku", 
- "nezobrazit kratší prosby z dodatku", 
+{"nepouÅ¾iÅ¥ kratÅ¡ie prosby z dodatku", 
+ "nezobrazit kratÅ¡Ã­ prosby z dodatku", 
  "xxx", 
  "do not use shorten prayers",
  "",
- "nezobrazit kratší prosby z dodatku", 
- "ne használja a rövidebb könyörgéseket a függelékbõl"
+ "nezobrazit kratÅ¡Ã­ prosby z dodatku", 
+ "ne hasznÃ¡lja a rÃ¶videbb kÃ¶nyÃ¶rgÃ©seket a fÃ¼ggelÃ©kbÅ‘l"
 };
 
 const char *html_text_option1_prosby_zvolanie[POCET_JAZYKOV + 1] = 
-{"zvolanie v prosbách opakova po kadej prosbe", 
- "zvolání v prosbách zopakovat po kadé prosbì", 
+{"zvolanie v prosbÃ¡ch opakovaÅ¥ po kaÅ¾dej prosbe", 
+ "zvolÃ¡nÃ­ v prosbÃ¡ch zopakovat po kaÅ¾dÃ© prosbÄ›", 
  "xxx", 
  "invocation repeat after each appeal",
  "",
- "zvolání v prosbách zopakovat po kadé prosbì", 
- "minden fohász után ismételje a választ"
+ "zvolÃ¡nÃ­ v prosbÃ¡ch zopakovat po kaÅ¾dÃ© prosbÄ›", 
+ "minden fohÃ¡sz utÃ¡n ismÃ©telje a vÃ¡laszt"
 };
 const char *html_text_option1_prosby_zvolanie_explain[POCET_JAZYKOV + 1] = 
-{"V rannıch chválach a vešperách opakova zvolanie v prosbách po kadej prosbe.", 
- "V ranních chválách a nešporách opakovat svolání v prosbách po kadé prosbì.", 
+{"V rannÃ½ch chvÃ¡lach a veÅ¡perÃ¡ch opakovaÅ¥ zvolanie v prosbÃ¡ch po kaÅ¾dej prosbe.", 
+ "V rannÃ­ch chvÃ¡lÃ¡ch a neÅ¡porÃ¡ch opakovat svolÃ¡nÃ­ v prosbÃ¡ch po kaÅ¾dÃ© prosbÄ›.", 
  "xxx", 
  "In morning and evening prayer repeat invocation after each appeal.",
  "xxx", 
- "V ranních a veèerních chválách opakovat svolání v prosbách po kadé prosbì.", 
- "A reggeli és az esti dicséretben minden fohász után ismételni a választ."
+ "V rannÃ­ch a veÄernÃ­ch chvÃ¡lÃ¡ch opakovat svolÃ¡nÃ­ v prosbÃ¡ch po kaÅ¾dÃ© prosbÄ›.", 
+ "A reggeli Ã©s az esti dicsÃ©retben minden fohÃ¡sz utÃ¡n ismÃ©telni a vÃ¡laszt."
 };
 
 const char *html_text_option1_skryt_popis_svaty[POCET_JAZYKOV + 1] = 
-{"nezobrazi popis k modlitbe svätého", 
- "nezobrazit popis pøi modlitbì ke cti svìtce", 
+{"nezobraziÅ¥ popis k modlitbe svÃ¤tÃ©ho", 
+ "nezobrazit popis pÅ™i modlitbÄ› ke cti svÄ›tce", 
  "do not display description for prayer for the saints", 
  "", 
  "", 
- "nezobrazit popis pøi modlitbì ke cti svìtce",
- "ne mutassa a leírást a szentrõl az imaórában"
+ "nezobrazit popis pÅ™i modlitbÄ› ke cti svÄ›tce",
+ "ne mutassa a leÃ­rÃ¡st a szentrÅ‘l az imaÃ³rÃ¡ban"
 };
 
 const char *html_text_option1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] = 
-{"Modlitby zväèša obsahujú pred názvom modlitby ivotopis svätého, popis sviatku alebo podobnú struènú charakteristiku, ktorú pre jednoduchos nazıvame popis.", 
- "Modlitby ke cti svatıch obsahují struènı ivotopis svatého, pøi svátku je to struènı popis svátku a podobnì. Tyto charakteristiky pro struènost nazıváme popis.", 
+{"Modlitby zvÃ¤ÄÅ¡a obsahujÃº pred nÃ¡zvom modlitby Å¾ivotopis svÃ¤tÃ©ho, popis sviatku alebo podobnÃº struÄnÃº charakteristiku, ktorÃº pre jednoduchosÅ¥ nazÃ½vame popis.", 
+ "Modlitby ke cti svatÃ½ch obsahujÃ­ struÄnÃ½ Å¾ivotopis svatÃ©ho, pÅ™i svÃ¡tku je to struÄnÃ½ popis svÃ¡tku a podobnÄ›. Tyto charakteristiky pro struÄnost nazÃ½vÃ¡me popis.", 
  "xxx", 
  "",
  "", 
- "Modlitby ke cti svatıch obsahují struènı ivotopis svatého, u svátku je to struènı popis svátku a podobnì. Tyto charakteristiky pro struènost nazıváme popis.",
- "Többnyire az imák az imaóra elnevezése elõtt a szent életrajzát, az ünnep leírását vagy más rövid jegyzetet tartalmaznak, amit az egyszerûség kedvéért leírásnak nevezünk."
+ "Modlitby ke cti svatÃ½ch obsahujÃ­ struÄnÃ½ Å¾ivotopis svatÃ©ho, u svÃ¡tku je to struÄnÃ½ popis svÃ¡tku a podobnÄ›. Tyto charakteristiky pro struÄnost nazÃ½vÃ¡me popis.",
+ "TÃ¶bbnyire az imÃ¡k az imaÃ³ra elnevezÃ©se elÅ‘tt a szent Ã©letrajzÃ¡t, az Ã¼nnep leÃ­rÃ¡sÃ¡t vagy mÃ¡s rÃ¶vid jegyzetet tartalmaznak, amit az egyszerÅ±sÃ©g kedvÃ©Ã©rt leÃ­rÃ¡snak nevezÃ¼nk."
 };
 
 const char *html_text_option1_spolc_svaty[POCET_JAZYKOV + 1] = 
-{"zobrazi, odkia¾ sa berú spoloèné èasti k modlitbe svätého", 
- "zobrazit, odkud se berou spoleèné texty", 
+{"zobraziÅ¥, odkiaÄ¾ sa berÃº spoloÄnÃ© Äasti k modlitbe svÃ¤tÃ©ho", 
+ "zobrazit, odkud se berou spoleÄnÃ© texty", 
  "display communia info", 
  "", 
  "", 
- "zobrazit, odkud se berou spoleèné texty",
- "mutassa meg, hogy a közös részek honnan lettek véve a szentek zsolozsmájához"
+ "zobrazit, odkud se berou spoleÄnÃ© texty",
+ "mutassa meg, hogy a kÃ¶zÃ¶s rÃ©szek honnan lettek vÃ©ve a szentek zsolozsmÃ¡jÃ¡hoz"
 };
 
 const char *html_text_option1_spolc_svaty_explain[POCET_JAZYKOV + 1] = 
-{"Rubrika obsahujúca informáciu, odkia¾ sa berú spoloèné èasti k modlitbe svätého.", 
- "Rubrika, která pro modlitby svatıch informuje, které spoleèné texty jsou uity.", 
+{"Rubrika obsahujÃºca informÃ¡ciu, odkiaÄ¾ sa berÃº spoloÄnÃ© Äasti k modlitbe svÃ¤tÃ©ho.", 
+ "Rubrika, kterÃ¡ pro modlitby svatÃ½ch informuje, kterÃ© spoleÄnÃ© texty jsou uÅ¾ity.", 
  "Displays communia info.", 
  "", 
  "", 
- "Rubrika, která pro modlitby svatıch informuje, které spoleèné texty jsou uity.",
- "Rubrika, amely azt az információt tartalmazza, hogy melyik közös részbõl vannak véve a szentek zsolozsmájához tartozó közös részek."
+ "Rubrika, kterÃ¡ pro modlitby svatÃ½ch informuje, kterÃ© spoleÄnÃ© texty jsou uÅ¾ity.",
+ "Rubrika, amely azt az informÃ¡ciÃ³t tartalmazza, hogy melyik kÃ¶zÃ¶s rÃ©szbÅ‘l vannak vÃ©ve a szentek zsolozsmÃ¡jÃ¡hoz tartozÃ³ kÃ¶zÃ¶s rÃ©szek."
 };
 
 const char *html_text_option1_vesp_kratsie_prosby[POCET_JAZYKOV + 1] = 
-{"pre vešpery poui kratšie prosby z dodatku", 
- "pro nešpory pouít kratší prosby z dodatku", 
+{"pre veÅ¡pery pouÅ¾iÅ¥ kratÅ¡ie prosby z dodatku", 
+ "pro neÅ¡pory pouÅ¾Ã­t kratÅ¡Ã­ prosby z dodatku", 
  "use shorten prayers for vespers", 
  "", 
  "", 
- "pro veèerní chvály pouít kratší prosby z dodatku", 
- "Esti dicséretben használja a függelékbõl a rövidebb, közbenjáró fohászokat"
+ "pro veÄernÃ­ chvÃ¡ly pouÅ¾Ã­t kratÅ¡Ã­ prosby z dodatku", 
+ "Esti dicsÃ©retben hasznÃ¡lja a fÃ¼ggelÃ©kbÅ‘l a rÃ¶videbb, kÃ¶zbenjÃ¡rÃ³ fohÃ¡szokat"
 };
 
 const char *html_text_option1_vesp_kratsie_prosby_explain[POCET_JAZYKOV + 1] = 
-{"Pre vešpery poui kratšie prosby z dodatku namiesto tıch, ktoré sú urèené pre vešpery daného dòa.", 
- "Pro nešpory pouít kratší prosby z dodatku místo urèenıch pro pøíslušnı den.", 
+{"Pre veÅ¡pery pouÅ¾iÅ¥ kratÅ¡ie prosby z dodatku namiesto tÃ½ch, ktorÃ© sÃº urÄenÃ© pre veÅ¡pery danÃ©ho dÅˆa.", 
+ "Pro neÅ¡pory pouÅ¾Ã­t kratÅ¡Ã­ prosby z dodatku mÃ­sto urÄenÃ½ch pro pÅ™Ã­sluÅ¡nÃ½ den.", 
  "Use shorten prayers for vespers instead of those prescribed for the day.", 
  "", 
  "", 
- "Pro veèerní chvály pouít kratší prosby z dodatku místo urèenıch pro pøíslušnı den.",
- "Esti dicséretben használja a rövidebb közbenjáró fohászokat a függelékbõl, a napra meghatározott helyett."
+ "Pro veÄernÃ­ chvÃ¡ly pouÅ¾Ã­t kratÅ¡Ã­ prosby z dodatku mÃ­sto urÄenÃ½ch pro pÅ™Ã­sluÅ¡nÃ½ den.",
+ "Esti dicsÃ©retben hasznÃ¡lja a rÃ¶videbb kÃ¶zbenjÃ¡rÃ³ fohÃ¡szokat a fÃ¼ggelÃ©kbÅ‘l, a napra meghatÃ¡rozott helyett."
 };
 
 const char *html_text_option1_vigilia[POCET_JAZYKOV + 1] = 
-{"predåené slávenie vigílie pre posvätné èítanie" /*(na nedele, slávnosti a sviatky)*/, 
- "prodlouené slavení vigilie pro modlitbu se ètením" /*(pro nedìle, slavnosti a svátky)*/, 
+{"predÄºÅ¾enÃ© slÃ¡venie vigÃ­lie pre posvÃ¤tnÃ© ÄÃ­tanie" /*(na nedele, slÃ¡vnosti a sviatky)*/, 
+ "prodlouÅ¾enÃ© slavenÃ­ vigilie pro modlitbu se ÄtenÃ­m" /*(pro nedÄ›le, slavnosti a svÃ¡tky)*/, 
  "celebrating of vigily for prayer with readings" /*(for Sundays, solemnitas and festivus)*/, 
  "",
  "",
- "prodlouené slavení vigilie pro modlitbu se ètením" /*(pro nedìle, slavnosti a svátky)*/, 
- "hosszabb vigíliás ünneplés Olvasmányos imaórával" /*(vasárnap, fõünnep és ünnep elõtt)*/
+ "prodlouÅ¾enÃ© slavenÃ­ vigilie pro modlitbu se ÄtenÃ­m" /*(pro nedÄ›le, slavnosti a svÃ¡tky)*/, 
+ "hosszabb vigÃ­liÃ¡s Ã¼nneplÃ©s OlvasmÃ¡nyos imaÃ³rÃ¡val" /*(vasÃ¡rnap, fÅ‘Ã¼nnep Ã©s Ã¼nnep elÅ‘tt)*/
 };
 const char *html_text_option1_vigilia_explain[POCET_JAZYKOV + 1] = 
-{"Tí, èo chcú pod¾a tradície predåi vigíliu nedele, slávnosti alebo sviatku, èo sa ve¾mi odporúèa, najprv recitujú posvätné èítanie; po oboch èítaniach, pred hymnom Te Deum, pridávajú sa chválospevy a evanjelium.", 
- "Ti, kteøí chtìjí podle tradice prodlouit vigilii nedìle, slavnosti nebo svátku, co se velmi doporuèuje, recitují nejprve ètení; po obou èteních, pøed hymnem Te Deum, se pøidávají chvalozpìvy a evangelium.", 
+{"TÃ­, Äo chcÃº podÄ¾a tradÃ­cie predÄºÅ¾iÅ¥ vigÃ­liu nedele, slÃ¡vnosti alebo sviatku, Äo sa veÄ¾mi odporÃºÄa, najprv recitujÃº posvÃ¤tnÃ© ÄÃ­tanie; po oboch ÄÃ­taniach, pred hymnom Te Deum, pridÃ¡vajÃº sa chvÃ¡lospevy a evanjelium.", 
+ "Ti, kteÅ™Ã­ chtÄ›jÃ­ podle tradice prodlouÅ¾it vigilii nedÄ›le, slavnosti nebo svÃ¡tku, coÅ¾ se velmi doporuÄuje, recitujÃ­ nejprve ÄtenÃ­; po obou ÄtenÃ­ch, pÅ™ed hymnem Te Deum, se pÅ™idÃ¡vajÃ­ chvalozpÄ›vy a evangelium.", 
  "For Sundays, solemnitas and festivus: celebrating of vigily for prayer with readings.", 
  "",
  "", 
- "Ti, kteøí chtìjí podle tradice prodlouit vigilii nedìle, slavnosti nebo svátku, co se velmi doporuèuje, recitují nejprve ètení; po obou èteních, pøed hymnem Te Deum, se pøidávají chvalozpìvy a evangelium.", 
- "Akik a hagyományokhoz híven vasárnap, fõünnep és ünnep elõtt hosszabb vigíliás ünneplést akarnak tartani, elõször végezzék el az Olvasmányos imaórát, a két olvasmány után és a Téged, Isten, dicsérünk himnusz elõtt vegyék hozzá a kantikumokat és utána az evangéliumot."
+ "Ti, kteÅ™Ã­ chtÄ›jÃ­ podle tradice prodlouÅ¾it vigilii nedÄ›le, slavnosti nebo svÃ¡tku, coÅ¾ se velmi doporuÄuje, recitujÃ­ nejprve ÄtenÃ­; po obou ÄtenÃ­ch, pÅ™ed hymnem Te Deum, se pÅ™idÃ¡vajÃ­ chvalozpÄ›vy a evangelium.", 
+ "Akik a hagyomÃ¡nyokhoz hÃ­ven vasÃ¡rnap, fÅ‘Ã¼nnep Ã©s Ã¼nnep elÅ‘tt hosszabb vigÃ­liÃ¡s Ã¼nneplÃ©st akarnak tartani, elÅ‘szÃ¶r vÃ©gezzÃ©k el az OlvasmÃ¡nyos imaÃ³rÃ¡t, a kÃ©t olvasmÃ¡ny utÃ¡n Ã©s a TÃ©ged, Isten, dicsÃ©rÃ¼nk himnusz elÅ‘tt vegyÃ©k hozzÃ¡ a kantikumokat Ã©s utÃ¡na az evangÃ©liumot."
 };
 
 const char *html_text_option1_spomienka_spolcast[POCET_JAZYKOV + 1] = 
-{"na spomienky poui èasti zo spoloènıch èastí", 
- "na památky pouít èásti ze spoleènıch textù", 
+{"na spomienky pouÅ¾iÅ¥ Äasti zo spoloÄnÃ½ch ÄastÃ­", 
+ "na pamÃ¡tky pouÅ¾Ã­t ÄÃ¡sti ze spoleÄnÃ½ch textÅ¯", 
  "take parts from celebration &#x2013; commmons", 
  "", 
  "", 
- "na památky pouít èásti ze spoleènıch èástí", 
- "emléknapon vegye a jelzett részeket a közös részbõl"
+ "na pamÃ¡tky pouÅ¾Ã­t ÄÃ¡sti ze spoleÄnÃ½ch ÄÃ¡stÃ­", 
+ "emlÃ©knapon vegye a jelzett rÃ©szeket a kÃ¶zÃ¶s rÃ©szbÅ‘l"
 };
 
 const char *html_text_option1_spomienka_spolcast_explain[POCET_JAZYKOV + 1] = 
-{"Zvoli, èi sa antifóna na invitatórium, hymnus, krátke èítanie, antifóny na Benediktus a Magnifikat a prosby, ak nie sú vlastné berú zo spoloènej èasti (ináè z beného všedného dòa); è. 235 b) všeobecnıch smerníc.", 
+{"ZvoliÅ¥, Äi sa antifÃ³na na invitatÃ³rium, hymnus, krÃ¡tke ÄÃ­tanie, antifÃ³ny na Benediktus a Magnifikat a prosby, ak nie sÃº vlastnÃ© berÃº zo spoloÄnej Äasti (inÃ¡Ä z beÅ¾nÃ©ho vÅ¡ednÃ©ho dÅˆa); Ä. 235 b) vÅ¡eobecnÃ½ch smernÃ­c.", 
  "", 
  "", 
  "",
  "", 
  "",
- "Kiválasztani, hogy az imádságra hívás antifónája, himnusz, rövid olvasmány, a Benedictus és a Magnifikat antifónája és a fohászok a közös részbõl legyenek véve (egyébként a köznapról) a 235 b) általános rendelkezés szerint."
+ "KivÃ¡lasztani, hogy az imÃ¡dsÃ¡gra hÃ­vÃ¡s antifÃ³nÃ¡ja, himnusz, rÃ¶vid olvasmÃ¡ny, a Benedictus Ã©s a Magnifikat antifÃ³nÃ¡ja Ã©s a fohÃ¡szok a kÃ¶zÃ¶s rÃ©szbÅ‘l legyenek vÃ©ve (egyÃ©bkÃ©nt a kÃ¶znaprÃ³l) a 235 b) Ã¡ltalÃ¡nos rendelkezÃ©s szerint."
 };
 
 const char *html_text_option1_spomienka_spolcast_NIE[POCET_JAZYKOV + 1] = 
-{"na spomienky poui èasti zo dòa, nie zo spoloènıch èastí", 
- "na památky pouít èásti z bìného dne, ne ze spoleènıch textù", 
+{"na spomienky pouÅ¾iÅ¥ Äasti zo dÅˆa, nie zo spoloÄnÃ½ch ÄastÃ­", 
+ "na pamÃ¡tky pouÅ¾Ã­t ÄÃ¡sti z bÄ›Å¾nÃ©ho dne, ne ze spoleÄnÃ½ch textÅ¯", 
  "take parts from feria &#x2013; not commmons", 
  "", 
  "", 
- "na památky pouít èásti z bìného dne, ne ze spoleènıch èástí", 
- "emléknapon a jelzett részeket az adott napról vegye, ne a közös részbõl"
+ "na pamÃ¡tky pouÅ¾Ã­t ÄÃ¡sti z bÄ›Å¾nÃ©ho dne, ne ze spoleÄnÃ½ch ÄÃ¡stÃ­", 
+ "emlÃ©knapon a jelzett rÃ©szeket az adott naprÃ³l vegye, ne a kÃ¶zÃ¶s rÃ©szbÅ‘l"
 };
 
 const char *html_text_option2_html_export[POCET_JAZYKOV + 1] = 
-{"monosti zobrazenia stránok",
- "monosti zobrazení stránek",
+{"moÅ¾nosti zobrazenia strÃ¡nok",
+ "moÅ¾nosti zobrazenÃ­ strÃ¡nek",
  "display options",
  "",
  "",
- "monosti zobrazení stránek",
- "az oldalak megjelenítésének lehetõségei:"
+ "moÅ¾nosti zobrazenÃ­ strÃ¡nek",
+ "az oldalak megjelenÃ­tÃ©sÃ©nek lehetÅ‘sÃ©gei:"
 };
 
 const char *html_text_option2_html_export_explain[POCET_JAZYKOV + 1] = 
-{"Tieto monosti ovplyvnia rozlièné zobrazenia, nemajú vplyv na obsah (text) modlitieb.",
- "Monosti ovlivní rozlièná zobrazení, neovlivní obsah (text) modliteb.",
+{"Tieto moÅ¾nosti ovplyvnia rozliÄnÃ© zobrazenia, nemajÃº vplyv na obsah (text) modlitieb.",
+ "MoÅ¾nosti ovlivnÃ­ rozliÄnÃ¡ zobrazenÃ­, neovlivnÃ­ obsah (text) modliteb.",
  "These various options have no influence to generated text of prayers, used only for visualization.",
  "",
  "",
- "Monosti ovlivní rozlièná zobrazení, neovlivní obsah (text) modliteb.",
- "Ezek a beállítások hatással vannak a formai megjelenítésre, de az imaszöveg nem változik."
+ "MoÅ¾nosti ovlivnÃ­ rozliÄnÃ¡ zobrazenÃ­, neovlivnÃ­ obsah (text) modliteb.",
+ "Ezek a beÃ¡llÃ­tÃ¡sok hatÃ¡ssal vannak a formai megjelenÃ­tÃ©sre, de az imaszÃ¶veg nem vÃ¡ltozik."
 };
 
 const char *html_text_option2_prve_vespery[POCET_JAZYKOV + 1] = 
-{"zobrazi tlaèidlo pre prvé vešpery pre nedele a slávnosti v deò slávenia",
- "zobrazit tlaèítko pro první nešpory pro nedìle a slavnosti v den slavení",
+{"zobraziÅ¥ tlaÄidlo pre prvÃ© veÅ¡pery pre nedele a slÃ¡vnosti v deÅˆ slÃ¡venia",
+ "zobrazit tlaÄÃ­tko pro prvnÃ­ neÅ¡pory pro nedÄ›le a slavnosti v den slavenÃ­",
  "display button for first vesperas for Sundays and solemnitas for the day of celebration",
  "",
  "",
- "zobrazit tlaèítko pro první veèerní chvály pro nedìle a slavnosti v den slavení",
- "vasárnapok és fõünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg"
+ "zobrazit tlaÄÃ­tko pro prvnÃ­ veÄernÃ­ chvÃ¡ly pro nedÄ›le a slavnosti v den slavenÃ­",
+ "vasÃ¡rnapok Ã©s fÅ‘Ã¼nnepek esetÃ©n az I. Esti dicsÃ©ret gombja az Ã¼nneplÃ©s napjÃ¡n jelenjen meg"
 };
 /*
-{"zobrazi tlaèidlo pre prvé vešpery <!--(a kompletórium po nich)--> pre nedele a slávnosti v deò slávenia",
- "zobrazit tlaèítko pro první nešpory <!--(a kompletáø po nich)--> pro nedìle a slavnosti v den slavení",
+{"zobraziÅ¥ tlaÄidlo pre prvÃ© veÅ¡pery <!--(a kompletÃ³rium po nich)--> pre nedele a slÃ¡vnosti v deÅˆ slÃ¡venia",
+ "zobrazit tlaÄÃ­tko pro prvnÃ­ neÅ¡pory <!--(a kompletÃ¡Å™ po nich)--> pro nedÄ›le a slavnosti v den slavenÃ­",
  "display button for first vesperas <!--(and completory after them)--> for Sundays and solemnitas for the day of celebration",
  "",
  "",
- "zobrazit tlaèítko pro první veèerní chvály <!--(a kompletáø po nich)--> pro nedìle a slavnosti v den slavení",
- "vasárnapok és fõünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg"
+ "zobrazit tlaÄÃ­tko pro prvnÃ­ veÄernÃ­ chvÃ¡ly <!--(a kompletÃ¡Å™ po nich)--> pro nedÄ›le a slavnosti v den slavenÃ­",
+ "vasÃ¡rnapok Ã©s fÅ‘Ã¼nnepek esetÃ©n az I. Esti dicsÃ©ret gombja az Ã¼nneplÃ©s napjÃ¡n jelenjen meg"
 };
 */
 const char *html_text_option2_prve_vespery_explain[POCET_JAZYKOV + 1] = 
-{"Keïe základnım kritériom pre zobrazovanie modlitieb daného dòa je dátum, formálne prvé vešpery nedie¾ a slávností (a tie kompletórium po nich) nespadajú pod danı dátum, ale pre predošlı deò, kde sa zobrazujú ako bené vešpery. Pre sobotné slávenie sa nebude tlaèidlo pre vešpery (a kompletórium) zobrazova.", 
- "Jeliko základním kritériem pro zobrazování ponuky modliteb daného dne je datum, první nešpory nedìl a slavností (a také kompletáø po nich) nespadají pod danı datum, nıbr pro pøedcházející den, kde jsou zobrazeny jako bìné nešpory. Pro sobotní slavení se tlaèítko pro nešpory (a kompletáø) nebude zobrazovat.", 
+{"KeÄÅ¾e zÃ¡kladnÃ½m kritÃ©riom pre zobrazovanie modlitieb danÃ©ho dÅˆa je dÃ¡tum, formÃ¡lne prvÃ© veÅ¡pery nedieÄ¾ a slÃ¡vnostÃ­ (a tieÅ¾ kompletÃ³rium po nich) nespadajÃº pod danÃ½ dÃ¡tum, ale pre predoÅ¡lÃ½ deÅˆ, kde sa zobrazujÃº ako beÅ¾nÃ© veÅ¡pery. Pre sobotnÃ© slÃ¡venie sa nebude tlaÄidlo pre veÅ¡pery (a kompletÃ³rium) zobrazovaÅ¥.", 
+ "JelikoÅ¾ zÃ¡kladnÃ­m kritÃ©riem pro zobrazovÃ¡nÃ­ ponuky modliteb danÃ©ho dne je datum, prvnÃ­ neÅ¡pory nedÄ›l a slavnostÃ­ (a takÃ© kompletÃ¡Å™ po nich) nespadajÃ­ pod danÃ½ datum, nÃ½brÅ¾ pro pÅ™edchÃ¡zejÃ­cÃ­ den, kde jsou zobrazeny jako bÄ›Å¾nÃ© neÅ¡pory. Pro sobotnÃ­ slavenÃ­ se tlaÄÃ­tko pro neÅ¡pory (a kompletÃ¡Å™) nebude zobrazovat.", 
  "xxx", 
  "",
  "", 
- "Jeliko základním kritériem pro zobrazování ponuky modliteb daného dne je datum, první veèerní chvály nedìl a slavností (a také kompletáø po nich) nespadají pod danı datum, nıbr pro pøedcházející den, kde jsou zobrazeny jako bìné první veèerní chvály. Pro sobotní slavení se tlaèítko pro veèerní chvály (a kompletáø) nebude zobrazovat.", 
- "Mivel az imaórák megjelenítése elsõsorban a dátumtól függ, a vasárnapok és fõünnepek I. Esti dicsérete (valamint az utánuk következõ Befejezõ imaóra) formálisan nem tartozik az adott dátumhoz, hanem az elõzõ naphoz. Itt mint köznapi Esti dicséret jelenik meg. Az I. Esti dicséret (és Befejezõ imaóra) gombja nem fog megjelenni szombati végzéshez."
+ "JelikoÅ¾ zÃ¡kladnÃ­m kritÃ©riem pro zobrazovÃ¡nÃ­ ponuky modliteb danÃ©ho dne je datum, prvnÃ­ veÄernÃ­ chvÃ¡ly nedÄ›l a slavnostÃ­ (a takÃ© kompletÃ¡Å™ po nich) nespadajÃ­ pod danÃ½ datum, nÃ½brÅ¾ pro pÅ™edchÃ¡zejÃ­cÃ­ den, kde jsou zobrazeny jako bÄ›Å¾nÃ© prvnÃ­ veÄernÃ­ chvÃ¡ly. Pro sobotnÃ­ slavenÃ­ se tlaÄÃ­tko pro veÄernÃ­ chvÃ¡ly (a kompletÃ¡Å™) nebude zobrazovat.", 
+ "Mivel az imaÃ³rÃ¡k megjelenÃ­tÃ©se elsÅ‘sorban a dÃ¡tumtÃ³l fÃ¼gg, a vasÃ¡rnapok Ã©s fÅ‘Ã¼nnepek I. Esti dicsÃ©rete (valamint az utÃ¡nuk kÃ¶vetkezÅ‘ BefejezÅ‘ imaÃ³ra) formÃ¡lisan nem tartozik az adott dÃ¡tumhoz, hanem az elÅ‘zÅ‘ naphoz. Itt mint kÃ¶znapi Esti dicsÃ©ret jelenik meg. Az I. Esti dicsÃ©ret (Ã©s BefejezÅ‘ imaÃ³ra) gombja nem fog megjelenni szombati vÃ©gzÃ©shez."
 };
 
 const char *html_text_option2_iso_datum[POCET_JAZYKOV + 1] = 
-{"zobrazi dátum v ISO 8601 formáte (RRRR-MM-DD)", 
- "zobrazit datum v ISO 8601 formátu (RRRR-MM-DD)", 
+{"zobraziÅ¥ dÃ¡tum v ISO 8601 formÃ¡te (RRRR-MM-DD)", 
+ "zobrazit datum v ISO 8601 formÃ¡tu (RRRR-MM-DD)", 
  "display date in ISO 8601 format (RRRR-MM-DD)", 
  "",
  "",
- "zobrazit datum v ISO 8601 formátu (RRRR-MM-DD)", 
- "a dátum ISO 8601 formátumban (ÉÉÉÉ-HH-NN) jelenjen meg"
+ "zobrazit datum v ISO 8601 formÃ¡tu (RRRR-MM-DD)", 
+ "a dÃ¡tum ISO 8601 formÃ¡tumban (Ã‰Ã‰Ã‰Ã‰-HH-NN) jelenjen meg"
 };
 const char *html_text_option2_iso_datum_explain[POCET_JAZYKOV + 1] = 
 {"", 
@@ -2242,456 +2242,456 @@ const char *html_text_option2_iso_datum_explain[POCET_JAZYKOV + 1] =
 };
 
 const char *html_text_option2_font_family[POCET_JAZYKOV + 1] = 
-{"poui bezpätkové písmo? (ináè pätkové)", 
- "pouít bezpatkové písmo? (jinak patkové)", 
+{"pouÅ¾iÅ¥ bezpÃ¤tkovÃ© pÃ­smo? (inÃ¡Ä pÃ¤tkovÃ©)", 
+ "pouÅ¾Ã­t bezpatkovÃ© pÃ­smo? (jinak patkovÃ©)", 
  "use Sans Serif font? (otherwise, Serif is used)", 
  "",
  "",
- "pouít bezpatkové písmo? (jinak patkové)", 
- "talp nélküli betûk használata"
+ "pouÅ¾Ã­t bezpatkovÃ© pÃ­smo? (jinak patkovÃ©)", 
+ "talp nÃ©lkÃ¼li betÅ±k hasznÃ¡lata"
 };
 const char *html_text_option2_font_family_explain[POCET_JAZYKOV + 1] = 
-{"Zvo¾te si pätkové písmo (Serif) resp. bezpätkové písmo (Sans Serif) pod¾a toho, èo vám viac vyhovuje pre komfort modlitby. Pouije sa predvolené písmo prehliadaèa.", 
+{"ZvoÄ¾te si pÃ¤tkovÃ© pÃ­smo (Serif) resp. bezpÃ¤tkovÃ© pÃ­smo (Sans Serif) podÄ¾a toho, Äo vÃ¡m viac vyhovuje pre komfort modlitby. PouÅ¾ije sa predvolenÃ© pÃ­smo prehliadaÄa.", 
  "", 
  "", 
  "",
  "", 
  "", 
- "Válasszon talpas (Serif) vagy talp nélküli (Sans Serif) betût, kényelem szerint. A böngészõablakban mutatott betûtípus az alapértelmezett."
+ "VÃ¡lasszon talpas (Serif) vagy talp nÃ©lkÃ¼li (Sans Serif) betÅ±t, kÃ©nyelem szerint. A bÃ¶ngÃ©szÅ‘ablakban mutatott betÅ±tÃ­pus az alapÃ©rtelmezett."
 };
 
 const char *html_text_navig_buttons[POCET_JAZYKOV + 1] = 
-{"navigáciu", 
+{"navigÃ¡ciu", 
  "navigaci", 
  "navigation buttons", 
  "",
  "",
  "navigaci", 
- "navigáció"
+ "navigÃ¡ciÃ³"
 };
 const char *html_text_option2_navigation[POCET_JAZYKOV + 1] = 
-{"zobrazi navigáciu v textoch modlitieb",
+{"zobraziÅ¥ navigÃ¡ciu v textoch modlitieb",
  "zobrazit navigaci v textech modliteb", 
  "display navigation buttons in prayer", 
  "",
  "",
  "zobrazit navigaci v textech modliteb", 
- "a navigáció mutatása az imaszövegben", 
+ "a navigÃ¡ciÃ³ mutatÃ¡sa az imaszÃ¶vegben", 
 };
 const char *html_text_option2_navigation_explain[POCET_JAZYKOV + 1] = 
-{"Èi sa majú zobrazova hypertextové odkazy na ostatné modlitby daného dòa, príp. predošlı/nasledovnı deò priamo v texte modlitby.", 
- "Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. pøedešlı/následující den pøímo v textu modlitby.", 
+{"ÄŒi sa majÃº zobrazovaÅ¥ hypertextovÃ© odkazy na ostatnÃ© modlitby danÃ©ho dÅˆa, prÃ­p. predoÅ¡lÃ½/nasledovnÃ½ deÅˆ priamo v texte modlitby.", 
+ "Zda zobrazit hypertextovÃ© odkazy na ostatnÃ­ modlitby danÃ©ho dne, resp. pÅ™edeÅ¡lÃ½/nÃ¡sledujÃ­cÃ­ den pÅ™Ã­mo v textu modlitby.", 
  "Whether hypertext links (as buttons) to other prayers of the selected celebration should be displayed.", 
  "",
  "", 
- "Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. pøedešlı/následující den pøímo v textu modlitby.", 
- "Legyen-e hiperhivatkozás a nap többi imaórájára is,  illetve mutassa-e az elõzõ és következõ nap imaóráit is közvetlenül a szövegben.", 
+ "Zda zobrazit hypertextovÃ© odkazy na ostatnÃ­ modlitby danÃ©ho dne, resp. pÅ™edeÅ¡lÃ½/nÃ¡sledujÃ­cÃ­ den pÅ™Ã­mo v textu modlitby.", 
+ "Legyen-e hiperhivatkozÃ¡s a nap tÃ¶bbi imaÃ³rÃ¡jÃ¡ra is,  illetve mutassa-e az elÅ‘zÅ‘ Ã©s kÃ¶vetkezÅ‘ nap imaÃ³rÃ¡it is kÃ¶zvetlenÃ¼l a szÃ¶vegben.", 
 };
 
 const char *html_text_option2_moznosti[POCET_JAZYKOV + 1] = 
-{"zobrazi rozlièné monosti priamo v textoch modlitieb",
- "zobrazit rozlièné volby v textech modliteb", 
+{"zobraziÅ¥ rozliÄnÃ© moÅ¾nosti priamo v textoch modlitieb",
+ "zobrazit rozliÄnÃ© volby v textech modliteb", 
  "display various options in prayers", 
  "",
  "",
- "zobrazit rozlièné volby v textech modliteb", 
- "mutassa meg az imák szövegében a különbözõ lehetõségeket", 
+ "zobrazit rozliÄnÃ© volby v textech modliteb", 
+ "mutassa meg az imÃ¡k szÃ¶vegÃ©ben a kÃ¼lÃ¶nbÃ¶zÅ‘ lehetÅ‘sÃ©geket", 
 };
 const char *html_text_option2_moznosti_explain[POCET_JAZYKOV + 1] = 
-{"Èi sa majú zobrazova hypertextové odkazy na iné zobrazenie tej istej modlitby priamo v texte modlitby (napr. pre modlitbu cez deò na verziu s doplnkovou psalmódiou).", // Vtedy nie je potrebné, aby boli zobrazené prepínaèe na titulnej stránke.
- "Zda zobrazit hypertextové odkazy na jiné zobrazení modlitby daného dne pøímo v textu modlitby (napø. pro modlitbu uprostrìd dne verzi se almy z doplòujícího cyklu).", 
+{"ÄŒi sa majÃº zobrazovaÅ¥ hypertextovÃ© odkazy na inÃ© zobrazenie tej istej modlitby priamo v texte modlitby (napr. pre modlitbu cez deÅˆ na verziu s doplnkovou psalmÃ³diou).", // Vtedy nie je potrebnÃ©, aby boli zobrazenÃ© prepÃ­naÄe na titulnej strÃ¡nke.
+ "Zda zobrazit hypertextovÃ© odkazy na jinÃ© zobrazenÃ­ modlitby danÃ©ho dne pÅ™Ã­mo v textu modlitby (napÅ™. pro modlitbu uprostrÄ›d dne verzi se Å¾almy z doplÅˆujÃ­cÃ­ho cyklu).", 
  "Whether various options should be displayed directly in the prayer's texts.", 
  "",
  "", 
- "Zda zobrazit hypertextové odkazy na jiné zobrazení modlitby daného dne pøímo v textu modlitby (napø. pro modlitbu uprostrìd dne verzi se almy z doplòujícího cyklu).", 
- "Megjelenjenek-e közvetlenül különbözõ lehetõségek az ima szövegében (pl. napközi imaóránál a kiegészítõ zsoltár).", 
+ "Zda zobrazit hypertextovÃ© odkazy na jinÃ© zobrazenÃ­ modlitby danÃ©ho dne pÅ™Ã­mo v textu modlitby (napÅ™. pro modlitbu uprostrÄ›d dne verzi se Å¾almy z doplÅˆujÃ­cÃ­ho cyklu).", 
+ "Megjelenjenek-e kÃ¶zvetlenÃ¼l kÃ¼lÃ¶nbÃ¶zÅ‘ lehetÅ‘sÃ©gek az ima szÃ¶vegÃ©ben (pl. napkÃ¶zi imaÃ³rÃ¡nÃ¡l a kiegÃ©szÃ­tÅ‘ zsoltÃ¡r).", 
 };
 
 const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] = 
-{"zalamova dlhé riadky ako v tlaèenom vydaní (poetické èasti)",
- "zalomit dlouhé øádky poetickıch textù jako v tištìném vydání", 
+{"zalamovaÅ¥ dlhÃ© riadky ako v tlaÄenom vydanÃ­ (poetickÃ© Äasti)",
+ "zalomit dlouhÃ© Å™Ã¡dky poetickÃ½ch textÅ¯ jako v tiÅ¡tÄ›nÃ©m vydÃ¡nÃ­", 
  "xxx", 
  "",
  "",
- "zalomit dlouhé øádky poetickıch textù jako v tištìném vydání", 
- "hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)", 
+ "zalomit dlouhÃ© Å™Ã¡dky poetickÃ½ch textÅ¯ jako v tiÅ¡tÄ›nÃ©m vydÃ¡nÃ­", 
+ "hosszÃº sorok tÃ¶rdelÃ©se, mint a nyomtatott kiadÃ¡sban (versrÃ©szek)", 
 };
 const char *html_text_option2_textwrap_explain[POCET_JAZYKOV + 1] = 
-{"Èi sa majú v texte modlitby dlhé riadky almov, chválospevov a inıch poetickıch èastí zalamova ako v tlaèenom vydaní.", 
- "Zda zalomit dlouhé øádky poetickıch textù jako v tištìném vydání (normálnì: nezalamovat).", 
+{"ÄŒi sa majÃº v texte modlitby dlhÃ© riadky Å¾almov, chvÃ¡lospevov a inÃ½ch poetickÃ½ch ÄastÃ­ zalamovaÅ¥ ako v tlaÄenom vydanÃ­.", 
+ "Zda zalomit dlouhÃ© Å™Ã¡dky poetickÃ½ch textÅ¯ jako v tiÅ¡tÄ›nÃ©m vydÃ¡nÃ­ (normÃ¡lnÄ›: nezalamovat).", 
  "xxx", 
  "",
  "", 
- "Zda zalomit dlouhé øádky poetickıch textù jako v tištìném vydání (normálnì: nezalamovat).", 
- "Legyenek-e tördelve az imaórák szövegében a zsoltárok, kantikumok és más versrészek hosszú sorai, mint a nyomtatott kiadásban.", 
+ "Zda zalomit dlouhÃ© Å™Ã¡dky poetickÃ½ch textÅ¯ jako v tiÅ¡tÄ›nÃ©m vydÃ¡nÃ­ (normÃ¡lnÄ›: nezalamovat).", 
+ "Legyenek-e tÃ¶rdelve az imaÃ³rÃ¡k szÃ¶vegÃ©ben a zsoltÃ¡rok, kantikumok Ã©s mÃ¡s versrÃ©szek hosszÃº sorai, mint a nyomtatott kiadÃ¡sban.", 
 };
 
 const char *html_text_option2_buttons_usporne[POCET_JAZYKOV + 1] = 
-{"tlaèidlá pre modlitby zobrazi úsporne",
- "tlaèítka pro modlitby zobrazit úspornì", 
+{"tlaÄidlÃ¡ pre modlitby zobraziÅ¥ Ãºsporne",
+ "tlaÄÃ­tka pro modlitby zobrazit ÃºspornÄ›", 
  "xxx", 
  "",
  "",
- "tlaèítka pro modlitby zobrazit úspornì", 
- "az imaórák gombjainak gazdaságos elhelyezése", 
+ "tlaÄÃ­tka pro modlitby zobrazit ÃºspornÄ›", 
+ "az imaÃ³rÃ¡k gombjainak gazdasÃ¡gos elhelyezÃ©se", 
 };
 const char *html_text_option2_buttons_usporne_explain[POCET_JAZYKOV + 1] = 
-{"Èi sa majú tlaèidlá pre modlitby zobrazi úsporne, v tabu¾ke (menšia šírka) kvôli mobilnım zariadeniam.", 
- "Zda se mají tlaèítka pro modlitby zobrazit úspornì, v tabulce (menší šíøka) pro mobilní zaøízení.", 
+{"ÄŒi sa majÃº tlaÄidlÃ¡ pre modlitby zobraziÅ¥ Ãºsporne, v tabuÄ¾ke (menÅ¡ia Å¡Ã­rka) kvÃ´li mobilnÃ½m zariadeniam.", 
+ "Zda se majÃ­ tlaÄÃ­tka pro modlitby zobrazit ÃºspornÄ›, v tabulce (menÅ¡Ã­ Å¡Ã­Å™ka) pro mobilnÃ­ zaÅ™Ã­zenÃ­.", 
  "xxx", 
  "",
  "", 
- "Zda se mají tlaèítka pro modlitby zobrazit úspornì, v tabulce (menší šíøka) pro mobilní zaøízení.", 
- "Legyenek-e az imaórák gombjai gazdaságosan elhelyezve, táblázatban (kisebb szélesség) mobilkészülékekhez.", 
+ "Zda se majÃ­ tlaÄÃ­tka pro modlitby zobrazit ÃºspornÄ›, v tabulce (menÅ¡Ã­ Å¡Ã­Å™ka) pro mobilnÃ­ zaÅ™Ã­zenÃ­.", 
+ "Legyenek-e az imaÃ³rÃ¡k gombjai gazdasÃ¡gosan elhelyezve, tÃ¡blÃ¡zatban (kisebb szÃ©lessÃ©g) mobilkÃ©szÃ¼lÃ©kekhez.", 
 };
 
 const char *html_text_option2_nocny_rezim[POCET_JAZYKOV + 1] = 
-{"noènı reim",
- "noèní reim",
+{"noÄnÃ½ reÅ¾im",
+ "noÄnÃ­ reÅ¾im",
  "xxx", 
  "",
  "",
- "noèní reim",
- "éjszakai mód", 
+ "noÄnÃ­ reÅ¾im",
+ "Ã©jszakai mÃ³d", 
 };
 const char *html_text_option2_nocny_rezim_explain[POCET_JAZYKOV + 1] = 
-{"Zobrazí svetlı text na tmavom pozadí."
- "Zobrazí svìtlı text na tmavém pozadí.",
+{"ZobrazÃ­ svetlÃ½ text na tmavom pozadÃ­."
+ "ZobrazÃ­ svÄ›tlÃ½ text na tmavÃ©m pozadÃ­.",
  "xxx", 
  "",
  "", 
- "Zobrazí svìtlı text na tmavém pozadí.",
- "Világos szöveg megjelenítése sötét háttéren.",
+ "ZobrazÃ­ svÄ›tlÃ½ text na tmavÃ©m pozadÃ­.",
+ "VilÃ¡gos szÃ¶veg megjelenÃ­tÃ©se sÃ¶tÃ©t hÃ¡ttÃ©ren.",
 };
 
 const char *html_text_option2_alternatives[POCET_JAZYKOV + 1] = 
-{"alternatívy",
+{"alternatÃ­vy",
  "alternativy",
  "alternatives", 
  "",
  "",
  "alternativy",
- "lehetõségek", 
+ "lehetÅ‘sÃ©gek", 
 };
 const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] = 
-{"Zobrazí v texte modlitieb iba jednu monos, napr. hymnus pre kompletórium (dá sa prepína).",
- "Zobrazí v textu modliteb jenom jedno monost (je moné pøepínat).",
+{"ZobrazÃ­ v texte modlitieb iba jednu moÅ¾nosÅ¥, napr. hymnus pre kompletÃ³rium (dÃ¡ sa prepÃ­naÅ¥).",
+ "ZobrazÃ­ v textu modliteb jenom jedno moÅ¾nost (je moÅ¾nÃ© pÅ™epÃ­nat).",
  "", 
  "",
  "", 
- "Zobrazí v textu modliteb jenom jedno monost (je moné pøepínat).",
- "Megmutatja…",
+ "ZobrazÃ­ v textu modliteb jenom jedno moÅ¾nost (je moÅ¾nÃ© pÅ™epÃ­nat).",
+ "Megmutatjaâ€¦",
 };
 
 const char *html_text_option5_KomplHymnusA[POCET_JAZYKOV + 1] = 
-{"hymnus A: Na sklonku dòa a úprimne",
- "hymnus A: Na sklonku dne tì upøímnì",
+{"hymnus A: Na sklonku dÅˆa Å¥a Ãºprimne",
+ "hymnus A: Na sklonku dne tÄ› upÅ™Ã­mnÄ›",
  "hymn A", 
  "",
  "",
- "hymnus A: Na sklonku dne tì upøímnì",
- "himnusz A: Immár a nap leáldozott", 
+ "hymnus A: Na sklonku dne tÄ› upÅ™Ã­mnÄ›",
+ "himnusz A: ImmÃ¡r a nap leÃ¡ldozott", 
 };
 
 const char *html_text_option5_KomplHymnusB[POCET_JAZYKOV + 1] = 
-{"hymnus B: Kriste, ty svetlo a náš deò",
- "hymnus B: Ty, Kriste, svìtlo, jasnı dni",
+{"hymnus B: Kriste, ty svetlo a nÃ¡Å¡ deÅˆ",
+ "hymnus B: Ty, Kriste, svÄ›tlo, jasnÃ½ dni",
  "hymn B", 
  "",
  "",
- "hymnus B: Ty, Kriste, svìtlo, jasnı dni",
- "himnusz B: Krisztus, tündöklõ nappalunk", 
+ "hymnus B: Ty, Kriste, svÄ›tlo, jasnÃ½ dni",
+ "himnusz B: Krisztus, tÃ¼ndÃ¶klÅ‘ nappalunk", 
 };
 
 const char *html_text_option5_PCHymnusI[POCET_JAZYKOV + 1] = 
-{"hymnus I. [Ak je posvätné èítanie v noci alebo vèasráno]",
- "hymnus I. [V noci a èasnì ráno]",
+{"hymnus I. [Ak je posvÃ¤tnÃ© ÄÃ­tanie v noci alebo vÄasrÃ¡no]",
+ "hymnus I. [V noci a ÄasnÄ› rÃ¡no]",
  "hymn I. [during the night and early in the morning]",
  "",
  "",
- "hymnus I. [V noci a èasnì ráno]",
- "himnusz I. [Amikor az imaórát éjszaka vagy kora hajnalban mondják]",
+ "hymnus I. [V noci a ÄasnÄ› rÃ¡no]",
+ "himnusz I. [Amikor az imaÃ³rÃ¡t Ã©jszaka vagy kora hajnalban mondjÃ¡k]",
 };
 
 const char *html_text_option5_PCHymnusII[POCET_JAZYKOV + 1] = 
-{"hymnus II. [Ak je posvätné èítanie cez deò]",
- "hymnus II. [Bìhem dne]",
+{"hymnus II. [Ak je posvÃ¤tnÃ© ÄÃ­tanie cez deÅˆ]",
+ "hymnus II. [BÄ›hem dne]",
  "hymn II. [during the day]",
  "",
  "",
- "hymnus II. [Bìhem dne]",
- "himnusz II. [Amikor az imaórát a nap nem reggeli órájában végzik]",
+ "hymnus II. [BÄ›hem dne]",
+ "himnusz II. [Amikor az imaÃ³rÃ¡t a nap nem reggeli Ã³rÃ¡jÃ¡ban vÃ©gzik]",
 };
 
 const char *html_text_option5_PCHymnusVNnedela[POCET_JAZYKOV + 1] = 
-{"hymnus Toto je pravı Boí deò",
- "hymnus nedìlní",
+{"hymnus Toto je pravÃ½ BoÅ¾Ã­ deÅˆ",
+ "hymnus nedÄ›lnÃ­",
  "Sunday's hymn",
  "",
  "",
- "hymnus nedìlní",
- "himnusz Urunknak áldott napja ez",
+ "hymnus nedÄ›lnÃ­",
+ "himnusz Urunknak Ã¡ldott napja ez",
 };
 
 const char *html_text_option5_PCHymnusVNferia[POCET_JAZYKOV + 1] = 
-{"hymnus Nech z vıšin neba rados znie",
- "hymnus z férie",
- "hymnus férie",
+{"hymnus Nech z vÃ½Å¡in neba radosÅ¥ znie",
+ "hymnus z fÃ©rie",
+ "hymnus fÃ©rie",
  "",
  "",
- "hymnus z férie",
- "himnusz Örvendj, ég, messzi csillagok",
+ "hymnus z fÃ©rie",
+ "himnusz Ã–rvendj, Ã©g, messzi csillagok",
 };
 
 const char *html_text_option5_RChHymnusVNnedela[POCET_JAZYKOV + 1] = 
 {"hymnus Bronie sa zora na nebi",
- "hymnus nedìlní",
+ "hymnus nedÄ›lnÃ­",
  "hymnus NE",
  "",
  "",
- "hymnus nedìlní",
- "himnusz Rózsálló hajnalfény ragyog",
+ "hymnus nedÄ›lnÃ­",
+ "himnusz RÃ³zsÃ¡llÃ³ hajnalfÃ©ny ragyog",
 };
 
 const char *html_text_option5_RChHymnusVNferia[POCET_JAZYKOV + 1] = 
-{"hymnus Nech novım Jeruzalemom",
- "hymnus z férie",
- "hymnus férie",
+{"hymnus Nech novÃ½m Jeruzalemom",
+ "hymnus z fÃ©rie",
+ "hymnus fÃ©rie",
  "",
  "",
- "hymnus z férie",
- "himnusz Az új Sionnak kórusa",
+ "hymnus z fÃ©rie",
+ "himnusz Az Ãºj Sionnak kÃ³rusa",
 };
 
 const char *html_text_option5_VespHymnusVNnedela[POCET_JAZYKOV + 1] = 
-{"hymnus Pri Baránkovej veèeri",
- "hymnus nedìlní",
+{"hymnus Pri BarÃ¡nkovej veÄeri",
+ "hymnus nedÄ›lnÃ­",
  "hymnus NE",
  "",
  "",
- "hymnus nedìlní",
- "himnusz Ím, vár a Bárány asztala",
+ "hymnus nedÄ›lnÃ­",
+ "himnusz Ãm, vÃ¡r a BÃ¡rÃ¡ny asztala",
 };
 
 const char *html_text_option5_VespHymnusVNferia[POCET_JAZYKOV + 1] = 
-{"hymnus Krá¾ vekov, Pane, Boí Syn",
- "hymnus z férie",
- "hymnus férie",
+{"hymnus KrÃ¡Ä¾ vekov, Pane, BoÅ¾Ã­ Syn",
+ "hymnus z fÃ©rie",
+ "hymnus fÃ©rie",
  "",
  "",
- "hymnus z férie",
- "himnusz Örök Királyunk, szent Urunk",
+ "hymnus z fÃ©rie",
+ "himnusz Ã–rÃ¶k KirÃ¡lyunk, szent Urunk",
 };
 
 const char *html_text_option5_MCDPredHymnus1[POCET_JAZYKOV + 1] = 
-{"hymnus Príï, Duchu Svätı",
- "hymnus K nám, Duchu Svatı, nyní spìj",
+{"hymnus PrÃ­Ä, Duchu SvÃ¤tÃ½",
+ "hymnus K nÃ¡m, Duchu SvatÃ½, nynÃ­ spÄ›j",
  "hymn 1",
  "",
  "",
- "hymnus K nám, Duchu Svatı, nyní spìj",
- "himnusz Most jöjj, Szentlélek, szállj közénk",
+ "hymnus K nÃ¡m, Duchu SvatÃ½, nynÃ­ spÄ›j",
+ "himnusz Most jÃ¶jj, SzentlÃ©lek, szÃ¡llj kÃ¶zÃ©nk",
 };
 
 const char *html_text_option5_MCDPredHymnus2[POCET_JAZYKOV + 1] = 
-{"hymnus Deviata je u hodina",
- "hymnus Je tøetí denní hodina",
+{"hymnus Deviata je uÅ¾ hodina",
+ "hymnus Je tÅ™etÃ­ dennÃ­ hodina",
  "hymn 2",
  "",
  "",
- "hymnus Je tøetí denní hodina",
- "himnusz Idõk rendjét megtartva most",
+ "hymnus Je tÅ™etÃ­ dennÃ­ hodina",
+ "himnusz IdÅ‘k rendjÃ©t megtartva most",
 };
 
 const char *html_text_option5_MCDNaHymnus1[POCET_JAZYKOV + 1] = 
-{"hymnus Mocnı Vládca, vernı Boe",
- "hymnus Jsi mocnı Vládce, vìrnı Bùh",
+{"hymnus MocnÃ½ VlÃ¡dca, vernÃ½ BoÅ¾e",
+ "hymnus Jsi mocnÃ½ VlÃ¡dce, vÄ›rnÃ½ BÅ¯h",
  "hymn 1",
  "",
  "",
- "hymnus Jsi mocnı Vládce, vìrnı Bùh",
- "himnusz Urunk, felséges Istenünk",
+ "hymnus Jsi mocnÃ½ VlÃ¡dce, vÄ›rnÃ½ BÅ¯h",
+ "himnusz Urunk, felsÃ©ges IstenÃ¼nk",
 };
 
 const char *html_text_option5_MCDNaHymnus2[POCET_JAZYKOV + 1] = 
-{"hymnus Na nebi slnko vrcholí",
- "hymnus Teï Pánu chvály zpívejme",
+{"hymnus Na nebi slnko vrcholÃ­",
+ "hymnus TeÄ PÃ¡nu chvÃ¡ly zpÃ­vejme",
  "hymn 2",
  "",
  "",
- "hymnus Teï Pánu chvály zpívejme",
- "himnusz Dicsérjük dallal az Urat",
+ "hymnus TeÄ PÃ¡nu chvÃ¡ly zpÃ­vejme",
+ "himnusz DicsÃ©rjÃ¼k dallal az Urat",
 };
 
 const char *html_text_option5_MCDPoHymnus1[POCET_JAZYKOV + 1] = 
-{"hymnus Celı svet v pohyb uvádzaš",
- "hymnus Svìt celı v pohyb uvádíš",
+{"hymnus CelÃ½ svet v pohyb uvÃ¡dzaÅ¡",
+ "hymnus SvÄ›t celÃ½ v pohyb uvÃ¡dÃ­Å¡",
  "hymn 1",
  "",
  "",
- "hymnus Svìt celı v pohyb uvádíš",
- "himnusz Világfenntartó Istenünk",
+ "hymnus SvÄ›t celÃ½ v pohyb uvÃ¡dÃ­Å¡",
+ "himnusz VilÃ¡gfenntartÃ³ IstenÃ¼nk",
 };
 
 const char *html_text_option5_MCDPoHymnus2[POCET_JAZYKOV + 1] = 
-{"hymnus Z Boej milosti tretí raz",
- "hymnus Hodina tøetí z poledne",
+{"hymnus Z BoÅ¾ej milosti tretÃ­ raz",
+ "hymnus Hodina tÅ™etÃ­ z poledne",
  "hymn 2",
  "",
  "",
- "hymnus Hodina tøetí z poledne",
- "himnusz Háromszor három óra már",
+ "hymnus Hodina tÅ™etÃ­ z poledne",
+ "himnusz HÃ¡romszor hÃ¡rom Ã³ra mÃ¡r",
 };
 
 const char *html_text_option5_1VHymnusNe[POCET_JAZYKOV + 1] = 
-{"hymnus pre prvé vešpery",
- "hymnus pro první nešpory",
+{"hymnus pre prvÃ© veÅ¡pery",
+ "hymnus pro prvnÃ­ neÅ¡pory",
  "hymn for first vespers",
  "",
  "",
- "hymnus pro první veèerní chvály",
- "I. Esti dicséret himnusza",
+ "hymnus pro prvnÃ­ veÄernÃ­ chvÃ¡ly",
+ "I. Esti dicsÃ©ret himnusza",
 };
 
 const char *html_text_option5_1VHymnusPC[POCET_JAZYKOV + 1] = 
-{"hymnus ako je pre posvätné èítanie [cez deò]",
- "hymnus pro ètení [bìhem dne]",
+{"hymnus ako je pre posvÃ¤tnÃ© ÄÃ­tanie [cez deÅˆ]",
+ "hymnus pro ÄtenÃ­ [bÄ›hem dne]",
  "hymn from readings [during the day]",
  "",
  "",
- "hymnus pro ètení [bìhem dne]",
- "Olvasmányos imaóra himnusza [napközben]",
+ "hymnus pro ÄtenÃ­ [bÄ›hem dne]",
+ "OlvasmÃ¡nyos imaÃ³ra himnusza [napkÃ¶zben]",
 };
 
 const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] = 
-{"namiesto almu 122 bra alm 129",
- "místo almu 122 vzít alm 129",
+{"namiesto Å¾almu 122 braÅ¥ Å¾alm 129",
+ "mÃ­sto Å¾almu 122 vzÃ­t Å¾alm 129",
  "instead of psalm 122 use 129",
  "",
  "",
- "místo almu 122 vzít alm 129",
- "a 121. helyett vehetõ a 128. zsoltár",
+ "mÃ­sto Å¾almu 122 vzÃ­t Å¾alm 129",
+ "a 121. helyett vehetÅ‘ a 128. zsoltÃ¡r",
 };
 
 const char *html_text_option5_DPsalmZ126_129[POCET_JAZYKOV + 1] = 
-{"namiesto almu 126 bra alm 129",
- "místo almu 126 vzít alm 129",
+{"namiesto Å¾almu 126 braÅ¥ Å¾alm 129",
+ "mÃ­sto Å¾almu 126 vzÃ­t Å¾alm 129",
  "instead of psalm 126 use 129",
  "",
  "",
- "místo almu 126 vzít alm 129",
- "a 125. helyett vehetõ a 128. zsoltár",
+ "mÃ­sto Å¾almu 126 vzÃ­t Å¾alm 129",
+ "a 125. helyett vehetÅ‘ a 128. zsoltÃ¡r",
 };
 
 const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] = 
-{"namiesto almu 127 bra alm 131",
- "místo almu 127 vzít alm 131",
+{"namiesto Å¾almu 127 braÅ¥ Å¾alm 131",
+ "mÃ­sto Å¾almu 127 vzÃ­t Å¾alm 131",
  "instead of psalm 127 use 131",
  "",
  "",
- "místo almu 127 vzít alm 131",
- "a 126. helyett vehetõ a 130. zsoltár",
+ "mÃ­sto Å¾almu 127 vzÃ­t Å¾alm 131",
+ "a 126. helyett vehetÅ‘ a 130. zsoltÃ¡r",
 };
 
 const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] = 
-{"bra alm 122 z doplnkovej psalmódie",
- "vzít alm 122 z doplòovacího cyklu",
+{"braÅ¥ Å¾alm 122 z doplnkovej psalmÃ³die",
+ "vzÃ­t Å¾alm 122 z doplÅˆovacÃ­ho cyklu",
  "use psalm 122 from complementary psalmody",
  "",
  "",
- "vzít alm 122 z doplòovacího cyklu",
- "hu_take 121. zsoltár from kiegészítõ zsoltároknál",
+ "vzÃ­t Å¾alm 122 z doplÅˆovacÃ­ho cyklu",
+ "hu_take 121. zsoltÃ¡r from kiegÃ©szÃ­tÅ‘ zsoltÃ¡roknÃ¡l",
 };
 
 const char *html_text_option5_DPsalmZ126_NORMAL[POCET_JAZYKOV + 1] = 
-{"bra alm 126 z doplnkovej psalmódie",
- "vzít alm 126 z doplòovacího cyklu",
+{"braÅ¥ Å¾alm 126 z doplnkovej psalmÃ³die",
+ "vzÃ­t Å¾alm 126 z doplÅˆovacÃ­ho cyklu",
  "use psalm 126 from complementary psalmody",
  "",
  "",
- "vzít alm 126 z doplòovacího cyklu",
- "hu_take 125. zsoltár from kiegészítõ zsoltároknál",
+ "vzÃ­t Å¾alm 126 z doplÅˆovacÃ­ho cyklu",
+ "hu_take 125. zsoltÃ¡r from kiegÃ©szÃ­tÅ‘ zsoltÃ¡roknÃ¡l",
 };
 
 const char *html_text_option5_DPsalmZ127_NORMAL[POCET_JAZYKOV + 1] = 
-{"bra alm 127 z doplnkovej psalmódie",
- "vzít alm 127 z doplòovacího cyklu",
+{"braÅ¥ Å¾alm 127 z doplnkovej psalmÃ³die",
+ "vzÃ­t Å¾alm 127 z doplÅˆovacÃ­ho cyklu",
  "use psalm 127 from complementary psalmody",
  "",
  "",
- "vzít alm 127 z doplòovacího cyklu",
- "hu_take 126. zsoltár from kiegészítõ zsoltároknál",
+ "vzÃ­t Å¾alm 127 z doplÅˆovacÃ­ho cyklu",
+ "hu_take 126. zsoltÃ¡r from kiegÃ©szÃ­tÅ‘ zsoltÃ¡roknÃ¡l",
 };
 
 const char *html_text_option5_DPsalmZ122_129_explain[POCET_JAZYKOV + 1] = 
-{"V doplnkovej psalmódii namiesto almu 122 mono bra alm 129.",
- "Pro doplòovací cyklus almù místo almu 122 (121) vzít alm 129 (128).",
+{"V doplnkovej psalmÃ³dii namiesto Å¾almu 122 moÅ¾no braÅ¥ Å¾alm 129.",
+ "Pro doplÅˆovacÃ­ cyklus Å¾almÅ¯ mÃ­sto Å¾almu 122 (121) vzÃ­t Å¾alm 129 (128).",
  "",
  "",
  "",
- "Pro doplòovací cyklus almù místo almu 122 (121) vzít alm 129 (128).",
- "A kiegészítõ zsoltároknál a 121. helyett vehetõ a 128. zsoltár.",
+ "Pro doplÅˆovacÃ­ cyklus Å¾almÅ¯ mÃ­sto Å¾almu 122 (121) vzÃ­t Å¾alm 129 (128).",
+ "A kiegÃ©szÃ­tÅ‘ zsoltÃ¡roknÃ¡l a 121. helyett vehetÅ‘ a 128. zsoltÃ¡r.",
 };
 
 const char *html_text_option5_DPsalmZ126_129_explain[POCET_JAZYKOV + 1] = 
-{"V doplnkovej psalmódii namiesto almu 126 mono bra alm 129.",
- "Pro doplòovací cyklus almù místo almu 126 (125) vzít alm 129 (128).",
+{"V doplnkovej psalmÃ³dii namiesto Å¾almu 126 moÅ¾no braÅ¥ Å¾alm 129.",
+ "Pro doplÅˆovacÃ­ cyklus Å¾almÅ¯ mÃ­sto Å¾almu 126 (125) vzÃ­t Å¾alm 129 (128).",
  "",
  "",
  "",
- "Pro doplòovací cyklus almù místo almu 126 (125) vzít alm 129 (128).",
- "A kiegészítõ zsoltároknál a 125. helyett vehetõ a 128. zsoltár.",
+ "Pro doplÅˆovacÃ­ cyklus Å¾almÅ¯ mÃ­sto Å¾almu 126 (125) vzÃ­t Å¾alm 129 (128).",
+ "A kiegÃ©szÃ­tÅ‘ zsoltÃ¡roknÃ¡l a 125. helyett vehetÅ‘ a 128. zsoltÃ¡r.",
 };
 
 const char *html_text_option5_DPsalmZ127_131_explain[POCET_JAZYKOV + 1] = 
-{"V doplnkovej psalmódii namiesto almu 127 mono bra alm 131.",
- "Pro doplòovací cyklus almù místo almu 127 (126) vzít alm 131 (130).",
+{"V doplnkovej psalmÃ³dii namiesto Å¾almu 127 moÅ¾no braÅ¥ Å¾alm 131.",
+ "Pro doplÅˆovacÃ­ cyklus Å¾almÅ¯ mÃ­sto Å¾almu 127 (126) vzÃ­t Å¾alm 131 (130).",
  "",
  "",
  "",
- "Pro doplòovací cyklus almù místo almu 127 (126) vzít alm 131 (130).",
- "A kiegészítõ zsoltároknál a 126. helyett vehetõ a 130. zsoltár.",
+ "Pro doplÅˆovacÃ­ cyklus Å¾almÅ¯ mÃ­sto Å¾almu 127 (126) vzÃ­t Å¾alm 131 (130).",
+ "A kiegÃ©szÃ­tÅ‘ zsoltÃ¡roknÃ¡l a 126. helyett vehetÅ‘ a 130. zsoltÃ¡r.",
 };
 
 
 // 2011-05-06
 const char *html_text_font_name[POCET_JAZYKOV + 1] = 
-{"alebo poui písmo", 
- "nebo pouij písmo", 
+{"alebo pouÅ¾i pÃ­smo", 
+ "nebo pouÅ¾ij pÃ­smo", 
  "or use font", 
  "vel font",
  "",
- "nebo pouij písmo", 
- "betûtípus kiválasztása"
+ "nebo pouÅ¾ij pÃ­smo", 
+ "betÅ±tÃ­pus kivÃ¡lasztÃ¡sa"
 };
 const char *html_text_font_name_explain[POCET_JAZYKOV + 1] = 
-{"Ak nie je zvolené konkrétne písmo, pouije sa predvolené písmo prehliadaèa (pätkové alebo bezpätkové pod¾a predchádzajúcej vo¾by zaškrtávacieho políèka).", 
+{"Ak nie je zvolenÃ© konkrÃ©tne pÃ­smo, pouÅ¾ije sa predvolenÃ© pÃ­smo prehliadaÄa (pÃ¤tkovÃ© alebo bezpÃ¤tkovÃ© podÄ¾a predchÃ¡dzajÃºcej voÄ¾by zaÅ¡krtÃ¡vacieho polÃ­Äka).", 
  "", 
  "", 
  "",
  "", 
  "", 
- "Ha nem választunk betûtípust, akkor a böngészõablakban látható az alapértelmezett (talpas vagy talpatlan az elõzõ kiválasztás szerint)."
+ "Ha nem vÃ¡lasztunk betÅ±tÃ­pust, akkor a bÃ¶ngÃ©szÅ‘ablakban lÃ¡thatÃ³ az alapÃ©rtelmezett (talpas vagy talpatlan az elÅ‘zÅ‘ kivÃ¡lasztÃ¡s szerint)."
 };
 
 // 2011-05-13
 const char *html_text_font_size[POCET_JAZYKOV + 1] = 
-{"ve¾kos písma", 
- "velikost písma", 
+{"veÄ¾kosÅ¥ pÃ­sma", 
+ "velikost pÃ­sma", 
  "font size", 
  "font size",
  "",
- "velikost písma", 
- "betûméret"
+ "velikost pÃ­sma", 
+ "betÅ±mÃ©ret"
 };
 const char *html_text_font_size_explain[POCET_JAZYKOV + 1] = 
-{"Ve¾kos písma", 
+{"VeÄ¾kosÅ¥ pÃ­sma", 
  "", 
  "", 
  "",
  "", 
  "", 
- "betûméret"
+ "betÅ±mÃ©ret"
 };
 
 // 2010-10-11: HTML option selected
@@ -2701,23 +2701,23 @@ const char *html_option_selected = " selected";
 const char *html_option_checked = " checked";
 
 const char *html_text_kalendar[POCET_JAZYKOV + 1] = 
-{"kalendár", 
- "kalendáø", 
+{"kalendÃ¡r", 
+ "kalendÃ¡Å™", 
  "calendar", 
  "calendario",
  "",
- "kalendáø",
- "a naptárat"
+ "kalendÃ¡Å™",
+ "a naptÃ¡rat"
 };
 // 2010-09-14
 const char *html_text_kalendar_miestny[POCET_JAZYKOV + 1] = 
-{"Kalendár Liturgie hodín",
- "Kalendáø Liturgie hodin",
+{"KalendÃ¡r Liturgie hodÃ­n",
+ "KalendÃ¡Å™ Liturgie hodin",
  "Local or general calendar", 
  "Calendario per Liturgia horarum",
  "",
- "Kalendáø Liturgie hodin",
- "Az imaórák liturgiája"
+ "KalendÃ¡Å™ Liturgie hodin",
+ "Az imaÃ³rÃ¡k liturgiÃ¡ja"
 };
 const char *html_text_kalendar_miestny_post[POCET_JAZYKOV + 1] = 
 {"",
@@ -2726,136 +2726,136 @@ const char *html_text_kalendar_miestny_post[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "naptárát használják"
+ "naptÃ¡rÃ¡t hasznÃ¡ljÃ¡k"
 };
 
 const char *html_text_kalendar_miestny_explain[POCET_JAZYKOV + 1] = 
-{"Je moné zvoli miestny kalendár (propriá) reho¾nej rodiny, rádu, kongregácie, inštitútu...", 
- "Je moné vzít místní kalendáø øeholní rodiny, øádu, kongregace, institutu...", 
+{"Je moÅ¾nÃ© zvoliÅ¥ miestny kalendÃ¡r (propriÃ¡) rehoÄ¾nej rodiny, rÃ¡du, kongregÃ¡cie, inÅ¡titÃºtu...", 
+ "Je moÅ¾nÃ© vzÃ­t mÃ­stnÃ­ kalendÃ¡Å™ Å™eholnÃ­ rodiny, Å™Ã¡du, kongregace, institutu...", 
  "", 
  "",
  "", 
  "", // not applicable for CZOP
- "Lehetséges a helyi naptárt választani, szerzetesrendét, kongregációét, intézményét..."
+ "LehetsÃ©ges a helyi naptÃ¡rt vÃ¡lasztani, szerzetesrendÃ©t, kongregÃ¡ciÃ³Ã©t, intÃ©zmÃ©nyÃ©t..."
 };
 
 const char *html_text_detaily_explain[POCET_JAZYKOV + 1] = 
-{"Ostatné nastavenia sa pouijú z predchádzajúcej (hlavnej) stránky. <p>Pokia¾ sú niektoré parametre pre vybranú modlitbu nepouite¾né, neberú sa do úvahy (môu by teda nastavené ¾ubovo¾ne).", 
- "Kdy jsou nìkteré vıše uvedené volby nepouitelné pro nìjakou modlitbu, neberou se v úvahu (mohou bıt nastaveny dle libovùle).", 
+{"OstatnÃ© nastavenia sa pouÅ¾ijÃº z predchÃ¡dzajÃºcej (hlavnej) strÃ¡nky. <p>PokiaÄ¾ sÃº niektorÃ© parametre pre vybranÃº modlitbu nepouÅ¾iteÄ¾nÃ©, neberÃº sa do Ãºvahy (mÃ´Å¾u byÅ¥ teda nastavenÃ© Ä¾ubovoÄ¾ne).", 
+ "KdyÅ¾ jsou nÄ›kterÃ© vÃ½Å¡e uvedenÃ© volby nepouÅ¾itelnÃ© pro nÄ›jakou modlitbu, neberou se v Ãºvahu (mohou bÃ½t nastaveny dle libovÅ¯le).", 
  "If any of described options are not applicable for a chosen prayer, they can be set anyhow.", 
  "",
  "", 
- "Kdy jsou nìkteré vıše uvedené volby nepouitelné pro nìjakou modlitbu, neberou se v úvahu (mohou bıt nastaveny dle libovùle).",
- "A többi beállítási lehetõség a fõoldalon található. <p>Amennyiben valamelyik kiválasztott paraméter nem mûködik, figyelmen kívül kell hagyni (vagyis tetszõlegesen állíthatók)."
+ "KdyÅ¾ jsou nÄ›kterÃ© vÃ½Å¡e uvedenÃ© volby nepouÅ¾itelnÃ© pro nÄ›jakou modlitbu, neberou se v Ãºvahu (mohou bÃ½t nastaveny dle libovÅ¯le).",
+ "A tÃ¶bbi beÃ¡llÃ­tÃ¡si lehetÅ‘sÃ©g a fÅ‘oldalon talÃ¡lhatÃ³. <p>Amennyiben valamelyik kivÃ¡lasztott paramÃ©ter nem mÅ±kÃ¶dik, figyelmen kÃ­vÃ¼l kell hagyni (vagyis tetszÅ‘legesen Ã¡llÃ­thatÃ³k)."
 };
 
-// 2010-06-04: text pre popis do invitatória
+// 2010-06-04: text pre popis do invitatÃ³ria
 const char *html_text_inv_slavaotcu[POCET_JAZYKOV + 1] = 
-{"<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END, 
- "<p><"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
- "<p><"HTML_SPAN_RED_SMALL">Follows"HTML_SPAN_END" <span class=\"small\">Glory..."HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END, 
- "<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Gloria Patri"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END, 
- "<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END, 
- "<p><"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
- "<p><"HTML_SPAN_RED_SMALL">Következik a"HTML_SPAN_END" <span class=\"small\">Dicsõség az Atyának"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">és megismételjük az antifónát."HTML_SPAN_END, 
+{"<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">SlÃ¡va Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÃ³na."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">NÃ¡sleduje"HTML_SPAN_END" <span class=\"small\">SlÃ¡va Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">Follows"HTML_SPAN_END" <span class=\"small\">Glory..."HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÃ³na."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Gloria Patri"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÃ³na."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">SlÃ¡va Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifÃ³na."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">NÃ¡sleduje"HTML_SPAN_END" <span class=\"small\">SlÃ¡va Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END, 
+ "<p><"HTML_SPAN_RED_SMALL">KÃ¶vetkezik a"HTML_SPAN_END" <span class=\"small\">DicsÅ‘sÃ©g az AtyÃ¡nak"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">Ã©s megismÃ©teljÃ¼k az antifÃ³nÃ¡t."HTML_SPAN_END, 
 };
 
 // 2013-02-22: page navigation (top, bottom)
-const char *html_text_top[POCET_JAZYKOV + 1] = {"&uarr; navrch", "&uarr; nahoru", "&uarr; top", "", "", "&uarr; nahoru", "&uarr; fel"}; // HU: to up -> felfelé | up -> fel | Andy: fent | top -> eleje | to top -> elejére
-const char *html_text_bottom[POCET_JAZYKOV + 1] = {"&darr; naspodok", "&darr; dolù", "&darr; bottom", "", "", "&darr; dolù", "&darr; le"}; // HU: to down -> lefelé | down -> le | Andy: lent | bottom -> vége | to bottom -> végére
+const char *html_text_top[POCET_JAZYKOV + 1] = {"&uarr; navrch", "&uarr; nahoru", "&uarr; top", "", "", "&uarr; nahoru", "&uarr; fel"}; // HU: to up -> felfelÃ© | up -> fel | Andy: fent | top -> eleje | to top -> elejÃ©re
+const char *html_text_bottom[POCET_JAZYKOV + 1] = {"&darr; naspodok", "&darr; dolÅ¯", "&darr; bottom", "", "", "&darr; dolÅ¯", "&darr; le"}; // HU: to down -> lefelÃ© | down -> le | Andy: lent | bottom -> vÃ©ge | to bottom -> vÃ©gÃ©re
 
-// 2009-08-04: pre batch mód
-const char *html_text_batch_Zoznam1[POCET_JAZYKOV + 1] = {"Zoznam modlitieb", "Seznam modliteb", "List of prayers", "", "", "Seznam modliteb", "Az imák jegyzéke"};
-const char *html_text_batch_Zoznam1m[POCET_JAZYKOV + 1] = {"Zoznam modlitieb po mesiacoch", "Seznam modliteb dle mìsícù", "List of prayers by months", "", "", "Seznam modliteb dle mìsícù", "Az imák jegyzéke hónapok szerint"};
-const char *html_text_batch_obdobie1m[POCET_JAZYKOV + 1] = {"("/*obdobie */"od %d. %s %d do %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)"};
+// 2009-08-04: pre batch mÃ³d
+const char *html_text_batch_Zoznam1[POCET_JAZYKOV + 1] = {"Zoznam modlitieb", "Seznam modliteb", "List of prayers", "", "", "Seznam modliteb", "Az imÃ¡k jegyzÃ©ke"};
+const char *html_text_batch_Zoznam1m[POCET_JAZYKOV + 1] = {"Zoznam modlitieb po mesiacoch", "Seznam modliteb dle mÄ›sÃ­cÅ¯", "List of prayers by months", "", "", "Seznam modliteb dle mÄ›sÃ­cÅ¯", "Az imÃ¡k jegyzÃ©ke hÃ³napok szerint"};
+const char *html_text_batch_obdobie1m[POCET_JAZYKOV + 1] = {"("/*obdobie */"od %d. %s %d do %d. %s %d)", "(pro obdobÃ­ od %d. %s %d do %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)", "(pro obdobÃ­ od %d. %s %d do %d. %s %d)", "(%d. %s %d &#x2013; %d. %s %d)"};
 const char *html_text_batch_Zoznam2[POCET_JAZYKOV + 1] = {/* Zoznam modlitieb pre */"%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d"};
-const char *html_text_batch_Back[POCET_JAZYKOV + 1] = {"&uarr; hore", "&uarr; nahoru", "&uarr; up", "", "", "&uarr; nahoru", "&uarr; felfelé"};
+const char *html_text_batch_Back[POCET_JAZYKOV + 1] = {"&uarr; hore", "&uarr; nahoru", "&uarr; up", "", "", "&uarr; nahoru", "&uarr; felfelÃ©"};
 const char *html_text_batch_Prev[POCET_JAZYKOV + 1] = {"&larr;", "&larr;", "&larr;", "&larr;", "&larr;", "&larr;", "&larr;"};
 const char *html_text_batch_Next[POCET_JAZYKOV + 1] = {"&rarr;", "&rarr;", "&rarr;", "&rarr;", "&rarr;", "&rarr;", "&rarr;"};
 
-// 2009-04-08: zakonèenie modlitby trojaké, krátke resp. dlhé
+// 2009-04-08: zakonÄenie modlitby trojakÃ©, krÃ¡tke resp. dlhÃ©
 const char *text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1] = 
-{"Skrze nášho Pána Jeiša Krista, tvojho Syna, ktorı je Boh a_s_tebou ije a_kra¾uje v_jednote s_Duchom Svätım po všetky veky vekov.",
- "Skrze tvého Syna Jeíše Krista, našeho Pána, nebo on s_tebou v_jednotì Ducha svatého ije a_kraluje po všechny vìky vìkù.",
+{"Skrze nÃ¡Å¡ho PÃ¡na JeÅ¾iÅ¡a Krista, tvojho Syna, ktorÃ½ je Boh a_s_tebou Å¾ije a_kraÄ¾uje v_jednote s_Duchom SvÃ¤tÃ½m po vÅ¡etky veky vekov.",
+ "Skrze tvÃ©ho Syna JeÅ¾Ã­Å¡e Krista, naÅ¡eho PÃ¡na, neboÅ¥ on s_tebou v_jednotÄ› Ducha svatÃ©ho Å¾ije a_kraluje po vÅ¡echny vÄ›ky vÄ›kÅ¯.",
  "",
  "Per D&#243;minum nostrum Iesum Christum, F&#237;lium tuum, qui tecum vivit et regnat in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula s&#230;cul&#243;rum.",
  "",
- "Skrze tvého Syna Jeíše Krista, našeho Pána, nebo on s tebou v jednotì Ducha Svatého ije a kraluje po všechny vìky vìkù.",
- "A mi Urunk, Jézus Krisztus, a te Fiad által, aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
+ "Skrze tvÃ©ho Syna JeÅ¾Ã­Å¡e Krista, naÅ¡eho PÃ¡na, neboÅ¥ on s tebou v jednotÄ› Ducha SvatÃ©ho Å¾ije a kraluje po vÅ¡echny vÄ›ky vÄ›kÅ¯.",
+ "A mi Urunk, JÃ©zus Krisztus, a te Fiad Ã¡ltal, aki veled Ã©l Ã©s uralkodik a SzentlÃ©lekkel egysÃ©gben, Isten mindÃ¶rÃ¶kkÃ¶n-Ã¶rÃ¶kkÃ©.",
  };
 const char *text_ZAKONCENIE_SKRZE_kratke[POCET_JAZYKOV + 1] = 
-{"Skrze Krista, nášho Pána.",
- "Skrze Krista, našeho Pána.",
+{"Skrze Krista, nÃ¡Å¡ho PÃ¡na.",
+ "Skrze Krista, naÅ¡eho PÃ¡na.",
  "",
- "Per Christum Dóminum nostrum.",
+ "Per Christum DÃ³minum nostrum.",
  "",
- "Skrze Krista, našeho Pána.",
- "Krisztus, a mi Urunk által.",
+ "Skrze Krista, naÅ¡eho PÃ¡na.",
+ "Krisztus, a mi Urunk Ã¡ltal.",
  };
 const char *text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1] = 
-{"Lebo on je Boh a_s_tebou ije a_kra¾uje v_jednote s_Duchom Svätım po všetky veky vekov.",
- "Nebo on s_tebou v_jednotì Ducha svatého ije a_kraluje po všechny vìky vìkù.",
+{"Lebo on je Boh a_s_tebou Å¾ije a_kraÄ¾uje v_jednote s_Duchom SvÃ¤tÃ½m po vÅ¡etky veky vekov.",
+ "NeboÅ¥ on s_tebou v_jednotÄ› Ducha svatÃ©ho Å¾ije a_kraluje po vÅ¡echny vÄ›ky vÄ›kÅ¯.",
  "",
  "Qui tecum vivit et regnat in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula s&#230;cul&#243;rum.",
  "",
- "Nebo on s tebou v jednotì Ducha Svatého ije a kraluje po všechny vìky vìkù.",
- "Aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
+ "NeboÅ¥ on s tebou v jednotÄ› Ducha SvatÃ©ho Å¾ije a kraluje po vÅ¡echny vÄ›ky vÄ›kÅ¯.",
+ "Aki veled Ã©l Ã©s uralkodik a SzentlÃ©lekkel egysÃ©gben, Isten mindÃ¶rÃ¶kkÃ¶n-Ã¶rÃ¶kkÃ©.",
  };
 const char *text_ZAKONCENIE_LEBO_ON_kratke[POCET_JAZYKOV + 1] = 
-{"Lebo on ije a_kra¾uje na veky vekov.",
- "Nebo on s_tebou ije a_kraluje na vìky vìkù.",
+{"Lebo on Å¾ije a_kraÄ¾uje na veky vekov.",
+ "NeboÅ¥ on s_tebou Å¾ije a_kraluje na vÄ›ky vÄ›kÅ¯.",
  "",
  "Qui vivit et regnat in s&#509;cula s&#230;cul&#243;rum.",
  "",
- "Nebo on s tebou ije a kraluje na vìky vìkù.",
- "Aki él és uralkodik mindörökkön-örökké.",
+ "NeboÅ¥ on s tebou Å¾ije a kraluje na vÄ›ky vÄ›kÅ¯.",
+ "Aki Ã©l Ã©s uralkodik mindÃ¶rÃ¶kkÃ¶n-Ã¶rÃ¶kkÃ©.",
  };
 const char *text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1] = 
-{"Lebo ty si Boh a_iješ a_kra¾uješ s Bohom Otcom v_jednote s_Duchom Svätım po všetky veky vekov.",
- "Nebo ty iješ a_kraluješ s_Bohem Otcem v_jednotì Ducha svatého po všechny vìky vìkù.",
+{"Lebo ty si Boh a_Å¾ijeÅ¡ a_kraÄ¾ujeÅ¡ s Bohom Otcom v_jednote s_Duchom SvÃ¤tÃ½m po vÅ¡etky veky vekov.",
+ "NeboÅ¥ ty Å¾ijeÅ¡ a_kralujeÅ¡ s_Bohem Otcem v_jednotÄ› Ducha svatÃ©ho po vÅ¡echny vÄ›ky vÄ›kÅ¯.",
  "",
- "Qui vivis et regnas cum Deo Patre in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula s&#230;culórum.",
+ "Qui vivis et regnas cum Deo Patre in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula s&#230;culÃ³rum.",
  "",
- "Nebo ty iješ a kraluješ s Bohem Otcem v jednotì Ducha Svatého po všechny vìky vìkù.",
- "Aki élsz és uralkodol az Atyaistennel és a Szentlélek­kel egységben, Isten mindörökkön-örökké.",
+ "NeboÅ¥ ty Å¾ijeÅ¡ a kralujeÅ¡ s Bohem Otcem v jednotÄ› Ducha SvatÃ©ho po vÅ¡echny vÄ›ky vÄ›kÅ¯.",
+ "Aki Ã©lsz Ã©s uralkodol az Atyaistennel Ã©s a SzentlÃ©lekÂ­kel egysÃ©gben, Isten mindÃ¶rÃ¶kkÃ¶n-Ã¶rÃ¶kkÃ©.",
  };
 const char *text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1] = 
-{"Lebo ty iješ a_kra¾uješ na veky vekov.",
- "Nebo ty iješ a_kraluješ na vìky vìkù.",
+{"Lebo ty Å¾ijeÅ¡ a_kraÄ¾ujeÅ¡ na veky vekov.",
+ "NeboÅ¥ ty Å¾ijeÅ¡ a_kralujeÅ¡ na vÄ›ky vÄ›kÅ¯.",
  "",
- "Qui vivis et regnas in s&#509;cula s&#230;culórum.",
+ "Qui vivis et regnas in s&#509;cula s&#230;culÃ³rum.",
  "",
- "Nebo ty iješ a kraluješ na vìky vìkù.",
- "Aki élsz és uralkodol mindörökkön-örökké.",
+ "NeboÅ¥ ty Å¾ijeÅ¡ a kralujeÅ¡ na vÄ›ky vÄ›kÅ¯.",
+ "Aki Ã©lsz Ã©s uralkodol mindÃ¶rÃ¶kkÃ¶n-Ã¶rÃ¶kkÃ©.",
  };
 // 2010-06-07: len pre SK (POST1_MODLITBA5NE)
-const char *text_ZAKONCENIE_ON_JE_dlhe = "On je Boh a_s_tebou ije a_kra¾uje v_jednote s_Duchom Svätım po všetky veky vekov.";
-const char *text_ZAKONCENIE_ON_JE_kratke = "On ije a_kra¾uje na veky vekov.";
-/* 2011-01-14: pridané len pre SK 
+const char *text_ZAKONCENIE_ON_JE_dlhe = "On je Boh a_s_tebou Å¾ije a_kraÄ¾uje v_jednote s_Duchom SvÃ¤tÃ½m po vÅ¡etky veky vekov.";
+const char *text_ZAKONCENIE_ON_JE_kratke = "On Å¾ije a_kraÄ¾uje na veky vekov.";
+/* 2011-01-14: pridanÃ© len pre SK 
 		(04NOV_MODLITBA, 24APR2_MODLITBA, 11JUN_MODLITBA, 19OKT2_MODLITBA, VN1_MODLITBA3STR, ADV12PO_MODLITBA, ADV12STR_MODLITBA, 
 		VTYZ_MODLITBA6PO, ADV12UT_MODLITBA, ADV12PI_MODLITBA, ADV13STV_MODLITBA, OZZ_MODLITBA, SCDP_MODLITBA, PMB_rMODLITBA, SCPM_MODLITBA, 
 		SCSM_MODLITBA, 24APR_MODLITBA, 25APR_MODLITBA, 02AUG_MODLITBA, 05AUG_MODLITBA, 15AUG_1MODLITBA, 16JUL_MODLITBA, 30JUL2_MODLITBA, 
 		24OKT_MODLITBA, VIAN2_MODLITBA11, VN1_MODLITBA4NE, SPMVSr_MODLITBA2, 24JUN_1MODLITBA, 
-		VN1_MODLITBA6STV [nepouíva sa], VN1_rPROSBY6PI_pred_nan [nepouíva sa], VN1_vPROSBY6PI_pred_nan [nepouíva sa])
+		VN1_MODLITBA6STV [nepouÅ¾Ã­va sa], VN1_rPROSBY6PI_pred_nan [nepouÅ¾Ã­va sa], VN1_vPROSBY6PI_pred_nan [nepouÅ¾Ã­va sa])
  */
-const char *text_ZAKONCENIE_KTORY_JE_dlhe = "ktorı je Boh a_s_tebou ije a_kra¾uje v_jednote s_Duchom Svätım po všetky veky vekov.";
-const char *text_ZAKONCENIE_KTORY_JE_kratke = "ktorı ije a_kra¾uje na veky vekov.";
+const char *text_ZAKONCENIE_KTORY_JE_dlhe = "ktorÃ½ je Boh a_s_tebou Å¾ije a_kraÄ¾uje v_jednote s_Duchom SvÃ¤tÃ½m po vÅ¡etky veky vekov.";
+const char *text_ZAKONCENIE_KTORY_JE_kratke = "ktorÃ½ Å¾ije a_kraÄ¾uje na veky vekov.";
 
 const char *text_ZAKONCENIE_O_TO_TA_PROSIME[POCET_JAZYKOV + 1] = 
-{"O_to a prosíme",
- "Prosíme o_to",
+{"O_to Å¥a prosÃ­me",
+ "ProsÃ­me o_to",
  "",
  "",
  "",
- "Prosíme o_to",
+ "ProsÃ­me o_to",
  "",
  };
 
 
-// 2009-05-15: pre dominikánov
+// 2009-05-15: pre dominikÃ¡nov
 const char *text_PRO_OP[POCET_JAZYKOV + 1] = 
-{"Pre dominikánov (CZ_OP): ",
-"Pro dominikány (OP CZ): ",
+{"Pre dominikÃ¡nov (CZ_OP): ",
+"Pro dominikÃ¡ny (OP CZ): ",
  "",
  "",
  "",
@@ -2863,33 +2863,33 @@ const char *text_PRO_OP[POCET_JAZYKOV + 1] =
  "",
  };
 
-// nasledujú názvy liturgickıch dní -- follow the names of special liturgical celebrations
+// nasledujÃº nÃ¡zvy liturgickÃ½ch dnÃ­ -- follow the names of special liturgical celebrations
 
-// --------------- 00 pohyblivé slávenia ---------------
+// --------------- 00 pohyblivÃ© slÃ¡venia ---------------
 
 const char *text_DRUHA_NEDELA_PO_NAR_PANA[POCET_JAZYKOV + 1] = 
-{"2. nede¾a po Narodení Pána",
- "2. nedìle po Narození Pánì",
+{"2. nedeÄ¾a po NarodenÃ­ PÃ¡na",
+ "2. nedÄ›le po NarozenÃ­ PÃ¡nÄ›",
  "",
  "",
  "",
- "2. nedìle po Narození Pánì",
- "Karácsony Utáni 2. Vasárnap",
+ "2. nedÄ›le po NarozenÃ­ PÃ¡nÄ›",
+ "KarÃ¡csony UtÃ¡ni 2. VasÃ¡rnap",
  };
 
-// --------------- 01 január ---------------
+// --------------- 01 januÃ¡r ---------------
 
 const char *text_JAN_01[POCET_JAZYKOV + 1] = 
-{"Panny Márie Bohorodièky",
- "Matky Boí, Panny Marie",
+{"Panny MÃ¡rie BohorodiÄky",
+ "Matky BoÅ¾Ã­, Panny Marie",
  "",
  "Sanct&#230; Dei Genetricis Mari&#230;",
  "",
- "Matky Boí, Panny Marie",
- "Szûz Mária, Isten Anyja (újév)",
+ "Matky BoÅ¾Ã­, Panny Marie",
+ "SzÅ±z MÃ¡ria, Isten Anyja (ÃºjÃ©v)",
  };
 const char *text_JAN_01_SJ[POCET_JAZYKOV + 1] = 
-{"Panny Márie Bohorodièky a Mena Jeiš "HTML_LINE_BREAK"(Titulárny sviatok Spoloènosti Jeišovej)", // titulárny sviatok Spoloènosti Jeišovej
+{"Panny MÃ¡rie BohorodiÄky a Mena JeÅ¾iÅ¡ "HTML_LINE_BREAK"(TitulÃ¡rny sviatok SpoloÄnosti JeÅ¾iÅ¡ovej)", // titulÃ¡rny sviatok SpoloÄnosti JeÅ¾iÅ¡ovej
  "",
  "",
  "",
@@ -2898,25 +2898,25 @@ const char *text_JAN_01_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_02[POCET_JAZYKOV + 1] = 
-{"Sv. Bazila Ve¾kého a Gregora Nazianzského,"HTML_LINE_BREAK"biskupov a uèite¾ov Cirkvi",
- "Sv. Basila Velikého a Øehoøe Naziánského,"HTML_LINE_BREAK"biskupù a uèitelù církve",
+{"Sv. Bazila VeÄ¾kÃ©ho a Gregora NazianzskÃ©ho,"HTML_LINE_BREAK"biskupov a uÄiteÄ¾ov Cirkvi",
+ "Sv. Basila VelikÃ©ho a Å˜ehoÅ™e NaziÃ¡nskÃ©ho,"HTML_LINE_BREAK"biskupÅ¯ a uÄitelÅ¯ cÃ­rkve",
  "",
  "Ss. Basilii Magni et Gregorii Nazianzeni, ep. et Eccl. doct.",
  "",
- "Sv. Basila Velikého a Øehoøe Naziánského,"HTML_LINE_BREAK"biskupù a uèitelù Církve",
- "Nagy Szent Vazul és Nazianzi Szent Gergely püspökök és egyháztanítók",
+ "Sv. Basila VelikÃ©ho a Å˜ehoÅ™e NaziÃ¡nskÃ©ho,"HTML_LINE_BREAK"biskupÅ¯ a uÄitelÅ¯ CÃ­rkve",
+ "Nagy Szent Vazul Ã©s Nazianzi Szent Gergely pÃ¼spÃ¶kÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³k",
  };
 const char *text_JAN_03[POCET_JAZYKOV + 1] = 
-{"Najsvätejšieho mena Jeiš",
- "Nejsvìtìjšího jména Jeíš",
+{"NajsvÃ¤tejÅ¡ieho mena JeÅ¾iÅ¡",
+ "NejsvÄ›tÄ›jÅ¡Ã­ho jmÃ©na JeÅ¾Ã­Å¡",
  "",
  "",
  "",
- "Nejsvìtìjšího Jména Jeíš",
- "Jézus szent neve",
+ "NejsvÄ›tÄ›jÅ¡Ã­ho JmÃ©na JeÅ¾Ã­Å¡",
+ "JÃ©zus szent neve",
  };
 const char *text_JAN_04_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Angely z Foligna, reho¾níèky, èlenky 3. rádu",
+{"Bl. Angely z Foligna, rehoÄ¾nÃ­Äky, Älenky 3. rÃ¡du",
  "",
  "",
  "",
@@ -2925,7 +2925,7 @@ const char *text_JAN_04_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_05_CSSR[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Nepomuckého Neumanna, biskupa",
+{"Sv. JÃ¡na NepomuckÃ©ho Neumanna, biskupa",
  "", // CZ (aj CZ CSsR): 19JUN
  "",
  "",
@@ -2934,34 +2934,34 @@ const char *text_JAN_05_CSSR[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_05_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Didaka Jozefa z Cádizu, kòaza, èlena 1. rádu",
- "Bl. Diega Josefa z Cádizu, knìze",
+{"Bl. Didaka Jozefa z CÃ¡dizu, kÅˆaza, Älena 1. rÃ¡du",
+ "Bl. Diega Josefa z CÃ¡dizu, knÄ›ze",
  "",
  "",
  "",
  "",
  "",
  };
-const char *text_JAN_06[POCET_JAZYKOV + 1] = // 6. januára | alebo nede¾u medzi 2. a 8. januárom
-{"Zjavenie Pána",
- "Zjevení Pánì",
+const char *text_JAN_06[POCET_JAZYKOV + 1] = // 6. januÃ¡ra | alebo nedeÄ¾u medzi 2. a 8. januÃ¡rom
+{"Zjavenie PÃ¡na",
+ "ZjevenÃ­ PÃ¡nÄ›",
  "",
  "In Epiphania Domini",
  "",
- "Zjevení Pánì",
- "Urunk megjelenése (Vízkereszt)",
+ "ZjevenÃ­ PÃ¡nÄ›",
+ "Urunk megjelenÃ©se (VÃ­zkereszt)",
  };
 const char *text_JAN_07[POCET_JAZYKOV + 1] = 
-{"Sv. Rajmunda z Peòafortu, kòaza",
- "Sv. Rajmunda z Penafortu, knìze",
+{"Sv. Rajmunda z PeÅˆafortu, kÅˆaza",
+ "Sv. Rajmunda z Penafortu, knÄ›ze",
  "",
  "S. Raimundi de Penyafort, presb.",
  "",
- "Sv. Rajmunda z Peòafortu, knìze",
- "Penyaforti Szent Rajmund áldozópap",
+ "Sv. Rajmunda z PeÅˆafortu, knÄ›ze",
+ "Penyaforti Szent Rajmund Ã¡ldozÃ³pap",
  };
 const char *text_JAN_10_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Gundislava z Amarante, kòaza",
+{"Bl. Gundislava z Amarante, kÅˆaza",
  "",
  "",
  "",
@@ -2979,7 +2979,7 @@ const char *text_JAN_10_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_11_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Bernarda Scammaccu, kòaza",
+{"Bl. Bernarda Scammaccu, kÅˆaza",
  "",
  "",
  "",
@@ -2987,18 +2987,18 @@ const char *text_JAN_11_OP[POCET_JAZYKOV + 1] =
  "",
  "",
  };
-const char *text_JAN_KRST[POCET_JAZYKOV + 1] = // v nede¾u po 6. januári | (v nede¾u po Zjavení Pána) alebo: ak však táto nede¾a (zrejme Zjavenia Pána) padne na deò 7. alebo 8. januára, ofícium sa slávi v nasledujúci deò
-{"Krst Krista Pána",
- "Køtu Pánì",
+const char *text_JAN_KRST[POCET_JAZYKOV + 1] = // v nedeÄ¾u po 6. januÃ¡ri | (v nedeÄ¾u po ZjavenÃ­ PÃ¡na) alebo: ak vÅ¡ak tÃ¡to nedeÄ¾a (zrejme Zjavenia PÃ¡na) padne na deÅˆ 7. alebo 8. januÃ¡ra, ofÃ­cium sa slÃ¡vi v nasledujÃºci deÅˆ
+{"Krst Krista PÃ¡na",
+ "KÅ™tu PÃ¡nÄ›",
  "",
  "In Baptismate Domini",
  "",
- "Køtu Pánì",
- "Urunk megkeresztelkedése",
+ "KÅ™tu PÃ¡nÄ›",
+ "Urunk megkeresztelkedÃ©se",
  };
 const char *text_JAN_12_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Bernarda z Corleone, reho¾níka, èlena 1. rádu",
- "Sv. Bernarda z Corleone, øeholníka",
+{"Sv. Bernarda z Corleone, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Sv. Bernarda z Corleone, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -3006,17 +3006,17 @@ const char *text_JAN_12_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_13[POCET_JAZYKOV + 1] = 
-{"Sv. Hilára, biskupa a uèite¾a Cirkvi",
- "Sv. Hilaria, biskupa a uèitele církve",
+{"Sv. HilÃ¡ra, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Hilaria, biskupa a uÄitele cÃ­rkve",
  "",
  "S. Hilarii, ep. et Eccl. doct.",
  "",
- "Sv. Hilaria, biskupa a uèitele Církve",
- "Szent Hiláriusz (Vidor) püspök és egyháztanító",
+ "Sv. Hilaria, biskupa a uÄitele CÃ­rkve",
+ "Szent HilÃ¡riusz (Vidor) pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_JAN_14_CSSR[POCET_JAZYKOV + 1] = 
-{"Bl. Petra Dondersa, kòaza",
- "Bl. Petra Donderse, knìze",
+{"Bl. Petra Dondersa, kÅˆaza",
+ "Bl. Petra Donderse, knÄ›ze",
  "",
  "",
  "",
@@ -3024,7 +3024,7 @@ const char *text_JAN_14_CSSR[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_14_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Odorika z Pordenone, kòaza, èlena 1. rádu",
+{"Bl. Odorika z Pordenone, kÅˆaza, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -3034,7 +3034,7 @@ const char *text_JAN_14_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_JAN_14_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Gotfrída, øeholníka z premonstrátského øádu",
+ "Sv. GotfrÃ­da, Å™eholnÃ­ka zÂ premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -3048,19 +3048,19 @@ const char *text_JAN_15_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Remete Szent Pál szerzetes",
+ "Remete Szent PÃ¡l szerzetes",
  };
 const char *text_JAN_15_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Fernándeza de Capillas, kòaza, "HTML_LINE_BREAK"sv. Petra Sansa, biskupa, a spoloèníkov, muèeníkov",
+{"Sv. FrantiÅ¡ka FernÃ¡ndeza de Capillas, kÅˆaza, "HTML_LINE_BREAK"sv. Petra Sansa, biskupa, a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
  "",
- "Sv. Františka Fernándeze de Capillas, knìze, "HTML_LINE_BREAK"Petra Sanse, biskupa, a druhù, èínskıch muèedníkù",
+ "Sv. FrantiÅ¡ka FernÃ¡ndeze de Capillas, knÄ›ze, "HTML_LINE_BREAK"Petra Sanse, biskupa, a druhÅ¯, ÄÃ­nskÃ½ch muÄednÃ­kÅ¯",
  "",
  };
 const char *text_JAN_15_SVD[POCET_JAZYKOV + 1] = 
-{"Sv. Arnolda Janssena, kòaza a zakladate¾a troch misijnıch reho¾nıch spoloèností",
+{"Sv. Arnolda Janssena, kÅˆaza aÂ zakladateÄ¾a troch misijnÃ½ch rehoÄ¾nÃ½ch spoloÄnostÃ­",
  "",
  "",
  "la_",
@@ -3069,8 +3069,8 @@ const char *text_JAN_15_SVD[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_15_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Alojza Variaru, kòaza",
- "Bl. Aloise Variary, knìze",
+{"Bl. Alojza Variaru, kÅˆaza",
+ "Bl. Aloise Variary, knÄ›ze",
  "",
  "la_",
  "",
@@ -3078,8 +3078,8 @@ const char *text_JAN_15_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_16_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Berarda, kòaza, a spoloèníkov, prvıch františkánskych muèeníkov",
- "Sv. Berarda, knìze, a druhù, muèedníkù",
+{"Sv. Berarda, kÅˆaza, a spoloÄnÃ­kov, prvÃ½ch frantiÅ¡kÃ¡nskych muÄenÃ­kov",
+ "Sv. Berarda, knÄ›ze, a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -3087,21 +3087,21 @@ const char *text_JAN_16_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_17[POCET_JAZYKOV + 1] = 
-{"Sv. Antona, opáta",
- "Sv. Antonína, opata",
+{"Sv. Antona, opÃ¡ta",
+ "Sv. AntonÃ­na, opata",
  "",
  "S. Antonii, abbatis",
  "",
- "Sv. Antonína, opata",
- "Szent Antal apát",
+ "Sv. AntonÃ­na, opata",
+ "Szent Antal apÃ¡t",
  };
 const char *text_JAN_18_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Panny Marie, Matky jednoty køesanù",
+ "Panny Marie, Matky jednoty kÅ™esÅ¥anÅ¯",
  "",
  "",
  "",
- "Panny Marie, Matky jednoty køesanù",
+ "Panny Marie, Matky jednoty kÅ™esÅ¥anÅ¯",
  "",
  };
 const char *text_JAN_18[POCET_JAZYKOV + 1] = 
@@ -3110,11 +3110,11 @@ const char *text_JAN_18[POCET_JAZYKOV + 1] =
  "",
  "la_",
  "",
- "Sv. Markéty Uherské, panny, mnišky", // CZOP 19. januára kvôli text_JAN_18_CZ
- "Árpád-házi Szent Margit szûz",
+ "Sv. MarkÃ©ty UherskÃ©, panny, mniÅ¡ky", // CZOP 19. januÃ¡ra kvÃ´li text_JAN_18_CZ
+ "ÃrpÃ¡d-hÃ¡zi Szent Margit szÅ±z",
  };
 const char *text_JAN_19_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Andreja z Peschiera, kòaza",
+{"Bl. Andreja z Peschiera, kÅˆaza",
  "",
  "",
  "",
@@ -3123,7 +3123,7 @@ const char *text_JAN_19_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_19_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Jakuba Sal&#232;sa a Viliama Saultemouchea, Ignáca de Azevedo a spoloèníkov, "HTML_LINE_BREAK"Jakuba Bonnauda a spoloèníkov, muèeníkov", // &egrave;
+{"Bl. Jakuba Sal&#232;sa a Viliama Saultemouchea, IgnÃ¡ca de Azevedo a spoloÄnÃ­kov, "HTML_LINE_BREAK"Jakuba Bonnauda a spoloÄnÃ­kov, muÄenÃ­kov", // &egrave;
  "",
  "",
  "",
@@ -3132,25 +3132,25 @@ const char *text_JAN_19_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_20_1[POCET_JAZYKOV + 1] = 
-{"Sv. Fabiána, pápea a muèeníka",
- "Sv. Fabiána, papee a muèedníka",
+{"Sv. FabiÃ¡na, pÃ¡peÅ¾a a muÄenÃ­ka",
+ "Sv. FabiÃ¡na, papeÅ¾e a muÄednÃ­ka",
  "",
  "S. Fabiani, pap&#230; et mart.",
  "",
- "Sv. Fabiána, papee a muèedníka",
- "Szent Fábián pápa és vértanú",
+ "Sv. FabiÃ¡na, papeÅ¾e a muÄednÃ­ka",
+ "Szent FÃ¡biÃ¡n pÃ¡pa Ã©s vÃ©rtanÃº",
  };
 const char *text_JAN_20_2[POCET_JAZYKOV + 1] = 
-{"Sv. Šebastiána, muèeníka",
- "Sv. Šebestiána, muèedníka",
+{"Sv. Å ebastiÃ¡na, muÄenÃ­ka",
+ "Sv. Å ebestiÃ¡na, muÄednÃ­ka",
  "",
  "S. Sebastiani, mart.",
  "",
- "Sv. Šebestiána, muèedníka",
- "Szent Sebestyén vértanú",
+ "Sv. Å ebestiÃ¡na, muÄednÃ­ka",
+ "Szent SebestyÃ©n vÃ©rtanÃº",
  };
 const char *text_JAN_20_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jána Krstite¾a Triquerie, kòaza a muèeníka, èlena 1. rádu",
+{"Bl. JÃ¡na KrstiteÄ¾a Triquerie, kÅˆaza a muÄenÃ­ka, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -3165,28 +3165,28 @@ const char *text_JAN_20_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Esztergomi Boldog Özséb áldozópap",
+ "Esztergomi Boldog Ã–zsÃ©b Ã¡ldozÃ³pap",
  };
 const char *text_JAN_21[POCET_JAZYKOV + 1] = 
-{"Sv. Agnesy, panny a muèenice",
- "Sv. Aneky, panny a muèednice",
+{"Sv. Agnesy, panny a muÄenice",
+ "Sv. AneÅ¾ky, panny a muÄednice",
  "",
  "S. Agnetis, virg. et mart.",
  "",
- "Sv. Aneky, panny a muèednice",
- "Szent Ágnes szûz és vértanú",
+ "Sv. AneÅ¾ky, panny a muÄednice",
+ "Szent Ãgnes szÅ±z Ã©s vÃ©rtanÃº",
  };
 const char *text_JAN_22[POCET_JAZYKOV + 1] = 
-{"Sv. Vincenta, diakona a muèeníka",
- "Sv. Vincence, jáhna a muèedníka",
+{"Sv. Vincenta, diakona a muÄenÃ­ka",
+ "Sv. Vincence, jÃ¡hna a muÄednÃ­ka",
  "",
  "S. Vincentii, diaconi et mart.",
  "",
- "Sv. Vincence, jáhna a muèedníka",
- "Szent Vince diakónus és vértanú",
+ "Sv. Vincence, jÃ¡hna a muÄednÃ­ka",
+ "Szent Vince diakÃ³nus Ã©s vÃ©rtanÃº",
  };
 const char *text_JAN_22_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Antona della Chiesa, kòaza",
+{"Bl. Antona della Chiesa, kÅˆaza",
  "",
  "",
  "",
@@ -3201,11 +3201,11 @@ const char *text_JAN_22_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Boldog Batthyány-Stratmann László családapa",
+ "Boldog BatthyÃ¡ny-Stratmann LÃ¡szlÃ³ csalÃ¡dapa",
  };
 const char *text_JAN_22_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Laury Vicuòovej, panny a muèenice",
- "Bl. Laury Vicuòi, panny a muèednice",
+{"Bl. Laury VicuÅˆovej, panny a muÄenice",
+ "Bl. Laury VicuÅˆi, panny a muÄednice",
  "",
  "",
  "",
@@ -3213,7 +3213,7 @@ const char *text_JAN_22_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_23_SK[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Almuníka, biskupa",
+{"Sv. JÃ¡na AlmuÅ¾nÃ­ka, biskupa",
  "",
  "",
  "",
@@ -3222,7 +3222,7 @@ const char *text_JAN_23_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_23_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Henricha Suzu, kòaza",
+{"Bl. Henricha Suzu, kÅˆaza",
  "",
  "",
  "",
@@ -3231,17 +3231,17 @@ const char *text_JAN_23_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_24[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Saleského, biskupa a uèite¾a Cirkvi",
- "Sv. Františka Saleského, biskupa a uèitele církve",
+{"Sv. FrantiÅ¡ka SaleskÃ©ho, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. FrantiÅ¡ka SaleskÃ©ho, biskupa a uÄitele cÃ­rkve",
  "",
  "S. Francisci de Sales, ep. et Eccl. doct.",
  "",
- "Sv. Františka Saleského, biskupa a uèitele Církve",
- "Szalézi Szent Ferenc püspök és egyháztanító",
+ "Sv. FrantiÅ¡ka SaleskÃ©ho, biskupa a uÄitele CÃ­rkve",
+ "SzalÃ©zi Szent Ferenc pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_JAN_24_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Saleského, biskupa a uèite¾a Cirkvi,"HTML_LINE_BREAK"titulárneho patróna saleziánskej rodiny",
- "Sv. Františka Saleského, biskupa a uèitele církve,"HTML_LINE_BREAK"titulárního patrona Spoleènosti sv. Františka Saleského",
+{"Sv. FrantiÅ¡ka SaleskÃ©ho, biskupa a uÄiteÄ¾a Cirkvi,"HTML_LINE_BREAK"titulÃ¡rneho patrÃ³na saleziÃ¡nskej rodiny",
+ "Sv. FrantiÅ¡ka SaleskÃ©ho, biskupa a uÄitele cÃ­rkve,"HTML_LINE_BREAK"titulÃ¡rnÃ­ho patrona SpoleÄnosti sv. FrantiÅ¡ka SaleskÃ©ho",
  "",
  "",
  "",
@@ -3249,34 +3249,34 @@ const char *text_JAN_24_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_25[POCET_JAZYKOV + 1] = 
-{"Obrátenie svätého Pavla, apoštola",
- "Obrácení svatého Pavla, apoštola",
+{"ObrÃ¡tenie svÃ¤tÃ©ho Pavla, apoÅ¡tola",
+ "ObrÃ¡cenÃ­ svatÃ©ho Pavla, apoÅ¡tola",
  "",
  "In Conversione S. Pauli, Apostoli",
  "",
- "Obrácení svatého Pavla, apoštola",
- "Szent Pál apostol megtérése (Pál fordulása)",
+ "ObrÃ¡cenÃ­ svatÃ©ho Pavla, apoÅ¡tola",
+ "Szent PÃ¡l apostol megtÃ©rÃ©se (PÃ¡l fordulÃ¡sa)",
  };
 const char *text_JAN_26[POCET_JAZYKOV + 1] = 
-{"Sv. Timoteja a Títa, biskupov",
- "Sv. Timoteje a Tita, biskupù",
+{"Sv. Timoteja a TÃ­ta, biskupov",
+ "Sv. Timoteje a Tita, biskupÅ¯",
  "",
  "Ss. Timothei et Titi, ep.",
  "",
- "Sv. Timoteje a Tita, biskupù",
- "Szent Timóteus és Szent Titusz püspökök",
+ "Sv. Timoteje a Tita, biskupÅ¯",
+ "Szent TimÃ³teus Ã©s Szent Titusz pÃ¼spÃ¶kÃ¶k",
  };
 const char *text_JAN_27[POCET_JAZYKOV + 1] = 
 {"Sv. Angely Merici, panny",
- "Sv. Andìly Mericiové, panny",
+ "Sv. AndÄ›ly MericiovÃ©, panny",
  "",
  "S. Angel&#230; Merici, virg.",
  "",
- "Sv. Andìly Mericiové, panny",
- "Merici Szent Angéla szûz",
+ "Sv. AndÄ›ly MericiovÃ©, panny",
+ "Merici Szent AngÃ©la szÅ±z",
  };
 const char *text_JAN_27_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Markolína z Forl&#236;, kòaza", // &igrave;
+{"Bl. MarkolÃ­na z Forl&#236;, kÅˆaza", // &igrave;
  "",
  "",
  "",
@@ -3285,16 +3285,16 @@ const char *text_JAN_27_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_28[POCET_JAZYKOV + 1] = 
-{"Sv. Tomáša Akvinského, kòaza a uèite¾a Cirkvi",
- "Sv. Tomáše Akvinského, knìze a uèitele církve",
+{"Sv. TomÃ¡Å¡a AkvinskÃ©ho, kÅˆaza a uÄiteÄ¾a Cirkvi",
+ "Sv. TomÃ¡Å¡e AkvinskÃ©ho, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "S. Thom&#230; de Aquino, presb. et Eccl. doct.",
  "",
- "Sv. Tomáše Akvinského, knìze a uèitele Církve",
- "Aquinói Szent Tamás áldozópap és egyháztanító",
+ "Sv. TomÃ¡Å¡e AkvinskÃ©ho, knÄ›ze a uÄitele CÃ­rkve",
+ "AquinÃ³i Szent TamÃ¡s Ã¡ldozÃ³pap Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_JAN_29_SVD[POCET_JAZYKOV + 1] = 
-{"Sv. Jozefa Freinademetza, kòaza",
+{"Sv. Jozefa Freinademetza, kÅˆaza",
  "",
  "",
  "la_",
@@ -3312,8 +3312,8 @@ const char *text_JAN_29_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_30_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Bronislava Markiewicza, kòaza",
- "Bl. Bronislava Markiewicze, knìze",
+{"Bl. Bronislava Markiewicza, kÅˆaza",
+ "Bl. Bronislava Markiewicze, knÄ›ze",
  "",
  "",
  "",
@@ -3321,7 +3321,7 @@ const char *text_JAN_30_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_30_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Hyacinty Mariscottiovej, panny, èlenky 3. rádu",
+{"Sv. Hyacinty Mariscottiovej, panny, Älenky 3. rÃ¡du",
  "Sv. Hyacinty Mariscotti, panny",
  "",
  "",
@@ -3330,17 +3330,17 @@ const char *text_JAN_30_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_31[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Boska, kòaza", // Direktórium 2012, str. 72, má: 'Bosca'
- "Sv. Jana Boska, knìze",
+{"Sv. JÃ¡na Boska, kÅˆaza", // DirektÃ³rium 2012, str. 72, mÃ¡: 'Bosca'
+ "Sv. Jana Boska, knÄ›ze",
  "",
  "S. Ioannis Bosco, presb.",
  "",
- "Sv. Jana Boska, knìze",
- "Bosco Szent János áldozópap",
+ "Sv. Jana Boska, knÄ›ze",
+ "Bosco Szent JÃ¡nos Ã¡ldozÃ³pap",
  };
 const char *text_JAN_31_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Boska, kòaza, otca a uèite¾a mládee,"HTML_LINE_BREAK"zakladate¾a Spoloènosti svätého Františka Saleského,"HTML_LINE_BREAK"Inštitútu dcér Márie Pomocnice"HTML_LINE_BREAK"a saleziánov spolupracovníkov",
- "Sv. Jana Boska, knìze, otce a uèitele mládee,"HTML_LINE_BREAK"zakladatele Spoleènosti sv. Františka Saleského,"HTML_LINE_BREAK"Institutu Dcer Panny Marie Pomocnice"HTML_LINE_BREAK"a Salesiánù spolupracovníkù",
+{"Sv. JÃ¡na Boska, kÅˆaza, otca a uÄiteÄ¾a mlÃ¡deÅ¾e,"HTML_LINE_BREAK"zakladateÄ¾a SpoloÄnosti svÃ¤tÃ©ho FrantiÅ¡ka SaleskÃ©ho,"HTML_LINE_BREAK"InÅ¡titÃºtu dcÃ©r MÃ¡rie Pomocnice"HTML_LINE_BREAK"a saleziÃ¡nov spolupracovnÃ­kov",
+ "Sv. Jana Boska, knÄ›ze, otce a uÄitele mlÃ¡deÅ¾e,"HTML_LINE_BREAK"zakladatele SpoleÄnosti sv. FrantiÅ¡ka SaleskÃ©ho,"HTML_LINE_BREAK"Institutu Dcer Panny Marie Pomocnice"HTML_LINE_BREAK"a SalesiÃ¡nÅ¯ spolupracovnÃ­kÅ¯",
  "",
  "",
  "",
@@ -3348,11 +3348,11 @@ const char *text_JAN_31_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 
-// --------------- 02 február ---------------
+// --------------- 02 februÃ¡r ---------------
 
 const char *text_FEB_01_SDB[POCET_JAZYKOV + 1] = 
-{"Všetkıch nebohıch èlenov Spoloènosti svätého Františka Saleského",
- "Pøipomínka zemøelıch salesiánù",
+{"VÅ¡etkÃ½ch nebohÃ½ch Älenov SpoloÄnosti svÃ¤tÃ©ho FrantiÅ¡ka SaleskÃ©ho",
+ "PÅ™ipomÃ­nka zemÅ™elÃ½ch salesiÃ¡nÅ¯",
  "",
  "",
  "",
@@ -3360,34 +3360,34 @@ const char *text_FEB_01_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_02[POCET_JAZYKOV + 1] = 
-{"Obetovanie Pána",
- "Uvedení Pánì do chrámu",
+{"Obetovanie PÃ¡na",
+ "UvedenÃ­ PÃ¡nÄ› do chrÃ¡mu",
  "",
  "In Pr&#230;sentatione Domini",
  "",
- "Uvedení Pánì do chrámu",
- "Urunk bemutatása (Gyertyaszentelõ Boldogasszony)",
+ "UvedenÃ­ PÃ¡nÄ› do chrÃ¡mu",
+ "Urunk bemutatÃ¡sa (GyertyaszentelÅ‘ Boldogasszony)",
  };
 const char *text_FEB_03_1[POCET_JAZYKOV + 1] = 
-{"Sv. Blaeja, biskupa a muèeníka",
- "Sv. Blaeje, biskupa a muèedníka",
+{"Sv. BlaÅ¾eja, biskupa a muÄenÃ­ka",
+ "Sv. BlaÅ¾eje, biskupa a muÄednÃ­ka",
  "",
  "S. Blasii, ep. et mart.",
  "",
- "Sv. Blaeje, biskupa a muèedníka",
- "Szent Balázs püspök és vértanú",
+ "Sv. BlaÅ¾eje, biskupa a muÄednÃ­ka",
+ "Szent BalÃ¡zs pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_FEB_03_2[POCET_JAZYKOV + 1] = 
-{"Sv. Oskára, biskupa",
+{"Sv. OskÃ¡ra, biskupa",
  "Sv. Ansgara, biskupa",
  "",
  "S. Ansgarii, ep.",
  "",
  "Sv. Ansgara, biskupa",
- "Szent Anszgár (Oszkár) püspök",
+ "Szent AnszgÃ¡r (OszkÃ¡r) pÃ¼spÃ¶k",
  };
 const char *text_FEB_03_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Petra z Ruff&#236;a, kòaza a muèeníka", // &igrave;
+{"Bl. Petra z Ruff&#236;a, kÅˆaza a muÄenÃ­ka", // &igrave;
  "",
  "",
  "",
@@ -3396,7 +3396,7 @@ const char *text_FEB_03_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_03_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Antona Pavoniho, kòaza a muèeníka",
+{"Bl. Antona Pavoniho, kÅˆaza a muÄenÃ­ka",
  "",
  "",
  "",
@@ -3405,7 +3405,7 @@ const char *text_FEB_03_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_03_3_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Bartolomeja Cerveriho, kòaza a muèeníka",
+{"Bl. Bartolomeja Cerveriho, kÅˆaza a muÄenÃ­ka",
  "",
  "",
  "",
@@ -3414,16 +3414,16 @@ const char *text_FEB_03_3_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_04_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Kataríny de’ Ricci, panny",
+{"Sv. KatarÃ­ny deâ€™ Ricci, panny",
  "",
  "",
  "",
  "",
- "Sv. Kateøiny z Ricci, panny, øeholnice",
+ "Sv. KateÅ™iny z Ricci, panny, Å™eholnice",
  "",
  };
 const char *text_FEB_04_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Jána de Brito, kòaza, bl. Rudolfa Acquavivu, kòaza a jeho spoloèníkov; "HTML_LINE_BREAK"bl. Františka Pacheca, Karola Spinolu, kòazov a spoloèníkov, muèeníkov; "HTML_LINE_BREAK"bl. Jakuba Berthieu, kòaza, Leva Mangina, kòaza a spoloèníkov, muèeníkov",
+{"Sv. JÃ¡na de Brito, kÅˆaza, bl. Rudolfa Acquavivu, kÅˆaza a jeho spoloÄnÃ­kov; "HTML_LINE_BREAK"bl. FrantiÅ¡ka Pacheca, Karola Spinolu, kÅˆazov a spoloÄnÃ­kov, muÄenÃ­kov; "HTML_LINE_BREAK"bl. Jakuba Berthieu, kÅˆaza, Leva Mangina, kÅˆaza a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
@@ -3432,8 +3432,8 @@ const char *text_FEB_04_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_04_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Jozefa z Leonissy, kòaza, èlena 1. rádu",
- "Sv. Josefa z Leonessy, knìze",
+{"Sv. Jozefa z Leonissy, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. Josefa z Leonessy, knÄ›ze",
  "",
  "",
  "",
@@ -3442,7 +3442,7 @@ const char *text_FEB_04_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_04_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Bedøicha, opata z premonstrátského øádu",
+ "Sv. BedÅ™icha, opata z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -3450,25 +3450,25 @@ const char *text_FEB_04_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_05[POCET_JAZYKOV + 1] = 
-{"Sv. Agáty, panny a muèenice", // direktóriá uvádzajú Agáta s dlhım "á"; LH s krátkym "a" Agata
- "Sv. Agáty, panny a muèednice",
+{"Sv. AgÃ¡ty, panny a muÄenice", // direktÃ³riÃ¡ uvÃ¡dzajÃº AgÃ¡ta s dlhÃ½m "Ã¡"; LH s krÃ¡tkym "a" Agata
+ "Sv. AgÃ¡ty, panny a muÄednice",
  "",
  "S. Agath&#230;, virg. et mart.",
  "",
- "Sv. Agáty, panny a muèednice",
- "Szent Ágota szûz és vértanú",
+ "Sv. AgÃ¡ty, panny a muÄednice",
+ "Szent Ãgota szÅ±z Ã©s vÃ©rtanÃº",
  };
 const char *text_FEB_06[POCET_JAZYKOV + 1] = 
-{"Sv. Pavla Mikiho a spoloèníkov, muèeníkov",
- "Sv. Pavla Mikiho a druhù, muèedníkù",
+{"Sv. Pavla Mikiho a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Sv. Pavla Mikiho a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "Ss. Pauli Miki et sociorum, mart.",
  "",
- "Sv. Pavla Mikiho a druhù, muèedníkù",
- "Miki Szent Pál és társai vértanúk",
+ "Sv. Pavla Mikiho a druhÅ¯, muÄednÃ­kÅ¯",
+ "Miki Szent PÃ¡l Ã©s tÃ¡rsai vÃ©rtanÃºk",
  };
 const char *text_FEB_06_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Pavla Mikiho, reho¾níka, a jeho spoloèníkov, muèeníkov",
+{"Sv. Pavla Mikiho, rehoÄ¾nÃ­ka, a jeho spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
@@ -3477,8 +3477,8 @@ const char *text_FEB_06_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_06_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Baptistu, kòaza, a spoloèníkov, františkánskych muèeníkov",
- "Sv. Petra Køtitele, Pavla Mikiho a druhù, muèedníkù",
+{"Sv. Petra Baptistu, kÅˆaza, a spoloÄnÃ­kov, frantiÅ¡kÃ¡nskych muÄenÃ­kov",
+ "Sv. Petra KÅ™titele, Pavla Mikiho a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -3486,17 +3486,17 @@ const char *text_FEB_06_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_07_OP[POCET_JAZYKOV + 1] = 
-{"Spomienka na zosnulıch otcov a matky èlenov rehole",
+{"Spomienka na zosnulÃ½ch otcov a matky Älenov rehole",
  "",
  "",
  "",
  "",
- "Vıroèní památka zemøelıch otcù a matek",
+ "VÃ½roÄnÃ­ pamÃ¡tka zemÅ™elÃ½ch otcÅ¯ a matek",
  "",
  };
 const char *text_FEB_07_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Pia IX., pápea",
- "Bl. Pia IX., papee",
+{"Bl. Pia IX., pÃ¡peÅ¾a",
+ "Bl. Pia IX., papeÅ¾e",
  "",
  "",
  "",
@@ -3504,7 +3504,7 @@ const char *text_FEB_07_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_07_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Kolety z Corbie, panny, èlenky 2. rádu",
+{"Sv. Kolety z Corbie, panny, Älenky 2. rÃ¡du",
  "Sv. Kolety z Corbie, panny",
  "",
  "",
@@ -3514,25 +3514,25 @@ const char *text_FEB_07_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_08_1[POCET_JAZYKOV + 1] = 
 {"Sv. Hieronyma Emilianiho",
- "Sv. Jeronıma Emilianiho",
+ "Sv. JeronÃ½ma Emilianiho",
  "",
  "S. Hieronymi Emiliani",
  "",
- "Sv. Jeronıma Emilianiho",
- "Emiliáni Szent Jeromos",
+ "Sv. JeronÃ½ma Emilianiho",
+ "EmiliÃ¡ni Szent Jeromos",
  };
 const char *text_FEB_08_2[POCET_JAZYKOV + 1] = 
-{"Sv. Jozefíny Bakhity, panny",
+{"Sv. JozefÃ­ny Bakhity, panny",
  "Sv. Josefiny Bakhity, panny",
  "",
  "",
  "",
  "Sv. Josefiny Bakhity, panny",
- "Bakhita Szent Jozefina szûz",
+ "Bakhita Szent Jozefina szÅ±z",
  };
 const char *text_FEB_09_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Euzébie Palominovej Yenes, panny",
- "Bl. Eusebie Palomino, øeholnice",
+{"Bl. EuzÃ©bie Palominovej Yenes, panny",
+ "Bl. Eusebie Palomino, Å™eholnice",
  "",
  "",
  "",
@@ -3541,7 +3541,7 @@ const char *text_FEB_09_SDB[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_09_OFMCAP[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Leopolda z Alpandeire, øeholníka",
+ "Bl. Leopolda z Alpandeire, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -3549,17 +3549,17 @@ const char *text_FEB_09_OFMCAP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_10[POCET_JAZYKOV + 1] = 
-{"Sv. Školastiky, panny",
+{"Sv. Å kolastiky, panny",
  "Sv. Scholastiky, panny",
  "",
  "S. Scholastic&#230;, virg.",
  "",
  "Sv. Scholastiky, panny",
- "Szent Skolasztika szûz",
+ "Szent Skolasztika szÅ±z",
  };
 const char *text_FEB_10_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Huga, opata z premonstrátského øádu",
+ "Bl. Huga, opata z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -3567,43 +3567,43 @@ const char *text_FEB_10_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_11[POCET_JAZYKOV + 1] = 
-{"Prebl. Panny Márie Lurdskej",
- "Panny Marie Lurdské",
+{"Prebl. Panny MÃ¡rie Lurdskej",
+ "Panny Marie LurdskÃ©",
  "",
  "B. Mari&#230; Virg. de Lourdes",
  "",
- "Panny Marie Lurdské",
- "A Lourdes-i Boldogságos Szûz Mária",
+ "Panny Marie LurdskÃ©",
+ "A Lourdes-i BoldogsÃ¡gos SzÅ±z MÃ¡ria",
  };
 const char *text_FEB_12_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Reginalda Orleánskeho, kòaza",
+{"Bl. Reginalda OrleÃ¡nskeho, kÅˆaza",
  "",
  "",
  "",
  "",
- "Bl. Reginalda z Orléansu, knìze",
+ "Bl. Reginalda z OrlÃ©ansu, knÄ›ze",
  "",
  };
 const char *text_FEB_13_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jordána Saského, kòaza",
+{"Bl. JordÃ¡na SaskÃ©ho, kÅˆaza",
  "",
  "",
  "",
  "",
- "Bl. Jordána Saského, knìze",
+ "Bl. JordÃ¡na SaskÃ©ho, knÄ›ze",
  "",
  };
 const char *text_FEB_14[POCET_JAZYKOV + 1] = 
-{"Sv. Cyrila, mnícha, a sv. Metoda, biskupa,"HTML_LINE_BREAK"patrónov Európy", // (na Slovensku sa slávi 5. júla)
- "(slaví se 5. èervna)",
+{"Sv. Cyrila, mnÃ­cha, a sv. Metoda, biskupa,"HTML_LINE_BREAK"patrÃ³nov EurÃ³py", // (na Slovensku sa slÃ¡vi 5. jÃºla)
+ "(slavÃ­ se 5. Äervna)",
  "",
  "Ss. Cyrilli, monachi, et Methodii, ep.",
  "",
  "",
- "Szent Cirill szerzetes és Szent Metód püspök,"HTML_LINE_BREAK"Európa társvédõszentjei",
+ "Szent Cirill szerzetes Ã©s Szent MetÃ³d pÃ¼spÃ¶k,"HTML_LINE_BREAK"EurÃ³pa tÃ¡rsvÃ©dÅ‘szentjei",
  };
 const char *text_FEB_15_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Klaudia La Colombi&#232;ra, kòaza", // &egrave;
+{"Sv. Klaudia La Colombi&#232;ra, kÅˆaza", // &egrave;
  "",
  "",
  "",
@@ -3613,15 +3613,15 @@ const char *text_FEB_15_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_15_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Bedøicha Bachsteina a druhù, muèedníkù",
+ "Bl. BedÅ™icha Bachsteina a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Bl. Bedøicha Bachsteina a druhù, muèedníkù",
+ "Bl. BedÅ™icha Bachsteina a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  };
 const char *text_FEB_16_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Mikuláša Pagliu, kòaza",
+{"Bl. MikulÃ¡Å¡a Pagliu, kÅˆaza",
  "",
  "",
  "",
@@ -3630,17 +3630,17 @@ const char *text_FEB_16_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_17[POCET_JAZYKOV + 1] = 
-{"Siedmich svätıch zakladate¾ov"HTML_LINE_BREAK"rehole Sluobníkov Panny Márie",
- "Sv. Alexia a druhù, øeholníkù",
+{"Siedmich svÃ¤tÃ½ch zakladateÄ¾ov"HTML_LINE_BREAK"rehole SluÅ¾obnÃ­kov Panny MÃ¡rie",
+ "Sv. Alexia a druhÅ¯, Å™eholnÃ­kÅ¯",
  "",
  "Ss. Septem Fundatorum Ordinis Servorum B. Mari&#230; Virg.",
  "",
- "Sv. Alexia a druhù, øeholníkù",
- "A szervita rend hét szent alapítója",
+ "Sv. Alexia a druhÅ¯, Å™eholnÃ­kÅ¯",
+ "A szervita rend hÃ©t szent alapÃ­tÃ³ja",
  };
 const char *text_FEB_17_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Evermoda, biskupa z premonstrátského øádu",
+ "Sv. Evermoda, biskupa z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -3649,7 +3649,7 @@ const char *text_FEB_17_OPRAEM[POCET_JAZYKOV + 1] =
  };
 const char *text_FEB_18_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. sedmi zakladatelù øádu servitù",
+ "Sv. sedmi zakladatelÅ¯ Å™Ã¡du servitÅ¯",
  "",
  "",
  "",
@@ -3657,16 +3657,16 @@ const char *text_FEB_18_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_18_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jána (Angelika) z Fiesole, kòaza",
+{"Bl. JÃ¡na (Angelika) z Fiesole, kÅˆaza",
  "",
  "",
  "",
  "",
- "Bl. Jana z Fiesole neboli fra Angelica, knìze",
+ "Bl. Jana z Fiesole neboli fra Angelica, knÄ›ze",
  "",
  };
 const char *text_FEB_19_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Alvara z Kordovy, kòaza",
+{"Bl. Alvara z Kordovy, kÅˆaza",
  "",
  "",
  "",
@@ -3675,7 +3675,7 @@ const char *text_FEB_19_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_20_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Krištofa z Milána, kòaza",
+{"Bl. KriÅ¡tofa z MilÃ¡na, kÅˆaza",
  "",
  "",
  "",
@@ -3684,34 +3684,34 @@ const char *text_FEB_20_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_21[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Damianiho, biskupa a uèite¾a Cirkvi",
- "Sv. Petra Damianiho, biskupa a uèitele církve",
+{"Sv. Petra Damianiho, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Petra Damianiho, biskupa a uÄitele cÃ­rkve",
  "",
  "S. Petri Damiani, ep. et Eccl. doct.",
  "",
- "Sv. Petra Damianiho, biskupa a uèitele Církve",
- "Damiáni Szent Péter püspök és egyháztanító",
+ "Sv. Petra Damianiho, biskupa a uÄitele CÃ­rkve",
+ "DamiÃ¡ni Szent PÃ©ter pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_FEB_22[POCET_JAZYKOV + 1] = 
-{"Katedra sv. Petra, apoštola",
- "Stolce svatého Petra, apoštola",
+{"Katedra sv. Petra, apoÅ¡tola",
+ "Stolce svatÃ©ho Petra, apoÅ¡tola",
  "",
  "Cathedr&#230; S. Petri, Apostoli",
  "",
- "Stolce svatého Petra, apoštola",
- "Szent Péter apostol székfoglalása",
+ "Stolce svatÃ©ho Petra, apoÅ¡tola",
+ "Szent PÃ©ter apostol szÃ©kfoglalÃ¡sa",
  };
 const char *text_FEB_23[POCET_JAZYKOV + 1] = 
-{"Sv. Polykarpa, biskupa a muèeníka",
- "Sv. Polykarpa, biskupa a muèedníka",
+{"Sv. Polykarpa, biskupa a muÄenÃ­ka",
+ "Sv. Polykarpa, biskupa a muÄednÃ­ka",
  "",
  "S. Polycarpi, ep. et mart.",
  "",
- "Sv. Polykarpa, biskupa a muèedníka",
- "Szent Polikárp püspök és vértanú",
+ "Sv. Polykarpa, biskupa a muÄednÃ­ka",
+ "Szent PolikÃ¡rp pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_FEB_24_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Konštanca z Fabriana, kòaza",
+{"Bl. KonÅ¡tanca z Fabriana, kÅˆaza",
  "",
  "",
  "",
@@ -3720,8 +3720,8 @@ const char *text_FEB_24_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_25_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Alojza Versigliu, biskupa, a Kalixta Caravaria, kòaza, "HTML_LINE_BREAK"prvıch saleziánskych muèeníkov",
- "Sv. Aloise Versiglii, biskupa, a Kalista Caravaria, knìze, "HTML_LINE_BREAK"prvních salesiánskıch muèedníkù",
+{"Sv. Alojza Versigliu, biskupa, a Kalixta Caravaria, kÅˆaza, "HTML_LINE_BREAK"prvÃ½ch saleziÃ¡nskych muÄenÃ­kov",
+ "Sv. Aloise Versiglii, biskupa, a Kalista Caravaria, knÄ›ze, "HTML_LINE_BREAK"prvnÃ­ch salesiÃ¡nskÃ½ch muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -3729,22 +3729,22 @@ const char *text_FEB_25_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 
-// --------------- 00 pohyblivé slávenia ---------------
+// --------------- 00 pohyblivÃ© slÃ¡venia ---------------
 
 const char *text_POPOLCOVA_STREDA[POCET_JAZYKOV + 1] = 
-{"Popolcová streda",
- "Popeleèní støeda",
+{"PopolcovÃ¡ streda",
+ "PopeleÄnÃ­ stÅ™eda",
  "",
  "",
  "",
- "Popeleèní støeda",
- "Hamvazószerda",
+ "PopeleÄnÃ­ stÅ™eda",
+ "HamvazÃ³szerda",
  };
 
 // --------------- 03 marec ---------------
 
 const char *text_MAR_02_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Aneky Èeskej, panny, èlenky 2. rádu",
+{"Sv. AneÅ¾ky ÄŒeskej, panny, Älenky 2. rÃ¡du",
  "",
  "",
  "",
@@ -3753,13 +3753,13 @@ const char *text_MAR_02_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAR_04[POCET_JAZYKOV + 1] = 
-{"Sv. Kazimíra",
- "Sv. Kazimíra",
+{"Sv. KazimÃ­ra",
+ "Sv. KazimÃ­ra",
  "",
  "S. Casimiri",
  "",
- "Sv. Kazimíra",
- "Szent Kázmér",
+ "Sv. KazimÃ­ra",
+ "Szent KÃ¡zmÃ©r",
  };
 const char *text_MAR_04_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -3768,37 +3768,37 @@ const char *text_MAR_04_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Boldog Meszlényi Zoltán püspök és vértanú",
+ "Boldog MeszlÃ©nyi ZoltÃ¡n pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_MAR_07[POCET_JAZYKOV + 1] = 
-{"Sv. Perpetuy a Felicity, muèeníc",
- "Sv. Perpetuy a Felicity, muèednic",
+{"Sv. Perpetuy a Felicity, muÄenÃ­c",
+ "Sv. Perpetuy a Felicity, muÄednic",
  "",
  "Ss. Perpetu&#230; et Felicitatis, mart.",
  "",
- "Sv. Perpetuy a Felicity, muèednic",
- "Szent Perpétua és Felicitász vértanúk",
+ "Sv. Perpetuy a Felicity, muÄednic",
+ "Szent PerpÃ©tua Ã©s FelicitÃ¡sz vÃ©rtanÃºk",
  };
 const char *text_MAR_08[POCET_JAZYKOV + 1] = 
-{"Sv. Jána z Boha, reho¾níka",
- "Sv. Jana z Boha, øeholníka",
+{"Sv. JÃ¡na z Boha, rehoÄ¾nÃ­ka",
+ "Sv. Jana z Boha, Å™eholnÃ­ka",
  "",
  "S. Ioannis a Deo, relig.",
  "",
- "Sv. Jana z Boha, øeholníka",
- "Istenes Szent János szerzetes",
+ "Sv. Jana z Boha, Å™eholnÃ­ka",
+ "Istenes Szent JÃ¡nos szerzetes",
  };
 const char *text_MAR_09[POCET_JAZYKOV + 1] = 
-{"Sv. Františky Rímskej, reho¾níèky",
- "Sv. Františky Øímské, øeholnice",
+{"Sv. FrantiÅ¡ky RÃ­mskej, rehoÄ¾nÃ­Äky",
+ "Sv. FrantiÅ¡ky Å˜Ã­mskÃ©, Å™eholnice",
  "",
  "S. Francisc&#230; Roman&#230;, relig.",
  "",
- "Sv. Františky Øímské, øeholnice",
- "Római Szent Franciska szerzetesnõ",
+ "Sv. FrantiÅ¡ky Å˜Ã­mskÃ©, Å™eholnice",
+ "RÃ³mai Szent Franciska szerzetesnÅ‘",
  };
 const char *text_MAR_10_SK[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky katedrálneho chrámu v Bratislave", // ToDo: 'sv. Martina z Tours', pod¾a Direktória 2012, str. 93
+{"VÃ½roÄie posviacky katedrÃ¡lneho chrÃ¡mu v Bratislave", // ToDo: 'sv. Martina z Tours', podÄ¾a DirektÃ³ria 2012, str. 93
  "",
  "",
  "",
@@ -3808,15 +3808,15 @@ const char *text_MAR_10_SK[POCET_JAZYKOV + 1] =
  };
 const char *text_MAR_10_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Jana Ogilvie, knìze a muèedníka",
+ "Sv. Jana Ogilvie, knÄ›ze a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Jana Ogilvie, knìze a muèedníka",
+ "Sv. Jana Ogilvie, knÄ›ze a muÄednÃ­ka",
  "",
  };
 const char *text_MAR_12_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Angely Salawovej, panny, èlenky 3. rádu",
+{"Bl. Angely Salawovej, panny, Älenky 3. rÃ¡du",
  "",
  "",
  "",
@@ -3825,8 +3825,8 @@ const char *text_MAR_12_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAR_15_CSSR[POCET_JAZYKOV + 1] = 
-{"Sv. Klementa Márie Hofbauera, kòaza",
- "Sv. Klementa Marie Hofbauera (Dvoøáka), knìze", // CZ CSsR: 20MAJ
+{"Sv. Klementa MÃ¡rie Hofbauera, kÅˆaza",
+ "Sv. Klementa Marie Hofbauera (DvoÅ™Ã¡ka), knÄ›ze", // CZ CSsR: 20MAJ
  "",
  "",
  "",
@@ -3840,7 +3840,7 @@ const char *text_MAR_17[POCET_JAZYKOV + 1] =
  "S. Patricii, ep.",
  "",
  "Sv. Patrika, biskupa",
- "Szent Patrik püspök",
+ "Szent Patrik pÃ¼spÃ¶k",
  };
 const char *text_MAR_17_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -3849,19 +3849,19 @@ const char *text_MAR_17_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "A Gyõri könnyezõ Szûz Mária",
+ "A GyÅ‘ri kÃ¶nnyezÅ‘ SzÅ±z MÃ¡ria",
  };
 const char *text_MAR_18[POCET_JAZYKOV + 1] = 
-{"Sv. Cyrila Jeruzalemského, biskupa a uèite¾a Cirkvi",
- "Sv. Cyrila Jeruzalémského, biskupa a uèitele církve",
+{"Sv. Cyrila JeruzalemskÃ©ho, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Cyrila JeruzalÃ©mskÃ©ho, biskupa a uÄitele cÃ­rkve",
  "",
  "S. Cyrilli Hierosolymitani, ep. et Eccl. doct.",
  "",
- "Sv. Cyrila Jeruzalémského, biskupa a uèitele Církve",
- "Jeruzsálemi Szent Cirill püspök és egyháztanító",
+ "Sv. Cyrila JeruzalÃ©mskÃ©ho, biskupa a uÄitele CÃ­rkve",
+ "JeruzsÃ¡lemi Szent Cirill pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_MAR_18_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Salvatora z Horty, kòaza, èlena 1. rádu",
+{"Sv. Salvatora z Horty, kÅˆaza, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -3870,13 +3870,13 @@ const char *text_MAR_18_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAR_19[POCET_JAZYKOV + 1] = 
-{"Sv. Jozefa, enícha Panny Márie",
+{"Sv. Jozefa, Å¾enÃ­cha Panny MÃ¡rie",
  "Sv. Josefa, Snoubence Panny Marie",
  "",
  "S. Ioseph, Sponsi B. Mari&#230; V.",
  "",
  "Sv. Josefa, Snoubence Panny Marie",
- "Szent József, a Boldogságos Szûz Mária jegyese",
+ "Szent JÃ³zsef, a BoldogsÃ¡gos SzÅ±z MÃ¡ria jegyese",
  };
 const char *text_MAR_23[POCET_JAZYKOV + 1] = 
 {"Sv. Turibia de Mongrovejo, biskupa",
@@ -3885,58 +3885,58 @@ const char *text_MAR_23[POCET_JAZYKOV + 1] =
  "S. Turibii de Mogrovejo, ep.",
  "",
  "Sv. Turibia z Mongroveja, biskupa",
- "Mongrovejói Szent Turibiusz püspök",
+ "MongrovejÃ³i Szent Turibiusz pÃ¼spÃ¶k",
  };
 const char *text_MAR_25[POCET_JAZYKOV + 1] = 
-{"Zvestovanie Pána",
- "Zvìstování Pánì",
+{"Zvestovanie PÃ¡na",
+ "ZvÄ›stovÃ¡nÃ­ PÃ¡nÄ›",
  "",
  "In Annuntiatione Domini",
  "",
- "Zvìstování Pánì",
- "Urunk születésének hírüladása (Gyümölcsoltó Boldogasszony)",
+ "ZvÄ›stovÃ¡nÃ­ PÃ¡nÄ›",
+ "Urunk szÃ¼letÃ©sÃ©nek hÃ­rÃ¼ladÃ¡sa (GyÃ¼mÃ¶lcsoltÃ³ Boldogasszony)",
  };
 
-// --------------- 04 apríl ---------------
+// --------------- 04 aprÃ­l ---------------
 
 const char *text_APR_02[POCET_JAZYKOV + 1] = 
-{"Sv. Františka z Paoly, pustovníka",
- "Sv. Františka z Pauly, poustevníka",
+{"Sv. FrantiÅ¡ka z Paoly, pustovnÃ­ka",
+ "Sv. FrantiÅ¡ka z Pauly, poustevnÃ­ka",
  "",
  "S. Francisci de Paola, eremitai",
  "",
- "Sv. Františka z Pauly, poustevníka",
+ "Sv. FrantiÅ¡ka z Pauly, poustevnÃ­ka",
  "Paolai Szent Ferenc remete",
  };
 const char *text_APR_04[POCET_JAZYKOV + 1] = 
-{"Sv. Izidora, biskupa a uèite¾a Cirkvi",
- "Sv. Izidora, biskupa a uèitele církve",
+{"Sv. Izidora, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Izidora, biskupa a uÄitele cÃ­rkve",
  "",
  "S. Isidori, ep. et Eccl. doct.",
  "",
- "Sv. Izidora, biskupa a uèitele Církve",
- "Szent Izidor püspök és egyháztanító",
+ "Sv. Izidora, biskupa a uÄitele CÃ­rkve",
+ "Szent Izidor pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_APR_05[POCET_JAZYKOV + 1] = 
-{"Sv. Vincenta Ferrera, kòaza",
- "Sv. Vincence Ferrerského, knìze",
+{"Sv. Vincenta Ferrera, kÅˆaza",
+ "Sv. Vincence FerrerskÃ©ho, knÄ›ze",
  "",
  "S. Vincentii Ferrer, presb.",
  "",
- "Sv. Vincence Ferrerského, knìze",
- "Ferrer Szent Vince áldozópap",
+ "Sv. Vincence FerrerskÃ©ho, knÄ›ze",
+ "Ferrer Szent Vince Ã¡ldozÃ³pap",
  };
 const char *text_APR_07[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Krstite¾a de la Salle, kòaza",
- "Sv. Jana Køtitele de la Salle, knìze",
+{"Sv. JÃ¡na KrstiteÄ¾a de la Salle, kÅˆaza",
+ "Sv. Jana KÅ™titele de la Salle, knÄ›ze",
  "",
  "S. Ioannis Baptist&#230; de la Salle, presb.",
  "",
- "Sv. Jana Køtitele de la Salle, knìze",
- "De la Salle Szent János áldozópap",
+ "Sv. Jana KÅ™titele de la Salle, knÄ›ze",
+ "De la Salle Szent JÃ¡nos Ã¡ldozÃ³pap",
  };
 const char *text_APR_10_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Antona Neyrota, kòaza a muèeníka",
+{"Bl. Antona Neyrota, kÅˆaza a muÄenÃ­ka",
  "",
  "",
  "",
@@ -3945,22 +3945,22 @@ const char *text_APR_10_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_11[POCET_JAZYKOV + 1] = 
-{"Sv. Stanislava, biskupa a muèeníka",
- "Sv. Stanislava, biskupa a muèedníka",
+{"Sv. Stanislava, biskupa a muÄenÃ­ka",
+ "Sv. Stanislava, biskupa a muÄednÃ­ka",
  "",
  "S. Stanislai, ep. et mart.",
  "",
- "Sv. Stanislava, biskupa a muèedníka",
- "Szent Szaniszló püspök és vértanú",
+ "Sv. Stanislava, biskupa a muÄednÃ­ka",
+ "Szent SzaniszlÃ³ pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_APR_13[POCET_JAZYKOV + 1] = 
-{"Sv. Martina I., pápea a muèeníka",
- "Sv. Martina I., papee a muèedníka",
+{"Sv. Martina I., pÃ¡peÅ¾a a muÄenÃ­ka",
+ "Sv. Martina I., papeÅ¾e a muÄednÃ­ka",
  "",
  "S. Martini I, pap&#230; et mart.",
  "",
- "Sv. Martina I., papee a muèedníka",
- "Szent I. Márton pápa és vértanú",
+ "Sv. Martina I., papeÅ¾e a muÄednÃ­ka",
+ "Szent I. MÃ¡rton pÃ¡pa Ã©s vÃ©rtanÃº",
  };
 const char *text_APR_13_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Margity z Citt&#224; di Castello, panny", // &agrave;
@@ -3972,7 +3972,7 @@ const char *text_APR_13_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_14_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Petra Gonzáleza, kòaza",
+{"Bl. Petra GonzÃ¡leza, kÅˆaza",
  "",
  "",
  "",
@@ -3981,16 +3981,16 @@ const char *text_APR_14_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_16[POCET_JAZYKOV + 1] = 
-{"Sv. Márie Bernadety Soubirousovej, panny",
+{"Sv. MÃ¡rie Bernadety Soubirousovej, panny",
  "Sv. Marie Bernadetty Soubirous, panny",
  "",
  "S. Marii Bernadette Soubirous, virg.",
  "",
  "Sv. Marie Bernadetty Soubirous, panny",
- "Soubirous Szent Mária Bernadett szûz",
+ "Soubirous Szent MÃ¡ria Bernadett szÅ±z",
  };
 const char *text_APR_17_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Kláry Gambacortovej, reho¾níèky",
+{"Bl. KlÃ¡ry Gambacortovej, rehoÄ¾nÃ­Äky",
  "",
  "",
  "",
@@ -3999,7 +3999,7 @@ const char *text_APR_17_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_17_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Márie Manciniovej, reho¾níèky",
+{"Bl. MÃ¡rie Manciniovej, rehoÄ¾nÃ­Äky",
  "",
  "",
  "",
@@ -4008,7 +4008,7 @@ const char *text_APR_17_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_19_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Isnarda z Chiampa, kòaza",
+{"Bl. Isnarda z Chiampa, kÅˆaza",
  "",
  "",
  "",
@@ -4031,21 +4031,21 @@ const char *text_APR_20_OP[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Sv. Aneky z Montepulciana, panny, mnišky",
+ "Sv. AneÅ¾ky z Montepulciana, panny, mniÅ¡ky",
  "",
  };
 const char *text_APR_21[POCET_JAZYKOV + 1] = 
-{"Sv. Anzelma, biskupa a uèite¾a Cirkvi",
- "Sv. Anselma, biskupa a uèitele církve",
+{"Sv. Anzelma, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Anselma, biskupa a uÄitele cÃ­rkve",
  "",
  "S. Anselmi, ep. et Eccl. doct.",
  "",
- "Sv. Anselma, biskupa a uèitele Církve",
- "Szent Anzelm püspök és egyháztanító",
+ "Sv. Anselma, biskupa a uÄitele CÃ­rkve",
+ "Szent Anzelm pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_APR_21_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Konráda z Parzhamu, reho¾níka, èlena 1. rádu",
- "Sv. Konráda z Parzhamu, øeholníka",
+{"Sv. KonrÃ¡da z Parzhamu, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Sv. KonrÃ¡da z Parzhamu, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -4053,7 +4053,7 @@ const char *text_APR_21_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_22_SJ[POCET_JAZYKOV + 1] = 
-{"Prebl. Panny Márie, Matky Spoloènosti Jeišovej",
+{"Prebl. Panny MÃ¡rie, Matky SpoloÄnosti JeÅ¾iÅ¡ovej",
  "",
  "",
  "",
@@ -4062,25 +4062,25 @@ const char *text_APR_22_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_23[POCET_JAZYKOV + 1] = 
-{"Sv. Vojtecha, biskupa a muèeníka",
- "Sv. Vojtìcha, biskupa a muèedníka",
+{"Sv. Vojtecha, biskupa a muÄenÃ­ka",
+ "Sv. VojtÄ›cha, biskupa a muÄednÃ­ka",
  "",
  "S. Adalberti, ep. et mart.",
  "",
- "Sv. Vojtìcha, biskupa a muèedníka",
- "Szent Adalbert (Béla) püspök és vértanú",
+ "Sv. VojtÄ›cha, biskupa a muÄednÃ­ka",
+ "Szent Adalbert (BÃ©la) pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_APR_23_HU[POCET_JAZYKOV + 1] = 
-{"Sv. Vojtecha, biskupa a muèeníka",
- "Sv. Vojtìcha, biskupa a muèedníka",
+{"Sv. Vojtecha, biskupa a muÄenÃ­ka",
+ "Sv. VojtÄ›cha, biskupa a muÄednÃ­ka",
  "",
  "S. Adalberti, ep. et mart.",
  "",
- "Sv. Vojtìcha, biskupa a muèedníka",
- "Szent Adalbert (Béla) püspök és vértanú, az Esztergomi fõegyházmegye védõszentje",
+ "Sv. VojtÄ›cha, biskupa a muÄednÃ­ka",
+ "Szent Adalbert (BÃ©la) pÃ¼spÃ¶k Ã©s vÃ©rtanÃº, az Esztergomi fÅ‘egyhÃ¡zmegye vÃ©dÅ‘szentje",
  };
 const char *text_APR_23_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Egida z Assisi, reho¾níka, èlena 1. rádu",
+{"Bl. Egida z Assisi, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -4089,26 +4089,26 @@ const char *text_APR_23_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_24_1[POCET_JAZYKOV + 1] = 
-{"Sv. Juraja, muèeníka",
- "Sv. Jiøí, muèedníka",
+{"Sv. Juraja, muÄenÃ­ka",
+ "Sv. JiÅ™Ã­, muÄednÃ­ka",
  "",
  "S. Georgii, mart.",
  "",
- "Sv. Jiøí, muèedníka",
- "Szent György vértanú",
+ "Sv. JiÅ™Ã­, muÄednÃ­ka",
+ "Szent GyÃ¶rgy vÃ©rtanÃº",
  };
 const char *text_APR_24_2[POCET_JAZYKOV + 1] = 
-{"Sv. Fidéla zo Sigmaringenu, kòaza a muèeníka",
- "Sv. Fidela ze Sigmaringy, knìze a muèedníka",
+{"Sv. FidÃ©la zo Sigmaringenu, kÅˆaza a muÄenÃ­ka",
+ "Sv. Fidela ze Sigmaringy, knÄ›ze a muÄednÃ­ka",
  "",
  "S. Fidelis a Sigmaringen, presb. et mart.",
  "",
- "Sv. Fidela ze Sigmaringy, knìze a muèedníka",
- "Sigmaringeni Szent Fidél áldozópap és vértanú",
+ "Sv. Fidela ze Sigmaringy, knÄ›ze a muÄednÃ­ka",
+ "Sigmaringeni Szent FidÃ©l Ã¡ldozÃ³pap Ã©s vÃ©rtanÃº",
  };
 const char *text_APR_24_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Fidela zo Sigmaringenu, kòaza a muèeníka, èlena 1. rádu",
- "Sv. Fidela ze Sigmaringy, knìze a muèedníka",
+{"Sv. Fidela zo Sigmaringenu, kÅˆaza a muÄenÃ­ka, Älena 1. rÃ¡du",
+ "Sv. Fidela ze Sigmaringy, knÄ›ze a muÄednÃ­ka",
  "",
  "",
  "",
@@ -4117,7 +4117,7 @@ const char *text_APR_24_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_APR_24_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Obrácení našeho otce svatého Augustina, "HTML_LINE_BREAK"biskupa a uèitele církve",
+ "ObrÃ¡cenÃ­ naÅ¡eho otce svatÃ©ho Augustina, "HTML_LINE_BREAK"biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
@@ -4131,11 +4131,11 @@ const char *text_APR_25[POCET_JAZYKOV + 1] =
  "S. Marci, evangelist&#230;",
  "",
  "Sv. Marka, evangelisty",
- "Szent Márk evangélista",
+ "Szent MÃ¡rk evangÃ©lista",
  };
 const char *text_APR_26_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Ludolfa, biskupa a muèedníka "HTML_LINE_BREAK"z premonstrátského øádu",
+ "Sv. Ludolfa, biskupa a muÄednÃ­ka "HTML_LINE_BREAK"z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -4143,7 +4143,7 @@ const char *text_APR_26_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_27_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Kanízia, kòaza a uèite¾a Cirkvi",
+{"Sv. Petra KanÃ­zia, kÅˆaza a uÄiteÄ¾a Cirkvi",
  "",
  "",
  "",
@@ -4161,53 +4161,53 @@ const char *text_APR_27_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_APR_28_1[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Chanela, kòaza a muèeníka",
- "Sv. Petra Chanela, knìze a muèedníka",
+{"Sv. Petra Chanela, kÅˆaza a muÄenÃ­ka",
+ "Sv. Petra Chanela, knÄ›ze a muÄednÃ­ka",
  "",
  "S. Petri Chanel, presb. et mart.",
  "",
- "Sv. Petra Chanela, knìze a muèedníka",
- "Chanel Szent Péter áldozópap és vértanú",
+ "Sv. Petra Chanela, knÄ›ze a muÄednÃ­ka",
+ "Chanel Szent PÃ©ter Ã¡ldozÃ³pap Ã©s vÃ©rtanÃº",
  };
 const char *text_APR_28_2[POCET_JAZYKOV + 1] = 
-{"Sv. ¼udovíta Márie Grignion de Montfort, kòaza",
- "Sv. Ludvíka Marie Grignona z Montfortu, knìze",
+{"Sv. Ä½udovÃ­ta MÃ¡rie Grignion de Montfort, kÅˆaza",
+ "Sv. LudvÃ­ka Marie Grignona z Montfortu, knÄ›ze",
  "",
  "S. Ludovici M. Grignion de Montfort, presb.",
  "",
- "Sv. Ludvíka Marie Grignona z Montfortu, knìze, terciáøe",
- "Montforti Grignion Szent Lajos Mária áldozópap",
+ "Sv. LudvÃ­ka Marie Grignona z Montfortu, knÄ›ze, terciÃ¡Å™e",
+ "Montforti Grignion Szent Lajos MÃ¡ria Ã¡ldozÃ³pap",
  };
 const char *text_APR_29[POCET_JAZYKOV + 1] = 
-{"Sv. Kataríny Sienskej, panny a uèite¾ky Cirkvi,"HTML_LINE_BREAK"patrónky Európy",
- "Sv. Kateøiny Sienské, panny a uèitelky církve,"HTML_LINE_BREAK"patronky Evropy",
+{"Sv. KatarÃ­ny Sienskej, panny a uÄiteÄ¾ky Cirkvi,"HTML_LINE_BREAK"patrÃ³nky EurÃ³py",
+ "Sv. KateÅ™iny SienskÃ©, panny a uÄitelky cÃ­rkve,"HTML_LINE_BREAK"patronky Evropy",
  "",
  "S. Catharin&#230; Senensis, virg. et Eccl. doct.",
  "",
- "Sv. Kateøiny Sienské, panny a uèitelky Církve,"HTML_LINE_BREAK"patronky Evropy, terciáøky",
- "Sienai Szent Katalin szûz és egyháztanító",
+ "Sv. KateÅ™iny SienskÃ©, panny a uÄitelky CÃ­rkve,"HTML_LINE_BREAK"patronky Evropy, terciÃ¡Å™ky",
+ "Sienai Szent Katalin szÅ±z Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_APR_30[POCET_JAZYKOV + 1] = 
-{"Sv. Pia V., pápea",
- "Sv. Pia V., papee",
+{"Sv. Pia V., pÃ¡peÅ¾a",
+ "Sv. Pia V., papeÅ¾e",
  "",
  "S. Pii V, pap&#230;",
  "",
- "Sv. Pia V., papee",
- "Szent V. Piusz pápa",
+ "Sv. Pia V., papeÅ¾e",
+ "Szent V. Piusz pÃ¡pa",
  };
 const char *text_APR_30_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Zikmunda, muèedníka",
+ "Sv. Zikmunda, muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Zikmunda, muèedníka",
+ "Sv. Zikmunda, muÄednÃ­ka",
  "",
  };
 const char *text_APR_30_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Benedikta z Urbina, kòaza, èlena 1. rádu",
- "Bl. Benedikta z Urbina, knìze",
+{"Bl. Benedikta z Urbina, kÅˆaza, Älena 1. rÃ¡du",
+ "Bl. Benedikta z Urbina, knÄ›ze",
  "",
  "",
  "",
@@ -4215,29 +4215,29 @@ const char *text_APR_30_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 
-// --------------- 05 máj ---------------
+// --------------- 05 mÃ¡j ---------------
 
 const char *text_MAJ_01[POCET_JAZYKOV + 1] = 
-{"Sv. Jozefa, robotníka",
- "Sv. Josefa, Dìlníka",
+{"Sv. Jozefa, robotnÃ­ka",
+ "Sv. Josefa, DÄ›lnÃ­ka",
  "",
  "S. loseph Opificis",
  "",
- "Sv. Josefa, Dìlníka",
- "Munkás Szent József",
+ "Sv. Josefa, DÄ›lnÃ­ka",
+ "MunkÃ¡s Szent JÃ³zsef",
  };
 const char *text_MAJ_02[POCET_JAZYKOV + 1] = 
-{"Sv. Atanáza, biskupa a uèite¾a Cirkvi",
- "Sv. Atanáše, biskupa a uèitele církve",
+{"Sv. AtanÃ¡za, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. AtanÃ¡Å¡e, biskupa a uÄitele cÃ­rkve",
  "",
  "S. Athanasii, ep. et Eccl. doct.",
  "",
- "Sv. Atanáše, biskupa a uèitele Církve",
- "Szent Atanáz püspök és egyháztanító",
+ "Sv. AtanÃ¡Å¡e, biskupa a uÄitele CÃ­rkve",
+ "Szent AtanÃ¡z pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_MAJ_02_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Pøenesení sv. Norberta, našeho otce", // iba na Stahove
+ "PÅ™enesenÃ­ sv. Norberta, naÅ¡eho otce", // iba na Stahove
  "",
  "",
  "",
@@ -4245,13 +4245,13 @@ const char *text_MAJ_02_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_03[POCET_JAZYKOV + 1] = 
-{"Sv. Filipa a Jakuba, apoštolov",
- "Sv. Filipa a Jakuba, apoštolù",
+{"Sv. Filipa a Jakuba, apoÅ¡tolov",
+ "Sv. Filipa a Jakuba, apoÅ¡tolÅ¯",
  "",
  "Ss. Philippi et Iacobi, apostolorum",
  "",
- "Sv. Filipa a Jakuba, apoštolù",
- "Szent Fülöp és Szent Jakab apostol",
+ "Sv. Filipa a Jakuba, apoÅ¡tolÅ¯",
+ "Szent FÃ¼lÃ¶p Ã©s Szent Jakab apostol",
  };
 const char *text_MAJ_04_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -4260,10 +4260,10 @@ const char *text_MAJ_04_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Szent Flórián vértanú",
+ "Szent FlÃ³riÃ¡n vÃ©rtanÃº",
  };
 const char *text_MAJ_04_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Jozefa Márie Rubia, kòaza",
+{"Bl. Jozefa MÃ¡rie Rubia, kÅˆaza",
  "",
  "",
  "",
@@ -4272,7 +4272,7 @@ const char *text_MAJ_04_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_04_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Emílie Bicchieriovej, panny",
+{"Bl. EmÃ­lie Bicchieriovej, panny",
  "",
  "",
  "",
@@ -4282,15 +4282,15 @@ const char *text_MAJ_04_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_06_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Jana Sarkandra, knìze a muèedníka",
+ "Sv. Jana Sarkandra, knÄ›ze a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Jana Sarkandra, knìze a muèedníka",
+ "Sv. Jana Sarkandra, knÄ›ze a muÄednÃ­ka",
  "",
  };
 const char *text_MAJ_06_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Dominika Savia, mladíka",
+{"Sv. Dominika Savia, mladÃ­ka",
  "Sv. Dominika Savia, chlapce",
  "",
  "",
@@ -4314,7 +4314,7 @@ const char *text_MAJ_07_HU_1[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Boldog Gizella királyné",
+ "Boldog Gizella kirÃ¡lynÃ©",
  };
 const char *text_MAJ_07_HU_2[POCET_JAZYKOV + 1] = 
 {"",
@@ -4323,19 +4323,19 @@ const char *text_MAJ_07_HU_2[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Az Egri bazilika-fõszékesegyház",
+ "Az Egri bazilika-fÅ‘szÃ©kesegyhÃ¡z",
  };
 const char *text_MAJ_08_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Panny Marie, Prostøednice všech milostí",
+ "Panny Marie, ProstÅ™ednice vÅ¡ech milostÃ­",
  "",
  "",
  "",
- "Panny Marie, Prostøednice všech milostí",
+ "Panny Marie, ProstÅ™ednice vÅ¡ech milostÃ­",
  "",
  };
 const char *text_MAJ_08_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Panny Márie, patrónky Rehole kazate¾ov",
+{"Bl. Panny MÃ¡rie, patrÃ³nky Rehole kazateÄ¾ov",
  "",
  "",
  "",
@@ -4344,7 +4344,7 @@ const char *text_MAJ_08_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_08_OFM[POCET_JAZYKOV + 1] = 
-{"Preblahoslavenej Panny Márie, Matky a Sprostredkovate¾ky milostí",
+{"Preblahoslavenej Panny MÃ¡rie, Matky a SprostredkovateÄ¾ky milostÃ­",
  "",
  "",
  "",
@@ -4353,7 +4353,7 @@ const char *text_MAJ_08_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_08_2_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Ulriky Nischovej, panny, reho¾níèky, èlenky 3. rádu",
+{"Bl. Ulriky Nischovej, panny, rehoÄ¾nÃ­Äky, Älenky 3. rÃ¡du",
  "",
  "",
  "",
@@ -4362,8 +4362,8 @@ const char *text_MAJ_08_2_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_08_3_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jeremiáša z Valašska, reho¾níka, èlena 1. rádu",
- "Bl. Jeremiáše z Valachie, øeholníka",
+{"Bl. JeremiÃ¡Å¡a z ValaÅ¡ska, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Bl. JeremiÃ¡Å¡e z Valachie, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -4371,7 +4371,7 @@ const char *text_MAJ_08_3_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_09_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Kataríny z Bologne, panny, èlenky 2. rádu",
+{"Sv. KatarÃ­ny z Bologne, panny, Älenky 2. rÃ¡du",
  "",
  "",
  "",
@@ -4380,33 +4380,33 @@ const char *text_MAJ_09_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_10_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Antonína Florentského, biskupa",
+{"Sv. AntonÃ­na FlorentskÃ©ho, biskupa",
  "",
  "",
  "",
  "",
- "Sv. Antonína Pierozziho neboli Florentského, biskupa",
+ "Sv. AntonÃ­na Pierozziho neboli FlorentskÃ©ho, biskupa",
  "",
  };
 const char *text_MAJ_11_SK[POCET_JAZYKOV + 1] = 
-{"Bl. Sáry Salkaháziovej, panny a muèenice",
+{"Bl. SÃ¡ry SalkahÃ¡ziovej, panny a muÄenice",
  "",
  "",
  "",
  "",
  "",
- "Boldog Salkaházi Sára szûz és vértanú",
+ "Boldog SalkahÃ¡zi SÃ¡ra szÅ±z Ã©s vÃ©rtanÃº",
  };
 const char *text_MAJ_11_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Ignáca z Laconie, reho¾níka, èlena 1. rádu",
- "Sv. Ignáce z Laconi, øeholníka",
+{"Sv. IgnÃ¡ca z Laconie, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Sv. IgnÃ¡ce z Laconi, Å™eholnÃ­ka",
  "",
  "",
  "",
  "",
  "",
  };
-const char *text_MAJ_11_OP[POCET_JAZYKOV + 1] = // vo všeobecnom kalendári pre OP sa slávi 13. mája
+const char *text_MAJ_11_OP[POCET_JAZYKOV + 1] = // vo vÅ¡eobecnom kalendÃ¡ri pre OP sa slÃ¡vi 13. mÃ¡ja
 {"Bl. Imeldy Lambertiniovej, panny",
  "",
  "",
@@ -4416,35 +4416,35 @@ const char *text_MAJ_11_OP[POCET_JAZYKOV + 1] = // vo všeobecnom kalendári pre O
  "",
  };
 const char *text_MAJ_12_1[POCET_JAZYKOV + 1] = 
-{"Sv. Nerea a Achila, muèeníkov",
- "Sv. Nerea a Achillea, muèedníkù",
+{"Sv. Nerea a Achila, muÄenÃ­kov",
+ "Sv. Nerea a Achillea, muÄednÃ­kÅ¯",
  "",
  "Ss. Nerei et Achillei, mart.",
  "",
- "Sv. Nerea a Achillea, muèedníkù",
- "Szent Néreusz és Szent Achilleusz vértanúk",
+ "Sv. Nerea a Achillea, muÄednÃ­kÅ¯",
+ "Szent NÃ©reusz Ã©s Szent Achilleusz vÃ©rtanÃºk",
  };
 const char *text_MAJ_12_2[POCET_JAZYKOV + 1] = 
-{"Sv. Pankráca, muèeníka",
- "Sv. Pankráce, muèedníka",
+{"Sv. PankrÃ¡ca, muÄenÃ­ka",
+ "Sv. PankrÃ¡ce, muÄednÃ­ka",
  "",
  "S. Pancratii, mart.",
  "",
- "Sv. Pankráce, muèedníka",
- "Szent Pongrác vértanú",
+ "Sv. PankrÃ¡ce, muÄednÃ­ka",
+ "Szent PongrÃ¡c vÃ©rtanÃº",
  };
 const char *text_MAJ_12_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení katedrály sv. Víta",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. VÃ­ta",
  "",
  "",
  "",
- "Vıroèí posvìcení katedrály sv. Víta",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. VÃ­ta",
  "",
  };
 const char *text_MAJ_12_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Leopolda Mandiæa, kòaza, èlena 1. rádu",
- "Sv. Leopolda Mandièe, knìze",
+{"Sv. Leopolda MandiÄ‡a, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. Leopolda MandiÄe, knÄ›ze",
  "",
  "",
  "",
@@ -4461,17 +4461,17 @@ const char *text_MAJ_12_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_13[POCET_JAZYKOV + 1] = 
-{"Panny Márie Fatimskej",
- "Panny Marie Fatimské",
+{"Panny MÃ¡rie Fatimskej",
+ "Panny Marie FatimskÃ©",
  "",
  "",
  "",
- "Panny Marie Fatimské",
- "A Fatimai Boldogságos Szûz Mária",
+ "Panny Marie FatimskÃ©",
+ "A Fatimai BoldogsÃ¡gos SzÅ±z MÃ¡ria",
  };
 const char *text_MAJ_13_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Márie Dominiky Mazzarellovej, panny, "HTML_LINE_BREAK"spoluzakladate¾ky Inštitútu dcér Márie Pomocnice",
- "Sv. Marie Dominiky Mazzarellové, panny "HTML_LINE_BREAK"a spoluzakladatelky Institutu Dcer Panny Marie Pomocnice",
+{"Sv. MÃ¡rie Dominiky Mazzarellovej, panny, "HTML_LINE_BREAK"spoluzakladateÄ¾ky InÅ¡titÃºtu dcÃ©r MÃ¡rie Pomocnice",
+ "Sv. Marie Dominiky MazzarellovÃ©, panny "HTML_LINE_BREAK"a spoluzakladatelky Institutu Dcer Panny Marie Pomocnice",
  "",
  "",
  "",
@@ -4479,7 +4479,7 @@ const char *text_MAJ_13_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_13_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Regalada, kòaza, èlena 1. rádu",
+{"Sv. Petra Regalada, kÅˆaza, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -4488,13 +4488,13 @@ const char *text_MAJ_13_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_14[POCET_JAZYKOV + 1] = 
-{"Sv. Mateja, apoštola",
- "Sv. Matìje, apoštola",
+{"Sv. Mateja, apoÅ¡tola",
+ "Sv. MatÄ›je, apoÅ¡tola",
  "",
  "S. Matthi&#230;, apostoli",
  "",
- "Sv. Matìje, apoštola",
- "Szent Mátyás apostol", // v HU sa slávi 24.2.
+ "Sv. MatÄ›je, apoÅ¡tola",
+ "Szent MÃ¡tyÃ¡s apostol", // v HU sa slÃ¡vi 24.2.
  };
 const char *text_MAJ_15_CZOP[POCET_JAZYKOV + 1] = 
 {"",
@@ -4502,11 +4502,11 @@ const char *text_MAJ_15_CZOP[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Panny Marie, ochránkynì Øádu bratøí kazatelù",
+ "Panny Marie, ochrÃ¡nkynÄ› Å˜Ã¡du bratÅ™Ã­ kazatelÅ¯",
  "",
  };
 const char *text_MAJ_15_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Egída z Vauzela, kòaza",
+{"Bl. EgÃ­da z Vauzela, kÅˆaza",
  "",
  "",
  "",
@@ -4515,7 +4515,7 @@ const char *text_MAJ_15_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_15_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Andreja Abellona, kòaza",
+{"Bl. Andreja Abellona, kÅˆaza",
  "",
  "",
  "",
@@ -4524,7 +4524,7 @@ const char *text_MAJ_15_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_16_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Andreja Bobolu, kòaza a muèeníka", // text_MAJ_15_SJ: na Slovensku sa slávi 15. mája
+{"Sv. Andreja Bobolu, kÅˆaza a muÄenÃ­ka", // text_MAJ_15_SJ: na Slovensku sa slÃ¡vi 15. mÃ¡ja
  "",
  "",
  "",
@@ -4533,17 +4533,17 @@ const char *text_MAJ_16_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_16[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Nepomuckého, kòaza a muèeníka",
- "Sv. Jana Nepomuckého, knìze a muèedníka, "HTML_LINE_BREAK"hlavního patrona Èech",
+{"Sv. JÃ¡na NepomuckÃ©ho, kÅˆaza a muÄenÃ­ka",
+ "Sv. Jana NepomuckÃ©ho, knÄ›ze a muÄednÃ­ka, "HTML_LINE_BREAK"hlavnÃ­ho patrona ÄŒech",
  "",
  "",
  "",
- "Sv. Jana Nepomuckého, knìze a muèedníka, "HTML_LINE_BREAK"hlavního patrona Èech",
- "Nepomuki Szent János áldozópap és vértanú",
+ "Sv. Jana NepomuckÃ©ho, knÄ›ze a muÄednÃ­ka, "HTML_LINE_BREAK"hlavnÃ­ho patrona ÄŒech",
+ "Nepomuki Szent JÃ¡nos Ã¡ldozÃ³pap Ã©s vÃ©rtanÃº",
  };
 const char *text_MAJ_16_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Alojza Orioneho, kòaza",
- "Sv. Aloise Orione, knìze",
+{"Sv. Alojza Orioneho, kÅˆaza",
+ "Sv. Aloise Orione, knÄ›ze",
  "",
  "",
  "",
@@ -4551,8 +4551,8 @@ const char *text_MAJ_16_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_16_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Margity z Cortony, kajúcnice, èlenky 3. rádu",
- "Sv. Markéty z Cortony, kajícnice 3. øádu", // CZ OFM: slávi sa 15MAJ
+{"Sv. Margity z Cortony, kajÃºcnice, Älenky 3. rÃ¡du",
+ "Sv. MarkÃ©ty z Cortony, kajÃ­cnice 3. Å™Ã¡du", // CZ OFM: slÃ¡vi sa 15MAJ
  "",
  "",
  "",
@@ -4560,8 +4560,8 @@ const char *text_MAJ_16_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_17_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Paschala Baylona, reho¾níka, èlena 1. rádu",
- "Sv. Paskala Baylóna, øeholníka",
+{"Sv. Paschala Baylona, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Sv. Paskala BaylÃ³na, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -4575,20 +4575,20 @@ const char *text_MAJ_17_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Boldog Scheffler János püspök és vértanú",
+ "Boldog Scheffler JÃ¡nos pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_MAJ_18[POCET_JAZYKOV + 1] = 
-{"Sv. Jána I., pápea a muèeníka",
- "Sv. Jana I., papee a muèedníka",
+{"Sv. JÃ¡na I., pÃ¡peÅ¾a a muÄenÃ­ka",
+ "Sv. Jana I., papeÅ¾e a muÄednÃ­ka",
  "",
  "S. Ioannis I, pap&#230; et mart.",
  "",
- "Sv. Jana I., papee a muèedníka",
- "Szent I. János pápa és vértanú",
+ "Sv. Jana I., papeÅ¾e a muÄednÃ­ka",
+ "Szent I. JÃ¡nos pÃ¡pa Ã©s vÃ©rtanÃº",
  };
 const char *text_MAJ_18_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Leonarda Murialda, kòaza",
- "Sv. Leonarda Murialda, knìze",
+{"Sv. Leonarda Murialda, kÅˆaza",
+ "Sv. Leonarda Murialda, knÄ›ze",
  "",
  "",
  "",
@@ -4596,8 +4596,8 @@ const char *text_MAJ_18_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_18_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Felixa z Cantalicie, reho¾níka, èlena 1. rádu",
- "Sv. Felixe z Cantalice, øeholníka",
+{"Sv. Felixa z Cantalicie, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Sv. Felixe z Cantalice, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -4605,8 +4605,8 @@ const char *text_MAJ_18_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_19_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Krišpína z Viterba, reho¾níka, èlena 1. rádu",
- "Sv. Kryšpína z Viterba, øeholníka",
+{"Sv. KriÅ¡pÃ­na z Viterba, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Sv. KryÅ¡pÃ­na z Viterba, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -4614,7 +4614,7 @@ const char *text_MAJ_19_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_19_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Františka Colla Guitarta, kòaza",
+{"Bl. FrantiÅ¡ka Colla Guitarta, kÅˆaza",
  "",
  "",
  "",
@@ -4624,25 +4624,25 @@ const char *text_MAJ_19_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_20_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Klementa Marie Hofbauera, knìze",
+ "Sv. Klementa Marie Hofbauera, knÄ›ze",
  "",
  "",
  "",
- "Sv. Klementa Marie Hofbauera, knìze",
+ "Sv. Klementa Marie Hofbauera, knÄ›ze",
  "",
  };
 const char *text_MAJ_20[POCET_JAZYKOV + 1] = 
-{"Sv. Bernardína Sienského, kòaza",
- "Sv. Bernardina Sienského, knìze",
+{"Sv. BernardÃ­na SienskÃ©ho, kÅˆaza",
+ "Sv. Bernardina SienskÃ©ho, knÄ›ze",
  "",
  "S. Bernardini Senensis, presb.",
  "",
- "Sv. Bernardina Sienského, knìze",
- "Sienai Szent Bernardin áldozópap",
+ "Sv. Bernardina SienskÃ©ho, knÄ›ze",
+ "Sienai Szent Bernardin Ã¡ldozÃ³pap",
  };
 const char *text_MAJ_20_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Bernardína Sienského, kòaza, èlena 1. rádu",
- "Sv. Bernardina ze Sieny, knìze",
+{"Sv. BernardÃ­na SienskÃ©ho, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. Bernardina ze Sieny, knÄ›ze",
  "",
  "",
  "",
@@ -4660,39 +4660,39 @@ const char *text_MAJ_20_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_MAJ_21_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení katedrály sv. Petra a Pavla",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. Petra a Pavla",
  "",
  "",
  "",
- "Vıroèí posvìcení katedrály sv. Petra a Pavla",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. Petra a Pavla",
  "",
  };
 const char *text_MAJ_21[POCET_JAZYKOV + 1] = 
-{"Sv. Krištofa Magallanesa, kòaza, a spoloèníkov, muèeníkov",
- "Sv. Kryštofa Magallanese, knìze a druhù, muèedníkù",
+{"Sv. KriÅ¡tofa Magallanesa, kÅˆaza, a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Sv. KryÅ¡tofa Magallanese, knÄ›ze a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Kryštofa Magallanese, knìze a druhù, muèedníkù",
- "Magallán Szent Kristóf áldozópap és társai, mexikói vértanúk",
+ "Sv. KryÅ¡tofa Magallanese, knÄ›ze a druhÅ¯, muÄednÃ­kÅ¯",
+ "MagallÃ¡n Szent KristÃ³f Ã¡ldozÃ³pap Ã©s tÃ¡rsai, mexikÃ³i vÃ©rtanÃºk",
  };
 const char *text_MAJ_21_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Hyacinta Márie Cormiera, kòaza",
+{"Bl. Hyacinta MÃ¡rie Cormiera, kÅˆaza",
  "",
  "",
  "",
  "",
- "Bl. Hyacinta Marie Cormiera, knìze",
+ "Bl. Hyacinta Marie Cormiera, knÄ›ze",
  "",
  };
 const char *text_MAJ_22[POCET_JAZYKOV + 1] = 
-{"Sv. Rity z Kassie, reho¾níèky",
- "Sv. Rity z Cascie, øeholnice",
+{"Sv. Rity z Kassie, rehoÄ¾nÃ­Äky",
+ "Sv. Rity z Cascie, Å™eholnice",
  "",
  "",
  "",
- "Sv. Rity z Cascie, øeholnice",
- "Szent Rita szerzetesnõ",
+ "Sv. Rity z Cascie, Å™eholnice",
+ "Szent Rita szerzetesnÅ‘",
  };
 const char *text_MAJ_23_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -4701,7 +4701,7 @@ const char *text_MAJ_23_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Boldog Apor Vilmos püspök és vértanú",
+ "Boldog Apor Vilmos pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_MAJ_24_OP[POCET_JAZYKOV + 1] = 
 {"Prenesenie pozostatkov sv. otca Dominika",
@@ -4709,12 +4709,12 @@ const char *text_MAJ_24_OP[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Pøenesení ostatkù sv. Otce Dominika",
+ "PÅ™enesenÃ­ ostatkÅ¯ sv. Otce Dominika",
  "",
  };
 const char *text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Heømana Josefa, knìze z premonstrátského øádu",
+ "Sv. HeÅ™mana Josefa, knÄ›ze z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -4722,67 +4722,67 @@ const char *text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_24_OFM[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky Baziliky sv. Františka v Assisi",
- "Posvìcení baziliky sv. Františka v Assisi",
+{"VÃ½roÄie posviacky Baziliky sv. FrantiÅ¡ka v Assisi",
+ "PosvÄ›cenÃ­ baziliky sv. FrantiÅ¡ka v Assisi",
  "",
  "",
  "",
  "",
  "",
  };
-const char *text_MAJ_24[POCET_JAZYKOV + 1] = // ToDo rozdeli pre všeobecnı kalendár a pre SDB
-{"Panny Márie, Pomocnice kresanov, "HTML_LINE_BREAK"hlavnej patrónky Inštitútu dcér Márie Pomocnice "HTML_LINE_BREAK"a celej saleziánskej rodiny",
- "Panny Marie Pomocnice køesanù, "HTML_LINE_BREAK"hlavní patronky Spoleènosti sv. Františka Saleského, "HTML_LINE_BREAK"Institutu Dcer Panny Marie "HTML_LINE_BREAK"a Sekulárního institutu Volontárií Dona Boska",
+const char *text_MAJ_24[POCET_JAZYKOV + 1] = // ToDo rozdeliÅ¥ pre vÅ¡eobecnÃ½ kalendÃ¡r a pre SDB
+{"Panny MÃ¡rie, Pomocnice kresÅ¥anov, "HTML_LINE_BREAK"hlavnej patrÃ³nky InÅ¡titÃºtu dcÃ©r MÃ¡rie Pomocnice "HTML_LINE_BREAK"a celej saleziÃ¡nskej rodiny",
+ "Panny Marie Pomocnice kÅ™esÅ¥anÅ¯, "HTML_LINE_BREAK"hlavnÃ­ patronky SpoleÄnosti sv. FrantiÅ¡ka SaleskÃ©ho, "HTML_LINE_BREAK"Institutu Dcer Panny Marie "HTML_LINE_BREAK"a SekulÃ¡rnÃ­ho institutu VolontÃ¡riÃ­ Dona Boska",
  "",
  "",
  "",
  "",
- "Szûz Mária, a keresztények segítsége",
+ "SzÅ±z MÃ¡ria, a keresztÃ©nyek segÃ­tsÃ©ge",
  };
 const char *text_MAJ_25_1[POCET_JAZYKOV + 1] = 
-{"Sv. Bédu Ctihodného, kòaza a uèite¾a Cirkvi",
- "Sv. Bedy Ctihodného, knìze a uèitele církve",
+{"Sv. BÃ©du CtihodnÃ©ho, kÅˆaza a uÄiteÄ¾a Cirkvi",
+ "Sv. Bedy CtihodnÃ©ho, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "S. Bed&#230; Venerdbilis, presb. et Ecci. doct.",
  "",
- "Sv. Bedy Ctihodného, knìze a uèitele Církve",
- "Tiszteletreméltó Szent Béda áldozópap és egyháztanító",
+ "Sv. Bedy CtihodnÃ©ho, knÄ›ze a uÄitele CÃ­rkve",
+ "TiszteletremÃ©ltÃ³ Szent BÃ©da Ã¡ldozÃ³pap Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_MAJ_25_2[POCET_JAZYKOV + 1] = 
-{"Sv. Gregora VII., pápea",
- "Sv. Øehoøe VII., papee",
+{"Sv. Gregora VII., pÃ¡peÅ¾a",
+ "Sv. Å˜ehoÅ™e VII., papeÅ¾e",
  "",
  "S. Gregorii VII, pap&#230;",
  "",
- "Sv. Øehoøe VII., papee",
- "Szent VII. Gergely pápa",
+ "Sv. Å˜ehoÅ™e VII., papeÅ¾e",
+ "Szent VII. Gergely pÃ¡pa",
  };
 const char *text_MAJ_25_3[POCET_JAZYKOV + 1] = 
-{"Sv. Márie Magdalény de’ Pazzi, panny",
- "Sv. Marie Magdalény de’ Pazzi, panny",
+{"Sv. MÃ¡rie MagdalÃ©ny deâ€™ Pazzi, panny",
+ "Sv. Marie MagdalÃ©ny deâ€™ Pazzi, panny",
  "",
- "S. Mari&#230; Magdalen&#230; de’ Pazzi, virg.",
+ "S. Mari&#230; Magdalen&#230; deâ€™ Pazzi, virg.",
  "",
- "Sv. Marie Magdalény de’ Pazzi, panny",
- "Pazzi Szent Mária Magdolna szûz",
+ "Sv. Marie MagdalÃ©ny deâ€™ Pazzi, panny",
+ "Pazzi Szent MÃ¡ria Magdolna szÅ±z",
  };
 const char *text_MAJ_26[POCET_JAZYKOV + 1] = 
-{"Sv. Filipa Neriho, kòaza",
- "Sv. Filipa Neriho, knìze",
+{"Sv. Filipa Neriho, kÅˆaza",
+ "Sv. Filipa Neriho, knÄ›ze",
  "",
  "S. Philippi Neri, presb.",
  "",
- "Sv. Filipa Neriho, knìze",
- "Néri Szent Fülöp áldozópap",
+ "Sv. Filipa Neriho, knÄ›ze",
+ "NÃ©ri Szent FÃ¼lÃ¶p Ã¡ldozÃ³pap",
  };
 const char *text_MAJ_27[POCET_JAZYKOV + 1] = 
-{"Sv. Augustína z Canterbury, biskupa",
+{"Sv. AugustÃ­na z Canterbury, biskupa",
  "Sv. Augustina z Canterbury, biskupa",
  "",
  "S. Augustini Cantuariensis, ep.",
  "",
  "Sv. Augustina z Canterbury, biskupa",
- "Canterbury Szent Ágoston püspök",
+ "Canterbury Szent Ãgoston pÃ¼spÃ¶k",
  };
 const char *text_MAJ_27_OP[POCET_JAZYKOV + 1] = 
 {"Bl. Andreja Franchiho, biskupa",
@@ -4794,7 +4794,7 @@ const char *text_MAJ_27_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_28_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Márie Bartolomey Bagnesiovej, panny",
+{"Bl. MÃ¡rie Bartolomey Bagnesiovej, panny",
  "",
  "",
  "",
@@ -4803,7 +4803,7 @@ const char *text_MAJ_28_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_29_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Viliama Arnauda, kòaza, a spoloèníkov, muèeníkov",
+{"Bl. Viliama Arnauda, kÅˆaza, a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
@@ -4812,8 +4812,8 @@ const char *text_MAJ_29_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_29_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Jozefa Kowalského, muèeníka",
- "Bl. Josefa Kowalského, knìze, muèedníka",
+{"Bl. Jozefa KowalskÃ©ho, muÄenÃ­ka",
+ "Bl. Josefa KowalskÃ©ho, knÄ›ze, muÄednÃ­ka",
  "",
  "",
  "",
@@ -4821,7 +4821,7 @@ const char *text_MAJ_29_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_MAJ_30_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jakuba Salomoniho, kòaza",
+{"Bl. Jakuba Salomoniho, kÅˆaza",
  "",
  "",
  "",
@@ -4835,7 +4835,7 @@ const char *text_MAJ_30_CZ[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Sv. Zdislavy z Lemberka, matky rodiny, terciáøky,"HTML_LINE_BREAK"spolupatronky provincie",
+ "Sv. Zdislavy z Lemberka, matky rodiny, terciÃ¡Å™ky,"HTML_LINE_BREAK"spolupatronky provincie",
  "",
  };
 const char *text_MAJ_30_HU[POCET_JAZYKOV + 1] = 
@@ -4845,126 +4845,126 @@ const char *text_MAJ_30_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Szent István király ereklyéinek átvitele",
+ "Szent IstvÃ¡n kirÃ¡ly ereklyÃ©inek Ã¡tvitele",
  };
 const char *text_MAJ_31[POCET_JAZYKOV + 1] = 
-{"Navštívenie prebl. Panny Márie",
- "Navštívení Panny Marie",
+{"NavÅ¡tÃ­venie prebl. Panny MÃ¡rie",
+ "NavÅ¡tÃ­venÃ­ Panny Marie",
  "",
  "",
  "",
- "Navštívení Panny Marie",
- "Szûz Mária látogatása Erzsébetnél"HTML_LINE_BREAK"(Sarlós Boldogasszony)",
+ "NavÅ¡tÃ­venÃ­ Panny Marie",
+ "SzÅ±z MÃ¡ria lÃ¡togatÃ¡sa ErzsÃ©betnÃ©l"HTML_LINE_BREAK"(SarlÃ³s Boldogasszony)",
  };
 
-// --------------- 00 pohyblivé slávenia ---------------
+// --------------- 00 pohyblivÃ© slÃ¡venia ---------------
 
 const char *text_NANEBOVSTUPENIE_PANA[POCET_JAZYKOV + 1] = 
-{"Nanebovstúpenie Pána",
- "Nanebevstoupení Pánì",
+{"NanebovstÃºpenie PÃ¡na",
+ "NanebevstoupenÃ­ PÃ¡nÄ›",
  "",
  "",
  "",
- "Nanebevstoupení Pánì",
+ "NanebevstoupenÃ­ PÃ¡nÄ›",
  "Urunk mennybemenetele",
  };
 const char *text_VELKONOCNA_NEDELA[POCET_JAZYKOV + 1] = 
-{"Ve¾konoèná nede¾a",
- "Nedìle Zmrtvıchvstání Pánì",
+{"VeÄ¾konoÄnÃ¡ nedeÄ¾a",
+ "NedÄ›le ZmrtvÃ½chvstÃ¡nÃ­ PÃ¡nÄ›",
  "",
  "",
  "",
- "Nedìle Zmrtvıchvstání Pánì",
- "Húsvétvasárnap",
+ "NedÄ›le ZmrtvÃ½chvstÃ¡nÃ­ PÃ¡nÄ›",
+ "HÃºsvÃ©tvasÃ¡rnap",
  };
-const char *text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1] = // 2012-12-13: XML nepodporuje &mdash; -- pouitı èíselnı kód &#8212; http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
-{HTML_LINE_BREAK" &#8212; Nede¾a Pánovho zmàtvychvstania",
+const char *text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1] = // 2012-12-13: XML nepodporuje &mdash; -- pouÅ¾itÃ½ ÄÃ­selnÃ½ kÃ³d &#8212; http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
+{HTML_LINE_BREAK" &#8212; NedeÄ¾a PÃ¡novho zmÅ•tvychvstania",
  "",
  "",
  "",
  "",
  "",
- ", Krisztus feltámadása",
+ ", Krisztus feltÃ¡madÃ¡sa",
  };
 const char *text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] = 
-{"Nede¾a vo Ve¾konoènej oktáve",
- "Nedìle v oktávu velikonoèním",
+{"NedeÄ¾a vo VeÄ¾konoÄnej oktÃ¡ve",
+ "NedÄ›le v oktÃ¡vu velikonoÄnÃ­m",
  "",
  "",
  "",
- "Nedìle v oktávu velikonoèním",
- "Vasárnap Húsvét nyolcadában",
+ "NedÄ›le v oktÃ¡vu velikonoÄnÃ­m",
+ "VasÃ¡rnap HÃºsvÃ©t nyolcadÃ¡ban",
  };
 const char *text_DEN_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] = 
-{"Ve¾konoèn%c %s",
- "%s velikonoèní",
+{"VeÄ¾konoÄn%s %s",
+ "%s velikonoÄnÃ­",
  "",
  "",
  "",
- "%s velikonoèní",
- "%s Húsvét nyolcadában",
+ "%s velikonoÄnÃ­",
+ "%s HÃºsvÃ©t nyolcadÃ¡ban",
  };
 
-const char *text_HU_VELKONOCNY_PONDELOK = "Húsvéthétfõ"; // pre HU špeciálny názov ve¾konoèného pondelka
+const char *text_HU_VELKONOCNY_PONDELOK = "HÃºsvÃ©thÃ©tfÅ‘"; // pre HU Å¡peciÃ¡lny nÃ¡zov veÄ¾konoÄnÃ©ho pondelka
 
-const char *text_HU_VELKY_TYZDEN_PREFIX = "Nagy"; // pre HU špeciálne názvy dní ve¾kného tıdòa (pondelok a streda)
+const char *text_HU_VELKY_TYZDEN_PREFIX = "Nagy"; // pre HU Å¡peciÃ¡lne nÃ¡zvy dnÃ­ veÄ¾knÃ©ho tÃ½Å¾dÅˆa (pondelok aÅ¾ streda)
 
 const char *text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] = 
-{"Nášho Pána Jeiša Krista,<br/>najvyššieho a veèného kòaza",
- "Našeho Pána Jeíše Krista,<br/>nejvyššího a vìèného knìze",
+{"NÃ¡Å¡ho PÃ¡na JeÅ¾iÅ¡a Krista,<br/>najvyÅ¡Å¡ieho a veÄnÃ©ho kÅˆaza",
+ "NaÅ¡eho PÃ¡na JeÅ¾Ã­Å¡e Krista,<br/>nejvyÅ¡Å¡Ã­ho a vÄ›ÄnÃ©ho knÄ›ze",
  "",
  "",
  "",
- "Našeho Pána Jeíše Krista,<br/>nejvyššího a vìèného knìze",
+ "NaÅ¡eho PÃ¡na JeÅ¾Ã­Å¡e Krista,<br/>nejvyÅ¡Å¡Ã­ho a vÄ›ÄnÃ©ho knÄ›ze",
  "hu_XXX",
  };
 const char *text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1] = 
-{"Najsvätejšej Trojice",
- "Nejsvìtìjší Trojice",
+{"NajsvÃ¤tejÅ¡ej Trojice",
+ "NejsvÄ›tÄ›jÅ¡Ã­ Trojice",
  "",
  "",
  "",
- "Nejsvìtìjší Trojice",
- "Szentháromságvasárnap",
+ "NejsvÄ›tÄ›jÅ¡Ã­ Trojice",
+ "SzenthÃ¡romsÃ¡gvasÃ¡rnap",
  };
 const char *text_KRISTA_KRALA[POCET_JAZYKOV + 1] = 
-{"Krista Krá¾a",
- "Jeíše Krista Krále",
+{"Krista KrÃ¡Ä¾a",
+ "JeÅ¾Ã­Å¡e Krista KrÃ¡le",
  "",
  "",
  "",
- "Jeíše Krista Krále",
- "Krisztus Király",
+ "JeÅ¾Ã­Å¡e Krista KrÃ¡le",
+ "Krisztus KirÃ¡ly",
  };
 const char *text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1] = 
-{"Najsvätejšieho Kristovho tela a krvi",
- "Tìla a krve Pánì",
+{"NajsvÃ¤tejÅ¡ieho Kristovho tela a krvi",
+ "TÄ›la a krve PÃ¡nÄ›",
  "",
  "",
  "",
- "Tìla a krve Pánì",
- "Krisztus Szent Teste és Vére",
+ "TÄ›la a krve PÃ¡nÄ›",
+ "Krisztus Szent Teste Ã©s VÃ©re",
  };
 const char *text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1] = 
-{"Najsvätejšieho Srdca Jeišovho",
- "Nejsvìtìjšího Srdce Jeíšova",
+{"NajsvÃ¤tejÅ¡ieho Srdca JeÅ¾iÅ¡ovho",
+ "NejsvÄ›tÄ›jÅ¡Ã­ho Srdce JeÅ¾Ã­Å¡ova",
  "",
  "",
  "",
- "Nejsvìtìjšího Srdce Jeíšova",
- "Jézus Szent Szíve",
+ "NejsvÄ›tÄ›jÅ¡Ã­ho Srdce JeÅ¾Ã­Å¡ova",
+ "JÃ©zus Szent SzÃ­ve",
  };
 const char *text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1] = 
-{"Nepoškvrneného Srdca Panny Márie", // 2010-06-16: opravenı názov pod¾a breviára i direktória
- "Neposkvrnìného Srdce Panny Marie",
+{"NepoÅ¡kvrnenÃ©ho Srdca Panny MÃ¡rie", // 2010-06-16: opravenÃ½ nÃ¡zov podÄ¾a breviÃ¡ra i direktÃ³ria
+ "NeposkvrnÄ›nÃ©ho Srdce Panny Marie",
  "",
  "",
  "",
- "Neposkvrnìného Srdce Panny Marie",
- "A Boldogságos Szûz Mária Szeplõtelen Szíve",
+ "NeposkvrnÄ›nÃ©ho Srdce Panny Marie",
+ "A BoldogsÃ¡gos SzÅ±z MÃ¡ria SzeplÅ‘telen SzÃ­ve",
  };
 const char *text_NEPOSKVRNENEHO_SRDCA_PM_OFM[POCET_JAZYKOV + 1] = 
-{"Nepoškvrneného Srdca Panny Márie, "HTML_LINE_BREAK"patrónky slovenskej provincie Rádu menších bratov kapucínov",
+{"NepoÅ¡kvrnenÃ©ho Srdca Panny MÃ¡rie, "HTML_LINE_BREAK"patrÃ³nky slovenskej provincie RÃ¡du menÅ¡Ã­ch bratov kapucÃ­nov",
  "",
  "",
  "",
@@ -4973,74 +4973,74 @@ const char *text_NEPOSKVRNENEHO_SRDCA_PM_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NARODENIE_PANA[POCET_JAZYKOV + 1] = 
-{"Narodenie Pána",
- "Narození Pánì",
+{"Narodenie PÃ¡na",
+ "NarozenÃ­ PÃ¡nÄ›",
  "",
  "",
  "",
- "Narození Pánì",
- "Urunk születése (Karácsony)",
+ "NarozenÃ­ PÃ¡nÄ›",
+ "Urunk szÃ¼letÃ©se (KarÃ¡csony)",
  };
 const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1] = 
-{"Zoslanie Ducha Svätého",
- "Seslání Ducha svatého",
+{"Zoslanie Ducha SvÃ¤tÃ©ho",
+ "SeslÃ¡nÃ­ Ducha svatÃ©ho",
  "",
  "",
  "",
- "Seslání Ducha Svatého",
- "Pünkösd",
+ "SeslÃ¡nÃ­ Ducha SvatÃ©ho",
+ "PÃ¼nkÃ¶sd",
  };
 const char *text_PRVA_ADVENTNA_NEDELA[POCET_JAZYKOV + 1] = 
-{"Prvá adventná nede¾a",
- "První nedìle adventní",
+{"PrvÃ¡ adventnÃ¡ nedeÄ¾a",
+ "PrvnÃ­ nedÄ›le adventnÃ­",
  "",
  "",
  "",
- "První nedìle adventní",
- "Advent elsõ vasárnapja",
+ "PrvnÃ­ nedÄ›le adventnÃ­",
+ "Advent elsÅ‘ vasÃ¡rnapja",
  };
 const char *text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1] = 
-{"Svätej rodiny Jeiša, Márie a Jozefa",
- "Sv. Rodiny Jeíše, Marie a Josefa",
+{"SvÃ¤tej rodiny JeÅ¾iÅ¡a, MÃ¡rie a Jozefa",
+ "Sv. Rodiny JeÅ¾Ã­Å¡e, Marie a Josefa",
  "",
  "",
  "",
- "Sv. Rodiny Jeíše, Marie a Josefa",
- "A Szent Család: Jézus, Mária és József", // "Szent Család ünnepe"
+ "Sv. Rodiny JeÅ¾Ã­Å¡e, Marie a Josefa",
+ "A Szent CsalÃ¡d: JÃ©zus, MÃ¡ria Ã©s JÃ³zsef", // "Szent CsalÃ¡d Ã¼nnepe"
  };
 const char *text_SPOMIENKA_PM_V_SOBOTU[POCET_JAZYKOV + 1] = 
-{"Spomienka Panny Márie v sobotu",
- "Sobotní památka Panny Marie",
+{"Spomienka Panny MÃ¡rie v sobotu",
+ "SobotnÃ­ pamÃ¡tka Panny Marie",
  "",
  "Memoria S. Mari&#230; in sabbato",
  "",
- "Sobotní památka Panny Marie",
- "Szûz Mária szombati emléknapja",
+ "SobotnÃ­ pamÃ¡tka Panny Marie",
+ "SzÅ±z MÃ¡ria szombati emlÃ©knapja",
  };
 
-// --------------- 06 jún ---------------
+// --------------- 06 jÃºn ---------------
 
 const char *text_JUN_01[POCET_JAZYKOV + 1] = 
-{"Sv. Justína, muèeníka",
- "Sv. Justina, muèedníka",
+{"Sv. JustÃ­na, muÄenÃ­ka",
+ "Sv. Justina, muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Justina, muèedníka",
- "Szent Jusztínusz vértanú",
+ "Sv. Justina, muÄednÃ­ka",
+ "Szent JusztÃ­nusz vÃ©rtanÃº",
  };
 const char *text_JUN_02[POCET_JAZYKOV + 1] = 
-{"Sv. Marcelína a Petra, muèeníkov",
- "Sv. Marcelina a Petra, muèedníkù",
+{"Sv. MarcelÃ­na a Petra, muÄenÃ­kov",
+ "Sv. Marcelina a Petra, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Marcelina a Petra, muèedníkù",
- "Szent Marcellínusz és Szent Péter vértanúk",
+ "Sv. Marcelina a Petra, muÄednÃ­kÅ¯",
+ "Szent MarcellÃ­nusz Ã©s Szent PÃ©ter vÃ©rtanÃºk",
  };
 const char *text_JUN_02_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Felixa z Nikózie, reho¾níka, èlena 1. rádu",
- "Sv. Felixe z Nicosie, øeholníka",
+{"Sv. Felixa z NikÃ³zie, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Sv. Felixe z Nicosie, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -5048,7 +5048,7 @@ const char *text_JUN_02_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_02_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Sadoka, kòaza, a spoloèníkov, muèeníkov",
+{"Bl. Sadoka, kÅˆaza, a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
@@ -5057,21 +5057,21 @@ const char *text_JUN_02_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_03[POCET_JAZYKOV + 1] = 
-{"Sv. Karola Lwangu a spoloèníkov, muèeníkov",
- "Sv. Karla Lwangy a druhù, muèedníkù",
+{"Sv. Karola Lwangu a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Sv. Karla Lwangy a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Karla Lwangy a druhù, muèedníkù",
- "Lwanga Szent Károly és társai, vértanúk",
+ "Sv. Karla Lwangy a druhÅ¯, muÄednÃ­kÅ¯",
+ "Lwanga Szent KÃ¡roly Ã©s tÃ¡rsai, vÃ©rtanÃºk",
  };
 const char *text_JUN_04_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Veronského, kòaza a muèeníka",
+{"Sv. Petra VeronskÃ©ho, kÅˆaza a muÄenÃ­ka",
  "",
  "",
  "",
  "",
- "Sv. Petra Veronského, knìze a muèedníka",
+ "Sv. Petra VeronskÃ©ho, knÄ›ze a muÄednÃ­ka",
  "",
  };
 const char *text_JUN_04_HU[POCET_JAZYKOV + 1] = 
@@ -5081,16 +5081,16 @@ const char *text_JUN_04_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Szent Quirinus (Kerény) püspök és vértanú",
+ "Szent Quirinus (KerÃ©ny) pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_JUN_05[POCET_JAZYKOV + 1] = 
-{"Sv. Bonifáca, biskupa a muèeníka",
- "Sv. Bonifáce, biskupa a muèedníka",
+{"Sv. BonifÃ¡ca, biskupa a muÄenÃ­ka",
+ "Sv. BonifÃ¡ce, biskupa a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Bonifáce, biskupa a muèedníka",
- "Szent Bonifác püspök és vértanú",
+ "Sv. BonifÃ¡ce, biskupa a muÄednÃ­ka",
+ "Szent BonifÃ¡c pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_JUN_06[POCET_JAZYKOV + 1] = 
 {"Sv. Norberta, biskupa",
@@ -5099,11 +5099,11 @@ const char *text_JUN_06[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Norberta, biskupa",
- "Szent Norbert püspök",
+ "Szent Norbert pÃ¼spÃ¶k",
  };
 const char *text_JUN_06_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Našeho otce sv. Norberta, biskupa "HTML_LINE_BREAK"a zakladatele premonstrátského øádu",
+ "NaÅ¡eho otce sv. Norberta, biskupa "HTML_LINE_BREAK"a zakladatele premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -5117,11 +5117,11 @@ const char *text_JUN_08_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Prágai Szent Ágnes szûz",
+ "PrÃ¡gai Szent Ãgnes szÅ±z",
  };
 const char *text_JUN_08_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Mikuláša z Gesturi, reho¾níka, èlena 1. rádu",
- "Bl. Mikuláše z Gesturi, øeholníka",
+{"Bl. MikulÃ¡Å¡a z Gesturi, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Bl. MikulÃ¡Å¡e z Gesturi, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -5129,8 +5129,8 @@ const char *text_JUN_08_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_08_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Istvána Sándora, muèeníka",
- "Bl. Istvána Sándora, muèedníka",
+{"Bl. IstvÃ¡na SÃ¡ndora, muÄenÃ­ka",
+ "Bl. IstvÃ¡na SÃ¡ndora, muÄednÃ­ka",
  "",
  "",
  "",
@@ -5138,25 +5138,25 @@ const char *text_JUN_08_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_08_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Diany a Cecílie, panien",
+{"Bl. Diany a CecÃ­lie, panien",
  "",
  "",
  "",
  "",
- "Bl. Diany Andalo a Cecílie, panen, mnišek",
+ "Bl. Diany Andalo a CecÃ­lie, panen, mniÅ¡ek",
  "",
  };
 const char *text_JUN_09[POCET_JAZYKOV + 1] = 
-{"Sv. Efréma, diakona a uèite¾a Cirkvi",
- "Sv. Efréma Syrského, jáhna a uèitele církve",
+{"Sv. EfrÃ©ma, diakona a uÄiteÄ¾a Cirkvi",
+ "Sv. EfrÃ©ma SyrskÃ©ho, jÃ¡hna a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Efréma Syrského, jáhna a uèitele Církve",
- "Szent Efrém diakónus és egyháztanító",
+ "Sv. EfrÃ©ma SyrskÃ©ho, jÃ¡hna a uÄitele CÃ­rkve",
+ "Szent EfrÃ©m diakÃ³nus Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_JUN_09_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Jozefa de Anchieta, kòaza",
+{"Bl. Jozefa de Anchieta, kÅˆaza",
  "",
  "",
  "",
@@ -5165,7 +5165,7 @@ const char *text_JUN_09_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_10_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jána Dominiciho, biskupa",
+{"Bl. JÃ¡na Dominiciho, biskupa",
  "",
  "",
  "",
@@ -5174,17 +5174,17 @@ const char *text_JUN_10_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_11[POCET_JAZYKOV + 1] = 
-{"Sv. Barnabáša, apoštola",
- "Sv. Barnabáše, apoštola",
+{"Sv. BarnabÃ¡Å¡a, apoÅ¡tola",
+ "Sv. BarnabÃ¡Å¡e, apoÅ¡tola",
  "",
  "",
  "",
- "Sv. Barnabáše, apoštola",
- "Szent Barnabás apostol",
+ "Sv. BarnabÃ¡Å¡e, apoÅ¡tola",
+ "Szent BarnabÃ¡s apostol",
  };
 const char *text_JUN_12_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Marie Antoníny Kratochvílové, panny, a druhù muèedníkù",
+ "Bl. Marie AntonÃ­ny KratochvÃ­lovÃ©, panny, a druhÅ¯ muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -5192,8 +5192,8 @@ const char *text_JUN_12_CZ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_12_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Františka K&#281;syho a spoloèníkov, muèeníkov", // Bl. Františka Kesyho a spoloèníkov, muèeníkov (small latin letter e with ogonek)
- "Bl. Františka K&#281;syho a druhù, muèedníkù ",
+{"Bl. FrantiÅ¡ka K&#281;syho a spoloÄnÃ­kov, muÄenÃ­kov", // Bl. FrantiÅ¡ka Kesyho a spoloÄnÃ­kov, muÄenÃ­kov (small latin letter e with ogonek)
+ "Bl. FrantiÅ¡ka K&#281;syho a druhÅ¯, muÄednÃ­kÅ¯ ",
  "",
  "",
  "",
@@ -5201,7 +5201,7 @@ const char *text_JUN_12_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_12_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Štefana Bandelliho, kòaza",
+{"Bl. Å tefana Bandelliho, kÅˆaza",
  "",
  "",
  "",
@@ -5210,8 +5210,8 @@ const char *text_JUN_12_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_12_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jolandy Uhorskej, reho¾níèky, èlenky 2. rádu",
- "Bl. Jolanty Uherské, øeholnice",
+{"Bl. Jolandy Uhorskej, rehoÄ¾nÃ­Äky, Älenky 2. rÃ¡du",
+ "Bl. Jolanty UherskÃ©, Å™eholnice",
  "",
  "",
  "",
@@ -5219,7 +5219,7 @@ const char *text_JUN_12_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_12_2_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Floridy Cevoliovej, panny, èlenky 2. rádu",
+{"Bl. Floridy Cevoliovej, panny, Älenky 2. rÃ¡du",
  "Bl. Floridy Cevoli, panny",
  "",
  "",
@@ -5228,7 +5228,7 @@ const char *text_JUN_12_2_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_12_3_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Antona Bajewského a spoloèníkov, muèeníkov: "HTML_LINE_BREAK"Pia Bartošika, Inocenta Guza, Achilla Puchalu, Hermana St&#281;npie&nacute;a, kòazov; "HTML_LINE_BREAK"Timoteja Trojanowského, Bonifáca &#379;ukowského, reho¾níkov, èlenov 1. rádu",
+{"Bl. Antona BajewskÃ©ho a spoloÄnÃ­kov, muÄenÃ­kov: "HTML_LINE_BREAK"Pia BartoÅ¡ika, Inocenta Guza, Achilla Puchalu, Hermana St&#281;npie&nacute;a, kÅˆazov; "HTML_LINE_BREAK"Timoteja TrojanowskÃ©ho, BonifÃ¡ca &#379;ukowskÃ©ho, rehoÄ¾nÃ­kov, Älenov 1. rÃ¡du",
  "",
  "",
  "",
@@ -5237,8 +5237,8 @@ const char *text_JUN_12_3_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_13_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Antona Paduánskeho, kòaza a uèite¾a Cirkvi, èlena 1. rádu",
- "Sv. Antonína z Padovy, knìze a uèitele církve",
+{"Sv. Antona PaduÃ¡nskeho, kÅˆaza a uÄiteÄ¾a Cirkvi, Älena 1. rÃ¡du",
+ "Sv. AntonÃ­na z Padovy, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "",
  "",
@@ -5246,13 +5246,13 @@ const char *text_JUN_13_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_13[POCET_JAZYKOV + 1] = 
-{"Sv. Antona Paduánskeho, kòaza a uèite¾a Cirkvi",
- "Sv. Antonína z Padovy, knìze a uèitele církve",
+{"Sv. Antona PaduÃ¡nskeho, kÅˆaza a uÄiteÄ¾a Cirkvi",
+ "Sv. AntonÃ­na z Padovy, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Antonína z Padovy, knìze a uèitele Církve",
- "Páduai Szent Antal áldozópap és egyháztanító",
+ "Sv. AntonÃ­na z Padovy, knÄ›ze a uÄitele CÃ­rkve",
+ "PÃ¡duai Szent Antal Ã¡ldozÃ³pap Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_JUN_14_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -5261,15 +5261,15 @@ const char *text_JUN_14_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "A Szombathelyi székesegyház felszentelése",
+ "A Szombathelyi szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_JUN_15_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Víta, muèedníka",
+ "Sv. VÃ­ta, muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Víta, muèedníka",
+ "Sv. VÃ­ta, muÄednÃ­ka",
  "",
  };
 const char *text_JUN_15_HU[POCET_JAZYKOV + 1] = 
@@ -5279,10 +5279,10 @@ const char *text_JUN_15_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Árpád-házi Boldog Jolán szerzetesnõ",
+ "ÃrpÃ¡d-hÃ¡zi Boldog JolÃ¡n szerzetesnÅ‘",
  };
 const char *text_JUN_16_SK[POCET_JAZYKOV + 1] = 
-{"Sv. Neita, muèeníka",
+{"Sv. Neita, muÄenÃ­ka",
  "",
  "",
  "",
@@ -5291,7 +5291,7 @@ const char *text_JUN_16_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_16_1_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Márie Terézie Schererovej, panny, reho¾níèky, èlenky 3. rádu",
+{"Bl. MÃ¡rie TerÃ©zie Schererovej, panny, rehoÄ¾nÃ­Äky, Älenky 3. rÃ¡du",
  "",
  "",
  "",
@@ -5300,8 +5300,8 @@ const char *text_JUN_16_1_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_16_2_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Aniceta Koplina, kòaza, a spoloèníkov, muèeníkov, èlenov 1. rádu",
- "Bl. Aniceta Kopliñského a druhù, muèedníkù",
+{"Bl. Aniceta Koplina, kÅˆaza, a spoloÄnÃ­kov, muÄenÃ­kov, Älenov 1. rÃ¡du",
+ "Bl. Aniceta KopliÅ„skÃ©ho a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -5310,7 +5310,7 @@ const char *text_JUN_16_2_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_JUN_16_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Isfrída, biskupa z premonstrátského øádu",
+ "Sv. IsfrÃ­da, biskupa z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -5324,10 +5324,10 @@ const char *text_JUN_16_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Tours-i Szent Márton püspök ereklyéinek átvitele",
+ "Tours-i Szent MÃ¡rton pÃ¼spÃ¶k ereklyÃ©inek Ã¡tvitele",
  };
 const char *text_JUN_17_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Alberta Chmielowského, reho¾níka, èlena 3. rádu",
+{"Sv. Alberta ChmielowskÃ©ho, rehoÄ¾nÃ­ka, Älena 3. rÃ¡du",
  "",
  "",
  "",
@@ -5345,34 +5345,34 @@ const char *text_JUN_18_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_19[POCET_JAZYKOV + 1] = 
-{"Sv. Romualda, opáta",
+{"Sv. Romualda, opÃ¡ta",
  "Sv. Romualda, opata",
  "",
  "",
  "",
  "Sv. Romualda, opata",
- "Szent Romuald apát",
+ "Szent Romuald apÃ¡t",
  };
 const char *text_JUN_19_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Jana Nepomuckého Neumanna, biskupa",
+ "Sv. Jana NepomuckÃ©ho Neumanna, biskupa",
  "",
  "",
  "",
- "Sv. Jana Nepomuckého Neumanna, biskupa",
+ "Sv. Jana NepomuckÃ©ho Neumanna, biskupa",
  "",
  };
 const char *text_JUN_21[POCET_JAZYKOV + 1] = 
-{"Sv. Alojza Gonzágu, reho¾níka",
- "Sv. Aloise Gonzagy, øeholníka",
+{"Sv. Alojza GonzÃ¡gu, rehoÄ¾nÃ­ka",
+ "Sv. Aloise Gonzagy, Å™eholnÃ­ka",
  "",
  "",
  "",
- "Sv. Aloise Gonzagy, øeholníka",
- "Gonzága Szent Alajos szerzetes",
+ "Sv. Aloise Gonzagy, Å™eholnÃ­ka",
+ "GonzÃ¡ga Szent Alajos szerzetes",
  };
 const char *text_JUN_21_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Alojza Gonzagu, reho¾níka",
+{"Sv. Alojza Gonzagu, rehoÄ¾nÃ­ka",
  "",
  "",
  "",
@@ -5381,22 +5381,22 @@ const char *text_JUN_21_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_22_2[POCET_JAZYKOV + 1] = 
-{"Sv. Pavlína z Noly, biskupa",
- "Sv. Paulina Nolánského, biskupa",
+{"Sv. PavlÃ­na z Noly, biskupa",
+ "Sv. Paulina NolÃ¡nskÃ©ho, biskupa",
  "",
  "",
  "",
- "Sv. Paulina Nolánského, biskupa",
- "Nolai Szent Paulínusz püspök",
+ "Sv. Paulina NolÃ¡nskÃ©ho, biskupa",
+ "Nolai Szent PaulÃ­nusz pÃ¼spÃ¶k",
  };
 const char *text_JUN_22_1[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Fishera, biskupa,"HTML_LINE_BREAK"a sv. Tomáša Morusa, muèeníkov", // kedysi: Mórusa; Direktórium 2012, str. 156, uvádza u iba s krátkym "o"
- "Sv. Jana Fishera, biskupa,"HTML_LINE_BREAK"a Tomáše Mora, muèedníkù",
+{"Sv. JÃ¡na Fishera, biskupa,"HTML_LINE_BREAK"a sv. TomÃ¡Å¡a Morusa, muÄenÃ­kov", // kedysi: MÃ³rusa; DirektÃ³rium 2012, str. 156, uvÃ¡dza uÅ¾ iba s krÃ¡tkym "o"
+ "Sv. Jana Fishera, biskupa,"HTML_LINE_BREAK"a TomÃ¡Å¡e Mora, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Jana Fishera, biskupa,"HTML_LINE_BREAK"a Tomáše Mora, muèedníkù",
- "Fisher Szent János püspök"HTML_LINE_BREAK"és Morus Szent Tamás vértanúk",
+ "Sv. Jana Fishera, biskupa,"HTML_LINE_BREAK"a TomÃ¡Å¡e Mora, muÄednÃ­kÅ¯",
+ "Fisher Szent JÃ¡nos pÃ¼spÃ¶k"HTML_LINE_BREAK"Ã©s Morus Szent TamÃ¡s vÃ©rtanÃºk",
  };
 const char *text_JUN_22_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -5405,11 +5405,11 @@ const char *text_JUN_22_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "A Pécsi székesegyház felszentelése",
+ "A PÃ©csi szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_JUN_23_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Jozefa Cafassa, kòaza",
- "Sv. Josefa Cafassa, knìze",
+{"Sv. Jozefa Cafassa, kÅˆaza",
+ "Sv. Josefa Cafassa, knÄ›ze",
  "",
  "",
  "",
@@ -5417,7 +5417,7 @@ const char *text_JUN_23_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_23_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Inocenta V., pápea",
+{"Bl. Inocenta V., pÃ¡peÅ¾a",
  "",
  "",
  "",
@@ -5426,17 +5426,17 @@ const char *text_JUN_23_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_24[POCET_JAZYKOV + 1] = 
-{"Narodenie sv. Jána Krstite¾a",
- "Narození svatého Jana Køtitele",
+{"Narodenie sv. JÃ¡na KrstiteÄ¾a",
+ "NarozenÃ­ svatÃ©ho Jana KÅ™titele",
  "",
  "",
  "",
- "Narození svatého Jana Køtitele",
- "Keresztelõ Szent János születése",
+ "NarozenÃ­ svatÃ©ho Jana KÅ™titele",
+ "KeresztelÅ‘ Szent JÃ¡nos szÃ¼letÃ©se",
  };
 const char *text_JUN_26_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Andreja Hyacinta Longina, biskupa, èlena 1. rádu",
- "Bl. Ondøeje Hyacinta Longhina, biskupa",
+{"Bl. Andreja Hyacinta Longina, biskupa, Älena 1. rÃ¡du",
+ "Bl. OndÅ™eje Hyacinta Longhina, biskupa",
  "",
  "",
  "",
@@ -5444,13 +5444,13 @@ const char *text_JUN_26_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_27[POCET_JAZYKOV + 1] = 
-{"Sv. Cyrila Alexandrijského, biskupa a uèite¾a Cirkvi",
- "Sv. Cyrila Alexandrijského, biskupa a uèitele církve",
+{"Sv. Cyrila AlexandrijskÃ©ho, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Cyrila AlexandrijskÃ©ho, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Cyrila Alexandrijského, biskupa a uèitele církve",
- "Alexandriai Szent Cirill püspök és egyháztanító", // HU: 26JUN
+ "Sv. Cyrila AlexandrijskÃ©ho, biskupa a uÄitele cÃ­rkve",
+ "Alexandriai Szent Cirill pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³", // HU: 26JUN
  };
 const char *text_JUN_27_SK_HU[POCET_JAZYKOV + 1] = 
 {"Sv. Ladislava",
@@ -5459,10 +5459,10 @@ const char *text_JUN_27_SK_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Szent László király",
+ "Szent LÃ¡szlÃ³ kirÃ¡ly",
  };
 const char *text_JUN_27_CSSR[POCET_JAZYKOV + 1] = 
-{"Panny Márie, Matky ustaviènej pomoci",
+{"Panny MÃ¡rie, Matky ustaviÄnej pomoci",
  "",
  "",
  "",
@@ -5471,53 +5471,53 @@ const char *text_JUN_27_CSSR[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUN_28[POCET_JAZYKOV + 1] = 
-{"Sv. Ireneja, biskupa a muèeníka",
- "Sv. Ireneje, biskupa a muèedníka",
+{"Sv. Ireneja, biskupa a muÄenÃ­ka",
+ "Sv. Ireneje, biskupa a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Ireneje, biskupa a muèedníka",
- "Szent Iréneusz püspök és vértanú",
+ "Sv. Ireneje, biskupa a muÄednÃ­ka",
+ "Szent IrÃ©neusz pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_JUN_29[POCET_JAZYKOV + 1] = 
-{"Sv. Petra a Pavla, apoštolov",
- "Sv. Petra a Pavla, apoštolù",
+{"Sv. Petra a Pavla, apoÅ¡tolov",
+ "Sv. Petra a Pavla, apoÅ¡tolÅ¯",
  "",
  "",
  "",
- "Sv. Petra a Pavla, apoštolù",
- "Szent Péter és Szent Pál apostolok",
+ "Sv. Petra a Pavla, apoÅ¡tolÅ¯",
+ "Szent PÃ©ter Ã©s Szent PÃ¡l apostolok",
  };
 const char *text_JUN_29_OPRAEM[POCET_JAZYKOV + 1] = 
-{"Sv. Petra a Pavla, apoštolov",
- "Sv. Petra a Pavla, apoštolù, titulární slavnost opatského kostela",
+{"Sv. Petra a Pavla, apoÅ¡tolov",
+ "Sv. Petra a Pavla, apoÅ¡tolÅ¯, titulÃ¡rnÃ­ slavnost opatskÃ©ho kostela",
  "",
  "",
  "",
- "Sv. Petra a Pavla, apoštolù",
- "Szent Péter és Szent Pál apostolok",
+ "Sv. Petra a Pavla, apoÅ¡tolÅ¯",
+ "Szent PÃ©ter Ã©s Szent PÃ¡l apostolok",
  };
 const char *text_JUN_30[POCET_JAZYKOV + 1] = 
-{"Prvıch svätıch muèeníkov Cirkvi v Ríme",
- "Svatıch prvomuèedníkù øímskıch",
+{"PrvÃ½ch svÃ¤tÃ½ch muÄenÃ­kov Cirkvi v RÃ­me",
+ "SvatÃ½ch prvomuÄednÃ­kÅ¯ Å™Ã­mskÃ½ch",
  "",
  "",
  "",
- "Svatıch prvomuèedníkù øímskıch",
- "A római Egyház elsõ szent vértanúi",
+ "SvatÃ½ch prvomuÄednÃ­kÅ¯ Å™Ã­mskÃ½ch",
+ "A rÃ³mai EgyhÃ¡z elsÅ‘ szent vÃ©rtanÃºi",
  };
 const char *text_JUN_30_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení katedrály sv. Václava",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. VÃ¡clava",
  "",
  "",
  "",
- "Vıroèí posvìcení katedrály sv. Václava",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. VÃ¡clava",
  "",
  };
 const char *text_JUN_30_CSSR[POCET_JAZYKOV + 1] = 
-{"Bl. Januára Márie Sarnelliho, kòaza",
- "Bl. Geranno Marie Sarnelliho, knìze",
+{"Bl. JanuÃ¡ra MÃ¡rie Sarnelliho, kÅˆaza",
+ "Bl. Geranno Marie Sarnelliho, knÄ›ze",
  "",
  "",
  "",
@@ -5525,10 +5525,10 @@ const char *text_JUN_30_CSSR[POCET_JAZYKOV + 1] =
  "",
  };
 
-// --------------- 07 júl ---------------
+// --------------- 07 jÃºl ---------------
 
 const char *text_JUL_02_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Bernardína Realina, sv. Jána Františka Régisa, sv. Františka de Geronimo, "HTML_LINE_BREAK"bl. Juliána Maunoira, bl. Antona Baldinucciho, kòazov", // text_JUL_01_SJ: na Slovensku sa slávi 1. júla
+{"Sv. BernardÃ­na Realina, sv. JÃ¡na FrantiÅ¡ka RÃ©gisa, sv. FrantiÅ¡ka de Geronimo, "HTML_LINE_BREAK"bl. JuliÃ¡na Maunoira, bl. Antona Baldinucciho, kÅˆazov", // text_JUL_01_SJ: na Slovensku sa slÃ¡vi 1. jÃºla
  "",
  "",
  "",
@@ -5537,22 +5537,22 @@ const char *text_JUL_02_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_03[POCET_JAZYKOV + 1] = 
-{"Sv. Tomáša, apoštola",
- "Sv. Tomáše, apoštola",
+{"Sv. TomÃ¡Å¡a, apoÅ¡tola",
+ "Sv. TomÃ¡Å¡e, apoÅ¡tola",
  "",
  "",
  "",
- "Sv. Tomáše, apoštola",
- "Szent Tamás apostol",
+ "Sv. TomÃ¡Å¡e, apoÅ¡tola",
+ "Szent TamÃ¡s apostol",
  };
 const char *text_JUL_04[POCET_JAZYKOV + 1] = 
-{"Sv. Albety Portugalskej",
- "Sv. Albìty Portugalské",
+{"Sv. AlÅ¾bety Portugalskej",
+ "Sv. AlÅ¾bÄ›ty PortugalskÃ©",
  "",
  "",
  "",
- "Sv. Albìty Portugalské",
- "Portugáliai Szent Erzsébet",
+ "Sv. AlÅ¾bÄ›ty PortugalskÃ©",
+ "PortugÃ¡liai Szent ErzsÃ©bet",
  };
 const char *text_JUL_04_CZ[POCET_JAZYKOV + 1] = 
 {"",
@@ -5564,7 +5564,7 @@ const char *text_JUL_04_CZ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_04_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Kataríny Jarrigeovej, panny",
+{"Bl. KatarÃ­ny Jarrigeovej, panny",
  "",
  "",
  "",
@@ -5582,22 +5582,22 @@ const char *text_JUL_04_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_05[POCET_JAZYKOV + 1] = 
-{"Sv. Cyrila a Metoda, slovanskıch vierozvestov",
- "Sv. Cyrila, mnicha, a Metodìje, biskupa, "HTML_LINE_BREAK"patronù Evropy, hlavních patronù Moravy",
+{"Sv. Cyrila a Metoda, slovanskÃ½ch vierozvestov",
+ "Sv. Cyrila, mnicha, a MetodÄ›je, biskupa, "HTML_LINE_BREAK"patronÅ¯ Evropy, hlavnÃ­ch patronÅ¯ Moravy",
  "",
  "",
  "",
- "Sv. Cyrila, mnicha, a Metodìje, biskupa, "HTML_LINE_BREAK"patronù Evropy, hlavních patronù Moravy",
+ "Sv. Cyrila, mnicha, a MetodÄ›je, biskupa, "HTML_LINE_BREAK"patronÅ¯ Evropy, hlavnÃ­ch patronÅ¯ Moravy",
  "",
  };
 const char *text_JUL_06[POCET_JAZYKOV + 1] = 
-{"Sv. Márie Goretti, panny a muèenice",
- "Sv. Marie Gorettiové, panny a muèednice",
+{"Sv. MÃ¡rie Goretti, panny a muÄenice",
+ "Sv. Marie GorettiovÃ©, panny a muÄednice",
  "",
  "",
  "",
- "Sv. Marie Gorettiové, panny a muèednice",
- "Goretti Szent Mária szûz és vértanú",
+ "Sv. Marie GorettiovÃ©, panny a muÄednice",
+ "Goretti Szent MÃ¡ria szÅ±z Ã©s vÃ©rtanÃº",
  };
 const char *text_JUL_06_CZOP[POCET_JAZYKOV + 1] = 
 {"",
@@ -5605,20 +5605,20 @@ const char *text_JUL_06_CZOP[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Blaholaveného Pier Giorgio Frassatiho, laika OP",
+ "BlaholavenÃ©ho Pier Giorgio Frassatiho, laika OP",
  "",
  };
-const char *text_JUL_07_SK[POCET_JAZYKOV + 1] = // vo všeobecnom kalendári sa slávi 5. júla
-{"Sv. Antona Márie Zaccariu, kòaza",
+const char *text_JUL_07_SK[POCET_JAZYKOV + 1] = // vo vÅ¡eobecnom kalendÃ¡ri sa slÃ¡vi 5. jÃºla
+{"Sv. Antona MÃ¡rie Zaccariu, kÅˆaza",
  "",
  "",
  "",
  "",
  "",
- "Zaccaria Szent Antal Mária áldozópap",
+ "Zaccaria Szent Antal MÃ¡ria Ã¡ldozÃ³pap",
  };
 const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Márie Romerovej Meneses, panny",
+{"Bl. MÃ¡rie Romerovej Meneses, panny",
  "Bl. Marie Romero Meneses, panny",
  "",
  "",
@@ -5627,7 +5627,7 @@ const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_07_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Benedikta XI., pápea",
+{"Bl. Benedikta XI., pÃ¡peÅ¾a",
  "",
  "",
  "",
@@ -5636,7 +5636,7 @@ const char *text_JUL_07_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_08_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Hadriána Fortescuea, otca rodiny a muèeníka",
+{"Bl. HadriÃ¡na Fortescuea, otca rodiny a muÄenÃ­ka",
  "",
  "",
  "",
@@ -5651,28 +5651,28 @@ const char *text_JUL_08_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "A székesegyház felszentelése",
+ "A szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_JUL_09[POCET_JAZYKOV + 1] = 
-{"Sv. Augustína Zhao Rong, kòaza,"HTML_LINE_BREAK"a spoloèníkov, muèeníkov",
- "Sv. Augustina ao Ronga, knìze"HTML_LINE_BREAK"a jeho druhù, muèedníkù",
+{"Sv. AugustÃ­na Zhao Rong, kÅˆaza,"HTML_LINE_BREAK"a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Sv. Augustina Å½ao Ronga, knÄ›ze"HTML_LINE_BREAK"a jeho druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Augustina ao Ronga, knìze"HTML_LINE_BREAK"a jeho druhù, muèedníkù",
- "Szent Zhao Rong Ágoston áldozópap és társai, kínai vértanúk",
+ "Sv. Augustina Å½ao Ronga, knÄ›ze"HTML_LINE_BREAK"a jeho druhÅ¯, muÄednÃ­kÅ¯",
+ "Szent Zhao Rong Ãgoston Ã¡ldozÃ³pap Ã©s tÃ¡rsai, kÃ­nai vÃ©rtanÃºk",
  };
 const char *text_JUL_09_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Kolínskeho, kòaza, a spoloèníkov, muèeníkov",
+{"Sv. JÃ¡na KolÃ­nskeho, kÅˆaza, a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
  "",
- "Sv. Jana Kolínského, knìze, a druhù, muèedníkù",
+ "Sv. Jana KolÃ­nskÃ©ho, knÄ›ze, a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  };
 const char *text_JUL_09_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Mikuláša Picka, Antona von Willehada a spoloèníkov, "HTML_LINE_BREAK"muèeníkov v Holandsku, èlenov 1. rádu",
+{"Sv. MikulÃ¡Å¡a Picka, Antona von Willehada a spoloÄnÃ­kov, "HTML_LINE_BREAK"muÄenÃ­kov v Holandsku, Älenov 1. rÃ¡du",
  "",
  "",
  "",
@@ -5682,7 +5682,7 @@ const char *text_JUL_09_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_JUL_09_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Adriána a Jakuba, knìí premonstrátského øádu, "HTML_LINE_BREAK"a jejich druhù, muèedníkù Gorkumskıch",
+ "Sv. AdriÃ¡na a Jakuba, knÄ›Å¾Ã­ premonstrÃ¡tskÃ©ho Å™Ã¡du, "HTML_LINE_BREAK"a jejich druhÅ¯, muÄednÃ­kÅ¯ GorkumskÃ½ch",
  "",
  "",
  "",
@@ -5690,7 +5690,7 @@ const char *text_JUL_09_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_10_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Veroniky Giulianiovej, panny, èlenky 2. rádu",
+{"Sv. Veroniky Giulianiovej, panny, Älenky 2. rÃ¡du",
  "Sv. Veroniky Giuliani, panny",
  "",
  "",
@@ -5699,21 +5699,21 @@ const char *text_JUL_10_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_11[POCET_JAZYKOV + 1] = 
-{"Sv. Benedikta, opáta,"HTML_LINE_BREAK"patróna Európy",
+{"Sv. Benedikta, opÃ¡ta,"HTML_LINE_BREAK"patrÃ³na EurÃ³py",
  "Sv. Benedikta, opata,"HTML_LINE_BREAK"patrona Evropy",
  "",
  "",
  "",
  "Sv. Benedikta, opata,"HTML_LINE_BREAK"patrona Evropy",
- "Szent Benedek apát,"HTML_LINE_BREAK"Európa fõvédõszentje",
+ "Szent Benedek apÃ¡t,"HTML_LINE_BREAK"EurÃ³pa fÅ‘vÃ©dÅ‘szentje",
  };
 const char *text_JUL_13[POCET_JAZYKOV + 1] = 
 {"Sv. Henricha",
- "Sv. Jindøicha",
+ "Sv. JindÅ™icha",
  "",
  "",
  "",
- "Sv. Jindøicha",
+ "Sv. JindÅ™icha",
  "Szent Henrik",
  };
 const char *text_JUL_13_OP[POCET_JAZYKOV + 1] = 
@@ -5726,17 +5726,17 @@ const char *text_JUL_13_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_14[POCET_JAZYKOV + 1] = 
-{"Sv. Kamila de Lellis, kòaza",
- "Sv. Kamila de Lellis, knìze",
+{"Sv. Kamila de Lellis, kÅˆaza",
+ "Sv. Kamila de Lellis, knÄ›ze",
  "",
  "",
  "",
- "Sv. Kamila de Lellis, knìze",
- "Lellisi Szent Kamill áldozópap",
+ "Sv. Kamila de Lellis, knÄ›ze",
+ "Lellisi Szent Kamill Ã¡ldozÃ³pap",
  };
 const char *text_JUL_14_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Solanského, kòaza, èlena 1. rádu",
- "Sv. Františka Solana, knìze",
+{"Sv. FrantiÅ¡ka SolanskÃ©ho, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. FrantiÅ¡ka Solana, knÄ›ze",
  "",
  "",
  "",
@@ -5745,16 +5745,16 @@ const char *text_JUL_14_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_JUL_14_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Hroznaty, muèedníka",
+ "Bl. Hroznaty, muÄednÃ­ka",
  "",
  "",
  "",
- "Bl. Hroznaty, muèedníka",
+ "Bl. Hroznaty, muÄednÃ­ka",
  "",
  };
 const char *text_JUL_14_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Hroznaty, muèedníka z premonstrátského øádu",
+ "Bl. Hroznaty, muÄednÃ­ka z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -5762,17 +5762,17 @@ const char *text_JUL_14_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_15[POCET_JAZYKOV + 1] = 
-{"Sv. Bonaventúru, biskupa a uèite¾a Cirkvi",
- "Sv. Bonaventury, biskupa a uèitele církve",
+{"Sv. BonaventÃºru, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Bonaventury, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Bonaventury, biskupa a uèitele Církve",
- "Szent Bonaventura püspök és egyháztanító",
+ "Sv. Bonaventury, biskupa a uÄitele CÃ­rkve",
+ "Szent Bonaventura pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_JUL_15_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Bonaventúru z Bagnoregia, biskupa a uèite¾a Cirkvi, èlena 1. rádu",
- "Sv. Bonaventury z Bagnoregia, biskupa a uèitele církve",
+{"Sv. BonaventÃºru z Bagnoregia, biskupa a uÄiteÄ¾a Cirkvi, Älena 1. rÃ¡du",
+ "Sv. Bonaventury z Bagnoregia, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
@@ -5780,48 +5780,48 @@ const char *text_JUL_15_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_16[POCET_JAZYKOV + 1] = 
-{"Prebl. Panny Márie Karmelskej",
- "Panny Marie Karmelské",
+{"Prebl. Panny MÃ¡rie Karmelskej",
+ "Panny Marie KarmelskÃ©",
  "",
  "",
  "",
- "Panny Marie Karmelské",
- "Kármel-hegyi Boldogasszony",
+ "Panny Marie KarmelskÃ©",
+ "KÃ¡rmel-hegyi Boldogasszony",
  };
 const char *text_JUL_16_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení katedrály Boského Spasitele",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly BoÅ¾skÃ©ho Spasitele",
  "",
  "",
  "",
- "Vıroèí posvìcení katedrály Boského Spasitele",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly BoÅ¾skÃ©ho Spasitele",
  "",
  };
 const char *text_JUL_17_SK[POCET_JAZYKOV + 1] = 
-{"Sv. Andreja-Svorada a Benedikta, pustovníkov",
+{"Sv. Andreja-Svorada a Benedikta, pustovnÃ­kov",
  "",
  "",
  "",
  "",
  "",
- "Szent Zoerárd-András és Benedek remeték",
+ "Szent ZoerÃ¡rd-AndrÃ¡s Ã©s Benedek remetÃ©k",
  };
 const char *text_JUL_17_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Èeslava a sv. Hyacinta, knìí",
+ "Bl. ÄŒeslava a sv. Hyacinta, knÄ›Å¾Ã­",
  "",
  "",
  "",
- "Bl. Èeslava a sv. Hyacinta, knìí",
+ "Bl. ÄŒeslava a sv. Hyacinta, knÄ›Å¾Ã­",
  "",
  };
 const char *text_JUL_17_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Èeslava Po¾ského, kòaza",
+{"Bl. ÄŒeslava PoÄ¾skÃ©ho, kÅˆaza",
  "",
  "",
  "",
  "",
- "Bl. Èeslava z Polska, knìze",
+ "Bl. ÄŒeslava z Polska, knÄ›ze",
  "",
  };
 const char *text_JUL_18_HU[POCET_JAZYKOV + 1] = 
@@ -5831,10 +5831,10 @@ const char *text_JUL_18_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Szent Hedvig királyné",
+ "Szent Hedvig kirÃ¡lynÃ©",
  };
 const char *text_JUL_18_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Bartolomeja od Muèeníkov, biskupa",
+{"Bl. Bartolomeja od MuÄenÃ­kov, biskupa",
  "",
  "",
  "",
@@ -5843,7 +5843,7 @@ const char *text_JUL_18_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_18_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Šimona z Lipnice, kòaza, èlena 1. rádu",
+{"Sv. Å imona z Lipnice, kÅˆaza, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -5852,7 +5852,7 @@ const char *text_JUL_18_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_19_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Jána z Dukly, kòaza, èlena 1. rádu",
+{"Sv. JÃ¡na z Dukly, kÅˆaza, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -5861,58 +5861,58 @@ const char *text_JUL_19_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_20[POCET_JAZYKOV + 1] = 
-{"Sv. Apolinára, biskupa a muèeníka",
- "Sv. Apolináøe, biskupa a muèedníka",
+{"Sv. ApolinÃ¡ra, biskupa a muÄenÃ­ka",
+ "Sv. ApolinÃ¡Å™e, biskupa a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Apolináøe, biskupa a muèedníka",
- "Szent Apollinaris püspök és vértanú",
+ "Sv. ApolinÃ¡Å™e, biskupa a muÄednÃ­ka",
+ "Szent Apollinaris pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_JUL_21[POCET_JAZYKOV + 1] = 
-{"Sv. Vavrinca z Brindisi, kòaza a uèite¾a Cirkvi",
- "Sv. Vavøince z Brindisi, knìze a uèitele církve",
+{"Sv. Vavrinca z Brindisi, kÅˆaza a uÄiteÄ¾a Cirkvi",
+ "Sv. VavÅ™ince z Brindisi, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Vavøince z Brindisi, knìze a uèitele Církve",
- "Brindisi Szent Lõrinc áldozópap és egyháztanító",
+ "Sv. VavÅ™ince z Brindisi, knÄ›ze a uÄitele CÃ­rkve",
+ "Brindisi Szent LÅ‘rinc Ã¡ldozÃ³pap Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_JUL_21_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Vavrinca z Brindisi, kòaza a uèite¾a Cirkvi, èlena 1. rádu",
- "Sv. Vavøince z Brindisi, knìze a uèitele církve",
+{"Sv. Vavrinca z Brindisi, kÅˆaza a uÄiteÄ¾a Cirkvi, Älena 1. rÃ¡du",
+ "Sv. VavÅ™ince z Brindisi, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Vavøince z Brindisi, knìze a uèitele Církve, èlena 1. øádu",
- "Brindisi Szent Lõrinc áldozópap és egyháztanító",
+ "Sv. VavÅ™ince z Brindisi, knÄ›ze a uÄitele CÃ­rkve, Älena 1. Å™Ã¡du",
+ "Brindisi Szent LÅ‘rinc Ã¡ldozÃ³pap Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_JUL_22[POCET_JAZYKOV + 1] = 
-{"Sv. Márie Magdalény",
- "Sv. Marie Magdalény",
+{"Sv. MÃ¡rie MagdalÃ©ny",
+ "Sv. Marie MagdalÃ©ny",
  "",
  "",
  "",
- "Sv. Marie Magdalény",
- "Szent Mária Magdolna",
+ "Sv. Marie MagdalÃ©ny",
+ "Szent MÃ¡ria Magdolna",
  };
 const char *text_JUL_23[POCET_JAZYKOV + 1] = 
-{"Sv. Brigity, reho¾níèky,"HTML_LINE_BREAK"patrónky Európy",
- "Sv. Brigity, øeholnice,"HTML_LINE_BREAK"patronky Evropy",
+{"Sv. Brigity, rehoÄ¾nÃ­Äky,"HTML_LINE_BREAK"patrÃ³nky EurÃ³py",
+ "Sv. Brigity, Å™eholnice,"HTML_LINE_BREAK"patronky Evropy",
  "",
  "",
  "",
- "Sv. Brigity, øeholnice,"HTML_LINE_BREAK"patronky Evropy",
- "Szent Brigitta szerzetesnõ",
+ "Sv. Brigity, Å™eholnice,"HTML_LINE_BREAK"patronky Evropy",
+ "Szent Brigitta szerzetesnÅ‘",
  };
 const char *text_JUL_24[POCET_JAZYKOV + 1] = 
-{"Sv. Sarbela Makhlufa, kòaza", // 2009-07-15: direktórium (2012, str. 171) má "Sarbel", predtım bolo "Charbel" a zrejme sa èíta "Šarbel"
- "Sv. Šarbela Makhlúfa, knìze",
+{"Sv. Sarbela Makhlufa, kÅˆaza", // 2009-07-15: direktÃ³rium (2012, str. 171) mÃ¡ "Sarbel", predtÃ½m bolo "Charbel" a zrejme sa ÄÃ­ta "Å arbel"
+ "Sv. Å arbela MakhlÃºfa, knÄ›ze",
  "",
  "",
  "",
- "Sv. Šarbela Makhlúfa, knìze",
- "Szent Charbel Makhlouf áldozópap", // HU: 27JUL
+ "Sv. Å arbela MakhlÃºfa, knÄ›ze",
+ "Szent Charbel Makhlouf Ã¡ldozÃ³pap", // HU: 27JUL
  };
 const char *text_JUL_24_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -5921,10 +5921,10 @@ const char *text_JUL_24_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Árpád-házi Szent Kinga szûz", // 2011-07-05: sv. Sarbela v HU: 27JUL
+ "ÃrpÃ¡d-hÃ¡zi Szent Kinga szÅ±z", // 2011-07-05: sv. Sarbela v HU: 27JUL
  };
 const char *text_JUL_24_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Antona Lucciho, biskupa, èlena 1. rádu",
+{"Bl. Antona Lucciho, biskupa, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -5942,7 +5942,7 @@ const char *text_JUL_24_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_24_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Augustína z Biella, kòaza",
+{"Bl. AugustÃ­na z Biella, kÅˆaza",
  "",
  "",
  "",
@@ -5951,34 +5951,34 @@ const char *text_JUL_24_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_25[POCET_JAZYKOV + 1] = 
-{"Sv. Jakuba, apoštola",
- "Sv. Jakuba, apoštola",
+{"Sv. Jakuba, apoÅ¡tola",
+ "Sv. Jakuba, apoÅ¡tola",
  "",
  "",
  "",
- "Sv. Jakuba, apoštola",
+ "Sv. Jakuba, apoÅ¡tola",
  "Szent Jakab apostol",
  };
 const char *text_JUL_26[POCET_JAZYKOV + 1] = 
-{"Sv. Joachima a Anny, rodièov Panny Márie",
- "Sv. Jáchyma a Anny, rodièù Panny Marie",
+{"Sv. Joachima a Anny, rodiÄov Panny MÃ¡rie",
+ "Sv. JÃ¡chyma a Anny, rodiÄÅ¯ Panny Marie",
  "",
  "",
  "",
- "Sv. Jáchyma a Anny, rodièù Panny Marie",
- "Szent Joakim és Szent Anna, a Boldogságos Szûz Mária szülei",
+ "Sv. JÃ¡chyma a Anny, rodiÄÅ¯ Panny Marie",
+ "Szent Joakim Ã©s Szent Anna, a BoldogsÃ¡gos SzÅ±z MÃ¡ria szÃ¼lei",
  };
 const char *text_JUL_27[POCET_JAZYKOV + 1] = 
-{"Sv. Gorazda a spoloèníkov",
- "Sv. Gorazda a druhù",
+{"Sv. Gorazda a spoloÄnÃ­kov",
+ "Sv. Gorazda a druhÅ¯",
  "",
  "",
  "",
- "Sv. Gorazda a druhù",
+ "Sv. Gorazda a druhÅ¯",
  "",
  };
 const char *text_JUL_27_OP[POCET_JAZYKOV + 1] = // SK OP: 28JUL
-{"Bl. Róberta Nuttera, kòaza a muèeníka",
+{"Bl. RÃ³berta Nuttera, kÅˆaza a muÄenÃ­ka",
  "",
  "",
  "",
@@ -5987,8 +5987,8 @@ const char *text_JUL_27_OP[POCET_JAZYKOV + 1] = // SK OP: 28JUL
  "",
  };
 const char *text_JUL_27_OFM[POCET_JAZYKOV + 1] =
-{"Bl. Márie Magdalény Martinengovej, panny, èlenky 2. rádu",
- "Bl. Marie Magdalény Martinengo, panny", // CZ OFMCap: 28JUL
+{"Bl. MÃ¡rie MagdalÃ©ny Martinengovej, panny, Älenky 2. rÃ¡du",
+ "Bl. Marie MagdalÃ©ny Martinengo, panny", // CZ OFMCap: 28JUL
  "",
  "",
  "",
@@ -5996,7 +5996,7 @@ const char *text_JUL_27_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_28_OFM[POCET_JAZYKOV + 1] =
-{"Bl. Márie Terézie Kowalskej, panny a muèenice, èlenky 2. rádu",
+{"Bl. MÃ¡rie TerÃ©zie Kowalskej, panny a muÄenice, Älenky 2. rÃ¡du",
  "",
  "",
  "",
@@ -6011,19 +6011,19 @@ const char *text_JUL_29[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Marty",
- "Szent Márta",
+ "Szent MÃ¡rta",
  };
 const char *text_JUL_30[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Chryzológa, biskupa a uèite¾a Cirkvi",
- "Sv. Petra Chryzologa, biskupa a uèitele církve",
+{"Sv. Petra ChryzolÃ³ga, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Petra Chryzologa, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Petra Chryzologa, biskupa a uèitele církve",
- "Aranyszavú (Krizologosz) Szent Péter püspök és egyháztanító",
+ "Sv. Petra Chryzologa, biskupa a uÄitele cÃ­rkve",
+ "AranyszavÃº (Krizologosz) Szent PÃ©ter pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_JUL_30_SK[POCET_JAZYKOV + 1] = 
-{"Bl. Zdenky, panny a muèenice", // Direktórium 2012, str. 173, neuvádza priezvisko ('Schelingovej')
+{"Bl. Zdenky, panny a muÄenice", // DirektÃ³rium 2012, str. 173, neuvÃ¡dza priezvisko ('Schelingovej')
  "",
  "",
  "",
@@ -6032,7 +6032,7 @@ const char *text_JUL_30_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_30_SK_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Zdenky Schelingovej, panny a muèenice,"HTML_LINE_BREAK"reho¾níèky, èlenky 3. rádu",
+{"Bl. Zdenky Schelingovej, panny a muÄenice,"HTML_LINE_BREAK"rehoÄ¾nÃ­Äky, Älenky 3. rÃ¡du",
  "",
  "",
  "",
@@ -6041,16 +6041,16 @@ const char *text_JUL_30_SK_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_31[POCET_JAZYKOV + 1] = 
-{"Sv. Ignáca z Loyoly, kòaza",
- "Sv. Ignáce z Loyoly, knìze",
+{"Sv. IgnÃ¡ca z Loyoly, kÅˆaza",
+ "Sv. IgnÃ¡ce z Loyoly, knÄ›ze",
  "",
  "",
  "",
- "Sv. Ignáce z Loyoly, knìze",
- "Loyolai Szent Ignác áldozópap",
+ "Sv. IgnÃ¡ce z Loyoly, knÄ›ze",
+ "Loyolai Szent IgnÃ¡c Ã¡ldozÃ³pap",
  };
 const char *text_JUL_31_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Ignáca Loyolského, kòaza a zakladate¾a Spoloènosti Jeišovej",
+{"Sv. IgnÃ¡ca LoyolskÃ©ho, kÅˆaza a zakladateÄ¾a SpoloÄnosti JeÅ¾iÅ¡ovej",
  "",
  "",
  "",
@@ -6059,11 +6059,11 @@ const char *text_JUL_31_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 
-// --------------- 00 pohyblivé slávenia ---------------
+// --------------- 00 pohyblivÃ© slÃ¡venia ---------------
 
 const char *text_CSSR_TITUL_KONGREGACIE[POCET_JAZYKOV + 1] = 
-{"Najsvätejšieho Vykupite¾a, titul Kongregácie", // 3. nede¾a v júli
- "Nejsvìtìjšího Vykupitele, titul kongregace", // v kadém roce 3. nedìle v èervenci
+{"NajsvÃ¤tejÅ¡ieho VykupiteÄ¾a, titul KongregÃ¡cie", // 3. nedeÄ¾a v jÃºli
+ "NejsvÄ›tÄ›jÅ¡Ã­ho Vykupitele, titul kongregace", // v kaÅ¾dÃ©m roce 3. nedÄ›le v Äervenci
  "",
  "",
  "",
@@ -6074,17 +6074,17 @@ const char *text_CSSR_TITUL_KONGREGACIE[POCET_JAZYKOV + 1] =
 // --------------- 08 august ---------------
 
 const char *text_AUG_01[POCET_JAZYKOV + 1] = 
-{"Sv. Alfonza Márie de’ Liguori, biskupa a uèite¾a Cirkvi",
- "Sv. Alfonsa z Liguori, biskupa a uèitele církve",
+{"Sv. Alfonza MÃ¡rie deâ€™ Liguori, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Alfonsa z Liguori, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Alfonsa z Liguori, biskupa a uèitele Církve",
- "Liguori Szent Alfonz Mária püspök és egyháztanító",
+ "Sv. Alfonsa z Liguori, biskupa a uÄitele CÃ­rkve",
+ "Liguori Szent Alfonz MÃ¡ria pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_AUG_01_CSSR[POCET_JAZYKOV + 1] = 
-{"Sv. Alfonza Márie de’ Liguori, biskupa a uèite¾a Cirkvi, zakladate¾a kongregácie",
- "Sv. Alfonsa z Liguori, biskupa a uèitele církve, zakladatele kongregace",
+{"Sv. Alfonza MÃ¡rie deâ€™ Liguori, biskupa a uÄiteÄ¾a Cirkvi, zakladateÄ¾a kongregÃ¡cie",
+ "Sv. Alfonsa z Liguori, biskupa a uÄitele cÃ­rkve, zakladatele kongregace",
  "",
  "",
  "",
@@ -6092,26 +6092,26 @@ const char *text_AUG_01_CSSR[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_02_1[POCET_JAZYKOV + 1] = 
-{"Sv. Euzébia Vercellského, biskupa",
+{"Sv. EuzÃ©bia VercellskÃ©ho, biskupa",
  "Sv. Eusebia z Vercelli, biskupa",
  "",
  "",
  "",
  "Sv. Eusebia z Vercelli, biskupa",
- "Vercelli Szent Özséb püspök",
+ "Vercelli Szent Ã–zsÃ©b pÃ¼spÃ¶k",
  };
 const char *text_AUG_02_2[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Juliána Eymarda, kòaza",
- "Sv. Petra Juliána Eymarda, knìze",
+{"Sv. Petra JuliÃ¡na Eymarda, kÅˆaza",
+ "Sv. Petra JuliÃ¡na Eymarda, knÄ›ze",
  "",
  "",
  "",
- "Sv. Petra Juliána Eymarda, knìze",
- "Szent Eymard Julián Péter áldozópap",
+ "Sv. Petra JuliÃ¡na Eymarda, knÄ›ze",
+ "Szent Eymard JuliÃ¡n PÃ©ter Ã¡ldozÃ³pap",
  };
 const char *text_AUG_02_OFM[POCET_JAZYKOV + 1] = 
-{"Preblahoslavenej Panny Márie Anjelskej v Porciunkule",
- "Panny Marie Královny andìlù",
+{"Preblahoslavenej Panny MÃ¡rie Anjelskej v Porciunkule",
+ "Panny Marie KrÃ¡lovny andÄ›lÅ¯",
  "",
  "",
  "",
@@ -6128,7 +6128,7 @@ const char *text_AUG_02_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_03_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Augustína Kazotiæa, biskupa",
+{"Bl. AugustÃ­na KazotiÄ‡a, biskupa",
  "",
  "",
  "",
@@ -6137,8 +6137,8 @@ const char *text_AUG_03_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_02_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Augustína Czartoryského, kòaza",
- "Bl. Augustina Czartoryského, knìze",
+{"Bl. AugustÃ­na CzartoryskÃ©ho, kÅˆaza",
+ "Bl. Augustina CzartoryskÃ©ho, knÄ›ze",
  "",
  "",
  "",
@@ -6146,7 +6146,7 @@ const char *text_AUG_02_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_02_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Petra Favra, kòaza",
+{"Bl. Petra Favra, kÅˆaza",
  "",
  "",
  "",
@@ -6155,53 +6155,53 @@ const char *text_AUG_02_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_04[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Márie Vianneyho, kòaza", // 'Vianneyho' pod¾a Direktória 2012, str. 176
- "Sv. Jana Marie Vianneye, knìze",
+{"Sv. JÃ¡na MÃ¡rie Vianneyho, kÅˆaza", // 'Vianneyho' podÄ¾a DirektÃ³ria 2012, str. 176
+ "Sv. Jana Marie Vianneye, knÄ›ze",
  "",
  "",
  "",
- "Sv. Jana Marie Vianneye, knìze",
- "Vianney Szent János Mária áldozópap",
+ "Sv. Jana Marie Vianneye, knÄ›ze",
+ "Vianney Szent JÃ¡nos MÃ¡ria Ã¡ldozÃ³pap",
  };
 const char *text_AUG_05[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky Hlavnej mariánskej baziliky v Ríme",
- "Posvìcení øímské baziliky Panny Marie",
+{"VÃ½roÄie posviacky Hlavnej mariÃ¡nskej baziliky v RÃ­me",
+ "PosvÄ›cenÃ­ Å™Ã­mskÃ© baziliky Panny Marie",
  "",
  "",
  "",
- "Posvìcení øímské baziliky Panny Marie",
- "Szûz Mária római fõtemplomának felszentelése (Havas Boldogasszony)",
+ "PosvÄ›cenÃ­ Å™Ã­mskÃ© baziliky Panny Marie",
+ "SzÅ±z MÃ¡ria rÃ³mai fÅ‘templomÃ¡nak felszentelÃ©se (Havas Boldogasszony)",
  };
 const char *text_AUG_06[POCET_JAZYKOV + 1] = 
-{"Premenenie Pána",
- "Promìnìní Pánì",
+{"Premenenie PÃ¡na",
+ "PromÄ›nÄ›nÃ­ PÃ¡nÄ›",
  "",
  "",
  "",
- "Promìnìní Pánì",
- "Urunk színeváltozása",
+ "PromÄ›nÄ›nÃ­ PÃ¡nÄ›",
+ "Urunk szÃ­nevÃ¡ltozÃ¡sa",
  };
 const char *text_AUG_07_1[POCET_JAZYKOV + 1] = 
-{"Sv. Sixta II., pápea, a jeho spoloèníkov, muèeníkov",
- "Sv. Sixta II., papee, a druhù, muèedníkù",
+{"Sv. Sixta II., pÃ¡peÅ¾a, a jeho spoloÄnÃ­kov, muÄenÃ­kov",
+ "Sv. Sixta II., papeÅ¾e, a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Sixta II., papee, a druhù, muèedníkù",
- "Szent II. Szixtusz pápa és társai vértanúk",
+ "Sv. Sixta II., papeÅ¾e, a druhÅ¯, muÄednÃ­kÅ¯",
+ "Szent II. Szixtusz pÃ¡pa Ã©s tÃ¡rsai vÃ©rtanÃºk",
  };
 const char *text_AUG_07_2[POCET_JAZYKOV + 1] = 
-{"Sv. Kajetána, kòaza",
- "Sv. Kajetána, knìze",
+{"Sv. KajetÃ¡na, kÅˆaza",
+ "Sv. KajetÃ¡na, knÄ›ze",
  "",
  "",
  "",
- "Sv. Kajetána, knìze",
- "Szent Kajetán áldozópap",
+ "Sv. KajetÃ¡na, knÄ›ze",
+ "Szent KajetÃ¡n Ã¡ldozÃ³pap",
  };
 const char *text_AUG_07_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Agatangela a Kasiána, kòazov a muèeníkov,"HTML_LINE_BREAK"èlenov 1. rádu",
- "Bl. Agathangela a Kassiána, knìí a muèedníkù",
+{"Bl. Agatangela a KasiÃ¡na, kÅˆazov a muÄenÃ­kov,"HTML_LINE_BREAK"Älenov 1. rÃ¡du",
+ "Bl. Agathangela a KassiÃ¡na, knÄ›Å¾Ã­ a muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -6209,79 +6209,79 @@ const char *text_AUG_07_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_08[POCET_JAZYKOV + 1] = 
-{"Sv. Dominika, kòaza",
- "Sv. Dominika, knìze",
+{"Sv. Dominika, kÅˆaza",
+ "Sv. Dominika, knÄ›ze",
  "",
  "",
  "",
- "Sv. Otce Dominika, knìze",
- "Szent Domonkos áldozópap",
+ "Sv. Otce Dominika, knÄ›ze",
+ "Szent Domonkos Ã¡ldozÃ³pap",
  };
 const char *text_AUG_08_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Dominika, kòaza, zakladate¾a rehole",
- "Sv. Dominika, knìze",
+{"Sv. Dominika, kÅˆaza, zakladateÄ¾a rehole",
+ "Sv. Dominika, knÄ›ze",
  "",
  "",
  "",
- "Sv. Otce Dominika, knìze",
- "Szent Domonkos áldozópap",
+ "Sv. Otce Dominika, knÄ›ze",
+ "Szent Domonkos Ã¡ldozÃ³pap",
  };
 const char *text_AUG_08_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Dominika, kòaza,"HTML_LINE_BREAK"zakladate¾a Rádu dominikánov",
- "Sv. Dominika, knìze",
+{"Sv. Dominika, kÅˆaza,"HTML_LINE_BREAK"zakladateÄ¾a RÃ¡du dominikÃ¡nov",
+ "Sv. Dominika, knÄ›ze",
  "",
  "",
  "",
- "Sv. Otce Dominika, knìze",
- "Szent Domonkos áldozópap",
+ "Sv. Otce Dominika, knÄ›ze",
+ "Szent Domonkos Ã¡ldozÃ³pap",
  };
 const char *text_AUG_09[POCET_JAZYKOV + 1] = 
-{"Sv. Terézie Benedikty z Kría"HTML_LINE_BREAK"(Edity Steinovej), panny a muèenice,"HTML_LINE_BREAK"patrónky Európy", // pod¾a Direktória 2012, str. 178
- "Sv. Terezie Benedikty, panny a muèednice,"HTML_LINE_BREAK"patronky Evropy",
+{"Sv. TerÃ©zie Benedikty z KrÃ­Å¾a"HTML_LINE_BREAK"(Edity Steinovej), panny a muÄenice,"HTML_LINE_BREAK"patrÃ³nky EurÃ³py", // podÄ¾a DirektÃ³ria 2012, str. 178
+ "Sv. Terezie Benedikty, panny a muÄednice,"HTML_LINE_BREAK"patronky Evropy",
  "",
  "",
  "",
- "Sv. Terezie Benedikty, panny a muèednice,"HTML_LINE_BREAK"patronky Evropy",
- "A keresztrõl nevezett Szent Teréz Benedikta (Edith Stein) "HTML_LINE_BREAK"szûz és vértanú, Európa társvédõszentje",
+ "Sv. Terezie Benedikty, panny a muÄednice,"HTML_LINE_BREAK"patronky Evropy",
+ "A keresztrÅ‘l nevezett Szent TerÃ©z Benedikta (Edith Stein) "HTML_LINE_BREAK"szÅ±z Ã©s vÃ©rtanÃº, EurÃ³pa tÃ¡rsvÃ©dÅ‘szentje",
  };
 const char *text_AUG_10[POCET_JAZYKOV + 1] = 
-{"Sv. Vavrinca, diakona a muèeníka",
- "Sv. Vavøince, muèedníka",
+{"Sv. Vavrinca, diakona a muÄenÃ­ka",
+ "Sv. VavÅ™ince, muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Vavøince, muèedníka",
- "Szent Lõrinc diakónus és vértanú",
+ "Sv. VavÅ™ince, muÄednÃ­ka",
+ "Szent LÅ‘rinc diakÃ³nus Ã©s vÃ©rtanÃº",
  };
 const char *text_AUG_11[POCET_JAZYKOV + 1] = 
-{"Sv. Kláry, panny",
- "Sv. Kláry, panny",
+{"Sv. KlÃ¡ry, panny",
+ "Sv. KlÃ¡ry, panny",
  "",
  "",
  "",
- "Sv. Kláry, panny",
- "Szent Klára szûz",
+ "Sv. KlÃ¡ry, panny",
+ "Szent KlÃ¡ra szÅ±z",
  };
 const char *text_AUG_11_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Kláry z Assisi, panny, èlenky 2. rádu",
- "Sv. Kláry z Assisi, panny",
+{"Sv. KlÃ¡ry z Assisi, panny, Älenky 2. rÃ¡du",
+ "Sv. KlÃ¡ry z Assisi, panny",
  "",
  "",
  "",
- "Sv. Kláry, panny",
- "Szent Klára szûz",
+ "Sv. KlÃ¡ry, panny",
+ "Szent KlÃ¡ra szÅ±z",
  };
 const char *text_AUG_12[POCET_JAZYKOV + 1] = 
-{"Sv. Jany Františky de Chantal, reho¾níèky", // kedysi sa slávil 12. decembra
- "Sv. Jany Františky de Chantal, øeholnice",
+{"Sv. Jany FrantiÅ¡ky de Chantal, rehoÄ¾nÃ­Äky", // kedysi sa slÃ¡vil 12. decembra
+ "Sv. Jany FrantiÅ¡ky de Chantal, Å™eholnice",
  "",
  "",
  "",
- "Sv. Jany Františky de Chantal, øeholnice",
- "Chantal Szent Johanna Franciska szerzetesnõ",
+ "Sv. Jany FrantiÅ¡ky de Chantal, Å™eholnice",
+ "Chantal Szent Johanna Franciska szerzetesnÅ‘",
  };
 const char *text_AUG_12_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jána zo Salerna, kòaza",
+{"Bl. JÃ¡na zo Salerna, kÅˆaza",
  "",
  "",
  "",
@@ -6290,7 +6290,7 @@ const char *text_AUG_12_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_12_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Aimona Taparelliho, kòaza",
+{"Bl. Aimona Taparelliho, kÅˆaza",
  "",
  "",
  "",
@@ -6299,7 +6299,7 @@ const char *text_AUG_12_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_12_3_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jána Juraja Rehma, kòaza a muèeníka",
+{"Bl. JÃ¡na Juraja Rehma, kÅˆaza a muÄenÃ­ka",
  "",
  "",
  "",
@@ -6308,13 +6308,13 @@ const char *text_AUG_12_3_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_13[POCET_JAZYKOV + 1] = 
-{"Sv. Ponciána, pápea, a sv. Hypolita, kòaza, muèeníkov",
- "Sv. Ponciána, papee, a Hippolyta, knìze, muèedníkù",
+{"Sv. PonciÃ¡na, pÃ¡peÅ¾a, a sv. Hypolita, kÅˆaza, muÄenÃ­kov",
+ "Sv. PonciÃ¡na, papeÅ¾e, a Hippolyta, knÄ›ze, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Ponciána, papee, a Hippolyta, knìze, muèedníkù",
- "Szent Ponciánusz pápa és Szent Hippolitusz áldozópap és vértanúk", // HU: 16AUG
+ "Sv. PonciÃ¡na, papeÅ¾e, a Hippolyta, knÄ›ze, muÄednÃ­kÅ¯",
+ "Szent PonciÃ¡nusz pÃ¡pa Ã©s Szent Hippolitusz Ã¡ldozÃ³pap Ã©s vÃ©rtanÃºk", // HU: 16AUG
  };
 const char *text_AUG_13_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -6323,11 +6323,11 @@ const char *text_AUG_13_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Boldog XI. Ince pápa", // HU
+ "Boldog XI. Ince pÃ¡pa", // HU
  };
 const char *text_AUG_13_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Gertrudy, panny z premonstrátského øádu",
+ "Bl. Gertrudy, panny z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -6335,8 +6335,8 @@ const char *text_AUG_13_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_13_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Marka z Aviana, kòaza, èlena 1. rádu",
- "Bl. Marka z Aviana, knìze",
+{"Bl. Marka z Aviana, kÅˆaza, Älena 1. rÃ¡du",
+ "Bl. Marka z Aviana, knÄ›ze",
  "",
  "",
  "",
@@ -6344,40 +6344,40 @@ const char *text_AUG_13_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_14[POCET_JAZYKOV + 1] = 
-{"Sv. Maximiliána Márie Kolbeho, kòaza a muèeníka", // pod¾a Direktória 2012, str. 180
- "Sv. Maxmiliána Marie Kolbeho, knìze a muèedníka",
+{"Sv. MaximiliÃ¡na MÃ¡rie Kolbeho, kÅˆaza a muÄenÃ­ka", // podÄ¾a DirektÃ³ria 2012, str. 180
+ "Sv. MaxmiliÃ¡na Marie Kolbeho, knÄ›ze a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Maxmiliána Marie Kolbeho, knìze a muèedníka",
- "Szent Maximilián Mária Kolbe áldozópap és vértanú",
+ "Sv. MaxmiliÃ¡na Marie Kolbeho, knÄ›ze a muÄednÃ­ka",
+ "Szent MaximiliÃ¡n MÃ¡ria Kolbe Ã¡ldozÃ³pap Ã©s vÃ©rtanÃº",
  };
 const char *text_AUG_14_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Maximiliána Márie Kolbeho,"HTML_LINE_BREAK"kòaza a muèeníka, èlena 1. rádu",
- "Sv. Maxmiliána Marie Kolbeho, knìze a muèedníka",
+{"Sv. MaximiliÃ¡na MÃ¡rie Kolbeho,"HTML_LINE_BREAK"kÅˆaza a muÄenÃ­ka, Älena 1. rÃ¡du",
+ "Sv. MaxmiliÃ¡na Marie Kolbeho, knÄ›ze a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Maxmiliána Marie Kolbeho, knìze a muèedníka",
- "Szent Maximilián Mária Kolbe áldozópap és vértanú",
+ "Sv. MaxmiliÃ¡na Marie Kolbeho, knÄ›ze a muÄednÃ­ka",
+ "Szent MaximiliÃ¡n MÃ¡ria Kolbe Ã¡ldozÃ³pap Ã©s vÃ©rtanÃº",
  };
 const char *text_AUG_15[POCET_JAZYKOV + 1] = 
-{"Nanebovzatie prebl. Panny Márie",
- "Nanebevzetí Panny Marie",
+{"Nanebovzatie prebl. Panny MÃ¡rie",
+ "NanebevzetÃ­ Panny Marie",
  "",
  "",
  "",
- "Nanebevzetí Panny Marie",
- "Szûz Mária mennybevétele (Nagyboldogasszony)",
+ "NanebevzetÃ­ Panny Marie",
+ "SzÅ±z MÃ¡ria mennybevÃ©tele (Nagyboldogasszony)",
  };
 const char *text_AUG_16[POCET_JAZYKOV + 1] = 
-{"Sv. Štefana Uhorského",
- "Sv. Štìpána Uherského",
+{"Sv. Å tefana UhorskÃ©ho",
+ "Sv. Å tÄ›pÃ¡na UherskÃ©ho",
  "",
  "",
  "",
- "Sv. Štìpána Uherského",
- "Szent István király, Magyarország fõvédõszentje",
+ "Sv. Å tÄ›pÃ¡na UherskÃ©ho",
+ "Szent IstvÃ¡n kirÃ¡ly, MagyarorszÃ¡g fÅ‘vÃ©dÅ‘szentje",
  };
 const char *text_AUG_16_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
@@ -6389,16 +6389,16 @@ const char *text_AUG_16_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_17_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Hyacinta Po¾ského, kòaza",
+{"Sv. Hyacinta PoÄ¾skÃ©ho, kÅˆaza",
  "",
  "",
  "",
  "",
- "Sv. Hyacinta z Polska, knìze",
+ "Sv. Hyacinta z Polska, knÄ›ze",
  "",
  };
 const char *text_AUG_17_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Beatrix de Silva, panny, zakladate¾ky"HTML_LINE_BREAK"koncepcionistiek, èlenky 2. rádu",
+{"Sv. Beatrix de Silva, panny, zakladateÄ¾ky"HTML_LINE_BREAK"koncepcionistiek, Älenky 2. rÃ¡du",
  "",
  "",
  "",
@@ -6413,7 +6413,7 @@ const char *text_AUG_17_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Kaposvár: A székesegyház felszentelése",
+ "KaposvÃ¡r: A szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_AUG_18_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -6422,10 +6422,10 @@ const char *text_AUG_18_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Vác: A székesegyház felszentelése",
+ "VÃ¡c: A szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_AUG_18_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Alberta Hurtada Cruchagu, kòaza",
+{"Bl. Alberta Hurtada Cruchagu, kÅˆaza",
  "",
  "",
  "",
@@ -6434,16 +6434,16 @@ const char *text_AUG_18_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_18_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Manesa, kòaza, brata sv. otca Dominika",
+{"Bl. Manesa, kÅˆaza, brata sv. otca Dominika",
  "",
  "",
  "",
  "",
- "Bl. Mannesa neboli Mamesa, knìze, bratra sv. Otce Dominika",
+ "Bl. Mannesa neboli Mamesa, knÄ›ze, bratra sv. Otce Dominika",
  "",
  };
 const char *text_AUG_18_1_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Alojza Adama a Mikuláša Savoureta,"HTML_LINE_BREAK"kòazov a muèeníkov, èlenov 1. rádu",
+{"Bl. Alojza Adama a MikulÃ¡Å¡a Savoureta,"HTML_LINE_BREAK"kÅˆazov a muÄenÃ­kov, Älenov 1. rÃ¡du",
  "",
  "",
  "",
@@ -6452,8 +6452,8 @@ const char *text_AUG_18_1_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_18_2_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jána, Protáza a Sebastiána, kòazov,"HTML_LINE_BREAK"èlenov 1. rádu, a spoloèníkov, muèeníkov",
- "Bl. Jana Ludvíka, Protasia a Sebastiana, knìí a muèedníkù",
+{"Bl. JÃ¡na, ProtÃ¡za a SebastiÃ¡na, kÅˆazov,"HTML_LINE_BREAK"Älenov 1. rÃ¡du, a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Bl. Jana LudvÃ­ka, Protasia a Sebastiana, knÄ›Å¾Ã­ a muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -6461,16 +6461,16 @@ const char *text_AUG_18_2_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_19[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Eudes, kòaza",
- "Sv. Jana Eudese, knìze",
+{"Sv. JÃ¡na Eudes, kÅˆaza",
+ "Sv. Jana Eudese, knÄ›ze",
  "",
  "",
  "",
- "Sv. Jana Eudese, knìze",
- "Eudes Szent János áldozópap",
+ "Sv. Jana Eudese, knÄ›ze",
+ "Eudes Szent JÃ¡nos Ã¡ldozÃ³pap",
  };
 const char *text_AUG_19_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jordána z Pisy, kòaza",
+{"Bl. JordÃ¡na z Pisy, kÅˆaza",
  "",
  "",
  "",
@@ -6479,8 +6479,8 @@ const char *text_AUG_19_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_19_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. ¼udovíta, biskupa, èlena 1. rádu",
- "Sv. Ludvíka z Anjou, biskupa",
+{"Sv. Ä½udovÃ­ta, biskupa, Älena 1. rÃ¡du",
+ "Sv. LudvÃ­ka z Anjou, biskupa",
  "",
  "",
  "",
@@ -6488,26 +6488,26 @@ const char *text_AUG_19_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_20[POCET_JAZYKOV + 1] = 
-{"Sv. Bernarda, opáta a uèite¾a Cirkvi",
- "Sv. Bernarda, opata a uèitele církve",
+{"Sv. Bernarda, opÃ¡ta a uÄiteÄ¾a Cirkvi",
+ "Sv. Bernarda, opata a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Bernarda, opata a uèitele Církve",
- "Szent Bernát apát és egyháztanító", // HU 19AUG
+ "Sv. Bernarda, opata a uÄitele CÃ­rkve",
+ "Szent BernÃ¡t apÃ¡t Ã©s egyhÃ¡ztanÃ­tÃ³", // HU 19AUG
  };
 const char *text_AUG_21[POCET_JAZYKOV + 1] = 
-{"Sv. Pia X., pápea",
- "Sv. Pia X., papee",
+{"Sv. Pia X., pÃ¡peÅ¾a",
+ "Sv. Pia X., papeÅ¾e",
  "",
  "",
  "",
- "Sv. Pia X., papee",
- "Szent X. Piusz pápa",
+ "Sv. Pia X., papeÅ¾e",
+ "Szent X. Piusz pÃ¡pa",
  };
 const char *text_OPATSKY_KOSTOL_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení opatského kostela",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ opatskÃ©ho kostela",
  "",
  "",
  "",
@@ -6515,26 +6515,26 @@ const char *text_OPATSKY_KOSTOL_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_22[POCET_JAZYKOV + 1] = 
-{"Panny Márie Krá¾ovnej", // pod¾a Direktória 2012, str. 183, tam nie je 'Prebl.'
- "Panny Marie Královny",
+{"Panny MÃ¡rie KrÃ¡Ä¾ovnej", // podÄ¾a DirektÃ³ria 2012, str. 183, tam nie je 'Prebl.'
+ "Panny Marie KrÃ¡lovny",
  "",
  "",
  "",
- "Panny Marie Královny",
- "Boldogságos Szûz Mária Királynõ",
+ "Panny Marie KrÃ¡lovny",
+ "BoldogsÃ¡gos SzÅ±z MÃ¡ria KirÃ¡lynÅ‘",
  };
 const char *text_AUG_23[POCET_JAZYKOV + 1] = 
-{"Sv. Rueny Limskej, panny",
- "Sv. Rùeny z Limy, panny",
+{"Sv. RuÅ¾eny Limskej, panny",
+ "Sv. RÅ¯Å¾eny z Limy, panny",
  "",
  "",
  "",
- "Sv. Rùeny Floresové neboli z Limy, panny, terciáøky",
- "Limai Szent Róza szûz",
+ "Sv. RÅ¯Å¾eny FloresovÃ© neboli z Limy, panny, terciÃ¡Å™ky",
+ "Limai Szent RÃ³za szÅ±z",
  };
 const char *text_AUG_23_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Bernarda z Offidy, reho¾níka, èlena 1. rádu",
- "Bl. Bernarda z Offidy, øeholníka",
+{"Bl. Bernarda z Offidy, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Bl. Bernarda z Offidy, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -6542,35 +6542,35 @@ const char *text_AUG_23_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_24[POCET_JAZYKOV + 1] = 
-{"Sv. Bartolomeja, apoštola",
- "Sv. Bartolomìje, apoštola",
+{"Sv. Bartolomeja, apoÅ¡tola",
+ "Sv. BartolomÄ›je, apoÅ¡tola",
  "",
  "",
  "",
- "Sv. Bartolomìje, apoštola",
+ "Sv. BartolomÄ›je, apoÅ¡tola",
  "Szent Bertalan apostol",
  };
 const char *text_AUG_25_1[POCET_JAZYKOV + 1] = 
-{"Sv. Jozefa de Calasanz, kòaza",
- "Sv. Josefa Kalasanského, knìze",
+{"Sv. Jozefa de Calasanz, kÅˆaza",
+ "Sv. Josefa KalasanskÃ©ho, knÄ›ze",
  "",
  "",
  "",
- "Sv. Josefa Kalasanského, knìze",
- "Kalazanci Szent József áldozópap",
+ "Sv. Josefa KalasanskÃ©ho, knÄ›ze",
+ "Kalazanci Szent JÃ³zsef Ã¡ldozÃ³pap",
  };
 const char *text_AUG_25_2[POCET_JAZYKOV + 1] = 
-{"Sv. ¼udovíta",
- "Sv. Ludvíka",
+{"Sv. Ä½udovÃ­ta",
+ "Sv. LudvÃ­ka",
  "",
  "",
  "",
- "Sv. Ludvíka",
+ "Sv. LudvÃ­ka",
  "Szent Lajos",
  };
 const char *text_AUG_25_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. ¼udovíta IX., krá¾a, èlena 3. rádu",
- "Sv. Ludvíka IX., krále, patrona 3. øádu",
+{"Sv. Ä½udovÃ­ta IX., krÃ¡Ä¾a, Älena 3. rÃ¡du",
+ "Sv. LudvÃ­ka IX., krÃ¡le, patrona 3. Å™Ã¡du",
  "",
  "",
  "",
@@ -6579,20 +6579,20 @@ const char *text_AUG_25_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_25_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Benedikta, Jana, Matouše, Izáka a Kristina, muèedníkù",
+ "Sv. Benedikta, Jana, MatouÅ¡e, IzÃ¡ka a Kristina, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Benedikta, Jana, Matouše, Izáka a Kristina, muèedníkù",
+ "Sv. Benedikta, Jana, MatouÅ¡e, IzÃ¡ka a Kristina, muÄednÃ­kÅ¯",
  "",
  };
 const char *text_AUG_25_2_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Metodìje Dominika Trèky, muèedníka",
+ "Bl. MetodÄ›je Dominika TrÄky, muÄednÃ­ka",
  "",
  "",
  "",
- "Bl. Metodìje Dominika Trèky, muèedníka",
+ "Bl. MetodÄ›je Dominika TrÄky, muÄednÃ­ka",
  "",
  };
 const char *text_AUG_25_HU[POCET_JAZYKOV + 1] = 
@@ -6602,10 +6602,10 @@ const char *text_AUG_25_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Kalocsa-Kecskemét: A fõszékesegyház felszentelése",
+ "Kalocsa-KecskemÃ©t: A fÅ‘szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_AUG_25_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Márie Troncatti, panny",
+{"Bl. MÃ¡rie Troncatti, panny",
  "Bl. Marie Troncatti, panny",
  "",
  "",
@@ -6614,8 +6614,8 @@ const char *text_AUG_25_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_26_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Zefirína Namuncurá, mladíka",
- "Bl. Zefyrina Namuncurá, chlapce",
+{"Bl. ZefirÃ­na NamuncurÃ¡, mladÃ­ka",
+ "Bl. Zefyrina NamuncurÃ¡, chlapce",
  "",
  "",
  "",
@@ -6623,7 +6623,7 @@ const char *text_AUG_26_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_26_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jakuba z Bevagna, kòaza",
+{"Bl. Jakuba z Bevagna, kÅˆaza",
  "",
  "",
  "",
@@ -6638,11 +6638,11 @@ const char *text_AUG_27[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Moniky",
- "Szent Mónika",
+ "Szent MÃ³nika",
  };
 const char *text_AUG_27_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Moniky, matky našeho otce sv. Augustina",
+ "Sv. Moniky, matky naÅ¡eho otce sv. Augustina",
  "",
  "",
  "",
@@ -6651,7 +6651,7 @@ const char *text_AUG_27_OPRAEM[POCET_JAZYKOV + 1] =
  };
 const char *text_AUG_28_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Našeho otce sv. Augustina, biskupa a uèitele církve",
+ "NaÅ¡eho otce sv. Augustina, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
@@ -6659,25 +6659,25 @@ const char *text_AUG_28_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_28[POCET_JAZYKOV + 1] = 
-{"Sv. Augustína, biskupa a uèite¾a Cirkvi",
- "Sv. Augustina, biskupa a uèitele církve",
+{"Sv. AugustÃ­na, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Augustina, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Augustina, biskupa a uèitele Církve",
- "Szent Ágoston püspök és egyháztanító",
+ "Sv. Augustina, biskupa a uÄitele CÃ­rkve",
+ "Szent Ãgoston pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_AUG_29[POCET_JAZYKOV + 1] = 
-{"Muèenícka smr sv. Jána Krstite¾a",
- "Umuèení svatého Jana Køtitele",
+{"MuÄenÃ­cka smrÅ¥ sv. JÃ¡na KrstiteÄ¾a",
+ "UmuÄenÃ­ svatÃ©ho Jana KÅ™titele",
  "",
  "",
  "",
- "Umuèení svatého Jana Køtitele",
- "Keresztelõ Szent János vértanúsága",
+ "UmuÄenÃ­ svatÃ©ho Jana KÅ™titele",
+ "KeresztelÅ‘ Szent JÃ¡nos vÃ©rtanÃºsÃ¡ga",
  };
 const char *text_AUG_30_SK[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky katedrálneho chrámu v Trnave", // ToDo: 'sv. Jána Krstite¾a', pod¾a Direktória 2012, str. 186
+{"VÃ½roÄie posviacky katedrÃ¡lneho chrÃ¡mu v Trnave", // ToDo: 'sv. JÃ¡na KrstiteÄ¾a', podÄ¾a DirektÃ³ria 2012, str. 186
  "",
  "",
  "",
@@ -6692,11 +6692,11 @@ const char *text_AUG_31_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Esztergom-Budapest: A prímási bazilika-"HTML_LINE_BREAK"fõszékesegyház felszentelése",
+ "Esztergom-Budapest: A prÃ­mÃ¡si bazilika-"HTML_LINE_BREAK"fÅ‘szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_AUG_30_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Bronislavy, panny z premonstrátského øádu",
+ "Bl. Bronislavy, panny z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -6716,7 +6716,7 @@ const char *text_SEP_02_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_02_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Ingridy zo Skänninge, reho¾níèky",
+{"Bl. Ingridy zo SkÃ¤nninge, rehoÄ¾nÃ­Äky",
  "",
  "",
  "",
@@ -6725,7 +6725,7 @@ const char *text_SEP_02_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_02_1_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jána Františka Burtého, kòaza a muèeníka,"HTML_LINE_BREAK"èlena 1. rádu",
+{"Bl. JÃ¡na FrantiÅ¡ka BurtÃ©ho, kÅˆaza a muÄenÃ­ka,"HTML_LINE_BREAK"Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -6734,8 +6734,8 @@ const char *text_SEP_02_1_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_02_2_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Apolinára z Posatu, kòaza, èlena 1. rádu,"HTML_LINE_BREAK"a spoloèníkov, muèeníkov",
- "Bl. Apolináøe z Posaty a druhù, muèedníkù",
+{"Bl. ApolinÃ¡ra z Posatu, kÅˆaza, Älena 1. rÃ¡du,"HTML_LINE_BREAK"a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Bl. ApolinÃ¡Å™e z Posaty a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -6743,16 +6743,16 @@ const char *text_SEP_02_2_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_03[POCET_JAZYKOV + 1] = 
-{"Sv. Gregora Ve¾kého, pápea a uèite¾a Cirkvi",
- "Sv. Øehoøe Velikého, papee a uèitele církve",
+{"Sv. Gregora VeÄ¾kÃ©ho, pÃ¡peÅ¾a a uÄiteÄ¾a Cirkvi",
+ "Sv. Å˜ehoÅ™e VelikÃ©ho, papeÅ¾e a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Øehoøe Velikého, papee a uèitele Církve",
- "Nagy Szent Gergely pápa és egyháztanító",
+ "Sv. Å˜ehoÅ™e VelikÃ©ho, papeÅ¾e a uÄitele CÃ­rkve",
+ "Nagy Szent Gergely pÃ¡pa Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_SEP_04_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Kataríny z Racconigi, panny",
+{"Bl. KatarÃ­ny z Racconigi, panny",
  "",
  "",
  "",
@@ -6761,7 +6761,7 @@ const char *text_SEP_04_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_04_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Rueny z Viterba, panny, èlenky 3. rádu",
+{"Sv. RuÅ¾eny z Viterba, panny, Älenky 3. rÃ¡du",
  "",
  "",
  "",
@@ -6776,10 +6776,10 @@ const char *text_SEP_05[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Kalkuttai Boldog Teréz szûz",
+ "Kalkuttai Boldog TerÃ©z szÅ±z",
  };
 const char *text_SEP_06_SK[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky katedrálneho chrámu v Košiciach", // ToDo: 'sv. Albety', pod¾a Direktória 2012, str. 190
+{"VÃ½roÄie posviacky katedrÃ¡lneho chrÃ¡mu v KoÅ¡iciach", // ToDo: 'sv. AlÅ¾bety', podÄ¾a DirektÃ³ria 2012, str. 190
  "",
  "",
  "",
@@ -6788,7 +6788,7 @@ const char *text_SEP_06_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_06_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Bertranda z Garrigue, kòaza",
+{"Bl. Bertranda z Garrigue, kÅˆaza",
  "",
  "",
  "",
@@ -6797,7 +6797,7 @@ const char *text_SEP_06_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_06_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Michala (Jána Františka) Czartoryského, kòaza,"HTML_LINE_BREAK"a bl. Júlie (Stanislavy) Rodziñskej, panny a reho¾níèky,"HTML_LINE_BREAK"muèeníkov",
+{"Bl. Michala (JÃ¡na FrantiÅ¡ka) CzartoryskÃ©ho, kÅˆaza,"HTML_LINE_BREAK"a bl. JÃºlie (Stanislavy) RodziÅ„skej, panny a rehoÄ¾nÃ­Äky,"HTML_LINE_BREAK"muÄenÃ­kov",
  "",
  "",
  "",
@@ -6806,16 +6806,16 @@ const char *text_SEP_06_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_07[POCET_JAZYKOV + 1] = 
-{"Sv. Marka Kriina, Melichara Grodzieckého"HTML_LINE_BREAK"a Štefana Pongrácza, kòazov a muèeníkov",
- "Sv. Melichara Grodeckého, knìze a muèedníka",
+{"Sv. Marka KriÅ¾ina, Melichara GrodzieckÃ©ho"HTML_LINE_BREAK"a Å tefana PongrÃ¡cza, kÅˆazov a muÄenÃ­kov",
+ "Sv. Melichara GrodeckÃ©ho, knÄ›ze a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Melichara Grodeckého, knìze a muèedníka",
- "Szent Márk, István és Menyhért áldozópapok, kassai vértanúk",
+ "Sv. Melichara GrodeckÃ©ho, knÄ›ze a muÄednÃ­ka",
+ "Szent MÃ¡rk, IstvÃ¡n Ã©s MenyhÃ©rt Ã¡ldozÃ³papok, kassai vÃ©rtanÃºk",
  };
 const char *text_SEP_07_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. košickıch muèeníkov: Štefana Pongrácza a Melichara Grodzieckého, kòazov Spoloènosti Jeišovej; "HTML_LINE_BREAK"Marka Kriina, ostrihomského kanonika, patrónov Slovenskej provincie Spoloènosti Jeišovej",
+{"Sv. koÅ¡ickÃ½ch muÄenÃ­kov: Å tefana PongrÃ¡cza a Melichara GrodzieckÃ©ho, kÅˆazov SpoloÄnosti JeÅ¾iÅ¡ovej; "HTML_LINE_BREAK"Marka KriÅ¾ina, ostrihomskÃ©ho kanonika, patrÃ³nov Slovenskej provincie SpoloÄnosti JeÅ¾iÅ¡ovej",
  "",
  "",
  "",
@@ -6824,25 +6824,25 @@ const char *text_SEP_07_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_08[POCET_JAZYKOV + 1] = 
-{"Narodenie Panny Márie", // pod¾a Direktória 2012, str. 191, tam nie je 'prebl.'
- "Narození Panny Marie",
+{"Narodenie Panny MÃ¡rie", // podÄ¾a DirektÃ³ria 2012, str. 191, tam nie je 'prebl.'
+ "NarozenÃ­ Panny Marie",
  "",
  "",
  "",
- "Narození Panny Marie",
- "Szûz Mária születése (Kisboldogasszony)",
+ "NarozenÃ­ Panny Marie",
+ "SzÅ±z MÃ¡ria szÃ¼letÃ©se (Kisboldogasszony)",
  };
 const char *text_SEP_09[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Clavera, kòaza",
- "Sv. Petra Klavera, knìze",
+{"Sv. Petra Clavera, kÅˆaza",
+ "Sv. Petra Klavera, knÄ›ze",
  "",
  "",
  "",
- "Sv. Petra Klavera, knìze",
- "Claver Szent Péter áldozópap",
+ "Sv. Petra Klavera, knÄ›ze",
+ "Claver Szent PÃ©ter Ã¡ldozÃ³pap",
  };
 const char *text_SEP_09_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Clavera, kòaza",
+{"Sv. Petra Clavera, kÅˆaza",
  "",
  "",
  "",
@@ -6851,7 +6851,7 @@ const char *text_SEP_09_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_10_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Františka Gárateho, reho¾níka",
+{"Bl. FrantiÅ¡ka GÃ¡rateho, rehoÄ¾nÃ­ka",
  "",
  "",
  "",
@@ -6861,25 +6861,25 @@ const char *text_SEP_10_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_10_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Karla Spinoly, knìze a muèedníka",
+ "Bl. Karla Spinoly, knÄ›ze a muÄednÃ­ka",
  "",
  "",
  "",
- "Bl. Karla Spinoly, knìze a muèedníka",
+ "Bl. Karla Spinoly, knÄ›ze a muÄednÃ­ka",
  "",
  };
 const char *text_SEP_12[POCET_JAZYKOV + 1] = 
-{"Najsv. mena Panny Márie", // pod¾a Direktória 2012, str. 192; pôvodne bolo: 'Mena prebl. Panny Márie'
- "Jména Panny Marie",
+{"Najsv. mena Panny MÃ¡rie", // podÄ¾a DirektÃ³ria 2012, str. 192; pÃ´vodne bolo: 'Mena prebl. Panny MÃ¡rie'
+ "JmÃ©na Panny Marie",
  "",
  "",
  "",
- "Jména Panny Marie",
- "Szûz Mária Szent Neve",
+ "JmÃ©na Panny Marie",
+ "SzÅ±z MÃ¡ria Szent Neve",
  };
 const char *text_SEP_12_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Nejsvìtìjšího jména Panny Marie",
+ "NejsvÄ›tÄ›jÅ¡Ã­ho jmÃ©na Panny Marie",
  "",
  "",
  "",
@@ -6887,13 +6887,13 @@ const char *text_SEP_12_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_13[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Zlatoústeho, biskupa a uèite¾a Cirkvi",
- "Sv. Jana Zlatoústého, biskupa a uèitele církve",
+{"Sv. JÃ¡na ZlatoÃºsteho, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Jana ZlatoÃºstÃ©ho, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Jana Zlatoústého, biskupa a uèitele církve",
- "Aranyszájú (Krizosztomosz) Szent János püspök és egyháztanító",
+ "Sv. Jana ZlatoÃºstÃ©ho, biskupa a uÄitele cÃ­rkve",
+ "AranyszÃ¡jÃº (Krizosztomosz) Szent JÃ¡nos pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_SEP_13_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -6902,55 +6902,55 @@ const char *text_SEP_13_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Gyõr: A székesegyház felszentelése",
+ "GyÅ‘r: A szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_SEP_14[POCET_JAZYKOV + 1] = 
-{"Povıšenie svätého kría",
- "Povıšení svatého køíe",
+{"PovÃ½Å¡enie svÃ¤tÃ©ho krÃ­Å¾a",
+ "PovÃ½Å¡enÃ­ svatÃ©ho kÅ™Ã­Å¾e",
  "",
  "",
  "",
- "Povıšení svatého køíe",
- "A Szent Kereszt felmagasztalása",
+ "PovÃ½Å¡enÃ­ svatÃ©ho kÅ™Ã­Å¾e",
+ "A Szent Kereszt felmagasztalÃ¡sa",
  };
 const char *text_SEP_15[POCET_JAZYKOV + 1] = 
-{"Sedembolestnej Panny Márie, patrónky Slovenska",
- "Panny Marie Bolestné",
+{"Sedembolestnej Panny MÃ¡rie, patrÃ³nky Slovenska",
+ "Panny Marie BolestnÃ©",
  "",
  "",
  "",
- "Panny Marie Bolestné",
- "A Fájdalmas Szûzanya",
+ "Panny Marie BolestnÃ©",
+ "A FÃ¡jdalmas SzÅ±zanya",
  };
 const char *text_SEP_16_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Ludmily, muèednice",
+ "Sv. Ludmily, muÄednice",
  "",
  "",
  "",
- "Sv. Ludmily, muèednice",
+ "Sv. Ludmily, muÄednice",
  "",
  };
 const char *text_SEP_16[POCET_JAZYKOV + 1] = 
-{"Sv. Kornélia, pápea, a sv. Cypriána, biskupa, muèeníkov",
- "Sv. Kornélia, papee, a Cypriána, biskupa, muèedníkù",
+{"Sv. KornÃ©lia, pÃ¡peÅ¾a, a sv. CypriÃ¡na, biskupa, muÄenÃ­kov",
+ "Sv. KornÃ©lia, papeÅ¾e, a CypriÃ¡na, biskupa, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Kornélia, papee, a Cypriána, biskupa, muèedníkù",
- "Szent Kornél pápa és Szent Ciprián püspök és vértanúk",
+ "Sv. KornÃ©lia, papeÅ¾e, a CypriÃ¡na, biskupa, muÄednÃ­kÅ¯",
+ "Szent KornÃ©l pÃ¡pa Ã©s Szent CipriÃ¡n pÃ¼spÃ¶k Ã©s vÃ©rtanÃºk",
  };
 const char *text_SEP_17[POCET_JAZYKOV + 1] = 
-{"Sv. Róberta Bellarmína, biskupa a uèite¾a Cirkvi",
- "Sv. Roberta Bellarmina, biskupa a uèitele církve",
+{"Sv. RÃ³berta BellarmÃ­na, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Roberta Bellarmina, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Roberta Bellarmina, biskupa a uèitele Církve",
- "Bellarmin Szent Róbert püspök és egyháztanító",
+ "Sv. Roberta Bellarmina, biskupa a uÄitele CÃ­rkve",
+ "Bellarmin Szent RÃ³bert pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_SEP_17_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Róberta Bellarmina, biskupa a uèite¾a Cirkvi",
+{"Sv. RÃ³berta Bellarmina, biskupa a uÄiteÄ¾a Cirkvi",
  "",
  "",
  "",
@@ -6959,8 +6959,8 @@ const char *text_SEP_17_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_17_OFM[POCET_JAZYKOV + 1] = 
-{"Stigmatizácia nášho otca sv. Františka",
- "Vtisknutí stigmat našemu sv. Otci Františkovi",
+{"StigmatizÃ¡cia nÃ¡Å¡ho otca sv. FrantiÅ¡ka",
+ "VtisknutÃ­ stigmat naÅ¡emu sv. Otci FrantiÅ¡kovi",
  "",
  "",
  "",
@@ -6968,8 +6968,8 @@ const char *text_SEP_17_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_18_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Jozefa Kupertínskeho, kòaza, èlena 1. rádu",
- "Sv. Josefa z Kupertina, knìze",
+{"Sv. Jozefa KupertÃ­nskeho, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. Josefa z Kupertina, knÄ›ze",
  "",
  "",
  "",
@@ -6977,17 +6977,17 @@ const char *text_SEP_18_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_18_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Macíasa, reho¾níka",
+{"Sv. JÃ¡na MacÃ­asa, rehoÄ¾nÃ­ka",
  "",
  "",
  "",
  "",
- "Sv. Jana Maciase, øeholníka",
+ "Sv. Jana Maciase, Å™eholnÃ­ka",
  "",
  };
 const char *text_SEP_18_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení kostela",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ kostela",
  "",
  "",
  "",
@@ -6995,17 +6995,17 @@ const char *text_SEP_18_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_19[POCET_JAZYKOV + 1] = 
-{"Sv. Januára, biskupa a muèeníka",
- "Sv. Januária, biskupa a muèedníka",
+{"Sv. JanuÃ¡ra, biskupa a muÄenÃ­ka",
+ "Sv. JanuÃ¡ria, biskupa a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Januária, biskupa a muèedníka",
- "Szent Januáriusz püspök és vértanú",
+ "Sv. JanuÃ¡ria, biskupa a muÄednÃ­ka",
+ "Szent JanuÃ¡riusz pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_SEP_19_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Márie z Camporossa,"HTML_LINE_BREAK"reho¾níka, èlena 1. rádu",
- "Sv. Františka Marie z Camporossa, øeholníka",
+{"Sv. FrantiÅ¡ka MÃ¡rie z Camporossa,"HTML_LINE_BREAK"rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Sv. FrantiÅ¡ka Marie z Camporossa, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -7013,34 +7013,34 @@ const char *text_SEP_19_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_20[POCET_JAZYKOV + 1] = 
-{"Sv. Andreja Kim Taegona, kòaza,"HTML_LINE_BREAK"a sv. Pavla Chong Hasanga a spoloèníkov, muèeníkov",
- "Sv. Ondøeje Kim Taegona, knìze, Pavla Chong Hasanga a druhù, muèedníkù",
+{"Sv. Andreja Kim Taegona, kÅˆaza,"HTML_LINE_BREAK"a sv. Pavla Chong Hasanga a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Sv. OndÅ™eje Kim Taegona, knÄ›ze, Pavla Chong Hasanga a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Ondøeje Kim Taegona, knìze, Pavla Chong Hasanga a druhù, muèedníkù",
- "Kim Taegon Szent András áldozópap, Csong Haszang Szent Pál és társaik, vértanúk",
+ "Sv. OndÅ™eje Kim Taegona, knÄ›ze, Pavla Chong Hasanga a druhÅ¯, muÄednÃ­kÅ¯",
+ "Kim Taegon Szent AndrÃ¡s Ã¡ldozÃ³pap, Csong Haszang Szent PÃ¡l Ã©s tÃ¡rsaik, vÃ©rtanÃºk",
  };
 const char *text_SEP_20_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení katedrály sv. Štìpána",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. Å tÄ›pÃ¡na",
  "",
  "",
  "",
- "Vıroèí posvìcení katedrály sv. Štìpána",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. Å tÄ›pÃ¡na",
  "",
  };
 const char *text_SEP_21[POCET_JAZYKOV + 1] = 
-{"Sv. Matúša, apoštola a evanjelistu",
- "Sv. Matouše, apoštola a evangelisty",
+{"Sv. MatÃºÅ¡a, apoÅ¡tola a evanjelistu",
+ "Sv. MatouÅ¡e, apoÅ¡tola a evangelisty",
  "",
  "",
  "",
- "Sv. Matouše, apoštola a evangelisty",
- "Szent Máté apostol és evangélista",
+ "Sv. MatouÅ¡e, apoÅ¡tola a evangelisty",
+ "Szent MÃ¡tÃ© apostol Ã©s evangÃ©lista",
  };
 const char *text_SEP_22[POCET_JAZYKOV + 1] = 
-{"Sv. Emeráma, biskupa a muèeníka",
+{"Sv. EmerÃ¡ma, biskupa a muÄenÃ­ka",
  "",
  "",
  "",
@@ -7049,7 +7049,7 @@ const char *text_SEP_22[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_22_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Františka de Posadas, kòaza",
+{"Bl. FrantiÅ¡ka de Posadas, kÅˆaza",
  "",
  "",
  "",
@@ -7058,7 +7058,7 @@ const char *text_SEP_22_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_22_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Hyacinta Serrana Lópeza, kòaza, a spoloèníkov, muèeníkov",
+{"Bl. Hyacinta Serrana LÃ³peza, kÅˆaza, a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
@@ -7067,8 +7067,8 @@ const char *text_SEP_22_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_22_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Ignáca zo Santhie, kòaza, èlena 1. rádu",
- "Sv. Ignáce ze Santhi&#224;, knìze", // &agrave;
+{"Sv. IgnÃ¡ca zo Santhie, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. IgnÃ¡ce ze Santhi&#224;, knÄ›ze", // &agrave;
  "",
  "",
  "",
@@ -7076,8 +7076,8 @@ const char *text_SEP_22_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_22_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Jozefa Calasanza a Enrica Saiz Aparicio, kòazov, "HTML_LINE_BREAK"a 93 spoloèníkov, muèeníkov",
- "Bl. Josefa Calasanz Marqués "HTML_LINE_BREAK"a Enrica Saiz Aparicio, knìí, a 93 druhù",
+{"Bl. Jozefa Calasanza a Enrica Saiz Aparicio, kÅˆazov, "HTML_LINE_BREAK"a 93 spoloÄnÃ­kov, muÄenÃ­kov",
+ "Bl. Josefa Calasanz MarquÃ©s "HTML_LINE_BREAK"a Enrica Saiz Aparicio, knÄ›Å¾Ã­, a 93 druhÅ¯",
  "",
  "",
  "",
@@ -7085,25 +7085,25 @@ const char *text_SEP_22_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_23[POCET_JAZYKOV + 1] = 
-{"Sv. Pia z Pietrelèiny, kòaza",
- "Sv. Pia z Pietrelciny, knìze",
+{"Sv. Pia z PietrelÄiny, kÅˆaza",
+ "Sv. Pia z Pietrelciny, knÄ›ze",
  "",
  "",
  "",
- "Sv. Pia z Pietrelciny, knìze",
- "Pietrelcinai Szent Pio áldozópap",
+ "Sv. Pia z Pietrelciny, knÄ›ze",
+ "Pietrelcinai Szent Pio Ã¡ldozÃ³pap",
  };
 const char *text_SEP_23_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Pia z Pietrelciny, kòaza, èlena 1. rádu",
- "Sv. Pia z Pietrelciny, knìze",
+{"Sv. Pia z Pietrelciny, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. Pia z Pietrelciny, knÄ›ze",
  "",
  "",
  "",
- "Sv. Pia z Pietrelciny, knìze",
- "Pietrelcinai Szent Pio áldozópap",
+ "Sv. Pia z Pietrelciny, knÄ›ze",
+ "Pietrelcinai Szent Pio Ã¡ldozÃ³pap",
  };
 const char *text_SEP_24_SK[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky katedrálneho chrámu v Banskej Bystrici", // ToDo: 'sv. Františka Xaverského', pod¾a Direktória 2012, str. 198
+{"VÃ½roÄie posviacky katedrÃ¡lneho chrÃ¡mu v Banskej Bystrici", // ToDo: 'sv. FrantiÅ¡ka XaverskÃ©ho', podÄ¾a DirektÃ³ria 2012, str. 198
  "",
  "",
  "",
@@ -7112,7 +7112,7 @@ const char *text_SEP_24_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_24_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Dalmáca Monera, kòaza",
+{"Bl. DalmÃ¡ca Monera, kÅˆaza",
  "",
  "",
  "",
@@ -7127,10 +7127,10 @@ const char *text_SEP_24_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Szent Gellért püspök és vértanú",
+ "Szent GellÃ©rt pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_SEP_25_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Dalmáca Monera, kòaza",
+{"Bl. DalmÃ¡ca Monera, kÅˆaza",
  "",
  "",
  "",
@@ -7140,7 +7140,7 @@ const char *text_SEP_25_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_25_OFM[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Inocence z Berza, knìze",
+ "Bl. Inocence z Berza, knÄ›ze",
  "",
  "",
  "",
@@ -7148,17 +7148,17 @@ const char *text_SEP_25_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_26[POCET_JAZYKOV + 1] = 
-{"Sv. Kozmu a Damiána, muèeníkov",
- "Sv. Kosmy a Damiána, muèedníkù",
+{"Sv. Kozmu a DamiÃ¡na, muÄenÃ­kov",
+ "Sv. Kosmy a DamiÃ¡na, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Kosmy a Damiána, muèedníkù",
- "Szent Kozma és Damján vértanúk",
+ "Sv. Kosmy a DamiÃ¡na, muÄednÃ­kÅ¯",
+ "Szent Kozma Ã©s DamjÃ¡n vÃ©rtanÃºk",
  };
 const char *text_SEP_26_CSSR[POCET_JAZYKOV + 1] = 
-{"Bl. Gašpara Stanggassingera, kòaza",
- "Bl. Kašpara Stanggassingera, knìze",
+{"Bl. GaÅ¡para Stanggassingera, kÅˆaza",
+ "Bl. KaÅ¡para Stanggassingera, knÄ›ze",
  "",
  "",
  "",
@@ -7166,7 +7166,7 @@ const char *text_SEP_26_CSSR[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_26_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Vavrinca z Ripafratta, kòaza",
+{"Bl. Vavrinca z Ripafratta, kÅˆaza",
  "",
  "",
  "",
@@ -7175,8 +7175,8 @@ const char *text_SEP_26_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_26_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Aurélia z Vinalesy, kòaza, a spoloèníkov,"HTML_LINE_BREAK"muèeníkov, èlenov 1. rádu",
- "Bl. Aurela z Vinalesy, knìze, a druhù, muèedníkù",
+{"Bl. AurÃ©lia z Vinalesy, kÅˆaza, a spoloÄnÃ­kov,"HTML_LINE_BREAK"muÄenÃ­kov, Älenov 1. rÃ¡du",
+ "Bl. Aurela z Vinalesy, knÄ›ze, a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -7184,43 +7184,43 @@ const char *text_SEP_26_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_27[POCET_JAZYKOV + 1] = 
-{"Sv. Vincenta de Paul, kòaza",
- "Sv. Vincence z Paula, knìze",
+{"Sv. Vincenta de Paul, kÅˆaza",
+ "Sv. Vincence z Paula, knÄ›ze",
  "",
  "",
  "",
- "Sv. Vincence z Paula, knìze",
- "Páli Szent Vince áldozópap",
+ "Sv. Vincence z Paula, knÄ›ze",
+ "PÃ¡li Szent Vince Ã¡ldozÃ³pap",
  };
 const char *text_SEP_28[POCET_JAZYKOV + 1] = 
-{"Sv. Václava, muèeníka",
- "Sv. Václava, muèedníka, hlavního patrona èeského národa",
+{"Sv. VÃ¡clava, muÄenÃ­ka",
+ "Sv. VÃ¡clava, muÄednÃ­ka, hlavnÃ­ho patrona ÄeskÃ©ho nÃ¡roda",
  "",
  "",
  "",
- "Sv. Václava, muèedníka, hlavního patrona èeského národa,"HTML_LINE_BREAK"hlavního patrona provincie",
- "Szent Vencel vértanú",
+ "Sv. VÃ¡clava, muÄednÃ­ka, hlavnÃ­ho patrona ÄeskÃ©ho nÃ¡roda,"HTML_LINE_BREAK"hlavnÃ­ho patrona provincie",
+ "Szent Vencel vÃ©rtanÃº",
  };
 const char *text_SEP_28_2[POCET_JAZYKOV + 1] = 
-{"Sv. Vavrinca Ruiza a spoloèníkov, muèeníkov",
+{"Sv. Vavrinca Ruiza a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
  "",
  "",
- "Ruiz Szent Lõrinc és társai, Fülöp-szigeteki vértanúk",
+ "Ruiz Szent LÅ‘rinc Ã©s tÃ¡rsai, FÃ¼lÃ¶p-szigeteki vÃ©rtanÃºk",
  };
 const char *text_SEP_28_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Vavrinca Ruiza z Manily, laika, a spoloèníkov, muèeníkov",
+{"Sv. Vavrinca Ruiza z Manily, laika, a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
  "",
- "Sv. Dominika Ibanìze z Erquicia, Jakuba Kyušei Tomonagy, knìí,"HTML_LINE_BREAK"Vavøince Ruize, otce rodiny, a druhù, japonskıch muèedníkù", // CZOP kvôli sv. Václavovi slávia 26SEP
+ "Sv. Dominika IbanÄ›ze z Erquicia, Jakuba KyuÅ¡ei Tomonagy, knÄ›Å¾Ã­,"HTML_LINE_BREAK"VavÅ™ince Ruize, otce rodiny, a druhÅ¯, japonskÃ½ch muÄednÃ­kÅ¯", // CZOP kvÃ´li sv. VÃ¡clavovi slÃ¡via 26SEP
  "",
  };
 const char *text_SEP_28_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Inocenta z Berza, kòaza, èlena 1. rádu",
+{"Bl. Inocenta z Berza, kÅˆaza, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -7230,45 +7230,45 @@ const char *text_SEP_28_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_SEP_29[POCET_JAZYKOV + 1] = 
 {"Sv. Michala, Gabriela a Rafaela, archanjelov",
- "Sv. Michaela, Gabriela a Rafaela, archandìlù",
+ "Sv. Michaela, Gabriela a Rafaela, archandÄ›lÅ¯",
  "",
  "",
  "",
- "Sv. Michaela, Gabriela a Rafaela, archandìlù",
- "Szent Mihály, Szent Gábor és Szent Rafael fõangyalok",
+ "Sv. Michaela, Gabriela a Rafaela, archandÄ›lÅ¯",
+ "Szent MihÃ¡ly, Szent GÃ¡bor Ã©s Szent Rafael fÅ‘angyalok",
  };
 const char *text_SEP_30[POCET_JAZYKOV + 1] = 
-{"Sv. Hieronyma, kòaza a uèite¾a Cirkvi",
- "Sv. Jeronıma, knìze a uèitele církve",
+{"Sv. Hieronyma, kÅˆaza a uÄiteÄ¾a Cirkvi",
+ "Sv. JeronÃ½ma, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Jeronıma, knìze a uèitele Církve",
- "Szent Jeromos áldozópap és egyháztanító",
+ "Sv. JeronÃ½ma, knÄ›ze a uÄitele CÃ­rkve",
+ "Szent Jeromos Ã¡ldozÃ³pap Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 
-// --------------- 10 október ---------------
+// --------------- 10 oktÃ³ber ---------------
 
 const char *text_OKT_01[POCET_JAZYKOV + 1] = 
-{"Sv. Terézie z Lisieux, panny a uèite¾ky Cirkvi",
- "Sv. Terezie od Dítìte Jeíše, panny",
+{"Sv. TerÃ©zie z Lisieux, panny a uÄiteÄ¾ky Cirkvi",
+ "Sv. Terezie od DÃ­tÄ›te JeÅ¾Ã­Å¡e, panny",
  "",
  "",
  "",
- "Sv. Terezie od Dítìte Jeíše, panny",
- "A Gyermek Jézusról nevezett (Lisieux-i) Szent Teréz szûz",
+ "Sv. Terezie od DÃ­tÄ›te JeÅ¾Ã­Å¡e, panny",
+ "A Gyermek JÃ©zusrÃ³l nevezett (Lisieux-i) Szent TerÃ©z szÅ±z",
  };
 const char *text_OKT_02[POCET_JAZYKOV + 1] = 
-{"Svätıch anjelov strácov",
- "Svatıch andìlù stránıch",
+{"SvÃ¤tÃ½ch anjelov strÃ¡Å¾cov",
+ "SvatÃ½ch andÄ›lÅ¯ strÃ¡Å¾nÃ½ch",
  "",
  "",
  "",
- "Svatıch andìlù stránıch",
- "Szent Õrzõangyalok",
+ "SvatÃ½ch andÄ›lÅ¯ strÃ¡Å¾nÃ½ch",
+ "Szent ÅrzÅ‘angyalok",
  };
 const char *text_OKT_03_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Františka de Borja, kòaza",
+{"Sv. FrantiÅ¡ka de Borja, kÅˆaza",
  "",
  "",
  "",
@@ -7277,7 +7277,7 @@ const char *text_OKT_03_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_03_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Dominika Spadaforu, kòaza",
+{"Bl. Dominika Spadaforu, kÅˆaza",
  "",
  "",
  "",
@@ -7286,17 +7286,17 @@ const char *text_OKT_03_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_04[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Assiského",
- "Sv. Františka z Assisi",
+{"Sv. FrantiÅ¡ka AssiskÃ©ho",
+ "Sv. FrantiÅ¡ka z Assisi",
  "",
  "",
  "",
- "Sv. Františka z Assisi, jáhna",
+ "Sv. FrantiÅ¡ka z Assisi, jÃ¡hna",
  "Assisi Szent Ferenc",
  };
 const char *text_OKT_04_OFM[POCET_JAZYKOV + 1] = 
-{"Nášho otca sv. Františka, diakona,"HTML_LINE_BREAK"zakladate¾a troch rádov",
- "Sv. Františka, jáhna, zakladatele tøí øádù",
+{"NÃ¡Å¡ho otca sv. FrantiÅ¡ka, diakona,"HTML_LINE_BREAK"zakladateÄ¾a troch rÃ¡dov",
+ "Sv. FrantiÅ¡ka, jÃ¡hna, zakladatele tÅ™Ã­ Å™Ã¡dÅ¯",
  "",
  "",
  "",
@@ -7304,12 +7304,12 @@ const char *text_OKT_04_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_04_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Assiského, diakona",
+{"Sv. FrantiÅ¡ka AssiskÃ©ho, diakona",
  "",
  "",
  "",
  "",
- "Sv. Františka z Assisi, jáhna",
+ "Sv. FrantiÅ¡ka z Assisi, jÃ¡hna",
  "",
  };
 const char *text_OKT_05_SDB[POCET_JAZYKOV + 1] = 
@@ -7322,8 +7322,8 @@ const char *text_OKT_05_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_05_CSSR[POCET_JAZYKOV + 1] = 
-{"Bl. Františka Xaverského Seelosa, kòaza",
- "Bl. Františka Xavera Seelose, knìze",
+{"Bl. FrantiÅ¡ka XaverskÃ©ho Seelosa, kÅˆaza",
+ "Bl. FrantiÅ¡ka Xavera Seelose, knÄ›ze",
  "",
  "",
  "",
@@ -7337,10 +7337,10 @@ const char *text_OKT_05_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Veszprém: A bazilika-fõszékesegyház felszentelése",
+ "VeszprÃ©m: A bazilika-fÅ‘szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_OKT_05_SK[POCET_JAZYKOV + 1] = 
-{"Sv. Faustíny Kowalskej, panny",
+{"Sv. FaustÃ­ny Kowalskej, panny",
  "",
  "",
  "",
@@ -7349,25 +7349,25 @@ const char *text_OKT_05_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_05_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Rajmunda z Kapuy, kòaza",
+{"Bl. Rajmunda z Kapuy, kÅˆaza",
  "",
  "",
  "",
  "",
- "Bl. Rajmunda delle Vigne neboli z Kapuy, knìze",
+ "Bl. Rajmunda delle Vigne neboli z Kapuy, knÄ›ze",
  "",
  };
 const char *text_OKT_06[POCET_JAZYKOV + 1] = 
-{"Sv. Bruna, kòaza",
- "Sv. Bruna, knìze",
+{"Sv. Bruna, kÅˆaza",
+ "Sv. Bruna, knÄ›ze",
  "",
  "",
  "",
- "Sv. Bruna, knìze",
- "Szent Brúnó áldozópap",
+ "Sv. Bruna, knÄ›ze",
+ "Szent BrÃºnÃ³ Ã¡ldozÃ³pap",
  };
 const char *text_OKT_06_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Diega Alojza de san Vitores, kòaza a muèeníka",
+{"Bl. Diega Alojza de san Vitores, kÅˆaza a muÄenÃ­ka",
  "",
  "",
  "",
@@ -7385,13 +7385,13 @@ const char *text_OKT_06_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_07[POCET_JAZYKOV + 1] = 
-{"Ruencovej Panny Márie", // pod¾a Direktória 2012, str. 206, nie je 'prebl.'
- "Panny Marie Rùencové",
+{"RuÅ¾encovej Panny MÃ¡rie", // podÄ¾a DirektÃ³ria 2012, str. 206, nie je 'prebl.'
+ "Panny Marie RÅ¯Å¾encovÃ©",
  "",
  "",
  "",
- "Panny Marie Rùencové",
- "Rózsafüzér Királynõje",
+ "Panny Marie RÅ¯Å¾encovÃ©",
+ "RÃ³zsafÃ¼zÃ©r KirÃ¡lynÅ‘je",
  };
 const char *text_OKT_08_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -7400,10 +7400,10 @@ const char *text_OKT_08_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Szûz Mária, Magyarok Nagyasszonya, Magyarország fõpátronája",
+ "SzÅ±z MÃ¡ria, Magyarok Nagyasszonya, MagyarorszÃ¡g fÅ‘pÃ¡tronÃ¡ja",
  };
 const char *text_OKT_08_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Ambróza Sansedoniho, kòaza",
+{"Bl. AmbrÃ³za Sansedoniho, kÅˆaza",
  "",
  "",
  "",
@@ -7412,7 +7412,7 @@ const char *text_OKT_08_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_08_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Matúša Carreriho, kòaza",
+{"Bl. MatÃºÅ¡a Carreriho, kÅˆaza",
  "",
  "",
  "",
@@ -7421,35 +7421,35 @@ const char *text_OKT_08_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_09_1[POCET_JAZYKOV + 1] = 
-{"Sv. Dionıza, biskupa, a spoloèníkov, muèeníkov",
- "Sv. Dionısia, biskupa, a druhù, muèedníkù",
+{"Sv. DionÃ½za, biskupa, a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Sv. DionÃ½sia, biskupa, a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Dionısia, biskupa, a druhù, muèedníkù",
- "Szent Dénes püspök és társai vértanúk",
+ "Sv. DionÃ½sia, biskupa, a druhÅ¯, muÄednÃ­kÅ¯",
+ "Szent DÃ©nes pÃ¼spÃ¶k Ã©s tÃ¡rsai vÃ©rtanÃºk",
  };
 const char *text_OKT_09_2[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Leonardiho, kòaza",
- "Sv. Jana Leonardiho, knìze",
+{"Sv. JÃ¡na Leonardiho, kÅˆaza",
+ "Sv. Jana Leonardiho, knÄ›ze",
  "",
  "",
  "",
- "Sv. Jana Leonardiho, knìze",
- "Leonardi Szent János áldozópap",
+ "Sv. Jana Leonardiho, knÄ›ze",
+ "Leonardi Szent JÃ¡nos Ã¡ldozÃ³pap",
  };
 const char *text_OKT_09_OP[POCET_JAZYKOV + 1] = 
-{"Sv. ¼udovíta Bertrána, kòaza",
+{"Sv. Ä½udovÃ­ta BertrÃ¡na, kÅˆaza",
  "",
  "",
  "",
  "",
- "Sv. Ludvíka Bertrána, knìze",
+ "Sv. LudvÃ­ka BertrÃ¡na, knÄ›ze",
  "",
  };
 const char *text_OKT_10_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Gereona a druhù, muèedníkù",
+ "Sv. Gereona a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -7457,16 +7457,16 @@ const char *text_OKT_10_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_11[POCET_JAZYKOV + 1] = 
-{"Sv. Jána XXIII., pápea",
- "Sv. Jana XXIII., papee",
+{"Sv. JÃ¡na XXIII., pÃ¡peÅ¾a",
+ "Sv. Jana XXIII., papeÅ¾e",
  "",
  "",
  "",
  "",
- "Szent XXIII. János pápa",
+ "Szent XXIII. JÃ¡nos pÃ¡pa",
  };
 const char *text_OKT_11_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Jána XXIII., pápea, èlena 3. rádu",
+{"Sv. JÃ¡na XXIII., pÃ¡peÅ¾a, Älena 3. rÃ¡du",
  "",
  "",
  "",
@@ -7475,7 +7475,7 @@ const char *text_OKT_11_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_11_SK[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky katedrálneho chrámu v iline", // ToDo: 'Najsvätejšej Trojice', pod¾a Direktória 2012, str. 207
+{"VÃ½roÄie posviacky katedrÃ¡lneho chrÃ¡mu v Å½iline", // ToDo: 'NajsvÃ¤tejÅ¡ej Trojice', podÄ¾a DirektÃ³ria 2012, str. 207
  "",
  "",
  "",
@@ -7484,7 +7484,7 @@ const char *text_OKT_11_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_11_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jakuba z Ulmu, reho¾níka",
+{"Bl. Jakuba z Ulmu, rehoÄ¾nÃ­ka",
  "",
  "",
  "",
@@ -7502,8 +7502,8 @@ const char *text_OKT_12_CZ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_12_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Serafína z Montegranara, reho¾níka, èlena 1. rádu",
- "Sv. Serafína z Montegranara, øeholníka",
+{"Sv. SerafÃ­na z Montegranara, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
+ "Sv. SerafÃ­na z Montegranara, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -7511,8 +7511,8 @@ const char *text_OKT_12_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_13_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Honoráta Ko¿miñského, kòaza, èlena 1. rádu",
- "Bl. Honoráta Komiòského, knìze",
+{"Bl. HonorÃ¡ta KoÅ¼miÅ„skÃ©ho, kÅˆaza, Älena 1. rÃ¡du",
+ "Bl. HonorÃ¡ta KoÅ¾miÅˆskÃ©ho, knÄ›ze",
  "",
  "",
  "",
@@ -7520,7 +7520,7 @@ const char *text_OKT_13_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_13_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Magdalény Panatieriovej, panny",
+{"Bl. MagdalÃ©ny Panatieriovej, panny",
  "",
  "",
  "",
@@ -7529,7 +7529,7 @@ const char *text_OKT_13_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_13_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Alexandry Márie da Costovej, panny", // pod¾a CZ SDB doplnené: "panny"
+{"Bl. Alexandry MÃ¡rie da Costovej, panny", // podÄ¾a CZ SDB doplnenÃ©: "panny"
  "Bl. Alexandry Marie da Costa, panny",
  "",
  "",
@@ -7539,7 +7539,7 @@ const char *text_OKT_13_SDB[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_13_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Petra Adriána Toulorge, knìze a muèedníka"HTML_LINE_BREAK"z premonstrátského øádu",
+ "Bl. Petra AdriÃ¡na Toulorge, knÄ›ze a muÄednÃ­ka"HTML_LINE_BREAK"z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -7547,16 +7547,16 @@ const char *text_OKT_13_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_14[POCET_JAZYKOV + 1] = 
-{"Sv. Kalixta I., pápea a muèeníka",
- "Sv. Kalista I., papee a muèedníka",
+{"Sv. Kalixta I., pÃ¡peÅ¾a a muÄenÃ­ka",
+ "Sv. Kalista I., papeÅ¾e a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Kalista I., papee a muèedníka",
- "Szent I. Kallixtusz pápa és vértanú",
+ "Sv. Kalista I., papeÅ¾e a muÄednÃ­ka",
+ "Szent I. Kallixtusz pÃ¡pa Ã©s vÃ©rtanÃº",
  };
 const char *text_OKT_14_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Ogilvieho, kòaza a muèeníka",
+{"Sv. JÃ¡na Ogilvieho, kÅˆaza a muÄenÃ­ka",
  "",
  "",
  "",
@@ -7565,7 +7565,7 @@ const char *text_OKT_14_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_14_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Márie Poussepinovej, panny",
+{"Bl. MÃ¡rie Poussepinovej, panny",
  "",
  "",
  "",
@@ -7574,35 +7574,35 @@ const char *text_OKT_14_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_15[POCET_JAZYKOV + 1] = 
-{"Sv. Terézie od Jeiša, panny a uèite¾ky Cirkvi", // 'z Avily' upravené pod¾a Direktória 2012, str. 209
- "Sv. Terezie od Jeíše, panny a uèitelky církve",
+{"Sv. TerÃ©zie od JeÅ¾iÅ¡a, panny a uÄiteÄ¾ky Cirkvi", // 'z Avily' upravenÃ© podÄ¾a DirektÃ³ria 2012, str. 209
+ "Sv. Terezie od JeÅ¾Ã­Å¡e, panny a uÄitelky cÃ­rkve",
  "",
  "",
  "",
- "Sv. Terezie od Jeíše, panny a uèitelky Církve",
- "A Jézusról nevezett (Avilai) Szent Teréz szûz és egyháztanító",
+ "Sv. Terezie od JeÅ¾Ã­Å¡e, panny a uÄitelky CÃ­rkve",
+ "A JÃ©zusrÃ³l nevezett (Avilai) Szent TerÃ©z szÅ±z Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_OKT_16_1[POCET_JAZYKOV + 1] = 
-{"Sv. Margity Márie Alacoque, panny",
- "Sv. Markéty Marie Alacoque, panny",
+{"Sv. Margity MÃ¡rie Alacoque, panny",
+ "Sv. MarkÃ©ty Marie Alacoque, panny",
  "",
  "",
  "",
- "Sv. Markéty Marie Alacoque, panny",
- "Alacoque Szent Margit Mária szûz",
+ "Sv. MarkÃ©ty Marie Alacoque, panny",
+ "Alacoque Szent Margit MÃ¡ria szÅ±z",
  };
 const char *text_OKT_16_2[POCET_JAZYKOV + 1] = 
-{"Sv. Hedvigy, reho¾níèky",
- "Sv. Hedviky, øeholnice, hlavní patronky Slezska",
+{"Sv. Hedvigy, rehoÄ¾nÃ­Äky",
+ "Sv. Hedviky, Å™eholnice, hlavnÃ­ patronky Slezska",
  "",
  "",
  "",
- "Sv. Hedviky, øeholnice, hlavní patronky Slezska",
- "Szent Hedvig szerzetesnõ",
+ "Sv. Hedviky, Å™eholnice, hlavnÃ­ patronky Slezska",
+ "Szent Hedvig szerzetesnÅ‘",
  };
 const char *text_OKT_16_CSSR[POCET_JAZYKOV + 1] = 
-{"Sv. Gerarda Majellu, reho¾níka",
- "Sv. Gerarda Majelly, øeholníka",
+{"Sv. Gerarda Majellu, rehoÄ¾nÃ­ka",
+ "Sv. Gerarda Majelly, Å™eholnÃ­ka",
  "",
  "",
  "",
@@ -7610,43 +7610,43 @@ const char *text_OKT_16_CSSR[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_17[POCET_JAZYKOV + 1] = 
-{"Sv. Ignáca Antiochijského, biskupa a muèeníka",
- "Sv. Ignáce Antiochijského, biskupa a muèedníka",
+{"Sv. IgnÃ¡ca AntiochijskÃ©ho, biskupa a muÄenÃ­ka",
+ "Sv. IgnÃ¡ce AntiochijskÃ©ho, biskupa a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Ignáce Antiochijského, biskupa a muèedníka",
- "Antiochiai Szent Ignác püspök és vértanú",
+ "Sv. IgnÃ¡ce AntiochijskÃ©ho, biskupa a muÄednÃ­ka",
+ "Antiochiai Szent IgnÃ¡c pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_OKT_18[POCET_JAZYKOV + 1] = 
-{"Sv. Lukáša, evanjelistu",
- "Sv. Lukáše, evangelisty",
+{"Sv. LukÃ¡Å¡a, evanjelistu",
+ "Sv. LukÃ¡Å¡e, evangelisty",
  "",
  "",
  "",
- "Sv. Lukáše, evangelisty",
- "Szent Lukács evangélista",
+ "Sv. LukÃ¡Å¡e, evangelisty",
+ "Szent LukÃ¡cs evangÃ©lista",
  };
 const char *text_OKT_19_1[POCET_JAZYKOV + 1] = 
-{"Sv. Jána de Brébeuf a Izáka Jogues, kòazov,"HTML_LINE_BREAK"a spoloèníkov, muèeníkov", //  // 'sv. Izáka', pod¾a Direktória 2012, str. 210 nie je 'sv.'
- "Sv. Jana de Brébeuf a Izáka Joguese, knìí, a druhù, muèedníkù",
+{"Sv. JÃ¡na de BrÃ©beuf a IzÃ¡ka Jogues, kÅˆazov,"HTML_LINE_BREAK"a spoloÄnÃ­kov, muÄenÃ­kov", //  // 'sv. IzÃ¡ka', podÄ¾a DirektÃ³ria 2012, str. 210 nie je 'sv.'
+ "Sv. Jana de BrÃ©beuf a IzÃ¡ka Joguese, knÄ›Å¾Ã­, a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Jana de Brébeuf a Izáka Joguese, knìí, a druhù, muèedníkù",
- "De Brébeuf Szent János és Jogues Szent Izsák áldozópap és társaik vértanúk",
+ "Sv. Jana de BrÃ©beuf a IzÃ¡ka Joguese, knÄ›Å¾Ã­, a druhÅ¯, muÄednÃ­kÅ¯",
+ "De BrÃ©beuf Szent JÃ¡nos Ã©s Jogues Szent IzsÃ¡k Ã¡ldozÃ³pap Ã©s tÃ¡rsaik vÃ©rtanÃºk",
  };
 const char *text_OKT_19_2[POCET_JAZYKOV + 1] = 
-{"Sv. Pavla z Kría, kòaza",
- "Sv. Pavla od Køíe, knìze",
+{"Sv. Pavla z KrÃ­Å¾a, kÅˆaza",
+ "Sv. Pavla od KÅ™Ã­Å¾e, knÄ›ze",
  "",
  "",
  "",
- "Sv. Pavla od Køíe, knìze",
- "Keresztes Szent Pál áldozópap",
+ "Sv. Pavla od KÅ™Ã­Å¾e, knÄ›ze",
+ "Keresztes Szent PÃ¡l Ã¡ldozÃ³pap",
  };
 const char *text_OKT_19_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Jána de Brébeuf, Izáka Joguesa, kòazov, a spoloèníkov, muèeníkov",
+{"Sv. JÃ¡na de BrÃ©beuf, IzÃ¡ka Joguesa, kÅˆazov, a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
@@ -7664,8 +7664,8 @@ const char *text_OKT_19_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_19_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Petra z Alcantary, kòaza, èlena 1. rádu",
- "Sv. Petra z Alkantary, knìze",
+{"Sv. Petra z Alcantary, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. Petra z Alkantary, knÄ›ze",
  "",
  "",
  "",
@@ -7673,7 +7673,7 @@ const char *text_OKT_19_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_20_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jakuba Strepu, biskupa, èlena 1. rádu",
+{"Bl. Jakuba Strepu, biskupa, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -7683,7 +7683,7 @@ const char *text_OKT_20_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Jakuba Kerna, knìze z premonstrátského øádu",
+ "Sv. Jakuba Kerna, knÄ›ze z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -7692,15 +7692,15 @@ const char *text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_21_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Karla Rakouského",
+ "Bl. Karla RakouskÃ©ho",
  "",
  "",
  "",
- "Bl. Karla Rakouského",
+ "Bl. Karla RakouskÃ©ho",
  "",
  };
 const char *text_OKT_21_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Petra z Citt&#224; di Castello, kòaza", // &agrave;
+{"Bl. Petra z Citt&#224; di Castello, kÅˆaza", // &agrave;
  "",
  "",
  "",
@@ -7710,7 +7710,7 @@ const char *text_OKT_21_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_21_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Voršily a jejich druek, muèednic",
+ "Sv. VorÅ¡ily a jejich druÅ¾ek, muÄednic",
  "",
  "",
  "",
@@ -7718,35 +7718,35 @@ const char *text_OKT_21_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_22_OP[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky konventného kostola,"HTML_LINE_BREAK"ktorého deò posviacky nie je známy",
+{"VÃ½roÄie posviacky konventnÃ©ho kostola,"HTML_LINE_BREAK"ktorÃ©ho deÅˆ posviacky nie je znÃ¡my",
  "",
  "",
  "",
  "",
- "Vıroèí posvìcení klášterního kostela",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ klÃ¡Å¡ternÃ­ho kostela",
  "",
  };
 const char *text_OKT_22[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Pavla II., pápea",
- "Sv. Jana Pavla II., papee",
+{"Sv. JÃ¡na Pavla II., pÃ¡peÅ¾a",
+ "Sv. Jana Pavla II., papeÅ¾e",
  "",
  "",
  "",
- "Sv. Jana Pavla II., papee",
- "Szent II. János Pál pápa",
+ "Sv. Jana Pavla II., papeÅ¾e",
+ "Szent II. JÃ¡nos PÃ¡l pÃ¡pa",
  };
 const char *text_OKT_23[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Kapistránskeho, kòaza",
- "Sv. Jana Kapistránského, knìze",
+{"Sv. JÃ¡na KapistrÃ¡nskeho, kÅˆaza",
+ "Sv. Jana KapistrÃ¡nskÃ©ho, knÄ›ze",
  "",
  "",
  "",
- "Sv. Jana Kapistránského, knìze",
- "Kapisztrán Szent János áldozópap",
+ "Sv. Jana KapistrÃ¡nskÃ©ho, knÄ›ze",
+ "KapisztrÃ¡n Szent JÃ¡nos Ã¡ldozÃ³pap",
  };
 const char *text_OKT_23_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Kapistránskeho, kòaza, èlena 1. rádu",
- "Sv. Jana z Capestrana, knìze",
+{"Sv. JÃ¡na KapistrÃ¡nskeho, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. Jana z Capestrana, knÄ›ze",
  "",
  "",
  "",
@@ -7754,17 +7754,17 @@ const char *text_OKT_23_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_24[POCET_JAZYKOV + 1] = 
-{"Sv. Antona Márie Clareta, biskupa",
- "Sv. Antonína Marie Klareta, biskupa",
+{"Sv. Antona MÃ¡rie Clareta, biskupa",
+ "Sv. AntonÃ­na Marie Klareta, biskupa",
  "",
  "",
  "",
- "Sv. Antonína Marie Klareta, biskupa",
- "Claret Szent Antal Mária püspök",
+ "Sv. AntonÃ­na Marie Klareta, biskupa",
+ "Claret Szent Antal MÃ¡ria pÃ¼spÃ¶k",
  };
 const char *text_OKT_24_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Alojza Guanellu, kòaza",
- "Bl. Aloise Guanelly, knìze",
+{"Bl. Alojza Guanellu, kÅˆaza",
+ "Bl. Aloise Guanelly, knÄ›ze",
  "",
  "",
  "",
@@ -7778,10 +7778,10 @@ const char *text_OKT_24_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "A székesegyház felszentelése",
+ "A szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_OKT_25_SK[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky katedrálneho chrámu v Spišskom Podhradí", // ToDo: 'sv. Martina z Tours', pod¾a Direktória 2012, str. 213
+{"VÃ½roÄie posviacky katedrÃ¡lneho chrÃ¡mu v SpiÅ¡skom PodhradÃ­", // ToDo: 'sv. Martina z Tours', podÄ¾a DirektÃ³ria 2012, str. 213
  "",
  "",
  "",
@@ -7790,8 +7790,8 @@ const char *text_OKT_25_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_25_SDB[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky vlastného chrámu (keï sa nepozná dátum posviacky)",
- "Vıroèí posvìcení vlastního kostela", // OFMCap.
+{"VÃ½roÄie posviacky vlastnÃ©ho chrÃ¡mu (keÄ sa nepoznÃ¡ dÃ¡tum posviacky)",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ vlastnÃ­ho kostela", // OFMCap.
  "",
  "",
  "",
@@ -7799,7 +7799,7 @@ const char *text_OKT_25_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_25_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Petra Geremiu, kòaza",
+{"Bl. Petra Geremiu, kÅˆaza",
  "",
  "",
  "",
@@ -7808,7 +7808,7 @@ const char *text_OKT_25_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_25_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Márie od Jeiša Masie Ferragutovej a spoloèníc,"HTML_LINE_BREAK"panien a muèeníc, èleniek 2. rádu",
+{"Bl. MÃ¡rie od JeÅ¾iÅ¡a Masie Ferragutovej a spoloÄnÃ­c,"HTML_LINE_BREAK"panien a muÄenÃ­c, Äleniek 2. rÃ¡du",
  "",
  "",
  "",
@@ -7823,19 +7823,19 @@ const char *text_OKT_25_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Szent Mór püspök",
+ "Szent MÃ³r pÃ¼spÃ¶k",
  };
 const char *text_OKT_26[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky chrámov,"HTML_LINE_BREAK"ktorıch deò posviacky nie je známy",  // 'je neznámy' opravené pod¾a Direktória 2012, str. 214
- "Vıroèí posvìcení chrámu,"HTML_LINE_BREAK"jejich den dedikace není známı",
+{"VÃ½roÄie posviacky chrÃ¡mov,"HTML_LINE_BREAK"ktorÃ½ch deÅˆ posviacky nie je znÃ¡my",  // 'je neznÃ¡my' opravenÃ© podÄ¾a DirektÃ³ria 2012, str. 214
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ chrÃ¡mu,"HTML_LINE_BREAK"jejichÅ¾ den dedikace nenÃ­ znÃ¡mÃ½",
  "",
  "",
  "",
- "Vıroèí posvìcení chrámu,"HTML_LINE_BREAK"jejich den dedikace není známı",
- "A saját templom felszentelése "HTML_LINE_BREAK"(amennyiben annak napja nem ismeretes)", // A felszentelt templomokban: A saját templom felszentelése
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ chrÃ¡mu,"HTML_LINE_BREAK"jejichÅ¾ den dedikace nenÃ­ znÃ¡mÃ½",
+ "A sajÃ¡t templom felszentelÃ©se "HTML_LINE_BREAK"(amennyiben annak napja nem ismeretes)", // A felszentelt templomokban: A sajÃ¡t templom felszentelÃ©se
  };
 const char *text_OKT_26_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Damiána z Finale, kòaza",
+{"Bl. DamiÃ¡na z Finale, kÅˆaza",
  "",
  "",
  "",
@@ -7845,7 +7845,7 @@ const char *text_OKT_26_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_26_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Gilberta, opata z premonstrátského øádu",
+ "Sv. Gilberta, opata z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -7853,7 +7853,7 @@ const char *text_OKT_26_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_26_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Bonaventúru z Potenzy, kòaza, èlena 1. rádu",
+{"Bl. BonaventÃºru z Potenzy, kÅˆaza, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -7862,7 +7862,7 @@ const char *text_OKT_26_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_27_SK[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky katedrálneho chrámu v Roòave", // ToDo: 'Nanebovzatia Panny Márie', pod¾a Direktória 2012, str. 214
+{"VÃ½roÄie posviacky katedrÃ¡lneho chrÃ¡mu v RoÅ¾Åˆave", // ToDo: 'Nanebovzatia Panny MÃ¡rie', podÄ¾a DirektÃ³ria 2012, str. 214
  "",
  "",
  "",
@@ -7880,17 +7880,17 @@ const char *text_OKT_27_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_28[POCET_JAZYKOV + 1] = 
-{"Sv. Šimona a Júdu, apoštolov",
- "Sv. Šimona a Judy, apoštolù",
+{"Sv. Å imona a JÃºdu, apoÅ¡tolov",
+ "Sv. Å imona a Judy, apoÅ¡tolÅ¯",
  "",
  "",
  "",
- "Sv. Šimona a Judy, apoštolù",
- "Szent Simon és Szent Júdás apostol",
+ "Sv. Å imona a Judy, apoÅ¡tolÅ¯",
+ "Szent Simon Ã©s Szent JÃºdÃ¡s apostol",
  };
 const char *text_OKT_29_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Michala Ruu, kòaza",
- "Bl. Michala Ruy, knìze",
+{"Bl. Michala Ruu, kÅˆaza",
+ "Bl. Michala Ruy, knÄ›ze",
  "",
  "",
  "",
@@ -7899,15 +7899,15 @@ const char *text_OKT_29_SDB[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_29_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Marie Restituty Kafkové, panny a muèednice",
+ "Bl. Marie Restituty KafkovÃ©, panny a muÄednice",
  "",
  "",
  "",
- "Bl. Marie Restituty Kafkové, panny a muèednice",
+ "Bl. Marie Restituty KafkovÃ©, panny a muÄednice",
  "",
  };
 const char *text_OKT_30_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Dominika Collinsa, muèeníka",
+{"Bl. Dominika Collinsa, muÄenÃ­ka",
  "",
  "",
  "",
@@ -7925,7 +7925,7 @@ const char *text_OKT_30_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_30_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Terenca Alberta O’Brien, biskupa,"HTML_LINE_BREAK"a bl. Petra Higginsa, kòaza, muèeníkov",
+{"Bl. Terenca Alberta Oâ€™Brien, biskupa,"HTML_LINE_BREAK"a bl. Petra Higginsa, kÅˆaza, muÄenÃ­kov",
  "",
  "",
  "",
@@ -7935,15 +7935,15 @@ const char *text_OKT_30_2_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_30_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení katedrály Svatého Ducha",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly SvatÃ©ho Ducha",
  "",
  "",
  "",
- "Vıroèí posvìcení katedrály Svatého Ducha",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly SvatÃ©ho Ducha",
  "",
  };
 const char *text_OKT_31_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Alfonza Rodrígueza, reho¾níka",
+{"Sv. Alfonza RodrÃ­gueza, rehoÄ¾nÃ­ka",
  "",
  "",
  "",
@@ -7952,8 +7952,8 @@ const char *text_OKT_31_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_31_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Angela z Acri, kòaza, èlena 1. rádu",
- "Bl. Andìla z Acri, knìze",
+{"Bl. Angela z Acri, kÅˆaza, Älena 1. rÃ¡du",
+ "Bl. AndÄ›la z Acri, knÄ›ze",
  "",
  "",
  "",
@@ -7976,40 +7976,40 @@ const char *text_OKT_31_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Boldog Romzsa Tódor püspök és vértanú",
+ "Boldog Romzsa TÃ³dor pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 
 // --------------- 11 november ---------------
 
 const char *text_NOV_01[POCET_JAZYKOV + 1] = 
-{"Všetkıch svätıch",
- "Všech svatıch",
+{"VÅ¡etkÃ½ch svÃ¤tÃ½ch",
+ "VÅ¡ech svatÃ½ch",
  "",
  "",
  "",
- "Všech svatıch",
+ "VÅ¡ech svatÃ½ch",
  "Mindenszentek",
  };
 const char *text_NOV_02[POCET_JAZYKOV + 1] = 
-{"Spomienka na všetkıch vernıch zosnulıch", // pod¾a Direktória 2012, str. 218
- "Vzpomínka na všechny vìrné zemøelé",
+{"Spomienka na vÅ¡etkÃ½ch vernÃ½ch zosnulÃ½ch", // podÄ¾a DirektÃ³ria 2012, str. 218
+ "VzpomÃ­nka na vÅ¡echny vÄ›rnÃ© zemÅ™elÃ©",
  "",
  "",
  "",
- "Vzpomínka na všechny vìrné zemøelé",
+ "VzpomÃ­nka na vÅ¡echny vÄ›rnÃ© zemÅ™elÃ©",
  "Halottak napja",
  };
 const char *text_NOV_03[POCET_JAZYKOV + 1] = 
-{"Sv. Martina Porres, reho¾níka", // 'de Porres': pod¾a Direktória 2012, str. 218, nie je 'de'
- "Sv. Martina de Porres, øeholníka",
+{"Sv. Martina Porres, rehoÄ¾nÃ­ka", // 'de Porres': podÄ¾a DirektÃ³ria 2012, str. 218, nie je 'de'
+ "Sv. Martina de Porres, Å™eholnÃ­ka",
  "",
  "",
  "",
- "Sv. Martina de Porres, øeholníka",
- "Porres Szent Márton szerzetes",
+ "Sv. Martina de Porres, Å™eholnÃ­ka",
+ "Porres Szent MÃ¡rton szerzetes",
  };
 const char *text_NOV_03_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Ruperta Mayera, kòaza",
+{"Bl. Ruperta Mayera, kÅˆaza",
  "",
  "",
  "",
@@ -8018,8 +8018,8 @@ const char *text_NOV_03_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_03_OFM[POCET_JAZYKOV + 1] = 
-{"Spomienka na všetkıch zosnulıch"HTML_LINE_BREAK"troch františkánskych rádov",
- "Vzpomínka na všechny zemøelé serafínského øádu",
+{"Spomienka na vÅ¡etkÃ½ch zosnulÃ½ch"HTML_LINE_BREAK"troch frantiÅ¡kÃ¡nskych rÃ¡dov",
+ "VzpomÃ­nka na vÅ¡echny zemÅ™elÃ© serafÃ­nskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -8028,12 +8028,12 @@ const char *text_NOV_03_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_04[POCET_JAZYKOV + 1] = 
 {"Sv. Karola Borromea, biskupa",
- "Sv. Karla Boromejského, biskupa",
+ "Sv. Karla BoromejskÃ©ho, biskupa",
  "",
  "",
  "",
- "Sv. Karla Boromejského, biskupa",
- "Borromeo Szent Károly püspök",
+ "Sv. Karla BoromejskÃ©ho, biskupa",
+ "Borromeo Szent KÃ¡roly pÃ¼spÃ¶k",
  };
 const char *text_NOV_05_SK[POCET_JAZYKOV + 1] = 
 {"Sv. Imricha",
@@ -8045,7 +8045,7 @@ const char *text_NOV_05_SK[POCET_JAZYKOV + 1] =
  "Szent Imre herceg",
  };
 const char *text_NOV_05_SJ[POCET_JAZYKOV + 1] = 
-{"Všetkıch svätıch a blahoslavenıch zo Spoloènosti Jeišovej",
+{"VÅ¡etkÃ½ch svÃ¤tÃ½ch a blahoslavenÃ½ch zo SpoloÄnosti JeÅ¾iÅ¡ovej",
  "",
  "",
  "",
@@ -8054,8 +8054,8 @@ const char *text_NOV_05_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_05_SDB[POCET_JAZYKOV + 1] = 
-{"Všetkıch zomrelıch dobrodincov Saleziánskej rodiny",
- "Pøipomínka zemøelıch dobrodincù a èlenù salesiánské rodiny",
+{"VÅ¡etkÃ½ch zomrelÃ½ch dobrodincov SaleziÃ¡nskej rodiny",
+ "PÅ™ipomÃ­nka zemÅ™elÃ½ch dobrodincÅ¯ a ÄlenÅ¯ salesiÃ¡nskÃ© rodiny",
  "",
  "",
  "",
@@ -8063,7 +8063,7 @@ const char *text_NOV_05_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_05_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Šimona Ballacchiho, reho¾níka",
+{"Bl. Å imona Ballacchiho, rehoÄ¾nÃ­ka",
  "",
  "",
  "",
@@ -8072,16 +8072,16 @@ const char *text_NOV_05_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_06_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Alfonza de Navarrete, kòaza, a spoloèníkov, muèeníkov",
+{"Bl. Alfonza de Navarrete, kÅˆaza, a spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
  "",
- "Sv. Alfonse Navarrety, knìze a druhù, japonskıch muèedníkù",
+ "Sv. Alfonse Navarrety, knÄ›ze a druhÅ¯, japonskÃ½ch muÄednÃ­kÅ¯",
  "",
  };
 const char *text_NOV_06_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Alfonza Lopeza a spoloèníkov, muèeníkov, èlenov 1. rádu",
+{"Bl. Alfonza Lopeza a spoloÄnÃ­kov, muÄenÃ­kov, Älenov 1. rÃ¡du",
  "",
  "",
  "",
@@ -8090,17 +8090,17 @@ const char *text_NOV_06_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_07_OP[POCET_JAZYKOV + 1] = 
-{"Všetkıch svätıch Rehole kazate¾ov",
+{"VÅ¡etkÃ½ch svÃ¤tÃ½ch Rehole kazateÄ¾ov",
  "",
  "",
  "",
  "",
- "Všech svatıch Øádu bratøí kazatelù",
+ "VÅ¡ech svatÃ½ch Å˜Ã¡du bratÅ™Ã­ kazatelÅ¯",
  "",
  };
 const char *text_NOV_08_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jána Dunsa Scota, kòaza, èlena 1. rádu",
- "Bl. Jana z Dunsu, knìze",
+{"Bl. JÃ¡na Dunsa Scota, kÅˆaza, Älena 1. rÃ¡du",
+ "Bl. Jana z Dunsu, knÄ›ze",
  "",
  "",
  "",
@@ -8108,17 +8108,17 @@ const char *text_NOV_08_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_08_OP[POCET_JAZYKOV + 1] = 
-{"Spomienka na všetkıch zosnulıch"HTML_LINE_BREAK"bratov a sestry Rehole kazate¾ov",
+{"Spomienka na vÅ¡etkÃ½ch zosnulÃ½ch"HTML_LINE_BREAK"bratov a sestry Rehole kazateÄ¾ov",
  "",
  "",
  "",
  "",
- "Všech zemøelıch bratøí a sester"HTML_LINE_BREAK"Øádu bratøí kazatelù",
+ "VÅ¡ech zemÅ™elÃ½ch bratÅ™Ã­ a sester"HTML_LINE_BREAK"Å˜Ã¡du bratÅ™Ã­ kazatelÅ¯",
  "",
  };
 const char *text_NOV_08_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Všech svatıch premonstrátského øádu "HTML_LINE_BREAK"a všech svatıch z øádù øeholních kanovníkù",
+ "VÅ¡ech svatÃ½ch premonstrÃ¡tskÃ©ho Å™Ã¡du "HTML_LINE_BREAK"a vÅ¡ech svatÃ½ch z Å™Ã¡dÅ¯ Å™eholnÃ­ch kanovnÃ­kÅ¯",
  "",
  "",
  "",
@@ -8126,22 +8126,22 @@ const char *text_NOV_08_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_09[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky Lateránskej baziliky",
- "Posvìcení lateránské baziliky",
+{"VÃ½roÄie posviacky LaterÃ¡nskej baziliky",
+ "PosvÄ›cenÃ­ laterÃ¡nskÃ© baziliky",
  "",
  "",
  "",
- "Posvìcení lateránské baziliky",
- "A lateráni-bazilika felszentelése",
+ "PosvÄ›cenÃ­ laterÃ¡nskÃ© baziliky",
+ "A laterÃ¡ni-bazilika felszentelÃ©se",
  };
 const char *text_NOV_10[POCET_JAZYKOV + 1] = 
-{"Sv. Leva Ve¾kého, pápea a uèite¾a Cirkvi",
- "Sv. Lva Velikého, papee a uèitele církve",
+{"Sv. Leva VeÄ¾kÃ©ho, pÃ¡peÅ¾a a uÄiteÄ¾a Cirkvi",
+ "Sv. Lva VelikÃ©ho, papeÅ¾e a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Lva Velikého, papee a uèitele církve",
- "Nagy Szent Leó pápa és egyháztanító",
+ "Sv. Lva VelikÃ©ho, papeÅ¾e a uÄitele cÃ­rkve",
+ "Nagy Szent LeÃ³ pÃ¡pa Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_NOV_11[POCET_JAZYKOV + 1] = 
 {"Sv. Martina z Tours, biskupa",
@@ -8150,16 +8150,16 @@ const char *text_NOV_11[POCET_JAZYKOV + 1] =
  "",
  "",
  "Sv. Martina, biskupa",
- "Tours-i Szent Márton püspök",
+ "Tours-i Szent MÃ¡rton pÃ¼spÃ¶k",
  };
 const char *text_NOV_12[POCET_JAZYKOV + 1] = 
-{"Sv. Jozafáta, biskupa a muèeníka",
- "Sv. Josafata, biskupa a muèedníka",
+{"Sv. JozafÃ¡ta, biskupa a muÄenÃ­ka",
+ "Sv. Josafata, biskupa a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Josafata, biskupa a muèedníka",
- "Szent Jozafát püspök és vértanú",
+ "Sv. Josafata, biskupa a muÄednÃ­ka",
+ "Szent JozafÃ¡t pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_NOV_13_SDB[POCET_JAZYKOV + 1] = 
 {"Bl. Artemida Zattiho",
@@ -8171,7 +8171,7 @@ const char *text_NOV_13_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_13_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Stanislava Kostku, reho¾níka",
+{"Sv. Stanislava Kostku, rehoÄ¾nÃ­ka",
  "",
  "",
  "",
@@ -8180,7 +8180,7 @@ const char *text_NOV_13_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_13_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Didaka z Alcaly, reho¾níka, èlena 1. rádu",
+{"Sv. Didaka z Alcaly, rehoÄ¾nÃ­ka, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -8190,11 +8190,11 @@ const char *text_NOV_13_OFM[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_13_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Aneky Èeské, panny",
+ "Sv. AneÅ¾ky ÄŒeskÃ©, panny",
  "",
  "",
  "",
- "Sv. Aneky Èeské, panny",
+ "Sv. AneÅ¾ky ÄŒeskÃ©, panny",
  "",
  };
 const char *text_NOV_13_HU[POCET_JAZYKOV + 1] = 
@@ -8204,10 +8204,10 @@ const char *text_NOV_13_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Magyar szentek és boldogok",
+ "Magyar szentek Ã©s boldogok",
  };
 const char *text_NOV_14_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Jozefa Pignatelliho, kòaza",
+{"Sv. Jozefa Pignatelliho, kÅˆaza",
  "",
  "",
  "",
@@ -8217,7 +8217,7 @@ const char *text_NOV_14_SJ[POCET_JAZYKOV + 1] =
  };
 const char *text_NOV_14_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Siarda, opata z premonstrátského øádu",
+ "Sv. Siarda, opata z premonstrÃ¡tskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -8225,7 +8225,7 @@ const char *text_NOV_14_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_14_1_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jána Licciu, kòaza",
+{"Bl. JÃ¡na Licciu, kÅˆaza",
  "",
  "",
  "",
@@ -8243,8 +8243,8 @@ const char *text_NOV_14_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_14_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Mikuláša Taveliæa a spoloèníkov,"HTML_LINE_BREAK"kòazov a muèeníkov, èlenov 1. rádu",
- "Sv. Mikuláše Tavelièe, knìze, a druhù, muèedníkù",
+{"Sv. MikulÃ¡Å¡a TaveliÄ‡a a spoloÄnÃ­kov,"HTML_LINE_BREAK"kÅˆazov a muÄenÃ­kov, Älenov 1. rÃ¡du",
+ "Sv. MikulÃ¡Å¡e TaveliÄe, knÄ›ze, a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
@@ -8252,17 +8252,17 @@ const char *text_NOV_14_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_15[POCET_JAZYKOV + 1] = 
-{"Sv. Alberta Ve¾kého, biskupa a uèite¾a Cirkvi",
- "Sv. Alberta Velikého, biskupa a uèitele církve",
+{"Sv. Alberta VeÄ¾kÃ©ho, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. Alberta VelikÃ©ho, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Alberta Velikého, biskupa a uèitele Církve",
- "Nagy Szent Albert püspök és egyháztanító",
+ "Sv. Alberta VelikÃ©ho, biskupa a uÄitele CÃ­rkve",
+ "Nagy Szent Albert pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_NOV_15_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Magdalény Moranovej, panny",
- "Bl. Magdalény Morano, panny",
+{"Bl. MagdalÃ©ny Moranovej, panny",
+ "Bl. MagdalÃ©ny Morano, panny",
  "",
  "",
  "",
@@ -8270,25 +8270,25 @@ const char *text_NOV_15_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_16_1[POCET_JAZYKOV + 1] = 
-{"Sv. Margity Škótskej",
- "Sv. Markéty Skotské",
+{"Sv. Margity Å kÃ³tskej",
+ "Sv. MarkÃ©ty SkotskÃ©",
  "",
  "",
  "",
- "Sv. Markéty Skotské",
- "Skóciai Szent Margit",
+ "Sv. MarkÃ©ty SkotskÃ©",
+ "SkÃ³ciai Szent Margit",
  };
 const char *text_NOV_16_2[POCET_JAZYKOV + 1] = 
-{"Sv. Gertrúdy, panny",
+{"Sv. GertrÃºdy, panny",
  "Sv. Gertrudy, panny",
  "",
  "",
  "",
  "Sv. Gertrudy, panny",
- "Nagy Szent Gertrúd szûz", // HU 17NOV
+ "Nagy Szent GertrÃºd szÅ±z", // HU 17NOV
  };
 const char *text_NOV_16_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Rocha Gonzáleza, Alfonza Rodrígueza"HTML_LINE_BREAK"a Jána del Castillo, kòazov a muèeníkov",
+{"Sv. Rocha GonzÃ¡leza, Alfonza RodrÃ­gueza"HTML_LINE_BREAK"a JÃ¡na del Castillo, kÅˆazov a muÄenÃ­kov",
  "",
  "",
  "",
@@ -8297,17 +8297,17 @@ const char *text_NOV_16_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_17[POCET_JAZYKOV + 1] = 
-{"Sv. Albety Uhorskej, reho¾níèky",
- "Sv. Albìty Uherské, øeholnice",
+{"Sv. AlÅ¾bety Uhorskej, rehoÄ¾nÃ­Äky",
+ "Sv. AlÅ¾bÄ›ty UherskÃ©, Å™eholnice",
  "",
  "",
  "",
- "Sv. Albìty Uherské, øeholnice",
- "Árpád-házi Szent Erzsébet", // HU 19NOV
+ "Sv. AlÅ¾bÄ›ty UherskÃ©, Å™eholnice",
+ "ÃrpÃ¡d-hÃ¡zi Szent ErzsÃ©bet", // HU 19NOV
  };
 const char *text_NOV_17_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Albety Uhorskej, reho¾níèky,"HTML_LINE_BREAK"patrónky františkánskeho svetského rádu",
- "Sv. Albìty Uherské, patronky 3. øádu",
+{"Sv. AlÅ¾bety Uhorskej, rehoÄ¾nÃ­Äky,"HTML_LINE_BREAK"patrÃ³nky frantiÅ¡kÃ¡nskeho svetskÃ©ho rÃ¡du",
+ "Sv. AlÅ¾bÄ›ty UherskÃ©, patronky 3. Å™Ã¡du",
  "",
  "",
  "",
@@ -8315,16 +8315,16 @@ const char *text_NOV_17_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_18[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky bazilík sv. Petra a sv. Pavla, apoštolov",
- "Posvìcení øímskıch bazilik svatıch apoštolù Petra a Pavla",
+{"VÃ½roÄie posviacky bazilÃ­k sv. Petra a sv. Pavla, apoÅ¡tolov",
+ "PosvÄ›cenÃ­ Å™Ã­mskÃ½ch bazilik svatÃ½ch apoÅ¡tolÅ¯ Petra a Pavla",
  "",
  "",
  "",
- "Posvìcení øímskıch bazilik svatıch apoštolù Petra a Pavla",
- "Szent Péter- és Szent Pál-bazilikák felszentelése",
+ "PosvÄ›cenÃ­ Å™Ã­mskÃ½ch bazilik svatÃ½ch apoÅ¡tolÅ¯ Petra a Pavla",
+ "Szent PÃ©ter- Ã©s Szent PÃ¡l-bazilikÃ¡k felszentelÃ©se",
  };
 const char *text_NOV_18_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Salome z Krakova, panny, èlenky 2. rádu",
+{"Bl. Salome z Krakova, panny, Älenky 2. rÃ¡du",
  "",
  "",
  "",
@@ -8333,7 +8333,7 @@ const char *text_NOV_18_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_19_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Agnesy z Assisi, panny, èlenky 2. rádu",
+{"Sv. Agnesy z Assisi, panny, Älenky 2. rÃ¡du",
  "",
  "",
  "",
@@ -8351,7 +8351,7 @@ const char *text_NOV_19_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_20_SK[POCET_JAZYKOV + 1] = 
-{"Vıroèie posviacky katedrálneho chrámu v Nitre", // ToDo: 'sv. Emeráma', pod¾a Direktória 2012, str. 226
+{"VÃ½roÄie posviacky katedrÃ¡lneho chrÃ¡mu v Nitre", // ToDo: 'sv. EmerÃ¡ma', podÄ¾a DirektÃ³ria 2012, str. 226
  "",
  "",
  "",
@@ -8360,43 +8360,43 @@ const char *text_NOV_20_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_21[POCET_JAZYKOV + 1] = 
-{"Obetovanie Panny Márie", // pod¾a Direktória 2012, str. 226, nie je 'prebl.'
- "Zasvìcení Panny Marie v Jeruzalémì",
+{"Obetovanie Panny MÃ¡rie", // podÄ¾a DirektÃ³ria 2012, str. 226, nie je 'prebl.'
+ "ZasvÄ›cenÃ­ Panny Marie v JeruzalÃ©mÄ›",
  "",
  "",
  "",
- "Zasvìcení Panny Marie v Jeruzalémì",
- "A Boldogságos Szûz Mária bemutatása a templomban",
+ "ZasvÄ›cenÃ­ Panny Marie v JeruzalÃ©mÄ›",
+ "A BoldogsÃ¡gos SzÅ±z MÃ¡ria bemutatÃ¡sa a templomban",
  };
 const char *text_NOV_22[POCET_JAZYKOV + 1] = 
-{"Sv. Cecílie, panny a muèenice",
- "Sv. Cecilie, panny a muèednice",
+{"Sv. CecÃ­lie, panny a muÄenice",
+ "Sv. Cecilie, panny a muÄednice",
  "",
  "",
  "",
- "Sv. Cecilie, panny a muèednice",
- "Szent Cecília szûz és vértanú",
+ "Sv. Cecilie, panny a muÄednice",
+ "Szent CecÃ­lia szÅ±z Ã©s vÃ©rtanÃº",
  };
 const char *text_NOV_23_1[POCET_JAZYKOV + 1] = 
-{"Sv. Klementa I. pápea a muèeníka",
- "Sv. Klementa I., papee a muèedníka",
+{"Sv. Klementa I. pÃ¡peÅ¾a a muÄenÃ­ka",
+ "Sv. Klementa I., papeÅ¾e a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Klementa I., papee a muèedníka",
- "Szent I. Kelemen pápa és vértanú",
+ "Sv. Klementa I., papeÅ¾e a muÄednÃ­ka",
+ "Szent I. Kelemen pÃ¡pa Ã©s vÃ©rtanÃº",
  };
 const char *text_NOV_23_2[POCET_JAZYKOV + 1] = 
-{"Sv. Kolumbána, opáta",
- "Sv. Kolumbána, opata",
+{"Sv. KolumbÃ¡na, opÃ¡ta",
+ "Sv. KolumbÃ¡na, opata",
  "",
  "",
  "",
- "Sv. Kolumbána, opata",
- "Szent Kolumbán apát",
+ "Sv. KolumbÃ¡na, opata",
+ "Szent KolumbÃ¡n apÃ¡t",
  };
 const char *text_NOV_23_SJ[POCET_JAZYKOV + 1] = 
-{"Bl. Michala Augustína Pro, kòaza a muèeníka",
+{"Bl. Michala AugustÃ­na Pro, kÅˆaza a muÄenÃ­ka",
  "",
  "",
  "",
@@ -8405,31 +8405,31 @@ const char *text_NOV_23_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_24[POCET_JAZYKOV + 1] = 
-{"Sv. Ondreja Dung-Laka, kòaza,"HTML_LINE_BREAK"a spoloèníkov, muèeníkov",
- "Sv. Ondøeje Dung-Laca, knìze, a druhù, muèedníkù",
+{"Sv. Ondreja Dung-Laka, kÅˆaza,"HTML_LINE_BREAK"a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Sv. OndÅ™eje Dung-Laca, knÄ›ze, a druhÅ¯, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Ignáce Delgada, biskupa, Vincence Liema, knìze, "HTML_LINE_BREAK"Dominika An-Khama, otce rodiny, a druhù, vietnamskıch muèedníkù",
- "Dung-Lac Szent András áldozópap és társai vértanúk",
+ "Sv. IgnÃ¡ce Delgada, biskupa, Vincence Liema, knÄ›ze, "HTML_LINE_BREAK"Dominika An-Khama, otce rodiny, a druhÅ¯, vietnamskÃ½ch muÄednÃ­kÅ¯",
+ "Dung-Lac Szent AndrÃ¡s Ã¡ldozÃ³pap Ã©s tÃ¡rsai vÃ©rtanÃºk",
  };
 const char *text_NOV_24_OP[POCET_JAZYKOV + 1] = 
-{"Sv. Ignáca Klementa Delgadu, biskupa, "HTML_LINE_BREAK"Vincenta Le Quang Liem a Pace, kòaza, "HTML_LINE_BREAK"Dominika Pham Trong (An) Khama, laika, "HTML_LINE_BREAK"a spoloèníkov, muèeníkov",
- "Sv. Ignáce Delgada, biskupa, Vincence Liema, knìze, "HTML_LINE_BREAK"Dominika An-Khama, otce rodiny, a druhù, vietnamskıch muèedníkù",
+{"Sv. IgnÃ¡ca Klementa Delgadu, biskupa, "HTML_LINE_BREAK"Vincenta Le Quang Liem a Pace, kÅˆaza, "HTML_LINE_BREAK"Dominika Pham Trong (An) Khama, laika, "HTML_LINE_BREAK"a spoloÄnÃ­kov, muÄenÃ­kov",
+ "Sv. IgnÃ¡ce Delgada, biskupa, Vincence Liema, knÄ›ze, "HTML_LINE_BREAK"Dominika An-Khama, otce rodiny, a druhÅ¯, vietnamskÃ½ch muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Sv. Ignáce Delgada, biskupa, Vincence Liema, knìze, "HTML_LINE_BREAK"Dominika An-Khama, otce rodiny, a druhù, vietnamskıch muèedníkù",
+ "Sv. IgnÃ¡ce Delgada, biskupa, Vincence Liema, knÄ›ze, "HTML_LINE_BREAK"Dominika An-Khama, otce rodiny, a druhÅ¯, vietnamskÃ½ch muÄednÃ­kÅ¯",
  "",
  };
 const char *text_NOV_25[POCET_JAZYKOV + 1] = 
-{"Sv. Kataríny Alexandrijskej, panny a muèenice",
- "Sv. Kateøiny Alexandrijské, panny a muèednice",
+{"Sv. KatarÃ­ny Alexandrijskej, panny a muÄenice",
+ "Sv. KateÅ™iny AlexandrijskÃ©, panny a muÄednice",
  "",
  "",
  "",
- "Sv. Kateøiny Alexandrijské, panny a muèednice",
- "Alexandriai Szent Katalin szûz és vértanú",
+ "Sv. KateÅ™iny AlexandrijskÃ©, panny a muÄednice",
+ "Alexandriai Szent Katalin szÅ±z Ã©s vÃ©rtanÃº",
  };
 const char *text_NOV_25_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -8438,11 +8438,11 @@ const char *text_NOV_25_HU[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "A bazilika-székesegyház felszentelése",
+ "A bazilika-szÃ©kesegyhÃ¡z felszentelÃ©se",
  };
 const char *text_NOV_25_SDB[POCET_JAZYKOV + 1] = 
-{"Všetkıch zomrelıch rodièov saleziánov",
- "Pøipomínka zemøelıch rodièù salesiánù",
+{"VÅ¡etkÃ½ch zomrelÃ½ch rodiÄov saleziÃ¡nov",
+ "PÅ™ipomÃ­nka zemÅ™elÃ½ch rodiÄÅ¯ salesiÃ¡nÅ¯",
  "",
  "",
  "",
@@ -8450,7 +8450,7 @@ const char *text_NOV_25_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_26_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Berchmansa, reho¾níka",
+{"Sv. JÃ¡na Berchmansa, rehoÄ¾nÃ­ka",
  "",
  "",
  "",
@@ -8459,8 +8459,8 @@ const char *text_NOV_26_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_26_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Leonarda z Porto Mauricia, kòaza, èlena 1. rádu",
- "Sv. Leonarda z Porta Mauritia, knìze",
+{"Sv. Leonarda z Porto Mauricia, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. Leonarda z Porta Mauritia, knÄ›ze",
  "",
  "",
  "",
@@ -8468,8 +8468,8 @@ const char *text_NOV_26_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_27_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Antona Fasaniho, kòaza, èlena 1. rádu",
- "Sv. Františka Antonína Fasaniho, knìze",
+{"Sv. FrantiÅ¡ka Antona Fasaniho, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. FrantiÅ¡ka AntonÃ­na Fasaniho, knÄ›ze",
  "",
  "",
  "",
@@ -8477,7 +8477,7 @@ const char *text_NOV_27_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_27_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Margity Savojskej, matky rodiny a reho¾níèky",
+{"Bl. Margity Savojskej, matky rodiny a rehoÄ¾nÃ­Äky",
  "",
  "",
  "",
@@ -8486,8 +8486,8 @@ const char *text_NOV_27_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_28_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Jakuba z Marky, kòaza, èlena 1. rádu",
- "Sv. Jakuba z Marky, knìze",
+{"Sv. Jakuba z Marky, kÅˆaza, Älena 1. rÃ¡du",
+ "Sv. Jakuba z Marky, knÄ›ze",
  "",
  "",
  "",
@@ -8495,8 +8495,8 @@ const char *text_NOV_28_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_29_OFM[POCET_JAZYKOV + 1] = 
-{"Všetkıch svätıch troch františkánskych rádov",
- "Všech svatıch serafínského øádu",
+{"VÅ¡etkÃ½ch svÃ¤tÃ½ch troch frantiÅ¡kÃ¡nskych rÃ¡dov",
+ "VÅ¡ech svatÃ½ch serafÃ­nskÃ©ho Å™Ã¡du",
  "",
  "",
  "",
@@ -8504,19 +8504,19 @@ const char *text_NOV_29_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_30[POCET_JAZYKOV + 1] = 
-{"Sv. Ondreja, apoštola",
- "Sv. Ondøeje, apoštola",
+{"Sv. Ondreja, apoÅ¡tola",
+ "Sv. OndÅ™eje, apoÅ¡tola",
  "",
  "",
  "",
- "Sv. Ondøeje, apoštola",
- "Szent András apostol",
+ "Sv. OndÅ™eje, apoÅ¡tola",
+ "Szent AndrÃ¡s apostol",
  };
 
 // --------------- 12 december ---------------
 
 const char *text_DEC_01_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Edmunda Campiona, Róberta Southwella a ich spoloèníkov, muèeníkov",
+{"Sv. Edmunda Campiona, RÃ³berta Southwella a ich spoloÄnÃ­kov, muÄenÃ­kov",
  "",
  "",
  "",
@@ -8525,7 +8525,7 @@ const char *text_DEC_01_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_DEC_01_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Jána Vercellského, kòaza",
+{"Bl. JÃ¡na VercellskÃ©ho, kÅˆaza",
  "",
  "",
  "",
@@ -8535,24 +8535,24 @@ const char *text_DEC_01_OP[POCET_JAZYKOV + 1] =
  };
 const char *text_DEC_01_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Sv. Edmunda Kampiána, knìze a muèedníka",
+ "Sv. Edmunda KampiÃ¡na, knÄ›ze a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Edmunda Kampiána, knìze a muèedníka",
+ "Sv. Edmunda KampiÃ¡na, knÄ›ze a muÄednÃ­ka",
  "",
  };
 const char *text_DEC_02_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení katedrály sv. Bartolomìje",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. BartolomÄ›je",
  "",
  "",
  "",
- "Vıroèí posvìcení katedrály sv. Bartolomìje",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly sv. BartolomÄ›je",
  "",
  };
 const char *text_DEC_02_1_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Rafaela Chyliñského, kòaza, èlena 1. rádu",
+{"Bl. Rafaela ChyliÅ„skÃ©ho, kÅˆaza, Älena 1. rÃ¡du",
  "",
  "",
  "",
@@ -8561,8 +8561,8 @@ const char *text_DEC_02_1_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_DEC_02_2_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Angely Márie Astorchovej, panny, èlenky 2. rádu",
- "Bl. Marie Andìly Astorch, panny",
+{"Bl. Angely MÃ¡rie Astorchovej, panny, Älenky 2. rÃ¡du",
+ "Bl. Marie AndÄ›ly Astorch, panny",
  "",
  "",
  "",
@@ -8570,16 +8570,16 @@ const char *text_DEC_02_2_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_DEC_03[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Xaverského, kòaza",
- "Sv. Františka Xaverského, knìze",
+{"Sv. FrantiÅ¡ka XaverskÃ©ho, kÅˆaza",
+ "Sv. FrantiÅ¡ka XaverskÃ©ho, knÄ›ze",
  "",
  "",
  "",
- "Sv. Františka Xaverského, knìze",
- "Xavéri Szent Ferenc áldozópap",
+ "Sv. FrantiÅ¡ka XaverskÃ©ho, knÄ›ze",
+ "XavÃ©ri Szent Ferenc Ã¡ldozÃ³pap",
  };
 const char *text_DEC_03_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Xavérskeho, misionára",
+{"Sv. FrantiÅ¡ka XavÃ©rskeho, misionÃ¡ra",
  "",
  "",
  "",
@@ -8588,17 +8588,17 @@ const char *text_DEC_03_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_DEC_04[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Damascénskeho, kòaza a uèite¾a Cirkvi",
- "Sv. Jana Damašského, knìze a uèitele církve",
+{"Sv. JÃ¡na DamascÃ©nskeho, kÅˆaza a uÄiteÄ¾a Cirkvi",
+ "Sv. Jana DamaÅ¡skÃ©ho, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Jana Damašského, knìze a uèitele Církve",
- "Damaszkuszi Szent János áldozópap és egyháztanító",
+ "Sv. Jana DamaÅ¡skÃ©ho, knÄ›ze a uÄitele CÃ­rkve",
+ "Damaszkuszi Szent JÃ¡nos Ã¡ldozÃ³pap Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_DEC_05_SDB[POCET_JAZYKOV + 1] = 
-{"Bl. Filipa Rinaldiho, kòaza, "HTML_LINE_BREAK"zakladate¾a Sekulárneho inštitútu dobrovo¾níèok dona Bosca",
- "Bl. Filipa Rinaldiho, knìze, "HTML_LINE_BREAK"zakladatele Sekulárního institutu Volontárií Dona Boska",
+{"Bl. Filipa Rinaldiho, kÅˆaza, "HTML_LINE_BREAK"zakladateÄ¾a SekulÃ¡rneho inÅ¡titÃºtu dobrovoÄ¾nÃ­Äok dona Bosca",
+ "Bl. Filipa Rinaldiho, knÄ›ze, "HTML_LINE_BREAK"zakladatele SekulÃ¡rnÃ­ho institutu VolontÃ¡riÃ­ Dona Boska",
  "",
  "",
  "",
@@ -8606,79 +8606,79 @@ const char *text_DEC_05_SDB[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_DEC_06[POCET_JAZYKOV + 1] = 
-{"Sv. Mikuláša, biskupa",
- "Sv. Mikuláše, biskupa",
+{"Sv. MikulÃ¡Å¡a, biskupa",
+ "Sv. MikulÃ¡Å¡e, biskupa",
  "",
  "",
  "",
- "Sv. Mikuláše, biskupa",
- "Szent Miklós püspök",
+ "Sv. MikulÃ¡Å¡e, biskupa",
+ "Szent MiklÃ³s pÃ¼spÃ¶k",
  };
 const char *text_DEC_07[POCET_JAZYKOV + 1] = 
-{"Sv. Ambróza, biskupa a uèite¾a Cirkvi",
- "Sv. Ambroe, biskupa a uèitele církve",
+{"Sv. AmbrÃ³za, biskupa a uÄiteÄ¾a Cirkvi",
+ "Sv. AmbroÅ¾e, biskupa a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Ambroe, biskupa a uèitele Církve",
- "Szent Ambrus püspök és egyháztanító",
+ "Sv. AmbroÅ¾e, biskupa a uÄitele CÃ­rkve",
+ "Szent Ambrus pÃ¼spÃ¶k Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_DEC_08[POCET_JAZYKOV + 1] = 
-{"Nepoškvrnené poèatie Panny Márie",
- "Panny Marie, poèaté bez poskvrny prvotního høíchu",
+{"NepoÅ¡kvrnenÃ© poÄatie Panny MÃ¡rie",
+ "Panny Marie, poÄatÃ© bez poskvrny prvotnÃ­ho hÅ™Ã­chu",
  "",
  "",
  "",
- "Neposkvrnìného poèetí Panny Marie",
- "A Boldogságos Szûz Mária szeplõtelen fogantatása",
+ "NeposkvrnÄ›nÃ©ho poÄetÃ­ Panny Marie",
+ "A BoldogsÃ¡gos SzÅ±z MÃ¡ria szeplÅ‘telen fogantatÃ¡sa",
  };
 const char *text_DEC_09[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Didaka Cuauhtlatoatzin",
+{"Sv. JÃ¡na Didaka Cuauhtlatoatzin",
  "Sv. Jana Didaka Cuauhtlatoatzina",
  "",
  "",
  "",
  "Sv. Jana Didaka Cuauhtlatoatzina",
- "Szent Juan Diego Cuauhtlatoatzin, Guadalupei látnok",
+ "Szent Juan Diego Cuauhtlatoatzin, Guadalupei lÃ¡tnok",
  };
 const char *text_DEC_11[POCET_JAZYKOV + 1] = 
-{"Sv. Damaza I., pápea",
- "Sv. Damasa I., papee",
+{"Sv. Damaza I., pÃ¡peÅ¾a",
+ "Sv. Damasa I., papeÅ¾e",
  "",
  "",
  "",
- "Sv. Damasa I., papee",
- "Szent I. Damazusz pápa",
+ "Sv. Damasa I., papeÅ¾e",
+ "Szent I. Damazusz pÃ¡pa",
  };
 const char *text_DEC_12[POCET_JAZYKOV + 1] = 
-{"Panny Márie Guadalupskej", // pod¾a Direktória 2012, str. 232, nie je 'Prebl.'
- "Panny Marie Guadalupské",
+{"Panny MÃ¡rie Guadalupskej", // podÄ¾a DirektÃ³ria 2012, str. 232, nie je 'Prebl.'
+ "Panny Marie GuadalupskÃ©",
  "",
  "",
  "",
- "Panny Marie Guadalupské",
- "A Guadalupei Boldogságos Szûz Mária",
+ "Panny Marie GuadalupskÃ©",
+ "A Guadalupei BoldogsÃ¡gos SzÅ±z MÃ¡ria",
  };
 const char *text_DEC_13[POCET_JAZYKOV + 1] = 
-{"Sv. Lucie, panny a muèenice",
- "Sv. Lucie, panny a muèednice",
+{"Sv. Lucie, panny a muÄenice",
+ "Sv. Lucie, panny a muÄednice",
  "",
  "",
  "",
- "Sv. Lucie, panny a muèednice",
- "Szent Lúcia szûz és vértanú",
+ "Sv. Lucie, panny a muÄednice",
+ "Szent LÃºcia szÅ±z Ã©s vÃ©rtanÃº",
  };
 const char *text_DEC_14[POCET_JAZYKOV + 1] = 
-{"Sv. Jána z Kría, kòaza a uèite¾a Cirkvi",
- "Sv. Jana od Køíe, knìze a uèitele církve",
+{"Sv. JÃ¡na z KrÃ­Å¾a, kÅˆaza a uÄiteÄ¾a Cirkvi",
+ "Sv. Jana od KÅ™Ã­Å¾e, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Jana od Køíe, knìze a uèitele Církve",
- "Keresztes Szent János áldozópap és egyháztanító",
+ "Sv. Jana od KÅ™Ã­Å¾e, knÄ›ze a uÄitele CÃ­rkve",
+ "Keresztes Szent JÃ¡nos Ã¡ldozÃ³pap Ã©s egyhÃ¡ztanÃ­tÃ³",
  };
 const char *text_DEC_16_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Šebastiána Maggiho, kòaza",
+{"Bl. Å ebastiÃ¡na Maggiho, kÅˆaza",
  "",
  "",
  "",
@@ -8687,25 +8687,25 @@ const char *text_DEC_16_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_DEC_21[POCET_JAZYKOV + 1] = 
-{"Sv. Petra Kanízia, kòaza a uèite¾a Cirkvi",
- "Sv. Petra Kanisia, knìze a uèitele církve",
+{"Sv. Petra KanÃ­zia, kÅˆaza a uÄiteÄ¾a Cirkvi",
+ "Sv. Petra Kanisia, knÄ›ze a uÄitele cÃ­rkve",
  "",
  "",
  "",
- "Sv. Petra Kanisia, knìze a uèitele Církve",
- "Kaníziusz Szent Péter áldozópap és egyháztaíntó",
+ "Sv. Petra Kanisia, knÄ›ze a uÄitele CÃ­rkve",
+ "KanÃ­ziusz Szent PÃ©ter Ã¡ldozÃ³pap Ã©s egyhÃ¡ztaÃ­ntÃ³",
  };
 const char *text_DEC_22_CZ[POCET_JAZYKOV + 1] = 
 {"",
- "Vıroèí posvìcení katedrály Sv. Mikuláše",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly Sv. MikulÃ¡Å¡e",
  "",
  "",
  "",
- "Vıroèí posvìcení katedrály Sv. Mikuláše",
+ "VÃ½roÄÃ­ posvÄ›cenÃ­ katedrÃ¡ly Sv. MikulÃ¡Å¡e",
  "",
  };
 const char *text_DEC_22_OP[POCET_JAZYKOV + 1] = 
-{"Vıroèie potvrdenia Rehole kazate¾ov (1216)",
+{"VÃ½roÄie potvrdenia Rehole kazateÄ¾ov (1216)",
  "",
  "",
  "",
@@ -8714,115 +8714,115 @@ const char *text_DEC_22_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_DEC_23[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Kentského, kòaza",
- "Sv. Jana Kentského, knìze",
+{"Sv. JÃ¡na KentskÃ©ho, kÅˆaza",
+ "Sv. Jana KentskÃ©ho, knÄ›ze",
  "",
  "",
  "",
- "Sv. Jana Kentského, knìze",
- "K&#281;ty Szent János áldozópap",
+ "Sv. Jana KentskÃ©ho, knÄ›ze",
+ "K&#281;ty Szent JÃ¡nos Ã¡ldozÃ³pap",
  };
 const char *text_DEC_26[POCET_JAZYKOV + 1] = 
-{"Sv. Štefana, prvého muèeníka",
- "Sv. Štìpána, prvomuèedníka",
+{"Sv. Å tefana, prvÃ©ho muÄenÃ­ka",
+ "Sv. Å tÄ›pÃ¡na, prvomuÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Štìpána, prvomuèedníka",
- "Szent István elsõ vértanú",
+ "Sv. Å tÄ›pÃ¡na, prvomuÄednÃ­ka",
+ "Szent IstvÃ¡n elsÅ‘ vÃ©rtanÃº",
  };
 const char *text_DEC_27[POCET_JAZYKOV + 1] = 
-{"Sv. Jána, apoštola a evanjelistu",
- "Sv. Jana, apoštola a evangelisty",
+{"Sv. JÃ¡na, apoÅ¡tola a evanjelistu",
+ "Sv. Jana, apoÅ¡tola a evangelisty",
  "",
  "",
  "",
- "Sv. Jana, apoštola a evangelisty",
- "Szent János apostol és evangélista",
+ "Sv. Jana, apoÅ¡tola a evangelisty",
+ "Szent JÃ¡nos apostol Ã©s evangÃ©lista",
  };
 const char *text_DEC_28[POCET_JAZYKOV + 1] = 
-{"Svätıch Neviniatok, muèeníkov",
- "Svatıch Mláïátek, muèedníkù",
+{"SvÃ¤tÃ½ch Neviniatok, muÄenÃ­kov",
+ "SvatÃ½ch MlÃ¡ÄÃ¡tek, muÄednÃ­kÅ¯",
  "",
  "",
  "",
- "Svatıch Mláïátek, muèedníkù",
- "Aprószentek",
+ "SvatÃ½ch MlÃ¡ÄÃ¡tek, muÄednÃ­kÅ¯",
+ "AprÃ³szentek",
  };
 const char *text_DEC_29[POCET_JAZYKOV + 1] = 
-{"Sv. Tomáša Becketa, biskupa a muèeníka",
- "Sv. Tomáše Becketa, biskupa a muèedníka",
+{"Sv. TomÃ¡Å¡a Becketa, biskupa a muÄenÃ­ka",
+ "Sv. TomÃ¡Å¡e Becketa, biskupa a muÄednÃ­ka",
  "",
  "",
  "",
- "Sv. Tomáše Becketa, biskupa a muèedníka",
- "Becket Szent Tamás püspök és vértanú",
+ "Sv. TomÃ¡Å¡e Becketa, biskupa a muÄednÃ­ka",
+ "Becket Szent TamÃ¡s pÃ¼spÃ¶k Ã©s vÃ©rtanÃº",
  };
 const char *text_DEC_31[POCET_JAZYKOV + 1] = 
-{"Sv. Silvestra I., pápea",
- "Sv. Silvestra I., papee",
+{"Sv. Silvestra I., pÃ¡peÅ¾a",
+ "Sv. Silvestra I., papeÅ¾e",
  "",
  "",
  "",
- "Sv. Silvestra I., papee",
- "Szent I. Szilveszter pápa",
+ "Sv. Silvestra I., papeÅ¾e",
+ "Szent I. Szilveszter pÃ¡pa",
  };
 
-// --------------- 00 pohyblivé slávenia ---------------
+// --------------- 00 pohyblivÃ© slÃ¡venia ---------------
 
 const char *text_ZELENY_STVRTOK[POCET_JAZYKOV + 1] = 
-{"Zelenı (ve¾kı) štvrtok – Pamiatka Pánovej veèere",
- "Zelenı ètvrtek - Památka Veèeøe Pánì",
+{"ZelenÃ½ (veÄ¾kÃ½) Å¡tvrtok â€“ Pamiatka PÃ¡novej veÄere",
+ "ZelenÃ½ Ätvrtek - PamÃ¡tka VeÄeÅ™e PÃ¡nÄ›",
  "",
  "",
  "",
- "Zelenı ètvrtek - Památka Veèeøe Pánì",
- "Nagycsütörtök",
+ "ZelenÃ½ Ätvrtek - PamÃ¡tka VeÄeÅ™e PÃ¡nÄ›",
+ "NagycsÃ¼tÃ¶rtÃ¶k",
  };
 const char *text_VELKY_PIATOK[POCET_JAZYKOV + 1] = 
-{"Ve¾kı piatok",
- "Velkı pátek",
+{"VeÄ¾kÃ½ piatok",
+ "VelkÃ½ pÃ¡tek",
  "",
  "",
  "",
- "Velkı pátek",
- "Nagypéntek",
+ "VelkÃ½ pÃ¡tek",
+ "NagypÃ©ntek",
  };
 const char *text_BIELA_SOBOTA[POCET_JAZYKOV + 1] = 
-{"Biela (ve¾ká) sobota",
- "Bílá sobota",
+{"Biela (veÄ¾kÃ¡) sobota",
+ "BÃ­lÃ¡ sobota",
  "",
  "",
  "",
- "Bílá sobota",
+ "BÃ­lÃ¡ sobota",
  "Nagyszombat",
  };
 const char *text_KVETNA_NEDELA[POCET_JAZYKOV + 1] = 
-{"Kvetná nede¾a",
- "Kvìtná nedìle",
+{"KvetnÃ¡ nedeÄ¾a",
+ "KvÄ›tnÃ¡ nedÄ›le",
  "",
  "",
  "",
- "Kvìtná nedìle",
- "Virágvasárnap, vagyis az Úr szenvedésének vasárnapja",
+ "KvÄ›tnÃ¡ nedÄ›le",
+ "VirÃ¡gvasÃ¡rnap, vagyis az Ãšr szenvedÃ©sÃ©nek vasÃ¡rnapja",
  };
 const char *text_PO_POPOLCOVEJ_STREDE[POCET_JAZYKOV + 1] = 
 {"po Popolcovej strede",
- "po Popeleèní støedì",
+ "po PopeleÄnÃ­ stÅ™edÄ›",
  "",
  "",
  "",
- "po Popeleèní støedì",
- "Hamvazószerda után",
+ "po PopeleÄnÃ­ stÅ™edÄ›",
+ "HamvazÃ³szerda utÃ¡n",
  };
 const char *text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1] = 
-{"v oktáve Narodenia Pána",
- "v oktávu Narození Pánì",
+{"v oktÃ¡ve Narodenia PÃ¡na",
+ "v oktÃ¡vu NarozenÃ­ PÃ¡nÄ›",
  "",
  "",
  "",
- "v oktávu Narození Pánì",
- "Karácsony nyolcadában",
+ "v oktÃ¡vu NarozenÃ­ PÃ¡nÄ›",
+ "KarÃ¡csony nyolcadÃ¡ban",
  };
 
 #endif // __HODIN_H_

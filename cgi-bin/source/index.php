@@ -4,7 +4,7 @@ header("Last-Modified:".gmdate("D, d M Y H:i:s")." GMT");
 
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="Author" content="Juraj Videky">
 	<link rel="stylesheet" type="text/css" href="../../breviar.css">
 	<title>Zoznam súborov v adresári</title>

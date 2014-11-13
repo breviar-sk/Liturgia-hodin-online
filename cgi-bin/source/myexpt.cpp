@@ -1,7 +1,7 @@
 /***********************************************************************/
 /*                                                                     */
 /* myexpt.cpp                                                          */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk                     */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk                     */
 /*                                                                     */
 /* description | obsahuje exportne rutinky na export                   */
 /*               do suboru FILE_EXPORT alebo stdout                    */
@@ -14,7 +14,7 @@
 /*   06/09/2001A.D. | tento popis                                      */
 /*   2003-07-08a.D. | pridany append pre export (podla switchu)        */
 /*   2003-07-15a.D. | odstraneny #include "mybase.h"                   */
-/*   2011-05-18a.D. | odstr·nenÈ ExpL2HTML(), pridanÈ Export_to_file() */
+/*   2011-05-18a.D. | odstr√°nen√© ExpL2HTML(), pridan√© Export_to_file() */
 /*                                                                     */
 /***********************************************************************/
 
@@ -175,7 +175,7 @@ short int Export_to_file(FILE * expt, const char *fmt, ...){
 	va_list argptr;
 	short int cnt;
 
-	// klasickÈ volanie ako Export
+	// klasick√© volanie ako Export
 	if((expt == NULL) && (exptused == SUCCESS)){
 		expt = exportfile;
 	}

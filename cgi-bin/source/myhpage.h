@@ -1,7 +1,7 @@
 /************************************************************************/
 /*                                                                      */
 /* myhpage.h                                                            */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk                      */
+/* (c)1999-2014 | Juraj VidÃ©ky | videky@breviar.sk                      */
 /*                                                                      */
 /* description | obsahuje vypis hlavicky a patky HTML dokumentu         */
 /* document history                                                     */
@@ -9,9 +9,9 @@
 /*   06/09/2001A.D. | tento popis                                       */
 /*   2003-07-01a.D. | pridany subor pre hlavicku aj patku               */
 /*   2004-03-16a.D. | funkcie hlavicka a patka aj do suboru             */
-/*   2008-08-08a.D. | hlavièka sa neèíta z FILE_HEADER (kvôli css)      */
-/*   2011-05-18a.D. | upravená a zjednotená hlavièka a pätka,           */
-/*                    _hlavicka() a _patka() pouívajú Export_to_file() */
+/*   2008-08-08a.D. | hlaviÄka sa neÄÃ­ta z FILE_HEADER (kvÃ´li css)      */
+/*   2011-05-18a.D. | upravenÃ¡ a zjednotenÃ¡ hlaviÄka a pÃ¤tka,           */
+/*                    _hlavicka() a _patka() pouÅ¾Ã­vajÃº Export_to_file() */
 /*                                                                      */
 /************************************************************************/
 

@@ -1,7 +1,7 @@
 /******************************************************************/
 /*                                                                */
 /* myconf.cpp                                                     */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk                */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk                */
 /*                                                                */
 /*                                                                */
 /* description | poskytuje rozhranie na konfiguraciu,             */
@@ -15,7 +15,7 @@
 /*   2006-07-13a.D. | prve kroky k jazykovym mutaciam             */
 /*   2007-05-24a.D. | Marek Elias (MEL): pouzitie libconfuse      */
 /*   2007-06-01a.D. | prepracovanie konfigurovatelnych premennych */
-/*   2007-06-19a.D. | odstr·nenÈ pouûitie libconfuse (MEL, JUV)   */
+/*   2007-06-19a.D. | odstr√°nen√© pou≈æitie libconfuse (MEL, JUV)   */
 /*                                                                */
 /*                                                                */
 /******************************************************************/
@@ -63,7 +63,7 @@ const char *cfg_option_postfix[POCET_JAZYKOV + 1] =
 void printConfigOptions(void){
 	short int j = 0, o = 0;
 	for(j = 0; j <= POCET_JAZYKOV; j++){
-		Log("=== Jazyk `%s' (%s): Default hodnoty option parametrov (konfiguraËn˝ s˙bor %s) ===\n", skratka_jazyka[j], nazov_jazyka[j], CONFIG_FILE);
+		Log("=== Jazyk `%s' (%s): Default hodnoty option parametrov (konfiguraƒçn√Ω s√∫bor %s) ===\n", skratka_jazyka[j], nazov_jazyka[j], CONFIG_FILE);
 		for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++){
 			if(o < POCET_GLOBAL_OPT){
 				Log("cfg_option_default[%d][%d] == `%d'\n", o, j, cfg_option_default[o][j]);
@@ -88,10 +88,10 @@ void readConfig(void)
 	short int i = 0, j = 0, o = 0;
 	char nazov_option[MAX_STR];
 
-	Log("readConfig() -- zaËiatok...\n");
-	Log("============================ s˙bor `%s' ============================\n", CONFIG_FILE);
+	Log("readConfig() -- zaƒçiatok...\n");
+	Log("============================ s√∫bor `%s' ============================\n", CONFIG_FILE);
 
-	Log("NaplnÌm vöetky defaulty hodnotou GLOBAL_OPTION_NULL.\n");
+	Log("Napln√≠m v≈°etky defaulty hodnotou GLOBAL_OPTION_NULL.\n");
 	for(o = 0; o < POCET_GLOBAL_OPT; o++){
 		for(j = 0; j <= POCET_JAZYKOV; j++){
 			cfg_option_default[o][j] = GLOBAL_OPTION_NULL;
@@ -99,20 +99,20 @@ void readConfig(void)
 	}// for o
 
 	if(! (subor = fopen(CONFIG_FILE, "r")) ){
-		Log("NemÙûem otvoriù s˙bor `%s'.\n", CONFIG_FILE);
+		Log("Nem√¥≈æem otvori≈• s√∫bor `%s'.\n", CONFIG_FILE);
 		return;
 	}
 	else{
-		Log("S˙bor `%s' otvoren˝.\n", CONFIG_FILE);
+		Log("S√∫bor `%s' otvoren√Ω.\n", CONFIG_FILE);
 	}
 
 	for (; (znak = fgetc(subor)) != EOF;)
 	{
 		if (znak == '#'){
 #ifdef LOG_READCONFIG
-			Log("Parsujem pozn·mku...\n");
+			Log("Parsujem pozn√°mku...\n");
 #endif
-			while((znak = fgetc(subor)) != EOF && (znak != '\n') ); // parsuj pozn·mku do konca riadka
+			while((znak = fgetc(subor)) != EOF && (znak != '\n') ); // parsuj pozn√°mku do konca riadka
 			if(znak == EOF){ 
 				Log("EOF... break.\n");
 				break; 
@@ -125,14 +125,14 @@ void readConfig(void)
 		}
 
 		mystrcpy(option, STR_EMPTY, MAX_OPTION_LENGTH);
-		// naËÌta maxim·lne MAX_OPTION_LENGTH znakov (mÌnus medzery, ktorÈ ignoruje)
+		// naƒç√≠ta maxim√°lne MAX_OPTION_LENGTH znakov (m√≠nus medzery, ktor√© ignoruje)
 		for(i = 0; (znak != EOF) && (znak != '\n') && (znak != '=') && (i < (MAX_OPTION_LENGTH - 1)); znak = fgetc(subor), ++i)
 		{
 #ifdef LOG_READCONFIG
 			Log("znak == `%c'\n", znak);
 #endif
-			if(znak == CHAR_SPACE) // v prÌpade medzery preskoË, ËÌtaj Ôalej
-				// aby tu mohlo byù znak = fgetc(subor); je potrebnÈ, aby sme skontrolovali, Ëi nie sme na konci
+			if(znak == CHAR_SPACE) // v pr√≠pade medzery preskoƒç, ƒç√≠taj ƒèalej
+				// aby tu mohlo by≈• znak = fgetc(subor); je potrebn√©, aby sme skontrolovali, ƒçi nie sme na konci
 				i--;
 			else{
 #ifdef LOG_READCONFIG
@@ -158,14 +158,14 @@ void readConfig(void)
 		}
 
 		mystrcpy(hodnota, STR_EMPTY, MAX_VALUE_LENGTH);
-		// naËÌta maxim·lne MAX_OPTION_LENGTH znakov (mÌnus medzery, ktorÈ ignoruje)
+		// naƒç√≠ta maxim√°lne MAX_OPTION_LENGTH znakov (m√≠nus medzery, ktor√© ignoruje)
 		for(i = 0; (znak != EOF) && (znak != '\n') && (znak != '"') && (i < (MAX_HTTP_STR - 1)); znak = fgetc(subor), ++i)
 		{
 #ifdef LOG_READCONFIG
 			Log("znak == `%c'\n", znak);
 #endif
-			if(znak == CHAR_SPACE) // v prÌpade medzery preskoË, ËÌtaj Ôalej
-				// aby tu mohlo byù znak = fgetc(subor); je potrebnÈ, aby sme skontrolovali, Ëi nie sme na konci
+			if(znak == CHAR_SPACE) // v pr√≠pade medzery preskoƒç, ƒç√≠taj ƒèalej
+				// aby tu mohlo by≈• znak = fgetc(subor); je potrebn√©, aby sme skontrolovali, ƒçi nie sme na konci
 				i--;
 			else{
 #ifdef LOG_READCONFIG
@@ -176,8 +176,8 @@ void readConfig(void)
 		}
 		hodnota[i] = '\0';
 
-		Log("Parsovan· option  == `%s'\n", option);
-		Log("Parsovan· hodnota == `%s'\n", hodnota);
+		Log("Parsovan√° option  == `%s'\n", option);
+		Log("Parsovan√° hodnota == `%s'\n", hodnota);
 /*		if (!strcmp(option, "http_adresa_def")){
 			strncpy(cfg_HTTP_ADDRESS_default, hodnota, MAX_HTTP_STR);
 		}
@@ -195,7 +195,7 @@ void readConfig(void)
 			for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++){
 				for(j = 0; j <= POCET_JAZYKOV; j++){
 					if(!equals(cfg_option_prefix[o], STR_EMPTY) && !equals(cfg_option_postfix[j], STR_EMPTY)){
-						// vyskladaj n·zov option pre jazyk j a option o (natvrdo definovanÈ moûnosti)
+						// vyskladaj n√°zov option pre jazyk j a option o (natvrdo definovan√© mo≈ænosti)
 						mystrcpy(nazov_option, cfg_option_prefix[o], MAX_STR);
 						strcat(nazov_option, ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX);
 						strcat(nazov_option, cfg_option_postfix[j]);
@@ -206,14 +206,14 @@ void readConfig(void)
 										cfg_option_default[o][j] = atoi(hodnota);
 									}
 								}// if(!strcmp(option, nazov_option))
-							}// if -- ötandardn· option
+							}// if -- ≈°tandardn√° option
 							else{
 								switch(o - POCET_GLOBAL_OPT){
 									case 0: mystrcpy(cfg_http_address_default[j], hodnota, MAX_HTTP_STR); break;
 									case 1: mystrcpy(cfg_http_display_address_default[j], hodnota, MAX_HTTP_STR); break;
 									case 2: mystrcpy(cfg_mail_address_default[j], hodnota, MAX_MAIL_STR); break;
 								}// switch()
-							}// else -- natvrdo definovan· option
+							}// else -- natvrdo definovan√° option
 						}// if(!strcmp(option, nazov_option))
 					}// if
 				}// for j
@@ -229,7 +229,7 @@ void readConfig(void)
 	}
 	fclose(subor);
 
-	Log("============================ s˙bor `%s' ============================\n", CONFIG_FILE);
+	Log("============================ s√∫bor `%s' ============================\n", CONFIG_FILE);
 	if(equalsi(cfg_MAIL_ADDRESS_default, STR_EMPTY)){
 		mystrcpy(cfg_MAIL_ADDRESS_default, MAIL_ADDRESS_DEFAULT, MAX_MAIL_STR);
 	}
@@ -254,12 +254,12 @@ void readConfig(void)
 	}
 
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
-	// 2012-10-03: pre android upravenÈ defaulty pre zobrazovanie
+	// 2012-10-03: pre android upraven√© defaulty pre zobrazovanie
 	Log("android...\n");
 	for(j = 0; j <= POCET_JAZYKOV; j++){
 		if(cfg_option_default[OPT_2_HTML_EXPORT][j] != GLOBAL_OPTION_NULL){
 			Log("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
-			// nastavenie parametrov OPT_2_HTML_EXPORT: prid·me bity pre nastavenie
+			// nastavenie parametrov OPT_2_HTML_EXPORT: prid√°me bity pre nastavenie
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_NAVIGATION) != BIT_OPT_2_NAVIGATION){
 				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_NAVIGATION;
@@ -303,14 +303,14 @@ void readConfig(void)
 	return;
 }// readConfig()
 
-// 2007-06-01: keÔûe prib˙da mnoho konfiguraËn˝ch parametrov, treba funkciu na ich v˝pis
+// 2007-06-01: keƒè≈æe prib√∫da mnoho konfiguraƒçn√Ωch parametrov, treba funkciu na ich v√Ωpis
 void printConfig(void){
 	Log("\n");
 	Log("=== BEGIN:configuration (%s) ===\n", CONFIG_FILE);
 
 	// 2004-03-17 pridane cfg_INCLUDE_DIR_default
 	Log("cfg_INCLUDE_DIR_default == `%s'\n", cfg_INCLUDE_DIR_default);
-	// 2007-06-01: nasleduju novÈ parametre
+	// 2007-06-01: nasleduju nov√© parametre
 	printConfigOptions();
 	Log("=== END:configuration (%s) ===\n", CONFIG_FILE);
 	Log("\n");

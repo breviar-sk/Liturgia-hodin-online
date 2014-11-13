@@ -1,11 +1,11 @@
 /***************************************************************/
 /*                                                             */
 /* mybuild.h                                                   */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj VidÃ©ky | videky@breviar.sk             */
 /*                                                             */
-/* description | obsahuje dátum buildu                         */
+/* description | obsahuje dÃ¡tum buildu                         */
 /* document history                                            */
-/*   2011-07-11a.D. | vytvorený (vyòatie z mydefs.h)           */
+/*   2011-07-11a.D. | vytvorenÃ½ (vyÅˆatie z mydefs.h)           */
 /*                                                             */
 /***************************************************************/
 

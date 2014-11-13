@@ -1,15 +1,15 @@
 /***************************************************************/
 /*                                                             */
 /* mystring.h                                                  */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
 /* description |                                               */
 /* document history                                            */
 /*   31/03/2000A.D. | created                                  */
 /*   06/09/2001A.D. | tento popis                              */
 /*   2003-08-13a.D. | pridane definicie STR_EMPTY a STR_UNDEF  */
-/*   2009-08-05a.D. | pridan· funkcia substring()              */
-/*   2011-04-13a.D. | sem presunutÈ reùazcovÈ funkcie equals() */
+/*   2009-08-05a.D. | pridan√° funkcia substring()              */
+/*   2011-04-13a.D. | sem presunut√© re≈•azcov√© funkcie equals() */
 /*                                                             */
 /***************************************************************/
 
@@ -42,12 +42,12 @@ short int equalsi(const char *, const char *);
 short int equalsi(const char *, char *);
 short int equalsi(char *, const char *);
 
-// funkcia mystr_replace() nahradÌ vöetky v˝skyty podreùazca substr v reùazci string reùazcom replacement
+// funkcia mystr_replace() nahrad√≠ v≈°etky v√Ωskyty podre≈•azca substr v re≈•azci string re≈•azcom replacement
 char *mystr_replace ( const char *string, const char *substr, const char *replacement );
 
-// funkcia mystr_first_lower() aplikuje tolower() na prv˝ znak reùazca
+// funkcia mystr_first_lower() aplikuje tolower() na prv√Ω znak re≈•azca
 char *mystr_first_lower ( const char *string );
-// funkcia mystr_first_upper() aplikuje toupper() na prv˝ znak reùazca
+// funkcia mystr_first_upper() aplikuje toupper() na prv√Ω znak re≈•azca
 char *mystr_first_upper ( const char *string );
 
 #endif // __MYSTRING_H_

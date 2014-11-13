@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* liturgia.cpp                                                */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
 /* description | obsahuje zakladne vecicky pre liturgiu hodin  */
 /* document history                                            */
@@ -18,9 +18,9 @@
 /*                  - odstranenie RUN_MODLITBA_CEZ_DEN         */
 /*   2004-08-14a.D. | char zmeneny na unsigned (_nedelne_p...) */
 /*   2005-03-21a.D. | pridany typ vypisu linky LINK_ISO_8601   */
-/*   2005-07-27a.D. | nov· premenn· v ötrukt.dm: typslav_lokal */
-/*   2010-02-19a.D. | oprava velkonocna_nedela (öpec. prÌpady) */
-/*   2010-05-21a.D. | nejakÈ doplnenia pre maÔarËinu (JAZYK_HU)*/
+/*   2005-07-27a.D. | nov√° premenn√° v ≈°trukt.dm: typslav_lokal */
+/*   2010-02-19a.D. | oprava velkonocna_nedela (≈°pec. pr√≠pady) */
+/*   2010-05-21a.D. | nejak√© doplnenia pre maƒèarƒçinu (JAZYK_HU)*/
 /*                                                             */
 /*                                                             */
 /***************************************************************/
@@ -287,7 +287,7 @@ short int _deallocate_global_var(void){
 	Log("_global_pom_str\n"); free(_global_pom_str);
 	Log("_global_string\n"); free(_global_string);
 	Log("_global_string2\n"); free(_global_string2);
-	Log("_global_string_farba\n"); free(_global_string_farba); // pridanÈ 2006-08-19
+	Log("_global_string_farba\n"); free(_global_string_farba); // pridan√© 2006-08-19
 
 	Log("...done.\n");
 	return SUCCESS;
@@ -307,7 +307,7 @@ short int cislo_mesiaca(char *mesiac){
 
 //---------------------------------------------------------------------
 // urobi velke pismena 
-// 2011-01-31: nesmie pritom v HTML stringoch upravovaù kÛdovÈ men·, napr. &mdash; na veækÈ pÌsmen·
+// 2011-01-31: nesmie pritom v HTML stringoch upravova≈• k√≥dov√© men√°, napr. &mdash; na veƒæk√© p√≠smen√°
 char *caps_BIG(const char *input){
 	short int ok = TRUE;
 	short int i = 0;
@@ -320,7 +320,7 @@ char *caps_BIG(const char *input){
 		if((c == ';') && (ok == FALSE)){
 			ok = TRUE;
 		}
-		// 2011-01-31: ToDo: eöte by bolo potrebnÈ oöetriù aj to, ûe za & nenasleduje regulÈrny znak pre öpeci·lny HTML kÛd, t. j. nieËo inÈ ako upper+lowercase ascii abeceda + # a ËÌslice
+		// 2011-01-31: ToDo: e≈°te by bolo potrebn√© o≈°etri≈• aj to, ≈æe za & nenasleduje regul√©rny znak pre ≈°peci√°lny HTML k√≥d, t. j. nieƒço in√© ako upper+lowercase ascii abeceda + # a ƒç√≠slice
 		if(ok == TRUE){
 			if((c >= 'a') && (c <= 'z')){
 				c = (char)(c - 32);
@@ -328,34 +328,34 @@ char *caps_BIG(const char *input){
 			else{
 				switch(c){
 					// samohlasky -- dlhe
-					case '·': c = '¡'; break;
-					case 'È': c = '…'; break;
-					case 'Ì': c = 'Õ'; break;
-					case 'Û': c = '”'; break;
-					case '˙': c = '⁄'; break;
-					case '˝': c = '›'; break;
+					case '√°': c = '√Å'; break;
+					case '√©': c = '√â'; break;
+					case '√≠': c = '√ç'; break;
+					case '√≥': c = '√ì'; break;
+					case '√∫': c = '√ö'; break;
+					case '√Ω': c = '√ù'; break;
 					// samohlasky -- specialne
-					case '‰': c = 'ƒ'; break;
-					case 'Ù': c = '‘'; break;
-					case 'Ï': c = 'Ã'; break;
-					case '˘': c = 'Ÿ'; break;
+					case '√§': c = '√Ñ'; break;
+					case '√¥': c = '√î'; break;
+					case 'ƒõ': c = 'ƒö'; break;
+					case '≈Ø': c = '≈Æ'; break;
 					// spoluhlasky -- makke
-					case 'Ë': c = '»'; break;
-					case 'Ô': c = 'œ'; break;
-					case 'æ': c = 'º'; break;
-					case 'Ú': c = '“'; break;
-					case '¯': c = 'ÿ'; break;
-					case 'ö': c = 'ä'; break;
-					case 'ù': c = 'ç'; break;
-					case 'û': c = 'é'; break;
+					case 'ƒç': c = 'ƒå'; break;
+					case 'ƒè': c = 'ƒé'; break;
+					case 'ƒæ': c = 'ƒΩ'; break;
+					case '≈à': c = '≈á'; break;
+					case '≈ô': c = '≈ò'; break;
+					case '≈°': c = '≈†'; break;
+					case '≈•': c = '≈§'; break;
+					case '≈æ': c = '≈Ω'; break;
 					// spoluhlasky -- dlhe
-					case 'Â': c = '≈'; break;
-					case '‡': c = '¿'; break;
-					// maÔarskÈ znaky
-					case '˚': c = '€'; break;
-					case 'ı': c = '’'; break;
-					case '¸': c = '‹'; break;
-					case 'ˆ': c = '÷'; break;
+					case 'ƒ∫': c = 'ƒπ'; break;
+					case '≈ï': c = '≈î'; break;
+					// maƒèarsk√© znaky
+					case '≈±': c = '≈∞'; break;
+					case '≈ë': c = '≈ê'; break;
+					case '√º': c = '√ú'; break;
+					case '√∂': c = '√ñ'; break;
 				}
 			}
 		}// ok == TRUE
@@ -367,9 +367,9 @@ char *caps_BIG(const char *input){
 }// caps_BIG()
 
 //---------------------------------------------------------------------
-// odstr·ni diakritiku
-// 2011-04-05: nesmie pritom v HTML stringoch upravovaù kÛdovÈ men·, napr. &mdash;
-// 2011-04-06: zmenÌ aj dlhÈ pomlËky na obyËajn˝ spojovnÌk (znak mÌnus)
+// odstr√°ni diakritiku
+// 2011-04-05: nesmie pritom v HTML stringoch upravova≈• k√≥dov√© men√°, napr. &mdash;
+// 2011-04-06: zmen√≠ aj dlh√© pomlƒçky na obyƒçajn√Ω spojovn√≠k (znak m√≠nus)
 char *remove_diacritics(const char *input){
 	short int ok = TRUE;
 	short int i = 0;
@@ -382,65 +382,65 @@ char *remove_diacritics(const char *input){
 		if((c == ';') && (ok == FALSE)){
 			ok = TRUE;
 		}
-		// 2011-01-31: ToDo: eöte by bolo potrebnÈ oöetriù aj to, ûe za & nenasleduje regulÈrny znak pre öpeci·lny HTML kÛd, t. j. nieËo inÈ ako upper+lowercase ascii abeceda + # a ËÌslice
+		// 2011-01-31: ToDo: e≈°te by bolo potrebn√© o≈°etri≈• aj to, ≈æe za & nenasleduje regul√©rny znak pre ≈°peci√°lny HTML k√≥d, t. j. nieƒço in√© ako upper+lowercase ascii abeceda + # a ƒç√≠slice
 		if(ok == TRUE){
 			switch(c){
-				// öpeci·lne znaky
-				case 'ó': c = '-'; break;
-				case 'ñ': c = '-'; break;
+				// ≈°peci√°lne znaky
+				case '‚Äî': c = '-'; break;
+				case '‚Äì': c = '-'; break;
 				// samohlasky -- dlhe
-				case '·': c = 'a'; break;
-				case 'È': c = 'e'; break;
-				case 'Ì': c = 'i'; break;
-				case 'Û': c = 'o'; break;
-				case '˙': c = 'u'; break;
-				case '˝': c = 'y'; break;
-				case '¡': c = 'A'; break;
-				case '…': c = 'E'; break;
-				case 'Õ': c = 'I'; break;
-				case '”': c = 'O'; break;
-				case '⁄': c = 'U'; break;
-				case '›': c = 'Y'; break;
+				case '√°': c = 'a'; break;
+				case '√©': c = 'e'; break;
+				case '√≠': c = 'i'; break;
+				case '√≥': c = 'o'; break;
+				case '√∫': c = 'u'; break;
+				case '√Ω': c = 'y'; break;
+				case '√Å': c = 'A'; break;
+				case '√â': c = 'E'; break;
+				case '√ç': c = 'I'; break;
+				case '√ì': c = 'O'; break;
+				case '√ö': c = 'U'; break;
+				case '√ù': c = 'Y'; break;
 				// samohlasky -- specialne
- 				case '‰': c = 'a'; break;
-				case 'Ù': c = 'o'; break;
-				case 'Ï': c = 'e'; break;
-				case '˘': c = 'u'; break;
-				case 'ƒ': c = 'A'; break;
-				case '‘': c = 'O'; break;
-				case 'Ã': c = 'E'; break;
-				case 'Ÿ': c = 'U'; break;
+ 				case '√§': c = 'a'; break;
+				case '√¥': c = 'o'; break;
+				case 'ƒõ': c = 'e'; break;
+				case '≈Ø': c = 'u'; break;
+				case '√Ñ': c = 'A'; break;
+				case '√î': c = 'O'; break;
+				case 'ƒö': c = 'E'; break;
+				case '≈Æ': c = 'U'; break;
 				// spoluhlasky -- makke
-				case 'Ë': c = 'c'; break;
-				case 'Ô': c = 'd'; break;
-				case 'æ': c = 'l'; break;
-				case 'Ú': c = 'n'; break;
-				case '¯': c = 'r'; break;
-				case 'ö': c = 's'; break;
-				case 'ù': c = 't'; break;
-				case 'û': c = 'z'; break;
-				case '»': c = 'C'; break;
-				case 'œ': c = 'D'; break;
-				case 'º': c = 'L'; break;
-				case '“': c = 'N'; break;
-				case 'ÿ': c = 'R'; break;
-				case 'ä': c = 'S'; break;
-				case 'ç': c = 'T'; break;
-				case 'é': c = 'Z'; break;
+				case 'ƒç': c = 'c'; break;
+				case 'ƒè': c = 'd'; break;
+				case 'ƒæ': c = 'l'; break;
+				case '≈à': c = 'n'; break;
+				case '≈ô': c = 'r'; break;
+				case '≈°': c = 's'; break;
+				case '≈•': c = 't'; break;
+				case '≈æ': c = 'z'; break;
+				case 'ƒå': c = 'C'; break;
+				case 'ƒé': c = 'D'; break;
+				case 'ƒΩ': c = 'L'; break;
+				case '≈á': c = 'N'; break;
+				case '≈ò': c = 'R'; break;
+				case '≈†': c = 'S'; break;
+				case '≈§': c = 'T'; break;
+				case '≈Ω': c = 'Z'; break;
 				// spoluhlasky -- dlhe
-				case 'Â': c = 'l'; break;
-				case '‡': c = 'r'; break;
-				case '≈': c = 'L'; break;
-				case '¿': c = 'R'; break;
-				// maÔarskÈ znaky
-				case '˚': c = 'u'; break;
-				case 'ı': c = 'o'; break;
-				case '¸': c = 'u'; break;
-				case 'ˆ': c = 'o'; break;
-				case '€': c = 'U'; break;
-				case '’': c = 'O'; break;
-				case '‹': c = 'U'; break;
-				case '÷': c = 'O'; break;
+				case 'ƒ∫': c = 'l'; break;
+				case '≈ï': c = 'r'; break;
+				case 'ƒπ': c = 'L'; break;
+				case '≈î': c = 'R'; break;
+				// maƒèarsk√© znaky
+				case '≈±': c = 'u'; break;
+				case '≈ë': c = 'o'; break;
+				case '√º': c = 'u'; break;
+				case '√∂': c = 'o'; break;
+				case '≈∞': c = 'U'; break;
+				case '≈ê': c = 'O'; break;
+				case '√ú': c = 'U'; break;
+				case '√ñ': c = 'O'; break;
 			}// switch
 		}// ok == TRUE
 		if(_global_pom_str[i] != c)
@@ -451,14 +451,14 @@ char *remove_diacritics(const char *input){
 }// remove_diacritics()
 
 //---------------------------------------------------------------------
-// konvertuje underscore na nezlomiteænÈ medzery
-// 2011-05-02: vytvorenÈ
-// 2011-05-16: opravenÈ (char sa musÌ najprv konvertovaù na char * a aû potom appendovaù strcat)
+// konvertuje underscore na nezlomiteƒæn√© medzery
+// 2011-05-02: vytvoren√©
+// 2011-05-16: opraven√© (char sa mus√≠ najprv konvertova≈• na char * a a≈æ potom appendova≈• strcat)
 char *convert_nonbreaking_spaces(const char *input){
 	short int i = 0;
 	char c;
 	char c_str[VERY_SMALL];
-	Log("convert_nonbreaking_spaces() -- zaËiatok...\n");
+	Log("convert_nonbreaking_spaces() -- zaƒçiatok...\n");
 	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
 	// _global_pom_str[0] = '\0';  // terminate it at the new length
 	while(((c = input[i]) != '\0') /* && (i < MAX_STR) */){
@@ -478,10 +478,10 @@ char *convert_nonbreaking_spaces(const char *input){
 
 void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int force_opt /* default = PRILEP_REQUEST_OPTIONS_DEFAULT */){
 	short int i;
-	Log("prilep_request_options() -- zaËiatok...\n");
+	Log("prilep_request_options() -- zaƒçiatok...\n");
 
-	// 2006-07-31: pridanÈ odovzdanie parametra pre jazyk
-	// 2014-01-24: fix pre Android (nastavenie jazyka v menu vs. v HTML forme): vûdy nastavovaù (prilepovaù) jazyk
+	// 2006-07-31: pridan√© odovzdanie parametra pre jazyk
+	// 2014-01-24: fix pre Android (nastavenie jazyka v menu vs. v HTML forme): v≈ædy nastavova≈• (prilepova≈•) jazyk
 #ifndef IO_ANDROID
 	if(_global_jazyk != JAZYK_SK){
 #endif
@@ -492,48 +492,48 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 	}
 #endif
 
-	// 2010-08-04: pridanÈ odovzdanie parametra pre kalend·r
-	// 2010-09-14: podmienka opraven·; ak nie je kalend·r urËen˝ resp. je vöeobecn˝ pre dan˝ jazyk, nie je potrebnÈ ho exportovaù
+	// 2010-08-04: pridan√© odovzdanie parametra pre kalend√°r
+	// 2010-09-14: podmienka opraven√°; ak nie je kalend√°r urƒçen√Ω resp. je v≈°eobecn√Ω pre dan√Ω jazyk, nie je potrebn√© ho exportova≈•
 	if(PODMIENKA_EXPORTOVAT_KALENDAR){
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_KALENDAR, skratka_kalendara[_global_kalendar]);
 		strcat(pom2, pom3);
-		Log("\tPrilepil som aj kalend·r: `%s' (2010-08-04)\n", pom3);
+		Log("\tPrilepil som aj kalend√°r: `%s' (2010-08-04)\n", pom3);
 	}
 	else{
-		Log("\tNetreba prilepiù kalend·r (jazyk == %s, kalend·r == %s)\n", skratka_jazyka[_global_jazyk], skratka_kalendara[_global_kalendar]);
+		Log("\tNetreba prilepi≈• kalend√°r (jazyk == %s, kalend√°r == %s)\n", skratka_jazyka[_global_jazyk], skratka_kalendara[_global_kalendar]);
 	}
 
-	// 2008-08-08: pridanÈ odovzdanie parametra pre css; 2011-05-16: neexportuje sa, ak je nedefinovanÈ
+	// 2008-08-08: pridan√© odovzdanie parametra pre css; 2011-05-16: neexportuje sa, ak je nedefinovan√©
 	if((_global_css != CSS_breviar_sk) && (_global_css != CSS_UNDEF)){
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_CSS, skratka_css[_global_css]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj css: `%s' (2008-08-08)\n", pom3);
 	}
 
-	// 2011-05-06: pridanÈ odovzdanie parametra pre font; 2011-05-16: neexportuje sa, ak je nedefinovanÈ
+	// 2011-05-06: pridan√© odovzdanie parametra pre font; 2011-05-16: neexportuje sa, ak je nedefinovan√©
 	if((_global_font != FONT_CSS) && (_global_font != FONT_UNDEF)){
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_FONT_NAME, nazov_fontu[_global_font]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj font: `%s'\n", pom3);
 	}
 	else{
-		Log("\tNetreba prilepiù font (_global_font == %d, n·zov == %s)\n", _global_font, nazov_fontu[_global_font]);
+		Log("\tNetreba prilepi≈• font (_global_font == %d, n√°zov == %s)\n", _global_font, nazov_fontu[_global_font]);
 	}
 
-	// 2011-05-13: pridanÈ odovzdanie parametra pre font size; 2011-05-16: neexportuje sa, ak je nedefinovanÈ
+	// 2011-05-13: pridan√© odovzdanie parametra pre font size; 2011-05-16: neexportuje sa, ak je nedefinovan√©
 	if((_global_font_size != FONT_SIZE_CSS) && (_global_font_size != FONT_SIZE_UNDEF)){
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_FONT_SIZE, nazov_font_size_css[_global_font_size]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj font size: `%s'\n", pom3);
 	}
 	else{
-		Log("\tNetreba prilepiù font size (_global_font_size == %d, n·zov == %s)\n", _global_font_size, nazov_font_size_css[_global_font_size]);
+		Log("\tNetreba prilepi≈• font size (_global_font_size == %d, n√°zov == %s)\n", _global_font_size, nazov_font_size_css[_global_font_size]);
 	}
 
-	// 2011-01-26: pridanÈ odovzdanie parametrov pre options1 atÔ.
-    // 2011-04-07: upravenÈ -- pouûitie polÌ
-	// 2012-08-27: aj pre hodnotu 3 sa vykon·va
-	// 2013-03-07: pridan˝ parameter force_opt, ktor˝ rozhoduje, Ëi sa maj˙ prilepiù len klasickÈ options (default); k nim aj force options; alebo LEN force options
+	// 2011-01-26: pridan√© odovzdanie parametrov pre options1 atƒè.
+    // 2011-04-07: upraven√© -- pou≈æitie pol√≠
+	// 2012-08-27: aj pre hodnotu 3 sa vykon√°va
+	// 2013-03-07: pridan√Ω parameter force_opt, ktor√Ω rozhoduje, ƒçi sa maj√∫ prilepi≈• len klasick√© options (default); k nim aj force options; alebo LEN force options
 	char local_str[SMALL];
 	short int local_opt_default;
 	short int podmienka;
@@ -591,14 +591,14 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 }// prilep_request_options();
 
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align){
-	// 2007-03-20: spÙsob v˝pisu d·tumu podæa jazyka 
-	// 2011-05-11: vytiahnut˝ z _vytvor_global_pom_str() ako samostatn· funkcia
-	// 2011-05-12: Ëasom by sa moûno mohli pouûiù konötanty FORMAT_DATUMU_DEN_MESIAC_ROK a Ôalöie
-	// 2011-11-12: [ToDo] pouûiù konötanty ako v _main_rozbor_dna()
-	// 2012-10-02: doplnen· moûnosù tlaËiù aj iba mesiac+rok (VSETKY_DNI)
+	// 2007-03-20: sp√¥sob v√Ωpisu d√°tumu podƒæa jazyka 
+	// 2011-05-11: vytiahnut√Ω z _vytvor_global_pom_str() ako samostatn√° funkcia
+	// 2011-05-12: ƒçasom by sa mo≈æno mohli pou≈æi≈• kon≈°tanty FORMAT_DATUMU_DEN_MESIAC_ROK a ƒèal≈°ie
+	// 2011-11-12: [ToDo] pou≈æi≈• kon≈°tanty ako v _main_rozbor_dna()
+	// 2012-10-02: doplnen√° mo≈ænos≈• tlaƒçi≈• aj iba mesiac+rok (VSETKY_DNI)
 	/*
 				if(format_datumu[_global_jazyk] == FORMAT_DATUMU_ROK_MESIAC_DEN){
-					// 2011-05-12: pÙvodne bolo: 2010-05-21: doplnenÈ pre maÔarËinu: 1999. augusztus 1. -- http://en.wikipedia.org/wiki/Date_and_time_notation_by_country#Hungary [2010-05-24]
+					// 2011-05-12: p√¥vodne bolo: 2010-05-21: doplnen√© pre maƒèarƒçinu: 1999. augusztus 1. -- http://en.wikipedia.org/wiki/Date_and_time_notation_by_country#Hungary [2010-05-24]
 					if(_global_jazyk == JAZYK_HU){
 						sprintf(pom, "%d. %s %d.", r, nazov_mesiaca(m - 1), d);
 					}
@@ -610,7 +610,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 				}// FORMAT_DATUMU_MESIAC_DEN_ROK
 				else{
 					// format_datumu[_global_jazyk] == FORMAT_DATUMU_DEN_MESIAC_ROK
-					// latinËina pouûÌva genitÌv
+					// latinƒçina pou≈æ√≠va genit√≠v
 					sprintf(pom, "%d. %s %d", d, (_global_jazyk == JAZYK_LA)? nazov_Mesiaca_gen(m - 1): nazov_mesiaca(m - 1), r);
 				}// FORMAT_DATUMU_DEN_MESIAC_ROK
 	*/
@@ -618,7 +618,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 	char vypln[SMALL] = STR_EMPTY;
 	char strden[SMALL] = STR_EMPTY;
 	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
-	// pre export medzery pre jednocifernÈ ËÌsla dnÌ zarovn·me nezlomiteænou medzerou
+	// pre export medzery pre jednocifern√© ƒç√≠sla dn√≠ zarovn√°me nezlomiteƒænou medzerou
 	if((align != NIE) && (den < 10)){
 		mystrcpy(vypln, HTML_NONBREAKING_SPACE, SMALL);
 	}
@@ -650,10 +650,10 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 			sprintf(pom, ", %d", rok);
 		}
 	}
-	// 2010-05-21: doplnenÈ pre maÔarËinu: 1999. augusztus 1. -- http://en.wikipedia.org/wiki/Date_and_time_notation_by_country#Hungary [2010-05-24]
+	// 2010-05-21: doplnen√© pre maƒèarƒçinu: 1999. augusztus 1. -- http://en.wikipedia.org/wiki/Date_and_time_notation_by_country#Hungary [2010-05-24]
 	else if(_global_jazyk == JAZYK_HU){
 		if(typ == LINK_DEN_MESIAC_ROK){
-			// prid·me najprv rok
+			// prid√°me najprv rok
 			sprintf(pom, "%d. ", rok);
 			strcat(_global_pom_str, pom);
 		}
@@ -662,7 +662,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 		sprintf(pom, "%s", strden);
 	}
 	else{
-		// doterajöie spr·vanie pre slovenËinu a Ëeötinu
+		// doteraj≈°ie spr√°vanie pre slovenƒçinu a ƒçe≈°tinu
 		switch(_case){
 			case CASE_case:
 				sprintf(pom, "%s%s", strden, (typ == LINK_DEN_MESIAC_GEN)? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1));
@@ -695,13 +695,13 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
  *
  */
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align){
-	Log("_vytvor_global_link(orig): vol·m s hodnotou html_class == NULL...\n");
+	Log("_vytvor_global_link(orig): vol√°m s hodnotou html_class == NULL...\n");
 	_vytvor_global_link(den, mesiac, rok, _case, typ, align, NULL);
 	Log("_vytvor_global_link(orig): koniec.\n");
 }
 
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class){
-	Log("_vytvor_global_link(new): zaËiatok...\n");
+	Log("_vytvor_global_link(new): zaƒçiatok...\n");
 	Log("den == %d, mesiac == %d, rok == %d...\n", den, mesiac, rok);
 	// 2003-07-09 zmeneny & na HTML_AMPERSAND kvoli HTML 4.01
 	char pom[MAX_STR];
@@ -737,7 +737,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			sprintf(pom, "?%s=%s"HTML_AMPERSAND, STR_QUERY_TYPE, STR_PRM_DATUM);
 			strcat(_global_link, pom);
 
-			// deÚ
+			// de≈à
 			if(den == VSETKY_DNI)
 				sprintf(pom, "%s=%s"HTML_AMPERSAND, STR_DEN, STR_VSETKY_DNI);
 			else
@@ -774,7 +774,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 
 	}// if(_global_opt_batch_monthly == NIE)
 	else{
-		// najprv podæa typu exportu rozhodneme, Ëi treba predlepiù aj adres·r
+		// najprv podƒæa typu exportu rozhodneme, ƒçi treba predlepi≈• aj adres√°r
 		if(typ == LINK_DEN_MESIAC_PREDOSLY || typ == LINK_DEN_MESIAC_NASLEDOVNY){
 			if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
 				sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_SIMPLE""STR_PATH_SEPARATOR_HTML, rok % 100, mesiac, nazov_mes[mesiac - 1]);
@@ -785,7 +785,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			mystrcpy(str_month, STR_EMPTY, SMALL);
 		}
 		Log("str_month == %s\n", str_month);
-		// reùazec pre deÚ a pre n·zov s˙boru
+		// re≈•azec pre de≈à a pre n√°zov s√∫boru
 		if(den != VSETKY_DNI){
 			if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
 				sprintf(str_subor, FILENAME_EXPORT_DATE_SIMPLE, rok % 100, mesiac, den);
@@ -801,7 +801,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 		}
 		Log("str_subor == %s\n", str_subor);
 		sprintf(pom, "%s%s.htm", str_month, str_subor);
-		Log("\treùazec pom == %s\n", pom);
+		Log("\tre≈•azec pom == %s\n", pom);
 		strcat(_global_link, pom);
 	}
 
@@ -810,8 +810,8 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 	// napisanie textu linky
 	switch(typ){
 		case LINK_DEN_MESIAC_ROK_PRESTUP: // pridane 2003-07-02
-		case LINK_DEN_MESIAC_PREDOSLY: // pridanÈ 2007-08-15
-		case LINK_DEN_MESIAC_NASLEDOVNY: // pridanÈ 2007-08-15
+		case LINK_DEN_MESIAC_PREDOSLY: // pridan√© 2007-08-15
+		case LINK_DEN_MESIAC_NASLEDOVNY: // pridan√© 2007-08-15
 		case LINK_DEN_MESIAC_ROK:
 		case LINK_DEN_MESIAC:
 			if(den == VSETKY_DNI){
@@ -853,7 +853,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 					sprintf(pom, ""HTML_RIGHT_ARROW_WIDE"");
 				}
 				else{
-					// 2011-05-11: vytiahnutÈ do _vytvor_string_z_datumu() ako samostatn· funkcia
+					// 2011-05-11: vytiahnut√© do _vytvor_string_z_datumu() ako samostatn√° funkcia
 					strcpy(pom, _vytvor_string_z_datumu(den, mesiac, rok, _case, typ, align));
 				}
 				strcat(pom, "</a>");
@@ -917,16 +917,16 @@ short int poradie(_struct_den_mesiac den_a_mesiac, short int rok){
 }// poradie()
 
 short int zjavenie_pana(short int rok){
-	// 2011-10-18: podæa Ëasti kÛdu v _rozbor_dna()
-	short int ZJAVENIE_PANA; // zjavenie P·na
+	// 2011-10-18: podƒæa ƒçasti k√≥du v _rozbor_dna()
+	short int ZJAVENIE_PANA; // zjavenie P√°na
 	char nedelne_pismenko = _global_r.p1;
 
 	if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA){
 		if(nedelne_pismenko == 'A'){
-			nedelne_pismenko = 'h'; // aby vyöla nedeæa Zjavenia P·na na 8.1.
+			nedelne_pismenko = 'h'; // aby vy≈°la nedeƒæa Zjavenia P√°na na 8.1.
 		}
-		Log("Zjavenie P·na sa sl·vi v nedeæu; %c/%c\n", _global_r.p1, nedelne_pismenko);
-		ZJAVENIE_PANA = poradie((nedelne_pismenko - 'a') + 1, 1, rok); // nedeæa medzi 2. a 8. janu·rom
+		Log("Zjavenie P√°na sa sl√°vi v nedeƒæu; %c/%c\n", _global_r.p1, nedelne_pismenko);
+		ZJAVENIE_PANA = poradie((nedelne_pismenko - 'a') + 1, 1, rok); // nedeƒæa medzi 2. a 8. janu√°rom
 	}
 	else{
 		ZJAVENIE_PANA = poradie(6, 1, rok);
@@ -990,12 +990,12 @@ _struct_den_mesiac velkonocna_nedela(short int R){
 	d = (x + (19 * a)) MOD 30;  // DEBUG("d==%d", d);
 	e = (y + (2 * b) + (4 * c) + (6 * d)) MOD 7;  // DEBUG("e==%d", e);
 // velkonocna nedela je (22 + d + e). marca == (d + e - 9). aprila
-	// 22 + d + e je "poradovÈ ËÌslo dÚa v marci" (22 aû 56), a teda ak je v‰Ëöie ako 31, je to aprÌl; 
-	// ak je viac ako 56, treba posun˙ù na predoöl˙ nedeæu; viÔ niûöie
+	// 22 + d + e je "poradov√© ƒç√≠slo d≈àa v marci" (22 a≈æ 56), a teda ak je v√§ƒç≈°ie ako 31, je to apr√≠l; 
+	// ak je viac ako 56, treba posun√∫≈• na predo≈°l√∫ nedeƒæu; viƒè ni≈æ≈°ie
 	if((22 + d + e) > 31){
-		// 2010-02-18: opravenÈ
-		// ak veækonoËn· nedeæa Gaussov˝m pravidlom vyjde na 26. aprÌla, posunie sa o t˝ûdeÚ dopredu | upozornil Peter Chren <zal@zal.sk> 
-		// podæa http://en.wikipedia.org/wiki/Computus upravenÈ:
+		// 2010-02-18: opraven√©
+		// ak veƒækonoƒçn√° nedeƒæa Gaussov√Ωm pravidlom vyjde na 26. apr√≠la, posunie sa o t√Ω≈æde≈à dopredu | upozornil Peter Chren <zal@zal.sk> 
+		// podƒæa http://en.wikipedia.org/wiki/Computus upraven√©:
 		// Gregorian Easter is 22 + d + e March or d + e - 9 April
 		// if d = 29 and e = 6, replace 26 April with 19 April
 		// if d = 28, e = 6, and (11M + 11) mod 30 < 19, replace 25 April with 18 April
@@ -1008,7 +1008,7 @@ _struct_den_mesiac velkonocna_nedela(short int R){
 		else{
 			result.den = d + e - 9;
 		}
-		result.mesiac = 4; // aprÌl
+		result.mesiac = 4; // apr√≠l
 	}
 	else{
 		result.den = 22 + d + e;
@@ -1090,7 +1090,7 @@ unsigned char _nedelne_pismeno(short int den, short int mesiac, short int rok){
 	return _nedelne_pismeno(por, rok);
 }
 
-// vrati nedelne pismeno v spravnej casti roka, ale neberie do uvahy typ modlitby, t.j. ked su (prve) vespery, vrati zly den, pozor na to (prÌpadne [ToDo] dokonËiù)
+// vrati nedelne pismeno v spravnej casti roka, ale neberie do uvahy typ modlitby, t.j. ked su (prve) vespery, vrati zly den, pozor na to (pr√≠padne [ToDo] dokonƒçi≈•)
 unsigned char _nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok){
 	return
 	_nedelne_pismeno(poradie(den_a_mesiac.den, den_a_mesiac.mesiac, rok), rok);
@@ -1113,19 +1113,19 @@ _struct_den_mesiac por_den_mesiac(short int poradie, short int rok){
 	else
 		pocet_dni[MES_FEB] = 28;
 	d = poradie;
-	m = MES_JAN; // janu·r
+	m = MES_JAN; // janu√°r
 	while(d > pocet_dni[m]){
 		d = d - pocet_dni[m];
 		m++;
 	}
 	result.den = d;
-	result.mesiac = m + 1; // v˝sledok: 1--12
+	result.mesiac = m + 1; // v√Ωsledok: 1--12
 	return result;
 }
 
 //---------------------------------------------------------------------
 // nasledujuce short int _...() funkcie vracaju poradove cislo dna v roku
-// 2011-11-03: zapozn·mkovanÈ; nepouûÌvaj˙ sa
+// 2011-11-03: zapozn√°mkovan√©; nepou≈æ√≠vaj√∫ sa
 
 #ifdef FUNKCIE_PRE_SPECIALNE_DNI
 // vrati poradove cislo dna, kt. zodpoveda sviatku sv. rodiny
@@ -1157,7 +1157,7 @@ short int _popolcova_streda(short int rok){
 }
 
 // nanebovstupenie pana je 40.-ty den po velkej noci, treba VELKONOCNA_NEDELA + 39
-// 2011-11-03: doplnen· moûnosù "V krajin·ch, kde sa sl·vnosù Nanebovst˙penia P·na pren·öa na nasleduj˙cu nedeæu"
+// 2011-11-03: doplnen√° mo≈ænos≈• "V krajin√°ch, kde sa sl√°vnos≈• Nanebovst√∫penia P√°na pren√°≈°a na nasleduj√∫cu nedeƒæu"
 short int _nanebovstupenie(short int rok){
 	static short int vn = _velkonocna_nedela(rok);
 	if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA) == BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA){
@@ -1293,9 +1293,9 @@ void init_global_pm_sobota(void){
 	_global_pm_sobota.tyzden = _global_den.tyzden;
 	_global_pm_sobota.tyzzal = _global_den.tyzzal;
 	// a teraz vlastne udaje
-	_global_pm_sobota.smer = 12; // æubovoænÈ spomienky
+	_global_pm_sobota.smer = 12; // ƒæubovoƒæn√© spomienky
 	_global_pm_sobota.typslav = SLAV_LUB_SPOMIENKA;
-	_global_pm_sobota.typslav_lokal = LOKAL_SLAV_NEURCENE; // nie je obmedzenie na lokalitu, pridanÈ 2005-07-27
+	_global_pm_sobota.typslav_lokal = LOKAL_SLAV_NEURCENE; // nie je obmedzenie na lokalitu, pridan√© 2005-07-27
 	mystrcpy(_global_pm_sobota.meno, text_SPOMIENKA_PM_V_SOBOTU[_global_jazyk], MENO_SVIATKU);
 	_global_pm_sobota.prik    = NIE_JE_PRIKAZANY_SVIATOK;
 	_global_pm_sobota.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
@@ -1335,9 +1335,9 @@ void _dm_nanebovstupenie(short int rok, short int _vn){
 	_global_result.typslav = SLAV_SLAVNOST;
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
 	_global_result.litobd  = OBD_VELKONOCNE_I;
-	_global_result.tyzden  = 0; // pridane kvoli kotvam v s˙bore FILE_NANEBOVSTUPENIE
+	_global_result.tyzden  = 0; // pridane kvoli kotvam v s√∫bore FILE_NANEBOVSTUPENIE
 	_global_result.tyzzal  = 1;
-//	_global_result.denvt   = DEN_STVRTOK; pÙvodn· pozn·mka: 2006-02-09: pridanÈ, na Slovensku sa sl·vi vo ötvrtok | 2011-11-03: musÌ byù naÔalej zapozn·mkovanÈ kvÙli "V krajin·ch, kde sa sl·vnosù Nanebovst˙penia P·na pren·öa na nasleduj˙cu nedeæu"
+//	_global_result.denvt   = DEN_STVRTOK; p√¥vodn√° pozn√°mka: 2006-02-09: pridan√©, na Slovensku sa sl√°vi vo ≈°tvrtok | 2011-11-03: mus√≠ by≈• naƒèalej zapozn√°mkovan√© kv√¥li "V krajin√°ch, kde sa sl√°vnos≈• Nanebovst√∫penia P√°na pren√°≈°a na nasleduj√∫cu nedeƒæu"
 	_global_result.smer    = 2;
 	_global_result.prik    = PRIKAZANY_SVIATOK;
 	mystrcpy(_global_result.meno, text_NANEBOVSTUPENIE_PANA[_global_jazyk], MENO_SVIATKU);
@@ -1352,7 +1352,7 @@ void _dm_zoslanie_ducha(short int rok, short int _vn){
 	_global_result.typslav = SLAV_SLAVNOST;
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
 	_global_result.litobd  = OBD_VELKONOCNE_II;
-	_global_result.tyzden  = 0; // pridane kvoli kotvam v s˙bore FILE_ZOSLANIE_DUCHA_SV
+	_global_result.tyzden  = 0; // pridane kvoli kotvam v s√∫bore FILE_ZOSLANIE_DUCHA_SV
 	_global_result.tyzzal  = 1;
 	_global_result.smer    = 2;
 	_global_result.prik    = PRIKAZANY_SVIATOK;
@@ -1406,21 +1406,21 @@ void _dm_svatej_rodiny(short int rok){
 }// _dm_svatej_rodiny()
 
 void _dm_krst_krista_pana(short int rok){
-	// 2011-10-26: namiesto napevno danÈho Zjavenia P·na poradie(6, 1, rok) pouûijeme zjavenie_pana(short int rok)
-	short int _zjavenie_pana = zjavenie_pana(rok); // bolo tu static, ale pre viacn·sobnÈ volanie z analyzuj_rok() pre tabuæku tu 'static' nesmie byù
+	// 2011-10-26: namiesto napevno dan√©ho Zjavenia P√°na poradie(6, 1, rok) pou≈æijeme zjavenie_pana(short int rok)
+	short int _zjavenie_pana = zjavenie_pana(rok); // bolo tu static, ale pre viacn√°sobn√© volanie z analyzuj_rok() pre tabuƒæku tu 'static' nesmie by≈•
 	short int _krst = _zjavenie_pana + 1;
 
 	if(!(((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA) && ((_zjavenie_pana == 7) || (_zjavenie_pana == 8)))){
 		while(den_v_tyzdni(_krst, rok) != DEN_NEDELA){
 			_krst++;
-		}// while -- hæad·me nedeæu
-	}// Zjavenie P·na sa sl·vi 6.1. alebo v nedeæu medzi 2. a 8. janu·rom, ktor· vöak nepripadne na 7. alebo 8. janu·ra
+		}// while -- hƒæad√°me nedeƒæu
+	}// Zjavenie P√°na sa sl√°vi 6.1. alebo v nedeƒæu medzi 2. a 8. janu√°rom, ktor√° v≈°ak nepripadne na 7. alebo 8. janu√°ra
 	_global_result = por_den_mesiac_dm(_krst, rok);
 	_global_result.typslav = SLAV_SVIATOK;
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
-	_global_result.litobd  = OBD_VIANOCNE_II; // 2014-01-13: pÙvodne tu bolo OBD_CEZ_ROK; avöak kvÙli hymnom MCD (tie s˙ z vianoËnÈho obdobia) je to ako vianoËnÈ obdobie; aj to je vo zv‰zku I LH
-	_global_result.tyzden  = 1; // 1. nedeæa "cez rok" (resp. v krajin·ch, kde sa Zjavenie P·na sl·vi v nedeæu, priËom t·to pripadne na 7. alebo 8. janu·ra, je to pondelok)
-	_global_result.smer    = 5; // sviatky P·na uvedenÈ vo vöeobecnom kalend·ri
+	_global_result.litobd  = OBD_VIANOCNE_II; // 2014-01-13: p√¥vodne tu bolo OBD_CEZ_ROK; av≈°ak kv√¥li hymnom MCD (tie s√∫ z vianoƒçn√©ho obdobia) je to ako vianoƒçn√© obdobie; aj to je vo zv√§zku I LH
+	_global_result.tyzden  = 1; // 1. nedeƒæa "cez rok" (resp. v krajin√°ch, kde sa Zjavenie P√°na sl√°vi v nedeƒæu, priƒçom t√°to pripadne na 7. alebo 8. janu√°ra, je to pondelok)
+	_global_result.smer    = 5; // sviatky P√°na uveden√© vo v≈°eobecnom kalend√°ri
 	mystrcpy(_global_result.meno, text_JAN_KRST[_global_jazyk], MENO_SVIATKU); // 2003-08-11 zmenena na mystrcpy
 	_global_result.spolcast= _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	_global_result.prik    = NIE_JE_PRIKAZANY_SVIATOK;
@@ -1576,7 +1576,7 @@ void Log(_struct_dm g){
 	Log_struktura_dm("   lc_str_id: %s\n", g.lc_str_id);
 }
 
-// 2010-05-21: rozöÌrenÈ kvÙli spomienkam a æubovoæn˝m spomienkam v pÙstnom obdobÌ (zobrazenie po modlitbe dÚa pÙstnej fÈrie)
+// 2010-05-21: roz≈°√≠ren√© kv√¥li spomienkam a ƒæubovoƒæn√Ωm spomienkam v p√¥stnom obdob√≠ (zobrazenie po modlitbe d≈àa p√¥stnej f√©rie)
 void Log(struct tmodlitba1 t){
 	Log_struktura_tm1("struktura tmodlitba1:\n");
 	Log_struktura_tm1("   alternativy = %d\n", t.alternativy);
@@ -1613,7 +1613,7 @@ void Log(struct tmodlitba2 t){
 	Log_struktura_tm2("   modlitba     file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
 }
 
-// 2006-10-11 doplnenÈ
+// 2006-10-11 doplnen√©
 void Log(struct tmodlitba3 t){
 	Log_struktura_tm3("struktura tmodlitba3:\n");
 	Log_struktura_tm3("   alternativy = %d\n", t.alternativy);
@@ -1630,7 +1630,7 @@ void Log(struct tmodlitba3 t){
 	Log_struktura_tm3("   modlitba       file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
 }
 
-// 2006-10-13 doplnenÈ
+// 2006-10-13 doplnen√©
 void Log(struct tmodlitba4 t){
 	Log_struktura_tm4("struktura tmodlitba4:\n");
 	Log_struktura_tm4("   popis        file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
@@ -1638,7 +1638,7 @@ void Log(struct tmodlitba4 t){
 	Log_struktura_tm4("   zalm1        file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);
 }
 
-// 2011-03-25: pridanÈ pre posv‰tnÈ ËÌtanie kvÙli vigÌli·m
+// 2011-03-25: pridan√© pre posv√§tn√© ƒç√≠tanie kv√¥li vig√≠li√°m
 void Log(struct tmodlitba5 t){
 	Log_struktura_tm5("struktura tmodlitba5:\n");
 	Log_struktura_tm5("   alternativy = %d\n", t.alternativy);

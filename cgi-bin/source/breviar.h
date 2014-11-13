@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* breviar.h                                                   */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
 /* description | obsahuje deklaracie globalnych premennych     */
 /*               a funkciu main() z dnes.cpp kde su definovane */
@@ -12,14 +12,14 @@
 /*   2003-07-14a.D. | zmena void main -> int main (gcc v3.2.2 )*/
 /*   2003-08-07a.D. | pridane _global_opt 5                    */
 /*   2003-08-13a.D. | pridane _type a _global_modl pre posv.cit*/
-/*   2006-07-11a.D. | prvÈ kroky k jazykov˝m mut·ci·m          */
-/*   2006-08-18a.D. | zmena int na short int (staËÌ 32tis.)    */
-/*   2010-05-14a.D. | presunutÈ niektorÈ definy z breviar.cpp  */
+/*   2006-07-11a.D. | prv√© kroky k jazykov√Ωm mut√°ci√°m          */
+/*   2006-08-18a.D. | zmena int na short int (staƒç√≠ 32tis.)    */
+/*   2010-05-14a.D. | presunut√© niektor√© definy z breviar.cpp  */
 /*   2011-02-02a.D. | zadef. MIESTNE_SLAVENIE_CZOP_SVATY(i)    */
 /*   2011-03-07a.D. | zadef. MIESTNE_SLAVENIE_LOKAL_SVATY(i)   */
 /*   2011-03-18a.D. | zadef. PODMIENKA_EXPORTOVAT_KALENDAR     */
 /*   2011-03-30a.D. | zadef. prilep_request_options            */
-/*   2012-04-02a.D. | presunutÈ dÙleûitÈ defines z breviar.cpp */
+/*   2012-04-02a.D. | presunut√© d√¥le≈æit√© defines z breviar.cpp */
 /*                                                             */
 /*                                                             */
 /***************************************************************/
@@ -49,10 +49,10 @@ extern short int _global_poradie_svaty;
 
 extern short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydefs.h
 
-#define EXPORT_DNA_XML 6 // 2012-10-12: kvÙli iOS
+#define EXPORT_DNA_XML 6 // 2012-10-12: kv√¥li iOS
 #define EXPORT_DNA_JEDEN_DEN_LOCAL 5
 #define EXPORT_DNA_VIAC_DNI_TXT 4
-#define EXPORT_DNA_VIAC_DNI_SIMPLE 3 // 2005-03-21: Pridany dalsi typ exportu; 2011-04-13: nerozumiem naËo; asi sa nepouûÌva...
+#define EXPORT_DNA_VIAC_DNI_SIMPLE 3 // 2005-03-21: Pridany dalsi typ exportu; 2011-04-13: nerozumiem naƒço; asi sa nepou≈æ√≠va...
 #define EXPORT_DNA_JEDEN_DEN 1
 #define EXPORT_DNA_VIAC_DNI 2
 #define EXPORT_DNA_DNES 0
@@ -69,7 +69,7 @@ extern void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dn
 extern void _export_rozbor_dna_kalendar_orig(short int typ);
 extern void _export_rozbor_dna_kalendar(short int typ);
 
-extern short int _global_pocet_navigacia; // 2011-07-03: poËet prejden˝ch/spracovan˝ch parametrov PARAM_NAVIGACIA
+extern short int _global_pocet_navigacia; // 2011-07-03: poƒçet prejden√Ωch/spracovan√Ωch parametrov PARAM_NAVIGACIA
 
 extern short int index_pre_mesiac_otvoreny;
 // extern short int export_monthly_druh;
@@ -158,53 +158,53 @@ extern _struct_lrok *_global_r_ptr;
 // -- v podstate neuklada do nej, ale v _rozbor_dna() sa do nej priradi vysledok (navratova hodnota) z sviatky_svatych()
 extern short int _global_pocet_svatych;
 
-// glob·lna premenn· -- pole -- obsahuj˙ca options; pÙvodne to boli glob·lne premennÈ _global_opt 1..9 atÔ., obsahuj˙ pom_MODL_OPT...
+// glob√°lna premenn√° -- pole -- obsahuj√∫ca options; p√¥vodne to boli glob√°lne premenn√© _global_opt 1..9 atƒè., obsahuj√∫ pom_MODL_OPT...
 extern short int _global_opt[POCET_GLOBAL_OPT];
-// glob·lna premenn· -- pole -- obsahuj˙ca force options; pÙvodne to boli glob·lne premennÈ _global_optf 1..9 atÔ., obsahuj˙ pom_MODL_OPTF...
+// glob√°lna premenn√° -- pole -- obsahuj√∫ca force options; p√¥vodne to boli glob√°lne premenn√© _global_optf 1..9 atƒè., obsahuj√∫ pom_MODL_OPTF...
 extern short int _global_optf[POCET_GLOBAL_OPT];
 
 // globalna premenna, co obsahuje string vypisany na obsazovku
 extern char *_global_string;
 extern char *_global_string2; // obsahuje I, II, III, IV, V alebo pismeno roka
 extern char *_global_string_farba;
-// 2011-10-04: pridanÈ, pre titulok modlitby (uû sa nepriliepa do _global_string)
+// 2011-10-04: pridan√©, pre titulok modlitby (u≈æ sa nepriliepa do _global_string)
 // extern char _global_string_modlitba[SMALL];
 
-extern char *_global_buf; // 2006-08-01: t˙to premenn˙ tieû alokujeme
-extern char *_global_buf2; // 2006-08-01: t˙to premenn˙ tieû alokujeme
+extern char *_global_buf; // 2006-08-01: t√∫to premenn√∫ tie≈æ alokujeme
+extern char *_global_buf2; // 2006-08-01: t√∫to premenn√∫ tie≈æ alokujeme
 //---------------------------------------------------------------------
 
-// 2006-07-11: PridanÈ kvÙli jazykov˝m mut·ci·m (breviar.cpp)
-// 2010-08-04: zmenenÈ _global_language na _global_jazyk (doteraz bolo len pomocou #define)
+// 2006-07-11: Pridan√© kv√¥li jazykov√Ωm mut√°ci√°m (breviar.cpp)
+// 2010-08-04: zmenen√© _global_language na _global_jazyk (doteraz bolo len pomocou #define)
 extern short int _global_jazyk;
-// 2010-08-04: pridanÈ kvÙli kalend·rom (napr. rehoæn˝), s˙visÌ s jazykov˝mi mut·ciami
+// 2010-08-04: pridan√© kv√¥li kalend√°rom (napr. rehoƒæn√Ω), s√∫vis√≠ s jazykov√Ωmi mut√°ciami
 extern short int _global_kalendar;
-// 2014-09-22: pridanÈ
+// 2014-09-22: pridan√©
 extern short int _global_ritus;
 
-extern short int _global_css; // 2008-08-08: PridanÈ kvÙli rÙznym css
+extern short int _global_css; // 2008-08-08: Pridan√© kv√¥li r√¥znym css
 
-extern short int _global_font; // 2011-05-06: PridanÈ kvÙli rÙznym fontom
-extern short int _global_font_size; // 2011-05-13: PridanÈ kvÙli rÙznym veækostiam fontov
+extern short int _global_font; // 2011-05-06: Pridan√© kv√¥li r√¥znym fontom
+extern short int _global_font_size; // 2011-05-13: Pridan√© kv√¥li r√¥znym veƒækostiam fontov
 
-// 2006-10-17: PridanÈ kvÙli kompletÛriu: niekedy obsahuje aû dva ûalmy
+// 2006-10-17: Pridan√© kv√¥li komplet√≥riu: niekedy obsahuje a≈æ dva ≈æalmy
 extern short int _global_pocet_zalmov_kompletorium;
 
-// 2009-08-03, pridanÈ
+// 2009-08-03, pridan√©
 extern short int _global_opt_batch_monthly;
 
-// 2009-08-05, pridanÈ
+// 2009-08-05, pridan√©
 extern short int _global_hlavicka_Export;
 // extern char name_batch_html_file[MAX_STR];
-// 2011-07-01, pridanÈ
+// 2011-07-01, pridan√©
 extern short int _global_patka_Export;
 
-// 2011-05-05: kvÙli moûnosti serif/sans serif override (z css sme odstr·nili font-family)
+// 2011-05-05: kv√¥li mo≈ænosti serif/sans serif override (z css sme odstr√°nili font-family)
 extern char _global_css_font_family[SMALL];
-// 2011-05-13: kvÙli moûnosti voæby veækosti pÌsma
+// 2011-05-13: kv√¥li mo≈ænosti voƒæby veƒækosti p√≠sma
 extern char _global_css_font_size[SMALL];
 
-// 2009-08-12, pridanÈ
+// 2009-08-12, pridan√©
 extern char _global_export_navig_hore[SMALL];
 extern short int _global_opt_export_date_format;
 
@@ -223,7 +223,7 @@ extern short int _global_opt_export_date_format;
 #define je_34_ocr ((_global_den.litobd == OBD_CEZ_ROK) && (_global_den.tyzden == 34) && (_global_den.denvt != DEN_NEDELA))
 #define je_tedeum (type == MODL_POSV_CITANIE) && (((_global_den.denvt == DEN_NEDELA) && (_global_den.litobd != OBD_POSTNE_I) && (_global_den.litobd != OBD_POSTNE_II_VELKY_TYZDEN)) || (_global_den.typslav == SLAV_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA))
 
-// 2012-02-09: definovanÈ je_privileg pre testovanie, Ëi ide o privilegovanÈ dni (VSLH Ë. 238-239): to istÈ ako je_post + december poËn˙c 17.-tym (vöednÈ di od 17. do 24. decembra a VianoËn· okt·va); striktne by tu nemal byù veæk˝ t˝ûdeÚ a veækonoËnÈ trojdnie, ale nezaökodÌ to tu
+// 2012-02-09: definovan√© je_privileg pre testovanie, ƒçi ide o privilegovan√© dni (VSLH ƒç. 238-239): to ist√© ako je_post + december poƒçn√∫c 17.-tym (v≈°edn√© di od 17. do 24. decembra a Vianoƒçn√° okt√°va); striktne by tu nemal by≈• veƒæk√Ω t√Ω≈æde≈à a veƒækonoƒçn√© trojdnie, ale neza≈°kod√≠ to tu
 #define je_privileg ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))) || ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den >= 17)))
 
 #define je_ant_modl_spomprivileg (( \
@@ -251,7 +251,7 @@ extern short int _global_opt_export_date_format;
 	(strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_UNDEF) != 0) \
 ) \
 ))
-// 2012-05-24: doplnenÈ -- predÂûenÈ sl·venie vigÌliÌ v r·mci posv‰tn˝ch ËÌtanÌ
+// 2012-05-24: doplnen√© -- predƒ∫≈æen√© sl√°venie vig√≠li√≠ v r√°mci posv√§tn√Ωch ƒç√≠tan√≠
 #define je_vigilia \
 (_global_modlitba == MODL_POSV_CITANIE &&  \
 	(_global_modl_posv_citanie.ant_chval.anchor != NULL) && (_global_modl_posv_citanie.ant_chval.file != NULL) && \
@@ -270,7 +270,7 @@ extern short int _global_opt_export_date_format;
 	(strcmp(_global_modl_posv_citanie.evanjelium.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.evanjelium.anchor, STR_UNDEF) != 0) &&  \
 	(strcmp(_global_modl_posv_citanie.evanjelium.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.evanjelium.file, STR_UNDEF) != 0) \
 )
-// 2012-10-01: doplnenÈ
+// 2012-10-01: doplnen√©
 #define je_popis (( \
 (_global_modlitba == MODL_RANNE_CHVALY &&  \
 	(_global_modl_ranne_chvaly.popis.anchor != NULL) && (_global_modl_ranne_chvaly.popis.file != NULL) && \
@@ -313,12 +313,12 @@ extern short int _global_opt_export_date_format;
 ) \
 ))
 
-// 2013-04-05: doplnenÈ -- Ëi sa NEMAJ⁄ zobrazovaù veöpery; doteraz sa kontrolovalo len to, Ëi je sobota -- opravenÈ pre Veæk˙ (bielu) sobotu
+// 2013-04-05: doplnen√© -- ƒçi sa NEMAJ√ö zobrazova≈• ve≈°pery; doteraz sa kontrolovalo len to, ƒçi je sobota -- opraven√© pre Veƒæk√∫ (bielu) sobotu
 #define nie_su_vespery ( \
 	(_global_den.denvt == DEN_SOBOTA) && (!((_global_den.denvt == DEN_SOBOTA) && (_global_den.litobd == OBD_VELKONOCNE_TROJDNIE))) \
 )
 
-// 2013-05-14: doplnenÈ aj veækonoËnÈ alternatÌvne hymny
+// 2013-05-14: doplnen√© aj veƒækonoƒçn√© alternat√≠vne hymny
 #define je_alternativa_hymnus ( \
 (_global_modlitba == MODL_PRVE_KOMPLETORIUM && ((_global_modl_prve_kompletorium.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
 ||  \
@@ -370,7 +370,7 @@ extern short int _global_opt_export_date_format;
 )
 
 
-// 2013-02-13: doplnenÈ
+// 2013-02-13: doplnen√©
 #define je_len_doplnkova_psalmodia(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_LEN_DOPLNKOVA_PSALMODIA) == BIT_ALT_LEN_DOPLNKOVA_PSALMODIA)) \
 ||  \
@@ -379,8 +379,8 @@ extern short int _global_opt_export_date_format;
 	((modlitba == MODL_POPOLUDNI) && ((_global_modl_popol.alternativy & BIT_ALT_LEN_DOPLNKOVA_PSALMODIA) == BIT_ALT_LEN_DOPLNKOVA_PSALMODIA)) \
 )
 
-// 2013-02-26: doplnenÈ
-// staËilo by len: modlitba predpoludnÌm
+// 2013-02-26: doplnen√©
+// staƒçilo by len: modlitba predpoludn√≠m
 #define je_alternativa_doplnkova_psalmodia_z122_129(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_DOPLNK_PSALM_122_129) == BIT_ALT_DOPLNK_PSALM_122_129)) \
 ||  \
@@ -388,7 +388,7 @@ extern short int _global_opt_export_date_format;
 ||  \
 	((modlitba == MODL_POPOLUDNI) && ((_global_modl_popol.alternativy & BIT_ALT_DOPLNK_PSALM_122_129) == BIT_ALT_DOPLNK_PSALM_122_129)) \
 )
-// staËilo by len: modlitba popoludnÌ
+// staƒçilo by len: modlitba popoludn√≠
 #define je_alternativa_doplnkova_psalmodia_z127_131(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_DOPLNK_PSALM_127_131) == BIT_ALT_DOPLNK_PSALM_127_131)) \
 ||  \
@@ -396,7 +396,7 @@ extern short int _global_opt_export_date_format;
 ||  \
 	((modlitba == MODL_POPOLUDNI) && ((_global_modl_popol.alternativy & BIT_ALT_DOPLNK_PSALM_127_131) == BIT_ALT_DOPLNK_PSALM_127_131)) \
 )
-// staËilo by len: modlitba popoludnÌ
+// staƒçilo by len: modlitba popoludn√≠
 #define je_alternativa_doplnkova_psalmodia_z126_129(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_DOPLNK_PSALM_126_129) == BIT_ALT_DOPLNK_PSALM_126_129)) \
 ||  \
@@ -405,19 +405,19 @@ extern short int _global_opt_export_date_format;
 	((modlitba == MODL_POPOLUDNI) && ((_global_modl_popol.alternativy & BIT_ALT_DOPLNK_PSALM_126_129) == BIT_ALT_DOPLNK_PSALM_126_129)) \
 )
 
-// 2011-02-02: presunutÈ do #define -- kontrola, ktor· zabezpeËuje, ûe norm·lne spr·vanie sa sl·venÌ nie je prebitÈ pre "CZOP miestne sl·venia"
-// 2011-03-07: MIESTNE_SLAVENIE_CZOP_SVATY(i) aj pre slovenskÈ, ktorÈ maj˙ nastavenÈ "lok·lne" verzie
-// 2014-03-21: aj pre SK vöeobecnÈ kvÙli 2014-10-26 | bolo: #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) (((_global_svaty(i).kalendar == KALENDAR_CZ_OFMCAP) || (_global_svaty(i).kalendar == KALENDAR_CZ_OPRAEM) || (_global_svaty(i).kalendar == KALENDAR_SK_OP) || (_global_svaty(i).kalendar == KALENDAR_CZ_OP) || (_global_svaty(i).kalendar == KALENDAR_SK_CSSR) || (_global_svaty(i).kalendar == KALENDAR_SK_SVD) || (_global_svaty(i).kalendar == KALENDAR_SK_SJ) || (_global_svaty(i).kalendar == KALENDAR_SK_SDB) || (_global_svaty(i).kalendar == KALENDAR_SK_OFM) || (_global_svaty(i).typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty(i).smer == 4) || (_global_svaty(i).smer == 8) || (_global_svaty(i).smer == 11)))
+// 2011-02-02: presunut√© do #define -- kontrola, ktor√° zabezpeƒçuje, ≈æe norm√°lne spr√°vanie sa sl√°ven√≠ nie je prebit√© pre "CZOP miestne sl√°venia"
+// 2011-03-07: MIESTNE_SLAVENIE_CZOP_SVATY(i) aj pre slovensk√©, ktor√© maj√∫ nastaven√© "lok√°lne" verzie
+// 2014-03-21: aj pre SK v≈°eobecn√© kv√¥li 2014-10-26 | bolo: #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) (((_global_svaty(i).kalendar == KALENDAR_CZ_OFMCAP) || (_global_svaty(i).kalendar == KALENDAR_CZ_OPRAEM) || (_global_svaty(i).kalendar == KALENDAR_SK_OP) || (_global_svaty(i).kalendar == KALENDAR_CZ_OP) || (_global_svaty(i).kalendar == KALENDAR_SK_CSSR) || (_global_svaty(i).kalendar == KALENDAR_SK_SVD) || (_global_svaty(i).kalendar == KALENDAR_SK_SJ) || (_global_svaty(i).kalendar == KALENDAR_SK_SDB) || (_global_svaty(i).kalendar == KALENDAR_SK_OFM) || (_global_svaty(i).typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty(i).smer == 4) || (_global_svaty(i).smer == 8) || (_global_svaty(i).smer == 11)))
 #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) ((_global_svaty(i).smer == 4) || (_global_svaty(i).smer == 8) || (_global_svaty(i).smer == 11))
 
-// 2014-04-08: presunutÈ do #define -- bolo na 2 rÙznych miestach | sviatky P·na a sv‰t˝ch, ktorÈ maj˙ prednosù pred CezroËnou nedeæou a maj˙ (ak padn˙ na nedeæu) svoje vlastnÈ prvÈ veöpery
-// ------------- pÙvodnÈ pozn·mky ------------- 
-// 2011-06-30: cyril a metod odvetven˝ pre SK a CZ only
-// 2011-07-22: doplnenÈ pre HU: 20AUG
-// 2011-10-13: zapozn·mkovanÈ 14SEP kvÙli CZ // nesp˙öùalo sa totiû zaltar_zvazok(), a teda ani zaltar_kompletorium()
-// 2012-10-22: odpozn·mkovanÈ 14SEP -- napr. pre rok 2014 potom ned·valo prvÈ veöpery, ak padne na nedeæu!
-// 2014-01-10: doplnenÈ 02FEB (ak padne na nedeæu, m· prvÈ veöpery)
-// 2014-04-08: 14SEP platÌ aj pre CZ (ak padne na nedeæu, m· prvÈ veöpery)
+// 2014-04-08: presunut√© do #define -- bolo na 2 r√¥znych miestach | sviatky P√°na a sv√§t√Ωch, ktor√© maj√∫ prednos≈• pred Cezroƒçnou nedeƒæou a maj√∫ (ak padn√∫ na nedeƒæu) svoje vlastn√© prv√© ve≈°pery
+// ------------- p√¥vodn√© pozn√°mky ------------- 
+// 2011-06-30: cyril a metod odvetven√Ω pre SK a CZ only
+// 2011-07-22: doplnen√© pre HU: 20AUG
+// 2011-10-13: zapozn√°mkovan√© 14SEP kv√¥li CZ // nesp√∫≈°≈•alo sa toti≈æ zaltar_zvazok(), a teda ani zaltar_kompletorium()
+// 2012-10-22: odpozn√°mkovan√© 14SEP -- napr. pre rok 2014 potom ned√°valo prv√© ve≈°pery, ak padne na nedeƒæu!
+// 2014-01-10: doplnen√© 02FEB (ak padne na nedeƒæu, m√° prv√© ve≈°pery)
+// 2014-04-08: 14SEP plat√≠ aj pre CZ (ak padne na nedeƒæu, m√° prv√© ve≈°pery)
 #define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST (\
 ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)) || \
 ((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) || \
@@ -430,7 +430,7 @@ extern short int _global_opt_export_date_format;
 ((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV)) \
 )
 
-// 2011-03-18: presunutÈ samostatne na jedno jedinÈ miesto
+// 2011-03-18: presunut√© samostatne na jedno jedin√© miesto
 #define PODMIENKA_EXPORTOVAT_KALENDAR ( \
 ((_global_jazyk == JAZYK_SK) && !((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK) )) \
 || ((_global_jazyk == JAZYK_CZ) && !((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ) )) \
@@ -448,33 +448,33 @@ extern short int _global_opt_export_date_format;
 //
 // obsahuju sviatky, ktore su bud pevne alebo pohyblive, v kazdom pripade su to dolezite "hranicne" dni medzi obdobiami
 //
-// 2011-05-03: predsunutÈ pred interpretParameter(), lebo sa tu pouûÌvaj˙
-// 2012-04-02: presunutÈ do breviar.h, lebo sa pouûÌva aj v includeFile(), tam pouûÌvame VELKONOCNA_NEDELA
+// 2011-05-03: predsunut√© pred interpretParameter(), lebo sa tu pou≈æ√≠vaj√∫
+// 2012-04-02: presunut√© do breviar.h, lebo sa pou≈æ√≠va aj v includeFile(), tam pou≈æ√≠vame VELKONOCNA_NEDELA
 
-// 2006-08-01: pozor, koncovky s˙ pre kaûd˝ jazyk odliönÈ
+// 2006-08-01: pozor, koncovky s√∫ pre ka≈æd√Ω jazyk odli≈°n√©
 #define koncovka_dna_asci(denvt) ((nazov_dna((denvt))[strlen(nazov_dna((denvt))) - 1] == 'a')? 'a': 'y')
-#define koncovka_dna(denvt) ((nazov_dna((denvt))[strlen(nazov_dna((denvt))) - 1] == 'a')? '·': '˝')
-#define KRST _global_r._KRST_KRISTA_PANA.denvr                          // nedeæa po 6. janu·ri; v krajin·ch, kde sa Zjavenie P·na sl·vi v nedeæu, a ak t·to pripadne na 7. alebo 8. janu·ra, Krst Krista P·na sa sl·vi nasleduj˙ci pondelok
-#define POPOLCOVA_STREDA  _global_r._POPOLCOVA_STREDA.denvr             // popolcov· streda
-#define VELKONOCNA_NEDELA   _global_r._VELKONOCNA_NEDELA.denvr          // veækonoËn· nedeæa
-#define KVETNA_NEDELA (VELKONOCNA_NEDELA - 7)                           // kvetn· nedeæa
-#define ZELENY_STVRTOK   (VELKONOCNA_NEDELA - 3)                        // zelen˝ ötvrtok
-#define VELKY_PIATOK   (VELKONOCNA_NEDELA - 2)                          // veæk˝ piatok
+#define koncovka_dna(denvt) ((nazov_dna((denvt))[strlen(nazov_dna((denvt))) - 1] == 'a')? "√°": "√Ω")
+#define KRST _global_r._KRST_KRISTA_PANA.denvr                          // nedeƒæa po 6. janu√°ri; v krajin√°ch, kde sa Zjavenie P√°na sl√°vi v nedeƒæu, a ak t√°to pripadne na 7. alebo 8. janu√°ra, Krst Krista P√°na sa sl√°vi nasleduj√∫ci pondelok
+#define POPOLCOVA_STREDA  _global_r._POPOLCOVA_STREDA.denvr             // popolcov√° streda
+#define VELKONOCNA_NEDELA   _global_r._VELKONOCNA_NEDELA.denvr          // veƒækonoƒçn√° nedeƒæa
+#define KVETNA_NEDELA (VELKONOCNA_NEDELA - 7)                           // kvetn√° nedeƒæa
+#define ZELENY_STVRTOK   (VELKONOCNA_NEDELA - 3)                        // zelen√Ω ≈°tvrtok
+#define VELKY_PIATOK   (VELKONOCNA_NEDELA - 2)                          // veƒæk√Ω piatok
 #define BIELA_SOBOTA   (VELKONOCNA_NEDELA - 1)                          // biela sobota
-#define VELKONOCNY_PONDELOK (VELKONOCNA_NEDELA + 1)                     // veækonoËn˝ pondelok
-#define DRUHA_VELKONOCNA_NEDELA  (VELKONOCNA_NEDELA + 7)                // nedeæa vo veækonoËnej okt·ve
-#define NANEBOVSTUPENIE  _global_r._NANEBOVSTUPENIE_PANA.denvr          // nanebovst˙penie P·na (ötvrtok, 40. deÚ po veækej noci, alebo v krajin·ch, kde sa pres˙va na nasleduj˙cu nedeæu ("7. veækonoËn· nedeæa")
-#define PRVA_ADVENTNA_NEDELA  _global_r._PRVA_ADVENTNA_NEDELA.denvr     // prv· adventn· nedeæa
-#define ZOSLANIE_DUCHA_SV  _global_r._ZOSLANIE_DUCHA_SV.denvr           // zoslanie Ducha Sv‰tÈho
-#define SV_RODINY  _global_r._SVATEJ_RODINY.denvr                       // sviatok sv‰tej rodiny
-#define KRISTA_KNAZA (ZOSLANIE_DUCHA_SV + 4)                            // ötvrtok po ZoslanÌ Ducha Sv‰tÈho (ZOSLANIE_DUCHA_SV): sviatok N·öho P·na Jeûiöa Krista, najvyööieho a veËnÈho kÚaza (http://www.tkkbs.sk/view.php?cisloclanku=20140115028)
-#define TROJICA (ZOSLANIE_DUCHA_SV + 7)                                 // prv· nedeæa po ZOSLANIE_DUCHA_SV: najsv. Trojice
-// #define TELAKRVI (ZOSLANIE_DUCHA_SV + 11)                               // ötvrtok po Trojici: Kristovho tela a krvi (alebo: v krajin·ch, kde sa pres˙va na nedeæu)
-#define SRDCA (ZOSLANIE_DUCHA_SV + 19)                                  // piatok po druhej nedeli po ZOSLANIE_DUCHA_SV: najsv. srdca Jeûiöovho
-#define SRDPM (ZOSLANIE_DUCHA_SV + 20)                                  // sobota po druhej nedeli po ZOSLANIE_DUCHA_SV: nepoökvrnenÈho srdca prebl. p. m·rie
-// 2006-08-22: kvÙli ruûovej farbe r˙cha potrebujeme define aj pre 3. adventn˙ nedeæu a 4. pÙstnu nedeæu
-#define TRETIA_ADVENTNA_NEDELA (PRVA_ADVENTNA_NEDELA + 14)              // tretia adventn· nedeæa - dva t˝ûdne po prvej adventnej nedeli (PRVA_ADVENTNA_NEDELA)
-#define STVRTA_POSTNA_NEDELA (VELKONOCNA_NEDELA - 21)                   // ötvrt· pÙstna nedeæa - tri t˝ûdne pred VELKONOCNA_NEDELA
+#define VELKONOCNY_PONDELOK (VELKONOCNA_NEDELA + 1)                     // veƒækonoƒçn√Ω pondelok
+#define DRUHA_VELKONOCNA_NEDELA  (VELKONOCNA_NEDELA + 7)                // nedeƒæa vo veƒækonoƒçnej okt√°ve
+#define NANEBOVSTUPENIE  _global_r._NANEBOVSTUPENIE_PANA.denvr          // nanebovst√∫penie P√°na (≈°tvrtok, 40. de≈à po veƒækej noci, alebo v krajin√°ch, kde sa pres√∫va na nasleduj√∫cu nedeƒæu ("7. veƒækonoƒçn√° nedeƒæa")
+#define PRVA_ADVENTNA_NEDELA  _global_r._PRVA_ADVENTNA_NEDELA.denvr     // prv√° adventn√° nedeƒæa
+#define ZOSLANIE_DUCHA_SV  _global_r._ZOSLANIE_DUCHA_SV.denvr           // zoslanie Ducha Sv√§t√©ho
+#define SV_RODINY  _global_r._SVATEJ_RODINY.denvr                       // sviatok sv√§tej rodiny
+#define KRISTA_KNAZA (ZOSLANIE_DUCHA_SV + 4)                            // ≈°tvrtok po Zoslan√≠ Ducha Sv√§t√©ho (ZOSLANIE_DUCHA_SV): sviatok N√°≈°ho P√°na Je≈æi≈°a Krista, najvy≈°≈°ieho a veƒçn√©ho k≈àaza (http://www.tkkbs.sk/view.php?cisloclanku=20140115028)
+#define TROJICA (ZOSLANIE_DUCHA_SV + 7)                                 // prv√° nedeƒæa po ZOSLANIE_DUCHA_SV: najsv. Trojice
+// #define TELAKRVI (ZOSLANIE_DUCHA_SV + 11)                               // ≈°tvrtok po Trojici: Kristovho tela a krvi (alebo: v krajin√°ch, kde sa pres√∫va na nedeƒæu)
+#define SRDCA (ZOSLANIE_DUCHA_SV + 19)                                  // piatok po druhej nedeli po ZOSLANIE_DUCHA_SV: najsv. srdca Je≈æi≈°ovho
+#define SRDPM (ZOSLANIE_DUCHA_SV + 20)                                  // sobota po druhej nedeli po ZOSLANIE_DUCHA_SV: nepo≈°kvrnen√©ho srdca prebl. p. m√°rie
+// 2006-08-22: kv√¥li ru≈æovej farbe r√∫cha potrebujeme define aj pre 3. adventn√∫ nedeƒæu a 4. p√¥stnu nedeƒæu
+#define TRETIA_ADVENTNA_NEDELA (PRVA_ADVENTNA_NEDELA + 14)              // tretia adventn√° nedeƒæa - dva t√Ω≈ædne po prvej adventnej nedeli (PRVA_ADVENTNA_NEDELA)
+#define STVRTA_POSTNA_NEDELA (VELKONOCNA_NEDELA - 21)                   // ≈°tvrt√° p√¥stna nedeƒæa - tri t√Ω≈ædne pred VELKONOCNA_NEDELA
 
 #ifndef OS_linux
 // kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 
@@ -483,7 +483,7 @@ int main(int argc, char **argv);
 
 int breviar_main(int argc, char **argv);
 
-#if (_MSC_VER >= 1400)       // VC8+ 2007-02-12 kvÙli vc++ 2005 express edition
+#if (_MSC_VER >= 1400)       // VC8+ 2007-02-12 kv√¥li vc++ 2005 express edition
 	#pragma warning(disable : 4996)    // disable all deprecation warnings
 	#define putenv _putenv
 #endif   // VC8+

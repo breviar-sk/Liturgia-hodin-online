@@ -1,9 +1,9 @@
 /***************************************************************/
 /*                                                             */
 /* mysystem.h                                                  */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
-/* NOTE: popis niûöie -- for description see below             */
+/* NOTE: popis ni≈æ≈°ie -- for description see below             */
 /* http://sourceforge.net/p/predef/wiki/OperatingSystems/      */
 /*                                                             */
 /***************************************************************/
@@ -33,17 +33,17 @@
 
 #ifndef MODEL_LH_commandline
 // --------------------------------------------------
-// pouûitie ako CGI skript (Windows/RUBY, linux)
+// pou≈æitie ako CGI skript (Windows/RUBY, linux)
 
 // Modely pre Windows/RUBY
 #ifdef _WIN32
 // Defined for both 32-bit and 64-bit environments | http://msdn.microsoft.com/en-us/library/ff540443.aspx | A 32-bit platform. This value is also defined by the 64-bit compiler for backward compatibility.
 
 #ifdef _DEBUG
-// Modely pre debugovanie -- for debug (direktÌva VStudia)
+// Modely pre debugovanie -- for debug (direkt√≠va VStudia)
 #define MODEL_DEBUG_Windows_RUBY
 #else
-// Modely pre ostrÈ pouûitie -- for release
+// Modely pre ostr√© pou≈æitie -- for release
 #define MODEL_Windows_RUBY
 #endif // _DEBUG
 
@@ -55,7 +55,7 @@
 // Modely pre debugovanie -- for debug
 #define MODEL_DEBUG_linux
 #else
-// Modely pre ostrÈ pouûitie -- for release
+// Modely pre ostr√© pou≈æitie -- for release
 #define MODEL_linux
 #endif // _DEBUG
 
@@ -63,16 +63,16 @@
 
 #else // MODEL_LH_commandline defined
 // --------------------------------------------------
-// pouûitie ako command-line (Windows/RUBY, linux)
+// pou≈æitie ako command-line (Windows/RUBY, linux)
 // Modely pre Windows
 #ifdef _WIN32
 // Defined for both 32-bit and 64-bit environments | http://msdn.microsoft.com/en-us/library/ff540443.aspx | A 32-bit platform. This value is also defined by the 64-bit compiler for backward compatibility.
 
 #ifdef _DEBUG
-// Modely pre debugovanie -- for debug (direktÌva VStudia)
+// Modely pre debugovanie -- for debug (direkt√≠va VStudia)
 #define MODEL_DEBUG_Windows_commandline
 #else
-// Modely pre ostrÈ pouûitie -- for release
+// Modely pre ostr√© pou≈æitie -- for release
 #define MODEL_Windows_commandline
 #endif // _DEBUG
 
@@ -84,7 +84,7 @@
 // Modely pre debugovanie -- for debug
 #define MODEL_DEBUG_linux_commandline
 #else
-// Modely pre ostrÈ pouûitie -- for release
+// Modely pre ostr√© pou≈æitie -- for release
 #define MODEL_linux_commandline
 #endif // _DEBUG
 

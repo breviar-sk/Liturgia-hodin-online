@@ -1,7 +1,7 @@
 /***********************************************************************/
 /*                                                                     */
 /* myexpt.h                                                            */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk                     */
+/* (c)1999-2014 | Juraj VidÃ©ky | videky@breviar.sk                     */
 /*                                                                     */
 /* description | obsahuje exportne rutinky na export                   */
 /*               do suboru FILE_EXPORT alebo stdout                    */
@@ -11,8 +11,8 @@
 /*   06/09/2001A.D. | tento popis                                      */
 /*   2003-07-15a.D. | odstraneny #include "mybase.h"                   */
 /*   2004-03-15a.D. | pridany DEFAULT_HTML_EXPORT (batch mode)         */
-/*   2009-08-03a.D. | pridaný DEFAULT_MONTH_EXPORT (batch mód)         */
-/*   2011-05-18a.D. | odstránené ExpL2HTML(), pridané Export_to_file() */
+/*   2009-08-03a.D. | pridanÃ½ DEFAULT_MONTH_EXPORT (batch mÃ³d)         */
+/*   2011-05-18a.D. | odstrÃ¡nenÃ© ExpL2HTML(), pridanÃ© Export_to_file() */
 /*                                                                     */
 /***********************************************************************/
 

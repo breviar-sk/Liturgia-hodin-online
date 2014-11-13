@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* dbzaltar.h                                                  */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
 /* description |                                               */
 /* document history                                            */
@@ -10,10 +10,10 @@
 /*   2003-08-13a.D. | #define presunute sem z dbzaltar.cpp     */
 /*   2003-11-20a.D. | pridane ANCHOR_CITANIE 1 a 2             */
 /*   2006-01-24a.D. | pridane zaltar_zvazok()                  */
-/*   2006-08-18a.D. | zmena int na short int (staËÌ 32tis.)    */
-/*   2007-10-02a.D. | doplnen˝ anchor ANCHOR_ANTIFONY          */
-/*   2007-11-14a.D. | doplnen˝ anchor ANCHOR_NANEBOVSTUPENIE   */
-/*   2009-03-24a.D. | ˙pravy liturgickÈho kalend·ra pre czop   */
+/*   2006-08-18a.D. | zmena int na short int (staƒç√≠ 32tis.)    */
+/*   2007-10-02a.D. | doplnen√Ω anchor ANCHOR_ANTIFONY          */
+/*   2007-11-14a.D. | doplnen√Ω anchor ANCHOR_NANEBOVSTUPENIE   */
+/*   2009-03-24a.D. | √∫pravy liturgick√©ho kalend√°ra pre czop   */
 /*                                                             */
 /***************************************************************/
 
@@ -27,7 +27,7 @@
 #include "myexpt.h" // export do suboru alebo na konzolu printf
 #include "mylog.h"
 #include <string.h>
-#include "myhpage.h" // kvÙli hlavicka()
+#include "myhpage.h" // kv√¥li hlavicka()
 
 short int sviatky_svatych(short int, short int);
 short int sviatky_svatych(short int, short int, short int);
@@ -47,10 +47,10 @@ void _set_prosby_dodatok(short int den, short int force_prve_vespery = NIE);
  * k modlitbe
  *
  *
- * 2006-01-24: ûalmy pre posv‰tnÈ ËÌtanie s˙ v II. zv‰zku ûalt·ra (pÙst, veæk· noc)
- *             pre niektorÈ dni odliönÈ, preto sme vytvorili aj ÔalöÌ parameter,
- *             ktor˝ sa pouûÌva len pri volanÌ za ˙Ëelom konkrÈtnej modlitby
- *             (pre voæbu posv. ËÌtania len pre deÚ a t˝ûdeÚ ûalt·ra sa pouûije default)
+ * 2006-01-24: ≈æalmy pre posv√§tn√© ƒç√≠tanie s√∫ v II. zv√§zku ≈æalt√°ra (p√¥st, veƒæk√° noc)
+ *             pre niektor√© dni odli≈°n√©, preto sme vytvorili aj ƒèal≈°√≠ parameter,
+ *             ktor√Ω sa pou≈æ√≠va len pri volan√≠ za √∫ƒçelom konkr√©tnej modlitby
+ *             (pre voƒæbu posv. ƒç√≠tania len pre de≈à a t√Ω≈æde≈à ≈æalt√°ra sa pou≈æije default)
  *
  */
 void zaltar(short int den, short int tyzzal);
@@ -72,15 +72,15 @@ short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 #define ANCHOR_ANTIFONA1    "ANT1"
 #define ANCHOR_ANTIFONA2    "ANT2"
 #define ANCHOR_ANTIFONA3    "ANT3"
-#define ANCHOR_ANTIFONY     "ANTx" // pridanÈ 2007-10-02 pre rovnakÈ antifÛny 1., 2. a 3. - modlitba cez deÚ
+#define ANCHOR_ANTIFONY     "ANTx" // pridan√© 2007-10-02 pre rovnak√© antif√≥ny 1., 2. a 3. - modlitba cez de≈à
 #define ANCHOR_ANTIFONA1V   "ANT1V"
 #define ANCHOR_ANTIFONA2V   "ANT2V"
 #define ANCHOR_ANTIFONA3V   "ANT3V"
 #define ANCHOR_KCITANIE     "CIT"
 #define ANCHOR_KRESPONZ     "RESP"
-#define ANCHOR_MAGNIFIKAT   "MAGNIFIKAT" // antifÛna na Magnifikat
-#define ANCHOR_BENEDIKTUS   "BENEDIKTUS" // antifÛna na Benediktus
-#define ANCHOR_NUNC_DIMITTIS "NUNCDIMITTIS" // antifÛna na Nunc dimittis
+#define ANCHOR_MAGNIFIKAT   "MAGNIFIKAT" // antif√≥na na Magnifikat
+#define ANCHOR_BENEDIKTUS   "BENEDIKTUS" // antif√≥na na Benediktus
+#define ANCHOR_NUNC_DIMITTIS "NUNCDIMITTIS" // antif√≥na na Nunc dimittis
 #define ANCHOR_PROSBY       "PROSBY"
 #define ANCHOR_MODLITBA     "MODLITBA"
 #define ANCHOR_CITANIE1     "CIT1"
@@ -92,43 +92,43 @@ short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 #define SPOM_PM_SOBOTA "SPMVS"
 // special filename indentifiers
 // podobne ako v liturgia.h::char *nazov_obd_htm[]
-#define FILE_SPOM_PM_SOBOTA "spmvs.htm" // 2006-02-02: nach·dzaj˙ sa tam aj posv. ËÌtania
+#define FILE_SPOM_PM_SOBOTA "spmvs.htm" // 2006-02-02: nach√°dzaj√∫ sa tam aj posv. ƒç√≠tania
 
-#define ANCHOR_NANEBOVSTUPENIE "NAN" // 2007-11-14: doplennÈ kvÙli invitatÛriu
-#define FILE_NANEBOVSTUPENIE "nan.htm" // kotvy v Úom s˙ podæa OBD_VELKONOCNE_I
+#define ANCHOR_NANEBOVSTUPENIE "NAN" // 2007-11-14: doplenn√© kv√¥li invitat√≥riu
+#define FILE_NANEBOVSTUPENIE "nan.htm" // kotvy v ≈àom s√∫ podƒæa OBD_VELKONOCNE_I
 
 #define ANCHOR_ZOSLANIE_DUCHA_SV "ZDS"
-#define FILE_ZOSLANIE_DUCHA_SV "zds.htm" // kotvy v Úom s˙ podæa OBD_VELKONOCNE_II, ANCHOR_ZOSLANIE_DUCHA_SV
+#define FILE_ZOSLANIE_DUCHA_SV "zds.htm" // kotvy v ≈àom s√∫ podƒæa OBD_VELKONOCNE_II, ANCHOR_ZOSLANIE_DUCHA_SV
 
 #define ANCHOR_NAJSV_TROJICE "TROJ"
-#define FILE_NAJSV_TROJICE "troj.htm" // kotvy v Úom s˙ podæa ANCHOR_NAJSV_TROJICE
+#define FILE_NAJSV_TROJICE "troj.htm" // kotvy v ≈àom s√∫ podƒæa ANCHOR_NAJSV_TROJICE
 
 #define ANCHOR_KRISTA_KRALA "KRKRALA"
-#define FILE_KRISTA_KRALA "krkrala.htm" // kotvy v Úom s˙ podæa ANCHOR_KRISTA_KRALA
+#define FILE_KRISTA_KRALA "krkrala.htm" // kotvy v ≈àom s√∫ podƒæa ANCHOR_KRISTA_KRALA
 
 #define ANCHOR_TELA_A_KRVI "TK"
-#define FILE_TELA_A_KRVI "tk.htm" // kotvy v Úom s˙ podæa ANCHOR_TELA_A_KRVI
+#define FILE_TELA_A_KRVI "tk.htm" // kotvy v ≈àom s√∫ podƒæa ANCHOR_TELA_A_KRVI
 
 #define ANCHOR_KNAZA "KNAZA"
-#define FILE_KNAZA "knaza.htm" // kotvy v Úom s˙ podæa ANCHOR_KNAZA
+#define FILE_KNAZA "knaza.htm" // kotvy v ≈àom s√∫ podƒæa ANCHOR_KNAZA
 
 #define ANCHOR_SRDCA "SRDCA"
-#define FILE_SRDCA "srdca.htm" // kotvy v Úom s˙ podæa ANCHOR_SRDCA
+#define FILE_SRDCA "srdca.htm" // kotvy v ≈àom s√∫ podƒæa ANCHOR_SRDCA
 
 #define ANCHOR_SRDCA_PM "SRDCAPM"
-#define FILE_SRDCA_PM "nspm.htm" // kotvy v Úom s˙ podæa ANCHOR_SRDCA_PM
+#define FILE_SRDCA_PM "nspm.htm" // kotvy v ≈àom s√∫ podƒæa ANCHOR_SRDCA_PM
 
 #define ANCHOR_PM_BOHOROD "PMB"
-#define FILE_PM_BOHOROD "pmb.htm" // kotvy v Úom s˙ podæa ANCHOR_PM_BOHOROD
+#define FILE_PM_BOHOROD "pmb.htm" // kotvy v ≈àom s√∫ podƒæa ANCHOR_PM_BOHOROD
 
 #define ANCHOR_2NE_PO_NAR "2NE"
 #define ANCHOR_ZJAVENIE_PANA "ZJV"
 
 #define ANCHOR_SV_RODINY "SVROD"
-#define FILE_SV_RODINY "svrod.htm" // kotvy v Úom s˙ podæa ANCHOR_SV_RODINY
+#define FILE_SV_RODINY "svrod.htm" // kotvy v ≈àom s√∫ podƒæa ANCHOR_SV_RODINY
 
 #define ANCHOR_KRST_PANA "KRST"
-#define FILE_KRST_PANA "krst.htm" // kotvy v Úom s˙ podæa ANCHOR_KRST_PANA
+#define FILE_KRST_PANA "krst.htm" // kotvy v ≈àom s√∫ podƒæa ANCHOR_KRST_PANA
 
 #define ANCHOR_DOPLNKOVA_PSALMODIA "PSCOM"
 #define FILE_DOPLNKOVA_PSALMODIA "pscom.htm"
@@ -485,7 +485,7 @@ extern const char *text_DEC_28[POCET_JAZYKOV + 1];
 extern const char *text_DEC_29[POCET_JAZYKOV + 1];
 extern const char *text_DEC_31[POCET_JAZYKOV + 1];
 
-// --------------- CSSR propri· ---------------
+// --------------- CSSR propri√° ---------------
 extern const char *text_JAN_05_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_JAN_14_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_MAR_15_CSSR[POCET_JAZYKOV + 1];
@@ -497,11 +497,11 @@ extern const char *text_SEP_26_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_OKT_05_CSSR[POCET_JAZYKOV + 1];
 extern const char *text_OKT_16_CSSR[POCET_JAZYKOV + 1];
 
-// --------------- SVD propri· ---------------
+// --------------- SVD propri√° ---------------
 extern const char *text_JAN_15_SVD[POCET_JAZYKOV + 1];
 extern const char *text_JAN_29_SVD[POCET_JAZYKOV + 1];
 
-// --------------- SDB propri· ---------------
+// --------------- SDB propri√° ---------------
 extern const char *text_JAN_15_SDB[POCET_JAZYKOV + 1];
 extern const char *text_JAN_22_SDB[POCET_JAZYKOV + 1];
 extern const char *text_JAN_24_SDB[POCET_JAZYKOV + 1];
@@ -535,7 +535,7 @@ extern const char *text_NOV_15_SDB[POCET_JAZYKOV + 1];
 extern const char *text_NOV_25_SDB[POCET_JAZYKOV + 1];
 extern const char *text_DEC_05_SDB[POCET_JAZYKOV + 1];
 
-// --------------- SJ propri· ---------------
+// --------------- SJ propri√° ---------------
 extern const char *text_JAN_01_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JAN_19_SJ[POCET_JAZYKOV + 1];
 extern const char *text_FEB_04_SJ[POCET_JAZYKOV + 1];
@@ -571,7 +571,7 @@ extern const char *text_NOV_26_SJ[POCET_JAZYKOV + 1];
 extern const char *text_DEC_01_SJ[POCET_JAZYKOV + 1];
 extern const char *text_DEC_03_SJ[POCET_JAZYKOV + 1];
 
-// --------------- OFM propri· ---------------
+// --------------- OFM propri√° ---------------
 extern const char *text_JAN_04_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_05_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_12_OFM[POCET_JAZYKOV + 1];
@@ -673,7 +673,7 @@ extern const char *text_NOV_29_OFM[POCET_JAZYKOV + 1];
 extern const char *text_DEC_02_1_OFM[POCET_JAZYKOV + 1];
 extern const char *text_DEC_02_2_OFM[POCET_JAZYKOV + 1];
 
-// --------------- OP propri· ---------------
+// --------------- OP propri√° ---------------
 extern const char *text_JAN_10_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_10_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_11_OP[POCET_JAZYKOV + 1];
@@ -791,7 +791,7 @@ extern const char *text_DEC_01_OP[POCET_JAZYKOV + 1];
 extern const char *text_DEC_16_OP[POCET_JAZYKOV + 1];
 extern const char *text_DEC_22_OP[POCET_JAZYKOV + 1];
 
-// --------------- OPraem propri· ---------------
+// --------------- OPraem propri√° ---------------
 extern const char *text_JAN_14_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_04_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_10_OPRAEM[POCET_JAZYKOV + 1];

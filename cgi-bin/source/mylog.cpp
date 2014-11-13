@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* mylog.cpp                                                   */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj VidÃ©ky | videky@breviar.sk             */
 /*                                                             */
 /* description | pomocne vypisovanie (logovanie) na obrazovku  */
 /*               a/alebo do suboru                             */
@@ -101,7 +101,7 @@ short int __Log(const char *fmt, ...)
 	va_list argptr;
 	short int cnt;
 
-/* 2005-03-28; odkomentované a upravené 2006-08-19: Ak logujeme na stdout (teda zrejme do HTML), vypiseme HTML <p> */
+/* 2005-03-28; odkomentovanÃ© a upravenÃ© 2006-08-19: Ak logujeme na stdout (teda zrejme do HTML), vypiseme HTML <p> */
 #if defined(LOG_TO_STDOUT)
 	fprintf(logfile, "\n<!-- Log: ");
 #endif

@@ -3,7 +3,7 @@
 /* mygetopt.cpp                                                */
 /* Copyright (C) 1989,90,91,92,93,94,96,97                     */
 /*                              Free Software Foundation, Inc. */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /* description | obsahuje exportne rutinky na export           */
 /*               do suboru FILE_EXPORT alebo stdout            */
 /* document history                                            */
@@ -530,7 +530,7 @@ int _getopt_internal(
 		optarg = nameend + 1;
 	      else
 		{
-		  // 2013-06-27: vyrieöenie warningu g++ | mygetopt.cpp:539: warning: suggest explicit braces to avoid ambiguous 'else'
+		  // 2013-06-27: vyrie≈°enie warningu g++ | mygetopt.cpp:539: warning: suggest explicit braces to avoid ambiguous 'else'
 		  if (opterr){
 		   if (argv[optind - 1][1] == '-'){
 		    /* --option */

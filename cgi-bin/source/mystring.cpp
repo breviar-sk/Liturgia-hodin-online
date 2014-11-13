@@ -1,15 +1,15 @@
 /***************************************************************/
 /*                                                             */
 /* mystring.cpp                                                */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
 /* description |                                               */
 /* document history                                            */
 /*   31/03/2000A.D. | created                                  */
 /*   06/09/2001A.D. | tento popis                              */
-/*   2009-08-05a.D. | pridan· funkcia substring()              */
-/*   2011-04-13a.D. | sem presunutÈ reùazcovÈ funkcie equals() */
-/*   2013-01-11a.D. | nov· funkcia: replace all substrings     */
+/*   2009-08-05a.D. | pridan√° funkcia substring()              */
+/*   2011-04-13a.D. | sem presunut√© re≈•azcov√© funkcie equals() */
+/*   2013-01-11a.D. | nov√° funkcia: replace all substrings     */
 /*                                                             */
 /***************************************************************/
 
@@ -53,7 +53,7 @@ char *mystrcpy(char *dest, const char *src, short int count){
 // This function returns strDest. No return value is reserved to indicate an error.
 
 int substring(char *str1, char *str2){
-	// vr·ti true, ak str2 je substring v reùazci str1
+	// vr√°ti true, ak str2 je substring v re≈•azci str1
 	return (strstr(str1, str2) != NULL);
 }
 
@@ -179,7 +179,7 @@ short int equalsi(char *is1, const char *is2){
 #endif
 }
 
-// funkcia mystr_replace() nahradÌ vöetky v˝skyty podreùazca substr v reùazci string reùazcom replacement
+// funkcia mystr_replace() nahrad√≠ v≈°etky v√Ωskyty podre≈•azca substr v re≈•azci string re≈•azcom replacement
 // http://coding.debuntu.org/c-implementing-str_replace-replace-all-occurrences-substring | 2013-01-11
 char *mystr_replace ( const char *string, const char *substr, const char *replacement ){
 	char *tok = NULL;
@@ -209,7 +209,7 @@ char *mystr_replace ( const char *string, const char *substr, const char *replac
 	return newstr;
 }
 
-// funkcia mystr_first_lower() aplikuje tolower() na prv˝ znak reùazca
+// funkcia mystr_first_lower() aplikuje tolower() na prv√Ω znak re≈•azca
 char *mystr_first_lower ( const char *string ){
 	char *newstr = NULL;
 	char c;
@@ -221,7 +221,7 @@ char *mystr_first_lower ( const char *string ){
 	}
 	return newstr;
 }
-// funkcia mystr_first_upper() aplikuje toupper() na prv˝ znak reùazca
+// funkcia mystr_first_upper() aplikuje toupper() na prv√Ω znak re≈•azca
 char *mystr_first_upper ( const char *string ){
 	char *newstr = NULL;
 	char c;

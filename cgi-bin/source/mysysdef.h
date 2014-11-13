@@ -1,9 +1,9 @@
 /***************************************************************/
 /*                                                             */
 /* mysysdef.h                                                  */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
-/* obsahuje definÌcie pre jednotlivÈ systÈmy                   */
+/* obsahuje defin√≠cie pre jednotliv√© syst√©my                   */
 /*                                                             */
 /***************************************************************/
 #include "vstudio.h"
@@ -17,7 +17,7 @@
 /***************************************************************/
 /*                                                             */
 /* mysystem.h -> mysysdef.h                                    */
-/* (c)1999-2014 | Juraj VidÈky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj Vid√©ky | videky@breviar.sk             */
 /*                                                             */
 /* description | obsahuje jediny #define, urcujuci, v akom     */
 /*               systeme program pracuje; ovplyvnuje tvorbu    */
@@ -32,53 +32,53 @@
 /*   2004-03-17a.D. | poznamka k OS_...                        */
 /*   2005-03-22a.D. | zrusene DOS, vytvoreny novy model        */
 /*   2005-03-28a.D. | pridane na zaciatok #undef pre vsetky    */
-/*   2006-01-28a.D. | pridanÈ define pre spÙsob exportu        */
-/*   2006-07-11a.D. | prvÈ kroky k jazykov˝m mut·ci·m          */
-/*   2007-05-25a.D. | pridanÈ MODEL_Windows_RUBY               */
-/*   2007-06-01a.D. | vËlenen˝ "config.h" pre confuse          */
-/*   2007-06-19a.D. | odstr·nen˝ "config.h" pre confuse        */
-/*   2007-06-28a.D. | oprava jednotliv˝ch modelov, popisy      */
-/*   2007-11-20a.D. | doplnenÈ EXPORT_HTML_SPECIALS            */
+/*   2006-01-28a.D. | pridan√© define pre sp√¥sob exportu        */
+/*   2006-07-11a.D. | prv√© kroky k jazykov√Ωm mut√°ci√°m          */
+/*   2007-05-25a.D. | pridan√© MODEL_Windows_RUBY               */
+/*   2007-06-01a.D. | vƒçlenen√Ω "config.h" pre confuse          */
+/*   2007-06-19a.D. | odstr√°nen√Ω "config.h" pre confuse        */
+/*   2007-06-28a.D. | oprava jednotliv√Ωch modelov, popisy      */
+/*   2007-11-20a.D. | doplnen√© EXPORT_HTML_SPECIALS            */
 /*   2008-05-19a.D. | EXPORT_HTML_FILENAME_ANCHOR aj pre linux */
-/*   2008-08-08a.D. | doplnenÈ EXPORT_CMDLINE_CSS              */
-/*   2009-08-26a.D. | pred popis predsunutÈ samotnÈ nastavenie */
-/*   2011-07-13a.D. | pÙvodn˝ mysystem.h rozdelen˝ na 2 s˙bory */
+/*   2008-08-08a.D. | doplnen√© EXPORT_CMDLINE_CSS              */
+/*   2009-08-26a.D. | pred popis predsunut√© samotn√© nastavenie */
+/*   2011-07-13a.D. | p√¥vodn√Ω mysystem.h rozdelen√Ω na 2 s√∫bory */
 /*                                                             */
 /***************************************************************/
 
 /*
- * Pozn·mka: Pri buildovanÌ nezabudni zmeniù datum v mybuild.h (BUILD_DATE).
+ * Pozn√°mka: Pri buildovan√≠ nezabudni zmeni≈• datum v mybuild.h (BUILD_DATE).
  *
- * Popis jednotliv˝ch modelov (JUV, 2007-06-28):
+ * Popis jednotliv√Ωch modelov (JUV, 2007-06-28):
  *
- * MODEL_linux - takto to vyzer· na internete (www.breviar.sk): 
- *		- ûiadne logovanie, export do stdout, systÈm linux
- *		- debug verzia (s v˝pismi na stdout do HTML s˙boru ako pozn·mky): MODEL_DEBUG_linux
+ * MODEL_linux - takto to vyzer√° na internete (www.breviar.sk): 
+ *		- ≈æiadne logovanie, export do stdout, syst√©m linux
+ *		- debug verzia (s v√Ωpismi na stdout do HTML s√∫boru ako pozn√°mky): MODEL_DEBUG_linux
  *
  * MODEL_android - verzia pre android. Ako MODEL_linux, ale s pouzitim IO
  *                 wrappera pre android.
  *
  * MODEL_linux_commandline - off-line command-line verzia pre linux: 
- *		- ûiadne logovanie, export do s˙boru, systÈm linux 
- *		  (pouûitie pre off-line ruËnÈ generovanie HTML str·nok, 
- *		  napr. aj pre batch mÛd - d·vkovÈ generovanie veæa str·nok na s˙vislÈ obdobie)
- *		- debug verzia (s v˝pismi do samostatnÈho s˙boru): MODEL_DEBUG_linux_commandline
+ *		- ≈æiadne logovanie, export do s√∫boru, syst√©m linux 
+ *		  (pou≈æitie pre off-line ruƒçn√© generovanie HTML str√°nok, 
+ *		  napr. aj pre batch m√≥d - d√°vkov√© generovanie veƒæa str√°nok na s√∫visl√© obdobie)
+ *		- debug verzia (s v√Ωpismi do samostatn√©ho s√∫boru): MODEL_DEBUG_linux_commandline
  *
- * MODEL_Windows_RUBY - off-line verzia pre Windows s pouûitÌm Ruby webservera: 
- *		- ûiadne logovanie, export do stdout, systÈm Windows
- *		// 2007-05-24: pridanÈ; pouûÌvame pre Windows/ruby
- *		- debug verzia (s v˝pismi na stdout do HTML s˙boru ako pozn·mky): MODEL_DEBUG_Windows_RUBY
+ * MODEL_Windows_RUBY - off-line verzia pre Windows s pou≈æit√≠m Ruby webservera: 
+ *		- ≈æiadne logovanie, export do stdout, syst√©m Windows
+ *		// 2007-05-24: pridan√©; pou≈æ√≠vame pre Windows/ruby
+ *		- debug verzia (s v√Ωpismi na stdout do HTML s√∫boru ako pozn√°mky): MODEL_DEBUG_Windows_RUBY
  *
  * MODEL_Windows_commandline - off-line command-line verzia pre Windows: 
- *		- ûiadne logovanie, export do s˙boru, systÈm Windows 
- *		  (pouûitie pre off-line ruËnÈ generovanie HTML str·nok, 
- *		  napr. aj pre batch mÛd - d·vkovÈ generovanie veæa str·nok na s˙vislÈ obdobie)
- *		- debug verzia (s v˝pismi do samostatnÈho s˙boru): MODEL_DEBUG_Windows_commandline
+ *		- ≈æiadne logovanie, export do s√∫boru, syst√©m Windows 
+ *		  (pou≈æitie pre off-line ruƒçn√© generovanie HTML str√°nok, 
+ *		  napr. aj pre batch m√≥d - d√°vkov√© generovanie veƒæa str√°nok na s√∫visl√© obdobie)
+ *		- debug verzia (s v√Ωpismi do samostatn√©ho s√∫boru): MODEL_DEBUG_Windows_commandline
  *
- * 2 z·kladnÈ druhy spr·vania aplik·cie (JUV, 2010-06-07):
+ * 2 z√°kladn√© druhy spr√°vania aplik√°cie (JUV, 2010-06-07):
  *
- * BEHAVIOUR_WEB -- spr·vanie ako na webe: export prÌp. logovanie ide na STDOUT (t. j. ako output pre web browser)
- * BEHAVIOUR_CMDLINE -- spr·vanie pre command-line verziu: export prÌp. logovanie ide do s˙boru/s˙borov (t. j. ako output pre batch mÛd)
+ * BEHAVIOUR_WEB -- spr√°vanie ako na webe: export pr√≠p. logovanie ide na STDOUT (t. j. ako output pre web browser)
+ * BEHAVIOUR_CMDLINE -- spr√°vanie pre command-line verziu: export pr√≠p. logovanie ide do s√∫boru/s√∫borov (t. j. ako output pre batch m√≥d)
  *
  */
 
@@ -87,15 +87,15 @@
 
 // ---------------------------------------------------------------------
 // prerobene 23/02/2000A.D. -- 24/02/2000A.D.
-// 2006-01-28: pridanÈ define pre spÙsob v˝pisu kotiev a n·zvov s˙borov do HTML v˝sledku
+// 2006-01-28: pridan√© define pre sp√¥sob v√Ωpisu kotiev a n√°zvov s√∫borov do HTML v√Ωsledku
 #undef EXPORT_HTML_FILENAME_ANCHOR
 #undef EXPORT_HTML_FILENAME
 #undef EXPORT_HTML_ANCHOR
-#undef EXPORT_HTML_SPECIALS // 2007-11-20: vytvorenÈ, kvÙli v˝pisom do v˝slednÈho HTML vo funkcii interpretParameter(), napr. "nie je velkonocne obdobie"
-#undef EXPORT_CMDLINE_CSS // 2008-08-08: doplnenÈ kvÙli tomu, Ëi exportovaù v hlaviËke /breviar.css alebo ./breviar.css
+#undef EXPORT_HTML_SPECIALS // 2007-11-20: vytvoren√©, kv√¥li v√Ωpisom do v√Ωsledn√©ho HTML vo funkcii interpretParameter(), napr. "nie je velkonocne obdobie"
+#undef EXPORT_CMDLINE_CSS // 2008-08-08: doplnen√© kv√¥li tomu, ƒçi exportova≈• v hlaviƒçke /breviar.css alebo ./breviar.css
 
-#undef BEHAVIOUR_WEB // 2010-06-07: spr·vanie ako na webe: export prÌp. logovanie ide na STDOUT (t. j. ako output pre web browser)
-#undef BEHAVIOUR_CMDLINE // 2010-06-07: spr·vanie pre command-line verziu: export prÌp. logovanie ide do s˙boru/s˙borov (t. j. ako output pre batch mÛd)
+#undef BEHAVIOUR_WEB // 2010-06-07: spr√°vanie ako na webe: export pr√≠p. logovanie ide na STDOUT (t. j. ako output pre web browser)
+#undef BEHAVIOUR_CMDLINE // 2010-06-07: spr√°vanie pre command-line verziu: export pr√≠p. logovanie ide do s√∫boru/s√∫borov (t. j. ako output pre batch m√≥d)
 #undef IO_ANDROID
 #undef LITURGICKE_CITANIA_ANDROID
 
@@ -135,7 +135,7 @@
 	#define IO_ANDROID
 	#define LITURGICKE_CITANIA_ANDROID
 	#define LIBC_BIONIC
-// ostrÈ Windows/RUBY:
+// ostr√© Windows/RUBY:
 #elif defined(MODEL_Windows_RUBY)
 	#define BEHAVIOUR_WEB
 	#define OS_Windows_Ruby
@@ -204,10 +204,10 @@
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_TO_STRING
 #else
-	#error Unsupported system model (see mysystem.h) - Nepodporovan˝ systÈmov˝ model (pozri s˙bor mysystem.h)
+	#error Unsupported system model (see mysystem.h) - Nepodporovan√Ω syst√©mov√Ω model (pozri s√∫bor mysystem.h)
 #endif
 
-// 2010-06-07: doplnenÈ podæa direktÌvy Visual Studia (vlastne tak trocha prepisuje vyööie uvedenÈ)
+// 2010-06-07: doplnen√© podƒæa direkt√≠vy Visual Studia (vlastne tak trocha prepisuje vy≈°≈°ie uveden√©)
 #ifdef _DEBUG
 	#define DEBUG
 	#define LOGGING
@@ -240,22 +240,22 @@
 	#define DEFINED_strcmpi
 #endif
 
-// 2006-07-17: PridanÈ/
+// 2006-07-17: Pridan√©/
 #define		PATH_SEPARATOR_linux	'/'
 #define		PATH_SEPARATOR_Windows	'\\'
-// 2008-08-08: PridanÈ
+// 2008-08-08: Pridan√©
 #define		STR_PATH_SEPARATOR_linux	"/"
 #define		STR_PATH_SEPARATOR_Windows	"\\"
-// 2009-08-03: pridanÈ pre HTML s˙bory
+// 2009-08-03: pridan√© pre HTML s√∫bory
 #define		STR_PATH_SEPARATOR_HTML	STR_PATH_SEPARATOR_linux
 
 #define		SYSTEM_RUBY    0
 #define		SYSTEM_LINUX   1
 #define		SYSTEM_WINDOWS 2
 
-// 2007-05-29: upravenÈ; pre Ruby on Windows tieû separ·tor ako pod linuxom
-// 2011-05-16: pri debugovanÌ Ruby on Windows treba backslashe
-// 2011-08-12: pri debugovanÌ Ruby on Windows treba backslashe -> naËo? zapozn·mkovanÈ!
+// 2007-05-29: upraven√©; pre Ruby on Windows tie≈æ separ√°tor ako pod linuxom
+// 2011-05-16: pri debugovan√≠ Ruby on Windows treba backslashe
+// 2011-08-12: pri debugovan√≠ Ruby on Windows treba backslashe -> naƒço? zapozn√°mkovan√©!
 #if defined(OS_linux)
 	#define		PATH_SEPARATOR	PATH_SEPARATOR_linux
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_linux
@@ -270,17 +270,17 @@
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_Windows
 #endif
 
-// 2006-07-31: PridanÈ
+// 2006-07-31: Pridan√©
 #define		UNDERSCORE	'_'
 
-// 2006-07-31: kvÙli jazykov˝m mut·ci·m; zmenenÈ 2008-08-15 na 5 
-// 2009-01-29: zmenenÈ na 6 (maÔarËina)
-// 2011-04-13: presunutÈ sem spolu s POCET_GLOBAL_OPT aj MAX_STR, GLOBAL_OPTION_NULL
+// 2006-07-31: kv√¥li jazykov√Ωm mut√°ci√°m; zmenen√© 2008-08-15 na 5 
+// 2009-01-29: zmenen√© na 6 (maƒèarƒçina)
+// 2011-04-13: presunut√© sem spolu s POCET_GLOBAL_OPT aj MAX_STR, GLOBAL_OPTION_NULL
 #define	POCET_RITOV	         1
 #define	POCET_JAZYKOV	     6
 #define POCET_GLOBAL_OPT     6
 #define MAX_STR            300 // maximalna dlzka retazca
-#define GLOBAL_OPTION_NULL  -1 // neurËen· hodnota pre global option
+#define GLOBAL_OPTION_NULL  -1 // neurƒçen√° hodnota pre global option
 
 
 #endif // __MYSYSDEF_H_

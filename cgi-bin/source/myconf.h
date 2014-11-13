@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* myconf.h                                                    */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2014 | Juraj VidÃ©ky | videky@breviar.sk             */
 /*                                                             */
 /* description | poskytuje rozhranie na konfiguraciu,          */
 /*               subor CONFIG_FILE                             */
@@ -10,8 +10,8 @@
 /*   06/09/2001A.D. | tento popis                              */
 /*   2003-07-15a.D. | #include "mybase.h" nahradeny "mydefs.h" */
 /*   2004-03-17a.D. | pridany INCLUDE_DIR                      */
-/*   2011-01-31a.D. | pridané CFG_OPTION1_DEFAULT (1 až 5)     */
-/*   2011-04-11a.D. | CONFIG_FILE sa nastavuje pod¾a "OS"      */
+/*   2011-01-31a.D. | pridanÃ© CFG_OPTION1_DEFAULT (1 aÅ¾ 5)     */
+/*   2011-04-11a.D. | CONFIG_FILE sa nastavuje podÄ¾a "OS"      */
 /*                                                             */
 /***************************************************************/
 

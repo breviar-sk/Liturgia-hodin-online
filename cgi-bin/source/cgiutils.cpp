@@ -11,7 +11,7 @@
  * (c) 1995-1996 William E. Weinman
  *
  * 1.1 -- splitword() now skips leading spaces
- * mierne upravil duurko (Juraj Vidéky), 29/10/99a.D.
+ * mierne upravil duurko (Juraj VidÃ©ky), 29/10/99a.D.
  *
  */
 
