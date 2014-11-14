@@ -116,6 +116,7 @@ body { background-color: #000000; color: #cccccc; }
 <li> Možnost zobrazit modlitby v režimu pro nevidomé a slabozraké (text modliteb bez nadpisů a rubrik), vhodné pro hlasový výstup.
 <li> Nová možnost na úvodní obrazovce: Ordinárium (Uspořádání).
 <li> Oprava mariánských antifon (kompletář/modlitba před spaním) pro noční režim.
+<li> Kompatibilita s Android 5.0 Lollipop.
 </ul>
 
 <p><b>Nové ve verzi 1.9.10:</b>

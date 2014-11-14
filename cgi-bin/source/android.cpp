@@ -178,7 +178,7 @@ JNIEXPORT jstring JNICALL Java_sk_breviar_android_Server_main(JNIEnv* env, jobje
   char pom2[MAX_STR], pom3[MAX_STR];
   strcpy(pom2, ""); strcpy(pom3, "");
   prilep_request_options(pom2, pom3);
-  jout = env->NewStringUTF(StringEncode(pom2, true));
+  jout = env->NewStringUTF(pom2);
 //  __android_log_print(ANDROID_LOG_INFO, "Breviar", "prilep_request_options finished");
 
   env->ReleaseStringUTFChars(environ, environment);

@@ -39,7 +39,9 @@
 #include "mysystem.h"
 #include "mysysdef.h"
 #include "mystring.h"
+#include "utf8-utils.h"
 #include <ctype.h>
+#include <wctype.h>
 
 // globalne premenne prehodene do liturgia.h, 17/02/2000A.D.
 //---------------------------------------------------------------------
@@ -308,12 +310,13 @@ short int cislo_mesiaca(char *mesiac){
 //---------------------------------------------------------------------
 // urobi velke pismena 
 // 2011-01-31: nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash; na veľké písmená
-char *caps_BIG(const char *input){
+// Assumes utf-8 encoding.
+char *caps_BIG(const char* input) {
 	short int ok = TRUE;
-	short int i = 0;
-	char c;
-	mystrcpy(_global_pom_str, input, MAX_STR);
-	while(( c = _global_pom_str[i]) != '\0'){
+	const char* in = input;
+	char* out = _global_pom_str;
+	while(out - _global_pom_str < MAX_STR - 5 && *in) {
+		int c = DecodeWchar(&in);
 		if((c == '&') && (ok == TRUE)){
 			ok = FALSE;
 		}
@@ -322,48 +325,12 @@ char *caps_BIG(const char *input){
 		}
 		// 2011-01-31: ToDo: ešte by bolo potrebné ošetriť aj to, že za & nenasleduje regulérny znak pre špeciálny HTML kód, t. j. niečo iné ako upper+lowercase ascii abeceda + # a číslice
 		if(ok == TRUE){
-			if((c >= 'a') && (c <= 'z')){
-				c = (char)(c - 32);
-			}
-			else{
-				switch(c){
-					// samohlasky -- dlhe
-					case 'á': c = 'Á'; break;
-					case 'é': c = 'É'; break;
-					case 'í': c = 'Í'; break;
-					case 'ó': c = 'Ó'; break;
-					case 'ú': c = 'Ú'; break;
-					case 'ý': c = 'Ý'; break;
-					// samohlasky -- specialne
-					case 'ä': c = 'Ä'; break;
-					case 'ô': c = 'Ô'; break;
-					case 'ě': c = 'Ě'; break;
-					case 'ů': c = 'Ů'; break;
-					// spoluhlasky -- makke
-					case 'č': c = 'Č'; break;
-					case 'ď': c = 'Ď'; break;
-					case 'ľ': c = 'Ľ'; break;
-					case 'ň': c = 'Ň'; break;
-					case 'ř': c = 'Ř'; break;
-					case 'š': c = 'Š'; break;
-					case 'ť': c = 'Ť'; break;
-					case 'ž': c = 'Ž'; break;
-					// spoluhlasky -- dlhe
-					case 'ĺ': c = 'Ĺ'; break;
-					case 'ŕ': c = 'Ŕ'; break;
-					// maďarské znaky
-					case 'ű': c = 'Ű'; break;
-					case 'ő': c = 'Ő'; break;
-					case 'ü': c = 'Ü'; break;
-					case 'ö': c = 'Ö'; break;
-				}
-			}
+			c = WcharToUppercase(c);
 		}// ok == TRUE
-		if(_global_pom_str[i] != c)
-			_global_pom_str[i] = c;
-		i++;
+		EncodeWchar(c, &out);
 	}
-	return (_global_pom_str);
+	*out = 0;
+	return _global_pom_str;
 }// caps_BIG()
 
 //---------------------------------------------------------------------
@@ -372,10 +339,10 @@ char *caps_BIG(const char *input){
 // 2011-04-06: zmení aj dlhé pomlčky na obyčajný spojovník (znak mínus)
 char *remove_diacritics(const char *input){
 	short int ok = TRUE;
-	short int i = 0;
-	char c;
-	mystrcpy(_global_pom_str, input, MAX_STR);
-	while(( c = _global_pom_str[i]) != '\0'){
+	const char* in = input;
+	char* out = _global_pom_str;
+	while(out - _global_pom_str < MAX_STR - 5 && *in) {
+		int c = DecodeWchar(&in);
 		if((c == '&') && (ok == TRUE)){
 			ok = FALSE;
 		}
@@ -383,71 +350,13 @@ char *remove_diacritics(const char *input){
 			ok = TRUE;
 		}
 		// 2011-01-31: ToDo: ešte by bolo potrebné ošetriť aj to, že za & nenasleduje regulérny znak pre špeciálny HTML kód, t. j. niečo iné ako upper+lowercase ascii abeceda + # a číslice
-		if(ok == TRUE){
-			switch(c){
-				// špeciálne znaky
-				case '—': c = '-'; break;
-				case '–': c = '-'; break;
-				// samohlasky -- dlhe
-				case 'á': c = 'a'; break;
-				case 'é': c = 'e'; break;
-				case 'í': c = 'i'; break;
-				case 'ó': c = 'o'; break;
-				case 'ú': c = 'u'; break;
-				case 'ý': c = 'y'; break;
-				case 'Á': c = 'A'; break;
-				case 'É': c = 'E'; break;
-				case 'Í': c = 'I'; break;
-				case 'Ó': c = 'O'; break;
-				case 'Ú': c = 'U'; break;
-				case 'Ý': c = 'Y'; break;
-				// samohlasky -- specialne
- 				case 'ä': c = 'a'; break;
-				case 'ô': c = 'o'; break;
-				case 'ě': c = 'e'; break;
-				case 'ů': c = 'u'; break;
-				case 'Ä': c = 'A'; break;
-				case 'Ô': c = 'O'; break;
-				case 'Ě': c = 'E'; break;
-				case 'Ů': c = 'U'; break;
-				// spoluhlasky -- makke
-				case 'č': c = 'c'; break;
-				case 'ď': c = 'd'; break;
-				case 'ľ': c = 'l'; break;
-				case 'ň': c = 'n'; break;
-				case 'ř': c = 'r'; break;
-				case 'š': c = 's'; break;
-				case 'ť': c = 't'; break;
-				case 'ž': c = 'z'; break;
-				case 'Č': c = 'C'; break;
-				case 'Ď': c = 'D'; break;
-				case 'Ľ': c = 'L'; break;
-				case 'Ň': c = 'N'; break;
-				case 'Ř': c = 'R'; break;
-				case 'Š': c = 'S'; break;
-				case 'Ť': c = 'T'; break;
-				case 'Ž': c = 'Z'; break;
-				// spoluhlasky -- dlhe
-				case 'ĺ': c = 'l'; break;
-				case 'ŕ': c = 'r'; break;
-				case 'Ĺ': c = 'L'; break;
-				case 'Ŕ': c = 'R'; break;
-				// maďarské znaky
-				case 'ű': c = 'u'; break;
-				case 'ő': c = 'o'; break;
-				case 'ü': c = 'u'; break;
-				case 'ö': c = 'o'; break;
-				case 'Ű': c = 'U'; break;
-				case 'Ő': c = 'O'; break;
-				case 'Ü': c = 'U'; break;
-				case 'Ö': c = 'O'; break;
-			}// switch
+		if(ok == TRUE) {
+			c = RemoveDiacriticsFromWchar(c);
 		}// ok == TRUE
-		if(_global_pom_str[i] != c)
-			_global_pom_str[i] = c;
-		i++;
+		EncodeWchar(c, &out);
 	}
-	return (_global_pom_str);
+	*out = 0;
+	return _global_pom_str;
 }// remove_diacritics()
 
 //---------------------------------------------------------------------
@@ -455,25 +364,22 @@ char *remove_diacritics(const char *input){
 // 2011-05-02: vytvorené
 // 2011-05-16: opravené (char sa musí najprv konvertovať na char * a až potom appendovať strcat)
 char *convert_nonbreaking_spaces(const char *input){
-	short int i = 0;
-	char c;
-	char c_str[VERY_SMALL];
 	Log("convert_nonbreaking_spaces() -- začiatok...\n");
-	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
-	// _global_pom_str[0] = '\0';  // terminate it at the new length
-	while(((c = input[i]) != '\0') /* && (i < MAX_STR) */){
-		if(c == CHAR_NONBREAKING_SPACE){
-			strcat(_global_pom_str, (char *)HTML_NONBREAKING_SPACE);
+	const char* in = input;
+	char* out = _global_pom_str;
+	while(out - _global_pom_str < MAX_STR - 7 && *in) {
+		int c = DecodeWchar(&in);
+		if(c == CHAR_NONBREAKING_SPACE) {
+			strcpy(out, HTML_NONBREAKING_SPACE);
+                        out += strlen(HTML_NONBREAKING_SPACE);
 		}// c == CHAR_NONBREAKING_SPACE
-		else{
-			c_str[0] = c;
-			c_str[1] = '\0';
-			strcat(_global_pom_str, (char *)c_str);
+		else {
+			EncodeWchar(c, &out);
 		}
-		i++;
 	}
+	*out = 0;
 	Log("convert_nonbreaking_spaces() -- koniec, returning `%s'.\n", _global_pom_str);
-	return (_global_pom_str);
+	return _global_pom_str;
 }// convert_nonbreaking_spaces()
 
 void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int force_opt /* default = PRILEP_REQUEST_OPTIONS_DEFAULT */){

@@ -15,8 +15,7 @@ void checkCitania();
 struct citanie *najdiCitanie(const char *kod);
 char *getCode(_struct_dm *d);
 
-char *StringEncode(const char *in, bool utf_safe=false);
-char *toUtf(const char *in);
+char *StringEncode(const char *in);
 
 #endif // LITURGICKE_CITANIA_ANDROID
 

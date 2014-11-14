@@ -1,6 +1,6 @@
 -include config.mk
 
-CXXFLAGS ?= -DMODEL_SELECTED_IN_MAKEFILE -DMODEL_linux_citania
+CXXFLAGS ?= -Wall -W -DMODEL_SELECTED_IN_MAKEFILE -DMODEL_linux_citania
 TARGET ?= ../l.cgi
 
 SRCS = \
@@ -16,6 +16,7 @@ SRCS = \
 	mystring.cpp \
 	citania.cpp  \
 	dbzaltar.cpp \
+	utf8-utils.cpp \
 
 OBJS = $(subst cpp,o,$(SRCS))
 

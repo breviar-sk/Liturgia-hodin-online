@@ -368,7 +368,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define CHAR_NONBREAKING_SPACE '_'
 #define CHAR_SPACE             ' '
 #define CHAR_PRAYER_ASTERISK   '*'
-#define CHAR_PRAYER_CROSS      '†'
+#define CHAR_PRAYER_CROSS      L'\x2020' /*†*/
 #define CHAR_PRAYER_CROSS_ALT  '+'
 
 // include parameters (parametre v inkludovanych suboroch)

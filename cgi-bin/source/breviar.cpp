@@ -291,6 +291,7 @@
 #include "liturgia.h"                  
 #include "cgiutils.h" // parsovanie query stringu
 #include "mygetopt.h" // parsovanie argv[], t.j. options z command line
+#include "utf8-utils.h"
 
 // dbzaltar:: zaltar(); liturgicke_obdobie(); sviatky_svatych();
 #include "dbzaltar.h"                  
@@ -1498,6 +1499,15 @@ void _main_prazdny_formular(void){
 }// _main_prazdny_formular()
 
 //---------------------------------------------------------------------
+// Converts wide char into utf8 string and exports it.
+void ExportRawWchar(int c) {
+	char buf[5];
+	char *out = buf;
+	EncodeWchar(c, &out);
+	*out = 0;
+	Export("%s", buf);
+}
+
 void ExportChar(int c){
 	// ToDo: consider special behaviour for 'plain' text export
 
@@ -1510,7 +1520,7 @@ void ExportChar(int c){
 			Export("%c", CHAR_SPACE);
 		}
 		else{
-			Export("%c", c);
+			ExportRawWchar(c);
 		}
 		return;
 	}
@@ -1520,7 +1530,7 @@ void ExportChar(int c){
 		Export(HTML_NONBREAKING_SPACE);
 	}
 	else{
-		Export("%c", c);
+		ExportRawWchar(c);
 	}
 	return;
 }// ExportChar()
@@ -1642,7 +1652,13 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	*/
 
 	// Export("before while...");
-	while((c = fgetc(body)) != EOF){
+	int b;
+	struct Utf8DecoderState state;
+	InitUtf8DecoderState(&state);
+
+	while((b = fgetc(body)) != EOF){
+		if (!Utf8StreamingDecoder(b, &state)) continue;
+		c = state.result;
 		// Export("inside[%c]...", c);
 		switch (c){
 			// 2011-03-29: ak sa nachádza znak CHAR_KEYWORD_BEGIN (t. j. '{') len tak voľne v texte, program zblbol; nevedel zistiť, či ide o keyword alebo nie; pokus o opravu
@@ -4388,7 +4404,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 // CHAR_KEYWORD_BEGIN a CHAR_KEYWORD_END su #define'ovane v liturgia.h | exportfile je definovane v myexpt.[h|c]
 // 2011-05-02: znak '_' používame ako zástupný pre nezlomiteľnú medzeru (exportuje sa ako &nbsp;)
 void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = ANO){
-	short int c, buff_index = 0;
+	short buff_index = 0;
 	char strbuff[MAX_BUFFER];
 	char isbuff = 0;
 
@@ -4409,8 +4425,13 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 		return;
 	}// chyba -- šablóna sa nenašla
 
-	while((c = fgetc(ftemplate)) != EOF){
-		switch (c){
+	int b;
+	Utf8DecoderState c;
+	InitUtf8DecoderState(&c);
+
+	while((b = fgetc(ftemplate)) != EOF){
+		if (!Utf8StreamingDecoder(b, &c)) continue;
+		switch (c.result){
 			case CHAR_KEYWORD_BEGIN:
 				isbuff = 1;
 				buff_index = 0;
@@ -4423,11 +4444,11 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 		}// switch(c)
 		if(!isbuff){
 			if((_global_skip_in_prayer != ANO) && (_global_skip_in_prayer_2 != ANO) && (_global_skip_in_prayer_vnpc != ANO)){
-				ExportChar(c);
+				ExportChar(c.result);
 			}// !_global_skip_in_prayer && !_global_skip_in_prayer_2
 		}// if(!isbuff)
 		else{
-			strbuff[buff_index++] = (char)c;
+			strbuff[buff_index++] = (char)c.result;
 		}// else if(!isbuff)
 	}
 	fclose(ftemplate);
@@ -6276,14 +6297,14 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 					}
 					sprintf(pom, "<a href=\"svpismo://svpismo.riso.ksp.sk/?d=%d&amp;m=%d&amp;y=%d&amp;c=", _local_den.den, _local_den.mesiac, _local_den.rok);
 					strcat(_global_string, pom);
-					strcat(_global_string, StringEncode(toUtf(cit->citania)));
+					strcat(_global_string, StringEncode(cit->citania));
 					sprintf(pom, "&amp;zalm=");
 					strcat(_global_string, pom);
-					strcat(_global_string, StringEncode(toUtf(cit->zalm)));
+					strcat(_global_string, StringEncode(cit->zalm));
 					//
 					sprintf(pom, "&amp;aleluja=");
 					strcat(_global_string, pom);
-					strcat(_global_string, StringEncode(toUtf(cit->aleluja)));
+					strcat(_global_string, StringEncode(cit->aleluja));
 					sprintf(pom, "\">%s</a>", cit->citania);
 					strcat(_global_string, pom);
 				}

@@ -113,6 +113,7 @@ body { background-color: #000000; color: #cccccc; }
 <li> Setting for displaying text of prayer in blind-friendly mode (only prayer text, without headings & rubrics) suitable for text-to-speech output.
 <li> New option in main screen: Ordinarium.
 <li> Fix of night-mode for Mary antiphones (compline).
+<li> Compatibility with Android 5.0 Lollipop.
 </ul>
 
 <p><b>News in v1.9.10:</b>
