@@ -112,10 +112,10 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Újdonságok az 1.10-es verzióban:</b>
 <ul>
-<li> Az imák egyszerűsített megjelenítése látássérütek számára (csak az imák szövege, címek és rubrikák nélkül). Felolvasó gépek használhatják.
+<li> Az imák egyszerűsített megjelenítése (csak az imák szövege, címek és rubrikák nélkül) látássérütek számára. Felolvasó gépek használhatják.
 <li> Új lehetőség a főoldalon: Általános rész.
 <li> A Mária antifónák éjszakai módjának javítása.
-<li> Kompatibilitás Android 5.0 Lollipop.
+<li> Android 5.0 (Lollipop) kompatibilitás.
 </ul>
 
 <p><b>Újdonságok az 1.9.10-es verzióban:</b>
