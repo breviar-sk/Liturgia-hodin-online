@@ -70,6 +70,14 @@ inline void EncodeWchar(int w, char** s) {
   }
 }
 
+// Safely append wchar at given position into a buffer
+inline void AppendWchar(int w, int buf_size, char* buf, int* index) {
+  if (buf_size - *index < 5) return;
+  char* s = buf + *index;
+  EncodeWchar(w, &s);
+  *index = s - buf;
+}
+
 int WcharToUppercase(int w);
 
 int RemoveDiacriticsFromWchar(int w);

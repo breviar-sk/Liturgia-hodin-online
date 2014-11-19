@@ -2396,15 +2396,15 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 		if(!isbuff){
 			if(vnutri_referencie == ANO){
 				// bez ohľadu na to, ako je nastavené write
-				refbuff[ref_index++] = (char)c;
+				AppendWchar(c, sizeof(refbuff), refbuff, &ref_index);
 			}
 			if(vnutri_katechezy == ANO){
 				// bez ohľadu na to, ako je nastavené write
-				katbuff[kat_index++] = (char)c;
+				AppendWchar(c, sizeof(katbuff), katbuff, &kat_index);
 			}
 			if(vnutri_z95 == ANO){
 				// bez ohľadu na to, ako je nastavené write
-				z95buff[z95_index++] = (char)c;
+				AppendWchar(c, sizeof(z95buff), z95buff, &z95_index);
 			}
 			if(write == ANO){
 				// 2011-05-02: nezlomiteľné medzery; v DetailLog logujeme 1:1 presne znak bez transformácie
@@ -2416,7 +2416,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 			}
 		}// if(!isbuff)
 		else{
-			strbuff[buff_index++] = (char)c;
+                        AppendWchar(c, sizeof(strbuff), strbuff, &buff_index);
 			// 2011-03-29: doplnená kontrola, či nejde o osamotený znak '{'
 			if(((isbuff == 1) && (strlen(strbuff) > MAX_BUFFER - 2)) || (buff_index > MAX_BUFFER - 2)){
 				Log("pravdepodobne osamotený znak '{'...\n");
