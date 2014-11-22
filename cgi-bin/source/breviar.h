@@ -3,24 +3,7 @@
 /* breviar.h                                                   */
 /* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
-/* description | obsahuje deklaracie globalnych premennych     */
-/*               a funkciu main() z dnes.cpp kde su definovane */
-/* document history                                            */
-/*   30/03/2000A.D. | premenovane dnes --> breviar             */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2003-07-01a.D. | void main je zakomentovane ak linux      */
-/*   2003-07-14a.D. | zmena void main -> int main (gcc v3.2.2 )*/
-/*   2003-08-07a.D. | pridane _global_opt 5                    */
-/*   2003-08-13a.D. | pridane _type a _global_modl pre posv.cit*/
-/*   2006-07-11a.D. | prvé kroky k jazykovým mutáciám          */
-/*   2006-08-18a.D. | zmena int na short int (stačí 32tis.)    */
-/*   2010-05-14a.D. | presunuté niektoré definy z breviar.cpp  */
-/*   2011-02-02a.D. | zadef. MIESTNE_SLAVENIE_CZOP_SVATY(i)    */
-/*   2011-03-07a.D. | zadef. MIESTNE_SLAVENIE_LOKAL_SVATY(i)   */
-/*   2011-03-18a.D. | zadef. PODMIENKA_EXPORTOVAT_KALENDAR     */
-/*   2011-03-30a.D. | zadef. prilep_request_options            */
-/*   2012-04-02a.D. | presunuté dôležité defines z breviar.cpp */
-/*                                                             */
+/* description | contains declarations of global variables     */
 /*                                                             */
 /***************************************************************/
 
@@ -159,9 +142,9 @@ extern _struct_lrok *_global_r_ptr;
 extern short int _global_pocet_svatych;
 
 // globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atď., obsahujú pom_MODL_OPT...
-extern short int _global_opt[POCET_GLOBAL_OPT];
+extern int _global_opt[POCET_GLOBAL_OPT];
 // globálna premenná -- pole -- obsahujúca force options; pôvodne to boli globálne premenné _global_optf 1..9 atď., obsahujú pom_MODL_OPTF...
-extern short int _global_optf[POCET_GLOBAL_OPT];
+extern int _global_optf[POCET_GLOBAL_OPT];
 
 // globalna premenna, co obsahuje string vypisany na obsazovku
 extern char *_global_string;

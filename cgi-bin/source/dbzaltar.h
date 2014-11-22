@@ -1,21 +1,12 @@
-/***************************************************************/
-/*                                                             */
-/* dbzaltar.h                                                  */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
-/*                                                             */
-/* description |                                               */
-/* document history                                            */
-/*   22/02/2000A.D. | created                                  */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2003-08-13a.D. | #define presunute sem z dbzaltar.cpp     */
-/*   2003-11-20a.D. | pridane ANCHOR_CITANIE 1 a 2             */
-/*   2006-01-24a.D. | pridane zaltar_zvazok()                  */
-/*   2006-08-18a.D. | zmena int na short int (stačí 32tis.)    */
-/*   2007-10-02a.D. | doplnený anchor ANCHOR_ANTIFONY          */
-/*   2007-11-14a.D. | doplnený anchor ANCHOR_NANEBOVSTUPENIE   */
-/*   2009-03-24a.D. | úpravy liturgického kalendára pre czop   */
-/*                                                             */
-/***************************************************************/
+/************************************************************/
+/*                                                          */
+/* dbzaltar.h                                               */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk          */
+/*                                                          */
+/* description | contains definitions for 'database'        */
+/*               of liturgical calendars                    */
+/*                                                          */
+/************************************************************/
 
 #include "vstudio.h"
 

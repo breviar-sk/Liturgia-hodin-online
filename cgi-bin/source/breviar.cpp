@@ -5,260 +5,35 @@
 /*                                                                         */
 /*                http://www.breviar.sk                                    */
 /*                                                                         */
-/* description | program tvoriaci stranky pre liturgiu hodin               */
-/* document history                                                        */
-/*   30/01/2000A.D. | trencin, modified                                    */
-/*   01/02/2000A.D. | bratislava, modified                                 */
-/*   18/02/2000A.D. | bratislava, modified                                 */
-/*   25/02/2000A.D. | bratislava, modified                                 */
-/*   30/03/2000A.D. | premenoval som dnes.cpp na breviar.cpp               */
-/*   06/09/2001A.D. | tento popis                                          */
-/*   2003-06-27a.D. | zacinam znova :))                                    */
-/*                  - nefunguju detaily pre spomienku pm v sob.            */
-/*                  - 2003-06-28: sv.Irenej; ma byt aj srdce pm            */
-/*   2003-06-30a.D. | Peto Santavy napisal mail o chybach                  */
-/*                  - prve vespery petra-pavla su zle v r.2003             */
-/*                    (2003-06-28): zmena v liturgicke_obdobie             */
-/*   2003-06-30a.D. | build (priliepa sa do hlavicky)                      */
-/*                    (vypisovanie BUILD_DATE, mybase.h)                   */
-/*   2003-07-01a.D. | opravene Detaily... pre Spom.PM v sobotu             */
-/*   2003-07-02a.D. | pridana LINK_DEN_MESIAC_ROK_PRESTUP                  */
-/*                    kvoli prestupnym rokom (_main_tabulka)               */
-/*                  - pridane HTML_ elementy (mydefs.h)                    */
-/*   2003-07-07a.D. | pridany batch mode (davkove spracovanie)             */
-/*   2003-07-08a.D. | pridany parameter (option) `a' (append)              */
-/*   2003-07-09a.D. | drobne zmeny kvoli HTML 4.01 Valid                   */
-/*                  - zmena & v linkach na HTML_AMPERSAND                  */
-/*   2003-07-14a.D. | zmena void main -> int main (gcc v3.2.2 )            */
-/*                  - <font size=-1></font> zmeneny na                     */
-/*                    <span class="small"></span>                          */
-/*   2003-07-15a.D. | rozne pokusy s modlitbou cez den                     */
-/*                  - pridane HTML_BUTTON_                                 */
-/*   2003-07-15a.D. | odstraneny #include "mybase.h"                       */
-/*   2003-07-16a.D. | este jedna zmena & na HTML_AMPERSAND                 */
-/*                  - zmena WWW_ na ADD_WWW_PREFIX_                        */
-/*                  - zmena exportovania uvodnej stranky                   */
-/*   2003-07-17a.D. | zmena helpu (vypis pri commandd-line                 */
-/*   2003-08-06a.D. | dalsie pokusy s modlitbou cez den                    */
-/*   2003-08-11a.D. | -Wall upozornila na vselico                          */
-/*   2003-08-11a.D. | Segmentation fault odhaleny-vid POUCENIE             */
-/*   2003-08-13a.D. | zmena "" na STR_EMPTY (mystring.h)                   */
-/*                  - odstranenie RUN_MODLITBA_CEZ_DEN                     */
-/*                  - odstranenie POKUS_24_02_2000                         */
-/*                  - male zmeny v includeFile()                           */
-/*                  - option5 dorobena aj do getForm()                     */
-/*   2003-08-21a.D. | interpretParameter() pre posv. citania               */
-/*   2003-10-07a.D. | chybali prosby pre 1. vespery nediel OCR             */
-/*                    dbzaltar.cpp::_SET_SPOLOCNE_VECI_NEDELA              */
-/*   2003-11-20a.D. | interpretParameter(): pre posv. citania              */
-/*                    pridane citanie1 a citanie2                          */
-/*   2004-03-11a.D. | pre batch mod export parametrov                      */
-/*   2004-03-16a.D. | pre batch mod export zoznamu ako HTML                */
-/*   2004-03-17a.D. | cesty sa citaju z konfigu (cfg_INCLUDE_DIR_default)  */
-/*   2005-03-21a.D. | novy typ exportu (1 den-1 riadok) pre LK             */
-/*   2005-03-22a.D. | uprava funkcie parseQueryString()                    */
-/*   2005-03-28a.D. | nova funkcia setForm(), uprava pre uncgi             */
-/*   2005-03-30a.D. | upravene getForm()                                   */
-/*   2005-05-24a.D. | opravena copy-paste chyba pre pom_ROK_TO             */
-/*   2005-07-22a.D. | pridaný popis aj pre posv.čítanie a mcd              */
-/*   2005-07-27a.D. | rozšírená štruktúra dm (lokalizácia slávení)         */
-/*   2005-08-15a.D. | upravená _main_zaltar(): STR_MODL_                   */
-/*                  - dorobený žaltár aj pre posvätné čítania              */
-/*                  - interpretParameter: nové PARAM_HYMNUS_34_OCR_INY_... */
-/*   2005-08-22a.D. | upravená _export_rozbor_dna() - všedné dni aj pre 11 */
-/*   2005-11-11a.D. | Doplnené: Te Deum posvätným čítaniam                 */
-/*   2006-01-20a.D. | Oprava: Už sa zobrazujú aj spomienky v pôste (ľ.s.)  */
-/*   2006-01-25a.D. | zmena default pre _global_opt 2 => LINK_ISO_8601     */
-/*   2006-01-28a.D. | upravený spôsob výpisu v includeFile()               */
-/*   2006-01-31a.D. | batch mód exportuje aj mcd (mna) a posv. čítanie     */
-/*   2006-02-02a.D. | vytvorená fcia _main_formular(),zobraz.pre každý deň */
-/*   2006-02-06a.D. | úprava v _rozbor_dna() kvôli nastav. _global_opt 3   */
-/*   2006-07-11a.D. | prvé kroky k jazykovým mutáciám                      */
-/*   2006-08-18a.D. | pokus: zmena mnohých int na short int (stačí 32tis.) */
-/*   2006-08-19a.D. | zavedený nedefinovaný define ZOBRAZ_JULIANSKY_DATUM  */
-/*   2006-08-19a.D. | doplnené liturgické farby                            */
-/*   2006-08-22a.D. | doplnená ružová liturgická farba                     */
-/*   2006-09-06a.D. | upratanie vo funkcii init_global_string (týž.ž.preNE)*/
-/*   2007-01-02a.D. | prvý zásah do kódu v r. 2007: DEBUG_2006_12_07       */
-/*   2007-01-08a.D. | opravené priradenie týždňa žaltára pre VIAN po 1.1.  */
-/*   2007-04-10a.D. | Te Deum je vo veľkonočnej oktáve; nie je počas pôstu */
-/*   2007-05-18a.D. | nezobrazovať Sláva Otcu pre Dan 3, 57-87. 56         */
-/*   2007-06-01a.D. | pridané OPT6 a OPT7 (pre zobrazenie mesiaca/roka)    */
-/*   2007-08-15a.D. | _export_rozbor_dna_kalendar(typ);                    */
-/*                  - premenovaný _main_formular()                         */
-/*   2007-08-16a.D. | oprava Segmentation fault _main_dnes() - chyba init. */
-/*   2007-09-13a.D. | BUTTON_SKRATKY_DALSIE_20070913 - skratky             */
-/*   2007-10-02a.D. | dokončenie zohľadnenia smerníc pre sviatky svätých   */
-/*                    (rozlíšenie slávností+sviatkov/ostatných slávení),   */
-/*                  - rovnaké antifóny mcd zobrazuje len prvú a poslednú   */
-/*   2007-10-23a.D. | dokončenie zohľadnenia smerníc pre sviatky svätých   */
-/*                    (krátke responzórium, prosby pre r.chvály/vešpery)   */
-/*   2007-11-27a.D. | oprava v interpretParameter(), hymnus 34.týždňa OCR  */
-/*   2007-11-28a.D. | odlišné správanie pre CZ hymny 34.týždňa OCR         */
-/*   2007-12-04a.D. | opravená podmienka pre zobrazovanie Sláva Otcu,      */
-/*                    pretože nefungovala pre iné modlitby ako r.chvály    */
-/*   2008-01-03a.D. | viacjazyčnosť pre text_DRUHA_NEDELA_PO_NAR_PANA[]    */
-/*   2008-01-05a.D. | viacjazyčnosť pre text_PO_POPOLCOVEJ_STREDE[]        */
-/*                  - a tiež text_V_OKTAVE_NARODENIA[]                     */
-/*                  - opravené prebytočné </span> v _global_string         */
-/*                  - dni po nar.pána pre m.cez deň dokončia 4.týždeň žalt.*/
-/*   2008-02-27a.D. | doplnené tlačidlá "ten istý mesiac pred rokom",      */
-/*                    "ten istý mesiac o rok" do _main_rozbor_dna()        */
-/*   2008-03-30a.D. | čiastočne doriešené kompletórium s 2 rovnakými ant.  */
-/*                    pre veľkonočné obdobie (úprava vn1.htm, komplet.htm) */
-/*   2008-04-03a.D. | kompletórium vo veľkonočnom období,                  */
-/*                    či pri druhej antifóne zobraziť dvojku alebo nie     */
-/*   2008-04-10a.D. | zmeny pre úpravy include_dir                         */
-/*                  - dopracovanie batch módu (všetky modlitby, aj pre cz) */
-/*   2008-07-18a.D. | pridaný sviatok (text_JUL_24)                        */
-/*   2008-08-08a.D. | pridaný parameter (option) `c' (css - vzhľad)        */
-/*   2008-08-15a.D. | doposlovenčená _main_analyza_roku()                  */
-/*   2008-08-15a.D. | prvý pokus "dominikánskej češtiny"                   */
-/*   2008-11-29a.D. | pridané rôzne možnosti batch exportu                 */
-/*   2008-12-20a.D. | úprava init_global_string() pre nedele niekt. období */
-/*                  - _export_rozbor_dna_buttons(): komplet.+nunk dimittis */
-/*   2009-01-05a.D. | úprava _export_rozbor_dna() pre všedné dni (poradie) */
-/*   2009-01-06a.D. | Te Deum je pre posv.čít. aj v oktáve narodenia Pána  */
-/*   2009-01-28a.D. | úprava includeFile()                                 */
-/*   2009-01-29a.D. | pridaný ďalší jazyk - maďarčina (hu) [prvé kroky]    */
-/*   2009-02-17a.D. | posv. čítanie (button) pre všetky jazykové mutácie   */
-/*   2009-04-02a.D. | 8.11.2008 na vešpery treba brať pre sviatok 9.11.    */
-/*   2009-04-08a.D. | zakončenie modlitby dynamicky (pre modlitbu cez deň a*/
-/*                    kompletórium sa používa kratšie zakončenie)          */
-/*                    ešte ostáva doriešiť niektoré prípady (v slovenčine) */
-/*   2009-05-22a.D. | hlavicka((char *)html_title[_global_jazyk]);         */
-/*                  - úprava v _main_dnes(): nový deň až po pol tretej     */
-/*   2009-08-02a.D. | prepínač _global_opt_batch_monthly pre batch mód,    */
-/*                    aby sa exportovali mesiace do samostatných adresárov */
-/*   2009-08-04a.D. | dokončený druhý spôsob výstupu pre mesačný batch mód */
-/*   2009-08-05a.D. | veľká úprava funkcie _main_batch_mode()              */
-/*   2009-08-05a.D. | prerobenie čítania jazyka (skopírované v main() ešte */
-/*                    na jedno vyššie miesto); už by sa <title> malo       */
-/*                    vypisovať pri generovaní ne-SK modlitieb správne     */
-/*                  - pri ukladaní Visual Studio solution odteraz Release  */
-/*   2009-08-12a.D. | snáď hotový export -M2 (akoby offline web)           */
-/*   2009-08-26a.D. | nový batch export -M3 (ako -M2, ale pre mobily)      */
-/*   2009-11-26a.D. | oprava pre body 4, 8, 11 [Miestne slávnosti, Miestne */
-/*                    sviatky, Miestne povinné spomienky]; pred touto      */
-/*                    úpravou bola kontrola (_global_svaty1.smer >= 11)    */
-/*   2009-12-14a.D. | zakončenie modlitby s malým písmenkom na začiatku    */
-/*   2010-02-15a.D. | upravené hlavičky aj pätky; kvôli tomu parsovanie    */
-/*                    parametra _global_modlitba predsunuté pred hlavicka()*/
-/*   2010-02-19a.D. | oprava funkcie velkonocna_nedela (špec. prípady pre  */
-/*                    Gaussovo pravidlo; čiastočne upozornil Peter Chren)  */
-/*   2010-05-14a.D. | presunuté niektoré definy do breviar.h               */
-/*   2010-05-24a.D. | upravený maďarský formát dátumu                      */
-/*   2010-06-04a.D. | zapracované zobrazovanie ant. po Sláva Otcu v inv.   */
-/*   2010-06-07a.D. | kvôli 5. pôstnej nedeli-SK doplnené ZAKONCENIE_ON_JE */
-/*   2010-07-28a.D. | začiatok pokusov pre dominikánov 8.8. ak padne na NE */
-/*   2010-08-03a.D. | do štruktúry "dm" pridaná premenná pre špecifikáciu, */
-/*                    o aký kalendár ide: všeobecný danej cirk. provincie  */
-/*                    alebo nejaký rehoľný a pod.                          */
-/*   2010-08-04a.D. | pridaná premenná _global_kalendar kvôli kalendárom   */
-/*                   (napr. rehoľný), súvisí s jazykovými mutáciami        */
-/*   2010-09-14a.D. | opravená podmienka pre export kalendára; ak nie je   */
-/*                    kalendár určený resp. je všeobecný pre daný jazyk,   */
-/*                    nie je potrebné ho exportovať                        */
-/*                  - pokus o dorobenie čítania pom_KALENDAR z formov      */
-/*   2010-09-28a.D. | doplnená podmienka v init_global_string() pre prípad */
-/*                    prvých vešpier napr. na sviatky pána (14.9.2008)     */
-/*   2010-10-06a.D. | snáď opravené to, že pre niektoré lokálne (czop)     */
-/*                    slávnosti [22.10. alebo 25.10.] ten zobrazený všedný */
-/*                    deň (svaty == 0) bol "prebitý" slávnosťou            */
-/*                  - snáď opravené aj to, že keď pripadne lokálna slávnosť*/
-/*                    na nedeľu (czop: 8.8.2010), tak fungujú obe možnosti */
-/*   2011-01-12a.D. | doplnené voliteľné zobrazovanie/skrývanie myšlienky  */
-/*                    (alternatívnej antifóny) pre žalmy/chválospevy       */
-/*   2011-01-14a.D. | SK doplnené ZAKONCENIE_KTORY_JE                      */
-/*   2011-01-26a.D. | zmeny dizajnu,                                       */
-/*                    pridanie VYPISOVAT_PREDCHADZAJUCI_NASLEDUJUCI_BUTTON */
-/*                  - dorobené force "opt_1" (_global_optf 1 )             */
-/*   2011-02-02a.D. | použité MIESTNE_SLAVENIE_CZOP_SVATY(i)               */
-/*   2011-02-02a.D. | dokončený liturgický kalendár pre SDB a SJ, úpravy   */
-/*   2011-02-02a.D. | začiatok PRM_TXT -- export LK pre RKC (Peťo Zimen)   */
-/*                  - ešte: 1. doladiť export &nbsp; a <p> HTML tagov      */
-/*                          2. nejako popracovať na "zlepení" pre 1 deň    */
-/*   2011-03-07a.D. | MIESTNE_SLAVENIE_CZOP_SVATY(i) použité aj pre iné    */
-/*                    lokálne slávenia ako MIESTNE_SLAVENIE_LOKAL_SVATY(i) */
-/*   2011-03-14a.D. | batch mód: nastavenie parametra o5 (_global_opt 5)   */
-/*                    pre modlitbu cez deň (bežná/doplnková psalmódia)     */
-/*   2011-03-16a.D. | liturgický kalendár pre OFM (začiatok)               */
-/*   2011-03-22a.D. | doplnenie možnosti explicitne žiadať o prvé vešpery  */
-/*                  - pridaná option 8 (práve pre prvé vešpery)            */
-/*   2011-03-23a.D. | možnosť force pre option 8 + pridanie do formulára   */
-/*                  - negenerovať vešpery pre soboty, ak je nastavené      */
-/*                    _global_opt 8 == ANO (aj pre offline export,         */
-/*                    hoci sa parameter o8 zatiaľ neexportuje)             */
-/*   2011-03-25a.D. | doplnenie možnosti predĺženej vigílie (option 9)     */
-/*                  - možnosť force pre option 9 + pridanie do formulára   */
-/*   2011-03-29a.D. | vysporiadanie sa so situáciou, keď include súbor     */
-/*                    obsahuje zablúdený znak '{' mimo regulérnej kotvy    */
-/*   2011-03-30a.D. | použitie prilep_request_options na 6-tich rovnakých  */
-/*                    miestach (prilepovanie parametrov do query stringu)  */
-/*   2011-04-05a.D. | rozšírenie exportu (číslovanie veršov, hypertextový  */
-/*                    odkaz na dkc.kbs.sk)                                 */
-/*   2011-04-06a.D. | nastavenie antifón z doplnkovej psalmódie: funkcia   */
-/*                    _set_antifony_mcd_doplnkova_psalmodia(void)          */
-/*   2011-04-07a.D. | po dlhom boji prerobené options a force options      */
-/*                    parametre na polia;                                  */
-/*                    zjednotené local_str[SMALL] (predtým bolo MAX_STR)   */
-/*                    (dúfam, že toto skrátenie v 3 funkciách nebude vadiť)*/
-/*   2011-04-08a.D. | úprava významu (a interpretácie) option 0            */
-/*   2011-04-11a.D. | úprava významu (a interpretácie) option 1;           */
-/*                    rozdelenie na jednotlivé bit-komponenty              */
-/*                  - ešte: -- option 3 zahrnúť ako bit do option 1;       */
-/*                          -- option 0 rozbiť tiež na bitové komponenty   */
-/*   2011-04-12a.D. | _global_opt 5 je jedným z bitov _global_opt 1        */
-/*                  - tlačidlo "Detaily" netreba, ZOBRAZ_BUTTON_DETAILY    */
-/*   2011-04-13a.D. | úprava konfiguračného súboru, dokončenie zlúčenia    */
-/*                    options, rozdelenie force options na bit-komponenty  */
-/*                  - v exporte zrušené \n v sekvencii <br/>\n (kvôli IE) */
-/*                  - úprava vo funkcii stuffenv()                         */
-/*   2011-04-20a.D. | zobrazenie _global_opt 2 vo formulári, načítanie     */
-/*   2011-04-29a.D. | doplnené Sláva Otcu "špeciálne" kvôli chválospevu    */
-/*                    Dan 3, 57-88. 56, kde nie je "Sláva Otcu" (pôvodne   */
-/*                    to bolo dané poradím, ale templáty pre rôzne jazyky  */
-/*                    majú rozličné poradie tohto "Sláva Otcu")            */
-/*   2011-05-02a.D. | znak '_' používame ako zástupný pre nezlomiteľnú     */
-/*                    medzeru (exportuje sa ako &nbsp;) v include súboroch */
-/*   2011-05-03a.D. | vianočná oktáva: má modlitbu kompletória pre slávnosť*/
-/*                  - opravené: nezobrazovať referencie v myšlienke        */
-/*                    k žalmu, ak sa táto nezobrazuje                      */
-/*                  - pridané preskočenie veľkej časti šablóny pre posv.   */
-/*                    čítanie na veľkonočnú nedeľu                         */
-/*   2011-05-05a.D. | vyčistenie CSS, možnosť serif/sans-serif font-family */
-/*   2011-05-06a.D. | špeciálna úprava pri nastavovaní _global_opt[] resp. */
-/*                    _global_optf[]: zohľadnenie defaultu z config súboru */
-/*                    pre 4. bit (BIT_OPT_2_FONT_NAME_CHOOSER)             */
-/*                  - ToDo: urobiť krajšie defaultné nastavenie: nastaviť  */
-/*                    podľa toho, čo je v config (konfiguračnom súbore);   */
-/*                    zatiaľ to tam nie je                                 */
-/*   2011-05-13a.D. | doplnenie font size                                  */
-/*   2011-05-24a.D. | pridaný "inverzný" štýl pre mobilné zariadenia       */
-/*                    (čierne pozadie, biely text)                         */
-/*   2011-07-01a.D. | prvý krok k zapracovaniu navigácie do modlitieb      */
-/*   2011-07-03a.D. | navigácia zapracovaná                                */
-/*                    ToDo: doriešiť 4. júla; vešpery berú deň 5. júla     */
-/*                    ešte: predsunúť čítanie parametrov niekam vyššie do spoločnej časti; pre "lit. obd." sa tam dáva 1.1.1900 (neurčený _global_den)... */
-/*   2011-09-01a.D. | zapracovanie odkazov na katechézy ako referencie     */
-/*   2011-09-06a.D. | použitie prepínača BIT_OPT_1_INE_ZALMY pre žalm 95 namiesto 24, 67, 100 */
-/*   2011-09-26a.D. | použitie prepínača BIT_OPT_1_ZALM95 pre žalm 95 namiesto 24, 67, 100 */
-/*   2012-08-23a.D. | funkcia _export_rozbor_dna_zoznam() a spol.          */
-/*   2014-09-22a.D. | most of description available in Git log             */
+/* description | master source code containing main() :-)                  */
+/*             | most of description available in comments and Git log     */
 /*                                                                         */
+/* notes |  how to compile & link & build                                  */
+/*          -- do not forget to update #define BUILD_DATE in mydefs.h      */
 /*                                                                         */
-/* poznámky |                                                              */
-/*   * ako kompilovat a linkovat?                                          */
-/*     najdi zarazku KOMPILACIA -- niekde ku koncu                         */
-/*     pozri tiez POUCENIE                                                 */
+/* DOS & Windows: Project (Solution) for MS Visual Studio contains all     */
+/* .cpp and .h files                                                       */
 /*                                                                         */
-/*   * unfinished parts: označené ToDo resp. [ToDo]                        */
+/* linux & other platforms: file `urob' (plays function of makefile)       */
+/* ------------------------(begin of file `urob')
+date
+chmod u=rwx *.*
+g++ -Wall -W breviar.cpp dbzaltar.cpp liturgia.cpp mygetopt.cpp mylog.cpp myhpage.cpp myexpt.cpp cgiutils.cpp myconf.cpp mydefs.cpp mystring.cpp citania.cpp utf8-utils.cpp
+mv a.out l.cgi
+chmod u=rw *.cpp
+chmod u=rw *.h
+chmod oa+x *.cgi
+gzip -c -v l.cgi > l.cgi.gz
+date
+ * ------------------------(end of file `urob')                           */
 /*                                                                         */
-/*   * debug in VC++/VStudio: alt+f7, zalozka Debug, Program arguments     */
+/*   * unfinished parts: marked by ToDo or [ToDo]                          */
+/*                                                                         */
+/*   * debug in VC++/VStudio: Alt+F7 > Debug > Program arguments           */
 /*   * debug in Visual Studio: Alt+F7, or, in solution explorer,           */
 /*     right click on your project and choose "properties" from the        */
 /*     drop down menu.                                                     */
-/*     then, go to: Configuration Properties->Debugging                    */
+/*     then, go to: Configuration Properties > Debugging                   */
 /*     You can pass command line arguments in on the line that says        */
 /*     Command Arguments                                                   */
 /*                                                                         */
@@ -471,16 +246,16 @@ short int _global_system;
 short int _global_pocet_svatych;
 
 // globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atď., obsahujú pom_MODL_OPT...
-short int _global_opt[POCET_GLOBAL_OPT];
+int _global_opt[POCET_GLOBAL_OPT];
 // globálna premenná -- pole -- obsahujúca force options; pôvodne to boli globálne premenné _global_optf 1..9 atď., obsahujú pom_MODL_OPTF...
-short int _global_optf[POCET_GLOBAL_OPT];
+int _global_optf[POCET_GLOBAL_OPT];
 
 // globálne premenné -- polia -- obsahujúce jednotlivé bity pre force option 0, 1, 2, 4, 5
-short int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
-short int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];      
-short int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
-short int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
-short int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
+int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
+int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];      
+int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
+int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
+int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 
 // pridane 2003-07-08, append parameter
 short int _global_opt_append = NIE;
@@ -1139,6 +914,7 @@ short int setForm(void){
 				case 12: strcat(local_str, STR_MODL_OPTF_2_HIDE_OPTIONS1); break; // BIT_OPT_2_HIDE_OPTIONS1
 				case 13: strcat(local_str, STR_MODL_OPTF_2_HIDE_OPTIONS2); break; // BIT_OPT_2_HIDE_OPTIONS2
 				case 14: strcat(local_str, STR_MODL_OPTF_2_ALTERNATIVES); break; // BIT_OPT_2_ALTERNATIVES
+				case 15: strcat(local_str, STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR); break; // BIT_OPT_2_SHOW_DEFAULT_CALENDAR
 			}// switch(i)
 			strcat(local_str, "=");
 			strcat(local_str, pom_MODL_OPTF_HTML_EXPORT[i]);
@@ -1336,7 +1112,7 @@ void _export_heading_center(const char *string){
 
 // 2012-10-03: vytvorené; funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
 // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
-void _export_link_show_hide(short int opt, short int bit, char popis_show[SMALL], char popis_hide[SMALL], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL]){
+void _export_link_show_hide(short int opt, int bit_opt, char popis_show[SMALL], char popis_hide[SMALL], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL]){
 	char pom[MAX_STR] = STR_EMPTY;
 	char pom2[MAX_STR];
 	mystrcpy(pom2, STR_EMPTY, MAX_STR);
@@ -1345,18 +1121,18 @@ void _export_link_show_hide(short int opt, short int bit, char popis_show[SMALL]
 
 	prilep_request_options(pom2, pom3);
 
-	short int _global_opt_orig;
+	int _global_opt_orig;
 
 	// najprv upravíme o_opt
 	_global_opt_orig = _global_opt[opt]; // backup pôvodnej hodnoty
 	// nastavenie parametra o_opt: pridáme bit pre nastavenie
-	if((_global_opt[opt] & bit) != bit){
-		Log("Pre option %d nastavujem bit pre '%d'\n", opt, bit);
-		_global_opt[opt] += bit;
+	if((_global_opt[opt] & bit_opt) != bit_opt){
+		Log("Pre option %d nastavujem bit pre '%d'\n", opt, bit_opt);
+		_global_opt[opt] += bit_opt;
 	}// zmena: použitie nastavenia
 	else{
-		Log("Pre option %d ruším bit pre '%d'\n", opt, bit);
-		_global_opt[opt] -= bit;
+		Log("Pre option %d ruším bit pre '%d'\n", opt, bit_opt);
+		_global_opt[opt] -= bit_opt;
 	}// zmena: zrušenie nastavenia
 
 	// prilepenie poradia svätca
@@ -1424,7 +1200,7 @@ void _export_link_show_hide(short int opt, short int bit, char popis_show[SMALL]
 		Export("<%s>\n", html_tag_begin);
 	}
 	Export("<a href=\"%s\" %s>", pom, html_class);
-	Export("(%s)", ((_global_opt[opt] & bit) != bit)? popis_show: popis_hide); // podmienka je opačne ako intuitívne kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov
+	Export("(%s)", ((_global_opt[opt] & bit_opt) != bit_opt)? popis_show: popis_hide); // podmienka je opačne ako intuitívne kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov
 	Export("</a>");
 	if(!equals(html_tag_end, STR_EMPTY)){
 		Export("%s\n", html_tag_end);
@@ -1581,7 +1357,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 	// nasledovné sú potrebné pre hyperlink v texte modlitby s prípadne upravenými parametrami
 #ifdef BEHAVIOUR_WEB
-	short int _global_opt_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
+	int _global_opt_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
 #endif
 
 	char pom[MAX_STR];
@@ -2519,7 +2295,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	mystrcpy(path, include_dir, MAX_STR);
 	// 2004-03-17 // strcat(path, FILE_PATH); // prerobene 05/06/2000A.D.
 	// short int _local_skip_in_prayer = _global_skip_in_prayer; // 2011-04-07: zapamätáme si pôvodný stav
-	// short int _global_opt_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
 
 	short int zobrazit = NIE;
 	_struct_sc sc;
@@ -6254,7 +6029,10 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	// 2010-10-11: pôvodne tu bola len lokalizácia slavenia; pridali sme k tomu aj prípadnú poznámku o lokálnom kalendári 
 	// 2011-02-02: odvetvené len pre exporty iné ako EXPORT_DNA_VIAC_DNI_TXT
 	if(typ != EXPORT_DNA_VIAC_DNI_TXT){
-		mystrcpy(popisok_kalendar, nazov_kalendara_long[_local_den.kalendar], MAX_STR);
+		// condition to display calendar info in prayer subtitle: either condition PODMIENKA_EXPORTOVAT_KALENDAR holds (and calendar is not default national calendar) or explicitly requested
+		if(((PODMIENKA_EXPORTOVAT_KALENDAR) && (_local_den.kalendar != default_kalendar[_global_jazyk])) || ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_SHOW_DEFAULT_CALENDAR) == BIT_OPT_2_SHOW_DEFAULT_CALENDAR)){
+			mystrcpy(popisok_kalendar, nazov_kalendara_long[_local_den.kalendar], MAX_STR);
+		}// otherwise empty
 		mystrcpy(popisok_lokal, STR_EMPTY, MAX_STR);
 		// teraz lokalizácia slavenia resp. poznámku o lokálnom kalendári, 2005-07-27: pridané; 2010-10-11: rozšírené
 		if(_local_den.typslav_lokal != LOKAL_SLAV_NEURCENE) {
@@ -6587,7 +6365,7 @@ void xml_export_options(void){
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){
 		switch(i){
 			case OPT_0_SPECIALNE:
-				Export(ELEMVAL_BEGIN(XML_OPT_0_SPECIALNE)"\n", _global_opt[OPT_0_SPECIALNE], STR_MODL_OPT_0, STR_MODL_OPTF_0, html_text_option1_kalendar[_global_jazyk]);
+				Export(ELEMVAL_BEGIN(XML_OPT_0_SPECIALNE)"\n", _global_opt[OPT_0_SPECIALNE], STR_MODL_OPT_0, STR_MODL_OPTF_0, html_text_option0_kalendar[_global_jazyk]);
 				Log("option %d, jednotlivé bit-komponenty...(xml_export_options)\n", OPT_0_SPECIALNE);
 				for(j = 0; j < POCET_OPT_0_SPECIALNE; j++){
 					switch(j){
@@ -6725,6 +6503,9 @@ void xml_export_options(void){
 							break;
 						case 14: // BIT_OPT_2_ALTERNATIVES
 							Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_ALTERNATIVES)"%d"ELEM_END(XML_BIT_OPT_2_ALTERNATIVES)"\n", BIT_OPT_2_ALTERNATIVES, STR_MODL_OPTF_2_ALTERNATIVES, html_text_option2_alternatives[_global_jazyk], ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ALTERNATIVES) == BIT_OPT_2_ALTERNATIVES));
+							break;
+						case 15: // BIT_OPT_2_SHOW_DEFAULT_CALENDAR
+							Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR)"%d"ELEM_END(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR)"\n", BIT_OPT_2_SHOW_DEFAULT_CALENDAR, STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR, html_text_option2_show_defalut_calendar[_global_jazyk], ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_SHOW_DEFAULT_CALENDAR) == BIT_OPT_2_SHOW_DEFAULT_CALENDAR));
 							break;
 					}// switch(j)
 				}// for j
@@ -8193,7 +7974,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 	short int _orig_mesiac = _global_den.mesiac;
 	short int _orig_rok = _global_den.rok;
 
-	short int _global_opt_orig;
+	int _global_opt_orig;
 
 	_struct_den_mesiac datum;
 
@@ -8846,7 +8627,7 @@ void _export_rozbor_dna_kalendar_orig(short int typ){
 }// _export_rozbor_dna_kalendar_orig()
 
 // 2013-11-28: vytvorené
-void _export_main_formular_checkbox(short int opt, short int bit_opt, const char * str_modl_optf, const char * html_text_opt_description, const char * html_text_opt_description_explain, short int line_break_before = ANO){
+void _export_main_formular_checkbox(short int opt, int bit_opt, const char * str_modl_optf, const char * html_text_opt_description, const char * html_text_opt_description_explain, short int line_break_before = ANO){
 	Log("_export_main_formular_checkbox(%d, %d, %s, %s, %s) -- begin...\n", opt, bit_opt, str_modl_optf, html_text_opt_description, html_text_opt_description_explain);
 	char html_label[MAX_STR];
 	mystrcpy(html_label, html_text_opt_description, MAX_STR);
@@ -8867,7 +8648,7 @@ void _export_main_formular_checkbox(short int opt, short int bit_opt, const char
 	Log("_export_main_formular_checkbox(%d, %d, %s, %s, %s) -- end.\n", opt, bit_opt, str_modl_optf, html_text_opt_description, html_text_opt_description_explain);
 }// _export_main_formular_checkbox()
 
-void _export_main_formular_checkbox_slash(short int opt, short int bit_opt, const char * str_modl_optf, const char * html_text_opt_description1, const char * html_text_opt_description2, short int line_break_before = ANO){
+void _export_main_formular_checkbox_slash(short int opt, int bit_opt, const char * str_modl_optf, const char * html_text_opt_description1, const char * html_text_opt_description2, short int line_break_before = ANO){
 	Log("_export_main_formular_checkbox(%d, %d, %s, %s / %s) -- begin...\n", opt, bit_opt, str_modl_optf, html_text_opt_description1, html_text_opt_description2);
 	char html_label[MAX_STR];
 	sprintf(html_label, "%s%s%s", html_text_opt_description1, HTML_LINE_BREAK_SPACE_LOONG, html_text_opt_description2);
@@ -9476,7 +9257,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// formular pre options...
 
 		// option 0: bity ovplyvňujúce liturgický kalendár (používame force opt_0)...
-		Export("<"HTML_SPAN_BOLD_TOOLTIP">%s"HTML_SPAN_END, html_text_option1_kalendar_explain[_global_jazyk], html_text_option1_kalendar[_global_jazyk]);
+		Export("<"HTML_SPAN_BOLD_TOOLTIP">%s"HTML_SPAN_END, html_text_option0_kalendar_explain[_global_jazyk], html_text_option0_kalendar[_global_jazyk]);
 
 		// pole (checkbox) WWW_/STR_MODL_OPTF_0_VERSE
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA, STR_MODL_OPTF_0_ZJAV_NED, html_text_option0_zjv_ne[_global_jazyk], html_text_option0_zjv_ne_explain[_global_jazyk]);
@@ -9486,6 +9267,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		// pole (checkbox) WWW_/STR_MODL_OPTF_0_VERSE
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TELAKRVI_NEDELA, STR_MODL_OPTF_0_TK_NED, html_text_option0_tk_ne[_global_jazyk], html_text_option0_tk_ne_explain[_global_jazyk]);
+
+		// pole (checkbox) WWW_/STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_SHOW_DEFAULT_CALENDAR, STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR, html_text_option2_show_defalut_calendar[_global_jazyk], html_text_option2_show_defalut_calendar_explain[_global_jazyk]);
 
 		Export("</td></tr>\n");
 
@@ -9966,7 +9750,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	char parameter_I[SMALL] = STR_EMPTY;
 	char poradie_svateho[SMALL] = STR_EMPTY; // pre export_monthly_druh >= 1
 	char _local_export_navig_hore[SMALL] = STR_EMPTY;
-	short int _global_opt_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
+	int _global_opt_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
 	char export_doplnkova_psalmodia[SMALL] = STR_EMPTY; // reťazec pre alternatívny súbor modlitby cez deň obsahujúci doplnkovú psalmódiu
 	char pom[SMALL] = STR_EMPTY; // pomocný reťazec (priliepanie parametrov do export_dalsie_parametre)
 	char export_dalsie_parametre[SMALL] = STR_EMPTY; // reťazec pre kalendár (export_kalendar); 2011-11-30: pridaný do toho istého reťazca aj font
@@ -10479,7 +10263,7 @@ void _export_rozbor_dna_interpretuj_zoznam(short int export_typ, short int typ, 
 	short int poradie_svaty;
 	short int zobrazit_mcd = ANO;
 	short int pocet = zoznam[0];
-	short int _global_opt_orig; // pre o4
+	int _global_opt_orig; // pre o4
 
 	Log("_export_rozbor_dna_interpretuj_zoznam(): začiatok (pocet == %d)...\n", pocet);
 
@@ -10599,7 +10383,8 @@ if (!((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BUTTONS_ORDER) == BIT_OPT_0_BUTT
 		// 2007-06-01: Zmenené - namiesto _global_opt 2 sa kontroluje nová _global_opt 7.
 		if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ISO_DATUM) == BIT_OPT_2_ISO_DATUM){
 			i = LINK_ISO_8601;
-		}else{
+		}
+		else{
 			i = LINK_DEN;
 		}
 		mystrcpy(pom1, "<"HTML_SPAN_BOLD">", SMALL);
@@ -11641,8 +11426,8 @@ void showAllPrayers(short int den, short int mesiac, short int rok, short int po
 	_struct_den_mesiac datum;
 	datum.den = den;
 	datum.mesiac = mesiac;
-	short int opt_3 = _global_opt[OPT_3_SPOLOCNA_CAST];
-	static short int opt_1 = _global_opt[OPT_1_CASTI_MODLITBY]; // backup pôvodnej hodnoty; parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
+	short int opt_3 = _global_opt[OPT_3_SPOLOCNA_CAST]; // can be short due to OPT_3_SPOLOCNA_CAST does not contain bitwise options
+	static int opt_1 = _global_opt[OPT_1_CASTI_MODLITBY]; // backup pôvodnej hodnoty; parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
 	short int modlitba_max = MODL_KOMPLETORIUM; // až po ktorú modlitbu zobraziť
 
 	Log("showAllPrayers(%d, %s, %d, %d) -- začiatok...\n", den, nazov_mesiaca(mesiac - 1), rok, poradie_svaty);
@@ -11842,10 +11627,10 @@ void log_pom_MODL_OPTF(void){
 	}
 }// log_pom_MODL_OPTF()
 
-void _rozparsuj_parametre_OPT_force(short int option_opt, char pom_MODL_OPTF_opt[MAX_POCET_OPT][SMALL], short int _global_option_opt[MAX_POCET_OPT]){
+void _rozparsuj_parametre_OPT_force(int option_opt, char pom_MODL_OPTF_opt[MAX_POCET_OPT][SMALL], int _global_option_opt[MAX_POCET_OPT]){
 	short int i;
 	short int aspon_jedna_nenulova;
-	short int bit_value;
+	int bit_value;
 	Log("_rozparsuj_parametre_OPT_force() -- začiatok...\n");
 	// option_opt force j (0, 1, 2, 4, 5)
 	// option_opt force j -- jednotlivé komponenty
@@ -11887,7 +11672,8 @@ void _rozparsuj_parametre_OPT_force(short int option_opt, char pom_MODL_OPTF_opt
 // 2013-03-07: pre force 0, 1, 2, 4, 5 použitá funkcia _rozparsuj_parametre_OPT_force()
 void _rozparsuj_parametre_OPT(void){
 	// rozparsovanie option parametrov
-	short int i, opt_2_fn /* font name chooser */, opt_2_fs /* font size chooser */;
+	short int i;
+	int opt_2_fn /* font name chooser */, opt_2_fs /* font size chooser */;
 
 	Log("_rozparsuj_parametre_OPT() -- začiatok...\n");
 
@@ -13361,7 +13147,7 @@ void _main_analyza_roku(char *rok){
 	Export("<"HTML_SPAN_BOLD_IT">");
 	Export((char *)html_text_kalendar[_global_jazyk]);
 	Export(":"HTML_SPAN_END"\n");
-	Export((char *)nazov_kalendara(_global_kalendar));
+	Export((char *)nazov_kalendara(_global_kalendar)); // always display; regardless to condition PODMIENKA_EXPORTOVAT_KALENDAR
 	Export(HTML_LINE_BREAK);
 
 	vytvor_global_link(VSETKY_DNI, VSETKY_MESIACE, year, LINK_DEN_MESIAC_ROK, NIE);
@@ -13863,7 +13649,7 @@ void _main_batch_mode(
 					// 2010-12-03: opravené, nakoľko na niektorých mobilných zariadeniach JavaScript funkcie 
 					if(_global_opt_batch_monthly == ANO){
 						fprintf(batch_html_file, "<center><h1>%s</h1></center>\n", (char *)html_text_batch_mode_h1[_global_jazyk]);
-						if((_global_jazyk == JAZYK_SK) && ((_global_kalendar != KALENDAR_NEURCENY) && (_global_kalendar != KALENDAR_VSEOBECNY) && (_global_kalendar != KALENDAR_VSEOBECNY_SK))){
+						if(PODMIENKA_EXPORTOVAT_KALENDAR){
 							fprintf(batch_html_file, "<p "HTML_ALIGN_CENTER">%s: \n", (char *)html_text_Kalendar[_global_jazyk]);
 							fprintf(batch_html_file, "<"HTML_SPAN_RED">%s"HTML_SPAN_END"\n", (char *)nazov_kalendara_long[_global_kalendar]);
 							fprintf(batch_html_file, "</p>\n");
@@ -14691,9 +14477,7 @@ short int getQueryTypeFrom_WWW(void){
 short int getArgv(int argc, char **argv){
 	short int c;
 	optind = 0; // pokial tu toto nebolo, tak getopt sa neinicializovala pri dalsich volaniach
-	// short int digit_optind = 0;
 	char *option_string;
-	// short int this_option_optind;
 	char pom_name_binary_executable[MAX_STR] = STR_EMPTY; // 2009-08-02: doplnené pre prilepenie ..\ pred názov name_binary_executable
 	char pom_include_dir[MAX_STR] = STR_EMPTY; // 2009-08-02: doplnené pre prilepenie ..\ pred názov include_dir
 
@@ -15259,6 +15043,7 @@ short int getForm(void){
 			case 12: strcat(local_str, STR_MODL_OPTF_2_HIDE_OPTIONS1); break; // BIT_OPT_2_HIDE_OPTIONS1
 			case 13: strcat(local_str, STR_MODL_OPTF_2_HIDE_OPTIONS2); break; // BIT_OPT_2_HIDE_OPTIONS2
 			case 14: strcat(local_str, STR_MODL_OPTF_2_ALTERNATIVES); break; // BIT_OPT_2_ALTERNATIVES
+			case 15: strcat(local_str, STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR); break; // BIT_OPT_2_SHOW_DEFAULT_CALENDAR
 		}// switch(i)
 		ptr = getenv(local_str);
 		if(ptr != NULL){
@@ -16131,6 +15916,7 @@ short int parseQueryString(void){
 			case 12: strcat(local_str, STR_MODL_OPTF_2_HIDE_OPTIONS1); break; // BIT_OPT_2_HIDE_OPTIONS1
 			case 13: strcat(local_str, STR_MODL_OPTF_2_HIDE_OPTIONS2); break; // BIT_OPT_2_HIDE_OPTIONS2
 			case 14: strcat(local_str, STR_MODL_OPTF_2_ALTERNATIVES); break; // BIT_OPT_2_ALTERNATIVES
+			case 15: strcat(local_str, STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR); break; // BIT_OPT_2_SHOW_DEFAULT_CALENDAR
 		}// switch(j)
 		// premenná WWW_MODL_OPT_2_... (nepovinná), j = 0 až POCET_OPT_2_HTML_EXPORT
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
@@ -16760,48 +16546,7 @@ END_parseQueryString:
 	return ret;
 }// parseQueryString();
 
-// KOMPILACIA -- idiotuv pruvodce kompilovanim tohoto gigantu
-
-// nezabudni zmenit #define BUILD_DATE v mydefs.h! (2003-07-15)
-
-// 17/02/2000A.D.: Segmentation fault pod linuxom;
-// 18/02/2000A.D.:
-// preto som prerobil _global_... (typov _struct...) na ..._ptr,
-// ktore sa alokuju dynamicky a povodne mena su urobene ako symbolicke mena
-// vsetko je to deklarovane v liturgia.h a definovane tu, v dnes.cpp
-// 30/03/2000A.D.: pridane myconf.cpp a mydefs.cpp, premenovane dnes.cpp --> breviar.cpp
-// 31/03/2000A.D.: pridane mystring.cpp (kvoli buffer overflow na webe)
-// 2013-03-11: the following instructions are obsolete; see mysystem.h!!!
-// teraz sa kompiluje a linkuje takto:
-// DOS: Project --> obsahuje liturgia.cpp, dnes.cpp
-// linux: file `urob'
-/* ------------------------(begin of file `urob')
-	chmod u=rwx *.*
-	make
-	cp uncgi uncgi.cgi
-	g++ breviar.cpp dbzaltar.cpp liturgia.cpp mygetopt.cpp mylog.cpp myhpage.cpp myexpt.cpp cgiutils.cpp myconf.cpp mydefs.cpp mystring.cpp
-	mv a.out l.cgi
-	chmod u=rw *.c
-	chmod u=rw *.cpp
-	chmod u=rw *.h
-	chmod oa+x *.cgi
- * ------------------------(end of file `urob')
- */
-// 21/02/2000A.D.: vsetky inkludy, ktore su .h a .c[pp], som prerobil tak, aby sa inkludovali .h, kde su premenne iba (extern) deklarovane
 // 2003-08-11: pouzil som pre g++ option -Wall, ktora pomohla odhalit niektore warningy
-
-// POUCENIE
-// z hladania Segmentation fault (segfault), 2003-08-11
-// Dovod segfaultu
-// -- bol ako obycajne v blbosti: int sa vypisovalo pomocou Export("...%s...");
-// Priciny neodhalenia
-// -- nespustal som linux-verziu pre Windows (parameter "-l1", ci vytvarat linky)
-// Poucenie
-// -- aj pod Windows kompilovat/spustat s option presne ako bezi na linuxe
-// -- pozor na preklepy
-// Zaver
-// -- hlavne, ze uz je to za nami :)) duurko, 2003-08-11
-// -- O.A.M.D.G.
 
 //---------------------------------------------------------------------
 // main();
@@ -16832,15 +16577,18 @@ short int counter_setConfigDefaults = 0;
 
 // 2011-04-13: vytvorené kvôli tomu, že config súbor nemusí obsahovať hodnoty pre všetky options
 void setConfigDefaults(short int jazyk){
-	short int sk_default, i;
+	int sk_default;
+	short int i;
 	counter_setConfigDefaults++;
 	Log("setConfigDefaults(%d) -- začiatok (%d. volanie)...\n", jazyk, counter_setConfigDefaults);
 	// 2011-04-13: ak sú niektoré options GLOBAL_OPTION_NULL, je potrebné ich na niečo nastaviť
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){
-		if(jazyk != JAZYK_SK)
+		if(jazyk != JAZYK_SK){
 			sk_default = cfg_option_default[i][JAZYK_SK];
-		else
+		}
+		else{
 			sk_default = GLOBAL_OPTION_NULL;
+		}
 		if(cfg_option_default[i][jazyk] == GLOBAL_OPTION_NULL){
 			cfg_option_default[i][jazyk] = (sk_default == GLOBAL_OPTION_NULL)? cfg_option_default_PROG[i]: sk_default;
 			Log("keďže cfg_option_default[%d][%d] bolo GLOBAL_OPTION_NULL, nastavujem podľa program defaults na %d...\n", i, jazyk, cfg_option_default[i][jazyk]);
@@ -16864,6 +16612,8 @@ int breviar_main(int argc, char **argv){
 	// je potrebne inicializovat globalne premenne pri kazdom pusteni jej behu
 	// 2009-08-05: prerobenie čítania jazyka (skopírované ešte na jedno vyššie miesto); už by sa <title> malo vypisovať pri generovaní inojazyčných modlitieb správne
 	myhpage_init_globals();
+
+	memset(_global_opt, 0, sizeof(_global_opt));
 	_global_opt[OPT_0_SPECIALNE] = GLOBAL_OPTION_NULL;
 	_global_opt[OPT_1_CASTI_MODLITBY] = GLOBAL_OPTION_NULL;
 	_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;

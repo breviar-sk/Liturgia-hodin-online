@@ -1,22 +1,12 @@
-/***********************************************************************/
-/*                                                                     */
-/* myexpt.cpp                                                          */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk                     */
-/*                                                                     */
-/* description | obsahuje exportne rutinky na export                   */
-/*               do suboru FILE_EXPORT alebo stdout                    */
-/* document history                                                    */
-/*   14/11/1999A.D. | created                                          */
-/*   10/02/2000A.D. | zmenena definicia FILE_EXPORT                    */
-/*   24/02/2000A.D. | zmenil som if defined: povodne tam bolo          */
-/*                    DEBUG, teraz EXPORT_TO_FILE,                     */
-/*                    pridal som EXPORT_TO_STDOUT                      */
-/*   06/09/2001A.D. | tento popis                                      */
-/*   2003-07-08a.D. | pridany append pre export (podla switchu)        */
-/*   2003-07-15a.D. | odstraneny #include "mybase.h"                   */
-/*   2011-05-18a.D. | odstránené ExpL2HTML(), pridané Export_to_file() */
-/*                                                                     */
-/***********************************************************************/
+/**************************************************************/
+/*                                                            */
+/* myexpt.cpp                                                 */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk            */
+/*                                                            */
+/* description | export routines for exporting HTML pages     */
+/*               to file FILE_EXPORT or to stdout             */
+/*                                                            */
+/**************************************************************/
 
 #include "vstudio.h"
 

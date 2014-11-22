@@ -1,29 +1,12 @@
-/***************************************************************/
-/*                                                             */
-/* liturgia.cpp                                                */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
-/*                                                             */
-/* description | obsahuje zakladne vecicky pre liturgiu hodin  */
-/* document history                                            */
-/*   18/10/1999A.D. | created                                  */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2003-08-07a.D. | pridana void _init_dm co nastavi dummy   */
-/*                  - pouzite v _allocate_global_var           */
-/*   2003-08-11a.D. | void _init_dm zapoznamkovana             */
-/*                  - inicializovane stringy;zmena na mystrcpy */
-/*                  - (char) konverzie z int explicitne        */
-/*   2003-08-13a.D. | pridane logy pre modlitbu cez den        */
-/*                  - pridana inicializacia do _allocate_      */
-/*                  - zmena "" na STR_EMPTY (mystring.h)       */
-/*                  - odstranenie RUN_MODLITBA_CEZ_DEN         */
-/*   2004-08-14a.D. | char zmeneny na unsigned (_nedelne_p...) */
-/*   2005-03-21a.D. | pridany typ vypisu linky LINK_ISO_8601   */
-/*   2005-07-27a.D. | nová premenná v štrukt.dm: typslav_lokal */
-/*   2010-02-19a.D. | oprava velkonocna_nedela (špec. prípady) */
-/*   2010-05-21a.D. | nejaké doplnenia pre maďarčinu (JAZYK_HU)*/
-/*                                                             */
-/*                                                             */
-/***************************************************************/
+/************************************************************/
+/*                                                          */
+/* liturgia.cpp                                             */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk          */
+/*                                                          */
+/* description | basic 'liturgical' methods for calendar,   */
+/*               working with dates and strings             */
+/*                                                          */
+/************************************************************/
 
 #include "vstudio.h"
 
@@ -441,7 +424,7 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 	// 2012-08-27: aj pre hodnotu 3 sa vykonáva
 	// 2013-03-07: pridaný parameter force_opt, ktorý rozhoduje, či sa majú prilepiť len klasické options (default); k nim aj force options; alebo LEN force options
 	char local_str[SMALL];
-	short int local_opt_default;
+	int local_opt_default;
 	short int podmienka;
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){
 		Log("i == %d...\n", i);

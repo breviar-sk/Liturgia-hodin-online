@@ -1,19 +1,11 @@
-/***************************************************************/
-/*                                                             */
-/* myconf.h                                                    */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
-/*                                                             */
-/* description | poskytuje rozhranie na konfiguraciu,          */
-/*               subor CONFIG_FILE                             */
-/* document history                                            */
-/*   30/03/2000A.D. | created                                  */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2003-07-15a.D. | #include "mybase.h" nahradeny "mydefs.h" */
-/*   2004-03-17a.D. | pridany INCLUDE_DIR                      */
-/*   2011-01-31a.D. | pridané CFG_OPTION1_DEFAULT (1 až 5)     */
-/*   2011-04-11a.D. | CONFIG_FILE sa nastavuje podľa "OS"      */
-/*                                                             */
-/***************************************************************/
+/*********************************************************/
+/*                                                       */
+/* myconf.h                                              */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk       */
+/*                                                       */
+/* description | interface to config file CONFIG_FILE    */
+/*                                                       */
+/*********************************************************/
 
 #include "vstudio.h"
 
@@ -51,7 +43,7 @@
 
 extern char cfg_INCLUDE_DIR_default [MAX_INCD_STR];
 
-extern short int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
+extern int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
 
 #define POCET_DALSICH_CONF 3
 
@@ -61,7 +53,7 @@ extern char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
 
 #define CFG_OPTION_DEFAULT(i) cfg_option_default[i][_global_jazyk]
 
-const short int cfg_option_default_PROG[POCET_GLOBAL_OPT] = 
+const int cfg_option_default_PROG[POCET_GLOBAL_OPT] = 
 #ifdef OS_Windows_Ruby
 {3, 64, 0, 0, 0};
 #else

@@ -3,15 +3,7 @@
 /* myhpage.h                                                            */
 /* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk                      */
 /*                                                                      */
-/* description | obsahuje vypis hlavicky a patky HTML dokumentu         */
-/* document history                                                     */
-/*   19/11/1998A.D. | created                                           */
-/*   06/09/2001A.D. | tento popis                                       */
-/*   2003-07-01a.D. | pridany subor pre hlavicku aj patku               */
-/*   2004-03-16a.D. | funkcie hlavicka a patka aj do suboru             */
-/*   2008-08-08a.D. | hlavička sa nečíta z FILE_HEADER (kvôli css)      */
-/*   2011-05-18a.D. | upravená a zjednotená hlavička a pätka,           */
-/*                    _hlavicka() a _patka() používajú Export_to_file() */
+/* description | HTML document dynamically generated header and footer  */
 /*                                                                      */
 /************************************************************************/
 

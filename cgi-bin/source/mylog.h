@@ -3,15 +3,7 @@
 /* mylog.h                                                     */
 /* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
-/* description | logovanie                                     */
-/* document history                                            */
-/*   24/02/2000A.D. | created                                  */
-/*   06/09/2001A.D. | tento popis                              */
-/* notes |                                                     */
-/*   * ked je v materskom programe definovane LOG_TO_FILE, bude*/
-/*     sa logovat do suboru, ktory treba dat ako vstup fname   */
-/*     v initLog                                               */
-/*   * v opacnom pripade sa nebude logovat do suboru           */
+/* description | logging to file LOG_TO_FILE or to stdout      */
 /*                                                             */
 /***************************************************************/
 

@@ -3,13 +3,7 @@
 /* mystring.cpp                                                */
 /* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
-/* description |                                               */
-/* document history                                            */
-/*   31/03/2000A.D. | created                                  */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2009-08-05a.D. | pridaná funkcia substring()              */
-/*   2011-04-13a.D. | sem presunuté reťazcové funkcie equals() */
-/*   2013-01-11a.D. | nová funkcia: replace all substrings     */
+/* description | proprietary string manipulation methods       */
 /*                                                             */
 /***************************************************************/
 

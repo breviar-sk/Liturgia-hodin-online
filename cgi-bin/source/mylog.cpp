@@ -3,25 +3,12 @@
 /* mylog.cpp                                                   */
 /* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
-/* description | pomocne vypisovanie (logovanie) na obrazovku  */
-/*               a/alebo do suboru                             */
-/* document history                                            */
-/*   07/12/1997A.D. | created                                  */
-/*   13/10/1998A.D. | prerobeny                                */
-/*   27/10/1998A.D. | male zmeny                               */
-/*   01/12/1999A.D. | pridany NoLog (emptyLog)                 */
-/*                    LOGGING ponechane (v takom pripade sa    */
-/*                    loguje)                                  */
-/*   24/02/2000A.D. |  pridane LOG_TO_FILE / LOG_TO_STDOUT     */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2003-08-07a.D. | closeLog-dorobene #ifdef (LOG_TO_STDOUT) */
-/*   2005-03-28a.D. | Log - dorobene #ifdef                    */
+/* description | logging to file LOG_TO_FILE or to stdout      */
 /*                                                             */
 /* notes |                                                     */
-/*   * ked je v materskom programe definovane LOG_TO_FILE, bude*/
-/*     sa logovat do suboru, ktory treba dat ako vstup fname   */
-/*     v initLog                                               */
-/*   * v opacnom pripade sa nebude logovat do suboru           */
+/*   * if LOG_TO_FILE is defined, logging will be written to   */
+/*     file which must be as an input 'fname' in initLog       */
+/*   * otherwise, logging will not written to file             */
 /*                                                             */
 /***************************************************************/
 

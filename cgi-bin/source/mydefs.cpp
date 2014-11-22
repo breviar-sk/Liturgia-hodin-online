@@ -1,15 +1,11 @@
-/***************************************************************/
-/*                                                             */
-/* mydefs.cpp                                                  */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
-/*                                                             */
-/* description | obsahuje zakladne define'y                    */
-/* document history                                            */
-/*   30/03/2000A.D. | created                                  */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2003-08-13a.D. | pridany #include "mystring.h"            */
-/*                                                             */
-/***************************************************************/
+/*********************************************************/
+/*                                                       */
+/* mydefs.cpp                                            */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk       */
+/*                                                       */
+/* description | some basic define's                     */
+/*                                                       */
+/*********************************************************/
 
 #include "vstudio.h"
 

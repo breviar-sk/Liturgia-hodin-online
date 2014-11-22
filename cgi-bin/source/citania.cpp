@@ -1,3 +1,12 @@
+/***************************************************************/
+/*                                                             */
+/* citania.cpp                                                 */
+/* (c)2010-2014 | Richard Královiè                             */
+/*                                                             */
+/* description | code for liturgical readings for Android app  */
+/*                                                             */
+/***************************************************************/
+
 #include "mysystem.h"
 #include "mysysdef.h"
 #include "citania.h"

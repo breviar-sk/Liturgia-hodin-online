@@ -1,12 +1,11 @@
-/***************************************************************/
-/*                                                             */
-/* hodin.h                                                     */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
-/*                                                             */
-/* description | definovane stringove kontanty                 */
-/*               originally used for string constants          */
-/*                                                             */
-/***************************************************************/
+/************************************************************/
+/*                                                          */
+/* hodin.h                                                  */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk          */
+/*                                                          */
+/* description | originally used for string constants       */
+/*                                                          */
+/************************************************************/
 
 #include "vstudio.h"
 
@@ -1054,7 +1053,7 @@ const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 #endif
 
 // special button: Show prayer
-const char *html_button_det_show[POCET_JAZYKOV + 1] = {"Zobraz modlitbu", "Ukaž modlitbu", "Show prayer", "xxx", "", "Ukaž modlitbu", "Ima megjelenítése"};
+const char *html_button_det_show[POCET_JAZYKOV + 1] = {"Zobraz modlitbu", "Ukaž modlitbu", "Show prayer", "Ostendo oratio", "", "Ukaž modlitbu", "Ima megjelenítése"};
 #ifndef HTML_BUTTON_DET_SHOW
 #define HTML_BUTTON_DET_SHOW	html_button_det_show[_global_jazyk]
 #endif
@@ -1087,26 +1086,6 @@ const char *html_button_dnes_apply[POCET_JAZYKOV + 1] = {"Potvrdiť", "Potvrdit"
 const char *html_button_dnes_apply2[POCET_JAZYKOV + 1] = {"Uložiť", "Uložit", "Save", "___", "", "Uložit", "Alkalmaz"};
 #ifndef HTML_BUTTON_DNES_APPLY_CHOICES
 #define HTML_BUTTON_DNES_APPLY_CHOICES html_button_dnes_apply2[_global_jazyk]
-#endif
-
-// special button (today): Morning prayer with canticum of Zekariah
-// doplnené, 2007-09-13
-const char *html_button_ranne_chvaly_benediktus[POCET_JAZYKOV + 1] = {"Ranné chvály + Benediktus", "Ranní chvály + Zach. kantikum", "Morning prayer with Benedictus", "Laudes + Benedictus", "", "Ranní chvály + Zach. kantikum", "Reggeli dicséret Benedictusszal"};
-#ifndef HTML_BUTTON_RANNE_CHVALY_BENEDIKTUS
-#define HTML_BUTTON_RANNE_CHVALY_BENEDIKTUS	html_button_ranne_chvaly_benediktus[_global_jazyk]
-#endif
-
-// special button (today): Evening prayer with canticum of Mary
-const char *html_button_vespery_magnifikat[POCET_JAZYKOV + 1] = {"Vešpery + Magnifikat", "Nešpory + Mariino kant.", "Vesperae + Magnificat", "Vesper&#230; + Magnificat", "", "Večerní chvály + kant. Panny Marie", "Esti dicséret Magnificattal"};
-#ifndef HTML_BUTTON_VESPERY_MAGNIFIKAT
-#define HTML_BUTTON_VESPERY_MAGNIFIKAT	html_button_vespery_magnifikat[_global_jazyk]
-#endif
-
-// special button (today): Completory prayer with canticum of Simeon; is currently used only in Slovak
-// doplnené, 2008-12-20; nepoužíva sa pre ostatné jazyky
-const char *html_button_kompletorium_nunkdim[POCET_JAZYKOV + 1] = {"Kompletórium + Nunk dimittis", "xxx", "xxx", "xxx", "", "xxx", "hu_xxx"};
-#ifndef HTML_BUTTON_KOMPLETORIUM_NUNKDIM
-#define HTML_BUTTON_KOMPLETORIUM_NUNKDIM	html_button_kompletorium_nunkdim[_global_jazyk]
 #endif
 
 // html <title> element for generated pages
@@ -1466,7 +1445,7 @@ const char *html_text_detaily_uvod[POCET_JAZYKOV + 1] =
  "Ez a választási lehetőség befolyásolja a megszerkesztett ima megjelenítését és tartalmát.\nVálasszon a szerkeszthető lehetőségek közül."
 };
 
-const char *html_text_option1_kalendar[POCET_JAZYKOV + 1] = 
+const char *html_text_option0_kalendar[POCET_JAZYKOV + 1] = 
 {"nastavenia pre liturgický kalendár",
  "volby pro liturgický kalendář",
  "options for liturgical calendar",
@@ -1476,7 +1455,7 @@ const char *html_text_option1_kalendar[POCET_JAZYKOV + 1] =
  "a liturgikus naptár beállításai"
 };
 
-const char *html_text_option1_kalendar_explain[POCET_JAZYKOV + 1] = 
+const char *html_text_option0_kalendar_explain[POCET_JAZYKOV + 1] = 
 {"Liturgia hodín ponúka možnosť slávenia niektorých slávení dvojakým spôsobom; závisí od danej krajiny, ako rozhodla príslušná konferencia biskupov.",
  "Volby pro liturgický kalendář ovlivňují datumy některých slavení.",
  "Options for liturgical calendar...",
@@ -1596,7 +1575,7 @@ const char *html_text_option0_verse[POCET_JAZYKOV + 1] =
 const char *html_text_option0_verse_explain[POCET_JAZYKOV + 1] = 
 {"Liturgia hodín (latinské typické vydanie) zobrazuje číslovanie veršov v rámci žalmu, chválospevu alebo dlhšieho biblického čítania; niektoré vydania tieto čísla veršov neuvádzajú.", 
  "Liturgie hodin uvádí jako horní indexy čísla veršů biblických textů (žalmů, chvalozpěvů a prvních čtení), které může program zobrazit.", 
- "xxx", 
+ "Printed editions of Liturgy of the Hours shows also verse numbers (in psalms, canticles and long biblical readings). This option forces to display them.", 
  "",
  "", 
  "Liturgie hodin uvádí jako horní indexy čísla veršů biblických textů (žalmů, chvalozpěvů a prvních čtení), které může program zobrazit.", 
@@ -1880,8 +1859,8 @@ const char *html_text_option1_plne_resp_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option_zobrazit[POCET_JAZYKOV + 1] = 
 {"zobraziť", 
  "zobrazit", 
- "xxx", 
  "show",
+ "", 
  "",
  "zobrazit", 
  "megjelenítés"
@@ -1889,8 +1868,8 @@ const char *html_text_option_zobrazit[POCET_JAZYKOV + 1] =
 const char *html_text_option_skryt[POCET_JAZYKOV + 1] = 
 {"skryť", 
  "skrýt", 
- "xxx", 
  "hide",
+ "", 
  "",
  "skrýt", 
  "elrejtés"
@@ -1899,8 +1878,8 @@ const char *html_text_option_skryt[POCET_JAZYKOV + 1] =
 const char *html_text_option1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] = 
 {"použiť psalmódiu zo dňa", 
  "použít žalmy z běžného dne", 
- "xxx", 
  "psalmodia from ordinary day",
+ "",
  "",
  "použít psalmodii z běžného dne", 
  "az adott napi zsoltározást venni"
@@ -1908,8 +1887,8 @@ const char *html_text_option1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] =
 const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] = 
 {"pre modlitbu cez deň použiť psalmódiu zo dňa", 
  "pro modlitbu uprostřed dne použít žalmy z běžného dne", 
- "xxx", 
  "psalmodia from ordinary day",
+ "",
  "",
  "pro modlitbu uprostřed dne použít psalmodii z běžného dne", 
  "a Napközi imaórában az adott napi zsoltározást venni"
@@ -1917,8 +1896,8 @@ const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] =
 const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] = 
 {"použiť doplnkovú psalmódiu", 
  "použít žalmy z doplňovacího cyklu", 
- "xxx", 
  "supplementary psalmodia",
+ "",
  "",
  "dne použít doplňkovou psalmodii", 
  "a kiegészítő zsoltárokat venni"
@@ -1926,8 +1905,8 @@ const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
 const char *html_text_option1_mcd_zalmy_ine[POCET_JAZYKOV + 1] = 
 {"pre modlitbu cez deň použiť doplnkovú psalmódiu", 
  "pro modlitbu uprostřed dne použít žalmy z doplňovacího cyklu", 
- "xxx", 
  "supplementary psalmodia",
+ "",
  "",
  "pro modlitbu uprostřed dne použít doplňkovou psalmodii", 
  "vegye a napközi imaórákban a kiegészítő zsoltárokat"
@@ -1991,8 +1970,8 @@ const char *html_text_option1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option1_zalm95[POCET_JAZYKOV + 1] = 
 {"namiesto žalmov 24, 67 resp. 100 použiť žalm 95", 
  "místo žalmů 24, 67 resp. 100 použít žalm 95", 
- "xxx", 
  "psalm 95",
+ "",
  "",
  "místo žalmů 24, 67 resp. 100 použít žalm 95", 
  "a 23., 66. illetve a 99.  zsoltár helyett legyen a 94."
@@ -2000,9 +1979,9 @@ const char *html_text_option1_zalm95[POCET_JAZYKOV + 1] =
 const char *html_text_option1_zalm95_explain[POCET_JAZYKOV + 1] = 
 {"Ak sa v ranných chválach, vešperách alebo posvätnom čítaní vyskytne žalm 24, 67 resp. 100, ktorý bol použitý pre invitatórium, nahradí sa v príslušnej modlitbe žalmom 95.", 
  "Když se v ranních chválách, modlitbě se čtením nebo nešporách vyskytne žalm 24, 67 resp. 100, který se použil pro uvedení do první modlitby dne, nahradí se v příslušné modlitbě žalmem 95.", 
- "xxx", 
- "xxx",
- "xxx", 
+ "If morning prayer, vespers of prayer with readings contains psalms 24, 67, or 100, which was used for invitatory, it is replaced by psalm 95.", 
+ "",
+ "", 
  "Když se v ranních chválách, modlitbě se čtením nebo večerních chválách vyskytne žalm 24, 67 resp. 100, který se použil pro invitatorium, nahradí se v příslušné modlitbě žalmem 95.", 
  "Ha a reggeli és az esti dicséretben, vagy az olvasmányos imaórában előfordul a 23., 66. illetve 99. zsoltár, amely az Imádságra hívásban már imádkozva volt, akkor az adott imádságban a 94. zsoltár kerül helyébe."
 };
@@ -2010,8 +1989,8 @@ const char *html_text_option1_zalm95_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option_zobrazit_zvolania[POCET_JAZYKOV + 1] = 
 {"opakovať zvolanie po každej prosbe", 
  "zopakovat zvolání po každé prosbě", 
- "xxx", 
  "repeat invocation after each appeal",
+ "",
  "",
  "zopakovat zvolání po každé prosbě", 
  "megismételni a választ minden könyörgés után"
@@ -2019,8 +1998,8 @@ const char *html_text_option_zobrazit_zvolania[POCET_JAZYKOV + 1] =
 const char *html_text_option_skryt_zvolania[POCET_JAZYKOV + 1] = 
 {"skryť zvolanie po každej prosbe", 
  "skrýt zvolání po každé prosbě", 
- "xxx", 
  "hide invocation after each appeal",
+ "",
  "",
  "skrýt zvolání po každé prosbě", 
  "elrejteni a választ minden könyörgés után"
@@ -2029,8 +2008,8 @@ const char *html_text_option_skryt_zvolania[POCET_JAZYKOV + 1] =
 const char *html_text_option_zobrazit_kratsie_prosby[POCET_JAZYKOV + 1] = 
 {"použiť kratšie prosby z dodatku", 
  "zobrazit kratší prosby z dodatku", 
- "xxx", 
  "use shorten prayers",
+ "",
  "",
  "zobrazit kratší prosby z dodatku", 
  "használja a rövidebb könyörgéseket a függelékből"
@@ -2038,8 +2017,8 @@ const char *html_text_option_zobrazit_kratsie_prosby[POCET_JAZYKOV + 1] =
 const char *html_text_option_skryt_kratsie_prosby[POCET_JAZYKOV + 1] = 
 {"nepoužiť kratšie prosby z dodatku", 
  "nezobrazit kratší prosby z dodatku", 
- "xxx", 
  "do not use shorten prayers",
+ "",
  "",
  "nezobrazit kratší prosby z dodatku", 
  "ne használja a rövidebb könyörgéseket a függelékből"
@@ -2048,8 +2027,8 @@ const char *html_text_option_skryt_kratsie_prosby[POCET_JAZYKOV + 1] =
 const char *html_text_option1_prosby_zvolanie[POCET_JAZYKOV + 1] = 
 {"zvolanie v prosbách opakovať po každej prosbe", 
  "zvolání v prosbách zopakovat po každé prosbě", 
- "xxx", 
  "invocation repeat after each appeal",
+ "",
  "",
  "zvolání v prosbách zopakovat po každé prosbě", 
  "minden fohász után ismételje a választ"
@@ -2057,9 +2036,9 @@ const char *html_text_option1_prosby_zvolanie[POCET_JAZYKOV + 1] =
 const char *html_text_option1_prosby_zvolanie_explain[POCET_JAZYKOV + 1] = 
 {"V ranných chválach a vešperách opakovať zvolanie v prosbách po každej prosbe.", 
  "V ranních chválách a nešporách opakovat svolání v prosbách po každé prosbě.", 
- "xxx", 
  "In morning and evening prayer repeat invocation after each appeal.",
- "xxx", 
+ "", 
+ "",
  "V ranních a večerních chválách opakovat svolání v prosbách po každé prosbě.", 
  "A reggeli és az esti dicséretben minden fohász után ismételni a választ."
 };
@@ -2077,7 +2056,7 @@ const char *html_text_option1_skryt_popis_svaty[POCET_JAZYKOV + 1] =
 const char *html_text_option1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] = 
 {"Modlitby zväčša obsahujú pred názvom modlitby životopis svätého, popis sviatku alebo podobnú stručnú charakteristiku, ktorú pre jednoduchosť nazývame popis.", 
  "Modlitby ke cti svatých obsahují stručný životopis svatého, při svátku je to stručný popis svátku a podobně. Tyto charakteristiky pro stručnost nazýváme popis.", 
- "xxx", 
+ "For saints, rubrics usually contains few sentences about that saint (or celebration). This option forces to display this description.", 
  "",
  "", 
  "Modlitby ke cti svatých obsahují stručný životopis svatého, u svátku je to stručný popis svátku a podobně. Tyto charakteristiky pro stručnost nazýváme popis.",
@@ -2215,7 +2194,7 @@ const char *html_text_option2_prve_vespery[POCET_JAZYKOV + 1] =
 const char *html_text_option2_prve_vespery_explain[POCET_JAZYKOV + 1] = 
 {"Keďže základným kritériom pre zobrazovanie modlitieb daného dňa je dátum, formálne prvé vešpery nedieľ a slávností (a tiež kompletórium po nich) nespadajú pod daný dátum, ale pre predošlý deň, kde sa zobrazujú ako bežné vešpery. Pre sobotné slávenie sa nebude tlačidlo pre vešpery (a kompletórium) zobrazovať.", 
  "Jelikož základním kritériem pro zobrazování ponuky modliteb daného dne je datum, první nešpory neděl a slavností (a také kompletář po nich) nespadají pod daný datum, nýbrž pro předcházející den, kde jsou zobrazeny jako běžné nešpory. Pro sobotní slavení se tlačítko pro nešpory (a kompletář) nebude zobrazovat.", 
- "xxx", 
+ "For Sundays and solemnities, display also button for first vespers. (For Saturdays, vespers button will not be displayed.)", 
  "",
  "", 
  "Jelikož základním kritériem pro zobrazování ponuky modliteb daného dne je datum, první večerní chvály neděl a slavností (a také kompletář po nich) nespadají pod daný datum, nýbrž pro předcházející den, kde jsou zobrazeny jako běžné první večerní chvály. Pro sobotní slavení se tlačítko pro večerní chvály (a kompletář) nebude zobrazovat.", 
@@ -2310,7 +2289,7 @@ const char *html_text_option2_moznosti_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] = 
 {"zalamovať dlhé riadky ako v tlačenom vydaní (poetické časti)",
  "zalomit dlouhé řádky poetických textů jako v tištěném vydání", 
- "xxx", 
+ "wrap long lines according to printed edition", 
  "",
  "",
  "zalomit dlouhé řádky poetických textů jako v tištěném vydání", 
@@ -2319,7 +2298,7 @@ const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] =
 const char *html_text_option2_textwrap_explain[POCET_JAZYKOV + 1] = 
 {"Či sa majú v texte modlitby dlhé riadky žalmov, chválospevov a iných poetických častí zalamovať ako v tlačenom vydaní.", 
  "Zda zalomit dlouhé řádky poetických textů jako v tištěném vydání (normálně: nezalamovat).", 
- "xxx", 
+ "Whether long lines should be wrapped as in printed edition.", 
  "",
  "", 
  "Zda zalomit dlouhé řádky poetických textů jako v tištěném vydání (normálně: nezalamovat).", 
@@ -2329,7 +2308,7 @@ const char *html_text_option2_textwrap_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option2_buttons_usporne[POCET_JAZYKOV + 1] = 
 {"tlačidlá pre modlitby zobraziť úsporne",
  "tlačítka pro modlitby zobrazit úsporně", 
- "xxx", 
+ "tight display of buttons for prayers", 
  "",
  "",
  "tlačítka pro modlitby zobrazit úsporně", 
@@ -2338,7 +2317,7 @@ const char *html_text_option2_buttons_usporne[POCET_JAZYKOV + 1] =
 const char *html_text_option2_buttons_usporne_explain[POCET_JAZYKOV + 1] = 
 {"Či sa majú tlačidlá pre modlitby zobraziť úsporne, v tabuľke (menšia šírka) kvôli mobilným zariadeniam.", 
  "Zda se mají tlačítka pro modlitby zobrazit úsporně, v tabulce (menší šířka) pro mobilní zařízení.", 
- "xxx", 
+ "Whether buttons for prayers should be displayed economically for mobile devices.", 
  "",
  "", 
  "Zda se mají tlačítka pro modlitby zobrazit úsporně, v tabulce (menší šířka) pro mobilní zařízení.", 
@@ -2348,7 +2327,7 @@ const char *html_text_option2_buttons_usporne_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option2_nocny_rezim[POCET_JAZYKOV + 1] = 
 {"nočný režim",
  "noční režim",
- "xxx", 
+ "night mode", 
  "",
  "",
  "noční režim",
@@ -2357,7 +2336,7 @@ const char *html_text_option2_nocny_rezim[POCET_JAZYKOV + 1] =
 const char *html_text_option2_nocny_rezim_explain[POCET_JAZYKOV + 1] = 
 {"Zobrazí svetlý text na tmavom pozadí."
  "Zobrazí světlý text na tmavém pozadí.",
- "xxx", 
+ "Displays dark background with light text for night usage.", 
  "",
  "", 
  "Zobrazí světlý text na tmavém pozadí.",
@@ -2376,11 +2355,30 @@ const char *html_text_option2_alternatives[POCET_JAZYKOV + 1] =
 const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] = 
 {"Zobrazí v texte modlitieb iba jednu možnosť, napr. hymnus pre kompletórium (dá sa prepínať).",
  "Zobrazí v textu modliteb jenom jedno možnost (je možné přepínat).",
- "", 
+ "In the prayer text, displays only one option (e. g. hymn for compline; user can switch options).", 
  "",
  "", 
  "Zobrazí v textu modliteb jenom jedno možnost (je možné přepínat).",
  "Megmutatja…",
+};
+
+const char *html_text_option2_show_defalut_calendar[POCET_JAZYKOV + 1] = 
+{"zvýrazniť slávenia v národnom kalendári",
+ "zvýraznit slávení v národním kalendáři",
+ "show celebrations in national calendar", 
+ "",
+ "",
+ "zvýraznit slávení v národním kalendáři",
+ "kijelölni az ünnepeket a nemzeti naptárban", 
+};
+const char *html_text_option2_show_defalut_calendar_explain[POCET_JAZYKOV + 1] = 
+{"V podnadpise modlitby zobrazí informáciu, že slávenie je v národnom kalendári (teda nie vo všeobecnom kalendári).",
+ "V podnadpisu modlitby zobrazí informaci, že slávení je v národním kalendáři (tedy ne v obecním kalendáři).",
+ "", 
+ "",
+ "", 
+ "V podnadpisu modlitby zobrazí informaci, že slávení je v národním kalendáři (tedy ne v obecním kalendáři).",
+ "Az ima felirata alatt megmutatja az információt, hogy az ünnep a nemzeti naptárban van (tehát nem az általánosban).",
 };
 
 const char *html_text_option5_KomplHymnusA[POCET_JAZYKOV + 1] = 

@@ -3,8 +3,7 @@
 /* myhpage.cpp                                                          */
 /* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk                      */
 /*                                                                      */
-/* description | obsahuje vypis hlavicky a patky HTML dokumentu         */
-/*               HTML document generated header and footer              */
+/* description | HTML document dynamically generated header and footer  */
 /*                                                                      */
 /************************************************************************/
 

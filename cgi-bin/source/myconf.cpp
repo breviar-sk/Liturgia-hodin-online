@@ -1,24 +1,11 @@
-/******************************************************************/
-/*                                                                */
-/* myconf.cpp                                                     */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk                */
-/*                                                                */
-/*                                                                */
-/* description | poskytuje rozhranie na konfiguraciu,             */
-/*               subor CONFIG_FILE                                */
-/* document history                                               */
-/*   30/03/2000A.D. | created                                     */
-/*   06/09/2001A.D. | tento popis                                 */
-/*   2003-07-08a.D. | MAIL_ADDRESS zmenena na videky@breviar.sk   */
-/*   2003-08-13a.D. | pridany #include "mystring.h"               */
-/*   2004-03-17a.D. | pridany INCLUDE_DIR                         */
-/*   2006-07-13a.D. | prve kroky k jazykovym mutaciam             */
-/*   2007-05-24a.D. | Marek Elias (MEL): pouzitie libconfuse      */
-/*   2007-06-01a.D. | prepracovanie konfigurovatelnych premennych */
-/*   2007-06-19a.D. | odstránené použitie libconfuse (MEL, JUV)   */
-/*                                                                */
-/*                                                                */
-/******************************************************************/
+/*********************************************************/
+/*                                                       */
+/* myconf.cpp                                            */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk       */
+/*                                                       */
+/* description | interface to config file CONFIG_FILE    */
+/*                                                       */
+/*********************************************************/
 
 #undef LOG_READCONFIG
 
@@ -48,7 +35,7 @@ char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "http://breviar.sk/";
 char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = STR_EMPTY;
 char cfg_INCLUDE_DIR_default[MAX_INCD_STR] = "../include/";
 
-short int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
+int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
 
 char cfg_http_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_http_display_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];

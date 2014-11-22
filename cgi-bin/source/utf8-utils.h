@@ -1,3 +1,13 @@
+/**********************************************************/
+/*                                                        */
+/* utf8-utils.h                                           */
+/* (c)2014 | Juraj Vidéky, Richard Královiè               */
+/*                                                        */
+/* description | utilities for UTF-8 (Unicode) encoding   */
+/*               (string manipulation, etc.)              */
+/*                                                        */
+/**********************************************************/
+
 #ifndef __UTF8_UTILS_H_
 #define __UTF8_UTILS_H_
 
@@ -75,7 +85,7 @@ inline void AppendWchar(int w, int buf_size, char* buf, int* index) {
   if (buf_size - *index < 5) return;
   char* s = buf + *index;
   EncodeWchar(w, &s);
-  *index = s - buf;
+  *index = (int)(s - buf);
 }
 
 int WcharToUppercase(int w);

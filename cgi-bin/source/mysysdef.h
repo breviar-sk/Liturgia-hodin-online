@@ -3,7 +3,7 @@
 /* mysysdef.h                                                  */
 /* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
-/* obsahuje definície pre jednotlivé systémy                   */
+/* description | contains #defines for various systems         */
 /*                                                             */
 /***************************************************************/
 #include "vstudio.h"
@@ -13,38 +13,6 @@
 #define __MYSYSDEF_H_
 
 #undef USE_UNCGI
-
-/***************************************************************/
-/*                                                             */
-/* mysystem.h -> mysysdef.h                                    */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
-/*                                                             */
-/* description | obsahuje jediny #define, urcujuci, v akom     */
-/*               systeme program pracuje; ovplyvnuje tvorbu    */
-/*               linkov, DEBUG #define, veci pre loggovanie a  */
-/*               export                                        */
-/* document history                                            */
-/*   02/11/1999A.D. | created                                  */
-/*   24/02/2000A.D. | prekopane                                */
-/*   30/03/2000A.D. | pridane OS_Windows, MODEL_DEBUG_Windows, */
-/*                    MODEL_Windows                            */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2004-03-17a.D. | poznamka k OS_...                        */
-/*   2005-03-22a.D. | zrusene DOS, vytvoreny novy model        */
-/*   2005-03-28a.D. | pridane na zaciatok #undef pre vsetky    */
-/*   2006-01-28a.D. | pridané define pre spôsob exportu        */
-/*   2006-07-11a.D. | prvé kroky k jazykovým mutáciám          */
-/*   2007-05-25a.D. | pridané MODEL_Windows_RUBY               */
-/*   2007-06-01a.D. | včlenený "config.h" pre confuse          */
-/*   2007-06-19a.D. | odstránený "config.h" pre confuse        */
-/*   2007-06-28a.D. | oprava jednotlivých modelov, popisy      */
-/*   2007-11-20a.D. | doplnené EXPORT_HTML_SPECIALS            */
-/*   2008-05-19a.D. | EXPORT_HTML_FILENAME_ANCHOR aj pre linux */
-/*   2008-08-08a.D. | doplnené EXPORT_CMDLINE_CSS              */
-/*   2009-08-26a.D. | pred popis predsunuté samotné nastavenie */
-/*   2011-07-13a.D. | pôvodný mysystem.h rozdelený na 2 súbory */
-/*                                                             */
-/***************************************************************/
 
 /*
  * Poznámka: Pri buildovaní nezabudni zmeniť datum v mybuild.h (BUILD_DATE).

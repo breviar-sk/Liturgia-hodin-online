@@ -1,35 +1,11 @@
-/***************************************************************/
-/*                                                             */
-/* mydefs.h                                                    */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
-/*                                                             */
-/* description | obsahuje zakladne define'y                    */
-/* document history                                            */
-/*   12/11/1999A.D. | created                                  */
-/*   01/02/2000A.D. | modifikovane                             */
-/*   09/02/2000A.D. | pridane PRM_DETAILY                      */
-/*   06/09/2001A.D. | zmenene SCRIPT_PATH(a) UNCGI_PATH(a),    */
-/*                    tento popis                              */
-/*   2003-07-02a.D. | pridane HTML konstanty (casti stringov)  */
-/*   2003-07-04a.D. | pridane konstanty pre batch mode         */
-/*   2003-07-08a.D. | pridana konstanta MODL_OPT_APPEND        */
-/*   2003-07-09a.D. | pridane #define HTML_AMPERSAND "&amp;"   */
-/*   2003-07-15a.D. | zluceny s mybase.h, vycistene komentare  */
-/*                  - pridane HTML_BUTTON_                     */
-/*   2003-07-16a.D. | zmena WWW_ na ADD_WWW_PREFIX_            */
-/*   2004-03-17a.D. | FILE_PATH sa nepouziva                   */
-/*   2004-08-14a.D. | zmena definicie ADD_WWW_PREFIX_          */
-/*   2005-03-28a.D. | zmena definicie UNCGI_PATH               */
-/*   2005-07-27a.D. | pridane HTML_SPAN_RED_SMALL              */
-/*   2006-07-11a.D. | prvé kroky k jazykovým mutáciám          */
-/*   2006-08-18a.D. | zmena int na short int (stačí 32tis.)    */
-/*   2008-11-29a.D. | pridané rôzne možnosti batch exportu     */
-/*   2009-08-12a.D. | pridané ďalšie možnosti batch exportu    */
-/*   2010-08-04a.D. | pridané KALENDAR a STR_KALENDAR          */
-/*   2011-04-13a.D. | definované HTML_FORM_INPUT_TEXT_ROK      */
-/*                                                             */
-/*                                                             */
-/***************************************************************/
+/*********************************************************/
+/*                                                       */
+/* mydefs.h                                              */
+/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk       */
+/*                                                       */
+/* description | core basic define's                     */
+/*                                                       */
+/*********************************************************/
 
 #include "vstudio.h"
 
@@ -47,22 +23,6 @@
 	#error Unsupported operating system (not defined in mysystem.h)
 #endif
 
-/***************************************************************/
-/*                                                             */
-/* mybase.h                                                    */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
-/*                                                             */
-/* description | obsahuje zakladne vecicky                     */
-/* document history                                            */
-/*   29/10/1999A.D. | created                                  */
-/*   06/09/2001A.D. | tento popis                              */
-/*   2003-06-30a.D. | build (priliepa sa do hlavicky)          */
-/*   2003-07-15a.D. | RUN_MODLITBA_CEZ_DEN definovane          */
-/*   2003-07-15a.D. | vlozeny do mydefs.h                      */
-/*   2003-08-13a.D. | odstranenie RUN_MODLITBA_CEZ_DEN         */
-/*   2011-07-11a.D. | BUILD_DATE presunutý do mybuild.h        */
-/*                                                             */
-/***************************************************************/
 #include <stdio.h>
 
 #define Q_UNUSED(arg) (void)arg;
@@ -812,6 +772,14 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_2_ALTERNATIVES "of2a"
 #endif
 
+// zobrazovať v podnadpise národný kalendár -- BIT_OPT_2_SHOW_DEFAULT_CALENDAR
+#define MODL_OPTF_2_SHOW_DEFAULT_CALENDAR 114
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR "MODL_OPTF_2_SHOW_DEFAULT_CALENDAR"
+#else
+	#define STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR "of2sdc"
+#endif
+
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
 
 #define MODL_OPTF_5_HYMNUS_KOMPL 101
@@ -1203,6 +1171,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define XML_BIT_OPT_2_HIDE_OPTIONS1             "BitOpt2HideOptionsPart1"
 #define XML_BIT_OPT_2_HIDE_OPTIONS2             "BitOpt2HideOptionsPart2"
 #define XML_BIT_OPT_2_ALTERNATIVES              "BitOpt2Alternatives"
+#define XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR     "BitOpt2ShowDefaultCalendar"
 
 // POCET_OPT_5_ALTERNATIVES
 #define XML_BIT_OPT_5_HYMNUS_KOMPL              "BitOpt5HymnCompl"
