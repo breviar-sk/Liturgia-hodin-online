@@ -3235,7 +3235,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}// if(aj_navigacia == ANO)
 		else if(aj_navigacia == CIASTOCNE){
 			Export("navigácia:begin-->\n");
-			Export(HTML_NEW_PARAGRAPH"\n");
 			_export_rozbor_dna_buttons_dni(EXPORT_DNA_JEDEN_DEN, NIE, aj_navigacia);
 			Export("<!--navigácia:end");
 #ifdef BEHAVIOUR_WEB
@@ -6892,7 +6891,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 	Log("--- _export_rozbor_dna_buttons(typ == %d) -- begin\n", typ);
 #ifdef OS_Windows_Ruby
 	if((typ != EXPORT_DNA_VIAC_DNI_TXT) && (typ != EXPORT_DNA_XML)){
-		Export("\n<!--buttons:begin-->\n");
+		Export("<!--buttons:begin-->\n");
 	}
 #endif
 	short int i = MODL_NEURCENA;
@@ -7413,7 +7412,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 	_global_den.rok = _pom_rok;
 #ifdef OS_Windows_Ruby
 	if((typ != EXPORT_DNA_VIAC_DNI_TXT) && (typ != EXPORT_DNA_XML)){
-		Export("\n<!--buttons:end-->\n");
+		Export("<!--buttons:end-->\n");
 	}
 #endif
 
@@ -7427,7 +7426,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_tabulke, char pom2[MAX_STR], short int zobraz_odkaz_na_skrytie){
 #ifdef OS_Windows_Ruby
-	Export("\n<!--buttons/dni/dnes:begin-->\n");
+	Export("<!--buttons/dni/dnes:begin-->\n");
 #endif
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
@@ -7505,39 +7504,89 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 // exportuje buttony pre _export_rozbor_dna() a to button predosleho a nasledujuceho dna
 // 2011-07-03: pridaná možnosť zmeniť default look (tlačidlo "dnes" pre navigáciu v modlitbe nebude mať popis "dnes" a iné zmeny pre navigáciu)
 void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO */, short int aj_navigacia /* = ANO */){
-	// 2014-10-20: pre blind-friendly vôbec nezobrazujeme
-	if(((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY) == BIT_OPT_0_BLIND_FRIENDLY) & (aj_navigacia != ANO)){
-		char pom2[MAX_STR];
-		mystrcpy(pom2, STR_EMPTY, MAX_STR);
-		char pom3[MAX_STR];
-		mystrcpy(pom3, STR_EMPTY, MAX_STR);
 
-		prilep_request_options(pom2, pom3);
+#ifdef OS_Windows_Ruby
+	Export("<!--buttons/dni:begin-->\n");
+#endif
 
-		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, NIE, pom2, NIE);
-	}
-	// 2012-10-01: zobrazujeme, iba ak nie je explicitne vyžiadané skrývanie
-	else if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_HIDE_NAVIG_BUTTONS) != BIT_OPT_2_HIDE_NAVIG_BUTTONS){
-		_export_rozbor_dna_buttons_dni_call(typ, dnes_dnes);
+	short int podmienka = -1;
+
+	// current behaviour for normal (not blind-friendly) mode
+	if((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY) != BIT_OPT_0_BLIND_FRIENDLY){
+		// 2012-10-01: zobrazujeme, iba ak nie je explicitne vyžiadané skrývanie
+		if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_HIDE_NAVIG_BUTTONS) != BIT_OPT_2_HIDE_NAVIG_BUTTONS){
+			podmienka = 1; // zobraziť: _export_rozbor_dna_buttons_dni_call(typ, dnes_dnes);
+		}
+		else{
+			podmienka = 0; // nezobraziť: hide buttons (only hyperlin enabling to display them back is displayed)
+		}
 	}
 	else{
-		// Export("\n<!--hide buttons-->\n");
-		char show[SMALL] = STR_EMPTY;
-		char hide[SMALL] = STR_EMPTY;
-		sprintf(show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
-		sprintf(hide, "%s %s", html_text_option_skryt[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
-		char before[SMALL] = STR_EMPTY;
-		sprintf(before, "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">");
-		char after[SMALL] = STR_EMPTY;
-		mystrcpy(after, "</p>", SMALL);
-		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY, (char *)STR_EMPTY);
+		if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_NAVIGATION) == BIT_OPT_2_NAVIGATION){
+
+			if(((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_HIDE_NAVIG_BUTTONS) != BIT_OPT_2_HIDE_NAVIG_BUTTONS) & ((aj_navigacia == ANO) || (aj_navigacia == CIASTOCNE))){
+				podmienka = 2; // zobraziť pre blind-friendly
+			}
+			else{
+				podmienka = 0;
+			}
+		}
+		else{
+			Export("<!-- no navigation for blind-friendly mode (hide navigation) -->\n");
+		}
 	}
+
+	switch (podmienka)
+	{
+		case 0: 
+			{
+#ifdef OS_Windows_Ruby
+				Export("\n<!--hide buttons-->\n");
+#endif
+				char show[SMALL] = STR_EMPTY;
+				char hide[SMALL] = STR_EMPTY;
+				sprintf(show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
+				sprintf(hide, "%s %s", html_text_option_skryt[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
+				char before[SMALL] = STR_EMPTY;
+				sprintf(before, "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">");
+				char after[SMALL] = STR_EMPTY;
+				mystrcpy(after, "</p>", SMALL);
+				_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY, (char *)STR_EMPTY);
+			}
+			break;
+		case 1:
+			{
+				_export_rozbor_dna_buttons_dni_call(typ, dnes_dnes);
+			}
+			break;
+		case 2: 
+			{
+				// 2014-10-20: pre blind-friendly zobrazujeme len "hore" pre daný deň
+				char pom2[MAX_STR];
+				mystrcpy(pom2, STR_EMPTY, MAX_STR);
+				char pom3[MAX_STR];
+				mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+				prilep_request_options(pom2, pom3);
+
+				Export(HTML_NEW_PARAGRAPH"\n");
+
+				_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, NIE, pom2, ANO);
+			}
+			break;
+		default:
+			break;
+	}// switch(podmienka)
+
+#ifdef OS_Windows_Ruby
+	Export("<!--buttons/dni:end-->\n");
+#endif
 }// _export_rozbor_dna_buttons_dni()
 
 void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* = ANO */){
 	Log("--- _export_rozbor_dna_buttons_dni_orig(typ == %d) -- begin\n", typ);
 #ifdef OS_Windows_Ruby
-	Export("\n<!--buttons/dni:begin-->\n");
+	Export("<!--buttons/dni/orig:begin-->\n");
 #endif
 	char str_month[SMALL] = STR_EMPTY;
 	short int zmena_mesiaca = NIE;
@@ -7956,7 +8005,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 	_global_den.mesiac = _orig_mesiac;
 	_global_den.rok = _orig_rok;
 #ifdef OS_Windows_Ruby
-	Export("\n<!--buttons/dni:end-->\n");
+	Export("<!--buttons/dni/orig:end-->\n");
 #endif
 	Log("--- _export_rozbor_dna_buttons_dni_orig(typ == %d) -- end\n", typ);
 }// _export_rozbor_dna_buttons_dni_orig()
@@ -7964,7 +8013,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /* = ANO */){
 	Log("--- _export_rozbor_dna_buttons_dni_compact(typ == %d) -- begin\n", typ);
 #ifdef OS_Windows_Ruby
-	Export("\n<!--buttons/dni:begin-->\n");
+	Export("<!--buttons/dni/compact:begin-->\n");
 #endif
 	char str_month[SMALL] = STR_EMPTY;
 	short int zmena_mesiaca = NIE;
@@ -8428,13 +8477,16 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 	_global_den.mesiac = _orig_mesiac;
 	_global_den.rok = _orig_rok;
 #ifdef OS_Windows_Ruby
-	Export("\n<!--buttons/dni:end-->\n");
+	Export("<!--buttons/dni/compact:end-->\n");
 #endif
 	Log("--- _export_rozbor_dna_buttons_dni_compact(typ == %d) -- end\n", typ);
 }// _export_rozbor_dna_buttons_dni_compact()
 
 // 2013-12-02: enable to display date-navigation buttons in compact mode also for online web
 void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dnes /* = ANO */){
+#ifdef OS_Windows_Ruby
+	Export("<!--buttons/dni/call:begin-->\n");
+#endif
 	if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTONY_USPORNE) == BIT_OPT_2_BUTTONY_USPORNE){
 		//bolo: #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 		_export_rozbor_dna_buttons_dni_compact(typ, dnes_dnes);
@@ -8442,6 +8494,9 @@ void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dnes /* =
 	else{
 		_export_rozbor_dna_buttons_dni_orig(typ, dnes_dnes);
 	}
+#ifdef OS_Windows_Ruby
+	Export("<!--buttons/dni/call:end-->\n");
+#endif
 }// _export_rozbor_dna_buttons_dni_call()
 
 //---------------------------------------------------------------------
@@ -10390,8 +10445,9 @@ if (!((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BUTTONS_ORDER) == BIT_OPT_0_BUTT
 		mystrcpy(pom1, "<"HTML_SPAN_BOLD">", SMALL);
 		mystrcpy(pom2, HTML_SPAN_END, SMALL);
 		mystrcpy(pom3, nazov_Dn(_global_den.denvt), SMALL);
-		if(som_v_tabulke == NIE)
+		if(som_v_tabulke == NIE){
 			dvojbodka = '.';
+		}
 	}// typ == EXPORT_DNA_VIAC_DNI
 	else if(typ == EXPORT_DNA_VIAC_DNI_SIMPLE){
 		// 2005-03-22: Upravene. Da sa dat aj ISO-8601 datum. 
@@ -10448,8 +10504,9 @@ if (!((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BUTTONS_ORDER) == BIT_OPT_0_BUTT
 	}
 	if(typ != EXPORT_DNA_XML){
 		Export("%s%s%s", pom1, _global_link, pom2);
-		if(dvojbodka > 0)
+		if(dvojbodka > 0){
 			Export("%c", dvojbodka);
+		}
 	}
 	if(som_v_tabulke == ANO){
 		Export("</td>");
@@ -10468,8 +10525,9 @@ if (!((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BUTTONS_ORDER) == BIT_OPT_0_BUTT
 			Export("<td "HTML_ALIGN_LEFT" "HTML_VALIGN_TOP">");
 		}
 		Export("%s%s%s", pom1, pom3, pom2);
-		if(ciarka > 0)
+		if(ciarka > 0){
 			Export("%c", ciarka);
+		}
 		if(som_v_tabulke == ANO){
 			Export("</td>");
 			Export("\n");
