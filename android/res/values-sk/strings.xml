@@ -44,6 +44,15 @@
 
     <string name="menu_about">O...</string>
     <string name="about">O aplikácii</string>
+    <string name="about_PROJECT_URL">breviar.sk</string>
+    <string name="about_E_MAIL">android@breviar.sk</string>
+    <string name="about_APP_NAME">Aplikácia Breviár pre OS Android</string>
+    <string name="about_SPECIAL_CREDITS"></string>
+    <string name="about_PROJECT_SOURCE_STORAGE">GitHub-e</string>
+    <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
+    <string name="about_PLATFORM_ANDROID">Android</string>
+    <string name="about_PLATFORM_IOS">iOS</string>
+    <string name="about_text">/include/about.htm</string>
 
     <string name="btn_news">Čo je nové</string>
     <string name="news"><![CDATA[
