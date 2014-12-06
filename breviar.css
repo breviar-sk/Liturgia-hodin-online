@@ -90,6 +90,11 @@ div.hymn, div.responsory, div.readings {
 	font-weight: bold;
 }
 
+/* 2014-12-02 for HU */
+div.responsory {
+	margin: 1em 0;
+}
+
 /* 2013-09-19 class for calendar */
 .calendar { 
 	padding: 4px 4px 4px 0; 
