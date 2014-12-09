@@ -162,6 +162,9 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       } else {
         CompatibilityHelper19.SetLayoutAlgorithmTextAutosizing(wv);
       }
+      if (Build.VERSION.SDK_INT >= 11) {
+        CompatibilityHelper11.hideZoomControls(wv.getSettings());
+      }
       wv.getSettings().setUseWideViewPort(false);
       wv.setInitialScale(scale);
       initialized = false;
@@ -315,32 +318,39 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       }
     }
 
+    boolean resumed = false;
     @Override
     protected void onResume() {
-      if (BreviarApp.getDimLock(this)) {
-        lock.acquire();
+      if (!resumed) {
+        resumed = true;
+        if (BreviarApp.getDimLock(this)) {
+          lock.acquire();
+        }
+        if (BreviarApp.getMute(this)) {
+          AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+          ringMode = manager.getRingerMode();
+          manager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+        } else {
+          ringMode = -1;
+        }
+        if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
       }
-      if (BreviarApp.getMute(this)) {
-        AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-        ringMode = manager.getRingerMode();
-        manager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-      } else {
-        ringMode = -1;
-      }
-      if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
       super.onResume();
     }
 
     @Override
     protected void onPause() {
       super.onPause();
-      if (BreviarApp.getDimLock(this)) {
-        lock.release();
-      }
-      if (ringMode != -1) {
-        AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-        manager.setRingerMode(ringMode);
-        ringMode = -1;
+      if (resumed) {
+        resumed = false;
+        if (BreviarApp.getDimLock(this)) {
+          lock.release();
+        }
+        if (ringMode != -1) {
+          AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+          manager.setRingerMode(ringMode);
+          ringMode = -1;
+        }
       }
     }
 
@@ -421,13 +431,36 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       inflater.inflate( R.menu.menu, menu );
       return true;
     }
+    
+    String getAboutText() {
+      try {
+        String output =
+            getString(R.string.about_text_head) +
+            Util.streamToString(getAssets().open(getString(R.string.about_text))) +
+            getString(R.string.about_text_tail);
+
+        return output
+            .replaceAll("<!--\\{PROJECT_URL\\}-->", getString(R.string.about_PROJECT_URL))
+            .replaceAll("<!--\\{E_MAIL\\}-->", getString(R.string.about_E_MAIL))
+            .replaceAll("<!--\\{APP_NAME\\}-->", getString(R.string.about_APP_NAME))
+            .replaceAll("<!--\\{SPECIAL_CREDITS\\}-->", getString(R.string.about_SPECIAL_CREDITS))
+            .replaceAll("<!--\\{PROJECT_SOURCE_STORAGE\\}-->", getString(R.string.about_PROJECT_SOURCE_STORAGE))
+            .replaceAll("<!--\\{PROJECT_SOURCE_URL\\}-->", getString(R.string.about_PROJECT_SOURCE_URL))
+            .replaceAll("<!--\\{PLATFORM_ANDROID\\}-->", getString(R.string.about_PLATFORM_ANDROID))
+            .replaceAll("<!--\\{PLATFORM_IOS\\}-->", getString(R.string.about_PLATFORM_IOS));
+      } catch (java.io.IOException e) {
+        Log.v("breviar", "Can not open file: " + e.getMessage());
+
+        return "";
+      }
+    }
 
     @Override
     protected Dialog onCreateDialog(int id) {
       String content = null;
       switch(id) {
         case DIALOG_ABOUT:
-          content = getString(R.string.about_text);
+          content = getAboutText();
           break;
         case DIALOG_NEWS:
           content = getString(R.string.news);

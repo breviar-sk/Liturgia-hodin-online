@@ -52,7 +52,7 @@
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
-    <string name="about_text">/include_hu/about.htm</string>
+    <string name="about_text">include_hu/about.htm</string>
 
     <string name="btn_news">Újdonságok</string>
     <string name="news"><![CDATA[
@@ -64,6 +64,11 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+
+<p><b>Újdonságok az 1.10.1-es verzióban:</b>
+<ul>
+<li> Many fixes...
+</ul>
 
 <p><b>Újdonságok az 1.10-es verzióban:</b>
 <ul>

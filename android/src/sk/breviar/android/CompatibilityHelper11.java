@@ -6,4 +6,8 @@ public class CompatibilityHelper11 {
   public void recreate(Activity context) {
     context.recreate();
   }
+
+  public static void hideZoomControls(android.webkit.WebSettings settings) {
+    settings.setDisplayZoomControls(false);
+  }
 }

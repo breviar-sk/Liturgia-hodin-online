@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">v1.10</string>
+    <string name="version">v1.10.1</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -54,7 +54,23 @@
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
-    <string name="about_text">/about.htm</string>
+    <string name="about_text">include/about.htm</string>
+
+    <string name="about_text_head"><![CDATA[
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style type="text/css">
+body { background-color: #000000; color: #cccccc; }
+a { color: #ffaa00; }
+</style>
+</head>
+<body>
+    ]]></string>
+    <string name="about_text_tail"><![CDATA[
+      </body></html>
+    ]]></string>
+
 
     <string name="btn_news">What\'s new</string>
     <string name="news"><![CDATA[
@@ -66,6 +82,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+
+<p><b>News in v1.10.1:</b>
+<ul>
+<li> Minor fixes.
+<li> Many typos for all languages.
+</ul>
 
 <p><b>News in v1.10:</b>
 <ul>

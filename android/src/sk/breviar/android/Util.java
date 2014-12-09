@@ -167,4 +167,19 @@ public class Util {
            })
            .create();
   }
+
+  static public String streamToString(java.io.InputStream stream) {
+    StringBuilder output = new StringBuilder();
+    java.io.InputStreamReader reader = new java.io.InputStreamReader(stream);
+    char[] buf = new char[4096];
+    int len;
+    try {
+      while ((len = reader.read(buf, 0, 4096)) != -1) {
+        output.append(buf, 0, len);
+      }
+    } catch (java.io.IOException e) {
+      Log.v("breviar", "Can not read file: " + e.getMessage());
+    }
+    return output.toString();
+  }
 }
