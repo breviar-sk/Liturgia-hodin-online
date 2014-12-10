@@ -27,8 +27,8 @@
 
 #define Q_UNUSED(arg) (void)arg;
 
-#define SMALL 80
-#define VERY_SMALL 8
+#define SMALL 160
+#define VERY_SMALL 16
 
 // navratova hodnota funkcii
 #define NO_RESULT 2
