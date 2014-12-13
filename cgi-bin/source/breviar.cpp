@@ -2223,16 +2223,13 @@ void _export_rozbor_dna_navig_top_bottom(char *target, const char *text){
 
 void init_marianske_anfifony_file(_struct_anchor_and_file &af){
 	mystrcpy(af.anchor, ANCHOR_MARIANSKE_ANTIFONY, MAX_STR_AF_ANCHOR);
-	mystrcpy(af.file, FILE_MARIANSKE_ANTIFONY, MAX_STR_AF_FILE);
-	/*
+#ifdef MODEL_LH_commandline
 	mystrcpy(af.file, ".."STR_PATH_SEPARATOR_HTML, MAX_STR_AF_FILE);
-	if(strlen(postfix_jazyka[_global_jazyk]) > 0){
-		strcat(af.file, postfix_jazyka[_global_jazyk]);
-		strcat(af.file, STR_PATH_SEPARATOR_HTML);
-	}
 	strcat(af.file, DOCS_FOLDER""STR_PATH_SEPARATOR_HTML);
 	strcat(af.file, FILE_MARIANSKE_ANTIFONY);
-	*/
+#else
+	mystrcpy(af.file, FILE_MARIANSKE_ANTIFONY, MAX_STR_AF_FILE);
+#endif
 	Log_filename_anchor(af);
 	return;
 }

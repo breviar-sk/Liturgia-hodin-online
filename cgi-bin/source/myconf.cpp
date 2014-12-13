@@ -31,8 +31,8 @@
 #define MAIL_ADDRESS_DEFAULT "videky@breviar.sk"
 
 char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR] = "http://breviar.sk/";
-char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "http://breviar.sk/";
-char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = STR_EMPTY;
+char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "breviar.sk";
+char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = "videky@breviar.sk";
 char cfg_INCLUDE_DIR_default[MAX_INCD_STR] = "../include/";
 
 int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
@@ -87,7 +87,18 @@ void readConfig(void)
 
 	if(! (subor = fopen(CONFIG_FILE, "r")) ){
 		Log("Nemôžem otvoriť súbor `%s'.\n", CONFIG_FILE);
+#ifdef MODEL_LH_commandline
+		Log("Pokúsim sa nájsť ho o level vyššie...\n");
+		if(! (subor = fopen(".."STR_PATH_SEPARATOR""CONFIG_FILE, "r")) ){
+			Log("Nemôžem otvoriť súbor `%s'.\n", ".."STR_PATH_SEPARATOR""CONFIG_FILE);
+			return;
+		}
+		else{
+			Log("Súbor `%s' otvorený.\n", ".."STR_PATH_SEPARATOR""CONFIG_FILE);
+		}
+#else
 		return;
+#endif
 	}
 	else{
 		Log("Súbor `%s' otvorený.\n", CONFIG_FILE);
