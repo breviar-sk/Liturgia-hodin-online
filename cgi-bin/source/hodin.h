@@ -980,7 +980,7 @@ const char *skratka_css[POCET_CSS + 1] =
 
 // 2012-04-03: Pridané kvôli jazykovým mutáciám -- default CSS pre daný jazyk | možno do budúcnosti možnosť default nastavenia v config (konfiguračnom súbore)
 const short int default_css_jazyk[POCET_JAZYKOV + 1] =
-{CSS_breviar_sk, CSS_ebreviar_cz, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_ebreviar_cz, CSS_breviar_sk};
+{CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk};
 
 // CSS obsahujuci invertovane farby | CSS for "night mode" (inverted colors) - includes ONLY ammendment to base css (breviar.css)
 const char *nazov_css_invert_colors = "breviar-invert-colors.css";
