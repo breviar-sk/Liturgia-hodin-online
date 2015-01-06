@@ -8820,7 +8820,7 @@ const char *text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1] =
  "",
  "",
  "v oktávu Narození Páně",
- "Karácsony nyolcadában",
+ "Karácsony nyolcada",
  };
 
 #endif // __HODIN_H_
