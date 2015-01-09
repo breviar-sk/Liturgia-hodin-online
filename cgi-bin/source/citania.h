@@ -1,7 +1,7 @@
 /******************************************************************/
 /*                                                                */
 /* citania.h                                                      */
-/* (c)2010-2014 | Richard Královiè                                */
+/* (c)2010-2015 | Richard Královiè                                */
 /*                                                                */
 /* description | declarations of methods for liturgical readings  */
 /*               for Android app                                  */

@@ -1,7 +1,7 @@
 /***************************************************************************/
 /*                                                                         */
 /* breviar.cpp                                                             */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk                         */
+/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk                         */
 /*                                                                         */
 /*                http://www.breviar.sk                                    */
 /*                                                                         */
@@ -303,6 +303,7 @@ short int _global_css; // 2008-08-08: Pridané kvôli rôznym css
 
 short int _global_font; // 2011-05-06: Pridané kvôli rôznym fontom
 short int _global_font_size; // 2011-05-13: Pridané kvôli rôznym veľkostiam fontov
+short int _global_style_margin; // 2015-01-08: for usage in <body> for style margin-left & margin-right
 
 // 2006-10-17: Pridané kvôli kompletóriu: niekedy obsahuje až dva žalmy
 short int _global_pocet_zalmov_kompletorium;
@@ -395,7 +396,8 @@ char pom_CSS		[SMALL] = STR_EMPTY;
 // 2011-05-06: Pridané kvôli rôznym fontom
 char pom_FONT		[SMALL] = STR_EMPTY;
 // 2011-05-13: Pridané kvôli veľkosti fontov
-char pom_FONT_SIZE	[SMALL] = STR_EMPTY;
+char pom_FONT_SIZE	[VERY_SMALL] = STR_EMPTY;
+char pom_STYLE_MARGIN [VERY_SMALL] = STR_EMPTY;
 
 // 2008-11-29: pridané rôzne možnosti batch exportu
 char pom_MODL_OPT_DATE_FORMAT [SMALL] = STR_EMPTY;
@@ -999,9 +1001,19 @@ short int setForm(void){
 	// 2011-05-13: Pridané kvôli rôznym veľkostiam fontov
 	mystrcpy(local_str, STR_EMPTY, SMALL);
 	if(!equals(pom_FONT_SIZE, STR_EMPTY)){
-		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_FONT_SIZE), SMALL);
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_STYLE_MARGIN), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_FONT_SIZE);
+		Log("--- setForm: putenv(%s); ...\n", local_str);
+		ret = putenv(local_str);
+		Log("--- setForm: putenv returned %d.\n", ret);
+	}
+
+	mystrcpy(local_str, STR_EMPTY, SMALL);
+	if(!equals(pom_STYLE_MARGIN, STR_EMPTY)){
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_FONT_SIZE), SMALL);
+		strcat(local_str, "=");
+		strcat(local_str, pom_STYLE_MARGIN);
 		Log("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
 		Log("--- setForm: putenv returned %d.\n", ret);
@@ -9855,6 +9867,17 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem font size: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
+	// 2015-01-08: exportovanie parametra G (_global_style_margin)
+	if(PODMIENKA_EXPORTOVAT_STYLE_MARGIN){
+		sprintf(pom, " -G%d", _global_style_margin);
+	}
+	else{
+		Log("\tNetreba prilepiť style margin (style margin == %d)\n", _global_style_margin);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem style margin: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
 	// 2013-12-12: exportovanie parametra c (_global_css)
 	if(PODMIENKA_EXPORTOVAT_CSS){
 		sprintf(pom, " -c%s", skratka_css[_global_css]); // nazov_css[_global_css]
@@ -10735,6 +10758,17 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 	}
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem font size: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
+	// 2015-01-08: exportovanie parametra G (_global_style_margin)
+	if(PODMIENKA_EXPORTOVAT_STYLE_MARGIN){
+		sprintf(pom, " -G%d", _global_style_margin);
+	}
+	else{
+		Log("\tNetreba prilepiť style margin (style margin == %d)\n", _global_style_margin);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem style margin: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// 2013-12-12: exportovanie parametra c (_global_css)
 	if(PODMIENKA_EXPORTOVAT_CSS){
@@ -14654,7 +14688,12 @@ short int getArgv(int argc, char **argv){
 					Log("option %c with value `%s'\n", c, optarg); break;
 				case 'S': // font size, pridané 2011-05-13
 					if(optarg != NULL){
-						mystrcpy(pom_FONT_SIZE, optarg, SMALL);
+						mystrcpy(pom_FONT_SIZE, optarg, VERY_SMALL);
+					}
+					Log("option %c with value `%s'\n", c, optarg); break;
+				case 'G': // style margin
+					if(optarg != NULL){
+						mystrcpy(pom_STYLE_MARGIN, optarg, VERY_SMALL);
 					}
 					Log("option %c with value `%s'\n", c, optarg); break;
 				case 'g': // tabulka - rok to; pre batch mode je to MESIAC DO
@@ -14977,7 +15016,15 @@ short int getForm(void){
 	ptr = getenv(ADD_WWW_PREFIX_(STR_FONT_SIZE));
 	if(ptr != NULL){
 		if(strcmp(ptr, STR_EMPTY) != 0){
-			mystrcpy(pom_FONT_SIZE, ptr, SMALL);
+			mystrcpy(pom_FONT_SIZE, ptr, VERY_SMALL);
+		}
+	}
+
+	// premenná WWW_STYLE_MARGIN
+	ptr = getenv(ADD_WWW_PREFIX_(STR_STYLE_MARGIN));
+	if(ptr != NULL){
+		if(strcmp(ptr, STR_EMPTY) != 0){
+			mystrcpy(pom_STYLE_MARGIN, ptr, VERY_SMALL);
 		}
 	}
 
@@ -15732,8 +15779,21 @@ short int parseQueryString(void){
 		Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if(equals(param[i].name, STR_FONT_SIZE)){
 			// ide o parameter STR_FONT_SIZE
-			mystrcpy(pom_FONT_SIZE, param[i].val, SMALL);
+			mystrcpy(pom_FONT_SIZE, param[i].val, VERY_SMALL);
 			Log("font size zistená (%s).\n", pom_FONT_SIZE);
+		}
+	}
+
+	// 2015-01-08: style margin
+	i = pocet;
+	Log("pokúšam sa zistiť style margin (od posledného parametra k prvému, t. j. odzadu)...\n");
+	while((equalsi(pom_STYLE_MARGIN, STR_EMPTY)) && (i > 0)){
+		--i;
+		Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		if(equals(param[i].name, STR_STYLE_MARGIN)){
+			// ide o parameter STR_STYLE_MARGIN
+			mystrcpy(pom_STYLE_MARGIN, param[i].val, VERY_SMALL);
+			Log("font size zistená (%s).\n", pom_STYLE_MARGIN);
 		}
 	}
 
@@ -16618,6 +16678,7 @@ END_parseQueryString:
 	_main_LOG_to_Export("\tparam  == %s (pom_CSS)\n", pom_CSS);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT)\n", pom_FONT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE)\n", pom_FONT_SIZE);\
+	_main_LOG_to_Export("\tparam  == %s (pom_STYLE_MARGIN)\n", pom_STYLE_MARGIN);\
 	_main_LOG_to_Export("\tparam  == %s (pom_MODL_OPT_DATE_FORMAT)\n", pom_MODL_OPT_DATE_FORMAT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_EXPORT_MONTHLY)\n", pom_EXPORT_MONTHLY);\
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){\
@@ -16704,6 +16765,7 @@ int breviar_main(int argc, char **argv){
 	strcpy(pom_CSS, STR_EMPTY);
 	strcpy(pom_FONT, STR_EMPTY);
 	strcpy(pom_FONT_SIZE, STR_EMPTY);
+	strcpy(pom_STYLE_MARGIN, STR_EMPTY);
 	strcpy(pom_MODL_OPT_DATE_FORMAT, STR_EMPTY);
 	strcpy(pom_EXPORT_MONTHLY, STR_EMPTY); // 2009-08-03: Pridané kvôli rôznym spôsobom exportu po mesiacoch, prepínač -M
     _global_modlitba = MODL_NEURCENA;
@@ -16721,6 +16783,7 @@ int breviar_main(int argc, char **argv){
     _global_css = 0;
     _global_font = 0;
     _global_font_size = 0;
+	_global_style_margin = DEF_STYLE_MARGIN;
 
 	_global_pocet_navigacia = 0;
 	_global_pocet_volani_interpretTemplate = 0;
@@ -16959,6 +17022,19 @@ int breviar_main(int argc, char **argv){
 				}
 				_main_LOG_to_Export("...font size (%s) = %i, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
 
+				// 2015-01-08: reading of style margin
+				_main_LOG_to_Export("zisťujem style margin...\n");
+				_global_style_margin = atoi(pom_STYLE_MARGIN);
+				if(_global_style_margin > MAX_STYLE_MARGIN){
+					_global_style_margin = MAX_STYLE_MARGIN;
+					_main_LOG_to_Export("\t(more than max... style margin set to %d)\n", _global_style_margin);
+				}
+				if(_global_style_margin < MIN_STYLE_MARGIN){
+					_global_style_margin = MIN_STYLE_MARGIN;
+					_main_LOG_to_Export("\t(less than min... style margin set to %d)\n", _global_style_margin);
+				}
+				_main_LOG_to_Export("...style margin (%s) = %i (interpreted in HTML/CSS as px)\n", pom_STYLE_MARGIN, _global_style_margin);
+
 				// 2013-12-12: Pridané načítanie css | podľa: 2008-08-08: Pridané načítanie css kvôli rôznym css
 				_main_LOG_to_Export("zisťujem css...\n");
 				_global_css = atocss(pom_CSS);
@@ -17137,6 +17213,19 @@ _main_SIMULACIA_QS:
 		_main_LOG_to_Export("\t(vzhľadom k neurčenej font size používam default -- brať font size z CSS)\n");
 	}
 	_main_LOG_to_Export("...font size (%s) = %i, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
+
+	// 2015-01-08: reading of style margin
+	_main_LOG_to_Export("zisťujem style margin...\n");
+	_global_style_margin = atoi(pom_STYLE_MARGIN);
+	if(_global_style_margin > MAX_STYLE_MARGIN){
+		_global_style_margin = MAX_STYLE_MARGIN;
+		_main_LOG_to_Export("\t(more than max... style margin set to %d)\n", _global_style_margin);
+	}
+	if(_global_style_margin < MIN_STYLE_MARGIN){
+		_global_style_margin = MIN_STYLE_MARGIN;
+		_main_LOG_to_Export("\t(less than min... style margin set to %d)\n", _global_style_margin);
+	}
+	_main_LOG_to_Export("...style margin (%s) = %i (interpreted in HTML/CSS as px)\n", pom_STYLE_MARGIN, _global_style_margin);
 
 	// 2008-08-08: Pridané načítanie css kvôli rôznym css
 	_main_LOG_to_Export("zisťujem css...\n");

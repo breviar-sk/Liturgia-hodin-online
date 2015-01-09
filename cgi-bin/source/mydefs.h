@@ -1,7 +1,7 @@
 /*********************************************************/
 /*                                                       */
 /* mydefs.h                                              */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk       */
+/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk       */
 /*                                                       */
 /* description | core basic define's                     */
 /*                                                       */
@@ -907,6 +907,14 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_FONT_SIZE "s"
 #endif
 
+// margin, value to 255
+#define STYLE_MARGIN 45
+#ifdef LONG_PARAM_NAMES
+	#define STR_STYLE_MARGIN "STYLE_MARGIN"
+#else
+	#define STR_STYLE_MARGIN "mm"
+#endif
+
 // global
 #define QUERY_TYPE	20
 #ifdef LONG_PARAM_NAMES
@@ -1076,7 +1084,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 
 #define HTML_ISO_FORMAT      "%04d-%02d-%02d"
 
-#define TEXT_COPYRIGHT       "(c) 1999-2014 Juraj Vidéky"
+#define TEXT_COPYRIGHT       "(c)1999-2015 Juraj Vidéky"
 #define TEXT_EMAIL           "videky@breviar.sk"
 
 // main XML element

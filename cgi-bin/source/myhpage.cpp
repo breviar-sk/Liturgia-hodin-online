@@ -1,7 +1,7 @@
 /************************************************************************/
 /*                                                                      */
 /* myhpage.cpp                                                          */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk                      */
+/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk                      */
 /*                                                                      */
 /* description | HTML document dynamically generated header and footer  */
 /*                                                                      */
@@ -271,16 +271,16 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	// 2011-05-05: pridanie font-family 
 	// 2011-05-06: font sa nepridáva vždy
 	Export_to_file(expt, "<body");
-	if((_global_font != FONT_CSS) || (_global_font_size != FONT_SIZE_CSS)){
+	if((_global_font != FONT_CSS) || (_global_font_size != FONT_SIZE_CSS) || (_global_style_margin != 0)){
 		Export_to_file(expt, " style=\"");
 		if(_global_font != FONT_CSS){
-			Export_to_file(expt, "font-family: %s", _global_css_font_family);
+			Export_to_file(expt, "font-family: %s; ", _global_css_font_family);
 		}
 		if(_global_font_size != FONT_SIZE_CSS){
-			if(_global_font != FONT_CSS){
-				Export_to_file(expt, "; ");
-			}
-			Export_to_file(expt, "font-size: %s", _global_css_font_size);
+			Export_to_file(expt, "font-size: %s; ", _global_css_font_size);
+		}
+		if(_global_style_margin != 0){
+			Export_to_file(expt, "margin-left: %dpx; margin-right: %dpx; ", _global_style_margin, _global_style_margin);
 		}
 		Export_to_file(expt, "\"");
 	}

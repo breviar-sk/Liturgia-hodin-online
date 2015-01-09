@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* breviar.h                                                   */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | contains declarations of global variables     */
 /*                                                             */
@@ -169,6 +169,7 @@ extern short int _global_css; // 2008-08-08: Pridané kvôli rôznym css
 
 extern short int _global_font; // 2011-05-06: Pridané kvôli rôznym fontom
 extern short int _global_font_size; // 2011-05-13: Pridané kvôli rôznym veľkostiam fontov
+extern short int _global_style_margin; // 2015-01-08: for usage in <body> for style margin-left & margin-right
 
 // 2006-10-17: Pridané kvôli kompletóriu: niekedy obsahuje až dva žalmy
 extern short int _global_pocet_zalmov_kompletorium;
@@ -425,6 +426,8 @@ extern short int _global_opt_export_date_format;
 #define PODMIENKA_EXPORTOVAT_FONT ( (_global_font != FONT_UNDEF) && (_global_font != FONT_CSS) && (_global_font != FONT_CHECKBOX) )
 
 #define PODMIENKA_EXPORTOVAT_CSS ( (_global_css != CSS_UNDEF) && (_global_css != CSS_breviar_sk) )
+
+#define PODMIENKA_EXPORTOVAT_STYLE_MARGIN (_global_style_margin > 0)
 
 //---------------------------------------------------------------------
 // definicie pre _rozbor_dna():

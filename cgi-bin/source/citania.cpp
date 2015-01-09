@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* citania.cpp                                                 */
-/* (c)2010-2014 | Richard Královiè                             */
+/* (c)2010-2015 | Richard Královiè                             */
 /*                                                             */
 /* description | code for liturgical readings for Android app  */
 /*                                                             */

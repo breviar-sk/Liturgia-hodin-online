@@ -1,7 +1,7 @@
 /************************************************************/
 /*                                                          */
 /* liturgia.h                                               */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk          */
+/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk          */
 /*                                                          */
 /* description | basic 'liturgical' constants, defines      */
 /*               and structures                             */
@@ -95,6 +95,10 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define FONT_SIZE_LARGE   	6
 #define FONT_SIZE_X_LARGE 	7
 #define FONT_SIZE_XX_LARGE	8
+
+#define MIN_STYLE_MARGIN      0
+#define MAX_STYLE_MARGIN    255
+#define DEF_STYLE_MARGIN      5
 
 // 2013-01-29: alternatívy pre niektoré časti modlitby
 #define BIT_ALT_HYMNUS                  1

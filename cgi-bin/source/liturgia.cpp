@@ -1,7 +1,7 @@
 /************************************************************/
 /*                                                          */
 /* liturgia.cpp                                             */
-/* (c)1999-2014 | Juraj Vidéky | videky@breviar.sk          */
+/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk          */
 /*                                                          */
 /* description | basic 'liturgical' methods for calendar,   */
 /*               working with dates and strings             */
@@ -410,13 +410,23 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 	}
 
 	// 2011-05-13: pridané odovzdanie parametra pre font size; 2011-05-16: neexportuje sa, ak je nedefinované
-	if((_global_font_size != FONT_SIZE_CSS) && (_global_font_size != FONT_SIZE_UNDEF)){
+	if(PODMIENKA_EXPORTOVAT_FONTSIZE){
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_FONT_SIZE, nazov_font_size_css[_global_font_size]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj font size: `%s'\n", pom3);
 	}
 	else{
 		Log("\tNetreba prilepiť font size (_global_font_size == %d, názov == %s)\n", _global_font_size, nazov_font_size_css[_global_font_size]);
+	}
+
+	// 2015-01-08: pridané odovzdanie parametra pre style margin
+	if(PODMIENKA_EXPORTOVAT_STYLE_MARGIN){
+		sprintf(pom3, HTML_AMPERSAND"%s=%d", STR_STYLE_MARGIN, _global_style_margin);
+		strcat(pom2, pom3);
+		Log("\tPrilepil som aj style margin: `%s'\n", pom3);
+	}
+	else{
+		Log("\tNetreba prilepiť style margin (_global_style_margin == %d)\n", _global_style_margin);
 	}
 
 	// 2011-01-26: pridané odovzdanie parametrov pre options1 atď.
