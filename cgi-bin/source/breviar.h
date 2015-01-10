@@ -427,7 +427,7 @@ extern short int _global_opt_export_date_format;
 
 #define PODMIENKA_EXPORTOVAT_CSS ( (_global_css != CSS_UNDEF) && (_global_css != CSS_breviar_sk) )
 
-#define PODMIENKA_EXPORTOVAT_STYLE_MARGIN (_global_style_margin > 0)
+#define PODMIENKA_EXPORTOVAT_STYLE_MARGIN ( (_global_style_margin > MIN_STYLE_MARGIN) && (_global_style_margin < MAX_STYLE_MARGIN) )
 
 //---------------------------------------------------------------------
 // definicie pre _rozbor_dna():

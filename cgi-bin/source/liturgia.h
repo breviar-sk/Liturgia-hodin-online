@@ -97,7 +97,7 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define FONT_SIZE_XX_LARGE	8
 
 #define MIN_STYLE_MARGIN      0
-#define MAX_STYLE_MARGIN    255
+#define MAX_STYLE_MARGIN   1024
 #define DEF_STYLE_MARGIN      5
 
 // 2013-01-29: alternatívy pre niektoré časti modlitby
