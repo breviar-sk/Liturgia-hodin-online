@@ -161,7 +161,7 @@ const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
  {"jedného mučeníka", "o jednom mučedníkovi", "", "", "", "O mučedníkovi", "vértanú"}, 
  {"viacerých mučeníkov", "o více mučednících", "", "", "", "O více mučednících", "vértanúk"}, 
  {"Panny Márie", "o Panně Marii", "", "", "", "O Panně Marii", "Szűz Mária"}, 
- {"svätých mužov: pre rehoľníkov", "o svatých mužech (o řeholnících)", "", "", "", "O řeholnících", "szerzetes"}, 
+ {"svätých mužov: pre rehoľníkov", "o svatých mužích (o řeholnících)", "", "", "", "O řeholnících", "szerzetes"}, 
  {"svätých mužov", "o svatých mužích", "", "", "","O svatých mužích", "szent férfiak"}, 
  {"panien", "o pannách", "", "", "","O pannách", "szűz"}, 
  {"svätých žien: pre rehoľnice", "o svatých ženách (o řeholnicích)", "", "", "", "O svatých ženách - o řeholnicích", "apáca"}, 
