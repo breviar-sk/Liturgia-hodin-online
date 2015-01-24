@@ -11861,7 +11861,7 @@ void _rozparsuj_parametre_OPT(void){
 		mystrcpy(pom_MODL_OPTF[OPT_3_SPOLOCNA_CAST], nazov_spolc(i), SMALL);
 		// ak je zadane cislo spravne, tak i bude spravny int a pom_MODL_OPTF[OPT_3_SPOLOCNA_CAST] bude spravny char*
 	}
-	Log("optf_3: i == %d\n", i);
+	Log("optf %d: i == %d\n", OPT_3_SPOLOCNA_CAST, i);
 	while(i <= MODL_SPOL_CAST_NEBRAT){
 		if(equals(pom_MODL_OPTF[OPT_3_SPOLOCNA_CAST], nazov_spolc(i))){
 			_global_optf[OPT_3_SPOLOCNA_CAST] = i;
