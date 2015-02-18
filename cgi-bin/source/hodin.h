@@ -510,7 +510,7 @@ const char *nazov_slavenia_lokal[] =
 ,"v Banskobystrickej diecéze sviatok hlavného patróna"                                                          // LOKAL_SLAV_BYSTRICA_PATRON
 ,"v Bratislavskej a Trnavskej arcidiecéze "HTML_LINE_BREAK"a v Banskobystrickej, Nitrianskej a Rožňavskej diecéze" // LOKAL_SLAV_TT_BB_NR_RO
 ,"v Košickej arcidiecéze sviatok hlavného patróna"                                                              // LOKAL_SLAV_KOSICE_PATRON
-,"v Žilinskej diecéze sviatok hlavných patrónov; "HTML_LINE_BREAK"na Slovensku sa slávi 5. júla, slávnosť; v Európe sviatok" // LOKAL_SLAV_14_FEB_CYRIL_METOD
+,"len v Žilinskej diecéze — sviatok hlavných patrónov; "HTML_LINE_BREAK"v Európe sviatok patrónov Európy"       // LOKAL_SLAV_14_FEB_CYRIL_METOD | odstránený popis "na Slovensku sa slávi 5. júla, slávnosť"
 ,"v Rožňavskej diecéze sviatok hlavného patróna"                                                                // LOKAL_SLAV_ROZNAVA_PATRON
 ,"len v konsekrovaných kostoloch"                                                                               // LOKAL_SLAV_KONSEKR_KOSTOLY
 ,"Druhá veľkonočná nedeľa — Božieho milosrdenstva"                                                              // LOKAL_SLAV_DRUHA_VELK_NEDELA
@@ -2896,12 +2896,12 @@ const char *text_JAN_01_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JAN_02[POCET_JAZYKOV + 1] = 
-{"Sv. Bazila Veľkého a Gregora Nazianzského,"HTML_LINE_BREAK"biskupov a učiteľov Cirkvi",
- "Sv. Basila Velikého a Řehoře Naziánského,"HTML_LINE_BREAK"biskupů a učitelů církve",
+{"Sv. Bazila Veľkého a Gregora Nazianzského, "HTML_LINE_BREAK"biskupov a učiteľov Cirkvi",
+ "Sv. Basila Velikého a Řehoře Naziánského, "HTML_LINE_BREAK"biskupů a učitelů církve",
  "",
  "Ss. Basilii Magni et Gregorii Nazianzeni, ep. et Eccl. doct.",
  "",
- "Sv. Basila Velikého a Řehoře Naziánského,"HTML_LINE_BREAK"biskupů a učitelů Církve",
+ "Sv. Basila Velikého a Řehoře Naziánského, "HTML_LINE_BREAK"biskupů a učitelů Církve",
  "Nagy Szent Vazul és Nazianzi Szent Gergely püspökök és egyháztanítók",
  };
 const char *text_JAN_03[POCET_JAZYKOV + 1] = 
@@ -3238,8 +3238,8 @@ const char *text_JAN_24[POCET_JAZYKOV + 1] =
  "Szalézi Szent Ferenc püspök és egyháztanító",
  };
 const char *text_JAN_24_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Saleského, biskupa a učiteľa Cirkvi,"HTML_LINE_BREAK"titulárneho patróna saleziánskej rodiny",
- "Sv. Františka Saleského, biskupa a učitele církve,"HTML_LINE_BREAK"titulárního patrona Společnosti sv. Františka Saleského",
+{"Sv. Františka Saleského, biskupa a učiteľa Cirkvi, "HTML_LINE_BREAK"titulárneho patróna saleziánskej rodiny",
+ "Sv. Františka Saleského, biskupa a učitele církve, "HTML_LINE_BREAK"titulárního patrona Společnosti sv. Františka Saleského",
  "",
  "",
  "",
@@ -3337,8 +3337,8 @@ const char *text_JAN_31[POCET_JAZYKOV + 1] =
  "Bosco Szent János áldozópap",
  };
 const char *text_JAN_31_SDB[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Boska, kňaza, otca a učiteľa mládeže,"HTML_LINE_BREAK"zakladateľa Spoločnosti svätého Františka Saleského,"HTML_LINE_BREAK"Inštitútu dcér Márie Pomocnice"HTML_LINE_BREAK"a saleziánov spolupracovníkov",
- "Sv. Jana Boska, kněze, otce a učitele mládeže,"HTML_LINE_BREAK"zakladatele Společnosti sv. Františka Saleského,"HTML_LINE_BREAK"Institutu Dcer Panny Marie Pomocnice"HTML_LINE_BREAK"a Salesiánů spolupracovníků",
+{"Sv. Jána Boska, kňaza, otca a učiteľa mládeže, "HTML_LINE_BREAK"zakladateľa Spoločnosti svätého Františka Saleského, "HTML_LINE_BREAK"Inštitútu dcér Márie Pomocnice "HTML_LINE_BREAK"a saleziánov spolupracovníkov",
+ "Sv. Jana Boska, kněze, otce a učitele mládeže, "HTML_LINE_BREAK"zakladatele Společnosti sv. Františka Saleského, "HTML_LINE_BREAK"Institutu Dcer Panny Marie Pomocnice "HTML_LINE_BREAK"a Salesiánů spolupracovníků",
  "",
  "",
  "",
@@ -3592,13 +3592,13 @@ const char *text_FEB_13_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_14[POCET_JAZYKOV + 1] = 
-{"Sv. Cyrila, mnícha, a sv. Metoda, biskupa,"HTML_LINE_BREAK"patrónov Európy", // (na Slovensku sa slávi 5. júla)
+{"Sv. Cyrila, mnícha, a sv. Metoda, biskupa", // (na Slovensku sa slávi 5. júla) | odstránený popis "patrónov Európy"
  "(slaví se 5. června)",
  "",
  "Ss. Cyrilli, monachi, et Methodii, ep.",
  "",
  "",
- "Szent Cirill szerzetes és Szent Metód püspök,"HTML_LINE_BREAK"Európa társvédőszentjei",
+ "Szent Cirill szerzetes és Szent Metód püspök, "HTML_LINE_BREAK"Európa társvédőszentjei",
  };
 const char *text_FEB_15_SJ[POCET_JAZYKOV + 1] = 
 {"Sv. Klaudia La Colombi&#232;ra, kňaza", // &egrave;
@@ -3628,7 +3628,7 @@ const char *text_FEB_16_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_FEB_17[POCET_JAZYKOV + 1] = 
-{"Siedmich svätých zakladateľov"HTML_LINE_BREAK"rehole Služobníkov Panny Márie",
+{"Siedmich svätých zakladateľov "HTML_LINE_BREAK"rehole Služobníkov Panny Márie",
  "Sv. Alexia a druhů, řeholníků",
  "",
  "Ss. Septem Fundatorum Ordinis Servorum B. Mari&#230; Virg.",
@@ -4177,12 +4177,12 @@ const char *text_APR_28_2[POCET_JAZYKOV + 1] =
  "Montforti Grignion Szent Lajos Mária áldozópap",
  };
 const char *text_APR_29[POCET_JAZYKOV + 1] = 
-{"Sv. Kataríny Sienskej, panny a učiteľky Cirkvi,"HTML_LINE_BREAK"patrónky Európy",
- "Sv. Kateřiny Sienské, panny a učitelky církve,"HTML_LINE_BREAK"patronky Evropy",
+{"Sv. Kataríny Sienskej, panny a učiteľky Cirkvi, "HTML_LINE_BREAK"patrónky Európy",
+ "Sv. Kateřiny Sienské, panny a učitelky církve, "HTML_LINE_BREAK"patronky Evropy",
  "",
  "S. Catharin&#230; Senensis, virg. et Eccl. doct.",
  "",
- "Sv. Kateřiny Sienské, panny a učitelky Církve,"HTML_LINE_BREAK"patronky Evropy, terciářky",
+ "Sv. Kateřiny Sienské, panny a učitelky Církve, "HTML_LINE_BREAK"patronky Evropy, terciářky",
  "Sienai Szent Katalin szűz és egyháztanító",
  };
 const char *text_APR_30[POCET_JAZYKOV + 1] = 
@@ -4833,7 +4833,7 @@ const char *text_MAJ_30_CZ[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Sv. Zdislavy z Lemberka, matky rodiny, terciářky,"HTML_LINE_BREAK"spolupatronky provincie",
+ "Sv. Zdislavy z Lemberka, matky rodiny, terciářky, "HTML_LINE_BREAK"spolupatronky provincie",
  "",
  };
 const char *text_MAJ_30_HU[POCET_JAZYKOV + 1] = 
@@ -4852,7 +4852,7 @@ const char *text_MAJ_31[POCET_JAZYKOV + 1] =
  "",
  "",
  "Navštívení Panny Marie",
- "Szűz Mária látogatása Erzsébetnél"HTML_LINE_BREAK"(Sarlós Boldogasszony)",
+ "Szűz Mária látogatása Erzsébetnél "HTML_LINE_BREAK"(Sarlós Boldogasszony)",
  };
 
 // --------------- 00 pohyblivé slávenia ---------------
@@ -5388,13 +5388,13 @@ const char *text_JUN_22_2[POCET_JAZYKOV + 1] =
  "Nolai Szent Paulínusz püspök",
  };
 const char *text_JUN_22_1[POCET_JAZYKOV + 1] = 
-{"Sv. Jána Fishera, biskupa,"HTML_LINE_BREAK"a sv. Tomáša Morusa, mučeníkov", // kedysi: Mórusa; Direktórium 2012, str. 156, uvádza už iba s krátkym "o"
- "Sv. Jana Fishera, biskupa,"HTML_LINE_BREAK"a Tomáše Mora, mučedníků",
+{"Sv. Jána Fishera, biskupa, "HTML_LINE_BREAK"a sv. Tomáša Morusa, mučeníkov", // kedysi: Mórusa; Direktórium 2012, str. 156, uvádza už iba s krátkym "o"
+ "Sv. Jana Fishera, biskupa, "HTML_LINE_BREAK"a Tomáše Mora, mučedníků",
  "",
  "",
  "",
- "Sv. Jana Fishera, biskupa,"HTML_LINE_BREAK"a Tomáše Mora, mučedníků",
- "Fisher Szent János püspök"HTML_LINE_BREAK"és Morus Szent Tamás vértanúk",
+ "Sv. Jana Fishera, biskupa, "HTML_LINE_BREAK"a Tomáše Mora, mučedníků",
+ "Fisher Szent János püspök "HTML_LINE_BREAK"és Morus Szent Tamás vértanúk",
  };
 const char *text_JUN_22_HU[POCET_JAZYKOV + 1] = 
 {"",
@@ -5652,12 +5652,12 @@ const char *text_JUL_08_HU[POCET_JAZYKOV + 1] =
  "A székesegyház felszentelése",
  };
 const char *text_JUL_09[POCET_JAZYKOV + 1] = 
-{"Sv. Augustína Zhao Rong, kňaza,"HTML_LINE_BREAK"a spoločníkov, mučeníkov",
- "Sv. Augustina Žao Ronga, kněze"HTML_LINE_BREAK"a jeho druhů, mučedníků",
+{"Sv. Augustína Zhao Rong, kňaza, "HTML_LINE_BREAK"a spoločníkov, mučeníkov",
+ "Sv. Augustina Žao Ronga, kněze "HTML_LINE_BREAK"a jeho druhů, mučedníků",
  "",
  "",
  "",
- "Sv. Augustina Žao Ronga, kněze"HTML_LINE_BREAK"a jeho druhů, mučedníků",
+ "Sv. Augustina Žao Ronga, kněze "HTML_LINE_BREAK"a jeho druhů, mučedníků",
  "Szent Zhao Rong Ágoston áldozópap és társai, kínai vértanúk",
  };
 const char *text_JUL_09_OP[POCET_JAZYKOV + 1] = 
@@ -5697,13 +5697,13 @@ const char *text_JUL_10_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_11[POCET_JAZYKOV + 1] = 
-{"Sv. Benedikta, opáta,"HTML_LINE_BREAK"patróna Európy",
- "Sv. Benedikta, opata,"HTML_LINE_BREAK"patrona Evropy",
+{"Sv. Benedikta, opáta, "HTML_LINE_BREAK"patróna Európy",
+ "Sv. Benedikta, opata, "HTML_LINE_BREAK"patrona Evropy",
  "",
  "",
  "",
- "Sv. Benedikta, opata,"HTML_LINE_BREAK"patrona Evropy",
- "Szent Benedek apát,"HTML_LINE_BREAK"Európa fővédőszentje",
+ "Sv. Benedikta, opata, "HTML_LINE_BREAK"patrona Evropy",
+ "Szent Benedek apát, "HTML_LINE_BREAK"Európa fővédőszentje",
  };
 const char *text_JUL_13[POCET_JAZYKOV + 1] = 
 {"Sv. Henricha",
@@ -5895,12 +5895,12 @@ const char *text_JUL_22[POCET_JAZYKOV + 1] =
  "Szent Mária Magdolna",
  };
 const char *text_JUL_23[POCET_JAZYKOV + 1] = 
-{"Sv. Brigity, rehoľníčky,"HTML_LINE_BREAK"patrónky Európy",
- "Sv. Brigity, řeholnice,"HTML_LINE_BREAK"patronky Evropy",
+{"Sv. Brigity, rehoľníčky, "HTML_LINE_BREAK"patrónky Európy",
+ "Sv. Brigity, řeholnice, "HTML_LINE_BREAK"patronky Evropy",
  "",
  "",
  "",
- "Sv. Brigity, řeholnice,"HTML_LINE_BREAK"patronky Evropy",
+ "Sv. Brigity, řeholnice, "HTML_LINE_BREAK"patronky Evropy",
  "Szent Brigitta szerzetesnő",
  };
 const char *text_JUL_24[POCET_JAZYKOV + 1] = 
@@ -6030,7 +6030,7 @@ const char *text_JUL_30_SK[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_JUL_30_SK_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Zdenky Schelingovej, panny a mučenice,"HTML_LINE_BREAK"rehoľníčky, členky 3. rádu",
+{"Bl. Zdenky Schelingovej, panny a mučenice, "HTML_LINE_BREAK"rehoľníčky, členky 3. rádu",
  "",
  "",
  "",
@@ -6198,7 +6198,7 @@ const char *text_AUG_07_2[POCET_JAZYKOV + 1] =
  "Szent Kajetán áldozópap",
  };
 const char *text_AUG_07_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Agatangela a Kasiána, kňazov a mučeníkov,"HTML_LINE_BREAK"členov 1. rádu",
+{"Bl. Agatangela a Kasiána, kňazov a mučeníkov, "HTML_LINE_BREAK"členov 1. rádu",
  "Bl. Agathangela a Kassiána, kněží a mučedníků",
  "",
  "",
@@ -6225,7 +6225,7 @@ const char *text_AUG_08_OP[POCET_JAZYKOV + 1] =
  "Szent Domonkos áldozópap",
  };
 const char *text_AUG_08_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Dominika, kňaza,"HTML_LINE_BREAK"zakladateľa Rádu dominikánov",
+{"Sv. Dominika, kňaza, "HTML_LINE_BREAK"zakladateľa Rádu dominikánov",
  "Sv. Dominika, kněze",
  "",
  "",
@@ -6234,12 +6234,12 @@ const char *text_AUG_08_OFM[POCET_JAZYKOV + 1] =
  "Szent Domonkos áldozópap",
  };
 const char *text_AUG_09[POCET_JAZYKOV + 1] = 
-{"Sv. Terézie Benedikty z Kríža"HTML_LINE_BREAK"(Edity Steinovej), panny a mučenice,"HTML_LINE_BREAK"patrónky Európy", // podľa Direktória 2012, str. 178
- "Sv. Terezie Benedikty, panny a mučednice,"HTML_LINE_BREAK"patronky Evropy",
+{"Sv. Terézie Benedikty z Kríža "HTML_LINE_BREAK"(Edity Steinovej), panny a mučenice, "HTML_LINE_BREAK"patrónky Európy", // podľa Direktória 2012, str. 178
+ "Sv. Terezie Benedikty, panny a mučednice, "HTML_LINE_BREAK"patronky Evropy",
  "",
  "",
  "",
- "Sv. Terezie Benedikty, panny a mučednice,"HTML_LINE_BREAK"patronky Evropy",
+ "Sv. Terezie Benedikty, panny a mučednice, "HTML_LINE_BREAK"patronky Evropy",
  "A keresztről nevezett Szent Teréz Benedikta (Edith Stein) "HTML_LINE_BREAK"szűz és vértanú, Európa társvédőszentje",
  };
 const char *text_AUG_10[POCET_JAZYKOV + 1] = 
@@ -6351,7 +6351,7 @@ const char *text_AUG_14[POCET_JAZYKOV + 1] =
  "Szent Maximilián Mária Kolbe áldozópap és vértanú",
  };
 const char *text_AUG_14_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Maximiliána Márie Kolbeho,"HTML_LINE_BREAK"kňaza a mučeníka, člena 1. rádu",
+{"Sv. Maximiliána Márie Kolbeho, "HTML_LINE_BREAK"kňaza a mučeníka, člena 1. rádu",
  "Sv. Maxmiliána Marie Kolbeho, kněze a mučedníka",
  "",
  "",
@@ -6396,7 +6396,7 @@ const char *text_AUG_17_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_17_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Beatrix de Silva, panny, zakladateľky"HTML_LINE_BREAK"koncepcionistiek, členky 2. rádu",
+{"Sv. Beatrix de Silva, panny, zakladateľky "HTML_LINE_BREAK"koncepcionistiek, členky 2. rádu",
  "",
  "",
  "",
@@ -6441,7 +6441,7 @@ const char *text_AUG_18_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_18_1_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Alojza Adama a Mikuláša Savoureta,"HTML_LINE_BREAK"kňazov a mučeníkov, členov 1. rádu",
+{"Bl. Alojza Adama a Mikuláša Savoureta, "HTML_LINE_BREAK"kňazov a mučeníkov, členov 1. rádu",
  "",
  "",
  "",
@@ -6450,7 +6450,7 @@ const char *text_AUG_18_1_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_AUG_18_2_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jána, Protáza a Sebastiána, kňazov,"HTML_LINE_BREAK"členov 1. rádu, a spoločníkov, mučeníkov",
+{"Bl. Jána, Protáza a Sebastiána, kňazov, "HTML_LINE_BREAK"členov 1. rádu, a spoločníkov, mučeníkov",
  "Bl. Jana Ludvíka, Protasia a Sebastiana, kněží a mučedníků",
  "",
  "",
@@ -6723,7 +6723,7 @@ const char *text_SEP_02_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_02_1_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Jána Františka Burtého, kňaza a mučeníka,"HTML_LINE_BREAK"člena 1. rádu",
+{"Bl. Jána Františka Burtého, kňaza a mučeníka, "HTML_LINE_BREAK"člena 1. rádu",
  "",
  "",
  "",
@@ -6732,7 +6732,7 @@ const char *text_SEP_02_1_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_02_2_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Apolinára z Posatu, kňaza, člena 1. rádu,"HTML_LINE_BREAK"a spoločníkov, mučeníkov",
+{"Bl. Apolinára z Posatu, kňaza, člena 1. rádu, "HTML_LINE_BREAK"a spoločníkov, mučeníkov",
  "Bl. Apolináře z Posaty a druhů, mučedníků",
  "",
  "",
@@ -6795,7 +6795,7 @@ const char *text_SEP_06_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_06_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Michala (Jána Františka) Czartoryského, kňaza,"HTML_LINE_BREAK"a bl. Júlie (Stanislavy) Rodzińskej, panny a rehoľníčky,"HTML_LINE_BREAK"mučeníkov",
+{"Bl. Michala (Jána Františka) Czartoryského, kňaza, "HTML_LINE_BREAK"a bl. Júlie (Stanislavy) Rodzińskej, panny a rehoľníčky, "HTML_LINE_BREAK"mučeníkov",
  "",
  "",
  "",
@@ -6804,7 +6804,7 @@ const char *text_SEP_06_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_07[POCET_JAZYKOV + 1] = 
-{"Sv. Marka Križina, Melichara Grodzieckého"HTML_LINE_BREAK"a Štefana Pongrácza, kňazov a mučeníkov",
+{"Sv. Marka Križina, Melichara Grodzieckého "HTML_LINE_BREAK"a Štefana Pongrácza, kňazov a mučeníkov",
  "Sv. Melichara Grodeckého, kněze a mučedníka",
  "",
  "",
@@ -7002,7 +7002,7 @@ const char *text_SEP_19[POCET_JAZYKOV + 1] =
  "Szent Januáriusz püspök és vértanú",
  };
 const char *text_SEP_19_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Františka Márie z Camporossa,"HTML_LINE_BREAK"rehoľníka, člena 1. rádu",
+{"Sv. Františka Márie z Camporossa, "HTML_LINE_BREAK"rehoľníka, člena 1. rádu",
  "Sv. Františka Marie z Camporossa, řeholníka",
  "",
  "",
@@ -7011,7 +7011,7 @@ const char *text_SEP_19_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_20[POCET_JAZYKOV + 1] = 
-{"Sv. Andreja Kim Taegona, kňaza,"HTML_LINE_BREAK"a sv. Pavla Chong Hasanga a spoločníkov, mučeníkov",
+{"Sv. Andreja Kim Taegona, kňaza, "HTML_LINE_BREAK"a sv. Pavla Chong Hasanga a spoločníkov, mučeníkov",
  "Sv. Ondřeje Kim Taegona, kněze, Pavla Chong Hasanga a druhů, mučedníků",
  "",
  "",
@@ -7173,7 +7173,7 @@ const char *text_SEP_26_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_SEP_26_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Aurélia z Vinalesy, kňaza, a spoločníkov,"HTML_LINE_BREAK"mučeníkov, členov 1. rádu",
+{"Bl. Aurélia z Vinalesy, kňaza, a spoločníkov, "HTML_LINE_BREAK"mučeníkov, členov 1. rádu",
  "Bl. Aurela z Vinalesy, kněze, a druhů, mučedníků",
  "",
  "",
@@ -7196,7 +7196,7 @@ const char *text_SEP_28[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Sv. Václava, mučedníka, hlavního patrona českého národa,"HTML_LINE_BREAK"hlavního patrona provincie",
+ "Sv. Václava, mučedníka, hlavního patrona českého národa, "HTML_LINE_BREAK"hlavního patrona provincie",
  "Szent Vencel vértanú",
  };
 const char *text_SEP_28_2[POCET_JAZYKOV + 1] = 
@@ -7214,7 +7214,7 @@ const char *text_SEP_28_OP[POCET_JAZYKOV + 1] =
  "",
  "",
  "",
- "Sv. Dominika Ibaněze z Erquicia, Jakuba Kyušei Tomonagy, kněží,"HTML_LINE_BREAK"Vavřince Ruize, otce rodiny, a druhů, japonských mučedníků", // CZOP kvôli sv. Václavovi slávia 26SEP
+ "Sv. Dominika Ibaněze z Erquicia, Jakuba Kyušei Tomonagy, kněží, "HTML_LINE_BREAK"Vavřince Ruize, otce rodiny, a druhů, japonských mučedníků", // CZOP kvôli sv. Václavovi slávia 26SEP
  "",
  };
 const char *text_SEP_28_OFM[POCET_JAZYKOV + 1] = 
@@ -7293,7 +7293,7 @@ const char *text_OKT_04[POCET_JAZYKOV + 1] =
  "Assisi Szent Ferenc",
  };
 const char *text_OKT_04_OFM[POCET_JAZYKOV + 1] = 
-{"Nášho otca sv. Františka, diakona,"HTML_LINE_BREAK"zakladateľa troch rádov",
+{"Nášho otca sv. Františka, diakona, "HTML_LINE_BREAK"zakladateľa troch rádov",
  "Sv. Františka, jáhna, zakladatele tří řádů",
  "",
  "",
@@ -7537,7 +7537,7 @@ const char *text_OKT_13_SDB[POCET_JAZYKOV + 1] =
  };
 const char *text_OKT_13_OPRAEM[POCET_JAZYKOV + 1] = 
 {"",
- "Bl. Petra Adriána Toulorge, kněze a mučedníka"HTML_LINE_BREAK"z premonstrátského řádu",
+ "Bl. Petra Adriána Toulorge, kněze a mučedníka "HTML_LINE_BREAK"z premonstrátského řádu",
  "",
  "",
  "",
@@ -7626,7 +7626,7 @@ const char *text_OKT_18[POCET_JAZYKOV + 1] =
  "Szent Lukács evangélista",
  };
 const char *text_OKT_19_1[POCET_JAZYKOV + 1] = 
-{"Sv. Jána de Brébeuf a Izáka Jogues, kňazov,"HTML_LINE_BREAK"a spoločníkov, mučeníkov", //  // 'sv. Izáka', podľa Direktória 2012, str. 210 nie je 'sv.'
+{"Sv. Jána de Brébeuf a Izáka Jogues, kňazov, "HTML_LINE_BREAK"a spoločníkov, mučeníkov", //  // 'sv. Izáka', podľa Direktória 2012, str. 210 nie je 'sv.'
  "Sv. Jana de Brébeuf a Izáka Joguese, kněží, a druhů, mučedníků",
  "",
  "",
@@ -7716,7 +7716,7 @@ const char *text_OKT_21_OPRAEM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_22_OP[POCET_JAZYKOV + 1] = 
-{"Výročie posviacky konventného kostola,"HTML_LINE_BREAK"ktorého deň posviacky nie je známy",
+{"Výročie posviacky konventného kostola, "HTML_LINE_BREAK"ktorého deň posviacky nie je známy",
  "",
  "",
  "",
@@ -7806,7 +7806,7 @@ const char *text_OKT_25_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_25_OFM[POCET_JAZYKOV + 1] = 
-{"Bl. Márie od Ježiša Masie Ferragutovej a spoločníc,"HTML_LINE_BREAK"panien a mučeníc, členiek 2. rádu",
+{"Bl. Márie od Ježiša Masie Ferragutovej a spoločníc, "HTML_LINE_BREAK"panien a mučeníc, členiek 2. rádu",
  "",
  "",
  "",
@@ -7824,12 +7824,12 @@ const char *text_OKT_25_HU[POCET_JAZYKOV + 1] =
  "Szent Mór püspök",
  };
 const char *text_OKT_26[POCET_JAZYKOV + 1] = 
-{"Výročie posviacky chrámov,"HTML_LINE_BREAK"ktorých deň posviacky nie je známy",  // 'je neznámy' opravené podľa Direktória 2012, str. 214
- "Výročí posvěcení chrámu,"HTML_LINE_BREAK"jejichž den dedikace není známý",
+{"Výročie posviacky chrámov, "HTML_LINE_BREAK"ktorých deň posviacky nie je známy",  // 'je neznámy' opravené podľa Direktória 2012, str. 214
+ "Výročí posvěcení chrámu, "HTML_LINE_BREAK"jejichž den dedikace není známý",
  "",
  "",
  "",
- "Výročí posvěcení chrámu,"HTML_LINE_BREAK"jejichž den dedikace není známý",
+ "Výročí posvěcení chrámu, "HTML_LINE_BREAK"jejichž den dedikace není známý",
  "A saját templom felszentelése "HTML_LINE_BREAK"(amennyiben annak napja nem ismeretes)", // A felszentelt templomokban: A saját templom felszentelése
  };
 const char *text_OKT_26_OP[POCET_JAZYKOV + 1] = 
@@ -7923,7 +7923,7 @@ const char *text_OKT_30_1_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_OKT_30_2_OP[POCET_JAZYKOV + 1] = 
-{"Bl. Terenca Alberta O’Brien, biskupa,"HTML_LINE_BREAK"a bl. Petra Higginsa, kňaza, mučeníkov",
+{"Bl. Terenca Alberta O’Brien, biskupa, "HTML_LINE_BREAK"a bl. Petra Higginsa, kňaza, mučeníkov",
  "",
  "",
  "",
@@ -8016,7 +8016,7 @@ const char *text_NOV_03_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_03_OFM[POCET_JAZYKOV + 1] = 
-{"Spomienka na všetkých zosnulých"HTML_LINE_BREAK"troch františkánskych rádov",
+{"Spomienka na všetkých zosnulých "HTML_LINE_BREAK"troch františkánskych rádov",
  "Vzpomínka na všechny zemřelé serafínského řádu",
  "",
  "",
@@ -8106,12 +8106,12 @@ const char *text_NOV_08_OFM[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_08_OP[POCET_JAZYKOV + 1] = 
-{"Spomienka na všetkých zosnulých"HTML_LINE_BREAK"bratov a sestry Rehole kazateľov",
+{"Spomienka na všetkých zosnulých "HTML_LINE_BREAK"bratov a sestry Rehole kazateľov",
  "",
  "",
  "",
  "",
- "Všech zemřelých bratří a sester"HTML_LINE_BREAK"Řádu bratří kazatelů",
+ "Všech zemřelých bratří a sester "HTML_LINE_BREAK"Řádu bratří kazatelů",
  "",
  };
 const char *text_NOV_08_OPRAEM[POCET_JAZYKOV + 1] = 
@@ -8241,7 +8241,7 @@ const char *text_NOV_14_2_OP[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_14_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Mikuláša Tavelića a spoločníkov,"HTML_LINE_BREAK"kňazov a mučeníkov, členov 1. rádu",
+{"Sv. Mikuláša Tavelića a spoločníkov, "HTML_LINE_BREAK"kňazov a mučeníkov, členov 1. rádu",
  "Sv. Mikuláše Taveliče, kněze, a druhů, mučedníků",
  "",
  "",
@@ -8286,7 +8286,7 @@ const char *text_NOV_16_2[POCET_JAZYKOV + 1] =
  "Nagy Szent Gertrúd szűz", // HU 17NOV
  };
 const char *text_NOV_16_SJ[POCET_JAZYKOV + 1] = 
-{"Sv. Rocha Gonzáleza, Alfonza Rodrígueza"HTML_LINE_BREAK"a Jána del Castillo, kňazov a mučeníkov",
+{"Sv. Rocha Gonzáleza, Alfonza Rodrígueza "HTML_LINE_BREAK"a Jána del Castillo, kňazov a mučeníkov",
  "",
  "",
  "",
@@ -8304,7 +8304,7 @@ const char *text_NOV_17[POCET_JAZYKOV + 1] =
  "Árpád-házi Szent Erzsébet", // HU 19NOV
  };
 const char *text_NOV_17_OFM[POCET_JAZYKOV + 1] = 
-{"Sv. Alžbety Uhorskej, rehoľníčky,"HTML_LINE_BREAK"patrónky františkánskeho svetského rádu",
+{"Sv. Alžbety Uhorskej, rehoľníčky, "HTML_LINE_BREAK"patrónky františkánskeho svetského rádu",
  "Sv. Alžběty Uherské, patronky 3. řádu",
  "",
  "",
@@ -8403,7 +8403,7 @@ const char *text_NOV_23_SJ[POCET_JAZYKOV + 1] =
  "",
  };
 const char *text_NOV_24[POCET_JAZYKOV + 1] = 
-{"Sv. Ondreja Dung-Laka, kňaza,"HTML_LINE_BREAK"a spoločníkov, mučeníkov",
+{"Sv. Ondreja Dung-Laka, kňaza, "HTML_LINE_BREAK"a spoločníkov, mučeníkov",
  "Sv. Ondřeje Dung-Laca, kněze, a druhů, mučedníků",
  "",
  "",
