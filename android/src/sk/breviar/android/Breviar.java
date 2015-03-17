@@ -37,6 +37,7 @@ import sk.breviar.android.CompatibilityHelper11;
 import sk.breviar.android.CompatibilityHelper19;
 import sk.breviar.android.LangSelect;
 import sk.breviar.android.Server;
+import sk.breviar.android.UrlOptions;
 import sk.breviar.android.Util;
 
 public class Breviar extends Activity implements View.OnLongClickListener {
@@ -101,23 +102,11 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       recreateIfNeeded();
     }
 
-    // Hack: parse opts to get night mode. This should be replaced by proper option parsing.
-    boolean isNightmode() {
-      String o2 = S.getOpts().replaceAll(".*&amp;o2=", "").replaceAll("&.*", "");
-      boolean out;
-      try {
-        out = (Integer.parseInt(o2) & 256) != 0;
-      } catch (java.lang.NumberFormatException e) {
-        out = false;
-        Log.v("breviar", "Cannot parse nightmode. Opts = " + S.getOpts());
-      }
-      return out;
-    }
-
     public boolean tryOpenBible(String url) {
       try {
+        UrlOptions opts = new UrlOptions(S.getOpts());
         startActivity(new Intent("sk.ksp.riso.svpismo.action.SHOW", Uri.parse(url))
-                          .putExtra("nightmode", isNightmode()));
+                          .putExtra("nightmode", opts.isNightmode()));
       } catch (android.content.ActivityNotFoundException e) {
         return false;
       }
@@ -505,8 +494,10 @@ public class Breviar extends Activity implements View.OnLongClickListener {
           updateFullscreen();
           syncPreferences();
           return true;
-        case R.id.alarms:
-          startActivity(new Intent("sk.breviar.android.ALARMS"));
+        case R.id.nightmode_toggle:
+          UrlOptions opts = new UrlOptions(wv.getUrl(), true);
+          opts.setNightmode(!opts.isNightmode());
+          wv.loadUrl(opts.build());
           return true;
         case R.id.menu_about:
           showDialog(DIALOG_ABOUT);
@@ -523,6 +514,14 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       } else {
         menu.findItem(R.id.fullscreen_toggle).setTitle(R.string.fullscreenOn);
       }
+
+      UrlOptions opts = new UrlOptions(S.getOpts());
+      if (opts.isNightmode()) {
+        menu.findItem(R.id.nightmode_toggle).setTitle(R.string.nightmodeOff);
+      } else {
+        menu.findItem(R.id.nightmode_toggle).setTitle(R.string.nightmodeOn);
+      }
+
       return super.onPrepareOptionsMenu(menu);
     }
 

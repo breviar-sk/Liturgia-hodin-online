@@ -99,6 +99,12 @@ public class LangSelect extends Activity {
           showDialog(DIALOG_NEWS);
         }
       });
+
+      ((Button)findViewById(R.id.alarms)).setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          startActivity(new Intent("sk.breviar.android.ALARMS"));
+        }
+      });
     }
 
     @Override

@@ -45,6 +45,9 @@
     <CheckBox android:id="@+id/mute_check" android:text="@string/mute"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+    <Button android:id="@+id/alarms" android:text="@string/alarms"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <Button android:id="@+id/about" android:text="@string/about" 
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 

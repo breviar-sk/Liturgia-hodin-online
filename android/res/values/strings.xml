@@ -26,6 +26,9 @@
     <string name="fullscreenOn">Fullscreen</string>
     <string name="fullscreenOff">No fullscreen</string>
 
+    <string name="nightmodeOn">Night mode</string>
+    <string name="nightmodeOff">Day mode</string>
+
     <string name="inv">Invitatory</string>
     <string name="rch">Lauds</string>
     <string name="vesp">Vespers</string>

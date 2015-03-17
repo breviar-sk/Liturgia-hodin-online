@@ -24,6 +24,9 @@
     <string name="fullscreenOn">Celá obrazovka</string>
     <string name="fullscreenOff">Zobraz navigáciu</string>
 
+    <string name="nightmodeOn">Nočný režim</string>
+    <string name="nightmodeOff">Denný režim</string>
+
     <string name="inv">Invitatórium</string>
     <string name="rch">Ranné chvály</string>
     <string name="vesp">Vešpery</string>

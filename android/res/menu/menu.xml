@@ -6,10 +6,7 @@
 
     <item android:id="@+id/fullscreen_toggle" android:title="@string/fullscreenOn" />
 
-    <item android:id="@+id/alarms"
-        android:title="@string/alarms">
-<!--        android:icon="@drawable/panel"> //-->
-    </item>
+    <item android:id="@+id/nightmode_toggle" android:title="@string/nightmodeOn" />
 
     <item android:id="@+id/menu_about" android:title="@string/menu_about" />
 

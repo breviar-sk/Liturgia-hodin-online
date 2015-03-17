@@ -12,8 +12,7 @@ import sk.breviar.android.FdInputStream;
 import sk.breviar.android.FdOutputStream;
 import java.lang.InterruptedException;
 
-public class Server extends Thread
-{
+public class Server extends Thread {
     public int port;
     ServerSocket listener;
     Context ctx;
@@ -187,6 +186,7 @@ public class Server extends Thread
           persistentOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=POST\001CONTENT_TYPE=application/x-www-form-urlencoded\001CONTENT_LENGTH=" +
               cntlen + "\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
         }
+        Log.v("breviar", "persistentOpts = " + persistentOpts);
         boolean ok;
         do {
           try {
