@@ -182,4 +182,28 @@ public class Util {
     }
     return output.toString();
   }
+
+  static public String getAboutText(Context ctx) {
+    try {
+      String output =
+          ctx.getString(R.string.about_text_head) +
+          streamToString(ctx.getAssets().open(ctx.getString(R.string.about_text))) +
+          ctx.getString(R.string.about_text_tail);
+
+      return output
+          .replaceAll("<!--\\{VERSION\\}-->", ctx.getString(R.string.version))
+          .replaceAll("<!--\\{PROJECT_URL\\}-->", ctx.getString(R.string.about_PROJECT_URL))
+          .replaceAll("<!--\\{E_MAIL\\}-->", ctx.getString(R.string.about_E_MAIL))
+          .replaceAll("<!--\\{APP_NAME\\}-->", ctx.getString(R.string.about_APP_NAME))
+          .replaceAll("<!--\\{SPECIAL_CREDITS\\}-->", ctx.getString(R.string.about_SPECIAL_CREDITS))
+          .replaceAll("<!--\\{PROJECT_SOURCE_STORAGE\\}-->", ctx.getString(R.string.about_PROJECT_SOURCE_STORAGE))
+          .replaceAll("<!--\\{PROJECT_SOURCE_URL\\}-->", ctx.getString(R.string.about_PROJECT_SOURCE_URL))
+          .replaceAll("<!--\\{PLATFORM_ANDROID\\}-->", ctx.getString(R.string.about_PLATFORM_ANDROID))
+          .replaceAll("<!--\\{PLATFORM_IOS\\}-->", ctx.getString(R.string.about_PLATFORM_IOS));
+    } catch (java.io.IOException e) {
+      Log.v("breviar", "Can not open file: " + e.getMessage());
+
+      return "";
+    }
+  }
 }

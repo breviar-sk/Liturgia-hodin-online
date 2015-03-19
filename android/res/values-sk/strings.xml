@@ -68,6 +68,14 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
+<p><b>Nové vo verzii 1.11:</b>
+<ul>
+<li> Prepínanie nočného/denného režimu priamo v hlavnom menu.
+<li> Väčšia výška riadkov pre lepšiu čitateľnosť.
+<li> Dialóg „O aplikácii“ upravený.
+<li> Opravy drobných chýb a mnohých preklepov.
+</ul>
+
 <p><b>Nové vo verzii 1.10.1:</b>
 <ul>
 <li> Opravy drobných chýb a mnohých preklepov.

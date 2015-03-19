@@ -65,9 +65,12 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
-<p><b>Újdonságok az 1.10.1-es verzióban:</b>
+<p><b>Újdonságok az 1.11-es verzióban:</b>
 <ul>
-<li> Many fixes...
+<li> Éjszakai/nappali mód váltása a főmenüből.
+<li> Nagyobb sorköz a jobb olvashatóság érdekében.
+<li> Frissített „Névjegy” párbeszédablak.
+<li> Gépelési hibák javítása mindegyik nyelvnél.
 </ul>
 
 <p><b>Újdonságok az 1.10-es verzióban:</b>

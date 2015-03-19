@@ -68,9 +68,12 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
-<p><b>Nové ve verzi 1.10.1:</b>
+<p><b>Nové ve verzi 1.11:</b>
 <ul>
-<li> Oprava chyb a překlepů.
+<li> Přepínání nočního/denního režimu přímo v hlavním menu.
+<li> Větší výška řádkování pro lepší čitelnost.
+<li> Dialog „O aplikaci“ upraven.
+<li> Opravy chyb a překlepů.
 </ul>
 
 <p><b>Nové ve verzi 1.10:</b>

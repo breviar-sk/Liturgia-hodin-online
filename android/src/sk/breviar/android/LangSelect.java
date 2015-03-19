@@ -112,7 +112,7 @@ public class LangSelect extends Activity {
       String content = null;
       switch(id) {
         case DIALOG_ABOUT:
-          content = getString(R.string.about_text);
+          content = Util.getAboutText(this);
           break;
         case DIALOG_NEWS:
           content = getString(R.string.news);

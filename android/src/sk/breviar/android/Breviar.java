@@ -53,6 +53,7 @@ public class Breviar extends Activity implements View.OnLongClickListener {
     String language;
     boolean initialized, clearHistory;
     boolean fullscreen = false;
+    float scroll_to = -1;
 
     int appEventId = -1;
     PowerManager.WakeLock lock;
@@ -225,6 +226,19 @@ public class Breviar extends Activity implements View.OnLongClickListener {
           if (parent.clearHistory) view.clearHistory();
           parent.clearHistory = false;
           super.onPageFinished(view, url);
+
+          // Ugly hack. But we have no reliable notification when is webview scrollable.
+          if (parent.scroll_to < 0) return;
+          final WebView wv = view;
+          view.postDelayed(new Runnable() {
+            public void run() {
+              if (parent.scroll_to >= 0) {
+                int Y = (int)(parent.scroll_to*wv.getContentHeight());
+                wv.scrollTo(0, Y);
+              }
+              parent.scroll_to = -1;
+            }
+          }, 400);
         }
       } );
 
@@ -421,35 +435,12 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       return true;
     }
     
-    String getAboutText() {
-      try {
-        String output =
-            getString(R.string.about_text_head) +
-            Util.streamToString(getAssets().open(getString(R.string.about_text))) +
-            getString(R.string.about_text_tail);
-
-        return output
-            .replaceAll("<!--\\{PROJECT_URL\\}-->", getString(R.string.about_PROJECT_URL))
-            .replaceAll("<!--\\{E_MAIL\\}-->", getString(R.string.about_E_MAIL))
-            .replaceAll("<!--\\{APP_NAME\\}-->", getString(R.string.about_APP_NAME))
-            .replaceAll("<!--\\{SPECIAL_CREDITS\\}-->", getString(R.string.about_SPECIAL_CREDITS))
-            .replaceAll("<!--\\{PROJECT_SOURCE_STORAGE\\}-->", getString(R.string.about_PROJECT_SOURCE_STORAGE))
-            .replaceAll("<!--\\{PROJECT_SOURCE_URL\\}-->", getString(R.string.about_PROJECT_SOURCE_URL))
-            .replaceAll("<!--\\{PLATFORM_ANDROID\\}-->", getString(R.string.about_PLATFORM_ANDROID))
-            .replaceAll("<!--\\{PLATFORM_IOS\\}-->", getString(R.string.about_PLATFORM_IOS));
-      } catch (java.io.IOException e) {
-        Log.v("breviar", "Can not open file: " + e.getMessage());
-
-        return "";
-      }
-    }
-
     @Override
     protected Dialog onCreateDialog(int id) {
       String content = null;
       switch(id) {
         case DIALOG_ABOUT:
-          content = getAboutText();
+          content = Util.getAboutText(this);
           break;
         case DIALOG_NEWS:
           content = getString(R.string.news);
@@ -497,7 +488,10 @@ public class Breviar extends Activity implements View.OnLongClickListener {
         case R.id.nightmode_toggle:
           UrlOptions opts = new UrlOptions(wv.getUrl(), true);
           opts.setNightmode(!opts.isNightmode());
+
+          scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
           wv.loadUrl(opts.build());
+
           return true;
         case R.id.menu_about:
           showDialog(DIALOG_ABOUT);
