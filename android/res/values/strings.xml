@@ -86,6 +86,12 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
+<p><b>News in v1.11.1:</b>
+<ul>
+<li> Liturgical readings: Backward compatibility with Android 2.x and older.
+<li> Typos and fixes for all languages.
+</ul>
+
 <p><b>News in v1.11:</b>
 <ul>
 <li> Switching night/day mode from main menu.

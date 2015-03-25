@@ -68,6 +68,12 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
+<p><b>Újdonságok az 1.11.1-es verzióban:</b>
+<ul>
+<li> Typos and fixes.
+<li> Fix of rare cases: Backward compatibility with Android 2.x and older.
+</ul>
+
 <p><b>Újdonságok az 1.11-es verzióban:</b>
 <ul>
 <li> Éjszakai/nappali mód váltása a főmenüből.

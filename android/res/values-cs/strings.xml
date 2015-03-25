@@ -68,6 +68,12 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
+<p><b>Nové ve verzi 1.11.1:</b>
+<ul>
+<li> Opravy chyb a překlepů.
+<li> Oprava: Kompatibilita s Android 2.x a staršími.
+</ul>
+
 <p><b>Nové ve verzi 1.11:</b>
 <ul>
 <li> Přepínání nočního/denního režimu přímo v hlavním menu.

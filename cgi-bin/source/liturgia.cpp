@@ -439,6 +439,11 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){
 		Log("i == %d...\n", i);
 		local_opt_default = CFG_OPTION_DEFAULT(i);
+#ifdef IO_ANDROID
+                // Export all options in android, so that the UI can parse and
+                // modify their values correctly.
+                podmienka = 1;
+#else
 		if(force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE){
 			Log("_global_opt[%d] == %d; CFG_OPTION_DEFAULT(%d) == %d;\n", i, _global_opt[i], i, local_opt_default);
 			podmienka = (_global_opt[i] != local_opt_default);
@@ -447,6 +452,7 @@ void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int 
 			Log("_global_opt[%d] == %d; _global_optf[%d] == %d; CFG_OPTION_DEFAULT(%d) == %d;\n", i, _global_opt[i], i, _global_optf[i], i, local_opt_default);
 			podmienka = (_global_optf[i] != local_opt_default);
 		}
+#endif
 		if(podmienka){
 			strcpy(local_str, STR_EMPTY);
 			switch(i){

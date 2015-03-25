@@ -1,7 +1,10 @@
 package sk.breviar.android;
 
 import android.net.Uri;
+import android.util.Log;
 import java.util.Map;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class UrlOptions {
   public UrlOptions(String opts, boolean is_full_url) {
@@ -11,8 +14,15 @@ public class UrlOptions {
       base_uri = Uri.parse("http://127.0.0.1/cgi?q=pdnes" + opts.replaceAll("&amp;", "&"));
     }
     params = new java.util.HashMap<String, String>();
-    for (String param : base_uri.getQueryParameterNames()) {
-      params.put(param, base_uri.getQueryParameter(param));
+
+    Pattern p = Pattern.compile("(^|&)([^;=]+)=");
+    Matcher m = p.matcher(base_uri.getQuery());
+    while (m.find()) {
+      String key = m.group(2);
+      String value = base_uri.getQueryParameter(key);
+      if (value != null) {
+        params.put(key, base_uri.getQueryParameter(key));
+      }
     }
   }
 
@@ -21,12 +31,15 @@ public class UrlOptions {
   }
 
   public String build() {
-    Uri.Builder builder = base_uri.buildUpon();
-    builder.clearQuery();
+    Uri.Builder builder = new Uri.Builder();
+    builder.scheme(base_uri.getScheme());
+    builder.encodedAuthority(base_uri.getEncodedAuthority());
+    builder.appendEncodedPath(base_uri.getEncodedPath().replaceAll("^/", ""));
     for (Map.Entry<String, String> entry : params.entrySet()) {
       builder.appendQueryParameter(entry.getKey(), entry.getValue());
     }
-    return builder.build().toString();
+    String result = builder.build().toString();
+    return result;
   }
 
   public boolean isNightmode() {

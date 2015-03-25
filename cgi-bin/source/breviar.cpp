@@ -7285,7 +7285,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 			if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_BUTTONY_USPORNE) == BIT_OPT_2_BUTTONY_USPORNE){
 				Export("<!-- nezobraziť mcd -->\n");
 			}
-			else{
+/*			else{
 				Export(HTML_NONBREAKING_SPACE);
 
 				Export("</td>\n");
@@ -7300,7 +7300,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 				Export("</td>\n");
 				Export("<td "HTML_VALIGN_MIDDLE">\n");
-			}
+			} */
 		}// NEzobraziť buttony pre modlitbu cez deň + kompletórium
 
 		// spomienka panny márie v sobotu nemá vešpery (ani kompletórium po nich)

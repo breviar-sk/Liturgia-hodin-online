@@ -486,7 +486,8 @@ public class Breviar extends Activity implements View.OnLongClickListener {
           syncPreferences();
           return true;
         case R.id.nightmode_toggle:
-          UrlOptions opts = new UrlOptions(wv.getUrl(), true);
+          UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"),
+                                          true);
           opts.setNightmode(!opts.isNightmode());
 
           scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
