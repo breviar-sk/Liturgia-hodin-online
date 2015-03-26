@@ -70,8 +70,10 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Újdonságok az 1.11.1-es verzióban:</b>
 <ul>
-<li> Typos and fixes.
-<li> Fix of rare cases: Backward compatibility with Android 2.x and older.
+<li> Gépelési hibák javítása.
+<li> Visszafelé való kompatibilitás javítása az Android 2.x és régebbi verziókkal.
+<li> Zsoltárok közötti térköz növelése azonos antifónák esetén.
+<li> Több bekezdésből álló könyörgések olvashatóbb tagolása.
 </ul>
 
 <p><b>Újdonságok az 1.11-es verzióban:</b>
