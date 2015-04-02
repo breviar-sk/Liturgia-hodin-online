@@ -245,7 +245,24 @@
 // 2009-01-29: zmenené na 6 (maďarčina)
 // 2011-04-13: presunuté sem spolu s POCET_GLOBAL_OPT aj MAX_STR, GLOBAL_OPTION_NULL
 #define	POCET_RITOV	         1
+
+// number of supported languages | Warning: for all string constants we use arrays [POCET_JAZYKOV + 1] => be careful when incrementing POCET_JAZYKOV!
+/* INCREMENT_FOR_NEW_LANGUAGE */
 #define	POCET_JAZYKOV	     6
+// when adding new language, the following notes MUST BE replaced:
+//
+// , /* STRING_FOR_NEW_LANGUAGE */ -> , "string_for_new_language", /* STRING_FOR_NEW_LANGUAGE */
+//
+// --or in multi-line constants--
+// 
+// /* STRING_FOR_NEW_LANGUAGE */ -> (replace with the following two lines)
+// "string_for_new_language", 
+// /* STRING_FOR_NEW_LANGUAGE */
+//
+// in other words, always preserve ", /* STRING_FOR_NEW_LANGUAGE */" with preceding comma (may be in the same line or at the end of previous line) :)
+//
+// also change the following: ADD_VALUE_FOR_NEW_LANGUAGE
+
 #define POCET_GLOBAL_OPT     6
 #define MAX_STR            300 // maximalna dlzka retazca
 #define GLOBAL_OPTION_NULL  -1 // neurčená hodnota pre global option

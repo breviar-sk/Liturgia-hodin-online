@@ -41,11 +41,12 @@ char cfg_http_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_http_display_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
 
-const char *cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] = 
-{"specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "http_adresa", "http_zobraz_adr", "mail_adresa"};
+const char *cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] =
+{ "specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "http_adresa", "http_zobraz_adr", "mail_adresa" };
 #define ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX "_"
-const char *cfg_option_postfix[POCET_JAZYKOV + 1] = 
-{"def", "cz", "en", "la", "", "czop", "hu"};
+
+const char *cfg_option_postfix[POCET_JAZYKOV + 1] =
+{ "def", "cz", "en", "la", "", "czop", "hu", /* STRING_FOR_NEW_LANGUAGE */ };
 
 void printConfigOptions(void){
 	short int j = 0, o = 0;

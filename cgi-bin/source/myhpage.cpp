@@ -335,14 +335,16 @@ void xml_hlavicka(FILE * expt){
 	_xml_hlavicka(expt);
 }
 
-//const char *gpage[] = {"Generovaná stránka", "Stránky jsou generovány", "Generated page", "Generated"};
-const char *gpage[POCET_JAZYKOV + 1] = {"Generované: ", "Generováno: ", "Generated: ", "Generated: ", "Generated: ", "Generováno: ", "Generálva: "};
+const char *gpage[POCET_JAZYKOV + 1] = { "Generované: ", "Generováno: ", "Generated: ", "Generated: ", "Generated: ", "Generováno: ", "Generálva: ", /* STRING_FOR_NEW_LANGUAGE */ };
+
 // Generované + dátum: "%d. %s %d, %02d:%02d:%02d" -- pôvodne to bolo v zátvorkách
-const char *datum_cas_template[POCET_JAZYKOV + 1] = {"%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d"};
+const char *datum_cas_template[POCET_JAZYKOV + 1] = { "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", /* STRING_FOR_NEW_LANGUAGE */ };
+
 // Build: "Build: %s. "
-const char *build_template[POCET_JAZYKOV + 1] = {"<!--Verzia: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->"};
+const char *build_template[POCET_JAZYKOV + 1] = { "<!--Verzia: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->", /* STRING_FOR_NEW_LANGUAGE */ };
+
 // Generované + dátum (bez času - pre batch mód, aby sa ľahko porovnávali vygenerované modlitby): "%d. %s %d"
-const char *datum_template[POCET_JAZYKOV + 1] = {"%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d"};
+const char *datum_template[POCET_JAZYKOV + 1] = { "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", /* STRING_FOR_NEW_LANGUAGE */ };
 
 const char *html_mail_label_long = "Juraj Vid&#233;ky";
 const char *html_mail_label_short = "J. Vid&#233;ky";

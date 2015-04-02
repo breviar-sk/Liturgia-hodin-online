@@ -6309,11 +6309,13 @@ short int init_global_string_spol_cast(short int sc_jedna, short int poradie_sva
 			strcat(_global_string_spol_cast, lowered_nazov_spolc(sc.a1));
 			if(sc.a2 != MODL_SPOL_CAST_NEURCENA){
 				strcat(_global_string_spol_cast, ", ");
+				strcat(_global_string_spol_cast, HTML_LINE_BREAK);
 				strcat(_global_string_spol_cast, nazov_spolc_alebo_jazyk[_global_jazyk]);
 				strcat(_global_string_spol_cast, " ");
 				strcat(_global_string_spol_cast, lowered_nazov_spolc(sc.a2));
 				if(sc.a3 != MODL_SPOL_CAST_NEURCENA){
 					strcat(_global_string_spol_cast, ", ");
+					strcat(_global_string_spol_cast, HTML_LINE_BREAK);
 					strcat(_global_string_spol_cast, nazov_spolc_alebo_jazyk[_global_jazyk]);
 					strcat(_global_string_spol_cast, " ");
 					strcat(_global_string_spol_cast, lowered_nazov_spolc(sc.a3));
@@ -9293,8 +9295,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_MODL_OPTF_2_BUTTONY_USPORNE
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE, STR_MODL_OPTF_2_BUTTONY_USPORNE, html_text_option2_buttons_usporne[_global_jazyk], html_text_option2_buttons_usporne_explain[_global_jazyk]);
 
+#if !defined(IO_ANDROID)
+		// for Android it is not necessary since 1.11 (setting moved to native menu)
 		// pole (checkbox) WWW_/STR_MODL_OPTF_2_NOCNY_REZIM
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, STR_MODL_OPTF_2_NOCNY_REZIM, html_text_option2_nocny_rezim[_global_jazyk], html_text_option2_nocny_rezim_explain[_global_jazyk]);
+#endif
 
 		// pole (checkbox) WWW_/STR_MODL_OPTF_0_FONT_NORMAL
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL, STR_MODL_OPTF_0_FONT_NORMAL, html_text_option0_font_normal[_global_jazyk], html_text_option0_font_normal_explain[_global_jazyk]);
@@ -10125,7 +10130,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	} \
 	else if(som_v_tabulke == NIE){ \
 		if(typ == EXPORT_DNA_VIAC_DNI){ \
-			Export("\n"HTML_LINE_BREAK""HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE"%s\n", html_text_alebo[_global_jazyk]); \
+			Export("\n"HTML_LINE_BREAK""HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE"%s:\n", html_text_alebo[_global_jazyk]); \
 		} \
 		else{ \
 			if(typ != EXPORT_DNA_VIAC_DNI_TXT){ \
@@ -12503,6 +12508,7 @@ void _main_rozbor_dna_txt(short int typ, char *den, char *mesiac, char *rok){
 		if(t != EXPORT_DNA_XML){
 			Export("<h2>");
 			Export((char *)html_text_txt_export[_global_jazyk]);
+			Export(": ");
 			Export((char *)html_text_lit_kalendar[_global_jazyk]);
 			Export(" ");
 			if(m == VSETKY_MESIACE){

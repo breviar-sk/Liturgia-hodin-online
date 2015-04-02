@@ -29,10 +29,11 @@
 #define RITUS_RIM_KAT   0
 #define RITUS_GR_KAT    1
 
-// 2006-07-11: Pridané kvôli jazykovým mutáciám 
-// 2006-12-12: Pridaná latinčina, kódy sú podľa ISO 639-1 (až na češtinu)
-// 2008-08-15: Pridaná "dominikánska čeština"; presunuté sem bezprostredne za definíciu POCET_JAZYKOV
-// 2009-01-29: pridaná maďarčina
+// language IDs (constants)
+// 2006-07-11: created
+// 2006-12-12: added JAZYK_LA
+// 2008-08-15: added JAZYK_CZ_OP
+// 2009-01-29: added JAZYK_HU
 #define JAZYK_SK	0
 #define JAZYK_CZ	1
 #define JAZYK_EN	2
@@ -40,10 +41,20 @@
 #define JAZYK_UNDEF 4
 #define JAZYK_CZ_OP 5
 #define JAZYK_HU    6
+/* ADD_VALUE_FOR_NEW_LANGUAGE */
 
 // rite for languages
 const short int ritus_jazyka[POCET_JAZYKOV + 1] =
-{RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT, RITUS_RIM_KAT};
+{
+	RITUS_RIM_KAT,
+	RITUS_RIM_KAT,
+	RITUS_RIM_KAT,
+	RITUS_RIM_KAT,
+	RITUS_RIM_KAT,
+	RITUS_RIM_KAT,
+	RITUS_RIM_KAT,
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
 
 // 2011-05-12: formáty vypisovania dátumu, kvôli maďarčine, angličtine...
 #define FORMAT_DATUMU_DEN_MESIAC_ROK 0 // DD. MM RRRR
@@ -979,8 +990,17 @@ extern const char *nazov_slavenia_lokal[];
 #define POCET_KALENDAROV                   16
 
 // default calendar for language (general)
-const short int default_kalendar[POCET_JAZYKOV + 1] = 
-{KALENDAR_VSEOBECNY_SK, KALENDAR_VSEOBECNY_CZ, /* ToDo */ KALENDAR_VSEOBECNY, /* ToDo */ KALENDAR_VSEOBECNY, KALENDAR_NEURCENY, KALENDAR_CZ_OP, KALENDAR_VSEOBECNY_HU};
+const short int default_kalendar[POCET_JAZYKOV + 1] =
+{
+	KALENDAR_VSEOBECNY_SK,
+	KALENDAR_VSEOBECNY_CZ,
+	/* ToDo */ KALENDAR_VSEOBECNY,
+	/* ToDo */ KALENDAR_VSEOBECNY,
+	KALENDAR_NEURCENY,
+	KALENDAR_CZ_OP,
+	KALENDAR_VSEOBECNY_HU,
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
 
 // filenames for special calendars / názov súbora pre kalendáre
 extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];
