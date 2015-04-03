@@ -34,6 +34,7 @@
 // 2006-12-12: added JAZYK_LA
 // 2008-08-15: added JAZYK_CZ_OP
 // 2009-01-29: added JAZYK_HU
+// 2015-04-02: added JAZYK_RU
 #define JAZYK_SK	0
 #define JAZYK_CZ	1
 #define JAZYK_EN	2
@@ -41,11 +42,13 @@
 #define JAZYK_UNDEF 4
 #define JAZYK_CZ_OP 5
 #define JAZYK_HU    6
+#define JAZYK_RU    7
 /* ADD_VALUE_FOR_NEW_LANGUAGE */
 
 // rite for languages
 const short int ritus_jazyka[POCET_JAZYKOV + 1] =
 {
+	RITUS_RIM_KAT,
 	RITUS_RIM_KAT,
 	RITUS_RIM_KAT,
 	RITUS_RIM_KAT,
@@ -968,9 +971,9 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SVIATOK_VDB_CZ          106
 #define LOKAL_SLAV_SLAVNOST_FMA_CZ         107
 
-// 2010-08-03: pridaný kalendár
-#define KALENDAR_NEURCENY                   0
-#define KALENDAR_VSEOBECNY                  1
+// calendar
+#define KALENDAR_NEURCENY                   0 // undefined
+#define KALENDAR_VSEOBECNY                  1 // general Roman calendar
 #define KALENDAR_VSEOBECNY_SK               2
 #define KALENDAR_VSEOBECNY_CZ               3
 #define KALENDAR_CZ_OP                      4
@@ -986,8 +989,15 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_CZ_OFMCAP                 14
 #define KALENDAR_CZ_CSSR                   15
 #define KALENDAR_CZ_SDB                    16
+#define KALENDAR_VSEOBECNY_RU              17
 
-#define POCET_KALENDAROV                   16
+/* INCREMENT_FOR_NEW_CALENDAR */
+#define POCET_KALENDAROV                   17
+// when adding new calendar, the following comments MUST BE replaced:
+// 
+// few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
+//
+// Note: always preserve "/* ADD_VALUE_FOR_NEW_CALENDAR */" (with preceding comma respectively)!
 
 // default calendar for language (general)
 const short int default_kalendar[POCET_JAZYKOV + 1] =
@@ -999,6 +1009,7 @@ const short int default_kalendar[POCET_JAZYKOV + 1] =
 	KALENDAR_NEURCENY,
 	KALENDAR_CZ_OP,
 	KALENDAR_VSEOBECNY_HU,
+	KALENDAR_VSEOBECNY_RU,
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 

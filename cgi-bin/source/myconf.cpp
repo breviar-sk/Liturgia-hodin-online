@@ -46,7 +46,7 @@ const char *cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] =
 #define ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX "_"
 
 const char *cfg_option_postfix[POCET_JAZYKOV + 1] =
-{ "def", "cz", "en", "la", "", "czop", "hu", /* STRING_FOR_NEW_LANGUAGE */ };
+{ "def", "cz", "en", "la", "", "czop", "hu", "ru", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 void printConfigOptions(void){
 	short int j = 0, o = 0;
