@@ -30,18 +30,15 @@ short int equals(char *, char *);
 short int equals(const char *, const char *);
 short int equals(const char *, char *);
 short int equals(char *, const char *);
-// string comparator without case sensitivity  -- pre vsetky kombinacie dvojic [const] char, [const] char
+// string comparator without case sensitivity -- pre vsetky kombinacie dvojic [const] char, [const] char
 short int equalsi(char *, char *);
 short int equalsi(const char *, const char *);
 short int equalsi(const char *, char *);
 short int equalsi(char *, const char *);
 
-// funkcia mystr_replace() nahradí všetky výskyty podreťazca substr v reťazci string reťazcom replacement
-char *mystr_replace ( const char *string, const char *substr, const char *replacement );
+char *mystr_replace(const char *string, const char *substr, const char *replacement);
 
-// funkcia mystr_first_lower() aplikuje tolower() na prvý znak reťazca
-char *mystr_first_lower ( const char *string );
-// funkcia mystr_first_upper() aplikuje toupper() na prvý znak reťazca
-char *mystr_first_upper ( const char *string );
+char *mystr_first_lower(const char *string);
+char *mystr_first_upper(const char *string);
 
 #endif // __MYSTRING_H_

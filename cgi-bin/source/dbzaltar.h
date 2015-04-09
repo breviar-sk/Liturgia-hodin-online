@@ -51,8 +51,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 
-// nasledujuce boli v dbzaltar.cpp, presunute 2003-08-13
-
+// postfixes for special seasons (anchors)
 #define VELKONOCNA_PRIPONA  "VE"
 #define POSTNA_PRIPONA      "PO"
 #define CEZROCNA_PRIPONA    "CR"
@@ -79,47 +78,46 @@ short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 #define ANCHOR_ANTIFONA_VIG "ANTVG"
 #define ANCHOR_EVANJELIUM   "EV"
 
-// special identifiers
+// special identifiers + filename indentifiers (tuples)
 #define SPOM_PM_SOBOTA "SPMVS"
-// special filename indentifiers
-// podobne ako v liturgia.h::char *nazov_obd_htm[]
-#define FILE_SPOM_PM_SOBOTA "spmvs.htm" // 2006-02-02: nachádzajú sa tam aj posv. čítania
+#define FILE_SPOM_PM_SOBOTA "spmvs.htm"
 
-#define ANCHOR_NANEBOVSTUPENIE "NAN" // 2007-11-14: doplenné kvôli invitatóriu
-#define FILE_NANEBOVSTUPENIE "nan.htm" // kotvy v ňom sú podľa OBD_VELKONOCNE_I
+#define ANCHOR_NANEBOVSTUPENIE "NAN"
+#define FILE_NANEBOVSTUPENIE "nan.htm" // anchors according to OBD_VELKONOCNE_I
 
 #define ANCHOR_ZOSLANIE_DUCHA_SV "ZDS"
-#define FILE_ZOSLANIE_DUCHA_SV "zds.htm" // kotvy v ňom sú podľa OBD_VELKONOCNE_II, ANCHOR_ZOSLANIE_DUCHA_SV
+#define FILE_ZOSLANIE_DUCHA_SV "zds.htm" // anchors according to OBD_VELKONOCNE_II, ANCHOR_ZOSLANIE_DUCHA_SV
 
 #define ANCHOR_NAJSV_TROJICE "TROJ"
-#define FILE_NAJSV_TROJICE "troj.htm" // kotvy v ňom sú podľa ANCHOR_NAJSV_TROJICE
+#define FILE_NAJSV_TROJICE "troj.htm"
 
 #define ANCHOR_KRISTA_KRALA "KRKRALA"
-#define FILE_KRISTA_KRALA "krkrala.htm" // kotvy v ňom sú podľa ANCHOR_KRISTA_KRALA
+#define FILE_KRISTA_KRALA "krkrala.htm"
 
 #define ANCHOR_TELA_A_KRVI "TK"
-#define FILE_TELA_A_KRVI "tk.htm" // kotvy v ňom sú podľa ANCHOR_TELA_A_KRVI
+#define FILE_TELA_A_KRVI "tk.htm"
 
 #define ANCHOR_KNAZA "KNAZA"
-#define FILE_KNAZA "knaza.htm" // kotvy v ňom sú podľa ANCHOR_KNAZA
+#define FILE_KNAZA "knaza.htm"
 
 #define ANCHOR_SRDCA "SRDCA"
-#define FILE_SRDCA "srdca.htm" // kotvy v ňom sú podľa ANCHOR_SRDCA
+#define FILE_SRDCA "srdca.htm"
 
 #define ANCHOR_SRDCA_PM "SRDCAPM"
-#define FILE_SRDCA_PM "nspm.htm" // kotvy v ňom sú podľa ANCHOR_SRDCA_PM
+#define FILE_SRDCA_PM "nspm.htm"
 
 #define ANCHOR_PM_BOHOROD "PMB"
-#define FILE_PM_BOHOROD "pmb.htm" // kotvy v ňom sú podľa ANCHOR_PM_BOHOROD
+#define FILE_PM_BOHOROD "pmb.htm"
 
 #define ANCHOR_2NE_PO_NAR "2NE"
+
 #define ANCHOR_ZJAVENIE_PANA "ZJV"
 
 #define ANCHOR_SV_RODINY "SVROD"
-#define FILE_SV_RODINY "svrod.htm" // kotvy v ňom sú podľa ANCHOR_SV_RODINY
+#define FILE_SV_RODINY "svrod.htm"
 
 #define ANCHOR_KRST_PANA "KRST"
-#define FILE_KRST_PANA "krst.htm" // kotvy v ňom sú podľa ANCHOR_KRST_PANA
+#define FILE_KRST_PANA "krst.htm"
 
 #define ANCHOR_DOPLNKOVA_PSALMODIA "PSCOM"
 #define FILE_DOPLNKOVA_PSALMODIA "pscom.htm"

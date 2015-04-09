@@ -20,22 +20,9 @@
 #include "mydefs.h"
 #include "myexpt.h"
 
-/* #define FILE_EXPORT -- v myexpt.h */
-/* povodne to bolo #define, avsak kvoli tomu, aby sa to dalo menit,
- * v myexpt.h je deklarovane
- *
- * extern char FILE_EXPORT[MAX_STR];
- *
- * a to je definovane nasledovne:
- *
- */
 char FILE_EXPORT[MAX_STR] = DEFAULT_FILE_EXPORT;
 
-/* navratove hodnoty su prerobene na int-y; vysledok SUCCESS resp. FAILURE */
-
 short int isbothExports = NIE;
-/* inicialna hodnota true;
- * ci pri debuggovacom zapisovani do fajlu pisat aj na obrazovku */
 
 void bothExports(void){
 	isbothExports = ANO;
@@ -49,17 +36,11 @@ int exptstrlen = 0;
 
 short int initExport(void){
 #if defined(EXPORT_TO_FILE)
-	/* zapisovanie vyslednej stranky do suboru; pozor na nazvy suborov "" (STR_EMPTY) a "+" */
 	if(FILE_EXPORT[strlen(FILE_EXPORT) - 1] == '+'){
-		/* append, nie novy fajl; 13/03/2000A.D. */
 		FILE_EXPORT[strlen(FILE_EXPORT) - 1] = '\0'; /* zrusime '+' na konci */
 		exportfile = fopen(FILE_EXPORT, "a+t");
 	}
 	else{
-		/* 2003-07-08 ani som netusil, ze som to spravil kedysi aj na append...
-		 * ale teraz som korektne pridal switch `a'
-		 */
-		/* novy fajl */
 		exportfile = fopen(FILE_EXPORT, "wt");
 	}
 	exptused = (exportfile == NULL)? FAILURE: SUCCESS;
@@ -74,23 +55,23 @@ short int initExport(void){
 	exptstrlen = 0;
 	exptused = SUCCESS;
 #else
-	#error Unsupported export model (use _EXPORT_TO_STDOUT or _EXPORT_TO_FILE)
+#error Unsupported export model (use _EXPORT_TO_STDOUT or _EXPORT_TO_FILE)
 #endif
 	return exptused;
 }
 
-short int initExport(const char *expt_filename){ /* pridane, 13/03/2000A.D. */
-	if(exptused == SUCCESS){
+short int initExport(const char *expt_filename){
+	if (exptused == SUCCESS){
 		closeExport();
 	}
 	strcpy(FILE_EXPORT, expt_filename);
 	return initExport();
 }
 
-short int closeExport(void){ /* pridane, urobi fclose(); 13/03/2000A.D. */
+short int closeExport(void){
 	short int ret = 0;
 #if defined(EXPORT_TO_FILE)
-        ret = EOF;  /* error closing file */
+	ret = EOF;  /* error closing file */
 	if(exptused == SUCCESS){
 		ret = fclose(exportfile);
 	}
@@ -101,8 +82,8 @@ short int closeExport(void){ /* pridane, urobi fclose(); 13/03/2000A.D. */
 void dumpFile(char *fname){
 	short int c;
 	FILE *input_file = fopen(fname, "rb");
-	if(input_file != NULL){
-		while((c = fgetc(input_file)) != EOF)
+	if (input_file != NULL){
+		while ((c = fgetc(input_file)) != EOF)
 			fputc(c, exportfile);
 	}
 }
@@ -117,18 +98,18 @@ void dumpFile(char *fname){
 short int Export_to_string(const char *fmt, va_list argptr) {
 	short int cnt;
 	va_list argptr2;
-	
+
 	va_copy(argptr2, argptr);
 	cnt = vsnprintf(NULL, 0, fmt, argptr2);
 	va_end(argptr2);
 
-	exptstr = (char *)realloc(exptstr, exptstrlen+cnt+1);
+	exptstr = (char *)realloc(exptstr, exptstrlen + cnt + 1);
 	if (!exptstr) {
 		exptstrlen = 0;
 		return 0;
 	}
-	
-	cnt = vsnprintf(exptstr + exptstrlen, cnt+1, fmt, argptr);
+
+	cnt = vsnprintf(exptstr + exptstrlen, cnt + 1, fmt, argptr);
 	exptstrlen += cnt;
 
 	return cnt;
@@ -147,9 +128,9 @@ short int Export(const char *fmt, ...){
 #ifdef EXPORT_TO_STRING
 	cnt = Export_to_string(fmt, argptr);
 #else
-	if(exptused == SUCCESS){
+	if (exptused == SUCCESS){
 		cnt = vfprintf(exportfile, fmt, argptr);
-		if(isbothExports)
+		if (isbothExports)
 			cnt = vprintf(fmt, argptr);
 	}
 	else{
@@ -166,14 +147,14 @@ short int Export_to_file(FILE * expt, const char *fmt, ...){
 	short int cnt;
 
 	// klasické volanie ako Export
-	if((expt == NULL) && (exptused == SUCCESS)){
+	if ((expt == NULL) && (exptused == SUCCESS)){
 		expt = exportfile;
 	}
 
 	va_start(argptr, fmt);
-	if(expt != NULL){
+	if (expt != NULL){
 		cnt = vfprintf(expt, fmt, argptr);
-		if(isbothExports)
+		if (isbothExports)
 			cnt = vprintf(fmt, argptr);
 	}
 	else{
@@ -197,11 +178,13 @@ char *getExportedString(void) {
 	if(isbothExports) \
 		printf("%c", c); \
 	} }
+
 #define YYcharHTML(Kam, Lat2, ASCII, HTML, TeX, IBM)	{ { \
 	fprintf(exportfile, "%s", HTML); \
 	if(isbothExports) \
 		printf("%s", HTML); \
 	} }
+
 #define YYcharASCII(Kam, Lat2, ASCII, HTML, TeX, IBM)	{ { \
 	fprintf(exportfile, "%c", ASCII); \
 	if(isbothExports) \

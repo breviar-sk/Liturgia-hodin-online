@@ -19,7 +19,7 @@
 
 #include <stdio.h>
 #include <stdarg.h>
-#include "mydefs.h" /* tu su deklarovane vecicky ako sa ma __Log-ovat */
+#include "mydefs.h"
 #include "mylog.h"
 
 short int both;
@@ -73,7 +73,7 @@ short int closeLog(void){
 #elif defined(LOG_TO_ANDROID)
 		// nothing to do
 #else
-	#error Unsupported logging model (use _LOG_TO_STDOUT or _LOG_TO_FILE)
+#error Unsupported logging model (use _LOG_TO_STDOUT or _LOG_TO_FILE)
 #endif
 	}
 	else{
@@ -88,14 +88,14 @@ short int __Log(const char *fmt, ...)
 	va_list argptr;
 	short int cnt;
 
-/* 2005-03-28; odkomentované a upravené 2006-08-19: Ak logujeme na stdout (teda zrejme do HTML), vypiseme HTML <p> */
+	/* 2005-03-28; odkomentované a upravené 2006-08-19: Ak logujeme na stdout (teda zrejme do HTML), vypiseme HTML <p> */
 #if defined(LOG_TO_STDOUT)
 	fprintf(logfile, "\n<!-- Log: ");
 #endif
 
 	va_start(argptr, fmt);
 #ifdef LOG_TO_ANDROID
-        __android_log_vprint(ANDROID_LOG_VERBOSE, "Breviar", fmt, argptr);
+	__android_log_vprint(ANDROID_LOG_VERBOSE, "Breviar", fmt, argptr);
 
 #else // not LOG_TO_ANDROID
 	if(used == 0){
@@ -142,28 +142,22 @@ void Logint(short int c){
 	}
 }
 
-/*
- * Nasleduje len atrapa modulu mylog.cpp
- * pouzije sa vtedy, ak sa nedebuguje
- *
- * staci v materskom programe nedefinovat #define LOGGING
- */
-
 #else /* nie LOGGING */
 
 short int initLog(const char *fname){
 	Q_UNUSED(fname);
 	return 0;
 }
-/* void bothLogs(void){} */
-/* void fileLog(void){} */
+
 short int closeLog(void){
 	return 0;
 }
+
 short int __Log(const char *fmt, ...){
 	Q_UNUSED(fmt);
 	return 0;
 }
+
 void Logint(short int c){
 	Q_UNUSED(c);
 };
@@ -171,11 +165,9 @@ void Logint(short int c){
 #endif /* LOGGING */
 
 //---------------------------------------------------------------------
-/* empty log - nerobi nic, ale ma vstup (...) */
 short int NoLog(const char *fmt, ...){
-	return(fmt == 0); /* aby nehlasilo param `fmt' not used */
+	return(fmt == 0);
 }
-
 
 #endif /* __MYLOG_CPP_ */
 

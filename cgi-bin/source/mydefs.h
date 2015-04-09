@@ -48,17 +48,12 @@
 #define MAX_QUERY_STR		2000 // query_string
 #define MAX_POM_QUERY_TYPE	2000 // pom_QUERY_TYPE
 #define MAX_GLOBAL_LINK		2000 // maximalna dlzka retazca _global_link
-//#define MAX_ENV	100 // maximalna dlzka environmentalnej premennej | 2006-08-01: nepoužíva sa
 #define MAX_VARIABLES		600 // maximalny pocet syst. premennych WWW_..., zvyseny 2003-08-07 a opätovne 2006-08-01 a opäť 2011-01-26 a zas 2011-04-11 a 2011-04-12 (na 50)
 #define MAX_GLOBAL_BUFFER	4000 // _global_buf, pridané 2005-08-01
-//***************************************************************
-//* EOF of former file mybase.h                                 *
-//***************************************************************
 
 #define MAX_POCET_SVATY 5
 #define PORADIE_PM_SOBOTA  (MAX_POCET_SVATY + 1)
 
-// Nazvy programov, suborov, skriptov...
 #define SCRIPT_NAME          "l.cgi"
 #define SCRIPT_PATH(a)       "cgi-bin/"a
 
@@ -76,13 +71,6 @@ extern char uncgi_name[MAX_STR];  // = cfg_HTTP_ADDRESS_default + UNCGI_SCRIPT_N
 void updateScriptName(void);
 void updateUnCGIName(void);
 
-// tu kedysi bolo aj #define PATH(a) zvacsa a, ale nebolo to treba; vyhodene 2003-07-02
-
-/* 2004-03-17
- * FILE_PATH nie je potrebne; citame to z myconf.cpp::readConfig() (config file)
-extern char FILE_PATH[MAX_STR]; // inicializovane v breviar.cpp
- */
-
 #define DOCS_FOLDER "docs"
 
 #define MESSAGE_FOLDER "msg"
@@ -93,7 +81,7 @@ extern char FILE_PATH[MAX_STR]; // inicializovane v breviar.cpp
 #define FILE_NAME_POKEC         MESSAGE_FOLDER""STR_PATH_SEPARATOR_HTML"xxx"
 #define FILE_NAME_CHYBA         MESSAGE_FOLDER""STR_PATH_SEPARATOR_HTML"chyba.htm"
 
-extern short int query_type; // premenna obsahujuca PRM_...
+extern short int query_type; // contains constants PRM_...
 
 // meno skriptu nasleduje zoznam parametrov, alebo sa precitaju z form
 #define 	SCRIPT_PARAM_FROM_FORM     200 // z formulara
@@ -195,12 +183,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_PRM_STATIC_TEXT "pst"
 #endif
 
-// nasleduju parametre z formularov pre vsetky typy dotazov,
-// kedysi bolo pre kazdy STR_... definovane WWW_STR_..., teraz ADD_WWW_PREFIX_(STR_...) 
-// 2004-08-14: 
-// definicia ADD_WWW_PREFIX_(a) ("WWW_"##a) ktora bola OK na g++ (gcc version 2.95.4 20011002)
-// sposobovala problemy na g++ (gcc version 3.3.3 20040412)
-// preto zmenene na ADD_WWW_PREFIX_(a) ("WWW_"a)
+// ----------------------------------------------------
 #define WWW_PREFIX "WWW_"
 #define ADD_WWW_PREFIX_(a) ("WWW_"a)
 
@@ -347,11 +330,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_PRM_DETAILY "pdet"
 #endif
 
-/* nasleduju parametre pre modlitbu (PRM_DATUM, PRM_DETAILY)
- * -- specialne options, ktore platia rovnako pre oboje, ale
- * de facto sa vyuzivaju len pre PRM_DETAILY 
- * 2011-01-26: doplnené aj verzie "force" pre formulár; používajú sa totiž aj na PRM_DNES hlavnom okne
- */
+// nasleduju parametre pre modlitbu (PRM_DATUM, PRM_DETAILY)
 #define MODL_OPT_0 38
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPT_0 "MODL_OPT_0"
@@ -866,8 +845,6 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPTF_5_HYMNUS_1VESP "of5h1v"
 #endif
 
-
-// 2008-08-08: Pridané kvôli rôznym css
 #define CSS 40
 #ifdef LONG_PARAM_NAMES
 	#define STR_CSS "CSS"
@@ -875,7 +852,6 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_CSS "c"
 #endif
 
-// 2008-11-29: Pridané: spôsob zapisovania dátumu pre súbory v batch móde
 #define MODL_OPT_DATE_FORMAT 41
 #ifdef LONG_PARAM_NAMES
 	#define STR_MODL_OPT_DATE_FORMAT "MODL_OPT_DATE_FORMAT"
@@ -883,7 +859,6 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_MODL_OPT_DATE_FORMAT "u"
 #endif
 
-// 2010-08-04: Pridané kvôli jazykovým mutáciám -- kalendár (napr. rehoľný)
 #define KALENDAR 42
 #ifdef LONG_PARAM_NAMES
 	#define STR_KALENDAR "KALENDAR"
@@ -891,7 +866,6 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_KALENDAR "k"
 #endif
 
-// názov fontu
 #define FONT_NAME 43
 #ifdef LONG_PARAM_NAMES
 	#define STR_FONT_NAME "FONT_NAME"
@@ -899,7 +873,6 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_FONT_NAME "f"
 #endif
 
-// názov veľkosti fontu
 #define FONT_SIZE 44
 #ifdef LONG_PARAM_NAMES
 	#define STR_FONT_SIZE "FONT_SIZE"
@@ -915,7 +888,7 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_STYLE_MARGIN "mm"
 #endif
 
-// global
+// query type
 #define QUERY_TYPE	20
 #ifdef LONG_PARAM_NAMES
 	#define STR_QUERY_TYPE "QUERY_TYPE"
@@ -923,8 +896,6 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	#define STR_QUERY_TYPE "qt"
 #endif
 
-// 2012-10-16: upravený tento define tak, že vždy musí byť pred volaním funkcie Export(); doňho dovnútra som dal volanie hlavičky
-// Export("<p>Ak probl&eacute;my pretrv&aacute;vaj&uacute;, kontaktujte pros&iacute;m <a href=\"mailto:%s\">autora str&aacute;nky</a>.</p>\n", cfg_mail_address_default[_global_jazyk]);
 #define ALERT	{\
 	Log("ALERT\n");\
 	hlavicka((char *)html_title[_global_jazyk]);\
@@ -936,14 +907,14 @@ extern short int query_type; // premenna obsahujuca PRM_...
 	_export_rozbor_dna_buttons_dni_dnes(2 /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
 	}
 
-// HTML stringy - casti stringov sustredene na tomto mieste; pridane 2003-07-02; rozšírené 2011-01-27
+// HTML stringy - casti stringov sustredene na tomto mieste
 #define HTML_FORM_INPUT_SUBMIT   "input type=\"submit\" class=\"button\""
 #define HTML_FORM_INPUT_RESET    "input type=\"reset\" class=\"reset\""
 #define HTML_FORM_INPUT_RADIO    "input type=\"radio\" class=\"radio\""
 #define HTML_FORM_INPUT_TEXT     "input type=\"text\" class=\"text\""
 #define HTML_FORM_INPUT_TEXT_ROK "input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
 #define HTML_FORM_INPUT_CHECKBOX "input type=\"checkbox\" class=\"checkbox\""
-// 2011-01-27: pridané buttony (0. level: pre predošlý/nasledovný; 1. level: button "dnes"; 2. level: použité pre menej dôležité buttony)
+// buttons (0. level: pre predošlý/nasledovný; 1. level: button "dnes"; 2. level: použité pre menej dôležité buttony)
 #define HTML_FORM_INPUT_SUBMIT0  "input type=\"submit\" class=\"button0\""
 #define HTML_FORM_INPUT_RESET0   "input type=\"reset\" class=\"reset0\""
 #define HTML_FORM_INPUT_SUBMIT1  "input type=\"submit\" class=\"button1\""
@@ -952,7 +923,6 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_FORM_INPUT_RESET2   "input type=\"reset\" class=\"reset2\""
 #define HTML_FORM_INPUT_HIDDEN   "input type=\"hidden\""
 
-// #define HTML_FORM_METHOD_GET  "<form action=\"%s\">\n"
 #define HTML_FORM_METHOD_GET     "<form action=\"%s\" method=\"get\">\n"
 #define HTML_FORM_METHOD_POST    "<form action=\"%s\" method=\"post\">\n"
 
@@ -1028,13 +998,12 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_VALIGN_TOP     "valign=\"top\""
 #define HTML_VALIGN_BASE    "valign=\"baseline\""
 
-// pridane 2003-07-09, zmenene v cestach pre skript
 #define HTML_AMPERSAND          "&amp;"
 
 #define HTML_COMMENT_BEGIN		"<!--"
 #define HTML_COMMENT_END		"-->"
 #define HTML_FONT_SIZE_FARBA	"2"
-// 2007-03-19: pridané namiesto gt a lt html znakov
+
 #define HTML_LEFT_ARROW			"&laquo;"
 #define HTML_RIGHT_ARROW		"&raquo;"
 
@@ -1045,27 +1014,22 @@ extern short int query_type; // premenna obsahujuca PRM_...
 #define HTML_LINK_CALL2         "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
 #define HTML_LINK_CALL3         "%s?%s=%s"HTML_AMPERSAND"%s=%s%s"
 #define HTML_LINK_CALL_PARAM    HTML_AMPERSAND"%s=%s"
-// 2011-01-26: pridané jednoduché šípky vľavo/vpravo
+
 #define HTML_LEFT_ARROW_SINGLE	"&lsaquo;"
 #define HTML_RIGHT_ARROW_SINGLE	"&rsaquo;"
-// 2011-01-26: pridané "trojité" šípky vľavo/vpravo
+
 #define HTML_LEFT_ARROW_HUGE	"&lsaquo;&laquo;"
 #define HTML_RIGHT_ARROW_HUGE	"&raquo;&rsaquo;"
 
 // 2007-03-19: výpis "Dnes je..." sa zobrazí len pri tomto nastavení, ak je 1
 #define HTML_ZOBRAZIT_DNES_JE	0
 
-// 2007-06-01: niektoré definy presunuté z liturgia.h
-
-// option 2
 #define MODL_ZALMY_ZO_DNA 0
 #define MODL_ZALMY_ZO_SV  1
 
-// option 5, 2003-08-06, upravena 2003-08-13
 #define MODL_CEZ_DEN_ZALMY_ZO_DNA         0
 #define MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA  1
 
-// 2008-11-29: pridané rôzne možnosti batch exportu
 #define	EXPORT_DATE_SIMPLE 0
 #define	EXPORT_DATE_FULL   1
 

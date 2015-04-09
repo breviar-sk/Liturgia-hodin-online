@@ -116,7 +116,7 @@ struct option
 }
 #endif
 
-// dodal duurko; neviem preco to tu chybalo; 21/02/2000A.D.
+// added by JUV
 int getopt(
 	int argc,
 	char *const *argv,

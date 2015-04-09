@@ -6,6 +6,11 @@
 /* description | basic 'liturgical' constants, defines      */
 /*               and structures                             */
 /*                                                          */
+/*                                                          */
+/*   WARNING: NEVER REMOVE COMMENTS FOR ADDING NEW VALUES   */
+/*                                                          */
+/*   STRING_1_FOR_NEW_LANGUAGE etc.                         */
+/*                                                          */
 /************************************************************/
 
 #include "vstudio.h"
@@ -25,7 +30,7 @@
 #define MENO_SVIATKU 250
 #define MAX_LC_STR_ID 50
 
-// 2014-09-22: príprava pre viaceré ríty
+// liturgical rites
 #define RITUS_RIM_KAT   0
 #define RITUS_GR_KAT    1
 
@@ -59,17 +64,17 @@ const short int ritus_jazyka[POCET_JAZYKOV + 1] =
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
-// 2011-05-12: formáty vypisovania dátumu, kvôli maďarčine, angličtine...
+// formats of date (HU, EN...)
 #define FORMAT_DATUMU_DEN_MESIAC_ROK 0 // DD. MM RRRR
 #define FORMAT_DATUMU_MESIAC_DEN_ROK 1 // MM DD RRRR
 #define FORMAT_DATUMU_ROK_MESIAC_DEN 2 // RRRR. MM DD
 
 extern const short int format_datumu[POCET_JAZYKOV + 1];
 
-// 2008-08-15: Pridané POCET_CSS, aby mohol byť "dolník" (CSS_UNDEF) hodnota 0
+// number of CSSs
 #define POCET_CSS	4
-// 2006-08-08: Pridané kvôli rôznym css-kám 
-// 2011-05-24: pridaný "inverzný" štýl pre mobilné zariadenia (čierne pozadie, biely text)
+
+// CSSs
 #define CSS_UNDEF				0
 #define CSS_breviar_sk			1
 #define CSS_breviar_sk_invert	2
@@ -83,9 +88,10 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define STATIC_TEXT_MARIANSKE_ANTIFONY    1
 #define STATIC_TEXT_ORDINARIUM            2
 
+// number of fonts
 #define	POCET_FONTOV	9
 
-// 2011-05-06: jednotlivé fonty na výber v drop-down liste
+// fonts used in drop-down list
 #define FONT_UNDEF		0
 #define FONT_CSS		1
 #define FONT_CHECKBOX	2
@@ -97,9 +103,10 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define FONT_SERIF		8
 #define FONT_SANS_SERIF	9
 
+// number of font-sizes
 #define	POCET_FONT_SIZE	8
 
-// 2011-05-13: jednotlivé fonty na výber v drop-down liste
+// font-sizes in drop-down list
 #define FONT_SIZE_UNDEF		0
 #define FONT_SIZE_CSS		1 // inherit
 #define FONT_SIZE_XX_SMALL	2
@@ -114,7 +121,7 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define MAX_STYLE_MARGIN   1024
 #define DEF_STYLE_MARGIN      5
 
-// 2013-01-29: alternatívy pre niektoré časti modlitby
+// alternatives for some parts of prayers
 #define BIT_ALT_HYMNUS                  1
 #define BIT_ALT_ANTCHVAL                2
 #define BIT_ALT_LEN_DOPLNKOVA_PSALMODIA 4
@@ -131,22 +138,9 @@ struct _anchor_and_file{
 };
 typedef struct _anchor_and_file _struct_anchor_and_file;
 
-// definicie pre ranne chvaly a vespery
 #define rchvalospev  zalm2
 #define vchvalospev  zalm3
 #define magnifikat   benediktus
-
-// definicie pre posvatne citania upravene 2003-08-21 a opatovne 2003-11-20
-
-// vers po psalmodii pred citaniami - je kresponz
-
-// prve  citanie aj s responzoriom za nim
-// #define	citanie1	kcitanie
-
-// druhe citanie aj s responzoriom za nim
-// #define	citanie2	benediktus
-
-// prosby ostavaju pre posvatne citania nedefinovane
 
 struct tmodlitba1{
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
@@ -188,7 +182,8 @@ struct tmodlitba2{
 typedef struct tmodlitba2 _type_cez_den_9;
 typedef struct tmodlitba2 _type_cez_den_12;
 typedef struct tmodlitba2 _type_cez_den_3;
-// pre jednoduchsiu orientaciu pridane 2003-07-15
+
+// alternate typenames for prayer during the day
 typedef struct tmodlitba2 _type_cez_den_pred;
 typedef struct tmodlitba2 _type_cez_den_na;
 typedef struct tmodlitba2 _type_cez_den_po;
@@ -217,7 +212,6 @@ struct tmodlitba4{
 };
 typedef struct tmodlitba4 _type_invitatorium;
 
-// 2011-03-25: pre posvätné čítanie kvôli sláveniu vigílií nový typ
 struct tmodlitba5{
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
 	_struct_anchor_and_file popis     ;
@@ -247,8 +241,10 @@ struct den_mesiac{ // takto povodne vyzerala struct dm
 };
 typedef struct den_mesiac _struct_den_mesiac;
 
-#define POCET_MODLITIEB         14 // 2006-08-02: nepoužívalo sa; upravené na 13 (z pôvodných 8); 2011-10-03: upravené na 14 kvôli MODL_VSETKY
-// modlitby; 2011-10-05: vymenené ranné chvály a posvätné čítanie, rešpektujeme usporiadanie tlačenej LH; 2011-10-07: vymenené konštanty RCH<->posv.čít.
+// number of prayers
+#define POCET_MODLITIEB         14
+
+// prayers IDs
 #define MODL_INVITATORIUM       0
 #define MODL_POSV_CITANIE       1
 #define MODL_RANNE_CHVALY       2
@@ -258,20 +254,22 @@ typedef struct den_mesiac _struct_den_mesiac;
 #define MODL_VESPERY            6
 #define MODL_KOMPLETORIUM       7
 #define MODL_NEURCENA           8
-// dalsie, iba docasne modlitby
+
 #define MODL_PRVE_VESPERY       9
 #define MODL_PRVE_KOMPLETORIUM  10
 #define MODL_DRUHE_VESPERY      11
 #define MODL_DRUHE_KOMPLETORIUM 12
-// formular s detailami ohladom generovania modlitby -- 2011-10-03: odstavený
+
 #define MODL_DETAILY            13
-// 2011-10-03: pridané pokusne
+
 #define MODL_VSETKY             14
-// pre jednoduchsiu orientaciu pridane 2003-07-15
+
+// alternate constants for prayer during the day
 #define MODL_PREDPOLUDNIM       3
 #define MODL_NAPOLUDNIE         4
 #define MODL_POPOLUDNI          5
-// pre modlitbu cez den kvoli zaltaru (psalmodii) rovnake, pridane 2003-08-13
+
+// all prayers during the day
 #define MODL_CEZ_DEN_VSETKY     20
 
 // 2007-12-05: doplnené kvôli modlitbe kompletória, funkcia _set_kompletorium_nedela()
@@ -279,7 +277,7 @@ typedef struct den_mesiac _struct_den_mesiac;
 #define MODL_KOMPLETORIUM_SLAVNOSTI	1
 #define MODL_KOMPLETORIUM_TROJDNIE	2
 
-// ... a stringy pre ne
+// strings for prayers (used in URLs)
 #ifdef LONG_PARAM_NAMES
 	#define		STR_MODL_INVITATORIUM	"MODL_INVITATORIUM"
 	#define		STR_MODL_POSV_CITANIE	"MODL_POSV_CITANIE"
@@ -308,7 +306,7 @@ typedef struct den_mesiac _struct_den_mesiac;
 	#define		STR_MODL_VSETKY            "*"
 #endif
 
-// 2005-03-27: Vlozene do definicnej casti z funkcie dbzaltar.cpp::pismenko_modlitby()
+// character for prayer used in anchors
 #define CHAR_MODL_INVITATORIUM       'i'
 #define CHAR_MODL_POSV_CITANIE       'c'
 #define CHAR_MODL_RANNE_CHVALY       'r'
@@ -325,23 +323,20 @@ typedef struct den_mesiac _struct_den_mesiac;
 // #define CHAR_MODL_CEZ_DEN_VSETKY     'd' // 2005-03-27: pridané
 #define CHAR_MODL_VSETKY             '*' // 2011-10-03: pridané pokusne
 
-// 2008-04-09: doplnené pre batch generovanie modlitieb
+// added for batch mode
 extern const char char_modlitby[POCET_MODLITIEB + 1];
 extern const char *str_modlitby[POCET_MODLITIEB + 1];
 
-//extern const char *nazov_modlitby[];
 extern const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_modlitby(a)	nazov_modlitby_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_Modlitby[];
 extern const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_Modlitby(a)	nazov_Modlitby_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_MODLITBY[];
 extern const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_MODLITBY(a)	nazov_MODLITBY_jazyk[a][_global_jazyk]
 
-// ... a file templates (suborove vzory) pre modlitby | 2011-01-25: premenované (aby mali spoločný prefix)
+// file templates for prayers
 #define TEMPLAT_INVITATORIUM     "m_invitat.htm"
 #define TEMPLAT_POSV_CITANIE     "m_posvcit.htm"
 #define TEMPLAT_RANNE_CHVALY     "m_rchvaly.htm"
@@ -353,7 +348,7 @@ extern const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define TEMPLAT_EMPTY            STR_EMPTY // MODL_VSETKY + MODL_DETAILY
 #define TEMPLAT_STATIC_TEXT      "m_text.htm" // MODL_NEURCENA
 
-// pridané 2006-10-24 pre kompletórium
+// compline in Ordinary time
 #define nazov_obd_KOMPLETORIUM   "cezrok_k.htm"
 
 extern const char *TEMPLAT[POCET_MODLITIEB + 1];
@@ -371,25 +366,21 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define SHOW_TEMPLAT_MODLITBA      1 // use TEMPLAT[]
 #define SHOW_TEMPLAT_STATIC_TEXT   2 // use ORDINARIUM[]
 
-// znaky, ktore znacia (pre interpretovanie templatu) zaciatok a koniec klucoveho slova
+// keyword (anchor) begin + end
 #define CHAR_KEYWORD_BEGIN   '{'
 #define CHAR_KEYWORD_END     '}'
 #define CHAR_KEYWORD_DIVIDER ':'
-/*
-#define CHAR_KEYWORD2_BEGIN  '<'
-#define CHAR_KEYWORD2_END    '>'
-*/
 
-// znak '_' používame ako zástupný pre nezlomiteľnú medzeru (exportuje sa ako HTML_NONBREAKING_SPACE == "&nbsp;" definované v mydefs.h) 
-// 2011-05-02: pridané; nevadí, že je duplicita s UNDERSCORE resp. CHAR_MODL_NEURCENA 
-// special characters in prayer texts (some of them to be removed for blind-friendly version)
+// underscore '_' used as placeholder for non-breaking space (it will be exported as HTML_NONBREAKING_SPACE == "&nbsp;" defined in mydefs.h) 
 #define CHAR_NONBREAKING_SPACE '_'
+
+// special characters in prayer texts (some of them to be removed for blind-friendly version)
 #define CHAR_SPACE             ' '
 #define CHAR_PRAYER_ASTERISK   '*'
 #define CHAR_PRAYER_CROSS      L'\x2020' /*†*/
 #define CHAR_PRAYER_CROSS_ALT  '+'
 
-// include parameters (parametre v inkludovanych suboroch)
+// include parameters
 #define INCLUDE_BEGIN   "BEGIN" // zaciatok
 #define INCLUDE_END     "END"   // koniec
 
@@ -413,44 +404,38 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_NUNC_DIMITTIS "NUNCDIMITTIS" // antifóna na Nunc dimittis
 #define PARAM_PROSBY        "PROSBY"
 #define PARAM_MODLITBA      "MODLITBA"
-// pridane 2003-08-06, upravene 2003-08-21
 #define PARAM_CITANIE1      "CITANIE1" // vlastne KCITANIE
 #define PARAM_CITANIE2      "CITANIE2" // vlastne BENEDIKTUS
-// 2007-10-02: pridané kvôli rovnakým antifónam pre modlitbu cez deň
+
 #define PARAM_ANTIFONA1x    "ANTIFONA1_DRUHA"
 #define PARAM_ANTIFONA3x    "ANTIFONA3_PRVA"
-// 2008-04-03: pridané kvôli kompletóriu vo veľkonočnom období, či pri druhej antifóne zobraziť dvojku alebo nie
+
 #define PARAM_ANTIFONA1k    "ANTIFONA1_KOMPLET"
 #define PARAM_ANTIFONA2k    "ANTIFONA2_KOMPLET"
-// 2010-05-21: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie)
-// 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
+// VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 #define PARAM_ANT_SPOMPRIVILEG  "ANT_SPOMPRIVILEG"
 #define PARAM_MODL_SPOMPRIVILEG "MODL_SPOMPRIVILEG"
-// 2011-03-16: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po 2. čítaní v posv. čítaní)
-// 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 #define PARAM_CITANIE2_SPOMPRIVILEG "CITANIE2_SPOMPRIVILEG"
-// 2011-07-03: pridané kvôli navigácii v modlitbe
+
 #define PARAM_NAVIGACIA     "NAVIGACIA"
-// 2011-10-04: pridaný nadpis v modlitbe
 #define PARAM_NADPIS        "NADPIS"
 // 2012-04-03: pridaný podnadpis v modlitbe (napr. pre MCD: doplnková psalmódia)
 #define PARAM_PODNADPIS     "PODNADPIS"
-// 2012-08-16: pridaný ďalší podnadpis v modlitbe (rubrika pre spoločnú časť)
 #define PARAM_SPOL_CAST     "SPOL_CAST"
-// 2012-05-24: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní
+
 #define PARAM_ANTIFONA_VIG  "ANTIFONA_VIG"
 #define PARAM_CHVALOSPEV1   "CHVALOSPEV1"
 #define PARAM_CHVALOSPEV2   "CHVALOSPEV2"
 #define PARAM_CHVALOSPEV3   "CHVALOSPEV3"
 #define PARAM_EVANJELIUM    "EVANJELIUM"
-// 2014-10-09: nová šablóna m_text.htm pre include statického textu
+
 #define PARAM_TEXT          "TEXT" // static text included into single file
 #define PARAM_MARIANSKE_ANTIFONY_LINK "MARIANSKE_ANTIFONY_LINK" // hyperlink to Maria antiphones (static HTML text or dynamically generated URL
-// 2012-09-05: možnosť zobraziť pre doplnkovú psalmódiu priamy URL odkaz (na prepnutie)
+
 #define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // 2012-10-01: _ sa menilo na &nbsp; preto som zmenil na -
-// 2013-08-22: možnosť zobraziť priamy URL odkaz (na prepnutie) pre žalmy z troch týždňov žaltára
+
 #define PARAM_PSALMODIA_TRI_TYZDNE     "PSALMODIA-TRI-TYZDNE"
-// 2012-09-27: možnosť zobraziť chválospev, hymnus Te Deum, Otčenáš (na prepnutie), opakované zvolania v prosbáach, Sláva Otcu, plné znenie responzórií pre posvätné čítania...
+
 #define PARAM_CHVALOSPEV               "CHVALOSPEV"
 #define PARAM_TEDEUM		           "TEDEUM"
 #define PARAM_OTCENAS                  "OTCENAS"
@@ -468,7 +453,6 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ZALM129                  "ZALM129"
 #define PARAM_ZALM131                  "ZALM131"
 
-// dalsie parametre: specificke pre obdobie
 // Od nedele Pánovho zmŕtvychvstania až do Druhej veľkonočnej nedele vrátane, ako aj na druhé vešpery slávnosti Zoslania Ducha Svätého
 #define PARAM_ALELUJA_ALELUJA_BEGIN         "ALELUJA_ALELUJA_BEGIN"
 #define PARAM_ALELUJA_ALELUJA_END           "ALELUJA_ALELUJA_END"
@@ -492,10 +476,10 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_KOMPLETORIUM_DVA_ZALMY_END	"KOMPLETORIUM_DVA_ZALMY_END"
 #define PARAM_SLAVAOTCU_BEGIN               "SLAVAOTCU_BEGIN"
 #define PARAM_SLAVAOTCU_END                 "SLAVAOTCU_END"
-// 2011-04-29: doplnené Sláva Otcu "špeciálne" pre účely chválospevu Dan 3, 57-88. 56, kde nie je "Sláva Otcu" (pôvodne to bolo dané poradím, ale templáty pre rôzne jazyky majú rozličné poradie tohto "Sláva Otcu")
+// special case: Sláva Otcu "špeciálne" pre účely chválospevu Dan 3, 57-88. 56, kde nie je "Sláva Otcu" (pôvodne to bolo dané poradím, ale templáty pre rôzne jazyky majú rozličné poradie tohto "Sláva Otcu")
 #define PARAM_SLAVAOTCU_SPEC_BEGIN          "SLAVAOTCU_SPEC_BEGIN"
 #define PARAM_SLAVAOTCU_SPEC_END            "SLAVAOTCU_SPEC_END"
-// 2007-06-28: doplnené Te Deum; nemôže sa riadiť rovnakými pravidlami ako chválospevy 
+
 // 2011-04-11: pridaný ďalší pár parametrov
 //             JE_TEDEUM_BEGIN a END hovoria, či v danej modlitbe má vôbec byť zobrazená čo i len zmienka o Te Deum (riadené podmienkou je_tedeum);
 //             TEDEUM_BEGIN a END hovoria, že ak má byť Te Deum (je_tedeum), tak ak chce používateľ zobraziť plný text, ohraničujú ho
@@ -503,13 +487,13 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_TEDEUM_END                    "TEDEUM_END"
 #define PARAM_JE_TEDEUM_BEGIN               "JE_TEDEUM_BEGIN"
 #define PARAM_JE_TEDEUM_END                 "JE_TEDEUM_END"
-// 2007-10-02: doplnené skrytie rovnakých antifón pre mcd
+
 #define PARAM_SKRY_ANTIFONU_BEGIN           "SKRY_ANTIFONU_BEGIN"
 #define PARAM_SKRY_ANTIFONU_END             "SKRY_ANTIFONU_END"
-// 2013-10-21: doplnené: inverzia pre skrytie rovnakých antifón pre mcd
+
 #define PARAM_ZOBRAZ_ANTIFONU_BEGIN         "ZOBRAZ_ANTIFONU_BEGIN"
 #define PARAM_ZOBRAZ_ANTIFONU_END           "ZOBRAZ_ANTIFONU_END"
-// 2012-05-24: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní
+
 #define PARAM_JE_VIGILIA_BEGIN              "JE_VIGILIA_BEGIN"
 #define PARAM_JE_VIGILIA_END                "JE_VIGILIA_END"
 
@@ -593,30 +577,21 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define FORCE_BRAT_ANTIFONY_MCD 32
 #define FORCE_BRAT_HYMNUS       64
 
-// stringy parametrov vstupu pre MODL_OPT..., ktore generovanie modlitby ovplyvnuju
-// option 1
-//#define STR_ANO "áno"
 extern const char *str_ano[POCET_JAZYKOV + 1];
 #ifndef		STR_ANO
 #define		STR_ANO		str_ano[_global_jazyk]
 #endif
-//#define STR_NIE "nie"
+
 extern const char *str_nie[POCET_JAZYKOV + 1];
 #ifndef		STR_NIE
 #define		STR_NIE		str_nie[_global_jazyk]
 #endif
 
-/* option 2 - presunuté do mydefs.h 
-#define MODL_ZALMY_ZO_DNA 0
-#define MODL_ZALMY_ZO_SV  1
-*/
-
-//#define STR_MODL_ZALMY_ZO_DNA "dňa"
 extern const char *str_modl_zalmy_zo_dna[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_ZALMY_ZO_DNA
 #define		STR_MODL_ZALMY_ZO_DNA 	str_modl_zalmy_zo_dna[_global_jazyk]
 #endif
-//#define STR_MODL_ZALMY_ZO_SV  "sviatku"
+
 extern const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_ZALMY_ZO_SV
 #define		STR_MODL_ZALMY_ZO_SV 	str_modl_zalmy_zo_sv[_global_jazyk]
@@ -652,55 +627,36 @@ extern const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #define MODL_SPOL_CAST_PANNY_VIACERE     22 // viacere
 #define MODL_SPOL_CAST_POSVIACKA_CHRAMU  23
 #define MODL_SPOL_CAST_ZA_ZOSNULYCH      24
-// MODL_SPOL_CAST_NEBRAT musi byt posledna, napr. kvoli "while" v dnes.cpp::showPrayer(); ale predsa mensia ako MAX_MODL_SPOL_CAST
 #define MODL_SPOL_CAST_SV_ZENA_MANZ      25 // pre tých, čo žili v manželstve
 #define MODL_SPOL_CAST_SV_MUZ_MANZ       26 // pre tých, čo žili v manželstve
-#define MODL_SPOL_CAST_NEBRAT            27 // nechce zo spol. casti
+#define MODL_SPOL_CAST_NEBRAT            27 // nechce zo spol. casti // MUST BE THE LAST VALUE
 #define POCET_SPOL_CASTI	MAX_MODL_SPOL_CAST - 1
 
 extern const char *str_doplnkova_psalmodia[POCET_JAZYKOV + 1];
-//#define STR_MODL_CEZ_DEN_ZALMY_ZO_DNA        "bežnej"
+
 extern const char *str_modl_cez_den_zalmy_zo_dna[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_CEZ_DEN_ZALMY_ZO_DNA
 #define		STR_MODL_CEZ_DEN_ZALMY_ZO_DNA	str_modl_cez_den_zalmy_zo_dna[_global_jazyk]
 #endif
-//#define STR_MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA "doplnkovej"
+
 extern const char *str_modl_cez_den_doplnkova_psalmodia[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA
 #define		STR_MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA	str_modl_cez_den_doplnkova_psalmodia[_global_jazyk]
 #endif
 
-// a pre tieto - vyssie uvedene - konstanty aj retazce... -- malo by ich byt do MAX_MODL_SPOL_CAST
-//extern const char *nazov_spolc[MODL_SPOL_CAST_NEBRAT + 1];
 extern const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1];
 #ifndef		nazov_spolc
 #define		nazov_spolc(a)	nazov_spolc_jazyk[a][_global_jazyk]
 #endif
 
-// a pre tieto konstanty aj retazce -- nazvy suborov -- malo by ich byt do MAX_MODL_SPOL_CAST
-// sc_rh == spolocna cast pre reholnikov / reholnice;
-// sc_skm == spolocna cast pre tych, co konali skutky milosrdenstva ;
-// sc_vv == spolocna cast pre vychovavatelov;
-// zosnuli == oficium za zosnulych;
 extern const char *nazov_spolc_htm[MODL_SPOL_CAST_NEBRAT + 1];
-// a pre tieto konstanty aj retazce -- nazvy kotiev -- malo by ich byt do MAX_MODL_SPOL_CAST
 extern const char *nazov_spolc_ANCHOR[MODL_SPOL_CAST_NEBRAT + 1];
 
 #define ANCHOR_SPOL_CAST_DUCH_PAST "SCDP"
-// vacsinu veci maju duchovni pastieri spolocnych; odlisnosti: su v nazov_spolc_ANCHOR[]
+
 #define ANCHOR_SPOL_CAST_JEDEN_MUCENIK "SCJM"
-// na sviatok jedneho mucenika sa rozhoduje, ci ide o muza alebo zenu | v niektorych pripadoch; odlisnosti: su v nazov_spolc_ANCHOR[]
+
 #define ANCHOR_SPOL_CAST_PANNA_MUCENICA "SCAM"
-//  na sviatok vychovavatelov: nevieme (a je jedno), ci ide o muza alebo zenu -- ked berieme z fajlu sc_vv.htm
-/*
-#define ANCHOR_SPOL_CAST_VYCHOVAVATEL "SCVV"
-#define FILE_SPOL_CAST_VYCHOVAVATEL "sc_vv.htm"
-*/
-// na sviatok tych, co konali skutky milosrdenstva: nevieme (a je jedno), ci ide o muza alebo zenu -- ked berieme z fajlu sc_skm.htm
-/*
-#define ANCHOR_SPOL_CAST_SKUTKYMIL "SCSKM"
-#define FILE_SPOL_CAST_SKUTKYMIL "sc_skm.htm"
-*/ // je to v poli... v hodin.h
 
 struct sc{
 	short int a1;
@@ -709,10 +665,7 @@ struct sc{
 };
 typedef struct sc _struct_sc;
 
-// 2005-07-27: zavedená nová premenná v štruktúre: typslav_lokal určená niesť špeciálnu informáciu o tom, či dané slávenie je lokálne.
-// štandardne 0 = bez špeciálnej lokalizácie.
-// 2006-08-19: pridaná premenná pre liturgickú farbu
-// 2010-08-03: pridaná premenná pre špecifikáciu, o aký kalendár ide (kalendar): všeobecný danej cirkevnej provincie alebo nejaký rehoľný a pod.
+// main structure for day (day + month + liturgical properties)
 struct dm{
 	short int den;        // cislo dna mesiaca (1--31)
 	short int mesiac;     // cislo mesiaca (1--12)
@@ -740,7 +693,7 @@ struct dm{
 };
 typedef struct dm _struct_dm;
 
-// dni
+// week days
 #define DEN_NEDELA      0
 #define DEN_PONDELOK    1
 #define DEN_UTOROK      2
@@ -748,11 +701,15 @@ typedef struct dm _struct_dm;
 #define DEN_STVRTOK     4
 #define DEN_PIATOK      5
 #define DEN_SOBOTA      6
-// neznamy den
 #define DEN_UNKNOWN     7
+// number ofweek  days
 #define POCET_DNI		7
 
-// mesiace
+// all days
+#define VSETKY_DNI   32
+#define STR_VSETKY_DNI  "*"
+
+// months
 #define MES_JAN 0
 #define MES_FEB 1
 #define MES_MAR 2
@@ -767,18 +724,15 @@ typedef struct dm _struct_dm;
 #define MES_OKT 9
 #define MES_NOV 10
 #define MES_DEC 11
-// neznamy mesiac
 #define UNKNOWN_MESIAC	12
+// number of months
 #define POCET_MESIACOV	12
-// vsetky mesiace
+
+// all months
 #define VSETKY_MESIACE	13
 #define STR_VSETKY_MESIACE  "*"
-// vsetky dni
-#define VSETKY_DNI   32
-#define STR_VSETKY_DNI  "*"
 
-// liturgické obdobia 
-// 2011-01-26: čísla konštantám pridelené tak, aby rešpektovali plynulosť liturgického roka od zväzku I breviára
+// liturgické obdobia | liturgical times/seasons
 //OBD_ADVENTNE
 #define OBD_ADVENTNE_I             0 // do 16. decembra
 #define OBD_ADVENTNE_II            1 // po 16. decembri
@@ -798,29 +752,26 @@ typedef struct dm _struct_dm;
 #define OBD_VELKONOCNE_I          10 // do nanebovstupenia pana
 #define OBD_VELKONOCNE_II         11 // po nanebovstupeni pana
 
+// number of liturgical times/seasons
 #define	POCET_OBDOBI	11
 
-// zväzok breviára - zväzok, v ktorom sa nachádza dané liturgické obdobie; doplnené 2007-12-20; opravené 2008-01-23
+// LH volume | zväzok breviára - zväzok, v ktorom sa nachádza dané liturgické obdobie; doplnené 2007-12-20; opravené 2008-01-23
 const short int zvazok_breviara[POCET_OBDOBI + 1] = 
 {1, 1, 1, 1, 1, 3, 2, 2, 2, 2, 2, 2}; // nepotrebujeme rozlíšiť 3. a 4. zväzok, ktoré obidva obsahujú OBD_CEZ_ROK
 
-// počet týždňov pre dané liturgické obdobie; doplnené 2011-01-25
+// # of weeks for season | počet týždňov pre dané liturgické obdobie
 const short int lit_obd_pocet_tyzdnov[POCET_OBDOBI + 1] = 
 {4, 1, 1, 2, 1, 34, 6, 1, 1, 1, 7, 2};
 
-// nazov_obdobia: string pre nazov liturgickeho obdobia
-//extern const char *nazov_obdobia[];
 extern const char *nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_obdobia(a)	nazov_obdobia_jazyk[a][_global_jazyk]
 
 extern const char *nazov_obdobia_[POCET_OBDOBI + 1];
 
 // lokal == 6. pad, v kom/com
-//extern const char *nazov_obdobia_v[];
 extern const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_obdobia_v(a)	nazov_obdobia_v_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_OBDOBIA_V[];
 extern const char *nazov_OBDOBIA_V_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_OBDOBIA_V(a)	nazov_OBDOBIA_V_jazyk[a][_global_jazyk]
 
@@ -828,8 +779,6 @@ extern const char *nazov_OBDOBIA_AKA_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_OBDOBIA_AKA(a)	nazov_OBDOBIA_AKA_jazyk[a][_global_jazyk]
 
 // gen[itiv] == 2. pad, koho/coho
-// extern const char *nazov_obdobia_gen[];
-// extern const char *nazov_Obdobia[];
 
 // nazov_obdobia: string pre nazov suboru .htm liturgickeho obdobia
 extern const char *nazov_obd_htm[POCET_OBDOBI + 1];
@@ -840,7 +789,7 @@ extern const char *nazov_obd_htm_pc[POCET_OBDOBI + 1];
 // 2005-08-05: Pridané. zväzok breviára (LH) pre spoločné časti svätých v kotvách
 extern const char *zvazok_OBD[POCET_OBDOBI + 1];
 
-// typy slavenia
+// celebration types
 #define SLAV_NEURCENE            0
 #define SLAV_SLAVNOST            1
 #define SLAV_SVIATOK             2
@@ -848,17 +797,15 @@ extern const char *zvazok_OBD[POCET_OBDOBI + 1];
 #define SLAV_LUB_SPOMIENKA       4
 #define SLAV_VLASTNE             5
 
+// number of celebration types
 #define	POCET_SLAVENI            5
 
 // nazov_slavenia: string pre nazov typu slavenia
-//extern const char *nazov_slavenia[];
 extern const char *nazov_slavenia_jazyk[POCET_SLAVENI + 1][POCET_JAZYKOV + 1];
 #define		nazov_slavenia(a)	nazov_slavenia_jazyk[a][_global_jazyk]
 
 // the name of celebration -- for memoria (in privileged days)
 extern const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1];
-
-// extern const char *nazov_Slavenia[];
 
 extern const char *nazov_slavenia_lokal[];
 
@@ -1027,19 +974,19 @@ extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
 #define DIV	/
 #define MOD	%
 
-// 2006-02-07: dodefinované rôzne správanie funkcie zaltar_zvazok();
+// dodefinované rôzne správanie funkcie zaltar_zvazok();
 #define	ZALTAR_VSETKO                0
 #define ZALTAR_IBA_ZALMY             1
 #define ZALTAR_IBA_ZALMY_HYMNUS_MCD  2
 #define ZALTAR_ANT_ZALMY_HYMNUS_MCD  3
 
-// 2014-11-06: charset constants
+// charset constants
 #define CHARSET_UTF_8               0
 #define CHARSET_WINDOWS_1250        1
 
 #define POCET_CHARSET               1
 
-// 2006-08-19: pridané liturgické farby
+// liturgické farby
 #define LIT_FARBA_NEURCENA			0
 #define LIT_FARBA_CERVENA			1
 #define LIT_FARBA_BIELA				2
@@ -1065,7 +1012,8 @@ extern const char *html_farba_popredie[POCET_FARIEB_REALNYCH + 1];
 #define	JD	juliansky_datum
 
 #define ZVAZKY_LH 4
-// tyzden zaltara (1, 2, 3, 4) podla tyzdna t; 06/03/2000A.D.: namiesto "-1" prerobene na "+3"
+
+// tyzden zaltara (1, 2, 3, 4) podla tyzdna t
 #define  tyzden_zaltara(t)  ((((t) + 3) % 4) + 1)
 extern const char *rimskymi_tyzden_zaltara[ZVAZKY_LH + 1];
 
@@ -1099,50 +1047,37 @@ extern const char char_nedelny_cyklus[POCET_NEDELNY_CYKLUS];
 #define CASE_Case 1 // Prve Pismeno Velke
 #define CASE_CASE 2 // VSETKO VELKE
 
-// nazov_dna: string pre nazov dna; suhlasi s struct tm.tm_wday; Weekday (0--6; Sunday/nedela = 0)
-
-//extern const char *nazov_dna[];
 extern const char *nazov_dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_dna(a)	nazov_dna_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_dna_asci[];
 extern const char *nazov_dna_asci_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_dna_asci(a)	nazov_dna_asci_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_Dna[];
 extern const char *nazov_Dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_Dna(a)	nazov_Dna_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_DNA[];
 extern const char *nazov_DNA_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_DNA(a)	nazov_DNA_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_Dn[];
 extern const char *nazov_Dn_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_Dn(a)	nazov_Dn_jazyk[a][_global_jazyk]
 
 extern const char *nazov_DN_asci[POCET_DNI + 1];
 extern const char *nazov_dn_asci[POCET_DNI + 1];
 
-// nazov_mesiaca: string pre nazov dna; suhlasi s struct tm.tm_mon; Month (0--11)
-
-//extern const char *nazov_mesiaca[];
 extern const char *nazov_mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca(a)	nazov_mesiaca_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_mesiaca_asci[];
 extern const char *nazov_mesiaca_asci_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca_asci(a)	nazov_mesiaca_asci_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_Mesiaca[];
 extern const char *nazov_Mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_Mesiaca(a)	nazov_Mesiaca_jazyk[a][_global_jazyk]
 
-//extern const char *nazov_MESIACA[];
 extern const char *nazov_MESIACA_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_MESIACA(a)	nazov_MESIACA_jazyk[a][_global_jazyk]
 
-// 2007-03-20: pridaný genitív názvu mesiaca kvôli latinčine
+// genitív názvu mesiaca kvôli latinčine
 extern const char *nazov_mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca_gen(a)	nazov_mesiaca_gen_jazyk[a][_global_jazyk]
 
@@ -1213,7 +1148,6 @@ extern _struct_dm *_global_den_ptr;
 #define _global_den (*_global_den_ptr)
 
 // globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu
-
 extern _struct_dm *_global_pm_sobota_ptr;
 #define _global_pm_sobota (*_global_pm_sobota_ptr)
 
@@ -1229,45 +1163,35 @@ extern _struct_dm *(_global_svaty_ptr[MAX_POCET_SVATY]); // an array of '_struct
 // globalne premenne obsahujuce data modlitbach
 
 extern _type_1vespery     *_global_modl_prve_vespery_ptr;
-// extern _type_1vespery      _global_modl_prve_vespery;
 #define _global_modl_prve_vespery (*_global_modl_prve_vespery_ptr)
 
 extern _type_1kompletorium *_global_modl_1kompletorium_ptr;
-// extern _type_1kompletorium _global_modl_prve_kompletorium;
 #define _global_modl_prve_kompletorium (*_global_modl_1kompletorium_ptr)
 
 extern _type_invitatorium *_global_modl_invitatorium_ptr;
-// extern _type_invitatorium  _global_modl_invitatorium;
 #define _global_modl_invitatorium (*_global_modl_invitatorium_ptr)
 
 extern _type_posv_citanie *_global_modl_posv_citanie_ptr;
 #define _global_modl_posv_citanie (*_global_modl_posv_citanie_ptr)
 
 extern _type_ranne_chvaly *_global_modl_ranne_chvaly_ptr;
-// extern _type_ranne_chvaly  _global_modl_ranne_chvaly;
 #define _global_modl_ranne_chvaly (*_global_modl_ranne_chvaly_ptr)
 
 extern _type_cez_den_9     *_global_modl_cez_den_9_ptr;
-// extern _type_cez_den_9     _global_modl_cez_den_9;
 #define _global_modl_cez_den_9 (*_global_modl_cez_den_9_ptr)
 extern _type_cez_den_12     *_global_modl_cez_den_12_ptr;
-// extern _type_cez_den_12     _global_modl_cez_den_12;
 #define _global_modl_cez_den_12 (*_global_modl_cez_den_12_ptr)
 extern _type_cez_den_3     *_global_modl_cez_den_3_ptr;
-// extern _type_cez_den_3     _global_modl_cez_den_3;
 #define _global_modl_cez_den_3 (*_global_modl_cez_den_3_ptr)
 
-// pridane 2003-08-13 pre lahsie pouzitie
 #define _global_modl_predpol  _global_modl_cez_den_9
 #define _global_modl_napol    _global_modl_cez_den_12
 #define _global_modl_popol    _global_modl_cez_den_3
 
 extern _type_vespery      *_global_modl_vespery_ptr;
-// extern _type_vespery       _global_modl_vespery;
 #define _global_modl_vespery (*_global_modl_vespery_ptr)
 
 extern _type_kompletorium *_global_modl_kompletorium_ptr;
-// extern _type_kompletorium _global_modl_kompletorium;
 #define _global_modl_kompletorium (*_global_modl_kompletorium_ptr)
 
 extern _struct_anchor_and_file *_global_include_static_text_ptr;
@@ -1278,20 +1202,16 @@ extern short int _global_modlitba;
 
 // globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru PATH_CGI(SCRIPT_NAME) ++ "?param1=val&param2=val&..."
 extern char *_global_link_ptr;
-// extern char _global_link[MAX_STR];
 #define _global_link _global_link_ptr
 
 extern char *_global_pom_str; // pomocny string pre velke pismena
-// extern char _global_pom_str[MAX_STR];
 
 // globalna premenna, do ktorej sa ukladaju info o jednotlivych vyznacnych liturgickych dni, pouzivaju void _dm_...() funkcie a void analyzuj_rok() funkcia
 extern _struct_dm *_global_result_ptr;
-// extern _struct_dm _global_result;
 #define _global_result (*_global_result_ptr)
 
 // globalna premenna, do ktorej sa uklada info o liturgickom roku pouziva void analyzuj_rok() funkcia
 extern _struct_lrok *_global_r_ptr;
-// extern _struct_lrok _global_r;
 #define _global_r (*_global_r_ptr)
 
 // globalna premenna, do ktorej sviatky_svatych() uklada pocet sviatkov (de facto lubovolnych spomienok), ktore pripadaju na dany den
@@ -1394,26 +1314,21 @@ const short int pocet_opt[POCET_GLOBAL_OPT] = {POCET_OPT_0_SPECIALNE, POCET_OPT_
 extern char *_global_string;
 extern char *_global_string2; // obsahuje I, II, III, IV, V alebo pismeno roka
 extern char *_global_string_farba; // 2006-08-19: doplnené
-// 2011-10-04: pridané, pre titulok modlitby (už sa nepriliepa do _global_string)
-// extern char _global_string_modlitba[SMALL];
 
 extern char *_global_buf; // 2006-08-01: túto premennú tiež alokujeme
 extern char *_global_buf2; // 2006-08-01: túto premennú tiež alokujeme
 
 extern short int _global_linky;
 
-// 2006-07-11: Pridané kvôli jazykovým mutáciám (breviar.cpp) 
-// 2010-08-04: zmenené _global_language na _global_jazyk (doteraz bolo len pomocou #define)
 extern short int _global_jazyk;
-// 2010-08-04: pridané kvôli kalendárom (napr. rehoľný), súvisí s jazykovými mutáciami
+
 extern short int _global_kalendar;
 
-extern short int _global_css; // 2008-08-08: Pridané kvôli rôznym css
+extern short int _global_css;
 
-extern short int _global_font; // 2011-05-06: Pridané kvôli rôznym fontom
-extern short int _global_font_size; // 2011-05-13: Pridané kvôli rôznym veľkostiam fontov
+extern short int _global_font;
+extern short int _global_font_size;
 
-// 2006-10-17: Pridané kvôli kompletóriu: niekedy obsahuje až dva žalmy
 extern short int _global_pocet_zalmov_kompletorium;
 
 extern const char *nazov_jazyka[POCET_JAZYKOV + 1];
@@ -1440,9 +1355,6 @@ extern const char *nazov_font_size_jazyk[POCET_FONT_SIZE + 1][POCET_JAZYKOV + 1]
 extern const char *nazov_font_size_css[POCET_FONT_SIZE + 1];
 
 //---------------------------------------------------------------------
-
-//---------------------------------------------------------------------
-// tu nasleduju funkcie(), ibaze by som inkludoval "liturgia.cpp"
 
 short int _allocate_global_var(void);
 short int _deallocate_global_var(void);
@@ -1488,12 +1400,7 @@ unsigned char _nedelne_pismeno(short int den, short int mesiac, short int rok);
 unsigned char _nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok);
 char nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok);
 _struct_den_mesiac por_den_mesiac(short int poradie, short int rok);
-#ifdef FUNKCIE_PRE_SPECIALNE_DNI
-short int _svatej_rodiny(short int rok);
-short int _krst_krista_pana(short int rok);
-short int _popolcova_streda(short int rok);
-short int _nanebovstupenie(short int rok);
-#endif
+
 short int _zoslanie_ducha(short int rok);
 short int _prva_adventna_nedela(short int rok);
 _struct_den_mesiac prva_adventna_nedela(short int rok);
@@ -1520,12 +1427,8 @@ short int modlitba_nasledujuca(short int modlitba, short int exclude_mcd_komplet
 void analyzuj_rok(short int year);
 
 #define UNKNOWN_PORADIE_SVATEHO 0
-// 28/03/2000A.D.: naschval < 0, aby nebol problem s porovnanim s _global_pocet_svatych v _rozbor_dna() 
-// 2009-03-19: presunuté z breviar.cpp
-// 2009-03-27: po zúfalých pokusoch dnes - napokon som zistil, že už je úplne jedno, akú hodnotu bude táto konštanta mať, preto som ju dal opäť na 0
 
-// definovany 2003-08-11 na zaklade funkcie _init_dm() 
-// upravené 2007-08-16, pretože sa používa aj v _main_dnes()
+// based on method _init_dm() 
 #define _INIT_DM(a) {\
 	a.den = 1;    \
 	a.mesiac = 1; \
@@ -1547,13 +1450,11 @@ void analyzuj_rok(short int year);
 	mystrcpy(a.lc_str_id, STR_EMPTY, MAX_LC_STR_ID); \
 }
 
-// inicializacne definy pridane 2003-08-13
 #define _INIT_ANCHOR_AND_FILE(a) {\
 	mystrcpy(a.file, STR_UNDEF, MAX_STR_AF_FILE); \
 	mystrcpy(a.anchor, STR_UNDEF, MAX_STR_AF_ANCHOR); \
 }
 
-// 2010-05-21: rozšírené kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie)
 #define _INIT_TMODLITBA1(a) {\
 	a.alternativy = 0; \
 	_INIT_ANCHOR_AND_FILE(a.popis); \
@@ -1588,7 +1489,6 @@ void analyzuj_rok(short int year);
 	_INIT_ANCHOR_AND_FILE(a.modlitba); \
 };
 
-// 2006-10-11 doplnené
 #define _INIT_TMODLITBA3(a) {\
 	a.alternativy = 0; \
 	a.pocet_zalmov = 1;\
@@ -1604,14 +1504,12 @@ void analyzuj_rok(short int year);
 	_INIT_ANCHOR_AND_FILE(a.modlitba); \
 };
 
-// 2006-10-11 doplnené
 #define _INIT_TMODLITBA4(a) {\
 	_INIT_ANCHOR_AND_FILE(a.popis); \
 	_INIT_ANCHOR_AND_FILE(a.antifona1); \
 	_INIT_ANCHOR_AND_FILE(a.zalm1); \
 };
 
-// 2011-03-25: doplnené pre posvätné čítanie
 #define _INIT_TMODLITBA5(a) {\
 	a.alternativy = 0; \
 	_INIT_ANCHOR_AND_FILE(a.popis); \

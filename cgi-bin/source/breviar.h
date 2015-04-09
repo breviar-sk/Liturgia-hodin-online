@@ -16,6 +16,7 @@
 #include "mysystem.h"
 #include "mysysdef.h"
 
+// week of psaltery
 #define TYZZAL(t)					(((t + 3) MOD 4) + 1)
 #define TYZZAL_PREDCHADZAJUCI(t)	(((t + 2) MOD 4) + 1)
 #define TYZZAL_NASLEDUJUCI(t)		(((t + 4) MOD 4) + 1)
@@ -32,10 +33,10 @@ extern short int _global_poradie_svaty;
 
 extern short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydefs.h
 
-#define EXPORT_DNA_XML 6 // 2012-10-12: kvôli iOS
+#define EXPORT_DNA_XML 6 // XML export for the day -- originally for iOS app
 #define EXPORT_DNA_JEDEN_DEN_LOCAL 5
 #define EXPORT_DNA_VIAC_DNI_TXT 4
-#define EXPORT_DNA_VIAC_DNI_SIMPLE 3 // 2005-03-21: Pridany dalsi typ exportu; 2011-04-13: nerozumiem načo; asi sa nepoužíva...
+#define EXPORT_DNA_VIAC_DNI_SIMPLE 3
 #define EXPORT_DNA_JEDEN_DEN 1
 #define EXPORT_DNA_VIAC_DNI 2
 #define EXPORT_DNA_DNES 0
@@ -52,10 +53,9 @@ extern void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dn
 extern void _export_rozbor_dna_kalendar_orig(short int typ);
 extern void _export_rozbor_dna_kalendar(short int typ);
 
-extern short int _global_pocet_navigacia; // 2011-07-03: počet prejdených/spracovaných parametrov PARAM_NAVIGACIA
+extern short int _global_pocet_navigacia; // 2011-07-03: počet prejdených/spracovaných parametrov PARAM_NAVIGACIA | counter of processed PARAM_NAVIGACIA params
 
 extern short int index_pre_mesiac_otvoreny;
-// extern short int export_monthly_druh;
 
 // globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
 extern _struct_dm *_global_den_ptr;
@@ -77,40 +77,31 @@ extern _struct_dm *_global_pm_sobota_ptr;
 // globalne premenne obsahujuce data modlitbach
 
 extern _type_1vespery     *_global_modl_prve_vespery_ptr;
-// _type_1vespery      _global_modl_prve_vespery;
 #define _global_modl_prve_vespery (*_global_modl_prve_vespery_ptr)
 
 extern _type_1kompletorium *_global_modl_1kompletorium_ptr;
-// _type_1kompletorium _global_modl_prve_kompletorium;
 #define _global_modl_prve_kompletorium (*_global_modl_1kompletorium_ptr)
 
 extern _type_invitatorium *_global_modl_invitatorium_ptr;
-// _type_invitatorium  _global_modl_invitatorium;
 #define _global_modl_invitatorium (*_global_modl_invitatorium_ptr)
 
 extern _type_posv_citanie *_global_modl_posv_citanie_ptr;
 #define _global_modl_posv_citanie (*_global_modl_posv_citanie_ptr)
 
 extern _type_ranne_chvaly *_global_modl_ranne_chvaly_ptr;
-// _type_ranne_chvaly  _global_modl_ranne_chvaly;
 #define _global_modl_ranne_chvaly (*_global_modl_ranne_chvaly_ptr)
 
 extern _type_cez_den_9     *_global_modl_cez_den_9_ptr;
-// _type_cez_den_9     _global_modl_cez_den_9;
 #define _global_modl_cez_den_9 (*_global_modl_cez_den_9_ptr)
 extern _type_cez_den_12     *_global_modl_cez_den_12_ptr;
-// _type_cez_den_12     _global_modl_cez_den_12;
 #define _global_modl_cez_den_12 (*_global_modl_cez_den_12_ptr)
 extern _type_cez_den_3     *_global_modl_cez_den_3_ptr;
-// _type_cez_den_3     _global_modl_cez_den_3;
 #define _global_modl_cez_den_3 (*_global_modl_cez_den_3_ptr)
 
 extern _type_vespery      *_global_modl_vespery_ptr;
-// _type_vespery       _global_modl_vespery;
 #define _global_modl_vespery (*_global_modl_vespery_ptr)
 
 extern _type_kompletorium *_global_modl_kompletorium_ptr;
-// _type_kompletorium _global_modl_kompletorium;
 #define _global_modl_kompletorium (*_global_modl_kompletorium_ptr)
 
 extern _struct_anchor_and_file *_global_include_static_text_ptr;
@@ -121,20 +112,16 @@ extern short int _global_modlitba;
 
 // globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru PATH_CGI(SCRIPT_NAME) ++ "?param1=val&param2=val&..."
 extern char *_global_link_ptr;
-// char _global_link[MAX_STR];
 #define _global_link _global_link_ptr
 
 extern char *_global_pom_str; // pomocny string pre velke pismena
-// char _global_pom_str[MAX_STR];
 
 // globalna premenna, do ktorej sa ukladaju info o jednotlivych vyznacnych liturgickych dni, pouzivaju void _dm_...() funkcie a void analyzuj_rok() funkcia
 extern _struct_dm *_global_result_ptr;
-// _struct_dm _global_result;
 #define _global_result (*_global_result_ptr)
 
 // globalna premenna, do ktorej sa uklada info o liturgickom roku pouziva void analyzuj_rok() funkcia
 extern _struct_lrok *_global_r_ptr;
-// _struct_lrok _global_r;
 #define _global_r (*_global_r_ptr)
 
 // globalna premenna, do ktorej sviatky_svatych() uklada pocet sviatkov (de facto lubovolnych spomienok), ktore pripadaju na dany den
@@ -210,6 +197,7 @@ extern short int _global_opt_export_date_format;
 // 2012-02-09: definované je_privileg pre testovanie, či ide o privilegované dni (VSLH č. 238-239): to isté ako je_post + december počnúc 17.-tym (všedné di od 17. do 24. decembra a Vianočná oktáva); striktne by tu nemal byť veľký týždeň a veľkonočné trojdnie, ale nezaškodí to tu
 #define je_privileg ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))) || ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den >= 17)))
 
+// is antiphone for privileged day?
 #define je_ant_modl_spomprivileg (( \
 (_global_modlitba == MODL_RANNE_CHVALY &&  \
 	(_global_modl_ranne_chvaly.ant_spomprivileg.anchor != NULL) && (_global_modl_ranne_chvaly.ant_spomprivileg.file != NULL) && \
@@ -235,7 +223,8 @@ extern short int _global_opt_export_date_format;
 	(strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_UNDEF) != 0) \
 ) \
 ))
-// 2012-05-24: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní
+
+// predĺžené slávenie vigílií v rámci posvätných čítaní | is vigily (for office with readings)?
 #define je_vigilia \
 (_global_modlitba == MODL_POSV_CITANIE &&  \
 	(_global_modl_posv_citanie.ant_chval.anchor != NULL) && (_global_modl_posv_citanie.ant_chval.file != NULL) && \
@@ -254,7 +243,8 @@ extern short int _global_opt_export_date_format;
 	(strcmp(_global_modl_posv_citanie.evanjelium.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.evanjelium.anchor, STR_UNDEF) != 0) &&  \
 	(strcmp(_global_modl_posv_citanie.evanjelium.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.evanjelium.file, STR_UNDEF) != 0) \
 )
-// 2012-10-01: doplnené
+
+// is description for prayer?
 #define je_popis (( \
 (_global_modlitba == MODL_RANNE_CHVALY &&  \
 	(_global_modl_ranne_chvaly.popis.anchor != NULL) && (_global_modl_ranne_chvaly.popis.file != NULL) && \
@@ -297,12 +287,12 @@ extern short int _global_opt_export_date_format;
 ) \
 ))
 
-// 2013-04-05: doplnené -- či sa NEMAJÚ zobrazovať vešpery; doteraz sa kontrolovalo len to, či je sobota -- opravené pre Veľkú (bielu) sobotu
+// či sa NEMAJÚ zobrazovať vešpery; doteraz sa kontrolovalo len to, či je sobota -- opravené pre Veľkú (bielu) sobotu | are NOT vespers (= should I hide button for evening prayer)?
 #define nie_su_vespery ( \
 	(_global_den.denvt == DEN_SOBOTA) && (!((_global_den.denvt == DEN_SOBOTA) && (_global_den.litobd == OBD_VELKONOCNE_TROJDNIE))) \
 )
 
-// 2013-05-14: doplnené aj veľkonočné alternatívne hymny
+// are there alternate hymns? (for SK based on LA LH)
 #define je_alternativa_hymnus ( \
 (_global_modlitba == MODL_PRVE_KOMPLETORIUM && ((_global_modl_prve_kompletorium.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
 ||  \
@@ -327,6 +317,7 @@ extern short int _global_opt_export_date_format;
 (_global_modlitba == MODL_VESPERY && ((_global_modl_vespery.alternativy & BIT_ALT_HYMNUS_VN) == BIT_ALT_HYMNUS_VN)) \
 )
 
+// are there alternate hymns for Ordinary time (per annum)? (for SK based on LA LH)
 #define je_alternativa_hymnus_ocr ( \
 (_global_modlitba == MODL_PRVE_VESPERY && ((_global_modl_prve_vespery.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
 ||  \
@@ -345,6 +336,7 @@ extern short int _global_opt_export_date_format;
 (_global_modlitba == MODL_POPOLUDNI && ((_global_modl_popol.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
 )
 
+// are there alternate hymns for Easter? (for SK based on LA LH)
 #define je_alternativa_hymnus_vn ( \
 (_global_modlitba == MODL_RANNE_CHVALY && ((_global_modl_ranne_chvaly.alternativy & BIT_ALT_HYMNUS_VN) == BIT_ALT_HYMNUS_VN)) \
 ||  \
@@ -353,8 +345,7 @@ extern short int _global_opt_export_date_format;
 (_global_modlitba == MODL_VESPERY && ((_global_modl_vespery.alternativy & BIT_ALT_HYMNUS_VN) == BIT_ALT_HYMNUS_VN)) \
 )
 
-
-// 2013-02-13: doplnené
+// is supplementary psalmody?
 #define je_len_doplnkova_psalmodia(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_LEN_DOPLNKOVA_PSALMODIA) == BIT_ALT_LEN_DOPLNKOVA_PSALMODIA)) \
 ||  \
@@ -363,8 +354,7 @@ extern short int _global_opt_export_date_format;
 	((modlitba == MODL_POPOLUDNI) && ((_global_modl_popol.alternativy & BIT_ALT_LEN_DOPLNKOVA_PSALMODIA) == BIT_ALT_LEN_DOPLNKOVA_PSALMODIA)) \
 )
 
-// 2013-02-26: doplnené
-// stačilo by len: modlitba predpoludním
+// is psalm 122/129 in supplementary psalmody? (it would suffice: 9h prayer)
 #define je_alternativa_doplnkova_psalmodia_z122_129(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_DOPLNK_PSALM_122_129) == BIT_ALT_DOPLNK_PSALM_122_129)) \
 ||  \
@@ -372,7 +362,8 @@ extern short int _global_opt_export_date_format;
 ||  \
 	((modlitba == MODL_POPOLUDNI) && ((_global_modl_popol.alternativy & BIT_ALT_DOPLNK_PSALM_122_129) == BIT_ALT_DOPLNK_PSALM_122_129)) \
 )
-// stačilo by len: modlitba popoludní
+
+// is psalm 127/131 in supplementary psalmody? (it would suffice: 12h prayer)
 #define je_alternativa_doplnkova_psalmodia_z127_131(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_DOPLNK_PSALM_127_131) == BIT_ALT_DOPLNK_PSALM_127_131)) \
 ||  \
@@ -380,7 +371,8 @@ extern short int _global_opt_export_date_format;
 ||  \
 	((modlitba == MODL_POPOLUDNI) && ((_global_modl_popol.alternativy & BIT_ALT_DOPLNK_PSALM_127_131) == BIT_ALT_DOPLNK_PSALM_127_131)) \
 )
-// stačilo by len: modlitba popoludní
+
+// is psalm 126/129 in supplementary psalmody? (it would suffice: 15h prayer)
 #define je_alternativa_doplnkova_psalmodia_z126_129(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_DOPLNK_PSALM_126_129) == BIT_ALT_DOPLNK_PSALM_126_129)) \
 ||  \
@@ -414,7 +406,7 @@ extern short int _global_opt_export_date_format;
 ((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV)) \
 )
 
-// 2011-03-18: presunuté samostatne na jedno jediné miesto
+// should calendar be exported?
 #define PODMIENKA_EXPORTOVAT_KALENDAR ( \
 ((_global_jazyk == JAZYK_SK) && !((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK) )) \
 || ((_global_jazyk == JAZYK_CZ) && !((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ) )) \

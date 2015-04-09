@@ -31,6 +31,7 @@ char *mystrcpy(char *dest, char *src, short int count){
 	dest[count - 1] = '\0';
 	return ret;
 }
+
 char *mystrcpy(char *dest, const char *src, short int count){
 	char *ret;
 	/* sizeof(dest) nefunguje pre char *dest */
@@ -53,34 +54,34 @@ int substring(char *str1, char *str2){
 
 // string comparator -- pre vsetky kombinacie dvojic [const] char, [const] char
 short int equals(char *s1, char *s2){
-	if(strcmp(s1, s2) == 0)
+	if (strcmp(s1, s2) == 0)
 		return 1;
 	else
 		return 0;
 }
 
 short int equals(const char *s1, char *s2){
-	if(strcmp(s1, s2) == 0)
+	if (strcmp(s1, s2) == 0)
 		return 1;
 	else
 		return 0;
 }
 
 short int equals(const char *s1, const char *s2){
-	if(strcmp(s1, s2) == 0)
+	if (strcmp(s1, s2) == 0)
 		return 1;
 	else
 		return 0;
 }
 
 short int equals(char *s1, const char *s2){
-	if(strcmp(s1, s2) == 0)
+	if (strcmp(s1, s2) == 0)
 		return 1;
 	else
 		return 0;
 }
 
-// string comparator without case sensitivity  -- pre vsetky kombinacie dvojic [const] char, [const] char
+// string comparator without case sensitivity -- pre vsetky kombinacie dvojic [const] char, [const] char
 short int equalsi(char *is1, char *is2){
 #if defined(DEFINED_strcmpi)
 	if(strcmpi(is1, is2) == 0)
@@ -93,11 +94,11 @@ short int equalsi(char *is1, char *is2){
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
 	length = strlen(s1);
-	for(i = 0; i < length; i++){
+	for (i = 0; i < length; i++){
 		s1[i] = (char)tolower(s1[i]);
 	}
 	length = strlen(s2);
-	for(i = 0; i < length; i++){
+	for (i = 0; i < length; i++){
 		s2[i] = (char)tolower(s2[i]);
 	}
 	return equals(s1, s2);
@@ -116,11 +117,11 @@ short int equalsi(const char *is1, char *is2){
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
 	length = strlen(s1);
-	for(i = 0; i < length; i++){
+	for (i = 0; i < length; i++){
 		s1[i] = (char)tolower(s1[i]);
 	}
 	length = strlen(s2);
-	for(i = 0; i < length; i++){
+	for (i = 0; i < length; i++){
 		s2[i] = (char)tolower(s2[i]);
 	}
 	return equals(s1, s2);
@@ -139,11 +140,11 @@ short int equalsi(const char *is1, const char *is2){
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
 	length = strlen(s1);
-	for(i = 0; i < length; i++){
+	for (i = 0; i < length; i++){
 		s1[i] = (char)tolower(s1[i]);
 	}
 	length = strlen(s2);
-	for(i = 0; i < length; i++){
+	for (i = 0; i < length; i++){
 		s2[i] = (char)tolower(s2[i]);
 	}
 	return equals(s1, s2);
@@ -175,39 +176,38 @@ short int equalsi(char *is1, const char *is2){
 
 // funkcia mystr_replace() nahradí všetky výskyty podreťazca substr v reťazci string reťazcom replacement
 // http://coding.debuntu.org/c-implementing-str_replace-replace-all-occurrences-substring | 2013-01-11
-char *mystr_replace ( const char *string, const char *substr, const char *replacement ){
+char *mystr_replace(const char *string, const char *substr, const char *replacement){
 	char *tok = NULL;
 	char *newstr = NULL;
 	char *oldstr = NULL;
 	char *head = NULL;
 	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
-	if ( substr == NULL || replacement == NULL ) return strdup (string);
-	newstr = strdup (string);
+	if (substr == NULL || replacement == NULL) return strdup(string);
+	newstr = strdup(string);
 	head = newstr;
-	while ( (tok = strstr ( head, substr ))){
+	while ((tok = strstr(head, substr))){
 		oldstr = newstr;
-		newstr = (char *) malloc ( strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ) + 1 );
+		newstr = (char *)malloc(strlen(oldstr) - strlen(substr) + strlen(replacement) + 1);
 		/* failed to alloc mem, free old string and return NULL */
-		if ( newstr == NULL ){
-			free (oldstr);
+		if (newstr == NULL){
+			free(oldstr);
 			return NULL;
 		}
-		memcpy ( newstr, oldstr, tok - oldstr );
-		memcpy ( newstr + (tok - oldstr), replacement, strlen ( replacement ) );
-		memcpy ( newstr + (tok - oldstr) + strlen( replacement ), tok + strlen ( substr ), strlen ( oldstr ) - strlen ( substr ) - ( tok - oldstr ) );
-		memset ( newstr + strlen ( oldstr ) - strlen ( substr ) + strlen ( replacement ) , 0, 1 );
+		memcpy(newstr, oldstr, tok - oldstr);
+		memcpy(newstr + (tok - oldstr), replacement, strlen(replacement));
+		memcpy(newstr + (tok - oldstr) + strlen(replacement), tok + strlen(substr), strlen(oldstr) - strlen(substr) - (tok - oldstr));
+		memset(newstr + strlen(oldstr) - strlen(substr) + strlen(replacement), 0, 1);
 		/* move back head right after the last replacement */
-		head = newstr + (tok - oldstr) + strlen( replacement );
-		free (oldstr);
+		head = newstr + (tok - oldstr) + strlen(replacement);
+		free(oldstr);
 	}
 	return newstr;
 }
 
-// funkcia mystr_first_lower() aplikuje tolower() na prvý znak reťazca
-char *mystr_first_lower ( const char *string ){
+char *mystr_first_lower(const char *string){
 	char *newstr = NULL;
 	char c;
-	newstr = strdup (string);
+	newstr = strdup(string);
 	c = newstr[0];
 	if (isupper(c)){
 		c = tolower(c);
@@ -215,11 +215,11 @@ char *mystr_first_lower ( const char *string ){
 	}
 	return newstr;
 }
-// funkcia mystr_first_upper() aplikuje toupper() na prvý znak reťazca
-char *mystr_first_upper ( const char *string ){
+
+char *mystr_first_upper(const char *string){
 	char *newstr = NULL;
 	char c;
-	newstr = strdup (string);
+	newstr = strdup(string);
 	c = newstr[0];
 	if (islower(c)){
 		c = toupper(c);

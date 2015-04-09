@@ -14,14 +14,16 @@
 
 #define EmptyLog NoLog
 #define emptyLog NoLog
-short int NoLog(const char *fmt, ...); /* empty log - nerobi nic, ale ma vstup (...) */
+short int NoLog(const char *fmt, ...);
 
 short int initLog(const char *fname);
-void bothLogs(void); /* prepne na oboje logovanie */
-void fileLog(void); /* prepne na logovanie do fajlu */
-short int isbothLogs(void); /* vrati 1, ak su oba logy, inak vrati 0 */
+
+void bothLogs(void);
+void fileLog(void);
+
+short int isbothLogs(void);
 short int closeLog(void);
-/* Log() premenovana na __Log() -- 24/02/2000A.D. */
+
 short int __Log(const char *fmt, ...);
 void Logint(int c);
 

@@ -15,7 +15,7 @@
 #undef USE_UNCGI
 
 /*
- * Poznámka: Pri buildovaní nezabudni zmeniť datum v mybuild.h (BUILD_DATE).
+ * NOTE: Do not forget to change date of biuld in mybuild.h (BUILD_DATE).
  *
  * Popis jednotlivých modelov (JUV, 2007-06-28):
  *
@@ -67,7 +67,7 @@
 #undef IO_ANDROID
 #undef LITURGICKE_CITANIA_ANDROID
 
-// ostry linux:
+// production linux:
 #if defined(MODEL_linux)
 	#define BEHAVIOUR_WEB
 	#define OS_linux
@@ -103,7 +103,7 @@
 	#define IO_ANDROID
 	#define LITURGICKE_CITANIA_ANDROID
 	#define LIBC_BIONIC
-// ostré Windows/RUBY:
+// production Windows/RUBY:
 #elif defined(MODEL_Windows_RUBY)
 	#define BEHAVIOUR_WEB
 	#define OS_Windows_Ruby
@@ -111,7 +111,7 @@
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
-// debugovanie Windows/RUBY -- vsetko sa vypisuje na stdout
+// debugging in Windows/RUBY -- all output is sent to stdout
 #elif defined(MODEL_DEBUG_Windows_RUBY)
 	#define BEHAVIOUR_WEB
 	#define OS_Windows_Ruby
@@ -121,7 +121,7 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
 	#define DEBUG
-// debugovanie linux -- vsetko sa vypisuje na stdout
+// debugging in linux -- all output is sent to stdout
 #elif defined(MODEL_DEBUG_linux)
 	#define BEHAVIOUR_WEB
 	#define OS_linux
@@ -131,14 +131,14 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_STDOUT
 	#define DEBUG
-// ostry Windows (command-line verzia):
+// production Windows (command-line version):
 #elif defined(MODEL_Windows_commandline)
 	#define BEHAVIOUR_CMDLINE
 	#define OS_Windows
 	#undef LOGGING
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
-// debugovanie Windows/command-line -- vsetko sa loguje do suboru
+// debugging in Windows/command-line -- all output is written into log file
 #elif defined(MODEL_DEBUG_Windows_commandline)
 	#define BEHAVIOUR_CMDLINE
 	#define OS_Windows
@@ -148,14 +148,14 @@
 	#define EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
-// ostry linux (command-line verzia):
+// production linux (command-line version):
 #elif defined(MODEL_linux_commandline)
 	#define BEHAVIOUR_CMDLINE
 	#define OS_linux
 	#undef LOGGING
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
-// debugovanie linux/command-line -- vsetko sa loguje do suboru
+// debugging in linux/command-line -- all output is written into log file
 #elif defined(MODEL_DEBUG_linux_commandline)
 	#define BEHAVIOUR_CMDLINE
 	#define OS_linux
@@ -175,7 +175,7 @@
 	#error Unsupported system model (see mysystem.h) - Nepodporovaný systémový model (pozri súbor mysystem.h)
 #endif
 
-// 2010-06-07: doplnené podľa direktívy Visual Studia (vlastne tak trocha prepisuje vyššie uvedené)
+// added according to Visual Studio directive (overrides some previous settings)
 #ifdef _DEBUG
 	#define DEBUG
 	#define LOGGING
@@ -188,13 +188,6 @@
 	#endif
 	#define EXPORT_HTML_FILENAME_ANCHOR
 	#define EXPORT_HTML_SPECIALS
-/*
-#else
-	#undef DEBUG
-	#undef LOGGING
-	#undef LOG_TO_STDOUT
-	#undef LOG_TO_FILE
-*/
 #endif
 
 #ifdef LOG_TO_EXPORT
@@ -203,33 +196,26 @@
 	#define Log __Log
 #endif
 
-// v DOSe
+// under MS DOS
 #ifdef OS_DOS
 	#define DEFINED_strcmpi
 #endif
 
-// 2006-07-17: Pridané/
 #define		PATH_SEPARATOR_linux	'/'
 #define		PATH_SEPARATOR_Windows	'\\'
-// 2008-08-08: Pridané
+
 #define		STR_PATH_SEPARATOR_linux	"/"
 #define		STR_PATH_SEPARATOR_Windows	"\\"
-// 2009-08-03: pridané pre HTML súbory
+
 #define		STR_PATH_SEPARATOR_HTML	STR_PATH_SEPARATOR_linux
 
 #define		SYSTEM_RUBY    0
 #define		SYSTEM_LINUX   1
 #define		SYSTEM_WINDOWS 2
 
-// 2007-05-29: upravené; pre Ruby on Windows tiež separátor ako pod linuxom
-// 2011-05-16: pri debugovaní Ruby on Windows treba backslashe
-// 2011-08-12: pri debugovaní Ruby on Windows treba backslashe -> načo? zapoznámkované!
 #if defined(OS_linux)
 	#define		PATH_SEPARATOR	PATH_SEPARATOR_linux
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_linux
-//#elif defined(OS_Windows_Ruby) && defined(DEBUG)
-//	#define		PATH_SEPARATOR	PATH_SEPARATOR_Windows
-//	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_Windows
 #elif defined(OS_Windows_Ruby)
 	#define		PATH_SEPARATOR	PATH_SEPARATOR_linux
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_linux
@@ -238,17 +224,15 @@
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_Windows
 #endif
 
-// 2006-07-31: Pridané
 #define		UNDERSCORE	'_'
 
-// 2006-07-31: kvôli jazykovým mutáciám; zmenené 2008-08-15 na 5 
-// 2009-01-29: zmenené na 6 (maďarčina)
-// 2011-04-13: presunuté sem spolu s POCET_GLOBAL_OPT aj MAX_STR, GLOBAL_OPTION_NULL
+// number of supported rites (roman catholic, greek catholic, etc.)
 #define	POCET_RITOV	         1
 
 // number of supported languages | Warning: for all string constants we use arrays [POCET_JAZYKOV + 1] => be careful when incrementing POCET_JAZYKOV!
 /* INCREMENT_FOR_NEW_LANGUAGE */
 #define	POCET_JAZYKOV	     7
+
 // when adding new language, the following comments MUST BE replaced:
 // 
 // 1. few numeric constants [ADD_VALUE_FOR_NEW_LANGUAGE]
@@ -277,7 +261,7 @@
 // 4. string arrays: STRING_ARRAY_FOR_NEW_LANGUAGE to be replaced manually
 
 #define POCET_GLOBAL_OPT     6
-#define MAX_STR            300 // maximalna dlzka retazca
-#define GLOBAL_OPTION_NULL  -1 // neurčená hodnota pre global option
+#define MAX_STR            300 // max string length
+#define GLOBAL_OPTION_NULL  -1 // undefined value for global option
 
 #endif // __MYSYSDEF_H_

@@ -27,31 +27,31 @@
  */
 void splitword(char *out, char *in, char stop)
 {
-int i, j;
+	int i, j;
 
-while(*in == ' ') in++; /* skip past any spaces */
+	while (*in == ' ') in++; /* skip past any spaces */
 
-for(i = 0; in[i] && (in[i] != stop); i++)
-  out[i] = in[i];
+	for (i = 0; in[i] && (in[i] != stop); i++)
+		out[i] = in[i];
 
-out[i] = '\0'; /* terminate it */
-if(in[i]) ++i; /* position past the stop */
+	out[i] = '\0'; /* terminate it */
+	if (in[i]) ++i; /* position past the stop */
 
-while(in[i] == ' ') i++; /* skip past any spaces */
+	while (in[i] == ' ') i++; /* skip past any spaces */
 
-for(j = 0; in[j]; )  /* shift the rest of the in */
-  in[j++] = in[i++];
+	for (j = 0; in[j];)  /* shift the rest of the in */
+		in[j++] = in[i++];
 }
 
 char x2c(char *x)
 {
-register char c;
+	register char c;
 
-/* note: (x & 0xdf) makes x upper case */
-c  = (char)(x[0] >= 'A' ? ((x[0] & 0xdf) - 'A') + 10 : (x[0] - '0'));
-c *= 16;
-c += (char)(x[1] >= 'A' ? ((x[1] & 0xdf) - 'A') + 10 : (x[1] - '0'));
-return(c);
+	/* note: (x & 0xdf) makes x upper case */
+	c = (char)(x[0] >= 'A' ? ((x[0] & 0xdf) - 'A') + 10 : (x[0] - '0'));
+	c *= 16;
+	c += (char)(x[1] >= 'A' ? ((x[1] & 0xdf) - 'A') + 10 : (x[1] - '0'));
+	return(c);
 }
 
 /* this function goes through the URL char-by-char 
@@ -65,19 +65,19 @@ return(c);
 
 void unescape_url(char *url)
 {
-register int i, j;
+	register int i, j;
 
-for(i = 0, j = 0; url[j]; ++i, ++j) 
-  {
-  if((url[i] = url[j]) == '%') 
-    {
-    url[i] = x2c(&url[j + 1]);
-    j += 2;
-    }
-  else if (url[i] == '+')
-    url[i] = ' ';
-  }
-url[i] = '\0';  /* terminate it at the new length */
+	for (i = 0, j = 0; url[j]; ++i, ++j)
+	{
+		if ((url[i] = url[j]) == '%')
+		{
+			url[i] = x2c(&url[j + 1]);
+			j += 2;
+		}
+		else if (url[i] == '+')
+			url[i] = ' ';
+	}
+	url[i] = '\0';  /* terminate it at the new length */
 }
 
 #endif /* __CGIUTILS_CPP_ */

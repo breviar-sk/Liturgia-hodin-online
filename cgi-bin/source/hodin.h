@@ -5,6 +5,11 @@
 /*                                                          */
 /* description | originally used for string constants       */
 /*                                                          */
+/*                                                          */
+/*   WARNING: NEVER REMOVE COMMENTS FOR ADDING NEW VALUES   */
+/*                                                          */
+/*   STRING_1_FOR_NEW_LANGUAGE etc.                         */
+/*                                                          */
 /************************************************************/
 
 #include "vstudio.h"

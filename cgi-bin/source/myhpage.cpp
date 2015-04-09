@@ -14,16 +14,16 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <time.h> // kvoli time_t a time();
-#include "myconf.h" // kvoli cfg_MAIL_ADDRESS_default a cfg_HTTP_ADDRESS_default; pridane 30/03/2000A.D.
+#include <time.h>
+#include "myconf.h"
 #include "myhpage.h"
-#include "mydefs.h" // kvoli #ifdef DEBUG; a tiez HTML_ - pridane 2003-07-02
+#include "mydefs.h"
 #include "myexpt.h"
-#include "mystring.h" // kvoli mystrcpy, 2003-07-01
+#include "mystring.h"
 #include "mylog.h"
-#include "breviar.h" // 2006-07-31 kvôli jazyku a css (2008-08-08)
-#include "liturgia.h" // 2006-07-31 kvôli jazyku
-#include "mybuild.h" // 2011-07-11: pridané, kvôli BUILD_DATE
+#include "breviar.h"
+#include "liturgia.h"
+#include "mybuild.h"
 
 short int bol_content_type_text_html = NIE;
 short int bol_content_type_text_xml = NIE;
@@ -65,8 +65,6 @@ void myhpage_init_globals() {
 void _header_css(FILE* expt, short int level, const char* nazov_css_suboru) {
 	Export_to_file(expt, html_header_css);
 #ifdef	EXPORT_CMDLINE_CSS
-	// pre command-line použitie (aj pre batch mód): "./breviar.css" resp. ".\breviar.css"
-	// 2009-08-03: level označuje počet adresárov, o ktoré je treba ísť "hore" (pre mesačný export)
 	if(level == 0 && _global_opt_batch_monthly == ANO)
 		level = 1;
 	if(level < 0 || level > 5)
@@ -84,10 +82,9 @@ void _header_css(FILE* expt, short int level, const char* nazov_css_suboru) {
 	Export_to_file(expt, STR_PATH_SEPARATOR_HTML);
 #else
 	Q_UNUSED(level);
-	// pre web-použitie (aj pre ruby): "/breviar.css"
 	Export_to_file(expt, "/");
 #endif
-	Export_to_file(expt, "%s\">\n", nazov_css_suboru); // názov css súboru
+	Export_to_file(expt, "%s\">\n", nazov_css_suboru);
 }
 
 // exportuje buttony pre predchádzajúcu a nasledujúcu modlitbu | bolo v _hlavicka() aj _patka()
@@ -98,9 +95,8 @@ void _buttons_prev_up_next(FILE * expt){
 
 	Export_to_file(expt, "\n<center>");
 	pismeno_modlitby = CHAR_MODL_NEURCENA;
-	if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)){
-		// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
-		if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+	if ((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)){
+		if ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
 			pismeno_modlitby = char_modlitby[_local_modlitba];
 		}
 		else{
@@ -113,10 +109,9 @@ void _buttons_prev_up_next(FILE * expt){
 	// << prev
 	mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
 	ptr = strstr(file_name_pom, ext);
-	if((_local_modlitba < MODL_NEURCENA) && (_local_modlitba > MODL_INVITATORIUM) && (_local_modlitba_prev < MODL_NEURCENA)){
-		if(ptr != NULL){
-			// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
-			if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+	if ((_local_modlitba < MODL_NEURCENA) && (_local_modlitba > MODL_INVITATORIUM) && (_local_modlitba_prev < MODL_NEURCENA)){
+		if (ptr != NULL){
+			if ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
 				sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba_prev]);
 			}
 			else{
@@ -141,10 +136,9 @@ void _buttons_prev_up_next(FILE * expt){
 	// >> next
 	mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
 	ptr = strstr(file_name_pom, ext);
-	if((_local_modlitba != MODL_NEURCENA) && (_local_modlitba < MODL_KOMPLETORIUM) && (_local_modlitba_next < MODL_NEURCENA)){
-		if(ptr != NULL){
-			// 2013-07-29: generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
-			if((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+	if ((_local_modlitba != MODL_NEURCENA) && (_local_modlitba < MODL_KOMPLETORIUM) && (_local_modlitba_next < MODL_NEURCENA)){
+		if (ptr != NULL){
+			if ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
 				sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba_next]);
 			}
 			else{
@@ -167,26 +161,25 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Log("_hlavicka() -- začiatok...\n");
 
 	_local_modlitba = _global_modlitba;
-	if((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY)){
+	if ((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY)){
 		_local_modlitba = MODL_VESPERY;
 	}
-	if((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM)){
+	if ((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM)){
 		_local_modlitba = MODL_KOMPLETORIUM;
 	}
 
-	// 2009-08-04: viackrát sa pri exporte modlitby do HTML exportovala hlavička; pridaná kontrola
-	if(_global_hlavicka_Export > 0){
+	if (_global_hlavicka_Export > 0){
 		Log("return... (_global_hlavicka_Export > 0)\n");
 		return;
 	}
 	_global_hlavicka_Export++;
 
 	// 2013-12-09: iné CSS budú len "doplnky" (overrides) k hlavnému CSS
-	if(_global_css != CSS_breviar_sk){
+	if (_global_css != CSS_breviar_sk){
 		Log("ako prvý bude exportovaný nazov_css_suboru == %s...\n", nazov_css[CSS_breviar_sk]);
 	}
 	const char *nazov_css_suboru;
-	if(_global_css == CSS_UNDEF){
+	if (_global_css == CSS_UNDEF){
 		nazov_css_suboru = nazov_css[CSS_breviar_sk];
 	}// _global_css == CSS_UNDEF
 	else{
@@ -197,9 +190,9 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	// 2011-05-05: nastavenie font-family
 	//             zatiaľ len pevné reťazce; časom možno bude premenná pre názov fontu
 	// 2011-05-06: doplnené: najprv sa testuje nastavenie _global_font; následne sa prípadne nastavia defaulty
-	if((_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)){
+	if ((_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)){
 		Log("(_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)...\n");
-		if((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY) == BIT_OPT_2_FONT_FAMILY){
+		if ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY) == BIT_OPT_2_FONT_FAMILY){
 			Log("_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY...\n");
 			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SANS_SERIF, SMALL);
 		}
@@ -208,7 +201,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SERIF, SMALL);
 		}
 	}// (_global_font == FONT_UNDEF)  || (_global_font == FONT_CHECKBOX)
-	else if(_global_font == FONT_CSS){
+	else if (_global_font == FONT_CSS){
 		Log("_global_font == FONT_CSS...\n");
 		mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_INHERIT, SMALL);
 	}// (_global_font == FONT_CSS)
@@ -219,10 +212,10 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Log("_global_css_font_family == %s...\n", _global_css_font_family);
 
 	// 2011-05-13: doplnené: nastavenie font-size
-	if(_global_font_size == FONT_SIZE_UNDEF){
+	if (_global_font_size == FONT_SIZE_UNDEF){
 		mystrcpy(_global_css_font_size, STR_EMPTY, SMALL);
 	}// (_global_font_size == FONT_SIZE_UNDEF)
-	else if(_global_font_size == FONT_SIZE_CSS){
+	else if (_global_font_size == FONT_SIZE_CSS){
 		mystrcpy(_global_css_font_size, DEFAULT_FONT_SIZE_INHERIT, SMALL);
 	}// (_global_font_size == FONT_SIZE_CSS)
 	else{
@@ -230,7 +223,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}// else
 	Log("_global_css_font_size == %s...\n", _global_css_font_size);
 
-	if(bol_content_type_text_html == NIE){
+	if (bol_content_type_text_html == NIE){
 #if defined(BEHAVIOUR_WEB)
 		Export_to_file(expt, "Content-type: text/html\n");
 		Export_to_file(expt, "\n");
@@ -238,29 +231,27 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		bol_content_type_text_html = ANO;
 	}
 	Log("creating header...\n");
-	// 2008-08-08: pridané dynamicky css-ko
-	// 2010-02-15: statické texty do konštánt
-	// 2011-05-18: charset sa nastaví podľa jazyka
+
 	Log("element <head>...\n");
 	Export_to_file(expt, (char *)html_header_1, nazov_charset[charset_jazyka[_global_jazyk]]);
 
 	// CSS (one or more)
-	if(_global_css != CSS_breviar_sk){
+	if (_global_css != CSS_breviar_sk){
 		_header_css(expt, level, nazov_css[CSS_breviar_sk]);
 	}
-    _header_css(expt, level, nazov_css_suboru);
+	_header_css(expt, level, nazov_css_suboru);
 	// CSS override night mode
-    if ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_NOCNY_REZIM) == BIT_OPT_2_NOCNY_REZIM) {
-        _header_css(expt, level, nazov_css_invert_colors);
-    }
+	if ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_NOCNY_REZIM) == BIT_OPT_2_NOCNY_REZIM) {
+		_header_css(expt, level, nazov_css_invert_colors);
+	}
 	// CSS override normal font (no bold)
-    if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_FONT_NORMAL) == BIT_OPT_0_FONT_NORMAL) {
-        _header_css(expt, level, nazov_css_normal_font_weight);
-    }
+	if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_FONT_NORMAL) == BIT_OPT_0_FONT_NORMAL) {
+		_header_css(expt, level, nazov_css_normal_font_weight);
+	}
 	// blind-friendly CSS (no red text)
-    if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY) == BIT_OPT_0_BLIND_FRIENDLY) {
-        _header_css(expt, level, nazov_css_blind_friendly);
-    }
+	if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY) == BIT_OPT_0_BLIND_FRIENDLY) {
+		_header_css(expt, level, nazov_css_blind_friendly);
+	}
 
 	Export_to_file(expt, "\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=yes, initial-scale=1.0\" />\n");
 	Export_to_file(expt, "<title>%s</title>\n", title);
@@ -268,24 +259,24 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Log("element </head>...\n");
 
 	Log("element <body>...\n");
-	// 2011-05-05: pridanie font-family 
-	// 2011-05-06: font sa nepridáva vždy
+
 	Export_to_file(expt, "<body");
-	if((_global_font != FONT_CSS) || (_global_font_size != FONT_SIZE_CSS) || (_global_style_margin != 0)){
+	if ((_global_font != FONT_CSS) || (_global_font_size != FONT_SIZE_CSS) || (_global_style_margin != 0)){
 		Export_to_file(expt, " style=\"");
-		if(_global_font != FONT_CSS){
+		if (_global_font != FONT_CSS){
 			Export_to_file(expt, "font-family: %s; ", _global_css_font_family);
 		}
-		if(_global_font_size != FONT_SIZE_CSS){
+		if (_global_font_size != FONT_SIZE_CSS){
 			Export_to_file(expt, "font-size: %s; ", _global_css_font_size);
 		}
-		if(_global_style_margin != 0){
+		if (_global_style_margin != 0){
 			Export_to_file(expt, "margin-left: %dpx; margin-right: %dpx; ", _global_style_margin, _global_style_margin);
 		}
 		Export_to_file(expt, "\"");
 	}
+
 	// 2010-02-15: kvôli špeciálnemu "zoznam.htm"
-	if(spec == 1){
+	if (spec == 1){
 		Export_to_file(expt, " onLoad=\"fn_aktualne(0,0,0)\"");
 	}
 	Export_to_file(expt, ">\n");
@@ -293,7 +284,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Export_to_file(expt, HTML_ANAME_TOP"\n");
 
 	// 2010-02-15: doplnené predošlá a nasledovná modlitba
-	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
+	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
 		_buttons_prev_up_next(expt);
 	}// << predošlá | ^ hore | nasledovná >>
 
@@ -304,15 +295,15 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 void hlavicka(char *title, short int level, short int spec){
 	_hlavicka(title, NULL, level, spec);
 }
+
 void hlavicka(char *title, FILE * expt, short int level, short int spec){
 	_hlavicka(title, expt, level, spec);
 }
 
 // exportuje hlavicku XML dokumentu
-
 void _xml_hlavicka(FILE * expt){
 	Log("_xml_hlavicka() -- začiatok...\n");
-	if(bol_content_type_text_xml == NIE){
+	if (bol_content_type_text_xml == NIE){
 #if defined(OS_linux)
 		Export_to_file(expt, "Content-type: text/xml\n");
 		Export_to_file(expt, "\n");
@@ -331,6 +322,7 @@ void _xml_hlavicka(FILE * expt){
 void xml_hlavicka(void){
 	_xml_hlavicka(NULL);
 }
+
 void xml_hlavicka(FILE * expt){
 	_xml_hlavicka(expt);
 }
@@ -356,15 +348,15 @@ void _patka(FILE * expt){
 	char mail_addr[MAX_MAIL_STR] = "";
 	Log("_patka() -- začiatok...\n");
 	_local_modlitba = _global_modlitba;
-	if((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY)){
+	if ((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY)){
 		_local_modlitba = MODL_VESPERY;
 	}
-	if((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM)){
+	if ((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM)){
 		_local_modlitba = MODL_KOMPLETORIUM;
 	}
 
 	// 2011-07-01: viackrát sa pri exporte modlitby do HTML exportovala pätka; pridaná kontrola
-	if(_global_patka_Export > 0)
+	if (_global_patka_Export > 0)
 		return;
 	_global_patka_Export++;
 
@@ -381,18 +373,18 @@ void _patka(FILE * expt){
 	dnes.tm_year = dnes.tm_year + 1900;
 	dnes.tm_yday = dnes.tm_yday + 1;
 	mystrcpy(rok, STR_EMPTY, ROK);
-	if(dnes.tm_year > baserok){
+	if (dnes.tm_year > baserok){
 		sprintf(rok, "-%d", dnes.tm_year);
 	}
 
 	// 2010-02-15: vložené "^ hore" podľa hlavicka(); doplnené predošlá a nasledovná modlitba
-	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
+	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
 		_buttons_prev_up_next(expt);
 	}// << predošlá | ^ hore | nasledovná >>
 
 	Export_to_file(expt, (char *)html_footer_1);
 
-	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
+	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
 		mystrcpy(html_mail_label, html_mail_label_short, MAX_MAIL_LABEL);
 	}
 	else
@@ -401,11 +393,10 @@ void _patka(FILE * expt){
 	}
 
 	Export("\n");
-	// 2010-02-15: celé zapoznámkované 
-	// 2011-07-01: pre web sa exportuje
+
 	Export_to_file(expt, "<"HTML_P_PATKA">\n");
 #ifdef BEHAVIOUR_WEB
-	if(_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
+	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
 		Export_to_file(expt, "%s\n", gpage[_global_jazyk]);
 		// Export_to_file(expt, "(%s). ", ctime(&t) + 4);
 		// 2008-12-22: odvetvené - pre commandline export (do súboru) sa netlačí časová zložka, kedy bolo HTML generované
@@ -427,11 +418,8 @@ void _patka(FILE * expt){
 #endif
 		Export_to_file(expt, ". ");
 	}
-	// nezabudni zmenit #define BUILD_DATE v mydefs.h (2003-07-15)
 	Export_to_file(expt, (char *)build_template[_global_jazyk], BUILD_DATE);
 
-	// Export_to_file(expt, "Kódovanie Windows-1250 (Central European).\n"); // zapoznamkovane, 2003-06-30
-	// Export_to_file(expt, HTML_LINE_BREAK"\n"); // commented, 2013-11-12
 #endif
 
 	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" target=\"_top\">%s</a>\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
@@ -454,6 +442,7 @@ void _patka(FILE * expt){
 void patka(void){
 	_patka(NULL);
 }
+
 void patka(FILE * expt){
 	_patka(expt);
 }
@@ -463,7 +452,7 @@ void _xml_patka(FILE * expt){
 	Log("_xml_patka() -- začiatok...\n");
 
 	// aby sa pätka neexportovala viackrát
-	if(_global_patka_Export > 0)
+	if (_global_patka_Export > 0)
 		return;
 	_global_patka_Export++;
 
@@ -494,6 +483,7 @@ void _xml_patka(FILE * expt){
 void xml_patka(void){
 	_xml_patka(NULL);
 }
+
 void xml_patka(FILE * expt){
 	_xml_patka(expt);
 }
