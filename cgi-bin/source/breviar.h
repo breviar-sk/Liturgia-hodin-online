@@ -50,7 +50,7 @@ extern void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes = 
 extern void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes = ANO);
 extern void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes = ANO);
 extern void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dnes = ANO);
-extern void _export_rozbor_dna_kalendar_orig(short int typ);
+extern void _export_rozbor_dna_kalendar_core(short int typ);
 extern void _export_rozbor_dna_kalendar(short int typ);
 
 extern short int _global_pocet_navigacia; // 2011-07-03: počet prejdených/spracovaných parametrov PARAM_NAVIGACIA | counter of processed PARAM_NAVIGACIA params

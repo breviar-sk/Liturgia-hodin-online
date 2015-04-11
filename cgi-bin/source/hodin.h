@@ -148,7 +148,8 @@ const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 	, { "Prvé kompl.", "První kompl.", "Compl.", "Compl.", "", "První kompl.", "Bef. i. I. e. d. után", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "Druhé vešp.", "Druhé nešpory", "2nd Vesperae", "II vesper&#230;", "", "Druhé večerní chv.", "II. esti dics.", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "Druhé kompl.", "Druhý kompl.", "2nd Completary", "II completorio", "", "Druhý kompl.", "Bef. i. II. e. d. után", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "výber spoločnej časti...", "výběr společné části...", "common texts...", "optiónes...", "", "výběr společné části...", "közös rész kiválasztása...", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	// JUV: temporarily disabled due to lack of colspan functionality in display: table etc. elements | , { "výber spoločnej časti...", "výběr společné části...", "common texts...", "optiónes...", "", "výběr společné části...", "közös rész kiválasztása...", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "výber...", "výběr...", "common texts...", "optiónes...", "", "výběr...", "közös...", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "všetky", "všechny", "all", "all", "", "všechny", "összes", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
@@ -1241,7 +1242,7 @@ const char *html_text_dalsie_moznosti_2[POCET_JAZYKOV + 1] =
 {
 	"Ďalšie zobrazenia",
 	"Další zobrazení",
-	"Other options",
+	"Other facilities",
 	"",
 	"",
 	"Další zobrazení",

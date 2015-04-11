@@ -105,7 +105,7 @@ div.responsory {
 	border-left: 1px; 
 	border-right: 1px; 
 	border-top: 0px; 
-	display: inline; 
+	/* display: inline; */
 	font-weight: bold; 
 	min-width: 22px; 
 	padding: 4px 4px 0px 0; 
@@ -764,5 +764,50 @@ sup {
 	position: relative; 
 	top: -0.8em; 
 	vertical-align: baseline; 
+}
+
+.table
+{
+	/* background: yellow; testing only */
+	border-collapse: collapse;
+	display: table;
+	margin: 0 auto; /* centered */
+}
+
+.table-left
+{
+	/* background: yellow; testing only */
+	border-collapse: collapse;
+	display: table;
+	margin-right: auto; /* left aligned */
+}
+
+.table-caption
+{
+	/* background: yellow; testing only */
+	display: table-caption;
+	margin: 0 auto; /* centered */
+	text-align: center;
+}
+
+.table-row
+{
+	display: table-row;
+}
+
+.table-cell
+{
+	display: table-cell;
+	margin: 0 auto;
+	padding: 1px; /* all four paddings */
+}
+
+.table-cell-bordered {
+	display: table-cell;
+	border: 1px solid black;
+	padding: 2px; /* all four paddings */
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 

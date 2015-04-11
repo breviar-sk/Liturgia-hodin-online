@@ -89,8 +89,8 @@ void dumpFile(char *fname){
 }
 
 // used from http://bytes.com/topic/c/answers/215169-va_copy-implementation | similar answer at http://stackoverflow.com/questions/558223/va-copy-porting-to-visual-c
-// #ifndef va_copy
-#ifdef _MSC_VER 
+#ifndef va_copy
+// #ifdef _MSC_VER 
 // WARNING - DANGER - ASSUMES TYPICAL STACK MACHINE
 #define va_copy(dst, src) ((void)((dst) = (src)))
 #endif

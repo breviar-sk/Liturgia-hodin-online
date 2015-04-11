@@ -119,17 +119,21 @@ void _buttons_prev_up_next(FILE * expt){
 			}
 			strncpy(ptr, pismeno_prev, 1);
 		}
-		Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
+		Export_to_file(expt, "<a href=\"%s\">", file_name_pom);
+		Export_to_file(expt, HTML_BUTTON_BEGIN"\n");
 		Export_to_file(expt, (char *)html_text_batch_Prev[_global_jazyk]);
 		Export_to_file(expt, " ");
 		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_prev));
+		Export_to_file(expt, HTML_BUTTON_END"\n");
 		Export_to_file(expt, "</a>");
 	}
 	// |
 	Export_to_file(expt, " | ");
 	// ^ hore
-	Export_to_file(expt, "<a href=\".%s%s\" "HTML_CLASS_BUTTON">", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore); // v tom istom adresári
+	Export_to_file(expt, "<a href=\".%s%s\">", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore); // v tom istom adresári
+	Export_to_file(expt, HTML_BUTTON_BEGIN"\n");
 	Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
+	Export_to_file(expt, HTML_BUTTON_END"\n");
 	Export_to_file(expt, "</a>");
 	// |
 	Export_to_file(expt, " | ");
@@ -146,10 +150,12 @@ void _buttons_prev_up_next(FILE * expt){
 			}
 			strncpy(ptr, pismeno_next, 1);
 		}
-		Export_to_file(expt, "<a href=\"%s\" "HTML_CLASS_BUTTON">", file_name_pom);
+		Export_to_file(expt, "<a href=\"%s\">", file_name_pom);
+		Export_to_file(expt, HTML_BUTTON_BEGIN"\n");
 		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_next));
 		Export_to_file(expt, " ");
 		Export_to_file(expt, (char *)html_text_batch_Next[_global_jazyk]);
+		Export_to_file(expt, HTML_BUTTON_END"\n");
 		Export_to_file(expt, "</a>");
 	}
 	Export_to_file(expt, "</p>");

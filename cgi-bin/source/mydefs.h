@@ -914,6 +914,7 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_FORM_INPUT_TEXT     "input type=\"text\" class=\"text\""
 #define HTML_FORM_INPUT_TEXT_ROK "input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
 #define HTML_FORM_INPUT_CHECKBOX "input type=\"checkbox\" class=\"checkbox\""
+
 // buttons (0. level: pre predošlý/nasledovný; 1. level: button "dnes"; 2. level: použité pre menej dôležité buttony)
 #define HTML_FORM_INPUT_SUBMIT0  "input type=\"submit\" class=\"button0\""
 #define HTML_FORM_INPUT_RESET0   "input type=\"reset\" class=\"reset0\""
@@ -942,10 +943,35 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 #define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE))
 
+#define HTML_DIV_TABLE "div class=\"table\""
+#define HTML_DIV_TABLE_CAPTION "div class=\"table-caption\""
+#define HTML_DIV_TABLE_ROW "div class=\"table-row\""
+#define HTML_DIV_TABLE_CELL "div class=\"table-cell\""
+
+#define HTML_DIV_TABLE_LEFT "div class=\"table-left\""
+#define HTML_DIV_TABLE_CELL_BORDER "div class=\"table-cell-bordered\""
+
+#define HTML_DIV_TABLE_END HTML_DIV_END""HTML_COMMENT_BEGIN"table"HTML_COMMENT_END
+#define HTML_DIV_TABLE_ROW_END HTML_DIV_END""HTML_COMMENT_BEGIN"row"HTML_COMMENT_END
+#define HTML_DIV_TABLE_CELL_END HTML_DIV_END""HTML_COMMENT_BEGIN"cell"HTML_COMMENT_END
+
 #define HTML_DIV_END             "</div>"
 
 #define HTML_DIV_RED_SMALL       "div class=\"redsmall\""
 #define HTML_DIV_RED_SUBTITLE    "div class=\"redsubtitle\""
+
+#define HTML_TABLE			HTML_DIV_TABLE // "table"
+#define HTML_TABLE_CAPTION	HTML_DIV_TABLE_CAPTION // "th"
+#define HTML_TABLE_ROW		HTML_DIV_TABLE_ROW // "tr"
+#define HTML_TABLE_CELL		HTML_DIV_TABLE_CELL // "td"
+#define HTML_TABLE_END		HTML_DIV_END""HTML_COMMENT_BEGIN"table"HTML_COMMENT_END // "</table>"
+#define HTML_TABLE_CAPTION_END	HTML_DIV_END""HTML_COMMENT_BEGIN"caption"HTML_COMMENT_END // "</th>"
+#define HTML_TABLE_ROW_END	HTML_DIV_END""HTML_COMMENT_BEGIN"row"HTML_COMMENT_END // "</tr>"
+#define HTML_TABLE_CELL_END	HTML_DIV_END""HTML_COMMENT_BEGIN"cell"HTML_COMMENT_END // "</td>"
+
+#define HTML_TABLE_LEFT			HTML_DIV_TABLE_LEFT // "table" left-aligned
+#define HTML_TABLE_CELL_BORDER		HTML_DIV_TABLE_CELL_BORDER // "td" with borders
+#define HTML_TABLE_CELL_BORDER_END	HTML_TABLE_CELL_END
 
 #define HTML_SPAN_END            "</span>"
 
@@ -968,10 +994,12 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_SPAN_XS_CAPS        "span class=\"xsmallcaps\""
 
 #define HTML_CLASS_CALENDAR "class=\"calendar\""
+
 #define HTML_CALENDAR_HEADING "span class=\"calendar heading\""
 #define HTML_CALENDAR_DAYS   "span class=\"calendar day_name\""
 #define HTML_CALENDAR_TODAY_SUNDAY   "span class=\"calendar today bold\""
 #define HTML_CALENDAR_TODAY   "span class=\"calendar today\""
+
 #define HTML_CLASS_NAME_CALENDAR_TODAY_SUNDAY "calendar today bold"
 #define HTML_CLASS_NAME_CALENDAR_TODAY "calendar today"
 #define HTML_CLASS_NAME_CALENDAR_SUNDAY "calendar day bold"
@@ -991,12 +1019,17 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_CLASS_BUTTON   "class=\"button\""
 #define HTML_CLASS_SMALL    "class=\"small\""
 
+#define HTML_CLASS_QUIET_SMALL    "class=\"quiet small\""
+
 #define HTML_ALIGN_CENTER   "align=\"center\""
 #define HTML_ALIGN_LEFT     "align=\"left\""
 #define HTML_ALIGN_RIGHT    "align=\"right\""
 #define HTML_VALIGN_MIDDLE  "valign=\"middle\""
 #define HTML_VALIGN_TOP     "valign=\"top\""
 #define HTML_VALIGN_BASE    "valign=\"baseline\""
+
+#define HTML_BUTTON_BEGIN	"<button type=\"button\" "HTML_CLASS_BUTTON">" // wrapping <a> element to look like button
+#define HTML_BUTTON_END		"</button>"
 
 #define HTML_AMPERSAND          "&amp;"
 
