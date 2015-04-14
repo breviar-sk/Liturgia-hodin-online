@@ -90,13 +90,13 @@ void _header_css(FILE* expt, short int level, const char* nazov_css_suboru) {
 // exportuje buttony pre predchádzajúcu a nasledujúcu modlitbu | bolo v _hlavicka() aj _patka()
 void _buttons_prev_up_next(FILE * expt){
 	short int _local_modlitba_prev, _local_modlitba_next;
-	_local_modlitba_prev = modlitba_predchadzajuca(_local_modlitba, ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_EXCLUDE_MCD_KOMPLET) == BIT_OPT_4_EXCLUDE_MCD_KOMPLET));
-	_local_modlitba_next = modlitba_nasledujuca(_local_modlitba, ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_EXCLUDE_MCD_KOMPLET) == BIT_OPT_4_EXCLUDE_MCD_KOMPLET));
+	_local_modlitba_prev = modlitba_predchadzajuca(_local_modlitba, (isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_EXCLUDE_MCD_KOMPLET)));
+	_local_modlitba_next = modlitba_nasledujuca(_local_modlitba, (isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_EXCLUDE_MCD_KOMPLET)));
 
 	Export_to_file(expt, "\n<center>");
 	pismeno_modlitby = CHAR_MODL_NEURCENA;
 	if ((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)){
-		if ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+		if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)){
 			pismeno_modlitby = char_modlitby[_local_modlitba];
 		}
 		else{
@@ -111,7 +111,7 @@ void _buttons_prev_up_next(FILE * expt){
 	ptr = strstr(file_name_pom, ext);
 	if ((_local_modlitba < MODL_NEURCENA) && (_local_modlitba > MODL_INVITATORIUM) && (_local_modlitba_prev < MODL_NEURCENA)){
 		if (ptr != NULL){
-			if ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+			if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)){
 				sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba_prev]);
 			}
 			else{
@@ -142,7 +142,7 @@ void _buttons_prev_up_next(FILE * expt){
 	ptr = strstr(file_name_pom, ext);
 	if ((_local_modlitba != MODL_NEURCENA) && (_local_modlitba < MODL_KOMPLETORIUM) && (_local_modlitba_next < MODL_NEURCENA)){
 		if (ptr != NULL){
-			if ((_global_opt[OPT_4_OFFLINE_EXPORT] & BIT_OPT_4_FNAME_MODL_ID) != BIT_OPT_4_FNAME_MODL_ID){
+			if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)){
 				sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba_next]);
 			}
 			else{
@@ -198,7 +198,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	// 2011-05-06: doplnené: najprv sa testuje nastavenie _global_font; následne sa prípadne nastavia defaulty
 	if ((_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)){
 		Log("(_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)...\n");
-		if ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY) == BIT_OPT_2_FONT_FAMILY){
+		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY)){
 			Log("_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY...\n");
 			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SANS_SERIF, SMALL);
 		}
@@ -247,15 +247,15 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}
 	_header_css(expt, level, nazov_css_suboru);
 	// CSS override night mode
-	if ((_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_NOCNY_REZIM) == BIT_OPT_2_NOCNY_REZIM) {
+	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)) {
 		_header_css(expt, level, nazov_css_invert_colors);
 	}
 	// CSS override normal font (no bold)
-	if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_FONT_NORMAL) == BIT_OPT_0_FONT_NORMAL) {
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL)) {
 		_header_css(expt, level, nazov_css_normal_font_weight);
 	}
 	// blind-friendly CSS (no red text)
-	if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY) == BIT_OPT_0_BLIND_FRIENDLY) {
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
 		_header_css(expt, level, nazov_css_blind_friendly);
 	}
 

@@ -788,7 +788,7 @@ short int zjavenie_pana(short int rok){
 	short int ZJAVENIE_PANA; // zjavenie Pána
 	char nedelne_pismenko = _global_r.p1;
 
-	if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA){
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)){
 		if (nedelne_pismenko == 'A'){
 			nedelne_pismenko = 'h'; // aby vyšla nedeľa Zjavenia Pána na 8.1.
 		}
@@ -1129,7 +1129,7 @@ void _dm_popolcova_streda(short int rok, short int _vn){
 
 void _dm_nanebovstupenie(short int rok, short int _vn){
 	short int _nan;
-	if ((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA) == BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA){
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)){
 		_nan = (_vn + OD_VELKEJ_NOCI_PO_NANEBOSTUPENIE_NE);
 	}
 	else{
@@ -1212,7 +1212,7 @@ void _dm_krst_krista_pana(short int rok){
 	short int _zjavenie_pana = zjavenie_pana(rok); // bolo tu static, ale pre viacnásobné volanie z analyzuj_rok() pre tabuľku tu 'static' nesmie byť
 	short int _krst = _zjavenie_pana + 1;
 
-	if (!(((_global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_ZJAVENIE_PANA_NEDELA) == BIT_OPT_0_ZJAVENIE_PANA_NEDELA) && ((_zjavenie_pana == 7) || (_zjavenie_pana == 8)))){
+	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA) && ((_zjavenie_pana == 7) || (_zjavenie_pana == 8)))){
 		while (den_v_tyzdni(_krst, rok) != DEN_NEDELA){
 			_krst++;
 		}// while -- hľadáme nedeľu
