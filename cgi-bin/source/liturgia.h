@@ -1284,12 +1284,13 @@ extern int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_ALTERNATIVES          16384 // ukázať iba jednu alternatívu (0 = ako doteraz; buď systém vyberie, alebo ukáže všetky možnosti)
 #define BIT_OPT_2_SHOW_DEFAULT_CALENDAR 32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
 
-#define POCET_OPT_4_OFFLINE_EXPORT          3 // jednotlivé komponenty option 4 -- bity pre force option 4
+#define POCET_OPT_4_OFFLINE_EXPORT          4 // jednotlivé komponenty option 4 -- bity pre force option 4
 extern int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: úprava významu (a interpretácie) option 4 (rozličné prepínače pre offline export, napr. aj batch mód)
 #define BIT_OPT_4_MESIAC_RIADOK             1 // mesiac jednoducho (default: nie jednoducho, ale HTML pekne pre web) alebo pekne "zložito"
 #define BIT_OPT_4_FNAME_MODL_ID             2 // či pre názov súboru použiť (číselné) ID modlitby alebo písmenko modlitby (default)
 #define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
+#define BIT_OPT_4_DO_NOT_USE_BUTTON         8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
 #define POCET_OPT_5_ALTERNATIVES           12 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];

@@ -57,6 +57,10 @@ extern short int _global_pocet_navigacia; // 2011-07-03: počet prejdených/spra
 
 extern short int index_pre_mesiac_otvoreny;
 
+extern char html_class_button[MAX_STR];
+extern char html_button_begin[MAX_STR];
+extern char html_button_end[MAX_STR];
+
 // globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
 extern _struct_dm *_global_den_ptr;
 #define _global_den (*_global_den_ptr)
