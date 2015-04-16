@@ -3061,7 +3061,33 @@ const char *html_text_option5_1VHymnusPC[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] = 
+const char *html_text_option5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
+{
+	"psalmódia pre Popolcovú stredu zo stredy 4. týždňa žaltára",
+	"žalmy pro Popolcovou středu ze středy 4. týdne žaltáře",
+	"for Ash Wednesday take psalmody from Wednesday, 4th week of Psalter",
+	"",
+	"",
+	"žalmy pro Popolcovou středu ze středy 4. týdne žaltáře",
+	"zsoltározás Hamvazószerdára 4. hét szerdájáról",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
+{
+	"psalmódia pre Popolcovú stredu z piatka 3. týždňa žaltára",
+	"žalmy pro Popolcovou středu z pátku 3. týdne žaltáře",
+	"for Ash Wednesday take psalmody from Friday, 3rd week of Psalter",
+	"",
+	"",
+	"žalmy pro Popolcovou středu z pátku 3. týdne žaltáře",
+	"zsoltározás Hamvazószerdára 3. hét péntekjéről",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmu 122 brať žalm 129",
  "místo žalmu 122 vzít žalm 129",

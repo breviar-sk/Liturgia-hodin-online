@@ -7024,6 +7024,11 @@ label_24_DEC:
 			_post1_benediktus;
 			_post1_prosby;
 			_post1_modlitba;
+			if (_global_den.denvr == POPOLCOVA_STREDA){
+				if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)){
+					zaltar(DEN_PIATOK, 3);
+				}
+			}
 
 			// vešpery
 			modlitba = MODL_VESPERY;
@@ -7042,7 +7047,7 @@ label_24_DEC:
 			_post1_kresponz;
 			_post1_modlitba;
 
-			// 2006-01-25: modlitba cez deň MODL_PREDPOLUDNIM + MODL_NAPOLUDNIE + MODL_POPOLUDNI
+			// modlitba cez deň MODL_PREDPOLUDNIM + MODL_NAPOLUDNIE + MODL_POPOLUDNI
 			modlitba = MODL_PREDPOLUDNIM;
 			_post1_hymnus;
 			_post1_mcd_antifony;

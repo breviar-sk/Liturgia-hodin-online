@@ -432,7 +432,8 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_TEXT          "TEXT" // static text included into single file
 #define PARAM_MARIANSKE_ANTIFONY_LINK "MARIANSKE_ANTIFONY_LINK" // hyperlink to Maria antiphones (static HTML text or dynamically generated URL
 
-#define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // 2012-10-01: _ sa menilo na &nbsp; preto som zmenil na -
+#define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // supplementary psalmody (for daily prayers: 9h, 12h, 15h)
+#define PARAM_PSALMODIA                "PSALMODIA" // alternative psalmody (e. g. for morning prayer, Ash Wednesday)
 
 #define PARAM_PSALMODIA_TRI_TYZDNE     "PSALMODIA-TRI-TYZDNE"
 
@@ -1292,7 +1293,7 @@ extern int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 #define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
 #define BIT_OPT_4_DO_NOT_USE_BUTTON         8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
-#define POCET_OPT_5_ALTERNATIVES           12 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES           13 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezročné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
@@ -1306,6 +1307,7 @@ extern int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_VN_RCH           512 // hymnus pre ranné chvály (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
 #define BIT_OPT_5_HYMNUS_VN_VESP         1024 // hymnus pre vešpery (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
 #define BIT_OPT_5_HYMNUS_1VESP           2048 // hymnus pre prvé vešpery (Cezročné obdobie: nedeľný alebo z posv. čítania)
+#define BIT_OPT_5_POPOL_STREDA_PSALMODIA 4096 // psalmódia pre ranné chvály popolcovej stredy (default: streda 4. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
 
 #define MAX_POCET_OPT                      16 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
 

@@ -386,9 +386,10 @@ char system_command[MAX_STR] = STR_EMPTY;
 
 short int index_pre_mesiac_otvoreny = NIE;
 
-char html_class_button[MAX_STR] = STR_EMPTY;
-char html_button_begin[MAX_STR] = STR_EMPTY;
-char html_button_end[MAX_STR] = STR_EMPTY;
+char optional_html_line_break[MAX_STR] = STR_EMPTY;
+char optional_html_class_button[MAX_STR] = STR_EMPTY;
+char optional_html_button_begin[MAX_STR] = STR_EMPTY;
+char optional_html_button_end[MAX_STR] = STR_EMPTY;
 
 // -------------------------------------------------------------------
 
@@ -864,6 +865,7 @@ short int setForm(void){
 			case 9: strcat(local_str, STR_MODL_OPTF_5_HYMNUS_VN_RCH); break; // BIT_OPT_5_HYMNUS_VN_RCH
 			case 10: strcat(local_str, STR_MODL_OPTF_5_HYMNUS_VN_VESP); break; // BIT_OPT_5_HYMNUS_VN_VESP
 			case 11: strcat(local_str, STR_MODL_OPTF_5_HYMNUS_1VESP); break; // BIT_OPT_5_HYMNUS_1VESP
+			case 12: strcat(local_str, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA); break; // BIT_OPT_5_POPOL_STREDA_PSALMODIA
 			}// switch(i)
 			strcat(local_str, "=");
 			strcat(local_str, pom_MODL_OPTF_ALTERNATIVES[i]);
@@ -2854,6 +2856,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		|| (equals(paramname, PARAM_OTCENAS))
 		|| (equals(paramname, PARAM_TEDEUM))
 		|| (equals(paramname, PARAM_DOPLNKOVA_PSALMODIA))
+		|| (equals(paramname, PARAM_PSALMODIA))
 		|| (equals(paramname, PARAM_PSALMODIA_TRI_TYZDNE))
 		|| (equals(paramname, PARAM_ZVOLANIA))
 		|| (equals(paramname, PARAM_POPIS))
@@ -3019,6 +3022,16 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				podmienka = NIE;
 			}
 		}
+		else if (equals(paramname, PARAM_PSALMODIA)){
+			bit = BIT_OPT_5_POPOL_STREDA_PSALMODIA;
+
+			opt = OPT_5_ALTERNATIVES;
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka &= ((_global_den.denvr == POPOLCOVA_STREDA) && (_global_modlitba == MODL_RANNE_CHVALY));
+
+			sprintf(popis_show, "%s", html_text_option5_PopolStrPsalm_4STR[_global_jazyk]);
+			sprintf(popis_hide, "%s", html_text_option5_PopolStrPsalm_3PI[_global_jazyk]);
+		}
 
 		// má zmysel len ak platí daná podmienka
 		if (podmienka){
@@ -3038,7 +3051,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Export("[skipping %s]", paramname);
 			Log("skipping %s\n", paramname);
 		}
-	}// PARAM_CHVALOSPEV, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
+	}// PARAM_CHVALOSPEV, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
 
 	if (equals(paramname, PARAM_NAVIGACIA)){
 		if (aj_navigacia == ANO){
@@ -6371,6 +6384,9 @@ void xml_export_options(void){
 				case 11: // BIT_OPT_5_HYMNUS_1VESP
 					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_1VESP)"%d"ELEM_END(XML_BIT_OPT_5_HYMNUS_1VESP)"\n", BIT_OPT_5_HYMNUS_1VESP, STR_MODL_OPTF_5_HYMNUS_1VESP, html_text_option5_1VHymnusNe[_global_jazyk], html_text_option5_1VHymnusPC[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_1VESP)));
 					break;
+				case 12: // BIT_OPT_5_POPOL_STREDA_PSALMODIA
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA)"%d"ELEM_END(XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA)"\n", BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, html_text_option5_PopolStrPsalm_4STR[_global_jazyk], html_text_option5_PopolStrPsalm_3PI[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)));
+					break;
 				}// switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_5_ALTERNATIVES)"\n");
@@ -6543,13 +6559,14 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 				}
 			}
 			Log("\treťazec pom == %s; doplnkova_psalmodia == %d\n", pom, doplnkova_psalmodia);
+
 			if ((doplnkova_psalmodia != MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA)){
 				if ((som_v_tabulke == ANO) && (typ != EXPORT_DNA_JEDEN_DEN_LOCAL)){
 					Export_HtmlForm(pom);
 				}
 				else{
-					Export("<a href=\"%s\"%s>\n", pom, html_class_button);
-					Export(html_button_begin);
+					Export("%s<a href=\"%s\"%s>\n", optional_html_line_break, pom, optional_html_class_button);
+					Export("%s", optional_html_button_begin);
 				}
 			}
 		}
@@ -6568,7 +6585,7 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 		else{
 			Export("%s", nazov_modlitby(modl_visible));
 		}
-		Export(html_button_end);
+		Export("%s", optional_html_button_end);
 		Export("</a>\n");
 	}
 
@@ -6589,24 +6606,24 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 				}
 			}
 			Log("\treťazec pom == %s; doplnkova_psalmodia == %d\n", pom, doplnkova_psalmodia);
-			// 2011-12-01: pôvodne tu bola copy-paste podmienka if((doplnkova_psalmodia != MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA)), avšak nesmie tu byť
+
 			if((som_v_tabulke == ANO) && (typ != EXPORT_DNA_JEDEN_DEN_LOCAL)){
 				Export_HtmlForm(pom);
 			}
 			else{
-				Export("<a href=\"%s\"%s>\n", pom, html_class_button);
-				Export(html_button_begin);
+				Export("%s<a href=\"%s\"%s>\n", optional_html_line_break, pom, optional_html_class_button);
+				Export("%s", optional_html_button_begin);
 			}
 
 			if((som_v_tabulke == ANO) && (typ != EXPORT_DNA_JEDEN_DEN_LOCAL)){
 				Export("<"HTML_FORM_INPUT_SUBMIT" title=\"%s (%s)\" value=\"", nazov_modlitby(modl), str_doplnkova_psalmodia[_global_jazyk]);
-				Export("(alt)"); // alternatíva s doplnkovou psalmódiou [prípadne neskôr doriešiť krajšie]
+				Export("(alt)"); // alternatíva s doplnkovou psalmódiou [prípadne neskôr doriešiť krajšie] | ToDo
 				Export("\">\n");
 				Export("</form>\n");
 			}
 			else{
-				Export("(alt)"); // alternatíva s doplnkovou psalmódiou [prípadne neskôr doriešiť krajšie]
-				Export(html_button_end);
+				Export("(alt)"); // alternatíva s doplnkovou psalmódiou [prípadne neskôr doriešiť krajšie] | ToDo
+				Export("%s", optional_html_button_end);
 				Export("</a>\n");
 			}
 		}// alternatíva s doplnkovou psalmódiou
@@ -8904,6 +8921,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_VN_VESP
 				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP, STR_MODL_OPTF_5_HYMNUS_VN_VESP, html_text_option5_VespHymnusVNferia[_global_jazyk], html_text_option5_VespHymnusVNnedela[_global_jazyk]);
 			}
+
+			// ranné chvály na Popolcovú stredu
+			Export(HTML_CRLF_LINE_BREAK);
+			Export("<"HTML_SPAN_BOLD_TOOLTIP">%s (%s)"HTML_SPAN_END, nazov_modlitby(MODL_RANNE_CHVALY), nazov_modlitby(MODL_RANNE_CHVALY), text_POPOLCOVA_STREDA[_global_jazyk]);
+
+			// pole (checkbox) WWW_/STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA
+			_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, html_text_option5_PopolStrPsalm_4STR[_global_jazyk], html_text_option5_PopolStrPsalm_3PI[_global_jazyk]);
+
 		}
 		else{
 			Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_5_DOPLNK_PSALM_122_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)) ? ANO : NIE);
@@ -8918,6 +8943,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_5_HYMNUS_VN_RCH, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_RCH)) ? ANO : NIE);
 			Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_5_HYMNUS_VN_VESP, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP)) ? ANO : NIE);
 			Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_5_HYMNUS_1VESP, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_1VESP)) ? ANO : NIE);
+			Export("<"HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\">\n", STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)) ? ANO : NIE);
 		}// else: treba nastaviť hidden pre všetky options pre _global_optf
 
 		Export(HTML_TABLE_CELL_END"\n");
@@ -11388,10 +11414,10 @@ void showAllPrayers(short int den, short int mesiac, short int rok, short int po
 		if (modlitba > MODL_INVITATORIUM){
 			// odkaz na vrch stránky
 			Export("<p "HTML_ALIGN_CENTER">");
-			Export("<a href=\"#top\"%s>", html_class_button);
-			Export(html_button_begin);
+			Export("<a href=\"#top\"%s>", optional_html_class_button);
+			Export("%s", optional_html_button_begin);
 			Export((char *)html_text_batch_Back[_global_jazyk]);
-			Export(html_button_end);
+			Export("%s", optional_html_button_end);
 			Export("</a>");
 			Export("</p>");
 			// oddelenie
@@ -11785,22 +11811,16 @@ void _rozparsuj_parametre_OPT(void){
 
 	// setting up global strings for HTML export
 	if (isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_DO_NOT_USE_BUTTON)){
-		mystrcpy(html_class_button, " "HTML_CLASS_BUTTON, MAX_STR);
+		mystrcpy(optional_html_button_begin, STR_EMPTY, MAX_STR);
+		mystrcpy(optional_html_button_end, STR_EMPTY, MAX_STR);
+		mystrcpy(optional_html_class_button, " "HTML_CLASS_BUTTON, MAX_STR);
+		mystrcpy(optional_html_line_break, HTML_LINE_BREAK, MAX_STR);
 	}
 	else{
-		mystrcpy(html_class_button, STR_EMPTY, MAX_STR);
-	}
-	if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_DO_NOT_USE_BUTTON)){
-		mystrcpy(html_button_begin, HTML_BUTTON_BEGIN"\n", MAX_STR);
-	}
-	else{
-		mystrcpy(html_button_begin, STR_EMPTY, MAX_STR);
-	}
-	if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_DO_NOT_USE_BUTTON)){
-		mystrcpy(html_button_end, HTML_BUTTON_END"\n", MAX_STR);
-	}
-	else{
-		mystrcpy(html_button_end, STR_EMPTY, MAX_STR);
+		mystrcpy(optional_html_button_begin, HTML_BUTTON_BEGIN"\n", MAX_STR);
+		mystrcpy(optional_html_button_end, HTML_BUTTON_END"\n", MAX_STR);
+		mystrcpy(optional_html_class_button, STR_EMPTY, MAX_STR);
+		mystrcpy(optional_html_line_break, STR_EMPTY, MAX_STR);
 	}
 
 	Log("_rozparsuj_parametre_OPT() -- koniec.\n");
@@ -13701,10 +13721,10 @@ void _main_batch_mode(
 										fprintf(batch_month_file, (char *)html_text_batch_Zoznam2[_global_jazyk], nazov_mesiaca(m), r_from);
 										fprintf(batch_month_file, "</h2>");
 										// ^ hore
-										fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, html_class_button);
-										fprintf(batch_month_file, html_button_begin);
+										fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, optional_html_class_button);
+										fprintf(batch_month_file, "%s", optional_html_button_begin);
 										fprintf(batch_month_file, "%s", (char *)html_text_batch_Back[_global_jazyk]);
-										fprintf(batch_month_file, html_button_end);
+										fprintf(batch_month_file, "%s", optional_html_button_end);
 										fprintf(batch_month_file, "</a></p>");
 										// koniec hlavičky
 										fprintf(batch_month_file, "</center>\n");
@@ -13808,10 +13828,10 @@ void _main_batch_mode(
 								fprintf(batch_month_file, (char *)html_text_batch_Zoznam2[_global_jazyk], nazov_mesiaca(m_from), r_from);
 								fprintf(batch_month_file, "</h2>");
 								// ^ hore
-								fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, html_class_button);
-								fprintf(batch_month_file, html_button_begin);
+								fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, optional_html_class_button);
+								fprintf(batch_month_file, "%s", optional_html_button_begin);
 								fprintf(batch_month_file, "%s", (char *)html_text_batch_Back[_global_jazyk]);
-								fprintf(batch_month_file, html_button_end);
+								fprintf(batch_month_file, "%s", optional_html_button_end);
 								fprintf(batch_month_file, "</a></p>");
 								// koniec hlavičky
 								fprintf(batch_month_file, "</center>\n");
@@ -13884,10 +13904,10 @@ void _main_batch_mode(
 										fprintf(batch_month_file, (char *)html_text_batch_Zoznam2[_global_jazyk], nazov_mesiaca(m - 1), r_from);
 										fprintf(batch_month_file, "</h2>");
 										// ^ hore
-										fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, html_class_button);
-										fprintf(batch_month_file, html_button_begin);
+										fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, optional_html_class_button);
+										fprintf(batch_month_file, "%s", optional_html_button_begin);
 										fprintf(batch_month_file, "%s", (char *)html_text_batch_Back[_global_jazyk]);
-										fprintf(batch_month_file, html_button_end);
+										fprintf(batch_month_file, "%s", optional_html_button_end);
 										fprintf(batch_month_file, "</a></p>");
 										// koniec hlavičky
 										fprintf(batch_month_file, "</center>\n");
@@ -13965,10 +13985,10 @@ void _main_batch_mode(
 											fprintf(batch_month_file, (char *)html_text_batch_Zoznam2[_global_jazyk], nazov_mesiaca(m - 1), y);
 											fprintf(batch_month_file, "</h2>");
 											// ^ hore
-											fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, html_class_button);
-											fprintf(batch_month_file, html_button_begin);
+											fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, optional_html_class_button);
+											fprintf(batch_month_file, "%s", optional_html_button_begin);
 											fprintf(batch_month_file, "%s", (char *)html_text_batch_Back[_global_jazyk]);
-											fprintf(batch_month_file, html_button_end);
+											fprintf(batch_month_file, "%s", optional_html_button_end);
 											fprintf(batch_month_file, "</a></p>");
 											// koniec hlavičky
 											fprintf(batch_month_file, "</center>\n");
@@ -14045,10 +14065,10 @@ void _main_batch_mode(
 										fprintf(batch_month_file, (char *)html_text_batch_Zoznam2[_global_jazyk], nazov_mesiaca(m - 1), r_to);
 										fprintf(batch_month_file, "</h2>");
 										// ^ hore
-										fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, html_class_button);
-										fprintf(batch_month_file, html_button_begin);
+										fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, optional_html_class_button);
+										fprintf(batch_month_file, "%s", optional_html_button_begin);
 										fprintf(batch_month_file, "%s", (char *)html_text_batch_Back[_global_jazyk]);
-										fprintf(batch_month_file, html_button_end);
+										fprintf(batch_month_file, "%s", optional_html_button_end);
 										fprintf(batch_month_file, "</a></p>");
 										// koniec hlavičky
 										fprintf(batch_month_file, "</center>\n");
@@ -14124,10 +14144,10 @@ void _main_batch_mode(
 										fprintf(batch_month_file, (char *)html_text_batch_Zoznam2[_global_jazyk], nazov_mesiaca(m - 1), r_from);
 										fprintf(batch_month_file, "</h2>");
 										// ^ hore
-										fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, html_class_button);
-										fprintf(batch_month_file, html_button_begin);
+										fprintf(batch_month_file, "<p><a href=\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, optional_html_class_button);
+										fprintf(batch_month_file, "%s", optional_html_button_begin);
 										fprintf(batch_month_file, "%s", (char *)html_text_batch_Back[_global_jazyk]);
-										fprintf(batch_month_file, html_button_end);
+										fprintf(batch_month_file, "%s", optional_html_button_end);
 										fprintf(batch_month_file, "</a></p>");
 										// koniec hlavičky
 										fprintf(batch_month_file, "</center>\n");
@@ -14925,6 +14945,7 @@ short int getForm(void){
 		case 9: strcat(local_str, STR_MODL_OPTF_5_HYMNUS_VN_RCH); break; // BIT_OPT_5_HYMNUS_VN_RCH
 		case 10: strcat(local_str, STR_MODL_OPTF_5_HYMNUS_VN_VESP); break; // BIT_OPT_5_HYMNUS_VN_VESP
 		case 11: strcat(local_str, STR_MODL_OPTF_5_HYMNUS_1VESP); break; // BIT_OPT_5_HYMNUS_1VESP
+		case 12: strcat(local_str, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA); break; // BIT_OPT_5_POPOL_STREDA_PSALMODIA
 		}// switch(i)
 		ptr = getenv(local_str);
 		if (ptr != NULL){
@@ -15794,6 +15815,7 @@ short int parseQueryString(void){
 		case 9: strcat(local_str, STR_MODL_OPTF_5_HYMNUS_VN_RCH); break; // BIT_OPT_5_HYMNUS_VN_RCH
 		case 10: strcat(local_str, STR_MODL_OPTF_5_HYMNUS_VN_VESP); break; // BIT_OPT_5_HYMNUS_VN_VESP
 		case 11: strcat(local_str, STR_MODL_OPTF_5_HYMNUS_1VESP); break; // BIT_OPT_5_HYMNUS_1VESP
+		case 12: strcat(local_str, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA); break; // BIT_OPT_5_POPOL_STREDA_PSALMODIA
 		}// switch(j)
 		// premenná WWW_MODL_OPTF_5_... (nepovinná), j = 0 až POCET_OPT_5_ALTERNATIVES
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0

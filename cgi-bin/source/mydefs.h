@@ -840,9 +840,16 @@ extern short int query_type; // contains constants PRM_...
 
 #define MODL_OPTF_5_HYMNUS_1VESP 113
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_HYMNUS_1VESP "STR_MODL_OPTF_5_HYMNUS_1VESP"
+#define STR_MODL_OPTF_5_HYMNUS_1VESP "STR_MODL_OPTF_5_HYMNUS_1VESP"
 #else
-	#define STR_MODL_OPTF_5_HYMNUS_1VESP "of5h1v"
+#define STR_MODL_OPTF_5_HYMNUS_1VESP "of5h1v"
+#endif
+
+#define MODL_OPTF_5_POPOL_STREDA_PSALMODIA 115
+#ifdef LONG_PARAM_NAMES
+#define STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA "STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA"
+#else
+#define STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA "of5psps"
 #endif
 
 #define CSS 40
@@ -1191,6 +1198,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_HYMNUS_VN_RCH             "BitOpt5HymnTPLaud"
 #define XML_BIT_OPT_5_HYMNUS_VN_VESP            "BitOpt5HymnTPVesp"
 #define XML_BIT_OPT_5_HYMNUS_1VESP              "BitOpt5Hymn1Vesp"
+#define XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA    "BitOpt5AshWednPsalmody"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<"elem">"
