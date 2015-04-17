@@ -3069,7 +3069,7 @@ const char *html_text_option5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"žalmy pro Popolcovou středu ze středy 4. týdne žaltáře",
-	"zsoltározás Hamvazószerdára 4. hét szerdájáról",
+	"Hamvazószerdán vegye a zsoltározást a 4. zsoltáros hét szerdájáról",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3082,7 +3082,7 @@ const char *html_text_option5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"žalmy pro Popolcovou středu z pátku 3. týdne žaltáře",
-	"zsoltározás Hamvazószerdára 3. hét péntekjéről",
+	"Hamvazószerdán vegye a zsoltározást a 3. zsoltáros hét péntekjéről",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
