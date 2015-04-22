@@ -2797,11 +2797,11 @@ const char *html_text_option2_alternatives[POCET_JAZYKOV + 1] =
 const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] =
 {
 	"Zobrazí v texte modlitieb iba jednu možnosť, napr. hymnus pre kompletórium (dá sa prepínať).",
-	"Zobrazí v textu modliteb jenom jedno možnost (je možné přepínat).",
+	"Zobrazí v textu modliteb jenom jednu možnost (je možné přepínat).",
 	"In the prayer text, displays only one option (e. g. hymn for compline; user can switch options).",
 	"",
 	"",
-	"Zobrazí v textu modliteb jenom jedno možnost (je možné přepínat).",
+	"Zobrazí v textu modliteb jenom jednu možnost (je možné přepínat).",
 	"Megmutatja…",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3084,6 +3084,58 @@ const char *html_text_option5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
 	"žalmy pro Popolcovou středu z pátku 3. týdne žaltáře",
 	"Hamvazószerdán vegye a zsoltározást a 3. zsoltáros hét péntekjéről",
 	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option5_CZhymny[POCET_JAZYKOV + 1] =
+{
+	"",
+	"hymny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option5_CZhymny_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"Zobrazí v textu modliteb hymny z breviáře nebo k volnému výběru (je možné přepínat).",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option5_CZhymnyNORMAL[POCET_JAZYKOV + 1] =
+{
+	"",
+	"hymny z breviáře",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option5_CZhymnyRENC[POCET_JAZYKOV + 1] =
+{
+	"",
+	"hymny k volnému výběru (Renč)",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 

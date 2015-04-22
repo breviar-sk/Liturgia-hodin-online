@@ -1231,6 +1231,10 @@ extern int _global_opt[POCET_GLOBAL_OPT];
 // globálna premenná -- pole -- obsahujúca force options; pôvodne to boli globálne premenné _global_optf 1..9 atď., obsahujú pom_MODL_OPTF...
 extern int _global_optf[POCET_GLOBAL_OPT];
 
+// for function strcat_str_modl_opt_bit_order()
+#define USE_STR_MODL_OPT                   -2
+#define USE_STR_MODL_OPTF                  -1
+
 #define POCET_OPT_0_SPECIALNE               9 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
@@ -1293,7 +1297,7 @@ extern int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 #define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
 #define BIT_OPT_4_DO_NOT_USE_BUTTON         8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
-#define POCET_OPT_5_ALTERNATIVES           13 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES           14 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezročné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
@@ -1308,6 +1312,7 @@ extern int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_VN_VESP         1024 // hymnus pre vešpery (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
 #define BIT_OPT_5_HYMNUS_1VESP           2048 // hymnus pre prvé vešpery (Cezročné obdobie: nedeľný alebo z posv. čítania)
 #define BIT_OPT_5_POPOL_STREDA_PSALMODIA 4096 // psalmódia pre ranné chvály popolcovej stredy (default: streda 4. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
+#define BIT_OPT_5_CZ_HYMNY_VYBER         8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
 
 #define MAX_POCET_OPT                      16 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
 
@@ -1556,6 +1561,8 @@ int _encode_spol_cast(short int, short int, short int);
 int _encode_spol_cast(short int, short int);
 int _encode_spol_cast(short int);
 _struct_sc _decode_spol_cast(int);
+
+void strcat_str_modl_opt_bit_order(char str_to_append[SMALL], short opt, short bit_order);
 
 extern const char *text_JAN_KRST[POCET_JAZYKOV + 1];
 extern const char *text_POPOLCOVA_STREDA[POCET_JAZYKOV + 1];
