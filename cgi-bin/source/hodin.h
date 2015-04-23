@@ -2810,11 +2810,11 @@ const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option2_show_defalut_calendar[POCET_JAZYKOV + 1] =
 {
 	"zvýrazniť slávenia v národnom kalendári",
-	"zvýraznit slávení v národním kalendáři",
+	"zvýraznit slavení v národním kalendáři",
 	"show celebrations in national calendar",
 	"",
 	"",
-	"zvýraznit slávení v národním kalendáři",
+	"zvýraznit slavení v národním kalendáři",
 	"kijelölni az ünnepeket a nemzeti naptárban",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3064,11 +3064,11 @@ const char *html_text_option5_1VHymnusPC[POCET_JAZYKOV + 1] =
 const char *html_text_option5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
 {
 	"psalmódia pre Popolcovú stredu zo stredy 4. týždňa žaltára",
-	"žalmy pro Popolcovou středu ze středy 4. týdne žaltáře",
+	"žalmy pro Popeleční středu ze středy 4. týdne žaltáře",
 	"for Ash Wednesday take psalmody from Wednesday, 4th week of Psalter",
 	"",
 	"",
-	"žalmy pro Popolcovou středu ze středy 4. týdne žaltáře",
+	"žalmy pro Popeleční středu ze středy 4. týdne žaltáře",
 	"Hamvazószerdán vegye a zsoltározást a 4. zsoltáros hét szerdájáról",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3077,11 +3077,11 @@ const char *html_text_option5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
 const char *html_text_option5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
 {
 	"psalmódia pre Popolcovú stredu z piatka 3. týždňa žaltára",
-	"žalmy pro Popolcovou středu z pátku 3. týdne žaltáře",
+	"žalmy pro Popeleční středu z pátku 3. týdne žaltáře",
 	"for Ash Wednesday take psalmody from Friday, 3rd week of Psalter",
 	"",
 	"",
-	"žalmy pro Popolcovou středu z pátku 3. týdne žaltáře",
+	"žalmy pro Popeleční středu z pátku 3. týdne žaltáře",
 	"Hamvazószerdán vegye a zsoltározást a 3. zsoltáros hét péntekjéről",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

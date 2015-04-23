@@ -51,7 +51,10 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 
-// postfixes for special seasons (anchors)
+// prefixes for special cases(anchors)
+#define CZ_HYMNUS_PREFIX    "CZ_"
+
+// postfixes for special cases (anchors)
 #define VELKONOCNA_PRIPONA  "VE"
 #define POSTNA_PRIPONA      "PO"
 #define CEZROCNA_PRIPONA    "CR"

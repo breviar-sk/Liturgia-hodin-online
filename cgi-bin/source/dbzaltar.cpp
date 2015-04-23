@@ -1208,6 +1208,8 @@ void file_name_litobd_pc_tyzden(short int litobd, short int tyzden){
 
 // anchors - nazvy kotiev pre zaltar styroch tyzdnov
 char _anchor[SMALL];
+char _special_anchor_prefix[SMALL]; // used for CZ hymns
+
 // tyzzal == 1 .. 4, den == 0 (DEN_NEDELA) .. 6 (DEN_SOBOTA), modlitba == MODL_..., anchor == ANCHOR_...
 char pismenko_modlitby(short int modlitba){
 	switch (modlitba){
@@ -1331,7 +1333,7 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba){
 		case MODL_POPOLUDNI:    bit = BIT_OPT_5_HYMNUS_MCD_POPOL; break;
 		}// switch(modlitba)
 		file_name_litobd(OBD_CEZ_ROK);
-		if (_global_jazyk == JAZYK_CZ){
+		if ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
 			sprintf(_anchor, "%c_%s_%d_%s", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, (2 - (tyzzal % 2)), nazov_DN_asci[den]);
 		}
 		else{
@@ -4307,6 +4309,7 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd){
 		ktory = -1;
 	}
 	else if (je_modlitba_cez_den(modlitba) || (_global_jazyk == JAZYK_CZ)){
+		// why is here also (je_modlitba_cez_den(modlitba) || ???
 		ktory = 0;
 	}
 	else if ((den == DEN_NEDELA) || (_global_den.denvr == NANEBOVSTUPENIE)){
@@ -4323,11 +4326,11 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd){
 	}
 
 	if (ktory < 0){
-		sprintf(_anchor, "%s_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+		sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
 	}
 	else{
 		// upravené kotvy, aby bolo použiteľné zjednodušene toto:
-		sprintf(_anchor, "%s_%c%s%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS, ktory);
+		sprintf(_anchor, "%s%s_%c%s%d", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS, ktory);
 	}
 
 	if (modlitba == MODL_POSV_CITANIE){
@@ -4343,6 +4346,13 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd){
 void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short int tyzzal, short int poradie_svateho){
 	short int modlitba, t, tyzden_pom, litobd_pom;
 	char _anchor_vlastne_slavenie[SMALL];
+
+	if ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
+		sprintf(_special_anchor_prefix, "%s", CZ_HYMNUS_PREFIX);
+	}
+	else{
+		mystrcpy(_special_anchor_prefix, STR_EMPTY, SMALL);
+	}
 
 	// uchovanie pôvodných hodnôt (občas sa upravujú)
 	short int _pom_den = _global_den.den;
@@ -4459,7 +4469,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 // preklopené spoločné kusy kódu pre adventné obdobia do define-ov
 #define _adv_hymnus {\
-	sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
+	sprintf(_anchor, "%s%s%c_%s", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 	if(modlitba == MODL_POSV_CITANIE){\
 		_set_hymnus(modlitba, _file_pc, _anchor);\
 		set_LOG_litobd_pc;\
@@ -6889,7 +6899,7 @@ label_24_DEC:
 		sprintf(_anchor, "%s_%c%s%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), nazov_DN_asci[den], ANCHOR_HYMNUS);\
 	}\
 	else{\
-		sprintf(_anchor, "%s_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
+		sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 	}\
 	if(modlitba == MODL_POSV_CITANIE){\
 		_set_hymnus(modlitba, _file_pc, _anchor);\
@@ -7108,7 +7118,7 @@ label_24_DEC:
 		sprintf(_anchor, "%s_%c%s%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), nazov_DN_asci[den], ANCHOR_HYMNUS);\
 	}\
 	else{\
-		sprintf(_anchor, "%s_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
+		sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 	}\
 	if(modlitba == MODL_POSV_CITANIE){\
 		_set_hymnus(modlitba, _file_pc, _anchor);\
