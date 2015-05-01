@@ -5832,7 +5832,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		// 2011-10-03: odkaz na liturgické čítanie sa doplní, iba ak je aj_citanie == ANO
 		if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_CITANIA)) && aj_citanie){
 #ifdef LITURGICKE_CITANIA_ANDROID
-			if (cit && aj_citanie) {
+			if (cit && aj_citanie && su_liturgicke_citania_offline) {
 				if (typ == EXPORT_DNA_DNES || typ == EXPORT_DNA_JEDEN_DEN || typ == EXPORT_DNA_VIAC_DNI) {
 					if(ma_nazov){
 						strcat(_global_string, HTML_LINE_BREAK);
@@ -5850,7 +5850,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 					sprintf(pom, "\">%s</a>", cit->citania);
 					strcat(_global_string, pom);
 				}
-			}// if (cit && aj_citanie)
+			}// if (cit && aj_citanie && su_liturgicke_citania_offline)
 #elif defined(BEHAVIOUR_WEB)
 			// 2011-07-26: doplnené pre BEHAVIOUR_WEB ináč ako pre ANDROID
 			sprintf(pom, HTML_LINE_BREAK"<"HTML_SPAN_SMALLCAPS">");

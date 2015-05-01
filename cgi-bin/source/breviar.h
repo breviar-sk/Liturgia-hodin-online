@@ -189,6 +189,9 @@ extern short int _global_opt_export_date_format;
 #define isGlobalOption(opt_i, bit_opt_i_component_j) ((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j)
 #define isGlobalOptionForce(opt_i, bit_opt_i_component_j) ((_global_optf[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j)
 
+// define for decide whether offline (Android) app supports hyperlinks to Bible app for liturgical readings -- currently in SK only
+#define su_liturgicke_citania_offline (_global_jazyk == JAZYK_SK)
+
 #define je_modlitba_cez_den(modlitba) ((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI))
 #define je_kompletorium12(modlitba) ((modlitba == MODL_KOMPLETORIUM) || (modlitba == MODL_PRVE_KOMPLETORIUM) || (modlitba == MODL_DRUHE_KOMPLETORIUM))
 
