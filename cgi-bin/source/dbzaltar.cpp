@@ -6725,7 +6725,7 @@ label_24_DEC:
 				set_LOG_litobd_pc_tyzden;
 				// Log(_global_modl_posv_citanie);
 
-				if(_global_den.denvr == SRDCA){
+				if (_global_den.denvr == SRDCA){
 					// Najsv. srdca Ježišovho
 					mystrcpy(_file, FILE_SRDCA, MAX_STR_AF_FILE);
 					mystrcpy(_file_pc, FILE_SRDCA, MAX_STR_AF_FILE); // kvôli define _vlastne_slavenie_set_vig_ant()
@@ -6808,7 +6808,7 @@ label_24_DEC:
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				}// srdca
-				else if((_global_jazyk == JAZYK_SK) && (_global_den.denvr == KRISTA_KNAZA)){ // 2014-01-16: doplnené, zatiaľ iba pre SK
+				else if ((_global_den.denvr == KRISTA_KNAZA) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))){
 					// Nášho Pána Ježiša Krista, najvyššieho a večného kňaza
 					mystrcpy(_file, FILE_KNAZA, MAX_STR_AF_FILE);
 					mystrcpy(_anchor, ANCHOR_KNAZA, MAX_STR_AF_ANCHOR);
@@ -6867,7 +6867,7 @@ label_24_DEC:
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				}// knaza
-				else if(_global_den.denvr == SRDPM){
+				else if (_global_den.denvr == SRDPM){
 					// neposkvrneneho srdca prebl. panny marie
 					Log("  (hoci tu nic nenastavujem) ide o spomienku neposkvrneneho srdca prebl. panny marie\n");
 				}
@@ -6876,7 +6876,7 @@ label_24_DEC:
 					Log("--- modlitba dna pre bezne dni OCR je z prislusnej nedele...\n");
 					modlitba = MODL_POSV_CITANIE;
 					// modlitba
-					sprintf(_anchor, "_%d%s_%s", tyzden, nazov_DN_asci[DEN_NEDELA], ANCHOR_MODLITBA); 
+					sprintf(_anchor, "_%d%s_%s", tyzden, nazov_DN_asci[DEN_NEDELA], ANCHOR_MODLITBA);
 					modlitba = MODL_POSV_CITANIE;
 					_set_modlitba(MODL_POSV_CITANIE, _file, _anchor);
 					set_LOG_litobd;
