@@ -6229,12 +6229,12 @@ const char *text_HU_VELKY_TYZDEN_PREFIX = "Nagy"; // pre HU špeciálne názvy d
 
 const char *text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] =
 {
-	"Nášho Pána Ježiša Krista,<br/>najvyššieho a večného kňaza",
-	"Našeho Pána Ježíše Krista,<br/>nejvyššího a věčného kněze",
+	"Nášho Pána Ježiša Krista,"HTML_NONBREAKING_SPACE"najvyššieho a večného kňaza",
+	"Ježíše Krista, nejvyššího a věčného kněze",
 	"",
 	"",
 	"",
-	"Našeho Pána Ježíše Krista,<br/>nejvyššího a věčného kněze",
+	"Našeho Pána Ježíše Krista, nejvyššího a věčného kněze",
 	"hu_XXX",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
