@@ -9070,13 +9070,15 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 #if !defined(IO_ANDROID)
 		// for Android it is not necessary since 1.11 (setting moved to native menu)
-
 		// pole (checkbox) WWW_/STR_MODL_OPTF_2_NOCNY_REZIM
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, STR_MODL_OPTF_2_NOCNY_REZIM, html_text_option2_nocny_rezim[_global_jazyk], html_text_option2_nocny_rezim_explain[_global_jazyk]);
 #endif
 
+#if !defined(IO_ANDROID)
+		// for Android it is not necessary since 1.11.2 (setting moved to native menu)
 		// pole (checkbox) WWW_/STR_MODL_OPTF_0_FONT_NORMAL
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL, STR_MODL_OPTF_0_FONT_NORMAL, html_text_option0_font_normal[_global_jazyk], html_text_option0_font_normal_explain[_global_jazyk]);
+#endif
 
 		// pole (checkbox) WWW_/STR_MODL_OPTF_0_BLIND_FRIENDLY
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY, STR_MODL_OPTF_0_BLIND_FRIENDLY, html_text_option0_blind_friendly[_global_jazyk], html_text_option0_blind_friendly_explain[_global_jazyk]);
@@ -9093,6 +9095,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_TABLE_ROW_END"\n");
 
 		//---------------------------------------------------------------------
+
+#if !defined(IO_ANDROID)
+		// for Android it is not necessary since 1.11.2 (setting moved to native menu)
 
 		Export("<"HTML_TABLE_ROW">\n");
 		Export("<"HTML_TABLE_CELL">\n");
@@ -9128,6 +9133,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		Export(HTML_TABLE_CELL_END"\n");
 		Export(HTML_TABLE_ROW_END"\n");
+
+#endif
 
 		//---------------------------------------------------------------------
 

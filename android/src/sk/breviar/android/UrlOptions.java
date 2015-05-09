@@ -50,6 +50,46 @@ public class UrlOptions {
     setBit("o2", 8, value);
   }
 
+  public boolean isOnlyNonBoldFont() {
+    return hasBit("o0", 6);
+  }
+
+  public void setOnlyNonBoldFont(boolean value) {
+    setBit("o0", 6, value);
+  }
+
+  public boolean isEpiphanySunday() {
+    return hasBit("o0", 3);
+  }
+
+  public void setEpiphanySunday(boolean value) {
+    setBit("o0", 3, value);
+  }
+
+  public boolean isAscensionSunday() {
+    return hasBit("o0", 4);
+  }
+
+  public void setAscensionSunday(boolean value) {
+    setBit("o0", 4, value);
+  }
+
+  public boolean isBodyBloodSunday() {
+    return hasBit("o0", 5);
+  }
+
+  public void setBodyBloodSunday(boolean value) {
+    setBit("o0", 5, value);
+  }
+
+  public boolean isEmphasizeLocalCalendar() {
+    return hasBit("o2", 15);
+  }
+
+  public void setEmphasizeLocalCalendar(boolean value) {
+    setBit("o2", 15, value);
+  }
+
   int getInt(String key) {
     try {
       return Integer.parseInt(params.get(key));

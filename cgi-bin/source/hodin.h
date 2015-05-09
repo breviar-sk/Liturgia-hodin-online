@@ -1820,7 +1820,7 @@ const char *html_text_option0_zjv_ne[POCET_JAZYKOV + 1] =
 {
 	"Zjavenie Pána sláviť v nedeľu medzi 2. a 8. januárom",
 	"Zjevení Páně slavit v neděli mezi 2. a 8. lednem",
-	"",
+	"celebrate Epiphany on Sunday between Jan 2nd & 8th",
 	"",
 	"",
 	"Zjevení Páně slavit v neděli mezi 2. a 8. lednem",
@@ -1846,7 +1846,7 @@ const char *html_text_option0_nan_ne[POCET_JAZYKOV + 1] =
 {
 	"Nanebovstúpenie Pána sláviť v nedeľu",
 	"Nanebevstoupení Páně slavit v neděli",
-	"",
+	"celebrate Ascension of the Lord on Sunday",
 	"",
 	"",
 	"Nanebevstoupení Páně slavit v neděli",
@@ -1872,7 +1872,7 @@ const char *html_text_option0_tk_ne[POCET_JAZYKOV + 1] =
 {
 	"Najsv. Kristovho tela a krvi sláviť v nedeľu",
 	"Těla a krve Páně slavit v neděli",
-	"",
+	"celebrate The Most Holy Body and Blood of Christ on Sunday",
 	"",
 	"",
 	"Těla a krve Páně slavit v neděli",
@@ -2811,7 +2811,7 @@ const char *html_text_option2_show_defalut_calendar[POCET_JAZYKOV + 1] =
 {
 	"zvýrazniť slávenia v národnom kalendári",
 	"zvýraznit slavení v národním kalendáři",
-	"show celebrations in national calendar",
+	"mark celebrations in local (national) calendar",
 	"",
 	"",
 	"zvýraznit slavení v národním kalendáři",
@@ -3618,7 +3618,7 @@ const char *text_JAN_06[POCET_JAZYKOV + 1] = // 6. januára | alebo nedeľu medz
 {
 	"Zjavenie Pána",
 	"Zjevení Páně",
-	"",
+	"The Epiphany of the Lord",
 	"In Epiphania Domini",
 	"",
 	"Zjevení Páně",
@@ -4668,7 +4668,7 @@ const char *text_POPOLCOVA_STREDA[POCET_JAZYKOV + 1] =
 {
 	"Popolcová streda",
 	"Popeleční středa",
-	"",
+	"Ash Wednesday",
 	"",
 	"",
 	"Popeleční středa",
@@ -6166,7 +6166,7 @@ const char *text_NANEBOVSTUPENIE_PANA[POCET_JAZYKOV + 1] =
 {
 	"Nanebovstúpenie Pána",
 	"Nanebevstoupení Páně",
-	"",
+	"The Ascension of the Lord",
 	"",
 	"",
 	"Nanebevstoupení Páně",
@@ -6267,7 +6267,7 @@ const char *text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1] =
 {
 	"Najsvätejšieho Kristovho tela a krvi",
 	"Těla a krve Páně",
-	"",
+	"The Most Holy Body and Blood of Christ",
 	"",
 	"",
 	"Těla a krve Páně",
@@ -11368,7 +11368,7 @@ const char *text_ZELENY_STVRTOK[POCET_JAZYKOV + 1] =
 {
 	"Zelený (veľký) štvrtok – Pamiatka Pánovej večere",
 	"Zelený čtvrtek - Památka Večeře Páně",
-	"",
+	"Maundy Thursday",
 	"",
 	"",
 	"Zelený čtvrtek - Památka Večeře Páně",
@@ -11380,7 +11380,7 @@ const char *text_VELKY_PIATOK[POCET_JAZYKOV + 1] =
 {
 	"Veľký piatok",
 	"Velký pátek",
-	"",
+	"Good Friday",
 	"",
 	"",
 	"Velký pátek",
@@ -11392,7 +11392,7 @@ const char *text_BIELA_SOBOTA[POCET_JAZYKOV + 1] =
 {
 	"Biela (veľká) sobota",
 	"Bílá sobota",
-	"",
+	"Holy Saturday",
 	"",
 	"",
 	"Bílá sobota",
@@ -11404,7 +11404,7 @@ const char *text_KVETNA_NEDELA[POCET_JAZYKOV + 1] =
 {
 	"Kvetná nedeľa",
 	"Květná neděle",
-	"",
+	"Palm Sunday of the Passion of the Lord",
 	"",
 	"",
 	"Květná neděle",

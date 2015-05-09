@@ -8,6 +8,8 @@
 
     <item android:id="@+id/nightmode_toggle" android:title="@string/nightmodeOn" />
 
+    <item android:id="@+id/only_non_bold_font_toggle" android:title="@string/onlyNonBoldFontOn" />
+
     <item android:id="@+id/menu_about" android:title="@string/menu_about" />
 
 </menu>

@@ -13,9 +13,17 @@
     <string name="lang_sk">Szlovák</string>
     <string name="lang_hu">Magyar</string>
     <string name="override_locale">Rendszerszintű nyelvi beállítások felülírása</string>
+
+    <string name="settings_title">Beállítás:</string>
     <string name="vol_buttons">Hangerőt állító gombok használata görgetéshez</string>
     <string name="dimlock">Ne sötétüljön el a képernyő</string>
     <string name="mute">A telefon csendes módba kapcsolása</string>
+
+    <string name="calendar_settings_title">Liturgikus naptár:</string>
+    <string name="epiphany_sunday">Urunk megjelenése (Vízkereszt) megünneplése vasárnap, január 2. és 8. között</string>
+    <string name="ascension_sunday">Urunk mennybemenetelét vasárnap ünnepelni</string>
+    <string name="body_blood_sunday">Krisztus Szent Teste és Vére ünnepe vasárnapra téve</string>
+    <string name="emphasize_local_calendar">kijelölni az ünnepeket a nemzeti naptárban</string>
 
     <string name="alarms">Értesítések</string>
     <string name="alarms_title">Értesítések beállítása:</string>
@@ -26,6 +34,9 @@
 
     <string name="nightmodeOn">Éjszakai mód</string>
     <string name="nightmodeOff">Nappali mód</string>
+
+    <string name="onlyNonBoldFontOn">Normál betűtípus</string>
+    <string name="onlyNonBoldFontOff">És félkövér betűtípus</string>
 
     <string name="inv">Imádságra hívás</string>
     <string name="rch">Reggeli dicséret</string>
@@ -67,6 +78,11 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+
+<p><b>Újdonságok az 1.11.2-es verzióban:</b>
+<ul>
+<li> New menu item: Dispay only normal font (vs use also bold font).
+</ul>
 
 <p><b>Újdonságok az 1.11.1-es verzióban:</b>
 <ul>

@@ -475,6 +475,7 @@ public class Breviar extends Activity implements View.OnLongClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
       // Handle item selection
+      UrlOptions opts;
       switch (item.getItemId()) {
         case R.id.lang_select:
           Intent selectLang = new Intent(this, LangSelect.class);
@@ -486,9 +487,16 @@ public class Breviar extends Activity implements View.OnLongClickListener {
           syncPreferences();
           return true;
         case R.id.nightmode_toggle:
-          UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"),
-                                          true);
+          opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
           opts.setNightmode(!opts.isNightmode());
+
+          scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
+          wv.loadUrl(opts.build());
+
+          return true;
+        case R.id.only_non_bold_font_toggle:
+          opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
+          opts.setOnlyNonBoldFont(!opts.isOnlyNonBoldFont());
 
           scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
           wv.loadUrl(opts.build());
@@ -515,6 +523,12 @@ public class Breviar extends Activity implements View.OnLongClickListener {
         menu.findItem(R.id.nightmode_toggle).setTitle(R.string.nightmodeOff);
       } else {
         menu.findItem(R.id.nightmode_toggle).setTitle(R.string.nightmodeOn);
+      }
+
+      if (opts.isOnlyNonBoldFont()) {
+        menu.findItem(R.id.only_non_bold_font_toggle).setTitle(R.string.onlyNonBoldFontOff);
+      } else {
+        menu.findItem(R.id.only_non_bold_font_toggle).setTitle(R.string.onlyNonBoldFontOn);
       }
 
       return super.onPrepareOptionsMenu(menu);

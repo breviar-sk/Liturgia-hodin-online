@@ -13,9 +13,17 @@
     <string name="lang_sk">Slovenština</string>
     <string name="lang_hu">Maďarština</string>
     <string name="override_locale">Použít tento jazyk také v ovládacích prvcích</string>
+
+    <string name="settings_title">Nastavení:</string>
     <string name="vol_buttons">Použít tlačítka hlasitosti na listování</string>
     <string name="dimlock">Nezhasínat obrazovku</string>
-    <string name="mute">Vypnúť zvonenie</string>
+    <string name="mute">Vypnout zvonění</string>
+
+    <string name="calendar_settings_title">Liturgický kalendář:</string>
+    <string name="epiphany_sunday">Zjevení Páně slavit v neděli mezi 2. a 8. lednem</string>
+    <string name="ascension_sunday">Nanebevstoupení Páně slavit v neděli</string>
+    <string name="body_blood_sunday">Těla a krve Páně slavit v neděli</string>
+    <string name="emphasize_local_calendar">zvýraznit slavení v národním kalendáři</string>
 
     <string name="alarms">Notifikace</string>
     <string name="alarms_title">Nastavení notifikací:</string>
@@ -26,6 +34,9 @@
 
     <string name="nightmodeOn">Noční režim</string>
     <string name="nightmodeOff">Denní režim</string>
+
+    <string name="onlyNonBoldFontOn">Obyčejné písmo</string>
+    <string name="onlyNonBoldFontOff">I tučné písmo</string>
 
     <string name="inv">Invitatoř</string>
     <string name="rch">Ranní chvály</string>
@@ -67,6 +78,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+
+<p><b>Nové ve verzi 1.11.1:</b>
+<ul>
+<li> Nové slavení: Ježíše Krista, nejvyššího a věčného kněze.
+<li> Nová volba v menu: Použít všude normální písmo (ne tučné).
+</ul>
 
 <p><b>Nové ve verzi 1.11.1:</b>
 <ul>

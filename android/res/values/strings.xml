@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.11.1</string>
+    <string name="version">1.11.2</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -15,9 +15,17 @@
     <string name="lang_sk">Slovak</string>
     <string name="lang_hu">Hungarian</string>
     <string name="override_locale">Override system-wide language settings</string>
+
+    <string name="settings_title">Settings:</string>
     <string name="vol_buttons">Use volume buttons for scrolling</string>
     <string name="dimlock">Do not dim screen</string>
     <string name="mute">Put phone to silent mode</string>
+
+    <string name="calendar_settings_title">Liturgical calendar:</string>
+    <string name="epiphany_sunday">celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>
+    <string name="ascension_sunday">celebrate Ascension of the Lord on Sunday</string>
+    <string name="body_blood_sunday">celebrate The Most Holy Body and Blood of Christ on Sunday</string>
+    <string name="emphasize_local_calendar">mark celebrations in local (national) calendar</string>
 
     <string name="alarms">Notifications</string>
     <string name="alarms_title">Notification settings:</string>
@@ -28,6 +36,9 @@
 
     <string name="nightmodeOn">Night mode</string>
     <string name="nightmodeOff">Day mode</string>
+
+    <string name="onlyNonBoldFontOn">No bold font</string>
+    <string name="onlyNonBoldFontOff">Allow bold font</string>
 
     <string name="inv">Invitatory</string>
     <string name="rch">Lauds</string>
@@ -85,6 +96,12 @@ body { background-color: #000000; color: #cccccc; }
 </style>
 </head>
 <body>
+
+<p><b>News in v1.11.2:</b>
+<ul>
+<li> New menu item: Dispay only normal font (vs use also bold font).
+<li> Typos and fixes for all languages.
+</ul>
 
 <p><b>News in v1.11.1:</b>
 <ul>

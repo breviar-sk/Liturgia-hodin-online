@@ -88,6 +88,46 @@ public class LangSelect extends Activity {
 
       mute_check.setChecked(BreviarApp.getMute(getApplicationContext()));
 
+      CheckBox epiphany_sunday_check = (CheckBox)findViewById(R.id.epiphany_sunday_check);
+
+      epiphany_sunday_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          BreviarApp.setMenuEpiphanySunday(getApplicationContext(), ((CheckBox)v).isChecked());
+        }
+      });
+
+      epiphany_sunday_check.setChecked(BreviarApp.getMenuEpiphanySunday(getApplicationContext()));
+
+      CheckBox ascension_sunday_check = (CheckBox)findViewById(R.id.ascension_sunday_check);
+
+      ascension_sunday_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          BreviarApp.setMenuAscensionSunday(getApplicationContext(), ((CheckBox)v).isChecked());
+        }
+      });
+
+      ascension_sunday_check.setChecked(BreviarApp.getMenuAscensionSunday(getApplicationContext()));
+
+      CheckBox body_blood_sunday_check = (CheckBox)findViewById(R.id.body_blood_sunday_check);
+
+      body_blood_sunday_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          BreviarApp.setMenuBodyBloodSunday(getApplicationContext(), ((CheckBox)v).isChecked());
+        }
+      });
+
+      body_blood_sunday_check.setChecked(BreviarApp.getMenuBodyBloodSunday(getApplicationContext()));
+
+      CheckBox emphasize_local_calendar_check = (CheckBox)findViewById(R.id.emphasize_local_calendar_check);
+
+      emphasize_local_calendar_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          BreviarApp.setMenuEmphasizeLocalCalendar(getApplicationContext(), ((CheckBox)v).isChecked());
+        }
+      });
+
+      emphasize_local_calendar_check.setChecked(BreviarApp.getMenuEmphasizeLocalCalendar(getApplicationContext()));
+
       ((Button)findViewById(R.id.about)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
           showDialog(DIALOG_ABOUT);

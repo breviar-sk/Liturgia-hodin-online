@@ -36,6 +36,9 @@
     <CheckBox android:id="@+id/override_locale_check" android:text="@string/override_locale" 
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
   
+    <TextView android:text="@string/settings_title" style="@android:style/TextAppearance.Large"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <CheckBox android:id="@+id/vol_buttons_check" android:text="@string/vol_buttons"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
@@ -43,6 +46,21 @@
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
     <CheckBox android:id="@+id/mute_check" android:text="@string/mute"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <TextView android:text="@string/calendar_settings_title" style="@android:style/TextAppearance.Large"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/epiphany_sunday_check" android:text="@string/epiphany_sunday"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/ascension_sunday_check" android:text="@string/ascension_sunday"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/body_blood_sunday_check" android:text="@string/body_blood_sunday"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/emphasize_local_calendar_check" android:text="@string/emphasize_local_calendar"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
     <Button android:id="@+id/alarms" android:text="@string/alarms"
