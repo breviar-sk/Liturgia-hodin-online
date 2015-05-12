@@ -648,7 +648,7 @@ input.button, input.reset, .button {
 	font-style: normal;
 	margin-left: 0px !important;
 	min-height: 20px;
-	min-width: 70px;
+	min-width: 80px;
 	padding: 4px 4px;
 	text-decoration: none; 
 }
@@ -663,7 +663,7 @@ input.button0, input.reset0, .button0 {
 	font-style: normal;
 	margin-left: 0px !important;
 	min-height: 20px;
-	min-width: 70px;
+	min-width: 80px;
 	padding: 4px 4px;
 	text-decoration: none; 
 }
@@ -679,7 +679,7 @@ input.button1, input.reset1, .button1 {
 	font-variant: none;
 	font-weight: bold;
 	min-height: 20px;
-	min-width: 70px;
+	min-width: 80px;
 	margin-left: 0px !important;
 	padding: 4px 4px;
 	text-decoration: none; 
@@ -694,7 +694,7 @@ input.button2, input.reset2, .button2 {
 	font-family: inherit; 
 	font-style: italic;
 	min-height: 20px;
-	min-width: 70px;
+	min-width: 80px;
 	margin-left: 0px !important;
 	padding: 4px 4px;
 	text-decoration: none; 
