@@ -13,19 +13,23 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 import sk.breviar.android.BreviarApp;
+import sk.breviar.android.UrlOptions;
 
 public class LangSelect extends Activity {
     static final int DIALOG_ABOUT = 1;
     static final int DIALOG_NEWS = 2;
 
+    UrlOptions url_options;
+
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
+      url_options = new UrlOptions(BreviarApp.getUrlOptions(getApplicationContext()));
+
       super.onCreate(savedInstanceState);
       setContentView(R.layout.langselect);
 
-      final Activity activity = this;
+      final LangSelect activity = this;
 
       ((Button)findViewById(R.id.lang_sk)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
@@ -88,45 +92,82 @@ public class LangSelect extends Activity {
 
       mute_check.setChecked(BreviarApp.getMute(getApplicationContext()));
 
+      CheckBox verse_numbering_check = (CheckBox)findViewById(R.id.verse_numbering_check);
+
+      verse_numbering_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setVerseNumbering(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      verse_numbering_check.setChecked(url_options.isVerseNumbering());
+
+      CheckBox bible_references_check = (CheckBox)findViewById(R.id.bible_references_check);
+
+      bible_references_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setBibleReferences(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      bible_references_check.setChecked(url_options.isBibleReferences());
+
+      CheckBox liturgical_readings_check = (CheckBox)findViewById(R.id.liturgical_readings_check);
+
+      liturgical_readings_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setLiturgicalReadings(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      liturgical_readings_check.setChecked(url_options.isLiturgicalReadings());
+
       CheckBox epiphany_sunday_check = (CheckBox)findViewById(R.id.epiphany_sunday_check);
 
       epiphany_sunday_check.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-          BreviarApp.setMenuEpiphanySunday(getApplicationContext(), ((CheckBox)v).isChecked());
+          activity.url_options.setEpiphanySunday(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
         }
       });
 
-      epiphany_sunday_check.setChecked(BreviarApp.getMenuEpiphanySunday(getApplicationContext()));
+      epiphany_sunday_check.setChecked(url_options.isEpiphanySunday());
 
       CheckBox ascension_sunday_check = (CheckBox)findViewById(R.id.ascension_sunday_check);
 
       ascension_sunday_check.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-          BreviarApp.setMenuAscensionSunday(getApplicationContext(), ((CheckBox)v).isChecked());
+          activity.url_options.setAscensionSunday(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
         }
       });
 
-      ascension_sunday_check.setChecked(BreviarApp.getMenuAscensionSunday(getApplicationContext()));
+      ascension_sunday_check.setChecked(url_options.isAscensionSunday());
 
       CheckBox body_blood_sunday_check = (CheckBox)findViewById(R.id.body_blood_sunday_check);
 
       body_blood_sunday_check.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-          BreviarApp.setMenuBodyBloodSunday(getApplicationContext(), ((CheckBox)v).isChecked());
+          activity.url_options.setBodyBloodSunday(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
         }
       });
 
-      body_blood_sunday_check.setChecked(BreviarApp.getMenuBodyBloodSunday(getApplicationContext()));
+      body_blood_sunday_check.setChecked(url_options.isBodyBloodSunday());
 
       CheckBox emphasize_local_calendar_check = (CheckBox)findViewById(R.id.emphasize_local_calendar_check);
 
       emphasize_local_calendar_check.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-          BreviarApp.setMenuEmphasizeLocalCalendar(getApplicationContext(), ((CheckBox)v).isChecked());
+          activity.url_options.setEmphasizeLocalCalendar(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
         }
       });
 
-      emphasize_local_calendar_check.setChecked(BreviarApp.getMenuEmphasizeLocalCalendar(getApplicationContext()));
+      emphasize_local_calendar_check.setChecked(url_options.isEmphasizeLocalCalendar());
 
       ((Button)findViewById(R.id.about)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {

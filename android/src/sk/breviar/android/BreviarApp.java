@@ -84,71 +84,15 @@ public class BreviarApp extends Application {
     editor.commit();
   }
 
-  static public boolean getMenuEpiphanySunday(Context ctx) {
+  static public String getUrlOptions(Context ctx) {
     SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getBoolean("calendar_epiphany_set_on_sunday", false);
+    return settings.getString("params", "");
   }
 
-  static public void setMenuEpiphanySunday(Context ctx, boolean status) {
-    // ToDo: give some code to change URL options similar as follows: (taken from public boolean onOptionsItemSelected() in Breviar.java)
-    // UrlOptions opts;
-    // opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-    // opts.setEpiphanySunday(!opts.isEpiphanySunday());
-    // wv.loadUrl(opts.build());
+  static public void setUrlOptions(Context ctx, String opts) {
     SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
     SharedPreferences.Editor editor = settings.edit();
-    editor.putBoolean("calendar_epiphany_set_on_sunday", status);
-    editor.commit();
-  }
-
-  static public boolean getMenuAscensionSunday(Context ctx) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getBoolean("calendar_ascension_set_on_sunday", false);
-  }
-
-  static public void setMenuAscensionSunday(Context ctx, boolean status) {
-    // ToDo: give some code to change URL options similar as follows: (taken from public boolean onOptionsItemSelected() in Breviar.java)
-    // UrlOptions opts;
-    // opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-    // opts.setAscensionSunday(!opts.isAscensionSunday());
-    // wv.loadUrl(opts.build());
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    SharedPreferences.Editor editor = settings.edit();
-    editor.putBoolean("calendar_ascension_set_on_sunday", status);
-    editor.commit();
-  }
-
-  static public boolean getMenuBodyBloodSunday(Context ctx) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getBoolean("calendar_body_blood_set_on_sunday", false);
-  }
-
-  static public void setMenuBodyBloodSunday(Context ctx, boolean status) {
-    // ToDo: give some code to change URL options similar as follows: (taken from public boolean onOptionsItemSelected() in Breviar.java)
-    // UrlOptions opts;
-    // opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-    // opts.setBodyBloodSunday(!opts.isBodyBloodSunday());
-    // wv.loadUrl(opts.build());
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    SharedPreferences.Editor editor = settings.edit();
-    editor.putBoolean("calendar_body_blood_set_on_sunday", status);
-    editor.commit();
-  }
-
-  static public boolean getMenuEmphasizeLocalCalendar(Context ctx) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getBoolean("emphasize_local_calendar_set_on", false);
-  }
-
-  static public void setMenuEmphasizeLocalCalendar(Context ctx, boolean status) {
-    // ToDo: give some code to change URL options similar as follows: (taken from public boolean onOptionsItemSelected() in Breviar.java)
-    // UrlOptions opts;
-    // opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-    // opts.setEmphasizeLocalCalendar(!opts.isEmphasizeLocalCalendar());
-    // wv.loadUrl(opts.build());
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    SharedPreferences.Editor editor = settings.edit();
-    editor.putBoolean("emphasize_local_calendar_set_on", status);
+    editor.putString("params", opts);
     editor.commit();
   }
 

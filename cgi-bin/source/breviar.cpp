@@ -8934,6 +8934,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		//---------------------------------------------------------------------
 
+#if !defined(IO_ANDROID)
+		// for Android it is not necessary since 1.11.2 (setting moved to native menu)
+
 		Export("<"HTML_TABLE_ROW">\n");
 		Export("<"HTML_TABLE_CELL">\n");
 
@@ -8975,6 +8978,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		Export(HTML_TABLE_CELL_END"\n");
 		Export(HTML_TABLE_ROW_END"\n");
+
+#endif
 
 		//---------------------------------------------------------------------
 

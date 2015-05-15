@@ -21,6 +21,11 @@
     <string name="dimlock">Do not dim screen</string>
     <string name="mute">Put phone to silent mode</string>
 
+    <string name="prayer_content_settings_title">In the text of prayers display:</string>
+    <string name="verse_numbering">verse numbering</string>
+    <string name="bible_references">bible references</string>
+    <string name="liturgical_readings">liturgical readings</string>
+
     <string name="calendar_settings_title">Liturgical calendar:</string>
     <string name="epiphany_sunday">celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>
     <string name="ascension_sunday">celebrate Ascension of the Lord on Sunday</string>
@@ -99,7 +104,7 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>News in v1.11.2:</b>
 <ul>
-<li> New menu item: Dispay only normal font (vs use also bold font).
+<li> New menu item: Display only normal font (vs use also bold font).
 <li> Typos and fixes for all languages.
 </ul>
 

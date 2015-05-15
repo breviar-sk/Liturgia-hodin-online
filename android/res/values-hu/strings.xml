@@ -19,6 +19,11 @@
     <string name="dimlock">Ne sötétüljön el a képernyő</string>
     <string name="mute">A telefon csendes módba kapcsolása</string>
 
+    <string name="prayer_content_settings_title">Az imaóra szövegében jelenjen meg:</string>
+    <string name="verse_numbering">a versek száma</string>
+    <string name="bible_references">Bibliai hivatkozások</string>
+    <string name="liturgical_readings">liturgikus olvasmányok</string>
+
     <string name="calendar_settings_title">Liturgikus naptár:</string>
     <string name="epiphany_sunday">Urunk megjelenése (Vízkereszt) megünneplése vasárnap, január 2. és 8. között</string>
     <string name="ascension_sunday">Urunk mennybemenetelét vasárnap ünnepelni</string>
@@ -35,8 +40,8 @@
     <string name="nightmodeOn">Éjszakai mód</string>
     <string name="nightmodeOff">Nappali mód</string>
 
-    <string name="onlyNonBoldFontOn">Normál betűtípus</string>
-    <string name="onlyNonBoldFontOff">És félkövér betűtípus</string>
+    <string name="onlyNonBoldFontOn">Félkövér betűtípus tiltása</string>
+    <string name="onlyNonBoldFontOff">Félkövér betűtípus engedélyezése</string>
 
     <string name="inv">Imádságra hívás</string>
     <string name="rch">Reggeli dicséret</string>
@@ -81,7 +86,8 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Újdonságok az 1.11.2-es verzióban:</b>
 <ul>
-<li> New menu item: Dispay only normal font (vs use also bold font).
+<li> Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.
+<li> Gépelési hibák javítása.
 </ul>
 
 <p><b>Újdonságok az 1.11.1-es verzióban:</b>

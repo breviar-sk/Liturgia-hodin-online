@@ -11,7 +11,11 @@ public class UrlOptions {
     if (is_full_url) {
       base_uri = Uri.parse(opts);
     } else {
-      base_uri = Uri.parse("http://127.0.0.1/cgi?q=pdnes" + opts.replaceAll("&amp;", "&"));
+      String decoded = opts.replaceAll("&amp;", "&");
+      if (decoded.startsWith("&")) {
+        decoded = decoded.substring(1);
+      }
+      base_uri = Uri.parse("http://127.0.0.1/cgi?" + decoded);
     }
     params = new java.util.HashMap<String, String>();
 
@@ -30,7 +34,11 @@ public class UrlOptions {
     this(opts, false);
   }
 
-  public String build() {
+  public void override(UrlOptions other) {
+    params.putAll(other.params);
+  }
+
+  public String build(boolean build_query_only) {
     Uri.Builder builder = new Uri.Builder();
     builder.scheme(base_uri.getScheme());
     builder.encodedAuthority(base_uri.getEncodedAuthority());
@@ -38,8 +46,18 @@ public class UrlOptions {
     for (Map.Entry<String, String> entry : params.entrySet()) {
       builder.appendQueryParameter(entry.getKey(), entry.getValue());
     }
-    String result = builder.build().toString();
+    String result;
+    if (build_query_only) {
+      result = "&amp;" + builder.build().getEncodedQuery().replaceAll("&", "&amp;");
+    } else {
+      result = builder.build().toString();
+    }
+    Log.v("breviar", "url built: " + result);
     return result;
+  }
+
+  public String build() {
+    return build(false);
   }
 
   public boolean isNightmode() {
@@ -56,6 +74,38 @@ public class UrlOptions {
 
   public void setOnlyNonBoldFont(boolean value) {
     setBit("o0", 6, value);
+  }
+
+  public boolean isButtonsOrder() {
+    return hasBit("o0", 7);
+  }
+
+  public void setButtonsOrder(boolean value) {
+    setBit("o0", 7, value);
+  }
+
+  public boolean isVerseNumbering() {
+    return hasBit("o0", 0);
+  }
+
+  public void setVerseNumbering(boolean value) {
+    setBit("o0", 0, value);
+  }
+
+  public boolean isBibleReferences() {
+    return hasBit("o0", 1);
+  }
+
+  public void setBibleReferences(boolean value) {
+    setBit("o0", 1, value);
+  }
+
+  public boolean isLiturgicalReadings() {
+    return hasBit("o0", 2);
+  }
+
+  public void setLiturgicalReadings(boolean value) {
+    setBit("o0", 2, value);
   }
 
   public boolean isEpiphanySunday() {

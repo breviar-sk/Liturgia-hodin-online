@@ -19,6 +19,11 @@
     <string name="dimlock">Nezhasínat obrazovku</string>
     <string name="mute">Vypnout zvonění</string>
 
+    <string name="prayer_content_settings_title">V textu modliteb zobrazit:</string>
+    <string name="verse_numbering">číslování veršů</string>
+    <string name="bible_references">biblické odkazy</string>
+    <string name="liturgical_readings">liturgická čtení</string>
+
     <string name="calendar_settings_title">Liturgický kalendář:</string>
     <string name="epiphany_sunday">Zjevení Páně slavit v neděli mezi 2. a 8. lednem</string>
     <string name="ascension_sunday">Nanebevstoupení Páně slavit v neděli</string>

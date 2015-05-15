@@ -1810,6 +1810,24 @@ void set_popis_dummy(void){
 	set_popis(MODL_PRVE_KOMPLETORIUM, _file, _anchor);
 }// set_popis_dummy();
 
+void set_popis_dummy_except_vespers(void){
+	Log("  teraz nastavujem POPIS (dummy) okrem vešpier...\n");
+	char _file[SMALL];
+	char _anchor[SMALL];
+	mystrcpy(_file, STR_UNDEF, MAX_STR_AF_FILE);
+	mystrcpy(_anchor, STR_UNDEF, MAX_STR_AF_ANCHOR);
+	set_popis(MODL_RANNE_CHVALY, _file, _anchor);
+	set_popis(MODL_POSV_CITANIE, _file, _anchor);
+	// set_popis(MODL_VESPERY, _file, _anchor);
+	// set_popis(MODL_PRVE_VESPERY, _file, _anchor);
+	set_popis(MODL_PREDPOLUDNIM, _file, _anchor);
+	set_popis(MODL_NAPOLUDNIE, _file, _anchor);
+	set_popis(MODL_POPOLUDNI, _file, _anchor);
+	set_popis(MODL_INVITATORIUM, _file, _anchor);
+	set_popis(MODL_KOMPLETORIUM, _file, _anchor);
+	set_popis(MODL_PRVE_KOMPLETORIUM, _file, _anchor);
+}// set_popis_dummy();
+
 void _set_zalmy_mcd_doplnkova_psalmodia_alternativy(short int modlitba){
 	Log("_set_zalmy_mcd_doplnkova_psalmodia_alternativy %s: ...\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_PREDPOLUDNIM){
@@ -7300,6 +7318,7 @@ label_24_DEC:
 			_post2_benediktus;
 			_post2_prosby;
 			_post2_modlitba;
+
 			// vešpery
 			modlitba = MODL_VESPERY;
 			_post2_hymnus;
@@ -7363,12 +7382,16 @@ label_24_DEC:
 
 			}// nedeľa
 			else if(den == DEN_STVRTOK){
-				// 2012-04-10: LH má pre ranné chvály odlišný úvod k prosbám
+				// LH má pre ranné chvály odlišný úvod k prosbám
 				modlitba = MODL_RANNE_CHVALY;
 				_vtroj_prosby;
-				// 2006-01-27: pridaný popis k vešperám zeleného štvrtka
+
+				// popis
+				set_popis_dummy_except_vespers();
+
 				modlitba = MODL_VESPERY;
 				_vtroj_popis;
+
 				// 2007-12-05: kompletórium je z nedele po druhých vešperách; ale ako na slávnosti; 2008-04-04 presunuté vyššie
 			}// nie nedeľa, ale zelený štvrtok
 			break;
@@ -7509,6 +7532,7 @@ label_24_DEC:
 			_vtroj_benediktus;
 			_vtroj_prosby;
 			_vtroj_modlitba;
+
 			// vešpery
 			modlitba = MODL_VESPERY;
 			_vtroj_hymnus;
