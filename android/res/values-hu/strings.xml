@@ -40,8 +40,8 @@
     <string name="nightmodeOn">Éjszakai mód</string>
     <string name="nightmodeOff">Nappali mód</string>
 
-    <string name="onlyNonBoldFontOn">Félkövér betűtípus tiltása</string>
-    <string name="onlyNonBoldFontOff">Félkövér betűtípus engedélyezése</string>
+    <string name="onlyNonBoldFontOn">Normál betűtípus</string>
+    <string name="onlyNonBoldFontOff">Félkövér betűtípus</string>
 
     <string name="inv">Imádságra hívás</string>
     <string name="rch">Reggeli dicséret</string>

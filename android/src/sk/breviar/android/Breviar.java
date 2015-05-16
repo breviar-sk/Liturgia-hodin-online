@@ -88,17 +88,27 @@ public class Breviar extends Activity implements View.OnLongClickListener {
     }
 
     void resetLanguage() {
+      need_to_reload_preferences = false;
       S.setLanguage(language);
       clearHistory = true;
-      // povodne sme zahadzovali cele nastavenia:
+
+      // Povodne sme zahadzovali cele nastavenia:
       // wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname + "?qt=pdnes");
       // namiesto toho sa snazime z nich iba dat prec co je nekompatibilne. Toto je prvy pokus.
-      wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname +
-                 "?qt=pdnes" + Html.fromHtml(S.getOpts()
-                     .replaceAll("&amp;c=[^&]*&amp;", "&amp;")
-                     .replaceAll("&amp;c=[^&]*$", "")
-                     .replaceAll("&amp;j=[^&]*&amp;", "&amp;")
-                     .replaceAll("&amp;j=[^&]*$", "")));
+      // Since we call this only after LangSelect, url options in shared settings are up to date.
+      String new_opts = BreviarApp.getUrlOptions(getApplicationContext())
+                            .replaceAll("&amp;c=[^&]*&amp;", "&amp;")
+                            .replaceAll("&amp;c=[^&]*$", "")
+                            .replaceAll("&amp;j=[^&]*&amp;", "&amp;")
+                            .replaceAll("&amp;j=[^&]*$", "");
+      S.setOpts(new_opts);
+
+      String new_url = "http://127.0.0.1:" + S.port + "/" + scriptname +
+                       "?qt=pdnes" + Html.fromHtml(new_opts);
+
+      Log.v("breviar", "resetLanguage: " + language + " new_url: " + new_url);
+
+      wv.loadUrl(new_url);
       syncPreferences();
       BreviarApp.initLocale(getApplicationContext());
       recreateIfNeeded();
