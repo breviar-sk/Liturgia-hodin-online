@@ -62,6 +62,8 @@ public class LangSelect extends Activity {
 
       override_check.setChecked(BreviarApp.getOverrideLocale(getApplicationContext()));
 
+      // settings_title
+      
       CheckBox vol_buttons_check = (CheckBox)findViewById(R.id.vol_buttons_check);
 
       vol_buttons_check.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +94,8 @@ public class LangSelect extends Activity {
 
       mute_check.setChecked(BreviarApp.getMute(getApplicationContext()));
 
+      // prayer_content_settings_title
+      
       CheckBox verse_numbering_check = (CheckBox)findViewById(R.id.verse_numbering_check);
 
       verse_numbering_check.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +128,76 @@ public class LangSelect extends Activity {
       });
 
       liturgical_readings_check.setChecked(url_options.isLiturgicalReadings());
+
+      // display_settings_title
+
+      CheckBox navigation_check = (CheckBox)findViewById(R.id.navigation_check);
+
+      navigation_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setNavigation(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      navigation_check.setChecked(url_options.isNavigation());
+
+      CheckBox wrapping_printed_check = (CheckBox)findViewById(R.id.wrapping_printed_check);
+
+      wrapping_printed_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setTextWrap(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      wrapping_printed_check.setChecked(url_options.isTextWrap());
+
+      CheckBox smart_buttons_check = (CheckBox)findViewById(R.id.smart_buttons_check);
+
+      smart_buttons_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setSmartButtons(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      smart_buttons_check.setChecked(url_options.isSmartButtons());
+
+      CheckBox night_mode_check = (CheckBox)findViewById(R.id.night_mode_check);
+
+      night_mode_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setNightmode(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      night_mode_check.setChecked(url_options.isNightmode());
+
+      CheckBox normal_font_check = (CheckBox)findViewById(R.id.normal_font_check);
+
+      normal_font_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setOnlyNonBoldFont(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      normal_font_check.setChecked(url_options.isOnlyNonBoldFont());
+
+      CheckBox buttons_order_check = (CheckBox)findViewById(R.id.buttons_order_check);
+
+      buttons_order_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setButtonsOrder(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      buttons_order_check.setChecked(url_options.isButtonsOrder());
+
+      // calendar_settings_title
 
       CheckBox epiphany_sunday_check = (CheckBox)findViewById(R.id.epiphany_sunday_check);
 

@@ -60,6 +60,27 @@
     <CheckBox android:id="@+id/liturgical_readings_check" android:text="@string/liturgical_readings"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+    <TextView android:text="@string/display_settings_title" style="@android:style/TextAppearance.Large"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/navigation_check" android:text="@string/navigation"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/wrapping_printed_check" android:text="@string/wrapping_printed"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/smart_buttons_check" android:text="@string/smart_buttons"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/night_mode_check" android:text="@string/night_mode"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/normal_font_check" android:text="@string/normal_font"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/buttons_order_check" android:text="@string/buttons_order"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <TextView android:text="@string/calendar_settings_title" style="@android:style/TextAppearance.Large"
         android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
 

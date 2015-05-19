@@ -8,21 +8,30 @@
     <string name="pgdn">Ďalej</string>
 
     <string name="lang_select">Nastavenia</string>
-    <string name="lang_select_title">Výber jazyka:</string>
+
+    <string name="lang_select_title">Jazyk:</string>
     <string name="lang_cz">Čeština</string>
     <string name="lang_sk">Slovenčina</string>
     <string name="lang_hu">Maďarčina</string>
     <string name="override_locale">Použiť tento jazyk aj v ovládacích prvkoch</string>
 
-    <string name="settings_title">Nastavenia:</string>
-    <string name="vol_buttons">Použiť tlačidlá hlasitosti na listovanie</string>
-    <string name="dimlock">Nezhasínať obrazovku</string>
-    <string name="mute">Vypnúť zvonenie</string>
+    <string name="settings_title">Nastavenia zariadenia:</string>
+    <string name="vol_buttons">použiť tlačidlá hlasitosti na listovanie</string>
+    <string name="dimlock">nezhasínať obrazovku</string>
+    <string name="mute">vypnúť zvonenie</string>
 
     <string name="prayer_content_settings_title">V texte modlitieb zobraziť:</string>
     <string name="verse_numbering">číslovanie veršov</string>
     <string name="bible_references">biblické odkazy</string>
     <string name="liturgical_readings">liturgické čítania</string>
+
+    <string name="display_settings_title">Ďalšie zobrazenia:</string>
+    <string name="navigation">zobraziť navigáciu v textoch modlitieb</string>
+    <string name="wrapping_printed">zalamovať dlhé riadky ako v tlačenom vydaní (poetické časti)</string>
+    <string name="smart_buttons">tlačidlá pre modlitby zobraziť úsporne</string>
+    <string name="night_mode">nočný režim</string>
+    <string name="normal_font">všade použiť obyčajné písmo (nie tučné)</string>
+    <string name="buttons_order">dátumové navigačné tlačidlá zobraziť až pod tlačidlami pre modlitby</string>
 
     <string name="calendar_settings_title">Liturgický kalendár:</string>
     <string name="epiphany_sunday">Zjavenie Pána sláviť v nedeľu medzi 2. a 8. januárom</string>
@@ -84,18 +93,21 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
-<p><b>Nové vo verzii 1.11.2:</b>
+<p><b>Aplikácia Breviár | Čo je nové</b>
+
+<p><b>Verzia 1.11.2:</b>
 <ul>
 <li> Nová položka menu: Všade použiť normálne písmo (nie tučné).
+<li> Rozšírenie nastavení.
 </ul>
 
-<p><b>Nové vo verzii 1.11.1:</b>
+<p><b>Verzia 1.11.1:</b>
 <ul>
 <li> Oprava: Kompatibilita s Android 2.x a staršími (liturgické čítania).
 <li> Opravy drobných chýb a preklepov.
 </ul>
 
-<p><b>Nové vo verzii 1.11:</b>
+<p><b>Verzia 1.11:</b>
 <ul>
 <li> Prepínanie nočného/denného režimu priamo v hlavnom menu.
 <li> Väčšia výška riadkov pre lepšiu čitateľnosť.
@@ -103,13 +115,13 @@ body { background-color: #000000; color: #cccccc; }
 <li> Opravy drobných chýb a mnohých preklepov.
 </ul>
 
-<p><b>Nové vo verzii 1.10.1:</b>
+<p><b>Verzia 1.10.1:</b>
 <ul>
 <li> Opravy drobných chýb a mnohých preklepov.
 <li> Doplnené: číslovanie veršov pre všetky dlhé biblické čítania.
 </ul>
 
-<p><b>Nové vo verzii 1.10:</b>
+<p><b>Verzia 1.10:</b>
 <ul>
 <li> Možnosť zobraziť modlitby v režime pre nevidiacich a slabozrakých (text modlitieb bez nadpisov a rubrík), vhodné pre hlasový výstup.
 <li> Nová možnosť na úvodnej obrazovke: Ordinárium.
@@ -117,19 +129,19 @@ body { background-color: #000000; color: #cccccc; }
 <li> Kompatibilita s Android 5.0 Lollipop.
 </ul>
 
-<p><b>Nové vo verzii 1.9.10:</b>
+<p><b>Verzia 1.9.10:</b>
 <ul>
 <li> Možnosť vypnúť zvonenie počas modlitby (automatické prepnutie do tichého režimu).
 <li> Nové nastavenie: voľba hymnusu pre prvé vešpery Cezročného obdobia.
 </ul>
 
-<p><b>Nové vo verzii 1.9.9:</b>
+<p><b>Verzia 1.9.9:</b>
 <ul>
 <li> Formátovanie hymnusov (CSS).
 <li> Drobné opravy chýb v textoch a v generovaní modlitieb.
 </ul>
 
-<p><b>Nové vo verzii 1.9.8:</b>
+<p><b>Verzia 1.9.8:</b>
 <ul>
 <li> Dlhé stlačenie skryje navigačnú lištu.
 <li> Pridaná možnosť nezhasínať obrazovku.

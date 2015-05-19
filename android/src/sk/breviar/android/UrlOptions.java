@@ -60,14 +60,6 @@ public class UrlOptions {
     return build(false);
   }
 
-  public boolean isNightmode() {
-    return hasBit("o2", 8);
-  }
-
-  public void setNightmode(boolean value) {
-    setBit("o2", 8, value);
-  }
-
   public boolean isOnlyNonBoldFont() {
     return hasBit("o0", 6);
   }
@@ -130,6 +122,38 @@ public class UrlOptions {
 
   public void setBodyBloodSunday(boolean value) {
     setBit("o0", 5, value);
+  }
+
+  public boolean isNavigation() {
+    return hasBit("o2", 5);
+  }
+
+  public void setNavigation(boolean value) {
+    setBit("o2", 5, value);
+  }
+
+  public boolean isTextWrap() {
+    return hasBit("o2", 6);
+  }
+
+  public void setTextWrap(boolean value) {
+    setBit("o2", 6, value);
+  }
+
+  public boolean isSmartButtons() {
+    return hasBit("o2", 7);
+  }
+
+  public void setSmartButtons(boolean value) {
+    setBit("o2", 7, value);
+  }
+
+  public boolean isNightmode() {
+    return hasBit("o2", 8);
+  }
+
+  public void setNightmode(boolean value) {
+    setBit("o2", 8, value);
   }
 
   public boolean isEmphasizeLocalCalendar() {

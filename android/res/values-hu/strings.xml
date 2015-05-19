@@ -8,6 +8,7 @@
     <string name="pgdn">Le</string>
 
     <string name="lang_select">Beállítás</string>
+
     <string name="lang_select_title">Nyelvválasztás:</string>
     <string name="lang_cz">Cseh</string>
     <string name="lang_sk">Szlovák</string>
@@ -15,14 +16,22 @@
     <string name="override_locale">Rendszerszintű nyelvi beállítások felülírása</string>
 
     <string name="settings_title">Beállítás:</string>
-    <string name="vol_buttons">Hangerőt állító gombok használata görgetéshez</string>
-    <string name="dimlock">Ne sötétüljön el a képernyő</string>
-    <string name="mute">A telefon csendes módba kapcsolása</string>
+    <string name="vol_buttons">hangerőt állító gombok használata görgetéshez</string>
+    <string name="dimlock">ne sötétüljön el a képernyő</string>
+    <string name="mute">a telefon csendes módba kapcsolása</string>
 
     <string name="prayer_content_settings_title">Az imaóra szövegében jelenjen meg:</string>
     <string name="verse_numbering">a versek száma</string>
     <string name="bible_references">Bibliai hivatkozások</string>
     <string name="liturgical_readings">liturgikus olvasmányok</string>
+
+    <string name="display_settings_title">Display settings:</string>
+    <string name="navigation">a navigáció mutatása az imaszövegben</string>
+    <string name="wrapping_printed">hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)</string>
+    <string name="smart_buttons">az imaórák gombjainak gazdaságos elhelyezése</string>
+    <string name="night_mode">éjszakai mód</string>
+    <string name="normal_font">normál betűtípus használata (félkövér helyett)</string>
+    <string name="buttons_order">a fejlécben a dátumválasztó gombok legyenek az imaóra választó gombok után</string>
 
     <string name="calendar_settings_title">Liturgikus naptár:</string>
     <string name="epiphany_sunday">Urunk megjelenése (Vízkereszt) megünneplése vasárnap, január 2. és 8. között</string>
@@ -84,13 +93,16 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
-<p><b>Újdonságok az 1.11.2-es verzióban:</b>
+<p><b>Zsolozsma aplikáció | Újdonságok</b>
+
+<p><b>Verzió 1.11.2:</b>
 <ul>
 <li> Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.
 <li> Gépelési hibák javítása.
+<li> Added new settings.
 </ul>
 
-<p><b>Újdonságok az 1.11.1-es verzióban:</b>
+<p><b>Verzió 1.11.1:</b>
 <ul>
 <li> Gépelési hibák javítása.
 <li> Visszafelé való kompatibilitás javítása az Android 2.x és régebbi verziókkal.
@@ -98,7 +110,7 @@ body { background-color: #000000; color: #cccccc; }
 <li> Több bekezdésből álló könyörgések olvashatóbb tagolása.
 </ul>
 
-<p><b>Újdonságok az 1.11-es verzióban:</b>
+<p><b>Verzió 1.11:</b>
 <ul>
 <li> Éjszakai/nappali mód váltása a főmenüből.
 <li> Nagyobb sorköz a jobb olvashatóság érdekében.
@@ -106,7 +118,7 @@ body { background-color: #000000; color: #cccccc; }
 <li> Gépelési hibák javítása mindegyik nyelvnél.
 </ul>
 
-<p><b>Újdonságok az 1.10-es verzióban:</b>
+<p><b>Verzió 1.10:</b>
 <ul>
 <li> Az imák egyszerűsített megjelenítése (csak az imák szövege, címek és rubrikák nélkül) látássérültek számára. Felolvasó gépek használhatják.
 <li> Új lehetőség a főoldalon: Általános rész.
@@ -114,14 +126,14 @@ body { background-color: #000000; color: #cccccc; }
 <li> Android 5.0 (Lollipop) kompatibilitás.
 </ul>
 
-<p><b>Újdonságok az 1.9.10-es verzióban:</b>
+<p><b>Verzió 1.9.10:</b>
 <ul>
 <li> Új beállítási lehetőség: automatikus csendes módba kapcsolás imádság közben.
 <li> Új beállítási lehetőség: I. Esti dicséret himnusza (évközi időben).
 <li> Fohászok formázása.
 </ul>
 
-<p><b>Újdonságok az 1.9.9-es verzióban:</b>
+<p><b>Verzió 1.9.9:</b>
 <ul>
 <li> A befejező imaóra kantikuma félkövéren jelenik meg.
 <li> Hármaspont karakter használata.
@@ -130,7 +142,7 @@ body { background-color: #000000; color: #cccccc; }
 <li> Gépelési hibák javítása.
 </ul>
 
-<p><b>Újdonságok az 1.9.8-as verzióban:</b>
+<p><b>Verzió 1.9.8:</b>
 <ul>
 <li> Hosszú érintésre elrejti az alsó navigációs sávot.
 <li> Új opció: a képernyő ne sötétüljön el.
