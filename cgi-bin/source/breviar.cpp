@@ -8738,8 +8738,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// option 1: ďalšie bity ovplyvňujúce vygenerovanú modlitbu (používame force opt_1)...
 		Export("<"HTML_SPAN_BOLD_TOOLTIP">%s"HTML_SPAN_END, html_text_option1_dalsie_prepinace_explain[_global_jazyk], html_text_option1_dalsie_prepinace[_global_jazyk]);
 
+#if !defined(IO_ANDROID)
+		// for Android it is not necessary since 1.11.2 (setting moved to native menu)
 		// pole (checkbox) WWW_/STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST
 		_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST, STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST, html_text_option1_spolc_svaty[_global_jazyk], html_text_option1_spolc_svaty_explain[_global_jazyk]);
+#endif
 
 		if(!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)){ // len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená
 

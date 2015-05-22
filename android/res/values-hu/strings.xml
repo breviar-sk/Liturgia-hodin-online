@@ -20,7 +20,12 @@
     <string name="dimlock">ne sötétüljön el a képernyő</string>
     <string name="mute">a telefon csendes módba kapcsolása</string>
 
+    <string name="prayer_content_settings1_title">Content settings:</string>
+    <string name="various_options_in_prayers">mutassa meg az imák szövegében a különböző lehetőségeket as clicable hyperlinks</string>
+    <string name="alternatives">lehetőségek</string>
+
     <string name="prayer_content_settings_title">Az imaóra szövegében jelenjen meg:</string>
+    <string name="display_communia_info">hogy a közös részek honnan lettek véve a szentek zsolozsmájához</string>
     <string name="verse_numbering">a versek száma</string>
     <string name="bible_references">Bibliai hivatkozások</string>
     <string name="liturgical_readings">liturgikus olvasmányok</string>

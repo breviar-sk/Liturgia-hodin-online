@@ -94,8 +94,43 @@ public class LangSelect extends Activity {
 
       mute_check.setChecked(BreviarApp.getMute(getApplicationContext()));
 
+      // prayer_content_settings1_title
+      
+      CheckBox various_options_in_prayers_check = (CheckBox)findViewById(R.id.various_options_in_prayers_check);
+
+      various_options_in_prayers_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setDisplayVariousOptions(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      various_options_in_prayers_check.setChecked(url_options.isDisplayVariousOptions());
+
+      CheckBox alternatives_check = (CheckBox)findViewById(R.id.alternatives_check);
+
+      alternatives_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setDisplayAlternatives(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      alternatives_check.setChecked(url_options.isDisplayAlternatives());
+
       // prayer_content_settings_title
       
+      CheckBox display_communia_info_check = (CheckBox)findViewById(R.id.display_communia_info_check);
+
+      display_communia_info_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setDisplayCommuniaInfo(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      display_communia_info_check.setChecked(url_options.isDisplayCommuniaInfo());
+
       CheckBox verse_numbering_check = (CheckBox)findViewById(R.id.verse_numbering_check);
 
       verse_numbering_check.setOnClickListener(new View.OnClickListener() {

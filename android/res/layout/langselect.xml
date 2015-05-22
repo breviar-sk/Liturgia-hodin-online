@@ -48,8 +48,20 @@
     <CheckBox android:id="@+id/mute_check" android:text="@string/mute"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+    <TextView android:text="@string/prayer_content_settings1_title" style="@android:style/TextAppearance.Large"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/various_options_in_prayers_check" android:text="@string/various_options_in_prayers"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/alternatives_check" android:text="@string/alternatives"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <TextView android:text="@string/prayer_content_settings_title" style="@android:style/TextAppearance.Large"
         android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+
+    <CheckBox android:id="@+id/display_communia_info_check" android:text="@string/display_communia_info"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
     <CheckBox android:id="@+id/verse_numbering_check" android:text="@string/verse_numbering"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
