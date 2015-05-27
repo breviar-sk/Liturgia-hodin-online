@@ -7,45 +7,45 @@
     <string name="pgup">Fel</string>
     <string name="pgdn">Le</string>
 
-    <string name="lang_select">Beállítás</string>
+    <string name="lang_select">Beállítások</string>
 
-    <string name="lang_select_title">Nyelvválasztás:</string>
+    <string name="lang_select_title">Nyelv:</string>
     <string name="lang_cz">Cseh</string>
     <string name="lang_sk">Szlovák</string>
     <string name="lang_hu">Magyar</string>
-    <string name="override_locale">Rendszerszintű nyelvi beállítások felülírása</string>
+    <string name="override_locale">rendszerszintű nyelvi beállítások felülírása</string>
 
-    <string name="settings_title">Beállítás:</string>
+    <string name="settings_title">Eszköz beállításai:</string>
     <string name="vol_buttons">hangerőt állító gombok használata görgetéshez</string>
     <string name="dimlock">ne sötétüljön el a képernyő</string>
     <string name="mute">a telefon csendes módba kapcsolása</string>
 
-    <string name="prayer_content_settings1_title">Content settings:</string>
-    <string name="various_options_in_prayers">mutassa meg az imák szövegében a különböző lehetőségeket as clicable hyperlinks</string>
+    <string name="prayer_content_settings1_title">Tartalom beállításai:</string>
+    <string name="various_options_in_prayers">mutassa az imáknál a különböző lehetőségeket hiperhivatkozásokként</string>
     <string name="alternatives">lehetőségek</string>
 
-    <string name="prayer_content_settings_title">Az imaóra szövegében jelenjen meg:</string>
-    <string name="display_communia_info">hogy a közös részek honnan lettek véve a szentek zsolozsmájához</string>
-    <string name="verse_numbering">a versek száma</string>
-    <string name="bible_references">Bibliai hivatkozások</string>
-    <string name="liturgical_readings">liturgikus olvasmányok</string>
+    <string name="prayer_content_settings_title">Az imaóra szövegében jelenjenek meg:</string>
+    <string name="display_communia_info">hogy a közös részek honnan lettek véve</string>
+    <string name="verse_numbering">a versek számai</string>
+    <string name="bible_references">a bibliai hivatkozások</string>
+    <string name="liturgical_readings">a liturgikus olvasmányok</string>
 
-    <string name="display_settings_title">Display settings:</string>
-    <string name="navigation">a navigáció mutatása az imaszövegben</string>
+    <string name="display_settings_title">Megjelenés beállításai:</string>
+    <string name="navigation">navigáció mutatása az imaszövegben</string>
     <string name="wrapping_printed">hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)</string>
     <string name="smart_buttons">az imaórák gombjainak gazdaságos elhelyezése</string>
     <string name="night_mode">éjszakai mód</string>
-    <string name="normal_font">normál betűtípus használata (félkövér helyett)</string>
+    <string name="normal_font">normál betűtípus használata (félkövér tiltása)</string>
     <string name="buttons_order">a fejlécben a dátumválasztó gombok legyenek az imaóra választó gombok után</string>
 
     <string name="calendar_settings_title">Liturgikus naptár:</string>
-    <string name="epiphany_sunday">Urunk megjelenése (Vízkereszt) megünneplése vasárnap, január 2. és 8. között</string>
+    <string name="epiphany_sunday">Urunk megjelenését (Vízkeresztet) vasárnap ünnepelni, január 2. és 8. között</string>
     <string name="ascension_sunday">Urunk mennybemenetelét vasárnap ünnepelni</string>
-    <string name="body_blood_sunday">Krisztus Szent Teste és Vére ünnepe vasárnapra téve</string>
+    <string name="body_blood_sunday">Krisztus Szent Teste és Vére ünnepét vasárnap ünnepelni</string>
     <string name="emphasize_local_calendar">kijelölni az ünnepeket a nemzeti naptárban</string>
 
     <string name="alarms">Értesítések</string>
-    <string name="alarms_title">Értesítések beállítása:</string>
+    <string name="alarms_title">Értesítések beállításai:</string>
     <string name="alarmOff">letiltás</string>
 
     <string name="fullscreenOn">Teljes képernyő</string>
@@ -98,13 +98,13 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
-<p><b>Zsolozsma aplikáció | Újdonságok</b>
+<p><b>Zsolozsma alkalmazás | Újdonságok</b>
 
 <p><b>Verzió 1.11.2:</b>
 <ul>
 <li> Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.
 <li> Gépelési hibák javítása.
-<li> Added new settings.
+<li> Új beállítások hozzáadása.
 </ul>
 
 <p><b>Verzió 1.11.1:</b>
