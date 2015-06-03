@@ -14247,6 +14247,11 @@ short int getQueryTypeFrom_QS(char *qs){
 		Log("getQueryTypeFrom_QS() -- end, returning PRM_BATCH_MODE\n");
 		return PRM_BATCH_MODE;
 	}
+	else if (strstr(qs, STR_PRM_STATIC_TEXT) != NULL){
+		// parameter STR_PRM_STATIC_TEXT
+		Log("getQueryTypeFrom_QS() -- end, returning PRM_STATIC_TEXT\n");
+		return PRM_STATIC_TEXT;
+	}
 	else{
 		Log("getQueryTypeFrom_QS() -- end, returning PRM_UNKNOWN\n");
 		return PRM_UNKNOWN; // argumenty neobsahuju STR_PRM_...
@@ -14365,6 +14370,8 @@ short int getArgv(int argc, char **argv){
 	// 2011-05-06: upravené (hodnota `F' ani `H' sa nepoužívali)
 	//            `F' (font): možnosť zvoliť font pre override CSS
 	// 2012-09-07: 'H' (header) disables header and footer
+
+	// 2015-06-02: 'v', 'w' and 'y' are still available :)
 	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::", MAX_STR);
 	// tie options, ktore maju za sebou : maju povinny argument; ak maju :: tak maju volitelny
 
@@ -14393,39 +14400,39 @@ short int getArgv(int argc, char **argv){
 			c = getopt(argc, argv, option_string);
 			if (c == -1) // uz nie je option, vyskoc z while(1)
 				break;
-			switch (c){ // podla option urob nieco
-			case 'c': // parameter pridaný 2008-08-08, ovplyvňuje použité css-ko; bude v _global_css
+			switch (c){
+			case 'c':
 				if (optarg != NULL){
 					mystrcpy(pom_CSS, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- `%s' used for css\n", c, optarg, optarg); break;
 
-			case 'j': // 2006-07-11: Pridané kvôli jazykovým mutáciám
+			case 'j':
 				if (optarg != NULL){
 					mystrcpy(pom_JAZYK, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- `%s' used for language mutation\n", c, optarg, optarg); break;
-			case 'k': // 2010-08-04: Pridané kvôli jazykovým mutáciám -- kalendár (rehoľný, lokálny)
+			case 'k':
 				if (optarg != NULL){
 					mystrcpy(pom_KALENDAR, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- `%s' used for calendar mutation\n", c, optarg, optarg); break;
-			case 'o': // pridane 2004-03-16, name_batch_html_file; 2010-08-04: upravené 'k' -> 'o'
+			case 'o':
 				if (optarg != NULL){
 					mystrcpy(name_batch_html_file, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- batch file HTML name `%s' used for batch mode\n", c, optarg, optarg); break;
-			case 'b': // pridane 2003-07-04, name_batch_file
+			case 'b':
 				if (optarg != NULL){
 					mystrcpy(name_batch_file, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- batch file name `%s' used for batch mode\n", c, optarg, optarg); break;
-			case 'n': // pridane 2003-07-04, name_binary_executable
+			case 'n':
 				if (optarg != NULL){
 					mystrcpy(name_binary_executable, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- binary executable name `%s' used for batch mode\n", c, optarg, optarg); break;
-			case 'i': // pridane 05/06/2000A.D., include_dir
+			case 'i':
 				if (optarg != NULL){
 					mystrcpy(include_dir, optarg, MAX_STR); // 2012-09-08: This string can be quite long on iOS
 				}
@@ -14435,17 +14442,17 @@ short int getArgv(int argc, char **argv){
 					mystrcpy(pom_ROK_FROM, optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
-			case 'F': // font, pridané 2011-05-06
+			case 'F':
 				if (optarg != NULL){
 					mystrcpy(pom_FONT, optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
-			case 'S': // font size, pridané 2011-05-13
+			case 'S':
 				if (optarg != NULL){
 					mystrcpy(pom_FONT_SIZE, optarg, VERY_SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
-			case 'G': // style margin
+			case 'G':
 				if (optarg != NULL){
 					mystrcpy(pom_STYLE_MARGIN, optarg, VERY_SMALL);
 				}
@@ -14465,7 +14472,6 @@ short int getArgv(int argc, char **argv){
 					mystrcpy(file_export, optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
-				// zmenene: povodne tu boli pri kazdom parametri aj '1' -- '5'; teraz: vyhodene case '1' -- '5', ktorezto '1' -- '4' su pre options, vid dalej
 			case 's': // debuggovanie, query string
 				if (optarg != NULL){
 					Log("--copying `%s' to query_string...", optarg);
@@ -14475,34 +14481,34 @@ short int getArgv(int argc, char **argv){
 					query_type = PRM_SIMULACIA_QS;
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
-			case 'd': // deň
+			case 'd':
 				if (optarg != NULL){
 					mystrcpy(pom_DEN, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- den\n", c, optarg); break;
-			case 'm': // mesiac
-			case 't': // TYZDEN
+			case 'm':
+			case 't':
 				if (optarg != NULL){
 					mystrcpy(pom_MESIAC, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- mesiac/tyzden\n", c, optarg); break;
-			case 'r': // ROK, ANALYZA_ROKU
+			case 'r':
 				if (optarg != NULL){
 					mystrcpy(pom_ROK, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- rok\n", c, optarg); break;
-			case 'p': // modlitba
+			case 'p':
 				if (optarg != NULL){
 					mystrcpy(pom_MODLITBA, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- modlitba\n", c, optarg); break;
-			case 'x': // DALSI_SVATY
+			case 'x':
 				if (optarg != NULL){
 					mystrcpy(pom_DALSI_SVATY, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- poradie svateho\n", c, optarg); break;
 
-				// nasledovne case'y sa tykaju MODL_OPT...
+			// MODL_OPT 0..4
 			case '0':
 				if (optarg != NULL){
 					mystrcpy(pom_MODL_OPT[OPT_0_SPECIALNE], optarg, SMALL);
@@ -14529,22 +14535,20 @@ short int getArgv(int argc, char **argv){
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 
-				// append pridany 2003-07-08, bude v _global_opt_append
 			case 'a': // MODL_OPT_APPEND
 				if (optarg != NULL){
 					mystrcpy(pom_MODL_OPT_APPEND, optarg, SMALL);
 				}
-				// option a (append), pridana 2003-07-08
 				if (equals(pom_MODL_OPT_APPEND, STR_ANO) || equals(pom_MODL_OPT_APPEND, STR_VALUE_TRUE)){
 					_global_opt_append = ANO;
 				}
 				else if (equals(pom_MODL_OPT_APPEND, STR_NIE) || equals(pom_MODL_OPT_APPEND, STR_VALUE_FALSE)){
 					_global_opt_append = NIE;
-				}// inak ostane _global_opt_APPEND default
+				}
 				Log("opt_append == `%s' (%d)\n", pom_MODL_OPT_APPEND, _global_opt_append);
 				Log("option %c with value `%s'\n", c, optarg); break;
 
-				// 2008-11-29: pridaný parameter `u' (dátUm) spôsob zapisovania dátumu pre súbory v batch móde
+			// parameter `u' (dátUm) spôsob zapisovania dátumu pre súbory v batch móde
 			case 'u': // MODL_OPT_APPEND
 				if (optarg != NULL){
 					mystrcpy(pom_MODL_OPT_DATE_FORMAT, optarg, SMALL);
@@ -14554,7 +14558,7 @@ short int getArgv(int argc, char **argv){
 				}
 				else if (equals(pom_MODL_OPT_DATE_FORMAT, STR_SIMPLE) || equals(pom_MODL_OPT_DATE_FORMAT, STR_VALUE_FALSE)){
 					_global_opt_export_date_format = EXPORT_DATE_SIMPLE;
-				}// inak ostane _global_opt_export_date_format default
+				}
 				Log("opt_append == `%s' (%d)\n", pom_MODL_OPT_DATE_FORMAT, _global_opt_export_date_format);
 				Log("option %c with value `%s'\n", c, optarg); break;
 
@@ -14564,14 +14568,14 @@ short int getArgv(int argc, char **argv){
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 
-			case 'M': // typ exportu pre batch mód; 2009-08-02
+			case 'M': // typ exportu pre batch mód
 				if (optarg != NULL){
 					mystrcpy(pom_EXPORT_MONTHLY, optarg, SMALL); // premenná pom_EXPORT_MONTHLY sa parsuje priamo v _main()
 				}
 				_global_opt_batch_monthly = ANO;
 				Log("option %c with value `%s'\n", c, optarg); break;
 
-			case 'I': // odkaz "^ hore" / index.htm (pre batch mód); 2009-08-12
+			case 'I': // odkaz "^ hore" / index.htm (pre batch mód)
 				if (optarg != NULL){
 					mystrcpy(_global_export_navig_hore, optarg, SMALL);
 				}
@@ -14587,12 +14591,9 @@ short int getArgv(int argc, char **argv){
 
 			case '?':
 			case 'h':
-				// 2003-06-26 -- pridane -s (query string), -q psqs
 				printf("\n");
 				printf("lh - command-line verzia on-line breviara (http://breviar.sk)\n");
-				// pridane 2003-07-17
 				printf("\tProgram vytvara stranky (HTML vystup) pre Liturgiu hodin.\n");
-				// build pridany 2003-07-04
 				printf("\tBuild: %s\n", BUILD_DATE);
 				printf("\t"TEXT_COPYRIGHT" <"TEXT_EMAIL">\n");
 				printf("\n");
@@ -14679,14 +14680,13 @@ short int getArgv(int argc, char **argv){
 			query_type = getQueryTypeFrom_QS(pom_QUERY_TYPE);
 		}
 
-		// 2013-09-30: ak je query type OK, tak vymažeme chybový oznam
+		// ak je query type OK, tak vymažeme chybový oznam
 		if (query_type != PRM_UNKNOWN){
 			Log("query_type OK, čistím bad_param_str...\n");
 			mystrcpy(bad_param_str, STR_EMPTY, MAX_STR);
 		}
 
-		// 2009-08-02: pri exportovaní do adresárov po mesiacoch je potrebné upraviť name_binary_executable resp. include_dir 
-		// 2009-08-03: ale len v batch móde (teda nie pre jednotlivú generovanú modlitbu) -- preto presunuté až sem, za zistenie query_type
+		// pri exportovaní do adresárov po mesiacoch je potrebné upraviť name_binary_executable resp. include_dir, ale len v batch móde (teda nie pre jednotlivú generovanú modlitbu) -- preto presunuté až sem, za zistenie query_type
 		if (query_type == PRM_BATCH_MODE && _global_opt_batch_monthly == ANO){
 			mystrcpy(pom_name_binary_executable, STR_EMPTY, MAX_STR);
 			mystrcpy(pom_include_dir, STR_EMPTY, MAX_STR);
