@@ -6059,7 +6059,7 @@ const char *text_MAJ_27[POCET_JAZYKOV + 1] =
 	"S. Augustini Cantuariensis, ep.",
 	"",
 	"Sv. Augustina z Canterbury, biskupa",
-	"Canterbury Szent Ágoston püspök",
+	"Canterburyi Szent Ágoston püspök",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6247,7 +6247,7 @@ const char *text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Nejsvětější Trojice",
-	"Szentháromságvasárnap",
+	"Szentháromság vasárnapja",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
