@@ -18744,15 +18744,11 @@ label_25_MAR:
 							_vlastna_cast_modlitba;
 							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 							_vlastna_cast_2citanie;
-							if(_global_jazyk != JAZYK_HU){
+							if(_global_jazyk == JAZYK_SK){
 								_vlastna_cast_kresponz;
-								// 2008-06-10: česká verzia má 1. čítanie zo spoločnej časti
-								// 2012-05-16: vlastné prvé čítanie je len vtedy, ak sa slávi sviatok (vtedy sú aj antifóny a žalmy zo spoločnej časti jedného mučeníka a je aj hymnus Te Deum)
-								/*
-								if(_global_jazyk == JAZYK_SK){
-									_vlastna_cast_1citanie;
-								}
-								*/
+								// česká verzia má 1. čítanie zo spoločnej časti
+								// vlastné prvé čítanie je len vtedy, ak sa slávi sviatok (vtedy sú aj antifóny a žalmy zo spoločnej časti jedného mučeníka a je aj hymnus Te Deum)
+								// _vlastna_cast_1citanie;
 							}
 
 							if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
