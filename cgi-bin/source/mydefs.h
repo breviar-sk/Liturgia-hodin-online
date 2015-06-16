@@ -952,7 +952,6 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_CROSS "†"
 #define HTML_LINE_BREAK "<br/>"
 #define HTML_CRLF_LINE_BREAK "\n<br/>"
-#define HTML_NEW_PARAGRAPH "<p>"
 #define HTML_SLASH "/"
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 #define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE))
@@ -961,6 +960,7 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_DIV_TABLE_CAPTION "div class=\"table-caption\""
 #define HTML_DIV_TABLE_ROW "div class=\"table-row\""
 #define HTML_DIV_TABLE_CELL "div class=\"table-cell\""
+#define HTML_DIV_TABLE_CELL_VALIGN_TOP "div class=\"table-cell-valign-top\""
 
 #define HTML_DIV_TABLE_LEFT "div class=\"table-left\""
 #define HTML_DIV_TABLE_CELL_BORDER "div class=\"table-cell-bordered\""
@@ -969,6 +969,16 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_DIV_TABLE_ROW_END HTML_DIV_END""HTML_COMMENT_BEGIN"row"HTML_COMMENT_END
 #define HTML_DIV_TABLE_CELL_END HTML_DIV_END""HTML_COMMENT_BEGIN"cell"HTML_COMMENT_END
 
+#define HTML_P_BEGIN "<p>"
+#define HTML_P_END "</p>"
+
+#define HTML_P_CENTER "<p "HTML_ALIGN_CENTER">"
+#define HTML_P_CENTER_SMALL "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">"
+
+#define HTML_A_HREF_BEGIN "<a href=" // NOTE: ">" must be used manually
+#define HTML_A_END "</a>"
+
+#define HTML_DIV_BEGIN           "<div>"
 #define HTML_DIV_END             "</div>"
 
 #define HTML_DIV_RED_SMALL       "div class=\"redsmall\""

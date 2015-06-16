@@ -478,6 +478,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 	char vypln[SMALL] = STR_EMPTY;
 	char strden[SMALL] = STR_EMPTY;
 	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
+
 	// pre export medzery pre jednociferné čísla dní zarovnáme nezlomiteľnou medzerou
 	if ((align != NIE) && (den < 10)){
 		mystrcpy(vypln, HTML_NONBREAKING_SPACE, SMALL);
@@ -556,14 +557,20 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
  */
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align){
 	Log("_vytvor_global_link(orig): volám s hodnotou html_class == NULL...\n");
-	_vytvor_global_link(den, mesiac, rok, _case, typ, align, NULL);
+	_vytvor_global_link(den, mesiac, rok, _case, typ, align, NULL, STR_EMPTY);
 	Log("_vytvor_global_link(orig): koniec.\n");
 }
 
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class){
+	Log("_vytvor_global_link(orig): volám s hodnotou html_class == NULL...\n");
+	_vytvor_global_link(den, mesiac, rok, _case, typ, align, html_class, STR_EMPTY);
+	Log("_vytvor_global_link(orig): koniec.\n");
+}
+
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class, const char * nazov_dna = STR_EMPTY){
 	Log("_vytvor_global_link(new): začiatok...\n");
 	Log("den == %d, mesiac == %d, rok == %d...\n", den, mesiac, rok);
-	// 2003-07-09 zmeneny & na HTML_AMPERSAND kvoli HTML 4.01
+
 	char pom[MAX_STR];
 	mystrcpy(pom, STR_EMPTY, MAX_STR);
 
@@ -573,11 +580,17 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 	char str_subor[SMALL] = STR_EMPTY;
 	char str_month[SMALL] = STR_EMPTY;
 
-	// ak pozadujeme vytvorenie linku s inou farbou pre prestupny rok, 2003-07-02
+	short isNewFormat = NIE;
+	if (typ >= LINK_SHIFT){
+		typ -= LINK_SHIFT;
+		isNewFormat = ANO;
+	}
+
+	// ak pozadujeme vytvorenie linku s inou farbou pre prestupny rok // different color of link (overlapping year)
 	if (typ == LINK_DEN_MESIAC_ROK_PRESTUP){
 		mystrcpy(_global_link, "<"HTML_LINK_RED" href=\"", MAX_GLOBAL_LINK);
 	}
-	else{ // inak normalny a href, toto tu bolo predtym; 2003-07-02
+	else{
 		if ((html_class != NULL) && (strlen(html_class) > 0)){
 			sprintf(_global_link, "<"HTML_LINK_CLASS_B"%s"HTML_LINK_CLASS_E" href=\"", html_class);
 		}
@@ -597,17 +610,21 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			strcat(_global_link, pom);
 
 			// deň
-			if (den == VSETKY_DNI)
+			if (den == VSETKY_DNI){
 				sprintf(pom, "%s=%s"HTML_AMPERSAND, STR_DEN, STR_VSETKY_DNI);
-			else
+			}
+			else{
 				sprintf(pom, "%s=%d"HTML_AMPERSAND, STR_DEN, den);
+			}
 			strcat(_global_link, pom);
 
 			// mesiac
-			if (mesiac == VSETKY_MESIACE)
+			if (mesiac == VSETKY_MESIACE){
 				sprintf(pom, "%s=%s"HTML_AMPERSAND, STR_MESIAC, STR_VSETKY_MESIACE);
-			else
+			}
+			else{
 				sprintf(pom, "%s=%d"HTML_AMPERSAND, STR_MESIAC, mesiac);
+			}
 			strcat(_global_link, pom);
 
 			// rok
@@ -635,28 +652,35 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 	else{
 		// najprv podľa typu exportu rozhodneme, či treba predlepiť aj adresár
 		if (typ == LINK_DEN_MESIAC_PREDOSLY || typ == LINK_DEN_MESIAC_NASLEDOVNY){
-			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
+			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
 				sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_SIMPLE""STR_PATH_SEPARATOR_HTML, rok % 100, mesiac, nazov_mes[mesiac - 1]);
-			else // EXPORT_DATE_FULL
+			}
+			else{ // EXPORT_DATE_FULL
 				sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_FULL""STR_PATH_SEPARATOR_HTML, rok, mesiac, nazov_mesiaca_asci(mesiac - 1));
+			}
 		}
 		else{
 			mystrcpy(str_month, STR_EMPTY, SMALL);
 		}
 		Log("str_month == %s\n", str_month);
+
 		// reťazec pre deň a pre názov súboru
 		if (den != VSETKY_DNI){
-			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
+			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
 				sprintf(str_subor, FILENAME_EXPORT_DATE_SIMPLE, rok % 100, mesiac, den);
-			else // EXPORT_DATE_FULL
+			}
+			else{ // EXPORT_DATE_FULL
 				sprintf(str_subor, FILENAME_EXPORT_DATE_FULL, rok, mesiac, den);
+			}
 		}
 		else{
 			// den == VSETKY_DNI
-			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
+			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
 				sprintf(str_subor, FILENAME_EXPORT_MONTH_SIMPLE, rok % 100, mesiac);
-			else // EXPORT_DATE_FULL
+			}
+			else{ // EXPORT_DATE_FULL
 				sprintf(str_subor, FILENAME_EXPORT_MONTH_FULL, rok, mesiac);
+			}
 		}
 		Log("str_subor == %s\n", str_subor);
 		sprintf(pom, "%s%s.htm", str_month, str_subor);
@@ -666,7 +690,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 
 	strcat(_global_link, "\">");
 
-	// printing link
+	// printing link text itself
 	switch (typ){
 	case LINK_DEN_MESIAC_ROK_PRESTUP:
 	case LINK_DEN_MESIAC_PREDOSLY:
@@ -674,8 +698,9 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 	case LINK_DEN_MESIAC_ROK:
 	case LINK_DEN_MESIAC:
 		if (den == VSETKY_DNI){
-			if (mesiac == VSETKY_MESIACE)
-				sprintf(pom, "%d</a>", rok);
+			if (mesiac == VSETKY_MESIACE){
+				sprintf(pom, "%d", rok);
+			}
 			else{
 				if (typ == LINK_DEN_MESIAC_PREDOSLY){
 					sprintf(pom, ""HTML_LEFT_ARROW_WIDE"");
@@ -701,7 +726,6 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 					strcat(_global_link, pom);
 					sprintf(pom, " %d", rok);
 				}
-				strcat(pom, "</a>");
 			}// mesiac != VSETKY_MESIACE
 		}// if(den == VSETKY_DNI)
 		else{
@@ -714,29 +738,35 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			else{
 				strcpy(pom, _vytvor_string_z_datumu(den, mesiac, rok, _case, typ, align));
 			}
-			strcat(pom, "</a>");
 		}// den != VSETKY_DNI
 		break;
 	case LINK_DEN:
-		sprintf(pom, "%d</a>", den);
+		sprintf(pom, "%d", den);
+		if (isNewFormat){
+			strcat(pom, ".");
+			strcat(pom, HTML_NONBREAKING_SPACE);
+			strcat(pom, nazov_dna);
+		}
 		break;
 	case LINK_ISO_8601:
-		sprintf(pom, HTML_ISO_FORMAT"</a>", rok, mesiac, den);
+		sprintf(pom, HTML_ISO_FORMAT, rok, mesiac, den);
 		break;
 	default:
 		switch (_case){
 		case CASE_case:
-			sprintf(pom, "%s</a>", _global_den.meno);
+			sprintf(pom, "%s", _global_den.meno);
 			break;
 		case CASE_Case:
-			sprintf(pom, "%s</a>", _global_den.meno);
+			sprintf(pom, "%s", _global_den.meno);
 			break;
 		case CASE_CASE:
-			sprintf(pom, "%s</a>", caps_BIG(_global_den.meno));
+			sprintf(pom, "%s", caps_BIG(_global_den.meno));
 			break;
 		}// switch(_case)
 		break;
 	}// switch(typ)
+
+	strcat(pom, HTML_A_END); // formerly was in each case
 
 	strcat(_global_link, pom);
 	Log("_vytvor_global_link(new): koniec.\n");
@@ -748,26 +778,32 @@ short int prestupny(short int rok){
 		if ((rok MOD 100) == 0){
 			return ((rok MOD 400) == 0);
 		}
-		else
+		else{
 			return 1;
+		}
 	}
-	else
+	else{
 		return 0;
+	}
 }
 
 short int pocet_dni_v_roku(short int rok){
-	if (prestupny(rok))
+	if (prestupny(rok)){
 		return POCET_DNI_V_ROKU + 1;
-	else
+	}
+	else{
 		return POCET_DNI_V_ROKU;
+	}
 }
 
 // vrati poradove cislo dna v roku, 1.1. == 1, 2.1. == 2, ..., 31.12. == 365/366 | ocakava cislo mesiaca 1-12 (pozn. 2003-07-04)
 short int poradie(short int den, short int mesiac, short int rok){
-	if (mesiac > 2)
+	if (mesiac > 2){
 		return prvy_den[mesiac - 1] + den - 1 + prestupny(rok);
-	else
+	}
+	else{
 		return prvy_den[mesiac - 1] + den - 1;
+	}
 }// poradie()
 
 short int poradie(_struct_den_mesiac den_a_mesiac, short int rok){
@@ -806,13 +842,15 @@ long juliansky_datum(short int por, short int rok){
 	short int r;
 	long jd = 0;
 	if (rok >= ROK_1968){
-		for (r = ROK_1968; r < rok; r++)
+		for (r = ROK_1968; r < rok; r++){
 			jd = jd + pocet_dni_v_roku(r);
+		}
 		return (jd + por + JUL_DATE_0_JAN_1968);
 	}
 	else{
-		for (r = rok; r < ROK_1968; r++)
+		for (r = rok; r < ROK_1968; r++){
 			jd = jd + pocet_dni_v_roku(r);
+		}
 		return (por + JUL_DATE_0_JAN_1968 - jd);
 	}
 }
@@ -917,10 +955,12 @@ char nedelne_pismeno(short int rok){
 // vrati nedelne pismeno v tej casti roka, kde je den.mesiac.
 // to pre prestupny rok znamena, ze pocnuc 1. marcom je druhe nedelne pismeno
 unsigned char _nedelne_pismeno(short int por, short int rok){
-	if ((prestupny(rok)) && (por > poradie(29, MES_FEB + 1, rok)))
+	if ((prestupny(rok)) && (por > poradie(29, MES_FEB + 1, rok))){
 		return (char)((_nedelne_pismeno(rok) + 6) MOD 7);
-	else
+	}
+	else{
 		return _nedelne_pismeno(rok);
+	}
 }
 
 char nedelne_pismeno(short int por, short int rok){
@@ -941,8 +981,7 @@ unsigned char _nedelne_pismeno(short int den, short int mesiac, short int rok){
 
 // vrati nedelne pismeno v spravnej casti roka, ale neberie do uvahy typ modlitby, t.j. ked su (prve) vespery, vrati zly den, pozor na to (prípadne [ToDo] dokončiť)
 unsigned char _nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok){
-	return
-	_nedelne_pismeno(poradie(den_a_mesiac.den, den_a_mesiac.mesiac, rok), rok);
+	return _nedelne_pismeno(poradie(den_a_mesiac.den, den_a_mesiac.mesiac, rok), rok);
 }// _nedelne_pismeno()
 
 char nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok){
@@ -955,10 +994,12 @@ _struct_den_mesiac por_den_mesiac(short int poradie, short int rok){
 	short int d, m;
 	_struct_den_mesiac result;
 
-	if (prestupny(rok))
+	if (prestupny(rok)){
 		pocet_dni[MES_FEB] = 29;
-	else
+	}
+	else{
 		pocet_dni[MES_FEB] = 28;
+	}
 	d = poradie;
 	m = MES_JAN; // január
 	while (d > pocet_dni[m]){
@@ -1006,10 +1047,12 @@ short int vseobecny_cyklus(short int por, short int rok, short int perioda){
 	short int porpan;
 	pan = prva_adventna_nedela(rok);
 	porpan = poradie(pan.den, pan.mesiac, rok);
-	if (por < porpan)
+	if (por < porpan){
 		return ((rok - 1) MOD perioda);
-	else
+	}
+	else{
 		return (rok MOD perioda);
+	}
 }
 
 short int nedelny_cyklus(short int por, short int rok){
@@ -1050,16 +1093,14 @@ _struct_dm por_den_mesiac_dm(short int poradie, short int rok){
 	result.rok = rok;
 	result.denvr = poradie;
 	result.denvt = den_v_tyzdni(poradie, rok);
-	result.litrok = (char)('A' + nedelny_cyklus(pom.den, pom.mesiac, rok)); // (char) pridane 01/03/2000A.D.
-	// dalsia cast pridana kvoli tomu, aby nic nebolo nedefinovane :-) | 27/04/2000A.D.
+	result.litrok = (char)('A' + nedelny_cyklus(pom.den, pom.mesiac, rok));
 	result.tyzden = 0;
 	result.tyzzal = 0;
 	result.litobd = OBD_CEZ_ROK; // nemam neurcene...
 	result.typslav = SLAV_NEURCENE;
 	result.smer = 14; // neurcene
 	result.prik = NIE_JE_PRIKAZANY_SVIATOK;
-	result.spolcast =
-		_encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
+	result.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	mystrcpy(result.meno, STR_EMPTY, MENO_SVIATKU);
 	mystrcpy(result.lc_str_id, STR_EMPTY, MAX_LC_STR_ID);
 	return result;
@@ -1294,11 +1335,12 @@ void analyzuj_rok(short int year){
 	_vn = poradie(vn, year);
 
 	// ci je rok prestupny
-	if (prestupny(year))
+	if (prestupny(year)){
 		_global_r.prestupny = YES;
-	else
+	}
+	else{
 		_global_r.prestupny = NO;
-
+	}
 	// urcime nedele pismena
 	p1 = ((_vn + 5) MOD 7);
 	p2 = (_global_r.prestupny == YES) ?

@@ -1267,13 +1267,13 @@ const char *html_text_ordinarium[POCET_JAZYKOV + 1] = { "ordinárium", "uspořá
 // in the following: you MUST keep all HTML elements, e.g. <a href...>, <br/> etc.
 const char *html_text_dnes_je_atd[POCET_JAZYKOV + 1] =
 {
-	"Dnes je %d. deň v roku%s, <a href=\"%s%s\">juliánsky dátum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
-	"Dnes je %d. den v roku%s, <a href=\"%s%s\">juliánské datum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
-	"Today is %d. day in the year%s, <a href=\"%s%s\">Julian date</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
-	"Hodie est %d. die anno %s, <a href=\"%s%s\">Iulianus datum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
-	"%d/%s<a href=\"%s%s\">JD</a> = %ld%s.\n"HTML_LINE_BREAK"\n",
-	"Dnes je %d. den v roku%s, <a href=\"%s%s\">juliánské datum</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
-	"Ma %s %d. napja van, <a href=\"%s%s\">Julián naptár</a> JD = %ld%s.\n"HTML_LINE_BREAK"\n",
+	"Dnes je %d. deň v roku%s, "HTML_A_HREF_BEGIN"\"%s%s\">juliánsky dátum"HTML_A_END" JD = %ld%s.\n"HTML_LINE_BREAK"\n",
+	"Dnes je %d. den v roku%s, "HTML_A_HREF_BEGIN"\"%s%s\">juliánské datum"HTML_A_END" JD = %ld%s.\n"HTML_LINE_BREAK"\n",
+	"Today is %d. day in the year%s, "HTML_A_HREF_BEGIN"\"%s%s\">Julian date"HTML_A_END" JD = %ld%s.\n"HTML_LINE_BREAK"\n",
+	"Hodie est %d. die anno %s, "HTML_A_HREF_BEGIN"\"%s%s\">Iulianus datum"HTML_A_END" JD = %ld%s.\n"HTML_LINE_BREAK"\n",
+	"%d/%s"HTML_A_HREF_BEGIN"\"%s%s\">JD"HTML_A_END" = %ld%s.\n"HTML_LINE_BREAK"\n",
+	"Dnes je %d. den v roku%s, "HTML_A_HREF_BEGIN"\"%s%s\">juliánské datum"HTML_A_END" JD = %ld%s.\n"HTML_LINE_BREAK"\n",
+	"Ma %s %d. napja van, "HTML_A_HREF_BEGIN"\"%s%s\">Julián naptár"HTML_A_END" JD = %ld%s.\n"HTML_LINE_BREAK"\n",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -1355,12 +1355,12 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 	/* STRING_2_FOR_NEW_LANGUAGE */
 },
 {
-	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"pred"HTML_LINE_BREAK"PO</a>",
-	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"před"HTML_LINE_BREAK"postem</a>", 
+	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"pred"HTML_LINE_BREAK"PO"HTML_A_END,
+	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"před"HTML_LINE_BREAK"postem"HTML_A_END,
 	"...",
 	"PA fest.",
 	"",
-	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"před"HTML_LINE_BREAK"postem</a>",
+	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"před"HTML_LINE_BREAK"postem"HTML_A_END,
 	"EK"HTML_LINE_BREAK"a HSZ"HTML_LINE_BREAK"előtt",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -1410,12 +1410,12 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 	/* STRING_2_FOR_NEW_LANGUAGE */
 },
 {
-	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a>",
-	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a>", 
+	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN"HTML_A_END,
+	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN"HTML_A_END,
 	"...",
 	"...",
 	"",
-	"<a href=\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN</a>",
+	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN"HTML_A_END,
 	"EK"HTML_LINE_BREAK"a HU"HTML_LINE_BREAK"után",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -1448,13 +1448,13 @@ const char *html_text_Nedelne_pismeno[POCET_JAZYKOV + 1] = { "Nedeľné písmeno
 const char *html_text_Nedelne_pismena[POCET_JAZYKOV + 1] = { "Nedeľné písmená", "Nedělní písmena", "Sunday letters", "", "", "Nedělní písmena", "A vasárnap betűje", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char *html_text_Od_prvej_adv_atd[POCET_JAZYKOV + 1] = {
-	"Od prvej adventnej nedele v roku %d (%s) pokračuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
-	"Od první neděle adventní v roku %d (%s) pokračuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
-	"From the 1st Advent Sunday in the year %d (%s) continues <a href=\"%s%s\">liturgical year</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
-	"Od prvej adventnej nedele v roku %d (%s) pokračuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"Od prvej adventnej nedele v roku %d (%s) pokračuje "HTML_A_HREF_BEGIN"\"%s%s\">liturgický rok"HTML_A_END" <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"Od první neděle adventní v roku %d (%s) pokračuje "HTML_A_HREF_BEGIN"\"%s%s\">liturgický rok"HTML_A_END" <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"From the 1st Advent Sunday in the year %d (%s) continues "HTML_A_HREF_BEGIN"\"%s%s\">liturgical year"HTML_A_END" <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"Od prvej adventnej nedele v roku %d (%s) pokračuje "HTML_A_HREF_BEGIN"\"%s%s\">liturgický rok"HTML_A_END" <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
 	"",
-	"Od první neděle adventní v roce %d (%s) pokračuje <a href=\"%s%s\">liturgický rok</a> <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
-	"%d (%s) advent első vasárnapjától az <"HTML_SPAN_BOLD">%c"HTML_SPAN_END" <a href=\"%s%s\">liturgikus év</a> folytatódik.",
+	"Od první neděle adventní v roce %d (%s) pokračuje "HTML_A_HREF_BEGIN"\"%s%s\">liturgický rok"HTML_A_END" <"HTML_SPAN_BOLD">%c"HTML_SPAN_END".",
+	"%d (%s) advent első vasárnapjától az <"HTML_SPAN_BOLD">%c"HTML_SPAN_END" "HTML_A_HREF_BEGIN"\"%s%s\">liturgikus év"HTML_A_END" folytatódik.",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3361,13 +3361,13 @@ const char *html_text_kalendar_miestny_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_detaily_explain[POCET_JAZYKOV + 1] =
 {
-	"Ostatné nastavenia sa použijú z predchádzajúcej (hlavnej) stránky. <p>Pokiaľ sú niektoré parametre pre vybranú modlitbu nepoužiteľné, neberú sa do úvahy (môžu byť teda nastavené ľubovoľne).",
+	"Ostatné nastavenia sa použijú z predchádzajúcej (hlavnej) stránky. "HTML_P_BEGIN"Pokiaľ sú niektoré parametre pre vybranú modlitbu nepoužiteľné, neberú sa do úvahy (môžu byť teda nastavené ľubovoľne).",
 	"Když jsou některé výše uvedené volby nepoužitelné pro nějakou modlitbu, neberou se v úvahu (mohou být nastaveny dle libovůle).",
 	"If any of described options are not applicable for a chosen prayer, they can be set anyhow.",
 	"",
 	"",
 	"Když jsou některé výše uvedené volby nepoužitelné pro nějakou modlitbu, neberou se v úvahu (mohou být nastaveny dle libovůle).",
-	"A többi beállítási lehetőség a főoldalon található. <p>Amennyiben valamelyik kiválasztott paraméter nem működik, figyelmen kívül kell hagyni (vagyis tetszőlegesen állíthatók).",
+	"A többi beállítási lehetőség a főoldalon található. "HTML_P_BEGIN"Amennyiben valamelyik kiválasztott paraméter nem működik, figyelmen kívül kell hagyni (vagyis tetszőlegesen állíthatók).",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3375,13 +3375,13 @@ const char *html_text_detaily_explain[POCET_JAZYKOV + 1] =
 // descriptive text for Invitatory prayer
 const char *html_text_inv_slavaotcu[POCET_JAZYKOV + 1] =
 {
-	"<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
-	"<p><"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END,
-	"<p><"HTML_SPAN_RED_SMALL">Follows"HTML_SPAN_END" <span class=\"small\">Glory..."HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
-	"<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Gloria Patri"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
-	"<p><"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
-	"<p><"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END,
-	"<p><"HTML_SPAN_RED_SMALL">Következik a"HTML_SPAN_END" <span class=\"small\">Dicsőség az Atyának"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">és megismételjük az antifónát."HTML_SPAN_END,
+	"<"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
+	"<"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END,
+	"<"HTML_SPAN_RED_SMALL">Follows"HTML_SPAN_END" <span class=\"small\">Glory..."HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
+	"<"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Gloria Patri"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
+	"<"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
+	"<"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END,
+	"<"HTML_SPAN_RED_SMALL">Következik a"HTML_SPAN_END" <span class=\"small\">Dicsőség az Atyának"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">és megismételjük az antifónát."HTML_SPAN_END,
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

@@ -36,9 +36,11 @@ const char *html_header_1 =
 // Android KitKat nevie javascriptom zalamovat text, ak je specifikovany tento doctype.
 #ifndef MODEL_android
 //    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n"
-	"<!DOCTYPE html>\n"
+//	"<!DOCTYPE html>\n"
+    "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n\t\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
 #endif
-    "<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj Videky\">\n";
+//    "<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj Videky\">\n";
+    "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\" />\n\t<meta name=\"Author\" content=\"Juraj Videky\" />\n";
 const char *html_header_css = "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
 const char *html_footer_1 = STR_EMPTY; // "<p><center>______</center>"; // "<hr>";
 
@@ -84,7 +86,7 @@ void _header_css(FILE* expt, short int level, const char* nazov_css_suboru) {
 	Q_UNUSED(level);
 	Export_to_file(expt, "/");
 #endif
-	Export_to_file(expt, "%s\">\n", nazov_css_suboru);
+	Export_to_file(expt, "%s\" />\n", nazov_css_suboru);
 }
 
 // exportuje buttony pre predchádzajúcu a nasledujúcu modlitbu | bolo v _hlavicka() aj _patka()
@@ -93,7 +95,7 @@ void _buttons_prev_up_next(FILE * expt){
 	_local_modlitba_prev = modlitba_predchadzajuca(_local_modlitba, (isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_EXCLUDE_MCD_KOMPLET)));
 	_local_modlitba_next = modlitba_nasledujuca(_local_modlitba, (isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_EXCLUDE_MCD_KOMPLET)));
 
-	Export_to_file(expt, "\n<center>");
+	Export_to_file(expt, "\n<div class=\"nav\">");
 	pismeno_modlitby = CHAR_MODL_NEURCENA;
 	if ((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)){
 		if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)){
@@ -105,7 +107,7 @@ void _buttons_prev_up_next(FILE * expt){
 	}
 	sprintf(ext, "%c", pismeno_modlitby);
 	strcat(ext, ".htm");
-	Export_to_file(expt, HTML_NEW_PARAGRAPH);
+	Export_to_file(expt, HTML_P_BEGIN);
 	// << prev
 	mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
 	ptr = strstr(file_name_pom, ext);
@@ -119,24 +121,22 @@ void _buttons_prev_up_next(FILE * expt){
 			}
 			strncpy(ptr, pismeno_prev, 1);
 		}
-		Export_to_file(expt, "<a href=\"%s\"%s>", file_name_pom, optional_html_class_button);
+		Export_to_file(expt, HTML_A_HREF_BEGIN"\"%s\"%s>", file_name_pom, optional_html_class_button);
 		Export_to_file(expt, optional_html_button_begin);
 		Export_to_file(expt, (char *)html_text_batch_Prev[_global_jazyk]);
 		Export_to_file(expt, " ");
 		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_prev));
 		Export_to_file(expt, optional_html_button_end);
-		Export_to_file(expt, "</a>");
+		Export_to_file(expt, HTML_A_END);
+		// |
+		Export_to_file(expt, " | ");
 	}
-	// |
-	Export_to_file(expt, " | ");
 	// ^ hore
-	Export_to_file(expt, "<a href=\".%s%s\"%s>", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore, optional_html_class_button); // v tom istom adresári
+	Export_to_file(expt, HTML_A_HREF_BEGIN"\".%s%s\"%s>", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore, optional_html_class_button); // v tom istom adresári
 	Export_to_file(expt, optional_html_button_begin);
 	Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
 	Export_to_file(expt, optional_html_button_end);
-	Export_to_file(expt, "</a>");
-	// |
-	Export_to_file(expt, " | ");
+	Export_to_file(expt, HTML_A_END);
 	// >> next
 	mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
 	ptr = strstr(file_name_pom, ext);
@@ -150,16 +150,18 @@ void _buttons_prev_up_next(FILE * expt){
 			}
 			strncpy(ptr, pismeno_next, 1);
 		}
-		Export_to_file(expt, "<a href=\"%s\"%s>", file_name_pom, optional_html_class_button);
+		// |
+		Export_to_file(expt, " | ");
+		Export_to_file(expt, HTML_A_HREF_BEGIN"\"%s\"%s>", file_name_pom, optional_html_class_button);
 		Export_to_file(expt, optional_html_button_begin);
 		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_next));
 		Export_to_file(expt, " ");
 		Export_to_file(expt, (char *)html_text_batch_Next[_global_jazyk]);
 		Export_to_file(expt, optional_html_button_end);
-		Export_to_file(expt, "</a>");
+		Export_to_file(expt, HTML_A_END);
 	}
-	Export_to_file(expt, "</p>");
-	Export_to_file(expt, "</center>\n");
+	Export_to_file(expt, HTML_P_END);
+	Export_to_file(expt, HTML_DIV_END"\n");
 }
 
 // exportuje hlavicku HTML dokumentu, kam pojde vysledok query
@@ -287,7 +289,11 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}
 	Export_to_file(expt, ">\n");
 
-	Export_to_file(expt, HTML_ANAME_TOP"\n");
+	#ifdef BEHAVIOUR_WEB
+		Export_to_file(expt, HTML_ANAME_TOP"\n");
+	#else
+		Export_to_file(expt, HTML_DIV_BEGIN"\n");
+	#endif
 
 	// 2010-02-15: doplnené predošlá a nasledovná modlitba
 	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
@@ -428,17 +434,23 @@ void _patka(FILE * expt){
 
 #endif
 
-	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" target=\"_top\">%s</a>\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
+	#ifndef BEHAVIOUR_CMDLINE
+	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" target=\"_top\">%s"HTML_A_END"\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
+	#endif
 
 	Log("cfg_mail_address_default[%s] == %s\n", cfg_mail_address_default[_global_jazyk], skratka_jazyka[_global_jazyk]);
 	mystrcpy(mail_addr, cfg_mail_address_default[_global_jazyk], MAX_MAIL_STR);
 
 	Log("mail_addr == %s\n", mail_addr);
-	Export_to_file(expt, "&#169; %d%s <"HTML_LINK_NORMAL" href=\"mailto:%s\">%s</a>\n", baserok, rok, mail_addr, html_mail_label);
+	Export_to_file(expt, "&#169; %d%s <"HTML_LINK_NORMAL" href=\"mailto:%s\">%s"HTML_A_END"\n", baserok, rok, mail_addr, html_mail_label);
 
-	Export_to_file(expt, "</p>\n"); // pridane kvoli tomu, ze cele to bude <p class="patka">, 2003-07-02
+	Export_to_file(expt, HTML_P_END"\n");
 
-	Export_to_file(expt, HTML_ANAME_BOTTOM"\n");
+	#ifdef BEHAVIOUR_WEB
+		Export_to_file(expt, HTML_ANAME_BOTTOM"\n");
+	#else
+		Export_to_file(expt, HTML_DIV_END"\n");
+	#endif
 
 	Export_to_file(expt, "</body>\n</html>\n");
 	Log("_patka() -- koniec.\n");

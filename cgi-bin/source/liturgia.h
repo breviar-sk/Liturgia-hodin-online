@@ -532,11 +532,11 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_REFERENCIA_BEGIN				"r"
 #define PARAM_REFERENCIA_END				"/r"
 
-// 2011-09-01: odkaz na katechézy (pôvodne v HTML zdrojákoch bola subscript hviezdička za nadpisom)
+// 2011-09-01: odkaz na katechézy
 #define PARAM_KATECHEZA_BEGIN				"k"
 #define PARAM_KATECHEZA_END					"/k"
 
-// 2011-09-06: odkaz na žalm 95 (pôvodne v HTML zdrojákoch pre žalmy 24, 67, 100 bol natvrdo <a href> odkaz)
+// 2011-09-06: odkaz na žalm 95
 #define PARAM_LINK_ZALM95_BEGIN				"z95"
 #define PARAM_LINK_ZALM95_END				"/z95"
 
@@ -1131,18 +1131,20 @@ struct lrok{
 };
 typedef struct lrok _struct_lrok;
 
-#define LINK_DEN_MESIAC_NIE 0 // 2008-01-22: pridané, Vlado Kiš upozornil, že je to zbytočné
+#define LINK_DEN_MESIAC_NIE 0
 #define LINK_DEN_MESIAC_ROK 1
 #define LINK_DEN_MESIAC 3
 #define LINK_DEN 2
-#define LINK_DEN_MESIAC_ROK_PRESTUP 4 // pridana kvoli prestupnym rokom, 2003-07-02
-#define LINK_ISO_8601 5 // pridana kvoli SIMPLE exportu, 2005-03-21
-#define LINK_DEN_MESIAC_PREDOSLY 6 // 2007-08-15 pridané kvôli novému kalendáru
-#define LINK_DEN_MESIAC_NASLEDOVNY 7 // 2007-08-15 pridané kvôli novému kalendáru
-#define LINK_DEN_MESIAC_GEN 8 // 2011-12-19: to isté ako LINK_DEN_MESIAC, len mesiac je v genitíve
+#define LINK_DEN_MESIAC_ROK_PRESTUP 4
+#define LINK_ISO_8601 5 // pridana kvoli SIMPLE exportu
+#define LINK_DEN_MESIAC_PREDOSLY 6
+#define LINK_DEN_MESIAC_NASLEDOVNY 7
+#define LINK_DEN_MESIAC_GEN 8 // the same as LINK_DEN_MESIAC but the month name is in genitive form
+
+#define LINK_SHIFT 50 // shift added to base LINK constant
 
 //---------------------------------------------------------------------
-// globalne premenne -- su definovane v dnes.cpp (18/02/2000A.D.)
+// global variables
 
 // globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
 extern _struct_dm *_global_den_ptr;
@@ -1375,12 +1377,14 @@ char *convert_nonbreaking_spaces(const char *input);
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
 // podľa toho, ako sa funkcia volá, určím case (použitie veľkých/malých písmen)
 #define vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align)
+#define vytvor_global_link_class_new(den, mesiac, rok, typ, align, html_class, nazov_dna)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ + LINK_SHIFT, align, html_class, nazov_dna)
 #define vytvor_global_link_class(den, mesiac, rok, typ, align, html_class)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align, html_class)
 #define Vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_Case, typ, align)
 #define VYTVOR_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_CASE, typ, align)
 // 2011-05-11: doplnený nový parameter align -- či zarovnať jednociferné dátumy (číslovka dňa) medzerou zľava
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class);
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class, const char * nazov_dna);
 
 #define PRILEP_REQUEST_OPTIONS_DEFAULT   0
 #define PRILEP_REQUEST_OPTIONS_AJ_FORCE  1

@@ -90,6 +90,22 @@ div.hymn, div.responsory, div.readings {
 	font-weight: bold;
 }
 
+div.daily p {
+	text-align: center;
+}
+
+div.nav p {
+	text-align: center;
+}
+
+div.navd p {
+	text-align: center;
+}
+
+div.navm p {
+	text-align: center;
+}
+
 /* 2014-12-02 for HU */
 div.responsory {
 	margin: 1em 0;
@@ -97,7 +113,7 @@ div.responsory {
 
 /* 2013-09-19 class for calendar */
 .calendar { 
-	padding: 4px 4px 4px 0; 
+	padding: 2px; 
 }
 
 .calendar.heading { 
@@ -108,7 +124,6 @@ div.responsory {
 	/* display: inline; */
 	font-weight: bold; 
 	min-width: 22px; 
-	padding: 4px 4px 0px 0; 
 }
 
 .calendar.day_name { 
@@ -119,7 +134,6 @@ div.responsory {
 	display: block; 
 	font-style: italic; 
 	min-width: 22px; 
-	padding: 4px 4px 0px 0; 
 }
 
 .calendar.day { 
@@ -344,10 +358,10 @@ div.responsory {
 	height: 1px; 
 }
 
-div.biblereference { 
-	color: #ff0000; 
+p.bibleref {
+	color: #ff0000;
 	font-weight: normal;
-	text-align: right; 
+	text-align: right;
 }
 
 .daytime-praise .time { 
@@ -379,6 +393,10 @@ div.biblereference {
 	float: left; 
 	height: 1em; 
 	width: 15px; 
+}
+
+.center {
+	text-align: center;
 }
 
 /* apply to all elements, used for <span> (character style) and <div> (paragraph style), 2005-07-27 */
@@ -743,18 +761,22 @@ li {
 
 h1 { 
 	font-size: 180%; 
+	text-align: center;
 }
 
 h2 { 
 	font-size: 150%; 
+	text-align: center;
 }
 
 h3 { 
 	font-size: 100%; 
+	text-align: center;
 }
 
 h4 { 
 	font-size: 100%; 
+	text-align: center;
 }
 
 sup { 
@@ -800,6 +822,14 @@ sup {
 	display: table-cell;
 	margin: 0 auto;
 	padding: 1px; /* all four paddings */
+}
+
+.table-cell-valign-top
+{
+	display: table-cell;
+	margin: 0 auto;
+	padding: 1px; /* all four paddings */
+	vertical-align: top;
 }
 
 .table-cell-bordered {
