@@ -3305,10 +3305,10 @@ const char *html_text_font_size_explain[POCET_JAZYKOV + 1] =
 };
 
 // HTML option selected
-const char *html_option_selected = " selected";
+const char *html_option_selected = " selected=\"selected\"";
 
 // HTML option checked (pre checkboxy)
-const char *html_option_checked = " checked";
+const char *html_option_checked = " checked=\"checked\"";
 
 const char *html_text_kalendar[POCET_JAZYKOV + 1] =
 {

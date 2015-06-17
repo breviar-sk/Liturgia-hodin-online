@@ -938,6 +938,8 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_FORM_INPUT_RESET2   "input type=\"reset\" class=\"reset2\""
 #define HTML_FORM_INPUT_HIDDEN   "input type=\"hidden\""
 
+#define HTML_EMPTY_TAG_END " />"
+
 #define HTML_FORM_METHOD_GET     "<form action=\"%s\" method=\"get\">\n"
 #define HTML_FORM_METHOD_POST    "<form action=\"%s\" method=\"post\">\n"
 
@@ -945,6 +947,9 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_LINK_NORMAL "a"
 #define HTML_LINK_CLASS_B "a class=\""
 #define HTML_LINK_CLASS_E "\""
+
+#define HTML_TARGET_BLANK " target=\"_blank\" "
+#define HTML_TARGET_TOP " target=\"_top\" "
 
 #define HTML_NONBREAKING_SPACE "&nbsp;"
 #define HTML_SPACE " "
@@ -975,7 +980,8 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_P_CENTER "<p "HTML_ALIGN_CENTER">"
 #define HTML_P_CENTER_SMALL "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">"
 
-#define HTML_A_HREF_BEGIN "<a href=" // NOTE: ">" must be used manually
+#define HTML_A_HREF_BEGIN "<a href="
+#define HTML_A_NAME_BEGIN "<a name="
 #define HTML_A_END "</a>"
 
 #define HTML_DIV_BEGIN           "<div>"

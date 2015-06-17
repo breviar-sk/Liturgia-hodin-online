@@ -435,7 +435,7 @@ void _patka(FILE * expt){
 #endif
 
 	#ifndef BEHAVIOUR_CMDLINE
-	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" target=\"_top\">%s"HTML_A_END"\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
+	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" "HTML_TARGET_TOP">%s"HTML_A_END"\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
 	#endif
 
 	Log("cfg_mail_address_default[%s] == %s\n", cfg_mail_address_default[_global_jazyk], skratka_jazyka[_global_jazyk]);
