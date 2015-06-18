@@ -1243,8 +1243,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	Export("(anchor `%s')", modlparam);
 #endif
 
-	if ((_global_skip_in_prayer == ANO) || (_global_skip_in_prayer_vnpc == ANO)){
-		Log("--includeFile(): end (because _global_skip_in_prayer || _global_skip_in_prayer_vnpc == ANO)\n");
+	if ((_global_skip_in_prayer >= ANO) || (_global_skip_in_prayer_vnpc == ANO)){
+		Log("--includeFile(): end (because _global_skip_in_prayer >= ANO || _global_skip_in_prayer_vnpc == ANO)\n");
 		return;
 	}
 
@@ -1391,7 +1391,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					mystrcpy(anchor, STR_EMPTY, SMALL);
 
 					short int podmienka = (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)); // len ak je táto možnosť (zobrazovanie všeličoho) zvolená
-					podmienka &= (_global_skip_in_prayer != ANO);
+					podmienka &= (_global_skip_in_prayer == NIE);
 
 					if (equals(strbuff, PARAM_DOPLNK_PSALM_122_129)){
 						podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)); // len ak je táto možnosť (zobrazovanie alternatívy) zvolená
@@ -2086,8 +2086,6 @@ void init_ordinarium_file(_struct_anchor_and_file &af, short int modlitba){
 void interpretParameter(short int type, char *paramname, short int aj_navigacia = ANO){
 	char path[MAX_STR] = STR_EMPTY;
 	mystrcpy(path, include_dir, MAX_STR);
-	// 2004-03-17 // strcat(path, FILE_PATH); // prerobene 05/06/2000A.D.
-	// short int _local_skip_in_prayer = _global_skip_in_prayer; // 2011-04-07: zapamätáme si pôvodný stav
 
 	short int zobrazit = NIE;
 	_struct_sc sc;
@@ -2095,7 +2093,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	Log("interpretParameter(%s): Dumping by %s\n", paramname, paramname);
 
 	if (equals(paramname, PARAM_CISLO_VERSA_BEGIN)){
-		if (_global_skip_in_prayer != ANO){
+		if (_global_skip_in_prayer == NIE){
 			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
 				Export("<sup>");
 			}
@@ -2107,7 +2105,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}// skip in prayer
 	}// zobraziť/nezobraziť číslovanie veršov
 	else if (equals(paramname, PARAM_CISLO_VERSA_END)){
-		if (_global_skip_in_prayer != ANO){
+		if (_global_skip_in_prayer == NIE){
 			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
 				Export("</sup>");
 			}
@@ -2176,7 +2174,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}
 	else if (equals(paramname, PARAM_ALELUJA_ALELUJA_BEGIN)){
-		if (_global_skip_in_prayer == ANO){
+		if (_global_skip_in_prayer >= ANO){
 			// ak zakoncenie preskakujem, tak musim sa tvarit, ze nic
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("{AAB:skip}");
@@ -2198,7 +2196,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}
 	else if (equals(paramname, PARAM_ALELUJA_ALELUJA_END)){
-		if (_global_skip_in_prayer == ANO){
+		if (_global_skip_in_prayer >= ANO){
 			// ak zakoncenie preskakujem, tak musim sa tvarit, ze nic
 			// preto otvorim poznamku, ktora sa zacala
 #if defined(EXPORT_HTML_SPECIALS)
@@ -2232,7 +2230,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovat Otcenas
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nezobraziť Otčenáš");
 #endif
@@ -2250,7 +2248,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovat Otcenas
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `Otcenas' skipped.\n");
 		}
 	}
@@ -2265,7 +2263,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovat chvalospev
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nezobraziť chválospev");
 #endif
@@ -2282,7 +2280,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovat chvalospev
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `chvalospev' skipped.\n");
 		}
 	}
@@ -2291,7 +2289,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	else if (equals(paramname, PARAM_TEDEUM_BEGIN)){
 		Log("_global_opt[OPT_1_CASTI_MODLITBY == %d] == %d\n", OPT_1_CASTI_MODLITBY, _global_opt[OPT_1_CASTI_MODLITBY]);
 
-		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer != ANO)){
+		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE)){
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("zobraziť Te Deum");
 #endif
@@ -2299,7 +2297,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovať Te Deum, hoci daná modlitba ho má -- vtedy len nadpis
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nezobraziť Te Deum");
 #endif
@@ -2307,7 +2305,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}// if(equals(paramname, PARAM_TEDEUM_BEGIN))
 	else if (equals(paramname, PARAM_TEDEUM_END)){
-		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer != ANO)){
+		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE)){
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("zobraziť Te Deum");
 #endif
@@ -2316,7 +2314,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		else{
 			// nezobrazovať Te Deum [či už preto, že nemá byť, alebo preto, lebo ho používateľ nechcel]
 			if (_global_opt_tedeum == ANO){
-				_global_skip_in_prayer = NIE; // nesmie tu byť, ak tedeum nemá byť; až PARAM_JE_TEDEUM_END to (v takom prípade) nastaví na NIE
+				_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE; // nesmie tu byť, ak tedeum nemá byť; až PARAM_JE_TEDEUM_END to (v takom prípade) nastaví na NIE
 			}
 			Log("  `Te Deum' skipped.\n");
 		}
@@ -2326,7 +2324,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	else if (equals(paramname, PARAM_JE_TEDEUM_BEGIN)){
 		if (_global_opt_tedeum == NIE){
 			// nezobrazovat Te Deum
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nemá byť Te Deum");
 #endif
@@ -2342,7 +2340,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	else if (equals(paramname, PARAM_JE_TEDEUM_END)){
 		if (_global_opt_tedeum == NIE){
 			// nezobrazovat Te Deum
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `Te Deum' heading skipped.\n");
 		}
 		else{
@@ -2359,7 +2357,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		// 2013-02-28: nechápem, prečo tu bola podmienka aj na Te Deum, ktoré napr. v Pôstnom období nie je, hoci je tam predĺžené slávenie vigílie
 		if ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)) || !(je_vigilia)){
 			// nezobrazovať vigíliu
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nemá byť vigília");
 #endif
@@ -2376,7 +2374,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		_global_som_vo_vigilii = NIE;
 		if ((_global_opt_tedeum == NIE) || (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)) || !(je_vigilia)){
 			// nezobrazovať vigíliu
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `vigília' heading skipped.\n");
 		}
 		else{
@@ -2390,7 +2388,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	else if (equals(paramname, PARAM_ZAKONCENIE_BEGIN)){
 		if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
 			// nezobrazit zakoncenie
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nezobraziť zakončenie");
 #endif
@@ -2407,7 +2405,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	else if (equals(paramname, PARAM_ZAKONCENIE_END)){
 		if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
 			// nezobrazit zakoncenie
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `zakoncenie' skipped.\n");
 		}
 		else{
@@ -2424,7 +2422,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		Log("interpretParameter(): _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_prve_kompletorium.pocet_zalmov);
 		if (_global_pocet_zalmov_kompletorium == 1){
 			// nezobrazovať druhý žalm/antifónu pre kompletórium, ktoré má len 1 žalm+antifónu
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("(beg)nezobrazovať druhý žalm/ant. pre komplet., ktoré má len 1 ž.+ant.");
 #endif
@@ -2440,7 +2438,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	else if (equals(paramname, PARAM_KOMPLETORIUM_DVA_ZALMY_END)){
 		if (_global_pocet_zalmov_kompletorium == 1){
 			// nezobrazovať druhý žalm/antifónu pre kompletórium, ktoré má len 1 žalm+antifónu
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `2. žalm+antifóna v kompletóriu' skipped.\n");
 		}
 		else{
@@ -2464,7 +2462,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovať rubriky
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nezobraziť rubriku");
 #endif
@@ -2481,7 +2479,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovať rubriky
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `rubrika' skipped.\n");
 		}
 	}
@@ -2542,7 +2540,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovat Slava Otcu
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nezobraziť Sláva Otcu (%d)", _global_pocet_slava_otcu);
 #endif
@@ -2569,7 +2567,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovat Slava Otcu
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `Slava Otcu' (%d) skipped.\n", _global_pocet_slava_otcu);
 		}
 	}
@@ -2589,7 +2587,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			}
 			else{
 				// nezobraziť alternatívny hymnus 34. týždňa OCR
-				_global_skip_in_prayer = ANO;
+				_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 				Export("nezobraziť alternatívny hymnus 34. týždňa OCR");
 #endif
@@ -2612,7 +2610,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			}
 			else{
 				// nezobraziť alternatívny hymnus 34. týždňa OCR
-				_global_skip_in_prayer = NIE;
+				_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 				Log("NIE JE 34.týždeň OCR... END\n");
 			}
 		}// pre iné ako CZ a pre CZ mimo 34. OCR kde má vlastný hymnus 
@@ -2633,7 +2631,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovat nazvy antifon
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nezobraziť ant.");
 #endif
@@ -2651,7 +2649,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobrazovat nazvy antifon
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `Ant.' skipped.\n");
 		}
 	}
@@ -2668,7 +2666,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// zobrazovat nazvy antifon
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nezobraziť ant.");
 #endif
@@ -2686,7 +2684,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// zobrazovat nazvy antifon
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `Ant.' skipped.\n");
 		}
 	}
@@ -2704,7 +2702,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobraziť antifónu/modlitbu na spomienky svätcov, ktoré padnú na privilegované dni (VSLH č. 238-239)
-			_global_skip_in_prayer = ANO;
+			_global_skip_in_prayer += ANO; // increment
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("nezobraziť spom.privileg.");
 #endif
@@ -2722,7 +2720,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else{
 			// nezobraziť antifónu/modlitbu na spomienky svätcov, ktoré padnú na privilegované dni (VSLH č. 238-239)
-			_global_skip_in_prayer = NIE;
+			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
 			Log("  `spom.privileg.' skipped.\n");
 		}
 	}
@@ -2827,7 +2825,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		mystrcpy(anchor, paramname, SMALL);
 
 		short int podmienka = (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI));
-		podmienka &= (_global_skip_in_prayer != ANO);
+		podmienka &= (_global_skip_in_prayer == NIE);
 
 		if (equals(paramname, PARAM_OTCENAS)){
 			bit = BIT_OPT_1_OTCENAS;
@@ -3345,7 +3343,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		case MODL_KOMPLETORIUM:
 			// 2008-04-03: pridaná podmienka, aby sa preskakovalo v modlitbe kompletória pre veľkonočné obdobie - vnorená kotva
 			Log("interpretParameter(): _global_modl_kompletorium.pocet_zalmov == %d...\n", _global_modl_kompletorium.pocet_zalmov);
-			if ((_global_modl_kompletorium.pocet_zalmov == 2) && (_global_skip_in_prayer != ANO)){
+			if ((_global_modl_kompletorium.pocet_zalmov == 2) && (_global_skip_in_prayer == NIE)){
 				strcat(path, _global_modl_kompletorium.antifona2.file);
 				includeFile(type, paramname, path, _global_modl_kompletorium.antifona2.anchor);
 			}
@@ -3357,7 +3355,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		case MODL_PRVE_KOMPLETORIUM:
 			// 2008-04-03: pridaná podmienka, aby sa preskakovalo v modlitbe kompletória pre veľkonočné obdobie - vnorená kotva
 			Log("interpretParameter(): _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_prve_kompletorium.pocet_zalmov);
-			if ((_global_modl_prve_kompletorium.pocet_zalmov == 2) && (_global_skip_in_prayer != ANO)){
+			if ((_global_modl_prve_kompletorium.pocet_zalmov == 2) && (_global_skip_in_prayer == NIE)){
 				strcat(path, _global_modl_prve_kompletorium.antifona2.file);
 				includeFile(type, paramname, path, _global_modl_prve_kompletorium.antifona2.anchor);
 			}
@@ -3705,8 +3703,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}// PARAM_CITANIE2
 	else if(equals(paramname, PARAM_MAGNIFIKAT)){
-		// ak _global_skip_in_prayer je ANO, tak preskoc Magnifikat
-		if(((type == MODL_VESPERY) || (type == MODL_PRVE_VESPERY)) && (_global_skip_in_prayer != ANO)){
+		// ak _global_skip_in_prayer je >= ANO, tak preskoc Magnifikat
+		if (((type == MODL_VESPERY) || (type == MODL_PRVE_VESPERY)) && (_global_skip_in_prayer == NIE)){
 			if(type == MODL_VESPERY){
 				strcat(path, _global_modl_vespery.magnifikat.file);
 				includeFile(type, paramname, path, _global_modl_vespery.magnifikat.anchor);
@@ -3748,8 +3746,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}// PARAM_VCHVALOSPEV
 	else if(equals(paramname, PARAM_BENEDIKTUS)){
-		// ak _global_skip_in_prayer je ANO, tak preskoc Benediktus
-		if((type == MODL_RANNE_CHVALY) && (_global_skip_in_prayer != ANO)){
+		// ak _global_skip_in_prayer je >= ANO, tak preskoc Benediktus
+		if ((type == MODL_RANNE_CHVALY) && (_global_skip_in_prayer == NIE)){
 			strcat(path, _global_modl_ranne_chvaly.benediktus.file);
 			includeFile(type, paramname, path, _global_modl_ranne_chvaly.benediktus.anchor);
 		}
@@ -3777,7 +3775,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}// PARAM_RCHVALOSPEV
 	else if(equals(paramname, PARAM_NUNC_DIMITTIS)){
-		if((je_kompletorium12(type)) && (_global_skip_in_prayer != ANO)){
+		if ((je_kompletorium12(type)) && (_global_skip_in_prayer == NIE)){
 			if(type == MODL_KOMPLETORIUM){
 				strcat(path, _global_modl_kompletorium.nunc_dimittis.file);
 				includeFile(type, paramname, path, _global_modl_kompletorium.nunc_dimittis.anchor);
@@ -3792,7 +3790,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}// PARAM_NUNC_DIMITTIS
 	else if (equals(paramname, PARAM_MARIANSKE_ANTIFONY_LINK)){
-		if ((je_kompletorium12(type)) && (_global_skip_in_prayer != ANO)){
+		if ((je_kompletorium12(type)) && (_global_skip_in_prayer == NIE)){
 			// využijeme parameter path, ktorý sa nepoužíva
 #ifndef BEHAVIOUR_WEB
 			_struct_anchor_and_file af;
@@ -4035,9 +4033,9 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 			continue;
 		}// switch(c)
 		if (!isbuff){
-			if ((_global_skip_in_prayer != ANO) && (_global_skip_in_prayer_2 != ANO) && (_global_skip_in_prayer_vnpc != ANO)){
+			if ((_global_skip_in_prayer == NIE) && (_global_skip_in_prayer_2 != ANO) && (_global_skip_in_prayer_vnpc != ANO)){
 				ExportChar(c.result);
-			}// !_global_skip_in_prayer && !_global_skip_in_prayer_2
+			}// _global_skip_in_prayer == NIE && !_global_skip_in_prayer_2
 		}// if(!isbuff)
 		else{
 			strbuff[buff_index++] = (char)c.result;
@@ -7230,16 +7228,19 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 
-	// tlačidlo pre dnešok sa pre 'M' (batch módový export) nezobrazuje
-	if(_global_opt_batch_monthly == NIE){
-		if(som_v_tabulke == ANO){
-			Export("<"HTML_DIV_TABLE_CELL">\n");
-		}
-		else{
-			Export(HTML_P_CENTER"\n");
-		}
+	if (som_v_tabulke == NIE){
+		// table begin
+		Export("<"HTML_DIV_TABLE">\n");
+		Export("<"HTML_DIV_TABLE_ROW">\n");
+	}
 
-		if(dnes_dnes >= ANO){
+	// tlačidlo pre dnešok sa pre 'M' (batch módový export) nezobrazuje
+	if (_global_opt_batch_monthly == NIE){
+
+		// table cell begin
+		Export("<"HTML_DIV_TABLE_CELL">\n");
+
+		if (dnes_dnes >= ANO){
 			sprintf(action, "%s?%s=%s%s", script_name, STR_QUERY_TYPE, STR_PRM_DNES, pom2);
 			// Export("<form action=\"%s?%s=%s%s\" method=\"post\">\n", script_name, STR_QUERY_TYPE, STR_PRM_DNES, pom2);
 			Export_HtmlForm(action);
@@ -7248,9 +7249,9 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 		else{
 			sprintf(action, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, _global_den.den, STR_MESIAC, _global_den.mesiac, STR_ROK, _global_den.rok, pom2);
 			Export_HtmlForm(action);
-			Export("<"HTML_FORM_INPUT_SUBMIT1" title=\"%s\" value=\"", _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN))? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			Export("<"HTML_FORM_INPUT_SUBMIT1" title=\"%s\" value=\"", _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 		}
-		if(dnes_dnes == 2){
+		if (dnes_dnes == 2){
 			Export((char *)html_text_batch_Prev[_global_jazyk]);
 			Export(HTML_NONBREAKING_SPACE);
 			Export((char *)html_button_tento_den[_global_jazyk]);
@@ -7280,17 +7281,20 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 		}
 		Export("</form>\n");
 
-		if (som_v_tabulke == ANO){
-			Export(HTML_DIV_TABLE_CELL_END"\n");
-		}
-		else{
-			Export(HTML_P_END"\n");
-		}
-		}// _global_opt_batch_monthly == NIE
+		// table cell end
+		Export(HTML_DIV_TABLE_CELL_END"\n");
+
+	}// _global_opt_batch_monthly == NIE
+
+	if (som_v_tabulke == NIE){
+		// table end
+		Export(HTML_DIV_TABLE_ROW_END"\n");
+		Export(HTML_DIV_TABLE_END"\n");
+	}
 #ifdef OS_Windows_Ruby
 	Export("<!--buttons/dni/dnes:end-->\n");
 #endif
-		}// _export_rozbor_dna_buttons_dni_dnes()
+}// _export_rozbor_dna_buttons_dni_dnes()
 
 // typ - ako v _export_rozbor_dna()
 //
@@ -7403,14 +7407,18 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 
 	if (query_type == PRM_LIT_OBD){
 		Log("pre query_type == PRM_LIT_OBD sa dni netlačia (nemám nastavený dátum), iba 'dnes'...\n");
+
 		_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+
 		return;
 	}// query_type == PRM_LIT_OBD
 
 	if ((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2)){
 		// najprv dnes, potom ostatné
 		if ((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)){
+
 			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+
 		}
 	}// if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2))
 
@@ -7759,7 +7767,9 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 	if ((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2)){
 		// najprv ostatné, potom dnes
 		if ((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)){
+
 			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+
 		}
 	}// if((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2))
 
@@ -7802,7 +7812,9 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 
 	if (query_type == PRM_LIT_OBD){
 		Log("pre query_type == PRM_LIT_OBD sa dni netlačia (nemám nastavený dátum), iba 'dnes'...\n");
+
 		_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+
 		return;
 	}// query_type == PRM_LIT_OBD
 
@@ -7810,15 +7822,8 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 		// najprv dnes, potom ostatné
 		if ((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)){
 
-			// table begin
-			Export("<"HTML_DIV_TABLE">\n");
-			Export("<"HTML_DIV_TABLE_ROW">\n");
+			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 
-			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, ANO /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
-
-			// table end
-			Export(HTML_DIV_TABLE_ROW_END"\n");
-			Export(HTML_DIV_TABLE_END"\n");
 		}
 	}// if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2))
 
@@ -7993,6 +7998,8 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 			Export(HTML_NONBREAKING_SPACE); Export(HTML_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 		}
 
+		// first triplet was finished (table row)
+
 		if (dnes_dnes == ANO){
 			// ---------------------------------------------------
 
@@ -8064,7 +8071,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
 
 				Export("<"HTML_DIV_TABLE_CELL" "HTML_ALIGN_CENTER">\n");
-				Export(HTML_A_HREF_BEGIN"\"%s\" "HTML_CLASS_QUIET_SMALL">(%s)"HTML_A_END""HTML_SPAN_END, pom, html_text_option_skryt[_global_jazyk]);
+				Export(HTML_A_HREF_BEGIN"\"%s\" "HTML_CLASS_QUIET_SMALL">(%s)"HTML_A_END, pom, html_text_option_skryt[_global_jazyk]);
 				Export("\n");
 				Export(HTML_DIV_TABLE_CELL_END"\n");
 
@@ -8122,7 +8129,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 				}
 			}
 
-		}// predošlý, nasledovný mesiac -- len pre "dnes"
+		}// predošlý, nasledovný rok -- len pre "dnes" (second triplet)
 
 		if (dnes_dnes == ANO){
 			// ---------------------------------------------------
@@ -8194,16 +8201,17 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 					Export(" "HTML_RIGHT_ARROW_HUGE"\""HTML_EMPTY_TAG_END"\n");
 					Export("</form>\n");
 					Export(HTML_DIV_TABLE_CELL_END"\n");
+					Export(HTML_DIV_TABLE_ROW_END"\n");
 				}
 				else{
 					Export(HTML_A_HREF_BEGIN"\"%s\">%s %s %d "HTML_RIGHT_ARROW_HUGE""HTML_A_END"\n", pom, html_button_nasledujuci_[_global_jazyk], html_text_rok[_global_jazyk], _local_rok);
 					Export(HTML_NONBREAKING_SPACE); Export(HTML_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 				}
 			}
-		}// predošlý, nasledovný rok -- len pre "dnes"
+		}// predošlý, nasledovný rok -- len pre "dnes" (last triplet)
 
 		if (som_v_tabulke == ANO){
-			Export(HTML_DIV_TABLE_ROW_END"\n");
+			// row was closed for each of triplet
 			Export(HTML_DIV_TABLE_END"\n");
 		}
 
@@ -8216,7 +8224,9 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 	if ((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2)){
 		// najprv ostatné, potom dnes
 		if ((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)){
+
 			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+
 		}
 	}// if((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2))
 
@@ -8517,7 +8527,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export(" ");
 	// drop-down list pre výber jazyka
 	// pole WWW_JAZYK
-	Export("<select name=\"%s\" title=\"%s\">\n", STR_JAZYK, html_text_jazyk_explain[_global_jazyk]);
+	Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_JAZYK, html_text_jazyk_explain[_global_jazyk]);
 
 	for (int i = 0; i <= POCET_JAZYKOV; i++){
 		// supported languages explicitly defined
@@ -8608,7 +8618,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			// drop-down list pre výber kalendára (propriá)
 			// pole WWW_KALENDAR
-			Export("<select name=\"%s\" title=\"%s\">\n", STR_KALENDAR, html_text_kalendar_miestny_explain[_global_jazyk]);
+			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_KALENDAR, html_text_kalendar_miestny_explain[_global_jazyk]);
 
 			if(_global_jazyk == JAZYK_SK){
 				Export("<option%s>%s</option>\n", 
@@ -8940,7 +8950,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 		Export(HTML_CRLF_LINE_BREAK);
 #endif
-		Export("<select name=\"%s\" title=\"%s\">\n", STR_MODL_OPTF_3, html_text_spol_casti_vziat_zo_explain[_global_jazyk]);
+		Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_MODL_OPTF_3, html_text_spol_casti_vziat_zo_explain[_global_jazyk]);
 		for(int i = 0; i < POCET_SPOL_CASTI; i++){
 			if((i == MODL_SPOL_CAST_NEURCENA) || (i == MODL_SPOL_CAST_NEBRAT))
 				continue;
@@ -9045,7 +9055,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("<"HTML_SPAN_TOOLTIP">%s"HTML_SPAN_END"\n", html_text_font_name_explain[_global_jazyk], html_text_font_name[_global_jazyk]);
 
 			// pole WWW_/STR_MODL_OPTF_2_FONT_NAME_CHOOSER
-			Export("<select name=\"%s\" title=\"%s\">\n", STR_FONT_NAME, html_text_font_name_explain[_global_jazyk]);
+			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_FONT_NAME, html_text_font_name_explain[_global_jazyk]);
 			// FONT_UNDEF neexportujeme
 			for(font = FONT_UNDEF + 1; font <= POCET_FONTOV; font++){
 				// 2011-05-12: pom2 bolo nastavené funkciou prilep_request_options() a používa sa v ďalšom; použiť môžeme pom3
@@ -9070,7 +9080,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("<"HTML_SPAN_TOOLTIP">%s"HTML_SPAN_END"\n", html_text_font_size_explain[_global_jazyk], html_text_font_size[_global_jazyk]);
 
 			// pole WWW_/STR_MODL_OPTF_2_FONT_SIZE
-			Export("<select name=\"%s\" title=\"%s\">\n", STR_FONT_SIZE, html_text_font_size_explain[_global_jazyk]);
+			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_FONT_SIZE, html_text_font_size_explain[_global_jazyk]);
 			// FONT_SIZE_UNDEF neexportujeme
 			for(font = FONT_SIZE_UNDEF + 1; font <= POCET_FONT_SIZE; font++){
 				Export("<option%s>%s</option>\n", (font == _global_font_size)? html_option_selected: STR_EMPTY, nazov_font_size(font));
@@ -9259,14 +9269,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("<"HTML_FORM_INPUT_TEXT_ROK" name=\"%s\" value=\"%d\""HTML_EMPTY_TAG_END"\n", STR_ROK, dnes.tm_year);
 
 			// pole WWW_MESIAC
-			Export("<select name=\"%s\">\n", STR_MESIAC);
+			Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_MESIAC);
 			for(month = 1; month < 13; month++){
 				Export("<option%s>%s</option>\n", (month == dnes.tm_mon)? html_option_selected: STR_EMPTY, nazov_mesiaca(month - 1));
 			}
 			Export("\n</select>\n");
 
 			// pole WWW_DEN
-			Export("<select name=\"%s\">\n", STR_DEN);
+			Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_DEN);
 			for(day = 1; day < 32; day++){
 				Export("<option%s>%d</option>\n", (day == dnes.tm_mday)? html_option_selected: STR_EMPTY, day);
 			}
@@ -9275,14 +9285,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		}// FORMAT_DATUMU_ROK_MESIAC_DEN
 		else if(format_datumu[_global_jazyk] == FORMAT_DATUMU_MESIAC_DEN_ROK){
 			// pole WWW_MESIAC
-			Export("<select name=\"%s\">\n", STR_MESIAC);
+			Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_MESIAC);
 			for(month = 1; month < 13; month++){
 				Export("<option%s>%s</option>\n", (month == dnes.tm_mon)? html_option_selected: STR_EMPTY, nazov_mesiaca(month - 1));
 			}
 			Export("\n</select>\n");
 
 			// pole WWW_DEN
-			Export("<select name=\"%s\">\n", STR_DEN);
+			Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_DEN);
 			for(day = 1; day < 32; day++){
 				Export("<option%s>%d</option>\n", (day == dnes.tm_mday)? html_option_selected: STR_EMPTY, day);
 			}
@@ -9293,14 +9303,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		}// FORMAT_DATUMU_MESIAC_DEN_ROK
 		else{ // if(format_datumu[_global_jazyk] == FORMAT_DATUMU_DEN_MESIAC_ROK){
 			// pole WWW_DEN
-			Export("<select name=\"%s\">\n", STR_DEN);
+			Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_DEN);
 			for(day = 1; day < 32; day++){
 				Export("<option%s>%d</option>\n", (day == dnes.tm_mday)? html_option_selected: STR_EMPTY, day);
 			}
 			Export("\n</select>.\n");
 
 			// pole WWW_MESIAC
-			Export("<select name=\"%s\">\n", STR_MESIAC);
+			Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_MESIAC);
 			for(month = 1; month < 13; month++){
 				Export("<option%s>%s</option>\n", (month == dnes.tm_mon)? html_option_selected: STR_EMPTY, nazov_mesiaca(month - 1));
 			}
@@ -9409,7 +9419,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export((char *)html_text_lit_kalendar[_global_jazyk]);
 		Export(" \n"); // 2003-07-16; povodne tu bolo "mesiac"
 		// pole WWW_MESIAC_ROKA
-		Export("<select name=\"%s\">\n", STR_MESIAC_ROKA);
+		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_MESIAC_ROKA);
 		for(month = 1; month < 13; month++){
 			Export("<option%s>%s</option>\n", (month == dnes.tm_mon)? html_option_selected: STR_EMPTY, nazov_mesiaca(month - 1));
 		}
@@ -9516,15 +9526,15 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("<"HTML_TABLE_CELL">\n");
 
 		// pole WWW_MODL_ORDINARIUM
-		Export("<select name=\"%s\">\n", STR_MODL_ORDINARIUM);
-		Export("<option>%s\n", nazov_modlitby_short(MODL_INVITATORIUM));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_POSV_CITANIE));
-		Export("<option selected>%s\n", nazov_modlitby_short(MODL_RANNE_CHVALY));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_PREDPOLUDNIM));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_NAPOLUDNIE));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_POPOLUDNI));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_VESPERY));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_KOMPLETORIUM));
+		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_MODL_ORDINARIUM);
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_INVITATORIUM));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_POSV_CITANIE));
+		Export("<option%s>%s</option>\n", html_option_selected, nazov_modlitby_short(MODL_RANNE_CHVALY));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_PREDPOLUDNIM));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_NAPOLUDNIE));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_POPOLUDNI));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_VESPERY));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_KOMPLETORIUM));
 		Export("</select>\n");
 
 		Export(HTML_TABLE_CELL_END"\n");
@@ -9554,17 +9564,17 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("<"HTML_TABLE_CELL">\n");
 
 		// pole WWW_MODLITBA
-		Export("<select name=\"%s\">\n", STR_MODLITBA);
-		Export("<option>%s\n", nazov_modlitby_short(MODL_PRVE_VESPERY));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_PRVE_KOMPLETORIUM));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_INVITATORIUM));
-		Export("<option selected>%s\n", nazov_modlitby_short(MODL_POSV_CITANIE));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_RANNE_CHVALY));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_PREDPOLUDNIM));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_NAPOLUDNIE));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_POPOLUDNI));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_DRUHE_VESPERY));
-		Export("<option>%s\n", nazov_modlitby_short(MODL_DRUHE_KOMPLETORIUM));
+		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_MODLITBA);
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_PRVE_VESPERY));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_PRVE_KOMPLETORIUM));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_INVITATORIUM));
+		Export("<option%s>%s</option>\n", html_option_selected, nazov_modlitby_short(MODL_POSV_CITANIE));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_RANNE_CHVALY));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_PREDPOLUDNIM));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_NAPOLUDNIE));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_POPOLUDNI));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_DRUHE_VESPERY));
+		Export("<option>%s</option>\n", nazov_modlitby_short(MODL_DRUHE_KOMPLETORIUM));
 		Export("</select>\n");
 
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
@@ -9576,7 +9586,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_NONBREAKING_SPACE);
 
 		// pole WWW_DEN_V_TYZDNI
-		Export("<select name=\"%s\">\n", STR_DEN_V_TYZDNI);
+		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_DEN_V_TYZDNI);
 		for(day = DEN_NEDELA; day <= DEN_SOBOTA; day++){
 			Export("<option%s>%s</option>\n", (day == dnes.tm_wday)? html_option_selected: STR_EMPTY, nazov_dna(day));
 		}
@@ -9592,7 +9602,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_NONBREAKING_SPACE);
 
 		// pole WWW_LIT_ROK
-		Export("<select name=\"%s\">\n", STR_LIT_ROK);
+		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_LIT_ROK);
 		for(lo = 'A'; lo <= 'C'; lo++){
 			Export("<option%s>%c</option>\n", (lo == _global_den.litrok)? html_option_selected: STR_EMPTY, lo);
 		}
@@ -9603,7 +9613,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		if(_global_jazyk == JAZYK_LA){
 			Export((char *)html_text_tyzden[_global_jazyk]);
 		}
-		Export("<select name=\"%s\">\n", STR_TYZDEN);
+		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_TYZDEN);
 		for(day = 0; day <= POCET_NEDIEL_CEZ_ROK; day++){
 			Export("<option%s>%d</option>\n", (day == _global_den.tyzden)? html_option_selected: STR_EMPTY, day);
 		}
@@ -9620,7 +9630,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 #endif
 
 		// pole WWW_LIT_OBD
-		Export("<select name=\"%s\">\n", STR_LIT_OBD);
+		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_LIT_OBD);
 		for(lo = 0; lo <= POCET_OBDOBI; lo++){
 			Export("<option%s>%s</option>\n", (lo == _global_den.litobd)? html_option_selected: STR_EMPTY, nazov_obdobia_short(lo));
 		}
@@ -10798,33 +10808,34 @@ void showDetails(short int den, short int mesiac, short int rok, short int porad
 
 	// pole WWW_MODLITBA
 	// ToDo: zvážiť pre slávnosti zobraziť aj prvé vešpery s kompletóriom...
-	Export("<select name=\"%s\">\n", STR_MODLITBA);
-	Export("<option>%s\n", nazov_modlitby(MODL_INVITATORIUM));
-	Export("<option selected>%s\n", nazov_modlitby(MODL_POSV_CITANIE));
-	Export("<option>%s\n", nazov_modlitby(MODL_RANNE_CHVALY));
-	Export("<option>%s\n", nazov_modlitby(MODL_PREDPOLUDNIM));
-	Export("<option>%s\n", nazov_modlitby(MODL_NAPOLUDNIE));
-	Export("<option>%s\n", nazov_modlitby(MODL_POPOLUDNI));
+	Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_MODLITBA);
+	Export("<option>%s</option>\n", nazov_modlitby(MODL_INVITATORIUM));
+	Export("<option%s>%s</option>\n", html_option_selected, nazov_modlitby(MODL_POSV_CITANIE));
+	Export("<option>%s</option>\n", nazov_modlitby(MODL_RANNE_CHVALY));
+	Export("<option>%s</option>\n", nazov_modlitby(MODL_PREDPOLUDNIM));
+	Export("<option>%s</option>\n", nazov_modlitby(MODL_NAPOLUDNIE));
+	Export("<option>%s</option>\n", nazov_modlitby(MODL_POPOLUDNI));
 	// spomienka P. Márie v sobotu nemá vešpery ani kompletórium
 	if (poradie_svaty != PORADIE_PM_SOBOTA){
-		Export("<option>%s\n", nazov_modlitby(MODL_VESPERY));
-		Export("<option>%s\n", nazov_modlitby(MODL_KOMPLETORIUM));
+		Export("<option>%s</option>\n", nazov_modlitby(MODL_VESPERY));
+		Export("<option>%s</option>\n", nazov_modlitby(MODL_KOMPLETORIUM));
 	}
-	Export("<option>%s\n", nazov_modlitby(MODL_VSETKY));
+	Export("<option>%s</option>\n", nazov_modlitby(MODL_VSETKY));
 	Export("</select>\n");
+
 	Export("</li>\n");
 
 	if ((poradie_svaty > 0) && (poradie_svaty < PORADIE_PM_SOBOTA)){
 
 		// najprv si rozkodujeme, co je v _global_den.spolcast
 		_struct_sc sc = _decode_spol_cast(_global_den.spolcast);
-		// pole WWW_MODL_OPT_3 // 2012-08-27: zmenené na WWW_MODL_OPTF_3
+		// WWW_MODL_OPT_3 changed to WWW_MODL_OPTF_3
 		Export("<li>");
 		Export((char *)html_text_spol_casti_vziat_zo[_global_jazyk]);
 		Export(" \n");
-		Export("<select name=\"%s\">\n", STR_MODL_OPTF_3);
+		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_MODL_OPTF_3);
 		if ((sc.a1 != MODL_SPOL_CAST_NEURCENA) && (sc.a1 != MODL_SPOL_CAST_NEBRAT)){
-			Export("<option%s>%s\n", html_option_selected, nazov_spolc(sc.a1));
+			Export("<option%s>%s</option>\n", html_option_selected, nazov_spolc(sc.a1));
 			if (sc.a2 != MODL_SPOL_CAST_NEURCENA){
 				Export("<option%s>%s</option>\n", (sc.a2 != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(sc.a2));
 				if (sc.a3 != MODL_SPOL_CAST_NEURCENA){
@@ -10836,7 +10847,7 @@ void showDetails(short int den, short int mesiac, short int rok, short int porad
 			}
 		}
 		else{
-			Export("<option%s>%s\n", html_option_selected, nazov_spolc(MODL_SPOL_CAST_NEBRAT));
+			Export("<option%s>%s</option>\n", html_option_selected, nazov_spolc(MODL_SPOL_CAST_NEBRAT));
 		}
 		Export("</select>\n");
 		Export(HTML_LINE_BREAK"<"HTML_SPAN_EXPLAIN">");

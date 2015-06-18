@@ -938,6 +938,8 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_FORM_INPUT_RESET2   "input type=\"reset\" class=\"reset2\""
 #define HTML_FORM_INPUT_HIDDEN   "input type=\"hidden\""
 
+#define HTML_FORM_SELECT "<select "
+
 #define HTML_EMPTY_TAG_END " />"
 
 #define HTML_FORM_METHOD_GET     "<form action=\"%s\" method=\"get\">\n"
