@@ -1109,10 +1109,10 @@ void _export_global_string_spol_cast(short int aj_vslh_235b){
 				pom);
 		}
 
+		Export(HTML_SPAN_END"\n");
 		if (aj_vslh_235b == ANO){
 			Export(HTML_P_END);
 		}
-		Export(HTML_SPAN_END"\n");
 	}
 	else{
 		Log("-- _export_global_string_spol_cast(): prázdny reťazec.\n");
@@ -2312,9 +2312,11 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Log("  `Te Deum' copied.\n");
 		}
 		else{
+			_global_skip_in_prayer -= ANO; // decrement
+
 			// nezobrazovať Te Deum [či už preto, že nemá byť, alebo preto, lebo ho používateľ nechcel]
 			if (_global_opt_tedeum == ANO){
-				_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE; // nesmie tu byť, ak tedeum nemá byť; až PARAM_JE_TEDEUM_END to (v takom prípade) nastaví na NIE
+				// here was: _global_skip_in_prayer = NIE; // nesmie tu byť, ak tedeum nemá byť; až PARAM_JE_TEDEUM_END to (v takom prípade) nastaví na NIE
 			}
 			Log("  `Te Deum' skipped.\n");
 		}
@@ -2782,7 +2784,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Log("including SPOL_CAST\n");
 			Export("spol_cast:begin-->");
 			_export_global_string_spol_cast(ANO);
+			#ifdef BEHAVIOUR_WEB
 			Export(HTML_P_END);
+			#endif
 			Export("<!--spol_cast:end");
 		}
 		else{
@@ -7228,11 +7232,13 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 
+	#ifdef BEHAVIOUR_WEB
 	if (som_v_tabulke == NIE){
 		// table begin
 		Export("<"HTML_DIV_TABLE">\n");
 		Export("<"HTML_DIV_TABLE_ROW">\n");
 	}
+	#endif
 
 	// tlačidlo pre dnešok sa pre 'M' (batch módový export) nezobrazuje
 	if (_global_opt_batch_monthly == NIE){
@@ -7286,11 +7292,13 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 
 	}// _global_opt_batch_monthly == NIE
 
+	#ifdef BEHAVIOUR_WEB
 	if (som_v_tabulke == NIE){
 		// table end
 		Export(HTML_DIV_TABLE_ROW_END"\n");
 		Export(HTML_DIV_TABLE_END"\n");
 	}
+	#endif
 #ifdef OS_Windows_Ruby
 	Export("<!--buttons/dni/dnes:end-->\n");
 #endif
@@ -9466,7 +9474,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_NONBREAKING_SPACE);
 		Export("\n");
 		// pole WWW_ROK_TO
-		Export("<"HTML_FORM_INPUT_TEXT_ROK" name=\"%s\" value=\"%d\""HTML_EMPTY_TAG_END">\n", STR_ROK_TO, dnes.tm_year + 12);
+		Export("<"HTML_FORM_INPUT_TEXT_ROK" name=\"%s\" value=\"%d\""HTML_EMPTY_TAG_END"\n", STR_ROK_TO, dnes.tm_year + 12);
 
 		Export(HTML_TABLE_CELL_END"\n");
 		Export(HTML_TABLE_ROW_END"\n");
