@@ -982,6 +982,8 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_P_CENTER "<p "HTML_ALIGN_CENTER">"
 #define HTML_P_CENTER_SMALL "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">"
 
+#define HTML_P_INLINE "<p "HTML_CLASS_INLINE">"
+
 #define HTML_A_HREF_BEGIN "<a href="
 #define HTML_A_NAME_BEGIN "<a name="
 #define HTML_A_END "</a>"
@@ -1050,6 +1052,7 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_CLASS_TT       "class=\"tt\""
 #define HTML_CLASS_BUTTON   "class=\"button\""
 #define HTML_CLASS_SMALL    "class=\"small\""
+#define HTML_CLASS_INLINE   "class=\"inline\""
 
 #define HTML_CLASS_QUIET_SMALL    "class=\"quiet small\""
 

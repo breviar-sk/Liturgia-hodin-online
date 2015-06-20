@@ -841,3 +841,6 @@ sup {
 	-moz-box-sizing: border-box;
 }
 
+.inline {
+	display: inline;
+}
