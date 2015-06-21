@@ -6008,7 +6008,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 
 	if (export_farby){
 		if (_global_opt_batch_monthly == ANO && export_monthly_druh > 2){
-			sprintf(_global_string_farba, "\n"HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE"\n<span style=\"background-color: %s; color: %s\">(%s)"HTML_SPAN_END"\n",
+			sprintf(_global_string_farba, "\n"HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE"\n<span style=\"font-size: 80%%; background-color: %s; color: %s\">(%s)"HTML_SPAN_END"\n",
 				(char *)html_farba_pozadie[liturgicka_farba],
 				(char *)html_farba_popredie[liturgicka_farba],
 				(char *)nazov_farby(liturgicka_farba));
@@ -10491,10 +10491,14 @@ void _export_rozbor_dna(short int typ){
 		Export("<"HTML_DIV_TABLE_CELL_VALIGN_TOP">");
 	}
 	if (typ == EXPORT_DNA_VIAC_DNI){
+#ifndef BEHAVIOUR_CMDLINE
 		Export(HTML_P_INLINE);
+#else
+		Export(HTML_P_BEGIN);
+#endif
 	}
 	if (typ != EXPORT_DNA_XML){
-		Export("%s%s%s%c", pom1, _global_link, pom2, (dvojbodka > 0) ? dvojbodka : 0);
+		Export("%s%s%c%s", pom1, _global_link, (dvojbodka > 0) ? dvojbodka : 0, pom2);
 	}
 	if (som_v_tabulke == ANO){
 		Export(HTML_TABLE_CELL_END"\n");
