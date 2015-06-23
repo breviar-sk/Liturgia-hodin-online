@@ -434,9 +434,9 @@ void _patka(FILE * expt){
 
 #endif
 
-	#ifndef BEHAVIOUR_CMDLINE
+#ifndef BEHAVIOUR_CMDLINE
 	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" "HTML_TARGET_TOP">%s"HTML_A_END"\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
-	#endif
+#endif
 
 	Log("cfg_mail_address_default[%s] == %s\n", cfg_mail_address_default[_global_jazyk], skratka_jazyka[_global_jazyk]);
 	mystrcpy(mail_addr, cfg_mail_address_default[_global_jazyk], MAX_MAIL_STR);
@@ -446,11 +446,11 @@ void _patka(FILE * expt){
 
 	Export_to_file(expt, HTML_P_END"\n");
 
-	#ifdef BEHAVIOUR_WEB
-		Export_to_file(expt, HTML_ANAME_BOTTOM"\n");
-	#else
-		Export_to_file(expt, HTML_DIV_END"\n");
-	#endif
+#ifdef BEHAVIOUR_WEB
+	Export_to_file(expt, HTML_ANAME_BOTTOM"\n");
+#else
+	Export_to_file(expt, HTML_DIV_END"\n");
+#endif
 
 	Export_to_file(expt, "</body>\n</html>\n");
 	Log("_patka() -- koniec.\n");

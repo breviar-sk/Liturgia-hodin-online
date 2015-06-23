@@ -145,7 +145,7 @@ short int Export(const char *fmt, ...){
 
 short int ExportHtmlComment(const char *fmt, ...){
 	
-	Export(HTML_COMMENT_BEGIN);
+	Export("\n"HTML_COMMENT_BEGIN);
 
 	va_list argptr;
 	short int cnt;

@@ -10737,7 +10737,7 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 						else{
 							if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT){
 								set_LOG_sc("  neberiem spolocnu cast\n");
-								Export("<!--neberiem spolocnu cast-->");
+								ExportHtmlComment("neberiem spolocnu cast");
 							}
 							else{
 								// sem by to nemalo prísť
@@ -10751,7 +10751,7 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 					else{
 						if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT){
 							set_LOG_sc("  neberiem spolocnu cast\n");
-							Export("<!--neberiem spolocnu cast-->");
+							ExportHtmlComment("neberiem spolocnu cast");
 						}
 						else{
 							// sem by to nemalo prísť
@@ -10768,7 +10768,7 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force =
 			else{
 				if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT){
 					set_LOG_sc("  neberiem spolocnu cast\n");
-					Export("<!--neberiem spolocnu cast-->");
+					ExportHtmlComment("neberiem spolocnu cast");
 				}
 				else{
 					// sem by to nemalo prísť

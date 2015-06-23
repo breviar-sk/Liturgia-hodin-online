@@ -3361,13 +3361,13 @@ const char *html_text_kalendar_miestny_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_detaily_explain[POCET_JAZYKOV + 1] =
 {
-	"Ostatné nastavenia sa použijú z predchádzajúcej (hlavnej) stránky. "HTML_P_BEGIN"Pokiaľ sú niektoré parametre pre vybranú modlitbu nepoužiteľné, neberú sa do úvahy (môžu byť teda nastavené ľubovoľne).",
+	"Ostatné nastavenia sa použijú z predchádzajúcej (hlavnej) stránky."HTML_P_END"\n"HTML_P_BEGIN"Pokiaľ sú niektoré parametre pre vybranú modlitbu nepoužiteľné, neberú sa do úvahy (môžu byť teda nastavené ľubovoľne).",
 	"Když jsou některé výše uvedené volby nepoužitelné pro nějakou modlitbu, neberou se v úvahu (mohou být nastaveny dle libovůle).",
 	"If any of described options are not applicable for a chosen prayer, they can be set anyhow.",
 	"",
 	"",
 	"Když jsou některé výše uvedené volby nepoužitelné pro nějakou modlitbu, neberou se v úvahu (mohou být nastaveny dle libovůle).",
-	"A többi beállítási lehetőség a főoldalon található. "HTML_P_BEGIN"Amennyiben valamelyik kiválasztott paraméter nem működik, figyelmen kívül kell hagyni (vagyis tetszőlegesen állíthatók).",
+	"A többi beállítási lehetőség a főoldalon található."HTML_P_END"\n"HTML_P_BEGIN"Amennyiben valamelyik kiválasztott paraméter nem működik, figyelmen kívül kell hagyni (vagyis tetszőlegesen állíthatók).",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

@@ -921,24 +921,38 @@ extern short int query_type; // contains constants PRM_...
 	_export_rozbor_dna_buttons_dni_dnes(2 /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
 	}
 
-// HTML stringy - casti stringov sustredene na tomto mieste
-#define HTML_FORM_INPUT_SUBMIT   "input type=\"submit\" class=\"button\""
-#define HTML_FORM_INPUT_RESET    "input type=\"reset\" class=\"reset\""
-#define HTML_FORM_INPUT_RADIO    "input type=\"radio\" class=\"radio\""
-#define HTML_FORM_INPUT_TEXT     "input type=\"text\" class=\"text\""
-#define HTML_FORM_INPUT_TEXT_ROK "input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
-#define HTML_FORM_INPUT_CHECKBOX "input type=\"checkbox\" class=\"checkbox\""
+// used in interpretParameter()
+#define HTML_SEQUENCE_NONE       0
+#define HTML_SEQUENCE_LINE_BREAK 1
+#define HTML_SEQUENCE_PARAGRAPH  2
+
+// HTML string constants
+
+#define HTML_FORM_INPUT_SUBMIT   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button\""
+#define HTML_FORM_INPUT_RESET    HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset\""
+#define HTML_FORM_INPUT_RADIO    HTML_FORM_INPUT_DIV_BEGIN"<input type=\"radio\" class=\"radio\""
+#define HTML_FORM_INPUT_TEXT     HTML_FORM_INPUT_DIV_BEGIN"<input type=\"text\" class=\"text\""
+#define HTML_FORM_INPUT_TEXT_ROK HTML_FORM_INPUT_DIV_BEGIN"<input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
+#define HTML_FORM_INPUT_CHECKBOX HTML_FORM_INPUT_DIV_BEGIN"<input type=\"checkbox\" class=\"checkbox\""
 
 // buttons (0. level: pre predošlý/nasledovný; 1. level: button "dnes"; 2. level: použité pre menej dôležité buttony)
-#define HTML_FORM_INPUT_SUBMIT0  "input type=\"submit\" class=\"button0\""
-#define HTML_FORM_INPUT_RESET0   "input type=\"reset\" class=\"reset0\""
-#define HTML_FORM_INPUT_SUBMIT1  "input type=\"submit\" class=\"button1\""
-#define HTML_FORM_INPUT_RESET1   "input type=\"reset\" class=\"reset1\""
-#define HTML_FORM_INPUT_SUBMIT2  "input type=\"submit\" class=\"button2\""
-#define HTML_FORM_INPUT_RESET2   "input type=\"reset\" class=\"reset2\""
-#define HTML_FORM_INPUT_HIDDEN   "input type=\"hidden\""
+#define HTML_FORM_INPUT_SUBMIT0  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button0\""
+#define HTML_FORM_INPUT_RESET0   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset0\""
+#define HTML_FORM_INPUT_SUBMIT1  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button1\""
+#define HTML_FORM_INPUT_RESET1   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset1\""
+#define HTML_FORM_INPUT_SUBMIT2  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button2\""
+#define HTML_FORM_INPUT_RESET2   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset2\""
+#define HTML_FORM_INPUT_HIDDEN   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"hidden\""
+
+#define HTML_FORM_INPUT_END      HTML_EMPTY_TAG_END""HTML_FORM_INPUT_DIV_END
+
+// wrapping <input ... /> into <div>...</div>
+#define HTML_FORM_INPUT_DIV_BEGIN HTML_DIV_INLINE
+#define HTML_FORM_INPUT_DIV_END   HTML_DIV_END
 
 #define HTML_FORM_SELECT "<select "
+
+#define HTML_HR            "<hr/>"
 
 #define HTML_EMPTY_TAG_END " />"
 
@@ -963,146 +977,141 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 #define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE))
 
-#define HTML_DIV_TABLE "div class=\"table\""
-#define HTML_DIV_TABLE_CAPTION "div class=\"table-caption\""
-#define HTML_DIV_TABLE_ROW "div class=\"table-row\""
-#define HTML_DIV_TABLE_CELL "div class=\"table-cell\""
-#define HTML_DIV_TABLE_CELL_VALIGN_TOP "div class=\"table-cell-valign-top\""
+#define HTML_P_BEGIN                "<p>"
+#define HTML_P_END                  "</p>"
 
-#define HTML_DIV_TABLE_LEFT "div class=\"table-left\""
-#define HTML_DIV_TABLE_CELL_BORDER "div class=\"table-cell-bordered\""
+#define HTML_P_CENTER               "<p "HTML_CLASS_CENTER">"
+#define HTML_P_CENTER_SMALL         "<p "HTML_CLASS_SMALL_CENTER">"
+#define HTML_P_INLINE               "<p "HTML_CLASS_INLINE">"
 
-#define HTML_DIV_TABLE_END HTML_DIV_END""HTML_COMMENT_BEGIN"table"HTML_COMMENT_END
-#define HTML_DIV_TABLE_ROW_END HTML_DIV_END""HTML_COMMENT_BEGIN"row"HTML_COMMENT_END
-#define HTML_DIV_TABLE_CELL_END HTML_DIV_END""HTML_COMMENT_BEGIN"cell"HTML_COMMENT_END
+#define HTML_A_HREF_BEGIN           "<a href="
+#define HTML_A_NAME_BEGIN           "<a name="
+#define HTML_A_END                  "</a>"
 
-#define HTML_P_BEGIN "<p>"
-#define HTML_P_END "</p>"
+#define HTML_DIV_BEGIN              "<div>"
+#define HTML_DIV_END                "</div>"
 
-#define HTML_P_CENTER "<p "HTML_ALIGN_CENTER">"
-#define HTML_P_CENTER_SMALL "<p "HTML_ALIGN_CENTER" "HTML_CLASS_SMALL">"
+#define HTML_DIV_CENTER             "<div "HTML_CLASS_CENTER">"
+#define HTML_DIV_INLINE             "<div "HTML_CLASS_INLINE">"
 
-#define HTML_P_INLINE "<p "HTML_CLASS_INLINE">"
+#define HTML_DIV_SMALL_INLINE       "div class=\"small inline\""
+#define HTML_DIV_SMALL              "div class=\"small\""
+#define HTML_DIV_RED_SMALL          "div class=\"redsmall\""
+#define HTML_DIV_RED_SUBTITLE       "div class=\"redsubtitle\""
 
-#define HTML_A_HREF_BEGIN "<a href="
-#define HTML_A_NAME_BEGIN "<a name="
-#define HTML_A_END "</a>"
+// HTML tables defined using DIVs
+#define HTML_TABLE			        "div class=\"table\"" // "table"
+#define HTML_TABLE_LEFT             "div class=\"table-left\"" // "table" left-aligned
+#define HTML_TABLE_CAPTION	        "div class=\"table-caption\"" // "th"
+#define HTML_TABLE_ROW		        "div class=\"table-row\"" // "tr"
+#define HTML_TABLE_CELL		        "div class=\"table-cell\"" // "td"
+#define HTML_TABLE_CELL_CENTER      "div class=\"table-cell center\""
+#define HTML_TABLE_CELL_BORDER      "div class=\"table-cell-bordered\"" // "td" with borders
+#define HTML_TABLE_CELL_VALIGN_TOP  "div class=\"table-cell-valign-top\""
 
-#define HTML_DIV_BEGIN           "<div>"
-#define HTML_DIV_END             "</div>"
+#define HTML_TABLE_END		        HTML_DIV_END""HTML_COMMENT_BEGIN"table"HTML_COMMENT_END // "</table>"
+#define HTML_TABLE_CAPTION_END	    HTML_DIV_END""HTML_COMMENT_BEGIN"caption"HTML_COMMENT_END // "</th>"
+#define HTML_TABLE_ROW_END	        HTML_DIV_END""HTML_COMMENT_BEGIN"row"HTML_COMMENT_END // "</tr>"
+#define HTML_TABLE_CELL_END	        HTML_DIV_END""HTML_COMMENT_BEGIN"cell"HTML_COMMENT_END // "</td>"
 
-#define HTML_DIV_RED_SMALL       "div class=\"redsmall\""
-#define HTML_DIV_RED_SUBTITLE    "div class=\"redsubtitle\""
-
-#define HTML_TABLE			HTML_DIV_TABLE // "table"
-#define HTML_TABLE_CAPTION	HTML_DIV_TABLE_CAPTION // "th"
-#define HTML_TABLE_ROW		HTML_DIV_TABLE_ROW // "tr"
-#define HTML_TABLE_CELL		HTML_DIV_TABLE_CELL // "td"
-#define HTML_TABLE_END		HTML_DIV_END""HTML_COMMENT_BEGIN"table"HTML_COMMENT_END // "</table>"
-#define HTML_TABLE_CAPTION_END	HTML_DIV_END""HTML_COMMENT_BEGIN"caption"HTML_COMMENT_END // "</th>"
-#define HTML_TABLE_ROW_END	HTML_DIV_END""HTML_COMMENT_BEGIN"row"HTML_COMMENT_END // "</tr>"
-#define HTML_TABLE_CELL_END	HTML_DIV_END""HTML_COMMENT_BEGIN"cell"HTML_COMMENT_END // "</td>"
-
-#define HTML_TABLE_LEFT			HTML_DIV_TABLE_LEFT // "table" left-aligned
-#define HTML_TABLE_CELL_BORDER		HTML_DIV_TABLE_CELL_BORDER // "td" with borders
 #define HTML_TABLE_CELL_BORDER_END	HTML_TABLE_CELL_END
 
-#define HTML_SPAN_END            "</span>"
+#define HTML_SPAN_END               "</span>"
 
-#define HTML_SPAN_NORMAL         "span class=\"normal\""
-#define HTML_SPAN_ITALIC         "span class=\"it\""
-#define HTML_SPAN_BOLD           "span class=\"bold\""
-#define HTML_SPAN_BOLD_IT        "span class=\"boldit\""
-#define HTML_SPAN_RED_TITLE      "span class=\"redtitle\""
-#define HTML_SPAN_RED            "span class=\"red\""
-#define HTML_SPAN_RED_BOLD       "span class=\"redbold\""
-#define HTML_SPAN_BLUE           "span class=\"blue\""
-#define HTML_SPAN_BLUE_BOLD      "span class=\"bluebold\""
-#define HTML_SPAN_RED_SMALL      "span class=\"redsmall\""
-#define HTML_SPAN_RED_SUBTITLE   "span class=\"redsubtitle\""
-#define HTML_SPAN_SMALL          "span class=\"small\""
-#define HTML_SPAN_EXPLAIN        "span class=\"explain\""
-#define HTML_SPAN_PARAMETER      "span class=\"parameter\""
-#define HTML_SPAN_VALUE          "span class=\"value\""
-#define HTML_SPAN_SMALLCAPS      "span class=\"smallcaps\""
-#define HTML_SPAN_XS_CAPS        "span class=\"xsmallcaps\""
+#define HTML_SPAN_NORMAL            "span class=\"normal\""
+#define HTML_SPAN_ITALIC            "span class=\"it\""
+#define HTML_SPAN_BOLD              "span class=\"bold\""
+#define HTML_SPAN_BOLD_IT           "span class=\"boldit\""
+#define HTML_SPAN_RED_TITLE         "span class=\"redtitle\""
+#define HTML_SPAN_RED               "span class=\"red\""
+#define HTML_SPAN_RED_BOLD          "span class=\"redbold\""
+#define HTML_SPAN_BLUE              "span class=\"blue\""
+#define HTML_SPAN_BLUE_BOLD         "span class=\"bluebold\""
+#define HTML_SPAN_RED_SMALL         "span class=\"redsmall\""
+#define HTML_SPAN_RED_SUBTITLE      "span class=\"redsubtitle\""
+#define HTML_SPAN_SMALL             "span class=\"small\""
+#define HTML_SPAN_EXPLAIN           "span class=\"explain\""
+#define HTML_SPAN_PARAMETER         "span class=\"parameter\""
+#define HTML_SPAN_VALUE             "span class=\"value\""
+#define HTML_SPAN_SMALLCAPS         "span class=\"smallcaps\""
+#define HTML_SPAN_XS_CAPS           "span class=\"xsmallcaps\""
+#define HTML_SPAN_HIDDEN            "span class=\"hidden\""
 
-#define HTML_CLASS_CALENDAR "class=\"calendar\""
+#define HTML_CLASS_CALENDAR         "class=\"calendar\""
 
-#define HTML_CALENDAR_HEADING "span class=\"calendar heading\""
-#define HTML_CALENDAR_DAYS   "span class=\"calendar day_name\""
-#define HTML_CALENDAR_TODAY_SUNDAY   "span class=\"calendar today bold\""
-#define HTML_CALENDAR_TODAY   "span class=\"calendar today\""
+#define HTML_CALENDAR_HEADING       "span class=\"calendar heading\""
+#define HTML_CALENDAR_DAYS          "span class=\"calendar day_name\""
+#define HTML_CALENDAR_TODAY_SUNDAY  "span class=\"calendar today bold\""
+#define HTML_CALENDAR_TODAY         "span class=\"calendar today\""
 
 #define HTML_CLASS_NAME_CALENDAR_TODAY_SUNDAY "calendar today bold"
 #define HTML_CLASS_NAME_CALENDAR_TODAY "calendar today"
 #define HTML_CLASS_NAME_CALENDAR_SUNDAY "calendar day bold"
 #define HTML_CLASS_NAME_CALENDAR_DAY "calendar day"
 
-#define HTML_SPAN_TOOLTIP   "span title=\"%s\"" // obsahuje %s
-#define HTML_SPAN_BOLD_TOOLTIP   "span class=\"bold\" title=\"%s\"" // obsahuje %s
-#define HTML_SPAN_NORMAL_TOOLTIP   "span class=\"normal\" title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_TOOLTIP           "span title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_BOLD_TOOLTIP      "span class=\"bold\" title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_NORMAL_TOOLTIP    "span class=\"normal\" title=\"%s\"" // obsahuje %s
 
-#define HTML_SUP_RED        "sup class=\"red\""
+#define HTML_SUP_RED                "sup class=\"red\""
 
-#define HTML_CLASS_BLUE     "class=\"blue\""
-#define HTML_CLASS_QUIET    "class=\"quiet\""
-#define HTML_CLASS_BOLD_IT  "class=\"boldit\""
-#define HTML_CLASS_LEVEL1   "class=\"level1\""
-#define HTML_CLASS_TT       "class=\"tt\""
-#define HTML_CLASS_BUTTON   "class=\"button\""
-#define HTML_CLASS_SMALL    "class=\"small\""
-#define HTML_CLASS_INLINE   "class=\"inline\""
+#define HTML_CLASS_BLUE             "class=\"blue\""
+#define HTML_CLASS_QUIET            "class=\"quiet\""
+#define HTML_CLASS_BOLD_IT          "class=\"boldit\""
+#define HTML_CLASS_LEVEL1           "class=\"level1\""
+#define HTML_CLASS_TT               "class=\"tt\""
+#define HTML_CLASS_BUTTON           "class=\"button\""
+#define HTML_CLASS_SMALL            "class=\"small\""
+#define HTML_CLASS_SMALL_CENTER     "class=\"small center\""
+#define HTML_CLASS_INLINE           "class=\"inline\""
+#define HTML_CLASS_CENTER           "class=\"center\""
 
-#define HTML_CLASS_QUIET_SMALL    "class=\"quiet small\""
+#define HTML_CLASS_QUIET_SMALL      "class=\"quiet small\""
 
-#define HTML_ALIGN_CENTER   "align=\"center\""
-#define HTML_ALIGN_LEFT     "align=\"left\""
-#define HTML_ALIGN_RIGHT    "align=\"right\""
-#define HTML_VALIGN_MIDDLE  "valign=\"middle\""
-#define HTML_VALIGN_TOP     "valign=\"top\""
-#define HTML_VALIGN_BASE    "valign=\"baseline\""
+#define HTML_VALIGN_MIDDLE          "valign=\"middle\""
+#define HTML_VALIGN_TOP             "valign=\"top\""
+#define HTML_VALIGN_BASE            "valign=\"baseline\""
 
-#define HTML_BUTTON_BEGIN	"<button type=\"button\" "HTML_CLASS_BUTTON">" // wrapping <a> element to look like button
-#define HTML_BUTTON_END		"</button>"
+#define HTML_BUTTON_BEGIN	        "<button type=\"button\" "HTML_CLASS_BUTTON">" // wrapping <a> element to look like button
+#define HTML_BUTTON_END		        "</button>"
 
-#define HTML_AMPERSAND          "&amp;"
+#define HTML_AMPERSAND              "&amp;"
 
-#define HTML_COMMENT_BEGIN		"<!--"
-#define HTML_COMMENT_END		"-->"
-#define HTML_FONT_SIZE_FARBA	"2"
+#define HTML_COMMENT_BEGIN		    "<!--"
+#define HTML_COMMENT_END		    "-->"
+#define HTML_FONT_SIZE_FARBA	    "80%%"
 
-#define HTML_LEFT_ARROW			"&laquo;"
-#define HTML_RIGHT_ARROW		"&raquo;"
+#define HTML_LEFT_ARROW			    "&laquo;"
+#define HTML_RIGHT_ARROW		    "&raquo;"
 
-#define HTML_LEFT_ARROW_WIDE	"&nbsp;&laquo;&nbsp;"
-#define HTML_RIGHT_ARROW_WIDE	"&nbsp;&raquo;&nbsp;"
+#define HTML_LEFT_ARROW_WIDE	    "&nbsp;&laquo;&nbsp;"
+#define HTML_RIGHT_ARROW_WIDE	    "&nbsp;&raquo;&nbsp;"
 
-#define HTML_LINK_CALL1         "%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
-#define HTML_LINK_CALL2         "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
-#define HTML_LINK_CALL3         "%s?%s=%s"HTML_AMPERSAND"%s=%s%s"
-#define HTML_LINK_CALL_PARAM    HTML_AMPERSAND"%s=%s"
+#define HTML_LINK_CALL1             "%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
+#define HTML_LINK_CALL2             "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
+#define HTML_LINK_CALL3             "%s?%s=%s"HTML_AMPERSAND"%s=%s%s"
+#define HTML_LINK_CALL_PARAM        HTML_AMPERSAND"%s=%s"
 
-#define HTML_LEFT_ARROW_SINGLE	"&lsaquo;"
-#define HTML_RIGHT_ARROW_SINGLE	"&rsaquo;"
+#define HTML_LEFT_ARROW_SINGLE	    "&lsaquo;"
+#define HTML_RIGHT_ARROW_SINGLE	    "&rsaquo;"
 
-#define HTML_LEFT_ARROW_HUGE	"&lsaquo;&laquo;"
-#define HTML_RIGHT_ARROW_HUGE	"&raquo;&rsaquo;"
+#define HTML_LEFT_ARROW_HUGE	    "&lsaquo;&laquo;"
+#define HTML_RIGHT_ARROW_HUGE	    "&raquo;&rsaquo;"
 
 // 2007-03-19: výpis "Dnes je..." sa zobrazí len pri tomto nastavení, ak je 1
 #define HTML_ZOBRAZIT_DNES_JE	0
 
-#define MODL_ZALMY_ZO_DNA 0
-#define MODL_ZALMY_ZO_SV  1
+#define MODL_ZALMY_ZO_DNA       0
+#define MODL_ZALMY_ZO_SV        1
 
 #define MODL_CEZ_DEN_ZALMY_ZO_DNA         0
 #define MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA  1
 
-#define	EXPORT_DATE_SIMPLE 0
-#define	EXPORT_DATE_FULL   1
+#define	EXPORT_DATE_SIMPLE      0
+#define	EXPORT_DATE_FULL        1
 
-#define STR_SIMPLE "simple"
-#define STR_FULL   "full"
+#define STR_SIMPLE              "simple"
+#define STR_FULL                "full"
 
 // názov súboru (jeho začiatok) pre dátum
 #define FILENAME_EXPORT_DATE_SIMPLE "%.2d%.2d%.2d"

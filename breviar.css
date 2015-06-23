@@ -124,6 +124,7 @@ div.responsory {
 	/* display: inline; */
 	font-weight: bold; 
 	min-width: 22px; 
+	text-align: right;
 }
 
 .calendar.day_name { 
@@ -134,6 +135,7 @@ div.responsory {
 	display: block; 
 	font-style: italic; 
 	min-width: 22px; 
+	text-align: right;
 }
 
 .calendar.day { 
@@ -143,6 +145,7 @@ div.responsory {
 	border-top: 1px dotted; 
 	display: block; 
 	min-width: 22px; 
+	text-align: right;
 }
 
 .calendar.today { 
@@ -154,6 +157,7 @@ div.responsory {
 	color: #FFFFCC; 
 	display: block; 
 	min-width: 22px; 
+	text-align: right;
 }
 
 /* 2013-09-09 class .preces for prayers and intercessions */
@@ -257,6 +261,10 @@ div.responsory {
 /* new 2013-06.16 / updated 2013-06-19 and 2013-06-24 */
 .psalm p { 
 	font-weight: normal; 
+}
+
+.psalm p.bold { 
+	font-weight: bold; 
 }
 
 .psalm p.verse { 
@@ -843,4 +851,8 @@ sup {
 
 .inline {
 	display: inline;
+}
+
+.hidden {
+    display: none;
 }
