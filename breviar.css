@@ -52,7 +52,7 @@
 	font-weight: normal; 
 }
 
-.respons p.respR, p.respV, p.respO, p.respF { 
+.respons p.respR, p.respV, p.respO, p.respF, .respR, .respV, .respO, .respF { 
 	font-weight: bold; 
 	margin: 0; 
 	-webkit-margin-after: 0em; 
@@ -61,25 +61,25 @@
 
 
 /* for SK & LA, R/V is used; for CZ, O/V is used; for HU, V/F is used */
-.respons p.respR:before { 
+.respons p.respR:before, .respR:before { 
 	color: #ff0000; 
 	content: 'R. '; 
 	font-weight: bold; 
 }
 
-.respons p.respV:before { 
+.respons p.respV:before, .respV:before { 
 	color: #ff0000; 
 	content: 'V. '; 
 	font-weight: bold; 
 }
 
-.respons p.respO:before { 
+.respons p.respO:before, .respO:before { 
 	color: #ff0000; 
 	content: 'O. '; 
 	font-weight: bold; 
 }
 
-.respons p.respF:before { 
+.respons p.respF:before, .respF:before { 
 	color: #ff0000; 
 	content: 'F. '; 
 	font-weight: bold; 
