@@ -1,16 +1,16 @@
-.respons p.respR:before { 
+.respons p.respR:before, .respR:before { 
 	color: #FF3333; 
 }
 
-.respons p.respV:before { 
+.respons p.respV:before, .respV:before { 
 	color: #FF3333; 
 }
 
-.respons p.respO:before { 
+.respons p.respO:before, .respO:before { 
 	color: #FF3333; 
 }
 
-.respons p.respF:before { 
+.respons p.respF:before, .respF:before { 
 	color: #FF3333; 
 }
 
