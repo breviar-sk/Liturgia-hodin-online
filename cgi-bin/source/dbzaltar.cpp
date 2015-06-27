@@ -22266,8 +22266,7 @@ label_25_MAR:
 							_vlastna_cast_full(modlitba);
 
 							modlitba = MODL_POSV_CITANIE;
-							if(_global_jazyk == JAZYK_CZ_OP)
-								_vlastna_cast_hymnus(modlitba, _global_den.litobd); // 2009-08-25: pre dominikánov je aj vlastný hymnus
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 							_vlastna_cast_modlitba;
 							_vlastna_cast_2citanie;
 
@@ -22395,11 +22394,12 @@ label_25_MAR:
 							modlitba = MODL_PRVE_VESPERY;
 							_vlastna_cast_full(modlitba);
 							// 2009-07-06, upravené: slovenský breviár má iné žalmy
-							if(_global_jazyk == JAZYK_SK)
+							if (_global_jazyk == JAZYK_SK){
 								_set_zalmy_slavnost_Cyrila_a_Metoda(modlitba);
-							else
+							}
+							else{
 								_set_zalmy_sviatok_duch_past(modlitba);
-
+							}
 							modlitba = MODL_INVITATORIUM;
 							_vlastna_cast_antifona_inv;
 
@@ -22412,23 +22412,26 @@ label_25_MAR:
 								_vlastna_cast_full(modlitba);
 							}
 							else{
-								// 2010-07-06: pre czop sú antifóny a krátky responz pred 1. čítaním zo spoločnej časti
+								// pre czop sú antifóny a krátky responz pred 1. čítaním zo spoločnej časti
 								_vlastna_cast_1citanie;
 								_vlastna_cast_2citanie;
 								_vlastna_cast_modlitba;
 							}
-							// 2009-07-06, upravené: slovenský breviár má iné žalmy
-							if(_global_jazyk == JAZYK_SK)
+							// slovenský breviár má iné žalmy
+							if (_global_jazyk == JAZYK_SK){
 								_set_zalmy_slavnost_Cyrila_a_Metoda(modlitba);
-							else
+							}
+							else{
 								_set_zalmy_sviatok_duch_past(modlitba);
-
+							}
 							// hymnus ako na vešpery
 							_set_hymnus_alternativy_NO(modlitba, _global_den.litobd); // 2013-07-31: doplnené, nakoľko bolo doplnené do _vlastna_cast_hymnus_ako_na_vespery() a _vlastna_cast_hymnus()
-							// 2010-07-06: pre CZ a CZOP hymnus ako na 1. vešpery
-							sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby((_global_jazyk == JAZYK_SK)? MODL_VESPERY: MODL_PRVE_VESPERY), ANCHOR_HYMNUS);
-							_set_hymnus(modlitba, _file, _anchor);
-							set_LOG_svsv;
+							// kedysi: pre CZ a CZOP hymnus ako na 1. vešpery | teraz použitý hymnus z 1. vešpier len pre CZOP; pre CZ použitý hymnus zo sv. III, str. 1462
+							if (_global_jazyk != JAZYK_CZ){
+								sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby((_global_jazyk == JAZYK_SK) ? MODL_VESPERY : /* _global_jazyk == JAZYK_CZ_OP */ MODL_PRVE_VESPERY), ANCHOR_HYMNUS);
+								_set_hymnus(modlitba, _file, _anchor);
+								set_LOG_svsv;
+							}
 
 							_vlastna_cast_mcd_ant_kcitresp_modl;
 
@@ -22436,18 +22439,19 @@ label_25_MAR:
 							if(_global_den.denvt != DEN_NEDELA) {
 								_set_zalmy_mcd_doplnkova_psalmodia();
 							}
-							else {
+							else{
 								_set_zalmy_1nedele_mcd();
 							}
 
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_full(modlitba);
-							// 2009-07-06, upravené: slovenský breviár má iné žalmy
-							if(_global_jazyk == JAZYK_SK)
+							// slovenský breviár má iné žalmy
+							if (_global_jazyk == JAZYK_SK){
 								_set_zalmy_slavnost_Cyrila_a_Metoda(modlitba);
-							else
+							}
+							else{
 								_set_zalmy_sviatok_duch_past(modlitba);
-
+							}
 							modlitba = MODL_KOMPLETORIUM;
 							_set_kompletorium_slavnost(modlitba);
 
@@ -22455,7 +22459,7 @@ label_25_MAR:
 						}
 					}// SK, CZ only
 					else if((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_LA)){
-						// 2011-06-30: vo všeobecnom kalendári sa slávi; presunuté na SK na 7. júla
+						// vo všeobecnom kalendári sa slávi; presunuté na SK na 7. júla
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
