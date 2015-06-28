@@ -6448,13 +6448,16 @@ short int _rozbor_dna_s_modlitbou(_struct_den_mesiac datum, short int rok, short
 		Export("Nemôžete požadovať túto modlitbu, pretože nie je sobota.\n");
 		return FAILURE;
 	}
-	// toto sa vypisovalo aj pre "detaily" (tlacidlo na webe), ked je MODL_NEURCENA, preto som `modlitba >= MODL_VESPERY' upravil na `(modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM)'
-	// aby kontroloval len vespery a kompletorium. | 2003-07-01
 	else if ((poradie_svateho == PORADIE_PM_SOBOTA) && (_global_den.denvt == DEN_SOBOTA) && ((modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM))){
+		// experimentally set poradie_svateho to 0
+		// formerly returned FAILURE
+		/*
 		Log("(poradie_svateho == %d) && (_global_den.denvt != DEN_SOBOTA), so returning FAILURE...\n", PORADIE_PM_SOBOTA);
 		ALERT;
 		Export("Nemôžete požadovať túto modlitbu, pretože `Spomienka Panny Márie v sobotu' nemá vešpery ani kompletórium.\n");
 		return FAILURE;
+		*/
+		poradie_svateho = 0;
 	}
 	else if ((poradie_svateho != PORADIE_PM_SOBOTA) && (_global_pocet_svatych < poradie_svateho)){
 		Log("(poradie_svateho != %d) && (_global_pocet_svatych < poradie_svateho), so returning FAILURE...\n", PORADIE_PM_SOBOTA);
