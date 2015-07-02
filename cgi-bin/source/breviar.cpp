@@ -2934,8 +2934,14 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 
 			Log("podmienka == %d pred kontrolou _global_modlitba == %s...\n", podmienka, nazov_modlitby(_global_modlitba));
 
+			if (_global_jazyk == JAZYK_CZ){
+				podmienka = ANO;
+				bit = BIT_OPT_5_CZ_HYMNY_VYBER;
+				sprintf(popis_show, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_option5_CZHymnus_ordinary[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_option5_CZHymnus_extra[_global_jazyk]);
+			}
 			// kontrola na prvé resp. druhé nedeľné kompletórium, aby hymnus bolo v Cezročnom období možno voliť aj pre nedele
-			if ((_global_modlitba == MODL_KOMPLETORIUM) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM)){
+			else if ((_global_modlitba == MODL_KOMPLETORIUM) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM)){
 				bit = BIT_OPT_5_HYMNUS_KOMPL;
 				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_KomplHymnusA[_global_jazyk]);
 				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_KomplHymnusB[_global_jazyk]);

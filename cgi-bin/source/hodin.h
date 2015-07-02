@@ -2157,6 +2157,19 @@ const char *html_text_option_skryt[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_option_pouzit[POCET_JAZYKOV + 1] =
+{
+	"použiť",
+	"použít",
+	"use",
+	"",
+	"",
+	"použít",
+	"hu_text",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_option1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] =
 {
 	"použiť psalmódiu zo dňa",
@@ -3058,6 +3071,32 @@ const char *html_text_option5_1VHymnusPC[POCET_JAZYKOV + 1] =
 	"hymnus pro čtení [během dne]",
 	"Olvasmányos imaóra himnusza [napközben]",
 	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option5_CZHymnus_ordinary[POCET_JAZYKOV + 1] =
+{
+	"",
+	"hymny z breviáře",
+	"",
+	"",
+	"",
+	"hymny z breviáře",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option5_CZHymnus_extra[POCET_JAZYKOV + 1] =
+{
+	"",
+	"hymny k volnému výběru",
+	"",
+	"",
+	"",
+	"hymny k volnému výběru",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 

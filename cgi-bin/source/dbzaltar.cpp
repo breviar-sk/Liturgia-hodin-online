@@ -1353,10 +1353,11 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba){
 		_set_hymnus(modlitba, _file, _anchor);
 		set_LOG_zaltar;
 	}// mcd
-	else{ // nie modlitba cez den
+	else{ // nie modlitba cez deň ani kompletórium
 		// prvý a tretí, resp. druhý a štvrtý týždeň majú rovnaké hymny | pre tyzzal == 3 dá tyzzal = 1; pre tyzzal == 4 dá tyzzal = 2
 		tyzzal = set_tyzzal_1_2(tyzzal);
-		// 2005-03-26: Pridane odvetvenie pre posvatne citania
+
+		// odvetvenie pre posvatne citania
 		if (modlitba == MODL_POSV_CITANIE){
 			Log("set_hymnus(): posv. čítanie...\n");
 			file_name_litobd_pc(OBD_CEZ_ROK);
@@ -1374,7 +1375,7 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba){
 			_set_hymnus(modlitba, _file_pc, _anchor);
 			set_LOG_litobd_pc;
 		}
-		// 2014-09-02: Pridané odvetvenie pre prvé vešpery
+		// odvetvenie pre prvé vešpery
 		else if (modlitba == MODL_PRVE_VESPERY){
 			Log("set_hymnus(): prvé vešpery...\n");
 			file_name_litobd_pc(OBD_CEZ_ROK);
@@ -4334,9 +4335,12 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd){
 		// pre vn1.htm je len jeden hymnus pre modlitbu cez deň; používa sa aj vo vn2.htm
 		ktory = -1;
 	}
-	else if (je_modlitba_cez_den(modlitba) || (_global_jazyk == JAZYK_CZ)){
-		// why is here also (je_modlitba_cez_den(modlitba) || ???
+	else if (je_modlitba_cez_den(modlitba) || ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))){
+		// pre veľkonočné obdobie nemajú hymny pre MCD alternatívy
 		ktory = 0;
+	}
+	else if ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
+		ktory = 2; // obidve potenciálne alternatívy
 	}
 	else if ((den == DEN_NEDELA) || (_global_den.denvr == NANEBOVSTUPENIE)){
 		ktory = 1;
@@ -8042,9 +8046,9 @@ label_24_DEC:
 // switch(litobd), case OBD_VELKONOCNE_II -- begin --------------------------------------------
 		case OBD_VELKONOCNE_II:// po nanebovstupeni pana
 			Log("OBD_VELKONOCNE_II\n");
-// 2006-02-11: doplnené posvätné čítanie
+
 #define _velk2_hymnus {\
-	sprintf(_anchor, "%s_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
+	sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 	if(modlitba == MODL_POSV_CITANIE){\
 		_set_hymnus(modlitba, _file_pc, _anchor);\
 		set_LOG_litobd_pc;\
@@ -8055,7 +8059,7 @@ label_24_DEC:
 	}\
 }
 
-// citania ako v OBD_VELKONOCNE_I; 7. tyzden ma na vespery vlastne citanie | 2006-02-11: oprava
+// citania ako v OBD_VELKONOCNE_I; 7. tyzden ma na vespery vlastne citanie
 #define _velk2_kcitanie {\
 	Log("\n\n _velk2_kcitanie \n\n");\
 	if(((den == DEN_NEDELA) || (modlitba == MODL_RANNE_CHVALY) || (tyzden == 6))\
