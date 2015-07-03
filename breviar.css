@@ -52,7 +52,7 @@
 	font-weight: normal; 
 }
 
-.respons p.respR, p.respV, p.respO, p.respF, .respR, .respV, .respO, .respF { 
+.respons p.respR, .respons p.respV, .respons p.respO, .respons p.respF, p.respR, p.respV, p.respO, p.respF, .respR, .respV, .respO, .respF { 
 	font-weight: bold; 
 	margin: 0; 
 	-webkit-margin-after: 0em; 

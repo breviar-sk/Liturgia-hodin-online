@@ -267,6 +267,9 @@ short int _global_style_margin;
 
 short int _global_pocet_zalmov_kompletorium;
 
+char _special_anchor_prefix[SMALL]; // used for CZ hymns
+char _special_anchor_postfix[SMALL]; // used for CZ hymns in Per Annum
+
 char _global_export_navig_hore[SMALL] = DEFAULT_MONTH_EXPORT;
 char _global_export_navig_hore_month[SMALL] = DEFAULT_MONTH_EXPORT;
 char _global_export_navig_hore_day[SMALL] = DEFAULT_MONTH_EXPORT;
@@ -2935,7 +2938,12 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Log("podmienka == %d pred kontrolou _global_modlitba == %s...\n", podmienka, nazov_modlitby(_global_modlitba));
 
 			if (_global_jazyk == JAZYK_CZ){
-				podmienka = ANO;
+				if (specialne_dni_bez_hymnov_k_volnemu_vyberu_CZ){
+					podmienka = NIE;
+				}
+				else{
+					podmienka = ANO;
+				}
 				bit = BIT_OPT_5_CZ_HYMNY_VYBER;
 				sprintf(popis_show, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_option5_CZHymnus_ordinary[_global_jazyk]);
 				sprintf(popis_hide, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_option5_CZHymnus_extra[_global_jazyk]);
@@ -8637,8 +8645,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		if (
 			(i == JAZYK_SK) ||
 			(i == JAZYK_CZ) ||
-#if defined(OS_Windows_Ruby)
 			(i == JAZYK_CZ_OP) ||
+#if defined(OS_Windows_Ruby)
 			(i == JAZYK_RU) ||
 #endif
 			(i == JAZYK_HU)){
@@ -17005,8 +17013,9 @@ int breviar_main(int argc, char **argv){
 				// rozparsovanie premennej pom_EXPORT_MONTHLY, nastavenej v getArgv()
 				Log("rozparsovanie premennej pom_EXPORT_MONTHLY, nastavenej v getArgv()\n");
 				export_monthly_druh = atoi(pom_EXPORT_MONTHLY);
-				if (export_monthly_druh <= 0)
+				if (export_monthly_druh <= 0){
 					export_monthly_druh = 0; // možno ide o znakový reťazec nekonvertovateľný na číslo; berieme to ako default správanie
+				}
 				Log("export_monthly_druh == %d\n", export_monthly_druh);
 			}// _global_opt_batch_monthly == ANO
 
@@ -17018,6 +17027,16 @@ int breviar_main(int argc, char **argv){
 			// rozparsovanie parametrov opt...; v prípade nenastavenia sa nastaví hodnota GLOBAL_OPTION_NULL
 			Log("volám _rozparsuj_parametre_OPT z main()...\n");
 			_rozparsuj_parametre_OPT();
+
+			// setting global variable used for CZ hymns
+			if ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
+				sprintf(_special_anchor_prefix, "%s", CZ_HYMNUS_PREFIX);
+				sprintf(_special_anchor_postfix, "%s", CZ_HYMNUS_POSTFIX);
+			}
+			else{
+				mystrcpy(_special_anchor_prefix, STR_EMPTY, SMALL);
+				mystrcpy(_special_anchor_postfix, STR_EMPTY, SMALL);
+			}
 
 			Log("export_monthly_druh == %d\n", export_monthly_druh);
 
@@ -17042,17 +17061,17 @@ int breviar_main(int argc, char **argv){
 				_main_rozbor_dna(pom_DEN, pom_MESIAC, pom_ROK, pom_MODLITBA, pom_DALSI_SVATY);
 				_main_LOG_to_Export("spat po skonceni _main_rozbor_dna(%s, %s, %s, %s, %s);\n", pom_DEN, pom_MESIAC, pom_ROK, pom_MODLITBA, pom_DALSI_SVATY);
 				break;
-			case PRM_TXT: // 2011-02-02: doplnené; export do TXT pre RKC
+			case PRM_TXT: // export do TXT pre RKC
 				_main_LOG_to_Export("spustam _main_rozbor_dna_txt(typ == %d; stringy: pom_DEN = %s, pom_MESIAC = %s, pom_ROK = %s);\n", query_type, pom_DEN, pom_MESIAC, pom_ROK);
 				_main_rozbor_dna_txt(query_type, pom_DEN, pom_MESIAC, pom_ROK);
 				_main_LOG_to_Export("spat po skonceni _main_rozbor_dna_txt(%s, %s, %s, %s);\n", pom_DEN, pom_MESIAC, pom_ROK);
 				break;
-			case PRM_XML: // 2012-10-16: doplnené; XML export
+			case PRM_XML: // XML export
 				_main_LOG_to_Export("spustam _main_rozbor_dna_txt(typ == %d; stringy: pom_DEN = %s, pom_MESIAC = %s, pom_ROK = %s);\n", query_type, pom_DEN, pom_MESIAC, pom_ROK);
 				_main_rozbor_dna_txt(query_type, pom_DEN, pom_MESIAC, pom_ROK);
 				_main_LOG_to_Export("spat po skonceni _main_rozbor_dna_txt(%s, %s, %s, %s);\n", pom_DEN, pom_MESIAC, pom_ROK);
 				break;
-			case PRM_STATIC_TEXT: // 2014-10-09: doplnené; includovanie statického textu
+			case PRM_STATIC_TEXT: // includovanie statického textu
 				_main_LOG_to_Export("spustam _main_static_text(pom_STATIC_TEXT = %s, pom_MODL_ORDINARIUM = %s);\n", pom_STATIC_TEXT, pom_MODL_ORDINARIUM);
 				_main_static_text(pom_STATIC_TEXT, pom_MODL_ORDINARIUM);
 				_main_LOG_to_Export("spat po skonceni _main_static_text(%s, %s);\n", pom_STATIC_TEXT, pom_MODL_ORDINARIUM);
@@ -17062,7 +17081,7 @@ int breviar_main(int argc, char **argv){
 				_main_zaltar(pom_DEN_V_TYZDNI, pom_TYZDEN, pom_MODLITBA);
 				_main_LOG_to_Export("spat po skonceni _main_zaltar(%s, %s, %s);\n", pom_DEN_V_TYZDNI, pom_TYZDEN, pom_MODLITBA);
 				break;
-			case PRM_LIT_OBD: // 2011-01-25: doplnené; prípad, že ide o výber dňa v liturgickom období
+			case PRM_LIT_OBD: // výber dňa v liturgickom období
 				_main_LOG_to_Export("spustam _main_liturgicke_obdobie(%s, %s, %s, %s, %s);\n", pom_DEN_V_TYZDNI, pom_TYZDEN, pom_MODLITBA, pom_LIT_OBD, pom_LIT_ROK);
 				_main_liturgicke_obdobie(pom_DEN_V_TYZDNI, pom_TYZDEN, pom_MODLITBA, pom_LIT_OBD, pom_LIT_ROK);
 				_main_LOG_to_Export("spat po skonceni _main_liturgicke_obdobie(%s, %s, %s, %s, %s);\n", pom_DEN_V_TYZDNI, pom_TYZDEN, pom_MODLITBA, pom_LIT_OBD, pom_LIT_ROK);
@@ -17087,7 +17106,7 @@ int breviar_main(int argc, char **argv){
 				_main_tabulka(pom_ROK_FROM, pom_ROK_TO, pom_LINKY);
 				_main_LOG_to_Export("spat po skonceni _main_tabulka();\n");
 				break;
-			case PRM_BATCH_MODE: // pridany batch mode; 2003-07-04
+			case PRM_BATCH_MODE:
 				_main_LOG_to_Export("spustam _main_batch_mode();\n");
 				Export("<h2>Batch mode (dávkové použitie)</h2>\n");
 				// vyuzivam parametre, ktore boli nastavene
@@ -17129,7 +17148,7 @@ int breviar_main(int argc, char **argv){
 
 			_main_LOG_to_Export("volám patka(); ... [po volaní _main_... funkcií v switch(query_type)...]\n");
 			if (query_type != PRM_XML){
-				patka(); // 2011-07-01: doplnené (ešte pred dealokovanie premenných)
+				patka(); // doplnené (ešte pred dealokovanie premenných)
 			}
 			else{
 				xml_patka();

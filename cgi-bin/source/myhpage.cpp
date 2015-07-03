@@ -305,11 +305,23 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 }// _hlavicka()
 
 void hlavicka(char *title, short int level, short int spec){
-	_hlavicka(title, NULL, level, spec);
+	char _title[MAX_STR] = STR_EMPTY;
+#if defined(OS_Windows_Ruby)
+	mystrcpy(_title, skratka_jazyka_title[_global_jazyk], MAX_STR);
+	strcat(_title, ": ");
+#endif
+	strcat(_title, title);
+	_hlavicka(_title, NULL, level, spec);
 }
 
 void hlavicka(char *title, FILE * expt, short int level, short int spec){
-	_hlavicka(title, expt, level, spec);
+	char _title[MAX_STR] = STR_EMPTY;
+#if defined(OS_Windows_Ruby)
+	mystrcpy(_title, skratka_jazyka_title[_global_jazyk], MAX_STR);
+	strcat(_title, ": ");
+#endif
+	strcat(_title, title);
+	_hlavicka(_title, expt, level, spec);
 }
 
 // exportuje hlavicku XML dokumentu

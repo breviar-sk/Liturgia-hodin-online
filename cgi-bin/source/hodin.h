@@ -644,6 +644,8 @@ const char *nazov_slavenia_lokal[] =
 ,"pro FMA nezávazná památka"                                                                                    // LOKAL_SLAV_LUB_SPOMIENKA_FMA_CZ
 ,"pro VDB svátek"                                                                                               // LOKAL_SLAV_SVIATOK_VDB_CZ
 ,"pro FMA slavnost"                                                                                             // LOKAL_SLAV_SLAVNOST_FMA_CZ
+, "A Szeged-Csanádi egyházmegyében"                                                                             // LOKAL_SLAV_SZEGED_CSAN_EGYH3
+, "len pre Ordinariát ozbrojených síl a ozbrojených zborov SR"                                                  // LOKAL_SLAV_ORDINARIAT
 };
 
 // names of liturgical colors
@@ -1034,6 +1036,10 @@ const char *skratka_jazyka[POCET_JAZYKOV + 1] =
 const char *postfix_jazyka[POCET_JAZYKOV + 1] =
 { "", "cz", "en", "la", "", "czop", "hu", "ru", /* STRING_1_FOR_NEW_LANGUAGE */ };
 // Poznámka: Postfix nesmie obsahovať na začiatku oddeľovač (slash resp. backslash); musí sa jednať o podadresár pod include
+
+// language codes; internal usage for HTML page title
+const char *skratka_jazyka_title[POCET_JAZYKOV + 1] =
+{ "SK", "CZ", "EN", "LA", "??", "CZOP", "HU", "RU", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const short int format_datumu[POCET_JAZYKOV + 1] = {
 	/* sk */ FORMAT_DATUMU_DEN_MESIAC_ROK,
@@ -6188,7 +6194,7 @@ const char *text_MAJ_30_HU[POCET_JAZYKOV + 1] =
 };
 const char *text_MAJ_31[POCET_JAZYKOV + 1] =
 {
-	"Navštívenie prebl. Panny Márie",
+	"Návšteva Panny Márie",
 	"Navštívení Panny Marie",
 	"",
 	"",
@@ -6722,6 +6728,18 @@ const char *text_JUN_13[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Antonína z Padovy, kněze a učitele Církve",
 	"Páduai Szent Antal áldozópap és egyháztanító",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUN_13_SK[POCET_JAZYKOV + 1] =
+{
+	"Výročie posviacky katedrálneho chrámu sv. Šebastiána",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -11034,6 +11052,18 @@ const char *text_NOV_28_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_NOV_28_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Marchiai Szent Jakab áldozópap",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

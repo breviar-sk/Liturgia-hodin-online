@@ -3,7 +3,7 @@
 ROOT=`dirname $0`
 
 # Setup symlinks for includes
-for inc in include include_cz include_hu; do
+for inc in include include_cz include_czop include_hu; do
   mkdir -p $ROOT/assets/$inc
   pushd $ROOT/assets/$inc
   rm -f *

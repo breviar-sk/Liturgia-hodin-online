@@ -918,6 +918,8 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_LUB_SPOMIENKA_FMA_CZ    105
 #define LOKAL_SLAV_SVIATOK_VDB_CZ          106
 #define LOKAL_SLAV_SLAVNOST_FMA_CZ         107
+#define LOKAL_SLAV_SZEGED_CSAN_EGYH3       108
+#define LOKAL_SLAV_ORDINARIAT              109
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined
@@ -1344,6 +1346,7 @@ extern short int _global_pocet_zalmov_kompletorium;
 extern const char *nazov_jazyka[POCET_JAZYKOV + 1];
 extern const char *skratka_jazyka[POCET_JAZYKOV + 1];
 extern const char *postfix_jazyka[POCET_JAZYKOV + 1];
+extern const char *skratka_jazyka_title[POCET_JAZYKOV + 1];
 
 extern const char *nazov_kalendara_short[POCET_KALENDAROV + 1];
 extern const char *skratka_kalendara[POCET_KALENDAROV + 1];

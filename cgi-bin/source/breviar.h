@@ -148,38 +148,30 @@ extern char *_global_buf; // 2006-08-01: túto premennú tiež alokujeme
 extern char *_global_buf2; // 2006-08-01: túto premennú tiež alokujeme
 //---------------------------------------------------------------------
 
-// 2006-07-11: Pridané kvôli jazykovým mutáciám (breviar.cpp)
-// 2010-08-04: zmenené _global_language na _global_jazyk (doteraz bolo len pomocou #define)
 extern short int _global_jazyk;
-// 2010-08-04: pridané kvôli kalendárom (napr. rehoľný), súvisí s jazykovými mutáciami
-extern short int _global_kalendar;
-// 2014-09-22: pridané
+extern short int _global_kalendar; // kalendáre (napr. rehoľné), súvisí s jazykovými mutáciami
 extern short int _global_ritus;
 
-extern short int _global_css; // 2008-08-08: Pridané kvôli rôznym css
+extern short int _global_css;
 
-extern short int _global_font; // 2011-05-06: Pridané kvôli rôznym fontom
-extern short int _global_font_size; // 2011-05-13: Pridané kvôli rôznym veľkostiam fontov
-extern short int _global_style_margin; // 2015-01-08: for usage in <body> for style margin-left & margin-right
+extern short int _global_font;
+extern short int _global_font_size;
+extern short int _global_style_margin; // for usage in <body> for style margin-left & margin-right
 
-// 2006-10-17: Pridané kvôli kompletóriu: niekedy obsahuje až dva žalmy
-extern short int _global_pocet_zalmov_kompletorium;
+extern short int _global_pocet_zalmov_kompletorium; // kompletórium niekedy obsahuje až dva žalmy
 
-// 2009-08-03, pridané
+extern char _special_anchor_prefix[SMALL]; // used for CZ hymns
+extern char _special_anchor_postfix[SMALL]; // used for CZ hymns in Per Annum
+
 extern short int _global_opt_batch_monthly;
 
-// 2009-08-05, pridané
 extern short int _global_hlavicka_Export;
 // extern char name_batch_html_file[MAX_STR];
-// 2011-07-01, pridané
 extern short int _global_patka_Export;
 
-// 2011-05-05: kvôli možnosti serif/sans serif override (z css sme odstránili font-family)
 extern char _global_css_font_family[SMALL];
-// 2011-05-13: kvôli možnosti voľby veľkosti písma
 extern char _global_css_font_size[SMALL];
 
-// 2009-08-12, pridané
 extern char _global_export_navig_hore[SMALL];
 extern short int _global_opt_export_date_format;
 
@@ -191,6 +183,8 @@ extern short int _global_opt_export_date_format;
 
 // define for decide whether offline (Android) app supports hyperlinks to Bible app for liturgical readings -- currently in SK only
 #define su_liturgicke_citania_offline (_global_jazyk == JAZYK_SK)
+
+#define specialne_dni_bez_hymnov_k_volnemu_vyberu_CZ (_global_den.denvr == VELKONOCNA_NEDELA)
 
 #define je_modlitba_cez_den(modlitba) ((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI))
 #define je_kompletorium12(modlitba) ((modlitba == MODL_KOMPLETORIUM) || (modlitba == MODL_PRVE_KOMPLETORIUM) || (modlitba == MODL_DRUHE_KOMPLETORIUM))

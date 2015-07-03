@@ -51,10 +51,11 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 
-// prefixes for special cases(anchors)
+// prefixes for special cases (anchors)
 #define CZ_HYMNUS_PREFIX    "CZ_"
 
 // postfixes for special cases (anchors)
+#define CZ_HYMNUS_POSTFIX   "_CZ"
 #define VELKONOCNA_PRIPONA  "VE"
 #define POSTNA_PRIPONA      "PO"
 #define CEZROCNA_PRIPONA    "CR"
@@ -275,6 +276,7 @@ extern const char *text_JUN_09[POCET_JAZYKOV + 1];
 extern const char *text_JUN_11[POCET_JAZYKOV + 1];
 extern const char *text_JUN_12_CZ[POCET_JAZYKOV + 1];
 extern const char *text_JUN_13[POCET_JAZYKOV + 1];
+extern const char *text_JUN_13_SK[POCET_JAZYKOV + 1];
 extern const char *text_JUN_14_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUN_15_CZ[POCET_JAZYKOV + 1];
 extern const char *text_JUN_15_HU[POCET_JAZYKOV + 1];
@@ -454,6 +456,7 @@ extern const char *text_NOV_23_2[POCET_JAZYKOV + 1];
 extern const char *text_NOV_24[POCET_JAZYKOV + 1];
 extern const char *text_NOV_25[POCET_JAZYKOV + 1];
 extern const char *text_NOV_25_HU[POCET_JAZYKOV + 1];
+extern const char *text_NOV_28_HU[POCET_JAZYKOV + 1];
 extern const char *text_NOV_30[POCET_JAZYKOV + 1];
 
 extern const char *text_DEC_01_CZ[POCET_JAZYKOV + 1];
