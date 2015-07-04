@@ -1025,7 +1025,7 @@ const char *nazov_ritu_jazyka[POCET_RITOV + 1][POCET_JAZYKOV + 1] =
 // the names of languages
 // 2006-07-11: Pridané kvôli jazykovým mutáciám
 const char *nazov_jazyka[POCET_JAZYKOV + 1] =
-{ "slovenčina", "čeština", "English", "lingua latina", "(neurčený)", "čeština-dominikáni", "magyar", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "slovenčina", "čeština", "English", "lingua latina", "(neurčený)", "čeština/dominikánský", "magyar", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // language codes; internal usage for HTTP requests
 const char *skratka_jazyka[POCET_JAZYKOV + 1] =
@@ -1543,6 +1543,19 @@ const char *html_text_jazyk[POCET_JAZYKOV + 1] =
 	"Language",
 	"Jazyk",
 	"Nyelv",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_jazyk_verzia[POCET_JAZYKOV + 1] =
+{
+	"Jazyk/verzia breviára",
+	"Jazyk/verze breviáře",
+	"Language/Breviary version",
+	"Lingua/Breviarium version",
+	"Language/Breviary version",
+	"Jazyk/verze breviáře",
+	"Nyelv/zsolozsma verzió",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

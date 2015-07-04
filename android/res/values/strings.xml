@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.11.2</string>
+    <string name="version">1.12</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -117,6 +117,12 @@ body { background-color: #000000; color: #cccccc; }
 <body>
 
 <p><b>Breviary application | What\'s new</b>
+
+<p><b>Version 1.12:</b>
+<ul>
+<li> Corrections for all languages.
+<li> Typos and fixes for all languages.
+</ul>
 
 <p><b>Version 1.11.2:</b>
 <ul>

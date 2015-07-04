@@ -6402,7 +6402,7 @@ label_24_DEC:
 
 				modlitba = MODL_PREDPOLUDNIM;
 				_set_zalmy_telakrvi(modlitba);
-				if(_global_jazyk == JAZYK_CZ){
+				if ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
 					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
 				}
 				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
@@ -6411,7 +6411,7 @@ label_24_DEC:
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				modlitba = MODL_NAPOLUDNIE;
 				_set_zalmy_telakrvi(modlitba);
-				if(_global_jazyk == JAZYK_CZ){
+				if ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
 					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
 				}
 				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
@@ -6420,7 +6420,7 @@ label_24_DEC:
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				modlitba = MODL_POPOLUDNI;
 				_set_zalmy_telakrvi(modlitba);
-				if(_global_jazyk == JAZYK_CZ){
+				if ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
 					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
 				}
 				_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);

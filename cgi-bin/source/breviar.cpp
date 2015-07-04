@@ -8627,15 +8627,17 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	// ---------------- language selection begin
 	Export("<"HTML_TABLE">\n");
 	Export("<"HTML_TABLE_ROW">\n");
-	Export("<"HTML_TABLE_CELL">\n");
+	Export("<"HTML_TABLE_CELL_CENTER">\n");
 
 	sprintf(action, "%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s", script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, _global_den.den, STR_MESIAC, _global_den.mesiac, STR_ROK, _global_den.rok, pom2);
 	Export_HtmlFormPOST(action);
 
 	ExportHtmlComment("language selection combobox");
 
-	Export("<"HTML_SPAN_TOOLTIP">%s:"HTML_SPAN_END, html_text_jazyk_explain[_global_jazyk], html_text_jazyk[_global_jazyk]);
-	Export("\n");
+	Export("<"HTML_SPAN_TOOLTIP">%s:"HTML_SPAN_END, html_text_jazyk_explain[_global_jazyk], html_text_jazyk_verzia[_global_jazyk]);
+
+	Export(HTML_LINE_BREAK"\n");
+
 	// drop-down list pre výber jazyka
 	// pole WWW_JAZYK
 	Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_JAZYK, html_text_jazyk_explain[_global_jazyk]);
@@ -8653,7 +8655,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("<option%s>%s</option>\n", (i != _global_jazyk) ? STR_EMPTY : html_option_selected, nazov_jazyka[i]);
 		}
 	}
-	Export("</select>\n");
+	Export("</select>");
+
+	Export(HTML_LINE_BREAK"\n");
 
 	ExportHtmlComment("submit button (language)");
 
@@ -13108,7 +13112,7 @@ void _main_analyza_roku(char *rok){
 
 	// jazyk
 	Export("<"HTML_SPAN_BOLD_IT">");
-	Export((char *)html_text_jazyk[_global_jazyk]);
+	Export((char *)html_text_jazyk_verzia[_global_jazyk]);
 	Export(":"HTML_SPAN_END"\n");
 	Export((char *)nazov_jazyka[_global_jazyk]);
 	Export(HTML_LINE_BREAK);

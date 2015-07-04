@@ -100,6 +100,11 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Zsolozsma alkalmazás | Újdonságok</b>
 
+<p><b>Verzió 1.12:</b>
+<ul>
+<li> Gépelési hibák javítása.
+</ul>
+
 <p><b>Verzió 1.11.2:</b>
 <ul>
 <li> Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.
