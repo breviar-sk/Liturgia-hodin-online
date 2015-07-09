@@ -554,22 +554,23 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_DOPLNK_PSALM_126_129          "DPSALM-126-129"
 #define PARAM_DOPLNK_PSALM_127_131          "DPSALM-127-131"
 
-// 2009-04-08: zakončenie modlitby trojaké, krátke resp. dlhé
+// zakončenie modlitby trojaké, krátke resp. dlhé
 #define PARAM_ZAKONCENIE_SKRZE              "SKRZE"
 #define PARAM_ZAKONCENIE_LEBO_TY            "LEBO_TY"
 #define PARAM_ZAKONCENIE_LEBO_ON            "LEBO_ON"
-// 2009-12-14: zakončenie modlitby trojaké, krátke resp. dlhé s malým písmenkom na začiatku
+// zakončenie modlitby trojaké, krátke resp. dlhé s malým písmenkom na začiatku
 #define PARAM_ZAKONCENIE_SKRZE_MALE         "SKRZE_MALE"
 #define PARAM_ZAKONCENIE_LEBO_TY_MALE       "LEBO_TY_MALE"
 #define PARAM_ZAKONCENIE_LEBO_ON_MALE       "LEBO_ON_MALE"
-// 2010-06-07: ešte jedno zakončenie modlitby pre slovenčinu, krátke resp. dlhé (POST1_MODLITBA5NE)
+// ešte jedno zakončenie modlitby pre slovenčinu, krátke resp. dlhé (POST1_MODLITBA5NE)
 #define PARAM_ZAKONCENIE_ON_JE              "ON_JE"
-// 2010-01-14: ešte jedno zakončenie modlitby pre slovenčinu, krátke resp. dlhé
+// ešte jedno zakončenie modlitby pre slovenčinu, krátke resp. dlhé
 #define PARAM_ZAKONCENIE_KTORY_JE           "KTORY_JE"
-// 2012-03-16: predslovy k zakončeniam, ktoré sa pre férie nemajú zobraziť, ak sa slávi spomienka v privilegovaných dňoch
+// predslovy k zakončeniam, ktoré sa pre férie nemajú zobraziť, ak sa slávi spomienka v privilegovaných dňoch
 #define PARAM_ZAKONCENIE_O_TO_TA_PROSIME    "O_TO_TA_PROSIME"
 
-// 2011-08-15: force pre jednotlivé časti modlitby, funkcie _set_spolocna_cast()...
+// force pre jednotlivé časti modlitby, funkcie _set_spolocna_cast()...
+#define FORCE_NEBRAT             0
 #define FORCE_BRAT_ANTIFONY      1
 #define FORCE_BRAT_ZALMY         2
 #define FORCE_BRAT_KCIT_1CIT     4 // krátke čítanie pre rch+v; 1. čítanie pre posvätné čítanie

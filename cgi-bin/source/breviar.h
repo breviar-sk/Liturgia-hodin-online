@@ -350,6 +350,9 @@ extern short int _global_opt_export_date_format;
 (_global_modlitba == MODL_VESPERY && ((_global_modl_vespery.alternativy & BIT_ALT_HYMNUS_VN) == BIT_ALT_HYMNUS_VN)) \
 )
 
+// for JAZYK_CZ, is chosen alternative for hymns of supplement?
+#define je_CZ_hymny_k_volnemu_vyberu ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))
+
 // is supplementary psalmody?
 #define je_len_doplnkova_psalmodia(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_LEN_DOPLNKOVA_PSALMODIA) == BIT_ALT_LEN_DOPLNKOVA_PSALMODIA)) \

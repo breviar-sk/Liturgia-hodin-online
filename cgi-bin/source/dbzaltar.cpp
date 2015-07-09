@@ -1299,7 +1299,7 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 		else{
 			Log("set_hymnus_kompletorium_obd()...\n");
 			// pôvodne tu bol náhodný výber (podľa (den + tyzzal) % 2); upravené, ak si človek sám volí alternatívy
-			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES) && (!((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))))){
+			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES) && !(je_CZ_hymny_k_volnemu_vyberu)){
 				// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
 				ktory = (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL)) ? 1 : 0;
 				Log("2013-01-29: som tu (%d)...\n", ktory);
@@ -4353,7 +4353,7 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd){
 		// pre veľkonočné obdobie nemajú hymny pre MCD alternatívy
 		ktory = 0;
 	}
-	else if ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
+	else if (je_CZ_hymny_k_volnemu_vyberu){
 		ktory = 2; // obidve potenciálne alternatívy
 	}
 	else if ((den == DEN_NEDELA) || (_global_den.denvr == NANEBOVSTUPENIE)){
@@ -6316,7 +6316,7 @@ label_24_DEC:
 	// 2006-01-24: tu v skutočnosti začína CEZROČNÉ OBDOBIE
 
 			// nastavenie možnosti alternatívnych hymnov pre posv. čítanie a kompletórium
-			if ((_global_jazyk != JAZYK_CZ) || ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))){
+			if ((_global_jazyk != JAZYK_CZ) || (je_CZ_hymny_k_volnemu_vyberu)){
 				_set_hymnus_alternativy(MODL_KOMPLETORIUM);
 				_set_hymnus_alternativy(MODL_PREDPOLUDNIM);
 				_set_hymnus_alternativy(MODL_NAPOLUDNIE);
@@ -11772,12 +11772,15 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
-								set_spolocna_cast(sc, poradie_svaty);
+								set_spolocna_cast(sc, poradie_svaty, (_global_jazyk == JAZYK_CZ) ? FORCE_BRAT_HYMNUS : FORCE_NEBRAT);
 								// set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_full_okrem_hymnu(modlitba);
 							_set_zalmy_1nedele_rch();
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 
 							modlitba = MODL_POSV_CITANIE;
 							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -12867,7 +12870,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 						modlitba = MODL_PRVE_VESPERY;
 						_vlastna_cast_full(modlitba);
-						_set_zalmy_sviatok_obetovania(modlitba); // 2010-02-04: opravené
+						_set_zalmy_sviatok_obetovania(modlitba);
 
 						modlitba = MODL_INVITATORIUM;
 						_vlastna_cast_antifona_inv;
@@ -12890,7 +12893,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_full(modlitba);
-						_set_zalmy_sviatok_obetovania(modlitba); // 2010-02-04: opravené
+						_set_zalmy_sviatok_obetovania(modlitba);
 
 						// kompletórium: prevzaté podľa 06AUG
 						// keďže v liturgicke_obdobie() bolo odvetvené, nič sa pre kompletórium nenastavovalo - doplnené
@@ -19162,14 +19165,23 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 							_vlastna_cast_benediktus;
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 							_vlastna_cast_modlitba;
 							_vlastna_cast_2citanie;
 
 							modlitba = MODL_VESPERY;
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 							_vlastna_cast_magnifikat;
 							_vlastna_cast_modlitba;
 
@@ -23112,14 +23124,23 @@ label_25_MAR:
 									set_spolocna_cast(sc, poradie_svaty);
 
 								modlitba = MODL_RANNE_CHVALY;
+								if (je_CZ_hymny_k_volnemu_vyberu){
+									_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+								}
 								_vlastna_cast_benediktus;
 								_vlastna_cast_modlitba;
 
 								modlitba = MODL_POSV_CITANIE;
+								if (je_CZ_hymny_k_volnemu_vyberu){
+									_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+								}
 								_vlastna_cast_modlitba;
 								_vlastna_cast_2citanie;
 
 								modlitba = MODL_VESPERY;
+								if (je_CZ_hymny_k_volnemu_vyberu){
+									_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+								}
 								_vlastna_cast_magnifikat;
 								_vlastna_cast_modlitba;
 
@@ -23946,7 +23967,12 @@ label_25_MAR:
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
-						_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+						if (je_CZ_hymny_k_volnemu_vyberu){
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+						}
+						else{
+							_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+						}
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
@@ -23973,17 +23999,28 @@ label_25_MAR:
 
 							modlitba = MODL_RANNE_CHVALY;
 							_vlastna_cast_modlitba;
-							if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))
+							if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 								_vlastna_cast_benediktus;
+							}
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 
 							modlitba = MODL_POSV_CITANIE;
 							_vlastna_cast_modlitba;
 							_vlastna_cast_2citanie;
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_modlitba;
-							if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))
+							if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 								_vlastna_cast_magnifikat;
+							}
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 
 							break;
 						}
@@ -24159,6 +24196,9 @@ label_25_MAR:
 						if(_global_jazyk != JAZYK_CZ){
 							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 						}
+						if (je_CZ_hymny_k_volnemu_vyberu){
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+						}
 						_vlastna_cast_benediktus;
 						_vlastna_cast_modlitba;
 
@@ -24167,6 +24207,9 @@ label_25_MAR:
 						_vlastna_cast_2citanie;
 						if(_global_jazyk != JAZYK_CZ){
 							_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+						}
+						if (je_CZ_hymny_k_volnemu_vyberu){
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 						}
 
 						modlitba = MODL_VESPERY;
@@ -24308,20 +24351,29 @@ label_25_MAR:
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							// v slovenskom breviári má vlastný hymnus, v českom nie; 2008-09-09; v dominikánskom áno; 2009-09-09; aj v maďarskom vlastný hymnus; 2011-07-01
-							if(_global_jazyk != JAZYK_CZ)
+							if (_global_jazyk != JAZYK_CZ){
 								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 							_vlastna_cast_benediktus;
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 							_vlastna_cast_modlitba;
 							_vlastna_cast_2citanie;
 
 							modlitba = MODL_VESPERY;
-							// v slovenskom breviári má vlastný hymnus, v českom nie; 2008-09-09; v dominikánskom áno; 2009-09-09; aj v maďarskom vlastný hymnus; 2011-07-01
-							if(_global_jazyk != JAZYK_CZ)
+							if (_global_jazyk != JAZYK_CZ){
 								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
+							if (je_CZ_hymny_k_volnemu_vyberu){
+								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+							}
 							_vlastna_cast_magnifikat;
 							_vlastna_cast_modlitba;
 
@@ -26794,18 +26846,21 @@ label_25_MAR:
 
 						modlitba = MODL_RANNE_CHVALY;
 						_vlastna_cast_full(modlitba);
-						_set_zalmy_1nedele_rch(); // 2006-09-05: doplnené podľa breviára, upozornil Medus
+						_set_zalmy_1nedele_rch();
 
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
 						_vlastna_cast_2citanie;
-						if(_global_jazyk == JAZYK_SK){ // 2009-03-19: odvetvené len pre Slovensko
+						if(_global_jazyk == JAZYK_SK){
 							_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+						}
+						if (_global_jazyk == JAZYK_CZ){
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 						}
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_full(modlitba);
-						_set_zalmy_sviatok_muc(modlitba); // 2011-08-29: doplnené podľa breviára
+						_set_zalmy_sviatok_muc(modlitba);
 
 						break;
 					}

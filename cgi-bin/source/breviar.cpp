@@ -17033,7 +17033,7 @@ int breviar_main(int argc, char **argv){
 			_rozparsuj_parametre_OPT();
 
 			// setting global variable used for CZ hymns
-			if ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
+			if (je_CZ_hymny_k_volnemu_vyberu){
 				sprintf(_special_anchor_prefix, "%s", CZ_HYMNUS_PREFIX);
 				sprintf(_special_anchor_postfix, "%s", CZ_HYMNUS_POSTFIX);
 			}
