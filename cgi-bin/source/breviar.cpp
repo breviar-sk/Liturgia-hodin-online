@@ -2938,12 +2938,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Log("podmienka == %d pred kontrolou _global_modlitba == %s...\n", podmienka, nazov_modlitby(_global_modlitba));
 
 			if (_global_jazyk == JAZYK_CZ){
-				if (specialne_dni_bez_hymnov_k_volnemu_vyberu_CZ){
-					podmienka = NIE;
-				}
-				else{
-					podmienka = ANO;
-				}
+				podmienka = ANO;
 				bit = BIT_OPT_5_CZ_HYMNY_VYBER;
 				sprintf(popis_show, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_option5_CZHymnus_ordinary[_global_jazyk]);
 				sprintf(popis_hide, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_option5_CZHymnus_extra[_global_jazyk]);

@@ -4504,7 +4504,6 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	set_LOG_litobd;\
 }
 
-// preklopené spoločné kusy kódu pre adventné obdobia do define-ov
 #define _adv_hymnus {\
 	sprintf(_anchor, "%s%s%c_%s", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 	if(modlitba == MODL_POSV_CITANIE){\
@@ -4522,7 +4521,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	set_LOG_litobd;\
 }
 
-// upravené antifóny pre modlitbu cez deň - sú rovnaké, použitý anchor ANCHOR_ANTIFONY
+// antifóny pre modlitbu cez deň sú rovnaké, použitý anchor ANCHOR_ANTIFONY
 #define _adv_antifony_mcd {\
 	/* 1. antifóna */\
 	sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
@@ -4657,27 +4656,25 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			t = set_tyzzal_1_2(tyzzal); // nema efekt pre tyzden == 4, lebo to uz je OBD_ADVENTNE_II
 
 			if(den == DEN_NEDELA){ // nedeľa: 1.-3. adventná nedeľa
-				// 2012-05-24: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
 				_set_chvalospev_vig_adv(modlitba);
 				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden);
 
 				// prvé vešpery
-				/* 2007-12-04: bola tu dlho táto poznámka: 
-				 *             "sem treba zadratovat, ze 16. decembra, 1. vespery, uz maju mnohe veci z OBD_ADVENTNE_II"
-				 * to je však zabezpečené tým, že pre všepery 16. decembra (ak je to sobota, ako napr. v roku 2006)
-				 * sa jednak vezme všedný deň (sobota), jednak nasledujúci deň, teda 17. decembra, a prvé vešpery 
-				 * sú už z adventného obdobia II., väčšina vecí z 3. adventnej nedele je podľa OBD_ADVENTNE_II, 
-				 * niektoré z OBD_ADVENTNE_I - práve to bolo potrebné opraviť, dokončené 2007-12-04.
+				/* pre všepery 16. decembra (ak je to sobota, ako napr. v roku 2006) sa jednak vezme všedný deň (sobota), jednak nasledujúci deň, teda 17. decembra, 
+				 * a prvé vešpery sú už z adventného obdobia II., väčšina vecí z 3. adventnej nedele je podľa OBD_ADVENTNE_II, niektoré z OBD_ADVENTNE_I
 				 */
+
 				// hymnus - rovnaky pre prve a druhe vespery
 				modlitba = MODL_PRVE_VESPERY;
-				sprintf(_anchor, "%s%c_%s",
+				sprintf(_anchor, "%s%s%c_%s", _special_anchor_prefix,
 					nazov_OBD[litobd],
 					pismenko_modlitby(MODL_VESPERY),
 					ANCHOR_HYMNUS);
 				_set_hymnus(MODL_PRVE_VESPERY, _file, _anchor);
 				set_LOG_litobd;
+
 				// krátke responzórium - rovnake pre prve a druhe vespery a pre vsetky nedele
 				sprintf(_anchor, "%s%s%c_%s",
 					nazov_OBD[litobd],
@@ -4759,7 +4756,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				set_LOG_litobd;
 				_adv1_prosby; // prosby - rovnake pre prvu a tretiu, resp. druhu a stvrtu adventnu nedelu
 				_adv1_modlitba; // modlitba
-				// modlitbu cez deň nie je potrebné špeciálne riešiť, poznámka 2005-12-17
+				// modlitbu cez deň nie je potrebné špeciálne riešiť
 			}// nedeľa: 1.-3. adventná nedeľa
 			else{ // nie nedeľa, teda obyčajný deň adventného obdobia I.
 				// posvätné čítanie
@@ -4773,7 +4770,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					ANCHOR_KRESPONZ);
 				_set_kresponz(modlitba, _file_pc, _anchor);
 				set_LOG_litobd;
-				// antifony - sú ako pre obdobie cez rok, z bežného žaltára; 2005-12-17
+				// antifony - sú ako pre obdobie cez rok, z bežného žaltára
 
 				// ranné chvály
 				// hymnus - rovnaky pre vsetky dni
@@ -4922,10 +4919,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			// invitatórium
 			modlitba = MODL_INVITATORIUM;
-			if(_global_den.den != 24)
-				{_obd_invitat;}
-			else
-				{_adv_invitat_24DEC;}
+			if(_global_den.den != 24){
+				_obd_invitat;
+			}
+			else{
+				_adv_invitat_24DEC;
+			}
 
 			// ranné chvály
 			modlitba = MODL_RANNE_CHVALY;
@@ -5010,7 +5009,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			modlitba = MODL_POSV_CITANIE;
 			_adv_hymnus; // hymnus
-			// _adv2_antifony; // antifóny: 2011-12-20: len pre 4. adventnú nedeľu; ináč sa berú zo žaltára z bežného dňa
+			// _adv2_antifony; // antifóny: len pre 4. adventnú nedeľu; ináč sa berú zo žaltára z bežného dňa
 
 			// ďalšie závisia od dátumu (17. -- 24. december)
 			// 1. čítanie
@@ -5044,12 +5043,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			// nedeľa: 3. adventná nedeľa (len 17. decembra, ako napr. v roku 2006), inak 4. adventná nedeľa
 
-			// pozor! ak tretia adventna nedela padne na 17. decembra, beru sa antifony na magnifikat, benediktus, prosby a hymny z tejto casti,
+			// ak tretia adventna nedela padne na 17. decembra, beru sa antifony na magnifikat, benediktus, prosby a hymny z tejto casti,
 			// avsak ostatne sa berie akoby z OBD_ADVENTNE_I, teda _file == nazov_obd_htm[OBD_ADVENTNE_I] |  _anchor == napr. ADV13NEr_ANT1 
-			// 2007-12-04: doplnené: antifóna na magnifikat pre prvé vešpery 16. decembra (napr. rok 2006) sa vezme z 3. adventnej nedele
+			// antifóna na magnifikat pre prvé vešpery 16. decembra (napr. rok 2006) sa vezme z 3. adventnej nedele
 			if(den == DEN_NEDELA){
 
-				// 2012-05-24: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
 				_set_chvalospev_vig_adv(modlitba);
 				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden);
@@ -5066,18 +5065,18 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				// antifóna na magnifikat a prosby závisia od toho, či je 3. alebo 4. adventná nedeľa, preto presunuté nižšie
 
 				if((tyzden == 3) && (_global_den.den == 17)){
-					// jedine 17. decembra, preto doplnené aj o dátum; 2007-12-04
+					// jedine 17. decembra, preto doplnené aj o dátum
 					litobd = OBD_ADVENTNE_I;
 					file_name_litobd(litobd);
-					file_name_litobd_pc(litobd); // 2011-12-20: doplnené kvôli antifónam pre posv. čítanie
+					file_name_litobd_pc(litobd);
 
 					// prvé vešpery
 					modlitba = MODL_PRVE_VESPERY;
 					// hymnus pre obdobie OBD_ADVENTNE_II, teda tak, ako bol nastavený vyššie
-					_adv1_antifony; // antifóny - z tretej adventnej nedele, OBD_ADVENTNE_I; 2007-12-04
-					_adv1_kcitanie; // pozor, používame z adv. obdobia I. - 2006-01-27
+					_adv1_antifony; // antifóny - z tretej adventnej nedele, OBD_ADVENTNE_I
+					_adv1_kcitanie; // pozor, používame z adv. obdobia I.
 					_adv1_modlitba; // modlitba
-					// krátke responzórium - z tretej adventnej nedele, OBD_ADVENTNE_I; 2007-12-04
+					// krátke responzórium - z tretej adventnej nedele, OBD_ADVENTNE_I
 					sprintf(_anchor, "%s%s%c_%s",
 						nazov_OBD[litobd],
 						nazov_DN_asci[den],
@@ -5102,10 +5101,10 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 					// posvätné čítanie
 					modlitba = MODL_POSV_CITANIE;
-					_adv1_modlitba; // modlitba má byť z 3. adventnej nedele, doplnené 2007-12-04
+					_adv1_modlitba; // modlitba má byť z 3. adventnej nedele
 					tyzden_pom = tyzden;
 					tyzden = 3; // nie je treba; pre istotu
-					_adv1_antifony; // antifóny -- rovnaké pre všetky 4 adventné nedele, preto berieme z 3. adventnej nedele; 2011-12-20
+					_adv1_antifony; // antifóny -- rovnaké pre všetky 4 adventné nedele, preto berieme z 3. adventnej nedele
 					tyzden = tyzden_pom;
 
 					// ranné chvály
@@ -5116,18 +5115,18 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					set_LOG_litobd;
 					_adv1_antifony; // antifóny
 					// krátke čítanie - rovnaké pre všetky adventné nedele
-					_adv1_kcitanie; // pozor, používame z adv. obdobia I. - 2006-01-27
+					_adv1_kcitanie; // pozor, používame z adv. obdobia I.
 					_adv1_modlitba; // modlitba
 
 					// druhé vešpery
 					modlitba = MODL_VESPERY;
 					_adv1_antifony; // antifóny
 					// krátke čítanie - rovnake pre vsetky adventne nedele
-					_adv1_kcitanie; // pozor, používame z adv. obdobia I. - 2006-01-27
+					_adv1_kcitanie; // pozor, používame z adv. obdobia I.
 					_adv1_modlitba; // modlitba
 					// antifóna na magnifikat pre druhé vešpery nastavená vyššie, podľa dátumu, ako pre bežný deň
 
-					// modlitba cez deň, pridané 2005-12-17 podľa 2005-11-20 (ADV.I.) okrem hymnov
+					// modlitba cez deň, podľa ADV.I. okrem hymnov
 					modlitba = MODL_PREDPOLUDNIM;
 					_adv_antifony_mcd; // antifóny
 					_adv1_kcitanie; // krátke čítanie - rovnaké pre všetky adventné týždne
@@ -5244,7 +5243,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					}
 					else{
 						file_name_litobd(OBD_ADVENTNE_I);
-					}// doplnené 2011-12-20
+					}
 
 					// ranné chvály
 					// krátke responzórium - rovnake pre vsetky nedele
@@ -5314,7 +5313,7 @@ label_24_DEC:
 // panny marie bohorodicky
 #define _bohorod_hymnus(vlastny_anchor) {\
 	c = pismenko_modlitby(modlitba);\
-	sprintf(_anchor, "%s_%c%s", vlastny_anchor, c, ANCHOR_HYMNUS);\
+	sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, vlastny_anchor, c, ANCHOR_HYMNUS);\
 	if(modlitba == MODL_POSV_CITANIE){\
 		_set_hymnus(modlitba, _file_pc, _anchor);\
 		set_LOG_litobd_pc;\
@@ -5346,8 +5345,6 @@ label_24_DEC:
 		set_LOG_litobd;\
 	}\
 }
-// 2006-02-05: doplnené posvätné čítanie - modlitba ako na ranné chvály 
-// 2006-02-16: doplnená modlitba cez deň - modlitba ako na ranné chvály 
 #define _bohorod_modlitba {\
 	c = pismenko_modlitby(modlitba);\
 	if(modlitba == MODL_PRVE_VESPERY){\
@@ -5376,9 +5373,9 @@ label_24_DEC:
 	set_LOG_litobd;\
 }
 
-// sviatok svatej rodiny; 2006-02-05: doplnené posv. čítania a modlitba cez deň
+// sviatok svatej rodiny
 #define _sv_rodiny_hymnus(vlastny_anchor) {\
-	sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
+	sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 	if(modlitba == MODL_POSV_CITANIE){\
 		_set_hymnus(modlitba, _file_pc, _anchor);\
 		set_LOG_litobd_pc;\
@@ -5431,13 +5428,12 @@ label_24_DEC:
 
 // vianocne obdobie I
 
-// 2006-02-04: doplnené posvätné čítania a mcd
-// 2008-05-16: upravené, aby pre český breviár a prvé vešpery narodenia pána bol iný hymnus
+// pre český breviár a prvé vešpery narodenia pána je iný hymnus
 #define _vian1_hymnus {\
 	c = pismenko_modlitby(modlitba);\
 	if((modlitba == MODL_PRVE_VESPERY) && (_global_den.den != 25))\
 		c = pismenko_modlitby(MODL_VESPERY);\
-	sprintf(_anchor, "%s_%c%s", nazov_OBD[OBD_VIANOCNE_I], c, ANCHOR_HYMNUS);\
+	sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, nazov_OBD[OBD_VIANOCNE_I], c, ANCHOR_HYMNUS);\
 	if(modlitba == MODL_POSV_CITANIE){\
 		_set_hymnus(modlitba, _file_pc, _anchor);\
 		set_LOG_litobd_pc;\
@@ -5458,14 +5454,13 @@ label_24_DEC:
 	set_LOG_litobd;\
 }
 
-// 2006-02-04: doplnené posvätné čítania a mcd
-// 2008-05-16: upravené, aby pre český breviár a prvé vešpery narodenia pána bol iný zpěv po krátkém čtení
+// pre český breviár a prvé vešpery narodenia pána je iný zpěv po krátkém čtení
 #define _vian1_kresponz {\
 	c = pismenko_modlitby(modlitba);\
 	if((modlitba == MODL_PRVE_VESPERY) && (_global_den.den != 25))\
 		c = pismenko_modlitby(MODL_VESPERY);\
 	if((den == DEN_NEDELA) && (_global_den.den != 25 /* narodenie Pana */)\
-		&& (modlitba != MODL_POSV_CITANIE) && (modlitba != MODL_VESPERY) && (modlitba != MODL_PRVE_VESPERY)){ /* 2009-01-05: pre prvé aj druhé vešpery 2. nedele po narodení Pána kresp. rovnako ako mimo nedele */\
+		&& (modlitba != MODL_POSV_CITANIE) && (modlitba != MODL_VESPERY) && (modlitba != MODL_PRVE_VESPERY)){ /* pre prvé aj druhé vešpery 2. nedele po narodení Pána kresp. rovnako ako mimo nedele */\
 		sprintf(_anchor, "%s_%c%s%s", nazov_OBD[OBD_VIANOCNE_I], c, ANCHOR_KRESPONZ, nazov_DN_asci[den]);\
 	}\
 	else if(modlitba != MODL_POSV_CITANIE){\
@@ -5539,7 +5534,7 @@ label_24_DEC:
 	_set_modlitba(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
-// 2014-06-05: pridané pre popis prvého kompletória Narodenia Pána // tam sa dá litobd == OBD_OKTAVA_NARODENIA
+// pre popis prvého kompletória Narodenia Pána // tam sa dá litobd == OBD_OKTAVA_NARODENIA
 #define _vian1_popis {\
 	sprintf(_anchor, "%s_%c%s%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_POPIS, _global_den.den);\
 	if(modlitba == MODL_POSV_CITANIE){\
@@ -5584,8 +5579,8 @@ label_24_DEC:
 	set_LOG_litobd_pc;\
 }
 
-// 2006-02-05: vytvorené pre modlitbu cez deň podľa _post1_mcd_antifony; porov. _adv_antifony_mcd
-// 2007-10-02: upravené antifóny pre modlitbu cez deň - sú rovnaké, použitý anchor ANCHOR_ANTIFONY
+// vytvorené pre modlitbu cez deň podľa _post1_mcd_antifony; porov. _adv_antifony_mcd
+// antifóny pre modlitbu cez deň sú rovnaké, použitý anchor ANCHOR_ANTIFONY
 #define _vian1_mcd_antifony {\
 	sprintf(_anchor, "%s_%c%s", nazov_OBD[OBD_VIANOCNE_I], pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
 	_set_antifona1(modlitba, _file, _anchor);\
@@ -5601,8 +5596,8 @@ label_24_DEC:
 // switch(litobd), case OBD_OKTAVA_NARODENIA -- begin -----------------------------------------
 		case OBD_OKTAVA_NARODENIA :// narodenie Pana -- 1. jan.
 			Log("OBD_OKTAVA_NARODENIA - nastavujem kompletórium z nedele po 1. resp. 2. vešperách...\n");
-			// 2009-01-05: tu v skutočnosti začína VIANOČNÁ OKTÁVA
-			// 2009-01-05: kompletórium vo vianočnej oktáve - podobne ako vo veľkonočnej oktáve - je z nedele po prvých resp. druhých vešperách
+			// tu v skutočnosti začína VIANOČNÁ OKTÁVA
+			// kompletórium vo vianočnej oktáve - podobne ako vo veľkonočnej oktáve - je z nedele po prvých resp. druhých vešperách
 			modlitba = MODL_KOMPLETORIUM;
 			_set_kompletorium_slavnost_oktava(modlitba, litobd, /* ktore = 1 alebo 2 */ (_global_den.den MOD 2) + 1);
 			Log("OBD_OKTAVA_NARODENIA - pokračujeme ako vianočné obdobie I...\n");
@@ -5611,11 +5606,11 @@ label_24_DEC:
 		case OBD_VIANOCNE_I :// do slavnosti zjavenia pana
 			Log("OBD_VIANOCNE_I\n");
 
-			// 2006-01-24: tu v skutočnosti začína VIANOČNÉ OBDOBIE I.
+			// tu v skutočnosti začína VIANOČNÉ OBDOBIE I.
 
 			if((_global_den.den == 26) || (_global_den.den == 27) || (_global_den.den == 28)){
 				// maju vlastnu cast zo sv. jana apostola, sv. stefana a sv. neviniatok
-				// 2009-01-06: modlitba cez deň je z oktávy narodenia Pána, preto bola vyňatá z "else" vetvy až za tento "if"
+				// modlitba cez deň je z oktávy narodenia Pána, preto bola vyňatá z "else" vetvy až za tento "if"
 			}
 			else{
 				// invitatórium
@@ -5636,7 +5631,7 @@ label_24_DEC:
 				_vian1_hymnus;
 				_set_zalmy_vian_oktava(_global_den.den, modlitba);
 				if(_global_den.den >= 25){
-					// 2006-02-05: antifóny sú samostatné len pre vianočnú oktávu; inak zo žaltára
+					// antifóny sú samostatné len pre vianočnú oktávu; inak zo žaltára
 					_vian_okt_antifony_pc;
 				}
 				_vian1_kresponz;
@@ -5644,11 +5639,10 @@ label_24_DEC:
 				_vian1_citanie2;
 				_vian1_modlitba;
 
-				// 2009-01-06: modlitba cez deň je z oktávy narodenia Pána, preto bola vyňatá z "else" vetvy až za tento "if"
+				// modlitba cez deň je z oktávy narodenia Pána, preto bola vyňatá z "else" vetvy až za tento "if"
 			}
 
 			// modlitba cez deň
-			// 2009-01-06: presunuté sem z "else" vetvy
 			modlitba = MODL_PREDPOLUDNIM;
 			_vian1_hymnus; // hymnus
 			_vian1_mcd_antifony; // antifóny
@@ -5682,7 +5676,7 @@ label_24_DEC:
 			if(litobd == OBD_OKTAVA_NARODENIA){
 				if(_global_den.den == 25){  // narodenie Pána
 					Log("narodenie Pána...\n");
-					// 2012-12-10: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+					// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 					modlitba = MODL_POSV_CITANIE;
 					_liturgicke_obdobie_set_vig_ant(modlitba);
 					_set_chvalospev_vig_vian(modlitba);
@@ -5693,7 +5687,7 @@ label_24_DEC:
 					// kompletórium
 					modlitba = MODL_PRVE_KOMPLETORIUM;
 					_set_kompletorium_slavnost(modlitba);
-					// 2014-06-05: pridaný popis k prvému kompletóriu Narodenia Pána
+					// popis k prvému kompletóriu Narodenia Pána
 					_vian1_popis;
 
 					modlitba = MODL_KOMPLETORIUM;
@@ -5717,7 +5711,7 @@ label_24_DEC:
 					_set_zalmy_narodenie(modlitba);
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_narodenie(modlitba);
-				}// 25. 12. // 25DEC
+				}// 25. 12. | 25DEC
 
 				// ranné chvály
 				modlitba = MODL_RANNE_CHVALY;
@@ -5781,13 +5775,13 @@ label_24_DEC:
 				// posvätné čítanie
 				modlitba = MODL_POSV_CITANIE;
 				_bohorod_hymnus(_anchor_vlastne_slavenie);
-				_set_zalmy_vian_oktava(_global_den.den, modlitba); // 2010-01-08: opravené; pôvodne bolo _set_zalmy_sviatok_marie(modlitba);
+				_set_zalmy_vian_oktava(_global_den.den, modlitba);
 				_bohorod_antifony;
 				_bohorod_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_ine_1citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_ine_2citanie(_anchor_vlastne_slavenie);
 				_bohorod_modlitba;
-				// 2012-12-10: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
 				_set_chvalospev_vig_vian(modlitba);
 				_vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
@@ -5802,7 +5796,7 @@ label_24_DEC:
 				modlitba = MODL_POPOLUDNI;
 				_bohorod_kcitanie(_anchor_vlastne_slavenie);
 				_bohorod_modlitba;
-				// 2014-01-02: doplnená psalmódia: Ak nie je nedeľa, berie sa doplnková psalmódia. (LH, zv. I, str. 372)
+				// doplnená psalmódia: Ak nie je nedeľa, berie sa doplnková psalmódia. (LH, zv. I, str. 372)
 				if(_global_den.denvt != DEN_NEDELA){
 					_set_zalmy_mcd_doplnkova_psalmodia();
 				}
@@ -5834,7 +5828,9 @@ label_24_DEC:
 				_vian1_2ne_antifony;
 				_vian1_2ne_modlitba;
 
-				// modlitba cez deň, pridané 2006-02-05 (posvätné čítanie je zo dňa podľa dátumu)
+				// posvätné čítanie je zo dňa podľa dátumu
+
+				// modlitba cez deň
 				modlitba = MODL_PREDPOLUDNIM;
 				_vian1_2ne_kcitanie;
 				_vian1_kresponz;
@@ -5848,7 +5844,7 @@ label_24_DEC:
 				_vian1_kresponz;
 				_vian1_2ne_modlitba;
 
-				// 2012-12-10: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
 				_set_chvalospev_vig_vian(modlitba);
@@ -5907,7 +5903,7 @@ label_24_DEC:
 				_vlastne_slavenie_ine_1citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_ine_2citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				// 2012-12-10: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
 				_set_chvalospev_vig_vian(modlitba);
 				_vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
@@ -5926,19 +5922,19 @@ label_24_DEC:
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_sv_rodiny_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				// 2011-04-06: hoci sú vo vlastnej časti uvedené aj antifóny pre modlitbu cez deň, sú rovnaké ako pre vianočné obdobie, preto netreba nastavovať
+				// hoci sú vo vlastnej časti uvedené aj antifóny pre modlitbu cez deň, sú rovnaké ako pre vianočné obdobie, preto netreba nastavovať
 
 				modlitba = MODL_NAPOLUDNIE;
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_sv_rodiny_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				// 2011-04-06: hoci sú vo vlastnej časti uvedené aj antifóny pre modlitbu cez deň, sú rovnaké ako pre vianočné obdobie, preto netreba nastavovať
+				// hoci sú vo vlastnej časti uvedené aj antifóny pre modlitbu cez deň, sú rovnaké ako pre vianočné obdobie, preto netreba nastavovať
 
 				modlitba = MODL_POPOLUDNI;
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_sv_rodiny_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				// 2011-04-06: hoci sú vo vlastnej časti uvedené aj antifóny pre modlitbu cez deň, sú rovnaké ako pre vianočné obdobie, preto netreba nastavovať
+				// hoci sú vo vlastnej časti uvedené aj antifóny pre modlitbu cez deň, sú rovnaké ako pre vianočné obdobie, preto netreba nastavovať
 
 			}// _global_den.denvr == _global_r._SVATEJ_RODINY.denvr
 			break;
@@ -5949,24 +5945,33 @@ label_24_DEC:
 		case OBD_VIANOCNE_II: {// po slavnosti zjavenia pana
 			Log("OBD_VIANOCNE_II\n");
 // vianočné obdobie II
-// 2006-02-07: doplnené posvätné čítania a mcd
 #define _vian2_hymnus {\
-	sprintf(_anchor, "%s_%c%s", nazov_OBD[OBD_VIANOCNE_II], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
+	sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, nazov_OBD[OBD_VIANOCNE_II], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 	if(modlitba == MODL_POSV_CITANIE){\
 		_set_hymnus(modlitba, _file_pc, _anchor);\
 		set_LOG_litobd_pc;\
-	}\
-	else{\
+		}\
+				else{\
 		_set_hymnus(modlitba, _file, _anchor);\
 		set_LOG_litobd;\
-	}\
-}
+				}\
+			}
+#define _zjv_hymnus {\
+	sprintf(_anchor, "%s%s_%s%c%s", _special_anchor_prefix, nazov_OBD[OBD_VIANOCNE_II], ANCHOR_ZJAVENIE_PANA, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
+	if(modlitba == MODL_POSV_CITANIE){\
+		_set_hymnus(modlitba, _file_pc, _anchor);\
+		set_LOG_litobd_pc;\
+		}\
+		else{\
+		_set_hymnus(modlitba, _file, _anchor);\
+		set_LOG_litobd;\
+				}\
+			}
 #define _zjv_kcitanie {\
 	sprintf(_anchor, "%s_%c%s%d", nazov_OBD[OBD_VIANOCNE_II], pismenko_modlitby(modlitba), ANCHOR_KCITANIE, 6 /* (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA))? 6: _global_den.den */); \
 	_set_kcitanie(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
-// 2006-02-07: doplnené posvätné čítania
 #define _vian2_kresponz {\
 	c = pismenko_modlitby(modlitba);\
 	if(modlitba == MODL_PRVE_VESPERY)\
@@ -6009,7 +6014,6 @@ label_24_DEC:
 	_set_modlitba(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
-// 2006-02-07: pridané posvätné čítanie
 #define _zjv_antifony {\
 	sprintf(_anchor, "%s_%s%c%s", nazov_OBD[OBD_VIANOCNE_II], ANCHOR_ZJAVENIE_PANA, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
 	if(modlitba == MODL_POSV_CITANIE){\
@@ -6039,7 +6043,6 @@ label_24_DEC:
 		set_LOG_litobd;\
 	}\
 }
-// 2006-02-07: doplnené posvätné čítanie
 #define _vian2_citanie1 {\
 	sprintf(_anchor, "%s_%c%s_%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE1, (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA))? (_global_den.denvr - zjavenie_pana(_global_den.rok) + 6): _global_den.den);\
 	_set_citanie1(modlitba, _file_pc, _anchor);\
@@ -6051,8 +6054,8 @@ label_24_DEC:
 	set_LOG_litobd_pc;\
 }
 
-// 2006-02-07: vytvorené pre modlitbu cez deň podľa _vian1_mcd_antifony (to podľa _post1_mcd_antifony; porov. _adv_antifony_mcd)
-// 2007-10-02: upravené antifóny pre modlitbu cez deň - sú rovnaké, použitý anchor ANCHOR_ANTIFONY
+// vytvorené pre modlitbu cez deň podľa _vian1_mcd_antifony (to podľa _post1_mcd_antifony; porov. _adv_antifony_mcd)
+// antifóny pre modlitbu cez deň sú rovnaké, použitý anchor ANCHOR_ANTIFONY
 #define _vian2_mcd_antifony {\
 	sprintf(_anchor, "%s_%c%s", nazov_OBD[OBD_VIANOCNE_II], pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
 	_set_antifona1(modlitba, _file, _anchor);\
@@ -6065,7 +6068,7 @@ label_24_DEC:
 	set_LOG_litobd;\
 }
 									 
-		// 2006-01-24: tu v skutočnosti začína VIANOČNÉ OBDOBIE II.
+		// tu v skutočnosti začína VIANOČNÉ OBDOBIE II.
 
 			// invitatórium
 			modlitba = MODL_INVITATORIUM;
@@ -6119,11 +6122,16 @@ label_24_DEC:
 
 			if(_global_den.denvr == zjavenie_pana(_global_den.rok)){ // zjavenie Pána; bolo tu kedysi: if((_global_den.den == 6) && (_global_den.mesiac - 1 == MES_JAN))
 
-				// 2011-10-26: odlišné nastavenie kotiev na príslušnom mieste pre krajiny, kde sa Zjavenie Pána slávi v nedeľu medzi 2. a 8. januárom | BIT_OPT_0_ZJAVENIE_PANA_NEDELA
+				// odlišné nastavenie kotiev na príslušnom mieste pre krajiny, kde sa Zjavenie Pána slávi v nedeľu medzi 2. a 8. januárom | BIT_OPT_0_ZJAVENIE_PANA_NEDELA
 
 				// prvé vešpery
 				modlitba = MODL_PRVE_VESPERY;
-				_vian2_hymnus;
+				if (je_CZ_hymny_k_volnemu_vyberu){
+					_zjv_hymnus;
+				}
+				else{
+					_vian2_hymnus;
+				}
 				_zjv_antifony;
 				_zjv_kcitanie;
 				_vian2_kresponz;
@@ -6139,23 +6147,34 @@ label_24_DEC:
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
 
-				// invitatórium; 2007-11-14: netreba, nakoľko antifóna je rovnaká pre celé obdobie po zjavení pána
+				// invitatórium netreba, nakoľko antifóna je rovnaká pre celé obdobie po zjavení pána
+
 				// ranné chvály
 				modlitba = MODL_RANNE_CHVALY;
+				if (je_CZ_hymny_k_volnemu_vyberu){
+					_zjv_hymnus;
+				}
 				_set_zalmy_zjv(modlitba);
 				_zjv_kcitanie;
 				_zjv_antifony;
+
 				// druhé vešpery
 				modlitba = MODL_VESPERY;
+				if (je_CZ_hymny_k_volnemu_vyberu){
+					_zjv_hymnus;
+				}
 				_set_zalmy_zjv(modlitba);
 				_zjv_kcitanie;
 				_zjv_antifony;
 
 				// posvätné čítanie
 				modlitba = MODL_POSV_CITANIE;
+				if (je_CZ_hymny_k_volnemu_vyberu){
+					_zjv_hymnus;
+				}
 				_set_zalmy_zjv(modlitba);
 				_zjv_antifony;
-				// 2012-12-10: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
 				_set_chvalospev_vig_vian(modlitba);
 				_liturgicke_obdobie_set_vig_ev(modlitba);
@@ -6173,7 +6192,7 @@ label_24_DEC:
 
 			}// zjavenie pana
 
-			// 2014-01-13: pôvodne bolo v cezročnom období; presunuté sem
+			// pôvodne bolo v cezročnom období; presunuté sem
 			else if(/* (tyzden == 1) && */(_global_den.denvr == _global_r._KRST_KRISTA_PANA.denvr)){
 				// krst krista pana -- 1. nedela obdobia `cez rok'
 				// niekedy môže padnúť aj na pondelok (ak sa Zjavenie Pána slávi v nedeľu, ktorá padne na 7. alebo 8. januára)
@@ -6226,7 +6245,7 @@ label_24_DEC:
 				_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-				// 2012-12-10: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
 				_set_chvalospev_vig_vian(modlitba);
 				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, ((tyzden MOD 8) == 0)? 8: (tyzden MOD 8)); // ako 1. cezročná nedeľa
@@ -6253,7 +6272,7 @@ label_24_DEC:
 
 			else{
 				// vsedny den vianocneho obdobia II -- citania podla vian.obd.I 
-				// 2006-02-07: presne takto isto sa správajú aj krátke čítania pre modlitbu cez deň (ako pre krátke čítanie na ranné chvály)
+				// presne takto isto sa správajú aj krátke čítania pre modlitbu cez deň (ako pre krátke čítanie na ranné chvály)
 				file_name_litobd(OBD_VIANOCNE_I);
 
 				// táto úprava _global_den.den sa ukázala ako nebezpečná -- po zmene treba vrátiť pôvodnú hodnotu
@@ -6301,7 +6320,7 @@ label_24_DEC:
 				}
 			}// obycajny den vian. obd. II -- priradenie citania
 
-			// 2014-01-09: späť pôvodné nastavenia (pre niektoré dni vianočného obdobia boli zmenené); upozornil lamborghini2003@gmail.com
+			// restore/späť pôvodné nastavenia (pre niektoré dni vianočného obdobia boli zmenené); upozornil lamborghini2003@gmail.com
 			_global_den.den = _pom_den;
 			_global_den.mesiac = _pom_mesiac;
 			_global_den.rok = _pom_rok;
@@ -34917,7 +34936,10 @@ label_8_DEC:
 
 						_vlastna_cast_mcd_kcitresp_modl;
 
-						// vespery -- vsetko je z oktavy narodenia Pana
+						// vespery -- vsetko je z oktavy narodenia Pana (okrem hymnu pre CZ k vlastnímu výběru)
+						if (je_CZ_hymny_k_volnemu_vyberu){
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+						}
 						break;
 					}
 					_global_svaty1.typslav = SLAV_SVIATOK;
@@ -34950,7 +34972,10 @@ label_8_DEC:
 						_vlastna_cast_modlitba;
 						_set_zalmy_sviatok_jana_ap(modlitba);
 
-						// vespery -- vsetko je z oktavy narodenia Pana
+						// vespery -- vsetko je z oktavy narodenia Pana (okrem hymnu pre CZ k vlastnímu výběru)
+						if (je_CZ_hymny_k_volnemu_vyberu){
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+						}
 						break;
 					}
 					_global_svaty1.typslav = SLAV_SVIATOK;
@@ -34980,7 +35005,10 @@ label_8_DEC:
 
 						_vlastna_cast_mcd_kcitresp_modl;
 
-						// vespery -- vsetko je z oktavy narodenia Pana
+						// vespery -- vsetko je z oktavy narodenia Pana (okrem hymnu pre CZ k vlastnímu výběru)
+						if (je_CZ_hymny_k_volnemu_vyberu){
+							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+						}
 						break;
 					}
 					_global_svaty1.typslav = SLAV_SVIATOK;
