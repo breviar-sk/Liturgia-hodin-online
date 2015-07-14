@@ -570,14 +570,17 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ZAKONCENIE_O_TO_TA_PROSIME    "O_TO_TA_PROSIME"
 
 // force pre jednotlivé časti modlitby, funkcie _set_spolocna_cast()...
-#define FORCE_NEBRAT             0
-#define FORCE_BRAT_ANTIFONY      1
-#define FORCE_BRAT_ZALMY         2
-#define FORCE_BRAT_KCIT_1CIT     4 // krátke čítanie pre rch+v; 1. čítanie pre posvätné čítanie
-#define FORCE_BRAT_KRESP_PROSBY  8
-#define FORCE_BRAT_2CITANIE     16
-#define FORCE_BRAT_ANTIFONY_MCD 32
-#define FORCE_BRAT_HYMNUS       64
+#define FORCE_NEBRAT               0
+#define FORCE_BRAT_ANTIFONY        1 // antifóny pre ranné chvály, posv. čítanie a vešpery
+#define FORCE_BRAT_ZALMY           2
+#define FORCE_BRAT_KCIT_1CIT       4 // krátke čítanie pre rch+v a mcd; 1. čítanie pre posvätné čítanie
+#define FORCE_BRAT_KRESP_PROSBY    8 // krátke responzórium a prosby pre ranné chvály, vešpery a mcd; krátke responzórium pre posv. čítanie
+#define FORCE_BRAT_2CITANIE       16 // 2. čítanie pre posvätné čítanie
+#define FORCE_BRAT_ANTIFONY_MCD   32 // antifóny pre modlitbu cez deň
+#define FORCE_BRAT_HYMNUS         64 // hymnus pre všetky modlitby
+#define FORCE_BRAT_ANTIFONY_B_M  128 // Benediktus + Magnifikat
+#define FORCE_BRAT_ANTIFONY_INV  256 // antifóny pre invitatórium
+#define FORCE_BRAT_MODLITBA      512 // modlitba (používa sa pre modlitbu cez deň)
 
 extern const char *str_ano[POCET_JAZYKOV + 1];
 #ifndef		STR_ANO
@@ -633,6 +636,37 @@ extern const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #define MODL_SPOL_CAST_SV_MUZ_MANZ       26 // pre tých, čo žili v manželstve
 #define MODL_SPOL_CAST_NEBRAT            27 // nechce zo spol. casti // MUST BE THE LAST VALUE
 #define POCET_SPOL_CASTI	MAX_MODL_SPOL_CAST - 1
+
+const short int poradie_spol_cast[POCET_SPOL_CASTI + 1] = {
+	MODL_SPOL_CAST_NEBRAT,
+	MODL_SPOL_CAST_ZA_ZOSNULYCH,
+	MODL_SPOL_CAST_POSVIACKA_CHRAMU,
+	MODL_SPOL_CAST_PANNA_MARIA,
+	MODL_SPOL_CAST_APOSTOL,
+	MODL_SPOL_CAST_VIAC_MUCENIKOV,
+	MODL_SPOL_CAST_MUCENIK,
+	MODL_SPOL_CAST_MUCENICA,
+	MODL_SPOL_CAST_DUCH_PAST_PAPEZ,
+	MODL_SPOL_CAST_DUCH_PAST_BISKUP,
+	MODL_SPOL_CAST_DUCH_PAST_KNAZ,
+	MODL_SPOL_CAST_DUCH_PAST_VIACERI,
+	MODL_SPOL_CAST_UCITEL_CIRKVI,
+	MODL_SPOL_CAST_PANNA,
+	MODL_SPOL_CAST_PANNY_VIACERE,
+	MODL_SPOL_CAST_SV_MUZ,
+	MODL_SPOL_CAST_SV_MUZ_MANZ,
+	MODL_SPOL_CAST_SV_MUZ_VIACERI,
+	MODL_SPOL_CAST_SV_ZENA,
+	MODL_SPOL_CAST_SV_ZENA_MANZ,
+	MODL_SPOL_CAST_SV_ZENA_VIACERE,
+	MODL_SPOL_CAST_SV_MUZ_REHOLNIK,
+	MODL_SPOL_CAST_SV_ZENA_REHOLNIK,
+	MODL_SPOL_CAST_SV_MUZ_SKUTKYMIL,
+	MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL,
+	MODL_SPOL_CAST_SV_MUZ_VYCH,
+	MODL_SPOL_CAST_SV_ZENA_VYCH,
+	MODL_SPOL_CAST_NEURCENA
+};
 
 extern const char *str_doplnkova_psalmodia[POCET_JAZYKOV + 1];
 

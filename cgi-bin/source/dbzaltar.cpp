@@ -87,8 +87,8 @@ short int su_zalmy_prve_vespery_vlastne(short int m){
 	return ret;
 }// su_zalmy_prve_vespery_vlastne()
 
-// 2010-06-07: aj pre spomienky možno brať zo spoločnej časti tieto časti; všeob. smernice č. 235 b)
-// 2011-10-10: rešpektujeme bod č. 235 všeobecných smerníc: "V posvätnom čítaní, v ranných chválach a vo vešperách: b) antifóna na invitatórium, hymnus, krátke čítanie, antifóny na Benediktus a Magnifikat a prosby, ak sú vlastné, musia sa recitovať o príslušnom svätcovi, ináč sa berú buď zo spoločnej časti, alebo z bežného všedného dňa;"
+// aj pre spomienky možno brať zo spoločnej časti tieto časti; všeob. smernice č. 235 b)
+// rešpektujeme bod č. 235 všeobecných smerníc: "V posvätnom čítaní, v ranných chválach a vo vešperách: b) antifóna na invitatórium, hymnus, krátke čítanie, antifóny na Benediktus a Magnifikat a prosby, ak sú vlastné, musia sa recitovať o príslušnom svätcovi, ináč sa berú buď zo spoločnej časti, alebo z bežného všedného dňa;"
 short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m){
 	Log("su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(%d): ", m);
 	short int ret;
@@ -1256,11 +1256,11 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 		pom_litobd = OBD_VELKONOCNE_I;
 	}
 	else if ((litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (den != DEN_STVRTOK) && (_global_jazyk == JAZYK_CZ)){
-		// 2009-04-07: pre český breviář sa nepoužívajú vo veľkom týždni iné hymny; pre zelený štrvtok je samostatný hymnus
+		// pre český breviář sa nepoužívajú vo veľkom týždni iné hymny; pre zelený štrvtok je samostatný hymnus
 		pom_litobd = OBD_CEZ_ROK;
 	}
 	else if ((litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (den == DEN_STVRTOK) && (_global_jazyk == JAZYK_CZ)){
-		// 2009-04-07: pre český breviář sa nepoužívajú vo veľkom týždni iné hymny; pre zelený štrvtok je samostatný hymnus
+		// pre český breviář sa nepoužívajú vo veľkom týždni iné hymny; pre zelený štrvtok je samostatný hymnus
 		; // ponechá pom_litobd, ako je
 	}
 	else{
@@ -9075,7 +9075,7 @@ short int _spol_cast_je_panna(_struct_sc sc){
 #define _spolocna_cast_magnifikat		_vlastna_cast_magnifikat
 #define _spolocna_cast_prosby			_vlastna_cast_prosby
 #define _spolocna_cast_modlitba			_vlastna_cast_modlitba
-#define _spolocna_cast_modlitba_prve_vesp _vlastna_cast_modlitba_ina
+// #define _spolocna_cast_modlitba_prve_vesp _vlastna_cast_modlitba_ina
 // ... az na antifony...
 #define _spolocna_cast_antifony {\
 	if((_global_opt[OPT_3_SPOLOCNA_CAST] != MODL_SPOL_CAST_NEBRAT)){\
@@ -9092,13 +9092,15 @@ short int _spol_cast_je_panna(_struct_sc sc){
 	}\
 }
 
-#define	_spolocna_cast_antifona_inv(m)	{\
-	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(m)){_vlastna_cast_antifona_inv;}\
+#define	_spolocna_cast_antifona_inv(m) {\
+	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(m) || ((force & FORCE_BRAT_ANTIFONY_INV) == FORCE_BRAT_ANTIFONY_INV)){\
+		_vlastna_cast_antifona_inv;\
+	}\
 }
 
 // pre invitatórium, ak je antifón viacero, napr. pre PM, ofícium na posviacku chrámu a pod.
 #define _spolocna_cast_antifona_inv_viac(m, kolko) {\
-	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(m)){\
+	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(m) || ((force & FORCE_BRAT_ANTIFONY_INV) == FORCE_BRAT_ANTIFONY_INV)){\
 		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1, (_global_den.den MOD kolko) + 1);\
 		if(modlitba == MODL_POSV_CITANIE){_set_antifona1(modlitba, _file_pc, _anchor);}\
 		else{_set_antifona1(modlitba, _file, _anchor);}\
@@ -9158,9 +9160,11 @@ short int _spol_cast_je_panna(_struct_sc sc){
 		if(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)){\
 			_set_zalmy_mcd_doplnkova_psalmodia_alternativy(modlitba);\
 		}\
-		if(su_kcit_kresp_modlitba_mcd_vlastne(modl)){\
-			_vlastna_cast_kcitanie;\
+		if(su_kcit_kresp_modlitba_mcd_vlastne(modl) || ((force & FORCE_BRAT_KRESP_PROSBY) == FORCE_BRAT_KRESP_PROSBY)){\
 			_spolocna_cast_kresponz;\
+		}\
+		if(su_kcit_kresp_modlitba_mcd_vlastne(modl) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){\
+			_vlastna_cast_kcitanie;\
 		}\
 	}\
 	else{\
@@ -9181,12 +9185,12 @@ short int _spol_cast_je_panna(_struct_sc sc){
 		_spolocna_cast_1citanie;\
 	}\
 	if(modl == MODL_RANNE_CHVALY){\
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl)){\
+		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
 			_vlastna_cast_benediktus;\
 		}\
 	}\
 	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){\
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl)){\
+		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
 			_vlastna_cast_magnifikat;\
 		}\
 	}\
@@ -9197,7 +9201,7 @@ short int _spol_cast_je_panna(_struct_sc sc){
 		}\
 	}\
 	if(je_modlitba_cez_den(modl)){\
-		if(su_kcit_kresp_modlitba_mcd_vlastne(modl)){\
+		if(su_kcit_kresp_modlitba_mcd_vlastne(modl) || ((force & FORCE_BRAT_MODLITBA) == FORCE_BRAT_MODLITBA)){\
 			_vlastna_cast_modlitba;\
 		}\
 	}\
@@ -9242,14 +9246,14 @@ short int _spol_cast_je_panna(_struct_sc sc){
 	}\
 }
 #define _spolocna_cast_benediktus_ve {\
-	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){\
+	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS, VELKONOCNA_PRIPONA);\
 		_set_benediktus(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
 	}\
 }
 #define _spolocna_cast_magnifikat_ve {\
-	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){\
+	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT, VELKONOCNA_PRIPONA);\
 		_set_magnifikat(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
@@ -9258,7 +9262,7 @@ short int _spol_cast_je_panna(_struct_sc sc){
 
 // použité pre spoločnú časť jednoho mučeníka/mučenice a viacerých mučeníkov, MCD
 #define _spolocna_cast_kcit_ve {\
-	if((je_modlitba_cez_den(modlitba) && su_kcit_kresp_modlitba_mcd_vlastne(modlitba)) || su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){\
+	if((je_modlitba_cez_den(modlitba) && su_kcit_kresp_modlitba_mcd_vlastne(modlitba)) || su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){\
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE, VELKONOCNA_PRIPONA);\
 		_set_kcitanie(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
@@ -9267,7 +9271,7 @@ short int _spol_cast_je_panna(_struct_sc sc){
 
 // specialne veci pre sviatky panien (aj pre sväté ženy a pre jednoho mučeníka na MCD)
 #define _spolocna_cast_kresp_ve {\
-	if((je_modlitba_cez_den(modlitba) && su_kcit_kresp_modlitba_mcd_vlastne(modlitba)) || su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){\
+	if((je_modlitba_cez_den(modlitba) && su_kcit_kresp_modlitba_mcd_vlastne(modlitba)) || su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){\
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, VELKONOCNA_PRIPONA);\
 		_set_kresponz(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
@@ -9276,32 +9280,32 @@ short int _spol_cast_je_panna(_struct_sc sc){
 
 // specialne veci pre sviatky duchovnych pastierov, jedneho mucenika...
 // funguje to aj pre svatych muzov (jeden resp. viaceri -- podla toho, co je v _anchor_pom)
-void _spolocna_cast_hymnus_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+void _spolocna_cast_hymnus_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file, short force){
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_HYMNUS) == FORCE_BRAT_HYMNUS)){
 		sprintf(_anchor, "%s%c%s", _anchor_pom, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
 		_set_hymnus(modlitba, _file, _anchor);
 		set_LOG_svsv;
 	}
 }
 
-void _spolocna_cast_benediktus_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+void _spolocna_cast_benediktus_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file, short force){
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){
 		sprintf(_anchor, "%s%c%s", _anchor_pom, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);
 		_set_benediktus(modlitba, _file, _anchor);
 		set_LOG_svsv;
 	}
 }
 
-void _spolocna_cast_magnifikat_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+void _spolocna_cast_magnifikat_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file, short force){
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){
 		sprintf(_anchor, "%s%c%s", _anchor_pom, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT);
 		_set_magnifikat(modlitba, _file, _anchor);
 		set_LOG_svsv;
 	}
 }
 
-void _spolocna_cast_kresponz_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+void _spolocna_cast_kresponz_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file, short force){
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP_PROSBY) == FORCE_BRAT_KRESP_PROSBY)){
 		sprintf(_anchor, "%s%c%s", _anchor_pom, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);
 		_set_kresponz(modlitba, _file, _anchor);
 		set_LOG_svsv;
@@ -9324,13 +9328,17 @@ void _spolocna_cast_modlitba_rozne(short int modlitba, char *_anchor_pom, char *
 
 // specialne veci pre sviatky jedneho mucenika
 #define _spolocna_cast_kcit_kresp_chval_ve {\
-	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){\
+	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){\
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE, VELKONOCNA_PRIPONA);\
 		_set_kcitanie(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
+	}\
+	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP_PROSBY) == FORCE_BRAT_KRESP_PROSBY)){\
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, VELKONOCNA_PRIPONA);\
 		_set_kresponz(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
+	}\
+	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
 		if(modlitba == MODL_RANNE_CHVALY){\
 			sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS, VELKONOCNA_PRIPONA);\
 			_set_benediktus(modlitba, _file, _anchor);\
@@ -9368,16 +9376,16 @@ void _spolocna_cast_modlitba_rozne(short int modlitba, char *_anchor_pom, char *
 }
 
 // ked je viac napevov, `kolko' uvadza, z kolkych je na vyber; zvacsa sa vyberie napr. podla (_global_den.den MOD kolko) + 1 (aby bol z intervalu 1..kolko)
-void _spolocna_cast_magnifikat_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+void _spolocna_cast_magnifikat_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, short force){
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){
 		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT, (_global_den.den MOD kolko) + 1);
 		_set_magnifikat(modlitba, _file, _anchor);
 		set_LOG_svsv;
 	}
 }
 
-void _spolocna_cast_benediktus_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+void _spolocna_cast_benediktus_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, short force){
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){
 		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS, (_global_den.den MOD kolko) + 1);
 		_set_benediktus(modlitba, _file, _anchor);
 		set_LOG_svsv;
@@ -9393,8 +9401,8 @@ void _spolocna_cast_prosby_viac(short int kolko, char *_anchor_head, char *_anch
 	}
 }
 
-void _spolocna_cast_kresponz_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+void _spolocna_cast_kresponz_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, short force){
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP_PROSBY) == FORCE_BRAT_KRESP_PROSBY)){
 		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, (_global_den.denvt MOD kolko) + 1);
 		_set_kresponz(modlitba, _file, _anchor);
 		set_LOG_svsv;
@@ -9456,8 +9464,8 @@ void _spolocna_cast_1cit_zvazok(short int modlitba, const char *_anchor_pom, con
 // zväčša rovnaké, ale pre sviatky prebl. panny márie je odlišné (porov. 1. čítanie vyššie):
 // - I. zväzok (advent, vianoce),
 // - II. zväzok (pôst), II. zväzok (veľká noc), III. a IV. zväzok (obdobie cez rok).
-void _spolocna_cast_kresponz_zvazok(short int modlitba, char *_anchor_pom, char *_anchor_zvazok, char *_anchor, char *_file){
-	char _anchor_lokal[SMALL]; // 2005-08-08: lokálna premenná
+void _spolocna_cast_kresponz_zvazok(short int modlitba, char *_anchor_pom, char *_anchor_zvazok, char *_anchor, char *_file, short int force){
+	char _anchor_lokal[SMALL];
 	Log("_spolocna_cast_kresp_zvazok: \n");
 	Log("\tmodlitba == %s\n", nazov_modlitby(modlitba));
 	Log("\tanchor_pom == %s\n", _anchor_pom);
@@ -9467,7 +9475,7 @@ void _spolocna_cast_kresponz_zvazok(short int modlitba, char *_anchor_pom, char 
 
 	if (((modlitba != MODL_POSV_CITANIE) && (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)))
 		||
-		(((je_1cit_vlastne(modlitba)) /* || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT) */) && (modlitba == MODL_POSV_CITANIE))
+		(((je_1cit_vlastne(modlitba)) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)) && (modlitba == MODL_POSV_CITANIE))
 		){
 		if (!equals(_anchor_pom, STR_EMPTY)){
 			sprintf(_anchor_lokal, "%s%s%s%c%s", _anchor, _anchor_pom, _anchor_zvazok, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);
@@ -9528,7 +9536,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 	Log("_set_spolocna_cast(%s) -- begin\n", nazov_spolc(a));
 
 	Log("poradie_svaty = %d\n", poradie_svaty);
-	Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);\
+	Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);
 
 	if(a != MODL_SPOL_CAST_NEBRAT){
 		Log("/* nastavenie nazvu suboru, kotvy apod. (_set_spolocna_cast) */\n");
@@ -9547,6 +9555,15 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		Log("/* spolocna cast na sviatky apostolov */\n");
 
+		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
+		sprintf(_anchor_pom, "%s", STR_EMPTY);
+		Log("  _anchor_pom == %s\n", _anchor_pom);
+		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
+		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
+		}
+		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
+
 		// prvé vešpery
 		modlitba = MODL_PRVE_VESPERY;
 		if(su_zalmy_prve_vespery_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
@@ -9554,20 +9571,14 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_apostolov(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_modlitba_prve_vesp;
+		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+			_spolocna_cast_hymnus_ve;
+			_spolocna_cast_kresp_ve;
+		}
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
 		_spolocna_cast_antifona_inv(modlitba);
-
-		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
-		sprintf(_anchor_pom, "%s", STR_EMPTY);
-		Log("  _anchor_pom == %s\n", _anchor_pom);
-		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
-			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
-		}
-		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
 		// posvätné čítanie
 		modlitba = MODL_POSV_CITANIE;
@@ -9576,7 +9587,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_apostolov(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		// 2005-07-22: ToDo: skontrolovať, či pre špeciálne obdobia nie sú špeciálne časti z obdobia
 
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
 
@@ -9628,10 +9638,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 	}// MODL_SPOL_CAST_APOSTOL
 
 	// spolocna cast na sviatky duchovnych pastierov
-	else if((a == MODL_SPOL_CAST_DUCH_PAST_KNAZ) ||
-		(a == MODL_SPOL_CAST_DUCH_PAST_BISKUP) ||
-		(a == MODL_SPOL_CAST_DUCH_PAST_PAPEZ) ||
-		(a == MODL_SPOL_CAST_DUCH_PAST_VIACERI)){
+	else if((a == MODL_SPOL_CAST_DUCH_PAST_KNAZ) || (a == MODL_SPOL_CAST_DUCH_PAST_BISKUP) || (a == MODL_SPOL_CAST_DUCH_PAST_PAPEZ) || (a == MODL_SPOL_CAST_DUCH_PAST_VIACERI)){
 
 		Log("/* spolocna cast na sviatky duchovnych pastierov */\n");
 
@@ -9656,8 +9663,11 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_duch_past(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		_spolocna_cast_modlitba_prve_vesp;
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+			_spolocna_cast_kresp_ve;
+		}
+		_spolocna_cast_magnifikat_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
@@ -9670,8 +9680,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_duch_past(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2005-07-22: ToDo: skontrolovať, či pre špeciálne obdobia nie sú špeciálne časti z obdobia
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
 		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
@@ -9682,7 +9691,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_1nedele_rch();
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
@@ -9703,8 +9712,8 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 				_set_zalmy_sviatok_duch_past(modlitba);
 			}
 			_spolocna_cast_full(modlitba);
-			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-			_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file);
+			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file, force);
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_kresp_ve;
 			}
@@ -9720,12 +9729,27 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		b = _spol_cast_vyber_dp_pn(sc);
 		if(b != MODL_SPOL_CAST_NEURCENA){
-			Log("spustam _set_spolocna_cast(%s) druhy raz (vnorene) -- \n  kvoli castiam, ktore pre ucitelov cirkvi nie su\n", nazov_spolc(b));
-			_set_spolocna_cast(b, poradie_svaty, sc);
+			Log("spustam _set_spolocna_cast(%s) druhy raz (vnorene) -- kvoli castiam, ktore pre ucitelov cirkvi nie su\n", nazov_spolc(b));
+			_set_spolocna_cast(b, poradie_svaty, sc, force);
 			Log("po vnorenom spusteni _set_spolocna_cast() -- navrat.\n");
 			Log("pokracujem v nastaveni veci pre spol. cast MODL_SPOL_CAST_UCITEL_CIRKVI...\n");
 		}
 		// ...a teraz vlastnu cast ucitelov cirkvi
+
+		// prvé vešpery
+		modlitba = MODL_PRVE_VESPERY;
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){
+			_spolocna_cast_kcitanie;
+		}
+		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP_PROSBY) == FORCE_BRAT_KRESP_PROSBY)){
+			_spolocna_cast_kresponz;
+		}
+		_spolocna_cast_magnifikat;
+		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+			_spolocna_cast_kresp_ve;
+		}
+		_spolocna_cast_modlitba;
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
@@ -9733,7 +9757,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		// posvätné čítanie
 		modlitba = MODL_POSV_CITANIE;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
 
 		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
 		Log("  _anchor_pom == %s\n", _anchor_pom);
@@ -9745,44 +9769,52 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_2CITANIE) == FORCE_BRAT_2CITANIE)){
 			_spolocna_cast_2citanie;
 		}
+		_spolocna_cast_modlitba;
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){
 			_spolocna_cast_kcitanie;
+		}
+		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP_PROSBY) == FORCE_BRAT_KRESP_PROSBY)){
 			_spolocna_cast_kresponz;
 		}
 		_spolocna_cast_benediktus;
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
+		_spolocna_cast_modlitba;
 
 		// modlitba cez deň
 
 		// vešpery
-		modlitba = MODL_VESPERY;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba)){
-			_spolocna_cast_kcitanie;
-			_spolocna_cast_kresponz;
-		}
-		_spolocna_cast_magnifikat;
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
-			_spolocna_cast_kresp_ve;
-		}
+		if (_global_den.litobd != OBD_OKTAVA_NARODENIA){
+			modlitba = MODL_VESPERY;
+			_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+			if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){
+				_spolocna_cast_kcitanie;
+			}
+			if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP_PROSBY) == FORCE_BRAT_KRESP_PROSBY)){
+				_spolocna_cast_kresponz;
+			}
+			_spolocna_cast_magnifikat;
+			if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
+				_spolocna_cast_kresp_ve;
+			}
+			_spolocna_cast_modlitba;
+		}// v OBD_OKTAVA_NARODENIA -- vešpery sú zo dňa
 
 	}// MODL_SPOL_CAST_UCITEL_CIRKVI
 
 	// spolocna cast na sviatky jedneho mucenika
-	else if((a == MODL_SPOL_CAST_MUCENIK) ||
-		(a == MODL_SPOL_CAST_MUCENICA)){
+	else if((a == MODL_SPOL_CAST_MUCENIK) || (a == MODL_SPOL_CAST_MUCENICA)){
 
 		Log("/* spolocna cast na sviatky jedneho mucenika */\n");
-		// 2013-07-30: doplnená možnosť brať modlitbu pre pannu-mučenicu (doteraz bol takto iba hymnus)
+		// doplnená možnosť brať modlitbu pre pannu-mučenicu (doteraz bol takto iba hymnus)
 
 		sprintf(_anchor_head, "%s_", ANCHOR_SPOL_CAST_JEDEN_MUCENIK);
 		Log("  _anchor_head == %s\n", _anchor_head);
@@ -9791,7 +9823,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			sprintf(_anchor_pom, "%s_", ANCHOR_SPOL_CAST_PANNA_MUCENICA);
 		}
 		Log("  _anchor_pom == %s\n", _anchor_pom);
-		// 2005-08-09: pridaný ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
+		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
@@ -9805,12 +9837,15 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_muc(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		// _spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kcit_kresp_chval_ve;
 		}
-		_spolocna_cast_modlitba_prve_vesp;
+		else{
+			_spolocna_cast_kresponz_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_magnifikat_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		}
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
@@ -9823,10 +9858,9 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_muc(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2005-08-16: Zmenený _anchor_pom na _anchor_head.
-		_spolocna_cast_1cit_zvazok(modlitba, _anchor_head, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		// _spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_1cit_zvazok(modlitba, _anchor_head, _anchor_zvazok, STR_EMPTY /* _anchor netreba*/, _file, force);
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -9834,8 +9868,8 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_1nedele_rch();
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		// _spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kcit_kresp_chval_ve;
 		}
@@ -9843,7 +9877,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		// modlitba cez deň
 		modlitba = MODL_PREDPOLUDNIM;
 		_spolocna_cast_full(modlitba);
-		// 2014-09-22: čítanie odlišné pre veľkonočné obdobie; napr. pre CZ 16MAJ 2014
+		// čítanie odlišné pre veľkonočné obdobie; napr. pre CZ 16MAJ 2014
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kcit_ve;
 		}
@@ -9866,8 +9900,8 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 				_set_zalmy_sviatok_muc(modlitba);
 			}
 			_spolocna_cast_full(modlitba);
-			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-			_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
+			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			// _spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_kcit_kresp_chval_ve;
 			}
@@ -9882,7 +9916,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
 		Log("  _anchor_pom == %s\n", _anchor_pom);
-		// 2005-08-16: pridaný ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
+		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
@@ -9899,7 +9933,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kcit_kresp_chval_ve;
 		}
-		_spolocna_cast_modlitba_prve_vesp;
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
@@ -9967,14 +10000,16 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		Log("/* spoločná časť na sviatky svätých mužov/žien -- pre tých, čo žili v manželstve */\n");
 
 		b = MODL_SPOL_CAST_NEURCENA;
-		if(a == MODL_SPOL_CAST_SV_ZENA_MANZ)
+		if (a == MODL_SPOL_CAST_SV_ZENA_MANZ){
 			b = MODL_SPOL_CAST_SV_ZENA;
-		else if(a == MODL_SPOL_CAST_SV_MUZ_MANZ)
+		}
+		else if (a == MODL_SPOL_CAST_SV_MUZ_MANZ){
 			b = MODL_SPOL_CAST_SV_MUZ;
+		}
 
 		if(b != MODL_SPOL_CAST_NEURCENA){
-			Log("spúšťam _set_spolocna_cast(%s) druhý raz (vnorené) -- \n   kvôli častiam, ktoré pre tých, čo žili v manželstve nie sú\n", nazov_spolc(b));
-			_set_spolocna_cast(b, poradie_svaty, sc);
+			Log("spúšťam _set_spolocna_cast(%s) druhý raz (vnorené) -- kvôli častiam, ktoré pre tých, čo žili v manželstve nie sú\n", nazov_spolc(b));
+			_set_spolocna_cast(b, poradie_svaty, sc, force);
 			Log("po vnorenom spustení _set_spolocna_cast() -- navrat.\n");
 			Log("pokračujem v nastavení vecí pre spol. čast MODL_SPOL_CAST_..._MANZ...\n");
 		}
@@ -9995,7 +10030,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY, _anchor_zvazok, _anchor_pom, _file, force);
 		// 2006-08-07: bude treba otestovať, pretože zatiaľ to nemá asi žiadny svätec nastavené
-		if(a == MODL_SPOL_CAST_SV_ZENA_MANZ){ // 2006-08-08: odlišné druhé čítanie
+		if(a == MODL_SPOL_CAST_SV_ZENA_MANZ){
 			_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
 		}
 
@@ -10008,18 +10043,20 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		Log("/* spolocna cast na sviatky svatych muzov/zien -- pre vychovavatelov */\n");
 
 		b = MODL_SPOL_CAST_NEURCENA;
-		if(a == MODL_SPOL_CAST_SV_ZENA_VYCH)
+		if (a == MODL_SPOL_CAST_SV_ZENA_VYCH){
 			b = MODL_SPOL_CAST_SV_ZENA;
-		else if(a == MODL_SPOL_CAST_SV_MUZ_VYCH)
+		}
+		else if (a == MODL_SPOL_CAST_SV_MUZ_VYCH){
 			b = MODL_SPOL_CAST_SV_MUZ;
+		}
 
 		if(b != MODL_SPOL_CAST_NEURCENA){
-			Log("spustam _set_spolocna_cast(%s) druhy raz (vnorene) -- \n   kvoli castiam, ktore pre vychovavatelov nie su\n", nazov_spolc(b));
-			_set_spolocna_cast(b, poradie_svaty, sc);
+			Log("spustam _set_spolocna_cast(%s) druhy raz (vnorene) -- kvoli castiam, ktore pre vychovavatelov nie su\n", nazov_spolc(b));
+			_set_spolocna_cast(b, poradie_svaty, sc, force);
 			Log("po vnorenom spusteni _set_spolocna_cast() -- navrat.\n");
 			Log("pokracujem v nastaveni veci pre spol. cast MODL_SPOL_CAST_..._VYCH...\n");
 		}
-		// ...a teraz vlastnu cast pre vychovavatelov
+		// ...a teraz vlastnu cast pre vychovávateľov
 
 		// prvé vešpery
 		modlitba = MODL_PRVE_VESPERY;
@@ -10032,9 +10069,9 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
 		Log("  _anchor_pom == %s\n", _anchor_pom);
 
-		// 2006-08-08: tí čo konali skutky milosrdenstva nemajú samostatné 1. čítanie
+		// vychovávatelia nemajú samostatné 1. čítanie
 		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2006-08-08: tí čo konali skutky milosrdenstva majú rovnaké 2. čítanie
+		// vychovávatelia majú rovnaké 2. čítanie
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -10057,14 +10094,16 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		Log("/* spolocna cast na sviatky svatych muzov/zien -- pre tych, co konali skutky milosrdenstva */\n");
 
 		b = MODL_SPOL_CAST_NEURCENA;
-		if(a == MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL)
+		if (a == MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL){
 			b = MODL_SPOL_CAST_SV_ZENA;
-		else if(a == MODL_SPOL_CAST_SV_MUZ_SKUTKYMIL)
+		}
+		else if (a == MODL_SPOL_CAST_SV_MUZ_SKUTKYMIL){
 			b = MODL_SPOL_CAST_SV_MUZ;
+		}
 
 		if(b != MODL_SPOL_CAST_NEURCENA){
-			Log("spustam _set_spolocna_cast(%s) druhy raz (vnorene) -- \n   kvoli castiam, ktore pre tych, co konali skutky milosrdenstva nie su\n", nazov_spolc(b));
-			_set_spolocna_cast(b, poradie_svaty, sc);
+			Log("spustam _set_spolocna_cast(%s) druhy raz (vnorene) -- kvoli castiam, ktore pre tych, co konali skutky milosrdenstva nie su\n", nazov_spolc(b));
+			_set_spolocna_cast(b, poradie_svaty, sc, force);
 			Log("po vnorenom spusteni _set_spolocna_cast() -- navrat.\n");
 			Log("pokracujem v nastaveni veci pre spol. cast MODL_SPOL_CAST_..._SKUTKYMIL...\n");
 		}
@@ -10080,7 +10119,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
 		Log("  _anchor_pom == %s\n", _anchor_pom);
-		// 2005-08-08: pridaný ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
+		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
@@ -10088,9 +10127,9 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
 		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY, _anchor_zvazok, _anchor_pom, _file, force);
-		// 2006-08-08: tí čo konali skutky milosrdenstva majú v I. a II. zväzku rovnaké 1. čítanie; v III. a IV. iné rovnaké 1. čítanie
+		// tí, čo konali skutky milosrdenstva, majú v I. a II. zväzku rovnaké 1. čítanie; v III. a IV. iné rovnaké 1. čítanie
 		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2006-08-08: tí čo konali skutky milosrdenstva majú rovnaké 2. čítanie
+		// tí, čo konali skutky milosrdenstva, majú rovnaké 2. čítanie
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -10113,14 +10152,16 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		Log("/* spolocna cast na sviatky svatych muzov/zien -- pre reholnikov */\n");
 
 		b = MODL_SPOL_CAST_NEURCENA;
-		if(a == MODL_SPOL_CAST_SV_ZENA_REHOLNIK)
+		if (a == MODL_SPOL_CAST_SV_ZENA_REHOLNIK){
 			b = MODL_SPOL_CAST_SV_ZENA;
-		else if(a == MODL_SPOL_CAST_SV_MUZ_REHOLNIK)
+		}
+		else if (a == MODL_SPOL_CAST_SV_MUZ_REHOLNIK){
 			b = MODL_SPOL_CAST_SV_MUZ;
+		}
 
 		if(b != MODL_SPOL_CAST_NEURCENA){
-			Log("spustam _set_spolocna_cast(%s) druhy raz (vnorene) -- \n   kvoli castiam, ktore pre reholnikov nie su\n", nazov_spolc(b));
-			_set_spolocna_cast(b, poradie_svaty, sc);
+			Log("spustam _set_spolocna_cast(%s) druhy raz (vnorene) -- kvoli castiam, ktore pre reholnikov nie su\n", nazov_spolc(b));
+			_set_spolocna_cast(b, poradie_svaty, sc, force);
 			Log("po vnorenom spusteni _set_spolocna_cast() -- navrat.\n");
 			Log("pokracujem v nastaveni veci pre spol. cast MODL_SPOL_CAST_..._REHOLNIK...\n");
 		}
@@ -10128,8 +10169,8 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		// prvé vešpery
 		modlitba = MODL_PRVE_VESPERY;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
-		_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file);
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+		_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file, force);
 		_spolocna_cast_modlitba;
 
 		// invitatórium
@@ -10141,7 +10182,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
 		Log("  _anchor_pom == %s\n", _anchor_pom);
-		// 2005-08-08: pridaný ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
+		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
@@ -10149,29 +10190,28 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
 		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY, _anchor_zvazok, _anchor_pom, _file, force);
-		// 2006-08-08: rehoľníci majú v I. a II. zväzku rovnaké 1. čítanie; v III. a IV. iné rovnaké 1. čítanie
+		// rehoľníci majú v I. a II. zväzku rovnaké 1. čítanie; v III. a IV. iné rovnaké 1. čítanie
 		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2006-08-08: rehoľníci majú rovnaké 2. čítanie
+		// rehoľníci majú rovnaké 2. čítanie
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
-		_spolocna_cast_benediktus_viac(2, _anchor_head, _anchor, _file);
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+		_spolocna_cast_benediktus_viac(2, _anchor_head, _anchor, _file, force);
 		_spolocna_cast_modlitba;
 
 		// modlitba cez deň
 
 		// vešpery
 		modlitba = MODL_VESPERY;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
-		_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file);
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+		_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file, force);
 		_spolocna_cast_modlitba;
 
 	}// MODL_SPOL_CAST_SV_MUZ/ZENA_REHOLNIK
 
 	// spolocna cast na sviatky svatych muzov
-	else if((a == MODL_SPOL_CAST_SV_MUZ) ||
-		(a == MODL_SPOL_CAST_SV_MUZ_VIACERI)){
+	else if((a == MODL_SPOL_CAST_SV_MUZ) || (a == MODL_SPOL_CAST_SV_MUZ_VIACERI)){
 
 		Log("/* spolocna cast na sviatky svatych muzov */\n");
 
@@ -10187,7 +10227,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_duch_past(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
@@ -10210,7 +10250,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_full(modlitba);
 
 		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -10218,9 +10258,9 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_1nedele_rch();
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		_spolocna_cast_benediktus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		_spolocna_cast_kresponz_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		_spolocna_cast_benediktus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		_spolocna_cast_kresponz_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
@@ -10241,8 +10281,8 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 				_set_zalmy_sviatok_duch_past(modlitba);
 			}
 			_spolocna_cast_full(modlitba);
-			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-			_spolocna_cast_magnifikat_rozne(modlitba, _anchor_pom, _anchor, _file);
+			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_magnifikat_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_kresp_ve;
 			}
@@ -10251,8 +10291,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 	}// MODL_SPOL_CAST_SV_MUZ_[VIACERI]...
 
 	// spolocna cast na sviatky svatych zien
-	else if((a == MODL_SPOL_CAST_SV_ZENA) ||
-		(a == MODL_SPOL_CAST_SV_ZENA_VIACERE)){
+	else if((a == MODL_SPOL_CAST_SV_ZENA) || (a == MODL_SPOL_CAST_SV_ZENA_VIACERE)){
 
 		Log("/* spolocna cast na sviatky svatych zien */\n");
 
@@ -10268,7 +10307,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_panien(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
@@ -10291,7 +10330,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		_spolocna_cast_full(modlitba);
 
 		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -10299,7 +10338,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_1nedele_rch();
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
@@ -10320,7 +10359,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 				_set_zalmy_sviatok_panien(modlitba);
 			}
 			_spolocna_cast_full(modlitba);
-			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 			// odlišné krátke resp. pre veľkonočné obdobie
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_kresp_ve;
@@ -10330,8 +10369,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 	}// MODL_SPOL_CAST_SV_ZENA_[VIACERE]...
 
 	// spolocna cast na sviatky panien
-	else if((a == MODL_SPOL_CAST_PANNA) ||
-		(a == MODL_SPOL_CAST_PANNY_VIACERE)){
+	else if((a == MODL_SPOL_CAST_PANNA) || (a == MODL_SPOL_CAST_PANNY_VIACERE)){
 
 		Log("/* spolocna cast na sviatky panien */\n");
 
@@ -10342,7 +10380,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_panien(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		//_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
+		//_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
@@ -10358,9 +10396,8 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_panien(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		// 2005-07-22: ToDo: skontrolovať, či pre špeciálne obdobia nie sú špeciálne časti z obdobia
-		// _spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file);
-		// 2005-08-27: 1. čítanie je rovnaké pre všetky obdobia a zväzky žaltára :-)
+		// _spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		// 1. čítanie je rovnaké pre všetky obdobia a zväzky žaltára :-)
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -10416,7 +10453,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		modlitba = MODL_INVITATORIUM;
 		_spolocna_cast_antifona_inv_viac(modlitba, 2);
 
-		// 2005-08-25: pridaný ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
+		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_pom, "%s", STR_EMPTY);
 		Log("  _anchor_pom == %s\n", _anchor_pom);
 		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
@@ -10432,13 +10469,12 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_sviatok_marie(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		// 2005-08-25: 1. čítanie je zväčša odlišné pre spoločné časti sviatkov svätých nasledovne:
+		// 1. čítanie je zväčša odlišné pre spoločné časti sviatkov svätých takto:
 		// - I. zväzok (advent, vianoce) a II. zväzok (pôst),
 		// - II. zväzok (veľká noc),
 		// - III. a IV. zväzok (obdobie cez rok).
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
-		_spolocna_cast_kresponz_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file);
-		// 2009-09-18/2005-08-27: doplnené druhé čítanie;
+		_spolocna_cast_kresponz_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
 		// 2011-02-09: opravené _spolocna_cast_2cit_rozne -> _spolocna_cast_2citanie
 		_spolocna_cast_2citanie; // _spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
 
@@ -10477,8 +10513,6 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 
 	}// MODL_SPOL_CAST_PANNA_MARIA
 
-// 2006-01-19_LABEL // 2005-08-16: tu treba pokračovať
-
 	// spolocna cast na oficium za zosnulych
 	else if(a == MODL_SPOL_CAST_ZA_ZOSNULYCH){
 
@@ -10507,7 +10541,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_za_zosnulych(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		// 2005-08-25: 1. čítanie je zväčša odlišné pre spoločné časti sviatkov svätých nasledovne:
+		// 1. čítanie je zväčša odlišné pre spoločné časti sviatkov svätých takto:
 		// - I. zväzok (advent, vianoce) a II. zväzok (pôst),
 		// - II. zväzok (veľká noc),
 		// - III. a IV. zväzok (obdobie cez rok).
@@ -10528,26 +10562,26 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_benediktus_ve;
 		}
-		_spolocna_cast_ant3_viac_ozz(_anchor_head, _anchor, _file); // 2010-11-04: opravené
+		_spolocna_cast_ant3_viac_ozz(_anchor_head, _anchor, _file);
 
 		// modlitba cez deň
-		// 2011-11-03: doplnené žalmy; hoci opravené su_zalmy_vlastne(), nie je potrebné to tu odvetviť pre 2.11.
+		// doplnené žalmy; hoci opravené su_zalmy_vlastne(), nie je potrebné to tu odvetviť pre 2.11.
 		modlitba = MODL_PREDPOLUDNIM;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
 		if(su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
 			Log("  _set_zalmy_za_zosnulych(%s)...\n", nazov_modlitby(modlitba));
 			_set_zalmy_za_zosnulych(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
 		modlitba = MODL_NAPOLUDNIE;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
 		if(su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
 			Log("  _set_zalmy_za_zosnulych(%s)...\n", nazov_modlitby(modlitba));
 			_set_zalmy_za_zosnulych(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
 		modlitba = MODL_POPOLUDNI;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);\
+		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
 		if(su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
 			Log("  _set_zalmy_za_zosnulych(%s)...\n", nazov_modlitby(modlitba));
 			_set_zalmy_za_zosnulych(modlitba);
@@ -10562,13 +10596,13 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 				_set_zalmy_za_zosnulych(modlitba);
 			}
 			_spolocna_cast_full(modlitba);
-			_spolocna_cast_kresponz_viac(2, _anchor_head, _anchor, _file);
+			_spolocna_cast_kresponz_viac(2, _anchor_head, _anchor, _file, force);
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_magnifikat_ve;
 			}
 		}// v OBD_OKTAVA_NARODENIA -- vešpery sú zo dňa
 
-		// 2011-11-08: kompletórium z nedele
+		// kompletórium z nedele
 		modlitba = MODL_KOMPLETORIUM;
 		if(_global_den.den != DEN_NEDELA){
 			_set_kompletorium_slavnost(modlitba);
@@ -10601,7 +10635,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		modlitba = MODL_INVITATORIUM;
 		_spolocna_cast_antifona_inv_viac(modlitba, 2);
 
-		// 2005-08-25: pridaný ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
+		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_pom, "%s", STR_EMPTY);
 		Log("  _anchor_pom == %s\n", _anchor_pom);
 		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
@@ -10617,7 +10651,7 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 			_set_zalmy_posviacka_chramu(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		// 2005-08-25: 1. čítanie je zväčša odlišné pre spoločné časti sviatkov svätých nasledovne:
+		// 1. čítanie je zväčša odlišné pre spoločné časti sviatkov svätých takto:
 		// - I. zväzok (advent, vianoce) a II. zväzok (pôst),
 		// - II. zväzok (veľká noc),
 		// - III. a IV. zväzok (obdobie cez rok).
@@ -10633,9 +10667,8 @@ void _set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, sho
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II))
 			_spolocna_cast_kresp_ve;
 
-		// modlitba cez deň, pridané 2009-01-07; žalmy a antifóny sa berú ako vo všedný deň 
-		// 2009-11-10: antifóny z vlastnej časti
-		// 2009-11-17: problém: pre výročie posviacky Lateránskej baziliky nemajú sa vziať antifóny a žalmy zo spoločnej časti, ale zo dňa
+		// žalmy sa berú ako vo všedný deň, antifóny z vlastnej časti
+		// problém: pre výročie posviacky Lateránskej baziliky nemajú sa vziať antifóny a žalmy zo spoločnej časti, ale zo dňa
 		modlitba = MODL_PREDPOLUDNIM;
 		if ((_global_den.den != 9) && (_global_den.mesiac - 1 != MES_NOV)){
 			_spolocna_cast_antifony;
@@ -10714,26 +10747,21 @@ void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty){
 	nazov_spolc(sc.a2), sc.a2, \
 	nazov_spolc(sc.a3), sc.a3); Log
 
-void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force = 0){
+void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force /* = 0 */){
 	// poradie_svaty je vstupom iba kvoli tomu, ze ak je 0 -> UNKNOWN_PORADIE_SVATEHO, potom nas neznepokojuju vypisy typu Error: not assigned...
-	// 22/02/2000A.D.: ked nastavi vo formulari (detaily) zalmy zo `sviatku' a spolocnu cast `nebrat', predsa sa nevyvolaju zalmy zo sviatku, lebo sa nespusti _set_spolocna_cast(); 
+	// ked nastavi vo formulari (detaily) zalmy zo `sviatku' a spolocnu cast `nebrat', predsa sa nevyvolaju zalmy zo sviatku, lebo sa nespusti _set_spolocna_cast(); 
 	// [ToDo] -- mozno by bolo dobre oddelit nastavenie pre spolocnu cast a potom inde dat samotne zalmy...
-	// 2009-09-18: doplnený nepovinný tretí parameter, ktorým sa dajú vynútiť antifóny zo spoločnej časti, aj ak je to len spomienka alebo ľubovoľná spomienka
+	// doplnený nepovinný tretí parameter, ktorým sa dajú vynútiť antifóny zo spoločnej časti, aj ak je to len spomienka alebo ľubovoľná spomienka
 	Log("set_spolocna_cast({%s, %s, %s}) -- begin\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
 	Log("_global_opt[OPT_3_SPOLOCNA_CAST] == %s (%d)\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]), _global_opt[OPT_3_SPOLOCNA_CAST]);
 
-	// 2011-03-17: tu bolo nastavenie popisu pre daného svätého; presunuté do samostatnej časti, nakoľko sa to používa aj pre spomienky v pôste, kde sa set_spolocna_cast) nevolá
 	Log("teraz nastavujem POPIS (pre daného svätého) -- volám set_popis_svaty_rch_mcd_pc_vesp()...\n");
 	set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
-	// 2003-06-30: tento POPIS nie je dobre nastaveny pre spomienku
+	// tento POPIS nie je dobre nastaveny pre spomienku
 	// "Nepoškvrneného Srdca prebl. Panny Márie" -> "Nepoškvrneného Srdca Panny Márie", preto je tam nastaveny este raz na dummy, vid ZNOVUNASTAVENIE_POPISU_NA_DUMMY
 
-	// tu bola pasaz, nastavujuca _global_opt[OPT_3_SPOLOCNA_CAST] na sc.a1 v pripade, ze je neurcena;
-	// je teraz v sviatky_svatych() so styrmi vstupmi, pretoze sa musi vykonat iba pri druhom spusteni funkcie
-	// sviatky_svatych() -- 18/02/2000A.D.
-
-	// 2007-09-28: doplnené; 2009-10-27: pokusne doplnené aj _global_svaty1.typslav
+	// pokusne aj _global_svaty1.typslav
 	if ((_global_den.typslav == SLAV_SLAVNOST) || (_global_svaty1.typslav == SLAV_SLAVNOST)){
 		Log("	teraz nastavujem žalmy pre modlitbu cez deň slávností...\n");
 		if (_global_den.denvt != DEN_NEDELA){
@@ -32048,7 +32076,7 @@ label_03NOV:
 
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
-								set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP_PROSBY + FORCE_BRAT_ANTIFONY_MCD + FORCE_BRAT_HYMNUS);
+								set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP_PROSBY + FORCE_BRAT_ANTIFONY_MCD + FORCE_BRAT_HYMNUS + FORCE_BRAT_ANTIFONY_B_M + FORCE_BRAT_ANTIFONY_INV);
 
 							set_popis_dummy();
 
@@ -32162,7 +32190,7 @@ label_03NOV:
 
 								// definovanie parametrov pre modlitbu
 								if(query_type != PRM_DETAILY)
-									set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP_PROSBY + FORCE_BRAT_2CITANIE + FORCE_BRAT_ANTIFONY_MCD);
+									set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP_PROSBY + FORCE_BRAT_2CITANIE + FORCE_BRAT_ANTIFONY_MCD + FORCE_BRAT_ANTIFONY_B_M + FORCE_BRAT_ANTIFONY_INV);
 
 								modlitba = MODL_RANNE_CHVALY;
 								_vlastna_cast_modlitba;
@@ -32926,7 +32954,7 @@ label_03NOV:
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
-								set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP_PROSBY + FORCE_BRAT_2CITANIE + FORCE_BRAT_ANTIFONY_MCD);
+								set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP_PROSBY + FORCE_BRAT_2CITANIE + FORCE_BRAT_ANTIFONY_MCD + FORCE_BRAT_ANTIFONY_B_M + FORCE_BRAT_ANTIFONY_INV);
 
 							modlitba = MODL_RANNE_CHVALY;
 							_set_zalmy_1nedele_rch();

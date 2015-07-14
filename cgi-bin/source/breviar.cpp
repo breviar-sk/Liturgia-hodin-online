@@ -249,6 +249,7 @@ char *_global_string_farba;
 char _global_string_modlitba[SMALL];
 char _global_string_podnadpis[SMALL];
 char _global_string_spol_cast[MAX_GLOBAL_STR2];
+char _global_string_spol_cast_full[MAX_GLOBAL_STR];
 
 // 2012-08-16: doplnené kvôli návratovej hodnote z funkcie init_global_string_spol_cast()
 short int ret_sc = MODL_SPOL_CAST_NULL;
@@ -1090,62 +1091,6 @@ void _export_link_show_hide(short int opt, int bit_opt, char popis_show[SMALL], 
 
 	_global_opt[opt] = _global_opt_backup;
 }
-
-// funkcia vyexportuje (vrátane formátovania) reťazec napr. "Zo spoločnej časti na sviatky duchovných pastierov: pre biskupov" s prípadným dovetkom "pri slávení spomienky vziať časti zo dňa podľa Všeobecných smerníc, č. 235 písm. b"
-// parameter aj_vslh_235b: 
-// ANO == použitie v konkrétnej modlitbe, funkcia interpretParameter()
-// NIE == použitie v prehľade pre daný dátum, funkcia _export_rozbor_dna_buttons()
-void _export_global_string_spol_cast(short int aj_vslh_235b){
-	char pom[MAX_STR];
-	mystrcpy(pom, STR_EMPTY, MAX_STR);
-	Log("-- _export_global_string_spol_cast(aj_vslh_235b == %d): začiatok...\n", aj_vslh_235b);
-
-	if (!equals(_global_string_spol_cast, STR_EMPTY)){
-		Log("-- _export_global_string_spol_cast(): exportujem reťazec `%s'...\n", _global_string_spol_cast);
-
-		// text o VSLH č. 235 b (pôvodne sa pridávalo do reťazca _global_string_spol_cast vo funkcii init_global_string_spol_cast()
-		if ((aj_vslh_235b == ANO) && ((_global_den.smer > 9) && ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)))){
-			if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)){
-				strcat(pom, " (");
-				strcat(pom, nazov_bit_opt_1_spomienka_spol_cast_jazyk[_global_jazyk]);
-				strcat(pom, ")");
-			}// nebrať časti zo spol. časti
-		}// ide nanajvýš o spomienku (ak je to slávenie s vyšším stupňom, nemá zmysel voľba BIT_OPT_1_SPOMIENKA_SPOL_CAST)
-
-		// (aj_vslh_235b == ANO) means function is called from the generated prayer (for blind-friendly export is not necessary to export it at all) -- use different CSS style
-		if (aj_vslh_235b == ANO){
-			Export(HTML_DIV_BEGIN);
-		}
-		Export("<"HTML_SPAN_RED_SUBTITLE">");
-
-		// pre HU iný slovosled
-		if (_global_jazyk == JAZYK_HU){
-			Export("%s %s %s%s.",
-				(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH) ? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU) ? nazov_spolc_vyrocie_jazyk[_global_jazyk] : nazov_spolc_sviatky_jazyk[_global_jazyk]) : STR_EMPTY,
-				mystr_first_upper(_global_string_spol_cast),
-				(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH) ? nazov_spolc_oficiumza_jazyk[_global_jazyk] : nazov_spolc_zospolc_jazyk[_global_jazyk],
-				pom);
-		}
-		else{
-			Export("%s %s %s%s.",
-				(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH) ? nazov_spolc_oficiumza_jazyk[_global_jazyk] : nazov_spolc_zospolc_jazyk[_global_jazyk],
-				(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH) ? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU) ? nazov_spolc_vyrocie_jazyk[_global_jazyk] : nazov_spolc_sviatky_jazyk[_global_jazyk]) : STR_EMPTY,
-				_global_string_spol_cast,
-				pom);
-		}
-
-		Export(HTML_SPAN_END);
-		if (aj_vslh_235b == ANO){
-			Export(HTML_DIV_END);
-		}
-
-		Export("\n");
-	}
-	else{
-		Log("-- _export_global_string_spol_cast(): prázdny reťazec.\n");
-	}
-	Log("-- _export_global_string_spol_cast(aj_vslh_235b == %d): koniec.\n", aj_vslh_235b);
-}// _export_global_string_spol_cast()
 
 // vypise hlasky o tom, ze je prazdny formular resp. skript bol spusteny bez vstupnych hodnot
 // historicka poznamka: kedysi sa vtedy volala procedura dnes(); potom prazdny_formular(); a napokon sa _main_dnes(); vola az pri PRM_DNES
@@ -2082,6 +2027,121 @@ void init_ordinarium_file(_struct_anchor_and_file &af, short int modlitba){
 	return;
 }
 
+// funkcia vyexportuje (vrátane formátovania) reťazec napr. "Zo spoločnej časti na sviatky duchovných pastierov: pre biskupov" s prípadným dovetkom "pri slávení spomienky vziať časti zo dňa podľa Všeobecných smerníc, č. 235 písm. b" do reťazca _global_string_spol_cast_full
+// parameter aj_vslh_235b: 
+// ANO == použitie v konkrétnej modlitbe, funkcia interpretParameter()
+// NIE == použitie v prehľade pre daný dátum, funkcia _export_rozbor_dna_buttons()
+void init_global_string_spol_cast_full(short int aj_vslh_235b){
+	char pom[MAX_STR], pom_main[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	Log("-- init_global_string_spol_cast_full(aj_vslh_235b == %d): začiatok...\n", aj_vslh_235b);
+	Log("pôvodná hodnota: %s\n", _global_string_spol_cast_full);
+	mystrcpy(_global_string_spol_cast_full, STR_EMPTY, MAX_GLOBAL_STR);
+
+	if (!equals(_global_string_spol_cast, STR_EMPTY)){
+		Log("-- init_global_string_spol_cast_full(): vytváram reťazec `%s'...\n", _global_string_spol_cast);
+
+		// text o VSLH č. 235 b (pôvodne sa pridávalo do reťazca _global_string_spol_cast vo funkcii init_global_string_spol_cast()
+		if ((aj_vslh_235b == ANO) && ((_global_den.smer > 9) && ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)))){
+			if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)){
+				strcat(pom, " (");
+				strcat(pom, nazov_bit_opt_1_spomienka_spol_cast_jazyk[_global_jazyk]);
+				strcat(pom, ")");
+			}// nebrať časti zo spol. časti
+		}// ide nanajvýš o spomienku (ak je to slávenie s vyšším stupňom, nemá zmysel voľba BIT_OPT_1_SPOMIENKA_SPOL_CAST)
+
+		// (aj_vslh_235b == ANO) means function is called from the generated prayer (for blind-friendly export is not necessary to export it at all) -- use different CSS style
+		if (aj_vslh_235b == ANO){
+			strcat(_global_string_spol_cast_full, HTML_DIV_BEGIN);
+		}
+		strcat(_global_string_spol_cast_full, "<"HTML_SPAN_RED_SUBTITLE">");
+
+		// pre HU iný slovosled
+		if (_global_jazyk == JAZYK_HU){
+			sprintf(pom_main, "%s %s %s%s.",
+				(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH) ? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU) ? nazov_spolc_vyrocie_jazyk[_global_jazyk] : nazov_spolc_sviatky_jazyk[_global_jazyk]) : STR_EMPTY,
+				mystr_first_upper(_global_string_spol_cast),
+				(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH) ? nazov_spolc_oficiumza_jazyk[_global_jazyk] : nazov_spolc_zospolc_jazyk[_global_jazyk],
+				pom);
+		}
+		else{
+			sprintf(pom_main, "%s %s %s%s.",
+				(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH) ? nazov_spolc_oficiumza_jazyk[_global_jazyk] : nazov_spolc_zospolc_jazyk[_global_jazyk],
+				(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH) ? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU) ? nazov_spolc_vyrocie_jazyk[_global_jazyk] : nazov_spolc_sviatky_jazyk[_global_jazyk]) : STR_EMPTY,
+				_global_string_spol_cast,
+				pom);
+		}
+		strcat(_global_string_spol_cast_full, pom_main);
+
+		strcat(_global_string_spol_cast_full, HTML_SPAN_END);
+		if (aj_vslh_235b == ANO){
+			strcat(_global_string_spol_cast_full, HTML_DIV_END);
+		}
+
+		strcat(_global_string_spol_cast_full, "\n");
+	}
+	else{
+		Log("-- init_global_string_spol_cast_full(): prázdny reťazec.\n");
+	}
+	Log("-- init_global_string_spol_cast_full(aj_vslh_235b == %d): koniec.\n", aj_vslh_235b);
+} // init_global_string_spol_cast_full()
+
+void _export_global_string_spol_cast(short int aj_vslh_235b){
+	/*
+	char pom[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	Log("-- _export_global_string_spol_cast(aj_vslh_235b == %d): začiatok...\n", aj_vslh_235b);
+
+	if (!equals(_global_string_spol_cast, STR_EMPTY)){
+	Log("-- _export_global_string_spol_cast(): exportujem reťazec `%s'...\n", _global_string_spol_cast);
+
+	// text o VSLH č. 235 b (pôvodne sa pridávalo do reťazca _global_string_spol_cast vo funkcii init_global_string_spol_cast()
+	if ((aj_vslh_235b == ANO) && ((_global_den.smer > 9) && ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)))){
+	if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)){
+	strcat(pom, " (");
+	strcat(pom, nazov_bit_opt_1_spomienka_spol_cast_jazyk[_global_jazyk]);
+	strcat(pom, ")");
+	}// nebrať časti zo spol. časti
+	}// ide nanajvýš o spomienku (ak je to slávenie s vyšším stupňom, nemá zmysel voľba BIT_OPT_1_SPOMIENKA_SPOL_CAST)
+
+	// (aj_vslh_235b == ANO) means function is called from the generated prayer (for blind-friendly export is not necessary to export it at all) -- use different CSS style
+	if (aj_vslh_235b == ANO){
+	Export(HTML_DIV_BEGIN);
+	}
+	Export("<"HTML_SPAN_RED_SUBTITLE">");
+
+	// pre HU iný slovosled
+	if (_global_jazyk == JAZYK_HU){
+	Export("%s %s %s%s.",
+	(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH) ? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU) ? nazov_spolc_vyrocie_jazyk[_global_jazyk] : nazov_spolc_sviatky_jazyk[_global_jazyk]) : STR_EMPTY,
+	mystr_first_upper(_global_string_spol_cast),
+	(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH) ? nazov_spolc_oficiumza_jazyk[_global_jazyk] : nazov_spolc_zospolc_jazyk[_global_jazyk],
+	pom);
+	}
+	else{
+	Export("%s %s %s%s.",
+	(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH) ? nazov_spolc_oficiumza_jazyk[_global_jazyk] : nazov_spolc_zospolc_jazyk[_global_jazyk],
+	(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH) ? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU) ? nazov_spolc_vyrocie_jazyk[_global_jazyk] : nazov_spolc_sviatky_jazyk[_global_jazyk]) : STR_EMPTY,
+	_global_string_spol_cast,
+	pom);
+	}
+
+	Export(HTML_SPAN_END);
+	if (aj_vslh_235b == ANO){
+	Export(HTML_DIV_END);
+	}
+
+	Export("\n");
+	}
+	else{
+	Log("-- _export_global_string_spol_cast(): prázdny reťazec.\n");
+	}
+	Log("-- _export_global_string_spol_cast(aj_vslh_235b == %d): koniec.\n", aj_vslh_235b);
+	*/
+	init_global_string_spol_cast_full(aj_vslh_235b);
+	Export(_global_string_spol_cast_full);
+}// _export_global_string_spol_cast()
+
 // dostane vstup to, co sa pri parsovani templatu nachadza medzi znakmi CHAR_KEYWORD_BEGIN a CHAR_KEYWORD_END;
 // zrejme ide o parameter; podla neho inkluduje subor (alebo cast suboru)
 // 27/04/2000A.D.: pozmenene (pridane #definy):
@@ -2767,7 +2827,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		if (zobrazit == ANO){
 			// ďalšie rozhodovanie
 			Log("_global_poradie_svaty == %d...\n", _global_poradie_svaty);
-			// 2012-08-21: pre ľubovoľné aj záväzné spomienky nemá význam | č. 236 VSLH: V modlitbe cez deň, čiže predpoludním, napoludnie a popoludní, a v kompletóriu sa neberie nič z ofícia o svätom, všetko je zo všedného dňa.
+			// pre ľubovoľné aj záväzné spomienky nemá význam | č. 236 VSLH: V modlitbe cez deň, čiže predpoludním, napoludnie a popoludní, a v kompletóriu sa neberie nič z ofícia o svätom, všetko je zo všedného dňa.
 			if (_global_poradie_svaty == 0){
 				zobrazit = (((_global_den.typslav != SLAV_LUB_SPOMIENKA) && (_global_den.typslav != SLAV_SPOMIENKA)) || ((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI) && (_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM)));
 				Log("_global_den.spolcast == %d\n", _global_den.spolcast);
@@ -2778,7 +2838,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				zobrazit &= ((sc.a1 != MODL_SPOL_CAST_NEURCENA) && (sc.a1 != MODL_SPOL_CAST_NEBRAT));
 				Log("zobrazit == %d...\n", zobrazit);
 			}
-			// 2012-09-07: pre miestne sviatky má zmysel pre MCD (nie pre kompletórium)
+			// pre miestne sviatky má zmysel pre MCD (nie pre kompletórium)
 			else{
 				zobrazit &= ((_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM));
 				if (zobrazit == ANO){
@@ -6136,7 +6196,7 @@ short int init_global_string_spol_cast(short int sc_jedna, short int poradie_sva
 	Log("-- init_global_string_spol_cast(%d, %s) -- začiatok\n", sc_jedna, nazov_spolc(sc_jedna));
 	Log("pôvodná hodnota: %s\n", _global_string_spol_cast);
 	if (sc_jedna == MODL_SPOL_CAST_NULL){
-		mystrcpy(_global_string_spol_cast, STR_EMPTY, SMALL);
+		mystrcpy(_global_string_spol_cast, STR_EMPTY, MAX_GLOBAL_STR2);
 
 		// najprv si rozkódujeme, čo je v "_global_den".spolcast podľa poradie_svateho
 		_struct_sc sc = _decode_spol_cast(MODL_SPOL_CAST_NEURCENA);
@@ -9049,33 +9109,6 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		//---------------------------------------------------------------------
 
-		// option 3: časti modlitby zo spoločnej časti ... -- alternatíva: doplniť pre každý riadok modlitby
-
-		Export("<"HTML_TABLE_ROW">\n");
-		Export("<"HTML_TABLE_CELL">\n");
-
-		// formulár pre výber preferovanej spoločnej časti
-		Export("<"HTML_SPAN_TOOLTIP">%s"HTML_SPAN_END, html_text_spol_casti_vziat_zo_explain[_global_jazyk], html_text_spol_casti_vziat_zo[_global_jazyk]);
-		Export("\n");
-		// 2012-10-01: doplnený zlom riadka pre android
-#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
-		Export(HTML_CRLF_LINE_BREAK);
-#endif
-		Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_MODL_OPTF_3, html_text_spol_casti_vziat_zo_explain[_global_jazyk]);
-		for(int i = 0; i < POCET_SPOL_CASTI; i++){
-			if((i == MODL_SPOL_CAST_NEURCENA) || (i == MODL_SPOL_CAST_NEBRAT))
-				continue;
-			if((i == MODL_SPOL_CAST_ZA_ZOSNULYCH) || (i == MODL_SPOL_CAST_POSVIACKA_CHRAMU))
-				continue;
-			Export("<option%s>%s</option>\n", (i != _global_opt[OPT_3_SPOLOCNA_CAST])? STR_EMPTY: html_option_selected, nazov_spolc(i));
-		}
-		Export("</select>\n");
-
-		Export(HTML_TABLE_CELL_END"\n");
-		Export(HTML_TABLE_ROW_END"\n");
-
-		//---------------------------------------------------------------------
-
 #if !defined(IO_ANDROID)
 		// for Android it is not necessary since 1.11.2 (setting moved to native menu)
 
@@ -9744,6 +9777,26 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("<option%s>%s</option>\n", (lo == _global_den.litobd)? html_option_selected: STR_EMPTY, nazov_obdobia_short(lo));
 		}
 		Export("\n</select>\n");
+		Export(", "HTML_LINE_BREAK);
+
+		// option 3: časti modlitby zo spoločnej časti
+		// formulár pre výber preferovanej spoločnej časti
+		Export("<"HTML_SPAN_TOOLTIP">%s"HTML_SPAN_END, /* html_text_spol_casti_vziat_zo_explain[_global_jazyk] */ STR_EMPTY, html_text_spol_casti_vziat_zo[_global_jazyk]);
+		Export("\n");
+
+#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
+		Export(HTML_CRLF_LINE_BREAK);
+#else
+		Export(HTML_SPACE);
+#endif
+		Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_MODL_OPTF_3, html_text_spol_casti_vziat_zo_explain[_global_jazyk]);
+		for (int i = 0; i <= POCET_SPOL_CASTI; i++){
+			if (poradie_spol_cast[i] == MODL_SPOL_CAST_NEURCENA){
+				continue;
+			}
+			Export("<option%s>%s</option>\n", (poradie_spol_cast[i] != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(poradie_spol_cast[i]));
+		}
+		Export("</select>\n");
 
 		Export(HTML_TABLE_CELL_END"\n");
 		Export(HTML_TABLE_ROW_END"\n");
@@ -12693,7 +12746,8 @@ void _main_zaltar(char *den, char *tyzden, char *modlitba){
 short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char *litobd, char *litrok){
 	short int d, t, p, lo, tz, poradie_svateho = 0, ret;
 	char lr;
-	// char pom[MAX_STR];
+	short int jeSpolocnaCast = NIE;
+
 	Log("_main_liturgicke_obdobie(): začiatok...\n");
 
 	lr = litrok[0];
@@ -12747,8 +12801,15 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		tz = TYZZAL(t); // ((t + 3) MOD 4) + 1;
 	}
 
+	// setting of chosen common part (communia) | použitie zvolenej spoločnej časti
+	_global_den.spolcast = _global_opt[OPT_3_SPOLOCNA_CAST];
+	if ((_global_den.spolcast != MODL_SPOL_CAST_NEURCENA) && (_global_den.spolcast != MODL_SPOL_CAST_NEBRAT) && (_global_den.spolcast != MODL_SPOL_CAST_NULL)){
+		jeSpolocnaCast = ANO;
+	}
+
 	// ked nejde o nedelu, nema zmysel rozlisovat prve/druhe vespery/kompl. | ToDo: slávnosti, sviatky Pána
-	if (d != DEN_NEDELA){
+	// ofícium za zosnulých nemá prvé vešpery
+	if ((d != DEN_NEDELA) && ((jeSpolocnaCast == NIE) || (_global_den.spolcast == MODL_SPOL_CAST_ZA_ZOSNULYCH))){
 		if (p == MODL_VESPERY){
 			Log("nastavenie do _global_modlitba III. ...\n");
 			_global_modlitba = MODL_VESPERY;
@@ -12921,6 +12982,14 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	// treba nejako hack-ovať a nastaviť aj tieto: _global_den.den pre adv2 a vian1 (25, 26 atd.) | denvr pre špeciality cezročného
 	liturgicke_obdobie(lo, t, d, tz, poradie_svateho);
 
+	// usage of chosen common part (communia) | použitie zvolenej spoločnej časti
+	if (jeSpolocnaCast == ANO){
+		Log("_main_liturgicke_obdobie(): spoločná časť == %s...\n", nazov_spolc(_global_den.spolcast));
+		_struct_sc sc = _decode_spol_cast(_global_den.spolcast);
+		set_spolocna_cast(sc, poradie_svateho, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP_PROSBY + FORCE_BRAT_2CITANIE + FORCE_BRAT_ANTIFONY_MCD + FORCE_BRAT_HYMNUS + FORCE_BRAT_ANTIFONY_B_M + FORCE_BRAT_ANTIFONY_INV + FORCE_BRAT_MODLITBA);
+		set_popis_dummy(); // force
+	}
+
 	// skopírované podľa funkcie _rozbor_dna_s_modlitbou(); ukladá heading do stringu _global_string
 	Log("2:spustam init_global_string(EXPORT_DNA_JEDEN_DEN, svaty == %d, modlitba == %s)...\n", poradie_svateho, nazov_modlitby(_global_modlitba));
 	ret = init_global_string(EXPORT_DNA_JEDEN_DEN, poradie_svateho, _global_modlitba, /* aj_citanie */ NIE);
@@ -12936,9 +13005,14 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	Log("nastavujem _global_string_podnadpis...\n");
 	init_global_string_podnadpis(_global_modlitba);
 	Log("nastavujem _global_string_spol_cast...\n");
-	ret_sc = init_global_string_spol_cast(((_global_modlitba == MODL_DETAILY) || (_global_modlitba == MODL_NEURCENA)) ? MODL_SPOL_CAST_NULL : _global_opt[OPT_3_SPOLOCNA_CAST], poradie_svateho);
+	ret_sc = init_global_string_spol_cast(((_global_modlitba == MODL_DETAILY) || (_global_modlitba == MODL_NEURCENA)) ? MODL_SPOL_CAST_NULL : _global_den.spolcast, poradie_svateho);
 
-	// 2013-03-11: doplnené; bolo len v rozbor_dna_s_modlitbou()
+	// experimentally added description of common part (communia)
+	init_global_string_spol_cast_full(NIE);
+	strcat(_global_string, HTML_LINE_BREAK);
+	strcat(_global_string, _global_string_spol_cast_full);
+
+	// doplnené; bolo len v rozbor_dna_s_modlitbou()
 	Log("nastavujem do _global_pocet_zalmov_kompletorium počet žalmov...\n");
 	_nastav_global_pocet_zalmov_kompletorium(p);
 	Log("_global_pocet_zalmov_kompletorium == %d...\n", _global_pocet_zalmov_kompletorium);
