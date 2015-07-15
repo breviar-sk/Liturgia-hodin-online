@@ -102,8 +102,9 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verze 1.12:</b>
 <ul>
-<li> Nová volba: Možnost použít hymny k volnému výběru (zatím pro mezidobí).
-<li> Český dominikánský breviář.
+<li> Nová volba: Možnost použít hymny k volnému výběru.
+<li> Možnost zobrazit společné texty.
+<li> Český dominikánský breviář (jenom pokusně!).
 <li> Úprava zalomení a korekce hymnů.
 </ul>
 

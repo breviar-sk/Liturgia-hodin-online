@@ -9784,11 +9784,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("<"HTML_SPAN_TOOLTIP">%s"HTML_SPAN_END, /* html_text_spol_casti_vziat_zo_explain[_global_jazyk] */ STR_EMPTY, html_text_spol_casti_vziat_zo[_global_jazyk]);
 		Export("\n");
 
-#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 		Export(HTML_CRLF_LINE_BREAK);
-#else
-		Export(HTML_SPACE);
-#endif
+
 		Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_MODL_OPTF_3, html_text_spol_casti_vziat_zo_explain[_global_jazyk]);
 		for (int i = 0; i <= POCET_SPOL_CASTI; i++){
 			if (poradie_spol_cast[i] == MODL_SPOL_CAST_NEURCENA){
