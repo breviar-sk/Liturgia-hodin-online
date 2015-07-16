@@ -2087,57 +2087,6 @@ void init_global_string_spol_cast_full(short int aj_vslh_235b){
 } // init_global_string_spol_cast_full()
 
 void _export_global_string_spol_cast(short int aj_vslh_235b){
-	/*
-	char pom[MAX_STR];
-	mystrcpy(pom, STR_EMPTY, MAX_STR);
-	Log("-- _export_global_string_spol_cast(aj_vslh_235b == %d): začiatok...\n", aj_vslh_235b);
-
-	if (!equals(_global_string_spol_cast, STR_EMPTY)){
-	Log("-- _export_global_string_spol_cast(): exportujem reťazec `%s'...\n", _global_string_spol_cast);
-
-	// text o VSLH č. 235 b (pôvodne sa pridávalo do reťazca _global_string_spol_cast vo funkcii init_global_string_spol_cast()
-	if ((aj_vslh_235b == ANO) && ((_global_den.smer > 9) && ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)))){
-	if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)){
-	strcat(pom, " (");
-	strcat(pom, nazov_bit_opt_1_spomienka_spol_cast_jazyk[_global_jazyk]);
-	strcat(pom, ")");
-	}// nebrať časti zo spol. časti
-	}// ide nanajvýš o spomienku (ak je to slávenie s vyšším stupňom, nemá zmysel voľba BIT_OPT_1_SPOMIENKA_SPOL_CAST)
-
-	// (aj_vslh_235b == ANO) means function is called from the generated prayer (for blind-friendly export is not necessary to export it at all) -- use different CSS style
-	if (aj_vslh_235b == ANO){
-	Export(HTML_DIV_BEGIN);
-	}
-	Export("<"HTML_SPAN_RED_SUBTITLE">");
-
-	// pre HU iný slovosled
-	if (_global_jazyk == JAZYK_HU){
-	Export("%s %s %s%s.",
-	(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH) ? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU) ? nazov_spolc_vyrocie_jazyk[_global_jazyk] : nazov_spolc_sviatky_jazyk[_global_jazyk]) : STR_EMPTY,
-	mystr_first_upper(_global_string_spol_cast),
-	(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH) ? nazov_spolc_oficiumza_jazyk[_global_jazyk] : nazov_spolc_zospolc_jazyk[_global_jazyk],
-	pom);
-	}
-	else{
-	Export("%s %s %s%s.",
-	(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH) ? nazov_spolc_oficiumza_jazyk[_global_jazyk] : nazov_spolc_zospolc_jazyk[_global_jazyk],
-	(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH) ? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU) ? nazov_spolc_vyrocie_jazyk[_global_jazyk] : nazov_spolc_sviatky_jazyk[_global_jazyk]) : STR_EMPTY,
-	_global_string_spol_cast,
-	pom);
-	}
-
-	Export(HTML_SPAN_END);
-	if (aj_vslh_235b == ANO){
-	Export(HTML_DIV_END);
-	}
-
-	Export("\n");
-	}
-	else{
-	Log("-- _export_global_string_spol_cast(): prázdny reťazec.\n");
-	}
-	Log("-- _export_global_string_spol_cast(aj_vslh_235b == %d): koniec.\n", aj_vslh_235b);
-	*/
 	init_global_string_spol_cast_full(aj_vslh_235b);
 	Export(_global_string_spol_cast_full);
 }// _export_global_string_spol_cast()
@@ -6193,7 +6142,7 @@ void init_global_string_podnadpis(short int modlitba){
 
 short int init_global_string_spol_cast(short int sc_jedna, short int poradie_svateho){
 	short int ret_sc = sc_jedna; // obsahuje nejakú hodnotu MODL_SPOL_CAST_...: buď spol. časť na vstupe alebo ak bol MODL_SPOL_CAST_NULL (-1), tak prvú zo zoznamu
-	Log("-- init_global_string_spol_cast(%d, %s) -- začiatok\n", sc_jedna, nazov_spolc(sc_jedna));
+	Log("-- init_global_string_spol_cast(%d, %s) -- začiatok\n", sc_jedna, (sc_jedna == MODL_SPOL_CAST_NULL) ? STR_UNDEF : nazov_spolc(sc_jedna));
 	Log("pôvodná hodnota: %s\n", _global_string_spol_cast);
 	if (sc_jedna == MODL_SPOL_CAST_NULL){
 		mystrcpy(_global_string_spol_cast, STR_EMPTY, MAX_GLOBAL_STR2);
@@ -6236,7 +6185,7 @@ short int init_global_string_spol_cast(short int sc_jedna, short int poradie_sva
 		mystrcpy(_global_string_spol_cast, STR_EMPTY, SMALL);
 	}
 	Log("nová hodnota: %s\n", _global_string_spol_cast);
-	Log("-- init_global_string_spol_cast(%d, %s) -- koniec\n", sc_jedna, nazov_spolc(sc_jedna));
+	Log("-- init_global_string_spol_cast(%d, %s) -- koniec\n", sc_jedna, (sc_jedna == MODL_SPOL_CAST_NULL) ? STR_UNDEF : nazov_spolc(sc_jedna));
 	return ret_sc;
 }// init_global_string_spol_cast()
 
@@ -6815,13 +6764,13 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 	mystrcpy(pom, STR_EMPTY, MAX_STR);
 	mystrcpy(pom2, STR_EMPTY, MAX_STR);
 
-	short int som_v_tabulke = ANO; // 2009-08-26: či sa používa tabuľka; bežne pre web áno, pre export pre mobilné zariadenia [export_monthly_druh >= 3] netreba tabuľku
+	short int som_v_tabulke = ANO; // či sa používa tabuľka; bežne pre web áno, pre export pre mobilné zariadenia [export_monthly_druh >= 3] netreba tabuľku
 
 	short int _pom_den = _global_den.den;
 	short int _pom_mesiac = _global_den.mesiac;
 	short int _pom_rok = _global_den.rok;
 
-	short int su_prve_vespery = NIE; // 2013-04-05: pomocná premenná, do ktorej sa uloží, či sa exportovali aj buttony pre prvé vešpery a prvé kompletórium; podľa toho sa potom zmení label pre druhé vešpery
+	short int su_prve_vespery = NIE; // pomocná premenná, do ktorej sa uloží, či sa exportovali aj buttony pre prvé vešpery a prvé kompletórium; podľa toho sa potom zmení label pre druhé vešpery
 
 	// XML export -- začiatok daného slávenia
 	if(typ == EXPORT_DNA_XML){
@@ -6935,10 +6884,9 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		Export("\n");
 
 		if(_global_opt_batch_monthly == NIE){
-			// prerobene 13/04/2000A.D.: tlacitka niekedy linkuju iba subor, nie linku: podla _global_linky
+			// tlacidla niekedy linkuju iba subor, nie linku: podla _global_linky
 			if(_global_linky == ANO){
 				if(poradie_svateho > 0){
-					// 2003-07-16 zmeneny & na HTML_AMPERSAND
 					sprintf(pom, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, poradie_svateho);
 				}// poradie_svateho > 0
 				else{
@@ -6946,7 +6894,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 				}// !(poradie_svateho > 0)
 			}
 			else{// nezobrazovat linky
-				if ((poradie_svateho >= UNKNOWN_PORADIE_SVATEHO) && (poradie_svateho < 5)){ // 2009-03-27: snáď OK: UNKNOWN_PORADIE_SVATEHO (bolo tu: poradie_svateho >= 0)
+				if ((poradie_svateho >= UNKNOWN_PORADIE_SVATEHO) && (poradie_svateho < 5)){ // snáď OK: UNKNOWN_PORADIE_SVATEHO (bolo tu: poradie_svateho >= 0)
 					sprintf(pom, "%s%d.htm", FILE_NAME_POKEC, poradie_svateho);
 				}
 				else{
@@ -6963,8 +6911,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		}// else if(_global_opt_batch_monthly == NIE)
 
 		if(den_zoznam == ANO){
-			// 2006-08-19: pridaná liturgická farba - pre buttons je treba v každom riadku 
-			// 2011-07-03: možnosť explicitne neeexportovať farbu
+			// liturgická farba - pre buttons je treba v každom riadku; je možnosť explicitne neeexportovať farbu
 			if(som_v_tabulke == ANO){
 				Export(HTML_TABLE_CELL_END"\n");
 
@@ -7022,7 +6969,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		}
 
 		// doplnené "prvé vešpery"; môžu byť pre smer < 5 ale nie pre všetky dni, preto táto podmienka... | odvetvené len ak je _global_opt 8 == ANO
-		// 2013-04-05: ToDo: doriešiť pre všelijaké špeciálne "konflikty", napr. 8. apríl 2013 (presunutá slávnosť Zvestovania Pána na pondelok po Veľkonočnej oktáve) -- má mať prvé vešpery? a pod.77
+		// ToDo: doriešiť pre všelijaké špeciálne "konflikty", napr. 8. apríl 2013 (presunutá slávnosť Zvestovania Pána na pondelok po Veľkonočnej oktáve) -- má mať prvé vešpery? a pod.77
 		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)){
 			smer = _global_den.smer;
 			for (short int ii = 0; ii < MAX_POCET_SVATY; ii++){
@@ -7053,7 +7000,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 					Export("<"HTML_TABLE_ROW">\n");
 					Export("<"HTML_TABLE_CELL">\n");
 				}
-				// 2011-03-22: prvé vešpery, len pre tie modlitby, ktoré môžu mať prvé vešpery
+				// prvé vešpery, len pre tie modlitby, ktoré môžu mať prvé vešpery
 				// prvé vešpery -- button
 				i = MODL_PRVE_VESPERY;
 				_export_rozbor_dna_button_modlitba(typ, poradie_svateho, i, pom, /* doplnkova_psalmodia */ NIE, som_v_tabulke);
@@ -7081,9 +7028,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 				// Log Export("nemôžu byť prvé vešpery (smer == %d, denvt == %d, denvr == %d, VELKONOCNA_NEDELA == %d, KVETNA_NEDELA == %d, POPOLCOVA_STREDA == %d)...\n", _global_den.smer, _global_den.denvt, _global_den.denvr, VELKONOCNA_NEDELA, KVETNA_NEDELA, POPOLCOVA_STREDA);
 				// oddelenie
 				if (som_v_tabulke == ANO){
-					if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-					}
-					else{
+					if (!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
 						Export(HTML_TABLE_CELL_END"\n");
 						Export("<"HTML_TABLE_CELL">\n");
 					}
@@ -7097,12 +7042,11 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 				ExportHtmlComment("table-row");
 
 				Export("<"HTML_TABLE_ROW">\n");
-				Export("<"HTML_TABLE_CELL">\n");
 			}
 			else{
 				Export(HTML_TABLE_CELL_END"\n");
-				Export("<"HTML_TABLE_CELL">\n");
 			}
+			Export("<"HTML_TABLE_CELL">\n");
 		}
 
 		// invitatórium -- button
@@ -7111,31 +7055,19 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		
 		// oddelenie
 		if(som_v_tabulke == ANO){
-			if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-				Export(HTML_TABLE_CELL_END"\n");
-				Export("<"HTML_TABLE_CELL">\n");
-			}
-			else{
-				Export(HTML_TABLE_CELL_END"\n");
-				Export("<"HTML_TABLE_CELL">\n");
-			}
+			Export(HTML_TABLE_CELL_END"\n");
+			Export("<"HTML_TABLE_CELL">\n");
 		}
 
 		// modlitba posvätného čítania -- button
 		i = MODL_POSV_CITANIE;
 		_export_rozbor_dna_button_modlitba(typ, poradie_svateho, i, pom, /* doplnkova_psalmodia */ NIE, som_v_tabulke);
-		// 2007-03-19: Na základe pripomienky Vlada Kiša posvätné čítanie predsunuté pred ranné chvály
+		// posvätné čítanie predsunuté pred ranné chvály
 
 		// oddelenie
 		if(som_v_tabulke == ANO){
-			if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-				Export(HTML_TABLE_CELL_END"\n");
-				Export("<"HTML_TABLE_CELL">\n");
-			}
-			else{
-				Export(HTML_TABLE_CELL_END"\n");
-				Export("<"HTML_TABLE_CELL">\n");
-			}
+			Export(HTML_TABLE_CELL_END"\n");
+			Export("<"HTML_TABLE_CELL">\n");
 		}
 
 		// ranné chvály -- button
@@ -7144,19 +7076,17 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 		// oddelenie
 		if(som_v_tabulke == ANO){
-			if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-				Export(HTML_TABLE_CELL_END"\n");
+			Export(HTML_TABLE_CELL_END"\n");
+
+			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
 				Export(HTML_TABLE_ROW_END"\n");
 				
 				ExportHtmlComment("table-row");
 				
 				Export("<"HTML_TABLE_ROW">\n");
-				Export("<"HTML_TABLE_CELL">\n");
 			}
-			else{
-				Export(HTML_TABLE_CELL_END"\n");
-				Export("<"HTML_TABLE_CELL">\n");
-			}
+
+			Export("<"HTML_TABLE_CELL">\n");
 		}
 
 		// zobraziť buttony pre modlitbu cez deň + kompletórium len ak nejde o ľubovoľnú spomienku (vtedy nemajú význam)
@@ -7168,14 +7098,8 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 			// oddelenie
 			if (som_v_tabulke == ANO){
-				if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-					Export(HTML_TABLE_CELL_END"\n");
-					Export("<"HTML_TABLE_CELL">\n");
-				}
-				else{
-					Export(HTML_TABLE_CELL_END"\n");
-					Export("<"HTML_TABLE_CELL">\n");
-				}
+				Export(HTML_TABLE_CELL_END"\n");
+				Export("<"HTML_TABLE_CELL">\n");
 			}
 
 			// modlitba cez deň (napoludnie) -- button
@@ -7184,14 +7108,8 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 			// oddelenie
 			if (som_v_tabulke == ANO){
-				if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-					Export(HTML_TABLE_CELL_END"\n");
-					Export("<"HTML_TABLE_CELL">\n");
-				}
-				else{
-					Export(HTML_TABLE_CELL_END"\n");
-					Export("<"HTML_TABLE_CELL">\n");
-				}
+				Export(HTML_TABLE_CELL_END"\n");
+				Export("<"HTML_TABLE_CELL">\n");
 			}
 
 			// modlitba cez deň (popoludní) -- button
@@ -7200,19 +7118,17 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 			// oddelenie
 			if (som_v_tabulke == ANO){
+				Export(HTML_TABLE_CELL_END"\n");
+
 				if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-					Export(HTML_TABLE_CELL_END"\n");
 					Export(HTML_TABLE_ROW_END"\n");
 					
 					ExportHtmlComment("table-row");
 
 					Export("<"HTML_TABLE_ROW">\n");
-					Export("<"HTML_TABLE_CELL">\n");
 				}
-				else{
-					Export(HTML_TABLE_CELL_END"\n");
-					Export("<"HTML_TABLE_CELL">\n");
-				}
+
+				Export("<"HTML_TABLE_CELL">\n");
 			}
 
 		}// zobraziť buttony pre modlitbu cez deň + kompletórium
@@ -7223,7 +7139,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 			}
 			else{
 				if(som_v_tabulke == ANO){
-					Export(NIE, ANO); // empty table cell (just content & end)
+					ExportEmptyCell(NIE, ANO); // empty table cell (just content & end)
 
 					ExportEmptyCell();
 
@@ -7235,10 +7151,9 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		}// NEzobraziť buttony pre modlitbu cez deň + kompletórium
 
 		// spomienka panny márie v sobotu nemá vešpery (ani kompletórium po nich)
-		// 2003-07-15: správne odsadené
-		// 2011-03-23: ak je isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY), zobrazujú sa prvé vešpery pre nedele a slávnosti priamo pre tie dni
-		// 2012-08-27: vešpery a kompletórium nemá zmysel zobrazovať, ak ide o sobotu a ďalšieho svätého (pri viacerých ľubovoľných spomienkach)
-		// 2013-04-05: zavedené "nie_su_vespery" kvôli Bielej (veľkej) sobote
+		// ak je isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY), zobrazujú sa prvé vešpery pre nedele a slávnosti priamo pre tie dni
+		// vešpery a kompletórium nemá zmysel zobrazovať, ak ide o sobotu a ďalšieho svätého (pri viacerých ľubovoľných spomienkach)
+		// zavedené "nie_su_vespery" kvôli Bielej (veľkej) sobote
 		if ((poradie_svateho != PORADIE_PM_SOBOTA) && !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery))
 			&& (((zobrazit_mcd == ANO) || (_global_den.denvt != DEN_SOBOTA)) || (poradie_svateho == 0))
 			){
@@ -7248,14 +7163,8 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 			// oddelenie
 			if (som_v_tabulke == ANO){
-				if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-					Export(HTML_TABLE_CELL_END"\n");
-					Export("<"HTML_TABLE_CELL">\n");
-				}
-				else{
-					Export(HTML_TABLE_CELL_END"\n");
-					Export("<"HTML_TABLE_CELL">\n");
-				}
+				Export(HTML_TABLE_CELL_END"\n");
+				Export("<"HTML_TABLE_CELL">\n");
 			}
 
 			// zobraziť buttony pre modlitbu cez deň + kompletórium len ak nejde o ľubovoľnú spomienku (vtedy nemajú význam)
@@ -7279,19 +7188,17 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 #ifdef ZOBRAZ_BUTTON_VSETKY_MODLITBY
 		// oddelenie
 		if(som_v_tabulke == ANO){
+			Export(HTML_TABLE_CELL_END"\n");
+
 			if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-				Export(HTML_TABLE_CELL_END"\n");
 				Export(HTML_TABLE_ROW_END"\n");
 				
 				ExportHtmlComment("table-row");
 				
 				Export("<"HTML_TABLE_ROW">\n");
-				Export("<"HTML_TABLE_CELL">\n");
 			}
-			else{
-				Export(HTML_TABLE_CELL_END"\n");
-				Export("<"HTML_TABLE_CELL">\n");
-			}
+
+			Export("<"HTML_TABLE_CELL">\n");
 		}
 
 		// button 'Všetky modlitby...'
@@ -7310,15 +7217,9 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 			// oddelenie
 			if(som_v_tabulke == ANO){
-				if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-					// was colspan="2" | ToDo solve with sophisticated <div> structure
-					Export(HTML_TABLE_CELL_END"\n");
-					Export("<"HTML_TABLE_CELL">\n");
-				}
-				else{
-					Export(HTML_TABLE_CELL_END"\n");
-					Export("<"HTML_TABLE_CELL">\n");
-				}
+				// was colspan="2" | ToDo solve with sophisticated <div> structure
+				Export(HTML_TABLE_CELL_END"\n");
+				Export("<"HTML_TABLE_CELL">\n");
 			}
 
 			// button 'Detaily...'
@@ -7332,7 +7233,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		}
 #endif
 
-		// 2011-10-05: pridaný nový element (ďalšia tabuľka)
+		// nový element (ďalšia tabuľka)
 		if((som_v_tabulke == ANO) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE))){
 			Export(HTML_TABLE_CELL_END"\n");
 			Export(HTML_TABLE_ROW_END"\n");
@@ -10449,7 +10350,6 @@ void _export_rozbor_dna_interpretuj_zoznam(short int export_typ, short int typ, 
 
 					Export("<"HTML_TABLE_CELL">\n");
 				}
-
 			}
 #ifdef OS_Windows_Ruby
 			ExportHtmlComment("_export_rozbor_dna_interpretuj_zoznam:_export_rozbor_dna_buttons");
@@ -13817,7 +13717,8 @@ void _main_batch_mode(
 						mystrcpy(_global_string, STR_EMPTY, MAX_GLOBAL_STR); // inicializacia
 						mystrcpy(_global_string_modlitba, STR_EMPTY, SMALL);
 						mystrcpy(_global_string_podnadpis, STR_EMPTY, SMALL);
-						mystrcpy(_global_string_spol_cast, STR_EMPTY, SMALL);
+						mystrcpy(_global_string_spol_cast, STR_EMPTY, MAX_GLOBAL_STR2);
+						mystrcpy(_global_string_spol_cast_full, STR_EMPTY, MAX_GLOBAL_STR);
 
 						if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
 							sprintf(_global_string, FILENAME_EXPORT_DATE_SIMPLE"_"FILENAME_EXPORT_DATE_SIMPLE, r_from % 100, m_from + 1, d_from, r_to % 100, m_to + 1, d_to);

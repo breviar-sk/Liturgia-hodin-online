@@ -374,7 +374,7 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 #endif
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_JAZYK, skratka_jazyka[_global_jazyk]);
 		strcat(pom2, pom3);
-		Log("\tPrilepil som aj jazyk: `%s' (2006-07-31)\n", pom3);
+		Log("\tPrilepil som aj jazyk: `%s'\n", pom3);
 #ifndef IO_ANDROID
 	}
 #endif
@@ -382,7 +382,7 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 	if (PODMIENKA_EXPORTOVAT_KALENDAR){
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_KALENDAR, skratka_kalendara[_global_kalendar]);
 		strcat(pom2, pom3);
-		Log("\tPrilepil som aj kalendár: `%s' (2010-08-04)\n", pom3);
+		Log("\tPrilepil som aj kalendár: `%s'\n", pom3);
 	}
 	else{
 		Log("\tNetreba prilepiť kalendár (jazyk == %s, kalendár == %s)\n", skratka_jazyka[_global_jazyk], skratka_kalendara[_global_kalendar]);
@@ -391,7 +391,7 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 	if ((_global_css != CSS_breviar_sk) && (_global_css != CSS_UNDEF)){
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_CSS, skratka_css[_global_css]);
 		strcat(pom2, pom3);
-		Log("\tPrilepil som aj css: `%s' (2008-08-08)\n", pom3);
+		Log("\tPrilepil som aj css: `%s'\n", pom3);
 	}
 
 	if ((_global_font != FONT_CSS) && (_global_font != FONT_UNDEF)){

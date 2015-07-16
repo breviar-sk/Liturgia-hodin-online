@@ -145,29 +145,26 @@ short int Export(const char *fmt, ...){
 
 short int ExportHtmlComment(const char *fmt, ...){
 	
-	Export("\n"HTML_COMMENT_BEGIN);
-
 	va_list argptr;
-	short int cnt;
+	short int cnt = Export("\n"HTML_COMMENT_BEGIN);
 
 	va_start(argptr, fmt);
 #ifdef EXPORT_TO_STRING
-	cnt = Export_to_string(fmt, argptr);
+	cnt += Export_to_string(fmt, argptr);
 #else
 	if (exptused == SUCCESS){
-		cnt = vfprintf(exportfile, fmt, argptr);
+		cnt += vfprintf(exportfile, fmt, argptr);
 		if (isbothExports){
-			cnt = vprintf(fmt, argptr);
+			cnt += vprintf(fmt, argptr);
 		}
 	}
 	else{
-		cnt = vprintf(fmt, argptr);
+		cnt += vprintf(fmt, argptr);
 	}
 #endif /* EXPORT_TO_STRING */
 	va_end(argptr);
 
-	Export(HTML_COMMENT_END"\n");
-
+	cnt += Export(HTML_COMMENT_END"\n");
 	return(cnt);
 }
 

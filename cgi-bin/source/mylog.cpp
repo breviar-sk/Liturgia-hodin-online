@@ -99,8 +99,9 @@ short int __Log(const char *fmt, ...)
 #else // not LOG_TO_ANDROID
 	if(used == 0){
 		cnt = vfprintf(logfile, fmt, argptr);
-		if(both)
+		if (both){
 			cnt = vprintf(fmt, argptr);
+		}
 	}
 	else
 		cnt = vprintf(fmt, argptr);

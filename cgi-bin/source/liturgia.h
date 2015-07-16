@@ -1419,7 +1419,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 #define vytvor_global_link_class(den, mesiac, rok, typ, align, html_class)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align, html_class)
 #define Vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_Case, typ, align)
 #define VYTVOR_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_CASE, typ, align)
-// 2011-05-11: doplnený nový parameter align -- či zarovnať jednociferné dátumy (číslovka dňa) medzerou zľava
+// parameter align -- či zarovnať jednociferné dátumy (číslovka dňa) medzerou zľava
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class);
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class, const char * nazov_dna);
@@ -1427,7 +1427,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 #define PRILEP_REQUEST_OPTIONS_DEFAULT   0
 #define PRILEP_REQUEST_OPTIONS_AJ_FORCE  1
 #define PRILEP_REQUEST_OPTIONS_LEN_FORCE 2
-void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int force_opt = PRILEP_REQUEST_OPTIONS_DEFAULT); // 2013-03-07: pokus; pravdepodobne PRILEP_REQUEST_OPTIONS_LEN_FORCE je neužitočné a PRILEP_REQUEST_OPTIONS_AJ_FORCE možno trocha riskantné...
+void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int force_opt = PRILEP_REQUEST_OPTIONS_DEFAULT);
 
 short int prestupny(short int);
 short int pocet_dni_v_roku(short int);
