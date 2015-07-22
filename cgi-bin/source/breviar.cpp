@@ -8603,9 +8603,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		if (
 			(i == JAZYK_SK) ||
 			(i == JAZYK_CZ) ||
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
 			(i == JAZYK_CZ_OP) ||
 #if defined(OS_Windows_Ruby)
 			(i == JAZYK_RU) ||
+#endif
 #endif
 			(i == JAZYK_HU)){
 			Export("<option%s>%s</option>\n", (i != _global_jazyk) ? STR_EMPTY : html_option_selected, nazov_jazyka[i]);
