@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo -u riso /home/riso/Android/breviar-build/breviar/android/testing/run_nightly

@@ -103,6 +103,7 @@
 	#define IO_ANDROID
 	#define LITURGICKE_CITANIA_ANDROID
 	#define LIBC_BIONIC
+	#define DEBUG
 // production Windows/RUBY:
 #elif defined(MODEL_Windows_RUBY)
 	#define BEHAVIOUR_WEB

@@ -1,12 +1,11 @@
 #!/bin/bash
 
-. /etc/profile
-
 umask 002
 
 start_emulator() {
   avd=$1
   pidfile=/tmp/$avd.pid
+  echo "Starting emulator"
   /sbin/start-stop-daemon -S -m -p $pidfile -b -x `which emulator` \
     -- -avd $avd -no-window -wipe-data
   sleep 240
@@ -22,24 +21,20 @@ stop_emulator() {
 (
 
 echo "Running nightlies."
+. dir_setup.sh
 
 LOCK=/tmp/breviar-nightlies.lck
-ROOT=/home/build/testing/nightlies
 (
   flock -n 9 || (echo "Unable to get lock!"; exit 1)
   pushd .. >/dev/null
 
-  COMMIT=`git branch -v --no-abbrev | egrep "^. master" | sed "s/. master *//;s/ .*//"`
   DATE=`date +%F`
   VERSION=`cat AndroidManifest.xml | grep "android:versionName" | sed "s/.*versionName=\"//;s/\".*//"`
 
   rm -rf $ROOT/$DATE
   mkdir -p $ROOT/$DATE
-  echo $COMMIT >$ROOT/$DATE/commit
   LOG=$ROOT/$DATE/log
   
-  sudo /usr/local/bin/build-access.sh
-
   echo "Git fetch and merge."
   if ( git fetch --all && git merge origin/master ) >>$LOG 2>&1; then 
     echo "Git merge successful."
@@ -50,9 +45,13 @@ ROOT=/home/build/testing/nightlies
     exit 0
   fi
 
+  COMMIT=`git branch -v --no-abbrev | egrep "^. master" | sed "s/. master *//;s/ .*//"`
+  echo $COMMIT >$ROOT/$DATE/commit
+
   echo "Build."
   rm -rf bin
-  if (./build-assets && ndk-build && ant debug && ant release) >>$LOG 2>&1; then 
+  if (./build-assets && ndk-build clean && DEBUG_BUILD=yes ndk-build && ant debug && \
+      ndk-build clean && DEBUG_BUILD=no ndk-build && ant release) >>$LOG 2>&1; then 
     echo "Build finished successfully."
   else
     echo "Build failed! Log follows:"
@@ -62,10 +61,13 @@ ROOT=/home/build/testing/nightlies
   fi
 
   cp bin/Breviar-release.apk $ROOT/$DATE/breviar.apk
-  echo "Nightly package is at: kralovic.org:$ROOT/$DATE/breviar.apk"
-  echo "Or: http://kralovic.org/~riso/testing/nightlies/$DATE/breviar.apk"
+  cp bin/Breviar-debug.apk $ROOT/$DATE/breviar-debug.apk
+  echo "Nightly package is at: kedrigern.dcs.fmph.uniba.sk:$ROOT/$DATE/breviar.apk"
+  echo "Or: http://kedrigern.dcs.fmph.uniba.sk/~riso/breviar-testing/nightlies/$DATE/breviar.apk"
+  echo "Nightly debug package is at: kedrigern.dcs.fmph.uniba.sk:$ROOT/$DATE/breviar-debug.apk"
+  echo "Or: http://kedrigern.dcs.fmph.uniba.sk/~riso/breviar-testing/nightlies/$DATE/breviar-debug.apk"
 
-  export ANDROID_SDK_HOME=/home/build/
+  export ANDROID_SDK_HOME
   start_emulator galaxy_nexus_4.2
 
   echo "Running tests."
@@ -75,7 +77,7 @@ ROOT=/home/build/testing/nightlies
 
   stop_emulator galaxy_nexus_4.2
 
-  echo "Test results are available at http://kralovic.org/~riso/testing/nightlies/$DATE/test_log/index.html"
+  echo "Test results are available at http://kedrigern.dcs.fmph.uniba.sk/~riso/breviar-testing/nightlies/$DATE/test_log/index.html"
   popd >/dev/null
 ) 9>$LOCK
 
