@@ -102,7 +102,7 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verzió 1.12:</b>
 <ul>
-<li> Possibility to display közös zsolozsmája.
+<li> A közös részből való szövegek kiválasztásának lehetősége (a Halotti zsolozsmát beleértve).
 <li> Gépelési hibák javítása.
 </ul>
 
