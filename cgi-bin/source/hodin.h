@@ -5439,6 +5439,18 @@ const char *text_MAJ_04_SJ[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_MAJ_04_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"Bl. Tomáše z Olery, řeholníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_MAJ_04_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Emílie Bicchieriovej, panny",

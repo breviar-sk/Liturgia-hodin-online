@@ -32,7 +32,7 @@ char _anchor_head[SMALL];
 
 #define set_LOG_svsv Log("   set(svsv): %s: súbor `%s', kotva `%s'\n", nazov_modlitby(modlitba), _file, _anchor)
 
-// has celebration its own psalmody?
+// has celebration its own psalmody? cf. General Instrucions, n. 134
 short int su_zalmy_vlastne(short int m){
 	Log("su_zalmy_vlastne(%d): ", m);
 	short int ret;
@@ -52,7 +52,7 @@ short int su_zalmy_vlastne(short int m){
 			ret = TRUE;
 		}// DEN_NEDELA
 	}// nie mcd
-	// 2011-11-03: pre 2.11. sa berú žalmy vlastné
+	// pre 2.11. sa berú žalmy vlastné
 	if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)){
 		ret = TRUE;
 	}// NOV02 == 02NOV
@@ -17565,7 +17565,35 @@ label_25_MAR:
 						_global_svaty1.kalendar = KALENDAR_SK_OP;
 						break;
 					}// kalendár pre KALENDAR_SK_OP
-					else if(_global_jazyk == JAZYK_HU){
+					else if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+						if (poradie_svaty == 1){
+
+							file_name_vlastny_kalendar(_global_kalendar);
+
+							// definovanie parametrov pre modlitbu
+							if (query_type != PRM_DETAILY)
+								set_spolocna_cast(sc, poradie_svaty);
+
+							modlitba = MODL_POSV_CITANIE;
+							_vlastna_cast_2citanie;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_RANNE_CHVALY;
+							_vlastna_cast_modlitba;
+
+							modlitba = MODL_VESPERY;
+							_vlastna_cast_modlitba;
+
+							break;
+						}
+						_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
+						_global_svaty1.smer = 12; // ľubovoľné spomienky
+						mystrcpy(_global_svaty1.meno, text_MAJ_04_OFM[_global_jazyk], MENO_SVIATKU);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+						_global_svaty1.farba = LIT_FARBA_BIELA;
+						_global_svaty1.kalendar = KALENDAR_CZ_OFMCAP;
+					}// kalendár pre KALENDAR_SK_SJ
+					else if (_global_jazyk == JAZYK_HU){
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
@@ -25094,7 +25122,7 @@ label_25_MAR:
 							set_spolocna_cast(sc, poradie_svaty);
 
 						modlitba = MODL_RANNE_CHVALY;
-						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastný hymnus, v českom nie; 2008-09-09
+						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastný hymnus, v českom nie
 							_vlastna_cast_full_okrem_prosieb(modlitba);
 						}
 						else{
@@ -25102,21 +25130,21 @@ label_25_MAR:
 						}
 
 						modlitba = MODL_POSV_CITANIE;
-						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastný hymnus, v českom nie; 2008-09-09
+						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastný hymnus, v českom nie
 							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 						}
 						_vlastna_cast_modlitba;
 						_vlastna_cast_1citanie;
 						_vlastna_cast_2citanie;
-						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastný hymnus, v českom nie; 2008-09-09
+						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastný hymnus, v českom nie
 							_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
 						}
 
-						// _vlastna_cast_mcd_kcitresp_modl; // modlitba cez deň, doplnené 2011-08-10 // krátke čítanie a krátke resp. zo spoločnej časti (2013-04-29)
+						// _vlastna_cast_mcd_kcitresp_modl; // modlitba cez deň: krátke čítanie a krátke resp. zo spoločnej časti
 						_vlastna_cast_mcd_modlitba;
 
 						modlitba = MODL_VESPERY;
-						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastný hymnus, v českom nie; 2008-09-09
+						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)){ // v slovenskom breviári má vlastný hymnus, v českom nie
 							_vlastna_cast_full_okrem_prosieb(modlitba);
 						}
 						else{
