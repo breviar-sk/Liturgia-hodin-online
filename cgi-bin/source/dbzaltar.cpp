@@ -25696,7 +25696,7 @@ label_25_MAR:
 						_global_svaty1.typslav_lokal = LOKAL_SLAV_SPOMIENKA_OFM; // ToDo: ešte pridať: "Slávnosť pre koncepcionistky"
 						_global_svaty1.smer = 12; // ľubovoľné spomienky
 						mystrcpy(_global_svaty1.meno, text_AUG_17_OFM[_global_jazyk], MENO_SVIATKU);
-						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_SK_OFM;
 					}// kalendár pre KALENDAR_SK_OFM
