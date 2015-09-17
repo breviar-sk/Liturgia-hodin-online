@@ -1260,8 +1260,8 @@ const char *html_text_dalsie_moznosti_2[POCET_JAZYKOV + 1] =
 const char *html_text_prik_sviatky_atd[POCET_JAZYKOV + 1] = { "prikázané sviatky a slávnosti Pána v roku ", "zasvěcené svátky a slavnosti Páně v roce ", "obligatory celebrations in year ", "", "", "zasvěcené svátky a slavnosti Páně v roce", "kötelező ünnepek", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_lit_kalendar[POCET_JAZYKOV + 1] = { "liturgický kalendár pre", "liturgický kalendář pro", "liturgical calendar for", "", "", "liturgický kalendář pro", "liturgikus naptár", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_roku[POCET_JAZYKOV + 1] = { "roku", "roku", "of year", "anno", "", "roku", "", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_tabulka_pohyblive_od[POCET_JAZYKOV + 1] = { "tabuľka dátumov pohyblivých slávení od roku", "tabulka s daty proměnných slavností od roku", "table with dates of movable celebrations from year", "", "", "tabulka s daty proměnných slavností od roku", "a mozgó (változó) ünnepek táblázata a következő években", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_do_roku[POCET_JAZYKOV + 1] = { "do roku", "po rok", "till year", "", "", "po rok", "", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_tabulka_pohyblive_od[POCET_JAZYKOV + 1] = { "tabuľka dátumov pohyblivých slávení od roku", "pohyblivé dny liturgického roku od", "table with dates of movable celebrations from year", "", "", "pohyblivé dny liturgického roku od", "a mozgó (változó) ünnepek táblázata a következő években", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_do_roku[POCET_JAZYKOV + 1] = { "do roku", "do", "till year", "", "", "do", "", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_zobrazit_linky[POCET_JAZYKOV + 1] = { "zobraziť tabuľku vrátane hypertextových odkazov na jednotlivé dni", "zobrazit tabulku s hypertextovými odkazy pro jednotlivé dny", "display the table including hypertext links to each date", "", "", "zobrazit tabulku s hypertextovými odkazy pro jednotlivé dny", "A táblázat megjelenítése az egyes napokhoz tartozó hiperhivatkozásokkal együtt.", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_pre_cezrocne_obd[POCET_JAZYKOV + 1] = { "pre cezročné obdobie", "pro mezidobí", "for ...", "per annum", "", "pro dobu během roku", "", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_tyzden_zaltara_cislo[POCET_JAZYKOV + 1] = { "%d. týždeň žaltára", "%d. týden žaltáře", "%d. week of Psaltary", "hebdomada %d psalterii", "%d", "%d. týden žaltáře", "%d. zsoltáros hét", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
@@ -1290,7 +1290,7 @@ const char *html_text_zakladne_info[POCET_JAZYKOV + 1] = { "Základné informác
 const char *html_text_je[POCET_JAZYKOV + 1] = { "je", "je", "is", "est", "", "je", /* HU: van, ale nie pre prestupný */ "", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_nie_je[POCET_JAZYKOV + 1] = { "nie je", "není", "is not", "non est", "", "není", /* HU: nincs, ale nie pre prestupný */ "nem", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_prestupny[POCET_JAZYKOV + 1] = { "prestupný", "přestupný", "...", "...", "", "přestupný", "szökőév", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_datumy_pohyblivych_slaveni[POCET_JAZYKOV + 1] = { "Dátumy pohyblivých slávení", "Dáta proměnlivých slávení", "Dates for movable celebrations", "", "", "Data proměnlivých slavení", "A mozgó (változó) ünnepek dátumai", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_datumy_pohyblivych_slaveni[POCET_JAZYKOV + 1] = { "Dátumy pohyblivých slávení", "Pohyblivé dny liturgického roku", "Dates for movable celebrations", "", "", "Pohyblivé dny liturgického roku", "A mozgó (változó) ünnepek dátumai", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char *html_text_ritus[POCET_JAZYKOV + 1] = { "Rítus", "Obřad", "Ritus", "Ritus", "", "Ritus", "Szertartás", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
@@ -1351,11 +1351,11 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 },
 {
 	"Krst"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"Pána",
-	"Křest"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"Páně", 
+	"Křtu"HTML_LINE_BREAK"Páně", 
 	"Bapt. of"HTML_LINE_BREAK"the Lord",
 	"Bapt."HTML_LINE_BREAK"Domini",
 	"",
-	"Křest"HTML_LINE_BREAK"Krista"HTML_LINE_BREAK"Páně",
+	"Křtu"HTML_LINE_BREAK"Páně",
 	"Urunk"HTML_LINE_BREAK"megkeresztel-"HTML_LINE_BREAK"kedése",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -1428,11 +1428,11 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 },
 {
 	"Prvá"HTML_LINE_BREAK"adventná"HTML_LINE_BREAK"nedeľa",
-	"První"HTML_LINE_BREAK"adventní"HTML_LINE_BREAK"neděle", 
+	"První"HTML_LINE_BREAK"neděle"HTML_LINE_BREAK"adventní", 
 	"...",
 	"...",
 	"",
-	"První"HTML_LINE_BREAK"adventní"HTML_LINE_BREAK"neděle",
+	"První"HTML_LINE_BREAK"neděle"HTML_LINE_BREAK"adventní",
 	"Advent"HTML_LINE_BREAK"első"HTML_LINE_BREAK"vasárnapja",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
