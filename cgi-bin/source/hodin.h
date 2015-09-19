@@ -1289,7 +1289,7 @@ const char *html_text_alebo[POCET_JAZYKOV + 1] = { "alebo", "nebo", "or", "", ""
 const char *html_text_zakladne_info[POCET_JAZYKOV + 1] = { "Základné informácie", "Základní informace", "Basic info", "__info__", "", "Základní informace", "Alapvető információk", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_je[POCET_JAZYKOV + 1] = { "je", "je", "is", "est", "", "je", /* HU: van, ale nie pre prestupný */ "", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_nie_je[POCET_JAZYKOV + 1] = { "nie je", "není", "is not", "non est", "", "není", /* HU: nincs, ale nie pre prestupný */ "nem", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_prestupny[POCET_JAZYKOV + 1] = { "prestupný", "přestupný", "...", "...", "", "přestupný", "szökőév", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_prestupny[POCET_JAZYKOV + 1] = { "priestupný", "přestupný", "...", "...", "", "přestupný", "szökőév", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_datumy_pohyblivych_slaveni[POCET_JAZYKOV + 1] = { "Dátumy pohyblivých slávení", "Pohyblivé dny liturgického roku", "Dates for movable celebrations", "", "", "Pohyblivé dny liturgického roku", "A mozgó (változó) ünnepek dátumai", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char *html_text_ritus[POCET_JAZYKOV + 1] = { "Rítus", "Obřad", "Ritus", "Ritus", "", "Ritus", "Szertartás", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
@@ -1362,11 +1362,11 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 },
 {
 	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"pred"HTML_LINE_BREAK"PO"HTML_A_END,
-	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"před"HTML_LINE_BREAK"postem"HTML_A_END,
+	HTML_A_HREF_BEGIN"\"#explain\">LM"HTML_LINE_BREAK"před"HTML_LINE_BREAK"DP"HTML_A_END,
 	"...",
 	"PA fest.",
 	"",
-	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"před"HTML_LINE_BREAK"postem"HTML_A_END,
+	HTML_A_HREF_BEGIN"\"#explain\">LM"HTML_LINE_BREAK"před"HTML_LINE_BREAK"DP"HTML_A_END,
 	"EK"HTML_LINE_BREAK"a HSZ"HTML_LINE_BREAK"előtt",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -1384,11 +1384,11 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 },
 {
 	"Veľká"HTML_LINE_BREAK"noc",
-	"Veliko-"HTML_LINE_BREAK"noce", 
+	"Zmrtvých-"HTML_LINE_BREAK"vstání"HTML_LINE_BREAK"Páně", 
 	"Easter",
 	"Pascha",
 	"",
-	"Veliko-"HTML_LINE_BREAK"noce",
+	"Zmrtvých-"HTML_LINE_BREAK"vstání"HTML_LINE_BREAK"Páně",
 	"Húsvét",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -1406,7 +1406,7 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 },
 {
 	"Zoslanie"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svätého",
-	"Seslání"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"Svatého", 
+	"Seslání"HTML_LINE_BREAK"Ducha"HTML_LINE_BREAK"svatého", 
 	"...",
 	"...",
 	"",
@@ -1417,11 +1417,11 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 },
 {
 	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN"HTML_A_END,
-	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN"HTML_A_END,
+	HTML_A_HREF_BEGIN"\"#explain\">LM"HTML_LINE_BREAK"po"HTML_LINE_BREAK"DV"HTML_A_END,
 	"...",
 	"...",
 	"",
-	HTML_A_HREF_BEGIN"\"#explain\">OCR"HTML_LINE_BREAK"po"HTML_LINE_BREAK"VN"HTML_A_END,
+	HTML_A_HREF_BEGIN"\"#explain\">LM"HTML_LINE_BREAK"po"HTML_LINE_BREAK"DV"HTML_A_END,
 	"EK"HTML_LINE_BREAK"a HU"HTML_LINE_BREAK"után",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
