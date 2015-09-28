@@ -28842,7 +28842,7 @@ label_25_MAR:
 							Log("28SEP | CZ: Svatý Václav: sc: {%s, %s, %s}, svaty == %d\n\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3), poradie_svaty);
 
 							if(query_type != PRM_DETAILY)
-								set_spolocna_cast(sc, poradie_svaty);
+								set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY);
 								// set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP_PROSBY + FORCE_BRAT_2CITANIE);
 
 							modlitba = MODL_PRVE_KOMPLETORIUM;
