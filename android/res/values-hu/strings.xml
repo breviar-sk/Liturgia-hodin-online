@@ -19,6 +19,7 @@
     <string name="vol_buttons">hangerőt állító gombok használata görgetéshez</string>
     <string name="dimlock">ne sötétüljön el a képernyő</string>
     <string name="mute">a telefon csendes módba kapcsolása</string>
+    <string name="long_click_toggles_bar">long click toggles navigation bar</string>
 
     <string name="prayer_content_settings1_title">Tartalom beállításai:</string>
     <string name="various_options_in_prayers">mutassa az imáknál a különböző lehetőségeket hiperhivatkozásokként</string>

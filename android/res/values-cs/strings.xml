@@ -19,6 +19,7 @@
     <string name="vol_buttons">použít tlačítka hlasitosti na listování</string>
     <string name="dimlock">nezhasínat obrazovku</string>
     <string name="mute">vypnout zvonění</string>
+    <string name="long_click_toggles_bar">dlouhé stlačení skryje lištu</string>
 
     <string name="prayer_content_settings1_title">Obsah modlitieb:</string>
     <string name="various_options_in_prayers">rozličné volby v textech modliteb jako klikatelné odkazy</string>

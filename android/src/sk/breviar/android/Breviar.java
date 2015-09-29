@@ -257,10 +257,17 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       wv.setOnLongClickListener(this);
       wv.setLongClickable(true);
 
+      /*
       ((Button)findViewById(R.id.forwardBtn)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
           parent.syncScale();
           wv.goForward();
+        }
+      });
+      */
+      ((Button)findViewById(R.id.menuBtn)).setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          parent.openOptionsMenu();
         }
       });
  
@@ -589,7 +596,7 @@ public class Breviar extends Activity implements View.OnLongClickListener {
 
     // handle long click in webview
     public boolean onLongClick (View v) {
-      if (!fullscreen) {
+      if (!fullscreen && BreviarApp.getLongClickTogglesBar(this)) {
         boolean shown = !BreviarApp.getNavBarShown(this);
         BreviarApp.setNavBarShown(this, shown);
         if (shown) {

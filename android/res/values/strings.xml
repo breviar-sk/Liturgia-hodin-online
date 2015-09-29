@@ -5,6 +5,7 @@
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
     <string name="forward">Forward</string>
+    <string name="menu">Menu</string>
     <string name="today">Today</string>
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
@@ -21,6 +22,7 @@
     <string name="vol_buttons">use volume buttons for scrolling</string>
     <string name="dimlock">do not dim screen</string>
     <string name="mute">put phone to silent mode</string>
+    <string name="long_click_toggles_bar">long click toggles navigation bar</string>
 
     <string name="prayer_content_settings1_title">Content settings:</string>
     <string name="various_options_in_prayers">various options in prayers as clicable hyperlinks</string>

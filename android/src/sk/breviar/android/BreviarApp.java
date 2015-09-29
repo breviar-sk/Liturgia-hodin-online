@@ -96,6 +96,18 @@ public class BreviarApp extends Application {
     editor.commit();
   }
 
+  static public boolean getLongClickTogglesBar(Context ctx) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    return settings.getBoolean("long_click_toggles_bar", false);
+  }
+
+  static public void setLongClickTogglesBar(Context ctx, boolean toggles) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    SharedPreferences.Editor editor = settings.edit();
+    editor.putBoolean("long_click_toggles_bar", toggles);
+    editor.commit();
+  }
+
   static public void initLocale(Context ctx) {
     Configuration cfg = new Configuration();
     if (getOverrideLocale(ctx)) {

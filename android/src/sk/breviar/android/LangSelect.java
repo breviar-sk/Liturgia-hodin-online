@@ -94,6 +94,16 @@ public class LangSelect extends Activity {
 
       mute_check.setChecked(BreviarApp.getMute(getApplicationContext()));
 
+      CheckBox long_click_toggles_bar_check = (CheckBox)findViewById(R.id.long_click_toggles_bar_check);
+
+      long_click_toggles_bar_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          BreviarApp.setLongClickTogglesBar(getApplicationContext(), ((CheckBox)v).isChecked());
+        }
+      });
+
+      long_click_toggles_bar_check.setChecked(BreviarApp.getLongClickTogglesBar(getApplicationContext()));
+
       // prayer_content_settings1_title
       
       CheckBox various_options_in_prayers_check = (CheckBox)findViewById(R.id.various_options_in_prayers_check);

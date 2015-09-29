@@ -2222,7 +2222,7 @@ const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
 	"supplementary psalmodia",
 	"",
 	"",
-	"dne použít doplňkovou psalmodii",
+	"použít doplňkovou psalmodii",
 	"a kiegészítő zsoltárokat venni",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

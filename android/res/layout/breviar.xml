@@ -32,7 +32,7 @@
       <Button android:id="@+id/todayBtn" android:text="@string/today" style="?android:attr/buttonStyleSmall" 
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-      <Button android:id="@+id/forwardBtn" android:text="@string/forward" style="?android:attr/buttonStyleSmall" 
+      <Button android:id="@+id/menuBtn" android:text="@string/menu" style="?android:attr/buttonStyleSmall"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
       <Button android:id="@+id/pgdnBtn" android:text="@string/pgdn" style="?android:attr/buttonStyleSmall" 
