@@ -19,7 +19,7 @@
     <string name="vol_buttons">hangerőt állító gombok használata görgetéshez</string>
     <string name="dimlock">ne sötétüljön el a képernyő</string>
     <string name="mute">a telefon csendes módba kapcsolása</string>
-    <string name="long_click_toggles_bar">long click toggles navigation bar</string>
+    <string name="long_click_toggles_bar">hosszú lenyomása elrejti az alsó navigációs listát</string>
 
     <string name="prayer_content_settings1_title">Tartalom beállításai:</string>
     <string name="various_options_in_prayers">mutassa az imáknál a különböző lehetőségeket hiperhivatkozásokként</string>
@@ -101,20 +101,25 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Zsolozsma alkalmazás | Újdonságok</b>
 
-<p><b>Verzió 1.12:</b>
+<p><b>Verzió 1.12.1</b>
+<ul>
+<li> Új beállítási lehetőség: Az applikáció alakításának lehetősége amíg az alsó navigációs lista mutatkozik (szöveg kijelölése másolás előtt).
+</ul>
+
+<p><b>Verzió 1.12</b>
 <ul>
 <li> A közös részből való szövegek kiválasztásának lehetősége (a Halotti zsolozsmát beleértve).
 <li> Gépelési hibák javítása.
 </ul>
 
-<p><b>Verzió 1.11.2:</b>
+<p><b>Verzió 1.11.2</b>
 <ul>
 <li> Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.
 <li> Gépelési hibák javítása.
 <li> Új beállítások hozzáadása.
 </ul>
 
-<p><b>Verzió 1.11.1:</b>
+<p><b>Verzió 1.11.1</b>
 <ul>
 <li> Gépelési hibák javítása.
 <li> Visszafelé való kompatibilitás javítása az Android 2.x és régebbi verziókkal.
@@ -122,7 +127,7 @@ body { background-color: #000000; color: #cccccc; }
 <li> Több bekezdésből álló könyörgések olvashatóbb tagolása.
 </ul>
 
-<p><b>Verzió 1.11:</b>
+<p><b>Verzió 1.11</b>
 <ul>
 <li> Éjszakai/nappali mód váltása a főmenüből.
 <li> Nagyobb sorköz a jobb olvashatóság érdekében.
@@ -130,7 +135,7 @@ body { background-color: #000000; color: #cccccc; }
 <li> Gépelési hibák javítása mindegyik nyelvnél.
 </ul>
 
-<p><b>Verzió 1.10:</b>
+<p><b>Verzió 1.10</b>
 <ul>
 <li> Az imák egyszerűsített megjelenítése (csak az imák szövege, címek és rubrikák nélkül) látássérültek számára. Felolvasó gépek használhatják.
 <li> Új lehetőség a főoldalon: Általános rész.
@@ -138,14 +143,14 @@ body { background-color: #000000; color: #cccccc; }
 <li> Android 5.0 (Lollipop) kompatibilitás.
 </ul>
 
-<p><b>Verzió 1.9.10:</b>
+<p><b>Verzió 1.9.10</b>
 <ul>
 <li> Új beállítási lehetőség: automatikus csendes módba kapcsolás imádság közben.
 <li> Új beállítási lehetőség: I. Esti dicséret himnusza (évközi időben).
 <li> Fohászok formázása.
 </ul>
 
-<p><b>Verzió 1.9.9:</b>
+<p><b>Verzió 1.9.9</b>
 <ul>
 <li> A befejező imaóra kantikuma félkövéren jelenik meg.
 <li> Hármaspont karakter használata.
@@ -154,7 +159,7 @@ body { background-color: #000000; color: #cccccc; }
 <li> Gépelési hibák javítása.
 </ul>
 
-<p><b>Verzió 1.9.8:</b>
+<p><b>Verzió 1.9.8</b>
 <ul>
 <li> Hosszú érintésre elrejti az alsó navigációs sávot.
 <li> Új opció: a képernyő ne sötétüljön el.

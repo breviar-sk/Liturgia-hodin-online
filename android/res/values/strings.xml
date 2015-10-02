@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.12</string>
+    <string name="version">1.12.1</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -22,7 +22,7 @@
     <string name="vol_buttons">use volume buttons for scrolling</string>
     <string name="dimlock">do not dim screen</string>
     <string name="mute">put phone to silent mode</string>
-    <string name="long_click_toggles_bar">long click toggles navigation bar</string>
+    <string name="long_click_toggles_bar">long tap toggles navigation bar</string>
 
     <string name="prayer_content_settings1_title">Content settings:</string>
     <string name="various_options_in_prayers">various options in prayers as clicable hyperlinks</string>
@@ -120,27 +120,34 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Breviary application | What\'s new</b>
 
-<p><b>Version 1.12:</b>
+<p><b>Version 1.12.1</b>
+<ul>
+<li> New option: Possibility to configure app while navigation bar is displayed (enable text selection for copying).
+<li> Corrections for all languages.
+<li> Typos and fixes for all languages.
+</ul>
+
+<p><b>Version 1.12</b>
 <ul>
 <li> Possibility to display communia.
 <li> Corrections for all languages.
 <li> Typos and fixes for all languages.
 </ul>
 
-<p><b>Version 1.11.2:</b>
+<p><b>Version 1.11.2</b>
 <ul>
 <li> New menu item: Display only normal font (vs use also bold font).
 <li> Typos and fixes for all languages.
 <li> Added new settings.
 </ul>
 
-<p><b>Version 1.11.1:</b>
+<p><b>Version 1.11.1</b>
 <ul>
 <li> Liturgical readings: Backward compatibility with Android 2.x and older.
 <li> Typos and fixes for all languages.
 </ul>
 
-<p><b>Version 1.11:</b>
+<p><b>Version 1.11</b>
 <ul>
 <li> Switching night/day mode from main menu.
 <li> Bigger line height for better readability.
@@ -148,13 +155,13 @@ body { background-color: #000000; color: #cccccc; }
 <li> Many typos for all languages.
 </ul>
 
-<p><b>Version 1.10.1:</b>
+<p><b>Version 1.10.1</b>
 <ul>
 <li> Minor fixes.
 <li> Many typos for all languages.
 </ul>
 
-<p><b>Version 1.10:</b>
+<p><b>Version 1.10</b>
 <ul>
 <li> Setting for displaying text of prayer in blind-friendly mode (only prayer text, without headings & rubrics) suitable for text-to-speech output.
 <li> New option in main screen: Ordinarium.
@@ -162,19 +169,19 @@ body { background-color: #000000; color: #cccccc; }
 <li> Compatibility with Android 5.0 Lollipop.
 </ul>
 
-<p><b>Version 1.9.10:</b>
+<p><b>Version 1.9.10</b>
 <ul>
 <li> Setting for automatic turning on silent mode when praying.
 <li> SK + HU: New option for first vespers hymn (ordinary time).
 </ul>
 
-<p><b>Version 1.9.9:</b>
+<p><b>Version 1.9.9</b>
 <ul>
 <li> SK: CSS formatting of hymns.
 <li> HU: Plenty of small fixes & CSS formatting.
 </ul>
 
-<p><b>Version 1.9.8:</b>
+<p><b>Version 1.9.8</b>
 <ul>
 <li> Long tap hides bottom navigation bar.
 <li> Added option for not-dimming screen.
