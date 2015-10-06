@@ -24497,7 +24497,12 @@ label_25_MAR:
 							_set_zalmy_sviatok_marie(modlitba);
 							_vlastna_cast_full(modlitba);
 
-							_vlastna_cast_mcd_kcitresp_modl;
+							if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
+								_vlastna_cast_mcd_kcitresp_modl; 
+							}
+							else{
+								_vlastna_cast_mcd_ant_kcitresp_modl;
+							}// KALENDAR_CZ_OFMCAP
 
 							break;
 						}
@@ -24993,7 +24998,12 @@ label_25_MAR:
 							}// KALENDAR_CZ_OFMCAP
 							_vlastna_cast_full(modlitba);
 
-							_vlastna_cast_mcd_kcitresp_modl;
+							if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)){
+								_vlastna_cast_mcd_ant_kcitresp_modl;
+							}
+							else{
+								_vlastna_cast_mcd_kcitresp_modl;
+							}// KALENDAR_CZ_OFMCAP
 
 							break;
 						}
