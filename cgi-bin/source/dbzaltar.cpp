@@ -19325,6 +19325,7 @@ label_25_MAR:
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
+							_vlastna_cast_2citanie;
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
@@ -19351,6 +19352,7 @@ label_25_MAR:
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
+							_vlastna_cast_2citanie;
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
@@ -19425,8 +19427,6 @@ label_25_MAR:
 					}// kalendár pre KALENDAR_SK_OP
 					break;
 				case 22: // MES_MAY -- 22MAJ
-					// 2008-12-04: pridané pre czop; 
-					// 2009-07-30: už je aj vo všeobecnom kalendári 
 					if(poradie_svaty == 1){
 						// definovanie parametrov pre modlitbu
 						if(query_type != PRM_DETAILY)
@@ -19437,9 +19437,7 @@ label_25_MAR:
 
 						modlitba = MODL_POSV_CITANIE;
 						_vlastna_cast_modlitba;
-						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)){
-							_vlastna_cast_2citanie; // 2011-02-09: doplnený pracovný preklad | 2012-05-14: doplnený aj maďarský preklad
-						}
+						_vlastna_cast_2citanie;
 
 						modlitba = MODL_VESPERY;
 						_vlastna_cast_modlitba;
