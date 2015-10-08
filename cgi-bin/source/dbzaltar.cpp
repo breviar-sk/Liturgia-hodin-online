@@ -29719,7 +29719,7 @@ label_25_MAR:
 						}// czop only
 
 						if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)){
-							if(poradie_svaty == 1){
+							if(poradie_svaty == 2){
 								// definovanie parametrov pre modlitbu
 								if(query_type != PRM_DETAILY)
 									set_spolocna_cast(sc, poradie_svaty);
