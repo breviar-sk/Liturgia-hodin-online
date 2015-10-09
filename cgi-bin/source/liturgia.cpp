@@ -21,7 +21,9 @@
 #include "mydefs.h"
 #include "mysystem.h"
 #include "mysysdef.h"
+#include "common.h"
 #include "mystring.h"
+#include "myconf.h"
 #include "utf8-utils.h"
 #include <ctype.h>
 #include <wctype.h>

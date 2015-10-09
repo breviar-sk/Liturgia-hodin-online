@@ -54,40 +54,50 @@ int substring(char *str1, char *str2){
 
 // string comparator -- pre vsetky kombinacie dvojic [const] char, [const] char
 short int equals(char *s1, char *s2){
-	if (strcmp(s1, s2) == 0)
+	if (strcmp(s1, s2) == 0){
 		return 1;
-	else
+	}
+	else{
 		return 0;
+	}
 }
 
 short int equals(const char *s1, char *s2){
-	if (strcmp(s1, s2) == 0)
+	if (strcmp(s1, s2) == 0){
 		return 1;
-	else
+	}
+	else{
 		return 0;
+	}
 }
 
 short int equals(const char *s1, const char *s2){
-	if (strcmp(s1, s2) == 0)
+	if (strcmp(s1, s2) == 0){
 		return 1;
-	else
+	}
+	else{
 		return 0;
+	}
 }
 
 short int equals(char *s1, const char *s2){
-	if (strcmp(s1, s2) == 0)
+	if (strcmp(s1, s2) == 0){
 		return 1;
-	else
+	}
+	else{
 		return 0;
+	}
 }
 
 // string comparator without case sensitivity -- pre vsetky kombinacie dvojic [const] char, [const] char
 short int equalsi(char *is1, char *is2){
 #if defined(DEFINED_strcmpi)
-	if(strcmpi(is1, is2) == 0)
+	if (strcmpi(is1, is2) == 0){
 		return 1;
-	else
+	}
+	else{
 		return 0;
+	}
 #else
 	short int i, length;
 	char s1[MAX_STR], s2[MAX_STR];
@@ -107,10 +117,12 @@ short int equalsi(char *is1, char *is2){
 
 short int equalsi(const char *is1, char *is2){
 #if defined(DEFINED_strcmpi)
-	if(strcmpi(is1, is2) == 0)
+	if (strcmpi(is1, is2) == 0){
 		return 1;
-	else
+	}
+	else{
 		return 0;
+	}
 #else
 	short int i, length;
 	char s1[MAX_STR], s2[MAX_STR];
@@ -130,10 +142,12 @@ short int equalsi(const char *is1, char *is2){
 
 short int equalsi(const char *is1, const char *is2){
 #if defined(DEFINED_strcmpi)
-	if(strcmpi(is1, is2) == 0)
+	if (strcmpi(is1, is2) == 0){
 		return 1;
-	else
+	}
+	else{
 		return 0;
+	}
 #else
 	short int i, length;
 	char s1[MAX_STR], s2[MAX_STR];
@@ -153,10 +167,12 @@ short int equalsi(const char *is1, const char *is2){
 
 short int equalsi(char *is1, const char *is2){
 #if defined(DEFINED_strcmpi)
-	if(strcmpi(is1, is2) == 0)
+	if (strcmpi(is1, is2) == 0){
 		return 1;
-	else
+	}
+	else{
 		return 0;
+	}
 #else
 	short int i, length;
 	char s1[MAX_STR], s2[MAX_STR];

@@ -12,6 +12,7 @@
 #ifndef __MYSTRING_H_
 #define __MYSTRING_H_
 
+#include "common.h"
 #include <string.h>
 
 #define STR_EMPTY ""

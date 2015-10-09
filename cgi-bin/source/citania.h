@@ -14,6 +14,8 @@
 #include "breviar.h"
 #include "mysystem.h"
 #include "mysysdef.h"
+#include "mydefs.h"
+#include "common.h"
 
 #ifdef LITURGICKE_CITANIA_ANDROID
 

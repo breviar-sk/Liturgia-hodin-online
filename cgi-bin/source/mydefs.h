@@ -14,7 +14,6 @@
 
 #include "mysystem.h"
 #include "mysysdef.h"
-#include "myconf.h"
 
 #if defined(OS_linux)
 #elif defined(OS_Windows)
@@ -24,23 +23,45 @@
 #endif
 
 #include <stdio.h>
+#include "mydefs.h"
+#include "common.h"
 
-#define Q_UNUSED(arg) (void)arg;
 
-#define SMALL 160
-#define VERY_SMALL 16
+// number of supported rites (roman catholic, greek catholic, etc.)
+#define	POCET_RITOV	         1
 
-// navratova hodnota funkcii
-#define NO_RESULT 2
-#define FAILURE 1
-#define SUCCESS 0
+// number of supported languages | Warning: for all string constants we use arrays [POCET_JAZYKOV + 1] => be careful when incrementing POCET_JAZYKOV!
+/* INCREMENT_FOR_NEW_LANGUAGE */
+#define	POCET_JAZYKOV	     7
 
-// true -- false
-#define TRUE  1
-#define FALSE 0
-#define ANO   1
-#define NIE   0
-#define CIASTOCNE 2
+// when adding new language, the following comments MUST BE replaced:
+// 
+// 1. few numeric constants [ADD_VALUE_FOR_NEW_LANGUAGE]
+// 2. string constants in one line [STRING_1_FOR_NEW_LANGUAGE]
+// 3. string constants in separate line ('multi-line alignment' in source code) []
+// 4. string arrays [STRING_ARRAY_FOR_NEW_LANGUAGE]
+// 5. consider adding new calendar -> see [INCREMENT_FOR_NEW_CALENDAR]
+//
+// Detailed description:
+//
+// 1. change the following: ADD_VALUE_FOR_NEW_LANGUAGE
+// -- especially set constants: skratka_jazyka[], cfg_option_postfix[], postfix_jazyka[], skratka_kalendara[] (see [INCREMENT_FOR_NEW_CALENDAR])
+//
+// 2. replace string constants in one line: STRING_1_FOR_NEW_LANGUAGE
+//
+// , /* STRING_1_FOR_NEW_LANGUAGE */ -> , "string_for_new_language", /* STRING_1_FOR_NEW_LANGUAGE */
+//
+// Note: always preserve ", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */" with preceding comma!
+//
+// 3. replace string constants in multi-line constants: STRING_2_FOR_NEW_LANGUAGE
+// 
+// /* STRING_2_FOR_NEW_LANGUAGE */ -> (replace with the following two lines)
+// "string_for_new_language", 
+// /* STRING_2_FOR_NEW_LANGUAGE */
+//
+// 4. string arrays: STRING_ARRAY_FOR_NEW_LANGUAGE to be replaced manually
+
+#define POCET_GLOBAL_OPT     6
 
 #define MAX_GLOBAL_STR		2048 // _global_string; 31/03/2000A.D.; 2010-12-07: rozšírené; 2011-01-31: rozšírené kvôli text_JAN_31_SDB[]; 2011-02-02: rozšírené kvôli text_FEB_04_SJ[];
 #define MAX_GLOBAL_STR2		200 // _global_string2, pridané 2006-08-19
@@ -925,178 +946,6 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_SEQUENCE_NONE       0
 #define HTML_SEQUENCE_LINE_BREAK 1
 #define HTML_SEQUENCE_PARAGRAPH  2
-
-// HTML string constants
-
-#define HTML_FORM_INPUT_SUBMIT   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button\""
-#define HTML_FORM_INPUT_RESET    HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset\""
-#define HTML_FORM_INPUT_RADIO    HTML_FORM_INPUT_DIV_BEGIN"<input type=\"radio\" class=\"radio\""
-#define HTML_FORM_INPUT_TEXT     HTML_FORM_INPUT_DIV_BEGIN"<input type=\"text\" class=\"text\""
-#define HTML_FORM_INPUT_TEXT_ROK HTML_FORM_INPUT_DIV_BEGIN"<input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
-#define HTML_FORM_INPUT_CHECKBOX HTML_FORM_INPUT_DIV_BEGIN"<input type=\"checkbox\" class=\"checkbox\""
-
-// buttons (0. level: pre predošlý/nasledovný; 1. level: button "dnes"; 2. level: použité pre menej dôležité buttony)
-#define HTML_FORM_INPUT_SUBMIT0  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button0\""
-#define HTML_FORM_INPUT_RESET0   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset0\""
-#define HTML_FORM_INPUT_SUBMIT1  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button1\""
-#define HTML_FORM_INPUT_RESET1   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset1\""
-#define HTML_FORM_INPUT_SUBMIT2  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button2\""
-#define HTML_FORM_INPUT_RESET2   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset2\""
-#define HTML_FORM_INPUT_HIDDEN   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"hidden\""
-
-#define HTML_FORM_INPUT_END      HTML_EMPTY_TAG_END""HTML_FORM_INPUT_DIV_END
-
-// wrapping <input ... /> into <div>...</div>
-#define HTML_FORM_INPUT_DIV_BEGIN HTML_DIV_INLINE
-#define HTML_FORM_INPUT_DIV_END   HTML_DIV_END
-
-#define HTML_FORM_SELECT "<select "
-
-#define HTML_HR            "<hr/>"
-
-#define HTML_EMPTY_TAG_END " />"
-
-#define HTML_FORM_METHOD_GET     "<form action=\"%s\" method=\"get\">\n"
-#define HTML_FORM_METHOD_POST    "<form action=\"%s\" method=\"post\">\n"
-
-#define HTML_LINK_RED    "a class=\"red\""
-#define HTML_LINK_NORMAL "a"
-#define HTML_LINK_CLASS_B "a class=\""
-#define HTML_LINK_CLASS_E "\""
-
-#define HTML_TARGET_BLANK " target=\"_blank\" "
-#define HTML_TARGET_TOP " target=\"_top\" "
-
-#define HTML_NONBREAKING_SPACE "&nbsp;"
-#define HTML_SPACE " "
-#define HTML_VERTICAL_BAR "|"
-#define HTML_CROSS "†"
-#define HTML_LINE_BREAK "<br/>"
-#define HTML_CRLF_LINE_BREAK "\n<br/>"
-#define HTML_SLASH "/"
-#define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-#define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE))
-
-#define HTML_P_BEGIN                "<p>"
-#define HTML_P_END                  "</p>"
-
-#define HTML_P_CENTER               "<p "HTML_CLASS_CENTER">"
-#define HTML_P_CENTER_SMALL         "<p "HTML_CLASS_SMALL_CENTER">"
-#define HTML_P_INLINE               "<p "HTML_CLASS_INLINE">"
-
-#define HTML_A_HREF_BEGIN           "<a href="
-#define HTML_A_NAME_BEGIN           "<a name="
-#define HTML_A_END                  "</a>"
-
-#define HTML_DIV_BEGIN              "<div>"
-#define HTML_DIV_END                "</div>"
-
-#define HTML_DIV_CENTER             "<div "HTML_CLASS_CENTER">"
-#define HTML_DIV_INLINE             "<div "HTML_CLASS_INLINE">"
-
-#define HTML_DIV_SMALL_INLINE       "div class=\"small inline\""
-#define HTML_DIV_SMALL              "div class=\"small\""
-#define HTML_DIV_RED_SMALL          "div class=\"redsmall\""
-#define HTML_DIV_RED_SUBTITLE       "div class=\"redsubtitle\""
-
-// HTML tables defined using DIVs
-#define HTML_TABLE			        "div class=\"table\"" // "table"
-#define HTML_TABLE_LEFT             "div class=\"table-left\"" // "table" left-aligned
-#define HTML_TABLE_CAPTION	        "div class=\"table-caption\"" // "th"
-#define HTML_TABLE_ROW		        "div class=\"table-row\"" // "tr"
-#define HTML_TABLE_CELL		        "div class=\"table-cell\"" // "td"
-#define HTML_TABLE_CELL_CENTER      "div class=\"table-cell center\""
-#define HTML_TABLE_CELL_BORDER      "div class=\"table-cell-bordered\"" // "td" with borders
-#define HTML_TABLE_CELL_VALIGN_TOP  "div class=\"table-cell-valign-top\""
-
-#define HTML_TABLE_END		        HTML_DIV_END""HTML_COMMENT_BEGIN"table"HTML_COMMENT_END // "</table>"
-#define HTML_TABLE_CAPTION_END	    HTML_DIV_END""HTML_COMMENT_BEGIN"caption"HTML_COMMENT_END // "</th>"
-#define HTML_TABLE_ROW_END	        HTML_DIV_END""HTML_COMMENT_BEGIN"row"HTML_COMMENT_END // "</tr>"
-#define HTML_TABLE_CELL_END	        HTML_DIV_END""HTML_COMMENT_BEGIN"cell"HTML_COMMENT_END // "</td>"
-
-#define HTML_TABLE_CELL_BORDER_END	HTML_TABLE_CELL_END
-
-#define HTML_SPAN_END               "</span>"
-
-#define HTML_SPAN_NORMAL            "span class=\"normal\""
-#define HTML_SPAN_ITALIC            "span class=\"it\""
-#define HTML_SPAN_BOLD              "span class=\"bold\""
-#define HTML_SPAN_BOLD_IT           "span class=\"boldit\""
-#define HTML_SPAN_RED_TITLE         "span class=\"redtitle\""
-#define HTML_SPAN_RED               "span class=\"red\""
-#define HTML_SPAN_RED_BOLD          "span class=\"redbold\""
-#define HTML_SPAN_BLUE              "span class=\"blue\""
-#define HTML_SPAN_BLUE_BOLD         "span class=\"bluebold\""
-#define HTML_SPAN_RED_SMALL         "span class=\"redsmall\""
-#define HTML_SPAN_RED_SUBTITLE      "span class=\"redsubtitle\""
-#define HTML_SPAN_SMALL             "span class=\"small\""
-#define HTML_SPAN_EXPLAIN           "span class=\"explain\""
-#define HTML_SPAN_PARAMETER         "span class=\"parameter\""
-#define HTML_SPAN_VALUE             "span class=\"value\""
-#define HTML_SPAN_SMALLCAPS         "span class=\"smallcaps\""
-#define HTML_SPAN_XS_CAPS           "span class=\"xsmallcaps\""
-#define HTML_SPAN_HIDDEN            "span class=\"hidden\""
-
-#define HTML_CLASS_CALENDAR         "class=\"calendar\""
-
-#define HTML_CALENDAR_HEADING       "span class=\"calendar heading\""
-#define HTML_CALENDAR_DAYS          "span class=\"calendar day_name\""
-#define HTML_CALENDAR_TODAY_SUNDAY  "span class=\"calendar today bold\""
-#define HTML_CALENDAR_TODAY         "span class=\"calendar today\""
-
-#define HTML_CLASS_NAME_CALENDAR_TODAY_SUNDAY "calendar today bold"
-#define HTML_CLASS_NAME_CALENDAR_TODAY "calendar today"
-#define HTML_CLASS_NAME_CALENDAR_SUNDAY "calendar day bold"
-#define HTML_CLASS_NAME_CALENDAR_DAY "calendar day"
-
-#define HTML_SPAN_TOOLTIP           "span title=\"%s\"" // obsahuje %s
-#define HTML_SPAN_BOLD_TOOLTIP      "span class=\"bold\" title=\"%s\"" // obsahuje %s
-#define HTML_SPAN_NORMAL_TOOLTIP    "span class=\"normal\" title=\"%s\"" // obsahuje %s
-
-#define HTML_SUP_RED                "sup class=\"red\""
-
-#define HTML_CLASS_BLUE             "class=\"blue\""
-#define HTML_CLASS_QUIET            "class=\"quiet\""
-#define HTML_CLASS_BOLD_IT          "class=\"boldit\""
-#define HTML_CLASS_LEVEL1           "class=\"level1\""
-#define HTML_CLASS_TT               "class=\"tt\""
-#define HTML_CLASS_BUTTON           "class=\"button\""
-#define HTML_CLASS_SMALL            "class=\"small\""
-#define HTML_CLASS_SMALL_CENTER     "class=\"small center\""
-#define HTML_CLASS_INLINE           "class=\"inline\""
-#define HTML_CLASS_CENTER           "class=\"center\""
-
-#define HTML_CLASS_QUIET_SMALL      "class=\"quiet small\""
-
-#define HTML_VALIGN_MIDDLE          "valign=\"middle\""
-#define HTML_VALIGN_TOP             "valign=\"top\""
-#define HTML_VALIGN_BASE            "valign=\"baseline\""
-
-#define HTML_BUTTON_BEGIN	        "<button type=\"button\" "HTML_CLASS_BUTTON">" // wrapping <a> element to look like button
-#define HTML_BUTTON_END		        "</button>"
-
-#define HTML_AMPERSAND              "&amp;"
-
-#define HTML_COMMENT_BEGIN		    "<!--"
-#define HTML_COMMENT_END		    "-->"
-#define HTML_FONT_SIZE_FARBA	    "80%%"
-
-#define HTML_LEFT_ARROW			    "&laquo;"
-#define HTML_RIGHT_ARROW		    "&raquo;"
-
-#define HTML_LEFT_ARROW_WIDE	    "&nbsp;&laquo;&nbsp;"
-#define HTML_RIGHT_ARROW_WIDE	    "&nbsp;&raquo;&nbsp;"
-
-#define HTML_LINK_CALL1             "%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
-#define HTML_LINK_CALL2             "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
-#define HTML_LINK_CALL3             "%s?%s=%s"HTML_AMPERSAND"%s=%s%s"
-#define HTML_LINK_CALL_PARAM        HTML_AMPERSAND"%s=%s"
-
-#define HTML_LEFT_ARROW_SINGLE	    "&lsaquo;"
-#define HTML_RIGHT_ARROW_SINGLE	    "&rsaquo;"
-
-#define HTML_LEFT_ARROW_HUGE	    "&lsaquo;&laquo;"
-#define HTML_RIGHT_ARROW_HUGE	    "&raquo;&rsaquo;"
 
 // 2007-03-19: výpis "Dnes je..." sa zobrazí len pri tomto nastavení, ak je 1
 #define HTML_ZOBRAZIT_DNES_JE	0

@@ -17,8 +17,9 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
-#include "mydefs.h"
+#include "common.h"
 #include "myexpt.h"
+#include "mysysdef.h"
 
 char FILE_EXPORT[MAX_STR] = DEFAULT_FILE_EXPORT;
 

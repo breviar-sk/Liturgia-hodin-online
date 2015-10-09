@@ -14,6 +14,8 @@
 #define __DBZALTAR_H_
 
 #include "liturgia.h"
+#include "mydefs.h"
+#include "common.h"
 
 #include "myexpt.h" // export do suboru alebo na konzolu printf
 #include "mylog.h"

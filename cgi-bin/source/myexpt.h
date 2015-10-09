@@ -14,7 +14,7 @@
 #define __MYEXPT_H_
 
 #include <stdio.h>
-#include "mydefs.h"
+#include "common.h"
 
 #define DEFAULT_FILE_EXPORT "export.htm"
 #define DEFAULT_HTML_EXPORT "zoznam.htm" // "export2.htm"

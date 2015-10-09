@@ -15,6 +15,7 @@
 #include "mydefs.h"
 #include <string.h>
 #include "mystring.h"
+#include "myconf.h"
 #include "breviar.h"
 
 char script_name[MAX_STR] = STR_EMPTY; // = cfg_HTTP_ADDRESS_default + SCRIPT_PATH(SCRIPT_NAME)

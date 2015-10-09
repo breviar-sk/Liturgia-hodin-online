@@ -21,8 +21,6 @@
 
 #include "myconf.h"
 #include "mystring.h"
-#include "mysystem.h"
-#include "mysysdef.h"
 #include "mylog.h"
 #include "mydefs.h"
 #include "mystring.h"

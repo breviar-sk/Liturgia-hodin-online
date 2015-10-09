@@ -7,8 +7,9 @@
 /*                                                             */
 /***************************************************************/
 
-#include "mysystem.h"
-#include "mysysdef.h"
+#ifndef __CITANIA_CPP_
+#define __CITANIA_CPP_
+
 #include "citania.h"
 #include "liturgia.h"
 #include <string.h>
@@ -123,4 +124,7 @@ char *StringEncode(const char *in) {
 	return out;
 }
 
+
 #endif // LITURGICKE_CITANIA_ANDROID
+
+#endif // __CITANIA_CPP_

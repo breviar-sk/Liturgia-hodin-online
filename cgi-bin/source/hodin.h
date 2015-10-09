@@ -18,6 +18,8 @@
 #define __HODIN_H_
 
 #include "liturgia.h"
+#include "mydefs.h"
+#include "common.h"
 
 const char *TEMPLAT[POCET_MODLITIEB + 1] =
 { TEMPLAT_INVITATORIUM, TEMPLAT_POSV_CITANIE, TEMPLAT_RANNE_CHVALY,

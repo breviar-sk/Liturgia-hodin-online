@@ -21,6 +21,7 @@
 #include "mysystem.h"
 #include "mysysdef.h"
 #include "mydefs.h"
+#include "common.h"
 #include "mylog.h"
 #include <time.h>
 #include <stdio.h>
@@ -365,24 +366,6 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 
 #define SHOW_TEMPLAT_MODLITBA      1 // use TEMPLAT[]
 #define SHOW_TEMPLAT_STATIC_TEXT   2 // use ORDINARIUM[]
-
-// keyword (anchor) begin + end
-#define CHAR_KEYWORD_BEGIN   '{'
-#define CHAR_KEYWORD_END     '}'
-#define CHAR_KEYWORD_DIVIDER ':'
-
-// underscore '_' used as placeholder for non-breaking space (it will be exported as HTML_NONBREAKING_SPACE == "&nbsp;" defined in mydefs.h) 
-#define CHAR_NONBREAKING_SPACE '_'
-
-// special characters in prayer texts (some of them to be removed for blind-friendly version)
-#define CHAR_SPACE             ' '
-#define CHAR_PRAYER_ASTERISK   '*'
-#define CHAR_PRAYER_CROSS      L'\x2020' /*†*/
-#define CHAR_PRAYER_CROSS_ALT  '+'
-
-// include parameters
-#define INCLUDE_BEGIN   "BEGIN" // zaciatok
-#define INCLUDE_END     "END"   // koniec
 
 // parameter identifiers
 #define PARAM_POPIS         "POPIS"
@@ -729,45 +712,6 @@ struct dm{
 };
 typedef struct dm _struct_dm;
 
-// week days
-#define DEN_NEDELA      0
-#define DEN_PONDELOK    1
-#define DEN_UTOROK      2
-#define DEN_STREDA      3
-#define DEN_STVRTOK     4
-#define DEN_PIATOK      5
-#define DEN_SOBOTA      6
-#define DEN_UNKNOWN     7
-// number ofweek  days
-#define POCET_DNI		7
-
-// all days
-#define VSETKY_DNI   32
-#define STR_VSETKY_DNI  "*"
-
-// months
-#define MES_JAN 0
-#define MES_FEB 1
-#define MES_MAR 2
-#define MES_APR 3
-#define MES_MAY 4
-#define MES_MAJ 4
-#define MES_JUN 5
-#define MES_JUL 6
-#define MES_AUG 7
-#define MES_SEP 8
-#define MES_OCT 9
-#define MES_OKT 9
-#define MES_NOV 10
-#define MES_DEC 11
-#define UNKNOWN_MESIAC	12
-// number of months
-#define POCET_MESIACOV	12
-
-// all months
-#define VSETKY_MESIACE	13
-#define STR_VSETKY_MESIACE  "*"
-
 // liturgické obdobia | liturgical times/seasons
 //OBD_ADVENTNE
 #define OBD_ADVENTNE_I             0 // do 16. decembra
@@ -1008,10 +952,6 @@ extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
 #define NIE_JE_PRIKAZANY_SVIATOK    1
 #define VOLNA_LUBOVOLNA_SPOMIENKA   2 // pre SK OP; v kalendári značené kurzívou (bez popisu "ľubovoľná spomienka"); 2012-04-01
 
-// div, mod: delenie pre short int
-#define DIV	/
-#define MOD	%
-
 // dodefinované rôzne správanie funkcie zaltar_zvazok();
 #define	ZALTAR_VSETKO                0
 #define ZALTAR_IBA_ZALMY             1
@@ -1046,9 +986,6 @@ extern const char *nazov_farby_jazyk[POCET_FARIEB_REALNYCH + 1][POCET_JAZYKOV + 
 extern const char *html_farba_pozadie[POCET_FARIEB_REALNYCH + 1];
 extern const char *html_farba_popredie[POCET_FARIEB_REALNYCH + 1];
 
-// juliansky datum, funkcia juliansky_datum, dane synonymum JD
-#define	JD	juliansky_datum
-
 #define ZVAZKY_LH 4
 
 // tyzden zaltara (1, 2, 3, 4) podla tyzdna t
@@ -1063,11 +1000,6 @@ extern const char char_nedelne_pismeno[POCET_DNI];
 
 #define POCET_NEDELNY_CYKLUS 3
 extern const char char_nedelny_cyklus[POCET_NEDELNY_CYKLUS];
-
-#define	ROK_1968		1968
-#define	JUL_DATE_0_JAN_1968	2439856L // juliansky datum pre 0. januar 1968
-
-#define	POCET_DNI_V_ROKU	365
 
 #define	POCET_NEDIEL_CEZ_ROK	34
 #define	KRISTA_KRALA	34 // 34. nedela v obdobi cez rok je sviatok K.K.
@@ -1152,10 +1084,6 @@ extern const char *poradie_SLOVOM_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1];
 #define _ZOSLANIE_DUCHA_SV        _den[idx_ZOSLANIE_DUCHA_SV]
 #define _SVATEJ_RODINY            _den[idx_SVATEJ_RODINY]
 
-#undef YES
-#undef NO
-#define YES 1
-#define NO  0
 
 #define NIJAKE_NEDELNE_PISMENO 'x'
 struct lrok{
