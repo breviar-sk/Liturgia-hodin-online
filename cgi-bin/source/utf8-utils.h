@@ -1,7 +1,7 @@
 /**********************************************************/
 /*                                                        */
 /* utf8-utils.h                                           */
-/* (c)2014 | Juraj VidÈky, Richard Kr·loviË               */
+/* (c)2014 | Juraj Vid√©ky, Richard Kr√°loviƒç               */
 /*                                                        */
 /* description | utilities for UTF-8 (Unicode) encoding   */
 /*               (string manipulation, etc.)              */

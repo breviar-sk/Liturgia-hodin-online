@@ -1142,6 +1142,7 @@ void ExportChar(int c){
 short int antifona_pocet = 0; // počet antifón (ant1, ant2, ant3 pre psalmódiu a ant. na benediktus/magnifikat kvôli krížikom)
 char rest_krizik[MAX_BUFFER] = STR_EMPTY; // pre to, čo je za krížikom v antifóne
 char rest_zakoncenie[MAX_BUFFER] = STR_EMPTY;
+
 void includeFile(short int type, const char *paramname, const char *fname, const char *modlparam){
 	int c, buff_index = 0, ref_index = 0, kat_index = 0, z95_index = 0;
 	char strbuff[MAX_BUFFER];
@@ -1180,6 +1181,13 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	char pompom[MAX_STR];
 	mystrcpy(pompom, STR_EMPTY, MAX_STR);
 
+	Log("  replacing {%s} with %s from file `%s':\n", paramname, modlparam, fname);
+
+	if ((_global_skip_in_prayer >= ANO) || (_global_skip_in_prayer_vnpc == ANO)){
+		Log("--includeFile(): end (because _global_skip_in_prayer >= ANO || _global_skip_in_prayer_vnpc == ANO)\n");
+		return;
+	}
+
 	// init
 	mystrcpy(strbuff, STR_EMPTY, MAX_BUFFER);
 	mystrcpy(rest, STR_EMPTY, MAX_BUFFER);
@@ -1192,7 +1200,6 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 	FILE *body = fopen(fname, "r");
 
-	Log("  replacing {%s} with %s from file `%s':\n", paramname, modlparam, fname);
 	if (body == NULL){
 		// printf("error `%s'\n", sys_errlist[errno]);
 		Log("  file `%s' not found\n", fname);
@@ -1214,11 +1221,6 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #elif defined(EXPORT_HTML_ANCHOR)
 	Export("(anchor `%s')", modlparam);
 #endif
-
-	if ((_global_skip_in_prayer >= ANO) || (_global_skip_in_prayer_vnpc == ANO)){
-		Log("--includeFile(): end (because _global_skip_in_prayer >= ANO || _global_skip_in_prayer_vnpc == ANO)\n");
-		return;
-	}
 
 	// nastavenie toho, či sa má zobrazovať myšlienka k žalmom/chválospevom | doplnené aj nastavenie pre zobrazenie nadpisu pre žalm/chválospev (zatiaľ rovnako ako pre myšlienku)
 	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) || (_global_den.typslav == SLAV_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK) || (_global_den.typslav == SLAV_VLASTNE) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.smer == 1) /* && (_global_den.spolcast != _encode_spol_cast(MODL_SPOL_CAST_NEURCENA)) */){

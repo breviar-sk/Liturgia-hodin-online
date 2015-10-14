@@ -1,7 +1,7 @@
 /*********************************************************/
 /*                                                       */
 /* common.h                                              */
-/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk       */
+/* (c)1999-2015 | Juraj VidÃ©ky | videky@breviar.sk       */
 /*                                                       */
 /* description | new core basic define's                 */
 /*                                                       */
@@ -63,7 +63,7 @@
 // special characters in prayer texts (some of them to be removed for blind-friendly version)
 #define CHAR_SPACE             ' '
 #define CHAR_PRAYER_ASTERISK   '*'
-#define CHAR_PRAYER_CROSS      L'\x2020' /*†*/
+#define CHAR_PRAYER_CROSS      L'\x2020' /*â€ */
 #define CHAR_PRAYER_CROSS_ALT  '+'
 
 // include parameters
@@ -128,7 +128,7 @@
 #define HTML_FORM_INPUT_TEXT_ROK HTML_FORM_INPUT_DIV_BEGIN"<input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
 #define HTML_FORM_INPUT_CHECKBOX HTML_FORM_INPUT_DIV_BEGIN"<input type=\"checkbox\" class=\"checkbox\""
 
-// buttons (0. level: pre predošlý/nasledovný; 1. level: button "dnes"; 2. level: použité pre menej dôležité buttony)
+// buttons (0. level: pre predoÅ¡lÃ½/nasledovnÃ½; 1. level: button "dnes"; 2. level: pouÅ¾itÃ© pre menej dÃ´leÅ¾itÃ© buttony)
 #define HTML_FORM_INPUT_SUBMIT0  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button0\""
 #define HTML_FORM_INPUT_RESET0   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset0\""
 #define HTML_FORM_INPUT_SUBMIT1  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button1\""
@@ -163,7 +163,7 @@
 #define HTML_NONBREAKING_SPACE "&nbsp;"
 #define HTML_SPACE " "
 #define HTML_VERTICAL_BAR "|"
-#define HTML_CROSS "†"
+#define HTML_CROSS "â€ "
 #define HTML_LINE_BREAK "<br/>"
 #define HTML_CRLF_LINE_BREAK "\n<br/>"
 #define HTML_SLASH "/"
