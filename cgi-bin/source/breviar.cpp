@@ -1808,9 +1808,38 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 								Export("-->.<!--");
 							}
 						}
-						Log("resp-koniec.\n");
+						Log("dlhe-resp-koniec.\n");
 					}// INCLUDE_END
 				}// plné responzórium...
+
+				// OPAK plné responzórium...
+				if (equals(rest, PARAM_NIE_PLNE_RESP)){
+					if (equals(strbuff, INCLUDE_BEGIN) && (vnutri_inkludovaneho == 1)){
+#if defined(EXPORT_HTML_SPECIALS)
+						Export("(start)NIE-dlhe-resp.");
+#endif
+						if (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
+							;
+						}
+						else{
+							write = NIE;
+							Log("  ruším writing to export file, kvôli PARAM_NIE_PLNE_RESP...\n");
+						}
+					}// INCLUDE_BEGIN
+					else if (equals(strbuff, INCLUDE_END) && (vnutri_inkludovaneho == 1)){
+#if defined(EXPORT_HTML_SPECIALS)
+						Export("NIE-dlhe-resp.(stop)");
+#endif
+						if (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
+							;
+						}
+						else{
+							write = ANO;
+							Log("  opäť writing to export file, PARAM_NIE_PLNE_RESP...\n");
+						}
+						Log("NIE-dlhe-resp-koniec.\n");
+					}// INCLUDE_END
+				}// OPAK plné responzórium...
 
 				// zvolanie v prosbách...
 				if (equals(rest, PARAM_ZVOLANIE)){
@@ -2912,8 +2941,10 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else if (equals(paramname, PARAM_RESPONZ)){
 			bit = BIT_OPT_1_PLNE_RESP;
-			podmienka &= (_global_modlitba == MODL_POSV_CITANIE); // ToDo: časom aj pre ranné chvály a vešpery (krátke resp.)
-			specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
+			podmienka &= ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY));
+			if (_global_modlitba == MODL_POSV_CITANIE){
+				specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
+			}
 			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_plne_resp[_global_jazyk]);
 			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option1_plne_resp[_global_jazyk]);
 		}

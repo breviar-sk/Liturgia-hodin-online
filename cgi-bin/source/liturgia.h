@@ -481,58 +481,58 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_JE_VIGILIA_BEGIN              "JE_VIGILIA_BEGIN"
 #define PARAM_JE_VIGILIA_END                "JE_VIGILIA_END"
 
-// 2010-05-21: doplnené zobrazenie antifóny a modlitby pre spomienku svätca v pôstnom období
-// 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
+// zobrazenie antifóny a modlitby pre spomienku svätca v pôstnom období + zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 #define PARAM_SPOMIENKA_PRIVILEG_BEGIN      "SPOMIENKA_PRIVILEG_BEGIN"
 #define PARAM_SPOMIENKA_PRIVILEG_END        "SPOMIENKA_PRIVILEG_END"
-// 2011-01-12: doplnené zobrazenie/skrytie myšlienky k žalmu -- pre cezročné obdobie alternatívnej antifóny žalmu/chválospevu ("myšlienka k žalmu" podľa bodu 111 a 114 VSLH)
+// zobrazenie/skrytie myšlienky k žalmu -- pre cezročné obdobie alternatívnej antifóny žalmu/chválospevu ("myšlienka k žalmu" podľa bodu 111 a 114 VSLH)
 #define PARAM_PSALMODIA_MYSLIENKA           "PSALMODIA_MYSLIENKA" // 2011-08-31: zmenené; pôvodne bolo: PARAM_MYSLIENKA_K_ZALMU "MYSLIENKA_K_ZALMU"
-// 2011-08-31: doplnené zobrazenie/skrytie nadpisu k žalmu/chválospevu ("nadpis k žalmu" podľa bodu 111 VSLH)
+// zobrazenie/skrytie nadpisu k žalmu/chválospevu ("nadpis k žalmu" podľa bodu 111 VSLH)
 #define PARAM_PSALMODIA_NADPIS              "PSALMODIA_NADPIS"
 
 #define PARAM_RUBRIKA_BEGIN                 "RUBRIKA_BEGIN"
 #define PARAM_RUBRIKA_END                   "RUBRIKA_END"
 
-// 2011-05-03: doplnené kvôli posvätnému čítaniu na veľkonočnú nedeľu
+// posvätné čítanie na veľkonočnú nedeľu
 #define PARAM_VN_VYNECHAJ_BEGIN             "VELK_NEDELA_VYNECHAJ_BEGIN"
 #define PARAM_VN_VYNECHAJ_END               "VELK_NEDELA_VYNECHAJ_END"
 
-// 2011-07-07: doplnené kvôli zobrazovaniu/skrývaniu dlhších záverov responzórií v posvätnom čítaní
+// zobrazovanie/skrývanie dlhších záverov responzórií v posvätnom čítaní + responzóriá pre ranné chvály a vešpery po krátkom čítaní
 #define PARAM_PLNE_RESP                     "PLNE_RESP"
 #define PARAM_PLNE_RESP_BODKA               "PLNE_RESP_BODKA"
+#define PARAM_NIE_PLNE_RESP                 "NIE_PLNE_RESP" // negácia PARAM_PLNE_RESP
 
-// 2011-10-05: doplnené kvôli zobrazovaniu/skrývaniu opakovaného zvolania v prosbách (ranné chvály, vešpery)
+// zobrazovanie/skrývanie opakovaného zvolania v prosbách (ranné chvály, vešpery)
 #define PARAM_ZVOLANIE                      "ZVOLANIE"
 
-// 2011-10-26: doplnené rubriky priamo v includovaných HTML súboroch
+// rubriky priamo v includovaných HTML súboroch
 #define PARAM_RUBRIKA                       "RUBRIKA"
 
-// 2011-04-04: doplnené zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
+// zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
 #define PARAM_CISLO_VERSA_END				"/v"
 
-// 2011-04-05: doplnenie referencie podľa biblického odkazu na stránky dkc.kbs.sk (Biblia -- Matúš Brilla)
+// referencia podľa biblického odkazu na stránky dkc.kbs.sk (Biblia -- Matúš Brilla)
 #define PARAM_REFERENCIA_BEGIN				"r"
 #define PARAM_REFERENCIA_END				"/r"
 
-// 2011-09-01: odkaz na katechézy
+// odkaz na katechézy
 #define PARAM_KATECHEZA_BEGIN				"k"
 #define PARAM_KATECHEZA_END					"/k"
 
-// 2011-09-06: odkaz na žalm 95
+// odkaz na žalm 95
 #define PARAM_LINK_ZALM95_BEGIN				"z95"
 #define PARAM_LINK_ZALM95_END				"/z95"
 
-// 2011-07-08: zobrazovanie/nezobrazenie krížika (antifóna totožná s veršom žalmu/chválospevu)
+// zobrazovanie/nezobrazenie krížika (antifóna totožná s veršom žalmu/chválospevu)
 #define PARAM_KRIZIK                        "KRIZIK"
 
-// 2011-07-14: zobrazovanie/nezobrazenie zalomených textov tak, ako je v tlačenom vydaní LH (dlhé riadky-verše žalmov/chválospevov a pod.)
+// zobrazovanie/nezobrazenie zalomených textov tak, ako je v tlačenom vydaní LH (dlhé riadky-verše žalmov/chválospevov a pod.)
 #define PARAM_ZALOMENIE                     "ZALOMENIE"
 
-// 2011-10-07: zakončenie modlitieb (skrze, lebo on, lebo ty...) ináč (jednoduchšie, bez begin-end)
+// zakončenie modlitieb (skrze, lebo on, lebo ty...) ináč (jednoduchšie, bez begin-end)
 #define PARAM_ZAKONCENIE                    "ZAKONCENIE"
 
-// 2013-02-26: doplnková psalmódia, alternatívne žalmy
+// doplnková psalmódia, alternatívne žalmy
 #define PARAM_DOPLNK_PSALM_122_129          "DPSALM-122-129"
 #define PARAM_DOPLNK_PSALM_126_129          "DPSALM-126-129"
 #define PARAM_DOPLNK_PSALM_127_131          "DPSALM-127-131"

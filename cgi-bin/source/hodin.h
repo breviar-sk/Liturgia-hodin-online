@@ -2128,7 +2128,7 @@ const char *html_text_option1_tedeum_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_option1_plne_resp[POCET_JAZYKOV + 1] =
 {
-	"plné znenie responzórií pre posvätné čítania",
+	"plné znenie responzórií",
 	"plné znění krátkých zpěvů v modlitbě se čtením",
 	"",
 	"",

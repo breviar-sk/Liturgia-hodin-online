@@ -30778,14 +30778,12 @@ label_25_MAR:
 							modlitba = MODL_RANNE_CHVALY;
 							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
 								_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-								_vlastna_cast_benediktus;
 							}// KALENDAR_CZ_OFMCAP
+							_vlastna_cast_benediktus;
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
-							if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
-								_vlastna_cast_magnifikat;
-							}// KALENDAR_CZ_OFMCAP
+							_vlastna_cast_magnifikat;
 							_vlastna_cast_modlitba;
 
 							break;
