@@ -2129,11 +2129,11 @@ const char *html_text_option1_tedeum_explain[POCET_JAZYKOV + 1] =
 const char *html_text_option1_plne_resp[POCET_JAZYKOV + 1] =
 {
 	"plné znenie responzórií",
-	"plné znění krátkých zpěvů v modlitbě se čtením",
+	"plné znění krátkých zpěvů",
 	"",
 	"",
 	"",
-	"plné znění responsorií v modlitbě se čtením",
+	"plné znění responsorií",
 	"a válaszos énekek teljes szövege",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2141,12 +2141,12 @@ const char *html_text_option1_plne_resp[POCET_JAZYKOV + 1] =
 
 const char *html_text_option1_plne_resp_explain[POCET_JAZYKOV + 1] =
 {
-	"Liturgia hodín responzóriá po čítaniach v posvätnom čítaní v plnom znení neuvádza (druhá, opakujúca sa časť, je v tlačenej LH skrátená).",
-	"Liturgie hodin responsoria po čteních v modlitbe se čtením neuvádí v druhé, opakující se části, plné znění.",
+	"Liturgia hodín responzóriá po krátkom čítaní v ranných chválach, vešperách a po čítaniach v posvätnom čítaní v plnom znení neuvádza.",
+	"Liturgie hodin responsoria po krátkém čtení v ranních chválách, nešporách a po čteních v modlitbe se čtením neuvádí plné znění.",
 	"",
 	"",
 	"",
-	"Liturgie hodin responsoria po čteních v modlitbe se čtením neuvádí v druhé, opakující se části, plné znění.",
+	"Liturgie hodin responsoria po krátkém čtení v ranních a večerních chválách a po čteních v modlitbe se čtením neuvádí plné znění.",
 	"Az Imaórák Liturgiája az olvasmányos imaórák válaszos énekeinek teljes szövegét nem mutatja (a második ismétlődő rész nyomtatott kiadásban rövidített).",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

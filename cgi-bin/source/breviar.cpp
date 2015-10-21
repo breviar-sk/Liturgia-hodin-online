@@ -2941,7 +2941,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else if (equals(paramname, PARAM_RESPONZ)){
 			bit = BIT_OPT_1_PLNE_RESP;
-			podmienka &= ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY));
+			podmienka &= ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_PRVE_VESPERY) || (_global_modlitba == MODL_DRUHE_VESPERY));
 			if (_global_modlitba == MODL_POSV_CITANIE){
 				specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 			}
