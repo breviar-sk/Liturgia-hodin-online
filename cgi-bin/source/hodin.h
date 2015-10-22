@@ -2147,7 +2147,7 @@ const char *html_text_option1_plne_resp_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Liturgie hodin responsoria po krátkém čtení v ranních a večerních chválách a po čteních v modlitbe se čtením neuvádí plné znění.",
-	"Az Imaórák Liturgiája az olvasmányos imaórák válaszos énekeinek teljes szövegét nem mutatja (a második ismétlődő rész nyomtatott kiadásban rövidített).",
+	"Az Imaórák Liturgiája a válaszos énekeket a reggeli és esti dicséret rövid olvasmánya és az olvasmányos imaóra olvasmányai után nem mutatja teljes formában.",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
