@@ -111,6 +111,20 @@ div.responsory {
 	margin: 1em 0;
 }
 
+.reading-source { 
+	color: #ff0000;
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+}
+
+.reading-title { 
+	color: #ff0000;
+	font-style: italic;
+	font-weight: normal;
+	text-align: center;
+}
+
 /* 2013-09-19 class for calendar */
 .calendar { 
 	padding: 2px; 
@@ -307,11 +321,12 @@ div.responsory {
 
 /* new 2013-05-19 */
 /* added 2013-10-21: font-weight: normal; */
-.hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
+p.title, .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
 	margin-top: 2em;
 	color: #ff0000; 
 	font-size: 80%; 
 	font-weight: normal;
+	/*text-align: left;*/
 }
 
 .psalm .titlehu {
@@ -349,7 +364,7 @@ div.responsory {
 	text-align: center; 
 }
 
-.evening-praise > .title, .daytime-praise > .title, .morning-praise > .title, .ending-praise > .title, .invit-praise > .title, .reading-praise > .title { 
+.evening-praise > .prayer-title, .daytime-praise > .prayer-title, .morning-praise > .prayer-title, .ending-praise > .prayer-title, .invit-praise > .prayer-title, .reading-praise > .prayer-title { 
 	/*font-weight: bold;*/ 
 	margin-top: 20px; 
 	text-align: center; 
