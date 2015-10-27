@@ -3,6 +3,7 @@
     <string name="app_name">Zsolozsma</string>
     <string name="back">Vissza</string>
     <string name="forward">Előre</string>
+    <string name="menu">Menü</string>
     <string name="today">Ma</string>
     <string name="pgup">Fel</string>
     <string name="pgdn">Le</string>
@@ -37,7 +38,7 @@
     <string name="smart_buttons">az imaórák gombjainak gazdaságos elhelyezése</string>
     <string name="night_mode">éjszakai mód</string>
     <string name="normal_font">normál betűtípus használata (félkövér tiltása)</string>
-    <string name="buttons_order">a fejlécben a dátumválasztó gombok legyenek az imaóra választó gombok után</string>
+    <string name="buttons_order">dátumválasztó gombok megjelenítése az imaóraválasztó gombok után</string>
 
     <string name="calendar_settings_title">Liturgikus naptár:</string>
     <string name="epiphany_sunday">Urunk megjelenését (Vízkeresztet) vasárnap ünnepelni, január 2. és 8. között</string>
@@ -103,7 +104,8 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verzió 1.12.1</b>
 <ul>
-<li> Új beállítási lehetőség: Az applikáció alakításának lehetősége amíg az alsó navigációs lista mutatkozik (szöveg kijelölése másolás előtt).
+<li> Új beállítási lehetőség: Az alkalmazás beállításának lehetősége, amíg az alsó navigációs sáv megjelenik (szöveg másolásra kijelölésének engedélyezése).
+<li> Gépelési hibák javítása.
 </ul>
 
 <p><b>Verzió 1.12</b>
