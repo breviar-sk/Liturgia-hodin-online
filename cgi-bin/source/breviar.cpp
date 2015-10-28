@@ -8783,6 +8783,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export("<option%s>%s</option>\n", 
 					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_HU))? html_option_selected: STR_EMPTY,
 					nazov_kalendara_long[default_kalendar[_global_jazyk]]);
+#ifdef OS_Windows_Ruby
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_HU_OFM) ? html_option_selected : STR_EMPTY,
+					nazov_kalendara_long[KALENDAR_HU_OFM]);
+#endif
 			}// HU
 			Export("</select>\n");
 

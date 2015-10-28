@@ -474,11 +474,11 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -500,6 +500,7 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "CZ CSSR"
 	, "CZ SDB"
 	, "všeobecný RU"
+	, "HU OFM"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -526,6 +527,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními texty Kongregace nejsv. Vykupitele — redemptoristů (CSsR)"
 	, "s vlastními texty pro salesiánskou rodinu" // (SDB, FMA, VDB, ASC)
 	, "general [Russia]"
+	, "ferences szentek és ünnepek zsolozsmája"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -648,6 +650,8 @@ const char *nazov_slavenia_lokal[] =
 ,"pro FMA slavnost"                                                                                             // LOKAL_SLAV_SLAVNOST_FMA_CZ
 , "A Szeged-Csanádi egyházmegyében"                                                                             // LOKAL_SLAV_SZEGED_CSAN_EGYH3
 , "len pre Ordinariát ozbrojených síl a ozbrojených zborov SR"                                                  // LOKAL_SLAV_ORDINARIAT
+, "A Klarisszáknál: Emléknap"                                                                                   // LOKAL_SLAV_HU_KLARISSZAKNAL_EM
+, "A Klarisszáknál: Főünnep"                                                                                    // LOKAL_SLAV_HU_KLARISSZAKNAL_FOU
 };
 
 // names of liturgical colors
@@ -3634,7 +3638,7 @@ const char *text_JAN_03[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Nejsvětějšího Jména Ježíš",
-	"Jézus szent neve",
+	"Jézus szent neve", // "Jézus Szentséges Nevének"
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3646,7 +3650,7 @@ const char *text_JAN_04_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Folignói Boldog Angéla, szerzetesnő a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3862,7 +3866,7 @@ const char *text_JAN_16_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Berárd, pap és vértanú társai az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -4186,7 +4190,7 @@ const char *text_JAN_30_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Jácinta, szűz a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -4393,7 +4397,7 @@ const char *text_FEB_06_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Keresztelő Szent Péter, Miki Pál és vértanú társai",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -4429,7 +4433,7 @@ const char *text_FEB_07_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Koléta, szűz a II. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -4646,6 +4650,18 @@ const char *text_FEB_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_FEB_19_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Piacenzai Szent Konrád, remete a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5146,7 +5162,7 @@ const char *text_APR_21_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Parzhami Szent Konrád, szerzetes az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5194,7 +5210,7 @@ const char *text_APR_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Assisi Boldog Egyed, szerzetes az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5230,7 +5246,7 @@ const char *text_APR_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Sigmaringeni Szent Fidél, pap és vértanú az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5315,6 +5331,18 @@ const char *text_APR_28_2[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Ludvíka Marie Grignona z Montfortu, kněze, terciáře",
 	"Montforti Grignion Szent Lajos Mária áldozópap",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_APR_28_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Luchesius a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5593,7 +5621,7 @@ const char *text_MAJ_09_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bolognai Szent Katalin, szűz a II. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5831,7 +5859,7 @@ const char *text_MAJ_16_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Cortonai Szent Margit a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5843,7 +5871,7 @@ const char *text_MAJ_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Baylon Szent Paszkál, szerzetes az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5891,7 +5919,7 @@ const char *text_MAJ_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Kantalicei Szent Félix, szerzetes az 1. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5951,7 +5979,7 @@ const char *text_MAJ_20_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Sienai Szent Bernardin, pap az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6059,7 +6087,7 @@ const char *text_MAJ_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Ferenc atyánk assisi bazilikájának felszentelése",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6159,6 +6187,18 @@ const char *text_MAJ_28_OP[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_MAJ_28_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Paredes-i Szent Mária Anna, szűz a III. Rendből",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_MAJ_29_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Viliama Arnauda, kňaza, a spoločníkov, mučeníkov",
@@ -6216,6 +6256,18 @@ const char *text_MAJ_30_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Szent István király ereklyéinek átvitele",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_MAJ_30_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Baptista Verano, szűz a II. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6586,7 +6638,7 @@ const char *text_JUN_08_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Prágai Szent Ágnes, szűz a II. Rendből", // pozor, iné slávenie!
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6742,7 +6794,7 @@ const char *text_JUN_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Páduai Szent Antal, pap, egyháztanító az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6803,6 +6855,18 @@ const char *text_JUN_15_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Árpád-házi Boldog Jolán szerzetesnő",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUN_15_OFM_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Jolán, szerzetesnő a II. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7130,6 +7194,18 @@ const char *text_JUN_30_CSSR[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUN_30_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Raymundus Lullus, vértanú a III. Rendből",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 
 // --------------- 07 júl |july ---------------
 
@@ -7301,6 +7377,18 @@ const char *text_JUL_08_HU[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUL_08_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Grassi Gergely, püspök és vértanú társai az I és a III. Rendből",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUL_09[POCET_JAZYKOV + 1] =
 {
 	"Sv. Augustína Zhao Rong, kňaza, "HTML_LINE_BREAK"a spoločníkov, mučeníkov",
@@ -7333,7 +7421,7 @@ const char *text_JUL_09_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Nicolaus Pick, Wilhaldus és vértanú társai az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7357,7 +7445,7 @@ const char *text_JUL_10_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Giuliani Szent Veronika, szűz a II. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7373,6 +7461,18 @@ const char *text_JUL_11[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUL_12_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Szent Joannes Jones és Joannes Wall, papok és vértanúk az I Rendből",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUL_13[POCET_JAZYKOV + 1] =
 {
 	"Sv. Henricha",
@@ -7382,6 +7482,18 @@ const char *text_JUL_13[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Jindřicha",
 	"Szent Henrik",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUL_13_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Marscianói Boldog Angelina, szerzetesnő a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7417,7 +7529,7 @@ const char *text_JUL_14_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szolánói Szent Ferenc, pap az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7465,7 +7577,7 @@ const char *text_JUL_15_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Bonaventura, püspök és egyháztanító az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7669,7 +7781,7 @@ const char *text_JUL_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Savoiai Boldog Ludovica, szerzetesnő a II. Rendből", // HU: different saint!
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7753,7 +7865,7 @@ const char *text_JUL_27_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Martinengo Mária Magdolna, szűz a II. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7915,7 +8027,7 @@ const char *text_AUG_02_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Angyalos Boldogasszony (Portiuncula)",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -8071,7 +8183,7 @@ const char *text_AUG_08_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Otce Dominika, kněze",
-	"Szent Domonkos áldozópap",
+	"Szent Domonkos atya, pap, a Prédikátorok Rendjének Alapítója",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -8119,7 +8231,7 @@ const char *text_AUG_11_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Kláry, panny",
-	"Szent Klára szűz",
+	"Assisi Szent Klára, szűz a II. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -8405,7 +8517,7 @@ const char *text_AUG_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Lajos, püspök az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -8525,7 +8637,7 @@ const char *text_AUG_25_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent IX. Lajos, király a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -8700,6 +8812,18 @@ const char *text_AUG_30_OPRAEM[POCET_JAZYKOV + 1] =
 
 // --------------- 09 september ---------------
 
+const char *text_SEP_01_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Szent Beatrix de Silva, szűz",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_SEP_02_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Gualu z Bergama, biskupa",
@@ -8780,7 +8904,7 @@ const char *text_SEP_04_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Viterbói Szent Róza, szűz a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -9044,7 +9168,7 @@ const char *text_SEP_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Ferenc atyánk stigmatizációja",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -9056,7 +9180,7 @@ const char *text_SEP_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Copertinói Szent József, pap az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -9332,7 +9456,7 @@ const char *text_SEP_26_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Sabrani Szent Elzeár és Boldog Delphina, házastársak a III. Rendből", // HU: different saints!
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -9491,7 +9615,7 @@ const char *text_OKT_04_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Ferenc atyánk, diakónus, a három rend alapítója",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -9719,7 +9843,7 @@ const char *text_OKT_11_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent XXIII. János, pápa a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -9983,7 +10107,7 @@ const char *text_OKT_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Alkantarai Szent Péter, pap az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -9995,7 +10119,7 @@ const char *text_OKT_20_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Contardo Ferrini, a III. Rendből", // HU: different saint!
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -10670,7 +10794,7 @@ const char *text_NOV_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Alcalai Szent Didák, szerzetes az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -10754,7 +10878,7 @@ const char *text_NOV_14_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Tavelic Szent Miklós, pap és vértanú társai az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -10862,7 +10986,7 @@ const char *text_NOV_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Krakkói Boldog Szalome, szűz a II. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -11042,7 +11166,7 @@ const char *text_NOV_26_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Portomauriziói Szent Lénárd, pap az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -11078,7 +11202,7 @@ const char *text_NOV_28_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Marchiai Szent Jakab, pap az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -11102,7 +11226,7 @@ const char *text_NOV_29_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"A szeráfi rend összes szentjei",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

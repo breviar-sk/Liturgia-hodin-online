@@ -899,6 +899,8 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SLAVNOST_FMA_CZ         107
 #define LOKAL_SLAV_SZEGED_CSAN_EGYH3       108
 #define LOKAL_SLAV_ORDINARIAT              109
+#define LOKAL_SLAV_HU_KLARISSZAKNAL_EM     110
+#define LOKAL_SLAV_HU_KLARISSZAKNAL_FOU    111
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined
@@ -919,9 +921,10 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_CZ_CSSR                   15
 #define KALENDAR_CZ_SDB                    16
 #define KALENDAR_VSEOBECNY_RU              17
+#define KALENDAR_HU_OFM                    18
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   17
+#define POCET_KALENDAROV                   18
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
