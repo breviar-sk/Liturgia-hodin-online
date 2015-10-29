@@ -3,6 +3,7 @@
     <string name="app_name">Breviář</string>
     <string name="back">Zpátky</string>
     <string name="forward">Vpřed</string>
+    <string name="menu">Menu</string>
     <string name="today">Dnes</string>
     <string name="pgup">Nahoru</string>
     <string name="pgdn">Dál</string>
@@ -101,13 +102,17 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Aplikace Breviář | Co je nové</b>
 
+<p><b>Verze 1.12.2</b>
+<ul>
+<li> Možnost zobrazit/skrýt plné znění krátkych zpěvů (v ranních chválách a nešporách).
+</ul>
+
 <p><b>Verze 1.12.1</b>
 <ul>
 <li> Nová volba: Možnost konfigurace při zobrazené navigační liště (umožnění označit text na kopírování).
 <li> Nové slavení pro OFM Cap: 4. května.
 <li> Oprava: Zobrazení hymnů (obyčejných, ne k volnému výběru).
 <!-- <li> Český dominikánský breviář (jenom pokusně!). -->
-<li> Opravy chyb a překlepů.
 </ul>
 
 <p><b>Verze 1.12</b>
@@ -126,7 +131,6 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verze 1.11.1</b>
 <ul>
-<li> Opravy chyb a překlepů.
 <li> Oprava: Kompatibilita s Android 2.x a staršími.
 </ul>
 
@@ -135,7 +139,6 @@ body { background-color: #000000; color: #cccccc; }
 <li> Přepínání nočního/denního režimu přímo v hlavním menu.
 <li> Větší výška řádkování pro lepší čitelnost.
 <li> Dialog „O aplikaci“ upraven.
-<li> Opravy chyb a překlepů.
 </ul>
 
 <p><b>Verze 1.10</b>
@@ -149,11 +152,6 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Verze 1.9.10</b>
 <ul>
 <li> Možnost automatického přepnutí zařízení do tichého režimu počas modlitby.
-</ul>
-
-<p><b>Verze 1.9.9</b>
-<ul>
-<li> Drobné opravy chyb v generování modliteb a překlepů v textech.
 </ul>
 
 <p><b>Verze 1.9.8</b>

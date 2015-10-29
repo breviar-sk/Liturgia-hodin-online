@@ -102,28 +102,29 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Zsolozsma alkalmazás | Újdonságok</b>
 
+<p><b>Verzió 1.12.2</b>
+<ul>
+<li> Possibility to show/hide full text for short responsories (in morning & evening prayers).
+</ul>
+
 <p><b>Verzió 1.12.1</b>
 <ul>
 <li> Új beállítási lehetőség: Az alkalmazás beállításának lehetősége, amíg az alsó navigációs sáv megjelenik (szöveg másolásra kijelölésének engedélyezése).
-<li> Gépelési hibák javítása.
 </ul>
 
 <p><b>Verzió 1.12</b>
 <ul>
 <li> A közös részből való szövegek kiválasztásának lehetősége (a Halotti zsolozsmát beleértve).
-<li> Gépelési hibák javítása.
 </ul>
 
 <p><b>Verzió 1.11.2</b>
 <ul>
 <li> Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.
-<li> Gépelési hibák javítása.
 <li> Új beállítások hozzáadása.
 </ul>
 
 <p><b>Verzió 1.11.1</b>
 <ul>
-<li> Gépelési hibák javítása.
 <li> Visszafelé való kompatibilitás javítása az Android 2.x és régebbi verziókkal.
 <li> Zsoltárok közötti térköz növelése azonos antifónák esetén.
 <li> Több bekezdésből álló könyörgések olvashatóbb tagolása.
@@ -158,7 +159,6 @@ body { background-color: #000000; color: #cccccc; }
 <li> Hármaspont karakter használata.
 <li> Magyar helyesírás szerinti gondolatjel az angolszász helyett.
 <li> Himnuszok, igehelyek és imaóra részek formázása.
-<li> Gépelési hibák javítása.
 </ul>
 
 <p><b>Verzió 1.9.8</b>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.12.1</string>
+    <string name="version">1.12.2</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -120,31 +120,30 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Breviary application | What\'s new</b>
 
+<p><b>Version 1.12.2</b>
+<ul>
+<li> Possibility to show/hide full text for short responsories (in morning & evening prayers).
+</ul>
+
 <p><b>Version 1.12.1</b>
 <ul>
 <li> New option: Possibility to configure app while navigation bar is displayed (enable text selection for copying).
-<li> Corrections for all languages.
-<li> Typos and fixes for all languages.
 </ul>
 
 <p><b>Version 1.12</b>
 <ul>
 <li> Possibility to display communia.
-<li> Corrections for all languages.
-<li> Typos and fixes for all languages.
 </ul>
 
 <p><b>Version 1.11.2</b>
 <ul>
 <li> New menu item: Display only normal font (vs use also bold font).
-<li> Typos and fixes for all languages.
 <li> Added new settings.
 </ul>
 
 <p><b>Version 1.11.1</b>
 <ul>
 <li> Liturgical readings: Backward compatibility with Android 2.x and older.
-<li> Typos and fixes for all languages.
 </ul>
 
 <p><b>Version 1.11</b>
@@ -152,13 +151,11 @@ body { background-color: #000000; color: #cccccc; }
 <li> Switching night/day mode from main menu.
 <li> Bigger line height for better readability.
 <li> Updated “About” dialog.
-<li> Many typos for all languages.
 </ul>
 
 <p><b>Version 1.10.1</b>
 <ul>
 <li> Minor fixes.
-<li> Many typos for all languages.
 </ul>
 
 <p><b>Version 1.10</b>

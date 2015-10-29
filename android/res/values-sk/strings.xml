@@ -102,17 +102,20 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Aplikácia Breviár | Čo je nové</b>
 
+<p><b>Verzia 1.12.2</b>
+<ul>
+<li> Možnosť zobraziť/skryť plné znenie krátkych responzórií (v ranných chválach a vešperách).
+</ul>
+
 <p><b>Verzia 1.12.1</b>
 <ul>
 <li> Nové nastavenie: Možnosť konfigurovať aplikáciu pri zobrazenej navigačnej lište (umožniť označenie textu na kopírovanie).
-<li> Opravy chýb a preklepov.
 </ul>
 
 <p><b>Verzia 1.12</b>
 <ul>
 <li> Možnosť zobraziť spoločné texty (vrátane ofícia za zosnulých).
 <li> Doplnené slávenie 13. júna (Ordinariát).
-<li> Opravy preklepov.
 </ul>
 
 <p><b>Verzia 1.11.2</b>
@@ -124,7 +127,6 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Verzia 1.11.1</b>
 <ul>
 <li> Oprava: Kompatibilita s Android 2.x a staršími (liturgické čítania).
-<li> Opravy drobných chýb a preklepov.
 </ul>
 
 <p><b>Verzia 1.11</b>
@@ -132,12 +134,10 @@ body { background-color: #000000; color: #cccccc; }
 <li> Prepínanie nočného/denného režimu priamo v hlavnom menu.
 <li> Väčšia výška riadkov pre lepšiu čitateľnosť.
 <li> Dialóg „O aplikácii“ upravený.
-<li> Opravy drobných chýb a mnohých preklepov.
 </ul>
 
 <p><b>Verzia 1.10.1</b>
 <ul>
-<li> Opravy drobných chýb a mnohých preklepov.
 <li> Doplnené: číslovanie veršov pre všetky dlhé biblické čítania.
 </ul>
 
@@ -158,14 +158,12 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Verzia 1.9.9</b>
 <ul>
 <li> Formátovanie hymnusov (CSS).
-<li> Drobné opravy chýb v textoch a v generovaní modlitieb.
 </ul>
 
 <p><b>Verzia 1.9.8</b>
 <ul>
 <li> Dlhé stlačenie skryje navigačnú lištu.
 <li> Pridaná možnosť nezhasínať obrazovku.
-<li> Drobné opravy chýb v textoch a v generovaní modlitieb.
 </ul>
 
 </body></html>
