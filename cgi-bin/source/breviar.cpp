@@ -5298,7 +5298,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				&& !MIESTNE_SLAVENIE_LOKAL_SVATY(1)
 				) // slavnosti
 				)
-				){
+			){
 				short int poradie_svaty_pom = 1;
 				if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
 					poradie_svaty_pom = poradie_svaty;
@@ -5424,9 +5424,12 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok){
 #define COLOR_RED   3
 #define COLOR_BLACK 2
 
-// lokalna premenna, do ktorej sa ukladaju info o analyzovanom dni
-// 2012-10-12: z funkcie init_global_string() som ju spravil globálnou kvôli tomu, aby sme ju mohli používať v 
-_struct_dm _local_den;
+_struct_dm _local_den; // povodne lokalna premenna, do ktorej sa ukladaju info o analyzovanom dni
+// liturgical colors - due to XML export must be global variables
+short int liturgicka_farba = LIT_FARBA_NEURCENA;
+short int liturgicka_farba_alt = LIT_FARBA_NEURCENA;
+short int export_farby = ANO;
+
 
 short int init_global_string(short int typ, short int poradie_svateho, short int modlitba, short int aj_citanie = NIE) {
 	_INIT_DM(_local_den);
@@ -5450,15 +5453,18 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	short int farba = COLOR_BLACK;
 	short int velkost = CASE_MALE;
 	short int obyc = NIE;
-	short int liturgicka_farba = LIT_FARBA_NEURCENA;
-	short int liturgicka_farba_alt = LIT_FARBA_NEURCENA;
-	short int export_farby = ANO;
+
 	short int html_span_bold_it = NIE;
 	short int html_span_bold = NIE;
 	short int html_span_red_title_append = NIE;
 #ifdef LITURGICKE_CITANIA_ANDROID
 	struct citanie *cit = NULL;
 #endif // LITURGICKE_CITANIA_ANDROID
+
+	// these variables moved to be global due to XML export -- method xml_export_liturgicka_farba()
+	liturgicka_farba = LIT_FARBA_NEURCENA;
+	liturgicka_farba_alt = LIT_FARBA_NEURCENA;
+	export_farby = ANO;
 
 	Log("-- init_global_string(EXPORT_DNA_%d, %d, %s, %d) -- začiatok\n", typ, poradie_svateho, nazov_modlitby(modlitba), aj_citanie);
 	Log("   (inicializuje všetky _global_string* premenné)\n");
@@ -5560,6 +5566,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		(poradie_svateho == PORADIE_PM_SOBOTA)){
 		// teraz do _global_den priradim dane slavenie
 		_local_den = _global_pm_sobota;
+		Log("priradujem _local_den = _global_pm_sobota;\n");
 	}
 
 	Log("2:_local_den.meno == %s\n", _local_den.meno);
@@ -6214,6 +6221,24 @@ short int init_global_string_spol_cast(short int sc_jedna, short int poradie_sva
 	Log("-- init_global_string_spol_cast(%d, %s) -- koniec\n", sc_jedna, (sc_jedna == MODL_SPOL_CAST_NULL) ? STR_UNDEF : nazov_spolc(sc_jedna));
 	return ret_sc;
 }// init_global_string_spol_cast()
+
+void xml_export_liturgicka_farba(){
+	Log("-- xml_export_liturgicka_farba() -- začiatok\n");
+
+	Export(ELEMID_BEGIN(XML_LIT_COLOR), _local_den.farba);
+
+	if (export_farby){
+		Export(nazov_farby(liturgicka_farba));
+		if (liturgicka_farba_alt != LIT_FARBA_NEURCENA){
+			Export("|");
+			Export(nazov_farby(liturgicka_farba_alt));
+		}
+	}
+
+	Export(ELEM_END(XML_LIT_COLOR)"\n");
+
+	Log("-- xml_export_liturgicka_farba() -- koniec\n");
+}
 
 void xml_export_spol_cast(short int poradie_svateho){
 	Log("-- xml_export_spol_cast(%d) -- začiatok\n", poradie_svateho);
@@ -6879,7 +6904,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		Export(ELEM_BEGIN(XML_LIT_REQUIRED)"%d"ELEM_END(XML_LIT_REQUIRED)"\n", _local_den.prik);
 		xml_export_spol_cast(poradie_svateho);
 		Export(ELEM_BEGIN(XML_LIT_NAME)"%s"ELEM_END(XML_LIT_NAME)"\n", _local_den.meno);
-		Export(ELEMID_BEGIN(XML_LIT_COLOR)"%s"ELEM_END(XML_LIT_COLOR)"\n", _local_den.farba, nazov_farby(_local_den.farba));
+		xml_export_liturgicka_farba();
 		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ)){
 			Export(ELEM_BEGIN(XML_LIT_CALENDAR)"%s"ELEM_END(XML_LIT_CALENDAR)"\n", nazov_kalendara_short[_local_den.kalendar]);
 		}
@@ -10128,7 +10153,9 @@ void _export_rozbor_dna_zoznam(short int typ){
 
 	Log("_export_rozbor_dna_zoznam(): začiatok...\n");
 #ifdef OS_Windows_Ruby
-	ExportHtmlComment("_export_rozbor_dna_zoznam:begin");
+	if (typ != EXPORT_DNA_XML){
+		ExportHtmlComment("_export_rozbor_dna_zoznam:begin");
+	}
 #endif
 
 	init_zoznam();
@@ -10292,7 +10319,9 @@ void _export_rozbor_dna_zoznam(short int typ){
 	Log("počet == %d\n", pocet);
 
 #ifdef OS_Windows_Ruby
-	ExportHtmlComment("_export_rozbor_dna_zoznam:end");
+	if (typ != EXPORT_DNA_XML){
+		ExportHtmlComment("_export_rozbor_dna_zoznam:end");
+	}
 #endif
 	Log("_export_rozbor_dna_zoznam(): koniec.\n");
 	LOG_ZOZNAM;
@@ -10306,7 +10335,9 @@ void _export_rozbor_dna_interpretuj_zoznam(short int export_typ, short int typ, 
 
 	Log("_export_rozbor_dna_interpretuj_zoznam(): začiatok (pocet == %d)...\n", pocet);
 #ifdef OS_Windows_Ruby
-	ExportHtmlComment("_export_rozbor_dna_interpretuj_zoznam:begin");
+	if (typ != EXPORT_DNA_XML){
+		ExportHtmlComment("_export_rozbor_dna_interpretuj_zoznam:begin");
+	}
 #endif
 
 	if (pocet > POCET_ZOZNAM - 1){
@@ -10391,7 +10422,9 @@ void _export_rozbor_dna_interpretuj_zoznam(short int export_typ, short int typ, 
 				}
 			}
 #ifdef OS_Windows_Ruby
-			ExportHtmlComment("_export_rozbor_dna_interpretuj_zoznam:_export_rozbor_dna_buttons");
+			if (typ != EXPORT_DNA_XML){
+				ExportHtmlComment("_export_rozbor_dna_interpretuj_zoznam:_export_rozbor_dna_buttons");
+			}
 #endif
 			_export_rozbor_dna_buttons(typ, poradie_svaty, ANO, zobrazit_mcd);
 		}
@@ -10403,7 +10436,9 @@ void _export_rozbor_dna_interpretuj_zoznam(short int export_typ, short int typ, 
 	}
 
 #ifdef OS_Windows_Ruby
-	ExportHtmlComment("_export_rozbor_dna_interpretuj_zoznam:end");
+	if (typ != EXPORT_DNA_XML){
+		ExportHtmlComment("_export_rozbor_dna_interpretuj_zoznam:end");
+	}
 #endif
 	Log("_export_rozbor_dna_interpretuj_zoznam(): koniec.\n");
 }// _export_rozbor_dna_interpretuj_zoznam()
@@ -10508,7 +10543,9 @@ void _export_rozbor_dna(short int typ){
 	Log("export_monthly_druh == %d\n", export_monthly_druh);
 
 	// prvy stlpec: cislo dna
-	ExportHtmlComment("col:day_number");
+	if (typ != EXPORT_DNA_XML){
+		ExportHtmlComment("col:day_number");
+	}
 
 	if (som_v_tabulke == ANO){
 		Export("<"HTML_TABLE_CELL_VALIGN_TOP">");
@@ -10528,19 +10565,25 @@ void _export_rozbor_dna(short int typ){
 	}
 
 	// ďalší stĺpec: buttons (tlačidlá), podľa typu výpisu
-	ExportHtmlComment("col:buttons");
+	if (typ != EXPORT_DNA_XML){
+		ExportHtmlComment("col:buttons");
+	}
 
 	if (som_v_tabulke == ANO){
 		Export("<"HTML_TABLE_CELL">\n");
 	}
 
 #ifdef OS_Windows_Ruby
-	ExportHtmlComment("_export_rozbor_dna_zoznam:follows");
+	if (typ != EXPORT_DNA_XML){
+		ExportHtmlComment("_export_rozbor_dna_zoznam:follows");
+	}
 #endif
 	_export_rozbor_dna_zoznam(typ);
 
 #ifdef OS_Windows_Ruby
-	ExportHtmlComment("_export_rozbor_dna_interpretuj_zoznam:follows");
+	if (typ != EXPORT_DNA_XML){
+		ExportHtmlComment("_export_rozbor_dna_interpretuj_zoznam:follows");
+	}
 #endif
 	_export_rozbor_dna_interpretuj_zoznam(EXPORT_TYP_WEB_MODE, typ, som_v_tabulke, (char *)STR_EMPTY, 0, 0);
 
@@ -12425,6 +12468,9 @@ void _main_rozbor_dna_txt(short int typ, char *den, char *mesiac, char *rok){
 		return;
 	}
 
+	// cleanup
+	_global_modlitba = MODL_NEURCENA;
+	
 	Log("/* teraz result == SUCCESS */\n");
 	if (m != UNKNOWN_MESIAC){
 		// 2012-10-16: pre XML export sa hlavička neexportuje
@@ -12481,13 +12527,19 @@ void _main_rozbor_dna_txt(short int typ, char *den, char *mesiac, char *rok){
 				_struct_den_mesiac datum;
 				datum.den = d;
 				datum.mesiac = m + 1;
+
 				// najprv, kopírujúc rozbor_dna(), musíme predplniť údaje o roku...
+				Log("-- _main_rozbor_dna_txt(): nasleduje analyzuj_rok() pre rok %d...\n", r);
 				analyzuj_rok(r); // výsledok dá do _global_r
+				Log("-- _main_rozbor_dna_txt(): analyzuj_rok() pre rok %d skončil.\n", r);
+
 				// teraz rozbor samotného dňa...
 				_rozbor_dna(datum, r);
+
 				Log("-- _main_rozbor_dna_txt(): nasleduje _export_rozbor_dna() pre deň %d...\n", datum.den);
 				_export_rozbor_dna(t);
 				Log("-- _main_rozbor_dna_txt(): deň %d skončil.\n", datum.den);
+
 			}
 		}
 		// XML export -- export options
