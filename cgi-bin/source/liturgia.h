@@ -828,11 +828,11 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_PLZEN 					36
 #define LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST	37
 #define LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA	38
-#define LOKAL_SLAV_SPIS_BA_PATRON			39 // pre 11. novembra, patróna BA-arcidiecézy; 2008-06-24; nahrádza LOKAL_SLAV_SPIS_PATRON
-#define LOKAL_SLAV_BRATISLAVA				40 // doplnené 2010-03-16
-#define LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU		41 // doplnené 2010-05-17
-#define LOKAL_SLAV_KONGREGACIA_SSK			42 // doplnené 2011-01-27
-#define LOKAL_SLAV_SPOMIENKA_OFMCAP			43 // nasledovné doplnené 2011-03-16
+#define LOKAL_SLAV_SPIS_BA_PATRON			39 // pre 11. novembra, patróna BA-arcidiecézy; nahrádza LOKAL_SLAV_SPIS_PATRON
+#define LOKAL_SLAV_BRATISLAVA				40
+#define LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU		41
+#define LOKAL_SLAV_KONGREGACIA_SSK			42
+#define LOKAL_SLAV_SPOMIENKA_OFMCAP			43
 #define LOKAL_SLAV_SVIATOK_OFM				44
 #define LOKAL_SLAV_SPOMIENKA_OFM			45
 #define LOKAL_SLAV_SVIATOK_OFMCAP			46 // nasledovné doplnené 2011-03-17
@@ -843,7 +843,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SVIATOK_SCSC				51
 #define LOKAL_SLAV_DRUHA_VELK_NEDELA_HU		52
 #define LOKAL_SLAV_SZOMBATHELYI_EGYH        53
-#define LOKAL_SLAV_NAGYSZ_PATRON       54
+#define LOKAL_SLAV_NAGYSZ_PATRON            54
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON       55
 #define LOKAL_SLAV_PECSI_EGYH               56
 #define LOKAL_SLAV_PECSI_EGYH_PATRON        57
@@ -901,6 +901,8 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_ORDINARIAT              109
 #define LOKAL_SLAV_HU_KLARISSZAKNAL_EM     110
 #define LOKAL_SLAV_HU_KLARISSZAKNAL_FOU    111
+#define LOKAL_SLAV_LEN_MORAVA              112
+#define LOKAL_SLAV_LEN_CECHY               113
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined

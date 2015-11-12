@@ -19258,6 +19258,7 @@ label_25_MAR:
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = _global_kalendar;
 					}// kalendár pre KALENDAR_SK_OFM, KALENDAR_CZ_OFMCAP, KALENDAR_HU_OFM
+
 					else if((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_CSSR)){
 						if(poradie_svaty == 1){
 							
@@ -19296,6 +19297,7 @@ label_25_MAR:
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_CZ_CSSR;
 					}// kalendár pre KALENDAR_CZ_CSSR
+
 					else if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
@@ -19357,6 +19359,7 @@ label_25_MAR:
 						_global_svaty2.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 					}/* CZ only */
+
 					else{
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
@@ -22450,8 +22453,8 @@ label_25_MAR:
 						_global_svaty1.farba = LIT_FARBA_BIELA;
 						_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 					}// sk, hu, la
+
 					else if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
-						// 2009-08-25: opravené a doplnené
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
@@ -22499,6 +22502,7 @@ label_25_MAR:
 						_global_svaty2.farba = LIT_FARBA_BIELA;
 						_global_svaty2.kalendar = KALENDAR_VSEOBECNY;
 					}// cz, czop only
+
 					if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
 						if(poradie_svaty == 2){
 
@@ -22653,6 +22657,7 @@ label_25_MAR:
 							if(poradie_svaty != UNKNOWN_PORADIE_SVATEHO) break;
 						}
 					}// SK, CZ only
+
 					else if((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_LA)){
 						// vo všeobecnom kalendári sa slávi; presunuté na SK na 7. júla
 						if(poradie_svaty == 1){
@@ -22707,6 +22712,7 @@ label_25_MAR:
 					// nema opodstatnenie; porov. 1998; 21/03/2000A.D.
 					_global_svaty1.farba = LIT_FARBA_CERVENA;
 					_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
+
 					if(_global_jazyk == JAZYK_CZ_OP){
 						// 2010-07-06: odvetvené pre dominikánov; pre dominikánov samostatne
 						if(poradie_svaty == 2){
@@ -28056,18 +28062,20 @@ label_25_MAR:
 					_global_svaty1.farba = LIT_FARBA_BIELA; // 2006-09-18: opravené
 					_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 					break;
+
 				case 16: // MES_SEP -- 16SEP
+
+					pom_poradie = 1;
+
 					if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
-						// 2008-09-12: odvetvené len pre Česko
-						// 2008-11-29: pridané czop - dominikánský breviář
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_full_okrem_prosieb(modlitba); // 2009-07-27: opravené
-							_set_zalmy_1nedele_rch(); // 2011-10-13: doplnené
+							_vlastna_cast_full_okrem_prosieb(modlitba);
+							_set_zalmy_1nedele_rch();
 
 							modlitba = MODL_POSV_CITANIE;
 							_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -28075,51 +28083,62 @@ label_25_MAR:
 							_vlastna_cast_2citanie;
 
 							modlitba = MODL_VESPERY;
-							_vlastna_cast_full_okrem_prosieb(modlitba); // 2009-07-27: opravené
+							_vlastna_cast_full_okrem_prosieb(modlitba);
 							_set_zalmy_sviatok_muc(modlitba);
 
 							break;
 						}
-						_global_svaty1.typslav = SLAV_SPOMIENKA;
-						_global_svaty1.smer = 10; // povinné spomienky podľa všeobecného kalendára
+						_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
+						_global_svaty1.smer = 12; // ľubovoľné spomienky
+						_global_svaty1.typslav_lokal = LOKAL_SLAV_CECHY_SPOMIENKA;
 						mystrcpy(_global_svaty1.meno, text_SEP_16_CZ[_global_jazyk], MENO_SVIATKU);
 						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENICA);
 						_global_svaty1.farba = LIT_FARBA_CERVENA;
 						_global_svaty1.kalendar = KALENDAR_VSEOBECNY_CZ;
+
+						pom_poradie = pocet = 2;
 					}// cz, czop only
-					else{
-						// kedysi tu bolo: if(_global_jazyk == JAZYK_SK){ // 2006-09-12: odvetvené len pre Slovensko
-						if(poradie_svaty == 1){
-							// definovanie parametrov pre modlitbu
-							if(query_type != PRM_DETAILY)
-								set_spolocna_cast(sc, poradie_svaty);
 
-							modlitba = MODL_RANNE_CHVALY;
-							_vlastna_cast_benediktus;
-							_vlastna_cast_modlitba;
+					if (poradie_svaty == pom_poradie){
+						// definovanie parametrov pre modlitbu
+						if(query_type != PRM_DETAILY)
+							set_spolocna_cast(sc, poradie_svaty);
 
-							modlitba = MODL_POSV_CITANIE;
-							_vlastna_cast_modlitba;
-							_vlastna_cast_2citanie;
+						modlitba = MODL_RANNE_CHVALY;
+						_vlastna_cast_benediktus;
+						_vlastna_cast_modlitba;
 
-							modlitba = MODL_VESPERY;
-							_vlastna_cast_magnifikat;
-							_vlastna_cast_modlitba;
+						modlitba = MODL_POSV_CITANIE;
+						_vlastna_cast_modlitba;
+						_vlastna_cast_2citanie;
 
-							break;
-						}
-						_global_svaty1.typslav = SLAV_SPOMIENKA;
-						_global_svaty1.smer = 10; // povinné spomienky podľa všeobecného kalendára
-						mystrcpy(_global_svaty1.meno, text_SEP_16[_global_jazyk], MENO_SVIATKU);
-						// 2010-11-22: český breviár nemá možnosť pre duch. pastierov "pre viacerých" -- MODL_SPOL_CAST_DUCH_PAST_VIACERI
-						if((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP))
-							_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_DUCH_PAST_VIACERI);
-						else
-							_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_DUCH_PAST_PAPEZ, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
-						_global_svaty1.farba = LIT_FARBA_CERVENA;
-						_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
+						modlitba = MODL_VESPERY;
+						_vlastna_cast_magnifikat;
+						_vlastna_cast_modlitba;
+
+						break;
 					}
+					if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)){
+						_global_svaty(pom_poradie).typslav = SLAV_SPOMIENKA;
+						_global_svaty(pom_poradie).smer = 10; // povinné spomienky podľa všeobecného kalendára
+					}
+					else{
+						_global_svaty(pom_poradie).typslav = SLAV_LUB_SPOMIENKA;
+						_global_svaty(pom_poradie).smer = 12; // ľubovoľné spomienky
+						_global_svaty(pom_poradie).typslav_lokal = LOKAL_SLAV_LEN_MORAVA;
+					}
+					mystrcpy(_global_svaty(pom_poradie).meno, text_SEP_16[_global_jazyk], MENO_SVIATKU);
+					// český breviár nemá možnosť pre duch. pastierov "pre viacerých" -- MODL_SPOL_CAST_DUCH_PAST_VIACERI
+					if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)){
+						_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_DUCH_PAST_VIACERI);
+					}
+					else{
+						_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_DUCH_PAST_PAPEZ, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
+					}
+					_global_svaty(pom_poradie).farba = LIT_FARBA_CERVENA;
+					_global_svaty(pom_poradie).kalendar = KALENDAR_VSEOBECNY;
 					break;
+
 				case 17: // MES_SEP -- 17SEP
 					if((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SJ)){
 						if(poradie_svaty == 1){
@@ -28207,14 +28226,12 @@ label_25_MAR:
 						_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
 						_global_svaty1.smer = 12; // ľubovoľné spomienky
 
-						if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)){ // 2006-09-12: odvetvené len pre Slovensko; 2011-08-23: pridané HU
-							mystrcpy(_global_svaty1.meno, text_SEP_17[_global_jazyk], MENO_SVIATKU);
-							_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP, MODL_SPOL_CAST_UCITEL_CIRKVI);
-							_global_svaty1.farba = LIT_FARBA_BIELA;
-							_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
-						}
+						mystrcpy(_global_svaty1.meno, text_SEP_17[_global_jazyk], MENO_SVIATKU);
+						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP, MODL_SPOL_CAST_UCITEL_CIRKVI);
+						_global_svaty1.farba = LIT_FARBA_BIELA;
+						_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 
-						else if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+						if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 							if(poradie_svaty == 2){
 								// definovanie parametrov pre modlitbu
 								if(query_type != PRM_DETAILY)
@@ -28232,25 +28249,26 @@ label_25_MAR:
 
 								break;
 							}
-							mystrcpy(_global_svaty1.meno, text_SEP_16[_global_jazyk], MENO_SVIATKU);
-							// 2010-11-22: český breviár nemá možnosť pre duch. pastierov "pre viacerých" -- MODL_SPOL_CAST_DUCH_PAST_VIACERI
-							if((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP))
-								_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_DUCH_PAST_VIACERI);
-							else
-								_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_DUCH_PAST_PAPEZ, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
-							_global_svaty1.farba = LIT_FARBA_CERVENA;
-							_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
-
+							
 							pocet = 2;
+
 							_global_svaty2.typslav = SLAV_LUB_SPOMIENKA;
 							_global_svaty2.smer = 12; // ľubovoľné spomienky
-							mystrcpy(_global_svaty2.meno, text_SEP_17[_global_jazyk], MENO_SVIATKU);
-							_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP, MODL_SPOL_CAST_UCITEL_CIRKVI);
-							_global_svaty2.farba = LIT_FARBA_BIELA;
-							_global_svaty2.kalendar = KALENDAR_VSEOBECNY;
+							_global_svaty2.typslav_lokal = LOKAL_SLAV_LEN_CECHY;
+							mystrcpy(_global_svaty2.meno, text_SEP_16[_global_jazyk], MENO_SVIATKU);
+							// český breviár nemá možnosť pre duch. pastierov "pre viacerých" -- MODL_SPOL_CAST_DUCH_PAST_VIACERI
+							if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)){
+								_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_DUCH_PAST_VIACERI);
+							}
+							else{
+								_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_DUCH_PAST_PAPEZ, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
+							}
+							_global_svaty2.farba = LIT_FARBA_CERVENA;
+							_global_svaty2.kalendar = KALENDAR_VSEOBECNY_CZ;
 						}// CZ only
 					}// všeobecný kalendár
 					break;
+
 				case 18: // MES_SEP -- 18SEP
 					if((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 						if(poradie_svaty == 1){

@@ -652,6 +652,8 @@ const char *nazov_slavenia_lokal[] =
 , "len pre Ordinariát ozbrojených síl a ozbrojených zborov SR"                                                  // LOKAL_SLAV_ORDINARIAT
 , "A Klarisszáknál: Emléknap"                                                                                   // LOKAL_SLAV_HU_KLARISSZAKNAL_EM
 , "A Klarisszáknál: Főünnep"                                                                                    // LOKAL_SLAV_HU_KLARISSZAKNAL_FOU
+, "jen na Moravě"                                                                                               // LOKAL_SLAV_LEN_MORAVA
+, "jen v Čechách"                                                                                               // LOKAL_SLAV_LEN_CECHY
 };
 
 // names of liturgical colors
