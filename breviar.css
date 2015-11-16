@@ -2,7 +2,6 @@
 	font-weight: bold;
 }
 
-/* 2013-12-13 class .antiphon for antihpons */
 /* for HU/CZ first/second/third-ant is used; for SK ant-first/second/third is used */
 .antiphon.first-ant:before {
     color: #ff0000;
@@ -46,8 +45,6 @@
     font-weight: bold;
 }
 
-
-/* 2013-11-03 class .respons for responsories */
 .respons p { 
 	font-weight: normal; 
 }
@@ -58,7 +55,6 @@
 	-webkit-margin-after: 0em; 
 	-webkit-margin-before: 0em; 
 }
-
 
 /* for SK & LA, R/V is used; for CZ, O/V is used; for HU, V/F is used */
 .respons p.respR:before, .respR:before { 
@@ -85,7 +81,6 @@
 	font-weight: bold; 
 }
 
-/* 2013-10-21 */
 div.hymn, div.responsory, div.readings {
 	font-weight: bold;
 }
@@ -106,7 +101,6 @@ div.navm p {
 	text-align: center;
 }
 
-/* 2014-12-02 for HU */
 div.responsory {
 	margin: 1em 0;
 }
@@ -125,7 +119,6 @@ div.responsory {
 	text-align: center;
 }
 
-/* 2013-09-19 class for calendar */
 .calendar { 
 	padding: 2px; 
 }
@@ -174,7 +167,6 @@ div.responsory {
 	text-align: right;
 }
 
-/* 2013-09-09 class .preces for prayers and intercessions */
 .preces  { 
 	font-weight: bold; 
 }
@@ -216,10 +208,9 @@ div.responsory {
 	margin: 0; 
 }
 
-/* 2014-06-02 class .hymn according to psalm */
 .hymn p { 
 	font-weight: bold; 
-	margin:0; 
+	margin: 0; 
 	padding-left: 2.4em; 
 	text-indent: -2.4em; 
 	-webkit-margin-after: 0em; 
@@ -256,8 +247,6 @@ div.responsory {
 	padding-top: 1em;
 }
 
-/* 2013-09-02 #psalm changed to class .psalm; instead of black color used #1a1a1a; */
-/* new 2013-06-19 */
 .psalm .psalm-name { 
 	color: #ff0000; 
 	font-weight: bold; 
@@ -272,7 +261,26 @@ div.responsory {
 	text-align: left; 
 }
 
-/* new 2013-06.16 / updated 2013-06-19 and 2013-06-24 */
+.psalm .psalm-title { 
+	color: #ff0000; 
+	font-size: normal;
+	font-weight: bold; 
+	text-align: center; 
+}
+
+.psalm .psalm-subtitle { 
+	color: #ff0000; 
+	font-weight: normal; 
+	text-align: center; 
+}
+
+.psalm .titlehu {
+	color: #ff0000;
+	font-size: 80%;
+	font-weight: normal;
+	margin-top: 1em;
+}
+
 .psalm p { 
 	font-weight: normal; 
 }
@@ -283,7 +291,7 @@ div.responsory {
 
 .psalm p.verse { 
 	font-weight: bold; 
-	margin:0; 
+	margin: 0; 
 	padding-left: 2.4em; 
 	text-indent: -2.4em; 
 	-webkit-margin-after: 0em; 
@@ -314,26 +322,16 @@ div.responsory {
 	font-weight: normal; 
 }
 
-/* new 2013-05-24 */
 .psalm p.emptyline { 
 	-webkit-margin-after: 1em; 
 }
 
-/* new 2013-05-19 */
-/* added 2013-10-21: font-weight: normal; */
 p.title, .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
 	margin-top: 2em;
 	color: #ff0000; 
 	font-size: 80%; 
 	font-weight: normal;
-	/*text-align: left;*/
-}
-
-.psalm .titlehu {
-	margin-top: 1em;
-	color: #ff0000;
-	font-size: 80%;
-	font-weight: normal;
+	/* text-align: left; */
 }
 
 .antiphon { 
@@ -342,22 +340,6 @@ p.title, .hymn .title, .psalm .title, .readings .title , .responsory .title, .ca
 	margin-top: 1em; 
 }
 
-/* new 2013-04-18 */
-/* updated 2013-10-21 font-size:larger; -> font-size:normal; */
-.psalm .psalm-title { 
-	color: #ff0000; 
-	font-size: normal;
-	font-weight: bold; 
-	text-align: center; 
-}
-
-.psalm .psalm-subtitle { 
-	color: #ff0000; 
-	font-weight: normal; 
-	text-align: center; 
-}
-
-/* new 2013-04-02 */
 #week-day .day-title { 
 	font-size: larger; 
 	font-weight: bold; 
@@ -365,7 +347,7 @@ p.title, .hymn .title, .psalm .title, .readings .title , .responsory .title, .ca
 }
 
 .evening-praise > .prayer-title, .daytime-praise > .prayer-title, .morning-praise > .prayer-title, .ending-praise > .prayer-title, .invit-praise > .prayer-title, .reading-praise > .prayer-title { 
-	/*font-weight: bold;*/ 
+	/* font-weight: bold; */ 
 	margin-top: 20px; 
 	text-align: center; 
 }
@@ -393,7 +375,6 @@ p.bibleref {
 	text-decoration: underline; 
 }
 
-/* new 2014-01-16 */
 #about h3 {
     font-weight: bold;
     font-size: 1.2em;
@@ -403,7 +384,6 @@ p.bibleref {
     font-weight: bold !important;
 }
 
-/* replace 2013-02-17 */ 
 .indent { 
 	display: inline; 
 	float: left; 
@@ -422,7 +402,6 @@ p.bibleref {
 	text-align: center;
 }
 
-/* apply to all elements, used for <span> (character style) and <div> (paragraph style), 2005-07-27 */
 .red, .redtitle { 
 	color: #ff0000; 
 }
@@ -451,10 +430,6 @@ p.bibleref {
 	font-style: italic; 
 }
 
-.blue { 
-	color: #0066ff; 
-}
-
 .redsmall, .redsubtitle { 
 	color: #ff0000; 
 	font-size: 80%; 
@@ -463,6 +438,10 @@ p.bibleref {
 .redbold { 
 	color: #ff0000; 
 	font-weight: bold; 
+}
+
+.blue { 
+	color: #0066ff; 
 }
 
 .bluebold { 
@@ -536,7 +515,6 @@ p.bibleref {
 	font-size: 70%; 
 }
 
-/* 2003-07-09; 2004-03-23; 2008-02-27 */
 /* apply to all elements */ 
 { 
 	font-family: inherit; 
@@ -570,7 +548,6 @@ p.patka {
 	text-indent: 0em; 
 }
 
-/* inherit nefunguje v IE 7 */
 a.quiet { 
 	color: inherit; 
 	text-decoration: none; 
@@ -679,7 +656,7 @@ input {
 	font-family: inherit; 
 }
 
-/* modlitby */
+/* prayer buttons */
 input.button, input.reset, .button { 
 	background: #ffcc99; /* #ffcc66; Tan; Peru; BurlyWood; */
 	border: solid 0px #1a1a1a; 
@@ -709,7 +686,7 @@ input.button0, input.reset0, .button0 {
 	text-decoration: none; 
 }
 
-/* dnes */
+/* button for today */
 input.button1, input.reset1, .button1 { 
 	background: DimGray;
 	border: solid 0px #1a1a1a; 
@@ -726,7 +703,7 @@ input.button1, input.reset1, .button1 {
 	text-decoration: none; 
 }
 
-/* menej podstatné buttony */
+/* less important buttons */
 input.button2, input.reset2, .button2 { 
 	background: #cccc99;
 	border: solid 0px #1a1a1a; 

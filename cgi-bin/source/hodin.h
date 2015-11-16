@@ -198,7 +198,7 @@ const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
 	{ "svätých žien: pre vychovávateľky", "o svatých ženách (o vychovatelkách)", "", "", "", "O svatých ženách – o vychovatelkách", "egyháztanító férfiak", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých mužov: pre vychovávateľov", "o svatých mužích (o vychovatelích)", "", "", "", "O svatých mužích – o vychovatelích", "egyháztanító asszonyok", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých žien: pre tie, čo konali skutky milosrdenstva", "o svatých ženách (které vynikaly milosrdnými skutky)", "", "", "", "O svatých ženách – o ženě, která vynikala milosrdnými skutky", "jótékonykodó asszonyok", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre tých, čo konali skutky milosrdenstva", "o svatých mužích (kterí vynikali milosrdnými skutky)", "", "", "", "O svatých mužích – o muži, který vynikal milosrdnými skutky", "jótékonykodó férfiak", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre tých, čo konali skutky milosrdenstva", "o svatých mužích (kteří vynikali milosrdnými skutky)", "", "", "", "O svatých mužích – o muži, který vynikal milosrdnými skutky", "jótékonykodó férfiak", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých žien: pre viaceré", "o svatých ženách (o více ženách)", "", "", "", "O svatých ženách", "több szent asszony", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých mužov: pre viacerých", "o svatých mužích – o více mužích", "", "", "", "O svatých mužích", "több szent férfi", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "viacerých panien", "o pannách – o více pannách", "", "", "", "O pannách – o více pannách", "szüzek", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
