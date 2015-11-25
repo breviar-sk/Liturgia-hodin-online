@@ -22941,8 +22941,6 @@ label_25_MAR:
 						_global_svaty1.kalendar = KALENDAR_CZ_OPRAEM;
 					}// kalendár pre KALENDAR_CZ_OPRAEM
 					else{
-						// 2008-07-01: doplnené (upozornil Michal Pazúrik <m.pazurik@gmail.com>)
-						// 2008-07-04: aj pre českú verziu
 						if(poradie_svaty == 1){
 							// definovanie parametrov pre modlitbu
 							if(query_type != PRM_DETAILY)
@@ -22953,9 +22951,7 @@ label_25_MAR:
 
 							modlitba = MODL_POSV_CITANIE;
 							_vlastna_cast_modlitba;
-							if(_global_jazyk == JAZYK_SK){
-								_vlastna_cast_2citanie; // 2011-02-09: doplnený pracovný preklad
-							}
+							_vlastna_cast_2citanie;
 
 							modlitba = MODL_VESPERY;
 							_vlastna_cast_modlitba;
