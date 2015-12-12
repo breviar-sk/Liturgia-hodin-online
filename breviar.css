@@ -208,6 +208,77 @@ div.responsory {
 	margin: 0; 
 }
 
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.reading p { 
+	font-weight: bold; 
+	margin: 0; 
+	padding-left: 1.2em; 
+	text-indent: -1.2em; 
+	-webkit-margin-after: 0em; 
+	-webkit-margin-before: 0em; 
+}
+
+.reading p.first { 
+	padding-top: 1em; 
+}
+
+.reading p.cont { 
+	text-indent: 0em; 
+}
+
+.reading p.par { 
+	padding-left: 0em; 
+	text-indent: 1.2em; 
+}
+
+.reading p.resp {
+	color: #ff0000; 
+	font-size: 80%;
+	font-weight: normal;
+	padding-bottom: 1em;
+	padding-top: 1em;
+}
+
+.reading p.bibleref {
+	padding-bottom: 1em;
+	padding-top: 0em;
+}
+
+.reading p.respR, .reading p.respV, .reading p.respO, .reading p.respF { 
+	padding-left: 0em; 
+	text-indent: 0em; 
+}
+
+.reading p.heading { 
+	padding-bottom: 1em;
+	padding-left: 0em; 
+	text-indent: 0em; 
+}
+
+.reading p.reading-source { 
+	font-style: normal;
+	font-weight: normal;
+	padding-bottom: 1em;
+	padding-left: 0em; 
+	padding-top: 1em;
+	text-align: center;
+	text-indent: 0em; 
+}
+
+.reading p.reading-title { 
+	font-weight: normal;
+	padding-left: 0em; 
+	text-align: center;
+	text-indent: 0em; 
+}
+
+.reading .redsmall, .reading .redsubtitle { 
+	font-weight: normal;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 .hymn p { 
 	font-weight: bold; 
 	margin: 0; 
@@ -470,10 +541,18 @@ p.bibleref {
 	font-family: Monospace; 
 }
 
+.par { 
+	font-weight: bold; 
+}
+
 .parameter { 
 	color: #1a1a1a; 
 	font-family: Monospace; 
 	font-style: normal; 
+	font-weight: bold; 
+}
+
+.strong { 
 	font-weight: bold; 
 }
 

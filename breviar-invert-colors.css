@@ -65,6 +65,10 @@
 	color: #FF3333;
 }
 
+.reading p.resp {
+	color: #FF3333;
+}
+
 .hymn p.rubric, .hymn p.rubric-always-display { 
 	color: #FF3333;
 }
