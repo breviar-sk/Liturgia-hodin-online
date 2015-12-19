@@ -352,11 +352,7 @@ div.responsory {
 	margin-top: 1em;
 }
 
-.psalm p { 
-	font-weight: normal; 
-}
-
-.psalm p.bold { 
+.psalm p.bold, .psalm p.strong { 
 	font-weight: bold; 
 }
 

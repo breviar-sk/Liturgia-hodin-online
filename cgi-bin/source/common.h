@@ -173,6 +173,8 @@
 #define HTML_P_BEGIN                "<p>"
 #define HTML_P_END                  "</p>"
 
+#define HTML_P_RUBRIC               "<p "HTML_CLASS_RUBRIC">"
+
 #define HTML_P_CENTER               "<p "HTML_CLASS_CENTER">"
 #define HTML_P_CENTER_SMALL         "<p "HTML_CLASS_SMALL_CENTER">"
 #define HTML_P_INLINE               "<p "HTML_CLASS_INLINE">"
@@ -258,6 +260,8 @@
 #define HTML_CLASS_SMALL_CENTER     "class=\"small center\""
 #define HTML_CLASS_INLINE           "class=\"inline\""
 #define HTML_CLASS_CENTER           "class=\"center\""
+
+#define HTML_CLASS_RUBRIC           "class=\"rubric\""
 
 #define HTML_CLASS_QUIET_SMALL      "class=\"quiet small\""
 

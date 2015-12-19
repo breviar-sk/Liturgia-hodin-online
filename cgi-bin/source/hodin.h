@@ -3441,13 +3441,13 @@ const char *html_text_detaily_explain[POCET_JAZYKOV + 1] =
 // descriptive text for Invitatory prayer
 const char *html_text_inv_slavaotcu[POCET_JAZYKOV + 1] =
 {
-	"<"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
-	"<"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END,
-	"<"HTML_SPAN_RED_SMALL">Follows"HTML_SPAN_END" <span class=\"small\">Glory..."HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
-	"<"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Gloria Patri"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
-	"<"HTML_SPAN_RED_SMALL">Nasleduje"HTML_SPAN_END" <span class=\"small\">Sláva Otcu"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje sa antifóna."HTML_SPAN_END,
-	"<"HTML_SPAN_RED_SMALL">Následuje"HTML_SPAN_END" <span class=\"small\">Sláva Otci"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">a opakuje se antifona."HTML_SPAN_END,
-	"<"HTML_SPAN_RED_SMALL">Következik a"HTML_SPAN_END" <span class=\"small\">Dicsőség az Atyának"HTML_SPAN_END" <"HTML_SPAN_RED_SMALL">és megismételjük az antifónát."HTML_SPAN_END,
+	"Nasleduje <"HTML_SPAN_NORMAL">Sláva Otcu"HTML_SPAN_END" a opakuje sa antifóna.",
+	"Následuje <"HTML_SPAN_NORMAL">Sláva Otci"HTML_SPAN_END" a opakuje se antifona.",
+	"Follows <"HTML_SPAN_NORMAL">Glory..."HTML_SPAN_END" and repeats antiphone.",
+	"Follows <"HTML_SPAN_NORMAL">Gloria Patri"HTML_SPAN_END" and repeats antiphone.",
+	"Nasleduje <"HTML_SPAN_NORMAL">Sláva Otcu"HTML_SPAN_END" a opakuje sa antifóna.",
+	"Následuje <"HTML_SPAN_NORMAL">Sláva Otci"HTML_SPAN_END" a opakuje se antifona.",
+	"Következik a <"HTML_SPAN_NORMAL">Dicsőség az Atyának"HTML_SPAN_END" és megismételjük az antifónát.",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

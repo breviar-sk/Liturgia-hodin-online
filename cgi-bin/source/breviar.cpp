@@ -3444,7 +3444,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			}
 			else{
 				Export("-->");
-				Export(HTML_P_BEGIN);
+				Export(HTML_P_RUBRIC);
 				Export((char *)html_text_inv_slavaotcu[_global_jazyk]);
 				Export(HTML_P_END);
 				Export("<!--");
