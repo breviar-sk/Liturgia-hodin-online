@@ -210,6 +210,9 @@
 
 #define		STR_PATH_SEPARATOR_HTML	STR_PATH_SEPARATOR_linux
 
+#define		CMD_MKDIR_linux		CMD_MKDIR""
+#define		CMD_MKDIR_Windows	"mkdir"
+
 #define		SYSTEM_RUBY    0
 #define		SYSTEM_LINUX   1
 #define		SYSTEM_WINDOWS 2
@@ -217,12 +220,15 @@
 #if defined(OS_linux)
 	#define		PATH_SEPARATOR	PATH_SEPARATOR_linux
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_linux
+	#define		CMD_MKDIR	CMD_MKDIR_linux
 #elif defined(OS_Windows_Ruby)
 	#define		PATH_SEPARATOR	PATH_SEPARATOR_linux
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_linux
+	#define		CMD_MKDIR	CMD_MKDIR_linux
 #else
 	#define		PATH_SEPARATOR	PATH_SEPARATOR_Windows
 	#define		STR_PATH_SEPARATOR	STR_PATH_SEPARATOR_Windows
+	#define		CMD_MKDIR	CMD_MKDIR_Windows
 #endif
 
 #define		UNDERSCORE	'_'

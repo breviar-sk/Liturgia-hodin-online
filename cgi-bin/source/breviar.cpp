@@ -9998,8 +9998,8 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 						sprintf(export_fname_pattern, "%s%d%sd.htm", batch_command, a, export_fname_modl_str /* char_modlitby[i] */);
 					}
 					Log("1:parameter_M == `%s'...\n", parameter_M);
-					fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s%s\n", export_fname_pattern, 
-						_global_opt[OPT_0_SPECIALNE], _global_opt_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
+					fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -5%d -x%d -p%s -j%s%s%s\n", export_fname_pattern, 
+						_global_opt[OPT_0_SPECIALNE], _global_opt_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
 						a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
 					if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
 						sprintf(export_doplnkova_psalmodia, " ("HTML_A_HREF_BEGIN"\""FILENAME_EXPORT_DATE_SIMPLE"_%d%sd.htm\">alt"HTML_A_END")", _global_den.rok % 100, _global_den.mesiac, _global_den.den, a, export_fname_modl_str /*char_modlitby[i] */);
@@ -10019,8 +10019,8 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 					sprintf(export_fname_pattern, "%s%d%s.htm", batch_command, a, export_fname_modl_str /* char_modlitby[i] */);
 				}
 				Log("2:parameter_M == `%s'...\n", parameter_M);
-				fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s%s\n", export_fname_pattern, 
-					_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
+				fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -5%d -x%d -p%s -j%s%s%s\n", export_fname_pattern, 
+					_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
 					a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
 				if(export_monthly_druh == 1){
 					Log("mY: export_monthly_druh == 1...\n");
@@ -10077,15 +10077,15 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 				)
 			){
 				if(_global_opt_append == YES){
-					fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s\n", batch_command, 
-						_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
+					fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -5%d -x%d -p%s -j%s%s\n", batch_command, 
+						_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
 						a, str_modlitby[i], skratka_jazyka[_global_jazyk], export_dalsie_parametre); // modlitba `i'
 				}// endif _global_opt_append == YES
 				else{
 					if(((_global_opt_casti_modlitby_orig & BIT_OPT_1_MCD_DOPLNKOVA) == BIT_OPT_1_MCD_DOPLNKOVA) && (je_modlitba_cez_den(i))){
 						Log("3:parameter_M == `%s'...\n", parameter_M);
-						fprintf(batch_file, "%s%d%sd.htm -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s%s\n", batch_command, a, export_fname_modl_str /* char_modlitby[i] */, 
-							_global_opt[OPT_0_SPECIALNE], _global_opt_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
+						fprintf(batch_file, "%s%d%sd.htm -0%d -1%d -2%d -3%d -4%d -5%d -x%d -p%s -j%s%s%s\n", batch_command, a, export_fname_modl_str /* char_modlitby[i] */, 
+							_global_opt[OPT_0_SPECIALNE], _global_opt_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
 							a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
 						if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
 							sprintf(export_doplnkova_psalmodia, " ("HTML_A_HREF_BEGIN"\""FILENAME_EXPORT_DATE_SIMPLE"_%d%sd.htm\">alt"HTML_A_END")", _global_den.rok % 100, _global_den.mesiac, _global_den.den, a, export_fname_modl_str /* char_modlitby[i] */);
@@ -10099,8 +10099,8 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 					}
 					// 2009-08-03: doplnená možnosť exportovať parameter -M ak exportuje batch mód pre jednotlivé mesiace kvôli hlavičke jednotlivej modlitby
 					Log("4:parameter_M == `%s'...\n", parameter_M);
-					fprintf(batch_file, "%s%d%s.htm -0%d -1%d -2%d -3%d -4%d -x%d -p%s -j%s%s%s\n", batch_command, a, export_fname_modl_str /* char_modlitby[i] */, 
-						_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], 
+					fprintf(batch_file, "%s%d%s.htm -0%d -1%d -2%d -3%d -4%d -5%d -x%d -p%s -j%s%s%s\n", batch_command, a, export_fname_modl_str /* char_modlitby[i] */, 
+						_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
 						a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
 					// 2008-11-29: rozličný export
 					if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
@@ -10858,13 +10858,13 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 	}// else if(_global_opt_batch_monthly == ANO)
 
 	// samotné vytlačenie príkazu
-	// 2011-04-13: doplnené exportovanie chýbajúcich option 0 až 4
-	// 2012-12-12: nie pre append (mohla by tam byť celá časť kódu od prípravy batch_command)
+	// exportovanie chýbajúcich option 0 až 5
+	// nie pre append (mohla by tam byť celá časť kódu od prípravy batch_command)
 	if (_global_opt_append != YES){
 		Log("zapisujem do batch_file...\n");
 		Log("5:parameter_M == `%s'...\n", parameter_M);
-		fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -j%s%s%s\n", batch_command,
-			_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT],
+		fprintf(batch_file, "%s -0%d -1%d -2%d -3%d -4%d -5%d -j%s%s%s\n", batch_command,
+			_global_opt[OPT_0_SPECIALNE], _global_opt[OPT_1_CASTI_MODLITBY], _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
 			skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre);
 	}
 	Log("_export_rozbor_dna_mesiaca_batch() -- koniec\n");
@@ -13862,8 +13862,8 @@ void _main_batch_mode(
 										// EXPORT_DATE_FULL
 										sprintf(dir_name, DIRNAME_EXPORT_MONTH_FULL, r, m + 1, nazov_mesiaca_asci(m));
 									}
-									sprintf(system_command, "mkdir -p \"%s\"\n", dir_name);
-									Log("mkdir -p \"%s\"\n", dir_name);
+									sprintf(system_command, CMD_MKDIR" \"%s\"\n", dir_name);
+									Log(CMD_MKDIR" \"%s\"\n", dir_name);
 									// fprintf(batch_file, system_command);
 									system(system_command);
 									fprintf(batch_file, "cd \"%s\"\n", dir_name);
@@ -13976,8 +13976,8 @@ void _main_batch_mode(
 								}
 								// m_to resp. m_from: sú hodnoty 0--11, resp. VSETKY_MESIACE resp. UNKNOWN_MESIAC
 								Log("začínam pre adresár %s...\n", dir_name);
-								sprintf(system_command, "mkdir -p \"%s\"\n", dir_name);
-								Log("mkdir -p \"%s\"\n", dir_name);
+								sprintf(system_command, CMD_MKDIR" \"%s\"\n", dir_name);
+								Log(CMD_MKDIR" \"%s\"\n", dir_name);
 								// fprintf(batch_file, system_command);
 								system(system_command);
 								fprintf(batch_file, "cd \"%s\"\n", dir_name);
@@ -14041,8 +14041,8 @@ void _main_batch_mode(
 											// EXPORT_DATE_FULL
 											sprintf(dir_name, DIRNAME_EXPORT_MONTH_FULL, r_from, m, nazov_mesiaca_asci(m - 1));
 										}
-										sprintf(system_command, "mkdir -p \"%s\"\n", dir_name);
-										Log("mkdir -p \"%s\"\n", dir_name);
+										sprintf(system_command, CMD_MKDIR" \"%s\"\n", dir_name);
+										Log(CMD_MKDIR" \"%s\"\n", dir_name);
 										// fprintf(batch_file, system_command);
 										system(system_command);
 										fprintf(batch_file, "cd \"%s\"\n", dir_name);
@@ -14106,8 +14106,8 @@ void _main_batch_mode(
 												// EXPORT_DATE_FULL
 												sprintf(dir_name, DIRNAME_EXPORT_MONTH_FULL, y, m, nazov_mesiaca_asci(m - 1));
 											}
-											sprintf(system_command, "mkdir -p \"%s\"\n", dir_name);
-											Log("mkdir -p \"%s\"\n", dir_name);
+											sprintf(system_command, CMD_MKDIR" \"%s\"\n", dir_name);
+											Log(CMD_MKDIR" \"%s\"\n", dir_name);
 											// fprintf(batch_file, system_command);
 											system(system_command);
 											fprintf(batch_file, "cd \"%s\"\n", dir_name);
@@ -14171,8 +14171,8 @@ void _main_batch_mode(
 											// EXPORT_DATE_FULL
 											sprintf(dir_name, DIRNAME_EXPORT_MONTH_FULL, r_to, m, nazov_mesiaca_asci(m - 1));
 										}
-										sprintf(system_command, "mkdir -p \"%s\"\n", dir_name);
-										Log("mkdir -p \"%s\"\n", dir_name);
+										sprintf(system_command, CMD_MKDIR" \"%s\"\n", dir_name);
+										Log(CMD_MKDIR" \"%s\"\n", dir_name);
 										// fprintf(batch_file, system_command);
 										system(system_command);
 										fprintf(batch_file, "cd \"%s\"\n", dir_name);
@@ -14235,8 +14235,8 @@ void _main_batch_mode(
 											// EXPORT_DATE_FULL
 											sprintf(dir_name, DIRNAME_EXPORT_MONTH_FULL, r_from, m, nazov_mesiaca_asci(m - 1));
 										}
-										sprintf(system_command, "mkdir -p \"%s\"\n", dir_name);
-										Log("mkdir -p \"%s\"\n", dir_name);
+										sprintf(system_command, CMD_MKDIR" \"%s\"\n", dir_name);
+										Log(CMD_MKDIR" \"%s\"\n", dir_name);
 										// fprintf(batch_file, system_command);
 										system(system_command);
 										fprintf(batch_file, "cd \"%s\"\n", dir_name);
@@ -14508,7 +14508,7 @@ short int getArgv(int argc, char **argv){
 	// 2012-09-07: 'H' (header) disables header and footer
 
 	// 2015-06-02: 'v', 'w' and 'y' are still available :)
-	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::", MAX_STR);
+	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::5::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::", MAX_STR);
 	// tie options, ktore maju za sebou : maju povinny argument; ak maju :: tak maju volitelny
 
 	Log("-- getArgv(): begin\n");
@@ -14644,7 +14644,7 @@ short int getArgv(int argc, char **argv){
 				}
 				Log("option %c with value `%s' -- poradie svateho\n", c, optarg); break;
 
-			// MODL_OPT 0..4
+			// MODL_OPT 0..5
 			case '0':
 				if (optarg != NULL){
 					mystrcpy(pom_MODL_OPT[OPT_0_SPECIALNE], optarg, SMALL);
@@ -14668,6 +14668,11 @@ short int getArgv(int argc, char **argv){
 			case '4':
 				if (optarg != NULL){
 					mystrcpy(pom_MODL_OPT[OPT_4_OFFLINE_EXPORT], optarg, SMALL);
+				}
+				Log("option %c with value `%s'\n", c, optarg); break;
+			case '5':
+				if (optarg != NULL){
+					mystrcpy(pom_MODL_OPT[OPT_5_ALTERNATIVES], optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 
