@@ -210,7 +210,7 @@
 
 #define		STR_PATH_SEPARATOR_HTML	STR_PATH_SEPARATOR_linux
 
-#define		CMD_MKDIR_linux		CMD_MKDIR""
+#define		CMD_MKDIR_linux		"mkdir -p"
 #define		CMD_MKDIR_Windows	"mkdir"
 
 #define		SYSTEM_RUBY    0
