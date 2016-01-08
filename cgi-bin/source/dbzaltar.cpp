@@ -1,7 +1,7 @@
 /**************************************************************/
 /*                                                            */
 /* dbzaltar.cpp                                               */
-/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk            */
+/* (c)1999-2016 | Juraj Vidéky | videky@breviar.sk            */
 /*                                                            */
 /* description | contains 'database' of liturgical calendars  */
 /*                                                            */
@@ -6009,8 +6009,8 @@ label_24_DEC:
 	_set_antifona3(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
-									 
-		// tu v skutočnosti začína VIANOČNÉ OBDOBIE II.
+
+			// tu v skutočnosti začína VIANOČNÉ OBDOBIE II.
 
 			// invitatórium
 			modlitba = MODL_INVITATORIUM;
@@ -6019,6 +6019,7 @@ label_24_DEC:
 			// ranné chvály
 			modlitba = MODL_RANNE_CHVALY;
 			_vian2_hymnus;
+			// krátke čítanie nastavené neskôr podľa vian1
 			_vian2_kresponz;
 			_vian2_benediktus;
 			_vian2_prosby;
@@ -6027,6 +6028,7 @@ label_24_DEC:
 			// vešpery
 			modlitba = MODL_VESPERY;
 			_vian2_hymnus;
+			// krátke čítanie nastavené neskôr podľa vian1
 			_vian2_kresponz;
 			_vian2_magnifikat;
 			_vian2_prosby;
@@ -6216,6 +6218,11 @@ label_24_DEC:
 				// vsedny den vianocneho obdobia II -- citania podla vian.obd.I 
 				// presne takto isto sa správajú aj krátke čítania pre modlitbu cez deň (ako pre krátke čítanie na ranné chvály)
 				file_name_litobd(OBD_VIANOCNE_I);
+
+				// odlišná úprava dátumu podľa toho, či sa ZJV slávi v nedeľu alebo 6.1.
+				// pre ZJV on Sunday: den == 7 (pondelok), 8 (utorok), 9 (streda), 10 (štvrtok), 11 (piatok), 12 (sobota)
+				// pre ZJV on 6.1.: den == 7 (7.1.), 8 (8.1.), 9 (9.1.), 10, 11, 12 (znamená daný 'den' v januári)
+				_global_den.den = ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)) ? (_global_den.denvr - zjavenie_pana(_global_den.rok) + 6) : _global_den.den);
 
 				// táto úprava _global_den.den sa ukázala ako nebezpečná -- po zmene treba vrátiť pôvodnú hodnotu
 				if(_global_den.den == 8){

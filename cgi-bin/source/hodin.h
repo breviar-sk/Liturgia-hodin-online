@@ -1,7 +1,7 @@
 /************************************************************/
 /*                                                          */
 /* hodin.h                                                  */
-/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk          */
+/* (c)1999-2016 | Juraj Vidéky | videky@breviar.sk          */
 /*                                                          */
 /* description | originally used for string constants       */
 /*                                                          */
@@ -11483,7 +11483,7 @@ const char *text_DEC_21[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Petra Kanisia, kněze a učitele Církve",
-	"Kaníziusz Szent Péter áldozópap és egyháztaíntó",
+	"Kaníziusz Szent Péter áldozópap és egyháztanító",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

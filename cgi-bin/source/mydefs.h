@@ -1,7 +1,7 @@
 /*********************************************************/
 /*                                                       */
 /* mydefs.h                                              */
-/* (c)1999-2015 | Juraj Vidéky | videky@breviar.sk       */
+/* (c)1999-2016 | Juraj Vidéky | videky@breviar.sk       */
 /*                                                       */
 /* description | core basic define's                     */
 /*                                                       */
@@ -974,7 +974,7 @@ extern short int query_type; // contains constants PRM_...
 
 #define HTML_ISO_FORMAT      "%04d-%02d-%02d"
 
-#define TEXT_COPYRIGHT       "(c)1999-2015 Juraj Vidéky"
+#define TEXT_COPYRIGHT       "(c)1999-2016 Juraj Vidéky"
 #define TEXT_EMAIL           "videky@breviar.sk"
 
 // main XML element
