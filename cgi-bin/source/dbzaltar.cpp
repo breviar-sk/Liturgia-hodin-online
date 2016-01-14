@@ -11115,6 +11115,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 					break;
 				case 4: // MES_JAN -- 04JAN
 					if(((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) 
+					// || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM))
 					|| ((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_OFM))
 					){
 						if(poradie_svaty == 1){
@@ -11126,6 +11127,9 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 								set_spolocna_cast(sc, poradie_svaty);
 
 							modlitba = MODL_RANNE_CHVALY;
+							if (_global_jazyk == JAZYK_CZ){
+								_vlastna_cast_benediktus;
+							}
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_POSV_CITANIE;
@@ -11133,6 +11137,9 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 							_vlastna_cast_modlitba;
 
 							modlitba = MODL_VESPERY;
+							if (_global_jazyk == JAZYK_CZ){
+								_vlastna_cast_magnifikat;
+							}
 							_vlastna_cast_modlitba;
 
 							break;
@@ -11142,7 +11149,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 						mystrcpy(_global_svaty1.meno, text_JAN_04_OFM[_global_jazyk], MENO_SVIATKU);
 						_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
 						_global_svaty1.farba = LIT_FARBA_BIELA;
-						_global_svaty1.kalendar = KALENDAR_SK_OFM;
+						_global_svaty1.kalendar = _global_kalendar;
 					}// kalendár pre KALENDAR_SK_OFM
 					break;
 				case 5: // MES_JAN -- 05JAN

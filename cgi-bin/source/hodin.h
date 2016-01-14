@@ -3647,11 +3647,11 @@ const char *text_JAN_03[POCET_JAZYKOV + 1] =
 const char *text_JAN_04_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Angely z Foligna, rehoľníčky, členky 3. rádu",
+	"Bl. Anděly z Foligna, členky 3. řádu",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Anděly z Foligna, členky 3. řádu",
 	"Folignói Boldog Angéla, szerzetesnő a III. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
