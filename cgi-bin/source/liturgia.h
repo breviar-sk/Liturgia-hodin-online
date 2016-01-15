@@ -519,6 +519,14 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_KATECHEZA_BEGIN				"k"
 #define PARAM_KATECHEZA_END					"/k"
 
+// footnote reference
+#define PARAM_FOOTNOTE_REF_BEGIN			"fnr"
+#define PARAM_FOOTNOTE_REF_END				"/fnr"
+
+// footnote (text)
+#define PARAM_FOOTNOTE_BEGIN			    "fn"
+#define PARAM_FOOTNOTE_END				    "/fn"
+
 // odkaz na žalm 95
 #define PARAM_LINK_ZALM95_BEGIN				"z95"
 #define PARAM_LINK_ZALM95_END				"/z95"
@@ -1207,7 +1215,7 @@ extern int _global_optf[POCET_GLOBAL_OPT];
 #define USE_STR_MODL_OPT                   -2
 #define USE_STR_MODL_OPTF                  -1
 
-#define POCET_OPT_0_SPECIALNE               9 // jednotlivé komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE              10 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                     1
@@ -1219,6 +1227,7 @@ extern int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_FONT_NORMAL              64 // force font-weight: normal; // should be logically among OPT_2_HTML_EXPORT bit-options
 #define BIT_OPT_0_BUTTONS_ORDER           128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
 #define BIT_OPT_0_BLIND_FRIENDLY          256 // blind-friendly mode: 1 = use special CSS override to hide all red texts (rubrics)
+#define BIT_OPT_0_FOOTNOTES               512 // display footnotes and footnote references
 
 #define POCET_OPT_1_CASTI_MODLITBY         15 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];

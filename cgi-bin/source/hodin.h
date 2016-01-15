@@ -2002,6 +2002,33 @@ const char *html_text_option0_blind_friendly_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_option0_footnotes[POCET_JAZYKOV + 1] =
+{
+	"zobraziť poznámky pod čiarou",
+	"zobrazit poznámky pod čarou",
+	"show footnotes",
+	"",
+	"",
+	"zobrazit poznámky pod čarou",
+	"lábjegyzetek",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+// for other languages use: ""
+const char *html_text_option0_footnotes_explain[POCET_JAZYKOV + 1] =
+{
+	"Vo výslednej modlitbe (najmä posvätné čítania) budú zobrazené aj poznámky pod čiarou (a odkazy na ne).",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_option1_chvalospevy[POCET_JAZYKOV + 1] =
 {
 	"evanjeliové chválospevy (Benediktus, Magnifikat, Nunk dimittis)",
@@ -2192,7 +2219,7 @@ const char *html_text_option_pouzit[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"použít",
-	"hu_text",
+	"használat",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

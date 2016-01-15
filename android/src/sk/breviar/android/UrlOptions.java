@@ -96,6 +96,15 @@ public class UrlOptions {
     setBit("o0", 1, value);
   }
 
+  // of0ff
+  public boolean isFootnotes() {
+    return hasBit("o0", 9);
+  }
+
+  public void setFootnotes(boolean value) {
+    setBit("o0", 9, value);
+  }
+
   // of0cit
   public boolean isLiturgicalReadings() {
     return hasBit("o0", 2);

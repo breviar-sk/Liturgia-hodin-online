@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.12.2</string>
+    <string name="version">1.12.3</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -32,6 +32,7 @@
     <string name="display_communia_info">display communia info</string>
     <string name="verse_numbering">verse numbering</string>
     <string name="bible_references">bible references</string>
+    <string name="footnotes">footnotes</string>
     <string name="liturgical_readings">liturgical readings</string>
 
     <string name="display_settings_title">Display settings:</string>
@@ -119,6 +120,11 @@ body { background-color: #000000; color: #cccccc; }
 <body>
 
 <p><b>Breviary application | What\'s new</b>
+
+<p><b>Version 1.12.3</b>
+<ul>
+<li> New option: Display footnotes for second readings (prayer with readings).
+</ul>
 
 <p><b>Version 1.12.2</b>
 <ul>

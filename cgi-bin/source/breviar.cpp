@@ -1137,14 +1137,15 @@ void ExportChar(int c){
 
 #define DetailLog emptyLog
 #define MAX_ZAKONCENIE 200
-#define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis))
+#define EXPORT_FOOTNOTES ANO
+#define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!vnutri_footnote || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
 #define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
 short int antifona_pocet = 0; // počet antifón (ant1, ant2, ant3 pre psalmódiu a ant. na benediktus/magnifikat kvôli krížikom)
 char rest_krizik[MAX_BUFFER] = STR_EMPTY; // pre to, čo je za krížikom v antifóne
 char rest_zakoncenie[MAX_BUFFER] = STR_EMPTY;
 
 void includeFile(short int type, const char *paramname, const char *fname, const char *modlparam){
-	int c, buff_index = 0, ref_index = 0, kat_index = 0, z95_index = 0;
+	int c, buff_index = 0, fnref_index = 0, fn_index = 0, ref_index = 0, kat_index = 0, z95_index = 0;
 	char strbuff[MAX_BUFFER];
 	char rest[MAX_BUFFER];
 	char isbuff = 0;
@@ -1155,17 +1156,30 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 	char vnutri_inkludovaneho = 0; // kvôli "V.O. Aleluja" v inkludovaných napr. antifónach
 	char zakoncenie[MAX_ZAKONCENIE]; // zakončenie s veľkým písmenkom na začiatku, následne sa prípadne mení 1. písmeno na malé
-	short int vnutri_referencie = NIE; // kvôli biblickým referenciám v inkludovaných súboroch
-	short int vnutri_katechezy = NIE; // kvôli odkazom na katechézy v inkludovaných súboroch
-	short int vnutri_z95 = NIE; // kvôli odkazu na modlitbu so žalmom 95
+
+	short int vnutri_referencie = NIE; // PARAM_REFERENCIA... | kvôli biblickým referenciám v inkludovaných súboroch
+	short int vnutri_katechezy = NIE; // PARAM_KATECHEZA... | kvôli odkazom na katechézy v inkludovaných súboroch
+	short int vnutri_z95 = NIE; // PARAM_LINK_ZALM95... | kvôli odkazu na modlitbu so žalmom 95
+	short int vnutri_footnote_ref = NIE; // PARAM_FOOTNOTE_REF...
+	short int vnutri_footnote = NIE; // PARAM_FOOTNOTE...
+
 	short int vnutri_myslienky = NIE; // kvôli myšlienkam k žalmom, ktoré v sebe vnútri môžu obsahovať biblickú referenciu
 	short int vnutri_nadpisu = NIE; // kvôli nadpisu pre psalmódiu
 	short int je_myslienka = NIE; // či sa má myšlienka vkladať alebo nie
 	short int je_nadpis = NIE; // či sa má nadpis pre psalmódiu vkladať alebo nie
+
+	char fnrefbuff[MAX_BUFFER]; // buffer for footnote reference
+	char fnrefrest[MAX_BUFFER];
+
+	char fnbuff[MAX_BUFFER]; // buffer for footnote reference
+	char fnrest[MAX_BUFFER];
+
 	char refbuff[MAX_BUFFER]; // buffer pre referenciu
 	char refrest[MAX_BUFFER]; // 'rest' uložené zo začiatku referencie (používa sa až pri parsovaní konca referencie)
+
 	char katbuff[MAX_BUFFER]; // buffer pre odkaz na katechézu
 	char katrest[MAX_BUFFER]; // 'rest' uložené zo začiatku odkazu na katechézu (používa sa až pri parsovaní konca odkazu na katechézu)
+
 	char z95buff[MAX_BUFFER]; // buffer pre odkaz na ž95
 	char z95rest[MAX_BUFFER]; // 'rest' uložené zo začiatku odkazu na ž 95
 
@@ -1499,8 +1513,117 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				// write = NIE; -- aby mohli byt nestovane viacere :-)
 				DetailLog("parameter does not match: %s != %s\n", rest, modlparam);
 
+// footnote references
+
+				// upraviť footnote referencie na hyperlinky
+				if (equals(strbuff, PARAM_FOOTNOTE_REF_BEGIN) && (vnutri_inkludovaneho == ANO)){
+					vnutri_footnote_ref = ANO;
+					write = NIE;
+					fnref_index = 0;
+					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)){
+						if (rest != NULL){
+							mystrcpy(fnrefrest, rest, MAX_BUFFER);
+						}
+						DetailLog("\trest      == %s\n", rest);
+						DetailLog("\tfnrefrest == %s\n", fnrefrest);
+					}
+				}// upraviť footnote referencie na hyperlinky -- PARAM_FOOTNOTE_REF_BEGIN
+				if (equals(strbuff, PARAM_FOOTNOTE_REF_END) && (vnutri_inkludovaneho == ANO)){
+					fnrefbuff[fnref_index] = '\0';
+
+					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)){
+						if (EXPORT_FOOTNOTES){
+							Export(HTML_A_HREF_BEGIN"\"#fn");
+						}
+						DetailLog("\trest      == %s\n", rest);
+						DetailLog("\tfnrefrest == %s\n", fnrefrest);
+						if ((fnrefrest != NULL) && !(equals(fnrefrest, STR_EMPTY))){
+							if (EXPORT_FOOTNOTES){
+								Export("%s", fnrefrest);
+							}
+						}
+						if (EXPORT_FOOTNOTES){
+							Export("%s\" "HTML_CLASS_QUIET">", fnrefbuff);
+							Export("<sup>%s</sup>", fnrefbuff);
+							Export(HTML_A_END);
+						}
+					}
+					vnutri_footnote_ref = NIE;
+
+					if (EXPORT_FOOTNOTES){
+						write = ANO;
+					}
+					strcpy(fnrefrest, STR_EMPTY);
+				}// zobraziť a upraviť footnote referencie na hyperlinky -- PARAM_FOOTNOTE_REF_END
+
+// footnotes (footnote text)
+
+				// upraviť footnotes na aname
+				if (equals(strbuff, PARAM_FOOTNOTE_BEGIN) && (vnutri_inkludovaneho == ANO)){
+					vnutri_footnote = ANO;
+					write = NIE;
+					fn_index = 0;
+					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)){
+						if (rest != NULL){
+							mystrcpy(fnrest, rest, MAX_BUFFER);
+						}
+						DetailLog("\trest     == %s\n", rest);
+						DetailLog("\tfnrest   == %s\n", fnrest);
+					}
+				}// upraviť footnotes na aname -- PARAM_FOOTNOTE_BEGIN
+				if (equals(strbuff, PARAM_FOOTNOTE_END) && (vnutri_inkludovaneho == ANO)){
+					fnbuff[fn_index] = '\0';
+
+					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && (write == NIE)){ // podmienka na write kvôli tomu, že write mohlo byť na ANO nastavené napr. vnorenou biblickou referenciou
+
+						DetailLog("\trest     == %s\n", rest);
+						DetailLog("\tfnrest   == %s\n", fnrest);
+						DetailLog("\tfnbuff   == %s\n", fnbuff);
+
+						if ((fnrest != NULL) && !(equals(fnrest, STR_EMPTY))){
+							if (EXPORT_FOOTNOTES){
+								Export(HTML_A_NAME_BEGIN"\"fn%s\">", fnrest);
+								Export(HTML_A_END);
+								Export("<sup>%s</sup>&nbsp;", fnrest);
+							}
+						}
+						if (EXPORT_FOOTNOTES){
+							Export("%s", fnbuff);
+						}
+
+					}
+					vnutri_footnote = NIE;
+
+					if (EXPORT_FOOTNOTES){
+						write = ANO;
+					}
+					strcpy(fnrest, STR_EMPTY);
+				}// zobraziť a upraviť footnotes na aname -- PARAM_FOOTNOTE_END
+
+// biblical references
+
 				// upraviť referencie na hyperlinky
-				if (equals(strbuff, PARAM_REFERENCIA_BEGIN) && (vnutri_inkludovaneho == 1)){
+				if (equals(strbuff, PARAM_REFERENCIA_BEGIN) && (vnutri_inkludovaneho == ANO)){
+
+					// spracujeme prípadný buffer ak to bolo vnorené v rámci footnote
+					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && EXPORT_FOOTNOTES && (vnutri_footnote == ANO)){
+
+						DetailLog("\tfnbuff   == %s\n", fnbuff);
+
+						if ((fnrest != NULL) && !(equals(fnrest, STR_EMPTY))){
+							Export(HTML_A_NAME_BEGIN"\"fn%s\">", fnrest);
+							Export(HTML_A_END);
+							Export("<sup>%s</sup>&nbsp;", fnrest);
+
+							fnbuff[fn_index] = '\0';
+							Export("%s", fnbuff);
+
+							strcpy(fnrest, STR_EMPTY);
+							strcpy(fnbuff, STR_EMPTY);
+							fn_index = 0;
+						}
+					}
+
 					vnutri_referencie = ANO;
 					write = NIE;
 					ref_index = 0;
@@ -1512,7 +1635,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						DetailLog("\trefrest  == %s\n", refrest);
 					}
 				}// upraviť referencie na hyperlinky -- PARAM_REFERENCIA_BEGIN
-				if (equals(strbuff, PARAM_REFERENCIA_END) && (vnutri_inkludovaneho == 1)){
+				if (equals(strbuff, PARAM_REFERENCIA_END) && (vnutri_inkludovaneho == ANO)){
+
 					refbuff[ref_index] = '\0';
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)){
 						// ToDo: časom dať odkaz napr. do konfiguračného súboru
@@ -1526,6 +1650,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\trefrest  == %s\n", refrest);
+						DetailLog("\trefbuff  == %s\n", refbuff);
 						if ((refrest != NULL) && !(equals(refrest, STR_EMPTY))){
 							// [ToDo]: doplniť nevypisovanie refbuff, ak refrest obsahuje medzeru
 							if (EXPORT_REFERENCIA){
@@ -1558,6 +1683,18 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						write = ANO;
 					}
 					strcpy(refrest, STR_EMPTY);
+
+					// spracujeme prípadný buffer ak to bolo vnorené v rámci footnote
+					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && EXPORT_FOOTNOTES && (vnutri_footnote == ANO)){
+						if ((fnrest != NULL) && !(equals(fnrest, STR_EMPTY))){
+							fnbuff[fn_index] = '\0';
+
+							strcpy(fnrest, STR_EMPTY);
+							strcpy(fnbuff, STR_EMPTY);
+							fn_index = 0;
+						}
+					}
+
 				}// upraviť referencie na hyperlinky -- PARAM_REFERENCIA_END
 
 #if defined(BEHAVIOUR_WEB)
@@ -1969,16 +2106,21 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 			continue;
 		}// switch(c)
 		if (!isbuff){
+			// bez ohľadu na to, ako je nastavené write
+			if (vnutri_footnote_ref == ANO){
+				AppendWchar(c, sizeof(fnrefbuff), fnrefbuff, &fnref_index);
+			}
+			if (vnutri_footnote == ANO && !(vnutri_referencie == ANO)){
+				// nečítam, ak som zároveň vnorený v rámci biblickej referencie
+				AppendWchar(c, sizeof(fnbuff), fnbuff, &fn_index);
+			}
 			if (vnutri_referencie == ANO){
-				// bez ohľadu na to, ako je nastavené write
 				AppendWchar(c, sizeof(refbuff), refbuff, &ref_index);
 			}
 			if (vnutri_katechezy == ANO){
-				// bez ohľadu na to, ako je nastavené write
 				AppendWchar(c, sizeof(katbuff), katbuff, &kat_index);
 			}
 			if (vnutri_z95 == ANO){
-				// bez ohľadu na to, ako je nastavené write
 				AppendWchar(c, sizeof(z95buff), z95buff, &z95_index);
 			}
 			if (write == ANO){
@@ -6310,6 +6452,9 @@ void xml_export_options(void){
 				case 8: // BIT_OPT_0_BLIND_FRIENDLY
 					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_BLIND_FRIENDLY)"%d"ELEM_END(XML_BIT_OPT_0_BLIND_FRIENDLY)"\n", BIT_OPT_0_BLIND_FRIENDLY, STR_MODL_OPTF_0_BLIND_FRIENDLY, html_text_option0_blind_friendly[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)));
 					break;
+				case 9: // BIT_OPT_0_FOOTNOTES
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_FOOTNOTES)"%d"ELEM_END(XML_BIT_OPT_0_FOOTNOTES)"\n", BIT_OPT_0_FOOTNOTES, STR_MODL_OPTF_0_FOOTNOTES, html_text_option0_footnotes[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)));
+					break;
 				}// switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE)"\n");
@@ -9102,6 +9247,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		else{
 			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_0_REF, (isGlobalOptionForce(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)) ? ANO : NIE);
 		}// else: treba nastaviť hidden pre všetky options pre _global_optf
+
+		// pole (checkbox) WWW_/STR_MODL_OPTF_0_FOOTNOTES
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES, STR_MODL_OPTF_0_FOOTNOTES, html_text_option0_footnotes[_global_jazyk], html_text_option0_footnotes_explain[_global_jazyk]);
 
 #ifdef BEHAVIOUR_WEB
 		// pole (checkbox) WWW_/STR_MODL_OPTF_0_CIT

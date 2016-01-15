@@ -30,6 +30,7 @@
     <string name="display_communia_info">info, odkud se berou společné texty</string>
     <string name="verse_numbering">číslování veršů</string>
     <string name="bible_references">biblické odkazy</string>
+    <string name="footnotes">poznámky pod čarou</string>
     <string name="liturgical_readings">liturgická čtení</string>
 
     <string name="display_settings_title">Další zobrazení:</string>
@@ -101,6 +102,11 @@ body { background-color: #000000; color: #cccccc; }
 <body>
 
 <p><b>Aplikace Breviář | Co je nové</b>
+
+<p><b>Verze 1.12.3</b>
+<ul>
+<li> Nová volba: Možnost zobrazit poznámky pod čarou ke druhým čtením.
+</ul>
 
 <p><b>Verze 1.12.2</b>
 <ul>

@@ -30,6 +30,7 @@
     <string name="display_communia_info">info, odkiaľ sa berú spoločné časti k modlitbe svätého</string>
     <string name="verse_numbering">číslovanie veršov</string>
     <string name="bible_references">biblické odkazy</string>
+    <string name="footnotes">poznámky pod čiarou</string>
     <string name="liturgical_readings">liturgické čítania</string>
 
     <string name="display_settings_title">Ďalšie zobrazenia:</string>
@@ -101,6 +102,11 @@ body { background-color: #000000; color: #cccccc; }
 <body>
 
 <p><b>Aplikácia Breviár | Čo je nové</b>
+
+<p><b>Verzia 1.12.3</b>
+<ul>
+<li> Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.
+</ul>
 
 <p><b>Verzia 1.12.2</b>
 <ul>

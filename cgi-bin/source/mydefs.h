@@ -522,9 +522,17 @@ extern short int query_type; // contains constants PRM_...
 // blind-friendly mode
 #define MODL_OPTF_0_BLIND_FRIENDLY 69
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0_BLIND_FRIENDLY "MODL_OPTF_0_BLIND_FRIENDLY"
+#define STR_MODL_OPTF_0_BLIND_FRIENDLY "MODL_OPTF_0_BLIND_FRIENDLY"
 #else
-	#define STR_MODL_OPTF_0_BLIND_FRIENDLY "of0bf"
+#define STR_MODL_OPTF_0_BLIND_FRIENDLY "of0bf"
+#endif
+
+// footnotes
+#define MODL_OPTF_0_FOOTNOTES 70
+#ifdef LONG_PARAM_NAMES
+#define STR_MODL_OPTF_0_FOOTNOTES "MODL_OPTF_0_FOOTNOTES"
+#else
+#define STR_MODL_OPTF_0_FOOTNOTES "of0ff"
 #endif
 
 // pre force option 1 jednotlivé bit-komponenty (parciálne voľby)
@@ -1035,6 +1043,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_FONT_NORMAL               "BitOpt0ForceNormalFontWeight"
 #define XML_BIT_OPT_0_BUTTONS_ORDER             "BitOpt0ButtonsOrder"
 #define XML_BIT_OPT_0_BLIND_FRIENDLY            "BitOpt0BlindFriendly"
+#define XML_BIT_OPT_0_FOOTNOTES                 "BitOpt0Footnotes"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"
