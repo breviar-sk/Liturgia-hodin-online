@@ -1644,8 +1644,11 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							if (_global_jazyk == JAZYK_HU){
 								Export(HTML_A_HREF_BEGIN"\"http://www.szentiras.hu/SZIT/");
 							}
-							else{
+							else if (_global_jazyk == JAZYK_SK){
 								Export(HTML_A_HREF_BEGIN"\"http://dkc.kbs.sk/?in=");
+							}
+							else{
+								Export(HTML_A_HREF_BEGIN"\"#");
 							}
 						}
 						DetailLog("\trest     == %s\n", rest);
