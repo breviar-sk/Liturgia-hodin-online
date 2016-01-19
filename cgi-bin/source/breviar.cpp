@@ -13125,7 +13125,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	if (jeSpolocnaCast == ANO){
 		Log("_main_liturgicke_obdobie(): spoločná časť == %s...\n", nazov_spolc(_global_den.spolcast));
 		_struct_sc sc = _decode_spol_cast(_global_den.spolcast);
-		set_spolocna_cast(sc, poradie_svateho, FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP_PROSBY + FORCE_BRAT_2CITANIE + FORCE_BRAT_ANTIFONY_MCD + FORCE_BRAT_HYMNUS + FORCE_BRAT_ANTIFONY_B_M + FORCE_BRAT_ANTIFONY_INV + FORCE_BRAT_MODLITBA);
+		set_spolocna_cast(sc, poradie_svateho, FORCE_BRAT_VSETKO);
 		set_popis_dummy(); // force
 	}
 

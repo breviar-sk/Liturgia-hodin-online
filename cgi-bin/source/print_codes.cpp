@@ -25,8 +25,8 @@ int main() {
   int d,m,r;
 
   checkCitania();
-  for (r = 2014; r <= 2014; r++) {
-    for (m=3; m<=4; m++) {
+  for (r = 2016; r <= 2016; r++) {
+    for (m=1; m<=2; m++) {
       for (d=1; d<=D[m-1] + (m==2 && r%4==0); d++) {
         sprintf(ds, "-d%02d", d);
         sprintf(ms, "-m%02d", m);

@@ -28,7 +28,7 @@ short int sviatky_svatych(short int, short int, short int, short int); // spusta
 
 extern const char *html_title[POCET_JAZYKOV + 1];
 
-extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, short int force = 0);
+extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force = 0);
 
 void set_popis_dummy(void);
 void _set_prosby_dodatok(short int den, short int force_prve_vespery = NIE);

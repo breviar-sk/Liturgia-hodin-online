@@ -565,13 +565,16 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define FORCE_BRAT_ANTIFONY        1 // antifóny pre ranné chvály, posv. čítanie a vešpery
 #define FORCE_BRAT_ZALMY           2
 #define FORCE_BRAT_KCIT_1CIT       4 // krátke čítanie pre rch+v a mcd; 1. čítanie pre posvätné čítanie
-#define FORCE_BRAT_KRESP_PROSBY    8 // krátke responzórium a prosby pre ranné chvály, vešpery a mcd; krátke responzórium pre posv. čítanie
+#define FORCE_BRAT_KRESP           8 // krátke responzórium pre ranné chvály, vešpery, posv. čítanie a mcd
 #define FORCE_BRAT_2CITANIE       16 // 2. čítanie pre posvätné čítanie
 #define FORCE_BRAT_ANTIFONY_MCD   32 // antifóny pre modlitbu cez deň
 #define FORCE_BRAT_HYMNUS         64 // hymnus pre všetky modlitby
 #define FORCE_BRAT_ANTIFONY_B_M  128 // Benediktus + Magnifikat
 #define FORCE_BRAT_ANTIFONY_INV  256 // antifóny pre invitatórium
 #define FORCE_BRAT_MODLITBA      512 // modlitba (používa sa pre modlitbu cez deň)
+#define FORCE_BRAT_PROSBY       1024 // prosby pre ranné chvály a vešpery
+// force all
+#define FORCE_BRAT_VSETKO      65535 // FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + ... (všetky / all)
 
 extern const char *str_ano[POCET_JAZYKOV + 1];
 #ifndef		STR_ANO
