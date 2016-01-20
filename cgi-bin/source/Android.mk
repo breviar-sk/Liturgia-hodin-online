@@ -3,7 +3,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE    := libbreviar
 
-LOCAL_SRC_FILES := android.cpp breviar.cpp cgiutils.cpp dbzaltar.cpp \
+LOCAL_SRC_FILES := android.cpp breviar.cpp cgiutils.cpp dbzaltar.cpp kalendar.cpp \
                    liturgia.cpp myconf.cpp mydefs.cpp myexpt.cpp \
 		   mygetopt.cpp myhpage.cpp mylog.cpp mystring.cpp \
                    citania.cpp utf8-utils.cpp

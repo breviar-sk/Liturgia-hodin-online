@@ -16,6 +16,7 @@ SRCS = \
 	mystring.cpp \
 	citania.cpp  \
 	dbzaltar.cpp \
+	kalendar.cpp \
 	utf8-utils.cpp \
 
 OBJS = $(subst cpp,o,$(SRCS))
@@ -36,7 +37,7 @@ citania.o: citania.cpp citania-merged.cpp
 breviar-no-main.o: breviar.o
 	objcopy --localize-symbol=main breviar.o breviar-no-main.o
 
-print_codes: print_codes.o breviar-no-main.o citania.o dbzaltar.o liturgia.o \
+print_codes: print_codes.o breviar-no-main.o citania.o dbzaltar.o kalendar.o liturgia.o \
              mygetopt.o mylog.o myhpage.o myexpt.o cgiutils.o myconf.o utf8-utils.o \
              mydefs.o mystring.o 
 	g++ -o $@ $^
