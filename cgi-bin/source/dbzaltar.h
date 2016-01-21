@@ -743,12 +743,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 }
 
 // rovnako tak pre spolocnu cast...
-#define _spolocna_cast_kcitanie			_vlastna_cast_kcitanie
-#define _spolocna_cast_benediktus		_vlastna_cast_benediktus
-#define _spolocna_cast_magnifikat		_vlastna_cast_magnifikat
-#define _spolocna_cast_prosby			_vlastna_cast_prosby
+#define _spolocna_cast_kcitanie(modl)		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){ _vlastna_cast_kcitanie; }
+#define _spolocna_cast_benediktus(modl)		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){ _vlastna_cast_benediktus; }
+#define _spolocna_cast_magnifikat(modl)		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){ _vlastna_cast_magnifikat; }
+#define _spolocna_cast_prosby(modl)			if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_PROSBY) == FORCE_BRAT_PROSBY)){ _vlastna_cast_prosby; }
+
 #define _spolocna_cast_modlitba			_vlastna_cast_modlitba
-// #define _spolocna_cast_modlitba_prve_vesp _vlastna_cast_modlitba_ina
 
 // ... az na antifony...
 #define _spolocna_cast_antifony {\
@@ -769,7 +769,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define	_spolocna_cast_antifona_inv(m) {\
 	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(m) || ((force & FORCE_BRAT_ANTIFONY_INV) == FORCE_BRAT_ANTIFONY_INV)){\
 		_vlastna_cast_antifona_inv;\
-		}\
+	}\
 }
 
 // pre invitatórium, ak je antifón viacero, napr. pre PM, ofícium na posviacku chrámu a pod.
@@ -777,9 +777,9 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(m) || ((force & FORCE_BRAT_ANTIFONY_INV) == FORCE_BRAT_ANTIFONY_INV)){\
 		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1, (_global_den.den MOD kolko) + 1);\
 		if(modlitba == MODL_POSV_CITANIE){_set_antifona1(modlitba, _file_pc, _anchor);}\
-				else{_set_antifona1(modlitba, _file, _anchor);}\
+		else{_set_antifona1(modlitba, _file, _anchor);}\
 		set_LOG_svsv;\
-		}\
+	}\
 }
 
 // 1. čítanie
@@ -791,9 +791,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 // 2. čítanie
 #define _spolocna_cast_2citanie {\
-	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
-	_set_citanie2(modlitba, _file, _anchor);\
-	set_LOG_svsv;\
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(MODL_POSV_CITANIE) || ((force & FORCE_BRAT_2CITANIE) == FORCE_BRAT_2CITANIE)){\
+		Log("_spolocna_cast_2citanie(%s)...\n", nazov_modlitby(MODL_POSV_CITANIE));\
+		sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_POSV_CITANIE), ANCHOR_CITANIE2);\
+		_set_citanie2(modlitba, _file, _anchor);\
+		set_LOG_svsv;\
+	}\
 }
 
 // ... a spolocnu cast full 
@@ -808,85 +811,72 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	Log("_global_den.typslav = %d\n", _global_den.typslav);\
 	for(short int i = 0; i < MAX_POCET_SVATY; i++){\
 		Log("_global_svaty(%d).typslav = %d\n", i + 1, _global_svaty(i + 1).typslav);\
-		}\
+	}\
 	if(!(je_modlitba_cez_den(modl))){\
 		_spolocna_cast_hymnus(modl, _global_den.litobd);\
-		}\
+	}\
 	if(su_antifony_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY) == FORCE_BRAT_ANTIFONY)){\
 		Log("_spolocna_cast_antifony(%s)\n", nazov_modlitby(modl));\
 		_spolocna_cast_antifony;\
-		}\
-		else if(je_modlitba_cez_den(modl)){\
+	}\
+	else if(je_modlitba_cez_den(modl)){\
 		Log("_spolocna_cast_antifony(%s) - MCD...\n", nazov_modlitby(modl));\
 		if(su_antifony_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY_MCD) == FORCE_BRAT_ANTIFONY_MCD)){\
 			_spolocna_cast_antifony;\
-				}\
 		}\
-		else {\
+	}\
+	else {\
 		Log("_spolocna_cast_antifony(%s) - NEBERÚ SA!\n", nazov_modlitby(modl));\
-		}\
+	}\
 	if(je_modlitba_cez_den(modl)){\
 		Log("idem skúsiť zohľadniť _set_zalmy_mcd_doplnkova_psalmodia_alternativy(%s)\n", nazov_modlitby(modl));\
 		if(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)){\
 			_set_zalmy_mcd_doplnkova_psalmodia_alternativy(modlitba);\
-				}\
-		if(su_kcit_kresp_modlitba_mcd_vlastne(modl) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){\
+		}\
+		_spolocna_cast_kresponz;\
+		_spolocna_cast_kcitanie(modl);\
+	}\
+	else{\
+		_spolocna_cast_kcitanie(modl);\
+		if(modl != MODL_POSV_CITANIE){\
 			_spolocna_cast_kresponz;\
-				}\
-		if(su_kcit_kresp_modlitba_mcd_vlastne(modl) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){\
-			_vlastna_cast_kcitanie;\
-				}\
 		}\
-		else{\
-		if(((su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl)) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)) && (modl != MODL_POSV_CITANIE)){\
-			_vlastna_cast_kcitanie;\
-				}\
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){\
-			if(modl != MODL_POSV_CITANIE){\
-				_spolocna_cast_kresponz;\
-						}\
-			if((modl == MODL_RANNE_CHVALY) || (modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){\
-				_vlastna_cast_prosby;\
-						}\
-				}\
+		if((modl == MODL_RANNE_CHVALY) || (modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){\
+			_spolocna_cast_prosby(modl);\
 		}\
+	}\
 	if(((je_1cit_vlastne(modl)) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)) && (modl == MODL_POSV_CITANIE)){\
 		_spolocna_cast_kresponz;\
 		_spolocna_cast_1citanie;\
-		}\
+	}\
 	if(modl == MODL_RANNE_CHVALY){\
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
-			_vlastna_cast_benediktus;\
-				}\
-		}\
-		else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){\
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
-			_vlastna_cast_magnifikat;\
-				}\
-		}\
-		else if(modl == MODL_POSV_CITANIE){\
-		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_2CITANIE) == FORCE_BRAT_2CITANIE)){\
-			Log("_spolocna_cast_2citanie(%s)...\n", nazov_modlitby(modl));\
-			_spolocna_cast_2citanie;\
-				}\
-		}\
+		_spolocna_cast_benediktus(modl);\
+	}\
+	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){\
+		_spolocna_cast_magnifikat(modl);\
+	}\
+	else if(modl == MODL_POSV_CITANIE){\
+		_spolocna_cast_2citanie;\
+	}\
 	if(je_modlitba_cez_den(modl)){\
 		if(su_kcit_kresp_modlitba_mcd_vlastne(modl) || ((force & FORCE_BRAT_MODLITBA) == FORCE_BRAT_MODLITBA)){\
 			_vlastna_cast_modlitba;\
-				}\
 		}\
-		else{\
+	}\
+	else{\
 		_vlastna_cast_modlitba;\
-		}\
+	}\
 	Log("_spolocna_cast_full(%s): koniec.\n", nazov_modlitby(modl));\
 }
 // _spolocna_cast_full()
 
 // kratke responzorium
 #define _spolocna_cast_kresponz {\
-	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
-	_set_kresponz(modlitba, _file, _anchor);\
-	set_LOG_svsv;\
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){\
+		sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+		_set_kresponz(modlitba, _file, _anchor);\
+		set_LOG_svsv;\
+	}\
 }
 
 // pre Cezročné obdobie treba zrušiť možnosť brať alternatívy hymnov (posv. čítanie, I. resp. II.)
@@ -898,7 +888,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 		sprintf(_anchor, "%s%s%c%s", _special_anchor_prefix, _anchor_head, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
 		_set_hymnus(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 }
 
 #define _spolocna_cast_hymnus_po {\
@@ -906,28 +896,31 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 		sprintf(_anchor, "%s%s%c%s%s", _special_anchor_prefix, _anchor_head, pismenko_modlitby(modlitba), ANCHOR_HYMNUS, POSTNA_PRIPONA);\
 		_set_hymnus(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 }
+
 #define _spolocna_cast_hymnus_ve {\
 	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_HYMNUS) == FORCE_BRAT_HYMNUS)){\
 		sprintf(_anchor, "%s%s%c%s%s", _special_anchor_prefix, _anchor_head, pismenko_modlitby(modlitba), ANCHOR_HYMNUS, VELKONOCNA_PRIPONA);\
 		_set_hymnus(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 }
+
 #define _spolocna_cast_benediktus_ve {\
 	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS, VELKONOCNA_PRIPONA);\
 		_set_benediktus(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 }
+
 #define _spolocna_cast_magnifikat_ve {\
 	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT, VELKONOCNA_PRIPONA);\
 		_set_magnifikat(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 }
 
 // použité pre spoločnú časť jednoho mučeníka/mučenice a viacerých mučeníkov, MCD
@@ -936,7 +929,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE, VELKONOCNA_PRIPONA);\
 		_set_kcitanie(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 }
 
 // specialne veci pre sviatky panien (aj pre sväté ženy a pre jednoho mučeníka na MCD)
@@ -945,7 +938,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, VELKONOCNA_PRIPONA);\
 		_set_kresponz(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 }
 
 // specialne veci pre sviatky jedneho mucenika
@@ -954,24 +947,24 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE, VELKONOCNA_PRIPONA);\
 		_set_kcitanie(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){\
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, VELKONOCNA_PRIPONA);\
 		_set_kresponz(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){\
 		if(modlitba == MODL_RANNE_CHVALY){\
 			sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS, VELKONOCNA_PRIPONA);\
 			_set_benediktus(modlitba, _file, _anchor);\
 			set_LOG_svsv;\
-				}\
-				else if((modlitba == MODL_VESPERY) || (modlitba == MODL_PRVE_VESPERY)){\
+		}\
+		else if((modlitba == MODL_VESPERY) || (modlitba == MODL_PRVE_VESPERY)){\
 			sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT, VELKONOCNA_PRIPONA);\
 			_set_magnifikat(modlitba, _file, _anchor);\
 			set_LOG_svsv;\
-				}\
 		}\
+	}\
 }
 
 #define _spolocna_cast_ant1_3_po {\
@@ -994,7 +987,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 		sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA2, POSTNA_PRIPONA);\
 		_set_antifona2(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
-		}\
+	}\
 }
 
 /* ---------------------------------------------------------------------------------------------------- */

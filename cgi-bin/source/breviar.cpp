@@ -5449,22 +5449,29 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 					poradie_svaty_pom = poradie_svaty;
 				}
 				_rozbor_dna_LOG("bola splnená podmienka...\n");
-				// menim, lebo svaty ma prednost
-				// 2006-02-06: pre viacero ľubovoľných spomienok treba byť obozretnejší | 2013-08-05: snáď opravené
+
 				_rozbor_dna_LOG("\tporadie_svaty == %d; poradie_svaty_pom == %d\n", poradie_svaty, poradie_svaty_pom);
 				_rozbor_dna_LOG("\t_global_den.denvt == %d (%s), _global_den.litobd == %d (%s)...\n", _global_den.denvt, nazov_dna(_global_den.denvt), _global_den.litobd, nazov_obdobia_ext(_global_den.litobd));
+				// menim, lebo svaty ma prednost
 				_rozbor_dna_LOG("mením, lebo svätý `%d'/`%d' má prednosť...\n", poradie_svaty, poradie_svaty_pom);
 
 				if (poradie_svaty_pom != PORADIE_PM_SOBOTA){
 					_rozbor_dna_LOG("\t_global_svaty(%d).smer == %d...\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).smer);
 
 					Log("do _global_den priraďujem _global_svaty(%d)... (`%s')\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).meno);
+
+					_global_den = _global_svaty(poradie_svaty_pom);
+
+					/* kedysi | POZOR: nepriraďujem celý objekt, len vybrané premenné!!!
 					mystrcpy(_global_den.meno, _global_svaty(poradie_svaty_pom).meno, MENO_SVIATKU); // priradenie názvu dňa
 					_global_den.smer = _global_svaty(poradie_svaty_pom).smer; // dôležitosť sviatku podľa smerníc
 					_global_den.typslav = _global_svaty(poradie_svaty_pom).typslav;
 					_global_den.typslav_lokal = _global_svaty(poradie_svaty_pom).typslav_lokal;
 					_global_den.spolcast = _global_svaty(poradie_svaty_pom).spolcast;
 					_global_den.prik = _global_svaty(poradie_svaty_pom).prik;
+					_global_den.farba = _global_svaty(poradie_svaty_pom).farba;
+					_global_den.kalendar = _global_svaty(poradie_svaty_pom).kalendar;
+					*/
 				}
 				else{
 					Log("do _global_den by som mal priradiť _global_pm_sobota (%d)... (`%s') -- PRESKAKUJEM, ANI DOTERAZ SA TO NEROBILO!\n", poradie_svaty_pom, _global_pm_sobota.meno);
@@ -6072,7 +6079,8 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		// condition to display calendar info in prayer subtitle: either condition PODMIENKA_EXPORTOVAT_KALENDAR holds (and calendar is not default national calendar) or explicitly requested
 		if (((PODMIENKA_EXPORTOVAT_KALENDAR) && (_local_den.kalendar != default_kalendar[_global_jazyk])) || (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_SHOW_DEFAULT_CALENDAR))){
 			mystrcpy(popisok_kalendar, nazov_kalendara_long[_local_den.kalendar], MAX_STR);
-	}// otherwise empty
+			Log("podmienka OK, popisok_kalendar == %s (_local_den.kalendar == %d)\n", popisok_kalendar, _local_den.kalendar);
+		}// otherwise empty
 		mystrcpy(popisok_lokal, STR_EMPTY, MAX_STR);
 		// teraz lokalizácia slavenia resp. poznámku o lokálnom kalendári
 		if (_local_den.typslav_lokal != LOKAL_SLAV_NEURCENE) {
@@ -6155,7 +6163,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			strcat(_local_string, pom);
 #endif // not LITURGICKE_CITANIA_ANDROID // BEHAVIOUR_WEB
 		}// if((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_CITANIA)) && aj_citanie)
-			}// lokalizácia slávenia a kalendár
+	}// lokalizácia slávenia a kalendár
 	else{
 		sprintf(pom, " (%s)", _local_den.lc_str_id);
 		Log("pridávam odkaz na liturgické čítania (lc.kbs.sk): %s\n", pom);

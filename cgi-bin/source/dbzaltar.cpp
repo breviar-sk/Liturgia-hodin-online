@@ -8864,13 +8864,9 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// prvé vešpery
 		modlitba = MODL_PRVE_VESPERY;
 		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
-		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){
-			_spolocna_cast_kcitanie;
-		}
-		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){
-			_spolocna_cast_kresponz;
-		}
-		_spolocna_cast_magnifikat;
+		_spolocna_cast_kcitanie(modlitba);
+		_spolocna_cast_kresponz;
+		_spolocna_cast_magnifikat(modlitba);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
@@ -8894,21 +8890,15 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
-		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_2CITANIE) == FORCE_BRAT_2CITANIE)){
-			_spolocna_cast_2citanie;
-		}
+		_spolocna_cast_2citanie;
 		_spolocna_cast_modlitba;
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
 		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
-		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){
-			_spolocna_cast_kcitanie;
-		}
-		if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){
-			_spolocna_cast_kresponz;
-		}
-		_spolocna_cast_benediktus;
+		_spolocna_cast_kcitanie(modlitba);
+		_spolocna_cast_kresponz;
+		_spolocna_cast_benediktus(modlitba);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
@@ -8920,13 +8910,9 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		if (_global_den.litobd != OBD_OKTAVA_NARODENIA){
 			modlitba = MODL_VESPERY;
 			_spolocna_cast_hymnus(modlitba, _global_den.litobd);
-			if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){
-				_spolocna_cast_kcitanie;
-			}
-			if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){
-				_spolocna_cast_kresponz;
-			}
-			_spolocna_cast_magnifikat;
+			_spolocna_cast_kcitanie(modlitba);
+			_spolocna_cast_kresponz;
+			_spolocna_cast_magnifikat(modlitba);
 			if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_kresp_ve;
 			}
@@ -9185,7 +9171,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// prvé vešpery
 		modlitba = MODL_PRVE_VESPERY;
-		_spolocna_cast_magnifikat;
+		_spolocna_cast_magnifikat(modlitba);
 		_spolocna_cast_modlitba;
 
 		// posvätné čítanie
@@ -9200,14 +9186,14 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		_spolocna_cast_benediktus;
+		_spolocna_cast_benediktus(modlitba);
 		_spolocna_cast_modlitba;
 
 		// modlitba cez deň
 
 		// vešpery
 		modlitba = MODL_VESPERY;
-		_spolocna_cast_magnifikat;
+		_spolocna_cast_magnifikat(modlitba);
 		_spolocna_cast_modlitba;
 
 	}// MODL_SPOL_CAST_SV_MUZ/ZENA_VYCH
@@ -9236,7 +9222,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// prvé vešpery
 		modlitba = MODL_PRVE_VESPERY;
-		_spolocna_cast_magnifikat;
+		_spolocna_cast_magnifikat(modlitba);
 		_spolocna_cast_modlitba;
 
 		// posvätné čítanie
@@ -9258,14 +9244,14 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		_spolocna_cast_benediktus;
+		_spolocna_cast_benediktus(modlitba);
 		_spolocna_cast_modlitba;
 
 		// modlitba cez deň
 
 		// vešpery
 		modlitba = MODL_VESPERY;
-		_spolocna_cast_magnifikat;
+		_spolocna_cast_magnifikat(modlitba);
 		_spolocna_cast_modlitba;
 
 	}// MODL_SPOL_CAST_SV_MUZ/ZENA_SKUTKYMIL
@@ -9798,21 +9784,21 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		if ((_global_den.den != 9) && (_global_den.mesiac - 1 != MES_NOV)){
 			_spolocna_cast_antifony;
 		}
-		_spolocna_cast_kcitanie;
+		_spolocna_cast_kcitanie(modlitba);
 		_spolocna_cast_kresponz;
 		_spolocna_cast_modlitba;
 		modlitba = MODL_NAPOLUDNIE;
 		if ((_global_den.den != 9) && (_global_den.mesiac - 1 != MES_NOV)){
 			_spolocna_cast_antifony;
 		}
-		_spolocna_cast_kcitanie;
+		_spolocna_cast_kcitanie(modlitba);
 		_spolocna_cast_kresponz;
 		_spolocna_cast_modlitba;
 		modlitba = MODL_POPOLUDNI;
 		if ((_global_den.den != 9) && (_global_den.mesiac - 1 != MES_NOV)){
 			_spolocna_cast_antifony;
 		}
-		_spolocna_cast_kcitanie;
+		_spolocna_cast_kcitanie(modlitba);
 		_spolocna_cast_kresponz;
 		_spolocna_cast_modlitba;
 
