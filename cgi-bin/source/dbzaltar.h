@@ -1182,6 +1182,13 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	nazov_spolc(sc.a2), sc.a2, \
 	nazov_spolc(sc.a3), sc.a3); Log
 
+// vlastné druhé čítanie na posvätné čítanie pre srdca PM
+#define _srdca_pm_2cit {\
+	sprintf(_anchor, "%s_%c%s", ANCHOR_SRDCA_PM, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+	_set_citanie2(modlitba, _file, _anchor);\
+	set_LOG_litobd;\
+}
+
 /* #define END -------------------------------------------------------------------------------------------------------------------- */
 
 // prefixes for special cases (anchors)
