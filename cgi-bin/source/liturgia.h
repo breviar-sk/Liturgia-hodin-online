@@ -401,6 +401,8 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_CITANIE2_SPOMPRIVILEG "CITANIE2_SPOMPRIVILEG"
 
 #define PARAM_NAVIGACIA     "NAVIGACIA"
+#define PARAM_NAVIGACIA_SIMPLE "NAVIGACIA_SIMPLE" // just top & bottom links
+
 #define PARAM_NADPIS        "NADPIS"
 // 2012-04-03: pridaný podnadpis v modlitbe (napr. pre MCD: doplnková psalmódia)
 #define PARAM_PODNADPIS     "PODNADPIS"
@@ -530,6 +532,9 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 // odkaz na žalm 95
 #define PARAM_LINK_ZALM95_BEGIN				"z95"
 #define PARAM_LINK_ZALM95_END				"/z95"
+
+// zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách
+#define PARAM_HVIEZDICKA                    "*"
 
 // zobrazovanie/nezobrazenie krížika (antifóna totožná s veršom žalmu/chválospevu)
 #define PARAM_KRIZIK                        "KRIZIK"

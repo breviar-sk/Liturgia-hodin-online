@@ -1136,10 +1136,15 @@ void ExportChar(int c){
 }// ExportChar()
 
 #define DetailLog emptyLog
+
 #define MAX_ZAKONCENIE 200
+
 #define EXPORT_FOOTNOTES ANO
 #define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!vnutri_footnote || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
+#define EXPORT_HVIEZDICKA(modlitba) ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || (modlitba == MODL_POSV_CITANIE) || !(_global_jazyk == JAZYK_CZ)) && !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
+
 #define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
+
 short int antifona_pocet = 0; // počet antifón (ant1, ant2, ant3 pre psalmódiu a ant. na benediktus/magnifikat kvôli krížikom)
 char rest_krizik[MAX_BUFFER] = STR_EMPTY; // pre to, čo je za krížikom v antifóne
 char rest_zakoncenie[MAX_BUFFER] = STR_EMPTY;
@@ -1305,8 +1310,9 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					// Export("[INPUT:paramname=%s|fname=%s|modlparam=%s|READ:strbuff=%s|rest=%s]", paramname, fname, modlparam, strbuff, rest);
 					if (equals(paramname, PARAM_ANTIFONA1) || equals(paramname, PARAM_ANTIFONA2) || equals(paramname, PARAM_ANTIFONA3) || equals(paramname, PARAM_ANTRCHVAL) || equals(paramname, PARAM_ANTVCHVAL) || equals(paramname, PARAM_ANTIFONA1x) || equals(paramname, PARAM_ANTIFONA3x)){
 						je_antifona = ANO;
-						if (rest != NULL && strlen(rest) > 0)
+						if (rest != NULL && strlen(rest) > 0){
 							mystrcpy(rest_krizik, rest, MAX_BUFFER);
+						}
 						// Export("antifóna[%d] -> zapamätám, ku ktorému žalmu/chválospevu patrí...\n", antifona_pocet);
 					}
 #if defined(EXPORT_HTML_SPECIALS)
@@ -1512,6 +1518,13 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				// !equalsi(rest, modlparam)
 				// write = NIE; -- aby mohli byt nestovane viacere :-)
 				DetailLog("parameter does not match: %s != %s\n", rest, modlparam);
+
+// asterisk
+				if (equals(strbuff, PARAM_HVIEZDICKA) && (vnutri_inkludovaneho == ANO)){
+					if (EXPORT_HVIEZDICKA(_global_modlitba)){
+						Export("<"HTML_SPAN_RED">*"HTML_SPAN_END); // <span class="red">*</span>
+					}
+				}// PARAM_HVIEZDICKA
 
 // footnote references
 
@@ -2156,11 +2169,17 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	Log("--includeFile(): end\n");
 }// includeFile()
 
+void _export_rozbor_dna_navig_top_bottom_simple(char *target, const char *text){
+	Export(HTML_A_HREF_BEGIN"\"#%s\""HTML_CLASS_QUIET">%s"HTML_A_END, target, text);
+}// _export_rozbor_dna_navig_top_bottom_simple()
+
 void _export_rozbor_dna_navig_top_bottom(char *target, const char *text){
 	ExportHtmlComment("p-navigation:begin");
 
 	Export(HTML_P_CENTER_SMALL);
-	Export(HTML_A_HREF_BEGIN"\"#%s\""HTML_CLASS_QUIET">%s"HTML_A_END, target, text);
+
+	_export_rozbor_dna_navig_top_bottom_simple(target, text);
+
 	Export(HTML_P_END"\n");
 
 	ExportHtmlComment("p-navigation:end");
@@ -3086,7 +3105,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else if (equals(paramname, PARAM_RESPONZ)){
 			bit = BIT_OPT_1_PLNE_RESP;
-			podmienka &= ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_PRVE_VESPERY) || (_global_modlitba == MODL_DRUHE_VESPERY));
+			podmienka &= ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_PRVE_VESPERY) || (_global_modlitba == MODL_DRUHE_VESPERY) || (_global_modlitba == MODL_KOMPLETORIUM) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM));
 			if (_global_modlitba == MODL_POSV_CITANIE){
 				specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 			}
@@ -3212,11 +3231,24 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}// PARAM_CHVALOSPEV, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
 
+	if (equals(paramname, PARAM_NAVIGACIA_SIMPLE)){
+		Export("navigácia:begin-->\n");
+
+		Export(HTML_P_CENTER_SMALL);
+		_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_TOP, html_text_top[_global_jazyk]);
+
+		Export(HTML_VERTICAL_BAR_WITH_SPACES);
+
+		_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_BOTTOM, html_text_bottom[_global_jazyk]);
+		Export(HTML_P_END"\n");
+
+		Export("<!--navigácia:end");
+	} // PARAM_NAVIGACIA_SIMPLE
+
 	if (equals(paramname, PARAM_NAVIGACIA)){
 		if (aj_navigacia == ANO){
 #ifdef BEHAVIOUR_WEB
-			// 2011-07-01: doplnená možnosť zobrazenia navigácie v texte modlitieb 
-			// 2011-07-03: presunuté sem z funkcie _patka()
+			// možnosť zobrazenia navigácie v texte modlitieb 
 			_global_pocet_navigacia++;
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)){
 				Export("navigácia:begin-->\n");
@@ -3271,8 +3303,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Export("navigácia:begin-->\n");
 			_export_rozbor_dna_buttons_dni(EXPORT_DNA_JEDEN_DEN, NIE, aj_navigacia);
 			Export("<!--navigácia:end");
-#ifdef BEHAVIOUR_WEB
-#endif
 		}// if(aj_navigacia == CIASTOCNE)
 	}// PARAM_NAVIGACIA
 
@@ -6091,7 +6121,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		strlen_popisok_lokal = strlen(popisok_lokal);
 		if (strlen_popisok_kalendar + strlen_popisok_lokal > 0){
 			if ((strlen_popisok_kalendar > 0) && (strlen_popisok_lokal > 0)){
-				strcat(popisok_kalendar, " | ");
+				strcat(popisok_kalendar, HTML_VERTICAL_BAR_WITH_SPACES);
 			}
 			sprintf(pom, "\n"HTML_LINE_BREAK"<"HTML_SPAN_RED_SUBTITLE">(%s%s)"HTML_SPAN_END"\n", popisok_kalendar, popisok_lokal);
 			Log("pridávam lokalizáciu slávenia resp. poznámku o lokálnom kalendári: %s\n", pom);
@@ -6383,7 +6413,7 @@ void xml_export_liturgicka_farba(){
 	if (export_farby){
 		Export(nazov_farby(liturgicka_farba));
 		if (liturgicka_farba_alt != LIT_FARBA_NEURCENA){
-			Export("|");
+			Export(HTML_VERTICAL_BAR);
 			Export(nazov_farby(liturgicka_farba_alt));
 		}
 	}
