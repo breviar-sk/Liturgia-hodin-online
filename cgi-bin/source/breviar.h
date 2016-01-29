@@ -426,6 +426,8 @@ extern short int _global_opt_export_date_format;
 
 #define PODMIENKA_EXPORTOVAT_STYLE_MARGIN ( (_global_style_margin > MIN_STYLE_MARGIN) && (_global_style_margin < MAX_STYLE_MARGIN) )
 
+#define PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT ((_global_opt_batch_monthly == ANO) && (export_monthly_druh > 2))
+
 //---------------------------------------------------------------------
 // definicie pre _rozbor_dna():
 //

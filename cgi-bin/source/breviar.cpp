@@ -3232,17 +3232,27 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	}// PARAM_CHVALOSPEV, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
 
 	if (equals(paramname, PARAM_NAVIGACIA_SIMPLE)){
-		Export("navigácia:begin-->\n");
+		if (aj_navigacia == ANO){
+#ifdef BEHAVIOUR_WEB
+			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)){
+				Export("navigácia:begin-->\n");
 
-		Export(HTML_P_CENTER_SMALL);
-		_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_TOP, html_text_top[_global_jazyk]);
+				Export(HTML_P_CENTER_SMALL);
+				_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_TOP, html_text_top[_global_jazyk]);
 
-		Export(HTML_VERTICAL_BAR_WITH_SPACES);
+				Export(HTML_VERTICAL_BAR_WITH_SPACES);
 
-		_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_BOTTOM, html_text_bottom[_global_jazyk]);
-		Export(HTML_P_END"\n");
+				_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_BOTTOM, html_text_bottom[_global_jazyk]);
+				Export(HTML_P_END"\n");
 
-		Export("<!--navigácia:end");
+				Export("<!--navigácia:end");
+			}
+			else{
+				Export("[skipping NAVIGACIA]");
+				Log("skipping NAVIGACIA\n");
+			}
+#endif
+		}
 	} // PARAM_NAVIGACIA_SIMPLE
 
 	if (equals(paramname, PARAM_NAVIGACIA)){
@@ -6262,7 +6272,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	}// ľubovoľná spomienka v privilegované dni
 
 	if (export_farby){
-		if (_global_opt_batch_monthly == ANO && export_monthly_druh > 2){
+		if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
 			sprintf(_global_string_farba, "\n"HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE""HTML_NONBREAKING_SPACE"\n<span style=\"font-size: "HTML_FONT_SIZE_FARBA"; background-color: %s; color: %s;\">(%s)"HTML_SPAN_END"\n",
 				(char *)html_farba_pozadie[liturgicka_farba],
 				(char *)html_farba_popredie[liturgicka_farba],
@@ -6280,7 +6290,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			}// liturgicka_farba_alt != LIT_FARBA_NEURCENA
 			sprintf(pom, HTML_LINE_BREAK);
 			strcat(_global_string_farba, pom);
-		}// if(_global_opt_batch_monthly == ANO && export_monthly_druh > 2)
+		}// if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT)
 		else{
 			sprintf(_global_string_farba, "\n<"HTML_TABLE">\n<"HTML_TABLE_ROW">\n");
 			sprintf(pom, "<"HTML_TABLE_CELL" style=\"background: %s; border: 1px solid %s;\"><span style=\"color: %s; font-size: "HTML_FONT_SIZE_FARBA";\">%s"HTML_SPAN_END""HTML_TABLE_CELL_END"\n",
@@ -6303,7 +6313,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			}// liturgicka_farba_alt != LIT_FARBA_NEURCENA
 			sprintf(pom, HTML_TABLE_ROW_END"\n"HTML_TABLE_END"\n");
 			strcat(_global_string_farba, pom);
-		}// else (_global_opt_batch_monthly == ANO && export_monthly_druh > 2)
+		}// else (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT)
 	}// export farby
 	Log("  -- _global_string_farba == %s\n", _global_string_farba);
 
@@ -7105,7 +7115,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		_global_den.rok = _global_vstup_rok;
 	}
 
-	if (_global_opt_batch_monthly == ANO && export_monthly_druh > 2){
+	if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
 		som_v_tabulke = NIE;
 		Log("-- _export_rozbor_dna_buttons(typ == %d): keďže sme v _global_opt_batch_monthly == ANO a export_monthly_druh (%d) > 2, nebudeme exportovať tabuľku...\n", typ, export_monthly_druh);
 	}
@@ -7733,7 +7743,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 		_global_den.rok = _global_vstup_rok;
 	}
 
-	if (_global_opt_batch_monthly == ANO && export_monthly_druh > 2){
+	if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
 		som_v_tabulke = NIE;
 		Log("-- _export_rozbor_dna_buttons(typ == %d): keďže sme v _global_opt_batch_monthly == ANO a export_monthly_druh (%d) > 2, nebudeme exportovať tabuľku...\n", typ, export_monthly_druh);
 	}
@@ -8135,7 +8145,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 		_global_den.rok = _global_vstup_rok;
 	}
 
-	if (_global_opt_batch_monthly == ANO && export_monthly_druh > 2){
+	if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
 		som_v_tabulke = NIE;
 		Log("-- _export_rozbor_dna_buttons(typ == %d): keďže sme v _global_opt_batch_monthly == ANO a export_monthly_druh (%d) > 2, nebudeme exportovať tabuľku...\n", typ, export_monthly_druh);
 	}
@@ -10657,7 +10667,7 @@ void _export_rozbor_dna(short int typ){
 		}
 	}
 
-	if (_global_opt_batch_monthly == ANO && export_monthly_druh > 2){
+	if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
 		som_v_tabulke = NIE;
 		Log("-- _export_rozbor_dna(typ == %d): keďže sme v _global_opt_batch_monthly == ANO a export_monthly_druh (%d) > 2, nebudeme exportovať tabuľku...\n", typ, export_monthly_druh);
 	}
@@ -10816,10 +10826,9 @@ void _export_rozbor_dna(short int typ){
 
 	if ((typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE) && (typ != EXPORT_DNA_VIAC_DNI_TXT) && (typ != EXPORT_DNA_XML)){
 
-		if ((_global_linky == ANO) || ((_global_opt_batch_monthly == ANO) && (export_monthly_druh >= 2))){
+		if ((_global_linky == ANO) || (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT)){
 
-			// 2007-08-15: vložené vypísanie kalendára a hlavného formulára 
-			// 2011-01-27: tu bolo kedysi volanie _export_rozbor_dna_buttons_dni(typ); -- presunuté vyššie
+			// vložené vypísanie kalendára a hlavného formulára 
 			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BUTTONS_ORDER)) {
 				Export(HTML_P_BEGIN""HTML_P_END"\n");
 				if ((typ != EXPORT_DNA_VIAC_DNI_TXT) && (typ != EXPORT_DNA_XML)){
@@ -10828,8 +10837,7 @@ void _export_rozbor_dna(short int typ){
 			}
 
 			ExportHtmlComment("BEGIN: kalendárik");
-			if ((_global_opt_batch_monthly == ANO) && (export_monthly_druh > 2)){
-				// 2009-08-26: doplnené; 2011-04-13: podmienka rozšírená vyššie ((typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE) && (typ != EXPORT_DNA_VIAC_DNI_TXT))
+			if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
 				Log("pre tento typ exportu sa kalendárik negeneruje\n");
 			}
 			else{
@@ -11842,7 +11850,7 @@ void rozbor_mesiaca(short int mesiac, short int rok, short int typ_exportu = EXP
 		typ = typ_exportu;
 	}
 
-	if (_global_opt_batch_monthly == ANO && export_monthly_druh > 2){
+	if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
 		som_v_tabulke = NIE;
 		Log("-- rozbor_mesiaca: keďže sme v _global_opt_batch_monthly == ANO a export_monthly_druh (%d) > 2, nebudeme exportovať tabuľku...\n", export_monthly_druh);
 	}
@@ -12143,13 +12151,15 @@ void _rozparsuj_parametre_OPT(void){
 	log_pom_MODL_OPTF();
 
 	// setting up global strings for HTML export
-	if (isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_DO_NOT_USE_BUTTON)){
+	if ((isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_DO_NOT_USE_BUTTON)) || PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
+		// use old behaviour with <a class="button"> for 'plain export' (batch mode) or when explicitly requested (BIT_OPT_4_DO_NOT_USE_BUTTON)
 		mystrcpy(optional_html_button_begin, STR_EMPTY, MAX_STR);
 		mystrcpy(optional_html_button_end, STR_EMPTY, MAX_STR);
 		mystrcpy(optional_html_class_button, " "HTML_CLASS_BUTTON, MAX_STR);
 		mystrcpy(optional_html_line_break, HTML_LINE_BREAK, MAX_STR);
 	}
 	else{
+		// use new behaviour - display <a> element like button
 		mystrcpy(optional_html_button_begin, HTML_BUTTON_BEGIN"\n", MAX_STR);
 		mystrcpy(optional_html_button_end, HTML_BUTTON_END"\n", MAX_STR);
 		mystrcpy(optional_html_class_button, STR_EMPTY, MAX_STR);
@@ -12182,7 +12192,7 @@ void _main_rozbor_dna(char *den, char *mesiac, char *rok, char *modlitba, char *
 
 	short int som_v_tabulke = ANO; // či sa používa tabuľka; bežne pre web áno, pre export pre mobilné zariadenia [export_monthly_druh >= 3] netreba tabuľku
 
-	if (_global_opt_batch_monthly == ANO && export_monthly_druh > 2){
+	if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
 		som_v_tabulke = NIE;
 		Log("-- _main_rozbor_dna: keďže sme v _global_opt_batch_monthly == ANO a export_monthly_druh (%d) > 2, nebudeme exportovať tabuľku...\n", export_monthly_druh);
 	}
