@@ -1362,6 +1362,7 @@ char *caps_BIG(const char *input);
 char *remove_diacritics(const char *input);
 char *convert_nonbreaking_spaces(const char *input);
 
+char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align);
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
 // podľa toho, ako sa funkcia volá, určím case (použitie veľkých/malých písmen)
 #define vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align)

@@ -129,7 +129,7 @@ void _buttons_prev_up_next(FILE * expt){
 		Export_to_file(expt, optional_html_button_end);
 		Export_to_file(expt, HTML_A_END);
 		// |
-		Export_to_file(expt, HTML_VERTICAL_BAR_WITH_SPACES);
+		Export_to_file(expt, STR_VERTICAL_BAR_WITH_SPACES);
 	}
 	// ^ hore
 	Export_to_file(expt, HTML_A_HREF_BEGIN"\".%s%s\"%s>", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore, optional_html_class_button); // v tom istom adresári
@@ -151,7 +151,7 @@ void _buttons_prev_up_next(FILE * expt){
 			strncpy(ptr, pismeno_next, 1);
 		}
 		// |
-		Export_to_file(expt, HTML_VERTICAL_BAR_WITH_SPACES);
+		Export_to_file(expt, STR_VERTICAL_BAR_WITH_SPACES);
 		Export_to_file(expt, HTML_A_HREF_BEGIN"\"%s\"%s>", file_name_pom, optional_html_class_button);
 		Export_to_file(expt, optional_html_button_begin);
 		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_next));
@@ -308,7 +308,7 @@ void hlavicka(char *title, short int level, short int spec){
 	char _title[MAX_STR] = STR_EMPTY;
 #if defined(OS_Windows_Ruby)
 	mystrcpy(_title, skratka_jazyka_title[_global_jazyk], MAX_STR);
-	strcat(_title, ": ");
+	strcat(_title, STR_VERTICAL_BAR_WITH_SPACES);
 #endif
 	strcat(_title, title);
 	_hlavicka(_title, NULL, level, spec);
@@ -318,7 +318,7 @@ void hlavicka(char *title, FILE * expt, short int level, short int spec){
 	char _title[MAX_STR] = STR_EMPTY;
 #if defined(OS_Windows_Ruby)
 	mystrcpy(_title, skratka_jazyka_title[_global_jazyk], MAX_STR);
-	strcat(_title, ": ");
+	strcat(_title, STR_VERTICAL_BAR_WITH_SPACES);
 #endif
 	strcat(_title, title);
 	_hlavicka(_title, expt, level, spec);

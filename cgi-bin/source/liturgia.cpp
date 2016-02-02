@@ -475,6 +475,36 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 	Log("prilep_request_options() -- koniec.\n");
 }// prilep_request_options();
 
+char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align){
+	short int typ = 0;
+	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
+
+	if ((den < 1) || (den > 31)){
+		den = VSETKY_DNI;
+	}
+	if (mesiac > 11){
+		mesiac = VSETKY_MESIACE;
+	}
+
+	if ((den == VSETKY_DNI) && (mesiac == VSETKY_MESIACE))
+	{
+		sprintf(_global_pom_str, "%d", rok);
+		return (_global_pom_str);
+	}
+	else if ((den > 0) && ((mesiac > 0) && (mesiac != VSETKY_MESIACE))){
+		if (rok == 0){
+			typ = LINK_DEN_MESIAC;
+		}
+		else{
+			typ = LINK_DEN_MESIAC_ROK;
+		}
+		return _vytvor_string_z_datumu(den, mesiac, rok, _case, typ, align);
+	}
+	else{
+		return (_global_pom_str);
+	}
+}// _vytvor_string_z_datumu_ext()
+
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align){
 	char pom[MAX_STR] = STR_EMPTY;
 	char vypln[SMALL] = STR_EMPTY;

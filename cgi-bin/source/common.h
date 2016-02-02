@@ -119,6 +119,18 @@
 
 #pragma endregion
 
+#pragma region string constants
+
+#define STR_DASH_EN "–"
+#define STR_DASH_EM "—"
+#define STR_SPACE " "
+#define STR_VERTICAL_BAR "|"
+#define STR_VERTICAL_BAR_WITH_SPACES " | "
+#define STR_CROSS "†"
+#define STR_SLASH "/"
+
+#pragma endregion
+
 #pragma region HTML string constants
 
 #define HTML_FORM_INPUT_SUBMIT   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button\""
@@ -161,15 +173,10 @@
 #define HTML_TARGET_TOP " target=\"_top\" "
 
 #define HTML_NONBREAKING_SPACE "&nbsp;"
-#define HTML_SPACE " "
-#define HTML_VERTICAL_BAR "|"
-#define HTML_VERTICAL_BAR_WITH_SPACES " | "
-#define HTML_CROSS "†"
 #define HTML_LINE_BREAK "<br/>"
 #define HTML_CRLF_LINE_BREAK "\n<br/>"
-#define HTML_SLASH "/"
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-#define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""HTML_SLASH""HTML_NONBREAKING_SPACE))
+#define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""STR_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""STR_SLASH""HTML_NONBREAKING_SPACE))
 
 #define HTML_P_BEGIN                "<p>"
 #define HTML_P_END                  "</p>"
@@ -251,8 +258,11 @@
 
 #define HTML_SUP_RED                "sup class=\"red\""
 
+#define HTML_CLASS_QUIET            "class=\"quiet\"" // for <a>
+
+#define HTML_CLASS_WITHOUT_BORDER   "class=\"without-border\""
+
 #define HTML_CLASS_BLUE             "class=\"blue\""
-#define HTML_CLASS_QUIET            "class=\"quiet\""
 #define HTML_CLASS_BOLD_IT          "class=\"boldit\""
 #define HTML_CLASS_LEVEL1           "class=\"level1\""
 #define HTML_CLASS_TT               "class=\"tt\""
@@ -263,8 +273,6 @@
 #define HTML_CLASS_CENTER           "class=\"center\""
 
 #define HTML_CLASS_RUBRIC           "class=\"rubric\""
-
-#define HTML_CLASS_QUIET_SMALL      "class=\"quiet small\""
 
 #define HTML_VALIGN_MIDDLE          "valign=\"middle\""
 #define HTML_VALIGN_TOP             "valign=\"top\""

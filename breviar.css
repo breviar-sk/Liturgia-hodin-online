@@ -632,8 +632,12 @@ p.patka {
 	text-indent: 0em; 
 }
 
+/* really quiet hyperlink without dotted underlining */
+.without-border { 
+	border: 0px; 
+}
+
 a.quiet { 
-	border-bottom: 0px; 
 	color: inherit; 
 	text-decoration: none; 
 }
