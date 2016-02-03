@@ -750,20 +750,18 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 #define _spolocna_cast_modlitba			_vlastna_cast_modlitba
 
-// ... az na antifony...
+// ... az na antifony... | removed condition: if((_global_opt[OPT_3_SPOLOCNA_CAST] != MODL_SPOL_CAST_NEBRAT)){...}
 #define _spolocna_cast_antifony {\
-	if((_global_opt[OPT_3_SPOLOCNA_CAST] != MODL_SPOL_CAST_NEBRAT)){\
-		Log("  antifony vlastnej casti zo sviatku...\n");\
-		sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA1);\
-		_set_antifona1(modlitba, _file, _anchor);\
-		set_LOG_svsv;\
-		sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA2);\
-		_set_antifona2(modlitba, _file, _anchor);\
-		set_LOG_svsv;\
-		sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA3);\
-		_set_antifona3(modlitba, _file, _anchor);\
-		set_LOG_svsv;\
-		}\
+	Log("  antifony vlastnej casti zo sviatku...\n");\
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA1);\
+	_set_antifona1(modlitba, _file, _anchor);\
+	set_LOG_svsv;\
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA2);\
+	_set_antifona2(modlitba, _file, _anchor);\
+	set_LOG_svsv;\
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA3);\
+	_set_antifona3(modlitba, _file, _anchor);\
+	set_LOG_svsv;\
 }
 
 #define	_spolocna_cast_antifona_inv(m) {\
@@ -837,8 +835,8 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 		_spolocna_cast_kcitanie(modl);\
 	}\
 	else{\
-		_spolocna_cast_kcitanie(modl);\
 		if(modl != MODL_POSV_CITANIE){\
+			_spolocna_cast_kcitanie(modl);\
 			_spolocna_cast_kresponz;\
 		}\
 		if((modl == MODL_RANNE_CHVALY) || (modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){\

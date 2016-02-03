@@ -105,7 +105,8 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verzió 1.12.3</b>
 <ul>
-<li> Új beállítási lehetőség: display footnotes (prayer with readings).
+<!-- <li> Új beállítási lehetőség: display footnotes (prayer with readings).</li> -->
+<li> Halottakért közös zsolozsmája, possibility to choose psalm 145 or 150 for reggeli dicséret.</li>
 </ul>
 
 <p><b>Verzió 1.12.2</b>

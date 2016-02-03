@@ -123,7 +123,8 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Version 1.12.3</b>
 <ul>
-<li> New option: Display footnotes for second readings (prayer with readings).
+<!-- <li> New option: Display footnotes for second readings (prayer with readings).</li> -->
+<li> Officium defunctorum, possibility to choose psalm 145 or 150 for morning prayer.</li>
 </ul>
 
 <p><b>Version 1.12.2</b>

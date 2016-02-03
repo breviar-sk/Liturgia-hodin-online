@@ -33,7 +33,7 @@ char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "breviar.sk";
 char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = "videky@breviar.sk";
 char cfg_INCLUDE_DIR_default[MAX_INCD_STR] = "../include/";
 
-int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
+long cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
 
 char cfg_http_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_http_display_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
@@ -52,7 +52,7 @@ void printConfigOptions(void){
 		Log("=== Jazyk `%s' (%s): Default hodnoty option parametrov (konfiguračný súbor %s) ===\n", skratka_jazyka[j], nazov_jazyka[j], CONFIG_FILE);
 		for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++){
 			if(o < POCET_GLOBAL_OPT){
-				Log("cfg_option_default[%d][%d] == `%d'\n", o, j, cfg_option_default[o][j]);
+				Log("cfg_option_default[%d][%d] == `%ld'\n", o, j, cfg_option_default[o][j]);
 			}
 			else{
 				switch(o - POCET_GLOBAL_OPT){
@@ -200,7 +200,7 @@ void readConfig(void)
 							if(o < POCET_GLOBAL_OPT){
 								if(!strcmp(option, nazov_option)){
 									if(isdigit(hodnota[0])){
-										cfg_option_default[o][j] = atoi(hodnota);
+										cfg_option_default[o][j] = atol(hodnota);
 									}
 								}// if(!strcmp(option, nazov_option))
 							}// if -- štandardná option
@@ -251,7 +251,7 @@ void readConfig(void)
 	}
 
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
-	// 2012-10-03: pre android upravené defaulty pre zobrazovanie
+	// pre android upravené defaulty pre zobrazovanie
 	Log("android...\n");
 	for(j = 0; j <= POCET_JAZYKOV; j++){
 		if(cfg_option_default[OPT_2_HTML_EXPORT][j] != GLOBAL_OPTION_NULL){
@@ -259,35 +259,35 @@ void readConfig(void)
 
 			// nastavenie parametrov OPT_2_HTML_EXPORT: pridáme bity pre nastavenie
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_NAVIGATION) != BIT_OPT_2_NAVIGATION){
-				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION);
+				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_NAVIGATION;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_BUTTONY_USPORNE) != BIT_OPT_2_BUTTONY_USPORNE){
-				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE);
+				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_BUTTONY_USPORNE;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_ROZNE_MOZNOSTI) != BIT_OPT_2_ROZNE_MOZNOSTI){
-				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI);
+				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_ROZNE_MOZNOSTI;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_HIDE_NAVIG_BUTTONS) != BIT_OPT_2_HIDE_NAVIG_BUTTONS){
-				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS);
+				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_HIDE_NAVIG_BUTTONS;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_HIDE_KALENDAR) != BIT_OPT_2_HIDE_KALENDAR){
-				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR);
+				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_HIDE_KALENDAR;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_HIDE_OPTIONS1) != BIT_OPT_2_HIDE_OPTIONS1){
-				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1);
+				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_HIDE_OPTIONS1;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_HIDE_OPTIONS2) != BIT_OPT_2_HIDE_OPTIONS2){
-				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2);
+				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_HIDE_OPTIONS2;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_ALTERNATIVES) != BIT_OPT_2_ALTERNATIVES){
-				Log("Pre option %d nastavujem bit pre '%d'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES);
+				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_ALTERNATIVES;
 			}
 		}
@@ -301,7 +301,6 @@ void readConfig(void)
 	return;
 }// readConfig()
 
-// 2007-06-01: keďže pribúda mnoho konfiguračných parametrov, treba funkciu na ich výpis
 void printConfig(void){
 	Log("\n");
 	Log("=== BEGIN:configuration (%s) ===\n", CONFIG_FILE);

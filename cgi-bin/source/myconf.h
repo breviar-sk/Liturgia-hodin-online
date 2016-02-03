@@ -45,7 +45,7 @@
 
 extern char cfg_INCLUDE_DIR_default [MAX_INCD_STR];
 
-extern int cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
+extern long cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
 
 #define POCET_DALSICH_CONF 3
 
@@ -55,7 +55,7 @@ extern char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
 
 #define CFG_OPTION_DEFAULT(i) cfg_option_default[i][_global_jazyk]
 
-const int cfg_option_default_PROG[POCET_GLOBAL_OPT] = 
+const long cfg_option_default_PROG[POCET_GLOBAL_OPT] = 
 #ifdef OS_Windows_Ruby
 {3, 64, 0, 0, 0};
 #else

@@ -424,22 +424,20 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 	}
 
 	char local_str[SMALL];
-	int local_opt_default;
 	short int podmienka;
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
 		Log("i == %d...\n", i);
-		local_opt_default = CFG_OPTION_DEFAULT(i);
 #if defined(IO_ANDROID) || defined(BEHAVIOUR_WEB)
 		// Export all options in android, so that the UI can parse and
 		// modify their values correctly.
 		podmienka = 1;
 #else
 		if (force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE){
-			Log("_global_opt[%d] == %d; CFG_OPTION_DEFAULT(%d) == %d;\n", i, _global_opt[i], i, local_opt_default);
+			Log("_global_opt[%d] == %ld; CFG_OPTION_DEFAULT(%d) == %ld;\n", i, _global_opt[i], i, local_opt_default);
 			podmienka = (_global_opt[i] != local_opt_default);
 		}
 		else{
-			Log("_global_opt[%d] == %d; _global_optf[%d] == %d; CFG_OPTION_DEFAULT(%d) == %d;\n", i, _global_opt[i], i, _global_optf[i], i, local_opt_default);
+			Log("_global_opt[%d] == %ld; _global_optf[%d] == %d; CFG_OPTION_DEFAULT(%d) == %ld;\n", i, _global_opt[i], i, _global_optf[i], i, local_opt_default);
 			podmienka = (_global_optf[i] != local_opt_default);
 		}
 #endif
@@ -448,24 +446,25 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 
 			strcat_str_modl_opt_bit_order(local_str, i, USE_STR_MODL_OPT);
 
-			sprintf(pom3, HTML_AMPERSAND"%s=%d", local_str, (force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE) ? _global_opt[i] : _global_optf[i]);
+			sprintf(pom3, HTML_AMPERSAND"%s=%ld", local_str, (force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE) ? _global_opt[i] : _global_optf[i]);
 			strcat(pom2, pom3);
 			Log("\tPrilepil som aj opt%c %d: `%s'\n", (force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE) ? CHAR_SPACE : 'f', i, pom3);
 		}
 	}// for i
 
+	long local_opt_default;
 	if (force_opt == PRILEP_REQUEST_OPTIONS_AJ_FORCE){
 		Log("prilepujem aj force options...\n");
 		for (i = 0; i < POCET_GLOBAL_OPT; i++){
 			Log("i == %d...\n", i);
 			local_opt_default = CFG_OPTION_DEFAULT(i);
-			Log("_global_opt[%d] == %d; _global_optf[%d] == %d; CFG_OPTION_DEFAULT(%d) == %d;\n", i, _global_opt[i], i, _global_optf[i], i, local_opt_default);
+			Log("_global_opt[%d] == %ld; _global_optf[%d] == %d; CFG_OPTION_DEFAULT(%d) == %ld;\n", i, _global_opt[i], i, _global_optf[i], i, local_opt_default);
 			if ((_global_opt[i] != _global_optf[i]) && (_global_opt[i] != local_opt_default)){
 				strcpy(local_str, STR_EMPTY);
 
 				strcat_str_modl_opt_bit_order(local_str, i, USE_STR_MODL_OPTF);
 
-				sprintf(pom3, HTML_AMPERSAND"%s=%d", local_str, _global_optf[i]);
+				sprintf(pom3, HTML_AMPERSAND"%s=%ld", local_str, _global_optf[i]);
 				strcat(pom2, pom3);
 				Log("\tPrilepil som aj optf %d: `%s'\n", i, pom3);
 			}
@@ -1670,6 +1669,7 @@ void strcat_str_modl_opt_bit_order(char str_to_append[SMALL], short opt, short b
 			case 11: mystrcpy(str, STR_MODL_OPTF_5_HYMNUS_1VESP, SMALL); break; // BIT_OPT_5_HYMNUS_1VESP
 			case 12: mystrcpy(str, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, SMALL); break; // BIT_OPT_5_POPOL_STREDA_PSALMODIA
 			case 13: mystrcpy(str, STR_MODL_OPTF_5_CZ_HYMNY_VYBER, SMALL); break; // BIT_OPT_5_CZ_HYMNY_VYBER
+			case 14: mystrcpy(str, STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150, SMALL); break; // BIT_OPT_5_OFF_DEF_PSALM_146_150
 			}
 		}
 		break;

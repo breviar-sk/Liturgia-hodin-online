@@ -392,6 +392,16 @@ void _set_mcd_doplnkova_psalmodia_z127_131(short int modlitba){
 	}// switch(modlitba)
 }// _set_mcd_doplnkova_psalmodia_z122_129()
 
+// nastav bitový príznak "je možné brať žalm 150 namiesto žalmu 146 v ranných chválach pre ofícium za zosnulých"
+void _set_rchvaly_z146_150(short int modlitba){
+	Log("_set_rchvaly_z146_150(%d): nastavujem možnosť brať žalm 150 namiesto žalmu 146...\n", modlitba);
+	switch (modlitba){
+	case MODL_RANNE_CHVALY:
+		_global_modl_ranne_chvaly.alternativy += ((_global_modl_ranne_chvaly.alternativy & BIT_ALT_OFF_DEF_PSALM_146_150) != BIT_ALT_OFF_DEF_PSALM_146_150) ? BIT_ALT_OFF_DEF_PSALM_146_150 : 0;
+		break;
+	}// switch(modlitba)
+}// _set_rchvaly_z146_150()
+
 void _set_hymnus_alternativy(short int modlitba, short int litobd){
 	Log("_set_hymnus_alternativy(%s, %s): začiatok...\n", nazov_modlitby(modlitba), nazov_obdobia(litobd));
 	short int bit = 0;
@@ -1280,7 +1290,7 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba){
 			// 2013-01-29: pôvodne tu bol náhodný výber (podľa (den + tyzzal) % 2); upravené, ak si človek sám volí alternatívy
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)){
 				// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
-				ktory = ((_global_opt[OPT_5_ALTERNATIVES] & bit) == bit) ? 1 : 0;
+				ktory = (isGlobalOption(OPT_5_ALTERNATIVES, bit)) ? 1 : 0;
 				Log("set_hymnus() [1]: ktory == %d...\n", ktory);
 			}
 			else{
@@ -1759,7 +1769,7 @@ void _set_zalmy_mcd_doplnkova_psalmodia_alternativy(short int modlitba){
 	if (modlitba == MODL_PREDPOLUDNIM){
 		// nastaviť: ak je možnosť v doplnkovej psalmódii nahradiť žalm 122 žalmom 129
 		Log("je_alternativa_doplnkova_psalmodia_z122_129 == %d...\n", je_alternativa_doplnkova_psalmodia_z122_129(modlitba));
-		Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129) == %d (BIT_OPT_5_DOPLNK_PSALM_122_129 == %d)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129), BIT_OPT_5_DOPLNK_PSALM_122_129);
+		Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129) == %ld (BIT_OPT_5_DOPLNK_PSALM_122_129 == %ld)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_122_129), BIT_OPT_5_DOPLNK_PSALM_122_129);
 		if ((je_alternativa_doplnkova_psalmodia_z122_129(modlitba)) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129))){
 			Log("nastavujem namiesto žalmu 122 žalm 129...\n");
 			set_zalm(3, modlitba, "z129.htm", "ZALM129");
@@ -1771,14 +1781,14 @@ void _set_zalmy_mcd_doplnkova_psalmodia_alternativy(short int modlitba){
 	else if (modlitba == MODL_POPOLUDNI){
 		// nastaviť: ak je možnosť v doplnkovej psalmódii nahradiť žalm 126 žalmom 129
 		Log("je_alternativa_doplnkova_psalmodia_z126_129 == %d...\n", je_alternativa_doplnkova_psalmodia_z126_129(modlitba));
-		Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129) == %d (BIT_OPT_5_DOPLNK_PSALM_126_129 == %d)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129), BIT_OPT_5_DOPLNK_PSALM_126_129);
+		Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129) == %ld (BIT_OPT_5_DOPLNK_PSALM_126_129 == %ld)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_126_129), BIT_OPT_5_DOPLNK_PSALM_126_129);
 		if ((je_alternativa_doplnkova_psalmodia_z126_129(modlitba)) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129))){
 			Log("nastavujem namiesto žalmu 126 žalm 129...\n");
 			set_zalm(1, modlitba, "z129.htm", "ZALM129");
 		}
 		// nastaviť: ak je možnosť v doplnkovej psalmódii nahradiť žalm 127 žalmom 131
 		Log("je_alternativa_doplnkova_psalmodia_z127_131 == %d...\n", je_alternativa_doplnkova_psalmodia_z127_131(modlitba));
-		Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131) == %d (BIT_OPT_5_DOPLNK_PSALM_127_131 == %d)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131), BIT_OPT_5_DOPLNK_PSALM_127_131);
+		Log("(_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131) == %ld (BIT_OPT_5_DOPLNK_PSALM_127_131 == %ld)...\n", (_global_opt[OPT_5_ALTERNATIVES] & BIT_OPT_5_DOPLNK_PSALM_127_131), BIT_OPT_5_DOPLNK_PSALM_127_131);
 		if ((je_alternativa_doplnkova_psalmodia_z127_131(modlitba)) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131))){
 			Log("nastavujem namiesto žalmu 127 žalm 131...\n");
 			set_zalm(2, modlitba, "z131.htm", "ZALM131");
@@ -2926,7 +2936,7 @@ void _set_zalmy_za_zosnulych(short int modlitba){
 	else if (modlitba == MODL_RANNE_CHVALY){
 		set_zalm(1, modlitba, "z51.htm", "ZALM51");
 		set_zalm(2, modlitba, "ch_iz38.htm", "CHVAL_IZ38");
-		if (_global_den.tyzden MOD 2 == 0){
+		if (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)){
 			set_zalm(3, modlitba, "z146.htm", "ZALM146");
 		}
 		else{
@@ -4084,7 +4094,7 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd){
 	}
 	else if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)){
 		// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
-		ktory = ((_global_opt[OPT_5_ALTERNATIVES] & bit) == bit) ? 1 : 0;
+		ktory = (isGlobalOption(OPT_5_ALTERNATIVES, bit)) ? 1 : 0;
 		Log("_velk1_hymnus(): ktory == %d...\n", ktory);
 	}
 	else{
@@ -8545,7 +8555,7 @@ void _spolocna_cast_ant3_viac(short int kolko, char *_anchor_head, char *_anchor
 
 // pre ofícium za zosnulých je potrebné vyberať žalm (146, 150 na RCH) spolu s antifónou rovnakým kritériom; to je uvedené priamo v _set_zalmy_za_zosnulych()
 void _spolocna_cast_ant3_viac_ozz(char *_anchor_head, char *_anchor, char *_file){
-	sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3, (_global_den.tyzden MOD 2 == 0)? 1: 2);
+	sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3, (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? 1 : 2);
 	_set_antifona3(modlitba, _file, _anchor);
 	set_LOG_svsv;
 }
@@ -8663,7 +8673,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 	Log("poradie_svaty = %d\n", poradie_svaty);
 	Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);
 
-	if(a != MODL_SPOL_CAST_NEBRAT){
+	if (je_spolocna_cast_urcena(a)){
 		Log("/* nastavenie nazvu suboru, kotvy apod. (_set_spolocna_cast) */\n");
 		// nastavenie nazvu suboru, kotvy apod.
 		sprintf(_anchor_head, "%s_", nazov_spolc_ANCHOR[a]);
@@ -8673,6 +8683,9 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 	}
 	else{
 		Log("   nebrat... takze nenastavujem kotvy ani nic\n");
+
+		Log("_set_spolocna_cast(%s) -- end\n", nazov_spolc(a));
+		return;
 	}
 
 	// spolocna cast na sviatky apostolov
@@ -9658,16 +9671,12 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// - III. a IV. zväzok (obdobie cez rok).
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
 
-		/*
-		Log("// upravené tak, že spoločná časť na ofícium za zosnulých vždy berie vlastné žalmy; vraciam späť nastavenie _global_opt 1\n");
-		_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_1_pom;
-		*/
-
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
 		if(su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)){
 			Log("  _set_zalmy_za_zosnulych(%s)...\n", nazov_modlitby(modlitba));
 			_set_zalmy_za_zosnulych(modlitba);
+			_set_rchvaly_z146_150(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
@@ -9856,7 +9865,7 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	// [ToDo] -- mozno by bolo dobre oddelit nastavenie pre spolocnu cast a potom inde dat samotne zalmy...
 	// doplnený nepovinný tretí parameter, ktorým sa dajú vynútiť antifóny zo spoločnej časti, aj ak je to len spomienka alebo ľubovoľná spomienka
 	Log("set_spolocna_cast({%s, %s, %s}) -- begin\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
-	Log("_global_opt[OPT_3_SPOLOCNA_CAST] == %s (%d)\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]), _global_opt[OPT_3_SPOLOCNA_CAST]);
+	Log("_global_opt[OPT_3_SPOLOCNA_CAST] == %s (%ld)\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]), _global_opt[OPT_3_SPOLOCNA_CAST]);
 
 	Log("teraz nastavujem POPIS (pre daného svätého) -- volám set_popis_svaty_rch_mcd_pc_vesp()...\n");
 	set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
@@ -9881,26 +9890,26 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	}
 
 	Log("sc == {%d, %d, %d} == {%s, %s, %s}\n", sc.a1, sc.a2, sc.a3, nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
-	Log("_global_opt[OPT_3_SPOLOCNA_CAST] == %s (%d)\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]), _global_opt[OPT_3_SPOLOCNA_CAST]);
+	Log("_global_opt[OPT_3_SPOLOCNA_CAST] == %s (%ld)\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]), _global_opt[OPT_3_SPOLOCNA_CAST]);
 
 	// podla _global_opt[OPT_3_SPOLOCNA_CAST] urcime, ktoru spolocnu cast dat
 	if (sc.a1 != MODL_SPOL_CAST_NEURCENA){
 		if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1){
 			Log("	vstupujem do _set_spolocna_cast()...(_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1)\n");
-			_set_spolocna_cast(_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
+			_set_spolocna_cast((short int)_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
 		}
 		else{
 			Log("	neplatí _global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1 ...\n");
 			if (sc.a2 != MODL_SPOL_CAST_NEURCENA){
 				if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a2){
 					Log("	vstupujem do _set_spolocna_cast()...(_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a2)\n");
-					_set_spolocna_cast(_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
+					_set_spolocna_cast((short int)_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
 				}
 				else{
 					if (sc.a3 != MODL_SPOL_CAST_NEURCENA){
 						if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a3){
 							Log("	vstupujem do _set_spolocna_cast()...(_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a3)\n");
-							_set_spolocna_cast(_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
+							_set_spolocna_cast((short int)_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
 						}
 						else{
 							if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT){

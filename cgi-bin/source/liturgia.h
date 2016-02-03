@@ -130,6 +130,7 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 #define BIT_ALT_DOPLNK_PSALM_127_131   16
 #define BIT_ALT_DOPLNK_PSALM_126_129   32
 #define BIT_ALT_HYMNUS_VN              64
+#define BIT_ALT_OFF_DEF_PSALM_146_150 128
 
 #define MAX_STR_AF_FILE   64
 #define MAX_STR_AF_ANCHOR 32
@@ -406,7 +407,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_NADPIS        "NADPIS"
 // 2012-04-03: pridaný podnadpis v modlitbe (napr. pre MCD: doplnková psalmódia)
 #define PARAM_PODNADPIS     "PODNADPIS"
-#define PARAM_SPOL_CAST     "SPOL_CAST"
+#define PARAM_SPOL_CAST     "SPOL-CAST"
 
 #define PARAM_ANTIFONA_VIG  "ANTIFONA_VIG"
 #define PARAM_CHVALOSPEV1   "CHVALOSPEV1"
@@ -438,6 +439,8 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ZALM127                  "ZALM127"
 #define PARAM_ZALM129                  "ZALM129"
 #define PARAM_ZALM131                  "ZALM131"
+#define PARAM_ZALM146                  "ZALM146"
+#define PARAM_ZALM150                  "ZALM150"
 
 // Od nedele Pánovho zmŕtvychvstania až do Druhej veľkonočnej nedele vrátane, ako aj na druhé vešpery slávnosti Zoslania Ducha Svätého
 #define PARAM_ALELUJA_ALELUJA_BEGIN         "ALELUJA_ALELUJA_BEGIN"
@@ -533,8 +536,9 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_LINK_ZALM95_BEGIN				"z95"
 #define PARAM_LINK_ZALM95_END				"/z95"
 
-// zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách
-#define PARAM_HVIEZDICKA                    "*"
+// zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách, príp. v antifónach (červenou farbou)
+#define PARAM_RED_HVIEZDICKA                "†"
+#define PARAM_RED_KRIZIK                    "*"
 
 // zobrazovanie/nezobrazenie krížika (antifóna totožná s veršom žalmu/chválospevu)
 #define PARAM_KRIZIK                        "KRIZIK"
@@ -549,6 +553,8 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_DOPLNK_PSALM_122_129          "DPSALM-122-129"
 #define PARAM_DOPLNK_PSALM_126_129          "DPSALM-126-129"
 #define PARAM_DOPLNK_PSALM_127_131          "DPSALM-127-131"
+// alternatíva žalmov pre ranné chvály ofícia za zosnulých
+#define PARAM_OFF_DEF_PSALM_146_150         "OFFDEF-146-150"
 
 // zakončenie modlitby trojaké, krátke resp. dlhé
 #define PARAM_ZAKONCENIE_SKRZE              "SKRZE"
@@ -600,6 +606,9 @@ extern const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_ZALMY_ZO_SV
 #define		STR_MODL_ZALMY_ZO_SV 	str_modl_zalmy_zo_sv[_global_jazyk]
 #endif
+
+// note that je_spolocna_cast_urcena() is not intended to use for member spolcast of dm structure!
+#define je_spolocna_cast_urcena(spolcast) ((spolcast > MODL_SPOL_CAST_NEURCENA) && (spolcast < MODL_SPOL_CAST_NEBRAT))
 
 // option 3 -- tieto nasledujuce definicie definuju to, co je sucastou _struct_dm::spolcast
 #define MAX_MODL_SPOL_CAST  28
@@ -1215,16 +1224,16 @@ extern short int _global_pocet_svatych;
 #define OPT_5_ALTERNATIVES         5
 
 // globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atď., obsahujú pom_MODL_OPT...
-extern int _global_opt[POCET_GLOBAL_OPT];
+extern long _global_opt[POCET_GLOBAL_OPT];
 // globálna premenná -- pole -- obsahujúca force options; pôvodne to boli globálne premenné _global_optf 1..9 atď., obsahujú pom_MODL_OPTF...
-extern int _global_optf[POCET_GLOBAL_OPT];
+extern long _global_optf[POCET_GLOBAL_OPT];
 
 // for function strcat_str_modl_opt_bit_order()
 #define USE_STR_MODL_OPT                   -2
 #define USE_STR_MODL_OPTF                  -1
 
 #define POCET_OPT_0_SPECIALNE              10 // jednotlivé komponenty option 0 -- bity pre force option 0
-extern int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
+extern long _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                     1
 #define BIT_OPT_0_REFERENCIE                2
@@ -1238,7 +1247,7 @@ extern int _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_FOOTNOTES               512 // display footnotes and footnote references
 
 #define POCET_OPT_1_CASTI_MODLITBY         15 // jednotlivé komponenty option 1 -- bity pre force option 1
-extern int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
+extern long _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 // 2011-04-11: úprava významu (a interpretácie) option 1 == OPT_1_CASTI_MODLITBY (zobraziť/nezobraziť najmä pevné/nemenné súčasti modlitieb, ale aj iné, čo sú/nie sú v LH)
 // 2011-10-10: úprava niektorých bitov, posunutie popisu na koniec
 #define BIT_OPT_1_TEDEUM                    1
@@ -1258,7 +1267,7 @@ extern int _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_MCD_ZALTAR_TRI        16384 // používa sa pre modlitbu cez deň -- 1 = psalmódia sa používa z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)
 
 #define POCET_OPT_2_HTML_EXPORT            16 // jednotlivé komponenty option 2 -- bity pre force option 2
-extern int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
+extern long _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: úprava významu (a interpretácie) option 2 (rozličné prepínače pre [online aj offline] export, napr. tlačidlá, zobrazenie dátumov a podobne)
 // 2012-10-01: doplnené ďalšie komponenty najmä pre vzhľad úvodnej obrazovky
 #define BIT_OPT_2_ISO_DATUM                 1 // zobrazovať dátum v ISO formáte YYYY-MM-DD (0 = iba číslo dňa)
@@ -1279,15 +1288,15 @@ extern int _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_SHOW_DEFAULT_CALENDAR 32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
 
 #define POCET_OPT_4_OFFLINE_EXPORT          4 // jednotlivé komponenty option 4 -- bity pre force option 4
-extern int _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
+extern long _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: úprava významu (a interpretácie) option 4 (rozličné prepínače pre offline export, napr. aj batch mód)
 #define BIT_OPT_4_MESIAC_RIADOK             1 // mesiac jednoducho (default: nie jednoducho, ale HTML pekne pre web) alebo pekne "zložito"
 #define BIT_OPT_4_FNAME_MODL_ID             2 // či pre názov súboru použiť (číselné) ID modlitby alebo písmenko modlitby (default)
 #define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
 #define BIT_OPT_4_DO_NOT_USE_BUTTON         8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
-#define POCET_OPT_5_ALTERNATIVES           14 // jednotlivé komponenty option 5 -- bity pre force option 5
-extern int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
+#define POCET_OPT_5_ALTERNATIVES           15 // jednotlivé komponenty option 5 -- bity pre force option 5
+extern long _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezročné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
 #define BIT_OPT_5_HYMNUS_MCD_PREDPOL        4 // hymnus pre modlitbu cez deň, predpoludním (Cezročné obdobie)
@@ -1302,6 +1311,7 @@ extern int _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_1VESP           2048 // hymnus pre prvé vešpery (Cezročné obdobie: nedeľný alebo z posv. čítania)
 #define BIT_OPT_5_POPOL_STREDA_PSALMODIA 4096 // psalmódia pre ranné chvály popolcovej stredy (default: streda 4. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
 #define BIT_OPT_5_CZ_HYMNY_VYBER         8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
+#define BIT_OPT_5_OFF_DEF_PSALM_146_150 16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
 
 #define MAX_POCET_OPT                      16 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
 

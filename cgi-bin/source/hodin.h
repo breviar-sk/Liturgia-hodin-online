@@ -3235,12 +3235,12 @@ const char *html_text_option5_CZhymnyRENC[POCET_JAZYKOV + 1] =
 const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmu 122 brať žalm 129",
- "místo žalmu 122 vzít žalm 129",
- "instead of psalm 122 use 129",
- "",
- "",
- "místo žalmu 122 vzít žalm 129",
- "a 121. helyett vehető a 128. zsoltár",
+	"místo žalmu 122 vzít žalm 129",
+	"instead of psalm 122 use 129",
+	"",
+	"",
+	"místo žalmu 122 vzít žalm 129",
+	"a 121. helyett vehető a 128. zsoltár",
 };
 
 const char *html_text_option5_DPsalmZ126_129[POCET_JAZYKOV + 1] =
@@ -3259,12 +3259,12 @@ const char *html_text_option5_DPsalmZ126_129[POCET_JAZYKOV + 1] =
 const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] = 
 {
 	"namiesto žalmu 127 brať žalm 131",
- "místo žalmu 127 vzít žalm 131",
- "instead of psalm 127 use 131",
- "",
- "",
- "místo žalmu 127 vzít žalm 131",
- "a 126. helyett vehető a 130. zsoltár",
+	"místo žalmu 127 vzít žalm 131",
+	"instead of psalm 127 use 131",
+	"",
+	"",
+	"místo žalmu 127 vzít žalm 131",
+	"a 126. helyett vehető a 130. zsoltár",
 };
 
 const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] =
@@ -3343,6 +3343,39 @@ const char *html_text_option5_DPsalmZ127_131_explain[POCET_JAZYKOV + 1] =
 	"A kiegészítő zsoltároknál a 126. helyett vehető a 130. zsoltár.",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option5_OffDefZ146_150[POCET_JAZYKOV + 1] =
+{
+	"namiesto žalmu 146 brať žalm 150",
+	"místo žalmu 146 vzít žalm 150",
+	"instead of psalm 146 use 150",
+	"",
+	"",
+	"místo žalmu 146 vzít žalm 150",
+	"a 145. helyett vehető a 150. zsoltár",
+};
+
+const char *html_text_option5_OffDefZ146_150_explain[POCET_JAZYKOV + 1] =
+{
+	"V ranných chválach ofícia za zosnulých namiesto žalmu 146 brať žalm 150",
+	"místo žalmu 146 vzít žalm 150",
+	"instead of psalm 146 use 150",
+	"",
+	"",
+	"místo žalmu 146 vzít žalm 150",
+	"a 145. helyett vehető a 150. zsoltár",
+};
+
+const char *html_text_option5_OffDefZ146_150_NORMAL[POCET_JAZYKOV + 1] =
+{
+	"namiesto žalmu 150 brať žalm 146",
+	"místo žalmu 150 vzít žalm 146",
+	"instead of psalm 150 use 146",
+	"",
+	"",
+	"místo žalmu 150 vzít žalm 146",
+	"a 150. helyett vehető a 145. zsoltár",
 };
 
 const char *html_text_font_name[POCET_JAZYKOV + 1] =

@@ -105,7 +105,8 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verzia 1.12.3</b>
 <ul>
-<li> Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.
+<!-- <li> Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.</li> -->
+<li> Ofícium za zosnulých, možnosť vziať žalm 146 alebo 150 pre ranné chvály.</li>
 </ul>
 
 <p><b>Verzia 1.12.2</b>

@@ -888,6 +888,13 @@ extern short int query_type; // contains constants PRM_...
 #define STR_MODL_OPTF_5_CZ_HYMNY_VYBER "of5czh"
 #endif
 
+#define MODL_OPTF_5_OFF_DEF_PSALM_146_150 117
+#ifdef LONG_PARAM_NAMES
+#define STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150 "MODL_OPTF_5_OFF_DEF_PSALM_146_150"
+#else
+#define STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150 "of5ofps60"
+#endif
+
 #define CSS 40
 #ifdef LONG_PARAM_NAMES
 	#define STR_CSS "CSS"
@@ -954,6 +961,7 @@ extern short int query_type; // contains constants PRM_...
 #define HTML_SEQUENCE_NONE       0
 #define HTML_SEQUENCE_LINE_BREAK 1
 #define HTML_SEQUENCE_PARAGRAPH  2
+#define HTML_SEQUENCE_DIV        3
 
 // 2007-03-19: výpis "Dnes je..." sa zobrazí len pri tomto nastavení, ak je 1
 #define HTML_ZOBRAZIT_DNES_JE	0
@@ -1095,6 +1103,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_HYMNUS_1VESP              "BitOpt5Hymn1Vesp"
 #define XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA    "BitOpt5AshWednPsalmody"
 #define XML_BIT_OPT_5_CZ_HYMNY_VYBER            "BitOpt5CZhymnsAlt"
+#define XML_BIT_OPT_5_OFF_DEF_PSALM_146_150     "BitOpt5OffDefPsalm146or150"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<"elem">"
