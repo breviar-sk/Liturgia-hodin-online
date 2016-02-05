@@ -367,6 +367,20 @@ const char *html_mail_label_short = "J. Vid&#233;ky";
 
 #define ROK 5
 
+void _patka_body_html_end(FILE * expt){
+	Log("_patka_body_html_end() -- začiatok...\n");
+
+#ifdef BEHAVIOUR_WEB
+	Export_to_file(expt, HTML_ANAME_BOTTOM"\n");
+#else
+	Export_to_file(expt, HTML_DIV_END"\n");
+#endif
+
+	Export_to_file(expt, "</body>\n</html>\n");
+
+	Log("_patka_body_html_end() -- koniec.\n");
+}
+
 // exportuje patku HTML dokumentu (vysledok query)
 void _patka(FILE * expt){
 	char mail_addr[MAX_MAIL_STR] = "";
@@ -378,11 +392,6 @@ void _patka(FILE * expt){
 	if ((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM)){
 		_local_modlitba = MODL_KOMPLETORIUM;
 	}
-
-	// 2011-07-01: viackrát sa pri exporte modlitby do HTML exportovala pätka; pridaná kontrola
-	if (_global_patka_Export > 0)
-		return;
-	_global_patka_Export++;
 
 	time_t t;
 	struct tm dnes;
@@ -458,23 +467,34 @@ void _patka(FILE * expt){
 
 	Export_to_file(expt, HTML_P_END"\n");
 
-#ifdef BEHAVIOUR_WEB
-	Export_to_file(expt, HTML_ANAME_BOTTOM"\n");
-#else
-	Export_to_file(expt, HTML_DIV_END"\n");
-#endif
-
-	Export_to_file(expt, "</body>\n</html>\n");
 	Log("_patka() -- koniec.\n");
 	return;
 }// _patka()
 
 void patka(void){
-	_patka(NULL);
+	// aby sa pätka neexportovala viackrát
+	if (_global_patka_Export > 0){
+		return;
+	}
+	_global_patka_Export++;
+
+	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
+		_patka(NULL);
+	}
+	_patka_body_html_end(NULL);
 }
 
 void patka(FILE * expt){
-	_patka(expt);
+	// aby sa pätka neexportovala viackrát
+	if (_global_patka_Export > 0){
+		return;
+	}
+	_global_patka_Export++;
+
+	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
+		_patka(expt);
+	}
+	_patka_body_html_end(expt);
 }
 
 // exportuje patku XML dokumentu
@@ -482,8 +502,9 @@ void _xml_patka(FILE * expt){
 	Log("_xml_patka() -- začiatok...\n");
 
 	// aby sa pätka neexportovala viackrát
-	if (_global_patka_Export > 0)
+	if (_global_patka_Export > 0){
 		return;
+	}
 	_global_patka_Export++;
 
 	time_t t;

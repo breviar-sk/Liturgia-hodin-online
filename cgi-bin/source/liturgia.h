@@ -469,6 +469,9 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_SLAVAOTCU_SPEC_BEGIN          "SLAVAOTCU_SPEC_BEGIN"
 #define PARAM_SLAVAOTCU_SPEC_END            "SLAVAOTCU_SPEC_END"
 
+#define PARAM_COPYRIGHT_BEGIN               "COPYRIGHT_BEGIN"
+#define PARAM_COPYRIGHT_END                 "COPYRIGHT_END"
+
 // 2011-04-11: pridaný ďalší pár parametrov
 //             JE_TEDEUM_BEGIN a END hovoria, či v danej modlitbe má vôbec byť zobrazená čo i len zmienka o Te Deum (riadené podmienkou je_tedeum);
 //             TEDEUM_BEGIN a END hovoria, že ak má byť Te Deum (je_tedeum), tak ak chce používateľ zobraziť plný text, ohraničujú ho

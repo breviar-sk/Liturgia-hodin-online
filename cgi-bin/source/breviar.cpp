@@ -2848,6 +2848,39 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}
 
+	else if (equals(paramname, PARAM_COPYRIGHT_BEGIN)){
+		if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
+			// zobrazit copyright info
+#if defined(EXPORT_HTML_SPECIALS)
+			Export("zobraziť copyright");
+#endif
+			Export("-->");
+			Log("  `copyright': begin...\n");
+		}
+		else{
+			// nezobrazovat copyright info
+			_global_skip_in_prayer += ANO; // increment
+#if defined(EXPORT_HTML_SPECIALS)
+			Export("nezobraziť copyright");
+#endif
+			Log("  `copyright' skipping...\n");
+		}
+	}// PARAM_COPYRIGHT_BEGIN
+	else if (equals(paramname, PARAM_COPYRIGHT_END)){
+		if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
+			Export("<!--");
+#if defined(EXPORT_HTML_SPECIALS)
+			Export("zobraziť copyright");
+#endif
+			Log("  `copyright': copied.\n");
+		}
+		else{
+			// nezobrazovat copyright info
+			_global_skip_in_prayer -= ANO;
+			Log("  `copyright' (%d) skipped.\n");
+		}
+	}// PARAM_COPYRIGHT_END
+
 	// podmienka zosilnená kvôli sláva otcu vo vigíliách (vtedy preskakujeme)
 	else if ((equals(paramname, PARAM_SLAVAOTCU_BEGIN) || equals(paramname, PARAM_SLAVAOTCU_SPEC_BEGIN)) && (!((_global_som_vo_vigilii == ANO) && ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)) || !(je_vigilia))))){
 		_global_pocet_slava_otcu = _global_pocet_slava_otcu + 1;
