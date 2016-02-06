@@ -244,4 +244,20 @@ char *mystr_first_upper(const char *string){
 	return newstr;
 }
 
+// Custom function for detecting whether base is starts with str
+short int startsWith(char* base, char* str) {
+	return (0 == (strstr(base, str) - base));
+}
+
+// Custom function for detecting whether base is ends with str
+short int endsWith(char* base, char* str){
+	int blen = strlen(base);
+	int slen = strlen(str);
+	if (slen <= blen)
+	{
+		return (0 == strcmp(base + blen - slen, str));
+	}
+	return 0;
+}
+
 #endif // __MYSTRING_CPP_

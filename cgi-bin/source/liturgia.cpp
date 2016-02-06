@@ -1605,6 +1605,7 @@ void strcat_str_modl_opt_bit_order(char str_to_append[SMALL], short opt, short b
 			case 12: mystrcpy(str, STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST, SMALL); break; // BIT_OPT_1_ZOBRAZ_SPOL_CAST
 			case 13: mystrcpy(str, STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY, SMALL); break; // BIT_OPT_1_VESP_KRATSIE_PROSBY
 			case 14: mystrcpy(str, STR_MODL_OPTF_1_MCD_ZALTAR_TRI, SMALL); break; // BIT_OPT_1_MCD_ZALTAR_TRI
+			case 15: mystrcpy(str, STR_MODL_OPTF_1_ZAVER, SMALL); break; // BIT_OPT_1_ZAVER
 			}
 		}
 		break;
@@ -1670,6 +1671,7 @@ void strcat_str_modl_opt_bit_order(char str_to_append[SMALL], short opt, short b
 			case 12: mystrcpy(str, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, SMALL); break; // BIT_OPT_5_POPOL_STREDA_PSALMODIA
 			case 13: mystrcpy(str, STR_MODL_OPTF_5_CZ_HYMNY_VYBER, SMALL); break; // BIT_OPT_5_CZ_HYMNY_VYBER
 			case 14: mystrcpy(str, STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150, SMALL); break; // BIT_OPT_5_OFF_DEF_PSALM_146_150
+			case 15: mystrcpy(str, STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON, SMALL); break; // BIT_OPT_5_ZAVER_KNAZ_DIAKON
 			}
 		}
 		break;

@@ -128,6 +128,7 @@
 #define STR_VERTICAL_BAR_WITH_SPACES " | "
 #define STR_CROSS "†"
 #define STR_SLASH "/"
+#define STR_UNDERSCORE "_"
 
 #pragma endregion
 

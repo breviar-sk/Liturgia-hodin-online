@@ -1461,7 +1461,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				if ((vnutri_inkludovaneho == ANO) && (write == ANO)){
 					Log("(if((equals(strbuff, PARAM_DOPLNK_PSALM_...)): _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI == %ld: (doplnková psalmódia, alternatívne žalmy)\n", _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI);
 
-					short int bit;
+					long bit;
 					short int opt = OPT_5_ALTERNATIVES;
 					short int nastavene = NIE;
 
@@ -2416,6 +2416,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	mystrcpy(path, include_dir, MAX_STR);
 
 	short int zobrazit = NIE;
+	short int podmienka = NIE;
+	short int je_begin, je_end = NIE;
+	short int exportovat_html_note = NIE;
 	_struct_sc sc;
 
 	Log("interpretParameter(%s): Dumping by %s\n", paramname, paramname);
@@ -2428,7 +2431,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			else{
 				// Log("  ruším writing to export file, kvôli PARAM_CISLO_VERSA_BEGIN...\n");
 				_global_skip_in_prayer_2 = ANO;
-				// Export("<!--");
 			}
 		}// skip in prayer
 	}// zobraziť/nezobraziť číslovanie veršov
@@ -2439,447 +2441,143 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			}
 			else{
 				// Log("  opäť writing to export file, PARAM_CISLO_VERSA_END...\n");
-				// Export("-->");
 				_global_skip_in_prayer_2 = NIE;
 			}
 		}// skip in prayer
 	}// zobraziť/nezobraziť číslovanie veršov
-	else if (equals(paramname, PARAM_ALELUJA_NIE_V_POSTE_BEGIN)){
-		if (!je_post){
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nie je pôst");
-#endif
-			Export("-->");
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("je pôst(");
-#endif
-			Log("(beg)je postne obdobie\n");
-		}
-	}
-	else if (equals(paramname, PARAM_ALELUJA_NIE_V_POSTE_END)){
-		if (!je_post){
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nie je pôst");
-#endif
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export(")je pôst");
-#endif
-			Log("(end)je postne obdobie\n");
-		}
-	}
-	// opravené, aby sa správne používalo - ant. na nunk dimittis pre kompletórium
-	else if (equals(paramname, PARAM_ALELUJA_VO_VELKONOCNOM_BEGIN)){
-		if (je_velka_noc){
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("je veľkonočné obdobie");
-#endif
-			Export("-->");
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nie je v.o.(");
-#endif
-			Log("(beg)nie je velkonocne obdobie\n");
-		}
-	}
-	else if (equals(paramname, PARAM_ALELUJA_VO_VELKONOCNOM_END)){
-		if (je_velka_noc){
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("je veľkonočné obdobie");
-#endif
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export(")nie je v.o.");
-#endif
-			Log("(end)nie je velkonocne obdobie\n");
-		}
-	}
-	else if (equals(paramname, PARAM_ALELUJA_ALELUJA_BEGIN)){
-		if (_global_skip_in_prayer >= ANO){
-			// ak zakoncenie preskakujem, tak musim sa tvarit, ze nic
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("{AAB:skip}");
-#endif
-			Log("  ALELUJA_ALELUJA_BEGIN: skipping -- because skipping ZAKONCENIE\n");
-		}
-		else{
-			// Od nedele Pánovho zmŕtvychvstania až do Druhej veľkonočnej nedele vrátane, ako aj na druhé vešpery slávnosti Zoslania Ducha Svätého (teda veľkonočná oktáva + zakončenie veľkonočného obdobia)
-			if (je_aleluja_aleluja){
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("veľkonočná oktáva");
-#endif
-				Export("-->");
-				Log("  ALELUJA_ALELUJA_BEGIN: copying\n");
-			}
-			else{
-				Log("  ALELUJA_ALELUJA_BEGIN: skipping -- because not velkonocna oktava\n");
-			}
-		}
-	}
-	else if (equals(paramname, PARAM_ALELUJA_ALELUJA_END)){
-		if (_global_skip_in_prayer >= ANO){
-			// ak zakoncenie preskakujem, tak musim sa tvarit, ze nic
-			// preto otvorim poznamku, ktora sa zacala
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("{AAE:skip}");
-#endif
-			Log("  ALELUJA_ALELUJA_END: skipping -- because skipping ZAKONCENIE\n");
-		}
-		else{
-			// Od nedele Pánovho zmŕtvychvstania až do Druhej veľkonočnej nedele vrátane, ako aj na druhé vešpery slávnosti Zoslania Ducha Svätého (teda veľkonočná oktáva + zakončenie veľkonočného obdobia)
-			if (je_aleluja_aleluja){
-				Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("veľkonočná oktáva");
-#endif
-				Log("  ALELUJA_ALELUJA_END: copying\n");
-			}
-			else{
-				Log("  ALELUJA_ALELUJA_END: skipping -- because not velkonocna oktava\n");
-			}
-		}
-	}
-	// teraz nasleduje kontrola options pre modlitbu
-	else if (equals(paramname, PARAM_OTCENAS_BEGIN)){
-		if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
-			// zobrazit Otcenas
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť Otčenáš");
-#endif
-			Export("-->");
-			Log("  `Otcenas': begin...\n");
-		}
-		else{
-			// nezobrazovat Otcenas
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť Otčenáš");
-#endif
-			Log("  `Otcenas' skipping...\n");
-		}
-	}
-	else if (equals(paramname, PARAM_OTCENAS_END)){
-		if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
-			// zobrazit Otcenas
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť Otčenáš");
-#endif
-			Log("  `Otcenas': copied.\n");
-		}
-		else{
-			// nezobrazovat Otcenas
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `Otcenas' skipped.\n");
-		}
-	}
 
-	else if (equals(paramname, PARAM_CHVALOSPEV_BEGIN)){
-		Log("_global_opt[OPT_1_CASTI_MODLITBY == %d] == %ld\n", OPT_1_CASTI_MODLITBY, _global_opt[OPT_1_CASTI_MODLITBY]);
-		if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť chválospev");
-#endif
-			Log("  `chvalospev': begin...\n");
-		}
-		else{
-			// nezobrazovat chvalospev
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť chválospev");
-#endif
-			Log("  `chvalospev' skipping...\n");
-		}
-	}
-	else if (equals(paramname, PARAM_CHVALOSPEV_END)){
-		Log("_global_opt[OPT_1_CASTI_MODLITBY == %d] == %ld\n", OPT_1_CASTI_MODLITBY, _global_opt[OPT_1_CASTI_MODLITBY]);
-		if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť chválospev");
-#endif
-			Log("  `chvalospev' copied.\n");
-		}
-		else{
-			// nezobrazovat chvalospev
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `chvalospev' skipped.\n");
-		}
-	}
-
-	// voliteľné NEzobrazovanie celého hymnu (ostane len nadpis v podobe rubrikového small caps headingu) nižšie nasleduje samotné vypísanie textu chválospevu Te Deum, ak _global_opt[OPT_1_CASTI_MODLITBY]...
-	else if (equals(paramname, PARAM_TEDEUM_BEGIN)){
+	else if (
+		(equals(paramname, PARAM_CHVALOSPEV_BEGIN)) || (equals(paramname, PARAM_CHVALOSPEV_END))
+		|| (equals(paramname, PARAM_TEDEUM_BEGIN)) || (equals(paramname, PARAM_TEDEUM_END))
+		|| (equals(paramname, PARAM_JE_TEDEUM_BEGIN)) || (equals(paramname, PARAM_JE_TEDEUM_END))
+		|| (equals(paramname, PARAM_OTCENAS_BEGIN)) || (equals(paramname, PARAM_OTCENAS_END))
+		|| (equals(paramname, PARAM_ALELUJA_ALELUJA_BEGIN)) || (equals(paramname, PARAM_ALELUJA_ALELUJA_END))
+		|| (equals(paramname, PARAM_ALELUJA_VO_VELKONOCNOM_BEGIN)) || (equals(paramname, PARAM_ALELUJA_VO_VELKONOCNOM_END))
+		|| (equals(paramname, PARAM_ALELUJA_NIE_V_POSTE_BEGIN)) || (equals(paramname, PARAM_ALELUJA_NIE_V_POSTE_END))
+		|| (equals(paramname, PARAM_JE_VIGILIA_BEGIN)) || (equals(paramname, PARAM_JE_VIGILIA_END))
+		|| (equals(paramname, PARAM_KOMPLETORIUM_DVA_ZALMY_BEGIN)) || (equals(paramname, PARAM_KOMPLETORIUM_DVA_ZALMY_END))
+		|| (equals(paramname, PARAM_RUBRIKA_BEGIN)) || (equals(paramname, PARAM_RUBRIKA_END))
+		|| (equals(paramname, PARAM_VN_VYNECHAJ_BEGIN)) || (equals(paramname, PARAM_VN_VYNECHAJ_END))
+		|| (equals(paramname, PARAM_COPYRIGHT_BEGIN)) || (equals(paramname, PARAM_COPYRIGHT_END))
+		|| (equals(paramname, PARAM_SKRY_ANTIFONU_BEGIN)) || (equals(paramname, PARAM_SKRY_ANTIFONU_END))
+		|| (equals(paramname, PARAM_ZOBRAZ_ANTIFONU_BEGIN)) || (equals(paramname, PARAM_ZOBRAZ_ANTIFONU_END))
+		|| (equals(paramname, PARAM_SPOMIENKA_PRIVILEG_BEGIN)) || (equals(paramname, PARAM_SPOMIENKA_PRIVILEG_END))
+		|| (equals(paramname, PARAM_ZAVER_BEGIN)) || (equals(paramname, PARAM_ZAVER_END))
+		|| (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_BEGIN)) || (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_END))
+		|| (equals(paramname, PARAM_ZAVER_OSTATNI_BEGIN)) || (equals(paramname, PARAM_ZAVER_OSTATNI_END))
+		){
 		Log("_global_opt[OPT_1_CASTI_MODLITBY == %d] == %ld\n", OPT_1_CASTI_MODLITBY, _global_opt[OPT_1_CASTI_MODLITBY]);
 
-		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE)){
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť Te Deum");
-#endif
-			Log("  `Te Deum': begin...\n");
-		}
-		else{
-			// nezobrazovať Te Deum, hoci daná modlitba ho má -- vtedy len nadpis
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť Te Deum");
-#endif
-			Log("  `Te Deum' skipping...\n");
-		}
-	}// if(equals(paramname, PARAM_TEDEUM_BEGIN))
-	else if (equals(paramname, PARAM_TEDEUM_END)){
-		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE)){
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť Te Deum");
-#endif
-			Log("  `Te Deum' copied.\n");
-		}
-		else{
-			_global_skip_in_prayer -= ANO; // decrement
+		je_begin = (endsWith(paramname, (char *)KEYWORD_BEGIN));
+		je_end = (endsWith(paramname, (char *)KEYWORD_END));
 
-			// nezobrazovať Te Deum [či už preto, že nemá byť, alebo preto, lebo ho používateľ nechcel]
-			if (_global_opt_tedeum == ANO){
-				// here was: _global_skip_in_prayer = NIE; // nesmie tu byť, ak tedeum nemá byť; až PARAM_JE_TEDEUM_END to (v takom prípade) nastaví na NIE
+		podmienka = ANO;
+		exportovat_html_note = NIE;
+		if (startsWith(paramname, (char *)KEYWORD_PARAM_CHVALOSPEV)){
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_TEDEUM)){
+			podmienka &= ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE));
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_JE_TEDEUM)){
+			podmienka &= (_global_opt_tedeum == ANO);
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_OTCENAS)){
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_ALELUJA_ALELUJA)){
+			podmienka &= !(_global_skip_in_prayer >= ANO) && (je_aleluja_aleluja);
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_ALELUJA_VO_VELKONOCNOM)){
+			podmienka &= (je_velka_noc);
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_ALELUJA_NIE_V_POSTE)){
+			podmienka &= (!je_post);
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_JE_VIGILIA)){
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA) && (je_vigilia));
+			_global_som_vo_vigilii = (je_begin);
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_KOMPLETORIUM_DVA_ZALMY)){
+			Log("interpretParameter(): _global_modl_kompletorium.pocet_zalmov == %d...\n", _global_modl_kompletorium.pocet_zalmov);
+			Log("interpretParameter(): _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_prve_kompletorium.pocet_zalmov);
+			podmienka &= (_global_pocet_zalmov_kompletorium > 1);
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_RUBRIKA)){
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_VN_VYNECHAJ)){
+			podmienka &= (_global_den.denvr != VELKONOCNA_NEDELA);
+			exportovat_html_note = ANO;
+			_global_skip_in_prayer_vnpc = !podmienka & (je_begin);
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_COPYRIGHT)){
+			podmienka &= !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_SKRY_ANTIFONU)){
+			podmienka &= (_global_ant_mcd_rovnake == NIE);
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_ZOBRAZ_ANTIFONU)){
+			podmienka &= (_global_ant_mcd_rovnake == ANO);
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_SPOMIENKA_PRIVILEG)){
+			podmienka &= (je_privileg && je_ant_modl_spomprivileg);
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_OSTATNI)){
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_KNAZ_DIAKON)){
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_ZAVER)){
+			// must be after two previous! (the same prefix)
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			exportovat_html_note = ANO;
+		}
+
+		if (podmienka){
+			// show
+			if (exportovat_html_note){
+				if (je_begin){
+#if defined(EXPORT_HTML_SPECIALS)
+					Export("show %s", paramname);
+#endif
+					Export(HTML_COMMENT_END);
+				}
+				else if (je_end){
+					Export(HTML_COMMENT_BEGIN);
+#if defined(EXPORT_HTML_SPECIALS)
+					Export("show %s", paramname);
+#endif
+				}
 			}
-			Log("  `Te Deum' skipped.\n");
-		}
-	}// if(equals(paramname, PARAM_TEDEUM_END))
-
-	// voliteľné NEzobrazovanie celého hymnu (ostane len nadpis v podobe rubrikového small caps headingu) tu je uvedené len zobrazenie/nezobrazenie uvedeného nadpisu
-	else if (equals(paramname, PARAM_JE_TEDEUM_BEGIN)){
-		if (_global_opt_tedeum == NIE){
-			// nezobrazovat Te Deum
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nemá byť Te Deum");
-#endif
-			Log("  `Te Deum' heading skipping...\n");
+			Log("  `%s': %s\n", paramname, (je_begin) ? "..." : "copied.");
 		}
 		else{
+			// do not show
+			if (je_begin){
+				_global_skip_in_prayer += ANO; // increment
+			}
+			else if (je_end){
+				_global_skip_in_prayer -= ANO; // decrement
+			}
 #if defined(EXPORT_HTML_SPECIALS)
-			Export("má byť Te Deum");
+			Export("do not show %s", paramname);
 #endif
-			Log("  `Te Deum' heading: begin...\n");
-		}
-	}// if(equals(paramname, PARAM_JE_TEDEUM_BEGIN))
-	else if (equals(paramname, PARAM_JE_TEDEUM_END)){
-		if (_global_opt_tedeum == NIE){
-			// nezobrazovat Te Deum
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `Te Deum' heading skipped.\n");
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("má byť Te Deum");
-#endif
-			Log("  `Te Deum' heading copied.\n");
-		}
-	}// if(equals(paramname, PARAM_JE_TEDEUM_END))
-
-	// predĺžené slávenie vigílií v rámci posvätných čítaní
-	else if (equals(paramname, PARAM_JE_VIGILIA_BEGIN)){
-		_global_som_vo_vigilii = ANO;
-		// 2013-02-28: nechápem, prečo tu bola podmienka aj na Te Deum, ktoré napr. v Pôstnom období nie je, hoci je tam predĺžené slávenie vigílie
-		if ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)) || !(je_vigilia)){
-			// nezobrazovať vigíliu
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nemá byť vigília");
-#endif
-			Log("  `vigília' heading skipping...\n");
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("má byť vigília");
-#endif
-			Log("  `vigília' heading: begin...\n");
-		}
-	}// if(equals(paramname, PARAM_JE_VIGILIA_BEGIN))
-	else if (equals(paramname, PARAM_JE_VIGILIA_END)){
-		_global_som_vo_vigilii = NIE;
-		if ((_global_opt_tedeum == NIE) || (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)) || !(je_vigilia)){
-			// nezobrazovať vigíliu
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `vigília' heading skipped.\n");
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("má byť vigília");
-#endif
-			Log("  `vigília' heading copied.\n");
-		}
-	}// if(equals(paramname, PARAM_JE_VIGILIA_END))
-
-	else if (equals(paramname, PARAM_ZAKONCENIE_BEGIN)){
-		if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
-			// nezobrazit zakoncenie
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť zakončenie");
-#endif
-			Log("  `zakoncenie' skipping...\n");
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť zakončenie");
-#endif
-			Export("-->");
-			Log("  `zakoncenie': begin...\n");
+			Log("  `%s' %s\n", paramname, (je_begin) ? "skipping..." : "skipped.");
 		}
 	}
-	else if (equals(paramname, PARAM_ZAKONCENIE_END)){
-		if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
-			// nezobrazit zakoncenie
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `zakoncenie' skipped.\n");
-		}
-		else{
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť zakončenie");
-#endif
-			Log("  `zakoncenie' copied.\n");
-		}
-	}
-
-	else if (equals(paramname, PARAM_KOMPLETORIUM_DVA_ZALMY_BEGIN)){
-		Log("interpretParameter(): _global_modl_kompletorium.pocet_zalmov == %d...\n", _global_modl_kompletorium.pocet_zalmov);
-		Log("interpretParameter(): _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_prve_kompletorium.pocet_zalmov);
-		if (_global_pocet_zalmov_kompletorium == 1){
-			// nezobrazovať druhý žalm/antifónu pre kompletórium, ktoré má len 1 žalm+antifónu
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("(beg)nezobrazovať druhý žalm/ant. pre komplet., ktoré má len 1 ž.+ant.");
-#endif
-			Log("  `2. žalm+antifóna v kompletóriu' skipping...\n");
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("(beg)zobrazovať druhý žalm/ant. pre komplet., ktoré má aj 2.ž.+ant.");
-#endif
-			Log("  `2. žalm+antifóna v kompletóriu': begin...\n");
-		}
-	}
-	else if (equals(paramname, PARAM_KOMPLETORIUM_DVA_ZALMY_END)){
-		if (_global_pocet_zalmov_kompletorium == 1){
-			// nezobrazovať druhý žalm/antifónu pre kompletórium, ktoré má len 1 žalm+antifónu
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `2. žalm+antifóna v kompletóriu' skipped.\n");
-		}
-		else{
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("(end)zobrazovať druhý žalm/ant. pre komplet., ktoré má aj 2.ž.+ant.");
-#endif
-			Log("  `2. žalm+antifóna v kompletóriu' copied.\n");
-		}
-	}
-
-	// rubriky
-	else if (equals(paramname, PARAM_RUBRIKA_BEGIN)){
-		_global_pocet_slava_otcu = _global_pocet_slava_otcu + 1;
-		if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
-			// zobrazit rubriky
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť rubriku");
-#endif
-			Export("-->");
-			Log("  `rubrika': begin...\n");
-		}
-		else{
-			// nezobrazovať rubriky
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť rubriku");
-#endif
-			Log("  `rubrika' skipping...\n");
-		}
-	}
-	else if (equals(paramname, PARAM_RUBRIKA_END)){
-		if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť rubriku");
-#endif
-			Log("  `rubrika': copied.\n");
-		}
-		else{
-			// nezobrazovať rubriky
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `rubrika' skipped.\n");
-		}
-	}
-
-	// 2011-05-03: pridané preskočenie veľkej časti šablóny pre posvätné čítanie na veľkonočnú nedeľu
-	else if(equals(paramname, PARAM_VN_VYNECHAJ_BEGIN)){
-		if(_global_den.denvr != VELKONOCNA_NEDELA){
-			// zobrazit celé posv. čítanie
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť posv.čítanie");
-#endif
-			Export("-->");
-			Log("  `posv.čítanie': begin...\n");
-		}
-		else{
-			// nezobrazovať celé posv. čítanie
-			_global_skip_in_prayer_vnpc = ANO;
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť posv.čítanie");
-#endif
-			Log("  `posv.čítanie' skipping...\n");
-		}
-	}
-	else if (equals(paramname, PARAM_VN_VYNECHAJ_END)){
-		if (_global_den.denvr != VELKONOCNA_NEDELA){
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť posv.čítanie");
-#endif
-			Log("  `posv.čítanie': copied.\n");
-		}
-		else{
-			// zobrazovať celé posv. čítanie
-			_global_skip_in_prayer_vnpc = NIE;
-			Log("  `posv.čítanie' skipped.\n");
-		}
-	}
-
-	else if (equals(paramname, PARAM_COPYRIGHT_BEGIN)){
-		if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
-			// zobrazit copyright info
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť copyright");
-#endif
-			Export("-->");
-			Log("  `copyright': begin...\n");
-		}
-		else{
-			// nezobrazovat copyright info
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť copyright");
-#endif
-			Log("  `copyright' skipping...\n");
-		}
-	}// PARAM_COPYRIGHT_BEGIN
-	else if (equals(paramname, PARAM_COPYRIGHT_END)){
-		if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť copyright");
-#endif
-			Log("  `copyright': copied.\n");
-		}
-		else{
-			// nezobrazovat copyright info
-			_global_skip_in_prayer -= ANO;
-			Log("  `copyright' (%d) skipped.\n");
-		}
-	}// PARAM_COPYRIGHT_END
 
 	// podmienka zosilnená kvôli sláva otcu vo vigíliách (vtedy preskakujeme)
 	else if ((equals(paramname, PARAM_SLAVAOTCU_BEGIN) || equals(paramname, PARAM_SLAVAOTCU_SPEC_BEGIN)) && (!((_global_som_vo_vigilii == ANO) && ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)) || !(je_vigilia))))){
@@ -2982,112 +2680,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}// PARAM_HYMNUS_34_OCR_INY_END
 
-	// 2007-10-02: pridané nezobrazovanie "Ant. 2" a pod. keď sú rovnaké antifóny na mcd
-	else if(equals(paramname, PARAM_SKRY_ANTIFONU_BEGIN)){
-		if(_global_ant_mcd_rovnake == NIE){
-			// zobrazit nazvy antifon
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť ant.");
-#endif
-			Export("-->");
-			Log("  `Ant.': begin...\n");
-		}
-		else{
-			// nezobrazovat nazvy antifon
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť ant.");
-#endif
-			Log("  `Ant.' skipping...\n");
-		}
-	}
-	else if(equals(paramname, PARAM_SKRY_ANTIFONU_END)){
-		if(_global_ant_mcd_rovnake == NIE){
-			// zobrazit nazvy antifon
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť ant.");
-#endif
-			Log("  `Ant.': copied.\n");
-		}
-		else{
-			// nezobrazovat nazvy antifon
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `Ant.' skipped.\n");
-		}
-	}
-
-	// 2013-10-21: pridané: zobrazovanie "Ant." a pod., keď sú rovnaké antifóny na mcd | ToDo: vyriešiť krajšie
-	else if(equals(paramname, PARAM_ZOBRAZ_ANTIFONU_BEGIN)){
-		if(_global_ant_mcd_rovnake == ANO){
-			// zobrazit nazvy antifon
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť 1 ant.");
-#endif
-			Export("-->");
-			Log("  `Ant.': begin...\n");
-		}
-		else{
-			// zobrazovat nazvy antifon
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť ant.");
-#endif
-			Log("  `Ant.' skipping...\n");
-		}
-	}
-	else if (equals(paramname, PARAM_ZOBRAZ_ANTIFONU_END)){
-		if (_global_ant_mcd_rovnake == ANO){
-			// zobrazit nazvy antifon
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť 1 ant.");
-#endif
-			Log("  `Ant.': copied.\n");
-		}
-		else{
-			// zobrazovat nazvy antifon
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `Ant.' skipped.\n");
-		}
-	}
-
-	// 2010-05-21: pridané voliteľné zobrazovanie antifóny a modlitby pre spomienku svätca v pôstnom období 
-	// 2010-05-24: podmienka zosilnená, aby sa v pôste nezobrazovalo "Ant." červenou farbou z templáty, ak nie je nastavená tá ant. + modlitba pre spomienku
-	else if(equals(paramname, PARAM_SPOMIENKA_PRIVILEG_BEGIN)){
-		if(je_privileg && je_ant_modl_spomprivileg){
-			// zobraziť antifónu/modlitbu na spomienky svätcov, ktoré padnú na privilegované dni (VSLH č. 238-239)
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť spom.privileg.");
-#endif
-			Export("-->");
-			Log("  `spom.privileg.': begin...\n");
-		}
-		else{
-			// nezobraziť antifónu/modlitbu na spomienky svätcov, ktoré padnú na privilegované dni (VSLH č. 238-239)
-			_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("nezobraziť spom.privileg.");
-#endif
-			Log("  `spom.privileg.' skipping...\n");
-		}
-	}
-	else if(equals(paramname, PARAM_SPOMIENKA_PRIVILEG_END)){
-		if(je_privileg && je_ant_modl_spomprivileg){
-			// zobraziť antifónu/modlitbu na spomienky svätcov, ktoré padnú na privilegované dni (VSLH č. 238-239)
-			Export("<!--");
-#if defined(EXPORT_HTML_SPECIALS)
-			Export("zobraziť spom.privileg.");
-#endif
-			Log("  `spom.privileg.': copied.\n");
-		}
-		else{
-			// nezobraziť antifónu/modlitbu na spomienky svätcov, ktoré padnú na privilegované dni (VSLH č. 238-239)
-			_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-			Log("  `spom.privileg.' skipped.\n");
-		}
-	}
-
 	else if(equals(paramname, PARAM_NADPIS)){
 		Export("nadpis:begin-->");
 		Export(_global_string_modlitba);
@@ -3168,6 +2760,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	}// PARAM_SPOL_CAST
 
 	if ((equals(paramname, PARAM_CHVALOSPEV))
+		|| (equals(paramname, PARAM_ZAVER))
+		|| (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON))
+		|| (equals(paramname, PARAM_ZAVER_OSTATNI))
 		|| (equals(paramname, PARAM_OTCENAS))
 		|| (equals(paramname, PARAM_TEDEUM))
 		|| (equals(paramname, PARAM_DOPLNKOVA_PSALMODIA))
@@ -3185,7 +2780,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		){
 		Log("(if((equals(paramname == %s)): _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI == %ld: \n", paramname, _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI);
 
-		short int bit;
+		long bit;
 		short int opt = OPT_1_CASTI_MODLITBY; // for some options must be changed e. g. to OPT_5_ALTERNATIVES
 
 		char popis_show[SMALL];
@@ -3199,11 +2794,37 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		char anchor[SMALL];
 		mystrcpy(anchor, paramname, SMALL);
 
-		short int podmienka = (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI));
+		podmienka = (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI));
 		podmienka &= (_global_skip_in_prayer == NIE);
 
 		if (equals(paramname, PARAM_OTCENAS)){
 			bit = BIT_OPT_1_OTCENAS;
+		}
+		else if (equals(paramname, PARAM_ZAVER)){
+			bit = BIT_OPT_1_ZAVER;
+			if (_global_jazyk == JAZYK_HU){
+				sprintf(popis_show, "%s", (char *)HTML_TEXT_HU_OPTION1_ZAVER_HIDE);
+				sprintf(popis_hide, "%s", (char *)HTML_TEXT_HU_OPTION1_ZAVER_SHOW);
+			}
+			else{
+				sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_zaver[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option1_zaver[_global_jazyk]);
+			}
+		}
+		// ToDo: for PARAM_ZAVER_OSTATNI and PARAM_ZAVER_KNAZ_DIAKON, respect (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) to show both conclusions
+		else if (equals(paramname, PARAM_ZAVER_OSTATNI)){
+			opt = OPT_5_ALTERNATIVES;
+			bit = BIT_OPT_5_ZAVER_KNAZ_DIAKON;
+			podmienka &= (!isGlobalOption(opt, bit));
+			sprintf(popis_show, html_text_option5_zaver_knaz_diakon_NORMAL[_global_jazyk]); // not used
+			sprintf(popis_hide, html_text_option5_zaver_knaz_diakon[_global_jazyk]);
+		}
+		else if (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON)){
+			opt = OPT_5_ALTERNATIVES;
+			bit = BIT_OPT_5_ZAVER_KNAZ_DIAKON;
+			podmienka &= (isGlobalOption(opt, bit));
+			sprintf(popis_show, html_text_option5_zaver_knaz_diakon_NORMAL[_global_jazyk]);
+			sprintf(popis_hide, html_text_option5_zaver_knaz_diakon[_global_jazyk]); // not used
 		}
 		else if (equals(paramname, PARAM_CHVALOSPEV)){
 			bit = BIT_OPT_1_CHVALOSPEVY;
@@ -3384,7 +3005,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Export("[skipping %s]", paramname);
 			Log("skipping %s\n", paramname);
 		}
-	}// PARAM_CHVALOSPEV, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
+	}// PARAM_CHVALOSPEV, PARAM_ZAVER, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
 
 	if (equals(paramname, PARAM_NAVIGACIA_SIMPLE)){
 		if (aj_navigacia == ANO){
@@ -3472,7 +3093,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	}// PARAM_NAVIGACIA
 
 	// pokracuju dalsie klasicke `tagy' v modlitbach (teda templatoch)
-	// 2012-10-01: odstránené "else", aby sa PARAM_POPIS správal aj ako uvedené vyššie, aj tu
+
 	if (equals(paramname, PARAM_POPIS)){
 		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS == %ld: ", _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS);
 		if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)){
@@ -3814,11 +3435,12 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			strcat(path, _global_modl_cez_den_3.antifona3.file);
 			includeFile(type, paramname, path, _global_modl_cez_den_3.antifona3.anchor);
 			break;
-			/*			case MODL_VESPERY:
-							strcat(path, _global_modl_vespery.antifona3.file);
-							includeFile(type, paramname, path, _global_modl_vespery.antifona3.anchor);
-							break;
-							*/
+			/*
+		case MODL_VESPERY:
+			strcat(path, _global_modl_vespery.antifona3.file);
+			includeFile(type, paramname, path, _global_modl_vespery.antifona3.anchor);
+			break;
+			*/
 		case MODL_POSV_CITANIE:
 			strcat(path, _global_modl_posv_citanie.antifona3.file);
 			includeFile(type, paramname, path, _global_modl_posv_citanie.antifona3.anchor);
@@ -3855,9 +3477,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}// switch
 	}// PARAM_ANTIFONA3x
 	else if (equals(paramname, PARAM_ANTIFONA1k)){
-		// 2008-04-03: pridané kvôli kompletóriu vo veľkonočnom období, či pri druhej antifóne zobraziť dvojku alebo nie 
-		// 2011-07-09: opravená podmienka
-		// 2013-10-21: pre HU, CZ upravené | ToDo: vyriešiť krajšie
+		// pridané kvôli kompletóriu vo veľkonočnom období, či pri druhej antifóne zobraziť dvojku alebo nie 
 		if ((((type == MODL_KOMPLETORIUM) && (_global_modl_kompletorium.pocet_zalmov == 2)) || ((type == MODL_PRVE_KOMPLETORIUM) && (_global_modl_prve_kompletorium.pocet_zalmov == 2))) && (_global_ant_mcd_rovnake == NIE)){
 			Export("-->");
 			if ((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_CZ)){
@@ -3883,8 +3503,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 	}// ANTIFONA1_KOMPLET
 	else if (equals(paramname, PARAM_ANTIFONA2k)){
-		// 2008-04-03: pridané kvôli kompletóriu vo veľkonočnom období, či pri druhej antifóne zobraziť dvojku alebo nie 
-		// 2011-07-09: opravená podmienka
+		// pridané kvôli kompletóriu vo veľkonočnom období, či pri druhej antifóne zobraziť dvojku alebo nie 
 		if ((((type == MODL_KOMPLETORIUM) && (_global_modl_kompletorium.pocet_zalmov == 2)) || ((type == MODL_PRVE_KOMPLETORIUM) && (_global_modl_prve_kompletorium.pocet_zalmov == 2))) && (_global_ant_mcd_rovnake == NIE)){
 			Export("-->2<!--");
 		}
@@ -4283,8 +3902,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}// switch
 	}// PARAM_MODLITBA
 	else if(equals(paramname, PARAM_ANT_SPOMPRIVILEG)){
-		// 2010-05-21: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie)
-		// 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
+		// kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie); zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 		switch(type){
 			case MODL_RANNE_CHVALY:
 				strcat(path, _global_modl_ranne_chvaly.ant_spomprivileg.file);
@@ -4304,8 +3922,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}// switch
 	}// PARAM_ANT_SPOMPRIVILEG
 	else if(equals(paramname, PARAM_MODL_SPOMPRIVILEG)){
-		// 2010-05-21: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie)
-		// 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
+		// kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie); zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 		switch(type){
 			case MODL_RANNE_CHVALY:
 				strcat(path, _global_modl_ranne_chvaly.modlitba_spomprivileg.file);
@@ -4336,7 +3953,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}// switch
 	}// PARAM_CITANIE2_SPOMPRIVILEG
 
-	// 2012-05-24: doplnené -- predĺžené slávenie vigílií v rámci posvätných čítaní
+	// predĺžené slávenie vigílií v rámci posvätných čítaní
 	else if(equals(paramname, PARAM_ANTIFONA_VIG)){
 		switch(type){
 			case MODL_POSV_CITANIE:
@@ -6712,6 +6329,9 @@ void xml_export_options(void){
 				case 14: // BIT_OPT_1_MCD_ZALTAR_TRI
 					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_MCD_ZALTAR_TRI)"%ld"ELEM_END(XML_BIT_OPT_1_MCD_ZALTAR_TRI)"\n", BIT_OPT_1_MCD_ZALTAR_TRI, STR_MODL_OPTF_1_MCD_ZALTAR_TRI, html_text_option1_mcd_zalmy_tri[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI)));
 					break;
+				case 15: // BIT_OPT_1_ZAVER
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_ZAVER)"%ld"ELEM_END(XML_BIT_OPT_1_ZAVER)"\n", BIT_OPT_1_ZAVER, STR_MODL_OPTF_1_ZAVER, html_text_option1_zaver[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER)));
+					break;
 				}// switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_1_CASTI_MODLITBY)"\n");
@@ -6826,10 +6446,13 @@ void xml_export_options(void){
 					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA)"%ld"ELEM_END(XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA)"\n", BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, html_text_option5_PopolStrPsalm_4STR[_global_jazyk], html_text_option5_PopolStrPsalm_3PI[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)));
 					break;
 				case 13: // BIT_OPT_5_CZ_HYMNY_VYBER
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_CZ_HYMNY_VYBER)"%ld"ELEM_END(XML_BIT_OPT_5_CZ_HYMNY_VYBER)"\n", BIT_OPT_5_CZ_HYMNY_VYBER, STR_MODL_OPTF_5_CZ_HYMNY_VYBER, html_text_option5_CZhymnyNORMAL[_global_jazyk], html_text_option5_CZhymnyRENC[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_CZ_HYMNY_VYBER)"%ld"ELEM_END(XML_BIT_OPT_5_CZ_HYMNY_VYBER)"\n", BIT_OPT_5_CZ_HYMNY_VYBER, STR_MODL_OPTF_5_CZ_HYMNY_VYBER, html_text_option5_CZhymnyNORMAL[_global_jazyk], html_text_option5_CZhymnyRENC[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)));
 					break;
 				case 14: // BIT_OPT_5_OFF_DEF_PSALM_146_150
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_OFF_DEF_PSALM_146_150)"%ld"ELEM_END(XML_BIT_OPT_5_OFF_DEF_PSALM_146_150)"\n", BIT_OPT_5_OFF_DEF_PSALM_146_150, STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150, html_text_option5_OffDefZ146_150[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_OFF_DEF_PSALM_146_150)"%ld"ELEM_END(XML_BIT_OPT_5_OFF_DEF_PSALM_146_150)"\n", BIT_OPT_5_OFF_DEF_PSALM_146_150, STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150, html_text_option5_OffDefZ146_150[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)));
+					break;
+				case 15: // BIT_OPT_5_OFF_DEF_PSALM_146_150
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON)"%ld"ELEM_END(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON)"\n", BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON, html_text_option5_zaver_knaz_diakon[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)));
 					break;
 				}// switch(j)
 			}// for j
@@ -9216,6 +8839,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole (checkbox) WWW_/STR_MODL_OPTF_1_PLNE_RESP
 			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP, STR_MODL_OPTF_1_PLNE_RESP, html_text_option1_plne_resp[_global_jazyk], html_text_option1_plne_resp_explain[_global_jazyk]);
 
+			// pole (checkbox) WWW_/STR_MODL_OPTF_1_ZAVER
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER, STR_MODL_OPTF_1_ZAVER, html_text_option1_zaver[_global_jazyk], html_text_option1_zaver_explain[_global_jazyk]);
+
 			Export(HTML_TABLE_CELL_END"\n");
 			Export(HTML_TABLE_ROW_END"\n");
 
@@ -9231,6 +8857,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_1_OT, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_1_TD, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_1_PLNE_RESP, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_1_ZAVER, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER)) ? ANO : NIE);
 		}// else: treba nastaviť hidden pre všetky options pre _global_optf
 
 		//---------------------------------------------------------------------
@@ -9402,6 +9029,12 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole (checkbox) WWW_/STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150
 			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150, STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150, html_text_option5_OffDefZ146_150[_global_jazyk], html_text_option5_OffDefZ146_150_explain[_global_jazyk]);
 
+			// ranné chvály a vešpery - záver
+			Export(HTML_CRLF_LINE_BREAK);
+			Export("<"HTML_SPAN_BOLD_TOOLTIP">%s, %s"HTML_SPAN_END, STR_EMPTY, nazov_modlitby(MODL_RANNE_CHVALY), nazov_modlitby(MODL_VESPERY));
+
+			// pole (checkbox) WWW_/STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150
+			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON, html_text_option5_zaver_knaz_diakon[_global_jazyk], html_text_option5_zaver_knaz_diakon_explain[_global_jazyk]);
 		}
 		else{
 			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_5_DOPLNK_PSALM_122_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)) ? ANO : NIE);
@@ -9419,6 +9052,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_5_CZ_HYMNY_VYBER, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)) ? ANO : NIE);
 		}// else: treba nastaviť hidden pre všetky options pre _global_optf
 
 		Export(HTML_TABLE_CELL_END"\n");

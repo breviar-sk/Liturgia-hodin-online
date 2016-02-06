@@ -625,6 +625,13 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_MODL_OPTF_1_MCD_ZALTAR_TRI "of1ps3"
 #endif
 
+// prayer conclusions
+#define MODL_OPTF_1_ZAVER 118
+#ifdef LONG_PARAM_NAMES
+	#define STR_MODL_OPTF_1_ZAVER "MODL_OPTF_1_ZAVER"
+#else
+	#define STR_MODL_OPTF_1_ZAVER "of1zm"
+#endif
 
 // žalmy zo sviatku
 #define MODL_OPTF_1_SPOMIENKA_SPOL_CAST 79
@@ -895,6 +902,13 @@ extern short int query_type; // contains constants PRM_...
 #define STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150 "of5ofps60"
 #endif
 
+#define MODL_OPTF_5_ZAVER_KNAZ_DIAKON 119
+#ifdef LONG_PARAM_NAMES
+#define STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON "MODL_OPTF_5_ZAVER_KNAZ_DIAKON"
+#else
+#define STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON "of5zkd"
+#endif
+
 #define CSS 40
 #ifdef LONG_PARAM_NAMES
 	#define STR_CSS "CSS"
@@ -1069,6 +1083,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST          "BitOpt1ShowCommuniaDescription"
 #define XML_BIT_OPT_1_VESP_KRATSIE_PROSBY       "BitOpt1UseVespShortenPrayers"
 #define XML_BIT_OPT_1_MCD_ZALTAR_TRI            "BitOpt1PsalmsDuringDayPsalt3Weeks"
+#define XML_BIT_OPT_1_ZAVER                     "BitOpt1PrayerConclusions"
 
 // POCET_OPT_2_HTML_EXPORT
 #define XML_BIT_OPT_2_ISO_DATUM                 "BitOpt2ISOFormat"
@@ -1104,6 +1119,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA    "BitOpt5AshWednPsalmody"
 #define XML_BIT_OPT_5_CZ_HYMNY_VYBER            "BitOpt5CZhymnsAlt"
 #define XML_BIT_OPT_5_OFF_DEF_PSALM_146_150     "BitOpt5OffDefPsalm146or150"
+#define XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON         "BitOpt5ConclusionPriestDiacon"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<"elem">"

@@ -418,18 +418,22 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_TEXT          "TEXT" // static text included into single file
 #define PARAM_MARIANSKE_ANTIFONY_LINK "MARIANSKE_ANTIFONY_LINK" // hyperlink to Maria antiphones (static HTML text or dynamically generated URL
 
+// these are used also for <a name...> -- do not use underscore in these names :)
 #define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // supplementary psalmody (for daily prayers: 9h, 12h, 15h)
 #define PARAM_PSALMODIA                "PSALMODIA" // alternative psalmody (e. g. for morning prayer, Ash Wednesday)
 
 #define PARAM_PSALMODIA_TRI_TYZDNE     "PSALMODIA-TRI-TYZDNE"
 
+#define PARAM_ZAVER                    "ZAVER"
+#define PARAM_ZAVER_KNAZ_DIAKON        "ZAVER-KNAZ-DIAKON"
+#define PARAM_ZAVER_OSTATNI            "ZAVER-OSTATNI"
 #define PARAM_CHVALOSPEV               "CHVALOSPEV"
 #define PARAM_TEDEUM		           "TEDEUM"
 #define PARAM_OTCENAS                  "OTCENAS"
 #define PARAM_ZVOLANIA                 "ZVOLANIA"
 #define PARAM_SLAVAOTCU	               "SLAVAOTCU"
-#define PARAM_RESPONZ                  "RESPONZ" // PARAM_PLNE_RESP je už obsadené...
-#define PARAM_KRATSIE_PROSBY           "KRATSIE-PROSBY" // 2012-11-15: _ sa menilo na &nbsp; preto som zmenil na -
+#define PARAM_RESPONZ                  "RESPONZ"
+#define PARAM_KRATSIE_PROSBY           "KRATSIE-PROSBY"
 #define PARAM_ZALM95                   "ZALM95" // 2012-11-23: kvôli <a name...>
 #define PARAM_VIGILIA                  "VIGILIA"
 #define PARAM_SPOL_CAST_SPOM           "SPOL-CAST-SPOM"
@@ -442,67 +446,88 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ZALM146                  "ZALM146"
 #define PARAM_ZALM150                  "ZALM150"
 
-// Od nedele Pánovho zmŕtvychvstania až do Druhej veľkonočnej nedele vrátane, ako aj na druhé vešpery slávnosti Zoslania Ducha Svätého
-#define PARAM_ALELUJA_ALELUJA_BEGIN         "ALELUJA_ALELUJA_BEGIN"
-#define PARAM_ALELUJA_ALELUJA_END           "ALELUJA_ALELUJA_END"
-#define PARAM_ALELUJA_NIE_V_POSTE           "ALELUJA_NIE_V_POSTE" // používa sa v inkludovaných súboroch, napr. v rámci antifón
-#define PARAM_ALELUJA_NIE_V_POSTE_BEGIN     "ALELUJA_NIE_V_POSTE_BEGIN"
-#define PARAM_ALELUJA_NIE_V_POSTE_END       "ALELUJA_NIE_V_POSTE_END"
-#define PARAM_ALELUJA_VO_VELKONOCNOM        "V_O_ALELUJA" // používa sa v inkludovaných súboroch, napr. v rámci antifón
-#define PARAM_ALELUJA_VO_VELKONOCNOM_BEGIN  "V_O_ALELUJA_BEGIN" // používajú sa v templátach
-#define PARAM_ALELUJA_VO_VELKONOCNOM_END    "V_O_ALELUJA_END"
-// 2005-08-15: Doplnené parametre pre voľné, iné hymny v 34. týždni OCR
-#define PARAM_HYMNUS_34_OCR_INY_BEGIN       "HYMNUS_34_OCR_INY_BEGIN"
-#define PARAM_HYMNUS_34_OCR_INY_END         "HYMNUS_34_OCR_INY_END"
-// nasleduju casti, ktore sa mozu pri generovani modlitby vynechat alebo doplnit podla lubovole
-#define PARAM_OTCENAS_BEGIN                 "OTCENAS_BEGIN"
-#define PARAM_OTCENAS_END                   "OTCENAS_END"
-#define PARAM_CHVALOSPEV_BEGIN              "CHVALOSPEV_BEGIN"
-#define PARAM_CHVALOSPEV_END                "CHVALOSPEV_END"
-#define PARAM_ZAKONCENIE_BEGIN              "ZAKONCENIE_BEGIN"
-#define PARAM_ZAKONCENIE_END                "ZAKONCENIE_END"
-#define PARAM_KOMPLETORIUM_DVA_ZALMY_BEGIN	"KOMPLETORIUM_DVA_ZALMY_BEGIN"
-#define PARAM_KOMPLETORIUM_DVA_ZALMY_END	"KOMPLETORIUM_DVA_ZALMY_END"
-#define PARAM_SLAVAOTCU_BEGIN               "SLAVAOTCU_BEGIN"
-#define PARAM_SLAVAOTCU_END                 "SLAVAOTCU_END"
+// keywords
+#define KEYWORD_BEGIN   "BEGIN"
+#define KEYWORD_END     "END"
+
+#define KEYWORD_ALELUJA_ALELUJA         "ALELUJA_ALELUJA"
+#define KEYWORD_ALELUJA_NIE_V_POSTE     "ALELUJA_NIE_V_POSTE"
+#define KEYWORD_ALELUJA_VO_VELKONOCNOM  "V_O_ALELUJA"
+#define KEYWORD_HYMNUS_34_OCR_INY       "HYMNUS_34_OCR_INY"
+#define KEYWORD_OTCENAS                 "OTCENAS"
+#define KEYWORD_PARAM_CHVALOSPEV        "CHVALOSPEV"
+#define KEYWORD_KOMPLETORIUM_DVA_ZALMY	"KOMPLETORIUM_DVA_ZALMY"
+#define KEYWORD_SLAVAOTCU               "SLAVAOTCU"
+#define KEYWORD_SLAVAOTCU_SPEC          "SLAVAOTCU_SPEC"
+#define KEYWORD_TEDEUM                  "TEDEUM"
+#define KEYWORD_JE_TEDEUM               "JE_TEDEUM"
+#define KEYWORD_COPYRIGHT               "COPYRIGHT"
+#define KEYWORD_SKRY_ANTIFONU           "SKRY_ANTIFONU"
+#define KEYWORD_ZOBRAZ_ANTIFONU         "ZOBRAZ_ANTIFONU"
+#define KEYWORD_JE_VIGILIA              "JE_VIGILIA"
+#define KEYWORD_SPOMIENKA_PRIVILEG      "SPOMIENKA_PRIVILEG"
+#define KEYWORD_RUBRIKA                 "RUBRIKA"
+#define KEYWORD_VN_VYNECHAJ             "VELK_NEDELA_VYNECHAJ"
+#define KEYWORD_ZAVER                   "ZAVER"
+#define KEYWORD_ZAVER_KNAZ_DIAKON       "ZAVER_KNAZ_DIAKON"
+#define KEYWORD_ZAVER_OSTATNI           "ZAVER_OSTATNI"
+
+// parameters
+#define PARAM_ALELUJA_ALELUJA_BEGIN         KEYWORD_ALELUJA_ALELUJA""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_ALELUJA_ALELUJA_END           KEYWORD_ALELUJA_ALELUJA""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_ALELUJA_NIE_V_POSTE           KEYWORD_ALELUJA_NIE_V_POSTE
+#define PARAM_ALELUJA_NIE_V_POSTE_BEGIN     KEYWORD_ALELUJA_NIE_V_POSTE""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_ALELUJA_NIE_V_POSTE_END       KEYWORD_ALELUJA_NIE_V_POSTE""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_ALELUJA_VO_VELKONOCNOM        KEYWORD_ALELUJA_VO_VELKONOCNOM
+#define PARAM_ALELUJA_VO_VELKONOCNOM_BEGIN  KEYWORD_ALELUJA_VO_VELKONOCNOM""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_ALELUJA_VO_VELKONOCNOM_END    KEYWORD_ALELUJA_VO_VELKONOCNOM""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_HYMNUS_34_OCR_INY_BEGIN       KEYWORD_HYMNUS_34_OCR_INY""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_HYMNUS_34_OCR_INY_END         KEYWORD_HYMNUS_34_OCR_INY""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_OTCENAS_BEGIN                 KEYWORD_OTCENAS""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_OTCENAS_END                   KEYWORD_OTCENAS""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_CHVALOSPEV_BEGIN              KEYWORD_PARAM_CHVALOSPEV""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_CHVALOSPEV_END                KEYWORD_PARAM_CHVALOSPEV""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_KOMPLETORIUM_DVA_ZALMY_BEGIN	KEYWORD_KOMPLETORIUM_DVA_ZALMY""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_KOMPLETORIUM_DVA_ZALMY_END	KEYWORD_KOMPLETORIUM_DVA_ZALMY""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_SLAVAOTCU_BEGIN               KEYWORD_SLAVAOTCU""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_SLAVAOTCU_END                 KEYWORD_SLAVAOTCU""STR_UNDERSCORE""KEYWORD_END
 // special case: Sláva Otcu "špeciálne" pre účely chválospevu Dan 3, 57-88. 56, kde nie je "Sláva Otcu" (pôvodne to bolo dané poradím, ale templáty pre rôzne jazyky majú rozličné poradie tohto "Sláva Otcu")
-#define PARAM_SLAVAOTCU_SPEC_BEGIN          "SLAVAOTCU_SPEC_BEGIN"
-#define PARAM_SLAVAOTCU_SPEC_END            "SLAVAOTCU_SPEC_END"
+#define PARAM_SLAVAOTCU_SPEC_BEGIN          KEYWORD_SLAVAOTCU_SPEC""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_SLAVAOTCU_SPEC_END            KEYWORD_SLAVAOTCU_SPEC""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_ZAVER_BEGIN                   KEYWORD_ZAVER""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_ZAVER_END                     KEYWORD_ZAVER""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_ZAVER_KNAZ_DIAKON_BEGIN       KEYWORD_ZAVER_KNAZ_DIAKON""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_ZAVER_KNAZ_DIAKON_END         KEYWORD_ZAVER_KNAZ_DIAKON""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_ZAVER_OSTATNI_BEGIN           KEYWORD_ZAVER_OSTATNI""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_ZAVER_OSTATNI_END             KEYWORD_ZAVER_OSTATNI""STR_UNDERSCORE""KEYWORD_END
 
-#define PARAM_COPYRIGHT_BEGIN               "COPYRIGHT_BEGIN"
-#define PARAM_COPYRIGHT_END                 "COPYRIGHT_END"
-
-// 2011-04-11: pridaný ďalší pár parametrov
-//             JE_TEDEUM_BEGIN a END hovoria, či v danej modlitbe má vôbec byť zobrazená čo i len zmienka o Te Deum (riadené podmienkou je_tedeum);
-//             TEDEUM_BEGIN a END hovoria, že ak má byť Te Deum (je_tedeum), tak ak chce používateľ zobraziť plný text, ohraničujú ho
-#define PARAM_TEDEUM_BEGIN                  "TEDEUM_BEGIN"
-#define PARAM_TEDEUM_END                    "TEDEUM_END"
-#define PARAM_JE_TEDEUM_BEGIN               "JE_TEDEUM_BEGIN"
-#define PARAM_JE_TEDEUM_END                 "JE_TEDEUM_END"
-
-#define PARAM_SKRY_ANTIFONU_BEGIN           "SKRY_ANTIFONU_BEGIN"
-#define PARAM_SKRY_ANTIFONU_END             "SKRY_ANTIFONU_END"
-
-#define PARAM_ZOBRAZ_ANTIFONU_BEGIN         "ZOBRAZ_ANTIFONU_BEGIN"
-#define PARAM_ZOBRAZ_ANTIFONU_END           "ZOBRAZ_ANTIFONU_END"
-
-#define PARAM_JE_VIGILIA_BEGIN              "JE_VIGILIA_BEGIN"
-#define PARAM_JE_VIGILIA_END                "JE_VIGILIA_END"
-
+#define PARAM_COPYRIGHT_BEGIN               KEYWORD_COPYRIGHT""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_COPYRIGHT_END                 KEYWORD_COPYRIGHT""STR_UNDERSCORE""KEYWORD_END
+// JE_TEDEUM_BEGIN a END hovoria, či v danej modlitbe má vôbec byť zobrazená čo i len zmienka o Te Deum (riadené podmienkou je_tedeum);
+// TEDEUM_BEGIN a END hovoria, že ak má byť Te Deum (je_tedeum), tak ak chce používateľ zobraziť plný text, ohraničujú ho
+#define PARAM_TEDEUM_BEGIN                  KEYWORD_TEDEUM""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_TEDEUM_END                    KEYWORD_TEDEUM""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_JE_TEDEUM_BEGIN               KEYWORD_JE_TEDEUM""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_JE_TEDEUM_END                 KEYWORD_JE_TEDEUM""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_RUBRIKA_BEGIN                 KEYWORD_RUBRIKA""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_RUBRIKA_END                   KEYWORD_RUBRIKA""STR_UNDERSCORE""KEYWORD_END
+// posvätné čítanie na veľkonočnú nedeľu
+#define PARAM_VN_VYNECHAJ_BEGIN             KEYWORD_VN_VYNECHAJ""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_VN_VYNECHAJ_END               KEYWORD_VN_VYNECHAJ""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_SKRY_ANTIFONU_BEGIN           KEYWORD_SKRY_ANTIFONU""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_SKRY_ANTIFONU_END             KEYWORD_SKRY_ANTIFONU""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_ZOBRAZ_ANTIFONU_BEGIN         KEYWORD_ZOBRAZ_ANTIFONU""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_ZOBRAZ_ANTIFONU_END           KEYWORD_ZOBRAZ_ANTIFONU""STR_UNDERSCORE""KEYWORD_END
+#define PARAM_JE_VIGILIA_BEGIN              KEYWORD_JE_VIGILIA""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_JE_VIGILIA_END                KEYWORD_JE_VIGILIA""STR_UNDERSCORE""KEYWORD_END
 // zobrazenie antifóny a modlitby pre spomienku svätca v pôstnom období + zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
-#define PARAM_SPOMIENKA_PRIVILEG_BEGIN      "SPOMIENKA_PRIVILEG_BEGIN"
-#define PARAM_SPOMIENKA_PRIVILEG_END        "SPOMIENKA_PRIVILEG_END"
+#define PARAM_SPOMIENKA_PRIVILEG_BEGIN      KEYWORD_SPOMIENKA_PRIVILEG""STR_UNDERSCORE""KEYWORD_BEGIN
+#define PARAM_SPOMIENKA_PRIVILEG_END        KEYWORD_SPOMIENKA_PRIVILEG""STR_UNDERSCORE""KEYWORD_END
+
 // zobrazenie/skrytie myšlienky k žalmu -- pre cezročné obdobie alternatívnej antifóny žalmu/chválospevu ("myšlienka k žalmu" podľa bodu 111 a 114 VSLH)
 #define PARAM_PSALMODIA_MYSLIENKA           "PSALMODIA_MYSLIENKA" // 2011-08-31: zmenené; pôvodne bolo: PARAM_MYSLIENKA_K_ZALMU "MYSLIENKA_K_ZALMU"
 // zobrazenie/skrytie nadpisu k žalmu/chválospevu ("nadpis k žalmu" podľa bodu 111 VSLH)
 #define PARAM_PSALMODIA_NADPIS              "PSALMODIA_NADPIS"
-
-#define PARAM_RUBRIKA_BEGIN                 "RUBRIKA_BEGIN"
-#define PARAM_RUBRIKA_END                   "RUBRIKA_END"
-
-// posvätné čítanie na veľkonočnú nedeľu
-#define PARAM_VN_VYNECHAJ_BEGIN             "VELK_NEDELA_VYNECHAJ_BEGIN"
-#define PARAM_VN_VYNECHAJ_END               "VELK_NEDELA_VYNECHAJ_END"
 
 // zobrazovanie/skrývanie dlhších záverov responzórií v posvätnom čítaní + responzóriá pre ranné chvály a vešpery po krátkom čítaní
 #define PARAM_PLNE_RESP                     "PLNE_RESP"
@@ -1249,7 +1274,7 @@ extern long _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_BLIND_FRIENDLY          256 // blind-friendly mode: 1 = use special CSS override to hide all red texts (rubrics)
 #define BIT_OPT_0_FOOTNOTES               512 // display footnotes and footnote references
 
-#define POCET_OPT_1_CASTI_MODLITBY         15 // jednotlivé komponenty option 1 -- bity pre force option 1
+#define POCET_OPT_1_CASTI_MODLITBY         16 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern long _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 // 2011-04-11: úprava významu (a interpretácie) option 1 == OPT_1_CASTI_MODLITBY (zobraziť/nezobraziť najmä pevné/nemenné súčasti modlitieb, ale aj iné, čo sú/nie sú v LH)
 // 2011-10-10: úprava niektorých bitov, posunutie popisu na koniec
@@ -1268,6 +1293,7 @@ extern long _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_ZOBRAZ_SPOL_CAST       4096
 #define BIT_OPT_1_VESP_KRATSIE_PROSBY    8192 // použiť (pre ktorýkoľvek deň v roku) kratšie prosby k vešperám z dodatku (0 = default, zo dňa)
 #define BIT_OPT_1_MCD_ZALTAR_TRI        16384 // používa sa pre modlitbu cez deň -- 1 = psalmódia sa používa z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)
+#define BIT_OPT_1_ZAVER                 32768 // prayer conclusions
 
 #define POCET_OPT_2_HTML_EXPORT            16 // jednotlivé komponenty option 2 -- bity pre force option 2
 extern long _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
@@ -1298,7 +1324,7 @@ extern long _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 #define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
 #define BIT_OPT_4_DO_NOT_USE_BUTTON         8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
-#define POCET_OPT_5_ALTERNATIVES           15 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES           16 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern long _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezročné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
@@ -1315,6 +1341,7 @@ extern long _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_POPOL_STREDA_PSALMODIA 4096 // psalmódia pre ranné chvály popolcovej stredy (default: streda 4. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
 #define BIT_OPT_5_CZ_HYMNY_VYBER         8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
 #define BIT_OPT_5_OFF_DEF_PSALM_146_150 16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
+#define BIT_OPT_5_ZAVER_KNAZ_DIAKON     32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
 
 #define MAX_POCET_OPT                      16 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
 

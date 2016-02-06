@@ -2354,6 +2354,35 @@ const char *html_text_option1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+#define HTML_TEXT_HU_OPTION1_ZAVER_SHOW "a befejezést megjeleníteni"
+#define HTML_TEXT_HU_OPTION1_ZAVER_HIDE "a befejezést elrejteni"
+
+const char *html_text_option1_zaver[POCET_JAZYKOV + 1] =
+{
+	"zakončenie",
+	"zakončení",
+	"",
+	"conclusion",
+	"",
+	"zakončení",
+	"befejezést",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_option1_zaver_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_option1_zalm95[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmov 24, 67 resp. 100 použiť žalm 95",
@@ -3376,6 +3405,39 @@ const char *html_text_option5_OffDefZ146_150_NORMAL[POCET_JAZYKOV + 1] =
 	"",
 	"místo žalmu 150 vzít žalm 146",
 	"a 150. helyett vehető a 145. zsoltár",
+};
+
+const char *html_text_option5_zaver_knaz_diakon[POCET_JAZYKOV + 1] =
+{
+	"záver, ak predsedá kňaz alebo diakon",
+	"závěr, předsedá-li kněz nebo jáhen",
+	"conclusion in case when priest or diacon is present",
+	"",
+	"",
+	"závěr, pokud předsedá kněz nebo jáhen",
+	"ezután, ha pap vagy diakónus vezeti",
+};
+
+const char *html_text_option5_zaver_knaz_diakon_explain[POCET_JAZYKOV + 1] =
+{
+	"V ranných chválach a vešperách závisí záver modlitby od toho, či predsedá kňaz alebo diakon, alebo nie.",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+};
+
+const char *html_text_option5_zaver_knaz_diakon_NORMAL[POCET_JAZYKOV + 1] =
+{
+	"záver, ak nepredsedá kňaz alebo diakon a pri recitovaní jednotlivca",
+	"závěr, není-li přítomen kněz nebo jáhen anebo modlí-li se někdo sám",
+	"conclusion in case when priest or diacon is not present and for individual prayer",
+	"",
+	"",
+	"závěr, pokud nepředsedá kněz nebo jáhen a při recitovaní jednotlivce",
+	"ha nincs jelen pap vagy diakónus, valamint egyéni imádkozás esetén",
 };
 
 const char *html_text_font_name[POCET_JAZYKOV + 1] =

@@ -177,9 +177,9 @@ extern short int _global_opt_export_date_format;
 
 #define set_tyzzal_1_2(tyzzal) ((tyzzal > 2)? (tyzzal - 2) : tyzzal)
 
-// placeholder for checking whether option 'i' has set 'j'-th bit-component to TRUE
-#define isGlobalOption(opt_i, bit_opt_i_component_j) ((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j)
-#define isGlobalOptionForce(opt_i, bit_opt_i_component_j) ((_global_optf[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j)
+// placeholder for checking whether option 'i' has set 'j'-th bit-component to TRUE | used result ANO/NIE to prevent long datatype
+#define isGlobalOption(opt_i, bit_opt_i_component_j) (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE)
+#define isGlobalOptionForce(opt_i, bit_opt_i_component_j) (((_global_optf[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE)
 
 #define odfiltrujSpolCast(modlitba, opt3) ((short int)(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA)) ? MODL_SPOL_CAST_NULL : opt3))
 

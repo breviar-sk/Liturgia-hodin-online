@@ -42,4 +42,9 @@ char *mystr_replace(const char *string, const char *substr, const char *replacem
 char *mystr_first_lower(const char *string);
 char *mystr_first_upper(const char *string);
 
+// detecting whether base is starts with str
+short int startsWith(char* base, char* str);
+// detecting whether base is ends with str
+short int endsWith(char* base, char* str);
+
 #endif // __MYSTRING_H_
