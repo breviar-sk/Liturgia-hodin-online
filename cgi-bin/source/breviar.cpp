@@ -2803,8 +2803,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		else if (equals(paramname, PARAM_ZAVER)){
 			bit = BIT_OPT_1_ZAVER;
 			if (_global_jazyk == JAZYK_HU){
-				sprintf(popis_show, "%s", (char *)HTML_TEXT_HU_OPTION1_ZAVER_HIDE);
-				sprintf(popis_hide, "%s", (char *)HTML_TEXT_HU_OPTION1_ZAVER_SHOW);
+				mystrcpy(popis_show, HTML_TEXT_HU_OPTION1_ZAVER_HIDE, SMALL);
+				mystrcpy(popis_hide, HTML_TEXT_HU_OPTION1_ZAVER_SHOW, SMALL);
 			}
 			else{
 				sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_zaver[_global_jazyk]);
@@ -2816,15 +2816,15 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			opt = OPT_5_ALTERNATIVES;
 			bit = BIT_OPT_5_ZAVER_KNAZ_DIAKON;
 			podmienka &= (!isGlobalOption(opt, bit));
-			sprintf(popis_show, html_text_option5_zaver_knaz_diakon_NORMAL[_global_jazyk]); // not used
-			sprintf(popis_hide, html_text_option5_zaver_knaz_diakon[_global_jazyk]);
+			mystrcpy(popis_show, html_text_option5_zaver_knaz_diakon_NORMAL[_global_jazyk], SMALL); // not used
+			mystrcpy(popis_hide, html_text_option5_zaver_knaz_diakon[_global_jazyk], SMALL);
 		}
 		else if (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON)){
 			opt = OPT_5_ALTERNATIVES;
 			bit = BIT_OPT_5_ZAVER_KNAZ_DIAKON;
 			podmienka &= (isGlobalOption(opt, bit));
-			sprintf(popis_show, html_text_option5_zaver_knaz_diakon_NORMAL[_global_jazyk]);
-			sprintf(popis_hide, html_text_option5_zaver_knaz_diakon[_global_jazyk]); // not used
+			mystrcpy(popis_show, html_text_option5_zaver_knaz_diakon_NORMAL[_global_jazyk], SMALL);
+			mystrcpy(popis_hide, html_text_option5_zaver_knaz_diakon[_global_jazyk], SMALL); // not used
 		}
 		else if (equals(paramname, PARAM_CHVALOSPEV)){
 			bit = BIT_OPT_1_CHVALOSPEVY;
