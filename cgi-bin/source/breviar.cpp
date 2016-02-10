@@ -1235,6 +1235,7 @@ void ExportChar(int c){
 #define EXPORT_FOOTNOTES ANO
 #define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!vnutri_footnote || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
 #define EXPORT_HVIEZDICKA(modlitba) ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || (modlitba == MODL_POSV_CITANIE) || !(_global_jazyk == JAZYK_CZ)) && !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
+#define EXPORT_TROJUHOLNIK ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
 
 #define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
 
@@ -1626,9 +1627,15 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				if ((equals(strbuff, PARAM_RED_HVIEZDICKA) || equals(strbuff, PARAM_RED_KRIZIK))
 					&& (vnutri_inkludovaneho == ANO)){
 					if (EXPORT_HVIEZDICKA(_global_modlitba)){
-						Export("<"HTML_SPAN_RED">%s"HTML_SPAN_END, strbuff); // <span class="red">*</span> OR <span class="red">†</span>
+						Export("<"HTML_SPAN_RED">%s"HTML_SPAN_END, strbuff);
 					}
 				}// PARAM_RED_HVIEZDICKA, PARAM_RED_KRIZIK
+// red triangle (end of psalm/canticle)
+				if (equals(strbuff, PARAM_RED_TROJUHOLNIK) && (vnutri_inkludovaneho == ANO)){
+					if (EXPORT_TROJUHOLNIK){
+						Export(HTML_NONBREAKING_SPACE"<"HTML_SPAN_RED">%s"HTML_SPAN_END, strbuff);
+					}
+				}// PARAM_RED_TROJUHOLNIK
 
 // footnote references
 

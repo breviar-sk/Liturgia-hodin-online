@@ -565,8 +565,9 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_LINK_ZALM95_END				"/z95"
 
 // zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách, príp. v antifónach (červenou farbou)
-#define PARAM_RED_HVIEZDICKA                "†"
-#define PARAM_RED_KRIZIK                    "*"
+#define PARAM_RED_KRIZIK                    "†"
+#define PARAM_RED_HVIEZDICKA                "*"
+#define PARAM_RED_TROJUHOLNIK               "△" // uppercase delta: Δ
 
 // zobrazovanie/nezobrazenie krížika (antifóna totožná s veršom žalmu/chválospevu)
 #define PARAM_KRIZIK                        "KRIZIK"
