@@ -6812,11 +6812,6 @@ label_24_DEC:
 			_post1_benediktus;
 			_post1_prosby;
 			_post1_modlitba;
-			if (_global_den.denvr == POPOLCOVA_STREDA){
-				if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)){
-					zaltar(DEN_PIATOK, 3);
-				}
-			}
 
 			// vešpery
 			modlitba = MODL_VESPERY;
@@ -6880,6 +6875,21 @@ label_24_DEC:
 
 			}// nedeľa
 			else{
+				// špeciálne pre Popolcovú stredu
+				if (_global_den.denvr == POPOLCOVA_STREDA){
+					if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)){
+						set_antifony(DEN_PIATOK, 3, zvazok_breviara[litobd], MODL_RANNE_CHVALY);
+						set_zalm(1, MODL_RANNE_CHVALY, "z51.htm", "ZALM51");
+						set_zalm(2, MODL_RANNE_CHVALY, "ch_jer14.htm", "CHVAL_JER14");
+						// možnosť zvoliť žalm 95
+						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)){
+							set_zalm(3, MODL_RANNE_CHVALY, "z95.htm", "ZALM95");
+						}
+						else{
+							set_zalm(3, MODL_RANNE_CHVALY, "z100.htm", "ZALM100");
+						}
+					}
+				}
 			}// nie nedeľa
 			break;
 // switch(litobd), case OBD_POSTNE_I -- end ---------------------------------------------------
