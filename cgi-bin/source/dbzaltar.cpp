@@ -5631,7 +5631,7 @@ label_24_DEC:
 
 				// modlitba cez deň
 
-				// ak je modlitba cez deň na slávnosť, tak by sa mali použiť žalmy z doplnkovej psalmódie
+				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
 				if(_global_den.denvt != DEN_NEDELA) {
 					_set_zalmy_mcd_doplnkova_psalmodia();
 				}

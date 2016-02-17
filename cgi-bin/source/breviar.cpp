@@ -5166,7 +5166,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 	_global_pocet_svatych = sviatky_svatych(_global_den.den, _global_den.mesiac);
 	_rozbor_dna_LOG("_global_pocet_svatych = %d\n", _global_pocet_svatych);
 
-	// pridane 28/03/2000A.D.: ak chce vacsie cislo (poradie svateho) ako je v _global_pocet_svatych resp. ked nie je sobota a chce poradie svateho PORADIE_PM_SOBOTA (spomienka p. marie v sobotu)
+	// kontrola: ak bolo požadované väčšie číslo (poradie svätého), ako je v _global_pocet_svatych, resp. keď nie je sobota a je požadované PORADIE_PM_SOBOTA (spomienka P. Márie v sobotu)
 	if ((_global_pocet_svatych == 0) && (_global_pocet_svatych < poradie_svaty) && (poradie_svaty != PORADIE_PM_SOBOTA)){
 		_rozbor_dna_LOG("returning from _rozbor_dna(), because: (_global_pocet_svatych == 0) && (_global_pocet_svatych < poradie_svaty) && (poradie_svaty != %d)\n", PORADIE_PM_SOBOTA);
 		ALERT;
@@ -5241,14 +5241,10 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 			_rozbor_dna_LOG("svaty ma prednost pred dnom (SVATY_VEDIE)\n");
 			_rozbor_dna_LOG("_global_den.smer == %d, _global_svaty1.smer == %d, _global_svaty1.prik == %d\n", _global_den.smer, _global_svaty1.smer, _global_svaty1.prik);
 
-			// cele to tu bolo asi kvoli tomu, ze niektore veci sa pri generovani modlitby citali z _global_den explicitne; zda sa, ze to ide aj bez toho;
-			// napr. v BUTTONS (teda v tom export...) sa cita z _global_svaty... | 08/03/2000A.D.
-			// akvsak ked som to cele zrusil, tak prestali fungovat prve vespery slavnosti, ktore mali definovane vecicky v _global_svaty1, pretoze sa nikde nepriradili do _global_den;
-			// takze som to napokon dal sem a pridal podmienku "iba ak ide o slavnost" | 15/03/2000A.D.
 			_rozbor_dna_LOG("modlitba == %d (%s)...\n", _global_modlitba, nazov_modlitby(_global_modlitba));
 			if ((_global_modlitba != MODL_NEURCENA) &&
 				(
-				(poradie_svaty != UNKNOWN_PORADIE_SVATEHO) || // 08/03/2000A.D. -- pridané; 2009-03-27: zmenená konštanta 0 na UNKNOWN_PORADIE_SVATEHO
+				(poradie_svaty != UNKNOWN_PORADIE_SVATEHO) ||
 				((poradie_svaty == UNKNOWN_PORADIE_SVATEHO)
 				// a je to alebo slávnosť, alebo sviatok Pána v Cezročnom období, ktorý padne na nedeľu (2013-02-03: opravené) -- napr. kvôli Obetovaniu Pána 2.2.2003/2014, prvé vešpery
 				&& (

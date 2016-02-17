@@ -7845,7 +7845,7 @@ const char *text_JUL_21_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Vavřince z Brindisi, kněze a učitele Církve, člena 1. řádu",
-	"Brindisi Szent Lőrinc áldozópap és egyháztanító",
+	"Brindisi Szent Lőrinc, pap és Egyháztanító az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
