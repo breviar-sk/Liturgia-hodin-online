@@ -654,6 +654,7 @@ const char *nazov_slavenia_lokal[] =
 , "A Klarisszáknál: Főünnep"                                                                                    // LOKAL_SLAV_HU_KLARISSZAKNAL_FOU
 , "jen na Moravě"                                                                                               // LOKAL_SLAV_LEN_MORAVA
 , "jen v Čechách"                                                                                               // LOKAL_SLAV_LEN_CECHY
+, "A Conceptionistáknál: Ünnep"                                                                                 // LOKAL_SLAV_HU_CONCEPTIONISTAK_UN
 };
 
 // names of liturgical colors
@@ -9472,7 +9473,7 @@ const char *text_SEP_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Pia z Pietrelciny, kněze",
-	"Pietrelcinai Szent Pio áldozópap",
+	"Pietrelcinai Szent Pió szerzetes és áldozópap az I. rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -9839,6 +9840,18 @@ const char *text_OKT_06_SJ[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_OKT_06_HU_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Az Úr Jézus Öt Sebéről nevezett Szent Mária Franciska, szűz A III. Rendből",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_OKT_06_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Bartolomeja Longu, laika",
@@ -9944,6 +9957,18 @@ const char *text_OKT_10_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_OKT_10_HU_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Szent Dániel és vértanú társai az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -10307,6 +10332,18 @@ const char *text_OKT_22_OP[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_OKT_22_HU_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Josephina, szűz és vértanú A II. Rendből",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_OKT_22[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána Pavla II., pápeža",
@@ -10339,7 +10376,7 @@ const char *text_OKT_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Kapisztrán Szent János, pap az I. Rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -10592,6 +10629,18 @@ const char *text_OKT_30_CZ[POCET_JAZYKOV + 1] =
 	"",
 	"Výročí posvěcení katedrály Svatého Ducha",
 	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_OKT_30_HU_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"A saját templom fölszentelesenek évfordulója",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
