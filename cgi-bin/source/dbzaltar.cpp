@@ -3760,7 +3760,7 @@ void _set_zalmy_ofmcap_dominik(short int modlitba){
 	Log("_set_zalmy_ofmcap_dominik(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_ofmcap_dominik()
 
-// 2013CZ OP (04OKT), používa ich aj 07NOV pre CZOP; používa ich aj sv. František (04OKT pre OFM)
+// CZ OP (04OKT), používa ich aj 07NOV pre CZOP; používa ich aj sv. František (04OKT pre OFM)
 void _set_zalmy_pc_1_8_16(short int modlitba){
 	Log("_set_zalmy_pc_1_8_16(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_POSV_CITANIE){
@@ -3803,6 +3803,7 @@ void _set_zalmy_opraem_pc_1_8_24(short int modlitba){
 	Log("_set_zalmy_opraem_pc_1_8_24(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_opraem_pc_1_8_24()
 
+// OFM (18MAJ)
 void _set_zalmy_pc_1_12_24(short int modlitba){
 	Log("_set_zalmy_pc_1_12_24(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_POSV_CITANIE){
@@ -3819,6 +3820,7 @@ void _set_zalmy_pc_1_12_24(short int modlitba){
 	Log("_set_zalmy_pc_1_12_24(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_pc_1_12_24()
 
+// SK OP (07NOV)
 void _set_zalmy_pc_15_66(short int modlitba){
 	Log("_set_zalmy_pc_15_66(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_POSV_CITANIE){
@@ -3829,6 +3831,7 @@ void _set_zalmy_pc_15_66(short int modlitba){
 	Log("_set_zalmy_pc_15_66(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_pc_15_66()
 
+// SK OP (28JAN)
 void _set_zalmy_pc_40_27(short int modlitba){
 	Log("_set_zalmy_pc_40_27(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_POSV_CITANIE){
@@ -3839,6 +3842,18 @@ void _set_zalmy_pc_40_27(short int modlitba){
 	Log("_set_zalmy_pc_40_27(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_pc_40_27()
 
+// HU OFM (19NOV)
+void _set_zalmy_pc_45_87(short int modlitba){
+	Log("_set_zalmy_pc_45_87(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_POSV_CITANIE){
+		set_zalm(1, modlitba, "z45.htm", "ZALM45_I");
+		set_zalm(2, modlitba, "z45.htm", "ZALM45_II");
+		set_zalm(3, modlitba, "z87.htm", "ZALM87");
+	}
+	Log("_set_zalmy_pc_45_87(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_pc_45_87()
+
+// CZOP (07NOV)
 void _set_zalmy_vesp_110_116_ef(short int modlitba){
 	Log("_set_zalmy_vesp_110_116_ef(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY){
@@ -3849,6 +3864,7 @@ void _set_zalmy_vesp_110_116_ef(short int modlitba){
 	Log("_set_zalmy_vesp_110_116_ef(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_vesp_110_116_ef()
 
+// SK OP (07NOV)
 void _set_zalmy_vesp_89_98_kol(short int modlitba){
 	Log("_set_zalmy_vesp_89_98_kol(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY){
@@ -3859,6 +3875,7 @@ void _set_zalmy_vesp_89_98_kol(short int modlitba){
 	Log("_set_zalmy_vesp_89_98_kol(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_vesp_89_98_kol()
 
+// HU OFM (18MAJ)
 void _set_zalmy_vesp_113_146_ef(short int modlitba){
 	Log("_set_zalmy_vesp_113_146_ef(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY){
@@ -3869,6 +3886,7 @@ void _set_zalmy_vesp_113_146_ef(short int modlitba){
 	Log("_set_zalmy_vesp_113_146_ef(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_vesp_113_146_ef()
 
+// CZ OFMCAP (11AUG)
 void _set_zalmy_vesp_127_111_kol(short int modlitba){
 	Log("_set_zalmy_vesp_127_111_kol(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY){

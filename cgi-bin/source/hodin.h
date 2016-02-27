@@ -10751,7 +10751,7 @@ const char *text_NOV_03_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Megemlékezés a Szeráfi Rend elhunytjairól", // HU: 24NOV
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -11135,7 +11135,7 @@ const char *text_NOV_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Árpádházi Szent Erzsébet a III. Rend Pátrónája", // HU: 19NOV
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -11171,7 +11171,7 @@ const char *text_NOV_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Assisi Szent Ágnes, szűz A II. Rendből", // HU: 16NOV
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -11351,7 +11351,7 @@ const char *text_NOV_27_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Fasani Szent Ferenc Antal áldozópap az I. rendből",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
