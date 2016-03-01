@@ -216,7 +216,7 @@ public class Breviar extends Activity implements View.OnLongClickListener {
             view.postDelayed(new Runnable() {
               @Override
               public void run() {
-                final_view.evaluateJavascript("document.getElementById('contentRoot').style.width = window.innerWidth - 8;", null);
+                final_view.evaluateJavascript("document.getElementById('contentRoot').style.width = " + (int)(final_view.getWidth() * 100.0 / parent.scale) + ";", null);
                 scaleChangedRunning = false;
               }
             }, 100);

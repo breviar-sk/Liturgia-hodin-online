@@ -289,6 +289,10 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}
 	Export_to_file(expt, ">\n");
 
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)) {
+		Export_to_file(expt, HTML_TRANSPARENT_NAV"\n");
+        }
+
 	#ifdef BEHAVIOUR_WEB
 		Export_to_file(expt, HTML_ANAME_TOP"\n");
 	#else

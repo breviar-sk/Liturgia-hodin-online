@@ -23,6 +23,7 @@
     <string name="dimlock">do not dim screen</string>
     <string name="mute">put phone to silent mode</string>
     <string name="long_click_toggles_bar">long tap toggles navigation bar</string>
+    <string name="transparent_nav">navigation arrow in text</string>
 
     <string name="prayer_content_settings1_title">Content settings:</string>
     <string name="various_options_in_prayers">various options in prayers as clicable hyperlinks</string>

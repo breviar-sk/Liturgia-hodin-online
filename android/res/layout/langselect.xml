@@ -51,6 +51,9 @@
     <CheckBox android:id="@+id/long_click_toggles_bar_check" android:text="@string/long_click_toggles_bar"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+    <CheckBox android:id="@+id/transparent_nav_check" android:text="@string/transparent_nav"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <TextView android:text="@string/prayer_content_settings1_title" style="@android:style/TextAppearance.Large"
         android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
 

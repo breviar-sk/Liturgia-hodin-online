@@ -1581,6 +1581,7 @@ void strcat_str_modl_opt_bit_order(char str_to_append[SMALL], short opt, short b
 			case 7: mystrcpy(str, STR_MODL_OPTF_0_BUTTONS_ORDER, SMALL); break; // BIT_OPT_0_BUTTONS_ORDER
 			case 8: mystrcpy(str, STR_MODL_OPTF_0_BLIND_FRIENDLY, SMALL); break; // BIT_OPT_0_BLIND_FRIENDLY
 			case 9: mystrcpy(str, STR_MODL_OPTF_0_FOOTNOTES, SMALL); break; // BIT_OPT_0_FOOTNOTES
+			case 10: mystrcpy(str, STR_MODL_OPTF_0_TRANSPARENT_NAV, SMALL); break; // BIT_OPT_0_TRANSPARENT_NAV
 			}
 		}
 		break;

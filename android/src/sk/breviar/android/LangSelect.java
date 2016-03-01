@@ -104,6 +104,17 @@ public class LangSelect extends Activity {
 
       long_click_toggles_bar_check.setChecked(BreviarApp.getLongClickTogglesBar(getApplicationContext()));
 
+      CheckBox transparent_nav_check = (CheckBox)findViewById(R.id.transparent_nav_check);
+
+      transparent_nav_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setTransparentNav(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      transparent_nav_check.setChecked(url_options.isTransparentNav());
+
       // prayer_content_settings1_title
       
       CheckBox various_options_in_prayers_check = (CheckBox)findViewById(R.id.various_options_in_prayers_check);

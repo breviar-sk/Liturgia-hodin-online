@@ -6278,6 +6278,9 @@ void xml_export_options(void){
 				case 9: // BIT_OPT_0_FOOTNOTES
 					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_FOOTNOTES)"%ld"ELEM_END(XML_BIT_OPT_0_FOOTNOTES)"\n", BIT_OPT_0_FOOTNOTES, STR_MODL_OPTF_0_FOOTNOTES, html_text_option0_footnotes[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)));
 					break;
+				case 10: // BIT_OPT_0_TRANSPARENT_NAV
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_TRANSPARENT_NAV)"%ld"ELEM_END(XML_BIT_OPT_0_TRANSPARENT_NAV)"\n", BIT_OPT_0_TRANSPARENT_NAV, STR_MODL_OPTF_0_TRANSPARENT_NAV, html_text_option0_footnotes[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)));
+					break;
 				}// switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE)"\n");

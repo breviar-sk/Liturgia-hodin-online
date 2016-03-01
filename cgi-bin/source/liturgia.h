@@ -1262,7 +1262,7 @@ extern long _global_optf[POCET_GLOBAL_OPT];
 #define USE_STR_MODL_OPT                   -2
 #define USE_STR_MODL_OPTF                  -1
 
-#define POCET_OPT_0_SPECIALNE              10 // jednotlivé komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE              11 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern long _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                     1
@@ -1275,6 +1275,7 @@ extern long _global_opt_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_BUTTONS_ORDER           128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
 #define BIT_OPT_0_BLIND_FRIENDLY          256 // blind-friendly mode: 1 = use special CSS override to hide all red texts (rubrics)
 #define BIT_OPT_0_FOOTNOTES               512 // display footnotes and footnote references
+#define BIT_OPT_0_TRANSPARENT_NAV        1024 // transparent navigation arrow in text
 
 #define POCET_OPT_1_CASTI_MODLITBY         16 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern long _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];

@@ -535,6 +535,14 @@ extern short int query_type; // contains constants PRM_...
 #define STR_MODL_OPTF_0_FOOTNOTES "of0ff"
 #endif
 
+// transparent navigation arrow
+#define MODL_OPTF_0_TRANSPARENT_NAV 120
+#ifdef LONG_PARAM_NAMES
+#define STR_MODL_OPTF_0_TRANSPARENT_NAV "MODL_OPTF_0_TRANSPARENT_NAV"
+#else
+#define STR_MODL_OPTF_0_TRANSPARENT_NAV "of0tn"
+#endif
+
 // pre force option 1 jednotlivé bit-komponenty (parciálne voľby)
 
 // evanjeliové chválospevy (benediktus, magnifikat, nunk dimittis)
@@ -1066,6 +1074,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_BUTTONS_ORDER             "BitOpt0ButtonsOrder"
 #define XML_BIT_OPT_0_BLIND_FRIENDLY            "BitOpt0BlindFriendly"
 #define XML_BIT_OPT_0_FOOTNOTES                 "BitOpt0Footnotes"
+#define XML_BIT_OPT_0_TRANSPARENT_NAV           "BitOpt0TransparentNav"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"
