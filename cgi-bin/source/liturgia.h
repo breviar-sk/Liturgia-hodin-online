@@ -979,9 +979,10 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_CZ_SDB                    16
 #define KALENDAR_VSEOBECNY_RU              17
 #define KALENDAR_HU_OFM                    18
+#define KALENDAR_SK_OCD                    19
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   18
+#define POCET_KALENDAROV                   19
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]

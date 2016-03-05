@@ -8752,11 +8752,15 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export("<option%s>%s</option>\n", 
 					(_global_kalendar == KALENDAR_SK_SJ)? html_option_selected: STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_SJ]);
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_SK_CM)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_SK_CM) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_CM]);
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_SK_OCD) ? html_option_selected : STR_EMPTY,
+					nazov_kalendara_long[KALENDAR_SK_OCD]);
 #endif
 			}// SK
+
 			else if(_global_jazyk == JAZYK_CZ){
 				Export("<option%s>%s</option>\n", 
 					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ))? html_option_selected: STR_EMPTY,
@@ -8776,16 +8780,16 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 					nazov_kalendara_long[KALENDAR_CZ_CSSR]);
 #endif
 			}// CZ
+
 			else if(_global_jazyk == JAZYK_HU){
 				Export("<option%s>%s</option>\n", 
 					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_HU))? html_option_selected: STR_EMPTY,
 					nazov_kalendara_long[default_kalendar[_global_jazyk]]);
-#ifdef OS_Windows_Ruby
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_HU_OFM) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_HU_OFM]);
-#endif
 			}// HU
+
 			Export("</select>\n");
 
 			if(!(equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY))){

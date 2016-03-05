@@ -474,11 +474,11 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -501,10 +501,10 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "CZ SDB"
 	, "všeobecný RU"
 	, "HU OFM"
+	, "SK OCD"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
-// doplnené 2010-10-11
 const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 {
 	""
@@ -528,16 +528,13 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními texty pro salesiánskou rodinu" // (SDB, FMA, VDB, ASC)
 	, "general [Russia]"
 	, "ferences szentek és ünnepek zsolozsmája"
+	, "pre karmelitánov (OCD)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
 #define nazov_kalendara(kalendar) ((kalendar == KALENDAR_NEURCENY) || (kalendar == KALENDAR_VSEOBECNY) || (equals(nazov_kalendara_long[kalendar], STR_EMPTY))? nazov_kalendara_long[default_kalendar[_global_jazyk]] : nazov_kalendara_long[kalendar])
 
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
-// 2007-08-31: upravené TT -> BA-TT
-// 2008-06-23: upravené vzhľadom k novému usporiadaniu diecéz (intuitívne)
-// 2010-03-16: doplnené BA
-// 2011-07-25: doplnené názvy číselných konštánt
 const char *nazov_slavenia_lokal[] =
 {
  ""                                                                                                             // LOKAL_SLAV_NEURCENE
@@ -3767,6 +3764,18 @@ const char *text_JAN_03[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JAN_03_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Kyriaka Eliáša Chavaru, kňaza",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JAN_04_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Angely z Foligna, rehoľníčky, členky 3. rádu",
@@ -3824,6 +3833,30 @@ const char *text_JAN_07[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Rajmunda z Peňafortu, kněze",
 	"Penyaforti Szent Rajmund áldozópap",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JAN_08_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Petra Tomáša, biskupa",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JAN_09_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Andreja Corsiniho, biskupa",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -4250,6 +4283,18 @@ const char *text_JAN_27[POCET_JAZYKOV + 1] =
 const char *text_JAN_27_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Markolína z Forl&#236;, kňaza", // &igrave;
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JAN_27_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Henricha de Ossó y Cervello, kňaza",
 	"",
 	"",
 	"",
@@ -5087,6 +5132,18 @@ const char *text_MAR_25[POCET_JAZYKOV + 1] =
 
 // --------------- 04 apríl | april ---------------
 
+const char *text_APR_01_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Nonia Alvareza Pereiru, rehoľníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_APR_02[POCET_JAZYKOV + 1] =
 {
 	"Sv. Františka z Paoly, pustovníka",
@@ -5222,6 +5279,30 @@ const char *text_APR_17_1_OP[POCET_JAZYKOV + 1] =
 const char *text_APR_17_2_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Manciniovej, rehoľníčky",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_APR_17_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Baptistu Spagnoliho, rehoľníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_APR_18_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie od Vtelenia, rehoľníčky",
 	"",
 	"",
 	"",
@@ -5372,6 +5453,18 @@ const char *text_APR_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sigmaringeni Szent Fidél, pap és vértanú az I. Rendből",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_APR_24_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Terézie Márie od Kríža (Manetti), panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
