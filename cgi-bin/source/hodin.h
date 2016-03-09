@@ -6069,6 +6069,18 @@ const char *text_MAJ_16_SDB[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_MAJ_16_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Šimona Stocka, rehoľníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_MAJ_16_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Margity z Cortony, kajúcnice, členky 3. rádu",
@@ -6261,6 +6273,18 @@ const char *text_MAJ_22[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_MAJ_22_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Joachimy de Vedrúna y Mas, rehoľníčky",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_MAJ_23_HU[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -6433,6 +6457,18 @@ const char *text_MAJ_29_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jozefa Kowalského, mučeníka",
 	"Bl. Josefa Kowalského, kněze, mučedníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_MAJ_29_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Elie od sv. Klementa, panny",
+	"",
 	"",
 	"",
 	"",
@@ -6836,6 +6872,18 @@ const char *text_JUN_06_OPRAEM[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUN_07_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Anny od sv. Bartolomeja, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUN_08_HU[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -6968,6 +7016,18 @@ const char *text_JUN_12_OP[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUN_12_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Alfonza Márie Mazurka, kňaza a mučeníka, a spoločníkov",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUN_12_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jolandy Uhorskej, rehoľníčky, členky 2. rádu",
@@ -7049,6 +7109,18 @@ const char *text_JUN_14_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"A Szombathelyi székesegyház felszentelése",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUN_14_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Candidy od Eucharistie, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7296,6 +7368,18 @@ const char *text_JUN_26_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Andreja Hyacinta Longina, biskupa, člena 1. rádu",
 	"Bl. Ondřeje Hyacinta Longhina, biskupa",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUN_26_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Jozefíny od Ukrižovaného Ježiša, panny",
+	"",
 	"",
 	"",
 	"",
@@ -7691,6 +7775,18 @@ const char *text_JUL_12_OFM[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUL_12_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Ľudovíta a Márie Zélie Martinovcov",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUL_13[POCET_JAZYKOV + 1] =
 {
 	"Sv. Henricha",
@@ -7718,6 +7814,18 @@ const char *text_JUL_13_OFM[POCET_JAZYKOV + 1] =
 const char *text_JUL_13_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jakuba z Varazze, biskupa",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUL_13_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Terézie od Ježiša de Los Andes, panny",
 	"",
 	"",
 	"",
@@ -7811,6 +7919,18 @@ const char *text_JUL_16[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUL_16_OCD[POCET_JAZYKOV + 1] =
+{
+	"Preblahoslavenej Panny Márie z hory Karmel",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUL_16_CZ[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -7843,6 +7963,18 @@ const char *text_JUL_17_CZ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Česlava a sv. Hyacinta, kněží",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUL_17_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Terézie od sv. Augustína a spoločníčok, panien a mučeníc",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -7895,6 +8027,18 @@ const char *text_JUL_18_OFM[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUL_19_OCD[POCET_JAZYKOV + 1] =
+{
+	"Panny Márie, Matky Božej milosti",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUL_19_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána z Dukly, kňaza, člena 1. rádu",
@@ -7916,6 +8060,18 @@ const char *text_JUL_20[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Apolináře, biskupa a mučedníka",
 	"Szent Apollinaris püspök és vértanú",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUL_20_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Eliáša, proroka a nášho otca",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -8027,6 +8183,30 @@ const char *text_JUL_24_2_OP[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUL_24_1_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Pilar od sv. Františka Borgiáša, "HTML_LINE_BREAK"Terézie od Dieťaťa Ježiša "HTML_LINE_BREAK"a Márie Angeles od sv. Jozefa, panien a mučeníc",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUL_24_2_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Mercedes Prat, panny a mučenice",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUL_25[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jakuba, apoštola",
@@ -8087,9 +8267,33 @@ const char *text_JUL_27_OFM[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUL_27_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Títa Brandsmu, kňaza a mučeníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUL_28_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Terézie Kowalskej, panny a mučenice, členky 2. rádu",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUL_28_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Jána Soretha, kňaza",
 	"",
 	"",
 	"",

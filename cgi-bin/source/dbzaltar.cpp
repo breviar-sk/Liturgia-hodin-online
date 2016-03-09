@@ -3709,6 +3709,25 @@ void _set_zalmy_sj_ignac(short int modlitba){
 	Log("_set_zalmy_sj_ignac(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_sj_ignac()
 
+// SK OCD (20JUL)
+void _set_zalmy_ocd_elias(short int modlitba){
+	Log("_set_zalmy_ocd_elias(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_VESPERY){
+		set_zalm(1, modlitba, "z111.htm", "ZALM111");
+		set_zalm(2, modlitba, "z115.htm", "ZALM115");
+		set_zalm(3, modlitba, "ch_zjv11.htm", "CHVAL_ZJV11");
+	}
+	else if (modlitba == MODL_RANNE_CHVALY){
+		_set_zalmy_1nedele_rch();
+	}
+	else if (modlitba == MODL_POSV_CITANIE){
+		set_zalm(1, modlitba, "z11.htm", "ZALM11");
+		set_zalm(2, modlitba, "z28.htm", "ZALM28,1-3.6-9");
+		set_zalm(3, modlitba, "z30.htm", "ZALM30");
+	}
+	Log("_set_zalmy_ocd_elias(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_ocd_elias()
+
 // CZ OP (08AUG)
 void _set_zalmy_op_dominik(short int modlitba){
 	Log("_set_zalmy_op_dominik(%s) -- begin\n", nazov_modlitby(modlitba));
