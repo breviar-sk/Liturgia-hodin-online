@@ -2027,6 +2027,33 @@ const char *html_text_option0_footnotes_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_option0_transparent_nav[POCET_JAZYKOV + 1] =
+{
+	"zobraziť navigačné šípky",
+	"zobrazit navigační šipky",
+	"show navigation arrows",
+	"",
+	"",
+	"zobrazit navigační šipky",
+	"hu_text",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+// for other languages use: ""
+const char *html_text_option0_transparent_nav_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_option1_chvalospevy[POCET_JAZYKOV + 1] =
 {
 	"evanjeliové chválospevy (Benediktus, Magnifikat, Nunk dimittis)",
@@ -8534,6 +8561,18 @@ const char *text_AUG_06[POCET_JAZYKOV + 1] =
 	"",
 	"Proměnění Páně",
 	"Urunk színeváltozása",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_AUG_07_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Alberta z Trapani, kňaza",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

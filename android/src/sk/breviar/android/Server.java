@@ -218,6 +218,7 @@ public class Server extends Thread {
               ).getBytes("UTF-8")
           );
           client.getOutputStream().close();
+           Log.v("breviar", "not found file " + dokument);
         }
       }
     }

@@ -4,7 +4,7 @@
       android:versionCode="71"
       android:versionName="1.12.3"
       android:installLocation="auto">
-    <uses-sdk android:minSdkVersion="4"/>
+    <uses-sdk android:minSdkVersion="8"/>
     <uses-sdk android:targetSdkVersion="9"/>
     <supports-screens android:xlargeScreens="true"/>
     <application android:label="@string/app_name"

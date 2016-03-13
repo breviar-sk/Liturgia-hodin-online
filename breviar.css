@@ -937,3 +937,23 @@ sup {
 .hidden {
     display: none;
 }
+
+.nav-arrow {
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  width: 4em;
+  height: 2.4em;
+  position: fixed;
+  right: 0.3em;
+}
+
+#nav-arrow-down {
+  background-image: url('sipkadole.png');
+  bottom: 0.3em;
+}
+
+#nav-arrow-up {
+  background-image: url('sipkahore.png');
+  bottom: 4em;
+}

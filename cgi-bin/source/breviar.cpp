@@ -9115,6 +9115,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_FORM_INPUT_HIDDEN" name=\"%s\" value=\"%d\""HTML_FORM_INPUT_END"\n", STR_MODL_OPTF_0_CIT, (isGlobalOptionForce(OPT_0_SPECIALNE, BIT_OPT_0_CITANIA))? ANO: NIE);
 #endif
 
+		// pole (checkbox) WWW_/STR_MODL_OPTF_0_TRANSPARENT_NAV
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV, STR_MODL_OPTF_0_TRANSPARENT_NAV, html_text_option0_transparent_nav[_global_jazyk], html_text_option0_transparent_nav_explain[_global_jazyk]);
+
 		Export(HTML_TABLE_CELL_END"\n");
 		Export(HTML_TABLE_ROW_END"\n");
 

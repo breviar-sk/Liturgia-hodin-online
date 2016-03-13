@@ -108,6 +108,7 @@ body { background-color: #000000; color: #cccccc; }
 <ul>
 <!-- <li> Nová volba: Možnost zobrazit poznámky pod čarou ke druhým čtením.</li> -->
 <li> Společné texty za zemřelé, možnost vzít žalm 146 nebo 150 pro ranní chvály.</li>
+<li> Možnost zobrazit navigační šipky v textu.</li>
 </ul>
 
 <p><b>Verze 1.12.2</b>

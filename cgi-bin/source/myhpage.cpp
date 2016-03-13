@@ -182,7 +182,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}
 	_global_hlavicka_Export++;
 
-	// 2013-12-09: iné CSS budú len "doplnky" (overrides) k hlavnému CSS
+	// iné CSS sú len "doplnky" (overrides) k hlavnému CSS
 	if (_global_css != CSS_breviar_sk){
 		Log("ako prvý bude exportovaný nazov_css_suboru == %s...\n", nazov_css[CSS_breviar_sk]);
 	}
@@ -195,9 +195,9 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}// else
 	Log("nazov_css_suboru == %s...\n", nazov_css_suboru);
 
-	// 2011-05-05: nastavenie font-family
-	//             zatiaľ len pevné reťazce; časom možno bude premenná pre názov fontu
-	// 2011-05-06: doplnené: najprv sa testuje nastavenie _global_font; následne sa prípadne nastavia defaulty
+	// nastavenie font-family
+	// zatiaľ len pevné reťazce; časom možno bude premenná pre názov fontu
+	// najprv sa testuje nastavenie _global_font; následne sa prípadne nastavia defaulty
 	if ((_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)){
 		Log("(_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)...\n");
 		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY)){
@@ -219,7 +219,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	}// else
 	Log("_global_css_font_family == %s...\n", _global_css_font_family);
 
-	// 2011-05-13: doplnené: nastavenie font-size
+	// nastavenie font-size
 	if (_global_font_size == FONT_SIZE_UNDEF){
 		mystrcpy(_global_css_font_size, STR_EMPTY, SMALL);
 	}// (_global_font_size == FONT_SIZE_UNDEF)
@@ -261,7 +261,12 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		_header_css(expt, level, nazov_css_blind_friendly);
 	}
 
+#if defined(IO_ANDROID)
+	Export_to_file(expt, "\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0\" />\n");
+#else
 	Export_to_file(expt, "\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=yes, initial-scale=1.0\" />\n");
+#endif
+
 	Export_to_file(expt, "<title>%s</title>\n", title);
 	Export_to_file(expt, "</head>\n\n");
 	Log("element </head>...\n");
@@ -283,15 +288,16 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		Export_to_file(expt, "\"");
 	}
 
-	// 2010-02-15: kvôli špeciálnemu "zoznam.htm"
+	// kvôli špeciálnemu "zoznam.htm"
 	if (spec == 1){
 		Export_to_file(expt, " onLoad=\"fn_aktualne(0,0,0)\"");
 	}
 	Export_to_file(expt, ">\n");
 
-	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)) {
+	// display transparent navigation (up/down arrows)
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)){
 		Export_to_file(expt, HTML_TRANSPARENT_NAV"\n");
-        }
+	}
 
 	#ifdef BEHAVIOUR_WEB
 		Export_to_file(expt, HTML_ANAME_TOP"\n");
@@ -299,7 +305,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		Export_to_file(expt, HTML_DIV_BEGIN"\n");
 	#endif
 
-	// 2010-02-15: doplnené predošlá a nasledovná modlitba
+	// predošlá a nasledovná modlitba
 	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
 		_buttons_prev_up_next(expt);
 	}// << predošlá | ^ hore | nasledovná >>
@@ -380,6 +386,9 @@ void _patka_body_html_end(FILE * expt){
 	Export_to_file(expt, HTML_DIV_END"\n");
 #endif
 
+#ifdef IO_ANDROID
+	Export_to_file(expt, "<script src='/zoom.js'></script>\n");
+#endif
 	Export_to_file(expt, "</body>\n</html>\n");
 
 	Log("_patka_body_html_end() -- koniec.\n");

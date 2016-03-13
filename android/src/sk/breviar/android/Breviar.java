@@ -21,12 +21,14 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.WebChromeClient;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -40,7 +42,7 @@ import sk.breviar.android.Server;
 import sk.breviar.android.UrlOptions;
 import sk.breviar.android.Util;
 
-public class Breviar extends Activity implements View.OnLongClickListener {
+public class Breviar extends Activity implements View.OnLongClickListener, ScaleGestureDetector.OnScaleGestureListener {
     static String scriptname = "cgi-bin/l.cgi";
     static final int DIALOG_ABOUT = 1;
     static final int DIALOG_NEWS = 2;
@@ -60,6 +62,8 @@ public class Breviar extends Activity implements View.OnLongClickListener {
     PowerManager.WakeLock lock;
 
     int ringMode = -1;
+
+    ScaleGestureDetector gesture_detector;
 
     void goHome() {
       Log.v("breviar", "goHome");
@@ -155,8 +159,6 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       wv = (WebView)findViewById(R.id.wv);
       wv.clearCache(true);
       wv.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-      wv.getSettings().setBuiltInZoomControls(true);
-      wv.getSettings().setSupportZoom(true);
       wv.getSettings().setJavaScriptEnabled(true);
       // TODO(riso): replace constants by symbolic values after sdk upgrade
       if (Build.VERSION.SDK_INT < 19) {  // pre-KitKat
@@ -168,14 +170,19 @@ public class Breviar extends Activity implements View.OnLongClickListener {
         CompatibilityHelper11.hideZoomControls(wv.getSettings());
       }
       wv.getSettings().setUseWideViewPort(false);
-      wv.setInitialScale(scale);
       initialized = false;
       Log.v("breviar", "setting scale = " + scale);
 
       final Breviar parent = this;
-      wv.setWebViewClient(new WebViewClient() {
-        boolean scaleChangedRunning = false;
+      wv.setWebChromeClient(new WebChromeClient() {
+          public void onConsoleMessage(String message, int lineNumber, String sourceID) {
+          Log.d("breviarjs", message + " -- From line "
+              + lineNumber + " of "
+              + sourceID);
+          }
+          });
 
+      wv.setWebViewClient(new WebViewClient() {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
           if (url.startsWith("mailto:")) {
@@ -204,30 +211,9 @@ public class Breviar extends Activity implements View.OnLongClickListener {
         }
 
         @Override
-        public void onScaleChanged(WebView view, float oldSc, float newSc) {
-          parent.scale = (int)(newSc*100);
-          Log.v("breviar", "onScaleChanged: setting scale = " + scale);
-          if (Build.VERSION.SDK_INT < 19) {  // pre-KitKat
-            view.setInitialScale(parent.scale);
-          } else {
-            if (scaleChangedRunning) return;
-            scaleChangedRunning = true;
-            final WebView final_view = view;
-            view.postDelayed(new Runnable() {
-              @Override
-              public void run() {
-                final_view.evaluateJavascript("document.getElementById('contentRoot').style.width = " + (int)(final_view.getWidth() * 100.0 / parent.scale) + ";", null);
-                scaleChangedRunning = false;
-              }
-            }, 100);
-          }
-          super.onScaleChanged(view, oldSc, newSc);
-        }
-
-        @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
           Log.v("breviar", "onPageStarted " + url);
-          if (parent.initialized) parent.syncScale();
+          parent.syncScale();
           parent.initialized = true;
           super.onPageStarted(view, url, favicon);
         }
@@ -252,7 +238,9 @@ public class Breviar extends Activity implements View.OnLongClickListener {
             }
           }, 400);
         }
-      } );
+      });
+
+      gesture_detector = new ScaleGestureDetector(this, this);
 
       wv.setOnLongClickListener(this);
       wv.setLongClickable(true);
@@ -331,6 +319,34 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       Log.v("breviar", "onCreate: Updating fullscreen");
       updateFullscreen();
       Log.v("breviar", "onCreate: done");
+    }
+
+    @Override
+    public boolean onScaleBegin(ScaleGestureDetector gd) {
+      return true;
+    }
+
+    @Override
+    public boolean onScale(ScaleGestureDetector gd) {
+      if (gd.getScaleFactor() < 1/1.1 || gd.getScaleFactor() > 1.1) {
+        onScaleEnd(gd);
+        return true;
+      }
+      return false;
+    }
+
+    @Override
+    public void onScaleEnd(ScaleGestureDetector gd) {
+      scale *= gd.getScaleFactor();
+      if (scale < 10) scale = 10;
+      if (scale > 1000) scale = 1000;
+      syncScale();
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(android.view.MotionEvent e) {
+      gesture_detector.onTouchEvent(e);  
+      return super.dispatchTouchEvent(e);
     }
 
     void recreateIfNeeded() {
@@ -438,8 +454,8 @@ public class Breviar extends Activity implements View.OnLongClickListener {
     }
 
     protected void syncScale() {
-      scale = (int)(wv.getScale()*100);
-      wv.setInitialScale(scale);
+      wv.evaluateJavascript("document.cookie = 'zoom=" + (int)(scale) + "';", null);
+      wv.evaluateJavascript("syncScale();", null);
       Log.v("breviar", "syncScale "+scale);
     }
 
@@ -608,4 +624,6 @@ public class Breviar extends Activity implements View.OnLongClickListener {
       }
       return false;
     }
+
+
 }
