@@ -454,8 +454,7 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
     }
 
     protected void syncScale() {
-      wv.evaluateJavascript("document.cookie = 'zoom=" + (int)(scale) + "';", null);
-      wv.evaluateJavascript("syncScale();", null);
+      wv.loadUrl("javascript:document.cookie = 'zoom=" + (int)(scale) + "'; syncScale();");
       Log.v("breviar", "syncScale "+scale);
     }
 
