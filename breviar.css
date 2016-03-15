@@ -743,6 +743,7 @@ input {
 	border: 1px; 
 	color: #1a1a1a; 
 	font-family: inherit; 
+	font-size: inherit; 
 }
 
 /* prayer buttons */

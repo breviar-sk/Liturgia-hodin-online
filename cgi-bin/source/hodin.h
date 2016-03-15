@@ -652,6 +652,7 @@ const char *nazov_slavenia_lokal[] =
 , "jen na Moravě"                                                                                               // LOKAL_SLAV_LEN_MORAVA
 , "jen v Čechách"                                                                                               // LOKAL_SLAV_LEN_CECHY
 , "A Conceptionistáknál: Ünnep"                                                                                 // LOKAL_SLAV_HU_CONCEPTIONISTAK_UN
+, "v kláštoroch bosých karmelitánok – spomienka"                                                                // LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM
 };
 
 // names of liturgical colors
@@ -8660,6 +8661,18 @@ const char *text_AUG_09[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_AUG_09_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Terézie Benedikty od Kríža, panny a mučenice",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_AUG_10[POCET_JAZYKOV + 1] =
 {
 	"Sv. Vavrinca, diakona a mučeníka",
@@ -8838,6 +8851,18 @@ const char *text_AUG_16[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_AUG_16_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Sagrario od sv. Alojza Gonzágu, "HTML_LINE_BREAK"panny a mučenice",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_AUG_16_OPRAEM[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -8918,6 +8943,18 @@ const char *text_AUG_18_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Mannesa neboli Mamesa, kněze, bratra sv. Otce Dominika",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_AUG_18_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Jána Krstiteľa, Michala Alojza a Jakuba, "HTML_LINE_BREAK"kňazov a mučeníkov",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -9142,6 +9179,30 @@ const char *text_AUG_25_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Troncatti, panny",
 	"Bl. Marie Troncatti, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_AUG_25_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie od Ukrižovaného Ježiša, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_AUG_26_OCD[POCET_JAZYKOV + 1] =
+{
+	"Spomienka prebodnutia srdca Sv.Terézie od Ježiša, našej matky",
+	"",
 	"",
 	"",
 	"",

@@ -958,6 +958,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_LEN_MORAVA              112
 #define LOKAL_SLAV_LEN_CECHY               113
 #define LOKAL_SLAV_HU_CONCEPTIONISTAK_UN   114
+#define LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM    115
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined

@@ -242,3 +242,10 @@ sup {
 	color: #FF3333;
 }
 
+#nav-arrow-down {
+  background-image: url('sipkadole-night.png');
+}
+
+#nav-arrow-up {
+  background-image: url('sipkahore-night.png');
+}
