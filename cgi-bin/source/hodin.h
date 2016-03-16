@@ -9346,6 +9346,18 @@ const char *text_SEP_01_OFM[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_SEP_01_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Terézie Margity Redi "HTML_LINE_BREAK"od Najsvätejšieho Srdca Ježišovho, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_SEP_02_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Gualu z Bergama, biskupa",
@@ -9574,6 +9586,18 @@ const char *text_SEP_12[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_SEP_12_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie od Ježiša, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_SEP_12_OPRAEM[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -9691,6 +9715,18 @@ const char *text_SEP_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Szent Ferenc atyánk stigmatizációja",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_SEP_17_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Alberta Jeruzalemského, "HTML_LINE_BREAK"biskupa a zákonodarcu nášho rádu",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -10078,6 +10114,18 @@ const char *text_OKT_01[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Terezie od Dítěte Ježíše, panny",
 	"A Gyermek Jézusról nevezett (Lisieux-i) Szent Teréz szűz",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_OKT_01_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Terézie od Dieťaťa Ježiša, "HTML_LINE_BREAK"panny a učiteľky Cirkvi",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -10534,6 +10582,18 @@ const char *text_OKT_15[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Terezie od Ježíše, panny a učitelky Církve",
 	"A Jézusról nevezett (Avilai) Szent Teréz szűz és egyháztanító",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_OKT_15_OCD[POCET_JAZYKOV + 1] =
+{
+	"Sv. Terézie od Ježiša, "HTML_LINE_BREAK"panny a učiteľky Cirkvi, našej matky",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
