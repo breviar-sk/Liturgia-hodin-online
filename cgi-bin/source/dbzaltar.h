@@ -139,6 +139,8 @@ extern void _set_zalmy_op_dominik(short int modlitba);
 extern void _set_zalmy_ofmcap_dominik(short int modlitba);
 extern void _set_zalmy_ocd_terezka(short int modlitba);
 extern void _set_zalmy_ocd_terezia(short int modlitba);
+extern void _set_zalmy_ocd_vsetci_svati(short int modlitba);
+extern void _set_zalmy_ocd_jan_z_kriza(short int modlitba);
 extern void _set_zalmy_pc_1_8_16(short int modlitba);
 extern void _set_zalmy_pc_1_8_15(short int modlitba);
 extern void _set_zalmy_opraem_pc_1_8_21(short int modlitba);

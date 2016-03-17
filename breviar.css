@@ -253,6 +253,7 @@ div.responsory {
 .reading p.heading { 
 	padding-bottom: 1em;
 	padding-left: 0em; 
+	padding-top: 1em;
 	text-indent: 0em; 
 }
 
@@ -318,12 +319,6 @@ div.responsory {
 	color: #ff0000; 
 	font-size: 80%; 
 	font-weight: normal; 
-}
-
-.hymn p.rubric-first, .hymn p.rubric-first-always-display {
-	color: #ff0000; 
-	font-size: 80%;
-	font-weight: normal;
 	padding-top: 1em;
 }
 
@@ -485,13 +480,7 @@ p.bibleref {
 .rubric, .rubric-always-display { 
 	color: #ff0000; 
 	font-size: 80%; 
-	font-weight: normal; 
-}
-
-.rubric-first, .rubric-first-always-display {
-	color: #ff0000; 
-	font-size: 80%;
-	font-weight: normal;
+	font-weight: normal !important;
 	padding-top: 1em;
 }
 

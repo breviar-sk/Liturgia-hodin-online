@@ -107,7 +107,7 @@ body { background-color: #000000; color: #cccccc; }
 <ul>
 <!-- <li> Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
 <li> Zsolozsma a meghaltakért: a reggeli dicséretben lehetséges a 146. vagy a 150. zsoltárt venni.</li>
-<li> Possibility to use navigation arrows in the text.</li>
+<li> Szövegben navigálás lehetősége nyilak segítségével.</li>
 </ul>
 
 <p><b>Verzió 1.12.2</b>

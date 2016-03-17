@@ -73,10 +73,6 @@
 	color: #FF3333;
 }
 
-.hymn p.rubric-first, .hymn p.rubric-first-always-display {
-	color: #FF3333;
-}
-
 .psalm .psalm-name { 
 	color: #FF3333;
 }
@@ -114,10 +110,6 @@ p.bibleref {
 }
 
 .rubric, .rubric-always-display { 
-	color: #FF3333;
-}
-
-.rubric-first, .rubric-first-always-display {
 	color: #FF3333;
 }
 

@@ -12009,6 +12009,259 @@ void _rozparsuj_parametre_DEN_MESIAC_ROK(char *den, char *mesiac, char *rok, cha
 	Log("_rozparsuj_parametre_DEN_MESIAC_ROK(char *, char *, char *) -- koniec.\n");
 }// _rozparsuj_parametre_DEN_MESIAC_ROK()
 
+void _export_buttons_rok_prev_next(short int r, char action[MAX_STR], char pom2[MAX_STR]){
+	Log("_export_buttons_rok_prev_next(%d, %s, %s) -- začiatok\n", r, action, pom2);
+
+	Export("<"HTML_TABLE">\n");
+	Export("<"HTML_TABLE_ROW">");
+	// << predošlý rok -- button
+	Export("<"HTML_TABLE_CELL">");
+	sprintf(action, "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d%s",
+		script_name,
+		STR_QUERY_TYPE, STR_PRM_DATUM,
+		STR_DEN, STR_VSETKY_DNI,
+		STR_MESIAC, STR_VSETKY_MESIACE,
+		STR_ROK, r - 1,
+		pom2);
+	Export_HtmlForm(action);
+	Export(HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %d (", r - 1);
+	Export((char *)html_button_predchadzajuci_[_global_jazyk]);
+	Export(" ");
+	Export((char *)html_text_rok[_global_jazyk]);
+	Export(" )\""HTML_FORM_INPUT_END"\n");
+	Export("</form>\n");
+	Export(HTML_TABLE_CELL_END"\n");
+
+	// nasledujúci rok >> -- button
+	Export("<"HTML_TABLE_CELL">");
+	sprintf(action, "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d%s",
+		script_name,
+		STR_QUERY_TYPE, STR_PRM_DATUM,
+		STR_DEN, STR_VSETKY_DNI,
+		STR_MESIAC, STR_VSETKY_MESIACE,
+		STR_ROK, r + 1,
+		pom2);
+	Export_HtmlForm(action);
+	Export(HTML_FORM_INPUT_SUBMIT0" value=\"(");
+	Export((char *)html_button_nasledujuci_[_global_jazyk]);
+	Export(" ");
+	Export((char *)html_text_rok[_global_jazyk]);
+	Export(" ) %d "HTML_RIGHT_ARROW"\""HTML_FORM_INPUT_END"\n", r + 1);
+	Export("</form>\n");
+	Export(HTML_TABLE_CELL_END"\n");
+
+	// koniec buttonov
+	Export(HTML_TABLE_ROW_END"\n");
+	Export(HTML_TABLE_END"\n");
+
+	Log("_export_buttons_rok_prev_next(%d, %s, %s) -- koniec\n", r, action, pom2);
+}// _export_buttons_rok_prev_next()
+
+void _export_buttons_mesiac_rok_prev_next(short int m, short int r, char pom2[MAX_STR], short int som_v_tabulke, char pom[MAX_STR]){
+
+	short int pm, pr; // pomocny mesiac, pomocny rok
+	char str_month[SMALL] = STR_EMPTY;
+
+	if (som_v_tabulke == ANO)
+		Export("\n<"HTML_TABLE">\n");
+	else{
+		Export("\n<div class=\"navm\">\n");
+		Export(HTML_P_BEGIN"\n");
+	}
+
+	// nasledujú tlačidlá; doplnený "ten istý mesiac pred rokom", "ten istý mesiac o rok"
+	if (som_v_tabulke == ANO){
+		Export("<"HTML_TABLE_ROW">\n");
+	}
+
+	// predosly mesiac -- button
+	pm = m; pr = r;
+	if (m == 1){
+		pm = 12;
+		pr = r - 1;
+	}
+	else{
+		pm = m - 1;
+	}
+	if (_global_opt_batch_monthly == NIE){
+		sprintf(pom, HTML_LINK_CALL2,
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_DATUM,
+			STR_DEN, STR_VSETKY_DNI,
+			STR_MESIAC, pm,
+			STR_ROK, pr,
+			pom2);
+	}// if(_global_opt_batch_monthly == NIE)
+	else{
+		// najprv treba predlepiť adresár...
+		if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
+			sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_SIMPLE""STR_PATH_SEPARATOR_HTML, pr % 100, pm, nazov_mes[pm - 1]);
+		else // EXPORT_DATE_FULL
+			sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_FULL""STR_PATH_SEPARATOR_HTML, pr, pm, nazov_mesiaca_asci(pm - 1));
+		// ... a potom celý reťazec s názvom súboru pre daný mesiac
+		if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
+			sprintf(pom, "%s"FILENAME_EXPORT_MONTH_SIMPLE".htm", str_month, pr % 100, pm);
+		}
+		else{
+			sprintf(pom, "%s"FILENAME_EXPORT_MONTH_FULL".htm", str_month, pr, pm);
+		}
+	}
+	Log("\treťazec pom == %s\n", pom);
+	if (som_v_tabulke == ANO){
+		Export("<"HTML_TABLE_CELL">");
+		Export_HtmlForm(pom);
+		if (_global_jazyk == JAZYK_HU){
+			Export(HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %d. %s\""HTML_FORM_INPUT_END"\n", pr, nazov_mesiaca(pm - 1));
+		}
+		else{
+			Export(HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %s %d\""HTML_FORM_INPUT_END"\n", nazov_Mesiaca(pm - 1), pr);
+		}
+		Export("</form>\n");
+		Export(HTML_TABLE_CELL_END"\n");
+	}
+	else{
+		if (_global_jazyk == JAZYK_HU){
+			Export(HTML_A_HREF_BEGIN"\"%s\">"HTML_LEFT_ARROW" %d. %s"HTML_A_END"\n", pom, pr, nazov_mesiaca(pm - 1));
+		}
+		else{
+			Export(HTML_A_HREF_BEGIN"\"%s\">"HTML_LEFT_ARROW" %s %d"HTML_A_END"\n", pom, nazov_Mesiaca(pm - 1), pr);
+		}
+		Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
+	}
+
+	// nasledujuci mesiac -- button
+	pm = m; pr = r;
+	if (m == 12){
+		pm = 1;
+		pr = r + 1;
+	}
+	else{
+		pm = m + 1;
+	}
+	if (_global_opt_batch_monthly == NIE){
+		sprintf(pom, HTML_LINK_CALL2,
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_DATUM,
+			STR_DEN, STR_VSETKY_DNI,
+			STR_MESIAC, pm,
+			STR_ROK, pr,
+			pom2);
+	}// if(_global_opt_batch_monthly == NIE)
+	else{
+		// najprv treba predlepiť adresár...
+		if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
+			sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_SIMPLE""STR_PATH_SEPARATOR_HTML, pr % 100, pm, nazov_mes[pm - 1]);
+		}
+		else{
+			// EXPORT_DATE_FULL
+			sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_FULL""STR_PATH_SEPARATOR_HTML, pr, pm, nazov_mesiaca_asci(pm - 1));
+		}
+		// ... a potom celý reťazec s názvom súboru pre daný mesiac
+		if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
+			sprintf(pom, "%s"FILENAME_EXPORT_MONTH_SIMPLE".htm", str_month, pr % 100, pm);
+		else
+			sprintf(pom, "%s"FILENAME_EXPORT_MONTH_FULL".htm", str_month, pr, pm);
+	}
+	Log("\treťazec pom == %s\n", pom);
+	if (som_v_tabulke == ANO){
+		Export("<"HTML_TABLE_CELL">");
+		Export_HtmlForm(pom);
+		if (_global_jazyk == JAZYK_HU){
+			Export(HTML_FORM_INPUT_SUBMIT0" value=\"%d. %s "HTML_RIGHT_ARROW"\""HTML_FORM_INPUT_END"\n", pr, nazov_mesiaca(pm - 1));
+		}
+		else{
+			Export(HTML_FORM_INPUT_SUBMIT0" value=\"%s %d "HTML_RIGHT_ARROW"\""HTML_FORM_INPUT_END"\n", nazov_Mesiaca(pm - 1), pr);
+		}
+		Export("</form>\n");
+		Export(HTML_TABLE_CELL_END"\n");
+	}
+	else{
+		if (_global_jazyk == JAZYK_HU){
+			Export(HTML_A_HREF_BEGIN"\"%s\">%d. %s "HTML_RIGHT_ARROW""HTML_A_END"\n", pom, pr, nazov_mesiaca(pm - 1));
+		}
+		else{
+			Export(HTML_A_HREF_BEGIN"\"%s\">%s %d "HTML_RIGHT_ARROW""HTML_A_END"\n", pom, nazov_Mesiaca(pm - 1), pr);
+		}
+	}
+
+	if (som_v_tabulke == ANO){
+		Export(HTML_TABLE_ROW_END"\n");
+	}
+	else{
+		Export(HTML_P_END""HTML_DIV_END);
+	}
+
+	// ten istý mesiac pred rokom -- button
+	pm = m;
+	pr = r - 1;
+	if (_global_opt_batch_monthly == NIE){
+		sprintf(pom, HTML_LINK_CALL2,
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_DATUM,
+			STR_DEN, STR_VSETKY_DNI,
+			STR_MESIAC, pm,
+			STR_ROK, pr,
+			pom2);
+	}// if(_global_opt_batch_monthly == NIE)
+	else{
+		mystrcpy(pom, STR_EMPTY, MAX_STR);
+	}
+	if (_global_opt_batch_monthly == NIE){
+		if (som_v_tabulke == ANO){
+			Export("<"HTML_TABLE_ROW">");
+
+			Export("<"HTML_TABLE_CELL">");
+			Export_HtmlForm(pom);
+			Export(HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %s %d\""HTML_FORM_INPUT_END"\n", nazov_Mesiaca(pm - 1), pr);
+			Export("</form>\n");
+			Export(HTML_TABLE_CELL_END"\n");
+		}
+		else{
+			Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
+			//
+			Export(HTML_A_HREF_BEGIN"\"%s\">"HTML_LEFT_ARROW" %s %d"HTML_A_END"\n", pom, nazov_Mesiaca(pm - 1), pr);
+			Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
+		}
+	}
+
+	// ten istý mesiac o rok -- button
+	pm = m;
+	pr = r + 1;
+	if (_global_opt_batch_monthly == NIE){
+		sprintf(pom, HTML_LINK_CALL2,
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_DATUM,
+			STR_DEN, STR_VSETKY_DNI,
+			STR_MESIAC, pm,
+			STR_ROK, pr,
+			pom2);
+	}// if(_global_opt_batch_monthly == NIE)
+	else{
+		mystrcpy(pom, STR_EMPTY, MAX_STR);
+	}
+	if (_global_opt_batch_monthly == NIE){
+		if (som_v_tabulke == ANO){
+			Export("<"HTML_TABLE_CELL">");
+			Export_HtmlForm(pom);
+			Export(HTML_FORM_INPUT_SUBMIT0" value=\"%s %d "HTML_RIGHT_ARROW"\""HTML_FORM_INPUT_END"\n", nazov_Mesiaca(pm - 1), pr);
+			Export("</form>\n");
+			Export(HTML_TABLE_CELL_END"\n");
+		}
+		else{
+			Export(HTML_A_HREF_BEGIN"\"%s\">%s %d "HTML_RIGHT_ARROW""HTML_A_END"\n", pom, nazov_Mesiaca(pm - 1), pr);
+			Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
+		}
+	}
+
+	if (som_v_tabulke == ANO){
+		Export(HTML_TABLE_ROW_END"\n");
+	}
+
+	// koniec buttonov
+	if (som_v_tabulke == ANO){
+		Export(HTML_TABLE_END"\n");
+	}
+}// _export_buttons_mesiac_rok_prev_next()
 
 // dostane stringy (datum) + mozno dalsie striny (modlitba, dalsi_svaty), prekonvertuje ich a skontroluje ak je vsetko ok, 
 // vykona _main_rozbor_dna(int, int, int) resp. _main_rozbor_mesiaca(int) resp. cely rok, 12krat rozbor_mesiaca(int)
@@ -12018,14 +12271,12 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 	char pom[MAX_STR];
 	Log("-- _main_rozbor_dna(short int, short int, short int, short int, char *): begin (%d, %d, %d, %d, %s)\n", d, m, r, p, poradie_svaty);
 	short int s;
-	short int pm, pr; // pomocny mesiac, pomocny rok
 
 	char pom2[MAX_STR];
 	mystrcpy(pom, STR_EMPTY, MAX_STR);
 	mystrcpy(pom2, STR_EMPTY, MAX_STR);
 	char pom3[MAX_STR];
 	mystrcpy(pom3, STR_EMPTY, MAX_STR);
-	char str_month[SMALL] = STR_EMPTY;
 
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
@@ -12086,15 +12337,19 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 	}
 
 	Log("/* teraz result == SUCCESS */\n");
+
 	if (m == VSETKY_MESIACE){
 		if (p != MODL_NEURCENA){
 			ExportUDAJE("pre viacej mesiacov zobrazenie modlitby nie je podporované\n");
 			return;
 		}// p != MODL_NEURCENA
+
 		if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK)){
 			Log("/* teraz vypisujem heading, rok %d */\n", r);
 			sprintf(pom, (char *)html_text_Rok_x[_global_jazyk], r);
 			_export_heading_center(pom);
+
+			_export_buttons_rok_prev_next(r, action, pom2);
 
 			Export(HTML_A_NAME_BEGIN"\"rok\">"HTML_A_END"\n");
 			Export(HTML_P_CENTER"\n");
@@ -12123,50 +12378,12 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 		vysvetlivky();
 
 		if ((_global_linky == ANO) && (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK))){
+
 			Export("\n");
 			Export(HTML_LINE_BREAK"\n");
-			Export("<"HTML_TABLE">\n");
-			Export("<"HTML_TABLE_ROW">");
-			// predošlý rok -- button
-			Export("<"HTML_TABLE_CELL">");
-			sprintf(action, "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d%s",
-				script_name,
-				STR_QUERY_TYPE, STR_PRM_DATUM,
-				STR_DEN, STR_VSETKY_DNI,
-				STR_MESIAC, STR_VSETKY_MESIACE,
-				STR_ROK, r - 1,
-				pom2);
-			Export_HtmlForm(action);
-			Export(HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %d (", r - 1);
-			Export((char *)html_button_predchadzajuci_[_global_jazyk]);
-			Export(" ");
-			Export((char *)html_text_rok[_global_jazyk]);
-			Export(" )\""HTML_FORM_INPUT_END"\n");
-			Export("</form>\n");
-			Export(HTML_TABLE_CELL_END"\n");
 
-			// nasledujúci rok -- button
-			Export("<"HTML_TABLE_CELL">");
-			sprintf(action, "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d%s",
-				script_name,
-				STR_QUERY_TYPE, STR_PRM_DATUM,
-				STR_DEN, STR_VSETKY_DNI,
-				STR_MESIAC, STR_VSETKY_MESIACE,
-				STR_ROK, r + 1,
-				pom2);
-			Export_HtmlForm(action);
-			Export(HTML_FORM_INPUT_SUBMIT0" value=\"(");
-			Export((char *)html_button_nasledujuci_[_global_jazyk]);
-			Export(" ");
-			Export((char *)html_text_rok[_global_jazyk]);
-			Export(" ) %d "HTML_RIGHT_ARROW"\""HTML_FORM_INPUT_END"\n", r + 1);
-			Export("</form>\n");
-			Export(HTML_TABLE_CELL_END"\n");
-
-			// koniec buttonov
-			Export(HTML_TABLE_ROW_END"\n");
-			Export(HTML_TABLE_END"\n");
-		}// if(_global_linky == ANO)
+			_export_buttons_rok_prev_next(r, action, pom2);
+		}
 	}// m == VSETKY_MESIACE
 	else{// m != VSETKY_MESIACE
 		// nesmiem zabudnut, ze m je 0--11
@@ -12199,211 +12416,22 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 			}
 			_export_heading_center(pom);
 
+			if (((_global_linky == ANO) && (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK))) || ((_global_opt_batch_monthly == ANO) && (export_monthly_druh >= 2))){
+				_export_buttons_mesiac_rok_prev_next(m, r, pom2, som_v_tabulke, pom);
+			}
+
 			rozbor_mesiaca(m, r);
 
 			vysvetlivky();
 
 			if (((_global_linky == ANO) && (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK))) || ((_global_opt_batch_monthly == ANO) && (export_monthly_druh >= 2))){
-				if (som_v_tabulke == ANO)
-					Export("\n<"HTML_TABLE">\n");
-				else{
-					Export("\n<div class=\"navm\">\n");
-					Export(HTML_P_BEGIN"\n");
-				}
 
-				// nasledujú tlačidlá; doplnený "ten istý mesiac pred rokom", "ten istý mesiac o rok"
-				if (som_v_tabulke == ANO){
-					Export("<"HTML_TABLE_ROW">\n");
-				}
+				Export("\n");
+				Export(HTML_LINE_BREAK"\n");
 
-				// predosly mesiac -- button
-				pm = m; pr = r;
-				if (m == 1){
-					pm = 12;
-					pr = r - 1;
-				}
-				else{
-					pm = m - 1;
-				}
-				if (_global_opt_batch_monthly == NIE){
-					sprintf(pom, HTML_LINK_CALL2,
-						script_name,
-						STR_QUERY_TYPE, STR_PRM_DATUM,
-						STR_DEN, STR_VSETKY_DNI,
-						STR_MESIAC, pm,
-						STR_ROK, pr,
-						pom2);
-				}// if(_global_opt_batch_monthly == NIE)
-				else{
-					// najprv treba predlepiť adresár...
-					if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
-						sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_SIMPLE""STR_PATH_SEPARATOR_HTML, pr % 100, pm, nazov_mes[pm - 1]);
-					else // EXPORT_DATE_FULL
-						sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_FULL""STR_PATH_SEPARATOR_HTML, pr, pm, nazov_mesiaca_asci(pm - 1));
-					// ... a potom celý reťazec s názvom súboru pre daný mesiac
-					if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
-						sprintf(pom, "%s"FILENAME_EXPORT_MONTH_SIMPLE".htm", str_month, pr % 100, pm);
-					}
-					else{
-						sprintf(pom, "%s"FILENAME_EXPORT_MONTH_FULL".htm", str_month, pr, pm);
-					}
-				}
-				Log("\treťazec pom == %s\n", pom);
-				if (som_v_tabulke == ANO){
-					Export("<"HTML_TABLE_CELL">");
-					Export_HtmlForm(pom);
-					if (_global_jazyk == JAZYK_HU){
-						Export(HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %d. %s\""HTML_FORM_INPUT_END"\n", pr, nazov_mesiaca(pm - 1));
-					}
-					else{
-						Export(HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %s %d\""HTML_FORM_INPUT_END"\n", nazov_Mesiaca(pm - 1), pr);
-					}
-					Export("</form>\n");
-					Export(HTML_TABLE_CELL_END"\n");
-				}
-				else{
-					if (_global_jazyk == JAZYK_HU){
-						Export(HTML_A_HREF_BEGIN"\"%s\">"HTML_LEFT_ARROW" %d. %s"HTML_A_END"\n", pom, pr, nazov_mesiaca(pm - 1));
-					}
-					else{
-						Export(HTML_A_HREF_BEGIN"\"%s\">"HTML_LEFT_ARROW" %s %d"HTML_A_END"\n", pom, nazov_Mesiaca(pm - 1), pr);
-					}
-					Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
-				}
+				_export_buttons_mesiac_rok_prev_next(m, r, pom2, som_v_tabulke, pom);
 
-				// nasledujuci mesiac -- button
-				pm = m; pr = r;
-				if (m == 12){
-					pm = 1;
-					pr = r + 1;
-				}
-				else{
-					pm = m + 1;
-				}
-				if (_global_opt_batch_monthly == NIE){
-					sprintf(pom, HTML_LINK_CALL2,
-						script_name,
-						STR_QUERY_TYPE, STR_PRM_DATUM,
-						STR_DEN, STR_VSETKY_DNI,
-						STR_MESIAC, pm,
-						STR_ROK, pr,
-						pom2);
-				}// if(_global_opt_batch_monthly == NIE)
-				else{
-					// najprv treba predlepiť adresár...
-					if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
-						sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_SIMPLE""STR_PATH_SEPARATOR_HTML, pr % 100, pm, nazov_mes[pm - 1]);
-					}
-					else{
-						// EXPORT_DATE_FULL
-						sprintf(str_month, ".."STR_PATH_SEPARATOR_HTML""DIRNAME_EXPORT_MONTH_FULL""STR_PATH_SEPARATOR_HTML, pr, pm, nazov_mesiaca_asci(pm - 1));
-					}
-					// ... a potom celý reťazec s názvom súboru pre daný mesiac
-					if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
-						sprintf(pom, "%s"FILENAME_EXPORT_MONTH_SIMPLE".htm", str_month, pr % 100, pm);
-					else
-						sprintf(pom, "%s"FILENAME_EXPORT_MONTH_FULL".htm", str_month, pr, pm);
-				}
-				Log("\treťazec pom == %s\n", pom);
-				if (som_v_tabulke == ANO){
-					Export("<"HTML_TABLE_CELL">");
-					Export_HtmlForm(pom);
-					if (_global_jazyk == JAZYK_HU){
-						Export(HTML_FORM_INPUT_SUBMIT0" value=\"%d. %s "HTML_RIGHT_ARROW"\""HTML_FORM_INPUT_END"\n", pr, nazov_mesiaca(pm - 1));
-					}
-					else{
-						Export(HTML_FORM_INPUT_SUBMIT0" value=\"%s %d "HTML_RIGHT_ARROW"\""HTML_FORM_INPUT_END"\n", nazov_Mesiaca(pm - 1), pr);
-					}
-					Export("</form>\n");
-					Export(HTML_TABLE_CELL_END"\n");
-				}
-				else{
-					if (_global_jazyk == JAZYK_HU){
-						Export(HTML_A_HREF_BEGIN"\"%s\">%d. %s "HTML_RIGHT_ARROW""HTML_A_END"\n", pom, pr, nazov_mesiaca(pm - 1));
-					}
-					else{
-						Export(HTML_A_HREF_BEGIN"\"%s\">%s %d "HTML_RIGHT_ARROW""HTML_A_END"\n", pom, nazov_Mesiaca(pm - 1), pr);
-					}
-				}
-
-				if (som_v_tabulke == ANO){
-					Export(HTML_TABLE_ROW_END"\n");
-				}
-				else{
-					Export(HTML_P_END""HTML_DIV_END);
-				}
-
-				// ten istý mesiac pred rokom -- button
-				pm = m;
-				pr = r - 1;
-				if (_global_opt_batch_monthly == NIE){
-					sprintf(pom, HTML_LINK_CALL2,
-						script_name,
-						STR_QUERY_TYPE, STR_PRM_DATUM,
-						STR_DEN, STR_VSETKY_DNI,
-						STR_MESIAC, pm,
-						STR_ROK, pr,
-						pom2);
-				}// if(_global_opt_batch_monthly == NIE)
-				else{
-					mystrcpy(pom, STR_EMPTY, MAX_STR);
-				}
-				if (_global_opt_batch_monthly == NIE){
-					if (som_v_tabulke == ANO){
-						Export("<"HTML_TABLE_ROW">");
-
-						Export("<"HTML_TABLE_CELL">");
-						Export_HtmlForm(pom);
-						Export(HTML_FORM_INPUT_SUBMIT0" value=\""HTML_LEFT_ARROW" %s %d\""HTML_FORM_INPUT_END"\n", nazov_Mesiaca(pm - 1), pr);
-						Export("</form>\n");
-						Export(HTML_TABLE_CELL_END"\n");
-					}
-					else{
-						Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
-						//
-						Export(HTML_A_HREF_BEGIN"\"%s\">"HTML_LEFT_ARROW" %s %d"HTML_A_END"\n", pom, nazov_Mesiaca(pm - 1), pr);
-						Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
-					}
-				}
-
-				// ten istý mesiac o rok -- button
-				pm = m;
-				pr = r + 1;
-				if (_global_opt_batch_monthly == NIE){
-					sprintf(pom, HTML_LINK_CALL2,
-						script_name,
-						STR_QUERY_TYPE, STR_PRM_DATUM,
-						STR_DEN, STR_VSETKY_DNI,
-						STR_MESIAC, pm,
-						STR_ROK, pr,
-						pom2);
-				}// if(_global_opt_batch_monthly == NIE)
-				else{
-					mystrcpy(pom, STR_EMPTY, MAX_STR);
-				}
-				if (_global_opt_batch_monthly == NIE){
-					if (som_v_tabulke == ANO){
-						Export("<"HTML_TABLE_CELL">");
-						Export_HtmlForm(pom);
-						Export(HTML_FORM_INPUT_SUBMIT0" value=\"%s %d "HTML_RIGHT_ARROW"\""HTML_FORM_INPUT_END"\n", nazov_Mesiaca(pm - 1), pr);
-						Export("</form>\n");
-						Export(HTML_TABLE_CELL_END"\n");
-					}
-					else{
-						Export(HTML_A_HREF_BEGIN"\"%s\">%s %d "HTML_RIGHT_ARROW""HTML_A_END"\n", pom, nazov_Mesiaca(pm - 1), pr);
-						Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
-					}
-				}
-
-				if (som_v_tabulke == ANO){
-					Export(HTML_TABLE_ROW_END"\n");
-				}
-
-				// koniec buttonov
-				if (som_v_tabulke == ANO){
-					Export(HTML_TABLE_END"\n");
-				}
-			}// _global_linky == ANO
+			}
 		}// d == VSETKY_DNI
 		else{// d != VSETKY_DNI
 			if (!kontrola_den_mesiac_rok(d, m, r)){
