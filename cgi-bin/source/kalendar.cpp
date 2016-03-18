@@ -215,7 +215,12 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
 			_global_svaty1.smer = 12; // ľubovoľné spomienky
 			mystrcpy(_global_svaty1.meno, text_JAN_04_OFM[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+			if (_global_jazyk == JAZYK_SK){
+				_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+			}
+			else{
+				_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA);
+			}
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OFM
@@ -3927,7 +3932,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			}
 			_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
 			_global_svaty1.smer = 12; // ľubovoľné spomienky
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			mystrcpy(_global_svaty1.meno, text_FEB_19_OFM[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.kalendar = _global_kalendar;
@@ -6270,7 +6275,12 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					_global_svaty(pom_poradie).smer = 12; // ľubovoľné spomienky
 					pocet = pom_poradie;
 					mystrcpy(_global_svaty(pom_poradie).meno, text_APR_23_OFM[_global_jazyk], MENO_SVIATKU);
-					_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+					if (_global_jazyk == JAZYK_HU){
+						_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+					}
+					else{
+						_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+					}
 					_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
 					_global_svaty(pom_poradie).kalendar = _global_kalendar;
 				}// kalendár pre KALENDAR_SK_OFM
@@ -6321,6 +6331,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
 				_global_svaty1.farba = LIT_FARBA_CERVENA;
 				_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
+
 				pocet = 2;
 				_global_svaty2.typslav = SLAV_LUB_SPOMIENKA;
 				_global_svaty2.smer = 12; // ľubovoľné spomienky
@@ -6369,6 +6380,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 					break;
 				}
+
 				pocet = ((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_OFM)) ? 3 : 2;
 				_global_svaty2.typslav = SLAV_SLAVNOST;
 				_global_svaty2.smer = 4; // miestne slávnosti podľa miestneho kalendára
@@ -6859,7 +6871,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				_global_svaty3.typslav = SLAV_LUB_SPOMIENKA;
 				_global_svaty3.smer = 12; // ľubovoľné spomienky
 				mystrcpy(_global_svaty3.meno, text_APR_28_OFM[_global_jazyk], MENO_SVIATKU);
-				_global_svaty3.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+				_global_svaty3.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 				_global_svaty3.farba = LIT_FARBA_BIELA;
 				_global_svaty3.kalendar = _global_kalendar;
 			}// kalendár pre KALENDAR_HU_OFM
@@ -8888,7 +8900,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
+				if (_global_jazyk != JAZYK_SK){
 					modlitba = MODL_INVITATORIUM;
 					_vlastna_cast_antifona_inv;
 				}
@@ -11645,7 +11657,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			_global_svaty1.typslav = SLAV_LUB_SPOMIENKA;
 			_global_svaty1.smer = 12; // ľubovoľné spomienky
 			mystrcpy(_global_svaty1.meno, text_JUN_15_OFM_HU[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_HU_OFM
