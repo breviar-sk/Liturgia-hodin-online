@@ -134,23 +134,23 @@
 
 #pragma region HTML string constants
 
-#define HTML_FORM_INPUT_SUBMIT   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button\""
-#define HTML_FORM_INPUT_RESET    HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset\""
-#define HTML_FORM_INPUT_RADIO    HTML_FORM_INPUT_DIV_BEGIN"<input type=\"radio\" class=\"radio\""
-#define HTML_FORM_INPUT_TEXT     HTML_FORM_INPUT_DIV_BEGIN"<input type=\"text\" class=\"text\""
-#define HTML_FORM_INPUT_TEXT_ROK HTML_FORM_INPUT_DIV_BEGIN"<input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
-#define HTML_FORM_INPUT_CHECKBOX HTML_FORM_INPUT_DIV_BEGIN"<input type=\"checkbox\" class=\"checkbox\""
+#define HTML_FORM_INPUT_SUBMIT   HTML_FORM_INPUT_DIV_BEGIN "<input type=\"submit\" class=\"button\""
+#define HTML_FORM_INPUT_RESET    HTML_FORM_INPUT_DIV_BEGIN "<input type=\"reset\" class=\"reset\""
+#define HTML_FORM_INPUT_RADIO    HTML_FORM_INPUT_DIV_BEGIN "<input type=\"radio\" class=\"radio\""
+#define HTML_FORM_INPUT_TEXT     HTML_FORM_INPUT_DIV_BEGIN "<input type=\"text\" class=\"text\""
+#define HTML_FORM_INPUT_TEXT_ROK HTML_FORM_INPUT_DIV_BEGIN "<input type=\"text\" class=\"text\" size=\"4\" maxlength=\"4\" style=\"font-family:monospace\""
+#define HTML_FORM_INPUT_CHECKBOX HTML_FORM_INPUT_DIV_BEGIN "<input type=\"checkbox\" class=\"checkbox\""
 
 // buttons (0. level: pre predošlý/nasledovný; 1. level: button "dnes"; 2. level: použité pre menej dôležité buttony)
-#define HTML_FORM_INPUT_SUBMIT0  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button0\""
-#define HTML_FORM_INPUT_RESET0   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset0\""
-#define HTML_FORM_INPUT_SUBMIT1  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button1\""
-#define HTML_FORM_INPUT_RESET1   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset1\""
-#define HTML_FORM_INPUT_SUBMIT2  HTML_FORM_INPUT_DIV_BEGIN"<input type=\"submit\" class=\"button2\""
-#define HTML_FORM_INPUT_RESET2   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"reset\" class=\"reset2\""
-#define HTML_FORM_INPUT_HIDDEN   HTML_FORM_INPUT_DIV_BEGIN"<input type=\"hidden\""
+#define HTML_FORM_INPUT_SUBMIT0  HTML_FORM_INPUT_DIV_BEGIN "<input type=\"submit\" class=\"button0\""
+#define HTML_FORM_INPUT_RESET0   HTML_FORM_INPUT_DIV_BEGIN "<input type=\"reset\" class=\"reset0\""
+#define HTML_FORM_INPUT_SUBMIT1  HTML_FORM_INPUT_DIV_BEGIN "<input type=\"submit\" class=\"button1\""
+#define HTML_FORM_INPUT_RESET1   HTML_FORM_INPUT_DIV_BEGIN "<input type=\"reset\" class=\"reset1\""
+#define HTML_FORM_INPUT_SUBMIT2  HTML_FORM_INPUT_DIV_BEGIN "<input type=\"submit\" class=\"button2\""
+#define HTML_FORM_INPUT_RESET2   HTML_FORM_INPUT_DIV_BEGIN "<input type=\"reset\" class=\"reset2\""
+#define HTML_FORM_INPUT_HIDDEN   HTML_FORM_INPUT_DIV_BEGIN "<input type=\"hidden\""
 
-#define HTML_FORM_INPUT_END      HTML_EMPTY_TAG_END""HTML_FORM_INPUT_DIV_END
+#define HTML_FORM_INPUT_END      HTML_EMPTY_TAG_END "" HTML_FORM_INPUT_DIV_END
 
 // wrapping <input ... /> into <div>...</div>
 #define HTML_FORM_INPUT_DIV_BEGIN HTML_DIV_INLINE
@@ -177,16 +177,16 @@
 #define HTML_LINE_BREAK "<br/>"
 #define HTML_CRLF_LINE_BREAK "\n<br/>"
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-#define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE""STR_SLASH""HTML_NONBREAKING_SPACE""HTML_LINE_BREAK""HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE""STR_SLASH""HTML_NONBREAKING_SPACE))
+#define HTML_LINE_BREAK_SPACE_LOONG ((_global_jazyk != JAZYK_CZ)?(HTML_NONBREAKING_SPACE "" STR_SLASH "" HTML_NONBREAKING_SPACE "" HTML_LINE_BREAK "" HTML_NONBREAKING_SPACE_LOOONG):(HTML_NONBREAKING_SPACE "" STR_SLASH "" HTML_NONBREAKING_SPACE))
 
 #define HTML_P_BEGIN                "<p>"
 #define HTML_P_END                  "</p>"
 
-#define HTML_P_RUBRIC               "<p "HTML_CLASS_RUBRIC">"
+#define HTML_P_RUBRIC               "<p " HTML_CLASS_RUBRIC ">"
 
-#define HTML_P_CENTER               "<p "HTML_CLASS_CENTER">"
-#define HTML_P_CENTER_SMALL         "<p "HTML_CLASS_SMALL_CENTER">"
-#define HTML_P_INLINE               "<p "HTML_CLASS_INLINE">"
+#define HTML_P_CENTER               "<p " HTML_CLASS_CENTER ">"
+#define HTML_P_CENTER_SMALL         "<p " HTML_CLASS_SMALL_CENTER ">"
+#define HTML_P_INLINE               "<p " HTML_CLASS_INLINE ">"
 
 #define HTML_A_HREF_BEGIN           "<a href="
 #define HTML_A_NAME_BEGIN           "<a name="
@@ -195,8 +195,8 @@
 #define HTML_DIV_BEGIN              "<div>"
 #define HTML_DIV_END                "</div>"
 
-#define HTML_DIV_CENTER             "<div "HTML_CLASS_CENTER">"
-#define HTML_DIV_INLINE             "<div "HTML_CLASS_INLINE">"
+#define HTML_DIV_CENTER             "<div " HTML_CLASS_CENTER ">"
+#define HTML_DIV_INLINE             "<div " HTML_CLASS_INLINE ">"
 
 #define HTML_DIV_SMALL_INLINE       "div class=\"small inline\""
 #define HTML_DIV_SMALL              "div class=\"small\""
@@ -213,10 +213,10 @@
 #define HTML_TABLE_CELL_BORDER      "div class=\"table-cell-bordered\"" // "td" with borders
 #define HTML_TABLE_CELL_VALIGN_TOP  "div class=\"table-cell-valign-top\""
 
-#define HTML_TABLE_END		        HTML_DIV_END""HTML_COMMENT_BEGIN"table"HTML_COMMENT_END // "</table>"
-#define HTML_TABLE_CAPTION_END	    HTML_DIV_END""HTML_COMMENT_BEGIN"caption"HTML_COMMENT_END // "</th>"
-#define HTML_TABLE_ROW_END	        HTML_DIV_END""HTML_COMMENT_BEGIN"row"HTML_COMMENT_END // "</tr>"
-#define HTML_TABLE_CELL_END	        HTML_DIV_END""HTML_COMMENT_BEGIN"cell"HTML_COMMENT_END // "</td>"
+#define HTML_TABLE_END		        HTML_DIV_END "" HTML_COMMENT_BEGIN "table" HTML_COMMENT_END // "</table>"
+#define HTML_TABLE_CAPTION_END	    HTML_DIV_END "" HTML_COMMENT_BEGIN "caption" HTML_COMMENT_END // "</th>"
+#define HTML_TABLE_ROW_END	        HTML_DIV_END "" HTML_COMMENT_BEGIN "row" HTML_COMMENT_END // "</tr>"
+#define HTML_TABLE_CELL_END	        HTML_DIV_END "" HTML_COMMENT_BEGIN "cell" HTML_COMMENT_END // "</td>"
 
 #define HTML_TABLE_CELL_BORDER_END	HTML_TABLE_CELL_END
 
@@ -279,7 +279,7 @@
 #define HTML_VALIGN_TOP             "valign=\"top\""
 #define HTML_VALIGN_BASE            "valign=\"baseline\""
 
-#define HTML_BUTTON_BEGIN	        "<button type=\"button\" "HTML_CLASS_BUTTON">" // wrapping <a> element to look like button
+#define HTML_BUTTON_BEGIN	        "<button type=\"button\" " HTML_CLASS_BUTTON ">" // wrapping <a> element to look like button
 #define HTML_BUTTON_END		        "</button>"
 
 #define HTML_AMPERSAND              "&amp;"
@@ -294,10 +294,10 @@
 #define HTML_LEFT_ARROW_WIDE	    "&nbsp;&laquo;&nbsp;"
 #define HTML_RIGHT_ARROW_WIDE	    "&nbsp;&raquo;&nbsp;"
 
-#define HTML_LINK_CALL1             "%s?%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
-#define HTML_LINK_CALL2             "%s?%s=%s"HTML_AMPERSAND"%s=%s"HTML_AMPERSAND"%s=%d"HTML_AMPERSAND"%s=%d%s"
-#define HTML_LINK_CALL3             "%s?%s=%s"HTML_AMPERSAND"%s=%s%s"
-#define HTML_LINK_CALL_PARAM        HTML_AMPERSAND"%s=%s"
+#define HTML_LINK_CALL1             "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s"
+#define HTML_LINK_CALL2             "%s?%s=%s" HTML_AMPERSAND "%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s"
+#define HTML_LINK_CALL3             "%s?%s=%s" HTML_AMPERSAND "%s=%s%s"
+#define HTML_LINK_CALL_PARAM        HTML_AMPERSAND "%s=%s"
 
 #define HTML_LEFT_ARROW_SINGLE	    "&lsaquo;"
 #define HTML_RIGHT_ARROW_SINGLE	    "&rsaquo;"

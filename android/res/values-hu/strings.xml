@@ -106,6 +106,7 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Verzió 1.12.3</b>
 <ul>
 <!-- <li> Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
+<li> Ferences saját részekkel.</li>
 <li> Zsolozsma a meghaltakért: a reggeli dicséretben lehetséges a 146. vagy a 150. zsoltárt venni.</li>
 <li> Szövegben navigálás lehetősége nyilak segítségével.</li>
 </ul>

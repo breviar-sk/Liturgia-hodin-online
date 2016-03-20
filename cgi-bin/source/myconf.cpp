@@ -88,12 +88,12 @@ void readConfig(void)
 		Log("Nemôžem otvoriť súbor `%s'.\n", CONFIG_FILE);
 #ifdef MODEL_LH_commandline
 		Log("Pokúsim sa nájsť ho o level vyššie...\n");
-		if(! (subor = fopen(".."STR_PATH_SEPARATOR""CONFIG_FILE, "r")) ){
-			Log("Nemôžem otvoriť súbor `%s'.\n", ".."STR_PATH_SEPARATOR""CONFIG_FILE);
+		if(! (subor = fopen(".." STR_PATH_SEPARATOR "" CONFIG_FILE, "r")) ){
+			Log("Nemôžem otvoriť súbor `%s'.\n", ".." STR_PATH_SEPARATOR "" CONFIG_FILE);
 			return;
 		}
 		else{
-			Log("Súbor `%s' otvorený.\n", ".."STR_PATH_SEPARATOR""CONFIG_FILE);
+			Log("Súbor `%s' otvorený.\n", ".." STR_PATH_SEPARATOR "" CONFIG_FILE);
 		}
 #else
 		return;

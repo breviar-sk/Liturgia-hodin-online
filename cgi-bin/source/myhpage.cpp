@@ -121,7 +121,7 @@ void _buttons_prev_up_next(FILE * expt){
 			}
 			strncpy(ptr, pismeno_prev, 1);
 		}
-		Export_to_file(expt, HTML_A_HREF_BEGIN"\"%s\"%s>", file_name_pom, optional_html_class_button);
+		Export_to_file(expt, HTML_A_HREF_BEGIN "\"%s\"%s>", file_name_pom, optional_html_class_button);
 		Export_to_file(expt, optional_html_button_begin);
 		Export_to_file(expt, (char *)html_text_batch_Prev[_global_jazyk]);
 		Export_to_file(expt, " ");
@@ -132,7 +132,7 @@ void _buttons_prev_up_next(FILE * expt){
 		Export_to_file(expt, STR_VERTICAL_BAR_WITH_SPACES);
 	}
 	// ^ hore
-	Export_to_file(expt, HTML_A_HREF_BEGIN"\".%s%s\"%s>", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore, optional_html_class_button); // v tom istom adresári
+	Export_to_file(expt, HTML_A_HREF_BEGIN "\".%s%s\"%s>", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore, optional_html_class_button); // v tom istom adresári
 	Export_to_file(expt, optional_html_button_begin);
 	Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
 	Export_to_file(expt, optional_html_button_end);
@@ -152,7 +152,7 @@ void _buttons_prev_up_next(FILE * expt){
 		}
 		// |
 		Export_to_file(expt, STR_VERTICAL_BAR_WITH_SPACES);
-		Export_to_file(expt, HTML_A_HREF_BEGIN"\"%s\"%s>", file_name_pom, optional_html_class_button);
+		Export_to_file(expt, HTML_A_HREF_BEGIN "\"%s\"%s>", file_name_pom, optional_html_class_button);
 		Export_to_file(expt, optional_html_button_begin);
 		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_next));
 		Export_to_file(expt, " ");
@@ -348,7 +348,7 @@ void _xml_hlavicka(FILE * expt){
 		bol_content_type_text_xml = ANO;
 	}
 	Export_to_file(expt, (char *)xml_header, nazov_charset[charset_jazyka[_global_jazyk]]);
-	Export_to_file(expt, ELEM_BEGIN(XML_MAIN)"\n");
+	Export_to_file(expt, ELEM_BEGIN(XML_MAIN) "\n");
 	Log("_xml_hlavicka() -- koniec.\n");
 	return;
 }// _xml_hlavicka()
@@ -440,7 +440,7 @@ void _patka(FILE * expt){
 
 	Export("\n");
 
-	Export_to_file(expt, "<"HTML_P_PATKA">\n");
+	Export_to_file(expt, "<" HTML_P_PATKA ">\n");
 #ifdef BEHAVIOUR_WEB
 	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
 		Export_to_file(expt, "%s\n", gpage[_global_jazyk]);
@@ -469,16 +469,16 @@ void _patka(FILE * expt){
 #endif
 
 #ifndef BEHAVIOUR_CMDLINE
-	Export_to_file(expt, "<"HTML_LINK_NORMAL" href=\"%s\" "HTML_TARGET_TOP">%s"HTML_A_END"\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
+	Export_to_file(expt, "<" HTML_LINK_NORMAL " href=\"%s\" " HTML_TARGET_TOP ">%s" HTML_A_END "\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
 #endif
 
 	Log("cfg_mail_address_default[%s] == %s\n", cfg_mail_address_default[_global_jazyk], skratka_jazyka[_global_jazyk]);
 	mystrcpy(mail_addr, cfg_mail_address_default[_global_jazyk], MAX_MAIL_STR);
 
 	Log("mail_addr == %s\n", mail_addr);
-	Export_to_file(expt, "&#169; %d%s <"HTML_LINK_NORMAL" href=\"mailto:%s\">%s"HTML_A_END"\n", baserok, rok, mail_addr, html_mail_label);
+	Export_to_file(expt, "&#169; %d%s <" HTML_LINK_NORMAL " href=\"mailto:%s\">%s" HTML_A_END "\n", baserok, rok, mail_addr, html_mail_label);
 
-	Export_to_file(expt, HTML_P_END"\n");
+	Export_to_file(expt, HTML_P_END "\n");
 
 	Log("_patka() -- koniec.\n");
 	return;
@@ -531,11 +531,11 @@ void _xml_patka(FILE * expt){
 	dnes.tm_year = dnes.tm_year + 1900;
 	dnes.tm_yday = dnes.tm_yday + 1;
 
-	Export_to_file(expt, ELEM_BEGIN(XML_INFO)"\n");
-	Export_to_file(expt, ELEM_BEGIN(XML_COPYRIGHT)"%s"ELEM_END(XML_COPYRIGHT)"\n", TEXT_COPYRIGHT);
-	Export_to_file(expt, ELEM_BEGIN(XML_ADDRESS)"%s"ELEM_END(XML_ADDRESS)"\n", TEXT_EMAIL);
-	Export_to_file(expt, ELEM_BEGIN(XML_GENERATED)""HTML_ISO_FORMAT""ELEM_END(XML_GENERATED)"\n", dnes.tm_year, dnes.tm_mon + 1, dnes.tm_mday);
-	Export_to_file(expt, ELEM_BEGIN(XML_BUILD_DATE)"%s"ELEM_END(XML_BUILD_DATE)"\n", BUILD_DATE);
+	Export_to_file(expt, ELEM_BEGIN(XML_INFO) "\n");
+	Export_to_file(expt, ELEM_BEGIN(XML_COPYRIGHT)"%s" ELEM_END(XML_COPYRIGHT) "\n", TEXT_COPYRIGHT);
+	Export_to_file(expt, ELEM_BEGIN(XML_ADDRESS)"%s" ELEM_END(XML_ADDRESS) "\n", TEXT_EMAIL);
+	Export_to_file(expt, ELEM_BEGIN(XML_GENERATED)"" HTML_ISO_FORMAT "" ELEM_END(XML_GENERATED) "\n", dnes.tm_year, dnes.tm_mon + 1, dnes.tm_mday);
+	Export_to_file(expt, ELEM_BEGIN(XML_BUILD_DATE)"%s" ELEM_END(XML_BUILD_DATE) "\n", BUILD_DATE);
 	Export_to_file(expt, ELEM_END(XML_INFO)"\n\n");
 
 	Export_to_file(expt, ELEM_END(XML_MAIN)"\n\n");
