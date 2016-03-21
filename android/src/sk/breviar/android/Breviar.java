@@ -55,7 +55,7 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
     String language;
     boolean initialized, clearHistory;
     boolean fullscreen = false;
-    boolean need_to_reload_preferences = false;
+    boolean need_to_reload_preferences = true;
     float scroll_to = -1;
 
     int appEventId = -1;
@@ -72,7 +72,10 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
     }
 
     synchronized void initServer(String opts) {
-      if (S != null) return;
+      if (S != null) {
+        S.setOpts(opts);
+        return;
+      }
       try {
         S = new Server(this, scriptname, language, opts);
       } catch (IOException e) {
@@ -92,7 +95,6 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
     }
 
     void resetLanguage() {
-      need_to_reload_preferences = false;
       S.setLanguage(language);
       clearHistory = true;
 
@@ -113,6 +115,9 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
       Log.v("breviar", "resetLanguage: " + language + " new_url: " + new_url);
 
       wv.loadUrl(new_url);
+
+      need_to_reload_preferences = false;
+
       syncPreferences();
       BreviarApp.initLocale(getApplicationContext());
       recreateIfNeeded();
@@ -359,11 +364,12 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
     boolean resumed = false;
     @Override
     protected void onResume() {
-      if (need_to_reload_preferences) {
+      String url = wv.getUrl();
+      if (url != null && need_to_reload_preferences) {
         need_to_reload_preferences = false;
         scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
 
-        UrlOptions opts = new UrlOptions(wv.getUrl(), true);
+        UrlOptions opts = new UrlOptions(url, true);
         opts.override(new UrlOptions(BreviarApp.getUrlOptions(
               getApplicationContext()).replaceAll("&amp;", "&")));
 
@@ -436,8 +442,12 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
       // All objects are from android.context.Context
       SharedPreferences settings = getSharedPreferences(Util.prefname, 0);
       SharedPreferences.Editor editor = settings.edit();
-      editor.putString("language", language);
       editor.putInt("scale", scale);
+      if (need_to_reload_preferences) {
+        editor.commit();
+        return;
+      }
+      editor.putString("language", language);
       editor.putBoolean("fullscreen", fullscreen);
       editor.commit();
 

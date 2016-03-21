@@ -945,5 +945,9 @@ sup {
 
 #nav-arrow-up {
   background-image: url('sipkahore.png');
-  bottom: 4em;
+  top: 0.3em;
+}
+
+#contentRoot {
+  z-index: 0;
 }

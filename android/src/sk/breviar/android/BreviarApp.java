@@ -86,7 +86,8 @@ public class BreviarApp extends Application {
 
   static public String getUrlOptions(Context ctx) {
     SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getString("params", "");
+    String output = settings.getString("params", "");
+    return output;
   }
 
   static public void setUrlOptions(Context ctx, String opts) {
