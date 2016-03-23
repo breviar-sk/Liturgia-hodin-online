@@ -21,6 +21,7 @@
     <string name="dimlock">ne sötétüljön el a képernyő</string>
     <string name="mute">a telefon csendes módba kapcsolása</string>
     <string name="long_click_toggles_bar">hosszú lenyomása elrejti az alsó navigációs listát</string>
+    <string name="transparent_nav">navigációs nyilak mutatása</string>
 
     <string name="prayer_content_settings1_title">Tartalom beállításai:</string>
     <string name="various_options_in_prayers">mutassa az imáknál a különböző lehetőségeket hiperhivatkozásokként</string>
