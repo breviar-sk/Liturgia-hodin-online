@@ -13121,7 +13121,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 					_vlastna_cast_full(modlitba);
 				}
 				else{
-					// pre czop sú antifóny a krátky responz pred 1. čítaním zo spoločnej časti
+					// pre CZOP sú antifóny a krátky responz pred 1. čítaním zo spoločnej časti
 					_vlastna_cast_1citanie;
 					_vlastna_cast_2citanie;
 					_vlastna_cast_modlitba;

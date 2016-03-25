@@ -413,7 +413,7 @@ extern short int _global_opt_export_date_format;
 // 2012-10-22: odpoznámkované 14SEP -- napr. pre rok 2014 potom nedávalo prvé vešpery, ak padne na nedeľu!
 // 2014-01-10: doplnené 02FEB (ak padne na nedeľu, má prvé vešpery)
 // 2014-04-08: 14SEP platí aj pre CZ (ak padne na nedeľu, má prvé vešpery)
-#define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST (\
+#define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR (\
 ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)) || \
 ((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) || \
 ((_global_den.den == 5) && (_global_den.mesiac - 1 == MES_JUL) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
