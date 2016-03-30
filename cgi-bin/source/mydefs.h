@@ -1131,13 +1131,13 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON         "BitOpt5ConclusionPriestDiacon"
 
 // starting, closing element (XML, HTML)
-#define ELEM_BEGIN(elem)     "<"elem">"
-#define ELEM_END(elem)       "</"elem">"
+#define ELEM_BEGIN(elem)     "<" elem ">"
+#define ELEM_END(elem)       "</" elem ">"
 
-#define ELEMID_BEGIN(elem)   "<"elem" Id=\"%d\">"
-#define ELEMVAL_BEGIN(elem)  "<"elem" Value=\"%d\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
-#define ELEMOPT_BEGIN(elem)  "<"elem" Id=\"%d\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_MODL_OPTF_0_VERSE
-#define ELEMOPT_SLASH_BEGIN(elem)  "<"elem" Id=\"%d\" ForceName=\"%s\" Text=\"%s/%s\">"
+#define ELEMID_BEGIN(elem)   "<" elem " Id=\"%d\">"
+#define ELEMVAL_BEGIN(elem)  "<" elem " Value=\"%d\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
+#define ELEMOPT_BEGIN(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_MODL_OPTF_0_VERSE
+#define ELEMOPT_SLASH_BEGIN(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s/%s\">"
 
 #endif // __MYDEFS_H_
 

@@ -959,6 +959,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_LEN_CECHY               113
 #define LOKAL_SLAV_HU_CONCEPTIONISTAK_UN   114
 #define LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM    115
+#define LOKAL_SLAV_SLAVNOST_SDB_CZ         116
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined
@@ -1006,8 +1007,6 @@ const short int default_kalendar[POCET_JAZYKOV + 1] =
 
 // filenames for special calendars / názov súbora pre kalendáre
 extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];
-
-extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
 
 // prikazany / neprikazany sviatok / ľubovoľná spomienka bez záväznosti (blahoslavení napr. pre SK_OP)
 #define PRIKAZANY_SVIATOK           0
@@ -1380,6 +1379,8 @@ extern const char *skratka_jazyka_title[POCET_JAZYKOV + 1];
 
 extern const char *nazov_kalendara_short[POCET_KALENDAROV + 1];
 extern const char *skratka_kalendara[POCET_KALENDAROV + 1];
+extern const char *nazov_kalendara_propria_only[POCET_KALENDAROV + 1];
+extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
 
 extern const char *nazov_css[POCET_CSS + 1];
 extern const char *skratka_css[POCET_CSS + 1];

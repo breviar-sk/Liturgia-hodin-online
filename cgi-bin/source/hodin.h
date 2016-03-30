@@ -485,7 +485,7 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	"neurčený"
 	, "všeobecný"
 	, "všeobecný SK"
-	, "všeobecný CZ"
+	, "obecný CZ"
 	, "CZOP"
 	, "SK CSSR"
 	, "všeobecný HU"
@@ -502,6 +502,31 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "všeobecný RU"
 	, "HU OFM"
 	, "SK OCD"
+	, /* ADD_VALUE_FOR_NEW_CALENDAR */
+};
+
+const char *nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
+{
+	"-"
+	, ""
+	, ""
+	, ""
+	, "OP"
+	, "CSsR"
+	, " HU"
+	, "SVD"
+	, "SJ"
+	, "SDB"
+	, "OFM"
+	, "OP"
+	, "CM"
+	, "OPRaem"
+	, "OFMcap"
+	, "CSSR"
+	, "SDB"
+	, ""
+	, "OFM"
+	, "OCD"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -653,6 +678,7 @@ const char *nazov_slavenia_lokal[] =
 , "jen v Čechách"                                                                                               // LOKAL_SLAV_LEN_CECHY
 , "A Conceptionistáknál: Ünnep"                                                                                 // LOKAL_SLAV_HU_CONCEPTIONISTAK_UN
 , "v kláštoroch bosých karmelitánok – spomienka"                                                                // LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM
+, "pro SDB: slavnost"                                                                                           // LOKAL_SLAV_SLAVNOST_SDB_CZ
 };
 
 // names of liturgical colors

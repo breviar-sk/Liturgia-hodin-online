@@ -7673,7 +7673,12 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			}
 			_global_svaty1.typslav = SLAV_SVIATOK;
 			_global_svaty1.smer = 8; // miestne sviatky
-			_global_svaty1.typslav_lokal = LOKAL_SLAV_SLAVNOST_SDB;
+			if (_global_jazyk == JAZYK_SK) {
+				_global_svaty1.typslav_lokal = LOKAL_SLAV_SLAVNOST_SDB;
+			}
+			else {
+				_global_svaty1.typslav_lokal = LOKAL_SLAV_SLAVNOST_SDB_CZ;
+			}
 			mystrcpy(_global_svaty1.meno, text_MAJ_06_SDB[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
