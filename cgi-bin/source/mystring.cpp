@@ -99,7 +99,7 @@ short int equalsi(char *is1, char *is2){
 		return 0;
 	}
 #else
-	short int i, length;
+	int i, length;
 	char s1[MAX_STR], s2[MAX_STR];
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
@@ -124,7 +124,7 @@ short int equalsi(const char *is1, char *is2){
 		return 0;
 	}
 #else
-	short int i, length;
+	int i, length;
 	char s1[MAX_STR], s2[MAX_STR];
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
@@ -149,7 +149,7 @@ short int equalsi(const char *is1, const char *is2){
 		return 0;
 	}
 #else
-	short int i, length;
+	int i, length;
 	char s1[MAX_STR], s2[MAX_STR];
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
@@ -174,7 +174,7 @@ short int equalsi(char *is1, const char *is2){
 		return 0;
 	}
 #else
-	short int i, length;
+	int i, length;
 	char s1[MAX_STR], s2[MAX_STR];
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);

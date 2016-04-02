@@ -1632,7 +1632,7 @@ const char *html_text_detaily_uvod[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_kalendar[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_kalendar[POCET_JAZYKOV + 1] =
 {
 	"nastavenia pre liturgický kalendár",
 	"volby pro liturgický kalendář",
@@ -1645,7 +1645,7 @@ const char *html_text_option0_kalendar[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_kalendar_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_kalendar_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín ponúka možnosť slávenia niektorých slávení dvojakým spôsobom; závisí od danej krajiny, ako rozhodla príslušná konferencia biskupov.",
 	"Volby pro liturgický kalendář ovlivňují datumy některých slavení.",
@@ -1658,7 +1658,7 @@ const char *html_text_option0_kalendar_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_nemenne_sucasti[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_nemenne_sucasti[POCET_JAZYKOV + 1] =
 {
 	"zobraziť nasledovné súčasti modlitby?",
 	"zobrazit <i>neměnné součásti</i> modlitby?",
@@ -1671,7 +1671,7 @@ const char *html_text_option1_nemenne_sucasti[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_nemenne_sucasti_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_nemenne_sucasti_explain[POCET_JAZYKOV + 1] =
 {
 	"Každé ranné chvály obsahujú Benediktus, vešpery Magnifikat, obe modlitby obsahujú Otčenáš a zakončenie modlitby, a napokon posvätné čítanie obsahuje niekedy hymnus Te Deum; tieto časti modlitby možno zobraziť alebo skryť.",
 	"Každé ranní chvály obsahují Zachariášovo kantikum, nešpory Mariin Magnifikat, obě modlitbu Páně a zakončení modlitby, a konečně modlitba se čtením někdy obsahuje hymnus Te Deum; tyto části modliteb je možné zobrazit/skrýt.",
@@ -1684,7 +1684,7 @@ const char *html_text_option1_nemenne_sucasti_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_dalsie_prepinace[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_dalsie_prepinace[POCET_JAZYKOV + 1] =
 {
 	"možnosti pre výsledné modlitby",
 	"možnosti pro výsledné modlitby",
@@ -1698,7 +1698,7 @@ const char *html_text_option1_dalsie_prepinace[POCET_JAZYKOV + 1] =
 };
 
 // for other language: use ""
-const char *html_text_option1_dalsie_prepinace_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_dalsie_prepinace_explain[POCET_JAZYKOV + 1] =
 {
 	"Rozličné možnosti/výbery pre výsledné modlitby.",
 	"",
@@ -1763,7 +1763,7 @@ const char *html_text_spol_casti_vziat_zo_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_specialne[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_specialne[POCET_JAZYKOV + 1] =
 {
 	"v texte modlitieb zobraziť",
 	"v textu modliteb zobrazit",
@@ -1777,7 +1777,7 @@ const char *html_text_option0_specialne[POCET_JAZYKOV + 1] =
 };
 
 // for other languages use: ""
-const char *html_text_option0_specialne_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_specialne_explain[POCET_JAZYKOV + 1] =
 {
 	"Možnosť zobraziť ďalšie údaje v texte modlitieb (čísla veršov, referencie a pod.).",
 	"",
@@ -1790,7 +1790,7 @@ const char *html_text_option0_specialne_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_verse[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_verse[POCET_JAZYKOV + 1] =
 {
 	"číslovanie (čísla) veršov",
 	"číslování veršů",
@@ -1803,7 +1803,7 @@ const char *html_text_option0_verse[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_verse_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_verse_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín (latinské typické vydanie) zobrazuje číslovanie veršov v rámci žalmu, chválospevu alebo dlhšieho biblického čítania; niektoré vydania tieto čísla veršov neuvádzajú.",
 	"Liturgie hodin uvádí jako horní indexy čísla veršů biblických textů (žalmů, chvalozpěvů a prvních čtení), které může program zobrazit.",
@@ -1816,7 +1816,7 @@ const char *html_text_option0_verse_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_referencie[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_referencie[POCET_JAZYKOV + 1] =
 {
 	"biblické odkazy na dkc.kbs.sk",
 	"biblické odkazy",
@@ -1829,7 +1829,7 @@ const char *html_text_option0_referencie[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_referencie_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_referencie_explain[POCET_JAZYKOV + 1] =
 {
 	"Všetky biblické odkazy (napr. Jn 3, 16) v modlitbe budú aktívnymi odkazmi na text katolíckeho prekladu Biblie na adrese dkc.kbs.sk.",
 	"",
@@ -1842,7 +1842,7 @@ const char *html_text_option0_referencie_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_citania[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_citania[POCET_JAZYKOV + 1] =
 {
 	"liturgické čítania",
 	"liturgická čtení",
@@ -1855,7 +1855,7 @@ const char *html_text_option0_citania[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_citania_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_citania_explain[POCET_JAZYKOV + 1] =
 {
 	"Zobrazí odkaz na liturgické čítania (lc.kbs.sk).",
 	"Zobrazí odkaz na liturgická čtení (katolik.cz).",
@@ -1868,7 +1868,7 @@ const char *html_text_option0_citania_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_zjv_ne[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_zjv_ne[POCET_JAZYKOV + 1] =
 {
 	"Zjavenie Pána sláviť v nedeľu medzi 2. a 8. januárom",
 	"Zjevení Páně slavit v neděli mezi 2. a 8. lednem",
@@ -1881,7 +1881,7 @@ const char *html_text_option0_zjv_ne[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_zjv_ne_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_zjv_ne_explain[POCET_JAZYKOV + 1] =
 {
 	"Zjavenie Pána sa slávi dňa 6. januára; v niektorých krajinách sa slávi v nedeľu medzi 2. a 8. januárom.",
 	"",
@@ -1894,7 +1894,7 @@ const char *html_text_option0_zjv_ne_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_nan_ne[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_nan_ne[POCET_JAZYKOV + 1] =
 {
 	"Nanebovstúpenie Pána sláviť v nedeľu",
 	"Nanebevstoupení Páně slavit v neděli",
@@ -1907,7 +1907,7 @@ const char *html_text_option0_nan_ne[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_nan_ne_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_nan_ne_explain[POCET_JAZYKOV + 1] =
 {
 	"Nanebovstúpenie Pána sa slávi 40. deň po Veľkej noci (teda vo štvrtok); v niektorých krajinách sa slávenie prekladá na najbližšiu nedeľu (nahrádza 7. veľkonočnú nedeľu).",
 	"",
@@ -1920,7 +1920,7 @@ const char *html_text_option0_nan_ne_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_tk_ne[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_tk_ne[POCET_JAZYKOV + 1] =
 {
 	"Najsv. Kristovho tela a krvi sláviť v nedeľu",
 	"Těla a krve Páně slavit v neděli",
@@ -1933,7 +1933,7 @@ const char *html_text_option0_tk_ne[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_tk_ne_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_tk_ne_explain[POCET_JAZYKOV + 1] =
 {
 	"Najsv. Kristovho tela a krvi sa slávi 11. deň po Zoslaní Ducha Svätého (teda vo štvrtok po Najsv. Trojici); v niektorých krajinách sa slávenie prekladá na najbližšiu nedeľu.",
 	"",
@@ -1946,7 +1946,7 @@ const char *html_text_option0_tk_ne_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_font_normal[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_font_normal[POCET_JAZYKOV + 1] =
 {
 	"všade použiť obyčajné písmo (nie tučné)",
 	"všude použít obyčejné písmo (ne tučné)",
@@ -1960,7 +1960,7 @@ const char *html_text_option0_font_normal[POCET_JAZYKOV + 1] =
 };
 
 // for other languages use: ""
-const char *html_text_option0_font_normal_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_font_normal_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín používa tučné písmo pre texty, ktoré sa priamo čítajú, a tiež aj pre niektoré medzinadpisy. Táto voľba potlačí použitie tučného písma.",
 	"",
@@ -1973,7 +1973,7 @@ const char *html_text_option0_font_normal_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_buttons_order[POCET_JAZYKOV + 1] = 
+const char *html_text_opt_0_buttons_order[POCET_JAZYKOV + 1] = 
 {
 	"dátumové navigačné tlačidlá zobraziť až pod tlačidlami pre modlitby",
 	"navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby",
@@ -1987,7 +1987,7 @@ const char *html_text_option0_buttons_order[POCET_JAZYKOV + 1] =
 };
 
 // for other languages use: ""
-const char *html_text_option0_buttons_order_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_buttons_order_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín používa tučné písmo pre texty, ktoré sa priamo čítajú, a tiež aj pre niektoré medzinadpisy. Táto voľba potlačí použitie tučného písma.",
 	"",
@@ -2000,7 +2000,7 @@ const char *html_text_option0_buttons_order_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_blind_friendly[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_blind_friendly[POCET_JAZYKOV + 1] =
 {
 	"zobraziť iba text modlitieb (pre nevidiacich a slabozrakých) bez rubrík",
 	"zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik",
@@ -2014,7 +2014,7 @@ const char *html_text_option0_blind_friendly[POCET_JAZYKOV + 1] =
 };
 
 // for other languages use: ""
-const char *html_text_option0_blind_friendly_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_blind_friendly_explain[POCET_JAZYKOV + 1] =
 {
 	"Vo výslednej modlitbe bude zobrazený len ten text, ktorý sa číta; nebudú zobrazené žiadne rubriky alebo názvy častí modlitieb. Toto je vhodné pre hlasový výstup napr. pre nevidiacich a slabozrakých.",
 	"",
@@ -2027,7 +2027,7 @@ const char *html_text_option0_blind_friendly_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_footnotes[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_footnotes[POCET_JAZYKOV + 1] =
 {
 	"zobraziť poznámky pod čiarou",
 	"zobrazit poznámky pod čarou",
@@ -2041,7 +2041,7 @@ const char *html_text_option0_footnotes[POCET_JAZYKOV + 1] =
 };
 
 // for other languages use: ""
-const char *html_text_option0_footnotes_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_footnotes_explain[POCET_JAZYKOV + 1] =
 {
 	"Vo výslednej modlitbe (najmä posvätné čítania) budú zobrazené aj poznámky pod čiarou (a odkazy na ne).",
 	"",
@@ -2054,7 +2054,7 @@ const char *html_text_option0_footnotes_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option0_transparent_nav[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_transparent_nav[POCET_JAZYKOV + 1] =
 {
 	"zobraziť navigačné šípky",
 	"zobrazit navigační šipky",
@@ -2068,7 +2068,7 @@ const char *html_text_option0_transparent_nav[POCET_JAZYKOV + 1] =
 };
 
 // for other languages use: ""
-const char *html_text_option0_transparent_nav_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_transparent_nav_explain[POCET_JAZYKOV + 1] =
 {
 	"",
 	"",
@@ -2081,7 +2081,34 @@ const char *html_text_option0_transparent_nav_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_chvalospevy[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_zalmy_full_text[POCET_JAZYKOV + 1] =
+{
+	"zobraziť aj vynechané pasáže zo žalmov",
+	"zobrazit i vynechávky ze žalmů",
+	"show psalms (full text)",
+	"",
+	"",
+	"zobrazit i vynechávky ze žalmů",
+	"hu_text",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+// for other languages use: ""
+const char *html_text_opt_0_zalmy_full_text_explain[POCET_JAZYKOV + 1] =
+{
+	"Liturgia hodín vynecháva niektoré pasáže zo žalmov (napr. verš 6 v žalme 110). Je možné tieto vynechané pasáže zobraziť.",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_1_chvalospevy[POCET_JAZYKOV + 1] =
 {
 	"evanjeliové chválospevy (Benediktus, Magnifikat, Nunk dimittis)",
 	"evangelijní kantika (Mariino, Zachariášovo, Simeonovo)",
@@ -2094,7 +2121,7 @@ const char *html_text_option1_chvalospevy[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_chvalospevy_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_chvalospevy_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín štandardne tieto evanjeliové chválospevy neuvádza.",
 	"Liturgie hodin evangelijní kantika v plném znění obvykle neuvádí.",
@@ -2107,7 +2134,7 @@ const char *html_text_option1_chvalospevy_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_slava_otcu[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_slava_otcu[POCET_JAZYKOV + 1] =
 {
 	"Sláva Otcu", // [na konci žalmov a chválospevov]
 	"Sláva Otci", // [na konci žalmů a kantik]
@@ -2120,7 +2147,7 @@ const char *html_text_option1_slava_otcu[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_slava_otcu_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_slava_otcu_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín štandardne Sláva Otcu na konci žalmov a chválospevov neuvádza.",
 	"Liturgie hodin modlitbu Sláva Otci na konci žalmů a chvalozpěvů neuvádí.",
@@ -2133,7 +2160,7 @@ const char *html_text_option1_slava_otcu_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_rubriky[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_rubriky[POCET_JAZYKOV + 1] =
 {
 	"rubriky", // (napr. záverečné požehnanie)
 	"rubriky", // (např. závěrečné požehnání)
@@ -2146,7 +2173,7 @@ const char *html_text_option1_rubriky[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_rubriky_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_rubriky_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín zobrazuje červeným písmom rozličné zvyčajne vysvetľujúce pokyny k modlitbe (podľa Všeobecných smerníc o LH).",
 	"Liturgie hodin uvádí červeným písmem rozličné pokyny k modlitbě (často podle Všeobecných pokynů k denní modlitbě církve).",
@@ -2159,7 +2186,7 @@ const char *html_text_option1_rubriky_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_otcenas[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_otcenas[POCET_JAZYKOV + 1] =
 {
 	"modlitba Pána (Otčenáš)",
 	"modlitba Páně (Otčenáš)",
@@ -2172,7 +2199,7 @@ const char *html_text_option1_otcenas[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_otcenas_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_otcenas_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín štandardne modlitbu Pána (Otčenáš) v ranných chválach a vešperách v plnom znení neuvádza.",
 	"Liturgie hodin modlitbu Páně (Otčenáš) na příslušných místech v plném znění neuvádí.",
@@ -2185,7 +2212,7 @@ const char *html_text_option1_otcenas_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_tedeum[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_tedeum[POCET_JAZYKOV + 1] =
 {
 	"hymnus Te Deum",
 	"hymnus Te Deum",
@@ -2198,7 +2225,7 @@ const char *html_text_option1_tedeum[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_tedeum_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_tedeum_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín hymnus Te Deum v posvätnom čítaní v plnom znení neuvádza.",
 	"Liturgie hodin hymnus Te Deum na příslušných místech v plném znění neuvádí.",
@@ -2211,7 +2238,7 @@ const char *html_text_option1_tedeum_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_plne_resp[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_plne_resp[POCET_JAZYKOV + 1] =
 {
 	"plné znenie responzórií",
 	"plné znění krátkých zpěvů",
@@ -2224,7 +2251,7 @@ const char *html_text_option1_plne_resp[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_plne_resp_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_plne_resp_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín responzóriá po krátkom čítaní v ranných chválach, vešperách a po čítaniach v posvätnom čítaní v plnom znení neuvádza.",
 	"Liturgie hodin responsoria po krátkém čtení v ranních chválách, nešporách a po čteních v modlitbe se čtením neuvádí plné znění.",
@@ -2276,7 +2303,7 @@ const char *html_text_option_pouzit[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] =
 {
 	"použiť psalmódiu zo dňa",
 	"použít žalmy z běžného dne",
@@ -2289,7 +2316,7 @@ const char *html_text_option1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] =
 {
 	"pre modlitbu cez deň použiť psalmódiu zo dňa",
 	"pro modlitbu uprostřed dne použít žalmy z běžného dne",
@@ -2302,7 +2329,7 @@ const char *html_text_option1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
 {
 	"použiť doplnkovú psalmódiu",
 	"použít žalmy z doplňovacího cyklu",
@@ -2315,7 +2342,7 @@ const char *html_text_option1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_ine[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_ine[POCET_JAZYKOV + 1] =
 {
 	"pre modlitbu cez deň použiť doplnkovú psalmódiu",
 	"pro modlitbu uprostřed dne použít žalmy z doplňovacího cyklu",
@@ -2328,7 +2355,7 @@ const char *html_text_option1_mcd_zalmy_ine[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] =
 {
 	"Pokiaľ sa niekto modlí viac modlitieb cez deň, v prvej vezme bežnú psalmódiu; v ostatných sa použije doplnková psalmódia. Zahŕňa 3 série tzv. graduálnych žalmov (Ž 120 – 129).",
 	"Doplňovací cyklus žalmů obsahuje 3 série tzv. graduálních žalmů (Ž 120 – 129), které je možno použít místo žalmů ze žaltáře.",
@@ -2341,7 +2368,7 @@ const char *html_text_option1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] =
 {
 	"použiť psalmódiu z daného týždňa žaltára pre všetky tri modlitby cez deň",
 	"použít žalmy daného týdne ze žaltáře pro všechny tři modlitby uprostřed dne",
@@ -2354,7 +2381,7 @@ const char *html_text_option1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] =
 {
 	"pre modlitbu cez deň použiť psalmódiu z daného týždňa žaltára pre všetky tri modlitby cez deň",
 	"pro modlitbu uprostřed dne použít žalmy daného týdne ze žaltáře pro všechny tři modlitby během dne",
@@ -2367,7 +2394,7 @@ const char *html_text_option1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] =
 {
 	"použiť psalmódiu z troch týždňov žaltára: aktuálny, predchádzajúci, nasledujúci",
 	"použít žalmy z tří týdnů ze žaltáře: aktuální, předchozí, následující",
@@ -2380,7 +2407,7 @@ const char *html_text_option1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_tri[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_tri[POCET_JAZYKOV + 1] =
 {
 	"pre modlitbu cez deň použiť psalmódiu z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)",
 	"pro modlitbu uprostřed dne použít žalmy z tří týdnů ze žaltáře (aktuální, předchozí, následující)",
@@ -2393,7 +2420,7 @@ const char *html_text_option1_mcd_zalmy_tri[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
 {
 	"Pokiaľ sa niekto modlí viac modlitieb cez deň, psalmódia sa používa z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci týždeň žaltára).\nNemá účinok, ak je zvolená možnosť použiť doplnkovú psalmódiu.",
 	"Pokud se někdo modlí více částí modlitby uprostřed dne, může nejprve použít psalmodii daného dne a potom psalmodii předchozího, nebo následujícího týdne.",
@@ -2409,7 +2436,7 @@ const char *html_text_option1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
 #define HTML_TEXT_HU_OPTION1_ZAVER_SHOW "a befejezést megjeleníteni"
 #define HTML_TEXT_HU_OPTION1_ZAVER_HIDE "a befejezést elrejteni"
 
-const char *html_text_option1_zaver[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_zaver[POCET_JAZYKOV + 1] =
 {
 	"zakončenie",
 	"zakončení",
@@ -2422,7 +2449,7 @@ const char *html_text_option1_zaver[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_zaver_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_zaver_explain[POCET_JAZYKOV + 1] =
 {
 	"",
 	"",
@@ -2435,7 +2462,7 @@ const char *html_text_option1_zaver_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_zalm95[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_zalm95[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmov 24, 67 resp. 100 použiť žalm 95",
 	"místo žalmů 24, 67 resp. 100 použít žalm 95",
@@ -2448,7 +2475,7 @@ const char *html_text_option1_zalm95[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_zalm95_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_zalm95_explain[POCET_JAZYKOV + 1] =
 {
 	"Ak sa v ranných chválach, vešperách alebo posvätnom čítaní vyskytne žalm 24, 67 resp. 100, ktorý bol použitý pre invitatórium, nahradí sa v príslušnej modlitbe žalmom 95.",
 	"Když se v ranních chválách, modlitbě se čtením nebo nešporách vyskytne žalm 24, 67 resp. 100, který se použil pro uvedení do první modlitby dne, nahradí se v příslušné modlitbě žalmem 95.",
@@ -2511,7 +2538,7 @@ const char *html_text_option_skryt_kratsie_prosby[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_prosby_zvolanie[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_prosby_zvolanie[POCET_JAZYKOV + 1] =
 {
 	"zvolanie v prosbách opakovať po každej prosbe",
 	"zvolání v prosbách zopakovat po každé prosbě",
@@ -2524,7 +2551,7 @@ const char *html_text_option1_prosby_zvolanie[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_prosby_zvolanie_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_prosby_zvolanie_explain[POCET_JAZYKOV + 1] =
 {
 	"V ranných chválach a vešperách opakovať zvolanie v prosbách po každej prosbe.",
 	"V ranních chválách a nešporách opakovat svolání v prosbách po každé prosbě.",
@@ -2537,7 +2564,7 @@ const char *html_text_option1_prosby_zvolanie_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_skryt_popis_svaty[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_skryt_popis_svaty[POCET_JAZYKOV + 1] =
 {
 	"nezobraziť popis k modlitbe svätého",
 	"nezobrazit popis při modlitbě ke cti světce",
@@ -2550,7 +2577,7 @@ const char *html_text_option1_skryt_popis_svaty[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] =
 {
 	"Modlitby zväčša obsahujú pred názvom modlitby životopis svätého, popis sviatku alebo podobnú stručnú charakteristiku, ktorú pre jednoduchosť nazývame popis.",
 	"Modlitby ke cti svatých obsahují stručný životopis svatého, při svátku je to stručný popis svátku a podobně. Tyto charakteristiky pro stručnost nazýváme popis.",
@@ -2563,7 +2590,7 @@ const char *html_text_option1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_spolc_svaty[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_spolc_svaty[POCET_JAZYKOV + 1] =
 {
 	"zobraziť, odkiaľ sa berú spoločné časti k modlitbe svätého",
 	"zobrazit, odkud se berou společné texty",
@@ -2576,7 +2603,7 @@ const char *html_text_option1_spolc_svaty[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_spolc_svaty_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_spolc_svaty_explain[POCET_JAZYKOV + 1] =
 {
 	"Rubrika obsahujúca informáciu, odkiaľ sa berú spoločné časti k modlitbe svätého.",
 	"Rubrika, která pro modlitby svatých informuje, které společné texty jsou užity.",
@@ -2589,7 +2616,7 @@ const char *html_text_option1_spolc_svaty_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_vesp_kratsie_prosby[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_vesp_kratsie_prosby[POCET_JAZYKOV + 1] =
 {
 	"pre vešpery použiť kratšie prosby z dodatku",
 	"pro nešpory použít kratší prosby z dodatku",
@@ -2602,7 +2629,7 @@ const char *html_text_option1_vesp_kratsie_prosby[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_vesp_kratsie_prosby_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_vesp_kratsie_prosby_explain[POCET_JAZYKOV + 1] =
 {
 	"Pre vešpery použiť kratšie prosby z dodatku namiesto tých, ktoré sú určené pre vešpery daného dňa.",
 	"Pro nešpory použít kratší prosby z dodatku místo určených pro příslušný den.",
@@ -2615,7 +2642,7 @@ const char *html_text_option1_vesp_kratsie_prosby_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_vigilia[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_vigilia[POCET_JAZYKOV + 1] =
 {
 	"predĺžené slávenie vigílie pre posvätné čítanie", //(na nedele, slávnosti a sviatky)
 	"prodloužené slavení vigilie pro modlitbu se čtením", // (pro neděle, slavnosti a svátky)
@@ -2628,7 +2655,7 @@ const char *html_text_option1_vigilia[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_vigilia_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_vigilia_explain[POCET_JAZYKOV + 1] =
 {
 	"Tí, čo chcú podľa tradície predĺžiť vigíliu nedele, slávnosti alebo sviatku, čo sa veľmi odporúča, najprv recitujú posvätné čítanie; po oboch čítaniach, pred hymnom Te Deum, pridávajú sa chválospevy a evanjelium.",
 	"Ti, kteří chtějí podle tradice prodloužit vigilii neděle, slavnosti nebo svátku, což se velmi doporučuje, recitují nejprve čtení; po obou čteních, před hymnem Te Deum, se přidávají chvalozpěvy a evangelium.",
@@ -2641,7 +2668,7 @@ const char *html_text_option1_vigilia_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_spomienka_spolcast[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_spomienka_spolcast[POCET_JAZYKOV + 1] =
 {
 	"na spomienky použiť časti zo spoločných častí",
 	"na památky použít části ze společných textů",
@@ -2654,7 +2681,7 @@ const char *html_text_option1_spomienka_spolcast[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_spomienka_spolcast_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_spomienka_spolcast_explain[POCET_JAZYKOV + 1] =
 {
 	"Zvoliť, či sa antifóna na invitatórium, hymnus, krátke čítanie, antifóny na Benediktus a Magnifikat a prosby, ak nie sú vlastné, berú zo spoločnej časti (ináč z bežného všedného dňa); č. 235 b) všeobecných smerníc.",
 	"",
@@ -2667,7 +2694,7 @@ const char *html_text_option1_spomienka_spolcast_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option1_spomienka_spolcast_NIE[POCET_JAZYKOV + 1] =
+const char *html_text_opt_1_spomienka_spolcast_NIE[POCET_JAZYKOV + 1] =
 {
 	"na spomienky použiť časti zo dňa, nie zo spoločných častí",
 	"na památky použít části z běžného dne, ne ze společných textů",
@@ -2680,7 +2707,7 @@ const char *html_text_option1_spomienka_spolcast_NIE[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_html_export[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_html_export[POCET_JAZYKOV + 1] =
 {
 	"možnosti zobrazenia stránok",
 	"možnosti zobrazení stránek",
@@ -2693,7 +2720,7 @@ const char *html_text_option2_html_export[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_html_export_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_html_export_explain[POCET_JAZYKOV + 1] =
 {
 	"Tieto možnosti ovplyvnia rozličné zobrazenia, nemajú vplyv na obsah (text) modlitieb.",
 	"Možnosti ovlivní rozličná zobrazení, neovlivní obsah (text) modliteb.",
@@ -2706,7 +2733,7 @@ const char *html_text_option2_html_export_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_prve_vespery[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_prve_vespery[POCET_JAZYKOV + 1] =
 {
 	"zobraziť tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia",
 	"zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení",
@@ -2719,7 +2746,7 @@ const char *html_text_option2_prve_vespery[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_prve_vespery_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_prve_vespery_explain[POCET_JAZYKOV + 1] =
 {
 	"Keďže základným kritériom pre zobrazovanie modlitieb daného dňa je dátum, formálne prvé vešpery nedieľ a slávností (a tiež kompletórium po nich) nespadajú pod daný dátum, ale pre predošlý deň, kde sa zobrazujú ako bežné vešpery. Pre sobotné slávenie sa nebude tlačidlo pre vešpery (a kompletórium) zobrazovať.",
 	"Jelikož základním kritériem pro zobrazování ponuky modliteb daného dne je datum, první nešpory neděl a slavností (a také kompletář po nich) nespadají pod daný datum, nýbrž pro předcházející den, kde jsou zobrazeny jako běžné nešpory. Pro sobotní slavení se tlačítko pro nešpory (a kompletář) nebude zobrazovat.",
@@ -2732,7 +2759,7 @@ const char *html_text_option2_prve_vespery_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_iso_datum[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_iso_datum[POCET_JAZYKOV + 1] =
 {
 	"zobraziť dátum v ISO 8601 formáte (RRRR-MM-DD)",
 	"zobrazit datum v ISO 8601 formátu (RRRR-MM-DD)",
@@ -2746,7 +2773,7 @@ const char *html_text_option2_iso_datum[POCET_JAZYKOV + 1] =
 };
 
 // for any language: use ""
-const char *html_text_option2_iso_datum_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_iso_datum_explain[POCET_JAZYKOV + 1] =
 {
 	"",
 	"",
@@ -2759,7 +2786,7 @@ const char *html_text_option2_iso_datum_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_font_family[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_font_family[POCET_JAZYKOV + 1] =
 {
 	"použiť bezpätkové písmo? (ináč pätkové)",
 	"použít bezpatkové písmo? (jinak patkové)",
@@ -2772,7 +2799,7 @@ const char *html_text_option2_font_family[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_font_family_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_font_family_explain[POCET_JAZYKOV + 1] =
 {
 	"Zvoľte si pätkové písmo (Serif) resp. bezpätkové písmo (Sans Serif) podľa toho, čo vám viac vyhovuje pre komfort modlitby. Použije sa predvolené písmo prehliadača.",
 	"",
@@ -2799,7 +2826,7 @@ const char *html_text_navig_buttons[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_navigation[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_navigation[POCET_JAZYKOV + 1] =
 {
 	"zobraziť navigáciu v textoch modlitieb",
 	"zobrazit navigaci v textech modliteb",
@@ -2812,7 +2839,7 @@ const char *html_text_option2_navigation[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_navigation_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_navigation_explain[POCET_JAZYKOV + 1] =
 {
 	"Či sa majú zobrazovať hypertextové odkazy na ostatné modlitby daného dňa, príp. predošlý/nasledovný deň priamo v texte modlitby.",
 	"Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. předešlý/následující den přímo v textu modlitby.",
@@ -2825,7 +2852,7 @@ const char *html_text_option2_navigation_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_moznosti[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_moznosti[POCET_JAZYKOV + 1] =
 {
 	"zobraziť rozličné možnosti priamo v textoch modlitieb",
 	"zobrazit rozličné volby v textech modliteb",
@@ -2838,7 +2865,7 @@ const char *html_text_option2_moznosti[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_moznosti_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_moznosti_explain[POCET_JAZYKOV + 1] =
 {
 	"Či sa majú zobrazovať hypertextové odkazy na iné zobrazenie tej istej modlitby priamo v texte modlitby (napr. pre modlitbu cez deň na verziu s doplnkovou psalmódiou).", // Vtedy nie je potrebné, aby boli zobrazené prepínače na titulnej stránke.
 	"Zda zobrazit hypertextové odkazy na jiné zobrazení modlitby daného dne přímo v textu modlitby (např. pro modlitbu uprostrěd dne verzi se žalmy z doplňujícího cyklu).",
@@ -2851,7 +2878,7 @@ const char *html_text_option2_moznosti_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_textwrap[POCET_JAZYKOV + 1] =
 {
 	"zalamovať dlhé riadky ako v tlačenom vydaní (poetické časti)",
 	"zalomit dlouhé řádky poetických textů jako v tištěném vydání",
@@ -2864,7 +2891,7 @@ const char *html_text_option2_textwrap[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_textwrap_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_textwrap_explain[POCET_JAZYKOV + 1] =
 {
 	"Či sa majú v texte modlitby dlhé riadky žalmov, chválospevov a iných poetických častí zalamovať ako v tlačenom vydaní.",
 	"Zda zalomit dlouhé řádky poetických textů jako v tištěném vydání (normálně: nezalamovat).",
@@ -2877,7 +2904,7 @@ const char *html_text_option2_textwrap_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_buttons_usporne[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_buttons_usporne[POCET_JAZYKOV + 1] =
 {
 	"tlačidlá pre modlitby zobraziť úsporne",
 	"tlačítka pro modlitby zobrazit úsporně",
@@ -2890,7 +2917,7 @@ const char *html_text_option2_buttons_usporne[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_buttons_usporne_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_buttons_usporne_explain[POCET_JAZYKOV + 1] =
 {
 	"Či sa majú tlačidlá pre modlitby zobraziť úsporne, v tabuľke (menšia šírka) kvôli mobilným zariadeniam.",
 	"Zda se mají tlačítka pro modlitby zobrazit úsporně, v tabulce (menší šířka) pro mobilní zařízení.",
@@ -2903,7 +2930,7 @@ const char *html_text_option2_buttons_usporne_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_nocny_rezim[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_nocny_rezim[POCET_JAZYKOV + 1] =
 {
 	"nočný režim",
 	"noční režim",
@@ -2916,7 +2943,7 @@ const char *html_text_option2_nocny_rezim[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_nocny_rezim_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_nocny_rezim_explain[POCET_JAZYKOV + 1] =
 {
 	"Zobrazí svetlý text na tmavom pozadí."
 	"Zobrazí světlý text na tmavém pozadí.",
@@ -2929,7 +2956,7 @@ const char *html_text_option2_nocny_rezim_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_alternatives[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_alternatives[POCET_JAZYKOV + 1] =
 {
 	"alternatívy",
 	"alternativy",
@@ -2942,7 +2969,7 @@ const char *html_text_option2_alternatives[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_alternatives_explain[POCET_JAZYKOV + 1] =
 {
 	"Zobrazí v texte modlitieb iba jednu možnosť, napr. hymnus pre kompletórium (dá sa prepínať).",
 	"Zobrazí v textu modliteb jenom jednu možnost (je možné přepínat).",
@@ -2955,7 +2982,7 @@ const char *html_text_option2_alternatives_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_show_defalut_calendar[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_show_defalut_calendar[POCET_JAZYKOV + 1] =
 {
 	"zvýrazniť slávenia v národnom kalendári",
 	"zvýraznit slavení v národním kalendáři",
@@ -2968,7 +2995,7 @@ const char *html_text_option2_show_defalut_calendar[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option2_show_defalut_calendar_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_show_defalut_calendar_explain[POCET_JAZYKOV + 1] =
 {
 	"V podnadpise modlitby zobrazí informáciu, že slávenie je v národnom kalendári (teda nie vo všeobecnom kalendári).",
 	"V podnadpisu modlitby zobrazí informaci, že slávení je v národním kalendáři (tedy ne v obecním kalendáři).",
@@ -2981,7 +3008,7 @@ const char *html_text_option2_show_defalut_calendar_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_KomplHymnusA[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_KomplHymnusA[POCET_JAZYKOV + 1] =
 {
 	"hymnus A: Na sklonku dňa ťa úprimne",
 	"hymnus A: Na sklonku dne tě upřímně",
@@ -2994,7 +3021,7 @@ const char *html_text_option5_KomplHymnusA[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_KomplHymnusB[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_KomplHymnusB[POCET_JAZYKOV + 1] =
 {
 	"hymnus B: Kriste, ty svetlo a náš deň",
 	"hymnus B: Ty, Kriste, světlo, jasný dni",
@@ -3007,7 +3034,7 @@ const char *html_text_option5_KomplHymnusB[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_PCHymnusI[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_PCHymnusI[POCET_JAZYKOV + 1] =
 {
 	"hymnus I. [Ak je posvätné čítanie v noci alebo včasráno]",
 	"hymnus I. [V noci a časně ráno]",
@@ -3020,7 +3047,7 @@ const char *html_text_option5_PCHymnusI[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_PCHymnusII[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_PCHymnusII[POCET_JAZYKOV + 1] =
 {
 	"hymnus II. [Ak je posvätné čítanie cez deň]",
 	"hymnus II. [Během dne]",
@@ -3033,7 +3060,7 @@ const char *html_text_option5_PCHymnusII[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_PCHymnusVNnedela[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_PCHymnusVNnedela[POCET_JAZYKOV + 1] =
 {
 	"hymnus Toto je pravý Boží deň",
 	"hymnus nedělní",
@@ -3046,7 +3073,7 @@ const char *html_text_option5_PCHymnusVNnedela[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_PCHymnusVNferia[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_PCHymnusVNferia[POCET_JAZYKOV + 1] =
 {
 	"hymnus Nech z výšin neba radosť znie",
 	"hymnus z férie",
@@ -3059,7 +3086,7 @@ const char *html_text_option5_PCHymnusVNferia[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_RChHymnusVNnedela[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_RChHymnusVNnedela[POCET_JAZYKOV + 1] =
 {
 	"hymnus Bronie sa zora na nebi",
 	"hymnus nedělní",
@@ -3072,7 +3099,7 @@ const char *html_text_option5_RChHymnusVNnedela[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_RChHymnusVNferia[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_RChHymnusVNferia[POCET_JAZYKOV + 1] =
 {
 	"hymnus Nech novým Jeruzalemom",
 	"hymnus z férie",
@@ -3085,7 +3112,7 @@ const char *html_text_option5_RChHymnusVNferia[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_VespHymnusVNnedela[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_VespHymnusVNnedela[POCET_JAZYKOV + 1] =
 {
 	"hymnus Pri Baránkovej večeri",
 	"hymnus nedělní",
@@ -3098,7 +3125,7 @@ const char *html_text_option5_VespHymnusVNnedela[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_VespHymnusVNferia[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_VespHymnusVNferia[POCET_JAZYKOV + 1] =
 {
 	"hymnus Kráľ vekov, Pane, Boží Syn",
 	"hymnus z férie",
@@ -3111,7 +3138,7 @@ const char *html_text_option5_VespHymnusVNferia[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_MCDPredHymnus1[POCET_JAZYKOV + 1] = 
+const char *html_text_opt_5_MCDPredHymnus1[POCET_JAZYKOV + 1] = 
 {
 	"hymnus Príď, Duchu Svätý",
  "hymnus K nám, Duchu Svatý, nyní spěj",
@@ -3122,7 +3149,7 @@ const char *html_text_option5_MCDPredHymnus1[POCET_JAZYKOV + 1] =
  "himnusz Most jöjj, Szentlélek, szállj közénk",
 };
 
-const char *html_text_option5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
 {
 	"hymnus Deviata je už hodina",
 	"hymnus Je třetí denní hodina",
@@ -3135,7 +3162,7 @@ const char *html_text_option5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_MCDNaHymnus1[POCET_JAZYKOV + 1] = 
+const char *html_text_opt_5_MCDNaHymnus1[POCET_JAZYKOV + 1] = 
 {
 	"hymnus Mocný Vládca, verný Bože",
  "hymnus Jsi mocný Vládce, věrný Bůh",
@@ -3146,7 +3173,7 @@ const char *html_text_option5_MCDNaHymnus1[POCET_JAZYKOV + 1] =
  "himnusz Urunk, felséges Istenünk",
 };
 
-const char *html_text_option5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
 {
 	"hymnus Na nebi slnko vrcholí",
 	"hymnus Teď Pánu chvály zpívejme",
@@ -3159,7 +3186,7 @@ const char *html_text_option5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_MCDPoHymnus1[POCET_JAZYKOV + 1] = 
+const char *html_text_opt_5_MCDPoHymnus1[POCET_JAZYKOV + 1] = 
 {
 	"hymnus Celý svet v pohyb uvádzaš",
  "hymnus Svět celý v pohyb uvádíš",
@@ -3170,7 +3197,7 @@ const char *html_text_option5_MCDPoHymnus1[POCET_JAZYKOV + 1] =
  "himnusz Világfenntartó Istenünk",
 };
 
-const char *html_text_option5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
 {
 	"hymnus Z Božej milosti tretí raz",
 	"hymnus Hodina třetí z poledne",
@@ -3183,7 +3210,7 @@ const char *html_text_option5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_1VHymnusNe[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_1VHymnusNe[POCET_JAZYKOV + 1] =
 {
 	"hymnus pre prvé vešpery",
 	"hymnus pro první nešpory",
@@ -3196,7 +3223,7 @@ const char *html_text_option5_1VHymnusNe[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_1VHymnusPC[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_1VHymnusPC[POCET_JAZYKOV + 1] =
 {
 	"hymnus ako je pre posvätné čítanie [cez deň]",
 	"hymnus pro čtení [během dne]",
@@ -3209,7 +3236,7 @@ const char *html_text_option5_1VHymnusPC[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_CZHymnus_ordinary[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_CZHymnus_ordinary[POCET_JAZYKOV + 1] =
 {
 	"",
 	"hymny z breviáře",
@@ -3222,7 +3249,7 @@ const char *html_text_option5_CZHymnus_ordinary[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_CZHymnus_extra[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_CZHymnus_extra[POCET_JAZYKOV + 1] =
 {
 	"",
 	"hymny k volnému výběru",
@@ -3235,7 +3262,7 @@ const char *html_text_option5_CZHymnus_extra[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
 {
 	"psalmódia pre Popolcovú stredu zo stredy 4. týždňa žaltára",
 	"žalmy pro Popeleční středu ze středy 4. týdne žaltáře",
@@ -3248,7 +3275,7 @@ const char *html_text_option5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
 {
 	"psalmódia pre Popolcovú stredu z piatka 3. týždňa žaltára",
 	"žalmy pro Popeleční středu z pátku 3. týdne žaltáře",
@@ -3261,7 +3288,7 @@ const char *html_text_option5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_CZhymny[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_CZhymny[POCET_JAZYKOV + 1] =
 {
 	"",
 	"hymny",
@@ -3274,7 +3301,7 @@ const char *html_text_option5_CZhymny[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_CZhymny_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_CZhymny_explain[POCET_JAZYKOV + 1] =
 {
 	"",
 	"Zobrazí v textu modliteb hymny z breviáře nebo k volnému výběru (je možné přepínat).",
@@ -3287,7 +3314,7 @@ const char *html_text_option5_CZhymny_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_CZhymnyNORMAL[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_CZhymnyNORMAL[POCET_JAZYKOV + 1] =
 {
 	"",
 	"hymny z breviáře",
@@ -3300,7 +3327,7 @@ const char *html_text_option5_CZhymnyNORMAL[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_CZhymnyRENC[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_CZhymnyRENC[POCET_JAZYKOV + 1] =
 {
 	"",
 	"hymny k volnému výběru (Renč)",
@@ -3313,7 +3340,7 @@ const char *html_text_option5_CZhymnyRENC[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_DPsalmZ122_129[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmu 122 brať žalm 129",
 	"místo žalmu 122 vzít žalm 129",
@@ -3324,7 +3351,7 @@ const char *html_text_option5_DPsalmZ122_129[POCET_JAZYKOV + 1] =
 	"a 121. helyett vehető a 128. zsoltár",
 };
 
-const char *html_text_option5_DPsalmZ126_129[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_DPsalmZ126_129[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmu 126 brať žalm 129",
 	"místo žalmu 126 vzít žalm 129",
@@ -3337,7 +3364,7 @@ const char *html_text_option5_DPsalmZ126_129[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] = 
+const char *html_text_opt_5_DPsalmZ127_131[POCET_JAZYKOV + 1] = 
 {
 	"namiesto žalmu 127 brať žalm 131",
 	"místo žalmu 127 vzít žalm 131",
@@ -3348,7 +3375,7 @@ const char *html_text_option5_DPsalmZ127_131[POCET_JAZYKOV + 1] =
 	"a 126. helyett vehető a 130. zsoltár",
 };
 
-const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] =
 {
 	"brať žalm 122 z doplnkovej psalmódie",
 	"vzít žalm 122 z doplňovacího cyklu",
@@ -3361,7 +3388,7 @@ const char *html_text_option5_DPsalmZ122_NORMAL[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_DPsalmZ126_NORMAL[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_DPsalmZ126_NORMAL[POCET_JAZYKOV + 1] =
 {
 	"brať žalm 126 z doplnkovej psalmódie",
 	"vzít žalm 126 z doplňovacího cyklu",
@@ -3374,7 +3401,7 @@ const char *html_text_option5_DPsalmZ126_NORMAL[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_DPsalmZ127_NORMAL[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_DPsalmZ127_NORMAL[POCET_JAZYKOV + 1] =
 {
 	"brať žalm 127 z doplnkovej psalmódie",
 	"vzít žalm 127 z doplňovacího cyklu",
@@ -3387,7 +3414,7 @@ const char *html_text_option5_DPsalmZ127_NORMAL[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_DPsalmZ122_129_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_DPsalmZ122_129_explain[POCET_JAZYKOV + 1] =
 {
 	"V doplnkovej psalmódii namiesto žalmu 122 možno brať žalm 129.",
 	"Pro doplňovací cyklus žalmů místo žalmu 122 (121) vzít žalm 129 (128).",
@@ -3400,7 +3427,7 @@ const char *html_text_option5_DPsalmZ122_129_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_DPsalmZ126_129_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_DPsalmZ126_129_explain[POCET_JAZYKOV + 1] =
 {
 	"V doplnkovej psalmódii namiesto žalmu 126 možno brať žalm 129.",
 	"Pro doplňovací cyklus žalmů místo žalmu 126 (125) vzít žalm 129 (128).",
@@ -3413,7 +3440,7 @@ const char *html_text_option5_DPsalmZ126_129_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_DPsalmZ127_131_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_DPsalmZ127_131_explain[POCET_JAZYKOV + 1] =
 {
 	"V doplnkovej psalmódii namiesto žalmu 127 možno brať žalm 131.",
 	"Pro doplňovací cyklus žalmů místo žalmu 127 (126) vzít žalm 131 (130).",
@@ -3426,7 +3453,7 @@ const char *html_text_option5_DPsalmZ127_131_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_option5_OffDefZ146_150[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_OffDefZ146_150[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmu 146 brať žalm 150",
 	"místo žalmu 146 vzít žalm 150",
@@ -3437,7 +3464,7 @@ const char *html_text_option5_OffDefZ146_150[POCET_JAZYKOV + 1] =
 	"a 145. helyett vehető a 150. zsoltár",
 };
 
-const char *html_text_option5_OffDefZ146_150_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_OffDefZ146_150_explain[POCET_JAZYKOV + 1] =
 {
 	"V ranných chválach ofícia za zosnulých namiesto žalmu 146 brať žalm 150",
 	"místo žalmu 146 vzít žalm 150",
@@ -3448,7 +3475,7 @@ const char *html_text_option5_OffDefZ146_150_explain[POCET_JAZYKOV + 1] =
 	"a 145. helyett vehető a 150. zsoltár",
 };
 
-const char *html_text_option5_OffDefZ146_150_NORMAL[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_OffDefZ146_150_NORMAL[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmu 150 brať žalm 146",
 	"místo žalmu 150 vzít žalm 146",
@@ -3459,7 +3486,7 @@ const char *html_text_option5_OffDefZ146_150_NORMAL[POCET_JAZYKOV + 1] =
 	"a 150. helyett vehető a 145. zsoltár",
 };
 
-const char *html_text_option5_zaver_knaz_diakon[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_zaver_knaz_diakon[POCET_JAZYKOV + 1] =
 {
 	"záver, ak predsedá kňaz alebo diakon",
 	"závěr, předsedá-li kněz nebo jáhen",
@@ -3470,7 +3497,7 @@ const char *html_text_option5_zaver_knaz_diakon[POCET_JAZYKOV + 1] =
 	"ezután, ha pap vagy diakónus vezeti",
 };
 
-const char *html_text_option5_zaver_knaz_diakon_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_zaver_knaz_diakon_explain[POCET_JAZYKOV + 1] =
 {
 	"V ranných chválach a vešperách závisí záver modlitby od toho, či predsedá kňaz alebo diakon, alebo nie.",
 	"",
@@ -3481,7 +3508,7 @@ const char *html_text_option5_zaver_knaz_diakon_explain[POCET_JAZYKOV + 1] =
 	"",
 };
 
-const char *html_text_option5_zaver_knaz_diakon_NORMAL[POCET_JAZYKOV + 1] =
+const char *html_text_opt_5_zaver_knaz_diakon_NORMAL[POCET_JAZYKOV + 1] =
 {
 	"záver, ak nepredsedá kňaz alebo diakon a pri recitovaní jednotlivca",
 	"závěr, není-li přítomen kněz nebo jáhen anebo modlí-li se někdo sám",

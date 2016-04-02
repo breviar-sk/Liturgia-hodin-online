@@ -928,6 +928,13 @@ sup {
     display: none;
 }
 
+.psalm-indent, .psalm-indent p.verse {
+	display: block;
+	font-size: 95%; 
+	font-weight: normal; 
+	padding-left: 2.4em;
+}
+
 .nav-arrow {
   background-size: contain;
   background-repeat: no-repeat;

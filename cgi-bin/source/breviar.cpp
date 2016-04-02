@@ -220,17 +220,17 @@ short int _global_system;
 // -- v podstate neuklada do nej, ale v _rozbor_dna() sa do nej priradi vysledok (navratova hodnota) z sviatky_svatych()
 short int _global_pocet_svatych;
 
-// globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atď., obsahujú pom_MODL_OPT...
+// globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atď., obsahujú pom_OPT...
 long _global_opt[POCET_GLOBAL_OPT];
-// globálna premenná -- pole -- obsahujúca force options; pôvodne to boli globálne premenné _global_optf 1..9 atď., obsahujú pom_MODL_OPTF...
-long _global_optf[POCET_GLOBAL_OPT];
+// globálna premenná -- pole -- obsahujúca force options; pôvodne to boli globálne premenné _global_force_opt 1..9 atď., obsahujú pom_FORCE_OPT...
+long _global_force_opt[POCET_GLOBAL_OPT];
 
 // globálne premenné -- polia -- obsahujúce jednotlivé bity pre force option 0, 1, 2, 4, 5
-long _global_opt_specialne[POCET_OPT_0_SPECIALNE];
-long _global_opt_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];      
-long _global_opt_html_export[POCET_OPT_2_HTML_EXPORT];
-long _global_opt_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
-long _global_opt_alternatives[POCET_OPT_5_ALTERNATIVES];
+long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
+long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];      
+long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
+long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
+long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 
 short int _global_opt_append = NIE;
 short int _global_opt_tedeum = NIE;
@@ -320,16 +320,16 @@ char pom_ROK        [SMALL] = STR_EMPTY; // sluzi aj ako pom_ANALYZA_ROKU
 char pom_MODLITBA   [SMALL] = STR_EMPTY;
 #define pom_MODL_ORDINARIUM	pom_MODLITBA
 
-char pom_MODL_OPT[POCET_GLOBAL_OPT][SMALL];
-char pom_MODL_OPTF[POCET_GLOBAL_OPT][SMALL];
+char pom_OPT[POCET_GLOBAL_OPT][SMALL];
+char pom_FORCE_OPT[POCET_GLOBAL_OPT][SMALL];
 // reťazcové polia pre force option 0, 1, 2, 4 (jednotlivé bit-komponenty)
-char pom_MODL_OPTF_SPECIALNE[POCET_OPT_0_SPECIALNE][SMALL];
-char pom_MODL_OPTF_CASTI_MODLITBY[POCET_OPT_1_CASTI_MODLITBY][SMALL];
-char pom_MODL_OPTF_HTML_EXPORT[POCET_OPT_2_HTML_EXPORT][SMALL];
-char pom_MODL_OPTF_OFFLINE_EXPORT[POCET_OPT_4_OFFLINE_EXPORT][SMALL];
-char pom_MODL_OPTF_ALTERNATIVES[POCET_OPT_5_ALTERNATIVES][SMALL];
+char pom_FORCE_OPT_0_SPECIALNE[POCET_OPT_0_SPECIALNE][SMALL];
+char pom_FORCE_OPT_1_CASTI_MODLITBY[POCET_OPT_1_CASTI_MODLITBY][SMALL];
+char pom_FORCE_OPT_2_HTML_EXPORT[POCET_OPT_2_HTML_EXPORT][SMALL];
+char pom_FORCE_OPT_4_OFFLINE_EXPORT[POCET_OPT_4_OFFLINE_EXPORT][SMALL];
+char pom_FORCE_OPT_5_ALTERNATIVES[POCET_OPT_5_ALTERNATIVES][SMALL];
 
-char pom_MODL_OPT_APPEND  [SMALL] = STR_EMPTY;
+char pom_OPT_APPEND  [SMALL] = STR_EMPTY;
 char pom_DALSI_SVATY[SMALL] = STR_EMPTY;
 
 char pom_ROK_FROM   [SMALL] = STR_EMPTY;
@@ -346,7 +346,7 @@ char pom_FONT		[SMALL] = STR_EMPTY;
 char pom_FONT_SIZE	[VERY_SMALL] = STR_EMPTY;
 char pom_STYLE_MARGIN [VERY_SMALL] = STR_EMPTY;
 
-char pom_MODL_OPT_DATE_FORMAT [SMALL] = STR_EMPTY;
+char pom_OPT_DATE_FORMAT [SMALL] = STR_EMPTY;
 
 char pom_EXPORT_MONTHLY [SMALL] = STR_EMPTY;
 // pre batch mód po mesiacoch; 0 = doterajší spôsob (riadok s dátumom a potom linky na modlitby)
@@ -732,13 +732,13 @@ short int setForm(void){
 	// options
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
-		if (!equals(pom_MODL_OPT[i], STR_EMPTY)){
+		if (!equals(pom_OPT[i], STR_EMPTY)){
 			mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-			strcat_str_modl_opt_bit_order(local_str, i, USE_STR_MODL_OPT);
+			strcat_str_opt_bit_order(local_str, i, USE_STR_OPT);
 
 			strcat(local_str, "=");
-			strcat(local_str, pom_MODL_OPT[i]);
+			strcat(local_str, pom_OPT[i]);
 			Log("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
 			Log("--- setForm: putenv returned %d.\n", ret);
@@ -748,13 +748,13 @@ short int setForm(void){
 	// force options
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
-		if (!equals(pom_MODL_OPTF[i], STR_EMPTY)){
+		if (!equals(pom_FORCE_OPT[i], STR_EMPTY)){
 			mystrcpy(local_str, WWW_PREFIX, SMALL);
 			
-			strcat_str_modl_opt_bit_order(local_str, i, USE_STR_MODL_OPTF);
+			strcat_str_opt_bit_order(local_str, i, USE_STR_FORCE_OPT);
 
 			strcat(local_str, "=");
-			strcat(local_str, pom_MODL_OPTF[i]);
+			strcat(local_str, pom_FORCE_OPT[i]);
 			Log("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
 			Log("--- setForm: putenv returned %d.\n", ret);
@@ -765,13 +765,13 @@ short int setForm(void){
 	Log("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_0_SPECIALNE);
 	for (i = 0; i < POCET_OPT_0_SPECIALNE; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
-		if (!equals(pom_MODL_OPTF_SPECIALNE[i], STR_EMPTY)){
+		if (!equals(pom_FORCE_OPT_0_SPECIALNE[i], STR_EMPTY)){
 			mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-			strcat_str_modl_opt_bit_order(local_str, OPT_0_SPECIALNE, i);
+			strcat_str_opt_bit_order(local_str, OPT_0_SPECIALNE, i);
 
 			strcat(local_str, "=");
-			strcat(local_str, pom_MODL_OPTF_SPECIALNE[i]);
+			strcat(local_str, pom_FORCE_OPT_0_SPECIALNE[i]);
 			Log("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
 			Log("--- setForm: putenv returned %d.\n", ret);
@@ -782,13 +782,13 @@ short int setForm(void){
 	Log("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_1_CASTI_MODLITBY);
 	for (i = 0; i < POCET_OPT_1_CASTI_MODLITBY; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
-		if (!equals(pom_MODL_OPTF_CASTI_MODLITBY[i], STR_EMPTY)){
+		if (!equals(pom_FORCE_OPT_1_CASTI_MODLITBY[i], STR_EMPTY)){
 			mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-			strcat_str_modl_opt_bit_order(local_str, OPT_1_CASTI_MODLITBY, i);
+			strcat_str_opt_bit_order(local_str, OPT_1_CASTI_MODLITBY, i);
 
 			strcat(local_str, "=");
-			strcat(local_str, pom_MODL_OPTF_CASTI_MODLITBY[i]);
+			strcat(local_str, pom_FORCE_OPT_1_CASTI_MODLITBY[i]);
 			Log("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
 			Log("--- setForm: putenv returned %d.\n", ret);
@@ -799,13 +799,13 @@ short int setForm(void){
 	Log("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_2_HTML_EXPORT);
 	for (i = 0; i < POCET_OPT_2_HTML_EXPORT; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
-		if (!equals(pom_MODL_OPTF_HTML_EXPORT[i], STR_EMPTY)){
+		if (!equals(pom_FORCE_OPT_2_HTML_EXPORT[i], STR_EMPTY)){
 			mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-			strcat_str_modl_opt_bit_order(local_str, OPT_2_HTML_EXPORT, i);
+			strcat_str_opt_bit_order(local_str, OPT_2_HTML_EXPORT, i);
 
 			strcat(local_str, "=");
-			strcat(local_str, pom_MODL_OPTF_HTML_EXPORT[i]);
+			strcat(local_str, pom_FORCE_OPT_2_HTML_EXPORT[i]);
 			Log("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
 			Log("--- setForm: putenv returned %d.\n", ret);
@@ -816,13 +816,13 @@ short int setForm(void){
 	Log("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_5_ALTERNATIVES);
 	for (i = 0; i < POCET_OPT_5_ALTERNATIVES; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
-		if (!equals(pom_MODL_OPTF_ALTERNATIVES[i], STR_EMPTY)){
+		if (!equals(pom_FORCE_OPT_5_ALTERNATIVES[i], STR_EMPTY)){
 			mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-			strcat_str_modl_opt_bit_order(local_str, OPT_5_ALTERNATIVES, i);
+			strcat_str_opt_bit_order(local_str, OPT_5_ALTERNATIVES, i);
 
 			strcat(local_str, "=");
-			strcat(local_str, pom_MODL_OPTF_ALTERNATIVES[i]);
+			strcat(local_str, pom_FORCE_OPT_5_ALTERNATIVES[i]);
 			Log("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
 			Log("--- setForm: putenv returned %d.\n", ret);
@@ -1233,9 +1233,11 @@ void ExportChar(int c){
 #define MAX_ZAKONCENIE 200
 
 #define EXPORT_FOOTNOTES ANO
+#define EXPORT_FULL_TEXT (!vnutri_full_text || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT))
 #define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!vnutri_footnote || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
 #define EXPORT_HVIEZDICKA(modlitba) ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || (modlitba == MODL_POSV_CITANIE) || !(_global_jazyk == JAZYK_CZ)) && !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
 #define EXPORT_TROJUHOLNIK ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
+#define EXPORT_VERSE_NUMBER (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY) && (EXPORT_FULL_TEXT))
 
 #define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
 
@@ -1261,6 +1263,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	short int vnutri_z95 = NIE; // PARAM_LINK_ZALM95... | kvôli odkazu na modlitbu so žalmom 95
 	short int vnutri_footnote_ref = NIE; // PARAM_FOOTNOTE_REF...
 	short int vnutri_footnote = NIE; // PARAM_FOOTNOTE...
+	short int vnutri_full_text = NIE;
 
 	short int vnutri_myslienky = NIE; // kvôli myšlienkam k žalmom, ktoré v sebe vnútri môžu obsahovať biblickú referenciu
 	short int vnutri_nadpisu = NIE; // kvôli nadpisu pre psalmódiu
@@ -1286,7 +1289,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 	// nasledovné sú potrebné pre hyperlink v texte modlitby s prípadne upravenými parametrami
 #ifdef BEHAVIOUR_WEB
-	long _global_opt_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
+	long _global_opt_1_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
 #endif
 
 	char pom[MAX_STR];
@@ -1392,7 +1395,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				else if (equals(strbuff, INCLUDE_END)){
 					write = NIE;
 					vnutri_inkludovaneho = NIE;
-					// pridane 2003-08-13 kvoli viacnasobnym inkludom
+					// multiple includes
 					Export("--><!--");
 					// ak to aj je posledny inklude, potom v nadradenom subore, do ktoreho "inkludujeme", sa vypise "-->"
 				}// INCLUDE_END
@@ -1485,8 +1488,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						podmienka &= (je_alternativa_doplnkova_psalmodia_z122_129(_global_modlitba));
 						mystrcpy(specific_string, HTML_P_BEGIN, SMALL);
 						bit = BIT_OPT_5_DOPLNK_PSALM_122_129;
-						sprintf(popis_show, "%s", html_text_option5_DPsalmZ122_NORMAL[_global_jazyk]);
-						sprintf(popis_hide, "%s", html_text_option5_DPsalmZ122_129[_global_jazyk]);
+						sprintf(popis_show, "%s", html_text_opt_5_DPsalmZ122_NORMAL[_global_jazyk]);
+						sprintf(popis_hide, "%s", html_text_opt_5_DPsalmZ122_129[_global_jazyk]);
 						mystrcpy(anchor, (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)) ? PARAM_ZALM122 : PARAM_ZALM129, SMALL);
 						nastavene = ANO;
 					}
@@ -1495,8 +1498,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						podmienka &= (je_alternativa_doplnkova_psalmodia_z126_129(_global_modlitba));
 						mystrcpy(specific_string, HTML_P_BEGIN, SMALL);
 						bit = BIT_OPT_5_DOPLNK_PSALM_126_129;
-						sprintf(popis_show, "%s", html_text_option5_DPsalmZ126_NORMAL[_global_jazyk]);
-						sprintf(popis_hide, "%s", html_text_option5_DPsalmZ126_129[_global_jazyk]);
+						sprintf(popis_show, "%s", html_text_opt_5_DPsalmZ126_NORMAL[_global_jazyk]);
+						sprintf(popis_hide, "%s", html_text_opt_5_DPsalmZ126_129[_global_jazyk]);
 						mystrcpy(anchor, (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129)) ? PARAM_ZALM126 : PARAM_ZALM129, SMALL);
 						nastavene = ANO;
 					}
@@ -1505,8 +1508,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						podmienka &= (je_alternativa_doplnkova_psalmodia_z127_131(_global_modlitba));
 						mystrcpy(specific_string, HTML_P_BEGIN, SMALL);
 						bit = BIT_OPT_5_DOPLNK_PSALM_127_131;
-						sprintf(popis_show, "%s", html_text_option5_DPsalmZ127_NORMAL[_global_jazyk]);
-						sprintf(popis_hide, "%s", html_text_option5_DPsalmZ127_131[_global_jazyk]);
+						sprintf(popis_show, "%s", html_text_opt_5_DPsalmZ127_NORMAL[_global_jazyk]);
+						sprintf(popis_hide, "%s", html_text_opt_5_DPsalmZ127_131[_global_jazyk]);
 						mystrcpy(anchor, (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131)) ? PARAM_ZALM127 : PARAM_ZALM131, SMALL);
 						nastavene = ANO;
 					}
@@ -1515,8 +1518,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						podmienka &= (je_alternativa_off_def_z146_150(_global_modlitba));
 						mystrcpy(specific_string, HTML_P_BEGIN, SMALL);
 						bit = BIT_OPT_5_OFF_DEF_PSALM_146_150;
-						sprintf(popis_show, "%s", html_text_option5_OffDefZ146_150_NORMAL[_global_jazyk]);
-						sprintf(popis_hide, "%s", html_text_option5_OffDefZ146_150[_global_jazyk]);
+						sprintf(popis_show, "%s", html_text_opt_5_OffDefZ146_150_NORMAL[_global_jazyk]);
+						sprintf(popis_hide, "%s", html_text_opt_5_OffDefZ146_150[_global_jazyk]);
 						mystrcpy(anchor, (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? PARAM_ZALM146 : PARAM_ZALM150, SMALL);
 						nastavene = ANO;
 					}
@@ -1724,6 +1727,28 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					strcpy(fnrest, STR_EMPTY);
 				}// zobraziť a upraviť footnotes na aname -- PARAM_FOOTNOTE_END
 
+// full text of psalms
+
+				if (equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN) && (vnutri_inkludovaneho == ANO)) {
+					vnutri_full_text = ANO;
+					write &= (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT));
+					fn_index = 0;
+					if (write) {
+						Export("<" HTML_DIV_PSALM_INDENT ">");
+					}
+				}
+				if (equals(strbuff, PARAM_PSALM_FULL_TEXT_END) && (vnutri_inkludovaneho == ANO)) {
+					fnbuff[fn_index] = '\0';
+
+					if (write) {
+						Export(HTML_DIV_END);
+					}
+					vnutri_full_text = NIE;
+
+					write = ANO;
+					strcpy(fnrest, STR_EMPTY);
+				}
+
 // biblical references
 
 				// upraviť referencie na hyperlinky
@@ -1897,7 +1922,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						z95buff[z95_index] = '\0';
 #ifdef BEHAVIOUR_WEB
 						// najprv upravíme o1
-						_global_opt_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY]; // backup pôvodnej hodnoty
+						_global_opt_1_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY]; // backup pôvodnej hodnoty
 						// nastavenie parametra o1: pridáme bit pre alternatívnu psalmódiu
 						if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)){
 							Log("Pre option 1 odstraňujem bit pre ž95 (pôvodnú hodnotu som si zapamätal)\n");
@@ -1946,7 +1971,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 								pom);
 						}
 						// napokon o1 vrátime späť
-						_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_casti_modlitby_orig; // restore pôvodnej hodnoty
+						_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_1_casti_modlitby_orig; // restore pôvodnej hodnoty
 
 						Export(" " HTML_CLASS_QUIET ">");
 #endif
@@ -1983,11 +2008,11 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				}// zobraziť/nezobraziť zalomenie veršov podľa tlačenej LH -- PARAM_ZALOMENIE
 
 				// zobraziť/nezobraziť číslovanie veršov
-				if (equals(strbuff, PARAM_CISLO_VERSA_BEGIN) && (vnutri_inkludovaneho == 1)){
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
+				if (equals(strbuff, PARAM_CISLO_VERSA_BEGIN) && (vnutri_inkludovaneho == 1)) {
+					if (EXPORT_VERSE_NUMBER) {
 						Export("<sup>");
 					}
-					else{
+					else {
 						write = NIE;
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("<!--č.verša:zač.");
@@ -1995,12 +2020,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						Log("  ruším writing to export file, kvôli PARAM_CISLO_VERSA_BEGIN...\n");
 					}
 				}// zobraziť/nezobraziť číslovanie veršov
-				if (equals(strbuff, PARAM_CISLO_VERSA_END) && (vnutri_inkludovaneho == 1)){
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
+				if (equals(strbuff, PARAM_CISLO_VERSA_END) && (vnutri_inkludovaneho == 1)) {
+					if (EXPORT_VERSE_NUMBER) {
 						Export("</sup>");
 					}
-					else{
-						write = ANO;
+					else {
+						write = EXPORT_FULL_TEXT;
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("č.verša:end-->");
 #endif
@@ -2814,8 +2839,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				mystrcpy(popis_hide, HTML_TEXT_HU_OPTION1_ZAVER_SHOW, SMALL);
 			}
 			else{
-				sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_zaver[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option1_zaver[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_zaver[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_zaver[_global_jazyk]);
 			}
 		}
 		// ToDo: for PARAM_ZAVER_OSTATNI and PARAM_ZAVER_KNAZ_DIAKON, respect (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) to show both conclusions
@@ -2823,15 +2848,15 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			opt = OPT_5_ALTERNATIVES;
 			bit = BIT_OPT_5_ZAVER_KNAZ_DIAKON;
 			podmienka &= (!isGlobalOption(opt, bit));
-			mystrcpy(popis_show, html_text_option5_zaver_knaz_diakon_NORMAL[_global_jazyk], SMALL); // not used
-			mystrcpy(popis_hide, html_text_option5_zaver_knaz_diakon[_global_jazyk], SMALL);
+			mystrcpy(popis_show, html_text_opt_5_zaver_knaz_diakon_NORMAL[_global_jazyk], SMALL); // not used
+			mystrcpy(popis_hide, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], SMALL);
 		}
 		else if (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON)){
 			opt = OPT_5_ALTERNATIVES;
 			bit = BIT_OPT_5_ZAVER_KNAZ_DIAKON;
 			podmienka &= (isGlobalOption(opt, bit));
-			mystrcpy(popis_show, html_text_option5_zaver_knaz_diakon_NORMAL[_global_jazyk], SMALL);
-			mystrcpy(popis_hide, html_text_option5_zaver_knaz_diakon[_global_jazyk], SMALL); // not used
+			mystrcpy(popis_show, html_text_opt_5_zaver_knaz_diakon_NORMAL[_global_jazyk], SMALL);
+			mystrcpy(popis_hide, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], SMALL); // not used
 		}
 		else if (equals(paramname, PARAM_CHVALOSPEV)){
 			bit = BIT_OPT_1_CHVALOSPEVY;
@@ -2856,8 +2881,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			Log("  _global_den.smer == %d...\n", _global_den.smer);
 			podmienka &= (!(je_len_doplnkova_psalmodia(_global_modlitba)));
 			podmienka &= (je_modlitba_cez_den(_global_modlitba));
-			mystrcpy(popis_show, html_text_option1_mcd_zalmy_nie_ine_short[_global_jazyk], SMALL);
-			mystrcpy(popis_hide, html_text_option1_mcd_zalmy_ine_short[_global_jazyk], SMALL);
+			mystrcpy(popis_show, html_text_opt_1_mcd_zalmy_nie_ine_short[_global_jazyk], SMALL);
+			mystrcpy(popis_hide, html_text_opt_1_mcd_zalmy_ine_short[_global_jazyk], SMALL);
 		}
 		else if (equals(paramname, PARAM_PSALMODIA_TRI_TYZDNE)){
 			bit = BIT_OPT_1_MCD_ZALTAR_TRI;
@@ -2866,8 +2891,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			podmienka &= (!(je_len_doplnkova_psalmodia(_global_modlitba)));
 			podmienka &= (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA));
 			podmienka &= (je_modlitba_cez_den(_global_modlitba));
-			mystrcpy(popis_show, html_text_option1_mcd_zalmy_nie_tri_short[_global_jazyk], SMALL);
-			mystrcpy(popis_hide, html_text_option1_mcd_zalmy_tri_short[_global_jazyk], SMALL);
+			mystrcpy(popis_show, html_text_opt_1_mcd_zalmy_nie_tri_short[_global_jazyk], SMALL);
+			mystrcpy(popis_hide, html_text_opt_1_mcd_zalmy_tri_short[_global_jazyk], SMALL);
 		}
 		else if (equals(paramname, PARAM_POPIS)){
 			bit = BIT_OPT_1_SKRY_POPIS;
@@ -2877,8 +2902,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		}
 		else if (equals(paramname, PARAM_SLAVAOTCU)){
 			bit = BIT_OPT_1_SLAVA_OTCU;
-			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_slava_otcu[_global_jazyk]);
-			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option1_slava_otcu[_global_jazyk]);
+			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_slava_otcu[_global_jazyk]);
+			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_slava_otcu[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_RESPONZ)){
 			bit = BIT_OPT_1_PLNE_RESP;
@@ -2886,14 +2911,14 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			if (_global_modlitba == MODL_POSV_CITANIE){
 				specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 			}
-			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_plne_resp[_global_jazyk]);
-			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option1_plne_resp[_global_jazyk]);
+			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_plne_resp[_global_jazyk]);
+			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_plne_resp[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_NADPIS)){
 			bit = BIT_OPT_1_RUBRIKY;
 			specific_string = HTML_SEQUENCE_LINE_BREAK; // HTML_LINE_BREAK
-			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_rubriky[_global_jazyk]);
-			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option1_rubriky[_global_jazyk]);
+			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_rubriky[_global_jazyk]);
+			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_rubriky[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_SPOL_CAST_SPOM)){
 			bit = BIT_OPT_1_SPOMIENKA_SPOL_CAST;
@@ -2902,15 +2927,15 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			podmienka &= je_spolocna_cast_urcena(sc.a1);
 			Log("podmienka == %d [_global_den.spolcast == %d; sc.a1 = %d]\n", podmienka, _global_den.spolcast, sc.a1);
 			specific_string = HTML_SEQUENCE_DIV;
-			sprintf(popis_show, "%s", html_text_option1_spomienka_spolcast_NIE[_global_jazyk]);
-			sprintf(popis_hide, "%s", html_text_option1_spomienka_spolcast[_global_jazyk]);
+			sprintf(popis_show, "%s", html_text_opt_1_spomienka_spolcast_NIE[_global_jazyk]);
+			sprintf(popis_hide, "%s", html_text_opt_1_spomienka_spolcast[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_VIGILIA)){
 			bit = BIT_OPT_1_PC_VIGILIA;
 			podmienka &= (je_vigilia);
 			specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
-			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_option1_vigilia[_global_jazyk]);
-			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option1_vigilia[_global_jazyk]);
+			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_vigilia[_global_jazyk]);
+			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_vigilia[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS)){
 			opt = OPT_5_ALTERNATIVES;
@@ -2924,50 +2949,50 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			if (_global_jazyk == JAZYK_CZ){
 				podmienka = (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI));
 				bit = BIT_OPT_5_CZ_HYMNY_VYBER;
-				sprintf(popis_show, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_option5_CZHymnus_ordinary[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_option5_CZHymnus_extra[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_opt_5_CZHymnus_ordinary[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_opt_5_CZHymnus_extra[_global_jazyk]);
 			}
 			// kontrola na prvé resp. druhé nedeľné kompletórium, aby hymnus bolo v Cezročnom období možno voliť aj pre nedele
 			else if ((_global_modlitba == MODL_KOMPLETORIUM) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM)){
 				bit = BIT_OPT_5_HYMNUS_KOMPL;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_KomplHymnusA[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_KomplHymnusB[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_KomplHymnusA[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_KomplHymnusB[_global_jazyk]);
 			}
 			else if (_global_modlitba == MODL_POSV_CITANIE){
 				bit = (je_alternativa_hymnus_ocr) ? BIT_OPT_5_HYMNUS_PC : BIT_OPT_5_HYMNUS_VN_PC;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], (je_alternativa_hymnus_ocr) ? html_text_option5_PCHymnusI[_global_jazyk] : html_text_option5_PCHymnusVNferia[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], (je_alternativa_hymnus_ocr) ? html_text_option5_PCHymnusII[_global_jazyk] : html_text_option5_PCHymnusVNnedela[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], (je_alternativa_hymnus_ocr) ? html_text_opt_5_PCHymnusI[_global_jazyk] : html_text_opt_5_PCHymnusVNferia[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], (je_alternativa_hymnus_ocr) ? html_text_opt_5_PCHymnusII[_global_jazyk] : html_text_opt_5_PCHymnusVNnedela[_global_jazyk]);
 			}
 			else if (_global_modlitba == MODL_PREDPOLUDNIM){
 				bit = BIT_OPT_5_HYMNUS_MCD_PREDPOL;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_MCDPredHymnus1[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_MCDPredHymnus2[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_MCDPredHymnus1[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_MCDPredHymnus2[_global_jazyk]);
 			}
 			else if (_global_modlitba == MODL_NAPOLUDNIE){
 				bit = BIT_OPT_5_HYMNUS_MCD_NAPOL;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_MCDNaHymnus1[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_MCDNaHymnus2[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_MCDNaHymnus1[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_MCDNaHymnus2[_global_jazyk]);
 			}
 			else if (_global_modlitba == MODL_POPOLUDNI){
 				bit = BIT_OPT_5_HYMNUS_MCD_POPOL;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_MCDPoHymnus1[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_MCDPoHymnus2[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_MCDPoHymnus1[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_MCDPoHymnus2[_global_jazyk]);
 			}
 			else if (_global_modlitba == MODL_RANNE_CHVALY){
 				bit = BIT_OPT_5_HYMNUS_VN_RCH;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_RChHymnusVNferia[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_RChHymnusVNnedela[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_RChHymnusVNferia[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_RChHymnusVNnedela[_global_jazyk]);
 			}
 			else if (_global_modlitba == MODL_VESPERY){
 				// nie je potrebné, aby tu bolo explicitne kontrolované, či ide o MODL_PRVE_VESPERY || MODL_DRUHE_VESPERY, pretože tie vždy patria nedeli; alternatívny hymnus len pre férie
 				bit = BIT_OPT_5_HYMNUS_VN_VESP;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_VespHymnusVNferia[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_VespHymnusVNnedela[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_VespHymnusVNferia[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_VespHymnusVNnedela[_global_jazyk]);
 			}
 			else if (_global_modlitba == MODL_PRVE_VESPERY){
 				bit = BIT_OPT_5_HYMNUS_1VESP;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_1VHymnusNe[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_option5_1VHymnusPC[_global_jazyk]);
+				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_1VHymnusNe[_global_jazyk]);
+				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_1VHymnusPC[_global_jazyk]);
 			}
 			else{
 				podmienka = NIE;
@@ -2980,8 +3005,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			podmienka &= ((_global_den.denvr == POPOLCOVA_STREDA) && (_global_modlitba == MODL_RANNE_CHVALY));
 
-			sprintf(popis_show, "%s", html_text_option5_PopolStrPsalm_4STR[_global_jazyk]);
-			sprintf(popis_hide, "%s", html_text_option5_PopolStrPsalm_3PI[_global_jazyk]);
+			sprintf(popis_show, "%s", html_text_opt_5_PopolStrPsalm_4STR[_global_jazyk]);
+			sprintf(popis_hide, "%s", html_text_opt_5_PopolStrPsalm_3PI[_global_jazyk]);
 		}
 
 		// má zmysel len ak platí daná podmienka
@@ -4118,21 +4143,21 @@ void showPrayer(short int type, short int ktore_templaty = SHOW_TEMPLAT_MODLITBA
 
 	// log options parametrov
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		Log("showPrayer: opt %d == `%s' (%ld)\n", i, pom_MODL_OPT[i], _global_opt[i]);
-	}// Log pom_MODL_OPT[i]
+		Log("showPrayer: opt %d == `%s' (%ld)\n", i, pom_OPT[i], _global_opt[i]);
+	}// Log pom_OPT[i]
 
 	// log force options parametrov
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		Log("showPrayer: optF %d == `%s' (%ld)\n", i, pom_MODL_OPTF[i], _global_optf[i]);
-	}// Log pom_MODL_OPTF[i]
+		Log("showPrayer: force_opt %d == `%s' (%ld)\n", i, pom_FORCE_OPT[i], _global_force_opt[i]);
+	}// Log pom_FORCE_OPT[i]
 
 	// force options parametre
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		if (_global_opt[i] != _global_optf[i]){
-			Log("showPrayer: používam _global_optf[%d] (force)...\n", i);
-			_global_opt[i] = _global_optf[i];
+		if (_global_opt[i] != _global_force_opt[i]){
+			Log("showPrayer: používam _global_force_opt[%d] (force)...\n", i);
+			_global_opt[i] = _global_force_opt[i];
 		}
-	}// override pre _global_opt[i] z _global_optf[i]
+	}// override pre _global_opt[i] z _global_force_opt[i]
 
 	// log option 0
 	Log("option 0 == %ld, čo znamená: \n", _global_opt[OPT_0_SPECIALNE]);
@@ -5969,7 +5994,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			Log("pridávam odkaz na liturgické čítania (1): %s\n", pom);
 			strcat(_local_string, pom);
 
-			sprintf(pom, "\"" HTML_TARGET_BLANK ">%s" HTML_A_END, (char *)html_text_option0_citania[_global_jazyk]);
+			sprintf(pom, "\"" HTML_TARGET_BLANK ">%s" HTML_A_END, (char *)html_text_opt_0_citania[_global_jazyk]);
 			Log("pridávam odkaz na liturgické čítania (2): %s\n", pom);
 			strcat(_local_string, pom);
 
@@ -6244,163 +6269,166 @@ void xml_export_options(void){
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
 		switch (i){
 		case OPT_0_SPECIALNE:
-			Export(ELEMVAL_BEGIN(XML_OPT_0_SPECIALNE) "\n", _global_opt[OPT_0_SPECIALNE], STR_MODL_OPT_0, STR_MODL_OPTF_0, html_text_option0_kalendar[_global_jazyk]);
+			Export(ELEMVAL_BEGIN(XML_OPT_0_SPECIALNE) "\n", _global_opt[OPT_0_SPECIALNE], STR_OPT_0, STR_FORCE_OPT_0, html_text_opt_0_kalendar[_global_jazyk]);
 			Log("option %d, jednotlivé bit-komponenty...(xml_export_options)\n", OPT_0_SPECIALNE);
 			for (j = 0; j < POCET_OPT_0_SPECIALNE; j++){
 				switch (j){
 				case 0: // BIT_OPT_0_VERSE
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_VERSE)"%ld" ELEM_END(XML_BIT_OPT_0_VERSE) "\n", BIT_OPT_0_VERSE, STR_MODL_OPTF_0_VERSE, html_text_option0_verse[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_VERSE)"%ld" ELEM_END(XML_BIT_OPT_0_VERSE) "\n", BIT_OPT_0_VERSE, STR_FORCE_BIT_OPT_0_VERSE, html_text_opt_0_verse[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE)));
 					break;
 				case 1: // BIT_OPT_0_REFERENCIE
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_REFERENCIE)"%ld" ELEM_END(XML_BIT_OPT_0_REFERENCIE) "\n", BIT_OPT_0_REFERENCIE, STR_MODL_OPTF_0_REF, html_text_option0_referencie[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_REFERENCIE)"%ld" ELEM_END(XML_BIT_OPT_0_REFERENCIE) "\n", BIT_OPT_0_REFERENCIE, STR_FORCE_BIT_OPT_0_REF, html_text_opt_0_referencie[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)));
 					break;
 				case 2: // BIT_OPT_0_CITANIA
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_CITANIA)"%ld" ELEM_END(XML_BIT_OPT_0_CITANIA) "\n", BIT_OPT_0_CITANIA, STR_MODL_OPTF_0_CIT, html_text_option0_citania[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_CITANIA)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_CITANIA)"%ld" ELEM_END(XML_BIT_OPT_0_CITANIA) "\n", BIT_OPT_0_CITANIA, STR_FORCE_BIT_OPT_0_CIT, html_text_opt_0_citania[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_CITANIA)));
 					break;
 				case 3: // BIT_OPT_0_ZJAVENIE_PANA_NEDELA
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_ZJAVENIE_PANA_NEDELA)"%ld" ELEM_END(XML_BIT_OPT_0_ZJAVENIE_PANA_NEDELA) "\n", BIT_OPT_0_ZJAVENIE_PANA_NEDELA, STR_MODL_OPTF_0_ZJAV_NED, html_text_option0_zjv_ne[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_ZJAVENIE_PANA_NEDELA)"%ld" ELEM_END(XML_BIT_OPT_0_ZJAVENIE_PANA_NEDELA) "\n", BIT_OPT_0_ZJAVENIE_PANA_NEDELA, STR_FORCE_BIT_OPT_0_ZJAV_NED, html_text_opt_0_zjv_ne[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)));
 					break;
 				case 4: // BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)"%ld" ELEM_END(XML_BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA) "\n", BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA, STR_MODL_OPTF_0_NAN_NED, html_text_option0_nan_ne[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)"%ld" ELEM_END(XML_BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA) "\n", BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA, STR_FORCE_BIT_OPT_0_NAN_NED, html_text_opt_0_nan_ne[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)));
 					break;
 				case 5: // BIT_OPT_0_TELAKRVI_NEDELA
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_TELAKRVI_NEDELA)"%ld" ELEM_END(XML_BIT_OPT_0_TELAKRVI_NEDELA) "\n", BIT_OPT_0_TELAKRVI_NEDELA, STR_MODL_OPTF_0_TK_NED, html_text_option0_tk_ne[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TELAKRVI_NEDELA)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_TELAKRVI_NEDELA)"%ld" ELEM_END(XML_BIT_OPT_0_TELAKRVI_NEDELA) "\n", BIT_OPT_0_TELAKRVI_NEDELA, STR_FORCE_BIT_OPT_0_TK_NED, html_text_opt_0_tk_ne[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TELAKRVI_NEDELA)));
 					break;
 				case 6: // BIT_OPT_0_FONT_NORMAL
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_FONT_NORMAL)"%ld" ELEM_END(XML_BIT_OPT_0_FONT_NORMAL) "\n", BIT_OPT_0_FONT_NORMAL, STR_MODL_OPTF_0_FONT_NORMAL, html_text_option0_font_normal[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_FONT_NORMAL)"%ld" ELEM_END(XML_BIT_OPT_0_FONT_NORMAL) "\n", BIT_OPT_0_FONT_NORMAL, STR_FORCE_BIT_OPT_0_FONT_NORMAL, html_text_opt_0_font_normal[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL)));
 					break;
 				case 7: // BIT_OPT_0_BUTTONS_ORDER
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_BUTTONS_ORDER)"%ld" ELEM_END(XML_BIT_OPT_0_BUTTONS_ORDER) "\n", BIT_OPT_0_BUTTONS_ORDER, STR_MODL_OPTF_0_BUTTONS_ORDER, html_text_option0_buttons_order[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BUTTONS_ORDER)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_BUTTONS_ORDER)"%ld" ELEM_END(XML_BIT_OPT_0_BUTTONS_ORDER) "\n", BIT_OPT_0_BUTTONS_ORDER, STR_FORCE_BIT_OPT_0_BUTTONS_ORDER, html_text_opt_0_buttons_order[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BUTTONS_ORDER)));
 					break;
 				case 8: // BIT_OPT_0_BLIND_FRIENDLY
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_BLIND_FRIENDLY)"%ld" ELEM_END(XML_BIT_OPT_0_BLIND_FRIENDLY) "\n", BIT_OPT_0_BLIND_FRIENDLY, STR_MODL_OPTF_0_BLIND_FRIENDLY, html_text_option0_blind_friendly[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_BLIND_FRIENDLY)"%ld" ELEM_END(XML_BIT_OPT_0_BLIND_FRIENDLY) "\n", BIT_OPT_0_BLIND_FRIENDLY, STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY, html_text_opt_0_blind_friendly[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)));
 					break;
 				case 9: // BIT_OPT_0_FOOTNOTES
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_FOOTNOTES)"%ld" ELEM_END(XML_BIT_OPT_0_FOOTNOTES) "\n", BIT_OPT_0_FOOTNOTES, STR_MODL_OPTF_0_FOOTNOTES, html_text_option0_footnotes[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_FOOTNOTES)"%ld" ELEM_END(XML_BIT_OPT_0_FOOTNOTES) "\n", BIT_OPT_0_FOOTNOTES, STR_FORCE_BIT_OPT_0_FOOTNOTES, html_text_opt_0_footnotes[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)));
 					break;
 				case 10: // BIT_OPT_0_TRANSPARENT_NAV
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_TRANSPARENT_NAV)"%ld" ELEM_END(XML_BIT_OPT_0_TRANSPARENT_NAV) "\n", BIT_OPT_0_TRANSPARENT_NAV, STR_MODL_OPTF_0_TRANSPARENT_NAV, html_text_option0_footnotes[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_TRANSPARENT_NAV)"%ld" ELEM_END(XML_BIT_OPT_0_TRANSPARENT_NAV) "\n", BIT_OPT_0_TRANSPARENT_NAV, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV, html_text_opt_0_transparent_nav[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)));
+					break;
+				case 11: // BIT_OPT_0_ZALMY_FULL_TEXT
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_ZALMY_FULL_TEXT)"%ld" ELEM_END(XML_BIT_OPT_0_ZALMY_FULL_TEXT) "\n", BIT_OPT_0_ZALMY_FULL_TEXT, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, html_text_opt_0_zalmy_full_text[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT)));
 					break;
 				}// switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE) "\n");
 			break;
 		case OPT_1_CASTI_MODLITBY:
-			Export(ELEMVAL_BEGIN(XML_OPT_1_CASTI_MODLITBY) "\n", _global_opt[OPT_1_CASTI_MODLITBY], STR_MODL_OPT_1, STR_MODL_OPTF_1, html_text_option1_dalsie_prepinace[_global_jazyk]);
+			Export(ELEMVAL_BEGIN(XML_OPT_1_CASTI_MODLITBY) "\n", _global_opt[OPT_1_CASTI_MODLITBY], STR_OPT_1, STR_FORCE_OPT_1, html_text_opt_1_dalsie_prepinace[_global_jazyk]);
 			Log("option %d, jednotlivé bit-komponenty...(xml_export_options)\n", OPT_1_CASTI_MODLITBY);
 			for (j = 0; j < POCET_OPT_1_CASTI_MODLITBY; j++){
 				switch (j){
 				case 0: // BIT_OPT_1_TEDEUM
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_TEDEUM)"%ld" ELEM_END(XML_BIT_OPT_1_TEDEUM) "\n", BIT_OPT_1_TEDEUM, STR_MODL_OPTF_1_TD, html_text_option1_tedeum[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_TEDEUM)"%ld" ELEM_END(XML_BIT_OPT_1_TEDEUM) "\n", BIT_OPT_1_TEDEUM, STR_FORCE_BIT_OPT_1_TD, html_text_opt_1_tedeum[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM)));
 					break;
 				case 1: // BIT_OPT_1_RUBRIKY
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_RUBRIKY)"%ld" ELEM_END(XML_BIT_OPT_1_RUBRIKY) "\n", BIT_OPT_1_RUBRIKY, STR_MODL_OPTF_1_RUB, html_text_option1_rubriky[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_RUBRIKY)"%ld" ELEM_END(XML_BIT_OPT_1_RUBRIKY) "\n", BIT_OPT_1_RUBRIKY, STR_FORCE_BIT_OPT_1_RUB, html_text_opt_1_rubriky[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY)));
 					break;
 				case 2: // BIT_OPT_1_CHVALOSPEVY
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_CHVALOSPEVY)"%ld" ELEM_END(XML_BIT_OPT_1_CHVALOSPEVY) "\n", BIT_OPT_1_CHVALOSPEVY, STR_MODL_OPTF_1_CHV, html_text_option1_chvalospevy[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_CHVALOSPEVY)"%ld" ELEM_END(XML_BIT_OPT_1_CHVALOSPEVY) "\n", BIT_OPT_1_CHVALOSPEVY, STR_FORCE_BIT_OPT_1_CHV, html_text_opt_1_chvalospevy[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY)));
 					break;
 				case 3: // BIT_OPT_1_SLAVA_OTCU
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_SLAVA_OTCU)"%ld" ELEM_END(XML_BIT_OPT_1_SLAVA_OTCU) "\n", BIT_OPT_1_SLAVA_OTCU, STR_MODL_OPTF_1_SL, html_text_option1_slava_otcu[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_SLAVA_OTCU)"%ld" ELEM_END(XML_BIT_OPT_1_SLAVA_OTCU) "\n", BIT_OPT_1_SLAVA_OTCU, STR_FORCE_BIT_OPT_1_SL, html_text_opt_1_slava_otcu[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU)));
 					break;
 				case 4: // BIT_OPT_1_OTCENAS
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_OTCENAS)"%ld" ELEM_END(XML_BIT_OPT_1_OTCENAS) "\n", BIT_OPT_1_OTCENAS, STR_MODL_OPTF_1_OT, html_text_option1_otcenas[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_OTCENAS)"%ld" ELEM_END(XML_BIT_OPT_1_OTCENAS) "\n", BIT_OPT_1_OTCENAS, STR_FORCE_BIT_OPT_1_OT, html_text_opt_1_otcenas[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS)));
 					break;
 				case 5: // BIT_OPT_1_MCD_DOPLNKOVA
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_MCD_DOPLNKOVA)"%ld" ELEM_END(XML_BIT_OPT_1_MCD_DOPLNKOVA) "\n", BIT_OPT_1_MCD_DOPLNKOVA, STR_MODL_OPTF_1_MCD_DOPLNKOVA, html_text_option1_mcd_zalmy_ine[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_MCD_DOPLNKOVA)"%ld" ELEM_END(XML_BIT_OPT_1_MCD_DOPLNKOVA) "\n", BIT_OPT_1_MCD_DOPLNKOVA, STR_FORCE_BIT_OPT_1_MCD_DOPLNKOVA, html_text_opt_1_mcd_zalmy_ine[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)));
 					break;
 				case 6: // BIT_OPT_1_PC_VIGILIA
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_PC_VIGILIA)"%ld" ELEM_END(XML_BIT_OPT_1_PC_VIGILIA) "\n", BIT_OPT_1_PC_VIGILIA, STR_MODL_OPTF_1_VIGILIA, html_text_option1_vigilia[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_PC_VIGILIA)"%ld" ELEM_END(XML_BIT_OPT_1_PC_VIGILIA) "\n", BIT_OPT_1_PC_VIGILIA, STR_FORCE_BIT_OPT_1_VIGILIA, html_text_opt_1_vigilia[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)));
 					break;
 				case 7: // BIT_OPT_1_SPOMIENKA_SPOL_CAST
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_SPOMIENKA_SPOL_CAST)"%ld" ELEM_END(XML_BIT_OPT_1_SPOMIENKA_SPOL_CAST) "\n", BIT_OPT_1_SPOMIENKA_SPOL_CAST, STR_MODL_OPTF_1_SPOMIENKA_SPOL_CAST, html_text_option1_spomienka_spolcast[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_SPOMIENKA_SPOL_CAST)"%ld" ELEM_END(XML_BIT_OPT_1_SPOMIENKA_SPOL_CAST) "\n", BIT_OPT_1_SPOMIENKA_SPOL_CAST, STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST, html_text_opt_1_spomienka_spolcast[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)));
 					break;
 				case 8: // BIT_OPT_1_PLNE_RESP
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_PLNE_RESP)"%ld" ELEM_END(XML_BIT_OPT_1_PLNE_RESP) "\n", BIT_OPT_1_PLNE_RESP, STR_MODL_OPTF_1_PLNE_RESP, html_text_option1_plne_resp[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_PLNE_RESP)"%ld" ELEM_END(XML_BIT_OPT_1_PLNE_RESP) "\n", BIT_OPT_1_PLNE_RESP, STR_FORCE_BIT_OPT_1_PLNE_RESP, html_text_opt_1_plne_resp[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP)));
 					break;
 				case 9: // BIT_OPT_1_ZALM95
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_ZALM95)"%ld" ELEM_END(XML_BIT_OPT_1_ZALM95) "\n", BIT_OPT_1_ZALM95, STR_MODL_OPTF_1_ZALM95, html_text_option1_zalm95[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_ZALM95)"%ld" ELEM_END(XML_BIT_OPT_1_ZALM95) "\n", BIT_OPT_1_ZALM95, STR_FORCE_BIT_OPT_1_ZALM95, html_text_opt_1_zalm95[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)));
 					break;
 				case 10: // BIT_OPT_1_PROSBY_ZVOLANIE
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_PROSBY_ZVOLANIE)"%ld" ELEM_END(XML_BIT_OPT_1_PROSBY_ZVOLANIE) "\n", BIT_OPT_1_PROSBY_ZVOLANIE, STR_MODL_OPTF_1_PROSBY_ZVOLANIE, html_text_option1_prosby_zvolanie[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_PROSBY_ZVOLANIE)"%ld" ELEM_END(XML_BIT_OPT_1_PROSBY_ZVOLANIE) "\n", BIT_OPT_1_PROSBY_ZVOLANIE, STR_FORCE_BIT_OPT_1_PROSBY_ZVOLANIE, html_text_opt_1_prosby_zvolanie[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE)));
 					break;
 				case 11: // BIT_OPT_1_SKRY_POPIS
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_SKRY_POPIS)"%ld" ELEM_END(XML_BIT_OPT_1_SKRY_POPIS) "\n", BIT_OPT_1_SKRY_POPIS, STR_MODL_OPTF_1_SKRY_POPIS, html_text_option1_skryt_popis_svaty[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_SKRY_POPIS)"%ld" ELEM_END(XML_BIT_OPT_1_SKRY_POPIS) "\n", BIT_OPT_1_SKRY_POPIS, STR_FORCE_BIT_OPT_1_SKRY_POPIS, html_text_opt_1_skryt_popis_svaty[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)));
 					break;
 				case 12: // BIT_OPT_1_ZOBRAZ_SPOL_CAST
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST)"%ld" ELEM_END(XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST) "\n", BIT_OPT_1_ZOBRAZ_SPOL_CAST, STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST, html_text_option1_spolc_svaty[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST)"%ld" ELEM_END(XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST) "\n", BIT_OPT_1_ZOBRAZ_SPOL_CAST, STR_FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST, html_text_opt_1_spolc_svaty[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST)));
 					break;
 				case 13: // BIT_OPT_1_VESP_KRATSIE_PROSBY
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_VESP_KRATSIE_PROSBY)"%ld" ELEM_END(XML_BIT_OPT_1_VESP_KRATSIE_PROSBY) "\n", BIT_OPT_1_VESP_KRATSIE_PROSBY, STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY, html_text_option1_vesp_kratsie_prosby[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_VESP_KRATSIE_PROSBY)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_VESP_KRATSIE_PROSBY)"%ld" ELEM_END(XML_BIT_OPT_1_VESP_KRATSIE_PROSBY) "\n", BIT_OPT_1_VESP_KRATSIE_PROSBY, STR_FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY, html_text_opt_1_vesp_kratsie_prosby[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_VESP_KRATSIE_PROSBY)));
 					break;
 				case 14: // BIT_OPT_1_MCD_ZALTAR_TRI
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_MCD_ZALTAR_TRI)"%ld" ELEM_END(XML_BIT_OPT_1_MCD_ZALTAR_TRI) "\n", BIT_OPT_1_MCD_ZALTAR_TRI, STR_MODL_OPTF_1_MCD_ZALTAR_TRI, html_text_option1_mcd_zalmy_tri[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_MCD_ZALTAR_TRI)"%ld" ELEM_END(XML_BIT_OPT_1_MCD_ZALTAR_TRI) "\n", BIT_OPT_1_MCD_ZALTAR_TRI, STR_FORCE_BIT_OPT_1_MCD_ZALTAR_TRI, html_text_opt_1_mcd_zalmy_tri[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI)));
 					break;
 				case 15: // BIT_OPT_1_ZAVER
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_ZAVER)"%ld" ELEM_END(XML_BIT_OPT_1_ZAVER) "\n", BIT_OPT_1_ZAVER, STR_MODL_OPTF_1_ZAVER, html_text_option1_zaver[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_1_ZAVER)"%ld" ELEM_END(XML_BIT_OPT_1_ZAVER) "\n", BIT_OPT_1_ZAVER, STR_FORCE_BIT_OPT_1_ZAVER, html_text_opt_1_zaver[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER)));
 					break;
 				}// switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_1_CASTI_MODLITBY) "\n");
 			break;
 		case OPT_2_HTML_EXPORT:
-			Export(ELEMVAL_BEGIN(XML_OPT_2_HTML_EXPORT) "\n", _global_opt[OPT_2_HTML_EXPORT], STR_MODL_OPT_2, STR_MODL_OPTF_2, html_text_option2_html_export[_global_jazyk]);
+			Export(ELEMVAL_BEGIN(XML_OPT_2_HTML_EXPORT) "\n", _global_opt[OPT_2_HTML_EXPORT], STR_OPT_2, STR_FORCE_OPT_2, html_text_opt_2_html_export[_global_jazyk]);
 			Log("option %d, jednotlivé bit-komponenty...(xml_export_options)\n", OPT_2_HTML_EXPORT);
 			for (j = 0; j < POCET_OPT_2_HTML_EXPORT; j++){
 				switch (j){
 				case 0: // BIT_OPT_2_ISO_DATUM
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_ISO_DATUM)"%ld" ELEM_END(XML_BIT_OPT_2_ISO_DATUM) "\n", BIT_OPT_2_ISO_DATUM, STR_MODL_OPTF_2_ISO_DATUM, html_text_option2_iso_datum[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ISO_DATUM)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_ISO_DATUM)"%ld" ELEM_END(XML_BIT_OPT_2_ISO_DATUM) "\n", BIT_OPT_2_ISO_DATUM, STR_FORCE_BIT_OPT_2_ISO_DATUM, html_text_opt_2_iso_datum[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ISO_DATUM)));
 					break;
 				case 1: // BIT_OPT_2_BUTTON_PRVE_VESPERY
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_BUTTON_PRVE_VESPERY)"%ld" ELEM_END(XML_BIT_OPT_2_BUTTON_PRVE_VESPERY) "\n", BIT_OPT_2_BUTTON_PRVE_VESPERY, STR_MODL_OPTF_2_PRVE_VESPERY, html_text_option2_prve_vespery[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_BUTTON_PRVE_VESPERY)"%ld" ELEM_END(XML_BIT_OPT_2_BUTTON_PRVE_VESPERY) "\n", BIT_OPT_2_BUTTON_PRVE_VESPERY, STR_FORCE_BIT_OPT_2_PRVE_VESPERY, html_text_opt_2_prve_vespery[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)));
 					break;
 				case 2: // BIT_OPT_2_FONT_FAMILY
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_FONT_FAMILY)"%ld" ELEM_END(XML_BIT_OPT_2_FONT_FAMILY) "\n", BIT_OPT_2_FONT_FAMILY, STR_MODL_OPTF_2_FONT_FAMILY, html_text_option2_font_family[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_FONT_FAMILY)"%ld" ELEM_END(XML_BIT_OPT_2_FONT_FAMILY) "\n", BIT_OPT_2_FONT_FAMILY, STR_FORCE_BIT_OPT_2_FONT_FAMILY, html_text_opt_2_font_family[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY)));
 					break;
 				case 3: // BIT_OPT_2_FONT_NAME_CHOOSER
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_FONT_NAME_CHOOSER)"%ld" ELEM_END(XML_BIT_OPT_2_FONT_NAME_CHOOSER) "\n", BIT_OPT_2_FONT_NAME_CHOOSER, STR_MODL_OPTF_2_FONT_NAME_CHOOSER, html_text_font_name[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER))); // ToDo Text
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_FONT_NAME_CHOOSER)"%ld" ELEM_END(XML_BIT_OPT_2_FONT_NAME_CHOOSER) "\n", BIT_OPT_2_FONT_NAME_CHOOSER, STR_FORCE_BIT_OPT_2_FONT_NAME_CHOOSER, html_text_font_name[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER))); // ToDo Text
 					break;
 				case 4: // BIT_OPT_2_FONT_SIZE_CHOOSER
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_FONT_SIZE_CHOOSER)"%ld" ELEM_END(XML_BIT_OPT_2_FONT_SIZE_CHOOSER) "\n", BIT_OPT_2_FONT_SIZE_CHOOSER, STR_MODL_OPTF_2_FONT_SIZE, html_text_font_size[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER))); // ToDo Text
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_FONT_SIZE_CHOOSER)"%ld" ELEM_END(XML_BIT_OPT_2_FONT_SIZE_CHOOSER) "\n", BIT_OPT_2_FONT_SIZE_CHOOSER, STR_FORCE_BIT_OPT_2_FONT_SIZE, html_text_font_size[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER))); // ToDo Text
 					break;
 				case 5: // BIT_OPT_2_NAVIGATION
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_NAVIGATION)"%ld" ELEM_END(XML_BIT_OPT_2_NAVIGATION) "\n", BIT_OPT_2_NAVIGATION, STR_MODL_OPTF_2_NAVIGATION, html_text_option2_navigation[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_NAVIGATION)"%ld" ELEM_END(XML_BIT_OPT_2_NAVIGATION) "\n", BIT_OPT_2_NAVIGATION, STR_FORCE_BIT_OPT_2_NAVIGATION, html_text_opt_2_navigation[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)));
 					break;
 				case 6: // BIT_OPT_2_TEXT_WRAP
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_TEXT_WRAP)"%ld" ELEM_END(XML_BIT_OPT_2_TEXT_WRAP) "\n", BIT_OPT_2_TEXT_WRAP, STR_MODL_OPTF_2_TEXT_WRAP, html_text_option2_textwrap[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_TEXT_WRAP)"%ld" ELEM_END(XML_BIT_OPT_2_TEXT_WRAP) "\n", BIT_OPT_2_TEXT_WRAP, STR_FORCE_BIT_OPT_2_TEXT_WRAP, html_text_opt_2_textwrap[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP)));
 					break;
 				case 7: // BIT_OPT_2_BUTTONY_USPORNE
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_BUTTONY_USPORNE)"%ld" ELEM_END(XML_BIT_OPT_2_BUTTONY_USPORNE) "\n", BIT_OPT_2_BUTTONY_USPORNE, STR_MODL_OPTF_2_BUTTONY_USPORNE, html_text_option2_buttons_usporne[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_BUTTONY_USPORNE)"%ld" ELEM_END(XML_BIT_OPT_2_BUTTONY_USPORNE) "\n", BIT_OPT_2_BUTTONY_USPORNE, STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE, html_text_opt_2_buttons_usporne[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)));
 					break;
 				case 8: // BIT_OPT_2_NOCNY_REZIM
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_NOCNY_REZIM)"%ld" ELEM_END(XML_BIT_OPT_2_NOCNY_REZIM) "\n", BIT_OPT_2_NOCNY_REZIM, STR_MODL_OPTF_2_NOCNY_REZIM, html_text_option2_nocny_rezim[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_NOCNY_REZIM)"%ld" ELEM_END(XML_BIT_OPT_2_NOCNY_REZIM) "\n", BIT_OPT_2_NOCNY_REZIM, STR_FORCE_BIT_OPT_2_NOCNY_REZIM, html_text_opt_2_nocny_rezim[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)));
 					break;
 				case 9: // BIT_OPT_2_ROZNE_MOZNOSTI
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_ROZNE_MOZNOSTI)"%ld" ELEM_END(XML_BIT_OPT_2_ROZNE_MOZNOSTI) "\n", BIT_OPT_2_ROZNE_MOZNOSTI, STR_MODL_OPTF_2_ROZNE_MOZNOSTI, html_text_option2_moznosti[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_ROZNE_MOZNOSTI)"%ld" ELEM_END(XML_BIT_OPT_2_ROZNE_MOZNOSTI) "\n", BIT_OPT_2_ROZNE_MOZNOSTI, STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI, html_text_opt_2_moznosti[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)));
 					break;
 				case 10: // BIT_OPT_2_HIDE_NAVIG_BUTTONS
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_HIDE_NAVIG_BUTTONS)"%ld" ELEM_END(XML_BIT_OPT_2_HIDE_NAVIG_BUTTONS) "\n", BIT_OPT_2_HIDE_NAVIG_BUTTONS, STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS, STR_EMPTY, (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS))); // ToDo Text
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_HIDE_NAVIG_BUTTONS)"%ld" ELEM_END(XML_BIT_OPT_2_HIDE_NAVIG_BUTTONS) "\n", BIT_OPT_2_HIDE_NAVIG_BUTTONS, STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS, STR_EMPTY, (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS))); // ToDo Text
 					break;
 				case 11: // BIT_OPT_2_HIDE_KALENDAR
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_HIDE_KALENDAR)"%ld" ELEM_END(XML_BIT_OPT_2_HIDE_KALENDAR) "\n", BIT_OPT_2_HIDE_KALENDAR, STR_MODL_OPTF_2_HIDE_KALENDAR, STR_EMPTY, (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR))); // ToDo Text
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_HIDE_KALENDAR)"%ld" ELEM_END(XML_BIT_OPT_2_HIDE_KALENDAR) "\n", BIT_OPT_2_HIDE_KALENDAR, STR_FORCE_BIT_OPT_2_HIDE_KALENDAR, STR_EMPTY, (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR))); // ToDo Text
 					break;
 				case 12: // BIT_OPT_2_HIDE_OPTIONS1
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_HIDE_OPTIONS1)"%ld" ELEM_END(XML_BIT_OPT_2_HIDE_OPTIONS1) "\n", BIT_OPT_2_HIDE_OPTIONS1, STR_MODL_OPTF_2_HIDE_OPTIONS1, STR_EMPTY, (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1))); // ToDo Text
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_HIDE_OPTIONS1)"%ld" ELEM_END(XML_BIT_OPT_2_HIDE_OPTIONS1) "\n", BIT_OPT_2_HIDE_OPTIONS1, STR_FORCE_BIT_OPT_2_HIDE_OPTIONS1, STR_EMPTY, (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1))); // ToDo Text
 					break;
 				case 13: // BIT_OPT_2_HIDE_OPTIONS2
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_HIDE_OPTIONS2)"%ld" ELEM_END(XML_BIT_OPT_2_HIDE_OPTIONS2) "\n", BIT_OPT_2_HIDE_OPTIONS2, STR_MODL_OPTF_2_HIDE_OPTIONS2, STR_EMPTY, (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2))); // ToDo Text
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_HIDE_OPTIONS2)"%ld" ELEM_END(XML_BIT_OPT_2_HIDE_OPTIONS2) "\n", BIT_OPT_2_HIDE_OPTIONS2, STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2, STR_EMPTY, (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2))); // ToDo Text
 					break;
 				case 14: // BIT_OPT_2_ALTERNATIVES
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_ALTERNATIVES)"%ld" ELEM_END(XML_BIT_OPT_2_ALTERNATIVES) "\n", BIT_OPT_2_ALTERNATIVES, STR_MODL_OPTF_2_ALTERNATIVES, html_text_option2_alternatives[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_ALTERNATIVES)"%ld" ELEM_END(XML_BIT_OPT_2_ALTERNATIVES) "\n", BIT_OPT_2_ALTERNATIVES, STR_FORCE_BIT_OPT_2_ALTERNATIVES, html_text_opt_2_alternatives[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)));
 					break;
 				case 15: // BIT_OPT_2_SHOW_DEFAULT_CALENDAR
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR)"%ld" ELEM_END(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR) "\n", BIT_OPT_2_SHOW_DEFAULT_CALENDAR, STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR, html_text_option2_show_defalut_calendar[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_SHOW_DEFAULT_CALENDAR)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR)"%ld" ELEM_END(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR) "\n", BIT_OPT_2_SHOW_DEFAULT_CALENDAR, STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR, html_text_opt_2_show_defalut_calendar[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_SHOW_DEFAULT_CALENDAR)));
 					break;
 				}// switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_2_HTML_EXPORT) "\n");
 			break;
 		case OPT_3_SPOLOCNA_CAST:
-			Export(ELEMVAL_BEGIN(XML_OPT_3_SPOLOCNA_CAST), _global_opt[OPT_3_SPOLOCNA_CAST], STR_MODL_OPT_3, STR_MODL_OPTF_3, html_text_spol_casti_vziat_zo[_global_jazyk]);
+			Export(ELEMVAL_BEGIN(XML_OPT_3_SPOLOCNA_CAST), _global_opt[OPT_3_SPOLOCNA_CAST], STR_OPT_3, STR_FORCE_OPT_3, html_text_spol_casti_vziat_zo[_global_jazyk]);
 			Log("option %d...\n", OPT_3_SPOLOCNA_CAST);
 			Export("%s", _global_opt[OPT_3_SPOLOCNA_CAST] <= MODL_SPOL_CAST_NEBRAT ? nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]) : STR_EMPTY);
 			Export(ELEM_END(XML_OPT_3_SPOLOCNA_CAST) "\n");
@@ -6408,57 +6436,57 @@ void xml_export_options(void){
 		case OPT_4_OFFLINE_EXPORT:
 			break;
 		case OPT_5_ALTERNATIVES:
-			Export(ELEMVAL_BEGIN(XML_OPT_5_ALTERNATIVES) "\n", _global_opt[OPT_5_ALTERNATIVES], STR_MODL_OPT_5, STR_MODL_OPTF_5, html_text_option2_alternatives[_global_jazyk]);
+			Export(ELEMVAL_BEGIN(XML_OPT_5_ALTERNATIVES) "\n", _global_opt[OPT_5_ALTERNATIVES], STR_OPT_5, STR_FORCE_OPT_5, html_text_opt_2_alternatives[_global_jazyk]);
 			Log("option %d, jednotlivé bit-komponenty...(xml_export_options)\n", OPT_5_ALTERNATIVES);
 			for (j = 0; j < POCET_OPT_5_ALTERNATIVES; j++){
 				switch (j){
 				case 0: // BIT_OPT_5_HYMNUS_KOMPL
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_KOMPL)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_KOMPL) "\n", BIT_OPT_5_HYMNUS_KOMPL, STR_MODL_OPTF_5_HYMNUS_KOMPL, html_text_option5_KomplHymnusA[_global_jazyk], html_text_option5_KomplHymnusB[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_KOMPL)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_KOMPL) "\n", BIT_OPT_5_HYMNUS_KOMPL, STR_FORCE_BIT_OPT_5_HYMNUS_KOMPL, html_text_opt_5_KomplHymnusA[_global_jazyk], html_text_opt_5_KomplHymnusB[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL)));
 					break;
 				case 1: // BIT_OPT_5_HYMNUS_PC
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_PC)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_PC) "\n", BIT_OPT_5_HYMNUS_PC, STR_MODL_OPTF_5_HYMNUS_PC, html_text_option5_PCHymnusI[_global_jazyk], html_text_option5_PCHymnusII[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_PC)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_PC)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_PC) "\n", BIT_OPT_5_HYMNUS_PC, STR_FORCE_BIT_OPT_5_HYMNUS_PC, html_text_opt_5_PCHymnusI[_global_jazyk], html_text_opt_5_PCHymnusII[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_PC)));
 					break;
 				case 2: // BIT_OPT_5_HYMNUS_MCD_PREDPOL
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL) "\n", BIT_OPT_5_HYMNUS_MCD_PREDPOL, STR_MODL_OPTF_5_HYMNUS_MCD_PREDPOL, html_text_option5_MCDPredHymnus1[_global_jazyk], html_text_option5_MCDPredHymnus2[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_PREDPOL)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL) "\n", BIT_OPT_5_HYMNUS_MCD_PREDPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL, html_text_opt_5_MCDPredHymnus1[_global_jazyk], html_text_opt_5_MCDPredHymnus2[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_PREDPOL)));
 					break;
 				case 3: // BIT_OPT_5_HYMNUS_MCD_PREDPOL
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_MCD_NAPOL)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_MCD_NAPOL) "\n", BIT_OPT_5_HYMNUS_MCD_NAPOL, STR_MODL_OPTF_5_HYMNUS_MCD_NAPOL, html_text_option5_MCDNaHymnus1[_global_jazyk], html_text_option5_MCDNaHymnus2[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_NAPOL)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_MCD_NAPOL)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_MCD_NAPOL) "\n", BIT_OPT_5_HYMNUS_MCD_NAPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL, html_text_opt_5_MCDNaHymnus1[_global_jazyk], html_text_opt_5_MCDNaHymnus2[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_NAPOL)));
 					break;
 				case 4: // BIT_OPT_5_HYMNUS_MCD_POPOL
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_MCD_POPOL)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_MCD_POPOL) "\n", BIT_OPT_5_HYMNUS_MCD_POPOL, STR_MODL_OPTF_5_HYMNUS_MCD_POPOL, html_text_option5_MCDPoHymnus1[_global_jazyk], html_text_option5_MCDPoHymnus2[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_POPOL)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_MCD_POPOL)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_MCD_POPOL) "\n", BIT_OPT_5_HYMNUS_MCD_POPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL, html_text_opt_5_MCDPoHymnus1[_global_jazyk], html_text_opt_5_MCDPoHymnus2[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_POPOL)));
 					break;
 				case 5: // BIT_OPT_5_DOPLNK_PSALM_122_129
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_DOPLNK_PSALM_122_129)"%ld" ELEM_END(XML_BIT_OPT_5_DOPLNK_PSALM_122_129) "\n", BIT_OPT_5_DOPLNK_PSALM_122_129, STR_MODL_OPTF_5_DOPLNK_PSALM_122_129, html_text_option5_DPsalmZ122_129[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_DOPLNK_PSALM_122_129)"%ld" ELEM_END(XML_BIT_OPT_5_DOPLNK_PSALM_122_129) "\n", BIT_OPT_5_DOPLNK_PSALM_122_129, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, html_text_opt_5_DPsalmZ122_129[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)));
 					break;
 				case 6: // BIT_OPT_5_DOPLNK_PSALM_127_131
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_DOPLNK_PSALM_127_131)"%ld" ELEM_END(XML_BIT_OPT_5_DOPLNK_PSALM_127_131) "\n", BIT_OPT_5_DOPLNK_PSALM_127_131, STR_MODL_OPTF_5_DOPLNK_PSALM_127_131, html_text_option5_DPsalmZ127_131[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_DOPLNK_PSALM_127_131)"%ld" ELEM_END(XML_BIT_OPT_5_DOPLNK_PSALM_127_131) "\n", BIT_OPT_5_DOPLNK_PSALM_127_131, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131, html_text_opt_5_DPsalmZ127_131[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131)));
 					break;
 				case 7: // BIT_OPT_5_DOPLNK_PSALM_126_129
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_DOPLNK_PSALM_126_129)"%ld" ELEM_END(XML_BIT_OPT_5_DOPLNK_PSALM_126_129) "\n", BIT_OPT_5_DOPLNK_PSALM_126_129, STR_MODL_OPTF_5_DOPLNK_PSALM_126_129, html_text_option5_DPsalmZ126_129[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_DOPLNK_PSALM_126_129)"%ld" ELEM_END(XML_BIT_OPT_5_DOPLNK_PSALM_126_129) "\n", BIT_OPT_5_DOPLNK_PSALM_126_129, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129, html_text_opt_5_DPsalmZ126_129[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129)));
 					break;
 				case 8: // BIT_OPT_5_HYMNUS_VN_PC
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_VN_PC)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_VN_PC) "\n", BIT_OPT_5_HYMNUS_VN_PC, STR_MODL_OPTF_5_HYMNUS_VN_PC, html_text_option5_PCHymnusVNnedela[_global_jazyk], html_text_option5_PCHymnusVNferia[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_PC)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_VN_PC)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_VN_PC) "\n", BIT_OPT_5_HYMNUS_VN_PC, STR_FORCE_BIT_OPT_5_HYMNUS_VN_PC, html_text_opt_5_PCHymnusVNnedela[_global_jazyk], html_text_opt_5_PCHymnusVNferia[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_PC)));
 					break;
 				case 9: // BIT_OPT_5_HYMNUS_VN_RCH
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_VN_RCH)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_VN_RCH) "\n", BIT_OPT_5_HYMNUS_VN_RCH, STR_MODL_OPTF_5_HYMNUS_VN_RCH, html_text_option5_RChHymnusVNnedela[_global_jazyk], html_text_option5_RChHymnusVNferia[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_RCH)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_VN_RCH)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_VN_RCH) "\n", BIT_OPT_5_HYMNUS_VN_RCH, STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH, html_text_opt_5_RChHymnusVNnedela[_global_jazyk], html_text_opt_5_RChHymnusVNferia[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_RCH)));
 					break;
 				case 10: // BIT_OPT_5_HYMNUS_VN_VESP
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_VN_VESP)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_VN_VESP) "\n", BIT_OPT_5_HYMNUS_VN_VESP, STR_MODL_OPTF_5_HYMNUS_VN_VESP, html_text_option5_VespHymnusVNnedela[_global_jazyk], html_text_option5_VespHymnusVNferia[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_VN_VESP)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_VN_VESP) "\n", BIT_OPT_5_HYMNUS_VN_VESP, STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP, html_text_opt_5_VespHymnusVNnedela[_global_jazyk], html_text_opt_5_VespHymnusVNferia[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP)));
 					break;
 				case 11: // BIT_OPT_5_HYMNUS_1VESP
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_1VESP)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_1VESP) "\n", BIT_OPT_5_HYMNUS_1VESP, STR_MODL_OPTF_5_HYMNUS_1VESP, html_text_option5_1VHymnusNe[_global_jazyk], html_text_option5_1VHymnusPC[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_1VESP)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_HYMNUS_1VESP)"%ld" ELEM_END(XML_BIT_OPT_5_HYMNUS_1VESP) "\n", BIT_OPT_5_HYMNUS_1VESP, STR_FORCE_BIT_OPT_5_HYMNUS_1VESP, html_text_opt_5_1VHymnusNe[_global_jazyk], html_text_opt_5_1VHymnusPC[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_1VESP)));
 					break;
 				case 12: // BIT_OPT_5_POPOL_STREDA_PSALMODIA
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA)"%ld" ELEM_END(XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA) "\n", BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, html_text_option5_PopolStrPsalm_4STR[_global_jazyk], html_text_option5_PopolStrPsalm_3PI[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA)"%ld" ELEM_END(XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA) "\n", BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA, html_text_opt_5_PopolStrPsalm_4STR[_global_jazyk], html_text_opt_5_PopolStrPsalm_3PI[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)));
 					break;
 				case 13: // BIT_OPT_5_CZ_HYMNY_VYBER
-					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_CZ_HYMNY_VYBER)"%ld" ELEM_END(XML_BIT_OPT_5_CZ_HYMNY_VYBER) "\n", BIT_OPT_5_CZ_HYMNY_VYBER, STR_MODL_OPTF_5_CZ_HYMNY_VYBER, html_text_option5_CZhymnyNORMAL[_global_jazyk], html_text_option5_CZhymnyRENC[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)));
+					Export(ELEMOPT_SLASH_BEGIN(XML_BIT_OPT_5_CZ_HYMNY_VYBER)"%ld" ELEM_END(XML_BIT_OPT_5_CZ_HYMNY_VYBER) "\n", BIT_OPT_5_CZ_HYMNY_VYBER, STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, html_text_opt_5_CZhymnyNORMAL[_global_jazyk], html_text_opt_5_CZhymnyRENC[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)));
 					break;
 				case 14: // BIT_OPT_5_OFF_DEF_PSALM_146_150
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_OFF_DEF_PSALM_146_150)"%ld" ELEM_END(XML_BIT_OPT_5_OFF_DEF_PSALM_146_150) "\n", BIT_OPT_5_OFF_DEF_PSALM_146_150, STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150, html_text_option5_OffDefZ146_150[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_OFF_DEF_PSALM_146_150)"%ld" ELEM_END(XML_BIT_OPT_5_OFF_DEF_PSALM_146_150) "\n", BIT_OPT_5_OFF_DEF_PSALM_146_150, STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, html_text_opt_5_OffDefZ146_150[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)));
 					break;
 				case 15: // BIT_OPT_5_OFF_DEF_PSALM_146_150
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON)"%ld" ELEM_END(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON) "\n", BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON, html_text_option5_zaver_knaz_diakon[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON)"%ld" ELEM_END(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON) "\n", BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)));
 					break;
 				}// switch(j)
 			}// for j
@@ -8541,35 +8569,35 @@ void _export_rozbor_dna_kalendar_core(short int typ){
 	Log("--- _export_rozbor_dna_kalendar_core(typ == %d) -- end\n", typ);
 }// _export_rozbor_dna_kalendar_core()
 
-void _export_main_formular_checkbox(short int opt, int bit_opt, const char * str_modl_optf, const char * html_text_opt_description, const char * html_text_opt_description_explain, short int line_break_before = ANO){
-	Log("_export_main_formular_checkbox(%d, %d, %s, %s, %s) -- begin...\n", opt, bit_opt, str_modl_optf, html_text_opt_description, html_text_opt_description_explain);
+void _export_main_formular_checkbox(short int opt, int bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description, const char * html_text_opt_description_explain, short int line_break_before = ANO){
+	Log("_export_main_formular_checkbox(%d, %d, %s, %s, %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
 	char html_label[MAX_STR];
 	mystrcpy(html_label, html_text_opt_description, MAX_STR);
 #if defined(OS_Windows_Ruby) || defined(DEBUG)
 	char html_label_debug[SMALL];
-	sprintf(html_label_debug, " [%s]", str_modl_optf);
+	sprintf(html_label_debug, " [%s]", str_modl_force_opt);
 	strcat(html_label, html_label_debug);
 #endif
 
-	// pole (checkbox) WWW_/str_modl_optf
+	// pole (checkbox) WWW_/str_modl_force_opt
 	if(line_break_before == ANO){
 		Export(HTML_CRLF_LINE_BREAK);
 	}
-	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", str_modl_optf, NIE);
-	Export(HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s" HTML_FORM_INPUT_END "\n", str_modl_optf, ANO, html_text_opt_description_explain, ((_global_optf[opt] & bit_opt) == bit_opt) ? html_option_checked : STR_EMPTY);
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", str_modl_force_opt, NIE);
+	Export(HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s" HTML_FORM_INPUT_END "\n", str_modl_force_opt, ANO, html_text_opt_description_explain, ((_global_force_opt[opt] & bit_opt) == bit_opt) ? html_option_checked : STR_EMPTY);
 	Export("<" HTML_SPAN_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_description_explain, html_label);
 
-	Log("_export_main_formular_checkbox(%d, %d, %s, %s, %s) -- end.\n", opt, bit_opt, str_modl_optf, html_text_opt_description, html_text_opt_description_explain);
+	Log("_export_main_formular_checkbox(%d, %d, %s, %s, %s) -- end.\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
 }// _export_main_formular_checkbox()
 
-void _export_main_formular_checkbox_slash(short int opt, int bit_opt, const char * str_modl_optf, const char * html_text_opt_description1, const char * html_text_opt_description2, short int line_break_before = ANO){
-	Log("_export_main_formular_checkbox(%d, %d, %s, %s / %s) -- begin...\n", opt, bit_opt, str_modl_optf, html_text_opt_description1, html_text_opt_description2);
+void _export_main_formular_checkbox_slash(short int opt, int bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description1, const char * html_text_opt_description2, short int line_break_before = ANO){
+	Log("_export_main_formular_checkbox(%d, %d, %s, %s / %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description1, html_text_opt_description2);
 	char html_label[MAX_STR];
 	sprintf(html_label, "%s%s%s", html_text_opt_description1, HTML_LINE_BREAK_SPACE_LOONG, html_text_opt_description2);
 
-	_export_main_formular_checkbox(opt, bit_opt, str_modl_optf, html_label, STR_EMPTY, line_break_before);
+	_export_main_formular_checkbox(opt, bit_opt, str_modl_force_opt, html_label, STR_EMPTY, line_break_before);
 
-	Log("_export_main_formular_checkbox(%d, %d, %s, %s / %s) -- end.\n", opt, bit_opt, str_modl_optf, html_text_opt_description1, html_text_opt_description2);
+	Log("_export_main_formular_checkbox(%d, %d, %s, %s / %s) -- end.\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description1, html_text_opt_description2);
 }// _export_main_formular_checkbox()
 
 // generuje celý formulár, dolnú časť, ktorá pôvodne bola v _main_dnes(), ktorý obsahuje:
@@ -8687,10 +8715,10 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export(HTML_TABLE_CELL_END "\n");
 	Export(HTML_TABLE_ROW_END "\n");
 
-	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
-	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
-	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_OPTIONS1, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1)) ? ANO : NIE);
-	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_OPTIONS2, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2)) ? ANO : NIE);
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS1, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1)) ? ANO : NIE);
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2)) ? ANO : NIE);
 
 	if (zobrazit_moznosti1){ // len ak NIE JE možnosť (skrytie options1) zvolená
 
@@ -8698,9 +8726,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		// doplnené zobrazenie neviditeľných checkboxov, aby sa po submite zmenených nastavení neresetovalo skrytie/zobrazenie kalendára, navigácie a časti "Ďalšie zobrazenia"
 		
-//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
-//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
-//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_OPTIONS2, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2)) ? ANO : NIE);
+//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
+//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
+//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2)) ? ANO : NIE);
 
 		// ritus could not be changed (depends on "language"); just print it
 		Export("<" HTML_TABLE_ROW ">\n");
@@ -8712,14 +8740,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_TABLE_ROW_END "\n");
 
 		// liturgical calendar
-		if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_HU)){
+		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_HU)) {
 
 			ExportHtmlComment("propria (proper calendars)");
 
 			Export("<" HTML_TABLE_ROW ">\n");
 			Export("<" HTML_TABLE_CELL ">\n");
 
-			Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY)? ": " : ""));
+			Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY) ? ": " : ""));
 
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 			Export(HTML_CRLF_LINE_BREAK);
@@ -8729,28 +8757,28 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole WWW_KALENDAR
 			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_KALENDAR, html_text_kalendar_miestny_explain[_global_jazyk]);
 
-			if(_global_jazyk == JAZYK_SK){
-				Export("<option%s>%s</option>\n", 
-					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK))? html_option_selected: STR_EMPTY,
+			if (_global_jazyk == JAZYK_SK) {
+				Export("<option%s>%s</option>\n",
+					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK)) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[default_kalendar[_global_jazyk]]);
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_SK_CSSR)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_SK_CSSR) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_CSSR]);
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_SK_SVD)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_SK_SVD) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_SVD]);
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_SK_OFM)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_SK_OFM) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_OFM]);
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_SK_SDB)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_SK_SDB) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_SDB]);
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_SK_OP)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_SK_OP) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_OP]);
 #ifdef OS_Windows_Ruby
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_SK_SJ)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_SK_SJ) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_SJ]);
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_SK_CM) ? html_option_selected : STR_EMPTY,
@@ -8761,29 +8789,29 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 #endif
 			}// SK
 
-			else if(_global_jazyk == JAZYK_CZ){
-				Export("<option%s>%s</option>\n", 
-					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ))? html_option_selected: STR_EMPTY,
+			else if (_global_jazyk == JAZYK_CZ) {
+				Export("<option%s>%s</option>\n",
+					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ)) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[default_kalendar[_global_jazyk]]);
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_CZ_OPRAEM)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_CZ_OPRAEM) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_OPRAEM]);
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_CZ_OFMCAP)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_CZ_OFMCAP) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_OFMCAP]);
 #ifdef OS_Windows_Ruby
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_CZ_SDB)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_CZ_SDB) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_SDB]);
-				Export("<option%s>%s</option>\n", 
-					(_global_kalendar == KALENDAR_CZ_CSSR)? html_option_selected: STR_EMPTY,
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_CZ_CSSR) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_CSSR]);
 #endif
 			}// CZ
 
-			else if(_global_jazyk == JAZYK_HU){
-				Export("<option%s>%s</option>\n", 
-					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_HU))? html_option_selected: STR_EMPTY,
+			else if (_global_jazyk == JAZYK_HU) {
+				Export("<option%s>%s</option>\n",
+					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_HU)) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[default_kalendar[_global_jazyk]]);
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_HU_OFM) ? html_option_selected : STR_EMPTY,
@@ -8792,7 +8820,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			Export("</select>\n");
 
-			if(!(equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY))){
+			if (!(equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY))) {
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 				Export(HTML_CRLF_LINE_BREAK);
 #endif
@@ -8806,8 +8834,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("<" HTML_TABLE_ROW ">\n");
 		Export("<" HTML_TABLE_CELL ">\n");
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_2_ROZNE_MOZNOSTI
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI, STR_MODL_OPTF_2_ROZNE_MOZNOSTI, html_text_option2_moznosti[_global_jazyk], html_text_option2_moznosti_explain[_global_jazyk], NIE);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI, STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI, html_text_opt_2_moznosti[_global_jazyk], html_text_opt_2_moznosti_explain[_global_jazyk], NIE);
 
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
@@ -8829,28 +8857,28 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// formular pre options...
 
 			// option 1: zobraziť nasledovné (nemenné, pevné) súčasti modlitby (používame force opt_1)...
-			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_option1_nemenne_sucasti_explain[_global_jazyk], html_text_option1_nemenne_sucasti[_global_jazyk]);
+			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_1_nemenne_sucasti_explain[_global_jazyk], html_text_opt_1_nemenne_sucasti[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_CHV
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY, STR_MODL_OPTF_1_CHV, html_text_option1_chvalospevy[_global_jazyk], html_text_option1_chvalospevy_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_CHV
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY, STR_FORCE_BIT_OPT_1_CHV, html_text_opt_1_chvalospevy[_global_jazyk], html_text_opt_1_chvalospevy_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_SL
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU, STR_MODL_OPTF_1_SL, html_text_option1_slava_otcu[_global_jazyk], html_text_option1_slava_otcu_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_SL
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU, STR_FORCE_BIT_OPT_1_SL, html_text_opt_1_slava_otcu[_global_jazyk], html_text_opt_1_slava_otcu_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_RUB
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY, STR_MODL_OPTF_1_RUB, html_text_option1_rubriky[_global_jazyk], html_text_option1_rubriky_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_RUB
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY, STR_FORCE_BIT_OPT_1_RUB, html_text_opt_1_rubriky[_global_jazyk], html_text_opt_1_rubriky_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_OT
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS, STR_MODL_OPTF_1_OT, html_text_option1_otcenas[_global_jazyk], html_text_option1_otcenas_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_OT
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS, STR_FORCE_BIT_OPT_1_OT, html_text_opt_1_otcenas[_global_jazyk], html_text_opt_1_otcenas_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_TD
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM, STR_MODL_OPTF_1_TD, html_text_option1_tedeum[_global_jazyk], html_text_option1_tedeum_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_TD
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM, STR_FORCE_BIT_OPT_1_TD, html_text_opt_1_tedeum[_global_jazyk], html_text_opt_1_tedeum_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_PLNE_RESP
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP, STR_MODL_OPTF_1_PLNE_RESP, html_text_option1_plne_resp[_global_jazyk], html_text_option1_plne_resp_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_PLNE_RESP
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP, STR_FORCE_BIT_OPT_1_PLNE_RESP, html_text_opt_1_plne_resp[_global_jazyk], html_text_opt_1_plne_resp_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_ZAVER
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER, STR_MODL_OPTF_1_ZAVER, html_text_option1_zaver[_global_jazyk], html_text_option1_zaver_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_ZAVER
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER, STR_FORCE_BIT_OPT_1_ZAVER, html_text_opt_1_zaver[_global_jazyk], html_text_opt_1_zaver_explain[_global_jazyk]);
 
 			Export(HTML_TABLE_CELL_END "\n");
 			Export(HTML_TABLE_ROW_END "\n");
@@ -8861,14 +8889,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_TABLE_ROW_END "\n");
 		}// tabuľka pre checkboxy 1 (options pre modlitbu)
 		else{
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_CHV, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_SL, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_RUB, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_OT, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_TD, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_PLNE_RESP, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_ZAVER, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_optf
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_CHV, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_SL, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_RUB, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_OT, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_TD, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_PLNE_RESP, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_ZAVER, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER)) ? ANO : NIE);
+		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
 		//---------------------------------------------------------------------
 
@@ -8885,53 +8913,53 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// formular pre options...
 
 		// option 1: ďalšie bity ovplyvňujúce vygenerovanú modlitbu (používame force opt_1)...
-		Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_option1_dalsie_prepinace_explain[_global_jazyk], html_text_option1_dalsie_prepinace[_global_jazyk]);
+		Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_1_dalsie_prepinace_explain[_global_jazyk], html_text_opt_1_dalsie_prepinace[_global_jazyk]);
 
 #if !defined(IO_ANDROID)
 		// for Android it is not necessary since 1.11.2 (setting moved to native menu)
-		// pole (checkbox) WWW_/STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST
-		_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST, STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST, html_text_option1_spolc_svaty[_global_jazyk], html_text_option1_spolc_svaty_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST
+		_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST, STR_FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST, html_text_opt_1_spolc_svaty[_global_jazyk], html_text_opt_1_spolc_svaty_explain[_global_jazyk]);
 #endif
 
 		if(!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)){ // len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_SPOMIENKA_SPOL_CAST
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST, STR_MODL_OPTF_1_SPOMIENKA_SPOL_CAST, html_text_option1_spomienka_spolcast[_global_jazyk], html_text_option1_spomienka_spolcast_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST, STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST, html_text_opt_1_spomienka_spolcast[_global_jazyk], html_text_opt_1_spomienka_spolcast_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_SKRY_POPIS
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS, STR_MODL_OPTF_1_SKRY_POPIS, html_text_option1_skryt_popis_svaty[_global_jazyk], html_text_option1_skryt_popis_svaty_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_SKRY_POPIS
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS, STR_FORCE_BIT_OPT_1_SKRY_POPIS, html_text_opt_1_skryt_popis_svaty[_global_jazyk], html_text_opt_1_skryt_popis_svaty_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_MCD_DOPLNKOVA
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA, STR_MODL_OPTF_1_MCD_DOPLNKOVA, html_text_option1_mcd_zalmy_ine[_global_jazyk], html_text_option1_mcd_zalmy_ine_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_MCD_DOPLNKOVA
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA, STR_FORCE_BIT_OPT_1_MCD_DOPLNKOVA, html_text_opt_1_mcd_zalmy_ine[_global_jazyk], html_text_opt_1_mcd_zalmy_ine_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_MCD_ZALTAR_TRI
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI, STR_MODL_OPTF_1_MCD_ZALTAR_TRI, html_text_option1_mcd_zalmy_tri[_global_jazyk], html_text_option1_mcd_zalmy_tri_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_MCD_ZALTAR_TRI
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI, STR_FORCE_BIT_OPT_1_MCD_ZALTAR_TRI, html_text_opt_1_mcd_zalmy_tri[_global_jazyk], html_text_opt_1_mcd_zalmy_tri_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_ZALM95
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95, STR_MODL_OPTF_1_ZALM95, html_text_option1_zalm95[_global_jazyk], html_text_option1_zalm95_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_ZALM95
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95, STR_FORCE_BIT_OPT_1_ZALM95, html_text_opt_1_zalm95[_global_jazyk], html_text_opt_1_zalm95_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_PROSBY_ZVOLANIE
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE, STR_MODL_OPTF_1_PROSBY_ZVOLANIE, html_text_option1_prosby_zvolanie[_global_jazyk], html_text_option1_prosby_zvolanie_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_PROSBY_ZVOLANIE
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE, STR_FORCE_BIT_OPT_1_PROSBY_ZVOLANIE, html_text_opt_1_prosby_zvolanie[_global_jazyk], html_text_opt_1_prosby_zvolanie_explain[_global_jazyk]);
 
-			// pole (checkbox) MODL_OPTF_1_VESP_KRATSIE_PROSBY
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_VESP_KRATSIE_PROSBY, STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY, html_text_option1_vesp_kratsie_prosby[_global_jazyk], html_text_option1_vesp_kratsie_prosby_explain[_global_jazyk]);
+			// pole (checkbox) FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_VESP_KRATSIE_PROSBY, STR_FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY, html_text_opt_1_vesp_kratsie_prosby[_global_jazyk], html_text_opt_1_vesp_kratsie_prosby_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_1_VIGILIA
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA, STR_MODL_OPTF_1_VIGILIA, html_text_option1_vigilia[_global_jazyk], html_text_option1_vigilia_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_VIGILIA
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA, STR_FORCE_BIT_OPT_1_VIGILIA, html_text_opt_1_vigilia[_global_jazyk], html_text_opt_1_vigilia_explain[_global_jazyk]);
 		}
 		else{
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_SPOMIENKA_SPOL_CAST, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_SKRY_POPIS, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_MCD_DOPLNKOVA, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_MCD_ZALTAR_TRI, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_ZALM95, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_PROSBY_ZVOLANIE, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_VESP_KRATSIE_PROSBY)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_1_VIGILIA, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_optf
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_SKRY_POPIS, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_MCD_DOPLNKOVA, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_MCD_ZALTAR_TRI, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_ZALM95, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_PROSBY_ZVOLANIE, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_VESP_KRATSIE_PROSBY)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_VIGILIA, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)) ? ANO : NIE);
+		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_2_ALTERNATIVES
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES, STR_MODL_OPTF_2_ALTERNATIVES, html_text_option2_alternatives[_global_jazyk], html_text_option2_alternatives_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_ALTERNATIVES
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES, STR_FORCE_BIT_OPT_2_ALTERNATIVES, html_text_opt_2_alternatives[_global_jazyk], html_text_opt_2_alternatives_explain[_global_jazyk]);
 
 		if(!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)){ // len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená
 
@@ -8939,14 +8967,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_CRLF_LINE_BREAK);
 			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, str_doplnkova_psalmodia[_global_jazyk], str_doplnkova_psalmodia[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_5_DOPLNK_PSALM_122_129
-			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129, STR_MODL_OPTF_5_DOPLNK_PSALM_122_129, html_text_option5_DPsalmZ122_129[_global_jazyk], html_text_option5_DPsalmZ122_129_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129
+			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, html_text_opt_5_DPsalmZ122_129[_global_jazyk], html_text_opt_5_DPsalmZ122_129_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_5_DOPLNK_PSALM_126_129
-			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129, STR_MODL_OPTF_5_DOPLNK_PSALM_126_129, html_text_option5_DPsalmZ126_129[_global_jazyk], html_text_option5_DPsalmZ126_129_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129
+			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129, html_text_opt_5_DPsalmZ126_129[_global_jazyk], html_text_opt_5_DPsalmZ126_129_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_5_DOPLNK_PSALM_127_131
-			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131, STR_MODL_OPTF_5_DOPLNK_PSALM_127_131, html_text_option5_DPsalmZ127_131[_global_jazyk], html_text_option5_DPsalmZ127_131_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131
+			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131, html_text_opt_5_DPsalmZ127_131[_global_jazyk], html_text_opt_5_DPsalmZ127_131_explain[_global_jazyk]);
 
 			if (_global_jazyk != JAZYK_CZ){
 
@@ -8954,43 +8982,43 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export(HTML_CRLF_LINE_BREAK);
 				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s (%s)" HTML_SPAN_END, nazov_modlitby(MODL_POSV_CITANIE), nazov_modlitby(MODL_POSV_CITANIE), nazov_obdobia(OBD_CEZ_ROK));
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_PC
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_PC, STR_MODL_OPTF_5_HYMNUS_PC, html_text_option5_PCHymnusI[_global_jazyk], html_text_option5_PCHymnusII[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_PC
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_PC, STR_FORCE_BIT_OPT_5_HYMNUS_PC, html_text_opt_5_PCHymnusI[_global_jazyk], html_text_opt_5_PCHymnusII[_global_jazyk]);
 
 				// predpoludním
 				Export(HTML_CRLF_LINE_BREAK);
 				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, nazov_modlitby(MODL_PREDPOLUDNIM), nazov_modlitby(MODL_PREDPOLUDNIM));
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_MCD_PREDPOL
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_PREDPOL, STR_MODL_OPTF_5_HYMNUS_MCD_PREDPOL, html_text_option5_MCDPredHymnus1[_global_jazyk], html_text_option5_MCDPredHymnus2[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_PREDPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL, html_text_opt_5_MCDPredHymnus1[_global_jazyk], html_text_opt_5_MCDPredHymnus2[_global_jazyk]);
 
 				// napoludnie
 				Export(HTML_CRLF_LINE_BREAK);
 				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, nazov_modlitby(MODL_NAPOLUDNIE), nazov_modlitby(MODL_NAPOLUDNIE));
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_MCD_NAPOL
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_NAPOL, STR_MODL_OPTF_5_HYMNUS_MCD_NAPOL, html_text_option5_MCDNaHymnus1[_global_jazyk], html_text_option5_MCDNaHymnus2[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_NAPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL, html_text_opt_5_MCDNaHymnus1[_global_jazyk], html_text_opt_5_MCDNaHymnus2[_global_jazyk]);
 
 				// popoludní
 				Export(HTML_CRLF_LINE_BREAK);
 				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, nazov_modlitby(MODL_POPOLUDNI), nazov_modlitby(MODL_POPOLUDNI));
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_MCD_POPOL
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_POPOL, STR_MODL_OPTF_5_HYMNUS_MCD_POPOL, html_text_option5_MCDPoHymnus1[_global_jazyk], html_text_option5_MCDPoHymnus2[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_POPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL, html_text_opt_5_MCDPoHymnus1[_global_jazyk], html_text_opt_5_MCDPoHymnus2[_global_jazyk]);
 
 				// prvé vešpery
 				Export(HTML_CRLF_LINE_BREAK);
 				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s (%s/%s)" HTML_SPAN_END, nazov_modlitby(MODL_PRVE_VESPERY), nazov_modlitby(MODL_PRVE_VESPERY), nazov_dna(DEN_NEDELA), nazov_obdobia(OBD_CEZ_ROK));
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_1VESP
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_1VESP, STR_MODL_OPTF_5_HYMNUS_1VESP, html_text_option5_1VHymnusNe[_global_jazyk], html_text_option5_1VHymnusPC[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_1VESP
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_1VESP, STR_FORCE_BIT_OPT_5_HYMNUS_1VESP, html_text_opt_5_1VHymnusNe[_global_jazyk], html_text_opt_5_1VHymnusPC[_global_jazyk]);
 
 				// kompletórium
 				Export(HTML_CRLF_LINE_BREAK);
 				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, nazov_modlitby(MODL_KOMPLETORIUM), nazov_modlitby(MODL_KOMPLETORIUM));
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_KOMPL
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL, STR_MODL_OPTF_5_HYMNUS_KOMPL, html_text_option5_KomplHymnusA[_global_jazyk], html_text_option5_KomplHymnusB[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_KOMPL
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL, STR_FORCE_BIT_OPT_5_HYMNUS_KOMPL, html_text_opt_5_KomplHymnusA[_global_jazyk], html_text_opt_5_KomplHymnusB[_global_jazyk]);
 
 				// hymny vo Veľkonočnom období
 
@@ -8998,72 +9026,72 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export(HTML_CRLF_LINE_BREAK);
 				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s (%s)" HTML_SPAN_END, nazov_modlitby(MODL_POSV_CITANIE), nazov_modlitby(MODL_POSV_CITANIE), nazov_obdobia(OBD_VELKONOCNE_I));
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_VN_PC
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_PC, STR_MODL_OPTF_5_HYMNUS_VN_PC, html_text_option5_PCHymnusVNferia[_global_jazyk], html_text_option5_PCHymnusVNnedela[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_VN_PC
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_PC, STR_FORCE_BIT_OPT_5_HYMNUS_VN_PC, html_text_opt_5_PCHymnusVNferia[_global_jazyk], html_text_opt_5_PCHymnusVNnedela[_global_jazyk]);
 
 				// ranné chvály
 				Export(HTML_CRLF_LINE_BREAK);
 				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s (%s)" HTML_SPAN_END, nazov_modlitby(MODL_RANNE_CHVALY), nazov_modlitby(MODL_RANNE_CHVALY), nazov_obdobia(OBD_VELKONOCNE_I));
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_VN_RCH
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_RCH, STR_MODL_OPTF_5_HYMNUS_VN_RCH, html_text_option5_RChHymnusVNferia[_global_jazyk], html_text_option5_RChHymnusVNnedela[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_RCH, STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH, html_text_opt_5_RChHymnusVNferia[_global_jazyk], html_text_opt_5_RChHymnusVNnedela[_global_jazyk]);
 
 				// vešpery
 				Export(HTML_CRLF_LINE_BREAK);
 				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s (%s)" HTML_SPAN_END, nazov_modlitby(MODL_VESPERY), nazov_modlitby(MODL_VESPERY), nazov_obdobia(OBD_VELKONOCNE_I));
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_HYMNUS_VN_VESP
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP, STR_MODL_OPTF_5_HYMNUS_VN_VESP, html_text_option5_VespHymnusVNferia[_global_jazyk], html_text_option5_VespHymnusVNnedela[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP, STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP, html_text_opt_5_VespHymnusVNferia[_global_jazyk], html_text_opt_5_VespHymnusVNnedela[_global_jazyk]);
 			}
 			else
 			{
 				// hymny
 				Export(HTML_CRLF_LINE_BREAK);
-				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_option5_CZhymny_explain[_global_jazyk], html_text_option5_CZhymny[_global_jazyk]);
+				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_5_CZhymny_explain[_global_jazyk], html_text_opt_5_CZhymny[_global_jazyk]);
 
-				// pole (checkbox) WWW_/STR_MODL_OPTF_5_CZ_HYMNY_VYBER
-				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER, STR_MODL_OPTF_5_CZ_HYMNY_VYBER, html_text_option5_CZhymnyNORMAL[_global_jazyk], html_text_option5_CZhymnyRENC[_global_jazyk]);
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER
+				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER, STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, html_text_opt_5_CZhymnyNORMAL[_global_jazyk], html_text_opt_5_CZhymnyRENC[_global_jazyk]);
 			}// CZ only
 
 			// ranné chvály na Popolcovú stredu
 			Export(HTML_CRLF_LINE_BREAK);
 			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s (%s)" HTML_SPAN_END, nazov_modlitby(MODL_RANNE_CHVALY), nazov_modlitby(MODL_RANNE_CHVALY), text_POPOLCOVA_STREDA[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA
-			_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, html_text_option5_PopolStrPsalm_4STR[_global_jazyk], html_text_option5_PopolStrPsalm_3PI[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA
+			_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA, html_text_opt_5_PopolStrPsalm_4STR[_global_jazyk], html_text_opt_5_PopolStrPsalm_3PI[_global_jazyk]);
 
 			// ranné chvály Ofícia za zosnulých
 			Export(HTML_CRLF_LINE_BREAK);
 			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s (%s %s)" HTML_SPAN_END, nazov_modlitby(MODL_RANNE_CHVALY), nazov_modlitby(MODL_RANNE_CHVALY), nazov_spolc_oficiumza_jazyk[_global_jazyk], nazov_spolc(MODL_SPOL_CAST_ZA_ZOSNULYCH));
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150
-			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150, STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150, html_text_option5_OffDefZ146_150[_global_jazyk], html_text_option5_OffDefZ146_150_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150
+			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150, STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, html_text_opt_5_OffDefZ146_150[_global_jazyk], html_text_opt_5_OffDefZ146_150_explain[_global_jazyk]);
 
 			// ranné chvály a vešpery - záver
 			Export(HTML_CRLF_LINE_BREAK);
 			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s, %s" HTML_SPAN_END, STR_EMPTY, nazov_modlitby(MODL_RANNE_CHVALY), nazov_modlitby(MODL_VESPERY));
 
-			// pole (checkbox) WWW_/STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150
-			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON, html_text_option5_zaver_knaz_diakon[_global_jazyk], html_text_option5_zaver_knaz_diakon_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150
+			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], html_text_opt_5_zaver_knaz_diakon_explain[_global_jazyk]);
 		}
 		else{
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_DOPLNK_PSALM_122_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_DOPLNK_PSALM_126_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_DOPLNK_PSALM_127_131, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_HYMNUS_PC, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_PC)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_HYMNUS_MCD_PREDPOL, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_PREDPOL)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_HYMNUS_MCD_NAPOL, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_NAPOL)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_HYMNUS_MCD_POPOL, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_POPOL)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_HYMNUS_KOMPL, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_HYMNUS_VN_PC, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_PC)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_HYMNUS_VN_RCH, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_RCH)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_HYMNUS_VN_VESP, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_HYMNUS_1VESP, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_1VESP)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_CZ_HYMNY_VYBER, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_optf
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_PC, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_PC)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_PREDPOL)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_NAPOL)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_MCD_POPOL)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_KOMPL, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_VN_PC, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_PC)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_RCH)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_1VESP, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_1VESP)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)) ? ANO : NIE);
+		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
@@ -9091,32 +9119,35 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// formular pre options...
 
 		// option 0: ďalšie bity ovplyvňujúce vygenerovanú modlitbu (číslovanie veršov, biblické referencie...) (používame force opt_0)...
-		Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_option0_specialne_explain[_global_jazyk], html_text_option0_specialne[_global_jazyk]);
+		Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_0_specialne_explain[_global_jazyk], html_text_opt_0_specialne[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_VERSE
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_VERSE, STR_MODL_OPTF_0_VERSE, html_text_option0_verse[_global_jazyk], html_text_option0_verse_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_VERSE
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_VERSE, STR_FORCE_BIT_OPT_0_VERSE, html_text_opt_0_verse[_global_jazyk], html_text_opt_0_verse_explain[_global_jazyk]);
 
 		if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)){
-			// pole (checkbox) WWW_/STR_MODL_OPTF_0_REF
-			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE, STR_MODL_OPTF_0_REF, html_text_option0_referencie[_global_jazyk], html_text_option0_referencie_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_REF
+			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE, STR_FORCE_BIT_OPT_0_REF, html_text_opt_0_referencie[_global_jazyk], html_text_opt_0_referencie_explain[_global_jazyk]);
 		}// if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU))
 		else{
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_0_REF, (isGlobalOptionForce(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_optf
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_0_REF, (isGlobalOptionForce(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)) ? ANO : NIE);
+		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_FOOTNOTES
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES, STR_MODL_OPTF_0_FOOTNOTES, html_text_option0_footnotes[_global_jazyk], html_text_option0_footnotes_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_FOOTNOTES
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES, STR_FORCE_BIT_OPT_0_FOOTNOTES, html_text_opt_0_footnotes[_global_jazyk], html_text_opt_0_footnotes_explain[_global_jazyk]);
 
 #ifdef BEHAVIOUR_WEB
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_CIT
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_CITANIA, STR_MODL_OPTF_0_CIT, html_text_option0_citania[_global_jazyk], html_text_option0_citania_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_CIT
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_CITANIA, STR_FORCE_BIT_OPT_0_CIT, html_text_opt_0_citania[_global_jazyk], html_text_opt_0_citania_explain[_global_jazyk]);
 #else
-		// else: treba nastaviť hidden pre všetky options pre _global_optf
-		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_0_CIT, (isGlobalOptionForce(OPT_0_SPECIALNE, BIT_OPT_0_CITANIA))? ANO: NIE);
+		// else: treba nastaviť hidden pre všetky options pre _global_force_opt
+		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_0_CIT, (isGlobalOptionForce(OPT_0_SPECIALNE, BIT_OPT_0_CITANIA))? ANO: NIE);
 #endif
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_TRANSPARENT_NAV
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV, STR_MODL_OPTF_0_TRANSPARENT_NAV, html_text_option0_transparent_nav[_global_jazyk], html_text_option0_transparent_nav_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV, html_text_opt_0_transparent_nav[_global_jazyk], html_text_opt_0_transparent_nav_explain[_global_jazyk]);
+
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, html_text_opt_0_zalmy_full_text[_global_jazyk], html_text_opt_0_zalmy_full_text_explain[_global_jazyk]);
 
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
@@ -9143,34 +9174,34 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// formular pre options...
 
 		// option 2: bity ovplyvňujúce HTML export -- vygenerované stránky, nie vygenerované modlitby (ISO dátum, button prvé vešpery...) (používame force opt_2)...
-		Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_option2_html_export_explain[_global_jazyk], html_text_option2_html_export[_global_jazyk]);
+		Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_2_html_export_explain[_global_jazyk], html_text_opt_2_html_export[_global_jazyk]);
 
 #ifdef OS_Windows_Ruby
-		// pole (checkbox) WWW_/STR_MODL_OPTF_2_ISO_DATUM
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_ISO_DATUM, STR_MODL_OPTF_2_ISO_DATUM, html_text_option2_iso_datum[_global_jazyk], html_text_option2_iso_datum_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_ISO_DATUM
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_ISO_DATUM, STR_FORCE_BIT_OPT_2_ISO_DATUM, html_text_opt_2_iso_datum[_global_jazyk], html_text_opt_2_iso_datum_explain[_global_jazyk]);
 #else
-		// else: treba nastaviť hidden pre všetky options pre _global_optf
-		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_ISO_DATUM, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ISO_DATUM))? ANO: NIE);
+		// else: treba nastaviť hidden pre všetky options pre _global_force_opt
+		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_ISO_DATUM, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ISO_DATUM))? ANO: NIE);
 #endif
 
 		// 2011-04-20: pre CZOP zobrazovať aj prepínatko... (možno časom sa podmienka úplne odstráni a bude to zobrazené pre všetky jazyky/systémy)
 		if((_global_system == SYSTEM_RUBY) || (_global_jazyk == JAZYK_CZ_OP)){
-			// pole (checkbox) WWW_/STR_MODL_OPTF_2_PRVE_VESPERY
-			_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY, STR_MODL_OPTF_2_PRVE_VESPERY, html_text_option2_prve_vespery[_global_jazyk], html_text_option2_prve_vespery_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_PRVE_VESPERY
+			_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY, STR_FORCE_BIT_OPT_2_PRVE_VESPERY, html_text_opt_2_prve_vespery[_global_jazyk], html_text_opt_2_prve_vespery_explain[_global_jazyk]);
 		}
 		else{
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_PRVE_VESPERY, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_optf
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_PRVE_VESPERY, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) ? ANO : NIE);
+		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_2_FONT_FAMILY
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY, STR_MODL_OPTF_2_FONT_FAMILY, html_text_option2_font_family[_global_jazyk], html_text_option2_font_family_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_FONT_FAMILY
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY, STR_FORCE_BIT_OPT_2_FONT_FAMILY, html_text_opt_2_font_family[_global_jazyk], html_text_opt_2_font_family_explain[_global_jazyk]);
 		// drop-down list pre výber názvu písma, len ak je nastavená OPT_2_HTML_EXPORT.BIT_OPT_2_FONT_NAME_CHOOSER
 		if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER)){
 			Export(HTML_CRLF_LINE_BREAK);
 			Export(HTML_NONBREAKING_SPACE_LOOONG);
 			Export("<" HTML_SPAN_TOOLTIP ">%s" HTML_SPAN_END "\n", html_text_font_name_explain[_global_jazyk], html_text_font_name[_global_jazyk]);
 
-			// pole WWW_/STR_MODL_OPTF_2_FONT_NAME_CHOOSER
+			// pole WWW_/STR_FORCE_BIT_OPT_2_FONT_NAME_CHOOSER
 			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_FONT_NAME, html_text_font_name_explain[_global_jazyk]);
 			// FONT_UNDEF neexportujeme
 			for(font = FONT_UNDEF + 1; font <= POCET_FONTOV; font++){
@@ -9189,13 +9220,13 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("</select>\n");
 		}// if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER))
 
-		// drop-down list pre výber veľkosti písma WWW_MODL_OPTF_2_FONT_SIZE, len ak je nastavená OPT_2_HTML_EXPORT.BIT_OPT_2_FONT_NAME_CHOOSER
+		// drop-down list pre výber veľkosti písma WWW_FORCE_BIT_OPT_2_FONT_SIZE, len ak je nastavená OPT_2_HTML_EXPORT.BIT_OPT_2_FONT_NAME_CHOOSER
 		if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER)){
 			Export(HTML_CRLF_LINE_BREAK);
 			Export(HTML_NONBREAKING_SPACE_LOOONG);
 			Export("<" HTML_SPAN_TOOLTIP ">%s" HTML_SPAN_END "\n", html_text_font_size_explain[_global_jazyk], html_text_font_size[_global_jazyk]);
 
-			// pole WWW_/STR_MODL_OPTF_2_FONT_SIZE
+			// pole WWW_/STR_FORCE_BIT_OPT_2_FONT_SIZE
 			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_FONT_SIZE, html_text_font_size_explain[_global_jazyk]);
 			// FONT_SIZE_UNDEF neexportujeme
 			for(font = FONT_SIZE_UNDEF + 1; font <= POCET_FONT_SIZE; font++){
@@ -9206,34 +9237,34 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		// for Android it is not necessary since 1.11 or 1.11.2 (settings moved to native menu)
 #if !defined(IO_ANDROID)
-		// pole (checkbox) WWW_/STR_MODL_OPTF_2_NAVIGATION
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION, STR_MODL_OPTF_2_NAVIGATION, html_text_option2_navigation[_global_jazyk], html_text_option2_navigation_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NAVIGATION
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION, STR_FORCE_BIT_OPT_2_NAVIGATION, html_text_opt_2_navigation[_global_jazyk], html_text_opt_2_navigation_explain[_global_jazyk]);
 
 		if ((_global_system == SYSTEM_RUBY) || (_global_jazyk == JAZYK_SK)){
-			// pole (checkbox) WWW_/STR_MODL_OPTF_2_TEXT_WRAP
-			_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP, STR_MODL_OPTF_2_TEXT_WRAP, html_text_option2_textwrap[_global_jazyk], html_text_option2_textwrap_explain[_global_jazyk]);
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_TEXT_WRAP
+			_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP, STR_FORCE_BIT_OPT_2_TEXT_WRAP, html_text_opt_2_textwrap[_global_jazyk], html_text_opt_2_textwrap_explain[_global_jazyk]);
 		}
 		else{
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_TEXT_WRAP, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_optf
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_TEXT_WRAP, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP)) ? ANO : NIE);
+		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_2_BUTTONY_USPORNE
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE, STR_MODL_OPTF_2_BUTTONY_USPORNE, html_text_option2_buttons_usporne[_global_jazyk], html_text_option2_buttons_usporne_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE, STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE, html_text_opt_2_buttons_usporne[_global_jazyk], html_text_opt_2_buttons_usporne_explain[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_2_NOCNY_REZIM
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, STR_MODL_OPTF_2_NOCNY_REZIM, html_text_option2_nocny_rezim[_global_jazyk], html_text_option2_nocny_rezim_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NOCNY_REZIM
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, STR_FORCE_BIT_OPT_2_NOCNY_REZIM, html_text_opt_2_nocny_rezim[_global_jazyk], html_text_opt_2_nocny_rezim_explain[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_FONT_NORMAL
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL, STR_MODL_OPTF_0_FONT_NORMAL, html_text_option0_font_normal[_global_jazyk], html_text_option0_font_normal_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_FONT_NORMAL
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL, STR_FORCE_BIT_OPT_0_FONT_NORMAL, html_text_opt_0_font_normal[_global_jazyk], html_text_opt_0_font_normal_explain[_global_jazyk]);
 #endif
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_BLIND_FRIENDLY
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY, STR_MODL_OPTF_0_BLIND_FRIENDLY, html_text_option0_blind_friendly[_global_jazyk], html_text_option0_blind_friendly_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY, STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY, html_text_opt_0_blind_friendly[_global_jazyk], html_text_opt_0_blind_friendly_explain[_global_jazyk]);
 
 #if !defined(IO_ANDROID)
 		// for Android it is not necessary since 1.11.2 (setting moved to native menu)
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_BUTTONS_ORDER
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_BUTTONS_ORDER, STR_MODL_OPTF_0_BUTTONS_ORDER, html_text_option0_buttons_order[_global_jazyk], html_text_option0_buttons_order_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_BUTTONS_ORDER
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_BUTTONS_ORDER, STR_FORCE_BIT_OPT_0_BUTTONS_ORDER, html_text_opt_0_buttons_order[_global_jazyk], html_text_opt_0_buttons_order_explain[_global_jazyk]);
 #endif
 
 		Export(HTML_TABLE_CELL_END "\n");
@@ -9261,19 +9292,19 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// formular pre options...
 
 		// option 0: bity ovplyvňujúce liturgický kalendár (používame force opt_0)...
-		Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_option0_kalendar_explain[_global_jazyk], html_text_option0_kalendar[_global_jazyk]);
+		Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_0_kalendar_explain[_global_jazyk], html_text_opt_0_kalendar[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_ZJAV_NED
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA, STR_MODL_OPTF_0_ZJAV_NED, html_text_option0_zjv_ne[_global_jazyk], html_text_option0_zjv_ne_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ZJAV_NED
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA, STR_FORCE_BIT_OPT_0_ZJAV_NED, html_text_opt_0_zjv_ne[_global_jazyk], html_text_opt_0_zjv_ne_explain[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_NAN_NED
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA, STR_MODL_OPTF_0_NAN_NED, html_text_option0_nan_ne[_global_jazyk], html_text_option0_nan_ne_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_NAN_NED
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA, STR_FORCE_BIT_OPT_0_NAN_NED, html_text_opt_0_nan_ne[_global_jazyk], html_text_opt_0_nan_ne_explain[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_0_TK_NED
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TELAKRVI_NEDELA, STR_MODL_OPTF_0_TK_NED, html_text_option0_tk_ne[_global_jazyk], html_text_option0_tk_ne_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_TK_NED
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TELAKRVI_NEDELA, STR_FORCE_BIT_OPT_0_TK_NED, html_text_opt_0_tk_ne[_global_jazyk], html_text_opt_0_tk_ne_explain[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_SHOW_DEFAULT_CALENDAR, STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR, html_text_option2_show_defalut_calendar[_global_jazyk], html_text_option2_show_defalut_calendar_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_SHOW_DEFAULT_CALENDAR, STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR, html_text_opt_2_show_defalut_calendar[_global_jazyk], html_text_opt_2_show_defalut_calendar_explain[_global_jazyk]);
 
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
@@ -9342,16 +9373,16 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export(HTML_TABLE_CELL_END "\n");
 	Export(HTML_TABLE_ROW_END "\n");
 
-	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
-	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
-	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_OPTIONS1, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1)) ? ANO : NIE);
-	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_OPTIONS2, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2)) ? ANO : NIE);
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS1, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1)) ? ANO : NIE);
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2)) ? ANO : NIE);
 
 	if (zobrazit_moznosti2){ // len ak NIE JE možnosť (skrytie options2) zvolená
 		
-//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
-//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
-//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_MODL_OPTF_2_HIDE_OPTIONS1, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1)) ? ANO : NIE);
+//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
+//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
+//		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS1, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1)) ? ANO : NIE);
 
 		// -------------------------------------------
 		
@@ -9758,7 +9789,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		Export(HTML_CRLF_LINE_BREAK);
 
-		Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_MODL_OPTF_3, html_text_spol_casti_vziat_zo_explain[_global_jazyk]);
+		Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_FORCE_OPT_3, html_text_spol_casti_vziat_zo_explain[_global_jazyk]);
 		for (int i = 0; i <= POCET_SPOL_CASTI; i++){
 			if (poradie_spol_cast[i] == MODL_SPOL_CAST_NEURCENA){
 				continue;
@@ -9837,7 +9868,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	char parameter_I[SMALL] = STR_EMPTY;
 	char poradie_svateho[SMALL] = STR_EMPTY; // pre export_monthly_druh >= 1
 	char _local_export_navig_hore[SMALL] = STR_EMPTY;
-	long _global_opt_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
+	long _global_opt_1_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
 	char export_doplnkova_psalmodia[SMALL] = STR_EMPTY; // reťazec pre alternatívny súbor modlitby cez deň obsahujúci doplnkovú psalmódiu
 	char pom[SMALL] = STR_EMPTY; // pomocný reťazec (priliepanie parametrov do export_dalsie_parametre)
 	char export_dalsie_parametre[SMALL] = STR_EMPTY; // reťazec pre kalendár (export_kalendar); 2011-11-30: pridaný do toho istého reťazca aj font
@@ -9846,13 +9877,13 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 
 	Log("execute_batch_command(): začiatok...\n");
 
-	_global_opt_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY]; // backup pôvodnej hodnoty
-	// 2011-04-12: nastavenie parametra o1 pre bežnú a doplnkovú psalmódiu; parameter o1 očistíme a _global_opt_casti_modlitby_orig bude obsahovať aj bit pre doplnkovú psalmódiu
+	_global_opt_1_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY]; // backup pôvodnej hodnoty
+	// 2011-04-12: nastavenie parametra o1 pre bežnú a doplnkovú psalmódiu; parameter o1 očistíme a _global_opt_1_casti_modlitby_orig bude obsahovať aj bit pre doplnkovú psalmódiu
 	// 2011-09-06: neriešime otázku žalmu 95 pre ranné chvály resp. vešpery, kde je použitý žalm 24, 67, 100
 	if(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)){
 		Log("Pre option 1 odstraňujem bit pre 'doplnkovú psalmódiu', pomocná premenná to bude obsahovať\n");
 		_global_opt[OPT_1_CASTI_MODLITBY] -= BIT_OPT_1_MCD_DOPLNKOVA;
-		_global_opt_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY] + BIT_OPT_1_MCD_DOPLNKOVA;
+		_global_opt_1_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY] + BIT_OPT_1_MCD_DOPLNKOVA;
 	}
 	// 2010-08-04: pridané odovzdanie parametra pre kalendár; 2011-11-30: pridaný do toho istého reťazca aj font
 	// 2010-09-14: podmienka opravená; ak nie je kalendár určený resp. je všeobecný pre daný jazyk, nie je potrebné ho exportovať
@@ -9997,7 +10028,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 					|| (a == 0)
 				)
 			){ 
-				if(((_global_opt_casti_modlitby_orig & BIT_OPT_1_MCD_DOPLNKOVA) == BIT_OPT_1_MCD_DOPLNKOVA) && (je_modlitba_cez_den(i))){
+				if(((_global_opt_1_casti_modlitby_orig & BIT_OPT_1_MCD_DOPLNKOVA) == BIT_OPT_1_MCD_DOPLNKOVA) && (je_modlitba_cez_den(i))){
 					if(_global_opt_append == YES){
 						sprintf(export_fname_pattern, "%s", batch_command);
 					}
@@ -10006,7 +10037,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 					}
 					Log("1:parameter_M == `%s'...\n", parameter_M);
 					fprintf(batch_file, "%s -0%ld -1%ld -2%ld -3%ld -4%ld -5%ld -x%d -p%s -j%s%s%s\n", export_fname_pattern, 
-						_global_opt[OPT_0_SPECIALNE], _global_opt_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
+						_global_opt[OPT_0_SPECIALNE], _global_opt_1_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
 						a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
 					if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
 						sprintf(export_doplnkova_psalmodia, " (" HTML_A_HREF_BEGIN "\"" FILENAME_EXPORT_DATE_SIMPLE "_%d%sd.htm\">alt" HTML_A_END ")", _global_den.rok % 100, _global_den.mesiac, _global_den.den, a, export_fname_modl_str /*char_modlitby[i] */);
@@ -10089,10 +10120,10 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 						a, str_modlitby[i], skratka_jazyka[_global_jazyk], export_dalsie_parametre); // modlitba `i'
 				}// endif _global_opt_append == YES
 				else{
-					if(((_global_opt_casti_modlitby_orig & BIT_OPT_1_MCD_DOPLNKOVA) == BIT_OPT_1_MCD_DOPLNKOVA) && (je_modlitba_cez_den(i))){
+					if(((_global_opt_1_casti_modlitby_orig & BIT_OPT_1_MCD_DOPLNKOVA) == BIT_OPT_1_MCD_DOPLNKOVA) && (je_modlitba_cez_den(i))){
 						Log("3:parameter_M == `%s'...\n", parameter_M);
 						fprintf(batch_file, "%s%d%sd.htm -0%ld -1%ld -2%ld -3%ld -4%ld -5%ld -x%d -p%s -j%s%s%s\n", batch_command, a, export_fname_modl_str /* char_modlitby[i] */, 
-							_global_opt[OPT_0_SPECIALNE], _global_opt_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
+							_global_opt[OPT_0_SPECIALNE], _global_opt_1_casti_modlitby_orig /* _global_opt[OPT_1_CASTI_MODLITBY] */, _global_opt[OPT_2_HTML_EXPORT], _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_5_ALTERNATIVES], 
 							a, str_modlitby[i], skratka_jazyka[_global_jazyk], parameter_M, export_dalsie_parametre); // modlitba `i'
 						if(_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
 							sprintf(export_doplnkova_psalmodia, " (" HTML_A_HREF_BEGIN "\"" FILENAME_EXPORT_DATE_SIMPLE "_%d%sd.htm\">alt" HTML_A_END ")", _global_den.rok % 100, _global_den.mesiac, _global_den.den, a, export_fname_modl_str /* char_modlitby[i] */);
@@ -10123,7 +10154,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	}// else if(export_monthly_druh >= 1)
 
 	// napokon o1 vrátime späť
-	_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_casti_modlitby_orig; // restore pôvodnej hodnoty
+	_global_opt[OPT_1_CASTI_MODLITBY] = _global_opt_1_casti_modlitby_orig; // restore pôvodnej hodnoty
 
 	Log("execute_batch_command(): koniec.\n");
 }// execute_batch_command()
@@ -10975,11 +11006,11 @@ void showDetails(short int den, short int mesiac, short int rok, short int porad
 
 		// najprv si rozkodujeme, co je v _global_den.spolcast
 		_struct_sc sc = _decode_spol_cast(_global_den.spolcast);
-		// WWW_MODL_OPT_3 changed to WWW_MODL_OPTF_3
+		// WWW_OPT_3 changed to WWW_FORCE_OPT_3
 		Export("<li>");
 		Export((char *)html_text_spol_casti_vziat_zo[_global_jazyk]);
 		Export(" \n");
-		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_MODL_OPTF_3);
+		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_FORCE_OPT_3);
 		if (je_spolocna_cast_urcena(sc.a1)){
 			Export("<option%s>%s</option>\n", html_option_selected, nazov_spolc(sc.a1));
 			if (je_spolocna_cast_urcena(sc.a2)){
@@ -11706,27 +11737,27 @@ void rozbor_mesiaca(short int mesiac, short int rok, short int typ_exportu = EXP
 	Log("-- rozbor_mesiaca(%d/%d): koniec\n", mesiac, rok);
 }// rozbor_mesiaca();
 
-void log_pom_MODL_OPT(void){
+void log_pom_OPT(void){
 	short int i;
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		Log("opt %d == `%s' (%ld)\n", i, pom_MODL_OPT[i], _global_opt[i]);
+		Log("opt %d == `%s' (%ld)\n", i, pom_OPT[i], _global_opt[i]);
 	}
-}// log_pom_MODL_OPT()
+}// log_pom_OPT()
 
-void log_pom_MODL_OPTF(void){
+void log_pom_FORCE_OPT(void){
 	short int i;
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		Log("optf %d == `%s' (%ld)\n", i, pom_MODL_OPTF[i], _global_optf[i]);
+		Log("force_opt %d == `%s' (%ld)\n", i, pom_FORCE_OPT[i], _global_force_opt[i]);
 	}
 	for (i = 0; i < POCET_OPT_0_SPECIALNE; i++){
-		Log("optf[%d] %d == `%s'\n", OPT_0_SPECIALNE, i, pom_MODL_OPTF_SPECIALNE[i]);
+		Log("force_opt[%d] %d == `%s'\n", OPT_0_SPECIALNE, i, pom_FORCE_OPT_0_SPECIALNE[i]);
 	}
 	for (i = 0; i < POCET_OPT_1_CASTI_MODLITBY; i++){
-		Log("optf[%d] %d == `%s'\n", OPT_1_CASTI_MODLITBY, i, pom_MODL_OPTF_CASTI_MODLITBY[i]);
+		Log("force_opt[%d] %d == `%s'\n", OPT_1_CASTI_MODLITBY, i, pom_FORCE_OPT_1_CASTI_MODLITBY[i]);
 	}
-}// log_pom_MODL_OPTF()
+}// log_pom_FORCE_OPT()
 
-void _rozparsuj_parametre_OPT_force(int option_opt, char pom_MODL_OPTF_opt[MAX_POCET_OPT][SMALL], long _global_option_opt[MAX_POCET_OPT]){
+void _rozparsuj_parametre_OPT_force(int option_opt, char pom_FORCE_OPT_opt[MAX_POCET_OPT][SMALL], long _global_option_opt[MAX_POCET_OPT]){
 	short int i;
 	short int aspon_jedna_nenulova;
 	long bit_value;
@@ -11734,36 +11765,36 @@ void _rozparsuj_parametre_OPT_force(int option_opt, char pom_MODL_OPTF_opt[MAX_P
 	Log("_rozparsuj_parametre_OPT_force() -- začiatok...\n");
 	// option_opt force j (0, 1, 2, 4, 5)
 	// option_opt force j -- jednotlivé komponenty
-	_global_optf[option_opt] = GLOBAL_OPTION_NULL;
+	_global_force_opt[option_opt] = GLOBAL_OPTION_NULL;
 	aspon_jedna_nenulova = NIE;
 	for (i = 0; i < pocet_opt[option_opt]; i++){
-		if ((pom_MODL_OPTF_opt[i] == NULL) || (strlen(pom_MODL_OPTF_opt[i]) < 1)){
+		if ((pom_FORCE_OPT_opt[i] == NULL) || (strlen(pom_FORCE_OPT_opt[i]) < 1)){
 			_global_option_opt[i] = GLOBAL_OPTION_NULL;
 		}
 		else{
-			_global_option_opt[i] = atoi(pom_MODL_OPTF_opt[i]);
+			_global_option_opt[i] = atoi(pom_FORCE_OPT_opt[i]);
 			aspon_jedna_nenulova = ANO;
 		}
-		Log("optf[%d][%d] == `%s' (%d)\n", option_opt, i, pom_MODL_OPTF_opt[i], _global_option_opt[i]);
+		Log("force_opt[%d][%d] == `%s' (%d)\n", option_opt, i, pom_FORCE_OPT_opt[i], _global_option_opt[i]);
 	}// for i
 	if (aspon_jedna_nenulova == ANO){
-		_global_optf[option_opt] = 0;
-		// nastavenie _global_optf[option_opt] podľa jednotlivých bit-komponentov, ktoré sú nastavené v _global_option_opt[]
+		_global_force_opt[option_opt] = 0;
+		// nastavenie _global_force_opt[option_opt] podľa jednotlivých bit-komponentov, ktoré sú nastavené v _global_option_opt[]
 		for (i = 0; i < pocet_opt[option_opt]; i++){
 			bit_value = (int)pow(2.0, i);
 			Log("option_opt %d, i == %d; bit_value == %ld...\n", option_opt, i, bit_value);
 			if (_global_option_opt[i] != GLOBAL_OPTION_NULL){
-				_global_optf[option_opt] += bit_value * _global_option_opt[i];
+				_global_force_opt[option_opt] += bit_value * _global_option_opt[i];
 			}
 			else if ((_global_opt[option_opt] & bit_value) == bit_value){
 				// ináč použi nastavenie z _global_opt (nie force)
 				Log("použijem nastavenie z _global_opt[%d] (nie force)...\n", option_opt);
-				_global_optf[option_opt] += bit_value;
+				_global_force_opt[option_opt] += bit_value;
 			}
 		}// for i
-		Log("optf[%d] vyskladaná == %ld\n", option_opt, _global_optf[option_opt]);
+		Log("force_opt[%d] vyskladaná == %ld\n", option_opt, _global_force_opt[option_opt]);
 	}
-	Log("optf %d == `%s' (%d)\n", option_opt, pom_MODL_OPTF[option_opt], _global_optf[option_opt]);
+	Log("force_opt %d == `%s' (%d)\n", option_opt, pom_FORCE_OPT[option_opt], _global_force_opt[option_opt]);
 	Log("_rozparsuj_parametre_OPT_force() -- koniec.\n");
 }// _rozparsuj_parametre_OPT_force()
 
@@ -11777,48 +11808,48 @@ void _rozparsuj_parametre_OPT(void){
 	Log("options...\n");
 
 	// option 0
-	if ((pom_MODL_OPT[OPT_0_SPECIALNE] == NULL) || (strlen(pom_MODL_OPT[OPT_0_SPECIALNE]) < 1)){
+	if ((pom_OPT[OPT_0_SPECIALNE] == NULL) || (strlen(pom_OPT[OPT_0_SPECIALNE]) < 1)){
 		_global_opt[OPT_0_SPECIALNE] = GLOBAL_OPTION_NULL;
 	}
 	else{
-		_global_opt[OPT_0_SPECIALNE] = atol(pom_MODL_OPT[OPT_0_SPECIALNE]);
+		_global_opt[OPT_0_SPECIALNE] = atol(pom_OPT[OPT_0_SPECIALNE]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_0_SPECIALNE, pom_MODL_OPT[OPT_0_SPECIALNE], _global_opt[OPT_0_SPECIALNE]);
+	Log("opt %d == `%s' (%ld)\n", OPT_0_SPECIALNE, pom_OPT[OPT_0_SPECIALNE], _global_opt[OPT_0_SPECIALNE]);
 
 	// option 1
-	if ((pom_MODL_OPT[OPT_1_CASTI_MODLITBY] == NULL) || (strlen(pom_MODL_OPT[OPT_1_CASTI_MODLITBY]) < 1)){
+	if ((pom_OPT[OPT_1_CASTI_MODLITBY] == NULL) || (strlen(pom_OPT[OPT_1_CASTI_MODLITBY]) < 1)){
 		_global_opt[OPT_1_CASTI_MODLITBY] = GLOBAL_OPTION_NULL;
 	}
 	else{
-		_global_opt[OPT_1_CASTI_MODLITBY] = atol(pom_MODL_OPT[OPT_1_CASTI_MODLITBY]);
+		_global_opt[OPT_1_CASTI_MODLITBY] = atol(pom_OPT[OPT_1_CASTI_MODLITBY]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_1_CASTI_MODLITBY, pom_MODL_OPT[OPT_1_CASTI_MODLITBY], _global_opt[OPT_1_CASTI_MODLITBY]);
+	Log("opt %d == `%s' (%ld)\n", OPT_1_CASTI_MODLITBY, pom_OPT[OPT_1_CASTI_MODLITBY], _global_opt[OPT_1_CASTI_MODLITBY]);
 
 	// option 2
-	if ((pom_MODL_OPT[OPT_2_HTML_EXPORT] == NULL) || (strlen(pom_MODL_OPT[OPT_2_HTML_EXPORT]) < 1)){
+	if ((pom_OPT[OPT_2_HTML_EXPORT] == NULL) || (strlen(pom_OPT[OPT_2_HTML_EXPORT]) < 1)){
 		_global_opt[OPT_2_HTML_EXPORT] = GLOBAL_OPTION_NULL;
 	}
 	else{
-		_global_opt[OPT_2_HTML_EXPORT] = atol(pom_MODL_OPT[OPT_2_HTML_EXPORT]);
+		_global_opt[OPT_2_HTML_EXPORT] = atol(pom_OPT[OPT_2_HTML_EXPORT]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_2_HTML_EXPORT, pom_MODL_OPT[OPT_2_HTML_EXPORT], _global_opt[OPT_2_HTML_EXPORT]);
+	Log("opt %d == `%s' (%ld)\n", OPT_2_HTML_EXPORT, pom_OPT[OPT_2_HTML_EXPORT], _global_opt[OPT_2_HTML_EXPORT]);
 
 	// option 3
-	i = atoi(pom_MODL_OPT[OPT_3_SPOLOCNA_CAST]);
+	i = atoi(pom_OPT[OPT_3_SPOLOCNA_CAST]);
 	// predpokladam, ze tento parameter moze byt zadany eventualne cislom (teda retazcom, kt. hodnota pri konverzii na int je int, urcujuci opt_3
 	if ((i > MODL_SPOL_CAST_NEBRAT) || (i <= 0)){
 		i = 0;
 		// ide o znakovy retazec nekonvertovatelny na cislo
 	}
 	else{
-		mystrcpy(pom_MODL_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i), SMALL);
-		// ak je zadane cislo spravne, tak i bude spravny int a pom_MODL_OPT[OPT_3_SPOLOCNA_CAST] bude spravny char*
+		mystrcpy(pom_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i), SMALL);
+		// ak je zadane cislo spravne, tak i bude spravny int a pom_OPT[OPT_3_SPOLOCNA_CAST] bude spravny char*
 	}
 	Log("opt %d: i == %d\n", OPT_3_SPOLOCNA_CAST, i);
 	// make sense only if any string was set (because some language constants in nazov_spolc() may be empty
-	if (strlen(pom_MODL_OPT[OPT_3_SPOLOCNA_CAST]) > 0){
+	if (strlen(pom_OPT[OPT_3_SPOLOCNA_CAST]) > 0){
 		while (i <= MODL_SPOL_CAST_NEBRAT){
-			if (equals(pom_MODL_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i))){
+			if (equals(pom_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i))){
 				_global_opt[OPT_3_SPOLOCNA_CAST] = i;
 				break;
 			}
@@ -11831,57 +11862,57 @@ void _rozparsuj_parametre_OPT(void){
 	if (i > MODL_SPOL_CAST_NEBRAT){
 		_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_3_SPOLOCNA_CAST, pom_MODL_OPT[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_3_SPOLOCNA_CAST]);
+	Log("opt %d == `%s' (%ld)\n", OPT_3_SPOLOCNA_CAST, pom_OPT[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_3_SPOLOCNA_CAST]);
 
 	// option 4
-	if ((pom_MODL_OPT[OPT_4_OFFLINE_EXPORT] == NULL) || (strlen(pom_MODL_OPT[OPT_4_OFFLINE_EXPORT]) < 1)){
+	if ((pom_OPT[OPT_4_OFFLINE_EXPORT] == NULL) || (strlen(pom_OPT[OPT_4_OFFLINE_EXPORT]) < 1)){
 		_global_opt[OPT_4_OFFLINE_EXPORT] = GLOBAL_OPTION_NULL;
 	}
 	else{
-		_global_opt[OPT_4_OFFLINE_EXPORT] = atol(pom_MODL_OPT[OPT_4_OFFLINE_EXPORT]);
+		_global_opt[OPT_4_OFFLINE_EXPORT] = atol(pom_OPT[OPT_4_OFFLINE_EXPORT]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_4_OFFLINE_EXPORT, pom_MODL_OPT[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_4_OFFLINE_EXPORT]);
+	Log("opt %d == `%s' (%ld)\n", OPT_4_OFFLINE_EXPORT, pom_OPT[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_4_OFFLINE_EXPORT]);
 
 	// option 5
-	if ((pom_MODL_OPT[OPT_5_ALTERNATIVES] == NULL) || (strlen(pom_MODL_OPT[OPT_5_ALTERNATIVES]) < 1)){
+	if ((pom_OPT[OPT_5_ALTERNATIVES] == NULL) || (strlen(pom_OPT[OPT_5_ALTERNATIVES]) < 1)){
 		_global_opt[OPT_5_ALTERNATIVES] = GLOBAL_OPTION_NULL;
 	}
 	else{
-		_global_opt[OPT_5_ALTERNATIVES] = atol(pom_MODL_OPT[OPT_5_ALTERNATIVES]);
+		_global_opt[OPT_5_ALTERNATIVES] = atol(pom_OPT[OPT_5_ALTERNATIVES]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_5_ALTERNATIVES, pom_MODL_OPT[OPT_5_ALTERNATIVES], _global_opt[OPT_5_ALTERNATIVES]);
+	Log("opt %d == `%s' (%ld)\n", OPT_5_ALTERNATIVES, pom_OPT[OPT_5_ALTERNATIVES], _global_opt[OPT_5_ALTERNATIVES]);
 
 	// force options
 	Log("force options...\n");
 	// postupne prechádzam jednotlivé bitové komponenty force a vyskladávam z nich celkovú jednu hodnotu; ak daná bitová hodnota nie je naplnená, použijem hodnotu z ne-force option-bitového komponentu
 
 	// option force 0
-	_rozparsuj_parametre_OPT_force(OPT_0_SPECIALNE, pom_MODL_OPTF_SPECIALNE, _global_opt_specialne);
+	_rozparsuj_parametre_OPT_force(OPT_0_SPECIALNE, pom_FORCE_OPT_0_SPECIALNE, _global_opt_0_specialne);
 
 	// option force 1
-	_rozparsuj_parametre_OPT_force(OPT_1_CASTI_MODLITBY, pom_MODL_OPTF_CASTI_MODLITBY, _global_opt_casti_modlitby);
+	_rozparsuj_parametre_OPT_force(OPT_1_CASTI_MODLITBY, pom_FORCE_OPT_1_CASTI_MODLITBY, _global_opt_1_casti_modlitby);
 
 	// option force 2
-	_rozparsuj_parametre_OPT_force(OPT_2_HTML_EXPORT, pom_MODL_OPTF_HTML_EXPORT, _global_opt_html_export);
+	_rozparsuj_parametre_OPT_force(OPT_2_HTML_EXPORT, pom_FORCE_OPT_2_HTML_EXPORT, _global_opt_2_html_export);
 
 	// option force 3
-	i = atoi(pom_MODL_OPTF[OPT_3_SPOLOCNA_CAST]);
+	i = atoi(pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST]);
 	// predpokladam, ze tento parameter moze byt zadany eventualne cislom (teda retazcom, kt. hodnota pri konverzii na int je int, urcujuci opt_3
 	if ((i > MODL_SPOL_CAST_NEBRAT) || (i <= 0)){
 		i = 0;
 		// ide o znakovy retazec nekonvertovatelny na cislo
 	}
 	else{
-		mystrcpy(pom_MODL_OPTF[OPT_3_SPOLOCNA_CAST], nazov_spolc(i), SMALL);
-		// ak je zadane cislo spravne, tak i bude spravny int a pom_MODL_OPTF[OPT_3_SPOLOCNA_CAST] bude spravny char*
+		mystrcpy(pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i), SMALL);
+		// ak je zadane cislo spravne, tak i bude spravny int a pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST] bude spravny char*
 	}
 	Log("opt %d: i == %d\n", OPT_3_SPOLOCNA_CAST, i);
 	// make sense only if any string was set (because some language constants in nazov_spolc() may be empty
-	if (strlen(pom_MODL_OPTF[OPT_3_SPOLOCNA_CAST]) > 0){
+	if (strlen(pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST]) > 0){
 		while (i <= MODL_SPOL_CAST_NEBRAT){
-			Log("optf %d: (in while)i == %d; %s\n", OPT_3_SPOLOCNA_CAST, i, nazov_spolc(i));
-			if (equals(pom_MODL_OPTF[OPT_3_SPOLOCNA_CAST], nazov_spolc(i))){
-				_global_optf[OPT_3_SPOLOCNA_CAST] = i;
+			Log("force_opt %d: (in while)i == %d; %s\n", OPT_3_SPOLOCNA_CAST, i, nazov_spolc(i));
+			if (equals(pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i))){
+				_global_force_opt[OPT_3_SPOLOCNA_CAST] = i;
 				break;
 			}
 			i++;
@@ -11891,15 +11922,15 @@ void _rozparsuj_parametre_OPT(void){
 		i = MODL_SPOL_CAST_NEBRAT + 1; // simulation of overflow in while
 	}
 	if (i > MODL_SPOL_CAST_NEBRAT){
-		_global_optf[OPT_3_SPOLOCNA_CAST] = GLOBAL_OPTION_NULL;
+		_global_force_opt[OPT_3_SPOLOCNA_CAST] = GLOBAL_OPTION_NULL;
 	}
-	Log("optf %d == `%s' (%ld)\n", OPT_3_SPOLOCNA_CAST, pom_MODL_OPTF[OPT_3_SPOLOCNA_CAST], _global_optf[OPT_3_SPOLOCNA_CAST]);
+	Log("force_opt %d == `%s' (%ld)\n", OPT_3_SPOLOCNA_CAST, pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST], _global_force_opt[OPT_3_SPOLOCNA_CAST]);
 
 	// option force 4
-	_rozparsuj_parametre_OPT_force(OPT_4_OFFLINE_EXPORT, pom_MODL_OPTF_OFFLINE_EXPORT, _global_opt_offline_export);
+	_rozparsuj_parametre_OPT_force(OPT_4_OFFLINE_EXPORT, pom_FORCE_OPT_4_OFFLINE_EXPORT, _global_opt_4_offline_export);
 
 	// option force 5
-	_rozparsuj_parametre_OPT_force(OPT_5_ALTERNATIVES, pom_MODL_OPTF_ALTERNATIVES, _global_opt_alternatives);
+	_rozparsuj_parametre_OPT_force(OPT_5_ALTERNATIVES, pom_FORCE_OPT_5_ALTERNATIVES, _global_opt_5_alternatives);
 
 	// kontrolujeme, či niektoré z options nie sú GLOBAL_OPTION_NULL a zároveň prípadne nastaví na default podľa jazyka
 	// doplnené opt_0 až opt_4 force (okrem opt_3); default sa nastavuje podľa "ne-force" verzií; CFG_OPTION1_DEFAULT..CFG_OPTION5_DEFAULT doplnené v myconf.h
@@ -11914,60 +11945,60 @@ void _rozparsuj_parametre_OPT(void){
 
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
 		Log("i == %d...\n", i);
-		if (_global_optf[i] == GLOBAL_OPTION_NULL){
-			_global_optf[i] = _global_opt[i];
-			Log("Keďže bolo _global_optf[%d] == GLOBAL_OPTION_NULL, nastavujem na _global_opt[%d] == `%ld'...\n", i, i, _global_optf[i]);
+		if (_global_force_opt[i] == GLOBAL_OPTION_NULL){
+			_global_force_opt[i] = _global_opt[i];
+			Log("Keďže bolo _global_force_opt[%d] == GLOBAL_OPTION_NULL, nastavujem na _global_opt[%d] == `%ld'...\n", i, i, _global_force_opt[i]);
 		}
 		else{
-			_global_opt[i] = _global_optf[i];
-			Log("Force; do _global_opt[%d] priraďujem _global_optf[%d] (`%ld')...\n", i, i, _global_optf[i]);
+			_global_opt[i] = _global_force_opt[i];
+			Log("Force; do _global_opt[%d] priraďujem _global_force_opt[%d] (`%ld')...\n", i, i, _global_force_opt[i]);
 		}
 		// špeciálna úprava: zohľadnenie defaultu z config súboru pre 4. bit (BIT_OPT_2_FONT_NAME_CHOOSER)
 		if (i == OPT_2_HTML_EXPORT){
-			// teraz platí, že _global_opt[i] == _global_optf[i], takže stačí testovať jednu z nich, ale upraviť treba obe hodnoty
+			// teraz platí, že _global_opt[i] == _global_force_opt[i], takže stačí testovať jednu z nich, ale upraviť treba obe hodnoty
 
 			// špeciálne: pre 4. bit (BIT_OPT_2_FONT_NAME_CHOOSER)
 			Log("špeciálna úprava: zohľadnenie defaultu z config súboru pre 4. bit (BIT_OPT_2_FONT_NAME_CHOOSER)\n");
 			opt_2_fn = ((CFG_OPTION_DEFAULT(i) & BIT_OPT_2_FONT_NAME_CHOOSER) == BIT_OPT_2_FONT_NAME_CHOOSER) ? ANO : NIE;
 			if ((isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER)) && (opt_2_fn == NIE)){
-				Log("odstraňujem z _global_opt aj _global_optf[%d] bit pre BIT_OPT_2_FONT_NAME_CHOOSER\n...", i);
-				_global_optf[i] -= BIT_OPT_2_FONT_NAME_CHOOSER;
+				Log("odstraňujem z _global_opt aj _global_force_opt[%d] bit pre BIT_OPT_2_FONT_NAME_CHOOSER\n...", i);
+				_global_force_opt[i] -= BIT_OPT_2_FONT_NAME_CHOOSER;
 				_global_opt[i] -= BIT_OPT_2_FONT_NAME_CHOOSER;
 			}
 			else if ((!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER)) && (opt_2_fn == ANO)){
-				Log("pridávam do _global_optf[%d] bit pre BIT_OPT_2_FONT_NAME_CHOOSER\n...", i);
-				_global_optf[i] += BIT_OPT_2_FONT_NAME_CHOOSER;
+				Log("pridávam do _global_force_opt[%d] bit pre BIT_OPT_2_FONT_NAME_CHOOSER\n...", i);
+				_global_force_opt[i] += BIT_OPT_2_FONT_NAME_CHOOSER;
 				_global_opt[i] += BIT_OPT_2_FONT_NAME_CHOOSER;
 			}
 			else{
-				Log("nie je potrebné upravovať ani _global_opt ani _global_optf[%d].\n", i);
+				Log("nie je potrebné upravovať ani _global_opt ani _global_force_opt[%d].\n", i);
 			}
-			Log("po potenciálnej úprave: _global_opt aj _global_optf[%d] == `%ld'...\n", i, _global_optf[i]);
+			Log("po potenciálnej úprave: _global_opt aj _global_force_opt[%d] == `%ld'...\n", i, _global_force_opt[i]);
 
 			// špeciálne: pre 5. bit (BIT_OPT_2_FONT_SIZE_CHOOSER)
 			Log("špeciálna úprava: zohľadnenie defaultu z config súboru pre 5. bit (BIT_OPT_2_FONT_SIZE_CHOOSER)\n");
 			opt_2_fs = ((CFG_OPTION_DEFAULT(i) & BIT_OPT_2_FONT_SIZE_CHOOSER) == BIT_OPT_2_FONT_SIZE_CHOOSER) ? ANO : NIE;
 			if ((isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER)) && (opt_2_fs == NIE)){
-				Log("odstraňujem z _global_opt aj _global_optf[%d] bit pre BIT_OPT_2_FONT_SIZE_CHOOSER\n...", i);
-				_global_optf[i] -= BIT_OPT_2_FONT_SIZE_CHOOSER;
+				Log("odstraňujem z _global_opt aj _global_force_opt[%d] bit pre BIT_OPT_2_FONT_SIZE_CHOOSER\n...", i);
+				_global_force_opt[i] -= BIT_OPT_2_FONT_SIZE_CHOOSER;
 				_global_opt[i] -= BIT_OPT_2_FONT_SIZE_CHOOSER;
 			}
 			else if ((!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER)) && (opt_2_fs == ANO)){
-				Log("pridávam do _global_optf[%d] bit pre BIT_OPT_2_FONT_SIZE_CHOOSER\n...", i);
-				_global_optf[i] += BIT_OPT_2_FONT_SIZE_CHOOSER;
+				Log("pridávam do _global_force_opt[%d] bit pre BIT_OPT_2_FONT_SIZE_CHOOSER\n...", i);
+				_global_force_opt[i] += BIT_OPT_2_FONT_SIZE_CHOOSER;
 				_global_opt[i] += BIT_OPT_2_FONT_SIZE_CHOOSER;
 			}
 			else{
-				Log("nie je potrebné upravovať ani _global_opt ani _global_optf[%d].\n", i);
+				Log("nie je potrebné upravovať ani _global_opt ani _global_force_opt[%d].\n", i);
 			}
-			Log("po potenciálnej úprave: _global_opt aj _global_optf[%d] == `%ld'...\n", i, _global_optf[i]);
+			Log("po potenciálnej úprave: _global_opt aj _global_force_opt[%d] == `%ld'...\n", i, _global_force_opt[i]);
 
 		}// (i == OPT_2_HTML_EXPORT)
 	}// for i
 
 	Log("=== Po potenciálnych úpravách (nastavenie default hodnôt podľa jazyka) ===\n");
-	log_pom_MODL_OPT();
-	log_pom_MODL_OPTF();
+	log_pom_OPT();
+	log_pom_FORCE_OPT();
 
 	// setting up global strings for HTML export
 	if ((isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_DO_NOT_USE_BUTTON)) || PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
@@ -14699,63 +14730,63 @@ short int getArgv(int argc, char **argv){
 				}
 				Log("option %c with value `%s' -- poradie svateho\n", c, optarg); break;
 
-			// MODL_OPT 0..5
+			// OPT 0..5
 			case '0':
 				if (optarg != NULL){
-					mystrcpy(pom_MODL_OPT[OPT_0_SPECIALNE], optarg, SMALL);
+					mystrcpy(pom_OPT[OPT_0_SPECIALNE], optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 			case '1':
 				if (optarg != NULL){
-					mystrcpy(pom_MODL_OPT[OPT_1_CASTI_MODLITBY], optarg, SMALL);
+					mystrcpy(pom_OPT[OPT_1_CASTI_MODLITBY], optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 			case '2':
 				if (optarg != NULL){
-					mystrcpy(pom_MODL_OPT[OPT_2_HTML_EXPORT], optarg, SMALL);
+					mystrcpy(pom_OPT[OPT_2_HTML_EXPORT], optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 			case '3':
 				if (optarg != NULL){
-					mystrcpy(pom_MODL_OPT[OPT_3_SPOLOCNA_CAST], optarg, SMALL);
+					mystrcpy(pom_OPT[OPT_3_SPOLOCNA_CAST], optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 			case '4':
 				if (optarg != NULL){
-					mystrcpy(pom_MODL_OPT[OPT_4_OFFLINE_EXPORT], optarg, SMALL);
+					mystrcpy(pom_OPT[OPT_4_OFFLINE_EXPORT], optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 			case '5':
 				if (optarg != NULL){
-					mystrcpy(pom_MODL_OPT[OPT_5_ALTERNATIVES], optarg, SMALL);
+					mystrcpy(pom_OPT[OPT_5_ALTERNATIVES], optarg, SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 
-			case 'a': // MODL_OPT_APPEND
+			case 'a': // OPT_APPEND
 				if (optarg != NULL){
-					mystrcpy(pom_MODL_OPT_APPEND, optarg, SMALL);
+					mystrcpy(pom_OPT_APPEND, optarg, SMALL);
 				}
-				if (equals(pom_MODL_OPT_APPEND, STR_ANO) || equals(pom_MODL_OPT_APPEND, STR_VALUE_TRUE)){
+				if (equals(pom_OPT_APPEND, STR_ANO) || equals(pom_OPT_APPEND, STR_VALUE_TRUE)){
 					_global_opt_append = ANO;
 				}
-				else if (equals(pom_MODL_OPT_APPEND, STR_NIE) || equals(pom_MODL_OPT_APPEND, STR_VALUE_FALSE)){
+				else if (equals(pom_OPT_APPEND, STR_NIE) || equals(pom_OPT_APPEND, STR_VALUE_FALSE)){
 					_global_opt_append = NIE;
 				}
-				Log("opt_append == `%s' (%d)\n", pom_MODL_OPT_APPEND, _global_opt_append);
+				Log("opt_append == `%s' (%d)\n", pom_OPT_APPEND, _global_opt_append);
 				Log("option %c with value `%s'\n", c, optarg); break;
 
 			// parameter `u' (dátUm) spôsob zapisovania dátumu pre súbory v batch móde
-			case 'u': // MODL_OPT_APPEND
+			case 'u': // OPT_APPEND
 				if (optarg != NULL){
-					mystrcpy(pom_MODL_OPT_DATE_FORMAT, optarg, SMALL);
+					mystrcpy(pom_OPT_DATE_FORMAT, optarg, SMALL);
 				}
-				if (equals(pom_MODL_OPT_DATE_FORMAT, STR_FULL) || equals(pom_MODL_OPT_DATE_FORMAT, STR_VALUE_TRUE)){
+				if (equals(pom_OPT_DATE_FORMAT, STR_FULL) || equals(pom_OPT_DATE_FORMAT, STR_VALUE_TRUE)){
 					_global_opt_export_date_format = EXPORT_DATE_FULL;
 				}
-				else if (equals(pom_MODL_OPT_DATE_FORMAT, STR_SIMPLE) || equals(pom_MODL_OPT_DATE_FORMAT, STR_VALUE_FALSE)){
+				else if (equals(pom_OPT_DATE_FORMAT, STR_SIMPLE) || equals(pom_OPT_DATE_FORMAT, STR_VALUE_FALSE)){
 					_global_opt_export_date_format = EXPORT_DATE_SIMPLE;
 				}
-				Log("opt_append == `%s' (%d)\n", pom_MODL_OPT_DATE_FORMAT, _global_opt_export_date_format);
+				Log("opt_append == `%s' (%d)\n", pom_OPT_DATE_FORMAT, _global_opt_export_date_format);
 				Log("option %c with value `%s'\n", c, optarg); break;
 
 			case 'q': // QUERY_TYPE
@@ -14968,30 +14999,30 @@ short int getForm(void){
 
 	// options
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		// premenná WWW_MODL_OPTi
+		// premenná WWW_OPT_i
 		mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, i, USE_STR_MODL_OPT);
+		strcat_str_opt_bit_order(local_str, i, USE_STR_OPT);
 
 		ptr = getenv(local_str);
 		if (ptr != NULL){
 			if (strcmp(ptr, STR_EMPTY) != 0){
-				mystrcpy(pom_MODL_OPT[i], ptr, SMALL);
+				mystrcpy(pom_OPT[i], ptr, SMALL);
 			}
 		}
 	}// for i
 
 	// force options
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		// premenná WWW_MODL_OPTFi
+		// premenná WWW_FORCE_OPT_i
 		mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, i, USE_STR_MODL_OPTF);
+		strcat_str_opt_bit_order(local_str, i, USE_STR_FORCE_OPT);
 
 		ptr = getenv(local_str);
 		if (ptr != NULL){
 			if (strcmp(ptr, STR_EMPTY) != 0){
-				mystrcpy(pom_MODL_OPTF[i], ptr, SMALL);
+				mystrcpy(pom_FORCE_OPT[i], ptr, SMALL);
 			}
 		}
 	}// for i
@@ -14999,15 +15030,15 @@ short int getForm(void){
 	// force option 0 premenné -- jednotlivé bit-komponenty
 	Log("force option %d, jednotlivé bit-komponenty...(getForm)\n", OPT_0_SPECIALNE);
 	for (i = 0; i < POCET_OPT_0_SPECIALNE; i++){
-		// premenná WWW_MODL_OPTF_0_...
+		// premenná WWW_FORCE_BIT_OPT_0_...
 		mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, OPT_0_SPECIALNE, i);
+		strcat_str_opt_bit_order(local_str, OPT_0_SPECIALNE, i);
 
 		ptr = getenv(local_str);
 		if (ptr != NULL){
 			if (strcmp(ptr, STR_EMPTY) != 0){
-				mystrcpy(pom_MODL_OPTF_SPECIALNE[i], ptr, SMALL);
+				mystrcpy(pom_FORCE_OPT_0_SPECIALNE[i], ptr, SMALL);
 			}
 		}
 	}// for i
@@ -15015,15 +15046,15 @@ short int getForm(void){
 	// force option 1 premenné -- jednotlivé bit-komponenty
 	Log("force option %d, jednotlivé bit-komponenty...(getForm)\n", OPT_1_CASTI_MODLITBY);
 	for (i = 0; i < POCET_OPT_1_CASTI_MODLITBY; i++){
-		// premenná WWW_MODL_OPTF_1_...
+		// premenná WWW_FORCE_BIT_OPT_1_...
 		mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, OPT_1_CASTI_MODLITBY, i);
+		strcat_str_opt_bit_order(local_str, OPT_1_CASTI_MODLITBY, i);
 
 		ptr = getenv(local_str);
 		if (ptr != NULL){
 			if (strcmp(ptr, STR_EMPTY) != 0){
-				mystrcpy(pom_MODL_OPTF_CASTI_MODLITBY[i], ptr, SMALL);
+				mystrcpy(pom_FORCE_OPT_1_CASTI_MODLITBY[i], ptr, SMALL);
 			}
 		}
 	}// for i
@@ -15031,15 +15062,15 @@ short int getForm(void){
 	// force option 2, jednotlivé bit-komponenty
 	Log("force option %d, jednotlivé bit-komponenty...(getForm)\n", OPT_2_HTML_EXPORT);
 	for (i = 0; i < POCET_OPT_2_HTML_EXPORT; i++){
-		// premenná WWW_MODL_OPTF_2_...
+		// premenná WWW_FORCE_BIT_OPT_2_...
 		mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, OPT_2_HTML_EXPORT, i);
+		strcat_str_opt_bit_order(local_str, OPT_2_HTML_EXPORT, i);
 
 		ptr = getenv(local_str);
 		if (ptr != NULL){
 			if (strcmp(ptr, STR_EMPTY) != 0){
-				mystrcpy(pom_MODL_OPTF_HTML_EXPORT[i], ptr, SMALL);
+				mystrcpy(pom_FORCE_OPT_2_HTML_EXPORT[i], ptr, SMALL);
 			}
 		}
 	}// for i
@@ -15047,15 +15078,15 @@ short int getForm(void){
 	// force option 5, jednotlivé bit-komponenty
 	Log("force option %d, jednotlivé bit-komponenty...(getForm)\n", OPT_5_ALTERNATIVES);
 	for (i = 0; i < POCET_OPT_5_ALTERNATIVES; i++){
-		// premenná WWW_MODL_OPTF_5_...
+		// premenná WWW_FORCE_BIT_OPT_5_...
 		mystrcpy(local_str, WWW_PREFIX, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, OPT_5_ALTERNATIVES, i);
+		strcat_str_opt_bit_order(local_str, OPT_5_ALTERNATIVES, i);
 
 		ptr = getenv(local_str);
 		if (ptr != NULL){
 			if (strcmp(ptr, STR_EMPTY) != 0){
-				mystrcpy(pom_MODL_OPTF_ALTERNATIVES[i], ptr, SMALL);
+				mystrcpy(pom_FORCE_OPT_5_ALTERNATIVES[i], ptr, SMALL);
 			}
 		}
 	}// for i
@@ -15725,21 +15756,21 @@ short int parseQueryString(void){
 		Log("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, j, USE_STR_MODL_OPT);
+		strcat_str_opt_bit_order(local_str, j, USE_STR_OPT);
 
-		// premenná MODL_OPTj (nepovinná), j = 0 až POCET_GLOBAL_OPT - 1
+		// premenná OPT_j (nepovinná), j = 0 až POCET_GLOBAL_OPT - 1
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString()\n", local_str);
-		while ((equalsi(pom_MODL_OPT[j], STR_EMPTY)) && (i < pocet)){
+		while ((equalsi(pom_OPT[j], STR_EMPTY)) && (i < pocet)){
 			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
-				// ide o parameter STR_MODL_OPTj
-				mystrcpy(pom_MODL_OPT[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_MODL_OPT[j]);
+				// ide o parameter STR_OPT_j
+				mystrcpy(pom_OPT[j], param[i].val, SMALL);
+				Log("hodnota parametra %s je %s.\n", local_str, pom_OPT[j]);
 			}
 			i++;
 		}
-		if (equalsi(pom_MODL_OPT[j], STR_EMPTY)){
+		if (equalsi(pom_OPT[j], STR_EMPTY)){
 			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
@@ -15749,21 +15780,21 @@ short int parseQueryString(void){
 		Log("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, j, USE_STR_MODL_OPTF);
+		strcat_str_opt_bit_order(local_str, j, USE_STR_FORCE_OPT);
 
-		// premenná MODL_OPTFj (nepovinná), j = 0 až 9
+		// premenná FORCE_OPT_j (nepovinná)
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force\n", local_str);
-		while ((equalsi(pom_MODL_OPTF[j], STR_EMPTY)) && (i < pocet)){
+		while ((equalsi(pom_FORCE_OPT[j], STR_EMPTY)) && (i < pocet)){
 			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
-				// ide o parameter STR_MODL_OPTFj
-				mystrcpy(pom_MODL_OPTF[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_MODL_OPTF[j]);
+				// ide o parameter STR_FORCE_OPT_j
+				mystrcpy(pom_FORCE_OPT[j], param[i].val, SMALL);
+				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT[j]);
 			}
 			i++;
 		}
-		if (equalsi(pom_MODL_OPTF[j], STR_EMPTY)){
+		if (equalsi(pom_FORCE_OPT[j], STR_EMPTY)){
 			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
@@ -15777,21 +15808,21 @@ short int parseQueryString(void){
 		Log("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, OPT_0_SPECIALNE, j);
+		strcat_str_opt_bit_order(local_str, OPT_0_SPECIALNE, j);
 
-		// premenná WWW_MODL_OPTF_0_... (nepovinná), j = 0 až POCET_OPT_0_SPECIALNE
+		// premenná WWW_FORCE_BIT_OPT_0_... (nepovinná), j = 0 až POCET_OPT_0_SPECIALNE
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 0 / pom_MODL_OPTF_SPECIALNE[%d] = %s\n", local_str, j, pom_MODL_OPTF_SPECIALNE[j]);
-		while ((equalsi(pom_MODL_OPTF_SPECIALNE[j], STR_EMPTY)) && (i > 0)){
+		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 0 / pom_FORCE_OPT_0_SPECIALNE[%d] = %s\n", local_str, j, pom_FORCE_OPT_0_SPECIALNE[j]);
+		while ((equalsi(pom_FORCE_OPT_0_SPECIALNE[j], STR_EMPTY)) && (i > 0)){
 			--i;
 			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
-				// ide o parameter STR_MODL_OPTFj
-				mystrcpy(pom_MODL_OPTF_SPECIALNE[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_MODL_OPTF_SPECIALNE[j]);
+				// ide o parameter STR_FORCE_OPT_j
+				mystrcpy(pom_FORCE_OPT_0_SPECIALNE[j], param[i].val, SMALL);
+				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_0_SPECIALNE[j]);
 			}
 		}
-		if (equalsi(pom_MODL_OPTF_SPECIALNE[j], STR_EMPTY)){
+		if (equalsi(pom_FORCE_OPT_0_SPECIALNE[j], STR_EMPTY)){
 			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
@@ -15805,21 +15836,21 @@ short int parseQueryString(void){
 		Log("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, OPT_1_CASTI_MODLITBY, j);
+		strcat_str_opt_bit_order(local_str, OPT_1_CASTI_MODLITBY, j);
 
-		// premenná WWW_MODL_OPTF_1_... (nepovinná), j = 0 až POCET_OPT_1_CASTI_MODLITBY
+		// premenná WWW_FORCE_BIT_OPT_1_... (nepovinná), j = 0 až POCET_OPT_1_CASTI_MODLITBY
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 1 / pom_MODL_OPTF_CASTI_MODLITBY[%d] == %s\n", local_str, j, pom_MODL_OPTF_CASTI_MODLITBY[j]);
-		while ((equalsi(pom_MODL_OPTF_CASTI_MODLITBY[j], STR_EMPTY)) && (i > 0)){
+		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 1 / pom_FORCE_OPT_1_CASTI_MODLITBY[%d] == %s\n", local_str, j, pom_FORCE_OPT_1_CASTI_MODLITBY[j]);
+		while ((equalsi(pom_FORCE_OPT_1_CASTI_MODLITBY[j], STR_EMPTY)) && (i > 0)){
 			--i;
 			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
-				// ide o parameter STR_MODL_OPTFj
-				mystrcpy(pom_MODL_OPTF_CASTI_MODLITBY[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_MODL_OPTF_CASTI_MODLITBY[j]);
+				// ide o parameter STR_FORCE_OPT_j
+				mystrcpy(pom_FORCE_OPT_1_CASTI_MODLITBY[j], param[i].val, SMALL);
+				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_1_CASTI_MODLITBY[j]);
 			}
 		}
-		if (equalsi(pom_MODL_OPTF_CASTI_MODLITBY[j], STR_EMPTY)){
+		if (equalsi(pom_FORCE_OPT_1_CASTI_MODLITBY[j], STR_EMPTY)){
 			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
@@ -15833,21 +15864,21 @@ short int parseQueryString(void){
 		Log("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
-		strcat_str_modl_opt_bit_order(local_str, OPT_2_HTML_EXPORT, j);
+		strcat_str_opt_bit_order(local_str, OPT_2_HTML_EXPORT, j);
 
-		// premenná WWW_MODL_OPT_2_... (nepovinná), j = 0 až POCET_OPT_2_HTML_EXPORT
+		// premenná WWW_OPT_2_... (nepovinná), j = 0 až POCET_OPT_2_HTML_EXPORT
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 2 / pom_MODL_OPTF_HTML_EXPORT[%d] = %s\n", local_str, j, pom_MODL_OPTF_HTML_EXPORT[j]);
-		while ((equalsi(pom_MODL_OPTF_HTML_EXPORT[j], STR_EMPTY)) && (i > 0)){
+		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 2 / pom_FORCE_OPT_2_HTML_EXPORT[%d] = %s\n", local_str, j, pom_FORCE_OPT_2_HTML_EXPORT[j]);
+		while ((equalsi(pom_FORCE_OPT_2_HTML_EXPORT[j], STR_EMPTY)) && (i > 0)){
 			--i;
 			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
-				// ide o parameter STR_MODL_OPTFj
-				mystrcpy(pom_MODL_OPTF_HTML_EXPORT[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_MODL_OPTF_HTML_EXPORT[j]);
+				// ide o parameter STR_FORCE_OPT_j
+				mystrcpy(pom_FORCE_OPT_2_HTML_EXPORT[j], param[i].val, SMALL);
+				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_2_HTML_EXPORT[j]);
 			}
 		}
-		if (equalsi(pom_MODL_OPTF_HTML_EXPORT[j], STR_EMPTY)){
+		if (equalsi(pom_FORCE_OPT_2_HTML_EXPORT[j], STR_EMPTY)){
 			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
@@ -15861,21 +15892,21 @@ short int parseQueryString(void){
 		Log("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 		
-		strcat_str_modl_opt_bit_order(local_str, OPT_5_ALTERNATIVES, j);
+		strcat_str_opt_bit_order(local_str, OPT_5_ALTERNATIVES, j);
 
-		// premenná WWW_MODL_OPTF_5_... (nepovinná), j = 0 až POCET_OPT_5_ALTERNATIVES
+		// premenná WWW_FORCE_BIT_OPT_5_... (nepovinná), j = 0 až POCET_OPT_5_ALTERNATIVES
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 5 / pom_MODL_OPTF_ALTERNATIVES[%d] = %s\n", local_str, j, pom_MODL_OPTF_ALTERNATIVES[j]);
-		while ((equalsi(pom_MODL_OPTF_ALTERNATIVES[j], STR_EMPTY)) && (i > 0)){
+		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 5 / pom_FORCE_OPT_5_ALTERNATIVES[%d] = %s\n", local_str, j, pom_FORCE_OPT_5_ALTERNATIVES[j]);
+		while ((equalsi(pom_FORCE_OPT_5_ALTERNATIVES[j], STR_EMPTY)) && (i > 0)){
 			--i;
 			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
-				// ide o parameter STR_MODL_OPTFj
-				mystrcpy(pom_MODL_OPTF_ALTERNATIVES[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_MODL_OPTF_ALTERNATIVES[j]);
+				// ide o parameter STR_FORCE_OPT_j
+				mystrcpy(pom_FORCE_OPT_5_ALTERNATIVES[j], param[i].val, SMALL);
+				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_5_ALTERNATIVES[j]);
 			}
 		}
-		if (equalsi(pom_MODL_OPTF_ALTERNATIVES[j], STR_EMPTY)){
+		if (equalsi(pom_FORCE_OPT_5_ALTERNATIVES[j], STR_EMPTY)){
 			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
@@ -16451,20 +16482,20 @@ END_parseQueryString:
 	_main_LOG_to_Export("\tparam3 == %s (pom_ROK/pom_ANALYZA_ROKU), param3 == %s (pom_LINKY)\n", pom_ROK, pom_LINKY);\
 	_main_LOG_to_Export("\tparam4 == %s (pom_MODLITBA resp. ROK DO pre batch mode)\n", pom_MODLITBA);\
 	_main_LOG_to_Export("\tparam5 == %s (pom_DALSI_SVATY)\n", pom_DALSI_SVATY);\
-	_main_LOG_to_Export("\tparam11== %s (pom_MODL_OPT_APPEND)\n", pom_MODL_OPT_APPEND);\
+	_main_LOG_to_Export("\tparam11== %s (pom_OPT_APPEND)\n", pom_OPT_APPEND);\
 	_main_LOG_to_Export("\tparam12== %s (pom_JAZYK)\n", pom_JAZYK);\
 	_main_LOG_to_Export("\tparam  == %s (pom_KALENDAR)\n", pom_KALENDAR);\
 	_main_LOG_to_Export("\tparam  == %s (pom_CSS)\n", pom_CSS);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT)\n", pom_FONT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE)\n", pom_FONT_SIZE);\
 	_main_LOG_to_Export("\tparam  == %s (pom_STYLE_MARGIN)\n", pom_STYLE_MARGIN);\
-	_main_LOG_to_Export("\tparam  == %s (pom_MODL_OPT_DATE_FORMAT)\n", pom_MODL_OPT_DATE_FORMAT);\
+	_main_LOG_to_Export("\tparam  == %s (pom_OPT_DATE_FORMAT)\n", pom_OPT_DATE_FORMAT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_EXPORT_MONTHLY)\n", pom_EXPORT_MONTHLY);\
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){\
-		_main_LOG_to_Export("\tparam  == %s (pom_MODL_OPT[%d])\n", pom_MODL_OPT[i], i);\
+		_main_LOG_to_Export("\tparam  == %s (pom_OPT[%d])\n", pom_OPT[i], i);\
 	}\
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){\
-		_main_LOG_to_Export("\tparam  == %s (pom_MODL_OPTF[%d])\n", pom_MODL_OPTF[i], i);\
+		_main_LOG_to_Export("\tparam  == %s (pom_FORCE_OPT[%d])\n", pom_FORCE_OPT[i], i);\
 	}\
 }
 
@@ -16546,16 +16577,16 @@ int breviar_main(int argc, char **argv){
 	strcpy(pom_FONT, STR_EMPTY);
 	strcpy(pom_FONT_SIZE, STR_EMPTY);
 	strcpy(pom_STYLE_MARGIN, STR_EMPTY);
-	strcpy(pom_MODL_OPT_DATE_FORMAT, STR_EMPTY);
+	strcpy(pom_OPT_DATE_FORMAT, STR_EMPTY);
 	strcpy(pom_EXPORT_MONTHLY, STR_EMPTY); // 2009-08-03: Pridané kvôli rôznym spôsobom exportu po mesiacoch, prepínač -M
 	_global_modlitba = MODL_NEURCENA;
 
-	memset(_global_optf, 0, sizeof(_global_optf));
-	memset(_global_opt_specialne, 0, sizeof(_global_opt_specialne));
-	memset(_global_opt_casti_modlitby, 0, sizeof(_global_opt_casti_modlitby));
-	memset(_global_opt_html_export, 0, sizeof(_global_opt_html_export));
-	memset(_global_opt_offline_export, 0, sizeof(_global_opt_offline_export));
-	memset(_global_opt_alternatives, 0, sizeof(_global_opt_alternatives));
+	memset(_global_force_opt, 0, sizeof(_global_force_opt));
+	memset(_global_opt_0_specialne, 0, sizeof(_global_opt_0_specialne));
+	memset(_global_opt_1_casti_modlitby, 0, sizeof(_global_opt_1_casti_modlitby));
+	memset(_global_opt_2_html_export, 0, sizeof(_global_opt_2_html_export));
+	memset(_global_opt_4_offline_export, 0, sizeof(_global_opt_4_offline_export));
+	memset(_global_opt_5_alternatives, 0, sizeof(_global_opt_5_alternatives));
 
 	_global_jazyk = 0;
 	_global_kalendar = 0;
@@ -16583,16 +16614,16 @@ int breviar_main(int argc, char **argv){
 
 	params = 0;
 
-	strcpy(pom_MODL_OPT_APPEND, STR_EMPTY);
+	strcpy(pom_OPT_APPEND, STR_EMPTY);
 	strcpy(pom_KALENDAR, STR_EMPTY);
 
-	memset(pom_MODL_OPT, 0, sizeof(pom_MODL_OPT));
-	memset(pom_MODL_OPTF, 0, sizeof(pom_MODL_OPTF));
-	memset(pom_MODL_OPTF_SPECIALNE, 0, sizeof(pom_MODL_OPTF_SPECIALNE));
-	memset(pom_MODL_OPTF_CASTI_MODLITBY, 0, sizeof(pom_MODL_OPTF_CASTI_MODLITBY));
-	memset(pom_MODL_OPTF_HTML_EXPORT, 0, sizeof(pom_MODL_OPTF_HTML_EXPORT));
-	memset(pom_MODL_OPTF_OFFLINE_EXPORT, 0, sizeof(pom_MODL_OPTF_OFFLINE_EXPORT));
-	memset(pom_MODL_OPTF_ALTERNATIVES, 0, sizeof(pom_MODL_OPTF_ALTERNATIVES));
+	memset(pom_OPT, 0, sizeof(pom_OPT));
+	memset(pom_FORCE_OPT, 0, sizeof(pom_FORCE_OPT));
+	memset(pom_FORCE_OPT_0_SPECIALNE, 0, sizeof(pom_FORCE_OPT_0_SPECIALNE));
+	memset(pom_FORCE_OPT_1_CASTI_MODLITBY, 0, sizeof(pom_FORCE_OPT_1_CASTI_MODLITBY));
+	memset(pom_FORCE_OPT_2_HTML_EXPORT, 0, sizeof(pom_FORCE_OPT_2_HTML_EXPORT));
+	memset(pom_FORCE_OPT_4_OFFLINE_EXPORT, 0, sizeof(pom_FORCE_OPT_4_OFFLINE_EXPORT));
+	memset(pom_FORCE_OPT_5_ALTERNATIVES, 0, sizeof(pom_FORCE_OPT_5_ALTERNATIVES));
 
 	strcpy(bad_param_str, STR_EMPTY);
 	strcpy(file_export, STR_EMPTY);
@@ -16630,17 +16661,17 @@ int breviar_main(int argc, char **argv){
 
 	_main_LOG("-- log file programu pre Liturgiu hodín " TEXT_COPYRIGHT " --\n");
 
-	_main_LOG("inicializácia poľa pom_MODL_OPT[]...\n");
+	_main_LOG("inicializácia poľa pom_OPT[]...\n");
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		mystrcpy(pom_MODL_OPT[i], STR_EMPTY, SMALL);
-		// _main_LOG("pom_MODL_OPT[%d] == `%s'...\n", i, pom_MODL_OPT[i]);
-	}// nastavenie pom_MODL_OPT[i]
+		mystrcpy(pom_OPT[i], STR_EMPTY, SMALL);
+		// _main_LOG("pom_OPT[%d] == `%s'...\n", i, pom_OPT[i]);
+	}// nastavenie pom_OPT[i]
 
-	_main_LOG("inicializácia poľa pom_MODL_OPTF[]...\n");
+	_main_LOG("inicializácia poľa pom_FORCE_OPT[]...\n");
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		mystrcpy(pom_MODL_OPTF[i], STR_EMPTY, SMALL);
-		// _main_LOG("pom_MODL_OPTF[%d] == `%s'...\n", i, pom_MODL_OPTF[i]);
-	}// nastavenie pom_MODL_OPTF[i]
+		mystrcpy(pom_FORCE_OPT[i], STR_EMPTY, SMALL);
+		// _main_LOG("pom_FORCE_OPT[%d] == `%s'...\n", i, pom_FORCE_OPT[i]);
+	}// nastavenie pom_FORCE_OPT[i]
 
 	// config
 	_main_LOG("first, reading configuration (file %s)...\n", CONFIG_FILE);

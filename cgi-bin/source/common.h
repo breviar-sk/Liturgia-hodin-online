@@ -203,6 +203,8 @@
 #define HTML_DIV_RED_SMALL          "div class=\"redsmall\""
 #define HTML_DIV_RED_SUBTITLE       "div class=\"redsubtitle\""
 
+#define HTML_DIV_PSALM_INDENT       "div class=\"psalm-indent\""
+
 // HTML tables defined using DIVs
 #define HTML_TABLE			        "div class=\"table\"" // "table"
 #define HTML_TABLE_LEFT             "div class=\"table-left\"" // "table" left-aligned

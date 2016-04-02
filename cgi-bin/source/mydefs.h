@@ -206,7 +206,7 @@ extern short int query_type; // contains constants PRM_...
 
 // ----------------------------------------------------
 #define WWW_PREFIX "WWW_"
-#define ADD_WWW_PREFIX_(a) ("WWW_"a)
+#define ADD_WWW_PREFIX_(a) ("WWW_" a)
 
 // nasleduju parametre z formularov pre dotaz PRM_DATUM
 #define DEN 3 // dotaz na konkretny datum
@@ -352,54 +352,54 @@ extern short int query_type; // contains constants PRM_...
 #endif
 
 // nasleduju parametre pre modlitbu (PRM_DATUM, PRM_DETAILY)
-#define MODL_OPT_0 38
+#define OPT_0 38
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPT_0 "MODL_OPT_0"
+	#define STR_OPT_0 "OPT_0"
 #else
-	#define STR_MODL_OPT_0 "o0"
+	#define STR_OPT_0 "o0"
 #endif
 
-#define MODL_OPT_1 31
+#define OPT_1 31
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPT_1 "MODL_OPT_1"
+	#define STR_OPT_1 "OPT_1"
 #else
-	#define STR_MODL_OPT_1 "o1"
+	#define STR_OPT_1 "o1"
 #endif
 
-#define MODL_OPT_2 32
+#define OPT_2 32
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPT_2 "MODL_OPT_2"
+	#define STR_OPT_2 "OPT_2"
 #else
-	#define STR_MODL_OPT_2 "o2"
+	#define STR_OPT_2 "o2"
 #endif
 
-#define MODL_OPT_3 33
+#define OPT_3 33
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPT_3 "MODL_OPT_3"
+	#define STR_OPT_3 "OPT_3"
 #else
-	#define STR_MODL_OPT_3 "o3"
+	#define STR_OPT_3 "o3"
 #endif
 
-#define MODL_OPT_4 34
+#define OPT_4 34
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPT_4 "MODL_OPT_4"
+	#define STR_OPT_4 "OPT_4"
 #else
-	#define STR_MODL_OPT_4 "o4"
+	#define STR_OPT_4 "o4"
 #endif
 
-#define MODL_OPT_5 35
+#define OPT_5 35
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPT_5 "MODL_OPT_5"
+	#define STR_OPT_5 "OPT_5"
 #else
-	#define STR_MODL_OPT_5 "o5"
+	#define STR_OPT_5 "o5"
 #endif
 
 // append pridany 2003-07-08, bude v _global_opt_append; nemal by byt pouzity na webe
-#define MODL_OPT_APPEND 36
+#define OPT_APPEND 36
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPT_APPEND "MODL_OPT_APPEND"
+	#define STR_OPT_APPEND "OPT_APPEND"
 #else
-	#define STR_MODL_OPT_APPEND "a"
+	#define STR_OPT_APPEND "a"
 #endif
 
 // 2006-07-11: Pridané kvôli jazykovým mutáciám
@@ -411,510 +411,518 @@ extern short int query_type; // contains constants PRM_...
 #endif
 
 // --- force verzie pre option 0 až 4 ---
-#define MODL_OPTF_0 50
+#define FORCE_OPT_0 50
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0 "MODL_OPTF_0"
+	#define STR_FORCE_OPT_0 "FORCE_OPT_0"
 #else
-	#define STR_MODL_OPTF_0 "of0"
+	#define STR_FORCE_OPT_0 "of0"
 #endif
 
-#define MODL_OPTF_1 51
+#define FORCE_OPT_1 51
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1 "MODL_OPTF_1"
+	#define STR_FORCE_OPT_1 "FORCE_OPT_1"
 #else
-	#define STR_MODL_OPTF_1 "of1"
+	#define STR_FORCE_OPT_1 "of1"
 #endif
 
-#define MODL_OPTF_2 52
+#define FORCE_OPT_2 52
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2 "MODL_OPTF_2"
+	#define STR_FORCE_OPT_2 "FORCE_OPT_2"
 #else
-	#define STR_MODL_OPTF_2 "of2"
+	#define STR_FORCE_OPT_2 "of2"
 #endif
 
-#define MODL_OPTF_3 53
+#define FORCE_OPT_3 53
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_3 "MODL_OPTF_3"
+	#define STR_FORCE_OPT_3 "FORCE_OPT_3"
 #else
-	#define STR_MODL_OPTF_3 "of3"
+	#define STR_FORCE_OPT_3 "of3"
 #endif
 
-#define MODL_OPTF_4 54
+#define FORCE_OPT_4 54
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_4 "MODL_OPTF_4"
+	#define STR_FORCE_OPT_4 "FORCE_OPT_4"
 #else
-	#define STR_MODL_OPTF_4 "of4"
+	#define STR_FORCE_OPT_4 "of4"
 #endif
 
-#define MODL_OPTF_5 55
+#define FORCE_OPT_5 55
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5 "MODL_OPTF_5"
+	#define STR_FORCE_OPT_5 "FORCE_OPT_5"
 #else
-	#define STR_MODL_OPTF_5 "of5"
+	#define STR_FORCE_OPT_5 "of5"
 #endif
 
 // pre force option 0 jednotlivé bit-komponenty (parciálne voľby)
 
 // číslovanie (čísla) veršov
-#define MODL_OPTF_0_VERSE 61
+#define FORCE_BIT_OPT_0_VERSE 61
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0_VERSE "MODL_OPTF_0_VERSE"
+	#define STR_FORCE_BIT_OPT_0_VERSE "FORCE_BIT_OPT_0_VERSE"
 #else
-	#define STR_MODL_OPTF_0_VERSE "of0v"
+	#define STR_FORCE_BIT_OPT_0_VERSE "of0v"
 #endif
 
 // referencie (biblické odkazy)
-#define MODL_OPTF_0_REF 62
+#define FORCE_BIT_OPT_0_REF 62
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0_REF "MODL_OPTF_0_REF"
+	#define STR_FORCE_BIT_OPT_0_REF "FORCE_BIT_OPT_0_REF"
 #else
-	#define STR_MODL_OPTF_0_REF "of0r"
+	#define STR_FORCE_BIT_OPT_0_REF "of0r"
 #endif
 
 // liturgické čítania
-#define MODL_OPTF_0_CIT 63
+#define FORCE_BIT_OPT_0_CIT 63
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0_CIT "MODL_OPTF_0_CIT"
+	#define STR_FORCE_BIT_OPT_0_CIT "FORCE_BIT_OPT_0_CIT"
 #else
-	#define STR_MODL_OPTF_0_CIT "of0cit"
+	#define STR_FORCE_BIT_OPT_0_CIT "of0cit"
 #endif
 
 // zjavenie pána -- či sláviť 6.1. alebo v nedeľu
-#define MODL_OPTF_0_ZJAV_NED 64
+#define FORCE_BIT_OPT_0_ZJAV_NED 64
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0_ZJAV_NED "MODL_OPTF_0_ZJAV_NED"
+	#define STR_FORCE_BIT_OPT_0_ZJAV_NED "FORCE_BIT_OPT_0_ZJAV_NED"
 #else
-	#define STR_MODL_OPTF_0_ZJAV_NED "of0zjvne"
+	#define STR_FORCE_BIT_OPT_0_ZJAV_NED "of0zjvne"
 #endif
 
 // nanebovstúpenie pána -- či sláviť vo štvrtok (40. deň po VN) alebo v nedeľu
-#define MODL_OPTF_0_NAN_NED 65
+#define FORCE_BIT_OPT_0_NAN_NED 65
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0_NAN_NED "MODL_OPTF_0_NANV_NED"
+	#define STR_FORCE_BIT_OPT_0_NAN_NED "FORCE_BIT_OPT_0_NANV_NED"
 #else
-	#define STR_MODL_OPTF_0_NAN_NED "of0nanne"
+	#define STR_FORCE_BIT_OPT_0_NAN_NED "of0nanne"
 #endif
 
 // najsv. kristovho tela a krvi -- či sláviť vo štvrtok (11. deň po ZDS) alebo v nedeľu
-#define MODL_OPTF_0_TK_NED 66
+#define FORCE_BIT_OPT_0_TK_NED 66
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0_TK_NED "MODL_OPTF_0_TK_NED"
+	#define STR_FORCE_BIT_OPT_0_TK_NED "FORCE_BIT_OPT_0_TK_NED"
 #else
-	#define STR_MODL_OPTF_0_TK_NED "of0tkne"
+	#define STR_FORCE_BIT_OPT_0_TK_NED "of0tkne"
 #endif
 
 // force usage of normal font (no bold)
-#define MODL_OPTF_0_FONT_NORMAL 67
+#define FORCE_BIT_OPT_0_FONT_NORMAL 67
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0_FONT_NORMAL "MODL_OPTF_0_FONT_NORMAL"
+	#define STR_FORCE_BIT_OPT_0_FONT_NORMAL "FORCE_BIT_OPT_0_FONT_NORMAL"
 #else
-	#define STR_MODL_OPTF_0_FONT_NORMAL "of0fn"
+	#define STR_FORCE_BIT_OPT_0_FONT_NORMAL "of0fn"
 #endif
 
 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
-#define MODL_OPTF_0_BUTTONS_ORDER 68
+#define FORCE_BIT_OPT_0_BUTTONS_ORDER 68
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_0_BUTTONS_ORDER "MODL_OPTF_0_BUTTONS_ORDER"
+	#define STR_FORCE_BIT_OPT_0_BUTTONS_ORDER "FORCE_BIT_OPT_0_BUTTONS_ORDER"
 #else
-	#define STR_MODL_OPTF_0_BUTTONS_ORDER "of0bo"
+	#define STR_FORCE_BIT_OPT_0_BUTTONS_ORDER "of0bo"
 #endif
 
 // blind-friendly mode
-#define MODL_OPTF_0_BLIND_FRIENDLY 69
+#define FORCE_BIT_OPT_0_BLIND_FRIENDLY 69
 #ifdef LONG_PARAM_NAMES
-#define STR_MODL_OPTF_0_BLIND_FRIENDLY "MODL_OPTF_0_BLIND_FRIENDLY"
+#define STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY "FORCE_BIT_OPT_0_BLIND_FRIENDLY"
 #else
-#define STR_MODL_OPTF_0_BLIND_FRIENDLY "of0bf"
+#define STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY "of0bf"
 #endif
 
 // footnotes
-#define MODL_OPTF_0_FOOTNOTES 70
+#define FORCE_BIT_OPT_0_FOOTNOTES 70
 #ifdef LONG_PARAM_NAMES
-#define STR_MODL_OPTF_0_FOOTNOTES "MODL_OPTF_0_FOOTNOTES"
+#define STR_FORCE_BIT_OPT_0_FOOTNOTES "FORCE_BIT_OPT_0_FOOTNOTES"
 #else
-#define STR_MODL_OPTF_0_FOOTNOTES "of0ff"
+#define STR_FORCE_BIT_OPT_0_FOOTNOTES "of0ff"
 #endif
 
 // transparent navigation arrow
-#define MODL_OPTF_0_TRANSPARENT_NAV 120
+#define FORCE_BIT_OPT_0_TRANSPARENT_NAV 120
 #ifdef LONG_PARAM_NAMES
-#define STR_MODL_OPTF_0_TRANSPARENT_NAV "MODL_OPTF_0_TRANSPARENT_NAV"
+#define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV "FORCE_BIT_OPT_0_TRANSPARENT_NAV"
 #else
-#define STR_MODL_OPTF_0_TRANSPARENT_NAV "of0tn"
+#define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV "of0tn"
+#endif
+
+// transparent navigation arrow
+#define FORCE_BIT_OPT_0_ZALMY_FULL_TEXT 121
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT "FORCE_BIT_OPT_0_ZALMY_FULL_TEXT"
+#else
+#define STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT "of0zft"
 #endif
 
 // pre force option 1 jednotlivé bit-komponenty (parciálne voľby)
 
 // evanjeliové chválospevy (benediktus, magnifikat, nunk dimittis)
-#define MODL_OPTF_1_CHV 71
+#define FORCE_BIT_OPT_1_CHV 71
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_CHV "MODL_OPTF_1_CHV"
+	#define STR_FORCE_BIT_OPT_1_CHV "FORCE_BIT_OPT_1_CHV"
 #else
-	#define STR_MODL_OPTF_1_CHV "of1c"
+	#define STR_FORCE_BIT_OPT_1_CHV "of1c"
 #endif
 
 // sláva otcu na konci žalmov a chválospevov
-#define MODL_OPTF_1_SL 72
+#define FORCE_BIT_OPT_1_SL 72
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_SL "MODL_OPTF_1_SL"
+	#define STR_FORCE_BIT_OPT_1_SL "FORCE_BIT_OPT_1_SL"
 #else
-	#define STR_MODL_OPTF_1_SL "of1s"
+	#define STR_FORCE_BIT_OPT_1_SL "of1s"
 #endif
 
 // rubriky
-#define MODL_OPTF_1_RUB 73
+#define FORCE_BIT_OPT_1_RUB 73
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_RUB "MODL_OPTF_1_RUB"
+	#define STR_FORCE_BIT_OPT_1_RUB "FORCE_BIT_OPT_1_RUB"
 #else
-	#define STR_MODL_OPTF_1_RUB "of1r"
+	#define STR_FORCE_BIT_OPT_1_RUB "of1r"
 #endif
 
 // Otčenáš
-#define MODL_OPTF_1_OT 74
+#define FORCE_BIT_OPT_1_OT 74
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_OT "MODL_OPTF_1_OT"
+	#define STR_FORCE_BIT_OPT_1_OT "FORCE_BIT_OPT_1_OT"
 #else
-	#define STR_MODL_OPTF_1_OT "of1o"
+	#define STR_FORCE_BIT_OPT_1_OT "of1o"
 #endif
 
 // Te Deum
-#define MODL_OPTF_1_TD 75
+#define FORCE_BIT_OPT_1_TD 75
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_TD "MODL_OPTF_1_TD"
+	#define STR_FORCE_BIT_OPT_1_TD "FORCE_BIT_OPT_1_TD"
 #else
-	#define STR_MODL_OPTF_1_TD "of1t"
+	#define STR_FORCE_BIT_OPT_1_TD "of1t"
 #endif
 
 // doplnková psalmódia pre modlitbu cez deň
-#define MODL_OPTF_1_MCD_DOPLNKOVA 76
+#define FORCE_BIT_OPT_1_MCD_DOPLNKOVA 76
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_MCD_DOPLNKOVA "MODL_OPTF_1_MCD_DOPLNKOVA"
+	#define STR_FORCE_BIT_OPT_1_MCD_DOPLNKOVA "FORCE_BIT_OPT_1_MCD_DOPLNKOVA"
 #else
-	#define STR_MODL_OPTF_1_MCD_DOPLNKOVA "of1dps"
+	#define STR_FORCE_BIT_OPT_1_MCD_DOPLNKOVA "of1dps"
 #endif
 
 // vigília v posvätnom čítaní
-#define MODL_OPTF_1_VIGILIA 77
+#define FORCE_BIT_OPT_1_VIGILIA 77
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_VIGILIA "MODL_OPTF_1_VIGILIA"
+	#define STR_FORCE_BIT_OPT_1_VIGILIA "FORCE_BIT_OPT_1_VIGILIA"
 #else
-	#define STR_MODL_OPTF_1_VIGILIA "of1v"
+	#define STR_FORCE_BIT_OPT_1_VIGILIA "of1v"
 #endif
 
 // popis (životopis) pre modlitbu svätého
-#define MODL_OPTF_1_SKRY_POPIS 78
+#define FORCE_BIT_OPT_1_SKRY_POPIS 78
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_SKRY_POPIS "MODL_OPTF_1_SKRY_POPIS"
+	#define STR_FORCE_BIT_OPT_1_SKRY_POPIS "FORCE_BIT_OPT_1_SKRY_POPIS"
 #else
-	#define STR_MODL_OPTF_1_SKRY_POPIS "of1sp"
+	#define STR_FORCE_BIT_OPT_1_SKRY_POPIS "of1sp"
 #endif
 
 // zobraziť rubriku s textom, odkiaľ sa berú spoločné časti
-#define MODL_OPTF_1_ZOBRAZ_SPOL_CAST 80
+#define FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST 80
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST "MODL_OPTF_1_ZOBRAZ_SPOL_CAST"
+	#define STR_FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST "FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST"
 #else
-	#define STR_MODL_OPTF_1_ZOBRAZ_SPOL_CAST "of1zspc"
+	#define STR_FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST "of1zspc"
 #endif
 
 // použiť (pre ktorýkoľvek deň v roku) kratšie prosby k vešperám
-#define MODL_OPTF_1_VESP_KRATSIE_PROSBY 99
+#define FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY 99
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY "MODL_OPTF_1_VESP_KRATSIE_PROSBY"
+	#define STR_FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY "FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY"
 #else
-	#define STR_MODL_OPTF_1_VESP_KRATSIE_PROSBY "of1vkp"
+	#define STR_FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY "of1vkp"
 #endif
 
 // psalmódia pre modlitbu cez deň z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)
-#define MODL_OPTF_1_MCD_ZALTAR_TRI 112
+#define FORCE_BIT_OPT_1_MCD_ZALTAR_TRI 112
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_MCD_ZALTAR_TRI "MODL_OPTF_1_MCD_ZALTAR_TRI"
+	#define STR_FORCE_BIT_OPT_1_MCD_ZALTAR_TRI "FORCE_BIT_OPT_1_MCD_ZALTAR_TRI"
 #else
-	#define STR_MODL_OPTF_1_MCD_ZALTAR_TRI "of1ps3"
+	#define STR_FORCE_BIT_OPT_1_MCD_ZALTAR_TRI "of1ps3"
 #endif
 
 // prayer conclusions
-#define MODL_OPTF_1_ZAVER 118
+#define FORCE_BIT_OPT_1_ZAVER 118
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_ZAVER "MODL_OPTF_1_ZAVER"
+	#define STR_FORCE_BIT_OPT_1_ZAVER "FORCE_BIT_OPT_1_ZAVER"
 #else
-	#define STR_MODL_OPTF_1_ZAVER "of1zm"
+	#define STR_FORCE_BIT_OPT_1_ZAVER "of1zm"
 #endif
 
 // žalmy zo sviatku
-#define MODL_OPTF_1_SPOMIENKA_SPOL_CAST 79
+#define FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST 79
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_SPOMIENKA_SPOL_CAST "MODL_OPTF_1_SPOMIENKA_SPOL_CAST"
+	#define STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST "FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST"
 #else
-	#define STR_MODL_OPTF_1_SPOMIENKA_SPOL_CAST "of1spspc"
+	#define STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST "of1spspc"
 #endif
 
 // dlhšie zakončenie responzória
-#define MODL_OPTF_1_PLNE_RESP 90
+#define FORCE_BIT_OPT_1_PLNE_RESP 90
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_PLNE_RESP "MODL_OPTF_1_PLNE_RESP"
+	#define STR_FORCE_BIT_OPT_1_PLNE_RESP "FORCE_BIT_OPT_1_PLNE_RESP"
 #else
-	#define STR_MODL_OPTF_1_PLNE_RESP "of1pr"
+	#define STR_FORCE_BIT_OPT_1_PLNE_RESP "of1pr"
 #endif
 
 // žalm 95 pre ranné chvály/vešpery namiesto ž 24, 67, 100
-#define MODL_OPTF_1_ZALM95 91
+#define FORCE_BIT_OPT_1_ZALM95 91
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_ZALM95 "MODL_OPTF_1_ZALM95"
+	#define STR_FORCE_BIT_OPT_1_ZALM95 "FORCE_BIT_OPT_1_ZALM95"
 #else
-	#define STR_MODL_OPTF_1_ZALM95 "of1z95"
+	#define STR_FORCE_BIT_OPT_1_ZALM95 "of1z95"
 #endif
 
 // zvolanie v prosbách zobraziť (opakovať) po každej prosbe
-#define MODL_OPTF_1_PROSBY_ZVOLANIE 92
+#define FORCE_BIT_OPT_1_PROSBY_ZVOLANIE 92
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_1_PROSBY_ZVOLANIE "MODL_OPTF_1_PROSBY_ZVOLANIE"
+	#define STR_FORCE_BIT_OPT_1_PROSBY_ZVOLANIE "FORCE_BIT_OPT_1_PROSBY_ZVOLANIE"
 #else
-	#define STR_MODL_OPTF_1_PROSBY_ZVOLANIE "of1prz"
+	#define STR_FORCE_BIT_OPT_1_PROSBY_ZVOLANIE "of1prz"
 #endif
 
 // pre force option 2 jednotlivé bit-komponenty (parciálne voľby)
 
 // ISO formát dátumu
-#define MODL_OPTF_2_ISO_DATUM 81
+#define FORCE_BIT_OPT_2_ISO_DATUM 81
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_ISO_DATUM "MODL_OPTF_2_ISO_DATUM"
+	#define STR_FORCE_BIT_OPT_2_ISO_DATUM "FORCE_BIT_OPT_2_ISO_DATUM"
 #else
-	#define STR_MODL_OPTF_2_ISO_DATUM "of2id"
+	#define STR_FORCE_BIT_OPT_2_ISO_DATUM "of2id"
 #endif
 
 // zobrazovať button "prvé vešpery" v rámci daného slávenia (teda "ignorujúc dátum")
-#define MODL_OPTF_2_PRVE_VESPERY 82
+#define FORCE_BIT_OPT_2_PRVE_VESPERY 82
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_PRVE_VESPERY "MODL_OPTF_2_PRVE_VESPERY"
+	#define STR_FORCE_BIT_OPT_2_PRVE_VESPERY "FORCE_BIT_OPT_2_PRVE_VESPERY"
 #else
-	#define STR_MODL_OPTF_2_PRVE_VESPERY "of2pv"
+	#define STR_FORCE_BIT_OPT_2_PRVE_VESPERY "of2pv"
 #endif
 
 // Serif vs. Sans Serif font family
-#define MODL_OPTF_2_FONT_FAMILY 83
+#define FORCE_BIT_OPT_2_FONT_FAMILY 83
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_FONT_FAMILY "MODL_OPTF_2_FONT_FAMILY"
+	#define STR_FORCE_BIT_OPT_2_FONT_FAMILY "FORCE_BIT_OPT_2_FONT_FAMILY"
 #else
-	#define STR_MODL_OPTF_2_FONT_FAMILY "of2ff"
+	#define STR_FORCE_BIT_OPT_2_FONT_FAMILY "of2ff"
 #endif
 
 // font family chooser (drop-down list)
-#define MODL_OPTF_2_FONT_NAME_CHOOSER 84
+#define FORCE_BIT_OPT_2_FONT_NAME_CHOOSER 84
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_FONT_NAME_CHOOSER "MODL_OPTF_2_FONT_NAME_CHOOSER"
+	#define STR_FORCE_BIT_OPT_2_FONT_NAME_CHOOSER "FORCE_BIT_OPT_2_FONT_NAME_CHOOSER"
 #else
-	#define STR_MODL_OPTF_2_FONT_NAME_CHOOSER "of2fc"
+	#define STR_FORCE_BIT_OPT_2_FONT_NAME_CHOOSER "of2fc"
 #endif
 
 // font size
-#define MODL_OPTF_2_FONT_SIZE 85
+#define FORCE_BIT_OPT_2_FONT_SIZE 85
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_FONT_SIZE "MODL_OPTF_2_FONT_SIZE"
+	#define STR_FORCE_BIT_OPT_2_FONT_SIZE "FORCE_BIT_OPT_2_FONT_SIZE"
 #else
-	#define STR_MODL_OPTF_2_FONT_SIZE "of2fs"
+	#define STR_FORCE_BIT_OPT_2_FONT_SIZE "of2fs"
 #endif
 
 // zobrazovať navigáciu v textoch modlitieb
-#define MODL_OPTF_2_NAVIGATION 86
+#define FORCE_BIT_OPT_2_NAVIGATION 86
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_NAVIGATION "MODL_OPTF_2_NAVIGATION"
+	#define STR_FORCE_BIT_OPT_2_NAVIGATION "FORCE_BIT_OPT_2_NAVIGATION"
 #else
-	#define STR_MODL_OPTF_2_NAVIGATION "of2nav"
+	#define STR_FORCE_BIT_OPT_2_NAVIGATION "of2nav"
 #endif
 
 // zobrazovať zalomenie v textoch modlitieb podľa tlačenej LH
-#define MODL_OPTF_2_TEXT_WRAP 87
+#define FORCE_BIT_OPT_2_TEXT_WRAP 87
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_TEXT_WRAP "MODL_OPTF_2_TEXT_WRAP"
+	#define STR_FORCE_BIT_OPT_2_TEXT_WRAP "FORCE_BIT_OPT_2_TEXT_WRAP"
 #else
-	#define STR_MODL_OPTF_2_TEXT_WRAP "of2tw"
+	#define STR_FORCE_BIT_OPT_2_TEXT_WRAP "of2tw"
 #endif
 
 // zobraziť buttony pre modlitby v úspornej podobe (tabuľka) kvôli mobilným zariadeniam
-#define MODL_OPTF_2_BUTTONY_USPORNE 88
+#define FORCE_BIT_OPT_2_BUTTONY_USPORNE 88
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_BUTTONY_USPORNE "MODL_OPTF_2_BUTTONY_USPORNE"
+	#define STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE "FORCE_BIT_OPT_2_BUTTONY_USPORNE"
 #else
-	#define STR_MODL_OPTF_2_BUTTONY_USPORNE "of2btnu"
+	#define STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE "of2btnu"
 #endif
 
 // nocny rezim - svetly text na tmavom pozadi
-#define MODL_OPTF_2_NOCNY_REZIM 89
+#define FORCE_BIT_OPT_2_NOCNY_REZIM 89
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_NOCNY_REZIM "MODL_OPTF_2_NOCNY_REZIM"
+	#define STR_FORCE_BIT_OPT_2_NOCNY_REZIM "FORCE_BIT_OPT_2_NOCNY_REZIM"
 #else
-	#define STR_MODL_OPTF_2_NOCNY_REZIM "of2nr"
+	#define STR_FORCE_BIT_OPT_2_NOCNY_REZIM "of2nr"
 #endif
 
 // rôzne možnosti zobrazovať priamo v texte modlitieb (najmä pre android)
-#define MODL_OPTF_2_ROZNE_MOZNOSTI 93
+#define FORCE_BIT_OPT_2_ROZNE_MOZNOSTI 93
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_ROZNE_MOZNOSTI "MODL_OPTF_2_ROZNE_MOZNOSTI"
+	#define STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI "FORCE_BIT_OPT_2_ROZNE_MOZNOSTI"
 #else
-	#define STR_MODL_OPTF_2_ROZNE_MOZNOSTI "of2rm"
+	#define STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI "of2rm"
 #endif
 
 // skryť navigáciu -- BIT_OPT_2_HIDE_NAVIG_BUTTONS
-#define MODL_OPTF_2_HIDE_NAVIG_BUTTONS 94
+#define FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS 94
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS "MODL_OPTF_2_HIDE_NAVIG_BUTTONS"
+	#define STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS "FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS"
 #else
-	#define STR_MODL_OPTF_2_HIDE_NAVIG_BUTTONS "of2hnb"
+	#define STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS "of2hnb"
 #endif
 
 // skryť kalendár -- BIT_OPT_2_HIDE_KALENDAR
-#define MODL_OPTF_2_HIDE_KALENDAR 95
+#define FORCE_BIT_OPT_2_HIDE_KALENDAR 95
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_HIDE_KALENDAR "MODL_OPTF_2_HIDE_KALENDAR"
+	#define STR_FORCE_BIT_OPT_2_HIDE_KALENDAR "FORCE_BIT_OPT_2_HIDE_KALENDAR"
 #else
-	#define STR_MODL_OPTF_2_HIDE_KALENDAR "of2hk"
+	#define STR_FORCE_BIT_OPT_2_HIDE_KALENDAR "of2hk"
 #endif
 
 // skryť options, prvá časť -- BIT_OPT_2_HIDE_OPTIONS1
-#define MODL_OPTF_2_HIDE_OPTIONS1 96
+#define FORCE_BIT_OPT_2_HIDE_OPTIONS1 96
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_HIDE_OPTIONS1 "MODL_OPTF_2_HIDE_OPTIONS1"
+	#define STR_FORCE_BIT_OPT_2_HIDE_OPTIONS1 "FORCE_BIT_OPT_2_HIDE_OPTIONS1"
 #else
-	#define STR_MODL_OPTF_2_HIDE_OPTIONS1 "of2ho1"
+	#define STR_FORCE_BIT_OPT_2_HIDE_OPTIONS1 "of2ho1"
 #endif
 
 // skryť options, druhá časť -- BIT_OPT_2_HIDE_OPTIONS2
-#define MODL_OPTF_2_HIDE_OPTIONS2 97
+#define FORCE_BIT_OPT_2_HIDE_OPTIONS2 97
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_HIDE_OPTIONS2 "MODL_OPTF_2_HIDE_OPTIONS2"
+	#define STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2 "FORCE_BIT_OPT_2_HIDE_OPTIONS2"
 #else
-	#define STR_MODL_OPTF_2_HIDE_OPTIONS2 "of2ho2"
+	#define STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2 "of2ho2"
 #endif
 
 // zobrazovať jednu alternatívu -- BIT_OPT_2_ALTERNATIVES
-#define MODL_OPTF_2_ALTERNATIVES 98
+#define FORCE_BIT_OPT_2_ALTERNATIVES 98
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_ALTERNATIVES "MODL_OPTF_2_ALTERNATIVES"
+	#define STR_FORCE_BIT_OPT_2_ALTERNATIVES "FORCE_BIT_OPT_2_ALTERNATIVES"
 #else
-	#define STR_MODL_OPTF_2_ALTERNATIVES "of2a"
+	#define STR_FORCE_BIT_OPT_2_ALTERNATIVES "of2a"
 #endif
 
 // zobrazovať v podnadpise národný kalendár -- BIT_OPT_2_SHOW_DEFAULT_CALENDAR
-#define MODL_OPTF_2_SHOW_DEFAULT_CALENDAR 114
+#define FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR 114
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR "MODL_OPTF_2_SHOW_DEFAULT_CALENDAR"
+	#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR"
 #else
-	#define STR_MODL_OPTF_2_SHOW_DEFAULT_CALENDAR "of2sdc"
+	#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "of2sdc"
 #endif
 
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
 
-#define MODL_OPTF_5_HYMNUS_KOMPL 101
+#define FORCE_BIT_OPT_5_HYMNUS_KOMPL 101
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_HYMNUS_KOMPL "MODL_OPTF_5_HYMNUS_KOMPL"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_KOMPL "FORCE_BIT_OPT_5_HYMNUS_KOMPL"
 #else
-	#define STR_MODL_OPTF_5_HYMNUS_KOMPL "of5hk"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_KOMPL "of5hk"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_PC 102
+#define FORCE_BIT_OPT_5_HYMNUS_PC 102
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_HYMNUS_PC "MODL_OPTF_5_HYMNUS_PC"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_PC "FORCE_BIT_OPT_5_HYMNUS_PC"
 #else
-	#define STR_MODL_OPTF_5_HYMNUS_PC "of5hpc"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_PC "of5hpc"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_MCD_PREDPOL 103
+#define FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL 103
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_HYMNUS_MCD_PREDPOL "MODL_OPTF_5_HYMNUS_MCD_PREDPOL"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL "FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL"
 #else
-	#define STR_MODL_OPTF_5_HYMNUS_MCD_PREDPOL "of5hpred"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL "of5hpred"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_MCD_NAPOL 104
+#define FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL 104
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_HYMNUS_MCD_NAPOL "MODL_OPTF_5_HYMNUS_MCD_NAPOL"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL "FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL"
 #else
-	#define STR_MODL_OPTF_5_HYMNUS_MCD_NAPOL "of5hna"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL "of5hna"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_MCD_POPOL 105
+#define FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL 105
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_HYMNUS_MCD_POPOL "MODL_OPTF_5_HYMNUS_MCD_POPOL"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL "FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL"
 #else
-	#define STR_MODL_OPTF_5_HYMNUS_MCD_POPOL "of5hpo"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL "of5hpo"
 #endif
 
-#define MODL_OPTF_5_DOPLNK_PSALM_122_129 106
+#define FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129 106
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_DOPLNK_PSALM_122_129 "MODL_OPTF_5_DOPLNK_PSALM_122_129"
+	#define STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129 "FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129"
 #else
-	#define STR_MODL_OPTF_5_DOPLNK_PSALM_122_129 "of5ps29"
+	#define STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129 "of5ps29"
 #endif
 
-#define MODL_OPTF_5_DOPLNK_PSALM_127_131 107
+#define FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131 107
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_DOPLNK_PSALM_127_131 "MODL_OPTF_5_DOPLNK_PSALM_127_131"
+	#define STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131 "FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131"
 #else
-	#define STR_MODL_OPTF_5_DOPLNK_PSALM_127_131 "of5ps71"
+	#define STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131 "of5ps71"
 #endif
 
-#define MODL_OPTF_5_DOPLNK_PSALM_126_129 108
+#define FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129 108
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_DOPLNK_PSALM_126_129 "MODL_OPTF_5_DOPLNK_PSALM_126_129"
+	#define STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129 "FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129"
 #else
-	#define STR_MODL_OPTF_5_DOPLNK_PSALM_126_129 "of5ps69"
+	#define STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129 "of5ps69"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_VN_PC 109
+#define FORCE_BIT_OPT_5_HYMNUS_VN_PC 109
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_HYMNUS_VN_PC "MODL_OPTF_5_HYMNUS_VN_PC"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_VN_PC "FORCE_BIT_OPT_5_HYMNUS_VN_PC"
 #else
-	#define STR_MODL_OPTF_5_HYMNUS_VN_PC "of5vnpc"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_VN_PC "of5vnpc"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_VN_RCH 110
+#define FORCE_BIT_OPT_5_HYMNUS_VN_RCH 110
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_HYMNUS_VN_RCH "MODL_OPTF_5_HYMNUS_VN_RCH"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH "FORCE_BIT_OPT_5_HYMNUS_VN_RCH"
 #else
-	#define STR_MODL_OPTF_5_HYMNUS_VN_RCH "of5vnhrch"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH "of5vnhrch"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_VN_VESP 111
+#define FORCE_BIT_OPT_5_HYMNUS_VN_VESP 111
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPTF_5_HYMNUS_VN_VESP "MODL_OPTF_5_HYMNUS_VN_VESP"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP "FORCE_BIT_OPT_5_HYMNUS_VN_VESP"
 #else
-	#define STR_MODL_OPTF_5_HYMNUS_VN_VESP "of5vnv"
+	#define STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP "of5vnv"
 #endif
 
-#define MODL_OPTF_5_HYMNUS_1VESP 113
+#define FORCE_BIT_OPT_5_HYMNUS_1VESP 113
 #ifdef LONG_PARAM_NAMES
-#define STR_MODL_OPTF_5_HYMNUS_1VESP "MODL_OPTF_5_HYMNUS_1VESP"
+#define STR_FORCE_BIT_OPT_5_HYMNUS_1VESP "FORCE_BIT_OPT_5_HYMNUS_1VESP"
 #else
-#define STR_MODL_OPTF_5_HYMNUS_1VESP "of5h1v"
+#define STR_FORCE_BIT_OPT_5_HYMNUS_1VESP "of5h1v"
 #endif
 
-#define MODL_OPTF_5_POPOL_STREDA_PSALMODIA 115
+#define FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA 115
 #ifdef LONG_PARAM_NAMES
-#define STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA "MODL_OPTF_5_POPOL_STREDA_PSALMODIA"
+#define STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA "FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA"
 #else
-#define STR_MODL_OPTF_5_POPOL_STREDA_PSALMODIA "of5psps"
+#define STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA "of5psps"
 #endif
 
-#define MODL_OPTF_5_CZ_HYMNY_VYBER 116
+#define FORCE_BIT_OPT_5_CZ_HYMNY_VYBER 116
 #ifdef LONG_PARAM_NAMES
-#define STR_MODL_OPTF_5_CZ_HYMNY_VYBER "MODL_OPTF_5_CZ_HYMNY_VYBER"
+#define STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER "FORCE_BIT_OPT_5_CZ_HYMNY_VYBER"
 #else
-#define STR_MODL_OPTF_5_CZ_HYMNY_VYBER "of5czh"
+#define STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER "of5czh"
 #endif
 
-#define MODL_OPTF_5_OFF_DEF_PSALM_146_150 117
+#define FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150 117
 #ifdef LONG_PARAM_NAMES
-#define STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150 "MODL_OPTF_5_OFF_DEF_PSALM_146_150"
+#define STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150 "FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150"
 #else
-#define STR_MODL_OPTF_5_OFF_DEF_PSALM_146_150 "of5ofps60"
+#define STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150 "of5ofps60"
 #endif
 
-#define MODL_OPTF_5_ZAVER_KNAZ_DIAKON 119
+#define FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON 119
 #ifdef LONG_PARAM_NAMES
-#define STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON "MODL_OPTF_5_ZAVER_KNAZ_DIAKON"
+#define STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON "FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON"
 #else
-#define STR_MODL_OPTF_5_ZAVER_KNAZ_DIAKON "of5zkd"
+#define STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON "of5zkd"
 #endif
 
 #define CSS 40
@@ -924,11 +932,11 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_CSS "c"
 #endif
 
-#define MODL_OPT_DATE_FORMAT 41
+#define OPT_DATE_FORMAT 41
 #ifdef LONG_PARAM_NAMES
-	#define STR_MODL_OPT_DATE_FORMAT "MODL_OPT_DATE_FORMAT"
+	#define STR_OPT_DATE_FORMAT "OPT_DATE_FORMAT"
 #else
-	#define STR_MODL_OPT_DATE_FORMAT "u"
+	#define STR_OPT_DATE_FORMAT "u"
 #endif
 
 #define KALENDAR 42
@@ -1075,6 +1083,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_BLIND_FRIENDLY            "BitOpt0BlindFriendly"
 #define XML_BIT_OPT_0_FOOTNOTES                 "BitOpt0Footnotes"
 #define XML_BIT_OPT_0_TRANSPARENT_NAV           "BitOpt0TransparentNav"
+#define XML_BIT_OPT_0_ZALMY_FULL_TEXT           "BitOpt0PsalmsFullText"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"
@@ -1136,7 +1145,7 @@ extern short int query_type; // contains constants PRM_...
 
 #define ELEMID_BEGIN(elem)   "<" elem " Id=\"%d\">"
 #define ELEMVAL_BEGIN(elem)  "<" elem " Value=\"%d\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
-#define ELEMOPT_BEGIN(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_MODL_OPTF_0_VERSE
+#define ELEMOPT_BEGIN(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_FORCE_BIT_OPT_0_VERSE
 #define ELEMOPT_SLASH_BEGIN(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s/%s\">"
 
 #endif // __MYDEFS_H_
