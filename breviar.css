@@ -935,6 +935,11 @@ sup {
 	padding-left: 2.4em;
 }
 
+.psalm-indent p.last:after {
+	content: none; 
+}
+
+
 .nav-arrow {
   background-size: contain;
   background-repeat: no-repeat;
