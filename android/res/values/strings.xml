@@ -35,6 +35,7 @@
     <string name="bible_references">bible references</string>
     <string name="footnotes">footnotes</string>
     <string name="liturgical_readings">liturgical readings</string>
+    <string name="psalms_omisions">omissions from psalms</string>
 
     <string name="display_settings_title">Display settings:</string>
     <string name="navigation">display navigation buttons in prayer</string>

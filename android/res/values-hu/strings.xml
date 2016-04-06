@@ -33,6 +33,7 @@
     <string name="bible_references">a bibliai hivatkozások</string>
     <string name="footnotes">lábjegyzetek</string>
     <string name="liturgical_readings">a liturgikus olvasmányok</string>
+    <string name="psalms_omisions">zsoltárok kihagyott részei</string>
 
     <string name="display_settings_title">Megjelenés beállításai:</string>
     <string name="navigation">navigáció mutatása az imaszövegben</string>

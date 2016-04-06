@@ -114,6 +114,15 @@ public class UrlOptions {
     setBit("o0", 2, value);
   }
 
+  // of0cit
+  public boolean isPsalmsOmissions() {
+    return hasBit("o0", 11);
+  }
+
+  public void setPsalmsOmissions(boolean value) {
+    setBit("o0", 11, value);
+  }
+
   // of0zjvne
   public boolean isEpiphanySunday() {
     return hasBit("o0", 3);

@@ -33,6 +33,7 @@
     <string name="bible_references">biblické odkazy</string>
     <string name="footnotes">poznámky pod čiarou</string>
     <string name="liturgical_readings">liturgické čítania</string>
+    <string name="psalms_omisions">vynechané pasáže zo žalmov</string>
 
     <string name="display_settings_title">Ďalšie zobrazenia:</string>
     <string name="navigation">zobraziť navigáciu v textoch modlitieb</string>

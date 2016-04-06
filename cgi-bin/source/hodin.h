@@ -66,7 +66,7 @@ const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , { "druhé vešpery", "druhé nešpory", "2nd Vesperae", "II vesper&#230;", "", "Druhé večerní chvály", "II. esti dicséret", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 , { "kompletórium po druhých vešperách", "kompletář po druhých nešporách", "2nd Completary", "II completorio", "", "Kompletář po druhých večerních chválách", "befejező imaóra II. e. d. után", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ } // 2007-12-05: zmenené, kedysi bolo: "druhé kompletórium"
 , { "detaily", "detaily", "Details", "details", "", "detaily", "részletek", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-, { "všetky", "všechny", "all", "all", "", "všechny", "összes", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+, { "všetky", "všechny", "all", "omnes", "", "všechny", "összes", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
 #define		nazov_modlitby(a)	nazov_modlitby_jazyk[a][_global_jazyk]
@@ -87,7 +87,7 @@ const char *nazov_modlitby_short_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , { "(druhé) vešpery", "druhé nešpory", "2nd Vesperae", "II vesper&#230;", "", "Druhé večerní chvály", "II. esti dicséret", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 , { "kompletórium (po 2. vešp.)", "kompletář po 2. nešp.", "2nd Completary", "II completorio", "", "Kompletář po 2. v. chv.", "befejező imaóra II. e. d. ut.", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ } // 2007-12-05: zmenené, kedysi bolo: "druhé kompletórium"
 , { "detaily", "detaily", "Details", "details", "", "detaily", "részletek", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-, { "všetky", "všechny", "all", "all", "", "všechny", "összes", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+, { "všetky", "všechny", "all", "omnes", "", "všechny", "összes", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
 #define		nazov_modlitby_short(a)	nazov_modlitby_short_jazyk[a][_global_jazyk]
@@ -108,7 +108,7 @@ const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , { "Druhé vešpery", "Druhé nešpory", "2nd Vesperae", "II Vesper&#230;", "", "Druhé večerní chvály", "II. Esti dicséret", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 , { "Kompletórium po druhých vešperách", "Kompletář po druhých nešporách", "2nd Completary", "II Completorio", "", "Kompletář po druhých večerních chválách", "Befejező imaóra II. e. d. után", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 , { "Detaily", "Detaily", "Details", "Details", "", "Detaily", "Részletek", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-, { "všetky", "všechny", "all", "all", "", "všechny", "összes", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+, { "všetky", "všechny", "all", "omnes", "", "všechny", "összes", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
 #define		nazov_Modlitby(a)	nazov_Modlitby_jazyk[a][_global_jazyk]
@@ -129,7 +129,7 @@ const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 , { "DRUHÉ VEŠPERY", "DRUHÉ NEŠPORY", "2ND VESPERAE", "II VESPER&#198;", "", "DRUHÉ VEČERNÍ CHVÁLY", "II. ESTI DICSÉRET", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 , { "KOMPLETÓRIUM PO DRUHÝCH VEŠPERÁCH", "KOMPLETÁŘ PO DRUHÝCH NEŠPORÁCH", "2ND COMPLETARY", "II COMPLETORIO", "", "KOMPLETÁŘ PO DRUHÝCH VEČERNÍCH CHVÁLÁCH", "BEFEJEZŐ IMAÓRA II. E. D. UTÁN", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 , { "DETAILY", "DETAILY", "DETAILS", "DETAILS", "", "DETAILY", "RÉSZLETEK", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-, { "VŠETKY", "VŠECHNY", "ALL", "ALL", "", "VŠECHNY", "ÖSSZES", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+, { "VŠETKY", "VŠECHNY", "ALL", "OMNES", "", "VŠECHNY", "ÖSSZES", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
 #define		nazov_MODLITBY(a)	nazov_MODLITBY_jazyk[a][_global_jazyk]
@@ -152,7 +152,7 @@ const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 	, { "Druhé kompl.", "Druhý kompl.", "2nd Completary", "II completorio", "", "Druhý kompl.", "Bef. i. II. e. d. után", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	// JUV: temporarily disabled due to lack of colspan functionality in display: table etc. elements | , { "výber spoločnej časti...", "výběr společné části...", "common texts...", "optiónes...", "", "výběr společné části...", "közös rész kiválasztása...", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "výber...", "výběr...", "common texts...", "optiónes...", "", "výběr...", "közös...", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "všetky", "všechny", "all", "all", "", "všechny", "összes", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "všetky", "všechny", "all", "omnes", "", "všechny", "összes", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
 #define		html_button_nazov_modlitby(a)	html_button_nazov_modlitby_jazyk[a][_global_jazyk]
@@ -2008,7 +2008,7 @@ const char *html_text_opt_0_blind_friendly[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik",
-	"megmutatni csak az imaszövegeket (vakok és gyengénlátók részére) rubrikák nélkül",
+	"mutassa meg csak az imaszövegeket (vakok és gyengénlátók részére) rubrikák nélkül",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2085,11 +2085,11 @@ const char *html_text_opt_0_zalmy_full_text[POCET_JAZYKOV + 1] =
 {
 	"zobraziť aj vynechané pasáže zo žalmov",
 	"zobrazit i vynechávky ze žalmů",
-	"show psalms (full text)",
+	"show psalms ommisions",
 	"",
 	"",
 	"zobrazit i vynechávky ze žalmů",
-	"hu_text",
+	"mutassa meg a zsoltárok kihagyott részeit",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

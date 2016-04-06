@@ -196,6 +196,17 @@ public class LangSelect extends Activity {
 
       liturgical_readings_check.setChecked(url_options.isLiturgicalReadings());
 
+      CheckBox psalms_omisions_check = (CheckBox)findViewById(R.id.psalms_omisions_check);
+
+      psalms_omisions_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setPsalmsOmissions(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      psalms_omisions_check.setChecked(url_options.isPsalmsOmissions());
+
       // display_settings_title
 
       CheckBox navigation_check = (CheckBox)findViewById(R.id.navigation_check);

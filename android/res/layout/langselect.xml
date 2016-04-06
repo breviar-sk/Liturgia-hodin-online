@@ -81,6 +81,9 @@
     <CheckBox android:id="@+id/liturgical_readings_check" android:text="@string/liturgical_readings"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+    <CheckBox android:id="@+id/psalms_omisions_check" android:text="@string/psalms_omisions"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <TextView android:text="@string/display_settings_title" style="@android:style/TextAppearance.Large"
         android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
 
