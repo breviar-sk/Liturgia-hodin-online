@@ -1639,6 +1639,7 @@ extern const char *text_OKT_16_CSSR[POCET_JAZYKOV + 1];
 // --------------- SVD propriá ---------------
 extern const char *text_JAN_15_SVD[POCET_JAZYKOV + 1];
 extern const char *text_JAN_29_SVD[POCET_JAZYKOV + 1];
+extern const char *text_JUN_12_SVD[POCET_JAZYKOV + 1]; // HU
 
 // --------------- SDB propriá ---------------
 extern const char *text_JAN_15_SDB[POCET_JAZYKOV + 1];

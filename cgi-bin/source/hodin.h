@@ -474,11 +474,11 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -502,6 +502,7 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "všeobecný RU"
 	, "HU OFM"
 	, "SK OCD"
+	, "HU SVD"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -527,6 +528,7 @@ const char *nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, ""
 	, "OFM"
 	, "OCD"
+	, "SVD"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -554,6 +556,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "general [Russia]"
 	, "ferences szentek és ünnepek zsolozsmája"
 	, "pre karmelitánov (OCD)"
+	, "verbitás zsolozsmája"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -4081,7 +4084,7 @@ const char *text_JAN_15_SVD[POCET_JAZYKOV + 1] =
 	"la_",
 	"",
 	"",
-	"",
+	"Janssen Szent Arnold áldozópap",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -4405,7 +4408,7 @@ const char *text_JAN_29_SVD[POCET_JAZYKOV + 1] =
 	"la_",
 	"",
 	"",
-	"",
+	"Freinademetz Szent József áldozópap",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -7106,6 +7109,18 @@ const char *text_JUN_12_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUN_12_SVD[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"la_",
+	"",
+	"",
+	"Boldog Mzyk Lajos áldozópap és társai vértanúk",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

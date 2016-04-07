@@ -8816,6 +8816,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_HU_OFM) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_HU_OFM]);
+				Export("<option%s>%s</option>\n",
+					(_global_kalendar == KALENDAR_HU_SVD) ? html_option_selected : STR_EMPTY,
+					nazov_kalendara_long[KALENDAR_HU_SVD]);
 			}// HU
 
 			Export("</select>\n");

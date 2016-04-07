@@ -400,9 +400,6 @@ extern short int _global_opt_export_date_format;
 	((modlitba == MODL_RANNE_CHVALY) && ((_global_modl_ranne_chvaly.alternativy & BIT_ALT_OFF_DEF_PSALM_146_150) == BIT_ALT_OFF_DEF_PSALM_146_150)) \
 )
 
-// 2011-02-02: presunuté do #define -- kontrola, ktorá zabezpečuje, že normálne správanie sa slávení nie je prebité pre "CZOP miestne slávenia"
-// 2011-03-07: MIESTNE_SLAVENIE_CZOP_SVATY(i) aj pre slovenské, ktoré majú nastavené "lokálne" verzie
-// 2014-03-21: aj pre SK všeobecné kvôli 2014-10-26 | bolo: #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) (((_global_svaty(i).kalendar == KALENDAR_CZ_OFMCAP) || (_global_svaty(i).kalendar == KALENDAR_CZ_OPRAEM) || (_global_svaty(i).kalendar == KALENDAR_SK_OP) || (_global_svaty(i).kalendar == KALENDAR_CZ_OP) || (_global_svaty(i).kalendar == KALENDAR_SK_CSSR) || (_global_svaty(i).kalendar == KALENDAR_SK_SVD) || (_global_svaty(i).kalendar == KALENDAR_SK_SJ) || (_global_svaty(i).kalendar == KALENDAR_SK_SDB) || (_global_svaty(i).kalendar == KALENDAR_SK_OFM) || (_global_svaty(i).typslav_lokal != LOKAL_SLAV_NEURCENE)) && ((_global_svaty(i).smer == 4) || (_global_svaty(i).smer == 8) || (_global_svaty(i).smer == 11)))
 #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) ((_global_svaty(i).smer == 4) || (_global_svaty(i).smer == 8) || (_global_svaty(i).smer == 11))
 
 // 2014-04-08: presunuté do #define -- bolo na 2 rôznych miestach | sviatky Pána a svätých, ktoré majú prednosť pred Cezročnou nedeľou a majú (ak padnú na nedeľu) svoje vlastné prvé vešpery
