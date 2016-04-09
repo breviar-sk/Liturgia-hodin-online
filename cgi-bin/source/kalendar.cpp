@@ -14261,7 +14261,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_global_svaty1.typslav = SLAV_SLAVNOST;
 			_global_svaty1.smer = 3; // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
 			mystrcpy(_global_svaty1.meno, text_JUL_16_OCD[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA); // kvôli psalmódii
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD
@@ -14686,6 +14686,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
+				_set_zalmy_ocd_elias(modlitba);
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
@@ -14702,7 +14703,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_global_svaty1.typslav = SLAV_SVIATOK;
 			_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári | hoci technicky by malo byť: 8; // miestne sviatky
 			mystrcpy(_global_svaty1.meno, text_JUL_20_OCD[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD
@@ -15837,7 +15838,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			}
 			else{
 				_global_svaty1.typslav = SLAV_SVIATOK;
-				_global_svaty1.smer = 8; // miestne sviatky
+				_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári | hoci technicky by malo byť: 8; // miestne sviatky
 			}// KALENDAR_SK_OFM, KALENDAR_HU_OFM
 			mystrcpy(_global_svaty1.meno, text_AUG_02_OFM[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
@@ -21217,7 +21218,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_global_svaty1.typslav = SLAV_SVIATOK;
 			_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári | hoci technicky by malo byť: 8; // miestne sviatky
 			mystrcpy(_global_svaty1.meno, text_OKT_01_OCD[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD

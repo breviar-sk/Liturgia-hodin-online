@@ -538,7 +538,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, ""
 	, "všeobecný [pre Slovensko]"
 	, "obecný [pro Čechy a Moravu]"
-	, ""
+	, "dominikánský"
 	, "pre Kongregáciu najsv. Vykupiteľa — redemptoristov (CSsR)" // bol veľmi dlhý combo-box, keď bolo: "pre Kongregáciu najsvätejšieho Vykupiteľa — redemptoristov (CSsR)"
 	, "általános [Magyarország]"
 	, "pre Spoločnosť Božieho Slova — verbistov (SVD)"
@@ -555,7 +555,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními texty pro salesiánskou rodinu" // (SDB, FMA, VDB, ASC)
 	, "general [Russia]"
 	, "ferences szentek és ünnepek zsolozsmája"
-	, "pre karmelitánov (OCD)"
+	, "pre bosých karmelitánov (OCD)"
 	, "verbitás zsolozsmája"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
@@ -2088,7 +2088,7 @@ const char *html_text_opt_0_zalmy_full_text[POCET_JAZYKOV + 1] =
 {
 	"zobraziť aj vynechané pasáže zo žalmov",
 	"zobrazit i vynechávky ze žalmů",
-	"show psalms ommisions",
+	"show psalms omissions",
 	"",
 	"",
 	"zobrazit i vynechávky ze žalmů",
@@ -3460,7 +3460,7 @@ const char *html_text_opt_5_OffDefZ146_150[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmu 146 brať žalm 150",
 	"místo žalmu 146 vzít žalm 150",
-	"instead of psalm 146 use 150",
+	"instead of psalm 146 use psalm 150",
 	"",
 	"",
 	"místo žalmu 146 vzít žalm 150",
@@ -3471,7 +3471,7 @@ const char *html_text_opt_5_OffDefZ146_150_explain[POCET_JAZYKOV + 1] =
 {
 	"V ranných chválach ofícia za zosnulých namiesto žalmu 146 brať žalm 150",
 	"místo žalmu 146 vzít žalm 150",
-	"instead of psalm 146 use 150",
+	"instead of psalm 146 use psalm 150",
 	"",
 	"",
 	"místo žalmu 146 vzít žalm 150",
@@ -3482,7 +3482,7 @@ const char *html_text_opt_5_OffDefZ146_150_NORMAL[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmu 150 brať žalm 146",
 	"místo žalmu 150 vzít žalm 146",
-	"instead of psalm 150 use 146",
+	"instead of psalm 150 use psalm 146",
 	"",
 	"",
 	"místo žalmu 150 vzít žalm 146",
@@ -5374,7 +5374,7 @@ const char *text_APR_17_2_OP[POCET_JAZYKOV + 1] =
 };
 const char *text_APR_17_OCD[POCET_JAZYKOV + 1] =
 {
-	"Bl. Baptistu Spagnoliho, rehoľníka",
+	"Bl. Baptistu Spagnoliho, kňaza",
 	"",
 	"",
 	"",
@@ -6155,7 +6155,7 @@ const char *text_MAJ_16_SDB[POCET_JAZYKOV + 1] =
 };
 const char *text_MAJ_16_OCD[POCET_JAZYKOV + 1] =
 {
-	"Bl. Šimona Stocka, rehoľníka",
+	"Sv. Šimona Stocka, rehoľníka",
 	"",
 	"",
 	"",
@@ -9269,7 +9269,7 @@ const char *text_AUG_25_OCD[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_26_OCD[POCET_JAZYKOV + 1] =
 {
-	"Spomienka prebodnutia srdca Sv.Terézie od Ježiša, našej matky",
+	"Spomienka prebodnutia srdca Sv. Terézie od Ježiša, našej matky",
 	"",
 	"",
 	"",
@@ -12257,7 +12257,7 @@ const char *text_DEC_14[POCET_JAZYKOV + 1] =
 };
 const char *text_DEC_14_OCD[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána z Kríža, " HTML_LINE_BREAK "kňaza a učiteľa Cirkvi, nášho otca",
+	"Sv. Jána od Kríža, " HTML_LINE_BREAK "kňaza a učiteľa Cirkvi, nášho otca",
 	"",
 	"",
 	"",
@@ -12281,7 +12281,7 @@ const char *text_DEC_16_OP[POCET_JAZYKOV + 1] =
 };
 const char *text_DEC_16_OCD[POCET_JAZYKOV + 1] =
 {
-	"Sv. Márie Maravillas od Ježiša, panny",
+	"Bl. Márie od Anjelov, panny",
 	"",
 	"",
 	"",
