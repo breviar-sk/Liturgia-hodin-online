@@ -6573,7 +6573,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				_global_svaty2.kalendar = KALENDAR_VSEOBECNY;
 
 				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD)){
-					if (poradie_svaty == 1){
+					if (poradie_svaty == 3){
 
 						file_name_vlastny_kalendar(_global_kalendar);
 
