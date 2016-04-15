@@ -8404,23 +8404,44 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
-				// nemá popis; 2013-02-04: doplnené
-				set_popis_dummy();
+				if (_global_jazyk == JAZYK_CZ) {
+					modlitba = MODL_INVITATORIUM;
+					_vlastna_cast_antifona_inv;
+				}
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_full_okrem_hymnu(modlitba);
+				}
+				else {
+					_vlastna_cast_modlitba;
+				}
 
 				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_modlitba;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_full_okrem_hymnu(modlitba);
+				}
+				else {
+					_vlastna_cast_modlitba;
+				}
 
-				_vlastna_cast_mcd_modlitba;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_mcd_full_okrem_hymnu;
+				}
+				else {
+					_vlastna_cast_mcd_modlitba;
+				}
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_full_okrem_hymnu(modlitba);
+				}
+				else {
+					_vlastna_cast_modlitba;
+				}
 			}
 			_global_svaty1.typslav = SLAV_SVIATOK;
-			_global_svaty1.smer = 8; // miestne sviatky
+			_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári | hoci technicky by malo byť: 8; // miestne sviatky
 			_global_svaty1.typslav_lokal = (_global_jazyk == JAZYK_SK) ? LOKAL_SLAV_SLAVNOST_FMA : LOKAL_SLAV_SLAVNOST_FMA_CZ;
 			mystrcpy(_global_svaty1.meno, text_MAJ_13_SDB[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
