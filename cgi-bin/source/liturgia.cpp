@@ -204,16 +204,6 @@ short int _allocate_global_var(void){
 		mystrcpy(_global_link_ptr, STR_UNDEF, MAX_GLOBAL_LINK);
 	}
 
-	// _global_pom_str
-	if ((_global_pom_str = (char*)malloc(MAX_STR)) == NULL){
-		Log("  Not enough memory to allocate buffer for `_global_pom_str'\n");
-		ret = FAILURE;
-	}
-	else{
-		Log("  %d bytes for `_global_pom_str'\n", MAX_STR);
-		mystrcpy(_global_pom_str, STR_UNDEF, MAX_STR);
-	}
-
 	// _global_string
 	if ((_global_string = (char*)malloc(MAX_GLOBAL_STR)) == NULL){
 		Log("  Not enough memory to allocate buffer for `_global_string'\n");

@@ -316,16 +316,21 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 
 char *_hlavicka_title(void) {
 	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
-#if defined(OS_Windows_Ruby)
-	mystrcpy(_global_pom_str, skratka_jazyka_title[_global_jazyk], MAX_STR);
+
+#if defined(OS_Windows_Ruby) || defined(OS_Windows)
+	char pom[MAX_STR] = STR_EMPTY;
+
+	mystrcpy(pom, skratka_jazyka_title[_global_jazyk], MAX_STR);
 	if (_global_kalendar != default_kalendar[_global_jazyk]) {
-		strcat(_global_pom_str, STR_SPACE);
-		strcat(_global_pom_str, nazov_kalendara_propria_only[_global_kalendar]);
-		strcat(_global_pom_str, STR_SPACE);
+		strcat(pom, STR_SPACE);
+		strcat(pom, nazov_kalendara_propria_only[_global_kalendar]);
 	}
-	strcat(_global_pom_str, STR_VERTICAL_BAR_WITH_SPACES);
+	strcat(pom, STR_VERTICAL_BAR_WITH_SPACES);
+
+	strcat(_global_pom_str, pom);
 #endif
-	return _global_pom_str;
+
+	return(_global_pom_str);
 }
 
 void hlavicka(char *title, short int level, short int spec) {

@@ -16730,6 +16730,16 @@ int breviar_main(int argc, char **argv){
 		mystrcpy(_global_buf2, STR_EMPTY, MAX_GLOBAL_STR);
 	}
 
+	// _global_pom_str
+	if ((_global_pom_str = (char*)malloc(MAX_STR)) == NULL) {
+		Log("  Not enough memory to allocate buffer for `_global_pom_str'\n");
+		ret = FAILURE;
+	}
+	else {
+		Log("  %d bytes for `_global_pom_str'\n", MAX_STR);
+		mystrcpy(_global_pom_str, STR_UNDEF, MAX_STR);
+	}
+
 	_main_LOG("spustatm getSrciptParamFrom(argc == %d)...\n", argc);
 	params = getSrciptParamFrom(argc);
 
@@ -16875,7 +16885,7 @@ int breviar_main(int argc, char **argv){
 					_main_LOG_to_Export("_global_jazyk == %s\n", nazov_jazyka[_global_jazyk]);
 				}
 				_main_LOG_to_Export("volám hlavicka(); ... [case SCRIPT_PARAM_FROM_ARGV]\n");
-				hlavicka((char *)html_title[_global_jazyk]);
+				// hlavicka((char *)html_title[_global_jazyk]);
 			}
 		}
 		_main_LOG("spat po skonceni getArgv(); exporting to file `%s'...\n", FILE_EXPORT);
@@ -17204,7 +17214,7 @@ int breviar_main(int argc, char **argv){
 
 			mystrcpy(_global_string, STR_EMPTY, MAX_GLOBAL_STR); // inicializácia
 			// nastavenie titulku pre hlavičku
-#if defined(OS_Windows_Ruby)
+#if defined(OS_Windows_Ruby) || defined(OS_Windows)
 #else
 			mystrcpy(_global_string, html_title[_global_jazyk], MAX_GLOBAL_STR); // inicializácia
 			strcat(_global_string, STR_VERTICAL_BAR_WITH_SPACES);
