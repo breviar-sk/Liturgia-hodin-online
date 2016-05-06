@@ -1729,18 +1729,18 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 // full text of psalms
 
-				if (equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN) && (vnutri_inkludovaneho == ANO)) {
+				if ((equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN) || equals(strbuff, PARAM_PSALM_FULL_TEXT_SOFT_BEGIN)) && (vnutri_inkludovaneho == ANO)) {
 					vnutri_full_text = ANO;
 					write &= (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT));
 					fn_index = 0;
-					if (write) {
+					if (write && equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN)) {
 						Export("<" HTML_DIV_PSALM_INDENT ">");
 					}
 				}
-				if (equals(strbuff, PARAM_PSALM_FULL_TEXT_END) && (vnutri_inkludovaneho == ANO)) {
+				if ((equals(strbuff, PARAM_PSALM_FULL_TEXT_END) || equals(strbuff, PARAM_PSALM_FULL_TEXT_SOFT_END)) && (vnutri_inkludovaneho == ANO)) {
 					fnbuff[fn_index] = '\0';
 
-					if (write) {
+					if (write && equals(strbuff, PARAM_PSALM_FULL_TEXT_END)) {
 						Export(HTML_DIV_END);
 					}
 					vnutri_full_text = NIE;

@@ -568,6 +568,9 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 // full text of psalms (also verses omitted from official Latin LH)
 #define PARAM_PSALM_FULL_TEXT_BEGIN         "full-text"
 #define PARAM_PSALM_FULL_TEXT_END           SYMBOL_END "" PARAM_PSALM_FULL_TEXT_BEGIN
+// these two have the same usage as previous two except adding div's (used within section divided due to different psalm strophes as in Ps 55)
+#define PARAM_PSALM_FULL_TEXT_SOFT_BEGIN   "full-text-soft"
+#define PARAM_PSALM_FULL_TEXT_SOFT_END     SYMBOL_END "" PARAM_PSALM_FULL_TEXT_SOFT_BEGIN
 
 // zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách, príp. v antifónach (červenou farbou)
 #define PARAM_RED_KRIZIK                    "†"
