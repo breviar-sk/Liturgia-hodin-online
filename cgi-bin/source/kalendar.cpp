@@ -21227,7 +21227,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				_set_zalmy_ocd_terezka(modlitba);
 				_vlastna_cast_full(modlitba);
 
-				_vlastna_cast_mcd_kcitresp_modl;
+				_vlastna_cast_mcd_full_okrem_hymnu;
 
 				modlitba = MODL_VESPERY;
 				_set_zalmy_ocd_terezka(modlitba);
