@@ -5129,6 +5129,18 @@ const char *text_MAR_15_CSSR[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_MAR_15_SDB[POCET_JAZYKOV + 1] =
+{
+	"",
+	"Bl. Artemide Zattiho, koadjutora",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_MAR_17[POCET_JAZYKOV + 1] =
 {
 	"Sv. Patrika, biskupa",
