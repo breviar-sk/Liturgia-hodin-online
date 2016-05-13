@@ -105,78 +105,83 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Zsolozsma alkalmazás | Újdonságok</b>
 
+<p><b>Verzió 1.13</b>
+<ul>
+<!-- <li>Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
+<li>Frissítések a honlapról</li>
+</ul>
+
 <p><b>Verzió 1.12.3</b>
 <ul>
-<!-- <li> Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
-<li> Ferences saját részekkel.</li>
-<li> Zsolozsma a meghaltakért: a reggeli dicséretben lehetséges a 146. vagy a 150. zsoltárt venni.</li>
-<li> Szövegben navigálás lehetősége nyilak segítségével.</li>
+<li>Ferences saját részekkel.</li>
+<li>Zsolozsma a meghaltakért: a reggeli dicséretben lehetséges a 146. vagy a 150. zsoltárt venni.</li>
+<li>Szövegben navigálás lehetősége nyilak segítségével.</li>
 </ul>
 
 <p><b>Verzió 1.12.2</b>
 <ul>
-<li> Lehetőség a válaszos énekek teljes szövegének megjelenítésére/elrejtésére (reggeli és esti dicséretnél).
+<li>Lehetőség a válaszos énekek teljes szövegének megjelenítésére/elrejtésére (reggeli és esti dicséretnél).</li>
 </ul>
 
 <p><b>Verzió 1.12.1</b>
 <ul>
-<li> Új beállítási lehetőség: Az alkalmazás beállításának lehetősége, amíg az alsó navigációs sáv megjelenik (szöveg másolásra kijelölésének engedélyezése).
+<li>Új beállítási lehetőség: Az alkalmazás beállításának lehetősége, amíg az alsó navigációs sáv megjelenik (szöveg másolásra kijelölésének engedélyezése).</li>
 </ul>
 
 <p><b>Verzió 1.12</b>
 <ul>
-<li> A közös részből való szövegek kiválasztásának lehetősége (a Halotti zsolozsmát beleértve).
+<li>A közös részből való szövegek kiválasztásának lehetősége (a Halotti zsolozsmát beleértve).</li>
 </ul>
 
 <p><b>Verzió 1.11.2</b>
 <ul>
-<li> Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.
-<li> Új beállítások hozzáadása.
+<li>Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.</li>
+<li>Új beállítások hozzáadása.</li>
 </ul>
 
 <p><b>Verzió 1.11.1</b>
 <ul>
-<li> Visszafelé való kompatibilitás javítása az Android 2.x és régebbi verziókkal.
-<li> Zsoltárok közötti térköz növelése azonos antifónák esetén.
-<li> Több bekezdésből álló könyörgések olvashatóbb tagolása.
+<li>Visszafelé való kompatibilitás javítása az Android 2.x és régebbi verziókkal.</li>
+<li>Zsoltárok közötti térköz növelése azonos antifónák esetén.</li>
+<li>Több bekezdésből álló könyörgések olvashatóbb tagolása.</li>
 </ul>
 
 <p><b>Verzió 1.11</b>
 <ul>
-<li> Éjszakai/nappali mód váltása a főmenüből.
-<li> Nagyobb sorköz a jobb olvashatóság érdekében.
-<li> Frissített „Névjegy” párbeszédablak.
-<li> Gépelési hibák javítása mindegyik nyelvnél.
+<li>Éjszakai/nappali mód váltása a főmenüből.</li>
+<li>Nagyobb sorköz a jobb olvashatóság érdekében.</li>
+<li>Frissített „Névjegy” párbeszédablak.</li>
+<li>Gépelési hibák javítása mindegyik nyelvnél.</li>
 </ul>
 
 <p><b>Verzió 1.10</b>
 <ul>
-<li> Az imák egyszerűsített megjelenítése (csak az imák szövege, címek és rubrikák nélkül) látássérültek számára. Felolvasó gépek használhatják.
-<li> Új lehetőség a főoldalon: Általános rész.
-<li> A Mária antifónák éjszakai módjának javítása.
-<li> Android 5.0 (Lollipop) kompatibilitás.
+<li>Az imák egyszerűsített megjelenítése (csak az imák szövege, címek és rubrikák nélkül) látássérültek számára. Felolvasó gépek használhatják.</li>
+<li>Új lehetőség a főoldalon: Általános rész.</li>
+<li>A Mária antifónák éjszakai módjának javítása.</li>
+<li>Android 5.0 (Lollipop) kompatibilitás.</li>
 </ul>
 
 <p><b>Verzió 1.9.10</b>
 <ul>
-<li> Új beállítási lehetőség: automatikus csendes módba kapcsolás imádság közben.
-<li> Új beállítási lehetőség: I. Esti dicséret himnusza (évközi időben).
-<li> Fohászok formázása.
+<li>Új beállítási lehetőség: automatikus csendes módba kapcsolás imádság közben.</li>
+<li>Új beállítási lehetőség: I. Esti dicséret himnusza (évközi időben).</li>
+<li>Fohászok formázása.</li>
 </ul>
 
 <p><b>Verzió 1.9.9</b>
 <ul>
-<li> A befejező imaóra kantikuma félkövéren jelenik meg.
-<li> Hármaspont karakter használata.
-<li> Magyar helyesírás szerinti gondolatjel az angolszász helyett.
-<li> Himnuszok, igehelyek és imaóra részek formázása.
+<li>A befejező imaóra kantikuma félkövéren jelenik meg.</li>
+<li>Hármaspont karakter használata.</li>
+<li>Magyar helyesírás szerinti gondolatjel az angolszász helyett.</li>
+<li>Himnuszok, igehelyek és imaóra részek formázása.</li>
 </ul>
 
 <p><b>Verzió 1.9.8</b>
 <ul>
-<li> Hosszú érintésre elrejti az alsó navigációs sávot.
-<li> Új opció: a képernyő ne sötétüljön el.
-<li> Sok apró javítás.
+<li>Hosszú érintésre elrejti az alsó navigációs sávot.</li>
+<li>Új opció: a képernyő ne sötétüljön el.</li>
+<li>Sok apró javítás.</li>
 </ul>
 
 </body></html>

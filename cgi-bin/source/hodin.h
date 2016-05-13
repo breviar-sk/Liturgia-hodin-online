@@ -5759,9 +5759,9 @@ const char *text_MAJ_03[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_MAJ_04_HU[POCET_JAZYKOV + 1] =
+const char *text_MAJ_04[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Floriána, mučeníka",
 	"",
 	"",
 	"",
@@ -8437,7 +8437,7 @@ const char *text_JUL_30[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_30_SK[POCET_JAZYKOV + 1] =
 {
-	"Bl. Zdenky, panny a mučenice", // Direktórium 2012, str. 173, neuvádza priezvisko ('Schelingovej')
+	"Bl. Zdenky Cecílie Schelingovej, panny a mučenice", // Direktórium 2012, str. 173, neuvádza priezvisko ('Schelingovej'); dekrét https://www.kbs.sk/obsah/sekcia/h/dokumenty-a-vyhlasenia/p/dokumenty-kbs/c/dekret-o-doplneni-partikularneho-kalendara-2016 uvádza plné meno
 	"",
 	"",
 	"",
@@ -8988,6 +8988,18 @@ const char *text_AUG_17_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Kaposvár: A székesegyház felszentelése",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_AUG_18[POCET_JAZYKOV + 1] =
+{
+	"Sv. Heleny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -10701,6 +10713,18 @@ const char *text_OKT_16_2[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_OKT_16_3[POCET_JAZYKOV + 1] =
+{
+	"Sv. Gála, kňaza",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_OKT_16_CSSR[POCET_JAZYKOV + 1] =
 {
 	"Sv. Gerarda Majellu, rehoľníka",
@@ -10965,10 +10989,22 @@ const char *text_OKT_25_SK[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_OKT_25_SDB[POCET_JAZYKOV + 1] =
+const char *text_OKT_25_SK_2[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky vlastného chrámu (keď sa nepozná dátum posviacky)",
-	"Výročí posvěcení vlastního kostela", // OFMCap.
+	"Sv. Maura, biskupa",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_OKT_25_CONS[POCET_JAZYKOV + 1] =
+{
+	"Výročie posviacky vlastného chrámu (keď sa nepozná dátum posviacky)", // SK SDB
+	"Výročí posvěcení vlastního kostela", // CZ OFMCap.
 	"",
 	"",
 	"",
@@ -12144,6 +12180,18 @@ const char *text_DEC_04[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Jana Damašského, kněze a učitele Církve",
 	"Damaszkuszi Szent János áldozópap és egyháztanító",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_DEC_04_2[POCET_JAZYKOV + 1] =
+{
+	"Sv. Barbory, panny a mučenice",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

@@ -105,71 +105,76 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Aplikace Breviář | Co je nové</b>
 
+<p><b>Verze 1.13</b>
+<ul>
+<!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
+<li>Nová volba: Možnost zobrazit poznámky pod čarou ke druhým čtením (zatím pro mezidobí).</li>
+<li>Kalendář a vlastní texty pro salesiánskou rodinu.</li>
+</ul>
+
 <p><b>Verze 1.12.3</b>
 <ul>
-<!-- <li> Nová volba: Možnost zobrazit poznámky pod čarou ke druhým čtením.</li> -->
-<li> Společné texty za zemřelé, možnost vzít žalm 146 nebo 150 pro ranní chvály.</li>
-<li> Možnost zobrazit navigační šipky v textu.</li>
+<li>Společné texty za zemřelé, možnost vzít žalm 146 nebo 150 pro ranní chvály.</li>
+<li>Možnost zobrazit navigační šipky v textu.</li>
 </ul>
 
 <p><b>Verze 1.12.2</b>
 <ul>
-<li> Možnost zobrazit/skrýt plné znění krátkych zpěvů (v ranních chválách a nešporách).
+<li>Možnost zobrazit/skrýt plné znění krátkych zpěvů (v ranních chválách a nešporách).</li>
 </ul>
 
 <p><b>Verze 1.12.1</b>
 <ul>
-<li> Nová volba: Možnost konfigurace při zobrazené navigační liště (umožnění označit text na kopírování).
-<li> Nové slavení pro OFM Cap: 4. května.
-<li> Oprava: Zobrazení hymnů (obyčejných, ne k volnému výběru).
-<!-- <li> Český dominikánský breviář (jenom pokusně!). -->
+<li>Nová volba: Možnost konfigurace při zobrazené navigační liště (umožnění označit text na kopírování).</li>
+<li>Nové slavení pro OFM Cap: 4. května.</li>
+<li>Oprava: Zobrazení hymnů (obyčejných, ne k volnému výběru).</li>
 </ul>
 
 <p><b>Verze 1.12</b>
 <ul>
-<li> Nová volba: Možnost použít hymny k volnému výběru.
-<li> Možnost zobrazit společné texty.
-<li> Úprava zalomení a korekce hymnů.
+<li>Nová volba: Možnost použít hymny k volnému výběru.</li>
+<li>Možnost zobrazit společné texty.</li>
+<li>Úprava zalomení a korekce hymnů.</li>
 </ul>
 
 <p><b>Verze 1.11.2</b>
 <ul>
-<li> Nové slavení: Ježíše Krista, nejvyššího a věčného kněze.
-<li> Nová volba v menu: Použít všude normální písmo (ne tučné).
-<li> Rozšířená nastavení.
+<li>Nové slavení: Ježíše Krista, nejvyššího a věčného kněze.</li>
+<li>Nová volba v menu: Použít všude normální písmo (ne tučné).</li>
+<li>Rozšířená nastavení.</li>
 </ul>
 
 <p><b>Verze 1.11.1</b>
 <ul>
-<li> Oprava: Kompatibilita s Android 2.x a staršími.
+<li>Oprava: Kompatibilita s Android 2.x a staršími.</li>
 </ul>
 
 <p><b>Verze 1.11</b>
 <ul>
-<li> Přepínání nočního/denního režimu přímo v hlavním menu.
-<li> Větší výška řádkování pro lepší čitelnost.
-<li> Dialog „O aplikaci“ upraven.
+<li>Přepínání nočního/denního režimu přímo v hlavním menu.</li>
+<li>Větší výška řádkování pro lepší čitelnost.</li>
+<li>Dialog „O aplikaci“ upraven.</li>
 </ul>
 
 <p><b>Verze 1.10</b>
 <ul>
-<li> Možnost zobrazit modlitby v režimu pro nevidomé a slabozraké (text modliteb bez nadpisů a rubrik), vhodné pro hlasový výstup.
-<li> Nová možnost na úvodní obrazovce: Ordinárium (Uspořádání).
-<li> Oprava mariánských antifon (kompletář/modlitba před spaním) pro noční režim.
-<li> Kompatibilita s Android 5.0 Lollipop.
+<li>Možnost zobrazit modlitby v režimu pro nevidomé a slabozraké (text modliteb bez nadpisů a rubrik), vhodné pro hlasový výstup.</li>
+<li>Nová možnost na úvodní obrazovce: Ordinárium (Uspořádání).</li>
+<li>Oprava mariánských antifon (kompletář/modlitba před spaním) pro noční režim.</li>
+<li>Kompatibilita s Android 5.0 Lollipop.</li>
 </ul>
 
 <p><b>Verze 1.9.10</b>
 <ul>
-<li> Možnost automatického přepnutí zařízení do tichého režimu počas modlitby.
+<li>Možnost automatického přepnutí zařízení do tichého režimu počas modlitby.</li>
 </ul>
 
 <p><b>Verze 1.9.8</b>
 <ul>
-<li> CSS změny: Zalamování žalmů a kantik přepracováno.
-<li> Doplněno číslování veršů žalmů a kantik.
-<li> Dlouhé stlačení skryje spodní navigační lištu.
-<li> Přidaná možnost nezhasínat obrazovku.
+<li>CSS změny: Zalamování žalmů a kantik přepracováno.</li>
+<li>Doplněno číslování veršů žalmů a kantik.</li>
+<li>Dlouhé stlačení skryje spodní navigační lištu.</li>
+<li>Přidaná možnost nezhasínat obrazovku.</li>
 </ul>
 
 </body></html>

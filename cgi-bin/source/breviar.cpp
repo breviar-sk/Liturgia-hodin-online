@@ -8799,10 +8799,10 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_CZ_OFMCAP) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_OFMCAP]);
-#ifdef OS_Windows_Ruby
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_CZ_SDB) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_SDB]);
+#ifdef OS_Windows_Ruby
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_CZ_CSSR) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_CSSR]);
