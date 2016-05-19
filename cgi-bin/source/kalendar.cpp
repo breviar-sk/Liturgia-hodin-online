@@ -9173,7 +9173,6 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 						set_spolocna_cast(sc, poradie_svaty);
 
 					modlitba = MODL_POSV_CITANIE;
-					// _vlastna_cast_2citanie;
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_RANNE_CHVALY;
@@ -9182,6 +9181,19 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_modlitba;
 
+					if (_global_jazyk == JAZYK_CZ) {
+						modlitba = MODL_INVITATORIUM;
+						_vlastna_cast_antifona_inv;
+
+						modlitba = MODL_POSV_CITANIE;
+						_vlastna_cast_2citanie;
+
+						modlitba = MODL_RANNE_CHVALY;
+						_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+
+						modlitba = MODL_VESPERY;
+						_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+					}
 					break;
 				}
 
