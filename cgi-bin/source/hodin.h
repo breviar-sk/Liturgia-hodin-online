@@ -7091,7 +7091,7 @@ const char *text_JUN_12_CZ[POCET_JAZYKOV + 1] =
 const char *text_JUN_12_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Františka K&#281;syho a spoločníkov, mučeníkov", // Bl. Františka Kesyho a spoločníkov, mučeníkov (small latin letter e with ogonek)
-	"Bl. Františka K&#281;syho a druhů, mučedníků ",
+	"Bl. Františka K&#281;syho a druhů, mučedníků",
 	"",
 	"",
 	"",

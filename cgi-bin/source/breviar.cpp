@@ -403,7 +403,7 @@ char optional_html_button_end[MAX_STR] = STR_EMPTY;
 // Read a POST query from standard input into a dynamic buffer. Terminate it with a null character.
 short int postread(void){
 	char *buf = NULL;
-	int size = 0, sofar = 0, got;
+	long size = 0, sofar = 0, got;
 
 	Log("uncgi::postread() -- zaciatok\n");
 	buf = getenv("CONTENT_TYPE");
@@ -1407,7 +1407,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					// Export("[INPUT:paramname=%s|fname=%s|modlparam=%s|READ:strbuff=%s|rest=%s]", paramname, fname, modlparam, strbuff, rest);
 					if (equals(paramname, PARAM_ANTIFONA1) || equals(paramname, PARAM_ANTIFONA2) || equals(paramname, PARAM_ANTIFONA3) || equals(paramname, PARAM_ANTRCHVAL) || equals(paramname, PARAM_ANTVCHVAL) || equals(paramname, PARAM_ANTIFONA1x) || equals(paramname, PARAM_ANTIFONA3x)){
 						je_antifona = ANO;
-						if (rest != NULL && strlen(rest) > 0){
+						if (/* rest != NULL && */ strlen(rest) > 0){
 							mystrcpy(rest_krizik, rest, MAX_BUFFER);
 						}
 						// Export("antifóna[%d] -> zapamätám, ku ktorému žalmu/chválospevu patrí...\n", antifona_pocet);
@@ -1558,14 +1558,15 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						else
 							je_modlitba = ANO;
 
-						if (rest != NULL && strlen(rest) > 0)
+						if (/* rest != NULL && */ strlen(rest) > 0) {
 							mystrcpy(rest_zakoncenie, rest, MAX_BUFFER);
+						}
 					}
 #if defined(EXPORT_HTML_SPECIALS)
 					Export("[%s:%s|rest_zakoncenie=%s]", strbuff, modlparam, (rest_zakoncenie == NULL) ? STR_EMPTY : rest_zakoncenie);
 #endif
 					if ((je_modlitba == ANO) && ((equals(paramname, PARAM_MODLITBA)) || (equals(paramname, PARAM_MODL_SPOMPRIVILEG)) || (je_velkonocna_nedela_posv_cit))){
-						Export("%s--> ", (rest_zakoncenie == NULL) ? STR_EMPTY : rest_zakoncenie);
+						Export("%s--> ", /* (rest_zakoncenie == NULL) ? STR_EMPTY : */ rest_zakoncenie);
 						if (equals(rest_zakoncenie, PARAM_ZAKONCENIE_SKRZE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_SKRZE_MALE)){
 							if (je_modlitba_cez_den(_global_modlitba) || je_kompletorium12(_global_modlitba) || (je_velkonocna_nedela_posv_cit)){
 								mystrcpy(zakoncenie, text_ZAKONCENIE_SKRZE_kratke[_global_jazyk], MAX_ZAKONCENIE);
@@ -1615,7 +1616,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 						// nezlomiteľné medzery
 						Export("%s", convert_nonbreaking_spaces(zakoncenie));
-						Export("<!--%s", (rest_zakoncenie == NULL) ? STR_EMPTY : rest_zakoncenie);
+						Export("<!--%s", /* (rest_zakoncenie == NULL) ? STR_EMPTY : */ rest_zakoncenie);
 						je_modlitba = NIE;
 					}
 				}// vypísať zakončenie
@@ -1648,9 +1649,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					write = NIE;
 					fnref_index = 0;
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)){
-						if (rest != NULL){
-							mystrcpy(fnrefrest, rest, MAX_BUFFER);
-						}
+						/* if (rest != NULL) */ mystrcpy(fnrefrest, rest, MAX_BUFFER);
 						DetailLog("\trest      == %s\n", rest);
 						DetailLog("\tfnrefrest == %s\n", fnrefrest);
 					}
@@ -1664,7 +1663,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 						DetailLog("\trest      == %s\n", rest);
 						DetailLog("\tfnrefrest == %s\n", fnrefrest);
-						if ((fnrefrest != NULL) && !(equals(fnrefrest, STR_EMPTY))){
+						if (/* (fnrefrest != NULL) &&  */!(equals(fnrefrest, STR_EMPTY))){
 							if (EXPORT_FOOTNOTES){
 								Export("%s", fnrefrest);
 							}
@@ -1691,9 +1690,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					write = NIE;
 					fn_index = 0;
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)){
-						if (rest != NULL){
-							mystrcpy(fnrest, rest, MAX_BUFFER);
-						}
+						/* if (rest != NULL) */ mystrcpy(fnrest, rest, MAX_BUFFER);
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\tfnrest   == %s\n", fnrest);
 					}
@@ -1707,7 +1704,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						DetailLog("\tfnrest   == %s\n", fnrest);
 						DetailLog("\tfnbuff   == %s\n", fnbuff);
 
-						if ((fnrest != NULL) && !(equals(fnrest, STR_EMPTY))){
+						if (/* (fnrest != NULL) && */ !(equals(fnrest, STR_EMPTY))){
 							if (EXPORT_FOOTNOTES){
 								Export(HTML_A_NAME_BEGIN"\"fn%s\">", fnrest);
 								Export(HTML_A_END);
@@ -1759,7 +1756,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 						DetailLog("\tfnbuff   == %s\n", fnbuff);
 
-						if ((fnrest != NULL) && !(equals(fnrest, STR_EMPTY))){
+						if (/* (fnrest != NULL) && */ !(equals(fnrest, STR_EMPTY))){
 							Export(HTML_A_NAME_BEGIN"\"fn%s\">", fnrest);
 							Export(HTML_A_END);
 							Export("<sup>%s</sup>&nbsp;", fnrest);
@@ -1777,9 +1774,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					write = NIE;
 					ref_index = 0;
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)){
-						if (rest != NULL){
-							mystrcpy(refrest, rest, MAX_BUFFER);
-						}
+						/* if (rest != NULL) */ mystrcpy(refrest, rest, MAX_BUFFER);
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\trefrest  == %s\n", refrest);
 					}
@@ -1803,7 +1798,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\trefrest  == %s\n", refrest);
 						DetailLog("\trefbuff  == %s\n", refbuff);
-						if ((refrest != NULL) && !(equals(refrest, STR_EMPTY))){
+						if (/* (refrest != NULL) && */ !(equals(refrest, STR_EMPTY))){
 							// [ToDo]: doplniť nevypisovanie refbuff, ak refrest obsahuje medzeru
 							if (EXPORT_REFERENCIA){
 #ifdef IO_ANDROID
@@ -1838,7 +1833,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 					// spracujeme prípadný buffer ak to bolo vnorené v rámci footnote
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && EXPORT_FOOTNOTES && (vnutri_footnote == ANO)){
-						if ((fnrest != NULL) && !(equals(fnrest, STR_EMPTY))){
+						if (/* (fnrest != NULL) && */ !(equals(fnrest, STR_EMPTY))){
 							fnbuff[fn_index] = '\0';
 
 							strcpy(fnrest, STR_EMPTY);
@@ -1856,9 +1851,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					write = NIE;
 					kat_index = 0;
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)){
-						if (rest != NULL){
-							mystrcpy(katrest, rest, MAX_BUFFER);
-						}
+						/* if (rest != NULL) */ mystrcpy(katrest, rest, MAX_BUFFER);
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\tkatrest  == %s\n", katrest);
 					}
@@ -1872,7 +1865,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\tkatrest  == %s\n", katrest);
-						if ((katrest != NULL) && !(equals(katrest, STR_EMPTY))){
+						if (/* (katrest != NULL) && */ !(equals(katrest, STR_EMPTY))){
 							// [ToDo]: doplniť nevypisovanie katbuff, ak katrest obsahuje medzeru (prevzaté z časti pre referencie)
 							if (EXPORT_REFERENCIA){
 								Export("%s", katrest);
@@ -1907,9 +1900,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					write = NIE;
 					z95_index = 0;
 #ifdef BEHAVIOUR_WEB
-					if (rest != NULL){
-						mystrcpy(z95rest, rest, MAX_BUFFER);
-					}
+					/* if (rest != NULL) */ mystrcpy(z95rest, rest, MAX_BUFFER);
 					DetailLog("\trest     == %s\n", rest);
 					DetailLog("\tz95rest  == %s\n", z95rest);
 #endif
@@ -5926,7 +5917,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		if (_local_den.typslav_lokal != LOKAL_SLAV_NEURCENE) {
 			mystrcpy(popisok_lokal, nazov_slavenia_lokal[_local_den.typslav_lokal], MAX_STR);
 		}
-		int strlen_popisok_kalendar = 0, strlen_popisok_lokal = 0;
+		long strlen_popisok_kalendar = 0, strlen_popisok_lokal = 0;
 		strlen_popisok_kalendar = strlen(popisok_kalendar);
 		strlen_popisok_lokal = strlen(popisok_lokal);
 		if (strlen_popisok_kalendar + strlen_popisok_lokal > 0){
@@ -12876,7 +12867,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	}
 
 	// setting of chosen common part (communia) | použitie zvolenej spoločnej časti
-	_global_den.spolcast = _global_opt[OPT_3_SPOLOCNA_CAST];
+	_global_den.spolcast = (int)_global_opt[OPT_3_SPOLOCNA_CAST];
 	Log("setting of chosen common part (communia): %ld\n", _global_opt[OPT_3_SPOLOCNA_CAST]);
 	// it is always safe to test de-composed member spolcast with je_spolocna_cast_urcena()
 	sc = _decode_spol_cast(_global_den.spolcast);
@@ -16655,7 +16646,7 @@ int breviar_main(int argc, char **argv){
 #endif
 
 	short int ret, ret_pom = FAILURE; // návratová hodnota
-	int len; // dĺžka
+	long len; // dĺžka
 
 	initLog(FILE_LOG);
 
@@ -17103,7 +17094,7 @@ int breviar_main(int argc, char **argv){
 
 			// prvá kontrola, či include_dir končí na backslash resp. slash
 			len = strlen(include_dir) - 1;
-			_main_LOG_to_Export("prvá kontrola include adresára (či končí oddeľovačom `%c' [dĺžka %d])...\n", PATH_SEPARATOR, len);
+			_main_LOG_to_Export("prvá kontrola include adresára (či končí oddeľovačom `%c' [dĺžka %ld])...\n", PATH_SEPARATOR, len);
 			if (include_dir[len] != (short int)PATH_SEPARATOR){
 				include_dir[len + 1] = PATH_SEPARATOR;
 				len++;
@@ -17117,11 +17108,11 @@ int breviar_main(int argc, char **argv){
 			// treba najskôr skontrolovať, či include dir už náhodou neobsahuje aj prilepený postfix jazyka; include_dir[len] alebo include_dir[len + 1] obsahuje PATH_SEPARATOR
 			// teda znaky jeden a dva pred by mali obsahovať postfix_jazyka[_global_jazyk][0] a [1] | nemožno kontrolovať fixne 2 znaky, pretože postfix_jazyka môže byť dlhší (napr. pre "czop")
 			char *include_dir_pom;
-			int len_postfix_jazyka = strlen(postfix_jazyka[_global_jazyk]);
+			long len_postfix_jazyka = strlen(postfix_jazyka[_global_jazyk]);
 			short int kontrola_prilepenia_postfix_jazyka = NIE;
 			include_dir_pom = strstr(include_dir, postfix_jazyka[_global_jazyk]);
 			if (include_dir_pom != NULL){
-				_main_LOG_to_Export("len_postfix_jazyka = %d; include_dir_pom = %s\n", len_postfix_jazyka, include_dir_pom);
+				_main_LOG_to_Export("len_postfix_jazyka = %ld; include_dir_pom = %s\n", len_postfix_jazyka, include_dir_pom);
 				if (include_dir[len] == (short int)PATH_SEPARATOR){
 					_main_LOG_to_Export("include_dir[len] == (short int)PATH_SEPARATOR\n");
 					if ((short int)strlen(include_dir_pom) == len_postfix_jazyka + 1){
@@ -17146,7 +17137,7 @@ int breviar_main(int argc, char **argv){
 				_main_LOG_to_Export("include adresár končí reťazcom `%s' - nie je potrebné pridávať\n", postfix_jazyka[_global_jazyk]);
 			}
 			else{
-				_main_LOG_to_Export("include adresára NEkončí reťazcom `%s' - je potrebné pridávať (aktuálne include_dir == %s; lenght == %d; len == %d): ", postfix_jazyka[_global_jazyk], include_dir, strlen(include_dir), len);
+				_main_LOG_to_Export("include adresára NEkončí reťazcom `%s' - je potrebné pridávať (aktuálne include_dir == %s; lenght == %d; len == %ld): ", postfix_jazyka[_global_jazyk], include_dir, strlen(include_dir), len);
 				// doplnenie jazyka kvôli jazykovým mutáciám
 				_main_LOG_to_Export("upravujem include adresár podľa jazyka (%d - %s)...\n", _global_jazyk, nazov_jazyka[_global_jazyk]);
 
@@ -17328,7 +17319,7 @@ int breviar_main(int argc, char **argv){
 				Export("<li><" HTML_SPAN_PARAMETER ">p" HTML_SPAN_END " | modlitba (<" HTML_SPAN_VALUE ">r" HTML_SPAN_END " = ranné chvály, <" HTML_SPAN_VALUE ">v" HTML_SPAN_END " = vešpery)</li>\n");
 				Export("</ul>\n");
 				Export(HTML_P_BEGIN"V prípade, že je použitý parameter <" HTML_SPAN_PARAMETER ">a" HTML_SPAN_END " (append), \n");
-				Export("bude vytvorený len jeden súbor s nasledovným menom:\n");
+				Export("bude vytvorený iba jeden súbor s nasledovným menom:\n");
 				Export("<span " HTML_CLASS_TT ">yyyy-mm-dd_YYYY-MM-DD.htm" HTML_SPAN_END ", kde význam \n");
 				Export("jednotlivých častí mena súboru je nasledovný:\n");
 				Export("<ul " HTML_CLASS_LEVEL1 ">\n");

@@ -99,7 +99,7 @@ short int equalsi(char *is1, char *is2){
 		return 0;
 	}
 #else
-	int i, length;
+	long i, length;
 	char s1[MAX_STR], s2[MAX_STR];
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
@@ -124,7 +124,7 @@ short int equalsi(const char *is1, char *is2){
 		return 0;
 	}
 #else
-	int i, length;
+	long i, length;
 	char s1[MAX_STR], s2[MAX_STR];
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
@@ -149,7 +149,7 @@ short int equalsi(const char *is1, const char *is2){
 		return 0;
 	}
 #else
-	int i, length;
+	long i, length;
 	char s1[MAX_STR], s2[MAX_STR];
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
@@ -174,7 +174,7 @@ short int equalsi(char *is1, const char *is2){
 		return 0;
 	}
 #else
-	int i, length;
+	long i, length;
 	char s1[MAX_STR], s2[MAX_STR];
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
@@ -251,8 +251,8 @@ short int startsWith(char* base, char* str) {
 
 // Custom function for detecting whether base is ends with str
 short int endsWith(char* base, char* str){
-	int blen = strlen(base);
-	int slen = strlen(str);
+	long blen = strlen(base);
+	long slen = strlen(str);
 	if (slen <= blen)
 	{
 		return (0 == strcmp(base + blen - slen, str));
