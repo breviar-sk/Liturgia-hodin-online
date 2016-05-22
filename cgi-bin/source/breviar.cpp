@@ -1233,7 +1233,7 @@ void ExportChar(int c){
 #define MAX_ZAKONCENIE 200
 
 #define EXPORT_FOOTNOTES ANO
-#define EXPORT_FULL_TEXT (!vnutri_full_text || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT))
+#define EXPORT_FULL_TEXT ((!vnutri_full_text || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT)) && !(vnutri_full_text && isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
 #define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!vnutri_footnote || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
 #define EXPORT_HVIEZDICKA(modlitba) ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || (modlitba == MODL_POSV_CITANIE) || !(_global_jazyk == JAZYK_CZ)) && !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
 #define EXPORT_TROJUHOLNIK ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
@@ -1727,21 +1727,21 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 // full text of psalms
 
 				if ((equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN) || equals(strbuff, PARAM_PSALM_FULL_TEXT_SOFT_BEGIN)) && (vnutri_inkludovaneho == ANO)) {
+
 					vnutri_full_text = ANO;
-					write &= (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT));
-					fn_index = 0;
+					write &= (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT) && !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)));
+
 					if (write && equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN)) {
 						Export("<" HTML_DIV_PSALM_INDENT ">");
 					}
 				}
 				if ((equals(strbuff, PARAM_PSALM_FULL_TEXT_END) || equals(strbuff, PARAM_PSALM_FULL_TEXT_SOFT_END)) && (vnutri_inkludovaneho == ANO)) {
-					fnbuff[fn_index] = '\0';
 
 					if (write && equals(strbuff, PARAM_PSALM_FULL_TEXT_END)) {
 						Export(HTML_DIV_END);
 					}
-					vnutri_full_text = NIE;
 
+					vnutri_full_text = NIE;
 					write = ANO;
 					strcpy(fnrest, STR_EMPTY);
 				}
@@ -2024,15 +2024,32 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					}
 				}// zobraziť/nezobraziť číslovanie veršov
 
-				if ((!(je_velka_noc)) && (equals(rest, PARAM_ALELUJA_VO_VELKONOCNOM))){
-					if (equals(strbuff, INCLUDE_BEGIN) && (vnutri_inkludovaneho == 1)){
+				if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (equals(rest, PARAM_HIDE_FOR_VOICE_OUTPUT))) {
+					if (equals(strbuff, INCLUDE_BEGIN) && (vnutri_inkludovaneho == 1)) {
+						write = NIE;
+#if defined(EXPORT_HTML_SPECIALS)
+						Export("(stop)hide-for-voice-output");
+#endif
+						Log("  rusim writing to export file, kvoli hide-for-voice-output...\n");
+					}
+					else if (equals(strbuff, INCLUDE_END) && (vnutri_inkludovaneho == 1)) {
+#if defined(EXPORT_HTML_SPECIALS)
+						Export("hide-for-voice-output(start)");
+#endif
+						write = ANO;
+						Log("  opat writing to export file, end of hide-for-voice-output.\n");
+					}
+				}// hide passage for voice output (blind-friendly mode)
+
+				if ((!(je_velka_noc)) && (equals(rest, PARAM_ALELUJA_VO_VELKONOCNOM))) {
+					if (equals(strbuff, INCLUDE_BEGIN) && (vnutri_inkludovaneho == 1)) {
 						write = NIE;
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("(stop)nie je v.o.");
 #endif
 						Log("  rusim writing to export file, kvoli V.O. Aleluja...\n");
 					}
-					else if (equals(strbuff, INCLUDE_END) && (vnutri_inkludovaneho == 1)){
+					else if (equals(strbuff, INCLUDE_END) && (vnutri_inkludovaneho == 1)) {
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("nie je v.o.(start)");
 #endif
@@ -2248,6 +2265,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 			}// !equalsi(rest, modlparam)
 			continue;
 		}// switch(c)
+
 		if (!isbuff){
 			// bez ohľadu na to, ako je nastavené write
 			if (vnutri_footnote_ref == ANO){
@@ -2277,6 +2295,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 		}// if(!isbuff)
 		else{
 			AppendWchar(c, sizeof(strbuff), strbuff, &buff_index);
+
 			// 2011-03-29: doplnená kontrola, či nejde o osamotený znak '{'
 			if (((isbuff == 1) && (strlen(strbuff) > MAX_BUFFER - 2)) || (buff_index > MAX_BUFFER - 2)){
 				Log("pravdepodobne osamotený znak '{'...\n");

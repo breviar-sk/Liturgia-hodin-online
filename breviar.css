@@ -2,6 +2,11 @@
 	font-weight: bold;
 }
 
+.comment, p.comment, .hymn p.comment { 
+	font-size: 80%; 
+	font-weight: normal; 
+}
+
 /* for HU/CZ first/second/third-ant is used; for SK ant-first/second/third is used */
 .antiphon.first-ant:before {
     color: #ff0000;
@@ -308,11 +313,6 @@ div.responsory {
 
 .hymn p.first { 
 	padding-top: 1em; 
-}
-
-.hymn p.comment { 
-	font-size: 80%; 
-	font-weight: normal; 
 }
 
 .hymn p.rubric, .hymn p.rubric-always-display { 

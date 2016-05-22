@@ -470,6 +470,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define KEYWORD_ZAVER                   "ZAVER"
 #define KEYWORD_ZAVER_KNAZ_DIAKON       "ZAVER_KNAZ_DIAKON"
 #define KEYWORD_ZAVER_OSTATNI           "ZAVER_OSTATNI"
+#define KEYWORD_HIDE_FOR_VOICE_OUTPUT   "HIDE_FOR_VOICE_OUTPUT"
 
 #define SYMBOL_END "/"
 
@@ -501,6 +502,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ZAVER_KNAZ_DIAKON_END         KEYWORD_ZAVER_KNAZ_DIAKON "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_ZAVER_OSTATNI_BEGIN           KEYWORD_ZAVER_OSTATNI "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_ZAVER_OSTATNI_END             KEYWORD_ZAVER_OSTATNI "" STR_UNDERSCORE "" KEYWORD_END
+#define PARAM_HIDE_FOR_VOICE_OUTPUT         KEYWORD_HIDE_FOR_VOICE_OUTPUT
 
 #define PARAM_COPYRIGHT_BEGIN               KEYWORD_COPYRIGHT "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_COPYRIGHT_END                 KEYWORD_COPYRIGHT "" STR_UNDERSCORE "" KEYWORD_END
@@ -569,8 +571,8 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_PSALM_FULL_TEXT_BEGIN         "full-text"
 #define PARAM_PSALM_FULL_TEXT_END           SYMBOL_END "" PARAM_PSALM_FULL_TEXT_BEGIN
 // these two have the same usage as previous two except adding div's (used within section divided due to different psalm strophes as in Ps 55)
-#define PARAM_PSALM_FULL_TEXT_SOFT_BEGIN   "full-text-soft"
-#define PARAM_PSALM_FULL_TEXT_SOFT_END     SYMBOL_END "" PARAM_PSALM_FULL_TEXT_SOFT_BEGIN
+#define PARAM_PSALM_FULL_TEXT_SOFT_BEGIN    "full-text-soft"
+#define PARAM_PSALM_FULL_TEXT_SOFT_END      SYMBOL_END "" PARAM_PSALM_FULL_TEXT_SOFT_BEGIN
 
 // zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách, príp. v antifónach (červenou farbou)
 #define PARAM_RED_KRIZIK                    "†"
