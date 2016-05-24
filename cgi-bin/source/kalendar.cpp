@@ -6287,7 +6287,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 					modlitba = MODL_RANNE_CHVALY;
 					if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_CZ))){
-						_vlastna_cast_full_okrem_prosieb(modlitba);
+						_vlastna_cast_full(modlitba);
 					}
 					else{
 						_vlastna_cast_benediktus;
@@ -9899,18 +9899,31 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
 					modlitba = MODL_PRVE_VESPERY;
 					_vlastna_cast_full_okrem_hymnu(modlitba);
+					if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
+						_vlastna_cast_kresponz_ve;
+					}// inak zostane cezrocne, ale bez pripony
 
 					modlitba = MODL_INVITATORIUM;
 					_vlastna_cast_antifona_inv;
 
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_full_okrem_hymnu(modlitba);
+					if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
+						_vlastna_cast_kresponz_ve;
+					}// inak zostane cezrocne, ale bez pripony
 
 					modlitba = MODL_RANNE_CHVALY;
 					_vlastna_cast_full(modlitba);
+					if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
+						_vlastna_cast_kcitanie_ve;
+						_vlastna_cast_kresponz_ve;
+					}// inak zostane cezrocne, ale bez pripony
 
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_full_okrem_hymnu(modlitba);
+					if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
+						_vlastna_cast_kresponz_ve;
+					}// inak zostane cezrocne, ale bez pripony
 
 					_vlastna_cast_mcd_ant_kcitresp_modl;
 				}
@@ -24332,7 +24345,6 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
@@ -24346,6 +24358,8 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					_vlastna_cast_antifona_inv;
 
 					modlitba = MODL_POSV_CITANIE;
+					_vlastna_cast_kresponz;
+					_vlastna_cast_1citanie;
 					_vlastna_cast_2citanie;
 
 					modlitba = MODL_RANNE_CHVALY;

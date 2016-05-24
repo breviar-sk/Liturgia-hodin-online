@@ -1061,6 +1061,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 /* ---------------------------------------------------------------------------------------------------- */
 
+// krátke čítanie
+#define _vlastna_cast_kcitanie_ve {\
+	sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE, VELKONOCNA_PRIPONA);\
+	_set_kcitanie(modlitba, _file, _anchor);\
+	set_LOG_svsv;}
+
 #define _vlastna_cast_kresponz_ve {\
 	sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, VELKONOCNA_PRIPONA);\
 	_set_kresponz(modlitba, _file, _anchor);\
