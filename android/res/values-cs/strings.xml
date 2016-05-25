@@ -105,9 +105,16 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Aplikace Breviář | Co je nové</b>
 
+<!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
+
+<p><b>Verze 1.13.1</b>
+<ul>
+<li>Poznámky pod čarou ke druhým čtením: doplněn advent+vánoce.</li>
+<li>Vlastní texty pro salesiánskou rodinu opraveny a doplňeny.</li>
+</ul>
+
 <p><b>Verze 1.13</b>
 <ul>
-<!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
 <li>Nová volba: Možnost zobrazit poznámky pod čarou ke druhým čtením (zatím pro mezidobí).</li>
 <li>Kalendář a vlastní texty pro salesiánskou rodinu.</li>
 </ul>

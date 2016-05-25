@@ -105,9 +105,15 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Aplikácia Breviár | Čo je nové</b>
 
+<!-- <li>Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.</li> -->
+
+<p><b>Verzia 1.13.1</b>
+<ul>
+<li>Možnosť zobraziť kompletné texty žalmov (vrátane vynechávok).</li>
+</ul>
+
 <p><b>Verzia 1.13</b>
 <ul>
-<!-- <li>Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.</li> -->
 <li>Doplnenie partikulárneho kalendára slovenských rímskokatolíckych diecéz (od 1. júna 2016).</li>
 </ul>
 

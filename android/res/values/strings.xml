@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.13</string>
+    <string name="version">1.13.1</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -122,6 +122,13 @@ body { background-color: #000000; color: #cccccc; }
 <body>
 
 <p><b>Breviary application | What\'s new</b>
+
+<p><b>Version 1.13.1</b>
+<ul>
+<li>New option: Display psalm omissions (works for SK only).</li>
+<li>Footnotes for second readings (prayer with readings): CZ Advent + Christmas added.</li>
+<li>CZ: Proper texts for salesians (SDB) fixed & completized.</li>
+</ul>
 
 <p><b>Version 1.13</b>
 <ul>
