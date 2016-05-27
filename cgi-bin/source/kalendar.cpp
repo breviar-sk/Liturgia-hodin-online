@@ -7565,20 +7565,20 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_RANNE_CHVALY;
 				if (_global_jazyk == JAZYK_HU) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-					_vlastna_cast_modlitba;
 				}
+				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
 				if (_global_jazyk == JAZYK_HU) {
-					_vlastna_cast_modlitba;
 					_vlastna_cast_2citanie;
 				}
+				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
 				if (_global_jazyk == JAZYK_HU) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-					_vlastna_cast_modlitba;
 				}
+				_vlastna_cast_modlitba;
 
 				break;
 			}
@@ -17500,13 +17500,13 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				set_popis_dummy();
 
 				modlitba = MODL_RANNE_CHVALY;
-				// _vlastna_cast_modlitba;
+				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_modlitba;
+				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
-				// _vlastna_cast_modlitba;
+				_vlastna_cast_modlitba;
 
 				break;
 			}
@@ -23158,6 +23158,15 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 					set_popis_dummy();
 
+					modlitba = MODL_RANNE_CHVALY;
+					_vlastna_cast_modlitba;
+
+					modlitba = MODL_POSV_CITANIE;
+					_vlastna_cast_modlitba;
+
+					modlitba = MODL_VESPERY;
+					_vlastna_cast_modlitba;
+
 					break;
 				}
 				pocet = 3;
@@ -23964,6 +23973,15 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				set_popis_dummy();
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
 
 				break;
 			}
