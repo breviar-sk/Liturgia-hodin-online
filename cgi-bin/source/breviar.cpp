@@ -3137,8 +3137,11 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	// pokracuju dalsie klasicke `tagy' v modlitbach (teda templatoch)
 
 	if (equals(paramname, PARAM_POPIS)){
+
 		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS == %ld: ", _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS);
-		if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)){
+		Log("  _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY == %ld: ", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY);
+
+		if ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)) && (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
 			Log("including POPIS\n");
 			switch (type){
 			case MODL_INVITATORIUM:
@@ -3157,7 +3160,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				strcat(path, _global_modl_posv_citanie.popis.file);
 				includeFile(type, paramname, path, _global_modl_posv_citanie.popis.anchor);
 				break;
-				// ToDo: pre modlitbu cez deň zobrazovať popis len pre sviatky a slávnosti -- 2012-08-27: bolo vyriešené v set_popis_svaty_rch_mcd_pc_vesp()
+				// pre modlitbu cez deň zobrazovať popis len pre sviatky a slávnosti -- vyriešené v set_popis_svaty_rch_mcd_pc_vesp()
 			case MODL_CEZ_DEN_9:
 				strcat(path, _global_modl_cez_den_9.popis.file);
 				includeFile(type, paramname, path, _global_modl_cez_den_9.popis.anchor);
