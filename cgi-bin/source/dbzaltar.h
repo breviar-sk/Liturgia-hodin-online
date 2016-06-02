@@ -2049,4 +2049,21 @@ extern const char *text_DEC_11_OCD[POCET_JAZYKOV + 1];
 extern const char *text_DEC_14_OCD[POCET_JAZYKOV + 1];
 extern const char *text_DEC_16_OCD[POCET_JAZYKOV + 1];
 
+// --------------- CM propriá ---------------
+extern const char *text_JAN_04_CM[POCET_JAZYKOV + 1];
+extern const char *text_JAN_25_CM[POCET_JAZYKOV + 1];
+extern const char *text_FEB_01_CM[POCET_JAZYKOV + 1];
+extern const char *text_FEB_18_CM[POCET_JAZYKOV + 1];
+extern const char *text_MAR_15_CM[POCET_JAZYKOV + 1];
+extern const char *text_APR_26_CM[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_23_CM[POCET_JAZYKOV + 1];
+extern const char *text_JUN_26_CM[POCET_JAZYKOV + 1];
+extern const char *text_JUL_30_CM[POCET_JAZYKOV + 1];
+extern const char *text_AUG_30_CM[POCET_JAZYKOV + 1];
+extern const char *text_SEP_02_CM[POCET_JAZYKOV + 1];
+extern const char *text_SEP_11_CM[POCET_JAZYKOV + 1];
+extern const char *text_SEP_27_CM[POCET_JAZYKOV + 1];
+extern const char *text_NOV_27_CM[POCET_JAZYKOV + 1];
+extern const char *text_NOV_28_CM[POCET_JAZYKOV + 1];
+
 #endif // __DBZALTAR_H_

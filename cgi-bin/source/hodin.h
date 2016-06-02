@@ -3872,6 +3872,18 @@ const char *text_JAN_04_OFM[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JAN_04_CM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Alžbety Anny Bayleyovej Setonovej, rehoľníčky",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JAN_05_CSSR[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána Nepomuckého Neumanna, biskupa",
@@ -4340,6 +4352,18 @@ const char *text_JAN_25[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JAN_25_CM[POCET_JAZYKOV + 1] =
+{
+	"Obrátenie svätého Pavla, apoštola" HTML_LINE_BREAK "Výročný deň založenia Misijnej spoločnosti",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JAN_26[POCET_JAZYKOV + 1] =
 {
 	"Sv. Timoteja a Títa, biskupov",
@@ -4479,6 +4503,18 @@ const char *text_FEB_01_SDB[POCET_JAZYKOV + 1] =
 {
 	"Všetkých nebohých členov Spoločnosti svätého Františka Saleského",
 	"Připomínka zemřelých salesiánů",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_FEB_01_CM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Anny Vaillotovej a Odilie Baumgartenovej, panien a mučeníc",
+	"",
 	"",
 	"",
 	"",
@@ -4883,6 +4919,18 @@ const char *text_FEB_18_OPRAEM[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_FEB_18_CM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Františka Regisa Cleta, kňaza a mučeníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_FEB_18_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jána (Angelika) z Fiesole, kňaza",
@@ -5133,6 +5181,18 @@ const char *text_MAR_15_SDB[POCET_JAZYKOV + 1] =
 {
 	"",
 	"Bl. Artemide Zattiho, koadjutora",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_MAR_15_CM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Lujzy de Marillac, rehoľníčky, " HTML_LINE_BREAK "spoluzakladateľky spoločnosti Dcér kresťanskej lásky",
+	"",
 	"",
 	"",
 	"",
@@ -5592,6 +5652,18 @@ const char *text_APR_26_OPRAEM[POCET_JAZYKOV + 1] =
 {
 	"",
 	"Sv. Ludolfa, biskupa a mučedníka " HTML_LINE_BREAK "z premonstrátského řádu",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_APR_26_CM[POCET_JAZYKOV + 1] =
+{
+	"Prenesenie pozostatkov sv. Vincenta de Paul",
+	"",
 	"",
 	"",
 	"",
@@ -6372,6 +6444,18 @@ const char *text_MAJ_22[POCET_JAZYKOV + 1] =
 const char *text_MAJ_22_OCD[POCET_JAZYKOV + 1] =
 {
 	"Sv. Joachimy de Vedrúna y Mas, rehoľníčky",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_MAJ_23_CM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Jany Antidy Thouretovej, panny, " HTML_LINE_BREAK "zakladateľky Sestier kresťanskej lásky",
 	"",
 	"",
 	"",
@@ -7496,6 +7580,18 @@ const char *text_JUN_26_OCD[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUN_26_CM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Magdalény Fontainovej a spoločníčok, panien a mučeníc",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUN_27[POCET_JAZYKOV + 1] =
 {
 	"Sv. Cyrila Alexandrijského, biskupa a učiteľa Cirkvi",
@@ -8459,6 +8555,18 @@ const char *text_JUL_30_SK_OFM[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUL_30_CM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Justína de Iacobis, biskupa",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUL_31[POCET_JAZYKOV + 1] =
 {
 	"Sv. Ignáca z Loyoly, kňaza",
@@ -9399,6 +9507,18 @@ const char *text_AUG_30_SK[POCET_JAZYKOV + 1] =
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_AUG_30_CM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Michala Ghebreho, kňaza a mučeníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_AUG_31_HU[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -9441,6 +9561,18 @@ const char *text_SEP_01_OFM[POCET_JAZYKOV + 1] =
 const char *text_SEP_01_OCD[POCET_JAZYKOV + 1] =
 {
 	"Sv. Terézie Margity Redi " HTML_LINE_BREAK "od Najsvätejšieho Srdca Ježišovho, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_SEP_02_CM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Ľudovíta Jozefa Francoisa, Jána Henricha Gruyera " HTML_LINE_BREAK "a Petra Renáta Rogueho, kňazov a mučeníkov",
 	"",
 	"",
 	"",
@@ -9662,6 +9794,18 @@ const char *text_SEP_10_CZ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Karla Spinoly, kněze a mučedníka",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_SEP_11_CM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Jána Gabriela Perboyreho, kňaza a mučeníka",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -10119,6 +10263,18 @@ const char *text_SEP_27[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Vincence z Paula, kněze",
 	"Páli Szent Vince áldozópap",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_SEP_27_CM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Vincenta de Paul, kňaza, " HTML_LINE_BREAK "zakladateľa Misijnej spoločnosti " HTML_LINE_BREAK "a spoločnosti Dcér kresťanskej lásky",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -12003,6 +12159,30 @@ const char *text_NOV_27_OFM[POCET_JAZYKOV + 1] =
 const char *text_NOV_27_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Margity Savojskej, matky rodiny a rehoľníčky",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_NOV_27_CM[POCET_JAZYKOV + 1] =
+{
+	"Nepoškvrnenej Panny Márie Zázračnej medaily",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_NOV_28_CM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Kataríny Labouré, panny",
 	"",
 	"",
 	"",
