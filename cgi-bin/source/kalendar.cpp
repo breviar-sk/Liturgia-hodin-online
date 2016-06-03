@@ -10701,19 +10701,19 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
-				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_full(modlitba);
-				if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
-					_vlastna_cast_kresponz_ve;
-				}
-
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				_vlastna_cast_1citanie;
 				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
-				_vlastna_cast_mcd_modlitba;
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_full(modlitba);
+				if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
+					_vlastna_cast_kresponz_ve;
+				}
+
+				_vlastna_cast_mcd_kcitresp_modl;
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
