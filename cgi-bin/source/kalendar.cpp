@@ -1615,33 +1615,59 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
-			// nemá popis; 2013-02-04: doplnené
-			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)) {
 				set_popis_dummy();
 			}
 
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
+			modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_full(modlitba);
+
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full_okrem_prosieb(modlitba);
 
-			modlitba = MODL_POSV_CITANIE;
-			_vlastna_cast_full(modlitba);
+			_vlastna_cast_mcd_ant_kcitresp_modl;
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full_okrem_prosieb(modlitba);
 
-			_vlastna_cast_mcd_ant_kcitresp_modl;
+			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
+
+				file_name_vlastny_kalendar(_global_kalendar);
+
+				if (query_type != PRM_DETAILY)
+					set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_2citanie;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_modlitba;
+
+				_vlastna_cast_mcd_modlitba;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
+
+			}// kalendár pre KALENDAR_SK_CM
 
 			break;
 		}
 		_global_svaty1.typslav = SLAV_SVIATOK;
 		_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
-		mystrcpy(_global_svaty1.meno, text_JAN_25[_global_jazyk], MENO_SVIATKU);
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
+			mystrcpy(_global_svaty1.meno, text_JAN_25_CM[_global_jazyk], MENO_SVIATKU);
+			_global_svaty1.kalendar = _global_kalendar;
+		}
+		else {
+			mystrcpy(_global_svaty1.meno, text_JAN_25[_global_jazyk], MENO_SVIATKU);
+			_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
+		}
 		_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_APOSTOL);
 		_global_svaty1.farba = LIT_FARBA_BIELA;
-		_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 
 		break;
 
@@ -2181,6 +2207,35 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_SDB a KALENDAR_CZ_SDB
 
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
+			if (poradie_svaty == 1) {
+
+				file_name_vlastny_kalendar(_global_kalendar);
+
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_2citanie;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
+
+				break;
+			}
+			_global_svaty1.typslav = SLAV_SPOMIENKA;
+			_global_svaty1.smer = 10; // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+			mystrcpy(_global_svaty1.meno, text_FEB_01_CM[_global_jazyk], MENO_SVIATKU);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_PANNY_VIACERE);
+			_global_svaty1.farba = LIT_FARBA_CERVENA;
+			_global_svaty1.kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_SK_CM
+
 		break;
 
 	case 2: // MES_FEB -- 02FEB
@@ -2567,7 +2622,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -2628,7 +2682,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -2713,7 +2766,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -2769,7 +2821,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					// _vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -2820,7 +2871,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -2877,7 +2927,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -2916,7 +2965,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -2977,7 +3025,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3033,7 +3080,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3082,7 +3128,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					// _vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3167,7 +3212,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3223,7 +3267,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -3282,7 +3325,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3346,7 +3388,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3408,7 +3449,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3501,7 +3541,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3550,7 +3589,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3604,7 +3642,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					// _vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3665,7 +3702,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3713,7 +3749,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3735,6 +3770,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					// tak je to vo zväzku II (pôst+veľká noc); avak v III je to normálne, vlastná ant.; opravené
 					_vlastna_cast_magnifikat;
 					_vlastna_cast_modlitba;
+
 				}// nie je_privileg
 
 				break;
@@ -3750,6 +3786,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 		break;
 
 	case 18: // MES_FEB -- 18FEB
+
 		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)){
 
 			// presúva sa 17FEB na 18. února pre KALENDAR_CZ_OPRAEM
@@ -3773,7 +3810,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3795,6 +3831,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					// tak je to vo zväzku II (pôst+veľká noc); avak v III je to normálne, vlastná ant.; opravené
 					_vlastna_cast_magnifikat;
 					_vlastna_cast_modlitba;
+
 				}// nie je_privileg
 
 				break;
@@ -3806,6 +3843,54 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_CZ_OPRAEM
+
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
+			if (poradie_svaty == 1) {
+
+				file_name_vlastny_kalendar(_global_kalendar);
+
+				// na spomienku v privilegovaný deň (spomienka v pôste)
+				if (je_privileg) {
+					if (query_type != PRM_DETAILY)
+						set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
+
+					modlitba = MODL_RANNE_CHVALY;
+					// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniť antifónu zo spoločnej časti (do vlastnej časti) a odpoznámkovať tento kód, aby bolo správne zobrazené zakončenie
+					_vlastna_cast_modlitba_spomprivileg;
+
+					modlitba = MODL_VESPERY;
+					// _vlastna_cast_magnifikat_spomprivileg;
+					_vlastna_cast_modlitba_spomprivileg;
+
+					modlitba = MODL_POSV_CITANIE;
+					_vlastna_cast_2citanie_spomprivileg;
+					_vlastna_cast_modlitba;
+				}// je_privileg
+				else {
+					// definovanie parametrov pre modlitbu
+					if (query_type != PRM_DETAILY)
+						set_spolocna_cast(sc, poradie_svaty);
+
+					modlitba = MODL_RANNE_CHVALY;
+					_vlastna_cast_modlitba;
+
+					modlitba = MODL_POSV_CITANIE;
+					_vlastna_cast_modlitba;
+					_vlastna_cast_2citanie;
+
+					modlitba = MODL_VESPERY;
+					_vlastna_cast_modlitba;
+				}// nie je_privileg
+
+				break;
+			}
+			_global_svaty1.typslav = SLAV_SPOMIENKA;
+			_global_svaty1.smer = 11; // miestne povinné spomienky
+			mystrcpy(_global_svaty1.meno, text_FEB_18_CM[_global_jazyk], MENO_SVIATKU);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			_global_svaty1.farba = LIT_FARBA_CERVENA;
+			_global_svaty1.kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_SK_CM
 
 		if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 			if (poradie_svaty == 1){
@@ -3835,7 +3920,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3904,7 +3988,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					// _vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -3961,7 +4044,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -4017,7 +4099,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					// _vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -4074,7 +4155,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -4159,7 +4239,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -4218,7 +4297,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					// _vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -4402,7 +4480,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -4454,7 +4531,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -4503,7 +4579,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else{
 					// definovanie parametrov pre modlitbu
@@ -4554,7 +4629,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -4608,7 +4682,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -4662,7 +4735,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
@@ -4719,7 +4791,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 
 				break;
@@ -4780,7 +4851,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 
 				break;
@@ -4857,7 +4927,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					modlitba = MODL_POSV_CITANIE;
 					// _vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 				else {
 					// definovanie parametrov pre modlitbu
@@ -4906,7 +4975,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 
 			break;
@@ -4936,7 +5004,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
-
 				}// je_privileg
 
 				break;
@@ -4970,7 +5037,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 
 			break;
@@ -5128,7 +5194,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie_spomprivileg;
 				_vlastna_cast_modlitba;
-
 			}// je_privileg
 			else{
 				// definovanie parametrov pre modlitbu
