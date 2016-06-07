@@ -4867,8 +4867,8 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 	case 15: // MES_MAR -- 15MAR
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CSSR)){
-			if (poradie_svaty == 1){
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CSSR)) {
+			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -4905,6 +4905,44 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_CSSR
+
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
+			if (poradie_svaty == 1) {
+
+				file_name_vlastny_kalendar(_global_kalendar);
+
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				modlitba = MODL_PRVE_VESPERY;
+				_vlastna_cast_full_okrem_hymnu(modlitba);
+
+				modlitba = MODL_INVITATORIUM;
+				// _vlastna_cast_antifona_inv;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_1citanie;
+				_vlastna_cast_2citanie;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_full_okrem_hymnu(modlitba);
+
+				_vlastna_cast_mcd_full_okrem_hymnu;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_full_okrem_hymnu(modlitba);
+
+				break;
+			}
+			_global_svaty1.typslav = SLAV_SLAVNOST;
+			_global_svaty1.smer = 3; // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+			mystrcpy(_global_svaty1.meno, text_MAR_15_CM[_global_jazyk], MENO_SVIATKU);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+			_global_svaty1.farba = LIT_FARBA_BIELA;
+			_global_svaty1.kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_SK_CM
 
 		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
 			if (poradie_svaty == 1) {
