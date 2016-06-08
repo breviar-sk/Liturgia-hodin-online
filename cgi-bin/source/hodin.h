@@ -682,6 +682,7 @@ const char *nazov_slavenia_lokal[] =
 , "A Conceptionistáknál: Ünnep"                                                                                 // LOKAL_SLAV_HU_CONCEPTIONISTAK_UN
 , "v kláštoroch bosých karmelitánok – spomienka"                                                                // LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM
 , "pro SDB: slavnost"                                                                                           // LOKAL_SLAV_SLAVNOST_SDB_CZ
+, "v dome sv. Lazára v Paríži: spomienka"                                                                       // LOKAL_SLAV_SPOMIENKA_CM_PARIZ
 };
 
 // names of liturgical colors
