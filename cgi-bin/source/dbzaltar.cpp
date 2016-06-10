@@ -3909,15 +3909,26 @@ void _set_zalmy_opraem_pc_1_8_21(short int modlitba){
 }// _set_zalmy_opraem_pc_1_8_21()
 
 // OPRAEM (02MAJ)
-void _set_zalmy_opraem_pc_1_8_24(short int modlitba){
+void _set_zalmy_opraem_pc_1_8_24(short int modlitba) {
 	Log("_set_zalmy_opraem_pc_1_8_24(%s) -- begin\n", nazov_modlitby(modlitba));
-	if (modlitba == MODL_POSV_CITANIE){
+	if (modlitba == MODL_POSV_CITANIE) {
 		set_zalm(1, modlitba, "z1.htm", "ZALM1");
 		set_zalm(2, modlitba, "z8.htm", "ZALM8");
 		set_zalm(3, modlitba, "z24.htm", "ZALM24");
 	}
 	Log("_set_zalmy_opraem_pc_1_8_24(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_opraem_pc_1_8_24()
+
+// CM (27SEP)
+void _set_zalmy_cm_pc_1_41_84(short int modlitba) {
+	Log("_set_zalmy_cm_pc_1_41_84(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z1.htm", "ZALM1");
+		set_zalm(2, modlitba, "z41.htm", "ZALM41");
+		set_zalm(3, modlitba, "z84.htm", "ZALM84");
+	}
+	Log("_set_zalmy_cm_pc_1_41_84(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_cm_pc_1_41_84()
 
 // OFM (18MAJ)
 void _set_zalmy_pc_1_12_24(short int modlitba){
@@ -3947,16 +3958,43 @@ void _set_zalmy_pc_15_66(short int modlitba){
 	Log("_set_zalmy_pc_15_66(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_pc_15_66()
 
+// SK OP (29APR)
+void _set_zalmy_op_29apr(short int modlitba) {
+	Log("_set_zalmy_op_29apr(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z138.htm", "ZALM138_OP");
+		set_zalm(2, modlitba, "z25.htm", "ZALM25_CELY");
+		set_zalm(3, modlitba, "z67.htm", "ZALM67_OP");
+	}
+	else if (modlitba == MODL_VESPERY) {
+		set_zalm(1, modlitba, "z31.htm", "ZALM31,20-25");
+		set_zalm(2, modlitba, "z84.htm", "ZALM84_OP");
+		set_zalm(3, modlitba, "ch_zjv4_5.htm", "CHVAL_ZJV45");
+	}
+	Log("_set_zalmy_op_29apr(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_op_29apr()
+
 // SK OP (28JAN)
-void _set_zalmy_pc_40_27(short int modlitba){
+void _set_zalmy_pc_40_27(short int modlitba) {
 	Log("_set_zalmy_pc_40_27(%s) -- begin\n", nazov_modlitby(modlitba));
-	if (modlitba == MODL_POSV_CITANIE){
+	if (modlitba == MODL_POSV_CITANIE) {
 		set_zalm(1, modlitba, "z40.htm", "ZALM40_I");
 		set_zalm(2, modlitba, "z40.htm", "ZALM40_II");
 		set_zalm(3, modlitba, "z27.htm", "ZALM27,1-6");
 	}
 	Log("_set_zalmy_pc_40_27(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_pc_40_27()
+
+// CZ OP (28JAN)
+void _set_zalmy_pc_1_21_92(short int modlitba) {
+	Log("_set_zalmy_pc_1_21_92(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z1.htm", "ZALM1");
+		set_zalm(2, modlitba, "z21.htm", "ZALM21");
+		set_zalm(3, modlitba, "z92.htm", "ZALM92");
+	}
+	Log("_set_zalmy_pc_1_21_92(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_pc_1_21_92()
 
 // HU OFM (19NOV)
 void _set_zalmy_pc_45_87(short int modlitba){

@@ -1831,7 +1831,6 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 				_set_zalmy_mcd_doplnkova_psalmodia(!je_len_doplnkova_psalmodia(modlitba)); // toto je potrebné z technického dôvodu, pretože doplnková psalmódia bola nastavená ešte pri nastavovaní žaltára (pred vlastnými časťami svätých)
 
 				modlitba = MODL_VESPERY;
-				// 2012-02-06: doplnené žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
 				_set_zalmy_vesp_127_111_kol(modlitba);
 				_vlastna_cast_full(modlitba);
 
@@ -1888,10 +1887,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_full(modlitba);
-					// 2010-07-06: doplnené žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
-					set_zalm(1, modlitba, "z1.htm", "ZALM1");
-					set_zalm(2, modlitba, "z21.htm", "ZALM21");
-					set_zalm(3, modlitba, "z92.htm", "ZALM92");
+					_set_zalmy_pc_1_21_92(modlitba);
 
 					_vlastna_cast_mcd_kcitresp_modl;
 
@@ -7155,18 +7151,12 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_full(modlitba);
-					// 2012-04-02: doplnené žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
-					set_zalm(1, modlitba, "z138.htm", "ZALM138_OP");
-					set_zalm(2, modlitba, "z25.htm", "ZALM25_CELY");
-					set_zalm(3, modlitba, "z67.htm", "ZALM67_OP");
+					_set_zalmy_op_29apr(modlitba);
 
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_full(modlitba);
 					_vlastna_cast_modlitba_ina; // Alebo ako na ranné chvály.
-					// 2012-04-02: doplnené žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
-					set_zalm(1, modlitba, "z31.htm", "ZALM31,20-25");
-					set_zalm(2, modlitba, "z84.htm", "ZALM84_OP");
-					set_zalm(3, modlitba, "ch_zjv4_5.htm", "CHVAL_ZJV45");
+					_set_zalmy_op_29apr(modlitba);
 
 					_vlastna_cast_mcd_kcitresp_modl;
 
@@ -15191,8 +15181,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_full(modlitba);
-					// 2013-08-18: doplnené žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité (bežne pre nedeľu 3. týždňa žaltára)
-					_set_zalmy_pc_145(modlitba);
+					_set_zalmy_pc_145(modlitba); // žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité (bežne pre nedeľu 3. týždňa žaltára)
 
 					modlitba = MODL_RANNE_CHVALY;
 					_vlastna_cast_full(modlitba);
@@ -21475,31 +21464,84 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 	case 27: // MES_SEP -- 27SEP
 
-		if (poradie_svaty == 1){
-			// definovanie parametrov pre modlitbu
-			if (query_type != PRM_DETAILY)
-				set_spolocna_cast(sc, poradie_svaty);
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
+			if (poradie_svaty == 1) {
 
-			modlitba = MODL_RANNE_CHVALY;
-			_vlastna_cast_benediktus;
-			_vlastna_cast_modlitba;
+				file_name_vlastny_kalendar(_global_kalendar);
 
-			modlitba = MODL_POSV_CITANIE;
-			_vlastna_cast_modlitba;
-			_vlastna_cast_2citanie;
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
 
-			modlitba = MODL_VESPERY;
-			_vlastna_cast_magnifikat;
-			_vlastna_cast_modlitba;
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
 
-			break;
-		}
-		_global_svaty1.typslav = SLAV_SPOMIENKA;
-		_global_svaty1.smer = 10; // povinné spomienky podľa všeobecného kalendára
-		mystrcpy(_global_svaty1.meno, text_SEP_27[_global_jazyk], MENO_SVIATKU);
-		_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_SKUTKYMIL);
-		_global_svaty1.farba = LIT_FARBA_BIELA;
-		_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
+				modlitba = MODL_PRVE_VESPERY;
+				_vlastna_cast_full(modlitba);
+
+				modlitba = MODL_INVITATORIUM;
+				_vlastna_cast_antifona_inv;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_full(modlitba);
+				_set_zalmy_cm_pc_1_41_84(modlitba);
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_full(modlitba);
+
+				_vlastna_cast_mcd_ant_kcitresp_modl;
+
+				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
+				if (_global_den.denvt != DEN_NEDELA) {
+					_set_zalmy_mcd_doplnkova_psalmodia();
+				}
+				else {
+					_set_zalmy_1nedele_mcd();
+				}
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_full(modlitba);
+
+				modlitba = MODL_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
+				break;
+			}
+			_global_svaty1.typslav = SLAV_SLAVNOST;
+			_global_svaty1.smer = 3; // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári // _global_svaty1.smer = 4; // miestne slávnosti podľa miestneho kalendára
+			mystrcpy(_global_svaty1.meno, text_SEP_27_CM[_global_jazyk], MENO_SVIATKU);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			_global_svaty1.farba = LIT_FARBA_BIELA;
+			_global_svaty1.kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_SK_CM
+
+		else {
+			if (poradie_svaty == 1) {
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_benediktus;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_modlitba;
+				_vlastna_cast_2citanie;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_magnifikat;
+				_vlastna_cast_modlitba;
+
+				break;
+			}
+			_global_svaty1.typslav = SLAV_SPOMIENKA;
+			_global_svaty1.smer = 10; // povinné spomienky podľa všeobecného kalendára
+			mystrcpy(_global_svaty1.meno, text_SEP_27[_global_jazyk], MENO_SVIATKU);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_SKUTKYMIL);
+			_global_svaty1.farba = LIT_FARBA_BIELA;
+			_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
+		}// všeobecný kalendár
 
 		break;
 
