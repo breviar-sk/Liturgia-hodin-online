@@ -15253,6 +15253,11 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
+			modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_modlitba;
+			_vlastna_cast_2citanie;
+			_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			_vlastna_cast_antifony;
@@ -15260,15 +15265,12 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_vlastna_cast_kresponz;
 			_vlastna_cast_kcitanie; // má byť rovnaké ako zo spoločnej časti svätých žien
 			_vlastna_cast_benediktus;
-			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
 				_vlastna_cast_prosby;
 			}
 			_vlastna_cast_modlitba;
 
-			modlitba = MODL_POSV_CITANIE;
-			_vlastna_cast_modlitba;
-			_vlastna_cast_2citanie;
-			_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+			_vlastna_cast_mcd_modlitba;
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -15285,8 +15287,8 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 			break;
 		}
-		_global_svaty1.typslav = SLAV_SPOMIENKA;
-		_global_svaty1.smer = 10; // povinné spomienky podľa všeobecného kalendára
+		_global_svaty1.typslav = SLAV_SVIATOK; // Pápež František povýšil spomienku sv. Márie Magdalény na liturgický sviatok
+		_global_svaty1.smer = 7; // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
 		mystrcpy(_global_svaty1.meno, text_JUL_22[_global_jazyk], MENO_SVIATKU);
 		_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA);
 		_global_svaty1.farba = LIT_FARBA_BIELA;
