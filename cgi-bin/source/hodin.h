@@ -3017,7 +3017,7 @@ const char *html_text_opt_5_KomplHymnusA[POCET_JAZYKOV + 1] =
 	"hymnus A: Na sklonku dňa ťa úprimne",
 	"hymnus A: Na sklonku dne tě upřímně",
 	"hymn A",
-	"",
+	"hymnus A: Te lucis ante términum",
 	"",
 	"hymnus A: Na sklonku dne tě upřímně",
 	"himnusz A: Immár a nap leáldozott",
@@ -3030,7 +3030,7 @@ const char *html_text_opt_5_KomplHymnusB[POCET_JAZYKOV + 1] =
 	"hymnus B: Kriste, ty svetlo a náš deň",
 	"hymnus B: Ty, Kriste, světlo, jasný dni",
 	"hymn B",
-	"",
+	"hymnus B: Christe, qui, splendor et dies",
 	"",
 	"hymnus B: Ty, Kriste, světlo, jasný dni",
 	"himnusz B: Krisztus, tündöklő nappalunk",
@@ -3043,7 +3043,7 @@ const char *html_text_opt_5_PCHymnusI[POCET_JAZYKOV + 1] =
 	"hymnus I. [Ak je posvätné čítanie v noci alebo včasráno]",
 	"hymnus I. [V noci a časně ráno]",
 	"hymn I. [during the night and early in the morning]",
-	"",
+	"hymnus I. [Quando Officium lectionis dicitur noctu vel summo mane]",
 	"",
 	"hymnus I. [V noci a časně ráno]",
 	"himnusz I. [Amikor az imaórát éjszaka vagy kora hajnalban mondják]",
@@ -3056,7 +3056,7 @@ const char *html_text_opt_5_PCHymnusII[POCET_JAZYKOV + 1] =
 	"hymnus II. [Ak je posvätné čítanie cez deň]",
 	"hymnus II. [Během dne]",
 	"hymn II. [during the day]",
-	"",
+	"hymnus II. [Quando Officium lectionis dicitur diurno tempore]",
 	"",
 	"hymnus II. [Během dne]",
 	"himnusz II. [Amikor az imaórát a nap nem reggeli órájában végzik]",
@@ -3145,12 +3145,12 @@ const char *html_text_opt_5_VespHymnusVNferia[POCET_JAZYKOV + 1] =
 const char *html_text_opt_5_MCDPredHymnus1[POCET_JAZYKOV + 1] = 
 {
 	"hymnus Príď, Duchu Svätý",
- "hymnus K nám, Duchu Svatý, nyní spěj",
- "hymn 1",
- "",
- "",
- "hymnus K nám, Duchu Svatý, nyní spěj",
- "himnusz Most jöjj, Szentlélek, szállj közénk",
+	"hymnus K nám, Duchu Svatý, nyní spěj",
+	"hymn 1",
+	"hymnus Nunc, Sancte, nobis, Spíritus",
+	"",
+	"hymnus K nám, Duchu Svatý, nyní spěj",
+	"himnusz Most jöjj, Szentlélek, szállj közénk",
 };
 
 const char *html_text_opt_5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
@@ -3158,7 +3158,7 @@ const char *html_text_opt_5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
 	"hymnus Deviata je už hodina",
 	"hymnus Je třetí denní hodina",
 	"hymn 2",
-	"",
+	"hymnus Certum tenéntes órdinem",
 	"",
 	"hymnus Je třetí denní hodina",
 	"himnusz Idők rendjét megtartva most",
@@ -3169,12 +3169,12 @@ const char *html_text_opt_5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
 const char *html_text_opt_5_MCDNaHymnus1[POCET_JAZYKOV + 1] = 
 {
 	"hymnus Mocný Vládca, verný Bože",
- "hymnus Jsi mocný Vládce, věrný Bůh",
- "hymn 1",
- "",
- "",
- "hymnus Jsi mocný Vládce, věrný Bůh",
- "himnusz Urunk, felséges Istenünk",
+	"hymnus Jsi mocný Vládce, věrný Bůh",
+	"hymn 1",
+	"hymnus Rector potens, verax Deus",
+	"",
+	"hymnus Jsi mocný Vládce, věrný Bůh",
+	"himnusz Urunk, felséges Istenünk",
 };
 
 const char *html_text_opt_5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
@@ -3182,7 +3182,7 @@ const char *html_text_opt_5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
 	"hymnus Na nebi slnko vrcholí",
 	"hymnus Teď Pánu chvály zpívejme",
 	"hymn 2",
-	"",
+	"hymnus Dicámus laudes Dómino",
 	"",
 	"hymnus Teď Pánu chvály zpívejme",
 	"himnusz Dicsérjük dallal az Urat",
@@ -3193,12 +3193,12 @@ const char *html_text_opt_5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
 const char *html_text_opt_5_MCDPoHymnus1[POCET_JAZYKOV + 1] = 
 {
 	"hymnus Celý svet v pohyb uvádzaš",
- "hymnus Svět celý v pohyb uvádíš",
- "hymn 1",
- "",
- "",
- "hymnus Svět celý v pohyb uvádíš",
- "himnusz Világfenntartó Istenünk",
+	"hymnus Svět celý v pohyb uvádíš",
+	"hymn 1",
+	"hymnus Rerum, Deus, tenax vigor",
+	"",
+	"hymnus Svět celý v pohyb uvádíš",
+	"himnusz Világfenntartó Istenünk",
 };
 
 const char *html_text_opt_5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
@@ -3206,7 +3206,7 @@ const char *html_text_opt_5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
 	"hymnus Z Božej milosti tretí raz",
 	"hymnus Hodina třetí z poledne",
 	"hymn 2",
-	"",
+	"hymnus Ternis horárum términis",
 	"",
 	"hymnus Hodina třetí z poledne",
 	"himnusz Háromszor három óra már",
