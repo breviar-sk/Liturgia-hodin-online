@@ -383,6 +383,18 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_litobd;\
 }
 
+#define _vlastne_slavenie_popis_mcd(anchor) {\
+	sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+	_set_popis(MODL_PREDPOLUDNIM, _file, _anchor);\
+	set_LOG_litobd;\
+	sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+	_set_popis(MODL_NAPOLUDNIE, _file, _anchor);\
+	set_LOG_litobd;\
+	sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+	_set_popis(MODL_POPOLUDNI, _file, _anchor);\
+	set_LOG_litobd;\
+}
+
 // invitatórium použiteľné pre _bohorod, _krkrala, _krst... a pod.
 #define _vlastne_slavenie_invitat(anchor) {\
 	sprintf(_anchor, "%s_%c%s", anchor, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
@@ -412,6 +424,18 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define _vlastne_slavenie_modlitba(vlastny_anchor) {\
 	sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
 	_set_modlitba(modlitba, _file, _anchor);\
+	set_LOG_litobd;\
+}
+
+#define _vlastne_slavenie_modlitba_mcd(vlastny_anchor) {\
+	sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+	_set_modlitba(MODL_PREDPOLUDNIM, _file, _anchor);\
+	set_LOG_litobd;\
+	sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+	_set_modlitba(MODL_NAPOLUDNIE, _file, _anchor);\
+	set_LOG_litobd;\
+	sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+	_set_modlitba(MODL_POPOLUDNI, _file, _anchor);\
 	set_LOG_litobd;\
 }
 

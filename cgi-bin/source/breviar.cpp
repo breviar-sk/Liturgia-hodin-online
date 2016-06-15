@@ -8675,6 +8675,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			(i == JAZYK_CZ) ||
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 			(i == JAZYK_CZ_OP) ||
+			(i == JAZYK_LA) ||
 #if defined(OS_Windows_Ruby)
 			(i == JAZYK_RU) ||
 #endif
@@ -8762,7 +8763,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY) ? ": " : ""));
 
-#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
+#if defined(DEBUG) || defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 			Export(HTML_CRLF_LINE_BREAK);
 #endif
 
@@ -8789,7 +8790,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_SK_OP) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_OP]);
-#ifdef OS_Windows_Ruby
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_SK_SJ) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_SJ]);
@@ -8815,7 +8816,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_CZ_SDB) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_SDB]);
-#ifdef OS_Windows_Ruby
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_CZ_CSSR) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_CZ_CSSR]);
@@ -8837,7 +8838,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("</select>\n");
 
 			if (!(equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY))) {
-#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
+#if defined(DEBUG) || defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 				Export(HTML_CRLF_LINE_BREAK);
 #endif
 				Export(html_text_kalendar_miestny_post[_global_jazyk]);

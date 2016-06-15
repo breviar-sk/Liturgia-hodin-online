@@ -5696,6 +5696,32 @@ label_24_DEC:
 				if(_global_den.denvt != DEN_NEDELA){
 					_set_zalmy_mcd_doplnkova_psalmodia();
 				}
+
+				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SJ)) {
+					file_name_vlastny_kalendar(_global_kalendar);
+					Log("  pre SJ: ide o slávnosť, TITULÁRNY SVIATOK SJ: _file = `%s', _anchor = %s...\n", _file, _anchor);
+
+					modlitba = MODL_PRVE_VESPERY;
+					_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+
+					modlitba = MODL_POSV_CITANIE;
+					_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+
+					modlitba = MODL_RANNE_CHVALY;
+					_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+
+					_vlastne_slavenie_popis_mcd(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_modlitba_mcd(_anchor_vlastne_slavenie);
+
+					modlitba = MODL_VESPERY;
+					_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+				}// kalendár pre KALENDAR_SK_SJ
 			}// Panny Marie Bohorodicky
 
 			// druha nedela po narodeni pana - 2. NEDEĽA PO NARODENÍ PÁNA | nie pre krajiny, kde sa Zjavenie Pána slávi v nedeľu medzi 2. a 8. januárom | BIT_OPT_0_ZJAVENIE_PANA_NEDELA

@@ -7127,7 +7127,7 @@ const char *text_JUN_09[POCET_JAZYKOV + 1] =
 };
 const char *text_JUN_09_SJ[POCET_JAZYKOV + 1] =
 {
-	"Bl. Jozefa de Anchieta, kňaza",
+	"Sv. Jozefa de Anchieta, kňaza",
 	"",
 	"",
 	"",
