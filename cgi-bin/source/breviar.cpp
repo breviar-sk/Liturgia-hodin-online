@@ -8678,6 +8678,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			(i == JAZYK_LA) ||
 #if defined(OS_Windows_Ruby)
 			(i == JAZYK_RU) ||
+			(i == JAZYK_BY) ||
 #endif
 #endif
 			(i == JAZYK_HU)){

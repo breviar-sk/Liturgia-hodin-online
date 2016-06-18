@@ -35,7 +35,7 @@
 #define RITUS_RIM_KAT   0
 #define RITUS_GR_KAT    1
 
-// language IDs (constants)
+// language IDs (constants) according to ISO 3166-1 alpha-2
 // 2006-07-11: created
 // 2006-12-12: added JAZYK_LA
 // 2008-08-15: added JAZYK_CZ_OP
@@ -49,11 +49,13 @@
 #define JAZYK_CZ_OP 5
 #define JAZYK_HU    6
 #define JAZYK_RU    7
+#define JAZYK_BY    8
 /* ADD_VALUE_FOR_NEW_LANGUAGE */
 
 // rite for languages
 const short int ritus_jazyka[POCET_JAZYKOV + 1] =
 {
+	RITUS_RIM_KAT,
 	RITUS_RIM_KAT,
 	RITUS_RIM_KAT,
 	RITUS_RIM_KAT,
@@ -994,9 +996,10 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_HU_OFM                    18
 #define KALENDAR_SK_OCD                    19
 #define KALENDAR_HU_SVD                    20
+#define KALENDAR_VSEOBECNY_BY              21
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   20
+#define POCET_KALENDAROV                   21
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
@@ -1014,6 +1017,7 @@ const short int default_kalendar[POCET_JAZYKOV + 1] =
 	KALENDAR_CZ_OP,
 	KALENDAR_VSEOBECNY_HU,
 	KALENDAR_VSEOBECNY_RU,
+	KALENDAR_VSEOBECNY_BY,
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
@@ -1406,7 +1410,7 @@ extern const char *nazov_charset[POCET_CHARSET + 1];
 
 extern const char *nazov_fontu[POCET_FONTOV + 1];
 extern const char *nazov_fontu_CHECKBOX[POCET_JAZYKOV + 1];
-extern const char *nazov_fontu_CSS[POCET_FONTOV + 1];
+extern const char *nazov_fontu_CSS[POCET_JAZYKOV + 1];
 
 extern const char *nazov_font_size_jazyk[POCET_FONT_SIZE + 1][POCET_JAZYKOV + 1];
 extern const char *nazov_font_size_css[POCET_FONT_SIZE + 1];

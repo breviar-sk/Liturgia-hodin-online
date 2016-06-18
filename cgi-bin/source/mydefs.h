@@ -32,13 +32,13 @@
 
 // number of supported languages | Warning: for all string constants we use arrays [POCET_JAZYKOV + 1] => be careful when incrementing POCET_JAZYKOV!
 /* INCREMENT_FOR_NEW_LANGUAGE */
-#define	POCET_JAZYKOV	     7
+#define	POCET_JAZYKOV	     8
 
 // when adding new language, the following comments MUST BE replaced:
 // 
 // 1. few numeric constants [ADD_VALUE_FOR_NEW_LANGUAGE]
 // 2. string constants in one line [STRING_1_FOR_NEW_LANGUAGE]
-// 3. string constants in separate line ('multi-line alignment' in source code) []
+// 3. string constants in separate line ('multi-line alignment' in source code) [STRING_2_FOR_NEW_LANGUAGE]
 // 4. string arrays [STRING_ARRAY_FOR_NEW_LANGUAGE]
 // 5. consider adding new calendar -> see [INCREMENT_FOR_NEW_CALENDAR]
 //
@@ -51,7 +51,7 @@
 //
 // , /* STRING_1_FOR_NEW_LANGUAGE */ -> , "string_for_new_language", /* STRING_1_FOR_NEW_LANGUAGE */
 //
-// Note: always preserve ", "ru_text", /* STRING_1_FOR_NEW_LANGUAGE */" with preceding comma!
+// Note: always preserve ", /* STRING_1_FOR_NEW_LANGUAGE */" with preceding comma!
 //
 // 3. replace string constants in multi-line constants: STRING_2_FOR_NEW_LANGUAGE
 // 
