@@ -973,6 +973,9 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM    115
 #define LOKAL_SLAV_SLAVNOST_SDB_CZ         116
 #define LOKAL_SLAV_SPOMIENKA_CM_PARIZ      117
+#define LOKAL_SLAV_SPOMIENKA_BY_VICEBSKA   118
+#define LOKAL_SLAV_POSV_K_CH_MINSK         119
+#define LOKAL_SLAV_POSV_K_CH_PINSK         120
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined

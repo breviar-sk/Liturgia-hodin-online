@@ -5416,6 +5416,18 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok){
 	return ret;
 }// _rozbor_dna()
 
+#define CASE_VERZALKY  6
+#define CASE_KAPITALKY 5
+#define CASE_NORMALNE  4
+#define COLOR_RED      3
+#define COLOR_BLACK    2
+
+_struct_dm _local_den; // povodne lokalna premenna, do ktorej sa ukladaju info o analyzovanom dni
+// liturgical colors - due to XML export must be global variables
+short int liturgicka_farba = LIT_FARBA_NEURCENA;
+short int liturgicka_farba_alt = LIT_FARBA_NEURCENA;
+short int export_farby = ANO;
+
 // vstup: typ (o aky sposob vypisu ide)
 //        poradie_svateho
 //        modlitba
@@ -5424,18 +5436,6 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok){
 // vystup: do _global_string da string (spolu s HTML tagmi) s nazvom slavenia;
 //
 // navratova hodnota: SUCCESS/FAILURE
-#define CASE_VELKE  5
-#define CASE_MALE   4
-#define COLOR_RED   3
-#define COLOR_BLACK 2
-
-_struct_dm _local_den; // povodne lokalna premenna, do ktorej sa ukladaju info o analyzovanom dni
-// liturgical colors - due to XML export must be global variables
-short int liturgicka_farba = LIT_FARBA_NEURCENA;
-short int liturgicka_farba_alt = LIT_FARBA_NEURCENA;
-short int export_farby = ANO;
-
-
 short int init_global_string(short int typ, short int poradie_svateho, short int modlitba, short int aj_citanie = NIE) {
 	_INIT_DM(_local_den);
 
@@ -5456,12 +5456,13 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	mystrcpy(_global_string_podnadpis, STR_EMPTY, SMALL);
 
 	short int farba = COLOR_BLACK;
-	short int velkost = CASE_MALE;
+	short int velkost = CASE_NORMALNE;
 	short int obyc = NIE;
 
 	short int html_span_bold_it = NIE;
 	short int html_span_bold = NIE;
 	short int html_span_red_title_append = NIE;
+	short int html_span_capitalization = NIE;
 #ifdef LITURGICKE_CITANIA_ANDROID
 	struct citanie *cit = NULL;
 #endif // LITURGICKE_CITANIA_ANDROID
@@ -5596,16 +5597,25 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	Log("3:_local_den.meno == %s\n", _local_den.meno);
 	// --------------------------------------------------------------------
 	// teraz podla toho, co je v _local_den, vytvorime _local_string
-	Log("_local_den.smer < 5 -- ");
-	if (_local_den.smer < 5){
+
+	// capitalization?
+	if ((_local_den.smer < 5) || (_local_den.typslav == SLAV_SLAVNOST)) {
 		// slávnosti
-		velkost = CASE_VELKE;
-		Log("ano\n");
+		Log("_local_den.smer < 5 or SLAV_SLAVNOST");
+		velkost = CASE_VERZALKY;
 	}
-	else{
-		Log("nie\n");
+	if (_local_den.typslav == SLAV_SVIATOK) {
+		// sviatky
+		Log("SLAV_SVIATOK");
+		if (_global_jazyk == JAZYK_CZ_OP) {
+			velkost = CASE_KAPITALKY;
+		}
+		else if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_BY)) {
+			velkost = CASE_VERZALKY;
+		}
 	}
 
+	// red color?
 	Log("_local_den.denvt == DEN_NEDELA || _local_den.prik == PRIKAZANY_SVIATOK -- ");
 	if ((_local_den.denvt == DEN_NEDELA) ||
 		(_local_den.prik == PRIKAZANY_SVIATOK)){
@@ -5855,11 +5865,22 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			// nedela co ma vlastny nazov
 			strcat(pom, caps_BIG(_local_den.meno));
 		}
-		else if (velkost == CASE_VELKE){
+		else if (velkost == CASE_VERZALKY){
+			// STACK OVERFLOW
 			strcat(pom, caps_BIG(_local_den.meno));
 		}
 		else{
+			if (velkost == CASE_KAPITALKY) {
+				// Sᴛᴀᴄᴋ Oᴠᴇʀғʟᴏᴡ
+				strcat(pom, "<" HTML_SPAN_SMALLCAPS ">");
+			}
+
+			// Stack Overflow
 			strcat(pom, _local_den.meno);
+
+			if (velkost == CASE_KAPITALKY) {
+				strcat(pom, HTML_SPAN_END);
+			}
 		}
 		ma_nazov = 1;
 
@@ -5913,6 +5934,22 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			mystrcpy(pom, STR_EMPTY, MAX_STR);
 		}
 
+		if (_global_jazyk == JAZYK_CZ_OP) {
+			// respect CASE_ of celebration proper name
+			if (velkost == CASE_VERZALKY) {
+				html_span_capitalization = ANO;
+				sprintf(pom2, "<" HTML_SPAN_UPPERCASE ">");
+			}
+			else if (velkost == CASE_KAPITALKY) {
+				html_span_capitalization = ANO;
+				sprintf(pom2, "<" HTML_SPAN_SMALLCAPS ">");
+			}
+
+			if (html_span_capitalization == ANO) {
+				strcat(pom, pom2);
+			}
+		}
+
 		// pre spomienku na privilegované dni (VSLH č. 238-239) sa exportuje iný názov slávenia
 		if ((_local_den.typslav == SLAV_LUB_SPOMIENKA) && (je_privileg)){
 			sprintf(pom2, "%s", nazov_slavenia_na_spomienku_jazyk[_global_jazyk]);
@@ -5920,11 +5957,19 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		else{
 			sprintf(pom2, "%s", nazov_slavenia(_local_den.typslav));
 		}
+
 		strcat(pom, pom2);
+
+		if (html_span_capitalization == ANO) {
+			strcat(pom, HTML_SPAN_END);
+		}
+
 		if (typ != EXPORT_DNA_VIAC_DNI_TXT){
 			strcat(pom, HTML_SPAN_END);
 		}
+
 		Log("pridávam typ slávenia: %s\n", pom);
+
 		strcat(_local_string, pom);
 	}
 

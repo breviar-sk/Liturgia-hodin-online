@@ -242,6 +242,7 @@
 #define HTML_SPAN_SMALLCAPS         "span class=\"smallcaps\""
 #define HTML_SPAN_XS_CAPS           "span class=\"xsmallcaps\""
 #define HTML_SPAN_HIDDEN            "span class=\"hidden\""
+#define HTML_SPAN_UPPERCASE         "span class=\"uppercase\""
 
 #define HTML_CLASS_CALENDAR         "class=\"calendar\""
 

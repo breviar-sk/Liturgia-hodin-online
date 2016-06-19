@@ -579,6 +579,14 @@ p.bibleref {
 	font-size: 60%; 
 }
 
+.uppercase {
+	text-transform: uppercase;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
 .smallcaps { 
 	font-variant: small-caps; 
 }

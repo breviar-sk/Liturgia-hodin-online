@@ -1323,6 +1323,8 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 #define ANCHOR_CSSR_TITUL "TITUL"
 
+extern const char *text_POSVIACKA_KATEDRALNEHO_CHRAMU[POCET_JAZYKOV + 1];
+
 extern const char *text_JAN_01[POCET_JAZYKOV + 1];
 extern const char *text_JAN_02[POCET_JAZYKOV + 1];
 extern const char *text_JAN_03[POCET_JAZYKOV + 1];
@@ -1345,7 +1347,9 @@ extern const char *text_JAN_24[POCET_JAZYKOV + 1];
 extern const char *text_JAN_25[POCET_JAZYKOV + 1];
 extern const char *text_JAN_26[POCET_JAZYKOV + 1];
 extern const char *text_JAN_27[POCET_JAZYKOV + 1];
+extern const char *text_JAN_27_BY[POCET_JAZYKOV + 1];
 extern const char *text_JAN_28[POCET_JAZYKOV + 1];
+extern const char *text_JAN_29_BY[POCET_JAZYKOV + 1];
 extern const char *text_JAN_31[POCET_JAZYKOV + 1];
 
 extern const char *text_FEB_02[POCET_JAZYKOV + 1];
@@ -1742,6 +1746,7 @@ extern const char *text_MAJ_16_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JUN_09_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JUN_21_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JUL_02_SJ[POCET_JAZYKOV + 1];
+extern const char *text_JUL_09_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JUL_31_SJ[POCET_JAZYKOV + 1];
 extern const char *text_AUG_02_SJ[POCET_JAZYKOV + 1];
 extern const char *text_AUG_18_SJ[POCET_JAZYKOV + 1];
