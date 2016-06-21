@@ -3625,6 +3625,7 @@ void _set_zalmy_vsetkych_svatych(short int modlitba){
 	Log("_set_zalmy_vsetkych_svatych(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_vsetkych_svatych()
 
+// CZ OP
 void _set_zalmy_najsv_mena_jezisovho_czop(short int modlitba){
 	Log("_set_zalmy_najsv_mena_jezisovho_czop(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY){
@@ -3638,6 +3639,7 @@ void _set_zalmy_najsv_mena_jezisovho_czop(short int modlitba){
 	Log("_set_zalmy_najsv_mena_jezisovho_czop(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_najsv_mena_jezisovho_czop()
 
+// SK OFM
 void _set_zalmy_najsv_mena_jezisovho_sk_ofm(short int modlitba){
 	Log("_set_zalmy_najsv_mena_jezisovho_sk_ofm(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY){
@@ -3662,7 +3664,7 @@ void _set_zalmy_najsv_mena_jezisovho_sk_ofm(short int modlitba){
 	Log("_set_zalmy_najsv_mena_jezisovho_sk_ofm(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_najsv_mena_jezisovho_sk_ofm()
 
-// pre redemptoristov -- hlavný titul kongregácie
+// SK CSsR; hlavný titul kongregácie
 void _set_zalmy_cssr_titul(short int modlitba){
 	Log("_set_zalmy_cssr_titul(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_PRVE_VESPERY){
@@ -3686,22 +3688,23 @@ void _set_zalmy_cssr_titul(short int modlitba){
 	Log("_set_zalmy_cssr_titul(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_cssr_titul()
 
-void _set_zalmy_sj_ignac(short int modlitba){
+// SK SJ (31JUL)
+void _set_zalmy_sj_ignac(short int modlitba) {
 	Log("_set_zalmy_sj_ignac(%s) -- begin\n", nazov_modlitby(modlitba));
-	if (modlitba == MODL_VESPERY){
+	if (modlitba == MODL_VESPERY) {
 		set_zalm(1, modlitba, "z117.htm", "ZALM117");
 		set_zalm(2, modlitba, "z27.htm", "ZALM27,1-6");
 		set_zalm(3, modlitba, "ch_ef1.htm", "CHVAL_EF1");
 	}
-	else if (modlitba == MODL_PRVE_VESPERY){
+	else if (modlitba == MODL_PRVE_VESPERY) {
 		set_zalm(1, modlitba, "z113.htm", "ZALM113");
 		set_zalm(2, modlitba, "z147.htm", "ZALM147,1-11");
 		set_zalm(3, modlitba, "ch_kol1.htm", "CHVAL_KOL1");
 	}
-	else if (modlitba == MODL_RANNE_CHVALY){
+	else if (modlitba == MODL_RANNE_CHVALY) {
 		_set_zalmy_1nedele_rch();
 	}
-	else if (modlitba == MODL_POSV_CITANIE){
+	else if (modlitba == MODL_POSV_CITANIE) {
 		set_zalm(1, modlitba, "z110.htm", "ZALM110");
 		set_zalm(2, modlitba, "z47.htm", "ZALM47");
 		set_zalm(3, modlitba, "z145.htm", "ZALM145,1-13");
@@ -3709,7 +3712,45 @@ void _set_zalmy_sj_ignac(short int modlitba){
 	Log("_set_zalmy_sj_ignac(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_sj_ignac()
 
-// SK OCD (20JUL)
+// SK SJ (05NOV)
+void _set_zalmy_sj_vsetkych_svatych(short int modlitba) {
+	Log("_set_zalmy_sj_vsetkych_svatych(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_VESPERY) {
+		set_zalm(1, modlitba, "z113.htm", "ZALM113");
+		set_zalm(2, modlitba, "z112.htm", "ZALM112");
+		set_zalm(3, modlitba, "ch_zjv4_5.htm", "CHVAL_ZJV45");
+	}
+	else if (modlitba == MODL_RANNE_CHVALY) {
+		_set_zalmy_1nedele_rch();
+	}
+	else if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z22.htm", "ZALM22,24-32");
+		set_zalm(2, modlitba, "z70.htm", "ZALM70");
+		set_zalm(3, modlitba, "z15.htm", "ZALM15");
+	}
+	Log("_set_zalmy_sj_vsetkych_svatych(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_sj_vsetkych_svatych()
+
+// SK SJ (03DEC)
+void _set_zalmy_sj_xaver(short int modlitba) {
+	Log("_set_zalmy_sj_xaver(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_VESPERY) {
+		set_zalm(1, modlitba, "z113.htm", "ZALM113");
+		set_zalm(2, modlitba, "z84.htm", "ZALM84");
+		set_zalm(3, modlitba, "ch_ef1.htm", "CHVAL_EF1");
+	}
+	else if (modlitba == MODL_RANNE_CHVALY) {
+		_set_zalmy_1nedele_rch();
+	}
+	else if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z19.htm", "ZALM19,2-7");
+		set_zalm(2, modlitba, "z97.htm", "ZALM97");
+		set_zalm(3, modlitba, "z66.htm", "ZALM66,1-12");
+	}
+	Log("_set_zalmy_sj_xaver(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_sj_xaver()
+
+ // SK OCD (20JUL)
 void _set_zalmy_ocd_elias(short int modlitba){
 	Log("_set_zalmy_ocd_elias(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY){

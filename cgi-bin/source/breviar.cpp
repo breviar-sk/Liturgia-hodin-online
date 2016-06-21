@@ -8836,10 +8836,10 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_SK_OP) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_OP]);
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_SK_SJ) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_SJ]);
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_SK_CM) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_CM]);
@@ -13367,11 +13367,11 @@ void _main_analyza_roku(char *rok){
 	NewlineExport(HTML_A_HREF_BEGIN "\"%s%s\">", pom, FILE_NEDELNE_PISMENO);
 	if (_global_r.prestupny == YES){
 		Export((char *)html_text_Nedelne_pismena[_global_jazyk]);
-		Export(HTML_A_END": <" HTML_SPAN_BOLD ">%c %c" HTML_SPAN_END "\n", _global_r.p1, _global_r.p2);
+		Export(HTML_A_END": <" HTML_SPAN_BOLD ">%s %s" HTML_SPAN_END "\n", string_nedelne_pismeno[alphabet_jayzka[_global_jazyk]][index_nedelne_pismeno(_global_r.p1)], string_nedelne_pismeno[alphabet_jayzka[_global_jazyk]][index_nedelne_pismeno(_global_r.p2)]);
 	}
 	else{
 		Export((char *)html_text_Nedelne_pismeno[_global_jazyk]);
-		Export(HTML_A_END": <" HTML_SPAN_BOLD ">%c" HTML_SPAN_END "\n", _global_r.p1);
+		Export(HTML_A_END": <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "\n", string_nedelne_pismeno[alphabet_jayzka[_global_jazyk]][index_nedelne_pismeno(_global_r.p1)]);
 	}
 
 	datum = prva_adventna_nedela(year - 1);
@@ -13383,9 +13383,10 @@ void _main_analyza_roku(char *rok){
 		Export((char *)html_text_Od_prvej_adv_atd[_global_jazyk],
 			year - 1,
 			_global_link,
-			'A' + nedelny_cyklus(datum.den, datum.mesiac, year - 1),
+			string_nedelny_cyklus[alphabet_jayzka[_global_jazyk]][nedelny_cyklus(datum.den, datum.mesiac, year - 1)],
 			pom,
-			FILE_LITURGICKY_ROK);
+			FILE_LITURGICKY_ROK
+		);
 	}
 	else{
 		Export((char *)html_text_Od_prvej_adv_atd[_global_jazyk],
@@ -13393,7 +13394,8 @@ void _main_analyza_roku(char *rok){
 			_global_link,
 			pom,
 			FILE_LITURGICKY_ROK,
-			'A' + nedelny_cyklus(datum.den, datum.mesiac, year - 1));
+			string_nedelny_cyklus[alphabet_jayzka[_global_jazyk]][nedelny_cyklus(datum.den, datum.mesiac, year - 1)]
+		);
 	}
 
 	Export(HTML_LINE_BREAK);
@@ -13634,10 +13636,10 @@ void _main_tabulka(char *rok_from, char *rok_to, char *tab_linky){
 		// nedeľné litery
 		Export("<" HTML_TABLE_CELL_BORDER ">\n");
 		if (_global_r.prestupny == YES){
-			Export("%c %c", _global_r.p1, _global_r.p2);
+			Export("%s %s", string_nedelne_pismeno[alphabet_jayzka[_global_jazyk]][index_nedelne_pismeno(_global_r.p1)], string_nedelne_pismeno[alphabet_jayzka[_global_jazyk]][index_nedelne_pismeno(_global_r.p2)]);
 		}
 		else{
-			Export("%c", _global_r.p1);
+			Export("%s", string_nedelne_pismeno[alphabet_jayzka[_global_jazyk]][index_nedelne_pismeno(_global_r.p1)]);
 		}
 		Export(HTML_TABLE_CELL_BORDER_END "\n");
 
@@ -13645,7 +13647,9 @@ void _main_tabulka(char *rok_from, char *rok_to, char *tab_linky){
 		Export("<" HTML_TABLE_CELL_BORDER ">\n");
 		datum = prva_adventna_nedela(year - 1);
 		i = nedelny_cyklus(datum.den, datum.mesiac, year - 1);
-		Export("%c-%c", 'A' + i, 'A' + ((i + 1) MOD 3));
+		Export("%s-%s", 
+			string_nedelny_cyklus[alphabet_jayzka[_global_jazyk]][i], 
+			string_nedelny_cyklus[alphabet_jayzka[_global_jazyk]][(i + 1) MOD 3]);
 		Export(HTML_TABLE_CELL_BORDER_END "\n");
 
 		// aliasy -- význačné dni liturgického roka

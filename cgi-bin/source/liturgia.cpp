@@ -969,7 +969,7 @@ unsigned char _nedelne_pismeno(short int rok){
 	return (char)((vn + 5) MOD 7); // (char) pridane 01/03/2000A.D.
 }
 
-char nedelne_pismeno(short int rok){
+char nedelne_pismeno(short int rok) {
 	return char_nedelne_pismeno[_nedelne_pismeno(rok)];
 }
 
@@ -1008,6 +1008,18 @@ unsigned char _nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok){
 char nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok){
 	return char_nedelne_pismeno[_nedelne_pismeno(den_a_mesiac, rok)];
 }// nedelne_pismeno()
+
+short int index_nedelne_pismeno(char nedelne_pismeno) {
+	short int idx = nedelne_pismeno - char_nedelne_pismeno[0];
+	if (nedelne_pismeno == char_nedelne_pismeno[POCET_DNI - 1]) {
+		idx = POCET_DNI - 1;
+	}
+	return idx;
+}// index_nedelne_pismeno()
+
+short int index_nedelny_cyklus(char nedelny_cyklus) {
+	return nedelny_cyklus - char_nedelny_cyklus[0];
+}// index_nedelny_cyklus()
 
 // z poradoveho cisla dna v roku urobi datum,
 // 1 == 1.1., 2 == 2.1., 32 == 1.2., ... 365 == 31.12./30.12.

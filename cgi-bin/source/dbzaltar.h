@@ -134,6 +134,8 @@ extern void _set_zalmy_najsv_mena_jezisovho_czop(short int modlitba);
 extern void _set_zalmy_najsv_mena_jezisovho_sk_ofm(short int modlitba);
 extern void _set_zalmy_cssr_titul(short int modlitba);
 extern void _set_zalmy_sj_ignac(short int modlitba);
+extern void _set_zalmy_sj_vsetkych_svatych(short int modlitba);
+extern void _set_zalmy_sj_xaver(short int modlitba);
 extern void _set_zalmy_ocd_elias(short int modlitba);
 extern void _set_zalmy_op_dominik(short int modlitba);
 extern void _set_zalmy_ofmcap_dominik(short int modlitba);

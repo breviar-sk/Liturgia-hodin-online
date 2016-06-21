@@ -976,6 +976,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SPOMIENKA_BY_VICEBSKA   118
 #define LOKAL_SLAV_POSV_K_CH_MINSK         119
 #define LOKAL_SLAV_POSV_K_CH_PINSK         120
+#define LOKAL_SLAV_PINSK_MINSK             121
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined
@@ -1044,6 +1045,12 @@ extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];
 
 #define POCET_CHARSET               1
 
+// character of alphabet
+#define ALPHABET_LATIN    0
+#define ALPHABET_CYRILLIC 1
+
+#define POCET_ALPHABET    1
+
 // liturgické farby
 #define LIT_FARBA_NEURCENA			0
 #define LIT_FARBA_CERVENA			1
@@ -1077,9 +1084,11 @@ extern const short int prvy_den[12];
 extern short int pocet_dni[12];
 
 extern const char char_nedelne_pismeno[POCET_DNI];
+extern const char *string_nedelne_pismeno[POCET_ALPHABET + 1][POCET_DNI];
 
 #define POCET_NEDELNY_CYKLUS 3
 extern const char char_nedelny_cyklus[POCET_NEDELNY_CYKLUS];
+extern const char *string_nedelny_cyklus[POCET_ALPHABET + 1][POCET_NEDELNY_CYKLUS];
 
 #define	POCET_NEDIEL_CEZ_ROK	34
 #define	KRISTA_KRALA	34 // 34. nedela v obdobi cez rok je sviatok K.K.
@@ -1466,6 +1475,9 @@ char nedelne_pismeno(short int den, short int mesiac, short int rok);
 unsigned char _nedelne_pismeno(short int den, short int mesiac, short int rok);
 unsigned char _nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok);
 char nedelne_pismeno(_struct_den_mesiac den_a_mesiac, short int rok);
+short int index_nedelne_pismeno(char nedelne_pismeno);
+short int index_nedelny_cyklus(char nedelny_cyklus);
+
 _struct_den_mesiac por_den_mesiac(short int poradie, short int rok);
 
 short int _zoslanie_ducha(short int rok);
