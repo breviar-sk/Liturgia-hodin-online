@@ -1745,6 +1745,7 @@ extern const char *text_APR_22_SJ[POCET_JAZYKOV + 1];
 extern const char *text_APR_27_SJ[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_04_SJ[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_16_SJ[POCET_JAZYKOV + 1];
+extern const char *text_JUN_08_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JUN_09_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JUN_21_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JUL_02_SJ[POCET_JAZYKOV + 1];

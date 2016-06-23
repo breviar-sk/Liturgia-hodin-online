@@ -4950,7 +4950,7 @@ const char *text_FEB_04_OP[POCET_JAZYKOV + 1] =
 };
 const char *text_FEB_04_SJ[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána de Brito, kňaza a mučeníka; " HTML_LINE_BREAK "bl. Rudolfa Acquavivu, kňaza a spoločníkov, mučeníkov; " HTML_LINE_BREAK "bl. Františka Pacheca, Karola Spinolu, kňazov a spoločníkov, mučeníkov; " HTML_LINE_BREAK "bl. Jakuba Berthieua, kňaza a spoločníkov, mučeníkov",
+	"Sv. Jána de Brito, kňaza a mučeníka; " HTML_LINE_BREAK "bl. Rudolfa Acquavivu, kňaza a spoločníkov, mučeníkov; " HTML_LINE_BREAK "bl. Františka Pacheca, Karola Spinolu, kňazov a spoločníkov, mučeníkov",
 	"",
 	"",
 	"",
@@ -7657,6 +7657,19 @@ const char *text_JUN_08_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Diany Andalo a Cecílie, panen, mnišek",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUN_08_SJ[POCET_JAZYKOV + 1] =
+{
+	"Sv. Jakuba Berthieua, kňaza a mučeníka",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"ru_text",
 	"by_text",
