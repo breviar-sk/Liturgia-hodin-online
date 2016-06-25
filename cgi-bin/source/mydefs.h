@@ -806,9 +806,17 @@ extern short int query_type; // contains constants PRM_...
 // zobrazovať v podnadpise národný kalendár -- BIT_OPT_2_SHOW_DEFAULT_CALENDAR
 #define FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR 114
 #ifdef LONG_PARAM_NAMES
-	#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR"
+#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR"
 #else
-	#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "of2sdc"
+#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "of2sdc"
+#endif
+
+// override CSS background color -- BIT_OPT_2_AMOLED_BACKGROUND
+#define FORCE_BIT_OPT_2_AMOLED_BACKGROUND 122
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_2_AMOLED_BACKGROUND "FORCE_BIT_OPT_2_AMOLED_BACKGROUND"
+#else
+#define STR_FORCE_BIT_OPT_2_AMOLED_BACKGROUND "of2ab"
 #endif
 
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
@@ -1120,6 +1128,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_2_HIDE_OPTIONS2             "BitOpt2HideOptionsPart2"
 #define XML_BIT_OPT_2_ALTERNATIVES              "BitOpt2Alternatives"
 #define XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR     "BitOpt2ShowDefaultCalendar"
+#define XML_BIT_OPT_2_AMOLED_BACKGROUND         "BitOpt2AmoledBackground"
 
 // POCET_OPT_5_ALTERNATIVES
 #define XML_BIT_OPT_5_HYMNUS_KOMPL              "BitOpt5HymnCompl"

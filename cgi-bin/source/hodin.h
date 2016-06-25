@@ -1141,6 +1141,10 @@ const char *nazov_css_normal_font_weight = "breviar-normal-font.css";
 // blind-friendly CSS | includes ONLY ammendment to base css (breviar.css)
 const char *nazov_css_blind_friendly = "breviar-blind-friendly.css";
 
+// small CSS for background color override| includes ONLY ammendment to base css (breviar.css)
+const char *nazov_css_background_override = "breviar-background-override.css";
+const char *nazov_css_background_ov_invert = "breviar-background-ov-invert.css";
+
 // language charset (encoding); used for HTML heading | use CHARSET_UTF_8
 const short int charset_jazyka[POCET_JAZYKOV + 1] =
 { CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, /* ADD_VALUE_FOR_NEW_LANGUAGE */ };
@@ -3170,6 +3174,34 @@ const char *html_text_opt_2_show_defalut_calendar_explain[POCET_JAZYKOV + 1] =
 	"",
 	"V podnadpisu modlitby zobrazí informaci, že slávení je v národním kalendáři (tedy ne v obecním kalendáři).",
 	"Az ima felirata alatt megmutatja az információt, hogy az ünnep a nemzeti naptárban van (tehát nem az általánosban).",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_2_amoled_background[POCET_JAZYKOV + 1] =
+{
+	"použiť bielu/čiernu farbu pozadia (AMOLED displej)",
+	"použít bílou/černou barvu pozadí (AMOLED displej)",
+	"use white/black background color (AMOLED display)",
+	"",
+	"",
+	"použít bílou/černou barvu pozadí (AMOLED displej)",
+	"hu_text AMOLED display",
+	"ru_text",
+	"by_text AMOLED display",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_2_amoled_background_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

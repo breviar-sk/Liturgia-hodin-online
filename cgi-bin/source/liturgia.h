@@ -1328,7 +1328,7 @@ extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_MCD_ZALTAR_TRI        16384 // používa sa pre modlitbu cez deň -- 1 = psalmódia sa používa z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)
 #define BIT_OPT_1_ZAVER                 32768 // prayer conclusions
 
-#define POCET_OPT_2_HTML_EXPORT            16 // jednotlivé komponenty option 2 -- bity pre force option 2
+#define POCET_OPT_2_HTML_EXPORT            17 // jednotlivé komponenty option 2 -- bity pre force option 2
 extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: úprava významu (a interpretácie) option 2 (rozličné prepínače pre [online aj offline] export, napr. tlačidlá, zobrazenie dátumov a podobne)
 // 2012-10-01: doplnené ďalšie komponenty najmä pre vzhľad úvodnej obrazovky
@@ -1348,6 +1348,7 @@ extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_HIDE_OPTIONS2          8192 // skryť html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziť)
 #define BIT_OPT_2_ALTERNATIVES          16384 // ukázať iba jednu alternatívu (0 = ako doteraz; buď systém vyberie, alebo ukáže všetky možnosti)
 #define BIT_OPT_2_SHOW_DEFAULT_CALENDAR 32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
+#define BIT_OPT_2_AMOLED_BACKGROUND     65536 // override CSS background color (1 = use AMOLED true black for night mode/true white for daily mode)
 
 #define POCET_OPT_4_OFFLINE_EXPORT          4 // jednotlivé komponenty option 4 -- bity pre force option 4
 extern long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
@@ -1416,6 +1417,8 @@ extern const char *skratka_css[POCET_CSS + 1];
 extern const char *nazov_css_invert_colors;
 extern const char *nazov_css_normal_font_weight;
 extern const char *nazov_css_blind_friendly;
+extern const char *nazov_css_background_override;
+extern const char *nazov_css_background_ov_invert;
 
 extern const short int charset_jazyka[POCET_JAZYKOV + 1];
 extern const char *nazov_charset[POCET_CHARSET + 1];
