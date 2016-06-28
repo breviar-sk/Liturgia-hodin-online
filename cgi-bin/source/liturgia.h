@@ -1348,7 +1348,7 @@ extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_HIDE_OPTIONS2          8192 // skryť html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziť)
 #define BIT_OPT_2_ALTERNATIVES          16384 // ukázať iba jednu alternatívu (0 = ako doteraz; buď systém vyberie, alebo ukáže všetky možnosti)
 #define BIT_OPT_2_SHOW_DEFAULT_CALENDAR 32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
-#define BIT_OPT_2_AMOLED_BACKGROUND     65536 // override CSS background color (1 = use AMOLED true black for night mode/true white for daily mode)
+#define BIT_OPT_2_BACKGROUND_OVERRIDE   65536 // override CSS background color (1 = use true black for night mode [AMOLED display] && true white for daily mode [beamer])
 
 #define POCET_OPT_4_OFFLINE_EXPORT          4 // jednotlivé komponenty option 4 -- bity pre force option 4
 extern long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];

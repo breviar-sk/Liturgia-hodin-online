@@ -40,6 +40,7 @@
     <string name="wrapping_printed">zalomit dlouhé řádky poetických textů jako v tištěném vydání</string>
     <string name="smart_buttons">tlačítka pro modlitby zobrazit úsporně</string>
     <string name="night_mode">noční režim</string>
+    <string name="background_override">bílé/černé pozadí (projektor/AMOLED)</string>
     <string name="normal_font">všude použít obyčejné písmo (ne tučné)</string>
     <string name="buttons_order">navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby</string>
 
@@ -106,6 +107,12 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Aplikace Breviář | Co je nové</b>
 
 <!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
+
+<p><b>Verze 1.13.2</b>
+<ul>
+<li>Nová volba: bílé/černé pozadí (projektor/AMOLED displej).</li>
+<li>Stupeň slavení pro 22. července povýšen na svátek.</li>
+</ul>
 
 <p><b>Verze 1.13.1</b>
 <ul>

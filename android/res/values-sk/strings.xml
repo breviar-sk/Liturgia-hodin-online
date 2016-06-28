@@ -40,6 +40,7 @@
     <string name="wrapping_printed">zalamovať dlhé riadky ako v tlačenom vydaní (poetické časti)</string>
     <string name="smart_buttons">tlačidlá pre modlitby zobraziť úsporne</string>
     <string name="night_mode">nočný režim</string>
+    <string name="background_override">biele/čierne pozadie (projektor/AMOLED)</string>
     <string name="normal_font">všade použiť obyčajné písmo (nie tučné)</string>
     <string name="buttons_order">dátumové navigačné tlačidlá zobraziť až pod tlačidlami pre modlitby</string>
 
@@ -106,6 +107,13 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Aplikácia Breviár | Čo je nové</b>
 
 <!-- <li>Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.</li> -->
+
+<p><b>Verzia 1.13.2</b>
+<ul>
+<li>Nové nastavenie: biele/čierne pozadie (projektor/AMOLED displej).</li>
+<li>Vlastný kalendár a propriá pre jezuitov (SJ).</li>
+<li>Stupeň slávenia pre 22. júl povýšený na sviatok.</li>
+</ul>
 
 <p><b>Verzia 1.13.1</b>
 <ul>

@@ -261,7 +261,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 		_header_css(expt, level, nazov_css_blind_friendly);
 	}
 	// style override background
-	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_AMOLED_BACKGROUND)) {
+	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BACKGROUND_OVERRIDE)) {
 		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)) {
 			_header_css(expt, level, nazov_css_background_ov_invert);
 		}

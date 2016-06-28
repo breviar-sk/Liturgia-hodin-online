@@ -6481,8 +6481,8 @@ void xml_export_options(void){
 				case 15: // BIT_OPT_2_SHOW_DEFAULT_CALENDAR
 					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR)"%ld" ELEM_END(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR) "\n", BIT_OPT_2_SHOW_DEFAULT_CALENDAR, STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR, html_text_opt_2_show_defalut_calendar[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_SHOW_DEFAULT_CALENDAR)));
 					break;
-				case 16: // BIT_OPT_2_AMOLED_BACKGROUND
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_AMOLED_BACKGROUND)"%ld" ELEM_END(XML_BIT_OPT_2_AMOLED_BACKGROUND) "\n", BIT_OPT_2_AMOLED_BACKGROUND, STR_FORCE_BIT_OPT_2_AMOLED_BACKGROUND, html_text_opt_2_amoled_background[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_AMOLED_BACKGROUND)));
+				case 16: // BIT_OPT_2_BACKGROUND_OVERRIDE
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_2_BACKGROUND_OVERRIDE)"%ld" ELEM_END(XML_BIT_OPT_2_BACKGROUND_OVERRIDE) "\n", BIT_OPT_2_BACKGROUND_OVERRIDE, STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE, html_text_opt_2_background_override[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BACKGROUND_OVERRIDE)));
 					break;
 				}// switch(j)
 			}// for j
@@ -9320,8 +9320,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NOCNY_REZIM
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, STR_FORCE_BIT_OPT_2_NOCNY_REZIM, html_text_opt_2_nocny_rezim[_global_jazyk], html_text_opt_2_nocny_rezim_explain[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_AMOLED_BACKGROUND
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_AMOLED_BACKGROUND, STR_FORCE_BIT_OPT_2_AMOLED_BACKGROUND, html_text_opt_2_amoled_background[_global_jazyk], html_text_opt_2_amoled_background_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_BACKGROUND_OVERRIDE, STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE, html_text_opt_2_background_override[_global_jazyk], html_text_opt_2_background_override_explain[_global_jazyk]);
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_FONT_NORMAL
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL, STR_FORCE_BIT_OPT_0_FONT_NORMAL, html_text_opt_0_font_normal[_global_jazyk], html_text_opt_0_font_normal_explain[_global_jazyk]);

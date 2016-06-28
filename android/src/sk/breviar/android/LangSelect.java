@@ -253,6 +253,17 @@ public class LangSelect extends Activity {
 
       night_mode_check.setChecked(url_options.isNightmode());
 
+      CheckBox background_override_check = (CheckBox)findViewById(R.id.background_override_check);
+
+      background_override_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setBackgroundOverride(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      background_override_check.setChecked(url_options.isBackgroundOverride());
+
       CheckBox normal_font_check = (CheckBox)findViewById(R.id.normal_font_check);
 
       normal_font_check.setOnClickListener(new View.OnClickListener() {

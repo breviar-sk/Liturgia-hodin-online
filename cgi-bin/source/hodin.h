@@ -3179,21 +3179,21 @@ const char *html_text_opt_2_show_defalut_calendar_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_opt_2_amoled_background[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_background_override[POCET_JAZYKOV + 1] =
 {
-	"použiť bielu/čiernu farbu pozadia (AMOLED displej)",
-	"použít bílou/černou barvu pozadí (AMOLED displej)",
-	"use white/black background color (AMOLED display)",
+	"použiť bielu/čiernu farbu pozadia (projektor/AMOLED displej)",
+	"použít bílou/černou barvu pozadí (projektor/AMOLED displej)",
+	"use white/black background color (beamer/AMOLED display)",
 	"",
 	"",
-	"použít bílou/černou barvu pozadí (AMOLED displej)",
-	"hu_text AMOLED display",
+	"použít bílou/černou barvu pozadí (projektor/AMOLED displej)",
+	"fehér/fekete háttért alkalmazni (vetítő/AMOLED kijelző)",
 	"ru_text",
 	"by_text AMOLED display",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_opt_2_amoled_background_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_2_background_override_explain[POCET_JAZYKOV + 1] =
 {
 	"",
 	"",

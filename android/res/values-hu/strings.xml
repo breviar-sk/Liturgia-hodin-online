@@ -40,6 +40,7 @@
     <string name="wrapping_printed">hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)</string>
     <string name="smart_buttons">az imaórák gombjainak gazdaságos elhelyezése</string>
     <string name="night_mode">éjszakai mód</string>
+    <string name="background_override">fehér/fekete háttér (vetítő/AMOLED kijelző)</string>
     <string name="normal_font">normál betűtípus használata (félkövér tiltása)</string>
     <string name="buttons_order">dátumválasztó gombok megjelenítése az imaóraválasztó gombok után</string>
 
@@ -106,6 +107,12 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Zsolozsma alkalmazás | Újdonságok</b>
 
 <!-- <li>Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
+
+<p><b>Verzió 1.13.2</b>
+<ul>
+<li>Új beállítási lehetőség: fehér/fekete háttért alkalmazni (vetítő/AMOLED kijelző).</li>
+<li>Július 22. ünnepként van bevezetve.</li>
+</ul>
 
 <p><b>Verzió 1.13 és 1.13.1</b>
 <ul>

@@ -99,6 +99,9 @@
     <CheckBox android:id="@+id/night_mode_check" android:text="@string/night_mode"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+    <CheckBox android:id="@+id/background_override_check" android:text="@string/background_override"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <CheckBox android:id="@+id/normal_font_check" android:text="@string/normal_font"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 

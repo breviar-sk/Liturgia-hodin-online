@@ -811,12 +811,12 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "of2sdc"
 #endif
 
-// override CSS background color -- BIT_OPT_2_AMOLED_BACKGROUND
-#define FORCE_BIT_OPT_2_AMOLED_BACKGROUND 122
+// override CSS background color -- BIT_OPT_2_BACKGROUND_OVERRIDE
+#define FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE 122
 #ifdef LONG_PARAM_NAMES
-#define STR_FORCE_BIT_OPT_2_AMOLED_BACKGROUND "FORCE_BIT_OPT_2_AMOLED_BACKGROUND"
+#define STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE "FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE"
 #else
-#define STR_FORCE_BIT_OPT_2_AMOLED_BACKGROUND "of2ab"
+#define STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE "of2bo"
 #endif
 
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
@@ -1128,7 +1128,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_2_HIDE_OPTIONS2             "BitOpt2HideOptionsPart2"
 #define XML_BIT_OPT_2_ALTERNATIVES              "BitOpt2Alternatives"
 #define XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR     "BitOpt2ShowDefaultCalendar"
-#define XML_BIT_OPT_2_AMOLED_BACKGROUND         "BitOpt2AmoledBackground"
+#define XML_BIT_OPT_2_BACKGROUND_OVERRIDE       "BitOpt2BackgroundOverride"
 
 // POCET_OPT_5_ALTERNATIVES
 #define XML_BIT_OPT_5_HYMNUS_KOMPL              "BitOpt5HymnCompl"
