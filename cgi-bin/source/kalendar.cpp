@@ -15456,11 +15456,13 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			}// pre KALENDAR_SK_OP
 
 			// definovanie parametrov pre modlitbu
-			if (query_type != PRM_DETAILY)
-				set_spolocna_cast(sc, poradie_svaty);
+			if (query_type != PRM_DETAILY) {
+				set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP); // kvôli krátkemu čítaniu a krátkemu responzóriu v modlitbe cez deň
+			}
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_modlitba;
+			_vlastna_cast_1citanie; // 2. možnosť zo spoločnej časti (Rim 12,1-21)
 			_vlastna_cast_2citanie;
 			_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
 
