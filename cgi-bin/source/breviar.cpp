@@ -8842,13 +8842,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_SK_SJ) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_SJ]);
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_SK_CM) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_CM]);
 				Export("<option%s>%s</option>\n",
 					(_global_kalendar == KALENDAR_SK_OCD) ? html_option_selected : STR_EMPTY,
 					nazov_kalendara_long[KALENDAR_SK_OCD]);
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
+				// code to be executed only under Windows development
 #endif
 			}// SK
 

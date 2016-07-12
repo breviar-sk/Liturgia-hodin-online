@@ -4865,7 +4865,7 @@ const char *text_JAN_31_SDB[POCET_JAZYKOV + 1] =
 
 const char *text_FEB_01_SDB[POCET_JAZYKOV + 1] =
 {
-	"Všetkých nebohých členov Spoločnosti svätého Františka Saleského",
+	"Všetkých nebohých členov " HTML_LINE_BREAK "Spoločnosti svätého Františka Saleského",
 	"Připomínka zemřelých salesiánů",
 	"",
 	"",
@@ -4878,7 +4878,7 @@ const char *text_FEB_01_SDB[POCET_JAZYKOV + 1] =
 };
 const char *text_FEB_01_CM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Márie Anny Vaillotovej a Odilie Baumgartenovej, panien a mučeníc",
+	"Bl. Márie Anny Vaillotovej a Odilie Baumgartenovej, " HTML_LINE_BREAK "panien a mučeníc",
 	"",
 	"",
 	"",
@@ -8216,7 +8216,7 @@ const char *text_JUN_26_OCD[POCET_JAZYKOV + 1] =
 };
 const char *text_JUN_26_CM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Márie Magdalény Fontainovej a spoločníčok, panien a mučeníc",
+	"Bl. Márie Magdalény Fontainovej a spoločníčok, " HTML_LINE_BREAK "panien a mučeníc",
 	"",
 	"",
 	"",
@@ -10426,7 +10426,7 @@ const char *text_SEP_01_OCD[POCET_JAZYKOV + 1] =
 };
 const char *text_SEP_02_CM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Ľudovíta Jozefa Francoisa, Jána Henricha Gruyera " HTML_LINE_BREAK "a Petra Renáta Rogueho, kňazov a mučeníkov",
+	"Bl. Ľudovíta Jozefa Françoisa, Jána Henricha Gruyera " HTML_LINE_BREAK "a Petra Renáta Rogueho, kňazov a mučeníkov",
 	"",
 	"",
 	"",
@@ -11692,6 +11692,19 @@ const char *text_OKT_12_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Serafína z Montegranara, rehoľníka, člena 1. rádu",
 	"Sv. Serafína z Montegranara, řeholníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_OKT_12_SJ[POCET_JAZYKOV + 1] =
+{
+	"Bl. Jána Beyzyma, kňaza a mučeníka",
+	"",
 	"",
 	"",
 	"",
