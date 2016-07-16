@@ -465,13 +465,16 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 }// prilep_request_options();
 
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align){
+	// note: mesiac here is 1--12
+	Log("_vytvor_string_z_datumu_ext(den == %d, mesiac == %d, rok == %d, _case == %d, align == %d): začiatok...\n", den, mesiac, rok, _case, align);
+
 	short int typ = 0;
 	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
 
 	if ((den < 1) || (den > 31)){
 		den = VSETKY_DNI;
 	}
-	if (mesiac > 11){
+	if (mesiac > 12){
 		mesiac = VSETKY_MESIACE;
 	}
 
@@ -495,6 +498,8 @@ char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok
 }// _vytvor_string_z_datumu_ext()
 
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align){
+	Log("_vytvor_string_z_datumu(den == %d, mesiac == %d, rok == %d, _case == %d, typ == %d, align == %d): začiatok...\n", den, mesiac, rok, _case, typ, align);
+
 	char pom[MAX_STR] = STR_EMPTY;
 	char vypln[SMALL] = STR_EMPTY;
 	char strden[SMALL] = STR_EMPTY;
@@ -563,6 +568,8 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 		}
 	}
 	strcat(_global_pom_str, pom);
+
+	Log("_vytvor_string_z_datumu(): koniec, returning _global_pom_str == `'...\n", _global_pom_str);
 	return (_global_pom_str);
 }// _vytvor_string_z_datumu()
 
@@ -1131,7 +1138,8 @@ _struct_dm por_den_mesiac_dm(short int poradie, short int rok){
 	result.tyzzal = 0;
 	result.litobd = OBD_CEZ_ROK; // nemam neurcene...
 	result.typslav = SLAV_NEURCENE;
-	result.smer = 14; // neurcene
+	result.typslav_lokal = LOKAL_SLAV_NEURCENE;
+	result.smer = 14; // undefined
 	result.prik = NIE_JE_PRIKAZANY_SVIATOK;
 	result.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	mystrcpy(result.meno, STR_EMPTY, MENO_SVIATKU);
@@ -1154,6 +1162,7 @@ short int cislo_nedele_cez_rok_po_vn(short int rok){
 
 // naplni strukturu _global_pm_sobota, ale az vtedy, ked v _global_den su spravne udaje
 void init_global_pm_sobota(void){
+	Log("init_global_pm_sobota...\n");
 	_global_pm_sobota.den = _global_den.den;
 	_global_pm_sobota.mesiac = _global_den.mesiac;
 	_global_pm_sobota.rok = _global_den.rok;
@@ -1176,6 +1185,7 @@ void init_global_pm_sobota(void){
 }
 
 void _dm_popolcova_streda(short int rok, short int _vn){
+	Log("_dm_popolcova_streda...\n");
 	_global_result = por_den_mesiac_dm(_vn + OD_VELKEJ_NOCI_PO_POPOLCOVU_STR, rok);
 	_global_result.typslav = SLAV_NEURCENE;
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
@@ -1192,6 +1202,7 @@ void _dm_popolcova_streda(short int rok, short int _vn){
 }// _dm_popolcova_streda()
 
 void _dm_nanebovstupenie(short int rok, short int _vn){
+	Log("_dm_nanebovstupenie...\n");
 	short int _nan;
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)){
 		_nan = (_vn + OD_VELKEJ_NOCI_PO_NANEBOSTUPENIE_NE);
@@ -1215,6 +1226,7 @@ void _dm_nanebovstupenie(short int rok, short int _vn){
 }// _dm_nanebovstupenie()
 
 void _dm_zoslanie_ducha(short int rok, short int _vn){
+	Log("_dm_zoslanie_ducha...\n");
 	_global_result = por_den_mesiac_dm(_vn + OD_VELKEJ_NOCI_PO_ZOSLANIE_DUCHA, rok);
 	_global_result.typslav = SLAV_SLAVNOST;
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
@@ -1231,6 +1243,7 @@ void _dm_zoslanie_ducha(short int rok, short int _vn){
 }// _dm_zoslanie_ducha()
 
 void _dm_prva_adventna_nedela(short int rok, short int p2){
+	Log("_dm_prva_adventna_nedela...\n");
 	_global_result = por_den_mesiac_dm(PRVA_ADVENTNA_NEDELA_b + p2 + prestupny(rok), rok);
 	_global_result.typslav = SLAV_VLASTNE;
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
@@ -1247,6 +1260,7 @@ void _dm_prva_adventna_nedela(short int rok, short int p2){
 }// _dm_prva_adventna_nedela()
 
 void _dm_svatej_rodiny(short int rok){
+	Log("_dm_svatej_rodiny...\n");
 	short int _svrod;
 	if (den_v_tyzdni(25, 12, rok) == DEN_NEDELA){
 		_svrod = poradie(30, 12, rok);
@@ -1258,10 +1272,9 @@ void _dm_svatej_rodiny(short int rok){
 		}
 	}
 	_global_result = por_den_mesiac_dm(_svrod, rok);
-	_global_result.typslav = SLAV_SVIATOK;
+	_set_slavenie_typslav_smer(-1, SLAV_SVIATOK, 5); // sviatky Pána uvedené vo všeobecnom kalendári
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
 	_global_result.litobd = OBD_OKTAVA_NARODENIA;
-	_global_result.smer = 5;
 	_global_result.tyzden = 1; // 1. tyzden vianocneho obdobia, oktava
 	_global_result.prik = NIE_JE_PRIKAZANY_SVIATOK;
 	mystrcpy(_global_result.meno, text_NEDELA_SV_RODINY[_global_jazyk], MENO_SVIATKU);
@@ -1273,6 +1286,7 @@ void _dm_svatej_rodiny(short int rok){
 }// _dm_svatej_rodiny()
 
 void _dm_krst_krista_pana(short int rok){
+	Log("_dm_krst_krista_pana...\n");
 	short int _zjavenie_pana = zjavenie_pana(rok); // bolo tu static, ale pre viacnásobné volanie z analyzuj_rok() pre tabuľku tu 'static' nesmie byť
 	short int _krst = _zjavenie_pana + 1;
 
@@ -1282,11 +1296,11 @@ void _dm_krst_krista_pana(short int rok){
 		}// while -- hľadáme nedeľu
 	}// Zjavenie Pána sa slávi 6.1. alebo v nedeľu medzi 2. a 8. januárom, ktorá však nepripadne na 7. alebo 8. januára
 	_global_result = por_den_mesiac_dm(_krst, rok);
-	_global_result.typslav = SLAV_SVIATOK;
+
+	_set_slavenie_typslav_smer(-1, SLAV_SVIATOK, 5); // sviatky Pána uvedené vo všeobecnom kalendári
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
 	_global_result.litobd = OBD_VIANOCNE_II;
 	_global_result.tyzden = 1; // 1. nedeľa "cez rok" (resp. v krajinách, kde sa Zjavenie Pána slávi v nedeľu, pričom táto pripadne na 7. alebo 8. januára, je to pondelok)
-	_global_result.smer = 5; // sviatky Pána uvedené vo všeobecnom kalendári
 	mystrcpy(_global_result.meno, text_JAN_KRST[_global_jazyk], MENO_SVIATKU); // 2003-08-11 zmenena na mystrcpy
 	_global_result.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
 	_global_result.prik = NIE_JE_PRIKAZANY_SVIATOK;
@@ -1297,6 +1311,7 @@ void _dm_krst_krista_pana(short int rok){
 }// _dm_krst_krista_pana()
 
 void _dm_velkonocna_nedela(short int rok, short int _vn){
+	Log("_dm_velkonocna_nedela...\n");
 	_global_result = por_den_mesiac_dm(_vn, rok);
 	_global_result.typslav = SLAV_SLAVNOST;
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
@@ -1374,6 +1389,7 @@ void analyzuj_rok(short int year){
 	else{
 		_global_r.prestupny = NO;
 	}
+
 	// urcime nedele pismena
 	p1 = ((_vn + 5) MOD 7);
 	p2 = (_global_r.prestupny == YES) ?
@@ -1381,9 +1397,7 @@ void analyzuj_rok(short int year){
 		p1;               // inak p1 == p2
 	// teraz znaky (char)
 	_global_r.p1 = char_nedelne_pismeno[p1];
-	_global_r.p2 = (_global_r.prestupny == YES) ?
-		char_nedelne_pismeno[p2] :
-		NIJAKE_NEDELNE_PISMENO;
+	_global_r.p2 = (_global_r.prestupny == YES) ? char_nedelne_pismeno[p2] : NIJAKE_NEDELNE_PISMENO;
 
 	// slavnosti a sviatky
 	_dm_krst_krista_pana(year);      _global_r._KRST_KRISTA_PANA = _global_result;
@@ -1431,7 +1445,7 @@ void Log(_struct_dm g){
 	Log_struktura_dm("   tyzden: %d\n", g.tyzden);
 	Log_struktura_dm("   tyzzal: %d\n", g.tyzzal);
 	Log_struktura_dm("   litobd: %s\n", nazov_obdobia_[g.litobd]);
-	Log_struktura_dm("   typslav:%s\n", nazov_slavenia(g.typslav));
+	Log_struktura_dm("   typslav: %s\n", nazov_slavenia(g.typslav));
 	Log_struktura_dm("   typslav_lokal: %s\n", nazov_slavenia_lokal[g.typslav_lokal]);	
 	Log_struktura_dm("   smer:   %d\n", g.smer);
 	Log_struktura_dm("   prik:   %d\n", g.prik);
@@ -1527,6 +1541,25 @@ void Log_filename_anchor(_struct_anchor_and_file af){
 	Log("file `%s', anchor `%s'\n", af.file, af.anchor);
 }
 
+void _set_slavenie_typslav_smer(short int poradie, short int typslav, short int smer) {
+	Log("_set_slavenie_typslav_smer() pre poradie == %d, typslav == %d, smer == %d: začiatok...\n", poradie, typslav, smer);
+
+	if (poradie == 0) {
+		_global_den.typslav = typslav;
+		_global_den.smer = smer;
+	}
+	else if (poradie >= 1 && poradie <= MAX_POCET_SVATY) {
+		_global_svaty(poradie).typslav = typslav;
+		_global_svaty(poradie).smer = smer;
+	}
+	else if (poradie == -1) {
+		_global_result.typslav = typslav;
+		_global_result.smer = smer;
+	}
+
+	Log("_set_slavenie_typslav_smer() pre poradie: koniec.\n");
+}
+
 //---------------------------------------------------------------------
 /* popis:
  *
@@ -1610,6 +1643,8 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 13: mystrcpy(str, STR_FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY, SMALL); break; // BIT_OPT_1_VESP_KRATSIE_PROSBY
 			case 14: mystrcpy(str, STR_FORCE_BIT_OPT_1_MCD_ZALTAR_TRI, SMALL); break; // BIT_OPT_1_MCD_ZALTAR_TRI
 			case 15: mystrcpy(str, STR_FORCE_BIT_OPT_1_ZAVER, SMALL); break; // BIT_OPT_1_ZAVER
+			case 16: mystrcpy(str, STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV, SMALL); break; // BIT_OPT_1_OVERRIDE_STUP_SLAV
+			case 17: mystrcpy(str, STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, SMALL); break; // BIT_OPT_1_STUP_SVIATOK_SLAVNOST
 			}
 		}
 		break;

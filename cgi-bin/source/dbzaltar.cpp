@@ -29,12 +29,12 @@ short int su_zalmy_vlastne(short int m){
 	ret = FALSE;
 	if (!(je_modlitba_cez_den(m))){
 		if (_global_poradie_svaty == 0){
-			if ((_global_den.typslav == SLAV_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK)){
+			if (_je_global_den_slavnost || _je_global_den_sviatok){
 				ret = TRUE;
 			}
 		}
 		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if ((_global_svaty(_global_poradie_svaty).typslav == SLAV_SLAVNOST) || (_global_svaty(_global_poradie_svaty).typslav == SLAV_SVIATOK)){
+			if ((_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty))){
 				ret = TRUE;
 			}
 		}
@@ -57,12 +57,12 @@ short int su_zalmy_prve_vespery_vlastne(short int m){
 	ret = FALSE;
 	if ((m == MODL_PRVE_VESPERY) || (m == MODL_VESPERY)){
 		if (_global_poradie_svaty == 0){
-			if (_global_den.typslav == SLAV_SLAVNOST){
+			if (_je_global_den_slavnost){
 				ret = TRUE;
 			}
 		}
 		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if (_global_svaty(_global_poradie_svaty).typslav == SLAV_SLAVNOST){
+			if (_je_global_svaty_i_slavnost(_global_poradie_svaty)){
 				ret = TRUE;
 			}
 		}
@@ -85,12 +85,12 @@ short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m){
 	ret = FALSE;
 	if (!(je_modlitba_cez_den(m))){
 		if (_global_poradie_svaty == 0){
-			if ((_global_den.typslav == SLAV_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK) || (((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)))){
+			if (_je_global_den_slavnost || _je_global_den_sviatok || (((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)) && (pouzit_na_spomienky_casti_zo_spolocnych_casti))){
 				ret = TRUE;
 			}
 		}
 		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if ((_global_svaty(_global_poradie_svaty).typslav == SLAV_SLAVNOST) || (_global_svaty(_global_poradie_svaty).typslav == SLAV_SVIATOK) || (((_global_svaty(_global_poradie_svaty).typslav == SLAV_SPOMIENKA) || (_global_svaty(_global_poradie_svaty).typslav == SLAV_LUB_SPOMIENKA)) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)))){
+			if ((_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty)) || (((_global_svaty(_global_poradie_svaty).typslav == SLAV_SPOMIENKA) || (_global_svaty(_global_poradie_svaty).typslav == SLAV_LUB_SPOMIENKA)) && (pouzit_na_spomienky_casti_zo_spolocnych_casti))){
 				ret = TRUE;
 			}
 		}
@@ -112,11 +112,11 @@ short int je_1cit_vlastne(short int m){
 	ret = FALSE;
 	if (m == MODL_POSV_CITANIE){
 		if (_global_poradie_svaty == 0){
-			if ((_global_den.typslav == SLAV_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK))
+			if (_je_global_den_slavnost || _je_global_den_sviatok)
 				ret = TRUE;
 		}
 		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if ((_global_svaty(_global_poradie_svaty).typslav == SLAV_SLAVNOST) || (_global_svaty(_global_poradie_svaty).typslav == SLAV_SVIATOK))
+			if ((_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty)))
 				ret = TRUE;
 		}
 		if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)){
@@ -134,23 +134,23 @@ short int su_antifony_vlastne(short int m){
 	short int ret;
 	ret = FALSE;
 	if (_global_poradie_svaty == 0){
-		if (_global_den.typslav == SLAV_SLAVNOST){
+		if (_je_global_den_slavnost){
 			ret = TRUE;
 		}
 	}
 	else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-		if (_global_svaty(_global_poradie_svaty).typslav == SLAV_SLAVNOST){
+		if (_je_global_svaty_i_slavnost(_global_poradie_svaty)){
 			ret = TRUE;
 		}
 	}
 	if ((m == MODL_RANNE_CHVALY) || (m == MODL_POSV_CITANIE) || (m == MODL_VESPERY)){
 		if (_global_poradie_svaty == 0){
-			if ((_global_den.typslav == SLAV_SVIATOK) /* || ((_global_den.typslav == SLAV_SPOMIENKA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU))) */){
+			if (_je_global_den_sviatok){
 				ret = TRUE;
 			}
 		}
 		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if ((_global_svaty(_global_poradie_svaty).typslav == SLAV_SVIATOK) /* || ((_global_svaty(_global_poradie_svaty).typslav == SLAV_SPOMIENKA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU))) */){
+			if ((_je_global_svaty_i_sviatok(_global_poradie_svaty)) /* || ((_global_svaty(_global_poradie_svaty).typslav == SLAV_SPOMIENKA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU))) */){
 				ret = TRUE;
 			}
 		}
@@ -174,12 +174,12 @@ short int su_kcit_kresp_modlitba_mcd_vlastne(short int m){
 	ret = FALSE;
 	if (je_modlitba_cez_den(m)){
 		if (_global_poradie_svaty == 0){
-			if ((_global_den.typslav == SLAV_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK)){
+			if (_je_global_den_slavnost || _je_global_den_sviatok){
 				ret = TRUE;
 			}
 		}
 		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if ((_global_svaty(_global_poradie_svaty).typslav == SLAV_SLAVNOST) || (_global_svaty(_global_poradie_svaty).typslav == SLAV_SVIATOK)){
+			if ((_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty))){
 				ret = TRUE;
 			}
 		}
@@ -1374,8 +1374,8 @@ void set_antifony_kompletorium_obd(short int den, short int modlitba, short int 
 	Log("set_antifony_kompletorium_obd(%d, %d, %d): začiatok...\n", den, modlitba, zvazok);
 
 	// rovnaké responzórium pre všetky časti veľkonočného obdobia
-	if ((_global_den.typslav == SLAV_SLAVNOST) && ((den != DEN_NEDELA) && (den != DEN_SOBOTA))){
-		den = DEN_UNKNOWN; // 2008-05-08: ide o slávnosť mimo nedieľ
+	if (_je_global_den_slavnost && ((den != DEN_NEDELA) && (den != DEN_SOBOTA))){
+		den = DEN_UNKNOWN; // slávnosť mimo nedieľ
 	}
 
 	short int force_prve_nedelne_kompletorium = NIE;
@@ -1561,8 +1561,8 @@ void set_kcitanie(short int den, short int tyzzal, short int modlitba, short int
 	if (je_kompletorium12(modlitba)){
 		file_name_zapamataj();
 		file_name_kompletorium(OBD_CEZ_ROK);
-		if ((_global_den.typslav == SLAV_SLAVNOST) && ((den != DEN_NEDELA) && (den != DEN_SOBOTA))){
-			den = DEN_UNKNOWN; // 2008-05-08: ide o slávnosť mimo nedieľ
+		if (_je_global_den_slavnost && ((den != DEN_NEDELA) && (den != DEN_SOBOTA))){
+			den = DEN_UNKNOWN; // slávnosť mimo nedieľ
 		}
 		if ((modlitba == MODL_KOMPLETORIUM) && (ktore == 1)){
 			// ToDo: škaredý drát, ak požaduje explicitne kompletórium po prvých vešperách pre oktávu
@@ -1671,7 +1671,7 @@ void set_modlitba(short int den, short int tyzzal, short int modlitba, short int
 	if (je_kompletorium12(modlitba)){
 		file_name_zapamataj();
 		file_name_kompletorium(OBD_CEZ_ROK);
-		if ((_global_den.typslav == SLAV_SLAVNOST) && ((den != DEN_NEDELA) && (den != DEN_SOBOTA))){
+		if (_je_global_den_slavnost && ((den != DEN_NEDELA) && (den != DEN_SOBOTA))){
 			den = DEN_UNKNOWN; // slávnosť mimo nedieľ
 		}
 		if ((modlitba == MODL_KOMPLETORIUM) && (ktore == 1)){
@@ -8552,7 +8552,7 @@ label_24_DEC:
 	// v ďalších častiach 'else' platí, že poradie_svateho == 0 (UNKNOWN_PORADIE_SVATEHO)
 	// ak poradie_svateho bolo UNKNOWN_PORADIE_SVATEHO, znamená to, že sa chcelo volanie možno pre nasledovný deň; problém sv. Jozefa - antifóny pre kompletórium nastavené pri prvom spustení volania "sviatky svätých" prekrylo nastavenie z liturgického obdobia...
 	else if((poradie_svateho == UNKNOWN_PORADIE_SVATEHO) && (_global_pocet_svatych > 0)
-		&& (_global_den.smer >= _global_svaty1.smer) && (_global_svaty1.typslav == SLAV_SLAVNOST)
+		&& (_global_den.smer >= _global_svaty1.smer) && (_je_global_svaty_i_slavnost(1))
 		// a neplatí, že ide o lokálnu slávnosť: tá nesmie prebiť všedný deň
 		// 2010-10-06: upravené; nesmie ísť o lokálnu slávnosť (smer == 4) lebo nemá prebíjať "globálnu" v danom kalendári [napr. czop pre 22.10.]
 		// 2011-02-02: zadefinované MIESTNE_SLAVENIE_CZOP_SVATY(i), aby sa zjednodušila podmienka (platí len pre CZOP)
@@ -8563,8 +8563,6 @@ label_24_DEC:
 		Log("_global_pocet_svatych == %d\n", _global_pocet_svatych);
 		Log("_global_den.smer == %d\n", _global_den.smer);
 		Log("_global_svaty1.smer == %d\n", _global_svaty1.smer);
-		// ak bol "if" tu, hrozilo, že by sme odstavili niektorú z nasledovných "else" vetiev...
-		// if((_global_den.smer >= _global_svaty1.smer) && (_global_svaty1.typslav == SLAV_SLAVNOST)){ // s veľkou pravdepodobnosťou bolo do _global_den.smer priradené _global_svaty1.smer
 		// do _local_den priradim dane slavenie
 		_local_den = _global_svaty1;
 		poradie_svateho = 1;
@@ -10141,7 +10139,7 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	// "Nepoškvrneného Srdca prebl. Panny Márie" -> "Nepoškvrneného Srdca Panny Márie", preto je tam nastaveny este raz na dummy, vid ZNOVUNASTAVENIE_POPISU_NA_DUMMY
 
 	// pokusne aj _global_svaty1.typslav
-	if ((_global_den.typslav == SLAV_SLAVNOST) || (_global_svaty1.typslav == SLAV_SLAVNOST)){
+	if (_je_global_den_slavnost || (_je_global_svaty_i_slavnost(1))){
 		Log("	teraz nastavujem žalmy pre modlitbu cez deň slávností...\n");
 		if (_global_den.denvt != DEN_NEDELA){
 			Log("  _set_zalmy_mcd_doplnkova_psalmodia()...\n");

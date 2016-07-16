@@ -406,8 +406,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_NAVIGACIA_SIMPLE "NAVIGACIA_SIMPLE" // just top & bottom links
 
 #define PARAM_NADPIS        "NADPIS"
-// 2012-04-03: pridaný podnadpis v modlitbe (napr. pre MCD: doplnková psalmódia)
-#define PARAM_PODNADPIS     "PODNADPIS"
+#define PARAM_PODNADPIS     "PODNADPIS" // podnadpis v modlitbe (napr. pre MCD: doplnková psalmódia)
 #define PARAM_SPOL_CAST     "SPOL-CAST"
 
 #define PARAM_ANTIFONA_VIG  "ANTIFONA_VIG"
@@ -435,9 +434,11 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_SLAVAOTCU	               "SLAVAOTCU"
 #define PARAM_RESPONZ                  "RESPONZ"
 #define PARAM_KRATSIE_PROSBY           "KRATSIE-PROSBY"
-#define PARAM_ZALM95                   "ZALM95" // 2012-11-23: kvôli <a name...>
+#define PARAM_ZALM95                   "ZALM95"
 #define PARAM_VIGILIA                  "VIGILIA"
 #define PARAM_SPOL_CAST_SPOM           "SPOL-CAST-SPOM"
+#define PARAM_OVERRIDE_STUPEN_SLAVENIA "OVERRIDE-STUPEN-SLAVENIA"
+#define PARAM_STUPEN_SLAVENIA_SVI_SLAV "STUPEN-SLAVENIA-SVIATOK-SLAVNOST"
 #define PARAM_ALT_HYMNUS               "ALT-HYMNUS"
 #define PARAM_ZALM122                  "ZALM122"
 #define PARAM_ZALM126                  "ZALM126"
@@ -1307,7 +1308,7 @@ extern long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_TRANSPARENT_NAV        1024 // transparent navigation arrow in text
 #define BIT_OPT_0_ZALMY_FULL_TEXT        2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
 
-#define POCET_OPT_1_CASTI_MODLITBY         16 // jednotlivé komponenty option 1 -- bity pre force option 1
+#define POCET_OPT_1_CASTI_MODLITBY         18 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 // 2011-04-11: úprava významu (a interpretácie) option 1 == OPT_1_CASTI_MODLITBY (zobraziť/nezobraziť najmä pevné/nemenné súčasti modlitieb, ale aj iné, čo sú/nie sú v LH)
 // 2011-10-10: úprava niektorých bitov, posunutie popisu na koniec
@@ -1327,6 +1328,8 @@ extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_VESP_KRATSIE_PROSBY    8192 // použiť (pre ktorýkoľvek deň v roku) kratšie prosby k vešperám z dodatku (0 = default, zo dňa)
 #define BIT_OPT_1_MCD_ZALTAR_TRI        16384 // používa sa pre modlitbu cez deň -- 1 = psalmódia sa používa z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)
 #define BIT_OPT_1_ZAVER                 32768 // prayer conclusions
+#define BIT_OPT_1_OVERRIDE_STUP_SLAV    65536 // možnosť zvoliť vyšší stupeň slávenia (spomienku možno sláviť ako sviatok alebo slávnosť; sviatok ako slávnosť)
+#define BIT_OPT_1_STUP_SVIATOK_SLAVNOST 131072 // vyšší stupeň slávenia (0 = sviatok, 1 = slávnosť); aplikuje sa iba ak BIT_OPT_1_OVERRIDE_STUP_SLAV je true
 
 #define POCET_OPT_2_HTML_EXPORT            17 // jednotlivé komponenty option 2 -- bity pre force option 2
 extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
@@ -1377,7 +1380,7 @@ extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_OFF_DEF_PSALM_146_150 16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
 #define BIT_OPT_5_ZAVER_KNAZ_DIAKON     32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
 
-#define MAX_POCET_OPT                      16 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
+#define MAX_POCET_OPT                      18 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
 
 const short int pocet_opt[POCET_GLOBAL_OPT] = {POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nemá bitové komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES};
 
@@ -1523,7 +1526,7 @@ void analyzuj_rok(short int year);
 	a.litobd = OBD_CEZ_ROK; \
 	a.typslav = SLAV_NEURCENE; \
 	a.typslav_lokal = LOKAL_SLAV_NEURCENE; \
-	a.smer = 99; \
+	a.smer = 14; \
 	a.prik = NIE_JE_PRIKAZANY_SVIATOK; \
 	a.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA); \
 	mystrcpy(a.meno, STR_UNDEF, MENO_SVIATKU); \
@@ -1630,6 +1633,8 @@ void Log(struct tmodlitba4);
 void Log(struct tmodlitba5);
 
 extern void Log_filename_anchor(_struct_anchor_and_file af);
+
+void _set_slavenie_typslav_smer(short int poradie, short int typslav, short int smer);
 
 int _encode_spol_cast(short int, short int, short int);
 int _encode_spol_cast(short int, short int);

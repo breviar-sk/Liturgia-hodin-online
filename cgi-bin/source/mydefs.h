@@ -644,9 +644,25 @@ extern short int query_type; // contains constants PRM_...
 // prayer conclusions
 #define FORCE_BIT_OPT_1_ZAVER 118
 #ifdef LONG_PARAM_NAMES
-	#define STR_FORCE_BIT_OPT_1_ZAVER "FORCE_BIT_OPT_1_ZAVER"
+#define STR_FORCE_BIT_OPT_1_ZAVER "FORCE_BIT_OPT_1_ZAVER"
 #else
-	#define STR_FORCE_BIT_OPT_1_ZAVER "of1zm"
+#define STR_FORCE_BIT_OPT_1_ZAVER "of1zm"
+#endif
+
+// override of celebration level
+#define FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV 123
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV "FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV"
+#else
+#define STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV "of1oss"
+#endif
+
+// level for override of celebration level
+#define FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST 124
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST "FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST"
+#else
+#define STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST "of1sss"
 #endif
 
 // žalmy zo sviatku
@@ -1110,6 +1126,8 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_1_VESP_KRATSIE_PROSBY       "BitOpt1UseVespShortenPrayers"
 #define XML_BIT_OPT_1_MCD_ZALTAR_TRI            "BitOpt1PsalmsDuringDayPsalt3Weeks"
 #define XML_BIT_OPT_1_ZAVER                     "BitOpt1PrayerConclusions"
+#define XML_BIT_OPT_1_OVERRIDE_STUP_SLAV        "BitOpt1OverrideCelebrationLevel"
+#define XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST     "BitOpt1CelebrationLevelForOverride"
 
 // POCET_OPT_2_HTML_EXPORT
 #define XML_BIT_OPT_2_ISO_DATUM                 "BitOpt2ISOFormat"

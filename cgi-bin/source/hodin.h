@@ -2855,6 +2855,76 @@ const char *html_text_opt_1_spomienka_spolcast_NIE[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_opt_1_override_stupen_slavenia[POCET_JAZYKOV + 1] =
+{
+	"sláviť s vyšším stupňom slávenia",
+	"slavit s vyšším stupněm slavení",
+	"override celebration level with higher",
+	"",
+	"",
+	"slavit s vyšším stupněm slavení",
+	"hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_1_override_stupen_slavenia_explain[POCET_JAZYKOV + 1] =
+{
+	"Možnosť sláviť (ľubovoľnú) spomienku ako sviatok alebo slávnosť, podobne možnosť sláviť sviatok ako slávnosť (pre lokálne sviatky/slávnosti).",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_1_override_stupen_slavenia_NIE[POCET_JAZYKOV + 1] =
+{
+	"sláviť s predpísaným stupňom slávenia",
+	"slavit s předepsaným stupněm slavení",
+	"celebrate according to calendar (do not change celebration level)",
+	"",
+	"",
+	"slavit s předepsaným stupněm slavení",
+	"hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_1_slavit_ako_sviatok[POCET_JAZYKOV + 1] =
+{
+	"sláviť ako sviatok",
+	"slavit jako svátek",
+	"celebrate as feast",
+	"",
+	"",
+	"slavit jako svátek",
+	"hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_1_slavit_ako_slavnost[POCET_JAZYKOV + 1] =
+{
+	"sláviť ako slávnosť",
+	"slavit jako slavnost",
+	"celebrate as celebration",
+	"",
+	"",
+	"slavit jako slavnost",
+	"hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_opt_2_html_export[POCET_JAZYKOV + 1] =
 {
 	"možnosti zobrazenia stránok",
