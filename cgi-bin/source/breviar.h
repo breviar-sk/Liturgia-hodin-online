@@ -202,8 +202,9 @@ extern short int _global_opt_export_date_format;
 #define je_34_ocr ((_global_den.litobd == OBD_CEZ_ROK) && (_global_den.tyzden == 34) && (_global_den.denvt != DEN_NEDELA))
 #define je_tedeum (type == MODL_POSV_CITANIE) && (((_global_den.denvt == DEN_NEDELA) && (_global_den.litobd != OBD_POSTNE_I) && (_global_den.litobd != OBD_POSTNE_II_VELKY_TYZDEN)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA))
 
-// 2012-02-09: definované je_privileg pre testovanie, či ide o privilegované dni (VSLH č. 238-239): to isté ako je_post + december počnúc 17.-tym (všedné di od 17. do 24. decembra a Vianočná oktáva); striktne by tu nemal byť veľký týždeň a veľkonočné trojdnie, ale nezaškodí to tu
-#define je_privileg ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))) || ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den >= 17)))
+// je_privileg -- pre zistenie, či ide o privilegované dni (VSLH č. 238-239): to isté ako je_post + december počnúc 17.-tym (všedné di od 17. do 24. decembra a Vianočná oktáva); striktne by tu nemal byť veľký týždeň a veľkonočné trojdnie, ale nezaškodí to tu
+// override stupňa slávenia prebíja je_privileg (inými slovami, v privilegované dni je možné sláviť sviatky resp. slávnosti)
+#define je_privileg ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)) && ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))) || ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den >= 17))))
 
 // is antiphone for privileged day?
 #define je_ant_modl_spomprivileg (( \
@@ -402,14 +403,22 @@ extern short int _global_opt_export_date_format;
 
 #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) ((_global_svaty(i).smer == 4) || (_global_svaty(i).smer == 8) || (_global_svaty(i).smer == 11))
 
-#define _je_global_den_sviatok ((_global_den.typslav == SLAV_SVIATOK) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST))))
-#define _je_global_den_slavnost ((_global_den.typslav == SLAV_SLAVNOST) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST))))
+#define _je_global_den_sviatok ((_global_den.typslav == SLAV_SVIATOK) || ((_global_poradie_svaty != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
+#define _je_global_den_slavnost ((_global_den.typslav == SLAV_SLAVNOST) || ((_global_poradie_svaty != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
 
-#define _je_global_svaty_i_sviatok(i) ((_global_svaty(i).typslav == SLAV_SVIATOK) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST))))
-#define _je_global_svaty_i_slavnost(i) ((_global_svaty(i).typslav == SLAV_SLAVNOST) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST))))
+#define _je_global_svaty_i_sviatok_alebo_slavnost(i) ((_global_svaty(i).typslav == SLAV_SVIATOK) || (_global_svaty(i).typslav == SLAV_SLAVNOST) || ((i != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV))))
+
+#define _je_global_svaty_i_sviatok(i) ((_global_svaty(i).typslav == SLAV_SVIATOK) || ((i != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
+#define _je_global_svaty_i_slavnost(i) ((_global_svaty(i).typslav == SLAV_SLAVNOST) || ((i != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
 
 #define _je_local_den_sviatok ((_local_den.typslav == SLAV_SVIATOK) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST))))
 #define _je_local_den_slavnost ((_local_den.typslav == SLAV_SLAVNOST) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST))))
+
+extern short int _smer_override(short int smer, short int typslav);
+extern short int _typslav_override(short int typslav);
+
+#define _global_den_smer_override _smer(_global_den.smer, _global_den.typslav)
+#define _global_svaty_i_smer_override(i) _smer(_global_svaty(i).smer, _global_svaty(i).typslav)
 
 #define pouzit_na_spomienky_casti_zo_spolocnych_casti (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)))
 

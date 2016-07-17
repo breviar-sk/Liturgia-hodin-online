@@ -8506,7 +8506,7 @@ label_24_DEC:
 // switch(litobd), case OBD_VELKONOCNA_OKTAVA -- end ------------------------------------------
 
 	}// switch(litobd)
-	Log("Koniec veľkého switch()-u podľa liturgických období.\n");
+	Log("DBZ:Koniec veľkého switch()-u podľa liturgických období.\n");
 	LOG_ciara_sv;
 	// koniec velkeho switchu, podla ktoreho sa priradia zakladne udaje
 
@@ -10124,7 +10124,7 @@ void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty){
 	Log("set_popis_svaty_rch_mcd_pc_vesp() -- koniec.\n");
 }// set_popis_svaty_rch_mcd_pc_vesp()
 
-void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 */){
+void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 */) {
 	// poradie_svaty je vstupom iba kvoli tomu, ze ak je 0 -> UNKNOWN_PORADIE_SVATEHO, potom nas neznepokojuju vypisy typu Error: not assigned...
 	// ked nastavi vo formulari (detaily) zalmy zo `sviatku' a spolocnu cast `nebrat', predsa sa nevyvolaju zalmy zo sviatku, lebo sa nespusti _set_spolocna_cast(); 
 	// [ToDo] -- mozno by bolo dobre oddelit nastavenie pre spolocnu cast a potom inde dat samotne zalmy...
@@ -10139,18 +10139,18 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	// "Nepoškvrneného Srdca prebl. Panny Márie" -> "Nepoškvrneného Srdca Panny Márie", preto je tam nastaveny este raz na dummy, vid ZNOVUNASTAVENIE_POPISU_NA_DUMMY
 
 	// pokusne aj _global_svaty1.typslav
-	if (_je_global_den_slavnost || (_je_global_svaty_i_slavnost(1))){
+	if (_je_global_den_slavnost || (_je_global_svaty_i_slavnost(1))) {
 		Log("	teraz nastavujem žalmy pre modlitbu cez deň slávností...\n");
-		if (_global_den.denvt != DEN_NEDELA){
+		if (_global_den.denvt != DEN_NEDELA) {
 			Log("  _set_zalmy_mcd_doplnkova_psalmodia()...\n");
 			_set_zalmy_mcd_doplnkova_psalmodia();
 		}
-		else{
+		else {
 			// nedeľa - žalmy pre modlitbu cez deň sú z nedele; nemením ich, ibaže by boli podľa bodu 135 smerníc nastavené vlastné
 			Log("  žalmy ostávajú z nedele (nemením ich)...\n");
 		}
 	}
-	else{
+	else {
 		Log("	nie je slávnosť (kvôli nastaveniu žalmov pre modlitbu cez deň)...\n");
 	}
 
@@ -10158,78 +10158,86 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	Log("_global_opt[OPT_3_SPOLOCNA_CAST] == %s (%ld)\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]), _global_opt[OPT_3_SPOLOCNA_CAST]);
 
 	// podla _global_opt[OPT_3_SPOLOCNA_CAST] urcime, ktoru spolocnu cast dat
-	if (sc.a1 != MODL_SPOL_CAST_NEURCENA){
-		if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1){
+	if (sc.a1 != MODL_SPOL_CAST_NEURCENA) {
+		if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1) {
 			Log("	vstupujem do _set_spolocna_cast()...(_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1)\n");
 			_set_spolocna_cast((short int)_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
 		}
-		else{
+		else {
 			Log("	neplatí _global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1 ...\n");
-			if (sc.a2 != MODL_SPOL_CAST_NEURCENA){
-				if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a2){
+			if (sc.a2 != MODL_SPOL_CAST_NEURCENA) {
+				if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a2) {
 					Log("	vstupujem do _set_spolocna_cast()...(_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a2)\n");
 					_set_spolocna_cast((short int)_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
 				}
-				else{
-					if (sc.a3 != MODL_SPOL_CAST_NEURCENA){
-						if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a3){
+				else {
+					if (sc.a3 != MODL_SPOL_CAST_NEURCENA) {
+						if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a3) {
 							Log("	vstupujem do _set_spolocna_cast()...(_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a3)\n");
 							_set_spolocna_cast((short int)_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
 						}
-						else{
-							if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT){
+						else {
+							if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT) {
 								set_LOG_sc("  neberiem spolocnu cast\n");
 								ExportHtmlComment("neberiem spolocnu cast");
 							}
-							else{
+							else {
 								// sem by to nemalo prísť
 								set_LOG_sc("-- Error: sc (a1, a2, a3) su sice urcene, ale _global_opt[OPT_3_SPOLOCNA_CAST] sa nerovna ani jednej z nich!\n");
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
 								ALERT;
 								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1, a2, a3 -- ok)\n");
+#endif
 								return;
 							}
 						}
 					}// sc.a3 je urcena
-					else{
-						if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT){
+					else {
+						if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT) {
 							set_LOG_sc("  neberiem spolocnu cast\n");
 							ExportHtmlComment("neberiem spolocnu cast");
 						}
-						else{
+						else {
 							// sem by to nemalo prísť
-							if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
+							if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
 								set_LOG_sc("-- Error: sc (a1, a2) su sice urcene, ale _global_opt[OPT_3_SPOLOCNA_CAST] sa nerovna ani jednej z nich!\n");
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
 								ALERT;
 								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1, a2 -- ok)\n");
+#endif
 								return;
 							}
 						}
 					}
 				}
 			}// sc.a2 je urcena
-			else{
-				if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT){
+			else {
+				if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEBRAT) {
 					set_LOG_sc("  neberiem spolocnu cast\n");
 					ExportHtmlComment("neberiem spolocnu cast");
 				}
-				else{
+				else {
 					// sem by to nemalo prísť
-					if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
+					if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
 						set_LOG_sc("-- Error: sc (a1) je sice urcena, ale _global_opt[OPT_3_SPOLOCNA_CAST] sa jej nerovna!\n");
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
 						ALERT;
 						Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1 -- ok)\n");
+#endif
 						return;
 					}
 				}
 			}
 		}
 	}// sc.a1 je urcene
-	else{
+	else {
 		// sem by to nemalo prísť
-		if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
+		if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
 			Log("-- Error: sc (a1) nie je urcene; _global_opt[OPT_3_SPOLOCNA_CAST] == %s\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]));
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
 			ALERT;
 			Export("Error: a1 (member of sc) unassigned | _global_opt[OPT_3_SPOLOCNA_CAST] == %s\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]));
+#endif
 			return;
 		}
 	}
