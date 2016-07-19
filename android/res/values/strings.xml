@@ -38,6 +38,7 @@
     <string name="psalms_omisions">omissions from psalms</string>
 
     <string name="display_settings_title">Display settings:</string>
+    <string name="first_vespers_buttons">display button for first vespers for Sundays and solemnitas for the day of celebration</string>
     <string name="navigation">display navigation buttons in prayer</string>
     <string name="wrapping_printed">wrap long lines according to printed edition</string>
     <string name="smart_buttons">tight display of buttons for prayers</string>

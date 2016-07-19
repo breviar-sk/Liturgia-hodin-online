@@ -135,6 +135,7 @@
 #pragma region HTML string constants
 
 #define HTML_FORM_INPUT_SUBMIT   HTML_FORM_INPUT_DIV_BEGIN "<input type=\"submit\" class=\"button\""
+#define HTML_FORM_INPUT_SUBMIT_PRAYER   HTML_FORM_INPUT_DIV_BEGIN "<input type=\"submit\" class=\"button-prayer\""
 #define HTML_FORM_INPUT_RESET    HTML_FORM_INPUT_DIV_BEGIN "<input type=\"reset\" class=\"reset\""
 #define HTML_FORM_INPUT_RADIO    HTML_FORM_INPUT_DIV_BEGIN "<input type=\"radio\" class=\"radio\""
 #define HTML_FORM_INPUT_TEXT     HTML_FORM_INPUT_DIV_BEGIN "<input type=\"text\" class=\"text\""
@@ -215,7 +216,10 @@
 #define HTML_TABLE_CELL		        "div class=\"table-cell\"" // "td"
 #define HTML_TABLE_CELL_CENTER      "div class=\"table-cell center\""
 #define HTML_TABLE_CELL_BORDER      "div class=\"table-cell-bordered\"" // "td" with borders
+#define HTML_TABLE_CELL_3_COLUMNS   "div class=\"table-cell-3-columns\"" // "td" for tables with 3 columns
 #define HTML_TABLE_CELL_VALIGN_TOP  "div class=\"table-cell-valign-top\""
+
+#define HTML_TABLE_CELL_PRAYER      (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE) ? HTML_TABLE_CELL_3_COLUMNS : HTML_TABLE_CELL)
 
 #define HTML_TABLE_END		        HTML_DIV_END "" HTML_COMMENT_BEGIN "table" HTML_COMMENT_END // "</table>"
 #define HTML_TABLE_CAPTION_END	    HTML_DIV_END "" HTML_COMMENT_BEGIN "caption" HTML_COMMENT_END // "</th>"

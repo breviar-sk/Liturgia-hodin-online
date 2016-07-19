@@ -2957,7 +2957,7 @@ const char *html_text_opt_2_prve_vespery[POCET_JAZYKOV + 1] =
 {
 	"zobraziť tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia",
 	"zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení",
-	"display button for first vesperas for Sundays and solemnitas for the day of celebration",
+	"display button for first vespers for Sundays and solemnitas for the day of celebration",
 	"",
 	"",
 	"zobrazit tlačítko pro první večerní chvály pro neděle a slavnosti v den slavení",

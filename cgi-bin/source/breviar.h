@@ -401,7 +401,7 @@ extern short int _global_opt_export_date_format;
 	((modlitba == MODL_RANNE_CHVALY) && ((_global_modl_ranne_chvaly.alternativy & BIT_ALT_OFF_DEF_PSALM_146_150) == BIT_ALT_OFF_DEF_PSALM_146_150)) \
 )
 
-#define MIESTNE_SLAVENIE_LOKAL_SVATY(i) ((_global_svaty(i).smer == 4) || (_global_svaty(i).smer == 8) || (_global_svaty(i).smer == 11))
+#define MIESTNE_SLAVENIE_LOKAL_SVATY(i) ((_global_svaty_i_smer_override(i) == 4) || (_global_svaty_i_smer_override(i) == 8) || (_global_svaty_i_smer_override(i) == 11))
 
 #define _je_global_den_sviatok ((_global_den.typslav == SLAV_SVIATOK) || ((_global_poradie_svaty != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
 #define _je_global_den_slavnost ((_global_den.typslav == SLAV_SLAVNOST) || ((_global_poradie_svaty != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
@@ -417,8 +417,8 @@ extern short int _global_opt_export_date_format;
 extern short int _smer_override(short int smer, short int typslav);
 extern short int _typslav_override(short int typslav);
 
-#define _global_den_smer_override _smer(_global_den.smer, _global_den.typslav)
-#define _global_svaty_i_smer_override(i) _smer(_global_svaty(i).smer, _global_svaty(i).typslav)
+#define _global_den_smer_override _smer_override(_global_den.smer, _global_den.typslav)
+#define _global_svaty_i_smer_override(i) _smer_override(_global_svaty(i).smer, _global_svaty(i).typslav)
 
 #define pouzit_na_spomienky_casti_zo_spolocnych_casti (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)))
 

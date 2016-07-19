@@ -209,6 +209,17 @@ public class LangSelect extends Activity {
 
       // display_settings_title
 
+      CheckBox first_vespers_buttons_check = (CheckBox)findViewById(R.id.first_vespers_buttons_check);
+
+      first_vespers_buttons_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setFirstVespersButtons(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      first_vespers_buttons_check.setChecked(url_options.isFirstVespersButtons());
+
       CheckBox navigation_check = (CheckBox)findViewById(R.id.navigation_check);
 
       navigation_check.setOnClickListener(new View.OnClickListener() {

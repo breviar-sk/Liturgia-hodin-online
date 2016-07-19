@@ -36,6 +36,7 @@
     <string name="psalms_omisions">vynechávky ze žalmů</string>
 
     <string name="display_settings_title">Další zobrazení:</string>
+    <string name="first_vespers_buttons">zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení</string>
     <string name="navigation">zobrazit navigaci v textech modliteb</string>
     <string name="wrapping_printed">zalomit dlouhé řádky poetických textů jako v tištěném vydání</string>
     <string name="smart_buttons">tlačítka pro modlitby zobrazit úsporně</string>

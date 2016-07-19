@@ -276,7 +276,17 @@ typedef struct den_mesiac _struct_den_mesiac;
 // all prayers during the day
 #define MODL_CEZ_DEN_VSETKY     20
 
-// 2007-12-05: doplnené kvôli modlitbe kompletória, funkcia _set_kompletorium_nedela()
+#define POCET_PORADIE_MODLITIEB_SHORT	7
+const short int poradie_modlitieb_short[POCET_PORADIE_MODLITIEB_SHORT + 1] = {
+	MODL_INVITATORIUM, MODL_POSV_CITANIE, MODL_RANNE_CHVALY, MODL_CEZ_DEN_9, MODL_CEZ_DEN_12, MODL_CEZ_DEN_3, MODL_VESPERY, MODL_KOMPLETORIUM
+};
+
+#define POCET_PORADIE_MODLITIEB_LONG	9
+const short int poradie_modlitieb_long[POCET_PORADIE_MODLITIEB_LONG + 1] = {
+	MODL_PRVE_VESPERY, MODL_PRVE_KOMPLETORIUM, MODL_INVITATORIUM, MODL_POSV_CITANIE, MODL_RANNE_CHVALY, MODL_CEZ_DEN_9, MODL_CEZ_DEN_12, MODL_CEZ_DEN_3, MODL_VESPERY, MODL_KOMPLETORIUM
+};
+
+// kvôli modlitbe kompletória, funkcia _set_kompletorium_nedela()
 #define MODL_KOMPLETORIUM_NEDELNA	0
 #define MODL_KOMPLETORIUM_SLAVNOSTI	1
 #define MODL_KOMPLETORIUM_TROJDNIE	2

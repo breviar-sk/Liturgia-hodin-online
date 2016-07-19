@@ -36,6 +36,7 @@
     <string name="psalms_omisions">vynechané pasáže zo žalmov</string>
 
     <string name="display_settings_title">Ďalšie zobrazenia:</string>
+    <string name="first_vespers_buttons">zobraziť tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia</string>
     <string name="navigation">zobraziť navigáciu v textoch modlitieb</string>
     <string name="wrapping_printed">zalamovať dlhé riadky ako v tlačenom vydaní (poetické časti)</string>
     <string name="smart_buttons">tlačidlá pre modlitby zobraziť úsporne</string>

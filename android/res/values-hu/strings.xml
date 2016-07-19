@@ -36,6 +36,7 @@
     <string name="psalms_omisions">zsoltárok kihagyott részei</string>
 
     <string name="display_settings_title">Megjelenés beállításai:</string>
+    <string name="first_vespers_buttons">vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg</string>
     <string name="navigation">navigáció mutatása az imaszövegben</string>
     <string name="wrapping_printed">hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)</string>
     <string name="smart_buttons">az imaórák gombjainak gazdaságos elhelyezése</string>

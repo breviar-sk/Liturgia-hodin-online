@@ -87,6 +87,9 @@
     <TextView android:text="@string/display_settings_title" style="@android:style/TextAppearance.Large"
         android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+    <CheckBox android:id="@+id/first_vespers_buttons_check" android:text="@string/first_vespers_buttons"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <CheckBox android:id="@+id/navigation_check" android:text="@string/navigation"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 

@@ -168,6 +168,15 @@ public class UrlOptions {
     setBit("o1", 12, value);
   }
 
+  // of2pv
+  public boolean isFirstVespersButtons() {
+    return hasBit("o2", 1);
+  }
+
+  public void setFirstVespersButtons(boolean value) {
+    setBit("o2", 1, value);
+  }
+
   // of2nav
   public boolean isNavigation() {
     return hasBit("o2", 5);
