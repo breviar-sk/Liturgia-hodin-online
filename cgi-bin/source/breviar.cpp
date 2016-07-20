@@ -1055,7 +1055,7 @@ void _export_heading_center(const char *string){
 
 // funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
 // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
-void _export_link_show_hide(short int opt, long bit_opt, char popis_show[SMALL], char popis_hide[SMALL], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL]){
+void _export_link_show_hide(short int opt, long bit_opt, char popis_show[SMALL], char popis_hide[SMALL], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')'){
 	Log("_export_link_show_hide(): začiatok...\n");
 	char popis[SMALL];
 
@@ -1152,8 +1152,13 @@ void _export_link_show_hide(short int opt, long bit_opt, char popis_show[SMALL],
 		Export("<%s>\n", html_tag_begin);
 	}
 
-	Export(HTML_A_HREF_BEGIN "\"%s\" %s>", pom, html_class);
-	Export("(%s)", popis); // (!isGlobalOption(opt, bit_opt) ? popis_show : popis_hide)); // podmienka bola opačne ako intuitívne preto, lebo vyššie sa negovala: _global_opt[opt] += resp. -= bit_opt;
+	// exporting hyperlink
+	Export(HTML_A_HREF_BEGIN "\"%s\"", pom);
+	if (strlen(html_class) > 0) {
+		Export(" %s", html_class);
+	}
+	Export(">");
+	Export("%c%s%c", left_parenthesis, popis, right_parenthesis);
 	Export(HTML_A_END);
 
 	if (!equals(html_tag_end, STR_EMPTY)){
@@ -8729,9 +8734,16 @@ void _export_main_formular_checkbox(short int opt, int bit_opt, const char * str
 	if(line_break_before == ANO){
 		Export(HTML_CRLF_LINE_BREAK);
 	}
+
 	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", str_modl_force_opt, NIE);
+
 	Export(HTML_FORM_INPUT_CHECKBOX" name=\"%s\" value=\"%d\" title=\"%s\"%s" HTML_FORM_INPUT_END "\n", str_modl_force_opt, ANO, html_text_opt_description_explain, ((_global_force_opt[opt] & bit_opt) == bit_opt) ? html_option_checked : STR_EMPTY);
-	Export("<" HTML_SPAN_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_description_explain, html_label);
+
+	Export("<" HTML_SPAN_TOOLTIP ">", html_text_opt_description_explain);
+
+	_export_link_show_hide(opt, bit_opt, html_label, html_label, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, 0, 0); // Export("%s", html_label);
+
+	Export(HTML_SPAN_END);
 
 	Log("_export_main_formular_checkbox(%d, %d, %s, %s, %s) -- end.\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
 }// _export_main_formular_checkbox()
