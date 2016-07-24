@@ -8520,7 +8520,6 @@ label_24_DEC:
 	_struct_dm _local_den;
 	_INIT_DM(_local_den);
 
-	short int obyc = NIE;
 	// najprv priradime do _local_den to, co tam ma byt
 	if(poradie_svateho > 0){
 		// sviatky (spomienky, ls) svatych
@@ -8578,7 +8577,6 @@ label_24_DEC:
 	}
 	else{
 		// obyčajný deň
-		obyc = ANO;
 		_local_den = _global_den;
 	}
 

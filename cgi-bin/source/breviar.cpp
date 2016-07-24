@@ -2632,7 +2632,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		else if (startsWith(paramname, (char *)KEYWORD_VN_VYNECHAJ)){
 			podmienka &= (_global_den.denvr != VELKONOCNA_NEDELA);
 			exportovat_html_note = ANO;
-			_global_skip_in_prayer_vnpc = !podmienka & (je_begin);
+			_global_skip_in_prayer_vnpc = (!podmienka) && (je_begin);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_COPYRIGHT)){
 			podmienka &= !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
@@ -11050,7 +11050,6 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 	}
 
 	// časť podľa execute_batch_command() 
-	FILE *batch_export_file = NULL;
 	char parameter_M[SMALL] = STR_EMPTY; // parametre pre výsledné HTML (parameter 'M' a parametre pre odkazy na súbory, napr. 'I')
 	char parameter_I[SMALL] = STR_EMPTY;
 	if (_global_opt_batch_monthly == ANO){
@@ -11064,10 +11063,8 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r){
 			strcat(parameter_M, parameter_I);
 			Log("parameter_M == `%s'...\n", parameter_M);
 		}
-		batch_export_file = batch_html_file;
 	}// if(_global_opt_batch_monthly == ANO)
 	else{
-		batch_export_file = batch_html_file;
 		mystrcpy(parameter_M, STR_EMPTY, SMALL);
 	}// else if(_global_opt_batch_monthly == ANO)
 
