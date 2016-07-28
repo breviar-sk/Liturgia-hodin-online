@@ -405,9 +405,12 @@ char optional_html_button_end[MAX_STR] = STR_EMPTY;
 short int _smer_override(short int smer, short int typslav) {
 	if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)) {
 		if (typslav == SLAV_SVIATOK) {
-			return 4; // miestne slávnosti
+			return 3; // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
 		}
-		else if ((typslav == SLAV_SPOMIENKA) || (typslav == SLAV_LUB_SPOMIENKA)) {
+		else if (typslav == SLAV_SPOMIENKA) {
+			return ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)) ? 3 : 7); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári resp. sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+		}
+		else if (typslav == SLAV_LUB_SPOMIENKA) {
 			return ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)) ? 4 : 8); // miestne slávnosti resp. miestne sviatky
 		}
 		else {
