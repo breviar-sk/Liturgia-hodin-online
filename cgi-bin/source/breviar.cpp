@@ -1062,6 +1062,16 @@ void _export_link_show_hide(short int opt, long bit_opt, char popis_show[SMALL],
 	Log("_export_link_show_hide(): začiatok...\n");
 	char popis[SMALL];
 
+	char pom[MAX_STR] = STR_EMPTY;
+	char pom2[MAX_STR];
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+	prilep_request_options(pom2, pom3);
+
+	long _global_opt_backup = _global_opt[opt];
+
 	if (isGlobalOption(opt, bit_opt)) {
 		mystrcpy(popis, popis_show, SMALL);
 	}
@@ -1079,16 +1089,6 @@ void _export_link_show_hide(short int opt, long bit_opt, char popis_show[SMALL],
 		Log("_export_link_show_hide(): predčasný koniec (reťazec popis je prázdny).\n");
 		return;
 	}
-
-	char pom[MAX_STR] = STR_EMPTY;
-	char pom2[MAX_STR];
-	mystrcpy(pom2, STR_EMPTY, MAX_STR);
-	char pom3[MAX_STR];
-	mystrcpy(pom3, STR_EMPTY, MAX_STR);
-
-	prilep_request_options(pom2, pom3);
-
-	long _global_opt_backup = _global_opt[opt];
 
 	// nastavenie parametra o_opt: pridáme bit pre nastavenie
 	if (!isGlobalOption(opt, bit_opt)){
