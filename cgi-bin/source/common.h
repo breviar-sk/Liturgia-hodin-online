@@ -34,7 +34,7 @@
 #define YES 1
 #define NO  0
 
-#define MAX_STR            300 // max string length
+#define MAX_STR           1024 // max string length
 
 #define GLOBAL_OPTION_NULL  -1 // undefined value for global option
 

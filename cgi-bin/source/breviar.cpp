@@ -1058,9 +1058,9 @@ void _export_heading_center(const char *string){
 
 // funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
 // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
-void _export_link_show_hide(short int opt, long bit_opt, char popis_show[SMALL], char popis_hide[SMALL], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')'){
+void _export_link_show_hide(short int opt, long bit_opt, char popis_show[MAX_STR], char popis_hide[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')'){
 	Log("_export_link_show_hide(): začiatok...\n");
-	char popis[SMALL];
+	char popis[MAX_STR];
 
 	char pom[MAX_STR] = STR_EMPTY;
 	char pom2[MAX_STR];
@@ -1073,10 +1073,10 @@ void _export_link_show_hide(short int opt, long bit_opt, char popis_show[SMALL],
 	long _global_opt_backup = _global_opt[opt];
 
 	if (isGlobalOption(opt, bit_opt)) {
-		mystrcpy(popis, popis_show, SMALL);
+		mystrcpy(popis, popis_show, MAX_STR);
 	}
 	else {
-		mystrcpy(popis, popis_hide, SMALL);
+		mystrcpy(popis, popis_hide, MAX_STR);
 
 		// špeciálne nastavenia pre BIT_OPT_1_STUP_SVIATOK_SLAVNOST
 		if ((opt == OPT_1_CASTI_MODLITBY) && (bit_opt == BIT_OPT_1_STUP_SVIATOK_SLAVNOST) && (!isGlobalOption(opt, BIT_OPT_1_OVERRIDE_STUP_SLAV))) {
