@@ -1062,7 +1062,8 @@ void _export_link_show_hide(short int opt, long bit_opt, char popis_show[MAX_STR
 	Log("_export_link_show_hide(): začiatok...\n");
 	char popis[MAX_STR];
 
-	char pom[MAX_STR] = STR_EMPTY;
+	char pom[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
 	char pom2[MAX_STR];
 	mystrcpy(pom2, STR_EMPTY, MAX_STR);
 	char pom3[MAX_STR];
@@ -1151,20 +1152,26 @@ void _export_link_show_hide(short int opt, long bit_opt, char popis_show[MAX_STR
 	}
 
 	Export("%s\n", specific_string_before);
-	if (!equals(html_tag_begin, STR_EMPTY)){
+	if (!equals(html_tag_begin, STR_EMPTY) && (strlen(html_tag_begin) > 0)) {
 		Export("<%s>\n", html_tag_begin);
 	}
 
 	// exporting hyperlink
 	Export(HTML_A_HREF_BEGIN "\"%s\"", pom);
-	if (strlen(html_class) > 0) {
+	if (!equals(html_class, STR_EMPTY) && (strlen(html_class) > 0)) {
 		Export(" %s", html_class);
 	}
 	Export(">");
-	Export("%c%s%c", left_parenthesis, popis, right_parenthesis);
+	if (left_parenthesis > 0) {
+		Export("%c", left_parenthesis);
+	}
+	Export("%s", popis);
+	if (right_parenthesis > 0) {
+		Export("%c", right_parenthesis);
+	}
 	Export(HTML_A_END);
 
-	if (!equals(html_tag_end, STR_EMPTY)){
+	if (!equals(html_tag_end, STR_EMPTY) && (strlen(html_tag_end) > 0)){
 		Export("%s\n", html_tag_end);
 	}
 	Export("%s\n", specific_string_after);
@@ -8744,7 +8751,7 @@ void _export_main_formular_checkbox(short int opt, int bit_opt, const char * str
 
 	Export("<" HTML_SPAN_TOOLTIP ">", html_text_opt_description_explain);
 
-	_export_link_show_hide(opt, bit_opt, html_label, html_label, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, 0, 0); // Export("%s", html_label);
+	_export_link_show_hide(opt, bit_opt, (char *)html_label, (char *)html_label, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, 0, 0); // Export("%s", html_label);
 
 	Export(HTML_SPAN_END);
 
