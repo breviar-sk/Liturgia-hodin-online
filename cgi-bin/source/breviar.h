@@ -200,7 +200,7 @@ extern short int _global_opt_export_date_format;
 #define je_velka_noc ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && (_global_den.denvt == DEN_NEDELA)) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA))
 #define je_aleluja_aleluja ((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && (_global_den.denvt == DEN_NEDELA)) || ((_global_den.denvr == _global_r._ZOSLANIE_DUCHA_SV.denvr) && ((_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_DRUHE_VESPERY))))
 #define je_34_ocr ((_global_den.litobd == OBD_CEZ_ROK) && (_global_den.tyzden == 34) && (_global_den.denvt != DEN_NEDELA))
-#define je_tedeum (type == MODL_POSV_CITANIE) && (((_global_den.denvt == DEN_NEDELA) && (_global_den.litobd != OBD_POSTNE_I) && (_global_den.litobd != OBD_POSTNE_II_VELKY_TYZDEN)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA))
+#define je_tedeum ((type == MODL_POSV_CITANIE) && (((_global_den.denvt == DEN_NEDELA) && (_global_den.litobd != OBD_POSTNE_I) && (_global_den.litobd != OBD_POSTNE_II_VELKY_TYZDEN)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA)))
 
 // je_privileg -- pre zistenie, či ide o privilegované dni (VSLH č. 238-239): to isté ako je_post + december počnúc 17.-tym (všedné di od 17. do 24. decembra a Vianočná oktáva); striktne by tu nemal byť veľký týždeň a veľkonočné trojdnie, ale nezaškodí to tu
 // override stupňa slávenia prebíja je_privileg (inými slovami, v privilegované dni je možné sláviť sviatky resp. slávnosti)
@@ -403,8 +403,8 @@ extern short int _global_opt_export_date_format;
 
 #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) ((_global_svaty_i_smer_override(i) == 4) || (_global_svaty_i_smer_override(i) == 8) || (_global_svaty_i_smer_override(i) == 11))
 
-#define _je_global_den_sviatok ((_global_den.typslav == SLAV_SVIATOK) || ((_global_poradie_svaty != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
-#define _je_global_den_slavnost ((_global_den.typslav == SLAV_SLAVNOST) || ((_global_poradie_svaty != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
+#define _je_global_den_sviatok ((_global_den.typslav == SLAV_SVIATOK) || ((_global_poradie_svaty > 0) && (_global_poradie_svaty < PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
+#define _je_global_den_slavnost ((_global_den.typslav == SLAV_SLAVNOST) || ((_global_poradie_svaty > 0) && (_global_poradie_svaty < PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))))
 
 #define _je_global_svaty_i_sviatok_alebo_slavnost(i) ((_global_svaty(i).typslav == SLAV_SVIATOK) || (_global_svaty(i).typslav == SLAV_SLAVNOST) || ((i != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV))))
 

@@ -3043,6 +3043,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			bit = BIT_OPT_1_STUP_SVIATOK_SLAVNOST;
 			podmienka &= ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA));
 			Log("podmienka == %d [_global_den.typslav == %d, override == %d]\n", podmienka, _global_den.typslav, _typslav_override(_global_den.typslav));
+			podmienka &= (_global_poradie_svaty != PORADIE_PM_SOBOTA);
+			Log("podmienka == %d [_global_poradie_svaty == %d, PORADIE_PM_SOBOTA == %d]\n", podmienka, _global_poradie_svaty, PORADIE_PM_SOBOTA);
 			sprintf(popis_show, "%s", html_text_opt_1_slavit_ako_sviatok[_global_jazyk]);
 			sprintf(popis_hide, "%s", html_text_opt_1_slavit_ako_slavnost[_global_jazyk]);
 		}
