@@ -16572,7 +16572,12 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				modlitba = MODL_VESPERY;
 				_set_zalmy_sviatok_marie(modlitba);
-				_vlastna_cast_full(modlitba);
+				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) {
+					_vlastna_cast_full_okrem_prosieb(modlitba);
+				}// KALENDAR_SK_OFM
+				else {
+					_vlastna_cast_full(modlitba);
+				}
 
 				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)){
 					_vlastna_cast_mcd_ant_kcitresp_modl;

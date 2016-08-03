@@ -9544,7 +9544,7 @@ const char *text_AUG_02_SDB[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_02_SJ[POCET_JAZYKOV + 1] =
 {
-	"Bl. Petra Favra, kňaza",
+	"Sv. Petra Favra, kňaza",
 	"",
 	"",
 	"",
