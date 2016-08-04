@@ -109,6 +109,12 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
 
+<p><b>Verzió 1.14</b>
+<ul>
+<li>New option: Display button for first vespers for Sundays and solemnitas for the day of celebration.</li>
+<li>Enable to celebrate saints with higher level (as feasts/solemnities).</li>
+</ul>
+
 <p><b>Verzió 1.13.2</b>
 <ul>
 <li>Új beállítási lehetőség: fehér/fekete háttért alkalmazni (vetítő/AMOLED kijelző).</li>

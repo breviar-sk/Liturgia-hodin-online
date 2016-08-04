@@ -109,6 +109,12 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.</li> -->
 
+<p><b>Verzia 1.14</b>
+<ul>
+<li>Nové nastavenie: Zobraziť tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia.</li>
+<li>Možnosť sláviť slávenia s vyšším stupňom (ako sviatky/slávnosti).</li>
+</ul>
+
 <p><b>Verzia 1.13.2</b>
 <ul>
 <li>Nové nastavenie: biele/čierne pozadie (projektor/AMOLED displej).</li>

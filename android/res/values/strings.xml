@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.13.2</string>
+    <string name="version">1.14</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -124,6 +124,12 @@ body { background-color: #000000; color: #cccccc; }
 <body>
 
 <p><b>Breviary application | What\'s new</b>
+
+<p><b>Version 1.14</b>
+<ul>
+<li>New option: Display button for first vespers for Sundays and solemnitas for the day of celebration.</li>
+<li>Enable to celebrate saints with higher level (as feasts/solemnities).</li>
+</ul>
 
 <p><b>Version 1.13.2</b>
 <ul>
