@@ -59,6 +59,7 @@ extern short int index_pre_mesiac_otvoreny;
 
 extern char optional_html_class_button[MAX_STR];
 extern char optional_html_button_begin[MAX_STR];
+extern char optional_html_button_prayer_begin[MAX_STR];
 extern char optional_html_button_end[MAX_STR];
 
 // globalna premenna, do ktorej sa ukladaju info o analyzovanom dni

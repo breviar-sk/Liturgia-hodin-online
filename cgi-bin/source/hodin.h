@@ -608,8 +608,8 @@ const char *nazov_slavenia_lokal[] =
 , "v královéhradecké diecézi"                                                                                    // LOKAL_SLAV_HRADEC_KRALOVE
 , "jen v posvěcených kostelích"                                                                                  // LOKAL_SLAV_KONSEKR_KOSTOLY_CZ 
 , "v plzeňské diecézi"                                                                                           // LOKAL_SLAV_PLZEN 
-, "v ostravsko-opavské diecézi slavnost"                                                                         // LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST
-, "v českobudějovické diecézi památka"                                                                           // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
+, "v ostravsko-opavské diecézi: slavnost"                                                                        // LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST
+, "v českobudějovické diecézi: památka"                                                                          // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
 , "v Bratislavskej arcidiecéze a v Spišskej diecéze sviatok hlavného patróna"                                    // LOKAL_SLAV_SPIS_BA_PATRON
 , "v Bratislavskej arcidiecéze"                                                                                  // LOKAL_SLAV_BRATISLAVA
 , "Karácsony nyolcada – Kiskarácsony"                                                                            // LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU
@@ -689,10 +689,21 @@ const char *nazov_slavenia_lokal[] =
 , "v kláštoroch bosých karmelitánok – spomienka"                                                                // LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM
 , "pro SDB: slavnost"                                                                                           // LOKAL_SLAV_SLAVNOST_SDB_CZ
 , "v dome sv. Lazára v Paríži: spomienka"                                                                       // LOKAL_SLAV_SPOMIENKA_CM_PARIZ
-, "у Віцебскай дыяцэзіі: успамін"                                                                               // LOKAL_SLAV_SPOMIENKA_BY_VICEBSKA
+, "у Віцебскай дыяцэзіі: успамін"                                                                               // LOKAL_SLAV_VICEB_SPOMIENKA
 , "у Мінска-Магілёўскай архідыяцэзіі"                                                                           // LOKAL_SLAV_POSV_K_CH_MINSK
 , "у Пінскай дыяцэзіі"                                                                                          // LOKAL_SLAV_POSV_K_CH_PINSK
 , "у Пінскай дыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Віцебскай дыяцэзіі: успамін" // LOKAL_SLAV_PINSK_MINSK
+, "v královéhradecké diecézi: slavnost"                                                                         // LOKAL_SLAV_HRADEC_KRALOVE_SLAVNOST
+, "v českobudějovické diecézi: slavnost"                                                                        // LOKAL_SLAV_CESKE_BUDEJOV_SLAVNOST
+, "у Гродзенскай дыяцэзіі"                                                                                      // LOKAL_SLAV_GRODZENSK
+, "у Мінска-Магілёўскай архідыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Віцебскай дыяцэзіі: свята"              // LOKAL_SLAV_MINSK_MAG_VICEB
+, "у Мінска-Магілёўскай архідыяцэзіі: успамін"                                                                  // LOKAL_SLAV_MINSK_SPOMIENKA
+, "у Гродзенскай дыяцэзіі: свята"                                                                               // LOKAL_SLAV_GRODZENSK_SVIATOK
+, "У Мінска-Магілёўскай архідыяцэзіі, Пінскай дыяцэзіі і Гродзенскай дыяцэзіі"                                  // LOKAL_SLAV_MINSK_PINSK_GRODZENSK
+, "у Віцебскай дыяцэзіі"                                                                                        // LOKAL_SLAV_VICEB
+, "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: успамін"                                               // LOKAL_SLAV_MINSK_PINSK_SPOMIENKA
+, "у Віцебскай дыяцэзіі: урачыстасць, " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: свята" // LOKAL_SLAV_VICEB_SL_MINSK_PINSK_SV
+, "у Гродзенскай дыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: успамін" // LOKAL_SLAV_GRODZ_SL_PINSK_MINSK_SP
 };
 
 // names of liturgical colors
@@ -1123,10 +1134,10 @@ const short int format_datumu[POCET_JAZYKOV + 1] = {
 // Filename of CSS file; the number of CSS does not directly correspond to the number of languages
 // Always use "breviar.css" plus override eventually
 const char *nazov_css[POCET_CSS + 1] =
-{ "(css neurčené)", "breviar.css", "breviar-invert-colors.css", "breviar-kbd.css", "ebreviar-cz.css" };
+{ "(css neurčené)", "breviar.css", "breviar-invert-colors.css", "breviar-kbd.css" };
 
 const char *skratka_css[POCET_CSS + 1] =
-{ "__", "def", "invert", "kbd", "cz" };
+{ "__", "def", "invert", "kbd" };
 
 // Language mutations
 const short int default_css_jazyk[POCET_JAZYKOV + 1] =
@@ -2859,11 +2870,11 @@ const char *html_text_opt_1_override_stupen_slavenia[POCET_JAZYKOV + 1] =
 {
 	"sláviť s vyšším stupňom slávenia",
 	"slavit s vyšším stupněm slavení",
-	"override celebration level with higher",
+	"celebrate with higher level",
 	"",
 	"",
 	"slavit s vyšším stupněm slavení",
-	"hu_text",
+	"ünnepelni magasabb fokú ünneplés",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2871,13 +2882,13 @@ const char *html_text_opt_1_override_stupen_slavenia[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_1_override_stupen_slavenia_explain[POCET_JAZYKOV + 1] =
 {
-	"Možnosť sláviť (ľubovoľnú) spomienku ako sviatok alebo slávnosť, podobne možnosť sláviť sviatok ako slávnosť (pre lokálne sviatky/slávnosti).",
+	"Možnosť sláviť (ľubovoľnú) spomienku ako sviatok alebo slávnosť, podobne možnosť sláviť sviatok ako slávnosť.",
 	"",
 	"",
+	"Possibility to celebrate (free) memory as a feast or a solemnity; likewise the possibility to celebrate the feast as a solemnity.",
 	"",
 	"",
-	"",
-	"hu_text",
+	"Arra, hogy megünnepeljük (tetszés szerinti) emléknap, mint egy ünnep, vagy egy főünnep, mint a lehetőséget, hogy megünnepeljük az ünnep, mint egy főünnep.",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2887,11 +2898,11 @@ const char *html_text_opt_1_override_stupen_slavenia_NIE[POCET_JAZYKOV + 1] =
 {
 	"sláviť s predpísaným stupňom slávenia",
 	"slavit s předepsaným stupněm slavení",
-	"celebrate according to calendar (do not change celebration level)",
+	"celebrate with prescribed liturgical level",
 	"",
 	"",
 	"slavit s předepsaným stupněm slavení",
-	"hu_text",
+	"ünnepeljük az előírt mértékű ünneplés",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2905,7 +2916,7 @@ const char *html_text_opt_1_slavit_ako_sviatok[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"slavit jako svátek",
-	"hu_text",
+	"ünnepelt, mint az ünnep",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2915,11 +2926,11 @@ const char *html_text_opt_1_slavit_ako_slavnost[POCET_JAZYKOV + 1] =
 {
 	"sláviť ako slávnosť",
 	"slavit jako slavnost",
-	"celebrate as celebration",
+	"celebrate as solemnity",
 	"",
 	"",
 	"slavit jako slavnost",
-	"hu_text",
+	"ünnepelt, mint az főünnep",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2943,7 +2954,7 @@ const char *html_text_opt_2_html_export_explain[POCET_JAZYKOV + 1] =
 {
 	"Tieto možnosti ovplyvnia rozličné zobrazenia, nemajú vplyv na obsah (text) modlitieb.",
 	"Možnosti ovlivní rozličná zobrazení, neovlivní obsah (text) modliteb.",
-	"These various options have no influence to generated text of prayers, used only for visualization.",
+	"These various options have no influence to content of generated prayer texts, they are used only for visualization.",
 	"",
 	"",
 	"Možnosti ovlivní rozličná zobrazení, neovlivní obsah (text) modliteb.",
@@ -5617,7 +5628,7 @@ const char *text_MAR_09[POCET_JAZYKOV + 1] =
 };
 const char *text_MAR_10_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu v Bratislave", // ToDo: 'sv. Martina z Tours', podľa Direktória 2012, str. 93
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Martina z Tours",
 	"",
 	"",
 	"",
@@ -6651,7 +6662,7 @@ const char *text_MAJ_12_2[POCET_JAZYKOV + 1] =
 const char *text_MAJ_12_CZ[POCET_JAZYKOV + 1] =
 {
 	"",
-	"Výročí posvěcení katedrály",
+	"Výročí posvěcení katedrály sv. Víta",
 	"",
 	"",
 	"",
@@ -7511,7 +7522,7 @@ const char *text_NARODENIE_PANA[POCET_JAZYKOV + 1] =
 	"Narození Páně",
 	"Urunk születése (Karácsony)",
 	"ru_text",
-	"by_text",
+	"Нараджэнне Пана",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1] =
@@ -7842,6 +7853,19 @@ const char *text_JUN_12_CZ[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUN_12_BY[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"Бл. Генрыха Глябовіча, прэзбітэра, і паплечнікаў, мучанікаў",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUN_12_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Františka K&#281;syho a spoločníkov, mučeníkov", // Bl. Františka Kesyho a spoločníkov, mučeníkov (small latin letter e with ogonek)
@@ -7948,7 +7972,7 @@ const char *text_JUN_13[POCET_JAZYKOV + 1] =
 };
 const char *text_JUN_13_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu sv. Šebastiána",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Šebastiána",
 	"",
 	"",
 	"",
@@ -8352,11 +8376,11 @@ const char *text_JUN_28[POCET_JAZYKOV + 1] =
 const char *text_JUN_29[POCET_JAZYKOV + 1] =
 {
 	"Sv. Petra a Pavla, apoštolov",
-	"Sv. Petra a Pavla, apoštolů",
+	"Sv. Petra a Pavla, apoštolů, " HTML_LINE_BREAK "hlavních patronů brněnské diecéze",
 	"",
 	"",
 	"",
-	"Sv. Petra a Pavla, apoštolů",
+	"Sv. Petra a Pavla, apoštolů, " HTML_LINE_BREAK "hlavních patronů brněnské diecéze",
 	"Szent Péter és Szent Pál apostolok",
 	"ru_text",
 	"Св. Пятра і Паўла, апосталаў",
@@ -8365,7 +8389,7 @@ const char *text_JUN_29[POCET_JAZYKOV + 1] =
 const char *text_JUN_29_OPRAEM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Petra a Pavla, apoštolov",
-	"Sv. Petra a Pavla, apoštolů, titulární slavnost opatského kostela",
+	"Sv. Petra a Pavla, apoštolů, " HTML_LINE_BREAK "titulární slavnost opatského kostela",
 	"",
 	"",
 	"",
@@ -8521,7 +8545,20 @@ const char *text_JUL_04_2_OP[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_JUL_05[POCET_JAZYKOV + 1] =
+const char *text_JUL_05_LA[POCET_JAZYKOV + 1] = // vo všeobecnom kalendári sa slávi 5. júla; na SK presunuté na 7. júla
+{
+	"Sv. Antona Márie Zaccariu, kňaza",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Zaccaria Szent Antal Mária áldozópap",
+	"ru_text",
+	"Св. Антонія Марыі Дзаккарыя, прэзбітэра",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUL_05_SK_CZ[POCET_JAZYKOV + 1] =
 {
 	"Sv. Cyrila a Metoda, slovanských vierozvestov",
 	"Sv. Cyrila, mnicha, a Metoděje, biskupa, " HTML_LINE_BREAK "patronů Evropy, hlavních patronů Moravy",
@@ -8532,6 +8569,19 @@ const char *text_JUL_05[POCET_JAZYKOV + 1] =
 	"",
 	"ru_text",
 	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUL_05_BY[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"Найсв. Панны Марыі Тракельскай",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_JUL_06[POCET_JAZYKOV + 1] =
@@ -8558,19 +8608,6 @@ const char *text_JUL_06_CZOP[POCET_JAZYKOV + 1] =
 	"",
 	"ru_text",
 	"by_text",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-const char *text_JUL_07_SK[POCET_JAZYKOV + 1] = // vo všeobecnom kalendári sa slávi 5. júla
-{
-	"Sv. Antona Márie Zaccariu, kňaza",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"Zaccaria Szent Antal Mária áldozópap",
-	"ru_text",
-	"Св. Антонія Марыі Дзаккарыя, прэзбітэра",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] =
@@ -9410,13 +9447,13 @@ const char *text_JUL_31_SJ[POCET_JAZYKOV + 1] =
 
 const char *text_POSVIACKA_KATEDRALNEHO_CHRAMU[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Výročie posviacky katedrálneho chrámu",
 	"Výročí posvěcení katedrály",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Výročí posvěcení katedrály",
+	"A székesegyház felszentelése",
 	"ru_text",
 	"Гадавіна пасвячэння катэдральнага касцёла",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -9579,6 +9616,19 @@ const char *text_AUG_05[POCET_JAZYKOV + 1] =
 	"Szűz Mária római főtemplomának felszentelése (Havas Boldogasszony)",
 	"ru_text",
 	"Гадавіна пасвячэння рымскай базілікі Найсв. Панны Марыі",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_AUG_05_BY[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"Найсв. Панны Марыі Кангрэгацкай (Студэнцкай)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_AUG_06[POCET_JAZYKOV + 1] =
@@ -10415,7 +10465,7 @@ const char *text_AUG_29[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_30_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu v Trnave", // ToDo: 'sv. Jána Krstiteľa', podľa Direktória 2012, str. 186
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Jána Krstiteľa",
 	"",
 	"",
 	"",
@@ -10626,7 +10676,7 @@ const char *text_SEP_05[POCET_JAZYKOV + 1] =
 };
 const char *text_SEP_06_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu v Košiciach", // ToDo: 'sv. Alžbety', podľa Direktória 2012, str. 190
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Alžbety",
 	"",
 	"",
 	"",
@@ -10700,6 +10750,19 @@ const char *text_SEP_08[POCET_JAZYKOV + 1] =
 	"Szűz Mária születése (Kisboldogasszony)",
 	"ru_text",
 	"Нараджэнне Найсв. Панны Марыі",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_SEP_08_BY[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"Найсв. Панны Марыі Браслаўскай",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_SEP_09[POCET_JAZYKOV + 1] =
@@ -10816,7 +10879,7 @@ const char *text_SEP_13[POCET_JAZYKOV + 1] =
 	"Sv. Jana Zlatoústého, biskupa a učitele církve",
 	"Aranyszájú (Krizosztomosz) Szent János püspök és egyháztanító",
 	"ru_text",
-	"Св. Яна Златавуснага (Хрызастома), біскупа і доктара Касцёла",
+	"Св. Яна Златавуснага (Хрызастома), " HTML_LINE_BREAK "біскупа і доктара Касцёла",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_SEP_13_HU[POCET_JAZYKOV + 1] =
@@ -11133,7 +11196,7 @@ const char *text_SEP_23_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_SEP_24_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu v Banskej Bystrici", // ToDo: 'sv. Františka Xaverského', podľa Direktória 2012, str. 198
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Františka Xaverského",
 	"",
 	"",
 	"",
@@ -11336,7 +11399,7 @@ const char *text_SEP_29[POCET_JAZYKOV + 1] =
 	"Sv. Michaela, Gabriela a Rafaela, archandělů",
 	"Szent Mihály, Szent Gábor és Szent Rafael főangyalok",
 	"ru_text",
-	"Св. Міхала Арханёла (апекуна Мінска-Магілёўскай правінцыі касцёла), " HTML_LINE_BREAK "св. Габрыэля і Рафала, арханёлаў",
+	"Св. Міхала Арханёла " HTML_LINE_BREAK "(апекуна Мінска-Магілёўскай правінцыі касцёла), " HTML_LINE_BREAK "св. Габрыэля і Рафала, арханёлаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_SEP_30[POCET_JAZYKOV + 1] =
@@ -11721,7 +11784,7 @@ const char *text_OKT_11_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_OKT_11_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu v Žiline", // ToDo: 'Najsvätejšej Trojice', podľa Direktória 2012, str. 207
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "Najsvätejšej Trojice",
 	"",
 	"",
 	"",
@@ -12215,7 +12278,7 @@ const char *text_OKT_24_HU[POCET_JAZYKOV + 1] =
 };
 const char *text_OKT_25_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu v Spišskom Podhradí", // ToDo: 'sv. Martina z Tours', podľa Direktória 2012, str. 213
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Martina z Tours",
 	"",
 	"",
 	"",
@@ -12345,7 +12408,7 @@ const char *text_OKT_26_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_OKT_27_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu v Rožňave", // ToDo: 'Nanebovzatia Panny Márie', podľa Direktória 2012, str. 214
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "Nanebovzatia Panny Márie",
 	"",
 	"",
 	"",
@@ -13089,15 +13152,15 @@ const char *text_NOV_17_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_NOV_18[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky bazilík sv. Petra a sv. Pavla, apoštolov",
-	"Posvěcení římských bazilik svatých apoštolů Petra a Pavla",
+	"Výročie posviacky bazilík " HTML_LINE_BREAK "sv. Petra a sv. Pavla, apoštolov",
+	"Posvěcení římských bazilik " HTML_LINE_BREAK "svatých apoštolů Petra a Pavla",
 	"",
 	"",
 	"",
-	"Posvěcení římských bazilik svatých apoštolů Petra a Pavla",
+	"Posvěcení římských bazilik " HTML_LINE_BREAK "svatých apoštolů Petra a Pavla",
 	"Szent Péter- és Szent Pál-bazilikák felszentelése",
 	"ru_text",
-	"Гадавіна пасвячэння рымскіх базылік св. апосталаў Пятра і Паўла",
+	"Гадавіна пасвячэння рымскіх базылік " HTML_LINE_BREAK "св. апосталаў Пятра і Паўла",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_NOV_18_OFM[POCET_JAZYKOV + 1] =
@@ -13154,7 +13217,7 @@ const char *text_NOV_19_OCD[POCET_JAZYKOV + 1] =
 };
 const char *text_NOV_20_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu v Nitre", // ToDo: 'sv. Emeráma', podľa Direktória 2012, str. 226
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Emeráma",
 	"",
 	"",
 	"",
@@ -13685,7 +13748,7 @@ const char *text_DEC_12[POCET_JAZYKOV + 1] =
 	"Panny Marie Guadalupské",
 	"A Guadalupei Boldogságos Szűz Mária",
 	"ru_text",
-	"by_text",
+	"Найсв. Панны Марыі Guadalupe by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_DEC_13[POCET_JAZYKOV + 1] =

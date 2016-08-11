@@ -398,6 +398,7 @@ short int index_pre_mesiac_otvoreny = NIE;
 char optional_html_line_break[MAX_STR] = STR_EMPTY;
 char optional_html_class_button[MAX_STR] = STR_EMPTY;
 char optional_html_button_begin[MAX_STR] = STR_EMPTY;
+char optional_html_button_prayer_begin[MAX_STR] = STR_EMPTY;
 char optional_html_button_end[MAX_STR] = STR_EMPTY;
 
 // -------------------------------------------------------------------
@@ -6825,7 +6826,7 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 				}
 				else{
 					Export("%s" HTML_A_HREF_BEGIN "\"%s\"%s>\n", optional_html_line_break, pom, optional_html_class_button);
-					Export("%s", optional_html_button_begin);
+					Export("%s", optional_html_button_prayer_begin);
 				}
 			}
 		}
@@ -6871,7 +6872,7 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 			}
 			else{
 				Export("%s" HTML_A_HREF_BEGIN "\"%s\"%s>\n", optional_html_line_break, pom, optional_html_class_button);
-				Export("%s", optional_html_button_begin);
+				Export("%s", optional_html_button_prayer_begin);
 			}
 
 			if((som_v_tabulke == ANO) && (typ != EXPORT_DNA_JEDEN_DEN_LOCAL)){
@@ -12243,14 +12244,16 @@ void _rozparsuj_parametre_OPT(void){
 	if ((isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_DO_NOT_USE_BUTTON)) || PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
 		// use old behaviour with <a class="button"> for 'plain export' (batch mode) or when explicitly requested (BIT_OPT_4_DO_NOT_USE_BUTTON)
 		mystrcpy(optional_html_button_begin, STR_EMPTY, MAX_STR);
+		mystrcpy(optional_html_button_prayer_begin, STR_EMPTY, MAX_STR);
 		mystrcpy(optional_html_button_end, STR_EMPTY, MAX_STR);
 		mystrcpy(optional_html_class_button, " " HTML_CLASS_BUTTON, MAX_STR);
 		mystrcpy(optional_html_line_break, HTML_LINE_BREAK, MAX_STR);
 	}
 	else{
 		// use new behaviour - display <a> element like button
-		mystrcpy(optional_html_button_begin, HTML_BUTTON_BEGIN"\n", MAX_STR);
-		mystrcpy(optional_html_button_end, HTML_BUTTON_END"\n", MAX_STR);
+		mystrcpy(optional_html_button_begin, HTML_BUTTON_BEGIN "\n", MAX_STR);
+		mystrcpy(optional_html_button_prayer_begin, HTML_BUTTON_PRAYER_BEGIN "\n", MAX_STR);
+		mystrcpy(optional_html_button_end, HTML_BUTTON_END "\n", MAX_STR);
 		mystrcpy(optional_html_class_button, STR_EMPTY, MAX_STR);
 		mystrcpy(optional_html_line_break, STR_EMPTY, MAX_STR);
 	}

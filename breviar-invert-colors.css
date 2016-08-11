@@ -175,12 +175,6 @@ a.explain {
 	color: gray; 
 }
 
-a.button { 
-	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
-	border: solid 0px #CCCCCC; 
-	color: #191919; /* #333333; */
-}
-
 table { 
 	color: #CCCCCC; 
 }
@@ -202,7 +196,7 @@ input {
 	color: #CCCCCC; 
 }
 
-input.button, input.reset, .button, .button-prayer { 
+input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer { 
 	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
 	border: solid 0px #CCCCCC; 
 	color: #191919; /* #333333; */

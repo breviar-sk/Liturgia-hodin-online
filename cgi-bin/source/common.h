@@ -277,6 +277,7 @@
 #define HTML_CLASS_LEVEL1           "class=\"level1\""
 #define HTML_CLASS_TT               "class=\"tt\""
 #define HTML_CLASS_BUTTON           "class=\"button\""
+#define HTML_CLASS_BUTTON_PRAYER    "class=\"button-prayer\""
 #define HTML_CLASS_SMALL            "class=\"small\""
 #define HTML_CLASS_SMALL_CENTER     "class=\"small center\""
 #define HTML_CLASS_INLINE           "class=\"inline\""
@@ -289,6 +290,7 @@
 #define HTML_VALIGN_BASE            "valign=\"baseline\""
 
 #define HTML_BUTTON_BEGIN	        "<button type=\"button\" " HTML_CLASS_BUTTON ">" // wrapping <a> element to look like button
+#define HTML_BUTTON_PRAYER_BEGIN	"<button type=\"button\" " HTML_CLASS_BUTTON_PRAYER ">" // wrapping <a> element to look like button
 #define HTML_BUTTON_END		        "</button>"
 
 #define HTML_AMPERSAND              "&amp;"

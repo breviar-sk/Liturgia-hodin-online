@@ -75,14 +75,13 @@ const short int ritus_jazyka[POCET_JAZYKOV + 1] =
 extern const short int format_datumu[POCET_JAZYKOV + 1];
 
 // number of CSSs
-#define POCET_CSS	4
+#define POCET_CSS	3
 
 // CSSs
 #define CSS_UNDEF				0
 #define CSS_breviar_sk			1
 #define CSS_breviar_sk_invert	2
 #define CSS_kbd_sk				3
-#define CSS_ebreviar_cz			4
 
 // static texts
 #define POCET_STATIC_TEXTOV               2
@@ -984,10 +983,21 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM    115
 #define LOKAL_SLAV_SLAVNOST_SDB_CZ         116
 #define LOKAL_SLAV_SPOMIENKA_CM_PARIZ      117
-#define LOKAL_SLAV_SPOMIENKA_BY_VICEBSKA   118
+#define LOKAL_SLAV_VICEB_SPOMIENKA         118
 #define LOKAL_SLAV_POSV_K_CH_MINSK         119
 #define LOKAL_SLAV_POSV_K_CH_PINSK         120
 #define LOKAL_SLAV_PINSK_MINSK             121
+#define LOKAL_SLAV_HRADEC_KRALOVE_SLAVNOST 122
+#define LOKAL_SLAV_CESKE_BUDEJOV_SLAVNOST  123
+#define LOKAL_SLAV_GRODZENSK               124
+#define LOKAL_SLAV_MINSK_MAG_VICEB         125
+#define LOKAL_SLAV_MINSK_SPOMIENKA         126
+#define LOKAL_SLAV_GRODZENSK_SVIATOK       127
+#define LOKAL_SLAV_MINSK_PINSK_GRODZENSK   128
+#define LOKAL_SLAV_VICEB                   129
+#define LOKAL_SLAV_MINSK_PINSK_SPOMIENKA   130
+#define LOKAL_SLAV_VICEB_SL_MINSK_PINSK_SV 131
+#define LOKAL_SLAV_GRODZ_SL_PINSK_MINSK_SP 132
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined

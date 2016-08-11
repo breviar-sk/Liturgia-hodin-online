@@ -663,6 +663,7 @@ a {
 	border-bottom: 1px dotted; 
 	color: #1a1a1a; 
 	font-family: inherit; 
+	font-size: inherit; 
 	text-decoration: none; 
 }
 
@@ -688,17 +689,6 @@ a.explain {
 }
 
 a.nounderline { 
-	text-decoration: none; 
-}
-
-a.button { 
-	background: #ffcc99; /* #ffcc66; Tan; Peru; BurlyWood; */
-	border: solid 0px #1a1a1a; 
-	color: #1a1a1a; 
-	cursor: pointer;
-	font-family: inherit; 
-	font-style: normal;
-	margin-left: 0px!important;
 	text-decoration: none; 
 }
 
@@ -744,12 +734,13 @@ input {
 }
 
 /* prayer buttons */
-input.button, input.reset, .button { 
+input.button, input.reset, .button, a.button { 
 	background: #ffcc99; /* #ffcc66; Tan; Peru; BurlyWood; */
 	border: solid 0px #1a1a1a; 
 	color: #1a1a1a; 
 	cursor: pointer;
 	font-family: inherit; 
+	font-size: inherit; 
 	font-style: normal;
 	margin-left: 0px !important;
 	min-height: 20px;
@@ -758,18 +749,23 @@ input.button, input.reset, .button {
 	text-decoration: none; 
 }
 
-.button-prayer { 
+.button-prayer, input.button-prayer { 
 	background: #ffcc99; /* #ffcc66; Tan; Peru; BurlyWood; */
 	border: solid 0px #1a1a1a; 
 	color: #1a1a1a; 
 	cursor: pointer;
 	font-family: inherit; 
+	font-size: inherit; 
 	font-style: normal;
 	margin-left: 0px !important;
 	min-width: 76px;
 	padding: 4px 4px;
 	text-decoration: none; 
 	width: 100%; /* within table cell */
+}
+
+button.button-prayer {
+	min-width: 80px; /* must be 4px more than .button-prayer due to padding */
 }
 
 /* << >> */
