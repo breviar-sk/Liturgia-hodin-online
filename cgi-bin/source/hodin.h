@@ -163,53 +163,53 @@ const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 
 // the prefix for common parts of celebration
 const char *nazov_spolc_zospolc_jazyk[POCET_JAZYKOV + 1] =
-{ "Zo spoločnej časti", "Společné texty", "Common texts", "Communia", "", "Společné texty", "közös zsolozsmája", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Zo spoločnej časti", "Společné texty", "Common texts", "Communia", "", "Společné texty", "közös zsolozsmája", "ru_text", "Агульныя тэксты", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char *nazov_spolc_oficiumza_jazyk[POCET_JAZYKOV + 1] =
-{ "Ofícium za", "Společné texty", "Common texts", "Communia", "", "Společné texty", "közös zsolozsmája", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Ofícium za", "Společné texty", "Common texts", "Communia", "", "Společné texty", "közös zsolozsmája", "ru_text", "Агульныя тэксты", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // the --CELEBRATION-- for common parts of celebration
 const char *nazov_spolc_sviatky_jazyk[POCET_JAZYKOV + 1] =
-{ "na sviatky", "na svátky", "", "", "", "na svátky", "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "na sviatky", "na svátky", "", "", "", "na svátky", "", "ru_text", "пра", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // the --ANNIVERSARY-- for common parts of celebration
 const char *nazov_spolc_vyrocie_jazyk[POCET_JAZYKOV + 1] =
-{ "na výročie", "na výročí", "", "", "", "na výročí", "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "na výročie", "na výročí", "", "", "", "na výročí", "", "ru_text", "на", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // the --OR-- (alternative) for common parts of celebration
 const char *nazov_spolc_alebo_jazyk[POCET_JAZYKOV + 1] =
-{ "alebo", "nebo", "or", "", "", "nebo", "vagy", "или", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "alebo", "nebo", "or", "", "", "nebo", "vagy", "или", "або", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // the names of the common texts (e.g.: for bishops, for saint men, for apostles...)
 const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
 {
 	{ "neurčená", "neurčena", "not decided", "", "", "", "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "duchovných pastierov: pre kňazov", "o duchovních pastýřích (o kněžích)", "", "", "", "O duchovních pastýřích – o kněžích", "lelkipásztorok – papok", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "duchovných pastierov: pre biskupov", "o duchovních pastýřích (o biskupech)", "", "", "", "O duchovních pastýřích – o biskupech", "lelkipásztorok – püspökök", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "duchovných pastierov: pre pápežov", "o duchovních pastýřích (o papeži)", "", "", "", "O duchovních pastýřích – o papeži", "pásztorok – pápa", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "učiteľov Cirkvi", "o učitelích církve", "", "", "", "O učitelích Církve", "egyháztanítók", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "apoštolov", "o apoštolech", "", "", "", "O apoštolech", "apostolok", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "jedného mučeníka", "o jednom mučedníkovi", "", "", "", "O mučedníkovi", "vértanú", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "viacerých mučeníkov", "o více mučednících", "", "", "", "O více mučednících", "vértanúk", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Panny Márie", "o Panně Marii", "", "", "", "O Panně Marii", "Szűz Mária", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre rehoľníkov", "o svatých mužích (o řeholnících)", "", "", "", "O řeholnících", "szerzetes", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov", "o svatých mužích", "", "", "", "O svatých mužích", "szent férfiak", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "panien", "o pannách", "", "", "", "O pannách", "szűz", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre rehoľnice", "o svatých ženách (o řeholnicích)", "", "", "", "O svatých ženách – o řeholnicích", "apáca", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien", "o svatých ženách", "", "", "", "O svatých ženách", "szent asszonyok", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "duchovných pastierov: pre viacerých", "o duchovních pastýřích", "", "", "", "O duchovních pastýřích", "több lelkipásztor", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "jednej mučenice", "o jedné mučednici", "", "", "", "O mučednici", "vértanú", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre vychovávateľky", "o svatých ženách (o vychovatelkách)", "", "", "", "O svatých ženách – o vychovatelkách", "egyháztanító férfiak", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre vychovávateľov", "o svatých mužích (o vychovatelích)", "", "", "", "O svatých mužích – o vychovatelích", "egyháztanító asszonyok", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre tie, čo konali skutky milosrdenstva", "o svatých ženách (které vynikaly milosrdnými skutky)", "", "", "", "O svatých ženách – o ženě, která vynikala milosrdnými skutky", "jótékonykodó asszonyok", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre tých, čo konali skutky milosrdenstva", "o svatých mužích (kteří vynikali milosrdnými skutky)", "", "", "", "O svatých mužích – o muži, který vynikal milosrdnými skutky", "jótékonykodó férfiak", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre viaceré", "o svatých ženách (o více ženách)", "", "", "", "O svatých ženách", "több szent asszony", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre viacerých", "o svatých mužích – o více mužích", "", "", "", "O svatých mužích", "több szent férfi", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "viacerých panien", "o pannách – o více pannách", "", "", "", "O pannách – o více pannách", "szüzek", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "posviacky chrámu", "o posvěcení kostela", "", "", "", "Posvěcení kostela", "templomszentelés", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "duchovných pastierov: pre kňazov", "o duchovních pastýřích (o kněžích)", "", "", "", "O duchovních pastýřích – o kněžích", "lelkipásztorok – papok", "ru_text", "пастыраў: пра прэзбітэраў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "duchovných pastierov: pre biskupov", "o duchovních pastýřích (o biskupech)", "", "", "", "O duchovních pastýřích – o biskupech", "lelkipásztorok – püspökök", "ru_text", "пастыраў: пра біскупаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "duchovných pastierov: pre pápežov", "o duchovních pastýřích (o papeži)", "", "", "", "O duchovních pastýřích – o papeži", "pásztorok – pápa", "ru_text", "пастыраў: пра папы", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "učiteľov Cirkvi", "o učitelích církve", "", "", "", "O učitelích Církve", "egyháztanítók", "ru_text", "доктараў Касцёла", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "apoštolov", "o apoštolech", "", "", "", "O apoštolech", "apostolok", "ru_text", "Апосталаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "jedného mučeníka", "o jednom mučedníkovi", "", "", "", "O mučedníkovi", "vértanú", "ru_text", /* аднаго */ "мучаніка", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "viacerých mučeníkov", "o více mučednících", "", "", "", "O více mučednících", "vértanúk", "ru_text", "некалькіх мучанікаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Panny Márie", "o Panně Marii", "", "", "", "O Panně Marii", "Szűz Mária", "ru_text", "Найсвяцейшую Панну Марыю", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre rehoľníkov", "o svatých mužích (o řeholnících)", "", "", "", "O řeholnících", "szerzetes", "ru_text", "святых мужчын: пра законнікаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov", "o svatých mužích", "", "", "", "O svatých mužích", "szent férfiak", "ru_text", "святых мужчын", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "panien", "o pannách", "", "", "", "O pannách", "szűz", "ru_text", "паннаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre rehoľnice", "o svatých ženách (o řeholnicích)", "", "", "", "O svatých ženách – o řeholnicích", "apáca", "ru_text", "святых жанчын: пра законніц", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien", "o svatých ženách", "", "", "", "O svatých ženách", "szent asszonyok", "ru_text", "святых жанчын", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "duchovných pastierov: pre viacerých", "o duchovních pastýřích", "", "", "", "O duchovních pastýřích", "több lelkipásztor", "ru_text", "некалькіх пастыраў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "jednej mučenice", "o jedné mučednici", "", "", "", "O mučednici", "vértanú", "ru_text", "мучаніці", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre vychovávateľky", "o svatých ženách (o vychovatelkách)", "", "", "", "O svatých ženách – o vychovatelkách", "egyháztanító férfiak", "ru_text", "святых жанчын: пра выхавацеляў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre vychovávateľov", "o svatých mužích (o vychovatelích)", "", "", "", "O svatých mužích – o vychovatelích", "egyháztanító asszonyok", "ru_text", "святых мужчын: пра выхавацеляў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre tie, čo konali skutky milosrdenstva", "o svatých ženách (které vynikaly milosrdnými skutky)", "", "", "", "O svatých ženách – o ženě, která vynikala milosrdnými skutky", "jótékonykodó asszonyok", "ru_text", "святых жанчын, якія здзяйснялі ўчынкі міласэрнасці", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre tých, čo konali skutky milosrdenstva", "o svatých mužích (kteří vynikali milosrdnými skutky)", "", "", "", "O svatých mužích – o muži, který vynikal milosrdnými skutky", "jótékonykodó férfiak", "ru_text", "святых мужчын, якія здзяйснялі ўчынкі міласэрнасці", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre viaceré", "o svatých ženách (o více ženách)", "", "", "", "O svatých ženách", "több szent asszony", "ru_text", "некалькіх святых жанчын", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre viacerých", "o svatých mužích – o více mužích", "", "", "", "O svatých mužích", "több szent férfi", "ru_text", "некалькіх святых мужчын", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "viacerých panien", "o pannách – o více pannách", "", "", "", "O pannách – o více pannách", "szüzek", "ru_text", "некалькіх паннаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "posviacky chrámu", "o posvěcení kostela", "", "", "", "Posvěcení kostela", "templomszentelés", "ru_text", "пасвячэнне касцёла", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "zosnulých", "za zemřelé", "", "", "", "Za zemřelé", "halottakért", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre tie, čo žili v manželstve", "o svatých ženách (které žily v manželství)", "", "", "", "O svatých ženách – o ženě, která žila v manželství", "házas szent asszonyok", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre tých, čo žili v manželstve", "o svatých mužích (kterí žili v manželství)", "", "", "", "O svatých mužích – o muži, který žil v manželství", "házas szent férfiak", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre tie, čo žili v manželstve", "o svatých ženách (které žily v manželství)", "", "", "", "O svatých ženách – o ženě, která žila v manželství", "házas szent asszonyok", "ru_text", "святых жанчын: ", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre tých, čo žili v manželstve", "o svatých mužích (kterí žili v manželství)", "", "", "", "O svatých mužích – o muži, který žil v manželství", "házas szent férfiak", "ru_text", "святых мужчын: ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "nebrať", "nepoužít", "do not use", "", "", "nepoužít", "mindent sajátból", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
@@ -225,7 +225,7 @@ const char *nazov_bit_opt_1_spomienka_spol_cast_jazyk[POCET_JAZYKOV + 1] =
 	"byla zvolena možnost vzít při slavení památky některé části ze dne podle Všeobecných pokynů k denní modlitbě Církve, č. 235 písm. b",
 	"az a lehetőség volt választva, hogy az emléknapoknál bizonyos részek vehetők a soros köznapról; Általános Rendelkezések az Imaórák Liturgiájáról, 235 b",
 	"ru_text",
-	"by_text",
+	"ён быў абраны, некаторыя часткі ў святкаванні успамінаў ўзяць з агульнымі кіруючымі прынцыпамі, няма. 235 пункт. б",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -383,13 +383,13 @@ const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 // the names of liturgical periods in local grammatically 6.th declination? (uppercase) / nazov_obdobia: string pre nazov liturgickeho obdobia
 const char *nazov_OBDOBIA_V_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
-	{ "V ADVENTNOM OBDOBÍ", "V DOBĚ ADVENTNÍ", "", "", "", "V DOBĚ ADVENTNÍ", "ADVENTBEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "V ADVENTNOM OBDOBÍ", "V DOBĚ ADVENTNÍ", "", "", "", "V DOBĚ ADVENTNÍ", "ADVENTBEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "V ADVENTNOM OBDOBÍ", "V DOBĚ ADVENTNÍ", "", "", "", "V DOBĚ ADVENTNÍ", "ADVENTBEN", "ru_text", "АДВЭНТУ", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "V ADVENTNOM OBDOBÍ", "V DOBĚ ADVENTNÍ", "", "", "", "V DOBĚ ADVENTNÍ", "ADVENTBEN", "ru_text", "АДВЭНТУ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "V OKTÁVE NARODENIA PÁNA", "V OKTÁVU NAROZENÍ PÁNĚ", "", "", "", "V OKTÁVU NAROZENÍ PÁNĚ", "A KARÁCSONY NYOLCADÁBAN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VIANOČNOM OBDOBÍ", "V DOBĚ VÁNOČNÍ", "", "", "", "V DOBĚ VÁNOČNÍ", "A KARÁCSONYI IDŐBEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VIANOČNOM OBDOBÍ", "V DOBĚ VÁNOČNÍ", "", "", "", "V DOBĚ VÁNOČNÍ", "A KARÁCSONYI IDŐBEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "V CEZROČNOM OBDOBÍ", "V MEZIDOBÍ", "", "", "", "BĚHEM ROKU", "AZ ÉVKÖZI IDŐBEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "V PÔSTNOM OBDOBÍ", "V DOBĚ POSTNÍ", "", "", "", "V DOBĚ POSTNÍ", "A NAGYBÖJTI IDŐBEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "V CEZROČNOM OBDOBÍ", "V MEZIDOBÍ", "", "", "", "BĚHEM ROKU", "AZ ÉVKÖZI IDŐBEN", "ru_text", "ЗВЫЧАЙНАГА ПЕРЫЯДУ", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "V PÔSTNOM OBDOBÍ", "V DOBĚ POSTNÍ", "", "", "", "V DOBĚ POSTNÍ", "A NAGYBÖJTI IDŐBEN", "ru_text", "ВЯЛІКАГА ПОСТУ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VEĽKOM TÝŽDNI", "VE SVATÉM TÝDNU", "", "", "", "VE SVATÉM TÝDNU", "A NAGYHÉTEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VEĽKONOČNOM TROJDNÍ", "VE VELIKONOČNÍM TRIDUU", "", "", "", "VE VELIKONOČNÍM TRIDUU", "A SZENT HÁROM NAPBAN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VEĽKONOČNEJ OKTÁVE", "VE VELIKONOČNÍM OKTÁVU", "", "", "", "V OKTÁVU VELIKONOČNÍM", "HÚSVÉT NYOLCACADÁBAN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
@@ -413,8 +413,8 @@ const char *nazov_OBDOBIA_AKA_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 	{ "VO VEĽKOM TÝŽDNI", "VE SVATÉM TÝDNU", "", "", "", "VE SVATÉM TÝDNU", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sas
 	{ "VO VEĽKONOČNOM TROJDNÍ", "VE VELIKONOČNÍM TRIDUU", "", "", "", "VE VELIKONOČNÍM TRIDUU", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
 	{ "VO VEĽKONOČNEJ OKTÁVE", "VE VELIKONOČNÍM OKTÁVU", "", "", "", "V OKTÁVU VELIKONOČNÍM", "HÚSVÉT NYOLCACADÁBAN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
-	{ "VEĽKONOČNÁ", "VELIKONOČNÍ", "", "", "", "VELIKONOČNÍ", "HÚSVÉT", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "VEĽKONOČNÁ", "VELIKONOČNÍ", "", "", "", "VELIKONOČNÍ", "HÚSVÉT", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "VEĽKONOČNÁ", "VELIKONOČNÍ", "", "", "", "VELIKONOČNÍ", "HÚSVÉT", "ru_text", "ВЕЛІКОДНАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "VEĽKONOČNÁ", "VELIKONOČNÍ", "", "", "", "VELIKONOČNÍ", "HÚSVÉT", "ru_text", "ВЕЛІКОДНАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 #define		nazov_OBDOBIA_AKA(a)	nazov_OBDOBIA_AKA_jazyk[a][_global_jazyk]
 
@@ -838,7 +838,7 @@ const char *nazov_dna_asci_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1] =
 // two/three-letter abbreviations of the names of the days in week, starting with Sunday (sentence case)
 const char *nazov_Dn_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1] = 
 {
-	{ "Ne", "Ne", "Sun", "Do", "", "Ne", "V", "Вс", "Ндз", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	{ "Ne", "Ne", "Sun", "Do", "", "Ne", "V", "Вс", "Нд", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "Po", "Po", "Mon", "F2", "", "Po", "H", "Пн", "Пн", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "Ut", "Út", "Tue", "F3", "", "Út", "K", "Вт", "Ат", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "St", "St", "Wed", "F4", "", "St", "Sze", "Ср", "Ср", /* STRING_1_FOR_NEW_LANGUAGE */ }
@@ -994,79 +994,79 @@ const char *nazov_mes[POCET_MESIACOV + 1] =
 // 2008-12-20: pridaný reťazec pre poradové číslo - používa sa v init_global_string() pre nedele niektorých období [zatiaľ iba v slovenčine]
 const char *poradie_Slovom_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] = 
 {
-	{ "Prvá", "První", "", "", "", "První", "1.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Druhá", "Druhá", "", "", "", "Druhá", "2.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Tretia", "Třetí", "", "", "", "Třetí", "3.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Štvrtá", "Čtvrtá", "", "", "", "Čtvrtá", "4.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Piata", "Pátá", "", "", "", "Pátá", "5.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Šiesta", "Šestá", "", "", "", "Šestá", "6.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Siedma", "Sedmá", "", "", "", "Sedmá", "7.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Ôsma", "Osmá", "", "", "", "Osmá", "8.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Deviata", "Devátá", "", "", "", "Devátá", "9.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Desiata", "Desátá", "", "", "", "Desátá", "10.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "11. ", "11", "11", "11", "11", "11", "11.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "12. ", "12", "12", "12", "12", "12", "12.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "13. ", "13", "13", "13", "13", "13", "13.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "14. ", "14", "14", "14", "14", "14", "14.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "15. ", "15", "15", "15", "15", "15", "15.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "16. ", "16", "16", "16", "16", "16", "16.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "17. ", "17", "17", "17", "17", "17", "17.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "18. ", "18", "18", "18", "18", "18", "18.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "19. ", "19", "19", "19", "19", "19", "19.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "20. ", "20", "20", "20", "20", "20", "20.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "21. ", "21", "21", "21", "21", "21", "21.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "22. ", "22", "22", "22", "22", "22", "22.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "23. ", "23", "23", "23", "23", "23", "23.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "24. ", "24", "24", "24", "24", "24", "24.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "25. ", "25", "25", "25", "25", "25", "25.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "26. ", "26", "26", "26", "26", "26", "26.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "27. ", "27", "27", "27", "27", "27", "27.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "28. ", "28", "28", "28", "28", "28", "28.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "29. ", "29", "29", "29", "29", "29", "29.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "30. ", "30", "30", "30", "30", "30", "30.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "31. ", "31", "31", "31", "31", "31", "31.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "32. ", "32", "32", "32", "32", "32", "32.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "33. ", "33", "33", "33", "33", "33", "33.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "34. ", "34", "34", "34", "34", "34", "34.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	{ "Prvá", "První", "", "", "", "První", "1.", "ru_text", "Першая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Druhá", "Druhá", "", "", "", "Druhá", "2.", "ru_text", "Другая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Tretia", "Třetí", "", "", "", "Třetí", "3.", "ru_text", "Трэцяя", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Štvrtá", "Čtvrtá", "", "", "", "Čtvrtá", "4.", "ru_text", "Чацвёртая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Piata", "Pátá", "", "", "", "Pátá", "5.", "ru_text", "Пятая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Šiesta", "Šestá", "", "", "", "Šestá", "6.", "ru_text", "Шостая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Siedma", "Sedmá", "", "", "", "Sedmá", "7.", "ru_text", "Сёмая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Ôsma", "Osmá", "", "", "", "Osmá", "8.", "ru_text", "Восьмая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Deviata", "Devátá", "", "", "", "Devátá", "9.", "ru_text", "Дзевятая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Desiata", "Desátá", "", "", "", "Desátá", "10.", "ru_text", "Дзясятая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "11. ", "11", "11", "11", "11", "11", "11.", "11.", "11.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "12. ", "12", "12", "12", "12", "12", "12.", "12.", "12.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "13. ", "13", "13", "13", "13", "13", "13.", "13.", "13.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "14. ", "14", "14", "14", "14", "14", "14.", "14.", "14.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "15. ", "15", "15", "15", "15", "15", "15.", "15.", "15.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "16. ", "16", "16", "16", "16", "16", "16.", "16.", "16.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "17. ", "17", "17", "17", "17", "17", "17.", "17.", "17.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "18. ", "18", "18", "18", "18", "18", "18.", "18.", "18.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "19. ", "19", "19", "19", "19", "19", "19.", "19.", "19.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "20. ", "20", "20", "20", "20", "20", "20.", "20.", "20.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "21. ", "21", "21", "21", "21", "21", "21.", "21.", "21.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "22. ", "22", "22", "22", "22", "22", "22.", "22.", "22.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "23. ", "23", "23", "23", "23", "23", "23.", "23.", "23.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "24. ", "24", "24", "24", "24", "24", "24.", "24.", "24.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "25. ", "25", "25", "25", "25", "25", "25.", "25.", "25.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "26. ", "26", "26", "26", "26", "26", "26.", "26.", "26.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "27. ", "27", "27", "27", "27", "27", "27.", "27.", "27.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "28. ", "28", "28", "28", "28", "28", "28.", "28.", "28.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "29. ", "29", "29", "29", "29", "29", "29.", "29.", "29.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "30. ", "30", "30", "30", "30", "30", "30.", "30.", "30.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "31. ", "31", "31", "31", "31", "31", "31.", "31.", "31.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "32. ", "32", "32", "32", "32", "32", "32.", "32.", "32.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "33. ", "33", "33", "33", "33", "33", "33.", "33.", "33.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "34. ", "34", "34", "34", "34", "34", "34.", "34.", "34.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
 // the same as "poradie_Slovom_jazyk" ordinal numbers for first few Sundays (uppercase) - used for special occasions currently only in Slovak; no need to change
 const char *poradie_SLOVOM_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] = 
 {
-	{ "PRVÁ", "PRVNÍ", "", "", "", "PRVNÍ", "1.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "DRUHÁ", "DRUHÁ", "", "", "", "DRUHÁ", "2.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "TRETIA", "TŘETÍ", "", "", "", "TŘETÍ", "3.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "ŠTVRTÁ", "ČTVRTÁ", "", "", "", "ČTVRTÁ", "4.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "PIATA", "PÁTÁ", "", "", "", "PÁTÁ", "5.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "ŠIESTA", "ŠESTÁ", "", "", "", "ŠESTÁ", "6.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "SIEDMA", "SEDMÁ", "", "", "", "SEDMÁ", "7.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "OSMA", "OSMÁ", "", "", "", "OSMÁ", "8.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "DEVIATA", "DEVÁTÁ", "", "", "", "DEVÁTÁ", "9.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "DESIATA", "DESÁTÁ", "", "", "", "DESÁTÁ", "10.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "11. ", "11", "11", "11", "11", "11", "11.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "12. ", "12", "12", "12", "12", "12", "12.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "13. ", "13", "13", "13", "13", "13", "13.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "14. ", "14", "14", "14", "14", "14", "14.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "15. ", "15", "15", "15", "15", "15", "15.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "16. ", "16", "16", "16", "16", "16", "16.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "17. ", "17", "17", "17", "17", "17", "17.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "18. ", "18", "18", "18", "18", "18", "18.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "19. ", "19", "19", "19", "19", "19", "19.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "20. ", "20", "20", "20", "20", "20", "20.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "21. ", "21", "21", "21", "21", "21", "21.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "22. ", "22", "22", "22", "22", "22", "22.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "23. ", "23", "23", "23", "23", "23", "23.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "24. ", "24", "24", "24", "24", "24", "24.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "25. ", "25", "25", "25", "25", "25", "25.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "26. ", "26", "26", "26", "26", "26", "26.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "27. ", "27", "27", "27", "27", "27", "27.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "28. ", "28", "28", "28", "28", "28", "28.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "29. ", "29", "29", "29", "29", "29", "29.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "30. ", "30", "30", "30", "30", "30", "30.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "31. ", "31", "31", "31", "31", "31", "31.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "32. ", "32", "32", "32", "32", "32", "32.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "33. ", "33", "33", "33", "33", "33", "33.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "34. ", "34", "34", "34", "34", "34", "34.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	{ "PRVÁ", "PRVNÍ", "", "", "", "PRVNÍ", "1.", "ru_text", "ПЕРШАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "DRUHÁ", "DRUHÁ", "", "", "", "DRUHÁ", "2.", "ru_text", "ДРУГАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "TRETIA", "TŘETÍ", "", "", "", "TŘETÍ", "3.", "ru_text", "ТРЭЦЯЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "ŠTVRTÁ", "ČTVRTÁ", "", "", "", "ČTVRTÁ", "4.", "ru_text", "ЧАЦВЁРТАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "PIATA", "PÁTÁ", "", "", "", "PÁTÁ", "5.", "ru_text", "ПЯТАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "ŠIESTA", "ŠESTÁ", "", "", "", "ŠESTÁ", "6.", "ru_text", "ШОСТАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "SIEDMA", "SEDMÁ", "", "", "", "SEDMÁ", "7.", "ru_text", "СЁМАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "ÔSMA", "OSMÁ", "", "", "", "OSMÁ", "8.", "ru_text", "ВОСЬМАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "DEVIATA", "DEVÁTÁ", "", "", "", "DEVÁTÁ", "9.", "ru_text", "ДЗЕВЯТАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "DESIATA", "DESÁTÁ", "", "", "", "DESÁTÁ", "10.", "ru_text", "ДЗЯСЯТАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "11. ", "11", "11", "11", "11", "11", "11.", "11.", "11.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "12. ", "12", "12", "12", "12", "12", "12.", "12.", "12.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "13. ", "13", "13", "13", "13", "13", "13.", "13.", "13.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "14. ", "14", "14", "14", "14", "14", "14.", "14.", "14.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "15. ", "15", "15", "15", "15", "15", "15.", "15.", "15.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "16. ", "16", "16", "16", "16", "16", "16.", "16.", "16.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "17. ", "17", "17", "17", "17", "17", "17.", "17.", "17.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "18. ", "18", "18", "18", "18", "18", "18.", "18.", "18.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "19. ", "19", "19", "19", "19", "19", "19.", "19.", "19.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "20. ", "20", "20", "20", "20", "20", "20.", "20.", "20.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "21. ", "21", "21", "21", "21", "21", "21.", "21.", "21.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "22. ", "22", "22", "22", "22", "22", "22.", "22.", "22.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "23. ", "23", "23", "23", "23", "23", "23.", "23.", "23.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "24. ", "24", "24", "24", "24", "24", "24.", "24.", "24.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "25. ", "25", "25", "25", "25", "25", "25.", "25.", "25.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "26. ", "26", "26", "26", "26", "26", "26.", "26.", "26.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "27. ", "27", "27", "27", "27", "27", "27.", "27.", "27.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "28. ", "28", "28", "28", "28", "28", "28.", "28.", "28.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "29. ", "29", "29", "29", "29", "29", "29.", "29.", "29.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "30. ", "30", "30", "30", "30", "30", "30.", "30.", "30.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "31. ", "31", "31", "31", "31", "31", "31.", "31.", "31.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "32. ", "32", "32", "32", "32", "32", "32.", "32.", "32.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "33. ", "33", "33", "33", "33", "33", "33.", "33.", "33.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "34. ", "34", "34", "34", "34", "34", "34.", "34.", "34.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
 // the names of rites
@@ -1254,8 +1254,8 @@ const char *html_error_template[POCET_JAZYKOV + 1] =
 { "Šablóna pre modlitbu sa nenašla. Zrejme neexistuje súbor `%s'.", "Šablona pro modlitbu se nenašla. Patrně neexistuje soubor `%s'.", "Template for prayer not found. File `%s' does not exist.", "Template for prayer not found. File `%s' does not exist.", "", "Šablona pro modlitbu se nenašla. Patrně neexistuje soubor `%s'.", "Nem található sablon az imához. %s' fájl nem létezik.", "Template for prayer not found. File `%s' does not exist.", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // navigation buttons/texts: previous, next, today
-const char *html_button_predchadzajuci_[POCET_JAZYKOV + 1] = { "Predchádzajúci", "Předchozí", "Previous", "Præced&#233;nte", "", "Předchozí", "Előző", "Предыдущий", "Папярэдні", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_button_nasledujuci_[POCET_JAZYKOV + 1] = { "Nasledujúci", "Následující", "Next", "Success&#237;vo", "", "Následující", "Következő", "Следующий", "Наступны", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_button_predchadzajuci_[POCET_JAZYKOV + 1] = { "Predchádzajúci", "Předchozí", "Previous", "Præced&#233;nte", "", "Předchozí", "Előző", "Предыдущий", "папярэдні", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_button_nasledujuci_[POCET_JAZYKOV + 1] = { "Nasledujúci", "Následující", "Next", "Success&#237;vo", "", "Následující", "Következő", "Следующий", "наступны", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_button_dnes[POCET_JAZYKOV + 1] = { "dnes", "dnes", "today", "hodie", "", "dnes", "ma", "сегодня", "сёння", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_button_Dnes[POCET_JAZYKOV + 1] = { "Dnes", "Dnes", "Today", "Hodie", "", "Dnes", "Ma", "Cегодня", "Сёння", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_button_hore[POCET_JAZYKOV + 1] = { "^ ", "^ ", "^ ", "^ ", "^ ", "^ ", "^ ", "^ ", "^ ", /* STRING_1_FOR_NEW_LANGUAGE */ };
@@ -1268,7 +1268,7 @@ const char *html_text_mesiac[POCET_JAZYKOV + 1] = { "mesiac", "měsíc", "month"
 const char *html_text_rok[POCET_JAZYKOV + 1] = { "rok", "rok", "year", "anno", "", "rok", "év", "год", "год", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_Rok[POCET_JAZYKOV + 1] = { "Rok", "Rok", "Year", "Anno", "", "Rok", "Év", "Год", "Год", /* STRING_1_FOR_NEW_LANGUAGE */ };
 // in the following: you MUST keep all %d, %c, %s etc. variables - these are replaced by numbers, characters, strings, etc. respectively
-const char *html_text_Rok_x[POCET_JAZYKOV + 1] = { "Rok %d", "Rok %d", "Year %d", "Anno %d", "%d", "Rok %d", "%.d év", "%d. годa", "%d годa", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_Rok_x[POCET_JAZYKOV + 1] = { "Rok %d", "Rok %d", "Year %d", "Anno %d", "%d", "Rok %d", "%.d év", "%d. годa", "%d год", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char *html_text_zoznam_mesiacov[POCET_JAZYKOV + 1] = { "zoznam mesiacov", "seznam měsíců", "list of months", "", "", "seznam měsíců", "hónapok listája", "список месяцев", "спіс месяцаў", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
@@ -2874,9 +2874,9 @@ const char *html_text_opt_1_override_stupen_slavenia[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"slavit s vyšším stupněm slavení",
-	"ünnepelni magasabb fokú ünneplés",
+	"magasabb fokú ünneplést venni",
 	"ru_text",
-	"by_text",
+	"павысіць узровень цэлебрацыі",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2888,9 +2888,9 @@ const char *html_text_opt_1_override_stupen_slavenia_explain[POCET_JAZYKOV + 1] 
 	"Possibility to celebrate (free) memory as a feast or a solemnity; likewise the possibility to celebrate the feast as a solemnity.",
 	"",
 	"",
-	"Arra, hogy megünnepeljük (tetszés szerinti) emléknap, mint egy ünnep, vagy egy főünnep, mint a lehetőséget, hogy megünnepeljük az ünnep, mint egy főünnep.",
+	"Lehetséges a (tetszés szerinti) emléknapot, mint ünnepet vagy főünnepet venni, hasonlóan az ünnepet mint főünnepet venni (hejbéli ünnep/főünnep).",
 	"ru_text",
-	"by_text",
+	"Магчымасць цэлебраваць успамін як свята альбо ўрачыстасць; таксама магчымасць цэлебраваць свята як урачыстасць.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2902,9 +2902,9 @@ const char *html_text_opt_1_override_stupen_slavenia_NIE[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"slavit s předepsaným stupněm slavení",
-	"ünnepeljük az előírt mértékű ünneplés",
+	"az előírt fokú ünneplést venni",
 	"ru_text",
-	"by_text",
+	"цэлебраваць на прадпісанай літургічнай ступені",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2916,9 +2916,9 @@ const char *html_text_opt_1_slavit_ako_sviatok[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"slavit jako svátek",
-	"ünnepelt, mint az ünnep",
+	"mint ünnepet venni",
 	"ru_text",
-	"by_text",
+	"цэлебраваць як свята",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2930,9 +2930,9 @@ const char *html_text_opt_1_slavit_ako_slavnost[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"slavit jako slavnost",
-	"ünnepelt, mint az főünnep",
+	"mint főünnepet venni",
 	"ru_text",
-	"by_text",
+	"цэлебраваць як урачыстасць",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -13709,7 +13709,7 @@ const char *text_DEC_09[POCET_JAZYKOV + 1] =
 	"Sv. Jana Didaka Cuauhtlatoatzina",
 	"Szent Juan Diego Cuauhtlatoatzin, Guadalupei látnok",
 	"ru_text",
-	"by_text",
+	"Св. Яна Дзідаха Куаухтлатоацына",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_DEC_11[POCET_JAZYKOV + 1] =
@@ -13748,7 +13748,7 @@ const char *text_DEC_12[POCET_JAZYKOV + 1] =
 	"Panny Marie Guadalupské",
 	"A Guadalupei Boldogságos Szűz Mária",
 	"ru_text",
-	"Найсв. Панны Марыі Guadalupe by_text",
+	"Найсв. Панны Марыі з Гвадэлупы",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_DEC_13[POCET_JAZYKOV + 1] =

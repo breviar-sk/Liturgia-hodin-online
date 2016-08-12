@@ -197,8 +197,10 @@ char *mystr_replace(const char *string, const char *substr, const char *replacem
 	char *newstr = NULL;
 	char *oldstr = NULL;
 	char *head = NULL;
+
 	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
 	if (substr == NULL || replacement == NULL) return strdup(string);
+
 	newstr = strdup(string);
 	head = newstr;
 	while ((tok = strstr(head, substr))){
@@ -216,6 +218,25 @@ char *mystr_replace(const char *string, const char *substr, const char *replacem
 		/* move back head right after the last replacement */
 		head = newstr + (tok - oldstr) + strlen(replacement);
 		free(oldstr);
+	}
+	return newstr;
+}
+
+char* mystr_replace_char(const char *string, const char orig_char, const char replacement) {
+	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
+	if (orig_char == 0 || replacement == 0) return strdup(string);
+
+	char *newstr = NULL;
+	newstr = strdup(string);
+
+	int i = 0;
+	while (string[i] != '\0')
+	{
+		if (string[i] == orig_char)
+		{
+			newstr[i] = replacement;
+		}
+		i++;
 	}
 	return newstr;
 }

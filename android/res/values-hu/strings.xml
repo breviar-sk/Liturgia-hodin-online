@@ -111,8 +111,8 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verzió 1.14</b>
 <ul>
-<li>New option: Display button for first vespers for Sundays and solemnitas for the day of celebration.</li>
-<li>Enable to celebrate saints with higher level (as feasts/solemnities).</li>
+<li>Új beállítási lehetőség: Vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg.</li>
+<li>Lehetséges az emléknapokat és az ünnepeket magasabb fokon ünnepelni (ünnepek/főünnepek).</li>
 </ul>
 
 <p><b>Verzió 1.13.2</b>

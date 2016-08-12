@@ -560,7 +560,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 		case CASE_CASE:
 			sprintf(pom, "%s%s", strden, /* (typ == LINK_DEN_MESIAC_GEN)? nazov_MESIACA_gen(mesiac - 1) : */ nazov_MESIACA(mesiac - 1));
 			break;
-		}// switch(_case)
+		} // switch(_case)
 		if (typ == LINK_DEN_MESIAC_ROK){
 			// pridame aj rok
 			strcat(_global_pom_str, pom);
@@ -747,7 +747,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 					case CASE_CASE:
 						sprintf(pom, "%s", nazov_MESIACA(mesiac - 1));
 						break;
-					}// switch(_case)
+					} // switch(_case)
 				}
 				if (typ == LINK_DEN_MESIAC_ROK){
 					// pridame aj rok
@@ -790,9 +790,9 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 		case CASE_CASE:
 			sprintf(pom, "%s", caps_BIG(_global_den.meno));
 			break;
-		}// switch(_case)
+		} // switch(_case)
 		break;
-	}// switch(typ)
+	} // switch(typ)
 
 	strcat(pom, HTML_A_END); // formerly was in each case
 
@@ -1715,7 +1715,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			}
 		}
 		break;
-	}// switch
+	} // switch
 
 	strcat(str_to_append, str);
 }

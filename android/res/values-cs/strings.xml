@@ -111,8 +111,9 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verze 1.14</b>
 <ul>
-<li>Nová volba: Zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení .</li>
+<li>Nová volba: Zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení.</li>
 <li>Možnost slavit slavení s vyšším stupněm (jako svátky/slavnosti).</li>
+<li>Opravy v liturgickém kalendáři.</li>
 </ul>
 
 <p><b>Verze 1.13.2</b>

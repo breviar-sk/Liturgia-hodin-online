@@ -30062,7 +30062,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 		case MES_DEC:
 			pocet = sviatky_svatych_12_december(den, poradie_svaty, sc);
 			break; // case MES_DEC
-	}// switch(mesiac - 1)
+	} // switch(mesiac - 1)
 
 	Log("slávenie predbežne určené, počet == %d\n", pocet);
 	Log("KAL:Koniec veľkého switch()-u podľa mesiacov a dní.\n");

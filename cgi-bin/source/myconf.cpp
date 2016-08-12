@@ -59,7 +59,7 @@ void printConfigOptions(void){
 					case 0: Log("http address: %s\n", cfg_http_address_default[j]); break;
 					case 1: Log("http display address: %s\n", cfg_http_display_address_default[j]); break;
 					case 2: Log("mail address: %s\n", cfg_mail_address_default[j]); break;
-				}// switch()
+				} // switch()
 			}
 		}// for o
 	}// for j
@@ -209,7 +209,7 @@ void readConfig(void)
 									case 0: mystrcpy(cfg_http_address_default[j], hodnota, MAX_HTTP_STR); break;
 									case 1: mystrcpy(cfg_http_display_address_default[j], hodnota, MAX_HTTP_STR); break;
 									case 2: mystrcpy(cfg_mail_address_default[j], hodnota, MAX_MAIL_STR); break;
-								}// switch()
+								} // switch()
 							}// else -- natvrdo definovaná option
 						}// if(!strcmp(option, nazov_option))
 					}// if

@@ -201,6 +201,62 @@ char *getExportedString(void) {
 	return exptstr;
 }
 
+// Converts wide char into utf8 string and exports it.
+void ExportRawWchar(int c) {
+	char buf[5];
+	char *out = buf;
+	EncodeWchar(c, &out);
+	*out = 0;
+	Export("%s", buf);
+}// ExportRawWchar()
+
+void ExportChar(int c, short int skip_chars_for_blind_friendly_version /* = NIE */) {
+	// ToDo: consider special behaviour for 'plain' text export
+
+	// blind-friendly export
+	if (skip_chars_for_blind_friendly_version == ANO) {
+		if ((c == CHAR_PRAYER_ASTERISK) || (c == CHAR_PRAYER_CROSS) || (c == CHAR_PRAYER_CROSS_ALT)) {
+			; // skip special characters for blind-friendly version
+		}
+		else if (c == CHAR_NONBREAKING_SPACE) {
+			Export("%c", CHAR_SPACE);
+		}
+		else {
+			ExportRawWchar(c);
+		}
+		return;
+	}
+
+	// ordinary behaviour
+	if (c == CHAR_NONBREAKING_SPACE) {
+		Export(HTML_NONBREAKING_SPACE);
+	}
+	else {
+		ExportRawWchar(c);
+	}
+	return;
+}// ExportChar()
+
+void ExportStringCharByChar(const char * input, short int skip_chars_for_blind_friendly_version /* = NIE */) {
+	short int ok = TRUE;
+	const char* in = input;
+
+	while (*in) {
+		int c = DecodeWchar(&in);
+		if ((c == '&') && (ok == TRUE)) {
+			ok = FALSE;
+		}
+		if ((c == ';') && (ok == FALSE)) {
+			ok = TRUE;
+		}
+
+		if (ok == TRUE) {
+			ExportChar(c, skip_chars_for_blind_friendly_version);
+		}// ok == TRUE
+	}
+	return;
+}// ExportStringCharByChar()
+
 #define YYdefault() { { \
 	fprintf(exportfile, "%c", c); \
 	if(isbothExports) \

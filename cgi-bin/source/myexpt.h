@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include "common.h"
+#include "utf8-utils.h"
 
 #define DEFAULT_FILE_EXPORT "export.htm"
 #define DEFAULT_HTML_EXPORT "zoznam.htm" // "export2.htm"
@@ -23,6 +24,10 @@
 short int Export(const char *fmt, ...);
 short int ExportHtmlComment(const char *fmt, ...);
 short int Export_to_file(FILE * expt, const char *fmt, ...);
+
+void ExportRawWchar(int c);
+void ExportChar(int c, short int skip_chars_for_blind_friendly_version = NIE);
+void ExportStringCharByChar(const char * string, short int skip_chars_for_blind_friendly_version = NIE);
 
 void bothExports(void);
 void dumpFile(char *fname);
@@ -35,6 +40,7 @@ extern FILE *exportfile;
 short int initExport(void);
 short int initExport(const char *expt_filename);
 short int closeExport(void);
+
 char *getExportedString(void);
 
 #endif /*__MYEXPT_H_*/

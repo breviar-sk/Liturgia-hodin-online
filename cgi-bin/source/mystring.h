@@ -38,6 +38,7 @@ short int equalsi(const char *, char *);
 short int equalsi(char *, const char *);
 
 char *mystr_replace(const char *string, const char *substr, const char *replacement);
+char *mystr_replace_char(const char *string, const char orig_char, const char replacement);
 
 char *mystr_first_lower(const char *string);
 char *mystr_first_upper(const char *string);
