@@ -207,7 +207,7 @@ const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
 	{ "svätých mužov: pre viacerých", "o svatých mužích – o více mužích", "", "", "", "O svatých mužích", "több szent férfi", "ru_text", "некалькіх святых мужчын", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "viacerých panien", "o pannách – o více pannách", "", "", "", "O pannách – o více pannách", "szüzek", "ru_text", "некалькіх паннаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "posviacky chrámu", "o posvěcení kostela", "", "", "", "Posvěcení kostela", "templomszentelés", "ru_text", "пасвячэнне касцёла", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "zosnulých", "za zemřelé", "", "", "", "Za zemřelé", "halottakért", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "zosnulých", "za zemřelé", "", "", "", "Za zemřelé", "halottakért", "ru_text", "за памерлых", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých žien: pre tie, čo žili v manželstve", "o svatých ženách (které žily v manželství)", "", "", "", "O svatých ženách – o ženě, která žila v manželství", "házas szent asszonyok", "ru_text", "святых жанчын: ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých mužov: pre tých, čo žili v manželstve", "o svatých mužích (kterí žili v manželství)", "", "", "", "O svatých mužích – o muži, který žil v manželství", "házas szent férfiak", "ru_text", "святых мужчын: ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "nebrať", "nepoužít", "do not use", "", "", "nepoužít", "mindent sajátból", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
@@ -373,7 +373,7 @@ const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 	{ "v pôstnom období", "v době postní", "", "", "", "v době postní", "a nagyböjti időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "vo Veľkom týždni", "ve Svatém týdnu", "", "", "", "ve Svatém týdnu", "a nagyhéten", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "vo veľkonočnom trojdní", "ve velikonočním triduu", "", "", "", "ve velikonočním triduu", "a szent három napban", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vo veľkonočnej oktáve", "ve velikonočním oktávu", "", "", "", "ve velikonočním oktávu", "húsvét nyolcadában", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vo veľkonočnej oktáve", "ve velikonočním oktávu", "", "", "", "ve velikonočním oktávu", "húsvét nyolcadában", "ru_text", "у актаве Пасхі", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "vo veľkonočnom období", "v době velikonoční", "", "", "", "v době velikonoční", "a húsvéti időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "vo veľkonočnom období", "v době velikonoční", "", "", "", "v době velikonoční", "a húsvéti időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
@@ -392,7 +392,7 @@ const char *nazov_OBDOBIA_V_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 	{ "V PÔSTNOM OBDOBÍ", "V DOBĚ POSTNÍ", "", "", "", "V DOBĚ POSTNÍ", "A NAGYBÖJTI IDŐBEN", "ru_text", "ВЯЛІКАГА ПОСТУ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VEĽKOM TÝŽDNI", "VE SVATÉM TÝDNU", "", "", "", "VE SVATÉM TÝDNU", "A NAGYHÉTEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VEĽKONOČNOM TROJDNÍ", "VE VELIKONOČNÍM TRIDUU", "", "", "", "VE VELIKONOČNÍM TRIDUU", "A SZENT HÁROM NAPBAN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "VO VEĽKONOČNEJ OKTÁVE", "VE VELIKONOČNÍM OKTÁVU", "", "", "", "V OKTÁVU VELIKONOČNÍM", "HÚSVÉT NYOLCACADÁBAN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "VO VEĽKONOČNEJ OKTÁVE", "VE VELIKONOČNÍM OKTÁVU", "", "", "", "V OKTÁVU VELIKONOČNÍM", "HÚSVÉT NYOLCACADÁBAN", "ru_text", "У АКТАВЕ ПАСХІ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VEĽKONOČNOM OBDOBÍ", "V DOBĚ VELIKONOČNÍ", "", "", "", "V DOBĚ VELIKONOČNÍ", "A HÚSVÉTI IDŐBEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VEĽKONOČNOM OBDOBÍ", "V DOBĚ VELIKONOČNÍ", "", "", "", "V DOBĚ VELIKONOČNÍ", "A HÚSVÉTI IDŐBEN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
@@ -412,7 +412,7 @@ const char *nazov_OBDOBIA_AKA_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 	{ "PÔSTNA", "POSTNÍ", "", "", "", "POSTNÍ", "NAGYBÖJT", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VO VEĽKOM TÝŽDNI", "VE SVATÉM TÝDNU", "", "", "", "VE SVATÉM TÝDNU", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sas
 	{ "VO VEĽKONOČNOM TROJDNÍ", "VE VELIKONOČNÍM TRIDUU", "", "", "", "VE VELIKONOČNÍM TRIDUU", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
-	{ "VO VEĽKONOČNEJ OKTÁVE", "VE VELIKONOČNÍM OKTÁVU", "", "", "", "V OKTÁVU VELIKONOČNÍM", "HÚSVÉT NYOLCACADÁBAN", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
+	{ "VO VEĽKONOČNEJ OKTÁVE", "VE VELIKONOČNÍM OKTÁVU", "", "", "", "V OKTÁVU VELIKONOČNÍM", "HÚSVÉT NYOLCACADÁBAN", "ru_text", "У АКТАВЕ ПАСХІ", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
 	{ "VEĽKONOČNÁ", "VELIKONOČNÍ", "", "", "", "VELIKONOČNÍ", "HÚSVÉT", "ru_text", "ВЕЛІКОДНАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "VEĽKONOČNÁ", "VELIKONOČNÍ", "", "", "", "VELIKONOČNÍ", "HÚSVÉT", "ru_text", "ВЕЛІКОДНАЯ", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
@@ -473,7 +473,7 @@ const char *nazov_slavenia_jazyk[POCET_SLAVENI + 1][POCET_JAZYKOV + 1] =
 
 // the name of celebration -- for memoria (in privileged days)
 const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
-{ "na spomienku" /* Adam: lepšie by bolo: pripomienka */, "pro připomínku", "", "in memoria", "", "pro připomínku", "megemlékezésül", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "na spomienku" /* Adam: lepšie by bolo: pripomienka */, "pro připomínku", "", "pro commemoratione", "", "pro připomínku", "megemlékezésül", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
@@ -2209,7 +2209,7 @@ const char *html_text_opt_0_zalmy_full_text_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín vynecháva niektoré pasáže zo žalmov (napr. verš 6 v žalme 110). Je možné tieto vynechané pasáže zobraziť.",
 	"",
-	"",
+	"Liturgy of hours omits parts of some psalms (e. g. Ps 110, verse 6). It is possible to show also these omissions.",
 	"",
 	"",
 	"",
@@ -3270,7 +3270,7 @@ const char *html_text_opt_2_background_override[POCET_JAZYKOV + 1] =
 	"použít bílou/černou barvu pozadí (projektor/AMOLED displej)",
 	"fehér/fekete háttért alkalmazni (vetítő/AMOLED kijelző)",
 	"ru_text",
-	"by_text AMOLED display",
+	"Выкарыстоўваць белы / чорны фон (праектар / дысплэі AMOLED)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4155,7 +4155,7 @@ const char *text_DRUHA_NEDELA_PO_NAR_PANA[POCET_JAZYKOV + 1] =
 	"2. neděle po Narození Páně",
 	"Karácsony Utáni 2. Vasárnap",
 	"ru_text",
-	"by_text",
+	"2 Нядзеля пасля Нараджэння Пана",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5542,7 +5542,7 @@ const char *text_POPOLCOVA_STREDA[POCET_JAZYKOV + 1] =
 	"Popeleční středa",
 	"Hamvazószerda",
 	"ru_text",
-	"by_text",
+	"Папяльцовая серада",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -7361,7 +7361,7 @@ const char *text_NANEBOVSTUPENIE_PANA[POCET_JAZYKOV + 1] =
 	"Nanebevstoupení Páně",
 	"Urunk mennybemenetele",
 	"ru_text",
-	"by_text",
+	"Урачыстасць Унебаўшэсця Пана",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_VELKONOCNA_NEDELA[POCET_JAZYKOV + 1] =
@@ -7374,20 +7374,20 @@ const char *text_VELKONOCNA_NEDELA[POCET_JAZYKOV + 1] =
 	"Neděle Zmrtvýchvstání Páně",
 	"Húsvétvasárnap",
 	"ru_text",
-	"by_text",
+	"Велікодная нядзеля",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1] = // 2012-12-13: XML nepodporuje &mdash; -- použitý číselný kód &#8212; http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
 {
-	HTML_LINE_BREAK" &#8212; Nedeľa Pánovho zmŕtvychvstania",
+	HTML_LINE_BREAK " &#8212; Nedeľa Pánovho zmŕtvychvstania",
 	"",
 	"",
 	"",
 	"",
 	"",
-	", Krisztus feltámadása",
+	", " HTML_LINE_BREAK "Krisztus feltámadása",
 	"ru_text",
-	"by_text",
+	", " HTML_LINE_BREAK "урачыстасць Уваскрасення Пана",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
@@ -7400,7 +7400,7 @@ const char *text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
 	"Neděle v oktávu velikonočním",
 	"Vasárnap Húsvét nyolcadában",
 	"ru_text",
-	"by_text",
+	"2 Велікодная нядзеля",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_DEN_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
@@ -7413,7 +7413,7 @@ const char *text_DEN_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
 	"%s velikonoční",
 	"%s Húsvét nyolcadában",
 	"ru_text",
-	"by_text",
+	"%s у актаве Пасхі",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -7423,7 +7423,7 @@ const char *text_HU_VELKY_TYZDEN_PREFIX = "Nagy"; // pre HU špeciálne názvy d
 
 const char *text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] =
 {
-	"Nášho Pána Ježiša Krista," HTML_NONBREAKING_SPACE "najvyššieho a večného kňaza",
+	"Nášho Pána Ježiša Krista, " HTML_NONBREAKING_SPACE "najvyššieho a večného kňaza",
 	"Ježíše Krista, nejvyššího a věčného kněze",
 	"",
 	"",
@@ -7457,7 +7457,7 @@ const char *text_KRISTA_KRALA[POCET_JAZYKOV + 1] =
 	"Ježíše Krista Krále",
 	"Krisztus Király",
 	"ru_text",
-	"by_text",
+	"Урачыстасць Пана Нашага Езуса Хрыста," HTML_NONBREAKING_SPACE " Валадара Сусвету",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1] =
@@ -7535,7 +7535,7 @@ const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1] =
 	"Seslání Ducha Svatého",
 	"Pünkösd",
 	"ru_text",
-	"by_text",
+	"Нядзеля Спаслання Святога Духа",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_PRVA_ADVENTNA_NEDELA[POCET_JAZYKOV + 1] =
@@ -13936,6 +13936,45 @@ const char *text_DEC_31[POCET_JAZYKOV + 1] =
 
 // --------------- 00 pohyblivé slávenia | celebrations with moving date ---------------
 
+const char *text_VELKY_PONDELOK[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"Вялікі панядзелак",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_VELKY_UTOROK[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"Вялікі аўторак",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_VELKA_STREDA[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"Вялікая серада",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_ZELENY_STVRTOK[POCET_JAZYKOV + 1] =
 {
 	"Zelený (veľký) štvrtok – Pamiatka Pánovej večere",
@@ -13946,7 +13985,7 @@ const char *text_ZELENY_STVRTOK[POCET_JAZYKOV + 1] =
 	"Zelený čtvrtek - Památka Večeře Páně",
 	"Nagycsütörtök",
 	"ru_text",
-	"by_text",
+	"Вялікі чацвер",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_VELKY_PIATOK[POCET_JAZYKOV + 1] =
@@ -13959,7 +13998,7 @@ const char *text_VELKY_PIATOK[POCET_JAZYKOV + 1] =
 	"Velký pátek",
 	"Nagypéntek",
 	"ru_text",
-	"by_text",
+	"Вялікая пятніца Мукі Пана",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_BIELA_SOBOTA[POCET_JAZYKOV + 1] =
@@ -13972,7 +14011,7 @@ const char *text_BIELA_SOBOTA[POCET_JAZYKOV + 1] =
 	"Bílá sobota",
 	"Nagyszombat",
 	"ru_text",
-	"by_text",
+	"Вялікая субота",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_KVETNA_NEDELA[POCET_JAZYKOV + 1] =
@@ -13985,7 +14024,7 @@ const char *text_KVETNA_NEDELA[POCET_JAZYKOV + 1] =
 	"Květná neděle",
 	"Virágvasárnap, vagyis az Úr szenvedésének vasárnapja",
 	"ru_text",
-	"by_text",
+	"Пальмовая нядзеля альбо нядзеля Мукі Пана",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_PO_POPOLCOVEJ_STREDE[POCET_JAZYKOV + 1] =

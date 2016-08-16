@@ -5627,21 +5627,44 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	Log("2:_local_den.meno == %s\n", _local_den.meno);
 
 	// skontrolujeme ešte pondelok -- štvrtok vo veľkom týždni (nastavenie názvu aj pre export na viac dní)
-	if (_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN){
+	if (_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) {
 		// aj kompletórium pre zelený štvrtok má svoj vlastný názov, tak isto ako doteraz vešpery
-		if (!((_local_den.denvt == DEN_NEDELA) || ((_local_den.denvt == DEN_STVRTOK) && ((typ != EXPORT_DNA_VIAC_DNI) && ((modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM)))))){
-			if (_global_jazyk == JAZYK_HU){
+		if (!((_local_den.denvt == DEN_NEDELA) || ((_local_den.denvt == DEN_STVRTOK) && ((typ != EXPORT_DNA_VIAC_DNI) && ((modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM)))))) {
+			if (_global_jazyk == JAZYK_HU) {
 				// pre HU sú aj dni pondelok až streda (štvrtok sa rieši inde) s vlastnými názvami
 				mystrcpy(_local_den.meno, text_HU_VELKY_TYZDEN_PREFIX, MENO_SVIATKU);
 				strcat(_local_den.meno, nazov_dna(_local_den.denvt));
 			}// HU only
-			else{
+			else {
 				mystrcpy(_local_den.meno, nazov_dna(_local_den.denvt), MENO_SVIATKU);
 				strcat(_local_den.meno, " ");
 				strcat(_local_den.meno, nazov_obdobia_v(_local_den.litobd));
 			}
 		}
-	}
+
+		// override for BY: special naming of days in Great (Holy) Week (Mo, Tue, We)
+		if ((_global_jazyk == JAZYK_BY) && ((_local_den.denvt == DEN_PONDELOK) || (_local_den.denvt == DEN_UTOROK) || (_local_den.denvt == DEN_STREDA) || (_local_den.denvt == DEN_STVRTOK))) {
+			Log("special naming of days in Great (Holy) Week (Mo, Tue, We)\n");
+
+			switch (_local_den.denvt)
+			{
+			case DEN_PONDELOK:
+				mystrcpy(_local_den.meno, text_VELKY_PONDELOK[_global_jazyk], MENO_SVIATKU);
+				break;
+			case DEN_UTOROK:
+				mystrcpy(_local_den.meno, text_VELKY_UTOROK[_global_jazyk], MENO_SVIATKU);
+				break;
+			case DEN_STREDA:
+				mystrcpy(_local_den.meno, text_VELKA_STREDA[_global_jazyk], MENO_SVIATKU);
+				break;
+			case DEN_STVRTOK:
+				mystrcpy(_local_den.meno, text_ZELENY_STVRTOK[_global_jazyk], MENO_SVIATKU);
+				break;
+			default:
+				break;
+			}
+		}// if ((_global_jazyk == JAZYK_BY) && ((_local_den.denvt == DEN_PONDELOK) || (_local_den.denvt == DEN_UTOROK) || (_local_den.denvt == DEN_STREDA) || (_local_den.denvt == DEN_STVRTOK)))
+	}// if (_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN)
 
 	Log("3:_local_den.meno == %s\n", _local_den.meno);
 	// --------------------------------------------------------------------
@@ -5692,59 +5715,59 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	}
 	Log("4:_local_den.meno == %s\n", _local_den.meno);
 
-	if (equals(_local_den.meno, STR_EMPTY)){
+	if (equals(_local_den.meno, STR_EMPTY)) {
 		Log("slávenie nemá vlastný názov...\n");
-		if (_local_den.denvt == DEN_NEDELA){
+		if (_local_den.denvt == DEN_NEDELA) {
 			Log("nedeľa, ktorá nemá vlastný názov... (_local_string == %s)\n", _local_string);
 			// nedeľa bez vlastného názvu; úprava názvov nedieľ v štýle "3. NEDEĽA V ADVENTNOM OBDOBÍ" -> "Tretia adventná nedeľa" 
 			if (
 				(_local_den.litobd == OBD_ADVENTNE_I) || (_local_den.litobd == OBD_ADVENTNE_II)
 				|| (_local_den.litobd == OBD_POSTNE_I)
 				|| (_local_den.litobd == OBD_VELKONOCNE_I) || (_local_den.litobd == OBD_VELKONOCNE_II)
-				){
-				if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+				) {
+				if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 					sprintf(pom, "%s %s %s", poradie_SLOVOM(_local_den.tyzden - 1), nazov_DNA(_local_den.denvt), nazov_OBDOBIA_AKA(_local_den.litobd));
 				}
 				else if ((_global_jazyk == JAZYK_BY) && !((_local_den.litobd == OBD_VELKONOCNE_I) || (_local_den.litobd == OBD_VELKONOCNE_II))) {
 					sprintf(pom, "%s %s %s", poradie_SLOVOM(_local_den.tyzden - 1), nazov_DNA(_local_den.denvt), nazov_OBDOBIA_V(_local_den.litobd));
 				}
-				else if (_global_jazyk == JAZYK_HU){
+				else if (_global_jazyk == JAZYK_HU) {
 					sprintf(pom, "%s %s %s%s", nazov_OBDOBIA_AKA(_local_den.litobd), poradie_SLOVOM(_local_den.tyzden - 1), nazov_DNA(_local_den.denvt), KONCOVKA_DNA_HU);
 				}
 				else {
 					sprintf(pom, "%s %s %s", poradie_SLOVOM(_local_den.tyzden - 1), nazov_OBDOBIA_AKA(_local_den.litobd), nazov_DNA(_local_den.denvt));
 				}
 			}// špeciálne nedele slovom
-			else{
+			else {
 				// _local_den.litobd == OBD_CEZ_ROK; pre cezročné ostáva poradové číslo
-				if (_global_jazyk == JAZYK_HU){
+				if (_global_jazyk == JAZYK_HU) {
 					sprintf(pom, "%s %d. %s", nazov_OBDOBIA_AKA(_local_den.litobd), _local_den.tyzden, nazov_DNA(_local_den.denvt));
 				}
-				else{
+				else {
 					sprintf(pom, "%d. %s %s", _local_den.tyzden, nazov_DNA(_local_den.denvt), nazov_OBDOBIA_V(_local_den.litobd));
 				}
 			}// ostatné nedele číslom
 
-			if (strlen(pom) > 0){
-				if (html_span_bold_it == ANO){
+			if (strlen(pom) > 0) {
+				if (html_span_bold_it == ANO) {
 					mystrcpy(_local_string, "<" HTML_SPAN_BOLD_IT ">", MAX_GLOBAL_STR);
 				}
-				else if (html_span_bold == ANO){
+				else if (html_span_bold == ANO) {
 					mystrcpy(_local_string, "<" HTML_SPAN_BOLD ">", MAX_GLOBAL_STR);
 				}
-				if (html_span_red_title_append == ANO){
+				if (html_span_red_title_append == ANO) {
 					strcat(_local_string, "<" HTML_SPAN_RED_TITLE ">");
 				}
 
 				strcat(_local_string, pom);
 
-				if (html_span_red_title_append == ANO){
+				if (html_span_red_title_append == ANO) {
 					strcat(_local_string, HTML_SPAN_END);
 				}
-				if (html_span_bold_it == ANO){
+				if (html_span_bold_it == ANO) {
 					strcat(_local_string, HTML_SPAN_END);
 				}
-				else if (html_span_bold == ANO){
+				else if (html_span_bold == ANO) {
 					strcat(_local_string, HTML_SPAN_END);
 				}
 
@@ -5752,7 +5775,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			}
 
 			// prilepenie "týždňa žaltára" aj pre nedele
-			if ((typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE) && (typ != EXPORT_DNA_VIAC_DNI_TXT)){
+			if ((typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE) && (typ != EXPORT_DNA_VIAC_DNI_TXT)) {
 				sprintf(pom, "<" HTML_SPAN_SMALL ">");
 				sprintf(pom2, html_text_tyzden_zaltara_cislo[_global_jazyk], tyzden_zaltara(_local_den.tyzden));
 				strcat(pom, pom2);
@@ -5762,61 +5785,64 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			}
 
 			ma_nazov = 1;
-		}// nedeľa
-		else{ // nie nedeľa
+		} // nedeľa
+		else { // nie nedeľa
 			Log("deň iný ako nedeľa, ktorý nemá vlastný názov... (_local_string == %s)\n", _local_string);
 			// doplnené zátvorky, kvôli span-ovačkám na konci
-			if (obyc == ANO){
+			if (obyc == ANO) {
 
-				if ((typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE)){
+				if ((typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE)) {
 					Log("(typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE)\n");
-					// dni po popolcovej strede na začiatku pôstneho obdobia - "nultý" týždeň
-					if ((_local_den.tyzden == 0) && (_local_den.litobd == OBD_POSTNE_I)){
-						Log("dni po popolcovej strede na začiatku pôstneho obdobia - 'nultý' týždeň\n");
 
-						if (typ != EXPORT_DNA_VIAC_DNI_TXT){
+					// dni po popolcovej strede na začiatku pôstneho obdobia - "nultý" týždeň pôstneho obdobia
+					if ((_local_den.tyzden == 0) && (_local_den.litobd == OBD_POSTNE_I)) {
+						Log("dni po popolcovej strede na začiatku pôstneho obdobia - 'nultý' týždeň pôstneho obdobia\n");
+
+						if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 							sprintf(pom2, HTML_SPAN_END "" HTML_LINE_BREAK "<" HTML_SPAN_SMALL ">");
 						}
-						else{
+						else {
 							mystrcpy(pom2, STR_EMPTY, MAX_STR);
 						}
 						sprintf(pom, "%s %s, %s", nazov_Dna(_local_den.denvt), (char *)text_PO_POPOLCOVEJ_STREDE[_global_jazyk], nazov_obdobia(_local_den.litobd));
 						strcat(pom, pom2);
-						if (typ != EXPORT_DNA_VIAC_DNI_TXT){
+						if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 							sprintf(pom2, html_text_tyzden_zaltara_cislo[_global_jazyk], tyzden_zaltara(_local_den.tyzden));
 							strcat(pom, pom2);
 						}
 					}// ((_local_den.tyzden == 0) && (_local_den.litobd == OBD_POSTNE_I))
+
 					// dni po narodení pána pred nedeľou v oktáve narodenia pána (ak je) majú žaltár zo 4. týždňa
-					else if (_local_den.litobd == OBD_OKTAVA_NARODENIA){
+					else if (_local_den.litobd == OBD_OKTAVA_NARODENIA) {
 						Log("_local_den.litobd == OBD_OKTAVA_NARODENIA\n");
-						if (typ != EXPORT_DNA_VIAC_DNI_TXT){
+						if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 							sprintf(pom2, HTML_SPAN_END "" HTML_LINE_BREAK "<" HTML_SPAN_SMALL ">");
 						}
-						else{
+						else {
 							mystrcpy(pom2, STR_EMPTY, MAX_STR);
 						}
-						if (_global_jazyk == JAZYK_HU){
+						if (_global_jazyk == JAZYK_HU) {
 							sprintf(pom, "%s alatti %d. nap", (char *)text_V_OKTAVE_NARODENIA[_global_jazyk], (_local_den.den - 24));
 						}
-						else{
+						else {
 							sprintf(pom, "%s %s", nazov_Dna(_local_den.denvt), (char *)text_V_OKTAVE_NARODENIA[_global_jazyk]);
 						}
 						strcat(pom, pom2);
-						if (typ != EXPORT_DNA_VIAC_DNI_TXT){
+						if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 							sprintf(pom2, html_text_tyzden_zaltara_cislo[_global_jazyk], tyzden_zaltara(_local_den.tyzden));
 							strcat(pom, pom2);
 						}
 					}// (_local_den.litobd == OBD_OKTAVA_NARODENIA)
-					// skontrolujeme ešte 17.-23. decembra (obdobie OBD_ADVENTNE_II)
-					else if ((_local_den.litobd == OBD_ADVENTNE_II) && (typ != EXPORT_DNA_VIAC_DNI)){
+
+					// dni 17.-23. decembra (obdobie OBD_ADVENTNE_II)
+					else if ((_local_den.litobd == OBD_ADVENTNE_II) && (typ != EXPORT_DNA_VIAC_DNI)) {
 						Log("(_local_den.litobd == OBD_ADVENTNE_II) && (typ != EXPORT_DNA_VIAC_DNI)\n");
 
 						// najprv názov dňa (pondelok, utorok...)...
 						sprintf(pom, "%s, ", nazov_Dna(_local_den.denvt));
 
 						// ...potom dátum + genitív mesiaca... | ale iba v takom prípade, že mesiac je december (pre použitie "liturgické obdobie" je dátum neinicializovaný, teda 1. januára)
-						if ((_local_den.mesiac == MES_DEC) && (_local_den.den >= 16) && (_local_den.den <= 24)){
+						if ((_local_den.mesiac == MES_DEC) && (_local_den.den >= 16) && (_local_den.den <= 24)) {
 							mystrcpy(pom2, _vytvor_string_z_datumu(_local_den.den, _local_den.mesiac, _local_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_HU)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_GEN, NIE), MAX_STR);
 							strcat(pom, pom2);
 							mystrcpy(pom2, ", ", MAX_STR);
@@ -5828,40 +5854,41 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 						strcat(pom, pom2);
 
 						// ...a napokon týždeň žaltára
-						if (typ != EXPORT_DNA_VIAC_DNI_TXT){
+						if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 							sprintf(pom2, HTML_SPAN_END);
 						}
-						else{
+						else {
 							mystrcpy(pom2, STR_EMPTY, MAX_STR);
 						}
 						strcat(pom, pom2);
 						sprintf(pom2, html_text_tyzden_cislo[_global_jazyk], _local_den.tyzden);
 						strcat(pom, pom2);
-						if (typ != EXPORT_DNA_VIAC_DNI_TXT){
+						if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 							sprintf(pom2, HTML_LINE_BREAK "<" HTML_SPAN_SMALL ">");
 						}
-						else{
+						else {
 							mystrcpy(pom2, STR_EMPTY, MAX_STR);
 						}
 						strcat(pom, pom2);
-						if (typ != EXPORT_DNA_VIAC_DNI_TXT){
+						if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 							sprintf(pom2, html_text_tyzden_zaltara_cislo[_global_jazyk], tyzden_zaltara(_local_den.tyzden));
 							strcat(pom, pom2);
 						}
 					}// ((_local_den.litobd == OBD_ADVENTNE_II) && (typ != EXPORT_DNA_VIAC_DNI))
-					else{
+
+					else {
 						Log("else...\n");
-						if (typ != EXPORT_DNA_VIAC_DNI_TXT){
+						if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 							sprintf(pom2, HTML_SPAN_END);
 						}
-						else{
+						else {
 							mystrcpy(pom2, STR_EMPTY, MAX_STR);
 						}
 						sprintf(pom, "%s, %s, ", nazov_Dna(_local_den.denvt), nazov_obdobia(_local_den.litobd));
 						sprintf(pom3, html_text_tyzden_cislo[_global_jazyk], _local_den.tyzden);
 						strcat(pom, pom3);
 						strcat(pom, pom2);
-						if (typ != EXPORT_DNA_VIAC_DNI_TXT){
+						if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 							sprintf(pom2, HTML_LINE_BREAK "<" HTML_SPAN_SMALL ">");
 							sprintf(pom3, html_text_tyzden_zaltara_cislo[_global_jazyk], tyzden_zaltara(_local_den.tyzden));
 							strcat(pom2, pom3);
@@ -5872,7 +5899,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 					ma_nazov = 1;
 				}// nie export na viac dní
 
-				if (typ == EXPORT_DNA_VIAC_DNI_SIMPLE){
+				if (typ == EXPORT_DNA_VIAC_DNI_SIMPLE) {
 					sprintf(pom, "%s, %s" HTML_SPAN_END ", ", nazov_Dna(_local_den.denvt), nazov_obdobia(_local_den.litobd));
 					sprintf(pom2, html_text_tyzden_zaltara_cislo[_global_jazyk], _local_den.tyzden);
 					strcat(pom, pom2);
@@ -5881,47 +5908,47 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				}
 				// inak ostane string prazdny | otherwise leaves pom empty (thus, ma_nazov == 0)
 
-				if (ma_nazov == 1){
-					if (html_span_bold_it == ANO){
+				if (ma_nazov == 1) {
+					if (html_span_bold_it == ANO) {
 						mystrcpy(_local_string, "<" HTML_SPAN_BOLD_IT ">", MAX_GLOBAL_STR);
 					}
-					else if (html_span_bold == ANO){
+					else if (html_span_bold == ANO) {
 						mystrcpy(_local_string, "<" HTML_SPAN_BOLD ">", MAX_GLOBAL_STR);
 					}
-					if (html_span_red_title_append == ANO){
+					if (html_span_red_title_append == ANO) {
 						strcat(_local_string, "<" HTML_SPAN_RED_TITLE ">");
 					}
 
 					strcat(_local_string, pom);
 
-					if (html_span_red_title_append == ANO){
+					if (html_span_red_title_append == ANO) {
 						strcat(_local_string, HTML_SPAN_END);
 					}
-					if (html_span_bold_it == ANO){
+					if (html_span_bold_it == ANO) {
 						strcat(_local_string, HTML_SPAN_END);
 					}
-					else if (html_span_bold == ANO){
+					else if (html_span_bold == ANO) {
 						strcat(_local_string, HTML_SPAN_END);
 					}
 				}
 			}
-			else{
+			else {
 				Log("-- Error: _local_den.meno == \"\", avsak obyc != ANO\n");
 			}
 		}// nie je to nedeľa, teda iba obyčajný deň, ktorý nemá vlastný názov
 	}// if(equals(_local_den.meno, STR_EMPTY))
-	else{
+	else {
 		Log("pridávam vlastný názov...\n");
 		// vlastny nazov
-		if (_local_den.denvt == DEN_NEDELA){
+		if (_local_den.denvt == DEN_NEDELA) {
 			// nedela co ma vlastny nazov
 			strcat(pom, caps_BIG(_local_den.meno));
 		}
-		else if (velkost == CASE_VERZALKY){
+		else if (velkost == CASE_VERZALKY) {
 			// STACK OVERFLOW
 			strcat(pom, caps_BIG(_local_den.meno));
 		}
-		else{
+		else {
 			if (velkost == CASE_KAPITALKY) {
 				// Sᴛᴀᴄᴋ Oᴠᴇʀғʟᴏᴡ
 				strcat(pom, "<" HTML_SPAN_SMALLCAPS ">");
@@ -5936,26 +5963,26 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		}
 		ma_nazov = 1;
 
-		if (strlen(pom) > 0){
-			if (html_span_bold_it == ANO){
+		if (strlen(pom) > 0) {
+			if (html_span_bold_it == ANO) {
 				mystrcpy(_local_string, "<" HTML_SPAN_BOLD_IT ">", MAX_GLOBAL_STR);
 			}
-			else if (html_span_bold == ANO){
+			else if (html_span_bold == ANO) {
 				mystrcpy(_local_string, "<" HTML_SPAN_BOLD ">", MAX_GLOBAL_STR);
 			}
-			if (html_span_red_title_append == ANO){
+			if (html_span_red_title_append == ANO) {
 				strcat(_local_string, "<" HTML_SPAN_RED_TITLE ">");
 			}
 
 			strcat(_local_string, pom);
 
-			if (html_span_red_title_append == ANO){
+			if (html_span_red_title_append == ANO) {
 				strcat(_local_string, HTML_SPAN_END);
 			}
-			if (html_span_bold_it == ANO){
+			if (html_span_bold_it == ANO) {
 				strcat(_local_string, HTML_SPAN_END);
 			}
-			else if (html_span_bold == ANO){
+			else if (html_span_bold == ANO) {
 				strcat(_local_string, HTML_SPAN_END);
 			}
 		}
@@ -6007,7 +6034,12 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			sprintf(pom2, "%s", nazov_slavenia_na_spomienku_jazyk[_global_jazyk]);
 		}
 		else{
-			sprintf(pom2, "%s", nazov_slavenia(_local_den.typslav));
+			if ((_local_den.typslav != SLAV_VLASTNE) && (_local_den.typslav != SLAV_NEURCENE)) {
+				sprintf(pom2, "%s", nazov_slavenia(_local_den.typslav));
+			}
+			else {
+				sprintf(pom2, "%s", (char *)STR_EMPTY);
+			}
 		}
 
 		strcat(pom, pom2);
