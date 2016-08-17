@@ -43,6 +43,8 @@ char *mystr_replace_char(const char *string, const char orig_char, const char re
 char *mystr_first_lower(const char *string);
 char *mystr_first_upper(const char *string);
 
+void convertToRoman(int val, char *res);
+
 // detecting whether base is starts with str
 short int startsWith(char* base, char* str);
 // detecting whether base is ends with str

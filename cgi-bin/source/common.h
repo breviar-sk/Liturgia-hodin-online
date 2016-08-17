@@ -129,6 +129,7 @@
 #define STR_CROSS "†"
 #define STR_SLASH "/"
 #define STR_UNDERSCORE "_"
+#define STR_DOT "."
 
 #pragma endregion
 

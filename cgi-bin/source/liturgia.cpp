@@ -283,10 +283,9 @@ short int cislo_mesiaca(char *mesiac){
 }// cislo_mesiaca()
 
 //---------------------------------------------------------------------
-// urobi velke pismena 
-// 2011-01-31: nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash; na veľké písmená
-// Assumes utf-8 encoding.
-char *caps_BIG(const char* input) {
+// converts UTF-8 string to UPPERCASE
+// nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash; na veľké písmená
+char *mystr_UPPERCASE(const char* input) {
 	short int ok = TRUE;
 	const char* in = input;
 	char* out = _global_pom_str;
@@ -306,13 +305,13 @@ char *caps_BIG(const char* input) {
 	}
 	*out = 0;
 	return (_global_pom_str);
-}// caps_BIG()
+}// mystr_UPPERCASE()
 
 //---------------------------------------------------------------------
 // odstráni diakritiku
-// 2011-04-05: nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash;
-// 2011-04-06: zmení aj dlhé pomlčky na obyčajný spojovník (znak mínus)
-char *remove_diacritics(const char *input){
+// nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash;
+// zmení aj dlhé pomlčky na obyčajný spojovník (znak mínus)
+char *mystr_remove_diacritics(const char *input){
 	short int ok = TRUE;
 	const char* in = input;
 	char* out = _global_pom_str;
@@ -332,7 +331,7 @@ char *remove_diacritics(const char *input){
 	}
 	*out = 0;
 	return (_global_pom_str);
-}// remove_diacritics()
+}// mystr_remove_diacritics()
 
 //---------------------------------------------------------------------
 // konvertuje underscore na nezlomiteľné medzery
@@ -509,64 +508,63 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 	if ((align != NIE) && (den < 10)){
 		mystrcpy(vypln, HTML_NONBREAKING_SPACE, SMALL);
 	}
-	if (den != VSETKY_DNI){
-		if (_global_jazyk == JAZYK_EN){
-			sprintf(strden, " %s%d", vypln, den);
-		}
-		else if (_global_jazyk == JAZYK_HU){
-			sprintf(strden, " %s%d.", vypln, den);
-		}
-		else{
-			// default pre JAZYK_LA, JAZYK_SK, JAZYK_CZ, JAZYK_CZ_OP
-			sprintf(strden, "%s%d. ", vypln, den);
+	
+	if (den != VSETKY_DNI) {
+		sprintf(strden, "%s%d", vypln, den);
+
+		if (use_dot_for_ordinals[_global_jazyk] == FORMAT_DATE_USE_DOT_FOR_ORDINALS) {
+			// add dot for ordinal number
+			strcat(strden, STR_DOT);
 		}
 	}
-	if (_global_jazyk == JAZYK_LA){
-		sprintf(pom, "%s%s", strden, nazov_Mesiaca_gen(mesiac - 1));
-		if (typ == LINK_DEN_MESIAC_ROK){
-			// pridame aj rok
-			strcat(_global_pom_str, pom);
-			sprintf(pom, " %d", rok);
+	
+	if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_BY)) {
+		// force month in genitive
+		if (typ == LINK_DEN_MESIAC) {
+			typ = LINK_DEN_MESIAC_GEN;
 		}
-	}
-	else if (_global_jazyk == JAZYK_EN){
-		sprintf(pom, "%s%s", nazov_Mesiaca(mesiac - 1), strden);
-		if (typ == LINK_DEN_MESIAC_ROK){
+		else if (typ == LINK_DEN_MESIAC_ROK) {
+			typ = LINK_DEN_MESIAC_ROK_GEN;
+		}
+	}// LA, BY only
+
+	if (_global_jazyk == JAZYK_EN){
+		sprintf(pom, "%s %s", nazov_Mesiaca(mesiac - 1), strden);
+		if ((typ == LINK_DEN_MESIAC_ROK) || (typ == LINK_DEN_MESIAC_ROK_GEN)) {
 			// pridame aj rok
 			strcat(_global_pom_str, pom);
 			sprintf(pom, ", %d", rok);
 		}
-	}
-	// 2010-05-21: doplnené pre maďarčinu: 1999. augusztus 1. -- http://en.wikipedia.org/wiki/Date_and_time_notation_by_country#Hungary [2010-05-24]
+	}// EN only
 	else if (_global_jazyk == JAZYK_HU){
-		if (typ == LINK_DEN_MESIAC_ROK){
+		if ((typ == LINK_DEN_MESIAC_ROK) || (typ == LINK_DEN_MESIAC_ROK_GEN)) {
 			// pridáme najprv rok
 			sprintf(pom, "%d. ", rok);
 			strcat(_global_pom_str, pom);
 		}
 		sprintf(pom, "%s", nazov_mesiaca(mesiac - 1));
 		strcat(_global_pom_str, pom);
-		sprintf(pom, "%s", strden);
-	}
+		sprintf(pom, " %s", strden);
+	}// HU only | 1999. augusztus 1. -- http://en.wikipedia.org/wiki/Date_and_time_notation_by_country#Hungary [2010-05-24]
 	else{
-		// doterajšie správanie pre slovenčinu a češtinu
+		// default behaviour for SK, CZ; used also for LA, BY
 		switch (_case){
 		case CASE_case:
-			sprintf(pom, "%s%s", strden, (typ == LINK_DEN_MESIAC_GEN) ? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1));
+			sprintf(pom, "%s %s", strden, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1));
 			break;
 		case CASE_Case:
-			sprintf(pom, "%s%s", strden, (typ == LINK_DEN_MESIAC_GEN) ? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1));
+			sprintf(pom, "%s %s", strden, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1));
 			break;
 		case CASE_CASE:
-			sprintf(pom, "%s%s", strden, /* (typ == LINK_DEN_MESIAC_GEN)? nazov_MESIACA_gen(mesiac - 1) : */ nazov_MESIACA(mesiac - 1));
+			sprintf(pom, "%s %s", strden, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : nazov_MESIACA(mesiac - 1));
 			break;
 		} // switch(_case)
-		if (typ == LINK_DEN_MESIAC_ROK){
+		if ((typ == LINK_DEN_MESIAC_ROK) || (typ == LINK_DEN_MESIAC_ROK_GEN)) {
 			// pridame aj rok
 			strcat(_global_pom_str, pom);
 			sprintf(pom, " %d", rok);
 		}
-	}
+	}// SK, CZ, LA, BY...
 	strcat(_global_pom_str, pom);
 
 	Log("_vytvor_string_z_datumu(): koniec, returning _global_pom_str == `'...\n", _global_pom_str);
@@ -720,6 +718,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 
 	// printing link text itself
 	switch (typ){
+	case LINK_DEN_MESIAC_ROK_GEN:
 	case LINK_DEN_MESIAC_ROK_PRESTUP:
 	case LINK_DEN_MESIAC_PREDOSLY:
 	case LINK_DEN_MESIAC_NASLEDOVNY:
@@ -729,27 +728,27 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			if (mesiac == VSETKY_MESIACE){
 				sprintf(pom, "%d", rok);
 			}
-			else{
-				if (typ == LINK_DEN_MESIAC_PREDOSLY){
+			else {
+				if (typ == LINK_DEN_MESIAC_PREDOSLY) {
 					sprintf(pom, HTML_LEFT_ARROW_WIDE);
 				}
-				else if (typ == LINK_DEN_MESIAC_NASLEDOVNY){
+				else if (typ == LINK_DEN_MESIAC_NASLEDOVNY) {
 					sprintf(pom, HTML_RIGHT_ARROW_WIDE);
 				}
-				else{
-					switch (_case){
+				else {
+					switch (_case) {
 					case CASE_case:
-						sprintf(pom, "%s", nazov_mesiaca(mesiac - 1));
+						sprintf(pom, "%s", ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1));
 						break;
 					case CASE_Case:
-						sprintf(pom, "%s", nazov_Mesiaca(mesiac - 1));
+						sprintf(pom, "%s", ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1));
 						break;
 					case CASE_CASE:
-						sprintf(pom, "%s", nazov_MESIACA(mesiac - 1));
+						sprintf(pom, "%s", ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : nazov_MESIACA(mesiac - 1));
 						break;
 					} // switch(_case)
 				}
-				if (typ == LINK_DEN_MESIAC_ROK){
+				if ((typ == LINK_DEN_MESIAC_ROK) || (typ == LINK_DEN_MESIAC_ROK_GEN)) {
 					// pridame aj rok
 					strcat(_global_link, pom);
 					sprintf(pom, " %d", rok);
@@ -788,7 +787,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			sprintf(pom, "%s", _global_den.meno);
 			break;
 		case CASE_CASE:
-			sprintf(pom, "%s", caps_BIG(_global_den.meno));
+			sprintf(pom, "%s", mystr_UPPERCASE(_global_den.meno));
 			break;
 		} // switch(_case)
 		break;
@@ -801,55 +800,55 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 }// _vytvor_global_link();
 
 // vrati 1, ak je rok priestupny, inak vrati 0
-short int prestupny(short int rok){
-	if ((rok MOD 4) == 0){
-		if ((rok MOD 100) == 0){
+short int prestupny(short int rok) {
+	if ((rok MOD 4) == 0) {
+		if ((rok MOD 100) == 0) {
 			return ((rok MOD 400) == 0);
 		}
-		else{
+		else {
 			return 1;
 		}
 	}
-	else{
+	else {
 		return 0;
 	}
-}
+}// prestupny()
 
-short int pocet_dni_v_roku(short int rok){
-	if (prestupny(rok)){
+short int pocet_dni_v_roku(short int rok) {
+	if (prestupny(rok)) {
 		return POCET_DNI_V_ROKU + 1;
 	}
-	else{
+	else {
 		return POCET_DNI_V_ROKU;
 	}
-}
+}// pocet_dni_v_roku()
 
 // vrati poradove cislo dna v roku, 1.1. == 1, 2.1. == 2, ..., 31.12. == 365/366 | ocakava cislo mesiaca 1-12 (pozn. 2003-07-04)
-short int poradie(short int den, short int mesiac, short int rok){
-	if (mesiac > 2){
+short int poradie(short int den, short int mesiac, short int rok) {
+	if (mesiac > 2) {
 		return prvy_den[mesiac - 1] + den - 1 + prestupny(rok);
 	}
-	else{
+	else {
 		return prvy_den[mesiac - 1] + den - 1;
 	}
 }// poradie()
 
-short int poradie(_struct_den_mesiac den_a_mesiac, short int rok){
+short int poradie(_struct_den_mesiac den_a_mesiac, short int rok) {
 	return poradie(den_a_mesiac.den, den_a_mesiac.mesiac, rok);
 }// poradie()
 
-short int zjavenie_pana(short int rok){
+short int zjavenie_pana(short int rok) {
 	short int ZJAVENIE_PANA; // zjavenie Pána
 	char nedelne_pismenko = _global_r.p1;
 
-	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)){
-		if (nedelne_pismenko == 'A'){
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)) {
+		if (nedelne_pismenko == 'A') {
 			nedelne_pismenko = 'h'; // aby vyšla nedeľa Zjavenia Pána na 8.1.
 		}
 		Log("Zjavenie Pána sa slávi v nedeľu; %c/%c\n", _global_r.p1, nedelne_pismenko);
 		ZJAVENIE_PANA = poradie((nedelne_pismenko - 'a') + 1, 1, rok); // nedeľa medzi 2. a 8. januárom
 	}
-	else{
+	else {
 		ZJAVENIE_PANA = poradie(6, 1, rok);
 	}
 	return ZJAVENIE_PANA;
@@ -866,29 +865,29 @@ short int zjavenie_pana(short int rok){
  * 1. januar 1920     == 2422325 JD
  * 1. januar 1968     == 2439857 JD
  */
-long juliansky_datum(short int por, short int rok){
+long juliansky_datum(short int por, short int rok) {
 	short int r;
 	long jd = 0;
-	if (rok >= ROK_1968){
-		for (r = ROK_1968; r < rok; r++){
+	if (rok >= ROK_1968) {
+		for (r = ROK_1968; r < rok; r++) {
 			jd = jd + pocet_dni_v_roku(r);
 		}
 		return (jd + por + JUL_DATE_0_JAN_1968);
 	}
-	else{
-		for (r = rok; r < ROK_1968; r++){
+	else {
+		for (r = rok; r < ROK_1968; r++) {
 			jd = jd + pocet_dni_v_roku(r);
 		}
 		return (por + JUL_DATE_0_JAN_1968 - jd);
 	}
-}
+}// juliansky_datum()
 
 // ocakava cislo mesiaca 1-12 (pozn. 2003-07-04)
-long juliansky_datum(short int den, short int mesiac, short int rok){
+long juliansky_datum(short int den, short int mesiac, short int rok) {
 	short int por;
 	por = poradie(den, mesiac, rok);
 	return juliansky_datum(por, rok);
-}
+}// juliansky_datum()
 
 //---------------------------------------------------------------------
 // nasledujuce funkcie zistuju datum velkonocnej nedele

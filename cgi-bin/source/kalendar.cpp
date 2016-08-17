@@ -24797,7 +24797,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 4); // miestne slávnosti
-			_global_svaty1.typslav_lokal = LOKAL_SLAV_KONSEKR_KOSTOLY_HU;
+			_global_svaty1.typslav_lokal = LOKAL_SLAV_KONSEKR_KOSTOLY;
 			mystrcpy(_global_svaty1.meno, text_OKT_26[_global_jazyk], MENO_SVIATKU); // SK: 26OKT; HU: 22OKT
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
@@ -25098,7 +25098,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 4); // miestne slávnosti
-			_global_svaty1.typslav_lokal = LOKAL_SLAV_KONSEKR_KOSTOLY_CZ;
+			_global_svaty1.typslav_lokal = LOKAL_SLAV_KONSEKR_KOSTOLY;
 			mystrcpy(_global_svaty1.meno, text_OKT_26[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty1.farba = LIT_FARBA_BIELA;

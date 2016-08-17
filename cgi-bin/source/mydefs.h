@@ -63,14 +63,14 @@
 
 #define POCET_GLOBAL_OPT     6
 
-#define MAX_GLOBAL_STR		2048 // _global_string; 31/03/2000A.D.; 2010-12-07: rozšírené; 2011-01-31: rozšírené kvôli text_JAN_31_SDB[]; 2011-02-02: rozšírené kvôli text_FEB_04_SJ[];
-#define MAX_GLOBAL_STR2		200 // _global_string2, pridané 2006-08-19
-#define MAX_GLOBAL_STR_FARBA 3500 // _global_string_farba, pridané 2006-08-19; 2011-03-24: rozšírené kvôli dvojkombináciám
-#define MAX_QUERY_STR		2000 // query_string
-#define MAX_POM_QUERY_TYPE	2000 // pom_QUERY_TYPE
-#define MAX_GLOBAL_LINK		2000 // maximalna dlzka retazca _global_link
-#define MAX_VARIABLES		600 // maximalny pocet syst. premennych WWW_..., zvyseny 2003-08-07 a opätovne 2006-08-01 a opäť 2011-01-26 a zas 2011-04-11 a 2011-04-12 (na 50)
-#define MAX_GLOBAL_BUFFER	4000 // _global_buf, pridané 2005-08-01
+#define MAX_GLOBAL_STR		 2048 // _global_string
+#define MAX_GLOBAL_STR2		  500 // _global_string2
+#define MAX_GLOBAL_STR_FARBA 3500 // _global_string_farba
+#define MAX_QUERY_STR		 2000 // query_string
+#define MAX_POM_QUERY_TYPE	 2000 // pom_QUERY_TYPE
+#define MAX_GLOBAL_LINK		 2000 // maximalna dlzka retazca _global_link
+#define MAX_VARIABLES		  600 // maximalny pocet syst. premennych WWW_...
+#define MAX_GLOBAL_BUFFER	 4000 // _global_buf
 
 #define MAX_POCET_SVATY 5
 #define PORADIE_PM_SOBOTA  (MAX_POCET_SVATY + 1)

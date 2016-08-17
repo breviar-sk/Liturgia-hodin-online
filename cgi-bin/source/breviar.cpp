@@ -1853,7 +1853,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							// [ToDo]: doplniť nevypisovanie refbuff, ak refrest obsahuje medzeru
 							if (EXPORT_REFERENCIA) {
 #ifdef IO_ANDROID
-								Export("%s", remove_diacritics(refrest));
+								Export("%s", mystr_remove_diacritics(refrest));
 #else
 								Export("%s", refrest); // pôvodne sa odstraňovala diakritika; ponechané len pre Android
 #endif
@@ -1861,7 +1861,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}// načítanie na začiatok referencie
 						if (EXPORT_REFERENCIA) {
 #ifdef IO_ANDROID
-							Export("%s\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">", remove_diacritics(refbuff));
+							Export("%s\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">", mystr_remove_diacritics(refbuff));
 #else
 							Export("%s\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">", refbuff); // pôvodne sa odstraňovala diakritika; ponechané len pre Android
 #endif
@@ -4829,17 +4829,8 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				else{
 					mystrcpy(_global_den.meno, text_JAN_01[_global_jazyk], MENO_SVIATKU);
 				}
-				// 2006-02-16: podreťazec (koniec Oktávy narodenia Pána) podobne ako (2. veľkonočná nedeľa) riešený pomocou "typslav_lokal"
-				if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
-					_global_den.typslav_lokal = LOKAL_SLAV_KONIEC_OKTAVY_NAR_CZ;
-				}
-				else if (_global_jazyk == JAZYK_HU){
-					_global_den.typslav_lokal = LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU;
-				}
-				else {
-					_global_den.typslav_lokal = LOKAL_SLAV_KONIEC_OKTAVY_NAR;
-				}
-				// 2006-08-14: upravené; bude potrebné pre iné jazyky dorobiť konštanty
+				// substring (koniec Oktávy narodenia Pána) podobne ako (2. veľkonočná nedeľa) riešený pomocou "typslav_lokal" -> text_KONIEC_OKTAVY_NARODENIA_PANA[]
+				_global_den.typslav_lokal = LOKAL_SLAV_KONIEC_OKTAVY_NAR;
 
 				sprintf(_global_den.lc_str_id, "%d.%d.", _global_den.den, _global_den.mesiac);
 			}
@@ -4979,13 +4970,8 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						// 2. velkonocna nedela
 						_rozbor_dna_LOG("/* 2. velkonocna nedela */\n");
 						mystrcpy(_global_den.meno, text_NEDELA_VO_VELKONOCNEJ_OKTAVE[_global_jazyk], MENO_SVIATKU);
-						// 2006-02-08: podreťazec (2. veľkonočná nedeľa) riešený pomocou "typslav_lokal"
-						if (_global_jazyk == JAZYK_SK)
-							_global_den.typslav_lokal = LOKAL_SLAV_DRUHA_VELK_NEDELA;
-						else if (_global_jazyk == JAZYK_CZ)
-							_global_den.typslav_lokal = LOKAL_SLAV_DRUHA_VELK_NEDELA_CZ;
-						else if (_global_jazyk == JAZYK_HU)
-							_global_den.typslav_lokal = LOKAL_SLAV_DRUHA_VELK_NEDELA_HU;
+						// substring (2. veľkonočná nedeľa) riešený pomocou "typslav_lokal" -> text_NEDELA_VO_VELKONOCNEJ_OKTAVE_SUBSTRING[]
+						_global_den.typslav_lokal = LOKAL_SLAV_DRUHA_VELK_NEDELA;
 					}
 					else{
 						// veľkonočná oktáva - 'všedný deň' vo veľkonočnej oktáve
@@ -5491,7 +5477,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	char pom[MAX_STR], pom2[MAX_STR], pom3[SMALL];
 	char popisok_lokal[MAX_STR];
 	char popisok_kalendar[MAX_STR];
-	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	mystrcpy(pom, STR_EMPTY, MAX_STR); mystrcpy(pom2, STR_EMPTY, MAX_STR); mystrcpy(pom3, STR_EMPTY, SMALL);
 	mystrcpy(popisok_lokal, STR_EMPTY, MAX_STR);
 	mystrcpy(popisok_kalendar, STR_EMPTY, MAX_STR);
 
@@ -5719,8 +5705,17 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		Log("slávenie nemá vlastný názov...\n");
 		if (_local_den.denvt == DEN_NEDELA) {
 			Log("nedeľa, ktorá nemá vlastný názov... (_local_string == %s)\n", _local_string);
-			// nedeľa bez vlastného názvu; úprava názvov nedieľ v štýle "3. NEDEĽA V ADVENTNOM OBDOBÍ" -> "Tretia adventná nedeľa" 
-			if (
+			// nedeľa bez vlastného názvu
+			if (_global_jazyk == JAZYK_BY) {
+				convertToRoman(_local_den.tyzden, pom2); // poradie_SLOVOM(_local_den.tyzden - 1)
+				if (!((_local_den.litobd == OBD_VELKONOCNE_I) || (_local_den.litobd == OBD_VELKONOCNE_II))) {
+					sprintf(pom, "%s %s %s", pom2, nazov_DNA(_local_den.denvt), nazov_OBDOBIA_V(_local_den.litobd));
+				}
+				else {
+					sprintf(pom, "%s %s %s", pom2, nazov_OBDOBIA_AKA(_local_den.litobd), nazov_DNA(_local_den.denvt));
+				}
+			}// BY only
+			else if (
 				(_local_den.litobd == OBD_ADVENTNE_I) || (_local_den.litobd == OBD_ADVENTNE_II)
 				|| (_local_den.litobd == OBD_POSTNE_I)
 				|| (_local_den.litobd == OBD_VELKONOCNE_I) || (_local_den.litobd == OBD_VELKONOCNE_II)
@@ -5728,13 +5723,11 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 					sprintf(pom, "%s %s %s", poradie_SLOVOM(_local_den.tyzden - 1), nazov_DNA(_local_den.denvt), nazov_OBDOBIA_AKA(_local_den.litobd));
 				}
-				else if ((_global_jazyk == JAZYK_BY) && !((_local_den.litobd == OBD_VELKONOCNE_I) || (_local_den.litobd == OBD_VELKONOCNE_II))) {
-					sprintf(pom, "%s %s %s", poradie_SLOVOM(_local_den.tyzden - 1), nazov_DNA(_local_den.denvt), nazov_OBDOBIA_V(_local_den.litobd));
-				}
 				else if (_global_jazyk == JAZYK_HU) {
 					sprintf(pom, "%s %s %s%s", nazov_OBDOBIA_AKA(_local_den.litobd), poradie_SLOVOM(_local_den.tyzden - 1), nazov_DNA(_local_den.denvt), KONCOVKA_DNA_HU);
 				}
 				else {
+					// úprava názvov nedieľ v štýle "3. NEDEĽA V ADVENTNOM OBDOBÍ" -> "Tretia adventná nedeľa"
 					sprintf(pom, "%s %s %s", poradie_SLOVOM(_local_den.tyzden - 1), nazov_OBDOBIA_AKA(_local_den.litobd), nazov_DNA(_local_den.denvt));
 				}
 			}// špeciálne nedele slovom
@@ -5942,11 +5935,11 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		// vlastny nazov
 		if (_local_den.denvt == DEN_NEDELA) {
 			// nedela co ma vlastny nazov
-			strcat(pom, caps_BIG(_local_den.meno));
+			strcat(pom, mystr_UPPERCASE(_local_den.meno));
 		}
 		else if (velkost == CASE_VERZALKY) {
 			// STACK OVERFLOW
-			strcat(pom, caps_BIG(_local_den.meno));
+			strcat(pom, mystr_UPPERCASE(_local_den.meno));
 		}
 		else {
 			if (velkost == CASE_KAPITALKY) {
@@ -6070,11 +6063,13 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			mystrcpy(popisok_kalendar, nazov_kalendara_long[_local_den.kalendar], MAX_STR);
 			Log("podmienka OK, popisok_kalendar == %s (_local_den.kalendar == %d)\n", popisok_kalendar, _local_den.kalendar);
 		}// otherwise empty
+
 		mystrcpy(popisok_lokal, STR_EMPTY, MAX_STR);
 		// teraz lokalizácia slavenia resp. poznámku o lokálnom kalendári
 		if (_local_den.typslav_lokal != LOKAL_SLAV_NEURCENE) {
-			mystrcpy(popisok_lokal, nazov_slavenia_lokal[_local_den.typslav_lokal], MAX_STR);
+			mystrcpy(popisok_lokal, NAZOV_SLAVENIA_LOKAL_LOCAL_DEN_TYPSLAV_LOKAL, MAX_STR);
 		}
+
 		long strlen_popisok_kalendar = 0, strlen_popisok_lokal = 0;
 		strlen_popisok_kalendar = strlen(popisok_kalendar);
 		strlen_popisok_lokal = strlen(popisok_lokal);
@@ -7063,7 +7058,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		Export(ELEM_BEGIN(XML_LIT_WEEK_PSALT)"%d" ELEM_END(XML_LIT_WEEK_PSALT) "\n", _local_den.tyzzal);
 		Export(ELEMID_BEGIN(XML_LIT_SEASON)"%s" ELEM_END(XML_LIT_SEASON) "\n", _local_den.litobd, nazov_obdobia(_local_den.litobd));
 		Export(ELEMID_BEGIN(XML_LIT_TYPE)"%s" ELEM_END(XML_LIT_TYPE) "\n", _local_den.typslav, nazov_slavenia(_local_den.typslav));
-		Export(ELEM_BEGIN(XML_LIT_TYPE_LOCAL)"%s" ELEM_END(XML_LIT_TYPE_LOCAL) "\n", nazov_slavenia_lokal[_local_den.typslav_lokal]);
+		Export(ELEM_BEGIN(XML_LIT_TYPE_LOCAL)"%s" ELEM_END(XML_LIT_TYPE_LOCAL) "\n", NAZOV_SLAVENIA_LOKAL_LOCAL_DEN_TYPSLAV_LOKAL);
 		Export(ELEM_BEGIN(XML_LIT_LEVEL)"%d" ELEM_END(XML_LIT_LEVEL) "\n", _local_den.smer);
 		Export(ELEM_BEGIN(XML_LIT_REQUIRED)"%d" ELEM_END(XML_LIT_REQUIRED) "\n", _local_den.prik);
 		xml_export_spol_cast(poradie_svateho);

@@ -74,6 +74,12 @@ const short int ritus_jazyka[POCET_JAZYKOV + 1] =
 
 extern const short int format_datumu[POCET_JAZYKOV + 1];
 
+// usage of dot for indicating ordinal numbers
+#define FORMAT_DATE_DO_NOT_USE_DOT_FOR_ORDINALS 0
+#define FORMAT_DATE_USE_DOT_FOR_ORDINALS        1
+
+extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
+
 // number of CSSs
 #define POCET_CSS	3
 
@@ -886,12 +892,12 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_KONSEKR_KOSTOLY			18
 #define LOKAL_SLAV_DRUHA_VELK_NEDELA		19
 #define LOKAL_SLAV_KONIEC_OKTAVY_NAR		20
-#define LOKAL_SLAV_KONIEC_OKTAVY_NAR_CZ		21
+#define LOKAL_SLAV_free_1		21 // free
 #define LOKAL_SLAV_PRAHA_PATRON				22
 #define LOKAL_SLAV_PRAHA					23
 #define LOKAL_SLAV_BRNO						24
 #define LOKAL_SLAV_MORAVA_SPOMIENKA			25
-#define LOKAL_SLAV_DRUHA_VELK_NEDELA_CZ		26
+#define LOKAL_SLAV_free_3		26 // free
 #define LOKAL_SLAV_PRAHA_KATEDRALA			27
 #define LOKAL_SLAV_CESKE_BUDEJOVICE			28
 #define LOKAL_SLAV_OLOMOUC					29
@@ -900,13 +906,13 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_OSTRAVA_OPAVA			32
 #define LOKAL_SLAV_LITOMERICE				33
 #define LOKAL_SLAV_HRADEC_KRALOVE			34
-#define LOKAL_SLAV_KONSEKR_KOSTOLY_CZ 		35
+#define LOKAL_SLAV_free_5		35 // free
 #define LOKAL_SLAV_PLZEN 					36
 #define LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST	37
 #define LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA	38
 #define LOKAL_SLAV_SPIS_BA_PATRON			39 // pre 11. novembra, patróna BA-arcidiecézy; nahrádza LOKAL_SLAV_SPIS_PATRON
 #define LOKAL_SLAV_BRATISLAVA				40
-#define LOKAL_SLAV_KONIEC_OKTAVY_NAR_HU		41
+#define LOKAL_SLAV_free_2		41 // free
 #define LOKAL_SLAV_KONGREGACIA_SSK			42
 #define LOKAL_SLAV_SPOMIENKA_OFMCAP			43
 #define LOKAL_SLAV_SVIATOK_OFM				44
@@ -917,7 +923,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SLAVNOST_SDB				49
 #define LOKAL_SLAV_SVIATOK_VDB				50
 #define LOKAL_SLAV_SVIATOK_SCSC				51
-#define LOKAL_SLAV_DRUHA_VELK_NEDELA_HU		52
+#define LOKAL_SLAV_free_4		52 // free
 #define LOKAL_SLAV_SZOMBATHELYI_EGYH        53
 #define LOKAL_SLAV_NAGYSZ_PATRON            54
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON       55
@@ -935,7 +941,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_VACI_PATRON              67
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON2      68
 #define LOKAL_SLAV_VESZPREM_FOEGYH          69
-#define LOKAL_SLAV_KONSEKR_KOSTOLY_HU		70
+#define LOKAL_SLAV_free_6		70 // free
 #define LOKAL_SLAV_SZEGED_CSAN_EGYH2        71
 #define LOKAL_SLAV_PECS_PATRON              72
 #define LOKAL_SLAV_SZOMBATHELYI_PATRON      73
@@ -1157,7 +1163,6 @@ extern const char *nazov_Mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 extern const char *nazov_MESIACA_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_MESIACA(a)	nazov_MESIACA_jazyk[a][_global_jazyk]
 
-// genitív názvu mesiaca kvôli latinčine
 extern const char *nazov_mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca_gen(a)	nazov_mesiaca_gen_jazyk[a][_global_jazyk]
 
@@ -1215,6 +1220,7 @@ typedef struct lrok _struct_lrok;
 #define LINK_DEN_MESIAC_PREDOSLY 6
 #define LINK_DEN_MESIAC_NASLEDOVNY 7
 #define LINK_DEN_MESIAC_GEN 8 // the same as LINK_DEN_MESIAC but the month name is in genitive form
+#define LINK_DEN_MESIAC_ROK_GEN 9 // the same as LINK_DEN_MESIAC_ROK but the month name is in genitive form
 
 #define LINK_SHIFT 50 // shift added to base LINK constant
 
@@ -1459,8 +1465,8 @@ short int _allocate_global_var(void);
 short int _deallocate_global_var(void);
 
 short int cislo_mesiaca(char *mesiac);
-char *caps_BIG(const char *input);
-char *remove_diacritics(const char *input);
+char *mystr_UPPERCASE(const char *input);
+char *mystr_remove_diacritics(const char *input);
 char *convert_nonbreaking_spaces(const char *input);
 
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align);

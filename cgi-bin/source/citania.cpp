@@ -66,16 +66,16 @@ char *getCode(_struct_dm *d) {
 	if (d->smer == 1) { sprintf(buf, "%02d%02d%d", d->smer, d->litobd, d->denvt); // Velkonocne trojdnie
 	} else if (d->smer == 2) { // niektore maju nedelny cyklus, niektore nie (Popolcova streda).
 		if (d->meno[0]) {        // zatial dame pismeno cyklu vzdy; neublizi to.
-			sprintf(buf, "%02d%c%s", d->smer, nedelnyCyklus(d), remove_diacritics(d->meno));
+			sprintf(buf, "%02d%c%s", d->smer, nedelnyCyklus(d), mystr_remove_diacritics(d->meno));
 		} else {
 			sprintf(buf, "%02d%c%02d%02d%02d", d->smer, nedelnyCyklus(d), d->litobd, d->tyzden, d->denvt);
 		}
 	} else if (d->smer <= 5) {
-		sprintf(buf, "%02d%c%s", d->smer, nedelnyCyklus(d), remove_diacritics(d->meno));
+		sprintf(buf, "%02d%c%s", d->smer, nedelnyCyklus(d), mystr_remove_diacritics(d->meno));
 	} else if (d->smer == 6) { // nedele vianocneho a cezrocneho obdobia
 		sprintf(buf, "%02d%c%02d%02d", d->smer, nedelnyCyklus(d), d->litobd, d->tyzden);
 	} else if (d->smer <= 8) {
-		sprintf(buf, "%02d%s", d->smer, remove_diacritics(d->meno));
+		sprintf(buf, "%02d%s", d->smer, mystr_remove_diacritics(d->meno));
 	} else if (d->smer <= 9) {
 		if (d->smer == 9 && d->mesiac == 12 && d->den <=24) { // na konci adventu rozhoduje kalendarny datum
 			sprintf(buf, "%02d%02d%02d", d->smer, d->litobd, d->den);
@@ -86,7 +86,7 @@ char *getCode(_struct_dm *d) {
 			sprintf(buf, "%02d%c%02d%02d%02d", d->smer, ferialnyCyklus(d), d->litobd, d->tyzden, d->denvt);
 		}
 	} else if (d->smer <= 12) {
-		sprintf(buf, "%02d%s", d->smer, remove_diacritics(d->meno));
+		sprintf(buf, "%02d%s", d->smer, mystr_remove_diacritics(d->meno));
 	} else {
 		if (d->litobd == OBD_VIANOCNE_I || d->litobd == OBD_VIANOCNE_II) {
 			// Ferie vo Vianocnom obdobi su predpisane na dni kalendara.

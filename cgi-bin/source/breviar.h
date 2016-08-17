@@ -423,6 +423,8 @@ extern short int _typslav_override(short int typslav);
 
 #define pouzit_na_spomienky_casti_zo_spolocnych_casti (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)))
 
+#define NAZOV_SLAVENIA_LOKAL_LOCAL_DEN_TYPSLAV_LOKAL ((_local_den.typslav_lokal == LOKAL_SLAV_KONSEKR_KOSTOLY) ? (char *)text_LEN_V_KONSEKROVANYCH_KOSTOLOCH[_global_jazyk] : ((_local_den.typslav_lokal == LOKAL_SLAV_KONIEC_OKTAVY_NAR) ? (char *)text_KONIEC_OKTAVY_NARODENIA_PANA[_global_jazyk] : ((_local_den.typslav_lokal == LOKAL_SLAV_DRUHA_VELK_NEDELA) ? (char *)text_NEDELA_VO_VELKONOCNEJ_OKTAVE_SUBSTRING[_global_jazyk] : nazov_slavenia_lokal[_local_den.typslav_lokal])))
+
 // 2014-04-08: presunuté do #define -- bolo na 2 rôznych miestach | sviatky Pána a svätých, ktoré majú prednosť pred Cezročnou nedeľou a majú (ak padnú na nedeľu) svoje vlastné prvé vešpery
 // ------------- pôvodné poznámky ------------- 
 // 2011-06-30: cyril a metod odvetvený pre SK a CZ only
