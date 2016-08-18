@@ -2509,6 +2509,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 	mystrcpy(path, include_dir, MAX_STR);
 
 	short int zobrazit = NIE;
+	short int je_sviatok_alebo_slavnost = NIE;
 	short int podmienka = NIE;
 	short int je_begin, je_end = NIE;
 	short int exportovat_html_note = NIE;
@@ -2804,6 +2805,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				Log("sc.a1 == %d (%s)...\n", sc.a1, nazov_spolc(sc.a1));
 				zobrazit &= je_spolocna_cast_urcena(sc.a1);
 				Log("zobrazit == %d...\n", zobrazit);
+				// je_sviatok_alebo_slavnost = (je_global_den_slavnost || je_global_den_sviatok);
 			}
 			// pre miestne sviatky má zmysel pre MCD (nie pre kompletórium)
 			else {
@@ -2814,15 +2816,15 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 						zobrazit |= (MIESTNE_SLAVENIE_LOKAL_SVATY(_global_poradie_svaty)) && (je_modlitba_cez_den(_global_modlitba));
 						// napokon rozkódujeme, čo je v _global_svaty(_global_poradie_svaty).spolcast
 						sc = _decode_spol_cast(_global_svaty(_global_poradie_svaty).spolcast);
-						zobrazit &= je_spolocna_cast_urcena(sc.a1);
+						je_sviatok_alebo_slavnost = (_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty));
 					}
 					else if (_global_poradie_svaty == PORADIE_PM_SOBOTA) {
 						zobrazit = (((_global_pm_sobota.typslav != SLAV_LUB_SPOMIENKA) && (_global_pm_sobota.typslav != SLAV_SPOMIENKA)) || ((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI) && (_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM)));
 						// zobrazit |= (MIESTNE_SLAVENIE_LOKAL_SVATY(_global_poradie_svaty)) && (je_modlitba_cez_den(_global_modlitba));
 						// napokon rozkódujeme, čo je v _global_pm_sobota.spolcast
 						sc = _decode_spol_cast(_global_pm_sobota.spolcast);
-						zobrazit &= je_spolocna_cast_urcena(sc.a1);
 					}
+					zobrazit &= je_spolocna_cast_urcena(sc.a1);
 				}// ináč nemá zmysel komplikované rozhodovanie (pre kompletórium)
 			}
 		}// ináč nemá zmysel komplikované rozhodovanie (ak nie je zvolený BIT_OPT_1_ZOBRAZ_SPOL_CAST)
@@ -2833,11 +2835,14 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 
 			_export_global_string_spol_cast(ANO);
 
-			if (pouzit_na_spomienky_casti_zo_spolocnych_casti) {
+			if (pouzit_na_spomienky_casti_zo_spolocnych_casti || je_sviatok_alebo_slavnost) {
+				Log("pouzit_na_spomienky_casti_zo_spolocnych_casti || je_sviatok_alebo_slavnost...\n");
 				if (je_spolocna_cast_urcena(sc.a2)) {
+					Log("je_spolocna_cast_urcena(sc.a2)...\n");
 					Export(HTML_DIV_BEGIN);
 					_export_link_communia((sc.a2 != odfiltrujSpolCast(modlitba, _global_opt[OPT_3_SPOLOCNA_CAST])) ? sc.a2 : sc.a1, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, (char *)STR_EMPTY, (char *)STR_EMPTY, /* anchor */ (char *)PARAM_SPOL_CAST, (char *)HTML_SPAN_END);
 					if (je_spolocna_cast_urcena(sc.a3)) {
+						Log("je_spolocna_cast_urcena(sc.a3)...\n");
 						_export_link_communia((sc.a3 != odfiltrujSpolCast(modlitba, _global_opt[OPT_3_SPOLOCNA_CAST])) ? sc.a3 : sc.a1, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, (char *)STR_EMPTY, (char *)STR_EMPTY, /* anchor */ (char *)PARAM_SPOL_CAST, (char *)HTML_SPAN_END);
 					}
 					Export(HTML_DIV_END);

@@ -364,7 +364,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 * ak nematchuje, vrati MODL_SPOL_CAST_SV_MUZ; 03/03/2000A.D.
 * (predtym som vracal MODL_SPOL_CAST_NEURCENA)
 */
-#define otazka_sedi_to {\
+#define ucitel_cirkvi__sc_duch_pastier_panna {\
 	if((a == MODL_SPOL_CAST_DUCH_PAST_KNAZ) || (a == MODL_SPOL_CAST_DUCH_PAST_BISKUP) || (a == MODL_SPOL_CAST_DUCH_PAST_PAPEZ) || (a == MODL_SPOL_CAST_PANNA)){\
 		Log("matches (duchovny pastier || panna). returning %s (%d)\n", nazov_spolc(a), a);\
 		return a;\
@@ -375,7 +375,9 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	}\
 }
 
-#define otazka_sedi_to2 if(a == MODL_SPOL_CAST_PANNA){Log("matches. returning ANO\n");return ANO;}
+#define mucenik__sc_panna { if(a == MODL_SPOL_CAST_PANNA) { Log("matches. returning ANO\n"); return ANO; } }
+
+#define panna__sc_mucenica { if(a == MODL_SPOL_CAST_MUCENICA) { Log("matches. returning ANO\n"); return ANO; } }
 
 /* ------------------------------------------------------------------------------------------- */
 

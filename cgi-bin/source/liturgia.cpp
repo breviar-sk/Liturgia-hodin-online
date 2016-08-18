@@ -1587,9 +1587,9 @@ int _encode_spol_cast(short int a1){
 }
 _struct_sc _decode_spol_cast(int spolc){
 	_struct_sc ret;
-	ret.a3 = spolc DIV(MAX_MODL_SPOL_CAST * MAX_MODL_SPOL_CAST);
-	ret.a2 = (spolc MOD(MAX_MODL_SPOL_CAST * MAX_MODL_SPOL_CAST)) DIV MAX_MODL_SPOL_CAST;
-	ret.a1 = (spolc MOD(MAX_MODL_SPOL_CAST * MAX_MODL_SPOL_CAST)) MOD MAX_MODL_SPOL_CAST;
+	ret.a3 = spolc DIV (MAX_MODL_SPOL_CAST * MAX_MODL_SPOL_CAST);
+	ret.a2 = (spolc MOD (MAX_MODL_SPOL_CAST * MAX_MODL_SPOL_CAST)) DIV MAX_MODL_SPOL_CAST;
+	ret.a1 = (spolc MOD (MAX_MODL_SPOL_CAST * MAX_MODL_SPOL_CAST)) MOD MAX_MODL_SPOL_CAST;
 	return ret;
 }
 

@@ -83,7 +83,7 @@
 #define DEN_PIATOK      5
 #define DEN_SOBOTA      6
 #define DEN_UNKNOWN     7
-// number ofweek  days
+// number of week  days
 #define POCET_DNI		7
 
 // all days
