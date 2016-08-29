@@ -71,9 +71,9 @@
     <string name="vesp_notify">Je čas na nešpory!</string>
     <string name="kompl_notify">Je čas na kompletář!</string>
     <string name="read_notify">Je čas na modlitbu se čtením!</string>
-    <string name="h9_notify">Je čas na odpolední modlitbu!</string>
+    <string name="h9_notify">Je čas na dopolední modlitbu!</string>
     <string name="h12_notify">Je čas na polední modlitbu!</string>
-    <string name="h15_notify">Je čas na popolední modlitbu!</string>
+    <string name="h15_notify">Je čas na odpolední modlitbu!</string>
 
     <string name="menu_about">O...</string>
     <string name="about">O aplikaci</string>
