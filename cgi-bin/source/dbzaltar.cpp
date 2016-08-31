@@ -133,6 +133,7 @@ short int su_antifony_vlastne(short int m){
 	Log("su_antifony_vlastne(%d): ", m);
 	short int ret;
 	ret = FALSE;
+	Log("_global_poradie_svaty == %d...\n", _global_poradie_svaty);
 	if (_global_poradie_svaty == 0){
 		if (_je_global_den_slavnost){
 			ret = TRUE;
@@ -10102,28 +10103,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 			_spolocna_cast_kresp_ve;
 
 		// žalmy sa berú ako vo všedný deň, antifóny z vlastnej časti
-		// problém: pre výročie posviacky Lateránskej baziliky nemajú sa vziať antifóny a žalmy zo spoločnej časti, ale zo dňa
-		modlitba = MODL_PREDPOLUDNIM;
-		if ((_global_den.den != 9) && (_global_den.mesiac - 1 != MES_NOV)){
-			_spolocna_cast_antifony;
-		}
-		_spolocna_cast_kcitanie(modlitba);
-		_spolocna_cast_kresponz;
-		_spolocna_cast_modlitba;
-		modlitba = MODL_NAPOLUDNIE;
-		if ((_global_den.den != 9) && (_global_den.mesiac - 1 != MES_NOV)){
-			_spolocna_cast_antifony;
-		}
-		_spolocna_cast_kcitanie(modlitba);
-		_spolocna_cast_kresponz;
-		_spolocna_cast_modlitba;
-		modlitba = MODL_POPOLUDNI;
-		if ((_global_den.den != 9) && (_global_den.mesiac - 1 != MES_NOV)){
-			_spolocna_cast_antifony;
-		}
-		_spolocna_cast_kcitanie(modlitba);
-		_spolocna_cast_kresponz;
-		_spolocna_cast_modlitba;
+		// vyriešené aj pre výročie posviacky Lateránskej baziliky (sviatok; nemajú sa vziať antifóny a žalmy zo spoločnej časti, ale zo dňa)
 
 		// modlitba cez deň
 		modlitba = MODL_PREDPOLUDNIM;

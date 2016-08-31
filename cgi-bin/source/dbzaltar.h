@@ -791,7 +791,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 }
 
 // rovnako tak pre spolocnu cast...
-#define _spolocna_cast_kcitanie(modl)		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){ _vlastna_cast_kcitanie; }
+#define _spolocna_cast_kcitanie(modl)		if((je_modlitba_cez_den(modl) && su_kcit_kresp_modlitba_mcd_vlastne(modl)) || su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_KCIT_1CIT) == FORCE_BRAT_KCIT_1CIT)){ _vlastna_cast_kcitanie; }
 #define _spolocna_cast_benediktus(modl)		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){ _vlastna_cast_benediktus; }
 #define _spolocna_cast_magnifikat(modl)		if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){ _vlastna_cast_magnifikat; }
 #define _spolocna_cast_prosby(modl)			if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modl) || ((force & FORCE_BRAT_PROSBY) == FORCE_BRAT_PROSBY)){ _vlastna_cast_prosby; }
@@ -918,7 +918,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 // kratke responzorium
 #define _spolocna_cast_kresponz {\
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){\
+	if ((je_modlitba_cez_den(modlitba) && su_kcit_kresp_modlitba_mcd_vlastne(modlitba)) || su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){\
 		sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
 		_set_kresponz(modlitba, _file, _anchor);\
 		set_LOG_svsv;\

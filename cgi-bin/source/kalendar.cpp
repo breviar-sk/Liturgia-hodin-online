@@ -21,6 +21,8 @@
 #include "mystring.h"
 #include "breviar.h"
 
+short int je_modlitba_vlastna = ANO;
+
 short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _struct_sc sc){
 	// toto priradujeme preto, aby sme nemuseli pri kazdom svatom priradovat pocet = 1;
 	short int pocet = 1;
@@ -4880,7 +4882,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				set_popis_dummy();
 
@@ -5096,7 +5098,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				if (query_type != PRM_DETAILY) {
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				set_popis_dummy();
 
@@ -7797,7 +7799,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY) {
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				set_popis_dummy();
 
@@ -8231,7 +8233,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -8745,7 +8747,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			if (query_type != PRM_DETAILY){
 				set_spolocna_cast(sc, poradie_svaty);
 			}
-			// všetko je zo spoločnej časti na výročie posviacky chrámu
+			je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 			break;
 		}
@@ -9952,7 +9954,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -10646,7 +10648,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -12206,7 +12208,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -12231,7 +12233,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -12719,7 +12721,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -12834,7 +12836,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			if (query_type != PRM_DETAILY){
 				set_spolocna_cast(sc, poradie_svaty);
 			}
-			// všetko je zo spoločnej časti na výročie posviacky chrámu
+			je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_2citanie;
@@ -13413,7 +13415,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -14191,7 +14193,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -15099,7 +15101,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 					if (query_type != PRM_DETAILY){
 						set_spolocna_cast(sc, poradie_svaty);
 					}
-					// všetko je zo spoločnej časti na výročie posviacky chrámu
+					je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 					break;
 				}
@@ -18174,7 +18176,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -18424,7 +18426,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -18725,7 +18727,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -19113,7 +19115,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					if (query_type != PRM_DETAILY){
 						set_spolocna_cast(sc, poradie_svaty);
 					}
-					// všetko je zo spoločnej časti na výročie posviacky chrámu
+					je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_2citanie;
@@ -19530,7 +19532,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
-			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+			if (!((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) {
 				set_popis_dummy();
 			}
 
@@ -19574,7 +19576,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -19663,7 +19665,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -20109,7 +20111,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -20548,7 +20550,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -20713,7 +20715,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -21229,7 +21231,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -21425,7 +21427,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			if (query_type != PRM_DETAILY){
 				set_spolocna_cast(sc, poradie_svaty);
 			}
-			// všetko je zo spoločnej časti na výročie posviacky chrámu
+			je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 			break;
 		}
@@ -21749,7 +21751,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -22901,7 +22903,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -23169,7 +23171,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					if (query_type != PRM_DETAILY){
 						set_spolocna_cast(sc, poradie_svaty);
 					}
-					// všetko je zo spoločnej časti na výročie posviacky chrámu
+					je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 					break;
 				}
@@ -23530,7 +23532,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY) {
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				set_popis_dummy();
 
@@ -23556,7 +23558,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -24774,7 +24776,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -25011,7 +25013,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -25044,7 +25046,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -25092,7 +25094,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -25148,7 +25150,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -25237,7 +25239,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -25352,7 +25354,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -25600,7 +25602,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY) {
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -25619,7 +25621,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				set_popis_dummy();
 
@@ -26724,7 +26726,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			if (query_type != PRM_DETAILY){
 				set_spolocna_cast(sc, poradie_svaty);
 			}
-			// všetko je zo spoločnej časti na výročie posviacky chrámu
+			je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_2citanie;
@@ -27955,7 +27957,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				if (query_type != PRM_DETAILY) {
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -28339,7 +28341,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_2citanie;
@@ -29062,7 +29064,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 				if (query_type != PRM_DETAILY) {
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				set_popis_dummy();
 
@@ -29659,7 +29661,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 				if (query_type != PRM_DETAILY){
 					set_spolocna_cast(sc, poradie_svaty);
 				}
-				// všetko je zo spoločnej časti na výročie posviacky chrámu
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 				break;
 			}
@@ -30019,6 +30021,8 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 	// LOG_ciara_sv; Log("_global_den: \n"); Log(_global_den);
 
+	je_modlitba_vlastna = ANO; // by default, each celebration has its own conclusing prayer of the day; in rare cases (mostly common texts for consecration of the church) prayer from common texts should be used
+
 	// az teraz, ked je v _global_den (pri druhom volani fcie) spravna hodnota z _global_svaty[1,2,3], mozem urobit toto priradenie do sc
 	_struct_sc sc = _decode_spol_cast(_global_den.spolcast);
 
@@ -30071,9 +30075,11 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	if ((poradie_svaty > 0) && (_je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty))) {
 
 		// spolieham sa na to, že _file, _anchor, _anchor_head ostali správne nastavené...
-		Log("override stupňa slávenia => sviatok alebo slávnosť, nastavujem mcd...\n");
+		Log("override stupňa slávenia => sviatok alebo slávnosť, nastavujem mcd (ak je vlastná)...\n");
 
-		_vlastna_cast_mcd_modlitba;
+		if (je_modlitba_vlastna == ANO) {
+			_vlastna_cast_mcd_modlitba;
+		}
 
 		if ((_je_global_svaty_i_slavnost(poradie_svaty)) && (_global_svaty(poradie_svaty).typslav != SLAV_SLAVNOST)) {
 
@@ -30087,8 +30093,10 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 				_set_zalmy_1nedele_mcd();
 			}
 
-			modlitba = MODL_PRVE_VESPERY;
-			_vlastna_cast_modlitba;
+			if (je_modlitba_vlastna == ANO) {
+				modlitba = MODL_PRVE_VESPERY;
+				_vlastna_cast_modlitba;
+			}
 
 			modlitba = MODL_PRVE_KOMPLETORIUM;
 			_set_kompletorium_slavnost(modlitba);
