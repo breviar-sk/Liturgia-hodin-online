@@ -64,7 +64,7 @@
     <string name="onlyNonBoldFontOn">Obyčejné písmo</string>
     <string name="onlyNonBoldFontOff">I tučné písmo</string>
 
-    <string name="inv">Invitatoř</string>
+    <string name="inv">Uvedení</string>
     <string name="rch">Ranní chvály</string>
     <string name="vesp">Nešpory</string>
     <string name="kompl">Kompletář</string>
@@ -73,7 +73,7 @@
     <string name="h12">Modlitba napoledne</string>
     <string name="h15">Modlitba odpoledne</string>
 
-    <string name="inv_notify">Je čas na invitatoř!</string>
+    <string name="inv_notify">Je čas na uvedení!</string>
     <string name="rch_notify">Je čas na ranní chvály!</string>
     <string name="vesp_notify">Je čas na nešpory!</string>
     <string name="kompl_notify">Je čas na kompletář!</string>
@@ -94,7 +94,7 @@
     <string name="about_PLATFORM_IOS">iOS</string>
     <string name="about_text">include_cz/about.htm</string>
 
-    <string name="btn_news">Co je nové</string>
+    <string name="btn_news">Co je nového</string>
     <string name="news"><![CDATA[
 <html>
 <head>
@@ -105,7 +105,7 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
-<p><b>Aplikace Breviář | Co je nové</b>
+<p><b>Aplikace Breviář | Co je nového</b>
 
 <!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
 
