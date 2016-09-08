@@ -2896,11 +2896,11 @@ const char *html_text_opt_1_override_stupen_slavenia[POCET_JAZYKOV + 1] =
 const char *html_text_opt_1_override_stupen_slavenia_explain[POCET_JAZYKOV + 1] =
 {
 	"Možnosť sláviť (ľubovoľnú) spomienku ako sviatok alebo slávnosť, podobne možnosť sláviť sviatok ako slávnosť.",
-	"",
-	"",
+	"Možnost slavit (nezávaznou) památku jako svátek nebo slavnost, resp. možnost slavit svátek jako slavnost.",
 	"Possibility to celebrate (free) memory as a feast or a solemnity; likewise the possibility to celebrate the feast as a solemnity.",
 	"",
 	"",
+	"Možnost slavit (nezávaznou) památku jako svátek nebo slavnost, resp. možnost slavit svátek jako slavnost.",
 	"Lehetséges a (tetszés szerinti) emléknapot, mint ünnepet vagy főünnepet venni, hasonlóan az ünnepet mint főünnepet venni (hejbéli ünnep/főünnep).",
 	"ru_text",
 	"Магчымасць цэлебраваць успамін як свята альбо ўрачыстасць; таксама магчымасць цэлебраваць свята як урачыстасць.",
