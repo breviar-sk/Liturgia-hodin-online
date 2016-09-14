@@ -105,7 +105,7 @@ char *StringEncode(const char *in) {
 	const char *s;
 	static char out[65536];
 
-	for (s=(const char *)in,i=0; i<(int)sizeof(out)-5 && *s; s++) {
+	for (s = in, i = 0; i<(int)sizeof(out)-5 && *s; s++) {
 		if ( 
 			( (*s>='a')&&(*s<='z') ) ||
 			( (*s>='A')&&(*s<='Z') ) ||
@@ -124,6 +124,26 @@ char *StringEncode(const char *in) {
 	return out;
 }
 
+char *HtmlEncode(const char *in) {
+	int i;
+	const char *s;
+	static char out[65536];
+
+	for (s = in, i = 0; i<(int)sizeof(out)-5 && *s; s++) {
+		if (*s == '<') {
+			strcpy(out + i, "&lt;");
+			i += 4;
+		} else if (*s == '>') {
+			strcpy(out + i, "&gt;");
+			i += 4;
+		} else {
+			out[i] = *s;
+			i += 1;
+		}
+	}
+	out[i]=0;
+	return out;
+}
 
 #endif // LITURGICKE_CITANIA_ANDROID
 

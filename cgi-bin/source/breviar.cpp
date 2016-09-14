@@ -6120,7 +6120,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 					sprintf(pom, "&amp;aleluja=");
 					strcat(_local_string, pom);
 					strcat(_local_string, StringEncode(cit->aleluja));
-					sprintf(pom, "\">%s" HTML_A_END, cit->citania);
+					sprintf(pom, "\">%s" HTML_A_END, HtmlEncode(cit->citania));
 					strcat(_local_string, pom);
 				}
 			}// if (cit && aj_citanie && su_liturgicke_citania_offline)
@@ -12759,7 +12759,7 @@ void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r){
 	short int heading_written = 0;
 	char pom[MAX_STR];
 	Log("-- _main_rozbor_dna_txt(short int, short int, short int, short int): begin (%d, %d, %d, %d)\n", typ, d, m, r);
-	short int mi, t;
+	short int mi, t = EXPORT_DNA_DNES;
 
 	char pom2[MAX_STR];
 	mystrcpy(pom, STR_EMPTY, MAX_STR);
