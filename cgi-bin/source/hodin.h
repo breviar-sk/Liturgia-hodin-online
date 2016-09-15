@@ -10923,12 +10923,12 @@ const char *text_SEP_13_HU[POCET_JAZYKOV + 1] =
 };
 const char *text_SEP_14[POCET_JAZYKOV + 1] =
 {
-	"Povýšenie svätého kríža",
+	"Povýšenie Svätého kríža",
 	"Povýšení svatého kříže",
 	"",
 	"",
 	"",
-	"Povýšení svatého kříže",
+	"Povýšení svatého Kříže",
 	"A Szent Kereszt felmagasztalása",
 	"ru_text",
 	"Узвышэнне святога Крыжа",
