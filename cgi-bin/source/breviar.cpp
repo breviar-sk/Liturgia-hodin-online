@@ -7376,7 +7376,9 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		// ak je isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY), zobrazujú sa prvé vešpery pre nedele a slávnosti priamo pre tie dni
 		// vešpery a kompletórium nemá zmysel zobrazovať, ak ide o sobotu a ďalšieho svätého (pri viacerých ľubovoľných spomienkach)
 		// zavedené "nie_su_vespery" kvôli Bielej (veľkej) sobote
-		if ((poradie_svateho != PORADIE_PM_SOBOTA) && !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery))
+		// (druhé) vešpery sa musia zobrazovať pre sviatky Pána mimo nedele
+		if ((poradie_svateho != PORADIE_PM_SOBOTA) 
+			&& !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery) && !(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR))
 			&& (((zobrazit_mcd == ANO) || (_global_den.denvt != DEN_SOBOTA)) || (poradie_svateho == 0))
 			){
 			// vešpery -- button
@@ -10208,7 +10210,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 			// 2013-06-27: pridané zátvorky okolo prvej podmienky, aby && v druhom riadku viazalo sa na obe "||" možnosti s "a"-čkom | breviar.cpp:9804: warning: suggest parentheses around '&&' within '||'
 			// 2013-09-30: namiesto prostej podmienky B:(zobrazit_mcd == ANO) použitá podmienená implikácia A => B (A:modlitba cez deň) vo forme (non A) OR B
 			if(((a != PORADIE_PM_SOBOTA) || (a == PORADIE_PM_SOBOTA && (i != MODL_VESPERY && i != MODL_KOMPLETORIUM)))
-				&& !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery))
+				&& !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery) && !(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR))
 				&& (
 					(/*non A*/ !(je_modlitba_cez_den(i)) || /*B*/(zobrazit_mcd == ANO))
 					|| (_global_den.denvt != DEN_SOBOTA) 
@@ -10294,7 +10296,7 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 			// 2013-04-05: zavedené "nie_su_vespery" kvôli Bielej (veľkej) sobote
 			// 2013-09-30: namiesto prostej podmienky B:(zobrazit_mcd == ANO) použitá podmienená implikácia A => B (A:modlitba cez deň) vo forme (non A) OR B
 			if(((a != PORADIE_PM_SOBOTA) || (a == PORADIE_PM_SOBOTA && (i != MODL_VESPERY && i != MODL_KOMPLETORIUM))) 
-				&& !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery))
+				&& !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery) && !(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR))
 				&& (
 					(/*non A*/ !(je_modlitba_cez_den(i)) || /*B*/(zobrazit_mcd == ANO))
 					|| (_global_den.denvt != DEN_SOBOTA) 

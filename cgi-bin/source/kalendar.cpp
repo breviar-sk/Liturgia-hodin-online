@@ -20755,13 +20755,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			modlitba = MODL_PRVE_VESPERY;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sv_kriz(modlitba);
-			/*
-			// 2014-09-14: doplnené prvé (ak padne na nedeľu)
-			if(_global_den.denvt == DEN_NEDELA){
-			modlitba = MODL_PRVE_KOMPLETORIUM;
-			_set_kompletorium_nedela(modlitba);
-			}
-			*/
+
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
@@ -20779,6 +20773,16 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sv_kriz(modlitba);
+
+			modlitba = MODL_KOMPLETORIUM;
+			// ak padne tento sviatok na sobotu, kompletórium (po druhých vešperách) má byť nedeľné, po prvých vešperách
+			if (_global_den.denvt == DEN_SOBOTA) {
+				zaltar_kompletorium(DEN_NEDELA /* _global_den.denvt */, _global_den.litobd /* OBD_CEZ_ROK */, ZALTAR_VSETKO /* specialne */, _global_den.tyzzal);
+				_global_modl_kompletorium = _global_modl_prve_kompletorium;
+			}// DEN_SOBOTA
+			else {
+				zaltar_kompletorium(_global_den.denvt, _global_den.litobd /* OBD_CEZ_ROK */, ZALTAR_VSETKO /* specialne */, _global_den.tyzzal);
+			}// iný deň ako sobota
 
 			if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
 				break;
