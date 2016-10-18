@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 header("Last-Modified:".gmdate("D, d M Y H:i:s")." GMT");
 ?>
 
@@ -7,13 +7,13 @@ header("Last-Modified:".gmdate("D, d M Y H:i:s")." GMT");
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="Author" content="Juraj Videky">
 	<link rel="stylesheet" type="text/css" href="../../breviar.css">
-	<title>Zoznam súborov v adresári</title>
+	<title>Zoznam sÃºborov v adresÃ¡ri</title>
 </head>
 <body>
 
-<!-- pod¾a zoznamu pre include -->
+<!-- podÄ¾a zoznamu pre include -->
 
-<h2>Zoznam súborov v adresári <tt>source</tt></h2>
+<h2>Zoznam sÃºborov v adresÃ¡ri <tt>source</tt></h2>
 
 <?
 /**
@@ -35,7 +35,7 @@ header("Last-Modified:".gmdate("D, d M Y H:i:s")." GMT");
 $path = "/data/www/www.breviar.sk/public_html/cgi-bin/source/";
 
 // Open the folder
-$dir_handle = @opendir($path) or die("Nemôžem otvori adresár $path");
+$dir_handle = @opendir($path) or die("NemÃ´Å¾em otvoriÅ¥ adresÃ¡r $path");
 
 //this is a function I wrote to sort out the contents of the directory date wise for display.
 $content_array = array();
@@ -46,7 +46,7 @@ while ($file = readdir($dir_handle))
 if ($file != "." && $file != ".." && $file != "index.php" && $file != "prvall" && $file != "skopci" && !fnmatch("*.cgi", $file) && !fnmatch("*.gz", $file) && (fnmatch("*.h", $file) || fnmatch("*.c", $file) || fnmatch("*.cpp", $file) || $file == "urob" || fnmatch("[Mm]akefile", $file)))
 {
 	$content_array[$i][0] = $file;
-	$content_array[$i][1] = date ("Y-m-d H:i:s", filemtime($path."/".$file)); // JUV/2008-10-23, namiesto filemtime môže by aj filectime
+	$content_array[$i][1] = date ("Y-m-d H:i:s", filemtime($path."/".$file)); // JUV/2008-10-23, namiesto filemtime mÃ´Å¾e byÅ¥ aj filectime
 	$i++;
 }
 //close the directory handle
@@ -59,7 +59,7 @@ array_multisort($sortAux, SORT_DESC, $content_array);
 
 //print
 echo "\n<table>";
-echo "\n<tr><th>Súbor</th><th>Posledná zmena</th></tr>";
+echo "\n<tr><th>SÃºbor</th><th>PoslednÃ¡ zmena</th></tr>";
 foreach($content_array as $res)
 	echo "\n<tr><td><a href=\"".$res[0]."\">$res[0]</a></td><td>".$res[1]."</td></tr>";
 	// $res[0].">".$res[1];
@@ -76,7 +76,7 @@ echo "\n</table>";
 echo date ("Y-m-d H:i:s", filemtime($_SERVER['SCRIPT_FILENAME']));
 ?>
 
-<br>© 1999-2010 <a href="mailto:videky@breviar.sk">Juraj Vidéky</a></font></center>
+<br>Â© 1999-2016 <a href="mailto:videky@breviar.sk">Juraj VidÃ©ky</a></font></center>
 
 </body>
 </html>
