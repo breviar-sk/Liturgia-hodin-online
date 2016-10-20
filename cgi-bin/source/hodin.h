@@ -676,7 +676,7 @@ const char *nazov_slavenia_lokal[] =
 , "jen kanonie Teplá"                                                                                            // LOKAL_SLAV_OPRAEM_TEPLA
 , "len pre len pre Kongregáciu sestier Matky Božieho Milosrdenstva"                                              // LOKAL_SLAV_KONGREGACIA_SMBM
 , "pro FMA památka"                                                                                              // LOKAL_SLAV_SPOMIENKA_FMA_CZ
-, "pro FMA nezávazná památka"                                                                                    // LOKAL_SLAV_LUB_SPOMIENKA_FMA_CZ
+, "pro FMA a VDB nezávazná památka"                                                                              // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_CZ
 , "pro VDB svátek"                                                                                               // LOKAL_SLAV_SVIATOK_VDB_CZ
 , "pro FMA slavnost"                                                                                             // LOKAL_SLAV_SLAVNOST_FMA_CZ
 , "A Szeged-Csanádi egyházmegyében"                                                                             // LOKAL_SLAV_SZEGED_CSAN_EGYH3
@@ -5233,7 +5233,7 @@ const char *text_FEB_08_2[POCET_JAZYKOV + 1] =
 const char *text_FEB_09_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Euzébie Palominovej Yenes, panny",
-	"Bl. Eusebie Palomino, řeholnice",
+	"Bl. Eusebie Palomino Yenesové, panny",
 	"",
 	"",
 	"",
@@ -6831,7 +6831,7 @@ const char *text_MAJ_16[POCET_JAZYKOV + 1] =
 const char *text_MAJ_16_SDB[POCET_JAZYKOV + 1] =
 {
 	"Sv. Alojza Orioneho, kňaza",
-	"Sv. Aloise Orione, kněze",
+	"Sv. Aloise Orioneho, kněze",
 	"",
 	"",
 	"",
@@ -7273,7 +7273,7 @@ const char *text_MAJ_29_OP[POCET_JAZYKOV + 1] =
 const char *text_MAJ_29_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jozefa Kowalského, mučeníka",
-	"Bl. Josefa Kowalského, kněze, mučedníka",
+	"Bl. Josefa Kowalského, kněze a mučedníka",
 	"",
 	"",
 	"",
@@ -7778,7 +7778,7 @@ const char *text_JUN_08_OFM[POCET_JAZYKOV + 1] =
 const char *text_JUN_08_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Istvána Sándora, mučeníka",
-	"Bl. Istvána Sándora, mučedníka",
+	"Bl. Štěpána Šándora, mučedníka",
 	"",
 	"",
 	"",
@@ -8639,7 +8639,7 @@ const char *text_JUL_06_CZOP[POCET_JAZYKOV + 1] =
 const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Romerovej Meneses, panny",
-	"Bl. Marie Romero Meneses, panny",
+	"Bl. Marie Romero Menesesové, panny",
 	"",
 	"",
 	"",
@@ -10349,7 +10349,7 @@ const char *text_AUG_25_HU[POCET_JAZYKOV + 1] =
 const char *text_AUG_25_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Troncatti, panny",
-	"Bl. Marie Troncatti, panny",
+	"Bl. Marie Troncattiové, panny",
 	"",
 	"",
 	"",
@@ -11184,7 +11184,7 @@ const char *text_SEP_22_OFM[POCET_JAZYKOV + 1] =
 const char *text_SEP_22_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jozefa Calasanza a Enrica Saiz Aparicio, kňazov, " HTML_LINE_BREAK "a 93 spoločníkov, mučeníkov",
-	"Bl. Josefa Calasanz Marqués " HTML_LINE_BREAK "a Enrica Saiz Aparicio, kněží, a 93 druhů",
+	"Bl. Josefa Calasanze Marquéze " HTML_LINE_BREAK "a Enrika Sáize Aparicia, kněží a druhů, mučedníků",
 	"",
 	"",
 	"",
@@ -11902,7 +11902,7 @@ const char *text_OKT_13_OP[POCET_JAZYKOV + 1] =
 const char *text_OKT_13_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Alexandry Márie da Costovej, panny", // podľa CZ SDB doplnené: "panny"
-	"Bl. Alexandry Marie da Costa, panny",
+	"Bl. Alessadriny Marie da Costa, panny",
 	"",
 	"",
 	"",
@@ -12918,8 +12918,8 @@ const char *text_NOV_12[POCET_JAZYKOV + 1] =
 };
 const char *text_NOV_13_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Artemida Zattiho",
-	"Bl. Artemide Zattiho, koadjutora",
+	"Bl. Artemida Zattiho, rehoľníka", // rehoľníka doplnené podľa CZ SDB
+	"Bl. Artemide Zattiho, řeholníka",
 	"",
 	"",
 	"",

@@ -850,13 +850,21 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				break;
@@ -864,7 +872,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
 			if (_global_jazyk == JAZYK_CZ) {
-				_global_svaty1.typslav_lokal = LOKAL_SLAV_LUB_SPOMIENKA_FMA_CZ;
+				_global_svaty1.typslav_lokal = LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_CZ;
 			}
 			mystrcpy(_global_svaty1.meno, text_JAN_15_SDB[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
@@ -2052,13 +2060,21 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				break;
@@ -2066,7 +2082,12 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty1.meno, text_JAN_30_SDB[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			if (_global_jazyk == JAZYK_CZ) {
+				_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			}
+			else {
+				_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			}
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_SDB a KALENDAR_CZ_SDB
@@ -2874,7 +2895,9 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					_vlastna_cast_modlitba_spomprivileg;
 
 					modlitba = MODL_POSV_CITANIE;
-					// _vlastna_cast_2citanie_spomprivileg;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_2citanie_spomprivileg;
+					}
 					_vlastna_cast_modlitba;
 				}// je_privileg
 				else{
@@ -2883,7 +2906,9 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 						set_spolocna_cast(sc, poradie_svaty);
 
 					modlitba = MODL_POSV_CITANIE;
-					// _vlastna_cast_2citanie;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_2citanie;
+					}
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_RANNE_CHVALY;
@@ -3180,7 +3205,9 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					_vlastna_cast_modlitba_spomprivileg;
 
 					modlitba = MODL_POSV_CITANIE;
-					// _vlastna_cast_2citanie_spomprivileg;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_2citanie_spomprivileg;
+					}
 					_vlastna_cast_modlitba;
 				}// je_privileg
 				else{
@@ -3189,13 +3216,21 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 						set_spolocna_cast(sc, poradie_svaty);
 
 					modlitba = MODL_RANNE_CHVALY;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_prosby;
+					}
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_POSV_CITANIE;
-					// _vlastna_cast_2citanie;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_2citanie;
+					}
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_VESPERY;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_prosby;
+					}
 					_vlastna_cast_modlitba;
 				}// nie je_privileg
 
@@ -4451,11 +4486,13 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					_vlastna_cast_2citanie;
 
 					modlitba = MODL_RANNE_CHVALY;
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 					_vlastna_cast_kcitanie;
 					_vlastna_cast_kresponz;
 					_vlastna_cast_prosby;
 
 					modlitba = MODL_VESPERY;
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 					_vlastna_cast_kcitanie;
 					_vlastna_cast_kresponz;
 					_vlastna_cast_prosby;
@@ -8154,10 +8191,10 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 					_vlastna_cast_full_okrem_hymnu(modlitba);
 
 					modlitba = MODL_RANNE_CHVALY;
-					_vlastna_cast_full_okrem_hymnu(modlitba);
+					_vlastna_cast_full(modlitba);
 
 					modlitba = MODL_VESPERY;
-					_vlastna_cast_full_okrem_hymnu(modlitba);
+					_vlastna_cast_full(modlitba);
 				}
 
 				break;
@@ -9362,7 +9399,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 		}// BY only
 
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))){
-			if (poradie_svaty == 2){
+			if (poradie_svaty == 2) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -9379,12 +9416,14 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_RANNE_CHVALY;
 				if (_global_jazyk == JAZYK_CZ) {
 					_vlastna_cast_benediktus;
+					_vlastna_cast_prosby;
 				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
 				if (_global_jazyk == JAZYK_CZ) {
 					_vlastna_cast_magnifikat;
+					_vlastna_cast_prosby;
 				}
 				_vlastna_cast_modlitba;
 
@@ -10767,7 +10806,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 	case 29: // MES_MAY -- 29MAJ
 
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))){
-			if (poradie_svaty == 1){
+			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -10776,13 +10815,21 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				break;
@@ -10796,7 +10843,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 		}// kalendár pre KALENDAR_SK_SDB a KALENDAR_CZ_SDB
 
 		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD)){
-			if (poradie_svaty == 1){
+			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -11675,7 +11722,9 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
@@ -11932,13 +11981,21 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				break;
@@ -13546,6 +13603,8 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 	short int pocet = 1;
 	short int mesiac = MES_JUL;
 
+	short int pom_poradie = 1;
+
 	Log("mesiac júl\n");
 	switch (den){
 
@@ -14080,38 +14139,8 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 	case 7: // MES_JUL -- 07JUL
 
-		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))){
-			if (poradie_svaty == 1){
-
-				file_name_vlastny_kalendar(_global_kalendar);
-
-				// definovanie parametrov pre modlitbu
-				if (query_type != PRM_DETAILY)
-					set_spolocna_cast(sc, poradie_svaty);
-
-				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
-				_vlastna_cast_modlitba;
-
-				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
-
-				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
-
-				break;
-			}
-
-			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			_global_svaty1.typslav_lokal = (_global_jazyk == JAZYK_SK) ? LOKAL_SLAV_SPOMIENKA_FMA : LOKAL_SLAV_SPOMIENKA_FMA_CZ;
-			mystrcpy(_global_svaty1.meno, text_JUL_07_SDB[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
-			_global_svaty1.farba = LIT_FARBA_BIELA;
-			_global_svaty1.kalendar = _global_kalendar;
-		}// kalendár pre KALENDAR_CZ_SDB a KALENDAR_CZ_SDB
-
-		if (_global_jazyk == JAZYK_SK){
-			if (poradie_svaty == 1){
+		if (_global_jazyk == JAZYK_SK) {
+			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
@@ -14136,8 +14165,16 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_global_svaty1.kalendar = KALENDAR_VSEOBECNY_SK;
 		}// SK only
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)){
-			if (poradie_svaty == 2){
+		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))){
+
+			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) {
+				pom_poradie = 2;
+			}
+			else {
+				pom_poradie = 1;
+			}
+
+			if (poradie_svaty == pom_poradie) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -14146,27 +14183,40 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_modlitba;
 
 				break;
 			}
 
-			pocet = 2;
+			pocet = pom_poradie;
 
-			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			_global_svaty2.typslav_lokal = LOKAL_SLAV_SPOMIENKA_FMA;
-			mystrcpy(_global_svaty2.meno, text_JUL_07_SDB[_global_jazyk], MENO_SVIATKU);
-			_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
-			_global_svaty2.farba = LIT_FARBA_BIELA;
-			_global_svaty2.kalendar = _global_kalendar;
-		}// kalendár pre KALENDAR_SK_SDB
+			_set_slavenie_typslav_smer(pom_poradie, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			_global_svaty(pom_poradie).typslav_lokal = (_global_jazyk == JAZYK_SK) ? LOKAL_SLAV_SPOMIENKA_FMA : LOKAL_SLAV_SPOMIENKA_FMA_CZ;
+			mystrcpy(_global_svaty(pom_poradie).meno, text_JUL_07_SDB[_global_jazyk], MENO_SVIATKU);
+			if (_global_jazyk == JAZYK_CZ) {
+				_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL);
+			}
+			else {
+				_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
+			}
+			_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
+			_global_svaty(pom_poradie).kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_CZ_SDB a KALENDAR_CZ_SDB
 
 		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
 			if (poradie_svaty == 2){
@@ -16829,13 +16879,21 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 						set_spolocna_cast(sc, poradie_svaty);
 
 					modlitba = MODL_POSV_CITANIE;
-					// _vlastna_cast_2citanie;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_2citanie;
+					}
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_RANNE_CHVALY;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_prosby;
+					}
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_VESPERY;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_prosby;
+					}
 					_vlastna_cast_modlitba;
 
 					break;
@@ -19197,8 +19255,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_POSV_CITANIE;
+					_vlastna_cast_2citanie;
 					_vlastna_cast_modlitba;
-					// _vlastna_cast_2citanie;
 
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_modlitba;
@@ -19210,7 +19268,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				
 				_set_slavenie_typslav_smer(5, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 				mystrcpy(_global_svaty5.meno, text_AUG_25_SDB[_global_jazyk], MENO_SVIATKU);
-				_global_svaty5.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
+				_global_svaty5.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL);
 				_global_svaty5.farba = LIT_FARBA_BIELA;
 				_global_svaty5.kalendar = _global_kalendar;
 			}// KALENDAR_CZ_SDB
@@ -19294,7 +19352,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
@@ -21688,7 +21748,9 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
@@ -23832,7 +23894,9 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
@@ -26970,7 +27034,9 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
@@ -26984,7 +27050,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
 			mystrcpy(_global_svaty1.meno, text_NOV_13_SDB[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_SDB a KALENDAR_CZ_SDB
@@ -27011,7 +27077,9 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				}
 				_vlastna_cast_modlitba;
-				_vlastna_cast_1citanie;
+				if (_global_jazyk == JAZYK_CZ_OP) {
+					_vlastna_cast_1citanie;
+				}
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
