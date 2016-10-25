@@ -1,0 +1,62 @@
+# Konfiguraènı súbor pre www.breviar.sk
+# Autor: Marek Eliáš, Juraj Vidéky (c) 2007
+# confuse-2.5
+
+# adresa, na ktorú sa program odkazuje
+http_adresa_def="/"
+
+# adresa, ktorá sa zobrazuje v pätke
+http_zobraz_adr_def="www.breviar.sk"
+
+# mailová adresa autora
+mail_adresa_def="videky@breviar.sk"
+
+# include adresár pre default jazyk (sk).
+# Toto je lepšie da do úvodzoviek, lebo ináè to vypíše koncovı slash na stdout
+# incldir_def="../include/"
+
+# === SK: Hodnoty option parametrov pre JAZYK_SK ===
+# Tieto parametre ovplyvnòujú obsah vygenerovanej modlitby
+
+# OPT1: èi zobrazova pevné súèasti modlitieb (Benedictus, Magnifikat, Nunc dimittis, Otèenáš, ...): 
+# 0 = nie, nezobrati; 1 = áno, zobrazi
+pevne_casti_modl_def = 0
+
+# OPT2: èi bra almy zo sviatku (1) alebo zo dòa (0); ovplyvòuje aj vıpis dátumu pre preh¾ad mesiaca
+zalmy_zo_dna_def = 0
+
+# OPT4: èi pri modlitbe zobrazova popis (najmä pre sviatky svätcov): 0 = nie, nezobrati; 1 = áno, zobrazi
+popis_pri_modlitbe_def = 1
+
+# OPT5: èi pri modlitbe cez deò bra almy z doplnkovej psalmódie (1) alebo zo dòa (0)
+mcd_zalmy_doplnkpsalm_def = 0
+
+# OPT6: èi pri exporte mesiaca (teda viacerıch dní) poui "simple" export: 
+# 0 = nie, zobrati FULL export; 1 = áno, zobrazi len simple export
+expt_viac_dni_simple_def = 0
+
+# OPT7: èi dátum pri exporte mesiaca (teda viacerıch dní) zobrazi 
+# v ISO 8601 formáte (napr. "2007-06-01") alebo iba deò (napr. "1")
+datum_iso_8601_def = 0
+
+# === CZ: Hodnoty option parametrov pre JAZYK_CZ ===
+# Tieto parametre ovplyvnòujú obsah vygenerovanej modlitby
+
+# OPT1
+pevne_casti_modl_cz = 1
+
+# OPT2
+zalmy_zo_dna_cz = 0
+
+# OPT4
+popis_pri_modlitbe_cz = 1
+
+# OPT5
+mcd_zalmy_doplnkpsalm_cz = 0
+
+# OPT6
+expt_viac_dni_simple_cz = 0
+
+# OPT7
+datum_iso_8601_cz = 0
+

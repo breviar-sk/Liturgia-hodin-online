@@ -23,10 +23,10 @@ rm -f $ROOT/assets/katechezy.htm
 wget http://www.breviar.sk/katechezy.htm -O $ROOT/assets/katechezy.htm
 
 rm -f $ROOT/assets/breviar-web.cfg
-cp $ROOT/../cgi-bin/breviar-web.cfg $ROOT/assets/breviar-web.cfg
+cp $ROOT/../breviar-web.cfg $ROOT/assets/breviar-web.cfg
 
 rm -f $ROOT/assets/breviar-android.cfg
-cp $ROOT/../cgi-bin/breviar-android.cfg $ROOT/assets/breviar-android.cfg
+cp $ROOT/../breviar-android.cfg $ROOT/assets/breviar-android.cfg
 
 pushd $ROOT/assets
 patch -p0 --merge <../assets.diff
