@@ -1717,7 +1717,6 @@ extern const char *text_FEB_01_SDB[POCET_JAZYKOV + 1];
 extern const char *text_FEB_07_SDB[POCET_JAZYKOV + 1];
 extern const char *text_FEB_09_SDB[POCET_JAZYKOV + 1];
 extern const char *text_FEB_25_SDB[POCET_JAZYKOV + 1];
-extern const char *text_MAR_15_SDB[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_06_SDB[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_13_SDB[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_16_SDB[POCET_JAZYKOV + 1];

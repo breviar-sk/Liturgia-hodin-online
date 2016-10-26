@@ -5691,19 +5691,6 @@ const char *text_MAR_15_CSSR[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_MAR_15_SDB[POCET_JAZYKOV + 1] =
-{
-	"",
-	"Bl. Artemide Zattiho, koadjutora",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"ru_text",
-	"by_text",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
 const char *text_MAR_15_CM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Lujzy de Marillac, rehoľníčky, " HTML_LINE_BREAK "spoluzakladateľky spoločnosti Dcér kresťanskej lásky",
@@ -12918,8 +12905,8 @@ const char *text_NOV_12[POCET_JAZYKOV + 1] =
 };
 const char *text_NOV_13_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Artemida Zattiho, rehoľníka", // rehoľníka doplnené podľa CZ SDB
-	"Bl. Artemide Zattiho, řeholníka",
+	"Bl. Artemida Zattiho, rehoľníka", // rehoľníka doplnené podľa CZ SDB -> koadjutora
+	"Bl. Artemide Zattiho, koadjutora",
 	"",
 	"",
 	"",
