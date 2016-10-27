@@ -201,7 +201,7 @@ _struct_anchor_and_file *_global_include_static_text_ptr;
 // globalna premenna, ktora obsahuje MODL_...
 short int _global_modlitba = MODL_NEURCENA;
 
-// globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru PATH_CGI(script_name) ++ "?param1=val&param2=val&..." | 2003-07-09 prerobeny & v linkach na HTML_AMPERSAND
+// globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru SCRIPT_PATH(script_name) ++ "?param1=val&param2=val&..." | 2003-07-09 prerobeny & v linkach na HTML_AMPERSAND
 char *_global_link_ptr;
 #define _global_link _global_link_ptr
 
@@ -2877,6 +2877,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		|| (equals(paramname, PARAM_SPOL_CAST_SPOM))
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
+		|| (equals(paramname, PARAM_INVITATORIUM_ANT("1")) || equals(paramname, PARAM_INVITATORIUM_ANT("2")) || equals(paramname, PARAM_INVITATORIUM_ANT("3")) || equals(paramname, PARAM_INVITATORIUM_ANT("4")))
 		) {
 		Log("(if((equals(paramname == %s)): _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI == %ld: \n", paramname, _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI);
 
@@ -3024,6 +3025,16 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_vigilia[_global_jazyk]);
 			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_vigilia[_global_jazyk]);
+		}
+		else if (equals(paramname, PARAM_INVITATORIUM_ANT("1")) || equals(paramname, PARAM_INVITATORIUM_ANT("2")) || equals(paramname, PARAM_INVITATORIUM_ANT("3")) || equals(paramname, PARAM_INVITATORIUM_ANT("4"))) {
+			opt = OPT_5_ALTERNATIVES;
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			Log("podmienka == %d pred kontrolou je_alternativa_invitatorium_ant...\n", podmienka);
+			podmienka &= (je_alternativa_invitatorium_ant);
+
+			bit = BIT_OPT_5_INVITATORIUM_ANT;
+			sprintf(popis_show, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
+			sprintf(popis_hide, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS)) {
 			opt = OPT_5_ALTERNATIVES;
@@ -6646,6 +6657,9 @@ void xml_export_options(void){
 				case 15: // BIT_OPT_5_OFF_DEF_PSALM_146_150
 					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON)"%ld" ELEM_END(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON) "\n", BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)));
 					break;
+				case 16: // BIT_OPT_5_INVITATORIUM_ANT
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_INVITATORIUM_ANT)"%ld" ELEM_END(XML_BIT_OPT_5_INVITATORIUM_ANT) "\n", BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, html_text_opt_5_invitatorium_ant[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)));
+					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_5_ALTERNATIVES) "\n");
@@ -8736,8 +8750,8 @@ void _export_rozbor_dna_kalendar_core(short int typ){
 	Log("--- _export_rozbor_dna_kalendar_core(typ == %d) -- end\n", typ);
 }// _export_rozbor_dna_kalendar_core()
 
-void _export_main_formular_checkbox(short int opt, int bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description, const char * html_text_opt_description_explain, short int line_break_before = ANO){
-	Log("_export_main_formular_checkbox(%d, %d, %s, %s, %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
+void _export_main_formular_checkbox(short int opt, long bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description, const char * html_text_opt_description_explain, short int line_break_before = ANO){
+	Log("_export_main_formular_checkbox(%d, %ld, %s, %s, %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
 	char html_label[MAX_STR];
 	mystrcpy(html_label, html_text_opt_description, MAX_STR);
 #if defined(OS_Windows_Ruby) || defined(DEBUG)
@@ -8761,17 +8775,17 @@ void _export_main_formular_checkbox(short int opt, int bit_opt, const char * str
 
 	Export(HTML_SPAN_END);
 
-	Log("_export_main_formular_checkbox(%d, %d, %s, %s, %s) -- end.\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
+	Log("_export_main_formular_checkbox(%d, %ld, %s, %s, %s) -- end.\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
 }// _export_main_formular_checkbox()
 
-void _export_main_formular_checkbox_slash(short int opt, int bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description1, const char * html_text_opt_description2, short int line_break_before = ANO){
-	Log("_export_main_formular_checkbox(%d, %d, %s, %s / %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description1, html_text_opt_description2);
+void _export_main_formular_checkbox_slash(short int opt, long bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description1, const char * html_text_opt_description2, short int line_break_before = ANO){
+	Log("_export_main_formular_checkbox(%d, %ld, %s, %s / %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description1, html_text_opt_description2);
 	char html_label[MAX_STR];
 	sprintf(html_label, "%s%s%s", html_text_opt_description1, (line_break_before == ANO) ? HTML_SLASH_SPACE_LOONG_LINE_BREAK : HTML_SLASH_SPACE_LOONG, html_text_opt_description2);
 
 	_export_main_formular_checkbox(opt, bit_opt, str_modl_force_opt, html_label, STR_EMPTY, line_break_before);
 
-	Log("_export_main_formular_checkbox(%d, %d, %s, %s / %s) -- end.\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description1, html_text_opt_description2);
+	Log("_export_main_formular_checkbox(%d, %ld, %s, %s / %s) -- end.\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description1, html_text_opt_description2);
 }// _export_main_formular_checkbox()
 
 // generuje celý formulár, dolnú časť, ktorá pôvodne bola v _main_dnes(), ktorý obsahuje:
@@ -8865,6 +8879,110 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	// ---------------- language selection end
 #endif
 
+	// ---------------- calendar selection begin
+	if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_HU)) {
+		Export("<" HTML_TABLE ">\n");
+		Export("<" HTML_TABLE_ROW ">\n");
+		Export("<" HTML_TABLE_CELL_CENTER ">\n");
+
+		sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s", script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, _global_den.den, STR_MESIAC, _global_den.mesiac, STR_ROK, _global_den.rok, pom2);
+		Export_HtmlFormPOST(action);
+
+		ExportHtmlComment("calendar selection combobox");
+
+		Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY) ? ": " : ""));
+
+		Export(HTML_LINE_BREAK"\n");
+
+		// drop-down list pre výber kalendára (propriá)
+		// pole WWW_KALENDAR
+		Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_KALENDAR, html_text_kalendar_miestny_explain[_global_jazyk]);
+
+		if (_global_jazyk == JAZYK_SK) {
+			Export("<option%s>%s</option>\n",
+				((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK)) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[default_kalendar[_global_jazyk]]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_SK_CSSR) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_SK_CSSR]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_SK_SVD) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_SK_SVD]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_SK_OFM) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_SK_OFM]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_SK_SDB) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_SK_SDB]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_SK_OP) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_SK_OP]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_SK_SJ) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_SK_SJ]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_SK_CM) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_SK_CM]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_SK_OCD) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_SK_OCD]);
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
+			// code to be executed only under Windows development
+#endif
+		}// SK
+
+		else if (_global_jazyk == JAZYK_CZ) {
+			Export("<option%s>%s</option>\n",
+				((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ)) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[default_kalendar[_global_jazyk]]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_CZ_OPRAEM) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_CZ_OPRAEM]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_CZ_OFMCAP) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_CZ_OFMCAP]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_CZ_SDB) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_CZ_SDB]);
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_CZ_CSSR) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_CZ_CSSR]);
+#endif
+		}// CZ
+
+		else if (_global_jazyk == JAZYK_HU) {
+			Export("<option%s>%s</option>\n",
+				((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_HU)) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[default_kalendar[_global_jazyk]]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_HU_OFM) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_HU_OFM]);
+			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_HU_SVD) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_HU_SVD]);
+		}// HU
+
+		Export("</select>\n");
+
+		Export(HTML_LINE_BREAK"\n");
+
+		ExportHtmlComment("submit button (calendar)");
+
+		// button Nastaviť/Potvrdiť
+		Export(HTML_FORM_INPUT_SUBMIT" value=\"");
+		Export((char *)HTML_BUTTON_DNES_APPLY_SETTINGS);
+		Export("\"" HTML_FORM_INPUT_END "\n");
+
+		Export("</form>\n");
+
+		Export(HTML_TABLE_CELL_END "\n");
+		Export(HTML_TABLE_ROW_END "\n");
+		Export(HTML_TABLE_END "\n");
+	}
+	// ---------------- calendar selection end
+
+
 	ExportHtmlComment("TABLE:BEGIN(options)");
 	Export("<" HTML_TABLE ">\n");
 
@@ -8915,101 +9033,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
 
-		// liturgical calendar
-		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_HU)) {
-
-			ExportHtmlComment("propria (proper calendars)");
-
-			Export("<" HTML_TABLE_ROW ">\n");
-			ExportTableCell(HTML_TABLE_CELL);
-
-			Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY) ? ": " : ""));
-
-#if defined(DEBUG) || defined(OS_Windows_Ruby) || defined(IO_ANDROID)
-			Export(HTML_CRLF_LINE_BREAK);
-#endif
-
-			// drop-down list pre výber kalendára (propriá)
-			// pole WWW_KALENDAR
-			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_KALENDAR, html_text_kalendar_miestny_explain[_global_jazyk]);
-
-			if (_global_jazyk == JAZYK_SK) {
-				Export("<option%s>%s</option>\n",
-					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK)) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[default_kalendar[_global_jazyk]]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_SK_CSSR) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_SK_CSSR]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_SK_SVD) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_SK_SVD]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_SK_OFM) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_SK_OFM]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_SK_SDB) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_SK_SDB]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_SK_OP) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_SK_OP]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_SK_SJ) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_SK_SJ]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_SK_CM) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_SK_CM]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_SK_OCD) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_SK_OCD]);
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
-				// code to be executed only under Windows development
-#endif
-			}// SK
-
-			else if (_global_jazyk == JAZYK_CZ) {
-				Export("<option%s>%s</option>\n",
-					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ)) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[default_kalendar[_global_jazyk]]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_CZ_OPRAEM) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_CZ_OPRAEM]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_CZ_OFMCAP) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_CZ_OFMCAP]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_CZ_SDB) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_CZ_SDB]);
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_CZ_CSSR) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_CZ_CSSR]);
-#endif
-			}// CZ
-
-			else if (_global_jazyk == JAZYK_HU) {
-				Export("<option%s>%s</option>\n",
-					((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_HU)) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[default_kalendar[_global_jazyk]]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_HU_OFM) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_HU_OFM]);
-				Export("<option%s>%s</option>\n",
-					(_global_kalendar == KALENDAR_HU_SVD) ? html_option_selected : STR_EMPTY,
-					nazov_kalendara_long[KALENDAR_HU_SVD]);
-			}// HU
-
-			Export("</select>\n");
-
-			if (!(equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY))) {
-#if defined(DEBUG) || defined(OS_Windows_Ruby) || defined(IO_ANDROID)
-				Export(HTML_CRLF_LINE_BREAK);
-#endif
-				Export(html_text_kalendar_miestny_post[_global_jazyk]);
-			}
-
-			Export(HTML_TABLE_CELL_END "\n");
-			Export(HTML_TABLE_ROW_END "\n");
-		}// liturgical calendar
+		// liturgical calendar moved under language selection
 
 		Export("<" HTML_TABLE_ROW ">\n");
 		ExportTableCell(HTML_TABLE_CELL);
@@ -9261,7 +9285,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150
 			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], html_text_opt_5_zaver_knaz_diakon_explain[_global_jazyk]);
-		}
+
+			// invitatórium (antifóna)
+			Export(HTML_CRLF_LINE_BREAK);
+			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_5_invitatorium_ant_explain[_global_jazyk], nazov_modlitby(MODL_INVITATORIUM));
+
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT
+			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, html_text_opt_5_invitatorium_ant[_global_jazyk], html_text_opt_5_invitatorium_ant_explain[_global_jazyk]);
+}
 		else{
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129)) ? ANO : NIE);
@@ -9279,6 +9310,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)) ? ANO : NIE);
 		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
 		Export(HTML_TABLE_CELL_END "\n");

@@ -4334,6 +4334,27 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd){
 	}
 }// _velk1_hymnus()
 
+void _obd_invitat_viac(short litobd, short modlitba) {
+	short int ktory; // currently 0 or 1
+	short int bit = BIT_ALT_ANT_INVITATORIUM;
+
+	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) {
+		// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
+		ktory = (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)) ? 1 : 0;
+		Log("_obd_invitat_viac(): ktory == %d...\n", ktory);
+
+		_global_modl_invitatorium.alternativy += ((_global_modl_invitatorium.alternativy & bit) != bit) ? bit : 0;
+	}
+	else {
+		// pôvodne bol náhodný výber
+		ktory = 2; // obidva!
+	}
+
+	sprintf(_anchor, "%s%c_%s%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1, ktory);
+	_set_antifona1(modlitba, _file, _anchor);
+	set_LOG_litobd;
+}// _obd_invitat_viac()
+
 void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short int tyzzal, short int poradie_svateho){
 	short int modlitba, t, tyzden_pom, litobd_pom;
 	char _anchor_vlastne_slavenie[SMALL];
@@ -4419,7 +4440,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	char c; // používa sa vo výnimočných prípadoch: napr. druha velkonocna nedela
 
 // invitatórium
-	// použiteľné pre adventné obdobie, vianočné...
+// použiteľné pre adventné obdobie, vianočné...
 #define _obd_invitat {\
 	sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
 	_set_antifona1(modlitba, _file, _anchor);\
@@ -4427,11 +4448,6 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 }
 #define _adv_invitat_24DEC {\
 	sprintf(_anchor, "%s%c_24_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
-	_set_antifona1(modlitba, _file, _anchor);\
-	set_LOG_litobd;\
-}
-#define _obd_invitat_viac(kolko) {\
-	sprintf(_anchor, "%s%c_%s%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1, (_global_den.den MOD kolko) + 1);\
 	_set_antifona1(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
@@ -4531,10 +4547,10 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			// invitatórium
 			modlitba = MODL_INVITATORIUM;
-			if((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
-				_obd_invitat_viac(2); // 2007-12-04: pôvodne tu bolo "_obd_invitat;", ale český breviár má na výber 2
+			if (_global_jazyk == JAZYK_CZ) {
+				_obd_invitat_viac(litobd, modlitba);
 			}
-			else{
+			else {
 				_obd_invitat;
 			}
 
@@ -7050,7 +7066,12 @@ label_24_DEC:
 
 			// invitatórium
 			modlitba = MODL_INVITATORIUM;
-			_obd_invitat_viac(2);
+			if (_global_jazyk == JAZYK_CZ_OP) {
+				_obd_invitat;
+			}
+			else {
+				_obd_invitat_viac(litobd, modlitba);
+			}
 
 			// ranné chvály
 			modlitba = MODL_RANNE_CHVALY;

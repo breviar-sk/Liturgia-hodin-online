@@ -1508,6 +1508,7 @@ void Log(struct tmodlitba3 t){
 
 void Log(struct tmodlitba4 t){
 	Log_struktura_tm4("struktura tmodlitba4:\n");
+	Log_struktura_tm5("   alternativy = %d\n", t.alternativy);
 	Log_struktura_tm4("   popis        file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
 	Log_struktura_tm4("   antifona1    file `%s', anchor `%s'\n", t.antifona1.file, t.antifona1.anchor);
 	Log_struktura_tm4("   zalm1        file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);
@@ -1711,6 +1712,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 13: mystrcpy(str, STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, SMALL); break; // BIT_OPT_5_CZ_HYMNY_VYBER
 			case 14: mystrcpy(str, STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, SMALL); break; // BIT_OPT_5_OFF_DEF_PSALM_146_150
 			case 15: mystrcpy(str, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, SMALL); break; // BIT_OPT_5_ZAVER_KNAZ_DIAKON
+			case 16: mystrcpy(str, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, SMALL); break; // BIT_OPT_5_INVITATORIUM_ANT
 			}
 		}
 		break;

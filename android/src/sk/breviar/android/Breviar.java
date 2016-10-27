@@ -43,7 +43,7 @@ import sk.breviar.android.UrlOptions;
 import sk.breviar.android.Util;
 
 public class Breviar extends Activity implements View.OnLongClickListener, ScaleGestureDetector.OnScaleGestureListener {
-    static String scriptname = "cgi-bin/l.cgi";
+    static String scriptname = "l.cgi";
     static final int DIALOG_ABOUT = 1;
     static final int DIALOG_NEWS = 2;
 

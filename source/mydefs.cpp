@@ -18,8 +18,8 @@
 #include "myconf.h"
 #include "breviar.h"
 
-char script_name[MAX_STR] = STR_EMPTY; // = cfg_HTTP_ADDRESS_default + SCRIPT_PATH(SCRIPT_NAME)
-char uncgi_name[MAX_STR] = STR_EMPTY;  // = cfg_HTTP_ADDRESS_default + UNCGI_SCRIPT_NAME
+char script_name[MAX_STR] = STR_EMPTY;
+char uncgi_name[MAX_STR] = STR_EMPTY;
 
 void updateScriptName(void){
 	strcpy(script_name, cfg_http_address_default[_global_jazyk]);

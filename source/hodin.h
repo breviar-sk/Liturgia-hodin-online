@@ -568,6 +568,39 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 
 #define nazov_kalendara(kalendar) ((kalendar == KALENDAR_NEURCENY) || (kalendar == KALENDAR_VSEOBECNY) || (equals(nazov_kalendara_long[kalendar], STR_EMPTY))? nazov_kalendara_long[default_kalendar[_global_jazyk]] : nazov_kalendara_long[kalendar])
 
+const char *nazov_kalendara_smart[POCET_KALENDAROV + 1] =
+{
+	""
+	, ""
+	, "všeobecný [pre Slovensko]"
+	, "obecný [pro Čechy a Moravu]"
+	, "dominikánský"
+	, "pre redemptoristov (CSsR)" // bol veľmi dlhý combo-box, keď bolo: "pre Kongregáciu najsvätejšieho Vykupiteľa — redemptoristov (CSsR)"
+	, "általános [Magyarország]"
+	, "pre verbistov (SVD)"
+	, "pre jezuitov (SJ)"
+	, "pre saleziánsku rodinu"
+	, "pre františkánsku rodinu"
+	, "pre dominikánov (OP)"
+	, "pre lazaristov (CM)"
+	, "pro premonstráty (OPraem)"
+	, "pro kapucíny (OFMCap)"
+	, "pro redemptoristy (CSsR)"
+	, "pro salesiánskou rodinu"
+	, "general [Russia]"
+	, "ferences zsolozsmája"
+	, "pre bosých karmelitánov (OCD)"
+	, "verbitás zsolozsmája"
+	, "агульны [Belarus]"
+	, /* ADD_VALUE_FOR_NEW_CALENDAR */
+};
+
+#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
+#define nazov_kalendara_vyber nazov_kalendara_smart
+#else
+#define nazov_kalendara_vyber nazov_kalendara_long
+#endif
+
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
 const char *nazov_slavenia_lokal[] =
 {
@@ -3850,6 +3883,34 @@ const char *html_text_opt_5_zaver_knaz_diakon[POCET_JAZYKOV + 1] =
 const char *html_text_opt_5_zaver_knaz_diakon_explain[POCET_JAZYKOV + 1] =
 {
 	"V ranných chválach a vešperách závisí záver modlitby od toho, či predsedá kňaz alebo diakon, alebo nie.",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_5_invitatorium_ant[POCET_JAZYKOV + 1] =
+{
+	"iná antifóna na invitatórium",
+	"jiná antifona pro uvedení do modlitby",
+	"other antiphone for invitatory prayer",
+	"",
+	"",
+	"jiná antifona pro invitatorium",
+	"hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_5_invitatorium_ant_explain[POCET_JAZYKOV + 1] =
+{
+	"",
 	"",
 	"",
 	"",

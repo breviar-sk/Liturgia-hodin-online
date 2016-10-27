@@ -31,7 +31,14 @@
 char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR] = "http://breviar.sk/";
 char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "breviar.sk";
 char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = "videky@breviar.sk";
-char cfg_INCLUDE_DIR_default[MAX_INCD_STR] = "../include/";
+
+#if !defined(IO_ANDROID)
+#define INCLUDE_PATH_PREFIX   "../"
+#else
+#define INCLUDE_PATH_PREFIX   ""
+#endif
+
+char cfg_INCLUDE_DIR_default[MAX_INCD_STR] = INCLUDE_PATH_PREFIX "include/";
 
 long cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
 

@@ -138,6 +138,7 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define BIT_ALT_DOPLNK_PSALM_126_129   32
 #define BIT_ALT_HYMNUS_VN              64
 #define BIT_ALT_OFF_DEF_PSALM_146_150 128
+#define BIT_ALT_ANT_INVITATORIUM      256
 
 #define MAX_STR_AF_FILE   64
 #define MAX_STR_AF_ANCHOR 32
@@ -215,6 +216,7 @@ typedef struct tmodlitba3 _type_kompletorium;
 typedef struct tmodlitba3 _type_1kompletorium;
 
 struct tmodlitba4{
+	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
 	_struct_anchor_and_file popis     ;
 	_struct_anchor_and_file antifona1 ;
 	_struct_anchor_and_file zalm1     ;
@@ -462,6 +464,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ZALM131                  "ZALM131"
 #define PARAM_ZALM146                  "ZALM146"
 #define PARAM_ZALM150                  "ZALM150"
+#define PARAM_INVITATORIUM_ANT(i)      "ANT-INVITAT" i
 
 // keywords
 #define KEYWORD_BEGIN   "BEGIN"
@@ -1284,7 +1287,7 @@ extern _struct_anchor_and_file *_global_include_static_text_ptr;
 // globalna premenna, ktora obsahuje MODL_...
 extern short int _global_modlitba;
 
-// globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru PATH_CGI(SCRIPT_NAME) ++ "?param1=val&param2=val&..."
+// globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru SCRIPT_PATH(SCRIPT_NAME) ++ "?param1=val&param2=val&..."
 extern char *_global_link_ptr;
 #define _global_link _global_link_ptr
 
@@ -1387,7 +1390,7 @@ extern long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 #define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
 #define BIT_OPT_4_DO_NOT_USE_BUTTON         8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
-#define POCET_OPT_5_ALTERNATIVES           16 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES           17 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezročné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
@@ -1405,6 +1408,7 @@ extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_CZ_HYMNY_VYBER         8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
 #define BIT_OPT_5_OFF_DEF_PSALM_146_150 16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
 #define BIT_OPT_5_ZAVER_KNAZ_DIAKON     32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
+#define BIT_OPT_5_INVITATORIUM_ANT          65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
 
 #define MAX_POCET_OPT                      18 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
 
@@ -1616,6 +1620,7 @@ void analyzuj_rok(short int year);
 };
 
 #define _INIT_TMODLITBA4(a) {\
+	a.alternativy = 0; \
 	_INIT_ANCHOR_AND_FILE(a.popis); \
 	_INIT_ANCHOR_AND_FILE(a.antifona1); \
 	_INIT_ANCHOR_AND_FILE(a.zalm1); \

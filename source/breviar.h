@@ -115,7 +115,7 @@ extern _struct_anchor_and_file *_global_include_static_text_ptr;
 // globalna premenna, ktora obsahuje MODL_...
 extern short int _global_modlitba;
 
-// globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru PATH_CGI(SCRIPT_NAME) ++ "?param1=val&param2=val&..."
+// globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru SCRIPT_PATH(SCRIPT_NAME) ++ "?param1=val&param2=val&..."
 extern char *_global_link_ptr;
 #define _global_link _global_link_ptr
 
@@ -354,6 +354,10 @@ extern short int _global_opt_export_date_format;
 ||  \
 (_global_modlitba == MODL_VESPERY && ((_global_modl_vespery.alternativy & BIT_ALT_HYMNUS_VN) == BIT_ALT_HYMNUS_VN)) \
 )
+
+// are alternates for antiphony for invitatory? (SK, CZ, HU: 
+#define je_alternativa_invitatorium_ant (_global_modlitba == MODL_INVITATORIUM && ((_global_modl_invitatorium.alternativy & BIT_ALT_ANT_INVITATORIUM) == BIT_ALT_ANT_INVITATORIUM))
+
 
 // for JAZYK_CZ, is chosen alternative for hymns of supplement?
 #define je_CZ_hymny_k_volnemu_vyberu ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))

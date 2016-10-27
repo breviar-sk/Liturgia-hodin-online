@@ -76,7 +76,14 @@
 #define PORADIE_PM_SOBOTA  (MAX_POCET_SVATY + 1)
 
 #define SCRIPT_NAME          "l.cgi"
-#define SCRIPT_PATH(a)       "cgi-bin/"a
+
+#if !defined(IO_ANDROID)
+#define SCRIPT_PATH_PREFIX   "cgi-bin/"
+#else
+#define SCRIPT_PATH_PREFIX   ""
+#endif
+
+#define SCRIPT_PATH(a)       SCRIPT_PATH_PREFIX""a
 
 #if defined(USE_UNCGI)
 #define UNCGI_PATH(a)        SCRIPT_PATH("uncgi.cgi/")a
@@ -85,10 +92,9 @@
 #endif
 
 #define UNCGI_SCRIPT_NAME    UNCGI_PATH(SCRIPT_NAME)
-#define PATH_CGI(a) "cgi-bin/"a
 
-extern char script_name[MAX_STR]; // = cfg_HTTP_ADDRESS_default + SCRIPT_PATH(SCRIPT_NAME)
-extern char uncgi_name[MAX_STR];  // = cfg_HTTP_ADDRESS_default + UNCGI_SCRIPT_NAME
+extern char script_name[MAX_STR];
+extern char uncgi_name[MAX_STR];
 void updateScriptName(void);
 void updateUnCGIName(void);
 
@@ -949,6 +955,13 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON "of5zkd"
 #endif
 
+#define FORCE_BIT_OPT_5_INVITATORIUM_ANT 125
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT "FORCE_BIT_OPT_5_INVITATORIUM_ANT"
+#else
+#define STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT "of5i"
+#endif
+
 #define CSS 40
 #ifdef LONG_PARAM_NAMES
 	#define STR_CSS "CSS"
@@ -1165,6 +1178,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_CZ_HYMNY_VYBER            "BitOpt5CZhymnsAlt"
 #define XML_BIT_OPT_5_OFF_DEF_PSALM_146_150     "BitOpt5OffDefPsalm146or150"
 #define XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON         "BitOpt5ConclusionPriestDiacon"
+#define XML_BIT_OPT_5_INVITATORIUM_ANT          "BitOpt5InvitatoryAnt"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<" elem ">"
