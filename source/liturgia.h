@@ -31,6 +31,22 @@
 #define MENO_SVIATKU 250
 #define MAX_LC_STR_ID 50
 
+// "null" year, month, day
+#define NULL_YEAR 0
+#define NULL_MONTH -1
+#define NULL_DAY 0
+
+// "null" day order within year; special "null" values for special solemnities and feasts of the Lord
+#define NULL_DAY_OF_THE_YEAR 0
+#define NULL_KRST_KRISTA_PANA -1
+#define NULL_POPOLCOVA_STREDA -2
+#define NULL_VELKONOCNA_NEDELA -3
+#define NULL_NANEBOVSTUPENIE_PANA -4
+#define NULL_ZOSLANIE_DUCHA_SV -5
+#define NULL_PRVA_ADVENTNA_NEDELA -6
+#define NULL_SVATEJ_RODINY -7
+#define NULL_ZJAVENIE_PANA -8
+
 // liturgical rites
 #define RITUS_RIM_KAT   0
 #define RITUS_GR_KAT    1
@@ -1549,7 +1565,7 @@ void analyzuj_rok(short int year);
 	a.mesiac = 1; \
 	a.rok = 1900; \
 	a.denvt = 0;  \
-	a.denvr = 1;  \
+	a.denvr = NULL_DAY_OF_THE_YEAR;  \
 	a.litrok = 'A'; \
 	a.tyzden = 1;   \
 	a.tyzzal = 1;   \

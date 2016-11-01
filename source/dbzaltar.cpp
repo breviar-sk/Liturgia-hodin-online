@@ -7146,6 +7146,10 @@ label_24_DEC:
 			else{
 				// špeciálne pre Popolcovú stredu
 				if (_global_den.denvr == POPOLCOVA_STREDA){
+
+					Log("liturgicke_obdobie(): POPOLCOVA_STREDA\n...");
+					// Log("_global_den.denvt == %d\n", _global_den.denvt);
+
 					if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)){
 						set_antifony(DEN_PIATOK, 3, zvazok_breviara[litobd], MODL_RANNE_CHVALY);
 						set_zalm(1, MODL_RANNE_CHVALY, "z51.htm", "ZALM51");

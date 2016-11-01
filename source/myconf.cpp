@@ -8,6 +8,13 @@
 /*********************************************************/
 
 #undef LOG_READCONFIG
+#undef LOG_CONFIG
+
+#if defined(LOG_CONFIG) && defined(LOGGING)
+#define LogConfig Log
+#else
+#define LogConfig emptyLog
+#endif
 
 #include "vstudio.h"
 
@@ -54,22 +61,24 @@ const char *cfg_option_postfix[POCET_JAZYKOV + 1] =
 { "def", "cz", "en", "la", "", "czop", "hu", "ru", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 void printConfigOptions(void){
+#ifdef LOG_CONFIG
 	short int j = 0, o = 0;
 	for(j = 0; j <= POCET_JAZYKOV; j++){
-		Log("=== Jazyk `%s' (%s): Default hodnoty option parametrov (konfiguračný súbor %s) ===\n", skratka_jazyka[j], nazov_jazyka[j], CONFIG_FILE);
+		LogConfig("=== Jazyk `%s' (%s): Default hodnoty option parametrov (konfiguračný súbor %s) ===\n", skratka_jazyka[j], nazov_jazyka[j], CONFIG_FILE);
 		for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++){
 			if(o < POCET_GLOBAL_OPT){
-				Log("cfg_option_default[%d][%d] == `%ld'\n", o, j, cfg_option_default[o][j]);
+				LogConfig("cfg_option_default[%d][%d] == `%ld'\n", o, j, cfg_option_default[o][j]);
 			}
 			else{
 				switch(o - POCET_GLOBAL_OPT){
-					case 0: Log("http address: %s\n", cfg_http_address_default[j]); break;
-					case 1: Log("http display address: %s\n", cfg_http_display_address_default[j]); break;
-					case 2: Log("mail address: %s\n", cfg_mail_address_default[j]); break;
+					case 0: LogConfig("http address: %s\n", cfg_http_address_default[j]); break;
+					case 1: LogConfig("http display address: %s\n", cfg_http_display_address_default[j]); break;
+					case 2: LogConfig("mail address: %s\n", cfg_mail_address_default[j]); break;
 				} // switch()
 			}
 		}// for o
 	}// for j
+#endif
 }// printConfigOptions()
 
 void readConfig(void)
@@ -82,9 +91,9 @@ void readConfig(void)
 	char nazov_option[MAX_STR];
 
 	Log("readConfig() -- začiatok...\n");
-	Log("============================ súbor `%s' ============================\n", CONFIG_FILE);
+	LogConfig("============================ súbor `%s' ============================\n", CONFIG_FILE);
 
-	Log("Naplním všetky defaulty hodnotou GLOBAL_OPTION_NULL.\n");
+	LogConfig("Naplním všetky defaulty hodnotou GLOBAL_OPTION_NULL.\n");
 	for(o = 0; o < POCET_GLOBAL_OPT; o++){
 		for(j = 0; j <= POCET_JAZYKOV; j++){
 			cfg_option_default[o][j] = GLOBAL_OPTION_NULL;
@@ -92,33 +101,33 @@ void readConfig(void)
 	}// for o
 
 	if(! (subor = fopen(CONFIG_FILE, "r")) ){
-		Log("Nemôžem otvoriť súbor `%s'.\n", CONFIG_FILE);
+		LogConfig("Nemôžem otvoriť súbor `%s'.\n", CONFIG_FILE);
 #ifdef MODEL_LH_commandline
-		Log("Pokúsim sa nájsť ho o level vyššie...\n");
+		LogConfig("Pokúsim sa nájsť ho o level vyššie...\n");
 		if(! (subor = fopen(".." STR_PATH_SEPARATOR "" CONFIG_FILE, "r")) ){
-			Log("Nemôžem otvoriť súbor `%s'.\n", ".." STR_PATH_SEPARATOR "" CONFIG_FILE);
+			LogConfig("Nemôžem otvoriť súbor `%s'.\n", ".." STR_PATH_SEPARATOR "" CONFIG_FILE);
 			return;
 		}
 		else{
-			Log("Súbor `%s' otvorený.\n", ".." STR_PATH_SEPARATOR "" CONFIG_FILE);
+			LogConfig("Súbor `%s' otvorený.\n", ".." STR_PATH_SEPARATOR "" CONFIG_FILE);
 		}
 #else
 		return;
 #endif
 	}
 	else{
-		Log("Súbor `%s' otvorený.\n", CONFIG_FILE);
+		LogConfig("Súbor `%s' otvorený.\n", CONFIG_FILE);
 	}
 
 	for (; (znak = fgetc(subor)) != EOF;)
 	{
 		if (znak == '#'){
 #ifdef LOG_READCONFIG
-			Log("Parsujem poznámku...\n");
+			LogConfig("Parsujem poznámku...\n");
 #endif
 			while((znak = fgetc(subor)) != EOF && (znak != '\n') ); // parsuj poznámku do konca riadka
 			if(znak == EOF){ 
-				Log("EOF... break.\n");
+				LogConfig("EOF... break.\n");
 				break; 
 			}
 			continue;
@@ -133,14 +142,14 @@ void readConfig(void)
 		for(i = 0; (znak != EOF) && (znak != '\n') && (znak != '=') && (i < (MAX_OPTION_LENGTH - 1)); znak = fgetc(subor), ++i)
 		{
 #ifdef LOG_READCONFIG
-			Log("znak == `%c'\n", znak);
+			LogConfig("znak == `%c'\n", znak);
 #endif
 			if(znak == CHAR_SPACE) // v prípade medzery preskoč, čítaj ďalej
 				// aby tu mohlo byť znak = fgetc(subor); je potrebné, aby sme skontrolovali, či nie sme na konci
 				i--;
 			else{
-#ifdef LOG_READCONFIG
-				Log("i == %d\n", i);
+#ifdef  _READCONFIG
+				LogConfig("i == %d\n", i);
 #endif
 				option[i] = znak;
 			}
@@ -149,7 +158,7 @@ void readConfig(void)
 
 		if (znak != '='){continue;}
 		if (znak == EOF){
-			Log("EOF... break.\n");
+			LogConfig("EOF... break.\n");
 			break;
 		}
 
@@ -157,7 +166,7 @@ void readConfig(void)
 			znak = fgetc(subor);
 		}
 		else if(znak == EOF){
-			Log("EOF... break.\n");
+			LogConfig("EOF... break.\n");
 			break;
 		}
 
@@ -166,22 +175,24 @@ void readConfig(void)
 		for(i = 0; (znak != EOF) && (znak != '\n') && (znak != '"') && (i < (MAX_HTTP_STR - 1)); znak = fgetc(subor), ++i)
 		{
 #ifdef LOG_READCONFIG
-			Log("znak == `%c'\n", znak);
+			LogConfig("znak == `%c'\n", znak);
 #endif
 			if(znak == CHAR_SPACE) // v prípade medzery preskoč, čítaj ďalej
 				// aby tu mohlo byť znak = fgetc(subor); je potrebné, aby sme skontrolovali, či nie sme na konci
 				i--;
 			else{
 #ifdef LOG_READCONFIG
-				Log("i == %d\n", i);
+				LogConfig("i == %d\n", i);
 #endif
 				hodnota[i] = znak;
 			}
 		}
 		hodnota[i] = '\0';
 
-		Log("Parsovaná option  == `%s'\n", option);
-		Log("Parsovaná hodnota == `%s'\n", hodnota);
+#ifdef LOG_CONFIG
+		LogConfig("Parsovaná option  == `%s'\n", option);
+		LogConfig("Parsovaná hodnota == `%s'\n", hodnota);
+#endif
 /*		if (!strcmp(option, "http_adresa_def")){
 			strncpy(cfg_HTTP_ADDRESS_default, hodnota, MAX_HTTP_STR);
 		}
@@ -226,80 +237,80 @@ void readConfig(void)
 		for(; (znak != EOF) && (znak != '\n'); znak = fgetc(subor) );
 
 		if(znak == EOF){
-			Log("EOF... break.\n");
+			LogConfig("EOF... break.\n");
 			break;
 		}
 
 	}
 	fclose(subor);
 
-	Log("============================ súbor `%s' ============================\n", CONFIG_FILE);
+	LogConfig("============================ súbor `%s' ============================\n", CONFIG_FILE);
 	if(equalsi(cfg_MAIL_ADDRESS_default, STR_EMPTY)){
 		mystrcpy(cfg_MAIL_ADDRESS_default, MAIL_ADDRESS_DEFAULT, MAX_MAIL_STR);
 	}
-	Log("cfg_MAIL_ADDRESS_default == %s\n", cfg_MAIL_ADDRESS_default);
+	LogConfig("cfg_MAIL_ADDRESS_default == %s\n", cfg_MAIL_ADDRESS_default);
 	for(j = 0; j <= POCET_JAZYKOV; j++){
-		Log("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
-		Log("http address: %s\n", cfg_http_address_default[j]);
+		LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
+		LogConfig("http address: %s\n", cfg_http_address_default[j]);
 		if(equals(cfg_http_address_default[j], STR_EMPTY)){
 			strcpy(cfg_http_address_default[j], cfg_HTTP_ADDRESS_default);
-			Log("http address CHANGED: %s\n", cfg_http_address_default[j]);
+			LogConfig("http address CHANGED: %s\n", cfg_http_address_default[j]);
 		}
-		Log("http display address: %s\n", cfg_http_display_address_default[j]);
+		LogConfig("http display address: %s\n", cfg_http_display_address_default[j]);
 		if(equals(cfg_http_display_address_default[j], STR_EMPTY)){
 			strcpy(cfg_http_display_address_default[j], cfg_HTTP_DISPLAY_ADDRESS_default);
-			Log("http display address CHANGED: %s\n", cfg_http_display_address_default[j]);
+			LogConfig("http display address CHANGED: %s\n", cfg_http_display_address_default[j]);
 		}
-		Log("mail address: %s\n", cfg_mail_address_default[j]);
+		LogConfig("mail address: %s\n", cfg_mail_address_default[j]);
 		if(equals(cfg_mail_address_default[j], STR_EMPTY)){
 			strcpy(cfg_mail_address_default[j], cfg_MAIL_ADDRESS_default);
-			Log("mail address CHANGED: %s\n", cfg_mail_address_default[j]);
+			LogConfig("mail address CHANGED: %s\n", cfg_mail_address_default[j]);
 		}
 	}
 
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 	// pre android upravené defaulty pre zobrazovanie
-	Log("android...\n");
+	LogConfig("android...\n");
 	for(j = 0; j <= POCET_JAZYKOV; j++){
 		if(cfg_option_default[OPT_2_HTML_EXPORT][j] != GLOBAL_OPTION_NULL){
-			Log("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
+			LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
 
 			// nastavenie parametrov OPT_2_HTML_EXPORT: pridáme bity pre nastavenie
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_NAVIGATION) != BIT_OPT_2_NAVIGATION){
-				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION);
+				LogConfig("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_NAVIGATION;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_BUTTONY_USPORNE) != BIT_OPT_2_BUTTONY_USPORNE){
-				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE);
+				LogConfig("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_BUTTONY_USPORNE;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_ROZNE_MOZNOSTI) != BIT_OPT_2_ROZNE_MOZNOSTI){
-				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI);
+				LogConfig("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_ROZNE_MOZNOSTI;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_HIDE_NAVIG_BUTTONS) != BIT_OPT_2_HIDE_NAVIG_BUTTONS){
-				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS);
+				LogConfig("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_HIDE_NAVIG_BUTTONS;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_HIDE_KALENDAR) != BIT_OPT_2_HIDE_KALENDAR){
-				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR);
+				LogConfig("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_HIDE_KALENDAR;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_HIDE_OPTIONS1) != BIT_OPT_2_HIDE_OPTIONS1){
-				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1);
+				LogConfig("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_HIDE_OPTIONS1;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_HIDE_OPTIONS2) != BIT_OPT_2_HIDE_OPTIONS2){
-				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2);
+				LogConfig("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_HIDE_OPTIONS2;
 			}
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_ALTERNATIVES) != BIT_OPT_2_ALTERNATIVES){
-				Log("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES);
+				LogConfig("Pre option %d nastavujem bit pre '%ld'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES);
 				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_ALTERNATIVES;
 			}
 		}
 		else{
-			Log("=== Jazyk `%s' (%s): option je %d\n", skratka_jazyka[j], nazov_jazyka[j], GLOBAL_OPTION_NULL);
+			LogConfig("=== Jazyk `%s' (%s): option je %d\n", skratka_jazyka[j], nazov_jazyka[j], GLOBAL_OPTION_NULL);
 		}
 	}// for j
 #endif
@@ -309,15 +320,19 @@ void readConfig(void)
 }// readConfig()
 
 void printConfig(void){
-	Log("\n");
-	Log("=== BEGIN:configuration (%s) ===\n", CONFIG_FILE);
+#ifdef LOG_CONFIG
+	LogConfig("\n");
+	LogConfig("=== BEGIN:configuration (%s) ===\n", CONFIG_FILE);
 
 	// 2004-03-17 pridane cfg_INCLUDE_DIR_default
-	Log("cfg_INCLUDE_DIR_default == `%s'\n", cfg_INCLUDE_DIR_default);
+	LogConfig("cfg_INCLUDE_DIR_default == `%s'\n", cfg_INCLUDE_DIR_default);
 	// 2007-06-01: nasleduju nové parametre
 	printConfigOptions();
-	Log("=== END:configuration (%s) ===\n", CONFIG_FILE);
-	Log("\n");
+	LogConfig("=== END:configuration (%s) ===\n", CONFIG_FILE);
+	LogConfig("\n");
+#else
+	Log("printConfig(): LOG_CONFIG is undefined, no LogConfig() printed...\n");
+#endif
 }// printConfig()
 
 #endif // __MYCONF_CPP_

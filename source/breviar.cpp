@@ -82,6 +82,22 @@ date
 #include "citania.h"
 #endif // LITURGICKE_CITANIA_ANDROID
 
+#undef LOG_UNCGI
+
+#if defined(LOG_UNCGI) && defined(LOGGING)
+#define LogUncgi Log
+#else
+#define LogUncgi emptyLog
+#endif
+
+#undef LOG_PARAMS
+
+#if defined(LOG_PARAMS) && defined(LOGGING)
+#define LogParams Log
+#else
+#define LogParams emptyLog
+#endif
+
 char *_global_buf;
 char *_global_buf2;
 
@@ -451,23 +467,23 @@ short int postread(void){
 	char *buf = NULL;
 	long size = 0, sofar = 0, got;
 
-	Log("uncgi::postread() -- zaciatok\n");
+	LogUncgi("uncgi::postread() -- zaciatok\n");
 	buf = getenv("CONTENT_TYPE");
 	if (buf == NULL || strcmp(buf, "application/x-www-form-urlencoded")){
-		Log("uncgi::No content type was passed.\n");
+		LogUncgi("uncgi::No content type was passed.\n");
 		return FAILURE;
 	}
 
 	buf = getenv("CONTENT_LENGTH");
 	if (buf == NULL){
-		Log("uncgi::The server did not tell uncgi how long the request was.\n");
+		LogUncgi("uncgi::The server did not tell uncgi how long the request was.\n");
 		return FAILURE;
 	}
 
 	size = atoi(buf);
 	buf = (char *)malloc(size + 1);
 	if (buf == NULL){
-		Log("uncgi::Error: postread\n");
+		LogUncgi("uncgi::Error: postread\n");
 		return FAILURE;
 	}
 	do
@@ -479,7 +495,7 @@ short int postread(void){
 	buf[sofar] = '\0';
 
 	_global_buf = buf;
-	Log("uncgi::postread() -- koniec; výstupný buffer == %s\n", _global_buf);
+	LogUncgi("uncgi::postread() -- koniec; výstupný buffer == %s\n", _global_buf);
 	return SUCCESS;
 }// postread();
 
@@ -538,13 +554,13 @@ static void stuffenv(char *var){
 	int putenv_ret;
 
 #ifdef DEBUG
-	Log("Before unescape: %s\n", var);
+	LogUncgi("Before unescape: %s\n", var);
 #endif
 
 	url_unescape(var);
 
 #ifdef DEBUG
-	Log("After unescape: %s\n", var);
+	LogUncgi("After unescape: %s\n", var);
 #endif
 
 	if (strlen(_global_buf2) > 0){
@@ -552,7 +568,7 @@ static void stuffenv(char *var){
 	}
 	strcat(_global_buf2, var);
 #ifdef DEBUG
-	Log("Nabaľujem _global_buf2 == %s\n", _global_buf2);
+	LogUncgi("Nabaľujem _global_buf2 == %s\n", _global_buf2);
 #endif
 
 	// Allocate enough memory for the variable name and its value.
@@ -591,7 +607,7 @@ static void stuffenv(char *var){
 	if (despace && c[1])
 	{
 #ifdef DEBUG
-		Log("  Stripping whitespace.\n");
+		LogUncgi("  Stripping whitespace.\n");
 #endif
 		for (s = c + 1; *s && isspace(*s); s++)
 			;
@@ -624,7 +640,7 @@ static void stuffenv(char *var){
 	if ((oldval = getenv(buf))) // priradenie do oldval a následný test, či nie je pointer NULL
 	{
 #ifdef DEBUG
-		Log("  Variable %s exists with value %s\n", buf, oldval);
+		LogUncgi("  Variable %s exists with value %s\n", buf, oldval);
 #endif
 		newval = (char *)malloc(strlen(oldval) + strlen(buf) + strlen(c + 1) + 3);
 		if (newval == NULL){
@@ -643,21 +659,21 @@ static void stuffenv(char *var){
 	else
 	{
 #ifdef DEBUG
-		Log("  Variable %s doesn't exist yet.\n", buf);
+		LogUncgi("  Variable %s doesn't exist yet.\n", buf);
 #endif
 		*c = '=';
 		newval = buf;
 	}
 
 #ifdef DEBUG
-	Log("  putenv %s\n", newval);
+	LogUncgi("  putenv %s\n", newval);
 #endif
 	putenv_ret = putenv(newval);
 	if (putenv_ret != 0){
-		Log("  putenv vrátila chybu! (%s)\n", newval);
+		LogUncgi("  putenv vrátila chybu! (%s)\n", newval);
 	}
 	else{
-		Log("  putenv OK (%s, %s)\n", buf, newval);
+		LogUncgi("  putenv OK (%s, %s)\n", buf, newval);
 	}
 
 	if (oldval)
@@ -674,7 +690,7 @@ static void stuffenv(char *var){
 static void scanquery(char *q){
 	char	*next = q;
 
-	Log("uncgi::scanquery() -- začiatok\n");
+	LogUncgi("uncgi::scanquery() -- začiatok\n");
 	do {
 		next = strchr(next, '&');
 		if (next){
@@ -686,9 +702,9 @@ static void scanquery(char *q){
 			*next++ = '&';
 		}
 		q = next;
-		Log("uncgi::scanquery(): \n\tq == %s\n\t_global_buf == %s\n", q, _global_buf);
+		LogUncgi("uncgi::scanquery(): \n\tq == %s\n\t_global_buf == %s\n", q, _global_buf);
 	} while (q != NULL);
-	Log("uncgi::scanquery() -- koniec\n");
+	LogUncgi("uncgi::scanquery() -- koniec\n");
 }// scanquery();
 
 // naplni premenne WWW_... hodnotami z QS, t.j. akoby to vratilo uncgi.c
@@ -701,22 +717,26 @@ short int setForm(void){
 
 	Log("setForm() -- begin\n");
 
+#ifndef LOG_PARAMS
+	Log("setForm(): LOG_PARAMS is undefined, no LogParams() printed...\n");
+#endif
+
 	// pri simulácii z qs je pom_QUERY_TYPE = psqs => upravujem, aby bola hodnota parametra param[x].name == qt resp. berieme z query_type
 	mystrcpy(local_str, STR_EMPTY, SMALL);
 	if (!equals(pom_QUERY_TYPE, STR_EMPTY)){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_QUERY_TYPE), SMALL);
 		strcat(local_str, "=");
 		if (equals(pom_QUERY_TYPE, STR_PRM_SIMULACIA_QS)){
-			Log("\tpre simuláciu priraďujem hodnotu z query_type (%s)...\n", param[0].val);
+			LogParams("\tpre simuláciu priraďujem hodnotu z query_type (%s)...\n", param[0].val);
 			// ak je simulácia, nastav hodnotu podľa query_type
 			strcat(local_str, param[0].val);
 		}
 		else{
 			strcat(local_str, pom_QUERY_TYPE);
 		}
-		Log("--- setForm: putenv(%s); ... ", local_str);
+		LogParams("--- setForm: putenv(%s); ... ", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 
 	// deň
@@ -725,9 +745,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_DEN), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_DEN);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 	// mesiac
 	mystrcpy(local_str, STR_EMPTY, SMALL);
@@ -735,9 +755,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_MESIAC), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_MESIAC);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 	// rok
 	mystrcpy(local_str, STR_EMPTY, SMALL);
@@ -750,9 +770,9 @@ short int setForm(void){
 		}
 		strcat(local_str, "=");
 		strcat(local_str, pom_ROK);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 	// modlitba
 	mystrcpy(local_str, STR_EMPTY, SMALL);
@@ -760,9 +780,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_MODLITBA), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_MODLITBA);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 	// pom_DALSI_SVATY
 	mystrcpy(local_str, STR_EMPTY, SMALL);
@@ -770,9 +790,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_DALSI_SVATY), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_DALSI_SVATY);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 
 	// options
@@ -785,9 +805,9 @@ short int setForm(void){
 
 			strcat(local_str, "=");
 			strcat(local_str, pom_OPT[i]);
-			Log("--- setForm: putenv(%s); ...\n", local_str);
+			LogParams("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
-			Log("--- setForm: putenv returned %d.\n", ret);
+			LogParams("--- setForm: putenv returned %d.\n", ret);
 		}
 	}// for i
 
@@ -801,14 +821,14 @@ short int setForm(void){
 
 			strcat(local_str, "=");
 			strcat(local_str, pom_FORCE_OPT[i]);
-			Log("--- setForm: putenv(%s); ...\n", local_str);
+			LogParams("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
-			Log("--- setForm: putenv returned %d.\n", ret);
+			LogParams("--- setForm: putenv returned %d.\n", ret);
 		}
 	}// for i
 
 	// force option 0, jednotlivé bit-komponenty
-	Log("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_0_SPECIALNE);
+	LogParams("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_0_SPECIALNE);
 	for (i = 0; i < POCET_OPT_0_SPECIALNE; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 		if (!equals(pom_FORCE_OPT_0_SPECIALNE[i], STR_EMPTY)){
@@ -818,14 +838,14 @@ short int setForm(void){
 
 			strcat(local_str, "=");
 			strcat(local_str, pom_FORCE_OPT_0_SPECIALNE[i]);
-			Log("--- setForm: putenv(%s); ...\n", local_str);
+			LogParams("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
-			Log("--- setForm: putenv returned %d.\n", ret);
+			LogParams("--- setForm: putenv returned %d.\n", ret);
 		}
 	}// for i
 
 	// force option 1, jednotlivé bit-komponenty
-	Log("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_1_CASTI_MODLITBY);
+	LogParams("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_1_CASTI_MODLITBY);
 	for (i = 0; i < POCET_OPT_1_CASTI_MODLITBY; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 		if (!equals(pom_FORCE_OPT_1_CASTI_MODLITBY[i], STR_EMPTY)){
@@ -835,14 +855,14 @@ short int setForm(void){
 
 			strcat(local_str, "=");
 			strcat(local_str, pom_FORCE_OPT_1_CASTI_MODLITBY[i]);
-			Log("--- setForm: putenv(%s); ...\n", local_str);
+			LogParams("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
-			Log("--- setForm: putenv returned %d.\n", ret);
+			LogParams("--- setForm: putenv returned %d.\n", ret);
 		}
 	}// for i
 
 	// force option 2, jednotlivé bit-komponenty
-	Log("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_2_HTML_EXPORT);
+	LogParams("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_2_HTML_EXPORT);
 	for (i = 0; i < POCET_OPT_2_HTML_EXPORT; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 		if (!equals(pom_FORCE_OPT_2_HTML_EXPORT[i], STR_EMPTY)){
@@ -852,14 +872,14 @@ short int setForm(void){
 
 			strcat(local_str, "=");
 			strcat(local_str, pom_FORCE_OPT_2_HTML_EXPORT[i]);
-			Log("--- setForm: putenv(%s); ...\n", local_str);
+			LogParams("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
-			Log("--- setForm: putenv returned %d.\n", ret);
+			LogParams("--- setForm: putenv returned %d.\n", ret);
 		}
 	}// for i
 
 	// force option 5, jednotlivé bit-komponenty
-	Log("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_5_ALTERNATIVES);
+	LogParams("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_5_ALTERNATIVES);
 	for (i = 0; i < POCET_OPT_5_ALTERNATIVES; i++){
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 		if (!equals(pom_FORCE_OPT_5_ALTERNATIVES[i], STR_EMPTY)){
@@ -869,9 +889,9 @@ short int setForm(void){
 
 			strcat(local_str, "=");
 			strcat(local_str, pom_FORCE_OPT_5_ALTERNATIVES[i]);
-			Log("--- setForm: putenv(%s); ...\n", local_str);
+			LogParams("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
-			Log("--- setForm: putenv returned %d.\n", ret);
+			LogParams("--- setForm: putenv returned %d.\n", ret);
 		}
 	}// for i
 
@@ -880,9 +900,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_JAZYK), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_JAZYK);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 
 	mystrcpy(local_str, STR_EMPTY, SMALL);
@@ -890,9 +910,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_KALENDAR), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_KALENDAR);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 
 	mystrcpy(local_str, STR_EMPTY, SMALL);
@@ -900,9 +920,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_CSS), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_CSS);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 
 	mystrcpy(local_str, STR_EMPTY, SMALL);
@@ -910,9 +930,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_FONT_NAME), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_FONT);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 
 	mystrcpy(local_str, STR_EMPTY, SMALL);
@@ -920,9 +940,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_STYLE_MARGIN), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_FONT_SIZE);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 
 	mystrcpy(local_str, STR_EMPTY, SMALL);
@@ -930,9 +950,9 @@ short int setForm(void){
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_FONT_SIZE), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_STYLE_MARGIN);
-		Log("--- setForm: putenv(%s); ...\n", local_str);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
-		Log("--- setForm: putenv returned %d.\n", ret);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
 	}
 
 	Log("setForm() -- end, returning SUCCESS\n");
@@ -2606,7 +2626,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_VN_VYNECHAJ)) {
+			Log("podmienka == %d; _global_den.denvr == %d, VELKONOCNA_NEDELA == %d...\n", podmienka, _global_den.denvr, VELKONOCNA_NEDELA);
 			podmienka &= (_global_den.denvr != VELKONOCNA_NEDELA);
+			Log("podmienka == %d...\n", podmienka);
 			exportovat_html_note = ANO;
 			_global_skip_in_prayer_vnpc = (!podmienka) && (je_begin);
 		}
@@ -4858,6 +4880,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				_global_den.smer = 2; // zjavenie Pána
 				_global_den.typslav = SLAV_SLAVNOST;
 				_global_den.litobd = OBD_VIANOCNE_II; // ma vlastne slavenie; zmenil som na vianocne obd. II
+				_global_den.tyzden = 2;
 				_global_den.prik = PRIKAZANY_SVIATOK;
 				mystrcpy(_global_den.meno, text_JAN_06[_global_jazyk], MENO_SVIATKU);
 				sprintf(_global_den.lc_str_id, "%d.%d.", _global_den.den, _global_den.mesiac);
@@ -4908,10 +4931,12 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				}
 				else{
 					// keď Krst Krista Pána pripadne na 9.-13.1., závisí týždeň žaltára od toho, či deň je pred alebo po 2. nedeli po narodení Pána (jej dátum je vlastne KRST - 7)
-					if (KRST - 7 > _global_den.denvr)
+					if (KRST - 7 > _global_den.denvr) {
 						_global_den.tyzden = 1;
-					else
+					}
+					else {
 						_global_den.tyzden = 2;
+					}
 					// 2012-01-01: podmienka je pre krajiny, kde sa slávnosť Zjavenia Pána slávi 6.1., ekvivalentná nasledovnej:
 					// _global_den.tyzden = _global_den.denvr < "_global_r.p1" + 1)? 1: 2; // pritom "_global_r.p1" je 'A' = 0, 'b' = 1, 'c' = 2, 'd' = 3..., 'g' = 6
 				}
@@ -6985,6 +7010,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		ExportHtmlComment("buttons:begin");
 	}
 #endif
+
 	short int i = MODL_NEURCENA;
 	short int smer = SLAV_NEURCENE;
 	char pom[MAX_STR];
@@ -7522,9 +7548,12 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 }// _export_rozbor_dna_buttons()
 
 void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_tabulke, char pom2[MAX_STR], short int zobraz_odkaz_na_skrytie){
+	Log("_export_rozbor_dna_buttons_dni_dnes(): začiatok\n");
 #ifdef OS_Windows_Ruby
 	ExportHtmlComment("buttons/dni/dnes:begin");
+	// Log("_global_den.denvt == %d\n", _global_den.denvt);
 #endif
+
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 
@@ -7595,9 +7624,11 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 		Export(HTML_TABLE_END "\n");
 	}
 	#endif
+
 #ifdef OS_Windows_Ruby
 	ExportHtmlComment("buttons/dni/dnes:end");
 #endif
+	Log("_export_rozbor_dna_buttons_dni_dnes(): koniec.\n");
 }// _export_rozbor_dna_buttons_dni_dnes()
 
 // typ - ako v _export_rozbor_dna()
@@ -7605,6 +7636,7 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 // exportuje buttony pre _export_rozbor_dna() a to button predosleho a nasledujuceho dna
 // 2011-07-03: pridaná možnosť zmeniť default look (tlačidlo "dnes" pre navigáciu v modlitbe nebude mať popis "dnes" a iné zmeny pre navigáciu)
 void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO */, short int aj_navigacia /* = ANO */){
+	Log("_export_rozbor_dna_buttons_dni(): začiatok\n");
 
 #ifdef OS_Windows_Ruby
 	ExportHtmlComment("buttons/dni:begin");
@@ -7682,6 +7714,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 #ifdef OS_Windows_Ruby
 	ExportHtmlComment("buttons/dni:end");
 #endif
+	Log("_export_rozbor_dna_buttons_dni(): koniec.\n");
 }// _export_rozbor_dna_buttons_dni()
 
 void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* = ANO */){
@@ -12012,22 +12045,22 @@ void rozbor_mesiaca(short int mesiac, short int rok, short int typ_exportu = EXP
 	Log("-- rozbor_mesiaca(%d/%d): koniec\n", mesiac, rok);
 }// rozbor_mesiaca();
 
-void log_pom_OPT(void){
+void log_pom_OPT(void) {
 	short int i;
-	for (i = 0; i < POCET_GLOBAL_OPT; i++){
+	for (i = 0; i < POCET_GLOBAL_OPT; i++) {
 		Log("opt %d == `%s' (%ld)\n", i, pom_OPT[i], _global_opt[i]);
 	}
 }// log_pom_OPT()
 
-void log_pom_FORCE_OPT(void){
+void log_pom_FORCE_OPT(void) {
 	short int i;
-	for (i = 0; i < POCET_GLOBAL_OPT; i++){
+	for (i = 0; i < POCET_GLOBAL_OPT; i++) {
 		Log("force_opt %d == `%s' (%ld)\n", i, pom_FORCE_OPT[i], _global_force_opt[i]);
 	}
-	for (i = 0; i < POCET_OPT_0_SPECIALNE; i++){
+	for (i = 0; i < POCET_OPT_0_SPECIALNE; i++) {
 		Log("force_opt[%d] %d == `%s'\n", OPT_0_SPECIALNE, i, pom_FORCE_OPT_0_SPECIALNE[i]);
 	}
-	for (i = 0; i < POCET_OPT_1_CASTI_MODLITBY; i++){
+	for (i = 0; i < POCET_OPT_1_CASTI_MODLITBY; i++) {
 		Log("force_opt[%d] %d == `%s'\n", OPT_1_CASTI_MODLITBY, i, pom_FORCE_OPT_1_CASTI_MODLITBY[i]);
 	}
 }// log_pom_FORCE_OPT()
@@ -12038,6 +12071,11 @@ void _rozparsuj_parametre_OPT_force(int option_opt, char pom_FORCE_OPT_opt[MAX_P
 	long bit_value;
 
 	Log("_rozparsuj_parametre_OPT_force() -- začiatok...\n");
+
+#ifndef LOG_PARAMS
+	Log("_rozparsuj_parametre_OPT_force(): LOG_PARAMS is undefined, no LogParams() printed...\n");
+#endif
+
 	// option_opt force j (0, 1, 2, 4, 5)
 	// option_opt force j -- jednotlivé komponenty
 	_global_force_opt[option_opt] = GLOBAL_OPTION_NULL;
@@ -12050,26 +12088,27 @@ void _rozparsuj_parametre_OPT_force(int option_opt, char pom_FORCE_OPT_opt[MAX_P
 			_global_option_opt[i] = atoi(pom_FORCE_OPT_opt[i]);
 			aspon_jedna_nenulova = ANO;
 		}
-		Log("force_opt[%d][%d] == `%s' (%d)\n", option_opt, i, pom_FORCE_OPT_opt[i], _global_option_opt[i]);
+		LogParams("force_opt[%d][%d] == `%s' (%d)\n", option_opt, i, pom_FORCE_OPT_opt[i], _global_option_opt[i]);
 	}// for i
 	if (aspon_jedna_nenulova == ANO){
 		_global_force_opt[option_opt] = 0;
 		// nastavenie _global_force_opt[option_opt] podľa jednotlivých bit-komponentov, ktoré sú nastavené v _global_option_opt[]
 		for (i = 0; i < pocet_opt[option_opt]; i++){
 			bit_value = (int)pow(2.0, i);
-			Log("option_opt %d, i == %d; bit_value == %ld...\n", option_opt, i, bit_value);
+			LogParams("option_opt %d, i == %d; bit_value == %ld...\n", option_opt, i, bit_value);
 			if (_global_option_opt[i] != GLOBAL_OPTION_NULL){
 				_global_force_opt[option_opt] += bit_value * _global_option_opt[i];
 			}
 			else if ((_global_opt[option_opt] & bit_value) == bit_value){
 				// ináč použi nastavenie z _global_opt (nie force)
-				Log("použijem nastavenie z _global_opt[%d] (nie force)...\n", option_opt);
+				LogParams("použijem nastavenie z _global_opt[%d] (nie force)...\n", option_opt);
 				_global_force_opt[option_opt] += bit_value;
 			}
 		}// for i
-		Log("force_opt[%d] vyskladaná == %ld\n", option_opt, _global_force_opt[option_opt]);
+		LogParams("force_opt[%d] vyskladaná == %ld\n", option_opt, _global_force_opt[option_opt]);
 	}
-	Log("force_opt %d == `%s' (%d)\n", option_opt, pom_FORCE_OPT[option_opt], _global_force_opt[option_opt]);
+	LogParams("force_opt %d == `%s' (%d)\n", option_opt, pom_FORCE_OPT[option_opt], _global_force_opt[option_opt]);
+
 	Log("_rozparsuj_parametre_OPT_force() -- koniec.\n");
 }// _rozparsuj_parametre_OPT_force()
 
@@ -12080,7 +12119,11 @@ void _rozparsuj_parametre_OPT(void){
 
 	Log("_rozparsuj_parametre_OPT() -- začiatok...\n");
 
-	Log("options...\n");
+#ifndef LOG_PARAMS
+	Log("_rozparsuj_parametre_OPT(): LOG_PARAMS is undefined, no LogParams() printed...\n");
+#endif
+
+	LogParams("options...\n");
 
 	// option 0
 	if ((pom_OPT[OPT_0_SPECIALNE] == NULL) || (strlen(pom_OPT[OPT_0_SPECIALNE]) < 1)){
@@ -12089,7 +12132,7 @@ void _rozparsuj_parametre_OPT(void){
 	else{
 		_global_opt[OPT_0_SPECIALNE] = atol(pom_OPT[OPT_0_SPECIALNE]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_0_SPECIALNE, pom_OPT[OPT_0_SPECIALNE], _global_opt[OPT_0_SPECIALNE]);
+	LogParams("opt %d == `%s' (%ld)\n", OPT_0_SPECIALNE, pom_OPT[OPT_0_SPECIALNE], _global_opt[OPT_0_SPECIALNE]);
 
 	// option 1
 	if ((pom_OPT[OPT_1_CASTI_MODLITBY] == NULL) || (strlen(pom_OPT[OPT_1_CASTI_MODLITBY]) < 1)){
@@ -12098,7 +12141,7 @@ void _rozparsuj_parametre_OPT(void){
 	else{
 		_global_opt[OPT_1_CASTI_MODLITBY] = atol(pom_OPT[OPT_1_CASTI_MODLITBY]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_1_CASTI_MODLITBY, pom_OPT[OPT_1_CASTI_MODLITBY], _global_opt[OPT_1_CASTI_MODLITBY]);
+	LogParams("opt %d == `%s' (%ld)\n", OPT_1_CASTI_MODLITBY, pom_OPT[OPT_1_CASTI_MODLITBY], _global_opt[OPT_1_CASTI_MODLITBY]);
 
 	// option 2
 	if ((pom_OPT[OPT_2_HTML_EXPORT] == NULL) || (strlen(pom_OPT[OPT_2_HTML_EXPORT]) < 1)){
@@ -12107,7 +12150,7 @@ void _rozparsuj_parametre_OPT(void){
 	else{
 		_global_opt[OPT_2_HTML_EXPORT] = atol(pom_OPT[OPT_2_HTML_EXPORT]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_2_HTML_EXPORT, pom_OPT[OPT_2_HTML_EXPORT], _global_opt[OPT_2_HTML_EXPORT]);
+	LogParams("opt %d == `%s' (%ld)\n", OPT_2_HTML_EXPORT, pom_OPT[OPT_2_HTML_EXPORT], _global_opt[OPT_2_HTML_EXPORT]);
 
 	// option 3
 	i = atoi(pom_OPT[OPT_3_SPOLOCNA_CAST]);
@@ -12120,7 +12163,7 @@ void _rozparsuj_parametre_OPT(void){
 		mystrcpy(pom_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i), SMALL);
 		// ak je zadane cislo spravne, tak i bude spravny int a pom_OPT[OPT_3_SPOLOCNA_CAST] bude spravny char*
 	}
-	Log("opt %d: i == %d\n", OPT_3_SPOLOCNA_CAST, i);
+	LogParams("opt %d: i == %d\n", OPT_3_SPOLOCNA_CAST, i);
 	// make sense only if any string was set (because some language constants in nazov_spolc() may be empty
 	if (strlen(pom_OPT[OPT_3_SPOLOCNA_CAST]) > 0){
 		while (i <= MODL_SPOL_CAST_NEBRAT){
@@ -12137,7 +12180,7 @@ void _rozparsuj_parametre_OPT(void){
 	if (i > MODL_SPOL_CAST_NEBRAT){
 		_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_3_SPOLOCNA_CAST, pom_OPT[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_3_SPOLOCNA_CAST]);
+	LogParams("opt %d == `%s' (%ld)\n", OPT_3_SPOLOCNA_CAST, pom_OPT[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_3_SPOLOCNA_CAST]);
 
 	// option 4
 	if ((pom_OPT[OPT_4_OFFLINE_EXPORT] == NULL) || (strlen(pom_OPT[OPT_4_OFFLINE_EXPORT]) < 1)){
@@ -12146,7 +12189,7 @@ void _rozparsuj_parametre_OPT(void){
 	else{
 		_global_opt[OPT_4_OFFLINE_EXPORT] = atol(pom_OPT[OPT_4_OFFLINE_EXPORT]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_4_OFFLINE_EXPORT, pom_OPT[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_4_OFFLINE_EXPORT]);
+	LogParams("opt %d == `%s' (%ld)\n", OPT_4_OFFLINE_EXPORT, pom_OPT[OPT_4_OFFLINE_EXPORT], _global_opt[OPT_4_OFFLINE_EXPORT]);
 
 	// option 5
 	if ((pom_OPT[OPT_5_ALTERNATIVES] == NULL) || (strlen(pom_OPT[OPT_5_ALTERNATIVES]) < 1)){
@@ -12155,7 +12198,7 @@ void _rozparsuj_parametre_OPT(void){
 	else{
 		_global_opt[OPT_5_ALTERNATIVES] = atol(pom_OPT[OPT_5_ALTERNATIVES]);
 	}
-	Log("opt %d == `%s' (%ld)\n", OPT_5_ALTERNATIVES, pom_OPT[OPT_5_ALTERNATIVES], _global_opt[OPT_5_ALTERNATIVES]);
+	LogParams("opt %d == `%s' (%ld)\n", OPT_5_ALTERNATIVES, pom_OPT[OPT_5_ALTERNATIVES], _global_opt[OPT_5_ALTERNATIVES]);
 
 	// force options
 	Log("force options...\n");
@@ -12181,11 +12224,11 @@ void _rozparsuj_parametre_OPT(void){
 		mystrcpy(pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i), SMALL);
 		// ak je zadane cislo spravne, tak i bude spravny int a pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST] bude spravny char*
 	}
-	Log("opt %d: i == %d\n", OPT_3_SPOLOCNA_CAST, i);
+	LogParams("opt %d: i == %d\n", OPT_3_SPOLOCNA_CAST, i);
 	// make sense only if any string was set (because some language constants in nazov_spolc() may be empty
 	if (strlen(pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST]) > 0){
 		while (i <= MODL_SPOL_CAST_NEBRAT){
-			Log("force_opt %d: (in while)i == %d; %s\n", OPT_3_SPOLOCNA_CAST, i, nazov_spolc(i));
+			LogParams("force_opt %d: (in while)i == %d; %s\n", OPT_3_SPOLOCNA_CAST, i, nazov_spolc(i));
 			if (equals(pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i))){
 				_global_force_opt[OPT_3_SPOLOCNA_CAST] = i;
 				break;
@@ -12199,7 +12242,7 @@ void _rozparsuj_parametre_OPT(void){
 	if (i > MODL_SPOL_CAST_NEBRAT){
 		_global_force_opt[OPT_3_SPOLOCNA_CAST] = GLOBAL_OPTION_NULL;
 	}
-	Log("force_opt %d == `%s' (%ld)\n", OPT_3_SPOLOCNA_CAST, pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST], _global_force_opt[OPT_3_SPOLOCNA_CAST]);
+	LogParams("force_opt %d == `%s' (%ld)\n", OPT_3_SPOLOCNA_CAST, pom_FORCE_OPT[OPT_3_SPOLOCNA_CAST], _global_force_opt[OPT_3_SPOLOCNA_CAST]);
 
 	// option force 4
 	_rozparsuj_parametre_OPT_force(OPT_4_OFFLINE_EXPORT, pom_FORCE_OPT_4_OFFLINE_EXPORT, _global_opt_4_offline_export);
@@ -12211,69 +12254,71 @@ void _rozparsuj_parametre_OPT(void){
 	// doplnené opt_0 až opt_4 force (okrem opt_3); default sa nastavuje podľa "ne-force" verzií; CFG_OPTION1_DEFAULT..CFG_OPTION5_DEFAULT doplnené v myconf.h
 	// aj pre hodnotu 3 sa vykonáva
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		Log("i == %d...\n", i);
+		LogParams("i == %d...\n", i);
 		if (_global_opt[i] == GLOBAL_OPTION_NULL){
 			_global_opt[i] = CFG_OPTION_DEFAULT(i);
-			Log("Keďže bolo _global_opt[%d] == GLOBAL_OPTION_NULL, nastavujem na `%ld'...\n", i, _global_opt[i]);
+			LogParams("Keďže bolo _global_opt[%d] == GLOBAL_OPTION_NULL, nastavujem na `%ld'...\n", i, _global_opt[i]);
 		}
 	}// for i
 
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		Log("i == %d...\n", i);
+		LogParams("i == %d...\n", i);
 		if (_global_force_opt[i] == GLOBAL_OPTION_NULL){
 			_global_force_opt[i] = _global_opt[i];
-			Log("Keďže bolo _global_force_opt[%d] == GLOBAL_OPTION_NULL, nastavujem na _global_opt[%d] == `%ld'...\n", i, i, _global_force_opt[i]);
+			LogParams("Keďže bolo _global_force_opt[%d] == GLOBAL_OPTION_NULL, nastavujem na _global_opt[%d] == `%ld'...\n", i, i, _global_force_opt[i]);
 		}
 		else{
 			_global_opt[i] = _global_force_opt[i];
-			Log("Force; do _global_opt[%d] priraďujem _global_force_opt[%d] (`%ld')...\n", i, i, _global_force_opt[i]);
+			LogParams("Force; do _global_opt[%d] priraďujem _global_force_opt[%d] (`%ld')...\n", i, i, _global_force_opt[i]);
 		}
 		// špeciálna úprava: zohľadnenie defaultu z config súboru pre 4. bit (BIT_OPT_2_FONT_NAME_CHOOSER)
 		if (i == OPT_2_HTML_EXPORT){
 			// teraz platí, že _global_opt[i] == _global_force_opt[i], takže stačí testovať jednu z nich, ale upraviť treba obe hodnoty
 
 			// špeciálne: pre 4. bit (BIT_OPT_2_FONT_NAME_CHOOSER)
-			Log("špeciálna úprava: zohľadnenie defaultu z config súboru pre 4. bit (BIT_OPT_2_FONT_NAME_CHOOSER)\n");
+			LogParams("špeciálna úprava: zohľadnenie defaultu z config súboru pre 4. bit (BIT_OPT_2_FONT_NAME_CHOOSER)\n");
 			opt_2_fn = ((CFG_OPTION_DEFAULT(i) & BIT_OPT_2_FONT_NAME_CHOOSER) == BIT_OPT_2_FONT_NAME_CHOOSER) ? ANO : NIE;
 			if ((isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER)) && (opt_2_fn == NIE)){
-				Log("odstraňujem z _global_opt aj _global_force_opt[%d] bit pre BIT_OPT_2_FONT_NAME_CHOOSER\n...", i);
+				LogParams("odstraňujem z _global_opt aj _global_force_opt[%d] bit pre BIT_OPT_2_FONT_NAME_CHOOSER\n...", i);
 				_global_force_opt[i] -= BIT_OPT_2_FONT_NAME_CHOOSER;
 				_global_opt[i] -= BIT_OPT_2_FONT_NAME_CHOOSER;
 			}
 			else if ((!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER)) && (opt_2_fn == ANO)){
-				Log("pridávam do _global_force_opt[%d] bit pre BIT_OPT_2_FONT_NAME_CHOOSER\n...", i);
+				LogParams("pridávam do _global_force_opt[%d] bit pre BIT_OPT_2_FONT_NAME_CHOOSER\n...", i);
 				_global_force_opt[i] += BIT_OPT_2_FONT_NAME_CHOOSER;
 				_global_opt[i] += BIT_OPT_2_FONT_NAME_CHOOSER;
 			}
 			else{
-				Log("nie je potrebné upravovať ani _global_opt ani _global_force_opt[%d].\n", i);
+				LogParams("nie je potrebné upravovať ani _global_opt ani _global_force_opt[%d].\n", i);
 			}
-			Log("po potenciálnej úprave: _global_opt aj _global_force_opt[%d] == `%ld'...\n", i, _global_force_opt[i]);
+			LogParams("po potenciálnej úprave: _global_opt aj _global_force_opt[%d] == `%ld'...\n", i, _global_force_opt[i]);
 
 			// špeciálne: pre 5. bit (BIT_OPT_2_FONT_SIZE_CHOOSER)
-			Log("špeciálna úprava: zohľadnenie defaultu z config súboru pre 5. bit (BIT_OPT_2_FONT_SIZE_CHOOSER)\n");
+			LogParams("špeciálna úprava: zohľadnenie defaultu z config súboru pre 5. bit (BIT_OPT_2_FONT_SIZE_CHOOSER)\n");
 			opt_2_fs = ((CFG_OPTION_DEFAULT(i) & BIT_OPT_2_FONT_SIZE_CHOOSER) == BIT_OPT_2_FONT_SIZE_CHOOSER) ? ANO : NIE;
 			if ((isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER)) && (opt_2_fs == NIE)){
-				Log("odstraňujem z _global_opt aj _global_force_opt[%d] bit pre BIT_OPT_2_FONT_SIZE_CHOOSER\n...", i);
+				LogParams("odstraňujem z _global_opt aj _global_force_opt[%d] bit pre BIT_OPT_2_FONT_SIZE_CHOOSER\n...", i);
 				_global_force_opt[i] -= BIT_OPT_2_FONT_SIZE_CHOOSER;
 				_global_opt[i] -= BIT_OPT_2_FONT_SIZE_CHOOSER;
 			}
 			else if ((!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER)) && (opt_2_fs == ANO)){
-				Log("pridávam do _global_force_opt[%d] bit pre BIT_OPT_2_FONT_SIZE_CHOOSER\n...", i);
+				LogParams("pridávam do _global_force_opt[%d] bit pre BIT_OPT_2_FONT_SIZE_CHOOSER\n...", i);
 				_global_force_opt[i] += BIT_OPT_2_FONT_SIZE_CHOOSER;
 				_global_opt[i] += BIT_OPT_2_FONT_SIZE_CHOOSER;
 			}
 			else{
-				Log("nie je potrebné upravovať ani _global_opt ani _global_force_opt[%d].\n", i);
+				LogParams("nie je potrebné upravovať ani _global_opt ani _global_force_opt[%d].\n", i);
 			}
-			Log("po potenciálnej úprave: _global_opt aj _global_force_opt[%d] == `%ld'...\n", i, _global_force_opt[i]);
+			LogParams("po potenciálnej úprave: _global_opt aj _global_force_opt[%d] == `%ld'...\n", i, _global_force_opt[i]);
 
 		}// (i == OPT_2_HTML_EXPORT)
 	}// for i
 
-	Log("=== Po potenciálnych úpravách (nastavenie default hodnôt podľa jazyka) ===\n");
+	LogParams("=== Po potenciálnych úpravách (nastavenie default hodnôt podľa jazyka) ===\n");
+#ifdef LOG_PARAMS
 	log_pom_OPT();
 	log_pom_FORCE_OPT();
+#endif
 
 	// setting up global strings for HTML export
 	if ((isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_DO_NOT_USE_BUTTON)) || PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT){
@@ -13113,7 +13158,7 @@ void _main_zaltar(char *den, char *tyzden, char *modlitba){
 	showPrayer(p);
 }// _main_zaltar()
 
-short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char *litobd, char *litrok){
+short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char *litobd, char *litrok) {
 	short int d, t, p, lo, tz, poradie_svateho = 0, ret;
 	char lr;
 	short int jeSpolocnaCast = NIE;
@@ -13130,14 +13175,14 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 
 	// do budúcnosti treba riešiť niektoré špeciality, napr. adv. obd. II alebo vian. obd. II (dni určené dátumom); triduum a pod.
 
-	if (lr > 'C' || lr < 'A'){
+	if (lr > 'C' || lr < 'A') {
 		ALERT;
 		Export("Nevhodné údaje:" HTML_LINE_BREAK "\n<ul>");
 		// tyzden
-		if (equals(tyzden, STR_EMPTY)){
+		if (equals(tyzden, STR_EMPTY)) {
 			Export("<li>taký liturgický rok nemožno žiadať</li>\n");
 		}
-		else if ((t < 1) || (t > 4)){
+		else if ((t < 1) || (t > 4)) {
 			Export("<li>týždeň = <" HTML_SPAN_BOLD ">%c" HTML_SPAN_END "</li>\n", lr);
 		}
 		Export("</ul>\n");
@@ -13146,7 +13191,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 
 	Log("nastavenie p (modlitba == %s)...\n", modlitba);
 	p = atomodlitba(modlitba);
-	if ((p == MODL_NEURCENA) || (p < MODL_INVITATORIUM) || (p > MODL_DRUHE_KOMPLETORIUM)){
+	if ((p == MODL_NEURCENA) || (p < MODL_INVITATORIUM) || (p > MODL_DRUHE_KOMPLETORIUM)) {
 		Export("Nevhodné údaje: nie je určená modlitba (%s).\n", modlitba);
 		return FAILURE;
 	}
@@ -13154,15 +13199,15 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	Log("nastavenie do _global_modlitba I. ...\n");
 	_global_modlitba = p;
 	// vstupom pre showPrayer() je iba zakladny typ modlitby; zvysna informacia (ci ide o prve/druhe vespery/kompl.) sa uchova v premennej _global_modlitba
-	if ((p == MODL_PRVE_VESPERY) || (p == MODL_DRUHE_VESPERY)){
+	if ((p == MODL_PRVE_VESPERY) || (p == MODL_DRUHE_VESPERY)) {
 		p = MODL_VESPERY;
 	}
-	if ((p == MODL_PRVE_KOMPLETORIUM) || (p == MODL_DRUHE_KOMPLETORIUM)){
+	if ((p == MODL_PRVE_KOMPLETORIUM) || (p == MODL_DRUHE_KOMPLETORIUM)) {
 		p = MODL_KOMPLETORIUM;
 	}
 
 	// ak je to sobota a požadujú sa vešpery alebo kompletórium, zmeň nastavenia na nedeľu, prvé vešpery resp. prvé kompletórium (2013-02-03)
-	if ((d == DEN_SOBOTA) && ((p == MODL_VESPERY) || (p == MODL_KOMPLETORIUM))){
+	if ((d == DEN_SOBOTA) && ((p == MODL_VESPERY) || (p == MODL_KOMPLETORIUM))) {
 		Log("ak je to sobota a požadujú sa vešpery alebo kompletórium, zmeň nastavenia na nedeľu, prvé vešpery resp. prvé kompletórium...\n");
 		d = DEN_NEDELA;
 		p = (p == MODL_VESPERY) ? MODL_PRVE_VESPERY : MODL_PRVE_KOMPLETORIUM;
@@ -13177,18 +13222,18 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	Log("setting of chosen common part (communia): %ld\n", _global_opt[OPT_3_SPOLOCNA_CAST]);
 	// it is always safe to test de-composed member spolcast with je_spolocna_cast_urcena()
 	sc = _decode_spol_cast(_global_den.spolcast);
-	if (je_spolocna_cast_urcena(sc.a1)){
+	if (je_spolocna_cast_urcena(sc.a1)) {
 		jeSpolocnaCast = ANO;
 	}
 
 	// ked nejde o nedelu, nema zmysel rozlisovat prve/druhe vespery/kompl. | ToDo: slávnosti, sviatky Pána
 	// ofícium za zosnulých nemá prvé vešpery
-	if ((d != DEN_NEDELA) && ((jeSpolocnaCast == NIE) || (_global_den.spolcast == MODL_SPOL_CAST_ZA_ZOSNULYCH))){
-		if (p == MODL_VESPERY){
+	if ((d != DEN_NEDELA) && ((jeSpolocnaCast == NIE) || (_global_den.spolcast == MODL_SPOL_CAST_ZA_ZOSNULYCH))) {
+		if (p == MODL_VESPERY) {
 			Log("nastavenie do _global_modlitba III. ...\n");
 			_global_modlitba = MODL_VESPERY;
 		}
-		if (p == MODL_KOMPLETORIUM){
+		if (p == MODL_KOMPLETORIUM) {
 			Log("nastavenie do _global_modlitba IV. ...\n");
 			_global_modlitba = MODL_KOMPLETORIUM;
 		}
@@ -13204,14 +13249,14 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		|| (((lo == OBD_POSTNE_II_VELKY_TYZDEN) || (lo == OBD_VELKONOCNE_TROJDNIE)) && (t - 6 > lit_obd_pocet_tyzdnov[lo]))
 		|| ((lo == OBD_VIANOCNE_II) && (t - 1 > lit_obd_pocet_tyzdnov[lo]))
 		|| ((lo == OBD_ADVENTNE_II) && (t - 3 > lit_obd_pocet_tyzdnov[lo]))
-		){
+		) {
 		ALERT;
 		Export("Nevhodné údaje:" HTML_LINE_BREAK "\n<ul>");
 		// tyzden
-		if (equals(tyzden, STR_EMPTY)){
+		if (equals(tyzden, STR_EMPTY)) {
 			Export("<li>taký týždeň nemožno žiadať</li>\n");
 		}
-		else{
+		else {
 			Export("<li>týždeň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "; taký týždeň nemožno žiadať pre dané liturgické obdobie: %s</li>\n", tyzden, nazov_obdobia_ext(lo));
 		}
 		Export("</ul>\n");
@@ -13219,31 +13264,35 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	}
 
 	// pôstne obdobie nezačína nedeľou, ale popolcovou stredou; technicky ide o 0. týždeň pôstneho obdobia
-	if ((d < DEN_NEDELA) || (d > DEN_SOBOTA) || ((t < 0) || ((t == 0) && ((lo != OBD_POSTNE_I) && (d < DEN_STREDA)))) || (t > POCET_NEDIEL_CEZ_ROK)){
+	if ((d < DEN_NEDELA) || (d > DEN_SOBOTA) || ((t < 0) || ((t == 0) && ((lo != OBD_POSTNE_I) && (d < DEN_STREDA)))) || (t > POCET_NEDIEL_CEZ_ROK)) {
 		ALERT;
 		Export("Nevhodné údaje:" HTML_LINE_BREAK "\n<ul>");
 		// deň
-		if (equals(den, STR_EMPTY)){
+		if (equals(den, STR_EMPTY)) {
 			Export("<li>chýba údaj o dni</li>\n");
 		}
-		else if (d == DEN_UNKNOWN){
+		else if (d == DEN_UNKNOWN) {
 			Export("<li>deň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END " (neznámy)</li>\n", den);
 		}
-		else{
+		else {
 			Export("<li>deň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "</li>\n", den);
 		}
 		// tyzden
 		if (equals(tyzden, STR_EMPTY))
 			Export("<li>chýba údaj o týždni</li>\n");
-		else if ((t < 0) || ((t == 0) && ((lo != OBD_POSTNE_I) && (d < DEN_STREDA)))){
+		else if ((t < 0) || ((t == 0) && ((lo != OBD_POSTNE_I) && (d < DEN_STREDA)))) {
 			Export("<li>týždeň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "</li>\n", tyzden);
 		}
-		else{
+		else {
 			Export("<li>týždeň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "</li>\n", tyzden);
 		}
 		Export("</ul>\n");
 		return FAILURE;
 	}
+
+	// setting up some basic data about liturgical year
+	analyzuj_rok(NULL_YEAR);
+	// Log(_global_r);
 
 	// nastavenie niektorých atribútov pre _global_den
 	_global_den.denvt = d;
@@ -13251,113 +13300,168 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	_global_den.tyzzal = tz;
 	_global_den.tyzden = t;
 	_global_den.litrok = lr; // default: litrok  = (char)('A' + nedelny_cyklus(den, mesiac, rok));
+
+	// Log("_global_den.denvt == %d\n", _global_den.denvt);
+
 	mystrcpy(_global_den.meno, STR_EMPTY, MENO_SVIATKU);
 	// špeciálne nastavenie hodnoty smer
 	Log("špeciálne nastavenie hodnoty smer... switch(%d | %s):\n", lo, nazov_obdobia_ext(lo));
-	switch (lo){
+	switch (lo) {
+
 	case OBD_VELKONOCNE_TROJDNIE:
 		_global_den.smer = 1; // trojdnie
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
+
 	case OBD_ADVENTNE_I:
-		if (d == DEN_NEDELA){
+		if (d == DEN_NEDELA) {
 			_global_den.smer = 2; // nedele adventné
+			if (t == 1) {
+				_global_den.denvr = NULL_PRVA_ADVENTNA_NEDELA;
+			}
 		}
-		else{
+		else {
 			_global_den.smer = 13; // všedné dni adventné do 16. decembra
 		}
 		_global_den.farba = LIT_FARBA_FIALOVA;
 		break;
+
 	case OBD_ADVENTNE_II:
-		if (d == DEN_NEDELA){
+		if (d == DEN_NEDELA) {
 			_global_den.smer = 2; // nedele adventné
 		}
-		else{
+		else {
 			_global_den.smer = 9; // všedné dni adventné od 17. do 24. decembra
 		}
 		_global_den.farba = LIT_FARBA_FIALOVA;
 		break;
+
 	case OBD_VELKONOCNA_OKTAVA:
 		_global_den.smer = 2; // veľkonočná oktáva
 		break;
+
 	case OBD_POSTNE_I:
-		if (d == DEN_NEDELA){
+		if (d == DEN_NEDELA) {
 			_global_den.smer = 2; // nedele pôstne
 		}
-		else{
-			if ((d == DEN_STREDA) && (t == 0)){
+		else {
+			if ((d == DEN_STREDA) && (t == 0)) {
 				_global_den.smer = 2; // popolcová streda
+				_global_den.denvr = NULL_POPOLCOVA_STREDA;
 			}
-			else{
+			else {
 				_global_den.smer = 9; // všedné dni v pôste
 			}
 		}
 		_global_den.farba = LIT_FARBA_FIALOVA;
 		break;
+
 	case OBD_POSTNE_II_VELKY_TYZDEN:
 		_global_den.smer = 2;
 		_global_den.farba = LIT_FARBA_FIALOVA;
 		break;
+
 	case OBD_VELKONOCNE_I:
-		if (d == DEN_NEDELA){
+		if (d == DEN_NEDELA) {
 			_global_den.smer = 2; // nedele veľkonočné
+			if (t == 1) {
+				_global_den.denvr = NULL_VELKONOCNA_NEDELA;
+			}
 		}
-		else{
+		else {
 			_global_den.smer = 13; // všedné dni veľkonočné od pondelka po veľkonočnej oktáve až do soboty pred Zoslaním Ducha Svätého včítane
 		}
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
+
 	case OBD_VELKONOCNE_II:
-		if (d == DEN_NEDELA){
+		if (d == DEN_NEDELA) {
 			_global_den.smer = 2; // nedele veľkonočné
 		}
-		else{
+		else {
 			_global_den.smer = 13; // všedné dni veľkonočné od pondelka po veľkonočnej oktáve až do soboty pred Zoslaním Ducha Svätého včítane
 		}
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
+
 	case OBD_VIANOCNE_I:
-		if (d == DEN_NEDELA){
+		if (d == DEN_NEDELA) {
 			_global_den.smer = 6; // nedele vianočné (a cezročné)
 		}
-		else{
+		else {
 			_global_den.smer = 13; // všedné dni vianočné
 		}
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
+
 	case OBD_VIANOCNE_II:
-		if (d == DEN_NEDELA){
+		if (d == DEN_NEDELA) {
 			_global_den.smer = 6; // nedele vianočné (a cezročné)
+			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)) {
+				_global_den.denvr = NULL_ZJAVENIE_PANA;
+			}
 		}
-		else{
+		else {
 			_global_den.smer = 13; // všedné dni vianočné
+			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA) && (_global_den.denvt == DEN_PONDELOK)) {
+				_global_den.denvr = NULL_KRST_KRISTA_PANA;
+			}
 		}
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
+
 	case OBD_OKTAVA_NARODENIA:
 		_global_den.smer = 9; // vianočná oktáva
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
+
 	case OBD_CEZ_ROK:
-		if (d == DEN_NEDELA){
+		if (d == DEN_NEDELA) {
 			_global_den.smer = 6; // nedele cezročné (a vianočné)
 		}
-		else{
+		else {
 			_global_den.smer = 13; // všedné dni cezročné
 		}
 		_global_den.farba = LIT_FARBA_ZELENA;
 		break;
+
 	default:
 		_global_den.smer = 13;
 		_global_den.farba = LIT_FARBA_ZELENA;
 		break;
 	} // switch(lo)
 
+	if (_global_den.denvr < 0) {
+		switch (_global_den.denvr) {
+		case NULL_KRST_KRISTA_PANA:
+			_global_den = _global_r._KRST_KRISTA_PANA;
+			break;
+		case NULL_POPOLCOVA_STREDA:
+			_global_den = _global_r._POPOLCOVA_STREDA;
+			break;
+		case NULL_VELKONOCNA_NEDELA:
+			_global_den = _global_r._VELKONOCNA_NEDELA;
+			break;
+		case NULL_NANEBOVSTUPENIE_PANA:
+			_global_den = _global_r._NANEBOVSTUPENIE_PANA;
+			break;
+		case NULL_ZOSLANIE_DUCHA_SV:
+			_global_den = _global_r._ZOSLANIE_DUCHA_SV;
+			break;
+		case NULL_PRVA_ADVENTNA_NEDELA:
+			_global_den = _global_r._PRVA_ADVENTNA_NEDELA;
+			break;
+		case NULL_SVATEJ_RODINY:
+			_global_den = _global_r._SVATEJ_RODINY;
+			break;
+		}
+	}
+
 	// treba nejako hack-ovať a nastaviť aj tieto: _global_den.den pre adv2 a vian1 (25, 26 atd.) | denvr pre špeciality cezročného
 	liturgicke_obdobie(lo, t, d, tz, poradie_svateho);
 
 	// usage of chosen common part (communia) | použitie zvolenej spoločnej časti
-	if (jeSpolocnaCast == ANO){
+	if (jeSpolocnaCast == ANO) {
 		Log("_main_liturgicke_obdobie(): spoločná časť == %s...\n", nazov_spolc(_global_den.spolcast));
 		_struct_sc sc = _decode_spol_cast(_global_den.spolcast);
 		set_spolocna_cast(sc, poradie_svateho, FORCE_BRAT_VSETKO);
@@ -13365,10 +13469,10 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	}
 
 	// skopírované podľa funkcie _rozbor_dna_s_modlitbou(); ukladá heading do stringu _global_string
-	Log("2:spustam init_global_string(EXPORT_DNA_JEDEN_DEN, svaty == %d, modlitba == %s)...\n", poradie_svateho, nazov_modlitby(_global_modlitba));
+	Log("spúšťam init_global_string(EXPORT_DNA_JEDEN_DEN, svaty == %d, modlitba == %s)...\n", poradie_svateho, nazov_modlitby(_global_modlitba));
 	ret = init_global_string(EXPORT_DNA_JEDEN_DEN, poradie_svateho, _global_modlitba, /* aj_citanie */ NIE);
 
-	if (ret == FAILURE){
+	if (ret == FAILURE) {
 		Log("init_global_string() returned FAILURE, so returning FAILURE...\n");
 		Log("_main_liturgicke_obdobie(): koniec (%d)\n", ret);
 		return ret;
@@ -15864,24 +15968,30 @@ short int parseQueryString(void){
 	char errmsg[SMALL] = STR_EMPTY;
 
 	Log("parseQueryString() -- begin\n");
-	if (query_string != NULL)
+	if (query_string != NULL) {
 		Log("query_string == %s, lenght == %d\n", query_string, strlen(query_string));
-	else
+	}
+	else {
 		Log("query_string is NULL, something is wrong...\n");
+	}
+
+#ifndef LOG_PARAMS
+	Log("parseQueryString(): LOG_PARAMS is undefined, no LogParams() printed...\n");
+#endif
 
 	// get parameters
 	i = 0;
-	while ((strlen(query_string) > 0) && (i < MAX_VARIABLES)){ // 2006-08-01: doplnená podmienka, aby nepretieklo napĺňanie premenných, ak je ich viac
+	while ((strlen(query_string) > 0) && (i < MAX_VARIABLES)){
 		mystrcpy(param[i].name, STR_EMPTY, MAX_NAME_CGI_UTILS);
 		mystrcpy(param[i].val, STR_EMPTY, MAX_VAL_CGI_UTILS);
 		splitword(param[i].val, query_string, '&');
 		unescape_url(param[i].val);
 		splitword(param[i].name, param[i].val, '=');
-		Log("--- param[%d].name == %s, .val == %s\n", i, param[i].name, param[i].val);
+		LogParams("--- param[%d].name == %s, .val == %s\n", i, param[i].name, param[i].val);
 		i++;
 	}
 	pocet = i; // od 0 po i - 1
-	Log("pocet == %d\n", pocet);
+	LogParams("pocet == %d\n", pocet);
 
 	// 2006-08-01: doplnená podmienka, aby nepretieklo napĺňanie premenných, ak je ich viac
 	if ((strlen(query_string) > 0) && (pocet >= MAX_VARIABLES)){
@@ -15889,112 +15999,102 @@ short int parseQueryString(void){
 		Export("Program nedokáže obslúžiť viac parametrov (maximum: %d). Ostatné budú ignorované.\n", MAX_VARIABLES);
 	}
 
-	// 2006-07-12: pridané kvôli jazykovým mutáciám
-	// 2012-07-23: Pre POST query sa tam jazyk priliepa aj na začiatok (Ruby), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
-	//             preto čítam "odzadu", "zozadu" (backwards)
-	//             ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
-	//             pôvodná poznámka pre while cyklus resp. inicializáciu i: param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme aj 0
+	// Pre POST query sa tam jazyk priliepa aj na začiatok (Ruby), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
+	// preto čítam "odzadu", "zozadu" (backwards)
+	// ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
+	// pôvodná poznámka pre while cyklus resp. inicializáciu i: param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme aj 0
 	i = pocet;
-	Log("pokúšam sa zistiť jazyk (od posledného parametra k prvému, t. j. odzadu)...\n");
+	LogParams("pokúšam sa zistiť jazyk (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_JAZYK, STR_EMPTY)) && (i > 0)){
 		--i;
-		Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_JAZYK)){
 			// ide o parameter STR_JAZYK
 			mystrcpy(pom_JAZYK, param[i].val, SMALL);
-			Log("jazyk zistený (%s).\n", pom_JAZYK);
+			LogParams("jazyk zistený (%s).\n", pom_JAZYK);
 		}
 	}
 
-	// 2010-08-04: pridané kvôli jazykovým mutáciám -- kalendár 
-	//             pôvodná poznámka pre while cyklus resp. inicializáciu i: param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme aj 0
 	// 2010-10-11: Pre POST query sa tam kalendár priliepa aj na začiatok, aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
 	//             preto čítam "odzadu", "zozadu" (backwards)
 	//             ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
 	// 2011-04-07: keďže počet parametrov je "pocet", indexované sú 0 až pocet - 1, a preto opravené: najprv znížime --i;
 	i = pocet;
-	Log("pokúšam sa zistiť kalendár (od posledného parametra k prvému, t. j. odzadu)...\n");
+	LogParams("pokúšam sa zistiť kalendár (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_KALENDAR, STR_EMPTY)) && (i > 0)){
 		--i;
-		Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_KALENDAR)){
 			// ide o parameter STR_KALENDAR
 			mystrcpy(pom_KALENDAR, param[i].val, SMALL);
-			Log("kalendár zistený (%s).\n", pom_KALENDAR);
+			LogParams("kalendár zistený (%s).\n", pom_KALENDAR);
 		}
 	}
 
-	// 2008-08-08: pridané kvôli rôznym css
 	i = 0; // param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme od 0
-	Log("pokúšam sa zistiť css...\n");
+	LogParams("pokúšam sa zistiť css...\n");
 	while ((equalsi(pom_CSS, STR_EMPTY)) && (i < pocet)){
-		Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_CSS)){
 			// ide o parameter STR_CSS
 			mystrcpy(pom_CSS, param[i].val, SMALL);
-			Log("css zistené (%s).\n", pom_CSS);
+			LogParams("css zistené (%s).\n", pom_CSS);
 		}
 		i++;
 	}
-	// 2012-07-23: doplnené (snáď nebude robiť problémy)
 	if ((i >= pocet) && (equalsi(pom_CSS, STR_EMPTY))){
 		mystrcpy(pom_CSS, nazov_css[CSS_breviar_sk], SMALL);
-		Log("css zistené (%s) (i >= pocet).\n", pom_CSS);
+		LogParams("css zistené (%s) (i >= pocet).\n", pom_CSS);
 	}
 
-	// 2011-05-05: pridané kvôli rôznym fontom 
-	// 2011-05-06: Pre POST query sa tam font priliepa aj na začiatok (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
-	//             preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
-	//             nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
+	// Pre POST query sa tam font priliepa aj na začiatok (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
+	// preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
+	// nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
 	i = pocet;
-	Log("pokúšam sa zistiť font (od posledného parametra k prvému, t. j. odzadu)...\n");
+	LogParams("pokúšam sa zistiť font (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_FONT, STR_EMPTY)) && (i > 0)){
 		--i;
-		Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_FONT_NAME)){
 			// ide o parameter STR_FONT_NAME
 			mystrcpy(pom_FONT, param[i].val, SMALL);
-			Log("font zistený (%s).\n", pom_FONT);
+			LogParams("font zistený (%s).\n", pom_FONT);
 		}
 	}
 
-	// 2011-05-13: pridané kvôli rôznym veľkostiam fontom 
-	//             Pre POST query sa tam font priliepa aj na začiatok (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
-	//             preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
-	//             nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
+	// Pre POST query sa tam font priliepa aj na začiatok (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
+	// preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
+	// nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
 	i = pocet;
-	Log("pokúšam sa zistiť font size (od posledného parametra k prvému, t. j. odzadu)...\n");
+	LogParams("pokúšam sa zistiť font size (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_FONT_SIZE, STR_EMPTY)) && (i > 0)){
 		--i;
-		Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_FONT_SIZE)){
 			// ide o parameter STR_FONT_SIZE
 			mystrcpy(pom_FONT_SIZE, param[i].val, VERY_SMALL);
-			Log("font size zistená (%s).\n", pom_FONT_SIZE);
+			LogParams("font size zistená (%s).\n", pom_FONT_SIZE);
 		}
 	}
 
-	// 2015-01-08: style margin
 	i = pocet;
-	Log("pokúšam sa zistiť style margin (od posledného parametra k prvému, t. j. odzadu)...\n");
+	LogParams("pokúšam sa zistiť style margin (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_STYLE_MARGIN, STR_EMPTY)) && (i > 0)){
 		--i;
-		Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_STYLE_MARGIN)){
 			// ide o parameter STR_STYLE_MARGIN
 			mystrcpy(pom_STYLE_MARGIN, param[i].val, VERY_SMALL);
-			Log("font size zistená (%s).\n", pom_STYLE_MARGIN);
+			LogParams("font size zistená (%s).\n", pom_STYLE_MARGIN);
 		}
 	}
 
-	// 2006-08-01: pôvodne sme predpokladali, že param[0] by mal obsahovať typ akcie; odteraz ho hľadáme v celom zozname parametrov
-	// 2011-01-25: doplnené PRM_LIT_OBD
 	ok = NIE;
 	query_type = PRM_UNKNOWN;
 	i = 0; // od param[0]
-	Log("pokúšam sa zistiť query type...\n");
+	LogParams("pokúšam sa zistiť query type...\n");
 	while ((ok != ANO) && (i < pocet)){
-		Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_QUERY_TYPE)){ // zistíme typ akcie, lebo ide o dobrý parameter
 			if (equals(param[i].val, STR_PRM_DATUM)){
 				// ide o parameter STR_PRM_DATUM
@@ -16049,7 +16149,7 @@ short int parseQueryString(void){
 				Export("Chybná hodnota parametra %s: %s\n", param[i].name, param[i].val);
 				query_type = PRM_UNKNOWN;
 			}
-			Log("query type parameter prítomný (%s), hodnota zistená (%s).\n", param[i].name, param[i].val);
+			LogParams("query type parameter prítomný (%s), hodnota zistená (%s).\n", param[i].name, param[i].val);
 		}// if(equals(param[i].name, STR_QUERY_TYPE))
 		if (query_type != PRM_UNKNOWN)
 			ok = ANO;
@@ -16057,167 +16157,167 @@ short int parseQueryString(void){
 	}// while
 
 	for (j = 0; j < POCET_GLOBAL_OPT; j++){
-		Log("j == %d...\n", j);
+		LogParams("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
 		strcat_str_opt_bit_order(local_str, j, USE_STR_OPT);
 
 		// premenná OPT_j (nepovinná), j = 0 až POCET_GLOBAL_OPT - 1
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString()\n", local_str);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s... parseQueryString()\n", local_str);
 		while ((equalsi(pom_OPT[j], STR_EMPTY)) && (i < pocet)){
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
 				// ide o parameter STR_OPT_j
 				mystrcpy(pom_OPT[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_OPT[j]);
+				LogParams("hodnota parametra %s je %s.\n", local_str, pom_OPT[j]);
 			}
 			i++;
 		}
 		if (equalsi(pom_OPT[j], STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
 
 	// FORCE options
 	for (j = 0; j < POCET_GLOBAL_OPT; j++){
-		Log("j == %d...\n", j);
+		LogParams("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
 		strcat_str_opt_bit_order(local_str, j, USE_STR_FORCE_OPT);
 
 		// premenná FORCE_OPT_j (nepovinná)
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force\n", local_str);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force\n", local_str);
 		while ((equalsi(pom_FORCE_OPT[j], STR_EMPTY)) && (i < pocet)){
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT[j]);
+				LogParams("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT[j]);
 			}
 			i++;
 		}
 		if (equalsi(pom_FORCE_OPT[j], STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
 
-	// 2011-04-13: force option 0 premenné -- jednotlivé bit-komponenty
-	// 2013-11-26: Pre POST query sa tam hodnota priliepa pre jednotlivý check-box zo začiatku (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
-	//             preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
-	//             nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
-	Log("force option %d, jednotlivé bit-komponenty...(parseQuery)\n", OPT_0_SPECIALNE);
+	// force option 0 premenné -- jednotlivé bit-komponenty
+	// Pre POST query sa tam hodnota priliepa pre jednotlivý check-box zo začiatku (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
+	// preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
+	// nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
+	LogParams("force option %d, jednotlivé bit-komponenty...(parseQuery)\n", OPT_0_SPECIALNE);
 	for (j = 0; j < POCET_OPT_0_SPECIALNE; j++){
-		Log("j == %d...\n", j);
+		LogParams("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
 		strcat_str_opt_bit_order(local_str, OPT_0_SPECIALNE, j);
 
 		// premenná WWW_FORCE_BIT_OPT_0_... (nepovinná), j = 0 až POCET_OPT_0_SPECIALNE
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 0 / pom_FORCE_OPT_0_SPECIALNE[%d] = %s\n", local_str, j, pom_FORCE_OPT_0_SPECIALNE[j]);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 0 / pom_FORCE_OPT_0_SPECIALNE[%d] = %s\n", local_str, j, pom_FORCE_OPT_0_SPECIALNE[j]);
 		while ((equalsi(pom_FORCE_OPT_0_SPECIALNE[j], STR_EMPTY)) && (i > 0)){
 			--i;
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_0_SPECIALNE[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_0_SPECIALNE[j]);
+				LogParams("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_0_SPECIALNE[j]);
 			}
 		}
 		if (equalsi(pom_FORCE_OPT_0_SPECIALNE[j], STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
 
-	// 2011-04-11: force option 1 premenné -- jednotlivé bit-komponenty
-	// 2013-11-26: Pre POST query sa tam hodnota priliepa pre jednotlivý check-box zo začiatku (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
-	//             preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
-	//             nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
-	Log("force option %d, jednotlivé bit-komponenty...(parseQuery)\n", OPT_1_CASTI_MODLITBY);
+	// force option 1 premenné -- jednotlivé bit-komponenty
+	// Pre POST query sa tam hodnota priliepa pre jednotlivý check-box zo začiatku (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
+	// preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
+	// nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
+	LogParams("force option %d, jednotlivé bit-komponenty...(parseQuery)\n", OPT_1_CASTI_MODLITBY);
 	for (j = 0; j < POCET_OPT_1_CASTI_MODLITBY; j++){
-		Log("j == %d...\n", j);
+		LogParams("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
 		strcat_str_opt_bit_order(local_str, OPT_1_CASTI_MODLITBY, j);
 
 		// premenná WWW_FORCE_BIT_OPT_1_... (nepovinná), j = 0 až POCET_OPT_1_CASTI_MODLITBY
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 1 / pom_FORCE_OPT_1_CASTI_MODLITBY[%d] == %s\n", local_str, j, pom_FORCE_OPT_1_CASTI_MODLITBY[j]);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 1 / pom_FORCE_OPT_1_CASTI_MODLITBY[%d] == %s\n", local_str, j, pom_FORCE_OPT_1_CASTI_MODLITBY[j]);
 		while ((equalsi(pom_FORCE_OPT_1_CASTI_MODLITBY[j], STR_EMPTY)) && (i > 0)){
 			--i;
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_1_CASTI_MODLITBY[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_1_CASTI_MODLITBY[j]);
+				LogParams("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_1_CASTI_MODLITBY[j]);
 			}
 		}
 		if (equalsi(pom_FORCE_OPT_1_CASTI_MODLITBY[j], STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
 
-	// 2011-04-20: force option 2 premenné -- jednotlivé bit-komponenty
-	// 2013-11-26: Pre POST query sa tam hodnota priliepa pre jednotlivý check-box zo začiatku (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
-	//             preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
-	//             nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
-	Log("force option %d, jednotlivé bit-komponenty...(parseQuery)\n", OPT_2_HTML_EXPORT);
+	// force option 2 premenné -- jednotlivé bit-komponenty
+	// Pre POST query sa tam hodnota priliepa pre jednotlivý check-box zo začiatku (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
+	// preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
+	// nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
+	LogParams("force option %d, jednotlivé bit-komponenty...(parseQuery)\n", OPT_2_HTML_EXPORT);
 	for (j = 0; j < POCET_OPT_2_HTML_EXPORT; j++){
-		Log("j == %d...\n", j);
+		LogParams("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 
 		strcat_str_opt_bit_order(local_str, OPT_2_HTML_EXPORT, j);
 
 		// premenná WWW_OPT_2_... (nepovinná), j = 0 až POCET_OPT_2_HTML_EXPORT
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 2 / pom_FORCE_OPT_2_HTML_EXPORT[%d] = %s\n", local_str, j, pom_FORCE_OPT_2_HTML_EXPORT[j]);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 2 / pom_FORCE_OPT_2_HTML_EXPORT[%d] = %s\n", local_str, j, pom_FORCE_OPT_2_HTML_EXPORT[j]);
 		while ((equalsi(pom_FORCE_OPT_2_HTML_EXPORT[j], STR_EMPTY)) && (i > 0)){
 			--i;
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_2_HTML_EXPORT[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_2_HTML_EXPORT[j]);
+				LogParams("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_2_HTML_EXPORT[j]);
 			}
 		}
 		if (equalsi(pom_FORCE_OPT_2_HTML_EXPORT[j], STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
 
-	// 2013-01-29: force option 5 premenné -- jednotlivé bit-komponenty
-	// 2013-11-26: Pre POST query sa tam hodnota priliepa pre jednotlivý check-box zo začiatku (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
-	//             preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
-	//             nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
-	Log("force option %d, jednotlivé bit-komponenty...(parseQuery)\n", OPT_5_ALTERNATIVES);
+	// force option 5 premenné -- jednotlivé bit-komponenty
+	// Pre POST query sa tam hodnota priliepa pre jednotlivý check-box zo začiatku (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
+	// preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
+	// nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
+	LogParams("force option %d, jednotlivé bit-komponenty...(parseQuery)\n", OPT_5_ALTERNATIVES);
 	for (j = 0; j < POCET_OPT_5_ALTERNATIVES; j++){
-		Log("j == %d...\n", j);
+		LogParams("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
 		
 		strcat_str_opt_bit_order(local_str, OPT_5_ALTERNATIVES, j);
 
 		// premenná WWW_FORCE_BIT_OPT_5_... (nepovinná), j = 0 až POCET_OPT_5_ALTERNATIVES
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
-		Log("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 5 / pom_FORCE_OPT_5_ALTERNATIVES[%d] = %s\n", local_str, j, pom_FORCE_OPT_5_ALTERNATIVES[j]);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 5 / pom_FORCE_OPT_5_ALTERNATIVES[%d] = %s\n", local_str, j, pom_FORCE_OPT_5_ALTERNATIVES[j]);
 		while ((equalsi(pom_FORCE_OPT_5_ALTERNATIVES[j], STR_EMPTY)) && (i > 0)){
 			--i;
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)){
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_5_ALTERNATIVES[j], param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_5_ALTERNATIVES[j]);
+				LogParams("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_5_ALTERNATIVES[j]);
 			}
 		}
 		if (equalsi(pom_FORCE_OPT_5_ALTERNATIVES[j], STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", local_str);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
 
-	// 2013-07-31: presunuté sem spred parsovania option premenných
+	// presunuté sem spred parsovania option premenných
 	if (ok != ANO){
-		// 2013-07-31: samotné vypísanie niečoho presunuté do hlavnej funkcie
+		// samotné vypísanie niečoho presunuté do hlavnej funkcie
 		// ani jeden z parametrov neobsahuje query type alebo obsahuje neznámy qt
 		if (i >= pocet){
 			mystrcpy(errmsg, "Chýbajúci parameter pre query type.\n", SMALL);
@@ -16231,66 +16331,66 @@ short int parseQueryString(void){
 		goto END_parseQueryString;
 	}
 
-	Log("\tswitch(query_type)...\n");
+	LogParams("\tswitch(query_type)...\n");
 	switch (query_type){
 	case PRM_DNES:{
-		// 2006-02-10: doplnené kvôli tomu, aby aj pre PRM_DNES mohla byť modlitba resp. svätec
-		Log("\tcase PRM_DNES...\n");
+		// doplnené kvôli tomu, aby aj pre PRM_DNES mohla byť modlitba resp. svätec
+		LogParams("\tcase PRM_DNES...\n");
 		// nasledujúca pasáž prevzatá a upravená podľa PRM_DATUM; opätovne 2006-08-01
 
 		// premenná MODLITBA (nepovinná)
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODLITBA);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODLITBA);
 		while ((equalsi(pom_MODLITBA, STR_EMPTY)) && (i < pocet)){
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODLITBA)){
 				// ide o parameter STR_MODLITBA
 				mystrcpy(pom_MODLITBA, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_MODLITBA, pom_MODLITBA);
+				LogParams("hodnota parametra %s je %s.\n", STR_MODLITBA, pom_MODLITBA);
 			}
 			i++;
 		}
 		if (equalsi(pom_MODLITBA, STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", STR_MODLITBA);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", STR_MODLITBA);
 		}
 
 		// premenná DALSI_SVATY (nepovinná)
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DALSI_SVATY);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DALSI_SVATY);
 		while ((equalsi(pom_DALSI_SVATY, STR_EMPTY)) && (i < pocet)){
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DALSI_SVATY)){
 				// ide o parameter STR_DALSI_SVATY
 				mystrcpy(pom_DALSI_SVATY, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_DALSI_SVATY, pom_DALSI_SVATY);
+				LogParams("hodnota parametra %s je %s.\n", STR_DALSI_SVATY, pom_DALSI_SVATY);
 			}
 			i++;
 		}
 		if (equalsi(pom_DALSI_SVATY, STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", STR_DALSI_SVATY);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", STR_DALSI_SVATY);
 		}
 
 		break; // case
 	}// PRM_DNES
 
 	case PRM_STATIC_TEXT:{
-		// 2014-10-09: doplnené kvôli možnosti includovať statický text/ordinárium
-		Log("\tcase PRM_STATIC_TEXT...\n");
+		// doplnené kvôli možnosti includovať statický text/ordinárium
+		LogParams("\tcase PRM_STATIC_TEXT...\n");
 
 		// premenná STATIC_TEXT
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_STATIC_TEXT);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_STATIC_TEXT);
 		while ((equalsi(pom_STATIC_TEXT, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_STATIC_TEXT)){
 				// ide o parameter STR_NAZOV_SVIATOK
 				mystrcpy(pom_STATIC_TEXT, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_STATIC_TEXT, pom_STATIC_TEXT);
+				LogParams("hodnota parametra %s je %s.\n", STR_STATIC_TEXT, pom_STATIC_TEXT);
 			}
 			i++;
 		}
 		if (equalsi(pom_STATIC_TEXT, STR_EMPTY)){
-			// 2013-07-31: samotné vypísanie niečoho presunuté do hlavnej funkcie
+			// samotné vypísanie niečoho presunuté do hlavnej funkcie
 			sprintf(errmsg, "Nebola zadaná premenná %s.\n", STR_STATIC_TEXT);
 			strcat(bad_param_str, errmsg);
 			ret = FAILURE;
@@ -16299,13 +16399,13 @@ short int parseQueryString(void){
 
 		// premenná MODL_ORDINARIUM (nepovinná)
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODL_ORDINARIUM);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODL_ORDINARIUM);
 		while ((equalsi(pom_MODL_ORDINARIUM, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODL_ORDINARIUM)){
 				// ide o parameter STR_NAZOV_SVIATOK
 				mystrcpy(pom_MODL_ORDINARIUM, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_MODL_ORDINARIUM, pom_MODL_ORDINARIUM);
+				LogParams("hodnota parametra %s je %s.\n", STR_MODL_ORDINARIUM, pom_MODL_ORDINARIUM);
 			}
 			i++;
 		}
@@ -16350,13 +16450,13 @@ short int parseQueryString(void){
 
 		// premenná DEN
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DEN);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DEN);
 		while ((equalsi(pom_DEN, STR_EMPTY)) && (i < pocet)){
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DEN)){
 				// ide o parameter STR_DEN
 				mystrcpy(pom_DEN, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_DEN, pom_DEN);
+				LogParams("hodnota parametra %s je %s.\n", STR_DEN, pom_DEN);
 			}
 			i++;
 		}
@@ -16369,13 +16469,13 @@ short int parseQueryString(void){
 
 		// premenná MESIAC 
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MESIAC);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MESIAC);
 		while ((equalsi(pom_MESIAC, STR_EMPTY)) && (i < pocet)){
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MESIAC)){
 				// ide o parameter STR_MESIAC
 				mystrcpy(pom_MESIAC, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_MESIAC, pom_MESIAC);
+				LogParams("hodnota parametra %s je %s.\n", STR_MESIAC, pom_MESIAC);
 			}
 			i++;
 		}
@@ -16388,13 +16488,13 @@ short int parseQueryString(void){
 
 		// premenná ROK
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ROK);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ROK);
 		while ((equalsi(pom_ROK, STR_EMPTY)) && (i < pocet)){
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ROK)){
 				// ide o parameter STR_ROK
 				mystrcpy(pom_ROK, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_ROK, pom_ROK);
+				LogParams("hodnota parametra %s je %s.\n", STR_ROK, pom_ROK);
 			}
 			i++;
 		}
@@ -16407,13 +16507,13 @@ short int parseQueryString(void){
 
 		// premenná MODLITBA (nepovinná)
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODLITBA);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODLITBA);
 		while ((equalsi(pom_MODLITBA, STR_EMPTY)) && (i < pocet)){
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODLITBA)){
 				// ide o parameter STR_MODLITBA
 				mystrcpy(pom_MODLITBA, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_MODLITBA, pom_MODLITBA);
+				LogParams("hodnota parametra %s je %s.\n", STR_MODLITBA, pom_MODLITBA);
 			}
 			i++;
 		}
@@ -16423,18 +16523,18 @@ short int parseQueryString(void){
 
 		// premenná DALSI_SVATY (nepovinná)
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DALSI_SVATY);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DALSI_SVATY);
 		while ((equalsi(pom_DALSI_SVATY, STR_EMPTY)) && (i < pocet)){
-			// Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DALSI_SVATY)){
 				// ide o parameter STR_DALSI_SVATY
 				mystrcpy(pom_DALSI_SVATY, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_DALSI_SVATY, pom_DALSI_SVATY);
+				LogParams("hodnota parametra %s je %s.\n", STR_DALSI_SVATY, pom_DALSI_SVATY);
 			}
 			i++;
 		}
 		if (equalsi(pom_DALSI_SVATY, STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", STR_DALSI_SVATY);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", STR_DALSI_SVATY);
 		}
 
 		// 2013-08-01: pre XML export, ak nie je vyplnený deň, mesiac alebo rok, použije sa dnešný dátum
@@ -16453,13 +16553,13 @@ short int parseQueryString(void){
 
 		// premenná DEN_V_TYZDNI 
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DEN_V_TYZDNI);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DEN_V_TYZDNI);
 		while ((equalsi(pom_DEN_V_TYZDNI, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DEN_V_TYZDNI)){
 				// ide o parameter STR_DEN_V_TYZDNI
 				mystrcpy(pom_DEN_V_TYZDNI, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_DEN_V_TYZDNI, pom_DEN_V_TYZDNI);
+				LogParams("hodnota parametra %s je %s.\n", STR_DEN_V_TYZDNI, pom_DEN_V_TYZDNI);
 			}
 			i++;
 		}
@@ -16472,13 +16572,13 @@ short int parseQueryString(void){
 
 		// premenná TYZDEN 
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_TYZDEN);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_TYZDEN);
 		while ((equalsi(pom_TYZDEN, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_TYZDEN)){
 				// ide o parameter STR_TYZDEN
 				mystrcpy(pom_TYZDEN, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_TYZDEN, pom_TYZDEN);
+				LogParams("hodnota parametra %s je %s.\n", STR_TYZDEN, pom_TYZDEN);
 			}
 			i++;
 		}
@@ -16491,13 +16591,13 @@ short int parseQueryString(void){
 
 		// premenná MODLITBA 
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODLITBA);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODLITBA);
 		while ((equalsi(pom_MODLITBA, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODLITBA)){
 				// ide o parameter STR_MODLITBA
 				mystrcpy(pom_MODLITBA, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_MODLITBA, pom_MODLITBA);
+				LogParams("hodnota parametra %s je %s.\n", STR_MODLITBA, pom_MODLITBA);
 			}
 			i++;
 		}
@@ -16513,17 +16613,16 @@ short int parseQueryString(void){
 	}// PRM_CEZ_ROK
 
 	case PRM_LIT_OBD:{
-		// 2011-01-25: doplnené; prípad, že ide o výber dňa v liturgickom období
 
 		// premenná DEN_V_TYZDNI
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DEN_V_TYZDNI);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_DEN_V_TYZDNI);
 		while ((equalsi(pom_DEN_V_TYZDNI, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DEN_V_TYZDNI)){
 				// ide o parameter STR_DEN_V_TYZDNI
 				mystrcpy(pom_DEN_V_TYZDNI, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_DEN_V_TYZDNI, pom_DEN_V_TYZDNI);
+				LogParams("hodnota parametra %s je %s.\n", STR_DEN_V_TYZDNI, pom_DEN_V_TYZDNI);
 			}
 			i++;
 		}
@@ -16536,13 +16635,13 @@ short int parseQueryString(void){
 
 		// premenná TYZDEN 
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_TYZDEN);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_TYZDEN);
 		while ((equalsi(pom_TYZDEN, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_TYZDEN)){
 				// ide o parameter STR_TYZDEN
 				mystrcpy(pom_TYZDEN, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_TYZDEN, pom_TYZDEN);
+				LogParams("hodnota parametra %s je %s.\n", STR_TYZDEN, pom_TYZDEN);
 			}
 			i++;
 		}
@@ -16555,18 +16654,18 @@ short int parseQueryString(void){
 
 		// premenná MODLITBA 
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODLITBA);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MODLITBA);
 		while ((equalsi(pom_MODLITBA, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODLITBA)){
 				// ide o parameter STR_MODLITBA
 				mystrcpy(pom_MODLITBA, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_MODLITBA, pom_MODLITBA);
+				LogParams("hodnota parametra %s je %s.\n", STR_MODLITBA, pom_MODLITBA);
 			}
 			i++;
 		}
 		if (equalsi(pom_MODLITBA, STR_EMPTY)){
-			// 2013-07-31: samotné vypísanie niečoho presunuté do hlavnej funkcie
+			// samotné vypísanie niečoho presunuté do hlavnej funkcie
 			sprintf(errmsg, "Nebola zadaná premenná %s.\n", STR_MODLITBA);
 			strcat(bad_param_str, errmsg);
 			ret = FAILURE;
@@ -16575,18 +16674,18 @@ short int parseQueryString(void){
 
 		// premenná LIT_OBD 
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_LIT_OBD);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_LIT_OBD);
 		while ((equalsi(pom_LIT_OBD, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_LIT_OBD)){
 				// ide o parameter STR_LIT_OBD
 				mystrcpy(pom_LIT_OBD, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_LIT_OBD, pom_LIT_OBD);
+				LogParams("hodnota parametra %s je %s.\n", STR_LIT_OBD, pom_LIT_OBD);
 			}
 			i++;
 		}
 		if (equalsi(pom_LIT_OBD, STR_EMPTY)){
-			// 2013-07-31: samotné vypísanie niečoho presunuté do hlavnej funkcie
+			// samotné vypísanie niečoho presunuté do hlavnej funkcie
 			sprintf(errmsg, "Nebola zadaná premenná %s.\n", STR_LIT_OBD);
 			strcat(bad_param_str, errmsg);
 			ret = FAILURE;
@@ -16595,18 +16694,18 @@ short int parseQueryString(void){
 
 		// premenná LIT_ROK
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_LIT_ROK);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_LIT_ROK);
 		while ((equalsi(pom_LIT_ROK, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_LIT_ROK)){
 				// ide o parameter STR_LIT_ROK
 				mystrcpy(pom_LIT_ROK, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_LIT_ROK, pom_LIT_ROK);
+				LogParams("hodnota parametra %s je %s.\n", STR_LIT_ROK, pom_LIT_ROK);
 			}
 			i++;
 		}
 		if (equalsi(pom_LIT_ROK, STR_EMPTY)){
-			// 2013-07-31: samotné vypísanie niečoho presunuté do hlavnej funkcie
+			// samotné vypísanie niečoho presunuté do hlavnej funkcie
 			sprintf(errmsg, "Nebola zadaná premenná %s.\n", STR_LIT_ROK);
 			strcat(bad_param_str, errmsg);
 			ret = FAILURE;
@@ -16617,22 +16716,21 @@ short int parseQueryString(void){
 	}// PRM_LIT_OBD
 
 	case PRM_SVIATOK:{
-		// pripad, ze ide o sviatok
 
 		// premenná NAZOV_SVIATOK 
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_NAZOV_SVIATOK);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_NAZOV_SVIATOK);
 		while ((equalsi(pom_SVIATOK, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_NAZOV_SVIATOK)){
 				// ide o parameter STR_NAZOV_SVIATOK
 				mystrcpy(pom_SVIATOK, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_NAZOV_SVIATOK, pom_SVIATOK);
+				LogParams("hodnota parametra %s je %s.\n", STR_NAZOV_SVIATOK, pom_SVIATOK);
 			}
 			i++;
 		}
 		if (equalsi(pom_SVIATOK, STR_EMPTY)){
-			// 2013-07-31: samotné vypísanie niečoho presunuté do hlavnej funkcie
+			// samotné vypísanie niečoho presunuté do hlavnej funkcie
 			sprintf(errmsg, "Nebola zadaná premenná %s.\n", STR_NAZOV_SVIATOK);
 			strcat(bad_param_str, errmsg);
 			ret = FAILURE;
@@ -16643,17 +16741,16 @@ short int parseQueryString(void){
 	}// PRM_SVIATOK
 
 	case PRM_ANALYZA_ROKU:{
-		// prípad, že ide o analýzu roka
 
 		// premenná ANALYZA_ROKU 
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ANALYZA_ROKU);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ANALYZA_ROKU);
 		while ((equalsi(pom_ANALYZA_ROKU, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ANALYZA_ROKU)){
 				// ide o parameter STR_ANALYZA_ROKU
 				mystrcpy(pom_ANALYZA_ROKU, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_ANALYZA_ROKU, pom_ANALYZA_ROKU);
+				LogParams("hodnota parametra %s je %s.\n", STR_ANALYZA_ROKU, pom_ANALYZA_ROKU);
 			}
 			i++;
 		}
@@ -16668,17 +16765,16 @@ short int parseQueryString(void){
 	}// PRM_ANALYZA_ROKU
 
 	case PRM_MESIAC_ROKA:{
-		// pripad, ze ide o mesiac roka
 
 		// premenná MESIAC
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MESIAC_ROKA);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_MESIAC_ROKA);
 		while ((equalsi(pom_MESIAC, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MESIAC_ROKA)){
 				// ide o parameter STR_MESIAC_ROKA
 				mystrcpy(pom_MESIAC, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_MESIAC_ROKA, pom_MESIAC);
+				LogParams("hodnota parametra %s je %s.\n", STR_MESIAC_ROKA, pom_MESIAC);
 			}
 			i++;
 		}
@@ -16691,13 +16787,13 @@ short int parseQueryString(void){
 
 		// premenná ROK
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ROK_ROKA);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ROK_ROKA);
 		while ((equalsi(pom_ROK, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ROK_ROKA)){
 				// ide o parameter STR_ROK_ROKA
 				mystrcpy(pom_ROK, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_ROK_ROKA, pom_ROK);
+				LogParams("hodnota parametra %s je %s.\n", STR_ROK_ROKA, pom_ROK);
 			}
 			i++;
 		}
@@ -16712,22 +16808,21 @@ short int parseQueryString(void){
 	}// PRM_MESIAC_ROKA
 
 	case PRM_TABULKA:{
-		// pripad, ze ide o tabulku pohyblivych slaveni
 
 		// premenná ROK_FROM
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ROK_FROM);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ROK_FROM);
 		while ((equalsi(pom_ROK_FROM, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ROK_FROM)){
 				// ide o parameter STR_ROK_FROM
 				mystrcpy(pom_ROK_FROM, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_ROK_FROM, pom_ROK_FROM);
+				LogParams("hodnota parametra %s je %s.\n", STR_ROK_FROM, pom_ROK_FROM);
 			}
 			i++;
 		}
 		if (equalsi(pom_ROK_FROM, STR_EMPTY)){
-			// 2013-07-31: samotné vypísanie niečoho presunuté do hlavnej funkcie
+			// samotné vypísanie niečoho presunuté do hlavnej funkcie
 			sprintf(errmsg, "Nebola zadaná premenná %s.\n", STR_ROK_FROM);
 			strcat(bad_param_str, errmsg);
 			ret = FAILURE;
@@ -16736,13 +16831,13 @@ short int parseQueryString(void){
 
 		// premenná ROK_TO
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ROK_TO);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_ROK_TO);
 		while ((equalsi(pom_ROK_TO, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ROK_TO)){
 				// ide o parameter STR_ROK_TO
 				mystrcpy(pom_ROK_TO, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_ROK_TO, pom_ROK_TO);
+				LogParams("hodnota parametra %s je %s.\n", STR_ROK_TO, pom_ROK_TO);
 			}
 			i++;
 		}
@@ -16756,18 +16851,18 @@ short int parseQueryString(void){
 
 		// premenná TABULKA_LINKY (nepovinná)
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
-		Log("pokúšam sa zistiť hodnotu parametra %s...\n", STR_TABULKA_LINKY);
+		LogParams("pokúšam sa zistiť hodnotu parametra %s...\n", STR_TABULKA_LINKY);
 		while ((equalsi(pom_LINKY, STR_EMPTY)) && (i < pocet)){
-			Log("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_TABULKA_LINKY)){
 				// ide o parameter STR_TABULKA_LINKY
 				mystrcpy(pom_LINKY, param[i].val, SMALL);
-				Log("hodnota parametra %s je %s.\n", STR_TABULKA_LINKY, pom_LINKY);
+				LogParams("hodnota parametra %s je %s.\n", STR_TABULKA_LINKY, pom_LINKY);
 			}
 			i++;
 		}
 		if (equalsi(pom_LINKY, STR_EMPTY)){
-			Log("Nebola zadaná premenná %s (nevadí).\n", STR_TABULKA_LINKY);
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", STR_TABULKA_LINKY);
 		}
 
 		break; // case

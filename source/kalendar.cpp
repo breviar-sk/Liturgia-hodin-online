@@ -25711,6 +25711,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
