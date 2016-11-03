@@ -182,6 +182,9 @@ extern short int _global_opt_export_date_format;
 #define isGlobalOption(opt_i, bit_opt_i_component_j) (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE)
 #define isGlobalOptionForce(opt_i, bit_opt_i_component_j) (((_global_force_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE)
 
+// for setting option's 'i' 'j'-th bit-component to value (TRUE/FALSE)
+extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value);
+
 #define odfiltrujSpolCast(modlitba, opt3) ((short int)(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA)) ? MODL_SPOL_CAST_NULL : opt3))
 
 // prvé písmeno veľké majú len názvy vlastných častí pre CZOP (pre SK chybne dávalo: "panny Márie")

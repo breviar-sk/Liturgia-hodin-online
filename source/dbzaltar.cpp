@@ -7885,7 +7885,7 @@ label_24_DEC:
 				Log("  ide o nanebovstupenie Pana: _file = `%s', den = %s...\n", _file, nazov_dna(den));
 				Log("_anchor_vlastne_slavenie == %s...\n", _anchor_vlastne_slavenie);
 
-				// kompletórium po prvých aj druhých vešperách (copy+paste kódu pre nedeľu, z 2007-12-06)
+				// kompletórium po prvých aj druhých vešperách
 				modlitba = MODL_PRVE_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
 				set_hymnus_kompletorium_obd(den, tyzzal, modlitba, litobd);
@@ -7899,6 +7899,11 @@ label_24_DEC:
 				set_kresponz_kompletorium_obd(den, modlitba, litobd);
 
 				den = DEN_NEDELA;
+				// kvôli kotvám
+				if (tyzden == 7) {
+					tyzden = 6;
+				}
+				t = tyzden;
 
 				// invitatórium
 				modlitba = MODL_INVITATORIUM;

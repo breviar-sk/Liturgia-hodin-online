@@ -460,6 +460,15 @@ short int _typslav_override(short int typslav) {
 	}
 }// _typslav_override()
 
+void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value) {
+	if (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) && (value == NIE)) {
+		_global_opt[opt_i] -= bit_opt_i_component_j;
+	}
+	else if (((_global_opt[opt_i] & bit_opt_i_component_j) != bit_opt_i_component_j) && (value == ANO)) {
+		_global_opt[opt_i] += bit_opt_i_component_j;
+	}
+}// setGlobalOption()
+
 // -------------------------------------------------------------------
 
 // Read a POST query from standard input into a dynamic buffer. Terminate it with a null character.
@@ -4875,15 +4884,19 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 			else if (_global_den.denvr == ZJAVENIE_PANA){
 				// slavnost zjavenia pana
 				_rozbor_dna_LOG("/* slavnost zjavenia pana */\n");
+				_dm_zjavenie_pana(_global_den.rok, _global_den.denvr);
+				_global_den = _global_result;
+				/*
 				_global_den.farba = LIT_FARBA_BIELA;
 				_global_den.kalendar = KALENDAR_VSEOBECNY;
 				_global_den.smer = 2; // zjavenie Pána
 				_global_den.typslav = SLAV_SLAVNOST;
-				_global_den.litobd = OBD_VIANOCNE_II; // ma vlastne slavenie; zmenil som na vianocne obd. II
+				_global_den.litobd = OBD_VIANOCNE_II;
 				_global_den.tyzden = 2;
 				_global_den.prik = PRIKAZANY_SVIATOK;
 				mystrcpy(_global_den.meno, text_JAN_06[_global_jazyk], MENO_SVIATKU);
 				sprintf(_global_den.lc_str_id, "%d.%d.", _global_den.den, _global_den.mesiac);
+				*/
 			}
 			else if ((_global_den.denvt == DEN_NEDELA) && (_global_den.denvr >= 2) && (_global_den.denvr <= 5)){
 				// druha nedela po narodeni pana medzi 2. a 5. januarom; v krajinach, kde sa slavnost zjavenia pana slavi 6. januara
@@ -4893,7 +4906,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				_global_den.smer = 6; // nedele vianočné (a cezročné)
 				_global_den.litobd = OBD_VIANOCNE_I;
 				mystrcpy(_global_den.meno, text_DRUHA_NEDELA_PO_NAR_PANA[_global_jazyk], MENO_SVIATKU);
-				_global_den.tyzden = 2; // 2009-01-05: doplnené, keďže v časti nižšie sme (správne) zapoznámkovali natvrdo nastavenie týždňa na 2
+				_global_den.tyzden = 2; // doplnené, keďže v časti nižšie sme (správne) zapoznámkovali natvrdo nastavenie týždňa na 2
 				mystrcpy(_global_den.lc_str_id, "2NP", MAX_LC_STR_ID);
 			}
 			else if (_global_den.denvr < KRST){
@@ -4912,9 +4925,8 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 					_global_den.litobd = OBD_VIANOCNE_II;
 					_rozbor_dna_LOG("/* po zjaveni Pana (vratane) */\n");
 				}
-				// 2007-01-08, upravené priradenie týždňa žaltára;
 				// keďže KRST je poradové číslo dňa v roku, ale je to vždy január, je to vlastne aj dátum
-				// 2012-01-01: opravené; podľa smerníc (č. 133) -- "prvý týždeň sa začína na Prvú adventnú nedeľu, v prvý týždeň v Cezročnom období, na Prvú pôstnu nedeľu a na Prvú veľkonočnú nedeľu."
+				// opravené; podľa smerníc (č. 133) -- "prvý týždeň sa začína na Prvú adventnú nedeľu, v prvý týždeň v Cezročnom období, na Prvú pôstnu nedeľu a na Prvú veľkonočnú nedeľu."
 				if (KRST == 8){
 					if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA))){
 						// v krajinách, kde sa Zjavenie Pána slávi v nedeľu: ak Krst Krista Pána padne na 8.1. (pondelok), potom pred nedeľou Zjavenia Pána 7.1. sú všedné dni 1. týždeň žaltára (8.1. ako Krst Krista Pána nemôže padnúť na nedeľu; 8.1. ak je nedeľa, je to Zjavenie Pána a Krst Krista Pána je v pondelok 9.1.)
@@ -4937,8 +4949,8 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 					else {
 						_global_den.tyzden = 2;
 					}
-					// 2012-01-01: podmienka je pre krajiny, kde sa slávnosť Zjavenia Pána slávi 6.1., ekvivalentná nasledovnej:
-					// _global_den.tyzden = _global_den.denvr < "_global_r.p1" + 1)? 1: 2; // pritom "_global_r.p1" je 'A' = 0, 'b' = 1, 'c' = 2, 'd' = 3..., 'g' = 6
+					// podmienka je pre krajiny, kde sa slávnosť Zjavenia Pána slávi 6.1., ekvivalentná nasledovnej:
+					// _global_den.tyzden = _global_den.denvr < "_global_r.p1" + 1)? 1 : 2; // pritom "_global_r.p1" je 'A' = 0, 'b' = 1, 'c' = 2, 'd' = 3..., 'g' = 6
 				}
 			}// vianočné obdobie od KRST
 			else if (_global_den.denvr > KRST){
@@ -13241,28 +13253,6 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 
 	Log("p == %d (%s); _global_modlitba == %d (%s)...\n", p, nazov_modlitby(p), _global_modlitba, nazov_modlitby(_global_modlitba));
 
-	// kontrola, či týždeň daného liturgického obdobia neprekračuje počet týždňov daného obdobia | 2013-02-03: presunutá sem
-	Log("kontrola, či týždeň daného liturgického obdobia neprekračuje počet týždňov daného obdobia...\n");
-	// pre OBD_VELKONOCNE_II je týždeň 6 resp. 7, preto treba samostatne kontrolovať, ale neupravovať premennú t
-	if (((lo != OBD_VELKONOCNE_II) && (lo != OBD_POSTNE_II_VELKY_TYZDEN) && (lo != OBD_VELKONOCNE_TROJDNIE) && (lo != OBD_VIANOCNE_II) && (lo != OBD_ADVENTNE_II) && (t > lit_obd_pocet_tyzdnov[lo]))
-		|| ((lo == OBD_VELKONOCNE_II) && (t - 5 > lit_obd_pocet_tyzdnov[lo]))
-		|| (((lo == OBD_POSTNE_II_VELKY_TYZDEN) || (lo == OBD_VELKONOCNE_TROJDNIE)) && (t - 6 > lit_obd_pocet_tyzdnov[lo]))
-		|| ((lo == OBD_VIANOCNE_II) && (t - 1 > lit_obd_pocet_tyzdnov[lo]))
-		|| ((lo == OBD_ADVENTNE_II) && (t - 3 > lit_obd_pocet_tyzdnov[lo]))
-		) {
-		ALERT;
-		Export("Nevhodné údaje:" HTML_LINE_BREAK "\n<ul>");
-		// tyzden
-		if (equals(tyzden, STR_EMPTY)) {
-			Export("<li>taký týždeň nemožno žiadať</li>\n");
-		}
-		else {
-			Export("<li>týždeň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "; taký týždeň nemožno žiadať pre dané liturgické obdobie: %s</li>\n", tyzden, nazov_obdobia_ext(lo));
-		}
-		Export("</ul>\n");
-		return FAILURE;
-	}
-
 	// pôstne obdobie nezačína nedeľou, ale popolcovou stredou; technicky ide o 0. týždeň pôstneho obdobia
 	if ((d < DEN_NEDELA) || (d > DEN_SOBOTA) || ((t < 0) || ((t == 0) && ((lo != OBD_POSTNE_I) && (d < DEN_STREDA)))) || (t > POCET_NEDIEL_CEZ_ROK)) {
 		ALERT;
@@ -13290,8 +13280,32 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		return FAILURE;
 	}
 
+	// kontrola, či týždeň daného liturgického obdobia neprekračuje počet týždňov daného obdobia | 2013-02-03: presunutá sem
+	Log("kontrola, či týždeň daného liturgického obdobia neprekračuje počet týždňov daného obdobia...\n");
+	// pre OBD_VELKONOCNE_II je týždeň 6 resp. 7, preto treba samostatne kontrolovať, ale neupravovať premennú t
+	if (((lo != OBD_VELKONOCNE_II) && (lo != OBD_POSTNE_II_VELKY_TYZDEN) && (lo != OBD_VELKONOCNE_TROJDNIE) && (lo != OBD_VIANOCNE_II) && (lo != OBD_ADVENTNE_II) && (t > lit_obd_pocet_tyzdnov[lo]))
+		|| ((lo == OBD_VELKONOCNE_II) && (t - 6 > lit_obd_pocet_tyzdnov[lo]))
+		|| ((lo == OBD_VELKONOCNE_II) && (t - 6 == lit_obd_pocet_tyzdnov[lo] && d > DEN_NEDELA))
+		|| (((lo == OBD_POSTNE_II_VELKY_TYZDEN) || (lo == OBD_VELKONOCNE_TROJDNIE)) && (t - 6 > lit_obd_pocet_tyzdnov[lo]))
+		|| ((lo == OBD_VIANOCNE_II) && (t - 1 > lit_obd_pocet_tyzdnov[lo]))
+		|| ((lo == OBD_ADVENTNE_II) && (t - 3 > lit_obd_pocet_tyzdnov[lo]))
+		) {
+		ALERT;
+		Export("Nevhodné údaje:" HTML_LINE_BREAK "\n<ul>");
+		// tyzden
+		if (equals(tyzden, STR_EMPTY)) {
+			Export("<li>taký týždeň nemožno žiadať</li>\n");
+		}
+		else {
+			Export("<li>týždeň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "; taký týždeň nemožno žiadať pre dané liturgické obdobie: %s</li>\n", tyzden, nazov_obdobia_ext(lo));
+		}
+		Export("</ul>\n");
+		return FAILURE;
+	}
+
 	// setting up some basic data about liturgical year
-	analyzuj_rok(NULL_YEAR);
+	_global_den.rok = NULL_YEAR;
+	analyzuj_rok(_global_den.rok);
 	// Log(_global_r);
 
 	// nastavenie niektorých atribútov pre _global_den
@@ -13311,6 +13325,9 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	case OBD_VELKONOCNE_TROJDNIE:
 		_global_den.smer = 1; // trojdnie
 		_global_den.farba = LIT_FARBA_BIELA;
+		if (d == DEN_NEDELA) {
+			_global_den.denvr = NULL_VELKONOCNA_NEDELA;
+		}
 		break;
 
 	case OBD_ADVENTNE_I:
@@ -13365,11 +13382,17 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		if (d == DEN_NEDELA) {
 			_global_den.smer = 2; // nedele veľkonočné
 			if (t == 1) {
-				_global_den.denvr = NULL_VELKONOCNA_NEDELA;
+				_global_den.denvr = NULL_VELKONOCNA_NEDELA; // netreba; je nastavené v case OBD_VELKONOCNE_TROJDNIE
+			}
+			if ((t == 7) && (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA))) {
+				_global_den.denvr = NULL_NANEBOVSTUPENIE_PANA;
 			}
 		}
 		else {
 			_global_den.smer = 13; // všedné dni veľkonočné od pondelka po veľkonočnej oktáve až do soboty pred Zoslaním Ducha Svätého včítane
+			if ((!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)) && (t == 6) && (d == DEN_STVRTOK)) {
+				_global_den.denvr = NULL_NANEBOVSTUPENIE_PANA;
+			}
 		}
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
@@ -13380,6 +13403,13 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		}
 		else {
 			_global_den.smer = 13; // všedné dni veľkonočné od pondelka po veľkonočnej oktáve až do soboty pred Zoslaním Ducha Svätého včítane
+		}
+		if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA) && (t == 7) && (d == DEN_NEDELA)) 
+		|| (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA) && (t == 6) && (d == DEN_STVRTOK))) {
+			_global_den.denvr = NULL_NANEBOVSTUPENIE_PANA;
+		}
+		if ((t == 8) && (d == DEN_NEDELA)) {
+			_global_den.denvr = NULL_ZOSLANIE_DUCHA_SV;
 		}
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
@@ -13454,10 +13484,15 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		case NULL_SVATEJ_RODINY:
 			_global_den = _global_r._SVATEJ_RODINY;
 			break;
+		case NULL_ZJAVENIE_PANA:
+			_global_den.den = 6;
+			_global_den.mesiac = MES_JAN;
+			_dm_zjavenie_pana(_global_den.rok, _global_den.denvr);
+			_global_den = _global_result;
+			break;
 		}
 	}
 
-	// treba nejako hack-ovať a nastaviť aj tieto: _global_den.den pre adv2 a vian1 (25, 26 atd.) | denvr pre špeciality cezročného
 	liturgicke_obdobie(lo, t, d, tz, poradie_svateho);
 
 	// usage of chosen common part (communia) | použitie zvolenej spoločnej časti

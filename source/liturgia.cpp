@@ -1252,7 +1252,7 @@ void _dm_nanebovstupenie(short int rok, short int _vn){
 	_global_result.typslav = SLAV_SLAVNOST;
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
 	_global_result.litobd = OBD_VELKONOCNE_I;
-	_global_result.tyzden = 0;
+	_global_result.tyzden = isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA) ? 7 : 6;
 	_global_result.tyzzal = 1;
 	_global_result.smer = 2;
 	_global_result.prik = PRIKAZANY_SVIATOK;
@@ -1278,7 +1278,7 @@ void _dm_zoslanie_ducha(short int rok, short int _vn){
 	_global_result.typslav = SLAV_SLAVNOST;
 	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
 	_global_result.litobd = OBD_VELKONOCNE_II;
-	_global_result.tyzden = 0;
+	_global_result.tyzden = 8;
 	_global_result.tyzzal = 1;
 	_global_result.smer = 2;
 	_global_result.prik = PRIKAZANY_SVIATOK;
@@ -1387,7 +1387,7 @@ void _dm_krst_krista_pana(short int rok){
 	mystrcpy(_global_result.lc_str_id, "1C", MAX_LC_STR_ID);
 }// _dm_krst_krista_pana()
 
-void _dm_velkonocna_nedela(short int rok, short int _vn){
+void _dm_velkonocna_nedela(short int rok, short int _vn) {
 	Log("_dm_velkonocna_nedela(%d)...\n", rok);
 
 	_global_result = por_den_mesiac_dm(_vn, rok);
@@ -1408,6 +1408,27 @@ void _dm_velkonocna_nedela(short int rok, short int _vn){
 	_global_result.kalendar = KALENDAR_VSEOBECNY;
 	mystrcpy(_global_result.lc_str_id, "1V", MAX_LC_STR_ID);
 }// _dm_velkonocna_nedela()
+
+void _dm_zjavenie_pana(short int rok, short int _zjv) {
+	Log("_dm_zjavenie_pana(%d)...\n", rok);
+
+	_global_result = por_den_mesiac_dm(_zjv, rok);
+	if (rok == NULL_YEAR) {
+		_global_result.denvt = DEN_NEDELA;
+	}
+	_global_result.typslav = SLAV_SLAVNOST;
+	_global_result.typslav_lokal = LOKAL_SLAV_NEURCENE;
+	_global_result.litobd = OBD_VIANOCNE_II;
+	_global_result.tyzden = 2;
+	_global_result.smer = 2; // zjavenie Pána
+	mystrcpy(_global_result.meno, text_JAN_06[_global_jazyk], MENO_SVIATKU);
+	_global_result.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
+	_global_result.prik = PRIKAZANY_SVIATOK;
+	_global_result.tyzzal = 2;
+	_global_result.farba = LIT_FARBA_BIELA;
+	_global_result.kalendar = KALENDAR_VSEOBECNY;
+	mystrcpy(_global_result.lc_str_id, "6.1.", MAX_LC_STR_ID); // sprintf(_global_den.lc_str_id, "%d.%d.", _global_den.den, _global_den.mesiac);
+}// _dm_zjavenie_pana()
 
 short int modlitba_predchadzajuca(short int modlitba, short int exclude_mcd_komplet){
 	short int ret = modlitba - 1;

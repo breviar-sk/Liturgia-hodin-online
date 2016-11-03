@@ -45,7 +45,7 @@
 #define NULL_ZOSLANIE_DUCHA_SV -5
 #define NULL_PRVA_ADVENTNA_NEDELA -6
 #define NULL_SVATEJ_RODINY -7
-#define NULL_ZJAVENIE_PANA -8
+#define NULL_ZJAVENIE_PANA 6 // pretend as if date was Jan 6th
 
 // liturgical rites
 #define RITUS_RIM_KAT   0
@@ -1543,7 +1543,9 @@ short int ferialny_cyklus(short int den, short int mesiac, short int rok);
 _struct_dm por_den_mesiac_dm(short int poradie, short int rok);
 short int tyzden_cez_rok_po_vn(short int rok);
 short int cislo_nedele_cez_rok_po_vn(short int rok);
+
 void init_global_pm_sobota(void);
+
 void _dm_popolcova_streda(short int rok, short int _vn);
 void _dm_nanebovstupenie(short int rok, short int _vn);
 void _dm_zoslanie_ducha(short int rok, short int _vn);
@@ -1551,6 +1553,7 @@ void _dm_prva_adventna_nedela(short int rok, short int p2);
 void _dm_svatej_rodiny(short int rok);
 void _dm_krst_krista_pana(short int rok);
 void _dm_velkonocna_nedela(short int rok, short int _vn);
+void _dm_zjavenie_pana(short int rok, short int _zjv);
 
 short int modlitba_predchadzajuca(short int modlitba, short int exclude_mcd_komplet = NIE);
 short int modlitba_nasledujuca(short int modlitba, short int exclude_mcd_komplet = NIE);
@@ -1690,6 +1693,7 @@ _struct_sc _decode_spol_cast(int);
 
 void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_order);
 
+extern const char *text_JAN_06[POCET_JAZYKOV + 1];
 extern const char *text_JAN_KRST[POCET_JAZYKOV + 1];
 extern const char *text_POPOLCOVA_STREDA[POCET_JAZYKOV + 1];
 extern const char *text_NANEBOVSTUPENIE_PANA[POCET_JAZYKOV + 1];
