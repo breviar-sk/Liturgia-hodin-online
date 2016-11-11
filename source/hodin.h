@@ -10737,13 +10737,13 @@ const char *text_SEP_04_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_SEP_05[POCET_JAZYKOV + 1] =
 {
+	"Sv. Terézie z Kalkaty (Matky Terezy), panny a rehoľnice",
+	"Sv. Terezie z Kalkaty (Matky Terezy), panny, řeholnice",
+	"St. Teresa of Calcutta, virgin, nun",
 	"",
 	"",
-	"",
-	"",
-	"",
-	"",
-	"Kalkuttai Boldog Teréz szűz",
+	"Sv. Terezie z Kalkaty (Matky Terezy), panny a řeholnice",
+	"Kalkuttai Szent Teréz szűz",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
