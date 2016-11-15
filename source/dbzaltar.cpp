@@ -423,6 +423,7 @@ void _set_hymnus_alternativy(short int modlitba, short int litobd){
 			_global_modl_prve_kompletorium.alternativy += ((_global_modl_prve_kompletorium.alternativy & bit) != bit) ? bit : 0;
 			break;
 		case MODL_KOMPLETORIUM:
+		case MODL_DRUHE_KOMPLETORIUM:
 			_global_modl_kompletorium.alternativy += ((_global_modl_kompletorium.alternativy & bit) != bit) ? bit : 0;
 			break;
 		case MODL_RANNE_CHVALY:
@@ -1244,9 +1245,10 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 			ktory = (tyzzal + 1) % 2;
 		}
 		else{
-			Log("set_hymnus_kompletorium_obd()...\n");
+			Log("set_hymnus_kompletorium_obd(else/else)...\n");
 			// pôvodne tu bol náhodný výber (podľa (den + tyzzal) % 2); upravené, ak si človek sám volí alternatívy
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES) && !(je_CZ_hymny_k_volnemu_vyberu)){
+
 				// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
 				ktory = (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL)) ? 1 : 0;
 				Log("set_hymnus_kompletorium_obd(): ktory == %d...\n", ktory);
@@ -1919,7 +1921,7 @@ void _set_kompletorium_slavnost(short int modlitba){
 	else{
 		_set_kompletorium_nedela_spolocne(modlitba);
 		set_modlitba(DEN_UNKNOWN, _global_den.tyzzal, modlitba); // je to jeden konkrétny deň mimo nedele
-		// nasledujúče závisia od liturgického obdobia, preto nastavíme inú kotvu (pevne z nedele)
+		// nasledujúce závisia od liturgického obdobia, preto nastavíme inú kotvu (pevne z nedele)
 		set_kcitanie(DEN_NEDELA, _global_den.tyzzal, modlitba);
 		set_kresponz(DEN_NEDELA, _global_den.tyzzal, modlitba);
 	}
@@ -4355,6 +4357,31 @@ void _obd_invitat_viac(short litobd, short modlitba) {
 	set_LOG_litobd;
 }// _obd_invitat_viac()
 
+void _set_hymnus_alternativy_obdobie(short litobd) {
+	Log("_set_hymnus_alternativy_ocr(): začiatok...\n");
+
+	if (litobd == OBD_CEZ_ROK) {
+		Log("_set_hymnus_alternativy_ocr(): OBD_CEZ_ROK...\n");
+
+		if ((_global_jazyk != JAZYK_CZ) || (je_CZ_hymny_k_volnemu_vyberu)) {
+			Log("setting _set_hymnus_alternativy()...\n");
+
+			_set_hymnus_alternativy(MODL_PRVE_KOMPLETORIUM);
+			_set_hymnus_alternativy(MODL_KOMPLETORIUM);
+			_set_hymnus_alternativy(MODL_PREDPOLUDNIM);
+			_set_hymnus_alternativy(MODL_NAPOLUDNIE);
+			_set_hymnus_alternativy(MODL_POPOLUDNI);
+			_set_hymnus_alternativy(MODL_POSV_CITANIE);
+			_set_hymnus_alternativy(MODL_PRVE_VESPERY);
+		}
+	}
+	else {
+		Log("_set_hymnus_alternativy_ocr(): nie je OBD_CEZ_ROK...\n");
+	}
+
+	Log("_set_hymnus_alternativy_ocr(): koniec.\n");
+}// _set_hymnus_alternativy_ocr()
+
 void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short int tyzzal, short int poradie_svateho){
 	short int modlitba, t, tyzden_pom, litobd_pom;
 	char _anchor_vlastne_slavenie[SMALL];
@@ -4387,7 +4414,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 	// najprv treba skontrolovat, ci nejde o sviatky Pana a svatych, ktore maju prednost pred nedelou -- SVIATKY_PANA_SVATYCH_PREDNOST
 	// ak ano, tak nenastavuj nic, lebo vsetko sa nastavilo vo funkcii sviatky_svatych()
-	Log("najprv treba skontrolovať, či nejde o deň [pôvodne nedeľu], na ktorú pripadol sviatok premenenia pána a podobné... (ak áno, nenastavuj nič)\n");
+	Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR: najprv treba skontrolovať, či nejde o deň [pôvodne nedeľu], na ktorú pripadol sviatok premenenia pána a podobné... (ak áno, nenastavuj nič)\n");
 
 	if(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR){
 		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR (napr. premenenie pána || obetovanie pána || petra a pavla || povýšenie sv. kríža || všetkých svätých || nanebovzatia PM)...\n");
@@ -4399,6 +4426,10 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 		}
 		if((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI)){
 			Log("keďže nejde o modlitbu cez deň, preskakujeme nastavenia (všetky boli nastavené z vlastnej časti): return...\n");
+
+			Log("jediné, čo nastavíme, je nastavenie kvôli kompletóriu v OCR...\n");
+			_set_hymnus_alternativy_obdobie(litobd); // podmienka na liturgické obdobie je vnútri
+
 			Log("-- liturgicke_obdobie(%d, %d, %d, %d: svaty: %d) -- predčasný koniec\n", litobd, tyzden, den, tyzzal, poradie_svateho);
 			return;
 		}
@@ -6324,14 +6355,7 @@ label_24_DEC:
 			// tu v skutočnosti začína CEZROČNÉ OBDOBIE
 
 			// nastavenie možnosti alternatívnych hymnov pre posv. čítanie a kompletórium
-			if ((_global_jazyk != JAZYK_CZ) || (je_CZ_hymny_k_volnemu_vyberu)){
-				_set_hymnus_alternativy(MODL_KOMPLETORIUM);
-				_set_hymnus_alternativy(MODL_PREDPOLUDNIM);
-				_set_hymnus_alternativy(MODL_NAPOLUDNIE);
-				_set_hymnus_alternativy(MODL_POPOLUDNI);
-				_set_hymnus_alternativy(MODL_POSV_CITANIE);
-				_set_hymnus_alternativy(MODL_PRVE_VESPERY);
-			}
+			_set_hymnus_alternativy_obdobie(litobd);
 
 			// najprv treba skontrolovat, ci nejde o nedelu, na ktoru pripadol sviatok Pana/svatych; ak ano, tak nenastavuj nic, lebo vsetko sa nastavilo vo funkcii sviatky_svatych()
 			if((_global_den.denvt == DEN_NEDELA) && (PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR)){

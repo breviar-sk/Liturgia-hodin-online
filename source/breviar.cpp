@@ -3070,7 +3070,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		else if (equals(paramname, PARAM_ALT_HYMNUS)) {
 			opt = OPT_5_ALTERNATIVES;
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
-			Log("podmienka == %d pred kontrolou je_alternativa_hymnus...\n", podmienka);
+			Log("podmienka == %d pred kontrolou je_alternativa_hymnus_ocr/je_alternativa_hymnus_vn [_global_modlitba == %d]...\n", podmienka, _global_modlitba);
+
 			podmienka &= ((je_alternativa_hymnus_ocr) || ((je_alternativa_hymnus_vn) && (_global_den.litobd == OBD_VELKONOCNE_I)));
 			specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 
@@ -11646,15 +11647,15 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 
 				_global_den = _local_den;
 
-				if ((modlitba == MODL_VESPERY) || (modlitba == MODL_PRVE_VESPERY) || (modlitba == MODL_DRUHE_VESPERY)){
+				if (su_vespery12(modlitba)) {
 					Log("priraďujem %s z ďalšieho dňa:\n", nazov_modlitby(modlitba));
 					_global_modl_prve_vespery = _local_modl_prve_vespery;
 					_global_modl_vespery = _local_modl_prve_vespery;
 				}
 
-				if (je_kompletorium12(modlitba)){
+				if (je_kompletorium12(modlitba)) {
 					Log("priraďujem %s z ďalšieho dňa, ale iba ak ide o slávnosť!\n", nazov_modlitby(modlitba));
-					if (_local_den.smer < 5){
+					if (_local_den.smer < 5) {
 						_global_modl_prve_kompletorium = _local_modl_prve_kompletorium;
 						_global_modl_kompletorium = _local_modl_prve_kompletorium;
 					}
@@ -11669,18 +11670,28 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 					_set_prosby_dodatok(_global_den.denvt, ANO);
 				}
 
-				Log("CURRENT: prvé vešpery:\n");
-				Log(_global_modl_prve_vespery);
-				Log("CURRENT: vešpery:\n");
-				Log(_global_modl_vespery);
+				// Log
+				if (su_vespery12(modlitba)) {
+					Log("CURRENT: prvé vešpery:\n");
+					Log(_global_modl_prve_vespery);
+					Log("CURRENT: vešpery:\n");
+					Log(_global_modl_vespery);
+				}
+				else if (je_kompletorium12(modlitba)) {
+					Log("CURRENT: prvé kompletórium:\n");
+					Log(_global_modl_prve_kompletorium);
+					Log("CURRENT: kompletórium:\n");
+					Log(_global_modl_kompletorium);
+				}
 
-				if (modlitba == MODL_VESPERY){
+				// naplnenie _global_modl_...
+				if (modlitba == MODL_VESPERY) {
 					_global_modlitba = MODL_PRVE_VESPERY;
 					Log("-- MODL_PRVE_VESPERY\n");
 					_global_modl_vespery = _global_modl_prve_vespery;
 					_global_modl_kompletorium = _global_modl_prve_kompletorium;
 				}
-				else if (modlitba == MODL_KOMPLETORIUM){
+				else if (modlitba == MODL_KOMPLETORIUM) {
 					_global_modlitba = MODL_PRVE_KOMPLETORIUM;
 					Log("-- MODL_PRVE_KOMPLETORIUM\n");
 					_global_modl_vespery = _global_modl_prve_vespery;
