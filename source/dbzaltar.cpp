@@ -4357,7 +4357,7 @@ void _obd_invitat_viac(short litobd, short modlitba) {
 	set_LOG_litobd;
 }// _obd_invitat_viac()
 
-void _set_hymnus_alternativy_obdobie(short litobd) {
+void _set_hymnus_alternativy_obdobie(short litobd, short len_kompletorium = NIE) {
 	Log("_set_hymnus_alternativy_ocr(): začiatok...\n");
 
 	if (litobd == OBD_CEZ_ROK) {
@@ -4368,11 +4368,14 @@ void _set_hymnus_alternativy_obdobie(short litobd) {
 
 			_set_hymnus_alternativy(MODL_PRVE_KOMPLETORIUM);
 			_set_hymnus_alternativy(MODL_KOMPLETORIUM);
-			_set_hymnus_alternativy(MODL_PREDPOLUDNIM);
-			_set_hymnus_alternativy(MODL_NAPOLUDNIE);
-			_set_hymnus_alternativy(MODL_POPOLUDNI);
-			_set_hymnus_alternativy(MODL_POSV_CITANIE);
-			_set_hymnus_alternativy(MODL_PRVE_VESPERY);
+
+			if (len_kompletorium == NIE) {
+				_set_hymnus_alternativy(MODL_PREDPOLUDNIM);
+				_set_hymnus_alternativy(MODL_NAPOLUDNIE);
+				_set_hymnus_alternativy(MODL_POPOLUDNI);
+				_set_hymnus_alternativy(MODL_POSV_CITANIE);
+				_set_hymnus_alternativy(MODL_PRVE_VESPERY);
+			}
 		}
 	}
 	else {
@@ -4428,7 +4431,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			Log("keďže nejde o modlitbu cez deň, preskakujeme nastavenia (všetky boli nastavené z vlastnej časti): return...\n");
 
 			Log("jediné, čo nastavíme, je nastavenie kvôli kompletóriu v OCR...\n");
-			_set_hymnus_alternativy_obdobie(litobd); // podmienka na liturgické obdobie je vnútri
+			_set_hymnus_alternativy_obdobie(litobd, ANO); // podmienka na liturgické obdobie je vnútri
 
 			Log("-- liturgicke_obdobie(%d, %d, %d, %d: svaty: %d) -- predčasný koniec\n", litobd, tyzden, den, tyzzal, poradie_svateho);
 			return;
