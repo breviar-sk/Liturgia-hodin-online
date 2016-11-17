@@ -109,6 +109,11 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
 
+<p><b>Verzió 1.14.1</b>
+<ul>
+<li>Frissítések a honlapról.</li>
+</ul>
+
 <p><b>Verzió 1.14</b>
 <ul>
 <li>Új beállítási lehetőség: Vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg.</li>

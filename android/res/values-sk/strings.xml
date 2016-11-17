@@ -109,6 +109,12 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.</li> -->
 
+<p><b>Verzia 1.14.1</b>
+<ul>
+<li>Nové nastavenie: Zobraziť inú antifónu na invitatórium v pôstnom období.</li>
+<li>Opravy v liturgickom kalendári a textoch (OCD, OFM).</li>
+</ul>
+
 <p><b>Verzia 1.14</b>
 <ul>
 <li>Nové nastavenie: Zobraziť tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia.</li>
