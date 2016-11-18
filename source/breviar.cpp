@@ -4549,7 +4549,7 @@ short int atojazyk(char *jazyk) {
 short int atokalendar(char *kalendar) {
 	short int i = 0;
 	do {
-		if (equalsi(kalendar, skratka_kalendara[i]) || equalsi(kalendar, nazov_kalendara_short[i]) || equalsi(kalendar, nazov_kalendara_long[i])) {
+		if (equalsi(kalendar, skratka_kalendara[i]) || equalsi(kalendar, nazov_kalendara_short[i]) || equalsi(kalendar, nazov_kalendara_smart[i]) || equalsi(kalendar, nazov_kalendara_long[i])) {
 			return i;
 		}
 		i++;
