@@ -6738,18 +6738,27 @@ label_24_DEC:
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_PREDPOLUDNIM;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+					}
 					_set_zalmy_krista_krala(modlitba);
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_NAPOLUDNIE;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+					}
 					_set_zalmy_krista_krala(modlitba);
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_POPOLUDNI;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+					}
 					_set_zalmy_krista_krala(modlitba);
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
