@@ -306,6 +306,20 @@ extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value
 	(_global_den.denvt == DEN_SOBOTA) && (!((_global_den.denvt == DEN_SOBOTA) && (_global_den.litobd == OBD_VELKONOCNE_TROJDNIE))) \
 )
 
+// či sa môže sláviť ľubovoľná spomienka Panny Márie v sobotu (prvý level kontroly)
+#define je_spomienka_PM_v_sobotu ( \
+	(_global_den.litobd == OBD_CEZ_ROK) && (_global_den.denvt == DEN_SOBOTA) && (_global_den.denvr != SRDPM) \
+)
+
+// či sa naozaj môže sláviť ľubovoľná spomienka Panny Márie v sobotu (druhý level kontroly)
+#define PODMIENKA_MOZE_BYT_SPOMIENKA_PM_V_SOBOTU ( \
+	(je_spomienka_PM_v_sobotu) && \
+	( \
+		((_global_den.smer >= 11) && (_global_pocet_svatych == 0)) || \
+		((((_global_svaty1.smer >= 12) && (_decode_spol_cast(_global_svaty1.spolcast).a1 != MODL_SPOL_CAST_PANNA_MARIA)) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (_global_pocet_svatych > 0)) \
+	) \
+)
+
 // are there alternate hymns for Ordinary time (per annum)? (for SK based on LA LH)
 #define je_alternativa_hymnus_ocr ( \
 (_global_modlitba == MODL_PRVE_VESPERY && ((_global_modl_prve_vespery.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \

@@ -5442,7 +5442,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				sc = _decode_spol_cast(_global_den.spolcast);
 				break;
 			case PORADIE_PM_SOBOTA:
-				sc.a1 = MODL_SPOL_CAST_PANNA_MARIA; // 2006-02-06: spomienka PM v sobotu
+				sc.a1 = MODL_SPOL_CAST_PANNA_MARIA; // spomienka PM v sobotu
 				break;
 			default:
 				sc = _decode_spol_cast(_global_svaty(poradie_svaty).spolcast);
@@ -10609,14 +10609,10 @@ void _export_rozbor_dna_zoznam(short int typ){
 
 	Log("počet == %d (pred kontrolou PM v sobotu; POCET_ZOZNAM == %d)\n", pocet, POCET_ZOZNAM);
 
-	// este spomienka panny marie v sobotu, cl. 15
-	if ((_global_den.litobd == OBD_CEZ_ROK) &&
-		(_global_den.denvt == DEN_SOBOTA) &&
-		(
-		((_global_den.smer >= 11) && (_global_pocet_svatych == 0)) ||
-		(((_global_svaty1.smer >= 12) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (_global_pocet_svatych > 0))
-		) &&
-		(typ != EXPORT_DNA_VIAC_DNI)){
+	// Log("PM v sobotu: _global_den.smer == %d, _global_pocet_svatych == %d, _global_svaty1.smer == %d, _global_svaty1.spolcast == %d, \n", _global_den.smer, _global_pocet_svatych, _global_svaty1.smer, _global_svaty1.spolcast);
+
+	// este spomienka panny marie v sobotu, cl. 15 (nemôže byť ani vtedy, ak je iná ľubovoľná spomienka PM; napr. 16JUL, 12SEP)
+	if ((PODMIENKA_MOZE_BYT_SPOMIENKA_PM_V_SOBOTU) && (typ != EXPORT_DNA_VIAC_DNI)) {
 		Log("je aj spomienka PM v sobotu...\n");
 
 		poradie_svaty = PORADIE_PM_SOBOTA;
