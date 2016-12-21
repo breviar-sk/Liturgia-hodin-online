@@ -5241,8 +5241,8 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_adv1_antifony; // antifóny
 					_adv2_kcitanie_adv1; // krátke čítanie - rovnake pre vsetky adventne nedele
 					// benediktus
-					if((_global_den.den == 21) || (_global_den.den == 23)){
-						// treba brať ant. Nebojte sa resp. Hľa, splnilo sa
+					if((_global_den.den == 21) || (_global_den.den == 23) || (_global_jazyk == JAZYK_HU)){
+						// treba brať ant. Nebojte sa resp. Hľa, splnilo sa; pre maďarskú LH je explicitne uvedené, že sa má brať ant. z príslušného dňa (HU LH, vol. I, p. 261)
 					}
 					else{
 					  sprintf(_anchor, "%s%d%s%c_%s%c",
