@@ -1,3 +1,76 @@
+2016-12-23: generujem na celý rok 2017
+
+	SK predgenerovanie
+
+	-- všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobSK.bat -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -11471 -2128
+		-- 2017-sk-full
+
+	-- žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobSK.bat -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -132 -2128
+		-- 2017-sk-short
+
+	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobSK.bat -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M3 -00 -11471 -2128 -48
+		-- 2017-sk-plain
+
+	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobSK.bat -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -15191 -2224
+		-- 2017-sk-handy
+
+	CZ predgenerovanie
+
+	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -15191 -2224
+		-- 2017-cz-handy
+
+	-- hymny k volnému výbìru, niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -15191 -2224 -58192
+		-- 2017-cz-hvv-handy
+
+	-- všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -11471 -2128
+		-- 2017-cz-full
+
+	-- hymny k volnému výbìru, všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -11471 -2128 -58192
+		-- 2017-cz-hvv-full
+
+	-- žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -132 -2128
+		-- 2017-cz-short
+
+	-- hymny k volnému výbìru, žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -132 -2128 -58192
+		-- 2017-cz-hvv-short
+
+	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M3 -00 -11471 -2128 -48
+		-- 2017-cz-plain
+
+	-- hymny k volnému výbìru, bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M3 -00 -11471 -2128 -58192 -48
+		-- 2017-cz-hvv-plain
+
+	HU predgenerovanie
+	-- všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobHU.bat -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M2 -00 -11471 -2128
+		-- 2017-hu-full
+
+	-- žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobHU.bat -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M2 -00 -132 -2128
+		-- 2017-hu-short
+
+	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobHU.bat -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M3 -00 -11471 -2128 -48
+		-- 2017-hu-plain
+
+	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2017 -f31 -g12 -p2017 -brobHU.bat -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M2 -00 -15191 -2224
+		-- 2017-hu-handy
+
+__________________________________________________________________________________________________________________________________________
+
 2016-04-25: SK OFM
 	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
 		breviar.exe -qpbm -d1 -m1 -r2016 -f31 -g12 -p2016 -brobSKofm.bat -jsk -kofm -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -15191 -2224
