@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* mybuild.h                                                   */
-/* (c)1999-2016 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | build date                                    */
 /*                                                             */

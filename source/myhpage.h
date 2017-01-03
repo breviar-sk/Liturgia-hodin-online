@@ -1,7 +1,7 @@
 /************************************************************************/
 /*                                                                      */
 /* myhpage.h                                                            */
-/* (c)1999-2016 | Juraj Vidéky | videky@breviar.sk                      */
+/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk                      */
 /*                                                                      */
 /* description | HTML document dynamically generated header and footer  */
 /*                                                                      */

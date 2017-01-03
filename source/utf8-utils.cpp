@@ -1,7 +1,7 @@
 /**********************************************************/
 /*                                                        */
 /* utf8-utils.cpp                                         */
-/* (c)2014-2016 | Juraj Vidéky, Richard Královič          */
+/* (c)2014-2017 | Juraj Vidéky, Richard Královič          */
 /*                                                        */
 /* description | utilities for UTF-8 (Unicode) encoding   */
 /*               (string manipulation, etc.)              */

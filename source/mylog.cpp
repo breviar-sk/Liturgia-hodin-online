@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* mylog.cpp                                                   */
-/* (c)1999-2016 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | logging to file LOG_TO_FILE or to stdout      */
 /*                                                             */
