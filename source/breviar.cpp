@@ -243,12 +243,13 @@ long _global_opt[POCET_GLOBAL_OPT];
 // globálna premenná -- pole -- obsahujúca force options; pôvodne to boli globálne premenné _global_force_opt 1..9 atď., obsahujú pom_FORCE_OPT...
 long _global_force_opt[POCET_GLOBAL_OPT];
 
-// globálne premenné -- polia -- obsahujúce jednotlivé bity pre force option 0, 1, 2, 4, 5
+// globálne premenné -- polia -- obsahujúce jednotlivé bity pre force option 0, 1, 2, 4, 5, 6
 long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];      
 long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
+long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI];
 
 short int _global_opt_append = NIE;
 short int _global_opt_tedeum = NIE;
@@ -340,12 +341,13 @@ char pom_MODLITBA   [SMALL] = STR_EMPTY;
 
 char pom_OPT[POCET_GLOBAL_OPT][SMALL];
 char pom_FORCE_OPT[POCET_GLOBAL_OPT][SMALL];
-// reťazcové polia pre force option 0, 1, 2, 4 (jednotlivé bit-komponenty)
+// reťazcové polia pre force option 0, 1, 2, 4 (jednotlivé bit-komponenty), 6 (decimal-place-components)
 char pom_FORCE_OPT_0_SPECIALNE[POCET_OPT_0_SPECIALNE][SMALL];
 char pom_FORCE_OPT_1_CASTI_MODLITBY[POCET_OPT_1_CASTI_MODLITBY][SMALL];
 char pom_FORCE_OPT_2_HTML_EXPORT[POCET_OPT_2_HTML_EXPORT][SMALL];
 char pom_FORCE_OPT_4_OFFLINE_EXPORT[POCET_OPT_4_OFFLINE_EXPORT][SMALL];
 char pom_FORCE_OPT_5_ALTERNATIVES[POCET_OPT_5_ALTERNATIVES][SMALL];
+char pom_FORCE_OPT_6_ALTERNATIVES_MULTI[POCET_OPT_6_ALTERNATIVES_MULTI][SMALL];
 
 char pom_OPT_APPEND  [SMALL] = STR_EMPTY;
 char pom_DALSI_SVATY[SMALL] = STR_EMPTY;
@@ -461,11 +463,20 @@ short int _typslav_override(short int typslav) {
 }// _typslav_override()
 
 void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value) {
-	if (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) && (value == NIE)) {
-		_global_opt[opt_i] -= bit_opt_i_component_j;
+	if (opt_i == OPT_6_ALTERNATIVES_MULTI) {
+		// OPT 6 uses decimal-place logic; value should be between 0 and 9
+		short current_value = ((_global_opt[opt_i] DIV bit_opt_i_component_j) MOD 10);
+		if (current_value != value && value >= 0 && value <= 9) {
+			_global_opt[opt_i] = _global_opt[opt_i] - bit_opt_i_component_j * current_value + value;
+		}
 	}
-	else if (((_global_opt[opt_i] & bit_opt_i_component_j) != bit_opt_i_component_j) && (value == ANO)) {
-		_global_opt[opt_i] += bit_opt_i_component_j;
+	else {
+		if (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) && (value == NIE)) {
+			_global_opt[opt_i] -= bit_opt_i_component_j;
+		}
+		else if (((_global_opt[opt_i] & bit_opt_i_component_j) != bit_opt_i_component_j) && (value == ANO)) {
+			_global_opt[opt_i] += bit_opt_i_component_j;
+		}
 	}
 }// setGlobalOption()
 
@@ -887,17 +898,34 @@ short int setForm(void){
 		}
 	}// for i
 
-	// force option 5, jednotlivé bit-komponenty
+	 // force option 5, jednotlivé bit-komponenty
 	LogParams("force option %d, jednotlivé bit-komponenty...(setForm)\n", OPT_5_ALTERNATIVES);
-	for (i = 0; i < POCET_OPT_5_ALTERNATIVES; i++){
+	for (i = 0; i < POCET_OPT_5_ALTERNATIVES; i++) {
 		mystrcpy(local_str, STR_EMPTY, SMALL);
-		if (!equals(pom_FORCE_OPT_5_ALTERNATIVES[i], STR_EMPTY)){
+		if (!equals(pom_FORCE_OPT_5_ALTERNATIVES[i], STR_EMPTY)) {
 			mystrcpy(local_str, WWW_PREFIX, SMALL);
 
 			strcat_str_opt_bit_order(local_str, OPT_5_ALTERNATIVES, i);
 
 			strcat(local_str, "=");
 			strcat(local_str, pom_FORCE_OPT_5_ALTERNATIVES[i]);
+			LogParams("--- setForm: putenv(%s); ...\n", local_str);
+			ret = putenv(local_str);
+			LogParams("--- setForm: putenv returned %d.\n", ret);
+		}
+	}// for i
+
+	 // force option 6, jednotlivé decimal-place-komponenty
+	LogParams("force option %d, jednotlivé decimal-place-komponenty...(setForm)\n", OPT_6_ALTERNATIVES_MULTI);
+	for (i = 0; i < POCET_OPT_6_ALTERNATIVES_MULTI; i++) {
+		mystrcpy(local_str, STR_EMPTY, SMALL);
+		if (!equals(pom_FORCE_OPT_6_ALTERNATIVES_MULTI[i], STR_EMPTY)) {
+			mystrcpy(local_str, WWW_PREFIX, SMALL);
+
+			strcat_str_opt_bit_order(local_str, OPT_6_ALTERNATIVES_MULTI, i);
+
+			strcat(local_str, "=");
+			strcat(local_str, pom_FORCE_OPT_6_ALTERNATIVES_MULTI[i]);
 			LogParams("--- setForm: putenv(%s); ...\n", local_str);
 			ret = putenv(local_str);
 			LogParams("--- setForm: putenv returned %d.\n", ret);
@@ -1211,7 +1239,129 @@ void _export_link_show_hide(short int opt, long bit_opt, char popis_show[MAX_STR
 	Log("_export_link_show_hide(): koniec.\n");
 }// _export_link_show_hide()
 
-// funkcia vyexportuje link pre zmenu spoločných textov podľa rozličných nastavení
+ // funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
+ // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
+void _export_link_multi(short int opt, long bit_opt, short int count, char popis[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')') {
+	Log("_export_link_multi(): začiatok...\n");
+
+	char pom[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	char pom2[MAX_STR];
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+	prilep_request_options(pom2, pom3);
+
+	long _global_opt_backup = _global_opt[opt];
+
+	if (strlen(popis) < 1) {
+		Log("_export_link_multi(): predčasný koniec (reťazec popis je prázdny).\n");
+		return;
+	}
+
+	if (opt != OPT_6_ALTERNATIVES_MULTI) {
+		Log("_export_link_multi(): predčasný koniec (pracuje len pre OPT_6_ALTERNATIVES_MULTI).\n");
+		return;
+	}
+
+	// get value starting from bit-component bit_opt
+	short current_value = isGlobalOption(opt, bit_opt);
+
+	// Log("_global_opt(6) == %ld; current value == %d; opt == %d, bit == %d\n", _global_opt[OPT_6_ALTERNATIVES_MULTI], current_value, opt, bit_opt);
+	
+	// nastavenie novej hodnoty pre hyperlink (len plus 1)
+	current_value++;
+
+	if (current_value >= count) {
+		current_value = 0;
+	}
+
+	setGlobalOption(opt, bit_opt, current_value);
+
+	// Log("current value == %d\n", current_value);
+
+	// prilepenie poradia svätca
+	if (_global_poradie_svaty > 0) {
+		sprintf(pom2, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, _global_poradie_svaty);
+	}// _global_poradie_svaty > 0
+	else {
+		mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	}// !(_global_poradie_svaty > 0)
+
+	// teraz vytvoríme reťazec s options
+	prilep_request_options(pom2, pom3);
+
+	// prilepíme modlitbu
+	if (_global_modlitba != MODL_NEURCENA) {
+		sprintf(pom3, HTML_LINK_CALL_PARAM, STR_MODLITBA, str_modlitby[_global_modlitba]);
+		strcat(pom2, pom3);
+	}
+
+	// napokon prilepíme #anchor
+	if (!equals(anchor, STR_EMPTY)) {
+		sprintf(pom3, "#%s", anchor);
+		strcat(pom2, pom3);
+	}
+
+	// export hyperlinku
+	if (query_type == PRM_DNES) {
+		sprintf(pom, "%s?%s=%s%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_DNES,
+			pom2);
+	}
+	else if (query_type == PRM_DATUM) {
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_DATUM,
+			STR_DEN, _global_den.den,
+			STR_MESIAC, _global_den.mesiac,
+			STR_ROK, _global_den.rok,
+			pom2);
+	}
+	else if (query_type == PRM_LIT_OBD) {
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_LIT_OBD,
+			STR_DEN_V_TYZDNI, _global_den.denvt,
+			STR_TYZDEN, _global_den.tyzden,
+			STR_LIT_OBD, _global_den.litobd,
+			STR_LIT_ROK, _global_den.litrok,
+			pom2);
+	}
+
+	Export("%s\n", specific_string_before);
+	if (!equals(html_tag_begin, STR_EMPTY) && (strlen(html_tag_begin) > 0)) {
+		Export("<%s>\n", html_tag_begin);
+	}
+
+	// exporting hyperlink
+	Export(HTML_A_HREF_BEGIN "\"%s\"", pom);
+	if (!equals(html_class, STR_EMPTY) && (strlen(html_class) > 0)) {
+		Export(" %s", html_class);
+	}
+	Export(">");
+	if (left_parenthesis > 0) {
+		Export("%c", left_parenthesis);
+	}
+	Export("%s", popis);
+	if (right_parenthesis > 0) {
+		Export("%c", right_parenthesis);
+	}
+	Export(HTML_A_END);
+
+	if (!equals(html_tag_end, STR_EMPTY) && (strlen(html_tag_end) > 0)) {
+		Export("%s\n", html_tag_end);
+	}
+	Export("%s\n", specific_string_after);
+
+	_global_opt[opt] = _global_opt_backup;
+
+	Log("_export_link_multi(): koniec.\n");
+}// _export_link_multi()
+
+ // funkcia vyexportuje link pre zmenu spoločných textov podľa rozličných nastavení
 // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
 void _export_link_communia(short int spol_cast, char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL]){
 	Log("_export_link_communia(%d) -- začiatok...\n", spol_cast);
@@ -2513,6 +2663,8 @@ void _export_global_string_spol_cast(short int aj_vslh_235b) {
 	Export(_global_string_spol_cast_full);
 } // _export_global_string_spol_cast()
 
+#define _global_modl_hymnus_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.hymnus.anchor : ((type == MODL_PREDPOLUDNIM) ? _global_modl_cez_den_9.hymnus.anchor : ((type == MODL_NAPOLUDNIE) ? _global_modl_cez_den_12.hymnus.anchor : ((type == MODL_POPOLUDNI) ? _global_modl_cez_den_3.hymnus.anchor : ((type == MODL_POSV_CITANIE) ? _global_modl_posv_citanie.hymnus.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.hymnus.anchor : ((type == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.hymnus.anchor : ((type == MODL_PRVE_VESPERY) ? _global_modl_prve_vespery.hymnus.anchor : _global_modl_prve_kompletorium.hymnus.anchor)))))))
+
 // dostane vstup to, co sa pri parsovani templatu nachadza medzi znakmi CHAR_KEYWORD_BEGIN a CHAR_KEYWORD_END;
 // zrejme ide o parameter; podla neho inkluduje subor (alebo cast suboru)
 // 27/04/2000A.D.: pozmenene (pridane #definy):
@@ -2905,6 +3057,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		|| (equals(paramname, PARAM_KRATSIE_PROSBY))
 		|| (equals(paramname, PARAM_VIGILIA))
 		|| (equals(paramname, PARAM_ALT_HYMNUS))
+		|| (equals(paramname, PARAM_ALT_HYMNUS_MULTI))
 		|| (equals(paramname, PARAM_SPOL_CAST_SPOM))
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
@@ -2914,6 +3067,8 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 
 		long bit;
 		short int opt = OPT_1_CASTI_MODLITBY; // for some options must be changed e. g. to OPT_5_ALTERNATIVES
+		short int multi = NIE; // multi == 0 => only on/off (show/hide, two values, one bit) setting; multi == 1 => multiple alternatives
+		short int multi_count = 0;
 
 		char popis_show[SMALL];
 		char popis_hide[SMALL];
@@ -3067,6 +3222,16 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			sprintf(popis_show, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
 			sprintf(popis_hide, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
 		}
+		else if (equals(paramname, PARAM_ALT_HYMNUS_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_HYMNUS_MULTI;
+			multi = ANO;
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			Log(_global_modl_hymnus_anchor);
+			multi_count = pocet_hymnus_multi(_global_modl_hymnus_anchor);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d...\n", podmienka, multi_count);
+			podmienka &= (multi_count > 0);
+		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS)) {
 			opt = OPT_5_ALTERNATIVES;
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
@@ -3140,7 +3305,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			sprintf(popis_hide, "%s", html_text_opt_5_PopolStrPsalm_3PI[_global_jazyk]);
 		}
 
-		// má zmysel len ak platí daná podmienka
+		// má zmysel, len ak platí daná podmienka
 		if (podmienka) {
 			Log("including %s\n", paramname);
 			Export("%s:begin-->", paramname);
@@ -3160,7 +3325,23 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				sprintf(after, HTML_DIV_END);
 			}
 
-			_export_link_show_hide(opt, bit, popis_show, popis_hide, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
+			if (multi == NIE) {
+				_export_link_show_hide(opt, bit, popis_show, popis_hide, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
+			}
+			else {
+				char new_anchor[MAX_STR_AF_ANCHOR];
+				short int current_value = isGlobalOption(opt, bit);
+
+				if (current_value >= multi_count) {
+					current_value = 0;
+					setGlobalOption(opt, bit, current_value);
+				}
+
+				sprintf(new_anchor, "%s_%d", _global_modl_hymnus_anchor, current_value);
+				_set_hymnus(type, NULL, new_anchor);
+
+				_export_link_multi(opt, bit, multi_count, " >> ", (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
+			}
 
 			Export("<!--%s:end", paramname);
 		}
@@ -6697,6 +6878,24 @@ void xml_export_options(void){
 					break;
 				case 16: // BIT_OPT_5_INVITATORIUM_ANT
 					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_INVITATORIUM_ANT)"%ld" ELEM_END(XML_BIT_OPT_5_INVITATORIUM_ANT) "\n", BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, html_text_opt_5_invitatorium_ant[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)));
+					break;
+				} // switch(j)
+			}// for j
+			Export(ELEM_END(XML_OPT_5_ALTERNATIVES) "\n");
+			break;
+		case OPT_6_ALTERNATIVES_MULTI:
+			Export(ELEMVAL_BEGIN(XML_OPT_6_ALTERNATIVES_MULTI) "\n", _global_opt[OPT_6_ALTERNATIVES_MULTI], STR_OPT_6, STR_FORCE_OPT_6, html_text_opt_6_alternatives_multi[_global_jazyk]);
+			Log("option %d, jednotlivé decimal-places-komponenty...(xml_export_options)\n", OPT_6_ALTERNATIVES_MULTI);
+			for (j = 1; j <= POCET_OPT_6_ALTERNATIVES_MULTI; j++) {
+				switch (j) {
+				case 1: // BASE_OPT_6_HYMNUS_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_HYMNUS_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_HYMNUS_MULTI) "\n", BASE_OPT_6_HYMNUS_MULTI, STR_FORCE_PLACE_OPT_6_HYMNUS_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_HYMNUS_MULTI)));
+					break;
+				case 2: // BASE_OPT_6_CITANIE2_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_CITANIE2_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_CITANIE2_MULTI) "\n", BASE_OPT_6_CITANIE2_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_CITANIE2_MULTI)));
+					break;
+				case 3: // BASE_OPT_6_BENEDIKTUS_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_BENEDIKTUS_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_BENEDIKTUS_MULTI) "\n", BASE_OPT_6_BENEDIKTUS_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_BENEDIKTUS_MULTI)));
 					break;
 				} // switch(j)
 			}// for j
@@ -12087,7 +12286,12 @@ void log_pom_FORCE_OPT(void) {
 void _rozparsuj_parametre_OPT_force(int option_opt, char pom_FORCE_OPT_opt[MAX_POCET_OPT][SMALL], long _global_option_opt[MAX_POCET_OPT]){
 	short int i;
 	short int aspon_jedna_nenulova;
-	long bit_value;
+	long bit_value; // for option 6, decimal-place value
+	double base = 2.0;
+
+	if (option_opt == OPT_6_ALTERNATIVES_MULTI) {
+		base = 10.0;
+	}
 
 	Log("_rozparsuj_parametre_OPT_force() -- začiatok...\n");
 
@@ -12095,7 +12299,7 @@ void _rozparsuj_parametre_OPT_force(int option_opt, char pom_FORCE_OPT_opt[MAX_P
 	Log("_rozparsuj_parametre_OPT_force(): LOG_PARAMS is undefined, no LogParams() printed...\n");
 #endif
 
-	// option_opt force j (0, 1, 2, 4, 5)
+	// option_opt force j (0, 1, 2, 4, 5, 6)
 	// option_opt force j -- jednotlivé komponenty
 	_global_force_opt[option_opt] = GLOBAL_OPTION_NULL;
 	aspon_jedna_nenulova = NIE;
@@ -12113,7 +12317,7 @@ void _rozparsuj_parametre_OPT_force(int option_opt, char pom_FORCE_OPT_opt[MAX_P
 		_global_force_opt[option_opt] = 0;
 		// nastavenie _global_force_opt[option_opt] podľa jednotlivých bit-komponentov, ktoré sú nastavené v _global_option_opt[]
 		for (i = 0; i < pocet_opt[option_opt]; i++){
-			bit_value = (int)pow(2.0, i);
+			bit_value = (int)pow(base, i);
 			LogParams("option_opt %d, i == %d; bit_value == %ld...\n", option_opt, i, bit_value);
 			if (_global_option_opt[i] != GLOBAL_OPTION_NULL){
 				_global_force_opt[option_opt] += bit_value * _global_option_opt[i];
@@ -12219,6 +12423,15 @@ void _rozparsuj_parametre_OPT(void){
 	}
 	LogParams("opt %d == `%s' (%ld)\n", OPT_5_ALTERNATIVES, pom_OPT[OPT_5_ALTERNATIVES], _global_opt[OPT_5_ALTERNATIVES]);
 
+	// option 6
+	if ((pom_OPT[OPT_6_ALTERNATIVES_MULTI] == NULL) || (strlen(pom_OPT[OPT_6_ALTERNATIVES_MULTI]) < 1)) {
+		_global_opt[OPT_6_ALTERNATIVES_MULTI] = GLOBAL_OPTION_NULL;
+	}
+	else {
+		_global_opt[OPT_6_ALTERNATIVES_MULTI] = atol(pom_OPT[OPT_6_ALTERNATIVES_MULTI]);
+	}
+	LogParams("opt %d == `%s' (%ld)\n", OPT_6_ALTERNATIVES_MULTI, pom_OPT[OPT_6_ALTERNATIVES_MULTI], _global_opt[OPT_6_ALTERNATIVES_MULTI]);
+
 	// force options
 	Log("force options...\n");
 	// postupne prechádzam jednotlivé bitové komponenty force a vyskladávam z nich celkovú jednu hodnotu; ak daná bitová hodnota nie je naplnená, použijem hodnotu z ne-force option-bitového komponentu
@@ -12268,6 +12481,9 @@ void _rozparsuj_parametre_OPT(void){
 
 	// option force 5
 	_rozparsuj_parametre_OPT_force(OPT_5_ALTERNATIVES, pom_FORCE_OPT_5_ALTERNATIVES, _global_opt_5_alternatives);
+
+	// option force 6
+	_rozparsuj_parametre_OPT_force(OPT_6_ALTERNATIVES_MULTI, pom_FORCE_OPT_6_ALTERNATIVES_MULTI, _global_opt_6_alternatives_multi);
 
 	// kontrolujeme, či niektoré z options nie sú GLOBAL_OPTION_NULL a zároveň prípadne nastaví na default podľa jazyka
 	// doplnené opt_0 až opt_4 force (okrem opt_3); default sa nastavuje podľa "ne-force" verzií; CFG_OPTION1_DEFAULT..CFG_OPTION5_DEFAULT doplnené v myconf.h
@@ -15525,18 +15741,34 @@ short int getForm(void){
 		}
 	}// for i
 
-	// force option 5, jednotlivé bit-komponenty
+	 // force option 5, jednotlivé bit-komponenty
 	Log("force option %d, jednotlivé bit-komponenty...(getForm)\n", OPT_5_ALTERNATIVES);
-	for (i = 0; i < POCET_OPT_5_ALTERNATIVES; i++){
+	for (i = 0; i < POCET_OPT_5_ALTERNATIVES; i++) {
 		// premenná WWW_FORCE_BIT_OPT_5_...
 		mystrcpy(local_str, WWW_PREFIX, SMALL);
 
 		strcat_str_opt_bit_order(local_str, OPT_5_ALTERNATIVES, i);
 
 		ptr = getenv(local_str);
-		if (ptr != NULL){
-			if (strcmp(ptr, STR_EMPTY) != 0){
+		if (ptr != NULL) {
+			if (strcmp(ptr, STR_EMPTY) != 0) {
 				mystrcpy(pom_FORCE_OPT_5_ALTERNATIVES[i], ptr, SMALL);
+			}
+		}
+	}// for i
+
+	 // force option 6, jednotlivé decimal-place-komponenty
+	Log("force option %d, jednotlivé decimal-place-komponenty...(getForm)\n", OPT_6_ALTERNATIVES_MULTI);
+	for (i = 0; i < POCET_OPT_6_ALTERNATIVES_MULTI; i++) {
+		// premenná WWW_FORCE_PLACE_OPT_6_...
+		mystrcpy(local_str, WWW_PREFIX, SMALL);
+
+		strcat_str_opt_bit_order(local_str, OPT_6_ALTERNATIVES_MULTI, i);
+
+		ptr = getenv(local_str);
+		if (ptr != NULL) {
+			if (strcmp(ptr, STR_EMPTY) != 0) {
+				mystrcpy(pom_FORCE_OPT_6_ALTERNATIVES_MULTI[i], ptr, SMALL);
 			}
 		}
 	}// for i
@@ -16334,25 +16566,50 @@ short int parseQueryString(void){
 	// preto čítam "odzadu", "zozadu" (backwards) (rovnako ako kalendár), ak by sa nešlo smerom "dolu" (t. j. k prvému parametru od konca), 
 	// nefungovalo by "override" z tabuľky "Voľby vybraných detailov", ak už v query stringu nejaká hodnota je
 	LogParams("force option %d, jednotlivé bit-komponenty...(parseQuery)\n", OPT_5_ALTERNATIVES);
-	for (j = 0; j < POCET_OPT_5_ALTERNATIVES; j++){
+	for (j = 0; j < POCET_OPT_5_ALTERNATIVES; j++) {
 		LogParams("j == %d...\n", j);
 		mystrcpy(local_str, STR_EMPTY, SMALL);
-		
+
 		strcat_str_opt_bit_order(local_str, OPT_5_ALTERNATIVES, j);
 
 		// premenná WWW_FORCE_BIT_OPT_5_... (nepovinná), j = 0 až POCET_OPT_5_ALTERNATIVES
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
 		LogParams("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 5 / pom_FORCE_OPT_5_ALTERNATIVES[%d] = %s\n", local_str, j, pom_FORCE_OPT_5_ALTERNATIVES[j]);
-		while ((equalsi(pom_FORCE_OPT_5_ALTERNATIVES[j], STR_EMPTY)) && (i > 0)){
+		while ((equalsi(pom_FORCE_OPT_5_ALTERNATIVES[j], STR_EMPTY)) && (i > 0)) {
 			--i;
 			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
-			if (equals(param[i].name, local_str)){
+			if (equals(param[i].name, local_str)) {
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_5_ALTERNATIVES[j], param[i].val, SMALL);
 				LogParams("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_5_ALTERNATIVES[j]);
 			}
 		}
-		if (equalsi(pom_FORCE_OPT_5_ALTERNATIVES[j], STR_EMPTY)){
+		if (equalsi(pom_FORCE_OPT_5_ALTERNATIVES[j], STR_EMPTY)) {
+			LogParams("Nebola zadaná premenná %s (nevadí).\n", local_str);
+		}
+	}// for j
+
+	// force option 6 premenné -- jednotlivé decimal-place-komponenty
+	LogParams("force option %d, jednotlivé decimal-place-komponenty...(parseQuery)\n", OPT_6_ALTERNATIVES_MULTI);
+	for (j = 0; j < POCET_OPT_6_ALTERNATIVES_MULTI; j++) {
+		LogParams("j == %d...\n", j);
+		mystrcpy(local_str, STR_EMPTY, SMALL);
+
+		strcat_str_opt_bit_order(local_str, OPT_6_ALTERNATIVES_MULTI, j);
+
+		// premenná WWW_FORCE_PLACE_OPT_6_... (nepovinná), j = 0 až POCET_OPT_6_ALTERNATIVES_MULTI
+		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
+		LogParams("pokúšam sa zistiť hodnotu parametra %s... parseQueryString(), force, bit-komponenty 5 / pom_FORCE_OPT_5_ALTERNATIVES[%d] = %s\n", local_str, j, pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j]);
+		while ((equalsi(pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j], STR_EMPTY)) && (i > 0)) {
+			--i;
+			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			if (equals(param[i].name, local_str)) {
+				// ide o parameter STR_FORCE_OPT_j
+				mystrcpy(pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j], param[i].val, SMALL);
+				LogParams("hodnota parametra %s je %s.\n", local_str, pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j]);
+			}
+		}
+		if (equalsi(pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j], STR_EMPTY)) {
 			LogParams("Nebola zadaná premenná %s (nevadí).\n", local_str);
 		}
 	}// for j
@@ -17065,6 +17322,7 @@ int breviar_main(int argc, char **argv){
 	memset(pom_FORCE_OPT_2_HTML_EXPORT, 0, sizeof(pom_FORCE_OPT_2_HTML_EXPORT));
 	memset(pom_FORCE_OPT_4_OFFLINE_EXPORT, 0, sizeof(pom_FORCE_OPT_4_OFFLINE_EXPORT));
 	memset(pom_FORCE_OPT_5_ALTERNATIVES, 0, sizeof(pom_FORCE_OPT_5_ALTERNATIVES));
+	memset(pom_FORCE_OPT_6_ALTERNATIVES_MULTI, 0, sizeof(pom_FORCE_OPT_6_ALTERNATIVES_MULTI));
 
 	strcpy(bad_param_str, STR_EMPTY);
 	strcpy(file_export, STR_EMPTY);

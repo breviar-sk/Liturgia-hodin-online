@@ -61,7 +61,7 @@
 //
 // 4. string arrays: STRING_ARRAY_FOR_NEW_LANGUAGE to be replaced manually
 
-#define POCET_GLOBAL_OPT     6
+#define POCET_GLOBAL_OPT     7
 
 #define MAX_GLOBAL_STR		 2048 // _global_string
 #define MAX_GLOBAL_STR2		  500 // _global_string2
@@ -400,6 +400,13 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_OPT_5 "o5"
 #endif
 
+#define OPT_6 126
+#ifdef LONG_PARAM_NAMES
+	#define STR_OPT_6 "OPT_6"
+#else
+	#define STR_OPT_6 "o6"
+#endif
+
 // append pridany 2003-07-08, bude v _global_opt_append; nemal by byt pouzity na webe
 #define OPT_APPEND 36
 #ifdef LONG_PARAM_NAMES
@@ -457,6 +464,13 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_FORCE_OPT_5 "FORCE_OPT_5"
 #else
 	#define STR_FORCE_OPT_5 "of5"
+#endif
+
+#define FORCE_OPT_6 127
+#ifdef LONG_PARAM_NAMES
+	#define STR_FORCE_OPT_6 "FORCE_OPT_6"
+#else
+	#define STR_FORCE_OPT_6 "of6"
 #endif
 
 // pre force option 0 jednotlivé bit-komponenty (parciálne voľby)
@@ -828,17 +842,40 @@ extern short int query_type; // contains constants PRM_...
 // zobrazovať v podnadpise národný kalendár -- BIT_OPT_2_SHOW_DEFAULT_CALENDAR
 #define FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR 114
 #ifdef LONG_PARAM_NAMES
-#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR"
+	#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR"
 #else
-#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "of2sdc"
+	#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "of2sdc"
 #endif
 
 // override CSS background color -- BIT_OPT_2_BACKGROUND_OVERRIDE
 #define FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE 122
 #ifdef LONG_PARAM_NAMES
-#define STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE "FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE"
+	#define STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE "FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE"
 #else
-#define STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE "of2bo"
+	#define STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE "of2bo"
+#endif
+
+// pre force option 6 jednotlivé decimal-place-komponenty (parciálne voľby)
+
+#define FORCE_PLACE_OPT_6_HYMNUS_MULTI 128
+#ifdef LONG_PARAM_NAMES
+	#define STR_FORCE_PLACE_OPT_6_HYMNUS_MULTI "FORCE_PLACE_OPT_6_HYMNUS_MULTI"
+#else
+	#define STR_FORCE_PLACE_OPT_6_HYMNUS_MULTI "of6h"
+#endif
+
+#define FORCE_PLACE_OPT_6_CITANIE2_MULTI 129
+#ifdef LONG_PARAM_NAMES
+	#define STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI "FORCE_PLACE_OPT_6_CITANIE2_MULTI"
+#else
+	#define STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI "of6c2"
+#endif
+
+#define FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI 130
+#ifdef LONG_PARAM_NAMES
+	#define STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI "FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI"
+#else
+	#define STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI "of6b"
 #endif
 
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
@@ -1107,6 +1144,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_OPT_3_SPOLOCNA_CAST                 "Opt3Communia"
 #define XML_OPT_4_OFFLINE_EXPORT                "Opt4OfflineExport"
 #define XML_OPT_5_ALTERNATIVES                  "Opt5Alternatives"
+#define XML_OPT_6_ALTERNATIVES_MULTI            "Opt6AlternativesMultivalue"
 
 // POCET_OPT_0_SPECIALNE
 #define XML_BIT_OPT_0_VERSE                     "BitOpt0VerseNumbers"
@@ -1179,6 +1217,11 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_OFF_DEF_PSALM_146_150     "BitOpt5OffDefPsalm146or150"
 #define XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON         "BitOpt5ConclusionPriestDiacon"
 #define XML_BIT_OPT_5_INVITATORIUM_ANT          "BitOpt5InvitatoryAnt"
+
+// POCET_OPT_6_ALTERNATIVES_MULTI
+#define XML_PLACE_OPT_6_HYMNUS_MULTI            "PlaceOpt6HymnusMulti"
+#define XML_PLACE_OPT_6_CITANIE2_MULTI          "PlaceOpt6Reading2Multi"
+#define XML_PLACE_OPT_6_BENEDIKTUS_MULTI        "PlaceOpt6BenedictusMulti"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<" elem ">"

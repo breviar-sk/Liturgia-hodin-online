@@ -3278,6 +3278,20 @@ const char *html_text_opt_2_alternatives_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_opt_6_alternatives_multi[POCET_JAZYKOV + 1] =
+{
+	"alternatívy (viac možností)",
+	"alternativy (více možností)",
+	"alternatives (multiple)",
+	"",
+	"",
+	"alternativy (více možností)",
+	"lehetőségek",
+	"ru_text",
+	"альтэрнатывы",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_opt_2_show_defalut_calendar[POCET_JAZYKOV + 1] =
 {
 	"zvýrazniť slávenia v národnom kalendári",

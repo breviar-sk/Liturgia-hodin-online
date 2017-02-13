@@ -54,7 +54,7 @@ char cfg_http_display_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
 
 const char *cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] =
-{ "specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "http_adresa", "http_zobraz_adr", "mail_adresa" };
+{ "specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "alternatives_multi", "http_adresa", "http_zobraz_adr", "mail_adresa" };
 #define ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX "_"
 
 const char *cfg_option_postfix[POCET_JAZYKOV + 1] =

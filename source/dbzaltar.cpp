@@ -513,39 +513,57 @@ void _set_hymnus_alternativy_NO(short int modlitba){
 void _set_hymnus(short int modlitba, const char *file, const char *anchor){
 	switch (modlitba){
 	case MODL_PRVE_KOMPLETORIUM:
-		mystrcpy(_global_modl_prve_kompletorium.hymnus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_prve_kompletorium.hymnus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_prve_kompletorium.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_KOMPLETORIUM:
-		mystrcpy(_global_modl_kompletorium.hymnus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_kompletorium.hymnus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_kompletorium.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_RANNE_CHVALY:
-		mystrcpy(_global_modl_ranne_chvaly.hymnus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_ranne_chvaly.hymnus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_ranne_chvaly.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_POSV_CITANIE:
-		mystrcpy(_global_modl_posv_citanie.hymnus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_posv_citanie.hymnus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_posv_citanie.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_CEZ_DEN_9:
-		mystrcpy(_global_modl_cez_den_9.hymnus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_cez_den_9.hymnus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_cez_den_9.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_CEZ_DEN_12:
-		mystrcpy(_global_modl_cez_den_12.hymnus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_cez_den_12.hymnus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_cez_den_12.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_CEZ_DEN_3:
-		mystrcpy(_global_modl_cez_den_3.hymnus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_cez_den_3.hymnus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_cez_den_3.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_VESPERY:
-		mystrcpy(_global_modl_vespery.hymnus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_vespery.hymnus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_vespery.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_PRVE_VESPERY:
-		mystrcpy(_global_modl_prve_vespery.hymnus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_prve_vespery.hymnus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_prve_vespery.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	} // switch(modlitba)
@@ -10336,6 +10354,31 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	}
 	Log("set_spolocna_cast(_global_opt[OPT_3_SPOLOCNA_CAST] == %s) -- end\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]));
 }// set_spolocna_cast();
+
+_struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
+	{ "CZ_PMB_rHYMNUS", 3 },
+	{ "CZ_PMB_vHYMNUS", 2 },
+	{ "CZ_PMB_cHYMNUS", 2 },
+	{ "CZ_PMB_1HYMNUS", 2 },
+};
+
+short int pocet_hymnus_multi(char *_anchor) {
+	short int count = 0;
+	short int i = 0;
+
+	_struct_anchor_and_count* ptr = pocet_hymnus_multi_anchor_count;
+	_struct_anchor_and_count* endPtr = pocet_hymnus_multi_anchor_count + sizeof(pocet_hymnus_multi_anchor_count) / sizeof(pocet_hymnus_multi_anchor_count[0]);
+	while (ptr < endPtr) {
+		if (equals(_anchor, pocet_hymnus_multi_anchor_count[i].anchor)) {
+			count = pocet_hymnus_multi_anchor_count[i].count;
+			break;
+		}
+		ptr++;
+		i++;
+	}
+
+	return count;
+}
 
 #endif // __DBZALTAR_CPP_
 

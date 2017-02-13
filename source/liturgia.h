@@ -485,6 +485,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 // keywords
 #define KEYWORD_BEGIN   "BEGIN"
 #define KEYWORD_END     "END"
+#define KEYWORD_MULTI   "MULTI"
 
 #define KEYWORD_ALELUJA_ALELUJA         "ALELUJA_ALELUJA"
 #define KEYWORD_ALELUJA_NIE_V_POSTE     "ALELUJA_NIE_V_POSTE"
@@ -579,6 +580,10 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 
 // rubriky priamo v includovaných HTML súboroch
 #define PARAM_RUBRIKA                       "RUBRIKA"
+
+// multiple alternatives
+#define PARAM_ALT_HYMNUS_MULTI              PARAM_ALT_HYMNUS "-" KEYWORD_MULTI
+#define PARAM_ALT_CITANIE2_MULTI            "ALT-CITANIE2-" KEYWORD_MULTI
 
 // zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
@@ -1327,6 +1332,7 @@ extern short int _global_pocet_svatych;
 #define OPT_3_SPOLOCNA_CAST        3
 #define OPT_4_OFFLINE_EXPORT       4
 #define OPT_5_ALTERNATIVES         5
+#define OPT_6_ALTERNATIVES_MULTI   6
 
 // globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atď., obsahujú pom_OPT...
 extern long _global_opt[POCET_GLOBAL_OPT];
@@ -1424,19 +1430,30 @@ extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_CZ_HYMNY_VYBER         8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
 #define BIT_OPT_5_OFF_DEF_PSALM_146_150 16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
 #define BIT_OPT_5_ZAVER_KNAZ_DIAKON     32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
-#define BIT_OPT_5_INVITATORIUM_ANT          65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
+#define BIT_OPT_5_INVITATORIUM_ANT      65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
+
+#define POCET_OPT_6_ALTERNATIVES_MULTI      3 // this is not bitwise long, but simply decimal number; each decimal place representing one value
+extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI];
+#define PLACE_OPT_6_HYMNUS_MULTI              1
+#define PLACE_OPT_6_CITANIE2_MULTI            2
+#define PLACE_OPT_6_BENEDIKTUS_MULTI          3
+
+#define BASE_OPT_6_HYMNUS_MULTI               1
+#define BASE_OPT_6_CITANIE2_MULTI            10
+#define BASE_OPT_6_BENEDIKTUS_MULTI         100
+
 
 #define MAX_POCET_OPT                      18 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
 
-const short int pocet_opt[POCET_GLOBAL_OPT] = {POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nemá bitové komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES};
+const short int pocet_opt[POCET_GLOBAL_OPT] = { POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nemá bitové komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES, POCET_OPT_6_ALTERNATIVES_MULTI /* decimal-places */ };
 
 // globalna premenna, co obsahuje string vypisany na obsazovku
 extern char *_global_string;
 extern char *_global_string2; // obsahuje I, II, III, IV, V alebo pismeno roka
-extern char *_global_string_farba; // 2006-08-19: doplnené
+extern char *_global_string_farba;
 
-extern char *_global_buf; // 2006-08-01: túto premennú tiež alokujeme
-extern char *_global_buf2; // 2006-08-01: túto premennú tiež alokujeme
+extern char *_global_buf;
+extern char *_global_buf2;
 
 extern short int _global_linky;
 
@@ -1740,6 +1757,12 @@ extern const char *text_PRO_OP[POCET_JAZYKOV + 1];
 extern const char *html_text_batch_Back[POCET_JAZYKOV + 1];
 extern const char *html_text_batch_Prev[POCET_JAZYKOV + 1];
 extern const char *html_text_batch_Next[POCET_JAZYKOV + 1];
+
+struct _anchor_and_count {
+	char anchor[MAX_STR_AF_ANCHOR];
+	short int count;
+};
+typedef struct _anchor_and_count _struct_anchor_and_count;
 
 #endif // __LITURGIA_H_
 

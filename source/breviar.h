@@ -178,11 +178,11 @@ extern short int _global_opt_export_date_format;
 
 #define set_tyzzal_1_2(tyzzal) ((tyzzal > 2)? (tyzzal - 2) : tyzzal)
 
-// placeholder for checking whether option 'i' has set 'j'-th bit-component to TRUE | used result ANO/NIE to prevent long datatype
-#define isGlobalOption(opt_i, bit_opt_i_component_j) (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE)
-#define isGlobalOptionForce(opt_i, bit_opt_i_component_j) (((_global_force_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE)
+// placeholder for checking whether option 'i' has set 'j'-th bit-component to TRUE | used result ANO/NIE to prevent long datatype; OPT 6 uses decimal-place logic
+#define isGlobalOption(opt_i, bit_opt_i_component_j) ((opt_i == OPT_6_ALTERNATIVES_MULTI) ? ((_global_opt[opt_i] DIV bit_opt_i_component_j) MOD 10) : (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
+#define isGlobalOptionForce(opt_i, bit_opt_i_component_j) ((opt_i == OPT_6_ALTERNATIVES_MULTI) ? ((_global_force_opt[opt_i] DIV bit_opt_i_component_j) MOD 10) : (((_global_force_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
 
-// for setting option's 'i' 'j'-th bit-component to value (TRUE/FALSE)
+// for setting option's 'i' 'j'-th bit-component to value (TRUE/FALSE); OPT 6 uses decimal-place logic
 extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value);
 
 #define odfiltrujSpolCast(modlitba, opt3) ((short int)(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA)) ? MODL_SPOL_CAST_NULL : opt3))

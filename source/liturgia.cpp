@@ -1826,7 +1826,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 		}
 		break;
 	case OPT_5_ALTERNATIVES:
-		if (bit_order < POCET_OPT_5_ALTERNATIVES){
+		if (bit_order < POCET_OPT_5_ALTERNATIVES) {
 			switch (bit_order)
 			{
 			case -2: mystrcpy(str, STR_OPT_5, SMALL); break; // no bit = ordinary option string | USE_STR_OPT
@@ -1848,6 +1848,18 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 14: mystrcpy(str, STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, SMALL); break; // BIT_OPT_5_OFF_DEF_PSALM_146_150
 			case 15: mystrcpy(str, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, SMALL); break; // BIT_OPT_5_ZAVER_KNAZ_DIAKON
 			case 16: mystrcpy(str, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, SMALL); break; // BIT_OPT_5_INVITATORIUM_ANT
+			}
+		}
+		break;
+	case OPT_6_ALTERNATIVES_MULTI:
+		if (bit_order < POCET_OPT_6_ALTERNATIVES_MULTI) {
+			switch (bit_order)
+			{
+			case -2: mystrcpy(str, STR_OPT_6, SMALL); break; // no bit = ordinary option string | USE_STR_OPT
+			case -1: mystrcpy(str, STR_FORCE_OPT_6, SMALL); break; // no bit = force option string | USE_STR_FORCE_OPT
+			case 0: mystrcpy(str, STR_FORCE_PLACE_OPT_6_HYMNUS_MULTI, SMALL); break; // PLACE_OPT_6_HYMNUS_MULTI
+			case 1: mystrcpy(str, STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI, SMALL); break; // PLACE_OPT_6_CITANIE2_MULTI
+			case 2: mystrcpy(str, STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI, SMALL); break; // PLACE_OPT_6_BENEDIKTUS_MULTI
 			}
 		}
 		break;
