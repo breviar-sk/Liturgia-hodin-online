@@ -61,7 +61,7 @@
 #define JAZYK_CZ	1
 #define JAZYK_EN	2
 #define JAZYK_LA    3
-#define JAZYK_UNDEF 4
+#define JAZYK_UNDEF 4 // used also as JAZYK_ANY
 #define JAZYK_CZ_OP 5
 #define JAZYK_HU    6
 #define JAZYK_RU    7
@@ -1759,6 +1759,7 @@ extern const char *html_text_batch_Prev[POCET_JAZYKOV + 1];
 extern const char *html_text_batch_Next[POCET_JAZYKOV + 1];
 
 struct _anchor_and_count {
+	short int language;
 	char anchor[MAX_STR_AF_ANCHOR];
 	short int count;
 };

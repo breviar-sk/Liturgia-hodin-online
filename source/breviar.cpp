@@ -467,7 +467,7 @@ void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value) {
 		// OPT 6 uses decimal-place logic; value should be between 0 and 9
 		short current_value = ((_global_opt[opt_i] DIV bit_opt_i_component_j) MOD 10);
 		if (current_value != value && value >= 0 && value <= 9) {
-			_global_opt[opt_i] = _global_opt[opt_i] - bit_opt_i_component_j * current_value + value;
+			_global_opt[opt_i] = _global_opt[opt_i] + bit_opt_i_component_j * (value - current_value);
 		}
 	}
 	else {
@@ -1114,172 +1114,9 @@ void _export_heading_center(const char *string){
 	ExportHtmlComment("END:heading");
 }// _export_heading_center()
 
-// funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
-// kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
-void _export_link_show_hide(short int opt, long bit_opt, char popis_show[MAX_STR], char popis_hide[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')'){
-	Log("_export_link_show_hide(): začiatok...\n");
-	char popis[MAX_STR];
-
-	char pom[MAX_STR];
-	mystrcpy(pom, STR_EMPTY, MAX_STR);
-	char pom2[MAX_STR];
-	mystrcpy(pom2, STR_EMPTY, MAX_STR);
-	char pom3[MAX_STR];
-	mystrcpy(pom3, STR_EMPTY, MAX_STR);
-
-	prilep_request_options(pom2, pom3);
-
-	long _global_opt_backup = _global_opt[opt];
-
-	if (isGlobalOption(opt, bit_opt)) {
-		mystrcpy(popis, popis_show, MAX_STR);
-	}
-	else {
-		mystrcpy(popis, popis_hide, MAX_STR);
-
-		// špeciálne nastavenia pre BIT_OPT_1_STUP_SVIATOK_SLAVNOST
-		if ((opt == OPT_1_CASTI_MODLITBY) && (bit_opt == BIT_OPT_1_STUP_SVIATOK_SLAVNOST) && (!isGlobalOption(opt, BIT_OPT_1_OVERRIDE_STUP_SLAV))) {
-			Log("Pre option %d nastavujem bit pre '%ld'\n", opt, BIT_OPT_1_OVERRIDE_STUP_SLAV);
-			_global_opt[opt] += BIT_OPT_1_OVERRIDE_STUP_SLAV;
-		}
-	}
-
-	if (strlen(popis) < 1) {
-		Log("_export_link_show_hide(): predčasný koniec (reťazec popis je prázdny).\n");
-		return;
-	}
-
-	// nastavenie parametra o_opt: pridáme bit pre nastavenie
-	if (!isGlobalOption(opt, bit_opt)){
-		Log("Pre option %d nastavujem bit pre '%ld'\n", opt, bit_opt);
-		_global_opt[opt] += bit_opt;
-	}// zmena: použitie nastavenia
-	else{
-		Log("Pre option %d ruším bit pre '%ld'\n", opt, bit_opt);
-		_global_opt[opt] -= bit_opt;
-	}// zmena: zrušenie nastavenia
-
-	// prilepenie poradia svätca
-	if (_global_poradie_svaty > 0){
-		sprintf(pom2, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, _global_poradie_svaty);
-	}// _global_poradie_svaty > 0
-	else{
-		mystrcpy(pom2, STR_EMPTY, MAX_STR);
-	}// !(_global_poradie_svaty > 0)
-
-	// teraz vytvoríme reťazec s options
-	prilep_request_options(pom2, pom3);
-
-	// prilepíme modlitbu
-	if (_global_modlitba != MODL_NEURCENA){
-		sprintf(pom3, HTML_LINK_CALL_PARAM, STR_MODLITBA, str_modlitby[_global_modlitba]);
-		strcat(pom2, pom3);
-	}
-
-	// napokon prilepíme #anchor
-	if (!equals(anchor, STR_EMPTY)){
-		sprintf(pom3, "#%s", anchor);
-		strcat(pom2, pom3);
-	}
-
-	// export hyperlinku
-	if (query_type == PRM_DNES){
-		sprintf(pom, "%s?%s=%s%s",
-			script_name,
-			STR_QUERY_TYPE, STR_PRM_DNES,
-			pom2);
-	}
-	else if (query_type == PRM_DATUM){
-		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s",
-			script_name,
-			STR_QUERY_TYPE, STR_PRM_DATUM,
-			STR_DEN, _global_den.den,
-			STR_MESIAC, _global_den.mesiac,
-			STR_ROK, _global_den.rok,
-			pom2);
-	}
-	else if (query_type == PRM_LIT_OBD){
-		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c%s",
-			script_name,
-			STR_QUERY_TYPE, STR_PRM_LIT_OBD,
-			STR_DEN_V_TYZDNI, _global_den.denvt,
-			STR_TYZDEN, _global_den.tyzden,
-			STR_LIT_OBD, _global_den.litobd,
-			STR_LIT_ROK, _global_den.litrok,
-			pom2);
-	}
-
-	Export("%s\n", specific_string_before);
-	if (!equals(html_tag_begin, STR_EMPTY) && (strlen(html_tag_begin) > 0)) {
-		Export("<%s>\n", html_tag_begin);
-	}
-
-	// exporting hyperlink
-	Export(HTML_A_HREF_BEGIN "\"%s\"", pom);
-	if (!equals(html_class, STR_EMPTY) && (strlen(html_class) > 0)) {
-		Export(" %s", html_class);
-	}
-	Export(">");
-	if (left_parenthesis > 0) {
-		Export("%c", left_parenthesis);
-	}
-	Export("%s", popis);
-	if (right_parenthesis > 0) {
-		Export("%c", right_parenthesis);
-	}
-	Export(HTML_A_END);
-
-	if (!equals(html_tag_end, STR_EMPTY) && (strlen(html_tag_end) > 0)){
-		Export("%s\n", html_tag_end);
-	}
-	Export("%s\n", specific_string_after);
-
-	_global_opt[opt] = _global_opt_backup;
-
-	Log("_export_link_show_hide(): koniec.\n");
-}// _export_link_show_hide()
-
- // funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
- // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
-void _export_link_multi(short int opt, long bit_opt, short int count, char popis[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')') {
-	Log("_export_link_multi(): začiatok...\n");
-
-	char pom[MAX_STR];
-	mystrcpy(pom, STR_EMPTY, MAX_STR);
-	char pom2[MAX_STR];
-	mystrcpy(pom2, STR_EMPTY, MAX_STR);
-	char pom3[MAX_STR];
-	mystrcpy(pom3, STR_EMPTY, MAX_STR);
-
-	prilep_request_options(pom2, pom3);
-
-	long _global_opt_backup = _global_opt[opt];
-
-	if (strlen(popis) < 1) {
-		Log("_export_link_multi(): predčasný koniec (reťazec popis je prázdny).\n");
-		return;
-	}
-
-	if (opt != OPT_6_ALTERNATIVES_MULTI) {
-		Log("_export_link_multi(): predčasný koniec (pracuje len pre OPT_6_ALTERNATIVES_MULTI).\n");
-		return;
-	}
-
-	// get value starting from bit-component bit_opt
-	short current_value = isGlobalOption(opt, bit_opt);
-
-	// Log("_global_opt(6) == %ld; current value == %d; opt == %d, bit == %d\n", _global_opt[OPT_6_ALTERNATIVES_MULTI], current_value, opt, bit_opt);
-	
-	// nastavenie novej hodnoty pre hyperlink (len plus 1)
-	current_value++;
-
-	if (current_value >= count) {
-		current_value = 0;
-	}
-
-	setGlobalOption(opt, bit_opt, current_value);
-
-	// Log("current value == %d\n", current_value);
+// helper for _export_link_show_hide(), _export_link_multi()
+void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_STR], char popis[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')') {
+	Log("_export_link_helper(): začiatok...\n");
 
 	// prilepenie poradia svätca
 	if (_global_poradie_svaty > 0) {
@@ -1355,6 +1192,101 @@ void _export_link_multi(short int opt, long bit_opt, short int count, char popis
 		Export("%s\n", html_tag_end);
 	}
 	Export("%s\n", specific_string_after);
+
+	Log("_export_link_helper(): koniec.\n");
+}// _export_link_helper()
+
+// funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
+// kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
+void _export_link_show_hide(short int opt, long bit_opt, char popis_show[MAX_STR], char popis_hide[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')'){
+	Log("_export_link_show_hide(): začiatok...\n");
+	char popis[MAX_STR];
+
+	char pom[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	char pom2[MAX_STR];
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+	prilep_request_options(pom2, pom3);
+
+	long _global_opt_backup = _global_opt[opt];
+
+	if (isGlobalOption(opt, bit_opt)) {
+		mystrcpy(popis, popis_show, MAX_STR);
+	}
+	else {
+		mystrcpy(popis, popis_hide, MAX_STR);
+
+		// špeciálne nastavenia pre BIT_OPT_1_STUP_SVIATOK_SLAVNOST
+		if ((opt == OPT_1_CASTI_MODLITBY) && (bit_opt == BIT_OPT_1_STUP_SVIATOK_SLAVNOST) && (!isGlobalOption(opt, BIT_OPT_1_OVERRIDE_STUP_SLAV))) {
+			Log("Pre option %d nastavujem bit pre '%ld'\n", opt, BIT_OPT_1_OVERRIDE_STUP_SLAV);
+			_global_opt[opt] += BIT_OPT_1_OVERRIDE_STUP_SLAV;
+		}
+	}
+
+	if (strlen(popis) < 1) {
+		Log("_export_link_show_hide(): predčasný koniec (reťazec popis je prázdny).\n");
+		return;
+	}
+
+	// nastavenie parametra o_opt: pridáme bit pre nastavenie
+	if (!isGlobalOption(opt, bit_opt)){
+		Log("Pre option %d nastavujem bit pre '%ld'\n", opt, bit_opt);
+		_global_opt[opt] += bit_opt;
+	}// zmena: použitie nastavenia
+	else{
+		Log("Pre option %d ruším bit pre '%ld'\n", opt, bit_opt);
+		_global_opt[opt] -= bit_opt;
+	}// zmena: zrušenie nastavenia
+
+	_export_link_helper(pom, pom2, pom3, popis, html_tag_begin, html_class, specific_string_before, specific_string_after, anchor, html_tag_end, left_parenthesis, right_parenthesis);
+
+	_global_opt[opt] = _global_opt_backup;
+
+	Log("_export_link_show_hide(): koniec.\n");
+}// _export_link_show_hide()
+
+ // funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
+ // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
+void _export_link_multi(short int opt, long bit_opt, short int count, char popis[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')') {
+	Log("_export_link_multi(): začiatok...\n");
+
+	char pom[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	char pom2[MAX_STR];
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+	prilep_request_options(pom2, pom3);
+
+	long _global_opt_backup = _global_opt[opt];
+
+	if (strlen(popis) < 1) {
+		Log("_export_link_multi(): predčasný koniec (reťazec popis je prázdny).\n");
+		return;
+	}
+
+	if (opt != OPT_6_ALTERNATIVES_MULTI) {
+		Log("_export_link_multi(): predčasný koniec (pracuje len pre OPT_6_ALTERNATIVES_MULTI).\n");
+		return;
+	}
+
+	// get value starting from bit-component bit_opt
+	short current_value = isGlobalOption(opt, bit_opt);
+
+	Log("_global_opt(6) == %ld; current value == %d; opt == %d, bit == %d\n", _global_opt[OPT_6_ALTERNATIVES_MULTI], current_value, opt, bit_opt);
+	
+	// nastavenie novej hodnoty pre hyperlink (len plus 1)
+	current_value = (current_value + 1) MOD count;
+
+	setGlobalOption(opt, bit_opt, current_value);
+
+	Log("current value == %d\n", current_value);
+
+	_export_link_helper(pom, pom2, pom3, popis, html_tag_begin, html_class, specific_string_before, specific_string_after, anchor, html_tag_end, left_parenthesis, right_parenthesis);
 
 	_global_opt[opt] = _global_opt_backup;
 
@@ -3058,6 +2990,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		|| (equals(paramname, PARAM_VIGILIA))
 		|| (equals(paramname, PARAM_ALT_HYMNUS))
 		|| (equals(paramname, PARAM_ALT_HYMNUS_MULTI))
+		|| (equals(paramname, PARAM_ALT_CITANIE2_MULTI))
 		|| (equals(paramname, PARAM_SPOL_CAST_SPOM))
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
@@ -3222,15 +3155,41 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			sprintf(popis_show, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
 			sprintf(popis_hide, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
 		}
+		else if (equals(paramname, PARAM_ALT_CITANIE2_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_CITANIE2_MULTI;
+			multi = ANO;
+
+			// use popis_hide for anchor
+			mystrcpy(popis_hide, _global_modl_posv_citanie.citanie2.anchor, SMALL);
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			Log(_global_modl_hymnus_anchor);
+
+			multi_count = pocet_citanie2_multi(popis_hide);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
+
+			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_citanie2[_global_jazyk]);
+		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
 			bit = BASE_OPT_6_HYMNUS_MULTI;
 			multi = ANO;
+
+			// use popis_hide for anchor
+			mystrcpy(popis_hide, _global_modl_hymnus_anchor, SMALL);
+
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log(_global_modl_hymnus_anchor);
-			multi_count = pocet_hymnus_multi(_global_modl_hymnus_anchor);
-			Log("podmienka == %d pred kontrolou počtu multi_count == %d...\n", podmienka, multi_count);
+
+			multi_count = pocet_hymnus_multi(popis_hide);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
+
 			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_hymnus[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS)) {
 			opt = OPT_5_ALTERNATIVES;
@@ -3337,10 +3296,21 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 					setGlobalOption(opt, bit, current_value);
 				}
 
-				sprintf(new_anchor, "%s_%d", _global_modl_hymnus_anchor, current_value);
-				_set_hymnus(type, NULL, new_anchor);
+				// popis_hide was used to contain original anchor
+				sprintf(new_anchor, "%s_%d", popis_hide, current_value);
 
-				_export_link_multi(opt, bit, multi_count, " >> ", (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
+				if (bit == BASE_OPT_6_HYMNUS_MULTI) {
+					_set_hymnus(type, NULL, new_anchor);
+				}
+				else if (bit == BASE_OPT_6_CITANIE2_MULTI) {
+					_set_citanie2(type, NULL, new_anchor);
+				}
+
+				// use popis_hide as temp variable
+				sprintf(popis_hide, " (%d/%d) %s", current_value + 1, multi_count, (char *)HTML_RIGHT_ARROW);
+				strcat(popis_show, popis_hide);
+
+				_export_link_multi(opt, bit, multi_count, popis_show, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
 			}
 
 			Export("<!--%s:end", paramname);

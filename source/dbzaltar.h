@@ -2113,5 +2113,6 @@ extern const char *text_NOV_27_CM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_28_CM[POCET_JAZYKOV + 1];
 
 extern short int pocet_hymnus_multi(char *_anchor);
+extern short int pocet_citanie2_multi(char *_anchor);
 
 #endif // __DBZALTAR_H_

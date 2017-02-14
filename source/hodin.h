@@ -3278,20 +3278,6 @@ const char *html_text_opt_2_alternatives_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_opt_6_alternatives_multi[POCET_JAZYKOV + 1] =
-{
-	"alternatívy (viac možností)",
-	"alternativy (více možností)",
-	"alternatives (multiple)",
-	"",
-	"",
-	"alternativy (více možností)",
-	"lehetőségek",
-	"ru_text",
-	"альтэрнатывы",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-
 const char *html_text_opt_2_show_defalut_calendar[POCET_JAZYKOV + 1] =
 {
 	"zvýrazniť slávenia v národnom kalendári",
@@ -3950,6 +3936,48 @@ const char *html_text_opt_5_zaver_knaz_diakon_NORMAL[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_opt_6_alternatives_multi[POCET_JAZYKOV + 1] =
+{
+	"alternatívy (viac možností)",
+	"alternativy (více možností)",
+	"alternatives (multiple)",
+	"",
+	"",
+	"alternativy (více možností)",
+	"lehetőségek",
+	"ru_text",
+	"альтэрнатывы",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_6_alternatives_multi_hymnus[POCET_JAZYKOV + 1] =
+{
+	"iný hymnus",
+	"jiný hymnus",
+	"another hymn",
+	"",
+	"",
+	"jiný hymnus",
+	"más himnusz",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_6_alternatives_multi_citanie2[POCET_JAZYKOV + 1] =
+{
+	"iné čítanie",
+	"jiné čtení",
+	"another reading",
+	"",
+	"",
+	"jiné čtení",
+	"más olvasmány",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_font_name[POCET_JAZYKOV + 1] =
 {
 	"alebo použi písmo",
@@ -4303,7 +4331,7 @@ const char *text_JAN_03[POCET_JAZYKOV + 1] =
 };
 const char *text_JAN_03_OCD[POCET_JAZYKOV + 1] =
 {
-	"Bl. Kyriaka Eliáša Chavaru, kňaza",
+	"Sv. Kyriaka Eliáša Chavaru, kňaza",
 	"",
 	"",
 	"",

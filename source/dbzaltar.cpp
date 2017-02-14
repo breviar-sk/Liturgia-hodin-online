@@ -925,27 +925,39 @@ void _set_kresponz(short int modlitba, const char *file, const char *anchor){
 void _set_benediktus(short int modlitba, const char *file, const char *anchor){
 	switch (modlitba){
 	case MODL_RANNE_CHVALY:
-		mystrcpy(_global_modl_ranne_chvaly.benediktus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_ranne_chvaly.benediktus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_ranne_chvaly.benediktus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_VESPERY:
-		mystrcpy(_global_modl_vespery.benediktus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_vespery.benediktus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_vespery.benediktus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_PRVE_VESPERY:
-		mystrcpy(_global_modl_prve_vespery.benediktus.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_prve_vespery.benediktus.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_prve_vespery.benediktus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_POSV_CITANIE:
-		mystrcpy(_global_modl_posv_citanie.citanie2.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_posv_citanie.citanie2.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_posv_citanie.citanie2.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_KOMPLETORIUM:
-		mystrcpy(_global_modl_kompletorium.nunc_dimittis.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_kompletorium.nunc_dimittis.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_kompletorium.nunc_dimittis.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_PRVE_KOMPLETORIUM:
-		mystrcpy(_global_modl_prve_kompletorium.nunc_dimittis.file, file, MAX_STR_AF_FILE);
+		if (file != NULL) {
+			mystrcpy(_global_modl_prve_kompletorium.nunc_dimittis.file, file, MAX_STR_AF_FILE);
+		}
 		mystrcpy(_global_modl_prve_kompletorium.nunc_dimittis.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	} // switch(modlitba)
@@ -8696,7 +8708,7 @@ label_24_DEC:
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
 		// hymnus
-		sprintf(_anchor, "%s%s%c_%s%d", _special_anchor_prefix, SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_HYMNUS, tyzzal MOD 3);
+		sprintf(_anchor, "%s%s%c_%s", _special_anchor_prefix, SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
 		_set_hymnus(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// krátke čítanie
@@ -8720,17 +8732,15 @@ label_24_DEC:
 		_set_modlitba(modlitba, _file, _anchor);
 		set_LOG_litobd;
 
-		// posvätné čítanie
+		// posvätné čítanie | antifóny, žalmy, verš a prvé čítanie s responzóriom sa berie z príslušnej soboty
 		modlitba = MODL_POSV_CITANIE;
 		// hymnus
-		sprintf(_anchor, "%s%s%c_%s%d", _special_anchor_prefix, SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_HYMNUS, tyzzal MOD 3);
+		sprintf(_anchor, "%s%s%c_%s", _special_anchor_prefix, SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
 		_set_hymnus(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		_set_hymnus_alternativy_NO(modlitba, _global_den.litobd);
-		// antifóny, žalmy, verš a prvé čítanie s responzóriom sa berie z príslušnej soboty
 		// druhé čítanie
-		// sú štyri hymny, preto ich dáme podľa tyzzal MOD 4 (0, 1, 2, 3)
-		sprintf(_anchor, "%s%c_%s%d", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_CITANIE2, tyzzal MOD 4);
+		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);
 		_set_citanie2(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// modlitba -- ako na ranné chvály
@@ -10356,21 +10366,76 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 }// set_spolocna_cast();
 
 _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
-	{ "CZ_PMB_rHYMNUS", 3 },
-	{ "CZ_PMB_vHYMNUS", 2 },
-	{ "CZ_PMB_cHYMNUS", 2 },
-	{ "CZ_PMB_1HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_PMB_rHYMNUS", 3 },
+	{ JAZYK_CZ, "CZ_PMB_vHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_PMB_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_PMB_1HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV1v_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV1r_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV19_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV12_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV13_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV2v_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV2r_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV29_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV22_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ADV23_HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_KRKRALA_9HYMNUS", 3 },
+	{ JAZYK_CZ, "CZ_KRKRALA_2HYMNUS", 3 },
+	{ JAZYK_CZ, "CZ_KRKRALA_3HYMNUS", 3 },
+	{ JAZYK_CZ, "CZ_KRST_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_18JAN_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_05JUL_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_26JUL_cHYMNUS", 3 },
+	{ JAZYK_CZ, "CZ_16MAJ_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_25MAR_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_01NOV_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_15SEP_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_16SEP_cHYMNUS", 2 },
+	{ JAZYK_UNDEF, "SPMVSr_HYMNUS", 3 },
+	{ JAZYK_UNDEF, "SPMVSc_HYMNUS", 3 },
+	{ JAZYK_CZ, "CZ_SPMVSr_HYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_SPMVSc_HYMNUS", 6 },
+	{ JAZYK_SK, "05JUL_1HYMNUS", 2 },
+	{ JAZYK_SK, "05JUL_vHYMNUS", 2 },
 };
 
 short int pocet_hymnus_multi(char *_anchor) {
 	short int count = 0;
 	short int i = 0;
+	short int lng = JAZYK_UNDEF;
 
 	_struct_anchor_and_count* ptr = pocet_hymnus_multi_anchor_count;
 	_struct_anchor_and_count* endPtr = pocet_hymnus_multi_anchor_count + sizeof(pocet_hymnus_multi_anchor_count) / sizeof(pocet_hymnus_multi_anchor_count[0]);
 	while (ptr < endPtr) {
-		if (equals(_anchor, pocet_hymnus_multi_anchor_count[i].anchor)) {
+		lng = pocet_hymnus_multi_anchor_count[i].language;
+		if (equals(_anchor, pocet_hymnus_multi_anchor_count[i].anchor) && (lng == JAZYK_UNDEF || lng == _global_jazyk)) {
 			count = pocet_hymnus_multi_anchor_count[i].count;
+			break;
+		}
+		ptr++;
+		i++;
+	}
+
+	return count;
+}
+
+_struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
+	{ JAZYK_UNDEF, "SPMVSc_CIT2", 4 },
+	{ JAZYK_SK, "05JUL_cCIT2", 3 },
+};
+
+short int pocet_citanie2_multi(char *_anchor) {
+	short int count = 0;
+	short int i = 0;
+	short int lng = JAZYK_UNDEF;
+
+	_struct_anchor_and_count* ptr = pocet_citanie2_multi_anchor_count;
+	_struct_anchor_and_count* endPtr = pocet_citanie2_multi_anchor_count + sizeof(pocet_citanie2_multi_anchor_count) / sizeof(pocet_citanie2_multi_anchor_count[0]);
+	while (ptr < endPtr) {
+		lng = pocet_citanie2_multi_anchor_count[i].language;
+		if (equals(_anchor, pocet_citanie2_multi_anchor_count[i].anchor) && (lng == JAZYK_UNDEF || lng == _global_jazyk)) {
+			count = pocet_citanie2_multi_anchor_count[i].count;
 			break;
 		}
 		ptr++;
