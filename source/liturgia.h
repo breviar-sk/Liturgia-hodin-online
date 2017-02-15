@@ -584,6 +584,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 // multiple alternatives
 #define PARAM_ALT_HYMNUS_MULTI              PARAM_ALT_HYMNUS "-" KEYWORD_MULTI
 #define PARAM_ALT_CITANIE2_MULTI            "ALT-CITANIE2-" KEYWORD_MULTI
+#define PARAM_ALT_CITANIE1_MULTI            "ALT-CITANIE1-" KEYWORD_MULTI
 
 // zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
@@ -1432,15 +1433,17 @@ extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_ZAVER_KNAZ_DIAKON     32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
 #define BIT_OPT_5_INVITATORIUM_ANT      65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
 
-#define POCET_OPT_6_ALTERNATIVES_MULTI      3 // this is not bitwise long, but simply decimal number; each decimal place representing one value
+#define POCET_OPT_6_ALTERNATIVES_MULTI      4 // this is not bitwise long, but simply decimal number; each decimal place representing one value
 extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI];
 #define PLACE_OPT_6_HYMNUS_MULTI              1
 #define PLACE_OPT_6_CITANIE2_MULTI            2
-#define PLACE_OPT_6_BENEDIKTUS_MULTI          3
+#define PLACE_OPT_6_CITANIE1_MULTI            3
+#define PLACE_OPT_6_BENEDIKTUS_MULTI          4
 
 #define BASE_OPT_6_HYMNUS_MULTI               1
 #define BASE_OPT_6_CITANIE2_MULTI            10
-#define BASE_OPT_6_BENEDIKTUS_MULTI         100
+#define BASE_OPT_6_CITANIE1_MULTI           100
+#define BASE_OPT_6_BENEDIKTUS_MULTI        1000
 
 
 #define MAX_POCET_OPT                      18 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...

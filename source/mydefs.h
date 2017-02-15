@@ -871,7 +871,14 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI "of6c2"
 #endif
 
-#define FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI 130
+#define FORCE_PLACE_OPT_6_CITANIE1_MULTI 130
+#ifdef LONG_PARAM_NAMES
+	#define STR_FORCE_PLACE_OPT_6_CITANIE1_MULTI "FORCE_PLACE_OPT_6_CITANIE1_MULTI"
+#else
+	#define STR_FORCE_PLACE_OPT_6_CITANIE1_MULTI "of6c1"
+#endif
+
+#define FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI 131
 #ifdef LONG_PARAM_NAMES
 	#define STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI "FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI"
 #else
@@ -1221,6 +1228,7 @@ extern short int query_type; // contains constants PRM_...
 // POCET_OPT_6_ALTERNATIVES_MULTI
 #define XML_PLACE_OPT_6_HYMNUS_MULTI            "PlaceOpt6HymnusMulti"
 #define XML_PLACE_OPT_6_CITANIE2_MULTI          "PlaceOpt6Reading2Multi"
+#define XML_PLACE_OPT_6_CITANIE1_MULTI          "PlaceOpt6Reading1Multi"
 #define XML_PLACE_OPT_6_BENEDIKTUS_MULTI        "PlaceOpt6BenedictusMulti"
 
 // starting, closing element (XML, HTML)

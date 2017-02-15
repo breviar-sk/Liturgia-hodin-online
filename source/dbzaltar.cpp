@@ -513,57 +513,39 @@ void _set_hymnus_alternativy_NO(short int modlitba){
 void _set_hymnus(short int modlitba, const char *file, const char *anchor){
 	switch (modlitba){
 	case MODL_PRVE_KOMPLETORIUM:
-		if (file != NULL) {
-			mystrcpy(_global_modl_prve_kompletorium.hymnus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_prve_kompletorium.hymnus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_prve_kompletorium.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_KOMPLETORIUM:
-		if (file != NULL) {
-			mystrcpy(_global_modl_kompletorium.hymnus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_kompletorium.hymnus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_kompletorium.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_RANNE_CHVALY:
-		if (file != NULL) {
-			mystrcpy(_global_modl_ranne_chvaly.hymnus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_ranne_chvaly.hymnus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_ranne_chvaly.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_POSV_CITANIE:
-		if (file != NULL) {
-			mystrcpy(_global_modl_posv_citanie.hymnus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_posv_citanie.hymnus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_posv_citanie.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_CEZ_DEN_9:
-		if (file != NULL) {
-			mystrcpy(_global_modl_cez_den_9.hymnus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_cez_den_9.hymnus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_9.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_CEZ_DEN_12:
-		if (file != NULL) {
-			mystrcpy(_global_modl_cez_den_12.hymnus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_cez_den_12.hymnus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_12.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_CEZ_DEN_3:
-		if (file != NULL) {
-			mystrcpy(_global_modl_cez_den_3.hymnus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_cez_den_3.hymnus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_3.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_VESPERY:
-		if (file != NULL) {
-			mystrcpy(_global_modl_vespery.hymnus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_vespery.hymnus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_vespery.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_PRVE_VESPERY:
-		if (file != NULL) {
-			mystrcpy(_global_modl_prve_vespery.hymnus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_prve_vespery.hymnus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_prve_vespery.hymnus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	} // switch(modlitba)
@@ -925,39 +907,27 @@ void _set_kresponz(short int modlitba, const char *file, const char *anchor){
 void _set_benediktus(short int modlitba, const char *file, const char *anchor){
 	switch (modlitba){
 	case MODL_RANNE_CHVALY:
-		if (file != NULL) {
-			mystrcpy(_global_modl_ranne_chvaly.benediktus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_ranne_chvaly.benediktus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_ranne_chvaly.benediktus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_VESPERY:
-		if (file != NULL) {
-			mystrcpy(_global_modl_vespery.benediktus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_vespery.benediktus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_vespery.benediktus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_PRVE_VESPERY:
-		if (file != NULL) {
-			mystrcpy(_global_modl_prve_vespery.benediktus.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_prve_vespery.benediktus.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_prve_vespery.benediktus.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_POSV_CITANIE:
-		if (file != NULL) {
-			mystrcpy(_global_modl_posv_citanie.citanie2.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_posv_citanie.citanie2.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_posv_citanie.citanie2.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_KOMPLETORIUM:
-		if (file != NULL) {
-			mystrcpy(_global_modl_kompletorium.nunc_dimittis.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_kompletorium.nunc_dimittis.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_kompletorium.nunc_dimittis.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	case MODL_PRVE_KOMPLETORIUM:
-		if (file != NULL) {
-			mystrcpy(_global_modl_prve_kompletorium.nunc_dimittis.file, file, MAX_STR_AF_FILE);
-		}
+		mystrcpy(_global_modl_prve_kompletorium.nunc_dimittis.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_prve_kompletorium.nunc_dimittis.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	} // switch(modlitba)
@@ -10398,44 +10368,50 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_SPMVSc_HYMNUS", 6 },
 	{ JAZYK_SK, "05JUL_1HYMNUS", 2 },
 	{ JAZYK_SK, "05JUL_vHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_OZZ_cHYMNUS", 5 },
 };
 
-short int pocet_hymnus_multi(char *_anchor) {
-	short int count = 0;
-	short int i = 0;
-	short int lng = JAZYK_UNDEF;
-
-	_struct_anchor_and_count* ptr = pocet_hymnus_multi_anchor_count;
-	_struct_anchor_and_count* endPtr = pocet_hymnus_multi_anchor_count + sizeof(pocet_hymnus_multi_anchor_count) / sizeof(pocet_hymnus_multi_anchor_count[0]);
-	while (ptr < endPtr) {
-		lng = pocet_hymnus_multi_anchor_count[i].language;
-		if (equals(_anchor, pocet_hymnus_multi_anchor_count[i].anchor) && (lng == JAZYK_UNDEF || lng == _global_jazyk)) {
-			count = pocet_hymnus_multi_anchor_count[i].count;
-			break;
-		}
-		ptr++;
-		i++;
-	}
-
-	return count;
-}
+_struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
+	{ JAZYK_UNDEF, "OZZ_OCR_cCIT1", 3 },
+};
 
 _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSc_CIT2", 4 },
 	{ JAZYK_SK, "05JUL_cCIT2", 3 },
+	{ JAZYK_UNDEF, "OZZ_cCIT2", 2 },
 };
 
-short int pocet_citanie2_multi(char *_anchor) {
+short int pocet_multi(char *_anchor, long type) {
 	short int count = 0;
 	short int i = 0;
 	short int lng = JAZYK_UNDEF;
 
-	_struct_anchor_and_count* ptr = pocet_citanie2_multi_anchor_count;
-	_struct_anchor_and_count* endPtr = pocet_citanie2_multi_anchor_count + sizeof(pocet_citanie2_multi_anchor_count) / sizeof(pocet_citanie2_multi_anchor_count[0]);
+	short int size = 0;
+	// short int 
+
+	_struct_anchor_and_count* ptr = NULL;
+	_struct_anchor_and_count* orig = NULL;
+
+	if (type == BASE_OPT_6_HYMNUS_MULTI) {
+		ptr = pocet_hymnus_multi_anchor_count;
+		size = sizeof(pocet_hymnus_multi_anchor_count);
+	}
+	else if (type == BASE_OPT_6_CITANIE2_MULTI) {
+		ptr = pocet_citanie2_multi_anchor_count;
+		size = sizeof(pocet_citanie2_multi_anchor_count);
+	}
+	else if (type == BASE_OPT_6_CITANIE1_MULTI) {
+		ptr = pocet_citanie1_multi_anchor_count;
+		size = sizeof(pocet_citanie1_multi_anchor_count);
+	}
+	orig = ptr; // preserve original pointer to array due to dereferencing by [i]
+
+	_struct_anchor_and_count* endPtr = ptr + size / sizeof(orig[0]);
+
 	while (ptr < endPtr) {
-		lng = pocet_citanie2_multi_anchor_count[i].language;
-		if (equals(_anchor, pocet_citanie2_multi_anchor_count[i].anchor) && (lng == JAZYK_UNDEF || lng == _global_jazyk)) {
-			count = pocet_citanie2_multi_anchor_count[i].count;
+		lng = orig[i].language;
+		if (equals(_anchor, orig[i].anchor) && (lng == JAZYK_UNDEF || lng == _global_jazyk)) {
+			count = orig[i].count;
 			break;
 		}
 		ptr++;

@@ -2991,6 +2991,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		|| (equals(paramname, PARAM_ALT_HYMNUS))
 		|| (equals(paramname, PARAM_ALT_HYMNUS_MULTI))
 		|| (equals(paramname, PARAM_ALT_CITANIE2_MULTI))
+		|| (equals(paramname, PARAM_ALT_CITANIE1_MULTI))
 		|| (equals(paramname, PARAM_SPOL_CAST_SPOM))
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
@@ -3155,6 +3156,24 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			sprintf(popis_show, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
 			sprintf(popis_hide, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
 		}
+		else if (equals(paramname, PARAM_ALT_CITANIE1_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_CITANIE1_MULTI;
+			multi = ANO;
+
+			// use popis_hide for anchor
+			mystrcpy(popis_hide, _global_modl_posv_citanie.citanie1.anchor, SMALL);
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			Log(_global_modl_hymnus_anchor);
+
+			multi_count = pocet_multi(popis_hide, bit);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
+
+			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_citanie[_global_jazyk]);
+		}
 		else if (equals(paramname, PARAM_ALT_CITANIE2_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
 			bit = BASE_OPT_6_CITANIE2_MULTI;
@@ -3166,12 +3185,12 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log(_global_modl_hymnus_anchor);
 
-			multi_count = pocet_citanie2_multi(popis_hide);
+			multi_count = pocet_multi(popis_hide, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
 
 			podmienka &= (multi_count > 0);
 
-			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_citanie2[_global_jazyk]);
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_citanie[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
@@ -3184,7 +3203,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log(_global_modl_hymnus_anchor);
 
-			multi_count = pocet_hymnus_multi(popis_hide);
+			multi_count = pocet_multi(popis_hide, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
 
 			podmienka &= (multi_count > 0);
@@ -3305,9 +3324,12 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				else if (bit == BASE_OPT_6_CITANIE2_MULTI) {
 					_set_citanie2(type, NULL, new_anchor);
 				}
+				else if (bit == BASE_OPT_6_CITANIE1_MULTI) {
+					_set_citanie1(type, NULL, new_anchor);
+				}
 
 				// use popis_hide as temp variable
-				sprintf(popis_hide, " (%d/%d) %s", current_value + 1, multi_count, (char *)HTML_RIGHT_ARROW);
+				sprintf(popis_hide, " (%d/%d) %s", ((current_value + 1) MOD multi_count) + 1, multi_count, (char *)HTML_RIGHT_ARROW);
 				strcat(popis_show, popis_hide);
 
 				_export_link_multi(opt, bit, multi_count, popis_show, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
@@ -6864,8 +6886,11 @@ void xml_export_options(void){
 				case 2: // BASE_OPT_6_CITANIE2_MULTI
 					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_CITANIE2_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_CITANIE2_MULTI) "\n", BASE_OPT_6_CITANIE2_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_CITANIE2_MULTI)));
 					break;
-				case 3: // BASE_OPT_6_BENEDIKTUS_MULTI
-					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_BENEDIKTUS_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_BENEDIKTUS_MULTI) "\n", BASE_OPT_6_BENEDIKTUS_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_BENEDIKTUS_MULTI)));
+				case 3: // BASE_OPT_6_CITANIE1_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_CITANIE1_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_CITANIE1_MULTI) "\n", BASE_OPT_6_CITANIE1_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE1_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_CITANIE1_MULTI)));
+					break;
+				case 4: // BASE_OPT_6_BENEDIKTUS_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_BENEDIKTUS_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_BENEDIKTUS_MULTI) "\n", BASE_OPT_6_BENEDIKTUS_MULTI, STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_BENEDIKTUS_MULTI)));
 					break;
 				} // switch(j)
 			}// for j

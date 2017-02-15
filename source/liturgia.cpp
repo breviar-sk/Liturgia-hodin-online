@@ -1859,7 +1859,8 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case -1: mystrcpy(str, STR_FORCE_OPT_6, SMALL); break; // no bit = force option string | USE_STR_FORCE_OPT
 			case 0: mystrcpy(str, STR_FORCE_PLACE_OPT_6_HYMNUS_MULTI, SMALL); break; // PLACE_OPT_6_HYMNUS_MULTI
 			case 1: mystrcpy(str, STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI, SMALL); break; // PLACE_OPT_6_CITANIE2_MULTI
-			case 2: mystrcpy(str, STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI, SMALL); break; // PLACE_OPT_6_BENEDIKTUS_MULTI
+			case 2: mystrcpy(str, STR_FORCE_PLACE_OPT_6_CITANIE1_MULTI, SMALL); break; // PLACE_OPT_6_CITANIE1_MULTI
+			case 3: mystrcpy(str, STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI, SMALL); break; // PLACE_OPT_6_BENEDIKTUS_MULTI
 			}
 		}
 		break;

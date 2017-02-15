@@ -25,6 +25,11 @@
 // 2. kopiruje nanajvys count - 1 znakov z src do dest (pomocou strncpy)
 // 3. v kazdom pripade prida na koniec v dest '\0' (terminating null)
 char *mystrcpy(char *dest, char *src, short int count){
+	// do nothing is src is NULL
+	if (src == NULL) {
+		return dest;
+	}
+
 	char *ret;
 	/* sizeof(dest) nefunguje pre char *dest */
 	ret = strncpy(dest, src, count - 1);
@@ -33,6 +38,11 @@ char *mystrcpy(char *dest, char *src, short int count){
 }
 
 char *mystrcpy(char *dest, const char *src, short int count){
+	// do nothing is src is NULL
+	if (src == NULL) {
+		return dest;
+	}
+
 	char *ret;
 	/* sizeof(dest) nefunguje pre char *dest */
 	ret = strncpy(dest, src, count - 1);

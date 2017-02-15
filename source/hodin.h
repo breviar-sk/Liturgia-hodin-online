@@ -3964,7 +3964,8 @@ const char *html_text_opt_6_alternatives_multi_hymnus[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_opt_6_alternatives_multi_citanie2[POCET_JAZYKOV + 1] =
+// html_text_opt_6_alternatives_multi_citanie used both for 1st and 2nd reading
+const char *html_text_opt_6_alternatives_multi_citanie[POCET_JAZYKOV + 1] =
 {
 	"iné čítanie",
 	"jiné čtení",
