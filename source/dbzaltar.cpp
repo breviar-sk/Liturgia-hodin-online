@@ -10369,16 +10369,25 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_SK, "05JUL_1HYMNUS", 2 },
 	{ JAZYK_SK, "05JUL_vHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_OZZ_cHYMNUS", 5 },
+	{ JAZYK_CZ, "CZ_OZZ_rHYMNUS", 5 },
+	{ JAZYK_CZ, "CZ_OZZ_vHYMNUS", 5 },
+	{ JAZYK_CZ, "CZ_OZZ_9HYMNUS", 4 },
+	{ JAZYK_CZ, "CZ_OZZ_2HYMNUS", 4 },
+	{ JAZYK_CZ, "CZ_OZZ_3HYMNUS", 4 },
 };
 
 _struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "OZZ_OCR_cCIT1", 3 },
+	{ JAZYK_UNDEF, "SCPM_OCR_cCIT1", 2 },
 };
 
 _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSc_CIT2", 4 },
 	{ JAZYK_SK, "05JUL_cCIT2", 3 },
 	{ JAZYK_UNDEF, "OZZ_cCIT2", 2 },
+	{ JAZYK_UNDEF, "SCPN_cCIT2", 2 },
+	{ JAZYK_UNDEF, "SCPNV_cCIT2", 2 },
+	{ JAZYK_UNDEF, "SCPM_cCIT2", 3 },
 };
 
 short int pocet_multi(char *_anchor, long type) {
