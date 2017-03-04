@@ -1231,6 +1231,7 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 			|| (litobd == OBD_VIANOCNE_I)
 			|| (litobd == OBD_OKTAVA_NARODENIA)
 			){ // predpísaný hymnus "Na sklonku dňa ťa úprimne"
+			Log("set_hymnus_kompletorium_obd(): predpísaný hymnus A...\n");
 			ktory = 0;
 		}
 		else if ((litobd == OBD_ADVENTNE_II)
@@ -1238,10 +1239,12 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 			|| (litobd == OBD_POSTNE_II_VELKY_TYZDEN)
 			|| (litobd == OBD_VELKONOCNE_TROJDNIE)
 			){ // predpísaný hymnus "Kriste, ty svetlo a náš deň"; 2008-12-20: aj pre vian. II. a veľký týždeň
+			Log("set_hymnus_kompletorium_obd(): predpísaný hymnus B...\n");
 			ktory = 1;
 		}
 		else if ((litobd == OBD_POSTNE_I) // v skutočnosti netreba, používa sa set_hymnus_kompletorium_obd()
 			){ // predpísaný v 1., 3. a 5. týždni "Na sklonku dňa", pre 2. a 4. týždeň hymnus "Kriste, ty svetlo"
+			Log("set_hymnus_kompletorium_obd(): predpísaný hymnus v pôste...\n");
 			ktory = (tyzzal + 1) % 2;
 		}
 		else{
@@ -10374,6 +10377,65 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_OZZ_9HYMNUS", 4 },
 	{ JAZYK_CZ, "CZ_OZZ_2HYMNUS", 4 },
 	{ JAZYK_CZ, "CZ_OZZ_3HYMNUS", 4 },
+	{ JAZYK_CZ, "POST1_rHYMNUS", 2 },
+	{ JAZYK_CZ, "POST1_9HYMNUS", 2 },
+	{ JAZYK_CZ, "POST1_2HYMNUS", 2 },
+	{ JAZYK_CZ, "POST1_3HYMNUS", 2 },
+	{ JAZYK_CZ, "POST1_vHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_POST1_rHYMNUS", 4 },
+	{ JAZYK_CZ, "CZ_POST1_rNEHYMNUS", 4 },
+	{ JAZYK_CZ, "VTYZ_9HYMNUS", 2 },
+	{ JAZYK_CZ, "VTYZ_2HYMNUS", 2 },
+	{ JAZYK_CZ, "VTYZ_3HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VTYZ_1NEHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VTYZ_rNEHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VTYZ_cNEHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VTYZ_vNEHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VTYZ_9NEHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VTYZ_2NEHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VTYZ_3NEHYMNUS", 2 },
+	{ JAZYK_CZ, "VTROJ_9NEHYMNUS", 2 },
+	{ JAZYK_CZ, "VTROJ_2NEHYMNUS", 2 },
+	{ JAZYK_CZ, "VTROJ_3NEHYMNUS", 2 },
+	{ JAZYK_CZ, "VN1_9HYMNUS", 3 },
+	{ JAZYK_CZ, "VN1_2HYMNUS", 3 },
+	{ JAZYK_CZ, "VN1_3HYMNUS", 3 },
+	{ JAZYK_CZ, "p_HYMNUS_NE", 2 },
+	{ JAZYK_CZ, "k_HYMNUS_SO", 2 },
+	{ JAZYK_CZ, "k_HYMNUS_NE", 2 },
+	{ JAZYK_CZ, "k_HYMNUS_2_CZ", 6 },
+	{ JAZYK_CZ, "k_HYMNUS_0_CZ", 5 },
+	{ JAZYK_CZ, "k_HYMNUS_1_CZ", 5 },
+	{ JAZYK_CZ, "p_HYMNUS_2_CZ", 6 },
+	{ JAZYK_CZ, "p_HYMNUS_0_CZ", 5 },
+	{ JAZYK_CZ, "p_HYMNUS_1_CZ", 5 },
+	{ JAZYK_CZ, "_2NE1_HYMNUS_CZ", 3 },
+	{ JAZYK_CZ, "_2NEr_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2NEv_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2POv_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2UTv_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2STRr_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2STRv_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2STVv_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2PIr_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2PIv_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2POc_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2UTc_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2STVc_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2SOc_HYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "CZ_SCVM_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SCMM_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SCZM_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SCAM_cHYMNUS", 2 },
+	{ JAZYK_CZ, "SCPM_vHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SCPM_1HYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_SCPM_cHYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_SCPM_rHYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_SCPM_vHYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_SCPN_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SCPNV_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SCSZ_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SCSZV_cHYMNUS", 2 },
 };
 
 _struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
