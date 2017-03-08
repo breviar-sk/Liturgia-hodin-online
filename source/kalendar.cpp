@@ -7745,7 +7745,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
 				// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca pre český breviář sa totiž berú niektoré časti z 19. marca | -- v tejto časti sa hodnoty upravujú späť na pôvodné --
 				den = pom_den;
-				mesiac = pom_mesiac;
+				mesiac = pom_mesiac + 1; // MES_MAY + 1
 
 				sprintf(_anchor_head, "%02d%s_", den, nazov_MES[mesiac - 1]);
 				Log("  _anchor_head == %s\n", _anchor_head);

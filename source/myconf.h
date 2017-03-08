@@ -57,9 +57,9 @@ extern char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
 
 const long cfg_option_default_PROG[POCET_GLOBAL_OPT] = 
 #ifdef OS_Windows_Ruby
-{3, 64, 0, 0, 0, 0, 0};
+{195, 4160, 31480, 0, 0, 0, 0};
 #else
-{0, 31, 0, 0, 0, 0, 0};
+{6, 38151, 120, 0, 0, 0, 0};
 #endif
 
 void readConfig(void);

@@ -7273,11 +7273,11 @@ const char *text_MAJ_25_2[POCET_JAZYKOV + 1] =
 const char *text_MAJ_25_3[POCET_JAZYKOV + 1] =
 {
 	"Sv. Márie Magdalény de’ Pazzi, panny",
-	"Sv. Marie Magdalény de’ Pazzi, panny",
+	"Sv. Marie Magdalény de’Pazzi, panny",
 	"",
 	"S. Mariæ Magdalenæ de’ Pazzi, virg.",
 	"",
-	"Sv. Marie Magdalény de’ Pazzi, panny",
+	"Sv. Marie Magdalény de’Pazzi, panny",
 	"Pazzi Szent Mária Magdolna szűz",
 	"ru_text",
 	"Св. Марыі Магдалены Паццы, панны",

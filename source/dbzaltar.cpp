@@ -10450,6 +10450,7 @@ _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCPN_cCIT2", 2 },
 	{ JAZYK_UNDEF, "SCPNV_cCIT2", 2 },
 	{ JAZYK_UNDEF, "SCPM_cCIT2", 3 },
+	{ JAZYK_CZ, "06MAJ_cCIT2", 2 },
 };
 
 short int pocet_multi(char *_anchor, long type) {

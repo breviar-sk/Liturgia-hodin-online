@@ -109,6 +109,13 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.</li> -->
 
+<p><b>Verze 1.14.2</b>
+<ul>
+<li>Zobrazenie len jednej možnosti z viacerých (hymny, prvé, druhé čítanie).</li>
+<li>Sobotná spomienka Panny Márie sa neponúka pri kolízii s iným mariánskym sviatkom.</li>
+<li>Opravy v textoch (všeobecné, OCD).</li>
+</ul>
+
 <p><b>Verzia 1.14.1</b>
 <ul>
 <li>Nové nastavenie: Zobraziť inú antifónu na invitatórium v pôstnom období.</li>
