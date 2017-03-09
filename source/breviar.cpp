@@ -2992,6 +2992,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		|| (equals(paramname, PARAM_ALT_HYMNUS_MULTI))
 		|| (equals(paramname, PARAM_ALT_CITANIE2_MULTI))
 		|| (equals(paramname, PARAM_ALT_CITANIE1_MULTI))
+		|| (equals(paramname, PARAM_ALT_BENEDIKTUS_MULTI))		
 		|| (equals(paramname, PARAM_SPOL_CAST_SPOM))
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
@@ -3165,7 +3166,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			mystrcpy(popis_hide, _global_modl_posv_citanie.citanie1.anchor, SMALL);
 
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
-			Log(_global_modl_hymnus_anchor);
 
 			multi_count = pocet_multi(popis_hide, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
@@ -3183,7 +3183,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			mystrcpy(popis_hide, _global_modl_posv_citanie.citanie2.anchor, SMALL);
 
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
-			Log(_global_modl_hymnus_anchor);
 
 			multi_count = pocet_multi(popis_hide, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
@@ -3209,6 +3208,23 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			podmienka &= (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_hymnus[_global_jazyk]);
+		}
+		else if (equals(paramname, PARAM_ALT_BENEDIKTUS_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_BENEDIKTUS_MULTI;
+			multi = ANO;
+
+			// use popis_hide for anchor
+			mystrcpy(popis_hide, _global_modl_ranne_chvaly.benediktus.anchor, SMALL);
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+
+			multi_count = pocet_multi(popis_hide, bit);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
+
+			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_antifona[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS)) {
 			opt = OPT_5_ALTERNATIVES;
@@ -3326,6 +3342,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				}
 				else if (bit == BASE_OPT_6_CITANIE1_MULTI) {
 					_set_citanie1(type, NULL, new_anchor);
+				}
+				else if (bit == BASE_OPT_6_BENEDIKTUS_MULTI) {
+					_set_benediktus(type, NULL, new_anchor);
 				}
 
 				// use popis_hide as temp variable

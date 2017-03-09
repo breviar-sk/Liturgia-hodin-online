@@ -3979,6 +3979,20 @@ const char *html_text_opt_6_alternatives_multi_citanie[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_opt_6_alternatives_multi_antifona[POCET_JAZYKOV + 1] =
+{
+	"iná antifóna",
+	"jiná antifona",
+	"another antiphone",
+	"",
+	"",
+	"jiná antifona",
+	"más antifóna",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_font_name[POCET_JAZYKOV + 1] =
 {
 	"alebo použi písmo",

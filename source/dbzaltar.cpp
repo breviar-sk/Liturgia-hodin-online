@@ -8693,7 +8693,7 @@ label_24_DEC:
 		_set_kresponz(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// benediktus
-		sprintf(_anchor, "%s%c_%s%d", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS, (tyzden MOD 6) + 1);
+		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);
 		_set_benediktus(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// prosby
@@ -10436,11 +10436,28 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_SCPNV_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_SCSZ_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_SCSZV_cHYMNUS", 2 },
+	{ JAZYK_SK, "KNAZA_cHYMNUS", 2 }, // ad experimendum
+	{ JAZYK_SK, "KNAZA_rHYMNUS", 2 }, // ad experimendum
+	{ JAZYK_SK, "KNAZA_vHYMNUS", 2 }, // ad experimendum
+	{ JAZYK_SK, "TK_1HYMNUS", 2 },
+	{ JAZYK_SK, "TK_cHYMNUS", 2 },
+	{ JAZYK_SK, "TK_rHYMNUS", 2 },
+	{ JAZYK_SK, "TK_vHYMNUS", 2 },
+	{ JAZYK_SK, "21NOV_cHYMNUS", 2 },
 };
 
 _struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "OZZ_OCR_cCIT1", 3 },
 	{ JAZYK_UNDEF, "SCPM_OCR_cCIT1", 2 },
+	{ JAZYK_UNDEF, "SCSM_ZVI_cCIT1", 2 },
+	{ JAZYK_UNDEF, "SCSM_ZVII_cCIT1", 2 },
+	{ JAZYK_UNDEF, "SCSM_OCR_cCIT1", 2 },
+	{ JAZYK_UNDEF, "SCSMV_OCR_cCIT1", 2 },
+	{ JAZYK_UNDEF, "SCSZ_ZVI_cCIT1", 2 },
+	{ JAZYK_UNDEF, "SCSZ_ZVII_cCIT1", 2 },
+	{ JAZYK_UNDEF, "SCSZV_OCR_cCIT1", 2 },
+	{ JAZYK_UNDEF, "SCSZ_OCR_cCIT1", 2 },
+	{ JAZYK_UNDEF, "SCSZM_OCR_cCIT1", 2 },
 };
 
 _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
@@ -10451,6 +10468,18 @@ _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCPNV_cCIT2", 2 },
 	{ JAZYK_UNDEF, "SCPM_cCIT2", 3 },
 	{ JAZYK_CZ, "06MAJ_cCIT2", 2 },
+	{ JAZYK_UNDEF, "SCSM_cCIT2", 2 },
+	{ JAZYK_UNDEF, "SCSMV_cCIT2", 2 },
+	{ JAZYK_UNDEF, "SCSZ_cCIT2", 2 },
+	{ JAZYK_UNDEF, "SCSZV_cCIT2", 2 },
+	{ JAZYK_UNDEF, "SCUC_cCIT2", 2 },
+	{ JAZYK_SK, "05OKT_cCIT2", 2 },
+	{ JAZYK_SK, "15SEP_cCIT2", 2 },
+	{ JAZYK_UNDEF, "VPCHR_cCIT2", 2 },
+};
+
+_struct_anchor_and_count pocet_benediktus_multi_anchor_count[] = {
+	{ JAZYK_UNDEF, "SPMVSr_BENEDIKTUS", 6 },
 };
 
 short int pocet_multi(char *_anchor, long type) {
@@ -10476,6 +10505,11 @@ short int pocet_multi(char *_anchor, long type) {
 		ptr = pocet_citanie1_multi_anchor_count;
 		size = sizeof(pocet_citanie1_multi_anchor_count);
 	}
+	else if (type == BASE_OPT_6_BENEDIKTUS_MULTI) {
+		ptr = pocet_benediktus_multi_anchor_count;
+		size = sizeof(pocet_benediktus_multi_anchor_count);
+	}
+
 	orig = ptr; // preserve original pointer to array due to dereferencing by [i]
 
 	_struct_anchor_and_count* endPtr = ptr + size / sizeof(orig[0]);

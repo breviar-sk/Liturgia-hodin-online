@@ -585,6 +585,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ALT_HYMNUS_MULTI              PARAM_ALT_HYMNUS "-" KEYWORD_MULTI
 #define PARAM_ALT_CITANIE2_MULTI            "ALT-CITANIE2-" KEYWORD_MULTI
 #define PARAM_ALT_CITANIE1_MULTI            "ALT-CITANIE1-" KEYWORD_MULTI
+#define PARAM_ALT_BENEDIKTUS_MULTI          "ALT-BENEDIKTUS-" KEYWORD_MULTI
 
 // zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
