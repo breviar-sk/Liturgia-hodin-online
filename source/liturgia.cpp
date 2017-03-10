@@ -1860,7 +1860,10 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 0: mystrcpy(str, STR_FORCE_PLACE_OPT_6_HYMNUS_MULTI, SMALL); break; // PLACE_OPT_6_HYMNUS_MULTI
 			case 1: mystrcpy(str, STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI, SMALL); break; // PLACE_OPT_6_CITANIE2_MULTI
 			case 2: mystrcpy(str, STR_FORCE_PLACE_OPT_6_CITANIE1_MULTI, SMALL); break; // PLACE_OPT_6_CITANIE1_MULTI
-			case 3: mystrcpy(str, STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI, SMALL); break; // PLACE_OPT_6_BENEDIKTUS_MULTI
+			case 3: mystrcpy(str, STR_FORCE_PLACE_OPT_6_ANTIFONA_MULTI, SMALL); break; // PLACE_OPT_6_ANTIFONA_MULTI
+			case 4: mystrcpy(str, STR_FORCE_PLACE_OPT_6_MODLITBA_MULTI, SMALL); break; // PLACE_OPT_6_MODLITBA_MULTI
+			case 5: mystrcpy(str, STR_FORCE_PLACE_OPT_6_PROSBY_MULTI, SMALL); break; // PLACE_OPT_6_PROSBY_MULTI
+			case 6: mystrcpy(str, STR_FORCE_PLACE_OPT_6_KCIT_RESP_MULTI, SMALL); break; // PLACE_OPT_6_KCIT_RESP_MULTI
 			}
 		}
 		break;

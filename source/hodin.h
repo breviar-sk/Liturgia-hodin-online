@@ -3894,34 +3894,6 @@ const char *html_text_opt_5_zaver_knaz_diakon_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_opt_5_invitatorium_ant[POCET_JAZYKOV + 1] =
-{
-	"iná antifóna na invitatórium",
-	"jiná antifona pro uvedení do modlitby",
-	"other antiphone for invitatory prayer",
-	"",
-	"",
-	"jiná antifona pro invitatorium",
-	"hu_text",
-	"ru_text",
-	"by_text",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-
-const char *html_text_opt_5_invitatorium_ant_explain[POCET_JAZYKOV + 1] =
-{
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"ru_text",
-	"by_text",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-
 const char *html_text_opt_5_zaver_knaz_diakon_NORMAL[POCET_JAZYKOV + 1] =
 {
 	"záver, ak nepredsedá kňaz alebo diakon a pri recitovaní jednotlivca",
@@ -3979,6 +3951,7 @@ const char *html_text_opt_6_alternatives_multi_citanie[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+// html_text_opt_6_alternatives_multi_antifona used for Benedictus (morning prayer), Magnificat (evening prayer) antiphone and antiphone for invitatory; used as replacement for (deprecated) html_text_opt_5_invitatorium_ant
 const char *html_text_opt_6_alternatives_multi_antifona[POCET_JAZYKOV + 1] =
 {
 	"iná antifóna",
@@ -3988,6 +3961,48 @@ const char *html_text_opt_6_alternatives_multi_antifona[POCET_JAZYKOV + 1] =
 	"",
 	"jiná antifona",
 	"más antifóna",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_6_alternatives_multi_prosby[POCET_JAZYKOV + 1] =
+{
+	"iné prosby",
+	"jiné prosby",
+	"another preces",
+	"",
+	"",
+	"jiné prosby",
+	"más fohászok",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_6_alternatives_multi_kcit_resp[POCET_JAZYKOV + 1] =
+{
+	"iné čítanie a responzórium",
+	"jiné čtení a zpěv",
+	"another preces",
+	"",
+	"",
+	"jiné čtení a krátké responsorium",
+	"más olvasmány és válaszos ének",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_6_alternatives_multi_modlitba[POCET_JAZYKOV + 1] =
+{
+	"iná modlitba",
+	"jiná modlitba",
+	"another prayer",
+	"",
+	"",
+	"jiná modlitba",
+	"más könyörgés",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

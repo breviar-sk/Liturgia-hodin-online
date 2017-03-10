@@ -8674,7 +8674,7 @@ label_24_DEC:
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
-		sprintf(_anchor, "%s%c_%s%d", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1, tyzzal MOD 2);
+		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);
 		_set_antifona1(modlitba, _file, _anchor);
 		set_LOG_litobd;
 
@@ -8685,11 +8685,11 @@ label_24_DEC:
 		_set_hymnus(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// krátke čítanie
-		sprintf(_anchor, "%s%c_%s%d", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_KCITANIE, tyzzal MOD 3);
+		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);
 		_set_kcitanie(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// krátke responzórium
-		sprintf(_anchor, "%s%c_%s%d", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, tyzzal MOD 3);
+		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);
 		_set_kresponz(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// benediktus
@@ -8697,11 +8697,11 @@ label_24_DEC:
 		_set_benediktus(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// prosby
-		sprintf(_anchor, "%s%c_%s%d", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_PROSBY, tyzzal MOD 2);
+		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_PROSBY);
 		_set_prosby(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// modlitba
-		sprintf(_anchor, "%s%c_%s%d", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_MODLITBA, (tyzden MOD 6) + 1);
+		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_MODLITBA);
 		_set_modlitba(modlitba, _file, _anchor);
 		set_LOG_litobd;
 
@@ -8717,7 +8717,7 @@ label_24_DEC:
 		_set_citanie2(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// modlitba -- ako na ranné chvály
-		sprintf(_anchor, "%s%c_%s%d", SPOM_PM_SOBOTA, pismenko_modlitby(MODL_RANNE_CHVALY), ANCHOR_MODLITBA, (tyzden MOD 6) + 1);
+		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(MODL_RANNE_CHVALY), ANCHOR_MODLITBA);
 		_set_modlitba(modlitba, _file, _anchor);
 		set_LOG_litobd;
 
@@ -8875,15 +8875,6 @@ void _spolocna_cast_benediktus_viac(short int kolko, char *_anchor_head, char *_
 	}
 }
 
-void _spolocna_cast_prosby_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, int force /* = 0 */){
-	Log("_spolocna_cast_prosby_viac...\n");
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_PROSBY) == FORCE_BRAT_PROSBY)){
-		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_PROSBY, (_global_den.den MOD kolko) + 1);
-		_set_prosby(modlitba, _file, _anchor);
-		set_LOG_svsv;
-	}
-}
-
 void _spolocna_cast_kresponz_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, int force){
 	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){
 		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, (_global_den.denvt MOD kolko) + 1);
@@ -8892,24 +8883,10 @@ void _spolocna_cast_kresponz_viac(short int kolko, char *_anchor_head, char *_an
 	}
 }
 
-void _spolocna_cast_ant3_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file){
-	sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3, (_global_den.den MOD kolko) + 1);
-	_set_antifona3(modlitba, _file, _anchor);
-	set_LOG_svsv;
-}
-
 // pre ofícium za zosnulých je potrebné vyberať žalm (146, 150 na RCH) spolu s antifónou rovnakým kritériom; to je uvedené priamo v _set_zalmy_za_zosnulych()
 void _spolocna_cast_ant3_viac_ozz(char *_anchor_head, char *_anchor, char *_file){
 	sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3, (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? 1 : 2);
 	_set_antifona3(modlitba, _file, _anchor);
-	set_LOG_svsv;
-}
-
-void _spolocna_cast_2cit_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file){
-	sprintf(_anchor, "%s%c%s%d",
-		_anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2,
-		(_global_den.den MOD kolko) + 1);
-	_set_citanie2(modlitba, _file, _anchor);
 	set_LOG_svsv;
 }
 
@@ -9197,7 +9174,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 			}
 			_spolocna_cast_full(modlitba);
 			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
-			_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file, force);
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_kresp_ve;
 			}
@@ -9948,14 +9924,13 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 			_set_zalmy_sviatok_marie(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_prosby_viac(2, _anchor_head, _anchor, _file, force);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
+		_spolocna_cast_antifona_inv(modlitba);
 
 		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_pom, "%s", STR_EMPTY);
@@ -9988,7 +9963,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 			_set_zalmy_1nedele_rch();
 		}
 		_spolocna_cast_full(modlitba);
-		_spolocna_cast_prosby_viac(2, _anchor_head, _anchor, _file, force);
 		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 			_spolocna_cast_kresp_ve;
 		}
@@ -10009,7 +9983,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 				_set_zalmy_sviatok_marie(modlitba);
 			}
 			_spolocna_cast_full(modlitba);
-			_spolocna_cast_prosby_viac(2, _anchor_head, _anchor, _file, force);
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_kresp_ve;
 			}
@@ -10478,8 +10451,28 @@ _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "VPCHR_cCIT2", 2 },
 };
 
-_struct_anchor_and_count pocet_benediktus_multi_anchor_count[] = {
+_struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_BENEDIKTUS", 6 },
+	{ JAZYK_UNDEF, "SPMVSi_ANT1", 2 },
+	{ JAZYK_UNDEF, "SCPM_iANT1", 2 },
+	{ JAZYK_UNDEF, "SCPM_1MAGNIFIKAT", 2 },
+	{ JAZYK_UNDEF, "SCDP_vMAGNIFIKAT", 2 },
+};
+
+_struct_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
+	{ JAZYK_UNDEF, "SPMVSr_MODLITBA", 6 },
+};
+
+_struct_anchor_and_count pocet_prosby_multi_anchor_count[] = {
+	{ JAZYK_UNDEF, "SPMVSr_PROSBY", 2 },
+	{ JAZYK_UNDEF, "SCPM_1PROSBY", 2 },
+	{ JAZYK_UNDEF, "SCPM_rPROSBY", 2 },
+	{ JAZYK_UNDEF, "SCPM_vPROSBY", 2 },
+};
+
+_struct_anchor_and_count pocet_kcit_resp_multi_anchor_count[] = {
+	{ JAZYK_UNDEF, "SPMVSr_CIT", 3 },
+	{ JAZYK_UNDEF, "SPMVSr_RESP", 3 },
 };
 
 short int pocet_multi(char *_anchor, long type) {
@@ -10505,9 +10498,21 @@ short int pocet_multi(char *_anchor, long type) {
 		ptr = pocet_citanie1_multi_anchor_count;
 		size = sizeof(pocet_citanie1_multi_anchor_count);
 	}
-	else if (type == BASE_OPT_6_BENEDIKTUS_MULTI) {
-		ptr = pocet_benediktus_multi_anchor_count;
-		size = sizeof(pocet_benediktus_multi_anchor_count);
+	else if (type == BASE_OPT_6_ANTIFONA_MULTI) {
+		ptr = pocet_antifona_multi_anchor_count;
+		size = sizeof(pocet_antifona_multi_anchor_count);
+	}
+	else if (type == BASE_OPT_6_MODLITBA_MULTI) {
+		ptr = pocet_modlitba_multi_anchor_count;
+		size = sizeof(pocet_modlitba_multi_anchor_count);
+	}
+	else if (type == BASE_OPT_6_PROSBY_MULTI) {
+		ptr = pocet_prosby_multi_anchor_count;
+		size = sizeof(pocet_prosby_multi_anchor_count);
+	}
+	else if (type == BASE_OPT_6_KCIT_RESP_MULTI) {
+		ptr = pocet_kcit_resp_multi_anchor_count;
+		size = sizeof(pocet_kcit_resp_multi_anchor_count);
 	}
 
 	orig = ptr; // preserve original pointer to array due to dereferencing by [i]

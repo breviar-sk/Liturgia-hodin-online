@@ -878,11 +878,32 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_FORCE_PLACE_OPT_6_CITANIE1_MULTI "of6c1"
 #endif
 
-#define FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI 131
-#ifdef LONG_PARAM_NAMES
-	#define STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI "FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI"
+#define FORCE_PLACE_OPT_6_ANTIFONA_MULTI 131
+	#ifdef LONG_PARAM_NAMES
+	#define STR_FORCE_PLACE_OPT_6_ANTIFONA_MULTI "FORCE_PLACE_OPT_6_ANTIFONA_MULTI"
 #else
-	#define STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI "of6b"
+	#define STR_FORCE_PLACE_OPT_6_ANTIFONA_MULTI "of6a"
+#endif
+
+#define FORCE_PLACE_OPT_6_MODLITBA_MULTI 132
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_PLACE_OPT_6_MODLITBA_MULTI "FORCE_PLACE_OPT_6_MODLITBA_MULTI"
+#else
+#define STR_FORCE_PLACE_OPT_6_MODLITBA_MULTI "of6m"
+#endif
+
+#define FORCE_PLACE_OPT_6_PROSBY_MULTI 133
+#ifdef LONG_PARAM_NAMES
+	#define STR_FORCE_PLACE_OPT_6_PROSBY_MULTI "FORCE_PLACE_OPT_6_PROSBY_MULTI"
+#else
+	#define STR_FORCE_PLACE_OPT_6_PROSBY_MULTI "of6p"
+#endif
+
+#define FORCE_PLACE_OPT_6_KCIT_RESP_MULTI 134
+#ifdef LONG_PARAM_NAMES
+	#define STR_FORCE_PLACE_OPT_6_KCIT_RESP_MULTI "FORCE_PLACE_OPT_6_KCIT_RESP_MULTI"
+#else
+	#define STR_FORCE_PLACE_OPT_6_KCIT_RESP_MULTI "of6kcr"
 #endif
 
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
@@ -1229,7 +1250,10 @@ extern short int query_type; // contains constants PRM_...
 #define XML_PLACE_OPT_6_HYMNUS_MULTI            "PlaceOpt6HymnusMulti"
 #define XML_PLACE_OPT_6_CITANIE2_MULTI          "PlaceOpt6Reading2Multi"
 #define XML_PLACE_OPT_6_CITANIE1_MULTI          "PlaceOpt6Reading1Multi"
-#define XML_PLACE_OPT_6_BENEDIKTUS_MULTI        "PlaceOpt6BenedictusMulti"
+#define XML_PLACE_OPT_6_ANTIFONA_MULTI          "PlaceOpt6AntiphoneMulti"
+#define XML_PLACE_OPT_6_MODLITBA_MULTI          "PlaceOpt6CollectaMulti"
+#define XML_PLACE_OPT_6_PROSBY_MULTI            "PlaceOpt6PrecesMulti"
+#define XML_PLACE_OPT_6_KCIT_RESP_MULTI         "PlaceOpt6ShortReadingRespMulti"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<" elem ">"

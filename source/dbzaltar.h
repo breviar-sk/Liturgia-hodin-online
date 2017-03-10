@@ -264,11 +264,8 @@ extern void _spolocna_cast_2cit_rozne(short int modlitba, char *_anchor_pom, cha
 extern void _spolocna_cast_modlitba_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file);
 extern void _spolocna_cast_magnifikat_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, int force);
 extern void _spolocna_cast_benediktus_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, int force);
-extern void _spolocna_cast_prosby_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, int force = 0);
 extern void _spolocna_cast_kresponz_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, int force);
-extern void _spolocna_cast_ant3_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file);
 extern void _spolocna_cast_ant3_viac_ozz(char *_anchor_head, char *_anchor, char *_file);
-extern void _spolocna_cast_2cit_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file);
 extern void _spolocna_cast_1cit_zvazok(short int modlitba, const char *_anchor_pom, const char *_anchor_zvazok, const char *_anchor, const char *_file, int force = 0);
 extern void _spolocna_cast_kresponz_zvazok(short int modlitba, char *_anchor_pom, char *_anchor_zvazok, char *_anchor, char *_file, int force);
 extern void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, int force = 0);

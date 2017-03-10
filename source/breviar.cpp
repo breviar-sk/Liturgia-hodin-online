@@ -1596,7 +1596,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						 * potom treba vyšpecifikovať podmienku, ktorá bude kontrolovať: ak je to antifóna 1, treba porovnať, či equals(rest_krizik, "_global_modl_...".zalm1.anchor) a pod.
 						 * case pre danú modlitbu: pre MODL_RANNE_CHVALY: _global_modl_ranne_chvaly.zalm1.anchor; pre iné modlitby iný "_global_modl_..."
 
-						 if((je_antifona == ANO) && ((antifona_pocet MOD 2) == 1) && (-- zložitá podmienka --)){
+						 if ((je_antifona == ANO) && ((antifona_pocet MOD 2) == 1) && (-- zložitá podmienka --)){
 						 // krížik sa vypisuje v počiatočných (nepárnych) antifónach len vtedy, ak nasledujúci žalm/chválospev je ten zodpovedajúci
 						 Log("-nepárna antifóna/iný žalm-");
 						 write_krizik = NIE;
@@ -2597,6 +2597,16 @@ void _export_global_string_spol_cast(short int aj_vslh_235b) {
 
 #define _global_modl_hymnus_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.hymnus.anchor : ((type == MODL_PREDPOLUDNIM) ? _global_modl_cez_den_9.hymnus.anchor : ((type == MODL_NAPOLUDNIE) ? _global_modl_cez_den_12.hymnus.anchor : ((type == MODL_POPOLUDNI) ? _global_modl_cez_den_3.hymnus.anchor : ((type == MODL_POSV_CITANIE) ? _global_modl_posv_citanie.hymnus.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.hymnus.anchor : ((type == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.hymnus.anchor : ((type == MODL_PRVE_VESPERY) ? _global_modl_prve_vespery.hymnus.anchor : _global_modl_prve_kompletorium.hymnus.anchor)))))))
 
+#define _global_modl_modlitba_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.modlitba.anchor : ((type == MODL_PREDPOLUDNIM) ? _global_modl_cez_den_9.modlitba.anchor : ((type == MODL_NAPOLUDNIE) ? _global_modl_cez_den_12.modlitba.anchor : ((type == MODL_POPOLUDNI) ? _global_modl_cez_den_3.modlitba.anchor : ((type == MODL_POSV_CITANIE) ? _global_modl_posv_citanie.modlitba.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.modlitba.anchor : ((type == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.modlitba.anchor : ((type == MODL_PRVE_VESPERY) ? _global_modl_prve_vespery.modlitba.anchor : _global_modl_prve_kompletorium.modlitba.anchor)))))))
+
+#define _global_modl_kcit_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.kcitanie.anchor : ((type == MODL_PREDPOLUDNIM) ? _global_modl_cez_den_9.kcitanie.anchor : ((type == MODL_NAPOLUDNIE) ? _global_modl_cez_den_12.kcitanie.anchor : ((type == MODL_POPOLUDNI) ? _global_modl_cez_den_3.kcitanie.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.kcitanie.anchor : ((type == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.kcitanie.anchor : ((type == MODL_PRVE_VESPERY) ? _global_modl_prve_vespery.kcitanie.anchor : _global_modl_prve_kompletorium.kcitanie.anchor))))))
+
+#define _global_modl_kresp_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.kresponz.anchor : ((type == MODL_PREDPOLUDNIM) ? _global_modl_cez_den_9.kresponz.anchor : ((type == MODL_NAPOLUDNIE) ? _global_modl_cez_den_12.kresponz.anchor : ((type == MODL_POPOLUDNI) ? _global_modl_cez_den_3.kresponz.anchor : ((type == MODL_POSV_CITANIE) ? _global_modl_posv_citanie.kresponz.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.kresponz.anchor : ((type == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.kresponz.anchor : ((type == MODL_PRVE_VESPERY) ? _global_modl_prve_vespery.kresponz.anchor : _global_modl_prve_kompletorium.kresponz.anchor)))))))
+
+#define _global_modl_prosby_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.prosby.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.prosby.anchor : _global_modl_prve_vespery.prosby.anchor)
+
+#define _global_modl_antifona_anchor (type == MODL_INVITATORIUM) ? _global_modl_invitatorium.antifona1.anchor : ((type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.benediktus.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.magnifikat.anchor : _global_modl_prve_vespery.magnifikat.anchor))
+
 // dostane vstup to, co sa pri parsovani templatu nachadza medzi znakmi CHAR_KEYWORD_BEGIN a CHAR_KEYWORD_END;
 // zrejme ide o parameter; podla neho inkluduje subor (alebo cast suboru)
 // 27/04/2000A.D.: pozmenene (pridane #definy):
@@ -2992,7 +3002,10 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		|| (equals(paramname, PARAM_ALT_HYMNUS_MULTI))
 		|| (equals(paramname, PARAM_ALT_CITANIE2_MULTI))
 		|| (equals(paramname, PARAM_ALT_CITANIE1_MULTI))
-		|| (equals(paramname, PARAM_ALT_BENEDIKTUS_MULTI))		
+		|| (equals(paramname, PARAM_ALT_ANTIFONA_MULTI))
+		|| (equals(paramname, PARAM_ALT_MODLITBA_MULTI))
+		|| (equals(paramname, PARAM_ALT_PROSBY_MULTI))
+		|| (equals(paramname, PARAM_ALT_KCIT_RESP_MULTI))
 		|| (equals(paramname, PARAM_SPOL_CAST_SPOM))
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
@@ -3010,6 +3023,12 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		// note that in some cases must be set vice-versa; see function _export_link_show_hide()
 		mystrcpy(popis_show, html_text_option_skryt[_global_jazyk], SMALL);
 		mystrcpy(popis_hide, html_text_option_zobrazit[_global_jazyk], SMALL);
+
+		// these are used for multi-value choces switching (hymns, 1st reading, 2nd reading,...); PARAM_ALT_..._MULTI
+		char new_anchor[MAX_STR_AF_ANCHOR];
+		char new_anchor2[MAX_STR_AF_ANCHOR];
+		mystrcpy(new_anchor, STR_EMPTY, MAX_STR_AF_ANCHOR);
+		mystrcpy(new_anchor2, STR_EMPTY, MAX_STR_AF_ANCHOR);
 
 		short int specific_string = HTML_SEQUENCE_NONE;
 
@@ -3154,21 +3173,20 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			podmienka &= (je_alternativa_invitatorium_ant);
 
 			bit = BIT_OPT_5_INVITATORIUM_ANT;
-			sprintf(popis_show, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
-			sprintf(popis_hide, "%s", html_text_opt_5_invitatorium_ant[_global_jazyk]);
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_antifona[_global_jazyk]);
+			sprintf(popis_hide, "%s", html_text_opt_6_alternatives_multi_antifona[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_CITANIE1_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
 			bit = BASE_OPT_6_CITANIE1_MULTI;
 			multi = ANO;
 
-			// use popis_hide for anchor
-			mystrcpy(popis_hide, _global_modl_posv_citanie.citanie1.anchor, SMALL);
+			mystrcpy(new_anchor, _global_modl_posv_citanie.citanie1.anchor, MAX_STR_AF_ANCHOR);
 
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
-			multi_count = pocet_multi(popis_hide, bit);
-			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
+			multi_count = pocet_multi(new_anchor, bit);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
 			podmienka &= (multi_count > 0);
 
@@ -3179,13 +3197,12 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			bit = BASE_OPT_6_CITANIE2_MULTI;
 			multi = ANO;
 
-			// use popis_hide for anchor
-			mystrcpy(popis_hide, _global_modl_posv_citanie.citanie2.anchor, SMALL);
+			mystrcpy(new_anchor, _global_modl_posv_citanie.citanie2.anchor, MAX_STR_AF_ANCHOR);
 
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
-			multi_count = pocet_multi(popis_hide, bit);
-			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
+			multi_count = pocet_multi(new_anchor, bit);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
 			podmienka &= (multi_count > 0);
 
@@ -3196,31 +3213,80 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 			bit = BASE_OPT_6_HYMNUS_MULTI;
 			multi = ANO;
 
-			// use popis_hide for anchor
-			mystrcpy(popis_hide, _global_modl_hymnus_anchor, SMALL);
+			mystrcpy(new_anchor, _global_modl_hymnus_anchor, MAX_STR_AF_ANCHOR);
 
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log(_global_modl_hymnus_anchor);
 
-			multi_count = pocet_multi(popis_hide, bit);
-			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
+			multi_count = pocet_multi(new_anchor, bit);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
 			podmienka &= (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_hymnus[_global_jazyk]);
 		}
-		else if (equals(paramname, PARAM_ALT_BENEDIKTUS_MULTI)) {
+		else if (equals(paramname, PARAM_ALT_PROSBY_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
-			bit = BASE_OPT_6_BENEDIKTUS_MULTI;
+			bit = BASE_OPT_6_PROSBY_MULTI;
 			multi = ANO;
 
-			// use popis_hide for anchor
-			mystrcpy(popis_hide, _global_modl_ranne_chvaly.benediktus.anchor, SMALL);
+			mystrcpy(new_anchor, _global_modl_prosby_anchor, MAX_STR_AF_ANCHOR);
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			Log(_global_modl_prosby_anchor);
+
+			multi_count = pocet_multi(new_anchor, bit);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
+
+			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_prosby[_global_jazyk]);
+		}
+		else if (equals(paramname, PARAM_ALT_KCIT_RESP_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_KCIT_RESP_MULTI;
+			multi = ANO;
+
+			mystrcpy(new_anchor, _global_modl_kcit_anchor, MAX_STR_AF_ANCHOR);
+			mystrcpy(new_anchor2, _global_modl_kresp_anchor, MAX_STR_AF_ANCHOR);
 
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
-			multi_count = pocet_multi(popis_hide, bit);
-			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, popis_hide);
+			multi_count = pocet_multi(new_anchor, bit); // should be the same for new_anchor2
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']... (malo by byť rovnako aj pre '%s')\n", podmienka, multi_count, new_anchor, new_anchor2);
+
+			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_kcit_resp[_global_jazyk]);
+		}
+		else if (equals(paramname, PARAM_ALT_MODLITBA_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_MODLITBA_MULTI;
+			multi = ANO;
+
+			mystrcpy(new_anchor, _global_modl_modlitba_anchor, MAX_STR_AF_ANCHOR);
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			Log(_global_modl_modlitba_anchor);
+
+			multi_count = pocet_multi(new_anchor, bit);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
+
+			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_modlitba[_global_jazyk]);
+		}
+		else if (equals(paramname, PARAM_ALT_ANTIFONA_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_ANTIFONA_MULTI;
+			multi = ANO;
+
+			mystrcpy(new_anchor, _global_modl_antifona_anchor, MAX_STR_AF_ANCHOR);
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+
+			multi_count = pocet_multi(new_anchor, bit);
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
 			podmienka &= (multi_count > 0);
 
@@ -3323,7 +3389,6 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				_export_link_show_hide(opt, bit, popis_show, popis_hide, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
 			}
 			else {
-				char new_anchor[MAX_STR_AF_ANCHOR];
 				short int current_value = isGlobalOption(opt, bit);
 
 				if (current_value >= multi_count) {
@@ -3331,8 +3396,11 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 					setGlobalOption(opt, bit, current_value);
 				}
 
-				// popis_hide was used to contain original anchor
-				sprintf(new_anchor, "%s_%d", popis_hide, current_value);
+				// use popis_hide as temp variable
+				sprintf(popis_hide, "_%d", current_value);
+
+				strcat(new_anchor, popis_hide);
+				strcat(new_anchor2, popis_hide); // only used if (bit == BASE_OPT_6_KCIT_RESP_MULTI)
 
 				if (bit == BASE_OPT_6_HYMNUS_MULTI) {
 					_set_hymnus(type, NULL, new_anchor);
@@ -3343,8 +3411,27 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				else if (bit == BASE_OPT_6_CITANIE1_MULTI) {
 					_set_citanie1(type, NULL, new_anchor);
 				}
-				else if (bit == BASE_OPT_6_BENEDIKTUS_MULTI) {
-					_set_benediktus(type, NULL, new_anchor);
+				else if (bit == BASE_OPT_6_ANTIFONA_MULTI) {
+					if (_global_modlitba == MODL_RANNE_CHVALY) {
+						_set_benediktus(type, NULL, new_anchor);
+					}
+					else if (_global_modlitba == MODL_INVITATORIUM) {
+						_set_antifona1(type, NULL, new_anchor);
+					}
+					else {
+						// vešepry, prvé vešpery
+						_set_magnifikat(type, NULL, new_anchor);
+					}
+				}
+				else if (bit == BASE_OPT_6_MODLITBA_MULTI) {
+					_set_modlitba(type, NULL, new_anchor);
+				}
+				else if (bit == BASE_OPT_6_PROSBY_MULTI) {
+					_set_prosby(type, NULL, new_anchor);
+				}
+				else if (bit == BASE_OPT_6_KCIT_RESP_MULTI) {
+					_set_kcitanie(type, NULL, new_anchor);
+					_set_kresponz(type, NULL, new_anchor2);
 				}
 
 				// use popis_hide as temp variable
@@ -6888,7 +6975,7 @@ void xml_export_options(void){
 					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON)"%ld" ELEM_END(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON) "\n", BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)));
 					break;
 				case 16: // BIT_OPT_5_INVITATORIUM_ANT
-					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_INVITATORIUM_ANT)"%ld" ELEM_END(XML_BIT_OPT_5_INVITATORIUM_ANT) "\n", BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, html_text_opt_5_invitatorium_ant[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)));
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_5_INVITATORIUM_ANT)"%ld" ELEM_END(XML_BIT_OPT_5_INVITATORIUM_ANT) "\n", BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, /* ToDo: nazov_modlitby(MODL_INVITATORIUM) + ": " */ html_text_opt_6_alternatives_multi_antifona[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)));
 					break;
 				} // switch(j)
 			}// for j
@@ -6908,8 +6995,17 @@ void xml_export_options(void){
 				case 3: // BASE_OPT_6_CITANIE1_MULTI
 					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_CITANIE1_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_CITANIE1_MULTI) "\n", BASE_OPT_6_CITANIE1_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE1_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_CITANIE1_MULTI)));
 					break;
-				case 4: // BASE_OPT_6_BENEDIKTUS_MULTI
-					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_BENEDIKTUS_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_BENEDIKTUS_MULTI) "\n", BASE_OPT_6_BENEDIKTUS_MULTI, STR_FORCE_PLACE_OPT_6_BENEDIKTUS_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_BENEDIKTUS_MULTI)));
+				case 4: // BASE_OPT_6_ANTIFONA_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_ANTIFONA_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_ANTIFONA_MULTI) "\n", BASE_OPT_6_ANTIFONA_MULTI, STR_FORCE_PLACE_OPT_6_ANTIFONA_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_ANTIFONA_MULTI)));
+					break;
+				case 5: // BASE_OPT_6_MODLITBA_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_MODLITBA_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_MODLITBA_MULTI) "\n", BASE_OPT_6_MODLITBA_MULTI, STR_FORCE_PLACE_OPT_6_MODLITBA_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_MODLITBA_MULTI)));
+					break;
+				case 6: // BASE_OPT_6_PROSBY_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_PROSBY_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_PROSBY_MULTI) "\n", BASE_OPT_6_PROSBY_MULTI, STR_FORCE_PLACE_OPT_6_PROSBY_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PROSBY_MULTI)));
+					break;
+				case 7: // BASE_OPT_6_KCIT_RESP_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_KCIT_RESP_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_KCIT_RESP_MULTI) "\n", BASE_OPT_6_KCIT_RESP_MULTI, STR_FORCE_PLACE_OPT_6_KCIT_RESP_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_KCIT_RESP_MULTI)));
 					break;
 				} // switch(j)
 			}// for j
@@ -9547,10 +9643,10 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			// invitatórium (antifóna)
 			Export(HTML_CRLF_LINE_BREAK);
-			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, html_text_opt_5_invitatorium_ant_explain[_global_jazyk], nazov_modlitby(MODL_INVITATORIUM));
+			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, STR_EMPTY, nazov_modlitby(MODL_INVITATORIUM));
 
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT
-			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, html_text_opt_5_invitatorium_ant[_global_jazyk], html_text_opt_5_invitatorium_ant_explain[_global_jazyk]);
+			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, html_text_opt_6_alternatives_multi_antifona[_global_jazyk], STR_EMPTY);
 }
 		else{
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)) ? ANO : NIE);
