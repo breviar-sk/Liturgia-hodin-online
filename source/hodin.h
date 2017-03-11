@@ -3984,11 +3984,25 @@ const char *html_text_opt_6_alternatives_multi_kcit_resp[POCET_JAZYKOV + 1] =
 {
 	"iné čítanie a responzórium",
 	"jiné čtení a zpěv",
-	"another preces",
+	"another reading & responsory",
 	"",
 	"",
 	"jiné čtení a krátké responsorium",
 	"más olvasmány és válaszos ének",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_6_alternatives_multi_kresp[POCET_JAZYKOV + 1] =
+{
+	"iné responzórium",
+	"jiný zpěv",
+	"another responsory",
+	"",
+	"",
+	"jiné krátké responsorium",
+	"más válaszos ének",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

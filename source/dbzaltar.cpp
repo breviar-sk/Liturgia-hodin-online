@@ -1179,11 +1179,11 @@ char pismenko_modlitby(short int modlitba){
 }// pismenko_modlitby();
 
 void anchor_name_zaltar(short int den, short int tyzzal, short int modlitba, const char *anchor){
-	sprintf(_anchor, "_%d%s%c_%s", tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor);
+	sprintf(_anchor, "_%d%s_%c%s", tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor);
 }
 
 void anchor_name_zaltar_alt(short int den, short int tyzzal, short int modlitba, const char *anchor, short int alt){
-	sprintf(_anchor, "_%d%s%c_%s%d", tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor, alt);
+	sprintf(_anchor, "_%d%s_%c%s%d", tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor, alt);
 }
 
 void _add_special_anchor_postfix(){
@@ -4360,7 +4360,12 @@ void _obd_invitat_viac(short litobd, short modlitba) {
 		ktory = 2; // obidva!
 	}
 
-	sprintf(_anchor, "%s%c_%s%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1, ktory);
+	if (ktory < 2) {
+		sprintf(_anchor, "%s_%c%s_%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1, ktory);
+	}
+	else {
+		sprintf(_anchor, "%s_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);
+	}
 	_set_antifona1(modlitba, _file, _anchor);
 	set_LOG_litobd;
 }// _obd_invitat_viac()
@@ -4484,12 +4489,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 // invitatórium
 // použiteľné pre adventné obdobie, vianočné...
 #define _obd_invitat {\
-	sprintf(_anchor, "%s%c_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
+	sprintf(_anchor, "%s_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
 	_set_antifona1(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
 #define _adv_invitat_24DEC {\
-	sprintf(_anchor, "%s%c_24_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
+	sprintf(_anchor, "%s_24_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
 	_set_antifona1(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
@@ -8858,31 +8863,6 @@ void _spolocna_cast_modlitba_rozne(short int modlitba, char *_anchor_pom, char *
 	set_LOG_svsv;
 }
 
-// ked je viac napevov, `kolko' uvadza, z kolkych je na vyber; zvacsa sa vyberie napr. podla (_global_den.den MOD kolko) + 1 (aby bol z intervalu 1..kolko)
-void _spolocna_cast_magnifikat_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, int force){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){
-		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT, (_global_den.den MOD kolko) + 1);
-		_set_magnifikat(modlitba, _file, _anchor);
-		set_LOG_svsv;
-	}
-}
-
-void _spolocna_cast_benediktus_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, int force){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_ANTIFONY_B_M) == FORCE_BRAT_ANTIFONY_B_M)){
-		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS, (_global_den.den MOD kolko) + 1);
-		_set_benediktus(modlitba, _file, _anchor);
-		set_LOG_svsv;
-	}
-}
-
-void _spolocna_cast_kresponz_viac(short int kolko, char *_anchor_head, char *_anchor, char *_file, int force){
-	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)){
-		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, (_global_den.denvt MOD kolko) + 1);
-		_set_kresponz(modlitba, _file, _anchor);
-		set_LOG_svsv;
-	}
-}
-
 // pre ofícium za zosnulých je potrebné vyberať žalm (146, 150 na RCH) spolu s antifónou rovnakým kritériom; to je uvedené priamo v _set_zalmy_za_zosnulych()
 void _spolocna_cast_ant3_viac_ozz(char *_anchor_head, char *_anchor, char *_file){
 	sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3, (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? 1 : 2);
@@ -9632,12 +9612,12 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// prvé vešpery
 		modlitba = MODL_PRVE_VESPERY;
 		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
-		_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file, force);
+		_spolocna_cast_magnifikat(modlitba);
 		_spolocna_cast_modlitba;
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
+		_spolocna_cast_antifona_inv(modlitba);
 
 		// posvätné čítanie
 		modlitba = MODL_POSV_CITANIE;
@@ -9659,7 +9639,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
 		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
-		_spolocna_cast_benediktus_viac(2, _anchor_head, _anchor, _file, force);
+		_spolocna_cast_benediktus(modlitba);
 		_spolocna_cast_modlitba;
 
 		// modlitba cez deň
@@ -9667,7 +9647,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// vešpery
 		modlitba = MODL_VESPERY;
 		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
-		_spolocna_cast_magnifikat_viac(2, _anchor_head, _anchor, _file, force);
+		_spolocna_cast_magnifikat(modlitba);
 		_spolocna_cast_modlitba;
 
 	}// MODL_SPOL_CAST_SV_MUZ/ZENA_REHOLNIK
@@ -9693,7 +9673,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
+		_spolocna_cast_antifona_inv(modlitba);
 
 		// posvätné čítanie
 		modlitba = MODL_POSV_CITANIE;
@@ -9773,7 +9753,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
+		_spolocna_cast_antifona_inv(modlitba);
 
 		// posvätné čítanie
 		modlitba = MODL_POSV_CITANIE;
@@ -9859,7 +9839,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
+		_spolocna_cast_antifona_inv(modlitba);
 
 		// posvätné čítanie
 		modlitba = MODL_POSV_CITANIE;
@@ -10069,7 +10049,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 				_set_zalmy_za_zosnulych(modlitba);
 			}
 			_spolocna_cast_full(modlitba);
-			_spolocna_cast_kresponz_viac(2, _anchor_head, _anchor, _file, force);
 			if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
 				_spolocna_cast_magnifikat_ve;
 			}
@@ -10106,7 +10085,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
-		_spolocna_cast_antifona_inv_viac(modlitba, 2);
+		_spolocna_cast_antifona_inv(modlitba);
 
 		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_pom, "%s", STR_EMPTY);
@@ -10452,11 +10431,24 @@ _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 };
 
 _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
+	{ JAZYK_UNDEF, "SCSZ_iANT1", 2 },
+	{ JAZYK_UNDEF, "SCPN_iANT1", 2 },
+	{ JAZYK_UNDEF, "SCPNV_iANT1", 2 },
+	{ JAZYK_UNDEF, "VPCHR_iANT1", 2 },
 	{ JAZYK_UNDEF, "SPMVSr_BENEDIKTUS", 6 },
 	{ JAZYK_UNDEF, "SPMVSi_ANT1", 2 },
 	{ JAZYK_UNDEF, "SCPM_iANT1", 2 },
 	{ JAZYK_UNDEF, "SCPM_1MAGNIFIKAT", 2 },
 	{ JAZYK_UNDEF, "SCDP_vMAGNIFIKAT", 2 },
+	{ JAZYK_UNDEF, "SCSM_iANT1", 2 },
+	{ JAZYK_UNDEF, "SCSZRH_iANT1", 2 },
+	{ JAZYK_UNDEF, "SCSMRH_iANT1", 2 },
+	{ JAZYK_UNDEF, "SCSZRH_1MAGNIFIKAT", 2 },
+	{ JAZYK_UNDEF, "SCSMRH_1MAGNIFIKAT", 2 },
+	{ JAZYK_UNDEF, "SCSZRH_rBENEDIKTUS", 2 },
+	{ JAZYK_UNDEF, "SCSMRH_rBENEDIKTUS", 2 },
+	{ JAZYK_UNDEF, "SCSZRH_vMAGNIFIKAT", 2 },
+	{ JAZYK_UNDEF, "SCSMRH_vMAGNIFIKAT", 2 },
 };
 
 _struct_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
@@ -10473,6 +10465,7 @@ _struct_anchor_and_count pocet_prosby_multi_anchor_count[] = {
 _struct_anchor_and_count pocet_kcit_resp_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_CIT", 3 },
 	{ JAZYK_UNDEF, "SPMVSr_RESP", 3 },
+	{ JAZYK_UNDEF, "OZZ_vRESP", 2 },
 };
 
 short int pocet_multi(char *_anchor, long type) {
@@ -10510,7 +10503,7 @@ short int pocet_multi(char *_anchor, long type) {
 		ptr = pocet_prosby_multi_anchor_count;
 		size = sizeof(pocet_prosby_multi_anchor_count);
 	}
-	else if (type == BASE_OPT_6_KCIT_RESP_MULTI) {
+	else if ((type == BASE_OPT_6_KCIT_RESP_MULTI) || (type == BASE_OPT_6_KRESP_MULTI)) {
 		ptr = pocet_kcit_resp_multi_anchor_count;
 		size = sizeof(pocet_kcit_resp_multi_anchor_count);
 	}

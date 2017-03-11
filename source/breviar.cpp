@@ -3006,6 +3006,7 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 		|| (equals(paramname, PARAM_ALT_MODLITBA_MULTI))
 		|| (equals(paramname, PARAM_ALT_PROSBY_MULTI))
 		|| (equals(paramname, PARAM_ALT_KCIT_RESP_MULTI))
+		|| (equals(paramname, PARAM_ALT_KRESP_MULTI))
 		|| (equals(paramname, PARAM_SPOL_CAST_SPOM))
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
@@ -3259,6 +3260,22 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_kcit_resp[_global_jazyk]);
 		}
+		else if (equals(paramname, PARAM_ALT_KRESP_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_KRESP_MULTI;
+			multi = ANO;
+
+			mystrcpy(new_anchor, _global_modl_kresp_anchor, MAX_STR_AF_ANCHOR);
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+
+			multi_count = pocet_multi(new_anchor, bit); // should be the same for new_anchor2
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
+
+			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_kresp[_global_jazyk]);
+		}
 		else if (equals(paramname, PARAM_ALT_MODLITBA_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
 			bit = BASE_OPT_6_MODLITBA_MULTI;
@@ -3432,6 +3449,9 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 				else if (bit == BASE_OPT_6_KCIT_RESP_MULTI) {
 					_set_kcitanie(type, NULL, new_anchor);
 					_set_kresponz(type, NULL, new_anchor2);
+				}
+				else if (bit == BASE_OPT_6_KRESP_MULTI) {
+					_set_kresponz(type, NULL, new_anchor);
 				}
 
 				// use popis_hide as temp variable
@@ -7006,6 +7026,9 @@ void xml_export_options(void){
 					break;
 				case 7: // BASE_OPT_6_KCIT_RESP_MULTI
 					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_KCIT_RESP_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_KCIT_RESP_MULTI) "\n", BASE_OPT_6_KCIT_RESP_MULTI, STR_FORCE_PLACE_OPT_6_KCIT_RESP_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_KCIT_RESP_MULTI)));
+					break;
+				case 8: // BASE_OPT_6_KRESP_MULTI
+					Export(ELEMOPT_BEGIN(XML_PLACE_OPT_6_KRESP_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_KRESP_MULTI) "\n", BASE_OPT_6_KRESP_MULTI, STR_FORCE_PLACE_OPT_6_KRESP_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_KRESP_MULTI)));
 					break;
 				} // switch(j)
 			}// for j

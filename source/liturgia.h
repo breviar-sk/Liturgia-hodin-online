@@ -589,6 +589,7 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ALT_MODLITBA_MULTI            "ALT-MODLITBA-" KEYWORD_MULTI
 #define PARAM_ALT_PROSBY_MULTI              "ALT-PROSBY-" KEYWORD_MULTI
 #define PARAM_ALT_KCIT_RESP_MULTI           "ALT-KCIT-RESP-" KEYWORD_MULTI
+#define PARAM_ALT_KRESP_MULTI               "ALT-KRESP-" KEYWORD_MULTI
 
 // zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
@@ -1446,6 +1447,7 @@ extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI];
 #define PLACE_OPT_6_MODLITBA_MULTI            5
 #define PLACE_OPT_6_PROSBY_MULTI              6
 #define PLACE_OPT_6_KCIT_RESP_MULTI           7
+#define PLACE_OPT_6_KRESP_MULTI               8
 
 #define BASE_OPT_6_HYMNUS_MULTI               1
 #define BASE_OPT_6_CITANIE2_MULTI            10
@@ -1454,6 +1456,7 @@ extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI];
 #define BASE_OPT_6_MODLITBA_MULTI         10000
 #define BASE_OPT_6_PROSBY_MULTI          100000
 #define BASE_OPT_6_KCIT_RESP_MULTI      1000000
+#define BASE_OPT_6_KRESP_MULTI         10000000
 
 
 #define MAX_POCET_OPT                      18 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
