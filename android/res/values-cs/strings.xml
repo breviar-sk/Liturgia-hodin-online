@@ -111,7 +111,7 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verze 1.14.2</b>
 <ul>
-<li>Zobrazení pouze jedné možnosti z více (hymny, první, druhé čtení).</li>
+<li>Zobrazení pouze jedné možnosti z více (hymny, první, druhé čtení, antifony, prosby).</li>
 <li>Oprava modlitby uvedení do dne pro dobu postní.</li>
 <li>Sobotní památka Panny Marie se nenabízí při střetu s jiným mariánským svátkem.</li>
 <li>Opravy v liturgickém kalendáři a textech.</li>

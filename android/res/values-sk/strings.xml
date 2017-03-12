@@ -111,7 +111,7 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verze 1.14.2</b>
 <ul>
-<li>Zobrazenie len jednej možnosti z viacerých (hymny, prvé, druhé čítanie).</li>
+<li>Zobrazenie len jednej možnosti z viacerých (hymny, prvé, druhé čítanie, antifóny, prosby).</li>
 <li>Sobotná spomienka Panny Márie sa neponúka pri kolízii s iným mariánskym sviatkom.</li>
 <li>Opravy v textoch (všeobecné, OCD).</li>
 </ul>

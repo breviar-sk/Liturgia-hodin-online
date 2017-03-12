@@ -127,7 +127,7 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Version 1.14.2</b>
 <ul>
-<li>Display only one of various choices (hymns, first or second reading).</li>
+<li>Display only one of various choices (hymns, first or second reading, antiphones, preces).</li>
 <li>Memorials of the Blessed Virgin Mary on Saturday are not celebrated as alternative to another feast of Virgin Mary.</li>
 <li>SK, CZ: Fixes for liturgical calendar.</li>
 <li>CZ: Fix for invitatory in Lent.</li>
