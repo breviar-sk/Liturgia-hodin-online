@@ -1212,16 +1212,14 @@ const char *nazov_charset[POCET_CHARSET + 1] =
 const char *skratka_static_text[POCET_STATIC_TEXTOV + 1] =
 { "", "ma", "ord" };
 
-// 2011-05-06: pridané kvôli možnosti voľby písma
 const char *nazov_fontu[POCET_FONTOV + 1] =
-{ "", "podľa CSS", "podľa výberu", "Cambria", "Candara", "Georgia", "Tahoma", "Helvetica", "serif", "sans-serif" };
+{ "", "podľa CSS", "podľa výberu", "Cambria", "Candara", "Georgia", "Tahoma", "Verdana", "Helvetica", "serif", "sans-serif" };
 
 const char *nazov_fontu_CHECKBOX[POCET_JAZYKOV + 1] =
 { "podľa výberu", "podle výběru", "according to checkbox above", "checkbox", "", "podle výběru", "checkbox", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char *nazov_fontu_CSS[POCET_JAZYKOV + 1] =
 { "podľa CSS", "podle CSS", "according to CSS", "CSS", "CSS", "podle CSS", "CSS szerint", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-// 2011-05-13: pridané kvôli možnosti voľby veľkosti písma
 
 const char *nazov_font_size_jazyk[POCET_FONT_SIZE + 1][POCET_JAZYKOV + 1] = 
 {

@@ -113,22 +113,23 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define STATIC_TEXT_ORDINARIUM            2
 
 // number of fonts
-#define	POCET_FONTOV	9
+#define	POCET_FONTOV    10
 
 // fonts used in drop-down list
-#define FONT_UNDEF		0
-#define FONT_CSS		1
-#define FONT_CHECKBOX	2
-#define FONT_CAMBRIA    3
-#define FONT_CANDARA	4
-#define FONT_GEORGIA	5
-#define FONT_TAHOMA		6
-#define FONT_HELVETICA	7
-#define FONT_SERIF		8
-#define FONT_SANS_SERIF	9
+#define FONT_UNDEF       0
+#define FONT_CSS         1
+#define FONT_CHECKBOX    2
+#define FONT_CAMBRIA     3
+#define FONT_CANDARA     4
+#define FONT_GEORGIA     5
+#define FONT_TAHOMA	     6
+#define FONT_HELVETICA   7
+#define FONT_VERDANA     8
+#define FONT_SERIF	     9
+#define FONT_SANS_SERIF 10
 
 // number of font-sizes
-#define	POCET_FONT_SIZE	8
+#define	POCET_FONT_SIZE  8
 
 // font-sizes in drop-down list
 #define FONT_SIZE_UNDEF		0

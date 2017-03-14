@@ -268,9 +268,8 @@ void readConfig(void)
 		}
 	}
 
-#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
-	// pre android upravené defaulty pre zobrazovanie
-	LogConfig("android...\n");
+	// pôvodne pre Ruby || Android, teraz pre všetky platformy, upravené defaulty pre zobrazovanie
+	LogConfig("defaults update (originally only for Ruby || Android)...\n");
 	for(j = 0; j <= POCET_JAZYKOV; j++){
 		if(cfg_option_default[OPT_2_HTML_EXPORT][j] != GLOBAL_OPTION_NULL){
 			LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
@@ -313,7 +312,7 @@ void readConfig(void)
 			LogConfig("=== Jazyk `%s' (%s): option je %d\n", skratka_jazyka[j], nazov_jazyka[j], GLOBAL_OPTION_NULL);
 		}
 	}// for j
-#endif
+
 	Log("readConfig() -- koniec.\n");
 
 	return;
