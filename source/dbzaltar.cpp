@@ -10396,6 +10396,7 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_SK, "TK_rHYMNUS", 2 },
 	{ JAZYK_SK, "TK_vHYMNUS", 2 },
 	{ JAZYK_SK, "21NOV_cHYMNUS", 2 },
+	{ JAZYK_CZ, "04JUL_cHYMNUS", 2 },
 };
 
 _struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
