@@ -251,6 +251,8 @@
 #define HTML_SPAN_HIDDEN            "span class=\"hidden\""
 #define HTML_SPAN_UPPERCASE         "span class=\"uppercase\""
 
+#define HTML_SPAN_COMMENT           "span class=\"comment\""
+
 #define HTML_CLASS_CALENDAR         "class=\"calendar\""
 
 #define HTML_CALENDAR_HEADING       "span class=\"calendar heading\""

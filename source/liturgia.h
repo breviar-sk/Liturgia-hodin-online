@@ -604,13 +604,17 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_KATECHEZA_BEGIN				"k"
 #define PARAM_KATECHEZA_END					SYMBOL_END "" PARAM_KATECHEZA_BEGIN
 
-// footnote reference
+// footnote reference (subscript)
 #define PARAM_FOOTNOTE_REF_BEGIN			"fnr"
 #define PARAM_FOOTNOTE_REF_END				SYMBOL_END "" PARAM_FOOTNOTE_REF_BEGIN
 
-// footnote (text)
+// footnote (text under main text)
 #define PARAM_FOOTNOTE_BEGIN			    "fn"
 #define PARAM_FOOTNOTE_END				    SYMBOL_END "" PARAM_FOOTNOTE_BEGIN
+
+// note (text in parentheses)
+#define PARAM_NOTE_BEGIN			        "n"
+#define PARAM_NOTE_END				        SYMBOL_END "" PARAM_NOTE_BEGIN
 
 // odkaz na žalm 95
 #define PARAM_LINK_ZALM95_BEGIN				"z95"
