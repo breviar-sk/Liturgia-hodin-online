@@ -2178,13 +2178,13 @@ const char *html_text_opt_0_blind_friendly_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_0_footnotes[POCET_JAZYKOV + 1] =
 {
-	"zobraziť poznámky pod čiarou",
-	"zobrazit poznámky pod čarou",
-	"show footnotes",
+	"zobraziť poznámky (v texte, pod čiarou)",
+	"zobrazit poznámky (v textu, pod čarou)",
+	"show notes and footnotes",
 	"",
 	"",
-	"zobrazit poznámky pod čarou",
-	"lábjegyzetek",
+	"zobrazit poznámky (v textu, pod čarou)",
+	"jegyzetek, lábjegyzetek",
 	"ru_text",
 	"паказваць зноскі",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2193,7 +2193,7 @@ const char *html_text_opt_0_footnotes[POCET_JAZYKOV + 1] =
 // for other languages use: ""
 const char *html_text_opt_0_footnotes_explain[POCET_JAZYKOV + 1] =
 {
-	"Vo výslednej modlitbe (najmä posvätné čítania) budú zobrazené aj poznámky pod čiarou (a odkazy na ne).",
+	"Vo výslednej modlitbe (najmä posvätné čítania) budú zobrazené aj poznámky (v texte resp. pod čiarou vrátane odkazov na ne).",
 	"",
 	"",
 	"",

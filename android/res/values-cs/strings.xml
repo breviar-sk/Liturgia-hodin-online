@@ -31,7 +31,7 @@
     <string name="display_communia_info">info, odkud se berou společné texty</string>
     <string name="verse_numbering">číslování veršů</string>
     <string name="bible_references">biblické odkazy</string>
-    <string name="footnotes">poznámky pod čarou</string>
+    <string name="footnotes">poznámky (v textu, pod čarou)</string>
     <string name="liturgical_readings">liturgická čtení</string>
     <string name="psalms_omisions">vynechávky ze žalmů</string>
 
@@ -84,10 +84,10 @@
 
     <string name="menu_about">O...</string>
     <string name="about">O aplikaci</string>
-    <string name="about_PROJECT_URL">ebreviar.cz</string>
+    <string name="about_PROJECT_URL">breviar.cz</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Aplikace Breviář pro OS Android</string>
-    <string name="about_SPECIAL_CREDITS">Děkuji za souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.</string>
+    <string name="about_SPECIAL_CREDITS">Děkuji za pomoc, spolupráci a souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.</string>
     <string name="about_PROJECT_SOURCE_STORAGE">GitHub-u</string>
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
