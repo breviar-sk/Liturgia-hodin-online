@@ -10429,6 +10429,7 @@ _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_SK, "05OKT_cCIT2", 2 },
 	{ JAZYK_SK, "15SEP_cCIT2", 2 },
 	{ JAZYK_UNDEF, "VPCHR_cCIT2", 2 },
+	{ JAZYK_SK, "25NOV_cCIT2", 2 },
 };
 
 _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
