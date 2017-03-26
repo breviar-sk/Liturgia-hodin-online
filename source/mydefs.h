@@ -83,7 +83,7 @@
 #define SCRIPT_PATH_PREFIX   ""
 #endif
 
-#define SCRIPT_PATH(a)       SCRIPT_PATH_PREFIX""a
+#define SCRIPT_PATH(a)       SCRIPT_PATH_PREFIX "" a
 
 #if defined(USE_UNCGI)
 #define UNCGI_PATH(a)        SCRIPT_PATH("uncgi.cgi/")a
