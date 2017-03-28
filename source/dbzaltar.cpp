@@ -9998,11 +9998,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 			_set_zalmy_za_zosnulych(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		// 1. čítanie je zväčša odlišné pre spoločné časti sviatkov svätých takto:
-		// - I. zväzok (advent, vianoce) a II. zväzok (pôst),
-		// - II. zväzok (veľká noc),
-		// - III. a IV. zväzok (obdobie cez rok).
-		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -10400,7 +10395,7 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 };
 
 _struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
-	{ JAZYK_UNDEF, "OZZ_OCR_cCIT1", 3 },
+	{ JAZYK_UNDEF, "OZZ_cCIT1", 3 },
 	{ JAZYK_UNDEF, "SCPM_OCR_cCIT1", 2 },
 	{ JAZYK_UNDEF, "SCSM_ZVI_cCIT1", 2 },
 	{ JAZYK_UNDEF, "SCSM_ZVII_cCIT1", 2 },
