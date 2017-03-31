@@ -1397,7 +1397,7 @@ void _main_prazdny_formular(void){
 #define EXPORT_FOOTNOTES ANO
 #define EXPORT_FULL_TEXT ((!vnutri_full_text || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT)) && !(vnutri_full_text && isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
 #define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!(vnutri_footnote || vnutri_note) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
-#define EXPORT_HVIEZDICKA(modlitba) ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || (modlitba == MODL_POSV_CITANIE) || !(_global_jazyk == JAZYK_CZ)) && !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
+#define EXPORT_HVIEZDICKA(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
 #define EXPORT_TROJUHOLNIK ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
 #define EXPORT_VERSE_NUMBER (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY) && (EXPORT_FULL_TEXT))
 
@@ -1530,12 +1530,21 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 		c = state.result;
 		// Export("inside[%c]...", c);
 		switch (c) {
-			// ak sa nachádza znak CHAR_KEYWORD_BEGIN (t. j. '{') len tak voľne v texte, program zblbol; nevedel zistiť, či ide o keyword alebo nie; pokus o opravu
+
 		case CHAR_KEYWORD_BEGIN:
+
+			// ak sa nachádza znak CHAR_KEYWORD_BEGIN (t. j. '{') len tak voľne v texte, program zblbol; nevedel zistiť, či ide o keyword alebo nie; pokus o opravu
+			DetailLog("CHAR_KEYWORD_BEGIN");
+
 			isbuff = 1;
 			buff_index = 0;
+
 			continue;
+
 		case CHAR_KEYWORD_END:
+
+			DetailLog("CHAR_KEYWORD_END");
+
 			isbuff = 0;
 			strbuff[buff_index] = '\0';
 			DetailLog("\nFile %s, \n\tparam {%s} found\n", fname, strbuff);
@@ -1788,11 +1797,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 			else {
 				// !equalsi(rest, modlparam)
 				// write = NIE; -- aby mohli byt nestovane viacere :-)
-				DetailLog("parameter does not match: %s != %s\n", rest, modlparam);
+				DetailLog("parameter does not match: %s != %s; vnutri_inkludovaneho == %d\n", rest, modlparam, vnutri_inkludovaneho);
 
 				// red asterisk, red cross
-				if ((equals(strbuff, PARAM_RED_HVIEZDICKA) || equals(strbuff, PARAM_RED_KRIZIK))
-					&& (vnutri_inkludovaneho == ANO)) {
+				if ((equals(strbuff, PARAM_RED_HVIEZDICKA) || equals(strbuff, PARAM_RED_KRIZIK)) && (vnutri_inkludovaneho == ANO)) 
+				{
+					DetailLog("idem exportovať hviezdičku...\n");
 					if (EXPORT_HVIEZDICKA(_global_modlitba)) {
 						Export("<" HTML_SPAN_RED ">%s" HTML_SPAN_END, strbuff);
 					}
