@@ -9395,6 +9395,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 				nazov_kalendara_vyber[KALENDAR_CZ_SDB]);
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 			Export("<option%s>%s</option>\n",
+				(_global_kalendar == KALENDAR_CZ_OFM) ? html_option_selected : STR_EMPTY,
+				nazov_kalendara_vyber[KALENDAR_CZ_OFM]);
+			Export("<option%s>%s</option>\n",
 				(_global_kalendar == KALENDAR_CZ_CSSR) ? html_option_selected : STR_EMPTY,
 				nazov_kalendara_vyber[KALENDAR_CZ_CSSR]);
 #endif

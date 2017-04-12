@@ -477,11 +477,11 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -507,6 +507,7 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "SK OCD"
 	, "HU SVD"
 	, "агульны BY"
+	, "CZ OFM"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -534,6 +535,7 @@ const char *nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, "OCD"
 	, "SVD"
 	, " BY"
+	, "OFM"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -563,6 +565,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "pre bosých karmelitánov (OCD)"
 	, "verbitás zsolozsmája"
 	, "агульны [Belarus]"
+	, "s vlastními františkánskými texty (OFM)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -592,6 +595,7 @@ const char *nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "pre bosých karmelitánov (OCD)"
 	, "verbitás zsolozsmája"
 	, "агульны [Belarus]"
+	, "pro františkány (OFM)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -4582,7 +4586,7 @@ const char *text_JAN_14_CSSR[POCET_JAZYKOV + 1] =
 const char *text_JAN_14_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Odorika z Pordenone, kňaza, člena 1. rádu",
-	"",
+	"Bl. Odorika z Pordenone, kněze 1. řádu",
 	"",
 	"",
 	"",

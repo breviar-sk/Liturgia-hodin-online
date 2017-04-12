@@ -3646,30 +3646,30 @@ void _set_zalmy_najsv_mena_jezisovho_czop(short int modlitba){
 }// _set_zalmy_najsv_mena_jezisovho_czop()
 
 // SK OFM
-void _set_zalmy_najsv_mena_jezisovho_sk_ofm(short int modlitba){
+void _set_zalmy_najsv_mena_jezisovho_sk_ofm(short int modlitba) {
 	Log("_set_zalmy_najsv_mena_jezisovho_sk_ofm(%s) -- begin\n", nazov_modlitby(modlitba));
-	if (modlitba == MODL_VESPERY){
+	if (modlitba == MODL_VESPERY) {
 		set_zalm(1, modlitba, "z46.htm", "ZALM46");
 		set_zalm(2, modlitba, "z116.htm", "ZALM116,10-19");
 		set_zalm(3, modlitba, "ch_flp2.htm", "CHVAL_FLP2");
 	}
-	if (modlitba == MODL_POSV_CITANIE){
+	if (modlitba == MODL_POSV_CITANIE) {
 		set_zalm(1, modlitba, "z8.htm", "ZALM8");
-		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
+		if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFM))) {
 			set_zalm(2, modlitba, "z19.htm", "ZALM19");
 		}
 		else {
 			set_zalm(2, modlitba, "z19.htm", "ZALM19,2-7");
 		}
 		// 2011-09-06: možnosť zvoliť žalm 95
-		if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)){
+		if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)) {
 			set_zalm(3, modlitba, "z95.htm", "ZALM95");
 		}
-		else{
+		else {
 			set_zalm(3, modlitba, "z24.htm", "ZALM24");
 		}
 	}
-	else if (modlitba == MODL_RANNE_CHVALY){
+	else if (modlitba == MODL_RANNE_CHVALY) {
 		_set_zalmy_1nedele_rch();
 	}
 	Log("_set_zalmy_najsv_mena_jezisovho_sk_ofm(%s) -- end\n", nazov_modlitby(modlitba));
