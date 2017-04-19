@@ -1195,6 +1195,7 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 	Log("set_hymnus_kompletorium_obd(): začiatok\n");
 	short int ktory; // 0 or 1
 	// CZ OP: hymnus pre kompletórium i MCD sa strieda po týždňoch: "V naší provincii se vžil zvyk pro obojí - pro kompletář i pro modlitbu během dne, že se používá hymnus "A" pro liché a hymnus "B" pro sudé týdny."
+	char _anchor_pom[SMALL];
 
 	// hymnusy sú rovnaké v pôstnom období ako pre cezročné obdobie; hymnus pre veľkonočné obdobie je jediný, odlišný
 	short int pom_litobd = litobd;
@@ -1261,9 +1262,24 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 				ktory = 2; // obidva!
 			}
 		}
-		sprintf(_anchor, "%c_%s_%d", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, ktory * dva_hymny);
+
+		// úprava kotvy pre český breviář, ignorovať aj nastavenie ktory, aj dva_hymny
+		if (_global_jazyk == JAZYK_CZ) {
+			sprintf(_anchor, "%c_%s", pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+		}
+		else {
+			sprintf(_anchor, "%c_%s_%d", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, ktory * dva_hymny);
+		}
+		
 		_add_special_anchor_postfix();
 	}
+
+	// úprava kotvy pre český breviář, VN1 (HVV obsahujú o jeden viac ako v mezidobí)
+	if ((_global_jazyk == JAZYK_CZ) && (pom_litobd == OBD_VELKONOCNE_I)) {
+		mystrcpy(_anchor_pom, _anchor, SMALL);
+		sprintf(_anchor, "%s" STR_UNDERSCORE "%s", nazov_OBD[pom_litobd], _anchor_pom);
+	}
+
 	_set_hymnus(modlitba, _file, _anchor);
 	set_LOG_zaltar;
 	file_name_obnov();
@@ -10350,12 +10366,18 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "p_HYMNUS_NE", 2 },
 	{ JAZYK_CZ, "k_HYMNUS_SO", 2 },
 	{ JAZYK_CZ, "k_HYMNUS_NE", 2 },
-	{ JAZYK_CZ, "k_HYMNUS_2_CZ", 6 },
-	{ JAZYK_CZ, "k_HYMNUS_0_CZ", 5 },
-	{ JAZYK_CZ, "k_HYMNUS_1_CZ", 5 },
-	{ JAZYK_CZ, "p_HYMNUS_2_CZ", 6 },
-	{ JAZYK_CZ, "p_HYMNUS_0_CZ", 5 },
-	{ JAZYK_CZ, "p_HYMNUS_1_CZ", 5 },
+	{ JAZYK_CZ, "k_HYMNUS_CZ", 6 },
+	{ JAZYK_CZ, "p_HYMNUS_CZ", 6 },
+	{ JAZYK_CZ, "VN1_p_HYMNUS_NE", 2 },
+	{ JAZYK_CZ, "VN1_k_HYMNUS_SO", 2 },
+	{ JAZYK_CZ, "VN1_k_HYMNUS_NE", 2 },
+	{ JAZYK_CZ, "VN1_k_HYMNUS_PO", 2 },
+	{ JAZYK_CZ, "VN1_k_HYMNUS_UT", 2 },
+	{ JAZYK_CZ, "VN1_k_HYMNUS_STR", 2 },
+	{ JAZYK_CZ, "VN1_k_HYMNUS_STV", 2 },
+	{ JAZYK_CZ, "VN1_k_HYMNUS_PI", 2 },
+	{ JAZYK_CZ, "VN1_k_HYMNUS_CZ", 7 },
+	{ JAZYK_CZ, "VN1_p_HYMNUS_CZ", 7 },
 	{ JAZYK_CZ, "_2NE_1HYMNUS_CZ", 3 },
 	{ JAZYK_CZ, "_2NE_rHYMNUS_CZ", 2 },
 	{ JAZYK_CZ, "_2NE_vHYMNUS_CZ", 2 },
