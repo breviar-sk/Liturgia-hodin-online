@@ -54,6 +54,10 @@
 	font-weight: normal; 
 }
 
+.respons p.strong, .respons p strong { 
+	font-weight: bold; 
+}
+
 .respons p.respR, .respons p.respV, .respons p.respO, .respons p.respF, p.respR, p.respV, p.respO, p.respF, .respR, .respV, .respO, .respF { 
 	font-weight: bold; 
 	margin: 0; 
@@ -84,6 +88,10 @@
 	color: #ff0000; 
 	content: 'F. '; 
 	font-weight: bold; 
+}
+
+.respons .redsmall, .responsory .redsmall { 
+	font-weight: normal;
 }
 
 div.hymn, div.responsory, div.readings {
@@ -211,6 +219,10 @@ div.responsory {
 	font-style: normal; 
 	font-weight: normal; 
 	margin: 0; 
+}
+
+.preces .redsmall { 
+	font-weight: normal;
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
