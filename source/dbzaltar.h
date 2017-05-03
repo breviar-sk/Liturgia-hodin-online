@@ -1104,6 +1104,15 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_svsv;\
 }
 
+#define _vlastna_cast_kresponz_po_ve {\
+	if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {\
+		_vlastna_cast_kresponz_ve;\
+	}\
+	else if ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN)) {\
+		_vlastna_cast_kresponz_po;\
+	}\
+}
+
 #define _vlastna_cast_mcd_ant_kcitresp_modl {\
 	modlitba = MODL_PREDPOLUDNIM;\
 	_vlastna_cast_antifony_rovnake;\
@@ -2094,8 +2103,8 @@ extern const char *text_JAN_04_CM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_25_CM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_01_CM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_18_CM[POCET_JAZYKOV + 1];
-extern const char *text_MAR_15_CM[POCET_JAZYKOV + 1];
 extern const char *text_APR_26_CM[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_09_CM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_23_CM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_26_CM[POCET_JAZYKOV + 1];
 extern const char *text_JUL_30_CM[POCET_JAZYKOV + 1];

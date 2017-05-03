@@ -109,6 +109,13 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.</li> -->
 
+<p><b>Verzia 1.14.3</b>
+<ul>
+<li>Poznámky v texte a pod čiarou pre druhé čítania (posvätné čítanie): vlastné časti; liturgické obdobia zv. I a III.</li>
+<li>Opravy v liturgickom kalendári a textoch (OCD, OFM; CM: presun slávnosti sv. Lujzy).</li>
+<li>Názvy liturgických období uvádzané s veľkým začiatočným písmenom.</li>
+</ul>
+
 <p><b>Verze 1.14.2</b>
 <ul>
 <li>Zobrazenie len jednej možnosti z viacerých (hymny, prvé, druhé čítanie, antifóny, prosby).</li>

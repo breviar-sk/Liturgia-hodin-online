@@ -109,6 +109,13 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
 
+<p><b>Verze 1.14.3</b>
+<ul>
+<li>Oprava zobrazení hymnu v modlitbě před spaním (doba velikonoční).</li>
+<li>Poznámky pod čarou ke druhým čtením: vlastní texty o svatých.</li>
+<li>Opravy v liturgickém kalendáři a textech.</li>
+</ul>
+
 <p><b>Verze 1.14.2</b>
 <ul>
 <li>Zobrazení pouze jedné možnosti z více (hymny, první, druhé čtení, antifony, prosby).</li>

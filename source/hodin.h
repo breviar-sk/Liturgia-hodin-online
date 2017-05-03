@@ -5840,19 +5840,6 @@ const char *text_MAR_15_CSSR[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_MAR_15_CM[POCET_JAZYKOV + 1] =
-{
-	"Sv. Lujzy de Marillac, rehoľníčky, " HTML_LINE_BREAK "spoluzakladateľky spoločnosti Dcér kresťanskej lásky",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"ru_text",
-	"by_text",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
 const char *text_MAR_17[POCET_JAZYKOV + 1] =
 {
 	"Sv. Patrika, biskupa",
@@ -6726,6 +6713,19 @@ const char *text_MAJ_09_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bolognai Szent Katalin, szűz a II. Rendből",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_MAJ_09_CM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Lujzy de Marillac, rehoľníčky, " HTML_LINE_BREAK "spoluzakladateľky spoločnosti Dcér kresťanskej lásky",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
