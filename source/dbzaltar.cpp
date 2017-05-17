@@ -9480,13 +9480,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		Log("  _anchor_pom == %s\n", _anchor_pom);
 
 		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
-		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)){
-			strcat(_anchor_zvazok, VELKONOCNA_PRIPONA);
-		}
+		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[OBD_CEZ_ROK]); // LA LH (vol. I, p. 1242-1244; vol. II, p. 1733-1735; vol. III, p. 1616-1619; vol. IV, p. 1606-1609) have the same two readings; no need for _global_den.litobd
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
 		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY, _anchor_zvazok, _anchor_pom, _file, force);
+
 		// 2006-08-07: bude treba otestovať, pretože zatiaľ to nemá asi žiadny svätec nastavené
 		if(a == MODL_SPOL_CAST_SV_ZENA_MANZ){
 			_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
@@ -10414,6 +10412,7 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_SK, "TK_vHYMNUS", 2 },
 	{ JAZYK_SK, "21NOV_cHYMNUS", 2 },
 	{ JAZYK_CZ, "04JUL_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ZDS_cHYMNUS", 2 },
 };
 
 _struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
