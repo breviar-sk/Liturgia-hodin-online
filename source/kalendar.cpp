@@ -9504,6 +9504,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_RANNE_CHVALY;
 				if (_global_jazyk != JAZYK_HU){
 					_vlastna_cast_full(modlitba);
+					_vlastna_cast_kresponz_po_ve;
 					_set_zalmy_1nedele_rch();
 				}
 				else{
@@ -9514,6 +9515,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_VESPERY;
 				if (_global_jazyk != JAZYK_HU){
 					_vlastna_cast_full(modlitba);
+					_vlastna_cast_kresponz_po_ve;
 					// žalmy, ktoré sú len pre prvé vešpery sviatku duchovných pastierov, _set_zalmy_sviatok_duch_past()
 					_set_zalmy_vesp_113_146_ef(modlitba);
 				}
