@@ -7103,7 +7103,7 @@ void xml_export_options(void){
 					break;
 				} // switch(j)
 			}// for j
-			Export(ELEM_END(XML_OPT_5_ALTERNATIVES) "\n");
+			Export(ELEM_END(XML_OPT_6_ALTERNATIVES_MULTI) "\n");
 			break;
 		} // switch(i)
 	}// for i
