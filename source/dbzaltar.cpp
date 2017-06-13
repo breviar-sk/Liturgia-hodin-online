@@ -8695,7 +8695,7 @@ label_24_DEC:
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
-		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);
+		sprintf(_anchor, "%s_%c%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);
 		_set_antifona1(modlitba, _file, _anchor);
 		set_LOG_litobd;
 
@@ -10454,7 +10454,7 @@ _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCPNV_iANT1", 2 },
 	{ JAZYK_UNDEF, "VPCHR_iANT1", 2 },
 	{ JAZYK_UNDEF, "SPMVSr_BENEDIKTUS", 6 },
-	{ JAZYK_UNDEF, "SPMVSi_ANT1", 2 },
+	{ JAZYK_UNDEF, "SPMVS_iANT1", 2 },
 	{ JAZYK_UNDEF, "SCPM_iANT1", 2 },
 	{ JAZYK_UNDEF, "SCPM_1MAGNIFIKAT", 2 },
 	{ JAZYK_UNDEF, "SCDP_vMAGNIFIKAT", 2 },
