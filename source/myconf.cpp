@@ -33,8 +33,6 @@
 #include "mystring.h"
 #include "liturgia.h"
 
-#define MAIL_ADDRESS_DEFAULT "videky@breviar.sk"
-
 char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR] = "http://breviar.sk/";
 char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "breviar.sk";
 char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = "videky@breviar.sk";

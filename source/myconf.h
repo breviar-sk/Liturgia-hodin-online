@@ -17,6 +17,8 @@
 #include "mydefs.h"
 #include "common.h"
 
+#define MAIL_ADDRESS_DEFAULT "videky@breviar.sk"
+
 #define MAX_HTTP_STR	80
 #define MAX_MAIL_STR	50
 #define MAX_INCD_STR	50

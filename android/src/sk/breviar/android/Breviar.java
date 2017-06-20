@@ -43,7 +43,7 @@ import sk.breviar.android.UrlOptions;
 import sk.breviar.android.Util;
 
 public class Breviar extends Activity implements View.OnLongClickListener, ScaleGestureDetector.OnScaleGestureListener {
-    static String scriptname = "l.cgi";
+    static String scriptname = "cgi-bin/l.cgi";
     static final int DIALOG_ABOUT = 1;
     static final int DIALOG_NEWS = 2;
 
@@ -192,6 +192,9 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
           if (url.startsWith("mailto:")) {
             String[] blah_email = url.split(":");
+            if (blah_email.length < 2) {
+              return false;
+            }
             Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
             emailIntent.setType("text/plain");
             emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{blah_email[1]});

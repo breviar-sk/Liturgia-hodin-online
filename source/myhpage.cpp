@@ -498,6 +498,11 @@ void _patka(FILE * expt){
 	mystrcpy(mail_addr, cfg_mail_address_default[_global_jazyk], MAX_MAIL_STR);
 
 	Log("mail_addr == %s\n", mail_addr);
+	if (strlen(mail_addr) < 6) {
+		mystrcpy(mail_addr, (char *)MAIL_ADDRESS_DEFAULT, MAX_MAIL_STR);
+	}
+
+	Log("mail_addr == %s\n", mail_addr);
 	Export_to_file(expt, "&#169; %d%s <" HTML_LINK_NORMAL " href=\"mailto:%s\">%s" HTML_A_END "\n", baserok, rok, mail_addr, html_mail_label);
 
 	Export_to_file(expt, HTML_P_END "\n");
