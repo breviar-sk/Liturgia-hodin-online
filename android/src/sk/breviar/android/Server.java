@@ -124,6 +124,41 @@ public class Server extends Thread {
       }
     }
 
+    synchronized void handleCgi(Socket client, String dokument, boolean postmethod, int cntlen, byte[] buf) throws IOException {
+      // Log.v("breviar", "handling cgi request");
+      client.getOutputStream().write(
+          (
+          "HTTP/1.1 200 OK\n" +
+          "Server: Breviar\n" +
+          "Connection: close\n"
+          ).getBytes("UTF-8")
+      );
+      client.getOutputStream().flush();
+      FileDescriptor[] pipe = createPipe();
+      Copy cp = new Copy( new FdInputStream(pipe[0]), client.getOutputStream() );
+      cp.start();
+      String qs = dokument.substring(scriptname.length()+1);
+      FileDescriptor[] pipein = createPipe();
+      Copy cpin = new Copy( new ByteArrayInputStream(buf, 0, cntlen), new FdOutputStream(pipein[1]) );
+      cpin.start();
+      if (!postmethod) {
+        persistentOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=GET\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
+      } else {
+        persistentOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=POST\001CONTENT_TYPE=application/x-www-form-urlencoded\001CONTENT_LENGTH=" +
+            cntlen + "\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
+      }
+      Log.v("breviar", "persistentOpts = " + persistentOpts);
+      boolean ok;
+      do {
+        try {
+          ok = true;
+          cp.join();
+        } catch (InterruptedException e) {
+          ok = false;
+        }
+      } while (!ok);
+    }
+
     synchronized void handle(Socket client) throws IOException {
       String dokument = "unknown";
       BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
@@ -162,40 +197,9 @@ public class Server extends Thread {
       }
       Log.v("breviar", "handle connection: document = " + dokument);
 
-      if (dokument.length() >=scriptname.length() && 
+      if (dokument.length() > scriptname.length() &&
           dokument.substring(0,scriptname.length()).equals(scriptname)) {
-        // Log.v("breviar", "handling cgi request");
-        client.getOutputStream().write(
-            (
-            "HTTP/1.1 200 OK\n" +
-            "Server: Breviar\n" +
-            "Connection: close\n"
-            ).getBytes("UTF-8")
-        );
-        client.getOutputStream().flush();
-        FileDescriptor[] pipe = createPipe();
-        Copy cp = new Copy( new FdInputStream(pipe[0]), client.getOutputStream() );
-        cp.start();
-        String qs = dokument.substring(scriptname.length()+1);
-        FileDescriptor[] pipein = createPipe();
-        Copy cpin = new Copy( new ByteArrayInputStream(buf, 0, cntlen), new FdOutputStream(pipein[1]) );
-        cpin.start();
-        if (!postmethod) {
-          persistentOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=GET\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
-        } else {
-          persistentOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=POST\001CONTENT_TYPE=application/x-www-form-urlencoded\001CONTENT_LENGTH=" +
-              cntlen + "\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
-        }
-        Log.v("breviar", "persistentOpts = " + persistentOpts);
-        boolean ok;
-        do {
-          try {
-            ok = true;
-            cp.join();
-          } catch (InterruptedException e) {
-            ok = false;
-          }
-        } while (!ok);
+        handleCgi(client, dokument, postmethod, cntlen, buf);
       } else {
         try {
           InputStream infile = ctx.getAssets().open(dokument, AssetManager.ACCESS_STREAMING);
@@ -209,16 +213,20 @@ public class Server extends Thread {
           // do not start new thread, just copy here.
           new Copy( infile, client.getOutputStream() ).run();
         } catch (IOException e) {
-          // Log.v("breviar", "file not found: " + dokument);
-          client.getOutputStream().write(
-              (
-              "HTTP/1.1 404 - File Not Found\n" +
-              "Server: Breviar\n" +
-              "Connection: close\n"
-              ).getBytes("UTF-8")
-          );
-          client.getOutputStream().close();
-           Log.v("breviar", "not found file " + dokument);
+          Log.v("breviar", "file not found: " + dokument);
+          // last effort - default page
+          try {
+            handleCgi(client, scriptname + "?qt=pdnes&" + persistentOpts , false, 0, new byte[0]);
+          } catch (IOException e2) {
+            client.getOutputStream().write(
+                (
+                "HTTP/1.1 404 - File Not Found\n" +
+                "Server: Breviar\n" +
+                "Connection: close\n"
+                ).getBytes("UTF-8")
+            );
+            client.getOutputStream().close();
+          }
         }
       }
     }
