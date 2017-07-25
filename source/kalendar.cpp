@@ -15568,7 +15568,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_full(modlitba);
-					_set_zalmy_sviatok_krstu(modlitba);
+					_set_zalmy_vesp_110_122_zjv15(modlitba);
 
 					_vlastna_cast_mcd_kcitresp_modl;
 				}

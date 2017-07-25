@@ -155,6 +155,7 @@ extern void _set_zalmy_pc_15_66(short int modlitba);
 extern void _set_zalmy_pc_40_27(short int modlitba);
 extern void _set_zalmy_pc_45_87(short int modlitba);
 extern void _set_zalmy_vesp_110_116_ef(short int modlitba);
+extern void _set_zalmy_vesp_110_122_zjv15(short int modlitba);
 extern void _set_zalmy_vesp_89_98_kol(short int modlitba);
 extern void _set_zalmy_vesp_113_146_ef(short int modlitba);
 extern void _set_zalmy_vesp_127_111_kol(short int modlitba);
