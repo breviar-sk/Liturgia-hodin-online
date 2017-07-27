@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.14.3</string>
+    <string name="version">1.14.4</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -125,6 +125,15 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Breviary application | What\'s new</b>
 
+<p><b>Version 1.14.4</b>
+<ul>
+<li>Fix: Crash after click on e-mail address.</li>
+<li>SK: Text notes for 2nd readings (communia; vol. IV).</li>
+<li>CZ: Footnotes for 2nd readings (almost complete except Easter).</li>
+<li>Fix: Antiphones (invitatory) for Memorials of the Blessed Virgin Mary on Saturday.</li>
+<li>Typos & errors fixed for all languages.</li>
+</ul>
+
 <p><b>Version 1.14.3</b>
 <ul>
 <li>Fix: Default settings.</li>
@@ -195,58 +204,6 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Version 1.12</b>
 <ul>
 <li>Possibility to display communia.</li>
-</ul>
-
-<p><b>Version 1.11.2</b>
-<ul>
-<li>New menu item: Display only normal font (vs use also bold font).</li>
-<li>Added new settings.</li>
-</ul>
-
-<p><b>Version 1.11.1</b>
-<ul>
-<li>Liturgical readings: Backward compatibility with Android 2.x and older.</li>
-</ul>
-
-<p><b>Version 1.11</b>
-<ul>
-<li>Switching night/day mode from main menu.</li>
-<li>Bigger line height for better readability.</li>
-<li>Updated “About” dialog.</li>
-</ul>
-
-<p><b>Version 1.10.1</b>
-<ul>
-<li>Minor fixes.</li>
-</ul>
-
-<p><b>Version 1.10</b>
-<ul>
-<li>Setting for displaying text of prayer in blind-friendly mode (only prayer text, without headings & rubrics) suitable for text-to-speech output.</li>
-<li>New option in main screen: Ordinarium.</li>
-<li>Fix of night-mode for Mary antiphones (compline).</li>
-<li>Compatibility with Android 5.0 Lollipop.</li>
-</ul>
-
-<p><b>Version 1.9.10</b>
-<ul>
-<li>Setting for automatic turning on silent mode when praying.</li>
-<li>SK + HU: New option for first vespers hymn (ordinary time).</li>
-</ul>
-
-<p><b>Version 1.9.9</b>
-<ul>
-<li>SK: CSS formatting of hymns.</li>
-<li>HU: Plenty of small fixes & CSS formatting.</li>
-</ul>
-
-<p><b>Version 1.9.8</b>
-<ul>
-<li>Long tap hides bottom navigation bar.</li>
-<li>Added option for not-dimming screen.</li>
-<li>SK: Various fixes.</li>
-<li>CZ: CSS formatting of psalms and canticles.</li>
-<li>HU: Plenty of small fixes.</li>
 </ul>
 
 </body></html>

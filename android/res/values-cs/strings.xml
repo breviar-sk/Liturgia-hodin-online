@@ -109,6 +109,14 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
 
+<p><b>Verze 1.14.4</b>
+<ul>
+<li>Poznámky pod čarou ke druhým čtením: doba postní, společné texty o svatých.</li>
+<li>Oprava pádu aplikace při kliknutí na e-mailovou adresu.</li>
+<li>Oprava antifon (uvedení) pro sobotní památku Panny Marie.</li>
+<li>Opravy v liturgickém kalendáři a textech (všeobecné, OFMCap).</li>
+</ul>
+
 <p><b>Verze 1.14.3</b>
 <ul>
 <li>Oprava zobrazení hymnu v modlitbě před spaním (doba velikonoční).</li>
@@ -179,46 +187,6 @@ body { background-color: #000000; color: #cccccc; }
 <li>Nová volba: Možnost použít hymny k volnému výběru.</li>
 <li>Možnost zobrazit společné texty.</li>
 <li>Úprava zalomení a korekce hymnů.</li>
-</ul>
-
-<p><b>Verze 1.11.2</b>
-<ul>
-<li>Nové slavení: Ježíše Krista, nejvyššího a věčného kněze.</li>
-<li>Nová volba v menu: Použít všude normální písmo (ne tučné).</li>
-<li>Rozšířená nastavení.</li>
-</ul>
-
-<p><b>Verze 1.11.1</b>
-<ul>
-<li>Oprava: Kompatibilita s Android 2.x a staršími.</li>
-</ul>
-
-<p><b>Verze 1.11</b>
-<ul>
-<li>Přepínání nočního/denního režimu přímo v hlavním menu.</li>
-<li>Větší výška řádkování pro lepší čitelnost.</li>
-<li>Dialog „O aplikaci“ upraven.</li>
-</ul>
-
-<p><b>Verze 1.10</b>
-<ul>
-<li>Možnost zobrazit modlitby v režimu pro nevidomé a slabozraké (text modliteb bez nadpisů a rubrik), vhodné pro hlasový výstup.</li>
-<li>Nová možnost na úvodní obrazovce: Ordinárium (Uspořádání).</li>
-<li>Oprava mariánských antifon (kompletář/modlitba před spaním) pro noční režim.</li>
-<li>Kompatibilita s Android 5.0 Lollipop.</li>
-</ul>
-
-<p><b>Verze 1.9.10</b>
-<ul>
-<li>Možnost automatického přepnutí zařízení do tichého režimu počas modlitby.</li>
-</ul>
-
-<p><b>Verze 1.9.8</b>
-<ul>
-<li>CSS změny: Zalamování žalmů a kantik přepracováno.</li>
-<li>Doplněno číslování veršů žalmů a kantik.</li>
-<li>Dlouhé stlačení skryje spodní navigační lištu.</li>
-<li>Přidaná možnost nezhasínat obrazovku.</li>
 </ul>
 
 </body></html>

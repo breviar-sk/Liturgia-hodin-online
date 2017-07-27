@@ -109,20 +109,16 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
 
-<p><b>Verzió 1.14.3</b>
+<p><b>Verzió 1.14.4</b>
 <ul>
 <li>Frissítések a honlapról.</li>
+<li>Szövegek rögzítése.</li>
 </ul>
 
 <p><b>Verzió 1.14.2</b>
 <ul>
 <li>Csak egy lehetőség megjelenítése több közül (himnusz, első, második olvasmány, antifónák, fohászok).</li>
 <li>Szűz Mária szombati emléknapja nincs a kínálatban más Szűz Mária emléknapkor ill. ünnepnapkor.</li>
-<li>Frissítések a honlapról.</li>
-</ul>
-
-<p><b>Verzió 1.14.1</b>
-<ul>
 <li>Frissítések a honlapról.</li>
 </ul>
 
@@ -136,11 +132,6 @@ body { background-color: #000000; color: #cccccc; }
 <ul>
 <li>Új beállítási lehetőség: fehér/fekete háttért alkalmazni (vetítő/AMOLED kijelző).</li>
 <li>Július 22. ünnepként van bevezetve.</li>
-</ul>
-
-<p><b>Verzió 1.13 és 1.13.1</b>
-<ul>
-<li>Frissítések a honlapról.</li>
 </ul>
 
 <p><b>Verzió 1.12.3</b>
@@ -163,57 +154,6 @@ body { background-color: #000000; color: #cccccc; }
 <p><b>Verzió 1.12</b>
 <ul>
 <li>A közös részből való szövegek kiválasztásának lehetősége (a Halotti zsolozsmát beleértve).</li>
-</ul>
-
-<p><b>Verzió 1.11.2</b>
-<ul>
-<li>Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.</li>
-<li>Új beállítások hozzáadása.</li>
-</ul>
-
-<p><b>Verzió 1.11.1</b>
-<ul>
-<li>Visszafelé való kompatibilitás javítása az Android 2.x és régebbi verziókkal.</li>
-<li>Zsoltárok közötti térköz növelése azonos antifónák esetén.</li>
-<li>Több bekezdésből álló könyörgések olvashatóbb tagolása.</li>
-</ul>
-
-<p><b>Verzió 1.11</b>
-<ul>
-<li>Éjszakai/nappali mód váltása a főmenüből.</li>
-<li>Nagyobb sorköz a jobb olvashatóság érdekében.</li>
-<li>Frissített „Névjegy” párbeszédablak.</li>
-<li>Gépelési hibák javítása mindegyik nyelvnél.</li>
-</ul>
-
-<p><b>Verzió 1.10</b>
-<ul>
-<li>Az imák egyszerűsített megjelenítése (csak az imák szövege, címek és rubrikák nélkül) látássérültek számára. Felolvasó gépek használhatják.</li>
-<li>Új lehetőség a főoldalon: Általános rész.</li>
-<li>A Mária antifónák éjszakai módjának javítása.</li>
-<li>Android 5.0 (Lollipop) kompatibilitás.</li>
-</ul>
-
-<p><b>Verzió 1.9.10</b>
-<ul>
-<li>Új beállítási lehetőség: automatikus csendes módba kapcsolás imádság közben.</li>
-<li>Új beállítási lehetőség: I. Esti dicséret himnusza (évközi időben).</li>
-<li>Fohászok formázása.</li>
-</ul>
-
-<p><b>Verzió 1.9.9</b>
-<ul>
-<li>A befejező imaóra kantikuma félkövéren jelenik meg.</li>
-<li>Hármaspont karakter használata.</li>
-<li>Magyar helyesírás szerinti gondolatjel az angolszász helyett.</li>
-<li>Himnuszok, igehelyek és imaóra részek formázása.</li>
-</ul>
-
-<p><b>Verzió 1.9.8</b>
-<ul>
-<li>Hosszú érintésre elrejti az alsó navigációs sávot.</li>
-<li>Új opció: a képernyő ne sötétüljön el.</li>
-<li>Sok apró javítás.</li>
 </ul>
 
 </body></html>

@@ -107,7 +107,13 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Aplikácia Breviár | Čo je nové</b>
 
-<!-- <li>Nové nastavenie: Zobraziť poznámky pod čiarou pre druhé čítania.</li> -->
+<p><b>Verzia 1.14.4</b>
+<ul>
+<li>Poznámky v texte a pod čiarou pre druhé čítania (posvätné čítanie): spoločné časti; zv. IV.</li>
+<li>Oprava pádu aplikácie pri kliknutí na e-mailovú adresu.</li>
+<li>Oprava antifón (invitatórium) pre sobotnú spomienku Panny Márie.</li>
+<li>Opravy v textoch (všeobecné, CSsR, OCD, OFM).</li>
+</ul>
 
 <p><b>Verzia 1.14.3</b>
 <ul>
@@ -191,36 +197,6 @@ body { background-color: #000000; color: #cccccc; }
 <li>Prepínanie nočného/denného režimu priamo v hlavnom menu.</li>
 <li>Väčšia výška riadkov pre lepšiu čitateľnosť.</li>
 <li>Dialóg „O aplikácii“ upravený.</li>
-</ul>
-
-<p><b>Verzia 1.10.1</b>
-<ul>
-<li>Doplnené: číslovanie veršov pre všetky dlhé biblické čítania.</li>
-</ul>
-
-<p><b>Verzia 1.10</b>
-<ul>
-<li>Možnosť zobraziť modlitby v režime pre nevidiacich a slabozrakých (text modlitieb bez nadpisov a rubrík), vhodné pre hlasový výstup.</li>
-<li>Nová možnosť na úvodnej obrazovke: Ordinárium.</li>
-<li>Oprava mariánskych antifón (kompletórium) pre nočný režim.</li>
-<li>Kompatibilita s Android 5.0 Lollipop.</li>
-</ul>
-
-<p><b>Verzia 1.9.10</b>
-<ul>
-<li>Možnosť vypnúť zvonenie počas modlitby (automatické prepnutie do tichého režimu).</li>
-<li>Nové nastavenie: voľba hymnusu pre prvé vešpery Cezročného obdobia.</li>
-</ul>
-
-<p><b>Verzia 1.9.9</b>
-<ul>
-<li>Formátovanie hymnusov (CSS).</li>
-</ul>
-
-<p><b>Verzia 1.9.8</b>
-<ul>
-<li>Dlhé stlačenie skryje navigačnú lištu.</li>
-<li>Pridaná možnosť nezhasínať obrazovku.</li>
 </ul>
 
 </body></html>
