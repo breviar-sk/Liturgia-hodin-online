@@ -17356,6 +17356,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 					modlitba = MODL_PRVE_VESPERY;
 					_vlastna_cast_full(modlitba);
+					_set_zalmy_op_dominik(modlitba);
+					_vlastna_cast_modlitba_ina;
 
 					modlitba = MODL_PRVE_KOMPLETORIUM;
 					_set_kompletorium_slavnost(modlitba);
@@ -17368,6 +17370,14 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_full(modlitba);
+					_set_zalmy_op_dominik(modlitba);
+
+					modlitba = MODL_PREDPOLUDNIM;
+					_set_zalmy_op_dominik(modlitba);
+					modlitba = MODL_NAPOLUDNIE;
+					_set_zalmy_op_dominik(modlitba);
+					modlitba = MODL_POPOLUDNI;
+					_set_zalmy_op_dominik(modlitba);
 
 					_vlastna_cast_mcd_ant_kcitresp_modl;
 
@@ -17381,6 +17391,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_full(modlitba);
+					_set_zalmy_op_dominik(modlitba);
 
 					modlitba = MODL_KOMPLETORIUM;
 					_set_kompletorium_slavnost(modlitba);
@@ -18867,10 +18878,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_VESPERY;
-					_vlastna_cast_kresponz;
-					_vlastna_cast_kcitanie;
-					_vlastna_cast_magnifikat;
-					_vlastna_cast_modlitba;
+					_vlastna_cast_full_okrem_prosieb(modlitba);
+					_vlastna_cast_modlitba_ina;
 
 					break;
 				}
@@ -19473,8 +19482,11 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_full(modlitba);
 
+					_vlastna_cast_mcd_ant_kcitresp_modl;
+
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_full_okrem_prosieb(modlitba);
+					_vlastna_cast_modlitba_ina;
 
 					_vlastna_cast_mcd_kcitresp_modl;
 
