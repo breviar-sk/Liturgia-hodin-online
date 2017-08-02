@@ -17634,10 +17634,12 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 		_global_svaty1.farba = LIT_FARBA_BIELA;
 		_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) || (_global_jazyk == JAZYK_CZ_OP)){
 			if (poradie_svaty == 2){
 
-				file_name_vlastny_kalendar(_global_kalendar);
+				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
+					file_name_vlastny_kalendar(_global_kalendar);
+				}
 
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -17656,7 +17658,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			}
 			else if (poradie_svaty == 3){
 
-				file_name_vlastny_kalendar(_global_kalendar);
+				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
+					file_name_vlastny_kalendar(_global_kalendar);
+				}
 
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -17675,7 +17679,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			}
 			else if (poradie_svaty == 4){
 
-				file_name_vlastny_kalendar(_global_kalendar);
+				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
+					file_name_vlastny_kalendar(_global_kalendar);
+				}
 
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)

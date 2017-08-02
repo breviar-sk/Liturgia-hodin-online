@@ -1799,14 +1799,20 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				// write = NIE; -- aby mohli byt nestovane viacere :-)
 				DetailLog("parameter does not match: %s != %s; vnutri_inkludovaneho == %d\n", rest, modlparam, vnutri_inkludovaneho);
 
-				// red asterisk, red cross
-				if ((equals(strbuff, PARAM_RED_HVIEZDICKA) || equals(strbuff, PARAM_RED_KRIZIK)) && (vnutri_inkludovaneho == ANO)) 
+				// red asterisk, red cross, other "red stuff"
+				if ((equals(strbuff, PARAM_RED_HVIEZDICKA)
+					|| equals(strbuff, PARAM_RED_KRIZIK)
+					|| equals(strbuff, PARAM_RED_SINGLE_BAR)
+					|| equals(strbuff, PARAM_RED_DOUBLE_BAR)
+					|| equals(strbuff, PARAM_RED_KRIZIK_DOUBLE_BAR)
+					|| equals(strbuff, PARAM_RED_SMALL_CIRCLE)
+					) && (vnutri_inkludovaneho == ANO))
 				{
 					DetailLog("idem exportovať hviezdičku...\n");
 					if (EXPORT_HVIEZDICKA(_global_modlitba)) {
 						Export("<" HTML_SPAN_RED ">%s" HTML_SPAN_END, strbuff);
 					}
-				}// PARAM_RED_HVIEZDICKA, PARAM_RED_KRIZIK
+				}// red stuff
 // red triangle (end of psalm/canticle)
 				if (equals(strbuff, PARAM_RED_TROJUHOLNIK) && (vnutri_inkludovaneho == ANO)) {
 					if (EXPORT_TROJUHOLNIK) {

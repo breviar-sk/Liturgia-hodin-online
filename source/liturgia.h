@@ -627,10 +627,14 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_PSALM_FULL_TEXT_SOFT_BEGIN    "full-text-soft"
 #define PARAM_PSALM_FULL_TEXT_SOFT_END      SYMBOL_END "" PARAM_PSALM_FULL_TEXT_SOFT_BEGIN
 
-// zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách, príp. v antifónach (červenou farbou)
-#define PARAM_RED_KRIZIK                    "†"
+// zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách, príp. v antifónach (červenou farbou); kvôli CZ OP pridané ďalšie symboly
+#define PARAM_RED_KRIZIK                    "†" // used as flexa
 #define PARAM_RED_HVIEZDICKA                "*"
-#define PARAM_RED_TROJUHOLNIK               "△" // uppercase delta: Δ
+#define PARAM_RED_TROJUHOLNIK               "△" // uppercase delta: Δ (used for doxology)
+#define PARAM_RED_SINGLE_BAR                "|" // used for pause in antiphons & responsories (when singing)
+#define PARAM_RED_DOUBLE_BAR                "||" // used for indication that chorus should join (when singing antiphons & responsories)
+#define PARAM_RED_KRIZIK_DOUBLE_BAR         "†||"
+#define PARAM_RED_SMALL_CIRCLE              "°" // used for elevation in prayer
 
 // zobrazovanie/nezobrazenie krížika (antifóna totožná s veršom žalmu/chválospevu)
 #define PARAM_KRIZIK                        "KRIZIK"
