@@ -1043,6 +1043,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_MINSK_PINSK_SPOMIENKA   130
 #define LOKAL_SLAV_VICEB_SL_MINSK_PINSK_SV 131
 #define LOKAL_SLAV_GRODZ_SL_PINSK_MINSK_SP 132
+#define LOKAL_SLAV_PRAHA_OFM               133
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined

@@ -741,6 +741,7 @@ const char *nazov_slavenia_lokal[] =
 , "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: успамін"                                               // LOKAL_SLAV_MINSK_PINSK_SPOMIENKA
 , "у Віцебскай дыяцэзіі: урачыстасць, " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: свята" // LOKAL_SLAV_VICEB_SL_MINSK_PINSK_SV
 , "у Гродзенскай дыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: успамін" // LOKAL_SLAV_GRODZ_SL_PINSK_MINSK_SP
+, "v pražském klášteře u Panny Marie Sněžné: slavnost"                                                          // LOKAL_SLAV_PRAHA_OFM
 };
 
 // names of liturgical colors
@@ -6194,6 +6195,19 @@ const char *text_APR_21_OFM[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_APR_22_OFM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Eliáša z Assisi, rehoľníka",
+	"Bl. Jiljí z Assisi, řeholníka",
+	"",
+	"",
+	"",
+	"Bl. Jiljí z Assisi, řeholníka",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_APR_22_SJ[POCET_JAZYKOV + 1] =
 {
 	"Prebl. Panny Márie, Matky Spoločnosti Ježišovej",
@@ -8602,8 +8616,8 @@ const char *text_JUN_30_CSSR[POCET_JAZYKOV + 1] =
 };
 const char *text_JUN_30_OFM[POCET_JAZYKOV + 1] =
 {
-	"",
-	"",
+	"Bl. Rajmunda Lulla, mučeníka 3. rádu",
+	"Bl. Rajmunda Lulla, mučedníka 3. řádu",
 	"",
 	"",
 	"",
@@ -8827,12 +8841,12 @@ const char *text_JUL_08_HU[POCET_JAZYKOV + 1] =
 const char *text_JUL_08_OFM[POCET_JAZYKOV + 1] =
 {
 	"",
+	"Sv. Řehoře Grassiho, biskupa, sv. Hermíny, panny, a druhů, mučedníků 1. a 3. řádu",
 	"",
 	"",
 	"",
 	"",
-	"",
-	"Boldog Grassi Gergely, püspök és vértanú társai az I és a III. Rendből",
+	"Szent Grassi Gergely, püspök és vértanú társai az I és a III. Rendből",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -8866,7 +8880,7 @@ const char *text_JUL_09_OP[POCET_JAZYKOV + 1] =
 const char *text_JUL_09_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Mikuláša Picka, Antona von Willehada a spoločníkov, " HTML_LINE_BREAK "mučeníkov v Holandsku, členov 1. rádu",
-	"",
+	"Sv. Mikuláše Picka, Antonína van Willehada a druhů, mučedníků 1. řádu",
 	"",
 	"",
 	"",
@@ -8931,7 +8945,7 @@ const char *text_JUL_11[POCET_JAZYKOV + 1] =
 const char *text_JUL_12_OFM[POCET_JAZYKOV + 1] =
 {
 	"",
-	"",
+	"Sv. Jana Jonese a Jana Walla, kněží a mučedníků anglických",
 	"",
 	"",
 	"",
@@ -10160,7 +10174,7 @@ const char *text_AUG_17_OP[POCET_JAZYKOV + 1] =
 const char *text_AUG_17_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Beatrix de Silva, panny, zakladateľky " HTML_LINE_BREAK "koncepcionistiek, členky 2. rádu",
-	"",
+	"Sv. Beatrice de Silva, panny",
 	"",
 	"",
 	"",
@@ -10303,7 +10317,7 @@ const char *text_AUG_19_OP[POCET_JAZYKOV + 1] =
 const char *text_AUG_19_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Ľudovíta, biskupa, člena 1. rádu",
-	"Sv. Ludvíka z Anjou, biskupa",
+	"Sv. Ludvíka z Anjou, biskupa", // CZ OFM: Sv. Ludvíka, biskupa tuluského
 	"",
 	"",
 	"",

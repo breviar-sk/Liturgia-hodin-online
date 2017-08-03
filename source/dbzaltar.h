@@ -708,6 +708,15 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_vlastna_cast_modlitba;\
 }
 
+#define _vlastna_cast_full_okrem_antifon_a_kcit_kresp(modl) {\
+	_vlastna_cast_hymnus(modl, _global_den.litobd);\
+	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
+	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
+	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_prosby;\
+	_vlastna_cast_modlitba;\
+}
+
 #define _vlastna_cast_full_okrem_hymnu_antifon_a_prosieb(modl) {\
 	if(modl == MODL_POSV_CITANIE){_vlastna_cast_1citanie;}\
 	else {_vlastna_cast_kcitanie;}\
@@ -1783,7 +1792,7 @@ extern const char *text_NOV_26_SJ[POCET_JAZYKOV + 1];
 extern const char *text_DEC_01_SJ[POCET_JAZYKOV + 1];
 extern const char *text_DEC_03_SJ[POCET_JAZYKOV + 1];
 
-// --------------- OFM propriá ---------------
+// --------------- OFM + OFMCap propriá ---------------
 extern const char *text_JAN_04_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_05_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_12_OFM[POCET_JAZYKOV + 1];
@@ -1800,6 +1809,7 @@ extern const char *text_MAR_02_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAR_12_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAR_18_OFM[POCET_JAZYKOV + 1];
 extern const char *text_APR_21_OFM[POCET_JAZYKOV + 1];
+extern const char *text_APR_22_OFM[POCET_JAZYKOV + 1];
 extern const char *text_APR_23_OFM[POCET_JAZYKOV + 1];
 extern const char *text_APR_24_OFM[POCET_JAZYKOV + 1];
 extern const char *text_APR_28_OFM[POCET_JAZYKOV + 1];
