@@ -109,6 +109,13 @@ body { background-color: #000000; color: #cccccc; }
 
 <!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
 
+<p><b>Verze 1.14.5</b>
+<ul>
+<li>Poznámky pod čarou ke druhým čtením kompletně dokončeny.</li>
+<li>Kalendář a vlastní texty pro františkány (OFM).</li>
+<li>Opravy v liturgickém kalendáři a textech (obecné, OFMCap).</li>
+</ul>
+
 <p><b>Verze 1.14.4</b>
 <ul>
 <li>Poznámky pod čarou ke druhým čtením: doba postní, společné texty o svatých.</li>

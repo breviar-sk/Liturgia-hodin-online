@@ -11396,6 +11396,19 @@ const char *text_SEP_24_OP[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_SEP_24_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"Sv. Pacifika ze San Severina, kněze",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_SEP_24_HU[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -11922,7 +11935,7 @@ const char *text_OKT_10_OPRAEM[POCET_JAZYKOV + 1] =
 const char *text_OKT_10_HU_OFM[POCET_JAZYKOV + 1] =
 {
 	"",
-	"",
+	"Sv. Daniela a druhů, mučedníků mauretánských",
 	"",
 	"",
 	"",
@@ -11948,7 +11961,7 @@ const char *text_OKT_11[POCET_JAZYKOV + 1] =
 const char *text_OKT_11_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána XXIII., pápeža, člena 3. rádu",
-	"",
+	"Sv. Jana XXIII., papeže, člena 3. řádu",
 	"",
 	"",
 	"",
@@ -13095,7 +13108,7 @@ const char *text_NOV_13_SJ[POCET_JAZYKOV + 1] =
 const char *text_NOV_13_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Didaka z Alcaly, rehoľníka, člena 1. rádu",
-	"",
+	"Sv. Didaka z Alkaly, řeholníka",
 	"",
 	"",
 	"",

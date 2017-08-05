@@ -1878,6 +1878,7 @@ extern const char *text_SEP_18_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_19_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_22_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_23_OFM[POCET_JAZYKOV + 1];
+extern const char *text_SEP_24_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_25_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_26_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_28_OFM[POCET_JAZYKOV + 1];
