@@ -2555,7 +2555,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 }// includeFile()
 
 void _export_rozbor_dna_navig_top_bottom_simple(char *target, const char *text) {
-	Export(HTML_A_HREF_BEGIN "\"#%s\"" HTML_CLASS_QUIET ">%s" HTML_A_END, target, text);
+	Export(HTML_A_HREF_BEGIN "\"#%s\" " HTML_CLASS_QUIET ">%s" HTML_A_END, target, text);
 }// _export_rozbor_dna_navig_top_bottom_simple()
 
 void _export_rozbor_dna_navig_top_bottom(char *target, const char *text) {
