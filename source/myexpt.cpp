@@ -215,7 +215,7 @@ void ExportChar(int c, short int skip_chars_for_blind_friendly_version /* = NIE 
 
 	// blind-friendly export
 	if (skip_chars_for_blind_friendly_version == ANO) {
-		if ((c == CHAR_PRAYER_ASTERISK) || (c == CHAR_PRAYER_CROSS) || (c == CHAR_PRAYER_CROSS_ALT)) {
+		if ((c == CHAR_PRAYER_ASTERISK) || (c == CHAR_PRAYER_CROSS) || (c == CHAR_PRAYER_CROSS_ALT) || (c == CHAR_PRAYER_TRIANGLE)) {
 			; // skip special characters for blind-friendly version
 		}
 		else if (c == CHAR_NONBREAKING_SPACE) {

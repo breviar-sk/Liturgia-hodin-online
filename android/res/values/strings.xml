@@ -34,7 +34,7 @@
     <string name="verse_numbering">verse numbering</string>
     <string name="bible_references">bible references</string>
     <string name="footnotes">notes and footnotes</string>
-    <string name="liturgical_readings">liturgical readings</string>
+    <string name="liturgical_readings">mass readings</string>
     <string name="psalms_omisions">omissions from psalms</string>
 
     <string name="display_settings_title">Display settings:</string>

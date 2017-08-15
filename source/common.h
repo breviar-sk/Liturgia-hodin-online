@@ -63,8 +63,9 @@
 // special characters in prayer texts (some of them to be removed for blind-friendly version)
 #define CHAR_SPACE             ' '
 #define CHAR_PRAYER_ASTERISK   '*'
-#define CHAR_PRAYER_CROSS      L'\x2020' /*†*/
+#define CHAR_PRAYER_CROSS      L'\x2020' /*†*/ // used as flexa | U+2020 DAGGER
 #define CHAR_PRAYER_CROSS_ALT  '+'
+#define CHAR_PRAYER_TRIANGLE   L'\x25B3' /*△*/ // 'uppercase delta': Δ (used for doxology) | U+25B3 WHITE UP-POINTING TRIANGLE
 
 // include parameters
 #define INCLUDE_BEGIN   "BEGIN" // zaciatok

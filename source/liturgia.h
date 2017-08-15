@@ -627,14 +627,19 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_PSALM_FULL_TEXT_SOFT_BEGIN    "full-text-soft"
 #define PARAM_PSALM_FULL_TEXT_SOFT_END      SYMBOL_END "" PARAM_PSALM_FULL_TEXT_SOFT_BEGIN
 
-// zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách, príp. v antifónach (červenou farbou); kvôli CZ OP pridané ďalšie symboly
-#define PARAM_RED_KRIZIK                    "†" // used as flexa
-#define PARAM_RED_HVIEZDICKA                "*"
-#define PARAM_RED_TROJUHOLNIK               "△" // uppercase delta: Δ (used for doxology)
+// red stuff in antiphones etc. (red cross, red asterisk, red triangle)
+#define PARAM_RED_CROSS                     "†" // used as flexa | U+2020 DAGGER
+#define PARAM_RED_CROSS_TXT                 "CROSS" // alternative due to Unicode problem when interpreting template (2017-08-14)
+#define PARAM_RED_ASTERISK                  "*"
+#define PARAM_RED_TRIANGLE                  "△" // 'uppercase delta': Δ (used for doxology) | U+25B3 WHITE UP-POINTING TRIANGLE
+#define PARAM_RED_TRIANGLE_TXT              "TRIANGLE" // alternative due to Unicode problem when interpreting template (2017-08-14)
+/*
+// red stuff prepared (not yet used) as indication for singing
 #define PARAM_RED_SINGLE_BAR                "|" // used for pause in antiphons & responsories (when singing)
 #define PARAM_RED_DOUBLE_BAR                "||" // used for indication that chorus should join (when singing antiphons & responsories)
-#define PARAM_RED_KRIZIK_DOUBLE_BAR         "†||"
+#define PARAM_RED_CROSS_DOUBLE_BAR          "†||"
 #define PARAM_RED_SMALL_CIRCLE              "°" // used for elevation in prayer
+*/
 
 // zobrazovanie/nezobrazenie krížika (antifóna totožná s veršom žalmu/chválospevu)
 #define PARAM_KRIZIK                        "KRIZIK"

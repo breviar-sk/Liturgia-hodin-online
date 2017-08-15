@@ -1397,8 +1397,8 @@ void _main_prazdny_formular(void){
 #define EXPORT_FOOTNOTES ANO
 #define EXPORT_FULL_TEXT ((!vnutri_full_text || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT)) && !(vnutri_full_text && isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
 #define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!(vnutri_footnote || vnutri_note) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
-#define EXPORT_HVIEZDICKA(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
-#define EXPORT_TROJUHOLNIK ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
+#define EXPORT_RED_STUFF(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
+#define EXPORT_RED_TRIANGLE ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
 #define EXPORT_VERSE_NUMBER (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY) && (EXPORT_FULL_TEXT))
 
 #define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
@@ -1799,23 +1799,20 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				// write = NIE; -- aby mohli byt nestovane viacere :-)
 				DetailLog("parameter does not match: %s != %s; vnutri_inkludovaneho == %d\n", rest, modlparam, vnutri_inkludovaneho);
 
-				// red asterisk, red cross, other "red stuff"
-				if ((equals(strbuff, PARAM_RED_HVIEZDICKA)
-					|| equals(strbuff, PARAM_RED_KRIZIK)
-					|| equals(strbuff, PARAM_RED_SINGLE_BAR)
-					|| equals(strbuff, PARAM_RED_DOUBLE_BAR)
-					|| equals(strbuff, PARAM_RED_KRIZIK_DOUBLE_BAR)
-					|| equals(strbuff, PARAM_RED_SMALL_CIRCLE)
+// red asterisk, red cross, other "red stuff"
+				if ((equals(strbuff, PARAM_RED_ASTERISK)
+					|| equals(strbuff, PARAM_RED_CROSS)
 					) && (vnutri_inkludovaneho == ANO))
 				{
-					DetailLog("idem exportovať hviezdičku...\n");
-					if (EXPORT_HVIEZDICKA(_global_modlitba)) {
+					DetailLog("idem exportovať red stuff...\n");
+					if (EXPORT_RED_STUFF(_global_modlitba)) {
 						Export("<" HTML_SPAN_RED ">%s" HTML_SPAN_END, strbuff);
 					}
 				}// red stuff
-// red triangle (end of psalm/canticle)
-				if (equals(strbuff, PARAM_RED_TROJUHOLNIK) && (vnutri_inkludovaneho == ANO)) {
-					if (EXPORT_TROJUHOLNIK) {
+// red triangle (end of psalm/canticle when doxology is not displayed)
+				if (equals(strbuff, PARAM_RED_TRIANGLE) && (vnutri_inkludovaneho == ANO)) {
+					DetailLog("idem exportovať red triangle...\n");
+					if (EXPORT_RED_TRIANGLE) {
 						Export(HTML_NONBREAKING_SPACE "<" HTML_SPAN_RED ">%s" HTML_SPAN_END, strbuff);
 					}
 				}// PARAM_RED_TROJUHOLNIK
@@ -2704,7 +2701,7 @@ void _export_global_string_spol_cast(short int aj_vslh_235b) {
 // 2009-01-28: jednotlivé define presunuté na začiatok súboru, nakoľko ich používa nielen interpretParameter(), ale aj includeFile()
 
 // 2007-11-20: doplnené @ifdef EXPORT_HTML_SPECIALS
-void interpretParameter(short int type, char *paramname, short int aj_navigacia = ANO){
+void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj_navigacia = ANO){
 	char path[MAX_STR] = STR_EMPTY;
 	mystrcpy(path, include_dir, MAX_STR);
 
@@ -2717,28 +2714,57 @@ void interpretParameter(short int type, char *paramname, short int aj_navigacia 
 
 	Log("interpretParameter(%s): Dumping by %s\n", paramname, paramname);
 
-	if (equals(paramname, PARAM_CISLO_VERSA_BEGIN)){
-		if (_global_skip_in_prayer == NIE){
-			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
+	// verse numbering
+	if (equals(paramname, PARAM_CISLO_VERSA_BEGIN)) {
+		if (_global_skip_in_prayer == NIE) {
+			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
 				Export("<sup>");
 			}
-			else{
+			else {
 				// Log("  ruším writing to export file, kvôli PARAM_CISLO_VERSA_BEGIN...\n");
 				_global_skip_in_prayer_2 = ANO;
 			}
-		}// skip in prayer
+		}
 	}// zobraziť/nezobraziť číslovanie veršov
-	else if (equals(paramname, PARAM_CISLO_VERSA_END)){
-		if (_global_skip_in_prayer == NIE){
-			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)){
+	else if (equals(paramname, PARAM_CISLO_VERSA_END)) {
+		if (_global_skip_in_prayer == NIE) {
+			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
 				Export("</sup>");
 			}
-			else{
+			else {
 				// Log("  opäť writing to export file, PARAM_CISLO_VERSA_END...\n");
 				_global_skip_in_prayer_2 = NIE;
 			}
-		}// skip in prayer
+		}
 	}// zobraziť/nezobraziť číslovanie veršov
+
+	// red asterisk, other "red stuff" (normal characters)
+	else if (equals(paramname, PARAM_RED_ASTERISK)) {
+		if (_global_skip_in_prayer == NIE) {
+			DetailLog("idem exportovať red stuff...\n");
+			if (EXPORT_RED_STUFF(_global_modlitba)) {
+				Export("<" HTML_SPAN_RED ">%s" HTML_SPAN_END, paramname);
+			}
+		}
+	}// show red asterisk, other "red stuff" (normal characters)
+
+	// red triangle (end of psalm/canticle when doxology is not displayed), red cross (Unicode special characters)
+	else if (equals(paramname, PARAM_RED_CROSS) || equals(paramname, PARAM_RED_CROSS_TXT)) {
+		if (_global_skip_in_prayer == NIE) {
+			DetailLog("idem exportovať red cross/triangle...\n");
+			if (EXPORT_RED_TRIANGLE) {
+				Export(HTML_NONBREAKING_SPACE "<" HTML_SPAN_RED ">%s" HTML_SPAN_END, PARAM_RED_CROSS);
+			}
+		}
+	}// show red cross
+	else if (equals(paramname, PARAM_RED_TRIANGLE) || equals(paramname, PARAM_RED_TRIANGLE_TXT)) {
+		if (_global_skip_in_prayer == NIE) {
+			DetailLog("idem exportovať red cross/triangle...\n");
+			if (EXPORT_RED_TRIANGLE) {
+				Export(HTML_NONBREAKING_SPACE "<" HTML_SPAN_RED ">%s" HTML_SPAN_END, PARAM_RED_TRIANGLE);
+			}
+		}
+	}// show red triangle
 
 	else if (
 		(equals(paramname, PARAM_CHVALOSPEV_BEGIN)) || (equals(paramname, PARAM_CHVALOSPEV_END))

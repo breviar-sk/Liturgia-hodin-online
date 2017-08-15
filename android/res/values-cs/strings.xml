@@ -32,7 +32,7 @@
     <string name="verse_numbering">číslování veršů</string>
     <string name="bible_references">biblické odkazy</string>
     <string name="footnotes">poznámky (v textu, pod čarou)</string>
-    <string name="liturgical_readings">liturgická čtení</string>
+    <string name="liturgical_readings">mešní čtení</string>
     <string name="psalms_omisions">vynechávky ze žalmů</string>
 
     <string name="display_settings_title">Další zobrazení:</string>

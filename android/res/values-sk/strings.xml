@@ -32,7 +32,7 @@
     <string name="verse_numbering">číslovanie veršov</string>
     <string name="bible_references">biblické odkazy</string>
     <string name="footnotes">poznámky (v texte, pod čiarou)</string>
-    <string name="liturgical_readings">liturgické čítania</string>
+    <string name="liturgical_readings">čítania v omši</string>
     <string name="psalms_omisions">vynechané pasáže zo žalmov</string>
 
     <string name="display_settings_title">Ďalšie zobrazenia:</string>
@@ -195,7 +195,7 @@ body { background-color: #000000; color: #cccccc; }
 
 <p><b>Verzia 1.11.1</b>
 <ul>
-<li>Oprava: Kompatibilita s Android 2.x a staršími (liturgické čítania).</li>
+<li>Oprava: Kompatibilita s Android 2.x a staršími (čítania v omši).</li>
 </ul>
 
 <p><b>Verzia 1.11</b>
