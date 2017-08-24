@@ -1137,9 +1137,12 @@ void file_name_litobd_pc(short int litobd){
 	sprintf(_file_pc, "%s", nazov_obd_htm_pc[litobd]);
 }
 
-void file_name_vlastny_kalendar(short int kalendar){
-	sprintf(_file, "%s", nazov_htm_kalendar[kalendar]);
-	sprintf(_file_pc, "%s", nazov_htm_kalendar[kalendar]);
+void file_name_vlastny_kalendar(short int kalendar) {
+	// do not use for JAZYK_CZ_OP even if called
+	if (_global_jazyk != JAZYK_CZ_OP) {
+		sprintf(_file, "%s", nazov_htm_kalendar[kalendar]);
+		sprintf(_file_pc, "%s", nazov_htm_kalendar[kalendar]);
+	}
 }
 
 void file_name_kompletorium(short int litobd){
@@ -10457,6 +10460,7 @@ _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_SK, "15SEP_cCIT2", 2 },
 	{ JAZYK_UNDEF, "VPCHR_cCIT2", 2 },
 	{ JAZYK_SK, "25NOV_cCIT2", 2 },
+	{ JAZYK_CZ_OP, "15AUG_cCIT2", 2 },
 };
 
 _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
@@ -10478,6 +10482,7 @@ _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCSMRH_rBENEDIKTUS", 2 },
 	{ JAZYK_UNDEF, "SCSZRH_vMAGNIFIKAT", 2 },
 	{ JAZYK_UNDEF, "SCSMRH_vMAGNIFIKAT", 2 },
+	{ JAZYK_CZ_OP, "15AUG_rBENEDIKTUS", 2 },
 };
 
 _struct_anchor_and_count pocet_modlitba_multi_anchor_count[] = {

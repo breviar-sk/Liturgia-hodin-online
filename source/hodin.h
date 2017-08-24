@@ -9736,7 +9736,7 @@ const char *text_AUG_03_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bl. Augustina Kazotiče neboli z Lucery, biskupa",
 	"",
 	"ru_text",
 	"by_text",
@@ -9926,7 +9926,7 @@ const char *text_AUG_09[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_09_OCD[POCET_JAZYKOV + 1] =
 {
-	"Sv. Terézie Benedikty od Kríža, panny a mučenice",
+	"Sv. Terézie Benedikty od Kríža, panny a mučenice, patrónky Európy",
 	"",
 	"",
 	"",
@@ -10308,7 +10308,7 @@ const char *text_AUG_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bl. Jordána z Rivalta neboli z Pisy, kněze",
 	"",
 	"ru_text",
 	"by_text",
@@ -10568,7 +10568,7 @@ const char *text_AUG_26_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bl. Jakuba Bianconiho neboli z Bevagny, kněze",
 	"",
 	"ru_text",
 	"by_text",

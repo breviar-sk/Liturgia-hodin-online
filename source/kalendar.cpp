@@ -752,9 +752,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 		if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
 			if (poradie_svaty == 1) {
 
-				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
-					file_name_vlastny_kalendar(_global_kalendar);
-				}
+				file_name_vlastny_kalendar(_global_kalendar);
 
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -14457,9 +14455,8 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				if (poradie_svaty == 2) {
 
-					if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
-						file_name_vlastny_kalendar(_global_kalendar);
-					}
+					file_name_vlastny_kalendar(_global_kalendar);
+
 					// definovanie parametrov pre modlitbu
 					if (query_type != PRM_DETAILY)
 						set_spolocna_cast(sc, poradie_svaty);
@@ -15755,9 +15752,9 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 		break;
 
 	case 22: // MES_JUL -- 22JUL
-		if (poradie_svaty == 1){
+		if (poradie_svaty == 1) {
 
-			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
 				file_name_vlastny_kalendar(_global_kalendar);
 			}// pre KALENDAR_SK_OP
 
@@ -15794,7 +15791,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_vlastna_cast_kresponz;
 			_vlastna_cast_kcitanie; // má byť rovnaké ako zo spoločnej časti svätých žien
 			_vlastna_cast_magnifikat;
-			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
 				_vlastna_cast_prosby;
 			}
 			_vlastna_cast_modlitba;
@@ -15807,7 +15804,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 		_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA);
 		_global_svaty1.farba = LIT_FARBA_BIELA;
 		_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
 			_global_svaty1.kalendar = _global_kalendar;
 		}// pre KALENDAR_SK_OP
 
@@ -16849,12 +16846,11 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 			pocet = 2;
 
-			if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))){
-				if (poradie_svaty == 3){
+			if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))) {
+				if (poradie_svaty == 3) {
 
-					if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
-						file_name_vlastny_kalendar(_global_kalendar);
-					}
+					file_name_vlastny_kalendar(_global_kalendar);
+
 					// definovanie parametrov pre modlitbu
 					if (query_type != PRM_DETAILY)
 						set_spolocna_cast(sc, poradie_svaty);
@@ -16879,7 +16875,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_set_slavenie_typslav_smer(3, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 				_global_svaty3.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA);
 				_global_svaty3.farba = LIT_FARBA_BIELA;
-				if (_global_jazyk == JAZYK_CZ_OP){
+				if (_global_jazyk == JAZYK_CZ_OP) {
 					mystrcpy(_global_svaty3.meno, text_PRO_OP[_global_jazyk], MENO_SVIATKU);
 					strcat(_global_svaty3.meno, text_AUG_02_OP[_global_jazyk]);
 					_global_svaty3.kalendar = KALENDAR_CZ_OP;
@@ -16979,7 +16975,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 	case 3: // MES_AUG -- 03AUG
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
+		if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))) {
 			if (poradie_svaty == 1){
 
 				file_name_vlastny_kalendar(_global_kalendar);
@@ -16988,14 +16984,16 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
-				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
+				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
+					modlitba = MODL_RANNE_CHVALY;
+					_vlastna_cast_modlitba;
 
-				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_modlitba;
+					modlitba = MODL_POSV_CITANIE;
+					_vlastna_cast_modlitba;
 
-				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
+					modlitba = MODL_VESPERY;
+					_vlastna_cast_modlitba;
+				}
 
 				break;
 			}
@@ -17006,7 +17004,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
-		}// kalendár pre KALENDAR_SK_OP
+		}// CZOP only, kalendár pre KALENDAR_SK_OP
 
 		break;
 
@@ -17100,7 +17098,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 	case 6: // MES_AUG -- 06AUG
 
 		_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
-		if ((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) || (poradie_svaty == 1)){
+		if ((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) || (poradie_svaty == 1)) {
 			// preto 0 -> UNKNOWN_PORADIE_SVATEHO, ze aj ked nie je svaty urceny, ide o sviatok Pana, ktora ma velku prioritu, a preto ma aj - ak je nedela - prve vespery 
 
 			// definovanie parametrov pre modlitbu
@@ -17111,7 +17109,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				set_spolocna_cast(sc, poradie_svaty);
 
 			// nemá popis
-			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)){
+			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
 				set_popis_dummy();
 			}
 
@@ -17122,10 +17120,10 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
-			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)){
+			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 				_vlastna_cast_mcd_full;
 			}
-			else{
+			else {
 				// žalmy sú z bežného dňa (LH, zv. IV, str. 1306)
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 			}
@@ -17144,15 +17142,15 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 			modlitba = MODL_KOMPLETORIUM;
 			// ak padne tento sviatok na sobotu, kompletórium (po druhých vešperách) má byť nedeľné, po prvých vešperách
-			if (_global_den.denvt == DEN_SOBOTA){
+			if (_global_den.denvt == DEN_SOBOTA) {
 				zaltar_kompletorium(DEN_NEDELA /* _global_den.denvt */, _global_den.litobd /* OBD_CEZ_ROK */, ZALTAR_VSETKO /* specialne */, _global_den.tyzzal);
 				_global_modl_kompletorium = _global_modl_prve_kompletorium;
 			}// DEN_SOBOTA
-			else{
+			else {
 				zaltar_kompletorium(_global_den.denvt, _global_den.litobd /* OBD_CEZ_ROK */, ZALTAR_VSETKO /* specialne */, _global_den.tyzzal);
 			}// iný deň ako sobota
 
-			if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO){
+			if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
 				break;
 			}
 		}
@@ -17771,12 +17769,10 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 		_global_svaty1.farba = LIT_FARBA_BIELA;
 		_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 
-		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) || (_global_jazyk == JAZYK_CZ_OP)){
-			if (poradie_svaty == 2){
+		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) || (_global_jazyk == JAZYK_CZ_OP)) {
+			if (poradie_svaty == 2) {
 
-				if (_global_jazyk != JAZYK_CZ_OP) {
-					file_name_vlastny_kalendar(_global_kalendar);
-				}
+				file_name_vlastny_kalendar(_global_kalendar);
 
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -17793,11 +17789,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				break;
 			}
-			else if (poradie_svaty == 3){
+			else if (poradie_svaty == 3) {
 
-				if (_global_jazyk != JAZYK_CZ_OP) {
-					file_name_vlastny_kalendar(_global_kalendar);
-				}
+				file_name_vlastny_kalendar(_global_kalendar);
 
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -17814,11 +17808,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				break;
 			}
-			else if (poradie_svaty == 4){
+			else if (poradie_svaty == 4) {
 
-				if (_global_jazyk != JAZYK_CZ_OP) {
-					file_name_vlastny_kalendar(_global_kalendar);
-				}
+				file_name_vlastny_kalendar(_global_kalendar);
 
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -18303,9 +18295,6 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				set_popis_dummy();
 
-				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_2citanie;
-
 				break;
 			}
 
@@ -18596,8 +18585,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 	case 19: // MES_AUG -- 19AUG
 
-		if (_global_jazyk == JAZYK_HU){
-			if (poradie_svaty == 1){
+		if (_global_jazyk == JAZYK_HU) {
+			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
@@ -18626,8 +18615,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_global_svaty1.kalendar = KALENDAR_VSEOBECNY_HU;
 		}// HU only
 
-		else{
-			if (poradie_svaty == 1){
+		else {
+			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
@@ -18651,8 +18640,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 
-			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
-				if (poradie_svaty == 2){
+			if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) || (_global_jazyk == JAZYK_CZ_OP)) {
+				if (poradie_svaty == 2) {
 
 					file_name_vlastny_kalendar(_global_kalendar);
 
@@ -18687,8 +18676,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP))
 			|| ((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_OFM))
-			){
-			if (poradie_svaty == 2){
+			) {
+			if (poradie_svaty == 2) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -19326,8 +19315,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 	case 26: // MES_AUG -- 26AUG
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)){
-			if (poradie_svaty == 1){
+		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) || (_global_jazyk == JAZYK_CZ_OP)) {
+			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -19355,8 +19344,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OP
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD)){
-			if (poradie_svaty == 1){
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD)) {
+			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -19389,8 +19378,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_global_svaty1.kalendar = _global_kalendar;
 		}// KALENDAR_SK_OCD
 
-		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))){
-			if (poradie_svaty == 1){
+		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))) {
+			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
