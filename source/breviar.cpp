@@ -4949,6 +4949,10 @@ short int atojazyk(char *jazyk) {
 // popis: vráti číslo kalendára, napr. rehoľný
 //        inak vráti KALENDAR_NEURCENY
 short int atokalendar(char *kalendar) {
+	if (_global_jazyk == JAZYK_CZ_OP) {
+		// for JAZYK_CZ_OP, only one special kalendar available
+		return KALENDAR_CZ_OP;
+	}
 	short int i = 0;
 	do {
 		if (equalsi(kalendar, skratka_kalendara[i]) || equalsi(kalendar, nazov_kalendara_short[i]) || equalsi(kalendar, nazov_kalendara_smart[i]) || equalsi(kalendar, nazov_kalendara_long[i])) {
@@ -6529,11 +6533,26 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		long strlen_popisok_kalendar = 0, strlen_popisok_lokal = 0;
 		strlen_popisok_kalendar = strlen(popisok_kalendar);
 		strlen_popisok_lokal = strlen(popisok_lokal);
-		if (strlen_popisok_kalendar + strlen_popisok_lokal > 0){
-			if ((strlen_popisok_kalendar > 0) && (strlen_popisok_lokal > 0)){
-				strcat(popisok_kalendar, STR_VERTICAL_BAR_WITH_SPACES);
+
+		if (strlen_popisok_kalendar + strlen_popisok_lokal > 0) {
+			if ((strlen_popisok_kalendar > 0) && (strlen_popisok_lokal > 0)) {
+				// before both strings were in parentheses respectively divided by STR_VERTICAL_BAR_WITH_SPACES
+				strcat(popisok_kalendar, STR_SPACE);
 			}
-			sprintf(pom, "\n" HTML_LINE_BREAK "<" HTML_SPAN_RED_SUBTITLE ">(%s%s)" HTML_SPAN_END "\n", popisok_kalendar, popisok_lokal);
+
+			sprintf(pom, "\n" HTML_LINE_BREAK "<" HTML_SPAN_RED_SUBTITLE ">");
+
+			if (strlen_popisok_kalendar > 0) {
+				strcat(pom, popisok_kalendar);
+			}
+			if (strlen_popisok_lokal > 0) {
+				strcat(pom, "(");
+				strcat(pom, popisok_lokal);
+				strcat(pom, ")");
+			}
+
+			strcat(pom, HTML_SPAN_END "\n");
+
 			Log("pridávam lokalizáciu slávenia resp. poznámku o lokálnom kalendári: %s\n", pom);
 			strcat(_local_string, pom);
 		}

@@ -1091,7 +1091,7 @@ const short int default_kalendar[POCET_JAZYKOV + 1] =
 	/* ToDo */ KALENDAR_VSEOBECNY,
 	/* ToDo */ KALENDAR_VSEOBECNY,
 	KALENDAR_NEURCENY,
-	KALENDAR_CZ_OP,
+	KALENDAR_VSEOBECNY_CZ,
 	KALENDAR_VSEOBECNY_HU,
 	KALENDAR_VSEOBECNY_RU,
 	KALENDAR_VSEOBECNY_BY,
@@ -1783,8 +1783,6 @@ extern const char *text_ZAKONCENIE_ON_JE_kratke; // len SK
 extern const char *text_ZAKONCENIE_KTORY_JE_dlhe; // len SK
 extern const char *text_ZAKONCENIE_KTORY_JE_kratke; // len SK
 extern const char *text_ZAKONCENIE_O_TO_TA_PROSIME[POCET_JAZYKOV + 1];
-
-extern const char *text_PRO_OP[POCET_JAZYKOV + 1];
 
 extern const char *html_text_batch_Back[POCET_JAZYKOV + 1];
 extern const char *html_text_batch_Prev[POCET_JAZYKOV + 1];

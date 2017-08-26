@@ -1989,6 +1989,8 @@ extern const char *text_AUG_26_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_02_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_02_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_04_OP[POCET_JAZYKOV + 1];
+extern const char *text_SEP_05_1_OP[POCET_JAZYKOV + 1];
+extern const char *text_SEP_05_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_06_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_06_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_18_OP[POCET_JAZYKOV + 1];
