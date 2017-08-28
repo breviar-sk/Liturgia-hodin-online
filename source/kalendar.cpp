@@ -19229,6 +19229,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)){
 				if (poradie_svaty == 5){
 
+					file_name_vlastny_kalendar(_global_kalendar);
+
 					// definovanie parametrov pre modlitbu
 					if (query_type != PRM_DETAILY)
 						set_spolocna_cast(sc, poradie_svaty);
