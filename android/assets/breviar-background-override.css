@@ -1,1 +1,14 @@
-../../breviar-background-override.css
+/* background color overrides for "day-mode" (normal colors) */
+
+body, html { 
+	background-color: #FFFFFF;
+}
+
+select { 
+	background: #FFFFFF;
+}
+
+input.text { 
+	background: #FFFFFF;
+}
+

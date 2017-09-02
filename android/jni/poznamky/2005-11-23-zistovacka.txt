@@ -1,0 +1,20 @@
+		modlitba = MODL_RANNE_CHVALY;
+		if(_global_opt2 == MODL_ZALMY_ZO_SV){
+			_set_zalmy_1nedele_rch();
+		}
+
+
+toto je použité vo funkcii _set_spolocna_cast
+
+
+su_zalmy_nedela1tyzden
+
+
+		/* ranne chvaly */
+		modlitba = MODL_RANNE_CHVALY;
+		if(_global_opt2 == MODL_ZALMY_ZO_SV){
+			_set_zalmy_1nedele_rch();
+		}
+
+
+^t^t/* ranne chvaly */^p^t^tmodlitba = MODL_RANNE_CHVALY;^p^t^tif(su_zalmy_nedela1tyzden && (_global_opt2 == MODL_ZALMY_ZO_SV)){^p^t^t^t_set_zalmy_1nedele_rch();^p^t^t}^p

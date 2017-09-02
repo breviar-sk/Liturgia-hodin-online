@@ -1,0 +1,18 @@
+Co treba dat do adsresárov na ostrom systéme
+2003-07-10
+
+1. download (adresár download/)
+- command-line verzia:
+	- lh.zip obsahujúci nasledovné:
+		- lh.exe
+		- _header.htm
+		- breviar.css
+		- asi aj msg/ adresár so správami (aspon zatial)
+	- include.zip (obsahuje adresár include/)
+- windows verzia:
+	- disk1.zip
+	- disk2.zip
+
+2. dodatok/
+	- biblia.zip
+

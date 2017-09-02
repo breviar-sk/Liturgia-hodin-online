@@ -1,1 +1,14 @@
-../../breviar-background-ov-invert.css
+/* background color overrides for "night-mode" (inverted colors) */
+
+body, html { 
+	background-color: #000;
+}
+
+select { 
+	background: #000;
+}
+
+input.text { 
+	background: #000;
+}
+

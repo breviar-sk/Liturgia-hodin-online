@@ -1,1 +1,237 @@
-../../breviar-invert-colors.css
+/* override color settings for "night-mode" (inverted colors) */
+
+.antiphon.first-ant:before {
+	color: #FF3333;
+}
+
+.antiphon.second-ant:before {
+	color: #FF3333;
+}
+
+.antiphon.third-ant:before {
+	color: #FF3333;
+}
+
+.antiphon.ant:before {
+	color: #FF3333;
+}
+
+.antiphon.ant-first:before {
+	color: #FF3333;
+}
+
+.antiphon.ant-second:before {
+	color: #FF3333;
+}
+
+.antiphon.ant-third:before {
+	color: #FF3333;
+}
+
+.respons p.respR:before, .respR:before { 
+	color: #FF3333;
+}
+
+.respons p.respV:before, .respV:before { 
+	color: #FF3333;
+}
+
+.respons p.respO:before, .respO:before { 
+	color: #FF3333;
+}
+
+.respons p.respF:before, .respF:before { 
+	color: #FF3333;
+}
+
+.reading-source { 
+	color: #FF3333;
+}
+
+.reading-title { 
+	color: #FF3333;
+}
+
+.calendar.today { 
+	background-color: #CCCCCC; 
+	color: #191919; /* #333333; */
+}
+
+.preces p.partV:before { 
+	color: #FF3333;
+}
+
+.preces p.vel { 
+	color: #FF3333;
+}
+
+.reading p.resp {
+	color: #FF3333;
+}
+
+.hymn p.rubric, .hymn p.rubric-always-display { 
+	color: #FF3333;
+}
+
+.psalm .psalm-name { 
+	color: #FF3333;
+}
+
+.psalm .psalm-idea { 
+	color: #CCCCCC; 
+}
+
+.psalm .psalm-title { 
+	color: #FF3333;
+}
+
+.psalm .psalm-subtitle { 
+	color: #FF3333;
+}
+
+.psalm .titlehu {
+	color: #FF3333;
+}
+
+.psalm p.last:after { 
+	color: #FF3333;
+}
+
+p.title, .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
+	color: #FF3333;
+}
+
+p.bibleref {
+	color: #FF3333;
+}
+
+.red, .redtitle { 
+	color: #FF3333;
+}
+
+.rubric, .rubric-always-display { 
+	color: #FF3333;
+}
+
+.rednormal { 
+	color: #FF3333;
+}
+
+.redit { 
+	color: #FF3333;
+}
+
+.redsmall, .redsubtitle { 
+	color: #FF3333;
+}
+
+.redbold { 
+	color: #FF3333;
+}
+
+.normal { 
+	color: #CCCCCC; 
+}
+
+.parameter { 
+	color: #CCCCCC; 
+}
+
+.value { 
+	color: yellow; 
+}
+
+.explain { 
+	color: gray; 
+}
+
+body, html { 
+	background-color: #191919; /* #333333; */
+	color: #CCCCCC;
+}
+
+p { 
+	color: #CCCCCC; 
+}
+
+h1, h2, h3 { 
+	color: #FFFFCC; 
+}
+
+a { 
+	color: #CCCCCC; 
+}
+
+a:hover { 
+	background-color: #CC9966; /* #ff6633; */
+	color: white; 
+}
+
+a:active { 
+	color: gray; 
+}
+
+a.explain { 
+	color: gray; 
+}
+
+table { 
+	color: #CCCCCC; 
+}
+
+td { 
+	color: #CCCCCC; 
+}
+
+hr { 
+	color: gray; 
+}
+
+select { 
+	background: #191919; /* #333333; */
+	color: #CCCCCC; 
+}
+
+input { 
+	color: #CCCCCC; 
+}
+
+input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer { 
+	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
+	border: solid 0px #CCCCCC; 
+	color: #191919; /* #333333; */
+}
+
+input.button0, input.reset0, .button0 { 
+	background: #C0C0C0; /* #3366CC; #3399ff; */
+	border: solid 0px #A0A0A0; 
+	color: #404040;
+}
+
+input.button1, input.reset1, .button1 { 
+	background: #C0C0C0; /* #3366CC; #3399ff; */
+	border: solid 0px #A0A0A0; 
+	color: #404040;
+}
+
+input.button2, input.reset2, .button2 { 
+	background: #BB8855;
+	border: solid 0px #CCCCCC; 
+	color: #191919; /* #333333; */
+}
+
+input.text { 
+	background: #191919; /* #333333; */
+}
+
+sup { 
+	color: #FF3333;
+}
+
+#nav-arrow-down {
+  background-image: url('sipkadole-night.png');
+}
+
+#nav-arrow-up {
+  background-image: url('sipkahore-night.png');
+}
