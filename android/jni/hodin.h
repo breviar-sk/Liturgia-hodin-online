@@ -4374,6 +4374,19 @@ const char *text_JAN_03_OCD[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JAN_03_OP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Štefánie Quinzaniovej, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JAN_04_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Angely z Foligna, rehoľníčky, členky 3. rádu",

@@ -1912,6 +1912,7 @@ extern const char *text_DEC_02_1_OFM[POCET_JAZYKOV + 1];
 extern const char *text_DEC_02_2_OFM[POCET_JAZYKOV + 1];
 
 // --------------- OP propriá ---------------
+extern const char *text_JAN_03_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_10_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_10_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_11_OP[POCET_JAZYKOV + 1];

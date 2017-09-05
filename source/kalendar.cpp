@@ -152,8 +152,8 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
 		}// všeobecný kalendár
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD)){
-			if (poradie_svaty == 2){
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD)) {
+			if (poradie_svaty == 2) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -182,6 +182,37 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			_global_svaty2.farba = LIT_FARBA_BIELA;
 			_global_svaty2.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD
+
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
+			if (poradie_svaty == 2) {
+
+				file_name_vlastny_kalendar(_global_kalendar);
+
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
+
+				break;
+			}
+
+			pocet = 2;
+
+			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			_global_svaty2.prik = VOLNA_LUBOVOLNA_SPOMIENKA; // ľubovoľná spomienka uvedená kurzívou bez popisu
+			mystrcpy(_global_svaty2.meno, text_JAN_03_OP[_global_jazyk], MENO_SVIATKU);
+			_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
+			_global_svaty2.farba = LIT_FARBA_BIELA;
+			_global_svaty2.kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_SK_OP
 
 		break;
 
