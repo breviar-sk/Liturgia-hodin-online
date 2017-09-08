@@ -20351,8 +20351,8 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 	case 7: // MES_SEP -- 07SEP
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SJ)){
-			if (poradie_svaty == 1){
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SJ)) {
+			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -20371,7 +20371,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_modlitba;
 
-				_vlastna_cast_mcd_ant_kcitresp_modl;
+				_vlastna_cast_mcd_modlitba;
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
