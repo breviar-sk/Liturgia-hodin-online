@@ -1114,7 +1114,7 @@ const char *nazov_ritu_jazyka[POCET_RITOV + 1][POCET_JAZYKOV + 1] =
 		"rímsky",
 		"římský",
 		"Roman",
-		"Roman",
+		"Romanus",
 		"Roman",
 		"římský",
 		"római",
@@ -1126,7 +1126,7 @@ const char *nazov_ritu_jazyka[POCET_RITOV + 1][POCET_JAZYKOV + 1] =
 		"byzantský",
 		"řecký",
 		"Byzantine",
-		"Byzantine",
+		"Byzantinus",
 		"Byzantine",
 		"řecký",
 		"görög",
@@ -1265,7 +1265,7 @@ const char *html_button_det_defaults[POCET_JAZYKOV + 1] =
 
 // special button (today): Show
 const char *html_button_dnes_show[POCET_JAZYKOV + 1] = 
-{ "Zobraziť", "Ukaž", "Show", "___", "", "Ukaž", "Megjelenítés", "Показ", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Zobraziť", "Ukaž", "Show", "Ostende", "", "Ukaž", "Megjelenítés", "Показ", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #ifndef HTML_BUTTON_DNES_SHOW
 #define HTML_BUTTON_DNES_SHOW	html_button_dnes_show[_global_jazyk]
 #endif
@@ -1279,14 +1279,14 @@ const char *html_button_dnes_show[POCET_JAZYKOV + 1] =
 
 // special button (today): Apply settings/options
 const char *html_button_dnes_apply[POCET_JAZYKOV + 1] = 
-{ "Potvrdiť", "Potvrdit", "Apply", "___", "", "Potvrdit", "Alkalmaz", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Potvrdiť", "Potvrdit", "Apply", "Confirmare", "", "Potvrdit", "Alkalmaz", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #ifndef HTML_BUTTON_DNES_APPLY_SETTINGS
 #define HTML_BUTTON_DNES_APPLY_SETTINGS	html_button_dnes_apply[_global_jazyk]
 #endif
 
 // special button (today): Apply options 2 (various choices)
 const char *html_button_dnes_apply2[POCET_JAZYKOV + 1] = 
-{ "Uložiť", "Uložit", "Save", "___", "", "Uložit", "Alkalmaz", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Uložiť", "Uložit", "Save", "Condere", "", "Uložit", "Alkalmaz", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #ifndef HTML_BUTTON_DNES_APPLY_CHOICES
 #define HTML_BUTTON_DNES_APPLY_CHOICES html_button_dnes_apply2[_global_jazyk]
 #endif
@@ -1309,7 +1309,7 @@ const char *html_button_dnes[POCET_JAZYKOV + 1] = { "dnes", "dnes", "today", "ho
 const char *html_button_Dnes[POCET_JAZYKOV + 1] = { "Dnes", "Dnes", "Today", "Hodie", "", "Dnes", "Ma", "Cегодня", "Сёння", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_button_hore[POCET_JAZYKOV + 1] = { "^ ", "^ ", "^ ", "^ ", "^ ", "^ ", "^ ", "^ ", "^ ", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
-const char *html_button_tento_den[POCET_JAZYKOV + 1] = { "tento deň", "tento den", "this day", "hodie", "", "tento den", "ez a nap", "ru_text", "гэты дзень", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_button_tento_den[POCET_JAZYKOV + 1] = { "tento deň", "tento den", "this day", "hoc dies" /* "hodie" */, "", "tento den", "ez a nap", "ru_text", "гэты дзень", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // basic words: day, month, year
 const char *html_text_den[POCET_JAZYKOV + 1] = { "deň", "den", "day", "die", "", "den", "nap", "день", "дзень", /* STRING_1_FOR_NEW_LANGUAGE */ };
@@ -1322,8 +1322,8 @@ const char *html_text_Rok_x[POCET_JAZYKOV + 1] = { "Rok %d", "Rok %d", "Year %d"
 const char *html_text_zoznam_mesiacov[POCET_JAZYKOV + 1] = { "zoznam mesiacov", "seznam měsíců", "list of months", "", "", "seznam měsíců", "hónapok listája", "список месяцев", "спіс месяцаў", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char *html_text_modlitba[POCET_JAZYKOV + 1] = { "modlitba", "modlitba", "prayer", "ora", "", "modlitba", "imádság", "молитва", "малітва", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_modlitby_pre_den[POCET_JAZYKOV + 1] = { "modlitby pre deň", "modlitby pro den", "prayers for date", "", "", "modlitby pro den", "", "молитвы за день", "малітвы на дату", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_alebo_pre[POCET_JAZYKOV + 1] = { "alebo pre", "anebo pro", "or for", "vel per", "", "anebo pro", "vagy", "или для", "ці на", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_modlitby_pre_den[POCET_JAZYKOV + 1] = { "modlitby pre deň", "modlitby pro den", "prayers for date", "orationes pro die", "", "modlitby pro den", "", "молитвы за день", "малітвы на дату", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_alebo_pre[POCET_JAZYKOV + 1] = { "alebo pre", "anebo pro", "or for", "vel pro", "", "anebo pro", "vagy", "или для", "ці на", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char *html_text_dnesok[POCET_JAZYKOV + 1] = { "dnešok", "dnešní den", "today", "hodie", "", "dnešní den", "a mai nap imaórái", "сегодня", "сёння", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // 2010-02-15: pridané kvôli "zoznam.htm" batch mode
@@ -1368,7 +1368,7 @@ const char *html_text_dalsie_moznosti_1[POCET_JAZYKOV + 1] =
 	"Nastavenia",
 	"Nastavení",
 	"Settings",
-	"",
+	"Instrumenta",
 	"",
 	"Nastavení",
 	"Beállítások",
@@ -1382,7 +1382,7 @@ const char *html_text_dalsie_moznosti_2[POCET_JAZYKOV + 1] =
 	"Ďalšie zobrazenia",
 	"Další zobrazení",
 	"Other facilities",
-	"",
+	"Praesentationes aliae",
 	"",
 	"Další zobrazení",
 	"Más megjelenítési lehetőségek",
@@ -1391,19 +1391,175 @@ const char *html_text_dalsie_moznosti_2[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_prik_sviatky_atd[POCET_JAZYKOV + 1] = { "prikázané sviatky a slávnosti Pána v roku ", "zasvěcené svátky a slavnosti Páně v roce ", "obligatory celebrations in year ", "", "", "zasvěcené svátky a slavnosti Páně v roce", "kötelező ünnepek", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_lit_kalendar[POCET_JAZYKOV + 1] = { "liturgický kalendár pre", "liturgický kalendář pro", "liturgical calendar for", "", "", "liturgický kalendář pro", "liturgikus naptár", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_roku[POCET_JAZYKOV + 1] = { "roku", "roku", "of year", "anno", "", "roku", "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_tabulka_pohyblive_od[POCET_JAZYKOV + 1] = { "tabuľka dátumov pohyblivých slávení od roku", "pohyblivé dny liturgického roku od", "table with dates of movable celebrations from year", "", "", "pohyblivé dny liturgického roku od", "a mozgó (változó) ünnepek táblázata a következő években", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_do_roku[POCET_JAZYKOV + 1] = { "do roku", "do", "till year", "", "", "do", "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_zobrazit_linky[POCET_JAZYKOV + 1] = { "zobraziť tabuľku vrátane hypertextových odkazov na jednotlivé dni", "zobrazit tabulku s hypertextovými odkazy pro jednotlivé dny", "display the table including hypertext links to each date", "", "", "zobrazit tabulku s hypertextovými odkazy pro jednotlivé dny", "A táblázat megjelenítése az egyes napokhoz tartozó hiperhivatkozásokkal együtt.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_pre_cezrocne_obd[POCET_JAZYKOV + 1] = { "pre cezročné obdobie", "pro mezidobí", "for ...", "per annum", "", "pro dobu během roku", "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_tyzden_zaltara_cislo[POCET_JAZYKOV + 1] = { "%d. týždeň žaltára", "%d. týden žaltáře", "%d. week of Psaltary", "hebdomada %d psalterii", "%d", "%d. týden žaltáře", "%d. zsoltáros hét", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_tyzden_cislo[POCET_JAZYKOV + 1] = { "%d. týždeň", "%d. týden", "%d. week", "hebdomada %d", "%d", "%d. týden", "%d. hét", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_tyzden[POCET_JAZYKOV + 1] = { ". týždeň", ". týden", ". week", "hebdomada ", "", ". týden", ". hét", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_v_tyzdni_zaltara[POCET_JAZYKOV + 1] = { ". týždni žaltára", ". týdnu žaltáře", "week of Psaltary", "hebdomada", "", ". týdnu žaltáře", ". zsoltáros hét", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_pre[POCET_JAZYKOV + 1] = { "pre", "pro", "for", "per", "", "pro", "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_ordinarium[POCET_JAZYKOV + 1] = { "ordinárium", "uspořádání", "ordinary", "ordinarium", "", "ordinárium", "általános rész:", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_prik_sviatky_atd[POCET_JAZYKOV + 1] = { 
+	"prikázané sviatky a slávnosti Pána v roku ", 
+	"zasvěcené svátky a slavnosti Páně v roce ", 
+	"obligatory celebrations in year ", 
+	"sollemnitates de praecepto et sollemnitates Domini in anno", 
+	"", 
+	"zasvěcené svátky a slavnosti Páně v roce", 
+	"kötelező ünnepek", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_lit_kalendar[POCET_JAZYKOV + 1] = { 
+	"liturgický kalendár pre", 
+	"liturgický kalendář pro", 
+	"liturgical calendar for", 
+	"calendarium liturgicum pro", 
+	"", 
+	"liturgický kalendář pro", 
+	"liturgikus naptár", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_roku[POCET_JAZYKOV + 1] = { 
+	"roku", 
+	"roku", 
+	"of year", 
+	"anni", 
+	"", 
+	"roku", 
+	"", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_tabulka_pohyblive_od[POCET_JAZYKOV + 1] = { 
+	"tabuľka dátumov pohyblivých slávení od roku", 
+	"pohyblivé dny liturgického roku od", 
+	"table with dates of movable celebrations from year", 
+	"tabella temporaria festorum mobilium ab anno", 
+	"", 
+	"pohyblivé dny liturgického roku od", 
+	"a mozgó (változó) ünnepek táblázata a következő években", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_do_roku[POCET_JAZYKOV + 1] = { 
+	"do roku", 
+	"do", 
+	"till year", 
+	"usque ad annum", 
+	"", 
+	"do", 
+	"", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_zobrazit_linky[POCET_JAZYKOV + 1] = { 
+	"zobraziť tabuľku vrátane hypertextových odkazov na jednotlivé dni", 
+	"zobrazit tabulku s hypertextovými odkazy pro jednotlivé dny", 
+	"display the table including hypertext links to each date", 
+	"ostende tabellam pro diebus singulis nexibus hypertextualibus inclusis", 
+	"", 
+	"zobrazit tabulku s hypertextovými odkazy pro jednotlivé dny", 
+	"A táblázat megjelenítése az egyes napokhoz tartozó hiperhivatkozásokkal együtt.", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_pre_cezrocne_obd[POCET_JAZYKOV + 1] = { 
+	"pre cezročné obdobie", 
+	"pro mezidobí", 
+	"for ...", 
+	"per annum", 
+	"", 
+	"pro dobu během roku", 
+	"", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_tyzden_zaltara_cislo[POCET_JAZYKOV + 1] = { 
+	"%d. týždeň žaltára", 
+	"%d. týden žaltáře", 
+	"%d. week of Psaltary", 
+	"hebdomada %d psalterii", 
+	"%d", 
+	"%d. týden žaltáře", 
+	"%d. zsoltáros hét", 
+	"%d. ru_text", 
+	"%d. by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_tyzden_cislo[POCET_JAZYKOV + 1] = { 
+	"%d. týždeň", 
+	"%d. týden", 
+	"%d. week", 
+	"hebdomada %d", 
+	"%d", 
+	"%d. týden", 
+	"%d. hét", 
+	"%d ru_text", 
+	"%d by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_tyzden[POCET_JAZYKOV + 1] = { 
+	". týždeň", 
+	". týden", 
+	". week", 
+	"hebdomada ", 
+	"", 
+	". týden", 
+	". hét", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_v_tyzdni_zaltara[POCET_JAZYKOV + 1] = { 
+	". týždni žaltára", 
+	". týdnu žaltáře", 
+	"week of Psaltary", 
+	"hebdomada", 
+	"", 
+	". týdnu žaltáře", 
+	". zsoltáros hét", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_pre[POCET_JAZYKOV + 1] = { 
+	"pre", 
+	"pro", 
+	"for", 
+	"per", 
+	"", 
+	"pro", 
+	"", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_ordinarium[POCET_JAZYKOV + 1] = { 
+	"ordinárium", 
+	"uspořádání", 
+	"ordinary", 
+	"ordinarium", 
+	"", 
+	"ordinárium", 
+	"általános rész:", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
 // in the following: you MUST keep all HTML elements, e.g. <a href...>, <br/> etc.
 const char *html_text_dnes_je_atd[POCET_JAZYKOV + 1] =
 {
@@ -1414,27 +1570,153 @@ const char *html_text_dnes_je_atd[POCET_JAZYKOV + 1] =
 	"%d/%s" HTML_A_HREF_BEGIN "\"%s%s\">JD" HTML_A_END " = %ld%s.\n" HTML_LINE_BREAK "\n",
 	"Dnes je %d. den v roku%s, " HTML_A_HREF_BEGIN "\"%s%s\">juliánské datum" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
 	"Ma %s %d. napja van, " HTML_A_HREF_BEGIN "\"%s%s\">Julián naptár" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
-	"ru_text",
-	"by_text",
+	"%d / %s ru_text, " HTML_A_HREF_BEGIN "\"%s%s\">ru_text" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
+	"%d / %s by_text, " HTML_A_HREF_BEGIN "\"%s%s\">by_text" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_alebo[POCET_JAZYKOV + 1] = { "alebo", "nebo", "or", "", "", "nebo", "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_alebo[POCET_JAZYKOV + 1] = { 
+	"alebo", 
+	"nebo", 
+	"or", 
+	"vel", 
+	"", 
+	"nebo", 
+	"", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
 
-const char *html_text_zakladne_info[POCET_JAZYKOV + 1] = { "Základné informácie", "Základní informace", "Basic info", "__info__", "", "Základní informace", "Alapvető információk", "ru_text", "Асноўная інфармацыя", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_je[POCET_JAZYKOV + 1] = { "je", "je", "is", "est", "", "je", /* HU: van, ale nie pre prestupný */ "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_nie_je[POCET_JAZYKOV + 1] = { "nie je", "není", "is not", "non est", "", "není", /* HU: nincs, ale nie pre prestupný */ "nem", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_prestupny[POCET_JAZYKOV + 1] = { "priestupný", "přestupný", "...", "...", "", "přestupný", "szökőév", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_datumy_pohyblivych_slaveni[POCET_JAZYKOV + 1] = { "Dátumy pohyblivých slávení", "Pohyblivé dny liturgického roku", "Dates for movable celebrations", "", "", "Pohyblivé dny liturgického roku", "A mozgó (változó) ünnepek dátumai", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_zakladne_info[POCET_JAZYKOV + 1] = { 
+	"Základné informácie", 
+	"Základní informace", 
+	"Basic info", 
+	"__ info", 
+	"", 
+	"Základní informace", 
+	"Alapvető információk", 
+	"ru_text", 
+	"Асноўная інфармацыя", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
 
-const char *html_text_ritus[POCET_JAZYKOV + 1] = { "Rítus", "Obřad", "Ritus", "Ritus", "", "Ritus", "Szertartás", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_je[POCET_JAZYKOV + 1] = { 
+	"je", 
+	"je", 
+	"is", 
+	"est", 
+	"", 
+	"je", 
+	/* HU: van, ale nie pre prestupný */ "", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
 
-const char *html_text_den_v_roku[POCET_JAZYKOV + 1] = { "%d. deň v roku", "%d. den v roce", "%d. day of the year", "%d. ", "%d. ", "%d. den v roce", "az év %d. napja", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_nie_je[POCET_JAZYKOV + 1] = { 
+	"nie je", 
+	"není", 
+	"is not", 
+	"non est", 
+	"", 
+	"není", 
+	/* HU: nincs, ale nie pre prestupný */ "nem", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
 
-const char *html_text_zacina[POCET_JAZYKOV + 1] = { "začína", "začíná", "starts", "", "", "začíná", "kezdődik", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char *html_text_liturgicky_rok[POCET_JAZYKOV + 1] = { "liturgický rok", "liturgický rok", "liturgical year", "anno liturgico", "", "liturgický rok", "liturgikus év", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_prestupny[POCET_JAZYKOV + 1] = { 
+	"priestupný", 
+	"přestupný", 
+	"...", 
+	"...", 
+	"", 
+	"přestupný", 
+	"szökőév", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
 
-const char *html_text_txt_export[POCET_JAZYKOV + 1] = { "Textový výstup", "Textový výstup", "Text export", "Text export", "", "Textový výstup", "Szöveg exportálása", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char *html_text_datumy_pohyblivych_slaveni[POCET_JAZYKOV + 1] = { 
+	"Dátumy pohyblivých slávení", 
+	"Pohyblivé dny liturgického roku", 
+	"Dates for movable celebrations", 
+	"", 
+	"", 
+	"Pohyblivé dny liturgického roku", 
+	"A mozgó (változó) ünnepek dátumai", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_ritus[POCET_JAZYKOV + 1] = { 
+	"Rítus", 
+	"Obřad", 
+	"Ritus", 
+	"Ritus", 
+	"", 
+	"Ritus", 
+	"Szertartás", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_den_v_roku[POCET_JAZYKOV + 1] = { 
+	"%d. deň v roku", 
+	"%d. den v roce", 
+	"%d. day of the year", 
+	"%d. die per annum", 
+	"%d. ", 
+	"%d. den v roce", 
+	"az év %d. napja", 
+	"%d. ru_text", 
+	"%d. by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_zacina[POCET_JAZYKOV + 1] = { 
+	"začína", 
+	"začíná", 
+	"starts", 
+	"", 
+	"", 
+	"začíná", 
+	"kezdődik", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_liturgicky_rok[POCET_JAZYKOV + 1] = { 
+	"liturgický rok", 
+	"liturgický rok", 
+	"liturgical year", 
+	"annus liturgicus", 
+	"", 
+	"liturgický rok", 
+	"liturgikus év", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
+
+const char *html_text_txt_export[POCET_JAZYKOV + 1] = { 
+	"Textový výstup", 
+	"Textový výstup", 
+	"Text export", 
+	"Text export", 
+	"", 
+	"Textový výstup", 
+	"Szöveg exportálása", 
+	"ru_text", 
+	"by_text", 
+	/* STRING_1_FOR_NEW_LANGUAGE */ 
+};
 
 #define POCET_HTML_TEXT_POHYBLIVE 12
 #define HTML_TEXT_POHYBLIVE_ZJAVENIE_PANA 3
@@ -1761,7 +2043,7 @@ const char *html_text_opt_0_kalendar[POCET_JAZYKOV + 1] =
 	"nastavenia pre liturgický kalendár",
 	"volby pro liturgický kalendář",
 	"settings for liturgical calendar",
-	"",
+	"occasiones pro calendario liturgico",
 	"",
 	"volby pro liturgický kalendář",
 	"a liturgikus naptár beállításai",
@@ -1874,7 +2156,7 @@ const char *html_text_spol_casti_vziat_zo[POCET_JAZYKOV + 1] =
 	"časti modlitby zo spoločnej časti ",
 	"části modlitby ze společných textů ",
 	"parts of prayer from the common part ",
-	"",
+	"partes orationis de communae",
 	"",
 	"části modlitby ze společné části ",
 	"a közös részből",
@@ -1902,7 +2184,7 @@ const char *html_text_opt_0_specialne[POCET_JAZYKOV + 1] =
 	"v texte modlitieb zobraziť",
 	"v textu modliteb zobrazit",
 	"in the text of prayers display",
-	"",
+	"in textu orationis ostende",
 	"",
 	"v textu modliteb zobrazit",
 	"az imaóra szövegében jelenjen meg:",
@@ -1931,7 +2213,7 @@ const char *html_text_opt_0_verse[POCET_JAZYKOV + 1] =
 	"číslovanie (čísla) veršov",
 	"číslování veršů",
 	"verse numbering",
-	"verse numbers",
+	"numeratio versorum (numera)",
 	"",
 	"číslování veršů",
 	"a versek száma",
@@ -1959,7 +2241,7 @@ const char *html_text_opt_0_referencie[POCET_JAZYKOV + 1] =
 	"biblické odkazy na dkc.kbs.sk",
 	"biblické odkazy",
 	"biblical references",
-	"Bible references",
+	"indices biblicae",
 	"",
 	"biblické odkazy",
 	"Bibliai hivatkozások a szentiras.hu oldalon",
@@ -1987,7 +2269,7 @@ const char *html_text_opt_0_citania[POCET_JAZYKOV + 1] =
 	"čítania v omši",
 	"mešní čtení",
 	"mass readings",
-	"mass readings",
+	"lectiones ad missam",
 	"",
 	"mešní čtení",
 	"liturgikus olvasmányok",
@@ -2015,7 +2297,7 @@ const char *html_text_opt_0_zjv_ne[POCET_JAZYKOV + 1] =
 	"Zjavenie Pána sláviť v nedeľu medzi 2. a 8. januárom",
 	"Zjevení Páně slavit v neděli mezi 2. a 8. lednem",
 	"celebrate Epiphany on Sunday between Jan 2nd & 8th",
-	"",
+	"Epiphaniam ad dominicam transferre",
 	"",
 	"Zjevení Páně slavit v neděli mezi 2. a 8. lednem",
 	"Urunk megjelenése (Vízkereszt) megünneplése vasárnap, január 2. és 8. között",
@@ -2043,7 +2325,7 @@ const char *html_text_opt_0_nan_ne[POCET_JAZYKOV + 1] =
 	"Nanebovstúpenie Pána sláviť v nedeľu",
 	"Nanebevstoupení Páně slavit v neděli",
 	"celebrate Ascension of the Lord on Sunday",
-	"",
+	"Ascensio Domini ad dominicam transferre",
 	"",
 	"Nanebevstoupení Páně slavit v neděli",
 	"Urunk mennybemenetelét vasárnap ünnepelni",
@@ -2071,7 +2353,7 @@ const char *html_text_opt_0_tk_ne[POCET_JAZYKOV + 1] =
 	"Najsv. Kristovho tela a krvi sláviť v nedeľu",
 	"Těla a krve Páně slavit v neděli",
 	"celebrate The Most Holy Body and Blood of Christ on Sunday",
-	"",
+	"SS.mi Corporis et Sanguinis Christi ad dominicam transferre",
 	"",
 	"Těla a krve Páně slavit v neděli",
 	"Krisztus Szent Teste és Vére ünnepe vasárnapra téve",
@@ -2099,7 +2381,7 @@ const char *html_text_opt_0_font_normal[POCET_JAZYKOV + 1] =
 	"všade použiť obyčajné písmo (nie tučné)",
 	"všude použít obyčejné písmo (ne tučné)",
 	"force normal font weight (no bold)",
-	"",
+	"ostende ubique litteras formae normalis (non crassas)",
 	"",
 	"všude použít obyčejné písmo (ne tučné)",
 	"normál betűtípus használata (félkövér helyett)",
@@ -2128,7 +2410,7 @@ const char *html_text_opt_0_buttons_order[POCET_JAZYKOV + 1] =
 	"dátumové navigačné tlačidlá zobraziť až pod tlačidlami pre modlitby",
 	"navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby",
 	"date buttons display after buttons for prayers",
-	"",
+	"ostende pulsabulas navigatorias sub pulsabulis pro orationes",
 	"",
 	"navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby",
 	"a fejlécben a dátumválasztó gombok legyenek az imaóra választó gombok után",
@@ -2157,7 +2439,7 @@ const char *html_text_opt_0_blind_friendly[POCET_JAZYKOV + 1] =
 	"zobraziť iba text modlitieb (pre nevidiacich a slabozrakých) bez rubrík, pre hlasový výstup",
 	"zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik, pro hlasový výstup",
 	"blind-friendly text (without rubrics), for voice output",
-	"",
+	"ostende solum textum orationum (pro caecis) sine rubricas, pro exitu vocale",
 	"",
 	"zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik, pro hlasový výstup",
 	"mutassa meg csak az imaszövegeket (vakok és gyengénlátók részére) rubrikák nélkül",
@@ -2186,7 +2468,7 @@ const char *html_text_opt_0_footnotes[POCET_JAZYKOV + 1] =
 	"zobraziť poznámky (v texte, pod čiarou)",
 	"zobrazit poznámky (v textu, pod čarou)",
 	"show notes and footnotes",
-	"",
+	"ostende notas (in textu, sub lineam)",
 	"",
 	"zobrazit poznámky (v textu, pod čarou)",
 	"jegyzetek, lábjegyzetek",
@@ -2215,7 +2497,7 @@ const char *html_text_opt_0_transparent_nav[POCET_JAZYKOV + 1] =
 	"zobraziť navigačné šípky",
 	"zobrazit navigační šipky",
 	"show navigation arrows",
-	"",
+	"ostende indices navigatoria",
 	"",
 	"zobrazit navigační šipky",
 	"navigációs nyilak mutatása",
@@ -2244,7 +2526,7 @@ const char *html_text_opt_0_zalmy_full_text[POCET_JAZYKOV + 1] =
 	"zobraziť aj vynechané pasáže zo žalmov",
 	"zobrazit i vynechávky ze žalmů",
 	"show psalms omissions",
-	"",
+	"ostende partes omissas psalmorum",
 	"",
 	"zobrazit i vynechávky ze žalmů",
 	"mutassa meg a zsoltárok kihagyott részeit",
@@ -2301,7 +2583,7 @@ const char *html_text_opt_1_slava_otcu[POCET_JAZYKOV + 1] =
 	"Sláva Otcu", // [na konci žalmov a chválospevov]
 	"Sláva Otci", // [na konci žalmů a kantik]
 	"Glory to the Father", // at the end of psalms and canticles]
-	"",
+	"Gloria Patri",
 	"",
 	"Sláva Otci", // [na konci žalmů a chvalozpěvů]
 	"Dicsőség az Atyának", // [a zsoltárok és kantikumok végén]
@@ -2441,7 +2723,7 @@ const char *html_text_option_zobrazit[POCET_JAZYKOV + 1] =
 	"zobraziť",
 	"zobrazit",
 	"show",
-	"",
+	"ostende",
 	"",
 	"zobrazit",
 	"megjelenítés",
@@ -2455,7 +2737,7 @@ const char *html_text_option_skryt[POCET_JAZYKOV + 1] =
 	"skryť",
 	"skrýt",
 	"hide",
-	"",
+	"abscondere",
 	"",
 	"skrýt",
 	"elrejtés",
@@ -2990,7 +3272,7 @@ const char *html_text_opt_2_html_export[POCET_JAZYKOV + 1] =
 	"možnosti zobrazenia stránok",
 	"možnosti zobrazení stránek",
 	"display options",
-	"",
+	"possibilitates praesentationis paginarum",
 	"",
 	"možnosti zobrazení stránek",
 	"az oldalak megjelenítésének lehetőségei:",
@@ -3075,7 +3357,7 @@ const char *html_text_opt_2_font_family[POCET_JAZYKOV + 1] =
 	"použiť bezpätkové písmo? (ináč pätkové)",
 	"použít bezpatkové písmo? (jinak patkové)",
 	"use Sans Serif font? (otherwise, Serif is used)",
-	"",
+	"ostende litteras forma computerica (aliud typis)",
 	"",
 	"použít bezpatkové písmo? (jinak patkové)",
 	"talp nélküli betűk használata",
@@ -3118,7 +3400,7 @@ const char *html_text_opt_2_navigation[POCET_JAZYKOV + 1] =
 	"zobraziť navigáciu v textoch modlitieb",
 	"zobrazit navigaci v textech modliteb",
 	"display navigation buttons in prayer",
-	"",
+	"ostende navigationem in textibus orationum",
 	"",
 	"zobrazit navigaci v textech modliteb",
 	"a navigáció mutatása az imaszövegben",
@@ -3146,7 +3428,7 @@ const char *html_text_opt_2_moznosti[POCET_JAZYKOV + 1] =
 	"zobraziť rozličné možnosti priamo v textoch modlitieb",
 	"zobrazit rozličné volby v textech modliteb",
 	"display various options in prayers",
-	"",
+	"ostende varia possibilitates directe in textibus orationum",
 	"",
 	"zobrazit rozličné volby v textech modliteb",
 	"mutassa meg az imák szövegében a különböző lehetőségeket",
@@ -3174,7 +3456,7 @@ const char *html_text_opt_2_textwrap[POCET_JAZYKOV + 1] =
 	"zalamovať dlhé riadky ako v tlačenom vydaní (poetické časti)",
 	"zalomit dlouhé řádky poetických textů jako v tištěném vydání",
 	"wrap long lines according to printed edition",
-	"",
+	"colloca lineas longas sicut in editione impressa (partes poeticae)",
 	"",
 	"zalomit dlouhé řádky poetických textů jako v tištěném vydání",
 	"hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)",
@@ -3202,7 +3484,7 @@ const char *html_text_opt_2_buttons_usporne[POCET_JAZYKOV + 1] =
 	"tlačidlá pre modlitby zobraziť úsporne",
 	"tlačítka pro modlitby zobrazit úsporně",
 	"concise display of buttons for prayers",
-	"",
+	"ostende pulsabulas pro orationibus cum parsimonia",
 	"",
 	"tlačítka pro modlitby zobrazit úsporně",
 	"az imaórák gombjainak gazdaságos elhelyezése",
@@ -3230,7 +3512,7 @@ const char *html_text_opt_2_nocny_rezim[POCET_JAZYKOV + 1] =
 	"nočný režim",
 	"noční režim",
 	"night mode",
-	"",
+	"modus nocturnus",
 	"",
 	"noční režim",
 	"éjszakai mód",
@@ -3286,7 +3568,7 @@ const char *html_text_opt_2_show_defalut_calendar[POCET_JAZYKOV + 1] =
 	"zvýrazniť slávenia v národnom kalendári",
 	"zvýraznit slavení v národním kalendáři",
 	"mark celebrations in local (national) calendar",
-	"",
+	"exprime celebrationes in calendario nationale",
 	"",
 	"zvýraznit slavení v národním kalendáři",
 	"kijelölni az ünnepeket a nemzeti naptárban",
@@ -3314,7 +3596,7 @@ const char *html_text_opt_2_background_override[POCET_JAZYKOV + 1] =
 	"použiť bielu/čiernu farbu pozadia (projektor/AMOLED displej)",
 	"použít bílou/černou barvu pozadí (projektor/AMOLED displej)",
 	"use white/black background color (beamer/AMOLED display)",
-	"",
+	"applica colorem album/nigrum areae posterioris (proiector/AMOLED/display)",
 	"",
 	"použít bílou/černou barvu pozadí (projektor/AMOLED displej)",
 	"fehér/fekete háttért alkalmazni (vetítő/AMOLED kijelző)",
@@ -4058,7 +4340,7 @@ const char *html_text_font_size[POCET_JAZYKOV + 1] =
 	"veľkosť písma",
 	"velikost písma",
 	"font size",
-	"font size",
+	"magnitudo litterarum",
 	"",
 	"velikost písma",
 	"betűméret",
@@ -4072,7 +4354,7 @@ const char *html_text_font_size_explain[POCET_JAZYKOV + 1] =
 	"Veľkosť písma",
 	"",
 	"",
-	"",
+	"Magnitudo litterarum",
 	"",
 	"",
 	"betűméret",
