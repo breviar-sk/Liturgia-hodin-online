@@ -14590,6 +14590,18 @@ void _batch_mode_header(short mesiac, short rok)
 	// koniec hlavičky
 }
 
+#ifdef __APPLE__
+#include "TargetConditionals.h"
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+#define system(arg)
+#elif TARGET_OS_MAC
+#else
+#   error "Unknown Apple platform"
+#endif
+#else
+// nothing for Windows & unices
+#endif
+
 // dostane vela char *; najprv ich skontroluje a potom ak je vsetko v poriadku, do export fajlu generuje command-line prikazy pre vytvorenie modlitby na jednotlive dni dane obdobim
 void _main_batch_mode(
 	char *den_from, char *mesiac_from, char *rok_from,
