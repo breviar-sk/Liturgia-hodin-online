@@ -23,7 +23,6 @@
 #endif
 
 #include <stdio.h>
-#include "mydefs.h"
 #include "common.h"
 
 
@@ -486,9 +485,17 @@ extern short int query_type; // contains constants PRM_...
 // referencie (biblické odkazy)
 #define FORCE_BIT_OPT_0_REF 62
 #ifdef LONG_PARAM_NAMES
-	#define STR_FORCE_BIT_OPT_0_REF "FORCE_BIT_OPT_0_REF"
+#define STR_FORCE_BIT_OPT_0_REF "FORCE_BIT_OPT_0_REF"
 #else
-	#define STR_FORCE_BIT_OPT_0_REF "of0r"
+#define STR_FORCE_BIT_OPT_0_REF "of0r"
+#endif
+
+// referencie (biblical references) to bible.com
+#define FORCE_BIT_OPT_0_REF_BIBLE_COM 136
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_REF_BIBLE_COM "FORCE_BIT_OPT_0_REF_BIBLE_COM"
+#else
+#define STR_FORCE_BIT_OPT_0_REF_BIBLE_COM "of0rbc"
 #endif
 
 // liturgické čítania
@@ -1194,6 +1201,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_FOOTNOTES                 "BitOpt0Footnotes"
 #define XML_BIT_OPT_0_TRANSPARENT_NAV           "BitOpt0TransparentNav"
 #define XML_BIT_OPT_0_ZALMY_FULL_TEXT           "BitOpt0PsalmsFullText"
+#define XML_BIT_OPT_0_REF_BIBLE_COM             "BitOpt0ReferencesBibleDotCom"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"

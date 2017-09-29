@@ -2264,6 +2264,34 @@ const char *html_text_opt_0_referencie_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_opt_0_ref_bible_com[POCET_JAZYKOV + 1] =
+{
+	"biblické odkazy na bible.com",
+	"biblické odkazy na bible.com",
+	"biblical references to bible.com",
+	"indices biblicae to bible.com",
+	"",
+	"biblické odkazy na bible.com",
+	"Bibliai hivatkozások a bible.com oldalon",
+	"ru_text",
+	"біблійныя спасылкі",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_0_ref_bible_com_explain[POCET_JAZYKOV + 1] =
+{
+	"Všetky biblické odkazy (napr. Jn 3, 16) v modlitbe budú aktívnymi odkazmi na preklady Biblie na adrese bible.com.",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Az imák szövegében minden bibliai utalás (például Jn 3, 16) aktív linkként a bible.com bibliafordításának megfelelő részére mutat.",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_opt_0_citania[POCET_JAZYKOV + 1] =
 {
 	"čítania v omši",

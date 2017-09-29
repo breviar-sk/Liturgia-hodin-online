@@ -1441,6 +1441,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 	char refbuff[MAX_BUFFER]; // buffer pre referenciu
 	char refrest[MAX_BUFFER]; // 'rest' uložené zo začiatku referencie (používa sa až pri parsovaní konca referencie)
+	char reference[MAX_BUFFER]; // full reference
 
 	char katbuff[MAX_BUFFER]; // buffer pre odkaz na katechézu
 	char katrest[MAX_BUFFER]; // 'rest' uložené zo začiatku odkazu na katechézu (používa sa až pri parsovaní konca odkazu na katechézu)
@@ -1472,6 +1473,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	mystrcpy(rest, STR_EMPTY, MAX_BUFFER);
 	mystrcpy(refbuff, STR_EMPTY, MAX_BUFFER);
 	mystrcpy(refrest, STR_EMPTY, MAX_BUFFER);
+	mystrcpy(reference, STR_EMPTY, MAX_BUFFER);
 	mystrcpy(katbuff, STR_EMPTY, MAX_BUFFER);
 	mystrcpy(katrest, STR_EMPTY, MAX_BUFFER);
 	mystrcpy(z95buff, STR_EMPTY, MAX_BUFFER);
@@ -2019,37 +2021,79 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 					refbuff[ref_index] = '\0';
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)) {
-						// ToDo: časom dať odkaz napr. do konfiguračného súboru
+
 						if (EXPORT_REFERENCIA) {
-							if (_global_jazyk == JAZYK_HU) {
-								Export(HTML_A_HREF_BEGIN "\"http://www.szentiras.hu/SZIT/");
-							}
-							else if (_global_jazyk == JAZYK_SK) {
-								Export(HTML_A_HREF_BEGIN "\"http://dkc.kbs.sk/?in=");
+							if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) {
+								Export(HTML_A_HREF_BEGIN "\"https://www.bible.com/bible/");
+#if defined(IO_ANDROID) || defined(__APPLE__)
+								// nothing to add here
+#else
+								// for web, add default version id
+								Export("%s" STR_SLASH, bible_version_id_default[_global_jazyk]);
+#endif // IO_ANDROID || __APPLE__
+
 							}
 							else {
-								Export(HTML_A_HREF_BEGIN "\"#");
+
+								// ToDo: to be moved as default to config file (URL for default bible translation)
+
+								if (_global_jazyk == JAZYK_HU) {
+									Export(HTML_A_HREF_BEGIN "\"http://www.szentiras.hu/SZIT/");
+								}
+								else if (_global_jazyk == JAZYK_SK) {
+									Export(HTML_A_HREF_BEGIN "\"https://dkc.kbs.sk/?in=");
+								}
+								else {
+									Export(HTML_A_HREF_BEGIN "\"#");
+								}
 							}
 						}
+
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\trefrest  == %s\n", refrest);
 						DetailLog("\trefbuff  == %s\n", refbuff);
+
+						// Example A: {r:Iz}6, 1-13{/r}
+						// Example B: {r}Iz 6, 3{/r}
+						// Example C: {r:Ž 102,}18{/r}
+
+						// refrest: rest of the string within reference | A: "Iz" | B: empty | C: "Ž 102,"
+						// refbuff: buffer (inner content of reference) | A: "6, 1-13" | B: "Iz 6, 3" | C: "18"
+
+						// first, clean reference
+						strcpy(reference, STR_EMPTY);
+
+						// second, copy refrest to the beginning of reference (if not empty)
 						if (/* (refrest != NULL) && */ !(equals(refrest, STR_EMPTY))) {
 							// [ToDo]: doplniť nevypisovanie refbuff, ak refrest obsahuje medzeru
 							if (EXPORT_REFERENCIA) {
-#ifdef IO_ANDROID
-								Export("%s", mystr_remove_diacritics(refrest));
-#else
-								Export("%s", refrest); // pôvodne sa odstraňovala diakritika; ponechané len pre Android
-#endif
+								mystrcpy(reference, refrest, MAX_BUFFER);
+								strcat(reference, STR_SPACE);
 							}
-						}// načítanie na začiatok referencie
+						}
+
+						// third, append refbuff to the end of refrest to create full reference
+						strcat(reference, refbuff);
+
+						if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) {
+							// ToDo: transform reference using bible.com format
+						}
+
 						if (EXPORT_REFERENCIA) {
 #ifdef IO_ANDROID
-							Export("%s\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">", mystr_remove_diacritics(refbuff));
+							Export("%s", mystr_remove_diacritics(reference));
 #else
-							Export("%s\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">", refbuff); // pôvodne sa odstraňovala diakritika; ponechané len pre Android
+							if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) {
+								Export("%s", mystr_bible_com(reference));
+							}
+							else {
+								Export("%s", reference); // diacritics removal left only for Android
+							}
 #endif
+						}
+
+						if (EXPORT_REFERENCIA) {
+							Export("\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">");
 						}
 					}
 					if (EXPORT_REFERENCIA) {
@@ -2066,6 +2110,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						write = ANO;
 					}
 					strcpy(refrest, STR_EMPTY);
+					strcpy(reference, STR_EMPTY); // cleanup
 
 					// spracujeme prípadný buffer ak to bolo vnorené v rámci footnote alebo note
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && EXPORT_FOOTNOTES && ((vnutri_footnote == ANO) || (vnutri_note == ANO))) {
@@ -4702,6 +4747,7 @@ void showPrayer(short int type, short int ktore_templaty = SHOW_TEMPLAT_MODLITBA
 	Log("option 0 == %ld, čo znamená: \n", _global_opt[OPT_0_SPECIALNE]);
 	Log("\t BIT_OPT_0_VERSE == %ld (áno == %ld)\n", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VERSE, BIT_OPT_0_VERSE);
 	Log("\t BIT_OPT_0_REFERENCIE == %ld (áno == %ld)\n", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_REFERENCIE, BIT_OPT_0_REFERENCIE);
+	Log("\t BIT_OPT_0_REF_BIBLE_COM == %ld (áno == %ld)\n", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_REF_BIBLE_COM, BIT_OPT_0_REF_BIBLE_COM);
 
 	// log option 1
 	Log("option 1 == %ld, čo znamená: \n", _global_opt[OPT_1_CASTI_MODLITBY]);
@@ -6927,6 +6973,9 @@ void xml_export_options(void){
 					break;
 				case 11: // BIT_OPT_0_ZALMY_FULL_TEXT
 					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_ZALMY_FULL_TEXT)"%ld" ELEM_END(XML_BIT_OPT_0_ZALMY_FULL_TEXT) "\n", BIT_OPT_0_ZALMY_FULL_TEXT, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, html_text_opt_0_zalmy_full_text[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT)));
+					break;
+				case 12: // BIT_OPT_0_REF_BIBLE_COM
+					Export(ELEMOPT_BEGIN(XML_BIT_OPT_0_REF_BIBLE_COM)"%ld" ELEM_END(XML_BIT_OPT_0_REF_BIBLE_COM) "\n", BIT_OPT_0_REF_BIBLE_COM, STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, html_text_opt_0_ref_bible_com[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)));
 					break;
 				} // switch(j)
 			}// for j
@@ -9847,13 +9896,18 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_VERSE
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_VERSE, STR_FORCE_BIT_OPT_0_VERSE, html_text_opt_0_verse[_global_jazyk], html_text_opt_0_verse_explain[_global_jazyk]);
 
-		if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)){
-			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_REF
-			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE, STR_FORCE_BIT_OPT_0_REF, html_text_opt_0_referencie[_global_jazyk], html_text_opt_0_referencie_explain[_global_jazyk]);
-		}// if((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU))
-		else{
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_0_REF, (isGlobalOptionForce(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_REF
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE, STR_FORCE_BIT_OPT_0_REF, html_text_opt_0_referencie[_global_jazyk], html_text_opt_0_referencie_explain[_global_jazyk]);
+
+#ifdef OS_Windows_Ruby
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_REF_BIBLE_COM
+		Export(HTML_CRLF_LINE_BREAK);
+		Export(HTML_NONBREAKING_SPACE_LOOONG);
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM, STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, html_text_opt_0_ref_bible_com[_global_jazyk], html_text_opt_0_ref_bible_com_explain[_global_jazyk], NIE);
+#else
+		// else: treba nastaviť hidden pre všetky options pre _global_force_opt
+		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, (isGlobalOptionForce(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) ? ANO : NIE);
+#endif
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_FOOTNOTES
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES, STR_FORCE_BIT_OPT_0_FOOTNOTES, html_text_opt_0_footnotes[_global_jazyk], html_text_opt_0_footnotes_explain[_global_jazyk]);

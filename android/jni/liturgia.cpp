@@ -15,6 +15,7 @@
 
 #include "liturgia.h"
 #include "breviar.h"
+#include "bible.h"
 
 #include "mylog.h"
 #include "myexpt.h"
@@ -27,6 +28,7 @@
 #include "utf8-utils.h"
 #include <ctype.h>
 #include <wctype.h>
+#include <string.h>
 
 //---------------------------------------------------------------------
 short int _allocate_global_var(void){
@@ -307,20 +309,20 @@ char *mystr_UPPERCASE(const char* input) {
 	return (_global_pom_str);
 }// mystr_UPPERCASE()
 
-//---------------------------------------------------------------------
-// odstráni diakritiku
-// nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash;
-// zmení aj dlhé pomlčky na obyčajný spojovník (znak mínus)
-char *mystr_remove_diacritics(const char *input){
+ //---------------------------------------------------------------------
+ // odstráni diakritiku
+ // nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash;
+ // zmení aj dlhé pomlčky na obyčajný spojovník (znak mínus)
+char *mystr_remove_diacritics(const char *input) {
 	short int ok = TRUE;
 	const char* in = input;
 	char* out = _global_pom_str;
 	while (out - _global_pom_str < MAX_STR - 5 && *in) {
 		int c = DecodeWchar(&in);
-		if ((c == '&') && (ok == TRUE)){
+		if ((c == '&') && (ok == TRUE)) {
 			ok = FALSE;
 		}
-		if ((c == ';') && (ok == FALSE)){
+		if ((c == ';') && (ok == FALSE)) {
 			ok = TRUE;
 		}
 		// 2011-01-31: ToDo: ešte by bolo potrebné ošetriť aj to, že za & nenasleduje regulérny znak pre špeciálny HTML kód, t. j. niečo iné ako upper+lowercase ascii abeceda + # a číslice
@@ -332,6 +334,86 @@ char *mystr_remove_diacritics(const char *input){
 	*out = 0;
 	return (_global_pom_str);
 }// mystr_remove_diacritics()
+
+//---------------------------------------------------------------------
+// replaces book names with Paratext shortcuts (for usage on bible.com) in reference string
+//
+// official answer from support [2017-09-22; Case #: 875422] follows
+//---------------------------------------------------------------------
+// The URL schema we use is pretty simple.Here’s an an example : https://www.bible.com/bible/111/JHN.1.1. The “111” here is the version id, which in this case is the NIV version. For a single verse, you can use a three letter code for the book, “JHN” for John in this case, followed by “.chapter#” then “.verse#”. For a verse range, you can use a schema of "1.1-5” (https://www.bible.com/bible/111/JHN.1.1-5) and for multiple verses in the same chapter you can use a schema of “1.2,4” (https://www.bible.com/bible/111/JHN.1.2,4).
+// For users that have the YouVersion Bible App installed, tapping on a URL with this schema will open up the Bible App to that scripture reference in our reader.If users don’t have our app, it will open it up in bible.com.
+//---------------------------------------------------------------------
+char *mystr_bible_com_helper(const char *input, short int book_number_prefix = 0) {
+	char input_with_prefix[SMALL];
+
+	mystrcpy(input_with_prefix, (input != NULL) ? input : STR_EMPTY, SMALL);
+
+	// Log("input == %s\n", input_with_prefix);
+
+	// try to add book_number_prefix for comparison with book abbreviations
+	if (book_number_prefix > 0) {
+		sprintf(input_with_prefix, "%d%s", book_number_prefix, (input != NULL) ? input : STR_EMPTY);
+
+		// Log("input_with_prefix == %s\n", input_with_prefix);
+	}
+
+	// try to translate book abbreviation
+	for (short int i = 0; i < BIBLE_BOOKS_COUNT; i++) {
+		if (equalsi(input_with_prefix, bible_book_shortcut(i))) {
+			return (char *)bible_paratext_shortcut_with_dot[i];
+		}
+	}
+
+	// now we know that input does not hold book abbreviation
+
+	// we have to carefully change , <-> . [SK, CZ, HU way of citing to EN citing]
+	// first,   replace . -> @
+	// next,    replace , -> .
+	// finally, replace @ -> ,
+	return mystr_replace_char(mystr_replace_char(mystr_replace_char(input_with_prefix, '.', '@'), ',', '.'), '@', ',');
+}// mystr_bible_com_helper()
+
+char *mystr_bible_com(const char *input) {
+	char* in = strdup(input);
+	char* token;
+	short int book_number_prefix = 0;
+
+	strcpy(_global_pom_str, STR_EMPTY);
+
+	while (((token = strtok(in, STR_SPACE)) != NULL) && (strlen(_global_pom_str) < MAX_STR))
+	{
+		// Log("token == %s\n", token);
+
+		// we need to catch 'solitaire' 1, 2, or 3 for biblical books when abbreviation contains spaces (IMHO IT nonsense), e. g. "1 Jn" (SK) or "3 Jan" (CZ); this string if at the end will be exported after white
+		if (equalsi(token, "1"))
+		{
+			book_number_prefix = 1;
+		}
+		else if (equalsi(token, "2"))
+		{
+			book_number_prefix = 2;
+		}
+		else if (equalsi(token, "3"))
+		{
+			book_number_prefix = 3;
+		}
+		else {
+			strcat(_global_pom_str, mystr_bible_com_helper(token, book_number_prefix));
+			book_number_prefix = 0; // cleanup
+		}
+
+		in = NULL;
+	}
+
+	// see note above: we must flush 'solitaire' which might be part of abbreviation but in fact was verse (or chapter) number at the end of reference
+	if (book_number_prefix > 0) {
+		strcat(_global_pom_str, mystr_bible_com_helper(token, book_number_prefix));
+		book_number_prefix = 0; // cleanup
+	}
+
+	free(in); // release duplicated string by strdup()
+	return (_global_pom_str);
+}// mystr_bible_com()
 
 //---------------------------------------------------------------------
 // konvertuje underscore na nezlomiteľné medzery
@@ -1753,6 +1835,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 9: mystrcpy(str, STR_FORCE_BIT_OPT_0_FOOTNOTES, SMALL); break; // BIT_OPT_0_FOOTNOTES
 			case 10: mystrcpy(str, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV, SMALL); break; // BIT_OPT_0_TRANSPARENT_NAV
 			case 11: mystrcpy(str, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, SMALL); break; // BIT_OPT_0_ZALMY_FULL_TEXT
+			case 12: mystrcpy(str, STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, SMALL); break; // BIT_OPT_0_REF_BIBLE_COM
 			}
 		}
 		break;
