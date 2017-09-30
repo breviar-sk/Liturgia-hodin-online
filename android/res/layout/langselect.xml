@@ -75,6 +75,9 @@
     <CheckBox android:id="@+id/bible_references_check" android:text="@string/bible_references"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+    <CheckBox android:id="@+id/bible_ref_bible_com_check" android:text="@string/bible_ref_bible_com"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+
     <CheckBox android:id="@+id/footnotes_check" android:text="@string/footnotes"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 

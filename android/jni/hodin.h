@@ -5360,6 +5360,19 @@ const char *text_JAN_29_OP[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JAN_29_OFMCONV[POCET_JAZYKOV + 1] =
+{
+	"Bl. Františka Zirana, kňaza a mučeníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JAN_30_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Bronislava Markiewicza, kňaza",
@@ -8197,6 +8210,19 @@ const char *text_JUN_06_OPRAEM[POCET_JAZYKOV + 1] =
 const char *text_JUN_07_OCD[POCET_JAZYKOV + 1] =
 {
 	"Bl. Anny od sv. Bartolomeja, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUN_07_OFMCONV[POCET_JAZYKOV + 1] =
+{
+	"Bl. Michala Tomaszeka a Zbigneva Strzałkowského, kňazov a mučeníkov",
 	"",
 	"",
 	"",

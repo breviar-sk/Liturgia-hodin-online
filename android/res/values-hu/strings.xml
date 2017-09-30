@@ -31,6 +31,7 @@
     <string name="display_communia_info">hogy a közös részek honnan lettek véve</string>
     <string name="verse_numbering">a versek számai</string>
     <string name="bible_references">a bibliai hivatkozások</string>
+    <string name="bible_ref_bible_com">a bibliai hivatkozások (YouVersion)</string>
     <string name="footnotes">jegyzetek, lábjegyzetek</string>
     <string name="liturgical_readings">a liturgikus olvasmányok</string>
     <string name="psalms_omisions">zsoltárok kihagyott részei</string>

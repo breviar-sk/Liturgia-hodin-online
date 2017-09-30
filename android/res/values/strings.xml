@@ -33,6 +33,7 @@
     <string name="display_communia_info">display communia info</string>
     <string name="verse_numbering">verse numbering</string>
     <string name="bible_references">bible references</string>
+    <string name="bible_ref_bible_com">bible references (YouVersion)</string>
     <string name="footnotes">notes and footnotes</string>
     <string name="liturgical_readings">mass readings</string>
     <string name="psalms_omisions">omissions from psalms</string>

@@ -174,6 +174,17 @@ public class LangSelect extends Activity {
 
       bible_references_check.setChecked(url_options.isBibleReferences());
 
+      CheckBox bible_ref_bible_com_check = (CheckBox)findViewById(R.id.bible_ref_bible_com_check);
+
+      bible_ref_bible_com_check.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+          activity.url_options.setBibleRefBibleCom(((CheckBox)v).isChecked());
+          BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
+        }
+      });
+
+      bible_ref_bible_com_check.setChecked(url_options.isBibleRefBibleCom());
+
       CheckBox footnotes_check = (CheckBox)findViewById(R.id.footnotes_check);
 
       footnotes_check.setOnClickListener(new View.OnClickListener() {

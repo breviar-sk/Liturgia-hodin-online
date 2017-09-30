@@ -205,7 +205,7 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
             startActivity(emailIntent);
             return true;
           }
-          if (url.startsWith("http://dkc.kbs.sk")) {
+          if (url.startsWith("http://dkc.kbs.sk") || url.startsWith("https://dkc.kbs.sk")) {
             if (tryOpenBible(url)) return true;
           }
           if (url.startsWith("svpismo:")) {

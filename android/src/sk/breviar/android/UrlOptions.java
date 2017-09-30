@@ -96,6 +96,15 @@ public class UrlOptions {
     setBit("o0", 1, value);
   }
 
+  // of0bc
+  public boolean isBibleRefBibleCom() {
+    return hasBit("o0", 12);
+  }
+
+  public void setBibleRefBibleCom(boolean value) {
+    setBit("o0", 12, value);
+  }
+
   // of0ff
   public boolean isFootnotes() {
     return hasBit("o0", 9);

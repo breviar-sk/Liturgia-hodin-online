@@ -495,7 +495,7 @@ extern short int query_type; // contains constants PRM_...
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_0_REF_BIBLE_COM "FORCE_BIT_OPT_0_REF_BIBLE_COM"
 #else
-#define STR_FORCE_BIT_OPT_0_REF_BIBLE_COM "of0rbc"
+#define STR_FORCE_BIT_OPT_0_REF_BIBLE_COM "of0bc"
 #endif
 
 // liturgické čítania

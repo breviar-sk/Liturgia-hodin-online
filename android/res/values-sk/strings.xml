@@ -30,7 +30,8 @@
     <string name="prayer_content_settings_title">V texte modlitieb zobraziť:</string>
     <string name="display_communia_info">info, odkiaľ sa berú spoločné časti k modlitbe svätého</string>
     <string name="verse_numbering">číslovanie veršov</string>
-    <string name="bible_references">biblické odkazy</string>
+    <string name="bible_references">biblické odkazy (appka Sväté Písmo)</string>
+    <string name="bible_ref_bible_com">biblické odkazy (appka YouVersion)</string>
     <string name="footnotes">poznámky (v texte, pod čiarou)</string>
     <string name="liturgical_readings">čítania v omši</string>
     <string name="psalms_omisions">vynechané pasáže zo žalmov</string>
