@@ -125,6 +125,9 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
 
     public boolean tryOpenBible(String url) {
       try {
+        if (url.startsWith("https://")) {
+          url = "http://" + url.substring(8);
+        }
         UrlOptions opts = new UrlOptions(S.getOpts());
         startActivity(new Intent("sk.ksp.riso.svpismo.action.SHOW", Uri.parse(url))
                           .putExtra("nightmode", opts.isNightmode()));

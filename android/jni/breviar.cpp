@@ -2080,16 +2080,16 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 
 						if (EXPORT_REFERENCIA) {
-#ifdef IO_ANDROID
-							Export("%s", mystr_remove_diacritics(reference));
-#else
 							if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) {
-								Export("%s", mystr_bible_com(reference));
+								Export("%s", mystr_bible_com(reference)); // no need to remove diacritics for bible.com even on Android
 							}
 							else {
+#ifdef IO_ANDROID
+								Export("%s", mystr_remove_diacritics(reference));
+#else
 								Export("%s", reference); // diacritics removal left only for Android
-							}
 #endif
+							}
 						}
 
 						if (EXPORT_REFERENCIA) {
