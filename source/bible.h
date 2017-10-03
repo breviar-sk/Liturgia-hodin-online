@@ -259,6 +259,22 @@ const char *bible_paratext_shortcut_with_dot[BIBLE_BOOKS_COUNT + 1] =
 	"2MA.", /* BIBLE_BOOK_DC_2Macc */
 };
 
+// default Bible online translation URLs
+const char *bible_references_default[POCET_JAZYKOV + 1] =
+{
+	"https://dkc.kbs.sk/?in=",
+	"",
+	"",
+	"http://www.vatican.va/archive/bible/nova_vulgata/documents/",
+	"",
+	"",
+	"http://www.szentiras.hu/SZIT/",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+
 // bible.com version id codes; usage for web HTTP requests
 // ToDo: to be moved as default to config file
 const char *bible_version_id_default[POCET_JAZYKOV + 1] =

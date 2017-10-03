@@ -24,6 +24,7 @@
 #define MAX_INCD_STR	50
 #define MAX_OPTION_LENGTH	40
 #define MAX_VALUE_LENGTH	80
+#define MAX_SMALL_STR	10
 
 #ifdef OS_Windows_Ruby
 #define CONFIG_FILE "breviar-local.cfg"
@@ -49,16 +50,21 @@ extern char cfg_INCLUDE_DIR_default [MAX_INCD_STR];
 
 extern long cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
 
-#define POCET_DALSICH_CONF 3
+#define POCET_DALSICH_CONF 6
 
 extern char cfg_http_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 extern char cfg_http_display_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 extern char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
+extern char cfg_http_bible_references_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
+extern char cfg_http_bible_com_references_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
+extern char cfg_bible_com_version_id_default[POCET_JAZYKOV + 1][MAX_SMALL_STR];
 
 #define CFG_OPTION_DEFAULT(i) cfg_option_default[i][_global_jazyk]
 
 const long cfg_option_default_PROG[POCET_GLOBAL_OPT] = 
 {130, 5376, 29432, 0, 0, 0, 0};
+
+void setConfigDefaultsOther(short int j);
 
 void readConfig(void);
 void printConfig(void);

@@ -2024,28 +2024,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 						if (EXPORT_REFERENCIA) {
 							if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) {
-								Export(HTML_A_HREF_BEGIN "\"https://www.bible.com/bible/");
-#if defined(IO_ANDROID) || defined(__APPLE__)
-								// nothing to add here
-#else
-								// for web, add default version id
-								Export("%s" STR_SLASH, bible_version_id_default[_global_jazyk]);
-#endif // IO_ANDROID || __APPLE__
-
+								Export(HTML_A_HREF_BEGIN "\"%s", cfg_http_bible_com_references_default[_global_jazyk]);
+								// add default version id
+								Export("%s" STR_SLASH, cfg_bible_com_version_id_default[_global_jazyk]);
 							}
 							else {
-
-								// ToDo: to be moved as default to config file (URL for default bible translation)
-
-								if (_global_jazyk == JAZYK_HU) {
-									Export(HTML_A_HREF_BEGIN "\"http://www.szentiras.hu/SZIT/");
-								}
-								else if (_global_jazyk == JAZYK_SK) {
-									Export(HTML_A_HREF_BEGIN "\"https://dkc.kbs.sk/?in=");
-								}
-								else {
-									Export(HTML_A_HREF_BEGIN "\"#");
-								}
+								Export(HTML_A_HREF_BEGIN "\"%s", cfg_http_bible_references_default[_global_jazyk]);
 							}
 						}
 
@@ -9899,15 +9883,10 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_REF
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE, STR_FORCE_BIT_OPT_0_REF, html_text_opt_0_referencie[_global_jazyk], html_text_opt_0_referencie_explain[_global_jazyk]);
 
-#ifdef OS_Windows_Ruby
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_REF_BIBLE_COM
 		Export(HTML_CRLF_LINE_BREAK);
 		Export(HTML_NONBREAKING_SPACE_LOOONG);
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM, STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, html_text_opt_0_ref_bible_com[_global_jazyk], html_text_opt_0_ref_bible_com_explain[_global_jazyk], NIE);
-#else
-		// else: treba nastaviť hidden pre všetky options pre _global_force_opt
-		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, (isGlobalOptionForce(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) ? ANO : NIE);
-#endif
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_FOOTNOTES
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES, STR_FORCE_BIT_OPT_0_FOOTNOTES, html_text_opt_0_footnotes[_global_jazyk], html_text_opt_0_footnotes_explain[_global_jazyk]);
@@ -17523,24 +17502,27 @@ END_parseQueryString:
 
 short int counter_setConfigDefaults = 0;
 
-void setConfigDefaults(short int jazyk){
+void setConfigDefaults(short int jazyk) {
 	long sk_default;
 	short int i;
 	counter_setConfigDefaults++;
 	Log("setConfigDefaults(%d) -- začiatok (%d. volanie)...\n", jazyk, counter_setConfigDefaults);
 
-	for (i = 0; i < POCET_GLOBAL_OPT; i++){
-		if (jazyk != JAZYK_SK){
+	for (i = 0; i < POCET_GLOBAL_OPT; i++) {
+		if (jazyk != JAZYK_SK) {
 			sk_default = cfg_option_default[i][JAZYK_SK];
 		}
-		else{
+		else {
 			sk_default = GLOBAL_OPTION_NULL;
 		}
-		if (cfg_option_default[i][jazyk] == GLOBAL_OPTION_NULL){
+		if (cfg_option_default[i][jazyk] == GLOBAL_OPTION_NULL) {
 			cfg_option_default[i][jazyk] = (sk_default == GLOBAL_OPTION_NULL) ? cfg_option_default_PROG[i] : sk_default;
 			Log("keďže cfg_option_default[%d][%d] bolo GLOBAL_OPTION_NULL, nastavujem podľa program defaults na %ld...\n", i, jazyk, cfg_option_default[i][jazyk]);
 		}
 	}// for i
+
+	setConfigDefaultsOther(_global_jazyk);
+
 	Log("setConfigDefaults(%d) -- koniec (%d. volanie).\n", jazyk, counter_setConfigDefaults);
 }// setConfigDefaults()
 

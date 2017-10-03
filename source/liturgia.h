@@ -1797,6 +1797,8 @@ struct _anchor_and_count {
 };
 typedef struct _anchor_and_count _struct_anchor_and_count;
 
+extern const char *bible_references_default[POCET_JAZYKOV + 1];
+
 extern const char *bible_version_id_default[POCET_JAZYKOV + 1];
 
 #endif // __LITURGIA_H_

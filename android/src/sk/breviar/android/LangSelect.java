@@ -178,7 +178,7 @@ public class LangSelect extends Activity {
 
       bible_ref_bible_com_check.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-          activity.url_options.setBibleRefBibleCom(((CheckBox)v).isChecked());
+          activity.url_options.setBibleRefBibleCom(((CheckBox)v).isChecked()); // this will eventually change bit for BibleReferences
           BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
         }
       });

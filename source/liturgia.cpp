@@ -370,7 +370,7 @@ char *mystr_bible_com_helper(const char *input, short int book_number_prefix = 0
 	// first,   replace . -> @
 	// next,    replace , -> .
 	// finally, replace @ -> ,
-	return mystr_replace_char(mystr_replace_char(mystr_replace_char(input_with_prefix, '.', '@'), ',', '.'), '@', ',');
+	return mystr_remove_letters_and_parentheses(mystr_replace_char(mystr_replace_char(mystr_replace_char(input_with_prefix, '.', '@'), ',', '.'), '@', ','));
 }// mystr_bible_com_helper()
 
 char *mystr_bible_com(const char *input) {

@@ -494,7 +494,7 @@ void _patka(FILE * expt){
 	Export_to_file(expt, "<" HTML_LINK_NORMAL " href=\"%s\" " HTML_TARGET_TOP ">%s" HTML_A_END "\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
 #endif
 
-	Log("cfg_mail_address_default[%s] == %s\n", cfg_mail_address_default[_global_jazyk], skratka_jazyka[_global_jazyk]);
+	Log("cfg_mail_address_default[%d] (language: %s) == %s\n", _global_jazyk, skratka_jazyka[_global_jazyk], cfg_mail_address_default[_global_jazyk]);
 	mystrcpy(mail_addr, cfg_mail_address_default[_global_jazyk], MAX_MAIL_STR);
 
 	Log("mail_addr == %s\n", mail_addr);

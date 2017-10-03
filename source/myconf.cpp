@@ -7,15 +7,6 @@
 /*                                                       */
 /*********************************************************/
 
-#undef LOG_READCONFIG
-#undef LOG_CONFIG
-
-#if defined(LOG_CONFIG) && defined(LOGGING)
-#define LogConfig Log
-#else
-#define LogConfig emptyLog
-#endif
-
 #include "vstudio.h"
 
 #ifndef __MYCONF_CPP_
@@ -33,9 +24,19 @@
 #include "mystring.h"
 #include "liturgia.h"
 
-char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR] = "http://breviar.sk/";
+#undef LOG_READCONFIG
+#define LOG_CONFIG
+
+#if defined(LOG_CONFIG) && defined(LOGGING)
+#define LogConfig Log
+#else
+#define LogConfig emptyLog
+#endif
+
+char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR] = "/";
 char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "breviar.sk";
 char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = "videky@breviar.sk";
+char cfg_HTTP_BIBLE_COM_REFERENCES_default[MAX_HTTP_STR] = "https://www.bible.com/bible/";
 
 #if !defined(IO_ANDROID)
 #define INCLUDE_PATH_PREFIX   "../"
@@ -50,9 +51,12 @@ long cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
 char cfg_http_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_http_display_address_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_mail_address_default[POCET_JAZYKOV + 1][MAX_MAIL_STR];
+char cfg_http_bible_references_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
+char cfg_http_bible_com_references_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
+char cfg_bible_com_version_id_default[POCET_JAZYKOV + 1][MAX_SMALL_STR];
 
 const char *cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] =
-{ "specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "alternatives_multi", "http_adresa", "http_zobraz_adr", "mail_adresa" };
+{ "specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "alternatives_multi", "http_adresa", "http_zobraz_adr", "mail_adresa", "http_bible_references", "http_bible_com_references", "bible_com_version_id" };
 #define ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX "_"
 
 const char *cfg_option_postfix[POCET_JAZYKOV + 1] =
@@ -72,12 +76,63 @@ void printConfigOptions(void){
 					case 0: LogConfig("http address: %s\n", cfg_http_address_default[j]); break;
 					case 1: LogConfig("http display address: %s\n", cfg_http_display_address_default[j]); break;
 					case 2: LogConfig("mail address: %s\n", cfg_mail_address_default[j]); break;
+					case 3: LogConfig("http bible references: %s\n", cfg_http_bible_references_default[j]); break;
+					case 4: LogConfig("http bible.com references: %s\n", cfg_http_bible_com_references_default[j]); break;
+					case 5: LogConfig("bible.com version id: %s\n", cfg_bible_com_version_id_default[j]); break;
 				} // switch()
 			}
 		}// for o
 	}// for j
 #endif
 }// printConfigOptions()
+
+void setConfigDefaultsOther(short int j) {
+	Log("setConfigDefaultsOther(%d): begin...", j);
+
+	if (j > POCET_JAZYKOV) {
+		return;
+	}
+
+	LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
+
+	LogConfig("http address: %s\n", cfg_http_address_default[j]);
+	if (equals(cfg_http_address_default[j], STR_EMPTY)) {
+		strcpy(cfg_http_address_default[j], cfg_HTTP_ADDRESS_default);
+		LogConfig("value CHANGED: %s\n", cfg_http_address_default[j]);
+	}
+
+	LogConfig("http display address: %s\n", cfg_http_display_address_default[j]);
+	if (equals(cfg_http_display_address_default[j], STR_EMPTY)) {
+		strcpy(cfg_http_display_address_default[j], cfg_HTTP_DISPLAY_ADDRESS_default);
+		LogConfig("value CHANGED: %s\n", cfg_http_display_address_default[j]);
+	}
+
+	LogConfig("mail address: %s\n", cfg_mail_address_default[j]);
+	if (equals(cfg_mail_address_default[j], STR_EMPTY)) {
+		strcpy(cfg_mail_address_default[j], cfg_MAIL_ADDRESS_default);
+		LogConfig("value CHANGED: %s\n", cfg_mail_address_default[j]);
+	}
+
+	LogConfig("http bible references: %s\n", cfg_http_bible_references_default[j]);
+	if (equals(cfg_http_bible_references_default[j], STR_EMPTY)) {
+		strcpy(cfg_http_bible_references_default[j], bible_references_default[j]);
+		LogConfig("value CHANGED: %s\n", cfg_http_bible_references_default[j]);
+	}
+
+	LogConfig("http bible.com references: %s\n", cfg_http_bible_com_references_default[j]);
+	if (equals(cfg_http_bible_com_references_default[j], STR_EMPTY)) {
+		strcpy(cfg_http_bible_com_references_default[j], cfg_HTTP_BIBLE_COM_REFERENCES_default);
+		LogConfig("value CHANGED: %s\n", cfg_http_bible_com_references_default[j]);
+	}
+
+	LogConfig("bible.com version id: %s\n", cfg_bible_com_version_id_default[j]);
+	if (equals(cfg_bible_com_version_id_default[j], STR_EMPTY)) {
+		strcpy(cfg_bible_com_version_id_default[j], bible_version_id_default[j]);
+		LogConfig("value CHANGED: %s\n", cfg_bible_com_version_id_default[j]);
+	}
+
+	Log("setConfigDefaultsOther(%d): end.", j);
+}// setConfigDefaultsOther()
 
 void readConfig(void)
 {
@@ -225,6 +280,9 @@ void readConfig(void)
 									case 0: mystrcpy(cfg_http_address_default[j], hodnota, MAX_HTTP_STR); break;
 									case 1: mystrcpy(cfg_http_display_address_default[j], hodnota, MAX_HTTP_STR); break;
 									case 2: mystrcpy(cfg_mail_address_default[j], hodnota, MAX_MAIL_STR); break;
+									case 3: mystrcpy(cfg_http_bible_references_default[j], hodnota, MAX_HTTP_STR); break;
+									case 4: mystrcpy(cfg_http_bible_com_references_default[j], hodnota, MAX_HTTP_STR); break;
+									case 5: mystrcpy(cfg_bible_com_version_id_default[j], hodnota, MAX_SMALL_STR); break;
 								} // switch()
 							}// else -- natvrdo definovaná option
 						}// if(!strcmp(option, nazov_option))
@@ -238,32 +296,18 @@ void readConfig(void)
 			LogConfig("EOF... break.\n");
 			break;
 		}
-
 	}
 	fclose(subor);
 
 	LogConfig("============================ súbor `%s' ============================\n", CONFIG_FILE);
+
 	if(equalsi(cfg_MAIL_ADDRESS_default, STR_EMPTY)){
 		mystrcpy(cfg_MAIL_ADDRESS_default, MAIL_ADDRESS_DEFAULT, MAX_MAIL_STR);
 	}
 	LogConfig("cfg_MAIL_ADDRESS_default == %s\n", cfg_MAIL_ADDRESS_default);
-	for(j = 0; j <= POCET_JAZYKOV; j++){
-		LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
-		LogConfig("http address: %s\n", cfg_http_address_default[j]);
-		if(equals(cfg_http_address_default[j], STR_EMPTY)){
-			strcpy(cfg_http_address_default[j], cfg_HTTP_ADDRESS_default);
-			LogConfig("http address CHANGED: %s\n", cfg_http_address_default[j]);
-		}
-		LogConfig("http display address: %s\n", cfg_http_display_address_default[j]);
-		if(equals(cfg_http_display_address_default[j], STR_EMPTY)){
-			strcpy(cfg_http_display_address_default[j], cfg_HTTP_DISPLAY_ADDRESS_default);
-			LogConfig("http display address CHANGED: %s\n", cfg_http_display_address_default[j]);
-		}
-		LogConfig("mail address: %s\n", cfg_mail_address_default[j]);
-		if(equals(cfg_mail_address_default[j], STR_EMPTY)){
-			strcpy(cfg_mail_address_default[j], cfg_MAIL_ADDRESS_default);
-			LogConfig("mail address CHANGED: %s\n", cfg_mail_address_default[j]);
-		}
+
+	for (j = 0; j <= POCET_JAZYKOV; j++) {
+		setConfigDefaultsOther(j);
 	}
 
 	// pôvodne pre Ruby || Android, teraz pre všetky platformy, upravené defaulty pre zobrazovanie
