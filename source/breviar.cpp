@@ -9661,18 +9661,18 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST, STR_FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST, html_text_opt_1_spolc_svaty[_global_jazyk], html_text_opt_1_spolc_svaty_explain[_global_jazyk]);
 #endif
 
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV
+		_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV, STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV, html_text_opt_1_override_stupen_slavenia[_global_jazyk], html_text_opt_1_override_stupen_slavenia_explain[_global_jazyk]);
+
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST
+		Export(HTML_CRLF_LINE_BREAK);
+		Export(HTML_NONBREAKING_SPACE_LOOONG);
+		_export_main_formular_checkbox_slash(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST, STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, html_text_opt_1_slavit_ako_sviatok[_global_jazyk], html_text_opt_1_slavit_ako_slavnost[_global_jazyk], NIE);
+
 		if(!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)){ // len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená
 
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST
 			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST, STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST, html_text_opt_1_spomienka_spolcast[_global_jazyk], html_text_opt_1_spomienka_spolcast_explain[_global_jazyk]);
-
-			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV
-			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV, STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV, html_text_opt_1_override_stupen_slavenia[_global_jazyk], html_text_opt_1_override_stupen_slavenia_explain[_global_jazyk]);
-
-			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST
-			Export(HTML_CRLF_LINE_BREAK);
-			Export(HTML_NONBREAKING_SPACE_LOOONG);
-			_export_main_formular_checkbox_slash(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST, STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, html_text_opt_1_slavit_ako_sviatok[_global_jazyk], html_text_opt_1_slavit_ako_slavnost[_global_jazyk], NIE);
 
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_SKRY_POPIS
 			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS, STR_FORCE_BIT_OPT_1_SKRY_POPIS, html_text_opt_1_skryt_popis_svaty[_global_jazyk], html_text_opt_1_skryt_popis_svaty_explain[_global_jazyk]);

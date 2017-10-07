@@ -4134,23 +4134,28 @@ void _set_zalmy_vesp_127_111_kol(short int modlitba){
 }// _set_zalmy_vesp_127_111_kol()
 
 // OFM (04OKT)
-void _set_zalmy_ofm_frantisek(short int modlitba){
+void _set_zalmy_ofm_frantisek(short int modlitba) {
 	Log("_set_zalmy_ofm_frantisek(%s) -- begin\n", nazov_modlitby(modlitba));
-	if (modlitba == MODL_VESPERY){
+	if (modlitba == MODL_VESPERY) {
 		set_zalm(1, modlitba, "z113.htm", "ZALM113");
 		set_zalm(2, modlitba, "z146.htm", "ZALM146");
 		set_zalm(3, modlitba, "ch_ef1.htm", "CHVAL_EF1");
 	}
-	else if (modlitba == MODL_PRVE_VESPERY){
+	else if (modlitba == MODL_PRVE_VESPERY) {
 		set_zalm(1, modlitba, "z112.htm", "ZALM112");
 		set_zalm(2, modlitba, "z147.htm", "ZALM147,12-20");
 		set_zalm(3, modlitba, "z142.htm", "ZALM142"); // !!! sic, p. 512
 	}
-	else if (modlitba == MODL_RANNE_CHVALY){
+	else if (modlitba == MODL_RANNE_CHVALY) {
 		_set_zalmy_1nedele_rch();
 	}
-	else if (modlitba == MODL_POSV_CITANIE){
-		_set_zalmy_pc_1_8_16(modlitba);
+	else if (modlitba == MODL_POSV_CITANIE) {
+		if (_global_jazyk == JAZYK_CZ) {
+			_set_zalmy_pc_1_8_15(modlitba); // Žl 15 (14) (CZ)
+		}
+		else {
+			_set_zalmy_pc_1_8_16(modlitba); // Ž 16 (SK, HU)
+		}
 	}
 	Log("_set_zalmy_ofm_frantisek(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_ofm_frantisek()
