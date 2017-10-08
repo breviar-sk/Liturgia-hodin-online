@@ -13098,10 +13098,10 @@ const char *text_OKT_31_SJ[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_OKT_31_OFM[POCET_JAZYKOV + 1] =
+const char *text_OKT_31_OFMCAP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Angela z Acri, kňaza, člena 1. rádu",
-	"Bl. Anděla z Acri, kněze",
+	"Sv. Angela z Acri, kňaza, člena 1. rádu",
+	"Sv. Anděla z Acri, kněze",
 	"",
 	"",
 	"",

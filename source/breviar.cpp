@@ -11866,6 +11866,7 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 #define _local_modl_kompletorium (*_local_modl_kompletorium_ptr)
 
 	short int _local_spol_cast = MODL_SPOL_CAST_NEURCENA;
+	short int _local_opt_3_spol_cast = MODL_SPOL_CAST_NEURCENA;
 
 	Log("Allocating memory...\n");
 	// _local_modl_prve_vespery_ptr
@@ -11927,22 +11928,22 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 
 	short int svaty_dalsi_den = UNKNOWN_PORADIE_SVATEHO;
 
-	if ((modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM)){
+	if ((modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM)) {
 		// najprv analyzujem nasledujuci den - kvoli prvym vesperam resp. kompletoriu
 		Log("kedze modlitba je vespery alebo kompletorium, robim tuto cast... (naplnenie _local_den)\n");
 		_local_rok = rok;
 		// do premennej datum dame datum nasledujuceho dna
-		if (den == pocet_dni[mesiac - 1]){
+		if (den == pocet_dni[mesiac - 1]) {
 			datum.den = 1;
-			if (mesiac == 12){
+			if (mesiac == 12) {
 				datum.mesiac = 1;
 				_local_rok = rok + 1;
 			}
-			else{
+			else {
 				datum.mesiac = mesiac + 1;
 			}
 		}
-		else{
+		else {
 			datum.den = den + 1;
 			datum.mesiac = mesiac;
 		}
@@ -11952,28 +11953,34 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 
 		Log("spustam analyzu nasledujuceho dna (%d. %s %d), poradie_svaty == %d...\n", datum.den, nazov_mesiaca(datum.mesiac - 1), _local_rok, svaty_dalsi_den);
 		ret = _rozbor_dna_s_modlitbou(datum, _local_rok, modlitba, svaty_dalsi_den);
-		if (ret == FAILURE){
+		if (ret == FAILURE) {
 			Log("_rozbor_dna_s_modlitbou() pre nasledujuci den returned FAILURE, so...\n");
 			Log("-- rozbor_dna_s_modlitbou(int, int, int, int): uncomplete end\n");
 			goto LABEL_s_modlitbou_DEALLOCATE;
 		}// ret == FAILURE
 		Log("analyza nasledujuceho dna (%d. %s %d) skoncila.\n", datum.den, nazov_mesiaca(datum.mesiac - 1), rok);
-		LOG_ciara;
 
 		_local_den = _global_den;
-		_local_spol_cast = (short int)_global_opt[OPT_3_SPOLOCNA_CAST];
+		_local_spol_cast = _global_den.spolcast;
+		_local_opt_3_spol_cast = (short int)_global_opt[OPT_3_SPOLOCNA_CAST];
 		_local_modl_prve_vespery = _global_modl_prve_vespery;
 		_local_modl_prve_kompletorium = _global_modl_prve_kompletorium;
 		_local_modl_vespery = _global_modl_vespery;
 		_local_modl_kompletorium = _global_modl_kompletorium;
 
+		mystrcpy(_local_string, _global_string, MAX_GLOBAL_STR); // veľkosť 2011-09-27 opravená podľa _global_string
+
+		Log("_local_spol_cast obsahuje: %d\n", _local_spol_cast);
+		Log("_local_opt_3_spol_cast obsahuje: %d\n", _local_opt_3_spol_cast);
+		Log("_local_string obsahuje: %s\n", _local_string);
 		// Log("_local_modl_vespery obsahuje:\n"); Log(_local_modl_vespery);
 		// Log("_local_modl_prve_vespery obsahuje:\n"); Log(_local_modl_prve_vespery);
 		// Log("_global_modl_kompletorium obsahuje:\n"); Log(_global_modl_kompletorium);
 		// Log("_global_modl_prve_kompletorium obsahuje:\n"); Log(_global_modl_prve_kompletorium);
 		// Log("_local_modl_prve_kompletorium obsahuje:\n"); Log(_local_modl_prve_kompletorium);
 
-		mystrcpy(_local_string, _global_string, MAX_GLOBAL_STR); // veľkosť 2011-09-27 opravená podľa _global_string
+		LOG_ciara;
+
 	}// kompletorium alebo vespery
 
 	// teraz analyzujem dnesny den
@@ -12093,6 +12100,9 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 			Log("nastavujem _global_string_podnadpis... if((_global_den.smer < 5) || ...\n");
 			init_global_string_podnadpis(modlitba);
 
+			// this is not necessary (in fact, it causes problems: wrong description for http://localhost:2000/cgi-bin/l.cgi?qt=pdt&d=25&m=10&r=2015&p=mv&ds=1&j=cz&o0=134&o1=5376&o2=29432&o3=6)
+			// introduced by commit # c48527f0d3 but now hopefully not necessary
+			/*
 			Log("kontrolujem _global_opt[OPT_3_SPOLOCNA_CAST]... if((_global_den.smer < 5) || : ");
 			if (_local_spol_cast != MODL_SPOL_CAST_NEURCENA){
 				_global_opt[OPT_3_SPOLOCNA_CAST] = _local_spol_cast;
@@ -12101,6 +12111,7 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 			else{
 				Log("bez úpravy.\n");
 			}
+			*/
 
 			Log("nastavujem _global_string_spol_cast... if((_global_den.smer < 5) || ...\n");
 			ret_sc = init_global_string_spol_cast(odfiltrujSpolCast(modlitba, _global_opt[OPT_3_SPOLOCNA_CAST]), poradie_svaty);

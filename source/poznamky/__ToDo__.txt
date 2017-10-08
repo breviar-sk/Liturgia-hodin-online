@@ -3,19 +3,12 @@ _________________________________________________________________________
 
 -- problémy pri "modlitba pre dané obdobie, deò..." (vo¾ba úplne dole) pre advent a pod.
 
+2017-10-07, JUV: partially fixed
+
 _________________________________________________________________________
 2011-10-13, JUV:
 
--- aj do ostatnıch jazykov do HTML zdrojákov pre almy a chválospevy doplni "kríiky"
-
 -- zvái, èi èervenú pomlèku, odde¾ujúcu jednotlivé strofy pre almy a chválospevy, spravi volite¾ne zobrazite¾nou (implementácia ako napr. <!--{ZAKONCENIE:SKRZE}-->)
-
-_________________________________________________________________________
-2011-11-08, JUV:
-
--- chyba je, e v modlitbe cez deò ponúkam info o svätcovi; v podstate by pre spomienky a ¾ubovo¾né spomienky ani odkaz na modlitbu cez deò nemusel by (viï bod 236. smerníc: "V modlitbe cez deò, èie predpoludním, napoludnie a popoludní, a v kompletóriu sa neberie niè z ofícia o svätom, všetko je zo všedného dòa.")
-
--- podobne asi neponúknu pre ¾ubovo¾né spomienky kompletórium
 
 _________________________________________________________________________
 2012-01-16, JUV:
@@ -42,37 +35,6 @@ http://breviar.sk/cgi-bin/l.cgi?qt=pdt&d=2&m=3&r=2012&p=mrch|mv|mk&j=c2&o1=132
 JJ jan.jakous@gmail.com
 
 _________________________________________________________________________
-2012-03-08, JUV:
-
--- Chvála Kristu, v dobì postní mi v breviáøi chybí monost vybrat si hymnus, kdy se nìkdo modlí z papírového a modlí se jinı hymnus ne Soudce všeho svìta Boe, nezbıvá mi nic jiného, ne jen poslouchat.
-Míša Štegnerová / trebovskam@gmail.com
-
-_________________________________________________________________________
-
-2013-10-10, JUV:
-
--- pád (exit 9) app:
-
-http://localhost:2000/cgi-bin/l.cgi?qt=pdt&d=23&m=11&r=2012&j=hu&o1=5314&o2=29432&o3=1&p=mrch
-http://localhost:2000/cgi-bin/l.cgi?qt=pdt&d=23&m=11&r=2012&j=cz&o1=5314&o2=29432&o3=1&p=mrch
-
-_________________________________________________________________________
-
-2015-04-10, JUV:
-
-done, removed <table> elements completely
-
-Export("<"HTML_TABLE">\n");
-Export("<"HTML_TABLE_ROW">\n");
-Export("<"HTML_TABLE_CELL">\n");
-
-Export(HTML_TABLE_CELL_END"\n");
-Export(HTML_TABLE_ROW_END"\n");
-Export(HTML_TABLE_END"\n");
-
-
-_________________________________________________________________________
-
 2015-05-18, JUV:
 
 naprogramova aj monos, aby si pouívate¾ sám zvolil, èi chce 1. alebo 2. nede¾né kompletórium
@@ -80,26 +42,19 @@ tıka sa napr. Ve¾konoènej oktávy
 
 
 _________________________________________________________________________
-
 2015-05-26, JUV:
 
 dorieši zlı popis: "Spoleèné texty na svátky o jednom muèedníkovi."
 http://localhost:2000/cgi-bin/l.cgi?qt=pdt&d=25&m=10&r=2015&p=mv&ds=1&j=cz&o0=134&o1=5376&o2=29432&o3=6
 
-_________________________________________________________________________
+2017-10-07, JUV: hopefully fixed by commit # db2f45b0e5 (undo of commit # c48527f0d3)
 
+_________________________________________________________________________
 2015-10-28, JUV:
 
 Zvái doplnenie "Sláva Otcu." za kadı alm a chválospev pre všetky modlitby (okrem invitatória). Napísal Filip Vagaè<vagacf@gmail.com> a svojho èasu aj Katka Gajdošová.
 
 _________________________________________________________________________
-
-2015-11-04, JUV:
-
-"14.9. na svátek Povıšení svatého køíe, kterı letos pøipadl na pondìlí, je zaøazen kompletáø z úterı" (Václav Slouk<slouk@biskupstvi.cz>)
-
-_________________________________________________________________________
-
 2017-10-06, JUV:
 
 marianus@mariasoft.sk

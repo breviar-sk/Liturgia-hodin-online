@@ -1897,7 +1897,7 @@ extern const char *text_OKT_23_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_25_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_26_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_30_HU_OFM[POCET_JAZYKOV + 1];
-extern const char *text_OKT_31_OFM[POCET_JAZYKOV + 1];
+extern const char *text_OKT_31_OFMCAP[POCET_JAZYKOV + 1];
 extern const char *text_NOV_03_OFM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_06_OFM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_08_OFM[POCET_JAZYKOV + 1];
