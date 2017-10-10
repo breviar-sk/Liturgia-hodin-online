@@ -7198,7 +7198,6 @@ void xml_export_options(void){
 }// xml_export_options()
 
 // predpokoladam, ze pred jeho volanim bolo pouzite analyzuj_rok(rok); ktore da vysledok do _global_r
-// ak poradie_svateho == 5, znamena to, ze analyzujem nasledujuci den.
 // dostane {den, mesiac} a rok
 short int _rozbor_dna_s_modlitbou(_struct_den_mesiac datum, short int rok, short int modlitba, short int poradie_svateho){
 	short int ret;
