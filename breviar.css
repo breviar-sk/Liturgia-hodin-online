@@ -726,10 +726,17 @@ td {
 }
 
 hr { 
-	color: gray; 
-	height: 0.2mm;
-	size: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	display: block;
+	height: 1px;
+	margin: auto;
+	padding: 0; 
 	width: 33%; 
+}
+
+hr.red { 
+	border-top: 1px solid #f00;
 }
 
 select { 
