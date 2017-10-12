@@ -3294,7 +3294,9 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 		else if (equals(paramname, PARAM_VIGILIA)) {
 			bit = BIT_OPT_1_PC_VIGILIA;
+			Log("podmienka == %d; _global_modlitba == %d; ant_chval.anchor == %s; ant_chval.file == %s\n", podmienka, _global_modlitba, _global_modl_posv_citanie.ant_chval.anchor, _global_modl_posv_citanie.ant_chval.file);
 			podmienka &= (je_vigilia);
+			Log("podmienka after & je_vigilia == %d\n", podmienka);
 			specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_vigilia[_global_jazyk]);
 			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_vigilia[_global_jazyk]);

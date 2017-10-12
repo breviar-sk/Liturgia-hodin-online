@@ -1112,11 +1112,17 @@ void _set_chvalospev_vig_post(short int modlitba){
 	_set_chvalospev3(modlitba, "ch_nar5.htm", "CHVAL_NAR5VG");
 }// _set_chvalospev_vig_post()
 
-void _set_chvalospev_vig_vn(short int modlitba){
+void _set_chvalospev_vig_vn(short int modlitba) {
 	_set_chvalospev1(modlitba, "ch_iz63.htm", "CHVAL_IZ63VG");
 	_set_chvalospev2(modlitba, "ch_oz6.htm", "CHVAL_OZ6VG");
 	_set_chvalospev3(modlitba, "ch_sof3.htm", "CHVAL_SOF3VG");
 }// _set_chvalospev_vig_vn()
+
+void _set_chvalospev_vig_sc_vpchr(short int modlitba) {
+	_set_chvalospev1(modlitba, "ch_tob13.htm", "CHVAL_TOB13,8-11VG");
+	_set_chvalospev2(modlitba, "ch_iz2.htm", "CHVAL_IZ2VG");
+	_set_chvalospev3(modlitba, "ch_jer7.htm", "CHVAL_JER7VG");
+}// _set_chvalospev_vig_sc_vpchr()
 
 // files - nazvy suborov pre zaltar styroch tyzdnov
 char _file[SMALL]; // nazov súboru, napr. _1ne.htm
@@ -6643,6 +6649,7 @@ label_24_DEC:
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 					_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
+					// ToDo chválospevy
 					_vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_PREDPOLUDNIM;
@@ -10136,6 +10143,10 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// - II. zväzok (veľká noc),
 		// - III. a IV. zväzok (obdobie cez rok).
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, _anchor_head, _file, force);
+		// predĺžené slávenie vigílií
+		_spolocna_cast_set_vig_ant(_anchor_head);
+		_set_chvalospev_vig_sc_vpchr(modlitba);
+		_spolocna_cast_set_vig_ev(_anchor_head);
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
