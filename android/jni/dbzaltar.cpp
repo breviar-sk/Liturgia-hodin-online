@@ -1100,11 +1100,17 @@ void _set_chvalospev_vig_tk(short int modlitba){
 	_set_chvalospev3(modlitba, "ch_mud16.htm", "CHVAL_MUD16VG");
 }// _set_chvalospev_vig_tk()
 
-void _set_chvalospev_vig_srdca(short int modlitba){
+void _set_chvalospev_vig_srdca(short int modlitba) {
 	_set_chvalospev1(modlitba, "ch_iz12.htm", "CHVAL_IZ12VG");
 	_set_chvalospev2(modlitba, "ch_1sam2.htm", "CHVAL_1SAM2VG1");
 	_set_chvalospev3(modlitba, "ch_1sam2.htm", "CHVAL_1SAM2VG2");
 }// _set_chvalospev_vig_srdca()
+
+void _set_chvalospev_vig_krkrala(short int modlitba) {
+	_set_chvalospev1(modlitba, "ch_1krn29.htm", "CHVAL_1KRN29VG");
+	_set_chvalospev2(modlitba, "ch_iz12.htm", "CHVAL_IZ12VG2");
+	_set_chvalospev3(modlitba, "ch_iz61.htm", "CHVAL_IZ61VG");
+}// _set_chvalospev_vig_krkrala()
 
 void _set_chvalospev_vig_post(short int modlitba){
 	_set_chvalospev1(modlitba, "ch_jer14.htm", "CHVAL_JER14VG");
@@ -6740,7 +6746,8 @@ label_24_DEC:
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 
 				}// pre redemptoristov: 3. nedeľa v júli
-				else if(tyzden == 34){
+
+				else if (tyzden == 34) {
 					// krista krala -- 34. nedela obdobia `cez rok'
 					mystrcpy(_file, FILE_KRISTA_KRALA, MAX_STR_AF_FILE);
 					mystrcpy(_anchor, ANCHOR_KRISTA_KRALA, MAX_STR_AF_ANCHOR);
@@ -6781,6 +6788,11 @@ label_24_DEC:
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+					// posvätné čítanie -- predĺžené slávenie vigílie
+					modlitba = MODL_POSV_CITANIE;
+					_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
+					_set_chvalospev_vig_krkrala(modlitba);
+					_vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_VESPERY;
 					_set_zalmy_krista_krala(modlitba);
@@ -6821,6 +6833,7 @@ label_24_DEC:
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				}// krista krala
 			}// nedeľa v období cez rok (cezročnom období)
+
 			// féria v Cezročnom období
 			else{
 				// nie je nedela, ale len bezny den - feria - v obdobi cez rok

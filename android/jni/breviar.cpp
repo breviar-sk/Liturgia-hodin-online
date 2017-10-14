@@ -1504,7 +1504,10 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #endif
 
 	// nastavenie toho, či sa má zobrazovať myšlienka k žalmom/chválospevom | doplnené aj nastavenie pre zobrazenie nadpisu pre žalm/chválospev (zatiaľ rovnako ako pre myšlienku)
-	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.typslav == SLAV_VLASTNE) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.smer == 1) /* && (_global_den.spolcast != _encode_spol_cast(MODL_SPOL_CAST_NEURCENA)) */) {
+	// orig: if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.typslav == SLAV_VLASTNE) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.smer == 1) && (_global_den.spolcast != _encode_spol_cast(MODL_SPOL_CAST_NEURCENA))) {
+	// last part was commented
+	// 2017-10-13: nevidím dôvod, prečo by sa to nemalo zobrazovať vždy OKREM blind-friendly režimu (voice output)
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
 		je_myslienka = NIE;
 		je_nadpis = NIE;
 	}
