@@ -168,6 +168,11 @@ public class LangSelect extends Activity {
       bible_references_check.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
           activity.url_options.setBibleReferences(((CheckBox)v).isChecked());
+          CheckBox bible_ref_bible_com_check = (CheckBox)activity.findViewById(R.id.bible_ref_bible_com_check);
+          if (!((CheckBox)v).isChecked() && bible_ref_bible_com_check.isChecked()) {
+            bible_ref_bible_com_check.setChecked(false);
+            activity.url_options.setBibleRefBibleCom(false);
+          }
           BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
         }
       });
@@ -179,6 +184,11 @@ public class LangSelect extends Activity {
       bible_ref_bible_com_check.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
           activity.url_options.setBibleRefBibleCom(((CheckBox)v).isChecked()); // this will eventually change bit for BibleReferences
+          CheckBox bible_references_check = (CheckBox)activity.findViewById(R.id.bible_references_check);
+          if (((CheckBox)v).isChecked() && !bible_references_check.isChecked()) {
+            bible_references_check.setChecked(true);
+            activity.url_options.setBibleReferences(true);
+          }
           BreviarApp.setUrlOptions(getApplicationContext(), activity.url_options.build(true));
         }
       });

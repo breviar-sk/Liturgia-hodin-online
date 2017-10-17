@@ -95,7 +95,7 @@
     <string name="about_PLATFORM_IOS">iOS</string>
     <string name="about_text">include/about.htm</string>
 
-    <string name="btn_news">Čo je nové</string>
+    <string name="btn_news">Zmeny vo verziách</string>
     <string name="news"><![CDATA[
 <html>
 <head>
@@ -106,7 +106,20 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
-<p><b>Aplikácia Breviár | Čo je nové</b>
+<p><b>Aplikácia Breviár</b></p>
+
+<p><i>Upozornenie:</i> Toto je posledná verzia, ktorá je kompatibilná s OS Android 3 a starším. Nové aktualizácie budú dostupné len pre Android 4.0 a vyšší.</p>
+
+<p><b>Zmeny vo verziách</b></p>
+
+<p><b>Verzia 1.14.6</b>
+<ul>
+<li>Doplnenie úkonu kajúcnosti do kompletória (pri zapnutých rubrikách).</li>
+<li>Biblické odkazy: možnosť otvoriť na bible.com (zatiaľ iba online).</li>
+<li>Úpravy v liturgickom kalendári a textoch (OFMConv., SVD, OCD).</li>
+<li>Predĺžené slávenie vigílií: chválospevy pre slávnosť Krista Kráľa + Najsv. Srdca Ježišovho.</li>
+<li>Opravy v textoch.</li>
+</ul>
 
 <p><b>Verzia 1.14.5</b>
 <ul>
@@ -147,63 +160,6 @@ body { background-color: #000000; color: #cccccc; }
 <li>Nové nastavenie: Zobraziť tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia.</li>
 <li>Možnosť sláviť slávenia s vyšším stupňom (ako sviatky/slávnosti).</li>
 <li>Opravy v liturgickom kalendári.</li>
-</ul>
-
-<p><b>Verzia 1.13.2</b>
-<ul>
-<li>Nové nastavenie: biele/čierne pozadie (projektor/AMOLED displej).</li>
-<li>Vlastný kalendár a propriá bosých karmelitánov (OCD), vincentínsku rodinu (CM) a jezuitov (SJ).</li>
-<li>Stupeň slávenia pre 22. júl povýšený na sviatok.</li>
-</ul>
-
-<p><b>Verzia 1.13.1</b>
-<ul>
-<li>Možnosť zobraziť kompletné texty žalmov (vrátane vynechávok).</li>
-</ul>
-
-<p><b>Verzia 1.13</b>
-<ul>
-<li>Doplnenie partikulárneho kalendára slovenských rímskokatolíckych diecéz (od 1. júna 2016).</li>
-</ul>
-
-<p><b>Verzia 1.12.3</b>
-<ul>
-<li>Ofícium za zosnulých, možnosť vziať žalm 146 alebo 150 pre ranné chvály.</li>
-<li>Možnosť zobraziť navigačné šípky v texte.</li>
-</ul>
-
-<p><b>Verzia 1.12.2</b>
-<ul>
-<li>Možnosť zobraziť/skryť plné znenie krátkych responzórií (v ranných chválach a vešperách).</li>
-</ul>
-
-<p><b>Verzia 1.12.1</b>
-<ul>
-<li>Nové nastavenie: Možnosť konfigurovať aplikáciu pri zobrazenej navigačnej lište (umožniť označenie textu na kopírovanie).</li>
-</ul>
-
-<p><b>Verzia 1.12</b>
-<ul>
-<li>Možnosť zobraziť spoločné texty (vrátane ofícia za zosnulých).</li>
-<li>Doplnené slávenie 13. júna (Ordinariát).</li>
-</ul>
-
-<p><b>Verzia 1.11.2</b>
-<ul>
-<li>Nová položka menu: Všade použiť normálne písmo (nie tučné).</li>
-<li>Rozšírenie nastavení.</li>
-</ul>
-
-<p><b>Verzia 1.11.1</b>
-<ul>
-<li>Oprava: Kompatibilita s Android 2.x a staršími (čítania v omši).</li>
-</ul>
-
-<p><b>Verzia 1.11</b>
-<ul>
-<li>Prepínanie nočného/denného režimu priamo v hlavnom menu.</li>
-<li>Väčšia výška riadkov pre lepšiu čitateľnosť.</li>
-<li>Dialóg „O aplikácii“ upravený.</li>
 </ul>
 
 </body></html>

@@ -3872,8 +3872,8 @@ void _set_zalmy_ocd_terezka(short int modlitba){
 	}
 	else if (modlitba == MODL_POSV_CITANIE){
 		set_zalm(1, modlitba, "z23.htm", "ZALM23");
-		set_zalm(2, modlitba, "z103.htm", "ZALM103_I_ANJ");
-		set_zalm(3, modlitba, "z103.htm", "ZALM103_II_ANJ");
+		set_zalm(2, modlitba, "z103.htm", "ZALM103_I_OCD");
+		set_zalm(3, modlitba, "z103.htm", "ZALM103_II_OCD");
 	}
 	else if (modlitba == MODL_RANNE_CHVALY){
 		_set_zalmy_1nedele_rch();

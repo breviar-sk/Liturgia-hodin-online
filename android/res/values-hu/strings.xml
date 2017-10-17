@@ -106,11 +106,15 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
-<p><b>Zsolozsma alkalmazás | Újdonságok</b>
+<p><b>Zsolozsma alkalmazás</b></p>
+
+<p><i>Figyelmeztetés:</i> Ez az utolsó verzió, amely kompatibilis az Android 3 vagy annál idősebb verzióival. Az új frissítések csak az Android 4.0 vagy újabb verziói számára lesznek elérhetők.</p>
 
 <!-- <li>Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
 
-<p><b>Verzió 1.14.4 és 1.14.5</b>
+<p><b>Újdonságok</b></p>
+
+<p><b>Verzió 1.14.4, 1.14.5 és 1.14.6</b>
 <ul>
 <li>Frissítések a honlapról.</li>
 <li>Szövegek rögzítése.</li>
@@ -127,34 +131,6 @@ body { background-color: #000000; color: #cccccc; }
 <ul>
 <li>Új beállítási lehetőség: Vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg.</li>
 <li>Lehetséges az emléknapokat és az ünnepeket magasabb fokon ünnepelni (ünnepek/főünnepek).</li>
-</ul>
-
-<p><b>Verzió 1.13.2</b>
-<ul>
-<li>Új beállítási lehetőség: fehér/fekete háttért alkalmazni (vetítő/AMOLED kijelző).</li>
-<li>Július 22. ünnepként van bevezetve.</li>
-</ul>
-
-<p><b>Verzió 1.12.3</b>
-<ul>
-<li>Ferences saját részekkel.</li>
-<li>Zsolozsma a meghaltakért: a reggeli dicséretben lehetséges a 146. vagy a 150. zsoltárt venni.</li>
-<li>Szövegben navigálás lehetősége nyilak segítségével.</li>
-</ul>
-
-<p><b>Verzió 1.12.2</b>
-<ul>
-<li>Lehetőség a válaszos énekek teljes szövegének megjelenítésére/elrejtésére (reggeli és esti dicséretnél).</li>
-</ul>
-
-<p><b>Verzió 1.12.1</b>
-<ul>
-<li>Új beállítási lehetőség: Az alkalmazás beállításának lehetősége, amíg az alsó navigációs sáv megjelenik (szöveg másolásra kijelölésének engedélyezése).</li>
-</ul>
-
-<p><b>Verzió 1.12</b>
-<ul>
-<li>A közös részből való szövegek kiválasztásának lehetősége (a Halotti zsolozsmát beleértve).</li>
 </ul>
 
 </body></html>

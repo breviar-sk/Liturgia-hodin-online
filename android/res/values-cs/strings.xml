@@ -95,7 +95,7 @@
     <string name="about_PLATFORM_IOS">iOS</string>
     <string name="about_text">include_cz/about.htm</string>
 
-    <string name="btn_news">Co je nového</string>
+    <string name="btn_news">Změny ve verzích</string>
     <string name="news"><![CDATA[
 <html>
 <head>
@@ -106,9 +106,21 @@ body { background-color: #000000; color: #cccccc; }
 </head>
 <body>
 
-<p><b>Aplikace Breviář | Co je nového</b>
+<p><b>Aplikace Breviář</b></p>
+
+<p><i>Upozornění:</i> Toto je poslední verze, která je kompatibilní s OS Android 3 a starším. Nové aktualizacie budou dostupné jen pro Android 4.0 a vyšší.</p>
+
+<p><b>Změny ve verzích</b></p>
 
 <!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
+
+<p><b>Verze 1.14.6</b>
+<ul>
+<li>Doplnění úkonu kajícnosti do modlitby před spaním (pro zapnuté rubriky).</li>
+<li>Biblické odkazy: možnost otevřít na bible.com (zatím jenom online).</li>
+<li>Prodloužená slavení vigilií: kantika pro mezidobí.</li>
+<li>Úpravy v liturgickém kalendáři a textech (obecné, OFM, OFMCap).</li>
+</ul>
 
 <p><b>Verze 1.14.5</b>
 <ul>
@@ -152,49 +164,6 @@ body { background-color: #000000; color: #cccccc; }
 <li>Nová volba: Zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení.</li>
 <li>Možnost slavit slavení s vyšším stupněm (jako svátky/slavnosti).</li>
 <li>Opravy v liturgickém kalendáři.</li>
-</ul>
-
-<p><b>Verze 1.13.2</b>
-<ul>
-<li>Nová volba: bílé/černé pozadí (projektor/AMOLED displej).</li>
-<li>Stupeň slavení pro 22. července povýšen na svátek.</li>
-</ul>
-
-<p><b>Verze 1.13.1</b>
-<ul>
-<li>Poznámky pod čarou ke druhým čtením: doplněn advent+vánoce.</li>
-<li>Vlastní texty pro salesiánskou rodinu opraveny a doplňeny.</li>
-</ul>
-
-<p><b>Verze 1.13</b>
-<ul>
-<li>Nová volba: Možnost zobrazit poznámky pod čarou ke druhým čtením (zatím pro mezidobí).</li>
-<li>Kalendář a vlastní texty pro salesiánskou rodinu.</li>
-</ul>
-
-<p><b>Verze 1.12.3</b>
-<ul>
-<li>Společné texty za zemřelé, možnost vzít žalm 146 nebo 150 pro ranní chvály.</li>
-<li>Možnost zobrazit navigační šipky v textu.</li>
-</ul>
-
-<p><b>Verze 1.12.2</b>
-<ul>
-<li>Možnost zobrazit/skrýt plné znění krátkych zpěvů (v ranních chválách a nešporách).</li>
-</ul>
-
-<p><b>Verze 1.12.1</b>
-<ul>
-<li>Nová volba: Možnost konfigurace při zobrazené navigační liště (umožnění označit text na kopírování).</li>
-<li>Nové slavení pro OFM Cap: 4. května.</li>
-<li>Oprava: Zobrazení hymnů (obyčejných, ne k volnému výběru).</li>
-</ul>
-
-<p><b>Verze 1.12</b>
-<ul>
-<li>Nová volba: Možnost použít hymny k volnému výběru.</li>
-<li>Možnost zobrazit společné texty.</li>
-<li>Úprava zalomení a korekce hymnů.</li>
 </ul>
 
 </body></html>

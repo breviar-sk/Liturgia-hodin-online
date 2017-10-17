@@ -103,10 +103,6 @@ public class UrlOptions {
 
   public void setBibleRefBibleCom(boolean value) {
     setBit("o0", 12, value);
-	// set of0r to true if it was unchecked and used checked of0bc
-	if(value && !hasBit("o0", 1)) {
-		setBit("o0", 1, value);
-	}
   }
 
   // of0ff
