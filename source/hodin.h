@@ -12672,7 +12672,7 @@ const char *text_OKT_20_OFM[POCET_JAZYKOV + 1] =
 const char *text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] =
 {
 	"",
-	"Sv. Jakuba Kerna, kněze z premonstrátského řádu",
+	"Bl. Jakuba Kerna, kněze z premonstrátského řádu",
 	"",
 	"",
 	"",
