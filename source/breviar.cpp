@@ -3935,13 +3935,15 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			}
 			break;
 		case MODL_KOMPLETORIUM:
-			if ((_global_ant_mcd_rovnake == NIE) /* (_global_modl_kompletorium.pocet_zalmov == 2) */) {
+			if (_global_ant_mcd_rovnake == NIE) {
+				// no need to force the condition by: (_global_modl_kompletorium.pocet_zalmov == 2)
 				strcat(path, _global_modl_kompletorium.antifona1.file);
 				includeFile(type, PARAM_ANTIFONA1, path, _global_modl_kompletorium.antifona1.anchor);
 			}
 			break;
 		case MODL_PRVE_KOMPLETORIUM:
-			if ((_global_ant_mcd_rovnake == NIE) /* (_global_modl_kompletorium.pocet_zalmov == 2) */) {
+			if (_global_ant_mcd_rovnake == NIE) {
+				// no need to force the condition by: (_global_modl_kompletorium.pocet_zalmov == 2)
 				strcat(path, _global_modl_prve_kompletorium.antifona1.file);
 				includeFile(type, paramname, path, _global_modl_prve_kompletorium.antifona1.anchor);
 			}

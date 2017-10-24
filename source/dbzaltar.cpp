@@ -1206,7 +1206,7 @@ void _add_special_anchor_postfix(){
 }
 
 // hymn for compline
-void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modlitba, short int litobd){
+void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modlitba, short int litobd) {
 	Log("set_hymnus_kompletorium_obd(): začiatok\n");
 	short int ktory; // 0 or 1
 	// CZ OP: hymnus pre kompletórium i MCD sa strieda po týždňoch: "V naší provincii se vžil zvyk pro obojí - pro kompletář i pro modlitbu během dne, že se používá hymnus "A" pro liché a hymnus "B" pro sudé týdny."
@@ -1216,37 +1216,37 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 	short int pom_litobd = litobd;
 	file_name_zapamataj();
 	// veľkonočné obdobie má jeden hymnus (rovnaký): "Ježišu, Vykupiteľ náš"
-	if ((litobd == OBD_VELKONOCNE_I) || (litobd == OBD_VELKONOCNE_II) || (litobd == OBD_VELKONOCNA_OKTAVA) || ((litobd == OBD_VELKONOCNE_TROJDNIE) && (_global_den.denvr == VELKONOCNA_NEDELA))){ // pre celé trojdnie sa berie nedeľné kompletórium, preto sa treba spýtať priamo na VELKONOCNA_NEDELA
+	if ((litobd == OBD_VELKONOCNE_I) || (litobd == OBD_VELKONOCNE_II) || (litobd == OBD_VELKONOCNA_OKTAVA) || ((litobd == OBD_VELKONOCNE_TROJDNIE) && (_global_den.denvr == VELKONOCNA_NEDELA))) { // pre celé trojdnie sa berie nedeľné kompletórium, preto sa treba spýtať priamo na VELKONOCNA_NEDELA
 		pom_litobd = OBD_VELKONOCNE_I;
 	}
-	else if ((litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (den != DEN_STVRTOK) && (_global_jazyk == JAZYK_CZ)){
+	else if ((litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (den != DEN_STVRTOK) && (_global_jazyk == JAZYK_CZ)) {
 		// pre český breviář sa nepoužívajú vo veľkom týždni iné hymny; pre zelený štrvtok je samostatný hymnus
 		pom_litobd = OBD_CEZ_ROK;
 	}
-	else if ((litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (den == DEN_STVRTOK) && (_global_jazyk == JAZYK_CZ)){
+	else if ((litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (den == DEN_STVRTOK) && (_global_jazyk == JAZYK_CZ)) {
 		// pre český breviář sa nepoužívajú vo veľkom týždni iné hymny; pre zelený štrvtok je samostatný hymnus
 		; // ponechá pom_litobd, ako je
 	}
-	else{
+	else {
 		// default
 		pom_litobd = OBD_CEZ_ROK;
 	}
 	file_name_kompletorium(pom_litobd);
 
 	short int dva_hymny = 1; // určuje, či v danom období sú dva hymny (1) alebo nie (0); ak je len jediný, má index 0
-	if (pom_litobd == OBD_VELKONOCNE_I){
+	if (pom_litobd == OBD_VELKONOCNE_I) {
 		dva_hymny = 0;
 	}
 
-	if ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))){
+	if ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))) {
 		sprintf(_anchor, "%c_%s_%s", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, nazov_DN_asci[den]);
 	}
-	else{
+	else {
 		// pre CZOP (český dominikánsky) rovnako ako pre slovenský, teda jeden hymnus VELKONOCNA_NEDELA
 		if ((litobd == OBD_ADVENTNE_I)
 			|| (litobd == OBD_VIANOCNE_I)
 			|| (litobd == OBD_OKTAVA_NARODENIA)
-			){ // predpísaný hymnus "Na sklonku dňa ťa úprimne"
+			) { // predpísaný hymnus "Na sklonku dňa ťa úprimne"
 			Log("set_hymnus_kompletorium_obd(): predpísaný hymnus A...\n");
 			ktory = 0;
 		}
@@ -1254,25 +1254,26 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 			|| (litobd == OBD_VIANOCNE_II)
 			|| (litobd == OBD_POSTNE_II_VELKY_TYZDEN)
 			|| (litobd == OBD_VELKONOCNE_TROJDNIE)
-			){ // predpísaný hymnus "Kriste, ty svetlo a náš deň"; 2008-12-20: aj pre vian. II. a veľký týždeň
+			) { // predpísaný hymnus "Kriste, ty svetlo a náš deň"; 2008-12-20: aj pre vian. II. a veľký týždeň
 			Log("set_hymnus_kompletorium_obd(): predpísaný hymnus B...\n");
 			ktory = 1;
 		}
-		else if ((litobd == OBD_POSTNE_I) // v skutočnosti netreba, používa sa set_hymnus_kompletorium_obd()
-			){ // predpísaný v 1., 3. a 5. týždni "Na sklonku dňa", pre 2. a 4. týždeň hymnus "Kriste, ty svetlo"
+		else if (litobd == OBD_POSTNE_I) {
+			// v skutočnosti netreba, používa sa set_hymnus_kompletorium_obd()
+			// predpísaný v 1., 3. a 5. týždni "Na sklonku dňa", pre 2. a 4. týždeň hymnus "Kriste, ty svetlo"
 			Log("set_hymnus_kompletorium_obd(): predpísaný hymnus v pôste...\n");
 			ktory = (tyzzal + 1) % 2;
 		}
-		else{
+		else {
 			Log("set_hymnus_kompletorium_obd(else/else)...\n");
 			// pôvodne tu bol náhodný výber (podľa (den + tyzzal) % 2); upravené, ak si človek sám volí alternatívy
-			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES) && !(je_CZ_hymny_k_volnemu_vyberu)){
+			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES) && !(je_CZ_hymny_k_volnemu_vyberu)) {
 
 				// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
 				ktory = (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL)) ? 1 : 0;
 				Log("set_hymnus_kompletorium_obd(): ktory == %d...\n", ktory);
 			}
-			else{
+			else {
 				// náhodný výber | ktory = (den + tyzzal) % 2;
 				ktory = 2; // obidva!
 			}
@@ -1285,7 +1286,7 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 		else {
 			sprintf(_anchor, "%c_%s_%d", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, ktory * dva_hymny);
 		}
-		
+
 		_add_special_anchor_postfix();
 	}
 
@@ -6271,7 +6272,8 @@ label_24_DEC:
 			}// zjavenie pana
 
 			// pôvodne bolo v cezročnom období; presunuté sem
-			else if(/* (tyzden == 1) && */(_global_den.denvr == _global_r._KRST_KRISTA_PANA.denvr)){
+			else if (_global_den.denvr == _global_r._KRST_KRISTA_PANA.denvr) {
+				// no need to force the condition with: (tyzden == 1) && 
 				// krst krista pana -- 1. nedela obdobia `cez rok'
 				// niekedy môže padnúť aj na pondelok (ak sa Zjavenie Pána slávi v nedeľu, ktorá padne na 7. alebo 8. januára)
 				mystrcpy(_file, FILE_KRST_PANA, MAX_STR_AF_FILE);
@@ -6326,7 +6328,7 @@ label_24_DEC:
 				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
 				_set_chvalospev_vig_vian(modlitba);
-				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, ((tyzden MOD 8) == 0)? 8: (tyzden MOD 8)); // ako 1. cezročná nedeľa
+				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, ((tyzden MOD 8) == 0) ? 8 : (tyzden MOD 8)); // ako 1. cezročná nedeľa
 
 				modlitba = MODL_PREDPOLUDNIM;
 				_set_zalmy_sviatok_krstu(modlitba);
