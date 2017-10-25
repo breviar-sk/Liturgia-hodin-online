@@ -1,16 +1,24 @@
 package sk.breviar.android;
 
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.CheckBox;
+
+import sk.breviar.android.BreviarApp;
 import sk.breviar.android.Util;
 
 public class Alarms extends FragmentActivity {
+    @Override
+    protected void attachBaseContext(Context newBase) {
+      super.attachBaseContext(newBase);
+      BreviarApp.applyCustomLocale(this);
+    }
+
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
 
       setContentView(R.layout.alarms);

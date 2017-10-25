@@ -3,11 +3,11 @@ package sk.breviar.android;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.DialogInterface;
-import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.net.Uri;
@@ -15,6 +15,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -25,10 +28,10 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.webkit.WebChromeClient;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -42,7 +45,7 @@ import sk.breviar.android.Server;
 import sk.breviar.android.UrlOptions;
 import sk.breviar.android.Util;
 
-public class Breviar extends Activity implements View.OnLongClickListener, ScaleGestureDetector.OnScaleGestureListener {
+public class Breviar extends Activity implements View.OnLongClickListener, ScaleGestureDetector.OnScaleGestureListener, NavigationView.OnNavigationItemSelectedListener {
     static String scriptname = "l.cgi";
     static final int DIALOG_ABOUT = 1;
     static final int DIALOG_NEWS = 2;
@@ -56,7 +59,9 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
     boolean initialized, clearHistory;
     boolean fullscreen = false;
     boolean need_to_reload_preferences = true;
+    boolean save_instance_enabled = true;
     float scroll_to = -1;
+    NavigationView navigationView = null;
 
     int appEventId = -1;
     PowerManager.WakeLock lock;
@@ -137,10 +142,15 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
       return true;
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+      super.attachBaseContext(newBase);
+      BreviarApp.applyCustomLocale(this);
+    }
+
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
       Log.v("breviar", "onCreate");
 
       appEventId = BreviarApp.getEventId();
@@ -163,6 +173,9 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
       requestWindowFeature(Window.FEATURE_NO_TITLE);
 
       setContentView(R.layout.breviar);
+
+      navigationView = (NavigationView) findViewById(R.id.navigation);
+      navigationView.setNavigationItemSelectedListener(this);
 
       wv = (WebView)findViewById(R.id.wv);
       wv.clearCache(true);
@@ -266,12 +279,12 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
           wv.goForward();
         }
       });
-      */
       ((Button)findViewById(R.id.menuBtn)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
           parent.openOptionsMenu();
         }
       });
+      */
  
       ((Button)findViewById(R.id.pgupBtn)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
@@ -330,8 +343,10 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
         }
       }
 
-      Log.v("breviar", "onCreate: Updating fullscreen");
+      save_instance_enabled = true;
+      Log.v("breviar", "onCreate: Updating fullscreen and menu");
       updateFullscreen();
+      updateMenu();
       Log.v("breviar", "onCreate: done");
     }
 
@@ -366,6 +381,7 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
     void recreateIfNeeded() {
       appEventId = BreviarApp.getEventId();
       if (Build.VERSION.SDK_INT >= 11) {
+        save_instance_enabled = false;
         new CompatibilityHelper11().recreate(this);
       }
     }
@@ -435,14 +451,16 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
 
     protected void onSaveInstanceState(Bundle outState) {
       Log.v("breviar", "onSaveInstanceState");
-      syncScale();
-      //wv.saveState(outState);
-      String url = wv.getUrl();
-      if (url != null) {
-        outState.putString("wv-url", url);
+      if (save_instance_enabled) {
+        syncScale();
+        //wv.saveState(outState);
+        String url = wv.getUrl();
+        if (url != null) {
+          outState.putString("wv-url", url);
+        }
+        Log.v("breviar", "onSaveInstanceState: saved url: " + url);
+        syncPreferences();
       }
-      Log.v("breviar", "onSaveInstanceState: saved url: " + url);
-      syncPreferences();
       super.onSaveInstanceState(outState);
     }
 
@@ -492,14 +510,6 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
     }
 
     @Override
-    public boolean onCreateOptionsMenu( Menu menu ) {
-      // Inflate the currently selected menu XML resource.
-      MenuInflater inflater = getMenuInflater();
-      inflater.inflate( R.menu.menu, menu );
-      return true;
-    }
-    
-    @Override
     protected Dialog onCreateDialog(int id) {
       String content = null;
       switch(id) {
@@ -536,48 +546,11 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
       getWindow().setAttributes(params);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-      // Handle item selection
-      UrlOptions opts;
-      switch (item.getItemId()) {
-        case R.id.lang_select:
-          syncPreferences();
-          need_to_reload_preferences = true;
-          Intent selectLang = new Intent(this, LangSelect.class);
-          startActivityForResult(selectLang, 0);
-          return true;
-        case R.id.fullscreen_toggle:
-          fullscreen = !fullscreen;
-          updateFullscreen();
-          syncPreferences();
-          return true;
-        case R.id.nightmode_toggle:
-          opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-          opts.setNightmode(!opts.isNightmode());
+    public void updateMenu() {
+      if (navigationView == null) return;
+      Menu menu = navigationView.getMenu();
+      if (menu == null) return;
 
-          scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
-          wv.loadUrl(opts.build());
-
-          return true;
-        case R.id.only_non_bold_font_toggle:
-          opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-          opts.setOnlyNonBoldFont(!opts.isOnlyNonBoldFont());
-
-          scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
-          wv.loadUrl(opts.build());
-
-          return true;
-        case R.id.menu_about:
-          showDialog(DIALOG_ABOUT);
-          return true;
-        default:
-          return super.onOptionsItemSelected(item);
-      }
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
       if (fullscreen) {
         menu.findItem(R.id.fullscreen_toggle).setTitle(R.string.fullscreenOff);
       } else {
@@ -596,8 +569,61 @@ public class Breviar extends Activity implements View.OnLongClickListener, Scale
       } else {
         menu.findItem(R.id.only_non_bold_font_toggle).setTitle(R.string.onlyNonBoldFontOn);
       }
+    }
 
-      return super.onPrepareOptionsMenu(menu);
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+      UrlOptions opts;
+      switch (item.getItemId()) {
+        case R.id.lang_select:
+          syncPreferences();
+          need_to_reload_preferences = true;
+          Intent selectLang = new Intent(this, LangSelect.class);
+          startActivityForResult(selectLang, 0);
+          break;
+        case R.id.fullscreen_toggle:
+          fullscreen = !fullscreen;
+          updateFullscreen();
+          syncPreferences();
+          break;
+        case R.id.nightmode_toggle:
+          opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
+          opts.setNightmode(!opts.isNightmode());
+
+          scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
+          S.setOpts(opts.build(true));
+          wv.loadUrl(opts.build());
+
+          break;
+        case R.id.only_non_bold_font_toggle:
+          opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
+          opts.setOnlyNonBoldFont(!opts.isOnlyNonBoldFont());
+
+          scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
+          S.setOpts(opts.build(true));
+          wv.loadUrl(opts.build());
+
+          break;
+        case R.id.menu_about:
+          showDialog(DIALOG_ABOUT);
+          break;
+      }
+      updateMenu();
+
+      DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+      drawer.closeDrawer(GravityCompat.START);
+
+      /*
+      if (getSupportActionBar() != null)
+          getSupportActionBar().setTitle(mTitle);
+       
+      FragmentManager fragmentManager = getSupportFragmentManager();
+      fragmentManager.beginTransaction()
+              .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+              .commit();
+      */
+       
+      return true;
     }
 
     @Override

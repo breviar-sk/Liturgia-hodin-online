@@ -1,12 +1,15 @@
 package sk.breviar.android;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.SharedPreferences;
+import android.os.Build;
 
 import java.util.Locale;
 
+import sk.breviar.android.CompatibilityHelper17;
 import sk.breviar.android.Util;
 
 public class BreviarApp extends Application {
@@ -109,18 +112,33 @@ public class BreviarApp extends Application {
     editor.commit();
   }
 
-  static public void initLocale(Context ctx) {
-    Configuration cfg = new Configuration();
+  static Locale currentLocale(Context ctx) {
     if (getOverrideLocale(ctx)) {
       SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
       String lang = settings.getString("language", "sk");
       if (lang.equals("cz")) lang = "cs";
-      cfg.locale = new Locale(lang);
+      return new Locale(lang);
     } else {
-      cfg.locale = Locale.getDefault();
+      return Locale.getDefault();
     }
-    ctx.getResources().updateConfiguration(cfg, null);
+  }
+
+  // This is needed for api levels < 24.
+  static public void initLocale(Context ctx) {
+    if (Build.VERSION.SDK_INT < 17) {
+      Configuration cfg = new Configuration();
+      cfg.locale = currentLocale(ctx);
+      ctx.getResources().updateConfiguration(cfg, null);
+    }
     eventId++;
+  }
+
+  // For api levels >=17, we can (and for >= 24 we must) explicitly attach
+  // proper locale to every activity at startup.
+  static public void applyCustomLocale(Activity activity) {
+    if (Build.VERSION.SDK_INT >= 17) {
+      new CompatibilityHelper17().applyLocale(activity, currentLocale(activity));
+    }
   }
 }
 

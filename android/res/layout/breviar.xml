@@ -14,33 +14,47 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical">
 
     <WebView android:id="@+id/wv"
-            android:layout_width="match_parent" android:layout_height="match_parent"
-            android:paddingLeft="4dip" android_paddingRight="4dip" android:layout_weight="1"/>
+             android:layout_width="match_parent" android:layout_height="match_parent"
+             android:paddingLeft="4dip" android_paddingRight="4dip" android:layout_weight="1"/>
 
     <LinearLayout android:id="@+id/navbar"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:orientation="horizontal">
 
       <Button android:id="@+id/pgupBtn" android:text="@string/pgup" style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+          android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
   
       <Button android:id="@+id/todayBtn" android:text="@string/today" style="?android:attr/buttonStyleSmall" 
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+           android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
+      <!--
       <Button android:id="@+id/menuBtn" android:text="@string/menu" style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+           android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+      //-->
 
       <Button android:id="@+id/pgdnBtn" android:text="@string/pgdn" style="?android:attr/buttonStyleSmall" 
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+           android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
   
     </LinearLayout>
+  </LinearLayout>
 
+  <android.support.design.widget.NavigationView
+      android:id="@+id/navigation"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_gravity="start"
+      app:menu="@menu/menu" />
 
-</LinearLayout>
-
-
+</android.support.v4.widget.DrawerLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.14.6</string>
+    <string name="version" translatable="false">1.14.6</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -97,7 +97,7 @@
     <string name="about_PLATFORM_IOS">iOS</string>
     <string name="about_text">include/about.htm</string>
 
-    <string name="about_text_head"><![CDATA[
+    <string name="about_text_head" translatable="false"><![CDATA[
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -108,7 +108,7 @@ a { color: #ffaa00; }
 </head>
 <body>
     ]]></string>
-    <string name="about_text_tail"><![CDATA[
+    <string name="about_text_tail" translatable="false"><![CDATA[
       </body></html>
     ]]></string>
 

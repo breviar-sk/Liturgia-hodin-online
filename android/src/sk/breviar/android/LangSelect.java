@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,12 @@ public class LangSelect extends Activity {
     static final int DIALOG_NEWS = 2;
 
     UrlOptions url_options;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+      super.attachBaseContext(newBase);
+      BreviarApp.applyCustomLocale(this);
+    }
 
     /** Called when the activity is first created. */
     @Override
