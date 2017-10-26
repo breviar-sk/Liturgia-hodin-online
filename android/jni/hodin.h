@@ -14261,6 +14261,19 @@ const char *text_DEC_09[POCET_JAZYKOV + 1] =
 	"Св. Яна Дзідаха Куаухтлатоацына",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_DEC_10_OFMCAP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Arzénia Migliavacca z Trigola, kňaza",
+	"Bl. Arsenia Migliavacca z Trigola, kněze",
+	"",
+	"",
+	"",
+	"Bl. Arsenia Migliavacca z Trigola, kněze",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_DEC_11[POCET_JAZYKOV + 1] =
 {
 	"Sv. Damaza I., pápeža",
