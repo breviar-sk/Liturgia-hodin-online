@@ -10,7 +10,7 @@
                  android:name="sk.breviar.android.BreviarApp"
                  android:icon="@drawable/icon">
         <activity android:name="Breviar"
-                  android:configChanges="orientation"
+                  android:configChanges="orientation|screenSize"
                   android:launchMode="singleTask"
                   android:theme="@style/Theme.AppCompat"
                   android:label="@string/app_name">
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name="Alarms"
-                  android:configChanges="orientation"
+                  android:configChanges="orientation|screenSize"
                   android:theme="@style/Theme.AppCompat"
                   android:launchMode="singleTop">
             <intent-filter>
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity android:name="LangSelect"
-                  android:configChanges="orientation"
+                  android:configChanges="orientation|screenSize"
                   android:theme="@style/Theme.AppCompat"
                   android:launchMode="singleTop">
         </activity>

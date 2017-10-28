@@ -100,7 +100,7 @@ FILE *fopen(const char *path, const char *mode) {
   return out;
 }
 
-char *getenv(const char *name) {
+char *android_getenv(const char *name) {
   // handled by java:
     // QUERY_STRING
     // REQUEST_METHOD
@@ -128,7 +128,7 @@ char *getenv(const char *name) {
   return NULL;
 }
 
-int putenv(const char *string) {
+int android_putenv(const char *string) {
   char *env3;
   int envlen3;
   int len = strlen(string);

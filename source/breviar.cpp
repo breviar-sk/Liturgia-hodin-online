@@ -159,6 +159,11 @@ static int my_putenv(char *s) {
 #endif /* LIBC_BIONIC */
 #endif /* unix */
 
+#ifdef IO_ANDROID
+#define putenv android_putenv
+#define getenv android_getenv
+#endif
+
 short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydefs.h
 
 // globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
@@ -1003,7 +1008,7 @@ short int setForm(void){
 // 	SCRIPT_PARAM_FROM_ARGV (z argumentov dialogoveho riadka)
 // 	SCRIPT_PARAM_FROM_QS   (zo systemovej premennej QUERY_STRING)
 //
-short int getSrciptParamFrom(int argc){
+short int getSrciptParamFrom(int argc) {
 
 	// najprv zistime, ci existuje systemova premenna QUERY_STRING
 	char *qs;
@@ -1011,40 +1016,46 @@ short int getSrciptParamFrom(int argc){
 	short int ret;
 
 	Log("--- getSrciptParamFrom(): begin\n");
+
 	qs = getenv("QUERY_STRING");
-	if (qs != NULL){
+
+	if (qs != NULL) {
 		// znamená to, že existuje query string - či už klasický GET, alebo časť poslaná POST linkou
-		mystrcpy(query_string, qs, MAX_QUERY_STR);
+		Log("qs (query_string) == %s\n", qs);
+
+		Log("trying to unescape &amp; characters...\n");
+		mystrcpy(query_string, mystr_replace(qs, HTML_AMPERSAND, "&"), MAX_QUERY_STR);
 	}
-	else{
+	else {
 		mystrcpy(query_string, STR_EMPTY, MAX_QUERY_STR);
 	}
 
-	if (query_string != NULL){
+	if (query_string != NULL) {
 		Log("query_string == %s\n", query_string);
 	}
-	else{
+	else {
 		Log("query_string is NULL\n");
 	}
 
-	// zistenie, odkial sa cita
+	// get request method (POST vs. GET)
 	method = getenv("REQUEST_METHOD");
-	if (method != NULL){
+	if (method != NULL) {
 		Log("method == %s\n", method);
 	}
-	else{
+	else {
 		Log("method is NULL\n");
 	}
-	if (method != NULL && !strcmp(method, "POST")){
+
+	if (method != NULL && !strcmp(method, "POST")) {
 		ret = postread();
-		if (ret == SUCCESS){
+		if (ret == SUCCESS) {
 			Log("OK. Pokracujem skenovanim query...\n");
-			if ((_global_buf != NULL) && (_global_buf[0] != '\0')){
+			if ((_global_buf != NULL) && (_global_buf[0] != '\0')) {
 				scanquery(_global_buf);
 
 				Log("POST::Vysledok == %s\n", _global_buf2);
 
-				if (query_string != NULL && !equals(query_string, STR_EMPTY)){
+				if (query_string != NULL && !equals(query_string, STR_EMPTY)) {
 					Log("2006-08-01: Experiment - prilepujem _global_buf2 na koniec query_stringu...\n");
 					strcat(query_string, "&");
 					strcat(query_string, _global_buf2);
@@ -1052,7 +1063,7 @@ short int getSrciptParamFrom(int argc){
 				}
 			}
 		}
-		else{
+		else {
 			Log("Chyba.\n");
 		}
 	}// POST
@@ -1060,17 +1071,17 @@ short int getSrciptParamFrom(int argc){
 	Log("--- getSrciptParamFrom(): end...\n");
 
 	// systemova premenna QUERY_STRING existuje prave vtedy, ked query_string nie je prazdny retazec
-	if ((query_string != NULL) && (strlen(query_string) > 0)){
+	if ((query_string != NULL) && (strlen(query_string) > 0)) {
 		// existuje, teda budeme pekne parsovat
 		Log("returning SCRIPT_PARAM_FROM_QS.\n");
 		return SCRIPT_PARAM_FROM_QS;
 	}
-	else if (argc == 1){
+	else if (argc == 1) {
 		// query_string bud neexistuje alebo je "", pritom program nema vstupne argumenty (z dial. riadka)
 		Log("returning SCRIPT_PARAM_FROM_FORM (argc == %d).\n", argc);
 		return SCRIPT_PARAM_FROM_FORM;
 	}
-	else{// program ma vstupne argumenty, argc > 1
+	else {// program ma vstupne argumenty, argc > 1
 		Log("returning SCRIPT_PARAM_FROM_ARGV -- nothing else matched.\n");
 		return SCRIPT_PARAM_FROM_ARGV;
 	}
@@ -12601,7 +12612,7 @@ void _rozparsuj_parametre_OPT_force(int option_opt, char pom_FORCE_OPT_opt[MAX_P
 		base = 10.0;
 	}
 
-	Log("_rozparsuj_parametre_OPT_force() -- začiatok...\n");
+	Log("_rozparsuj_parametre_OPT_force(%d) -- začiatok...\n", option_opt);
 
 #ifndef LOG_PARAMS
 	Log("_rozparsuj_parametre_OPT_force(): LOG_PARAMS is undefined, no LogParams() printed...\n");
@@ -12640,7 +12651,7 @@ void _rozparsuj_parametre_OPT_force(int option_opt, char pom_FORCE_OPT_opt[MAX_P
 	}
 	LogParams("force_opt %d == `%s' (%d)\n", option_opt, pom_FORCE_OPT[option_opt], _global_force_opt[option_opt]);
 
-	Log("_rozparsuj_parametre_OPT_force() -- koniec.\n");
+	Log("_rozparsuj_parametre_OPT_force(%d) -- koniec.\n", option_opt);
 }// _rozparsuj_parametre_OPT_force()
 
 void _rozparsuj_parametre_OPT(void){
@@ -12796,14 +12807,16 @@ void _rozparsuj_parametre_OPT(void){
 	// kontrolujeme, či niektoré z options nie sú GLOBAL_OPTION_NULL a zároveň prípadne nastaví na default podľa jazyka
 	// doplnené opt_0 až opt_4 force (okrem opt_3); default sa nastavuje podľa "ne-force" verzií; CFG_OPTION1_DEFAULT..CFG_OPTION5_DEFAULT doplnené v myconf.h
 	// aj pre hodnotu 3 sa vykonáva
+	LogParams("pre všetky _global_opt[] kontrolujem, či nie sú GLOBAL_OPTION_NULL => ak áno, nastavím príslušnú hodnotu na CFG_OPTION_DEFAULT()...\n");
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
 		LogParams("i == %d...\n", i);
 		if (_global_opt[i] == GLOBAL_OPTION_NULL){
 			_global_opt[i] = CFG_OPTION_DEFAULT(i);
-			LogParams("Keďže bolo _global_opt[%d] == GLOBAL_OPTION_NULL, nastavujem na `%ld'...\n", i, _global_opt[i]);
+			LogParams("Keďže bolo _global_opt[%d] == GLOBAL_OPTION_NULL, nastavujem na CFG_OPTION_DEFAULT(%d) == `%ld'...\n", i, i, CFG_OPTION_DEFAULT(i));
 		}
 	}// for i
 
+	LogParams("pre všetky _global_force_opt[] kontrolujem, či nie sú GLOBAL_OPTION_NULL => ak áno, nastavím príslušnú hodnotu na _global_opt[]...\n");
 	for (i = 0; i < POCET_GLOBAL_OPT; i++){
 		LogParams("i == %d...\n", i);
 		if (_global_force_opt[i] == GLOBAL_OPTION_NULL){
@@ -17934,12 +17947,9 @@ int breviar_main(int argc, char **argv){
 
 		_main_LOG_to_Export("---scanning for system variables WWW_...: started...\n");
 
-		// historicka poznamka:                          (01/02/2000A.D.)
-		// kedysi tu tato pasaz (podla casti `case SCRIPT_PARAM_FROM_FORM') nebola, avsak pretoze to neumoznovalo `mixovane' dotazy
-		// (ked je nieco v QS a navyse, uncgi.c vlozi (aj QS aj) ostatne veci z formulara do systemovych premennych WWW_...),
-		// zmenili sme to tak, ze sa tu precitaju WWW_... a potom parsuje qs
+		// historical note: to enable `mixed' queries (both GET & POST => both inputs from query string and form (system variables WWW_...), first read WWW_... variables and then parse query string
 
-		// Zmenene poradie. POST dotazy handlovane vyssie sposobom uncgi.
+		// POST queries are handled above using 'uncgi'
 		_main_LOG_to_Export("spustam setForm();\n");
 		ret = setForm();
 		_main_LOG_to_Export("spat po skonceni setForm()\n");
@@ -17951,7 +17961,7 @@ int breviar_main(int argc, char **argv){
 			_main_LOG_to_Export("spustam getForm();\n");
 			ret = getForm();
 			_main_LOG_to_Export("params from system variables WWW_...:\n");
-			_main_LOG_to_Export_PARAMS; // 2003-08-13, dane do #define
+			_main_LOG_to_Export_PARAMS;
 			_main_LOG_to_Export("spat po skonceni getForm()\n");
 			_main_LOG_to_Export("2006-12-14: pom_MODLITBA == `%s'\n", pom_MODLITBA);
 		}
@@ -17968,7 +17978,7 @@ int breviar_main(int argc, char **argv){
 	} // switch(params)
 
 	_main_LOG_to_Export("query_type == ");
-	switch (query_type){
+	switch (query_type) {
 	case PRM_UNKNOWN:		_main_LOG_to_Export("PRM_UNKNOWN\n"); break;
 	case PRM_TABULKA:		_main_LOG_to_Export("PRM_TABULKA\n"); break;
 	case PRM_TXT:			_main_LOG_to_Export("PRM_TXT\n"); break;
@@ -17987,6 +17997,7 @@ int breviar_main(int argc, char **argv){
 	default:				_main_LOG_to_Export("(sem by sa to nemalo dostať)\n"); break;
 	}
 
+	_main_LOG_to_Export("_main_LOG_to_Export_PARAMS...\n");
 	_main_LOG_to_Export_PARAMS;
 
 	if (query_type == PRM_MESIAC_ROKA){

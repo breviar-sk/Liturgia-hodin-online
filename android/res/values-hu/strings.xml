@@ -95,6 +95,10 @@
     <string name="about_PLATFORM_IOS">iOS</string>
     <string name="about_text">include_hu/about.htm</string>
 
+    <string name="tts_uninitialized">TTS not ready</string>
+    <string name="tts_ready">Speak prayers</string>
+    <string name="tts_speaking">Stop speaking</string>
+
     <string name="btn_news">Újdonságok</string>
     <string name="news"><![CDATA[
 <html>

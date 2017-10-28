@@ -12,6 +12,8 @@
 
     <item android:id="@+id/menu_about" android:title="@string/menu_about" />
 
+    <item android:id="@+id/speak_toggle" android:title="@string/tts_uninitialized" />
+
 </menu>
 
 

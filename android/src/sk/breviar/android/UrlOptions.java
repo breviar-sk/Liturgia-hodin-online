@@ -38,7 +38,7 @@ public class UrlOptions {
     params.putAll(other.params);
   }
 
-  public String build(boolean build_query_only) {
+  public Uri.Builder getBuilder() {
     Uri.Builder builder = new Uri.Builder();
     builder.scheme(base_uri.getScheme());
     builder.encodedAuthority(base_uri.getEncodedAuthority());
@@ -46,6 +46,11 @@ public class UrlOptions {
     for (Map.Entry<String, String> entry : params.entrySet()) {
       builder.appendQueryParameter(entry.getKey(), entry.getValue());
     }
+    return builder;
+  }
+
+  public String build(boolean build_query_only) {
+    Uri.Builder builder = getBuilder();
     String result;
     if (build_query_only) {
       result = "&amp;" + builder.build().getEncodedQuery().replaceAll("&", "&amp;");
@@ -76,6 +81,15 @@ public class UrlOptions {
 
   public void setButtonsOrder(boolean value) {
     setBit("o0", 7, value);
+  }
+
+  // of0bf
+  public boolean isBlindFriendly() {
+    return hasBit("o0", 8);
+  }
+
+  public void setBlindFriendly(boolean value) {
+    setBit("o0", 8, value);
   }
 
   // of0v

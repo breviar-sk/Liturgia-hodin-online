@@ -16,8 +16,13 @@
 #define HTML_TOP "p-top"
 #define HTML_ANAME_TOP "<div id=\"contentRoot\"><a name=\"" HTML_TOP "\"></a>"
 
+#ifdef IO_ANDROID
+#define HTML_TRANSPARENT_NAV "<div id=\"nav-arrow-up\" class=\"nav-arrow\" onclick=\"bridge.pageUp()\"></div>\n" \
+  "<div id=\"nav-arrow-down\" class=\"nav-arrow\" onclick=\"bridge.pageDown()\"></div>\n"
+#else
 #define HTML_TRANSPARENT_NAV "<div id=\"nav-arrow-up\" class=\"nav-arrow\" onclick=\"window.scrollBy(0, -0.95*window.innerHeight)\"></div>\n" \
   "<div id=\"nav-arrow-down\" class=\"nav-arrow\" onclick=\"window.scrollBy(0, 0.95*window.innerHeight)\"></div>\n"
+#endif
 
 #define HTML_BOTTOM "p-bottom"
 #define HTML_ANAME_BOTTOM "<a name=\"" HTML_BOTTOM "\"></a></div>"

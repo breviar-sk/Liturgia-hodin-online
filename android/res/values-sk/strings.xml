@@ -95,6 +95,10 @@
     <string name="about_PLATFORM_IOS">iOS</string>
     <string name="about_text">include/about.htm</string>
 
+    <string name="tts_uninitialized">Čítanie...</string>
+    <string name="tts_ready">Prečítaj</string>
+    <string name="tts_speaking">Zastav čítanie</string>
+
     <string name="btn_news">Zmeny vo verziách</string>
     <string name="news"><![CDATA[
 <html>

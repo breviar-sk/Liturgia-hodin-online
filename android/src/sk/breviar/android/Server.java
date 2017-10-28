@@ -1,20 +1,30 @@
 package sk.breviar.android;
 
-import java.net.Socket;
-import java.net.ServerSocket;
 import java.io.*;
+import java.lang.InterruptedException;
 import java.lang.Thread;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.util.Iterator;
+import java.util.Set;
+
 import android.content.Context;
 import android.content.res.*;
 import android.util.Log;
+
 import sk.breviar.android.Copy;
 import sk.breviar.android.FdInputStream;
 import sk.breviar.android.FdOutputStream;
-import java.lang.InterruptedException;
 
 public class Server extends Thread {
     public int port;
-    ServerSocket listener;
+    public int port_nonpersistent;
+    ServerSocketChannel listener;
+    ServerSocketChannel listener_nonpersistent;
     Context ctx;
     boolean running;
     static String scriptname;
@@ -23,22 +33,28 @@ public class Server extends Thread {
 
     public Server(Context _ctx, String sn, String lang, String opts) throws IOException {
       int i;
-      boolean ok = true;
+      boolean ok = false;
       Log.v("breviar", "Server: constructor");
       scriptname = sn;
       language = lang;
       persistentOpts = opts;
       ctx = _ctx;
-      for (i=50000; i>20000; i--) {
+      for (i = 50000; i > 20000; i--) {
         ok = true;
+        listener = null;
         try {
+          listener = ServerSocketChannel.open();
           byte[] lo = new byte[4];
           lo[0] = 127;
           lo[1] = 0;
           lo[2] = 0;
           lo[3] = 1;
-          listener = new ServerSocket(i, 50, java.net.Inet4Address.getByAddress(lo));
+          listener.socket().bind(new java.net.InetSocketAddress(java.net.Inet4Address.getByAddress(lo), i), 50);
         } catch (IOException e) {
+          if (listener != null) {
+            listener.close();
+            listener = null;
+          }
           ok = false;
         }
         if (ok) break;
@@ -46,6 +62,30 @@ public class Server extends Thread {
       if (!ok) throw new IOException();
       port = i;
       Log.v("breviar", "Server: socket opened at port " + port);
+
+      ok = false;
+      for (i = i - 1; i > 20000; i--) {
+        ok = true;
+        listener_nonpersistent = null;
+        try {
+          listener_nonpersistent = ServerSocketChannel.open();
+          byte[] lo = new byte[4];
+          lo[0] = 127;
+          lo[1] = 0;
+          lo[2] = 0;
+          lo[3] = 1;
+          listener_nonpersistent.socket().bind(new java.net.InetSocketAddress(java.net.Inet4Address.getByAddress(lo), i), 50);
+        } catch (IOException e) {
+          listener_nonpersistent.close();
+          listener_nonpersistent = null;
+          ok = false;
+        }
+        if (ok) break;
+      }
+      if (!ok) throw new IOException();
+      port_nonpersistent = i;
+
+      Log.v("breviar", "Server: socket opened at nonpersistent port " + port_nonpersistent);
       running = true;
       // setDaemon(true);
     }
@@ -64,15 +104,34 @@ public class Server extends Thread {
 
     public void run() {
       Log.v("breviar", "Server: run started");
-      while (running) {
-        try {
-          Socket client = listener.accept();
-          Log.v("breviar", "Server: handling connection");
-          handle(client);
-          client.close();
-        } catch (IOException e) {
-          Log.v("Breviar: Server:", "run failed: " + e.getMessage());
+      try {
+        Selector selector = Selector.open();
+        listener.configureBlocking(false);
+        listener.register(selector, SelectionKey.OP_ACCEPT, listener);
+        listener_nonpersistent.configureBlocking(false);
+        listener_nonpersistent.register(selector, SelectionKey.OP_ACCEPT, listener_nonpersistent);
+        while (running) {
+          try {
+            if (selector.select() == 0) continue;
+            Set keys = selector.selectedKeys();
+            Iterator it = keys.iterator();
+            while (it.hasNext()) {
+              SelectionKey key = (SelectionKey)it.next();
+              ServerSocketChannel socket = (ServerSocketChannel)(key.attachment());
+              Socket client = socket.accept().socket();
+              Log.v("breviar", "Server: handling connection");
+              handle(client, socket == listener);
+              client.close();
+            }
+            keys.clear();
+          } catch (IOException e) {
+            Log.v("Breviar: Server:", "run failed: " + e.getMessage());
+          }
         }
+        selector.close();
+      } catch (IOException e) {
+        Log.v("Breviar: Server:", "run failed at initialization: " + e.getMessage());
+        running = false;
       }
       Log.v("breviar", "Server: run finished");
     }
@@ -84,11 +143,14 @@ public class Server extends Thread {
       running = false;
       try {
         listener.close();
+        listener_nonpersistent.close();
         do {
-          intr = false;
-          try { this.join(); } catch (java.lang.InterruptedException e) { intr = true; }
-        } while (intr);
+          interrupt();
+          try { join(100); } catch (java.lang.InterruptedException e) {}
+        } while (isAlive());
       } catch (IOException e) {
+        Log.v("breviar: Server:", "stopServer failed: " + e.getMessage());
+      } catch (java.lang.SecurityException e) {
         Log.v("breviar: Server:", "stopServer failed: " + e.getMessage());
       }
     }
@@ -124,7 +186,7 @@ public class Server extends Thread {
       }
     }
 
-    synchronized void handleCgi(Socket client, String dokument, boolean postmethod, int cntlen, byte[] buf) throws IOException {
+    synchronized void handleCgi(Socket client, String dokument, boolean postmethod, int cntlen, byte[] buf, boolean persistent) throws IOException {
       // Log.v("breviar", "handling cgi request");
       client.getOutputStream().write(
           (
@@ -141,13 +203,21 @@ public class Server extends Thread {
       FileDescriptor[] pipein = createPipe();
       Copy cpin = new Copy( new ByteArrayInputStream(buf, 0, cntlen), new FdOutputStream(pipein[1]) );
       cpin.start();
+      String localOpts = persistentOpts;
+
       if (!postmethod) {
-        persistentOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=GET\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
+        localOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=GET\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
       } else {
-        persistentOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=POST\001CONTENT_TYPE=application/x-www-form-urlencoded\001CONTENT_LENGTH=" +
+        localOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=POST\001CONTENT_TYPE=application/x-www-form-urlencoded\001CONTENT_LENGTH=" +
             cntlen + "\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
       }
-      Log.v("breviar", "persistentOpts = " + persistentOpts);
+
+      if (persistent) {
+        persistentOpts = localOpts;
+        Log.v("breviar", "persistentOpts = " + persistentOpts);
+      } else {
+        Log.v("breviar", "localOpts = " + localOpts);
+      }
       boolean ok;
       do {
         try {
@@ -159,7 +229,7 @@ public class Server extends Thread {
       } while (!ok);
     }
 
-    synchronized void handle(Socket client) throws IOException {
+    synchronized void handle(Socket client, boolean persistent) throws IOException {
       String dokument = "unknown";
       BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
       byte[] buf;
@@ -199,7 +269,7 @@ public class Server extends Thread {
 
       if (dokument.length() > scriptname.length() &&
           dokument.substring(0,scriptname.length()).equals(scriptname)) {
-        handleCgi(client, dokument, postmethod, cntlen, buf);
+        handleCgi(client, dokument, postmethod, cntlen, buf, persistent);
       } else {
         try {
           InputStream infile = ctx.getAssets().open(dokument, AssetManager.ACCESS_STREAMING);
@@ -216,7 +286,7 @@ public class Server extends Thread {
           Log.v("breviar", "file not found: " + dokument);
           // last effort - default page
           try {
-            handleCgi(client, scriptname + "?qt=pdnes&" + persistentOpts , false, 0, new byte[0]);
+            handleCgi(client, scriptname + "?qt=pdnes&" + persistentOpts , false, 0, new byte[0], persistent);
           } catch (IOException e2) {
             client.getOutputStream().write(
                 (

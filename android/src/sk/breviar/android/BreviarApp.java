@@ -112,12 +112,15 @@ public class BreviarApp extends Application {
     editor.commit();
   }
 
+  static Locale appLanguageToLocale(String lang) {
+    if (lang.equals("cz")) lang = "cs";
+    return new Locale(lang);
+  }
+
   static Locale currentLocale(Context ctx) {
     if (getOverrideLocale(ctx)) {
       SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-      String lang = settings.getString("language", "sk");
-      if (lang.equals("cz")) lang = "cs";
-      return new Locale(lang);
+      return appLanguageToLocale(settings.getString("language", "sk"));
     } else {
       return Locale.getDefault();
     }
