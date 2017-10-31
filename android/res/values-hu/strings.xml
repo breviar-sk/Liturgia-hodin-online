@@ -65,6 +65,9 @@
     <string name="onlyNonBoldFontOn">Normál betűtípus</string>
     <string name="onlyNonBoldFontOff">Félkövér betűtípus</string>
 
+    <string name="navigation_drawer_open">Nyílt menü</string>
+    <string name="navigation_drawer_close">Zárja be menü</string>
+
     <string name="inv">Imádságra hívás</string>
     <string name="rch">Reggeli dicséret</string>
     <string name="vesp">Esti dicséret</string>
@@ -83,8 +86,17 @@
     <string name="h12_notify">Itt az idő a déli napközi imaórára!</string>
     <string name="h15_notify">Itt az idő a délután napközi imaórára!</string>
 
+    <string name="tts_uninitialized">Hangkimenet</string>
+    <string name="tts_ready">Olvas</string>
+    <string name="tts_speaking">Hagyja abba az olvasást</string>
+
     <string name="menu_about">Névjegy...</string>
-    <string name="about">Névjegy</string>
+    <string name="about_title">Névjegy</string>
+    <string name="about_url">include_hu/about.htm</string>
+
+    <string name="news_title">Újdonságok</string>
+    <string name="news_url">include_hu/android-version.htm</string>
+
     <string name="about_PROJECT_URL">zsolozsma.katolikus.hu</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Zsolozsma alkalmazás Androidhoz</string>
@@ -93,51 +105,5 @@
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
-    <string name="about_text">include_hu/about.htm</string>
-
-    <string name="tts_uninitialized">TTS not ready</string>
-    <string name="tts_ready">Speak prayers</string>
-    <string name="tts_speaking">Stop speaking</string>
-
-    <string name="btn_news">Újdonságok</string>
-    <string name="news"><![CDATA[
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<style type="text/css">
-body { background-color: #000000; color: #cccccc; }
-</style>
-</head>
-<body>
-
-<p><b>Zsolozsma alkalmazás</b></p>
-
-<p><i>Figyelmeztetés:</i> Ez az utolsó verzió, amely kompatibilis az Android 3 vagy annál idősebb verzióival. Az új frissítések csak az Android 4.0 vagy újabb verziói számára lesznek elérhetők.</p>
-
-<!-- <li>Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
-
-<p><b>Újdonságok</b></p>
-
-<p><b>Verzió 1.14.4, 1.14.5 és 1.14.6</b>
-<ul>
-<li>Frissítések a honlapról.</li>
-<li>Szövegek rögzítése.</li>
-</ul>
-
-<p><b>Verzió 1.14.2</b>
-<ul>
-<li>Csak egy lehetőség megjelenítése több közül (himnusz, első, második olvasmány, antifónák, fohászok).</li>
-<li>Szűz Mária szombati emléknapja nincs a kínálatban más Szűz Mária emléknapkor ill. ünnepnapkor.</li>
-<li>Frissítések a honlapról.</li>
-</ul>
-
-<p><b>Verzió 1.14</b>
-<ul>
-<li>Új beállítási lehetőség: Vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg.</li>
-<li>Lehetséges az emléknapokat és az ünnepeket magasabb fokon ünnepelni (ünnepek/főünnepek).</li>
-</ul>
-
-</body></html>
-    ]]></string>
 
 </resources>

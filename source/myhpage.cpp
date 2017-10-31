@@ -42,9 +42,24 @@ const char *html_header_1 =
 //    "<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj Videky\">\n";
     "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\" />\n\t<meta name=\"Author\" content=\"Juraj Videky\" />\n";
 const char *html_header_css = "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
-const char *html_footer_1 = STR_EMPTY; // "<p><center>______</center>"; // "<hr>";
 
 const char *xml_header = "<?xml version=\"1.0\" encoding=\"%s\"?>\n\n";
+
+const char *generated[POCET_JAZYKOV + 1] = { "Generované: ", "Generováno: ", "Generated: ", "Generated: ", "Generated: ", "Generováno: ", "Generálva: ", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+// Generované + dátum: "%d. %s %d, %02d:%02d:%02d" -- pôvodne to bolo v zátvorkách
+const char *datum_cas_template[POCET_JAZYKOV + 1] = { "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+// Build: "Build: %s. "
+const char *build_template[POCET_JAZYKOV + 1] = { "<!--Verzia: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+// Generované + dátum (bez času - pre batch mód, aby sa ľahko porovnávali vygenerované modlitby): "%d. %s %d"
+const char *datum_template[POCET_JAZYKOV + 1] = { "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char *HTML_MAIL_LABEL_LONG = "Juraj Vidéky";
+const char *HTML_MAIL_LABEL_SHORT = "J. Vidéky";
+
+#define STR_YEAR_LENGTH 10
 
 #endif // __MYHPAGE_CPP_HTML_CONST
 
@@ -165,32 +180,32 @@ void _buttons_prev_up_next(FILE * expt){
 }
 
 // exportuje hlavicku HTML dokumentu, kam pojde vysledok query
-void _hlavicka(char *title, FILE * expt, short int level, short int spec){
-	Log("_hlavicka() -- začiatok...\n");
+void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
+	Log("_hlavicka() -- begin...\n");
 
 	_local_modlitba = _global_modlitba;
-	if ((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY)){
+	if ((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY)) {
 		_local_modlitba = MODL_VESPERY;
 	}
-	if ((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM)){
+	if ((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM)) {
 		_local_modlitba = MODL_KOMPLETORIUM;
 	}
 
-	if (_global_hlavicka_Export > 0){
-		Log("return... (_global_hlavicka_Export > 0)\n");
+	if (_global_hlavicka_Export > 0) {
+		Log("_hlavicka() -- _global_hlavicka_Export == %d > 0; end.\n", _global_hlavicka_Export);
 		return;
 	}
 	_global_hlavicka_Export++;
 
 	// iné CSS sú len "doplnky" (overrides) k hlavnému CSS
-	if (_global_css != CSS_breviar_sk){
-		Log("ako prvý bude exportovaný nazov_css_suboru == %s...\n", nazov_css[CSS_breviar_sk]);
+	if (_global_css != CSS_breviar_sk) {
+		Log("first, export CSS filename: nazov_css_suboru == %s...\n", nazov_css[CSS_breviar_sk]);
 	}
 	const char *nazov_css_suboru;
-	if (_global_css == CSS_UNDEF){
+	if (_global_css == CSS_UNDEF) {
 		nazov_css_suboru = nazov_css[CSS_breviar_sk];
 	}// _global_css == CSS_UNDEF
-	else{
+	else {
 		nazov_css_suboru = nazov_css[_global_css];
 	}// else
 	Log("nazov_css_suboru == %s...\n", nazov_css_suboru);
@@ -198,40 +213,40 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	// nastavenie font-family
 	// zatiaľ len pevné reťazce; časom možno bude premenná pre názov fontu
 	// najprv sa testuje nastavenie _global_font; následne sa prípadne nastavia defaulty
-	if ((_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)){
+	if ((_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)) {
 		Log("(_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)...\n");
-		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY)){
+		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY)) {
 			Log("_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY...\n");
 			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SANS_SERIF, SMALL);
 		}
-		else{
+		else {
 			Log("NOT _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY...\n");
 			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SERIF, SMALL);
 		}
 	}// (_global_font == FONT_UNDEF)  || (_global_font == FONT_CHECKBOX)
-	else if (_global_font == FONT_CSS){
+	else if (_global_font == FONT_CSS) {
 		Log("_global_font == FONT_CSS...\n");
 		mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_INHERIT, SMALL);
 	}// (_global_font == FONT_CSS)
-	else{
+	else {
 		Log("_global_font != FONT_CSS...\n");
 		mystrcpy(_global_css_font_family, nazov_fontu[_global_font], SMALL);
 	}// else
 	Log("_global_css_font_family == %s...\n", _global_css_font_family);
 
 	// nastavenie font-size
-	if (_global_font_size == FONT_SIZE_UNDEF){
+	if (_global_font_size == FONT_SIZE_UNDEF) {
 		mystrcpy(_global_css_font_size, STR_EMPTY, SMALL);
 	}// (_global_font_size == FONT_SIZE_UNDEF)
-	else if (_global_font_size == FONT_SIZE_CSS){
+	else if (_global_font_size == FONT_SIZE_CSS) {
 		mystrcpy(_global_css_font_size, DEFAULT_FONT_SIZE_INHERIT, SMALL);
 	}// (_global_font_size == FONT_SIZE_CSS)
-	else{
+	else {
 		mystrcpy(_global_css_font_size, nazov_font_size_css[_global_font_size], SMALL);
 	}// else
 	Log("_global_css_font_size == %s...\n", _global_css_font_size);
 
-	if (bol_content_type_text_html == NIE){
+	if (bol_content_type_text_html == NIE) {
 #if defined(BEHAVIOUR_WEB)
 		Export_to_file(expt, "Content-type: text/html\n");
 		Export_to_file(expt, "\n");
@@ -244,7 +259,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Export_to_file(expt, (char *)html_header_1, nazov_charset[charset_jazyka[_global_jazyk]]);
 
 	// CSS (one or more)
-	if (_global_css != CSS_breviar_sk){
+	if (_global_css != CSS_breviar_sk) {
 		_header_css(expt, level, nazov_css[CSS_breviar_sk]);
 	}
 	_header_css(expt, level, nazov_css_suboru);
@@ -276,90 +291,68 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec){
 	Export_to_file(expt, "\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=yes, initial-scale=1.0\" />\n");
 #endif
 
+	Log("element <title>...</title>...\n");
 	Export_to_file(expt, "<title>%s</title>\n", title);
-	Export_to_file(expt, "</head>\n\n");
+
 	Log("element </head>...\n");
+	Export_to_file(expt, "</head>\n\n");
 
 	Log("element <body>...\n");
-
 	Export_to_file(expt, "<body");
-	if ((_global_font != FONT_CSS) || (_global_font_size != FONT_SIZE_CSS) || (_global_style_margin != 0)){
+
+	if ((_global_font != FONT_CSS) || (_global_font_size != FONT_SIZE_CSS) || (_global_style_margin != 0)) {
 		Export_to_file(expt, " style=\"");
-		if (_global_font != FONT_CSS){
+		if (_global_font != FONT_CSS) {
 			Export_to_file(expt, "font-family: %s; ", _global_css_font_family);
 		}
-		if (_global_font_size != FONT_SIZE_CSS){
+		if (_global_font_size != FONT_SIZE_CSS) {
 			Export_to_file(expt, "font-size: %s; ", _global_css_font_size);
 		}
-		if (_global_style_margin != 0){
+		if (_global_style_margin != 0) {
 			Export_to_file(expt, "margin-left: %dpx; margin-right: %dpx; ", _global_style_margin, _global_style_margin);
 		}
 		Export_to_file(expt, "\"");
 	}
 
 	// kvôli špeciálnemu "zoznam.htm"
-	if (spec == 1){
+	if (spec == 1) {
 		Export_to_file(expt, " onLoad=\"fn_aktualne(0,0,0)\"");
 	}
 	Export_to_file(expt, ">\n");
 
 	// display transparent navigation (up/down arrows)
-	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)){
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)) {
 		Export_to_file(expt, HTML_TRANSPARENT_NAV "\n");
 	}
 
-	#ifdef BEHAVIOUR_WEB
-		Export_to_file(expt, HTML_ANAME_TOP "\n");
-	#else
-		Export_to_file(expt, HTML_DIV_BEGIN "\n");
-	#endif
+#ifdef BEHAVIOUR_WEB
+	Export_to_file(expt, HTML_ANAME_TOP "\n");
+#else
+	Export_to_file(expt, HTML_DIV_BEGIN "\n");
+#endif
 
 	// predošlá a nasledovná modlitba
-	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
+	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE) {
 		_buttons_prev_up_next(expt);
 	}// << predošlá | ^ hore | nasledovná >>
 
-	Log("_hlavicka() -- koniec.\n");
+	Log("_hlavicka() -- end.\n");
 	return;
 }// _hlavicka()
 
-char *_hlavicka_title(void) {
-	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
-
-#if defined(OS_Windows_Ruby) || defined(OS_Windows)
-	char pom[MAX_STR] = STR_EMPTY;
-
-	mystrcpy(pom, skratka_jazyka_title[_global_jazyk], MAX_STR);
-	if (_global_kalendar != default_kalendar[_global_jazyk]) {
-		strcat(pom, STR_SPACE);
-		strcat(pom, nazov_kalendara_propria_only[_global_kalendar]);
-	}
-	strcat(pom, STR_VERTICAL_BAR_WITH_SPACES);
-
-	strcat(_global_pom_str, pom);
-#endif
-
-	return(_global_pom_str);
-}
-
 void hlavicka(char *title, short int level, short int spec) {
-	char _title[MAX_STR] = STR_EMPTY;
-	strcat(_title, _hlavicka_title());
-	strcat(_title, title);
-	_hlavicka(_title, NULL, level, spec);
+	_hlavicka(title, NULL, level, spec);
 }
 
 void hlavicka(char *title, FILE * expt, short int level, short int spec) {
-	char _title[MAX_STR] = STR_EMPTY;
-	strcat(_title, _hlavicka_title());
-	strcat(_title, title);
-	_hlavicka(_title, expt, level, spec);
+	_hlavicka(title, expt, level, spec);
 }
 
 // exportuje hlavicku XML dokumentu
-void _xml_hlavicka(FILE * expt){
-	Log("_xml_hlavicka() -- začiatok...\n");
-	if (bol_content_type_text_xml == NIE){
+void _xml_hlavicka(FILE * expt) {
+	Log("_xml_hlavicka() -- begin...\n");
+
+	if (bol_content_type_text_xml == NIE) {
 #if defined(OS_linux)
 		Export_to_file(expt, "Content-type: text/xml\n");
 		Export_to_file(expt, "\n");
@@ -369,38 +362,24 @@ void _xml_hlavicka(FILE * expt){
 #endif
 		bol_content_type_text_xml = ANO;
 	}
+
 	Export_to_file(expt, (char *)xml_header, nazov_charset[charset_jazyka[_global_jazyk]]);
 	Export_to_file(expt, ELEM_BEGIN(XML_MAIN) "\n");
-	Log("_xml_hlavicka() -- koniec.\n");
+
+	Log("_xml_hlavicka() -- end.\n");
 	return;
 }// _xml_hlavicka()
 
-void xml_hlavicka(void){
+void xml_hlavicka(void) {
 	_xml_hlavicka(NULL);
 }
 
-void xml_hlavicka(FILE * expt){
+void xml_hlavicka(FILE * expt) {
 	_xml_hlavicka(expt);
 }
 
-const char *gpage[POCET_JAZYKOV + 1] = { "Generované: ", "Generováno: ", "Generated: ", "Generated: ", "Generated: ", "Generováno: ", "Generálva: ", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-
-// Generované + dátum: "%d. %s %d, %02d:%02d:%02d" -- pôvodne to bolo v zátvorkách
-const char *datum_cas_template[POCET_JAZYKOV + 1] = { "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-
-// Build: "Build: %s. "
-const char *build_template[POCET_JAZYKOV + 1] = { "<!--Verzia: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "<!--Verze: %s -->", "<!--Build: %s -->", "<!--Build: %s -->", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-
-// Generované + dátum (bez času - pre batch mód, aby sa ľahko porovnávali vygenerované modlitby): "%d. %s %d"
-const char *datum_template[POCET_JAZYKOV + 1] = { "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "%d. %s %d", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
-
-const char *html_mail_label_long = "Juraj Vid&#233;ky";
-const char *html_mail_label_short = "J. Vid&#233;ky";
-
-#define ROK 5
-
-void _patka_body_html_end(FILE * expt){
-	Log("_patka_body_html_end() -- začiatok...\n");
+void _patka_body_html_end(FILE * expt) {
+	Log("_patka_body_html_end() -- begin...\n");
 
 #ifdef BEHAVIOUR_WEB
 	Export_to_file(expt, HTML_ANAME_BOTTOM "\n");
@@ -413,25 +392,27 @@ void _patka_body_html_end(FILE * expt){
 #endif
 	Export_to_file(expt, "</body>\n</html>\n");
 
-	Log("_patka_body_html_end() -- koniec.\n");
+	Log("_patka_body_html_end() -- end.\n");
 }
 
 // exportuje patku HTML dokumentu (vysledok query)
-void _patka(FILE * expt){
+void _patka(FILE * expt) {
 	char mail_addr[MAX_MAIL_STR] = "";
-	Log("_patka() -- začiatok...\n");
+	Log("_patka() -- begin...\n");
+
 	_local_modlitba = _global_modlitba;
-	if ((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY)){
+	if ((_local_modlitba == MODL_PRVE_VESPERY) || (_local_modlitba == MODL_DRUHE_VESPERY)) {
 		_local_modlitba = MODL_VESPERY;
 	}
-	if ((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM)){
+	if ((_local_modlitba == MODL_PRVE_KOMPLETORIUM) || (_local_modlitba == MODL_DRUHE_KOMPLETORIUM)) {
 		_local_modlitba = MODL_KOMPLETORIUM;
 	}
 
+	// prepare year "to" from current timestamp as string with dash
 	time_t t;
 	struct tm dnes;
 	int baserok = 1999;
-	char rok[ROK];
+	char rok[STR_YEAR_LENGTH];
 
 	time(&t);
 
@@ -440,40 +421,41 @@ void _patka(FILE * expt){
 	// upravenie time_check structure with the data
 	dnes.tm_year = dnes.tm_year + 1900;
 	dnes.tm_yday = dnes.tm_yday + 1;
-	mystrcpy(rok, STR_EMPTY, ROK);
-	if (dnes.tm_year > baserok){
+	mystrcpy(rok, STR_EMPTY, STR_YEAR_LENGTH);
+	if (dnes.tm_year > baserok) {
 		sprintf(rok, "-%d", dnes.tm_year);
 	}
 
 	// 2010-02-15: vložené "^ hore" podľa hlavicka(); doplnené predošlá a nasledovná modlitba
-	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
+	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE) {
 		_buttons_prev_up_next(expt);
 	}// << predošlá | ^ hore | nasledovná >>
 
-	Export_to_file(expt, (char *)html_footer_1);
-
-	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
-		mystrcpy(html_mail_label, html_mail_label_short, MAX_MAIL_LABEL);
+	// prepare display name (label) for e-mail address
+	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE) {
+		mystrcpy(html_mail_label, (char *)HTML_MAIL_LABEL_SHORT, MAX_MAIL_LABEL);
 	}
 	else
 	{
-		mystrcpy(html_mail_label, html_mail_label_long, MAX_MAIL_LABEL);
+		mystrcpy(html_mail_label, (char *)HTML_MAIL_LABEL_LONG, MAX_MAIL_LABEL);
 	}
 
 	Export("\n");
 
 	Export_to_file(expt, "<" HTML_P_PATKA ">\n");
-#ifdef BEHAVIOUR_WEB
-	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE){
-		Export_to_file(expt, "%s\n", gpage[_global_jazyk]);
-		// Export_to_file(expt, "(%s). ", ctime(&t) + 4);
-		// 2008-12-22: odvetvené - pre commandline export (do súboru) sa netlačí časová zložka, kedy bolo HTML generované
-#if defined(EXPORT_TO_FILE) && !defined(IO_ANDROID)
+
+	// export build timestamp (not for mobile apps)
+#if defined(BEHAVIOUR_WEB) && !(defined(IO_ANDROID) || defined(__APPLE__))
+	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE) {
+		Export_to_file(expt, "%s\n", generated[_global_jazyk]);
+
+		// print without or with timestamp
+#if defined(EXPORT_TO_FILE)
 		Export_to_file(expt, (char *)datum_template[_global_jazyk],
 			dnes.tm_mday,
 			nazov_mesiaca(dnes.tm_mon), // nm[dnes.tm_mon]
 			dnes.tm_year
-			);
+		);
 #else
 		Export_to_file(expt, (char *)datum_cas_template[_global_jazyk],
 			dnes.tm_mday,
@@ -482,15 +464,17 @@ void _patka(FILE * expt){
 			dnes.tm_hour,
 			dnes.tm_min
 			// , dnes.tm_sec
-			);
+		);
 #endif
-		Export_to_file(expt, ". ");
-	}
-	Export_to_file(expt, (char *)build_template[_global_jazyk], BUILD_DATE);
 
+		Export_to_file(expt, ". "); // final dot at the end of sentence (Generated...)
+	}
+
+	Export_to_file(expt, (char *)build_template[_global_jazyk], BUILD_DATE);
 #endif
 
 #ifndef BEHAVIOUR_CMDLINE
+	// navigation to main page (URL breviar.sk) before (c) info
 	Export_to_file(expt, "<" HTML_LINK_NORMAL " href=\"%s\" " HTML_TARGET_TOP ">%s" HTML_A_END "\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
 #endif
 
@@ -507,42 +491,53 @@ void _patka(FILE * expt){
 
 	Export_to_file(expt, HTML_P_END "\n");
 
-	Log("_patka() -- koniec.\n");
+	Log("_patka() -- end.\n");
 	return;
 }// _patka()
 
-void patka(void){
+void patka(void) {
+	Log("patka(void) -- begin...\n");
+
 	// aby sa pätka neexportovala viackrát
-	if (_global_patka_Export > 0){
+	if (_global_patka_Export > 0) {
+		Log("patka(void) -- _global_patka_Export == %d > 0; end.\n", _global_patka_Export);
 		return;
 	}
 	_global_patka_Export++;
 
-	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
+	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) {
 		_patka(NULL);
 	}
 	_patka_body_html_end(NULL);
+
+	Log("patka(void) -- end.\n");
 }
 
-void patka(FILE * expt){
+void patka(FILE * expt) {
+	Log("patka(FILE) -- begin...\n");
+
 	// aby sa pätka neexportovala viackrát
-	if (_global_patka_Export > 0){
+	if (_global_patka_Export > 0) {
+		Log("patka(FILE) -- _global_patka_Export == %d > 0; end.\n", _global_patka_Export);
 		return;
 	}
 	_global_patka_Export++;
 
-	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))){
+	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) {
 		_patka(expt);
 	}
 	_patka_body_html_end(expt);
+
+	Log("patka(FILE) -- end.\n");
 }
 
 // exportuje patku XML dokumentu
-void _xml_patka(FILE * expt){
-	Log("_xml_patka() -- začiatok...\n");
+void _xml_patka(FILE * expt) {
+	Log("_xml_patka() -- begin...\n");
 
 	// aby sa pätka neexportovala viackrát
-	if (_global_patka_Export > 0){
+	if (_global_patka_Export > 0) {
+		Log("_xml_patka() -- _global_patka_Export == %d > 0; end.\n", _global_patka_Export);
 		return;
 	}
 	_global_patka_Export++;
@@ -567,15 +562,15 @@ void _xml_patka(FILE * expt){
 
 	Export_to_file(expt, ELEM_END(XML_MAIN) "\n\n");
 
-	Log("_xml_patka() -- koniec.\n");
+	Log("_xml_patka() -- end.\n");
 	return;
 }// _xml_patka()
 
-void xml_patka(void){
+void xml_patka(void) {
 	_xml_patka(NULL);
 }
 
-void xml_patka(FILE * expt){
+void xml_patka(FILE * expt) {
 	_xml_patka(expt);
 }
 

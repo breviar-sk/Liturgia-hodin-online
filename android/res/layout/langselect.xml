@@ -14,6 +14,23 @@
      limitations under the License.
 -->
 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+<android.support.v7.widget.Toolbar
+  android:id="@+id/langselect_toolbar"
+  android:layout_width="match_parent"
+  android:layout_height="?attr/actionBarSize"  
+  android:elevation="4dp"
+  android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+  app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+  android:background="?attr/colorPrimary">
+</android.support.v7.widget.Toolbar>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent" android:layout_height="match_parent">
 
@@ -132,12 +149,14 @@
     <Button android:id="@+id/alarms" android:text="@string/alarms"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <Button android:id="@+id/about" android:text="@string/about" 
+    <Button android:id="@+id/about_title" android:text="@string/about_title" 
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <Button android:id="@+id/btn_news" android:text="@string/btn_news" 
+    <Button android:id="@+id/news_title" android:text="@string/news_title" 
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
 </LinearLayout>
 
 </ScrollView>
+
+</LinearLayout>

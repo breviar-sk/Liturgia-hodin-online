@@ -2,14 +2,15 @@ package sk.breviar.android;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
 
 import sk.breviar.android.BreviarApp;
 import sk.breviar.android.Util;
 
-public class Alarms extends FragmentActivity {
+public class Alarms extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
       super.attachBaseContext(newBase);
@@ -22,6 +23,11 @@ public class Alarms extends FragmentActivity {
       super.onCreate(savedInstanceState);
 
       setContentView(R.layout.alarms);
+
+      Toolbar toolbar = (Toolbar) findViewById(R.id.alarms_toolbar);
+      setSupportActionBar(toolbar);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setTitle(getString(R.string.alarms));
 
       for (int i = 0; i < Util.events.length; ++i) {
         final CheckBox box = ((CheckBox)findViewById(Util.events[i].id));

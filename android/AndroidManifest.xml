@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="sk.breviar.android"
-      android:versionCode="83"
-      android:versionName="1.14.6"
+      android:versionCode="84"
+      android:versionName="2.0"
       android:installLocation="auto">
     <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="26"/>
     <supports-screens android:xlargeScreens="true"/>
     <application android:label="@string/app_name"
                  android:name="sk.breviar.android.BreviarApp"
+                 android:theme="@style/BreviarTheme"
                  android:icon="@drawable/icon">
         <activity android:name="Breviar"
                   android:configChanges="orientation|screenSize"
-                  android:launchMode="singleTask"
-                  android:theme="@style/Theme.AppCompat"
-                  android:label="@string/app_name">
+                  android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,8 +24,11 @@
         </activity>
         <activity android:name="Alarms"
                   android:configChanges="orientation|screenSize"
-                  android:theme="@style/Theme.AppCompat"
+                  android:parentActivityName="sk.breviar.android.LangSelect"
                   android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="sk.breviar.android.LangSelect" />
             <intent-filter>
                 <action android:name="sk.breviar.android.ALARMS" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -34,7 +36,14 @@
         </activity>
         <activity android:name="LangSelect"
                   android:configChanges="orientation|screenSize"
-                  android:theme="@style/Theme.AppCompat"
+                  android:parentActivityName="sk.breviar.android.Breviar"
+                  android:launchMode="singleTop">
+                  <meta-data
+                      android:name="android.support.PARENT_ACTIVITY"
+                      android:value="sk.breviar.android.Breviar" />
+        </activity>
+        <activity android:name="DialogActivity"
+                  android:configChanges="orientation|screenSize"
                   android:launchMode="singleTop">
         </activity>
         <receiver android:name="AlarmReceiver" >

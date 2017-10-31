@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -16,10 +18,7 @@ import android.widget.CheckBox;
 import sk.breviar.android.BreviarApp;
 import sk.breviar.android.UrlOptions;
 
-public class LangSelect extends Activity {
-    static final int DIALOG_ABOUT = 1;
-    static final int DIALOG_NEWS = 2;
-
+public class LangSelect extends AppCompatActivity {
     UrlOptions url_options;
 
     @Override
@@ -35,6 +34,11 @@ public class LangSelect extends Activity {
 
       super.onCreate(savedInstanceState);
       setContentView(R.layout.langselect);
+
+      Toolbar toolbar = (Toolbar) findViewById(R.id.langselect_toolbar);
+      setSupportActionBar(toolbar);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setTitle(getString(R.string.lang_select));
 
       final LangSelect activity = this;
 
@@ -371,15 +375,16 @@ public class LangSelect extends Activity {
 
       emphasize_local_calendar_check.setChecked(url_options.isEmphasizeLocalCalendar());
 
-      ((Button)findViewById(R.id.about)).setOnClickListener(new View.OnClickListener() {
+      final LangSelect parent = this;
+      ((Button)findViewById(R.id.about_title)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-          showDialog(DIALOG_ABOUT);
+          Util.showAbout(parent);
         }
       });
 
-      ((Button)findViewById(R.id.btn_news)).setOnClickListener(new View.OnClickListener() {
+      ((Button)findViewById(R.id.news_title)).setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-          showDialog(DIALOG_NEWS);
+          Util.showChangelog(parent);
         }
       });
 
@@ -388,21 +393,5 @@ public class LangSelect extends Activity {
           startActivity(new Intent("sk.breviar.android.ALARMS"));
         }
       });
-    }
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-      String content = null;
-      switch(id) {
-        case DIALOG_ABOUT:
-          content = Util.getAboutText(this);
-          break;
-        case DIALOG_NEWS:
-          content = getString(R.string.news);
-          break;
-        default:
-          // fall through
-      }
-      return Util.createHtmlDialog(this, content);
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version" translatable="false">1.14.6</string>
+    <string name="version" translatable="false">2.0</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -67,6 +67,9 @@
     <string name="onlyNonBoldFontOn">No bold font</string>
     <string name="onlyNonBoldFontOff">Allow bold font</string>
 
+    <string name="navigation_drawer_open">Open menu</string>
+    <string name="navigation_drawer_close">Close menu</string>
+
     <string name="inv">Invitatory</string>
     <string name="rch">Lauds</string>
     <string name="vesp">Vespers</string>
@@ -90,7 +93,12 @@
     <string name="tts_speaking">Stop speaking</string>
 
     <string name="menu_about">About...</string>
-    <string name="about">About app</string>
+    <string name="about_title">Applicaton info</string>
+    <string name="about_url">include/about.htm</string>
+
+    <string name="news_title">Changelog</string>
+    <string name="news_url">include/android-version.htm</string>
+
     <string name="about_PROJECT_URL">breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Breviary app for OS Android</string>
@@ -99,9 +107,8 @@
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
-    <string name="about_text">include/about.htm</string>
 
-    <string name="about_text_head" translatable="false"><![CDATA[
+    <string name="activity_text_head" translatable="false"><![CDATA[
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -112,83 +119,9 @@ a { color: #ffaa00; }
 </head>
 <body>
     ]]></string>
-    <string name="about_text_tail" translatable="false"><![CDATA[
+
+    <string name="activity_text_tail" translatable="false"><![CDATA[
       </body></html>
-    ]]></string>
-
-
-    <string name="btn_news">Changelog</string>
-    <string name="news"><![CDATA[
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<style type="text/css">
-body { background-color: #000000; color: #cccccc; }
-</style>
-</head>
-<body>
-
-<p><b>Breviary application</b></p>
-
-<p><i>Warning:</i> This is last version comaptible with Android 3 and older. New updates will be available only for Android 4.0 and higher.</p>
-
-<p><b>Changelog</b></p>
-
-<p><b>Version 1.14.6</b>
-<ul>
-<li>SK + CZ: Added act of repentance into compline (for displayed rubrics only).</li>
-<li>SK + CZ: Bible references may be opened at bible.com (online only so far).</li>
-<li>Typos & errors fixed for all languages & propria texts.</li>
-</ul>
-
-<p><b>Version 1.14.5</b>
-<ul>
-<li>SK: Text notes for 2nd readings completed (vol. II).</li>
-<li>CZ: Footnotes for 2nd readings completed.</li>
-<li>CZ: Calendar & proper texts for franciscans (OFM).</li>
-<li>Typos & errors fixed for all languages.</li>
-</ul>
-
-<p><b>Version 1.14.4</b>
-<ul>
-<li>Fix: Crash after click on e-mail address.</li>
-<li>SK: Text notes for 2nd readings (communia; vol. IV).</li>
-<li>CZ: Footnotes for 2nd readings (almost complete except Easter).</li>
-<li>Fix: Antiphones (invitatory) for Memorials of the Blessed Virgin Mary on Saturday.</li>
-<li>Typos & errors fixed for all languages.</li>
-</ul>
-
-<p><b>Version 1.14.3</b>
-<ul>
-<li>Fix: Default settings.</li>
-<li>SK: Text notes for 2nd readings (propria; vol. I and III).</li>
-<li>CZ: Fix for hymns in compline (Easter).</li>
-<li>Typos fixed.</li>
-</ul>
-
-<p><b>Version 1.14.2</b>
-<ul>
-<li>Display only one of various choices (hymns, first or second reading, antiphones, preces).</li>
-<li>Memorials of the Blessed Virgin Mary on Saturday are not celebrated as alternative to another feast of Virgin Mary.</li>
-<li>SK, CZ: Fixes for liturgical calendar.</li>
-<li>CZ: Fix for invitatory in Lent.</li>
-</ul>
-
-<p><b>Version 1.14.1</b>
-<ul>
-<li>New option: Display other antiphone for invitatory prayer (SK: per annum; CZ: advent).</li>
-<li>SK, CZ: Fixes for liturgical calendar.</li>
-<li>CZ: Proper texts for salesians (SDB) updated.</li>
-</ul>
-
-<p><b>Version 1.14</b>
-<ul>
-<li>New option: Display button for first vespers for Sundays and solemnitas for the day of celebration.</li>
-<li>Enable to celebrate saints with higher level (as feasts/solemnities).</li>
-<li>Fixes for liturgical calendar.</li>
-</ul>
-
-</body></html>
     ]]></string>
 
 </resources>

@@ -17556,6 +17556,61 @@ void setConfigDefaults(short int jazyk) {
 	Log("setConfigDefaults(%d) -- koniec (%d. volanie).\n", jazyk, counter_setConfigDefaults);
 }// setConfigDefaults()
 
+void init_global_string_as_html_title(short int den, short int mesiac, short int rok, short int modlitba) {
+	Log("init_global_string_as_html_title(%d, %d, %d, %d): begin...\n", den, mesiac, rok, modlitba);
+
+	mystrcpy(_global_string, STR_EMPTY, MAX_GLOBAL_STR); // inicializácia
+
+#if defined(IO_ANDROID) || defined (__APPLE__)
+	// no prefix for mobile apps ["app name" as title will be added in special cases]
+#elif defined(OS_Windows_Ruby) || defined(OS_Windows)
+	// for debugging & testing: language + calendar shortcuts, e. g. "SK SVD | " or "CZ OFMCap. | "
+	mystrcpy(_global_string, skratka_jazyka_title[_global_jazyk], MAX_STR);
+	if (_global_kalendar != default_kalendar[_global_jazyk]) {
+		strcat(_global_string, STR_SPACE);
+		strcat(_global_string, nazov_kalendara_propria_only[_global_kalendar]);
+	}
+	strcat(_global_string, STR_VERTICAL_BAR_WITH_SPACES);
+#else
+	// for web, add "website name" as title
+	mystrcpy(_global_string, html_title[_global_jazyk], MAX_GLOBAL_STR); // inicializácia
+	strcat(_global_string, STR_VERTICAL_BAR_WITH_SPACES);
+#endif
+
+	// add string/date for selected day, year, prayer (fits for most cases)
+	if (query_type == PRM_DNES) {
+		strcat(_global_string, html_button_Dnes[_global_jazyk]);
+	}
+	else if ((query_type == PRM_DATUM) || (query_type == PRM_TXT) || (query_type == PRM_ANALYZA_ROKU)) {
+		strcat(_global_string, _vytvor_string_z_datumu_ext(den, mesiac + 1, rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, NIE));
+	}
+
+	if (modlitba != MODL_NEURCENA) {
+		// if anything is in _global_string, add dashes + prayer name...
+		if (strlen(_global_string) > 0) {
+			strcat(_global_string, " ");
+			strcat(_global_string, STR_DASH_EN);
+			strcat(_global_string, " ");
+			strcat(_global_string, nazov_modlitby(modlitba));
+		}
+		else {
+			// ...otherwise, add prayer only...
+			if (modlitba != MODL_NEURCENA) {
+				strcat(_global_string, nazov_Modlitby(modlitba));
+			}
+			else {
+				// ...or just website/application name
+#if defined(IO_ANDROID) || defined (__APPLE__)
+				mystrcpy(_global_string, html_app_name[_global_jazyk], MAX_GLOBAL_STR);
+#else
+				mystrcpy(_global_string, html_title[_global_jazyk], MAX_GLOBAL_STR);
+#endif
+			}
+		}
+	}
+	Log("init_global_string_as_html_title(%d, %d, %d, %d): end.\n", den, mesiac, rok, modlitba);
+}// init_global_string_as_html_title()
+
 // main
 int breviar_main(int argc, char **argv){
 	short int i;
@@ -18242,29 +18297,8 @@ int breviar_main(int argc, char **argv){
 			local_den = local_mesiac = local_rok = local_modlitba = 0;
 			_rozparsuj_parametre_DEN_MESIAC_ROK(pom_DEN, pom_MESIAC, pom_ROK, pom_MODLITBA, local_den, local_mesiac, local_rok, local_modlitba);
 
-			mystrcpy(_global_string, STR_EMPTY, MAX_GLOBAL_STR); // inicializácia
 			// nastavenie titulku pre hlavičku
-#if defined(OS_Windows_Ruby) || defined(OS_Windows)
-#else
-			mystrcpy(_global_string, html_title[_global_jazyk], MAX_GLOBAL_STR); // inicializácia
-			strcat(_global_string, STR_VERTICAL_BAR_WITH_SPACES);
-#endif
-			if (query_type == PRM_DNES){
-				strcat(_global_string, html_button_Dnes[_global_jazyk]);
-			}
-			else if ((query_type == PRM_DATUM) || (query_type == PRM_TXT) || (query_type == PRM_ANALYZA_ROKU)){
-				strcat(_global_string, _vytvor_string_z_datumu_ext(local_den, local_mesiac + 1, local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, NIE));
-			}
-			else{
-				mystrcpy(_global_string, html_title[_global_jazyk], MAX_GLOBAL_STR);
-			}
-
-			if (local_modlitba != MODL_NEURCENA){
-				strcat(_global_string, " ");
-				strcat(_global_string, STR_DASH_EN);
-				strcat(_global_string, " ");
-				strcat(_global_string, nazov_modlitby(local_modlitba));
-			}
+			init_global_string_as_html_title(local_den, local_mesiac, local_rok, local_modlitba);
 
 			// export hlavičky
 			_main_LOG_to_Export("[pred volaním _main_... funkcií v switch(query_type)]: ");

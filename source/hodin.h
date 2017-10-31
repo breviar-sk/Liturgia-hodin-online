@@ -1291,6 +1291,10 @@ const char *html_button_dnes_apply2[POCET_JAZYKOV + 1] =
 #define HTML_BUTTON_DNES_APPLY_CHOICES html_button_dnes_apply2[_global_jazyk]
 #endif
 
+// html <title> element for apps (application name)
+const char *html_app_name[POCET_JAZYKOV + 1] =
+{ "Breviár", "Breviář", "Breviary", "Breviarium", "", "Breviář", "Zsolozsma", "Литургия часов", "Літургія гадзінаў", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
 // html <title> element for generated pages
 const char *html_title[POCET_JAZYKOV + 1] = 
 { "Liturgia hodín", "Liturgie hodin", "Liturgy of Hours", "Liturgia horarum", "", "Liturgie hodin", "Az Imaórák Liturgiája", "Литургия часов", "Літургія гадзінаў", /* STRING_1_FOR_NEW_LANGUAGE */ };

@@ -19,6 +19,9 @@ import android.speech.tts.TextToSpeech;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -50,14 +53,13 @@ import sk.breviar.android.Server;
 import sk.breviar.android.UrlOptions;
 import sk.breviar.android.Util;
 
-public class Breviar extends Activity implements View.OnLongClickListener,
-                                                 ScaleGestureDetector.OnScaleGestureListener,
-                                                 NavigationView.OnNavigationItemSelectedListener,
-                                                 TextToSpeech.OnInitListener,
-                                                 TextToSpeech.OnUtteranceCompletedListener {
+public class Breviar extends AppCompatActivity 
+                     implements View.OnLongClickListener,
+                                ScaleGestureDetector.OnScaleGestureListener,
+                                NavigationView.OnNavigationItemSelectedListener,
+                                TextToSpeech.OnInitListener,
+                                TextToSpeech.OnUtteranceCompletedListener {
     static String scriptname = "l.cgi";
-    static final int DIALOG_ABOUT = 1;
-    static final int DIALOG_NEWS = 2;
 
     // Server singleton
     static Server S = null;
@@ -246,10 +248,24 @@ public class Breviar extends Activity implements View.OnLongClickListener,
 
       setContentView(R.layout.breviar);
 
+      Toolbar toolbar = (Toolbar) findViewById(R.id.breviar_toolbar);
+      setSupportActionBar(toolbar);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setTitle(getString(R.string.app_name));
+
       navigationView = (NavigationView) findViewById(R.id.navigation);
       navigationView.setNavigationItemSelectedListener(this);
 
       drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+      ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
+          this,  drawer, toolbar,
+          R.string.navigation_drawer_open, R.string.navigation_drawer_close
+      );
+      drawer.setDrawerListener(drawerToggle);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setHomeButtonEnabled(true);
+      drawerToggle.syncState();
+
       wv = (WebView)findViewById(R.id.wv);
       ClearProxy.clearProxy(wv);
       wv.clearCache(true);
@@ -347,41 +363,8 @@ public class Breviar extends Activity implements View.OnLongClickListener,
       wv.setOnLongClickListener(this);
       wv.setLongClickable(true);
 
-      /*
-      ((Button)findViewById(R.id.forwardBtn)).setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-          parent.syncScale();
-          wv.goForward();
-        }
-      });
-      ((Button)findViewById(R.id.menuBtn)).setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-          parent.openOptionsMenu();
-        }
-      });
-      */
- 
-      ((Button)findViewById(R.id.pgupBtn)).setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-          wv.pageUp(false);
-        }
-      });
- 
-      ((Button)findViewById(R.id.todayBtn)).setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-          parent.syncScale();
-          goHome();
-        }
-      });
- 
-      ((Button)findViewById(R.id.pgdnBtn)).setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-          wv.pageDown(false);
-        }
-      });
-
       if (!getResources().getString(R.string.version).equals(settings.getString("version", ""))) {
-        showDialog(DIALOG_NEWS);
+        Util.showChangelog(this);
         markVersion();
       }
 
@@ -423,6 +406,27 @@ public class Breviar extends Activity implements View.OnLongClickListener,
       updateFullscreen();
       updateMenu();
       Log.v("breviar", "onCreate: done");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+      switch (item.getItemId()) {
+        case R.id.todayBtn:
+          syncScale();
+          goHome();
+          return true;
+
+        default:
+          // If we got here, the user's action was not recognized.
+          // Invoke the superclass to handle it.
+          return super.onOptionsItemSelected(item);
+      }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.breviar_toolbar_menu, menu);
+        return true;
     }
 
     @Override
@@ -588,22 +592,6 @@ public class Breviar extends Activity implements View.OnLongClickListener,
     }
 
     @Override
-    protected Dialog onCreateDialog(int id) {
-      String content = null;
-      switch(id) {
-        case DIALOG_ABOUT:
-          content = Util.getAboutText(this);
-          break;
-        case DIALOG_NEWS:
-          content = getString(R.string.news);
-          break;
-        default:
-          // fall through
-      }
-      return Util.createHtmlDialog(this, content);
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
       if (resultCode == RESULT_OK) {
         language = data.getStringExtra("lang");
@@ -615,10 +603,10 @@ public class Breviar extends Activity implements View.OnLongClickListener,
     void updateFullscreen() {
       WindowManager.LayoutParams params = getWindow().getAttributes();
       if (fullscreen) {
-        findViewById(R.id.navbar).setVisibility(View.GONE);
+        getSupportActionBar().hide();
         params.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
       } else {
-        findViewById(R.id.navbar).setVisibility(View.VISIBLE);
+        getSupportActionBar().show();
         params.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
       }
       getWindow().setAttributes(params);
@@ -780,7 +768,7 @@ public class Breviar extends Activity implements View.OnLongClickListener,
           break;
 
         case R.id.menu_about:
-          showDialog(DIALOG_ABOUT);
+          Util.showAbout(this);
           break;
 
         case R.id.speak_toggle:
@@ -857,9 +845,9 @@ public class Breviar extends Activity implements View.OnLongClickListener,
         boolean shown = !BreviarApp.getNavBarShown(this);
         BreviarApp.setNavBarShown(this, shown);
         if (shown) {
-          findViewById(R.id.navbar).setVisibility(View.VISIBLE);
+          getSupportActionBar().show();
         } else {
-          findViewById(R.id.navbar).setVisibility(View.GONE);
+          getSupportActionBar().hide();
         }
         return true;
       }

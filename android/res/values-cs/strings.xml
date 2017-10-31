@@ -65,6 +65,9 @@
     <string name="onlyNonBoldFontOn">Obyčejné písmo</string>
     <string name="onlyNonBoldFontOff">I tučné písmo</string>
 
+    <string name="navigation_drawer_open">Otevři menu</string>
+    <string name="navigation_drawer_close">Zavři menu</string>
+
     <string name="inv">Uvedení</string>
     <string name="rch">Ranní chvály</string>
     <string name="vesp">Nešpory</string>
@@ -83,94 +86,24 @@
     <string name="h12_notify">Je čas na polední modlitbu!</string>
     <string name="h15_notify">Je čas na odpolední modlitbu!</string>
 
+    <string name="tts_uninitialized">Hlasový výstup...</string>
+    <string name="tts_ready">Pročti</string>
+    <string name="tts_speaking">Zastav předčítání</string>
+
     <string name="menu_about">O...</string>
-    <string name="about">O aplikaci</string>
+    <string name="about_title">O aplikaci</string>
+    <string name="about_url">include_cz/about.htm</string>
+
+    <string name="news_title">Změny ve verzích</string>
+    <string name="news_url">include_cz/android-version.htm</string>
+
     <string name="about_PROJECT_URL">breviar.cz</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Aplikace Breviář pro OS Android</string>
-    <string name="about_SPECIAL_CREDITS">Děkuji za pomoc, spolupráci a souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.</string>
+    <string name="about_SPECIAL_CREDITS">Děkuji za pomoc, podporu, spolupráci a souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.</string>
     <string name="about_PROJECT_SOURCE_STORAGE">GitHub-u</string>
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
-    <string name="about_text">include_cz/about.htm</string>
-
-    <string name="tts_uninitialized">Čtení...</string>
-    <string name="tts_ready">Pročti</string>
-    <string name="tts_speaking">Zastav čtení</string>
-
-    <string name="btn_news">Změny ve verzích</string>
-    <string name="news"><![CDATA[
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<style type="text/css">
-body { background-color: #000000; color: #cccccc; }
-</style>
-</head>
-<body>
-
-<p><b>Aplikace Breviář</b></p>
-
-<p><i>Upozornění:</i> Toto je poslední verze, která je kompatibilní s OS Android 3 a starším. Nové aktualizacie budou dostupné jen pro Android 4.0 a vyšší.</p>
-
-<p><b>Změny ve verzích</b></p>
-
-<!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
-
-<p><b>Verze 1.14.6</b>
-<ul>
-<li>Doplnění úkonu kajícnosti do modlitby před spaním (pro zapnuté rubriky).</li>
-<li>Biblické odkazy: možnost otevřít na bible.com (zatím jenom online).</li>
-<li>Prodloužená slavení vigilií: kantika pro mezidobí.</li>
-<li>Úpravy v liturgickém kalendáři a textech (obecné, OFM, OFMCap).</li>
-</ul>
-
-<p><b>Verze 1.14.5</b>
-<ul>
-<li>Poznámky pod čarou ke druhým čtením kompletně dokončeny.</li>
-<li>Kalendář a vlastní texty pro františkány (OFM).</li>
-<li>Opravy v liturgickém kalendáři a textech (obecné, OFMCap).</li>
-</ul>
-
-<p><b>Verze 1.14.4</b>
-<ul>
-<li>Poznámky pod čarou ke druhým čtením: doba postní, společné texty o svatých.</li>
-<li>Oprava pádu aplikace při kliknutí na e-mailovou adresu.</li>
-<li>Oprava antifon (uvedení) pro sobotní památku Panny Marie.</li>
-<li>Opravy v liturgickém kalendáři a textech (všeobecné, OFMCap).</li>
-</ul>
-
-<p><b>Verze 1.14.3</b>
-<ul>
-<li>Oprava zobrazení hymnu v modlitbě před spaním (doba velikonoční).</li>
-<li>Poznámky pod čarou ke druhým čtením: vlastní texty o svatých.</li>
-<li>Opravy v liturgickém kalendáři a textech.</li>
-</ul>
-
-<p><b>Verze 1.14.2</b>
-<ul>
-<li>Zobrazení pouze jedné možnosti z více (hymny, první, druhé čtení, antifony, prosby).</li>
-<li>Oprava modlitby uvedení do dne pro dobu postní.</li>
-<li>Sobotní památka Panny Marie se nenabízí při střetu s jiným mariánským svátkem.</li>
-<li>Opravy v liturgickém kalendáři a textech.</li>
-</ul>
-
-<p><b>Verze 1.14.1</b>
-<ul>
-<li>Nová volba: Zobrazit jinou antifonu pro uvedení do modlitby pro adventní dobu.</li>
-<li>Vlastní texty pro salesiánskou rodinu opraveny a doplňeny.</li>
-<li>Opravy v liturgickém kalendáři a textech.</li>
-</ul>
-
-<p><b>Verze 1.14</b>
-<ul>
-<li>Nová volba: Zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení.</li>
-<li>Možnost slavit slavení s vyšším stupněm (jako svátky/slavnosti).</li>
-<li>Opravy v liturgickém kalendáři.</li>
-</ul>
-
-</body></html>
-    ]]></string>
 
 </resources>

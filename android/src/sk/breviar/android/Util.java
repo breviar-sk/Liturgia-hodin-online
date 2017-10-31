@@ -19,9 +19,13 @@ import java.util.GregorianCalendar;
 
 import sk.breviar.android.AlarmReceiver;
 import sk.breviar.android.CompatibilityHelper8;
+import sk.breviar.android.DialogActivity;
 
 public class Util {
   static final String prefname = "BreviarPrefs";
+
+  static final int ACTIVITY_ABOUT = 0;
+  static final int ACTIVITY_NEWS = 1;
 
   static class AlarmTime {
     AlarmTime(int minute_, int hour_, boolean enabled_) {
@@ -142,30 +146,18 @@ public class Util {
     new EventInfo(R.id.kompl_check, "alarm-kompl", "mk",    R.string.kompl, R.string.kompl_notify, 22, 00)
   };
 
-  static public Dialog createHtmlDialog(Activity act, String content) {
-    if (content == null) return null;
-    WebView wv = new WebView(act);
-    if (Build.VERSION.SDK_INT < 8) {
-      wv.loadData(content, "text/html; charset=utf-8", "utf-8");
-    } else {
-      
-      try {
-        wv.loadData(CompatibilityHelper8.Base64EncodeToString(
-                        content.getBytes("UTF-8")),
-                    "text/html; charset=utf-8", "base64");
-      } catch (java.io.UnsupportedEncodingException e) {
-        wv.loadData("unsupported encoding utf-8", "text/html", null);
-      }
-    }
-    return new AlertDialog.Builder(act)
-           .setView(wv)
-           .setCancelable(false)
-           .setNeutralButton("OK", new DialogInterface.OnClickListener() {
-               public void onClick(DialogInterface dialog, int id) {
-                    dialog.cancel();
-               }
-           })
-           .create();
+  static void startDialogActivity(Activity act, int title_id, String content) {
+    act.startActivity(new Intent(act, DialogActivity.class)
+                              .putExtra("title", title_id)
+                              .putExtra("content", content));
+  }
+
+  static void showChangelog(Activity act) {
+    startDialogActivity(act, R.string.news_title, getActivityText(act, ACTIVITY_NEWS));
+  }
+
+  static void showAbout(Activity act) {
+    startDialogActivity(act, R.string.about_title, getActivityText(act, ACTIVITY_ABOUT));
   }
 
   static public String streamToString(java.io.InputStream stream) {
@@ -183,12 +175,21 @@ public class Util {
     return output.toString();
   }
 
-  static public String getAboutText(Context ctx) {
+  static public String getActivityText(Context ctx, int id) {
     try {
+    	String activity_url;
+
+    	if (id == ACTIVITY_NEWS) {/* Changelog */
+    		activity_url = ctx.getString(R.string.news_url);
+    	}
+    	else {/* ACTIVITY_ABOUT = About */
+    		activity_url = ctx.getString(R.string.about_url);
+    	}
+
       String output =
-          ctx.getString(R.string.about_text_head) +
-          streamToString(ctx.getAssets().open(ctx.getString(R.string.about_text))) +
-          ctx.getString(R.string.about_text_tail);
+          ctx.getString(R.string.activity_text_head) +
+          streamToString(ctx.getAssets().open(activity_url)) +
+          ctx.getString(R.string.activity_text_tail);
 
       return output
           .replaceAll("<!--\\{VERSION\\}-->", ctx.getString(R.string.version))
