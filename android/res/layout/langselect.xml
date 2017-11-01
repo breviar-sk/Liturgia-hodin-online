@@ -1,18 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-  
-          http://www.apache.org/licenses/LICENSE-2.0
-  
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,7 +10,7 @@
 <android.support.v7.widget.Toolbar
   android:id="@+id/langselect_toolbar"
   android:layout_width="match_parent"
-  android:layout_height="?attr/actionBarSize"  
+  android:layout_height="?attr/actionBarSize"
   android:elevation="4dp"
   android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
   app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -41,18 +27,18 @@
     <TextView android:text="@string/lang_select_title" style="@android:style/TextAppearance.Large"
         android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <Button android:id="@+id/lang_cz" android:text="@string/lang_cz" 
+    <Button android:id="@+id/lang_cz" android:text="@string/lang_cz"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <Button android:id="@+id/lang_hu" android:text="@string/lang_hu" 
+    <Button android:id="@+id/lang_hu" android:text="@string/lang_hu"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <Button android:id="@+id/lang_sk" android:text="@string/lang_sk" 
+    <Button android:id="@+id/lang_sk" android:text="@string/lang_sk"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <CheckBox android:id="@+id/override_locale_check" android:text="@string/override_locale" 
+    <CheckBox android:id="@+id/override_locale_check" android:text="@string/override_locale"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
-  
+
     <TextView android:text="@string/settings_title" style="@android:style/TextAppearance.Large"
         android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
 
@@ -146,13 +132,13 @@
     <CheckBox android:id="@+id/emphasize_local_calendar_check" android:text="@string/emphasize_local_calendar"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <Button android:id="@+id/alarms" android:text="@string/alarms"
+    <Button android:id="@+id/alarms_btn" android:text="@string/alarms"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <Button android:id="@+id/about_title" android:text="@string/about_title" 
+    <Button android:id="@+id/about_btn" android:text="@string/about_title"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <Button android:id="@+id/news_title" android:text="@string/news_title" 
+    <Button android:id="@+id/news_btn" android:text="@string/news_title"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
 </LinearLayout>

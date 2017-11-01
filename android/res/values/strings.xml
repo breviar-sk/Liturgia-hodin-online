@@ -88,7 +88,6 @@
     <string name="h12_notify">Time for Sext!</string>
     <string name="h15_notify">Time for None!</string>
 
-    <string name="tts_uninitialized">TTS not ready</string>
     <string name="tts_ready">Speak prayers</string>
     <string name="tts_speaking">Stop speaking</string>
 

@@ -546,8 +546,13 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 }// prilep_request_options();
 
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align) {
-	// note: mesiac here is 1--12
 	Log("_vytvor_string_z_datumu_ext(den == %d, mesiac == %d, rok == %d, _case == %d, align == %d): begin...\n", den, mesiac, rok, _case, align);
+	return _vytvor_string_z_datumu_ext(den, mesiac, rok, _case, align, NIE);
+}// _vytvor_string_z_datumu_ext()
+
+char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align, short int force_month_numbers) {
+	// note: mesiac here is 1--12
+	Log("_vytvor_string_z_datumu_ext(den == %d, mesiac == %d, rok == %d, _case == %d, align == %d, force_month_numbers == %d): begin...\n", den, mesiac, rok, _case, align, force_month_numbers);
 
 	short int typ = 0;
 	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
@@ -571,7 +576,7 @@ char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok
 		else {
 			typ = LINK_DEN_MESIAC_ROK;
 		}
-		return _vytvor_string_z_datumu(den, mesiac, rok, _case, typ, align);
+		return _vytvor_string_z_datumu(den, mesiac, rok, _case, typ, align, force_month_numbers);
 	}
 	else {
 		return (_global_pom_str);
@@ -580,25 +585,37 @@ char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok
 
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align) {
 	Log("_vytvor_string_z_datumu(den == %d, mesiac == %d, rok == %d, _case == %d, typ == %d, align == %d): begin...\n", den, mesiac, rok, _case, typ, align);
+	return _vytvor_string_z_datumu(den, mesiac, rok, _case, typ, align, NIE);
+}// _vytvor_string_z_datumu()
+
+char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, short int force_month_numbers) {
+	Log("_vytvor_string_z_datumu(den == %d, mesiac == %d, rok == %d, _case == %d, typ == %d, align == %d, force_month_numbers == %d): begin...\n", den, mesiac, rok, _case, typ, align, force_month_numbers);
 
 	char pom[MAX_STR] = STR_EMPTY;
 	char vypln[SMALL] = STR_EMPTY;
-	char strden[SMALL] = STR_EMPTY;
+
+	char str_den[SMALL] = STR_EMPTY;
+	char str_mesiac[SMALL] = STR_EMPTY;
+
 	mystrcpy(_global_pom_str, STR_EMPTY, MAX_STR);
 
-	// pre export medzery pre jednociferné čísla dní zarovnáme nezlomiteľnou medzerou
+	// DAY: str_den
+
+	// pre export medzery pre jednociferné čísla dní zarovnáme nezlomiteľnou medzerou | use non-breaking space for left-padding one-cipher day number
 	if ((align != NIE) && (den < 10)) {
 		mystrcpy(vypln, HTML_NONBREAKING_SPACE, SMALL);
 	}
 
 	if (den != VSETKY_DNI) {
-		sprintf(strden, "%s%d", vypln, den);
+		sprintf(str_den, "%s%d", vypln, den);
 
 		if (use_dot_for_ordinals[_global_jazyk] == FORMAT_DATE_USE_DOT_FOR_ORDINALS) {
 			// add dot for ordinal number
-			strcat(strden, STR_DOT);
+			strcat(str_den, STR_DOT);
 		}
 	}
+
+	// MONTH: str_mesiac
 
 	if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_BY)) {
 		// force month in genitive
@@ -611,7 +628,30 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 	}// LA, BY only
 
 	if (_global_jazyk == JAZYK_EN) {
-		sprintf(pom, "%s %s", nazov_Mesiaca(mesiac - 1), strden);
+		mystrcpy(str_mesiac, nazov_Mesiaca(mesiac - 1), SMALL);
+	}
+	else if (_global_jazyk == JAZYK_HU) {
+		mystrcpy(str_mesiac, nazov_mesiaca(mesiac - 1), SMALL);
+	}
+	else {
+		// default behaviour for SK, CZ; used also for LA, BY
+		switch (_case) {
+		case CASE_case:
+			mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1), SMALL);
+			break;
+		case CASE_Case:
+			mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1), SMALL);
+			break;
+		case CASE_CASE:
+			mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : nazov_MESIACA(mesiac - 1), SMALL);
+			break;
+		} // switch(_case)
+	}
+
+	// compose whole string
+
+	if (_global_jazyk == JAZYK_EN) {
+		sprintf(pom, "%s %s", str_mesiac, str_den);
 		if ((typ == LINK_DEN_MESIAC_ROK) || (typ == LINK_DEN_MESIAC_ROK_GEN)) {
 			// pridame aj rok
 			strcat(_global_pom_str, pom);
@@ -624,23 +664,14 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 			sprintf(pom, "%d. ", rok);
 			strcat(_global_pom_str, pom);
 		}
-		sprintf(pom, "%s", nazov_mesiaca(mesiac - 1));
+		sprintf(pom, "%s", str_mesiac);
 		strcat(_global_pom_str, pom);
-		sprintf(pom, " %s", strden);
+		sprintf(pom, " %s", str_den);
 	}// HU only | 1999. augusztus 1. -- http://en.wikipedia.org/wiki/Date_and_time_notation_by_country#Hungary [2010-05-24]
 	else {
 		// default behaviour for SK, CZ; used also for LA, BY
-		switch (_case) {
-		case CASE_case:
-			sprintf(pom, "%s %s", strden, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1));
-			break;
-		case CASE_Case:
-			sprintf(pom, "%s %s", strden, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1));
-			break;
-		case CASE_CASE:
-			sprintf(pom, "%s %s", strden, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : nazov_MESIACA(mesiac - 1));
-			break;
-		} // switch(_case)
+		sprintf(pom, "%s %s", str_den, str_mesiac);
+
 		if ((typ == LINK_DEN_MESIAC_ROK) || (typ == LINK_DEN_MESIAC_ROK_GEN)) {
 			// pridame aj rok
 			strcat(_global_pom_str, pom);

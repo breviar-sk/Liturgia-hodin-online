@@ -86,7 +86,6 @@
     <string name="h12_notify">Itt az idő a déli napközi imaórára!</string>
     <string name="h15_notify">Itt az idő a délután napközi imaórára!</string>
 
-    <string name="tts_uninitialized">Hangkimenet</string>
     <string name="tts_ready">Olvas</string>
     <string name="tts_speaking">Hagyja abba az olvasást</string>
 

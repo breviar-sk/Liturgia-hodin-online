@@ -11,7 +11,7 @@
            android:layout_height="wrap_content"
            android:padding="5dp"
            android:gravity="center"
-           android:src="@drawable/icon" 
+           android:src="@drawable/icon"
            android:contentDescription="@string/app_name"/>
 
 <TextView android:text="@string/menu" style="@android:style/TextAppearance.Large"

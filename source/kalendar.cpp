@@ -25056,7 +25056,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 			pocet = pom_poradie;
 
-			_set_slavenie_typslav_smer(pom_poradie, SLAV_SLAVNOST, 3); // miestne slávnosti Pána, preblahoslavenej Panny Márie a svätých; technicky 3, hoci podľa smerníc 4
+			_set_slavenie_typslav_smer(pom_poradie, SLAV_SLAVNOST, 4); // miestne slávnosti Pána, preblahoslavenej Panny Márie a svätých; podľa smerníc 4
 			_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
 			mystrcpy(_global_svaty(pom_poradie).meno, text_OKT_22_OP[_global_jazyk], MENO_SVIATKU);

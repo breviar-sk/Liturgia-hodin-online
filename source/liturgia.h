@@ -1541,7 +1541,9 @@ char *mystr_bible_com(const char *input);
 char *convert_nonbreaking_spaces(const char *input);
 
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align);
+char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align, short int force_month_numbers);
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
+char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, short int force_month_numbers);
 // podľa toho, ako sa funkcia volá, určím case (použitie veľkých/malých písmen)
 #define vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align)
 #define vytvor_global_link_class_new(den, mesiac, rok, typ, align, html_class, nazov_dna)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ + LINK_SHIFT, align, html_class, nazov_dna)

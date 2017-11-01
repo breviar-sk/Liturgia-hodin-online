@@ -17561,8 +17561,18 @@ void init_global_string_as_html_title(short int den, short int mesiac, short int
 
 	mystrcpy(_global_string, STR_EMPTY, MAX_GLOBAL_STR); // inicializácia
 
+	short int use_numbers_instead_month_names = NIE;
+	char delimiter_dash[SMALL] = STR_EMPTY;
+	char delimiter_bar[SMALL] = STR_EMPTY;
+
+	mystrcpy(delimiter_dash, STR_DASH_EN_WITH_SPACES, SMALL);
+	mystrcpy(delimiter_bar, STR_VERTICAL_BAR_WITH_SPACES, SMALL);
+
 #if defined(IO_ANDROID) || defined (__APPLE__)
 	// no prefix for mobile apps ["app name" as title will be added in special cases]
+	// force using month numbers due to small space on action bar
+	use_numbers_instead_month_names = ANO;
+	mystrcpy(delimiter_dash, STR_VERTICAL_BAR_WITH_SPACES, SMALL);
 #elif defined(OS_Windows_Ruby) || defined(OS_Windows)
 	// for debugging & testing: language + calendar shortcuts, e. g. "SK SVD | " or "CZ OFMCap. | "
 	mystrcpy(_global_string, skratka_jazyka_title[_global_jazyk], MAX_STR);
@@ -17570,11 +17580,11 @@ void init_global_string_as_html_title(short int den, short int mesiac, short int
 		strcat(_global_string, STR_SPACE);
 		strcat(_global_string, nazov_kalendara_propria_only[_global_kalendar]);
 	}
-	strcat(_global_string, STR_VERTICAL_BAR_WITH_SPACES);
+	strcat(_global_string, delimiter_bar);
 #else
 	// for web, add "website name" as title
 	mystrcpy(_global_string, html_title[_global_jazyk], MAX_GLOBAL_STR); // inicializácia
-	strcat(_global_string, STR_VERTICAL_BAR_WITH_SPACES);
+	strcat(_global_string, delimiter_bar);
 #endif
 
 	// add string/date for selected day, year, prayer (fits for most cases)
@@ -17582,15 +17592,13 @@ void init_global_string_as_html_title(short int den, short int mesiac, short int
 		strcat(_global_string, html_button_Dnes[_global_jazyk]);
 	}
 	else if ((query_type == PRM_DATUM) || (query_type == PRM_TXT) || (query_type == PRM_ANALYZA_ROKU)) {
-		strcat(_global_string, _vytvor_string_z_datumu_ext(den, mesiac + 1, rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, NIE));
+		strcat(_global_string, _vytvor_string_z_datumu_ext(den, mesiac + 1, rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, use_numbers_instead_month_names));
 	}
 
 	if (modlitba != MODL_NEURCENA) {
 		// if anything is in _global_string, add dashes + prayer name...
 		if (strlen(_global_string) > 0) {
-			strcat(_global_string, " ");
-			strcat(_global_string, STR_DASH_EN);
-			strcat(_global_string, " ");
+			strcat(_global_string, delimiter_dash);
 			strcat(_global_string, nazov_modlitby(modlitba));
 		}
 		else {

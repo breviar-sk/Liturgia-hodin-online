@@ -24,9 +24,6 @@ import sk.breviar.android.DialogActivity;
 public class Util {
   static final String prefname = "BreviarPrefs";
 
-  static final int ACTIVITY_ABOUT = 0;
-  static final int ACTIVITY_NEWS = 1;
-
   static class AlarmTime {
     AlarmTime(int minute_, int hour_, boolean enabled_) {
       minute = minute_;
@@ -146,18 +143,12 @@ public class Util {
     new EventInfo(R.id.kompl_check, "alarm-kompl", "mk",    R.string.kompl, R.string.kompl_notify, 22, 00)
   };
 
-  static void startDialogActivity(Activity act, int title_id, String content) {
-    act.startActivity(new Intent(act, DialogActivity.class)
-                              .putExtra("title", title_id)
-                              .putExtra("content", content));
-  }
-
   static void showChangelog(Activity act) {
-    startDialogActivity(act, R.string.news_title, getActivityText(act, ACTIVITY_NEWS));
+    startDialogActivity(act, R.string.news_title, R.string.news_url);
   }
 
   static void showAbout(Activity act) {
-    startDialogActivity(act, R.string.about_title, getActivityText(act, ACTIVITY_ABOUT));
+    startDialogActivity(act, R.string.about_title, R.string.about_url);
   }
 
   static public String streamToString(java.io.InputStream stream) {
@@ -175,36 +166,31 @@ public class Util {
     return output.toString();
   }
 
-  static public String getActivityText(Context ctx, int id) {
+  static void startDialogActivity(Activity act, int title_id, int url_id) {
     try {
-    	String activity_url;
+      String activity_url = act.getString(url_id);
 
-    	if (id == ACTIVITY_NEWS) {/* Changelog */
-    		activity_url = ctx.getString(R.string.news_url);
-    	}
-    	else {/* ACTIVITY_ABOUT = About */
-    		activity_url = ctx.getString(R.string.about_url);
-    	}
+      String content =
+        act.getString(R.string.activity_text_head) +
+        streamToString(act.getAssets().open(activity_url)) +
+        act.getString(R.string.activity_text_tail);
 
-      String output =
-          ctx.getString(R.string.activity_text_head) +
-          streamToString(ctx.getAssets().open(activity_url)) +
-          ctx.getString(R.string.activity_text_tail);
+      content = content
+          .replaceAll("<!--\\{VERSION\\}-->", act.getString(R.string.version))
+          .replaceAll("<!--\\{PROJECT_URL\\}-->", act.getString(R.string.about_PROJECT_URL))
+          .replaceAll("<!--\\{E_MAIL\\}-->", act.getString(R.string.about_E_MAIL))
+          .replaceAll("<!--\\{APP_NAME\\}-->", act.getString(R.string.about_APP_NAME))
+          .replaceAll("<!--\\{SPECIAL_CREDITS\\}-->", act.getString(R.string.about_SPECIAL_CREDITS))
+          .replaceAll("<!--\\{PROJECT_SOURCE_STORAGE\\}-->", act.getString(R.string.about_PROJECT_SOURCE_STORAGE))
+          .replaceAll("<!--\\{PROJECT_SOURCE_URL\\}-->", act.getString(R.string.about_PROJECT_SOURCE_URL))
+          .replaceAll("<!--\\{PLATFORM_ANDROID\\}-->", act.getString(R.string.about_PLATFORM_ANDROID))
+          .replaceAll("<!--\\{PLATFORM_IOS\\}-->", act.getString(R.string.about_PLATFORM_IOS));
 
-      return output
-          .replaceAll("<!--\\{VERSION\\}-->", ctx.getString(R.string.version))
-          .replaceAll("<!--\\{PROJECT_URL\\}-->", ctx.getString(R.string.about_PROJECT_URL))
-          .replaceAll("<!--\\{E_MAIL\\}-->", ctx.getString(R.string.about_E_MAIL))
-          .replaceAll("<!--\\{APP_NAME\\}-->", ctx.getString(R.string.about_APP_NAME))
-          .replaceAll("<!--\\{SPECIAL_CREDITS\\}-->", ctx.getString(R.string.about_SPECIAL_CREDITS))
-          .replaceAll("<!--\\{PROJECT_SOURCE_STORAGE\\}-->", ctx.getString(R.string.about_PROJECT_SOURCE_STORAGE))
-          .replaceAll("<!--\\{PROJECT_SOURCE_URL\\}-->", ctx.getString(R.string.about_PROJECT_SOURCE_URL))
-          .replaceAll("<!--\\{PLATFORM_ANDROID\\}-->", ctx.getString(R.string.about_PLATFORM_ANDROID))
-          .replaceAll("<!--\\{PLATFORM_IOS\\}-->", ctx.getString(R.string.about_PLATFORM_IOS));
+      act.startActivity(new Intent(act, DialogActivity.class)
+                                .putExtra("title", title_id)
+                                .putExtra("content", content));
     } catch (java.io.IOException e) {
       Log.v("breviar", "Can not open file: " + e.getMessage());
-
-      return "";
     }
   }
 }

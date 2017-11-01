@@ -86,7 +86,6 @@
     <string name="h12_notify">Je čas na modlitbu napoludnie!</string>
     <string name="h15_notify">Je čas na modlitbu popoludní!</string>
 
-    <string name="tts_uninitialized">Hlasový výstup...</string>
     <string name="tts_ready">Prečítaj</string>
     <string name="tts_speaking">Zastav prečítavanie</string>
 

@@ -123,6 +123,7 @@
 #pragma region string constants
 
 #define STR_DASH_EN "–"
+#define STR_DASH_EN_WITH_SPACES " – "
 #define STR_DASH_EM "—"
 #define STR_SPACE " "
 #define STR_VERTICAL_BAR "|"

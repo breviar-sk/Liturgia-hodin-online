@@ -84,24 +84,50 @@ public class Breviar extends AppCompatActivity
 
     ScaleGestureDetector gesture_detector;
 
-    TextToSpeech tts;
+    TextToSpeech tts = null;
     enum TTSState {
-      UNINITIALIZED,
       READY,
       SPEAKING
     }
-    TTSState tts_state = TTSState.UNINITIALIZED;
+    TTSState tts_state = TTSState.READY;
     String tts_to_speak = "";
 
     @Override
     public void onInit(int status) {
-      if (status == TextToSpeech.SUCCESS) {
-        tts_state = TTSState.READY;
+      if (status == TextToSpeech.SUCCESS && tts_state == TTSState.SPEAKING && tts != null) {
         tts.setOnUtteranceCompletedListener(this);
-        setTTSLanguage();
-        updateTTSState();
+        int ret = tts.setLanguage(BreviarApp.appLanguageToLocale(language));
+        Log.v("breviar", "setTTSLanguage: " + ret);
+
+        UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
+        opts.setBlindFriendly(true);
+
+        String url = opts.getBuilder().encodedAuthority("127.0.0.1:" + S.port_nonpersistent)
+                         .build().toString();
+        Log.v("breviar", "Loading nonpersistent url " + url);
+
+        headless.LoadAndExecute(url,
+            "var x = document.querySelectorAll(\"h2,form\"); " +
+            "for (var i = 0; i < x.length; ++i) { " +
+            "  x[i].style.display = \"none\"; " +
+            "}; " +
+            "bridge.callback(document.getElementById(\"contentRoot\").innerText);",
+            new HeadlessWebview.Callback() {
+              public void run(String result) {
+                Log.v("breviar", "Got callback result");
+                if (tts_state == TTSState.SPEAKING) {
+                  tts_to_speak = result;
+                  speakChunk();
+                }
+              }
+            });
       } else {
         Log.v("breviar", "TTS engine failed to initialize");
+        if (tts != null) {
+          tts.shutdown();
+        }
+        tts = null;
+        tts_state = TTSState.READY;
       }
     }
 
@@ -142,7 +168,6 @@ public class Breviar extends AppCompatActivity
 
     void resetLanguage() {
       S.setLanguage(language);
-      setTTSLanguage();
       clearHistory = true;
 
       // Povodne sme zahadzovali cele nastavenia:
@@ -221,9 +246,6 @@ public class Breviar extends AppCompatActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
       Log.v("breviar", "onCreate");
-
-      tts_state = TTSState.UNINITIALIZED;
-      tts = new TextToSpeech(this, this);
 
       appEventId = BreviarApp.getEventId();
 
@@ -342,6 +364,13 @@ public class Breviar extends AppCompatActivity
           if (parent.clearHistory) view.clearHistory();
           parent.clearHistory = false;
           super.onPageFinished(view, url);
+
+          String title = wv.getTitle();
+          // Hack: CGI module does not set title for some pages. Revert to app name then.
+          if (title == null || title.contains("127.0.0.1")) {
+            title = getString(R.string.app_name);
+          }
+          getSupportActionBar().setTitle(title);
 
           // Ugly hack. But we have no reliable notification when is webview scrollable.
           if (parent.scroll_to < 0) return;
@@ -586,7 +615,6 @@ public class Breviar extends AppCompatActivity
     @Override
     public void onDestroy() {
       Log.v("breviar", "onDestroy");
-      tts.shutdown();
       stopServer();
       super.onDestroy();
     }
@@ -639,8 +667,15 @@ public class Breviar extends AppCompatActivity
 
     void stopSpeaking() {
       tts_to_speak = "";
-      tts_state = TTSState.READY;
       tts.stop();
+      tts.shutdown();
+      tts = null;
+      tts_state = TTSState.READY;
+      runOnUiThread(new Runnable() {
+        public void run() {
+          updateTTSState();
+        }
+      });
     }
 
     void speakChunk() {
@@ -649,6 +684,8 @@ public class Breviar extends AppCompatActivity
       }
       if (tts_to_speak.isEmpty()) {
         Log.v("breviar", "speak chunk: finished");
+        tts.shutdown();
+        tts = null;
         tts_state = TTSState.READY;
         runOnUiThread(new Runnable() {
           public void run() {
@@ -683,46 +720,14 @@ public class Breviar extends AppCompatActivity
 
     void startSpeaking() {
       tts_state = TTSState.SPEAKING;
-      UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-      opts.setBlindFriendly(true);
-
-      String url = opts.getBuilder().encodedAuthority("127.0.0.1:" + S.port_nonpersistent)
-                       .build().toString();
-      Log.v("breviar", "Loading nonpersistent url " + url);
-
-      headless.LoadAndExecute(url,
-          "var x = document.querySelectorAll(\"h2,form\"); " +
-          "for (var i = 0; i < x.length; ++i) { " +
-          "  x[i].style.display = \"none\"; " +
-          "}; " +
-          "bridge.callback(document.getElementById(\"contentRoot\").innerText);",
-          new HeadlessWebview.Callback() {
-            public void run(String result) {
-              Log.v("breviar", "Got callback result");
-              if (tts_state == TTSState.SPEAKING) {
-                tts_to_speak = result;
-                speakChunk();
-              }
-            }
-          });
-    }
-
-    void setTTSLanguage() {
-      if (tts_state == TTSState.UNINITIALIZED) return;
-      if (tts_state == TTSState.SPEAKING) {
-        stopSpeaking();
-      }
-      int ret = tts.setLanguage(BreviarApp.appLanguageToLocale(language));
-      Log.v("breviar", "setTTSLanguage: " + ret);
+      tts = new TextToSpeech(this, this);
+      updateTTSState();
     }
 
     void updateTTSState() {
       Log.v("breviar", "updating speak toggle menu label");
       MenuItem item = navigationView.getMenu().findItem(R.id.speak_toggle);
       switch (tts_state) {
-        case UNINITIALIZED:
-          item.setTitle(R.string.tts_uninitialized);
-          break;
         case READY:
           item.setTitle(R.string.tts_ready);
           break;
