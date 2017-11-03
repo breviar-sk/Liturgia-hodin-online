@@ -617,35 +617,48 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 
 	// MONTH: str_mesiac
 
-	if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_BY)) {
-		// force month in genitive
-		if (typ == LINK_DEN_MESIAC) {
-			typ = LINK_DEN_MESIAC_GEN;
+	if (force_month_numbers == ANO) {
+		// use numbers as months' names
+		if (_global_jazyk == JAZYK_LA) {
+			convertToRoman(mesiac, str_mesiac);
+			strcat(str_mesiac, ".");
 		}
-		else if (typ == LINK_DEN_MESIAC_ROK) {
-			typ = LINK_DEN_MESIAC_ROK_GEN;
+		else {
+			sprintf(str_mesiac, "%d.", mesiac);
 		}
-	}// LA, BY only
-
-	if (_global_jazyk == JAZYK_EN) {
-		mystrcpy(str_mesiac, nazov_Mesiaca(mesiac - 1), SMALL);
-	}
-	else if (_global_jazyk == JAZYK_HU) {
-		mystrcpy(str_mesiac, nazov_mesiaca(mesiac - 1), SMALL);
 	}
 	else {
-		// default behaviour for SK, CZ; used also for LA, BY
-		switch (_case) {
-		case CASE_case:
-			mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1), SMALL);
-			break;
-		case CASE_Case:
-			mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1), SMALL);
-			break;
-		case CASE_CASE:
-			mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : nazov_MESIACA(mesiac - 1), SMALL);
-			break;
-		} // switch(_case)
+		// use string as months' names
+		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_BY)) {
+			// force month in genitive
+			if (typ == LINK_DEN_MESIAC) {
+				typ = LINK_DEN_MESIAC_GEN;
+			}
+			else if (typ == LINK_DEN_MESIAC_ROK) {
+				typ = LINK_DEN_MESIAC_ROK_GEN;
+			}
+		}// LA, BY only
+
+		if (_global_jazyk == JAZYK_EN) {
+			mystrcpy(str_mesiac, nazov_Mesiaca(mesiac - 1), SMALL);
+		}
+		else if (_global_jazyk == JAZYK_HU) {
+			mystrcpy(str_mesiac, nazov_mesiaca(mesiac - 1), SMALL);
+		}
+		else {
+			// default behaviour for SK, CZ; used also for LA, BY
+			switch (_case) {
+			case CASE_case:
+				mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_mesiaca_gen(mesiac - 1) : nazov_mesiaca(mesiac - 1), SMALL);
+				break;
+			case CASE_Case:
+				mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1), SMALL);
+				break;
+			case CASE_CASE:
+				mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : nazov_MESIACA(mesiac - 1), SMALL);
+				break;
+			} // switch(_case)
+		}
 	}
 
 	// compose whole string
