@@ -91,12 +91,15 @@
     <string name="tts_ready">Speak prayers</string>
     <string name="tts_speaking">Stop speaking</string>
 
+    <string name="channel_name">Breviary</string>
+    <string name="channel_description">Notifications about prayer times</string>
+
     <string name="menu_about">About...</string>
     <string name="about_title">Applicaton info</string>
     <string name="about_url">include/about.htm</string>
 
     <string name="news_title">Changelog</string>
-    <string name="news_url">include/android-version.htm</string>
+    <string name="news_url">include/version-android.htm</string>
 
     <string name="about_PROJECT_URL">breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>

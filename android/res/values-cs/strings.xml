@@ -89,12 +89,16 @@
     <string name="tts_ready">Pročti</string>
     <string name="tts_speaking">Zastav předčítání</string>
 
+    <string name="channel_name">Breviář</string>
+    <!-- TODO: translate //-->
+    <string name="channel_description">Notifications about prayer times</string>
+
     <string name="menu_about">O...</string>
     <string name="about_title">O aplikaci</string>
     <string name="about_url">include_cz/about.htm</string>
 
     <string name="news_title">Změny ve verzích</string>
-    <string name="news_url">include_cz/android-version.htm</string>
+    <string name="news_url">include_cz/version-android.htm</string>
 
     <string name="about_PROJECT_URL">breviar.cz</string>
     <string name="about_E_MAIL">android@breviar.sk</string>

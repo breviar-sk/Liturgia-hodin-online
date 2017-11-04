@@ -106,11 +106,18 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define CSS_kbd_sk				3
 
 // static texts
-#define POCET_STATIC_TEXTOV               2
+#define POCET_STATIC_TEXTOV               3
 
 #define STATIC_TEXT_UNDEF                 0
 #define STATIC_TEXT_MARIANSKE_ANTIFONY    1
 #define STATIC_TEXT_ORDINARIUM            2
+#define STATIC_TEXT_INFO                  3
+
+// info files (used for mobile applications: about, version history...)
+#define POCET_INFO_TEXTOV       1
+
+#define INFO_ABOUT              0
+#define INFO_VERSION_HISTORY    1
 
 // number of fonts
 #define	POCET_FONTOV    10
@@ -398,7 +405,18 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define ORDINARIUM_KOMPLETORIUM     "ord_komplet.htm"
 #define ORDINARIUM_EMPTY            STR_EMPTY // MODL_VSETKY + MODL_DETAILY
 
-extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
+extern const char *FILE_ORDINARIUM[POCET_MODLITIEB + 1];
+
+extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
+
+#define FILE_INFO_ABOUT            "about.htm"
+#if defined(IO_ANDROID)
+#define FILE_VERSION_HISTORY       "version-android.htm"
+#elif defined (__APPLE__)
+#define FILE_VERSION_HISTORY       "version-ios.htm"
+#else
+#define FILE_VERSION_HISTORY       "version-web.htm"
+#endif
 
 #define SHOW_TEMPLAT_MODLITBA      1 // use TEMPLAT[]
 #define SHOW_TEMPLAT_STATIC_TEXT   2 // use ORDINARIUM[]

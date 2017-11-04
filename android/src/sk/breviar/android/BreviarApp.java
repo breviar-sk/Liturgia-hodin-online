@@ -126,6 +126,17 @@ public class BreviarApp extends Application {
     }
   }
 
+  static public Context getLocaleForCurrentLanguage(Context ctx) {
+    Configuration cfg = new Configuration();
+    cfg.locale = currentLocale(ctx);
+    if (Build.VERSION.SDK_INT < 17) {
+      ctx.getResources().updateConfiguration(cfg, null);
+      return ctx;
+    } else {
+      return ctx.createConfigurationContext(cfg);
+    }
+  }
+
   // This is needed for api levels < 24.
   static public void initLocale(Context ctx) {
     if (Build.VERSION.SDK_INT < 17) {

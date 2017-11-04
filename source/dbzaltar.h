@@ -1351,6 +1351,8 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 #define ANCHOR_ORDINARIUM "ORDINARIUM"
 
+#define ANCHOR_INFO "INFO"
+
 #define ANCHOR_CSSR_TITUL "TITUL"
 
 extern const char *text_POSVIACKA_KATEDRALNEHO_CHRAMU[POCET_JAZYKOV + 1];

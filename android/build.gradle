@@ -8,6 +8,15 @@ buildscript {
   }
 }
 
+allprojects {
+  repositories {
+    jcenter()
+      maven {
+        url "https://maven.google.com"
+      }
+  }
+}
+
 apply plugin: 'com.android.application'
 
 // Create a variable called keystorePropertiesFile, and initialize it to your
@@ -21,8 +30,8 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.3"
+  compileSdkVersion 26
+  buildToolsVersion "27.0.0"
 
   defaultConfig {
     targetSdkVersion 26
@@ -69,7 +78,8 @@ android {
 }
 
 dependencies {
-  compile "com.android.support:support-v4:25.3.1"
-  compile 'com.android.support:design:25.3.1'
-  compile 'com.android.support:appcompat-v7:25.3.1'
+  compile "com.android.support:support-v4:27.0.0"
+  compile "com.android.support:support-core-utils:27.0.0"
+  compile 'com.android.support:design:27.0.0'
+  compile 'com.android.support:appcompat-v7:27.0.0'
 }

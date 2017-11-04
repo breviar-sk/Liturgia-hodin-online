@@ -87,14 +87,17 @@
     <string name="h15_notify">Je čas na modlitbu popoludní!</string>
 
     <string name="tts_ready">Prečítaj</string>
-    <string name="tts_speaking">Zastav prečítavanie</string>
+    <string name="tts_speaking">Zastav čítanie</string>
+
+    <string name="channel_name">Breviár</string>
+    <string name="channel_description">Upozornenia na čas modlitby</string>
 
     <string name="menu_about">Info</string>
     <string name="about_title">O aplikácii</string>
     <string name="about_url">include/about.htm</string>
 
     <string name="news_title">Zmeny vo verziách</string>
-    <string name="news_url">include/android-version.htm</string>
+    <string name="news_url">include/version-android.htm</string>
 
     <string name="about_PROJECT_URL">breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>

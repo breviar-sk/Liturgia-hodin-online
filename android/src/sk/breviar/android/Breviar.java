@@ -293,6 +293,7 @@ public class Breviar extends AppCompatActivity
       wv.clearCache(true);
       wv.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
       wv.getSettings().setJavaScriptEnabled(true);
+      wv.getSettings().setBuiltInZoomControls(true);
       wv.addJavascriptInterface(new Bridge(this), "bridge");
       // TODO(riso): replace constants by symbolic values after sdk upgrade
       if (Build.VERSION.SDK_INT < 19) {  // pre-KitKat

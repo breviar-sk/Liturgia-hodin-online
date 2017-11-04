@@ -28,12 +28,15 @@ TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM, TEMPLAT_STATIC_TEXT,
 TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM,
 TEMPLAT_VESPERY, TEMPLAT_KOMPLETORIUM, TEMPLAT_EMPTY, TEMPLAT_EMPTY };
 
-const char *ORDINARIUM[POCET_MODLITIEB + 1] =
+const char *FILE_ORDINARIUM[POCET_MODLITIEB + 1] =
 { ORDINARIUM_INVITATORIUM, ORDINARIUM_POSV_CITANIE, ORDINARIUM_RANNE_CHVALY,
 ORDINARIUM_CEZ_DEN, ORDINARIUM_CEZ_DEN, ORDINARIUM_CEZ_DEN,
 ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM, ORDINARIUM_EMPTY,
 ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM,
 ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM, ORDINARIUM_EMPTY, ORDINARIUM_EMPTY };
+
+const char *FILE_INFO[POCET_INFO_TEXTOV + 1] =
+{ FILE_INFO_ABOUT, FILE_VERSION_HISTORY };
 
 // 2008-04-09: doplnené pre batch generovanie modlitieb
 const char char_modlitby[POCET_MODLITIEB + 1] =
@@ -1215,7 +1218,21 @@ const char *nazov_charset[POCET_CHARSET + 1] =
 { "utf-8", "windows-1250" };
 
 const char *skratka_static_text[POCET_STATIC_TEXTOV + 1] =
-{ "", "ma", "ord" };
+{ "", "ma", "ord", "i" };
+
+const char *html_title_static_text[POCET_STATIC_TEXTOV + 1][POCET_JAZYKOV + 1] =
+{
+	{ "", "", "", "", "", "", "", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Mariánske antifóny", "Mariánské zpěvy", "Mary antiphones", "B. M. V. antiphonae", "", "Mariánské antifóny", "Szűz Mária záró-antifónái", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Ordinárium", "Uspořádání", "Ordinary", "Ordinarium", "", "Ordinárium", "Általános rész", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Info", "Info", "Info", "Info", "", "Info", "Info", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+};
+
+const char *html_subtitle_static_text_info[POCET_INFO_TEXTOV + 1][POCET_JAZYKOV + 1] =
+{
+	{ "O aplikácii", "O aplikaci", "", "", "", "O aplikaci", "Névjegy...", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Zmeny vo verziách", "Změny ve verzích", "Changelog", "Changelog", "", "Změny ve verzích", "Újdonságok", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+};
 
 const char *nazov_fontu[POCET_FONTOV + 1] =
 { "", "podľa CSS", "podľa výberu", "Cambria", "Candara", "Georgia", "Tahoma", "Verdana", "Helvetica", "serif", "sans-serif" };

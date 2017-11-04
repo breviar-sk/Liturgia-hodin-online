@@ -175,16 +175,17 @@ public class Util {
         streamToString(act.getAssets().open(activity_url)) +
         act.getString(R.string.activity_text_tail);
 
+      // note [ and ] are special characters indicating regex character group so we have to escape them
       content = content
-          .replaceAll("<!--\\{VERSION\\}-->", act.getString(R.string.version))
-          .replaceAll("<!--\\{PROJECT_URL\\}-->", act.getString(R.string.about_PROJECT_URL))
-          .replaceAll("<!--\\{E_MAIL\\}-->", act.getString(R.string.about_E_MAIL))
-          .replaceAll("<!--\\{APP_NAME\\}-->", act.getString(R.string.about_APP_NAME))
-          .replaceAll("<!--\\{SPECIAL_CREDITS\\}-->", act.getString(R.string.about_SPECIAL_CREDITS))
-          .replaceAll("<!--\\{PROJECT_SOURCE_STORAGE\\}-->", act.getString(R.string.about_PROJECT_SOURCE_STORAGE))
-          .replaceAll("<!--\\{PROJECT_SOURCE_URL\\}-->", act.getString(R.string.about_PROJECT_SOURCE_URL))
-          .replaceAll("<!--\\{PLATFORM_ANDROID\\}-->", act.getString(R.string.about_PLATFORM_ANDROID))
-          .replaceAll("<!--\\{PLATFORM_IOS\\}-->", act.getString(R.string.about_PLATFORM_IOS));
+          .replaceAll("\\[VERSION\\]", act.getString(R.string.version))
+          .replaceAll("\\[PROJECT-URL\\]", act.getString(R.string.about_PROJECT_URL))
+          .replaceAll("\\[E-MAIL\\]", act.getString(R.string.about_E_MAIL))
+          .replaceAll("\\[APP-NAME\\]", act.getString(R.string.about_APP_NAME))
+          .replaceAll("\\[SPECIAL-CREDITS\\]", act.getString(R.string.about_SPECIAL_CREDITS))
+          .replaceAll("\\[PROJECT-SOURCE-STORAGE\\]", act.getString(R.string.about_PROJECT_SOURCE_STORAGE))
+          .replaceAll("\\[PROJECT-SOURCE-URL\\]", act.getString(R.string.about_PROJECT_SOURCE_URL))
+          .replaceAll("\\[PLATFORM-ANDROID\\]", act.getString(R.string.about_PLATFORM_ANDROID))
+          .replaceAll("\\[PLATFORM-IOS\\]", act.getString(R.string.about_PLATFORM_IOS));
 
       act.startActivity(new Intent(act, DialogActivity.class)
                                 .putExtra("title", title_id)

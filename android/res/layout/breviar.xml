@@ -23,6 +23,7 @@
 
     <WebView android:id="@+id/wv"
              android:layout_width="match_parent" android:layout_height="match_parent"
+             android:scrollbarThumbVertical="@drawable/scrollbar"
              android:paddingLeft="4dip" android_paddingRight="4dip" android:layout_weight="1"/>
   </LinearLayout>
 

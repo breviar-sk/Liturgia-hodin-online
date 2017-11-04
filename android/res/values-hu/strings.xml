@@ -89,12 +89,16 @@
     <string name="tts_ready">Olvas</string>
     <string name="tts_speaking">Hagyja abba az olvasást</string>
 
+    <!-- TODO: translate //-->
+    <string name="channel_name">Breviary</string>
+    <string name="channel_description">Notifications about prayer times</string>
+
     <string name="menu_about">Névjegy...</string>
     <string name="about_title">Névjegy</string>
     <string name="about_url">include_hu/about.htm</string>
 
     <string name="news_title">Újdonságok</string>
-    <string name="news_url">include_hu/android-version.htm</string>
+    <string name="news_url">include_hu/version-android.htm</string>
 
     <string name="about_PROJECT_URL">zsolozsma.katolikus.hu</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
