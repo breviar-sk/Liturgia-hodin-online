@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/lang_select" android:title="@string/lang_select" />
+    <item android:id="@+id/lang_select"
+          android:title="@string/lang_select"
+          android:icon="@drawable/ic_settings_white_24dp"
+    />
 
-    <item android:id="@+id/fullscreen_toggle" android:title="@string/fullscreenOn" />
+    <item android:id="@+id/fullscreen_toggle"
+          android:title="@string/fullscreenOn"
+          android:icon="@drawable/ic_settings_overscan_white_24dp"
+          app:actionLayout="@layout/widget_switch"
+    />
 
-    <item android:id="@+id/nightmode_toggle" android:title="@string/nightmodeOn" />
+    <item android:id="@+id/nightmode_toggle"
+          android:title="@string/nightmodeOn"
+          android:icon="@drawable/ic_brightness_3_white_24dp"
+          app:actionLayout="@layout/widget_switch"
+    />
 
-    <item android:id="@+id/only_non_bold_font_toggle" android:title="@string/onlyNonBoldFontOn" />
+    <item android:id="@+id/only_non_bold_font_toggle"
+          android:title="@string/onlyNonBoldFontOff"
+          android:icon="@drawable/ic_format_bold_white_24dp"
+          app:actionLayout="@layout/widget_switch"
+    />
 
-    <item android:id="@+id/menu_about" android:title="@string/menu_about" />
+    <item android:id="@+id/menu_alarms"
+          android:title="@string/alarms"
+          android:icon="@drawable/ic_alarm_white_24dp"
+    />
 
-    <item android:id="@+id/speak_toggle" android:title="@string/tts_ready" />
+    <item android:id="@+id/menu_about"
+          android:title="@string/about_title"
+          android:icon="@drawable/ic_info_white_24dp"
+    />
+
+    <item android:id="@+id/menu_news"
+          android:title="@string/news_title"
+          android:icon="@drawable/ic_change_history_white_24dp"
+    />
+
+    <item android:id="@+id/speak_toggle"
+          android:title="@string/tts_ready"
+          android:icon="@drawable/ic_action_volume_on"
+    />
 
 </menu>

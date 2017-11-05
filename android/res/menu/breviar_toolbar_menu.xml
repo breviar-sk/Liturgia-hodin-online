@@ -6,7 +6,19 @@
   <item android:id="@+id/todayBtn"
         android:title="@string/today"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_action_event"
+        android:icon="@drawable/ic_home_white_24dp"
+  />
+
+  <item android:id="@+id/speakBtn"
+        android:title="@string/tts_ready"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_volume_on"
+  />
+
+  <item android:id="@+id/nightmodeBtn"
+        android:title="@string/nightmodeOn"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_brightness_3_white_24dp"
   />
 
 </menu>

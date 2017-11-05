@@ -132,15 +132,6 @@
     <CheckBox android:id="@+id/emphasize_local_calendar_check" android:text="@string/emphasize_local_calendar"
         android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
 
-    <Button android:id="@+id/alarms_btn" android:text="@string/alarms"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
-
-    <Button android:id="@+id/about_btn" android:text="@string/about_title"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
-
-    <Button android:id="@+id/news_btn" android:text="@string/news_title"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
-
 </LinearLayout>
 
 </ScrollView>

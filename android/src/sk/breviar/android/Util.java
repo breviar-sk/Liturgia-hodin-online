@@ -18,8 +18,6 @@ import android.widget.CheckBox;
 import java.util.GregorianCalendar;
 
 import sk.breviar.android.AlarmReceiver;
-import sk.breviar.android.CompatibilityHelper8;
-import sk.breviar.android.DialogActivity;
 
 public class Util {
   static final String prefname = "BreviarPrefs";
@@ -142,56 +140,4 @@ public class Util {
     new EventInfo(R.id.vesp_check,  "alarm-vesp",  "mv",    R.string.vesp,  R.string.vesp_notify,  18, 00),
     new EventInfo(R.id.kompl_check, "alarm-kompl", "mk",    R.string.kompl, R.string.kompl_notify, 22, 00)
   };
-
-  static void showChangelog(Activity act) {
-    startDialogActivity(act, R.string.news_title, R.string.news_url);
-  }
-
-  static void showAbout(Activity act) {
-    startDialogActivity(act, R.string.about_title, R.string.about_url);
-  }
-
-  static public String streamToString(java.io.InputStream stream) {
-    StringBuilder output = new StringBuilder();
-    java.io.InputStreamReader reader = new java.io.InputStreamReader(stream);
-    char[] buf = new char[4096];
-    int len;
-    try {
-      while ((len = reader.read(buf, 0, 4096)) != -1) {
-        output.append(buf, 0, len);
-      }
-    } catch (java.io.IOException e) {
-      Log.v("breviar", "Can not read file: " + e.getMessage());
-    }
-    return output.toString();
-  }
-
-  static void startDialogActivity(Activity act, int title_id, int url_id) {
-    try {
-      String activity_url = act.getString(url_id);
-
-      String content =
-        act.getString(R.string.activity_text_head) +
-        streamToString(act.getAssets().open(activity_url)) +
-        act.getString(R.string.activity_text_tail);
-
-      // note [ and ] are special characters indicating regex character group so we have to escape them
-      content = content
-          .replaceAll("\\[VERSION\\]", act.getString(R.string.version))
-          .replaceAll("\\[PROJECT-URL\\]", act.getString(R.string.about_PROJECT_URL))
-          .replaceAll("\\[E-MAIL\\]", act.getString(R.string.about_E_MAIL))
-          .replaceAll("\\[APP-NAME\\]", act.getString(R.string.about_APP_NAME))
-          .replaceAll("\\[SPECIAL-CREDITS\\]", act.getString(R.string.about_SPECIAL_CREDITS))
-          .replaceAll("\\[PROJECT-SOURCE-STORAGE\\]", act.getString(R.string.about_PROJECT_SOURCE_STORAGE))
-          .replaceAll("\\[PROJECT-SOURCE-URL\\]", act.getString(R.string.about_PROJECT_SOURCE_URL))
-          .replaceAll("\\[PLATFORM-ANDROID\\]", act.getString(R.string.about_PLATFORM_ANDROID))
-          .replaceAll("\\[PLATFORM-IOS\\]", act.getString(R.string.about_PLATFORM_IOS));
-
-      act.startActivity(new Intent(act, DialogActivity.class)
-                                .putExtra("title", title_id)
-                                .putExtra("content", content));
-    } catch (java.io.IOException e) {
-      Log.v("breviar", "Can not open file: " + e.getMessage());
-    }
-  }
 }

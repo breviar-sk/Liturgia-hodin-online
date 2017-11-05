@@ -57,12 +57,10 @@
     <string name="alarmOff">nepřipomínat</string>
 
     <string name="fullscreenOn">Celá obrazovka</string>
-    <string name="fullscreenOff">Zobraz navigaci</string>
 
     <string name="nightmodeOn">Noční režim</string>
     <string name="nightmodeOff">Denní režim</string>
 
-    <string name="onlyNonBoldFontOn">Obyčejné písmo</string>
     <string name="onlyNonBoldFontOff">I tučné písmo</string>
 
     <string name="navigation_drawer_open">Otevři menu</string>
@@ -93,12 +91,8 @@
     <!-- TODO: translate //-->
     <string name="channel_description">Notifications about prayer times</string>
 
-    <string name="menu_about">O...</string>
     <string name="about_title">O aplikaci</string>
-    <string name="about_url">include_cz/about.htm</string>
-
     <string name="news_title">Změny ve verzích</string>
-    <string name="news_url">include_cz/version-android.htm</string>
 
     <string name="about_PROJECT_URL">breviar.cz</string>
     <string name="about_E_MAIL">android@breviar.sk</string>

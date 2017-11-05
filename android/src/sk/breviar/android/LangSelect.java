@@ -374,24 +374,5 @@ public class LangSelect extends AppCompatActivity {
       });
 
       emphasize_local_calendar_check.setChecked(url_options.isEmphasizeLocalCalendar());
-
-      final LangSelect parent = this;
-      ((Button)findViewById(R.id.about_btn)).setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-          Util.showAbout(parent);
-        }
-      });
-
-      ((Button)findViewById(R.id.news_btn)).setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-          Util.showChangelog(parent);
-        }
-      });
-
-      ((Button)findViewById(R.id.alarms_btn)).setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-          startActivity(new Intent("sk.breviar.android.ALARMS"));
-        }
-      });
     }
 }

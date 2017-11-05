@@ -59,12 +59,10 @@
     <string name="alarmOff">disabled</string>
 
     <string name="fullscreenOn">Fullscreen</string>
-    <string name="fullscreenOff">No fullscreen</string>
 
     <string name="nightmodeOn">Night mode</string>
     <string name="nightmodeOff">Day mode</string>
 
-    <string name="onlyNonBoldFontOn">No bold font</string>
     <string name="onlyNonBoldFontOff">Allow bold font</string>
 
     <string name="navigation_drawer_open">Open menu</string>
@@ -94,12 +92,8 @@
     <string name="channel_name">Breviary</string>
     <string name="channel_description">Notifications about prayer times</string>
 
-    <string name="menu_about">About...</string>
     <string name="about_title">Applicaton info</string>
-    <string name="about_url">include/about.htm</string>
-
     <string name="news_title">Changelog</string>
-    <string name="news_url">include/version-android.htm</string>
 
     <string name="about_PROJECT_URL">breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>

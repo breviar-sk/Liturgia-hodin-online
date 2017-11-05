@@ -57,12 +57,10 @@
     <string name="alarmOff">nepripomínať</string>
 
     <string name="fullscreenOn">Celá obrazovka</string>
-    <string name="fullscreenOff">Zobraz navigáciu</string>
 
     <string name="nightmodeOn">Nočný režim</string>
     <string name="nightmodeOff">Denný režim</string>
 
-    <string name="onlyNonBoldFontOn">Obyčajné písmo</string>
     <string name="onlyNonBoldFontOff">Aj tučné písmo</string>
 
     <string name="navigation_drawer_open">Otvor menu</string>
@@ -92,12 +90,8 @@
     <string name="channel_name">Breviár</string>
     <string name="channel_description">Upozornenia na čas modlitby</string>
 
-    <string name="menu_about">Info</string>
-    <string name="about_title">O aplikácii</string>
-    <string name="about_url">include/about.htm</string>
-
+    <string name="about_title">Info</string>
     <string name="news_title">Zmeny vo verziách</string>
-    <string name="news_url">include/version-android.htm</string>
 
     <string name="about_PROJECT_URL">breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
