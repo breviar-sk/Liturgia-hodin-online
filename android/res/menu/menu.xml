@@ -26,6 +26,11 @@
           app:actionLayout="@layout/widget_switch"
     />
 
+    <item android:id="@+id/speak_toggle"
+          android:title="@string/tts_ready"
+          android:icon="@drawable/ic_action_volume_on"
+    />
+
     <item android:id="@+id/menu_alarms"
           android:title="@string/alarms"
           android:icon="@drawable/ic_alarm_white_24dp"
@@ -39,11 +44,6 @@
     <item android:id="@+id/menu_news"
           android:title="@string/news_title"
           android:icon="@drawable/ic_change_history_white_24dp"
-    />
-
-    <item android:id="@+id/speak_toggle"
-          android:title="@string/tts_ready"
-          android:icon="@drawable/ic_action_volume_on"
     />
 
 </menu>

@@ -1,27 +1,33 @@
 #!/bin/bash
 
+if [ "`uname`" == "FreeBSD" ]; then
+  SED=gsed
+else
+  SED=sed
+fi
+
 doLang() {
   xml=res/values-$1/strings.xml
   dir=assets/$2
   basedir=../$2
 
-  version=`cat res/values/strings.xml | egrep 'name="version"' | sed -s "s/^.*\">//;s/<.string>.*$//"`
+  version=`cat res/values/strings.xml | egrep 'name="version"' | $SED "s/^.*\">//;s/<.string>.*$//"`
   sha=`git rev-parse --short HEAD`
 
-  cmd=`cat $xml | egrep 'name="about_[A-Z_]*"' | sed -s "s/^.*about_//;s/\">/\n/;s/<.string>.*$//" |
+  cmd=`cat $xml | egrep 'name="about_[A-Z_]*"' | $SED "s/^.*about_//;s/\">/\n/;s/<.string>.*$//" |
     ( cmd=""
       separator=""
       while read name; do
         read value
-        name=\`echo $name | sed -s "s/_/-/g"\`
-        value=\`echo $value | sed -s "s/\\//\\\\\\\\\\\\\\\\\\//g"\`
+        name=\`echo $name | $SED "s/_/-/g"\`
+        value=\`echo $value | $SED "s/\\//\\\\\\\\\\\\\\\\\\//g"\`
         cmd="$cmd${separator}s/\\[$name\\]/$value/g"
         separator=";"
       done
       echo $cmd )`
   for file in about.htm version-android.htm; do
     rm -f $dir/$file
-    sed -s "s/\\[VERSION\\]/$version ($sha)/g;$cmd" <$basedir/$file >$dir/$file
+    $SED "s/\\[VERSION\\]/$version ($sha)/g;$cmd" <$basedir/$file >$dir/$file
   done
 }
 
