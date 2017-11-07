@@ -3,11 +3,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
+  <group android:id="@+id/group_settings_activities">
     <item android:id="@+id/lang_select"
           android:title="@string/lang_select"
+          android:icon="@drawable/ic_language_white_24dp"
+    />
+
+    <item android:id="@+id/settings"
+          android:title="@string/settings"
           android:icon="@drawable/ic_settings_white_24dp"
     />
 
+    <item android:id="@+id/menu_alarms"
+          android:title="@string/alarms"
+          android:icon="@drawable/ic_alarm_white_24dp"
+    />
+  </group>
+
+  <group android:id="@+id/group_settings_toggles">
     <item android:id="@+id/fullscreen_toggle"
           android:title="@string/fullscreenOn"
           android:icon="@drawable/ic_settings_overscan_white_24dp"
@@ -25,17 +38,16 @@
           android:icon="@drawable/ic_format_bold_white_24dp"
           app:actionLayout="@layout/widget_switch"
     />
+  </group>
 
+  <group android:id="@+id/group_menu_speak">
     <item android:id="@+id/speak_toggle"
           android:title="@string/tts_ready"
           android:icon="@drawable/ic_action_volume_on"
     />
+  </group>
 
-    <item android:id="@+id/menu_alarms"
-          android:title="@string/alarms"
-          android:icon="@drawable/ic_alarm_white_24dp"
-    />
-
+  <group android:id="@+id/group_menu_info">
     <item android:id="@+id/menu_about"
           android:title="@string/about_title"
           android:icon="@drawable/ic_info_white_24dp"
@@ -45,5 +57,6 @@
           android:title="@string/news_title"
           android:icon="@drawable/ic_change_history_white_24dp"
     />
+  </group>
 
 </menu>

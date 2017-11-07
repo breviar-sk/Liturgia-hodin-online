@@ -12749,7 +12749,7 @@ const char *text_OKT_22_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Výročí posvěcení klášterního kostela",
+	"Výročí posvěcení klášterního kostela, " HTML_LINE_BREAK "jehož den dedikace není známý",
 	"",
 	"ru_text",
 	"by_text",

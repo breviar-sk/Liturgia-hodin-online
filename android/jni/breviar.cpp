@@ -7779,13 +7779,13 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 		// doplnené "prvé vešpery"; môžu byť pre smer < 5 ale nie pre všetky dni, preto táto podmienka...
 		// ToDo: doriešiť pre všelijaké špeciálne "konflikty", napr. 8. apríl 2013 (presunutá slávnosť Zvestovania Pána na pondelok po Veľkonočnej oktáve) -- má mať prvé vešpery? a pod.
-		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)){
+		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) {
 
 			smer = _smer_override(_global_den.smer, _global_den.typslav);
 
-			if ((poradie_svateho >= 1) && (poradie_svateho < PORADIE_PM_SOBOTA)){
-				smer = (smer > _smer_override(_global_svaty(poradie_svateho).smer, _global_svaty(poradie_svateho).typslav)) ? 
-					_smer_override(_global_svaty(poradie_svateho).smer, _global_svaty(poradie_svateho).typslav) : 
+			if ((poradie_svateho >= 1) && (poradie_svateho < PORADIE_PM_SOBOTA)) {
+				smer = (smer > _smer_override(_global_svaty(poradie_svateho).smer, _global_svaty(poradie_svateho).typslav)) ?
+					_smer_override(_global_svaty(poradie_svateho).smer, _global_svaty(poradie_svateho).typslav) :
 					smer;
 			}
 
@@ -7798,18 +7798,19 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 				|| (_global_den.denvt == DEN_NEDELA)
 				// č. 61
 				|| (
-					((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) && (_global_den.denvt == DEN_SOBOTA)) // 2. velkonocna nedela
+				((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) && (_global_den.denvt == DEN_SOBOTA)) // 2. velkonocna nedela
 					|| ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den == 25)) // ked narodenie pana pripadne na pondelok, tak prve vespery maju prednost pred 4. adventnou nedelou; napr. rok 2000
-				)
+					)
 				)
 				&& !(
 					// a nie je to špeciálny deň
 					((_global_den.denvr <= VELKONOCNA_NEDELA + 6) && (_global_den.denvr >= KVETNA_NEDELA + 1)) // všedné dni veľkého týždňa počnúc pondelkom, veľkonočné trojdnie od veľkého piatka do veľkonočnej oktávy, soboty
 					|| (_global_den.denvr == POPOLCOVA_STREDA) // Popolcová streda
-				)
-			){
+					|| ((_global_den.denvt != DEN_NEDELA) && (_global_den.den == 2) && (_global_den.mesiac == MES_NOV + 1)) // 02NOV: Spomienka na všetkých verných zosnulých, ktorá nepadla na nedeľu
+					)
+				) {
 				// oddelenie riadka
-				if ((som_v_tabulke == ANO) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE))){
+				if ((som_v_tabulke == ANO) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE))) {
 					ExportHtmlComment("table-row");
 
 					Export("<" HTML_TABLE_ROW ">\n");
@@ -7822,7 +7823,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 				_export_rozbor_dna_button_modlitba(typ, poradie_svateho, i, pom, /* doplnkova_psalmodia */ NIE, som_v_tabulke);
 
 				// oddelenie
-				if (som_v_tabulke == ANO){
+				if (som_v_tabulke == ANO) {
 					Export(HTML_TABLE_CELL_END "\n");
 					ExportTableCell(HTML_TABLE_CELL_PRAYER);
 				}
@@ -7832,7 +7833,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 				_export_rozbor_dna_button_modlitba(typ, poradie_svateho, i, pom, /* doplnkova_psalmodia */ NIE, som_v_tabulke);
 
 				// oddelenie riadka
-				if ((som_v_tabulke == ANO) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE))){
+				if ((som_v_tabulke == ANO) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE))) {
 					Export(HTML_TABLE_CELL_END "\n");
 					Export(HTML_TABLE_ROW_END "\n");
 				}
@@ -7840,11 +7841,11 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 				su_prve_vespery = ANO; // aby sa pri normálnych vešperách (v ďalšom) vedelo, že to sú "druhé vešpery"
 
 			}// if(_global_den.smer < 5)...
-			else{
+			else {
 				// Log Export("nemôžu byť prvé vešpery (smer == %d, denvt == %d, denvr == %d, VELKONOCNA_NEDELA == %d, KVETNA_NEDELA == %d, POPOLCOVA_STREDA == %d)...\n", _global_den.smer, _global_den.denvt, _global_den.denvr, VELKONOCNA_NEDELA, KVETNA_NEDELA, POPOLCOVA_STREDA);
 				// oddelenie
-				if (som_v_tabulke == ANO){
-					if (!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
+				if (som_v_tabulke == ANO) {
+					if (!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)) {
 						Export(HTML_TABLE_CELL_END "\n");
 						ExportTableCell(HTML_TABLE_CELL_PRAYER);
 					}
@@ -12442,6 +12443,7 @@ void showAllPrayers(short int den, short int mesiac, short int rok, short int po
 				// a nie je to špeciálny deň
 				((_global_den.denvr <= VELKONOCNA_NEDELA + 6) && (_global_den.denvr >= KVETNA_NEDELA + 1)) // všedné dni veľkého týždňa počnúc pondelkom, veľkonočné trojdnie od veľkého piatka do veľkonočnej oktávy, soboty
 				|| (_global_den.denvr == POPOLCOVA_STREDA) // Popolcová streda
+				|| ((_global_den.denvt != DEN_NEDELA) && (_global_den.den == 2) && (_global_den.mesiac == MES_NOV + 1)) // 02NOV: Spomienka na všetkých verných zosnulých, ktorá nepadla na nedeľu
 			)
 		) {
 			modlitba_max = POCET_PORADIE_MODLITIEB_LONG;

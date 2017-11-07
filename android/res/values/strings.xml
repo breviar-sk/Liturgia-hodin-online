@@ -10,7 +10,8 @@
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
 
-    <string name="lang_select">Settings</string>
+    <string name="lang_select">Language</string>
+    <string name="settings">Settings</string>
 
     <string name="lang_select_title">Language:</string>
     <string name="lang_cz">Czech</string>
@@ -36,7 +37,7 @@
     <string name="bible_ref_bible_com">bible references (YouVersion)</string>
     <string name="footnotes">notes and footnotes</string>
     <string name="liturgical_readings">mass readings</string>
-    <string name="psalms_omisions">omissions from psalms</string>
+    <string name="psalms_omissions">omissions from psalms</string>
 
     <string name="display_settings_title">Display settings:</string>
     <string name="first_vespers_buttons">display button for first vespers for Sundays and solemnitas for the day of celebration</string>

@@ -24,11 +24,11 @@
         </activity>
         <activity android:name="Alarms"
                   android:configChanges="orientation|screenSize"
-                  android:parentActivityName="sk.breviar.android.LangSelect"
+                  android:parentActivityName="sk.breviar.android.Breviar"
                   android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="sk.breviar.android.LangSelect" />
+                android:value="sk.breviar.android.Breviar" />
             <intent-filter>
                 <action android:name="sk.breviar.android.ALARMS" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -42,6 +42,56 @@
                       android:name="android.support.PARENT_ACTIVITY"
                       android:value="sk.breviar.android.Breviar" />
         </activity>
+
+        <activity android:name="MainSettings"
+                  android:configChanges="orientation|screenSize"
+                  android:parentActivityName="sk.breviar.android.Breviar"
+                  android:launchMode="singleTop">
+                  <meta-data
+                      android:name="android.support.PARENT_ACTIVITY"
+                      android:value="sk.breviar.android.Breviar" />
+        </activity>
+        <activity android:name="DeviceSettings"
+                  android:configChanges="orientation|screenSize"
+                  android:parentActivityName="sk.breviar.android.Breviar"
+                  android:launchMode="singleTop">
+                  <meta-data
+                      android:name="android.support.PARENT_ACTIVITY"
+                      android:value="sk.breviar.android.MainSettings" />
+        </activity>
+        <activity android:name="PrayerContentSettings"
+                  android:configChanges="orientation|screenSize"
+                  android:parentActivityName="sk.breviar.android.Breviar"
+                  android:launchMode="singleTop">
+                  <meta-data
+                      android:name="android.support.PARENT_ACTIVITY"
+                      android:value="sk.breviar.android.MainSettings" />
+        </activity>
+        <activity android:name="PrayerDisplaySettings"
+                  android:configChanges="orientation|screenSize"
+                  android:parentActivityName="sk.breviar.android.Breviar"
+                  android:launchMode="singleTop">
+                  <meta-data
+                      android:name="android.support.PARENT_ACTIVITY"
+                      android:value="sk.breviar.android.MainSettings" />
+        </activity>
+        <activity android:name="DisplaySettings"
+                  android:configChanges="orientation|screenSize"
+                  android:parentActivityName="sk.breviar.android.Breviar"
+                  android:launchMode="singleTop">
+                  <meta-data
+                      android:name="android.support.PARENT_ACTIVITY"
+                      android:value="sk.breviar.android.MainSettings" />
+        </activity>
+        <activity android:name="CalendarSettings"
+                  android:configChanges="orientation|screenSize"
+                  android:parentActivityName="sk.breviar.android.Breviar"
+                  android:launchMode="singleTop">
+                  <meta-data
+                      android:name="android.support.PARENT_ACTIVITY"
+                      android:value="sk.breviar.android.MainSettings" />
+        </activity>
+
         <activity android:name="DialogActivity"
                   android:configChanges="orientation|screenSize"
                   android:launchMode="singleTop">

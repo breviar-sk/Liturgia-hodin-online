@@ -8,7 +8,8 @@
     <string name="pgup">Nahoru</string>
     <string name="pgdn">Dál</string>
 
-    <string name="lang_select">Nastavení</string>
+    <string name="lang_select">Jazyk</string>
+    <string name="settings">Nastavení</string>
 
     <string name="lang_select_title">Jazyk:</string>
     <string name="lang_cz">Čeština</string>
@@ -34,7 +35,7 @@
     <string name="bible_ref_bible_com">biblické odkazy (YouVersion)</string>
     <string name="footnotes">poznámky (v textu, pod čarou)</string>
     <string name="liturgical_readings">mešní čtení</string>
-    <string name="psalms_omisions">vynechávky ze žalmů</string>
+    <string name="psalms_omissions">vynechávky ze žalmů</string>
 
     <string name="display_settings_title">Další zobrazení:</string>
     <string name="first_vespers_buttons">zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení</string>

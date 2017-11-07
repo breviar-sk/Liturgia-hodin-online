@@ -102,6 +102,15 @@ public class Server extends Thread {
       return persistentOpts;
     }
 
+    // Force using current persistent options for the next request.
+    // This is rather hacky (since it would not work well if there were multiple clients
+    // talking to the server), but it is needed to avoid resetting options when using goBack()
+    // in the WebView.
+    boolean force_opts_for_next_request = false;
+    synchronized public void forceOptsForNextRequest() {
+      force_opts_for_next_request = true;
+    }
+
     public void run() {
       Log.v("breviar", "Server: run started");
       try {
@@ -204,6 +213,14 @@ public class Server extends Thread {
       Copy cpin = new Copy( new ByteArrayInputStream(buf, 0, cntlen), new FdOutputStream(pipein[1]) );
       cpin.start();
       String localOpts = persistentOpts;
+
+      if (force_opts_for_next_request) {
+        force_opts_for_next_request = false;
+        if (persistentOpts.startsWith("&") && !qs.isEmpty()) {
+          qs = persistentOpts.substring(1) + "&" + qs;
+          Log.v("breviar", "Forcing persistent options: " + qs);
+        }
+      }
 
       if (!postmethod) {
         localOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=GET\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");

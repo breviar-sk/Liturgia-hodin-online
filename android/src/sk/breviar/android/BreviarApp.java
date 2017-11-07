@@ -39,79 +39,6 @@ public class BreviarApp extends Application {
     initLocale(ctx);
   }
 
-  static public boolean getVolButtons(Context ctx) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getBoolean("vol_buttons", false);
-  }
-
-  static public void setVolButtons(Context ctx, boolean use_for_scrolling) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    SharedPreferences.Editor editor = settings.edit();
-    editor.putBoolean("vol_buttons", use_for_scrolling);
-    editor.commit();
-  }
-
-  static public boolean getDimLock(Context ctx) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getBoolean("dim_lock", true);
-  }
-
-  static public void setDimLock(Context ctx, boolean dim_lock) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    SharedPreferences.Editor editor = settings.edit();
-    editor.putBoolean("dim_lock", dim_lock);
-    editor.commit();
-  }
-
-  static public boolean getNavBarShown(Context ctx) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getBoolean("nav_bar_shown", true);
-  }
-
-  static public void setNavBarShown(Context ctx, boolean shown) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    SharedPreferences.Editor editor = settings.edit();
-    editor.putBoolean("nav_bar_shown", shown);
-    editor.commit();
-  }
-
-  static public boolean getMute(Context ctx) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getBoolean("mute", false);
-  }
-
-  static public void setMute(Context ctx, boolean mute) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    SharedPreferences.Editor editor = settings.edit();
-    editor.putBoolean("mute", mute);
-    editor.commit();
-  }
-
-  static public String getUrlOptions(Context ctx) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    String output = settings.getString("params", "");
-    return output;
-  }
-
-  static public void setUrlOptions(Context ctx, String opts) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    SharedPreferences.Editor editor = settings.edit();
-    editor.putString("params", opts);
-    editor.commit();
-  }
-
-  static public boolean getLongClickTogglesBar(Context ctx) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    return settings.getBoolean("long_click_toggles_bar", false);
-  }
-
-  static public void setLongClickTogglesBar(Context ctx, boolean toggles) {
-    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-    SharedPreferences.Editor editor = settings.edit();
-    editor.putBoolean("long_click_toggles_bar", toggles);
-    editor.commit();
-  }
-
   static Locale appLanguageToLocale(String lang) {
     if (lang.equals("cz")) lang = "cs";
     return new Locale(lang);
@@ -153,6 +80,85 @@ public class BreviarApp extends Application {
     if (Build.VERSION.SDK_INT >= 17) {
       new CompatibilityHelper17().applyLocale(activity, currentLocale(activity));
     }
+  }
+
+  static public void setBoolean(Context ctx, String key, boolean value) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    SharedPreferences.Editor editor = settings.edit();
+    editor.putBoolean(key, value);
+    editor.commit();
+  }
+
+  static public boolean getBoolean(Context ctx, String key, boolean default_value) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    return settings.getBoolean(key, default_value);
+  }
+
+  static public void setString(Context ctx, String key, String value) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    SharedPreferences.Editor editor = settings.edit();
+    editor.putString(key, value);
+    editor.commit();
+  }
+
+  static public String getString(Context ctx, String key, String default_value) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    return settings.getString(key, default_value);
+  }
+
+  static final String booleanVolButtons = "vol_buttons";
+  static final String booleanDimLock = "dim_lock";
+  static final String booleanNavBarShown = "nav_bar_shown";
+  static final String booleanMute = "mute";
+  static final String stringUrlOptions = "params";
+  static final String booleanLongClickTogglesBar = "long_click_toggles_bar";
+
+  static public boolean getVolButtons(Context ctx) {
+    return getBoolean(ctx, booleanVolButtons, false);
+  }
+
+  static public void setVolButtons(Context ctx, boolean use_for_scrolling) {
+    setBoolean(ctx, booleanVolButtons, use_for_scrolling);
+  }
+
+  static public boolean getDimLock(Context ctx) {
+    return getBoolean(ctx, booleanDimLock, true);
+  }
+
+  static public void setDimLock(Context ctx, boolean dim_lock) {
+    setBoolean(ctx, booleanDimLock, dim_lock);
+  }
+
+  static public boolean getNavBarShown(Context ctx) {
+    return getBoolean(ctx, booleanNavBarShown, true);
+  }
+
+  static public void setNavBarShown(Context ctx, boolean shown) {
+    setBoolean(ctx, booleanNavBarShown, shown);
+  }
+
+  static public boolean getMute(Context ctx) {
+    return getBoolean(ctx, booleanMute, false);
+  }
+
+  static public void setMute(Context ctx, boolean mute) {
+    setBoolean(ctx, booleanMute, mute);
+  }
+
+  static public String getUrlOptions(Context ctx) {
+    return getString(ctx, stringUrlOptions, "");
+  }
+
+  static public void setUrlOptions(Context ctx, String opts) {
+    setString(ctx, stringUrlOptions, opts);
+  }
+
+  static public boolean getLongClickTogglesBar(Context ctx) {
+    return getBoolean(ctx, booleanLongClickTogglesBar, false);
+  }
+
+  static public void setLongClickTogglesBar(Context ctx, boolean toggles) {
+    setBoolean(ctx, booleanLongClickTogglesBar, toggles);
   }
 }
 

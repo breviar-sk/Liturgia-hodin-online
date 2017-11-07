@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item android:id="@+id/device_settings"
+        android:title="@string/settings_title"
+  />
+
+  <item android:id="@+id/prayer_content_settings"
+        android:title="@string/prayer_content_settings1_title"
+  />
+
+  <item android:id="@+id/prayer_display_settings"
+        android:title="@string/prayer_content_settings_title"
+  />
+
+  <item android:id="@+id/display_settings"
+        android:title="@string/display_settings_title"
+  />
+
+  <item android:id="@+id/calendar_settings"
+        android:title="@string/calendar_settings_title"
+  />
+
+</menu>
