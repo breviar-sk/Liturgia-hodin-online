@@ -553,11 +553,46 @@ void _xml_patka(FILE * expt) {
 	dnes.tm_year = dnes.tm_year + 1900;
 	dnes.tm_yday = dnes.tm_yday + 1;
 
+	// element XML_SUPPORTED_VALUES with sub-elements
+	Export_to_file(expt, ELEM_BEGIN(XML_SUPPORTED_VALUES) "\n");
+
+	/*
+#define XML_LIT_YEAR_LETTER_VALUES  "LiturgicalYearLetterValues"
+#define XML_LIT_SEASON_VALUES       "LiturgicalSeasonValues"
+#define XML_LIT_WEEK_VALUES         "LiturgicalWeekValues"
+#define XML_LIT_WEEK_PSALT_VALUES   "LiturgicalWeekOfPsalterValues"
+#define XML_LIT_TYPE_VALUES         "LiturgicalCelebrationTypeValues"
+#define XML_LIT_TYPE_LOCAL_VALUES   "LiturgicalCelebrationTypeLocalValues"
+#define XML_LIT_LEVEL_VALUES        "LiturgicalCelebrationLevelValues"
+#define XML_LIT_REQUIRED_VALUES     "LiturgicalCelebrationRequiredValues"
+#define XML_LIT_COMMUNIA_VALUES     "LiturgicalCelebrationCommuniaValues"
+#define XML_LIT_NAME_VALUES         "LiturgicalCelebrationNameValues"
+#define XML_LIT_COLOR_VALUES        "LiturgicalCelebrationColorValues"
+*/
+	Export_to_file(expt, ELEMNAME_BEGIN(XML_LIT_CALENDAR_VALUES) "\n", STR_KALENDAR);
+	
+	for (short int c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
+		if (equalsi(skratka_kalendara[c], STR_EMPTY)) {
+			Export_to_file(expt, ELEM_BEGIN(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", nazov_kalendara_vyber[supported_calendars(c)]);
+		}
+		else {
+			Export_to_file(expt, ELEMVALUE_BEGIN(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", skratka_kalendara[c], nazov_kalendara_vyber[supported_calendars(c)]);
+		}
+	}
+
+	Export_to_file(expt, ELEM_END(XML_LIT_CALENDAR_VALUES) "\n\n");
+
+	Export_to_file(expt, ELEM_END(XML_SUPPORTED_VALUES) "\n\n");
+
+
+	// element XML_INFO with sub-elements
 	Export_to_file(expt, ELEM_BEGIN(XML_INFO) "\n");
+
 	Export_to_file(expt, ELEM_BEGIN(XML_COPYRIGHT) "%s" ELEM_END(XML_COPYRIGHT) "\n", TEXT_COPYRIGHT);
 	Export_to_file(expt, ELEM_BEGIN(XML_ADDRESS) "%s" ELEM_END(XML_ADDRESS) "\n", TEXT_EMAIL);
 	Export_to_file(expt, ELEM_BEGIN(XML_GENERATED) "" HTML_ISO_FORMAT "" ELEM_END(XML_GENERATED) "\n", dnes.tm_year, dnes.tm_mon + 1, dnes.tm_mday);
 	Export_to_file(expt, ELEM_BEGIN(XML_BUILD_DATE) "%s" ELEM_END(XML_BUILD_DATE) "\n", BUILD_DATE);
+
 	Export_to_file(expt, ELEM_END(XML_INFO) "\n\n");
 
 	Export_to_file(expt, ELEM_END(XML_MAIN) "\n\n");

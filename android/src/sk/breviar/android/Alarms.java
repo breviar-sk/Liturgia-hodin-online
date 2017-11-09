@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import sk.breviar.android.BreviarApp;
 import sk.breviar.android.Util;
@@ -30,13 +30,13 @@ public class Alarms extends AppCompatActivity {
       getSupportActionBar().setTitle(getString(R.string.alarms));
 
       for (int i = 0; i < Util.events.length; ++i) {
-        final CheckBox box = ((CheckBox)findViewById(Util.events[i].id));
+        final CompoundButton box = ((CompoundButton)findViewById(Util.events[i].id));
         Util.events[i].updateBox(box, Util.events[i].getTime(this));
         final int j = i;
         box.setOnClickListener(new View.OnClickListener() {
           public void onClick(View v) {
-            if (((CheckBox)v).isChecked()) {
-              ((CheckBox)v).setChecked(false);
+            if (((CompoundButton)v).isChecked()) {
+              ((CompoundButton)v).setChecked(false);
               AlarmTimePickerFragment f = new AlarmTimePickerFragment();
               f.show(getSupportFragmentManager(), "event-" + j);
             } else {

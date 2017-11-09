@@ -480,7 +480,7 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "??", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
@@ -601,12 +601,6 @@ const char *nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "pro františkány (OFM)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
-
-#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
-#define nazov_kalendara_vyber nazov_kalendara_smart
-#else
-#define nazov_kalendara_vyber nazov_kalendara_long
-#endif
 
 // special "local" or "partial" characteristics of various celebrations - each in one language; no need to translate; special strings will be added
 const char *nazov_slavenia_lokal[] =

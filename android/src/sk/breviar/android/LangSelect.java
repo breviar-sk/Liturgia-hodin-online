@@ -10,7 +10,7 @@ public class LangSelect extends SettingsActivity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     inflateMenu(R.menu.lang_select);
-    getSupportActionBar().setTitle(getString(R.string.lang_select_title));
+    getSupportActionBar().setTitle(getString(R.string.lang_select));
 
     final SettingsActivity act = this;
     handleClick(R.id.lang_cz, new Runnable() {

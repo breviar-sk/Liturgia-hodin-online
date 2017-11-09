@@ -27,7 +27,7 @@
   android:layout_height="?attr/actionBarSize"
   android:elevation="4dp"
   android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-  app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+  app:popupTheme="@style/ThemeOverlay.AppCompat"
   android:background="?attr/colorPrimary">
 </android.support.v7.widget.Toolbar>
 
@@ -36,34 +36,56 @@
 
 <LinearLayout
         android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
-    <TextView android:text="@string/alarms_title" style="@android:style/TextAppearance.Large"
-        android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <android.support.v7.widget.SwitchCompat 
+      android:id="@+id/inv_check" android:text="@string/inv"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:theme="@style/ListEntry"
+    />
 
-    <CheckBox android:id="@+id/inv_check" android:text="@string/inv"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <android.support.v7.widget.SwitchCompat
+      android:id="@+id/read_check" android:text="@string/read"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:theme="@style/ListEntry"
+    />
 
-    <CheckBox android:id="@+id/read_check" android:text="@string/read"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <android.support.v7.widget.SwitchCompat
+      android:id="@+id/rch_check" android:text="@string/rch"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:theme="@style/ListEntry"
+    />
 
-    <CheckBox android:id="@+id/rch_check" android:text="@string/rch"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <android.support.v7.widget.SwitchCompat
+      android:id="@+id/h9_check" android:text="@string/h9"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:theme="@style/ListEntry"
+    />
 
-    <CheckBox android:id="@+id/h9_check" android:text="@string/h9"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <android.support.v7.widget.SwitchCompat
+      android:id="@+id/h12_check" android:text="@string/h12"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:theme="@style/ListEntry"
+    />
 
-    <CheckBox android:id="@+id/h12_check" android:text="@string/h12"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <android.support.v7.widget.SwitchCompat
+      android:id="@+id/h15_check" android:text="@string/h15"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:theme="@style/ListEntry"
+    />
 
-    <CheckBox android:id="@+id/h15_check" android:text="@string/h15"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <android.support.v7.widget.SwitchCompat
+      android:id="@+id/vesp_check" android:text="@string/vesp"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:theme="@style/ListEntry"
+    />
 
-    <CheckBox android:id="@+id/vesp_check" android:text="@string/vesp"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
-
-    <CheckBox android:id="@+id/kompl_check" android:text="@string/kompl"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <android.support.v7.widget.SwitchCompat
+      android:id="@+id/kompl_check" android:text="@string/kompl"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:theme="@style/ListEntry"
+    />
 
 </LinearLayout>
 

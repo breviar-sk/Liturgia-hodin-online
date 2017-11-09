@@ -1144,6 +1144,7 @@ extern short int query_type; // contains constants PRM_...
 
 // element XML_DAY with sub-elements
 #define XML_DAY              "CalendarDay"
+
 #define XML_CELEBRATION      "Celebration"
 #define XML_CELEBRATION_ID   "Id"
 #define XML_DATE_ISO         "DateISO"
@@ -1171,10 +1172,27 @@ extern short int query_type; // contains constants PRM_...
 
 // element XML_INFO with sub-elements
 #define XML_INFO             "Info"
+
 #define XML_COPYRIGHT        "Copyright"
 #define XML_ADDRESS          "Address"
 #define XML_BUILD_DATE       "BuildDate"
 #define XML_GENERATED        "Generated"
+
+// element XML_SUPPORTED_VALUES with sub-elements
+#define XML_SUPPORTED_VALUES "SupportedValues"
+
+#define XML_LIT_YEAR_LETTER_VALUES  "LiturgicalYearLetterValues"
+#define XML_LIT_SEASON_VALUES       "LiturgicalSeasonValues"
+#define XML_LIT_WEEK_VALUES         "LiturgicalWeekValues"
+#define XML_LIT_WEEK_PSALT_VALUES   "LiturgicalWeekOfPsalterValues"
+#define XML_LIT_TYPE_VALUES         "LiturgicalCelebrationTypeValues"
+#define XML_LIT_TYPE_LOCAL_VALUES   "LiturgicalCelebrationTypeLocalValues"
+#define XML_LIT_LEVEL_VALUES        "LiturgicalCelebrationLevelValues"
+#define XML_LIT_REQUIRED_VALUES     "LiturgicalCelebrationRequiredValues"
+#define XML_LIT_COMMUNIA_VALUES     "LiturgicalCelebrationCommuniaValues"
+#define XML_LIT_NAME_VALUES         "LiturgicalCelebrationNameValues"
+#define XML_LIT_COLOR_VALUES        "LiturgicalCelebrationColorValues"
+#define XML_LIT_CALENDAR_VALUES     "LiturgicalCalendarValues"
 
 // element XML_OPTIONS with sub-elements
 #define XML_OPTIONS          "Options"
@@ -1276,6 +1294,8 @@ extern short int query_type; // contains constants PRM_...
 #define ELEM_END(elem)       "</" elem ">"
 
 #define ELEMID_BEGIN(elem)   "<" elem " Id=\"%d\">"
+#define ELEMVALUE_BEGIN(elem)   "<" elem " Value=\"%s\">"
+#define ELEMNAME_BEGIN(elem)   "<" elem " Name=\"%s\">"
 #define ELEMVAL_BEGIN(elem)  "<" elem " Value=\"%d\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
 #define ELEMOPT_BEGIN(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_FORCE_BIT_OPT_0_VERSE
 #define ELEMOPT_SLASH_BEGIN(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s/%s\">"

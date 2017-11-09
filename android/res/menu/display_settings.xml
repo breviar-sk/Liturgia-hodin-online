@@ -4,7 +4,7 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <item android:id="@+id/first_vespers_buttons"
-        android:title="@string/vol_buttons"
+        android:title="@string/first_vespers_buttons"
         app:actionLayout="@layout/widget_switch"
   />
 

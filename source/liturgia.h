@@ -1119,6 +1119,58 @@ const short int default_kalendar[POCET_JAZYKOV + 1] =
 // filenames for special calendars / názov súbora pre kalendáre
 extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];
 
+extern const char *nazov_kalendara_smart[POCET_KALENDAROV + 1];
+
+extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
+
+#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
+#define nazov_kalendara_vyber nazov_kalendara_smart
+#else
+#define nazov_kalendara_vyber nazov_kalendara_long
+#endif
+
+
+#define SUPPORTED_CALENDARS_COUNT_MAX 9
+
+// count of supported calendars for specified language
+// note 1: KALENDAR_NEURCENY & KALENDAR_VSEOBECNY are always supported by default so these two do not count there
+// note 2: for calendars not yet published use '#if defined(DEBUG) || defined(OS_Windows_Ruby)' == code to be executed only for development (new calendars are added at the end of list supported_calendars_language[][])
+const short int supported_calendars_count[POCET_JAZYKOV + 1] =
+{
+	9,
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
+	6,
+#else
+	5,
+#endif
+	/* ToDo */ 1,
+	/* ToDo */ 1,
+	/* ToDo */ 1,
+	1,
+	3,
+	1,
+	1,
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
+// array of supported calendars for specified language | note: pad with zeros
+const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALENDARS_COUNT_MAX] =
+{
+	{ KALENDAR_VSEOBECNY_SK, KALENDAR_SK_CSSR, KALENDAR_SK_SVD, KALENDAR_SK_OFM, KALENDAR_SK_SDB, KALENDAR_SK_OP, KALENDAR_SK_SJ, KALENDAR_SK_CM, KALENDAR_SK_OCD },
+	{ KALENDAR_VSEOBECNY_CZ, KALENDAR_CZ_OPRAEM, KALENDAR_CZ_OFMCAP, KALENDAR_CZ_SDB, KALENDAR_CZ_OFM, KALENDAR_CZ_CSSR, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_CZ, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_HU, KALENDAR_HU_OFM, KALENDAR_HU_SVD, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_RU, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_BY, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
+#define supported_calendars(a)	supported_calendars_language[_global_jazyk][a]
+
+
 // prikazany / neprikazany sviatok / ľubovoľná spomienka bez záväznosti (blahoslavení napr. pre SK_OP)
 #define PRIKAZANY_SVIATOK           0
 #define NIE_JE_PRIKAZANY_SVIATOK    1

@@ -448,6 +448,11 @@ public class Breviar extends AppCompatActivity
           getSupportActionBar().setTitle(capitalize(title));
           getSupportActionBar().setSubtitle(subtitle);
 
+          if (need_to_update_menu) {
+            need_to_update_menu = false;
+            updateMenu();
+          }
+
           // Ugly hack. But we have no reliable notification when is webview scrollable.
           if (parent.scroll_to < 0) return;
           final WebView wv = view;
@@ -509,7 +514,6 @@ public class Breviar extends AppCompatActivity
       save_instance_enabled = true;
       Log.v("breviar", "onCreate: Updating fullscreen and menu");
       updateFullscreen();
-      updateMenu();
       Log.v("breviar", "onCreate: done");
     }
 
@@ -578,6 +582,8 @@ public class Breviar extends AppCompatActivity
     }
 
     boolean resumed = false;
+    // After resume we need to update menu after the page is reloaded.
+    boolean need_to_update_menu = false;
     @Override
     protected void onResume() {
       String url = wv.getUrl();
@@ -592,8 +598,8 @@ public class Breviar extends AppCompatActivity
 
         String new_url = opts.build();
         Log.v("breviar", "Reloading preferences; new url = " + new_url);
+        need_to_update_menu = true;
         wv.loadUrl(new_url);
-        updateMenu();  // nightmode setting may have changed.
       }
       if (!resumed) {
         resumed = true;
@@ -743,7 +749,7 @@ public class Breviar extends AppCompatActivity
         updateMenuItemSwitch(drawer_item, true);
         if (action_item != null) {
           action_item.setTitle(R.string.nightmodeOff);
-          action_item.setIcon(R.drawable.ic_brightness_5_white_24dp);
+          action_item.setIcon(R.drawable.ic_wb_sunny_white_24dp);
         }
       } else {
         updateMenuItemSwitch(drawer_item, false);

@@ -13,7 +13,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.Log;
 import android.webkit.WebView;
-import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import java.util.GregorianCalendar;
 
@@ -68,7 +68,7 @@ public class Util {
       setAlarm(ctx);
     }
 
-    void updateBox(CheckBox box, AlarmTime t) {
+    void updateBox(CompoundButton box, AlarmTime t) {
       String s = box.getContext().getString(caption);
       if (t.enabled) {
         s += String.format(": %d:%02d", t.hour, t.minute);

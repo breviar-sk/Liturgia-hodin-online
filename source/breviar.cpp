@@ -29,24 +29,26 @@ date
 /*                                                                         */
 /*   * unfinished parts: marked by ToDo or [ToDo]                          */
 /*                                                                         */
-/*   * debug in VC++/VStudio: Alt+F7 > Debug > Program arguments           */
-/*   * debug in Visual Studio: Alt+F7, or, in solution explorer,           */
-/*     right click on your project and choose "properties" from the        */
-/*     drop down menu.                                                     */
-/*     then, go to: Configuration Properties > Debugging                   */
-/*     You can pass command line arguments in on the line that says        */
-/*     Command Arguments                                                   */
-/*                                                                         */
-/*   -i..\..\breviar.sk\include\ -qpsqs -s"qt=pdnes"                       */
-/*   -qpbm -d1 -m1 -r2000 -f2 -g2 -p2001 -ba.txt                           */
-/*   -i..\..\breviar.sk\include\ -qpsqs -s"qt=pcr&dvt=pondelok&t=2&p=mpc"  */
-/*   -qpdt -d30 -m4 -r2002 -pmrch -ic:\temp\breviar\ -emoja.htm            */
-/*   -qpsqs -s"qt=pdt&d=26&m=5&r=2010&p=mrch&ds=1"                         */
-//   -s"of5vnv=0&of5hpo=0&of0bf=0&ds=0&of1t=0&of5psps=0&of2tw=0&of2nr=0&of1vkp=0&of1sp=0&of0fn=1&of0tkne=0&of5ps29=0&of0zjvne=0&of1v=0&of5vnpc=0&of1pr=1&of5ps71=0&of1prz=1&of1o=0&of1zspc=1&of0r=0&d=12&of1spspc=0&of5hpred=0&of5ps69=0&of1dps=0&j=sk&k=sk&of1ps3=0&qt=pdt&of2id=0&of5vnhrch=0&of1z95=0&m=10&of5hk=0&o0=65&p=mpc&of5czh=1&o1=5440&of0nanne=0&of5hna=0&r=2015&of1c=0&o2=16384&of1r=0&of0cit=0&of2btnu=1&o3=0&of3=1&of5h1v=0&of2nav=0&of5hpc=1&o4=0&o5=0&of2a=1&of1s=0&of0v=0" -i"D:\personal\breviar\breviar.sk\include"
-//   -s"qt=pdt&d=15&m=7&r=2016&p=mrch&ds=1&o0=2691&o1=202048&o2=25274&o3=5&o4=0&o5=2" -i"D:\personal\breviar\breviar.sk\include"
-/*                                                                         */
-/*                                                                         */
 /***************************************************************************/
+
+/*
+Debugging in Visual Studio: 
+Debug > breviar Properties, or, in Solution Explorer, right click on your project and choose "Properties" from the drop down menu.
+Then, go to: Configuration Properties > Debugging
+You can pass command line arguments in on the line titled by Command Arguments
+   
+Examples:
+-i..\..\breviar.sk\include\ -qpsqs -s"qt=pdnes"
+-qpbm -d1 -m1 -r2000 -f2 -g2 -p2001 -ba.txt
+-i..\..\breviar.sk\include\ -qpsqs -s"qt=pcr&dvt=pondelok&t=2&p=mpc"
+-qpdt -d30 -m4 -r2002 -pmrch -ic:\temp\breviar\ -emoja.htm
+-qpsqs -s"qt=pdt&d=26&m=5&r=2010&p=mrch&ds=1"
+-s"of5vnv=0&of5hpo=0&of0bf=0&ds=0&of1t=0&of5psps=0&of2tw=0&of2nr=0&of1vkp=0&of1sp=0&of0fn=1&of0tkne=0&of5ps29=0&of0zjvne=0&of1v=0&of5vnpc=0&of1pr=1&of5ps71=0&of1prz=1&of1o=0&of1zspc=1&of0r=0&d=12&of1spspc=0&of5hpred=0&of5ps69=0&of1dps=0&j=sk&k=sk&of1ps3=0&qt=pdt&of2id=0&of5vnhrch=0&of1z95=0&m=10&of5hk=0&o0=65&p=mpc&of5czh=1&o1=5440&of0nanne=0&of5hna=0&r=2015&of1c=0&o2=16384&of1r=0&of0cit=0&of2btnu=1&o3=0&of3=1&of5h1v=0&of2nav=0&of5hpc=1&o4=0&o5=0&of2a=1&of1s=0&of0v=0" -i"D:\personal\breviar\breviar.sk\include"
+
+2017-11-08 value:
+-s"qt=pdt&d=15&m=7&r=2016&p=mrch&ds=1&o0=2691&o1=202048&o2=25274&o3=5&o4=0&o5=2" -i"D:\personal\breviar\breviar.sk\include"
+*/
+
 #include "vstudio.h"
 
 #ifndef __BREVIAR_CPP_
@@ -9468,7 +9470,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 #endif
 
 	// ---------------- calendar selection begin
-	if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_HU)) {
+	if (supported_calendars_count[_global_jazyk] > 1) {
+		Log("exporting calendars (count for this language == %d)...", supported_calendars_count[_global_jazyk]);
+
 		Export("<" HTML_TABLE ">\n");
 		Export("<" HTML_TABLE_ROW ">\n");
 		Export("<" HTML_TABLE_CELL_CENTER ">\n");
@@ -9486,73 +9490,16 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole WWW_KALENDAR
 		Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_KALENDAR, html_text_kalendar_miestny_explain[_global_jazyk]);
 
-		if (_global_jazyk == JAZYK_SK) {
-			Export("<option%s>%s</option>\n",
-				((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_SK)) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[default_kalendar[_global_jazyk]]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_SK_CSSR) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_SK_CSSR]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_SK_SVD) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_SK_SVD]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_SK_OFM) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_SK_OFM]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_SK_SDB) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_SK_SDB]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_SK_OP) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_SK_OP]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_SK_SJ) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_SK_SJ]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_SK_CM) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_SK_CM]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_SK_OCD) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_SK_OCD]);
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
-			// code to be executed only under Windows development
-#endif
-		}// SK
+		short int local_kalendar = _global_kalendar;
+		if ((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY)) {
+			local_kalendar = default_kalendar[_global_jazyk];
+		}
 
-		else if (_global_jazyk == JAZYK_CZ) {
-			Export("<option%s>%s</option>\n",
-				((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_CZ)) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[default_kalendar[_global_jazyk]]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_CZ_OPRAEM) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_CZ_OPRAEM]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_CZ_OFMCAP) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_CZ_OFMCAP]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_CZ_SDB) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_CZ_SDB]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_CZ_OFM) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_CZ_OFM]);
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_CZ_CSSR) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_CZ_CSSR]);
-#endif
-		}// CZ
+		for (short int c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
+			Log("exporting calendars: c == %d, supported_calendars(c) == %d, nazov_kalendara_vyber[supported_calendars(c)] == %s...", c, supported_calendars(c), nazov_kalendara_vyber[supported_calendars(c)]);
 
-		else if (_global_jazyk == JAZYK_HU) {
-			Export("<option%s>%s</option>\n",
-				((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == KALENDAR_VSEOBECNY_HU)) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[default_kalendar[_global_jazyk]]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_HU_OFM) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_HU_OFM]);
-			Export("<option%s>%s</option>\n",
-				(_global_kalendar == KALENDAR_HU_SVD) ? html_option_selected : STR_EMPTY,
-				nazov_kalendara_vyber[KALENDAR_HU_SVD]);
-		}// HU
+			Export("<option%s>%s</option>\n", (local_kalendar == supported_calendars(c)) ? html_option_selected : STR_EMPTY, nazov_kalendara_vyber[supported_calendars(c)]);
+		}
 
 		Export("</select>\n");
 
@@ -13435,7 +13382,7 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 	Log("-- _main_rozbor_dna(short int, short int, short int, short int, char *): end\n");
 }// _main_rozbor_dna()
 
-void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r){
+void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r) {
 	// na základe _main_rozbor_dna; textový export len pre RKC; XML napr. pre iOS
 	short int heading_written = 0;
 	char pom[MAX_STR];
@@ -13451,39 +13398,43 @@ void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r){
 	// rozparsovanie parametrov den, mesiac, rok -- _rozparsuj_parametre_DEN_MESIAC_ROK()
 	Log("/* rozparsovanie parametrov den, mesiac, rok -- -- _rozparsuj_parametre_DEN_MESIAC_ROK() */\n");
 
-	// kontrola údajov
 	short int result = SUCCESS;
-	// deň
-	if (d < 0){
-		ExportUDAJE("chýba údaj o dni.\n");
+
+	// kontrola údajov, len pre TXT export (pre XML deň, mesiac, rok netreba)
+	if (typ == PRM_TXT) {
+		// deň
+		if (d < 0) {
+			ExportUDAJE("chýba údaj o dni.\n");
+		}
+		else if (d == 0) {
+			ExportUDAJE("deň = %d.\n", d);
+		}
+		// mesiac
+		if (m < 0) {
+			ExportUDAJE("chýba údaj o mesiaci.\n");
+		}
+		else if (m == UNKNOWN_MESIAC) {
+			ExportUDAJE("taký mesiac nepoznám (%d).\n", m);
+		}
+		// rok
+		if (r < 0) {
+			ExportUDAJE("chýba údaj o roku.\n");
+		}
+		else if (r == 0) {
+			ExportUDAJE("rok = %d.\n", r);
+		}
 	}
-	else if (d == 0){
-		ExportUDAJE("deň = %d.\n", d);
-	}
-	// mesiac
-	if (m < 0){
-		ExportUDAJE("chýba údaj o mesiaci.\n");
-	}
-	else if (m == UNKNOWN_MESIAC){
-		ExportUDAJE("taký mesiac nepoznám (%d).\n", m);
-	}
-	// rok
-	if (r < 0){
-		ExportUDAJE("chýba údaj o roku.\n");
-	}
-	else if (r == 0){
-		ExportUDAJE("rok = %d.\n", r);
-	}
+
 	// modlitba -> typ exportu
-	if (typ == PRM_TXT){
+	if (typ == PRM_TXT) {
 		t = EXPORT_DNA_VIAC_DNI_TXT;
 	}
-	else if (typ == PRM_XML){
+	else if (typ == PRM_XML) {
 		t = EXPORT_DNA_XML;
 	}
 
 	// kontrola udajov ukoncena, podla nej pokracujeme dalej
-	if (result == FAILURE){
+	if (result == FAILURE) {
 		Log("/* teraz result == FAILURE */\n");
 		ALERT;
 		return;
@@ -13491,28 +13442,29 @@ void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r){
 
 	// cleanup
 	_global_modlitba = MODL_NEURCENA;
-	
+
 	Log("/* teraz result == SUCCESS */\n");
-	if (m != UNKNOWN_MESIAC){
-		// 2012-10-16: pre XML export sa hlavička neexportuje
-		if (t != EXPORT_DNA_XML){
+	if (m != UNKNOWN_MESIAC) {
+		// nesmiem zabudnut, ze m je 0--11
+		// pre XML export sa hlavička neexportuje
+		if (t != EXPORT_DNA_XML) {
 			Export("<h2>");
 			Export((char *)html_text_txt_export[_global_jazyk]);
 			Export(": ");
 			Export((char *)html_text_lit_kalendar[_global_jazyk]);
 			Export(" ");
-			if (m == VSETKY_MESIACE){
+			if (m == VSETKY_MESIACE) {
 				Export((char *)html_text_rok[_global_jazyk]);
 				Export(" %d", r);
 			}// if(m == VSETKY_MESIACE)
-			else{
-				if (d == VSETKY_DNI){
+			else {
+				if (d == VSETKY_DNI) {
 					Export((char *)html_text_mesiac[_global_jazyk]);
 				}
-				else{
+				else {
 					Export((char *)html_text_den[_global_jazyk]);
 					Export(" %d.", d);
-					if ((t != EXPORT_DNA_JEDEN_DEN) || (t != EXPORT_DNA_XML)){
+					if ((t != EXPORT_DNA_JEDEN_DEN) || (t != EXPORT_DNA_XML)) {
 						t = EXPORT_DNA_JEDEN_DEN;
 					}
 				}
@@ -13524,13 +13476,13 @@ void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r){
 
 		Export("\n");
 
-		if (t == EXPORT_DNA_VIAC_DNI_TXT){
+		if (t == EXPORT_DNA_VIAC_DNI_TXT) {
 			Export("<pre>");
 		}
 
 		// teraz generujem jednotlivé mesiace so všetkými dňami
-		if (m == VSETKY_MESIACE){
-			for (mi = MES_JAN; mi <= MES_DEC; mi++){
+		if (m == VSETKY_MESIACE) {
+			for (mi = MES_JAN; mi <= MES_DEC; mi++) {
 #ifdef NIELEN_PRE_PETA_ZIMENA
 				Export("\n\n");
 				Export((char *)html_text_mesiac[_global_jazyk]);
@@ -13540,11 +13492,11 @@ void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r){
 				rozbor_mesiaca(mi + 1, r, t); // tam sa volá _rozbor_dna() a potom _export_rozbor_dna()
 			}// for mi
 		}// if(m == VSETKY_MESIACE)
-		else{
-			if (d == VSETKY_DNI){
+		else {
+			if (d == VSETKY_DNI) {
 				rozbor_mesiaca(m + 1, r, t); // tam sa volá _rozbor_dna() a potom _export_rozbor_dna()
 			}
-			else{
+			else {
 				_struct_den_mesiac datum;
 				datum.den = d;
 				datum.mesiac = m + 1;
@@ -13563,20 +13515,29 @@ void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r){
 
 			}
 		}
+
 		// XML export -- export options
-		if (t == EXPORT_DNA_XML){
+		if (t == EXPORT_DNA_XML) {
 			xml_export_options();
 		}
-		else{
+		else {
 			Export("\n");
 		}
-		if (t == EXPORT_DNA_VIAC_DNI_TXT){
+		if (t == EXPORT_DNA_VIAC_DNI_TXT) {
 			Export("</pre>\n");
 		}
+
 	}// m != UNKNOWN_MESIAC
-	else{// m == UNKNOWN_MESIAC
-		// nesmiem zabudnut, ze m je 0--11
-		Export("Číslo mesiaca: nezadaný alebo nepodporovaný vstup.\n");
+	else {// m == UNKNOWN_MESIAC
+
+		if (typ == PRM_TXT) {
+			Export("Číslo mesiaca: nezadaný alebo nepodporovaný vstup.\n");
+		}
+		// XML export -- export options (when no month's number was supplied)
+		else if (t == EXPORT_DNA_XML) {
+			xml_export_options();
+		}
+
 	}// m != VSETKY_MESIACE
 
 	Log("-- _main_rozbor_dna_txt(short int, short int, short int, short int): end\n");
@@ -16148,6 +16109,7 @@ short int getForm(void) {
 		}
 	}// for i
 
+	// according to query_type, get params from forms using getenv()
 	if ((query_type == PRM_DATUM) || (query_type == PRM_DETAILY) || (query_type == PRM_TXT) || (query_type == PRM_XML)) {
 
 		Log("(query_type == PRM_DATUM) || (query_type == PRM_DETAILY) || (query_type == PRM_TXT) || (query_type == PRM_XML)...\n");
@@ -16159,14 +16121,21 @@ short int getForm(void) {
 			ptr = getenv(ADD_WWW_PREFIX_(STR_DEN));
 			if (ptr == NULL) {
 				DEBUG_GET_FORM("%s neexistuje.\n", ADD_WWW_PREFIX_(STR_DEN));
-				// 2013-08-04: samotné vypísanie niečoho presunuté do hlavnej funkcie
-				sprintf(errmsg, "Nebola vytvorená systémová premenná %s.\n", ADD_WWW_PREFIX_(STR_DEN));
-				strcat(bad_param_str, errmsg);
-				ret = FAILURE;
-				goto END_getForm;
+				
+				if (query_type != PRM_XML) {
+					sprintf(errmsg, "Nebola vytvorená systémová premenná %s.\n", ADD_WWW_PREFIX_(STR_DEN));
+					strcat(bad_param_str, errmsg);
+					ret = FAILURE;
+					goto END_getForm;
+				}
+				else {
+					mystrcpy(pom_DEN, STR_EMPTY, SMALL);
+				}
 			}
-			if (strcmp(ptr, STR_EMPTY) != 0) {
-				mystrcpy(pom_DEN, ptr, SMALL);
+			else {
+				if (strcmp(ptr, STR_EMPTY) != 0) {
+					mystrcpy(pom_DEN, ptr, SMALL);
+				}
 			}
 		}
 		else {
@@ -16179,13 +16148,21 @@ short int getForm(void) {
 			ptr = getenv(ADD_WWW_PREFIX_(STR_MESIAC));
 			if (ptr == NULL) {
 				DEBUG_GET_FORM("%s neexistuje.\n", ADD_WWW_PREFIX_(STR_MESIAC));
-				sprintf(errmsg, "Nebola vytvorená systémová premenná %s.\n", ADD_WWW_PREFIX_(STR_MESIAC));
-				strcat(bad_param_str, errmsg);
-				ret = FAILURE;
-				goto END_getForm;
+
+				if (query_type != PRM_XML) {
+					sprintf(errmsg, "Nebola vytvorená systémová premenná %s.\n", ADD_WWW_PREFIX_(STR_MESIAC));
+					strcat(bad_param_str, errmsg);
+					ret = FAILURE;
+					goto END_getForm;
+				}
+				else {
+					mystrcpy(pom_MESIAC, STR_EMPTY, SMALL);
+				}
 			}
-			if (strcmp(ptr, STR_EMPTY) != 0) {
-				mystrcpy(pom_MESIAC, ptr, SMALL);
+			else {
+				if (strcmp(ptr, STR_EMPTY) != 0) {
+					mystrcpy(pom_MESIAC, ptr, SMALL);
+				}
 			}
 		}
 		else {
@@ -16198,13 +16175,21 @@ short int getForm(void) {
 			ptr = getenv(ADD_WWW_PREFIX_(STR_ROK));
 			if (ptr == NULL) {
 				DEBUG_GET_FORM("%s neexistuje.\n", ADD_WWW_PREFIX_(STR_ROK));
-				sprintf(errmsg, "Nebola vytvorená systémová premenná %s.\n", ADD_WWW_PREFIX_(STR_ROK));
-				strcat(bad_param_str, errmsg);
-				ret = FAILURE;
-				goto END_getForm;
+
+				if (query_type != PRM_XML) {
+					sprintf(errmsg, "Nebola vytvorená systémová premenná %s.\n", ADD_WWW_PREFIX_(STR_ROK));
+					strcat(bad_param_str, errmsg);
+					ret = FAILURE;
+					goto END_getForm;
+				}
+				else {
+					mystrcpy(pom_ROK, STR_EMPTY, SMALL);
+				}
 			}
-			if (strcmp(ptr, STR_EMPTY) != 0) {
-				mystrcpy(pom_ROK, ptr, SMALL);
+			else {
+				if (strcmp(ptr, STR_EMPTY) != 0) {
+					mystrcpy(pom_ROK, ptr, SMALL);
+				}
 			}
 		}
 		else {
@@ -17162,7 +17147,7 @@ short int parseQueryString(void) {
 			}
 			i++;
 		}
-		if (equalsi(pom_DEN, STR_EMPTY) && query_type != PRM_XML) {
+		if (equalsi(pom_DEN, STR_EMPTY) && (query_type != PRM_XML)) {
 			sprintf(errmsg, "Nebola zadaná premenná %s.\n", STR_DEN);
 			strcat(bad_param_str, errmsg);
 			ret = FAILURE;
@@ -17181,7 +17166,7 @@ short int parseQueryString(void) {
 			}
 			i++;
 		}
-		if (equalsi(pom_MESIAC, STR_EMPTY) && query_type != PRM_XML) {
+		if (equalsi(pom_MESIAC, STR_EMPTY) && (query_type != PRM_XML)) {
 			sprintf(errmsg, "Nebola zadaná premenná %s.\n", STR_MESIAC);
 			strcat(bad_param_str, errmsg);
 			ret = FAILURE;
@@ -17200,7 +17185,7 @@ short int parseQueryString(void) {
 			}
 			i++;
 		}
-		if (equalsi(pom_ROK, STR_EMPTY) && query_type != PRM_XML) {
+		if (equalsi(pom_ROK, STR_EMPTY) && (query_type != PRM_XML)) {
 			sprintf(errmsg, "Nebola zadaná premenná %s.\n", STR_ROK);
 			strcat(bad_param_str, errmsg);
 			ret = FAILURE;
@@ -17239,6 +17224,7 @@ short int parseQueryString(void) {
 			LogParams("Nebola zadaná premenná %s (nevadí).\n", STR_DALSI_SVATY);
 		}
 
+		/*
 		// if day, month and/or year is not supplied, for XML export use current timestamp
 		if ((query_type == PRM_XML) && (equalsi(pom_DEN, STR_EMPTY) || equalsi(pom_MESIAC, STR_EMPTY) || equalsi(pom_ROK, STR_EMPTY))) {
 			struct tm dnes = _get_dnes();
@@ -17246,6 +17232,7 @@ short int parseQueryString(void) {
 			sprintf(pom_MESIAC, "%d", dnes.tm_mon);
 			sprintf(pom_ROK, "%d", dnes.tm_year);
 		}
+		*/
 
 		break; // case
 	}// PRM_DETAILY | PRM_TXT | PRM_XML | PRM_DATUM
@@ -17906,7 +17893,7 @@ int breviar_main(int argc, char **argv) {
 
 	// pre query_string musime alokovat pamat
 	_main_LOG("/* pre query_string musime alokovat pamat */\n");
-	_main_LOG("now allocating memory...\n");
+	_main_LOG("now allocating memory (1)...\n");
 
 	// query_string
 	if ((query_string = (char*)malloc(MAX_QUERY_STR)) == NULL) {
@@ -18266,7 +18253,7 @@ int breviar_main(int argc, char **argv) {
 
 		if (ret == SUCCESS) {
 
-			_main_LOG_to_Export("now allocating memory...\n");
+			_main_LOG_to_Export("now allocating memory (2)...\n");
 			if (_allocate_global_var() == FAILURE) {
 				goto _main_end;
 			}
@@ -18419,7 +18406,9 @@ int breviar_main(int argc, char **argv) {
 			_rozparsuj_parametre_DEN_MESIAC_ROK(pom_DEN, pom_MESIAC, pom_ROK, pom_MODLITBA, local_den, local_mesiac, local_rok, local_modlitba);
 
 			// nastavenie titulku pre hlavičku
-			init_global_string_as_html_title(local_den, local_mesiac, local_rok, local_modlitba);
+			if (query_type != PRM_XML) {
+				init_global_string_as_html_title(local_den, local_mesiac, local_rok, local_modlitba);
+			}
 
 			// export hlavičky
 			_main_LOG_to_Export("[pred volaním _main_... funkcií v switch(query_type)]: ");
