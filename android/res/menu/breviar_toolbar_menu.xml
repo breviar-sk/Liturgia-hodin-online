@@ -12,7 +12,7 @@
   <item android:id="@+id/speakBtn"
         android:title="@string/tts_ready"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_action_volume_on"
+        android:icon="@drawable/ic_volume_up_white_24dp"
   />
 
   <item android:id="@+id/nightmodeBtn"

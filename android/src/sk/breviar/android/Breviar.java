@@ -833,12 +833,12 @@ public class Breviar extends AppCompatActivity
         case READY:
           drawer_item.setTitle(R.string.tts_ready);
           action_item.setTitle(R.string.tts_ready);
-          action_item.setIcon(R.drawable.ic_action_volume_on);
+          action_item.setIcon(R.drawable.ic_volume_up_white_24dp);
           break;
         case SPEAKING:
           drawer_item.setTitle(R.string.tts_speaking);
           action_item.setTitle(R.string.tts_speaking);
-          action_item.setIcon(R.drawable.ic_action_volume_muted);
+          action_item.setIcon(R.drawable.ic_volume_off_white_24dp);
           break;
       }
     }

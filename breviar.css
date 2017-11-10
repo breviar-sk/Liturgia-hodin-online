@@ -1010,3 +1010,12 @@ sup {
 #contentRoot {
   z-index: 0;
 }
+
+// always use bold font - no override by breviar-normal-font.css
+.strong-always { 
+	font-weight: bold; !important;
+}
+
+p.strong-always, h3.strong-always { 
+	font-weight: bold; !important;
+}
