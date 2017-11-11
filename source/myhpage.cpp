@@ -556,34 +556,70 @@ void _xml_patka(FILE * expt) {
 	// element XML_SUPPORTED_VALUES with sub-elements
 	Export_to_file(expt, ELEM_BEGIN(XML_SUPPORTED_VALUES) "\n");
 
-	/*
-#define XML_LIT_YEAR_LETTER_VALUES  "LiturgicalYearLetterValues"
-#define XML_LIT_SEASON_VALUES       "LiturgicalSeasonValues"
-#define XML_LIT_WEEK_VALUES         "LiturgicalWeekValues"
-#define XML_LIT_WEEK_PSALT_VALUES   "LiturgicalWeekOfPsalterValues"
-#define XML_LIT_TYPE_VALUES         "LiturgicalCelebrationTypeValues"
-#define XML_LIT_TYPE_LOCAL_VALUES   "LiturgicalCelebrationTypeLocalValues"
-#define XML_LIT_LEVEL_VALUES        "LiturgicalCelebrationLevelValues"
-#define XML_LIT_REQUIRED_VALUES     "LiturgicalCelebrationRequiredValues"
-#define XML_LIT_COMMUNIA_VALUES     "LiturgicalCelebrationCommuniaValues"
-#define XML_LIT_NAME_VALUES         "LiturgicalCelebrationNameValues"
-#define XML_LIT_COLOR_VALUES        "LiturgicalCelebrationColorValues"
-*/
-	Export_to_file(expt, ELEMNAME_BEGIN(XML_LIT_CALENDAR_VALUES) "\n", STR_KALENDAR);
+	short int c;
+
+	// sub-element XML_LIT_CALENDAR_VALUES
+	Export_to_file(expt, ELEM_BEGIN_NAME(XML_LIT_CALENDAR_VALUES) "\n", STR_KALENDAR);
 	
-	for (short int c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
+	for (c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
 		if (equalsi(skratka_kalendara[c], STR_EMPTY)) {
-			Export_to_file(expt, ELEM_BEGIN(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", nazov_kalendara_vyber[supported_calendars(c)]);
+			Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", c, nazov_kalendara_vyber[supported_calendars(c)]);
 		}
 		else {
-			Export_to_file(expt, ELEMVALUE_BEGIN(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", skratka_kalendara[c], nazov_kalendara_vyber[supported_calendars(c)]);
+			Export_to_file(expt, ELEM_BEGIN_ID_VALUE(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", c, skratka_kalendara[c], nazov_kalendara_vyber[supported_calendars(c)]);
 		}
 	}
 
 	Export_to_file(expt, ELEM_END(XML_LIT_CALENDAR_VALUES) "\n\n");
 
-	Export_to_file(expt, ELEM_END(XML_SUPPORTED_VALUES) "\n\n");
+	// sub-element XML_LIT_YEAR_LETTER_VALUES
+	Export_to_file(expt, ELEM_BEGIN_NAME(XML_LIT_YEAR_LETTER_VALUES) "\n", STR_LIT_ROK);
 
+	for (c = 0; c < POCET_NEDELNY_CYKLUS; c++) {
+		Export_to_file(expt, ELEM_BEGIN_ID_CHARVALUE(XML_LIT_YEAR_LETTER) "%s" ELEM_END(XML_LIT_YEAR_LETTER) "\n", c, char_nedelny_cyklus[c], string_nedelny_cyklus[alphabet_jayzka[_global_jazyk]][c]);
+	}
+
+	Export_to_file(expt, ELEM_END(XML_LIT_YEAR_LETTER_VALUES) "\n\n");
+
+	// sub-element XML_LIT_SEASON_VALUES
+	Export_to_file(expt, ELEM_BEGIN_NAME(XML_LIT_SEASON_VALUES) "\n", STR_LIT_OBD);
+
+	for (c = 0; c <= POCET_OBDOBI; c++) {
+		Export_to_file(expt, ELEM_BEGIN_ID_VALUE(XML_LIT_SEASON) "%s" ELEM_END(XML_LIT_SEASON) "\n", c, nazov_obdobia_ext(c), nazov_obdobia(c));
+	}
+
+	Export_to_file(expt, ELEM_END(XML_LIT_SEASON_VALUES) "\n\n");
+
+	// sub-element XML_LIT_COMMUNIA_VALUES
+	Export_to_file(expt, ELEM_BEGIN_NAME(XML_LIT_COMMUNIA_VALUES) "\n", STR_FORCE_OPT_3);
+
+	for (c = 0; c <= POCET_SPOL_CASTI; c++) {
+		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_COMMUNIA) "%s" ELEM_END(XML_LIT_COMMUNIA) "\n", c, nazov_spolc(c));
+	}
+
+	Export_to_file(expt, ELEM_END(XML_LIT_COMMUNIA_VALUES) "\n\n");
+
+	// sub-element XML_LIT_TYPE_VALUES
+	Export_to_file(expt, ELEM_BEGIN(XML_LIT_TYPE_VALUES) "\n");
+
+	for (c = 0; c <= POCET_SLAVENI; c++) {
+		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_TYPE) "%s" ELEM_END(XML_LIT_TYPE) "\n", c, nazov_slavenia(c));
+	}
+
+	Export_to_file(expt, ELEM_END(XML_LIT_TYPE_VALUES) "\n\n");
+
+	// sub-element XML_LIT_COLOR_VALUES
+	Export_to_file(expt, ELEM_BEGIN(XML_LIT_COLOR_VALUES) "\n");
+
+	for (c = 1; c <= POCET_FARIEB_REALNYCH; c++) {
+		// do not export color "0" = N/A
+		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_COLOR) "%s" ELEM_END(XML_LIT_COLOR) "\n", c, nazov_farby(c));
+	}
+
+	Export_to_file(expt, ELEM_END(XML_LIT_COLOR_VALUES) "\n\n");
+
+	// end of element XML_SUPPORTED_VALUES
+	Export_to_file(expt, ELEM_END(XML_SUPPORTED_VALUES) "\n\n");
 
 	// element XML_INFO with sub-elements
 	Export_to_file(expt, ELEM_BEGIN(XML_INFO) "\n");

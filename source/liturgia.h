@@ -890,6 +890,9 @@ const short int lit_obd_pocet_tyzdnov[POCET_OBDOBI + 1] =
 extern const char *nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_obdobia(a)	nazov_obdobia_jazyk[a][_global_jazyk]
 
+extern const char *nazov_obdobia_ext_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
+#define		nazov_obdobia_ext(a)	nazov_obdobia_ext_jazyk[a][_global_jazyk]
+
 extern const char *nazov_obdobia_[POCET_OBDOBI + 1];
 
 // lokal == 6. pad, v kom/com
@@ -1225,6 +1228,8 @@ extern const char *rimskymi_tyzden_zaltara[ZVAZKY_LH + 1];
 extern const short int prvy_den[12];
 
 extern short int pocet_dni[12];
+
+extern const short int alphabet_jayzka[POCET_JAZYKOV + 1];
 
 extern const char char_nedelne_pismeno[POCET_DNI];
 extern const char *string_nedelne_pismeno[POCET_ALPHABET + 1][POCET_DNI];
