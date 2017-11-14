@@ -4,14 +4,23 @@ import java.lang.Runnable;
 
 import android.os.Bundle;
 
-public class PrayerDisplaySettings extends SettingsActivity {
+public class PrayerSettings extends SettingsActivity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    inflateMenu(R.menu.prayer_display_settings);
-    getSupportActionBar().setTitle(getString(R.string.prayer_content_settings_title));
+    inflateMenu(R.menu.prayer_settings);
+    getSupportActionBar().setTitle(getString(R.string.prayer_settings_title));
 
     final SettingsActivity act = this;
+    handleSwitch(R.id.various_options_in_prayers, new BooleanUrlOption() {
+      public void setOpt(UrlOptions opts, boolean value) { opts.setDisplayVariousOptions(value); }
+      public boolean getOpt(UrlOptions opts) { return opts.isDisplayVariousOptions(); }
+    });
+    handleSwitch(R.id.alternatives, new BooleanUrlOption() {
+      public void setOpt(UrlOptions opts, boolean value) { opts.setDisplayAlternatives(value); }
+      public boolean getOpt(UrlOptions opts) { return opts.isDisplayAlternatives(); }
+    });
+
     handleSwitch(R.id.display_communia_info, new BooleanUrlOption() {
       public void setOpt(UrlOptions opts, boolean value) { opts.setDisplayCommuniaInfo(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isDisplayCommuniaInfo(); }
@@ -52,4 +61,3 @@ public class PrayerDisplaySettings extends SettingsActivity {
     });
   }
 }
-

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item android:title="@string/prayer_content_settings_title">
+  <menu>
+    <item android:id="@+id/various_options_in_prayers"
+          android:title="@string/various_options_in_prayers"
+          app:actionLayout="@layout/widget_switch"
+    />
+
+    <item android:id="@+id/alternatives"
+          android:title="@string/alternatives"
+          app:actionLayout="@layout/widget_switch"
+    />
+  </menu>
+  </item>
+
+  <item android:title="@string/prayer_display_settings_title">
+  <menu>
+    <item android:id="@+id/display_communia_info"
+          android:title="@string/display_communia_info"
+          app:actionLayout="@layout/widget_switch"
+    />
+
+    <item android:id="@+id/verse_numbering"
+          android:title="@string/verse_numbering"
+          app:actionLayout="@layout/widget_switch"
+    />
+
+    <item android:id="@+id/bible_references"
+          android:title="@string/bible_references"
+          app:actionLayout="@layout/widget_switch"
+    />
+
+    <item android:id="@+id/bible_ref_bible_com"
+          android:title="@string/bible_ref_bible_com"
+          app:actionLayout="@layout/widget_switch"
+    />
+
+    <item android:id="@+id/footnotes"
+          android:title="@string/footnotes"
+          app:actionLayout="@layout/widget_switch"
+    />
+
+    <item android:id="@+id/liturgical_readings"
+          android:title="@string/liturgical_readings"
+          app:actionLayout="@layout/widget_switch"
+    />
+
+    <item android:id="@+id/psalms_omissions"
+          android:title="@string/psalms_omissions"
+          app:actionLayout="@layout/widget_switch"
+    />
+  </menu>
+  </item>
+</menu>

@@ -24,14 +24,6 @@ public class DeviceSettings extends SettingsActivity {
       public void set(boolean value) { BreviarApp.setMute(act, value); }
       public boolean get() { return BreviarApp.getMute(act); }
     });
-    handleSwitch(R.id.long_click_toggles_bar, new BooleanOption() {
-      public void set(boolean value) { BreviarApp.setLongClickTogglesBar(act, value); }
-      public boolean get() { return BreviarApp.getLongClickTogglesBar(act); }
-    });
-    handleSwitch(R.id.transparent_nav, new BooleanUrlOption() {
-      public void setOpt(UrlOptions opts, boolean value) { opts.setTransparentNav(value); }
-      public boolean getOpt(UrlOptions opts) { return opts.isTransparentNav(); }
-    });
   }
 }
 

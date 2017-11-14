@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.CompoundButton;
 
 import sk.breviar.android.BreviarApp;
@@ -33,15 +32,17 @@ public class Alarms extends AppCompatActivity {
         final CompoundButton box = ((CompoundButton)findViewById(Util.events[i].id));
         Util.events[i].updateBox(box, Util.events[i].getTime(this));
         final int j = i;
-        box.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View v) {
-            if (((CompoundButton)v).isChecked()) {
-              ((CompoundButton)v).setChecked(false);
+        box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+          public void onCheckedChanged(CompoundButton v, boolean isChecked) {
+            boolean enabled = Util.events[j].getTime(v.getContext()).enabled;
+            if (isChecked == enabled) return;
+            if (isChecked) {
               AlarmTimePickerFragment f = new AlarmTimePickerFragment();
               f.show(getSupportFragmentManager(), "event-" + j);
+              v.setChecked(false);
             } else {
-              Util.events[j].updateBox(box, new Util.AlarmTime(0, 0, false));
               Util.events[j].disable(box.getContext());
+              Util.events[j].updateBox(box, new Util.AlarmTime(0, 0, false));
             }
           }
         });

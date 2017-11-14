@@ -23,11 +23,12 @@
     <string name="long_click_toggles_bar">Hosszú lenyomása elrejti az alsó navigációs listát</string>
     <string name="transparent_nav">Navigációs nyilak mutatása</string>
 
-    <string name="prayer_content_settings1_title">Tartalom beállításai</string>
+    <string name="prayer_settings_title">Tartalom beállításai</string>
+    <string name="prayer_content_settings_title">Tartalom beállításai</string>
     <string name="various_options_in_prayers">Mutassa az imáknál a különböző lehetőségeket hiperhivatkozásokként</string>
     <string name="alternatives">Lehetőségek</string>
 
-    <string name="prayer_content_settings_title">Az imaóra szövegében jelenjenek meg</string>
+    <string name="prayer_display_settings_title">Az imaóra szövegében jelenjenek meg</string>
     <string name="display_communia_info">Hogy a közös részek honnan lettek véve</string>
     <string name="verse_numbering">A versek számai</string>
     <string name="bible_references">A bibliai hivatkozások</string>

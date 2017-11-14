@@ -59,15 +59,7 @@
                       android:name="android.support.PARENT_ACTIVITY"
                       android:value="sk.breviar.android.MainSettings" />
         </activity>
-        <activity android:name="PrayerContentSettings"
-                  android:configChanges="orientation|screenSize"
-                  android:parentActivityName="sk.breviar.android.Breviar"
-                  android:launchMode="singleTop">
-                  <meta-data
-                      android:name="android.support.PARENT_ACTIVITY"
-                      android:value="sk.breviar.android.MainSettings" />
-        </activity>
-        <activity android:name="PrayerDisplaySettings"
+        <activity android:name="PrayerSettings"
                   android:configChanges="orientation|screenSize"
                   android:parentActivityName="sk.breviar.android.Breviar"
                   android:launchMode="singleTop">

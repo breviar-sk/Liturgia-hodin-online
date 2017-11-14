@@ -24,6 +24,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -55,7 +56,7 @@ import sk.breviar.android.UrlOptions;
 import sk.breviar.android.Util;
 
 public class Breviar extends AppCompatActivity
-                     implements View.OnLongClickListener,
+                     implements GestureDetector.OnDoubleTapListener,
                                 ScaleGestureDetector.OnScaleGestureListener,
                                 NavigationView.OnNavigationItemSelectedListener,
                                 TextToSpeech.OnInitListener,
@@ -84,7 +85,8 @@ public class Breviar extends AppCompatActivity
 
     int ringMode = -1;
 
-    ScaleGestureDetector gesture_detector;
+    ScaleGestureDetector scale_gesture_detector;
+    GestureDetector tap_gesture_detector;
 
     TextToSpeech tts = null;
     enum TTSState {
@@ -160,19 +162,20 @@ public class Breviar extends AppCompatActivity
       S.start();
     }
 
-    void startDialogActivity(int title_id, String query) {
+    void startDialogActivity(int title_id, String query, boolean show_ok) {
       startActivity(new Intent(this, DialogActivity.class)
           .putExtra("title", title_id)
           .putExtra("url", "http://127.0.0.1:" + S.port_nonpersistent + "/" +
-                           scriptname + "?" + query + Html.fromHtml(S.getOpts())));
+                           scriptname + "?" + query + Html.fromHtml(S.getOpts()))
+          .putExtra("show_ok", show_ok));
     }
 
     void showAbout() {
-      startDialogActivity(R.string.about_title, "qt=pst&st=i&p=0");
+      startDialogActivity(R.string.about_title, "qt=pst&st=i&p=0", false);
     }
 
-    void showChangelog() {
-      startDialogActivity(R.string.news_title, "qt=pst&st=i&p=1");
+    void showChangelog(boolean show_ok) {
+      startDialogActivity(R.string.news_title, "qt=pst&st=i&p=1", show_ok);
     }
 
     synchronized void stopServer() {
@@ -468,13 +471,13 @@ public class Breviar extends AppCompatActivity
         }
       });
 
-      gesture_detector = new ScaleGestureDetector(this, this);
-
-      wv.setOnLongClickListener(this);
-      wv.setLongClickable(true);
+      scale_gesture_detector = new ScaleGestureDetector(this, this);
+      tap_gesture_detector = new GestureDetector(this,
+                                     new GestureDetector.SimpleOnGestureListener());
+      tap_gesture_detector.setOnDoubleTapListener(this);
 
       if (!getResources().getString(R.string.version).equals(settings.getString("version", ""))) {
-        showChangelog();
+        showChangelog(true);
         markVersion();
       }
 
@@ -571,7 +574,8 @@ public class Breviar extends AppCompatActivity
 
     @Override
     public boolean dispatchTouchEvent(android.view.MotionEvent e) {
-      gesture_detector.onTouchEvent(e);
+      scale_gesture_detector.onTouchEvent(e);
+      tap_gesture_detector.onTouchEvent(e);
       return super.dispatchTouchEvent(e);
     }
 
@@ -912,7 +916,7 @@ public class Breviar extends AppCompatActivity
           break;
 
         case R.id.menu_news:
-          showChangelog();
+          showChangelog(false);
           break;
 
         case R.id.menu_alarms:
@@ -972,20 +976,19 @@ public class Breviar extends AppCompatActivity
       return super.onKeyUp(keyCode, event);
     }
 
-    // handle long click in webview
-    public boolean onLongClick (View v) {
-      if (!fullscreen && BreviarApp.getLongClickTogglesBar(this)) {
-        boolean shown = !BreviarApp.getNavBarShown(this);
-        BreviarApp.setNavBarShown(this, shown);
-        if (shown) {
-          getSupportActionBar().show();
-        } else {
-          getSupportActionBar().hide();
-        }
-        return true;
-      }
+    @Override
+    public boolean onDoubleTap(android.view.MotionEvent e) {
+      toggleFullscreen();
+      return true;
+    }
+
+    @Override
+    public boolean onDoubleTapEvent(android.view.MotionEvent e) {
       return false;
     }
 
-
+    @Override
+    public boolean onSingleTapConfirmed(android.view.MotionEvent e) {
+      return false;
+    }
 }

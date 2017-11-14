@@ -108,10 +108,8 @@ public class BreviarApp extends Application {
 
   static final String booleanVolButtons = "vol_buttons";
   static final String booleanDimLock = "dim_lock";
-  static final String booleanNavBarShown = "nav_bar_shown";
   static final String booleanMute = "mute";
   static final String stringUrlOptions = "params";
-  static final String booleanLongClickTogglesBar = "long_click_toggles_bar";
 
   static public boolean getVolButtons(Context ctx) {
     return getBoolean(ctx, booleanVolButtons, false);
@@ -127,14 +125,6 @@ public class BreviarApp extends Application {
 
   static public void setDimLock(Context ctx, boolean dim_lock) {
     setBoolean(ctx, booleanDimLock, dim_lock);
-  }
-
-  static public boolean getNavBarShown(Context ctx) {
-    return getBoolean(ctx, booleanNavBarShown, true);
-  }
-
-  static public void setNavBarShown(Context ctx, boolean shown) {
-    setBoolean(ctx, booleanNavBarShown, shown);
   }
 
   static public boolean getMute(Context ctx) {
@@ -153,12 +143,5 @@ public class BreviarApp extends Application {
     setString(ctx, stringUrlOptions, opts);
   }
 
-  static public boolean getLongClickTogglesBar(Context ctx) {
-    return getBoolean(ctx, booleanLongClickTogglesBar, false);
-  }
-
-  static public void setLongClickTogglesBar(Context ctx, boolean toggles) {
-    setBoolean(ctx, booleanLongClickTogglesBar, toggles);
-  }
 }
 

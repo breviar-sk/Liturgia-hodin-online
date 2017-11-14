@@ -18,14 +18,4 @@
         app:actionLayout="@layout/widget_switch"
   />
 
-  <item android:id="@+id/long_click_toggles_bar"
-        android:title="@string/long_click_toggles_bar"
-        app:actionLayout="@layout/widget_switch"
-  />
-
-  <item android:id="@+id/transparent_nav"
-        android:title="@string/transparent_nav"
-        app:actionLayout="@layout/widget_switch"
-  />
-
 </menu>

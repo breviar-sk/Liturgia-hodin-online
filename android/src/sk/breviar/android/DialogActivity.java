@@ -76,6 +76,11 @@ public class DialogActivity extends AppCompatActivity {
       android.util.Log.v("breviar", "DialogActivity loading url: " + url);
       wv.loadUrl(url);
     }
+    boolean show_ok = intent.getBooleanExtra("show_ok", false);
+    if (!show_ok) {
+      View ok = (View)findViewById(R.id.dialog_ok);
+      ok.setVisibility(View.GONE);
+    }
 
     Toolbar toolbar = (Toolbar) findViewById(R.id.dialog_activity_toolbar);
     setSupportActionBar(toolbar);

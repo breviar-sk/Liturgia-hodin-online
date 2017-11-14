@@ -38,7 +38,6 @@ public class AlarmTimePickerFragment extends DialogFragment
   }
 
   public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-    box().setChecked(true);
     Util.EventInfo e = event();
     e.setTime(getActivity(), hourOfDay, minute);
     e.updateBox(box(), new Util.AlarmTime(minute, hourOfDay, true));

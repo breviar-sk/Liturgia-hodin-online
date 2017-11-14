@@ -44,7 +44,10 @@ public class DisplaySettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setButtonsOrder(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isButtonsOrder(); }
     });
-
+    handleSwitch(R.id.transparent_nav, new BooleanUrlOption() {
+      public void setOpt(UrlOptions opts, boolean value) { opts.setTransparentNav(value); }
+      public boolean getOpt(UrlOptions opts) { return opts.isTransparentNav(); }
+    });
   }
 }
 
