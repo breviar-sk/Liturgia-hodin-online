@@ -17,12 +17,20 @@
   android:background="?attr/colorPrimary">
 </android.support.v7.widget.Toolbar>
 
-<WebView android:id="@+id/dialog_webview"
-         android:layout_width="match_parent" android:layout_height="match_parent"
-         android:paddingLeft="4dip" android_paddingRight="4dip" android:layout_weight="1"/>
+<WebView
+  android:id="@+id/dialog_webview"
+  android:layout_width="match_parent" android:layout_height="match_parent"
+  android:paddingLeft="4dip" android_paddingRight="4dip" android:layout_weight="1"
+/>
 
-<Button android:id="@+id/dialog_ok" android:text="OK" style="?android:attr/buttonStyleSmall" 
-        android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <android.support.v7.widget.AppCompatButton
+    android:id="@+id/dialog_ok" android:text="OK"
+    style="?android:attr/buttonStyleSmall" 
+    app:backgroundTint="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+  />
 
 </LinearLayout>
 
