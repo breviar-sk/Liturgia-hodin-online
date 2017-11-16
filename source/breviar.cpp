@@ -11855,6 +11855,8 @@ void _nastav_global_pocet_zalmov_kompletorium(short int modlitba){
 void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, short int modlitba, short int poradie_svaty, short int aj_navigacia = ANO, short int force_neanalyzuj_rok = NIE){
 	short int ret = SUCCESS;
 
+	short int backup_global_modlitba = _global_modlitba;
+
 	_struct_dm _local_den;
 	_INIT_DM(_local_den);
 
@@ -12144,7 +12146,19 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 			){
 				Log("čl. 61 VSLH: beriem vešpery z nasledujúceho dňa...\n");
 
+				short int d, m, r;
+				d = _global_den.den;
+				m = _global_den.mesiac;
+				r = _global_den.rok;
+
+				Log("LABEL_ZMENA: den == %d (%d), mesiac == %d (%d), rok == %d (%d)...\n", d, den, m, mesiac, r, rok); // it should be the same: d == den, m == mesiac, r == rok
+
 				_global_den = _local_den;
+
+				// note that also date is overriden! we have to back up day, month and year
+				_global_den.den = d; // den;
+				_global_den.mesiac = m; // mesiac;
+				_global_den.rok = r; // rok;
 
 				if (su_vespery12(modlitba)) {
 					Log("priraďujem %s z ďalšieho dňa:\n", nazov_modlitby(modlitba));
@@ -12297,12 +12311,16 @@ LABEL_NIE_INE_VESPERY:
 		Log("...po návrate zo showDetails(%d, %s, %d, %d) vo funkcii rozbor_dna_s_modlitbou().\n", den, nazov_mesiaca(mesiac - 1), rok, poradie_svaty);
 	}// _global_modlitba == MODL_DETAILY
 	else{
-		Log("spustam showPrayer(%s) z funkcie rozbor_dna_s_modlitbou()...\n", nazov_modlitby(_global_modlitba));
-		// predpokladam, ze aj _global_modlitba je prve/druhe vespery, v _global_prve_vespery su spravne udaje (podobne kompletorium)
+		Log("spustam showPrayer(_global_modlitba == %s) z funkcie rozbor_dna_s_modlitbou()...\n", nazov_modlitby(_global_modlitba));
+		// 2017-11-15: historical note: predpokladam, ze aj _global_modlitba je prve/druhe vespery, v _global_prve_vespery su spravne udaje (podobne kompletorium)
+		// currently changed due to fixing problems of hyperlinks in first vespers
+		_global_modlitba = backup_global_modlitba; // restore this value due to generating hyperlinks in _export_link_helper()
+		// maybe also restoring value for _global_poradie_svaty would be necessary
+
 		LOG_ciara;
 		showPrayer(modlitba, SHOW_TEMPLAT_MODLITBA, aj_navigacia);
 		LOG_ciara;
-		Log("...po návrate zo showPrayer(%s) vo funkcii rozbor_dna_s_modlitbou().\n", nazov_modlitby(_global_modlitba));
+		Log("...po návrate zo showPrayer(_global_modlitba == %s) vo funkcii rozbor_dna_s_modlitbou().\n", nazov_modlitby(_global_modlitba));
 	}// pre konkrétnu modlitbu
 
 LABEL_s_modlitbou_DEALLOCATE:
