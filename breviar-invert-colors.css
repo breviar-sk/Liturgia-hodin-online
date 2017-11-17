@@ -203,15 +203,15 @@ input.button, input.reset, .button, a.button, .button-prayer, input.button-praye
 }
 
 input.button0, input.reset0, .button0 { 
-	background: #C0C0C0; /* #3366CC; #3399ff; */
+	background: #8B3C39; /* banner backgroud */
 	border: solid 0px #A0A0A0; 
-	color: #404040;
+	color: #AAAAAA; 
 }
 
 input.button1, input.reset1, .button1 { 
-	background: #C0C0C0; /* #3366CC; #3399ff; */
+	background: #8B3C39; /* banner backgroud */
 	border: solid 0px #A0A0A0; 
-	color: #404040;
+	color: #AAAAAA; 
 }
 
 input.button2, input.reset2, .button2 { 

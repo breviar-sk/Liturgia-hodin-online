@@ -743,6 +743,7 @@ select {
 	background: white; 
 	color: #1a1a1a;
 	font-family: inherit; 
+	margin: 4px;
 }
 
 input { 
@@ -764,7 +765,7 @@ input.button, input.reset, .button, a.button {
 	margin-left: 0px !important;
 	min-height: 20px;
 	min-width: 76px;
-	padding: 4px 4px;
+	padding: 8px 4px;
 	text-decoration: none; 
 }
 
@@ -778,7 +779,7 @@ input.button, input.reset, .button, a.button {
 	font-style: normal;
 	margin-left: 0px !important;
 	min-width: 76px;
-	padding: 4px 4px;
+	padding: 8px 4px;
 	text-decoration: none; 
 	width: 100%; /* within table cell */
 }
@@ -789,7 +790,7 @@ button.button-prayer {
 
 /* << >> */
 input.button0, input.reset0, .button0 { 
-	background: DimGray;
+	background: #8B3C39; /* banner backgroud */
 	border: solid 0px #1a1a1a; 
 	color: White; 
 	cursor: pointer;
@@ -798,14 +799,14 @@ input.button0, input.reset0, .button0 {
 	margin-left: 0px !important;
 	min-height: 20px;
 	min-width: 76px;
-	padding: 4px 4px;
+	padding: 8px 4px;
 	text-decoration: none; 
 	width: 100%; /* within table cell */
 }
 
 /* button for today */
 input.button1, input.reset1, .button1 { 
-	background: DimGray;
+	background: #8B3C39; /* banner backgroud */
 	border: solid 0px #1a1a1a; 
 	color: White;
 	cursor: pointer;
@@ -816,7 +817,7 @@ input.button1, input.reset1, .button1 {
 	min-height: 20px;
 	min-width: 76px;
 	margin-left: 0px !important;
-	padding: 4px 4px;
+	padding: 8px 4px;
 	text-decoration: none; 
 }
 
@@ -831,7 +832,7 @@ input.button2, input.reset2, .button2 {
 	min-height: 20px;
 	min-width: 76px;
 	margin-left: 0px !important;
-	padding: 4px 4px;
+	padding: 8px 4px;
 	text-decoration: none; 
 	width: 100%; /* within table cell */
 }

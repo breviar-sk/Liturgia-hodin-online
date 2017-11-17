@@ -4796,7 +4796,7 @@ void showPrayer(short int type, short int ktore_templaty = SHOW_TEMPLAT_MODLITBA
 	Log("\t BIT_OPT_1_SLAVA_OTCU == %ld (áno == %ld)\n", _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SLAVA_OTCU, BIT_OPT_1_SLAVA_OTCU);
 
 	// samotne vypisanie, o aku modlitbu ide
-	Log("showPrayer(type %i, %s), _global_modlitba == %s\n", type, nazov_modlitby(type), nazov_modlitby(_global_modlitba));
+	Log("showPrayer(type %d, %s), _global_modlitba == %s\n", type, nazov_modlitby(type), nazov_modlitby(_global_modlitba));
 
 	// umožníme aj MODL_NEURCENA -- pre statické texty
 	if (((type > MODL_PRVE_KOMPLETORIUM) || (type < MODL_INVITATORIUM))) {
@@ -16671,7 +16671,7 @@ short int parseQueryString(void) {
 	LogParams("pokúšam sa zistiť jazyk (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_JAZYK, STR_EMPTY)) && (i > 0)) {
 		--i;
-		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_JAZYK)) {
 			// ide o parameter STR_JAZYK
 			mystrcpy(pom_JAZYK, param[i].val, SMALL);
@@ -16687,7 +16687,7 @@ short int parseQueryString(void) {
 	LogParams("pokúšam sa zistiť kalendár (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_KALENDAR, STR_EMPTY)) && (i > 0)) {
 		--i;
-		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_KALENDAR)) {
 			// ide o parameter STR_KALENDAR
 			mystrcpy(pom_KALENDAR, param[i].val, SMALL);
@@ -16698,7 +16698,7 @@ short int parseQueryString(void) {
 	i = 0; // param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme od 0
 	LogParams("pokúšam sa zistiť css...\n");
 	while ((equalsi(pom_CSS, STR_EMPTY)) && (i < pocet)) {
-		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_CSS)) {
 			// ide o parameter STR_CSS
 			mystrcpy(pom_CSS, param[i].val, SMALL);
@@ -16718,7 +16718,7 @@ short int parseQueryString(void) {
 	LogParams("pokúšam sa zistiť font (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_FONT, STR_EMPTY)) && (i > 0)) {
 		--i;
-		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_FONT_NAME)) {
 			// ide o parameter STR_FONT_NAME
 			mystrcpy(pom_FONT, param[i].val, SMALL);
@@ -16733,7 +16733,7 @@ short int parseQueryString(void) {
 	LogParams("pokúšam sa zistiť font size (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_FONT_SIZE, STR_EMPTY)) && (i > 0)) {
 		--i;
-		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_FONT_SIZE)) {
 			// ide o parameter STR_FONT_SIZE
 			mystrcpy(pom_FONT_SIZE, param[i].val, VERY_SMALL);
@@ -16745,7 +16745,7 @@ short int parseQueryString(void) {
 	LogParams("pokúšam sa zistiť style margin (od posledného parametra k prvému, t. j. odzadu)...\n");
 	while ((equalsi(pom_STYLE_MARGIN, STR_EMPTY)) && (i > 0)) {
 		--i;
-		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_STYLE_MARGIN)) {
 			// ide o parameter STR_STYLE_MARGIN
 			mystrcpy(pom_STYLE_MARGIN, param[i].val, VERY_SMALL);
@@ -16758,7 +16758,7 @@ short int parseQueryString(void) {
 	i = 0; // od param[0]
 	LogParams("pokúšam sa zistiť query type...\n");
 	while ((ok != ANO) && (i < pocet)) {
-		LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 		if (equals(param[i].name, STR_QUERY_TYPE)) { // zistíme typ akcie, lebo ide o dobrý parameter
 			if (equals(param[i].val, STR_PRM_DATUM)) {
 				// ide o parameter STR_PRM_DATUM
@@ -16830,7 +16830,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s... parseQueryString()\n", local_str);
 		while ((equalsi(pom_OPT[j], STR_EMPTY)) && (i < pocet)) {
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)) {
 				// ide o parameter STR_OPT_j
 				mystrcpy(pom_OPT[j], param[i].val, SMALL);
@@ -16854,7 +16854,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s... parseQueryString(), force\n", local_str);
 		while ((equalsi(pom_FORCE_OPT[j], STR_EMPTY)) && (i < pocet)) {
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)) {
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT[j], param[i].val, SMALL);
@@ -16883,7 +16883,7 @@ short int parseQueryString(void) {
 		LogParams("attempt to get value of param %s... parseQueryString(), force, bit-komponenty 0 / pom_FORCE_OPT_0_SPECIALNE[%d] = %s\n", local_str, j, pom_FORCE_OPT_0_SPECIALNE[j]);
 		while ((equalsi(pom_FORCE_OPT_0_SPECIALNE[j], STR_EMPTY)) && (i > 0)) {
 			--i;
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)) {
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_0_SPECIALNE[j], param[i].val, SMALL);
@@ -16911,7 +16911,7 @@ short int parseQueryString(void) {
 		LogParams("attempt to get value of param %s... parseQueryString(), force, bit-komponenty 1 / pom_FORCE_OPT_1_CASTI_MODLITBY[%d] == %s\n", local_str, j, pom_FORCE_OPT_1_CASTI_MODLITBY[j]);
 		while ((equalsi(pom_FORCE_OPT_1_CASTI_MODLITBY[j], STR_EMPTY)) && (i > 0)) {
 			--i;
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)) {
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_1_CASTI_MODLITBY[j], param[i].val, SMALL);
@@ -16939,7 +16939,7 @@ short int parseQueryString(void) {
 		LogParams("attempt to get value of param %s... parseQueryString(), force, bit-komponenty 2 / pom_FORCE_OPT_2_HTML_EXPORT[%d] = %s\n", local_str, j, pom_FORCE_OPT_2_HTML_EXPORT[j]);
 		while ((equalsi(pom_FORCE_OPT_2_HTML_EXPORT[j], STR_EMPTY)) && (i > 0)) {
 			--i;
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)) {
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_2_HTML_EXPORT[j], param[i].val, SMALL);
@@ -16967,7 +16967,7 @@ short int parseQueryString(void) {
 		LogParams("attempt to get value of param %s... parseQueryString(), force, bit-komponenty 5 / pom_FORCE_OPT_5_ALTERNATIVES[%d] = %s\n", local_str, j, pom_FORCE_OPT_5_ALTERNATIVES[j]);
 		while ((equalsi(pom_FORCE_OPT_5_ALTERNATIVES[j], STR_EMPTY)) && (i > 0)) {
 			--i;
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)) {
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_5_ALTERNATIVES[j], param[i].val, SMALL);
@@ -16992,7 +16992,7 @@ short int parseQueryString(void) {
 		LogParams("attempt to get value of param %s... parseQueryString(), force, bit-komponenty 5 / pom_FORCE_OPT_5_ALTERNATIVES[%d] = %s\n", local_str, j, pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j]);
 		while ((equalsi(pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j], STR_EMPTY)) && (i > 0)) {
 			--i;
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, local_str)) {
 				// ide o parameter STR_FORCE_OPT_j
 				mystrcpy(pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j], param[i].val, SMALL);
@@ -17031,7 +17031,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_MODLITBA);
 		while ((equalsi(pom_MODLITBA, STR_EMPTY)) && (i < pocet)) {
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODLITBA)) {
 				// ide o parameter STR_MODLITBA
 				mystrcpy(pom_MODLITBA, param[i].val, SMALL);
@@ -17047,7 +17047,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_DALSI_SVATY);
 		while ((equalsi(pom_DALSI_SVATY, STR_EMPTY)) && (i < pocet)) {
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DALSI_SVATY)) {
 				// ide o parameter STR_DALSI_SVATY
 				mystrcpy(pom_DALSI_SVATY, param[i].val, SMALL);
@@ -17070,7 +17070,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_STATIC_TEXT);
 		while ((equalsi(pom_STATIC_TEXT, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_STATIC_TEXT)) {
 				// ide o parameter STR_NAZOV_SVIATOK
 				mystrcpy(pom_STATIC_TEXT, param[i].val, SMALL);
@@ -17090,7 +17090,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_MODL_ORDINARIUM);
 		while ((equalsi(pom_MODL_ORDINARIUM, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODL_ORDINARIUM)) {
 				// ide o parameter STR_NAZOV_SVIATOK
 				mystrcpy(pom_MODL_ORDINARIUM, param[i].val, SMALL);
@@ -17104,7 +17104,7 @@ short int parseQueryString(void) {
 			i = 0;
 			LogParams("attempt to get value of param %s using %s...\n", STR_MODL_ORDINARIUM, STR_MODLITBA);
 			while ((equalsi(pom_MODL_ORDINARIUM, STR_EMPTY)) && (i < pocet)) {
-				LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+				LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 				if (equals(param[i].name, STR_MODLITBA)) {
 					// ide o parameter STR_NAZOV_SVIATOK
 					mystrcpy(pom_MODL_ORDINARIUM, param[i].val, SMALL);
@@ -17157,7 +17157,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_DEN);
 		while ((equalsi(pom_DEN, STR_EMPTY)) && (i < pocet)) {
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DEN)) {
 				// ide o parameter STR_DEN
 				mystrcpy(pom_DEN, param[i].val, SMALL);
@@ -17176,7 +17176,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_MESIAC);
 		while ((equalsi(pom_MESIAC, STR_EMPTY)) && (i < pocet)) {
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MESIAC)) {
 				// ide o parameter STR_MESIAC
 				mystrcpy(pom_MESIAC, param[i].val, SMALL);
@@ -17195,7 +17195,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_ROK);
 		while ((equalsi(pom_ROK, STR_EMPTY)) && (i < pocet)) {
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ROK)) {
 				// ide o parameter STR_ROK
 				mystrcpy(pom_ROK, param[i].val, SMALL);
@@ -17214,7 +17214,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_MODLITBA);
 		while ((equalsi(pom_MODLITBA, STR_EMPTY)) && (i < pocet)) {
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODLITBA)) {
 				// ide o parameter STR_MODLITBA
 				mystrcpy(pom_MODLITBA, param[i].val, SMALL);
@@ -17230,7 +17230,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_DALSI_SVATY);
 		while ((equalsi(pom_DALSI_SVATY, STR_EMPTY)) && (i < pocet)) {
-			// LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DALSI_SVATY)) {
 				// ide o parameter STR_DALSI_SVATY
 				mystrcpy(pom_DALSI_SVATY, param[i].val, SMALL);
@@ -17262,7 +17262,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_DEN_V_TYZDNI);
 		while ((equalsi(pom_DEN_V_TYZDNI, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DEN_V_TYZDNI)) {
 				// ide o parameter STR_DEN_V_TYZDNI
 				mystrcpy(pom_DEN_V_TYZDNI, param[i].val, SMALL);
@@ -17281,7 +17281,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_TYZDEN);
 		while ((equalsi(pom_TYZDEN, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_TYZDEN)) {
 				// ide o parameter STR_TYZDEN
 				mystrcpy(pom_TYZDEN, param[i].val, SMALL);
@@ -17300,7 +17300,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_MODLITBA);
 		while ((equalsi(pom_MODLITBA, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODLITBA)) {
 				// ide o parameter STR_MODLITBA
 				mystrcpy(pom_MODLITBA, param[i].val, SMALL);
@@ -17325,7 +17325,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_DEN_V_TYZDNI);
 		while ((equalsi(pom_DEN_V_TYZDNI, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_DEN_V_TYZDNI)) {
 				// ide o parameter STR_DEN_V_TYZDNI
 				mystrcpy(pom_DEN_V_TYZDNI, param[i].val, SMALL);
@@ -17344,7 +17344,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_TYZDEN);
 		while ((equalsi(pom_TYZDEN, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_TYZDEN)) {
 				// ide o parameter STR_TYZDEN
 				mystrcpy(pom_TYZDEN, param[i].val, SMALL);
@@ -17363,7 +17363,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_MODLITBA);
 		while ((equalsi(pom_MODLITBA, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MODLITBA)) {
 				// ide o parameter STR_MODLITBA
 				mystrcpy(pom_MODLITBA, param[i].val, SMALL);
@@ -17383,7 +17383,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_LIT_OBD);
 		while ((equalsi(pom_LIT_OBD, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_LIT_OBD)) {
 				// ide o parameter STR_LIT_OBD
 				mystrcpy(pom_LIT_OBD, param[i].val, SMALL);
@@ -17403,7 +17403,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_LIT_ROK);
 		while ((equalsi(pom_LIT_ROK, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_LIT_ROK)) {
 				// ide o parameter STR_LIT_ROK
 				mystrcpy(pom_LIT_ROK, param[i].val, SMALL);
@@ -17428,7 +17428,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_NAZOV_SVIATOK);
 		while ((equalsi(pom_SVIATOK, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_NAZOV_SVIATOK)) {
 				// ide o parameter STR_NAZOV_SVIATOK
 				mystrcpy(pom_SVIATOK, param[i].val, SMALL);
@@ -17453,7 +17453,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_ANALYZA_ROKU);
 		while ((equalsi(pom_ANALYZA_ROKU, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ANALYZA_ROKU)) {
 				// ide o parameter STR_ANALYZA_ROKU
 				mystrcpy(pom_ANALYZA_ROKU, param[i].val, SMALL);
@@ -17477,7 +17477,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_MESIAC_ROKA);
 		while ((equalsi(pom_MESIAC, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_MESIAC_ROKA)) {
 				// ide o parameter STR_MESIAC_ROKA
 				mystrcpy(pom_MESIAC, param[i].val, SMALL);
@@ -17496,7 +17496,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_ROK_ROKA);
 		while ((equalsi(pom_ROK, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ROK_ROKA)) {
 				// ide o parameter STR_ROK_ROKA
 				mystrcpy(pom_ROK, param[i].val, SMALL);
@@ -17520,7 +17520,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_ROK_FROM);
 		while ((equalsi(pom_ROK_FROM, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ROK_FROM)) {
 				// ide o parameter STR_ROK_FROM
 				mystrcpy(pom_ROK_FROM, param[i].val, SMALL);
@@ -17540,7 +17540,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_ROK_TO);
 		while ((equalsi(pom_ROK_TO, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_ROK_TO)) {
 				// ide o parameter STR_ROK_TO
 				mystrcpy(pom_ROK_TO, param[i].val, SMALL);
@@ -17560,7 +17560,7 @@ short int parseQueryString(void) {
 		i = 0; // param[0] by mal síce obsahovať query type, ale radšej kontrolujeme od 0
 		LogParams("attempt to get value of param %s...\n", STR_TABULKA_LINKY);
 		while ((equalsi(pom_LINKY, STR_EMPTY)) && (i < pocet)) {
-			LogParams("...parameter %i (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+			LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
 			if (equals(param[i].name, STR_TABULKA_LINKY)) {
 				// ide o parameter STR_TABULKA_LINKY
 				mystrcpy(pom_LINKY, param[i].val, SMALL);
@@ -17736,6 +17736,29 @@ void init_global_string_as_html_title(short int den, short int mesiac, short int
 	}
 	Log("init_global_string_as_html_title(%d, %d, %d, %d): end.\n", den, mesiac, rok, modlitba);
 }// init_global_string_as_html_title()
+
+void normalize_calendar_for_language() {
+	Log("normalize_calendar_for_language(): begin...\n");
+
+	// check whether desired calendar is possible for selected language
+	_main_LOG_to_Export("kontrola kalendár (%s | %s) vs. jazyk (%s | %s)...\n", nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar], nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
+	
+	short int c = 0;
+	
+	for (c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
+		if (supported_calendars(c) == _global_kalendar) {
+			Log("...OK.\n");
+			break;
+		}
+	}
+	
+	if (c >= supported_calendars_count[_global_jazyk]) {
+		_global_kalendar = default_kalendar[_global_jazyk];
+		Log("kalendár zmenený na default pre daný jazyk (%d teda %s | %s).", _global_kalendar, nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar]);
+	}
+
+	Log("normalize_calendar_for_language(): end.\n");
+}
 
 // main
 int breviar_main(int argc, char **argv) {
@@ -18008,7 +18031,7 @@ int breviar_main(int argc, char **argv) {
 				_global_jazyk = JAZYK_SK;
 				_main_LOG_to_Export("\t(vzhľadom k neurčenému jazyku používam default)\n");
 			}
-			_main_LOG_to_Export("...jazyk (%s) = %i, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
+			_main_LOG_to_Export("...jazyk (%s) = %d, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
 
 			_main_LOG_to_Export("spúšťam setConfigDefaults()...\n");
 			setConfigDefaults(_global_jazyk); // 2011-04-13: doplnené
@@ -18023,7 +18046,9 @@ int breviar_main(int argc, char **argv) {
 				_global_kalendar = KALENDAR_VSEOBECNY;
 				_main_LOG_to_Export("\t(vzhľadom k neurčenému kalendáru používam default -- všeobecný kalendár)\n");
 			}
-			_main_LOG_to_Export("...kalendár (%s) = %i, teda %s (%s)\n", pom_KALENDAR, _global_kalendar, nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar]);
+			_main_LOG_to_Export("...kalendár (%s) = %d, teda %s (%s)\n", pom_KALENDAR, _global_kalendar, nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar]);
+
+			normalize_calendar_for_language();
 
 			// načítanie názvu fontu kvôli rôznym fontom
 			_main_LOG_to_Export("zisťujem font...\n");
@@ -18032,7 +18057,7 @@ int breviar_main(int argc, char **argv) {
 				_global_font = FONT_CSS;
 				_main_LOG_to_Export("\t(vzhľadom k neurčenému fontu používam default -- brať font z CSS)\n");
 			}
-			_main_LOG_to_Export("...font (%s) = %i, teda %s\n", pom_FONT, _global_font, nazov_fontu[_global_font]);
+			_main_LOG_to_Export("...font (%s) = %d, teda %s\n", pom_FONT, _global_font, nazov_fontu[_global_font]);
 
 			// načítanie veľkosti fontu
 			_main_LOG_to_Export("zisťujem font size...\n");
@@ -18041,7 +18066,7 @@ int breviar_main(int argc, char **argv) {
 				_global_font_size = FONT_SIZE_CSS;
 				_main_LOG_to_Export("\t(vzhľadom k neurčenej font size používam default -- brať font size z CSS)\n");
 			}
-			_main_LOG_to_Export("...font size (%s) = %i, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
+			_main_LOG_to_Export("...font size (%s) = %d, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
 
 			// reading of style margin
 			_main_LOG_to_Export("zisťujem style margin...\n");
@@ -18054,7 +18079,7 @@ int breviar_main(int argc, char **argv) {
 				_global_style_margin = MIN_STYLE_MARGIN;
 				_main_LOG_to_Export("\t(less than min... style margin set to %d)\n", _global_style_margin);
 			}
-			_main_LOG_to_Export("...style margin (%s) = %i (interpreted in HTML/CSS as px)\n", pom_STYLE_MARGIN, _global_style_margin);
+			_main_LOG_to_Export("...style margin (%s) = %d (interpreted in HTML/CSS as px)\n", pom_STYLE_MARGIN, _global_style_margin);
 
 			// načítanie css
 			_main_LOG_to_Export("zisťujem css...\n");
@@ -18070,7 +18095,7 @@ int breviar_main(int argc, char **argv) {
 					_main_LOG_to_Export("\t(vzhľadom k neurčenému CSS používam default pre daný jazyk)\n");
 				}
 			}
-			_main_LOG_to_Export("...css (%s) = %i, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
+			_main_LOG_to_Export("...css (%s) = %d, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
 
 			Log("file_export == `%s'...\n", file_export);
 			if (equals(file_export, STR_EMPTY) || equals(file_export, "+")) {
@@ -18193,7 +18218,7 @@ int breviar_main(int argc, char **argv) {
 		_global_jazyk = JAZYK_SK;
 		_main_LOG_to_Export("\t(vzhľadom k neurčenému jazyku používam default)\n");
 	}
-	_main_LOG_to_Export("...jazyk (%s) = %i, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
+	_main_LOG_to_Export("...jazyk (%s) = %d, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
 
 	_global_ritus = ritus_jazyka[_global_jazyk];
 
@@ -18210,7 +18235,9 @@ int breviar_main(int argc, char **argv) {
 		_global_kalendar = KALENDAR_VSEOBECNY;
 		_main_LOG_to_Export("\t(vzhľadom k neurčenému kalendáru používam default -- všeobecný kalendár)\n");
 	}
-	_main_LOG_to_Export("...kalendár (%s) = %i, teda %s (%s)\n", pom_KALENDAR, _global_kalendar, nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar]);
+	_main_LOG_to_Export("...kalendár (%s) = %d, teda %s (%s)\n", pom_KALENDAR, _global_kalendar, nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar]);
+
+	normalize_calendar_for_language();
 
 	// načítanie názvu fontu kvôli rôznym fontom
 	_main_LOG_to_Export("zisťujem font...\n");
@@ -18219,7 +18246,7 @@ int breviar_main(int argc, char **argv) {
 		_global_font = FONT_CSS;
 		_main_LOG_to_Export("\t(vzhľadom k neurčenému fontu používam default -- brať font z CSS)\n");
 	}
-	_main_LOG_to_Export("...font (%s) = %i, teda %s\n", pom_FONT, _global_font, nazov_fontu[_global_font]);
+	_main_LOG_to_Export("...font (%s) = %d, teda %s\n", pom_FONT, _global_font, nazov_fontu[_global_font]);
 
 	// načítanie veľkosti fontu
 	_main_LOG_to_Export("zisťujem font size...\n");
@@ -18228,7 +18255,7 @@ int breviar_main(int argc, char **argv) {
 		_global_font_size = FONT_SIZE_CSS;
 		_main_LOG_to_Export("\t(vzhľadom k neurčenej font size používam default -- brať font size z CSS)\n");
 	}
-	_main_LOG_to_Export("...font size (%s) = %i, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
+	_main_LOG_to_Export("...font size (%s) = %d, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
 
 	// reading of style margin
 	_main_LOG_to_Export("zisťujem style margin...\n");
@@ -18241,7 +18268,7 @@ int breviar_main(int argc, char **argv) {
 		_global_style_margin = MIN_STYLE_MARGIN;
 		_main_LOG_to_Export("\t(less than min... style margin set to %d)\n", _global_style_margin);
 	}
-	_main_LOG_to_Export("...style margin (%s) = %i (interpreted in HTML/CSS as px)\n", pom_STYLE_MARGIN, _global_style_margin);
+	_main_LOG_to_Export("...style margin (%s) = %d (interpreted in HTML/CSS as px)\n", pom_STYLE_MARGIN, _global_style_margin);
 
 	// načítanie css kvôli rôznym css
 	_main_LOG_to_Export("zisťujem css...\n");
@@ -18257,7 +18284,7 @@ int breviar_main(int argc, char **argv) {
 			_main_LOG_to_Export("\t(vzhľadom k neurčenému CSS používam default pre daný jazyk)\n");
 		}
 	}
-	_main_LOG_to_Export("...css (%s) = %i, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
+	_main_LOG_to_Export("...css (%s) = %d, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
 
 	LOG_ciara;
 

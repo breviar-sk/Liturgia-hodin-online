@@ -4698,18 +4698,18 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			t = set_tyzzal_1_2(tyzzal); // nema efekt pre tyzden == 4, lebo to uz je OBD_ADVENTNE_II
 
-			if(den == DEN_NEDELA){ // nedeľa: 1.-3. adventná nedeľa
+			if (den == DEN_NEDELA) { // nedeľa: 1.-3. adventná nedeľa
 				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
 				_set_chvalospev_vig_adv(modlitba);
 				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden);
 
 				// prvé vešpery
-				/* pre všepery 16. decembra (ak je to sobota, ako napr. v roku 2006) sa jednak vezme všedný deň (sobota), jednak nasledujúci deň, teda 17. decembra, 
+				/* pre všepery 16. decembra (ak je to sobota, ako napr. v roku 2006) sa jednak vezme všedný deň (sobota), jednak nasledujúci deň, teda 17. decembra,
 				 * a prvé vešpery sú už z adventného obdobia II., väčšina vecí z 3. adventnej nedele je podľa OBD_ADVENTNE_II, niektoré z OBD_ADVENTNE_I
 				 */
 
-				// hymnus - rovnaky pre prve a druhe vespery
+				 // hymnus - rovnaky pre prve a druhe vespery
 				modlitba = MODL_PRVE_VESPERY;
 				sprintf(_anchor, "%s%s%c_%s", _special_anchor_prefix,
 					nazov_OBD[litobd],
@@ -4801,7 +4801,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_adv1_modlitba; // modlitba
 				// modlitbu cez deň nie je potrebné špeciálne riešiť
 			}// nedeľa: 1.-3. adventná nedeľa
-			else{ // nie nedeľa, teda obyčajný deň adventného obdobia I.
+			else { // nie nedeľa, teda obyčajný deň adventného obdobia I.
 				// posvätné čítanie
 				modlitba = MODL_POSV_CITANIE;
 				// hymnus - rovnaky pre vsetky dni
@@ -5089,12 +5089,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			// ak tretia adventna nedela padne na 17. decembra, beru sa antifony na magnifikat, benediktus, prosby a hymny z tejto casti,
 			// avsak ostatne sa berie akoby z OBD_ADVENTNE_I, teda _file == nazov_obd_htm[OBD_ADVENTNE_I] |  _anchor == napr. ADV13NEr_ANT1 
 			// antifóna na magnifikat pre prvé vešpery 16. decembra (napr. rok 2006) sa vezme z 3. adventnej nedele
-			if(den == DEN_NEDELA){
+			if (den == DEN_NEDELA) {
 
 				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
 				_set_chvalospev_vig_adv(modlitba);
-				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden);
+				// _liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden);
 
 				// prvé vešpery - presunuté len pre nedeľu
 				modlitba = MODL_PRVE_VESPERY;
@@ -5108,8 +5108,8 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				set_LOG_litobd;
 				// antifóna na magnifikat a prosby závisia od toho, či je 3. alebo 4. adventná nedeľa, preto presunuté nižšie
 
-				if((tyzden == 3) && (_global_den.den == 17)){
-					// jedine 17. decembra, preto doplnené aj o dátum
+				if ((tyzden == 3) && (_global_den.den == 17)) {
+					// jedine 17. decembra, preto doplnené aj o dátum (Tretia adventná nedeľa)
 					litobd = OBD_ADVENTNE_I;
 					file_name_litobd(litobd);
 					file_name_litobd_pc(litobd);
@@ -5145,6 +5145,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 					// posvätné čítanie
 					modlitba = MODL_POSV_CITANIE;
+					_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden);
 					_adv1_modlitba; // modlitba má byť z 3. adventnej nedele
 					tyzden_pom = tyzden;
 					tyzden = 3; // nie je treba; pre istotu
@@ -5190,7 +5191,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_adv1_modlitba; // modlitba ako na ranné chvály
 
 				}// tretia adventná nedeľa
-				else{// tyzden == 4, štvrtá adventná nedeľa
+				else {// tyzden == 4, štvrtá adventná nedeľa
 
 					// prvé vešpery
 					modlitba = MODL_PRVE_VESPERY;
@@ -5229,6 +5230,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 					// posvätné čítanie; presunuté na koniec kvôli zmene súboru
 					modlitba = MODL_POSV_CITANIE;
+					_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden);
 					_adv2_modlitba_ne; // modlitba
 					file_name_litobd_pc(OBD_ADVENTNE_I); // kvôli antifónam pre posv. čítanie
 					litobd_pom = litobd;
@@ -5273,7 +5275,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_adv2_kresponz; // krátke responzórium - rovnaké pre všetky adventné týždne
 
 					// ak je 24. dec., vsetko pre ranne chvaly sa berie zo dna 24.
-					if(_global_den.den == 24){
+					if (_global_den.den == 24) {
 						file_name_litobd(OBD_ADVENTNE_II);
 						// benediktus
 						sprintf(_anchor, "%s%d%c_%s",
@@ -5285,7 +5287,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 						set_LOG_litobd;
 						goto label_24_DEC;
 					}
-					else{
+					else {
 						file_name_litobd(OBD_ADVENTNE_I);
 					}
 
@@ -5302,18 +5304,18 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_adv1_antifony; // antifóny
 					_adv2_kcitanie_adv1; // krátke čítanie - rovnake pre vsetky adventne nedele
 					// benediktus
-					if((_global_den.den == 21) || (_global_den.den == 23) || (_global_jazyk == JAZYK_HU)){
+					if ((_global_den.den == 21) || (_global_den.den == 23) || (_global_jazyk == JAZYK_HU)) {
 						// treba brať ant. Nebojte sa resp. Hľa, splnilo sa; pre maďarskú LH je explicitne uvedené, že sa má brať ant. z príslušného dňa (HU LH, vol. I, p. 261)
 					}
-					else{
-					  sprintf(_anchor, "%s%d%s%c_%s%c",
-						  nazov_OBD[litobd],
-						  tyzden,
-						  nazov_DN_asci[den],
-						  pismenko_modlitby(modlitba),
-						  ANCHOR_BENEDIKTUS,
-						  _global_den.litrok);
-					  _set_benediktus(modlitba, _file, _anchor);
+					else {
+						sprintf(_anchor, "%s%d%s%c_%s%c",
+							nazov_OBD[litobd],
+							tyzden,
+							nazov_DN_asci[den],
+							pismenko_modlitby(modlitba),
+							ANCHOR_BENEDIKTUS,
+							_global_den.litrok);
+						_set_benediktus(modlitba, _file, _anchor);
 					}
 					set_LOG_litobd;
 					_adv2_prosby_4advne; // prosby
@@ -5328,10 +5330,10 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 				}// štvrtá adventná nedeľa
 			}// nedeľa
-			else{
+			else {
 				// upravime veci pre 24. dec.
-				if(_global_den.den == 24){
-label_24_DEC:
+				if (_global_den.den == 24) {
+				label_24_DEC:
 					// iba ranne chvaly
 					modlitba = MODL_RANNE_CHVALY;
 					// hymnus - rovnaky pre kazdy den
@@ -6603,7 +6605,7 @@ label_24_DEC:
 				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
 				_set_chvalospev_vig_ocr(modlitba);
-				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, ((tyzden MOD 8) == 0)? 8: (tyzden MOD 8));
+				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, ((tyzden MOD 8) == 0) ? 8 : (tyzden MOD 8));
 
 				if(_global_den.denvr == TROJICA){
 					// najsv. trojice
