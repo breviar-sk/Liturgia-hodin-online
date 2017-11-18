@@ -9137,7 +9137,6 @@ void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dnes /* =
 	ExportHtmlComment("buttons/dni/call:begin");
 #endif
 	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)){
-		//bolo: #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 		_export_rozbor_dna_buttons_dni_compact(typ, dnes_dnes);
 	}
 	else{
@@ -9340,7 +9339,7 @@ void _export_rozbor_dna_kalendar_core(short int typ){
 	Log("--- _export_rozbor_dna_kalendar_core(typ == %d) -- end\n", typ);
 }// _export_rozbor_dna_kalendar_core()
 
-void _export_main_formular_checkbox(short int opt, long bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description, const char * html_text_opt_description_explain, short int line_break_before = ANO){
+void _export_main_formular_checkbox(short int opt, long bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description, const char * html_text_opt_description_explain, short int line_break_before = ANO) {
 	Log("_export_main_formular_checkbox(%d, %ld, %s, %s, %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
 	char html_label[MAX_STR];
 	mystrcpy(html_label, html_text_opt_description, MAX_STR);
@@ -9414,7 +9413,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	short int zobrazit_moznosti1 = (!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1));
 	short int zobrazit_moznosti2 = (!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2));
 
-#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
+#if defined(OS_Windows_Ruby)
 	// ---------------- language selection begin
 	Export("<" HTML_TABLE ">\n");
 	Export("<" HTML_TABLE_ROW ">\n");
@@ -9433,7 +9432,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	// pole WWW_JAZYK
 	Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_JAZYK, html_text_jazyk_explain[_global_jazyk]);
 
-	for (int i = 0; i <= POCET_JAZYKOV; i++){
+	for (int i = 0; i <= POCET_JAZYKOV; i++) {
 		// supported languages explicitly defined
 		if (
 			(i == JAZYK_SK) ||
@@ -9441,12 +9440,12 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 			(i == JAZYK_CZ_OP) ||
 			(i == JAZYK_LA) ||
-			(i == JAZYK_BY) ||
 #if defined(OS_Windows_Ruby)
+			(i == JAZYK_BY) ||
 			(i == JAZYK_RU) ||
 #endif
 #endif
-			(i == JAZYK_HU)){
+			(i == JAZYK_HU)) {
 			Export("<option%s>%s</option>\n", (i != _global_jazyk) ? STR_EMPTY : html_option_selected, nazov_jazyka[i]);
 		}
 	}
@@ -9520,12 +9519,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	}
 	// ---------------- calendar selection end
 
-
 	ExportHtmlComment("TABLE:BEGIN(options)");
 	Export("<" HTML_TABLE ">\n");
 
 	// print form with options; export <form> only conditionally
-	if(zobrazit_moznosti1){
+	if (zobrazit_moznosti1) {
 		sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s", script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, _global_den.den, STR_MESIAC, _global_den.mesiac, STR_ROK, _global_den.rok, pom2);
 		// Export("<form action=\"%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s\" method=\"post\">\n", script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, _global_den.den, STR_MESIAC, _global_den.mesiac, STR_ROK, _global_den.rok, pom2);
 		Export_HtmlFormPOST(action);
@@ -9552,16 +9550,19 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS1, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1)) ? ANO : NIE);
 	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2)) ? ANO : NIE);
 
-	if (zobrazit_moznosti1){ // len ak NIE JE možnosť (skrytie options1) zvolená
+	if (zobrazit_moznosti1) {
+		// len ak NIE JE možnosť (skrytie options1) zvolená
 
 		//---------------------------------------------------------------------
 
 		// doplnené zobrazenie neviditeľných checkboxov, aby sa po submite zmenených nastavení neresetovalo skrytie/zobrazenie kalendára, navigácie a časti "Ďalšie zobrazenia"
-		
+
+		// ToDo JUV: why these 3 lines are commented?
 //		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
 //		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
 //		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2)) ? ANO : NIE);
 
+#ifdef EXPORT_RITUS_IN_SETTINGS
 		// ritus could not be changed (depends on "language"); just print it
 		Export("<" HTML_TABLE_ROW ">\n");
 		ExportTableCell(HTML_TABLE_CELL);
@@ -9570,9 +9571,10 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
+#endif
 
-		// liturgical calendar moved under language selection
-
+#if !defined(IO_ANDROID)
+		// for Android it is not necessary; version 2.0 implements natively nice menu (though it was in settings earlier)
 		Export("<" HTML_TABLE_ROW ">\n");
 		ExportTableCell(HTML_TABLE_CELL);
 
@@ -9581,10 +9583,12 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
+#endif
 
 		// -------------------------------------------
 
-		if(!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)){ // len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená
+		if(!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)) {
+			// len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená
 	
 			Export("<" HTML_TABLE_ROW ">\n");
 			ExportTableCell(HTML_TABLE_CELL);
@@ -9629,8 +9633,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			Export(HTML_TABLE_CELL_END "\n");
 			Export(HTML_TABLE_ROW_END "\n");
-		}// tabuľka pre checkboxy 1 (options pre modlitbu)
-		else{
+		} // tabuľka pre checkboxy 1 (options pre modlitbu)
+		else {
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_CHV, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_SL, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_RUB, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY)) ? ANO : NIE);
@@ -9638,7 +9642,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_TD, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_PLNE_RESP, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_ZAVER, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
+		} // else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
 		//---------------------------------------------------------------------
 
@@ -9671,7 +9675,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_NONBREAKING_SPACE_LOOONG);
 		_export_main_formular_checkbox_slash(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST, STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, html_text_opt_1_slavit_ako_sviatok[_global_jazyk], html_text_opt_1_slavit_ako_slavnost[_global_jazyk], NIE);
 
-		if(!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)){ // len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená
+		if (!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)) {
+			// len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená
 
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST
 			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST, STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST, html_text_opt_1_spomienka_spolcast[_global_jazyk], html_text_opt_1_spomienka_spolcast_explain[_global_jazyk]);
@@ -9697,7 +9702,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_VIGILIA
 			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA, STR_FORCE_BIT_OPT_1_VIGILIA, html_text_opt_1_vigilia[_global_jazyk], html_text_opt_1_vigilia_explain[_global_jazyk]);
 		}
-		else{
+		else {
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SPOMIENKA_SPOL_CAST)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_SKRY_POPIS, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_MCD_DOPLNKOVA, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)) ? ANO : NIE);
@@ -9706,12 +9711,16 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_PROSBY_ZVOLANIE, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_VESP_KRATSIE_PROSBY)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_VIGILIA, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
+		} // else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
+#if !defined(IO_ANDROID)
+		// for Android it is not necessary; version 2.0 implements natively nice menu (though it was in settings earlier)
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_ALTERNATIVES
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES, STR_FORCE_BIT_OPT_2_ALTERNATIVES, html_text_opt_2_alternatives[_global_jazyk], html_text_opt_2_alternatives_explain[_global_jazyk]);
-
-		if(!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)){ // len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená
+#endif
+		
+		if(!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)) {
+			// len ak NIE JE táto možnosť (zobrazovanie všeličoho) zvolená | display only when BIT_OPT_2_ROZNE_MOZNOSTI is on
 
 			// doplnková psalmódia
 			Export(HTML_CRLF_LINE_BREAK);
@@ -9726,7 +9735,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131
 			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131, html_text_opt_5_DPsalmZ127_131[_global_jazyk], html_text_opt_5_DPsalmZ127_131_explain[_global_jazyk]);
 
-			if (_global_jazyk != JAZYK_CZ){
+			if (_global_jazyk != JAZYK_CZ) {
 
 				// posvätné čítanie
 				Export(HTML_CRLF_LINE_BREAK);
@@ -9801,7 +9810,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER
 				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER, STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, html_text_opt_5_CZhymnyNORMAL[_global_jazyk], html_text_opt_5_CZhymnyRENC[_global_jazyk]);
-			}// CZ only
+			} // CZ only
 
 			// ranné chvály na Popolcovú stredu
 			Export(HTML_CRLF_LINE_BREAK);
@@ -9830,8 +9839,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT
 			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, html_text_opt_6_alternatives_multi_antifona[_global_jazyk], STR_EMPTY);
-}
-		else{
+		}
+		else {
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_126_129)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131)) ? ANO : NIE);
@@ -9849,7 +9858,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)) ? ANO : NIE);
-		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
+		} // else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
@@ -9942,8 +9951,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_ISO_DATUM, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_ISO_DATUM))? ANO: NIE);
 #endif
 
-		// Android it is not necessary since 1.13.3 (added to native menu)
 #if !defined(IO_ANDROID)
+		// Android it is not necessary since 1.13.3 (added to native menu)
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_PRVE_VESPERY
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY, STR_FORCE_BIT_OPT_2_PRVE_VESPERY, html_text_opt_2_prve_vespery[_global_jazyk], html_text_opt_2_prve_vespery_explain[_global_jazyk]);
 		// Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_PRVE_VESPERY, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) ? ANO : NIE); // else: treba nastaviť hidden pre všetky options pre _global_force_opt
@@ -9991,8 +10000,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export("</select>\n");
 		}// if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER))
 
-		// for Android it is not necessary since 1.11 or 1.11.2 (settings moved to native menu)
 #if !defined(IO_ANDROID)
+		// for Android it is not necessary since 1.11 or 1.11.2 (settings moved to native menu)
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NAVIGATION
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION, STR_FORCE_BIT_OPT_2_NAVIGATION, html_text_opt_2_navigation[_global_jazyk], html_text_opt_2_navigation_explain[_global_jazyk]);
 
@@ -10017,8 +10026,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL, STR_FORCE_BIT_OPT_0_FONT_NORMAL, html_text_opt_0_font_normal[_global_jazyk], html_text_opt_0_font_normal_explain[_global_jazyk]);
 #endif
 
+#if !defined(IO_ANDROID)
+		// for Android it is not necessary since 2.0 (TTS implemented natively)
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY, STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY, html_text_opt_0_blind_friendly[_global_jazyk], html_text_opt_0_blind_friendly_explain[_global_jazyk]);
+#endif
 
 #if !defined(IO_ANDROID)
 		// for Android it is not necessary since 1.11.2 (setting moved to native menu)
@@ -10113,7 +10125,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export("<" HTML_TABLE ">\n");
 
 	// export <form> only conditionally
-	if(zobrazit_moznosti2){
+	if (zobrazit_moznosti2) {
 		sprintf(action, "%s?%s", uncgi_name, pom2);
 		Export_HtmlFormPOST(action);
 	}
@@ -10137,7 +10149,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS1, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1)) ? ANO : NIE);
 	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2)) ? ANO : NIE);
 
-	if (zobrazit_moznosti2){ // len ak NIE JE možnosť (skrytie options2) zvolená
+	if (zobrazit_moznosti2) {
+		// len ak NIE JE možnosť (skrytie options2) zvolená
 		
 //		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) ? ANO : NIE);
 //		Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_HIDE_KALENDAR, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR)) ? ANO : NIE);
@@ -10148,6 +10161,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		short int radio_checked = NIE;
 
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
+	// nothing for Android
 #else
 		Export("<" HTML_TABLE_ROW ">\n");
 		ExportTableCell(HTML_TABLE_CELL);
@@ -10549,8 +10563,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_CRLF_LINE_BREAK);
 
 		Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_FORCE_OPT_3, html_text_spol_casti_vziat_zo_explain[_global_jazyk]);
-		for (int i = 0; i <= POCET_SPOL_CASTI; i++){
-			if (poradie_spol_cast[i] == MODL_SPOL_CAST_NEURCENA){
+		for (int i = 0; i <= POCET_SPOL_CASTI; i++) {
+			if (poradie_spol_cast[i] == MODL_SPOL_CAST_NEURCENA) {
 				continue;
 			}
 			Export("<option%s>%s</option>\n", (poradie_spol_cast[i] != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(poradie_spol_cast[i]));

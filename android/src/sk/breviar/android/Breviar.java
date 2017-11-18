@@ -171,7 +171,7 @@ public class Breviar extends AppCompatActivity
     }
 
     void showAbout() {
-      startDialogActivity(R.string.about_title, "qt=pst&st=i&p=0", true);
+      startDialogActivity(R.string.about_title, "qt=pst&st=i&p=0", false);
     }
 
     void showChangelog(boolean show_ok) {

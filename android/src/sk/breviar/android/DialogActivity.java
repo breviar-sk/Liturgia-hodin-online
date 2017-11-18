@@ -44,6 +44,30 @@ public class DialogActivity extends AppCompatActivity {
         }
       });
     }
+
+    @JavascriptInterface
+    public void openTTSSettings() {
+      parent.runOnUiThread(new Runnable() {
+        public void run() {
+          Intent intent = new Intent();
+          intent.setAction("com.android.settings.TTS_SETTINGS");
+          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+          parent.startActivity(intent);
+        }
+      });
+    }
+
+    @JavascriptInterface
+    public void openIntent(String url) {
+      final android.net.Uri uri = android.net.Uri.parse(url);
+      parent.runOnUiThread(new Runnable() {
+        public void run() {
+          Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+          parent.startActivity(intent);
+        }
+      });
+    }
   }
 
   @Override

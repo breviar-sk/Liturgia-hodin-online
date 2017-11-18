@@ -33,5 +33,13 @@ public class MainSettings extends SettingsActivity {
         startActivity(new Intent(act, CalendarSettings.class));
       }
     });
+    handleClick(R.id.tts_settings, new Runnable() {
+      public void run() {
+        startActivity(new Intent(act, DialogActivity.class)
+            .putExtra("title", R.string.tts_settings_title)
+            .putExtra("content", getString(R.string.tts_settings_content))
+            .putExtra("show_ok", false));
+      }
+    });
   }
 }

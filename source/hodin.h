@@ -3566,7 +3566,7 @@ const char *html_text_opt_2_nocny_rezim[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_2_nocny_rezim_explain[POCET_JAZYKOV + 1] =
 {
-	"Zobrazí svetlý text na tmavom pozadí."
+	"Zobrazí svetlý text na tmavom pozadí.",
 	"Zobrazí světlý text na tmavém pozadí.",
 	"Displays dark background with light text for night usage.",
 	"",

@@ -23,4 +23,9 @@
         app:actionLayout="@layout/widget_submenu"
   />
 
+  <item android:id="@+id/tts_settings"
+        android:title="@string/tts_settings_title"
+        app:actionLayout="@layout/widget_submenu"
+  />
+
 </menu>
