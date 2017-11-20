@@ -1480,7 +1480,7 @@ extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_OVERRIDE_STUP_SLAV    65536 // možnosť zvoliť vyšší stupeň slávenia (spomienku možno sláviť ako sviatok alebo slávnosť; sviatok ako slávnosť)
 #define BIT_OPT_1_STUP_SVIATOK_SLAVNOST 131072 // vyšší stupeň slávenia (0 = sviatok, 1 = slávnosť); aplikuje sa iba ak BIT_OPT_1_OVERRIDE_STUP_SLAV je true
 
-#define POCET_OPT_2_HTML_EXPORT            17 // jednotlivé komponenty option 2 -- bity pre force option 2
+#define POCET_OPT_2_HTML_EXPORT            16 // jednotlivé komponenty option 2 -- bity pre force option 2
 extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: úprava významu (a interpretácie) option 2 (rozličné prepínače pre [online aj offline] export, napr. tlačidlá, zobrazenie dátumov a podobne)
 // 2012-10-01: doplnené ďalšie komponenty najmä pre vzhľad úvodnej obrazovky
@@ -1500,7 +1500,6 @@ extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_HIDE_OPTIONS2          8192 // skryť html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziť)
 #define BIT_OPT_2_ALTERNATIVES          16384 // ukázať iba jednu alternatívu (0 = ako doteraz; buď systém vyberie, alebo ukáže všetky možnosti)
 #define BIT_OPT_2_SHOW_DEFAULT_CALENDAR 32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
-#define BIT_OPT_2_BACKGROUND_OVERRIDE   65536 // override CSS background color (1 = use true black for night mode [AMOLED display] && true white for daily mode [beamer])
 
 #define POCET_OPT_4_OFFLINE_EXPORT          4 // jednotlivé komponenty option 4 -- bity pre force option 4
 extern long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];

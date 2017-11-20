@@ -275,15 +275,6 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
 		_header_css(expt, level, nazov_css_blind_friendly);
 	}
-	// style override background
-	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BACKGROUND_OVERRIDE)) {
-		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)) {
-			_header_css(expt, level, nazov_css_background_ov_invert);
-		}
-		else {
-			_header_css(expt, level, nazov_css_background_override);
-		}
-	}
 
 #if defined(IO_ANDROID)
 	Export_to_file(expt, "\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0\" />\n");

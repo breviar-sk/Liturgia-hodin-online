@@ -32,10 +32,6 @@ public class DisplaySettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setNightmode(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isNightmode(); }
     });
-    handleSwitch(R.id.background_override, new BooleanUrlOption() {
-      public void setOpt(UrlOptions opts, boolean value) { opts.setBackgroundOverride(value); }
-      public boolean getOpt(UrlOptions opts) { return opts.isBackgroundOverride(); }
-    });
     handleSwitch(R.id.normal_font, new BooleanUrlOption() {
       public void setOpt(UrlOptions opts, boolean value) { opts.setOnlyNonBoldFont(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isOnlyNonBoldFont(); }

@@ -43,7 +43,6 @@
     <string name="wrapping_printed">Zalamovať dlhé riadky ako v tlačenom vydaní (poetické časti)</string>
     <string name="smart_buttons">Tlačidlá pre modlitby zobraziť úsporne</string>
     <string name="night_mode">Nočný režim</string>
-    <string name="background_override">Biele/čierne pozadie (projektor/AMOLED)</string>
     <string name="normal_font">Všade použiť obyčajné písmo (nie tučné)</string>
     <string name="buttons_order">Dátumové navigačné tlačidlá zobraziť až pod tlačidlami pre modlitby</string>
 
@@ -115,11 +114,11 @@ body { background-color: #303030; color: #dddddd; }
 
 <h3>Ako si nastaviť hlasový výstup</h3>
 
-<p>Ak ste ešte nepoužívali hlasový výstup, je potrebné nainštalovať si aplikáciu pre syntézu hlasu (TTS, text-to-speech)  a nastaviť ju ako predvolenú v systémových nastaveniach.</p>
+<p>Ak ste ešte nepoužívali hlasový výstup, je potrebné nainštalovať si aplikáciu pre syntézu reči (TTS, text-to-speech)  a nastaviť ju ako predvolenú v systémových nastaveniach.</p>
 
-<p>Pre slovenčinu existuje napr. aplikácia Espeak, ktorá je k dispozícii zdarma. Existujú aj platené aplikácie s lepšou kvalitou hlasového výstupu. V aplikácii je ešte potrebné stianuť si podporu pre slovenčinu.</p>
+<p>Pre slovenčinu existuje napr. aplikácia eSpeak, ktorá je k dispozícii zdarma. Existujú aj platené aplikácie s lepšou kvalitou hlasového výstupu resp. hlasové výstupy niektorých výrobcov, podporujúce slovenčinu (napr. Samsung). V aplikácii je ešte potrebné stiahnuť si podporu pre slovenčinu.</p>
 
-<p><button onclick="bridge.openIntent('https://play.google.com/store/apps/details?id=com.redzoc.ramees.tts.espeak')">Nainštalovať Espeak z Google Play"</button></p>
+<p><button onclick="bridge.openIntent('https://play.google.com/store/apps/details?id=com.redzoc.ramees.tts.espeak')">Nainštalovať eSpeak z Google Play"</button></p>
 
 <p><button onclick="bridge.openTTSSettings()">Nastaviť predvolenú aplikáciu pre TTS"</button></p>
 

@@ -45,7 +45,6 @@
     <string name="wrapping_printed">Wrap long lines according to printed edition</string>
     <string name="smart_buttons">Tight display of buttons for prayers</string>
     <string name="night_mode">Night mode</string>
-    <string name="background_override">White/black background (beamer/AMOLED)</string>
     <string name="normal_font">Force normal font weight (no bold)</string>
     <string name="buttons_order">Date buttons display after buttons for prayers</string>
 

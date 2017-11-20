@@ -43,7 +43,6 @@
     <string name="wrapping_printed">Zalomit dlouhé řádky poetických textů jako v tištěném vydání</string>
     <string name="smart_buttons">Tlačítka pro modlitby zobrazit úsporně</string>
     <string name="night_mode">Noční režim</string>
-    <string name="background_override">Bílé/černé pozadí (projektor/AMOLED)</string>
     <string name="normal_font">Všude použít obyčejné písmo (ne tučné)</string>
     <string name="buttons_order">Navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby</string>
 
@@ -115,13 +114,13 @@ body { background-color: #303030; color: #dddddd; }
 
 <h3>Jak nastavit hlasový výstup</h3>
 
-<p>Pokud jste dosud nepoužívali hlasový výstup, je třeba si nainstalovat aplikaci pro syntézu hlasu (TTS, text-to-speech) a nastavit ji jako předvolenou v systémových nastaveních.</p>
+<p>Pokud jste dosud nepoužívali hlasový výstup, je třeba si nainstalovat aplikaci pro syntézu řeči (TTS, text-to-speech) a nastavit ji jako předvolenou v systémových nastaveních.</p>
 
-<p>Některé jazyky, také čeština, mají dobrou podporu ve vstavané androidové syntéze hlasu (určitě to platí pro novější verze Androidu). Pokud ji chcete použít, doporučujeme stáhnout si podporu pro jazyk, který plánujete používat, do Vašeho zařízení.</p>
+<p>Některé jazyky, také čeština, mají dobrou podporu ve vstavané androidové syntéze řeči (určitě to platí pro novější verze Androidu). Pokud ji chcete použít, doporučujeme stáhnout si podporu pro jazyk, který plánujete používat, do Vašeho zařízení.</p>
 
 <p><button onclick="bridge.openTTSSettings()">Nastavit předvolenou aplikaci pro TTS"</button></p>
 
-<p>Po nastavení hlasového výstupu můzete v aplikaci spustit předčítání aktuálních modliteb z menu (vysouvací zleva) anebo z aplikační lišty (nahoru).</p>
+<p>Po nastavení hlasového výstupu můzete v aplikaci spustit předčítání aktuálních modliteb z menu (vysouvací zleva) nebo z aplikační lišty (nahoru).</p>
 
 </body>
 </html>

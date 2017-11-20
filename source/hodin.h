@@ -1200,10 +1200,6 @@ const char *nazov_css_normal_font_weight = "breviar-normal-font.css";
 // blind-friendly CSS | includes ONLY ammendment to base css (breviar.css)
 const char *nazov_css_blind_friendly = "breviar-blind-friendly.css";
 
-// small CSS for background color override| includes ONLY ammendment to base css (breviar.css)
-const char *nazov_css_background_override = "breviar-background-override.css";
-const char *nazov_css_background_ov_invert = "breviar-background-ov-invert.css";
-
 // language charset (encoding); used for HTML heading | use CHARSET_UTF_8
 const short int charset_jazyka[POCET_JAZYKOV + 1] =
 { CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, /* ADD_VALUE_FOR_NEW_LANGUAGE */ };

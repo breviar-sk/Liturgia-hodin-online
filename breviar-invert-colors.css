@@ -146,7 +146,7 @@ p.bibleref {
 }
 
 body, html { 
-	background-color: #191919; /* #333333; */
+	background-color: #000;
 	color: #CCCCCC;
 }
 
@@ -163,7 +163,7 @@ a {
 }
 
 a:hover { 
-	background-color: #CC9966; /* #ff6633; */
+	background-color: #8B3C39; /* banner backgroud */
 	color: white; 
 }
 
@@ -188,7 +188,7 @@ hr {
 }
 
 select { 
-	background: #191919; /* #333333; */
+	background: #000;
 	color: #CCCCCC; 
 }
 
@@ -197,31 +197,31 @@ input {
 }
 
 input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer { 
-	background: #CC9966; /* #ff9933; #ffcc66; Tan; Peru; BurlyWood; */
+	background: #8B3C39; /* banner backgroud */
 	border: solid 0px #CCCCCC; 
-	color: #191919; /* #333333; */
+	color: #AAAAAA; 
 }
 
 input.button0, input.reset0, .button0 { 
-	background: #8B3C39; /* banner backgroud */
+	background: #461E1C; /* banner backgroud 50% */
 	border: solid 0px #A0A0A0; 
-	color: #AAAAAA; 
+	color: #666666; 
 }
 
 input.button1, input.reset1, .button1 { 
-	background: #8B3C39; /* banner backgroud */
+	background: #461E1C; /* banner backgroud 50% */
 	border: solid 0px #A0A0A0; 
-	color: #AAAAAA; 
+	color: #666666;
 }
 
 input.button2, input.reset2, .button2 { 
-	background: #BB8855;
+	background: #6F3028; /* banner backgroud 80% */
 	border: solid 0px #CCCCCC; 
-	color: #191919; /* #333333; */
+	color: #999999;
 }
 
 input.text { 
-	background: #191919; /* #333333; */
+	background: #000;
 }
 
 sup { 

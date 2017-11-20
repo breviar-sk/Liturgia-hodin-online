@@ -28,11 +28,6 @@
         app:actionLayout="@layout/widget_switch"
   />
 
-  <item android:id="@+id/background_override"
-        android:title="@string/background_override"
-        app:actionLayout="@layout/widget_switch"
-  />
-
   <item android:id="@+id/normal_font"
         android:title="@string/normal_font"
         app:actionLayout="@layout/widget_switch"

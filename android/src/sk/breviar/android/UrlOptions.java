@@ -236,15 +236,6 @@ public class UrlOptions {
     setBit("o2", 8, value);
   }
 
-  // of2bo
-  public boolean isBackgroundOverride() {
-    return hasBit("o2", 16);
-  }
-
-  public void setBackgroundOverride(boolean value) {
-    setBit("o2", 16, value);
-  }
-
   // of2rm
   public boolean isDisplayVariousOptions() {
     return hasBit("o2", 9);
