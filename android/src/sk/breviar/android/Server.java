@@ -30,6 +30,7 @@ public class Server extends Thread {
     static String scriptname;
     String language;
     String persistentOpts;
+    boolean backgroundOverride = false;
 
     public Server(Context _ctx, String sn, String lang, String opts) throws IOException {
       int i;
@@ -100,6 +101,10 @@ public class Server extends Thread {
 
     public synchronized String getOpts() {
       return persistentOpts;
+    }
+
+    public synchronized void setBackgroundOverride(boolean value) {
+      backgroundOverride = value;
     }
 
     // Force using current persistent options for the next request.
@@ -288,6 +293,10 @@ public class Server extends Thread {
           dokument.substring(0,scriptname.length()).equals(scriptname)) {
         handleCgi(client, dokument, postmethod, cntlen, buf, persistent);
       } else {
+        if (backgroundOverride && dokument.equals("breviar.css")) {
+          Log.v("breviar", "Overriding url due to background override");
+          dokument = "breviar-background-override.css";
+        }
         try {
           InputStream infile = ctx.getAssets().open(dokument, AssetManager.ACCESS_STREAMING);
           client.getOutputStream().write(

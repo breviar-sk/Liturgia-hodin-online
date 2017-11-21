@@ -27199,8 +27199,8 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 	case 13: // MES_NOV -- 13NOV
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SJ)){
-			if (poradie_svaty == 1){
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SJ)) {
+			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -27270,7 +27270,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
-					set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_VSETKO);
+					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
 				_set_zalmy_1nedele_rch();
@@ -27304,7 +27304,8 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 					_vlastna_cast_full_okrem_prosieb(modlitba);
 				}
 
-				// modlitba cez deň, totiž kedysi bol "sviatok", teraz "spomienka"; upozornil Mgr. Martin Kubeš, notář | _vlastna_cast_mcd_kcitresp_modl;
+				// modlitba cez deň
+				_vlastna_cast_mcd_modlitba;
 
 				break;
 			}
@@ -30195,7 +30196,8 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			_vlastna_cast_mcd_kcitresp_modl;
 
 			// vespery -- vsetko je z oktavy narodenia Pana (okrem hymnu pre CZ k vlastnímu výběru)
-			if (je_CZ_hymny_k_volnemu_vyberu){
+			if (je_CZ_hymny_k_volnemu_vyberu) {
+				modlitba = MODL_VESPERY;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 
@@ -30238,7 +30240,8 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			_set_zalmy_sviatok_jana_ap(modlitba);
 
 			// vespery -- vsetko je z oktavy narodenia Pana (okrem hymnu pre CZ k vlastnímu výběru)
-			if (je_CZ_hymny_k_volnemu_vyberu){
+			if (je_CZ_hymny_k_volnemu_vyberu) {
+				modlitba = MODL_VESPERY;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 
@@ -30278,7 +30281,8 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			_vlastna_cast_mcd_kcitresp_modl;
 
 			// vespery -- vsetko je z oktavy narodenia Pana (okrem hymnu pre CZ k vlastnímu výběru)
-			if (je_CZ_hymny_k_volnemu_vyberu){
+			if (je_CZ_hymny_k_volnemu_vyberu) {
+				modlitba = MODL_VESPERY;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 

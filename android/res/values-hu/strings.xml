@@ -43,6 +43,7 @@
     <string name="wrapping_printed">Hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)</string>
     <string name="smart_buttons">Az imaórák gombjainak gazdaságos elhelyezése</string>
     <string name="night_mode">Éjszakai mód</string>
+    <string name="background_override">Alternative colors (yellow background)</string>
     <string name="normal_font">Normál betűtípus használata (félkövér tiltása)</string>
     <string name="buttons_order">Dátumválasztó gombok megjelenítése az imaóraválasztó gombok után</string>
 
