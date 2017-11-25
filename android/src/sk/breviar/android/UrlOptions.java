@@ -209,15 +209,6 @@ public class UrlOptions {
     setBit("o2", 5, value);
   }
 
-  // of2tw
-  public boolean isTextWrap() {
-    return hasBit("o2", 6);
-  }
-
-  public void setTextWrap(boolean value) {
-    setBit("o2", 6, value);
-  }
-
   // of2btnu
   public boolean isSmartButtons() {
     return hasBit("o2", 7);

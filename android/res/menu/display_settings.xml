@@ -13,11 +13,6 @@
         app:actionLayout="@layout/widget_switch"
   />
 
-  <item android:id="@+id/wrapping_printed"
-        android:title="@string/wrapping_printed"
-        app:actionLayout="@layout/widget_switch"
-  />
-
   <item android:id="@+id/smart_buttons"
         android:title="@string/smart_buttons"
         app:actionLayout="@layout/widget_switch"

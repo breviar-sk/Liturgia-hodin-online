@@ -20,10 +20,6 @@ public class DisplaySettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setNavigation(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isNavigation(); }
     });
-    handleSwitch(R.id.wrapping_printed, new BooleanUrlOption() {
-      public void setOpt(UrlOptions opts, boolean value) { opts.setTextWrap(value); }
-      public boolean getOpt(UrlOptions opts) { return opts.isTextWrap(); }
-    });
     handleSwitch(R.id.smart_buttons, new BooleanUrlOption() {
       public void setOpt(UrlOptions opts, boolean value) { opts.setSmartButtons(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isSmartButtons(); }

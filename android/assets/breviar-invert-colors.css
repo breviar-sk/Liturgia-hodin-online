@@ -163,7 +163,7 @@ a {
 }
 
 a:hover { 
-	background-color: #8B3C39; /* banner backgroud */
+	background-color: #7A3E3B; /* button dark */
 	color: white; 
 }
 
@@ -197,27 +197,21 @@ input {
 }
 
 input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer { 
-	background: #8B3C39; /* banner backgroud */
+	background: #7A3E3B; /* button dark */
 	border: solid 0px #CCCCCC; 
 	color: #AAAAAA; 
 }
 
-input.button0, input.reset0, .button0 { 
-	background: #461E1C; /* banner backgroud 50% */
-	border: solid 0px #A0A0A0; 
-	color: #666666; 
-}
-
-input.button1, input.reset1, .button1 { 
-	background: #461E1C; /* banner backgroud 50% */
-	border: solid 0px #A0A0A0; 
-	color: #666666;
-}
-
 input.button2, input.reset2, .button2 { 
-	background: #6F3028; /* banner backgroud 80% */
+	background: #612821; /* button darker */
 	border: solid 0px #CCCCCC; 
-	color: #999999;
+	color: #A0A0A0;
+}
+
+input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 { 
+	background: #441513; /* button darkest */
+	border: solid 0px #A0A0A0; 
+	color: #A0A0A0;
 }
 
 input.text { 

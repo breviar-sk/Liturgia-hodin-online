@@ -146,7 +146,7 @@ const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 {
 	{ "Inv.", "Inv.", "Inv.", "Inv.", "", "Inv.", "Imád.", "Пред.", "Заклік", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "Posv. čít.", "Čtení", "Reading", "Off. lect.", "", "Čtení", "Olvasm. i.", "Ч. чт.", "Гадз. чыт.", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Ranné chv.", "Ranní chv.", "Morning pr.", "Laudes", "", "Ranní chv.", "Reggeli dics.", "Утреня", "Ютрань", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "Ranné ch.", "Ranní chv.", "Morning pr.", "Laudes", "", "Ranní chv.", "Reggeli dics.", "Утреня", "Ютрань", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "9h", "9h", "9h", "Tertia", "", "Tercie", "Délelőtt", "ru_text", "9 г.", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "12h", "12h", "12h", "Sexta", "", "Sexta", "Délben", "ru_text", "12 г.", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "15h", "15h", "15h", "Nona", "", "Nona", "Délután", "ru_text", "15 г.", /* STRING_1_FOR_NEW_LANGUAGE */ }
@@ -1976,8 +1976,6 @@ const char *str_ano[POCET_JAZYKOV + 1] =
 const char *str_nie[POCET_JAZYKOV + 1] = 
 { "nie", "ne", "no", "non", "___", "ne", "nem", "ru_text", "не", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #define		STR_NIE		str_nie[_global_jazyk]
-
-// const char *html_text_jazyk_android = "SK/CZ/HU:";
 
 const char *html_text_jazyk[POCET_JAZYKOV + 1] =
 {
@@ -8428,7 +8426,7 @@ const char *text_JUN_12_OCD[POCET_JAZYKOV + 1] =
 };
 const char *text_JUN_12_SVD[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Ľudovíta Mzyka, kňaza," HTML_LINE_BREAK " a jeho spoločníkov, mučeníkov",
 	"",
 	"",
 	"la_",

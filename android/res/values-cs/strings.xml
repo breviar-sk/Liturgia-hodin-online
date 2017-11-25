@@ -40,10 +40,9 @@
     <string name="display_settings_title">Další zobrazení</string>
     <string name="first_vespers_buttons">Zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení</string>
     <string name="navigation">Zobrazit navigaci v textech modliteb</string>
-    <string name="wrapping_printed">Zalomit dlouhé řádky poetických textů jako v tištěném vydání</string>
     <string name="smart_buttons">Tlačítka pro modlitby zobrazit úsporně</string>
     <string name="night_mode">Noční režim</string>
-    <string name="background_override">Alternativní barvy (žluté pozadí)</string>
+    <string name="background_override">Alternativní barva pozadí (žlutá)</string>
     <string name="normal_font">Všude použít obyčejné písmo (ne tučné)</string>
     <string name="buttons_order">Navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby</string>
 

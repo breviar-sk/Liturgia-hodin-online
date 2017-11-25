@@ -37,11 +37,11 @@
 #endif
 
 #ifdef OS_Windows_Ruby
-#define DEFAULT_FONT_FAMILY_SERIF "Cambria, Constantia, Georgia, Liberation, Gentium, Garamond, Serif"
-#define DEFAULT_FONT_FAMILY_SANS_SERIF "Candara, Tahoma, Verdana, Helvetica, Sans-Serif"
+#define DEFAULT_FONT_FAMILY_SERIF "Cambria, Constantia, Georgia, Liberation, DejaVu Serif, Gentium, Garamond, serif"
+#define DEFAULT_FONT_FAMILY_SANS_SERIF "Candara, Tahoma, Verdana, Helvetica, sans-serif"
 #else
-#define DEFAULT_FONT_FAMILY_SERIF "Serif"
-#define DEFAULT_FONT_FAMILY_SANS_SERIF "Sans-Serif"
+#define DEFAULT_FONT_FAMILY_SERIF "serif"
+#define DEFAULT_FONT_FAMILY_SANS_SERIF "sans-serif"
 #endif
 #define DEFAULT_FONT_FAMILY_INHERIT "inherit"
 #define DEFAULT_FONT_SIZE_INHERIT "inherit"

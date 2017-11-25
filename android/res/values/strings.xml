@@ -42,10 +42,9 @@
     <string name="display_settings_title">Display settings</string>
     <string name="first_vespers_buttons">Display button for first vespers for Sundays and solemnitas for the day of celebration</string>
     <string name="navigation">Display navigation buttons in prayer</string>
-    <string name="wrapping_printed">Wrap long lines according to printed edition</string>
     <string name="smart_buttons">Tight display of buttons for prayers</string>
     <string name="night_mode">Night mode</string>
-    <string name="background_override">Alternative colors (yellow background)</string>
+    <string name="background_override">Alternative background color (yellow)</string>
     <string name="normal_font">Force normal font weight (no bold)</string>
     <string name="buttons_order">Date buttons display after buttons for prayers</string>
 

@@ -1479,6 +1479,14 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 	Log("--includeFile(%d, %s, %s, %s): begin,\n", type, paramname, fname, modlparam);
 
+	short int isMobileOS;
+
+#if defined(IO_ANDROID) || defined (__APPLE__)
+	isMobileOS = 1;
+#else
+	isMobileOS = 0;
+#endif
+
 	// nasledovné sú potrebné pre hyperlink v texte modlitby s prípadne upravenými parametrami
 #ifdef BEHAVIOUR_WEB
 	long _global_opt_1_casti_modlitby_orig; // parameter o1 (_global_opt 1) pre modlitbu cez deň (doplnková psalmódia)
@@ -2278,12 +2286,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					strcpy(z95rest, STR_EMPTY);
 				}// upraviť odkaz na žalm 95 na hyperlink -- PARAM_LINK_ZALM95_END
 
-				// zobraziť/nezobraziť zalomenie veršov podľa tlačenej LH
+				// zobraziť/nezobraziť zalomenie veršov podľa tlačenej LH | ignore this switch (as if it would OFF) for mobile OS (Android, iOS)
 				if (equals(strbuff, PARAM_ZALOMENIE) && (vnutri_inkludovaneho == 1)) {
 #if defined(EXPORT_HTML_SPECIALS)
 					Export("[%s:%s|rest=%s]", strbuff, modlparam, (rest == NULL) ? STR_EMPTY : rest);
 #endif
-					if (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP)) {
+					if (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP) && (isMobileOS == 0)) {
 						// MAX_BUFFER bol zvýšený, lebo strbuff bol v tomto prípade veľmi dlhý
 						Export("zalomenie-->%s<!--zalomenie", rest);
 					}
