@@ -12245,7 +12245,12 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			if (_global_jazyk == JAZYK_SK) {
+				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+			} // SK
+			else {
+				_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			} // HU
 			mystrcpy(_global_svaty1.meno, text_JUN_12_SVD[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
 			_global_svaty1.farba = LIT_FARBA_CERVENA;
@@ -25045,6 +25050,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			pocet = pom_poradie;
 
 			_set_slavenie_typslav_smer(pom_poradie, SLAV_SLAVNOST, 4); // miestne slávnosti Pána, preblahoslavenej Panny Márie a svätých; podľa smerníc 4
+			_global_svaty(pom_poradie).typslav_lokal = LOKAL_SLAV_KONSEKR_KOSTOLY;
 			_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
 			mystrcpy(_global_svaty(pom_poradie).meno, text_OKT_22_OP[_global_jazyk], MENO_SVIATKU);
