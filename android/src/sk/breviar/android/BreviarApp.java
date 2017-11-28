@@ -113,7 +113,7 @@ public class BreviarApp extends Application {
   static final String stringUrlOptions = "params";
 
   static public boolean getVolButtons(Context ctx) {
-    return getBoolean(ctx, booleanVolButtons, false);
+    return getBoolean(ctx, booleanVolButtons, true);
   }
 
   static public void setVolButtons(Context ctx, boolean use_for_scrolling) {

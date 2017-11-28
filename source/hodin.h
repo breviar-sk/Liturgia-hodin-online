@@ -13269,11 +13269,11 @@ const char *text_NOV_05_SDB[POCET_JAZYKOV + 1] =
 const char *text_NOV_05_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Šimona Ballacchiho, rehoľníka",
+	"Bl. Šimona Ballacchiho, řeholníka",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Šimona Ballacchiho, řeholníka",
 	"",
 	"ru_text",
 	"by_text",
@@ -13555,11 +13555,11 @@ const char *text_NOV_14_OPRAEM[POCET_JAZYKOV + 1] =
 const char *text_NOV_14_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jána Licciu, kňaza",
+	"Bl. Jana Liccia, kněze",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Jana Liccia, kněze",
 	"",
 	"ru_text",
 	"by_text",
@@ -13568,11 +13568,11 @@ const char *text_NOV_14_1_OP[POCET_JAZYKOV + 1] =
 const char *text_NOV_14_2_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Lucie z Narni, panny",
+	"Bl. Lucie Broccadelliové neboli z Narni, panny, řeholnice",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Lucie Broccadelliové neboli z Narni, panny, řeholnice",
 	"",
 	"ru_text",
 	"by_text",
@@ -13750,11 +13750,11 @@ const char *text_NOV_19_OFM[POCET_JAZYKOV + 1] =
 const char *text_NOV_19_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jakuba Benfattiho, biskupa",
+	"Bl. Jakuba Benfattiho, biskupa",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Jakuba Benfattiho, biskupa",
 	"",
 	"ru_text",
 	"by_text",
@@ -13971,11 +13971,11 @@ const char *text_NOV_27_OFM[POCET_JAZYKOV + 1] =
 const char *text_NOV_27_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Margity Savojskej, matky rodiny a rehoľníčky",
+	"Bl. Markéty Savojské, vdovy, mnišky",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Markéty Savojské, vdovy, mnišky",
 	"",
 	"ru_text",
 	"by_text",
@@ -14078,11 +14078,11 @@ const char *text_NOV_30[POCET_JAZYKOV + 1] =
 const char *text_DEC_01_SJ[POCET_JAZYKOV + 1] =
 {
 	"Sv. Edmunda Campiona, Róberta Southwella a ich spoločníkov, mučeníkov",
+	"Sv. Edmunda Kampiána, kněze a mučedníka",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Sv. Edmunda Kampiána, kněze a mučedníka",
 	"",
 	"ru_text",
 	"by_text",
@@ -14091,11 +14091,11 @@ const char *text_DEC_01_SJ[POCET_JAZYKOV + 1] =
 const char *text_DEC_01_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jána Vercellského, kňaza",
+	"Bl. Jana z Vercelli, kněze",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Jana z Vercelli, kněze",
 	"",
 	"ru_text",
 	"by_text",
@@ -14103,7 +14103,7 @@ const char *text_DEC_01_OP[POCET_JAZYKOV + 1] =
 };
 const char *text_DEC_01_CZ[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Edmunda Campiona, Róberta Southwella a ich spoločníkov, mučeníkov",
 	"Sv. Edmunda Kampiána, kněze a mučedníka",
 	"",
 	"",
@@ -14364,11 +14364,11 @@ const char *text_DEC_14_OCD[POCET_JAZYKOV + 1] =
 const char *text_DEC_16_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Šebastiána Maggiho, kňaza",
+	"Bl. Šebestiána Maggiho, kněze",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Šebestiána Maggiho, kněze",
 	"",
 	"ru_text",
 	"by_text",
