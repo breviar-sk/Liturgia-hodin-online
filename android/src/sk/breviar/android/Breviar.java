@@ -615,7 +615,11 @@ public class Breviar extends AppCompatActivity
         if (BreviarApp.getMute(getApplicationContext())) {
           AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
           ringMode = manager.getRingerMode();
-          manager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+          try {
+            manager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+          } catch (java.lang.SecurityException e) {
+            Log.v("breviar", "Switching to silent mode is not allowed");
+          }
         } else {
           ringMode = -1;
         }
@@ -634,7 +638,11 @@ public class Breviar extends AppCompatActivity
         }
         if (ringMode != -1) {
           AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-          manager.setRingerMode(ringMode);
+          try {
+            manager.setRingerMode(ringMode);
+          } catch (java.lang.SecurityException e) {
+            Log.v("breviar", "Switching to silent mode is not allowed");
+          }
           ringMode = -1;
         }
       }
