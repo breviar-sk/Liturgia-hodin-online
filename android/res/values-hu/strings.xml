@@ -19,7 +19,7 @@
     <string name="settings_title">Eszköz beállításai</string>
     <string name="vol_buttons">Hangerőt állító gombok használata görgetéshez</string>
     <string name="dimlock">Ne sötétüljön el a képernyő</string>
-    <string name="mute">A telefon csendes módba kapcsolása</string>
+    <string name="mute">A csengetés kikapcsolása</string>
     <string name="long_click_toggles_bar">Hosszú lenyomása elrejti az alsó navigációs listát</string>
     <string name="transparent_nav">Navigációs nyilak mutatása</string>
 
@@ -86,7 +86,7 @@
     <string name="tts_ready">Olvas</string>
     <string name="tts_speaking">Hagyja abba az olvasást</string>
 
-    <string name="notification_not_allowed">You have not allowed the app to change ring mode.</string>
+    <string name="notification_not_allowed">Még nem engedélyezte az alkalmazásnak a csengetés kikapcsolását.</string>
 
     <string name="channel_name">Zsolozsma</string>
     <string name="channel_description">Értesítések</string>

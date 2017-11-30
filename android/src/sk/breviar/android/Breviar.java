@@ -143,6 +143,8 @@ public class Breviar extends AppCompatActivity
 
     void goHome() {
       Log.v("breviar", "goHome");
+      if (wv == null) return;
+      if (S == null) return;
       wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname +
                  "?qt=pdnes" + Html.fromHtml(S.getOpts()));
     }
@@ -270,7 +272,7 @@ public class Breviar extends AppCompatActivity
 
       appEventId = BreviarApp.getEventId();
 
-      headless = new HeadlessWebview(this);
+      headless = new HeadlessWebview(getApplicationContext());
 
       // Restore preferences
       SharedPreferences settings = getSharedPreferences(Util.prefname, 0);
@@ -774,10 +776,14 @@ public class Breviar extends AppCompatActivity
       }
 
       drawer_item = menu.findItem(R.id.only_non_bold_font_toggle);
-      updateMenuItemSwitch(drawer_item, !opts.isOnlyNonBoldFont());
+      if (drawer_item != null) {
+        updateMenuItemSwitch(drawer_item, !opts.isOnlyNonBoldFont());
+      }
 
       drawer_item = menu.findItem(R.id.fullscreen_toggle);
-      updateMenuItemSwitch(drawer_item, fullscreen);
+      if (drawer_item != null) {
+        updateMenuItemSwitch(drawer_item, fullscreen);
+      }
     }
 
     void stopSpeaking() {

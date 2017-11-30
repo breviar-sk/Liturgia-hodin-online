@@ -20,6 +20,8 @@ public class UrlOptions {
     params = new java.util.HashMap<String, String>();
 
     Pattern p = Pattern.compile("(^|&)([^;=]+)=");
+    if (base_uri == null) return;
+    if (base_uri.getQuery() == null) return;
     Matcher m = p.matcher(base_uri.getQuery());
     while (m.find()) {
       String key = m.group(2);

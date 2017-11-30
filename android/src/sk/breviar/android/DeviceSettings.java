@@ -3,6 +3,7 @@ package sk.breviar.android;
 import java.lang.Runnable;
 
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -31,6 +32,8 @@ public class DeviceSettings extends SettingsActivity {
           if (!manager.isNotificationPolicyAccessGranted()) {
             value = false;
             Toast.makeText(act, R.string.notification_not_allowed, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+            act.startActivity(intent);
           }
         }
         BreviarApp.setMute(act, value);

@@ -10880,7 +10880,7 @@ const char *text_AUG_26_BY[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_26_OCD[POCET_JAZYKOV + 1] =
 {
-	"Spomienka prebodnutia srdca Sv. Terézie od Ježiša, našej matky",
+	"Spomienka prebodnutia srdca sv. Terézie od Ježiša, našej matky",
 	"",
 	"",
 	"",

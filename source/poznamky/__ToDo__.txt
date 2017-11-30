@@ -72,4 +72,12 @@ otvorim si RCH - tie su zo spomienky, prepnem sa na vespery - tie su z nedele...
 mozno to tak ma byt, mozno nie...
 
 _________________________________________________________________________
+2017-11-29, JUV:
+
+Takisto by ma zaujímalo, èi je technicky nároèné urobi tak, aby sa èítal iba jeden hymnus. Tento tıdeò sú v ponuke a tri, prvé dva v slovenèine, èo je ešte OK, ale potom ten latinskı, aby mi ho èítala pani so slovenskou vıslovnosou je u trochu nezmyselné. (Pavel Vilhan)
+
+Hymny pre 34. tıdeò Cezroèného obdobia sú tak špeciálne spravené (myslím implementované), e je to jediná vınimka v celom breviári, e tam nie sú jednotlivé alternatívy (ako napr. hymny pre ¾ubovo¾nú spomienku PM v sobotu a pod.). Èasom aj toto dokonèím, urèite cie¾om je, e pri zapnutom prepínaèi “alternatívy” bude v modlitbe vdy len a práve 1 monos zobrazená (samozrejme, s monosou prepínania priamo na mieste na jeden klik – ïalší/inı text). Toto musím zas najprv pre web vyrieši ja a do appky pre Android sa to dostane takpovediac “instantne” (bez úsilia automaticky).
+
+
+_________________________________________________________________________
 

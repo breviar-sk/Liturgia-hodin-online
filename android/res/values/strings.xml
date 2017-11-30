@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version" translatable="false">2.0</string>
+    <string name="version" translatable="false">2.0.1</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -21,7 +21,7 @@
     <string name="settings_title">Device settings</string>
     <string name="vol_buttons">Use volume buttons for scrolling</string>
     <string name="dimlock">Do not dim screen</string>
-    <string name="mute">Put phone to silent mode</string>
+    <string name="mute">Put device to silent mode</string>
     <string name="long_click_toggles_bar">Long tap toggles navigation bar</string>
     <string name="transparent_nav">Navigation arrow in text</string>
 
@@ -88,7 +88,7 @@
     <string name="tts_ready">Speak prayers</string>
     <string name="tts_speaking">Stop speaking</string>
 
-    <string name="notification_not_allowed">You have not allowed the app to change ring mode.</string>
+    <string name="notification_not_allowed">You have not allowed the app to change ring mode yet.</string>
 
     <string name="channel_name">Breviary</string>
     <string name="channel_description">Notifications about prayer times</string>
@@ -130,5 +130,8 @@ body { background-color: #303030; color: #dddddd; }
 </html>
     ]]></string>
 
+    <!-- We have some crashes on Android 5.1 in creation of the headless webview,
+    because of missing this resource. //-->
+    <string name = "accessibility_content_view" translatable="false">Content</string>
 
 </resources>
