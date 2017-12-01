@@ -8264,8 +8264,6 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 
 		prilep_request_options(pom2, pom3);
 
-		Export(HTML_P_BEGIN"\n");
-
 		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, NIE, pom2, ANO);
 	}
 	break;

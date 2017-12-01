@@ -28977,7 +28977,16 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			|| ((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_OFM))
 			) {
 
-			if (poradie_svaty == 1) {
+			if (_global_jazyk == JAZYK_HU) {
+				pom_poradie = 2;
+
+				pocet = pom_poradie;
+			}
+			else {
+				pom_poradie = 1;
+			}
+
+			if (poradie_svaty == pom_poradie) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -29001,18 +29010,18 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			}
 			if (((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_OFM))
 				|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM))) {
-				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+				_set_slavenie_typslav_smer(pom_poradie, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
 			}
 			else {
-				_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+				_set_slavenie_typslav_smer(pom_poradie, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			}
 			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) {
-				_global_svaty(1).typslav_lokal = LOKAL_SLAV_SPOMIENKA_OFM;
+				_global_svaty(pom_poradie).typslav_lokal = LOKAL_SLAV_SPOMIENKA_OFM;
 			}// KALENDAR_SK_OFM
-			mystrcpy(_global_svaty(1).meno, text_NOV_28_OFM[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
-			_global_svaty(1).farba = LIT_FARBA_BIELA;
-			_global_svaty(1).kalendar = _global_kalendar;
+			mystrcpy(_global_svaty(pom_poradie).meno, text_NOV_28_OFM[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+			_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
+			_global_svaty(pom_poradie).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OFM, KALENDAR_CZ_OFMCAP, KALENDAR_HU_OFM
 
 		else if (_global_jazyk == JAZYK_HU) {
@@ -29034,7 +29043,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			}
 
 			_global_svaty1.typslav_lokal = LOKAL_SLAV_SZEGED_CSAN_EGYH3;
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
 			mystrcpy(_global_svaty1.meno, text_NOV_28_HU[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
@@ -29180,8 +29189,11 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 	case 1: // MES_DEC -- 01DEC
 
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) || (_global_jazyk == JAZYK_CZ_OP)) {
+
 			if (_global_jazyk == JAZYK_CZ_OP) {
 				pom_poradie = 2;
+
+				pocet = pom_poradie;
 			}
 			else {
 				pom_poradie = 1;
