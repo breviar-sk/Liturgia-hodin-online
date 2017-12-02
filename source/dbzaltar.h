@@ -1494,6 +1494,7 @@ extern const char *text_JUN_02[POCET_JAZYKOV + 1];
 extern const char *text_JUN_03[POCET_JAZYKOV + 1];
 extern const char *text_JUN_04_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUN_05[POCET_JAZYKOV + 1];
+extern const char *text_JUN_05_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUN_06[POCET_JAZYKOV + 1];
 extern const char *text_JUN_08_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUN_09[POCET_JAZYKOV + 1];

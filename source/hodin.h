@@ -672,7 +672,7 @@ const char *nazov_slavenia_lokal[] =
 , "A Esztergom-Budapesti főegyházmegyében: a főszékesegyházban; főünnep"                                         // LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH
 , "A főszékesegyházban; főünnep"                                                                                 // LOKAL_SLAV_KAL_KECS_FELSZ
 , "A Győri egyházmegyében: a székesegyház felszentelése; ünnep"                                                  // LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ
-, "A Váci egyházmegyében: Szent Mihály főangyal, az egyházmegye védőszentje"                                     // LOKAL_SLAV_VACI_PATRON
+, "A Váci egyházmegyében: Szent Mihály főangyal, az egyházmegye védőszentje; főünnep"                            // LOKAL_SLAV_VACI_PATRON
 , "A Szeged-Csanádi egyházmegyében: az egyházmegye védőszentje; főünnep"                                         // LOKAL_SLAV_SZEGED_CSAN_PATRON2
 , "A Veszprémi főegyházmegyében: a főszékesegyházban; főünnep"													 // LOKAL_SLAV_VESZPREM_FOEGYH
 , "free"                                                                                   // LOKAL_SLAV_free
@@ -680,7 +680,7 @@ const char *nazov_slavenia_lokal[] =
 , "A Pécsi egyházmegyében: a Pécsi egyházmegye társvédőszentje; főünnep"                                         // LOKAL_SLAV_PECS_PATRON
 , "A Szombathelyi egyházmegyébe: az egyházmegye védőszentje; főünnep"                                            // LOKAL_SLAV_SZOMBATHELYI_PATRON
 , "Székesfehérvár: a székesegyházban; főünnep"                                                                   // LOKAL_SLAV_SZEKESFEHERVAR_EGYH
-, "Az Egri főegyházmegyében: a főegyházmegye védőszentje; ünnep"                                                 // LOKAL_SLAV_EGER_FOEGYH
+, "Az Egri főegyházmegyében: a főegyházmegye védőszentje; főünnep"                                               // LOKAL_SLAV_EGER_FOEGYH
 , "Az Esztergomi főegyházmegyében; emléknap"                                                                     // LOKAL_SLAV_ESZTERGOM_EML
 , "A Győri egyházmegyében"                                                                                       // LOKAL_SLAV_GYOR_EGYH
 , "Az Esztergomi főegyházmegyében"                                                                               // LOKAL_SLAV_ESZTERGOM_FOEGYH
@@ -6861,7 +6861,7 @@ const char *text_MAJ_03[POCET_JAZYKOV + 1] =
 	"Ss. Philippi et Iacobi, apostolorum",
 	"",
 	"Sv. Filipa a Jakuba, apoštolů",
-	"Szent Fülöp és Szent Jakab apostol",
+	"Szent Fülöp és Szent Jakab apostolok",
 	"ru_text",
 	"Св. Філіпа і Якуба, апосталаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6978,7 +6978,7 @@ const char *text_MAJ_07_HU_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Az Egri bazilika-főszékesegyház",
+	"Az Egri bazilika-főszékesegyház felszentelése",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -8146,7 +8146,7 @@ const char *text_JUN_03[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Karla Lwangy a druhů, mučedníků",
-	"Lwanga Szent Károly és társai, vértanúk",
+	"Lwanga Szent Károly és társai, ugandai vértanúk",
 	"ru_text",
 	"Св. Караля Луангі і паплечнікаў, мучанікаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -8188,6 +8188,19 @@ const char *text_JUN_05[POCET_JAZYKOV + 1] =
 	"Szent Bonifác püspök és vértanú",
 	"ru_text",
 	"Св. Баніфацыя, біскупа і мучаніка",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUN_05_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Debrecen-Nyíregyháza: A székesegyház felszentelése",
+	"ru_text",
+	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_JUN_06[POCET_JAZYKOV + 1] =
@@ -9202,7 +9215,7 @@ const char *text_JUL_09[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Augustina Žao Ronga, kněze, " HTML_LINE_BREAK "a druhů, mučedníků",
-	"Szent Zhao Rong Ágoston áldozópap és társai, kínai vértanúk",
+	"Zhao Rong Szent Ágoston áldozópap és társai, kínai vértanúk",
 	"ru_text",
 	"Св. Аўгустына Джао Жонга, прэзбітэра, " HTML_LINE_BREAK "і паплечнікаў, мучанікаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -10379,7 +10392,7 @@ const char *text_AUG_13[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Ponciána, papeže, a Hippolyta, kněze, mučedníků",
-	"Szent Ponciánusz pápa és Szent Hippolitusz áldozópap és vértanúk", // HU: 16AUG
+	"Szent Ponciánusz pápa és Szent Hippolitusz áldozópap vértanúk", // HU: 16AUG
 	"ru_text",
 	"Св. Пантыяна, папы, і Гіпаліта, прэзбітэра, мучанікаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -11487,7 +11500,7 @@ const char *text_SEP_16[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Kornélia, papeže, a Cypriána, biskupa, mučedníků",
-	"Szent Kornél pápa és Szent Ciprián püspök és vértanúk",
+	"Szent Kornél pápa és Szent Ciprián püspök vértanúk",
 	"ru_text",
 	"Св. Карнэлія, папы, і Кіпрыяна, біскупа, мучанікаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -11617,7 +11630,7 @@ const char *text_SEP_20[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Ondřeje Kim Tae-g&#335;na, kněze, " HTML_LINE_BREAK "Pavla Ch&#335;ng Ha-sanga a druhů, mučedníků", 
-	"Kim Taegon Szent András áldozópap, " HTML_LINE_BREAK "Csong Haszang Szent Pál és társaik, vértanúk",
+	"Kim Taegon Szent András áldozópap, " HTML_LINE_BREAK "Csong Haszang Szent Pál és társaik, koreai vértanúk",
 	"ru_text",
 	"Св. Андрэя Кім Таэгона, прэзбітэра, " HTML_LINE_BREAK "і Паўла Чон Хасана, і паплечнікаў, мучанікаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -12608,7 +12621,7 @@ const char *text_OKT_19_1[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Jana de Brébeuf a Izáka Joguese, kněží, " HTML_LINE_BREAK "a druhů, mučedníků",
-	"De Brébeuf Szent János és Jogues Szent Izsák áldozópap " HTML_LINE_BREAK "és társaik vértanúk",
+	"De Brébeuf Szent János és Jogues Szent Izsák áldozópap " HTML_LINE_BREAK "és társaik, észak-amerikai vértanúk",
 	"ru_text",
 	"Св. Жана дэ Брэбёфа і Ісаака Жога, прэзбітэраў, " HTML_LINE_BREAK "і паплечнікаў, мучанікаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -12998,7 +13011,7 @@ const char *text_OKT_28[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Šimona a Judy, apoštolů",
-	"Szent Simon és Szent Júdás apostol",
+	"Szent Simon és Szent Júdás apostolok",
 	"ru_text",
 	"Св. Сымона і Юды, апосталаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13872,7 +13885,7 @@ const char *text_NOV_24[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Ignáce Delgada, biskupa, Vincence Liema, kněze, " HTML_LINE_BREAK "Dominika An-Khama, otce rodiny, a druhů, vietnamských mučedníků",
-	"Dung-Lac Szent András áldozópap és társai vértanúk",
+	"Dung-Lac Szent András áldozópap és társai, vietnámi vértanúk",
 	"ru_text",
 	"Св. Андрэя Зунг Лака, прэзбітэра, " HTML_LINE_BREAK "і паплечнікаў, мучанікаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
