@@ -36,7 +36,7 @@ public class ClearProxy {
           return clearProxyJB(webview);
       }
       // 4.4 (KK) & 5.0 (Lollipop)
-      else if (Build.VERSION.SDK_INT <= 22) {
+      else if (Build.VERSION.SDK_INT <= 23) {
           return clearProxyKKPlus(webview, "sk.breviar.android.BreviarApp");
       }
       else {

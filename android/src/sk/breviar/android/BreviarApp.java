@@ -56,7 +56,7 @@ public class BreviarApp extends Application {
   static public Context getLocaleForCurrentLanguage(Context ctx) {
     Configuration cfg = new Configuration();
     cfg.locale = currentLocale(ctx);
-    if (Build.VERSION.SDK_INT < 17) {
+    if (Build.VERSION.SDK_INT < 24) {
       ctx.getResources().updateConfiguration(cfg, null);
       return ctx;
     } else {
@@ -66,7 +66,7 @@ public class BreviarApp extends Application {
 
   // This is needed for api levels < 24.
   static public void initLocale(Context ctx) {
-    if (Build.VERSION.SDK_INT < 17) {
+    if (Build.VERSION.SDK_INT < 24) {
       Configuration cfg = new Configuration();
       cfg.locale = currentLocale(ctx);
       ctx.getResources().updateConfiguration(cfg, null);
@@ -77,7 +77,7 @@ public class BreviarApp extends Application {
   // For api levels >=17, we can (and for >= 24 we must) explicitly attach
   // proper locale to every activity at startup.
   static public void applyCustomLocale(Activity activity) {
-    if (Build.VERSION.SDK_INT >= 17) {
+    if (Build.VERSION.SDK_INT >= 24) {
       new CompatibilityHelper17().applyLocale(activity, currentLocale(activity));
     }
   }

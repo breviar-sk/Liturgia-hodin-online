@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version" translatable="false">2.0.1</string>
+    <string name="version" translatable="false">2.0.2</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -129,9 +129,5 @@ body { background-color: #303030; color: #dddddd; }
 </body>
 </html>
     ]]></string>
-
-    <!-- We have some crashes on Android 5.1 in creation of the headless webview,
-    because of missing this resource. //-->
-    <string name = "accessibility_content_view" translatable="false">Content</string>
 
 </resources>

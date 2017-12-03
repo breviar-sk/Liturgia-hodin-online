@@ -754,6 +754,7 @@ public class Breviar extends AppCompatActivity
 
     public void updateMenu() {
       if (navigationView == null) return;
+      if (S == null) return;
       Menu menu = navigationView.getMenu();
       if (menu == null) return;
 
@@ -788,8 +789,10 @@ public class Breviar extends AppCompatActivity
 
     void stopSpeaking() {
       tts_to_speak = "";
-      tts.stop();
-      tts.shutdown();
+      if (tts != null) {
+        tts.stop();
+        tts.shutdown();
+      }
       tts = null;
       tts_state = TTSState.READY;
       runOnUiThread(new Runnable() {
@@ -955,7 +958,9 @@ public class Breviar extends AppCompatActivity
           drawer.closeDrawer(GravityCompat.START, true);
           return true;
         } else if (wv.canGoBack()) {
-          S.forceOptsForNextRequest();
+          if (S != null) {
+            S.forceOptsForNextRequest();
+          }
           wv.goBack();
           return true;
         } else {

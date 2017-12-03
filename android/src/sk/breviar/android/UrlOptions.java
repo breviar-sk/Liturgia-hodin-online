@@ -44,7 +44,10 @@ public class UrlOptions {
     Uri.Builder builder = new Uri.Builder();
     builder.scheme(base_uri.getScheme());
     builder.encodedAuthority(base_uri.getEncodedAuthority());
-    builder.appendEncodedPath(base_uri.getEncodedPath().replaceAll("^/", ""));
+    String encoded_path = base_uri.getEncodedPath();
+    if (encoded_path != null) {
+      builder.appendEncodedPath(base_uri.getEncodedPath().replaceAll("^/", ""));
+    }
     for (Map.Entry<String, String> entry : params.entrySet()) {
       builder.appendQueryParameter(entry.getKey(), entry.getValue());
     }
