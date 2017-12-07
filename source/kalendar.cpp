@@ -28709,7 +28709,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 			pocet = 2;
 
-			_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 7); // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+			_set_slavenie_typslav_smer(2, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
 			mystrcpy(_global_svaty2.meno, text_NOV_24_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
 			_global_svaty2.farba = LIT_FARBA_CERVENA;

@@ -12954,7 +12954,7 @@ void _export_buttons_rok_prev_next(short int r, char action[MAX_STR], char pom2[
 	Log("_export_buttons_rok_prev_next(%d, %s, %s) -- začiatok\n", r, action, pom2);
 
 	Export("<" HTML_TABLE ">\n");
-	Export("<" HTML_TABLE_ROW ">");
+	Export("<" HTML_TABLE_ROW ">\n");
 	// << predošlý rok -- button
 	Export("<" HTML_TABLE_CELL ">");
 	sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%s" HTML_AMPERSAND "%s=%s" HTML_AMPERSAND "%s=%d%s",
@@ -12969,7 +12969,7 @@ void _export_buttons_rok_prev_next(short int r, char action[MAX_STR], char pom2[
 	Export((char *)html_button_predchadzajuci_[_global_jazyk]);
 	Export(" ");
 	Export((char *)html_text_rok[_global_jazyk]);
-	Export(" )\"" HTML_FORM_INPUT_END "\n");
+	Export(")\"" HTML_FORM_INPUT_END "\n");
 	Export("</form>\n");
 	Export(HTML_TABLE_CELL_END "\n");
 
@@ -12987,7 +12987,7 @@ void _export_buttons_rok_prev_next(short int r, char action[MAX_STR], char pom2[
 	Export((char *)html_button_nasledujuci_[_global_jazyk]);
 	Export(" ");
 	Export((char *)html_text_rok[_global_jazyk]);
-	Export(" ) %d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", r + 1);
+	Export(") %d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", r + 1);
 	Export("</form>\n");
 	Export(HTML_TABLE_CELL_END "\n");
 
@@ -13048,25 +13048,17 @@ void _export_buttons_mesiac_rok_prev_next(short int m, short int r, char pom2[MA
 		}
 	}
 	Log("\treťazec pom == %s\n", pom);
+
 	if (som_v_tabulke == ANO) {
 		Export("<" HTML_TABLE_CELL ">");
 		Export_HtmlForm(pom);
-		if (_global_jazyk == JAZYK_HU) {
-			Export(HTML_FORM_INPUT_SUBMIT0 " value=\"" HTML_LEFT_ARROW " %d. %s\"" HTML_FORM_INPUT_END "\n", pr, nazov_mesiaca(pm - 1));
-		}
-		else {
-			Export(HTML_FORM_INPUT_SUBMIT0 " value=\"" HTML_LEFT_ARROW " %s %d\"" HTML_FORM_INPUT_END "\n", nazov_Mesiaca(pm - 1), pr);
-		}
+		Export(HTML_FORM_INPUT_SUBMIT0 " value=\"" HTML_LEFT_ARROW " %s\"" HTML_FORM_INPUT_END "\n", _vytvor_string_z_datumu(VSETKY_DNI, pm, pr, (_global_jazyk == JAZYK_HU) ? CASE_case : CASE_Case, LINK_DEN_MESIAC_ROK, NIE));
 		Export("</form>\n");
 		Export(HTML_TABLE_CELL_END "\n");
 	}
 	else {
-		if (_global_jazyk == JAZYK_HU) {
-			Export(HTML_A_HREF_BEGIN "\"%s\">" HTML_LEFT_ARROW " %d. %s" HTML_A_END "\n", pom, pr, nazov_mesiaca(pm - 1));
-		}
-		else {
-			Export(HTML_A_HREF_BEGIN "\"%s\">" HTML_LEFT_ARROW " %s %d" HTML_A_END "\n", pom, nazov_Mesiaca(pm - 1), pr);
-		}
+		Export(HTML_A_HREF_BEGIN "\"%s\">" HTML_LEFT_ARROW " %s" HTML_A_END "\n", pom, _vytvor_string_z_datumu(VSETKY_DNI, pm, pr, (_global_jazyk == JAZYK_HU) ? CASE_case : CASE_Case, LINK_DEN_MESIAC_ROK, NIE));
+
 		Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 	}
 
@@ -13098,31 +13090,24 @@ void _export_buttons_mesiac_rok_prev_next(short int m, short int r, char pom2[MA
 			sprintf(str_month, ".." STR_PATH_SEPARATOR_HTML "" DIRNAME_EXPORT_MONTH_FULL "" STR_PATH_SEPARATOR_HTML, pr, pm, nazov_mesiaca_asci(pm - 1));
 		}
 		// ... a potom celý reťazec s názvom súboru pre daný mesiac
-		if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE)
+		if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE) {
 			sprintf(pom, "%s" FILENAME_EXPORT_MONTH_SIMPLE ".htm", str_month, pr % 100, pm);
-		else
+		}
+		else {
 			sprintf(pom, "%s" FILENAME_EXPORT_MONTH_FULL ".htm", str_month, pr, pm);
+		}
 	}
 	Log("\treťazec pom == %s\n", pom);
+
 	if (som_v_tabulke == ANO) {
 		Export("<" HTML_TABLE_CELL ">");
 		Export_HtmlForm(pom);
-		if (_global_jazyk == JAZYK_HU) {
-			Export(HTML_FORM_INPUT_SUBMIT0 " value=\"%d. %s " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", pr, nazov_mesiaca(pm - 1));
-		}
-		else {
-			Export(HTML_FORM_INPUT_SUBMIT0 " value=\"%s %d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", nazov_Mesiaca(pm - 1), pr);
-		}
+		Export(HTML_FORM_INPUT_SUBMIT0 " value=\"%s " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", _vytvor_string_z_datumu(VSETKY_DNI, pm, pr, (_global_jazyk == JAZYK_HU) ? CASE_case : CASE_Case, LINK_DEN_MESIAC_ROK, NIE));
 		Export("</form>\n");
 		Export(HTML_TABLE_CELL_END "\n");
 	}
 	else {
-		if (_global_jazyk == JAZYK_HU) {
-			Export(HTML_A_HREF_BEGIN "\"%s\">%d. %s " HTML_RIGHT_ARROW "" HTML_A_END "\n", pom, pr, nazov_mesiaca(pm - 1));
-		}
-		else {
-			Export(HTML_A_HREF_BEGIN "\"%s\">%s %d " HTML_RIGHT_ARROW "" HTML_A_END "\n", pom, nazov_Mesiaca(pm - 1), pr);
-		}
+		Export(HTML_A_HREF_BEGIN "\"%s\">%s " HTML_RIGHT_ARROW "" HTML_A_END "\n", pom, _vytvor_string_z_datumu(VSETKY_DNI, pm, pr, (_global_jazyk == JAZYK_HU) ? CASE_case : CASE_Case, LINK_DEN_MESIAC_ROK, NIE));
 	}
 
 	if (som_v_tabulke == ANO) {
@@ -13149,18 +13134,20 @@ void _export_buttons_mesiac_rok_prev_next(short int m, short int r, char pom2[MA
 	}
 	if (_global_opt_batch_monthly == NIE) {
 		if (som_v_tabulke == ANO) {
-			Export("<" HTML_TABLE_ROW ">");
+			Export("<" HTML_TABLE_ROW ">\n");
 
-			Export("<" HTML_TABLE_CELL ">");
+			Export("<" HTML_TABLE_CELL ">\n");
 			Export_HtmlForm(pom);
-			Export(HTML_FORM_INPUT_SUBMIT0 " value=\"" HTML_LEFT_ARROW " %s %d\"" HTML_FORM_INPUT_END "\n", nazov_Mesiaca(pm - 1), pr);
+			Export(HTML_FORM_INPUT_SUBMIT0 " value=\"" HTML_LEFT_ARROW " %s\"" HTML_FORM_INPUT_END "\n", _vytvor_string_z_datumu(VSETKY_DNI, pm, pr, (_global_jazyk == JAZYK_HU) ? CASE_case : CASE_Case, LINK_DEN_MESIAC_ROK, NIE));
+
 			Export("</form>\n");
 			Export(HTML_TABLE_CELL_END "\n");
 		}
 		else {
 			Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 			//
-			Export(HTML_A_HREF_BEGIN "\"%s\">" HTML_LEFT_ARROW " %s %d" HTML_A_END "\n", pom, nazov_Mesiaca(pm - 1), pr);
+			Export(HTML_A_HREF_BEGIN "\"%s\">" HTML_LEFT_ARROW " %s" HTML_A_END "\n", pom, _vytvor_string_z_datumu(VSETKY_DNI, pm, pr, (_global_jazyk == JAZYK_HU) ? CASE_case : CASE_Case, LINK_DEN_MESIAC_ROK, NIE));
+
 			Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 		}
 	}
@@ -13184,12 +13171,14 @@ void _export_buttons_mesiac_rok_prev_next(short int m, short int r, char pom2[MA
 		if (som_v_tabulke == ANO) {
 			Export("<" HTML_TABLE_CELL ">");
 			Export_HtmlForm(pom);
-			Export(HTML_FORM_INPUT_SUBMIT0 " value=\"%s %d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", nazov_Mesiaca(pm - 1), pr);
+			Export(HTML_FORM_INPUT_SUBMIT0 " value=\"%s " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", _vytvor_string_z_datumu(VSETKY_DNI, pm, pr, (_global_jazyk == JAZYK_HU) ? CASE_case : CASE_Case, LINK_DEN_MESIAC_ROK, NIE));
+
 			Export("</form>\n");
 			Export(HTML_TABLE_CELL_END "\n");
 		}
 		else {
-			Export(HTML_A_HREF_BEGIN "\"%s\">%s %d " HTML_RIGHT_ARROW "" HTML_A_END "\n", pom, nazov_Mesiaca(pm - 1), pr);
+			Export(HTML_A_HREF_BEGIN "\"%s\">%s " HTML_RIGHT_ARROW "" HTML_A_END "\n", pom, _vytvor_string_z_datumu(VSETKY_DNI, pm, pr, (_global_jazyk == JAZYK_HU) ? CASE_case : CASE_Case, LINK_DEN_MESIAC_ROK, NIE));
+
 			Export(HTML_NONBREAKING_SPACE); Export(STR_VERTICAL_BAR); Export(HTML_NONBREAKING_SPACE); Export("\n");
 		}
 	}
@@ -13484,14 +13473,15 @@ void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r) 
 
 	Log("/* teraz result == SUCCESS */\n");
 	if (m != UNKNOWN_MESIAC) {
-		// nesmiem zabudnut, ze m je 0--11
-		// pre XML export sa hlavička neexportuje
+		// note that m is between 0--11 | for XML export heading is not produced
 		if (t != EXPORT_DNA_XML) {
+
 			Export("<h2>");
 			Export((char *)html_text_txt_export[_global_jazyk]);
 			Export(": ");
 			Export((char *)html_text_lit_kalendar[_global_jazyk]);
 			Export(" ");
+
 			if (m == VSETKY_MESIACE) {
 				Export((char *)html_text_rok[_global_jazyk]);
 				Export(" %d", r);
@@ -14647,7 +14637,6 @@ void _main_tabulka(char *rok_from, char *rok_to, char *tab_linky) {
 			}
 			else {
 				strcpy(_global_link, _vytvor_string_z_datumu(_global_r._den[i].den, _global_r._den[i].mesiac, _global_r._den[i].rok, CASE_case, LINK_DEN_MESIAC, ANO));
-				// sprintf(_global_link, "%d. %s", _global_r._den[i].den, nazov_mesiaca(_global_r._den[i].mesiac - 1));
 			}
 			Export("%s", _global_link);
 			Export(HTML_TABLE_CELL_BORDER_END "\n");
@@ -15584,7 +15573,7 @@ short int getQueryTypeFrom_WWW(void) {
 // vracia: on success, returns SUCCESS
 //         on error,   returns FAILURE
 // popritom: nastavi do query_type to, co by malo byt po switchi -q
-short int getArgv(int argc, char **argv) {
+short int getArgv(int argc, const char **argv) {
 	short int c;
 	optind = 0; // pokial tu toto nebolo, tak getopt sa neinicializovala pri dalsich volaniach
 	char *option_string;
@@ -17781,7 +17770,7 @@ void normalize_calendar_for_language() {
 }
 
 // main
-int breviar_main(int argc, char **argv) {
+int breviar_main(int argc, const char **argv) {
 	short int i;
 	short int local_den, local_mesiac, local_rok, local_modlitba;
 
@@ -18649,7 +18638,7 @@ _main_end:
 }// breviar_main()
 
 #ifndef SKIP_MAIN
-int main(int argc, char **argv) {
+int main(int argc, const char **argv) {
 	int ret = breviar_main(argc, argv);
 
 #ifdef EXPORT_TO_STRING

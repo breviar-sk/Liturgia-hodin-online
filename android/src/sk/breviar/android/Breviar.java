@@ -789,9 +789,15 @@ public class Breviar extends AppCompatActivity
 
     void stopSpeaking() {
       tts_to_speak = "";
-      if (tts != null) {
-        tts.stop();
-        tts.shutdown();
+      try {
+        if (tts != null) {
+          tts.stop();
+        }
+        if (tts != null) {
+          tts.shutdown();
+        }
+      } catch (java.lang.NullPointerException e) {
+        Log.v("breviar", "ignoring unexpected null pointer exception from TTS");
       }
       tts = null;
       tts_state = TTSState.READY;
