@@ -5,6 +5,7 @@
 .comment, p.comment, .hymn p.comment { 
 	font-size: 80%; 
 	font-weight: normal; 
+	padding-left: 1.2em;  !important;
 }
 
 /* for HU/CZ first/second/third-ant is used; for SK ant-first/second/third is used */

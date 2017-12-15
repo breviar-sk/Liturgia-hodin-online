@@ -99,7 +99,7 @@ public class Server extends Thread {
       persistentOpts = s;
     }
 
-    public synchronized String getOpts() {
+    public String getOpts() {
       return persistentOpts;
     }
 

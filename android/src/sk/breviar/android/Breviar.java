@@ -653,8 +653,12 @@ public class Breviar extends AppCompatActivity
     @Override
     protected void onNewIntent(Intent intent) {
       int id = -1;
-      if (intent.getAction().equals("sk.breviar.android.action.SHOW")) {
-        id = intent.getIntExtra("id", -1);
+      if (intent != null) {
+        if (intent.getAction() != null) {
+          if (intent.getAction().equals("sk.breviar.android.action.SHOW")) {
+            id = intent.getIntExtra("id", -1);
+          }
+        }
       }
       Log.v("breviar", "onNewIntent: id = " + id);
 

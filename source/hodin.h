@@ -4797,6 +4797,19 @@ const char *text_JAN_08_OCD[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JAN_08_SDB[POCET_JAZYKOV + 1] =
+{
+	"Bl. Titusa Zemana, kňaza a mučeníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JAN_09_OCD[POCET_JAZYKOV + 1] =
 {
 	"Sv. Andreja Corsiniho, biskupa",
