@@ -1947,7 +1947,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
 						Export(" ");
-						Export("<" HTML_SPAN_COMMENT ">");
+						Export("<" HTML_SPAN_TEXTNOTE ">");
 						Export("(");
 					}
 					else {

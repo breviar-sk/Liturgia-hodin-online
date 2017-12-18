@@ -8,6 +8,11 @@
 	padding-left: 1.2em;  !important;
 }
 
+.textnote, p.textnote, .hymn p.textnote { 
+	font-size: 80%; 
+	font-weight: normal; 
+}
+
 /* for HU/CZ first/second/third-ant is used; for SK ant-first/second/third is used */
 .antiphon.first-ant:before {
     color: #ff0000;
