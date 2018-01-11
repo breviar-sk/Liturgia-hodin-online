@@ -9961,6 +9961,19 @@ const char *text_JUL_30_CM[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JUL_30_OFMCAP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Františka Solana Caseyho, kňaza",
+	"Bl. Františka Solana Caseyho, kněze",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JUL_31[POCET_JAZYKOV + 1] =
 {
 	"Sv. Ignáca z Loyoly, kňaza",
