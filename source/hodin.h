@@ -4428,7 +4428,7 @@ const char *html_text_kalendar_miestny[POCET_JAZYKOV + 1] =
 	"Calendario per Liturgia horarum",
 	"",
 	"Kalendář Liturgie hodin",
-	"Az imaórák liturgiája"
+	"Az imaórák liturgiája",
 	"ru_text",
 	"Каляндар Літургіі гадзінаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -4441,7 +4441,7 @@ const char *html_text_kalendar_miestny_post[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"naptárát használják",
+	" naptárát használják",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

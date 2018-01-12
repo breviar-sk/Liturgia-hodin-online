@@ -9491,7 +9491,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		ExportHtmlComment("calendar selection combobox");
 
-		Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY) ? ": " : ""));
+		Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY) ? ": " : html_text_kalendar_miestny_post[_global_jazyk]));
 
 		Export(HTML_LINE_BREAK"\n");
 
