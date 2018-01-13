@@ -544,10 +544,22 @@ void _xml_patka(FILE * expt) {
 	dnes.tm_year = dnes.tm_year + 1900;
 	dnes.tm_yday = dnes.tm_yday + 1;
 
+	short int c;
+
+	// element XML_SUPPORTED_LANGUAGES
+	Export_to_file(expt, ELEM_BEGIN_NAME(XML_SUPPORTED_LANGUAGES) "\n", STR_JAZYK);
+
+	for (c = 0; c <= POCET_JAZYKOV; c++) {
+		if (supported_languages[c]) {
+			Export_to_file(expt, ELEM_BEGIN_ID_VALUE(XML_LANGUAGE) "%s" ELEM_END(XML_LANGUAGE) "\n", c, skratka_jazyka[c], nazov_jazyka_native_jazyk(c));
+		}
+	}
+
+	// end of element XML_SUPPORTED_LANGUAGES
+	Export_to_file(expt, ELEM_END(XML_SUPPORTED_LANGUAGES) "\n\n");
+
 	// element XML_SUPPORTED_VALUES with sub-elements
 	Export_to_file(expt, ELEM_BEGIN(XML_SUPPORTED_VALUES) "\n");
-
-	short int c;
 
 	// sub-element XML_LIT_CALENDAR_VALUES
 	Export_to_file(expt, ELEM_BEGIN_NAME(XML_LIT_CALENDAR_VALUES) "\n", STR_KALENDAR);

@@ -1170,6 +1170,11 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BUILD_DATE       "BuildDate"
 #define XML_GENERATED        "Generated"
 
+// element XML_SUPPORTED_LANGUAGES
+#define XML_SUPPORTED_LANGUAGES "SupportedLanguages"
+
+#define XML_LANGUAGE "Language"
+
 // element XML_SUPPORTED_VALUES with sub-elements
 #define XML_SUPPORTED_VALUES "SupportedValues"
 

@@ -9444,18 +9444,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 	for (int i = 0; i <= POCET_JAZYKOV; i++) {
 		// supported languages explicitly defined
-		if (
-			(i == JAZYK_SK) ||
-			(i == JAZYK_CZ) ||
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
-			(i == JAZYK_CZ_OP) ||
-			(i == JAZYK_LA) ||
-#if defined(OS_Windows_Ruby)
-			(i == JAZYK_BY) ||
-			(i == JAZYK_RU) ||
-#endif
-#endif
-			(i == JAZYK_HU)) {
+		if (supported_languages[i]) {
 			Export("<option%s>%s</option>\n", (i != _global_jazyk) ? STR_EMPTY : html_option_selected, nazov_jazyka[i]);
 		}
 	}
@@ -9491,7 +9480,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		ExportHtmlComment("calendar selection combobox");
 
-		Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_post[_global_jazyk], STR_EMPTY) ? ": " : html_text_kalendar_miestny_post[_global_jazyk]));
+		Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_text_after_combo[_global_jazyk], STR_EMPTY) ? ": " : ""));
 
 		Export(HTML_LINE_BREAK"\n");
 
@@ -9513,6 +9502,13 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("</select>\n");
 
 		Export(HTML_LINE_BREAK"\n");
+
+		// for HU: 
+		if (!equals(html_text_kalendar_miestny_text_after_combo[_global_jazyk], STR_EMPTY))
+		{
+			Export(html_text_kalendar_miestny_text_after_combo[_global_jazyk]);
+			Export(HTML_LINE_BREAK"\n");
+		}
 
 		ExportHtmlComment("submit button (calendar)");
 

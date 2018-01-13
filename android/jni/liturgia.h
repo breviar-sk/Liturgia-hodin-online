@@ -1132,6 +1132,28 @@ extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
 #define nazov_kalendara_vyber nazov_kalendara_long
 #endif
 
+const short int supported_languages[POCET_JAZYKOV + 1] =
+{
+	1, // JAZYK_SK
+	1, // JAZYK_CZ
+	0, // JAZYK_EN
+#if defined(OS_Windows_Ruby)
+	1, // JAZYK_LA -- only for debugging under Windows
+#else
+	0,
+#endif
+	0, // JAZYK_UNDEF
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
+	1, // JAZYK_CZ_OP -- only for debugging under any platform (including Android & iOS)
+#else
+	0,
+#endif
+	1, // JAZYK_HU
+	0, // JAZYK_RU
+	0, // JAZYK_BY
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
 
 #define SUPPORTED_CALENDARS_COUNT_MAX 9
 
@@ -1576,6 +1598,8 @@ extern short int _global_font_size;
 extern short int _global_pocet_zalmov_kompletorium;
 
 extern const char *nazov_jazyka[POCET_JAZYKOV + 1];
+extern const char *nazov_jazyka_native_jazyk[POCET_JAZYKOV + 1][POCET_JAZYKOV + 1];
+#define nazov_jazyka_native_jazyk(a) nazov_jazyka_native_jazyk[a][_global_jazyk]
 extern const char *skratka_jazyka[POCET_JAZYKOV + 1];
 extern const char *postfix_jazyka[POCET_JAZYKOV + 1];
 extern const char *skratka_jazyka_title[POCET_JAZYKOV + 1];
