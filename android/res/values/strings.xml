@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version" translatable="false">2.1</string>
+    <string name="version" translatable="false">2.2</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>

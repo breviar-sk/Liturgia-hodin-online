@@ -4743,7 +4743,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_adv1_antifony; // antifóny
 				_adv1_kcitanie; // krátke čítanie - rovnake pre vsetky tyzdne
 				// magnifikat
-				sprintf(_anchor, "%s%d%s%c_%s%c",
+				sprintf(_anchor, "%s%d%s_%c%s%c",
 					nazov_OBD[litobd],
 					tyzden,
 					nazov_DN_asci[den],
@@ -4782,7 +4782,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_adv1_antifony; // antifóny
 				_adv1_kcitanie; // krátke čítanie - rovnake pre vsetky tyzdne
 				// benediktus
-				sprintf(_anchor, "%s%d%s%c_%s%c",
+				sprintf(_anchor, "%s%d%s_%c%s%c",
 					nazov_OBD[litobd],
 					tyzden,
 					nazov_DN_asci[den],
@@ -4799,7 +4799,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_adv1_antifony; // antifóny
 				_adv1_kcitanie; // krátke čítanie - rovnake pre vsetky tyzdne
 				// magnifikat
-				sprintf(_anchor, "%s%d%s%c_%s%c",
+				sprintf(_anchor, "%s%d%s_%c%s%c",
 					nazov_OBD[litobd],
 					tyzden,
 					nazov_DN_asci[den],
@@ -4840,7 +4840,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				// antifony - su zo vsedneho dna
 				_adv1_kcitanie; // krátke čítanie - rovnake pre vsetky tyzdne
 				// benediktus
-				sprintf(_anchor, "%s%d%s%c_%s",
+				sprintf(_anchor, "%s%d%s_%c%s",
 					nazov_OBD[litobd],
 					tyzden,
 					nazov_DN_asci[den],
@@ -4865,7 +4865,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				// antifony - su zo vsedneho dna
 				_adv1_kcitanie; // krátke čítanie - rovnake pre vsetky tyzdne
 				// magnifikat
-				sprintf(_anchor, "%s%d%s%c_%s",
+				sprintf(_anchor, "%s%d%s_%c%s",
 					nazov_OBD[litobd],
 					tyzden,
 					nazov_DN_asci[den],
@@ -4998,7 +4998,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			// ďalšie závisia od dátumu (17. -- 24. december)
 			_adv2_kcitanie; // krátke čítanie
 			// benediktus
-			sprintf(_anchor, "%s%d%c_%s",
+			sprintf(_anchor, "%s%d_%c%s",
 				nazov_OBD[litobd],
 				_global_den.den,
 				pismenko_modlitby(modlitba),
@@ -5026,7 +5026,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			set_LOG_litobd;
 			_adv2_kcitanie; // krátke čítanie
 			// magnifikat
-			sprintf(_anchor, "%s%d%c_%s",
+			sprintf(_anchor, "%s%d_%c%s",
 				nazov_OBD[litobd],
 				_global_den.den,
 				pismenko_modlitby(modlitba),
@@ -5670,11 +5670,11 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			// tu v skutočnosti začína VIANOČNÉ OBDOBIE I.
 
-			if((_global_den.den == 26) || (_global_den.den == 27) || (_global_den.den == 28)){
+			if ((_global_den.den == 26) || (_global_den.den == 27) || (_global_den.den == 28)) {
 				// maju vlastnu cast zo sv. jana apostola, sv. stefana a sv. neviniatok
 				// modlitba cez deň je z oktávy narodenia Pána, preto bola vyňatá z "else" vetvy až za tento "if"
 			}
-			else{
+			else {
 				// invitatórium
 				modlitba = MODL_INVITATORIUM;
 				_obd_invitat;
@@ -5692,7 +5692,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				modlitba = MODL_POSV_CITANIE;
 				_vian1_hymnus;
 				_set_zalmy_vian_oktava(_global_den.den, modlitba);
-				if(_global_den.den >= 25){
+				if (_global_den.den >= 25) {
 					// antifóny sú samostatné len pre vianočnú oktávu; inak zo žaltára
 					_vian_okt_antifony_pc;
 				}
@@ -5736,7 +5736,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_vian1_modlitba;
 
 			if(litobd == OBD_OKTAVA_NARODENIA){
-				if(_global_den.den == 25){  // narodenie Pána
+				if (_global_den.den == 25) {  // narodenie Pána
 					Log("narodenie Pána...\n");
 					// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 					modlitba = MODL_POSV_CITANIE;
@@ -5773,7 +5773,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_set_zalmy_narodenie(modlitba);
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_narodenie(modlitba);
-				}// 25. 12. | 25DEC
+				} // 25. 12. | 25DEC
 
 				// ranné chvály
 				modlitba = MODL_RANNE_CHVALY;
@@ -6542,17 +6542,17 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				file_name_litobd(OBD_CEZ_ROK);
 				// benediktus
 				modlitba = MODL_RANNE_CHVALY;
-				sprintf(_anchor, "_%d%s%c_%s%c", tyzden, nazov_DN_asci[den], /* 'NE', nedela */ pismenko_modlitby(MODL_RANNE_CHVALY), ANCHOR_BENEDIKTUS, _global_den.litrok);
+				sprintf(_anchor, "_%d%s_%c%s%c", tyzden, nazov_DN_asci[den], /* 'NE', nedela */ pismenko_modlitby(MODL_RANNE_CHVALY), ANCHOR_BENEDIKTUS, _global_den.litrok);
 				_set_benediktus(MODL_RANNE_CHVALY, _file, _anchor);
 				set_LOG_litobd;
 				// magnifikat 1
 				modlitba = MODL_PRVE_VESPERY;
-				sprintf(_anchor, "_%d%s%c_%s%c", tyzden, nazov_DN_asci[den], /* 'NE', nedela */ pismenko_modlitby(MODL_PRVE_VESPERY), ANCHOR_MAGNIFIKAT, _global_den.litrok);
+				sprintf(_anchor, "_%d%s_%c%s%c", tyzden, nazov_DN_asci[den], /* 'NE', nedela */ pismenko_modlitby(MODL_PRVE_VESPERY), ANCHOR_MAGNIFIKAT, _global_den.litrok);
 				_set_magnifikat(MODL_PRVE_VESPERY, _file, _anchor);
 				set_LOG_litobd;
 				// magnifikat v
 				modlitba = MODL_VESPERY;
-				sprintf(_anchor, "_%d%s%c_%s%c", tyzden, nazov_DN_asci[den], /* 'NE', nedela */ pismenko_modlitby(MODL_VESPERY), ANCHOR_MAGNIFIKAT, _global_den.litrok);
+				sprintf(_anchor, "_%d%s_%c%s%c", tyzden, nazov_DN_asci[den], /* 'NE', nedela */ pismenko_modlitby(MODL_VESPERY), ANCHOR_MAGNIFIKAT, _global_den.litrok);
 				_set_magnifikat(MODL_VESPERY, _file, _anchor);
 				set_LOG_litobd;
 				// modlitba
@@ -8768,7 +8768,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 		_set_kresponz(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// benediktus
-		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);
+		sprintf(_anchor, "%s_%c%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);
 		_set_benediktus(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// prosby
@@ -10562,7 +10562,7 @@ _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCPN_iANT1", 2 },
 	{ JAZYK_UNDEF, "SCPNV_iANT1", 2 },
 	{ JAZYK_UNDEF, "VPCHR_iANT1", 2 },
-	{ JAZYK_UNDEF, "SPMVSr_BENEDIKTUS", 6 },
+	{ JAZYK_UNDEF, "SPMVS_rBENEDIKTUS", 6 },
 	{ JAZYK_UNDEF, "SPMVS_iANT1", 2 },
 	{ JAZYK_UNDEF, "SCPM_iANT1", 2 },
 	{ JAZYK_UNDEF, "SCPM_1MAGNIFIKAT", 2 },
