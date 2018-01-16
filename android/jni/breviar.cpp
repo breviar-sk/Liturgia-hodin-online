@@ -5031,9 +5031,15 @@ short int atomes(char *mesiac) {
 //        inak vráti JAZYK_UNDEF
 short int atojazyk(char *jazyk) {
 	short int i = 0;
+	short int j = 0;
 	do {
-		if (equalsi(jazyk, skratka_jazyka[i]) || equalsi(jazyk, nazov_jazyka[i])) {
+		if (equalsi(jazyk, skratka_jazyka[i]) || equalsi(jazyk, nazov_jazyka(i)) || equalsi(jazyk, nazov_jazyka_native_jazyk(i))) {
 			return i;
+		}
+		for (j = 0; j <= POCET_JAZYKOV; j++) {
+			if (equalsi(jazyk, nazov_jazyka_native_jazyk[i][j])) {
+				return i;
+			}
 		}
 		i++;
 	} while (i <= POCET_JAZYKOV);
@@ -9445,7 +9451,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	for (int i = 0; i <= POCET_JAZYKOV; i++) {
 		// supported languages explicitly defined
 		if (supported_languages[i]) {
-			Export("<option%s>%s</option>\n", (i != _global_jazyk) ? STR_EMPTY : html_option_selected, nazov_jazyka[i]);
+			Export("<option%s>%s</option>\n", (i != _global_jazyk) ? STR_EMPTY : html_option_selected, nazov_jazyka_native_jazyk(i));
 		}
 	}
 	Export("</select>");
@@ -14268,7 +14274,7 @@ void _main_analyza_roku(char *rok) {
 	Export("<" HTML_SPAN_BOLD_IT ">");
 	Export((char *)html_text_jazyk_verzia[_global_jazyk]);
 	Export(":" HTML_SPAN_END "\n");
-	Export((char *)nazov_jazyka[_global_jazyk]);
+	Export((char *)nazov_jazyka(_global_jazyk));
 	Export(HTML_LINE_BREAK);
 
 	// rítus
@@ -17746,7 +17752,7 @@ void normalize_calendar_for_language() {
 	Log("normalize_calendar_for_language(): begin...\n");
 
 	// check whether desired calendar is possible for selected language
-	_main_LOG_to_Export("kontrola kalendár (%s | %s) vs. jazyk (%s | %s)...\n", nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar], nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
+	_main_LOG_to_Export("kontrola kalendár (%s | %s) vs. jazyk (%s | %s)...\n", nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar], nazov_jazyka(_global_jazyk), skratka_jazyka[_global_jazyk]);
 	
 	short int c = 0;
 	
@@ -18036,7 +18042,7 @@ int breviar_main(int argc, const char **argv) {
 				_global_jazyk = JAZYK_SK;
 				_main_LOG_to_Export("\t(vzhľadom k neurčenému jazyku používam default)\n");
 			}
-			_main_LOG_to_Export("...jazyk (%s) = %d, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
+			_main_LOG_to_Export("...jazyk (%s) = %d, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka(_global_jazyk), skratka_jazyka[_global_jazyk]);
 
 			_main_LOG_to_Export("spúšťam setConfigDefaults()...\n");
 			setConfigDefaults(_global_jazyk); // 2011-04-13: doplnené
@@ -18119,13 +18125,13 @@ int breviar_main(int argc, const char **argv) {
 
 				if (initExport(file_export) == SUCCESS) {
 					Log("initExport(`%s'): success\n", file_export);
-					_main_LOG_to_Export("_global_jazyk == %s\n", nazov_jazyka[_global_jazyk]);
+					_main_LOG_to_Export("_global_jazyk == %s\n", nazov_jazyka(_global_jazyk));
 				}
 				else {
 					Log("initExport(`%s'): failure, \n", file_export);
 					Log("continuing to export into DEFAULT_FILE_EXPORT (`%s')\n", DEFAULT_FILE_EXPORT);
 					initExport(DEFAULT_FILE_EXPORT);
-					_main_LOG_to_Export("_global_jazyk == %s\n", nazov_jazyka[_global_jazyk]);
+					_main_LOG_to_Export("_global_jazyk == %s\n", nazov_jazyka(_global_jazyk));
 				}
 				_main_LOG_to_Export("volám hlavicka(); ... [case SCRIPT_PARAM_FROM_ARGV]\n");
 				// hlavicka((char *)html_title[_global_jazyk]);
@@ -18180,7 +18186,7 @@ int breviar_main(int argc, const char **argv) {
 
 		// Default jazyk chceme nastavit az po volani getForm, WWW_j sa pouziva na prepinanie jazyka v Androide.
 		if (equalsi(pom_JAZYK, STR_EMPTY)) {
-			mystrcpy(pom_JAZYK, nazov_jazyka[JAZYK_SK], SMALL);
+			mystrcpy(pom_JAZYK, nazov_jazyka(JAZYK_SK), SMALL);
 			Log("default jazyk (%s).\n", pom_JAZYK);
 		}
 
@@ -18223,7 +18229,7 @@ int breviar_main(int argc, const char **argv) {
 		_global_jazyk = JAZYK_SK;
 		_main_LOG_to_Export("\t(vzhľadom k neurčenému jazyku používam default)\n");
 	}
-	_main_LOG_to_Export("...jazyk (%s) = %d, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka[_global_jazyk], skratka_jazyka[_global_jazyk]);
+	_main_LOG_to_Export("...jazyk (%s) = %d, teda %s (%s)\n", pom_JAZYK, _global_jazyk, nazov_jazyka(_global_jazyk), skratka_jazyka[_global_jazyk]);
 
 	_global_ritus = ritus_jazyka[_global_jazyk];
 
@@ -18391,7 +18397,7 @@ int breviar_main(int argc, const char **argv) {
 			else {
 				_main_LOG_to_Export("include adresára NEkončí reťazcom `%s' - je potrebné pridávať (aktuálne include_dir == %s; lenght == %d; len == %ld): ", postfix_jazyka[_global_jazyk], include_dir, strlen(include_dir), len);
 				// doplnenie jazyka kvôli jazykovým mutáciám
-				_main_LOG_to_Export("upravujem include adresár podľa jazyka (%d - %s)...\n", _global_jazyk, nazov_jazyka[_global_jazyk]);
+				_main_LOG_to_Export("upravujem include adresár podľa jazyka (%d - %s)...\n", _global_jazyk, nazov_jazyka(_global_jazyk));
 
 				// dokončenie úpravy include adresára podľa jazyka
 				if (strlen(postfix_jazyka[_global_jazyk]) > 0) {
@@ -18429,7 +18435,7 @@ int breviar_main(int argc, const char **argv) {
 				Log("export_monthly_druh == %d\n", export_monthly_druh);
 			}// _global_opt_batch_monthly == ANO
 
-			_main_LOG_to_Export("_global_jazyk == %s\n", nazov_jazyka[_global_jazyk]);
+			_main_LOG_to_Export("_global_jazyk == %s\n", nazov_jazyka(_global_jazyk));
 			// rozparsovanie parametra modlitba
 			Log("volanie atomodlitba() z main()... [2]\n");
 			_global_modlitba = atomodlitba(pom_MODLITBA);

@@ -66,7 +66,7 @@ void printConfigOptions(void){
 #ifdef LOG_CONFIG
 	short int j = 0, o = 0;
 	for(j = 0; j <= POCET_JAZYKOV; j++){
-		LogConfig("=== Jazyk `%s' (%s): Default hodnoty option parametrov (konfiguračný súbor %s) ===\n", skratka_jazyka[j], nazov_jazyka[j], CONFIG_FILE);
+		LogConfig("=== Jazyk `%s' (%s): Default hodnoty option parametrov (konfiguračný súbor %s) ===\n", skratka_jazyka[j], nazov_jazyka(j), CONFIG_FILE);
 		for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++){
 			if(o < POCET_GLOBAL_OPT){
 				LogConfig("cfg_option_default[%d][%d] == `%ld'\n", o, j, cfg_option_default[o][j]);
@@ -93,7 +93,7 @@ void setConfigDefaultsOther(short int j) {
 		return;
 	}
 
-	LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
+	LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka(j));
 
 	LogConfig("http address: %s\n", cfg_http_address_default[j]);
 	if (equals(cfg_http_address_default[j], STR_EMPTY)) {
@@ -314,7 +314,7 @@ void readConfig(void)
 	LogConfig("defaults update (originally only for Ruby || Android)...\n");
 	for(j = 0; j <= POCET_JAZYKOV; j++){
 		if(cfg_option_default[OPT_2_HTML_EXPORT][j] != GLOBAL_OPTION_NULL){
-			LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka[j]);
+			LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka(j));
 
 			// nastavenie parametrov OPT_2_HTML_EXPORT: pridáme bity pre nastavenie
 			if((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_NAVIGATION) != BIT_OPT_2_NAVIGATION){
@@ -354,7 +354,7 @@ void readConfig(void)
 			}
 		}
 		else{
-			LogConfig("=== Jazyk `%s' (%s): option je %d\n", skratka_jazyka[j], nazov_jazyka[j], GLOBAL_OPTION_NULL);
+			LogConfig("=== Jazyk `%s' (%s): option je %d\n", skratka_jazyka[j], nazov_jazyka(j), GLOBAL_OPTION_NULL);
 		}
 	}// for j
 

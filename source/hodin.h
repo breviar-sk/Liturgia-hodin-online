@@ -1137,26 +1137,24 @@ const char *nazov_ritu_jazyka[POCET_RITOV + 1][POCET_JAZYKOV + 1] =
 // the names of languages
 // native names in respective languages
 // 2006-07-11: Pridané kvôli jazykovým mutáciám
-const char *nazov_jazyka[POCET_JAZYKOV + 1] =
-{ "slovenčina", "čeština", "English", "lingua latina", "(neurčený)", "čeština/dominikánský", "magyar", "русский", "беларускі", /* STRING_1_FOR_NEW_LANGUAGE */ };
-
-// native names in respective languages
-// 2006-07-11: Pridané kvôli jazykovým mutáciám
 const char *nazov_jazyka_native_jazyk[POCET_JAZYKOV + 1][POCET_JAZYKOV + 1] =
 {
-	{ "slovenčina", "slovenština", "Slovak", "Slovacco", "___", "slovenština", "Szlovák", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "čeština", "čeština", "Czech", "Czecco", "___", "čeština", "Czeh", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "angličtina", "angličtina", "English", "Inglese", "___", "angličtina", "hu_text", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "latičtina", "latina", "Latin", "Latina", "___", "latina", "hu_text", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	{ "slovenčina", "slovenština", "Slovak", "Slovaca", "___", "slovenština", "Szlovák", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "čeština", "čeština", "Czech", "Bohemica", "___", "čeština", "Czeh", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "angličtina", "angličtina", "English", "Anglica", "___", "angličtina", "Angol", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "latičtina", "latina", "Latin", "Latina", "___", "latina", "Latin", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	,{ "(neurčený)", "(neurčen)", "(not defined)", "(___)", "___", "(neurčen)", "hu_text", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "čeština/dominikánsky", "čeština/dominikánský", "Czech/OP", "Czecco/OP", "___", "čeština/dominikánský", "czéch/OP", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "maďarčina", "maďarština", "Hungarian", "Magyar", "___", "maďarština", "Magyar", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "ruština", "maďarština", "Russian", "Russico", "___", "maďarština", "hu_text", "русский", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "bieloruština", "běloruština", "Belarus", "Belorussico", "___", "běloruština", "hu_text", "беларускі", "беларускі", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "čeština/dominikánsky", "čeština/dominikánský", "Czech/OP", "Bohemica/OP", "___", "čeština/dominikánský", "Czeh/OP", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "maďarčina", "maďarština", "Hungarian", "Hungarica", "___", "maďarština", "Magyar", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "ruština", "ruština", "Russian", "Rusica", "___", "ruština", "Orosz", "русский", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "bieloruština", "běloruština", "Belarus", "Belarusica", "___", "běloruština", "Belorusz", "беларускі", "беларускі", /* STRING_1_FOR_NEW_LANGUAGE */ }
     /* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
 #define nazov_jazyka_native_jazyk(a) nazov_jazyka_native_jazyk[a][_global_jazyk]
+
+#define nazov_jazyka(a) nazov_jazyka_native_jazyk[a][a]
+// { "slovenčina", "čeština", "English", "lingua latina", "(neurčený)", "čeština/dominikánský", "magyar", "русский", "беларускі", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // language codes; internal usage for HTTP requests
 const char *skratka_jazyka[POCET_JAZYKOV + 1] =

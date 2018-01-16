@@ -1597,9 +1597,9 @@ extern short int _global_font_size;
 
 extern short int _global_pocet_zalmov_kompletorium;
 
-extern const char *nazov_jazyka[POCET_JAZYKOV + 1];
 extern const char *nazov_jazyka_native_jazyk[POCET_JAZYKOV + 1][POCET_JAZYKOV + 1];
 #define nazov_jazyka_native_jazyk(a) nazov_jazyka_native_jazyk[a][_global_jazyk]
+#define nazov_jazyka(a) nazov_jazyka_native_jazyk[a][a]
 extern const char *skratka_jazyka[POCET_JAZYKOV + 1];
 extern const char *postfix_jazyka[POCET_JAZYKOV + 1];
 extern const char *skratka_jazyka_title[POCET_JAZYKOV + 1];
