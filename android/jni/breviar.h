@@ -443,7 +443,7 @@ extern short int _typslav_override(short int typslav);
 )
 
 // should calendar be exported?
-#define PODMIENKA_EXPORTOVAT_KALENDAR (!((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == default_kalendar[_global_jazyk])))
+#define PODMIENKA_EXPORTOVAT_KALENDAR (!((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || ((_global_kalendar == default_kalendar[_global_jazyk]) && !(_global_jazyk == JAZYK_CZ_OP))))
 
 #define PODMIENKA_EXPORTOVAT_FONTSIZE ( (_global_font_size != FONT_SIZE_UNDEF) && (_global_font_size != FONT_SIZE_CSS) )
 
