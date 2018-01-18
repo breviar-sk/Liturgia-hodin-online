@@ -1269,6 +1269,10 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 /* #define END -------------------------------------------------------------------------------------------------------------------- */
 
+// substring for special cases (even, odd weeks in CZ)
+#define CZ_WEEK_EVEN   "SUDY"
+#define CZ_WEEK_ODD    "LICHY"
+
 // prefixes for special cases (anchors)
 #define CZ_HYMNUS_PREFIX    "CZ_"
 
