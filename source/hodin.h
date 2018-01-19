@@ -6692,7 +6692,7 @@ const char *text_APR_24_OPRAEM_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Obrácení Sv. Augustina",
+	"Obrácení sv. Augustina",
 	"",
 	"ru_text",
 	"by_text",
@@ -6951,11 +6951,24 @@ const char *text_MAJ_04_OFM[POCET_JAZYKOV + 1] =
 const char *text_MAJ_04_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Emílie Bicchieriovej, panny",
+	"Bl. Emílie Bicchieriové, panny, mnišky",
 	"",
 	"",
 	"",
+	"Bl. Emílie Bicchieriové, panny, mnišky",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_MAJ_04_OP_2[POCET_JAZYKOV + 1] =
+{
+	"",
+	"Utrpení našeho Pána Ježíše Krista",
 	"",
 	"",
+	"",
+	"Utrpení našeho Pána Ježíše Krista",
 	"",
 	"ru_text",
 	"by_text",
@@ -6990,11 +7003,11 @@ const char *text_MAJ_06_SDB[POCET_JAZYKOV + 1] =
 const char *text_MAJ_07_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Alberta z Bergama, otca rodiny",
+	"Bl. Alberta z Villy d’Ogna neboli z Bergama, terciáře",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Alberta z Villy d’Ogna neboli z Bergama, terciáře",
 	"",
 	"ru_text",
 	"by_text",
@@ -7120,7 +7133,7 @@ const char *text_MAJ_09_CM[POCET_JAZYKOV + 1] =
 const char *text_MAJ_10_OP[POCET_JAZYKOV + 1] =
 {
 	"Sv. Antonína Florentského, biskupa",
-	"",
+	"Sv. Antonína Pierozziho neboli Florentského, biskupa",
 	"",
 	"",
 	"",
@@ -7147,19 +7160,6 @@ const char *text_MAJ_11_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Ignáca z Laconie, rehoľníka, člena 1. rádu",
 	"Sv. Ignáce z Laconi, řeholníka",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"ru_text",
-	"by_text",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-const char *text_MAJ_11_OP[POCET_JAZYKOV + 1] = // vo všeobecnom kalendári pre OP sa slávi 13. mája
-{
-	"Bl. Imeldy Lambertiniovej, panny",
-	"",
 	"",
 	"",
 	"",
@@ -7224,11 +7224,11 @@ const char *text_MAJ_12_OFM[POCET_JAZYKOV + 1] =
 const char *text_MAJ_12_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jany Portugalskej, panny",
+	"Bl. Jany Portugalské, panny, mnišky",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Jany Portugalské, panny, mnišky",
 	"",
 	"ru_text",
 	"by_text",
@@ -7245,6 +7245,19 @@ const char *text_MAJ_13[POCET_JAZYKOV + 1] =
 	"A Fatimai Boldogságos Szűz Mária",
 	"ru_text",
 	"Найсв. Панны Марыі з Фацімы",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_MAJ_13_OP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Imeldy Lambertiniovej, panny",
+	"Bl. Imeldy Lambertiniové, panny",
+	"",
+	"",
+	"",
+	"Bl. Imeldy Lambertiniové, panny",
+	"",
+	"ru_text",
+	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_MAJ_13_SDB[POCET_JAZYKOV + 1] =
@@ -7302,11 +7315,11 @@ const char *text_MAJ_15_CZOP[POCET_JAZYKOV + 1] =
 const char *text_MAJ_15_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Egída z Vauzela, kňaza",
+	"Bl. Jiljí z Vouzely, kněze",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Jiljí z Vouzely, kněze",
 	"",
 	"ru_text",
 	"by_text",
@@ -7315,11 +7328,11 @@ const char *text_MAJ_15_1_OP[POCET_JAZYKOV + 1] =
 const char *text_MAJ_15_2_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Andreja Abellona, kňaza",
+	"Bl. Ondřeje Abellona, kněze",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Ondřeje Abellona, kněze",
 	"",
 	"ru_text",
 	"by_text",
@@ -7471,11 +7484,11 @@ const char *text_MAJ_19_OFM[POCET_JAZYKOV + 1] =
 const char *text_MAJ_19_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Františka Colla Guitarta, kňaza",
+	"Sv. Františka Colla Guitarta, kněze",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Sv. Františka Colla Guitarta, kněze",
 	"",
 	"ru_text",
 	"by_text",
@@ -7523,11 +7536,11 @@ const char *text_MAJ_20_OFM[POCET_JAZYKOV + 1] =
 const char *text_MAJ_20_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Kolumby z Rieti, panny",
+	"Bl. Kolumby Guadagnoliové neboli z Rieti, panny, řeholnice",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Kolumby Guadagnoliové neboli z Rieti, panny, řeholnice",
 	"",
 	"ru_text",
 	"by_text",
@@ -7562,7 +7575,7 @@ const char *text_MAJ_21[POCET_JAZYKOV + 1] =
 const char *text_MAJ_21_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Hyacinta Márie Cormiera, kňaza",
-	"",
+	"Bl. Hyacinta Marie Cormiera, kněze",
 	"",
 	"",
 	"",
@@ -7627,7 +7640,7 @@ const char *text_MAJ_23_HU[POCET_JAZYKOV + 1] =
 const char *text_MAJ_24_OP[POCET_JAZYKOV + 1] =
 {
 	"Prenesenie pozostatkov sv. otca Dominika",
-	"",
+	"Přenesení ostatků sv. otce Dominika",
 	"",
 	"",
 	"",
@@ -7744,11 +7757,11 @@ const char *text_MAJ_27[POCET_JAZYKOV + 1] =
 const char *text_MAJ_27_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Andreja Franchiho, biskupa",
+	"Bl. Ondřeje (Františka) Franchiho, biskupa",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Ondřeje (Františka) Franchiho, biskupa",
 	"",
 	"ru_text",
 	"by_text",
@@ -7757,11 +7770,11 @@ const char *text_MAJ_27_OP[POCET_JAZYKOV + 1] =
 const char *text_MAJ_28_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Bartolomey Bagnesiovej, panny",
+	"Bl. Marie Bartolomey Bagnesiové, panny, terciářky",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Marie Bartolomey Bagnesiové, panny, terciářky",
 	"",
 	"ru_text",
 	"by_text",
@@ -7783,11 +7796,11 @@ const char *text_MAJ_28_OFM[POCET_JAZYKOV + 1] =
 const char *text_MAJ_29_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Viliama Arnauda, kňaza, a spoločníkov, mučeníkov",
+	"Bl. Viléma Arnauda, kněze, a druhů, mučedníků",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Viléma Arnauda, kněze, a druhů, mučedníků",
 	"",
 	"ru_text",
 	"by_text",
@@ -7822,11 +7835,11 @@ const char *text_MAJ_29_OCD[POCET_JAZYKOV + 1] =
 const char *text_MAJ_30_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jakuba Salomoniho, kňaza",
+	"Bl. Jakuba Salomoniho, kněze",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Jakuba Salomoniho, kněze",
 	"",
 	"ru_text",
 	"by_text",
@@ -10300,11 +10313,11 @@ const char *text_AUG_08[POCET_JAZYKOV + 1] =
 const char *text_AUG_08_OP[POCET_JAZYKOV + 1] =
 {
 	"Sv. Dominika, kňaza, zakladateľa rehole",
-	"Sv. Dominika, kněze",
+	"Sv. otce Dominika, kněze",
 	"",
 	"",
 	"",
-	"Sv. Dominika, kněze",
+	"Sv. otce Dominika, kněze",
 	"Szent Domonkos áldozópap",
 	"ru_text",
 	"by_text",
@@ -12139,11 +12152,11 @@ const char *text_OKT_04_OFM[POCET_JAZYKOV + 1] =
 const char *text_OKT_04_OP[POCET_JAZYKOV + 1] =
 {
 	"Sv. Františka Assiského, diakona",
+	"Sv. otce Františka z Assisi, jáhna",
 	"",
 	"",
 	"",
-	"",
-	"Sv. Františka z Assisi, jáhna",
+	"Sv. otce Františka z Assisi, jáhna",
 	"",
 	"ru_text",
 	"by_text",
@@ -12425,11 +12438,11 @@ const char *text_OKT_11_SK[POCET_JAZYKOV + 1] =
 const char *text_OKT_11_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jakuba z Ulmu, rehoľníka",
+	"Bl. Jakuba Griesingera neboli z Ulmu, řeholníka",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Jakuba Griesingera neboli z Ulmu, řeholníka",
 	"",
 	"ru_text",
 	"by_text",
@@ -12490,11 +12503,11 @@ const char *text_OKT_13_OFM[POCET_JAZYKOV + 1] =
 const char *text_OKT_13_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Magdalény Panatieriovej, panny",
+	"Bl. Magdalény Panatieriové, panny, terciářky",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Magdalény Panatieriové, panny, terciářky",
 	"",
 	"ru_text",
 	"by_text",
@@ -12555,11 +12568,11 @@ const char *text_OKT_14_SJ[POCET_JAZYKOV + 1] =
 const char *text_OKT_14_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Poussepinovej, panny",
+	"Bl. Marie Poussepinové, panny, terciářky",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Marie Poussepinové, panny, terciářky",
 	"",
 	"ru_text",
 	"by_text",

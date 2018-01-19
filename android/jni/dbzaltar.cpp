@@ -3944,34 +3944,55 @@ void _set_zalmy_ocd_vsetci_svati(short int modlitba){
 }// _set_zalmy_ocd_vsetci_svati()
 
 // SK OCD (14DEC)
-void _set_zalmy_ocd_jan_z_kriza(short int modlitba){
+void _set_zalmy_ocd_jan_z_kriza(short int modlitba) {
 	Log("_set_zalmy_ocd_jan_z_kriza(%s) -- begin\n", nazov_modlitby(modlitba));
-	if (modlitba == MODL_VESPERY){
+	if (modlitba == MODL_VESPERY) {
 		set_zalm(1, modlitba, "z15.htm", "ZALM15");
 		set_zalm(2, modlitba, "z112.htm", "ZALM112");
 		set_zalm(3, modlitba, "ch_ef1.htm", "CHVAL_EF1");
 	}
-	else if (modlitba == MODL_PRVE_VESPERY){
+	else if (modlitba == MODL_PRVE_VESPERY) {
 		set_zalm(1, modlitba, "z113.htm", "ZALM113");
 		set_zalm(2, modlitba, "z146.htm", "ZALM146");
 		set_zalm(3, modlitba, "ch_zjv4_5.htm", "CHVAL_ZJV45");
 	}
-	else if (modlitba == MODL_POSV_CITANIE){
+	else if (modlitba == MODL_POSV_CITANIE) {
 		set_zalm(1, modlitba, "z16.htm", "ZALM16");
 		set_zalm(2, modlitba, "z34.htm", "ZALM34_I");
 		set_zalm(3, modlitba, "z34.htm", "ZALM34_II");
 	}
-	else if (modlitba == MODL_RANNE_CHVALY){
+	else if (modlitba == MODL_RANNE_CHVALY) {
 		_set_zalmy_1nedele_rch();
 	}
-	else if (je_modlitba_cez_den(modlitba)){
+	else if (je_modlitba_cez_den(modlitba)) {
 		_set_zalmy_mcd_doplnkova_psalmodia(!je_len_doplnkova_psalmodia(modlitba)); // toto je potrebné z technického dôvodu, pretože doplnková psalmódia bola nastavená ešte pri nastavovaní žaltára (pred vlastnými časťami svätých)
 	}
 
 	Log("_set_zalmy_ocd_jan_z_kriza(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_ocd_jan_z_kriza()
 
-// CZ OP (04OKT), používa ich aj 07NOV pre CZOP; používa ich aj sv. František (04OKT pre OFM)
+void _set_zalmy_op_utrpenie(short int modlitba) {
+	Log("_set_zalmy_op_utrpenie(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_VESPERY) {
+		set_zalm(1, modlitba, "z22.htm", "ZALM22,2-23");
+		set_zalm(2, modlitba, "z22.htm", "ZALM22,24-32");
+		set_zalm(3, modlitba, "ch_1pt2.htm", "CHVAL_1PT2");
+	}
+	else if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z69.htm", "ZALM69,2-13");
+		set_zalm(2, modlitba, "z69.htm", "ZALM69,14-22.30-37");
+		set_zalm(3, modlitba, "z88.htm", "ZALM88");
+	}
+	else if (modlitba == MODL_RANNE_CHVALY) {
+		set_zalm(1, modlitba, "z57.htm", "ZALM57");
+		set_zalm(2, modlitba, "ch_iz12.htm", "CHVAL_IZ12");
+		set_zalm(3, modlitba, "z147.htm", "ZALM147,12-20");
+	}
+
+	Log("_set_zalmy_op_utrpenie(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_op_utrpenie()
+
+ // CZ OP (04OKT), používa ich aj 07NOV pre CZOP; používa ich aj sv. František (04OKT pre OFM)
 void _set_zalmy_pc_1_8_16(short int modlitba){
 	Log("_set_zalmy_pc_1_8_16(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_POSV_CITANIE){

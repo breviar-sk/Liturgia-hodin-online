@@ -148,6 +148,7 @@ extern void _set_zalmy_pc_1_8_15(short int modlitba);
 extern void _set_zalmy_opraem_pc_1_8_21(short int modlitba);
 extern void _set_zalmy_opraem_pc_1_8_24(short int modlitba);
 extern void _set_zalmy_cm_pc_1_41_84(short int modlitba);
+extern void _set_zalmy_op_utrpenie(short int modlitba);
 extern void _set_zalmy_op_29apr(short int modlitba);
 extern void _set_zalmy_pc_1_21_92(short int modlitba);
 extern void _set_zalmy_pc_1_12_24(short int modlitba);
@@ -1136,6 +1137,24 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	}\
 }
 
+#define _vlastna_cast_kresponz_ve_obd {\
+	if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {\
+		_vlastna_cast_kresponz_ve;\
+	}\
+	else {\
+		_vlastna_cast_kresponz;\
+	}\
+}
+
+#define _vlastna_cast_kcitanie_ve_obd {\
+	if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {\
+		_vlastna_cast_kcitanie_ve;\
+	}\
+	else {\
+		_vlastna_cast_kcitanie;\
+	}\
+}
+
 #define _vlastna_cast_mcd_ant_kcitresp_modl {\
 	modlitba = MODL_PREDPOLUDNIM;\
 	_vlastna_cast_antifony_rovnake;\
@@ -1970,11 +1989,12 @@ extern const char *text_APR_19_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_APR_20_OP[POCET_JAZYKOV + 1];
 extern const char *text_APR_27_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_04_OP[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_04_OP_2[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_07_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_08_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_10_OP[POCET_JAZYKOV + 1];
-extern const char *text_MAJ_11_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_12_OP[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_13_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_15_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_15_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_19_OP[POCET_JAZYKOV + 1];
