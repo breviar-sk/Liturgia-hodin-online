@@ -211,7 +211,7 @@ extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value
 // override stupňa slávenia prebíja je_privileg (inými slovami, v privilegované dni je možné sláviť sviatky resp. slávnosti)
 #define je_privileg ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)) && ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))) || ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den >= 17))))
 
-// is antiphone for privileged day?
+// is antiphone & prayer for privileged day?
 #define je_ant_modl_spomprivileg (( \
 (_global_modlitba == MODL_RANNE_CHVALY &&  \
 	(_global_modl_ranne_chvaly.ant_spomprivileg.anchor != NULL) && (_global_modl_ranne_chvaly.ant_spomprivileg.file != NULL) && \
@@ -228,6 +228,27 @@ extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value
 	(strcmp(_global_modl_vespery.ant_spomprivileg.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_vespery.ant_spomprivileg.anchor, STR_UNDEF) != 0) &&  \
 	(strcmp(_global_modl_vespery.modlitba_spomprivileg.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_vespery.modlitba_spomprivileg.anchor, STR_UNDEF) != 0) && \
 	(strcmp(_global_modl_vespery.ant_spomprivileg.file, STR_EMPTY) != 0) && (strcmp(_global_modl_vespery.ant_spomprivileg.file, STR_UNDEF) != 0) &&  \
+	(strcmp(_global_modl_vespery.modlitba_spomprivileg.file, STR_EMPTY) != 0) && (strcmp(_global_modl_vespery.modlitba_spomprivileg.file, STR_UNDEF) != 0) \
+) \
+||  \
+(_global_modlitba == MODL_POSV_CITANIE &&  \
+	(_global_modl_posv_citanie.citanie_spomprivileg.anchor != NULL) && (_global_modl_posv_citanie.citanie_spomprivileg.file != NULL) && \
+	(strcmp(_global_modl_posv_citanie.citanie_spomprivileg.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.citanie_spomprivileg.anchor, STR_UNDEF) != 0) &&  \
+	(strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_UNDEF) != 0) \
+) \
+))
+
+// is prayer for privileged day? (antiphone may be undefined)
+#define je_modl_spomprivileg (( \
+(_global_modlitba == MODL_RANNE_CHVALY &&  \
+	(_global_modl_ranne_chvaly.modlitba_spomprivileg.anchor != NULL) && (_global_modl_ranne_chvaly.modlitba_spomprivileg.file != NULL) && \
+	(!equals(_global_modl_ranne_chvaly.modlitba_spomprivileg.anchor, STR_EMPTY)) && (!equals(_global_modl_ranne_chvaly.modlitba_spomprivileg.anchor, STR_UNDEF)) && \
+	(!equals(_global_modl_ranne_chvaly.modlitba_spomprivileg.file, STR_EMPTY)) && (!equals(_global_modl_ranne_chvaly.modlitba_spomprivileg.file, STR_UNDEF)) \
+) \
+||  \
+(_global_modlitba == MODL_VESPERY &&  \
+	(_global_modl_vespery.modlitba_spomprivileg.anchor != NULL) && (_global_modl_vespery.modlitba_spomprivileg.file != NULL) && \
+	(strcmp(_global_modl_vespery.modlitba_spomprivileg.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_vespery.modlitba_spomprivileg.anchor, STR_UNDEF) != 0) && \
 	(strcmp(_global_modl_vespery.modlitba_spomprivileg.file, STR_EMPTY) != 0) && (strcmp(_global_modl_vespery.modlitba_spomprivileg.file, STR_UNDEF) != 0) \
 ) \
 ||  \

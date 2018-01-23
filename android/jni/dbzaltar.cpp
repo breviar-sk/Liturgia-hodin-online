@@ -3988,6 +3988,11 @@ void _set_zalmy_op_utrpenie(short int modlitba) {
 		set_zalm(2, modlitba, "ch_iz12.htm", "CHVAL_IZ12");
 		set_zalm(3, modlitba, "z147.htm", "ZALM147,12-20");
 	}
+	else if (modlitba == MODL_NAPOLUDNIE) {
+		set_zalm(1, modlitba, "z40.htm", "ZALM40_I");
+		set_zalm(2, modlitba, "z40.htm", "ZALM40_II");
+		set_zalm(3, modlitba, "z54.htm", "ZALM54");
+	}
 
 	Log("_set_zalmy_op_utrpenie(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_op_utrpenie()

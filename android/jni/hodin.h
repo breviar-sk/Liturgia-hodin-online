@@ -9110,11 +9110,11 @@ const char *text_JUL_04_CZ[POCET_JAZYKOV + 1] =
 const char *text_JUL_04_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Kataríny Jarrigeovej, panny",
+	"Bl. Kateřiny Jarrige, panny, terciářky",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Kateřiny Jarrige, panny, terciářky",
 	"",
 	"ru_text",
 	"by_text",
@@ -9123,11 +9123,11 @@ const char *text_JUL_04_1_OP[POCET_JAZYKOV + 1] =
 const char *text_JUL_04_2_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Petra Juraja Frassatiho, laika",
+	"Bl. Petra Jiřího Frassatiho, terciáře",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Petra Jiřího Frassatiho, terciáře",
 	"",
 	"ru_text",
 	"by_text",
@@ -9214,11 +9214,11 @@ const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] =
 const char *text_JUL_07_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Benedikta XI., pápeža",
+	"Bl. Benedikta XI., papeže",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Benedikta XI., papeže",
 	"",
 	"ru_text",
 	"by_text",
@@ -9227,11 +9227,11 @@ const char *text_JUL_07_OP[POCET_JAZYKOV + 1] =
 const char *text_JUL_08_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Hadriána Fortescuea, otca rodiny a mučeníka",
+	"Bl. Adriána Fortescue, otce rodiny, terciáře, mučedníka",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Adriána Fortescue, otce rodiny, terciáře, mučedníka",
 	"",
 	"ru_text",
 	"by_text",
@@ -9409,11 +9409,11 @@ const char *text_JUL_13_OFM[POCET_JAZYKOV + 1] =
 const char *text_JUL_13_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jakuba z Varazze, biskupa",
+	"Bl. Jakuba z Varazze, biskupa",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Jakuba z Varazze, biskupa",
 	"",
 	"ru_text",
 	"by_text",
@@ -9591,7 +9591,7 @@ const char *text_JUL_17_OCD[POCET_JAZYKOV + 1] =
 const char *text_JUL_17_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Česlava Poľského, kňaza",
-	"",
+	"Bl. Česlava z Polska, kněze",
 	"",
 	"",
 	"",
@@ -9617,11 +9617,11 @@ const char *text_JUL_18_HU[POCET_JAZYKOV + 1] =
 const char *text_JUL_18_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Bartolomeja od Mučeníkov, biskupa",
+	"Bl. Bartoloměje od Mučedníků, biskupa",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Bartoloměje od Mučedníků, biskupa",
 	"",
 	"ru_text",
 	"by_text",
@@ -9786,11 +9786,11 @@ const char *text_JUL_24_OFM[POCET_JAZYKOV + 1] =
 const char *text_JUL_24_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jany z Orvieta, panny",
+	"Bl. Jany z Orvieta, panny, terciářky",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Jany z Orvieta, panny, terciářky",
 	"",
 	"ru_text",
 	"by_text",
@@ -9799,11 +9799,11 @@ const char *text_JUL_24_1_OP[POCET_JAZYKOV + 1] =
 const char *text_JUL_24_2_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Augustína z Biella, kňaza",
+	"Bl. Augustina de Fango neboli z Bielly, kněze",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Augustina de Fango neboli z Bielly, kněze",
 	"",
 	"ru_text",
 	"by_text",
@@ -9877,11 +9877,11 @@ const char *text_JUL_27[POCET_JAZYKOV + 1] =
 const char *text_JUL_27_OP[POCET_JAZYKOV + 1] = // SK OP: 28JUL
 {
 	"Bl. Róberta Nuttera, kňaza a mučeníka",
+	"Bl. Roberta Nuttera, kněze a mučedníka",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Roberta Nuttera, kněze a mučedníka",
 	"",
 	"ru_text",
 	"by_text",

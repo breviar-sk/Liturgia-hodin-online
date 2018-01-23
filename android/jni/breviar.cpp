@@ -1763,12 +1763,15 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					if ((equals(paramname, PARAM_MODLITBA)) || (equals(paramname, PARAM_MODL_SPOMPRIVILEG)) || (je_velkonocna_nedela_posv_cit)) {
 
 						// pre ranné chvály a vešpery, ak sa pridáva 'modlitba' pre spomienku v privilegované dni, tak zakončenie sa dáva až pre PARAM_MODL_SPOMPRIVILEG
-						if ((equals(paramname, PARAM_MODLITBA)) && (je_ant_modl_spomprivileg))
+						if ((equals(paramname, PARAM_MODLITBA)) && (je_modl_spomprivileg)) {
 							je_modlitba = !(_global_modlitba == MODL_RANNE_CHVALY || _global_modlitba == MODL_VESPERY);
-						else if (equals(paramname, PARAM_MODL_SPOMPRIVILEG))
+						}
+						else if (equals(paramname, PARAM_MODL_SPOMPRIVILEG)) {
 							je_modlitba = ANO;
-						else
+						}
+						else {
 							je_modlitba = ANO;
+						}
 
 						if (/* rest != NULL && */ strlen(rest) > 0) {
 							mystrcpy(rest_zakoncenie, rest, MAX_BUFFER);
@@ -2940,7 +2943,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_SPOMIENKA_PRIVILEG)) {
-			podmienka &= (je_privileg && je_ant_modl_spomprivileg);
+			podmienka &= (je_privileg && je_modl_spomprivileg);
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_OSTATNI)) {
