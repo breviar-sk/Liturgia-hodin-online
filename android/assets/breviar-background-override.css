@@ -197,7 +197,7 @@ div.responsory {
 	padding-top: 0.3em; 
 }
 
-.preces p.resp { 
+.preces p.resp, .preces p.resprep { 
 	font-style: italic; 
 	font-weight: normal; 
 	margin: 0; 
@@ -206,6 +206,18 @@ div.responsory {
 	padding-top: 0.3em; 
 	-webkit-margin-after: 0em; 
 	-webkit-margin-before: 0em; 
+}
+
+.preces p.resprep:before { 
+	color: #ff0000; 
+	content: '('; 
+	font-weight: normal; 
+}
+
+.preces p.resprep:after { 
+	color: #ff0000; 
+	content: ')'; 
+	font-weight: normal; 
 }
 
 .preces p.partV:before { 

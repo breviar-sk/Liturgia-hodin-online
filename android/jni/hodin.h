@@ -739,6 +739,7 @@ const char *nazov_slavenia_lokal[] =
 , "у Віцебскай дыяцэзіі: урачыстасць, " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: свята" // LOKAL_SLAV_VICEB_SL_MINSK_PINSK_SV
 , "у Гродзенскай дыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: успамін" // LOKAL_SLAV_GRODZ_SL_PINSK_MINSK_SP
 , "v pražském klášteře u Panny Marie Sněžné: slavnost"                                                          // LOKAL_SLAV_PRAHA_OFM
+, "pro mnišky: památka"                                                                                         // LOKAL_SLAV_OP_MNISKY_PAMATKA
 };
 
 // names of liturgical colors
@@ -8184,11 +8185,11 @@ const char *text_JUN_02_OFM[POCET_JAZYKOV + 1] =
 const char *text_JUN_02_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Sadoka, kňaza, a spoločníkov, mučeníkov",
+	"Bl. Sadoka, kněze, a druhů, mučedníků",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Sadoka, kněze, a druhů, mučedníků",
 	"",
 	"ru_text",
 	"by_text",
@@ -8353,7 +8354,7 @@ const char *text_JUN_08_SDB[POCET_JAZYKOV + 1] =
 const char *text_JUN_08_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Diany a Cecílie, panien",
-	"",
+	"Bl. Diany Andalo a Cecílie, panen, mnišek",
 	"",
 	"",
 	"",
@@ -8435,7 +8436,7 @@ const char *text_JUN_12_CZ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bl. Marie Antoníny Kratochvílové, panny, a druhů mučedníků",
 	"",
 	"ru_text",
 	"by_text",
@@ -8470,11 +8471,11 @@ const char *text_JUN_12_SDB[POCET_JAZYKOV + 1] =
 const char *text_JUN_12_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Štefana Bandelliho, kňaza",
+	"Bl. Štěpána Bandelliho, kněze",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Štěpána Bandelliho, kněze",
 	"",
 	"ru_text",
 	"by_text",
@@ -8730,11 +8731,11 @@ const char *text_JUN_17_OFM[POCET_JAZYKOV + 1] =
 const char *text_JUN_18_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Hosanny z Mantovy, panny",
+	"Bl. Hosanny Andreasiové neboli z Mantovy, panny, terciářky",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Hosanny Andreasiové neboli z Mantovy, panny, terciářky",
 	"",
 	"ru_text",
 	"by_text",
@@ -8761,6 +8762,19 @@ const char *text_JUN_19_CZ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Jana Nepomuckého Neumanna, biskupa",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_JUN_20_OP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Margity Ebnerovej, panny",
+	"Bl. Markéty Ebnerové, panny, mnišky",
+	"",
+	"",
+	"",
+	"Bl. Markéty Ebnerové, panny, mnišky",
 	"",
 	"ru_text",
 	"by_text",
@@ -8847,11 +8861,11 @@ const char *text_JUN_23_SDB[POCET_JAZYKOV + 1] =
 const char *text_JUN_23_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Inocenta V., pápeža",
+	"Bl. Inocence V., papeže",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Bl. Inocence V., papeže",
 	"",
 	"ru_text",
 	"by_text",

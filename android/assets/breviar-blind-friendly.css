@@ -57,6 +57,14 @@
 	display: none;
 }
 
+.preces p.resprep:before { 
+	display: none;
+}
+
+.preces p.resprep:after { 
+	display: none;
+}
+
 .preces p.partV:before { 
 	display: none;
 }

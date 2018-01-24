@@ -57,6 +57,14 @@
 	color: #191919; /* #333333; */
 }
 
+.preces p.resprep:before { 
+	color: #FF3333;
+}
+
+.preces p.resprep:after { 
+	color: #FF3333;
+}
+
 .preces p.partV:before { 
 	color: #FF3333;
 }
