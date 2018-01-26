@@ -4459,7 +4459,7 @@ const char *html_text_kalendar_miestny_text_after_combo[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	" naptárát használják",
+	" naptárát használja", // note space before string
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
