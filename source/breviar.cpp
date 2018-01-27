@@ -474,6 +474,58 @@ short int _typslav_override(short int typslav) {
 	}
 } // _typslav_override()
 
+short int useWhenGlobalOption(short opt_i, long bit_opt_i_component_j) {
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+		// behave as if these were switched OFF for voice output
+		if ((opt_i == OPT_0_SPECIALNE) && (
+			(bit_opt_i_component_j == BIT_OPT_0_VERSE)
+			|| (bit_opt_i_component_j == BIT_OPT_0_REFERENCIE)
+			|| (bit_opt_i_component_j == BIT_OPT_0_CITANIA)
+			|| (bit_opt_i_component_j == BIT_OPT_0_FOOTNOTES)
+			|| (bit_opt_i_component_j == BIT_OPT_0_TRANSPARENT_NAV)
+			|| (bit_opt_i_component_j == BIT_OPT_0_ZALMY_FULL_TEXT)
+			)) {
+			return NIE;
+		}
+		else if ((opt_i == OPT_1_CASTI_MODLITBY) && (
+			(bit_opt_i_component_j == BIT_OPT_1_SKRY_POPIS)
+			|| (bit_opt_i_component_j == BIT_OPT_1_ZOBRAZ_SPOL_CAST)
+			)) {
+			return NIE;
+		}
+		else if ((opt_i == OPT_2_HTML_EXPORT) && (
+			(bit_opt_i_component_j == BIT_OPT_2_TEXT_WRAP)
+			|| (bit_opt_i_component_j == BIT_OPT_2_ROZNE_MOZNOSTI)
+			)) {
+			return NIE;
+		}
+		// behave as if these were switched ON for voice output
+		else if ((opt_i == OPT_0_SPECIALNE) && (
+			(bit_opt_i_component_j == BIT_OPT_0_FONT_NORMAL)
+			)) {
+			return ANO;
+		}
+		else if ((opt_i == OPT_1_CASTI_MODLITBY) && (
+			(bit_opt_i_component_j == BIT_OPT_1_TEDEUM)
+			|| (bit_opt_i_component_j == BIT_OPT_1_CHVALOSPEVY)
+			|| (bit_opt_i_component_j == BIT_OPT_1_SLAVA_OTCU)
+			|| (bit_opt_i_component_j == BIT_OPT_1_OTCENAS)
+			|| (bit_opt_i_component_j == BIT_OPT_1_PLNE_RESP)
+			|| (bit_opt_i_component_j == BIT_OPT_1_PROSBY_ZVOLANIE)
+			|| (bit_opt_i_component_j == BIT_OPT_1_ZAVER)
+			)) {
+			return ANO;
+		}
+		else if ((opt_i == OPT_2_HTML_EXPORT) && (
+			(bit_opt_i_component_j == BIT_OPT_2_ALTERNATIVES)
+			)) {
+			return ANO;
+		}
+		return isGlobalOption(opt_i, bit_opt_i_component_j);
+	}
+	return isGlobalOption(opt_i, bit_opt_i_component_j);
+} // useWhenGlobalOption()
+
 void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value) {
 	if (opt_i == OPT_6_ALTERNATIVES_MULTI) {
 		// OPT 6 uses decimal-place logic; value should be between 0 and 9
@@ -1422,11 +1474,11 @@ void _main_prazdny_formular(void) {
 #define MAX_ZAKONCENIE 200
 
 #define EXPORT_FOOTNOTES ANO
-#define EXPORT_FULL_TEXT ((!vnutri_full_text || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT)) && !(vnutri_full_text && isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
-#define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!(vnutri_footnote || vnutri_note) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
-#define EXPORT_RED_STUFF(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)))
-#define EXPORT_RED_TRIANGLE ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
-#define EXPORT_VERSE_NUMBER (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY) && (EXPORT_FULL_TEXT))
+#define EXPORT_FULL_TEXT ((!vnutri_full_text || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT)) && !(vnutri_full_text && isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)))
+#define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!(vnutri_footnote || vnutri_note) || useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
+#define EXPORT_RED_STUFF(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)))
+#define EXPORT_RED_TRIANGLE ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
+#define EXPORT_VERSE_NUMBER (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && (EXPORT_FULL_TEXT))
 
 #define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
 
@@ -1539,10 +1591,10 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #endif
 
 	// nastavenie toho, či sa má zobrazovať myšlienka k žalmom/chválospevom | doplnené aj nastavenie pre zobrazenie nadpisu pre žalm/chválospev (zatiaľ rovnako ako pre myšlienku)
-	// orig: if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.typslav == SLAV_VLASTNE) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.smer == 1) && (_global_den.spolcast != _encode_spol_cast(MODL_SPOL_CAST_NEURCENA))) {
+	// orig: if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.typslav == SLAV_VLASTNE) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.smer == 1) && (_global_den.spolcast != _encode_spol_cast(MODL_SPOL_CAST_NEURCENA))) {
 	// last part was commented
 	// 2017-10-13: nevidím dôvod, prečo by sa to nemalo zobrazovať vždy OKREM blind-friendly režimu (voice output)
-	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 		je_myslienka = NIE;
 		je_nadpis = NIE;
 	}
@@ -1867,7 +1919,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					vnutri_footnote_ref = ANO;
 					write = NIE;
 					fnref_index = 0;
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
 						/* if (rest != NULL) */ mystrcpy(fnrefrest, rest, MAX_BUFFER);
 						DetailLog("\trest      == %s\n", rest);
 						DetailLog("\tfnrefrest == %s\n", fnrefrest);
@@ -1876,7 +1928,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				if (equals(strbuff, PARAM_FOOTNOTE_REF_END) && (vnutri_inkludovaneho == ANO)) {
 					fnrefbuff[fnref_index] = '\0';
 
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
 						if (EXPORT_FOOTNOTES) {
 							Export(HTML_A_HREF_BEGIN "\"#fn");
 						}
@@ -1908,7 +1960,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					vnutri_footnote = ANO;
 					write = NIE;
 					fn_index = 0;
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
 						/* if (rest != NULL) */ mystrcpy(fnrest, rest, MAX_BUFFER);
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\tfnrest   == %s\n", fnrest);
@@ -1917,7 +1969,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				if (equals(strbuff, PARAM_FOOTNOTE_END) && (vnutri_inkludovaneho == ANO)) {
 					fnbuff[fn_index] = '\0';
 
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && (write == NIE)) { // podmienka na write kvôli tomu, že write mohlo byť na ANO nastavené napr. vnorenou biblickou referenciou
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && (write == NIE)) { // podmienka na write kvôli tomu, že write mohlo byť na ANO nastavené napr. vnorenou biblickou referenciou
 
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\tfnrest   == %s\n", fnrest);
@@ -1948,7 +2000,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				// notes in parentheses
 				if (equals(strbuff, PARAM_NOTE_BEGIN) && (vnutri_inkludovaneho == ANO)) {
 
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
 						Export(" ");
 						Export("<" HTML_SPAN_TEXTNOTE ">");
 						Export("(");
@@ -1961,7 +2013,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 					fn_index = 0;
 
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
 						/* if (rest != NULL) */ mystrcpy(fnrest, rest, MAX_BUFFER);
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\tfnrest   == %s\n", fnrest);
@@ -1971,7 +2023,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 					fnbuff[fn_index] = '\0';
 
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && (write == NIE)) { // podmienka na write kvôli tomu, že write mohlo byť na ANO nastavené napr. vnorenou biblickou referenciou
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && (write == NIE)) { // podmienka na write kvôli tomu, že write mohlo byť na ANO nastavené napr. vnorenou biblickou referenciou
 
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\tfnrest   == %s\n", fnrest);
@@ -1992,7 +2044,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					}
 					strcpy(fnrest, STR_EMPTY);
 
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)) {
 						Export(")");
 						Export(HTML_SPAN_END);
 					}
@@ -2003,7 +2055,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				if ((equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN) || equals(strbuff, PARAM_PSALM_FULL_TEXT_SOFT_BEGIN)) && (vnutri_inkludovaneho == ANO)) {
 
 					vnutri_full_text = ANO;
-					write &= (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT) && !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)));
+					write &= (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT) && !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)));
 
 					if (write && equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN)) {
 						Export("<" HTML_DIV_PSALM_INDENT ">");
@@ -2026,7 +2078,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				if (equals(strbuff, PARAM_REFERENCIA_BEGIN) && (vnutri_inkludovaneho == ANO)) {
 
 					// spracujeme prípadný buffer, ak to bolo vnorené v rámci footnote alebo note
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && EXPORT_FOOTNOTES && ((vnutri_footnote == ANO) || (vnutri_note == ANO))) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && EXPORT_FOOTNOTES && ((vnutri_footnote == ANO) || (vnutri_note == ANO))) {
 
 						DetailLog("\tfnbuff   == %s\n", fnbuff);
 
@@ -2138,7 +2190,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					strcpy(reference, STR_EMPTY); // cleanup
 
 					// spracujeme prípadný buffer ak to bolo vnorené v rámci footnote alebo note
-					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && EXPORT_FOOTNOTES && ((vnutri_footnote == ANO) || (vnutri_note == ANO))) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES) && EXPORT_FOOTNOTES && ((vnutri_footnote == ANO) || (vnutri_note == ANO))) {
 						if (/* (fnrest != NULL) && */ !(equals(fnrest, STR_EMPTY))) {
 							fnbuff[fn_index] = '\0';
 
@@ -2330,7 +2382,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					}
 				}// zobraziť/nezobraziť číslovanie veršov
 
-				if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (equals(rest, PARAM_HIDE_FOR_VOICE_OUTPUT))) {
+				if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (equals(rest, PARAM_HIDE_FOR_VOICE_OUTPUT))) {
 					if (equals(strbuff, INCLUDE_BEGIN) && (vnutri_inkludovaneho == 1)) {
 						write = NIE;
 #if defined(EXPORT_HTML_SPECIALS)
@@ -2388,7 +2440,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("(start)dlhe-resp.");
 #endif
-						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 							;
 						}
 						else {
@@ -2400,7 +2452,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("dlhe-resp.(stop)");
 #endif
-						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 							;
 						}
 						else {
@@ -2421,7 +2473,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("(start)NIE-dlhe-resp.");
 #endif
-						if (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) {
+						if (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) {
 							;
 						}
 						else {
@@ -2433,7 +2485,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("NIE-dlhe-resp.(stop)");
 #endif
-						if (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) {
+						if (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) {
 							;
 						}
 						else {
@@ -2450,7 +2502,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("(start)zvolanie");
 #endif
-						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 							;
 						}
 						else {
@@ -2462,7 +2514,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("zvolanie(stop)");
 #endif
-						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 							;
 						}
 						else {
@@ -2479,7 +2531,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("(start)rubrika");
 #endif
-						if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+						if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 							;
 						}
 						else {
@@ -2491,7 +2543,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("rubrika(stop)");
 #endif
-						if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+						if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 							;
 						}
 						else {
@@ -2592,7 +2644,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 			}
 			if (write == ANO) {
 				// nezlomiteľné medzery; v DetailLog logujeme 1:1 presne znak bez transformácie
-				ExportChar(c, isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+				ExportChar(c, isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 				// DetailLog("%c", c);
 			}
 			else {
@@ -2808,7 +2860,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	// verse numbering
 	if (equals(paramname, PARAM_CISLO_VERSA_BEGIN)) {
 		if (_global_skip_in_prayer == NIE) {
-			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 				Export("<sup>");
 			}
 			else {
@@ -2819,7 +2871,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	}// zobraziť/nezobraziť číslovanie veršov
 	else if (equals(paramname, PARAM_CISLO_VERSA_END)) {
 		if (_global_skip_in_prayer == NIE) {
-			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 				Export("</sup>");
 			}
 			else {
@@ -2885,16 +2937,16 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		podmienka = ANO;
 		exportovat_html_note = NIE;
 		if (startsWith(paramname, (char *)KEYWORD_PARAM_CHVALOSPEV)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_TEDEUM)) {
-			podmienka &= ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE));
+			podmienka &= ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE));
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_JE_TEDEUM)) {
 			podmienka &= (_global_opt_tedeum == ANO);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_OTCENAS)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ALELUJA_ALELUJA)) {
@@ -2919,7 +2971,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			podmienka &= (_global_pocet_zalmov_kompletorium > 1);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_RUBRIKA)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_VN_VYNECHAJ)) {
@@ -2930,7 +2982,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			_global_skip_in_prayer_vnpc = (!podmienka) && (je_begin);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_COPYRIGHT)) {
-			podmienka &= !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			podmienka &= !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 			podmienka &= ((query_type != PRM_STATIC_TEXT) || (_global_pocet_svatych <= STATIC_TEXT_ORDINARIUM)); // display (c) only for some static texts
 			exportovat_html_note = ANO;
 		}
@@ -2947,16 +2999,16 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_OSTATNI)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_KNAZ_DIAKON)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER)) {
 			// must be after two previous! (the same prefix)
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 			exportovat_html_note = ANO;
 		}
 
@@ -3000,7 +3052,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		// 2007-12-04: opravená podmienka, pretože nefungovala pre modlitby odlišné od ranných chvál
 		// 2011-04-28: doplnením ďalších "Sláva Otcu", ktoré sa rozbaľujú, sa posunulo číslovanie, a tak radšej podmienku "_global_pocet_slava_otcu == 2" zrušíme
 		// 2011-04-29: doplnené Sláva Otcu "špeciálne" pre účely chválospevu Dan 3, 57-88. 56, kde nie je "Sláva Otcu" (pôvodne to bolo dané poradím, ale templáty pre rôzne jazyky majú rozličné poradie tohto "Sláva Otcu")
-		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (
+		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (
 			_global_modlitba != MODL_RANNE_CHVALY
 			|| (_global_modlitba == MODL_RANNE_CHVALY
 				&& !(equals(paramname, PARAM_SLAVAOTCU_SPEC_BEGIN) && equals(_global_modl_ranne_chvaly.zalm2.anchor, "CHVAL_DAN3,57-88.56"))
@@ -3028,7 +3080,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		// 2007-12-04: opravená podmienka, pretože nefungovala pre modlitby odlišné od ranných chvál
 		// 2011-04-28: doplnením ďalších "Sláva Otcu", ktoré sa rozbaľujú, sa posunulo číslovanie, a tak radšej podmienku "_global_pocet_slava_otcu == 2" zrušíme
 		// 2011-04-29: doplnené Sláva Otcu "špeciálne" pre účely chválospevu Dan 3, 57-88. 56, kde nie je "Sláva Otcu" (pôvodne to bolo dané poradím, ale templáty pre rôzne jazyky majú rozličné poradie tohto "Sláva Otcu")
-		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (
+		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (
 			_global_modlitba != MODL_RANNE_CHVALY
 			|| (_global_modlitba == MODL_RANNE_CHVALY
 				&& !(equals(paramname, PARAM_SLAVAOTCU_SPEC_END) && equals(_global_modl_ranne_chvaly.zalm2.anchor, "CHVAL_DAN3,57-88.56"))
@@ -3107,10 +3159,10 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	} // PARAM_PODNADPIS
 
 	else if (equals(paramname, PARAM_SPOL_CAST)) {
-		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (blind-friendy: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (blind-friendy: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 		Log("  _global_den.typslav == %d (%s)...\n", _global_den.typslav, nazov_slavenia(_global_den.typslav));
 
-		zobrazit = (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+		zobrazit = (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 
 		if (zobrazit == ANO) {
 			// ďalšie rozhodovanie
@@ -3756,9 +3808,9 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	if (equals(paramname, PARAM_POPIS)) {
 
 		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS == %ld: ", _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS);
-		Log("  _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY == %ld: ", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_BLIND_FRIENDLY);
+		Log("  _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT == %ld: ", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT);
 
-		if ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)) && (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) {
+		if ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)) && (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) {
 			Log("including POPIS\n");
 			switch (type) {
 			case MODL_INVITATORIUM:
@@ -4066,7 +4118,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			// zneužitie parametra "ANTIFONA2" pre zobrazenie "záverečnej" antifóny v prípade, že sa tlačí aj Sláva Otcu 
 			// funguje tak, že ak chce zobraziť Sláva Otcu (if(_global_opt 1 == ANO)), nastaví sa interpretovanie podľa ANTIFONA1; ináč sa nič nevykoná
 		case MODL_INVITATORIUM:
-			if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+			if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 				strcat(path, _global_modl_invitatorium.antifona1.file);
 				includeFile(type, paramname, path, _global_modl_invitatorium.antifona1.anchor);
 			}
@@ -4733,7 +4785,7 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 		} // switch(c)
 		if (!isbuff) {
 			if ((_global_skip_in_prayer == NIE) && (_global_skip_in_prayer_2 != ANO) && (_global_skip_in_prayer_vnpc != ANO)) {
-				ExportChar(c.result, isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+				ExportChar(c.result, isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 			}// _global_skip_in_prayer == NIE && !_global_skip_in_prayer_2
 		}// if(!isbuff)
 		else {
@@ -7027,8 +7079,8 @@ void xml_export_options(void) {
 				case 7: // BIT_OPT_0_BUTTONS_ORDER
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_BUTTONS_ORDER)"%ld" ELEM_END(XML_BIT_OPT_0_BUTTONS_ORDER) "\n", BIT_OPT_0_BUTTONS_ORDER, STR_FORCE_BIT_OPT_0_BUTTONS_ORDER, html_text_opt_0_buttons_order[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BUTTONS_ORDER)));
 					break;
-				case 8: // BIT_OPT_0_BLIND_FRIENDLY
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_BLIND_FRIENDLY)"%ld" ELEM_END(XML_BIT_OPT_0_BLIND_FRIENDLY) "\n", BIT_OPT_0_BLIND_FRIENDLY, STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY, html_text_opt_0_blind_friendly[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)));
+				case 8: // BIT_OPT_0_VOICE_OUTPUT
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_VOICE_OUTPUT)"%ld" ELEM_END(XML_BIT_OPT_0_VOICE_OUTPUT) "\n", BIT_OPT_0_VOICE_OUTPUT, STR_FORCE_BIT_OPT_0_VOICE_OUTPUT, html_text_opt_0_voice_output[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)));
 					break;
 				case 9: // BIT_OPT_0_FOOTNOTES
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_FOOTNOTES)"%ld" ELEM_END(XML_BIT_OPT_0_FOOTNOTES) "\n", BIT_OPT_0_FOOTNOTES, STR_FORCE_BIT_OPT_0_FOOTNOTES, html_text_opt_0_footnotes[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)));
@@ -7451,13 +7503,13 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 
 	if ((som_v_tabulke == ANO) && (typ != EXPORT_DNA_JEDEN_DEN_LOCAL)) {
 		Export(HTML_FORM_INPUT_SUBMIT_PRAYER" title=\"%s\" value=\"", nazov_modlitby(modl_visible));
-		ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl_visible), CHAR_SPACE, CHAR_NONBREAKING_SPACE), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+		ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl_visible), CHAR_SPACE, CHAR_NONBREAKING_SPACE), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 		Export("\"" HTML_FORM_INPUT_END "\n");
 		Export("</form>\n");
 	}
 	else {
 		if (typ == EXPORT_DNA_JEDEN_DEN_LOCAL) {
-			ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl_visible), CHAR_SPACE, CHAR_NONBREAKING_SPACE), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl_visible), CHAR_SPACE, CHAR_NONBREAKING_SPACE), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 		}
 		else {
 			Export("%s", nazov_modlitby(modl_visible));
@@ -7543,7 +7595,7 @@ void _export_rozbor_dna_button_modlitba2(short int modl, char pom[MAX_STR]) {
 	}// !(query_type == PRM_LIT_OBD)
 	Export_HtmlForm(action);
 	Export(HTML_FORM_INPUT_SUBMIT2" title=\"%s\" value=\"", nazov_modlitby(modl));
-	ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl), CHAR_SPACE, CHAR_NONBREAKING_SPACE), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+	ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl), CHAR_SPACE, CHAR_NONBREAKING_SPACE), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 	Export("\"" HTML_FORM_INPUT_END "\n");
 	Export("</form>\n");
 }// _export_rozbor_dna_button_modlitba2
@@ -7646,9 +7698,9 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		}
 
 		if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
-			Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (blind-friendy: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY));
+			Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (blind-friendy: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 
-			if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+			if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 				ret_sc = init_global_string_spol_cast(MODL_SPOL_CAST_NULL, poradie_svateho);
 				Log("including SPOL_CAST\n");
 				if (!equals(_global_string_spol_cast, STR_EMPTY)) {
@@ -8223,7 +8275,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 	short int podmienka = -1;
 
 	// current behaviour for normal (not blind-friendly) mode
-	if (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+	if (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 		// zobrazujeme, iba ak nie je explicitne vyžiadané skrývanie
 		if (!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) {
 			podmienka = 1; // zobraziť: _export_rozbor_dna_buttons_dni_call(typ, dnes_dnes);
@@ -10040,8 +10092,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 #if !defined(IO_ANDROID)
 		// for Android it is not necessary since 2.0 (TTS implemented natively)
-		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY, STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY, html_text_opt_0_blind_friendly[_global_jazyk], html_text_opt_0_blind_friendly_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_VOICE_OUTPUT
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT, STR_FORCE_BIT_OPT_0_VOICE_OUTPUT, html_text_opt_0_voice_output[_global_jazyk], html_text_opt_0_voice_output_explain[_global_jazyk]);
 #endif
 
 #if !defined(IO_ANDROID)
@@ -12315,7 +12367,7 @@ LABEL_NIE_INE_VESPERY:
 	_export_heading_center(_global_string);
 
 	// úprava aj_navigacia pre blind-friendly
-	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) && (modlitba != MODL_NEURCENA)) {
+	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (modlitba != MODL_NEURCENA)) {
 		Log("pre blind-friendly verziu upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", modlitba);
 		aj_navigacia = CIASTOCNE;
 	}

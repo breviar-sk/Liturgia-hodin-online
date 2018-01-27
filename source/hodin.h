@@ -2489,7 +2489,7 @@ const char *html_text_opt_0_buttons_order_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_opt_0_blind_friendly[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_voice_output[POCET_JAZYKOV + 1] =
 {
 	"zobraziť iba text modlitieb (pre nevidiacich a slabozrakých) bez rubrík, pre hlasový výstup",
 	"zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik, pro hlasový výstup",
@@ -2504,7 +2504,7 @@ const char *html_text_opt_0_blind_friendly[POCET_JAZYKOV + 1] =
 };
 
 // for other languages use: ""
-const char *html_text_opt_0_blind_friendly_explain[POCET_JAZYKOV + 1] =
+const char *html_text_opt_0_voice_output_explain[POCET_JAZYKOV + 1] =
 {
 	"Vo výslednej modlitbe bude zobrazený len ten text, ktorý sa číta; nebudú zobrazené žiadne rubriky alebo názvy častí modlitieb. Toto je vhodné pre hlasový výstup napr. pre nevidiacich a slabozrakých.",
 	"",

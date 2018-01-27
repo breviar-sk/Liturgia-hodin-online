@@ -1875,7 +1875,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 5: mystrcpy(str, STR_FORCE_BIT_OPT_0_TK_NED, SMALL); break; // BIT_OPT_0_TELAKRVI_NEDELA
 			case 6: mystrcpy(str, STR_FORCE_BIT_OPT_0_FONT_NORMAL, SMALL); break; // BIT_OPT_0_FONT_NORMAL
 			case 7: mystrcpy(str, STR_FORCE_BIT_OPT_0_BUTTONS_ORDER, SMALL); break; // BIT_OPT_0_BUTTONS_ORDER
-			case 8: mystrcpy(str, STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY, SMALL); break; // BIT_OPT_0_BLIND_FRIENDLY
+			case 8: mystrcpy(str, STR_FORCE_BIT_OPT_0_VOICE_OUTPUT, SMALL); break; // BIT_OPT_0_VOICE_OUTPUT
 			case 9: mystrcpy(str, STR_FORCE_BIT_OPT_0_FOOTNOTES, SMALL); break; // BIT_OPT_0_FOOTNOTES
 			case 10: mystrcpy(str, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV, SMALL); break; // BIT_OPT_0_TRANSPARENT_NAV
 			case 11: mystrcpy(str, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, SMALL); break; // BIT_OPT_0_ZALMY_FULL_TEXT

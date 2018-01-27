@@ -272,7 +272,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 		_header_css(expt, level, nazov_css_normal_font_weight);
 	}
 	// blind-friendly CSS (no red text)
-	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY)) {
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 		_header_css(expt, level, nazov_css_blind_friendly);
 	}
 
@@ -496,7 +496,7 @@ void patka(void) {
 	}
 	_global_patka_Export++;
 
-	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) {
+	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) {
 		_patka(NULL);
 	}
 	_patka_body_html_end(NULL);
@@ -514,7 +514,7 @@ void patka(FILE * expt) {
 	}
 	_global_patka_Export++;
 
-	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_BLIND_FRIENDLY))) {
+	if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) {
 		_patka(expt);
 	}
 	_patka_body_html_end(expt);
