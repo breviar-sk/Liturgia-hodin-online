@@ -116,9 +116,9 @@ body { background-color: #303030; color: #dddddd; }
 
 <h3>Ako si nastaviť hlasový výstup</h3>
 
-<p>Ak ste ešte nepoužívali hlasový výstup, je potrebné nainštalovať si aplikáciu pre syntézu reči (TTS, text-to-speech)  a nastaviť ju ako predvolenú v systémových nastaveniach.</p>
+<p>Ak ste ešte nepoužívali hlasový výstup, je potrebné nainštalovať si aplikáciu pre syntézu reči (TTS, text-to-speech) a nastaviť ju ako predvolenú v systémových nastaveniach. Štandardná Google TTS aplikácia podporuje od januára 2018 aj slovenčinu, ale len pre novšie verzie systému Android.</p>
 
-<p>Pre slovenčinu existuje napr. aplikácia eSpeak, ktorá je k dispozícii zdarma. Existujú aj platené aplikácie s lepšou kvalitou hlasového výstupu resp. hlasové výstupy niektorých výrobcov, podporujúce slovenčinu (napr. Samsung). V aplikácii je ešte potrebné stiahnuť si podporu pre slovenčinu.</p>
+<p>Pre staršie verzie OS Android, na ktorých nie je možnosť doinštalovania slovenčiny pre Google TTS, existuje napr. aplikácia eSpeak, ktorá je k dispozícii zdarma. Existujú aj platené aplikácie s lepšou kvalitou hlasového výstupu resp. hlasové výstupy niektorých výrobcov, podporujúce slovenčinu (napr. Samsung). V aplikácii je ešte potrebné stiahnuť si podporu pre slovenčinu.</p>
 
 <p><button onclick="bridge.openIntent('https://play.google.com/store/apps/details?id=com.redzoc.ramees.tts.espeak')">Nainštalovať eSpeak z Google Play"</button></p>
 
