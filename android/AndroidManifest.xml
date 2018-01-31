@@ -10,6 +10,7 @@
                  android:name="sk.breviar.android.BreviarApp"
                  android:theme="@style/BreviarTheme"
                  android:icon="@drawable/icon">
+        <meta-data android:name="android.max_aspect" android:value="47.7" />
         <activity android:name="Breviar"
                   android:configChanges="orientation|screenSize"
                   android:launchMode="singleTask">

@@ -402,7 +402,12 @@ public class Breviar extends AppCompatActivity
             if (tryOpenBible(url)) return true;
           }
           if (url.startsWith("svpismo:")) {
-            if (tryOpenBible(url)) return true;
+            if (tryOpenBible(url)) {
+              return true;
+            } else {
+              Log.v("breviar", "link to svpismo:// ignored, cannot open the app");
+              return true;
+            }
           }
 
           Log.v("breviar", "sync in overrideurlloading");
