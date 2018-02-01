@@ -128,6 +128,7 @@
 #define STR_SPACE " "
 #define STR_VERTICAL_BAR "|"
 #define STR_VERTICAL_BAR_WITH_SPACES " | "
+#define STR_ASTERISK "*"
 #define STR_CROSS "†"
 #define STR_SLASH "/"
 #define STR_UNDERSCORE "_"
@@ -210,6 +211,15 @@
 #define HTML_DIV_RED_SUBTITLE       "div class=\"redsubtitle\""
 
 #define HTML_DIV_PSALM_INDENT       "div class=\"psalm-indent\""
+
+// TTS navigation
+#define HTML_DIV_TTS_HEADING        "div class=\"tts_heading\""
+#define HTML_DIV_TTS_SECTION        "div class=\"tts_section\""
+
+// TTS special - pause (for special characters)
+#define HTML_SPAN_TTS_PAUSE_RED     "span class=\"tts_pause red\""
+#define HTML_SPAN_TTS_PAUSE         "span class=\"tts_pause\""
+#define HTML_SPAN_TTS_PAUSE_SHORT   "span class=\"tts_pause_short\""
 
 // HTML tables defined using DIVs
 #define HTML_TABLE			        "div class=\"table\"" // "table"

@@ -528,6 +528,8 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define KEYWORD_ZAVER_KNAZ_DIAKON       "ZAVER_KNAZ_DIAKON"
 #define KEYWORD_ZAVER_OSTATNI           "ZAVER_OSTATNI"
 #define KEYWORD_HIDE_FOR_VOICE_OUTPUT   "HIDE_FOR_VOICE_OUTPUT"
+#define KEYWORD_TTS_HEADING             "TTS:HEADING"
+#define KEYWORD_TTS_SECTION             "TTS:SECTION"
 
 #define SYMBOL_END "/"
 
@@ -583,6 +585,11 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 // zobrazenie antifóny a modlitby pre spomienku svätca v pôstnom období + zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 #define PARAM_SPOMIENKA_PRIVILEG_BEGIN      KEYWORD_SPOMIENKA_PRIVILEG "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_SPOMIENKA_PRIVILEG_END        KEYWORD_SPOMIENKA_PRIVILEG "" STR_UNDERSCORE "" KEYWORD_END
+
+// TTS parameters
+#define PARAM_TTS_HEADING_BEGIN             KEYWORD_TTS_HEADING "" STR_UNDERSCORE "" KEYWORD_BEGIN
+#define PARAM_TTS_HEADING_END               KEYWORD_TTS_HEADING "" STR_UNDERSCORE "" KEYWORD_END
+#define PARAM_TTS_SECTION                   KEYWORD_TTS_SECTION
 
 // zobrazenie/skrytie myšlienky k žalmu -- pre cezročné obdobie alternatívnej antifóny žalmu/chválospevu ("myšlienka k žalmu" podľa bodu 111 a 114 VSLH)
 #define PARAM_PSALMODIA_MYSLIENKA           "PSALMODIA_MYSLIENKA" // 2011-08-31: zmenené; pôvodne bolo: PARAM_MYSLIENKA_K_ZALMU "MYSLIENKA_K_ZALMU"
@@ -644,6 +651,10 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 // these two have the same usage as previous two except adding div's (used within section divided due to different psalm strophes as in Ps 55)
 #define PARAM_PSALM_FULL_TEXT_SOFT_BEGIN    "full-text-soft"
 #define PARAM_PSALM_FULL_TEXT_SOFT_END      SYMBOL_END "" PARAM_PSALM_FULL_TEXT_SOFT_BEGIN
+
+// normal (black) stuff in psalmody (cross, asterisk)
+#define PARAM_NORMAL_CROSS                     "+"
+#define PARAM_NORMAL_ASTERISK                  "x"
 
 // red stuff in antiphones etc. (red cross, red asterisk, red triangle)
 #define PARAM_RED_CROSS                     "†" // used as flexa | U+2020 DAGGER

@@ -1710,7 +1710,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							write_krizik = NIE;
 						}
 						if (write_krizik == ANO) {
-							Export("-->");
+							Export(HTML_COMMENT_END);
 							if (je_antifona == ANO) {
 								Export(HTML_NONBREAKING_SPACE); // pre krížik na začiatku žalmu/chválospevu medzeru netreba
 							}
@@ -1718,7 +1718,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							if (je_antifona != ANO) {
 								Export(HTML_NONBREAKING_SPACE); // pre krížik na konci chválospevu medzeru netreba
 							}
-							Export("<!--");
+							Export(HTML_COMMENT_BEGIN);
 						}
 					}
 				}// vypísať krížik, nakoľko antifóna nastavila, že má byť; ináč nerob nič
@@ -1894,21 +1894,43 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				// write = NIE; -- aby mohli byt nestovane viacere :-)
 				DetailLog("parameter does not match: %s != %s; vnutri_inkludovaneho == %d\n", rest, modlparam, vnutri_inkludovaneho);
 
+// normal (black) stuff in psalmody (cross, asterisk)
+				if ((equals(strbuff, PARAM_NORMAL_ASTERISK)
+					|| equals(strbuff, PARAM_NORMAL_CROSS)
+					) && (vnutri_inkludovaneho == ANO))
+				{
+					DetailLog("exporting normal stuff with nbsp before...\n");
+
+					Export(HTML_NONBREAKING_SPACE);
+
+					if (equals(strbuff, PARAM_NORMAL_ASTERISK)) {
+						Export("<" HTML_SPAN_TTS_PAUSE ">");
+						Export(STR_ASTERISK);
+					}
+					else if (equals(strbuff, PARAM_NORMAL_CROSS)) {
+						Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
+						Export(STR_CROSS);
+					}
+
+					Export(HTML_SPAN_END);
+				}// normal (black) stuff
+
 // red asterisk, red cross, other "red stuff"
 				if ((equals(strbuff, PARAM_RED_ASTERISK)
 					|| equals(strbuff, PARAM_RED_CROSS)
 					) && (vnutri_inkludovaneho == ANO))
 				{
-					DetailLog("idem exportovať red stuff...\n");
+					DetailLog("exporting red stuff...\n");
 					if (EXPORT_RED_STUFF(_global_modlitba)) {
-						Export("<" HTML_SPAN_RED ">%s" HTML_SPAN_END, strbuff);
+						Export("<" HTML_SPAN_TTS_PAUSE_RED ">%s" HTML_SPAN_END, strbuff);
 					}
 				}// red stuff
+
 // red triangle (end of psalm/canticle when doxology is not displayed)
 				if (equals(strbuff, PARAM_RED_TRIANGLE) && (vnutri_inkludovaneho == ANO)) {
-					DetailLog("idem exportovať red triangle...\n");
+					DetailLog("exporting red triangle with nbsp before...\n");
 					if (EXPORT_RED_TRIANGLE) {
-						Export(HTML_NONBREAKING_SPACE "<" HTML_SPAN_RED ">%s" HTML_SPAN_END, strbuff);
+						Export(HTML_NONBREAKING_SPACE "<" HTML_SPAN_TTS_PAUSE_RED ">%s" HTML_SPAN_END, strbuff);
 					}
 				}// PARAM_RED_TROJUHOLNIK
 
@@ -2853,6 +2875,11 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	short int podmienka = NIE;
 	short int je_begin, je_end = NIE;
 	short int exportovat_html_note = NIE;
+	short int exportovat_html_tag = NIE;
+
+	char tag_to_export_begin[SMALL] = STR_EMPTY;
+	char tag_to_export_end[SMALL] = STR_EMPTY;
+
 	_struct_sc sc;
 
 	Log("interpretParameter(%s): Dumping by %s\n", paramname, paramname);
@@ -2881,10 +2908,32 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 	}// zobraziť/nezobraziť číslovanie veršov
 
+	// normal (black) stuff in psalmody (cross, asterisk)
+	else if (equals(paramname, PARAM_NORMAL_ASTERISK)
+		|| equals(paramname, PARAM_NORMAL_CROSS))
+	{
+		if (_global_skip_in_prayer == NIE) {
+			DetailLog("exporting normal stuff with nbsp before...\n");
+
+			Export(HTML_NONBREAKING_SPACE);
+
+			if (equals(paramname, PARAM_NORMAL_ASTERISK)) {
+				Export("<" HTML_SPAN_TTS_PAUSE ">");
+				Export(STR_ASTERISK);
+			}
+			else if (equals(paramname, PARAM_NORMAL_CROSS)) {
+				Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
+				Export(STR_CROSS);
+			}
+
+			Export(HTML_SPAN_END);
+		}
+	}// normal (black) stuff
+
 	// red asterisk, other "red stuff" (normal characters)
 	else if (equals(paramname, PARAM_RED_ASTERISK)) {
 		if (_global_skip_in_prayer == NIE) {
-			DetailLog("idem exportovať red stuff...\n");
+			DetailLog("exporting red stuff...\n");
 			if (EXPORT_RED_STUFF(_global_modlitba)) {
 				Export("<" HTML_SPAN_RED ">%s" HTML_SPAN_END, paramname);
 			}
@@ -2894,7 +2943,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	// red triangle (end of psalm/canticle when doxology is not displayed), red cross (Unicode special characters)
 	else if (equals(paramname, PARAM_RED_CROSS) || equals(paramname, PARAM_RED_CROSS_TXT)) {
 		if (_global_skip_in_prayer == NIE) {
-			DetailLog("idem exportovať red cross/triangle...\n");
+			DetailLog("exporting red cross with nbsp before...\n");
 			if (EXPORT_RED_TRIANGLE) {
 				Export(HTML_NONBREAKING_SPACE "<" HTML_SPAN_RED ">%s" HTML_SPAN_END, PARAM_RED_CROSS);
 			}
@@ -2902,7 +2951,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	}// show red cross
 	else if (equals(paramname, PARAM_RED_TRIANGLE) || equals(paramname, PARAM_RED_TRIANGLE_TXT)) {
 		if (_global_skip_in_prayer == NIE) {
-			DetailLog("idem exportovať red cross/triangle...\n");
+			DetailLog("exporting red triangle with nbsp before...\n");
 			if (EXPORT_RED_TRIANGLE) {
 				Export(HTML_NONBREAKING_SPACE "<" HTML_SPAN_RED ">%s" HTML_SPAN_END, PARAM_RED_TRIANGLE);
 			}
@@ -2928,6 +2977,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		|| (equals(paramname, PARAM_ZAVER_BEGIN)) || (equals(paramname, PARAM_ZAVER_END))
 		|| (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_BEGIN)) || (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_END))
 		|| (equals(paramname, PARAM_ZAVER_OSTATNI_BEGIN)) || (equals(paramname, PARAM_ZAVER_OSTATNI_END))
+		|| (equals(paramname, PARAM_TTS_HEADING_BEGIN)) || (equals(paramname, PARAM_TTS_HEADING_END))
 		) {
 		Log("_global_opt[OPT_1_CASTI_MODLITBY == %d] == %ld\n", OPT_1_CASTI_MODLITBY, _global_opt[OPT_1_CASTI_MODLITBY]);
 
@@ -2936,6 +2986,10 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 		podmienka = ANO;
 		exportovat_html_note = NIE;
+		exportovat_html_tag = NIE; // considered only when exportovat_html_note == ANO
+		mystrcpy(tag_to_export_begin, STR_EMPTY, SMALL);
+		mystrcpy(tag_to_export_end, STR_EMPTY, SMALL);
+
 		if (startsWith(paramname, (char *)KEYWORD_PARAM_CHVALOSPEV)) {
 			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 		}
@@ -3011,6 +3065,12 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 			exportovat_html_note = ANO;
 		}
+		else if (startsWith(paramname, (char *)KEYWORD_TTS_HEADING)) {
+			exportovat_html_note = ANO;
+			exportovat_html_tag = ANO;
+			mystrcpy(tag_to_export_begin, "<" HTML_DIV_TTS_HEADING ">" , SMALL);
+			mystrcpy(tag_to_export_end, HTML_DIV_END, SMALL);
+		}
 
 		if (podmienka) {
 			// show
@@ -3020,8 +3080,18 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 					Export("show %s", paramname);
 #endif
 					Export(HTML_COMMENT_END);
+
+					if (exportovat_html_tag) {
+						Export(tag_to_export_begin);
+						Export(HTML_COMMENT_BEGIN);
+					}
 				}
 				else if (je_end) {
+					if (exportovat_html_tag) {
+						Export(HTML_COMMENT_END);
+						Export(tag_to_export_end);
+					}
+
 					Export(HTML_COMMENT_BEGIN);
 #if defined(EXPORT_HTML_SPECIALS)
 					Export("show %s", paramname);
@@ -3062,7 +3132,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("zobraziť Sláva Otcu(%d)", _global_pocet_slava_otcu);
 #endif
-			Export("-->");
+			Export(HTML_COMMENT_END);
 			Log("  `Slava Otcu': begin...\n");
 		}
 		else {
@@ -3086,7 +3156,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				&& !(equals(paramname, PARAM_SLAVAOTCU_SPEC_END) && equals(_global_modl_ranne_chvaly.zalm2.anchor, "CHVAL_DAN3,57-88.56"))
 				)
 			)) {
-			Export("<!--");
+			Export(HTML_COMMENT_BEGIN);
 #if defined(EXPORT_HTML_SPECIALS)
 			Export("zobraziť Sláva Otcu(%d)", _global_pocet_slava_otcu);
 #endif
@@ -3109,7 +3179,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 #if defined(EXPORT_HTML_SPECIALS)
 				Export("zobraziť alternatívny hymnus 34. týždňa OCR");
 #endif
-				Export("-->");
+				Export(HTML_COMMENT_END);
 				Log("JE 34.týždeň OCR... BEGIN\n");
 			}
 			else {
@@ -3129,7 +3199,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		if (!((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && ((su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type))))) {
 			if (je_34_ocr) {
 				// zobraziť alternatívny hymnus 34. týždňa OCR
-				Export("<!--");
+				Export(HTML_COMMENT_BEGIN);
 #if defined(EXPORT_HTML_SPECIALS)
 				Export("je 34.týždeň OCR");
 #endif
@@ -3718,6 +3788,25 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 	} // PARAM_CHVALOSPEV, PARAM_ZAVER, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
 
+	if (equals(paramname, PARAM_TTS_SECTION)) {
+		// always export, never show; CSS defines display: none;
+		if (ANO) {
+			Export("tts:section:begin-->\n");
+
+			Export("<" HTML_DIV_TTS_SECTION ">");
+
+			// Export("XXX");
+
+			Export(HTML_DIV_END "\n");
+
+			Export("<!--tts:section:end");
+		}
+		else {
+			Export("[skipping TTS_SECTION]");
+			Log("skipping TTS_SECTION\n");
+		}
+	} // PARAM_TTS_SECTION
+
 	if (equals(paramname, PARAM_NAVIGACIA_SIMPLE)) {
 		if (aj_navigacia == ANO) {
 #ifdef BEHAVIOUR_WEB
@@ -4123,11 +4212,11 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				includeFile(type, paramname, path, _global_modl_invitatorium.antifona1.anchor);
 			}
 			else {
-				Export("-->");
+				Export(HTML_COMMENT_END);
 				Export(HTML_P_RUBRIC);
 				Export((char *)html_text_inv_slavaotcu[_global_jazyk]);
 				Export(HTML_P_END);
-				Export("<!--");
+				Export(HTML_COMMENT_BEGIN);
 			}
 			break;
 		default:
@@ -4198,20 +4287,20 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	else if (equals(paramname, PARAM_ANTIFONA1k)) {
 		// pridané kvôli kompletóriu vo veľkonočnom období, či pri druhej antifóne zobraziť dvojku alebo nie 
 		if ((((type == MODL_KOMPLETORIUM) && (_global_modl_kompletorium.pocet_zalmov == 2)) || ((type == MODL_PRVE_KOMPLETORIUM) && (_global_modl_prve_kompletorium.pocet_zalmov == 2))) && (_global_ant_mcd_rovnake == NIE)) {
-			Export("-->");
+			Export(HTML_COMMENT_END);
 			if ((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_CZ)) {
 				Export("1. ant.");
 			}
 			else {
 				Export("1");
 			}
-			Export("<!--");
+			Export(HTML_COMMENT_BEGIN);
 		}
 		else {
 			if ((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_CZ)) {
-				Export("-->");
+				Export(HTML_COMMENT_END);
 				Export("Ant.");
-				Export("<!--");
+				Export(HTML_COMMENT_BEGIN);
 			}
 			else {
 #if defined(EXPORT_HTML_SPECIALS)
@@ -4945,18 +5034,18 @@ void vysvetlivky(void) {
 	char fname[MAX_STR] = STR_EMPTY;
 	mystrcpy(fname, include_dir, MAX_STR);
 	strcat(fname, FILE_VYSVETLIVKY);
-	Export("<!--"); // simulacia toho, ze replacujeme nejaky anchor
+	Export(HTML_COMMENT_BEGIN); // simulacia toho, ze replacujeme nejaky anchor
 	includeFile(0, ANCHOR_VYSVETLIVKY, fname, ANCHOR_VYSVETLIVKY);
-	Export("-->"); // simulacia toho, ze replacujeme nejaky anchor
+	Export(HTML_COMMENT_END); // simulacia toho, ze replacujeme nejaky anchor
 } // vysvetlivky()
 
 void vysvetlivky_tabulka(void) {
 	char fname[MAX_STR] = STR_EMPTY;
 	mystrcpy(fname, include_dir, MAX_STR);
 	strcat(fname, FILE_VYSVETLIVKY_TABULKA);
-	Export("<!--"); // simulacia toho, ze replacujeme nejaky anchor
+	Export(HTML_COMMENT_BEGIN); // simulacia toho, ze replacujeme nejaky anchor
 	includeFile(0, ANCHOR_VYSVETLIVKY_TABULKA, fname, ANCHOR_VYSVETLIVKY_TABULKA);
-	Export("-->"); // simulacia toho, ze replacujeme nejaky anchor
+	Export(HTML_COMMENT_END); // simulacia toho, ze replacujeme nejaky anchor
 } // vysvetlivky_tabulka()
 
 // skontroluje dátum, či je správne zadaný,

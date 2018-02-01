@@ -978,6 +978,14 @@ sup {
     display: none;
 }
 
+.tts_section {
+    display: none;
+}
+
+.tts_pause, .tts_pause_short {
+    display: inline;
+}
+
 .psalm-indent, .psalm-indent p.verse {
 	display: block;
 	font-size: 95%; 
