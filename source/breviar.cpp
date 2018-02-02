@@ -1479,6 +1479,8 @@ void _main_prazdny_formular(void) {
 #define EXPORT_RED_STUFF(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)))
 #define EXPORT_RED_TRIANGLE ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
 #define EXPORT_VERSE_NUMBER (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && (EXPORT_FULL_TEXT))
+#define EXPORT_TTS_PAUSES (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))
+#define EXPORT_TTS_SECTIONS (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))
 
 #define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
 
@@ -1904,15 +1906,21 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					Export(HTML_NONBREAKING_SPACE);
 
 					if (equals(strbuff, PARAM_NORMAL_ASTERISK)) {
-						Export("<" HTML_SPAN_TTS_PAUSE ">");
+						if (EXPORT_TTS_PAUSES) {
+							Export("<" HTML_SPAN_TTS_PAUSE ">");
+						}
 						Export(STR_ASTERISK);
 					}
 					else if (equals(strbuff, PARAM_NORMAL_CROSS)) {
-						Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
+						if (EXPORT_TTS_PAUSES) {
+							Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
+						}
 						Export(STR_CROSS);
 					}
 
-					Export(HTML_SPAN_END);
+					if (EXPORT_TTS_PAUSES) {
+						Export(HTML_SPAN_END);
+					}
 				}// normal (black) stuff
 
 // red asterisk, red cross, other "red stuff"
@@ -2918,15 +2926,21 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			Export(HTML_NONBREAKING_SPACE);
 
 			if (equals(paramname, PARAM_NORMAL_ASTERISK)) {
-				Export("<" HTML_SPAN_TTS_PAUSE ">");
+				if (EXPORT_TTS_PAUSES) {
+					Export("<" HTML_SPAN_TTS_PAUSE ">");
+				}
 				Export(STR_ASTERISK);
 			}
 			else if (equals(paramname, PARAM_NORMAL_CROSS)) {
-				Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
+				if (EXPORT_TTS_PAUSES) {
+					Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
+				}
 				Export(STR_CROSS);
 			}
 
-			Export(HTML_SPAN_END);
+			if (EXPORT_TTS_PAUSES) {
+				Export(HTML_SPAN_END);
+			}
 		}
 	}// normal (black) stuff
 
@@ -3789,8 +3803,8 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	} // PARAM_CHVALOSPEV, PARAM_ZAVER, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
 
 	if (equals(paramname, PARAM_TTS_SECTION)) {
-		// always export, never show; CSS defines display: none;
-		if (ANO) {
+		// export for voice output, never show; CSS defines display: none;
+		if (EXPORT_TTS_SECTIONS) {
 			Export("tts:section:begin-->\n");
 
 			Export("<" HTML_DIV_TTS_SECTION ">");
