@@ -3086,7 +3086,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM)) {
 						_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 					}
-					_vlastna_cast_benediktus;
+					_vlastna_cast_2citanie;
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_RANNE_CHVALY;
@@ -3094,7 +3094,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 						_vlastna_cast_full_okrem_antifon(modlitba);
 					}
 					else {
-						_vlastna_cast_2citanie;
+						_vlastna_cast_benediktus;
 						_vlastna_cast_modlitba;
 					}
 
@@ -3103,7 +3103,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 						_vlastna_cast_full_okrem_antifon(modlitba);
 					}
 					else {
-						_vlastna_cast_2citanie;
+						_vlastna_cast_magnifikat;
 						_vlastna_cast_modlitba;
 					}
 				}// nie je_privileg
@@ -3255,8 +3255,8 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_POSV_CITANIE;
-					_vlastna_cast_modlitba;
 					_vlastna_cast_2citanie;
+					_vlastna_cast_modlitba;
 
 					modlitba = MODL_VESPERY;
 					// antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období
