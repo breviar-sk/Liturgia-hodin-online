@@ -1476,11 +1476,12 @@ void _main_prazdny_formular(void) {
 #define EXPORT_FOOTNOTES ANO
 #define EXPORT_FULL_TEXT ((!vnutri_full_text || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT)) && !(vnutri_full_text && isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)))
 #define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!(vnutri_footnote || vnutri_note) || useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
-#define EXPORT_RED_STUFF(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)))
+// export red and normal stuff = export asterisks & crosses (psalmody, responsories)
+#define EXPORT_RED_AND_NORMAL_STUFF(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)))
 #define EXPORT_RED_TRIANGLE ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
 #define EXPORT_VERSE_NUMBER (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && (EXPORT_FULL_TEXT))
 #define EXPORT_TTS_PAUSES (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))
-#define EXPORT_TTS_SECTIONS (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))
+#define EXPORT_TTS_SECTIONS ANO
 
 #define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
 
@@ -1909,13 +1910,17 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						if (EXPORT_TTS_PAUSES) {
 							Export("<" HTML_SPAN_TTS_PAUSE ">");
 						}
-						Export(STR_ASTERISK);
+						if (EXPORT_RED_AND_NORMAL_STUFF(_global_modlitba)) {
+							Export(STR_ASTERISK);
+						}
 					}
 					else if (equals(strbuff, PARAM_NORMAL_CROSS)) {
 						if (EXPORT_TTS_PAUSES) {
 							Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
 						}
-						Export(STR_CROSS);
+						if (EXPORT_RED_AND_NORMAL_STUFF(_global_modlitba)) {
+							Export(STR_CROSS);
+						}
 					}
 
 					if (EXPORT_TTS_PAUSES) {
@@ -1929,7 +1934,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					) && (vnutri_inkludovaneho == ANO))
 				{
 					DetailLog("exporting red stuff...\n");
-					if (EXPORT_RED_STUFF(_global_modlitba)) {
+					if (EXPORT_RED_AND_NORMAL_STUFF(_global_modlitba)) {
 						Export("<" HTML_SPAN_TTS_PAUSE_RED ">%s" HTML_SPAN_END, strbuff);
 					}
 				}// red stuff
@@ -1943,7 +1948,6 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				}// PARAM_RED_TROJUHOLNIK
 
 // footnote references
-
 				// upraviť footnote referencie na hyperlinky
 				if (equals(strbuff, PARAM_FOOTNOTE_REF_BEGIN) && (vnutri_inkludovaneho == ANO)) {
 					vnutri_footnote_ref = ANO;
@@ -2929,13 +2933,17 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				if (EXPORT_TTS_PAUSES) {
 					Export("<" HTML_SPAN_TTS_PAUSE ">");
 				}
-				Export(STR_ASTERISK);
+				if (EXPORT_RED_AND_NORMAL_STUFF(_global_modlitba)) {
+					Export(STR_ASTERISK);
+				}
 			}
 			else if (equals(paramname, PARAM_NORMAL_CROSS)) {
 				if (EXPORT_TTS_PAUSES) {
 					Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
 				}
-				Export(STR_CROSS);
+				if (EXPORT_RED_AND_NORMAL_STUFF(_global_modlitba)) {
+					Export(STR_CROSS);
+				}
 			}
 
 			if (EXPORT_TTS_PAUSES) {
@@ -2948,7 +2956,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	else if (equals(paramname, PARAM_RED_ASTERISK)) {
 		if (_global_skip_in_prayer == NIE) {
 			DetailLog("exporting red stuff...\n");
-			if (EXPORT_RED_STUFF(_global_modlitba)) {
+			if (EXPORT_RED_AND_NORMAL_STUFF(_global_modlitba)) {
 				Export("<" HTML_SPAN_RED ">%s" HTML_SPAN_END, paramname);
 			}
 		}
@@ -3067,16 +3075,16 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_OSTATNI)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_KNAZ_DIAKON)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER)) {
 			// must be after two previous! (the same prefix)
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_TTS_HEADING)) {
