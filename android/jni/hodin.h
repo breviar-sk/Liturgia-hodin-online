@@ -119,28 +119,6 @@ const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 
 #define		nazov_Modlitby(a)	nazov_Modlitby_jazyk[a][_global_jazyk]
 
-// the names of the prayers, all caps case (SAMPLE TEXT)
-const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] = 
-{
-	{ "INVITATÓRIUM", "UVEDENÍ DO PRVNÍ MODLITBY DNE", "INVITATORY", "INVITATORIUM", "", "POZVÁNÍ K MODLITBĚ", "IMÁDSÁGRA HÍVÁS", "ПРЕДНАЧИНАНИЕ", "ЗАКЛІК", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "POSVÄTNÉ ČÍTANIE", "MODLITBA SE ČTENÍM", "OFFICE OF READINGS", "OFFICIUM LECTIONIS", "", "MODLITBA SE ČTENÍM", "OLVASMÁNYOS IMAÓRA", "ЧАС ЧТЕНИЙ", "ГАДЗІНА ЧЫТАННЯЎ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "RANNÉ CHVÁLY", "RANNÍ CHVÁLY", "LAUDES", "LAUDES MATUTIN&#198;", "", "RANNÍ CHVÁLY", "REGGELI DICSÉRET", "УТРЕНЯ", "ЮТРАНЬ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "MODLITBA PREDPOLUDNÍM", "MODLITBA DOPOLEDNE", "TERCE", "TERTIA", "", "TERCIE", "DÉLELŐTT", "ru_text", "МАЛІТВА ПЕРАД ПОЎДНЕМ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "MODLITBA NAPOLUDNIE", "MODLITBA V POLEDNE", "SEXT", "SEXTA", "", "SEXTA", "DÉLBEN", "ru_text", "МАЛІТВА АПОЎДНІ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "MODLITBA POPOLUDNÍ", "MODLITBA ODPOLEDNE", "NONE", "NONA", "", "NONA", "DÉLUTÁN", "ru_text", "МАЛІТВА ПАСЛЯ ПОЎДНЯ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "VEŠPERY", "NEŠPORY", "VESPERAE", "VESPER&#198;", "", "VEČERNÍ CHVÁLY", "ESTI DICSÉRET", "ВЕЧЕРНЯ", "НЕШПАРЫ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "KOMPLETÓRIUM", "KOMPLETÁŘ", "COMPLETARY", "COMPLETORIUM", "", "KOMPLETÁŘ", "BEFEJEZŐ IMAÓRA", "ПОВЕЧЕРИЕ", "КАМПЛЕТА", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "NEURČENÁ", "NEURČENA", "NOT-DEFINED", "NO DATA", "", "NEURČENÁ", "NEM AZONOSÍTOTT", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "PRVÉ VEŠPERY", "PRVNÍ NEŠPORY", "1ST VESPERAE", "I VESPER&#198;", "", "PRVNÍ VEČERNÍ CHVÁLY", "I. ESTI DICSÉRET", "ru_text", "I НЕШПАРЫ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "KOMPLETÓRIUM PO PRVÝCH VEŠPERÁCH", "KOMPLETÁŘ PO PRVNÍCH NEŠPORÁCH", "1ST COMPLETARY", "I COMPLETORIUM", "", "KOMPLETÁŘ PO PRVNÍCH VEČERNÍCH CHVÁLÁCH", "BEFEJEZŐ IMAÓRA I. E. D. UTÁN", "ru_text", "КАМПЛЕТА ПАСЛЯ І НЕШПАРАЎ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "DRUHÉ VEŠPERY", "DRUHÉ NEŠPORY", "2ND VESPERAE", "II VESPER&#198;", "", "DRUHÉ VEČERNÍ CHVÁLY", "II. ESTI DICSÉRET", "ru_text", "II НЕШПАРЫ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "KOMPLETÓRIUM PO DRUHÝCH VEŠPERÁCH", "KOMPLETÁŘ PO DRUHÝCH NEŠPORÁCH", "2ND COMPLETARY", "II COMPLETORIUM", "", "KOMPLETÁŘ PO DRUHÝCH VEČERNÍCH CHVÁLÁCH", "BEFEJEZŐ IMAÓRA II. E. D. UTÁN", "ru_text", "КАМПЛЕТА ПАСЛЯ IІ НЕШПАРАЎ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "DETAILY", "DETAILY", "DETAILS", "DETAILS", "", "DETAILY", "RÉSZLETEK", "ru_text", "ДЭТАЛІ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "VŠETKY", "VŠECHNY", "ALL", "OMNIA", "", "VŠECHNY", "ÖSSZES", "ru_text", "УСЕ", /* STRING_1_FOR_NEW_LANGUAGE */ }
-};
-
-#define		nazov_MODLITBY(a)	nazov_MODLITBY_jazyk[a][_global_jazyk]
-
 // strings of buttons - abbreviations of prayer names // shortened because of usage on mobile devices (Android)
 const char *html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 {
@@ -3926,9 +3904,51 @@ const char *html_text_opt_5_1VHymnusPC[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_opt_5_OCR34Hymns_ordinary[POCET_JAZYKOV + 1] =
+{
+	"hymny zo žaltára",
+	"hymny ze žaltáře",
+	"",
+	"",
+	"",
+	"hymny ze žaltáře",
+	"himuszok az zsoltáros",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_5_OCR34Hymns[POCET_JAZYKOV + 1] =
+{
+	"hymny pre 34. týždeň Cezročného obdobia",
+	"hymny pro 34. týden mezidobí",
+	"",
+	"",
+	"",
+	"hymny pro 34. týden mezidobí",
+	"himuszok az évközi idő, 34. hét",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_5_OCR34Hymns_explain[POCET_JAZYKOV + 1] =
+{
+	"Vo férie 34. týždňa Cezročného obdobia možno použiť špeciálne hymny.",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_opt_5_CZHymnus_ordinary[POCET_JAZYKOV + 1] =
 {
-	"",
+	"hymny z breviára",
 	"hymny z breviáře",
 	"",
 	"",
@@ -3942,7 +3962,7 @@ const char *html_text_opt_5_CZHymnus_ordinary[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_5_CZHymnus_extra[POCET_JAZYKOV + 1] =
 {
-	"",
+	"hymny z voľného výberu",
 	"hymny k volnému výběru",
 	"",
 	"",

@@ -51,25 +51,25 @@ short int su_zalmy_vlastne(short int m){
 }// su_zalmy_vlastne()
 
 // has celebration its own psalmody for 1st vespers?
-short int su_zalmy_prve_vespery_vlastne(short int m){
+short int su_zalmy_prve_vespery_vlastne(short int m) {
 	Log("su_zalmy_prve_vespery_vlastne(%d): ", m);
 	short int ret;
 	ret = FALSE;
-	if ((m == MODL_PRVE_VESPERY) || (m == MODL_VESPERY)){
-		if (_global_poradie_svaty == 0){
-			if (_je_global_den_slavnost){
+	if ((m == MODL_PRVE_VESPERY) || (m == MODL_VESPERY)) {
+		if (_global_poradie_svaty == 0) {
+			if (_je_global_den_slavnost) {
 				ret = TRUE;
 			}
 		}
-		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if (_je_global_svaty_i_slavnost(_global_poradie_svaty)){
+		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA) {
+			if (_je_global_svaty_i_slavnost(_global_poradie_svaty)) {
 				ret = TRUE;
 			}
 		}
-		if (_global_den.denvt == DEN_NEDELA){
+		if (_global_den.denvt == DEN_NEDELA) {
 			ret = TRUE;
 		}// DEN_NEDELA
-		if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)){
+		if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)) {
 			ret = TRUE;
 		}// NOV02 == 02NOV
 	}// nie mcd
@@ -79,47 +79,47 @@ short int su_zalmy_prve_vespery_vlastne(short int m){
 
 // aj pre spomienky možno brať zo spoločnej časti tieto časti; všeob. smernice č. 235 b)
 // rešpektujeme bod č. 235 všeobecných smerníc: "V posvätnom čítaní, v ranných chválach a vo vešperách: b) antifóna na invitatórium, hymnus, krátke čítanie, antifóny na Benediktus a Magnifikat a prosby, ak sú vlastné, musia sa recitovať o príslušnom svätcovi, ináč sa berú buď zo spoločnej časti, alebo z bežného všedného dňa;"
-short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m){
+short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m) {
 	Log("su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(%d): ", m);
 	short int ret;
 	ret = FALSE;
-	if (!(je_modlitba_cez_den(m))){
-		if (_global_poradie_svaty == 0){
-			if (_je_global_den_slavnost || _je_global_den_sviatok || (((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)) && (pouzit_na_spomienky_casti_zo_spolocnych_casti))){
+	if (!(je_modlitba_cez_den(m))) {
+		if (_global_poradie_svaty == 0) {
+			if (_je_global_den_slavnost || _je_global_den_sviatok || (((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)) && (pouzit_na_spomienky_casti_zo_spolocnych_casti))) {
 				ret = TRUE;
 			}
 		}
-		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if ((_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty)) || (((_global_svaty(_global_poradie_svaty).typslav == SLAV_SPOMIENKA) || (_global_svaty(_global_poradie_svaty).typslav == SLAV_LUB_SPOMIENKA)) && (pouzit_na_spomienky_casti_zo_spolocnych_casti))){
+		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA) {
+			if ((_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty)) || (((_global_svaty(_global_poradie_svaty).typslav == SLAV_SPOMIENKA) || (_global_svaty(_global_poradie_svaty).typslav == SLAV_LUB_SPOMIENKA)) && (pouzit_na_spomienky_casti_zo_spolocnych_casti))) {
 				ret = TRUE;
 			}
 		}
 	}// nie mcd
 	// pre 2.11. sa vlastný hymnus berie aj pre modlitbu cez deň
-	if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)){
+	if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)) {
 		ret = TRUE;
 	}// NOV02 == 02NOV
-	if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP) && ((_global_den.den == 26) || (_global_den.den == 29)) && (_global_den.mesiac - 1 == MES_NOV) && (!(je_modlitba_cez_den(m)))){
+	if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP) && ((_global_den.den == 26) || (_global_den.den == 29)) && (_global_den.mesiac - 1 == MES_NOV) && (!(je_modlitba_cez_den(m)))) {
 		ret = TRUE;
 	}// 26NOV + 29NOV pre KALENDAR_CZ_OFMCAP majú vlastné hymny pre RCH, PC, V
 	Log("%d\n", ret);
 	return ret;
 }// su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne()
 
-short int je_1cit_vlastne(short int m){
+short int je_1cit_vlastne(short int m) {
 	Log("je_1cit_vlastne(%d): ", m);
 	short int ret;
 	ret = FALSE;
-	if (m == MODL_POSV_CITANIE){
-		if (_global_poradie_svaty == 0){
+	if (m == MODL_POSV_CITANIE) {
+		if (_global_poradie_svaty == 0) {
 			if (_je_global_den_slavnost || _je_global_den_sviatok)
 				ret = TRUE;
 		}
-		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
+		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA) {
 			if ((_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty)))
 				ret = TRUE;
 		}
-		if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)){
+		if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)) {
 			ret = TRUE;
 		}// NOV02 == 02NOV
 	}// pc
@@ -129,35 +129,35 @@ short int je_1cit_vlastne(short int m){
 
 // su_antifony_vlastne aj vtedy, ak je to spomienka a explicitne si vyberie žalmy+antifóny zo spoločnej časti
 // rešpektujeme bod č. 235 všeobecných smerníc: "V posvätnom čítaní, v ranných chválach a vo vešperách: a) žalmy s antifónami sa berú z bežného všedného dňa, ak nie sú antifóny a žalmy vlastné, uvedené na príslušných miestach;"
-short int su_antifony_vlastne(short int m){
+short int su_antifony_vlastne(short int m) {
 	Log("su_antifony_vlastne(%d): ", m);
 	short int ret;
 	ret = FALSE;
 	Log("_global_poradie_svaty == %d...\n", _global_poradie_svaty);
-	if (_global_poradie_svaty == 0){
-		if (_je_global_den_slavnost){
+	if (_global_poradie_svaty == 0) {
+		if (_je_global_den_slavnost) {
 			ret = TRUE;
 		}
 	}
-	else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-		if (_je_global_svaty_i_slavnost(_global_poradie_svaty)){
+	else if (_global_poradie_svaty != PORADIE_PM_SOBOTA) {
+		if (_je_global_svaty_i_slavnost(_global_poradie_svaty)) {
 			ret = TRUE;
 		}
 	}
-	if ((m == MODL_RANNE_CHVALY) || (m == MODL_POSV_CITANIE) || (m == MODL_VESPERY)){
-		if (_global_poradie_svaty == 0){
-			if (_je_global_den_sviatok){
+	if ((m == MODL_RANNE_CHVALY) || (m == MODL_POSV_CITANIE) || (m == MODL_VESPERY)) {
+		if (_global_poradie_svaty == 0) {
+			if (_je_global_den_sviatok) {
 				ret = TRUE;
 			}
 		}
-		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if ((_je_global_svaty_i_sviatok(_global_poradie_svaty)) /* || ((_global_svaty(_global_poradie_svaty).typslav == SLAV_SPOMIENKA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU))) */){
+		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA) {
+			if ((_je_global_svaty_i_sviatok(_global_poradie_svaty)) /* || ((_global_svaty(_global_poradie_svaty).typslav == SLAV_SPOMIENKA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU))) */) {
 				ret = TRUE;
 			}
 		}
 	}// rch, pc, v
 	// pre 2.11. sa vlastné antifóny berú aj pre modlitbu cez deň
-	if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)){
+	if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)) {
 		ret = TRUE;
 	}// NOV02 == 02NOV
 	Log("%d\n", ret);
@@ -169,24 +169,24 @@ short int su_antifony_vlastne(short int m){
 //      Na niektoré slávnosti Pána sa uvádzajú osobitné žalmy.
 // 232. V modlitbe cez deň, čiže predpoludním, napoludnie a popoludní (tercia, sexta a nóna), sa berie hymnus dňa; žalmy s antifónami sa berú z férie, ak si osobitný dôvod alebo tradícia nevyžaduje v modlitbe cez deň vlastnú antifónu, čo sa uvedie na príslušnom mieste. Krátke čítanie a záverečná modlitba sú vlastné.
 // 236. V modlitbe cez deň, čiže predpoludním, napoludnie a popoludní, a v kompletóriu sa neberie nič z ofícia o svätom, všetko je zo všedného dňa.
-short int su_kcit_kresp_modlitba_mcd_vlastne(short int m){
+short int su_kcit_kresp_modlitba_mcd_vlastne(short int m) {
 	Log("su_kcit_kresp_modlitba_mcd_vlastne(%d): ", m);
 	short int ret;
 	ret = FALSE;
-	if (je_modlitba_cez_den(m)){
-		if (_global_poradie_svaty == 0){
-			if (_je_global_den_slavnost || _je_global_den_sviatok){
+	if (je_modlitba_cez_den(m)) {
+		if (_global_poradie_svaty == 0) {
+			if (_je_global_den_slavnost || _je_global_den_sviatok) {
 				ret = TRUE;
 			}
 		}
-		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA){
-			if ((_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty))){
+		else if (_global_poradie_svaty != PORADIE_PM_SOBOTA) {
+			if ((_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty))) {
 				ret = TRUE;
 			}
 		}
 	}// mcd
 	// pre 2.11. sa pre modlitbu cez deň berú vlastné časti
-	if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)){
+	if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)) {
 		ret = TRUE;
 	}// NOV02 == 02NOV
 	Log("%d\n", ret);
@@ -404,7 +404,7 @@ void _set_rchvaly_z146_150(short int modlitba) {
 } // _set_rchvaly_z146_150()
 
 void _set_hymnus_alternativy(short int modlitba, short int litobd) {
-	Log("_set_hymnus_alternativy(%s, %s): začiatok...\n", nazov_modlitby(modlitba), nazov_obdobia(litobd));
+	Log("_set_hymnus_alternativy(%s, %s): begin...\n", nazov_modlitby(modlitba), nazov_obdobia(litobd));
 	short int bit = 0;
 
 	switch (litobd)
@@ -449,7 +449,7 @@ void _set_hymnus_alternativy(short int modlitba, short int litobd) {
 			break;
 		} // switch(modlitba)
 	}
-	Log("_set_hymnus_alternativy(): koniec; bit == %d\n", bit);
+	Log("_set_hymnus_alternativy(): end; bit == %d\n", bit);
 } // _set_hymnus_alternativy() -- dva parametre
 
 // pre Cezročné obdobie | per annum
@@ -458,7 +458,7 @@ void _set_hymnus_alternativy(short int modlitba){
 }// _set_hymnus_alternativy()
 
 void _set_hymnus_alternativy_NO(short int modlitba, short int litobd){
-	Log("_set_hymnus_alternativy_NO(%s, %s): začiatok...\n", nazov_modlitby(modlitba), nazov_obdobia(litobd));
+	Log("_set_hymnus_alternativy_NO(%s, %s): begin...\n", nazov_modlitby(modlitba), nazov_obdobia(litobd));
 	short int bit = 0;
 
 	switch (litobd)
@@ -502,7 +502,7 @@ void _set_hymnus_alternativy_NO(short int modlitba, short int litobd){
 			break;
 		} // switch(modlitba)
 	}
-	Log("_set_hymnus_alternativy_NO(): koniec; bit == %d\n", bit);
+	Log("_set_hymnus_alternativy_NO(): end; bit == %d\n", bit);
 }// _set_hymnus_alternativy_NO() -- dva parametre
 
 // pre Cezročné obdobie | per annum
@@ -6914,6 +6914,54 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				set_LOG_litobd_pc_tyzden;
 				// Log(_global_modl_posv_citanie);
 
+				if (tyzden == 34) {
+					// 34. týždeň Cezročného obdobia; využijeme nastavenie _file_pc_tyzden
+					if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS)) {
+
+						// nastavenie hymnov
+
+						modlitba = MODL_RANNE_CHVALY;
+
+						sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+						_set_hymnus(modlitba, _file_pc_tyzden, _anchor);
+						set_LOG_litobd;
+
+						modlitba = MODL_VESPERY;
+
+						sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+						_set_hymnus(modlitba, _file_pc_tyzden, _anchor);
+						set_LOG_litobd;
+
+						modlitba = MODL_POSV_CITANIE;
+
+						sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+						_set_hymnus(modlitba, _file_pc_tyzden, _anchor);
+						set_LOG_litobd;
+
+						if (_global_jazyk == JAZYK_CZ) {
+							// CZ has special hymn also for prayer during the day
+
+							modlitba = MODL_PREDPOLUDNIM;
+
+							sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+							_set_hymnus(modlitba, _file_pc_tyzden, _anchor);
+							set_LOG_litobd;
+
+							modlitba = MODL_NAPOLUDNIE;
+
+							sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+							_set_hymnus(modlitba, _file_pc_tyzden, _anchor);
+							set_LOG_litobd;
+
+							modlitba = MODL_POPOLUDNI;
+
+							sprintf(_anchor, "%s%d%c_%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+							_set_hymnus(modlitba, _file_pc_tyzden, _anchor);
+							set_LOG_litobd;
+						}
+					}
+				}
+
 				if (_global_den.denvr == SRDCA){
 					// Najsv. srdca Ježišovho
 					mystrcpy(_file, FILE_SRDCA, MAX_STR_AF_FILE);
@@ -10568,6 +10616,11 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_VIAN1_9HYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_VIAN1_2HYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_VIAN1_3HYMNUS", 2 },
+	// špeciálne hymny pre 34. týždeň Cezročného obdobia; not fot CZ
+	{ JAZYK_SK, "OCR34c_HYMNUS", 2 },
+	{ JAZYK_SK, "OCR34r_HYMNUS", 2 },
+	{ JAZYK_SK, "OCR34v_HYMNUS", 2 },
+
 };
 
 _struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {

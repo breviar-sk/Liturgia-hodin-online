@@ -1033,6 +1033,13 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT "of5i"
 #endif
 
+#define FORCE_BIT_OPT_5_OCR_34_HYMNS 137
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_5_OCR_34_HYMNS "FORCE_BIT_OPT_5_OCR_34_HYMNS"
+#else
+#define STR_FORCE_BIT_OPT_5_OCR_34_HYMNS "of5pa34h"
+#endif
+
 #define CSS 40
 #ifdef LONG_PARAM_NAMES
 	#define STR_CSS "CSS"
@@ -1274,6 +1281,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_OFF_DEF_PSALM_146_150     "BitOpt5OffDefPsalm146or150"
 #define XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON         "BitOpt5ConclusionPriestDiacon"
 #define XML_BIT_OPT_5_INVITATORIUM_ANT          "BitOpt5InvitatoryAnt"
+#define XML_BIT_OPT_5_OCR_34_HYMNS              "BitOpt5PerAnnum34Hymns"
 
 // POCET_OPT_6_ALTERNATIVES_MULTI
 #define XML_PLACE_OPT_6_HYMNUS_MULTI            "PlaceOpt6HymnusMulti"

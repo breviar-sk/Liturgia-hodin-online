@@ -377,9 +377,6 @@ extern const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 extern const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_Modlitby(a)	nazov_Modlitby_jazyk[a][_global_jazyk]
 
-extern const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
-#define		nazov_MODLITBY(a)	nazov_MODLITBY_jazyk[a][_global_jazyk]
-
 // file templates for prayers
 #define TEMPLAT_INVITATORIUM     "m_invitat.htm"
 #define TEMPLAT_POSV_CITANIE     "m_posvcit.htm"
@@ -505,11 +502,11 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define KEYWORD_BEGIN   "BEGIN"
 #define KEYWORD_END     "END"
 #define KEYWORD_MULTI   "MULTI"
+#define KEYWORD_OCR_34  "OCR-34"
 
 #define KEYWORD_ALELUJA_ALELUJA         "ALELUJA_ALELUJA"
 #define KEYWORD_ALELUJA_NIE_V_POSTE     "ALELUJA_NIE_V_POSTE"
 #define KEYWORD_ALELUJA_VO_VELKONOCNOM  "V_O_ALELUJA"
-#define KEYWORD_HYMNUS_34_OCR_INY       "HYMNUS_34_OCR_INY"
 #define KEYWORD_OTCENAS                 "OTCENAS"
 #define KEYWORD_PARAM_CHVALOSPEV        "CHVALOSPEV"
 #define KEYWORD_KOMPLETORIUM_DVA_ZALMY	"KOMPLETORIUM_DVA_ZALMY"
@@ -542,8 +539,6 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ALELUJA_VO_VELKONOCNOM        KEYWORD_ALELUJA_VO_VELKONOCNOM
 #define PARAM_ALELUJA_VO_VELKONOCNOM_BEGIN  KEYWORD_ALELUJA_VO_VELKONOCNOM "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_ALELUJA_VO_VELKONOCNOM_END    KEYWORD_ALELUJA_VO_VELKONOCNOM "" STR_UNDERSCORE "" KEYWORD_END
-#define PARAM_HYMNUS_34_OCR_INY_BEGIN       KEYWORD_HYMNUS_34_OCR_INY "" STR_UNDERSCORE "" KEYWORD_BEGIN
-#define PARAM_HYMNUS_34_OCR_INY_END         KEYWORD_HYMNUS_34_OCR_INY "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_OTCENAS_BEGIN                 KEYWORD_OTCENAS "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_OTCENAS_END                   KEYWORD_OTCENAS "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_CHVALOSPEV_BEGIN              KEYWORD_PARAM_CHVALOSPEV "" STR_UNDERSCORE "" KEYWORD_BEGIN
@@ -606,6 +601,8 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 
 // rubriky priamo v includovaných HTML súboroch
 #define PARAM_RUBRIKA                       "RUBRIKA"
+
+#define PARAM_ALT_HYMNUS_OCR_34             PARAM_ALT_HYMNUS "-" KEYWORD_OCR_34
 
 // multiple alternatives
 #define PARAM_ALT_HYMNUS_MULTI              PARAM_ALT_HYMNUS "-" KEYWORD_MULTI
@@ -1543,7 +1540,7 @@ extern long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 #define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
 #define BIT_OPT_4_DO_NOT_USE_BUTTON         8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
-#define POCET_OPT_5_ALTERNATIVES           17 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES           18 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezročné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
@@ -1562,6 +1559,7 @@ extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_OFF_DEF_PSALM_146_150 16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
 #define BIT_OPT_5_ZAVER_KNAZ_DIAKON     32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
 #define BIT_OPT_5_INVITATORIUM_ANT      65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
+#define BIT_OPT_5_OCR_34_HYMNS         131072 // different (special) hymns for 34th week per annum
 
 #define POCET_OPT_6_ALTERNATIVES_MULTI      4 // this is not bitwise long, but simply decimal number; each decimal place representing one value
 extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI];

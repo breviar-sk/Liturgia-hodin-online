@@ -447,8 +447,7 @@ p.title, .hymn .title, .psalm .title, .readings .title , .responsory .title, .ca
 	text-align: center; 
 }
 
-.evening-praise > .prayer-title, .daytime-praise > .prayer-title, .morning-praise > .prayer-title, .ending-praise > .prayer-title, .invit-praise > .prayer-title, .reading-praise > .prayer-title { 
-	/* font-weight: bold; */ 
+.prayer-title { 
 	margin-top: 20px; 
 	text-align: center; 
 }

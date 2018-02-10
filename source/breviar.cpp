@@ -2374,12 +2374,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					strcpy(z95rest, STR_EMPTY);
 				}// upraviť odkaz na žalm 95 na hyperlink -- PARAM_LINK_ZALM95_END
 
-				// zobraziť/nezobraziť zalomenie veršov podľa tlačenej LH | ignore this switch (as if it would OFF) for mobile OS (Android, iOS)
+				// zobraziť/nezobraziť zalomenie veršov podľa tlačenej LH | ignore this switch (as if it would OFF) for mobile OS (Android, iOS) and voice output
 				if (equals(strbuff, PARAM_ZALOMENIE) && (vnutri_inkludovaneho == 1)) {
 #if defined(EXPORT_HTML_SPECIALS)
 					Export("[%s:%s|rest=%s]", strbuff, modlparam, (rest == NULL) ? STR_EMPTY : rest);
 #endif
-					if (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP) && (isMobileOS == 0)) {
+					if (useWhenGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP) && (isMobileOS == 0)) {
 						// MAX_BUFFER bol zvýšený, lebo strbuff bol v tomto prípade veľmi dlhý
 						Export("zalomenie-->%s<!--zalomenie", rest);
 					}
@@ -2474,7 +2474,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("(start)dlhe-resp.");
 #endif
-						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+						if (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP)) {
 							;
 						}
 						else {
@@ -2486,7 +2486,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("dlhe-resp.(stop)");
 #endif
-						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+						if (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP)) {
 							;
 						}
 						else {
@@ -2507,7 +2507,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("(start)NIE-dlhe-resp.");
 #endif
-						if (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) {
+						if (!(useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP))) {
 							;
 						}
 						else {
@@ -2519,7 +2519,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("NIE-dlhe-resp.(stop)");
 #endif
-						if (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) {
+						if (!(useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP))) {
 							;
 						}
 						else {
@@ -2536,7 +2536,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("(start)zvolanie");
 #endif
-						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+						if (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE)) {
 							;
 						}
 						else {
@@ -2548,7 +2548,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("zvolanie(stop)");
 #endif
-						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+						if (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PROSBY_ZVOLANIE)) {
 							;
 						}
 						else {
@@ -2899,7 +2899,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	// verse numbering
 	if (equals(paramname, PARAM_CISLO_VERSA_BEGIN)) {
 		if (_global_skip_in_prayer == NIE) {
-			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+			if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE)) {
 				Export("<sup>");
 			}
 			else {
@@ -2910,7 +2910,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	}// zobraziť/nezobraziť číslovanie veršov
 	else if (equals(paramname, PARAM_CISLO_VERSA_END)) {
 		if (_global_skip_in_prayer == NIE) {
-			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+			if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE)) {
 				Export("</sup>");
 			}
 			else {
@@ -3013,16 +3013,16 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		mystrcpy(tag_to_export_end, STR_EMPTY, SMALL);
 
 		if (startsWith(paramname, (char *)KEYWORD_PARAM_CHVALOSPEV)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY));
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_TEDEUM)) {
-			podmienka &= ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE));
+			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE));
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_JE_TEDEUM)) {
 			podmienka &= (_global_opt_tedeum == ANO);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_OTCENAS)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ALELUJA_ALELUJA)) {
@@ -3144,7 +3144,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		// 2007-12-04: opravená podmienka, pretože nefungovala pre modlitby odlišné od ranných chvál
 		// 2011-04-28: doplnením ďalších "Sláva Otcu", ktoré sa rozbaľujú, sa posunulo číslovanie, a tak radšej podmienku "_global_pocet_slava_otcu == 2" zrušíme
 		// 2011-04-29: doplnené Sláva Otcu "špeciálne" pre účely chválospevu Dan 3, 57-88. 56, kde nie je "Sláva Otcu" (pôvodne to bolo dané poradím, ale templáty pre rôzne jazyky majú rozličné poradie tohto "Sláva Otcu")
-		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (
+		if (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) && (
 			_global_modlitba != MODL_RANNE_CHVALY
 			|| (_global_modlitba == MODL_RANNE_CHVALY
 				&& !(equals(paramname, PARAM_SLAVAOTCU_SPEC_BEGIN) && equals(_global_modl_ranne_chvaly.zalm2.anchor, "CHVAL_DAN3,57-88.56"))
@@ -3172,7 +3172,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		// 2007-12-04: opravená podmienka, pretože nefungovala pre modlitby odlišné od ranných chvál
 		// 2011-04-28: doplnením ďalších "Sláva Otcu", ktoré sa rozbaľujú, sa posunulo číslovanie, a tak radšej podmienku "_global_pocet_slava_otcu == 2" zrušíme
 		// 2011-04-29: doplnené Sláva Otcu "špeciálne" pre účely chválospevu Dan 3, 57-88. 56, kde nie je "Sláva Otcu" (pôvodne to bolo dané poradím, ale templáty pre rôzne jazyky majú rozličné poradie tohto "Sláva Otcu")
-		if ((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (
+		if (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) && (
 			_global_modlitba != MODL_RANNE_CHVALY
 			|| (_global_modlitba == MODL_RANNE_CHVALY
 				&& !(equals(paramname, PARAM_SLAVAOTCU_SPEC_END) && equals(_global_modl_ranne_chvaly.zalm2.anchor, "CHVAL_DAN3,57-88.56"))
@@ -3191,53 +3191,6 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 	}
 
-	// 2005-08-15: Pridané parsovanie PARAM_HYMNUS_34_OCR_INY_BEGIN/END
-	// 2007-11-27: upravené (lebo to tam zahŕňalo ten hymnus)
-	// 2011-11-22: odvetvenie pre CZ, ak je_34_ocr a má vlastný hymnus: vtedy sa hymnus pre 34. týždeň OCR neberie
-	else if (equals(paramname, PARAM_HYMNUS_34_OCR_INY_BEGIN)) {
-		if (!((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && ((su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type))))) {
-			if (je_34_ocr) {
-				// zobraziť alternatívny hymnus 34. týždňa OCR
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("zobraziť alternatívny hymnus 34. týždňa OCR");
-#endif
-				Export(HTML_COMMENT_END);
-				Log("JE 34.týždeň OCR... BEGIN\n");
-			}
-			else {
-				// nezobraziť alternatívny hymnus 34. týždňa OCR
-				_global_skip_in_prayer += ANO; // increment
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("nezobraziť alternatívny hymnus 34. týždňa OCR");
-#endif
-				Log("NIE JE 34.týždeň OCR... BEGIN\n");
-			}
-		}// pre iné ako CZ a pre CZ mimo 34. OCR kde má vlastný hymnus 
-		else {
-			// odvetvenie pre CZ, ak je_34_ocr a má vlastný hymnus: vtedy sa hymnus pre 34. týždeň OCR neberie
-		}
-	} // PARAM_HYMNUS_34_OCR_INY_BEGIN
-	else if (equals(paramname, PARAM_HYMNUS_34_OCR_INY_END)) {
-		if (!((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && ((su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type))))) {
-			if (je_34_ocr) {
-				// zobraziť alternatívny hymnus 34. týždňa OCR
-				Export(HTML_COMMENT_BEGIN);
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("je 34.týždeň OCR");
-#endif
-				Log("JE 34.týždeň OCR... END\n");
-			}
-			else {
-				// nezobraziť alternatívny hymnus 34. týždňa OCR
-				_global_skip_in_prayer -= ANO; // decrement | was: _global_skip_in_prayer = NIE;
-				Log("NIE JE 34.týždeň OCR... END\n");
-			}
-		}// pre iné ako CZ a pre CZ mimo 34. OCR kde má vlastný hymnus 
-		else {
-			// odvetvenie pre CZ, ak je_34_ocr a má vlastný hymnus: vtedy sa hymnus pre 34. týždeň OCR neberie
-		}
-	} // PARAM_HYMNUS_34_OCR_INY_END
-
 	else if (equals(paramname, PARAM_NADPIS)) {
 		Export("nadpis:begin-->");
 		Export(_global_string_modlitba);
@@ -3254,7 +3207,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (blind-friendy: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 		Log("  _global_den.typslav == %d (%s)...\n", _global_den.typslav, nazov_slavenia(_global_den.typslav));
 
-		zobrazit = (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+		zobrazit = (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST));
 
 		if (zobrazit == ANO) {
 			// ďalšie rozhodovanie
@@ -3338,6 +3291,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		|| (equals(paramname, PARAM_KRATSIE_PROSBY))
 		|| (equals(paramname, PARAM_VIGILIA))
 		|| (equals(paramname, PARAM_ALT_HYMNUS))
+		|| (equals(paramname, PARAM_ALT_HYMNUS_OCR_34))
 		|| (equals(paramname, PARAM_ALT_HYMNUS_MULTI))
 		|| (equals(paramname, PARAM_ALT_CITANIE2_MULTI))
 		|| (equals(paramname, PARAM_ALT_CITANIE1_MULTI))
@@ -3650,6 +3604,31 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_antifona[_global_jazyk]);
 		}
+		else if (equals(paramname, PARAM_ALT_HYMNUS_OCR_34)) {
+			opt = OPT_5_ALTERNATIVES;
+			bit = BIT_OPT_5_OCR_34_HYMNS;
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+
+			Log("podmienka == %d pred kontrolou je_34_ocr [_global_modlitba == %d]...\n", podmienka, _global_modlitba);
+
+			podmienka &= je_34_ocr;
+
+			Log("podmienka == %d pred kontrolou _global_modlitba == %s...\n", podmienka, nazov_modlitby(_global_modlitba));
+
+			if (_global_jazyk == JAZYK_CZ) {
+				// CZ has special hymn also for prayer during the day
+				podmienka &= (!(_global_modlitba == MODL_KOMPLETORIUM));
+			}
+			else {
+				podmienka &= ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY));
+			}
+
+			podmienka &= !su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(_global_modlitba);
+
+			sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_OCR34Hymns_ordinary[_global_jazyk]);
+			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_OCR34Hymns[_global_jazyk]);
+		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS)) {
 			opt = OPT_5_ALTERNATIVES;
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
@@ -3665,6 +3644,11 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				bit = BIT_OPT_5_CZ_HYMNY_VYBER;
 				sprintf(popis_show, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_opt_5_CZHymnus_ordinary[_global_jazyk]);
 				sprintf(popis_hide, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_opt_5_CZHymnus_extra[_global_jazyk]);
+
+				if (je_34_ocr && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS)) {
+					// do not display this switch for 34. week per annum (when BIT_OPT_5_OCR_34_HYMNS is switched ON)
+					podmienka = NIE;
+				}
 			}
 			// kontrola na prvé resp. druhé nedeľné kompletórium, aby hymnus bolo v Cezročnom období možno voliť aj pre nedele
 			else if ((_global_modlitba == MODL_KOMPLETORIUM) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM)) {
@@ -3676,6 +3660,11 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				bit = (je_alternativa_hymnus_ocr) ? BIT_OPT_5_HYMNUS_PC : BIT_OPT_5_HYMNUS_VN_PC;
 				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], (je_alternativa_hymnus_ocr) ? html_text_opt_5_PCHymnusI[_global_jazyk] : html_text_opt_5_PCHymnusVNferia[_global_jazyk]);
 				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], (je_alternativa_hymnus_ocr) ? html_text_opt_5_PCHymnusII[_global_jazyk] : html_text_opt_5_PCHymnusVNnedela[_global_jazyk]);
+
+				if (je_34_ocr && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS)) {
+					// do not display this switch for 34. week per annum (when BIT_OPT_5_OCR_34_HYMNS is switched ON)
+					podmienka = NIE;
+				}
 			}
 			else if (_global_modlitba == MODL_PREDPOLUDNIM) {
 				bit = BIT_OPT_5_HYMNUS_MCD_PREDPOL;
@@ -3921,7 +3910,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS == %ld: ", _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS);
 		Log("  _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT == %ld: ", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT);
 
-		if ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)) && (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) {
+		if (!(useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS))) {
 			Log("including POPIS\n");
 			switch (type) {
 			case MODL_INVITATORIUM:
@@ -3979,84 +3968,34 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	else if (equals(paramname, PARAM_HYMNUS)) {
 		switch (type) {
 
-		// odvetvenie pre CZ, ak je_34_ocr: len ak nemá vlastný hymnus, tak vtedy sa hymnus pre 34. týždeň OCR berie
-
 		case MODL_RANNE_CHVALY:
-			if ((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && (!(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type)))) {
-				Log("pro ranní chvály 34. týdne v mezidobí se bere jiný hymnus");
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("jiný hymnus pro 34. týden mezidobí");
-#endif
-			}
-			else {
-				strcat(path, _global_modl_ranne_chvaly.hymnus.file);
-				includeFile(type, paramname, path, _global_modl_ranne_chvaly.hymnus.anchor);
-			}
+			strcat(path, _global_modl_ranne_chvaly.hymnus.file);
+			includeFile(type, paramname, path, _global_modl_ranne_chvaly.hymnus.anchor);
 			break;
 
 		case MODL_CEZ_DEN_9:
-			if ((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && (!(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type)))) {
-				Log("pro modlitbu uprostřed dne 34. týdne v mezidobí se bere jiný hymnus");
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("jiný hymnus pro 34. týden mezidobí");
-#endif
-			}
-			else {
-				strcat(path, _global_modl_cez_den_9.hymnus.file);
-				includeFile(type, paramname, path, _global_modl_cez_den_9.hymnus.anchor);
-			}
+			strcat(path, _global_modl_cez_den_9.hymnus.file);
+			includeFile(type, paramname, path, _global_modl_cez_den_9.hymnus.anchor);
 			break;
 
 		case MODL_CEZ_DEN_12:
-			if ((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && (!(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type)))) {
-				Log("pro modlitbu uprostřed dne 34. týdne v mezidobí se bere jiný hymnus");
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("jiný hymnus pro 34. týden mezidobí");
-#endif
-			}
-			else {
-				strcat(path, _global_modl_cez_den_12.hymnus.file);
-				includeFile(type, paramname, path, _global_modl_cez_den_12.hymnus.anchor);
-			}
+			strcat(path, _global_modl_cez_den_12.hymnus.file);
+			includeFile(type, paramname, path, _global_modl_cez_den_12.hymnus.anchor);
 			break;
 
 		case MODL_CEZ_DEN_3:
-			if ((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && (!(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type)))) {
-				Log("pro modlitbu uprostřed dne 34. týdne v mezidobí se bere jiný hymnus");
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("jiný hymnus pro 34. týden mezidobí");
-#endif
-			}
-			else {
-				strcat(path, _global_modl_cez_den_3.hymnus.file);
-				includeFile(type, paramname, path, _global_modl_cez_den_3.hymnus.anchor);
-			}
+			strcat(path, _global_modl_cez_den_3.hymnus.file);
+			includeFile(type, paramname, path, _global_modl_cez_den_3.hymnus.anchor);
 			break;
 
 		case MODL_VESPERY:
-			if ((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && (!(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type)))) {
-				Log("pro nešpory 34. týdne v mezidobí se bere jiný hymnus");
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("jiný hymnus pro 34. týden mezidobí");
-#endif
-			}
-			else {
-				strcat(path, _global_modl_vespery.hymnus.file);
-				includeFile(type, paramname, path, _global_modl_vespery.hymnus.anchor);
-			}
+			strcat(path, _global_modl_vespery.hymnus.file);
+			includeFile(type, paramname, path, _global_modl_vespery.hymnus.anchor);
 			break;
 
 		case MODL_POSV_CITANIE:
-			if ((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && (!(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type)))) {
-				Log("pro modlitbu se čtením 34. týdne v mezidobí se bere jiný hymnus");
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("jiný hymnus pro 34. týden mezidobí");
-#endif
-			}
-			else {
-				strcat(path, _global_modl_posv_citanie.hymnus.file);
-				includeFile(type, paramname, path, _global_modl_posv_citanie.hymnus.anchor);
-			}
+			strcat(path, _global_modl_posv_citanie.hymnus.file);
+			includeFile(type, paramname, path, _global_modl_posv_citanie.hymnus.anchor);
 			break;
 
 		case MODL_KOMPLETORIUM:
@@ -4065,16 +4004,8 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			break;
 
 		case MODL_PRVE_VESPERY:
-			if ((_global_jazyk == JAZYK_CZ) && (je_34_ocr) && (!(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(type)))) {
-				Log("pro nešpory 34. týdne v mezidobí se bere jiný hymnus");
-#if defined(EXPORT_HTML_SPECIALS)
-				Export("jiný hymnus pro 34. týden mezidobí");
-#endif
-			}
-			else {
-				strcat(path, _global_modl_prve_vespery.hymnus.file);
-				includeFile(type, paramname, path, _global_modl_prve_vespery.hymnus.anchor);
-			}
+			strcat(path, _global_modl_prve_vespery.hymnus.file);
+			includeFile(type, paramname, path, _global_modl_prve_vespery.hymnus.anchor);
 			break;
 
 		case MODL_PRVE_KOMPLETORIUM:
@@ -4229,7 +4160,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			// zneužitie parametra "ANTIFONA2" pre zobrazenie "záverečnej" antifóny v prípade, že sa tlačí aj Sláva Otcu 
 			// funguje tak, že ak chce zobraziť Sláva Otcu (if(_global_opt 1 == ANO)), nastaví sa interpretovanie podľa ANTIFONA1; ináč sa nič nevykoná
 		case MODL_INVITATORIUM:
-			if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU) || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+			if (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU)) {
 				strcat(path, _global_modl_invitatorium.antifona1.file);
 				includeFile(type, paramname, path, _global_modl_invitatorium.antifona1.anchor);
 			}
@@ -5338,8 +5269,7 @@ short int atomodlitba(char *modlitba) {
 				Log("\tstep: %d `%s'...\n", pom_i, nazov_modlitby(pom_i));
 				if (equals(modlitba, nazov_modlitby(pom_i)) ||
 					equals(modlitba, nazov_modlitby_short(pom_i)) ||
-					equals(modlitba, nazov_Modlitby(pom_i)) ||
-					equals(modlitba, nazov_MODLITBY(pom_i))) {
+					equals(modlitba, nazov_Modlitby(pom_i))) {
 					// ak je zhoda, potom prirad do p a ukonci `for'
 					p = pom_i;
 					break;
@@ -7018,7 +6948,14 @@ void init_global_string_modlitba(short int modlitba) {
 		Log("Spomienka vsetkych vernych zosnulych -- nevypisem, ze su druhe vespery (resp. kompletórium po nich)...\n");
 		_global_modlitba -= 5; // MODL_DRUHE_VESPERY -> MODL_VESPERY; MODL_DRUHE_KOMPLETORIUM -> MODL_KOMPLETORIUM
 	}
-	mystrcpy(_global_string_modlitba, nazov_MODLITBY(_global_modlitba), SMALL);
+
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+		mystrcpy(_global_string_modlitba, nazov_Modlitby(_global_modlitba), SMALL);
+	}
+	else {
+		sprintf(_global_string_modlitba, "<" HTML_SPAN_UPPERCASE ">%s" HTML_SPAN_END, nazov_Modlitby(_global_modlitba));
+	}
+
 	Log("nová hodnota: %s\n", _global_string_modlitba);
 	_global_modlitba = _local_modlitba;
 	Log("-- init_global_string_modlitba(%d, %s) -- koniec\n", modlitba, nazov_modlitby(modlitba));
@@ -7392,6 +7329,9 @@ void xml_export_options(void) {
 					break;
 				case 16: // BIT_OPT_5_INVITATORIUM_ANT
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_5_INVITATORIUM_ANT)"%ld" ELEM_END(XML_BIT_OPT_5_INVITATORIUM_ANT) "\n", BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, /* ToDo: nazov_modlitby(MODL_INVITATORIUM) + ": " */ html_text_opt_6_alternatives_multi_antifona[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)));
+					break;
+				case 17: // BIT_OPT_5_OCR_34_HYMNS
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_5_OCR_34_HYMNS)"%ld" ELEM_END(XML_BIT_OPT_5_OCR_34_HYMNS) "\n", BIT_OPT_5_OCR_34_HYMNS, STR_FORCE_BIT_OPT_5_OCR_34_HYMNS, html_text_opt_5_OCR34Hymns[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS)));
 					break;
 				} // switch(j)
 			}// for j
@@ -7811,7 +7751,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 			Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (blind-friendy: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 
-			if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+			if (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST)) {
 				ret_sc = init_global_string_spol_cast(MODL_SPOL_CAST_NULL, poradie_svateho);
 				Log("including SPOL_CAST\n");
 				if (!equals(_global_string_spol_cast, STR_EMPTY)) {
@@ -9979,6 +9919,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP
 				_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP, STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP, html_text_opt_5_VespHymnusVNferia[_global_jazyk], html_text_opt_5_VespHymnusVNnedela[_global_jazyk]);
+
+				// Cezročné obdobie, 34. týždeň
+				Export(HTML_CRLF_LINE_BREAK);
+				sprintf(pom3, html_text_tyzden_cislo[_global_jazyk], 34); // pom2 bolo nastavené funkciou prilep_request_options() a používa sa v ďalšom; použiť môžeme pom3
+				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s, %s" HTML_SPAN_END, nazov_obdobia(OBD_CEZ_ROK), nazov_obdobia(OBD_CEZ_ROK), pom3);
+
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_OCR_34_HYMNS
+				_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS, STR_FORCE_BIT_OPT_5_OCR_34_HYMNS, html_text_opt_5_OCR34Hymns[_global_jazyk], html_text_opt_5_OCR34Hymns_explain[_global_jazyk]);
 			}
 			else
 			{
@@ -10139,7 +10087,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_FONT_FAMILY
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY, STR_FORCE_BIT_OPT_2_FONT_FAMILY, html_text_opt_2_font_family[_global_jazyk], html_text_opt_2_font_family_explain[_global_jazyk]);
 		// drop-down list pre výber názvu písma, len ak je nastavená OPT_2_HTML_EXPORT.BIT_OPT_2_FONT_NAME_CHOOSER
-		if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER)){
+		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER)) {
 			Export(HTML_CRLF_LINE_BREAK);
 			Export(HTML_NONBREAKING_SPACE_LOOONG);
 			Export("<" HTML_SPAN_TOOLTIP ">%s" HTML_SPAN_END "\n", html_text_font_name_explain[_global_jazyk], html_text_font_name[_global_jazyk]);
@@ -10147,24 +10095,24 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole WWW_/STR_FORCE_BIT_OPT_2_FONT_NAME_CHOOSER
 			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_FONT_NAME, html_text_font_name_explain[_global_jazyk]);
 			// FONT_UNDEF neexportujeme
-			for(font = FONT_UNDEF + 1; font <= POCET_FONTOV; font++){
-				// 2011-05-12: pom2 bolo nastavené funkciou prilep_request_options() a používa sa v ďalšom; použiť môžeme pom3
+			for (font = FONT_UNDEF + 1; font <= POCET_FONTOV; font++) {
+				// pom2 bolo nastavené funkciou prilep_request_options() a používa sa v ďalšom; použiť môžeme pom3
 				mystrcpy(pom3, nazov_fontu[font], MAX_STR);
-				if((_global_jazyk != JAZYK_SK) && ((font == FONT_CSS) || (font == FONT_CHECKBOX))){
-					if(font == FONT_CSS){
+				if ((_global_jazyk != JAZYK_SK) && ((font == FONT_CSS) || (font == FONT_CHECKBOX))) {
+					if (font == FONT_CSS) {
 						mystrcpy(pom3, nazov_fontu_CSS[_global_jazyk], MAX_STR);
 					}
-					else if(font == FONT_CHECKBOX){
+					else if (font == FONT_CHECKBOX) {
 						mystrcpy(pom3, nazov_fontu_CHECKBOX[_global_jazyk], MAX_STR);
 					}
 				}
-				Export("<option%s>%s</option>\n", (font == _global_font)? html_option_selected: STR_EMPTY, pom3 /* nazov_fontu[font] */);
+				Export("<option%s>%s</option>\n", (font == _global_font) ? html_option_selected : STR_EMPTY, pom3 /* nazov_fontu[font] */);
 			}
 			Export("</select>\n");
 		}// if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_NAME_CHOOSER))
 
 		// drop-down list pre výber veľkosti písma WWW_FORCE_BIT_OPT_2_FONT_SIZE, len ak je nastavená OPT_2_HTML_EXPORT.BIT_OPT_2_FONT_NAME_CHOOSER
-		if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER)){
+		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER)) {
 			Export(HTML_CRLF_LINE_BREAK);
 			Export(HTML_NONBREAKING_SPACE_LOOONG);
 			Export("<" HTML_SPAN_TOOLTIP ">%s" HTML_SPAN_END "\n", html_text_font_size_explain[_global_jazyk], html_text_font_size[_global_jazyk]);
@@ -10172,8 +10120,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole WWW_/STR_FORCE_BIT_OPT_2_FONT_SIZE
 			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_FONT_SIZE, html_text_font_size_explain[_global_jazyk]);
 			// FONT_SIZE_UNDEF neexportujeme
-			for(font = FONT_SIZE_UNDEF + 1; font <= POCET_FONT_SIZE; font++){
-				Export("<option%s>%s</option>\n", (font == _global_font_size)? html_option_selected: STR_EMPTY, nazov_font_size(font));
+			for (font = FONT_SIZE_UNDEF + 1; font <= POCET_FONT_SIZE; font++) {
+				Export("<option%s>%s</option>\n", (font == _global_font_size) ? html_option_selected : STR_EMPTY, nazov_font_size(font));
 			}
 			Export("</select>\n");
 		}// if(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER))
@@ -10183,11 +10131,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NAVIGATION
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION, STR_FORCE_BIT_OPT_2_NAVIGATION, html_text_opt_2_navigation[_global_jazyk], html_text_opt_2_navigation_explain[_global_jazyk]);
 
-		if ((_global_system == SYSTEM_RUBY) || (_global_jazyk == JAZYK_SK)){
+		if ((_global_system == SYSTEM_RUBY) || (_global_jazyk == JAZYK_SK)) {
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_TEXT_WRAP
 			_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP, STR_FORCE_BIT_OPT_2_TEXT_WRAP, html_text_opt_2_textwrap[_global_jazyk], html_text_opt_2_textwrap_explain[_global_jazyk]);
 		}
-		else{
+		else {
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_2_TEXT_WRAP, (isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP)) ? ANO : NIE);
 		}// else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
