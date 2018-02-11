@@ -488,8 +488,7 @@ short int useWhenGlobalOption(short opt_i, long bit_opt_i_component_j) {
 			return NIE;
 		}
 		else if ((opt_i == OPT_1_CASTI_MODLITBY) && (
-			(bit_opt_i_component_j == BIT_OPT_1_SKRY_POPIS)
-			|| (bit_opt_i_component_j == BIT_OPT_1_ZOBRAZ_SPOL_CAST)
+			(bit_opt_i_component_j == BIT_OPT_1_ZOBRAZ_SPOL_CAST)
 			)) {
 			return NIE;
 		}
@@ -513,6 +512,7 @@ short int useWhenGlobalOption(short opt_i, long bit_opt_i_component_j) {
 			|| (bit_opt_i_component_j == BIT_OPT_1_PLNE_RESP)
 			|| (bit_opt_i_component_j == BIT_OPT_1_PROSBY_ZVOLANIE)
 			|| (bit_opt_i_component_j == BIT_OPT_1_ZAVER)
+			|| (bit_opt_i_component_j == BIT_OPT_1_SKRY_POPIS)
 			)) {
 			return ANO;
 		}
@@ -12425,21 +12425,12 @@ LABEL_NIE_INE_VESPERY:
 
 	_export_heading_center(_global_string);
 
-	// úprava aj_navigacia pre blind-friendly
+	// úprava aj_navigacia pre TTS = blind-friendly = voice output
 	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (modlitba != MODL_NEURCENA)) {
 		Log("pre blind-friendly verziu upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", modlitba);
 		aj_navigacia = CIASTOCNE;
 	}
-	/*
-		if(_global_modlitba == MODL_VSETKY) {
-			Log("spustam showAllPrayers(%d, %s, %d, %d) z funkcie rozbor_dna_s_modlitbou():\n", den, nazov_mesiaca(mesiac - 1), rok, poradie_svaty);
-			LOG_ciara;
-			showAllPrayers(den, mesiac, rok, poradie_svaty);
-			LOG_ciara;
-			Log("...po návrate zo showAllPrayers(%d, %s, %d, %d) vo funkcii rozbor_dna_s_modlitbou().\n", den, nazov_mesiaca(mesiac - 1), rok, poradie_svaty);
-		}// _global_modlitba == MODL_VSETKY
-		else
-		*/
+
 	if (_global_modlitba == MODL_DETAILY) {
 		Log("spustam showDetails(%d, %s, %d, %d) z funkcie rozbor_dna_s_modlitbou():\n", den, nazov_mesiaca(mesiac - 1), rok, poradie_svaty);
 		LOG_ciara;
@@ -13816,6 +13807,8 @@ void _main_dnes(char *modlitba, char *poradie_svaty) {
 }// _main_dnes();
 
 void _main_zaltar(char *den, char *tyzden, char *modlitba) {
+	short int aj_navigacia = ANO;
+
 	short int d, t, p;
 	d = atodenvt(den);
 	t = atoi(tyzden);
@@ -13862,11 +13855,19 @@ void _main_zaltar(char *den, char *tyzden, char *modlitba) {
 
 	Log("spustam showPrayer(%s)...\n", nazov_modlitby(_global_modlitba));
 
+	// úprava aj_navigacia pre TTS = blind-friendly = voice output
+	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (p != MODL_NEURCENA)) {
+		Log("pre blind-friendly verziu upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", p);
+		aj_navigacia = CIASTOCNE;
+	}
+
 	// predpokladam, ze aj _global_modlitba je prve/druhe vespery, v _global_prve_vespery su spravne udaje (podobne kompletorium)
-	showPrayer(p);
+	showPrayer(p, SHOW_TEMPLAT_MODLITBA, aj_navigacia);
 }// _main_zaltar()
 
 short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char *litobd, char *litrok) {
+	short int aj_navigacia = ANO;
+
 	short int d, t, p, lo, tz, poradie_svateho = 0, ret;
 	char lr;
 	short int jeSpolocnaCast = NIE;
@@ -14227,10 +14228,16 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	Log("_global_pocet_zalmov_kompletorium == %d...\n", _global_pocet_zalmov_kompletorium);
 	_export_heading_center(_global_string);
 
+	// úprava aj_navigacia pre TTS = blind-friendly = voice output
+	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (p != MODL_NEURCENA)) {
+		Log("pre blind-friendly verziu upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", p);
+		aj_navigacia = CIASTOCNE;
+	}
+
 	Log("spustam showPrayer(%s) z funkcie _main_liturgicke_obdobie()...\n", nazov_modlitby(_global_modlitba));
 	// predpokladam, ze aj _global_modlitba je prve/druhe vespery, v _global_prve_vespery su spravne udaje (podobne kompletorium)
 	LOG_ciara;
-	showPrayer(p);
+	showPrayer(p, SHOW_TEMPLAT_MODLITBA, aj_navigacia);
 	LOG_ciara;
 	Log("...po návrate zo showPrayer(%s) vo funkcii _main_liturgicke_obdobie().\n", nazov_modlitby(_global_modlitba));
 
