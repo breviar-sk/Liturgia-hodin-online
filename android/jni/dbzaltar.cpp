@@ -10738,6 +10738,7 @@ short int pocet_multi(char *_anchor, long type) {
 		ptr = pocet_kcit_resp_multi_anchor_count;
 		size = sizeof(pocet_kcit_resp_multi_anchor_count);
 	}
+	// here, PLACE_OPT_6_PSALM_MULTI is not used
 
 	orig = ptr; // preserve original pointer to array due to dereferencing by [i]
 

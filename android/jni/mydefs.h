@@ -912,6 +912,13 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_FORCE_PLACE_OPT_6_KRESP_MULTI "of6kr"
 #endif
 
+#define FORCE_PLACE_OPT_6_PSALM_MULTI 138
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_PLACE_OPT_6_PSALM_MULTI "FORCE_PLACE_OPT_6_PSALM_MULTI"
+#else
+#define STR_FORCE_PLACE_OPT_6_PSALM_MULTI "of6ps"
+#endif
+
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
 
 #define FORCE_BIT_OPT_5_HYMNUS_KOMPL 101
@@ -1292,6 +1299,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_PLACE_OPT_6_PROSBY_MULTI            "PlaceOpt6PrecesMulti"
 #define XML_PLACE_OPT_6_KCIT_RESP_MULTI         "PlaceOpt6ShortReadingRespMulti"
 #define XML_PLACE_OPT_6_KRESP_MULTI             "PlaceOpt6ShortRespMulti"
+#define XML_PLACE_OPT_6_PSALM_MULTI             "PlaceOpt6PsalmMulti"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<" elem ">"

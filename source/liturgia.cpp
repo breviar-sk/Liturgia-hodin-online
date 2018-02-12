@@ -655,7 +655,7 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 				mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1), SMALL);
 				break;
 			case CASE_CASE:
-				mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : nazov_MESIACA(mesiac - 1), SMALL);
+				mystrcpy(str_mesiac, ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : mystr_UPPERCASE(nazov_mesiaca(mesiac - 1)), SMALL);
 				break;
 			} // switch(_case)
 		}
@@ -870,7 +870,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 						sprintf(pom, "%s", ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? nazov_Mesiaca_gen(mesiac - 1) : nazov_Mesiaca(mesiac - 1));
 						break;
 					case CASE_CASE:
-						sprintf(pom, "%s", ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : nazov_MESIACA(mesiac - 1));
+						sprintf(pom, "%s", ((typ == LINK_DEN_MESIAC_GEN) || (typ == LINK_DEN_MESIAC_ROK_GEN)) ? mystr_UPPERCASE(nazov_mesiaca_gen(mesiac - 1)) : mystr_UPPERCASE(nazov_mesiaca(mesiac - 1)));
 						break;
 					} // switch(_case)
 				}

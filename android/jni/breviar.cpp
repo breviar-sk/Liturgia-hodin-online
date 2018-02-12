@@ -544,6 +544,16 @@ void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value) {
 	}
 } // setGlobalOption()
 
+short int getGlobalOption(short opt_i, long bit_opt_i_component_j) {
+	if (opt_i == OPT_6_ALTERNATIVES_MULTI) {
+		// OPT 6 uses decimal-place logic; value should be between 0 and 9
+		return ((_global_opt[opt_i] DIV bit_opt_i_component_j) MOD 10);
+	}
+	else {
+		return isGlobalOption(opt_i, bit_opt_i_component_j);
+	}
+} // getGlobalOption()
+
 // -------------------------------------------------------------------
 
 // Read a POST query from standard input into a dynamic buffer. Terminate it with a null character.
@@ -3000,6 +3010,11 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		|| (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_BEGIN)) || (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_END))
 		|| (equals(paramname, PARAM_ZAVER_OSTATNI_BEGIN)) || (equals(paramname, PARAM_ZAVER_OSTATNI_END))
 		|| (equals(paramname, PARAM_TTS_HEADING_BEGIN)) || (equals(paramname, PARAM_TTS_HEADING_END))
+		|| (equals(paramname, PARAM_INVITAT_COMMON_BEGIN)) || (equals(paramname, PARAM_INVITAT_COMMON_END))
+		|| (equals(paramname, PARAM_INVITAT_PSALM_BEGIN("0"))) || (equals(paramname, PARAM_INVITAT_PSALM_END("0")))
+		|| (equals(paramname, PARAM_INVITAT_PSALM_BEGIN("1"))) || (equals(paramname, PARAM_INVITAT_PSALM_END("1")))
+		|| (equals(paramname, PARAM_INVITAT_PSALM_BEGIN("2"))) || (equals(paramname, PARAM_INVITAT_PSALM_END("2")))
+		|| (equals(paramname, PARAM_INVITAT_PSALM_BEGIN("3"))) || (equals(paramname, PARAM_INVITAT_PSALM_END("3")))
 		) {
 		Log("_global_opt[OPT_1_CASTI_MODLITBY == %d] == %ld\n", OPT_1_CASTI_MODLITBY, _global_opt[OPT_1_CASTI_MODLITBY]);
 
@@ -3024,6 +3039,33 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		else if (startsWith(paramname, (char *)KEYWORD_OTCENAS)) {
 			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS));
 			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_INVITAT_COMMON)) {
+			podmienka &= !(_global_skip_in_prayer >= ANO);
+			exportovat_html_note = ANO;
+
+			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) {
+				podmienka = NIE;
+			}
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM_SIMPLE)) {
+			podmienka &= !(_global_skip_in_prayer >= ANO);
+			exportovat_html_note = ANO;
+
+			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) {
+				short int ktory = getGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI);
+
+				switch (ktory) {
+				case 0: podmienka &= startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("0"));
+					break;
+				case 1: podmienka &= startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("1"));
+					break;
+				case 2: podmienka &= startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("2"));
+					break;
+				case 3: podmienka &= startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("3"));
+					break;
+				} // switch (ktory)
+			}
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ALELUJA_ALELUJA)) {
 			podmienka &= !(_global_skip_in_prayer >= ANO) && (je_aleluja_aleluja);
@@ -3274,6 +3316,8 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 	} // PARAM_SPOL_CAST
 
+	/* must not be "else" before this if due to repeatance of PARAM_NADPIS */
+
 	if ((equals(paramname, PARAM_CHVALOSPEV))
 		|| (equals(paramname, PARAM_ZAVER))
 		|| (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON))
@@ -3300,6 +3344,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		|| (equals(paramname, PARAM_ALT_PROSBY_MULTI))
 		|| (equals(paramname, PARAM_ALT_KCIT_RESP_MULTI))
 		|| (equals(paramname, PARAM_ALT_KRESP_MULTI))
+		|| (equals(paramname, PARAM_ALT_PSALM_MULTI))
 		|| (equals(paramname, PARAM_SPOL_CAST_SPOM))
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
@@ -3520,6 +3565,20 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			podmienka &= (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_hymnus[_global_jazyk]);
+		}
+		else if (equals(paramname, PARAM_ALT_PSALM_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_PSALM_MULTI;
+			multi = ANO;
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			Log(_global_modl_hymnus_anchor);
+
+			multi_count = 4; // psalms 0--3 for invitatory prayer
+
+			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_psalm[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_PROSBY_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
@@ -3783,6 +3842,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				else if (bit == BASE_OPT_6_KRESP_MULTI) {
 					_set_kresponz(type, NULL, new_anchor);
 				}
+				// no atcion for BASE_OPT_6_PSALM_MULTI
 
 				// use popis_hide as temp variable
 				sprintf(popis_hide, " (%d/%d) %s", ((current_value + 1) MOD multi_count) + 1, multi_count, (char *)HTML_RIGHT_ARROW);
@@ -3799,7 +3859,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 	} // PARAM_CHVALOSPEV, PARAM_ZAVER, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
 
-	if (equals(paramname, PARAM_TTS_SECTION)) {
+	else if (equals(paramname, PARAM_TTS_SECTION)) {
 		// export for voice output, never show; CSS defines display: none;
 		if (EXPORT_TTS_SECTIONS) {
 			Export("tts:section:begin-->\n");
@@ -3818,8 +3878,8 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 	} // PARAM_TTS_SECTION
 
-	if (equals(paramname, PARAM_NAVIGACIA_SIMPLE)) {
-		if (aj_navigacia == ANO) {
+	else if (equals(paramname, PARAM_NAVIGACIA_SIMPLE)) {
+		if ((aj_navigacia == ANO) && (!(_global_skip_in_prayer >= ANO))) {
 #ifdef BEHAVIOUR_WEB
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
 				Export("navigácia:begin-->\n");
@@ -3842,7 +3902,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 	} // PARAM_NAVIGACIA_SIMPLE
 
-	if (equals(paramname, PARAM_NAVIGACIA)) {
+	else if (equals(paramname, PARAM_NAVIGACIA)) {
 		if (aj_navigacia == ANO) {
 #ifdef BEHAVIOUR_WEB
 			// možnosť zobrazenia navigácie v texte modlitieb 
@@ -3905,7 +3965,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 	// pokracuju dalsie klasicke `tagy' v modlitbach (teda templatoch)
 
-	if (equals(paramname, PARAM_POPIS)) {
+	else if (equals(paramname, PARAM_POPIS)) {
 
 		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS == %ld: ", _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS);
 		Log("  _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT == %ld: ", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT);
@@ -4165,11 +4225,14 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				includeFile(type, paramname, path, _global_modl_invitatorium.antifona1.anchor);
 			}
 			else {
-				Export(HTML_COMMENT_END);
-				Export(HTML_P_RUBRIC);
-				Export((char *)html_text_inv_slavaotcu[_global_jazyk]);
-				Export(HTML_P_END);
-				Export(HTML_COMMENT_BEGIN);
+				// only print when exporting
+				if (!(_global_skip_in_prayer >= ANO)) {
+					Export(HTML_COMMENT_END);
+					Export(HTML_P_RUBRIC);
+					Export((char *)html_text_inv_slavaotcu[_global_jazyk]);
+					Export(HTML_P_END);
+					Export(HTML_COMMENT_BEGIN);
+				}
 			}
 			break;
 		default:
@@ -6365,10 +6428,10 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			if (_global_jazyk == JAZYK_BY) {
 				convertToRoman(_local_den.tyzden, pom2); // poradie_SLOVOM(_local_den.tyzden - 1)
 				if (!((_local_den.litobd == OBD_VELKONOCNE_I) || (_local_den.litobd == OBD_VELKONOCNE_II))) {
-					sprintf(pom, "%s %s %s", pom2, nazov_DNA(_local_den.denvt), nazov_OBDOBIA_V(_local_den.litobd));
+					sprintf(pom, "%s %s %s", pom2, nazov_Dna(_local_den.denvt), nazov_obdobia_v(_local_den.litobd));
 				}
 				else {
-					sprintf(pom, "%s %s %s", pom2, nazov_OBDOBIA_AKA(_local_den.litobd), nazov_DNA(_local_den.denvt));
+					sprintf(pom, "%s %s %s", pom2, nazov_Obdobia_aka(_local_den.litobd), nazov_Dna(_local_den.denvt));
 				}
 			}// BY only
 			else if (
@@ -6377,47 +6440,54 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				|| (_local_den.litobd == OBD_VELKONOCNE_I) || (_local_den.litobd == OBD_VELKONOCNE_II)
 				) {
 				if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
-					sprintf(pom, "%s %s %s", poradie_SLOVOM(_local_den.tyzden - 1), nazov_DNA(_local_den.denvt), nazov_OBDOBIA_AKA(_local_den.litobd));
+					sprintf(pom, "%s %s %s", poradie_Slovom(_local_den.tyzden - 1), nazov_Dna(_local_den.denvt), nazov_Obdobia_aka(_local_den.litobd));
 				}
 				else if (_global_jazyk == JAZYK_HU) {
-					sprintf(pom, "%s %s %s%s", nazov_OBDOBIA_AKA(_local_den.litobd), poradie_SLOVOM(_local_den.tyzden - 1), nazov_DNA(_local_den.denvt), KONCOVKA_DNA_HU);
+					sprintf(pom, "%s %s %s%s", nazov_Obdobia_aka(_local_den.litobd), poradie_Slovom(_local_den.tyzden - 1), nazov_Dna(_local_den.denvt), KONCOVKA_DNA_HU);
 				}
 				else {
 					// úprava názvov nedieľ v štýle "3. NEDEĽA V ADVENTNOM OBDOBÍ" -> "Tretia adventná nedeľa"
-					sprintf(pom, "%s %s %s", poradie_SLOVOM(_local_den.tyzden - 1), nazov_OBDOBIA_AKA(_local_den.litobd), nazov_DNA(_local_den.denvt));
+					sprintf(pom, "%s %s %s", poradie_Slovom(_local_den.tyzden - 1), nazov_Obdobia_aka(_local_den.litobd), nazov_Dna(_local_den.denvt));
 				}
 			}// špeciálne nedele slovom
 			else {
 				// _local_den.litobd == OBD_CEZ_ROK; pre cezročné ostáva poradové číslo
 				if (_global_jazyk == JAZYK_HU) {
-					sprintf(pom, "%s %d. %s", nazov_OBDOBIA_AKA(_local_den.litobd), _local_den.tyzden, nazov_DNA(_local_den.denvt));
+					sprintf(pom, "%s %d. %s", nazov_Obdobia_aka(_local_den.litobd), _local_den.tyzden, nazov_Dna(_local_den.denvt));
 				}
 				else {
-					sprintf(pom, "%d. %s %s", _local_den.tyzden, nazov_DNA(_local_den.denvt), nazov_OBDOBIA_V(_local_den.litobd));
+					sprintf(pom, "%d. %s %s", _local_den.tyzden, nazov_Dna(_local_den.denvt), nazov_obdobia_v(_local_den.litobd));
 				}
 			}// ostatné nedele číslom
 
 			if (strlen(pom) > 0) {
+
+				mystrcpy(_local_string, STR_EMPTY, MAX_GLOBAL_STR);
+
 				if (html_span_bold_it == ANO) {
-					mystrcpy(_local_string, "<" HTML_SPAN_BOLD_IT ">", MAX_GLOBAL_STR);
+					strcat(_local_string, "<" HTML_SPAN_BOLD_IT ">");
 				}
 				else if (html_span_bold == ANO) {
-					mystrcpy(_local_string, "<" HTML_SPAN_BOLD ">", MAX_GLOBAL_STR);
+					strcat(_local_string, "<" HTML_SPAN_BOLD ">");
 				}
 				if (html_span_red_title_append == ANO) {
 					strcat(_local_string, "<" HTML_SPAN_RED_TITLE ">");
 				}
 
+				strcat(_local_string, "<" HTML_SPAN_UPPERCASE ">");
+
 				strcat(_local_string, pom);
 
+				strcat(_local_string, HTML_SPAN_END); // end of HTML_SPAN_UPPERCASE
+
 				if (html_span_red_title_append == ANO) {
-					strcat(_local_string, HTML_SPAN_END);
+					strcat(_local_string, HTML_SPAN_END); // end of HTML_SPAN_RED_TITLE
 				}
 				if (html_span_bold_it == ANO) {
-					strcat(_local_string, HTML_SPAN_END);
+					strcat(_local_string, HTML_SPAN_END); // end of HTML_SPAN_BOLD_IT
 				}
 				else if (html_span_bold == ANO) {
-					strcat(_local_string, HTML_SPAN_END);
+					strcat(_local_string, HTML_SPAN_END); // end of HTML_SPAN_BOLD
 				}
 
 				strcat(_local_string, HTML_LINE_BREAK);
@@ -7365,6 +7435,9 @@ void xml_export_options(void) {
 					break;
 				case 8: // BASE_OPT_6_KRESP_MULTI
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_KRESP_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_KRESP_MULTI) "\n", BASE_OPT_6_KRESP_MULTI, STR_FORCE_PLACE_OPT_6_KRESP_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_KRESP_MULTI)));
+					break;
+				case 9: // BASE_OPT_6_PSALM_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_PSALM_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_PSALM_MULTI) "\n", BASE_OPT_6_PSALM_MULTI, STR_FORCE_PLACE_OPT_6_PSALM_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI)));
 					break;
 				} // switch(j)
 			}// for j
@@ -9548,7 +9621,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 	Export("<" HTML_SPAN_TOOLTIP ">%s:" HTML_SPAN_END, html_text_jazyk_explain[_global_jazyk], html_text_jazyk_verzia[_global_jazyk]);
 
-	Export(HTML_LINE_BREAK"\n");
+	Export(HTML_LINE_BREAK);
 
 	// drop-down list pre výber jazyka
 	// pole WWW_JAZYK
@@ -9562,7 +9635,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	}
 	Export("</select>");
 
-	Export(HTML_LINE_BREAK"\n");
+	Export(HTML_LINE_BREAK);
 
 	ExportHtmlComment("submit button (language)");
 
@@ -9594,7 +9667,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		Export("<" HTML_SPAN_TOOLTIP ">%s%s" HTML_SPAN_END, html_text_kalendar_miestny_explain[_global_jazyk], html_text_kalendar_miestny[_global_jazyk], (equals(html_text_kalendar_miestny_text_after_combo[_global_jazyk], STR_EMPTY) ? ": " : ""));
 
-		Export(HTML_LINE_BREAK"\n");
+		Export(HTML_LINE_BREAK);
 
 		// drop-down list pre výber kalendára (propriá)
 		// pole WWW_KALENDAR
@@ -9613,13 +9686,13 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		Export("</select>\n");
 
-		Export(HTML_LINE_BREAK"\n");
+		Export(HTML_LINE_BREAK);
 
 		// for HU: 
 		if (!equals(html_text_kalendar_miestny_text_after_combo[_global_jazyk], STR_EMPTY))
 		{
 			Export(html_text_kalendar_miestny_text_after_combo[_global_jazyk]);
-			Export(HTML_LINE_BREAK"\n");
+			Export(HTML_LINE_BREAK);
 		}
 
 		ExportHtmlComment("submit button (calendar)");
@@ -13392,7 +13465,7 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 			Export(HTML_P_CENTER"\n");
 			// najprv vygenerujem zoznam liniek (mesiace)
 			for (m = MES_JAN; m <= MES_DEC; m++) {
-				Export(HTML_A_HREF_BEGIN "\"#mesiac%d\">%s" HTML_A_END "" HTML_NONBREAKING_SPACE "\n", m, nazov_MESIACA(m));
+				Export(HTML_A_HREF_BEGIN "\"#mesiac%d\"><" HTML_SPAN_SMALLCAPS ">%s" HTML_SPAN_END "" HTML_A_END "" HTML_NONBREAKING_SPACE "\n", m, nazov_Mesiaca(m));
 			}
 			// teraz linku na #explain -- vysvetlivky
 
@@ -13406,7 +13479,7 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 		for (m = MES_JAN; m <= MES_DEC; m++) {
 			if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK)) {
 				Export("\n\n" HTML_A_NAME_BEGIN "\"mesiac%d\">" HTML_A_END, m);
-				Export("\n" HTML_P_CENTER "<" HTML_SPAN_RED_BOLD ">%s" HTML_SPAN_END, nazov_MESIACA(m));
+				Export("\n" HTML_P_CENTER "<" HTML_SPAN_RED_BOLD "><" HTML_SPAN_SMALLCAPS ">%s" HTML_SPAN_END "" HTML_SPAN_END, nazov_Mesiaca(m));
 				Export(" (" HTML_A_HREF_BEGIN "\"#rok\">%s" HTML_A_END ")" HTML_P_END "\n", html_text_zoznam_mesiacov[_global_jazyk]);
 			}
 			rozbor_mesiaca(m + 1, r);
@@ -13417,7 +13490,7 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 		if ((_global_linky == ANO) && (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK))) {
 
 			Export("\n");
-			Export(HTML_LINE_BREAK"\n");
+			Export(HTML_LINE_BREAK);
 
 			_export_buttons_rok_prev_next(r, action, pom2);
 		}
@@ -13464,7 +13537,7 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 			if (((_global_linky == ANO) && (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK))) || ((_global_opt_batch_monthly == ANO) && (export_monthly_druh >= 2))) {
 
 				Export("\n");
-				Export(HTML_LINE_BREAK"\n");
+				Export(HTML_LINE_BREAK);
 
 				_export_buttons_mesiac_rok_prev_next(m, r, pom2, som_v_tabulke, pom);
 
@@ -18063,6 +18136,12 @@ int breviar_main(int argc, const char **argv) {
 
 	_main_LOG("spúšťam initExport();...\n");
 	initExport();
+
+	// basic check for MAX_POCET_OPT contant
+	if (MAX_POCET_OPT < POCET_OPT_0_SPECIALNE || MAX_POCET_OPT < POCET_OPT_1_CASTI_MODLITBY || MAX_POCET_OPT < POCET_OPT_2_HTML_EXPORT || MAX_POCET_OPT < POCET_OPT_4_OFFLINE_EXPORT || MAX_POCET_OPT < POCET_OPT_5_ALTERNATIVES || MAX_POCET_OPT < POCET_OPT_6_ALTERNATIVES_MULTI) {
+		_main_LOG("Incorrect setting of value for `MAX_POCET_OPT'.\n");
+		goto _main_end;
+	}
 
 	// pre query_string musime alokovat pamat
 	_main_LOG("/* pre query_string musime alokovat pamat */\n");

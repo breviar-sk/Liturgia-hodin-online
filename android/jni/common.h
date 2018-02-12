@@ -180,7 +180,7 @@
 
 #define HTML_NONBREAKING_SPACE "&nbsp;"
 #define HTML_NONBREAKING_SPACE_LONG "&nbsp;&nbsp;&nbsp;"
-#define HTML_LINE_BREAK "<br/>"
+#define HTML_LINE_BREAK "<br/>\n" // always followed by real line-break
 #define HTML_CRLF_LINE_BREAK "\n<br/>"
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 #define HTML_SLASH_SPACE_LOONG_LINE_BREAK (HTML_NONBREAKING_SPACE "" STR_SLASH "" HTML_NONBREAKING_SPACE "" HTML_LINE_BREAK "" HTML_NONBREAKING_SPACE_LOOONG)

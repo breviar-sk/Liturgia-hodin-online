@@ -503,6 +503,9 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define KEYWORD_END     "END"
 #define KEYWORD_MULTI   "MULTI"
 #define KEYWORD_OCR_34  "OCR-34"
+#define KEYWORD_INVITAT_COMMON          "INVITAT-COMMON"
+#define KEYWORD_INVITAT_PSALM_SIMPLE    "INVITAT-PSALM"
+#define KEYWORD_INVITAT_PSALM(i)        KEYWORD_INVITAT_PSALM_SIMPLE i
 
 #define KEYWORD_ALELUJA_ALELUJA         "ALELUJA_ALELUJA"
 #define KEYWORD_ALELUJA_NIE_V_POSTE     "ALELUJA_NIE_V_POSTE"
@@ -531,6 +534,10 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define SYMBOL_END "/"
 
 // parameters
+#define PARAM_INVITAT_COMMON_BEGIN          KEYWORD_INVITAT_COMMON "" STR_UNDERSCORE "" KEYWORD_BEGIN
+#define PARAM_INVITAT_COMMON_END            KEYWORD_INVITAT_COMMON "" STR_UNDERSCORE "" KEYWORD_END
+#define PARAM_INVITAT_PSALM_BEGIN(i)        KEYWORD_INVITAT_PSALM(i) "" STR_UNDERSCORE "" KEYWORD_BEGIN
+#define PARAM_INVITAT_PSALM_END(i)          KEYWORD_INVITAT_PSALM(i) "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_ALELUJA_ALELUJA_BEGIN         KEYWORD_ALELUJA_ALELUJA "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_ALELUJA_ALELUJA_END           KEYWORD_ALELUJA_ALELUJA "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_ALELUJA_NIE_V_POSTE           KEYWORD_ALELUJA_NIE_V_POSTE
@@ -613,6 +620,7 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ALT_PROSBY_MULTI              "ALT-PROSBY-" KEYWORD_MULTI
 #define PARAM_ALT_KCIT_RESP_MULTI           "ALT-KCIT-RESP-" KEYWORD_MULTI
 #define PARAM_ALT_KRESP_MULTI               "ALT-KRESP-" KEYWORD_MULTI
+#define PARAM_ALT_PSALM_MULTI               "ALT-PSALM-" KEYWORD_MULTI
 
 // zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
@@ -907,11 +915,8 @@ extern const char *nazov_obdobia_[POCET_OBDOBI + 1];
 extern const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_obdobia_v(a)	nazov_obdobia_v_jazyk[a][_global_jazyk]
 
-extern const char *nazov_OBDOBIA_V_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
-#define		nazov_OBDOBIA_V(a)	nazov_OBDOBIA_V_jazyk[a][_global_jazyk]
-
-extern const char *nazov_OBDOBIA_AKA_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
-#define		nazov_OBDOBIA_AKA(a)	nazov_OBDOBIA_AKA_jazyk[a][_global_jazyk]
+extern const char *nazov_Obdobia_aka_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
+#define		nazov_Obdobia_aka(a)	nazov_Obdobia_aka_jazyk[a][_global_jazyk]
 
 // gen[itiv] == 2. pad, koho/coho
 
@@ -1294,9 +1299,6 @@ extern const char *nazov_dna_asci_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 extern const char *nazov_Dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_Dna(a)	nazov_Dna_jazyk[a][_global_jazyk]
 
-extern const char *nazov_DNA_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
-#define		nazov_DNA(a)	nazov_DNA_jazyk[a][_global_jazyk]
-
 extern const char *nazov_Dn_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_Dn(a)	nazov_Dn_jazyk[a][_global_jazyk]
 
@@ -1312,9 +1314,6 @@ extern const char *nazov_mesiaca_asci_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 
 extern const char *nazov_Mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_Mesiaca(a)	nazov_Mesiaca_jazyk[a][_global_jazyk]
 
-extern const char *nazov_MESIACA_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
-#define		nazov_MESIACA(a)	nazov_MESIACA_jazyk[a][_global_jazyk]
-
 extern const char *nazov_mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca_gen(a)	nazov_mesiaca_gen_jazyk[a][_global_jazyk]
 
@@ -1328,9 +1327,6 @@ extern const char *nazov_mes[POCET_MESIACOV + 1];
 
 extern const char *poradie_Slovom_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1];
 #define		poradie_Slovom(a)	poradie_Slovom_jazyk[a][_global_jazyk]
-
-extern const char *poradie_SLOVOM_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1];
-#define		poradie_SLOVOM(a)	poradie_SLOVOM_jazyk[a][_global_jazyk]
 
 #define POCET_ALIASOV          7
 // sucast struktury lrok, indexy
@@ -1471,118 +1467,119 @@ extern long _global_force_opt[POCET_GLOBAL_OPT];
 #define USE_STR_OPT           -2
 #define USE_STR_FORCE_OPT     -1
 
-#define POCET_OPT_0_SPECIALNE              13 // jednotlivé komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               13 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
-#define BIT_OPT_0_VERSE                     1 // export also verse numbers
-#define BIT_OPT_0_REFERENCIE                2 // export Bible references as live URLs (default: proper webpage for given language; override: BIT_OPT_0_REF_BIBLE_COM, use bible.com)
-#define BIT_OPT_0_CITANIA                   4 // export also scripture readings for mass
-#define BIT_OPT_0_ZJAVENIE_PANA_NEDELA      8 // či sa Zjavenie Pána slávi v nedeľu (1) alebo nie (teda 6. januára; hodnota 0 == default)
-#define BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA  16 // či sa Nanebovstúpenie Pána slávi v nedeľu (1) alebo nie (teda vo štvrtok, na 40.-ty deň po Veľkonočnej nedeli; hodnota 0 == default)
-#define BIT_OPT_0_TELAKRVI_NEDELA          32 // či sa Najsv. Kristovho tela a krvi slávi v nedeľu (1) alebo nie (teda vo štvrtok, 11.-ty deň po Zoslaní Ducha Sv.; hodnota 0 == default)
-#define BIT_OPT_0_FONT_NORMAL              64 // force font-weight: normal; // should be logically among OPT_2_HTML_EXPORT bit-options
-#define BIT_OPT_0_BUTTONS_ORDER           128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
-#define BIT_OPT_0_VOICE_OUTPUT            256 // voice-output (blind-friendly) mode: 1 = use special CSS override to hide all red texts (rubrics) + display text for speech synthesis + do not display text which should not be heard
-#define BIT_OPT_0_FOOTNOTES               512 // display footnotes and footnote references
-#define BIT_OPT_0_TRANSPARENT_NAV        1024 // transparent navigation arrow in text
-#define BIT_OPT_0_ZALMY_FULL_TEXT        2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
-#define BIT_OPT_0_REF_BIBLE_COM          4096 // precondition: BIT_OPT_0_REFERENCIE must be true; instead of standard URL, generates link to bible.com
+#define BIT_OPT_0_VERSE                      1 // export also verse numbers
+#define BIT_OPT_0_REFERENCIE                 2 // export Bible references as live URLs (default: proper webpage for given language; override: BIT_OPT_0_REF_BIBLE_COM, use bible.com)
+#define BIT_OPT_0_CITANIA                    4 // export also scripture readings for mass
+#define BIT_OPT_0_ZJAVENIE_PANA_NEDELA       8 // či sa Zjavenie Pána slávi v nedeľu (1) alebo nie (teda 6. januára; hodnota 0 == default)
+#define BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA   16 // či sa Nanebovstúpenie Pána slávi v nedeľu (1) alebo nie (teda vo štvrtok, na 40.-ty deň po Veľkonočnej nedeli; hodnota 0 == default)
+#define BIT_OPT_0_TELAKRVI_NEDELA           32 // či sa Najsv. Kristovho tela a krvi slávi v nedeľu (1) alebo nie (teda vo štvrtok, 11.-ty deň po Zoslaní Ducha Sv.; hodnota 0 == default)
+#define BIT_OPT_0_FONT_NORMAL               64 // force font-weight: normal; // should be logically among OPT_2_HTML_EXPORT bit-options
+#define BIT_OPT_0_BUTTONS_ORDER            128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
+#define BIT_OPT_0_VOICE_OUTPUT             256 // voice-output (blind-friendly) mode: 1 = use special CSS override to hide all red texts (rubrics) + display text for speech synthesis + do not display text which should not be heard
+#define BIT_OPT_0_FOOTNOTES                512 // display footnotes and footnote references
+#define BIT_OPT_0_TRANSPARENT_NAV         1024 // transparent navigation arrow in text
+#define BIT_OPT_0_ZALMY_FULL_TEXT         2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
+#define BIT_OPT_0_REF_BIBLE_COM           4096 // precondition: BIT_OPT_0_REFERENCIE must be true; instead of standard URL, generates link to bible.com
 
-#define POCET_OPT_1_CASTI_MODLITBY         18 // jednotlivé komponenty option 1 -- bity pre force option 1
+#define POCET_OPT_1_CASTI_MODLITBY          18 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 // 2011-04-11: úprava významu (a interpretácie) option 1 == OPT_1_CASTI_MODLITBY (zobraziť/nezobraziť najmä pevné/nemenné súčasti modlitieb, ale aj iné, čo sú/nie sú v LH)
 // 2011-10-10: úprava niektorých bitov, posunutie popisu na koniec
-#define BIT_OPT_1_TEDEUM                    1
-#define BIT_OPT_1_RUBRIKY                   2
-#define BIT_OPT_1_CHVALOSPEVY               4
-#define BIT_OPT_1_SLAVA_OTCU                8
-#define BIT_OPT_1_OTCENAS                  16
-#define BIT_OPT_1_MCD_DOPLNKOVA            32 // používa sa pre modlitbu cez deň -- 1 = alternatívna, doplnková psalmódia
-#define BIT_OPT_1_PC_VIGILIA               64
-#define BIT_OPT_1_SPOMIENKA_SPOL_CAST     128 // pri slávení spomienky možno podľa všeobecných smerníc, č. 235 b), vziať niektoré časti alebo zo spoločnej časti (1), alebo zo dňa (0)
-#define BIT_OPT_1_PLNE_RESP               256
-#define BIT_OPT_1_ZALM95                  512 // používa sa pre ranné chvály a vešpery -- 1 = vziať namiesto žalmov 24, 67, 100 žalm 95 (0 = brať príslušný žalm 24, 67 resp. 100)
-#define BIT_OPT_1_PROSBY_ZVOLANIE        1024 // zvolanie v prosbách zobraziť (opakovať) po každej prosbe
-#define BIT_OPT_1_SKRY_POPIS             2048
-#define BIT_OPT_1_ZOBRAZ_SPOL_CAST       4096
-#define BIT_OPT_1_VESP_KRATSIE_PROSBY    8192 // použiť (pre ktorýkoľvek deň v roku) kratšie prosby k vešperám z dodatku (0 = default, zo dňa)
-#define BIT_OPT_1_MCD_ZALTAR_TRI        16384 // používa sa pre modlitbu cez deň -- 1 = psalmódia sa používa z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)
-#define BIT_OPT_1_ZAVER                 32768 // prayer conclusions
-#define BIT_OPT_1_OVERRIDE_STUP_SLAV    65536 // možnosť zvoliť vyšší stupeň slávenia (spomienku možno sláviť ako sviatok alebo slávnosť; sviatok ako slávnosť)
+#define BIT_OPT_1_TEDEUM                     1
+#define BIT_OPT_1_RUBRIKY                    2
+#define BIT_OPT_1_CHVALOSPEVY                4
+#define BIT_OPT_1_SLAVA_OTCU                 8
+#define BIT_OPT_1_OTCENAS                   16
+#define BIT_OPT_1_MCD_DOPLNKOVA             32 // používa sa pre modlitbu cez deň -- 1 = alternatívna, doplnková psalmódia
+#define BIT_OPT_1_PC_VIGILIA                64
+#define BIT_OPT_1_SPOMIENKA_SPOL_CAST      128 // pri slávení spomienky možno podľa všeobecných smerníc, č. 235 b), vziať niektoré časti alebo zo spoločnej časti (1), alebo zo dňa (0)
+#define BIT_OPT_1_PLNE_RESP                256
+#define BIT_OPT_1_ZALM95                   512 // používa sa pre ranné chvály a vešpery -- 1 = vziať namiesto žalmov 24, 67, 100 žalm 95 (0 = brať príslušný žalm 24, 67 resp. 100)
+#define BIT_OPT_1_PROSBY_ZVOLANIE         1024 // zvolanie v prosbách zobraziť (opakovať) po každej prosbe
+#define BIT_OPT_1_SKRY_POPIS              2048
+#define BIT_OPT_1_ZOBRAZ_SPOL_CAST        4096
+#define BIT_OPT_1_VESP_KRATSIE_PROSBY     8192 // použiť (pre ktorýkoľvek deň v roku) kratšie prosby k vešperám z dodatku (0 = default, zo dňa)
+#define BIT_OPT_1_MCD_ZALTAR_TRI         16384 // používa sa pre modlitbu cez deň -- 1 = psalmódia sa používa z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)
+#define BIT_OPT_1_ZAVER                  32768 // prayer conclusions
+#define BIT_OPT_1_OVERRIDE_STUP_SLAV     65536 // možnosť zvoliť vyšší stupeň slávenia (spomienku možno sláviť ako sviatok alebo slávnosť; sviatok ako slávnosť)
 #define BIT_OPT_1_STUP_SVIATOK_SLAVNOST 131072 // vyšší stupeň slávenia (0 = sviatok, 1 = slávnosť); aplikuje sa iba ak BIT_OPT_1_OVERRIDE_STUP_SLAV je true
 
-#define POCET_OPT_2_HTML_EXPORT            16 // jednotlivé komponenty option 2 -- bity pre force option 2
+#define POCET_OPT_2_HTML_EXPORT             16 // jednotlivé komponenty option 2 -- bity pre force option 2
 extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: úprava významu (a interpretácie) option 2 (rozličné prepínače pre [online aj offline] export, napr. tlačidlá, zobrazenie dátumov a podobne)
 // 2012-10-01: doplnené ďalšie komponenty najmä pre vzhľad úvodnej obrazovky
-#define BIT_OPT_2_ISO_DATUM                 1 // zobrazovať dátum v ISO formáte YYYY-MM-DD (0 = iba číslo dňa)
-#define BIT_OPT_2_BUTTON_PRVE_VESPERY       2 // zobrazovať prvé vešpery (a kompletórium po nich) pre ten deň, pre ktorý patria (teda pre nedeľu/slávnosť)
-#define BIT_OPT_2_FONT_FAMILY               4 // 0 = Serif, 1 = Sans Serif
-#define BIT_OPT_2_FONT_NAME_CHOOSER         8 // zobraziť drop-down list s možnosťou voľby font (family) name
-#define BIT_OPT_2_FONT_SIZE_CHOOSER        16 // zobraziť drop-down list s možnosťou voľby veľkosti fontu
-#define BIT_OPT_2_NAVIGATION               32 // zobraziť navigáciu v modlitbe (predošlá, nasledovná modlitba a pod.)
-#define BIT_OPT_2_TEXT_WRAP                64 // zobraziť zalomenie v textoch modlitby podľa tlačenej LH
-#define BIT_OPT_2_BUTTONY_USPORNE         128 // zobraziť buttony pre modlitby v úspornej podobe (tabuľka) kvôli mobilným zariadeniam
-#define BIT_OPT_2_NOCNY_REZIM             256 // zobraziť invertovane farby (biele na ciernom)
-#define BIT_OPT_2_ROZNE_MOZNOSTI          512 // zobraziť rozličné "hypertextové odkazy" v modlitbe (napr. pre modlitbu cez deň možnosť doplnkovej psalmódie)
-#define BIT_OPT_2_HIDE_NAVIG_BUTTONS     1024 // možnosť zobraziť/skryť navigáciu (tlačidlá) v modlitbe a pre "dnes", ak je zvolený 6. bit (BIT_OPT_2_NAVIGATION)
-#define BIT_OPT_2_HIDE_KALENDAR          2048 // skryť kalendárik pre "dnes" (0 = zobraziť)
-#define BIT_OPT_2_HIDE_OPTIONS1          4096 // skryť html_text_dalsie_moznosti_1[] pre "dnes" (0 = zobraziť)
-#define BIT_OPT_2_HIDE_OPTIONS2          8192 // skryť html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziť)
-#define BIT_OPT_2_ALTERNATIVES          16384 // ukázať iba jednu alternatívu (0 = ako doteraz; buď systém vyberie, alebo ukáže všetky možnosti)
-#define BIT_OPT_2_SHOW_DEFAULT_CALENDAR 32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
+#define BIT_OPT_2_ISO_DATUM                  1 // zobrazovať dátum v ISO formáte YYYY-MM-DD (0 = iba číslo dňa)
+#define BIT_OPT_2_BUTTON_PRVE_VESPERY        2 // zobrazovať prvé vešpery (a kompletórium po nich) pre ten deň, pre ktorý patria (teda pre nedeľu/slávnosť)
+#define BIT_OPT_2_FONT_FAMILY                4 // 0 = Serif, 1 = Sans Serif
+#define BIT_OPT_2_FONT_NAME_CHOOSER          8 // zobraziť drop-down list s možnosťou voľby font (family) name
+#define BIT_OPT_2_FONT_SIZE_CHOOSER         16 // zobraziť drop-down list s možnosťou voľby veľkosti fontu
+#define BIT_OPT_2_NAVIGATION                32 // zobraziť navigáciu v modlitbe (predošlá, nasledovná modlitba a pod.)
+#define BIT_OPT_2_TEXT_WRAP                 64 // zobraziť zalomenie v textoch modlitby podľa tlačenej LH
+#define BIT_OPT_2_BUTTONY_USPORNE          128 // zobraziť buttony pre modlitby v úspornej podobe (tabuľka) kvôli mobilným zariadeniam
+#define BIT_OPT_2_NOCNY_REZIM              256 // zobraziť invertovane farby (biele na ciernom)
+#define BIT_OPT_2_ROZNE_MOZNOSTI           512 // zobraziť rozličné "hypertextové odkazy" v modlitbe (napr. pre modlitbu cez deň možnosť doplnkovej psalmódie)
+#define BIT_OPT_2_HIDE_NAVIG_BUTTONS      1024 // možnosť zobraziť/skryť navigáciu (tlačidlá) v modlitbe a pre "dnes", ak je zvolený 6. bit (BIT_OPT_2_NAVIGATION)
+#define BIT_OPT_2_HIDE_KALENDAR           2048 // skryť kalendárik pre "dnes" (0 = zobraziť)
+#define BIT_OPT_2_HIDE_OPTIONS1           4096 // skryť html_text_dalsie_moznosti_1[] pre "dnes" (0 = zobraziť)
+#define BIT_OPT_2_HIDE_OPTIONS2           8192 // skryť html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziť)
+#define BIT_OPT_2_ALTERNATIVES           16384 // ukázať iba jednu alternatívu (0 = ako doteraz; buď systém vyberie, alebo ukáže všetky možnosti)
+#define BIT_OPT_2_SHOW_DEFAULT_CALENDAR  32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
 
-#define POCET_OPT_4_OFFLINE_EXPORT          4 // jednotlivé komponenty option 4 -- bity pre force option 4
+#define POCET_OPT_4_OFFLINE_EXPORT           4 // jednotlivé komponenty option 4 -- bity pre force option 4
 extern long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: úprava významu (a interpretácie) option 4 (rozličné prepínače pre offline export, napr. aj batch mód)
-#define BIT_OPT_4_MESIAC_RIADOK             1 // mesiac jednoducho (default: nie jednoducho, ale HTML pekne pre web) alebo pekne "zložito"
-#define BIT_OPT_4_FNAME_MODL_ID             2 // či pre názov súboru použiť (číselné) ID modlitby alebo písmenko modlitby (default)
-#define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
-#define BIT_OPT_4_DO_NOT_USE_BUTTON         8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
+#define BIT_OPT_4_MESIAC_RIADOK              1 // mesiac jednoducho (default: nie jednoducho, ale HTML pekne pre web) alebo pekne "zložito"
+#define BIT_OPT_4_FNAME_MODL_ID              2 // či pre názov súboru použiť (číselné) ID modlitby alebo písmenko modlitby (default)
+#define BIT_OPT_4_EXCLUDE_MCD_KOMPLET        4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
+#define BIT_OPT_4_DO_NOT_USE_BUTTON          8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
-#define POCET_OPT_5_ALTERNATIVES           18 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES            18 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
-#define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezročné obdobie, A/B)
-#define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
-#define BIT_OPT_5_HYMNUS_MCD_PREDPOL        4 // hymnus pre modlitbu cez deň, predpoludním (Cezročné obdobie)
-#define BIT_OPT_5_HYMNUS_MCD_NAPOL          8 // hymnus pre modlitbu cez deň, napoludnie (Cezročné obdobie)
-#define BIT_OPT_5_HYMNUS_MCD_POPOL         16 // hymnus pre modlitbu cez deň, popoludní (Cezročné obdobie)
-#define BIT_OPT_5_DOPLNK_PSALM_122_129     32 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 122 možno brať žalm 129
-#define BIT_OPT_5_DOPLNK_PSALM_127_131     64 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 127 možno brať žalm 131
-#define BIT_OPT_5_DOPLNK_PSALM_126_129    128 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 126 možno brať žalm 129
-#define BIT_OPT_5_HYMNUS_VN_PC            256 // hymnus pre posvätné čítanie (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
-#define BIT_OPT_5_HYMNUS_VN_RCH           512 // hymnus pre ranné chvály (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
-#define BIT_OPT_5_HYMNUS_VN_VESP         1024 // hymnus pre vešpery (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
-#define BIT_OPT_5_HYMNUS_1VESP           2048 // hymnus pre prvé vešpery (Cezročné obdobie: nedeľný alebo z posv. čítania)
-#define BIT_OPT_5_POPOL_STREDA_PSALMODIA 4096 // psalmódia pre ranné chvály popolcovej stredy (default: streda 4. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
-#define BIT_OPT_5_CZ_HYMNY_VYBER         8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
-#define BIT_OPT_5_OFF_DEF_PSALM_146_150 16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
-#define BIT_OPT_5_ZAVER_KNAZ_DIAKON     32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
-#define BIT_OPT_5_INVITATORIUM_ANT      65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
-#define BIT_OPT_5_OCR_34_HYMNS         131072 // different (special) hymns for 34th week per annum
+#define BIT_OPT_5_HYMNUS_KOMPL               1 // hymnus na kompletórium (Cezročné obdobie, A/B)
+#define BIT_OPT_5_HYMNUS_PC                  2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
+#define BIT_OPT_5_HYMNUS_MCD_PREDPOL         4 // hymnus pre modlitbu cez deň, predpoludním (Cezročné obdobie)
+#define BIT_OPT_5_HYMNUS_MCD_NAPOL           8 // hymnus pre modlitbu cez deň, napoludnie (Cezročné obdobie)
+#define BIT_OPT_5_HYMNUS_MCD_POPOL          16 // hymnus pre modlitbu cez deň, popoludní (Cezročné obdobie)
+#define BIT_OPT_5_DOPLNK_PSALM_122_129      32 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 122 možno brať žalm 129
+#define BIT_OPT_5_DOPLNK_PSALM_127_131      64 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 127 možno brať žalm 131
+#define BIT_OPT_5_DOPLNK_PSALM_126_129     128 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 126 možno brať žalm 129
+#define BIT_OPT_5_HYMNUS_VN_PC             256 // hymnus pre posvätné čítanie (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
+#define BIT_OPT_5_HYMNUS_VN_RCH            512 // hymnus pre ranné chvály (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
+#define BIT_OPT_5_HYMNUS_VN_VESP          1024 // hymnus pre vešpery (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
+#define BIT_OPT_5_HYMNUS_1VESP            2048 // hymnus pre prvé vešpery (Cezročné obdobie: nedeľný alebo z posv. čítania)
+#define BIT_OPT_5_POPOL_STREDA_PSALMODIA  4096 // psalmódia pre ranné chvály popolcovej stredy (default: streda 4. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
+#define BIT_OPT_5_CZ_HYMNY_VYBER          8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
+#define BIT_OPT_5_OFF_DEF_PSALM_146_150  16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
+#define BIT_OPT_5_ZAVER_KNAZ_DIAKON      32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
+#define BIT_OPT_5_INVITATORIUM_ANT       65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
+#define BIT_OPT_5_OCR_34_HYMNS          131072 // different (special) hymns for 34th week per annum
 
-#define POCET_OPT_6_ALTERNATIVES_MULTI      4 // this is not bitwise long, but simply decimal number; each decimal place representing one value
-extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI];
+#define POCET_OPT_6_ALTERNATIVES_MULTI        9 // count equals to the highest PLACE_OPT_6_... used
+extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI]; // this is not bitwise long, but simply decimal number; each decimal place representing one value (max. possibly 0--9)
 #define PLACE_OPT_6_HYMNUS_MULTI              1
-#define PLACE_OPT_6_CITANIE2_MULTI            2
-#define PLACE_OPT_6_CITANIE1_MULTI            3
-#define PLACE_OPT_6_ANTIFONA_MULTI            4
-#define PLACE_OPT_6_MODLITBA_MULTI            5
-#define PLACE_OPT_6_PROSBY_MULTI              6
-#define PLACE_OPT_6_KCIT_RESP_MULTI           7
-#define PLACE_OPT_6_KRESP_MULTI               8
+#define PLACE_OPT_6_PSALM_MULTI               2 // in fact, only for invitatory
+#define PLACE_OPT_6_CITANIE2_MULTI            3
+#define PLACE_OPT_6_CITANIE1_MULTI            4
+#define PLACE_OPT_6_ANTIFONA_MULTI            5
+#define PLACE_OPT_6_MODLITBA_MULTI            6
+#define PLACE_OPT_6_PROSBY_MULTI              7
+#define PLACE_OPT_6_KCIT_RESP_MULTI           8
+#define PLACE_OPT_6_KRESP_MULTI               9
 
 #define BASE_OPT_6_HYMNUS_MULTI               1
-#define BASE_OPT_6_CITANIE2_MULTI            10
-#define BASE_OPT_6_CITANIE1_MULTI           100
-#define BASE_OPT_6_ANTIFONA_MULTI          1000
-#define BASE_OPT_6_MODLITBA_MULTI         10000
-#define BASE_OPT_6_PROSBY_MULTI          100000
-#define BASE_OPT_6_KCIT_RESP_MULTI      1000000
-#define BASE_OPT_6_KRESP_MULTI         10000000
+#define BASE_OPT_6_PSALM_MULTI               10
+#define BASE_OPT_6_CITANIE2_MULTI           100 
+#define BASE_OPT_6_CITANIE1_MULTI          1000 
+#define BASE_OPT_6_ANTIFONA_MULTI         10000 
+#define BASE_OPT_6_MODLITBA_MULTI        100000 
+#define BASE_OPT_6_PROSBY_MULTI         1000000 
+#define BASE_OPT_6_KCIT_RESP_MULTI     10000000 
+#define BASE_OPT_6_KRESP_MULTI        100000000
 
-
-#define MAX_POCET_OPT                      18 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
+#define MAX_POCET_OPT                        18 // must be at least maximum from POCET_OPT_0_... to POCET_OPT_6_...
 
 const short int pocet_opt[POCET_GLOBAL_OPT] = { POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nemá bitové komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES, POCET_OPT_6_ALTERNATIVES_MULTI /* decimal-places */ };
 
@@ -1657,7 +1654,6 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 #define vytvor_global_link_class_new(den, mesiac, rok, typ, align, html_class, nazov_dna)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ + LINK_SHIFT, align, html_class, nazov_dna)
 #define vytvor_global_link_class(den, mesiac, rok, typ, align, html_class)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align, html_class)
 #define Vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_Case, typ, align)
-#define VYTVOR_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_CASE, typ, align)
 // parameter align -- či zarovnať jednociferné dátumy (číslovka dňa) medzerou zľava
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class);
