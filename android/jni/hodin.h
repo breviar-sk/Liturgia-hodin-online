@@ -9140,19 +9140,6 @@ const char *text_JUL_06[POCET_JAZYKOV + 1] =
 	"Св. Марыі Гарэцці, панны і мучаніцы",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_JUL_06_CZOP[POCET_JAZYKOV + 1] =
-{
-	"",
-	"",
-	"",
-	"",
-	"",
-	"Blaholaveného Pier Giorgio Frassatiho, laika OP",
-	"",
-	"ru_text",
-	"by_text",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
 const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Romerovej Meneses, panny",
