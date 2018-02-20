@@ -8,7 +8,7 @@ import android.webkit.WebViewClient;
 
 public class HeadlessWebview {
   public interface Callback {
-    public void run(String result);
+    public void run(String[] result);
   }
 
   WebView wv;
@@ -23,7 +23,7 @@ public class HeadlessWebview {
     }
 
     @JavascriptInterface
-    public void callback(String result) {
+    public void callback(String[] result) {
       if (parent.client_callback != null) {
         parent.client_callback.run(result);
       }

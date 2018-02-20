@@ -85,6 +85,10 @@
 
     <string name="tts_ready">Prečítaj</string>
     <string name="tts_speaking">Zastav čítanie</string>
+    <string name="tts_pause">Preruš čítanie</string>
+    <string name="tts_resume">Pokračuj v čítaní</string>
+    <string name="tts_back">Čítaj predošlú časť</string>
+    <string name="tts_forward">Čítaj nasledujúcu časť</string>
 
     <string name="notification_not_allowed">Zatiaľ ste aplikácii nepovolili vypnúť zvonenie.</string>
 

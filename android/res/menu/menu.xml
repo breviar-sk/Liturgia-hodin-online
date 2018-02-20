@@ -45,6 +45,18 @@
           android:title="@string/tts_ready"
           android:icon="@drawable/ic_volume_up_white_24dp"
     />
+    <item android:id="@+id/speak_pause_toggle"
+          android:title="@string/tts_pause"
+          android:icon="@drawable/ic_pause_white_24dp"
+    />
+    <item android:id="@+id/speak_back"
+          android:title="@string/tts_back"
+          android:icon="@drawable/ic_fast_rewind_white_24dp"
+    />
+    <item android:id="@+id/speak_forward"
+          android:title="@string/tts_forward"
+          android:icon="@drawable/ic_fast_forward_white_24dp"
+    />
   </group>
 
   <group android:id="@+id/group_menu_info">

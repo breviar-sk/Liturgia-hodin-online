@@ -84,7 +84,11 @@
     <string name="h15_notify">Je čas na odpolední modlitbu!</string>
 
     <string name="tts_ready">Pročti</string>
-    <string name="tts_speaking">Zastav předčítání</string>
+    <string name="tts_speaking">Ukonči předčítání</string>
+    <string name="tts_pause">Pozastavit předčítání</string>
+    <string name="tts_resume">Pokračovat v čtení</string>
+    <string name="tts_back">Pročti předchozí část</string>
+    <string name="tts_forward">Pročti následující část</string>
 
     <string name="notification_not_allowed">Aplikaci jste dosud nepovolili vypnout zvonění.</string>
 

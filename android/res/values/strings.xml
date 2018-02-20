@@ -87,6 +87,10 @@
 
     <string name="tts_ready">Speak prayers</string>
     <string name="tts_speaking">Stop speaking</string>
+    <string name="tts_pause">Pause speaking</string>
+    <string name="tts_resume">Resume speaking</string>
+    <string name="tts_back">Speak previous part</string>
+    <string name="tts_forward">Speak next part</string>
 
     <string name="notification_not_allowed">You have not allowed the app to change ring mode yet.</string>
 

@@ -85,6 +85,10 @@
 
     <string name="tts_ready">Olvas</string>
     <string name="tts_speaking">Hagyja abba az olvasást</string>
+    <string name="tts_pause">Szüneteltesse az olvasást</string>
+    <string name="tts_resume">Folytassa az olvasást</string>
+    <string name="tts_back">Olvasd el az előző részt</string>
+    <string name="tts_forward">Olvassa el a következő részt</string>
 
     <string name="notification_not_allowed">Még nem engedélyezte az alkalmazásnak a csengetés kikapcsolását.</string>
 
