@@ -439,11 +439,11 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -470,6 +470,7 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "HU SVD"
 	, "агульны BY"
 	, "CZ OFM"
+	, "SK CSA"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -498,6 +499,7 @@ const char *nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, "SVD"
 	, " BY"
 	, "OFM"
+	, "CSA"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -528,6 +530,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "verbitás zsolozsmája"
 	, "агульны [Belarus]"
 	, "s vlastními františkánskými texty (OFM)"
+	, "pre kanonisky ND sv. Augustína"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -558,6 +561,7 @@ const char *nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "verbitás zsolozsmája"
 	, "агульны [Belarus]"
 	, "pro františkány (OFM)"
+	, "pre kanonisky ND (CSA)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -4782,6 +4786,19 @@ const char *text_JAN_09_OCD[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_JAN_09_CSA[POCET_JAZYKOV + 1] =
+{
+	"Bl. Alexie Le Clerc, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_JAN_10_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Gundislava z Amarante, kňaza",
@@ -6627,14 +6644,14 @@ const char *text_APR_24_OCD[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_APR_24_OPRAEM_OP[POCET_JAZYKOV + 1] =
+const char *text_APR_24_AUG[POCET_JAZYKOV + 1] =
 {
+	"Obrátenie nášho svätého otca Augustína", // SK CSA
+	"Obrácení našeho otce svatého Augustina, " HTML_LINE_BREAK "biskupa a učitele církve", // CZ OPraem
 	"",
-	"Obrácení našeho otce svatého Augustina, " HTML_LINE_BREAK "biskupa a učitele církve",
 	"",
 	"",
-	"",
-	"Obrácení sv. Augustina",
+	"Obrácení sv. Augustina", // CZ OP
 	"",
 	"ru_text",
 	"by_text",

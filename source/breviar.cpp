@@ -1487,7 +1487,7 @@ void _main_prazdny_formular(void) {
 #define EXPORT_FULL_TEXT ((!vnutri_full_text || isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT)) && !(vnutri_full_text && isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)))
 #define EXPORT_REFERENCIA ((!vnutri_myslienky || je_myslienka) && (!vnutri_nadpisu || je_nadpis) && (!(vnutri_footnote || vnutri_note) || useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FOOTNOTES)))
 // export red and normal stuff = export asterisks & crosses (psalmody, responsories)
-#define EXPORT_RED_AND_NORMAL_STUFF(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)))
+#define EXPORT_RED_AND_NORMAL_STUFF(modlitba) (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (write == ANO))
 #define EXPORT_RED_TRIANGLE ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
 #define EXPORT_VERSE_NUMBER (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && (EXPORT_FULL_TEXT))
 #define EXPORT_TTS_PAUSES (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))
@@ -1914,7 +1914,9 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				{
 					DetailLog("exporting normal stuff with nbsp before...\n");
 
-					Export(HTML_NONBREAKING_SPACE);
+					if (EXPORT_RED_AND_NORMAL_STUFF(_global_modlitba)) {
+						Export(HTML_NONBREAKING_SPACE);
+					}
 
 					if (equals(strbuff, PARAM_NORMAL_ASTERISK)) {
 						if (EXPORT_TTS_PAUSES) {
@@ -2898,6 +2900,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	short int je_begin, je_end = NIE;
 	short int exportovat_html_note = NIE;
 	short int exportovat_html_tag = NIE;
+	short int write = ANO; // due to #define EXPORT_RED_AND_NORMAL_STUFF()
 
 	char tag_to_export_begin[SMALL] = STR_EMPTY;
 	char tag_to_export_end[SMALL] = STR_EMPTY;
@@ -2937,7 +2940,9 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		if (_global_skip_in_prayer == NIE) {
 			DetailLog("exporting normal stuff with nbsp before...\n");
 
-			Export(HTML_NONBREAKING_SPACE);
+			if (EXPORT_RED_AND_NORMAL_STUFF(_global_modlitba)) {
+				Export(HTML_NONBREAKING_SPACE);
+			}
 
 			if (equals(paramname, PARAM_NORMAL_ASTERISK)) {
 				if (EXPORT_TTS_PAUSES) {

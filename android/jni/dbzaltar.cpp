@@ -3742,6 +3742,25 @@ void _set_zalmy_cssr_titul(short int modlitba) {
 	Log("_set_zalmy_cssr_titul(%s) -- end\n", nazov_modlitby(modlitba));
 } // _set_zalmy_cssr_titul()
 
+// SK CSA (24APR)
+void _set_zalmy_csa_augustin(short int modlitba) {
+	Log("_set_zalmy_csa_augustin(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_VESPERY) {
+		set_zalm(1, modlitba, "z112.htm", "ZALM112");
+		set_zalm(2, modlitba, "z130.htm", "ZALM130");
+		set_zalm(3, modlitba, "ch_kol1.htm", "CHVAL_KOL1");
+	}
+	else if (modlitba == MODL_RANNE_CHVALY) {
+		_set_zalmy_1nedele_rch();
+	}
+	else if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z139.htm", "ZALM139");
+		set_zalm(2, modlitba, "z141.htm", "ZALM141");
+		set_zalm(3, modlitba, "z16.htm", "ZALM16");
+	}
+	Log("_set_zalmy_csa_augustin(%s) -- end\n", nazov_modlitby(modlitba));
+} // _set_zalmy_csa_augustin()
+
 // SK SJ (31JUL)
 void _set_zalmy_sj_ignac(short int modlitba) {
 	Log("_set_zalmy_sj_ignac(%s) -- begin\n", nazov_modlitby(modlitba));

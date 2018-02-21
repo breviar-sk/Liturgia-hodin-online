@@ -133,6 +133,7 @@ extern void _set_zalmy_vsetkych_svatych(short int modlitba);
 extern void _set_zalmy_najsv_mena_jezisovho_czop(short int modlitba);
 extern void _set_zalmy_najsv_mena_jezisovho_sk_ofm(short int modlitba);
 extern void _set_zalmy_cssr_titul(short int modlitba);
+extern void _set_zalmy_csa_augustin(short int modlitba);
 extern void _set_zalmy_sj_ignac(short int modlitba);
 extern void _set_zalmy_sj_vsetkych_svatych(short int modlitba);
 extern void _set_zalmy_sj_xaver(short int modlitba);
@@ -2091,7 +2092,7 @@ extern const char *text_FEB_04_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_10_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_17_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_18_OPRAEM[POCET_JAZYKOV + 1];
-extern const char *text_APR_24_OPRAEM_OP[POCET_JAZYKOV + 1];
+extern const char *text_APR_24_AUG[POCET_JAZYKOV + 1];
 extern const char *text_APR_26_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_02_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1];
@@ -2182,6 +2183,12 @@ extern const char *text_SEP_11_CM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_27_CM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_27_CM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_28_CM[POCET_JAZYKOV + 1];
+
+// --------------- CSA propriá ---------------
+extern const char *text_JAN_09_CSA[POCET_JAZYKOV + 1];
+extern const char *text_AUG_27_CSA[POCET_JAZYKOV + 1];
+extern const char *text_AUG_28_CSA[POCET_JAZYKOV + 1];
+extern const char *text_DEC_09_CSA[POCET_JAZYKOV + 1];
 
 extern short int pocet_multi(char *_anchor, long type);
 
