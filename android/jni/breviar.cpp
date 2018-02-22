@@ -3970,7 +3970,8 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 	// pokracuju dalsie klasicke `tagy' v modlitbach (teda templatoch)
 
-	else if (equals(paramname, PARAM_POPIS)) {
+	/* must not be "else" before this if due to repeatance of PARAM_POPIS */
+	if (equals(paramname, PARAM_POPIS)) {
 
 		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS == %ld: ", _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS);
 		Log("  _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT == %ld: ", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT);

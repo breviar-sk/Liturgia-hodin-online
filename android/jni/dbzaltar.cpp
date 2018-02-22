@@ -3743,8 +3743,8 @@ void _set_zalmy_cssr_titul(short int modlitba) {
 } // _set_zalmy_cssr_titul()
 
 // SK CSA (24APR)
-void _set_zalmy_csa_augustin(short int modlitba) {
-	Log("_set_zalmy_csa_augustin(%s) -- begin\n", nazov_modlitby(modlitba));
+void _set_zalmy_csa_augustin_obr(short int modlitba) {
+	Log("_set_zalmy_csa_augustin_obr(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY) {
 		set_zalm(1, modlitba, "z112.htm", "ZALM112");
 		set_zalm(2, modlitba, "z130.htm", "ZALM130");
@@ -3757,6 +3757,35 @@ void _set_zalmy_csa_augustin(short int modlitba) {
 		set_zalm(1, modlitba, "z139.htm", "ZALM139");
 		set_zalm(2, modlitba, "z141.htm", "ZALM141");
 		set_zalm(3, modlitba, "z16.htm", "ZALM16");
+	}
+	Log("_set_zalmy_csa_augustin_obr(%s) -- end\n", nazov_modlitby(modlitba));
+} // _set_zalmy_csa_augustin_obr()
+
+// SK CSA (28AUG)
+void _set_zalmy_csa_augustin(short int modlitba) {
+	Log("_set_zalmy_csa_augustin(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_VESPERY) {
+		set_zalm(1, modlitba, "z15.htm", "ZALM15");
+		set_zalm(2, modlitba, "z112.htm", "ZALM112");
+		set_zalm(3, modlitba, "ch_zjv15.htm", "CHVAL_ZJV15");
+	}
+	else if (modlitba == MODL_PRVE_VESPERY) {
+		set_zalm(1, modlitba, "z71.htm", "ZALM71,9-19");
+		set_zalm(2, modlitba, "z32.htm", "ZALM32");
+		set_zalm(3, modlitba, "ch_zjv15.htm", "CHVAL_ZJV15");
+	}
+	else if (modlitba == MODL_RANNE_CHVALY) {
+		_set_zalmy_1nedele_rch();
+	}
+	else if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z27.htm", "ZALM27");
+		set_zalm(2, modlitba, "z34.htm", "ZALM34");
+		set_zalm(3, modlitba, "z133.htm", "ZALM133");
+	}
+	else if ((modlitba == MODL_PREDPOLUDNIM) || (modlitba == MODL_NAPOLUDNIE) || (modlitba == MODL_POPOLUDNI)) {
+		set_zalm(1, modlitba, "z8.htm", "ZALM8");
+		set_zalm(2, modlitba, "z19.htm", "ZALM19,2-7");
+		set_zalm(3, modlitba, "z19.htm", "ZALM19,8-15");
 	}
 	Log("_set_zalmy_csa_augustin(%s) -- end\n", nazov_modlitby(modlitba));
 } // _set_zalmy_csa_augustin()

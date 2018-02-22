@@ -530,7 +530,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "verbitás zsolozsmája"
 	, "агульны [Belarus]"
 	, "s vlastními františkánskými texty (OFM)"
-	, "pre kanonisky ND sv. Augustína"
+	, "pre kanonisky sv. Augustína rehole N. D. (CSA)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -10971,10 +10971,10 @@ const char *text_AUG_27[POCET_JAZYKOV + 1] =
 	"Св. Монікі",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_AUG_27_OPRAEM[POCET_JAZYKOV + 1] =
+const char *text_AUG_27_AUG[POCET_JAZYKOV + 1] =
 {
-	"",
-	"Sv. Moniky, matky našeho otce sv. Augustina",
+	"Sv. Moniky, matky nášho svätého otca Augustína", // SK CSA
+	"Sv. Moniky, matky našeho otce sv. Augustina", // CZ OPraem
 	"",
 	"",
 	"",
@@ -10997,10 +10997,10 @@ const char *text_AUG_28[POCET_JAZYKOV + 1] =
 	"Св. Аўгустына, біскупа і доктара Касцёла",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_AUG_28_OPRAEM[POCET_JAZYKOV + 1] =
+const char *text_AUG_28_AUG[POCET_JAZYKOV + 1] =
 {
-	"",
-	"Našeho otce sv. Augustina, biskupa a učitele církve",
+	"Nášho svätého otca Augustína, biskupa a učiteľa Cirkvi", // SK CSA
+	"Našeho otce sv. Augustina, biskupa a učitele církve", // CZ OPraem
 	"",
 	"",
 	"",
@@ -14309,6 +14309,19 @@ const char *text_DEC_09[POCET_JAZYKOV + 1] =
 	"Szent Juan Diego Cuauhtlatoatzin, Guadalupei látnok",
 	"ru_text",
 	"Св. Яна Дзідаха Куаухтлатоацына",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char *text_DEC_09_CSA[POCET_JAZYKOV + 1] =
+{
+	"Sv. Petra Fouriera, kňaza",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"hu_text",
+	"ru_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_DEC_10_OFMCAP[POCET_JAZYKOV + 1] =

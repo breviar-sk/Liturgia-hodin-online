@@ -133,6 +133,7 @@ extern void _set_zalmy_vsetkych_svatych(short int modlitba);
 extern void _set_zalmy_najsv_mena_jezisovho_czop(short int modlitba);
 extern void _set_zalmy_najsv_mena_jezisovho_sk_ofm(short int modlitba);
 extern void _set_zalmy_cssr_titul(short int modlitba);
+extern void _set_zalmy_csa_augustin_obr(short int modlitba);
 extern void _set_zalmy_csa_augustin(short int modlitba);
 extern void _set_zalmy_sj_ignac(short int modlitba);
 extern void _set_zalmy_sj_vsetkych_svatych(short int modlitba);
@@ -787,6 +788,16 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
 	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
 	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_modlitba;\
+}
+
+#define _vlastna_cast_full_okrem_kcit_kresp(modl) {\
+	_vlastna_cast_hymnus(modl, _global_den.litobd);\
+	_vlastna_cast_antifony;\
+	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
+	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
+	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_prosby;\
 	_vlastna_cast_modlitba;\
 }
 
@@ -2103,8 +2114,8 @@ extern const char *text_JUL_14_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_13_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_16_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_21_OPRAEM[POCET_JAZYKOV + 1];
-extern const char *text_AUG_27_OPRAEM[POCET_JAZYKOV + 1];
-extern const char *text_AUG_28_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_AUG_27_AUG[POCET_JAZYKOV + 1];
+extern const char *text_AUG_28_AUG[POCET_JAZYKOV + 1];
 extern const char *text_AUG_30_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_12_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_18_OPRAEM[POCET_JAZYKOV + 1];
@@ -2186,8 +2197,6 @@ extern const char *text_NOV_28_CM[POCET_JAZYKOV + 1];
 
 // --------------- CSA propriá ---------------
 extern const char *text_JAN_09_CSA[POCET_JAZYKOV + 1];
-extern const char *text_AUG_27_CSA[POCET_JAZYKOV + 1];
-extern const char *text_AUG_28_CSA[POCET_JAZYKOV + 1];
 extern const char *text_DEC_09_CSA[POCET_JAZYKOV + 1];
 
 extern short int pocet_multi(char *_anchor, long type);
