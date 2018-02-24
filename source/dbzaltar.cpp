@@ -5216,7 +5216,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_set_kresponz(MODL_VESPERY, _file, _anchor);
 					set_LOG_litobd;
 					// magnifikat
-					sprintf(_anchor, "%s%d%s%c_%s%c",
+					sprintf(_anchor, "%s%d%s_%c%s%c",
 						nazov_OBD[litobd],
 						tyzden,
 						nazov_DN_asci[den],
@@ -5286,7 +5286,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 					// tieto závisia od dátumu (17. -- 24. december)
 					// antifóna na magnifikat
-					sprintf(_anchor, "%s%d%c_%s",
+					sprintf(_anchor, "%s%d_%c%s",
 						nazov_OBD[litobd],
 						_global_den.den - 1,
 						pismenko_modlitby(MODL_VESPERY),
@@ -5364,7 +5364,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					if (_global_den.den == 24) {
 						file_name_litobd(OBD_ADVENTNE_II);
 						// benediktus
-						sprintf(_anchor, "%s%d%c_%s",
+						sprintf(_anchor, "%s%d_%c%s",
 							nazov_OBD[litobd],
 							_global_den.den,
 							pismenko_modlitby(MODL_RANNE_CHVALY),
@@ -5394,7 +5394,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 						// treba brať ant. Nebojte sa resp. Hľa, splnilo sa; pre maďarskú LH je explicitne uvedené, že sa má brať ant. z príslušného dňa (HU LH, vol. I, p. 261)
 					}
 					else {
-						sprintf(_anchor, "%s%d%s%c_%s%c",
+						sprintf(_anchor, "%s%d%s_%c%s%c",
 							nazov_OBD[litobd],
 							tyzden,
 							nazov_DN_asci[den],

@@ -1177,11 +1177,7 @@ const short int supported_languages[POCET_JAZYKOV + 1] =
 // note 2: for calendars not yet published use '#if defined(DEBUG) || defined(OS_Windows_Ruby)' == code to be executed only for development (new calendars are added at the end of list supported_calendars_language[][])
 const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 {
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
 	10,
-#else
-	9,
-#endif
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 	6,
 #else

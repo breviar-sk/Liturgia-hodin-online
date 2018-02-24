@@ -19902,7 +19902,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_vlastna_cast_full(modlitba);
 
 				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_full(modlitba);
+				_vlastna_cast_full_okrem_kcit(modlitba);
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -20014,6 +20014,10 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
+
+				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CSA)) {
+					set_popis_dummy();
+				}
 
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_full(modlitba);

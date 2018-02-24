@@ -760,6 +760,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_vlastna_cast_modlitba;\
 }
 
+// _vlastna_cast_full_okrem_kcit == _vlastna_cast_full_okrem_1cit pre MODL_POSV_CITANIE
 #define _vlastna_cast_full_okrem_kcit(modl) {\
 	_vlastna_cast_hymnus(modl, _global_den.litobd);\
 	_vlastna_cast_antifony;\
