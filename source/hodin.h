@@ -530,7 +530,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "verbitás zsolozsmája"
 	, "агульны [Belarus]"
 	, "s vlastními františkánskými texty (OFM)"
-	, "pre kanonisky sv. Augustína rehole N. D. (CSA)"
+	, "pre kanonisky sv. Augustína Notre Dame (CSA)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -561,7 +561,7 @@ const char *nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "verbitás zsolozsmája"
 	, "агульны [Belarus]"
 	, "pro františkány (OFM)"
-	, "pre kanonisky ND (CSA)"
+	, "pre kanonisky Notre Dame (CSA)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -10999,7 +10999,7 @@ const char *text_AUG_28[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_28_AUG[POCET_JAZYKOV + 1] =
 {
-	"Nášho svätého otca Augustína, biskupa a učiteľa Cirkvi", // SK CSA
+	"Nášho otca sv. Augustína, biskupa a učiteľa Cirkvi", // SK CSA
 	"Našeho otce sv. Augustina, biskupa a učitele církve", // CZ OPraem
 	"",
 	"",
