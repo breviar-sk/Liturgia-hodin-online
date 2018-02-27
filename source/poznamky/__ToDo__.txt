@@ -81,3 +81,34 @@ Hymny pre 34. tıdeò Cezroèného obdobia sú tak špeciálne spravené (myslím implem
 
 _________________________________________________________________________
 
+2017-12-23, JUV:
+
+Peter Chodelka<peter.chodelka@gmail.com>
+
+Dopåòam svoje pozorovanie, zdá sa mi, e je problém v parametri "o2":
+"1. bit (2): zobrazi pre nedele a vybrané slávenia monos priamo v danı deò zvoli prvé vešpery"
+
+Keï dám to isté, len s tım 1. bitom:
+breviar.exe -qpbm -d1 -m12 -r2017 -f31 -g12 -p2018 -brobSK-sdb.bat -ksdb -jsk -nbreviar.exe -iinclude\ -usimple -M2 -00 -138303 -2226
+
+tak to spraví to, e pre iadnu sobotu nevygeneruje modlitby... :(
+
+2018-02-26, JUV:
+Fixed by # c5e86370 (batch mode: fix for generating prayers except vespers & compline for option BIT_OPT_2_BUTTON_PRVE_VESPERY) & # 119f1536 (batch mode: fix for generating prayers for first vespers & first compline for option BIT_OPT_2_BUTTON_PRVE_VESPERY)
+
+_________________________________________________________________________
+
+2018-01-01, JUV:
+
+ToDos for Android 2.* releases
+
+JUV: zjednodušenie preh¾adu mesiaca
+
+JUV: perspektívne všetko GET (volania)
+
+JUV: v tejto súvislosti: porieši POST dotazy, napr. Ordinárium, lebo potom nefunguje napr. stlaèenie noèného/denného reimu (button na action lište)
+
+JUV: skry tlaèidlá - dolnı # inı; schova vıber jazyka + z Nastavení niektoré ïalšie poloky, príp. do Android menu "slávi s vyšším stupòom"; doplni ved¾a "tento deò" aj "tento mesiac"; pre Android zruši ten ståpec
+
+_________________________________________________________________________
+

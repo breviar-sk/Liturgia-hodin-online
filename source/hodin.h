@@ -9196,19 +9196,6 @@ const char *text_JUL_08_OP[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_JUL_08_HU[POCET_JAZYKOV + 1] =
-{
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"A székesegyház felszentelése",
-	"ru_text",
-	"by_text",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
 const char *text_JUL_08_OFM[POCET_JAZYKOV + 1] =
 {
 	"",

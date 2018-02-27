@@ -1573,7 +1573,6 @@ extern const char *text_JUL_05_LA[POCET_JAZYKOV + 1];
 extern const char *text_JUL_05_SK_CZ[POCET_JAZYKOV + 1];
 extern const char *text_JUL_05_BY[POCET_JAZYKOV + 1];
 extern const char *text_JUL_06[POCET_JAZYKOV + 1];
-extern const char *text_JUL_08_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUL_09[POCET_JAZYKOV + 1];
 extern const char *text_JUL_11[POCET_JAZYKOV + 1];
 extern const char *text_JUL_13[POCET_JAZYKOV + 1];

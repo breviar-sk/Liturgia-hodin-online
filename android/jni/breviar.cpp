@@ -10979,24 +10979,28 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 		}
 		Log("export_fname_modl_str == %s...\n", export_fname_modl_str);
 
-		Log("a == %d, i == %d, zobrazit_mcd == %d...\n", a, i, zobrazit_mcd);
+		Log("a == %d, i == %d, zobrazit_mcd == %d; nie_su_vespery == %d...\n", a, i, zobrazit_mcd, nie_su_vespery);
 
 		// 2012-08-23: generovať modlitbu cez deň + kompletórium len ak nejde o ľubovoľnú spomienku (vtedy nemajú význam)
 		if (!((zobrazit_mcd == ANO) || (a == 0)) && (je_modlitba_cez_den(i) || je_kompletorium12(i))) {
 			Log("(generovať modlitbu cez deň + kompletórium len ak nejde o ľubovoľnú spomienku -- vtedy nemajú význam)\n");
 		}
 		else {
+			Log("execute_batch_command(): else vetva, nasleduje rozhodovanie, či generovať modlitbu: ...\n");
+
 			if ((_global_den.den == 1 || d_from_m_from_r_from == 1) && export_month_nova_modlitba == 1 && export_monthly_druh == 1) {
 				// pre prvého (resp. prvého v prvom mesiaci, ktorý nezačal prvého) musím vypísať aj názov modlitby
 				fprintf(batch_export_file, "\n" HTML_P_BEGIN "<b>%s</b>" HTML_LINE_BREAK, nazov_modlitby(i));
 				export_month_nova_modlitba = 0;
 			}
+
 			// 2011-03-23: upravené: negenerovať vešpery pre soboty, ak je nastavené isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)
 			// 2012-08-27: vešpery a kompletórium nemá zmysel zobrazovať, ak ide o sobotu a ďalšieho svätého (pri viacerých ľubovoľných spomienkach)
 			// 2013-06-27: pridané zátvorky okolo prvej podmienky, aby && v druhom riadku viazalo sa na obe "||" možnosti s "a"-čkom | breviar.cpp:9804: warning: suggest parentheses around '&&' within '||'
 			// 2013-09-30: namiesto prostej podmienky B:(zobrazit_mcd == ANO) použitá podmienená implikácia A => B (A:modlitba cez deň) vo forme (non A) OR B
+			// 2018-02-26: fix for generating prayers except vespers & compline for option BIT_OPT_2_BUTTON_PRVE_VESPERY
 			if (((a != PORADIE_PM_SOBOTA) || (a == PORADIE_PM_SOBOTA && (i != MODL_VESPERY && i != MODL_KOMPLETORIUM)))
-				&& !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery) && !(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR))
+				&& ((i != MODL_VESPERY && i != MODL_KOMPLETORIUM) || !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery) && !(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR)))
 				&& (
 				(/*non A*/ !(je_modlitba_cez_den(i)) || /*B*/(zobrazit_mcd == ANO))
 					|| (_global_den.denvt != DEN_SOBOTA)
@@ -11077,12 +11081,14 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 			}
 
 			Log("/* generujem: %d `%s'... */\n", i, nazov_modlitby(i));
+
 			// 2011-03-23: upravené: negenerovať vešpery pre soboty, ak je nastavené isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)
 			// 2012-08-27: vešpery a kompletórium nemá zmysel zobrazovať, ak ide o sobotu a ďalšieho svätého (pri viacerých ľubovoľných spomienkach)
 			// 2013-04-05: zavedené "nie_su_vespery" kvôli Bielej (veľkej) sobote
 			// 2013-09-30: namiesto prostej podmienky B:(zobrazit_mcd == ANO) použitá podmienená implikácia A => B (A:modlitba cez deň) vo forme (non A) OR B
+			// 2018-02-26: fix for generating prayers except vespers & compline for option BIT_OPT_2_BUTTON_PRVE_VESPERY
 			if (((a != PORADIE_PM_SOBOTA) || (a == PORADIE_PM_SOBOTA && (i != MODL_VESPERY && i != MODL_KOMPLETORIUM)))
-				&& !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery) && !(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR))
+				&& ((i != MODL_VESPERY && i != MODL_KOMPLETORIUM) || !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery) && !(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR)))
 				&& (
 				(/*non A*/ !(je_modlitba_cez_den(i)) || /*B*/(zobrazit_mcd == ANO))
 					|| (_global_den.denvt != DEN_SOBOTA)
@@ -14913,6 +14919,7 @@ void _main_batch_mode(
 	_struct_den_mesiac d_a_m;
 	short int d, m, r, p, pocet_dni_v_mes;
 	short int prveho_v_mesiaci = NIE;
+	short int max_modlitba = MODL_NEURCENA;
 
 	// rozparsovanie parametrov den, mesiac, rok
 	Log("--start(from)--\n");
@@ -15156,7 +15163,9 @@ void _main_batch_mode(
 							analyzuj_rok(r);
 							// m je 0--11 čiže MES_JAN až MES_DEC
 							for (m = (r == r_from ? m_from : MES_JAN); m <= (r == r_to ? m_to : MES_DEC); m++) {
+
 								Log("batch mode: rok %d, mesiac %d [%s]...\n", r, m + 1, nazov_mesiaca_asci(m));
+
 								// 2012-12-12: nie pre append (netreba vytvárať adresáre [mkdir] ani po nich chodiť [cd])
 								if (_global_opt_append != YES) {
 									if (som_dnu == ANO) {
@@ -15186,7 +15195,9 @@ void _main_batch_mode(
 									fprintf(batch_file, "cd \"%s\"\n", dir_name);
 									Log("cd \"%s\"\n", dir_name);
 								}// if(_global_opt_append != YES) -- nie pre append
+
 								som_dnu = ANO;
+
 								if (export_monthly_druh >= 2) {
 									Log("rozbor mesiaca pre export (%s %d)...\n", nazov_mesiaca(m), r);
 									// bez ohľadu na to, čo pre tento typ exportu bolo nastavené, použije sa z mesiaca vytvorený súbor; až teraz, keď je vygenerovaný príkaz pre vytvorenie mesiaca
@@ -15227,6 +15238,7 @@ void _main_batch_mode(
 										index_pre_mesiac_otvoreny = ANO;
 									}
 								}// else if(export_monthly_druh >= 2)
+
 								if (export_monthly_druh >= 2) {
 									// v rámci daného mesiaca ideme podľa dní, vnútri podľa modlitieb
 									// d je číslo 1 až max
@@ -15245,9 +15257,24 @@ void _main_batch_mode(
 											// EXPORT_DATE_FULL
 											sprintf(_global_export_navig_hore_day, FILENAME_EXPORT_DATE_FULL".htm", r, m + 1, d);
 										}
+
 										_export_rozbor_dna_mesiaca_batch(d, m + 1, r);
+
 										_rozbor_dna(d_a_m, r);
-										for (p = MODL_INVITATORIUM; p <= MODL_KOMPLETORIUM; p++) {
+
+										max_modlitba = MODL_KOMPLETORIUM;
+
+										// ToDo: this condition should be more precise
+										if ((_global_den.denvt == DEN_NEDELA) || (_global_den.typslav == SLAV_SLAVNOST)) {
+											max_modlitba = MODL_PRVE_VESPERY;
+										}
+
+										for (p = MODL_INVITATORIUM; p <= max_modlitba; p++) {
+
+											if (p == MODL_NEURCENA) {
+												continue;
+											}
+
 											Log("batch mode: rok %d, mesiac %d [%s], modlitba %s (%d), den %d...\n", r, m + 1, nazov_mesiaca_asci(m), nazov_modlitby(p), p, d);
 											_export_rozbor_dna_batch(EXPORT_DNA_JEDEN_DEN, p, (r == r_from && m == m_from && d == d_from) ? 1 : 0);
 										} // for p
@@ -15255,7 +15282,12 @@ void _main_batch_mode(
 								}// if(export_monthly_druh >= 2)
 								else {
 									// v rámci daného mesiaca ideme podľa modlitieb, až vnútri podľa dní
-									for (p = MODL_INVITATORIUM; p <= MODL_KOMPLETORIUM; p++) {
+									for (p = MODL_INVITATORIUM; p <= MODL_PRVE_VESPERY; p++) {
+
+										if (p == MODL_NEURCENA) {
+											continue;
+										}
+
 										Log("batch mode: rok %d, mesiac %d [%s], modlitba %s (%d)...\n", r, m + 1, nazov_mesiaca_asci(m), nazov_modlitby(p), p);
 										export_month_nova_modlitba = ANO; // toto je potrebné kvôli zmene podmienky vo funkcii execute_batch_command()
 										// d je číslo 1 až max
@@ -15267,8 +15299,13 @@ void _main_batch_mode(
 										for (d = ((r == r_from && m == m_from) ? d_from : 1); d <= ((r == r_to && m == m_to) ? d_to : pocet_dni_v_mes); d++) {
 											d_a_m.den = d;
 											Log("batch mode: rok %d, mesiac %d [%s], modlitba %s (%d), den %d...\n", r, m + 1, nazov_mesiaca_asci(m), nazov_modlitby(p), p, d);
+
 											_rozbor_dna(d_a_m, r);
-											_export_rozbor_dna_batch(EXPORT_DNA_JEDEN_DEN, p, (r == r_from && m == m_from && d == d_from) ? 1 : 0);
+
+											// ToDo: this condition should be more precise
+											if ((p < MODL_NEURCENA) || ((_global_den.denvt == DEN_NEDELA) || (_global_den.typslav == SLAV_SLAVNOST))) {
+												_export_rozbor_dna_batch(EXPORT_DNA_JEDEN_DEN, p, (r == r_from && m == m_from && d == d_from) ? 1 : 0);
+											}
 										}// for d
 									}
 								}// else if(export_monthly_druh >= 2)

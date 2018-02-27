@@ -14596,33 +14596,11 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 	case 8: // MES_JUL -- 08JUL
 
-		if (_global_jazyk == JAZYK_HU) {
-			if (poradie_svaty == 1) {
-				// definovanie parametrov pre modlitbu
-				if (query_type != PRM_DETAILY) {
-					set_spolocna_cast(sc, poradie_svaty);
-				}
-				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
-
-				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_2citanie;
-
-				break;
-			}
-
-			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 8); // miestne sviatky
-			_global_svaty1.typslav_lokal = LOKAL_SLAV_SZEGED_CSAN_EGYH;
-			mystrcpy(_global_svaty1.meno, text_JUL_08_HU[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
-			_global_svaty1.farba = LIT_FARBA_BIELA;
-			_global_svaty1.kalendar = KALENDAR_VSEOBECNY_HU;
-		}// HU only
-
 		if (((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_OFM))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM))
 			) {
 
-			pom_poradie = (_global_jazyk == JAZYK_HU) ? 2 : 1;
+			pom_poradie = 1;
 
 			if (poradie_svaty == pom_poradie) {
 
