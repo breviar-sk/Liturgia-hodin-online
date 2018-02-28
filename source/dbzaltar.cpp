@@ -10519,6 +10519,7 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_OZZ_9HYMNUS", 4 },
 	{ JAZYK_CZ, "CZ_OZZ_2HYMNUS", 4 },
 	{ JAZYK_CZ, "CZ_OZZ_3HYMNUS", 4 },
+	{ JAZYK_CZ, "POST1_cHYMNUS", 2 },
 	{ JAZYK_CZ, "POST1_rHYMNUS", 2 },
 	{ JAZYK_CZ, "POST1_9HYMNUS", 2 },
 	{ JAZYK_CZ, "POST1_2HYMNUS", 2 },

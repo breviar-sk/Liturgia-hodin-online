@@ -12725,7 +12725,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
 			mystrcpy(_global_svaty1.meno, text_JUN_15_HU[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
@@ -15536,6 +15536,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
+				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_1citanie;
@@ -15544,6 +15545,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
+				_set_zalmy_sviatok_sv_muzov(modlitba);
 
 				break;
 			}

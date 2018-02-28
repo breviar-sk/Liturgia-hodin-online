@@ -627,7 +627,7 @@ const char *nazov_slavenia_lokal[] =
 , "A Pécsi egyházmegyében"                                                                                       // LOKAL_SLAV_PECSI_EGYH
 , "A Pécsi egyházmegyében: az egyházmegye védőszentje; főünnep"                                                  // LOKAL_SLAV_PECSI_EGYH_PATRON
 , "A Szeged-Csanádi egyházmegye északi részében; ünnep"                                                          // LOKAL_SLAV_SZEGED_CSAN_EGYH
-, "A Veszprémi főegyházmegyében: Szent Anna, a főegyházmegye védőszentje; ünnep"                                 // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
+, "A Veszprémi főegyházmegyében: Szent Anna, a főegyházmegye védőszentje; főünnep"                               // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
 , "A Győri és Székesfehérvári egyházmegyében: az egyházmegye védőszentje"                                        // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH
 , "A Kaposvári egyházmegyében; ünnep"                                                                            // LOKAL_SLAV_KAPORSVAR_FELSZ
 , "A Váci egyházmegyében; ünnep"                                                                                 // LOKAL_SLAV_VACI_FELSZ
@@ -5145,7 +5145,7 @@ const char *text_JAN_22_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Boldog Batthyány-Stratmann László családapa",
+	"Boldog Batthyány-Strattmann László családapa",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6194,7 +6194,7 @@ const char *text_MAR_17_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"A Győri könnyező Szűz Mária",
+	"A győri Könnyező Szűz Mária",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6769,7 +6769,7 @@ const char *text_APR_29[POCET_JAZYKOV + 1] =
 	"S. Catharinæ Senensis, virg. et Eccl. doct.",
 	"",
 	"Sv. Kateřiny Sienské, panny a učitelky církve, " HTML_LINE_BREAK "patronky Evropy, terciářky",
-	"Sienai Szent Katalin szűz és egyháztanító",
+	"Sienai Szent Katalin szűz és egyháztanító, " HTML_LINE_BREAK "Európa társvédőszentje",
 	"ru_text",
 	"Св. Кацярыны Сіенскай, панны і доктара Касцёла, " HTML_LINE_BREAK "апякункі Еўропы",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -7708,7 +7708,7 @@ const char *text_MAJ_27[POCET_JAZYKOV + 1] =
 	"S. Augustini Cantuariensis, ep.",
 	"",
 	"Sv. Augustina z Canterbury, biskupa",
-	"Canterburyi Szent Ágoston püspök",
+	"Canterbury-i Szent Ágoston püspök",
 	"ru_text",
 	"Св. Аўгустына Кэнтэрберыйскага, біскупа",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -9497,7 +9497,7 @@ const char *text_JUL_16_CZ[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_17_SK[POCET_JAZYKOV + 1] =
 {
-	"Sv. Andreja-Svorada a Benedikta, pustovníkov",
+	"Sv. Andreja Svorada a Benedikta, pustovníkov", // od r. 2016 direktórium nepoužíva spojovník, kedysi: "Andreja-Svorada"
 	"",
 	"",
 	"",
@@ -9555,7 +9555,7 @@ const char *text_JUL_18_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Szent Hedvig királyné",
+	"Szent Hedvig királynő",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -9685,7 +9685,7 @@ const char *text_JUL_23[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Brigity, řeholnice, " HTML_LINE_BREAK "patronky Evropy",
-	"Szent Brigitta szerzetesnő",
+	"Szent Brigitta szerzetesnő, " HTML_LINE_BREAK "Európa társvédőszentje",
 	"ru_text",
 	"Св. Брыгіты, законніцы, апякункі Еўропы",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -10069,7 +10069,7 @@ const char *text_AUG_02_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Petra Juliána Eymarda, kněze",
-	"Szent Eymard Julián Péter áldozópap",
+	"Eymard Szent Julián Péter áldozópap",
 	"ru_text",
 	"Св. Пятра Юліяна Эймарда, прэзбітэра",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -12012,7 +12012,7 @@ const char *text_OKT_01[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Terezie od Dítěte Ježíše, panny a učitelky církve",
-	"A Gyermek Jézusról nevezett (Lisieux-i) Szent Teréz szűz",
+	"A Gyermek Jézusról nevezett (Lisieux-i) Szent Teréz szűz és egyháztanító",
 	"ru_text",
 	"Св. Тэрэзы ад Дзіцятка Езус, панны і доктара Касцёла",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13026,7 +13026,7 @@ const char *text_OKT_28[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Šimona a Judy, apoštolů",
-	"Szent Simon és Szent Júdás apostolok",
+	"Szent Simon és Szent Júdás Tádé apostolok",
 	"ru_text",
 	"Св. Сымона і Юды, апосталаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
