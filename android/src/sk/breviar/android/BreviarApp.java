@@ -13,6 +13,9 @@ import sk.breviar.android.CompatibilityHelper17;
 import sk.breviar.android.Util;
 
 public class BreviarApp extends Application {
+  public static final int NOTIFY_ALARM_ID = 1;
+  public static final int NOTIFY_TTS_ID = 2;
+
   static int eventId = 1;
 
   static public int getEventId() {

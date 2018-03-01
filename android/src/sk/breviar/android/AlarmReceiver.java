@@ -29,7 +29,7 @@ public class AlarmReceiver extends BroadcastReceiver {
               .putExtra("id", id), PendingIntent.FLAG_UPDATE_CURRENT);
 
         if (Build.VERSION.SDK_INT >= 26) {
-          CompatibilityHelper26.updateChannel(ctx);
+          CompatibilityHelper26.updateChannel(ctx, true);
         }
 
         NotificationManager notificator =
@@ -40,10 +40,10 @@ public class AlarmReceiver extends BroadcastReceiver {
         } else {
           icon = R.drawable.icon_transparent;
         }
-        notificator.notify(1, 
+        notificator.notify(BreviarApp.NOTIFY_ALARM_ID, 
           new NotificationCompat.Builder(ctx, "default")
-            .setContentTitle(ctx.getString(R.string.channel_name))
-            .setContentText(ctx.getString(Util.events[id].notify_text))
+            .setContentText(ctx.getString(R.string.channel_name))
+            .setContentTitle(ctx.getString(Util.events[id].notify_text))
             .setSmallIcon(icon)
             .setAutoCancel(true)
             .setContentIntent(pi)

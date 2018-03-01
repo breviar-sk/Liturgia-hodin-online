@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
@@ -14,7 +16,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
-import android.speech.tts.TextToSpeech;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -53,15 +54,15 @@ import sk.breviar.android.DialogActivity;
 import sk.breviar.android.HeadlessWebview;
 import sk.breviar.android.LangSelect;
 import sk.breviar.android.Server;
+import sk.breviar.android.TtsService;
 import sk.breviar.android.UrlOptions;
 import sk.breviar.android.Util;
+
 
 public class Breviar extends AppCompatActivity
                      implements GestureDetector.OnDoubleTapListener,
                                 ScaleGestureDetector.OnScaleGestureListener,
-                                NavigationView.OnNavigationItemSelectedListener,
-                                TextToSpeech.OnInitListener,
-                                TextToSpeech.OnUtteranceCompletedListener {
+                                NavigationView.OnNavigationItemSelectedListener {
     static String scriptname = "l.cgi";
 
     // Server singleton
@@ -69,6 +70,8 @@ public class Breviar extends AppCompatActivity
 
     DrawerLayout drawer;
     WebView wv;
+    String wv_title = null;
+    String wv_subtitle = "";
     int scale;
     String language;
     boolean initialized, clearHistory;
@@ -79,8 +82,6 @@ public class Breviar extends AppCompatActivity
     NavigationView navigationView = null;
     Toolbar toolbar = null;
 
-    HeadlessWebview headless;
-
     int appEventId = -1;
     PowerManager.WakeLock lock;
 
@@ -89,104 +90,27 @@ public class Breviar extends AppCompatActivity
     ScaleGestureDetector scale_gesture_detector;
     GestureDetector tap_gesture_detector;
 
-    TextToSpeech tts = null;
-    enum TTSState {
-      READY,
-      SPEAKING,
-      PAUSED
-    }
-    TTSState tts_state = TTSState.READY;
-    String[] tts_to_speak = null;
-    int tts_section;
-    int tts_start_pos;
-    int tts_end_pos;
+    TtsService.TtsState tts_state = TtsService.TtsState.READY;
+    class TtsStateReceiver extends BroadcastReceiver {
+      public TtsStateReceiver(Breviar parent_) {
+        parent = parent_;
+      }
 
-    @Override
-    public void onInit(int status) {
-      if (status == TextToSpeech.SUCCESS && tts_state != TTSState.READY && tts != null) {
-        tts.setOnUtteranceCompletedListener(this);
-        int ret = tts.setLanguage(BreviarApp.appLanguageToLocale(language));
-        Log.v("breviar", "setTTSLanguage: " + ret);
-
-        UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-        opts.setBlindFriendly(true);
-
-        String url = opts.getBuilder().encodedAuthority("127.0.0.1:" + S.port_nonpersistent)
-                         .build().toString();
-        Log.v("breviar", "Loading nonpersistent url " + url);
-
-        headless.LoadAndExecute(url,
-            "var x = document.querySelectorAll(\"h2,form\"); " +
-            "for (var i = 0; i < x.length; ++i) { " +
-            "  x[i].style.display = \"none\"; " +
-            "}; " +
-            "" +
-            "function getText(node, sections) {" +
-            "  if (node.nodeType == Node.TEXT_NODE) {" +
-            "    sections[sections.length - 1] += node.textContent;" +
-            "    return;" +
-            "  }" +
-            "  if (node.nodeType != Node.ELEMENT_NODE) {" +
-            "    return;" +
-            "  }" +
-            "  if (node.className == 'tts_section') {" +
-            "    sections.push(\"\");" +
-            "  }" +
-            "  if (window.getComputedStyle(node).display == 'none') {" +
-            "    return;" +
-            "  }" +
-            "  for (var i = 0; i < node.childNodes.length; ++i) {" +
-            "    getText(node.childNodes[i], sections);" +
-            "  }" +
-            "}" +
-            "" +
-            "function prune(sections) {" +
-            "  var pruned = [];" +
-            "  for (var i = 0; i < sections.length; ++i) {" +
-            "    sections[i] = sections[i].trim();" +
-            "    if (sections[i] != \"\") {" +
-            "      pruned.push(sections[i]);" +
-            "    }" +
-            "  }" +
-            "  return pruned;" +
-            "}" +
-            "" +
-            "var sections = [\"\"];" +
-            "getText(document.getElementById(\"contentRoot\"), sections);" +
-            "bridge.callback(prune(sections));",
-            new HeadlessWebview.Callback() {
-              public void run(String[] result) {
-                Log.v("breviar", "Got callback result");
-                if (tts_state == TTSState.READY) {
-                  return;
-                }
-                tts_to_speak = result;
-                tts_section = 0;
-                tts_start_pos = tts_end_pos = 0;
-                if (tts_state == TTSState.SPEAKING) {
-                  speakChunk();
-                }
-              }
-            });
-      } else {
-        Log.v("breviar", "TTS engine failed to initialize");
-        if (tts != null) {
-          tts.shutdown();
+      public void onReceive(Context context, Intent intent) {
+        if (intent != null) {
+          if (intent.getAction() != null) {
+            if (intent.getAction().equals(TtsService.TTS_UPDATE_ACTION)) {
+              tts_state = (TtsService.TtsState)intent.getSerializableExtra("state");
+              updateTtsState();
+            }
+          }
         }
-        tts = null;
-        tts_state = TTSState.READY;
-        tts_start_pos = tts_end_pos = 0;
       }
-    }
 
-    @Override
-    public void onUtteranceCompleted(String utteranceId) {
-      Log.v("breviar", "speaking completed");
-      tts_start_pos = tts_end_pos;
-      if (tts_state != TTSState.PAUSED) {
-        speakChunk();
-      }
-    }
+      Breviar parent;
+    };
+    TtsStateReceiver tts_receiver;
+
 
     void goHome() {
       Log.v("breviar", "goHome");
@@ -317,9 +241,8 @@ public class Breviar extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState) {
       Log.v("breviar", "onCreate");
 
+      tts_receiver = new TtsStateReceiver(this);
       appEventId = BreviarApp.getEventId();
-
-      headless = new HeadlessWebview(getApplicationContext());
 
       // Restore preferences
       SharedPreferences settings = getSharedPreferences(Util.prefname, 0);
@@ -490,24 +413,25 @@ public class Breviar extends AppCompatActivity
           parent.clearHistory = false;
           super.onPageFinished(view, url);
 
-          String title = null;
-          String subtitle = "";
-          String wv_title = wv.getTitle();
+          wv_title = null;
+          wv_subtitle = "";
+          String raw_title = wv.getTitle();
           // Hack: CGI module does not set title for some pages. Revert to app name then.
-          if (wv_title != null && !wv_title.contains("127.0.0.1")) {
-            String[] split_title = wv_title.split(" *\\| *", 2);
+          if (raw_title != null && !raw_title.contains("127.0.0.1")) {
+            String[] split_title = raw_title.split(" *\\| *", 2);
             if (split_title.length == 1) {
-              title = split_title[0];
+              wv_title = split_title[0];
             } else if (split_title.length == 2) {
-              title = split_title[1];
-              subtitle = split_title[0];
+              wv_title = split_title[1];
+              wv_subtitle = split_title[0];
             }
           }
-          if (title == null) {
-            title = getString(R.string.app_name);
+          if (wv_title == null) {
+            wv_title = getString(R.string.app_name);
           }
-          getSupportActionBar().setTitle(capitalize(title));
-          getSupportActionBar().setSubtitle(subtitle);
+          wv_title = capitalize(wv_title);
+          getSupportActionBar().setTitle(wv_title);
+          getSupportActionBar().setSubtitle(wv_subtitle);
 
           if (need_to_update_menu) {
             need_to_update_menu = false;
@@ -539,23 +463,7 @@ public class Breviar extends AppCompatActivity
         markVersion();
       }
 
-      int id = -1;
-      Intent intent = getIntent();
-      if (intent != null) {
-        String action = intent.getAction();
-        if (action != null) {
-          if (action.equals("sk.breviar.android.action.SHOW")) {
-            id = intent.getIntExtra("id", -1);
-          }
-        }
-      }
-
-      Log.v("breviar", "onCreate: intent id = " + id);
-
-      if (id >=0 && id < Util.events.length) {
-        wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname +
-                   "?qt=pdnes&p=" + Util.events[id].p + Html.fromHtml(S.getOpts()));
-      } else {
+      if (!handleIntent(getIntent())) {
         if (savedInstanceState == null) {
           goHome();
         } else {
@@ -587,11 +495,11 @@ public class Breviar extends AppCompatActivity
           return true;
 
         case R.id.speakBtn:
-          if (tts_state == TTSState.READY) {
+          if (tts_state == TtsService.TtsState.READY) {
             toggleSpeakState();
-          } else if (tts_state == TTSState.SPEAKING) {
+          } else if (tts_state == TtsService.TtsState.SPEAKING) {
             pauseSpeaking();
-          } else if (tts_state == TTSState.PAUSED) {
+          } else if (tts_state == TtsService.TtsState.PAUSED) {
             resumeSpeaking();
           }
           return true;
@@ -611,6 +519,7 @@ public class Breviar extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.breviar_toolbar_menu, menu);
+        updateTtsState();
         return true;
     }
 
@@ -688,12 +597,15 @@ public class Breviar extends AppCompatActivity
         }
         if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
       }
+      registerReceiver(tts_receiver, new IntentFilter(TtsService.TTS_UPDATE_ACTION));
+      startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_REQUEST_UPDATE));
       super.onResume();
     }
 
     @Override
     protected void onPause() {
       super.onPause();
+      unregisterReceiver(tts_receiver);
       if (resumed) {
         resumed = false;
         if (BreviarApp.getDimLock(getApplicationContext())) {
@@ -711,22 +623,27 @@ public class Breviar extends AppCompatActivity
       }
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-      int id = -1;
+    // Return if the intent loaded a page.
+    boolean handleIntent(Intent intent) {
       if (intent != null) {
         if (intent.getAction() != null) {
           if (intent.getAction().equals("sk.breviar.android.action.SHOW")) {
-            id = intent.getIntExtra("id", -1);
+            int id = intent.getIntExtra("id", -1);
+            if (id >=0 && id < Util.events.length) {
+              wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname +
+                         "?qt=pdnes&p=" + Util.events[id].p + Html.fromHtml(S.getOpts()));
+              return true;
+            }
           }
         }
       }
-      Log.v("breviar", "onNewIntent: id = " + id);
+      return false;
+    }
 
-      if (id >=0 && id < Util.events.length) {
-        wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname +
-                   "?qt=pdnes&p=" + Util.events[id].p + Html.fromHtml(S.getOpts()));
-      }
+    @Override
+    protected void onNewIntent(Intent intent) {
+      Log.v("breviar", "onNewIntent");
+      handleIntent(intent);
     }
 
     protected void onSaveInstanceState(Bundle outState) {
@@ -852,125 +769,7 @@ public class Breviar extends AppCompatActivity
       }
     }
 
-    void stopSpeaking() {
-      tts_to_speak = null;
-      try {
-        if (tts != null) {
-          tts.stop();
-        }
-        if (tts != null) {
-          tts.shutdown();
-        }
-      } catch (java.lang.NullPointerException e) {
-        Log.v("breviar", "ignoring unexpected null pointer exception from TTS");
-      }
-      tts = null;
-      tts_state = TTSState.READY;
-      tts_start_pos = tts_end_pos = 0;
-      runOnUiThread(new Runnable() {
-        public void run() {
-          updateTTSState();
-        }
-      });
-    }
-
-    int findTTSSplit(String chunk) {
-      for (int i = 0; i < chunk.length(); ++i) {
-        // TODO(riso): Implement double buffering for TTS and make this more
-        // fine-grained.
-        if (chunk.charAt(i) == '.' || chunk.charAt(i) == '!' ||
-            chunk.charAt(i) == '?' || // chunk.charAt(i) == ',' ||
-            chunk.charAt(i) == ':' ) {
-          if (i == chunk.length() - 1) {
-            return i + 1;
-          } else if (Character.isWhitespace(chunk.charAt(i + 1))) {
-            return i + 2;
-          }
-        }
-      }
-      return chunk.length();
-    }
-
-    void speakChunk() {
-      if (tts_state == TTSState.READY || tts_to_speak == null) {
-        tts_to_speak = null;
-        return;
-      }
-      tts_state = TTSState.SPEAKING;
-      if (tts_section >= tts_to_speak.length) {
-        Log.v("breviar", "speak chunk: finished");
-        tts.shutdown();
-        tts = null;
-        tts_state = TTSState.READY;
-        tts_to_speak = null;
-        tts_start_pos = tts_end_pos = 0;
-        runOnUiThread(new Runnable() {
-          public void run() {
-            updateTTSState();
-          }
-        });
-        return;
-      } 
-
-      if (tts_start_pos >= tts_to_speak[tts_section].length()) {
-        tts_start_pos = tts_end_pos = 0;
-        tts_section++;
-        speakChunk();
-        return;
-      }
-
-      String chunk = tts_to_speak[tts_section].substring(tts_start_pos);
-      int split = findTTSSplit(chunk);
-      if (split > 1000) {
-        split = 1000;
-        Log.v("breviar", "Cannot split chunk at sentence boundary.");
-      }
-
-      chunk = chunk.substring(0, split);
-      tts_end_pos = tts_start_pos + split;
-
-      HashMap<String, String> params = new HashMap<String, String>();
-      params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "id");
-      Log.v("breviar", "speak chunk: speaking " + chunk);
-      tts.speak(chunk, TextToSpeech.QUEUE_FLUSH, params);
-    }
-
-    void startSpeaking() {
-      tts_state = TTSState.SPEAKING;
-      tts_start_pos = tts_end_pos = 0;
-      tts = new TextToSpeech(this, this);
-      updateTTSState();
-    }
-
-    void pauseSpeaking() {
-      tts_state = TTSState.PAUSED;
-      updateTTSState();
-    }
-
-    void resumeSpeaking() {
-      if (tts_start_pos != tts_end_pos) {
-        return;
-      }
-      speakChunk();
-      updateTTSState();
-    }
-
-    void speakBack() {
-      if (tts_state == TTSState.READY || tts_to_speak == null) return;
-      tts_start_pos = tts_end_pos = 0;
-      if (tts_section > 0) {
-        tts_section--;
-      }
-    }
-
-    void speakForward() {
-      if (tts_state == TTSState.READY || tts_to_speak == null ) return;
-      if (tts_section == tts_to_speak.length - 1) return;
-      tts_start_pos = tts_end_pos = 0;
-      tts_section++;
-    }
-
-    void updateTTSState() {
+    void updateTtsState() {
       Log.v("breviar", "updating speak toggle menu label");
       MenuItem drawer_item = navigationView.getMenu().findItem(R.id.speak_toggle);
       MenuItem action_item = toolbar.getMenu().findItem(R.id.speakBtn);
@@ -983,8 +782,10 @@ public class Breviar extends AppCompatActivity
           drawer_item.setTitle(R.string.tts_ready);
           drawer_item.setIcon(R.drawable.ic_volume_up_white_24dp);
 
-          action_item.setTitle(R.string.tts_ready);
-          action_item.setIcon(R.drawable.ic_volume_up_white_24dp);
+          if (action_item != null) {
+            action_item.setTitle(R.string.tts_ready);
+            action_item.setIcon(R.drawable.ic_volume_up_white_24dp);
+          }
 
           drawer_item_pause.setVisible(false);
           drawer_item_back.setVisible(false);
@@ -994,8 +795,10 @@ public class Breviar extends AppCompatActivity
           drawer_item.setTitle(R.string.tts_speaking);
           drawer_item.setIcon(R.drawable.ic_volume_off_white_24dp);
 
-          action_item.setTitle(R.string.tts_pause);
-          action_item.setIcon(R.drawable.ic_pause_white_24dp);
+          if (action_item != null) {
+            action_item.setTitle(R.string.tts_pause);
+            action_item.setIcon(R.drawable.ic_pause_white_24dp);
+          }
 
           drawer_item_pause.setVisible(true);
           drawer_item_pause.setTitle(R.string.tts_pause);
@@ -1008,8 +811,10 @@ public class Breviar extends AppCompatActivity
           drawer_item.setTitle(R.string.tts_speaking);
           drawer_item.setIcon(R.drawable.ic_volume_off_white_24dp);
 
-          action_item.setTitle(R.string.tts_resume);
-          action_item.setIcon(R.drawable.ic_play_arrow_white_24dp);
+          if (action_item != null) {
+            action_item.setTitle(R.string.tts_resume);
+            action_item.setIcon(R.drawable.ic_play_arrow_white_24dp);
+          }
 
           drawer_item_pause.setVisible(true);
           drawer_item_pause.setTitle(R.string.tts_resume);
@@ -1021,13 +826,45 @@ public class Breviar extends AppCompatActivity
       }
     }
 
+    void startSpeaking() {
+      UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
+      opts.setBlindFriendly(true);
+      String url = opts.getBuilder().encodedAuthority("127.0.0.1:" + S.port_nonpersistent)
+                       .build().toString();
+
+      startService(new Intent().setClass(this, TtsService.class)
+                               .setAction(TtsService.TTS_START)
+                               .putExtra("language", language)
+                               .putExtra("url", url)
+                               .putExtra("url_title", (wv_title == null ? getString(R.string.app_name) : wv_title)));
+    }
+
+    void stopSpeaking() {
+      startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_STOP));
+    }
+
+    void pauseSpeaking() {
+      startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_PAUSE));
+    }
+
+    void resumeSpeaking() {
+      startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_RESUME));
+    }
+
+    void speakForward() {
+      startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_FORWARD));
+    }
+
+    void speakBack() {
+      startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_BACK));
+    }
+
     void toggleSpeakState() {
-      if (tts_state != TTSState.READY) {
+      if (tts_state != TtsService.TtsState.READY) {
         stopSpeaking();
       } else {
         startSpeaking();
       }
-      updateTTSState();
     }
 
     void toggleNightMode() {
@@ -1102,12 +939,11 @@ public class Breviar extends AppCompatActivity
           break;
 
         case R.id.speak_pause_toggle:
-          if (tts_state == TTSState.SPEAKING) {
+          if (tts_state == TtsService.TtsState.SPEAKING) {
             pauseSpeaking();
-          } else if (tts_state == TTSState.PAUSED) {
+          } else if (tts_state == TtsService.TtsState.PAUSED) {
             resumeSpeaking();
           }
-          updateTTSState();
           break;
 
         case R.id.speak_back:

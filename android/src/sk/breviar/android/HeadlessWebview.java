@@ -60,4 +60,17 @@ public class HeadlessWebview {
     client_callback = callback;
     wv.loadUrl(url);
   }
+
+  public String GetTitle() {
+    String wv_title = wv.getTitle();
+    if (wv_title != null && !wv_title.contains("127.0.0.1")) {
+      String[] split_title = wv_title.split(" *\\| *", 2);
+      if (split_title.length == 1) {
+        return split_title[0];
+      } else if (split_title.length == 2) {
+        return split_title[1];
+      }
+    }
+    return null;
+  }
 }
