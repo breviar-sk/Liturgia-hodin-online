@@ -9,10 +9,10 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 
 import java.io.File;
@@ -26,9 +26,7 @@ import sk.breviar.android.BreviarApp;
 // TODO: handle exceptions.
 
 public class TtsService extends Service
-                        implements MediaPlayer.OnCompletionListener,
-                                   TextToSpeech.OnInitListener,
-                                   TextToSpeech.OnUtteranceCompletedListener {
+                        implements TextToSpeech.OnInitListener {
   // Public commands:
   // Contains TtsState `state` as serializable extra.
   public static final String TTS_UPDATE_ACTION = "sk.breviar.android.action.TTS_UPDATE";
@@ -66,7 +64,6 @@ public class TtsService extends Service
   static final String TTS_INIT_FAILED = "TTS_INIT_FAILED";
   static final String GOT_TEXT = "GOT_TEXT";
   static final String SYNTHESIS_DONE = "SYNTHESIS_DONE";
-  static final String PLAY_DONE = "PLAY_DONE";
   static final String IDLE_PROCESSING = "IDLE_PROCESSING";
 
   // Internal state.
@@ -75,12 +72,9 @@ public class TtsService extends Service
     INITIALIZING_TTS,
     GETTING_TEXT,
     START_SECTION,
-    SYNTHESIZING,
-    SYNTHESIZING_AND_PLAYING,
     PLAYING,
-    SYNTHESIZING_AND_PAUSED,
     PAUSED,
-    PAUSED_AFTER_COMPLETED,
+    PAUSING,
     REJECT
   }
   State state = State.IDLE;
@@ -88,8 +82,6 @@ public class TtsService extends Service
   TtsState publicState() {
     if (state == State.IDLE) return TtsState.READY;
     if (state == State.PAUSED) return TtsState.PAUSED;
-    if (state == State.SYNTHESIZING_AND_PAUSED) return TtsState.PAUSED;
-    if (state == State.PAUSED_AFTER_COMPLETED) return TtsState.PAUSED;
     return TtsState.SPEAKING;
   }
 
@@ -226,9 +218,6 @@ public class TtsService extends Service
     if (headless == null) {
       headless = new HeadlessWebview(getApplicationContext());
     }
-    if (player == null) {
-      player = new MediaPlayer();
-    }
 
     // Log.v("breviar", "TtsService: got intent");
     if (intent != null) {
@@ -254,22 +243,11 @@ public class TtsService extends Service
     }
   }
 
-  @Override
-  public void onUtteranceCompleted(String utteranceId) {
-    processAction(new Intent(SYNTHESIS_DONE));
-  }
-
-  @Override
-  public void onCompletion(MediaPlayer mp) {
-    processAction(new Intent(PLAY_DONE));
-  }
-
   Intent pending_action = null;        // pending action from clients.
 
   // State variables:
 
-  // `player` and `headless` are not null whenever the service is running.
-  MediaPlayer player = null;           // in initialized state <=> internal_state > SETTING_UP_PLAYER
+  // `headless` is not null whenever the service is running.
   HeadlessWebview headless = null;
 
   // Objects below are valid <=> not null.
@@ -278,12 +256,9 @@ public class TtsService extends Service
   String language = null;              // valid <=> internal_state > IDLE
   TextToSpeech tts = null;             // valid <=> internal_state > IDLE
   String[] sections = null;            // valid <=> internal_state > GETTING_TEXT
-  int tts_section;                     // valid <=> internal_state > GETTING_TEXT
-  int synthesized_begin;               // valid <=> internal_state > START_SECTION
-  int synthesized_end;                 // valid <=> internal_state > START_SECTION
-  File synthesized_file = null;        // valid <=> internal_state in {SYNTHESIZING*} or (in {PLAYING,PAUSED,PAUSED_AFTER_COMPLETED} and sythesized_begin < synthesized_end)
-  File played_file = null;             // valid <=> internal_state in {*PLAYING, *PAUSED}
-  FileInputStream played_fd = null;    // same as played_file
+  int section;                         // valid <=> internal_state > GETTING_TEXT
+  Vector<String> chunks = null;        // valid <=> internal_state > START_SECTION
+  int chunk;                           // valid <=> internal_state > START_SECTION
 
   // Transition function:
 
@@ -329,7 +304,7 @@ public class TtsService extends Service
       case GETTING_TEXT:
         switch (action.getAction()) {
           case GOT_TEXT:
-            // sections and tts_section were initialized in HeadlessWebview
+            // sections and section were initialized in HeadlessWebview
             // callback
             return state.START_SECTION;
           default:
@@ -347,23 +322,23 @@ public class TtsService extends Service
             return State.IDLE;
 
           case TTS_FORWARD:
-            if (tts_section < sections.length - 1) {
-              ++tts_section;
+            if (section < sections.length - 1) {
+              ++section;
             }
             return State.START_SECTION;
 
           case TTS_BACK:
-            if (tts_section > 0) {
-              --tts_section;
+            if (section > 0) {
+              --section;
             }
             return State.START_SECTION;
 
           case IDLE_PROCESSING:
-            while (tts_section < sections.length &&
-                   sections[tts_section].length() == 0) {
-              ++tts_section;
+            while (section < sections.length &&
+                   sections[section].length() == 0) {
+              ++section;
             }
-            if (tts_section >= sections.length) {
+            if (section >= sections.length) {
               sections = null;
               shutdownTts();
               url = null;
@@ -371,20 +346,8 @@ public class TtsService extends Service
               language = null;
               return State.IDLE;
             }
-            synthesized_begin = 0;
-            // setups synthesized_end and synthesized_file
+            initializeChunks();
             startSynthesis();
-            return State.SYNTHESIZING;
-
-          default:
-            return State.REJECT;
-        }
-
-      case SYNTHESIZING:
-        switch (action.getAction()) {
-          case SYNTHESIS_DONE:
-            // setup synthesized_begin, synthesized_file, and played*
-            startPlaying();
             return State.PLAYING;
 
           default:
@@ -392,139 +355,23 @@ public class TtsService extends Service
         }
 
       case PLAYING:
-        switch (action.getAction()) {
-          case TTS_STOP:
-            player.reset();
-            deletePlayedFile();
-            if (synthesized_begin < synthesized_end) {
-              deleteSynthesizedFile();
-            }
-            sections = null;
-            shutdownTts();
-            language = null;
-            url = null;
-            url_title = null;
-            return State.IDLE;
-
-          case TTS_PAUSE:
-            player.pause();
-            return State.PAUSED;
-
-          case TTS_FORWARD:
-          case TTS_BACK:
-            return ForwardOrBackwardFromPlayingOrPaused(action.getAction());
-
-          case PLAY_DONE:
-            player.reset();
-            deletePlayedFile();
-
-            if (synthesized_begin < synthesized_end)  {
-              startPlaying();
-              return State.PLAYING;
-            }
-
-            if (synthesized_end == sections[tts_section].length()) {
-              ++tts_section;
-              return State.START_SECTION;
-            }
-
-            startSynthesis();
-            return State.SYNTHESIZING;
-
-          case IDLE_PROCESSING:
-            if (synthesized_begin < synthesized_end ||
-                synthesized_end == sections[tts_section].length()) {
-              return State.REJECT;
-            }
-            startSynthesis();
-            return State.SYNTHESIZING_AND_PLAYING;
-
-          default:
-            return State.REJECT;
-        }
-
-      case SYNTHESIZING_AND_PLAYING:
-        switch (action.getAction()) {
-          case TTS_PAUSE:
-            player.pause();
-            return State.SYNTHESIZING_AND_PAUSED;
-
-          case SYNTHESIS_DONE:
-            return State.PLAYING;
-
-          case PLAY_DONE:
-            player.reset();
-            deletePlayedFile();
-            return State.SYNTHESIZING;
-
-          default:
-            return State.REJECT;
-        }
-
-      case SYNTHESIZING_AND_PAUSED:
-        switch (action.getAction()) {
-          case TTS_RESUME:
-            player.start();
-            return State.SYNTHESIZING_AND_PLAYING;
-
-          case SYNTHESIS_DONE:
-            return State.PAUSED;
-
-          case PLAY_DONE:
-            player.reset();
-            deletePlayedFile();
-            return State.SYNTHESIZING;
-
-          default:
-            return State.REJECT;
-        }
-
       case PAUSED:
         switch (action.getAction()) {
-          case TTS_STOP:
-            player.reset();
-            deletePlayedFile();
-            if (synthesized_begin < synthesized_end) {
-              deleteSynthesizedFile();
-            }
-            sections = null;
-            shutdownTts();
-            language = null;
-            url = null;
-            url_title = null;
-            return State.IDLE;
-
-          case TTS_RESUME:
-            player.start();
-            return State.PLAYING;
-
-          case TTS_FORWARD:
-          case TTS_BACK:
-            return ForwardOrBackwardFromPlayingOrPaused(action.getAction());
-
-          case PLAY_DONE:
-            player.reset();
-            deletePlayedFile();
-            return State.PAUSED_AFTER_COMPLETED;
+          case SYNTHESIS_DONE:
+            ++chunk;
+            return state;
 
           case IDLE_PROCESSING:
-            if (synthesized_begin < synthesized_end ||
-                synthesized_end == sections[tts_section].length()) {
-              return State.REJECT;
+            if (chunk >= chunks.size()) {
+              chunks = null;
+              ++section;
+              return State.START_SECTION;
             }
-            startSynthesis();
-            return State.SYNTHESIZING_AND_PAUSED;
-
-          default:
             return State.REJECT;
-        }
 
-      case PAUSED_AFTER_COMPLETED:
-        switch (action.getAction()) {
           case TTS_STOP:
-            if (synthesized_begin < synthesized_end) {
-              deleteSynthesizedFile();
-            }
+            if (state == State.PLAYING) tts.stop();
+            chunks = null;
             sections = null;
             shutdownTts();
             language = null;
@@ -532,37 +379,37 @@ public class TtsService extends Service
             url_title = null;
             return State.IDLE;
 
+          case TTS_PAUSE:
+            if (state == State.PLAYING) {
+              tts.stop();
+              return State.PAUSED;
+            } else {
+              return State.REJECT;
+            }
+
           case TTS_RESUME:
-            if (synthesized_begin < synthesized_end)  {
-              startPlaying();
+            if (state == State.PAUSED) {
+              startSynthesis();
               return State.PLAYING;
+            } else {
+              return State.REJECT;
             }
-
-            if (synthesized_end == sections[tts_section].length()) {
-              // This will start playing.
-              ++tts_section;
-              return State.START_SECTION;
-            }
-
-            startSynthesis();
-            return State.SYNTHESIZING;
 
           case TTS_FORWARD:
           case TTS_BACK:
             if (action.getAction() == TTS_FORWARD) {
-              if (tts_section >= sections.length) {
+              if (section >= sections.length) {
                 return State.REJECT;
               }
-              ++tts_section;
+              ++section;
             } else {
-              if (tts_section <= 0) {
+              if (section <= 0) {
                 return State.REJECT;
               }
-              --tts_section;
+              --section;
             }
-            if (synthesized_begin < synthesized_end) {
-              deleteSynthesizedFile();
-            }
+            if (state == State.PLAYING) tts.stop();
+            chunks = null;
             return State.START_SECTION;
 
           default:
@@ -585,7 +432,17 @@ public class TtsService extends Service
   }
 
   void requestText() {
-    tts.setOnUtteranceCompletedListener(this);
+    tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+      @Override
+      public void onDone(String utteranceId) {
+        processAction(new Intent(SYNTHESIS_DONE));
+      }
+      @Override
+      public void onError(String utteranceId) {}
+      @Override
+      public void onStart(String utteranceId) {}
+    });
+
     int ret = tts.setLanguage(BreviarApp.appLanguageToLocale(language));
     Log.v("breviar", "setTTSLanguage: " + ret);
 
@@ -631,38 +488,36 @@ public class TtsService extends Service
         "bridge.callback(prune(sections));",
         new HeadlessWebview.Callback() {
           public void run(String[] result) {
-            Log.v("breviar", "Got callback result");
+            // Log.v("breviar", "Got callback result");
             for (int i = 0; i < result.length; ++i) {
               result[i] = result[i].replace('\n', ' ');
             }
             sections = result;
-            tts_section = 0;
+            section = 0;
             processAction(new Intent(GOT_TEXT));
           }
         });
   }
 
-  // Requires synthesized_begin < sections[tts_section].length
-  // Setups synthesized_end and synthesized_file
+  void initializeChunks() {
+    chunks = new Vector<String>();
+    int pos = 0;
+    while (pos < sections[section].length()) {
+      int new_pos = findTtsSplit(sections[section], pos);
+      chunks.add(sections[section].substring(pos, new_pos));
+      pos = new_pos;
+    }
+    chunk = 0;
+  }
+
   void startSynthesis() {
-    if (synthesized_begin >= sections[tts_section].length()) {
-      Log.v("breviar", "startSynthesis(): invariant violated");
-    }
-    synthesized_end = findTtsSplit(sections[tts_section], synthesized_begin);
-    try {
-      synthesized_file = File.createTempFile("speech", ".wav", null);
-    } catch (IOException e) {
-      Log.v("breviar", "Cannot create temp file");
-    }
+    for (int i = chunk; i < chunks.size(); ++i) {
+      HashMap<String, String> params = new HashMap<String, String>();
+      params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "id" + new java.lang.Integer(i).toString());
 
-    HashMap<String, String> params = new HashMap<String, String>();
-    params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "id");
-
-    String chunk_text = sections[tts_section].substring(
-                            synthesized_begin, synthesized_end);
-    Log.v("breviar", "render chunk: " + chunk_text);
-    tts.synthesizeToFile(chunk_text, params,
-                         synthesized_file.getAbsolutePath());
+      Log.v("breviar", "TTS chunk: " + chunks.elementAt(i));
+      tts.speak(chunks.elementAt(i), TextToSpeech.QUEUE_ADD, params);
+    }
   }
 
   int findTtsSplit(String chunk, int pos) {
@@ -673,68 +528,11 @@ public class TtsService extends Service
         if (i == chunk.length() - 1) {
           return i + 1;
         } else if (Character.isWhitespace(chunk.charAt(i + 1))) {
-          if (chunk.charAt(i) != ',' || i - pos > 100) {
-            return i + 2;
-          }
+          return i + 2;
         }
       }
     }
     return chunk.length();
-  }
-
-  void deletePlayedFile() {
-    try {
-      played_fd.close();
-      played_file.delete();
-    } catch (IOException e) {
-      Log.v("breviar", "Cannot close fd");
-    }
-  }
-
-  void deleteSynthesizedFile() {
-    synthesized_file.delete();
-  }
-
-  // Start to play the freshly synthesized file.
-  // Setup synthesized_begin, synthesized_file, and played*
-  void startPlaying() {
-    synthesized_begin = synthesized_end;
-    played_file = synthesized_file;
-    synthesized_file = null;
-    try {
-      played_fd = new FileInputStream(played_file);
-    } catch (IOException e) {
-      Log.v("breviar", "Cannot open " + played_file.getAbsolutePath());
-    }
-
-    try {
-      player.setDataSource(played_fd.getFD());
-      player.prepare();
-    } catch (IOException e) {
-      Log.v("breviar", "Cannot set data source");
-    }
-    player.setOnCompletionListener(this);
-    player.start();
-  }
-
-  State ForwardOrBackwardFromPlayingOrPaused(String action) {
-    if (action == TTS_FORWARD) {
-      if (tts_section >= sections.length) {
-        return State.REJECT;
-      }
-      ++tts_section;
-    } else {
-      if (tts_section <= 0) {
-        return State.REJECT;
-      }
-      --tts_section;
-    }
-    player.reset();
-    deletePlayedFile();
-    if (synthesized_begin < synthesized_end) {
-      deleteSynthesizedFile();
-    }
-    return State.START_SECTION;
   }
 
   @Override
