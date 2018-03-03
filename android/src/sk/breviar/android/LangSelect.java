@@ -19,6 +19,12 @@ public class LangSelect extends SettingsActivity {
         act.finish();
       }
     });
+    handleClick(R.id.lang_c2, new Runnable() {
+      public void run() {
+        act.setResult(RESULT_OK, new Intent().putExtra("lang", "c2"));
+        act.finish();
+      }
+    });
     handleClick(R.id.lang_hu, new Runnable() {
       public void run() {
         act.setResult(RESULT_OK, new Intent().putExtra("lang", "hu"));

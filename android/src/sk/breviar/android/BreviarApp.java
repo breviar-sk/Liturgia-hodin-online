@@ -43,7 +43,7 @@ public class BreviarApp extends Application {
   }
 
   static Locale appLanguageToLocale(String lang) {
-    if (lang.equals("cz")) lang = "cs";
+    if (lang.equals("cz") || lang.equals("c2")) lang = "cs";
     return new Locale(lang);
   }
 

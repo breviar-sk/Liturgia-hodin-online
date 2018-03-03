@@ -1982,7 +1982,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						DetailLog("\tfnrefrest == %s\n", fnrefrest);
 						if (/* (fnrefrest != NULL) &&  */!(equals(fnrefrest, STR_EMPTY))) {
 							if (EXPORT_FOOTNOTES) {
-								Export("%s", fnrefrest);
+								Export("%s", convert_nonbreaking_spaces(fnrefrest));
 							}
 						}
 						if (EXPORT_FOOTNOTES) {
@@ -2025,11 +2025,11 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							if (EXPORT_FOOTNOTES) {
 								Export(HTML_A_NAME_BEGIN"\"fn%s\">", fnrest);
 								Export(HTML_A_END);
-								Export("<sup>%s</sup>&nbsp;", fnrest);
+								Export("<sup>%s</sup>" HTML_NONBREAKING_SPACE, fnrest);
 							}
 						}
 						if (EXPORT_FOOTNOTES) {
-							Export("%s", fnbuff);
+							Export("%s", convert_nonbreaking_spaces(fnbuff));
 						}
 
 					}
@@ -2079,7 +2079,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							if (!(equals(fnrest, STR_EMPTY))) {
 								Export("%s ", fnrest);
 							}
-							Export("%s", fnbuff);
+							Export("%s", convert_nonbreaking_spaces(fnbuff));
 						}
 					}
 
@@ -2132,14 +2132,14 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							if (vnutri_footnote == ANO) {
 								Export(HTML_A_NAME_BEGIN "\"fn%s\">", fnrest);
 								Export(HTML_A_END);
-								Export("<sup>%s</sup>&nbsp;", fnrest);
+								Export("<sup>%s</sup>" HTML_NONBREAKING_SPACE, fnrest);
 							}
 							else if (vnutri_note == ANO) {
 								Export("%s ", fnrest);
 							}
 
 							fnbuff[fn_index] = '\0';
-							Export("%s", fnbuff);
+							Export("%s", convert_nonbreaking_spaces(fnbuff));
 
 							strcpy(fnrest, STR_EMPTY);
 							strcpy(fnbuff, STR_EMPTY);
@@ -2220,7 +2220,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 					}
 					if (EXPORT_REFERENCIA) {
-						Export("%s", refbuff);
+						Export("%s", convert_nonbreaking_spaces(refbuff));
 					}
 					if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)) {
 						if (EXPORT_REFERENCIA) {
@@ -2272,7 +2272,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						if (/* (katrest != NULL) && */ !(equals(katrest, STR_EMPTY))) {
 							// [ToDo]: doplniť nevypisovanie katbuff, ak katrest obsahuje medzeru (prevzaté z časti pre referencie)
 							if (EXPORT_REFERENCIA) {
-								Export("%s", katrest);
+								Export("%s", convert_nonbreaking_spaces(katrest));
 							}
 						}// načítanie na začiatok referencie
 						if (EXPORT_REFERENCIA) {
@@ -2370,7 +2370,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 						Export(" " HTML_CLASS_QUIET ">");
 #endif
-						Export("%s", z95buff);
+						Export("%s", convert_nonbreaking_spaces(z95buff));
 #ifdef BEHAVIOUR_WEB
 						Export(HTML_A_END);
 						Export(HTML_SPAN_END"\n");

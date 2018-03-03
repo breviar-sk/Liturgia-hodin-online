@@ -8,6 +8,10 @@
           android:title="@string/lang_cz"
     />
 
+    <item android:id="@+id/lang_c2"
+          android:title="@string/lang_c2"
+    />
+
     <item android:id="@+id/lang_hu"
           android:title="@string/lang_hu"
     />

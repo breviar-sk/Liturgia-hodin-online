@@ -1158,11 +1158,7 @@ const short int supported_languages[POCET_JAZYKOV + 1] =
 	0,
 #endif
 	0, // JAZYK_UNDEF
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
-	1, // JAZYK_CZ_OP -- only for debugging under any platform (including Android & iOS)
-#else
-	0,
-#endif
+	1, // JAZYK_CZ_OP
 	1, // JAZYK_HU
 	0, // JAZYK_RU
 	0, // JAZYK_BY

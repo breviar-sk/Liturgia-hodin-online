@@ -12,6 +12,7 @@
     <string name="settings">Nastavení</string>
 
     <string name="lang_cz">Čeština</string>
+    <string name="lang_c2">Čeština – dominikánský</string>
     <string name="lang_sk">Slovenština</string>
     <string name="lang_hu">Maďarština</string>
     <string name="override_locale">Použít tento jazyk také v ovládacích prvcích</string>
