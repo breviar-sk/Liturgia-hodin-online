@@ -1859,6 +1859,7 @@ extern const char *text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1];
 extern const char *text_KRISTA_KRALA[POCET_JAZYKOV + 1];
 extern const char *text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1];
 extern const char *text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1];
+extern const char *text_MARIE_MATKY_CIRKVI[POCET_JAZYKOV + 1];
 extern const char *text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1];
 extern const char *text_NARODENIE_PANA[POCET_JAZYKOV + 1];
 extern const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1];

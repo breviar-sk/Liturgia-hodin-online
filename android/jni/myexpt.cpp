@@ -165,7 +165,7 @@ short int ExportHtmlComment(const char *fmt, ...){
 #endif /* EXPORT_TO_STRING */
 	va_end(argptr);
 
-	cnt += Export(HTML_COMMENT_END"\n");
+	cnt += Export(HTML_COMMENT_END "\n");
 	return(cnt);
 }
 

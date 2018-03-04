@@ -503,6 +503,7 @@ extern short int _typslav_override(short int typslav);
 #define PRVA_ADVENTNA_NEDELA  _global_r._PRVA_ADVENTNA_NEDELA.denvr     // prvá adventná nedeľa
 #define ZOSLANIE_DUCHA_SV  _global_r._ZOSLANIE_DUCHA_SV.denvr           // zoslanie Ducha Svätého
 #define SV_RODINY  _global_r._SVATEJ_RODINY.denvr                       // sviatok svätej rodiny
+#define MARIE_MATKY_CIRKVI (ZOSLANIE_DUCHA_SV + 1)                      // pondelok po Zoslaní Ducha Svätého (ZOSLANIE_DUCHA_SV): spomienka Panny Márie, Matky Cirkvi (http://press.vatican.va/content/salastampa/it/bollettino/pubblico/2018/03/03/0168/00350.html)
 #define KRISTA_KNAZA (ZOSLANIE_DUCHA_SV + 4)                            // štvrtok po Zoslaní Ducha Svätého (ZOSLANIE_DUCHA_SV): sviatok Nášho Pána Ježiša Krista, najvyššieho a večného kňaza (http://www.tkkbs.sk/view.php?cisloclanku=20140115028)
 #define TROJICA (ZOSLANIE_DUCHA_SV + 7)                                 // prvá nedeľa po ZOSLANIE_DUCHA_SV: najsv. Trojice
 // #define TELAKRVI (ZOSLANIE_DUCHA_SV + 11)                               // štvrtok po Trojici: Kristovho tela a krvi (alebo: v krajinách, kde sa presúva na nedeľu)

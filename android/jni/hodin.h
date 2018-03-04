@@ -7942,6 +7942,19 @@ const char *text_HU_VELKONOCNY_PONDELOK = "Húsvéthétfő"; // pre HU špeciál
 
 const char *text_HU_VELKY_TYZDEN_PREFIX = "Nagy"; // pre HU špeciálne názvy dní veľkného týždňa (pondelok až streda)
 
+const char *text_MARIE_MATKY_CIRKVI[POCET_JAZYKOV + 1] =
+{
+	"Prebl. Panny Márie, Matky Cirkvi",
+	"Panny Marie, Matky církve",
+	"",
+	"",
+	"",
+	"Panny Marie, Matky církve",
+	"Szűz Mária az Egyház anyja",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] =
 {
 	"Nášho Pána Ježiša Krista, " HTML_LINE_BREAK "najvyššieho a večného kňaza",
@@ -7950,7 +7963,7 @@ const char *text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Našeho Pána Ježíše Krista, nejvyššího a věčného kněze",
-	"hu_XXX",
+	"hu_text",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

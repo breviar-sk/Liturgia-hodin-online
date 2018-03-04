@@ -7152,9 +7152,13 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				}// knaza
-				else if (_global_den.denvr == SRDPM){
+				else if (_global_den.denvr == SRDPM) {
 					// neposkvrneneho srdca prebl. panny marie
 					Log("  (hoci tu nic nenastavujem) ide o spomienku neposkvrneneho srdca prebl. panny marie\n");
+				}
+				else if (_global_den.denvr == MARIE_MATKY_CIRKVI) {
+					// panny marie matky cirkvi
+					Log("  (hoci tu nic nenastavujem) ide o spomienku panny marie matky cirkvi\n");
 				}
 				else {
 					// posvatne citania doplnena modlitba - je z prislusnej nedele OCR
@@ -8853,10 +8857,19 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 		_local_den = _global_den;
 	}
 
+	if (_global_den.denvr == MARIE_MATKY_CIRKVI) {
+		// pri spusteni liturgicke_obdobie(); spomienka panny marie matky cirkvi
+		Log("pri spusteni liturgicke_obdobie(); spomienka panny marie matky cirkvi\n");
+		Log("spustam druhýkrát sviatky_svatych(), tentokrat pre %d. svateho\n", poradie_svateho);
+		_local_den = _global_den;
+		sviatky_svatych(_local_den.den, _local_den.mesiac, poradie_svateho, 2);
+	}
+
 	// ešte spomienka panny márie v sobotu, cl. 15
+
 	// najprv sa spytame tej soboty, ci nahodou nie je spomienka neposkvrneneho srdca panny marie; ak je, tak uprednostnime tuto
 	// pridané posv. čítania a upravené; keďže smer == 11 používame pre lokálne povinné spomienky, upravili sme kontrolu z 12 na 11
-	if(_global_den.denvr == SRDPM){
+	if (_global_den.denvr == SRDPM) {
 		// pri spusteni liturgicke_obdobie(); spomienka neposkvrneneho srdca panny marie
 		Log("pri spusteni liturgicke_obdobie(); spomienka neposkvrneneho srdca panny marie\n");
 		Log("spustam druhýkrát sviatky_svatych(), tentokrat pre %d. svateho\n", poradie_svateho);

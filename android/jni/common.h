@@ -195,6 +195,9 @@
 #define HTML_P_CENTER_SMALL         "<p " HTML_CLASS_SMALL_CENTER ">"
 #define HTML_P_INLINE               "<p " HTML_CLASS_INLINE ">"
 
+#define HTML_P_VERSE_START          "<p class=\"verse start\">"
+#define HTML_P_VERSE_CONT           "<p class=\"verse cont\">"
+
 #define HTML_A_HREF_BEGIN           "<a href="
 #define HTML_A_NAME_BEGIN           "<a name="
 #define HTML_A_END                  "</a>"
@@ -204,12 +207,14 @@
 
 #define HTML_DIV_CENTER             "<div " HTML_CLASS_CENTER ">"
 #define HTML_DIV_INLINE             "<div " HTML_CLASS_INLINE ">"
+#define HTML_DIV_RUBRIC             "<div " HTML_CLASS_RUBRIC ">"
 
 #define HTML_DIV_SMALL_INLINE       "div class=\"small inline\""
 #define HTML_DIV_SMALL              "div class=\"small\""
 #define HTML_DIV_RED_SMALL          "div class=\"redsmall\""
 #define HTML_DIV_RED_SUBTITLE       "div class=\"redsubtitle\""
 
+#define HTML_DIV_PSALM              "div class=\"psalm\""
 #define HTML_DIV_PSALM_INDENT       "div class=\"psalm-indent\""
 
 // TTS navigation

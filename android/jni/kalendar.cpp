@@ -30999,7 +30999,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 		}
 	}
 
-	// pasaz pre spomienku neposkvrneneho srdca panny marie
+	// spomienka neposkvrneneho srdca panny marie
 	if ((_global_den.denvr == SRDPM) && (_global_svaty1.smer >= 10)) {
 		// neposkvrneneho srdca panny marie | "berie sa v takom pripade, ked nie je slavenie s vyssou prioritou, teda smer < 10"
 		Log(" neposkvrneneho srdca panny marie: \n");
@@ -31090,6 +31090,52 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 		// nastavenie lc_str_id pre spomienku Nepoškvrneného Srdca Panny Márie
 		mystrcpy(_global_svaty1.lc_str_id, "10V6", MAX_LC_STR_ID);
 	}// srdca panny marie
+
+	 // spomienka panny marie matky cirkvi
+	if ((_global_den.denvr == MARIE_MATKY_CIRKVI) && ((_global_pocet_svatych == 0) || ((_global_svaty1.smer >= 10) && !MIESTNE_SLAVENIE_LOKAL_SVATY(1)))) {
+		// spomienka panny marie matky cirkvi | "berie sa v takom pripade, ked nie je slavenie s vyssou prioritou, teda smer < 10"
+		Log(" panny marie matky cirkvi: \n");
+		Log(" ...berie sa len v takom pripade, ked to nekoliduje\n");
+		Log(" ...so slavenim, co ma vyssiu prioritu (smer < 10)\n");
+
+		poradie_svaty = 0;
+		if (poradie_svaty == 0) {
+			// definovanie parametrov pre modlitbu
+			if (query_type != PRM_DETAILY)
+				set_spolocna_cast(sc, poradie_svaty);
+
+			Log("vo funkcii sviatky_svatych() spustam set_popis_dummy(); - kvoli spomienke neposkvrneneho srdca panny marie...\n");
+			set_popis_dummy();
+			Log("set_popis_dummy() skoncila.\n");
+
+			mystrcpy(_file, FILE_MARIE_MATKY_CIRKVI, MAX_STR_AF_FILE);
+			mystrcpy(_anchor, ANCHOR_MARIE_MATKY_CIRKVI, MAX_STR_AF_ANCHOR);
+			mystrcpy(_anchor_vlastne_slavenie, ANCHOR_MARIE_MATKY_CIRKVI, MAX_STR_AF_ANCHOR);
+			Log("  ide o spomienku panny marie matky cirkvi: _file = `%s', _anchor = %s...\n", _file, _anchor);
+
+			// _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+
+			modlitba = MODL_RANNE_CHVALY;
+			_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
+			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+
+			modlitba = MODL_POSV_CITANIE;
+			// ToDo: _srdca_pm_2cit;
+			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+
+			modlitba = MODL_VESPERY;
+			_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
+			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+		}
+
+		_set_slavenie_typslav_smer(poradie_svaty, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
+
+		mystrcpy(_global_svaty(poradie_svaty).meno, text_MARIE_MATKY_CIRKVI[_global_jazyk], MENO_SVIATKU);
+		_global_svaty(poradie_svaty).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+		_global_svaty(poradie_svaty).farba = LIT_FARBA_BIELA;
+		// nastavenie lc_str_id
+		// mystrcpy(_global_svaty1.lc_str_id, "10V6", MAX_LC_STR_ID); ToDo
+	}// marie matky cirkvi
 
 	if (_global_svaty1.typslav == SLAV_NEURCENE) {
 		Log("neurcene slavenie, t.j. pocet = 0\n");

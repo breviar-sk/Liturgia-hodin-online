@@ -1371,6 +1371,9 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define ANCHOR_SRDCA_PM "SRDCAPM"
 #define FILE_SRDCA_PM "nspm.htm"
 
+#define ANCHOR_MARIE_MATKY_CIRKVI "PMMC"
+#define FILE_MARIE_MATKY_CIRKVI "pmmc.htm"
+
 #define ANCHOR_PM_BOHOROD "PMB"
 #define FILE_PM_BOHOROD "pmb.htm"
 
@@ -1521,6 +1524,7 @@ extern const char *text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1];
 extern const char *text_KRISTA_KRALA[POCET_JAZYKOV + 1];
 extern const char *text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1];
 extern const char *text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1];
+extern const char *text_MARIE_MATKY_CIRKVI[POCET_JAZYKOV + 1];
 extern const char *text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1];
 extern const char *text_NARODENIE_PANA[POCET_JAZYKOV + 1];
 extern const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1];

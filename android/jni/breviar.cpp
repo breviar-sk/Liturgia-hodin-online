@@ -483,7 +483,7 @@ short int useWhenGlobalOption(short opt_i, long bit_opt_i_component_j) {
 			|| (bit_opt_i_component_j == BIT_OPT_0_CITANIA)
 			|| (bit_opt_i_component_j == BIT_OPT_0_FOOTNOTES)
 			|| (bit_opt_i_component_j == BIT_OPT_0_TRANSPARENT_NAV)
-			|| (bit_opt_i_component_j == BIT_OPT_0_ZALMY_FULL_TEXT)
+			// || (bit_opt_i_component_j == BIT_OPT_0_ZALMY_FULL_TEXT) // read also psalm omissions (for TTS)
 			)) {
 			return NIE;
 		}
@@ -1680,7 +1680,9 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 			}// equalsi(rest, modlparam)
 
 			else if (equals(strbuff, PARAM_KRIZIK)) {
+
 				if ((vnutri_inkludovaneho == ANO) && (write == ANO)) {
+
 					// Export("[INPUT:paramname=%s|fname=%s|modlparam=%s|READ:strbuff=%s|rest=%s]", paramname, fname, modlparam, strbuff, rest);
 					if (equals(paramname, PARAM_ANTIFONA1) || equals(paramname, PARAM_ANTIFONA2) || equals(paramname, PARAM_ANTIFONA3) || equals(paramname, PARAM_ANTRCHVAL) || equals(paramname, PARAM_ANTVCHVAL) || equals(paramname, PARAM_ANTIFONA1x) || equals(paramname, PARAM_ANTIFONA3x)) {
 						je_antifona = ANO;
@@ -1688,10 +1690,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							mystrcpy(rest_krizik, rest, MAX_BUFFER);
 						}
 						// Export("antifóna[%d] -> zapamätám, ku ktorému žalmu/chválospevu patrí...\n", antifona_pocet);
-					}
+					}// krížik v antifóne
+
 #if defined(EXPORT_HTML_SPECIALS)
 					Export("[%s:%s|rest_krizik=%s]", strbuff, modlparam, (rest_krizik == NULL) ? STR_EMPTY : rest_krizik);
 #endif
+
 					// krížik v texte includovaného žalmu/chválospevu
 					if ((je_antifona == ANO) || (equals(paramname, PARAM_ZALM1) || equals(paramname, PARAM_ZALM2) || equals(paramname, PARAM_ZALM3) || equals(paramname, PARAM_RCHVALOSPEV) || equals(paramname, PARAM_VCHVALOSPEV))) {
 						write_krizik = ANO;
@@ -1733,7 +1737,28 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							}
 							Export(HTML_COMMENT_BEGIN);
 						}
-					}
+
+						if ((write_krizik == ANO) && (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) {
+
+							Export(HTML_COMMENT_END "\n");
+
+							if (je_antifona == ANO) {
+								// stop exporting text for TTS (voice output)
+								Export((_global_jazyk == JAZYK_HU) ? HTML_DIV_END : HTML_P_END); // HU uses <div class="antiphon ...">; end of antiphone
+
+								Export("\n" HTML_DIV_RUBRIC "\n"); // hide the rest of antiphone with beginning of psalm/canticle until the first verse's red cross
+
+								Export((_global_jazyk == JAZYK_HU) ? HTML_DIV_BEGIN : HTML_P_BEGIN); // HU uses <div class="antiphon ...">; synthetic begin of antiphone
+							}
+							else {
+								// continue exporting text for TTS (voice output)
+								Export(HTML_P_END "\n"); // end of first verse of psalm/canticle which started <p class="verse...">
+								Export(HTML_DIV_END "\n"); // end of <div class="psalm"> which is in each psalm/canticle
+								Export(HTML_DIV_END "\n"); // end of HTML_DIV_RUBRIC added above
+								Export("<" HTML_DIV_PSALM ">" "\n" HTML_P_VERSE_CONT "\n" HTML_COMMENT_BEGIN); // synthetic begin of psalm + verse
+							}
+						}//  do not repeat the same text for voice output (TTS)
+					}// krížik v texte includovaného žalmu/chválospevu
 				}// vypísať krížik, nakoľko antifóna nastavila, že má byť; ináč nerob nič
 			}// PARAM_KRIZIK
 
@@ -5816,11 +5841,24 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 					// den v i.-tom tyzdni obdobia cez rok
 					_rozbor_dna_LOG("/* den v %d. tyzdni obdobia cez rok */\n", _global_den.tyzden);
 
-					if (_global_den.denvr == ZOSLANIE_DUCHA_SV + 1) {
-						// Svätodušný pondelok -- kvôli liturgickým čítaniam
+					if (_global_den.denvr == MARIE_MATKY_CIRKVI) {
+						// MARIE_MATKY_CIRKVI (ZOSLANIE_DUCHA_SV + 1)
+						_global_den.farba = LIT_FARBA_BIELA;
+						_rozbor_dna_LOG("/* P. Márie Matky Cirkvi */\n");
+
+						_set_slavenie_typslav_smer(0, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
+						
+						mystrcpy(_global_den.meno, text_MARIE_MATKY_CIRKVI[_global_jazyk], MENO_SVIATKU);
+
+						_global_den.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+						_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_PANNA_MARIA;
+
+						/*
+						// pôvodne tradične slávené ako Svätodušný pondelok -- kvôli liturgickým čítaniam
 						mystrcpy(_global_den.lc_str_id, "8V1", MAX_LC_STR_ID);
 						_global_den.smer = 13; // všedné dni cezročné
-						_rozbor_dna_LOG("/* všedné dni cezročné -- Svätodušný pondelok */\n");
+						_rozbor_dna_LOG("-- všedné dni cezročné -- Svätodušný pondelok --\n");
+						*/
 					}
 					else if (_global_den.denvr == SRDCA) {
 						// srdca jezisovho == ZOSLANIE_DUCHA_SV + 19
