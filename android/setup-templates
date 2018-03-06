@@ -33,4 +33,5 @@ doLang() {
 
 doLang sk include
 doLang cs include_cz
+#doLang cs include_czop
 doLang hu include_hu

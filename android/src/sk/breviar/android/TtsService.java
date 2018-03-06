@@ -163,13 +163,20 @@ public class TtsService extends Service
           CompatibilityHelper26.updateChannel(this, false);
         }
 
+        int priority;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+          priority = NotificationCompat.PRIORITY_LOW;
+        } else {
+          priority = NotificationCompat.PRIORITY_HIGH;
+        }
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default")
               .setContentText(getString(R.string.channel_name))
               .setContentTitle(title)
               .setSmallIcon(icon)
               .setContentIntent(open_activity)
               .setColor(getResources().getColor(R.color.colorPrimary))
-              .setPriority(NotificationCompat.PRIORITY_HIGH)
+              .setPriority(priority)
               .setStyle(new MediaStyle().setShowActionsInCompactView(0, 2, 3));
 
         if (new_public_state == TtsState.SPEAKING) {
@@ -461,6 +468,12 @@ public class TtsService extends Service
         "  if (node.nodeType != Node.ELEMENT_NODE) {" +
         "    return;" +
         "  }" +
+        "  if (node.className == 'tts_pause') {" +
+        "    sections[sections.length - 1] += '#TTS_PAUSE_LONG';" +
+        "  }" +
+        "  if (node.className == 'tts_pause_short') {" +
+        "    sections[sections.length - 1] += '#TTS_PAUSE_SHORT';" +
+        "  }" +
         "  if (node.className == 'tts_section') {" +
         "    sections.push(\"\");" +
         "  }" +
@@ -490,7 +503,7 @@ public class TtsService extends Service
           public void run(String[] result) {
             // Log.v("breviar", "Got callback result");
             for (int i = 0; i < result.length; ++i) {
-              result[i] = result[i].replace('\n', ' ');
+              result[i] = result[i].replace('\n', ' ').trim();
             }
             sections = result;
             section = 0;
@@ -504,7 +517,7 @@ public class TtsService extends Service
     int pos = 0;
     while (pos < sections[section].length()) {
       int new_pos = findTtsSplit(sections[section], pos);
-      chunks.add(sections[section].substring(pos, new_pos));
+      chunks.add(sections[section].substring(pos, new_pos).trim());
       pos = new_pos;
     }
     chunk = 0;
@@ -515,16 +528,37 @@ public class TtsService extends Service
       HashMap<String, String> params = new HashMap<String, String>();
       params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "id" + new java.lang.Integer(i).toString());
 
-      Log.v("breviar", "TTS chunk: " + chunks.elementAt(i));
-      tts.speak(chunks.elementAt(i), TextToSpeech.QUEUE_ADD, params);
+      String chunk_text = chunks.elementAt(i);
+      Log.v("breviar", "TTS chunk: " + chunk_text);
+      if (chunk_text.equals("#TTS_PAUSE_SHORT")) {
+        tts.playSilence(200, TextToSpeech.QUEUE_ADD, params);
+      } else if (chunk_text.equals("#TTS_PAUSE_LONG")) {
+        tts.playSilence(1000, TextToSpeech.QUEUE_ADD, params);
+      } else {
+        tts.speak(chunks.elementAt(i), TextToSpeech.QUEUE_ADD, params);
+      }
     }
   }
 
   int findTtsSplit(String chunk, int pos) {
-    for (int i = pos; i < chunk.length(); ++i) {
+    int i = pos;
+    while (i < chunk.length() && Character.isWhitespace(chunk.charAt(i))) {
+      ++i;
+    }
+    if (chunk.startsWith("#TTS_PAUSE_SHORT", i)) {
+      return i + 16;
+    }
+    if (chunk.startsWith("#TTS_PAUSE_LONG", i)) {
+      return i + 15;
+    }
+
+    for (; i < chunk.length(); ++i) {
+      if (chunk.startsWith("#TTS_PAUSE", i)) {
+        return i;
+      }
       if (chunk.charAt(i) == '.' || chunk.charAt(i) == '!' ||
           chunk.charAt(i) == '?' || chunk.charAt(i) == ':' ||
-          chunk.charAt(i) == ',' || chunk.charAt(i) == ';') {
+          chunk.charAt(i) == ';') {
         if (i == chunk.length() - 1) {
           return i + 1;
         } else if (Character.isWhitespace(chunk.charAt(i + 1))) {
