@@ -176,42 +176,41 @@ typedef struct _anchor_and_file _struct_anchor_and_file;
 #define vchvalospev  zalm3
 #define magnifikat   benediktus
 
-struct tmodlitba1{
+struct tmodlitba1 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	_struct_anchor_and_file popis     ;
-	_struct_anchor_and_file hymnus    ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
-	_struct_anchor_and_file antifona2 ;
-	_struct_anchor_and_file zalm2     ;
-	_struct_anchor_and_file antifona3 ;
-	_struct_anchor_and_file zalm3     ;
-	_struct_anchor_and_file kcitanie  ;
-	_struct_anchor_and_file kresponz  ; 
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file hymnus;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
+	_struct_anchor_and_file antifona2;
+	_struct_anchor_and_file zalm2;
+	_struct_anchor_and_file antifona3;
+	_struct_anchor_and_file zalm3;
+	_struct_anchor_and_file kcitanie;
+	_struct_anchor_and_file kresponz;
 	_struct_anchor_and_file benediktus; // antifona na benediktus/magnifikat
-	_struct_anchor_and_file prosby    ; // pre posvatne citanie nedefinovane; 2011-03-16: "zneužité" (použité) pre hagiografické čítanie (ľubovoľnej) spomienky svätca v pôste
-	_struct_anchor_and_file modlitba  ;
+	_struct_anchor_and_file prosby; // pre posvatne citanie nedefinovane; 2011-03-16: "zneužité" (použité) pre hagiografické čítanie (ľubovoľnej) spomienky svätca v pôste
+	_struct_anchor_and_file modlitba;
 	_struct_anchor_and_file ant_spomprivileg; // 2010-05-21: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie) // 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 	_struct_anchor_and_file modlitba_spomprivileg; // 2010-05-21: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie) // 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 };
 typedef struct tmodlitba1 _type_ranne_chvaly;
 typedef struct tmodlitba1 _type_vespery;
 typedef struct tmodlitba1 _type_1vespery;
-// typedef struct tmodlitba1 _type_posv_citanie;
 
-struct tmodlitba2{
+struct tmodlitba2 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	_struct_anchor_and_file popis     ;
-	_struct_anchor_and_file hymnus    ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
-	_struct_anchor_and_file antifona2 ;
-	_struct_anchor_and_file zalm2     ;
-	_struct_anchor_and_file antifona3 ;
-	_struct_anchor_and_file zalm3     ;
-	_struct_anchor_and_file kcitanie  ;
-	_struct_anchor_and_file kresponz  ;
-	_struct_anchor_and_file modlitba  ;
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file hymnus;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
+	_struct_anchor_and_file antifona2;
+	_struct_anchor_and_file zalm2;
+	_struct_anchor_and_file antifona3;
+	_struct_anchor_and_file zalm3;
+	_struct_anchor_and_file kcitanie;
+	_struct_anchor_and_file kresponz;
+	_struct_anchor_and_file modlitba;
 };
 typedef struct tmodlitba2 _type_cez_den_9;
 typedef struct tmodlitba2 _type_cez_den_12;
@@ -222,57 +221,58 @@ typedef struct tmodlitba2 _type_cez_den_pred;
 typedef struct tmodlitba2 _type_cez_den_na;
 typedef struct tmodlitba2 _type_cez_den_po;
 
-struct tmodlitba3{
+struct tmodlitba3 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	short int pocet_zalmov            ; // pridané 2006-10-18; niekedy sú až 2 žalmy
-	_struct_anchor_and_file popis     ; // pridané 2006-10-11; zrušené antifona2, zalm2 a modlitba
-	_struct_anchor_and_file hymnus    ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
-	_struct_anchor_and_file antifona2 ; // pridané 2006-10-17; niekedy sú až 2 žalmy
-	_struct_anchor_and_file zalm2     ;
-	_struct_anchor_and_file kcitanie  ;
-	_struct_anchor_and_file kresponz  ;
+	short int pocet_zalmov; // pridané 2006-10-18; niekedy sú až 2 žalmy
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file ukonkaj; // added 2018-03-06; act of repentance
+	_struct_anchor_and_file hymnus;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
+	_struct_anchor_and_file antifona2;
+	_struct_anchor_and_file zalm2;
+	_struct_anchor_and_file kcitanie;
+	_struct_anchor_and_file kresponz;
 	_struct_anchor_and_file nunc_dimittis; // antifóna na nunc dimittis; pridané 2013-04-03 (kvôli OPRAEM, 08dec)
-	_struct_anchor_and_file modlitba  ;
+	_struct_anchor_and_file modlitba;
 };
 typedef struct tmodlitba3 _type_kompletorium;
 typedef struct tmodlitba3 _type_1kompletorium;
 
-struct tmodlitba4{
+struct tmodlitba4 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	_struct_anchor_and_file popis     ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
 };
 typedef struct tmodlitba4 _type_invitatorium;
 
-struct tmodlitba5{
+struct tmodlitba5 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	_struct_anchor_and_file popis     ;
-	_struct_anchor_and_file hymnus    ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
-	_struct_anchor_and_file antifona2 ;
-	_struct_anchor_and_file zalm2     ;
-	_struct_anchor_and_file antifona3 ;
-	_struct_anchor_and_file zalm3     ;
-	_struct_anchor_and_file kresponz  ; 
-	_struct_anchor_and_file citanie1  ; // 1. citanie pre posvatne citanie
-	_struct_anchor_and_file citanie2  ; // 2. citanie pre posvatne citanie
-	_struct_anchor_and_file citanie_spomprivileg ; // 2011-03-16: "zneužité" (použité) pre hagiografické čítanie (ľubovoľnej) spomienky svätca v pôste; 2011-03-25: nový typ -> nové meno
-	_struct_anchor_and_file ant_chval ; // vigília: antifóna pre chválospevy
-	_struct_anchor_and_file chval1    ; // vigília: chválospev I
-	_struct_anchor_and_file chval2    ; // vigília: chválospev II
-	_struct_anchor_and_file chval3    ; // vigília: chválospev III
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file hymnus;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
+	_struct_anchor_and_file antifona2;
+	_struct_anchor_and_file zalm2;
+	_struct_anchor_and_file antifona3;
+	_struct_anchor_and_file zalm3;
+	_struct_anchor_and_file kresponz;
+	_struct_anchor_and_file citanie1; // 1. citanie pre posvatne citanie
+	_struct_anchor_and_file citanie2; // 2. citanie pre posvatne citanie
+	_struct_anchor_and_file citanie_spomprivileg; // 2011-03-16: "zneužité" (použité) pre hagiografické čítanie (ľubovoľnej) spomienky svätca v pôste; 2011-03-25: nový typ -> nové meno
+	_struct_anchor_and_file ant_chval; // vigília: antifóna pre chválospevy
+	_struct_anchor_and_file chval1; // vigília: chválospev I
+	_struct_anchor_and_file chval2; // vigília: chválospev II
+	_struct_anchor_and_file chval3; // vigília: chválospev III
 	_struct_anchor_and_file evanjelium; // vigília: evanjelium
-	_struct_anchor_and_file modlitba  ;
+	_struct_anchor_and_file modlitba;
 };
 typedef struct tmodlitba5 _type_posv_citanie;
 
-struct den_mesiac{ // takto povodne vyzerala struct dm
-	short int den;        // cislo dna mesiaca (1--31)
-	short int mesiac;     // cislo mesiaca (1--12) - ináč ako je potrebné pre väčšinu polí, kde je mesiac 0--11
+struct den_mesiac {
+	short int den;    // cislo dna mesiaca (1--31)
+	short int mesiac; // cislo mesiaca (1--12) - ináč ako je potrebné pre väčšinu polí, kde je mesiac 0--11
 };
 typedef struct den_mesiac _struct_den_mesiac;
 
@@ -440,6 +440,7 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_MODLITBA      "MODLITBA"
 #define PARAM_CITANIE1      "CITANIE1" // vlastne KCITANIE
 #define PARAM_CITANIE2      "CITANIE2" // vlastne BENEDIKTUS
+#define PARAM_UKON_KAJ      "UKONKAJ" // úkon kajúcnosti -- act of repentance
 
 #define PARAM_ANTIFONA1x    "ANTIFONA1_DRUHA"
 #define PARAM_ANTIFONA3x    "ANTIFONA3_PRVA"
@@ -621,6 +622,7 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ALT_KCIT_RESP_MULTI           "ALT-KCIT-RESP-" KEYWORD_MULTI
 #define PARAM_ALT_KRESP_MULTI               "ALT-KRESP-" KEYWORD_MULTI
 #define PARAM_ALT_PSALM_MULTI               "ALT-PSALM-" KEYWORD_MULTI
+#define PARAM_ALT_UKONKAJ_MULTI             "ALT-UKONKAJ-" KEYWORD_MULTI // used as acronym for PARAM_ALT_PROSBY_MULTI
 
 // zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
@@ -1781,6 +1783,7 @@ void analyzuj_rok(short int year);
 	a.alternativy = 0; \
 	a.pocet_zalmov = 1;\
 	_INIT_ANCHOR_AND_FILE(a.popis); \
+	_INIT_ANCHOR_AND_FILE(a.ukonkaj); \
 	_INIT_ANCHOR_AND_FILE(a.hymnus); \
 	_INIT_ANCHOR_AND_FILE(a.antifona1); \
 	_INIT_ANCHOR_AND_FILE(a.zalm1); \

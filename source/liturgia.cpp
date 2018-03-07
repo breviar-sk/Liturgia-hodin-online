@@ -1756,6 +1756,7 @@ void Log(struct tmodlitba3 t){
 	Log_struktura_tm3("   alternativy = %d\n", t.alternativy);
 	Log_struktura_tm3("   pocet_zalmov = %d\n", t.pocet_zalmov);
 	Log_struktura_tm3("   popis          file `%s', anchor `%s'\n", t.popis.file, t.popis.anchor);
+	Log_struktura_tm3("   ukonkaj        file `%s', anchor `%s'\n", t.ukonkaj.file, t.ukonkaj.anchor);
 	Log_struktura_tm3("   hymnus         file `%s', anchor `%s'\n", t.hymnus.file, t.hymnus.anchor);
 	Log_struktura_tm3("   antifona1      file `%s', anchor `%s'\n", t.antifona1.file, t.antifona1.anchor);
 	Log_struktura_tm3("   zalm1          file `%s', anchor `%s'\n", t.zalm1.file, t.zalm1.anchor);

@@ -2891,7 +2891,7 @@ void _export_global_string_spol_cast(short int aj_vslh_235b) {
 
 #define _global_modl_kresp_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.kresponz.anchor : ((type == MODL_PREDPOLUDNIM) ? _global_modl_cez_den_9.kresponz.anchor : ((type == MODL_NAPOLUDNIE) ? _global_modl_cez_den_12.kresponz.anchor : ((type == MODL_POPOLUDNI) ? _global_modl_cez_den_3.kresponz.anchor : ((type == MODL_POSV_CITANIE) ? _global_modl_posv_citanie.kresponz.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.kresponz.anchor : ((type == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.kresponz.anchor : ((type == MODL_PRVE_VESPERY) ? _global_modl_prve_vespery.kresponz.anchor : _global_modl_prve_kompletorium.kresponz.anchor)))))))
 
-#define _global_modl_prosby_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.prosby.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.prosby.anchor : _global_modl_prve_vespery.prosby.anchor)
+#define _global_modl_prosby_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.prosby.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.prosby.anchor : ((type == MODL_PRVE_VESPERY) ? _global_modl_prve_vespery.prosby.anchor : ((type == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.ukonkaj.anchor : _global_modl_prve_kompletorium.ukonkaj.anchor)))
 
 #define _global_modl_antifona_anchor (type == MODL_INVITATORIUM) ? _global_modl_invitatorium.antifona1.anchor : ((type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.benediktus.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.magnifikat.anchor : _global_modl_prve_vespery.magnifikat.anchor))
 
@@ -3372,6 +3372,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		|| (equals(paramname, PARAM_ALT_ANTIFONA_MULTI))
 		|| (equals(paramname, PARAM_ALT_MODLITBA_MULTI))
 		|| (equals(paramname, PARAM_ALT_PROSBY_MULTI))
+		|| (equals(paramname, PARAM_ALT_UKONKAJ_MULTI))
 		|| (equals(paramname, PARAM_ALT_KCIT_RESP_MULTI))
 		|| (equals(paramname, PARAM_ALT_KRESP_MULTI))
 		|| (equals(paramname, PARAM_ALT_PSALM_MULTI))
@@ -3610,7 +3611,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_psalm[_global_jazyk]);
 		}
-		else if (equals(paramname, PARAM_ALT_PROSBY_MULTI)) {
+		else if (equals(paramname, PARAM_ALT_PROSBY_MULTI) || equals(paramname, PARAM_ALT_UKONKAJ_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
 			bit = BASE_OPT_6_PROSBY_MULTI;
 			multi = ANO;
@@ -3625,8 +3626,13 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 			podmienka &= (multi_count > 0);
 
-			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_prosby[_global_jazyk]);
-		}
+			if (equals(paramname, PARAM_ALT_PROSBY_MULTI)) {
+				sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_prosby[_global_jazyk]);
+			}
+			else {
+				sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_ukonkaj[_global_jazyk]);
+			}
+		}// PARAM_ALT_PROSBY_MULTI, PARAM_ALT_UKONKAJ_MULTI
 		else if (equals(paramname, PARAM_ALT_KCIT_RESP_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
 			bit = BASE_OPT_6_KCIT_RESP_MULTI;
@@ -4678,6 +4684,21 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			; // ostatné modlitby nemajú Nunc dimittis
 		}
 	} // PARAM_NUNC_DIMITTIS
+	else if (equals(paramname, PARAM_UKON_KAJ)) {
+		if ((je_kompletorium12(type)) && (_global_skip_in_prayer == NIE)) {
+			if (type == MODL_KOMPLETORIUM) {
+				strcat(path, _global_modl_kompletorium.ukonkaj.file);
+				includeFile(type, paramname, path, _global_modl_kompletorium.ukonkaj.anchor);
+			}
+			else {
+				strcat(path, _global_modl_prve_kompletorium.ukonkaj.file);
+				includeFile(type, paramname, path, _global_modl_prve_kompletorium.ukonkaj.anchor);
+			}
+		}
+		else {
+			; // ostatné modlitby nemajú úkon kajúcnosti
+		}
+	} // PARAM_UKON_KAJ
 	else if (equals(paramname, PARAM_MARIANSKE_ANTIFONY_LINK)) {
 		if ((je_kompletorium12(type)) && (_global_skip_in_prayer == NIE)) {
 			// využijeme parameter path, ktorý sa nepoužíva

@@ -4265,6 +4265,20 @@ const char *html_text_opt_6_alternatives_multi_prosby[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_opt_6_alternatives_multi_ukonkaj[POCET_JAZYKOV + 1] =
+{
+	"iná forma úkonu kajúcnosti",
+	"jiná forma úkonu kajícnosti",
+	"another act of repentance",
+	"",
+	"",
+	"jiná forma úkonu kajícnosti",
+	"más hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_opt_6_alternatives_multi_kcit_resp[POCET_JAZYKOV + 1] =
 {
 	"iné čítanie a responzórium",

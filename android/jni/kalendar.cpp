@@ -31009,8 +31009,9 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 		poradie_svaty = 1;
 		if (poradie_svaty == 1) {
 			// definovanie parametrov pre modlitbu
-			if (query_type != PRM_DETAILY)
+			if (query_type != PRM_DETAILY) {
 				set_spolocna_cast(sc, poradie_svaty);
+			}
 			// ZNOVUNASTAVENIE_POPISU_NA_DUMMY, 2003-06-30; 2009-06-10: zapoznámkované | 2012-06-18: opätovne odpoznámkované, lebo 16.06.2012 tam dalo pre MCD popis (sk) 16JUN_POPIS
 			Log("vo funkcii sviatky_svatych() spustam set_popis_dummy(); - kvoli spomienke neposkvrneneho srdca panny marie...\n");
 			set_popis_dummy();
@@ -31101,8 +31102,9 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 		poradie_svaty = 0;
 		if (poradie_svaty == 0) {
 			// definovanie parametrov pre modlitbu
-			if (query_type != PRM_DETAILY)
+			if (query_type != PRM_DETAILY) {
 				set_spolocna_cast(sc, poradie_svaty);
+			}
 
 			Log("vo funkcii sviatky_svatych() spustam set_popis_dummy(); - kvoli spomienke neposkvrneneho srdca panny marie...\n");
 			set_popis_dummy();
@@ -31116,14 +31118,17 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 			// _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
 
 			modlitba = MODL_RANNE_CHVALY;
+			_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
 			_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 
 			modlitba = MODL_POSV_CITANIE;
-			// ToDo: _srdca_pm_2cit;
+			_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
+			_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 
 			modlitba = MODL_VESPERY;
+			_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
 			_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 		}

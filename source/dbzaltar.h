@@ -201,12 +201,16 @@ extern void set_zalm(short int ktory, short int modlitba, const char *file, cons
 extern void _set_kcitanie(short int modlitba, const char *file, const char *anchor);
 extern void _set_kresponz(short int modlitba, const char *file, const char *anchor);
 
-// pri posvätnom čítaní platí magn/ben pre 2. čítanie
+// pre posvätné čítanie: 2. čítanie
 #define _set_citanie2 _set_benediktus
 
 #define _set_magnifikat _set_benediktus
-// pre kompletórium platí magn/ben pre ant. na Nunc dimittis
+
+// pre kompletórium: ant. na Nunc dimittis
 #define _set_nunc_dimittis _set_benediktus
+
+// pre kompletórium: úkon kajúcnosti
+#define _set_ukonkaj _set_prosby
 
 extern void _set_benediktus(short int modlitba, const char *file, const char *anchor);
 extern void _set_prosby(short int modlitba, const char *file, const char *anchor);
@@ -1322,26 +1326,27 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define CEZROCNA_PRIPONA    "CR"
 
 // anchor identifiers
-#define ANCHOR_POPIS        "POPIS"
-#define ANCHOR_HYMNUS       "HYMNUS"
-#define ANCHOR_ANTIFONA1    "ANT1"
-#define ANCHOR_ANTIFONA2    "ANT2"
-#define ANCHOR_ANTIFONA3    "ANT3"
-#define ANCHOR_ANTIFONY     "ANTx" // pridané 2007-10-02 pre rovnaké antifóny 1., 2. a 3. - modlitba cez deň
-#define ANCHOR_ANTIFONA1V   "ANT1V"
-#define ANCHOR_ANTIFONA2V   "ANT2V"
-#define ANCHOR_ANTIFONA3V   "ANT3V"
-#define ANCHOR_KCITANIE     "CIT"
-#define ANCHOR_KRESPONZ     "RESP"
-#define ANCHOR_MAGNIFIKAT   "MAGNIFIKAT" // antifóna na Magnifikat
-#define ANCHOR_BENEDIKTUS   "BENEDIKTUS" // antifóna na Benediktus
+#define ANCHOR_POPIS         "POPIS"
+#define ANCHOR_HYMNUS        "HYMNUS"
+#define ANCHOR_ANTIFONA1     "ANT1"
+#define ANCHOR_ANTIFONA2     "ANT2"
+#define ANCHOR_ANTIFONA3     "ANT3"
+#define ANCHOR_ANTIFONY      "ANTx" // pridané 2007-10-02 pre rovnaké antifóny 1., 2. a 3. - modlitba cez deň
+#define ANCHOR_ANTIFONA1V    "ANT1V"
+#define ANCHOR_ANTIFONA2V    "ANT2V"
+#define ANCHOR_ANTIFONA3V    "ANT3V"
+#define ANCHOR_KCITANIE      "CIT"
+#define ANCHOR_KRESPONZ      "RESP"
+#define ANCHOR_MAGNIFIKAT    "MAGNIFIKAT" // antifóna na Magnifikat
+#define ANCHOR_BENEDIKTUS    "BENEDIKTUS" // antifóna na Benediktus
 #define ANCHOR_NUNC_DIMITTIS "NUNCDIMITTIS" // antifóna na Nunc dimittis
-#define ANCHOR_PROSBY       "PROSBY"
-#define ANCHOR_MODLITBA     "MODLITBA"
-#define ANCHOR_CITANIE1     "CIT1"
-#define ANCHOR_CITANIE2     "CIT2"
-#define ANCHOR_ANTIFONA_VIG "ANTVG"
-#define ANCHOR_EVANJELIUM   "EV"
+#define ANCHOR_PROSBY        "PROSBY"
+#define ANCHOR_MODLITBA      "MODLITBA"
+#define ANCHOR_CITANIE1      "CIT1"
+#define ANCHOR_CITANIE2      "CIT2"
+#define ANCHOR_ANTIFONA_VIG  "ANTVG"
+#define ANCHOR_EVANJELIUM    "EV"
+#define ANCHOR_UKON_KAJ      "UKONKAJ" // úkon kajúcnosti -- act of repentance
 
 // special identifiers + filename indentifiers (tuples)
 #define SPOM_PM_SOBOTA "SPMVS"
