@@ -115,7 +115,7 @@ char *StringEncode(const char *in) {
 			i+=1;
 		} else {
 			out[i]='%';
-			out[i+1]=tab[(*s) >> 4];
+			out[i+1]=tab[((unsigned char)(*s)) >> 4];
 			out[i+2]=tab[(*s) & 0xf];
 			i+=3;
 		}
