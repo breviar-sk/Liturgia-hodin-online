@@ -4446,54 +4446,57 @@ void _vlastne_slavenie_hymnus(short int modlitba, char vlastny_anchor[SMALL], sh
 	set_LOG_litobd;
 }// _vlastne_slavenie_hymnus()
 
-void _velk1_hymnus(short int den, short int modlitba, short int litobd){
+void _velk1_hymnus(short int den, short int modlitba, short int litobd) {
 	Log("_velk1_hymnus(): začiatok\n");
-	short int ktory; // 0 alebo 1
+	short int ktory; // 0 alebo 1 (2 = obidve alternatívy; -1 = do not use this variable for generating anchor)
 	short int bit;
 
-	switch (modlitba){
+	switch (modlitba) {
 	case MODL_POSV_CITANIE: bit = BIT_OPT_5_HYMNUS_VN_PC; break;
 	case MODL_RANNE_CHVALY: bit = BIT_OPT_5_HYMNUS_VN_RCH; break;
 	case MODL_VESPERY:      bit = BIT_OPT_5_HYMNUS_VN_VESP; break;
 	} // switch(modlitba)
 
-	if (je_modlitba_cez_den(modlitba)){
+	// do not use 'ktory' for CZ anchors at all; regardless of (je_CZ_hymny_k_volnemu_vyberu)
+	if (_global_jazyk == JAZYK_CZ) {
+		ktory = -1;
+	}
+	else if (je_modlitba_cez_den(modlitba)) {
 		// pre vn1.htm je len jeden hymnus pre modlitbu cez deň; používa sa aj vo vn2.htm
 		ktory = -1;
 	}
-	else if (je_modlitba_cez_den(modlitba) || ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))){
-		// pre veľkonočné obdobie nemajú hymny pre MCD alternatívy
-		ktory = 0;
-	}
-	else if (je_CZ_hymny_k_volnemu_vyberu){
-		ktory = 2; // obidve potenciálne alternatívy
-	}
-	else if ((den == DEN_NEDELA) || (_global_den.denvr == NANEBOVSTUPENIE)){
+	else if ((den == DEN_NEDELA) || (_global_den.denvr == NANEBOVSTUPENIE)) {
 		ktory = 1;
 	}
-	else if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)){
+	else if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) {
 		// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
 		ktory = (isGlobalOption(OPT_5_ALTERNATIVES, bit)) ? 1 : 0;
 		Log("_velk1_hymnus(): ktory == %d...\n", ktory);
 	}
-	else{
+	else {
 		// pôvodne bol náhodný výber
 		ktory = 2; // obidva!
 	}
 
-	if (ktory < 0){
-		sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+	if (ktory < 0) {
+		if ((_global_jazyk == JAZYK_CZ) && (_global_den.denvr == NANEBOVSTUPENIE)) {
+			// special case for CZ
+			sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, ANCHOR_NANEBOVSTUPENIE, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+		}
+		else {
+			sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+		}
 	}
-	else{
+	else {
 		// upravené kotvy, aby bolo použiteľné zjednodušene toto:
 		sprintf(_anchor, "%s%s_%c%s%d", _special_anchor_prefix, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_HYMNUS, ktory);
 	}
 
-	if (modlitba == MODL_POSV_CITANIE){
+	if (modlitba == MODL_POSV_CITANIE) {
 		_set_hymnus(modlitba, _file_pc, _anchor);
 		set_LOG_litobd_pc;
 	}
-	else{
+	else {
 		_set_hymnus(modlitba, _file, _anchor);
 		set_LOG_litobd;
 	}
@@ -10633,6 +10636,27 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_SK, "21NOV_cHYMNUS", 2 },
 	{ JAZYK_CZ, "04JUL_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_ZDS_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ZDS_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ZDS_1HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_ZDS_vHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_TK_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SRDCA_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SRDCA_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SRDCA_1HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SRDCA_vHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_SVROD_cHYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_SVROD_rHYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_15AUG_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_15SEP_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_15SEP_vHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_16SEP_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_16SEP_vHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_28SEP_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_01NOV_1HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_01NOV_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_01NOV_vHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_13NOV_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_13NOV_vHYMNUS", 2 },
 	{ JAZYK_UNDEF, "PMMC_vHYMNUS", 2 },
 	// CZ mezidobí, modlitba uprostřed dne, hymny ze žaltáře
 		// liché týdny
@@ -10698,12 +10722,37 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "VIAN2_2HYMNUS", 2 },
 	{ JAZYK_CZ, "VIAN2_3HYMNUS", 2 },
 	// CZ doba vánoční, hymny k volnému výběru
+	{ JAZYK_CZ, "CZ_VIAN1_cHYMNUS", 6 },
 	{ JAZYK_CZ, "CZ_VIAN1_1HYMNUS", 6 },
 	{ JAZYK_CZ, "CZ_VIAN1_rHYMNUS", 6 },
 	{ JAZYK_CZ, "CZ_VIAN1_vHYMNUS", 6 },
 	{ JAZYK_CZ, "CZ_VIAN1_9HYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_VIAN1_2HYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_VIAN1_3HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VIAN2_cHYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_VIAN2_1HYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_VIAN2_rHYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_VIAN2_vHYMNUS", 6 },
+	{ JAZYK_CZ, "CZ_VIAN2_9HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VIAN2_2HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VIAN2_3HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VIAN2_ZJVrHYMNUS", 2 },
+	// CZ doba velikonoční, hymny k volnému výběru
+	{ JAZYK_CZ, "CZ_VN1_1HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VN1_vHYMNUS", 4 },
+	{ JAZYK_CZ, "CZ_VN1_rHYMNUS", 4 },
+	{ JAZYK_CZ, "CZ_VN1_cHYMNUS", 4 },
+	{ JAZYK_CZ, "CZ_VN2_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VN2_1HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VN2_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VN2_9HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VN2_2HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_VN2_3HYMNUS", 2 },
+	// CZ doba velikonoční: Nanebevstoupení Páně, hymny k volnému výběru
+	{ JAZYK_CZ, "CZ_NAN_1HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_NAN_rHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_NAN_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_NAN_vHYMNUS", 2 },
 	// špeciálne hymny pre 34. týždeň Cezročného obdobia; not fot CZ
 	{ JAZYK_SK, "OCR34c_HYMNUS", 2 },
 	{ JAZYK_SK, "OCR34r_HYMNUS", 2 },
@@ -10745,6 +10794,10 @@ _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_SK, "16SEP_cCIT2", 2 },
 	{ JAZYK_LA, "16SEP_cCIT2", 2 },
 	{ JAZYK_HU, "16SEP_cCIT2", 2 },
+	{ JAZYK_CZ, "16SEP2_cCIT2", 2 },
+	{ JAZYK_CZ, "17SEP2_cCIT2", 2 },
+	{ JAZYK_CZ_OP, "16SEP2_cCIT2", 2 },
+	{ JAZYK_CZ_OP, "17SEP2_cCIT2", 2 },
 };
 
 _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
