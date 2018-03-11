@@ -177,6 +177,7 @@ public class TtsService extends Service
               .setContentIntent(open_activity)
               .setColor(getResources().getColor(R.color.colorPrimary))
               .setPriority(priority)
+              .setOnlyAlertOnce(true)
               .setStyle(new MediaStyle().setShowActionsInCompactView(0, 2, 3));
 
         if (new_public_state == TtsState.SPEAKING) {
@@ -463,26 +464,33 @@ public class TtsService extends Service
         "function getText(node, sections) {" +
         "  if (node.nodeType == Node.TEXT_NODE) {" +
         "    sections[sections.length - 1] += node.textContent;" +
-        "    return;" +
+        "    return !(node.textContent === '');" +
         "  }" +
         "  if (node.nodeType != Node.ELEMENT_NODE) {" +
-        "    return;" +
+        "    return false;" +
         "  }" +
         "  if (node.className == 'tts_pause') {" +
         "    sections[sections.length - 1] += '#TTS_PAUSE_LONG';" +
+        "    return false;" +
         "  }" +
         "  if (node.className == 'tts_pause_short') {" +
         "    sections[sections.length - 1] += '#TTS_PAUSE_SHORT';" +
+        "    return false;" +
         "  }" +
         "  if (node.className == 'tts_section') {" +
         "    sections.push(\"\");" +
         "  }" +
         "  if (window.getComputedStyle(node).display == 'none') {" +
-        "    return;" +
+        "    return false;" +
         "  }" +
+        "  var nonempty = false; " +
         "  for (var i = 0; i < node.childNodes.length; ++i) {" +
-        "    getText(node.childNodes[i], sections);" +
+        "    if (getText(node.childNodes[i], sections)) { nonempty = true; } " +
         "  }" +
+        "  if (nonempty && (node.tagName === 'DIV')) {" +
+        "    sections[sections.length - 1] += '#TTS_PAUSE_SHORT';" +
+        "  }" +
+        "  return nonempty; " +
         "}" +
         "" +
         "function prune(sections) {" +
@@ -526,7 +534,8 @@ public class TtsService extends Service
   void startSynthesis() {
     for (int i = chunk; i < chunks.size(); ++i) {
       HashMap<String, String> params = new HashMap<String, String>();
-      params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "id" + new java.lang.Integer(i).toString());
+      params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,
+          "s" + new java.lang.Integer(section).toString() + "ch" + new java.lang.Integer(i).toString());
 
       String chunk_text = chunks.elementAt(i);
       Log.v("breviar", "TTS chunk: " + chunk_text);

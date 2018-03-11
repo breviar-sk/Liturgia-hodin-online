@@ -596,17 +596,17 @@ public class Breviar extends AppCompatActivity
           ringMode = -1;
         }
         if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
+        registerReceiver(tts_receiver, new IntentFilter(TtsService.TTS_UPDATE_ACTION));
+        startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_REQUEST_UPDATE));
       }
-      registerReceiver(tts_receiver, new IntentFilter(TtsService.TTS_UPDATE_ACTION));
-      startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_REQUEST_UPDATE));
       super.onResume();
     }
 
     @Override
     protected void onPause() {
       super.onPause();
-      unregisterReceiver(tts_receiver);
       if (resumed) {
+        unregisterReceiver(tts_receiver);
         resumed = false;
         if (BreviarApp.getDimLock(getApplicationContext())) {
           lock.release();
