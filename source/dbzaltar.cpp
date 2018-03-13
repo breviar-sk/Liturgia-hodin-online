@@ -9919,7 +9919,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		_spolocna_cast_full(modlitba);
 
-		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
+		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_head, _file, force);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
 		// ranné chvály
@@ -9999,7 +9999,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		_spolocna_cast_full(modlitba);
 
-		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
+		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_head, _file, force);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
 		// ranné chvály
