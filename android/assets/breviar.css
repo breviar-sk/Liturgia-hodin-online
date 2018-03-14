@@ -139,25 +139,18 @@ div.responsory {
 }
 
 .calendar { 
-	padding: 2px; 
+	border-bottom: none; 
+	padding: 3px; 
 }
 
 .calendar.heading { 
-	border-bottom: 0px; 
-	border-left: 1px; 
-	border-right: 1px; 
-	border-top: 0px; 
-	/* display: inline; */
+	display: inline;
 	font-weight: bold; 
 	min-width: 22px; 
 	text-align: right;
 }
 
 .calendar.day_name { 
-	border-bottom: 0px; 
-	border-left: 1px; 
-	border-right: 1px; 
-	border-top: 0px; 
 	display: block; 
 	font-style: italic; 
 	min-width: 22px; 
@@ -165,21 +158,19 @@ div.responsory {
 }
 
 .calendar.day { 
-	border-bottom: 1px dotted; 
-	border-left: 1px dotted; 
-	border-right: 1px dotted; 
-	border-top: 1px dotted; 
+	background-color: #F3E4C4; /* button light */
 	display: block; 
 	min-width: 22px; 
 	text-align: right;
 }
 
+.calendar.day:hover {
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
+}
+
 .calendar.today { 
 	background-color: #1a1a1a; 
-	border-bottom: 1px dotted; 
-	border-left: 1px dotted; 
-	border-right: 1px dotted; 
-	border-top: 1px dotted; 
 	color: #FFFFCC; 
 	display: block; 
 	min-width: 22px; 
@@ -697,7 +688,7 @@ a {
 }
 
 a:hover { 
-	background-color: #7A3E3B; /* button dark */
+	background-color: #C39482; /* button middle-dark */
 	border: none; 
 	color: white; 
 	text-decoration: none; 
@@ -757,7 +748,7 @@ hr.red {
 }
 
 select { 
-	background: #FFFFFF;
+	background-color: #FFFFFF;
 	color: #1a1a1a;
 	font-family: inherit; 
 	margin: 4px;
@@ -772,7 +763,7 @@ input {
 
 /* prayer buttons */
 input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer { 
-	background: #F3E4C4;/* button light */
+	background-color: #F3E4C4; /* button light */
 	border: solid 0px #1a1a1a; 
 	color: #1a1a1a; 
 	cursor: pointer;
@@ -785,6 +776,11 @@ input.button, input.reset, .button, a.button, .button-prayer, input.button-praye
 	text-decoration: none; 
 }
 
+input.button:hover, input.reset:hover, .button:hover, a.button:hover {
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
+}
+
 input.button, input.reset, .button, a.button {
 	min-height: 20px;
 }
@@ -793,15 +789,20 @@ input.button, input.reset, .button, a.button {
 	width: 100%; /* within table cell */
 }
 
+.button-prayer:hover, input.button-prayer:hover { 
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
+}
+
 button.button-prayer {
 	min-width: 80px; /* must be 4px more than .button-prayer due to padding */
 }
 
 /* << button0 >> + button1 for today */
 input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 { 
-	background: #7A3E3B; /* button dark */
+	background-color: #7A3E3B; /* button dark */
 	border: solid 0px #1a1a1a; 
-	color: White; 
+	color: white; 
 	cursor: pointer;
 	font-family: inherit; 
 	font-style: normal;
@@ -810,6 +811,11 @@ input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 {
 	min-width: 76px;
 	padding: 8px 4px;
 	text-decoration: none; 
+}
+
+input.button0:hover, input.reset0:hover, .button0:hover, input.button1:hover, input.reset1:hover, .button1:hover { 
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
 }
 
 input.button0, input.reset0, .button0 {
@@ -824,7 +830,7 @@ input.button1, input.reset1, .button1 {
 
 /* less important buttons */
 input.button2, input.reset2, .button2 { 
-	background: #C39482; /* button middle-dark */
+	background-color: #F3E4C4; /* button light */
 	border: solid 0px #1a1a1a; 
 	color: #1a1a1a; 
 	cursor: pointer;
@@ -838,14 +844,82 @@ input.button2, input.reset2, .button2 {
 	width: 100%; /* within table cell */
 }
 
+input.button2:hover, input.reset2:hover, .button2:hover, a.button2:hover {
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
+}
+
 input.text { 
-	background: #FFFFFF;
+	background-color: #FFFFFF;
 	border-style: solid; 
 }
 
-input.radio { }
+input.radio { 
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
 
-input.checkbox { }
+input.radio:before {
+	content: '';
+	background-color: #F3E4C4; /* button light */
+	border-radius: 100%;
+	display: inline-block;
+	width: 1.4em;
+	height: 1.4em;
+	position: relative;
+	vertical-align: top;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+}
+
+input.radio:checked:before {
+	background-color: #7A3E3B; /* button dark */
+	box-shadow: inset 0 0 0 5px #F3E4C4; /* button light */
+}
+
+input.radio:focus {
+	outline: none;
+}
+
+input.checkbox {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: #F3E4C4; /* button light */
+	border-radius: 3em;
+	cursor: pointer;
+	width: 2.7em;
+	height: 1.4em;
+	margin: 7px 5px -5px 5px;
+	position: relative;
+	outline: none;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+input.checkbox:checked {
+	background: #7A3E3B; /* button dark */
+}
+
+input.checkbox:after {
+	position: absolute;
+	content: '';
+	width: 1.4em;
+	height: 1.4em;
+	border-radius: 50%;
+	background-color: white;
+	-webkit-transform: scale(.7);
+	transform: scale(.7);
+	left: 0;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
+input.checkbox:checked:after {
+	left: calc(100% - 1.4em);
+}
 
 ol.level1 { 
 	list-style-type: decimal; 
@@ -910,7 +984,6 @@ sup {
 
 .table
 {
-	/* background: yellow; testing only */
 	border-collapse: collapse;
 	display: table;
 	margin: 0 auto; /* centered */
@@ -918,7 +991,6 @@ sup {
 
 .table-left
 {
-	/* background: yellow; testing only */
 	border-collapse: collapse;
 	display: table;
 	margin-right: auto; /* left aligned */
@@ -926,7 +998,6 @@ sup {
 
 .table-caption
 {
-	/* background: yellow; testing only */
 	display: table-caption;
 	margin: 0 auto; /* centered */
 	text-align: center;
@@ -997,6 +1068,15 @@ sup {
 }
 
 
+/* always use bold font - no override by breviar-normal-font.css */
+.strong-always { 
+	font-weight: bold; !important;
+}
+
+p.strong-always, h3.strong-always { 
+	font-weight: bold; !important;
+}
+
 .nav-arrow {
   background-size: contain;
   background-repeat: no-repeat;
@@ -1019,13 +1099,4 @@ sup {
 
 #contentRoot {
   z-index: 0;
-}
-
-// always use bold font - no override by breviar-normal-font.css
-.strong-always { 
-	font-weight: bold; !important;
-}
-
-p.strong-always, h3.strong-always { 
-	font-weight: bold; !important;
 }
