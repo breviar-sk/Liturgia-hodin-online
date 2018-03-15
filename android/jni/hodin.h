@@ -1854,7 +1854,7 @@ const char *html_text_Jednotlive_mesiace_roku[POCET_JAZYKOV + 1] = {
 };
 
 const char *str_doplnkova_psalmodia[POCET_JAZYKOV + 1] = 
-{ "doplnková psalmódia", "žalmy z doplňovacího cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplnková psalmodie", "kiegészítő zsoltárok", "ru_text", "дадатковая псальмодыя", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "doplnková psalmódia", "žalmy z doplňovacího cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplňková psalmodie", "kiegészítő zsoltárok", "ru_text", "дадатковая псальмодыя", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char *str_modl_cez_den_zalmy_zo_dna[POCET_JAZYKOV + 1] = 
 { "bežnej psalmódie", "běžné psalmodie", "ordinary psalmody", "___", "", "běžné psalmodie", "soros zsoltárösszeállítást", "ru_text", "са звычайнай псальмодыі", /* STRING_1_FOR_NEW_LANGUAGE */ };
@@ -2725,7 +2725,7 @@ const char *html_text_opt_1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] =
 	"psalmodia from ordinary day",
 	"",
 	"",
-	"pro modlitbu uprostřed dne použít psalmodii z běžného dne",
+	"pro modlitbu během dne použít psalmodii z běžného dne",
 	"a Napközi imaórában az adott napi zsoltározást venni",
 	"ru_text",
 	"by_text",
@@ -2753,7 +2753,7 @@ const char *html_text_opt_1_mcd_zalmy_ine[POCET_JAZYKOV + 1] =
 	"supplementary psalmodia",
 	"",
 	"",
-	"pro modlitbu uprostřed dne použít doplňkovou psalmodii",
+	"pro modlitbu během dne použít doplňkovou psalmodii",
 	"vegye a napközi imaórákban a kiegészítő zsoltárokat",
 	"ru_text",
 	"by_text",
@@ -2781,7 +2781,7 @@ const char *html_text_opt_1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"použít psalmodii daného týdne ze žaltáře pro všechny tři modlitby uprostřed dne",
+	"použít psalmodii daného týdne ze žaltáře pro všechny tři modlitby během dne",
 	"az adott hét zsoltározását alkalmazni mindhárom napközi imánál",
 	"ru_text",
 	"by_text",
@@ -2791,7 +2791,7 @@ const char *html_text_opt_1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] =
 const char *html_text_opt_1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] =
 {
 	"pre modlitbu cez deň použiť psalmódiu z daného týždňa žaltára pre všetky tri modlitby cez deň",
-	"pro modlitbu uprostřed dne použít žalmy daného týdne ze žaltáře pro všechny tři modlitby během dne",
+	"pro modlitbu uprostřed dne použít žalmy daného týdne ze žaltáře pro všechny tři modlitby uprostřed dne",
 	"",
 	"",
 	"",
@@ -2823,7 +2823,7 @@ const char *html_text_opt_1_mcd_zalmy_tri[POCET_JAZYKOV + 1] =
 	"for prayer during the day use psalmody from three weeks of psalter (current, previous, next)",
 	"",
 	"",
-	"pro modlitbu uprostřed dne použít psalmodii z tří týdnů ze žaltáře (aktuální, předchozí, následující)",
+	"pro modlitbu během dne použít psalmodii z tří týdnů ze žaltáře (aktuální, předchozí, následující)",
 	"a napközi imaórákban vegye az aktuális, az előző és a következő heti zsoltározást",
 	"ru_text",
 	"by_text",
@@ -2837,7 +2837,7 @@ const char *html_text_opt_1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Pokud se někdo modlí více částí modlitby uprostřed dne, může nejprve použít psalmodii daného dne a potom psalmodii předchozího, nebo následujícího týdne.",
+	"Pokud se někdo modlí více částí modlitby během dne, může nejprve použít psalmodii daného dne a potom psalmodii předchozího, nebo následujícího týdne.",
 	"Ha valaki többször naponta mondja a napközi imát, a zsoltározás három hétből (aktuális, előző, következő) van alkalmazva.\nNincs hatása, ha ki van választva a kiegészítő zsoltárok alkalmazása.",
 	"ru_text",
 	"by_text",
