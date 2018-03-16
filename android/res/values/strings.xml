@@ -28,7 +28,7 @@
 
     <string name="prayer_settings_title">Content settings</string>
     <string name="prayer_content_settings_title">Content settings</string>
-    <string name="various_options_in_prayers">Various options in prayers as clicable hyperlinks</string>
+    <string name="various_options_in_prayers">Various options in prayers as clickable hyperlinks</string>
     <string name="alternatives">Alternatives</string>
 
     <string name="prayer_display_settings_title">What to display in prayers</string>
