@@ -2903,6 +2903,17 @@ const char *html_text_opt_1_zalm95_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+// the names of the prayers, lowercase (sample text)
+const char *html_text_invitatory_psalm_jazyk[4][POCET_JAZYKOV + 1] =
+{
+	{ "95", "95 (94)", "95", "95", "95", "94 (95)", "94.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "100", "100 (99)", "100", "100", "100", "99 (100)", "99.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "67", "67 (66)", "67", "67", "67", "66 (67)", "66.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "24", "24 (23)", "24", "24", "24", "23 (24)", "23.", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+};
+
+#define		html_text_invitatory_psalm(a)	html_text_invitatory_psalm_jazyk[a][_global_jazyk]
+
 const char *html_text_option_zobrazit_zvolania[POCET_JAZYKOV + 1] =
 {
 	"opakovať zvolanie po každej prosbe",

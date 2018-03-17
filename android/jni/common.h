@@ -14,6 +14,8 @@
 
 #define Q_UNUSED(arg) (void)arg;
 
+#define CHAR_EMPTY 0
+
 #define SMALL 160
 #define VERY_SMALL 16
 
@@ -66,6 +68,8 @@
 #define CHAR_PRAYER_CROSS      L'\x2020' /*†*/ // used as flexa | U+2020 DAGGER
 #define CHAR_PRAYER_CROSS_ALT  '+'
 #define CHAR_PRAYER_TRIANGLE   L'\x25B3' /*△*/ // 'uppercase delta': Δ (used for doxology) | U+25B3 WHITE UP-POINTING TRIANGLE
+#define CHAR_EM_DASH           L'\x2014' /*—*/ // em dash | U+2014
+#define CHAR_EN_DASH           L'\x2013' /*–*/ // en dash | U+2013
 
 // include parameters
 #define INCLUDE_BEGIN   "BEGIN" // zaciatok
@@ -122,9 +126,9 @@
 
 #pragma region string constants
 
-#define STR_DASH_EN "–"
-#define STR_DASH_EN_WITH_SPACES " – "
-#define STR_DASH_EM "—"
+#define STR_EN_DASH "–"
+#define STR_EN_DASH_WITH_SPACES " – "
+#define STR_EM_DASH "—"
 #define STR_SPACE " "
 #define STR_VERTICAL_BAR "|"
 #define STR_VERTICAL_BAR_WITH_SPACES " | "

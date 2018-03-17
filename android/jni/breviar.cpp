@@ -1259,9 +1259,12 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 			pom2);
 	}
 
-	Export("%s\n", specific_string_before);
+	if (!equals(specific_string_before, STR_EMPTY) && (strlen(specific_string_before) > 0)) {
+		Export("%s\n", specific_string_before);
+	}
+
 	if (!equals(html_tag_begin, STR_EMPTY) && (strlen(html_tag_begin) > 0)) {
-		Export("<%s>\n", html_tag_begin);
+		Export("<%s>", html_tag_begin);
 	}
 
 	// exporting hyperlink
@@ -1280,9 +1283,12 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 	Export(HTML_A_END);
 
 	if (!equals(html_tag_end, STR_EMPTY) && (strlen(html_tag_end) > 0)) {
-		Export("%s\n", html_tag_end);
+		Export("%s", html_tag_end);
 	}
-	Export("%s\n", specific_string_after);
+
+	if (!equals(specific_string_after, STR_EMPTY) && (strlen(specific_string_after) > 0)) {
+		Export("%s\n", specific_string_after);
+	}
 
 	Log("_export_link_helper(): koniec.\n");
 } // _export_link_helper()
@@ -1341,7 +1347,7 @@ void _export_link_show_hide(short int opt, long bit_opt, char popis_show[MAX_STR
 
  // funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
  // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
-void _export_link_multi(short int opt, long bit_opt, short int count, char popis[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')') {
+void _export_link_multi(short int opt, long bit_opt, short int count, char popis[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')', short int new_value = -1) {
 	Log("_export_link_multi(): začiatok...\n");
 
 	char pom[MAX_STR];
@@ -1370,8 +1376,13 @@ void _export_link_multi(short int opt, long bit_opt, short int count, char popis
 
 	Log("_global_opt(6) == %ld; current value == %d; opt == %d, bit == %d\n", _global_opt[OPT_6_ALTERNATIVES_MULTI], current_value, opt, bit_opt);
 
-	// nastavenie novej hodnoty pre hyperlink (len plus 1)
-	current_value = (current_value + 1) MOD count;
+	if ((new_value == -1) || (new_value >= count)) {
+		// nastavenie novej hodnoty pre hyperlink (len plus 1)
+		current_value = (current_value + 1) MOD count;
+	}
+	else {
+		current_value = new_value;
+	}
 
 	setGlobalOption(opt, bit_opt, current_value);
 
@@ -2212,7 +2223,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						strcpy(reference, STR_EMPTY);
 
 						// second, copy refrest to the beginning of reference (if not empty)
-						if (/* (refrest != NULL) && */ !(equals(refrest, STR_EMPTY))) {
+						if (!(equals(refrest, STR_EMPTY))) {
 							// [ToDo]: doplniť nevypisovanie refbuff, ak refrest obsahuje medzeru
 							if (EXPORT_REFERENCIA) {
 								mystrcpy(reference, refrest, MAX_BUFFER);
@@ -2223,19 +2234,18 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						// third, append refbuff to the end of refrest to create full reference
 						strcat(reference, refbuff);
 
-						if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) {
-							// ToDo: transform reference using bible.com format
-						}
-
+						// now, the reference is complete (but it may contain diacritics and/or special characters (Unicode long dashes etc.)
 						if (EXPORT_REFERENCIA) {
 							if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) {
-								Export("%s", mystr_bible_com(reference)); // no need to remove diacritics for bible.com even on Android
+								Export("%s", mystr_bible_com(mystr_replace(reference, STR_EM_DASH, STR_EN_DASH))); // no need to remove diacritics for bible.com even on Android
 							}
 							else {
 #ifdef IO_ANDROID
-								Export("%s", mystr_remove_diacritics(reference));
+								// diacritics removal left only for Android
+								Export("%s", mystr_remove_diacritics(mystr_replace(reference, STR_EM_DASH, STR_EN_DASH)));
 #else
-								Export("%s", reference); // diacritics removal left only for Android
+								// replace em-dash with en-dash
+								Export("%s", mystr_replace(reference, STR_EM_DASH, STR_EN_DASH));
 #endif
 							}
 						}
@@ -2926,9 +2936,18 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	short int exportovat_html_note = NIE;
 	short int exportovat_html_tag = NIE;
 	short int write = ANO; // due to #define EXPORT_RED_AND_NORMAL_STUFF()
+	short int current_value = 0;
+
+	char anchor[SMALL] = STR_EMPTY;
+
+	char before[SMALL] = STR_EMPTY;
+	char after[SMALL] = STR_EMPTY;
 
 	char tag_to_export_begin[SMALL] = STR_EMPTY;
 	char tag_to_export_end[SMALL] = STR_EMPTY;
+
+	char popis_show[SMALL];
+	char popis_hide[SMALL];
 
 	_struct_sc sc;
 
@@ -3388,8 +3407,6 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		short int multi = NIE; // multi == 0 => only on/off (show/hide, two values, one bit) setting; multi == 1 => multiple alternatives
 		short int multi_count = 0;
 
-		char popis_show[SMALL];
-		char popis_hide[SMALL];
 		// note that in some cases must be set vice-versa; see function _export_link_show_hide()
 		mystrcpy(popis_show, html_text_option_skryt[_global_jazyk], SMALL);
 		mystrcpy(popis_hide, html_text_option_zobrazit[_global_jazyk], SMALL);
@@ -3402,7 +3419,6 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 		short int specific_string = HTML_SEQUENCE_NONE;
 
-		char anchor[SMALL];
 		mystrcpy(anchor, paramname, SMALL);
 
 		podmienka = (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI));
@@ -3812,8 +3828,8 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			Log("including %s\n", paramname);
 			Export("%s:begin-->", paramname);
 
-			char before[SMALL] = STR_EMPTY;
-			char after[SMALL] = STR_EMPTY;
+			mystrcpy(before, STR_EMPTY, SMALL);
+			mystrcpy(after, STR_EMPTY, SMALL);
 
 			if (specific_string == HTML_SEQUENCE_PARAGRAPH) {
 				sprintf(before, HTML_P_BEGIN);
@@ -3831,7 +3847,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				_export_link_show_hide(opt, bit, popis_show, popis_hide, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
 			}
 			else {
-				short int current_value = isGlobalOption(opt, bit);
+				current_value = isGlobalOption(opt, bit);
 
 				if (current_value >= multi_count) {
 					current_value = 0;
@@ -4061,6 +4077,52 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			Log("skipping POPIS\n");
 		}
 	} // PARAM_POPIS
+
+	else if ((equals(paramname, PARAM_INVITAT_PSALM_24))
+		|| (equals(paramname, PARAM_INVITAT_PSALM_67))
+		|| (equals(paramname, PARAM_INVITAT_PSALM_95))
+		|| (equals(paramname, PARAM_INVITAT_PSALM_100))) {
+		
+		mystrcpy(before, STR_EMPTY, SMALL);
+		mystrcpy(after, STR_EMPTY, SMALL);
+		mystrcpy(anchor, STR_EMPTY, SMALL);
+
+		current_value = 0;
+		short int psalm = 0;
+
+		if (equals(paramname, PARAM_INVITAT_PSALM_24)) {
+			// psalm 24 is 4th alternative (4/4); zero-based # 3
+			psalm = 24;
+			current_value = 3;
+		}
+		else if (equals(paramname, PARAM_INVITAT_PSALM_67)) {
+			// psalm 67 is 3rd alternative (3/4); zero-based # 2
+			psalm = 67;
+			current_value = 2;
+		}
+		else if (equals(paramname, PARAM_INVITAT_PSALM_95)) {
+			// psalm 95 is 1st alternative (1/4); zero-based # 0
+			psalm = 95;
+			current_value = 0;
+		}
+		else if (equals(paramname, PARAM_INVITAT_PSALM_100)) {
+			// psalm 100 is 2nd alternative (2/4); zero-based # 1
+			psalm = 100;
+			current_value = 1;
+		}
+
+		// we use these variables here even though their names are a little bit confusing :)
+		sprintf(popis_hide, "z%d", psalm);
+
+		sprintf(anchor, HTML_A_HREF_BEGIN "\"#%s\">%s" HTML_A_END, popis_hide, html_text_invitatory_psalm(current_value));
+
+		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES) && isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI) != current_value) {
+			_export_link_multi(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI, 4, (char *)html_text_invitatory_psalm(current_value), (char *)HTML_SPAN_NORMAL, (char *)HTML_CLASS_QUIET, before, after, popis_hide, (char *)HTML_SPAN_END, CHAR_EMPTY, CHAR_EMPTY, current_value);
+		}
+		else {
+			Export(anchor);
+		}
+	} // PARAM_INVITAT_PSALM_...
 
 	else if (equals(paramname, PARAM_HYMNUS)) {
 		switch (type) {
@@ -17947,7 +18009,7 @@ void init_global_string_as_html_title(short int den, short int mesiac, short int
 	char delimiter_dash[SMALL] = STR_EMPTY;
 	char delimiter_bar[SMALL] = STR_EMPTY;
 
-	mystrcpy(delimiter_dash, STR_DASH_EN_WITH_SPACES, SMALL);
+	mystrcpy(delimiter_dash, STR_EN_DASH_WITH_SPACES, SMALL);
 	mystrcpy(delimiter_bar, STR_VERTICAL_BAR_WITH_SPACES, SMALL);
 
 	struct tm dnes = _get_dnes();

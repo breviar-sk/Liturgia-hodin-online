@@ -499,6 +499,12 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ZALM150                  "ZALM150"
 #define PARAM_INVITATORIUM_ANT(i)      "ANT-INVITAT" i
 
+// these are used in template for invitatory (m_invitat.htm) for hyperlinks
+#define PARAM_INVITAT_PSALM_24        "INVITAT-PS-24"
+#define PARAM_INVITAT_PSALM_67        "INVITAT-PS-67"
+#define PARAM_INVITAT_PSALM_95        "INVITAT-PS-95"
+#define PARAM_INVITAT_PSALM_100       "INVITAT-PS-100"
+
 // keywords
 #define KEYWORD_BEGIN   "BEGIN"
 #define KEYWORD_END     "END"
