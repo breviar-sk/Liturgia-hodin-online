@@ -7569,6 +7569,19 @@ const char *text_MAJ_21_OP[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_MAJ_21_OFM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Franza Jägerstättera, otca rodiny, mučeníka, člena 3. rádu",
+	"Bl. Franze Jägerstättera, otce rodiny, mučedníka, člena 3. řádu",
+	"",
+	"",
+	"",
+	"Bl. Franze Jägerstättera, otce rodiny, mučedníka, člena 3. řádu",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_MAJ_22[POCET_JAZYKOV + 1] =
 {
 	"Sv. Rity z Kassie, rehoľníčky",
