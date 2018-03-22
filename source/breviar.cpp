@@ -11728,25 +11728,27 @@ void _export_rozbor_dna(short int typ) {
 #endif
 	_export_rozbor_dna_interpretuj_zoznam(EXPORT_TYP_WEB_MODE, typ, som_v_tabulke, (char *)STR_EMPTY, 0, 0);
 
-	if (typ == EXPORT_DNA_VIAC_DNI) {
-		// ďalší stĺpec: rímske číslo podľa týždňa žaltára, pre nedele aj liturgický rok A, B resp. C
-		if (som_v_tabulke == ANO) {
-			Export(HTML_TABLE_CELL_END "\n");
+	if (ANO == NIE) {
+		if (typ == EXPORT_DNA_VIAC_DNI) {
+			// ďalší stĺpec: rímske číslo podľa týždňa žaltára, pre nedele aj liturgický rok A, B resp. C
+			if (som_v_tabulke == ANO) {
+				Export(HTML_TABLE_CELL_END "\n");
 
-			ExportHtmlComment("col:roman_number");
+				ExportHtmlComment("col:roman_number");
 
-			Export("<" HTML_TABLE_CELL_VALIGN_TOP ">");
+				Export("<" HTML_TABLE_CELL_VALIGN_TOP ">");
+			}
+			else {
+				Export(HTML_NONBREAKING_SPACE);
+			}
+			Export("\n");
+			// vypisanie rimskeho cisla (citanie)
+			Export("%s", _global_string2);
+		}// (typ == EXPORT_DNA_VIAC_DNI)
+		else if (typ == EXPORT_DNA_XML) {
+			Export(ELEM_BEGIN(XML_STRING_VOLUME) "%s" ELEM_END(XML_STRING_VOLUME) "\n", _global_string2);
 		}
-		else {
-			Export(HTML_NONBREAKING_SPACE);
-		}
-		Export("\n");
-		// vypisanie rimskeho cisla (citanie)
-		Export("%s", _global_string2);
-	}// (typ == EXPORT_DNA_VIAC_DNI)
-	else if (typ == EXPORT_DNA_XML) {
-		Export(ELEM_BEGIN(XML_STRING_VOLUME) "%s" ELEM_END(XML_STRING_VOLUME) "\n", _global_string2);
-	}
+	}// do not export this information, it is not useful
 
 	if (som_v_tabulke == ANO) {
 		Export(HTML_TABLE_CELL_END "\n");
@@ -13278,11 +13280,17 @@ void _export_buttons_rok_prev_next(short int r, char action[MAX_STR], char pom2[
 		STR_ROK, r - 1,
 		pom2);
 	Export_HtmlForm(action);
-	Export(HTML_FORM_INPUT_SUBMIT0 " value=\"" HTML_LEFT_ARROW " %d (", r - 1);
+	Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %d\" value=\"" HTML_LEFT_ARROW " %d", html_button_predchadzajuci_[_global_jazyk], html_text_rok[_global_jazyk], r - 1, r - 1);
+
+#ifdef DISPLAY_TEXT_PREV_NEXT_YEAR
+	Export(" (");
 	Export((char *)html_button_predchadzajuci_[_global_jazyk]);
 	Export(" ");
 	Export((char *)html_text_rok[_global_jazyk]);
-	Export(")\"" HTML_FORM_INPUT_END "\n");
+	Export(")");
+#endif
+
+	Export("\"" HTML_FORM_INPUT_END "\n");
 	Export("</form>\n");
 	Export(HTML_TABLE_CELL_END "\n");
 
@@ -13296,11 +13304,17 @@ void _export_buttons_rok_prev_next(short int r, char action[MAX_STR], char pom2[
 		STR_ROK, r + 1,
 		pom2);
 	Export_HtmlForm(action);
-	Export(HTML_FORM_INPUT_SUBMIT0 " value=\"(");
+	Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %d\" value=\"", html_button_nasledujuci_[_global_jazyk], html_text_rok[_global_jazyk], r + 1);
+
+#ifdef DISPLAY_TEXT_PREV_NEXT_YEAR
+	Export("(");
 	Export((char *)html_button_nasledujuci_[_global_jazyk]);
 	Export(" ");
 	Export((char *)html_text_rok[_global_jazyk]);
-	Export(") %d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", r + 1);
+	Export(") ");
+#endif
+
+	Export("%d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", r + 1);
 	Export("</form>\n");
 	Export(HTML_TABLE_CELL_END "\n");
 
@@ -13613,7 +13627,7 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 			if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK)) {
 				Export("\n\n" HTML_A_NAME_BEGIN "\"mesiac%d\">" HTML_A_END, m);
 				Export("\n" HTML_P_CENTER "<" HTML_SPAN_RED_BOLD "><" HTML_SPAN_SMALLCAPS ">%s" HTML_SPAN_END "" HTML_SPAN_END, nazov_Mesiaca(m));
-				Export(" (" HTML_A_HREF_BEGIN "\"#rok\">%s" HTML_A_END ")" HTML_P_END "\n", html_text_zoznam_mesiacov[_global_jazyk]);
+				Export(" (" HTML_A_HREF_BEGIN "\"#rok\" " HTML_CLASS_SMALL ">%s" HTML_A_END ")" HTML_P_END "\n", html_text_zoznam_mesiacov[_global_jazyk]);
 			}
 			rozbor_mesiaca(m + 1, r);
 		}// for(m)
@@ -14803,11 +14817,17 @@ void _main_analyza_roku(char *rok) {
 			STR_ANALYZA_ROKU, year - 1,
 			pom2);
 		Export_HtmlForm(action);
-		Export(HTML_FORM_INPUT_SUBMIT0 " value=\"" HTML_LEFT_ARROW " %d (", year - 1);
+		Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %d\" value=\"" HTML_LEFT_ARROW " %d", html_button_predchadzajuci_[_global_jazyk], html_text_rok[_global_jazyk], year - 1, year - 1);
+
+#ifdef DISPLAY_TEXT_PREV_NEXT_YEAR
+		Export(" (");
 		Export((char *)html_button_predchadzajuci_[_global_jazyk]);
 		Export(" ");
 		Export((char *)html_text_rok[_global_jazyk]);
-		Export(")\"" HTML_FORM_INPUT_END "\n");
+		Export(")");
+#endif
+
+		Export("\"" HTML_FORM_INPUT_END "\n");
 		Export("</form>\n");
 		Export(HTML_TABLE_CELL_END "\n");
 
@@ -14819,11 +14839,17 @@ void _main_analyza_roku(char *rok) {
 			STR_ANALYZA_ROKU, year + 1,
 			pom2);
 		Export_HtmlForm(action);
-		Export(HTML_FORM_INPUT_SUBMIT0 " value=\"(");
+		Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %d\" value=\"", html_button_nasledujuci_[_global_jazyk], html_text_rok[_global_jazyk], year + 1);
+
+#ifdef DISPLAY_TEXT_PREV_NEXT_YEAR
+		Export("(");
 		Export((char *)html_button_nasledujuci_[_global_jazyk]);
 		Export(" ");
 		Export((char *)html_text_rok[_global_jazyk]);
-		Export(") %d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", year + 1);
+		Export(") ");
+#endif
+
+		Export("%d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", year + 1);
 		Export("</form>\n");
 		Export(HTML_TABLE_CELL_END "\n");
 

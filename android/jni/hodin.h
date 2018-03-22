@@ -703,6 +703,7 @@ const char *nazov_slavenia_lokal[] =
 , "у Гродзенскай дыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: успамін" // LOKAL_SLAV_GRODZ_SL_PINSK_MINSK_SP
 , "v pražském klášteře u Panny Marie Sněžné: slavnost"                                                          // LOKAL_SLAV_PRAHA_OFM
 , "pro mnišky: památka"                                                                                         // LOKAL_SLAV_OP_MNISKY_PAMATKA
+, "pre OFS: spomienka"                                                                                          // LOKAL_SLAV_SPOMIENKA_OFS
 };
 
 // names of liturgical colors
