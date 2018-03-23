@@ -138,7 +138,7 @@ void _buttons_prev_up_next(FILE * expt){
 		}
 		Export_to_file(expt, HTML_A_HREF_BEGIN "\"%s\"%s>", file_name_pom, optional_html_class_button);
 		Export_to_file(expt, optional_html_button_begin);
-		Export_to_file(expt, (char *)html_text_batch_Prev[_global_jazyk]);
+		Export_to_file(expt, HTML_LEFT_ARROW_CLASSIC);
 		Export_to_file(expt, " ");
 		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_prev));
 		Export_to_file(expt, optional_html_button_end);
@@ -149,6 +149,7 @@ void _buttons_prev_up_next(FILE * expt){
 	// ^ hore
 	Export_to_file(expt, HTML_A_HREF_BEGIN "\".%s%s\"%s>", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore, optional_html_class_button); // v tom istom adresári
 	Export_to_file(expt, optional_html_button_begin);
+	Export_to_file(expt, HTML_UP_ARROW_CLASSIC "" STR_SPACE);
 	Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
 	Export_to_file(expt, optional_html_button_end);
 	Export_to_file(expt, HTML_A_END);
@@ -171,7 +172,7 @@ void _buttons_prev_up_next(FILE * expt){
 		Export_to_file(expt, optional_html_button_begin);
 		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_next));
 		Export_to_file(expt, " ");
-		Export_to_file(expt, (char *)html_text_batch_Next[_global_jazyk]);
+		Export_to_file(expt, HTML_RIGHT_ARROW_CLASSIC);
 		Export_to_file(expt, optional_html_button_end);
 		Export_to_file(expt, HTML_A_END);
 	}

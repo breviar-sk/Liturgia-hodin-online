@@ -2754,16 +2754,16 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	Log("--includeFile(): end\n");
 } // includeFile()
 
-void _export_rozbor_dna_navig_top_bottom_simple(char *target, const char *text) {
-	Export(HTML_A_HREF_BEGIN "\"#%s\" " HTML_CLASS_QUIET ">%s" HTML_A_END, target, text);
+void _export_rozbor_dna_navig_top_bottom_simple(char *target, const char *text, const char *arrow) {
+	Export(HTML_A_HREF_BEGIN "\"#%s\" " HTML_CLASS_QUIET ">%s %s" HTML_A_END, target, arrow, text);
 } // _export_rozbor_dna_navig_top_bottom_simple()
 
-void _export_rozbor_dna_navig_top_bottom(char *target, const char *text) {
+void _export_rozbor_dna_navig_top_bottom(char *target, const char *text, const char *arrow) {
 	ExportHtmlComment("p-navigation:begin");
 
 	Export(HTML_P_CENTER_SMALL);
 
-	_export_rozbor_dna_navig_top_bottom_simple(target, text);
+	_export_rozbor_dna_navig_top_bottom_simple(target, text, arrow);
 
 	Export(HTML_P_END "\n");
 
@@ -3937,11 +3937,11 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				Export("navigácia:begin-->\n");
 
 				Export(HTML_P_CENTER_SMALL);
-				_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_TOP, html_text_top[_global_jazyk]);
+				_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_TOP, html_text_top[_global_jazyk], HTML_UP_ARROW_CLASSIC);
 
 				Export(STR_VERTICAL_BAR_WITH_SPACES);
 
-				_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_BOTTOM, html_text_bottom[_global_jazyk]);
+				_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_BOTTOM, html_text_bottom[_global_jazyk], HTML_DOWN_ARROW_CLASSIC);
 				Export(HTML_P_END "\n");
 
 				Export("<!--navigácia:end");
@@ -3964,7 +3964,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				ExportHtmlComment("navigácia %d", _global_pocet_navigacia);
 				if ((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2)) {
 
-					_export_rozbor_dna_navig_top_bottom((char *)HTML_BOTTOM, html_text_bottom[_global_jazyk]);
+					_export_rozbor_dna_navig_top_bottom((char *)HTML_BOTTOM, html_text_bottom[_global_jazyk], HTML_DOWN_ARROW_CLASSIC);
 
 					_export_rozbor_dna_buttons_dni(EXPORT_DNA_JEDEN_DEN, NIE, aj_navigacia);
 
@@ -3983,7 +3983,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				}// if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2))
 				else {
 
-					_export_rozbor_dna_navig_top_bottom((char *)HTML_TOP, html_text_top[_global_jazyk]);
+					_export_rozbor_dna_navig_top_bottom((char *)HTML_TOP, html_text_top[_global_jazyk], HTML_UP_ARROW_CLASSIC);
 
 					Export("<" HTML_TABLE ">\n");
 					Export("<" HTML_TABLE_ROW ">\n");
@@ -8464,7 +8464,7 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 			Export(HTML_FORM_INPUT_SUBMIT1" title=\"%s\" value=\"", _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 		}
 		if (dnes_dnes == 2) {
-			Export((char *)html_text_batch_Prev[_global_jazyk]);
+			Export(HTML_LEFT_ARROW_CLASSIC);
 			Export(HTML_NONBREAKING_SPACE);
 			Export((char *)html_button_tento_den[_global_jazyk]);
 		}
@@ -8472,7 +8472,7 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 			Export((char *)html_button_dnes[_global_jazyk]);
 		}
 		else {
-			Export((char *)html_button_hore[_global_jazyk]);
+			Export(HTML_UP_ARROW_CLASSIC "" STR_SPACE);
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 			Export((char *)html_button_tento_den[_global_jazyk]);
 #else
@@ -12779,6 +12779,7 @@ void showAllPrayers(short int den, short int mesiac, short int rok, short int po
 			Export(HTML_P_CENTER);
 			Export(HTML_A_HREF_BEGIN "\"#top\"%s>", optional_html_class_button);
 			Export("%s", optional_html_button_begin);
+			Export(HTML_UP_ARROW_CLASSIC "" STR_SPACE);
 			Export((char *)html_text_batch_Back[_global_jazyk]);
 			Export("%s", optional_html_button_end);
 			Export(HTML_A_END);
@@ -13612,7 +13613,7 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 			Export(HTML_P_CENTER"\n");
 			// najprv vygenerujem zoznam liniek (mesiace)
 			for (m = MES_JAN; m <= MES_DEC; m++) {
-				Export(HTML_A_HREF_BEGIN "\"#mesiac%d\"><" HTML_SPAN_SMALLCAPS ">%s" HTML_SPAN_END "" HTML_A_END "" HTML_NONBREAKING_SPACE "\n", m, nazov_Mesiaca(m));
+				Export(HTML_A_HREF_BEGIN "\"#mesiac%d\"><" HTML_SPAN_SMALLCAPS ">%s" HTML_SPAN_END "" HTML_A_END "" STR_SPACE "" HTML_NONBREAKING_SPACE "\n", m, nazov_Mesiaca(m));
 			}
 			// teraz linku na #explain -- vysvetlivky
 
@@ -13627,7 +13628,7 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 			if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK)) {
 				Export("\n\n" HTML_A_NAME_BEGIN "\"mesiac%d\">" HTML_A_END, m);
 				Export("\n" HTML_P_CENTER "<" HTML_SPAN_RED_BOLD "><" HTML_SPAN_SMALLCAPS ">%s" HTML_SPAN_END "" HTML_SPAN_END, nazov_Mesiaca(m));
-				Export(" (" HTML_A_HREF_BEGIN "\"#rok\" " HTML_CLASS_SMALL ">%s" HTML_A_END ")" HTML_P_END "\n", html_text_zoznam_mesiacov[_global_jazyk]);
+				Export(" (" HTML_A_HREF_BEGIN "\"#rok\" " HTML_CLASS_SMALL ">%s %s" HTML_A_END ")" HTML_P_END "\n", HTML_UP_ARROW_CLASSIC, html_text_zoznam_mesiacov[_global_jazyk]);
 			}
 			rozbor_mesiaca(m + 1, r);
 		}// for(m)
@@ -14798,8 +14799,8 @@ void _main_analyza_roku(char *rok) {
 	Export(HTML_LINE_BREAK"\n" HTML_P_CENTER "\n");
 	// teraz zoznam mesiacov -- podla casti pre analyzu dna
 	for (i = 1; i <= 12; i++) {
-		Vytvor_global_link(VSETKY_DNI, i, year, LINK_DEN_MESIAC, NIE);
-		Export("%s ", _global_link);
+		Vytvor_global_link_class(VSETKY_DNI, i, year, LINK_DEN_MESIAC, NIE, HTML_CLASS_NAME_SMALLCAPS);
+		Export("%s " HTML_NONBREAKING_SPACE, _global_link);
 	}
 	Export("\n" HTML_P_END "\n");
 
@@ -15032,6 +15033,7 @@ void _batch_mode_header(short mesiac, short rok) {
 	// ^ hore
 	fprintf(batch_month_file, HTML_P_CENTER "" HTML_A_HREF_BEGIN "\"..%s%s\"%s>", STR_PATH_SEPARATOR_HTML, name_batch_html_file, optional_html_class_button);
 	fprintf(batch_month_file, "%s", optional_html_button_begin);
+	fprintf(batch_month_file, "%s", HTML_UP_ARROW_CLASSIC "" STR_SPACE);
 	fprintf(batch_month_file, "%s", (char *)html_text_batch_Back[_global_jazyk]);
 	fprintf(batch_month_file, "%s", optional_html_button_end);
 	fprintf(batch_month_file, HTML_A_END "" HTML_P_END);

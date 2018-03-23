@@ -250,32 +250,58 @@
 
 #define HTML_TABLE_CELL_BORDER_END	HTML_TABLE_CELL_END
 
-#define HTML_SPAN_END               "</span>"
+#define HTML_CLASS                  "class"
 
-#define HTML_SPAN_NORMAL            "span class=\"normal\""
-#define HTML_SPAN_ITALIC            "span class=\"it\""
-#define HTML_SPAN_BOLD              "span class=\"bold\""
-#define HTML_SPAN_BOLD_IT           "span class=\"boldit\""
-#define HTML_SPAN_RED_TITLE         "span class=\"redtitle\""
-#define HTML_SPAN_RED               "span class=\"red\""
-#define HTML_SPAN_RED_BOLD          "span class=\"redbold\""
-#define HTML_SPAN_BLUE              "span class=\"blue\""
-#define HTML_SPAN_BLUE_BOLD         "span class=\"bluebold\""
-#define HTML_SPAN_RED_SMALL         "span class=\"redsmall\""
-#define HTML_SPAN_RED_SUBTITLE      "span class=\"redsubtitle\""
-#define HTML_SPAN_SMALL             "span class=\"small\""
-#define HTML_SPAN_EXPLAIN           "span class=\"explain\""
-#define HTML_SPAN_PARAMETER         "span class=\"parameter\""
-#define HTML_SPAN_VALUE             "span class=\"value\""
-#define HTML_SPAN_SMALLCAPS         "span class=\"smallcaps\""
-#define HTML_SPAN_XS_CAPS           "span class=\"xsmallcaps\""
-#define HTML_SPAN_HIDDEN            "span class=\"hidden\""
-#define HTML_SPAN_UPPERCASE         "span class=\"uppercase\""
+#define HTML_SPAN                   "span"
 
-#define HTML_SPAN_TEXTNOTE          "span class=\"textnote\""
+#define HTML_SPAN_CLASS             HTML_SPAN " " HTML_CLASS "=" // without quote
 
-#define HTML_CLASS_CALENDAR         "class=\"calendar\""
-#define HTML_CLASS_SMALL            "class=\"small\""
+#define HTML_SPAN_END               "</" HTML_SPAN ">"
+
+#define HTML_CLASS_NAME_NORMAL        "normal"
+#define HTML_CLASS_NAME_ITALIC        "it"
+#define HTML_CLASS_NAME_BOLD          "bold"
+#define HTML_CLASS_NAME_BOLD_IT       "boldit"
+#define HTML_CLASS_NAME_RED_TITLE     "redtitle"
+#define HTML_CLASS_NAME_RED           "red"
+#define HTML_CLASS_NAME_RED_BOLD      "redbold"
+#define HTML_CLASS_NAME_BLUE          "blue"
+#define HTML_CLASS_NAME_BLUE_BOLD     "bluebold"
+#define HTML_CLASS_NAME_RED_SMALL     "redsmall"
+#define HTML_CLASS_NAME_RED_SUBTITLE  "redsubtitle"
+#define HTML_CLASS_NAME_SMALL         "small"
+#define HTML_CLASS_NAME_SMALLCAPS     "smallcaps"
+#define HTML_CLASS_NAME_EXPLAIN       "explain"
+#define HTML_CLASS_NAME_PARAMETER     "parameter"
+#define HTML_CLASS_NAME_VALUE         "value"
+#define HTML_CLASS_NAME_XS_CAPS       "xsmallcaps"
+#define HTML_CLASS_NAME_HIDDEN        "hidden"
+#define HTML_CLASS_NAME_UPPERCASE     "uppercase"
+#define HTML_CLASS_NAME_TEXTNOTE      "textnote"
+
+#define HTML_SPAN_NORMAL          HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_NORMAL "\""
+#define HTML_SPAN_ITALIC          HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_ITALIC "\""
+#define HTML_SPAN_BOLD            HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_BOLD "\""
+#define HTML_SPAN_BOLD_IT         HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_BOLD_IT "\""
+#define HTML_SPAN_RED_TITLE       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED_TITLE "\""
+#define HTML_SPAN_RED             HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED "\""
+#define HTML_SPAN_RED_BOLD        HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED_BOLD "\""
+#define HTML_SPAN_BLUE            HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_BLUE "\""
+#define HTML_SPAN_BLUE_BOLD       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_BLUE_BOLD "\""
+#define HTML_SPAN_RED_SMALL       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED_SMALL "\""
+#define HTML_SPAN_RED_SUBTITLE    HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED_SUBTITLE "\""
+#define HTML_SPAN_SMALL           HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_SMALL "\""
+#define HTML_SPAN_SMALLCAPS       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_SMALLCAPS "\""
+#define HTML_SPAN_EXPLAIN         HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_EXPLAIN "\""
+#define HTML_SPAN_PARAMETER       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_PARAMETER "\""
+#define HTML_SPAN_VALUE           HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_VALUE "\""
+#define HTML_SPAN_XS_CAPS         HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_XS_CAPS "\""
+#define HTML_SPAN_HIDDEN          HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_HIDDEN "\""
+#define HTML_SPAN_UPPERCASE       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_UPPERCASE "\""
+#define HTML_SPAN_TEXTNOTE        HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_TEXTNOTE "\""
+
+#define HTML_CLASS_CALENDAR       "class=\"calendar\""
+#define HTML_CLASS_SMALL          "class=\"small\""
 
 #define HTML_CALENDAR_HEADING       "span class=\"calendar heading\""
 #define HTML_CALENDAR_DAYS          "span class=\"calendar day_name\""
@@ -283,13 +309,13 @@
 #define HTML_CALENDAR_TODAY         "span class=\"calendar today\""
 
 #define HTML_CLASS_NAME_CALENDAR_TODAY_SUNDAY "calendar today bold"
-#define HTML_CLASS_NAME_CALENDAR_TODAY "calendar today"
-#define HTML_CLASS_NAME_CALENDAR_SUNDAY "calendar day bold"
-#define HTML_CLASS_NAME_CALENDAR_DAY "calendar day"
+#define HTML_CLASS_NAME_CALENDAR_TODAY        "calendar today"
+#define HTML_CLASS_NAME_CALENDAR_SUNDAY       "calendar day bold"
+#define HTML_CLASS_NAME_CALENDAR_DAY          "calendar day"
 
-#define HTML_SPAN_TOOLTIP           "span title=\"%s\"" // obsahuje %s
-#define HTML_SPAN_BOLD_TOOLTIP      "span class=\"bold\" title=\"%s\"" // obsahuje %s
-#define HTML_SPAN_NORMAL_TOOLTIP    "span class=\"normal\" title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_TOOLTIP           HTML_SPAN " " "title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_BOLD_TOOLTIP      HTML_SPAN " " "class=\"bold\" title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_NORMAL_TOOLTIP    HTML_SPAN " " "class=\"normal\" title=\"%s\"" // obsahuje %s
 
 #define HTML_SUP_RED                "sup class=\"red\""
 
@@ -323,6 +349,11 @@
 #define HTML_COMMENT_BEGIN		    "<!--"
 #define HTML_COMMENT_END		    "-->"
 #define HTML_FONT_SIZE_FARBA	    "80%%"
+
+#define HTML_LEFT_ARROW_CLASSIC		"&larr;"
+#define HTML_RIGHT_ARROW_CLASSIC	"&rarr;"
+#define HTML_UP_ARROW_CLASSIC		"&uarr;"
+#define HTML_DOWN_ARROW_CLASSIC		"&darr;"
 
 #define HTML_LEFT_ARROW			    "&laquo;"
 #define HTML_RIGHT_ARROW		    "&raquo;"
