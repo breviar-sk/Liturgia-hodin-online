@@ -692,6 +692,14 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST "of1sss"
 #endif
 
+// Mary antiphones for compline
+#define FORCE_BIT_OPT_1_KOMPL_MARIA_ANT 139
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT "FORCE_BIT_OPT_1_KOMPL_MARIA_ANT"
+#else
+#define STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT "of1cma"
+#endif
+
 // žalmy zo sviatku
 #define FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST 79
 #ifdef LONG_PARAM_NAMES
@@ -917,6 +925,13 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_PLACE_OPT_6_PSALM_MULTI "FORCE_PLACE_OPT_6_PSALM_MULTI"
 #else
 #define STR_FORCE_PLACE_OPT_6_PSALM_MULTI "of6ps"
+#endif
+
+#define FORCE_PLACE_OPT_6_MARIA_ANT_MULTI 140
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_PLACE_OPT_6_MARIA_ANT_MULTI "FORCE_PLACE_OPT_6_MARIA_ANT_MULTI"
+#else
+#define STR_FORCE_PLACE_OPT_6_MARIA_ANT_MULTI "of6cma"
 #endif
 
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
@@ -1251,6 +1266,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_1_ZAVER                     "BitOpt1PrayerConclusions"
 #define XML_BIT_OPT_1_OVERRIDE_STUP_SLAV        "BitOpt1OverrideCelebrationLevel"
 #define XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST     "BitOpt1CelebrationLevelForOverride"
+#define XML_BIT_OPT_1_KOMPL_MARIA_ANT           "BitOpt1ComplineMaryAnt"
 
 // POCET_OPT_2_HTML_EXPORT
 #define XML_BIT_OPT_2_ISO_DATUM                 "BitOpt2ISOFormat"
@@ -1300,6 +1316,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_PLACE_OPT_6_KCIT_RESP_MULTI         "PlaceOpt6ShortReadingRespMulti"
 #define XML_PLACE_OPT_6_KRESP_MULTI             "PlaceOpt6ShortRespMulti"
 #define XML_PLACE_OPT_6_PSALM_MULTI             "PlaceOpt6PsalmMulti"
+#define XML_PLACE_OPT_6_MARIA_ANT_MULTI         "PlaceOpt6ComplMariaAntMulti"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<" elem ">"

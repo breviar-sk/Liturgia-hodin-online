@@ -5,7 +5,7 @@
 .comment, p.comment, .hymn p.comment { 
 	font-size: 80%; 
 	font-weight: normal; 
-	padding-left: 1.2em;  !important;
+	padding-left: 1.2em !important;
 }
 
 .textnote, p.textnote, .hymn p.textnote { 
@@ -134,7 +134,7 @@ div.responsory {
 .reading-title { 
 	color: #ff0000;
 	font-style: italic;
-	font-weight: normal;
+	font-weight: normal !important;
 	text-align: center;
 }
 
@@ -1070,11 +1070,11 @@ sup {
 
 /* always use bold font - no override by breviar-normal-font.css */
 .strong-always { 
-	font-weight: bold; !important;
+	font-weight: bold !important;
 }
 
 p.strong-always, h3.strong-always { 
-	font-weight: bold; !important;
+	font-weight: bold !important;
 }
 
 .nav-arrow {

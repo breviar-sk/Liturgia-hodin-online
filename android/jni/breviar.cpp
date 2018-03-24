@@ -513,6 +513,7 @@ short int useWhenGlobalOption(short opt_i, long bit_opt_i_component_j) {
 			|| (bit_opt_i_component_j == BIT_OPT_1_PROSBY_ZVOLANIE)
 			|| (bit_opt_i_component_j == BIT_OPT_1_ZAVER)
 			|| (bit_opt_i_component_j == BIT_OPT_1_SKRY_POPIS)
+			|| (bit_opt_i_component_j == BIT_OPT_1_KOMPL_MARIA_ANT)
 			)) {
 			return ANO;
 		}
@@ -2783,23 +2784,6 @@ void init_marianske_anfifony_file(_struct_anchor_and_file &af) {
 	return;
 } // init_marianske_anfifony_file()
 
-void init_url_marianske_antifony(char url[MAX_STR]) {
-	Log("init_url_marianske_antifony(): začiatok...\n");
-	char pom2[MAX_STR];
-	char pom3[MAX_STR];
-	mystrcpy(pom2, STR_EMPTY, MAX_STR);
-	mystrcpy(pom3, STR_EMPTY, MAX_STR);
-
-	prilep_request_options(pom2, pom3);
-
-	sprintf(pom3, HTML_LINK_CALL3, script_name, STR_QUERY_TYPE, STR_PRM_STATIC_TEXT, STR_STATIC_TEXT, skratka_static_text[STATIC_TEXT_MARIANSKE_ANTIFONY], pom2);
-
-	mystrcpy(url, pom3, MAX_STR);
-	Log("URL == %s\n", url);
-
-	Log("init_url_marianske_antifony(): koniec.\n");
-} // init_url_marianske_antifony()
-
 void init_ordinarium_file(_struct_anchor_and_file &af, short int modlitba) {
 	mystrcpy(af.anchor, ANCHOR_ORDINARIUM, MAX_STR_AF_ANCHOR);
 
@@ -2904,6 +2888,8 @@ void _export_global_string_spol_cast(short int aj_vslh_235b) {
 #define _global_modl_prosby_anchor (type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.prosby.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.prosby.anchor : ((type == MODL_PRVE_VESPERY) ? _global_modl_prve_vespery.prosby.anchor : ((type == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.ukonkaj.anchor : _global_modl_prve_kompletorium.ukonkaj.anchor)))
 
 #define _global_modl_antifona_anchor (type == MODL_INVITATORIUM) ? _global_modl_invitatorium.antifona1.anchor : ((type == MODL_RANNE_CHVALY) ? _global_modl_ranne_chvaly.benediktus.anchor : ((type == MODL_VESPERY) ? _global_modl_vespery.magnifikat.anchor : _global_modl_prve_vespery.magnifikat.anchor))
+
+#define _global_modl_maria_ant_anchor (type == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.maria_ant.anchor : _global_modl_prve_kompletorium.maria_ant.anchor
 
 // dostane vstup to, co sa pri parsovani templatu nachadza medzi znakmi CHAR_KEYWORD_BEGIN a CHAR_KEYWORD_END;
 // zrejme ide o parameter; podla neho inkluduje subor (alebo cast suboru)
@@ -3058,6 +3044,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		|| (equals(paramname, PARAM_ZAVER_BEGIN)) || (equals(paramname, PARAM_ZAVER_END))
 		|| (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_BEGIN)) || (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_END))
 		|| (equals(paramname, PARAM_ZAVER_OSTATNI_BEGIN)) || (equals(paramname, PARAM_ZAVER_OSTATNI_END))
+		|| (equals(paramname, PARAM_MARIANSKE_ANTIFONY_BEGIN)) || (equals(paramname, PARAM_MARIANSKE_ANTIFONY_END))
 		|| (equals(paramname, PARAM_TTS_HEADING_BEGIN)) || (equals(paramname, PARAM_TTS_HEADING_END))
 		|| (equals(paramname, PARAM_INVITAT_COMMON_BEGIN)) || (equals(paramname, PARAM_INVITAT_COMMON_END))
 		|| (equals(paramname, PARAM_INVITAT_PSALM_BEGIN("0"))) || (equals(paramname, PARAM_INVITAT_PSALM_END("0")))
@@ -3087,6 +3074,10 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_OTCENAS)) {
 			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS));
+			exportovat_html_note = ANO;
+		}
+		else if (startsWith(paramname, (char *)KEYWORD_MARIANSKE_ANTIFONY)) {
+			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_KOMPL_MARIA_ANT));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_INVITAT_COMMON)) {
@@ -3395,9 +3386,11 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		|| (equals(paramname, PARAM_ALT_KCIT_RESP_MULTI))
 		|| (equals(paramname, PARAM_ALT_KRESP_MULTI))
 		|| (equals(paramname, PARAM_ALT_PSALM_MULTI))
+		|| (equals(paramname, PARAM_ALT_MARIA_ANT_MULTI))
 		|| (equals(paramname, PARAM_SPOL_CAST_SPOM))
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
+		|| (equals(paramname, PARAM_MARIANSKE_ANTIFONY))
 		|| (equals(paramname, PARAM_INVITATORIUM_ANT("1")) || equals(paramname, PARAM_INVITATORIUM_ANT("2")) || equals(paramname, PARAM_INVITATORIUM_ANT("3")) || equals(paramname, PARAM_INVITATORIUM_ANT("4")))
 		) {
 		Log("(if((equals(paramname == %s)): _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI == %ld: \n", paramname, _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI);
@@ -3426,6 +3419,9 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 		if (equals(paramname, PARAM_OTCENAS)) {
 			bit = BIT_OPT_1_OTCENAS;
+		}
+		else if (equals(paramname, PARAM_MARIANSKE_ANTIFONY)) {
+			bit = BIT_OPT_1_KOMPL_MARIA_ANT;
 		}
 		else if (equals(paramname, PARAM_ZAVER)) {
 			bit = BIT_OPT_1_ZAVER;
@@ -3666,6 +3662,22 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_kcit_resp[_global_jazyk]);
 		}
+		else if (equals(paramname, PARAM_ALT_MARIA_ANT_MULTI)) {
+			opt = OPT_6_ALTERNATIVES_MULTI;
+			bit = BASE_OPT_6_MARIA_ANT_MULTI;
+			multi = ANO;
+
+			mystrcpy(new_anchor, _global_modl_maria_ant_anchor, MAX_STR_AF_ANCHOR);
+
+			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+
+			multi_count = pocet_multi(new_anchor, bit); // should be the same for new_anchor2
+			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
+
+			podmienka &= (multi_count > 0);
+
+			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_maria_ant[_global_jazyk]);
+		}
 		else if (equals(paramname, PARAM_ALT_KRESP_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
 			bit = BASE_OPT_6_KRESP_MULTI;
@@ -3880,6 +3892,9 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 						// vešepry, prvé vešpery
 						_set_magnifikat(type, NULL, new_anchor);
 					}
+				}
+				else if (bit == BASE_OPT_6_MARIA_ANT_MULTI) {
+					_set_maria_ant(type, NULL, new_anchor);
 				}
 				else if (bit == BASE_OPT_6_MODLITBA_MULTI) {
 					_set_modlitba(type, NULL, new_anchor);
@@ -4761,22 +4776,21 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			; // ostatné modlitby nemajú úkon kajúcnosti
 		}
 	} // PARAM_UKON_KAJ
-	else if (equals(paramname, PARAM_MARIANSKE_ANTIFONY_LINK)) {
+	else if (equals(paramname, PARAM_MARIA_ANT)) {
 		if ((je_kompletorium12(type)) && (_global_skip_in_prayer == NIE)) {
-			// využijeme parameter path, ktorý sa nepoužíva
-#ifndef BEHAVIOUR_WEB
-			_struct_anchor_and_file af;
-			init_marianske_anfifony_file(af);
-			mystrcpy(path, af.file, SMALL);
-#else
-			init_url_marianske_antifony(path);
-#endif
-			Export("-->" HTML_A_HREF_BEGIN "\"%s\"><!--", path);
+			if (type == MODL_KOMPLETORIUM) {
+				strcat(path, _global_modl_kompletorium.maria_ant.file);
+				includeFile(type, paramname, path, _global_modl_kompletorium.maria_ant.anchor);
+			}
+			else {
+				strcat(path, _global_modl_prve_kompletorium.maria_ant.file);
+				includeFile(type, paramname, path, _global_modl_prve_kompletorium.maria_ant.anchor);
+			}
 		}
 		else {
-			; // ostatné modlitby nemajú link na mariánske antifóny
+			; // ostatné modlitby nemajú mariánske antifóny
 		}
-	} // PARAM_MARIANSKE_ANTIFONY_LINK
+	} // PARAM_MARIA_ANT
 	else if (equals(paramname, PARAM_PROSBY)) {
 		switch (type) {
 		case MODL_RANNE_CHVALY:
@@ -7397,10 +7411,13 @@ void xml_export_options(void) {
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_1_ZAVER)"%ld" ELEM_END(XML_BIT_OPT_1_ZAVER) "\n", BIT_OPT_1_ZAVER, STR_FORCE_BIT_OPT_1_ZAVER, html_text_opt_1_zaver[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER)));
 					break;
 				case 16: // BIT_OPT_1_OVERRIDE_STUP_SLAV
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_1_OVERRIDE_STUP_SLAV)"%ld" ELEM_END(XML_BIT_OPT_1_OVERRIDE_STUP_SLAV) "\n", BIT_OPT_1_OVERRIDE_STUP_SLAV, STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV, html_text_opt_1_zaver[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)));
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_1_OVERRIDE_STUP_SLAV)"%ld" ELEM_END(XML_BIT_OPT_1_OVERRIDE_STUP_SLAV) "\n", BIT_OPT_1_OVERRIDE_STUP_SLAV, STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV, html_text_opt_1_override_stupen_slavenia[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)));
 					break;
 				case 17: // BIT_OPT_1_STUP_SVIATOK_SLAVNOST
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST)"%ld" ELEM_END(XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST) "\n", BIT_OPT_1_STUP_SVIATOK_SLAVNOST, STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, html_text_opt_1_zaver[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)));
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST)"%ld" ELEM_END(XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST) "\n", BIT_OPT_1_STUP_SVIATOK_SLAVNOST, STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, html_text_opt_1_slavit_ako_slavnost[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)));
+					break;
+				case 18: // BIT_OPT_1_KOMPL_MARIA_ANT
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_1_KOMPL_MARIA_ANT)"%ld" ELEM_END(XML_BIT_OPT_1_KOMPL_MARIA_ANT) "\n", BIT_OPT_1_KOMPL_MARIA_ANT, FORCE_BIT_OPT_1_KOMPL_MARIA_ANT, html_text_opt_1_maria_ant[_global_jazyk], (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_KOMPL_MARIA_ANT)));
 					break;
 				} // switch(j)
 			}// for j
@@ -7565,6 +7582,9 @@ void xml_export_options(void) {
 					break;
 				case 9: // BASE_OPT_6_PSALM_MULTI
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_PSALM_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_PSALM_MULTI) "\n", BASE_OPT_6_PSALM_MULTI, STR_FORCE_PLACE_OPT_6_PSALM_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI)));
+					break;
+				case 10: // BASE_OPT_6_MARIA_ANT_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_MARIA_ANT_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_MARIA_ANT_MULTI) "\n", BASE_OPT_6_MARIA_ANT_MULTI, STR_FORCE_PLACE_OPT_6_MARIA_ANT_MULTI, "todo", (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_MARIA_ANT_MULTI)));
 					break;
 				} // switch(j)
 			}// for j
@@ -9944,6 +9964,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_ZAVER
 			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER, STR_FORCE_BIT_OPT_1_ZAVER, html_text_opt_1_zaver[_global_jazyk], html_text_opt_1_zaver_explain[_global_jazyk]);
 
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_KOMPL_MARIA_ANT, STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT, html_text_opt_1_maria_ant[_global_jazyk], html_text_opt_1_maria_ant_explain[_global_jazyk]);
+
 			Export(HTML_TABLE_CELL_END "\n");
 			Export(HTML_TABLE_ROW_END "\n");
 
@@ -9960,6 +9983,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_TD, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_PLNE_RESP, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PLNE_RESP)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_ZAVER, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_KOMPL_MARIA_ANT)) ? ANO : NIE);
 		} // else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
 		//---------------------------------------------------------------------

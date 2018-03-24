@@ -215,6 +215,7 @@ extern void _set_kresponz(short int modlitba, const char *file, const char *anch
 extern void _set_benediktus(short int modlitba, const char *file, const char *anchor);
 extern void _set_prosby(short int modlitba, const char *file, const char *anchor);
 extern void _set_modlitba(short int modlitba, const char *file, const char *anchor);
+extern void _set_maria_ant(short int modlitba, const char *file, const char *anchor);
 
 extern void _set_ant_spomprivileg(short int modlitba, const char *file, const char *anchor);
 extern void _set_modlitba_spomprivileg(short int modlitba, const char *file, const char *anchor);
@@ -1397,7 +1398,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 #define FILE_DODATOK_PROSBY "dodprosby.htm"
 
-#define ANCHOR_MARIANSKE_ANTIFONY "MARIANSKE_ANTIFONY"
+#define ANCHOR_MARIANSKE_ANTIFONY "MARIANSKE-ANTIFONY"
 #define FILE_MARIANSKE_ANTIFONY "ord_km.htm"
 
 #define ANCHOR_ORDINARIUM "ORDINARIUM"

@@ -960,6 +960,19 @@ void _set_prosby(short int modlitba, const char *file, const char *anchor) {
 	} // switch(modlitba)
 } // _set_prosby()
 
+void _set_maria_ant(short int modlitba, const char *file, const char *anchor) {
+	switch (modlitba) {
+	case MODL_KOMPLETORIUM:
+		mystrcpy(_global_modl_kompletorium.maria_ant.file, file, MAX_STR_AF_FILE);
+		mystrcpy(_global_modl_kompletorium.maria_ant.anchor, anchor, MAX_STR_AF_ANCHOR);
+		break;
+	case MODL_PRVE_KOMPLETORIUM:
+		mystrcpy(_global_modl_prve_kompletorium.maria_ant.file, file, MAX_STR_AF_FILE);
+		mystrcpy(_global_modl_prve_kompletorium.maria_ant.anchor, anchor, MAX_STR_AF_ANCHOR);
+		break;
+	} // switch(modlitba)
+} // _set_prosby()
+
 void _set_modlitba(short int modlitba, const char *file, const char *anchor) {
 	switch (modlitba) {
 	case MODL_RANNE_CHVALY:
@@ -1791,6 +1804,15 @@ void set_ukonkaj(short int modlitba) {
 	file_name_obnov();
 } // set_ukonkaj();
 
+void set_maria_ant(short int modlitba) {
+	file_name_zapamataj();
+	sprintf(_file, "%s", FILE_MARIANSKE_ANTIFONY);
+	sprintf(_anchor, "_%c_%s%s", pismenko_modlitby(MODL_KOMPLETORIUM), ANCHOR_MARIANSKE_ANTIFONY, (je_velka_noc) ? VELKONOCNA_PRIPONA : STR_EMPTY);
+	_set_maria_ant(modlitba, _file, _anchor);
+	set_LOG_zaltar;
+	file_name_obnov();
+} // set_ukonkaj();
+
 void set_popis(short int modlitba, char *file, char *anchor) {
 	_set_popis(modlitba, file, anchor);
 	Log("   set(popis): %s: súbor `%s', kotva `%s'\n", nazov_modlitby(modlitba), _file, _anchor);
@@ -1962,6 +1984,7 @@ void _set_kompletorium_nedela_spolocne(short int modlitba) {
 	set_antifony(DEN_NEDELA, _global_den.tyzzal, 2 /* zvazok - pre kompletórium sa nepoužíva, len kvôli posv. čítaniu */, modlitba);
 	set_nunc_dimittis(modlitba); // 2013-06-28: doplnené podľa zaltar_kompletorium()
 	set_ukonkaj(modlitba);
+	set_maria_ant(modlitba);
 	Log("_set_kompletorium_nedela_spolocne(%d) -- end\n", modlitba);
 } // _set_kompletorium_nedela_spolocne()
 
@@ -2049,6 +2072,7 @@ void zaltar_kompletorium_okrem_zalmov(short int den, short int obdobie, short in
 	set_kresponz(den, 1 /* tyzzal */, modlitba);
 	set_nunc_dimittis(modlitba);
 	set_ukonkaj(modlitba);
+	set_maria_ant(modlitba);
 	set_modlitba(den_pom, 1 /* tyzzal */, modlitba, ktore);
 
 	Log("-- zaltar_kompletorium_okrem_zalmov(%d, %d, %d, %d, %d) -- koniec\n", den, obdobie, specialne, tyzzal, modlitba);
@@ -10517,6 +10541,8 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	Log("set_spolocna_cast(_global_opt[OPT_3_SPOLOCNA_CAST] == %s) -- end\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]));
 }// set_spolocna_cast();
 
+// NOTE: each item in the following arrays must not have 'count' more than 10 (values 0--9) because only one decimal place within option 6 value is dedicated
+
 _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_PMB_rHYMNUS", 3 },
 	{ JAZYK_CZ, "CZ_PMB_vHYMNUS", 2 },
@@ -10822,6 +10848,14 @@ _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_CZ_OP, "15AUG_rBENEDIKTUS", 2 },
 };
 
+_struct_anchor_and_count pocet_maria_ant_multi_anchor_count[] = {
+	{ JAZYK_SK, "_k_MARIANSKE-ANTIFONY", 6 }, // including special case for OFM family
+	{ JAZYK_CZ, "_k_MARIANSKE-ANTIFONY", 7 }, // including two alternative cases
+	{ JAZYK_CZ_OP, "_k_MARIANSKE-ANTIFONY", 6 }, // including Latin Salve Regina
+	{ JAZYK_HU, "_k_MARIANSKE-ANTIFONY", 8 }, // including alternative translations
+	{ JAZYK_HU, "_k_MARIANSKE-ANTIFONYVE", 2 }, // including alternative translations
+};
+
 _struct_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_MODLITBA", 6 },
 };
@@ -10879,6 +10913,10 @@ short int pocet_multi(char *_anchor, long type) {
 	else if (type == BASE_OPT_6_PROSBY_MULTI) {
 		ptr = pocet_prosby_multi_anchor_count;
 		size = sizeof(pocet_prosby_multi_anchor_count);
+	}
+	else if (type == BASE_OPT_6_MARIA_ANT_MULTI) {
+		ptr = pocet_maria_ant_multi_anchor_count;
+		size = sizeof(pocet_maria_ant_multi_anchor_count);
 	}
 	else if ((type == BASE_OPT_6_KCIT_RESP_MULTI) || (type == BASE_OPT_6_KRESP_MULTI)) {
 		ptr = pocet_kcit_resp_multi_anchor_count;

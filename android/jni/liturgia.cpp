@@ -1766,6 +1766,7 @@ void Log(struct tmodlitba3 t){
 	Log_struktura_tm3("   kresponz       file `%s', anchor `%s'\n", t.kresponz.file, t.kresponz.anchor);
 	Log_struktura_tm3("   nunc_dimittis  file `%s', anchor `%s'\n", t.nunc_dimittis.file, t.nunc_dimittis.anchor);
 	Log_struktura_tm3("   modlitba       file `%s', anchor `%s'\n", t.modlitba.file, t.modlitba.anchor);
+	Log_struktura_tm3("   maria_ant      file `%s', anchor `%s'\n", t.maria_ant.file, t.maria_ant.anchor);
 }
 
 void Log(struct tmodlitba4 t){

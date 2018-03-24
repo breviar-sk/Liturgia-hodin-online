@@ -235,6 +235,7 @@ struct tmodlitba3 {
 	_struct_anchor_and_file kresponz;
 	_struct_anchor_and_file nunc_dimittis; // antifóna na nunc dimittis; pridané 2013-04-03 (kvôli OPRAEM, 08dec)
 	_struct_anchor_and_file modlitba;
+	_struct_anchor_and_file maria_ant; // added 2018-03-23; Mary antiphone
 };
 typedef struct tmodlitba3 _type_kompletorium;
 typedef struct tmodlitba3 _type_1kompletorium;
@@ -441,6 +442,7 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_CITANIE1      "CITANIE1" // vlastne KCITANIE
 #define PARAM_CITANIE2      "CITANIE2" // vlastne BENEDIKTUS
 #define PARAM_UKON_KAJ      "UKONKAJ" // úkon kajúcnosti -- act of repentance
+#define PARAM_MARIA_ANT     "MARIA_ANT" // mariánske antifóny -- Mary antiphone
 
 #define PARAM_ANTIFONA1x    "ANTIFONA1_DRUHA"
 #define PARAM_ANTIFONA3x    "ANTIFONA3_PRVA"
@@ -466,7 +468,6 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_EVANJELIUM    "EVANJELIUM"
 
 #define PARAM_TEXT          "TEXT" // static text included into single file
-#define PARAM_MARIANSKE_ANTIFONY_LINK "MARIANSKE_ANTIFONY_LINK" // hyperlink to Maria antiphones (static HTML text or dynamically generated URL
 
 // these are used also for <a name...> -- do not use underscore in these names :)
 #define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // supplementary psalmody (for daily prayers: 9h, 12h, 15h)
@@ -498,6 +499,7 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ZALM146                  "ZALM146"
 #define PARAM_ZALM150                  "ZALM150"
 #define PARAM_INVITATORIUM_ANT(i)      "ANT-INVITAT" i
+#define PARAM_MARIANSKE_ANTIFONY       "MARIANSKE-ANTIFONY" // Maria antiphones at the end of compline
 
 // these are used in template for invitatory (m_invitat.htm) for hyperlinks
 #define PARAM_INVITAT_PSALM_24        "INVITAT-PS-24"
@@ -537,6 +539,7 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define KEYWORD_HIDE_FOR_VOICE_OUTPUT   "HIDE_FOR_VOICE_OUTPUT"
 #define KEYWORD_TTS_HEADING             "TTS:HEADING"
 #define KEYWORD_TTS_SECTION             "TTS:SECTION"
+#define KEYWORD_MARIANSKE_ANTIFONY      "MARIANSKE-ANTIFONY" // Maria antiphones at the end of compline
 
 #define SYMBOL_END "/"
 
@@ -570,6 +573,9 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ZAVER_KNAZ_DIAKON_END         KEYWORD_ZAVER_KNAZ_DIAKON "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_ZAVER_OSTATNI_BEGIN           KEYWORD_ZAVER_OSTATNI "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_ZAVER_OSTATNI_END             KEYWORD_ZAVER_OSTATNI "" STR_UNDERSCORE "" KEYWORD_END
+#define PARAM_MARIANSKE_ANTIFONY_BEGIN      KEYWORD_MARIANSKE_ANTIFONY "" STR_UNDERSCORE "" KEYWORD_BEGIN
+#define PARAM_MARIANSKE_ANTIFONY_END        KEYWORD_MARIANSKE_ANTIFONY "" STR_UNDERSCORE "" KEYWORD_END
+
 #define PARAM_HIDE_FOR_VOICE_OUTPUT         KEYWORD_HIDE_FOR_VOICE_OUTPUT
 
 #define PARAM_COPYRIGHT_BEGIN               KEYWORD_COPYRIGHT "" STR_UNDERSCORE "" KEYWORD_BEGIN
@@ -629,6 +635,7 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ALT_KRESP_MULTI               "ALT-KRESP-" KEYWORD_MULTI
 #define PARAM_ALT_PSALM_MULTI               "ALT-PSALM-" KEYWORD_MULTI
 #define PARAM_ALT_UKONKAJ_MULTI             "ALT-UKONKAJ-" KEYWORD_MULTI // used as acronym for PARAM_ALT_PROSBY_MULTI
+#define PARAM_ALT_MARIA_ANT_MULTI           "ALT-MARIA-ANT-" KEYWORD_MULTI
 
 // zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
@@ -1490,7 +1497,7 @@ extern long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_ZALMY_FULL_TEXT         2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
 #define BIT_OPT_0_REF_BIBLE_COM           4096 // precondition: BIT_OPT_0_REFERENCIE must be true; instead of standard URL, generates link to bible.com
 
-#define POCET_OPT_1_CASTI_MODLITBY          18 // jednotlivé komponenty option 1 -- bity pre force option 1
+#define POCET_OPT_1_CASTI_MODLITBY          19 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 // 2011-04-11: úprava významu (a interpretácie) option 1 == OPT_1_CASTI_MODLITBY (zobraziť/nezobraziť najmä pevné/nemenné súčasti modlitieb, ale aj iné, čo sú/nie sú v LH)
 // 2011-10-10: úprava niektorých bitov, posunutie popisu na koniec
@@ -1512,6 +1519,7 @@ extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_ZAVER                  32768 // prayer conclusions
 #define BIT_OPT_1_OVERRIDE_STUP_SLAV     65536 // možnosť zvoliť vyšší stupeň slávenia (spomienku možno sláviť ako sviatok alebo slávnosť; sviatok ako slávnosť)
 #define BIT_OPT_1_STUP_SVIATOK_SLAVNOST 131072 // vyšší stupeň slávenia (0 = sviatok, 1 = slávnosť); aplikuje sa iba ak BIT_OPT_1_OVERRIDE_STUP_SLAV je true
+#define BIT_OPT_1_KOMPL_MARIA_ANT       262144 // pre kompletórium: či zobraziť mariánsku antifónu (jednu, ak BIT_OPT_2_ALTERNATIVES == 1)/mariánske antifóny na konci kompletória
 
 #define POCET_OPT_2_HTML_EXPORT             16 // jednotlivé komponenty option 2 -- bity pre force option 2
 extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
@@ -1563,7 +1571,7 @@ extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_INVITATORIUM_ANT       65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
 #define BIT_OPT_5_OCR_34_HYMNS          131072 // different (special) hymns for 34th week per annum
 
-#define POCET_OPT_6_ALTERNATIVES_MULTI        9 // count equals to the highest PLACE_OPT_6_... used
+#define POCET_OPT_6_ALTERNATIVES_MULTI       10 // count equals to the highest PLACE_OPT_6_... used
 extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI]; // this is not bitwise long, but simply decimal number; each decimal place representing one value (max. possibly 0--9)
 #define PLACE_OPT_6_HYMNUS_MULTI              1
 #define PLACE_OPT_6_PSALM_MULTI               2 // in fact, only for invitatory
@@ -1572,8 +1580,9 @@ extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI]; //
 #define PLACE_OPT_6_ANTIFONA_MULTI            5
 #define PLACE_OPT_6_MODLITBA_MULTI            6
 #define PLACE_OPT_6_PROSBY_MULTI              7
-#define PLACE_OPT_6_KCIT_RESP_MULTI           8
+#define PLACE_OPT_6_MARIA_ANT_MULTI           8
 #define PLACE_OPT_6_KRESP_MULTI               9
+#define PLACE_OPT_6_KCIT_RESP_MULTI          10
 
 #define BASE_OPT_6_HYMNUS_MULTI               1
 #define BASE_OPT_6_PSALM_MULTI               10
@@ -1582,10 +1591,11 @@ extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI]; //
 #define BASE_OPT_6_ANTIFONA_MULTI         10000 
 #define BASE_OPT_6_MODLITBA_MULTI        100000 
 #define BASE_OPT_6_PROSBY_MULTI         1000000 
-#define BASE_OPT_6_KCIT_RESP_MULTI     10000000 
+#define BASE_OPT_6_MARIA_ANT_MULTI     10000000 
 #define BASE_OPT_6_KRESP_MULTI        100000000
+#define BASE_OPT_6_KCIT_RESP_MULTI   1000000000 // must not contain more than 3 possibilities at position 10 because long is limited to 2147483647
 
-#define MAX_POCET_OPT                        18 // must be at least maximum from POCET_OPT_0_... to POCET_OPT_6_...
+#define MAX_POCET_OPT                        19 // must be at least maximum from POCET_OPT_0_... to POCET_OPT_6_...
 
 const short int pocet_opt[POCET_GLOBAL_OPT] = { POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nemá bitové komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES, POCET_OPT_6_ALTERNATIVES_MULTI /* decimal-places */ };
 
@@ -1804,6 +1814,7 @@ void analyzuj_rok(short int year);
 	_INIT_ANCHOR_AND_FILE(a.kresponz); \
 	_INIT_ANCHOR_AND_FILE(a.nunc_dimittis); \
 	_INIT_ANCHOR_AND_FILE(a.modlitba); \
+	_INIT_ANCHOR_AND_FILE(a.maria_ant); \
 };
 
 #define _INIT_TMODLITBA4(a) {\

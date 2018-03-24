@@ -2875,6 +2875,34 @@ const char *html_text_opt_1_zaver_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char *html_text_opt_1_maria_ant[POCET_JAZYKOV + 1] =
+{
+	"mariánske antifóny",
+	"mariánské antifony",
+	"Mary antiphones",
+	"",
+	"",
+	"mariánské antifony",
+	"hu_text",
+	"ru_text",
+	"завяршэнне",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_1_maria_ant_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_opt_1_zalm95[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmov 24, 67 resp. 100 použiť žalm 95",
@@ -4249,6 +4277,20 @@ const char *html_text_opt_6_alternatives_multi_citanie[POCET_JAZYKOV + 1] =
 
 // html_text_opt_6_alternatives_multi_antifona used for Benedictus (morning prayer), Magnificat (evening prayer) antiphone and antiphone for invitatory; used as replacement for (deprecated) html_text_opt_5_invitatorium_ant
 const char *html_text_opt_6_alternatives_multi_antifona[POCET_JAZYKOV + 1] =
+{
+	"iná antifóna",
+	"jiná antifona",
+	"another antiphone",
+	"",
+	"",
+	"jiná antifona",
+	"más antifóna",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char *html_text_opt_6_alternatives_multi_maria_ant[POCET_JAZYKOV + 1] =
 {
 	"iná antifóna",
 	"jiná antifona",
