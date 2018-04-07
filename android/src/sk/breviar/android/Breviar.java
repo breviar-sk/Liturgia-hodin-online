@@ -97,10 +97,12 @@ public class Breviar extends AppCompatActivity
       }
 
       public void onReceive(Context context, Intent intent) {
+        Log.v("breviar", "Received broadcast");
         if (intent != null) {
           if (intent.getAction() != null) {
             if (intent.getAction().equals(TtsService.TTS_UPDATE_ACTION)) {
               tts_state = (TtsService.TtsState)intent.getSerializableExtra("state");
+              Log.v("breviar", "Updating TTS state");
               updateTtsState();
             }
           }
@@ -562,7 +564,7 @@ public class Breviar extends AppCompatActivity
     // After resume we need to update menu after the page is reloaded.
     boolean need_to_update_menu = false;
     @Override
-    protected void onResume() {
+    synchronized protected void onResume() {
       String url = wv.getUrl();
       if (url != null && need_to_reload_preferences) {
         need_to_reload_preferences = false;
@@ -596,17 +598,14 @@ public class Breviar extends AppCompatActivity
           ringMode = -1;
         }
         if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
-        registerReceiver(tts_receiver, new IntentFilter(TtsService.TTS_UPDATE_ACTION));
-        startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_REQUEST_UPDATE));
       }
       super.onResume();
     }
 
     @Override
-    protected void onPause() {
+    synchronized protected void onPause() {
       super.onPause();
       if (resumed) {
-        unregisterReceiver(tts_receiver);
         resumed = false;
         if (BreviarApp.getDimLock(getApplicationContext())) {
           lock.release();
@@ -692,11 +691,31 @@ public class Breviar extends AppCompatActivity
       Log.v("breviar", "syncScale "+scale);
     }
 
-    protected void onStop(){
+    boolean stopped = true;
+
+    @Override
+    synchronized protected void onStop(){
+      if (!stopped) {
+        stopped = true;
+        Log.v("breviar", "Unregistering receiver");
+        unregisterReceiver(tts_receiver);
+      }
       Log.v("breviar", "onStop");
       syncScale();
       super.onStop();
       syncPreferences();
+    }
+
+    @Override
+    synchronized protected void onStart(){
+      if (stopped) {
+        stopped = false;
+        Log.v("breviar", "Registering receiver");
+        registerReceiver(tts_receiver, new IntentFilter(TtsService.TTS_UPDATE_ACTION));
+        startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_REQUEST_UPDATE));
+      }
+      Log.v("breviar", "onStart");
+      super.onStart();
     }
 
     @Override

@@ -85,14 +85,16 @@ public class TtsService extends Service
     return TtsState.SPEAKING;
   }
 
-  void processAction(Intent immediate_action) {
+  synchronized void processAction(Intent immediate_action) {
     TtsState old_public_state = publicState();
 
     while (true) {
       Log.v("breviar", "TTS in state " + state.name());
       State new_state;
       if (immediate_action != null) {
+        Log.v("breviar", "Immediate action " + immediate_action.getAction());
         new_state = delta(immediate_action);
+        Log.v("breviar", "New state = " + new_state.name());
         if (new_state != State.REJECT) {
           state = new_state;
           immediate_action = null;
@@ -107,7 +109,9 @@ public class TtsService extends Service
       }
 
       if (pending_action != null) {
+        Log.v("breviar", "Pending action " + pending_action.getAction());
         new_state = delta(pending_action);
+        Log.v("breviar", "New state = " + new_state.name());
         if (new_state != State.REJECT) {
           state = new_state;
           pending_action = null;
@@ -115,7 +119,9 @@ public class TtsService extends Service
         }
       }
 
+      Log.v("breviar", "Idle processing");
       new_state = delta(new Intent(IDLE_PROCESSING));
+      Log.v("breviar", "New state = " + new_state.name());
       if (new_state != State.REJECT) {
         state = new_state;
         continue;

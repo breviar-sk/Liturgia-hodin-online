@@ -5202,9 +5202,9 @@ const char *text_JAN_22_OP[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_JAN_22_HU[POCET_JAZYKOV + 1] =
+const char *text_JAN_22_OFM_HU[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Ladislava Battyány-Strattmanna, " HTML_LINE_BREAK "otca rodiny, člena 3. rádu",
 	"",
 	"",
 	"",

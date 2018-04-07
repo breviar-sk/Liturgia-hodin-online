@@ -1425,7 +1425,7 @@ extern const char *text_JAN_20_2[POCET_JAZYKOV + 1];
 extern const char *text_JAN_20_HU[POCET_JAZYKOV + 1];
 extern const char *text_JAN_21[POCET_JAZYKOV + 1];
 extern const char *text_JAN_22[POCET_JAZYKOV + 1];
-extern const char *text_JAN_22_HU[POCET_JAZYKOV + 1];
+extern const char *text_JAN_22_OFM_HU[POCET_JAZYKOV + 1];
 extern const char *text_JAN_23_SK[POCET_JAZYKOV + 1];
 extern const char *text_JAN_24[POCET_JAZYKOV + 1];
 extern const char *text_JAN_25[POCET_JAZYKOV + 1];
