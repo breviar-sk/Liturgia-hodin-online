@@ -12936,6 +12936,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd);
 				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
@@ -13675,6 +13676,10 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
+				modlitba = MODL_PRVE_VESPERY;
+				_vlastna_cast_full(modlitba);
+				_set_zalmy_sviatok_sv_muzov(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -13683,13 +13688,9 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-				_vlastna_cast_1citanie;
-				_vlastna_cast_2citanie;
-				_vlastna_cast_modlitba;
-				_set_zalmy_sviatok_sv_muzov(modlitba);
+				_vlastna_cast_full(modlitba);
 
-				_vlastna_cast_mcd_kcitresp_modl;
+				_vlastna_cast_mcd_full_okrem_hymnu;
 
 				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
 				if (_global_den.denvt != DEN_NEDELA) {
