@@ -1,8 +1,0 @@
-skontroloval som celé pôstne obdobie, mcd aj posvätné èítanie, je to ok.
-potom som kontroloval ve¾konoèné trojdnie aj oktávu: ok.
-1. a 2. ve¾konoènı tıdeò posv. èítania sú hotové.
-poènúc 3. ve¾konoènou nede¾ou sú síce èítania prepísané (novozmluvné nie), ale treba ich da do HTML:
-	- src: 2velk-4velk.doc
-	- dst: vn1_pc.htm
-	- aux: velk1.posvcit.tmp.htm
-

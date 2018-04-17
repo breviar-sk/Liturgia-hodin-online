@@ -1,4 +1,0 @@
-cp l.cgi ../cgi-bin/
-# cp uncgi uncgi.cgi
-# cp uncgi ../cgi-bin/
-# cp uncgi.cgi ../cgi-bin/

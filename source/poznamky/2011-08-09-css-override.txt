@@ -1,5 +1,0 @@
-<style type="text/css">* { font-family: Cambria, Serif; } </style>
-
-do <head>
-
--- problém: napr. KBS css kde sú bezpätkové písma, ako prinúti pouíva Cambriu

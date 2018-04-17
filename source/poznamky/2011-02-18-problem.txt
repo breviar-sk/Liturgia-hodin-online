@@ -1,3 +1,0 @@
-pri skoku na ïalší/predošlı mesiac sa chybne nastavuje o1 (option1; akoby bol force 0, hoci default bol 1), mono sa prilepuje vdy?...
-dorieši!
-

@@ -1,7 +1,0 @@
-2008-03-30, JUV
-poznámky:
-
-kompletórium, ve¾konoèné obdobie, má len Aleluja antifónu;
-treba vyrieši, aby sa tam "1"-tka pri Ant. zobrazila len keï treba; celý blok pre Ant. 2 zapoznámkova v prípade, že neexistuje.
-èiastoène opravené v slovenèine antifóny pre kompletórium, kde nastáva konflikt dvoch znaèiek v kóde (nested ve¾mi nepodporujeme, bije sa tam --> a <-- v html kóde).
-

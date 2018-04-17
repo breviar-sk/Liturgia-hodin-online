@@ -1,4 +1,0 @@
-orng is orangutan, with a small patch for accepting input from stdin as well.
-
-It is needed to workaround bugs of monkeyrunner, which is not able to pass
-clicks to webview.
