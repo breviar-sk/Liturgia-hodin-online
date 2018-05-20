@@ -1,0 +1,3 @@
+<!--{BEGIN:ZVOLANIE}--><br/><i>&nbsp;&nbsp;&nbsp;&nbsp; <span class="red">(</span>TEXT<span class="red">)</span></i><!--{END:ZVOLANIE}-->
+
+<!--{BEGIN:ZVOLANIE}--><br/><i>&nbsp;&nbsp;&nbsp;&nbsp; <span class="red">(</span>TEXT1</i> <span class="red">Alebo:</span> <i>TEXT2<span class="red">)</span></i><!--{END:ZVOLANIE}-->

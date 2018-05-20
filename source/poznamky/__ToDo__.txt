@@ -1,0 +1,114 @@
+_________________________________________________________________________
+2011-10-06, JUV:
+
+-- problémy pri "modlitba pre dané obdobie, deò..." (vo¾ba úplne dole) pre advent a pod.
+
+2017-10-07, JUV: partially fixed
+
+_________________________________________________________________________
+2011-10-13, JUV:
+
+-- zvái, èi èervenú pomlèku, odde¾ujúcu jednotlivé strofy pre almy a chválospevy, spravi volite¾ne zobrazite¾nou (implementácia ako napr. <!--{ZAKONCENIE:SKRZE}-->)
+
+_________________________________________________________________________
+2012-01-16, JUV:
+
+-- úprava offline exportu (ondruska.drahoslav@slovanet.sk, 2012-01-13)
+
+	1. Vytvorit adresar "files" a tam dat vsetko okrem "zoznam.htm"
+	2. V subore "zoznam.htm" nahradit text (cast cesty) "./" -> "./files/".
+	3. Premenovat "zoznam.htm" na "Breviar.htm"
+	4. V 13 suboroch YYMM.htm nahradit "./../zoznam.htm" -> "./../../Breviar.htm"
+	
+	A je to ovela prehladnejsie napriklad v aplikacii GoodReader na iPade.
+
+_________________________________________________________________________
+2012-03-02, JUV:
+
+-- monos zvoli iba niektoré modlitby (naraz vygenerova):
+
+Jeste posilam priklad URL, ktera by napr. vygenerovala pro dnesni den
+ranni chvaly, nespory a kompletar:
+
+http://breviar.sk/cgi-bin/l.cgi?qt=pdt&d=2&m=3&r=2012&p=mrch|mv|mk&j=c2&o1=132
+
+JJ jan.jakous@gmail.com
+
+_________________________________________________________________________
+2015-05-18, JUV:
+
+naprogramova aj monos, aby si pouívate¾ sám zvolil, èi chce 1. alebo 2. nede¾né kompletórium
+tıka sa napr. Ve¾konoènej oktávy
+
+
+_________________________________________________________________________
+2015-05-26, JUV:
+
+dorieši zlı popis: "Spoleèné texty na svátky o jednom muèedníkovi."
+http://localhost:2000/cgi-bin/l.cgi?qt=pdt&d=25&m=10&r=2015&p=mv&ds=1&j=cz&o0=134&o1=5376&o2=29432&o3=6
+
+2017-10-07, JUV: hopefully fixed by commit # db2f45b0e5 (undo of commit # c48527f0d3)
+
+_________________________________________________________________________
+2015-10-28, JUV:
+
+Zvái doplnenie "Sláva Otcu." za kadı alm a chválospev pre všetky modlitby (okrem invitatória). Napísal Filip Vagaè<vagacf@gmail.com> a svojho èasu aj Katka Gajdošová.
+
+_________________________________________________________________________
+2017-10-06, JUV:
+
+marianus@mariasoft.sk
+
+14. septembra je sviatok Povıšenia sv. Kría. Vešpery sú však u z nasledujúcej slávnosti Sedembolestnej Panny Márie. Ak je však titul farnosti Sv. Kría, tak vešpery by mali by zo sviatku (v tomto prípade slávnosti) Povıšenia sv. Kría.
+Zvolil som 14. september a dal vešpery. Ponúklo to len prvé vešpery slávnosti Sedembolestnej.
+Zvolil som ranné chvály zo 14. septembra. Ani tam to neponúka monos “slávi ako slávnos”.
+Prešiel som na dnešnú spomienku a zvolil “slávi ako slávnos”. Zajtrajšiu spomienku tie automaticky ponúklo ako slávnos (èo je v poriadku, upozornili ste ma, e to treba zruši). Prešiel som na 14. september – napísalo “sviatok – slávi ako slávnos” (èie si pamätá vo¾bu), ale keï som dal vešpery, zase ponúklo len zo Sedembolestnej.
+
+
+pavol.tuka@gmail.com
+
+dnes [24.09.2017 0:17 = 23.09.] je spomienka na sv. patra Pia, resp. bolo vcera...
+otvorim si RCH - tie su zo spomienky, prepnem sa na vespery - tie su z nedele... vsetko OK, ale ked sa prepnem z vespier spat na RCH, tak uz mam RCH zo dna, z ferie... 
+mozno to tak ma byt, mozno nie...
+
+_________________________________________________________________________
+2017-11-29, JUV:
+
+Takisto by ma zaujímalo, èi je technicky nároèné urobi tak, aby sa èítal iba jeden hymnus. Tento tıdeò sú v ponuke a tri, prvé dva v slovenèine, èo je ešte OK, ale potom ten latinskı, aby mi ho èítala pani so slovenskou vıslovnosou je u trochu nezmyselné. (Pavel Vilhan)
+
+Hymny pre 34. tıdeò Cezroèného obdobia sú tak špeciálne spravené (myslím implementované), e je to jediná vınimka v celom breviári, e tam nie sú jednotlivé alternatívy (ako napr. hymny pre ¾ubovo¾nú spomienku PM v sobotu a pod.). Èasom aj toto dokonèím, urèite cie¾om je, e pri zapnutom prepínaèi “alternatívy” bude v modlitbe vdy len a práve 1 monos zobrazená (samozrejme, s monosou prepínania priamo na mieste na jeden klik – ïalší/inı text). Toto musím zas najprv pre web vyrieši ja a do appky pre Android sa to dostane takpovediac “instantne” (bez úsilia automaticky).
+
+
+_________________________________________________________________________
+
+2017-12-23, JUV:
+
+Peter Chodelka<peter.chodelka@gmail.com>
+
+Dopåòam svoje pozorovanie, zdá sa mi, e je problém v parametri "o2":
+"1. bit (2): zobrazi pre nedele a vybrané slávenia monos priamo v danı deò zvoli prvé vešpery"
+
+Keï dám to isté, len s tım 1. bitom:
+breviar.exe -qpbm -d1 -m12 -r2017 -f31 -g12 -p2018 -brobSK-sdb.bat -ksdb -jsk -nbreviar.exe -iinclude\ -usimple -M2 -00 -138303 -2226
+
+tak to spraví to, e pre iadnu sobotu nevygeneruje modlitby... :(
+
+2018-02-26, JUV:
+Fixed by # c5e86370 (batch mode: fix for generating prayers except vespers & compline for option BIT_OPT_2_BUTTON_PRVE_VESPERY) & # 119f1536 (batch mode: fix for generating prayers for first vespers & first compline for option BIT_OPT_2_BUTTON_PRVE_VESPERY)
+
+_________________________________________________________________________
+
+2018-01-01, JUV:
+
+ToDos for Android 2.* releases
+
+JUV: zjednodušenie preh¾adu mesiaca
+
+JUV: perspektívne všetko GET (volania)
+
+JUV: v tejto súvislosti: porieši POST dotazy, napr. Ordinárium, lebo potom nefunguje napr. stlaèenie noèného/denného reimu (button na action lište)
+
+JUV: skry tlaèidlá - dolnı # inı; schova vıber jazyka + z Nastavení niektoré ïalšie poloky, príp. do Android menu "slávi s vyšším stupòom"; doplni ved¾a "tento deò" aj "tento mesiac"; pre Android zruši ten ståpec
+
+_________________________________________________________________________
+

@@ -1,0 +1,36 @@
+treba prepísa:
+
+- 2.èít. "Z Listov svätého biskupa Atanáza", nede¾a Najsv. Trojice III, 586-588
+- posv. èítanie, hymnus a antifóny zo sviatku krstu Krista Pána (1. nede¾a OCR), I
+- latinské hymny pre prvé vešpery, ranné chvály a vešpery nasledovnıch sviatkov:
+	NAJSVÄTEJŠIEHO KRISTOVHO TELA A KRVI (III, 599-600. 616)
+- posv. èítanie, hymnus aj lat. aj slov. (III, 606-607) pre NAJSVÄTEJŠIEHO KRISTOVHO TELA A KRVI,
+	antifóny, prvé aj druhé èít.
+- posv. èítanie, hymnus, druhé èítanie (prvé netreba) pre najsv. srdce jeišovo (III, 631. 635-637)
+- modlitba cez deò ve¾konoèného obdobia: len krátke èítania a krátke responzá z druhého tıdòa a tretej nedele
+	(II, 620. 627-628. 636-637. 645-646. 653-654. 662. 671-672)
+- ve¾konoèná oktáva, krátke èítania "modlitby cez deò" (II, 530nn.) dovpisova do "velko.okt.mcd.doc"
+
+treba skontrolova:
+
+- _set_zalmy_zjv almy pre zjavenie pána èi sú na posv. èítanie dobré
+
+- modlitba cez deò, špeciálne nastavenie almov:
+	_set_zalmy_slavnost_Cyrila_a_Metoda
+	_set_zalmy_sviatok_obetovania
+	_set_zalmy_sv_kriz
+	_set_zalmy_archanjelov
+	_set_zalmy_anjelov_strazcov (aj posv. èítanie)
+	_set_zalmy_vsetkych_svatych
+	_set_zalmy_sviatok_krstu
+	_set_zalmy_zjv (aj posv. èítanie)
+	_set_zalmy_narodenie (aj posv. èítanie)
+	_set_zalmy_zoslanie_ducha_sv (aj posv. èítanie)
+	_set_zalmy_nanebovstupenie -"-
+	_set_zalmy_velkonocna_nedela -"-
+	_set_zalmy_posviacka_chramu -"-
+	_set_zalmy_velky_piatok
+
+todo: pokraèova v modlitbe cez deò pre ve¾konoèné trojdnie a potom posv.èít. a modl.cez deò pre ve¾konoènú oktávu
+	_set_zalmy_1nedele_pc
+	_set_zalmy_velk_oktava

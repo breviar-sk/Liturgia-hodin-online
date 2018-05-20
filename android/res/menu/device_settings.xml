@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item android:id="@+id/vol_buttons"
+        android:title="@string/vol_buttons"
+        app:actionLayout="@layout/widget_switch"
+  />
+
+  <item android:id="@+id/dimlock"
+        android:title="@string/dimlock"
+        app:actionLayout="@layout/widget_switch"
+  />
+
+  <item android:id="@+id/mute"
+        android:title="@string/mute"
+        app:actionLayout="@layout/widget_switch"
+  />
+
+</menu>

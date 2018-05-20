@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo /usr/local/bin/build-access.sh && rm -rf bin && ./build-assets && ndk-build && gradle assembleDebug && gradle assembleRelease

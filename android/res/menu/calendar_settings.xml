@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item android:id="@+id/epiphany_sunday"
+        android:title="@string/epiphany_sunday"
+        app:actionLayout="@layout/widget_switch"
+  />
+
+  <item android:id="@+id/ascension_sunday"
+        android:title="@string/ascension_sunday"
+        app:actionLayout="@layout/widget_switch"
+  />
+
+  <item android:id="@+id/body_blood_sunday"
+        android:title="@string/body_blood_sunday"
+        app:actionLayout="@layout/widget_switch"
+  />
+
+  <item android:id="@+id/emphasize_local_calendar"
+        android:title="@string/emphasize_local_calendar"
+        app:actionLayout="@layout/widget_switch"
+  />
+
+
+</menu>

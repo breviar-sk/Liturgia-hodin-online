@@ -1,0 +1,234 @@
+Comparing files breviar.cpp and ..\BREVIAR.CPP
+***** breviar.cpp
+ 2014:           */
+ 2015:          _struct_dm _local_den = {.den 0;};
+ 2017:          char pom[MAX_STR];
+***** ..\BREVIAR.CPP
+ 2014:           */
+ 2015:          _struct_dm _local_den;
+ 2016:          _init_dm(_local_den); /* 2003-08-07 pridana */
+ 2018:          char pom[MAX_STR];
+*****
+
+***** breviar.cpp
+ 2123:                  (
+ 2124:                          ((_global_den.smer >= 12) && (_global_pocet_svatych == 0)) ||
+***** ..\BREVIAR.CPP
+ 2124:                  (
+ 2125:                          ((_global_den.smer >= 12) && (_global_pocet_svatych == 0)) ||
+*****
+
+***** breviar.cpp
+ 3074:          Export("<option selected>%s\n", nazov_modlitby[MODL_RANNE_CHVALY]);
+ 3075:          Export("<option>%s\n", nazov_modlitby[MODL_POSVATNE_CITANIE]); /* pridane 2003-08-06 */
+ 3076:          Export("<option>%s\n", nazov_modlitby[MODL_PREDPOLUDNIM]);
+ 3077:          Export("<option>%s\n", nazov_modlitby[MODL_NAPOLUDNIE]);
+ 3078:          Export("<option>%s\n", nazov_modlitby[MODL_POPOLUDNI]); /* cez den: pridane 2003-08-06 */
+ 3079:          /* spomienka P. Marie v sobotu nema vespery */
+***** ..\BREVIAR.CPP
+ 3075:          Export("<option selected>%s\n", nazov_modlitby[MODL_RANNE_CHVALY]);
+ 3076:          /* spomienka P. Marie v sobotu nema vespery */
+*****
+
+***** breviar.cpp
+ 3192:   * - spusti analyzuj_rok(rok);
+ 3193:   * - spusti _rozbor_dna(datum, rok);
+***** ..\BREVIAR.CPP
+ 3189:   * - spusti analyzuj_rok(rok);
+ 3190:   * - spusti _rozbor_dna(datum, rok);
+*****
+
+***** breviar.cpp
+ 3211:          _struct_dm _local_den;
+ 3213:          /* lokalne premenne obsahujuce data modlitbach -- 23/02/2000A.D.
+***** ..\BREVIAR.CPP
+ 3208:          _struct_dm _local_den;
+ 3209:          _init_dm(_local_den); /* 2003-08-07 pridana */
+ 3211:          /* lokalne premenne obsahujuce data modlitbach -- 23/02/2000A.D.
+*****
+
+***** breviar.cpp
+ 3751:          Log("opt4 == `%s' (%d)\n", pom_MODL_OPT4, _global_opt4);
+ 3753:          /* option 5, pridana 2003-08-07 */
+ 3754:          i = atoi(pom_MODL_OPT5);
+ 3755:          /* predpokladam, ze tento parameter moze byt
+ 3756:           * zadany eventualne cislom (teda retazcom, kt. hodnota pri konverzii
+ 3757:           * na int je int, urcujuci opt5
+ 3758:           */
+ 3759:          if((i > MODL_CEZ_DEN_DOPLNKOVE_ZALMY_3) || (i <= 0)){
+ 3760:                  i = 0;
+ 3761:                  /* ide o znakovy retazec nekonvertovatelny na cislo */
+ 3762:          }
+ 3763:          Log("opt5: i == %d\n", i);
+ 3764:          while(i <= MODL_CEZ_DEN_DOPLNKOVE_ZALMY_3){
+ 3765:                  if(equals(pom_MODL_OPT5, nazov_doplnkpsalm[i])){
+ 3766:                          _global_opt5 = i;
+ 3767:                          break;
+ 3768:                  }
+ 3769:                  i++;
+ 3770:          }
+ 3771:          if(i > MODL_CEZ_DEN_DOPLNKOVE_ZALMY_3){
+ 3772:                  _global_opt5 = MODL_CEZ_DEN_ZALMY_ZO_DNA;
+ 3773:          }
+ 3774:          Log("opt5 == `%s' (%d)\n", pom_MODL_OPT5, _global_opt5);
+ 3777:          /* option a (append), pridana 2003-07-08 - nastavi sa v getArgv(); */
+***** ..\BREVIAR.CPP
+ 3749:          Log("opt4 == `%s' (%d)\n", pom_MODL_OPT4, _global_opt4);
+ 3751:          /* option a (append), pridana 2003-07-08 - nastavi sa v getArgv(); */
+*****
+
+***** breviar.cpp
+ 3881:                                  STR_DEN, STR_VSETKY_DNI,
+ 3882:                                  STR_MESIAC, STR_VSETKY_MESIACE,
+***** ..\BREVIAR.CPP
+ 3855:                                  STR_DEN, STR_VSETKY_DNI,
+ 3856:                                  STR_MESIAC, STR_VSETKY_MESIACE,
+*****
+
+***** breviar.cpp
+ 4739:          Log("opt4 == `%s' (%d)\n", pom_MODL_OPT4, _global_opt4);
+ 4741:          /* option 5, pridana 2003-08-07 */
+ 4742:          i = atoi(pom_MODL_OPT5);
+ 4743:          /* predpokladam, ze tento parameter moze byt
+ 4744:           * zadany eventualne cislom (teda retazcom, kt. hodnota pri konverzii
+ 4745:           * na int je int, urcujuci opt5
+ 4746:           */
+ 4747:          if((i > MODL_CEZ_DEN_DOPLNKOVE_ZALMY_3) || (i <= 0)){
+ 4748:                  i = 0;
+ 4749:                  /* ide o znakovy retazec nekonvertovatelny na cislo */
+ 4750:          }
+ 4751:          Log("opt5: i == %d\n", i);
+ 4752:          while(i <= MODL_CEZ_DEN_DOPLNKOVE_ZALMY_3){
+ 4753:                  if(equals(pom_MODL_OPT5, nazov_doplnkpsalm[i])){
+ 4754:                          _global_opt5 = i;
+ 4755:                          break;
+ 4756:                  }
+ 4757:                  i++;
+ 4758:          }
+ 4759:          if(i > MODL_CEZ_DEN_DOPLNKOVE_ZALMY_3){
+ 4760:                  _global_opt5 = MODL_CEZ_DEN_ZALMY_ZO_DNA;
+ 4761:          }
+ 4762:          Log("opt5 == `%s' (%d)\n", pom_MODL_OPT5, _global_opt5);
+ 4765:          /* option a (append), pridana 2003-07-08 - nastavi sa v getArgv(); */
+***** ..\BREVIAR.CPP
+ 4713:          Log("opt4 == `%s' (%d)\n", pom_MODL_OPT4, _global_opt4);
+ 4715:          /* option a (append), pridana 2003-07-08 - nastavi sa v getArgv(); */
+*****
+
+***** breviar.cpp
+ 4874:                                   * posielali nazov suboru v pripade, ze chce vsetky modlitby
+ 4875:                                   * do 1 suboru (pouzil "-a1" = append)
+***** ..\BREVIAR.CPP
+ 4824:                                   * posielali nazov suboru v pripade, ze chce vsetky modlitby
+ 4825:                                   * do 1 suboru (pouzil "-a1" = append)
+*****
+
+***** breviar.cpp
+ 5161:           *            `a' (append) aby pri exportovani do suboru (-e) appendoval, nie prepisal subor
+ 5162:           * 2003-08-07: pridany nasledovny parameter:
+ 5163:           *            `5' (doplnkova psalmodia)
+ 5164:           *            
+***** ..\BREVIAR.CPP
+ 5111:           *            `a' (append) aby pri exportovani do suboru (-e) appendoval, nie prepisal subor
+ 5112:           *            
+*****
+
+***** breviar.cpp
+ 5318:                                  case '4': /* MODL_OPT4 */
+ 5319:                                          /* znamena deviaty parameter */
+ 5320:                                          if(optarg != NULL){
+***** ..\BREVIAR.CPP
+ 5266:                                  case '4': /* MODL_OPT4 */
+ 5267:                                          /* znamena osmy parameter */
+ 5268:                                          if(optarg != NULL){
+*****
+
+***** breviar.cpp
+ 5323:                                          Log("option %c with value `%s'\n", c, optarg); break;
+ 5324:                                  case '5': /* MODL_OPT5 */
+ 5325:                                          /* znamena desiaty parameter, pridany 2003-08-07 */
+ 5326:                                          if(optarg != NULL){
+ 5327:                                                  mystrcpy(pom_MODL_OPT5, optarg, SMALL);
+ 5328:                                          }
+ 5329:                                          Log("option %c with value `%s'\n", c, optarg); break;
+ 5331:                                  /* append pridany 2003-07-08, bude v _global_opt_append */
+***** ..\BREVIAR.CPP
+ 5271:                                          Log("option %c with value `%s'\n", c, optarg); break;
+ 5273:                                  /* append pridany 2003-07-08, bude v _global_opt_append */
+*****
+
+***** breviar.cpp
+ 5596:                  }
+ 5598:                  /* premenna WWW_MODL_OPT5, pridane 2003-08-07 */
+ 5599:                  ptr = getenv(ADD_WWW_PREFIX_(STR_MODL_OPT5));
+ 5600:                  /* ak nie je vytvorena, ak t.j. ptr == NULL, tak nas to netrapi,
+ 5601:                   * lebo pom_... su inicializovane na "" */
+ 5602:                  if(ptr != NULL){
+ 5603:                          if(strcmp(ptr, EMPTY_STR) != 0)
+ 5604:                                  mystrcpy(pom_MODL_OPT5, ptr, SMALL);
+ 5605:                  }
+ 5607:          }
+***** ..\BREVIAR.CPP
+ 5538:                  }
+ 5540:          }
+*****
+
+***** breviar.cpp
+ 5874:                   * 9: (opt4) - for future use
+ 5875:                   * 10: (opt5) - ci brat doplnkovu psalmodiu pre modlitbu cez den (0:nie, 1-3:seria 1-3)
+ 5876:                   * ---------------------------------------------
+***** ..\BREVIAR.CPP
+ 5807:                   * 9: (opt4) - for future use
+ 5808:                   * ---------------------------------------------
+*****
+
+***** breviar.cpp
+ 5968:                          }
+ 5970:                          /* premenna MODL_OPT5, pridana 2003-08-07 */
+ 5971:                          if(equals(param[10].name, STR_MODL_OPT5)){
+ 5972:                                  mystrcpy(pom_MODL_OPT5, param[10].val, SMALL);
+ 5973:                          }
+ 5974:                          else{
+ 5975:                                  /* nevadi, ze nebola zadana option5 k modlitbe */
+ 5976:                          }
+ 5978:                          break; /* case */
+***** ..\BREVIAR.CPP
+ 5900:                          }
+ 5902:                          break; /* case */
+*****
+
+***** breviar.cpp
+ 6087:                                  return FAILURE; /* failure */
+ 6088:                          }
+***** ..\BREVIAR.CPP
+ 6011:                                  return FAILURE; /* failure */
+ 6012:                          }
+*****
+
+***** breviar.cpp
+ 6181:          strcpy(pom_MODL_OPT4  , "");
+ 6182:          strcpy(pom_MODL_OPT5  , ""); /* pridane 2003-08-07 */
+ 6183:          strcpy(pom_DALSI_SVATY, "");
+***** ..\BREVIAR.CPP
+ 6105:          strcpy(pom_MODL_OPT4  , "");
+ 6106:          strcpy(pom_DALSI_SVATY, "");
+*****
+
+***** breviar.cpp
+ 6388:                                  _main_LOG_to_Export("param9 == %s (pom_MODL_OPT4)\n", pom_MODL_OPT4);
+ 6389:                                  _main_LOG_to_Export("param10== %s (pom_MODL_OPT5)\n", pom_MODL_OPT5); /* pridane 2003-08-07 */
+ 6390:                                  _main_LOG_to_Export("spat po skonceni getForm()\n");
+***** ..\BREVIAR.CPP
+ 6311:                                  _main_LOG_to_Export("param9 == %s (pom_MODL_OPT4)\n", pom_MODL_OPT4);
+ 6312:                                  _main_LOG_to_Export("spat po skonceni getForm()\n");
+*****
+
+***** breviar.cpp
+ 6435:          _main_LOG_to_Export("param9 == %s (pom_MODL_OPT4)\n", pom_MODL_OPT4);
+ 6436:          _main_LOG_to_Export("param10== %s (pom_MODL_OPT5)\n", pom_MODL_OPT5); /* pridane 2003-08-07 */
+ 6438:          if(query_type == PRM_MESIAC_ROKA){
+***** ..\BREVIAR.CPP
+ 6357:          _main_LOG_to_Export("param9 == %s (pom_MODL_OPT4)\n", pom_MODL_OPT4);
+ 6359:          if(query_type == PRM_MESIAC_ROKA){
+*****
+

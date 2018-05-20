@@ -1,0 +1,21 @@
+- Menu namiesto Vpred
+- scroll akcelerometrom
+- zamknut rotaciu
+- +- zrusit
+- listovanie malou sipkou
+- long click - optionally allow copy and paste
+
+- text to speech: ciastocne hotove
+- doplnit dalsie "staticke texty" sposobom ako ordinarium a marianske antifony
+
+- check notifications (2.3.6, sometimes do not fire)
+
+- switch nocny rezim priamo v menu
+
+----------
+
+- liturgicke citania (skompletizovat, skontrolovat)
+- nocny rezim: v liturgickych citaniach
+- pri rotacii si pamatat poziciu (v starych androidoch)
+- prerobit server (spustat ako service) - snad pomoze ako workaround v Android 3
+- moznost robit si poznamky / zvyraznit text

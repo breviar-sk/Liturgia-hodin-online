@@ -1,0 +1,18 @@
+Android code for Liturgia hodin. (c) Richard Kralovic.
+
+Java code and android io glue (c) Richard Kralovic, GPLv3 license. Some
+parts of this code were inspired by com.bolutions.webserver (under GPLv3).
+
+Copyright on texts is owned by Spolok sv. Vojtecha, which gave permission to
+use them in the project Liturgia hodin.
+
+To build:
+
+- make sure that local settings are correct for your environment:
+android/local.properties
+android/ant.properties
+android/libs/android-support-v4.jar
+
+$ download-and-build-assets
+$ ndk-build
+$ ant release

@@ -1,0 +1,10 @@
+date
+chmod u=rwx *.*
+g++ -Wall -Wno-unknown-pragmas -W breviar.cpp dbzaltar.cpp kalendar.cpp liturgia.cpp mygetopt.cpp mylog.cpp myhpage.cpp myexpt.cpp cgiutils.cpp myconf.cpp mydefs.cpp mystring.cpp citania.cpp utf8-utils.cpp
+mv a.out l.cgi
+chmod u=rw *.cpp
+chmod u=rw *.h
+chmod oa+x *.cgi
+gzip -c -v l.cgi > l.cgi.gz
+date
+

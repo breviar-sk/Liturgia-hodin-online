@@ -1,0 +1,86 @@
+buildscript {
+  repositories {
+    jcenter()
+    google()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.3.0'
+  }
+}
+
+allprojects {
+  repositories {
+    jcenter()
+      maven {
+        url "https://maven.google.com"
+      }
+  }
+}
+
+apply plugin: 'com.android.application'
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+  compileSdkVersion 26
+  buildToolsVersion "27.0.0"
+
+  defaultConfig {
+    targetSdkVersion 26
+    minSdkVersion 14
+  }
+
+  /*
+   * TODO(riso): This would work fine, but recent NDK (at least since 15c)
+   * support only android-14 (android 4.0.0) or later. I am still somewhat
+   * reluctant to drop support for older devices.
+   */
+  externalNativeBuild {
+    ndkBuild {
+      path "jni/Android.mk"
+    }
+  }
+
+  sourceSets {
+    main {
+      manifest.srcFile 'AndroidManifest.xml'
+      java.srcDirs = ['src']
+      resources.srcDirs = ['src']
+      aidl.srcDirs = ['src']
+      renderscript.srcDirs = ['src']
+      res.srcDirs = ['res']
+      assets.srcDirs = ['assets']
+      // jniLibs.srcDirs 'libs'
+    }
+  }
+
+  signingConfigs {
+    release {
+      keyAlias keystoreProperties['keyAlias']
+      keyPassword keystoreProperties['keyPassword']
+      storeFile file(keystoreProperties['storeFile'])
+      storePassword keystoreProperties['storePassword']
+    }
+  }
+  buildTypes {
+    release {
+      signingConfig signingConfigs.release
+    }
+  }
+}
+
+dependencies {
+  compile 'com.android.support:support-v4:27.0.0'
+  compile 'com.android.support:support-core-utils:27.0.0'
+  compile 'com.android.support:design:27.0.0'
+  compile 'com.android.support:appcompat-v7:27.0.0'
+  compile 'com.android.support:support-media-compat:27.0.0'
+}

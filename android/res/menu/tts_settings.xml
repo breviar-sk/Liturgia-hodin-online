@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item android:id="@+id/tts_use_pause_in_psalms"
+        android:title="@string/tts_use_pause_in_psalms"
+        app:actionLayout="@layout/widget_switch"
+  />
+
+  <item android:id="@+id/tts_settings_help"
+        android:title="@string/tts_settings_help"
+        app:actionLayout="@layout/widget_submenu"
+  />
+
+</menu>

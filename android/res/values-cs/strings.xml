@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Breviář</string>
+    <string name="back">Zpátky</string>
+    <string name="forward">Vpřed</string>
+    <string name="menu">Breviář</string>
+    <string name="today">Dnes</string>
+    <string name="pgup">Nahoru</string>
+    <string name="pgdn">Dál</string>
+
+    <string name="lang_select">Jazyk</string>
+    <string name="settings">Nastavení</string>
+
+    <string name="lang_cz">Čeština</string>
+    <string name="lang_c2">Čeština – dominikánský</string>
+    <string name="lang_sk">Slovenština</string>
+    <string name="lang_hu">Maďarština</string>
+    <string name="override_locale">Použít tento jazyk také v ovládacích prvcích</string>
+
+    <string name="settings_title">Nastavení zařízení</string>
+    <string name="vol_buttons">Použít tlačítka hlasitosti na listování</string>
+    <string name="dimlock">Nezhasínat obrazovku</string>
+    <string name="mute">Vypnout zvonění</string>
+    <string name="long_click_toggles_bar">Dlouhé stlačení skryje navigační lištu</string>
+    <string name="transparent_nav">Navigační šipka v textu</string>
+
+    <string name="prayer_settings_title">Obsah modliteb</string>
+    <string name="prayer_content_settings_title">Obsah modliteb</string>
+    <string name="various_options_in_prayers">Rozličné volby v textech modliteb jako klikatelné odkazy</string>
+    <string name="alternatives">Alternativy</string>
+
+    <string name="prayer_display_settings_title">V textu modliteb zobrazit</string>
+    <string name="display_communia_info">Info, odkud se berou společné texty</string>
+    <string name="verse_numbering">Číslování veršů</string>
+    <string name="bible_references">Biblické odkazy</string>
+    <string name="bible_ref_bible_com">Biblické odkazy (YouVersion)</string>
+    <string name="footnotes">Poznámky (v textu, pod čarou)</string>
+    <string name="liturgical_readings">Mešní čtení</string>
+    <string name="psalms_omissions">Vynechávky ze žalmů</string>
+
+    <string name="display_settings_title">Další zobrazení</string>
+    <string name="first_vespers_buttons">Zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení</string>
+    <string name="navigation">Zobrazit navigaci v textech modliteb</string>
+    <string name="smart_buttons">Tlačítka pro modlitby zobrazit úsporně</string>
+    <string name="night_mode">Noční režim</string>
+    <string name="background_override">Alternativní barva pozadí (žlutá)</string>
+    <string name="normal_font">Všude použít obyčejné písmo (ne tučné)</string>
+    <string name="buttons_order">Navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby</string>
+
+    <string name="calendar_settings_title">Liturgický kalendář</string>
+    <string name="epiphany_sunday">Zjevení Páně slavit v neděli mezi 2. a 8. lednem</string>
+    <string name="ascension_sunday">Nanebevstoupení Páně slavit v neděli</string>
+    <string name="body_blood_sunday">Těla a krve Páně slavit v neděli</string>
+    <string name="emphasize_local_calendar">Zvýraznit slavení v národním kalendáři</string>
+
+    <string name="alarms">Notifikace</string>
+    <string name="alarmOff">nepřipomínat</string>
+
+    <string name="fullscreenOn">Celá obrazovka</string>
+
+    <string name="nightmodeOn">Noční režim</string>
+    <string name="nightmodeOff">Denní režim</string>
+
+    <string name="onlyNonBoldFontOff">I tučné písmo</string>
+
+    <string name="navigation_drawer_open">Otevři menu</string>
+    <string name="navigation_drawer_close">Zavři menu</string>
+
+    <string name="inv">Uvedení</string>
+    <string name="rch">Ranní chvály</string>
+    <string name="vesp">Nešpory</string>
+    <string name="kompl">Kompletář</string>
+    <string name="read">Modlitba se čtením</string>
+    <string name="h9">Modlitba dopoledne</string>
+    <string name="h12">Modlitba napoledne</string>
+    <string name="h15">Modlitba odpoledne</string>
+
+    <string name="inv_notify">Je čas na uvedení!</string>
+    <string name="rch_notify">Je čas na ranní chvály!</string>
+    <string name="vesp_notify">Je čas na nešpory!</string>
+    <string name="kompl_notify">Je čas na kompletář!</string>
+    <string name="read_notify">Je čas na modlitbu se čtením!</string>
+    <string name="h9_notify">Je čas na dopolední modlitbu!</string>
+    <string name="h12_notify">Je čas na polední modlitbu!</string>
+    <string name="h15_notify">Je čas na odpolední modlitbu!</string>
+
+    <string name="tts_ready">Pročti</string>
+    <string name="tts_speaking">Ukonči předčítání</string>
+    <string name="tts_pause">Pozastavit předčítání</string>
+    <string name="tts_resume">Pokračovat v čtení</string>
+    <string name="tts_back">Pročti předchozí část</string>
+    <string name="tts_forward">Pročti následující část</string>
+
+    <string name="notification_not_allowed">Aplikaci jste dosud nepovolili vypnout zvonění.</string>
+
+    <string name="channel_name">Breviář</string>
+    <string name="channel_description">Notifikace na časy modliteb</string>
+
+    <string name="about_title">O aplikaci</string>
+    <string name="news_title">Změny ve verzích</string>
+
+    <string name="about_PROJECT_URL">breviar.cz</string>
+    <string name="about_E_MAIL">android@breviar.sk</string>
+    <string name="about_APP_NAME">Aplikace Breviář pro OS Android</string>
+    <string name="about_SPECIAL_CREDITS">Děkuji za pomoc, podporu, spolupráci a souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.</string>
+    <string name="about_PROJECT_SOURCE_STORAGE">GitHub-u</string>
+    <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
+    <string name="about_PLATFORM_ANDROID">Android</string>
+    <string name="about_PLATFORM_IOS">iOS</string>
+
+    <string name="tts_settings_title">Hlasový výstup</string>
+    <string name="tts_use_pause_in_psalms">Pro žalmy a kantika použít pauzu (hvězdičky, křížky)</string>
+    <string name="tts_settings_help">Návod pro hlasový výstup</string>
+    <string name="tts_settings_help_title">Návod pro hlasový výstup</string>
+    <string name="tts_settings_help_content"><![CDATA[
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style type="text/css">
+body { background-color: #303030; color: #dddddd; }
+</style>
+</head>
+<body>
+
+<h3>Jak nastavit hlasový výstup</h3>
+
+<p>Pokud jste dosud nepoužívali hlasový výstup, je třeba si nainstalovat aplikaci pro syntézu řeči (TTS, text-to-speech) a nastavit ji jako předvolenou v systémových nastaveních.</p>
+
+<p>Čeština má dobrou podporu ve vestavěné androidové syntéze řeči, v aplikaci Google TTS (určitě to platí pro novější verze Androidu). Pokud ji chcete použít, doporučujeme stáhnout si podporu pro jazyk, který plánujete používat, do Vašeho zařízení.</p>
+
+<p><button onclick="bridge.openTTSSettings()">Nastavit předvolenou aplikaci pro TTS"</button></p>
+
+<p>Po nastavení hlasového výstupu můzete v aplikaci spustit předčítání aktuálních modliteb z menu (vysouvací zleva) nebo z aplikační lišty (nahoru).</p>
+
+</body>
+</html>
+    ]]></string>
+
+</resources>

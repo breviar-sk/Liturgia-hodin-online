@@ -1,0 +1,19 @@
+Poznatky z nasadzovania
+
+==========
+2003-07-08
+==========
+
+(Niektoré pramenia z toho, že uncgi sa tvári ako další adresár,
+a tiež z toho, že vygenerovaná modlitba je ako keby v adresári cgi-bin.)
+
+* _header.htm: musí obsahovat CSS v tvare "/breviar.css"
+* vysvetl.htm a vysvetlt.htm: musia mat referenciu na dokumenty "/msg/...htm"
+
+==========
+2003-07-15
+==========
+
+* prípadne zmenit záležitosti v breviar.cfg
+* zmenit Makefile pre uncgi (1.10): cesty pre cgi skript
+

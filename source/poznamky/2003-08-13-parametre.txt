@@ -1,0 +1,5 @@
+-qpsqs -s"qt=pdt&d=3&m=8&r=2003&p=mrch" -i..\..\
+-qpbm -d1 -m1 -r2000 -f2 -g2 -p2001 -ba.txt
+-qpdt -d26 -m8 -r2003 -pmpo -i..\..\..\ -51 -l1
+-qpdt -d26 -m8 -r2003 -pmna -i..\..\..\ -51 -l1
+-qpdt -d26 -m8 -r2003 -pmpred -i..\..\..\ -51 -l1
