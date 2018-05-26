@@ -9408,13 +9408,14 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
-					set_spolocna_cast(sc, poradie_svaty);
+					set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_PROSBY);
 
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+				_vlastna_cast_kresponz_ve_obd;
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -9423,6 +9424,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+				_vlastna_cast_kresponz_ve_obd;
 
 				break;
 			}
