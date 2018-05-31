@@ -1173,8 +1173,8 @@ void file_name_litobd_pc(short int litobd) {
 }
 
 void file_name_vlastny_kalendar(short int kalendar) {
-	// do not use for JAZYK_CZ_OP even if called
-	if (_global_jazyk != JAZYK_CZ_OP) {
+	// do not use for JAZYK_CZ_OP even if called; do not use for general calendars even if called
+	if ((_global_jazyk != JAZYK_CZ_OP) && (_global_kalendar != default_kalendar[_global_jazyk])) {
 		sprintf(_file, "%s", nazov_htm_kalendar[kalendar]);
 		sprintf(_file_pc, "%s", nazov_htm_kalendar[kalendar]);
 	}
