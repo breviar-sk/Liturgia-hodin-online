@@ -11431,8 +11431,11 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
+				modlitba = MODL_PRVE_VESPERY;
+				_vlastna_cast_full_okrem_kresp(modlitba);
+
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_full_okrem_kresp_a_prosieb(modlitba);
+				_vlastna_cast_full_okrem_kresp(modlitba);
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -11440,7 +11443,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_full_okrem_kresp_a_prosieb(modlitba);
+				_vlastna_cast_full_okrem_kresp(modlitba);
 
 				_vlastna_cast_mcd_modlitba;
 
