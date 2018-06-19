@@ -11438,9 +11438,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				_vlastna_cast_full_okrem_kresp(modlitba);
 
 				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-				_vlastna_cast_2citanie;
-				_vlastna_cast_modlitba;
+				_vlastna_cast_full(modlitba);
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_kresp(modlitba);
