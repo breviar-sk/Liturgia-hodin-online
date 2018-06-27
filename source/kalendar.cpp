@@ -13097,33 +13097,33 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	case 19: // MES_JUN -- 19JUN
 
-		if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
-			if (poradie_svaty == 1) {
-				// definovanie parametrov pre modlitbu
-				if (query_type != PRM_DETAILY)
-					set_spolocna_cast(sc, poradie_svaty);
+		pom_poradie = ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) ? 1 : 2;
 
-				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
+		if (poradie_svaty == pom_poradie) {
+			// definovanie parametrov pre modlitbu
+			if (query_type != PRM_DETAILY)
+				set_spolocna_cast(sc, poradie_svaty);
 
-				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_modlitba;
-				_vlastna_cast_2citanie;
+			modlitba = MODL_RANNE_CHVALY;
+			_vlastna_cast_modlitba;
 
-				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
+			modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_modlitba;
+			_vlastna_cast_2citanie;
 
-				break;
-			}
+			modlitba = MODL_VESPERY;
+			_vlastna_cast_modlitba;
 
-			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			mystrcpy(_global_svaty1.meno, text_JUN_19[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
-			_global_svaty1.farba = LIT_FARBA_BIELA;
-			_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
-		}// except CZ, CZOP
+			break;
+		}
 
-		else if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_CSSR)) {
+		_set_slavenie_typslav_smer(pom_poradie, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+		mystrcpy(_global_svaty(pom_poradie).meno, text_JUN_19[_global_jazyk], MENO_SVIATKU);
+		_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+		_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
+		_global_svaty(pom_poradie).kalendar = KALENDAR_VSEOBECNY;
+
+		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_CSSR)) {
 			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
@@ -13172,6 +13172,8 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 				break;
 			}
+
+			pocet = pom_poradie;
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
 			_global_svaty1.typslav_lokal = LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA; // povinná spomienka len v čb-diecéze
