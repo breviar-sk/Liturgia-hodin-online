@@ -14173,6 +14173,9 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 			modlitba = MODL_RANNE_CHVALY;
 			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
+				if (_global_jazyk == JAZYK_CZ_OP) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_antifony;
 				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
@@ -14184,16 +14187,14 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_modlitba;
 			_vlastna_cast_2citanie;
-			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
-				// 2008-10-15: odvetvené len pre Česko
-				// 2008-11-29: pridané czop - dominikánský breviář
+			if (_global_jazyk == JAZYK_CZ) {
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 
 			_vlastna_cast_mcd_modlitba;
 
 			modlitba = MODL_VESPERY;
-			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
+			if (_global_jazyk == JAZYK_CZ) {
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			_vlastna_cast_antifony_ako_na_ranne_chvaly;
