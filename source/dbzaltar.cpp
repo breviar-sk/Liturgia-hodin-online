@@ -10839,6 +10839,7 @@ _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_CZ, "17SEP2_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "16SEP2_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "17SEP2_cCIT2", 2 },
+	{ JAZYK_HU, "24OKT2_cCIT2", 2 },
 };
 
 _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {

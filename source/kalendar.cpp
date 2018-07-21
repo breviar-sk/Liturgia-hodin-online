@@ -7997,6 +7997,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}// CZ only
+
 			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 				// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca pre český breviář sa totiž berú niektoré časti z 19. marca | -- v tejto časti sa hodnoty upravujú späť na pôvodné --
 				den = pom_den;
@@ -23930,7 +23931,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				}
 
 				modlitba = MODL_RANNE_CHVALY;
-				if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)) { // 2008-10-15: odvetvené len pre Slovensko; 2009-07-09: pridané aj pre CZ_OP
+				if (_global_jazyk != JAZYK_CZ) {
 					_vlastna_cast_full_okrem_prosieb(modlitba);
 				}
 				else {
@@ -23943,7 +23944,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
-				if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)) { // 2008-10-15: odvetvené len pre Slovensko; 2009-07-09: pridané aj pre CZ_OP
+				if (_global_jazyk != JAZYK_CZ) {
 					_vlastna_cast_full_okrem_prosieb(modlitba);
 				}
 				else {
@@ -25983,7 +25984,10 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_modlitba;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-				_vlastna_cast_1citanie;
+				if (_global_svaty_i_smer_override(1) <= 8) {
+					// take proper 1st reading only for feast/solemnity
+					_vlastna_cast_1citanie;
+				}
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
