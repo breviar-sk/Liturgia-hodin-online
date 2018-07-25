@@ -4211,6 +4211,17 @@ void _set_zalmy_pc_1_21_92(short int modlitba) {
 }// _set_zalmy_pc_1_21_92()
 */
 
+// HU 05NOV
+void _set_zalmy_pc_24_61_84(short int modlitba) {
+	Log("_set_zalmy_pc_24_61_84(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z24.htm", "ZALM24");
+		set_zalm(2, modlitba, "z61.htm", "ZALM61");
+		set_zalm(3, modlitba, "z84.htm", "ZALM84");
+	}
+	Log("_set_zalmy_pc_24_61_84(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_pc_24_61_84()
+
 // HU OFM (19NOV)
 void _set_zalmy_pc_45_87(short int modlitba){
 	Log("_set_zalmy_pc_45_87(%s) -- begin\n", nazov_modlitby(modlitba));

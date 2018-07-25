@@ -27139,6 +27139,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
+				_set_zalmy_pc_24_61_84(modlitba);
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_antifon(modlitba);
@@ -27645,7 +27646,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_modlitba;
 			_vlastna_cast_2citanie;
-			if (_global_jazyk == JAZYK_SK) {
+			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)) {
 				_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
 			}
 
@@ -29659,7 +29660,9 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			_vlastna_cast_mcd_modlitba;
 
 			modlitba = MODL_VESPERY;
-			_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+			if (_global_jazyk != JAZYK_HU) {
+				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+			}
 			_vlastna_cast_antifony;
 			_vlastna_cast_magnifikat;
 			_vlastna_cast_modlitba;
