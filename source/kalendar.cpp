@@ -17643,7 +17643,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
-			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
+			if (_global_jazyk == JAZYK_CZ) {
 				_vlastna_cast_mcd_full;
 			}
 			else {
