@@ -1095,9 +1095,11 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_litobd_pc; \
 }
 
+// 1., 2. a 3. Adventná nedeľa = 3., 4. a 5. Cezročná nedeľa
+// 4. Adventná nedeľa = 6. Cezročná nedeľa
 #define _liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden) { \
-	sprintf(_anchor, "%s%d_%c%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
-	_set_evanjelium(modlitba, _file_pc, _anchor); \
+	sprintf(_anchor, "%s%d_%c%s", nazov_OBD[OBD_CEZ_ROK], ((litobd == OBD_ADVENTNE_I) || (litobd == OBD_ADVENTNE_II)) ? tyzden + 2 : tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, /* _file_pc */ nazov_obd_htm_pc[OBD_CEZ_ROK], _anchor); \
 	set_LOG_litobd_pc; \
 }
 
