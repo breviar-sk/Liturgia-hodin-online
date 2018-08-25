@@ -554,13 +554,17 @@ public class TtsService extends Service
       if (chunk_text.equals("#TTS_PAUSE_DIV")) {
         tts.playSilence(200, TextToSpeech.QUEUE_ADD, params);
       } else if (chunk_text.equals("#TTS_PAUSE_SHORT")) {
+        int pause = 0;
         if (use_pauses) {
-          tts.playSilence(200, TextToSpeech.QUEUE_ADD, params);
+          pause = 200;
         }
+        tts.playSilence(pause, TextToSpeech.QUEUE_ADD, params);
       } else if (chunk_text.equals("#TTS_PAUSE_LONG")) {
+        int pause = 0;
         if (use_pauses) {
-          tts.playSilence(1000, TextToSpeech.QUEUE_ADD, params);
+          pause = 1000;
         }
+        tts.playSilence(pause, TextToSpeech.QUEUE_ADD, params);
       } else {
         tts.speak(chunks.elementAt(i), TextToSpeech.QUEUE_ADD, params);
       }

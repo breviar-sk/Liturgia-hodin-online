@@ -36,6 +36,11 @@ android {
   defaultConfig {
     targetSdkVersion 26
     minSdkVersion 14
+    ndk {
+      // Tells Gradle to build outputs for the following ABIs and package
+      // them into your APK.
+      abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+    }
   }
 
   /*
