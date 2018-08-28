@@ -938,6 +938,9 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_full_okrem_hymnu(modlitba);
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_1citanie;
 				_vlastna_cast_2citanie;
@@ -958,9 +961,6 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_hymnu(modlitba);
-
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
@@ -2353,6 +2353,9 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 					_vlastna_cast_modlitba;
 				}
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
 					_vlastna_cast_antifona_inv;
@@ -2386,9 +2389,6 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 				else {
 					_vlastna_cast_modlitba;
 				}
-
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
@@ -5484,6 +5484,9 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_vlastna_cast_kresponz_po_ve;
 			_set_zalmy_sviatok_sv_muzov(modlitba);
 
+			modlitba = MODL_PRVE_KOMPLETORIUM;
+			_set_kompletorium_slavnost(modlitba);
+
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
@@ -5510,9 +5513,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_vlastna_cast_full(modlitba);
 			_vlastna_cast_kresponz_po_ve;
 			_set_zalmy_sviatok_sv_muzov(modlitba);
-
-			modlitba = MODL_PRVE_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba);
 
 			modlitba = MODL_KOMPLETORIUM;
 			_set_kompletorium_slavnost(modlitba);
@@ -5611,6 +5611,9 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_vlastna_cast_kresponz_po_ve;
 			_set_zalmy_narodenie(modlitba);
 
+			modlitba = MODL_PRVE_KOMPLETORIUM;
+			_set_kompletorium_slavnost(modlitba);
+
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
@@ -5637,9 +5640,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_vlastna_cast_full(modlitba);
 			_vlastna_cast_kresponz_po_ve;
 			_set_zalmy_narodenie(modlitba);
-
-			modlitba = MODL_PRVE_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba);
 
 			modlitba = MODL_KOMPLETORIUM;
 			_set_kompletorium_slavnost(modlitba);
@@ -10727,6 +10727,9 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_modlitba;
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_POSV_CITANIE;
 				// _vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
@@ -10736,9 +10739,6 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_modlitba;
-
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
@@ -11871,6 +11871,9 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_full(modlitba);
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -11894,9 +11897,6 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
-
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
@@ -13467,6 +13467,9 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			_vlastna_cast_modlitba_ina;
 			_set_zalmy_sviatok_sv_muzov(modlitba);
 
+			modlitba = MODL_PRVE_KOMPLETORIUM;
+			_set_kompletorium_slavnost(modlitba);
+
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
@@ -13491,9 +13494,6 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_sv_muzov(modlitba);
-
-			modlitba = MODL_PRVE_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba);
 
 			modlitba = MODL_KOMPLETORIUM;
 			_set_kompletorium_slavnost(modlitba);
@@ -14404,9 +14404,6 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
-
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_full(modlitba);
 				// slovenský breviár má iné žalmy
@@ -14416,6 +14413,10 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				else {
 					_set_zalmy_sviatok_duch_past(modlitba);
 				}
+
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -14468,6 +14469,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				else {
 					_set_zalmy_sviatok_duch_past(modlitba);
 				}
+
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
 
@@ -15485,6 +15487,9 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_full(modlitba);
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -15506,9 +15511,6 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
-
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
@@ -17103,6 +17105,9 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				_vlastna_cast_full(modlitba);
 				_set_zalmy_sj_ignac(modlitba);
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -17127,6 +17132,9 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
 				_set_zalmy_sj_ignac(modlitba);
+
+				modlitba = MODL_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
 
 				break;
 			}
@@ -17206,6 +17214,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -17230,6 +17241,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_vlastna_cast_magnifikat;
 				_vlastna_cast_prosby;
 				_vlastna_cast_modlitba;
+
+				modlitba = MODL_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
 
 				break;
 			}
@@ -17327,6 +17341,13 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			}
 
 			if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
+
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
+				modlitba = MODL_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // miestne slávnosti Pána, preblahoslavenej Panny Márie a svätých; technicky 3, hoci podľa smerníc 4
 			}// KALENDAR_CZ_OFMCAP only
 			else {
@@ -17840,6 +17861,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_vlastna_cast_full(modlitba);
 				_set_zalmy_op_dominik(modlitba);
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -17871,6 +17895,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
 				_set_zalmy_op_dominik(modlitba);
+
+				modlitba = MODL_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
 
 				break;
 			}
@@ -18580,6 +18607,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_vlastna_cast_modlitba_ina;
 			_set_zalmy_sviatok_panien(modlitba);
 
+			modlitba = MODL_PRVE_KOMPLETORIUM;
+			_set_kompletorium_slavnost(modlitba);
+
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
@@ -18604,9 +18634,6 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_panien(modlitba);
-
-			modlitba = MODL_PRVE_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba);
 
 			modlitba = MODL_KOMPLETORIUM;
 			_set_kompletorium_slavnost(modlitba);
@@ -19243,12 +19270,12 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
-
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_full(modlitba);
 				_set_zalmy_sviatok_sv_muzov(modlitba);
+
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
@@ -20094,6 +20121,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					_set_zalmy_csa_augustin(modlitba);
 				}
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -20134,9 +20164,6 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CSA)) {
 					_set_zalmy_csa_augustin(modlitba);
 				}
-
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
@@ -21036,6 +21063,9 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				_vlastna_cast_modlitba;
 				_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
 
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -21060,9 +21090,6 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_prosieb(modlitba);
-
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
@@ -22881,11 +22908,11 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
-
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_full(modlitba);
+
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
@@ -22974,12 +23001,12 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ANTIFONY);
 
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
-
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_full_okrem_antifon(modlitba);
 				_set_zalmy_sviatok_muc(modlitba);
+
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
@@ -23421,9 +23448,6 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				modlitba = MODL_PRVE_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
 
-				modlitba = MODL_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
-
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -23448,6 +23472,9 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
 				_set_zalmy_ofm_frantisek(modlitba);
+
+				modlitba = MODL_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
 
 				break;
 			}
@@ -24139,9 +24166,6 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				modlitba = MODL_PRVE_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
 
-				modlitba = MODL_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
-
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -24170,6 +24194,9 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
 				_set_zalmy_sviatok_panien(modlitba);
+
+				modlitba = MODL_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
 
 				if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
 					break;
@@ -30165,6 +30192,9 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_panien(modlitba);
 
+			modlitba = MODL_PRVE_KOMPLETORIUM;
+			_set_kompletorium_slavnost(modlitba);
+
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
@@ -30194,9 +30224,6 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_panien(modlitba);
-
-			modlitba = MODL_PRVE_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba);
 
 			modlitba = MODL_KOMPLETORIUM;
 			_set_kompletorium_slavnost(modlitba);
