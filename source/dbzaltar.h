@@ -1065,6 +1065,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_litobd_pc; \
 }
 
+#define _spolocna_cast_set_vig_ant_sm_sz() { \
+	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_SV_MUZ], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
+	_set_antifona_vig(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_SV_MUZ], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
 #define _spolocna_cast_set_vig_ev(vlastny_anchor) { \
 	sprintf(_anchor, "%s%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
 	_set_evanjelium(modlitba, _file, _anchor); \

@@ -1165,6 +1165,19 @@ void _set_chvalospev_vig_sc_ap(short int modlitba) {
 	_set_chvalospev3(modlitba, "ch_mud10.htm", "CHVAL_MUD10VG");
 } // _set_chvalospev_vig_sc_ap()
 
+void _set_chvalospev_vig_sc_vm(short int modlitba) {
+	_set_chvalospev1(modlitba, "ch_mud3.htm", "CHVAL_MUD3VG1");
+	_set_chvalospev2(modlitba, "ch_mud3.htm", "CHVAL_MUD3VG");
+	_set_chvalospev3(modlitba, "ch_mud10.htm", "CHVAL_MUD10VG");
+} // _set_chvalospev_vig_sc_vm()
+
+// pre svätých mužov a sväté ženy, aj pre jedného mučeníka, aj pre panny
+void _set_chvalospev_vig_sc_sm_sz(short int modlitba) {
+	_set_chvalospev1(modlitba, "ch_jer17.htm", "CHVAL_JER17VG");
+	_set_chvalospev2(modlitba, "ch_sir14.htm", "CHVAL_SIR14VG");
+	_set_chvalospev3(modlitba, "ch_sir31.htm", "CHVAL_SIR31VG");
+} // _set_chvalospev_vig_sc_sm_sz()
+
 // files - nazvy suborov pre zaltar styroch tyzdnov
 char _file[MAX_STR_AF_FILE]; // nazov súboru, napr. _1ne.htm
 char _file_pc[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania
@@ -9418,6 +9431,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
 		_spolocna_cast_2cit_rozne(modlitba, _anchor_pom, _anchor, _file);
 
+		// predĺžené slávenie vigílií
+		_spolocna_cast_set_vig_ant_sm_sz();
+		_set_chvalospev_vig_sc_sm_sz(modlitba);
+		_spolocna_cast_set_vig_ev(_anchor_head);
+
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
 		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
@@ -9588,6 +9606,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// _spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_head, _anchor_zvazok, STR_EMPTY /* _anchor netreba*/, _file, force);
 
+		// predĺžené slávenie vigílií
+		_spolocna_cast_set_vig_ant(_anchor_head);
+		_set_chvalospev_vig_sc_sm_sz(modlitba);
+		_spolocna_cast_set_vig_ev(_anchor_head);
+
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
 		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
@@ -9681,6 +9704,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		_spolocna_cast_full(modlitba);
 
 		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_pom, _file, force);
+
+		// predĺžené slávenie vigílií
+		_spolocna_cast_set_vig_ant(_anchor_head);
+		_set_chvalospev_vig_sc_vm(modlitba);
+		_spolocna_cast_set_vig_ev(_anchor_head);
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -9984,6 +10012,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_head, _file, force);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
+		// predĺžené slávenie vigílií
+		_spolocna_cast_set_vig_ant(_anchor_head);
+		_set_chvalospev_vig_sc_sm_sz(modlitba);
+		_spolocna_cast_set_vig_ev(_anchor_head);
+
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
 		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
@@ -10064,6 +10097,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		_spolocna_cast_1cit_zvazok(modlitba, STR_EMPTY /* 2005-08-16: _anchor_pom netreba */, _anchor_zvazok, _anchor_head, _file, force);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 
+		// predĺžené slávenie vigílií
+		_spolocna_cast_set_vig_ant(_anchor_head);
+		_set_chvalospev_vig_sc_sm_sz(modlitba);
+		_spolocna_cast_set_vig_ev(_anchor_head);
+
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
 		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
@@ -10140,6 +10178,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		_spolocna_cast_full(modlitba);
 		// _spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		// 1. čítanie je rovnaké pre všetky obdobia a zväzky žaltára :-)
+
+		// predĺžené slávenie vigílií
+		_spolocna_cast_set_vig_ant(_anchor_head);
+		_set_chvalospev_vig_sc_sm_sz(modlitba);
+		_spolocna_cast_set_vig_ev(_anchor_head);
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
