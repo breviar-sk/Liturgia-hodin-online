@@ -9719,8 +9719,16 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kcit_kresp_chval_ve;
 		}
-		if ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN)) {
-			_spolocna_cast_ant2_po;
+		if (_global_jazyk == JAZYK_HU) {
+			// 2018-09-11: HU breviary has an error; we have to "simulate" that (ant. 2 for Easter season should be taken also for volumes I, III, IV ("per annum" & Advent); in HU breviary, volumes I, III, IV use ant. 2 for Fast season)
+			if ((_global_den.litobd != OBD_VELKONOCNE_I) && (_global_den.litobd != OBD_VELKONOCNE_II)) {
+				_spolocna_cast_ant2_po;
+			}
+		}
+		else {
+			if ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN)) {
+				_spolocna_cast_ant2_po;
+			}
 		}
 
 		// modlitba cez deň
