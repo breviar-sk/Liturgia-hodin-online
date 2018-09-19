@@ -21889,6 +21889,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 						set_spolocna_cast(sc, poradie_svaty);
 
 					modlitba = MODL_RANNE_CHVALY;
+					_vlastna_cast_benediktus;
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_POSV_CITANIE;
@@ -21896,6 +21897,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 					_vlastna_cast_2citanie;
 
 					modlitba = MODL_VESPERY;
+					_vlastna_cast_magnifikat;
 					_vlastna_cast_modlitba;
 
 					break;
