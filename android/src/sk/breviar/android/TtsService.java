@@ -26,7 +26,8 @@ import sk.breviar.android.BreviarApp;
 // TODO: handle exceptions.
 
 public class TtsService extends Service
-                        implements TextToSpeech.OnInitListener {
+                        implements TextToSpeech.OnInitListener,
+                                   AudioManager.OnAudioFocusChangeListener {
   // Public commands:
   // Contains TtsState `state` as serializable extra.
   public static final String TTS_UPDATE_ACTION = "sk.breviar.android.action.TTS_UPDATE";
@@ -42,9 +43,11 @@ public class TtsService extends Service
 
   // No extras.
   public static final String TTS_PAUSE = "sk.breviar.android.action.TTS_PAUSE";
+  public static final String TTS_AUDIOFOCUS_LOSS = "sk.breviar.android.action.TTS_AUDIOFOCUS_LOSS";
 
   // No extras.
   public static final String TTS_RESUME = "sk.breviar.android.action.TTS_RESUME";
+  public static final String TTS_AUDIOFOCUS_GAIN = "sk.breviar.android.action.TTS_AUDIOFOCUS_GAIN";
 
   // No extras.
   public static final String TTS_FORWARD = "sk.breviar.android.action.TTS_FORWARD";
@@ -366,8 +369,7 @@ public class TtsService extends Service
               return State.IDLE;
             }
             initializeChunks();
-            startSynthesis();
-            return State.PLAYING;
+            return startSynthesis(IDLE_PROCESSING);
 
           default:
             return State.REJECT;
@@ -389,7 +391,7 @@ public class TtsService extends Service
             return State.REJECT;
 
           case TTS_STOP:
-            if (state == State.PLAYING) tts.stop();
+            if (state == State.PLAYING) stopSynthesis(TTS_STOP);
             chunks = null;
             sections = null;
             shutdownTts();
@@ -399,17 +401,18 @@ public class TtsService extends Service
             return State.IDLE;
 
           case TTS_PAUSE:
+          case TTS_AUDIOFOCUS_LOSS:
             if (state == State.PLAYING) {
-              tts.stop();
+              stopSynthesis(action.getAction());
               return State.PAUSED;
             } else {
               return State.REJECT;
             }
 
           case TTS_RESUME:
+          case TTS_AUDIOFOCUS_GAIN:
             if (state == State.PAUSED) {
-              startSynthesis();
-              return State.PLAYING;
+              return startSynthesis(action.getAction());
             } else {
               return State.REJECT;
             }
@@ -427,7 +430,7 @@ public class TtsService extends Service
               }
               --section;
             }
-            if (state == State.PLAYING) tts.stop();
+            if (state == State.PLAYING) stopSynthesis(action.getAction());
             chunks = null;
             return State.START_SECTION;
 
@@ -542,7 +545,39 @@ public class TtsService extends Service
     chunk = 0;
   }
 
-  void startSynthesis() {
+  void stopSynthesis(String action) {
+    if (!action.equals(TTS_AUDIOFOCUS_LOSS)) {
+      AudioManager audio_manager = (AudioManager)getSystemService(AUDIO_SERVICE);
+      if (audio_manager != null) {
+        audio_manager.abandonAudioFocus(this);
+      }
+    }
+    tts.stop();
+  }
+
+  @Override
+  public void onAudioFocusChange(int focusChange) {
+    if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+      processAction(new Intent(TTS_AUDIOFOCUS_GAIN));
+    } else {
+      processAction(new Intent(TTS_AUDIOFOCUS_LOSS));
+    }
+  }
+
+  State startSynthesis(String action) {
+    if (!action.equals(TTS_AUDIOFOCUS_GAIN)) {
+      AudioManager audio_manager = (AudioManager)getSystemService(AUDIO_SERVICE);
+      if (audio_manager == null) {
+        Log.v("breviar", "TTS: cannot get audio manager");
+      } else {
+        if (audio_manager.requestAudioFocus(this, AudioManager.STREAM_MUSIC,
+                                            AudioManager.AUDIOFOCUS_GAIN) !=
+            AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+          return State.PAUSED;
+        };
+      }
+    }
+
     boolean use_pauses = BreviarApp.getTtsUsePauseInPsalms(this);
     for (int i = chunk; i < chunks.size(); ++i) {
       HashMap<String, String> params = new HashMap<String, String>();
@@ -569,6 +604,7 @@ public class TtsService extends Service
         tts.speak(chunks.elementAt(i), TextToSpeech.QUEUE_ADD, params);
       }
     }
+    return State.PLAYING;
   }
 
   int findTtsSplit(String chunk, int pos) {
