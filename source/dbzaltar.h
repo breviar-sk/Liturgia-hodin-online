@@ -1735,6 +1735,7 @@ extern const char *text_NOV_16_BY[POCET_JAZYKOV + 1];
 extern const char *text_NOV_17[POCET_JAZYKOV + 1];
 extern const char *text_NOV_18[POCET_JAZYKOV + 1];
 extern const char *text_NOV_20_SK[POCET_JAZYKOV + 1];
+extern const char *text_NOV_20_SK_2[POCET_JAZYKOV + 1];
 extern const char *text_NOV_20_BY[POCET_JAZYKOV + 1];
 extern const char *text_NOV_21[POCET_JAZYKOV + 1];
 extern const char *text_NOV_22[POCET_JAZYKOV + 1];

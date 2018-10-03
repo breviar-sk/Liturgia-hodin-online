@@ -13946,6 +13946,19 @@ const char *text_NOV_20_SK[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_NOV_20_SK_2[POCET_JAZYKOV + 1] =
+{
+	"Bl. Anny Kolesárovej, panny a mučenice",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_NOV_20_BY[POCET_JAZYKOV + 1] =
 {
 	"",
