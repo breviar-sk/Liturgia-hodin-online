@@ -2527,12 +2527,13 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 	case 2: // MES_FEB -- 02FEB
 
 		if ((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) || (poradie_svaty == 1)) {
-			// definovanie parametrov pre modlitbu
-			if ((poradie_svaty == 1) &&
-				(query_type != PRM_DETAILY))
-				set_spolocna_cast(sc, poradie_svaty);
 
-			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
+			// definovanie parametrov pre modlitbu
+			if ((poradie_svaty == 1) && (query_type != PRM_DETAILY)) {
+				set_spolocna_cast(sc, poradie_svaty);
+			}
+
+			if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
 				set_popis_dummy();
 			}
 
@@ -14095,7 +14096,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				// nemá popis; 2013-02-04: doplnené
-				if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
+				if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
 					set_popis_dummy();
 				}
 
@@ -17653,7 +17654,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				set_spolocna_cast(sc, poradie_svaty);
 
 			// nemá popis
-			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
+			if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
 				set_popis_dummy();
 			}
 
@@ -18598,7 +18599,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
-			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
+			if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
 				set_popis_dummy();
 			}
 
@@ -21111,7 +21112,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 					set_spolocna_cast(sc, poradie_svaty);
 
 				// nemá popis
-				if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
+				if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
 					set_popis_dummy();
 				}
 
@@ -21536,7 +21537,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
-			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
+			if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
 				set_popis_dummy();
 			}
 
@@ -23178,7 +23179,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
-			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
+			if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
 				set_popis_dummy();
 			}
 
@@ -23335,7 +23336,10 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
-			set_popis_dummy();
+			// pre CZ je popis
+			if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
+				set_popis_dummy();
+			}
 
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
@@ -30212,7 +30216,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
-			if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
+			if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
 				set_popis_dummy();
 			}
 

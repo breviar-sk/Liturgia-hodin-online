@@ -4625,6 +4625,8 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	short int _pom_mesiac = _global_den.mesiac;
 	short int _pom_rok = _global_den.rok;
 
+	short int skip_big_switch = NIE;
+
 	Log("-- liturgicke_obdobie(%d, %d, %d, %d: svaty: %d) -- začiatok\n", litobd, tyzden, den, tyzzal, poradie_svateho);
 
 	/* if((_global_den.smer > 5) || (_global_den.smer == 2)) */
@@ -4650,41 +4652,47 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	// ak ano, tak nenastavuj nic, lebo vsetko sa nastavilo vo funkcii sviatky_svatych()
 	Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR: najprv treba skontrolovať, či nejde o deň [pôvodne nedeľu], na ktorú pripadol sviatok premenenia pána a podobné... (ak áno, nenastavuj nič)\n");
 
-	if(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR){
-		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR (napr. premenenie pána || obetovanie pána || petra a pavla || povýšenie sv. kríža || všetkých svätých || nanebovzatia PM)...\n");
+	if (PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR) {
+		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR: BEGIN (napr. premenenie pána || obetovanie pána || petra a pavla || povýšenie sv. kríža || všetkých svätých || nanebovzatia PM)...\n");
+
 		// pre sviatky Pána (svätých), ktoré padnú na nedeľu (a majú prednosť pred Cezročnou nedeľou), je potrebné nastaviť prvé aj druhé nedeľné kompletórium
-		if((_global_den.denvt == DEN_NEDELA) && (_global_svaty(1).smer >= 5)){
+		if ((_global_den.denvt == DEN_NEDELA) && (_global_svaty(1).smer >= 5)) {
 			Log("pre sviatky Pána (svätých), ktoré padnú na nedeľu (a majú prednosť pred Cezročnou nedeľou), je potrebné nastaviť prvé aj druhé nedeľné kompletórium...\n");
 			_set_kompletorium_nedela(MODL_PRVE_KOMPLETORIUM);
 			_set_kompletorium_nedela(MODL_KOMPLETORIUM);
 		}
-		if((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI)){
-			Log("keďže nejde o modlitbu cez deň, preskakujeme nastavenia (všetky boli nastavené z vlastnej časti): return...\n");
+		if ((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI)) {
+			Log("keďže nejde o modlitbu cez deň, preskakujeme nastavenia (všetky boli nastavené z vlastnej časti): (return)...\n");
 
 			Log("jediné, čo nastavíme, je nastavenie kvôli kompletóriu v OCR...\n");
 			_set_hymnus_alternativy_obdobie(litobd, ANO); // podmienka na liturgické obdobie je vnútri
 
-			Log("-- liturgicke_obdobie(%d, %d, %d, %d: svaty: %d) -- predčasný koniec\n", litobd, tyzden, den, tyzzal, poradie_svateho);
-			return;
+			skip_big_switch = ANO;
+			// 2018-10-04, JUV: instead of this hard-coded return, skip the big switch
+			// Log("-- liturgicke_obdobie(%d, %d, %d, %d: svaty: %d) -- predčasný koniec\n", litobd, tyzden, den, tyzzal, poradie_svateho);
+			// return;
 		}
-		else{
-			if(_global_den.denvt == DEN_NEDELA){
+		else {
+			if (_global_den.denvt == DEN_NEDELA) {
 				Log("keďže ide o modlitbu cez deň, nastavujeme žalmy z nedele pre MCD a hoci použijeme ostatné nastavenia, všetky ostatné budú (snáď) nastavené z vlastnej časti...\n");
-				if((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)){
+
+				if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)) {
 					Log(" pre modlitbu cez deň 02FEB nastavujeme aj antifóny k psalmódii zo dňa...\n");
 					zaltar_zvazok(den, tyzzal, _global_den.litobd, ZALTAR_ANT_ZALMY_HYMNUS_MCD);
 				}
-				else{
+				else {
 					zaltar_zvazok(den, tyzzal, _global_den.litobd, ZALTAR_IBA_ZALMY_HYMNUS_MCD);
 				}
 			}
-			else{
-				Log("keďže ide o modlitbu cez deň MIMO nedele, nastavujeme všetky časti ak nasleduje - zo dňa...\n");
+			else {
+				Log("keďže ide o modlitbu cez deň MIMO nedele, nastavujeme všetky časti ako nasleduje - zo dňa...\n");
 			}
 		}
+
+		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR: END\n");
 	}
-	else{
-		Log("NEjde o: premenenie pána || obetovanie pána || petra a pavla || povýšenie sv. kríža || všetkých svätých || nanebovzatia PM...\n");
+	else {
+		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR: ELSE | NEjde o: premenenie pána || obetovanie pána || petra a pavla || povýšenie sv. kríža || všetkých svätých || nanebovzatia PM...\n");
 	}
 
 	Log("teraz spustíme zaltar_zvazok(); - pôvodne sa púšťala s dvoma parametrami, pridaný parameter pre zväzok breviára (voláme s hodnotou ZALTAR_VSETKO)\n");
@@ -4703,6 +4711,13 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	Log("  _file_pc_tyzden bude nastavene na prislusnom mieste (teraz == `%s').\n", _file_pc_tyzden);
 
 	char c; // používa sa vo výnimočných prípadoch: napr. druha velkonocna nedela
+
+	if (skip_big_switch == NIE) {
+	
+	// velky switch(litobd), podla ktoreho sa priradia zakladne udaje
+	LOG_ciara_sv;
+	Log("Začiatok veľkého switch()-u podľa liturgických období\nTeraz nasleduje veľký switch() podľa liturgických období...\n");
+	switch(litobd) {
 
 // invitatórium
 // použiteľné pre adventné obdobie, vianočné...
@@ -4799,13 +4814,8 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	}\
 }
 
-	// velky switch(litobd), podla ktoreho sa priradia zakladne udaje
-	LOG_ciara_sv;
-
-	Log("Začiatok veľkého switch()-u podľa liturgických období\nTeraz nasleduje veľký switch() podľa liturgických období...\n");
-	switch(litobd){
 // switch(litobd), case OBD_ADVENTNE_I -- begin -----------------------------------------------
-		case OBD_ADVENTNE_I :// do 16. decembra
+	case OBD_ADVENTNE_I :// do 16. decembra
 			Log("OBD_ADVENTNE_I\n");
 
 			// spoločné časti bez ohľadu na to, či je alebo nie je nedeľa
@@ -8881,8 +8891,10 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	LOG_ciara_sv;
 	// koniec velkeho switchu, podla ktoreho sa priradia zakladne udaje
 
-	Log("_global_den (nastavene v dbzaltar.cpp::liturgicke_obdobie() po velkom switchi, pred druhym spustanim sviatky_svatych()):\n");
+	}// if (skip_big_switch == NIE)
+
 #ifdef DETAIL_LOG_GLOBAL_DEN
+	Log("_global_den (nastavene v dbzaltar.cpp::liturgicke_obdobie() po velkom switchi, pred druhym spustanim sviatky_svatych()):\n");
 	Log(_global_den);
 #endif
 	// --------------------------------------------------------------------
@@ -8892,28 +8904,28 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	_INIT_DM(_local_den);
 
 	// najprv priradime do _local_den to, co tam ma byt
-	if(poradie_svateho > 0){
+	if (poradie_svateho > 0) {
 		// sviatky (spomienky, ls) svatych
-		if(poradie_svateho == PORADIE_PM_SOBOTA){
+		if (poradie_svateho == PORADIE_PM_SOBOTA) {
 			// do _local_den priradim slavenie pm v sobotu v dalsom
 			_local_den = _global_pm_sobota;
 			// ale predsalen aspon _local_den = _global_pm_sobota; urobim tu
 		}// poradie_svateho = PORADIE_PM_SOBOTA
-		else if(poradie_svateho < PORADIE_PM_SOBOTA){
-			if(_global_pocet_svatych > poradie_svateho - 1){
+		else if (poradie_svateho < PORADIE_PM_SOBOTA) {
+			if (_global_pocet_svatych > poradie_svateho - 1) {
 				// do _local_den priradim dane slavenie
 				_local_den = _global_svaty(poradie_svateho);
 				Log("spúšťam druhýkrát sviatky_svatych(), tentokrát pre %d. svätého\n", poradie_svateho);
 				sviatky_svatych(_local_den.den, _local_den.mesiac, poradie_svateho, 2 /* druhýkrát */);
 			}
-			else{
+			else {
 				// sice chce svateho c. 'poradie_svateho', ale máme ich menej
 				Log("-- Error: _global_svaty(%d) not assigned (liturgicke_obdobie)\n", poradie_svateho);
 				ALERT;
 				Export("Error: _global_svaty(%d) not assigned (liturgicke_obdobie)\n", poradie_svateho);
 			}
 		}// poradie_svateho < PORADIE_PM_SOBOTA
-		else{
+		else {
 			Log("-- Error/liturgicke_obdobie: poradie_svateho == %d (max.: %d)\n", poradie_svateho, PORADIE_PM_SOBOTA);
 			ALERT;
 			Export("Error/liturgicke_obdobie: poradie_svateho == %d (max.: %d)\n", poradie_svateho, PORADIE_PM_SOBOTA);
@@ -8921,13 +8933,13 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	}// if(poradie_svateho > 0)
 	// v ďalších častiach 'else' platí, že poradie_svateho == 0 (UNKNOWN_PORADIE_SVATEHO)
 	// ak poradie_svateho bolo UNKNOWN_PORADIE_SVATEHO, znamená to, že sa chcelo volanie možno pre nasledovný deň; problém sv. Jozefa - antifóny pre kompletórium nastavené pri prvom spustení volania "sviatky svätých" prekrylo nastavenie z liturgického obdobia...
-	else if((poradie_svateho == UNKNOWN_PORADIE_SVATEHO) && (_global_pocet_svatych > 0)
+	else if ((poradie_svateho == UNKNOWN_PORADIE_SVATEHO) && (_global_pocet_svatych > 0)
 		&& (_global_den.smer >= _global_svaty1.smer) && (_je_global_svaty_i_slavnost(1))
 		// a neplatí, že ide o lokálnu slávnosť: tá nesmie prebiť všedný deň
 		// 2010-10-06: upravené; nesmie ísť o lokálnu slávnosť (smer == 4) lebo nemá prebíjať "globálnu" v danom kalendári [napr. czop pre 22.10.]
 		// 2011-02-02: zadefinované MIESTNE_SLAVENIE_CZOP_SVATY(i), aby sa zjednodušila podmienka (platí len pre CZOP)
 		// 2011-03-07: MIESTNE_SLAVENIE_CZOP_SVATY(i) použité aj pre iné lokálne slávenia ako MIESTNE_SLAVENIE_LOKAL_SVATY(i)
-		&& !MIESTNE_SLAVENIE_LOKAL_SVATY(1)){
+		&& !MIESTNE_SLAVENIE_LOKAL_SVATY(1)) {
 		// bolo to volanie pre nasledujúci deň, treba ošetriť napr. kompletórium po prvých vešperách, aby sa nepriradilo zo žaltára
 		Log("poradie_svateho == UNKNOWN_PORADIE_SVATEHO...\n");
 		Log("_global_pocet_svatych == %d\n", _global_pocet_svatych);
@@ -8941,12 +8953,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 		Log("po druhom spustení sviatky_svatych(), pre %d. svätého (nastavené natvrdo)\n", poradie_svateho);
 		// pravedpodobne nie je potrebný clean-up: poradie_svateho = UNKNOWN_PORADIE_SVATEHO;
 	}
-	else if((_global_den.denvt == DEN_NEDELA) ||
-		(_global_den.prik == PRIKAZANY_SVIATOK)){
+	else if ((_global_den.denvt == DEN_NEDELA) ||
+		(_global_den.prik == PRIKAZANY_SVIATOK)) {
 		// _local_den ostava _global_den
 		_local_den = _global_den;
 	}
-	else{
+	else {
 		// obyčajný deň
 		_local_den = _global_den;
 	}
@@ -10501,7 +10513,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty){
 	// poradie_svaty sa tu vlastne vôbec nepoužíva
 	Log("set_popis_svaty_rch_mcd_pc_vesp(%d) -- začiatok...\n", poradie_svaty);
-	// Log("  teraz nastavujem POPIS (pre daneho svateho)...\n");
+	Log("  teraz nastavujem POPIS (pre daneho svateho)...\n");
 	mystrcpy(_anchor, _anchor_head, MAX_STR_AF_ANCHOR);
 	strcat(_anchor, ANCHOR_POPIS);
 	set_popis(MODL_PRVE_VESPERY, _file, _anchor);

@@ -1840,7 +1840,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 
 					// má zmysel len ak platí daná podmienka
 					if (podmienka) {
-						Log("including %s\n", paramname);
+						Log("includeFile: including %s\n", paramname);
 						Export("%s:begin-->", paramname);
 
 						char before[SMALL] = STR_EMPTY;
@@ -3394,7 +3394,8 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		|| (equals(paramname, PARAM_INVITATORIUM_ANT("1")) || equals(paramname, PARAM_INVITATORIUM_ANT("2")) || equals(paramname, PARAM_INVITATORIUM_ANT("3")) || equals(paramname, PARAM_INVITATORIUM_ANT("4")))
 		|| (equals(paramname, PARAM_OKTAVA_PRVE_DRUHE_KOMPL))
 		) {
-		Log("(if((equals(paramname == %s)): _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI == %ld: \n", paramname, _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI);
+
+		// Log("(if((equals(paramname == %s)): _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI == %ld: \n", paramname, _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_ROZNE_MOZNOSTI);
 
 		long bit;
 		short int opt = OPT_1_CASTI_MODLITBY; // for some options must be changed e. g. to OPT_5_ALTERNATIVES
@@ -3846,7 +3847,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 		// má zmysel, len ak platí daná podmienka
 		if (podmienka) {
-			Log("including %s\n", paramname);
+			Log("interpretParameter: including %s\n", paramname);
 			Export("%s:begin-->", paramname);
 
 			mystrcpy(before, STR_EMPTY, SMALL);
@@ -4048,7 +4049,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		Log("  _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT == %ld: ", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT);
 
 		if (!(useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS))) {
-			Log("including POPIS\n");
+			Log("interpretParameter: PARAM_POPIS: including POPIS...\n");
 			switch (type) {
 			case MODL_INVITATORIUM:
 				strcat(path, _global_modl_invitatorium.popis.file);
@@ -4097,8 +4098,8 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			} // switch
 		}
 		else {
-			Export("skipping POPIS");
-			Log("skipping POPIS\n");
+			Export("[skipping POPIS]");
+			Log("skipping POPIS...\n");
 		}
 	} // PARAM_POPIS
 
@@ -6001,7 +6002,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						// 2003-06-30: porov. pasaz venovanu srdcu pm vo funkcii dbzaltar.cpp::sviatky_svatych(); -- 2 vstupy
 
 						// nemá popis; 2013-02-04: doplnené
-						if ((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
+						if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
 							set_popis_dummy();
 						}
 					}
