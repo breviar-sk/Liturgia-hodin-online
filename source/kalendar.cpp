@@ -29327,12 +29327,12 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 			pocet = 2;
 
-			_set_slavenie_typslav_smer(2, SLAV_SLAVNOST, 4); // miestne slávnosti
-			_global_svaty2.typslav_lokal = LOKAL_SLAV_SZEKESFEHERVAR_EGYH;
-			mystrcpy(_global_svaty2.meno, text_NOV_25_HU[_global_jazyk], MENO_SVIATKU);
-			_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
-			_global_svaty2.farba = LIT_FARBA_BIELA;
-			_global_svaty2.kalendar = KALENDAR_VSEOBECNY_HU;
+			_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 8); // miestne sviatky
+			_global_svaty(2).typslav_lokal = LOKAL_SLAV_SZEKESFEHERVAR_EGYH;
+			mystrcpy(_global_svaty(2).meno, text_NOV_25_HU[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+			_global_svaty(2).farba = LIT_FARBA_BIELA;
+			_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_HU;
 		}// HU only
 
 		break;
