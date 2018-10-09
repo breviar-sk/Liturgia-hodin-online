@@ -4645,12 +4645,20 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_modlitba;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				_vlastna_cast_hymnus_ako_na_rchvaly(modlitba, _global_den.litobd); // hymnus ako na ranné chvály -- musí byť posledný pre danú modlitbu
 				_vlastna_cast_2citanie;
 
 				_vlastna_cast_mcd_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_den.litobd == OBD_CEZ_ROK) {
+					// Évközi időben: mint az OLVASMÁNYOS IMAÓRA
+					_vlastna_cast_hymnus_ako_na_rchvaly(modlitba, _global_den.litobd); // hymnus ako na ranné chvály -- musí byť posledný pre danú modlitbu
+				}
+				else {
+					// Nagyböjtben: "Az égi udvar díszei,"
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_modlitba;
 				_vlastna_cast_magnifikat;
 
