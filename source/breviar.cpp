@@ -1491,6 +1491,18 @@ void _main_prazdny_formular(void) {
 	Export("Programu neboli zadané argumenty.\n");
 } // _main_prazdny_formular()
 
+
+void export_div_to_continue_tts_voice_output(short int export_comment_begin = ANO) {
+	// used both in includeFile() and interpretParameter()
+	Export(HTML_P_END "\n"); // end of first verse of psalm/canticle which started <p class="verse...">
+	Export(HTML_DIV_END "\n"); // end of <div class="psalm"> which is in each psalm/canticle
+	Export(HTML_DIV_END "\n"); // end of HTML_DIV_RUBRIC added above
+	Export("<" HTML_DIV_PSALM ">" "\n" HTML_P_VERSE_CONT "\n"); // synthetic begin of psalm + verse
+	if (export_comment_begin == ANO) {
+		Export(HTML_COMMENT_BEGIN);
+	}
+}// export_div_to_continue_tts_voice_output()
+
 #define DetailLog emptyLog
 
 #define MAX_ZAKONCENIE 200
@@ -1761,13 +1773,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 								Export("\n" HTML_DIV_RUBRIC "\n"); // hide the rest of antiphone with beginning of psalm/canticle until the first verse's red cross
 
 								Export((_global_jazyk == JAZYK_HU) ? HTML_DIV_BEGIN : HTML_P_BEGIN); // HU uses <div class="antiphon ...">; synthetic begin of antiphone
+
+								Export(HTML_COMMENT_BEGIN); // must be added because 'end of antiphone' include follows
 							}
 							else {
 								// continue exporting text for TTS (voice output)
-								Export(HTML_P_END "\n"); // end of first verse of psalm/canticle which started <p class="verse...">
-								Export(HTML_DIV_END "\n"); // end of <div class="psalm"> which is in each psalm/canticle
-								Export(HTML_DIV_END "\n"); // end of HTML_DIV_RUBRIC added above
-								Export("<" HTML_DIV_PSALM ">" "\n" HTML_P_VERSE_CONT "\n" HTML_COMMENT_BEGIN); // synthetic begin of psalm + verse
+								export_div_to_continue_tts_voice_output();
 							}
 						}//  do not repeat the same text for voice output (TTS)
 					}// krížik v texte includovaného žalmu/chválospevu
@@ -2962,6 +2973,20 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 			}
 		}
 	}// zobraziť/nezobraziť číslovanie veršov
+
+	else if (equals(paramname, PARAM_KRIZIK)) {
+		if (_global_skip_in_prayer == NIE) {
+			if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+				DetailLog("exporting end of DIV for hiding part because of voice output...\n");
+				// continue exporting text for TTS (voice output)
+				export_div_to_continue_tts_voice_output(NIE);
+			}
+			else {
+				DetailLog("exporting red cross with nbsp after...\n");
+				Export("<" HTML_SPAN_RED ">%s" HTML_SPAN_END "" HTML_NONBREAKING_SPACE, PARAM_RED_CROSS);
+			}
+		}
+	}// zobraziť/nezobraziť krížik: should be used in invitatory prayer, Psalm 95, only
 
 	// normal (black) stuff in psalmody (cross, asterisk)
 	else if (equals(paramname, PARAM_NORMAL_ASTERISK)
@@ -6532,16 +6557,21 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		Log("_local_den.smer < 5 or SLAV_SLAVNOST");
 		velkost = CASE_VERZALKY;
 	}
-	if ((_je_local_den_sviatok) && (poradie_svateho != PORADIE_PM_SOBOTA)) {
+	else if ((_je_local_den_sviatok) && (poradie_svateho != PORADIE_PM_SOBOTA)) {
 		// sviatky
 		Log("SLAV_SVIATOK");
-		if (_global_jazyk == JAZYK_CZ_OP) {
+		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP)) {
 			velkost = CASE_KAPITALKY;
 		}
-		else if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_BY)) {
+		else if (_global_jazyk == JAZYK_BY) {
 			velkost = CASE_VERZALKY;
 		}
 	}
+	else {
+		velkost = CASE_NORMALNE;
+	}
+
+	// Log("3:velkost == %d", velkost);
 
 	// red color?
 	Log("_local_den.denvt == DEN_NEDELA || _local_den.prik == PRIKAZANY_SVIATOK -- ");
@@ -6884,6 +6914,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		}
 
 		if (_global_jazyk == JAZYK_CZ_OP) {
+		// if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP)) {
 			// respect CASE_ of celebration proper name
 			if (velkost == CASE_VERZALKY) {
 				html_span_capitalization = ANO;

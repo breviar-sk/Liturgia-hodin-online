@@ -17308,6 +17308,15 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					set_spolocna_cast(sc, poradie_svaty);
 
 				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
+
+					modlitba = MODL_PRVE_KOMPLETORIUM;
+					_set_kompletorium_slavnost(modlitba);
+
+					modlitba = MODL_KOMPLETORIUM;
+					_set_kompletorium_slavnost(modlitba);
+				}
+
+				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
 					modlitba = MODL_PRVE_VESPERY;
 					_vlastna_cast_full(modlitba);
 
@@ -17350,13 +17359,6 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			}
 
 			if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
-
-				modlitba = MODL_PRVE_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
-
-				modlitba = MODL_KOMPLETORIUM;
-				_set_kompletorium_slavnost(modlitba);
-
 				_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // miestne slávnosti Pána, preblahoslavenej Panny Márie a svätých; technicky 3, hoci podľa smerníc 4
 			}// KALENDAR_CZ_OFMCAP only
 			else {
