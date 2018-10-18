@@ -9596,11 +9596,8 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 			}
 		}
 		else {
-			if (podmienka == ANO) {
-				// ANCHOR_SPOL_CAST_PANNA_MUCENICA
-				_spolocna_cast_kresponz_rozne(modlitba, _anchor_pom, _anchor, _file, force);
-				_spolocna_cast_magnifikat_rozne(modlitba, _anchor_pom, _anchor, _file, force);
-			}
+			_spolocna_cast_kresponz_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_magnifikat_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		}
 
 		// invitatórium
