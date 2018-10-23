@@ -1684,7 +1684,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 #define PRILEP_REQUEST_OPTIONS_DEFAULT   0
 #define PRILEP_REQUEST_OPTIONS_AJ_FORCE  1
 #define PRILEP_REQUEST_OPTIONS_LEN_FORCE 2
-void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int force_opt = PRILEP_REQUEST_OPTIONS_DEFAULT);
+void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int special_handling = 0, short int force_opt = PRILEP_REQUEST_OPTIONS_DEFAULT);
 
 short int prestupny(short int);
 short int pocet_dni_v_roku(short int);

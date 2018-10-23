@@ -2365,6 +2365,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 #ifdef BEHAVIOUR_WEB
 						// najprv upravíme o1
 						_global_opt_1_casti_modlitby_orig = _global_opt[OPT_1_CASTI_MODLITBY]; // backup pôvodnej hodnoty
+
 						// nastavenie parametra o1: pridáme bit pre alternatívnu psalmódiu
 						if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)) {
 							Log("Pre option 1 odstraňujem bit pre ž95 (pôvodnú hodnotu som si zapamätal)\n");
@@ -2374,6 +2375,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							Log("Pre option 1 pridávam bit pre ž95 (pôvodnú hodnotu som si zapamätal)\n");
 							_global_opt[OPT_1_CASTI_MODLITBY] -= BIT_OPT_1_ZALM95;
 						}
+
 						// prilepenie poradia svätca
 						if (_global_poradie_svaty > 0) {
 							sprintf(pom, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, _global_poradie_svaty);
@@ -2381,6 +2383,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						else {
 							mystrcpy(pom, STR_EMPTY, MAX_STR);
 						}// !(_global_poradie_svaty > 0)
+
 						// teraz vytvoríme reťazec s options
 						prilep_request_options(pom, pompom);
 
@@ -8680,9 +8683,16 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 	mystrcpy(pom2, STR_EMPTY, MAX_STR);
 	char pom3[MAX_STR];
 	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+	char pom2_no_override[MAX_STR];
+	mystrcpy(pom2_no_override, STR_EMPTY, MAX_STR);
 
 	if (_global_opt_batch_monthly == NIE) {
 		prilep_request_options(pom2, pom3);
+
+		// cleanup of pom3 and generate different pom2
+		mystrcpy(pom3, STR_EMPTY, MAX_STR);
+		Log("creating pom2_no_override with removal of BIT_OPT_1_OVERRIDE_STUP_SLAV...\n");
+		prilep_request_options(pom2_no_override, pom3, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
 	}// if(_global_opt_batch_monthly == NIE)
 
 	if (query_type == PRM_LIT_OBD) {
@@ -8754,7 +8764,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 
 			// << predošlý rok -- button
 			if (_global_opt_batch_monthly == NIE) {
-				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 			}// if(_global_opt_batch_monthly == NIE)
 			else {
 				mystrcpy(pom, STR_EMPTY, MAX_STR); // 2009-08-12: možno v budúcnosti by sa mohol dať odkaz na adresár s rok+mesiacom predošlého roka
@@ -8794,7 +8804,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 
 			// predošlý mesiac -- button
 			if (_global_opt_batch_monthly == NIE) {
-				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 			}// if(_global_opt_batch_monthly == NIE)
 			else {
 				mystrcpy(pom, STR_EMPTY, MAX_STR);
@@ -8851,7 +8861,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 
 		// << predošlý deň -- button
 		if (_global_opt_batch_monthly == NIE) {
-			sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+			sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 		}// if(_global_opt_batch_monthly == NIE)
 		else {
 			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE) {
@@ -8925,7 +8935,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 
 		// >> nasledujúci deň -- button
 		if (_global_opt_batch_monthly == NIE) {
-			sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+			sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 		}// if(_global_opt_batch_monthly == NIE)
 		else {
 			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE) {
@@ -8979,7 +8989,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 
 			// >> nasledovný mesiac -- button
 			if (_global_opt_batch_monthly == NIE) {
-				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 			}// if(_global_opt_batch_monthly == NIE)
 			else {
 				mystrcpy(pom, STR_EMPTY, MAX_STR);
@@ -9011,7 +9021,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 			}
 			// nasledujúci rok -- button
 			if (_global_opt_batch_monthly == NIE) {
-				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 			}// if(_global_opt_batch_monthly == NIE)
 			else {
 				mystrcpy(pom, STR_EMPTY, MAX_STR);
@@ -9084,9 +9094,16 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 	mystrcpy(pom2, STR_EMPTY, MAX_STR);
 	char pom3[MAX_STR];
 	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+	char pom2_no_override[MAX_STR];
+	mystrcpy(pom2_no_override, STR_EMPTY, MAX_STR);
 
 	if (_global_opt_batch_monthly == NIE) {
 		prilep_request_options(pom2, pom3);
+
+		// cleanup of pom3 and generate different pom2
+		mystrcpy(pom3, STR_EMPTY, MAX_STR);
+		Log("creating pom2_no_override with removal of BIT_OPT_1_OVERRIDE_STUP_SLAV...\n");
+		prilep_request_options(pom2_no_override, pom3, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
 	}// if(_global_opt_batch_monthly == NIE)
 
 	if (query_type == PRM_LIT_OBD) {
@@ -9180,7 +9197,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 
 		// << predošlý deň -- button
 		if (_global_opt_batch_monthly == NIE) {
-			sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+			sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 		}// if(_global_opt_batch_monthly == NIE)
 		else {
 			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE) {
@@ -9249,7 +9266,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 
 		// >> nasledujúci deň -- button
 		if (_global_opt_batch_monthly == NIE) {
-			sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+			sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 		}// if(_global_opt_batch_monthly == NIE)
 		else {
 			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE) {
@@ -9300,7 +9317,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 
 			// predošlý mesiac -- button
 			if (_global_opt_batch_monthly == NIE) {
-				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 			}// if(_global_opt_batch_monthly == NIE)
 			else {
 				mystrcpy(pom, STR_EMPTY, MAX_STR);
@@ -9386,7 +9403,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 
 			// >> nasledovný mesiac -- button
 			if (_global_opt_batch_monthly == NIE) {
-				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 			}// if(_global_opt_batch_monthly == NIE)
 			else {
 				mystrcpy(pom, STR_EMPTY, MAX_STR);
@@ -9425,7 +9442,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 
 			// << predošlý rok -- button
 			if (_global_opt_batch_monthly == NIE) {
-				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 			}// if(_global_opt_batch_monthly == NIE)
 			else {
 				mystrcpy(pom, STR_EMPTY, MAX_STR);
@@ -9464,7 +9481,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 			}
 			// nasledujúci rok -- button
 			if (_global_opt_batch_monthly == NIE) {
-				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2);
+				sprintf(pom, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, datum.den, STR_MESIAC, datum.mesiac, STR_ROK, _local_rok, pom2_no_override);
 			}// if(_global_opt_batch_monthly == NIE)
 			else {
 				mystrcpy(pom, STR_EMPTY, MAX_STR);
@@ -9571,13 +9588,13 @@ void _export_rozbor_dna_kalendar_core(short int typ) {
 			_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR, (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY, (char *)STR_EMPTY);
 		}
 
-		char pom2[MAX_STR];
-		mystrcpy(pom2, STR_EMPTY, MAX_STR);
-		char pom3[MAX_STR];
-		mystrcpy(pom3, STR_EMPTY, MAX_STR);
-
-		// teraz vytvoríme reťazec s options
-		prilep_request_options(pom2, pom3);
+//		char pom2[MAX_STR];
+//		mystrcpy(pom2, STR_EMPTY, MAX_STR);
+//		char pom3[MAX_STR];
+//		mystrcpy(pom3, STR_EMPTY, MAX_STR);
+//
+//		// teraz vytvoríme reťazec s options
+//		prilep_request_options(pom2, pom3, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
 
 		Export("\n<div " HTML_CLASS_CALENDAR ">\n");
 		// zoznam dní vo forme kalendárika
@@ -14676,7 +14693,7 @@ void _main_analyza_roku(char *rok) {
 		return;
 	}
 
-	prilep_request_options(pom2, pom3);
+	prilep_request_options(pom2, pom3, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
 
 	sprintf(pom, (char *)html_text_Rok_x[_global_jazyk], year);
 	_export_heading_center(pom);

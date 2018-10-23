@@ -437,13 +437,15 @@ char *convert_nonbreaking_spaces(const char *input){
 	return (_global_pom_str);
 }// convert_nonbreaking_spaces()
 
-void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int force_opt /* default = PRILEP_REQUEST_OPTIONS_DEFAULT */){
+void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int special_handling /* default == 0 */, short int force_opt /* default == PRILEP_REQUEST_OPTIONS_DEFAULT */) {
+	// special_handling -- used for special cases (removing switch "celebrate with higher level" in case of different day (previous, next etc.)
 	short int i;
-	Log("prilep_request_options() -- začiatok...\n");
+	short int was_changed_o1_override = NIE;
+	Log("prilep_request_options(special_handling == %d) -- začiatok...\n", special_handling);
 
 	// fix pre Android (nastavenie jazyka v menu vs. v HTML forme): vždy nastavovať (prilepovať) jazyk
 #ifndef IO_ANDROID
-	if (_global_jazyk != JAZYK_SK){
+	if (_global_jazyk != JAZYK_SK) {
 #endif
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_JAZYK, skratka_jazyka[_global_jazyk]);
 		strcat(pom2, pom3);
@@ -452,47 +454,55 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 	}
 #endif
 
-	if (PODMIENKA_EXPORTOVAT_KALENDAR){
+	if (PODMIENKA_EXPORTOVAT_KALENDAR) {
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_KALENDAR, skratka_kalendara[_global_kalendar]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj kalendár: `%s'\n", pom3);
 	}
-	else{
+	else {
 		Log("\tNetreba prilepiť kalendár (jazyk == %s, kalendár == %s)\n", skratka_jazyka[_global_jazyk], skratka_kalendara[_global_kalendar]);
 	}
 
-	if ((_global_css != CSS_breviar_sk) && (_global_css != CSS_UNDEF)){
+	if ((_global_css != CSS_breviar_sk) && (_global_css != CSS_UNDEF)) {
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_CSS, skratka_css[_global_css]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj css: `%s'\n", pom3);
 	}
 
-	if ((_global_font != FONT_CSS) && (_global_font != FONT_UNDEF)){
+	if ((_global_font != FONT_CSS) && (_global_font != FONT_UNDEF)) {
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_FONT_NAME, nazov_fontu[_global_font]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj font: `%s'\n", pom3);
 	}
-	else{
+	else {
 		Log("\tNetreba prilepiť font (_global_font == %d, názov == %s)\n", _global_font, nazov_fontu[_global_font]);
 	}
 
-	if (PODMIENKA_EXPORTOVAT_FONTSIZE){
+	if (PODMIENKA_EXPORTOVAT_FONTSIZE) {
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_FONT_SIZE, nazov_font_size_css[_global_font_size]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj font size: `%s'\n", pom3);
 	}
-	else{
+	else {
 		Log("\tNetreba prilepiť font size (_global_font_size == %d, názov == %s)\n", _global_font_size, nazov_font_size_css[_global_font_size]);
 	}
 
-	if (PODMIENKA_EXPORTOVAT_STYLE_MARGIN){
+	if (PODMIENKA_EXPORTOVAT_STYLE_MARGIN) {
 		sprintf(pom3, HTML_AMPERSAND"%s=%d", STR_STYLE_MARGIN, _global_style_margin);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj style margin: `%s'\n", pom3);
 	}
-	else{
+	else {
 		Log("\tNetreba prilepiť style margin (_global_style_margin == %d)\n", _global_style_margin);
 	}
+
+	// nastavenie parametra o1: odstránime nastavenie BIT_OPT_1_OVERRIDE_STUP_SLAV pre indikovanie, že sa má použiť vyšší stupeň slávenia
+	if ((special_handling > 0) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV))) {
+		was_changed_o1_override = ANO;
+		Log("Pre option %d odstraňujem bit pre '%d'\n", OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV);
+		_global_opt[OPT_1_CASTI_MODLITBY] -= BIT_OPT_1_OVERRIDE_STUP_SLAV;
+		Log("option %d = %ld\n", OPT_1_CASTI_MODLITBY, _global_opt[OPT_1_CASTI_MODLITBY]);
+	}// change opt1 value
 
 	char local_str[SMALL];
 	long local_opt_default;
@@ -501,9 +511,9 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 		Log("i == %d...\n", i);
 		local_opt_default = CFG_OPTION_DEFAULT(i);
 #if defined(IO_ANDROID)
-		// Export all options in android, so that the UI can parse and modify their values correctly.
+		// Export all options in Android, so that the UI can parse and modify their values correctly.
 		podmienka = 1;
-// #elif defined(BEHAVIOUR_WEB)
+		// #elif defined(BEHAVIOUR_WEB)
 #else
 		if (force_opt != PRILEP_REQUEST_OPTIONS_LEN_FORCE) {
 			Log("_global_opt[%d] == %ld; CFG_OPTION_DEFAULT(%d) == %ld;\n", i, _global_opt[i], i, local_opt_default);
@@ -542,6 +552,13 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int fo
 			}
 		}// for i
 	}// aj_force
+
+	// spätné nastavenie parametra o1: vrátime späť nastavenie BIT_OPT_1_OVERRIDE_STUP_SLAV pre indikovanie, že sa má použiť vyšší stupeň slávenia
+	if ((special_handling > 0) && (was_changed_o1_override == ANO)) {
+		Log("Pre option %d opätovne nastavujem bit pre '%d'\n", OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV);
+		_global_opt[OPT_1_CASTI_MODLITBY] += BIT_OPT_1_OVERRIDE_STUP_SLAV;
+		Log("option %d = %ld\n", OPT_1_CASTI_MODLITBY, _global_opt[OPT_1_CASTI_MODLITBY]);
+	}// restore opt1 value
 
 	Log("prilep_request_options() -- koniec.\n");
 }// prilep_request_options();
@@ -708,19 +725,19 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
  * alebo   1999-12-11        (LINK_ISO_8601) - pridane 2005-03-21
  *
  */
-void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align){
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align) {
 	Log("_vytvor_global_link(orig): volám s hodnotou html_class == NULL...\n");
 	_vytvor_global_link(den, mesiac, rok, _case, typ, align, NULL, STR_EMPTY);
 	Log("_vytvor_global_link(orig): koniec.\n");
-}
+}// _vytvor_global_link()
 
-void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class){
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class) {
 	Log("_vytvor_global_link(orig): volám s hodnotou html_class == NULL...\n");
 	_vytvor_global_link(den, mesiac, rok, _case, typ, align, html_class, STR_EMPTY);
 	Log("_vytvor_global_link(orig): koniec.\n");
-}
+}// _vytvor_global_link()
 
-void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class, const char * nazov_dna = STR_EMPTY){
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class, const char * nazov_dna = STR_EMPTY) {
 	Log("_vytvor_global_link(new): začiatok...\n");
 	Log("den == %d, mesiac == %d, rok == %d...\n", den, mesiac, rok);
 
@@ -734,26 +751,26 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 	char str_month[SMALL] = STR_EMPTY;
 
 	short isNewFormat = NIE;
-	if (typ >= LINK_SHIFT){
+	if (typ >= LINK_SHIFT) {
 		typ -= LINK_SHIFT;
 		isNewFormat = ANO;
 	}
 
 	// ak pozadujeme vytvorenie linku s inou farbou pre prestupny rok // different color of link (overlapping year)
-	if (typ == LINK_DEN_MESIAC_ROK_PRESTUP){
+	if (typ == LINK_DEN_MESIAC_ROK_PRESTUP) {
 		mystrcpy(_global_link, "<" HTML_LINK_RED " href=\"", MAX_GLOBAL_LINK);
 	}
-	else{
-		if ((html_class != NULL) && (strlen(html_class) > 0)){
+	else {
+		if ((html_class != NULL) && (strlen(html_class) > 0)) {
 			sprintf(_global_link, "<" HTML_LINK_CLASS_B "%s" HTML_LINK_CLASS_E " href=\"", html_class);
 		}
-		else{
+		else {
 			mystrcpy(_global_link, "<" HTML_LINK_NORMAL " href=\"", MAX_GLOBAL_LINK);
 		}
 	}
 
-	if (_global_opt_batch_monthly == NIE){
-		if (_global_linky == ANO){
+	if (_global_opt_batch_monthly == NIE) {
+		if (_global_linky == ANO) {
 			// linka ano
 
 			strcat(_global_link, script_name);
@@ -763,19 +780,19 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			strcat(_global_link, pom);
 
 			// deň
-			if (den == VSETKY_DNI){
+			if (den == VSETKY_DNI) {
 				sprintf(pom, "%s=%s" HTML_AMPERSAND, STR_DEN, STR_VSETKY_DNI);
 			}
-			else{
+			else {
 				sprintf(pom, "%s=%d" HTML_AMPERSAND, STR_DEN, den);
 			}
 			strcat(_global_link, pom);
 
 			// mesiac
-			if (mesiac == VSETKY_MESIACE){
+			if (mesiac == VSETKY_MESIACE) {
 				sprintf(pom, "%s=%s" HTML_AMPERSAND, STR_MESIAC, STR_VSETKY_MESIACE);
 			}
-			else{
+			else {
 				sprintf(pom, "%s=%d" HTML_AMPERSAND, STR_MESIAC, mesiac);
 			}
 			strcat(_global_link, pom);
@@ -785,53 +802,53 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			strcat(_global_link, pom);
 
 		}// linka ano
-		else{ // linka nie
+		else { // linka nie
 			strcat(_global_link, FILE_NAME_POKEC);
-			if (mesiac == VSETKY_MESIACE){
+			if (mesiac == VSETKY_MESIACE) {
 				strcat(_global_link, "r");
 			}
-			else if (den == VSETKY_DNI){
+			else if (den == VSETKY_DNI) {
 				strcat(_global_link, "m");
 			}
-			else{
+			else {
 				strcat(_global_link, "d");
 			}
 			strcat(_global_link, ".htm");
 		}// linka nie
 
-		prilep_request_options(_global_link, pom2);
+		prilep_request_options(_global_link, pom2, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
 
 	}// if(_global_opt_batch_monthly == NIE)
-	else{
+	else {
 		// najprv podľa typu exportu rozhodneme, či treba predlepiť aj adresár
-		if (typ == LINK_DEN_MESIAC_PREDOSLY || typ == LINK_DEN_MESIAC_NASLEDOVNY){
-			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
+		if (typ == LINK_DEN_MESIAC_PREDOSLY || typ == LINK_DEN_MESIAC_NASLEDOVNY) {
+			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE) {
 				sprintf(str_month, ".." STR_PATH_SEPARATOR_HTML "" DIRNAME_EXPORT_MONTH_SIMPLE "" STR_PATH_SEPARATOR_HTML, rok % 100, mesiac, nazov_mes[mesiac - 1]);
 			}
-			else{ // EXPORT_DATE_FULL
+			else { // EXPORT_DATE_FULL
 				sprintf(str_month, ".." STR_PATH_SEPARATOR_HTML "" DIRNAME_EXPORT_MONTH_FULL "" STR_PATH_SEPARATOR_HTML, rok, mesiac, nazov_mesiaca_asci(mesiac - 1));
 			}
 		}
-		else{
+		else {
 			mystrcpy(str_month, STR_EMPTY, SMALL);
 		}
 		Log("str_month == %s\n", str_month);
 
 		// reťazec pre deň a pre názov súboru
-		if (den != VSETKY_DNI){
-			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
+		if (den != VSETKY_DNI) {
+			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE) {
 				sprintf(str_subor, FILENAME_EXPORT_DATE_SIMPLE, rok % 100, mesiac, den);
 			}
-			else{ // EXPORT_DATE_FULL
+			else { // EXPORT_DATE_FULL
 				sprintf(str_subor, FILENAME_EXPORT_DATE_FULL, rok, mesiac, den);
 			}
 		}
-		else{
+		else {
 			// den == VSETKY_DNI
-			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE){
+			if (_global_opt_export_date_format == EXPORT_DATE_SIMPLE) {
 				sprintf(str_subor, FILENAME_EXPORT_MONTH_SIMPLE, rok % 100, mesiac);
 			}
-			else{ // EXPORT_DATE_FULL
+			else { // EXPORT_DATE_FULL
 				sprintf(str_subor, FILENAME_EXPORT_MONTH_FULL, rok, mesiac);
 			}
 		}
@@ -844,15 +861,15 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 	strcat(_global_link, "\">");
 
 	// printing link text itself
-	switch (typ){
+	switch (typ) {
 	case LINK_DEN_MESIAC_ROK_GEN:
 	case LINK_DEN_MESIAC_ROK_PRESTUP:
 	case LINK_DEN_MESIAC_PREDOSLY:
 	case LINK_DEN_MESIAC_NASLEDOVNY:
 	case LINK_DEN_MESIAC_ROK:
 	case LINK_DEN_MESIAC:
-		if (den == VSETKY_DNI){
-			if (mesiac == VSETKY_MESIACE){
+		if (den == VSETKY_DNI) {
+			if (mesiac == VSETKY_MESIACE) {
 				sprintf(pom, "%d", rok);
 			}
 			else {
@@ -882,21 +899,21 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 				}
 			}// mesiac != VSETKY_MESIACE
 		}// if(den == VSETKY_DNI)
-		else{
-			if (typ == LINK_DEN_MESIAC_PREDOSLY){
+		else {
+			if (typ == LINK_DEN_MESIAC_PREDOSLY) {
 				sprintf(pom, HTML_LEFT_ARROW_WIDE);
 			}
-			else if (typ == LINK_DEN_MESIAC_NASLEDOVNY){
+			else if (typ == LINK_DEN_MESIAC_NASLEDOVNY) {
 				sprintf(pom, HTML_RIGHT_ARROW_WIDE);
 			}
-			else{
+			else {
 				strcpy(pom, _vytvor_string_z_datumu(den, mesiac, rok, _case, typ, align));
 			}
 		}// den != VSETKY_DNI
 		break;
 	case LINK_DEN:
 		sprintf(pom, "%d", den);
-		if (isNewFormat){
+		if (isNewFormat) {
 			strcat(pom, ".");
 			strcat(pom, HTML_NONBREAKING_SPACE);
 			strcat(pom, nazov_dna);
@@ -906,7 +923,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 		sprintf(pom, HTML_ISO_FORMAT, rok, mesiac, den);
 		break;
 	default:
-		switch (_case){
+		switch (_case) {
 		case CASE_case:
 			sprintf(pom, "%s", _global_den.meno);
 			break;
