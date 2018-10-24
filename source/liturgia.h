@@ -1006,7 +1006,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA	38
 #define LOKAL_SLAV_SPIS_BA_PATRON			39 // pre 11. novembra, patróna BA-arcidiecézy; nahrádza LOKAL_SLAV_SPIS_PATRON
 #define LOKAL_SLAV_BRATISLAVA				40
-#define LOKAL_SLAV_free_2		41 // free
+#define LOKAL_SLAV_LUB_SPOMIENKA_FMA_ASC	41
 #define LOKAL_SLAV_KONGREGACIA_SSK			42
 #define LOKAL_SLAV_SPOMIENKA_OFMCAP			43
 #define LOKAL_SLAV_SVIATOK_OFM				44

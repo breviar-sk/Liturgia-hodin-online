@@ -9588,14 +9588,6 @@ void _export_rozbor_dna_kalendar_core(short int typ) {
 			_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_KALENDAR, (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY, (char *)STR_EMPTY);
 		}
 
-//		char pom2[MAX_STR];
-//		mystrcpy(pom2, STR_EMPTY, MAX_STR);
-//		char pom3[MAX_STR];
-//		mystrcpy(pom3, STR_EMPTY, MAX_STR);
-//
-//		// teraz vytvoríme reťazec s options
-//		prilep_request_options(pom2, pom3, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
-
 		Export("\n<div " HTML_CLASS_CALENDAR ">\n");
 		// zoznam dní vo forme kalendárika
 		Export("<" HTML_TABLE ">\n");

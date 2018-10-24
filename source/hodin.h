@@ -609,7 +609,7 @@ const char *nazov_slavenia_lokal[] =
 , "v českobudějovické diecézi: památka"                                                                          // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
 , "v Bratislavskej arcidiecéze a v Spišskej diecéze sviatok hlavného patróna"                                    // LOKAL_SLAV_SPIS_BA_PATRON
 , "v Bratislavskej arcidiecéze"                                                                                  // LOKAL_SLAV_BRATISLAVA
-, "free"                                                                                   // LOKAL_SLAV_free
+, "pre FMA a ASC: ľubovoľná spomienka"                                                                           // LOKAL_SLAV_LUB_SPOMIENKA_FMA_ASC
 , "len pre Inštitút milosrdných sestier Sv. kríža"                                                               // LOKAL_SLAV_KONGREGACIA_SSK // 2013-08-12: pôvodne bolo: "len pre Kongregáciu milosrdných sestier Sv. kríža"
 , "pre OFMCap: spomienka"                                                                                        // LOKAL_SLAV_SPOMIENKA_OFMCAP
 , "pre OFM: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_OFM
@@ -5297,7 +5297,7 @@ const char *text_JAN_24[POCET_JAZYKOV + 1] =
 };
 const char *text_JAN_24_SDB[POCET_JAZYKOV + 1] =
 {
-	"Sv. Františka Saleského, biskupa a učiteľa Cirkvi, " HTML_LINE_BREAK "titulárneho patróna saleziánskej rodiny",
+	"Sv. Františka Saleského, biskupa a učiteľa Cirkvi, " HTML_LINE_BREAK "titulárneho patróna Spoločnosti sv. Františka Saleského",
 	"Sv. Františka Saleského, biskupa a učitele církve, " HTML_LINE_BREAK "titulárního patrona Společnosti sv. Františka Saleského",
 	"",
 	"",
@@ -5505,7 +5505,7 @@ const char *text_JAN_31[POCET_JAZYKOV + 1] =
 };
 const char *text_JAN_31_SDB[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána Boska, kňaza, otca a učiteľa mládeže, " HTML_LINE_BREAK "zakladateľa Spoločnosti svätého Františka Saleského, " HTML_LINE_BREAK "Inštitútu dcér Márie Pomocnice " HTML_LINE_BREAK "a saleziánov spolupracovníkov",
+	"Sv. Jána Boska, kňaza, otca a učiteľa mládeže, " HTML_LINE_BREAK "zakladateľa Spoločnosti sv. Františka Saleského, " HTML_LINE_BREAK "Inštitútu dcér Márie Pomocnice, " HTML_LINE_BREAK "Združenia saleziánov spolupracovníkov " HTML_LINE_BREAK "a Združenia ctiteľov Panny Márie Pomocnice",
 	"Sv. Jana Boska, kněze, otce a učitele mládeže, " HTML_LINE_BREAK "zakladatele Společnosti sv. Františka Saleského, " HTML_LINE_BREAK "Institutu Dcer Panny Marie Pomocnice " HTML_LINE_BREAK "a Salesiánů spolupracovníků",
 	"",
 	"",
@@ -5521,7 +5521,7 @@ const char *text_JAN_31_SDB[POCET_JAZYKOV + 1] =
 
 const char *text_FEB_01_SDB[POCET_JAZYKOV + 1] =
 {
-	"Všetkých nebohých členov " HTML_LINE_BREAK "Spoločnosti svätého Františka Saleského",
+	"Spomienka na všetkých zosnulých spolubratov saleziánov",
 	"Připomínka zemřelých salesiánů",
 	"",
 	"",
@@ -5794,7 +5794,7 @@ const char *text_FEB_08_2[POCET_JAZYKOV + 1] =
 };
 const char *text_FEB_09_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Euzébie Palominovej Yenes, panny",
+	"Bl. Euzébie Palominovej-Yenesovej, panny",
 	"Bl. Eusebie Palomino Yenesové, panny",
 	"",
 	"",
@@ -7743,7 +7743,7 @@ const char *text_MAJ_24_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_MAJ_24[POCET_JAZYKOV + 1] = // ToDo rozdeliť pre všeobecný kalendár a pre SDB
 {
-	"Panny Márie, Pomocnice kresťanov, " HTML_LINE_BREAK "hlavnej patrónky Inštitútu dcér Márie Pomocnice " HTML_LINE_BREAK "a celej saleziánskej rodiny",
+	"Panny Márie, Pomocnice kresťanov, " HTML_LINE_BREAK "hlavnej patrónky Spoločnosti sv. Františka Saleského " HTML_LINE_BREAK "a Inštitútu dcér Márie Pomocnice",
 	"Panny Marie Pomocnice křesťanů, " HTML_LINE_BREAK "hlavní patronky Společnosti sv. Františka Saleského, " HTML_LINE_BREAK "Institutu Dcer Panny Marie " HTML_LINE_BREAK "a Sekulárního institutu Volontárií Dona Boska",
 	"",
 	"",
@@ -9278,7 +9278,7 @@ const char *text_JUL_06[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Márie Romerovej Meneses, panny",
+	"Bl. Márie Romerovej Menesesovej, panny",
 	"Bl. Marie Romero Menesesové, panny",
 	"",
 	"",
@@ -10988,7 +10988,7 @@ const char *text_AUG_25_HU[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_25_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Márie Troncatti, panny",
+	"Bl. Márie Troncattiovej, panny",
 	"Bl. Marie Troncattiové, panny",
 	"",
 	"",
