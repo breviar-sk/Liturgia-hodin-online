@@ -10042,9 +10042,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		_spolocna_cast_benediktus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
-		_spolocna_cast_kresponz_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kresp_ve;
+		}
+		else {
+			_spolocna_cast_kresponz_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		}
 
 		// modlitba cez deň
@@ -10128,6 +10130,9 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kresp_ve;
+		}
+		else {
+			_spolocna_cast_kresponz_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		}
 
 		// modlitba cez deň

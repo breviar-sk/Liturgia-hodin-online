@@ -514,7 +514,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "általános [Magyarország]"
 	, "pre Spoločnosť Božieho Slova — verbistov (SVD)"
 	, "pre Spoločnosť Ježišovu — jezuitov (SJ)"
-	, "pre saleziánsku rodinu — SDB, FMA, ASC" // bolo VDB -> ASC; saleziáni spolupracovníci majú skratku ASC - Associazione dei salesiani cooperatori - teda Zdruzenie salezianov spolupravovnikov (upozornil Maťo Linhart, 2012-02-13)
+	, "pre saleziánsku rodinu — SDB, FMA, VDB"
 	// ,"pre františkánsku rodinu — františkánov<!-- (OFM)-->, kapucínov<!-- (OFMCap)-->, minoritov<!-- (OFMConv.)-->" // 2011-03-21: nefungovalo porovnanie atokalendar lebo HTML odstránilo poznámky
 	// ,"pre františkánsku rodinu — františkánov, kapucínov, minoritov" // 2011-03-22: sú tam aj mnohé ďalšie rehole a kongregácie, takže ma br. Jakub OFM poprosil, aby ostalo iba "pre františkánsku rodinu"
 	, "pre františkánsku rodinu"
@@ -523,7 +523,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními texty premonstrátského řádu (OPraem)" // "pro premonstráty (OPraem)"
 	, "s vlastními kapucínskými texty (OFMCap)"
 	, "s vlastními texty Kongregace nejsv. Vykupitele — redemptoristů (CSsR)"
-	, "s vlastními texty pro salesiánskou rodinu" // (SDB, FMA, VDB, ASC)
+	, "s vlastními texty pro salesiánskou rodinu" // (SDB, FMA, VDB)
 	, "general [Russia]"
 	, "ferences szentek és ünnepek zsolozsmája"
 	, "pre bosých karmelitánov (OCD)"
@@ -609,7 +609,7 @@ const char *nazov_slavenia_lokal[] =
 , "v českobudějovické diecézi: památka"                                                                          // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
 , "v Bratislavskej arcidiecéze a v Spišskej diecéze sviatok hlavného patróna"                                    // LOKAL_SLAV_SPIS_BA_PATRON
 , "v Bratislavskej arcidiecéze"                                                                                  // LOKAL_SLAV_BRATISLAVA
-, "pre FMA a ASC: ľubovoľná spomienka"                                                                           // LOKAL_SLAV_LUB_SPOMIENKA_FMA_ASC
+, "pre FMA a VDB: ľubovoľná spomienka"                                                                           // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB
 , "len pre Inštitút milosrdných sestier Sv. kríža"                                                               // LOKAL_SLAV_KONGREGACIA_SSK // 2013-08-12: pôvodne bolo: "len pre Kongregáciu milosrdných sestier Sv. kríža"
 , "pre OFMCap: spomienka"                                                                                        // LOKAL_SLAV_SPOMIENKA_OFMCAP
 , "pre OFM: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_OFM
@@ -618,7 +618,7 @@ const char *nazov_slavenia_lokal[] =
 , "pre FMA: spomienka"                                                                                           // LOKAL_SLAV_SPOMIENKA_FMA
 , "pre FMA: slávnosť"                                                                                            // LOKAL_SLAV_SLAVNOST_FMA
 , "pre SDB: slávnosť"                                                                                            // LOKAL_SLAV_SLAVNOST_SDB
-, "pre ASC: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_VDB // VDB -> ASC
+, "pre VDB: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_VDB
 , "pre SCSC: sviatok"                                                                                            // LOKAL_SLAV_SVIATOK_SCSC
 , "free"                                                                                   // LOKAL_SLAV_free
 , "A Szombathelyi egyházmegyében"                                                                                // LOKAL_SLAV_SZOMBATHELYI_EGYH

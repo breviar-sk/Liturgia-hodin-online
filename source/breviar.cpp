@@ -9605,10 +9605,12 @@ void _export_rozbor_dna_kalendar_core(short int typ) {
 			j = _global_den.mesiac - 1;
 			k = _global_den.rok;
 		}
-		if (_global_den.den > pocet_dni[j - 1])
+		if (_global_den.den > pocet_dni[j - 1]) {
 			i = pocet_dni[j - 1];
-		else
+		}
+		else {
 			i = _global_den.den;
+		}
 		Vytvor_global_link(i, j, k, LINK_DEN_MESIAC_PREDOSLY, NIE);
 		Export("<" HTML_CALENDAR_HEADING ">%s" HTML_SPAN_END "\n", _global_link);
 
