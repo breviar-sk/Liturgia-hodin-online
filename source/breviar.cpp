@@ -6151,7 +6151,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 
 	_global_pocet_svatych = sviatky_svatych(_global_den.den, _global_den.mesiac);
 
-	_rozbor_dna_LOG("_global_pocet_svatych == %d\n", _global_pocet_svatych);
+	_rozbor_dna_LOG("sviatky_svatych(%d, %d) skončila, výsledok: _global_pocet_svatych == %d; nasleduje rozhodovanie a kontroly...\n", _global_den.den, _global_den.mesiac, _global_pocet_svatych);
 
 	// kontrola: ak bolo požadované väčšie číslo (poradie svätého), ako je v _global_pocet_svatych, resp. keď nie je sobota a je požadované PORADIE_PM_SOBOTA (spomienka P. Márie v sobotu)
 	if ((_global_pocet_svatych == 0) && (_global_pocet_svatych < poradie_svaty) && (poradie_svaty != PORADIE_PM_SOBOTA)) {
@@ -6174,8 +6174,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 	}
 
 	// ak predošlé kontroly sú OK, ideme porovnávať "dôležitosť" sviatku určeného v sviatky_svatych() s "bežným" dňom určeným vyššie
-	_rozbor_dna_LOG("ak predošlé kontroly sú OK, ideme porovnávať `dôležitosť' sviatku určeného v sviatky_svatych() s `bežným' dňom určeným vyššie\n");
-	_rozbor_dna_LOG("sviatky_svatych() == %d\n", _global_pocet_svatych);
+	_rozbor_dna_LOG("ak predošlé kontroly sú OK, ideme porovnávať `dôležitosť' sviatku určeného v sviatky_svatych() s `bežným' dňom určeným vyššie; _global_pocet_svatych() == %d\n", _global_pocet_svatych);
 	if (_global_pocet_svatych > 0) {
 
 		// treba pamatat na to, ze v poste sa vsetky spomienky stavaju lubovolnymi (c. 14 vseob. smernic)
@@ -6275,59 +6274,55 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				_global_pocet_svatych = 0;
 			}
 		}
+	}// (_global_pocet_svatych > 0)
 
-		if (_global_pocet_svatych > 0) {
-			// nasledovná úprava _global_opt[OPT_3_SPOLOCNA_CAST] presunutá sem z časti, kedy "SVATY_VEDIE", aby sa aplikovala aj na druhú vetvu
-			// treba nastaviť podľa toho, ktorý svätý je (môže byť 0 -- MAX_POCET_SVATY)  a zároveň brať do úvahy eventuálne prednastavenie od používateľa
-			// doplnený case 0 vo switch-i, spôsobovalo problémy pre slávnosti, ktoré majú nastavenú spoločnú časť priamo v _global_den (napr. 15. septembra) | upozornil Vlado Kiš
-			_rozbor_dna_LOG("Premenná _global_opt[OPT_3_SPOLOCNA_CAST] pred úpravou == %ld (%s)...(poradie_svaty == %d)\n", _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_3_SPOLOCNA_CAST] <= MODL_SPOL_CAST_NEBRAT ? nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]) : STR_EMPTY, poradie_svaty);
-			switch (poradie_svaty) {
-			case 0:
-				sc = _decode_spol_cast(_global_den.spolcast);
-				break;
-			case PORADIE_PM_SOBOTA:
-				sc.a1 = MODL_SPOL_CAST_PANNA_MARIA; // spomienka PM v sobotu
-				break;
-			default:
-				sc = _decode_spol_cast(_global_svaty(poradie_svaty).spolcast);
-				break;
-			} // switch(poradie_svaty)
-			_rozbor_dna_LOG("\tNastavil som do premennej sc == (%d) %s, (%d) %s, (%d) %s\n", sc.a1, nazov_spolc(sc.a1), sc.a2, nazov_spolc(sc.a2), sc.a3, nazov_spolc(sc.a3));
-			if (sc.a1 != MODL_SPOL_CAST_NEURCENA) {
-				if (sc.a2 != MODL_SPOL_CAST_NEURCENA) {
-					if (sc.a3 != MODL_SPOL_CAST_NEURCENA) {
-						if ((_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1)
-							&& (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a2)
-							&& (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a3)) {
-							_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
-						}
-					}
-					else {
-						if ((_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1)
-							&& (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a2)) {
-							_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
-						}
+	// prípadné zohľadnenie resp. ignorovanie _global_opt[OPT_3_SPOLOCNA_CAST]
+	if ((_global_pocet_svatych > 0) || (poradie_svaty == PORADIE_PM_SOBOTA)) {
+		// treba nastaviť podľa toho, ktorý svätý je (môže byť 0 -- MAX_POCET_SVATY) a zároveň brať do úvahy eventuálne prednastavenie od používateľa
+		// doplnený case 0 vo switch-i, spôsobovalo problémy pre slávnosti, ktoré majú nastavenú spoločnú časť priamo v _global_den (napr. 15. septembra) | upozornil Vlado Kiš
+		_rozbor_dna_LOG("Premenná _global_opt[OPT_3_SPOLOCNA_CAST] pred úpravou == %ld (%s)...(poradie_svaty == %d)\n", _global_opt[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_3_SPOLOCNA_CAST] <= MODL_SPOL_CAST_NEBRAT ? nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]) : STR_EMPTY, poradie_svaty);
+		switch (poradie_svaty) {
+		case 0:
+			sc = _decode_spol_cast(_global_den.spolcast);
+			break;
+		case PORADIE_PM_SOBOTA:
+			sc.a1 = MODL_SPOL_CAST_NEBRAT;
+			break;
+		default:
+			sc = _decode_spol_cast(_global_svaty(poradie_svaty).spolcast);
+			break;
+		} // switch(poradie_svaty)
+		_rozbor_dna_LOG("\tNastavil som do premennej sc == (%d) %s, (%d) %s, (%d) %s\n", sc.a1, nazov_spolc(sc.a1), sc.a2, nazov_spolc(sc.a2), sc.a3, nazov_spolc(sc.a3));
+		if (sc.a1 != MODL_SPOL_CAST_NEURCENA) {
+			if (sc.a2 != MODL_SPOL_CAST_NEURCENA) {
+				if (sc.a3 != MODL_SPOL_CAST_NEURCENA) {
+					if ((_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1)
+						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a2)
+						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a3)) {
+						_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
 					}
 				}
 				else {
-					if (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1) {
+					if ((_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1)
+						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a2)) {
 						_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
 					}
 				}
 			}
 			else {
-				_rozbor_dna_LOG("\tHmmm, pre svätca nie je nastavená spoločná časť, nechávam _global_opt[OPT_3_SPOLOCNA_CAST] tak ako je...\n");
+				if (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1) {
+					_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
+				}
 			}
-
-			_rozbor_dna_LOG("\tNastavil som _global_opt[OPT_3_SPOLOCNA_CAST] == %ld (%s)...\n",
-				_global_opt[OPT_3_SPOLOCNA_CAST],
-				_global_opt[OPT_3_SPOLOCNA_CAST] <= MODL_SPOL_CAST_NEBRAT ? nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]) : STR_EMPTY);
 		}
-	}// (_global_pocet_svatych > 0)
+		else {
+			_rozbor_dna_LOG("\tHmmm, pre svätca nie je nastavená spoločná časť, nechávam _global_opt[OPT_3_SPOLOCNA_CAST] tak ako je...\n");
+		}
 
-	_rozbor_dna_LOG("sviatky_svatych(%d, %d) skoncila a ukoncilo sa aj rozhodovanie\n", _global_den.den, _global_den.mesiac);
-
-	// prikazane sviatky - boli oznacene na prislusnych miestach
+		_rozbor_dna_LOG("\tNastavil som _global_opt[OPT_3_SPOLOCNA_CAST] == %ld (%s)...\n",
+			_global_opt[OPT_3_SPOLOCNA_CAST],
+			_global_opt[OPT_3_SPOLOCNA_CAST] <= MODL_SPOL_CAST_NEBRAT ? nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]) : STR_EMPTY);
+	}// prípadné zohľadnenie resp. ignorovanie _global_opt[OPT_3_SPOLOCNA_CAST]
 
 	// inicializujem spomienku panny marie v sobotu
 	_rozbor_dna_LOG("inicializujem spomienku panny márie v sobotu... (realizuje sa vždy napevno)\n");
