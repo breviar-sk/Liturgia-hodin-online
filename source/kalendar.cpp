@@ -3413,40 +3413,48 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 						set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
 					modlitba = MODL_RANNE_CHVALY;
-					// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniť antifónu zo spoločnej časti (do vlastnej časti) a odpoznámkovať tento kód, aby bolo správne zobrazené zakončenie
+					if (_global_jazyk == JAZYK_SK) {
+						_vlastna_cast_benediktus_spomprivileg;
+					}
 					_vlastna_cast_modlitba_spomprivileg;
 
 					modlitba = MODL_VESPERY;
-					// _vlastna_cast_magnifikat_spomprivileg;
+					if (_global_jazyk == JAZYK_SK) {
+						_vlastna_cast_magnifikat_spomprivileg;
+					}
 					_vlastna_cast_modlitba_spomprivileg;
 
 					modlitba = MODL_POSV_CITANIE;
-					if (_global_jazyk == JAZYK_CZ) {
-						_vlastna_cast_2citanie_spomprivileg;
-					}
+					_vlastna_cast_2citanie_spomprivileg;
 					_vlastna_cast_modlitba;
 				}// je_privileg
 				else {
 					// definovanie parametrov pre modlitbu
-					if (query_type != PRM_DETAILY)
-						set_spolocna_cast(sc, poradie_svaty);
+					if (query_type != PRM_DETAILY) {
+						if (_global_jazyk == JAZYK_SK) {
+							set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP);
+						}
+						else {
+							set_spolocna_cast(sc, poradie_svaty);
+						}
+					}
 
 					modlitba = MODL_RANNE_CHVALY;
-					if (_global_jazyk == JAZYK_CZ) {
-						_vlastna_cast_prosby;
+					if (_global_jazyk == JAZYK_SK) {
+						_vlastna_cast_benediktus;
 					}
+					_vlastna_cast_prosby;
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_POSV_CITANIE;
-					if (_global_jazyk == JAZYK_CZ) {
-						_vlastna_cast_2citanie;
-					}
+					_vlastna_cast_2citanie;
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_VESPERY;
-					if (_global_jazyk == JAZYK_CZ) {
-						_vlastna_cast_prosby;
+					if (_global_jazyk == JAZYK_SK) {
+						_vlastna_cast_magnifikat;
 					}
+					_vlastna_cast_prosby;
 					_vlastna_cast_modlitba;
 				}// nie je_privileg
 
@@ -4688,39 +4696,40 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				file_name_vlastny_kalendar(_global_kalendar);
 
 				// definovanie parametrov pre modlitbu
-				if (query_type != PRM_DETAILY)
-					set_spolocna_cast(sc, poradie_svaty);
-
-				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
+				if (query_type != PRM_DETAILY) {
+					if (_global_jazyk == JAZYK_SK) {
+						set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_HYMNUS + FORCE_BRAT_ZALMY + FORCE_BRAT_KCIT_1CIT + FORCE_BRAT_KRESP + FORCE_BRAT_PROSBY);
+					}
+					else {
+						set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_KCIT_1CIT);
+					}
+				}
 
 				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
+
+				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_full_okrem_antifon(modlitba);
+				}
+				else {
+					_vlastna_cast_full_okrem_kcit_kresp(modlitba);
+				}
 
 				_vlastna_cast_mcd_modlitba;
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_full_okrem_antifon(modlitba);
+				}
+				else {
+					_vlastna_cast_full_okrem_kcit_kresp(modlitba);
+				}
 
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
+				if (_global_jazyk == JAZYK_CZ) {
 					modlitba = MODL_INVITATORIUM;
 					_vlastna_cast_antifona_inv;
-
-					modlitba = MODL_POSV_CITANIE;
-					_vlastna_cast_1citanie;
-					_vlastna_cast_2citanie;
-
-					modlitba = MODL_RANNE_CHVALY;
-					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-					_vlastna_cast_kcitanie;
-					_vlastna_cast_kresponz;
-					_vlastna_cast_prosby;
-
-					modlitba = MODL_VESPERY;
-					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-					_vlastna_cast_kcitanie;
-					_vlastna_cast_kresponz;
-					_vlastna_cast_prosby;
 
 					_vlastna_cast_mcd_ant_kcitresp_modl;
 				}
