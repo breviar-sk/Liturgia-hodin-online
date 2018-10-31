@@ -2341,48 +2341,45 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_PRVE_VESPERY;
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
+				if (_global_jazyk == JAZYK_CZ) {
 					_vlastna_cast_full_okrem_hymnu(modlitba);
 				}
 				else {
-					_vlastna_cast_modlitba;
+					_vlastna_cast_full(modlitba);
 				}
 
 				modlitba = MODL_PRVE_KOMPLETORIUM;
 				_set_kompletorium_slavnost(modlitba);
 
 				modlitba = MODL_INVITATORIUM;
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
-					_vlastna_cast_antifona_inv;
-				}
+				_vlastna_cast_antifona_inv;
 
 				modlitba = MODL_POSV_CITANIE;
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
+				if (_global_jazyk == JAZYK_CZ) {
 					_vlastna_cast_full_okrem_hymnu(modlitba);
 				}
 				else {
-					_vlastna_cast_2citanie;
-					_vlastna_cast_modlitba;
+					_vlastna_cast_full(modlitba);
+					_vlastne_slavenie_set_vig_ant(_anchor_head_without_underscore);
+					_vlastne_slavenie_set_vig_ev(_anchor_head_without_underscore);
 				}
 
 				modlitba = MODL_RANNE_CHVALY;
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
+				if (_global_jazyk == JAZYK_CZ) {
 					_vlastna_cast_full_okrem_hymnu(modlitba);
 				}
 				else {
-					_vlastna_cast_modlitba;
+					_vlastna_cast_full(modlitba);
 				}
 
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
-					_vlastna_cast_mcd_ant_kcitresp_modl;
-				}
+				_vlastna_cast_mcd_ant_kcitresp_modl;
 
 				modlitba = MODL_VESPERY;
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
+				if (_global_jazyk == JAZYK_CZ) {
 					_vlastna_cast_full_okrem_hymnu(modlitba);
 				}
 				else {
-					_vlastna_cast_modlitba;
+					_vlastna_cast_full(modlitba);
 				}
 
 				modlitba = MODL_KOMPLETORIUM;
@@ -31152,11 +31149,14 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	if (poradie_svaty > 1) {
 		// pridame cislo svateho
 		sprintf(_anchor_head, "%02d%s%d_", den, nazov_MES[mesiac - 1], poradie_svaty);
+		sprintf(_anchor_head_without_underscore, "%02d%s%d", den, nazov_MES[mesiac - 1], poradie_svaty);
 	}
 	else {
 		sprintf(_anchor_head, "%02d%s_", den, nazov_MES[mesiac - 1]);
+		sprintf(_anchor_head_without_underscore, "%02d%s", den, nazov_MES[mesiac - 1]);
 	}
 	Log("  _anchor_head == %s\n", _anchor_head);
+	Log("  _anchor_head_without_underscore == %s\n", _anchor_head_without_underscore);
 
 	sprintf(_file, "sv_%s.htm", nazov_mes[mesiac - 1]);
 	Log("  _file == %s\n", _file);

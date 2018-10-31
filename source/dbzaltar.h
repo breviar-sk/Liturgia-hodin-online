@@ -33,6 +33,7 @@ extern short int modlitba;
 // anchors - nazvy kotiev pre zaltar styroch tyzdnov
 extern char _anchor[MAX_STR_AF_ANCHOR];
 extern char _anchor_head[MAX_STR_AF_ANCHOR];
+extern char _anchor_head_without_underscore[MAX_STR_AF_ANCHOR];
 
 extern char pismenko_modlitby(short int modlitba);
 extern void anchor_name_zaltar(short int den, short int tyzzal, short int modlitba, const char *anchor);

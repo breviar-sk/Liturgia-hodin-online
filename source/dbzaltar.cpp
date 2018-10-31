@@ -21,6 +21,7 @@
 #include "breviar.h"
 
 char _anchor_head[MAX_STR_AF_ANCHOR];
+char _anchor_head_without_underscore[MAX_STR_AF_ANCHOR];
 
 // has celebration its own psalmody? cf. General Instrucions, n. 134
 short int su_zalmy_vlastne(short int m){
