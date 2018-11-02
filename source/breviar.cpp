@@ -135,7 +135,97 @@ char *_global_buf2;
 #define STDIN_FILE stdin
 #endif
 
-#if defined(__APPLE__) || defined(__linux) || defined(__unix) || defined(__posix)
+#undef _BREVIAR_ENV
+
+#if defined(__APPLE__)
+#ifndef LIBC_BIONIC
+
+#define ENV_K_SIZE 64
+#define ENV_V_SIZE 256
+#define ENV_ENTRIES 128
+
+struct _breviar_env_entry {
+    char k[ENV_K_SIZE];
+    char v[ENV_V_SIZE];
+};
+static struct _breviar_env_entry _breviar_env[ENV_ENTRIES];
+#define _BREVIAR_ENV
+
+// Overwrite getenv() and putenv() for two reasons:
+//
+// 1. It causes crashes if breviar_main() is called multiple times: unlike
+// setenv(), the argument of putenv() is not copied (at least not on BSD), so
+// getenv() is likely to crash after the buffers are freed / reused.
+//
+// 2. We don't want to save the environment varibles between subsequent
+// breviar_main() calls as this would cause unexpected behavior.
+//
+// Android libc (bionic) has no such problems, putenv copies the values as
+// well. On the other hand, setenv seems to be not working properly there, so
+// we disable this logic for android.
+static int _breviar_putenv(char *s) {
+	char *key = strdup(s);
+	int i;
+
+	if (!key) {
+		return -1;
+	}
+
+	char *val = strchr(key, '=');
+	if (!val) {
+		free(key);
+		return -1;
+	}
+	*(val++) = 0;
+
+	if (strlen(key) >= ENV_K_SIZE) {
+		Log("Too long key in _breviar_putenv(): '%s'\n", key);
+		return -1;
+	}
+	if (strlen(val) >= ENV_V_SIZE) {
+		Log("Too long value in _breviar_putenv(): '%s'\n", val);
+		return -1;
+	}
+
+	for (i=0; i<ENV_ENTRIES; i++) {
+		if (_breviar_env[i].k[0] == 0 || strcmp(_breviar_env[i].k, key) == 0) {
+			strcpy(_breviar_env[i].k, key);
+			strcpy(_breviar_env[i].v, val);
+			break;
+		}
+	}
+
+	free(key);
+
+	if (i == ENV_ENTRIES) {
+		Log("Cannot add key '%s' to environment: env is full\n", key);
+		return -1;
+	}
+
+	return 0;
+}
+
+static char *_breviar_getenv(const char *k) {
+    int i;
+	if (strlen(k) >= ENV_K_SIZE) {
+		Log("Environment key too long: '%s'\n", k);
+		return NULL;
+	}
+
+    for (i=0; i<ENV_ENTRIES && _breviar_env[i].k[0]; i++) {
+        if (strcmp(k, _breviar_env[i].k) == 0) {
+            return _breviar_env[i].v;
+        }
+    }
+    return NULL;
+}
+
+#undef getenv
+#define getenv _breviar_getenv
+#define putenv _breviar_putenv
+#endif /* LIBC_BIONIC */
+#elif defined(__linux) || defined(__unix) || defined(__posix)
+// code before # a98c4029 copied here
 #ifndef LIBC_BIONIC
 // Overwrite putenv() because it causes crashes if breviar_main() is called multiple times:
 // unlike setenv(), the argument of putenv() is not copied (at least not on BSD), so
@@ -164,7 +254,7 @@ static int my_putenv(char *s) {
 }
 #define putenv my_putenv
 #endif /* LIBC_BIONIC */
-#endif /* unix */
+#endif /* apple | unix */
 
 #ifdef IO_ANDROID
 #define putenv android_putenv
@@ -18259,6 +18349,10 @@ int breviar_main(int argc, const char **argv) {
 	// prerobenie čítania jazyka (skopírované ešte na jedno vyššie miesto); už by sa <title> malo vypisovať pri generovaní inojazyčných modlitieb správne
 	myhpage_init_globals();
 
+	// for _breviar_env, must be included within if-def
+#if defined(_BREVIAR_ENV)
+	memset(_breviar_env, 0, sizeof(_breviar_env));
+#endif /* _BREVIAR_ENV */
 	memset(_global_opt, 0, sizeof(_global_opt));
 	_global_opt[OPT_0_SPECIALNE] = GLOBAL_OPTION_NULL;
 	_global_opt[OPT_1_CASTI_MODLITBY] = GLOBAL_OPTION_NULL;
@@ -18300,12 +18394,14 @@ int breviar_main(int argc, const char **argv) {
 	strcpy(pom_EXPORT_MONTHLY, STR_EMPTY); // 2009-08-03: Pridané kvôli rôznym spôsobom exportu po mesiacoch, prepínač -M
 	_global_modlitba = MODL_NEURCENA;
 
+	memset(_global_opt, 0, sizeof(_global_opt));
 	memset(_global_force_opt, 0, sizeof(_global_force_opt));
 	memset(_global_opt_0_specialne, 0, sizeof(_global_opt_0_specialne));
 	memset(_global_opt_1_casti_modlitby, 0, sizeof(_global_opt_1_casti_modlitby));
 	memset(_global_opt_2_html_export, 0, sizeof(_global_opt_2_html_export));
 	memset(_global_opt_4_offline_export, 0, sizeof(_global_opt_4_offline_export));
 	memset(_global_opt_5_alternatives, 0, sizeof(_global_opt_5_alternatives));
+	memset(_global_opt_6_alternatives_multi, 0, sizeof(_global_opt_6_alternatives_multi));
 
 	_global_jazyk = 0;
 	_global_kalendar = 0;
