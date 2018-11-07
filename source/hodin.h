@@ -2670,11 +2670,13 @@ const char *html_text_option_zobrazit[POCET_JAZYKOV + 1] =
 	"ostende",
 	"",
 	"zobrazit",
-	"megjelenítés",
+	"megjelenítés: ",
 	"показ",
 	"паказаць",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+
+#define HTML_TEXT_HU_OPTION_ZOBRAZIT "a teljes szöveg megjelenítése"
 
 const char *html_text_option_skryt[POCET_JAZYKOV + 1] =
 {
@@ -2684,11 +2686,13 @@ const char *html_text_option_skryt[POCET_JAZYKOV + 1] =
 	"abscondere",
 	"",
 	"skrýt",
-	"elrejtés",
+	"elrejtés: ",
 	"скрывать",
 	"схаваць",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+
+#define HTML_TEXT_HU_OPTION_SKRYT "a szöveg elrejtése"
 
 const char *html_text_option_pouzit[POCET_JAZYKOV + 1] =
 {
@@ -2844,8 +2848,8 @@ const char *html_text_opt_1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-#define HTML_TEXT_HU_OPTION1_ZAVER_SHOW "a befejezést megjeleníteni"
-#define HTML_TEXT_HU_OPTION1_ZAVER_HIDE "a befejezést elrejteni"
+#define HTML_TEXT_HU_OPTION1_ZAVER_SHOW "Az imaóra befejezését is jelenítse meg"
+#define HTML_TEXT_HU_OPTION1_ZAVER_HIDE "Az imaóra befejezésének elrejtése"
 
 const char *html_text_opt_1_zaver[POCET_JAZYKOV + 1] =
 {
@@ -4212,7 +4216,7 @@ const char *html_text_opt_5_zaver_knaz_diakon[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"závěr, pokud předsedá kněz nebo jáhen",
-	"ezután, ha pap vagy diakónus vezeti",
+	"ha az imaórát pap vagy diakónus vezeti",
 	"ru_text",
 	"завяршэнне на выпадак, калі прысутны святар ці дыякан",
 	/* STRING_2_FOR_NEW_LANGUAGE */

@@ -3539,9 +3539,17 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 		if (equals(paramname, PARAM_OTCENAS)) {
 			bit = BIT_OPT_1_OTCENAS;
+			if (_global_jazyk == JAZYK_HU) {
+				mystrcpy(popis_show, HTML_TEXT_HU_OPTION_SKRYT, SMALL);
+				mystrcpy(popis_hide, HTML_TEXT_HU_OPTION_ZOBRAZIT, SMALL);
+			}
 		}
 		else if (equals(paramname, PARAM_MARIANSKE_ANTIFONY)) {
 			bit = BIT_OPT_1_KOMPL_MARIA_ANT;
+			if (_global_jazyk == JAZYK_HU) {
+				mystrcpy(popis_show, HTML_TEXT_HU_OPTION_SKRYT, SMALL);
+				mystrcpy(popis_hide, HTML_TEXT_HU_OPTION_ZOBRAZIT, SMALL);
+			}
 		}
 		else if (equals(paramname, PARAM_ZAVER)) {
 			bit = BIT_OPT_1_ZAVER;
@@ -3571,9 +3579,17 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 		else if (equals(paramname, PARAM_CHVALOSPEV)) {
 			bit = BIT_OPT_1_CHVALOSPEVY;
+			if (_global_jazyk == JAZYK_HU) {
+				mystrcpy(popis_show, HTML_TEXT_HU_OPTION_SKRYT, SMALL);
+				mystrcpy(popis_hide, HTML_TEXT_HU_OPTION_ZOBRAZIT, SMALL);
+			}
 		}
 		else if (equals(paramname, PARAM_TEDEUM)) {
 			bit = BIT_OPT_1_TEDEUM;
+			if (_global_jazyk == JAZYK_HU) {
+				mystrcpy(popis_show, HTML_TEXT_HU_OPTION_SKRYT, SMALL);
+				mystrcpy(popis_hide, HTML_TEXT_HU_OPTION_ZOBRAZIT, SMALL);
+			}
 		}
 		else if (equals(paramname, PARAM_ZVOLANIA)) {
 			bit = BIT_OPT_1_PROSBY_ZVOLANIE;
