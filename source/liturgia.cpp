@@ -299,7 +299,7 @@ char *mystr_UPPERCASE(const char* input) {
 		if ((c == ';') && (ok == FALSE)){
 			ok = TRUE;
 		}
-		// 2011-01-31: ToDo: ešte by bolo potrebné ošetriť aj to, že za & nenasleduje regulérny znak pre špeciálny HTML kód, t. j. niečo iné ako upper+lowercase ascii abeceda + # a číslice
+		// ToDo: ešte by bolo potrebné ošetriť aj to, že za & nenasleduje regulérny znak pre špeciálny HTML kód, t. j. niečo iné ako upper+lowercase ascii abeceda + # a číslice
 		if (ok == TRUE){
 			c = WcharToUppercase(c);
 		}// ok == TRUE
@@ -325,7 +325,7 @@ char *mystr_remove_diacritics(const char *input) {
 		if ((c == ';') && (ok == FALSE)) {
 			ok = TRUE;
 		}
-		// 2011-01-31: ToDo: ešte by bolo potrebné ošetriť aj to, že za & nenasleduje regulérny znak pre špeciálny HTML kód, t. j. niečo iné ako upper+lowercase ascii abeceda + # a číslice
+		// ToDo: ešte by bolo potrebné ošetriť aj to, že za & nenasleduje regulérny znak pre špeciálny HTML kód, t. j. niečo iné ako upper+lowercase ascii abeceda + # a číslice
 		if (ok == TRUE) {
 			c = RemoveDiacriticsFromWchar(c);
 		}// ok == TRUE

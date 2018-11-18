@@ -620,7 +620,7 @@ const char *nazov_slavenia_lokal[] =
 , "pre SDB: slávnosť"                                                                                            // LOKAL_SLAV_SLAVNOST_SDB
 , "pre VDB: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_VDB
 , "pre SCSC: sviatok"                                                                                            // LOKAL_SLAV_SVIATOK_SCSC
-, "free"                                                                                   // LOKAL_SLAV_free
+, "pre OFM: spomienka; pre koncepcionistky: slávnosť"                                                            // LOKAL_SLAV_SPOMIENKA_OFM_SLAVNOST_CONCEPT
 , "A Szombathelyi egyházmegyében"                                                                                // LOKAL_SLAV_SZOMBATHELYI_EGYH
 , "A Nagyszombati főegyházmegyében: a főegyházmegye fővédőszentje"                                               // LOKAL_SLAV_NAGYSZ_PATRON
 , "A Szeged-Csanádi egyházmegye északi részében: az egyházmegye védőszentje; főünnep"                            // LOKAL_SLAV_SZEGED_CSAN_PATRON // 2013-06-27: ??? neviem, odkiaľ sa to tu vzalo
@@ -2716,7 +2716,7 @@ const char *html_text_opt_1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"použít psalmodii z běžného dne",
-	"az adott napi zsoltározást venni",
+	"zsoltárok a soros köznapról",
 	"ru_text",
 	"псальмодыя з дня",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2730,7 +2730,7 @@ const char *html_text_opt_1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"pro modlitbu během dne použít psalmodii z běžného dne",
-	"a Napközi imaórában az adott napi zsoltározást venni",
+	"a Napközi imaórában zsoltárok a soros köznapról",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2744,7 +2744,7 @@ const char *html_text_opt_1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"použít doplňkovou psalmodii",
-	"a kiegészítő zsoltárokat venni",
+	"kiegészítő zsoltárok",
 	"ru_text",
 	"дадатковая псальмодыя",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2786,7 +2786,7 @@ const char *html_text_opt_1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"použít psalmodii daného týdne ze žaltáře pro všechny tři modlitby během dne",
-	"az adott hét zsoltározását alkalmazni mindhárom napközi imánál",
+	"a soros köznap zsoltárainak használata mindhárom napközi imaórához",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2800,7 +2800,7 @@ const char *html_text_opt_1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"pro modlitbu uprostřed dne použít psalmodii daného týdne ze žaltáře pro všechny tři modlitby během dne",
-	"a Napközi imaórában az adott hét zsoltározását alkalmazni mindhárom napközi imánál",
+	"a Napközi imaórában a soros köznap zsoltárainak használata mindhárom napközi imaórához",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2814,7 +2814,7 @@ const char *html_text_opt_1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"použít psalmodii z tří týdnů ze žaltáře: aktuální, předchozí, následující",
-	"a három heti [aktuális, előző, következő] zsoltározást alkalmazni",
+	"a három [aktuális, előző, következő] heti zsoltárok használata",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2848,7 +2848,7 @@ const char *html_text_opt_1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-#define HTML_TEXT_HU_OPTION1_ZAVER_SHOW "Az imaóra befejezését is jelenítse meg"
+#define HTML_TEXT_HU_OPTION1_ZAVER_SHOW "Az imaóra befejezésének megjelenítése"
 #define HTML_TEXT_HU_OPTION1_ZAVER_HIDE "Az imaóra befejezésének elrejtése"
 
 const char *html_text_opt_1_zaver[POCET_JAZYKOV + 1] =
@@ -2954,7 +2954,7 @@ const char *html_text_option_zobrazit_zvolania[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"zopakovat zvolání po každé prosbě",
-	"megismételni a választ minden könyörgés után",
+	"a válasz megismétlése minden fohász után",
 	"ru_text",
 	"паўтараць заклік пасля кожнай просьбы",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2968,7 +2968,7 @@ const char *html_text_option_skryt_zvolania[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"skrýt zvolání po každé prosbě",
-	"elrejteni a választ minden könyörgés után",
+	"a válasz megjelenítése csak a rövid felszólítás után",
 	"ru_text",
 	"схаваць заклік пасля кожнай просьбы",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2982,7 +2982,7 @@ const char *html_text_option_zobrazit_kratsie_prosby[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"zobrazit kratší prosby z dodatku",
-	"használja a rövidebb könyörgéseket a függelékből",
+	"a rövidebb közbenjáró fohászok használata a függelékből",
 	"ru_text",
 	"выкарыстоўваць карацейшыя малітвы",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2996,7 +2996,7 @@ const char *html_text_option_skryt_kratsie_prosby[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"nezobrazit kratší prosby z dodatku",
-	"ne használja a rövidebb könyörgéseket a függelékből",
+	"a hosszabb fohászok használata",
 	"ru_text",
 	"не выкарыстоўваць карацейшыя малітвы",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -4286,7 +4286,7 @@ const char *html_text_opt_6_alternatives_multi_psalm[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"jiný žalm",
-	"más zsoltáros",
+	"másik zsoltár",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -4316,7 +4316,7 @@ const char *html_text_opt_6_alternatives_multi_antifona[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"jiná antifona",
-	"más antifóna",
+	"másik antifóna",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -4330,7 +4330,7 @@ const char *html_text_opt_6_alternatives_multi_maria_ant[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"jiná antifona",
-	"más antifóna",
+	"másik Mária-antifóna",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

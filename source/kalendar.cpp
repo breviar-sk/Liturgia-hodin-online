@@ -5700,7 +5700,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 		// kontrola: Veľká noc padne na 24. marca -- 1. apríla; vtedy je 25. marca vo Veľkom týždni, Trojdní resp. Veľkonočnej oktáve, a preto sa prekladá na pondelok po skončení Veľkonočnej oktávy
 		// ak padne Veľká noc na 2. apríla a neskôr, 25. marca padne pred Kvetnú nedeľu (teda tam sa nič neprekladá)
-		// ToDo: preveriť, ako je to, keď padne VN na 1. apríla (napr. 2018, 2029): či sa Zvestovanie nepreloží o jeden deň prv, teda pred Kvetnú nedeľu?
+		// keď padne VN na 1. apríla (napr. 2018, 2029), Zvestovanie Pána sa nepreloží o jeden deň prv, teda pred Kvetnú nedeľu, ale štandardne až po Veľkonočnej oktáve (t. j. na pondelok po VNOKT)
 		if ((_global_den.denvt == DEN_PONDELOK) && (_global_den.denvr == _global_r._VELKONOCNA_NEDELA.denvr + 8) && (((_global_r._VELKONOCNA_NEDELA.mesiac == MES_APR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 1) && (_global_r._VELKONOCNA_NEDELA.den <= 1)) || ((_global_r._VELKONOCNA_NEDELA.mesiac == MES_MAR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 24) && (_global_r._VELKONOCNA_NEDELA.den <= 31)))) {
 			// t.j. slávnosť Zvestovania Pána sa prekladá za Veľkonočnú oktávu, na pondelok po Veľkonočnej oktáve, ako to bolo v r. 2008, 2005, 2002, 1989
 			sprintf(_anchor_head, "%02d%s_", 25, nazov_MES[MES_MAR]); // MES_MAR -- musí tu byť natvrdo, lebo je to už v mesiaci 'apríl' (na rozdiel od analogickej kontroly na začiatku marca)
@@ -18740,7 +18740,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 		}
 
 		_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-		// [ToDo] 2011-07-21: Preveriť, či presun 13. a 16. augusta je len záležitosťou JAZYK_HU; slovenské direktórium na rok 2011 to neobsahuje
+		// presun 13. a 16. augusta je len záležitosťou JAZYK_HU; slovenské direktórium na rok 2011 to neobsahuje
 		if (_global_jazyk == JAZYK_HU) {
 			mystrcpy(_global_svaty1.meno, text_AUG_13[_global_jazyk], MENO_SVIATKU); // presun zo všeobecného kalendára
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV, MODL_SPOL_CAST_DUCH_PAST_PAPEZ);
@@ -18888,7 +18888,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) {
-				_global_svaty1.typslav_lokal = LOKAL_SLAV_SPOMIENKA_OFM; // ToDo: ešte pridať: "Slávnosť pre koncepcionistky"
+				_global_svaty1.typslav_lokal = LOKAL_SLAV_SPOMIENKA_OFM_SLAVNOST_CONCEPT;
 			}// SK only
 			mystrcpy(_global_svaty1.meno, text_AUG_17_OFM[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
