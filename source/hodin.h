@@ -171,7 +171,7 @@ const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
 	{ "učiteľov Cirkvi", "o učitelích církve", "", "doctorum Ecclesiæ", "", "O učitelích církve", "egyháztanítók", "ru_text", "доктараў Касцёла", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "apoštolov", "o apoštolech", "", "Apostolorum", "", "O apoštolech", "apostolok", "ru_text", "Апосталаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "jedného mučeníka", "o jednom mučedníkovi", "", "unius martyris", "", "O mučedníkovi", "vértanú férfi", "ru_text", /* аднаго */ "мучаніка", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "viacerých mučeníkov", "o více mučednících", "", "plurimorum martyrum", "", "O více mučednících", "vértanúk", "ru_text", "некалькіх мучанікаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "viacerých mučeníkov", "o více mučednících", "", "plurimorum martyrum", "", "O více mučednících", "több vértanú", "ru_text", "некалькіх мучанікаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "Panny Márie", "o Panně Marii", "", "Beatæ Mariæ Virginis", "", "O Panně Marii", "Szűz Mária", "ru_text", "Найсвяцейшую Панну Марыю", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých mužov: pre rehoľníkov", "o svatých mužích (o řeholnících)", "", "sanctorum virorum: pro religiosis", "", "O svatých mužích – o řeholnících", "szerzetes", "ru_text", "святых мужчын: пра законнікаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých mužov", "o svatých mužích", "", "sanctorum virorum", "", "O svatých mužích", "szent férfiak", "ru_text", "святых мужчын", /* STRING_1_FOR_NEW_LANGUAGE */ },
@@ -180,13 +180,13 @@ const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
 	{ "svätých žien", "o svatých ženách", "", "sanctarum mulierum", "", "O svatých ženách", "szent asszonyok", "ru_text", "святых жанчын", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "duchovných pastierov: pre viacerých", "o více duchovních pastýřích", "", "plurium pastorum", "", "O více duchovních pastýřích", "több lelkipásztor", "ru_text", "некалькіх пастыраў", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "jednej mučenice", "o jedné mučednici", "", "unius martyris", "", "O mučednici", "vértanú nő", "ru_text", "мyчаніцy", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre vychovávateľky", "o svatých ženách (o vychovatelkách)", "", "sanctarum mulierum: pro educatoribus", "", "O svatých ženách – o vychovatelkách", "nevelők asszonyok", "ru_text", "святых жанчын: пра выхавацеляў", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre vychovávateľov", "o svatých mužích (o vychovatelích)", "", "sanctorum virorum: pro educatoribus", "", "O svatých mužích – o vychovatelích", "nevelők férfiak", "ru_text", "святых мужчын: пра выхавацеляў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre vychovávateľky", "o svatých ženách (o vychovatelkách)", "", "sanctarum mulierum: pro educatoribus", "", "O svatých ženách – o vychovatelkách", "nevelő asszonyok", "ru_text", "святых жанчын: пра выхавацеляў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre vychovávateľov", "o svatých mužích (o vychovatelích)", "", "sanctorum virorum: pro educatoribus", "", "O svatých mužích – o vychovatelích", "nevelő férfiak", "ru_text", "святых мужчын: пра выхавацеляў", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých žien: pre tie, čo konali skutky milosrdenstva", "o svatých ženách (které vynikaly milosrdnými skutky)", "", "sanctarum mulierum: pro iis qui opera misericordiæ exercuerunt", "", "O svatých ženách – o ženě, která vynikala milosrdnými skutky", "jótékonykodó asszonyok", "ru_text", "святых жанчын, якія здзяйснялі ўчынкі міласэрнасці", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých mužov: pre tých, čo konali skutky milosrdenstva", "o svatých mužích (kteří vynikali milosrdnými skutky)", "", "sanctorum virorum: pro iis qui opera misericordiæ exercuerunt", "", "O svatých mužích – o muži, který vynikal milosrdnými skutky", "jótékonykodó férfiak", "ru_text", "святых мужчын, якія здзяйснялі ўчынкі міласэрнасці", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých žien: pre viaceré", "o svatých ženách (o více svatých)", "", "plurium mulierum", "", "O svatých ženách – o více svatých", "több szent asszony", "ru_text", "некалькіх святых жанчын", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých mužov: pre viacerých", "o svatých mužích (o více svatých)", "", "plurium virorum", "", "O svatých mužích – o více svatých", "több szent férfi", "ru_text", "некалькіх святых мужчын", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "viacerých panien", "o pannách – o více pannách", "", "plurium virginum", "", "O pannách – o více pannách", "több szüzek", "ru_text", "некалькіх паннаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "viacerých panien", "o pannách – o více pannách", "", "plurium virginum", "", "O pannách – o více pannách", "több szűz", "ru_text", "некалькіх паннаў", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "posviacky chrámu", "o posvěcení kostela", "", "dedicationis ecclesiæ", "", "Posvěcení kostela", "templomszentelés", "ru_text", "пасвячэнне касцёла", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "zosnulých", "za zemřelé", "", "defunctorum", "", "Za zemřelé", "halottakért", "ru_text", "за памерлых", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých žien: pre tie, čo žili v manželstve", "o svatých ženách (které žily v manželství)", "", "", "", "O svatých ženách – o ženě, která žila v manželství", "házas szent asszonyok", "ru_text", "святых жанчын: ", /* STRING_1_FOR_NEW_LANGUAGE */ },
@@ -3614,7 +3614,7 @@ const char *html_text_opt_5_KomplHymnusA[POCET_JAZYKOV + 1] =
 	"hymnus A: Te lucis ante términum",
 	"",
 	"hymnus A: Na sklonku dne tě upřímně",
-	"himnusz A: Immár a nap leáldozott",
+	"Immár a nap leáldozott",
 	"ru_text",
 	"гімн A",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3628,7 +3628,7 @@ const char *html_text_opt_5_KomplHymnusB[POCET_JAZYKOV + 1] =
 	"hymnus B: Christe, qui, splendor et dies",
 	"",
 	"hymnus B: Ty, Kriste, světlo, jasný dni",
-	"himnusz B: Krisztus, tündöklő nappalunk",
+	"Krisztus, tündöklő nappalunk",
 	"ru_text",
 	"гімн Б",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3698,7 +3698,7 @@ const char *html_text_opt_5_PCHymnusVNnedela[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"hymnus nedělní",
-	"himnusz Urunknak áldott napja ez",
+	"Urunknak áldott napja ez",
 	"ru_text",
 	"гімн",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3712,7 +3712,7 @@ const char *html_text_opt_5_PCHymnusVNferia[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"hymnus z férie",
-	"himnusz Örvendj, ég, messzi csillagok",
+	"Örvendj, ég, messzi csillagok",
 	"ru_text",
 	"гімн",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3726,7 +3726,7 @@ const char *html_text_opt_5_RChHymnusVNnedela[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"hymnus nedělní",
-	"himnusz Rózsálló hajnalfény ragyog",
+	"Rózsálló hajnalfény ragyog",
 	"ru_text",
 	"гімн",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3740,7 +3740,7 @@ const char *html_text_opt_5_RChHymnusVNferia[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"hymnus z férie",
-	"himnusz Az új Sionnak kórusa",
+	"Az új Sionnak kórusa",
 	"ru_text",
 	"гімн",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3754,7 +3754,7 @@ const char *html_text_opt_5_VespHymnusVNnedela[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"hymnus nedělní",
-	"himnusz Ím, vár a Bárány asztala",
+	"Ím, vár a Bárány asztala",
 	"ru_text",
 	"гімн",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3768,7 +3768,7 @@ const char *html_text_opt_5_VespHymnusVNferia[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"hymnus z férie",
-	"himnusz Örök Királyunk, szent Urunk",
+	"Örök Királyunk, szent Urunk",
 	"ru_text",
 	"гімн",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3782,7 +3782,7 @@ const char *html_text_opt_5_MCDPredHymnus1[POCET_JAZYKOV + 1] =
 	"hymnus Nunc, Sancte, nobis, Spíritus",
 	"",
 	"hymnus K nám, Duchu svatý, nyní spěj",
-	"himnusz Most jöjj, Szentlélek, szállj közénk",
+	"Most jöjj, Szentlélek, szállj közénk",
 	"ru_text",
 	"гімн 1",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3796,7 +3796,7 @@ const char *html_text_opt_5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
 	"hymnus Certum tenéntes órdinem",
 	"",
 	"hymnus Je třetí denní hodina",
-	"himnusz Idők rendjét megtartva most",
+	"Idők rendjét megtartva most",
 	"ru_text",
 	"гімн 2",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3810,7 +3810,7 @@ const char *html_text_opt_5_MCDNaHymnus1[POCET_JAZYKOV + 1] =
 	"hymnus Rector potens, verax Deus",
 	"",
 	"hymnus Jsi mocný Vládce, věrný Bůh",
-	"himnusz Urunk, felséges Istenünk",
+	"Urunk, felséges Istenünk",
 	"ru_text",
 	"гімн 1",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3824,7 +3824,7 @@ const char *html_text_opt_5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
 	"hymnus Dicámus laudes Dómino",
 	"",
 	"hymnus Teď Pánu chvály zpívejme",
-	"himnusz Dicsérjük dallal az Urat",
+	"Dicsérjük dallal az Urat",
 	"ru_text",
 	"гімн 2",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3838,7 +3838,7 @@ const char *html_text_opt_5_MCDPoHymnus1[POCET_JAZYKOV + 1] =
 	"hymnus Rerum, Deus, tenax vigor",
 	"",
 	"hymnus Svět celý v pohyb uvádíš",
-	"himnusz Világfenntartó Istenünk",
+	"Világfenntartó Istenünk",
 	"ru_text",
 	"гімн 1",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3852,7 +3852,7 @@ const char *html_text_opt_5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
 	"hymnus Ternis horárum términis",
 	"",
 	"hymnus Hodina třetí z poledne",
-	"himnusz Háromszor három óra már",
+	"Háromszor három óra már",
 	"ru_text",
 	"гімн 2",
 	/* STRING_2_FOR_NEW_LANGUAGE */
