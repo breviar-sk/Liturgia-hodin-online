@@ -151,7 +151,7 @@ const char *nazov_spolc_oficiumza_jazyk[POCET_JAZYKOV + 1] =
 
 // the --CELEBRATION-- for common parts of celebration
 const char *nazov_spolc_sviatky_jazyk[POCET_JAZYKOV + 1] =
-{ "na sviatky", "na svátky", "", "ad festum", "", "na svátky", "", "ru_text", "пра", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "na sviatky", "na svátky", "", "", "", "na svátky", "", "ru_text", "пра", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // the --ANNIVERSARY-- for common parts of celebration
 const char *nazov_spolc_vyrocie_jazyk[POCET_JAZYKOV + 1] =
