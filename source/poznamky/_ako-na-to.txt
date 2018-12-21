@@ -1,3 +1,23 @@
+2018-12-20: generovanie modlitieb pre rok 2019
+
+	CZOP predgenerovanie
+
+	-- všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2019 -f31 -g12 -p2019 -brobCZop.bat -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M2 -00 -134239 -2128
+		-- 2019-czop-full
+
+	-- žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2019 -f31 -g12 -p2019 -brobCZop.bat -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M2 -00 -132 -2128
+		-- 2019-czop-short
+
+	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2019 -f31 -g12 -p2019 -brobCZop.bat -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M3 -00 -134239 -2128 -48
+		-- 2019-czop-plain
+
+	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2019 -f31 -g12 -p2019 -brobCZop.bat -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M2 -00 -15191 -2224
+		-- 2019-czop-handy
+
 2018-12-17: generovanie modlitieb pre rok 2019
 
 	SK predgenerovanie

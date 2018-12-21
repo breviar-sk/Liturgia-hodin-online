@@ -1,5 +1,14 @@
 /* override color settings for "night-mode" (inverted colors) */
 
+/* WebKit/Blink Browsers */
+::selection {
+	background: #E5A6A4;
+}
+/* Gecko Browsers */
+::-moz-selection {
+	background: #E5A6A4;
+}
+
 .antiphon.first-ant:before {
 	color: #FF3333;
 }
