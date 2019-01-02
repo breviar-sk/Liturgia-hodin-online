@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* mysysdef.h                                                  */
-/* (c)1999-2018 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | contains #defines for various systems         */
 /*                                                             */
