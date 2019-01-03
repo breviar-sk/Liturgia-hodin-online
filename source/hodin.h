@@ -345,18 +345,18 @@ const char *nazov_obdobia_[POCET_OBDOBI + 1] = // debuggovacie - preto netreba p
 // the names of liturgical periods in local grammatically 6.th declination? (usually lowecase); in English: "IN liturgical period" or "OF liturgical period" / lokal == 6. pad, v kom/com
 const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
-	{ "v Adventnom období", "v době adventní", "", "", "", "v době adventní", "adventben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "v Adventnom období", "v době adventní", "", "", "", "v době adventní", "adventben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "v Oktáve Narodenia Pána", "v oktávu Narození Páně", "", "", "", "v oktávu Narození Páně", "Karácsony nyolcadában", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vo Vianočnom období", "v době vánoční", "", "", "", "v době vánoční", "a karácsonyi időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vo Vianočnom období", "v době vánoční", "", "", "", "v době vánoční", "a karácsonyi időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "v Adventnom období", "v době adventní", "", "in tempore Adventus", "", "v době adventní", "adventben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "v Adventnom období", "v době adventní", "", "in tempore Adventus", "", "v době adventní", "adventben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "v Oktáve Narodenia Pána", "v oktávu Narození Páně", "", "infra octavam Nativitatis", "", "v oktávu Narození Páně", "Karácsony nyolcadában", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vo Vianočnom období", "v době vánoční", "", "in tempore Nativitatis", "", "v době vánoční", "a karácsonyi időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vo Vianočnom období", "v době vánoční", "", "in tempore Nativitatis", "", "v době vánoční", "a karácsonyi időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "v Cezročnom období", "v mezidobí", "", "per annum", "", "v mezidobí", "az évközi időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "v Pôstnom období", "v době postní", "", "", "", "v době postní", "a nagyböjti időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vo Veľkom týždni", "ve Svatém týdnu", "", "", "", "ve Svatém týdnu", "a nagyhéten", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vo Veľkonočnom Trojdní", "ve velikonočním triduu", "", "", "", "ve velikonočním triduu", "a szent három napban", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vo Veľkonočnej oktáve", "ve velikonočním oktávu", "", "", "", "ve velikonočním oktávu", "húsvét nyolcadában", "ru_text", "у актаве Пасхі", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vo Veľkonočnom období", "v době velikonoční", "", "", "", "v době velikonoční", "a húsvéti időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vo Veľkonočnom období", "v době velikonoční", "", "", "", "v době velikonoční", "a húsvéti időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "v Pôstnom období", "v době postní", "", "in tempore Quadragesimæ", "", "v době postní", "a nagyböjti időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vo Veľkom týždni", "ve Svatém týdnu", "", "in Hebdomada sancta", "", "ve Svatém týdnu", "a nagyhéten", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vo Veľkonočnom Trojdní", "ve velikonočním triduu", "", "in Triduo Paschali", "", "ve velikonočním triduu", "a szent három napban", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vo Veľkonočnej oktáve", "ve velikonočním oktávu", "", "infra Octavam Paschæ", "", "ve velikonočním oktávu", "húsvét nyolcadában", "ru_text", "у актаве Пасхі", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vo Veľkonočnom období", "v době velikonoční", "", "in tempore Paschæ", "", "v době velikonoční", "a húsvéti időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vo Veľkonočnom období", "v době velikonoční", "", "in tempore Paschæ", "", "v době velikonoční", "a húsvéti időben", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 
 #define		nazov_obdobia_v(a)	nazov_obdobia_v_jazyk[a][_global_jazyk]
@@ -365,18 +365,18 @@ const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 // 2008-12-20: doplnené - používa sa v init_global_string() pre nedele niektorých období [zatiaľ iba v slovenčine]
 const char *nazov_Obdobia_aka_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
-	{ "Adventná", "adventní", "", "", "", "adventní", "advent", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Adventná", "adventní", "", "", "", "adventní", "advent", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "V Oktáve Narodenia Pána", "v oktávu narození páně", "", "", "", "v oktávu narození páně", "a karácsony nyolcadában", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
-	{ "Vianočná", "vánoční", "", "", "", "vánoční", "karácsony", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vianočná", "vánoční", "", "", "", "vánoční", "karácsony", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Cezročná", "v mezidobí", "", "", "", "během roku", "évközi", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Pôstna", "postní", "", "", "", "postní", "nagyböjt", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vo Veľkom týždni", "ve svatém týdnu", "", "", "", "ve svatém týdnu", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sas
-	{ "Vo Veľkonočnom Trojdní", "ve velikonočním triduu", "", "", "", "ve velikonočním triduu", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
-	{ "Vo Veľkonočnej oktáve", "ve velikonočním oktávu", "", "", "", "v oktávu velikonočním", "húsvét nyolcacadában", "ru_text", "у актаве пасхі", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
-	{ "Veľkonočná", "velikonoční", "", "", "", "velikonoční", "húsvét", "ru_text", "велікодная", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočná", "velikonoční", "", "", "", "velikonoční", "húsvét", "ru_text", "велікодная", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Adventná", "adventní", "", "Adventus", "", "adventní", "advent", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Adventná", "adventní", "", "Adventus", "", "adventní", "advent", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "V Oktáve Narodenia Pána", "v oktávu narození páně", "", "infra octavam Nativitatis", "", "v oktávu narození páně", "a karácsony nyolcadában", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
+	{ "Vianočná", "vánoční", "", "post Nativitatem", "", "vánoční", "karácsony", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Vianočná", "vánoční", "", "post Nativitatem", "", "vánoční", "karácsony", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Cezročná", "v mezidobí", "", "per annum", "", "během roku", "évközi", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Pôstna", "postní", "", "Quadragesimæ", "", "postní", "nagyböjt", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Vo Veľkom týždni", "ve svatém týdnu", "", "in Hebdomada sancta", "", "ve svatém týdnu", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sas
+	{ "Vo Veľkonočnom Trojdní", "ve velikonočním triduu", "", "in Triduo Paschali", "", "ve velikonočním triduu", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
+	{ "Vo Veľkonočnej oktáve", "ve velikonočním oktávu", "", "infra octavam Paschalis", "", "v oktávu velikonočním", "húsvét nyolcacadában", "ru_text", "у актаве пасхі", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
+	{ "Veľkonočná", "velikonoční", "", "Paschæ", "", "velikonoční", "húsvét", "ru_text", "велікодная", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočná", "velikonoční", "", "Paschæ", "", "velikonoční", "húsvét", "ru_text", "велікодная", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 #define		nazov_Obdobia_aka(a)	nazov_Obdobia_aka_jazyk[a][_global_jazyk]
 
@@ -959,40 +959,40 @@ const char *nazov_mes[POCET_MESIACOV + 1] =
 // 2008-12-20: pridaný reťazec pre poradové číslo - používa sa v init_global_string() pre nedele niektorých období [zatiaľ iba v slovenčine]
 const char *poradie_Slovom_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] = 
 {
-	{ "Prvá", "První", "", "", "", "První", "1.", "ru_text", "Першая", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Druhá", "Druhá", "", "", "", "Druhá", "2.", "ru_text", "Другая", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Tretia", "Třetí", "", "", "", "Třetí", "3.", "ru_text", "Трэцяя", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Štvrtá", "Čtvrtá", "", "", "", "Čtvrtá", "4.", "ru_text", "Чацвёртая", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Piata", "Pátá", "", "", "", "Pátá", "5.", "ru_text", "Пятая", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Šiesta", "Šestá", "", "", "", "Šestá", "6.", "ru_text", "Шостая", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Siedma", "Sedmá", "", "", "", "Sedmá", "7.", "ru_text", "Сёмая", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Ôsma", "Osmá", "", "", "", "Osmá", "8.", "ru_text", "Восьмая", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Deviata", "Devátá", "", "", "", "Devátá", "9.", "ru_text", "Дзевятая", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Desiata", "Desátá", "", "", "", "Desátá", "10.", "ru_text", "Дзясятая", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "11. ", "11", "11", "11", "11", "11", "11.", "11.", "11.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "12. ", "12", "12", "12", "12", "12", "12.", "12.", "12.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "13. ", "13", "13", "13", "13", "13", "13.", "13.", "13.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "14. ", "14", "14", "14", "14", "14", "14.", "14.", "14.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "15. ", "15", "15", "15", "15", "15", "15.", "15.", "15.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "16. ", "16", "16", "16", "16", "16", "16.", "16.", "16.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "17. ", "17", "17", "17", "17", "17", "17.", "17.", "17.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "18. ", "18", "18", "18", "18", "18", "18.", "18.", "18.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "19. ", "19", "19", "19", "19", "19", "19.", "19.", "19.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "20. ", "20", "20", "20", "20", "20", "20.", "20.", "20.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "21. ", "21", "21", "21", "21", "21", "21.", "21.", "21.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "22. ", "22", "22", "22", "22", "22", "22.", "22.", "22.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "23. ", "23", "23", "23", "23", "23", "23.", "23.", "23.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "24. ", "24", "24", "24", "24", "24", "24.", "24.", "24.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "25. ", "25", "25", "25", "25", "25", "25.", "25.", "25.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "26. ", "26", "26", "26", "26", "26", "26.", "26.", "26.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "27. ", "27", "27", "27", "27", "27", "27.", "27.", "27.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "28. ", "28", "28", "28", "28", "28", "28.", "28.", "28.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "29. ", "29", "29", "29", "29", "29", "29.", "29.", "29.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "30. ", "30", "30", "30", "30", "30", "30.", "30.", "30.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "31. ", "31", "31", "31", "31", "31", "31.", "31.", "31.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "32. ", "32", "32", "32", "32", "32", "32.", "32.", "32.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "33. ", "33", "33", "33", "33", "33", "33.", "33.", "33.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "34. ", "34", "34", "34", "34", "34", "34.", "34.", "34.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	{ "Prvá", "První", "", "Prima", "", "První", "1.", "ru_text", "Першая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Druhá", "Druhá", "", "Secunda", "", "Druhá", "2.", "ru_text", "Другая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Tretia", "Třetí", "", "Tertia", "", "Třetí", "3.", "ru_text", "Трэцяя", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Štvrtá", "Čtvrtá", "", "Quarta", "", "Čtvrtá", "4.", "ru_text", "Чацвёртая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Piata", "Pátá", "", "Quinta", "", "Pátá", "5.", "ru_text", "Пятая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Šiesta", "Šestá", "", "Sexta", "", "Šestá", "6.", "ru_text", "Шостая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Siedma", "Sedmá", "", "Septima", "", "Sedmá", "7.", "ru_text", "Сёмая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Ôsma", "Osmá", "", "VIII", "", "Osmá", "8.", "ru_text", "Восьмая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Deviata", "Devátá", "IX", "", "", "Devátá", "9.", "ru_text", "Дзевятая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Desiata", "Desátá", "X", "", "", "Desátá", "10.", "ru_text", "Дзясятая", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "11. ", "11", "11", "XI", "11", "11", "11.", "11.", "11.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "12. ", "12", "12", "XII", "12", "12", "12.", "12.", "12.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "13. ", "13", "13", "XIII", "13", "13", "13.", "13.", "13.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "14. ", "14", "14", "XIV", "14", "14", "14.", "14.", "14.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "15. ", "15", "15", "XV", "15", "15", "15.", "15.", "15.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "16. ", "16", "16", "XVI", "16", "16", "16.", "16.", "16.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "17. ", "17", "17", "XVII", "17", "17", "17.", "17.", "17.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "18. ", "18", "18", "XVIII", "18", "18", "18.", "18.", "18.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "19. ", "19", "19", "XIX", "19", "19", "19.", "19.", "19.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "20. ", "20", "20", "XX", "20", "20", "20.", "20.", "20.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "21. ", "21", "21", "XXI", "21", "21", "21.", "21.", "21.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "22. ", "22", "22", "XXII", "22", "22", "22.", "22.", "22.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "23. ", "23", "23", "XXIII", "23", "23", "23.", "23.", "23.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "24. ", "24", "24", "XXIV", "24", "24", "24.", "24.", "24.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "25. ", "25", "25", "XXV", "25", "25", "25.", "25.", "25.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "26. ", "26", "26", "XXVI", "26", "26", "26.", "26.", "26.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "27. ", "27", "27", "XXVII", "27", "27", "27.", "27.", "27.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "28. ", "28", "28", "XXVIII", "28", "28", "28.", "28.", "28.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "29. ", "29", "29", "XXIX", "29", "29", "29.", "29.", "29.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "30. ", "30", "30", "XXX", "30", "30", "30.", "30.", "30.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "31. ", "31", "31", "XXXI", "31", "31", "31.", "31.", "31.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "32. ", "32", "32", "XXXII", "32", "32", "32.", "32.", "32.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "33. ", "33", "33", "XXXIII", "33", "33", "33.", "33.", "33.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "34. ", "34", "34", "XXXIV", "34", "34", "34.", "34.", "34.",  /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
 // the names of rites
@@ -7974,7 +7974,7 @@ const char *text_NANEBOVSTUPENIE_PANA[POCET_JAZYKOV + 1] =
 	"Nanebovstúpenie Pána",
 	"Nanebevstoupení Páně",
 	"The Ascension of the Lord",
-	"",
+	"In Ascensione Domini",
 	"",
 	"Nanebevstoupení Páně",
 	"Urunk mennybemenetele",
@@ -7987,7 +7987,7 @@ const char *text_VELKONOCNA_NEDELA[POCET_JAZYKOV + 1] =
 	"Veľkonočná nedeľa",
 	"Neděle Zmrtvýchvstání Páně",
 	"",
-	"",
+	"Dominica Paschæ",
 	"",
 	"Neděle Zmrtvýchvstání Páně",
 	"Húsvétvasárnap",
@@ -8000,7 +8000,7 @@ const char *text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1] = // 2012-12-
 	HTML_LINE_BREAK " &#8212; Nedeľa Pánovho zmŕtvychvstania",
 	"",
 	"",
-	"",
+	HTML_LINE_BREAK "In Resurrectione Domini",
 	"",
 	"",
 	", " HTML_LINE_BREAK "Krisztus feltámadása",
@@ -8013,7 +8013,7 @@ const char *text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
 	"Nedeľa vo Veľkonočnej oktáve",
 	"Neděle v oktávu velikonočním",
 	"",
-	"",
+	"Dominica in octava Paschæ",
 	"",
 	"Neděle v oktávu velikonočním",
 	"Vasárnap Húsvét nyolcadában",
@@ -8026,7 +8026,7 @@ const char *text_NEDELA_VO_VELKONOCNEJ_OKTAVE_SUBSTRING[POCET_JAZYKOV + 1] =
 	"Druhá veľkonočná nedeľa — Božieho milosrdenstva",
 	"Druhá neděle velikonoční – Božího milosrdenství",
 	"",
-	"",
+	"Dominica II Paschæ – Divinæ Misericordiæ",
 	"",
 	"Druhá neděle velikonoční – Božího milosrdenství",
 	"Húsvét 2. vasárnapja – Az Isteni Irgalmasság vasárnapja",
@@ -8039,7 +8039,7 @@ const char *text_DEN_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
 	"Veľkonočn%s %s",
 	"%s velikonoční",
 	"",
-	"",
+	"%s infra octavam Paschæ",
 	"",
 	"%s velikonoční",
 	"%s Húsvét nyolcadában",
@@ -8057,7 +8057,7 @@ const char *text_MARIE_MATKY_CIRKVI[POCET_JAZYKOV + 1] =
 	"Prebl. Panny Márie, Matky Cirkvi",
 	"Panny Marie, Matky církve",
 	"",
-	"",
+	"Bearæ Mariæ Virginis Ecclesiæ Matris",
 	"",
 	"Panny Marie, Matky církve",
 	"Szűz Mária az Egyház anyja",
@@ -8070,7 +8070,7 @@ const char *text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] =
 	"Nášho Pána Ježiša Krista, " HTML_LINE_BREAK "najvyššieho a večného kňaza",
 	"Ježíše Krista, nejvyššího a věčného kněze",
 	"",
-	"",
+	"Domini nostri Iesu Christi " HTML_LINE_BREAK "Summi et Æterni Sacerdotis",
 	"",
 	"Našeho Pána Ježíše Krista, nejvyššího a věčného kněze",
 	"hu_text",
@@ -8083,7 +8083,7 @@ const char *text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1] =
 	"Najsvätejšej Trojice",
 	"Nejsvětější Trojice",
 	"",
-	"",
+	"Sanctissimæ Trinitatis",
 	"",
 	"Nejsvětější Trojice",
 	"Szentháromság vasárnapja",
@@ -8096,7 +8096,7 @@ const char *text_KRISTA_KRALA[POCET_JAZYKOV + 1] =
 	"Krista Kráľa",
 	"Ježíše Krista Krále",
 	"",
-	"",
+	"Domini nostri Iesu Christi " HTML_LINE_BREAK "universorum regis",
 	"",
 	"Ježíše Krista Krále",
 	"Krisztus Király",
@@ -8109,7 +8109,7 @@ const char *text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1] =
 	"Najsvätejšieho Kristovho tela a krvi",
 	"Těla a krve Páně",
 	"The Most Holy Body and Blood of Christ",
-	"",
+	"Sanctissimi Corporis et Sanguinis Christi",
 	"",
 	"Těla a krve Páně",
 	"Krisztus Szent Teste és Vére",
@@ -8122,7 +8122,7 @@ const char *text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1] =
 	"Najsvätejšieho Srdca Ježišovho",
 	"Nejsvětějšího Srdce Ježíšova",
 	"",
-	"",
+	"Sacratissimi Cordis Iesu",
 	"",
 	"Nejsvětějšího Srdce Ježíšova",
 	"Jézus Szent Szíve",
@@ -8135,7 +8135,7 @@ const char *text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1] =
 	"Nepoškvrneného Srdca Panny Márie", // 2010-06-16: opravený názov podľa breviára i direktória
 	"Neposkvrněného Srdce Panny Marie",
 	"",
-	"",
+	"Immaculati Cordis Beatæ Mariæ Virginis",
 	"",
 	"Neposkvrněného Srdce Panny Marie",
 	"A Boldogságos Szűz Mária Szeplőtelen Szíve",
@@ -8161,7 +8161,7 @@ const char *text_NARODENIE_PANA[POCET_JAZYKOV + 1] =
 	"Narodenie Pána",
 	"Narození Páně",
 	"",
-	"",
+	"In Nativitate Domini",
 	"",
 	"Narození Páně",
 	"Urunk születése (Karácsony)",
@@ -8174,7 +8174,7 @@ const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1] =
 	"Zoslanie Ducha Svätého",
 	"Seslání Ducha svatého",
 	"",
-	"",
+	"Dominica Pentecostes",
 	"",
 	"Seslání Ducha svatého",
 	"Pünkösd",
@@ -8187,7 +8187,7 @@ const char *text_PRVA_ADVENTNA_NEDELA[POCET_JAZYKOV + 1] =
 	"Prvá adventná nedeľa",
 	"První neděle adventní",
 	"",
-	"",
+	"Dominica prima Adventus",
 	"",
 	"První neděle adventní",
 	"Advent első vasárnapja",
@@ -8200,7 +8200,7 @@ const char *text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1] =
 	"Svätej rodiny Ježiša, Márie a Jozefa",
 	"Sv. Rodiny Ježíše, Marie a Josefa",
 	"",
-	"",
+	"Sanctæ Familiæ Iesu, Mariæ et Ioseph",
 	"",
 	"Sv. Rodiny Ježíše, Marie a Josefa",
 	"A Szent Család: Jézus, Mária és József", // "Szent Család ünnepe"
@@ -12431,7 +12431,7 @@ const char *text_OKT_09_2[POCET_JAZYKOV + 1] =
 	"Sv. Jána Leonardiho, kňaza",
 	"Sv. Jana Leonardiho, kněze",
 	"",
-	"",
+	"S. Ioannis Leonardi, presbyteri",
 	"",
 	"Sv. Jana Leonardiho, kněze",
 	"Leonardi Szent János áldozópap",
@@ -14754,7 +14754,7 @@ const char *text_VELKY_PIATOK[POCET_JAZYKOV + 1] =
 	"Veľký piatok",
 	"Velký pátek",
 	"Good Friday",
-	"",
+	"Feria VI in Passione Domini",
 	"",
 	"Velký pátek",
 	"Nagypéntek",
@@ -14767,7 +14767,7 @@ const char *text_BIELA_SOBOTA[POCET_JAZYKOV + 1] =
 	"Biela (veľká) sobota",
 	"Bílá sobota",
 	"Holy Saturday",
-	"",
+	"Sabbato sancto",
 	"",
 	"Bílá sobota",
 	"Nagyszombat",
@@ -14780,7 +14780,7 @@ const char *text_KVETNA_NEDELA[POCET_JAZYKOV + 1] =
 	"Kvetná nedeľa",
 	"Květná neděle",
 	"Palm Sunday of the Passion of the Lord",
-	"",
+	"Dominica in Palmis " HTML_LINE_BREAK "De Passione Domini",
 	"",
 	"Květná neděle",
 	"Virágvasárnap, vagyis az Úr szenvedésének vasárnapja",
@@ -14793,7 +14793,7 @@ const char *text_PO_POPOLCOVEJ_STREDE[POCET_JAZYKOV + 1] =
 	"po Popolcovej strede",
 	"po Popeleční středě",
 	"",
-	"",
+	"post Cineres",
 	"",
 	"po Popeleční středě",
 	"Hamvazószerda után",
@@ -14806,7 +14806,7 @@ const char *text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1] =
 	"v oktáve Narodenia Pána",
 	"v oktávu Narození Páně",
 	"",
-	"",
+	"infra octavam Nativitatis",
 	"",
 	"v oktávu Narození Páně",
 	"Karácsony nyolcada",
@@ -14832,7 +14832,7 @@ const char *text_LEN_V_KONSEKROVANYCH_KOSTOLOCH[POCET_JAZYKOV + 1] =
 	"len v konsekrovaných kostoloch",
 	"jen v posvěcených kostelích",
 	"",
-	"",
+	"in ecclesiis consecratis tantum",
 	"",
 	"jen v posvěcených kostelích",
 	"csak a felszentelt templomokban",
