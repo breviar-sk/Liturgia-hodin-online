@@ -11461,7 +11461,7 @@ void init_zoznam(void) {
 void Log_zoznam(void) {
 	for (int i = 0; i < POCET_ZOZNAM; i++) {
 		Log("zoznam[%d] == %d\n", i, zoznam[i]);
-		// Export("zoznam[%d] == %d" HTML_LINE_BREAK "\n", i, zoznam[i]);
+		// Export("zoznam[%d] == %d" HTML_LINE_BREAK, i, zoznam[i]);
 	}
 } // Log_zoznam()
 
@@ -13748,24 +13748,24 @@ void _main_rozbor_dna(short int d, short int m, short int r, short int p, char *
 	short int result = SUCCESS;
 	// deň
 	if (d < 0) {
-		ExportUDAJE("chýba údaj o dni." HTML_LINE_BREAK "\n");
+		ExportUDAJE("chýba údaj o dni." HTML_LINE_BREAK);
 	}
 	else if (d == 0) {
-		ExportUDAJE("deň = <" HTML_SPAN_BOLD ">%d" HTML_SPAN_END "." HTML_LINE_BREAK "\n", d);
+		ExportUDAJE("deň = <" HTML_SPAN_BOLD ">%d" HTML_SPAN_END "." HTML_LINE_BREAK, d);
 	}
 	// mesiac
 	if (m < 0) {
-		ExportUDAJE("chýba údaj o mesiaci." HTML_LINE_BREAK "\n");
+		ExportUDAJE("chýba údaj o mesiaci." HTML_LINE_BREAK);
 	}
 	else if (m == UNKNOWN_MESIAC) {
-		ExportUDAJE("taký mesiac nepoznám (%d)." HTML_LINE_BREAK "\n", m);
+		ExportUDAJE("taký mesiac nepoznám (%d)." HTML_LINE_BREAK, m);
 	}
 	// rok
 	if (r < 0) {
-		ExportUDAJE("chýba údaj o roku." HTML_LINE_BREAK "\n");
+		ExportUDAJE("chýba údaj o roku." HTML_LINE_BREAK);
 	}
 	else if (r == 0) {
-		ExportUDAJE("rok = <" HTML_SPAN_BOLD ">%d" HTML_SPAN_END "." HTML_LINE_BREAK "\n", r);
+		ExportUDAJE("rok = <" HTML_SPAN_BOLD ">%d" HTML_SPAN_END "." HTML_LINE_BREAK, r);
 	}
 
 	// kontrola údajov ukončená, podľa nej pokračujeme ďalej
@@ -15282,48 +15282,48 @@ void _main_batch_mode(
 
 	// deň
 	if (equals(den_from, STR_EMPTY)) {
-		ExportUDAJE("chýba údaj o počiatočnom dni." HTML_LINE_BREAK "\n");
+		ExportUDAJE("chýba údaj o počiatočnom dni." HTML_LINE_BREAK);
 	}
 	else if (d_from == 0) {
-		ExportUDAJE("deň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "." HTML_LINE_BREAK "\n", den_from);
+		ExportUDAJE("deň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "." HTML_LINE_BREAK, den_from);
 	}
 	// mesiac
 	if (equals(mesiac_from, STR_EMPTY)) {
-		ExportUDAJE("chýba údaj o počiatočnom mesiaci." HTML_LINE_BREAK "\n");
+		ExportUDAJE("chýba údaj o počiatočnom mesiaci." HTML_LINE_BREAK);
 	}
 	else if (m_from == UNKNOWN_MESIAC) {
-		ExportUDAJE("taký mesiac nepoznám (%s)." HTML_LINE_BREAK "\n", mesiac_from);
+		ExportUDAJE("taký mesiac nepoznám (%s)." HTML_LINE_BREAK, mesiac_from);
 	}
 	// rok
 	if (equals(rok_from, STR_EMPTY)) {
-		ExportUDAJE("chýba údaj o počiatočnom roku." HTML_LINE_BREAK "\n");
+		ExportUDAJE("chýba údaj o počiatočnom roku." HTML_LINE_BREAK);
 	}
 	else if (r_from == 0) {
-		ExportUDAJE("rok = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "." HTML_LINE_BREAK "\n", rok_from);
+		ExportUDAJE("rok = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "." HTML_LINE_BREAK, rok_from);
 	}
 
 	// --to--
 
 	// deň
 	if (equals(den_to, STR_EMPTY)) {
-		ExportUDAJE("chýba údaj o koncovom dni." HTML_LINE_BREAK "\n");
+		ExportUDAJE("chýba údaj o koncovom dni." HTML_LINE_BREAK);
 	}
 	else if (d_to == 0) {
-		ExportUDAJE("deň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "." HTML_LINE_BREAK "\n", den_to);
+		ExportUDAJE("deň = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "." HTML_LINE_BREAK, den_to);
 	}
 	// mesiac
 	if (equals(mesiac_to, STR_EMPTY)) {
-		ExportUDAJE("chýba údaj o koncovom mesiaci." HTML_LINE_BREAK "\n");
+		ExportUDAJE("chýba údaj o koncovom mesiaci." HTML_LINE_BREAK);
 	}
 	else if (m_to == UNKNOWN_MESIAC) {
-		ExportUDAJE("taký mesiac nepoznám (%s)." HTML_LINE_BREAK "\n", mesiac_to);
+		ExportUDAJE("taký mesiac nepoznám (%s)." HTML_LINE_BREAK, mesiac_to);
 	}
 	// rok
 	if (equals(rok_to, STR_EMPTY)) {
-		ExportUDAJE("chýba údaj o koncovom roku." HTML_LINE_BREAK "\n");
+		ExportUDAJE("chýba údaj o koncovom roku." HTML_LINE_BREAK);
 	}
 	else if (r_to == 0) {
-		ExportUDAJE("rok = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "." HTML_LINE_BREAK "\n", rok_to);
+		ExportUDAJE("rok = <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END "." HTML_LINE_BREAK, rok_to);
 	}
 
 	// juliansky datum dna _from musi byt <= ako dna _to
@@ -15332,7 +15332,7 @@ void _main_batch_mode(
 	jd_to = JD(d_to, m_to + 1, r_to);
 	if (jd_from > jd_to) {
 		Log("JD_from = %ld > JD_to = %ld\n", jd_from, jd_to);
-		ExportUDAJE("Zlé časové obdobie (dátum `od' (%s.%s.%s) nasleduje po dátume `do' (%s.%s.%s))." HTML_LINE_BREAK "\n", den_from, mesiac_from, rok_from, den_to, mesiac_to, rok_to);
+		ExportUDAJE("Zlé časové obdobie (dátum `od' (%s.%s.%s) nasleduje po dátume `do' (%s.%s.%s))." HTML_LINE_BREAK, den_from, mesiac_from, rok_from, den_to, mesiac_to, rok_to);
 	}// datum _to je casovo _pred_ datumom _from!
 	else {
 		Log("julianske datumy: v poriadku\n");
@@ -15395,15 +15395,15 @@ void _main_batch_mode(
 						fprintf(batch_html_file, "var tag1 = '" HTML_A_HREF_BEGIN "./';\n");
 						fprintf(batch_html_file, "\n");
 						fprintf(batch_html_file, "var tag2 = '" HTML_A_END "';\n");
-						fprintf(batch_html_file, "tag2+='" HTML_LINE_BREAK "';\n");
+						fprintf(batch_html_file, "tag2+='" HTML_LINE_BREAK_PURE "';\n");
 						fprintf(batch_html_file, "\n");
 						fprintf(batch_html_file, "var output='';\n");
 						fprintf(batch_html_file, "\n");
 						if (_global_jazyk == JAZYK_HU) {
-							fprintf(batch_html_file, "output = output + '<ul><li> '+tag1+cestax+'>%s (20'+rok+'. '+mesiac+'. '+den+'.)'+tag2+'" HTML_LINE_BREAK "</li>';\n", (char *)html_text_Dnesne_modlitby[_global_jazyk]);
+							fprintf(batch_html_file, "output = output + '<ul><li> '+tag1+cestax+'>%s (20'+rok+'. '+mesiac+'. '+den+'.)'+tag2+'" HTML_LINE_BREAK_PURE "</li>';\n", (char *)html_text_Dnesne_modlitby[_global_jazyk]);
 						}
 						else {
-							fprintf(batch_html_file, "output = output + '<ul><li> '+tag1+cestax+'>%s ('+den+'. '+mesiac+'. 20'+rok+')'+tag2+'" HTML_LINE_BREAK "</li>';\n", (char *)html_text_Dnesne_modlitby[_global_jazyk]);
+							fprintf(batch_html_file, "output = output + '<ul><li> '+tag1+cestax+'>%s ('+den+'. '+mesiac+'. 20'+rok+')'+tag2+'" HTML_LINE_BREAK_PURE "</li>';\n", (char *)html_text_Dnesne_modlitby[_global_jazyk]);
 						}
 						fprintf(batch_html_file, "\n");
 						if (_global_jazyk == JAZYK_HU) {
@@ -16004,7 +16004,7 @@ void write(void) {
 	short int i = 0;
 	while (environ[i]) {
 		// if(strstr(environ[i], "WWW_") != NULL)
-		Log(HTML_P_BEGIN"%d: %s" HTML_LINE_BREAK "__________" HTML_LINE_BREAK "\n", i, environ[i]);
+		Log(HTML_P_BEGIN"%d: %s" HTML_LINE_BREAK "__________" HTML_LINE_BREAK, i, environ[i]);
 		i++;
 	}
 }
@@ -19125,7 +19125,7 @@ int breviar_main(int argc, const char **argv) {
 					pom_DALSI_SVATY, pom_LINKY);
 				_main_LOG_to_Export("po skonceni _main_batch_mode();\n");
 
-				Export(HTML_P_BEGIN"Výsledný batch skript (dávkový súbor) sa nachádza v súbore " HTML_A_HREF_BEGIN "\"%s\">%s" HTML_A_END "." HTML_LINE_BREAK "\n", name_batch_file, name_batch_file);
+				Export(HTML_P_BEGIN"Výsledný batch skript (dávkový súbor) sa nachádza v súbore " HTML_A_HREF_BEGIN "\"%s\">%s" HTML_A_END "." HTML_LINE_BREAK, name_batch_file, name_batch_file);
 				Export("Po spustení tento skript vygeneruje modlitby pre dané obdobie \n");
 				Export("do súborov <span " HTML_CLASS_TT ">yyyy-mm-dd_xp.htm" HTML_SPAN_END ", kde význam \n");
 				Export("jednotlivých častí mena súboru je nasledovný:\n");

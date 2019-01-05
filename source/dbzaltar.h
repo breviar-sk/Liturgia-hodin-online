@@ -232,8 +232,11 @@ extern void _set_chvalospev_vig_vian(short int modlitba);
 extern void _set_chvalospev_vig_ocr(short int modlitba);
 extern void _set_chvalospev_vig_tk(short int modlitba);
 extern void _set_chvalospev_vig_srdca(short int modlitba);
+// extern void _set_chvalospev_vig_krkrala(short int modlitba);
 extern void _set_chvalospev_vig_post(short int modlitba);
 extern void _set_chvalospev_vig_vn(short int modlitba);
+extern void _set_chvalospev_vig_sc_sm_sz(short int modlitba);
+extern void _set_chvalospev_vig_sviatok_obetovania(short int modlitba);
 
 extern const char *html_title[POCET_JAZYKOV + 1];
 
@@ -1089,6 +1092,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 /* ---------------------------------------------------------------------------------------------------- */
 
+#define _spolocna_cast_set_vig_ant_sm_sz() { \
+	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_SV_MUZ], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
+	_set_antifona_vig(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_SV_MUZ], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
 // _anchor_head pre spoločné časti obsahuje už aj underscore; spoločné časti používajú súbor _file (nie _file_pc)
 #define _spolocna_cast_set_vig_ant(vlastny_anchor) { \
 	sprintf(_anchor, "%s%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
@@ -1096,15 +1105,22 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_litobd_pc; \
 }
 
-#define _spolocna_cast_set_vig_ant_sm_sz() { \
-	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_SV_MUZ], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
-	_set_antifona_vig(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_SV_MUZ], _anchor); \
-	set_LOG_litobd_pc; \
-}
-
 #define _spolocna_cast_set_vig_ev(vlastny_anchor) { \
 	sprintf(_anchor, "%s%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
 	_set_evanjelium(modlitba, _file, _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+// tak isto aj _anchor_head pre vlastné slávenie sviatkov svätých (kalendar.cpp) obsahuje underscore
+#define _vlastna_cast_vig_ant(_anchor_head) { \
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
+	_set_antifona_vig(modlitba, _file_pc, _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _vlastna_cast_vig_ev(_anchor_head) { \
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, _file_pc, _anchor); \
 	set_LOG_litobd_pc; \
 }
 

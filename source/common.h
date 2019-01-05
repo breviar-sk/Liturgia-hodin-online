@@ -184,6 +184,7 @@
 
 #define HTML_NONBREAKING_SPACE "&nbsp;"
 #define HTML_NONBREAKING_SPACE_LONG "&nbsp;&nbsp;&nbsp;"
+#define HTML_LINE_BREAK_PURE "<br/>" // not followed by real line-break
 #define HTML_LINE_BREAK "<br/>\n" // always followed by real line-break
 #define HTML_CRLF_LINE_BREAK "\n<br/>"
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"

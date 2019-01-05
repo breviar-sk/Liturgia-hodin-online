@@ -2558,6 +2558,10 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_obetovania(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_sviatok_obetovania(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
@@ -5520,6 +5524,10 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_sv_muzov(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_sc_sm_sz(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
@@ -5647,6 +5655,10 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_obetovania(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_sviatok_obetovania(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
@@ -28240,24 +28252,29 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			// alebo keď je v tento deň prekážka, tak najbližší voľný deň
 			if (poradie_svaty == 1) {
 
-				sprintf(_anchor_head, "%02d%s_", 2, nazov_MES[mesiac]); // MES_NOV // 2. čítanie: 02NOV (použité natvrdo kvôli prípadnému prekladaniu)
-				Log("  _anchor_head == %s\n", _anchor_head);
-				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_2citanie;
-				sprintf(_anchor_head, "%02d%s_", 15, nazov_MES[mesiac]); // MES_NOV // späť: 15NOV (použité natvrdo kvôli prípadnému prekladaniu)
-				Log("  _anchor_head == %s\n", _anchor_head);
-
 				file_name_vlastny_kalendar(_global_kalendar);
 
 				// definovanie parametrov pre modlitbu
-				if (query_type != PRM_DETAILY)
+				if (query_type != PRM_DETAILY) {
 					set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_VSETKO);
+				}
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_modlitba;
+
+				sprintf(_anchor_head, "%02d%s_", 2, nazov_MES[mesiac]); // MES_NOV // 2. čítanie: 02NOV (použité natvrdo kvôli prípadnému prekladaniu)
+				Log("  _anchor_head == %s\n", _anchor_head);
+				sprintf(_file_pc, "pc_sv_%s.htm", nazov_mes[mesiac]);
+				Log("  _file_pc == %s\n", _file_pc);
+				_vlastna_cast_2citanie;
+				sprintf(_anchor_head, "%02d%s_", 15, nazov_MES[mesiac]); // MES_NOV // späť: 15NOV (použité natvrdo kvôli prípadnému prekladaniu)
+				Log("  _anchor_head == %s\n", _anchor_head);
+				file_name_vlastny_kalendar(_global_kalendar);
+				Log("  _file_pc == %s\n", _file_pc);
+
 				// ToDo: vigília
 
 				_vlastna_cast_mcd_modlitba;
@@ -30297,6 +30314,9 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_marie(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			if (_global_jazyk == JAZYK_CZ) {
 				_vlastna_cast_mcd_full;
@@ -31174,7 +31194,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	sprintf(_file, "sv_%s.htm", nazov_mes[mesiac - 1]);
 	Log("  _file == %s\n", _file);
 
-	// 2005-07-26: súbor pre posvätné čítania
+	// súbor pre posvätné čítania
 	sprintf(_file_pc, "pc_sv_%s.htm", nazov_mes[mesiac - 1]);
 	Log("  _file_pc == %s\n", _file_pc);
 

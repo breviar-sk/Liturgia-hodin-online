@@ -1481,15 +1481,15 @@ const char *html_text_ordinarium[POCET_JAZYKOV + 1] = {
 // in the following: you MUST keep all HTML elements, e.g. <a href...>, <br/> etc.
 const char *html_text_dnes_je_atd[POCET_JAZYKOV + 1] =
 {
-	"Dnes je %d. deň v roku%s, " HTML_A_HREF_BEGIN "\"%s%s\">juliánsky dátum" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
-	"Dnes je %d. den v roku%s, " HTML_A_HREF_BEGIN "\"%s%s\">juliánské datum" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
-	"Today is %d. day in the year%s, " HTML_A_HREF_BEGIN "\"%s%s\">Julian date" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
-	"Hodie est %d. die anno %s, " HTML_A_HREF_BEGIN "\"%s%s\">Iulianus datum" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
-	"%d/%s" HTML_A_HREF_BEGIN "\"%s%s\">JD" HTML_A_END " = %ld%s.\n" HTML_LINE_BREAK "\n",
-	"Dnes je %d. den v roku%s, " HTML_A_HREF_BEGIN "\"%s%s\">juliánské datum" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
-	"Ma %s %d. napja van, " HTML_A_HREF_BEGIN "\"%s%s\">Julián naptár" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
-	"%d / %s ru_text, " HTML_A_HREF_BEGIN "\"%s%s\">ru_text" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
-	"%d / %s by_text, " HTML_A_HREF_BEGIN "\"%s%s\">by_text" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK "\n",
+	"Dnes je %d. deň v roku%s, " HTML_A_HREF_BEGIN "\"%s%s\">juliánsky dátum" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK,
+	"Dnes je %d. den v roku%s, " HTML_A_HREF_BEGIN "\"%s%s\">juliánské datum" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK,
+	"Today is %d. day in the year%s, " HTML_A_HREF_BEGIN "\"%s%s\">Julian date" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK,
+	"Hodie est %d. die anno %s, " HTML_A_HREF_BEGIN "\"%s%s\">Iulianus datum" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK,
+	"%d/%s" HTML_A_HREF_BEGIN "\"%s%s\">JD" HTML_A_END " = %ld%s.\n" HTML_LINE_BREAK,
+	"Dnes je %d. den v roku%s, " HTML_A_HREF_BEGIN "\"%s%s\">juliánské datum" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK,
+	"Ma %s %d. napja van, " HTML_A_HREF_BEGIN "\"%s%s\">Julián naptár" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK,
+	"%d / %s ru_text, " HTML_A_HREF_BEGIN "\"%s%s\">ru_text" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK,
+	"%d / %s by_text, " HTML_A_HREF_BEGIN "\"%s%s\">by_text" HTML_A_END " JD = %ld%s.\n" HTML_LINE_BREAK,
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
