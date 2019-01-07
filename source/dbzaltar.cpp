@@ -5913,9 +5913,9 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_vian1_prosby;
 			_vian1_modlitba;
 
-			if(litobd == OBD_OKTAVA_NARODENIA){
-				if (_global_den.den == 25) {  // narodenie Pána
-					Log("narodenie Pána...\n");
+			if (litobd == OBD_OKTAVA_NARODENIA) {
+				if (_global_den.den == 25) {  // Narodenie Pána
+					Log("Narodenie Pána...\n");
 					// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 					modlitba = MODL_POSV_CITANIE;
 					_liturgicke_obdobie_set_vig_ant(modlitba);
@@ -5952,6 +5952,14 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_narodenie(modlitba);
 				} // 25. 12. | 25DEC
+				else {
+					Log("Oktáva Narodenia Pána...\n");
+					modlitba = MODL_POSV_CITANIE;
+					// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+					_liturgicke_obdobie_set_vig_ant(modlitba);
+					_set_chvalospev_vig_vian(modlitba);
+					_liturgicke_obdobie_set_vig_ev(modlitba);
+				}// ostatné dni v Oktáve Narodenia Pána
 
 				// ranné chvály
 				modlitba = MODL_RANNE_CHVALY;
@@ -5964,7 +5972,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_narodenie_antifony;
 			}
 
-			if((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_JAN)){ // Panny Márie Bohorodičky | BOHORODICKY_PANNY_MARIE | 01JAN
+			if ((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_JAN)) { // Panny Márie Bohorodičky | BOHORODICKY_PANNY_MARIE | 01JAN
 				mystrcpy(_file, FILE_PM_BOHOROD, MAX_STR_AF_FILE);
 				mystrcpy(_file_pc, FILE_PM_BOHOROD, MAX_STR_AF_FILE);
 				mystrcpy(_anchor, ANCHOR_PM_BOHOROD, MAX_STR_AF_ANCHOR);
@@ -6037,7 +6045,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_bohorod_kcitanie(_anchor_vlastne_slavenie);
 				_bohorod_modlitba;
 				// doplnená psalmódia: Ak nie je nedeľa, berie sa doplnková psalmódia. (LH, zv. I, str. 372)
-				if(_global_den.denvt != DEN_NEDELA){
+				if (_global_den.denvt != DEN_NEDELA) {
 					_set_zalmy_mcd_doplnkova_psalmodia();
 				}
 
@@ -6069,7 +6077,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			}// Panny Marie Bohorodicky
 
 			// druha nedela po narodeni pana - 2. NEDEĽA PO NARODENÍ PÁNA | nie pre krajiny, kde sa Zjavenie Pána slávi v nedeľu medzi 2. a 8. januárom | BIT_OPT_0_ZJAVENIE_PANA_NEDELA
-			else if((_global_den.denvt == DEN_NEDELA) && (_global_den.mesiac - 1 == MES_JAN) && (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)))){
+			else if ((_global_den.denvt == DEN_NEDELA) && (_global_den.mesiac - 1 == MES_JAN) && (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)))) {
 				// prvé vešpery
 				modlitba = MODL_PRVE_VESPERY;
 				_vian1_hymnus;
@@ -6118,7 +6126,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			}// druha nedela po narodeni pana - 2. NEDEĽA PO NARODENÍ PÁNA
 
-			else if(_global_den.denvr == _global_r._SVATEJ_RODINY.denvr){
+			else if (_global_den.denvr == _global_r._SVATEJ_RODINY.denvr) {
 				// sviatok svatej rodiny
 				mystrcpy(_file, FILE_SV_RODINY, MAX_STR_AF_FILE);
 				mystrcpy(_file_pc, FILE_SV_RODINY, MAX_STR_AF_FILE);
@@ -6177,7 +6185,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				// modlitba cez deň
 
 				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if(_global_den.denvt != DEN_NEDELA) {
+				if (_global_den.denvt != DEN_NEDELA) {
 					_set_zalmy_mcd_doplnkova_psalmodia();
 				}
 				else {
