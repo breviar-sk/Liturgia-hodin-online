@@ -1541,8 +1541,8 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			_global_svaty2.typslav_lokal = (_global_jazyk == JAZYK_SK) ? LOKAL_SLAV_SPOMIENKA_FMA : LOKAL_SLAV_SPOMIENKA_FMA_CZ;
 			mystrcpy(_global_svaty2.meno, text_JAN_22_SDB[_global_jazyk], MENO_SVIATKU);
-			_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENICA, MODL_SPOL_CAST_PANNA);
-			_global_svaty2.farba = LIT_FARBA_CERVENA;
+			_global_svaty2.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA);
+			_global_svaty2.farba = LIT_FARBA_BIELA;
 			_global_svaty2.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_SDB a KALENDAR_CZ_SDB
 
@@ -13559,6 +13559,10 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_sv_muzov(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_sc_sm_sz(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
@@ -13921,6 +13925,10 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_apostolov(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_sc_ap(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full(modlitba);
@@ -14455,12 +14463,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 
-			if (_global_jazyk == JAZYK_SK) {
-				_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
-			}
-			else {
-				_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_VIACERI);
-			}
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_VIACERI); // aj pre JAZYK_SK treba kvôli predĺženému sláveniu vigílií
 			_global_opt[OPT_3_SPOLOCNA_CAST] = _decode_spol_cast(_global_svaty1.spolcast).a1;
 			_global_den.typslav = SLAV_SLAVNOST; // doplnené kvôli správnemu fungovaniu set_spolocna_cast(), t. j. tamojších kontrol, či napr. sú žalmy vlastné
 			_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
@@ -17755,6 +17758,10 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_premenenie(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_krkrala(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
@@ -18696,6 +18703,10 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_marie(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_sc_pm(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
@@ -21630,6 +21641,10 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sv_kriz(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_krkrala(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			// žalmy pre mcd sú zo dňa, vyriešené pomocou ZALTAR_IBA_ZALMY_HYMNUS_MCD
 			_vlastna_cast_mcd_ant_kcitresp_modl;
@@ -23268,6 +23283,10 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_archanjelov(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_vsetkych_svatych(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
@@ -26799,6 +26818,10 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_vsetkych_svatych(modlitba);
+			// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
+			_vlastna_cast_vig_ant(_anchor_head);
+			_set_chvalospev_vig_vsetkych_svatych(modlitba);
+			_vlastna_cast_vig_ev(_anchor_head);
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 

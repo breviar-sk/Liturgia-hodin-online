@@ -227,14 +227,20 @@ extern void _set_chvalospev2(short int modlitba, const char *file, const char *a
 extern void _set_chvalospev3(short int modlitba, const char *file, const char *anchor);
 
 extern void _set_evanjelium(short int modlitba, const char *file, const char *anchor);
+
 extern void _set_chvalospev_vig_adv(short int modlitba);
 extern void _set_chvalospev_vig_vian(short int modlitba);
 extern void _set_chvalospev_vig_ocr(short int modlitba);
 extern void _set_chvalospev_vig_tk(short int modlitba);
 extern void _set_chvalospev_vig_srdca(short int modlitba);
-// extern void _set_chvalospev_vig_krkrala(short int modlitba);
+extern void _set_chvalospev_vig_vsetkych_svatych(short int modlitba);
+extern void _set_chvalospev_vig_krkrala(short int modlitba);
 extern void _set_chvalospev_vig_post(short int modlitba);
 extern void _set_chvalospev_vig_vn(short int modlitba);
+extern void _set_chvalospev_vig_sc_vpchr(short int modlitba);
+extern void _set_chvalospev_vig_sc_pm(short int modlitba);
+extern void _set_chvalospev_vig_sc_ap(short int modlitba);
+extern void _set_chvalospev_vig_sc_vm(short int modlitba);
 extern void _set_chvalospev_vig_sc_sm_sz(short int modlitba);
 extern void _set_chvalospev_vig_sviatok_obetovania(short int modlitba);
 
@@ -1098,6 +1104,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_litobd_pc; \
 }
 
+#define _spolocna_cast_set_vig_ev_sm_sz() { \
+	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_SV_MUZ], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_SV_MUZ], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
 // _anchor_head pre spoločné časti obsahuje už aj underscore; spoločné časti používajú súbor _file (nie _file_pc)
 #define _spolocna_cast_set_vig_ant(vlastny_anchor) { \
 	sprintf(_anchor, "%s%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
@@ -1136,6 +1148,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_litobd_pc; \
 }
 
+#define _vlastne_slavenie_set_vig_ev_litrok(vlastny_anchor, litrok) { \
+	sprintf(_anchor, "%s_%c%s%c", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM, litrok); \
+	_set_evanjelium(modlitba, _file_pc, _anchor); \
+	set_LOG_litobd_pc; \
+}
+
 #define _liturgicke_obdobie_set_vig_ant(modlitba) { \
 	sprintf(_anchor, "%s_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
 	_set_antifona_vig(modlitba, _file_pc, _anchor); \
@@ -1150,9 +1168,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 // 1., 2. a 3. Adventná nedeľa = 3., 4. a 5. Cezročná nedeľa
 // 4. Adventná nedeľa = 6. Cezročná nedeľa
+// Pôstne obdobie má svoje čítania
+// 2., 3., 4., 5., 6. a 7. Veľkonočná nedeľa = 2., 3., 4., 5., 6. a 7. Cezročná nedeľa
 #define _liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden) { \
-	sprintf(_anchor, "%s%d_%c%s", nazov_OBD[OBD_CEZ_ROK], ((litobd == OBD_ADVENTNE_I) || (litobd == OBD_ADVENTNE_II)) ? tyzden + 2 : tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
-	_set_evanjelium(modlitba, /* _file_pc */ nazov_obd_htm_pc[OBD_CEZ_ROK], _anchor); \
+	sprintf(_anchor, "%s%d_%c%s", ((litobd != OBD_POSTNE_I) ? nazov_OBD[OBD_CEZ_ROK] : nazov_OBD[litobd]), \
+		((litobd == OBD_ADVENTNE_I) || (litobd == OBD_ADVENTNE_II)) ? tyzden + 2 : tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, ((litobd == OBD_POSTNE_I) ? _file_pc : nazov_obd_htm_pc[OBD_CEZ_ROK]), _anchor); \
 	set_LOG_litobd_pc; \
 }
 

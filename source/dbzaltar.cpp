@@ -1130,6 +1130,12 @@ void _set_chvalospev_vig_srdca(short int modlitba) {
 	_set_chvalospev3(modlitba, "ch_1sam2.htm", "CHVAL_1SAM2VG2");
 } // _set_chvalospev_vig_srdca()
 
+void _set_chvalospev_vig_vsetkych_svatych(short int modlitba) {
+	_set_chvalospev1(modlitba, "ch_tob13.htm", "CHVAL_TOB13,2-8VG");
+	_set_chvalospev2(modlitba, "ch_tob13.htm", "CHVAL_TOB13,9-11VG");
+	_set_chvalospev3(modlitba, "ch_tob13.htm", "CHVAL_TOB13,13-18VG");
+} // _set_chvalospev_vig_vsetkych_svatych()
+
 void _set_chvalospev_vig_krkrala(short int modlitba) {
 	_set_chvalospev1(modlitba, "ch_1krn29.htm", "CHVAL_1KRN29VG");
 	_set_chvalospev2(modlitba, "ch_iz12.htm", "CHVAL_IZ12VG2");
@@ -6180,7 +6186,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
 				_set_chvalospev_vig_vian(modlitba);
-				_vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
+				_vlastne_slavenie_set_vig_ev_litrok(_anchor_vlastne_slavenie, _global_den.litrok);
 
 				// modlitba cez deň
 
@@ -7477,7 +7483,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_post1_kresponz;
 			_post1_modlitba;
 
-			if(den == DEN_NEDELA){
+			if (den == DEN_NEDELA) {
 
 				// prvé vešpery
 				modlitba = MODL_PRVE_VESPERY;
@@ -7501,22 +7507,22 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden);
 
 			}// nedeľa
-			else{
+			else {
 				// špeciálne pre Popolcovú stredu
-				if (_global_den.denvr == POPOLCOVA_STREDA){
+				if (_global_den.denvr == POPOLCOVA_STREDA) {
 
 					Log("liturgicke_obdobie(): POPOLCOVA_STREDA\n...");
 					// Log("_global_den.denvt == %d\n", _global_den.denvt);
 
-					if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)){
+					if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)) {
 						set_antifony(DEN_PIATOK, 3, zvazok_breviara[litobd], MODL_RANNE_CHVALY);
 						set_zalm(1, MODL_RANNE_CHVALY, "z51.htm", "ZALM51");
 						set_zalm(2, MODL_RANNE_CHVALY, "ch_jer14.htm", "CHVAL_JER14");
 						// možnosť zvoliť žalm 95
-						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)){
+						if (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALM95)) {
 							set_zalm(3, MODL_RANNE_CHVALY, "z95.htm", "ZALM95");
 						}
-						else{
+						else {
 							set_zalm(3, MODL_RANNE_CHVALY, "z100.htm", "ZALM100");
 						}
 					}
@@ -7922,8 +7928,8 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			set_kresponz_kompletorium_obd(den, modlitba, litobd);
 
-			if((den != DEN_PIATOK) && (den != DEN_SOBOTA)){
-				// 2009-04-17: pre veľký piatok aj bielu sobotu je hymnus ako vo veľkom týždni, teda "Kriste, ty svetlo a náš deň" [doplnené: biela sobota]
+			if ((den != DEN_PIATOK) && (den != DEN_SOBOTA)) {
+				// pre veľký piatok aj bielu sobotu je hymnus ako vo veľkom týždni, teda "Kriste, ty svetlo a náš deň"
 				set_hymnus_kompletorium_obd(den, tyzzal, modlitba, litobd);
 			}
 
@@ -7980,7 +7986,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_vtroj_kresponz;
 			_vtroj_modlitba;
 
-			if(den == DEN_NEDELA){
+			if (den == DEN_NEDELA) {
 				modlitba = MODL_RANNE_CHVALY;
 				_set_zalmy_velkonocna_nedela(modlitba);
 				modlitba = MODL_VESPERY;
@@ -7989,7 +7995,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_set_zalmy_velkonocna_nedela(modlitba);
 				// popis k posv. čítaniu veľkonočnej nedele
 				_vtroj_popis;
-				if(!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)){
+				if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)) {
 					// na ostatné hodiny sa berie doplnková psalmódia (realizované aj v _set_zalmy_velkonocna_nedela()...)
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_velkonocna_nedela(modlitba);
@@ -7999,7 +8005,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_set_zalmy_velkonocna_nedela(modlitba);
 				}
 			}// nedeľa
-			else if(den == DEN_SOBOTA){
+			else if (den == DEN_SOBOTA) {
 				modlitba = MODL_RANNE_CHVALY;
 				_set_zalmy_biela_sobota(modlitba);
 				modlitba = MODL_VESPERY;
@@ -8009,15 +8015,15 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 				// posvätné čítanie -- predĺžené slávenie vigílie
 				modlitba = MODL_POSV_CITANIE;
-				sprintf(_anchor, "%s_%c%s%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), nazov_DN_asci[den], ANCHOR_ANTIFONA_VIG);
+				sprintf(_anchor, "%s_%c%s_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG, nazov_DN_asci[den]);
 				_set_antifona_vig(modlitba, _file_pc, _anchor);
 				set_LOG_litobd_pc;
 				_set_chvalospev_vig_post(modlitba);
-				sprintf(_anchor, "%s%d_%c%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
+				sprintf(_anchor, "%s_%c%s_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM, nazov_DN_asci[den]);
 				_set_evanjelium(modlitba, _file_pc, _anchor);
 				set_LOG_litobd_pc;
 
-				if(!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)){
+				if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)) {
 					// na ostatné hodiny sa berie doplnková psalmódia (realizované aj v _set_zalmy_biela_sobota()...)
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_biela_sobota(modlitba);
@@ -8030,21 +8036,21 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				// popis ku kompletóriu bielej soboty
 				_vtroj_popis;
 			}// nie nedeľa, ale biela sobota
-			else if(den == DEN_PIATOK){
+			else if (den == DEN_PIATOK) {
 				modlitba = MODL_POSV_CITANIE;
 				_set_zalmy_velky_piatok(modlitba);
 
 				// posvätné čítanie -- predĺžené slávenie vigílie
 				modlitba = MODL_POSV_CITANIE;
-				sprintf(_anchor, "%s_%c%s%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), nazov_DN_asci[den], ANCHOR_ANTIFONA_VIG);
+				sprintf(_anchor, "%s_%c%s_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG, nazov_DN_asci[den]);
 				_set_antifona_vig(modlitba, _file_pc, _anchor);
 				set_LOG_litobd_pc;
 				_set_chvalospev_vig_post(modlitba);
-				sprintf(_anchor, "%s%d_%c%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM);
+				sprintf(_anchor, "%s_%c%s_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM, nazov_DN_asci[den]);
 				_set_evanjelium(modlitba, _file_pc, _anchor);
 				set_LOG_litobd_pc;
 
-				if(!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)){
+				if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)) {
 					// na ostatné hodiny sa berie doplnková psalmódia (realizované aj v _set_zalmy_velky_piatok()...)
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_velky_piatok(modlitba);
@@ -8763,7 +8769,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			// možnosť použiť prvé alebo druhé nedeľné kompletórium podľa toho, či používať alternatívy; ináč použité napevno podľa modula dňa
 			_set_kompletorium_slavnost_oktava(modlitba, litobd, (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI) ? isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_KOMPLETORIUM_OKTAVA) : (_global_den.den MOD 2)) + 1);
 
-			if (_global_jazyk == JAZYK_CZ){
+			if (_global_jazyk == JAZYK_CZ) {
 				set_hymnus_kompletorium_obd((_global_den.den MOD 2) == 0 ? DEN_SOBOTA : DEN_NEDELA, tyzzal, modlitba, litobd); // den nastavený na DEN_NEDELA; kvôli JAZYK_CZ -- v oktáve sa berie nedeľný hymnus
 			}
 
@@ -8792,19 +8798,19 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_set_zalmy_velkonocna_nedela(modlitba);
 
 			// a veci pre prve vespery
-			if(den == DEN_NEDELA){ // v skutočnosti platí aj: (_global_den.denvr == DRUHA_VELKONOCNA_NEDELA)
+			if (den == DEN_NEDELA) { // v skutočnosti platí aj: (_global_den.denvr == DRUHA_VELKONOCNA_NEDELA)
 				// kompletórium po prvých vešperách
 				modlitba = MODL_PRVE_KOMPLETORIUM;
 				set_hymnus_kompletorium_obd(den, tyzzal, modlitba, litobd);
 				set_kresponz_kompletorium_obd(den, modlitba, litobd);
 				set_antifony_kompletorium_obd(den, modlitba, litobd, zvazok_breviara[litobd]);
-				
+
 				// prvé vešpery
 				modlitba = MODL_PRVE_VESPERY;
 				_vnokt_magnifikat;
 				_vnokt_modlitba;
 				_set_zalmy_velkonocna_nedela(modlitba);
-			
+
 				// posvätné čítanie -- predĺžené slávenie vigílie
 				modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
@@ -8843,7 +8849,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_velk1_kcitanie;
 			_velk1_prosby;
 			// a veci pre prve vespery
-			if(den == DEN_NEDELA){
+			if (den == DEN_NEDELA) {
 				modlitba = MODL_PRVE_VESPERY;
 				_velk1_kcitanie;
 				_velk1_prosby;
@@ -8891,7 +8897,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_vtroj_kresponz;
 
 			// prvé vešpery
-			if(den == DEN_NEDELA){
+			if (den == DEN_NEDELA) {
 				modlitba = MODL_PRVE_VESPERY;
 				_vtroj_hymnus;
 				_vtroj_antifony;
@@ -9461,7 +9467,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// predĺžené slávenie vigílií
 		_spolocna_cast_set_vig_ant_sm_sz();
 		_set_chvalospev_vig_sc_sm_sz(modlitba);
-		_spolocna_cast_set_vig_ev(_anchor_head);
+		_spolocna_cast_set_vig_ev_sm_sz();
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;

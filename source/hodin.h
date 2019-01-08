@@ -5249,8 +5249,8 @@ const char *text_JAN_22_OFM_HU[POCET_JAZYKOV + 1] =
 };
 const char *text_JAN_22_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Laury Vicuňovej, panny a mučenice",
-	"Bl. Laury Vicuňi, panny a mučednice",
+	"Bl. Laury Vicuňovej, dievčaťa",
+	"Bl. Laury Vicuňi, panny",
 	"",
 	"",
 	"",
