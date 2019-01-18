@@ -3894,7 +3894,7 @@ const char *html_text_opt_5_OCR34Hymns_ordinary[POCET_JAZYKOV + 1] =
 	"hymnos de psalterio",
 	"",
 	"hymny ze žaltáře",
-	"himuszok az zsoltáros",
+	"a zsoltáros rész himnusza",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3908,7 +3908,7 @@ const char *html_text_opt_5_OCR34Hymns[POCET_JAZYKOV + 1] =
 	"hymnos pro Hebdomada XXXIV per annum",
 	"",
 	"hymny pro 34. týden mezidobí",
-	"himuszok az évközi idő, 34. hét",
+	"az évközi idő 34. hetében vehető himnusz",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
