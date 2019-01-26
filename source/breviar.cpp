@@ -18322,6 +18322,14 @@ void normalize_calendar_for_language() {
 	// check whether desired calendar is possible for selected language
 	_main_LOG_to_Export("kontrola kalendár (%s | %s) vs. jazyk (%s | %s)...\n", nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar], nazov_jazyka(_global_jazyk), skratka_jazyka[_global_jazyk]);
 	
+#ifdef DEBUG
+	// this special change is just for debugging reasons (for Czech language, behave as if CZ OP would be another calendar though it is not listed among supported_calendars[] for JAZYK_CZ
+	if (_global_jazyk == JAZYK_CZ && _global_kalendar == KALENDAR_CZ_OP) {
+		Log("normalize_calendar_for_language(): special case for CZ language and CZOP calendar...\n");
+		_global_jazyk = JAZYK_CZ_OP;
+	}
+#endif
+
 	short int c = 0;
 	
 	for (c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
