@@ -1210,6 +1210,7 @@ void file_name_litobd_pc(short int litobd) {
 	sprintf(_file_pc, "%s", nazov_obd_htm_pc[litobd]);
 }
 
+// note: use function file_name_vlastny_kalendar() carefully [not in mixed cases: when only language is queried and another language with calendar is queried] because it will destroy celebrations from national calendar when propria are chosen
 void file_name_vlastny_kalendar(short int kalendar) {
 	// do not use for JAZYK_CZ_OP even if called; do not use for general calendars even if called
 	if ((_global_jazyk != JAZYK_CZ_OP) && (_global_kalendar != default_kalendar[_global_jazyk])) {
