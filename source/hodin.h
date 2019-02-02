@@ -372,7 +372,7 @@ const char *nazov_Obdobia_aka_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 	{ "Vianočná", "vánoční", "", "post Nativitatem", "", "vánoční", "karácsony", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "Cezročná", "v mezidobí", "", "per annum", "", "během roku", "évközi", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "Pôstna", "postní", "", "Quadragesimæ", "", "postní", "nagyböjt", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vo Veľkom týždni", "ve svatém týdnu", "", "in Hebdomada sancta", "", "ve svatém týdnu", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sas
+	{ "Vo Veľkom týždni", "ve Svatém týdnu", "", "in Hebdomada sancta", "", "ve Svatém týdnu", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sas
 	{ "Vo Veľkonočnom Trojdní", "ve velikonočním triduu", "", "in Triduo Paschali", "", "ve velikonočním triduu", "hu_", "ru_text", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
 	{ "Vo Veľkonočnej oktáve", "ve velikonočním oktávu", "", "infra octavam Paschalis", "", "v oktávu velikonočním", "húsvét nyolcacadában", "ru_text", "у актаве пасхі", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
 	{ "Veľkonočná", "velikonoční", "", "Paschæ", "", "velikonoční", "húsvét", "ru_text", "велікодная", /* STRING_1_FOR_NEW_LANGUAGE */ },
@@ -1750,11 +1750,11 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 },
 {
 	"Zoslanie" HTML_LINE_BREAK "Ducha" HTML_LINE_BREAK "Svätého",
-	"Seslání" HTML_LINE_BREAK "Ducha" HTML_LINE_BREAK "svatého", 
+	"Seslání" HTML_LINE_BREAK "Ducha" HTML_LINE_BREAK "Svatého", 
 	"...",
 	"...",
 	"",
-	"Seslání" HTML_LINE_BREAK "Ducha" HTML_LINE_BREAK "svatého",
+	"Seslání" HTML_LINE_BREAK "Ducha" HTML_LINE_BREAK "Svatého",
 	"Pünkösd",
 	"ru_text",
 	"by_text",
@@ -3777,11 +3777,11 @@ const char *html_text_opt_5_VespHymnusVNferia[POCET_JAZYKOV + 1] =
 const char *html_text_opt_5_MCDPredHymnus1[POCET_JAZYKOV + 1] = 
 {
 	"hymnus Príď, Duchu Svätý",
-	"hymnus K nám, Duchu svatý, nyní spěj",
+	"hymnus K nám, Duchu Svatý, nyní spěj",
 	"hymn 1",
 	"hymnus Nunc, Sancte, nobis, Spíritus",
 	"",
-	"hymnus K nám, Duchu svatý, nyní spěj",
+	"hymnus K nám, Duchu Svatý, nyní spěj",
 	"Most jöjj, Szentlélek, szállj közénk",
 	"ru_text",
 	"гімн 1",
@@ -4567,11 +4567,11 @@ const char *html_text_batch_Back[POCET_JAZYKOV + 1] = { "hore", "nahoru", "up", 
 const char *text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1] =
 {
 	"Skrze nášho Pána Ježiša Krista, tvojho Syna, ktorý je Boh a_s_tebou žije a_kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.",
-	"Skrze tvého Syna Ježíše Krista, našeho Pána, neboť on s_tebou v_jednotě Ducha svatého žije a_kraluje po všechny věky věků.",
+	"Skrze tvého Syna Ježíše Krista, našeho Pána, neboť on s_tebou v_jednotě Ducha Svatého žije a_kraluje po všechny věky věků.",
 	"",
 	"Per D&#243;minum nostrum Iesum Christum, F&#237;lium tuum, qui tecum vivit et regnat in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula sæcul&#243;rum.",
 	"",
-	"Skrze tvého Syna Ježíše Krista, našeho Pána, neboť on s tebou v jednotě Ducha svatého žije a kraluje po všechny věky věků.",
+	"Skrze tvého Syna Ježíše Krista, našeho Pána, neboť on s tebou v jednotě Ducha Svatého žije a kraluje po všechny věky věků.",
 	"A mi Urunk, Jézus Krisztus, a te Fiad által, aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
@@ -4595,11 +4595,11 @@ const char *text_ZAKONCENIE_SKRZE_kratke[POCET_JAZYKOV + 1] =
 const char *text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1] =
 {
 	"Lebo on je Boh a_s_tebou žije a_kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.",
-	"Neboť on s_tebou v_jednotě Ducha svatého žije a_kraluje po všechny věky věků.",
+	"Neboť on s_tebou v_jednotě Ducha Svatého žije a_kraluje po všechny věky věků.",
 	"",
 	"Qui tecum vivit et regnat in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula sæcul&#243;rum.",
 	"",
-	"Neboť on s tebou v jednotě Ducha svatého žije a kraluje po všechny věky věků.",
+	"Neboť on s tebou v jednotě Ducha Svatého žije a kraluje po všechny věky věků.",
 	"Aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
@@ -4623,11 +4623,11 @@ const char *text_ZAKONCENIE_LEBO_ON_kratke[POCET_JAZYKOV + 1] =
 const char *text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1] =
 {
 	"Lebo ty si Boh a_žiješ a_kraľuješ s Bohom Otcom v_jednote s_Duchom Svätým po všetky veky vekov.",
-	"Neboť ty žiješ a_kraluješ s_Bohem Otcem v_jednotě Ducha svatého po všechny věky věků.",
+	"Neboť ty žiješ a_kraluješ s_Bohem Otcem v_jednotě Ducha Svatého po všechny věky věků.",
 	"",
 	"Qui vivis et regnas cum Deo Patre in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula sæculórum.",
 	"",
-	"Neboť ty žiješ a kraluješ s Bohem Otcem v jednotě Ducha svatého po všechny věky věků.",
+	"Neboť ty žiješ a kraluješ s Bohem Otcem v jednotě Ducha Svatého po všechny věky věků.",
 	"Aki élsz és uralkodol az Atyaistennel és a Szentlélek­kel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
@@ -8172,11 +8172,11 @@ const char *text_NARODENIE_PANA[POCET_JAZYKOV + 1] =
 const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1] =
 {
 	"Zoslanie Ducha Svätého",
-	"Seslání Ducha svatého",
+	"Seslání Ducha Svatého",
 	"",
 	"Dominica Pentecostes",
 	"",
-	"Seslání Ducha svatého",
+	"Seslání Ducha Svatého",
 	"Pünkösd",
 	"ru_text",
 	"Нядзеля Спаслання Святога Духа",
