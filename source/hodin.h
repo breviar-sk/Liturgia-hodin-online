@@ -7862,6 +7862,19 @@ const char *text_MAJ_28_OFM[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_MAJ_29[POCET_JAZYKOV + 1] =
+{
+	"Sv. Pavla VI., pápeža",
+	"Sv. Pavla VI., papeže",
+	"",
+	"",
+	"",
+	"Sv. Pavla VI., papeže",
+	"Szent VI. Pál pápa",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_MAJ_29_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Viliama Arnauda, kňaza, a spoločníkov, mučeníkov",
