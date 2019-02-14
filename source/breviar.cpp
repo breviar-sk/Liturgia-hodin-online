@@ -6110,8 +6110,8 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						mystrcpy(_global_den.meno, text_NAJSV_SRDCA_JEZISOVHO[_global_jazyk], MENO_SVIATKU);
 						mystrcpy(_global_den.lc_str_id, "10V5", MAX_LC_STR_ID);
 					}
-					else if ((_global_den.denvr == KRISTA_KNAZA) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) {
-						// KRISTA_KNAZA (ZOSLANIE_DUCHA_SV + 4)
+					else if (_global_den.denvr == KRISTA_KNAZA) {
+						// KRISTA_KNAZA (ZOSLANIE_DUCHA_SV + 4) = Thursday after Lent
 						_global_den.farba = LIT_FARBA_BIELA;
 						_rozbor_dna_LOG("/* Krista kňaza */\n");
 						_set_slavenie_typslav_smer(0, SLAV_SVIATOK, 5); // sviatky Pána uvedené vo všeobecnom kalendári

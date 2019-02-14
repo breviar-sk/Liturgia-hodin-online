@@ -233,6 +233,7 @@ extern void _set_chvalospev_vig_vian(short int modlitba);
 extern void _set_chvalospev_vig_ocr(short int modlitba);
 extern void _set_chvalospev_vig_tk(short int modlitba);
 extern void _set_chvalospev_vig_srdca(short int modlitba);
+extern void _set_chvalospev_vig_knaza(short int modlitba);
 extern void _set_chvalospev_vig_vsetkych_svatych(short int modlitba);
 extern void _set_chvalospev_vig_krkrala(short int modlitba);
 extern void _set_chvalospev_vig_post(short int modlitba);

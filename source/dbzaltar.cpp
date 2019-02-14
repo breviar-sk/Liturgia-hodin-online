@@ -1130,6 +1130,12 @@ void _set_chvalospev_vig_srdca(short int modlitba) {
 	_set_chvalospev3(modlitba, "ch_1sam2.htm", "CHVAL_1SAM2VG2");
 } // _set_chvalospev_vig_srdca()
 
+void _set_chvalospev_vig_knaza(short int modlitba) {
+	_set_chvalospev1(modlitba, "ch_iz61.htm", "CHVAL_IZ61VG0"); // sc_ap
+	_set_chvalospev2(modlitba, "ch_ez36.htm", "CHVAL_EZ36VG"); // post
+	_set_chvalospev3(modlitba, "ch_mud16.htm", "CHVAL_MUD16VG"); // tk
+} // _set_chvalospev_vig_srdca()
+
 void _set_chvalospev_vig_vsetkych_svatych(short int modlitba) {
 	_set_chvalospev1(modlitba, "ch_tob13.htm", "CHVAL_TOB13,2-8VG");
 	_set_chvalospev2(modlitba, "ch_tob13.htm", "CHVAL_TOB13,9-11VG");
@@ -7212,7 +7218,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 				}// srdca
-				else if ((_global_den.denvr == KRISTA_KNAZA) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))){
+				else if (_global_den.denvr == KRISTA_KNAZA) {
 					// Nášho Pána Ježiša Krista, najvyššieho a večného kňaza
 					mystrcpy(_file, FILE_KNAZA, MAX_STR_AF_FILE);
 					mystrcpy(_anchor, ANCHOR_KNAZA, MAX_STR_AF_ANCHOR);
@@ -7251,6 +7257,11 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+					// posvätné čítanie -- predĺžené slávenie vigílie
+					modlitba = MODL_POSV_CITANIE;
+					_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
+					_set_chvalospev_vig_knaza(modlitba);
+					_vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
 
 					modlitba = MODL_PREDPOLUDNIM;
 					// psalmódia zo všedného dňa okrem antifón
