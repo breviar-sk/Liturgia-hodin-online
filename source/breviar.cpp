@@ -1612,6 +1612,7 @@ void export_div_to_continue_tts_voice_output(short int export_comment_begin = AN
 short int antifona_pocet = 0; // počet antifón (ant1, ant2, ant3 pre psalmódiu a ant. na benediktus/magnifikat kvôli krížikom)
 char rest_krizik[MAX_BUFFER] = STR_EMPTY; // pre to, čo je za krížikom v antifóne
 char rest_zakoncenie[MAX_BUFFER] = STR_EMPTY;
+short int ant_invitat_krizik = 0; // antifóna pre invitatórium s krížikom
 
 void includeFile(short int type, const char *paramname, const char *fname, const char *modlparam) {
 	int c, buff_index = 0, fnref_index = 0, fn_index = 0, ref_index = 0, kat_index = 0, z95_index = 0;
@@ -1692,6 +1693,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	mystrcpy(katrest, STR_EMPTY, MAX_BUFFER);
 	mystrcpy(z95buff, STR_EMPTY, MAX_BUFFER);
 	mystrcpy(z95rest, STR_EMPTY, MAX_BUFFER);
+
+	ant_invitat_krizik = 0;
 
 	FILE *body = fopen(fname, "r");
 
@@ -1805,6 +1808,11 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						}
 						// Export("antifóna[%d] -> zapamätám, ku ktorému žalmu/chválospevu patrí...\n", antifona_pocet);
 					}// krížik v antifóne
+
+					// ToDo odlíšiť, že ide o invitatórium
+					if (equals(paramname, PARAM_ANTIFONA1)) {
+						ant_invitat_krizik = 1;
+					}
 
 #if defined(EXPORT_HTML_SPECIALS)
 					Export("[%s:%s|rest_krizik=%s]", strbuff, modlparam, (rest_krizik == NULL) ? STR_EMPTY : rest_krizik);
@@ -3069,14 +3077,27 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 
 	else if (equals(paramname, PARAM_KRIZIK)) {
 		if (_global_skip_in_prayer == NIE) {
-			if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
-				DetailLog("exporting end of DIV for hiding part because of voice output...\n");
-				// continue exporting text for TTS (voice output)
-				export_div_to_continue_tts_voice_output(NIE);
-			}
-			else {
-				DetailLog("exporting red cross with nbsp after...\n");
-				Export("<" HTML_SPAN_RED ">%s" HTML_SPAN_END "" HTML_NONBREAKING_SPACE, PARAM_RED_CROSS);
+			// only when antiphone contained red cross
+			if (ant_invitat_krizik > 0) {
+				if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+
+					Export(HTML_COMMENT_END);
+
+					DetailLog("exporting end of DIV for hiding part because of voice output...\n");
+					// continue exporting text for TTS (voice output)
+					export_div_to_continue_tts_voice_output(NIE);
+
+					Export(HTML_COMMENT_BEGIN);
+				}
+				else {
+					DetailLog("exporting red cross with nbsp after...\n");
+
+					Export(HTML_COMMENT_END);
+					Export(HTML_NONBREAKING_SPACE); // pre krížik na začiatku žalmu/chválospevu medzeru netreba
+					Export("<" HTML_SPAN_RED ">" STR_CROSS "" HTML_SPAN_END);
+					Export(HTML_NONBREAKING_SPACE); // pre krížik na konci chválospevu medzeru netreba
+					Export(HTML_COMMENT_BEGIN);
+				}
 			}
 		}
 	}// zobraziť/nezobraziť krížik: should be used in invitatory prayer, Psalm 95, only
@@ -5130,7 +5151,8 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 	_global_pocet_slava_otcu = 0; // pre každý súbor templátu individuálne počítame sláva otcu; 2007-05-18
 	_global_pocet_navigacia = 0; // podobne aj počet parametrov navigácie; 2011-07-03 | 2012-04-19: avšak treba aj počítať počty volania interpretTemplate()
 	_global_pocet_volani_interpretTemplate++;
-	antifona_pocet = 0; // 2011-07-08: počet antifón (ant1, ant2, ant3 pre psalmódiu a ant. na benediktus/magnifikat kvôli krížikom)
+	antifona_pocet = 0; // počet antifón (ant1, ant2, ant3 pre psalmódiu a ant. na benediktus/magnifikat kvôli krížikom)
+	ant_invitat_krizik = 0; // antifóna pre invitatórium s krížikom
 	mystrcpy(rest_krizik, STR_EMPTY, MAX_BUFFER); // 2011-07-08: pre to, čo je za krížikom v antifóne
 
 	FILE *ftemplate = fopen(tempfile, "rb");
