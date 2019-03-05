@@ -12504,14 +12504,14 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 		analyzuj_rok(_local_rok); // výsledok dá do _global_r
 		LOG_ciara;
 
-		Log("spustam analyzu nasledujuceho dna (%d. %s %d), poradie_svaty == %d...\n", datum.den, nazov_mesiaca(datum.mesiac - 1), _local_rok, svaty_dalsi_den);
+		Log("rozbor_dna_s_modlitbou(): spúšťam analýzu nasledujúceho dňa (%d. %s %d), poradie_svaty == %d...\n", datum.den, nazov_mesiaca(datum.mesiac - 1), _local_rok, svaty_dalsi_den);
 		ret = _rozbor_dna_s_modlitbou(datum, _local_rok, modlitba, svaty_dalsi_den);
 		if (ret == FAILURE) {
 			Log("_rozbor_dna_s_modlitbou() pre nasledujuci den returned FAILURE, so...\n");
 			Log("-- rozbor_dna_s_modlitbou(int, int, int, int): uncomplete end\n");
 			goto LABEL_s_modlitbou_DEALLOCATE;
 		}// ret == FAILURE
-		Log("analyza nasledujuceho dna (%d. %s %d) skoncila.\n", datum.den, nazov_mesiaca(datum.mesiac - 1), rok);
+		Log("rozbor_dna_s_modlitbou(): analýza nasledujúceho dňa (%d. %s %d) skončila.\n", datum.den, nazov_mesiaca(datum.mesiac - 1), rok);
 
 		_local_den = _global_den;
 		_local_spol_cast = _global_den.spolcast;

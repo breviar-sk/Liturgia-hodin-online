@@ -4681,6 +4681,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_set_kompletorium_nedela(MODL_PRVE_KOMPLETORIUM);
 			_set_kompletorium_nedela(MODL_KOMPLETORIUM);
 		}
+
 		if ((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI)) {
 			Log("keďže nejde o modlitbu cez deň, preskakujeme nastavenia (všetky boli nastavené z vlastnej časti): (return)...\n");
 
@@ -4715,22 +4716,27 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR: ELSE | NEjde o: premenenie pána || obetovanie pána || petra a pavla || povýšenie sv. kríža || všetkých svätých || nanebovzatia PM...\n");
 	}
 
-	Log("teraz spustíme zaltar_zvazok(); - pôvodne sa púšťala s dvoma parametrami, pridaný parameter pre zväzok breviára (voláme s hodnotou ZALTAR_VSETKO)\n");
-	zaltar_zvazok(den, tyzzal, _global_den.litobd, ZALTAR_VSETKO);
+	if (skip_big_switch == NIE) {
+		// this also must not be run for PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR; prayers other than during the day (see above); before # 6dbb2650 was returned (exited) above
+		Log("teraz spustíme zaltar_zvazok(); - pôvodne sa púšťala s dvoma parametrami, pridaný parameter pre zväzok breviára (voláme s hodnotou ZALTAR_VSETKO)\n");
+		zaltar_zvazok(den, tyzzal, _global_den.litobd, ZALTAR_VSETKO);
 
-	Log("následne odlišný súbor pre posvätné čítania...\n");
-	file_name_litobd(litobd);
-	Log("  _file == %s\n", _file);
+		Log("následne odlišný súbor pre posvätné čítania...\n");
+		file_name_litobd(litobd);
+		Log("  _file == %s\n", _file);
 
-	// Log(_global_modl_posv_citanie);
+		// Log(_global_modl_posv_citanie);
 
-	file_name_litobd_pc(litobd);
-	Log("  _file_pc == %s\n", _file_pc);
+		file_name_litobd_pc(litobd);
+		Log("  _file_pc == %s\n", _file_pc);
 
-	mystrcpy(_file_pc_tyzden, STR_EMPTY, MAX_STR_AF_FILE);
-	Log("  _file_pc_tyzden bude nastavene na prislusnom mieste (teraz == `%s').\n", _file_pc_tyzden);
+		mystrcpy(_file_pc_tyzden, STR_EMPTY, MAX_STR_AF_FILE);
+		Log("  _file_pc_tyzden bude nastavene na prislusnom mieste (teraz == `%s').\n", _file_pc_tyzden);
+	}
 
 	char c; // používa sa vo výnimočných prípadoch: napr. druha velkonocna nedela
+
+	Log("skip_big_switch == `%d'...\n", skip_big_switch);
 
 	if (skip_big_switch == NIE) {
 	

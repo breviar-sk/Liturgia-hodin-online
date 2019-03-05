@@ -13219,6 +13219,19 @@ const char *text_OKT_30_SJ[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char *text_OKT_30_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Terézie od sv. Jozefa, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_OKT_30_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Benvenuty Boianiovej, panny",

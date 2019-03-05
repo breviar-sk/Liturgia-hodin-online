@@ -2260,6 +2260,7 @@ extern const char *text_SEP_12_OCD[POCET_JAZYKOV + 1];
 extern const char *text_SEP_17_OCD[POCET_JAZYKOV + 1];
 extern const char *text_OKT_01_OCD[POCET_JAZYKOV + 1];
 extern const char *text_OKT_15_OCD[POCET_JAZYKOV + 1];
+extern const char *text_OKT_30_OCD[POCET_JAZYKOV + 1];
 extern const char *text_NOV_06_OCD[POCET_JAZYKOV + 1];
 extern const char *text_NOV_07_OCD[POCET_JAZYKOV + 1];
 extern const char *text_NOV_08_OCD[POCET_JAZYKOV + 1];
