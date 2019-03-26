@@ -441,6 +441,7 @@ public class Breviar extends AppCompatActivity
           }
 
           // Ugly hack. But we have no reliable notification when is webview scrollable.
+          Log.v("breviar", "onPageFinished: scroll_to = " + parent.scroll_to);
           if (parent.scroll_to < 0) return;
           final WebView wv = view;
           view.postDelayed(new Runnable() {
@@ -479,7 +480,10 @@ public class Breviar extends AppCompatActivity
             goHome();
           } else {
             url = url.replaceFirst("http://[^/]*/", "http://127.0.0.1:" + S.port + "/");
-            Log.v("breviar", "onCreate: loading url: " + url);
+            scroll_to = savedInstanceState.getFloat("wv-scroll-to", -1);
+            need_to_reload_preferences = false;
+            url = updatePreferencesInUrl(url);
+            Log.v("breviar", "onCreate: loading url: " + url + ", scroll_to = " + scroll_to);
             wv.loadUrl(url);
           }
         }
@@ -563,6 +567,15 @@ public class Breviar extends AppCompatActivity
       recreate();
     }
 
+    synchronized String updatePreferencesInUrl(String url) {
+      UrlOptions opts = new UrlOptions(url, true);
+      opts.override(new UrlOptions(BreviarApp.getUrlOptions(
+            getApplicationContext()).replaceAll("&amp;", "&")));
+      S.setOpts(opts.build(true));
+      S.setBackgroundOverride(BreviarApp.getBackgroundOverride(this));
+      return opts.build();
+    }
+
     boolean resumed = false;
     // After resume we need to update menu after the page is reloaded.
     boolean need_to_update_menu = false;
@@ -571,15 +584,10 @@ public class Breviar extends AppCompatActivity
       String url = wv.getUrl();
       if (url != null && need_to_reload_preferences) {
         need_to_reload_preferences = false;
-        scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
-
-        UrlOptions opts = new UrlOptions(url, true);
-        opts.override(new UrlOptions(BreviarApp.getUrlOptions(
-              getApplicationContext()).replaceAll("&amp;", "&")));
-        S.setOpts(opts.build(true));
-        S.setBackgroundOverride(BreviarApp.getBackgroundOverride(this));
-
-        String new_url = opts.build();
+        if (scroll_to < 0) {
+          scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
+        }
+        String new_url = updatePreferencesInUrl(url);
         Log.v("breviar", "Reloading preferences; new url = " + new_url);
         need_to_update_menu = true;
         wv.loadUrl(new_url);
@@ -654,10 +662,12 @@ public class Breviar extends AppCompatActivity
         syncScale();
         //wv.saveState(outState);
         String url = wv.getUrl();
+        float current_scroll = wv.getScrollY() / (float)wv.getContentHeight();
         if (url != null) {
           outState.putString("wv-url", url);
+          outState.putFloat("wv-scroll-to", current_scroll);
         }
-        Log.v("breviar", "onSaveInstanceState: saved url: " + url);
+        Log.v("breviar", "onSaveInstanceState: saved url: " + url + ", scroll = " + current_scroll);
         syncPreferences();
       }
       super.onSaveInstanceState(outState);

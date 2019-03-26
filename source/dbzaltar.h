@@ -1202,7 +1202,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 /* ---------------------------------------------------------------------------------------------------- */
 
-// krátke čítanie
+// krátke čítanie, krátke responzórium, príp. responzórium a 1. čítanie pre modlitbu posv. čítania
 #define _vlastna_cast_kcitanie_ve {\
 	sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE, VELKONOCNA_PRIPONA);\
 	_set_kcitanie(modlitba, _file, _anchor);\
@@ -1247,6 +1247,22 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	}\
 }
 
+#define _vlastna_cast_1citanie_ve {\
+	sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE1, VELKONOCNA_PRIPONA);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
+	set_LOG_svsv;\
+}
+
+#define _vlastna_cast_1citanie_ve_obd {\
+	if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {\
+		_vlastna_cast_1citanie_ve;\
+	}\
+	else {\
+		_vlastna_cast_1citanie;\
+	}\
+}
+
+// vlastná časť -- modlitba cez deň
 #define _vlastna_cast_mcd_ant_kcitresp_modl {\
 	modlitba = MODL_PREDPOLUDNIM;\
 	_vlastna_cast_antifony_rovnake;\

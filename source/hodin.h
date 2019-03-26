@@ -8440,7 +8440,7 @@ const char *text_JUN_08_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_JUN_08_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Istvána Sándora, mučeníka",
+	"Bl. Štefana Šándora, rehoľníka, mučeníka",
 	"Bl. Štěpána Šándora, mučedníka",
 	"",
 	"",
@@ -9301,7 +9301,7 @@ const char *text_JUL_06[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_07_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Márie Romerovej Menesesovej, panny",
+	"Bl. Márie Romerovej-Menesesovej, panny",
 	"Bl. Marie Romero Menesesové, panny",
 	"",
 	"",
@@ -9769,7 +9769,7 @@ const char *text_JUL_20[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_20_OCD[POCET_JAZYKOV + 1] =
 {
-	"Sv. Eliáša, proroka a nášho otca",
+	"Sv. Eliáša, proroka a nášho Otca",
 	"",
 	"",
 	"",
@@ -11050,7 +11050,7 @@ const char *text_AUG_26_BY[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_26_OCD[POCET_JAZYKOV + 1] =
 {
-	"Spomienka prebodnutia srdca sv. Terézie od Ježiša, našej matky",
+	"Spomienka prebodnutia srdca sv. Terézie od Ježiša, našej Matky",
 	"",
 	"",
 	"",
@@ -12694,7 +12694,7 @@ const char *text_OKT_15[POCET_JAZYKOV + 1] =
 };
 const char *text_OKT_15_OCD[POCET_JAZYKOV + 1] =
 {
-	"Sv. Terézie od Ježiša, " HTML_LINE_BREAK "panny a učiteľky Cirkvi, našej matky",
+	"Sv. Terézie od Ježiša, " HTML_LINE_BREAK "panny a učiteľky Cirkvi, našej Matky",
 	"",
 	"",
 	"",
@@ -14572,7 +14572,7 @@ const char *text_DEC_14[POCET_JAZYKOV + 1] =
 };
 const char *text_DEC_14_OCD[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána od Kríža, " HTML_LINE_BREAK "kňaza a učiteľa Cirkvi, nášho otca",
+	"Sv. Jána od Kríža, " HTML_LINE_BREAK "kňaza a učiteľa Cirkvi, nášho Otca",
 	"",
 	"",
 	"",
