@@ -1111,6 +1111,30 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_litobd_pc; \
 }
 
+#define _spolocna_cast_set_vig_ev_jm_vm() { \
+	sprintf(_anchor, "%s_%c%s", ANCHOR_SPOL_CAST_JEDEN_MUCENIK, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_MUCENIK], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _spolocna_cast_set_vig_ev_dp() { \
+	sprintf(_anchor, "%s_%c%s", ANCHOR_SPOL_CAST_DUCH_PAST, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_DUCH_PAST_KNAZ], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _spolocna_cast_set_vig_ev_pm() { \
+	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_PANNA_MARIA], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_PANNA_MARIA], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _spolocna_cast_set_vig_ev_uc() { \
+	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_UCITEL_CIRKVI], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_UCITEL_CIRKVI], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
 // _anchor_head pre spoločné časti obsahuje už aj underscore; spoločné časti používajú súbor _file (nie _file_pc)
 #define _spolocna_cast_set_vig_ant(vlastny_anchor) { \
 	sprintf(_anchor, "%s%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \

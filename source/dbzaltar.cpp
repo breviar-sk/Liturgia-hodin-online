@@ -6051,7 +6051,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
 				_set_chvalospev_vig_vian(modlitba);
-				_vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
+				_spolocna_cast_set_vig_ev_pm(); // čítanie z omšového lekcionára na sviatky Panny Márie; netreba _vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
 
 				// doplnené modlitby cez deň
 				modlitba = MODL_PREDPOLUDNIM;
@@ -6547,7 +6547,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
 				_set_chvalospev_vig_vian(modlitba);
-				_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, ((tyzden MOD 8) == 0) ? 8 : (tyzden MOD 8)); // ako 1. cezročná nedeľa
+				if (_global_jazyk == JAZYK_CZ) {
+					_liturgicke_obdobie_set_vig_ev(modlitba);
+				}
+				else {
+					_liturgicke_obdobie_set_vig_ev_tyzden(modlitba, ((tyzden MOD 8) == 0) ? 8 : (tyzden MOD 8)); // ako 1. cezročná nedeľa; zatiaľ nie je možnosť evanjelia, ktoré sa nečítalo v omši
+				}
 
 				modlitba = MODL_PREDPOLUDNIM;
 				_set_zalmy_sviatok_krstu(modlitba);
@@ -9485,7 +9490,12 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// predĺžené slávenie vigílií
 		_spolocna_cast_set_vig_ant_sm_sz();
 		_set_chvalospev_vig_sc_sm_sz(modlitba);
-		_spolocna_cast_set_vig_ev_sm_sz();
+		if (_global_jazyk == JAZYK_CZ) {
+			_spolocna_cast_set_vig_ev_dp();
+		}
+		else {
+			_spolocna_cast_set_vig_ev_sm_sz();
+		}
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -9568,6 +9578,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
 		_spolocna_cast_2citanie;
 		_spolocna_cast_modlitba;
+
+		// predĺžené slávenie vigílií
+		if (_global_jazyk == JAZYK_CZ) {
+			_spolocna_cast_set_vig_ev_uc();
+		}
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -9756,7 +9771,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// predĺžené slávenie vigílií
 		_spolocna_cast_set_vig_ant(_anchor_head);
 		_set_chvalospev_vig_sc_vm(modlitba);
-		_spolocna_cast_set_vig_ev(_anchor_head);
+		_spolocna_cast_set_vig_ev_jm_vm(); // rovnaké ako pre jedného mučeníka; netreba _spolocna_cast_set_vig_ev(_anchor_head);
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
@@ -10158,7 +10173,12 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		// predĺžené slávenie vigílií
 		_spolocna_cast_set_vig_ant(_anchor_head);
 		_set_chvalospev_vig_sc_sm_sz(modlitba);
-		_spolocna_cast_set_vig_ev(_anchor_head);
+		if (_global_jazyk == JAZYK_CZ) {
+			_spolocna_cast_set_vig_ev_sm_sz();
+		}
+		else {
+			_spolocna_cast_set_vig_ev(_anchor_head);
+		}
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
