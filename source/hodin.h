@@ -12522,7 +12522,7 @@ const char *text_OKT_11_OFM[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_OKT_11_SK[POCET_JAZYKOV + 1] =
+const char *text_OKT_10_SK[POCET_JAZYKOV + 1] =
 {
 	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "Najsvätejšej Trojice",
 	"",

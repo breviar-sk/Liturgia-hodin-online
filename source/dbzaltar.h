@@ -1811,7 +1811,7 @@ extern const char *text_OKT_08_HU[POCET_JAZYKOV + 1];
 extern const char *text_OKT_09_1[POCET_JAZYKOV + 1];
 extern const char *text_OKT_09_2[POCET_JAZYKOV + 1];
 extern const char *text_OKT_11[POCET_JAZYKOV + 1];
-extern const char *text_OKT_11_SK[POCET_JAZYKOV + 1];
+extern const char *text_OKT_10_SK[POCET_JAZYKOV + 1];
 extern const char *text_OKT_12_CZ[POCET_JAZYKOV + 1];
 extern const char *text_OKT_14[POCET_JAZYKOV + 1];
 extern const char *text_OKT_15[POCET_JAZYKOV + 1];
