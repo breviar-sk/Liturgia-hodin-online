@@ -17556,21 +17556,21 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 						set_spolocna_cast(sc, poradie_svaty);
 
 					modlitba = MODL_POSV_CITANIE;
-					if (_global_jazyk == JAZYK_CZ) {
-						_vlastna_cast_2citanie;
-					}
+					_vlastna_cast_2citanie;
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_RANNE_CHVALY;
-					if (_global_jazyk == JAZYK_CZ) {
-						_vlastna_cast_prosby;
+					if (_global_jazyk == JAZYK_SK) {
+						_vlastna_cast_full_okrem_hymnu_antifon_a_prosieb(modlitba);
 					}
+					_vlastna_cast_prosby;
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_VESPERY;
-					if (_global_jazyk == JAZYK_CZ) {
-						_vlastna_cast_prosby;
+					if (_global_jazyk == JAZYK_SK) {
+						_vlastna_cast_full_okrem_hymnu_antifon_a_prosieb(modlitba);
 					}
+					_vlastna_cast_prosby;
 					_vlastna_cast_modlitba;
 
 					break;
@@ -19941,7 +19941,10 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			}// KALENDAR_SK_OCD
 
 			if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))) {
-				if (poradie_svaty == 5) {
+				
+				pom_poradie = (_global_jazyk == JAZYK_CZ) ? 5 : 3;
+
+				if (poradie_svaty == pom_poradie) {
 
 					file_name_vlastny_kalendar(_global_kalendar);
 
@@ -19962,13 +19965,13 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					break;
 				}
 
-				pocet = 5;
+				pocet = pom_poradie;
 
-				_set_slavenie_typslav_smer(5, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-				mystrcpy(_global_svaty5.meno, text_AUG_25_SDB[_global_jazyk], MENO_SVIATKU);
-				_global_svaty5.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL);
-				_global_svaty5.farba = LIT_FARBA_BIELA;
-				_global_svaty5.kalendar = _global_kalendar;
+				_set_slavenie_typslav_smer(pom_poradie, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+				mystrcpy(_global_svaty(pom_poradie).meno, text_AUG_25_SDB[_global_jazyk], MENO_SVIATKU);
+				_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL);
+				_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
+				_global_svaty(pom_poradie).kalendar = _global_kalendar;
 			}// kalendár pre KALENDAR_SK_SDB a KALENDAR_CZ_SDB
 
 		}// všeobecný kalednár a špeciality
@@ -20050,15 +20053,19 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				if (_global_jazyk == JAZYK_CZ) {
-					_vlastna_cast_2citanie;
-				}
+				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				}
 				_vlastna_cast_modlitba;
 
 				break;
