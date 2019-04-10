@@ -7987,13 +7987,15 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
+			// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca | pre český breviář sa totiž berú niektoré časti z 19. marca; podobne aj pre ostatné jazyky v prípade slávnostnejšieho slávenia
+			pom_den = den;
+			pom_mesiac = mesiac;
+
 			modlitba = MODL_INVITATORIUM;
 			_vlastna_cast_antifona_inv;
 
 			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
-				// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca | pre český breviář sa totiž berú niektoré časti z 19. marca 
-				pom_den = den;
-				pom_mesiac = mesiac;
+				// prepnutie na 19MAR
 				den = 19;
 				mesiac = MES_MAR + 1;
 
@@ -8012,6 +8014,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			else {
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_kresponz;
+
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_kresponz;
 			}
@@ -8037,7 +8040,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			}// CZ only
 
 			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
-				// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca pre český breviář sa totiž berú niektoré časti z 19. marca | -- v tejto časti sa hodnoty upravujú späť na pôvodné --
+				// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca | v tejto časti sa hodnoty upravujú späť na pôvodné
 				den = pom_den;
 				mesiac = pom_mesiac + 1; // MES_MAY + 1
 
@@ -8067,6 +8070,60 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_magnifikat;
 			_vlastna_cast_modlitba;
+
+			// pre slávenie s vyšším stupňom nastavíme niektoré časti modlitby z 19MAR
+			if (_je_global_den_slavnost || _je_global_den_sviatok) {
+				// prepnutie na 19MAR
+				den = 19;
+				mesiac = MES_MAR + 1;
+
+				sprintf(_anchor_head, "%02d%s_", den, nazov_MES[mesiac - 1]);
+				Log("  _anchor_head == %s\n", _anchor_head);
+
+				sprintf(_file, "sv_%s.htm", nazov_mes[mesiac - 1]);
+				Log("  _file == %s\n", _file);
+
+				sprintf(_file_pc, "pc_sv_%s.htm", nazov_mes[mesiac - 1]);
+				Log("  _file_pc == %s\n", _file_pc);
+
+				modlitba = MODL_PRVE_VESPERY;
+				_vlastna_cast_full(modlitba); // vlastná modlitba z 01MAJ sa prepíše nakoniec, po návrate hodnôt na 01MAJ
+				_vlastna_cast_kresponz_po_ve;
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_antifony;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_antifony;
+				_vlastna_cast_kresponz;
+				_vlastna_cast_1citanie;
+
+				_vlastna_cast_mcd_ant_kcitresp_modl; // vlastná modlitba z 01MAJ sa prepíše nakoniec, po návrate hodnôt na 01MAJ
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_antifony;
+
+				// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca | v tejto časti sa hodnoty upravujú späť na pôvodné
+				den = pom_den;
+				mesiac = pom_mesiac + 1; // MES_MAY + 1
+
+				sprintf(_anchor_head, "%02d%s_", den, nazov_MES[mesiac - 1]);
+				Log("  _anchor_head == %s\n", _anchor_head);
+
+				sprintf(_file, "sv_%s.htm", nazov_mes[mesiac - 1]);
+				Log("  _file == %s\n", _file);
+
+				_vlastna_cast_mcd_modlitba;
+
+				modlitba = MODL_PRVE_VESPERY;
+				_vlastna_cast_modlitba;
+			}
+
+			if (_je_global_den_slavnost)
+			{
+				modlitba = MODL_PRVE_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+			}
 
 			break;
 		}
