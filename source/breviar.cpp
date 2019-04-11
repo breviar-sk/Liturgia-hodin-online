@@ -1150,7 +1150,7 @@ short int setForm(void) {
 
 	mystrcpy(local_str, STR_EMPTY, SMALL);
 	if (!equals(pom_FONT_SIZE, STR_EMPTY)) {
-		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_STYLE_MARGIN), SMALL);
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_FONT_SIZE), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_FONT_SIZE);
 		LogParams("--- setForm: putenv(%s); ...\n", local_str);
@@ -1160,7 +1160,7 @@ short int setForm(void) {
 
 	mystrcpy(local_str, STR_EMPTY, SMALL);
 	if (!equals(pom_STYLE_MARGIN, STR_EMPTY)) {
-		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_FONT_SIZE), SMALL);
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_STYLE_MARGIN), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_STYLE_MARGIN);
 		LogParams("--- setForm: putenv(%s); ...\n", local_str);
