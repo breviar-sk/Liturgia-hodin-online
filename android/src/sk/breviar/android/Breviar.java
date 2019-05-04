@@ -205,6 +205,15 @@ public class Breviar extends AppCompatActivity
       return true;
     }
 
+    public boolean tryOpenExternal(String url) {
+      try {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+      } catch (android.content.ActivityNotFoundException e) {
+        return false;
+      }
+      return true;
+    }
+
     @Override
     protected void attachBaseContext(Context newBase) {
       super.attachBaseContext(newBase);
@@ -381,6 +390,14 @@ public class Breviar extends AppCompatActivity
               return true;
             } else {
               Log.v("breviar", "link to svpismo:// ignored, cannot open the app");
+              return true;
+            }
+          }
+          if (url.startsWith("https://www.bible.com/")) {
+            if (tryOpenExternal(url)) {
+              return true;
+            } else {
+              Log.v("breviar", "failed to open www.bible.com");
               return true;
             }
           }

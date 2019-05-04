@@ -8927,6 +8927,37 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_vtroj_kresponz;
 			}// nedeľa
 
+			// override hymnov v prípade je_CZ_hymny_k_volnemu_vyberu
+			if ((_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu)) {
+
+				file_name_litobd(OBD_VELKONOCNE_I);
+				mystrcpy(_file_pc, nazov_obd_htm_pc[OBD_VELKONOCNE_I], MAX_STR_AF_FILE);
+					
+				// ranné chvály
+				modlitba = MODL_RANNE_CHVALY;
+				_velk1_hymnus(den, modlitba, OBD_VELKONOCNE_I);
+
+				// vešpery
+				modlitba = MODL_VESPERY;
+				_velk1_hymnus(den, modlitba, OBD_VELKONOCNE_I);
+
+				// modlitba cez deň a posvätné čítania
+				modlitba = MODL_POSV_CITANIE;
+				_velk1_hymnus(den, modlitba, OBD_VELKONOCNE_I);
+				modlitba = MODL_PREDPOLUDNIM;
+				_velk1_hymnus(den, modlitba, OBD_VELKONOCNE_I);
+				modlitba = MODL_NAPOLUDNIE;
+				_velk1_hymnus(den, modlitba, OBD_VELKONOCNE_I);
+				modlitba = MODL_POPOLUDNI;
+				_velk1_hymnus(den, modlitba, OBD_VELKONOCNE_I);
+
+				// prvé vešpery
+				if (den == DEN_NEDELA) {
+					modlitba = MODL_PRVE_VESPERY;
+					_velk1_hymnus(den, modlitba, OBD_VELKONOCNE_I);
+				}// nedeľa
+			}
+
 			break;
 // switch(litobd), case OBD_VELKONOCNA_OKTAVA -- end ------------------------------------------
 

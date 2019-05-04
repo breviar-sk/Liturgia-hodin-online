@@ -22644,15 +22644,19 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				if (_global_jazyk == JAZYK_CZ) {
-					_vlastna_cast_2citanie;
-				}
+				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				}
 				_vlastna_cast_modlitba;
 
 				break;
@@ -23910,13 +23914,21 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				}
 				_vlastna_cast_modlitba;
 
 				break;
@@ -24871,15 +24883,19 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				if (_global_jazyk == JAZYK_CZ) {
-					_vlastna_cast_2citanie;
-				}
+				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				}
 				_vlastna_cast_modlitba;
 
 				break;
@@ -26040,26 +26056,20 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
+				_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				// _vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
+				_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				// _vlastna_cast_modlitba;
 
 				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
 					modlitba = MODL_INVITATORIUM;
 					_vlastna_cast_antifona_inv;
-
-					modlitba = MODL_POSV_CITANIE;
-					_vlastna_cast_2citanie;
-
-					modlitba = MODL_RANNE_CHVALY;
-					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
-
-					modlitba = MODL_VESPERY;
-					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
 				}
 
 				break;
@@ -26524,13 +26534,16 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
+				_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				// _vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
+				_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+				// _vlastna_cast_modlitba;
 
 				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB)) {
 					modlitba = MODL_INVITATORIUM;
@@ -26539,13 +26552,6 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_kresponz;
 					_vlastna_cast_1citanie;
-					_vlastna_cast_2citanie;
-
-					modlitba = MODL_RANNE_CHVALY;
-					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
-
-					modlitba = MODL_VESPERY;
-					_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
 				}
 
 				break;

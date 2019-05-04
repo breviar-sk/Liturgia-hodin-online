@@ -11871,7 +11871,7 @@ const char *text_SEP_22_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_SEP_22_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Jozefa Calasanza a Enrica Saiz Aparicio, kňazov, " HTML_LINE_BREAK "a 93 spoločníkov, mučeníkov",
+	"Bl. Jozefa Calasanza Marquésa a Enrica Sáiza Aparicia, kňazov, " HTML_LINE_BREAK "a 93 spoločníkov, mučeníkov",
 	"Bl. Josefa Calasanze Marquéze " HTML_LINE_BREAK "a Enrika Sáize Aparicia, kněží a druhů, mučedníků",
 	"",
 	"",
