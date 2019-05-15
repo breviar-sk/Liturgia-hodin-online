@@ -60,8 +60,8 @@ LOCK=/tmp/breviar-nightlies.lck
     exit 0
   fi
 
-  cp build/outputs/apk/android-release.apk $ROOT/$DATE/breviar.apk
-  cp build/outputs/apk/android-debug.apk $ROOT/$DATE/breviar-debug.apk
+  cp build/outputs/apk/release/android-release.apk $ROOT/$DATE/breviar.apk
+  cp build/outputs/apk/debug/android-debug.apk $ROOT/$DATE/breviar-debug.apk
   echo "Nightly package is at: breviar.kralovic.org:$ROOT/$DATE/breviar.apk"
   echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar.apk"
   echo "Nightly debug package is at: breviar.kralovic.org:$ROOT/$DATE/breviar-debug.apk"
