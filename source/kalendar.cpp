@@ -9655,17 +9655,32 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))) {
 			// Kongregácia pre Boží kult a disciplínu sviatostí vložila do saleziánskeho vlastného kalendára (ľubovoľnú) spomienku Panny Márie Fatimskej na 15. máj, presunutím z 13. mája. (Rasťo H., 2018-10-22)
 
-			// JUV: TODO: take proper parts from general calendar (not SDB proper texts)!
+			// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca | pre slovenský breviár sa berú všetky vlastné časti z 13. mája
+			pom_den = den;
+			pom_mesiac = mesiac;
 
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
-				// nemá popis; 2013-02-05: doplnené
+				// nemá popis; 2013-02-05: doplnené | skopírované z 13MAJ
 				if (_global_jazyk != JAZYK_HU) {
 					set_popis_dummy();
 				}
+
+				// prepnutie na 13MAJ
+				den = 13;
+				mesiac = MES_MAJ + 1;
+
+				sprintf(_anchor_head, "%02d%s_", den, nazov_MES[mesiac - 1]);
+				Log("  _anchor_head == %s\n", _anchor_head);
+
+				sprintf(_file, "sv_%s.htm", nazov_mes[mesiac - 1]);
+				Log("  _file == %s\n", _file);
+
+				sprintf(_file_pc, "pc_sv_%s.htm", nazov_mes[mesiac - 1]);
+				Log("  _file_pc == %s\n", _file_pc);
 
 				modlitba = MODL_RANNE_CHVALY;
 				// _vlastna_cast_benediktus;
