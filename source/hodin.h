@@ -6264,7 +6264,7 @@ const char *text_MAR_12_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_MAR_15_CSSR[POCET_JAZYKOV + 1] =
 {
-	"Sv. Klementa Márie Hofbauera, kňaza",
+	"Sv. Klementa Máriu Hofbauera, kňaza",
 	"Sv. Klementa Marie Hofbauera (Dvořáka), kněze", // CZ CSsR: 20MAJ
 	"",
 	"",
@@ -6839,7 +6839,7 @@ const char *text_APR_28_1[POCET_JAZYKOV + 1] =
 };
 const char *text_APR_28_2[POCET_JAZYKOV + 1] =
 {
-	"Sv. Ľudovíta Márie Grignion de Montfort, kňaza",
+	"Sv. Ľudovíta Máriu Grignion de Montfort, kňaza",
 	"Sv. Ludvíka Marie Grigniona z Montfortu, kněze",
 	"",
 	"S. Ludovici M. Grignion de Montfort, presb.",
@@ -6985,7 +6985,7 @@ const char *text_MAJ_04[POCET_JAZYKOV + 1] =
 };
 const char *text_MAJ_04_SJ[POCET_JAZYKOV + 1] =
 {
-	"Bl. Jozefa Márie Rubia, kňaza",
+	"Bl. Jozefa Máriu Rubia, kňaza",
 	"",
 	"",
 	"",
@@ -7635,7 +7635,7 @@ const char *text_MAJ_21[POCET_JAZYKOV + 1] =
 };
 const char *text_MAJ_21_OP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Hyacinta Márie Cormiera, kňaza",
+	"Bl. Hyacinta Máriu Cormiera, kňaza",
 	"Bl. Hyacinta Marie Cormiera, kněze",
 	"",
 	"",
@@ -8582,7 +8582,7 @@ const char *text_JUN_12_OP[POCET_JAZYKOV + 1] =
 };
 const char *text_JUN_12_OCD[POCET_JAZYKOV + 1] =
 {
-	"Bl. Alfonza Márie Mazurka, kňaza a mučeníka, a spoločníkov",
+	"Bl. Alfonza Máriu Mazurka, kňaza a mučeníka, a spoločníkov",
 	"",
 	"",
 	"",
@@ -9128,7 +9128,7 @@ const char *text_JUN_30_CZ[POCET_JAZYKOV + 1] =
 };
 const char *text_JUN_30_CSSR[POCET_JAZYKOV + 1] =
 {
-	"Bl. Januára Márie Sarnelliho, kňaza",
+	"Bl. Januára Máriu Sarnelliho, kňaza",
 	"Bl. Geranno Marie Sarnelliho, kněze",
 	"",
 	"",
@@ -9248,7 +9248,7 @@ const char *text_JUL_04_2_OP[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_05_LA[POCET_JAZYKOV + 1] = // vo všeobecnom kalendári sa slávi 5. júla; na SK presunuté na 7. júla
 {
-	"Sv. Antona Márie Zaccariu, kňaza",
+	"Sv. Antona Máriu Zaccariu, kňaza",
 	"",
 	"",
 	"S. Antonii Mariæ Zaccharia, presbyteri",
@@ -10165,7 +10165,7 @@ const char *text_CSSR_TITUL_KONGREGACIE[POCET_JAZYKOV + 1] =
 
 const char *text_AUG_01[POCET_JAZYKOV + 1] =
 {
-	"Sv. Alfonza Márie de’ Liguori, biskupa a učiteľa Cirkvi",
+	"Sv. Alfonza Máriu de’ Liguori, biskupa a učiteľa Cirkvi",
 	"Sv. Alfonsa Marie z Liguori, biskupa a učitele církve",
 	"",
 	"S. Alfonsi Mariæ de’ Liguori, episcopi et Ecclesiæ doctoris",
@@ -10178,7 +10178,7 @@ const char *text_AUG_01[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_01_CSSR[POCET_JAZYKOV + 1] =
 {
-	"Sv. Alfonza Márie de’ Liguori, biskupa a učiteľa Cirkvi, zakladateľa kongregácie",
+	"Sv. Alfonza Máriu de’ Liguori, biskupa a učiteľa Cirkvi, zakladateľa kongregácie",
 	"Sv. Alfonsa z Liguori, biskupa a učitele církve, zakladatele kongregace",
 	"",
 	"",
@@ -10282,7 +10282,7 @@ const char *text_AUG_02_SJ[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_04[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána Márie Vianneyho, kňaza", // 'Vianneyho' podľa Direktória 2012, str. 176
+	"Sv. Jána Máriu Vianneyho, kňaza", // 'Vianneyho' podľa Direktória 2012, str. 176
 	"Sv. Jana Marie Vianneye, kněze",
 	"",
 	"S. Ioannis Mariæ Vianney, presbyteri",
@@ -10594,7 +10594,7 @@ const char *text_AUG_13_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_14[POCET_JAZYKOV + 1] =
 {
-	"Sv. Maximiliána Márie Kolbeho, kňaza a mučeníka", // podľa Direktória 2012, str. 180
+	"Sv. Maximiliána Máriu Kolbeho, kňaza a mučeníka", // podľa Direktória 2012, str. 180
 	"Sv. Maxmiliána Marie Kolbeho, kněze a mučedníka",
 	"",
 	"S. Maximiliani Mariæ Kolbe, presbyteri et martyris",
@@ -10607,7 +10607,7 @@ const char *text_AUG_14[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_14_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Maximiliána Márie Kolbeho, " HTML_LINE_BREAK "kňaza a mučeníka, člena 1. rádu",
+	"Sv. Maximiliána Máriu Kolbeho, " HTML_LINE_BREAK "kňaza a mučeníka, člena 1. rádu",
 	"Sv. Maxmiliána Marie Kolbeho, kněze a mučedníka",
 	"",
 	"",
@@ -11767,7 +11767,7 @@ const char *text_SEP_19[POCET_JAZYKOV + 1] =
 };
 const char *text_SEP_19_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Františka Márie z Camporossa, " HTML_LINE_BREAK "rehoľníka, člena 1. rádu",
+	"Sv. Františka Máriu z Camporossa, " HTML_LINE_BREAK "rehoľníka, člena 1. rádu",
 	"Sv. Františka Marie z Camporossa, řeholníka",
 	"",
 	"",
@@ -12979,7 +12979,7 @@ const char *text_OKT_23_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_OKT_24[POCET_JAZYKOV + 1] =
 {
-	"Sv. Antona Márie Clareta, biskupa",
+	"Sv. Antona Máriu Clareta, biskupa",
 	"Sv. Antonína Marie Klareta, biskupa",
 	"",
 	"S. Antonii Mariæ Claret, episcopi",
