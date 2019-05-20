@@ -8,11 +8,5 @@ use them in the project Liturgia hodin.
 
 To build:
 
-- make sure that local settings are correct for your environment:
-android/local.properties
-android/ant.properties
-android/libs/android-support-v4.jar
-
 $ download-and-build-assets
-$ ndk-build
-$ ant release
+$ gradle assembleRelease

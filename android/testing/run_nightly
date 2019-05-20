@@ -26,7 +26,12 @@ echo "Running nightlies."
 
 LOCK=/tmp/breviar-nightlies.lck
 (
-  flock -n 9 || (echo "Unable to get lock!"; exit 1)
+  if flock -w 5 9; then
+    true
+  else
+    echo "Unable to get lock!"
+    exit 1
+  fi
   pushd .. >/dev/null
 
   DATE=`date +%F`

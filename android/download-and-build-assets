@@ -28,6 +28,8 @@ cp $ROOT/../cgi-bin/breviar-web.cfg $ROOT/assets/breviar-web.cfg
 rm -f $ROOT/assets/breviar-android.cfg
 cp $ROOT/../cgi-bin/breviar-android.cfg $ROOT/assets/breviar-android.cfg
 
+./setup-templates
+
 pushd $ROOT/assets
 patch -p0 --merge <../assets.diff
 find . -name "*.orig" | xargs rm -f

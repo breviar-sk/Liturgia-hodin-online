@@ -45,7 +45,7 @@ void splitword(char *out, char *in, char stop)
 
 char x2c(char *x)
 {
-	register char c;
+	/* register */ char c;
 
 	/* note: (x & 0xdf) makes x upper case */
 	c = (char)(x[0] >= 'A' ? ((x[0] & 0xdf) - 'A') + 10 : (x[0] - '0'));
@@ -65,7 +65,7 @@ char x2c(char *x)
 
 void unescape_url(char *url)
 {
-	register int i, j;
+	/* register */ int i, j;
 
 	for (i = 0, j = 0; url[j]; ++i, ++j)
 	{
