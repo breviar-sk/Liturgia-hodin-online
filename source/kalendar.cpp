@@ -191,6 +191,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 					modlitba = MODL_VESPERY;
 					_set_zalmy_najsv_mena_jezisovho_czop(modlitba);
 					_vlastna_cast_full_okrem_prosieb(modlitba);
+					_vlastna_cast_modlitba_ina;
 
 					modlitba = MODL_POSV_CITANIE;
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -477,6 +478,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+					_vlastna_cast_modlitba_ina;
 
 					break;
 				}
@@ -1243,6 +1245,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+				_vlastna_cast_modlitba_ina;
 
 				break;
 			}
@@ -2114,6 +2117,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_full(modlitba);
 					_set_zalmy_vesp_127_111_kol(modlitba);
+					_vlastna_cast_modlitba_ina;
 
 					break;
 				}
@@ -8361,6 +8365,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				_vlastna_cast_kresponz_ve_obd;
 				_vlastna_cast_kcitanie_ve_obd;
 				_set_zalmy_op_utrpenie(modlitba);
+				_vlastna_cast_modlitba_ina;
 
 				break;
 			}
@@ -8460,6 +8465,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+				_vlastna_cast_modlitba_ina;
 
 				break;
 			}
@@ -8976,6 +8982,9 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_prosieb(modlitba);
+				if (_global_jazyk == JAZYK_CZ_OP) {
+					_vlastna_cast_modlitba_ina;
+				}
 
 				break;
 			}
@@ -9514,6 +9523,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
 				_vlastna_cast_kresponz_ve_obd;
+				_vlastna_cast_modlitba_ina;
 
 				break;
 			}
@@ -10839,6 +10849,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_VESPERY;
 				if (_global_jazyk == JAZYK_CZ_OP) {
 					_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+					_vlastna_cast_modlitba_ina;
 				}
 				else {
 					_vlastna_cast_full(modlitba);
@@ -11937,6 +11948,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_VESPERY;
 				if (_global_jazyk == JAZYK_CZ_OP) {
 					_vlastna_cast_full_okrem_kresp_a_prosieb(modlitba);
+					_vlastna_cast_modlitba_ina;
 				}
 				else {
 					_vlastna_cast_full_okrem_prosieb(modlitba);
