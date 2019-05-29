@@ -15695,6 +15695,9 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
+				_vlastna_cast_vig_ant(_anchor_head);
+				_set_chvalospev_vig_sc_pm_ocd(modlitba);
+				_vlastna_cast_vig_ev(_anchor_head);
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
@@ -18989,6 +18992,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_prosieb(modlitba);
+				if (_global_jazyk == JAZYK_CZ_OP) {
+					_vlastna_cast_modlitba_ina;
+				}
 
 				break;
 			}
@@ -23003,6 +23009,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_prosieb(modlitba);
+				_vlastna_cast_modlitba_ina;
 
 				break;
 			}
@@ -25183,6 +25190,9 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_set_zalmy_ocd_terezia(modlitba);
 				_vlastna_cast_full(modlitba);
+				_vlastna_cast_vig_ant(_anchor_head);
+				_set_chvalospev_vig_sc_pm_ocd(modlitba);
+				_vlastna_cast_vig_ev(_anchor_head);
 
 				modlitba = MODL_RANNE_CHVALY;
 				_set_zalmy_ocd_terezia(modlitba);
@@ -29507,6 +29517,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_prosieb(modlitba);
+				_vlastna_cast_modlitba_ina;
 
 				break;
 			}

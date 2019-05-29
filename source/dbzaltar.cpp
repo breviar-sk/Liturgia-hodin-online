@@ -1197,6 +1197,12 @@ void _set_chvalospev_vig_sviatok_obetovania(short int modlitba) {
 	_set_chvalospev3(modlitba, "ch_iz66.htm", "CHVAL_IZ66VG");
 } // _set_chvalospev_vig_sviatok_obetovania()
 
+void _set_chvalospev_vig_sc_pm_ocd(short int modlitba) {
+	_set_chvalospev1(modlitba, "ch_iz2.htm", "CHVAL_IZ2VG1");
+	_set_chvalospev2(modlitba, "ch_iz61.htm", "CHVAL_IZ61VG2");
+	_set_chvalospev3(modlitba, "ch_iz61.htm", "CHVAL_IZ62VG3");
+} // _set_chvalospev_vig_sc_pm()
+
 // files - nazvy suborov pre zaltar styroch tyzdnov
 char _file[MAX_STR_AF_FILE]; // nazov súboru, napr. _1ne.htm
 char _file_pc[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania
