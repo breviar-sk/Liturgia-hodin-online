@@ -16218,6 +16218,9 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
 				_set_zalmy_ocd_elias(modlitba);
+				_vlastna_cast_vig_ant(_anchor_head);
+				_set_chvalospev_vig_sc_sm_ocd(modlitba);
+				_vlastna_cast_vig_ev(_anchor_head);
 
 				_vlastna_cast_mcd_full_okrem_hymnu;
 

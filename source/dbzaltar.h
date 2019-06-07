@@ -245,6 +245,7 @@ extern void _set_chvalospev_vig_sc_vm(short int modlitba);
 extern void _set_chvalospev_vig_sc_sm_sz(short int modlitba);
 extern void _set_chvalospev_vig_sviatok_obetovania(short int modlitba);
 extern void _set_chvalospev_vig_sc_pm_ocd(short int modlitba);
+extern void _set_chvalospev_vig_sc_sm_ocd(short int modlitba);
 
 extern const char *html_title[POCET_JAZYKOV + 1];
 
