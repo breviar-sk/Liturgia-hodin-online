@@ -8091,7 +8091,7 @@ const char *text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] =
 	"Domini nostri Iesu Christi " HTML_LINE_BREAK "Summi et Æterni Sacerdotis",
 	"",
 	"Našeho Pána Ježíše Krista, nejvyššího a věčného kněze",
-	"A mi Urunk Jézus Krisztus, a legfőbb főpap",
+	"A mi Urunk, Jézus Krisztus, az Örök Főpap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
