@@ -10295,7 +10295,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 					|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM))
 					) {
 					_vlastna_cast_kcitanie;
-					_vlastna_cast_kresponz;
+					_vlastna_cast_kresponz_ve_obd;
 				}
 
 				modlitba = MODL_VESPERY;
@@ -10306,7 +10306,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 					|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM))
 					) {
 					_vlastna_cast_kcitanie;
-					_vlastna_cast_kresponz;
+					_vlastna_cast_kresponz_ve_obd;
 				}
 
 				break;
@@ -31609,14 +31609,14 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 			Log("  ide o spomienku panny marie matky cirkvi: _file = `%s', _anchor = %s...\n", _file, _anchor);
 
 			modlitba = MODL_RANNE_CHVALY;
-			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)) {
+			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 				_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
 			}
 			_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 
 			modlitba = MODL_POSV_CITANIE;
-			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)) {
+			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 				_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
 			}
 			_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
