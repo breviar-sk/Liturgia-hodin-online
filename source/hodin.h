@@ -14023,11 +14023,11 @@ const char *text_NOV_21[POCET_JAZYKOV + 1] =
 const char *text_NOV_22[POCET_JAZYKOV + 1] =
 {
 	"Sv. Cecílie, panny a mučenice",
-	"Sv. Cecilie, panny a mučednice",
+	"Sv. Cecílie, panny a mučednice",
 	"",
 	"S. Cæciliæ, virginis et martyris",
 	"",
-	"Sv. Cecilie, panny a mučednice",
+	"Sv. Cecílie, panny a mučednice",
 	"Szent Cecília szűz és vértanú",
 	"ru_text",
 	"Св. Цэцыліі, панны і мучаніцы",

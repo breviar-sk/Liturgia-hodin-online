@@ -16848,8 +16848,13 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
-			// kedysi pre CZ: _global_svaty1.typslav_lokal = LOKAL_SLAV_MORAVA_SPOMIENKA;
+			if (_global_jazyk == JAZYK_SK) {
+				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
+			}
+			else {
+				_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+				_global_svaty1.typslav_lokal = LOKAL_SLAV_MORAVA_SPOMIENKA;
+			}
 
 			mystrcpy(_global_svaty1.meno, text_JUL_27[_global_jazyk], MENO_SVIATKU);
 			if (_global_jazyk == JAZYK_SK) {
@@ -27100,10 +27105,10 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 		// ak padne toto slávenie na nedeľu, berie sa nedeľné ofícium
 		if (_global_den.denvt != DEN_NEDELA) {
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári | všetkých verných zosnulých (podľa Tabuľky liturgických dní usporiadaných podľa prednosti) - typslav je spomienka!
+			_set_slavenie_typslav_smer(1, SLAV_VLASTNE, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári | všetkých verných zosnulých (podľa Tabuľky liturgických dní usporiadaných podľa prednosti) - typslav je spomienka!
 		}
 		else {
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
+			_set_slavenie_typslav_smer(1, SLAV_VLASTNE, 10); // povinné spomienky podľa všeobecného kalendára
 		}
 		mystrcpy(_global_svaty1.meno, text_NOV_02[_global_jazyk], MENO_SVIATKU);
 		_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_ZA_ZOSNULYCH);

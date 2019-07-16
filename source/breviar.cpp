@@ -7031,7 +7031,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	}// _local_den.meno != STR_EMPTY
 
 	// teraz typ slávenia; nevypisuje sa, ak ide o ľubovoľnú spomienku na blahoslaveného (napr. SK OP), kedy sa zobrazí názov kurzívou
-	if ((_local_den.typslav != SLAV_NEURCENE) && ((_local_den.prik != VOLNA_LUBOVOLNA_SPOMIENKA) /* || (typ != EXPORT_DNA_VIAC_DNI) */)) {
+	if ((_local_den.typslav != SLAV_NEURCENE) && (_local_den.typslav != SLAV_VLASTNE) && ((_local_den.prik != VOLNA_LUBOVOLNA_SPOMIENKA) /* || (typ != EXPORT_DNA_VIAC_DNI) */)) {
 		// možnosť zalomenia (Igor Galád)
 		if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
 #define TYPSLAV_NOVY_RIADOK
@@ -7080,6 +7080,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			if ((_local_den.typslav != SLAV_VLASTNE) && (_local_den.typslav != SLAV_NEURCENE)) {
 				sprintf(pom2, "%s", nazov_slavenia(_local_den.typslav));
 			}
+			// v podstate netreba túto podmienku, lebo je to vylúčené už vyššie
 			else {
 				sprintf(pom2, "%s", (char *)STR_EMPTY);
 			}
