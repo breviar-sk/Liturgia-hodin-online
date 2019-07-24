@@ -12992,8 +12992,8 @@ const char *text_OKT_24[POCET_JAZYKOV + 1] =
 };
 const char *text_OKT_24_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Alojza Guanellu, kňaza",
-	"Bl. Aloise Guanelly, kněze",
+	"Sv. Alojza Guanellu, kňaza",
+	"Sv. Aloise Guanelly, kněze",
 	"",
 	"",
 	"",
@@ -13044,7 +13044,7 @@ const char *text_OKT_25_SK_2[POCET_JAZYKOV + 1] =
 };
 const char *text_OKT_25_CONS[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky vlastného chrámu (keď sa nepozná dátum posviacky)", // SK SDB
+	"Výročie posviacky vlastného chrámu " HTML_LINE_BREAK "(keď sa nepozná dátum posviacky)", // SK SDB
 	"Výročí posvěcení vlastního kostela", // CZ OFMCap.
 	"",
 	"",
