@@ -1605,7 +1605,7 @@ void export_div_to_continue_tts_voice_output(short int export_comment_begin = AN
 #define EXPORT_RED_TRIANGLE ((!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))) && (!(isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU))))
 #define EXPORT_VERSE_NUMBER (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE) && (EXPORT_FULL_TEXT))
 #define EXPORT_TTS_PAUSES (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT))
-#define EXPORT_TTS_SECTIONS ANO
+#define EXPORT_TTS_SECTIONS (_global_skip_in_prayer == NIE)
 
 #define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
 
@@ -2052,6 +2052,29 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				// !equalsi(rest, modlparam)
 				// write = NIE; -- aby mohli byt nestovane viacere :-)
 				DetailLog("parameter does not match: %s != %s; vnutri_inkludovaneho == %d\n", rest, modlparam, vnutri_inkludovaneho);
+
+// stuff in texts: TTS pause
+				if ((equals(strbuff, PARAM_PAUSE)
+					|| equals(strbuff, PARAM_PAUSE_SHORT)
+					) && (vnutri_inkludovaneho == ANO))
+				{
+					DetailLog("exporting TTS pause...\n");
+
+					if (equals(strbuff, PARAM_PAUSE)) {
+						if (EXPORT_TTS_PAUSES) {
+							Export("<" HTML_SPAN_TTS_PAUSE ">");
+						}
+					}
+					else if (equals(strbuff, PARAM_PAUSE_SHORT)) {
+						if (EXPORT_TTS_PAUSES) {
+							Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
+						}
+					}
+
+					if (EXPORT_TTS_PAUSES) {
+						Export(HTML_SPAN_END "\n");
+					}
+				}// normal (black) stuff
 
 // normal (black) stuff in psalmody (cross, asterisk)
 				if ((equals(strbuff, PARAM_NORMAL_ASTERISK)
@@ -3102,6 +3125,30 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		}
 	}// zobraziť/nezobraziť krížik: should be used in invitatory prayer, Psalm 95, only
 
+	// stuff in texts: TTS pause
+	else if (equals(paramname, PARAM_PAUSE)
+		|| equals(paramname, PARAM_PAUSE_SHORT))
+	{
+		if (_global_skip_in_prayer == NIE) {
+			DetailLog("exporting TTS pause...\n");
+
+			if (equals(paramname, PARAM_PAUSE)) {
+				if (EXPORT_TTS_PAUSES) {
+					Export("<" HTML_SPAN_TTS_PAUSE ">");
+				}
+			}
+			else if (equals(paramname, PARAM_PAUSE_SHORT)) {
+				if (EXPORT_TTS_PAUSES) {
+					Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
+				}
+			}
+
+			if (EXPORT_TTS_PAUSES) {
+				Export(HTML_SPAN_END "\n");
+			}
+		}
+	}// stuff in texts: TTS pause
+
 	// normal (black) stuff in psalmody (cross, asterisk)
 	else if (equals(paramname, PARAM_NORMAL_ASTERISK)
 		|| equals(paramname, PARAM_NORMAL_CROSS))
@@ -4097,9 +4144,13 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 		if (EXPORT_TTS_SECTIONS) {
 			Export("tts:section:begin-->\n");
 
-			Export("<" HTML_DIV_TTS_SECTION ">");
+			if (EXPORT_TTS_PAUSES) {
+				Export("<" HTML_SPAN_TTS_PAUSE ">");
 
-			// Export("XXX");
+				Export(HTML_SPAN_END "\n");
+			}
+
+			Export("<" HTML_DIV_TTS_SECTION ">");
 
 			Export(HTML_DIV_END "\n");
 

@@ -673,6 +673,10 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_PSALM_FULL_TEXT_SOFT_BEGIN    "full-text-soft"
 #define PARAM_PSALM_FULL_TEXT_SOFT_END      SYMBOL_END "" PARAM_PSALM_FULL_TEXT_SOFT_BEGIN
 
+// pause, to be exported (in readings)
+#define PARAM_PAUSE                         "p"
+#define PARAM_PAUSE_SHORT                   "ps"
+
 // normal (black) stuff in psalmody (cross, asterisk)
 #define PARAM_NORMAL_CROSS                     "+"
 #define PARAM_NORMAL_ASTERISK                  "x"
