@@ -3986,7 +3986,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 					podmienka = NIE;
 				}
 			}
-			// kontrola na prvé resp. druhé nedeľné kompletórium, aby hymnus bolo v Cezročnom období možno voliť aj pre nedele
+			// kontrola na prvé resp. druhé nedeľné kompletórium, aby hymnus bolo v Cezročnom období možné voliť aj pre nedele
 			else if ((_global_modlitba == MODL_KOMPLETORIUM) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM)) {
 				bit = BIT_OPT_5_HYMNUS_KOMPL;
 				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_KomplHymnusA[_global_jazyk]);
@@ -4022,20 +4022,23 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_RChHymnusVNferia[_global_jazyk]);
 				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_RChHymnusVNnedela[_global_jazyk]);
 			}
-			else if (_global_modlitba == MODL_VESPERY) {
-				// nie je potrebné, aby tu bolo explicitne kontrolované, či ide o MODL_PRVE_VESPERY || MODL_DRUHE_VESPERY, pretože tie vždy patria nedeli; alternatívny hymnus len pre férie
-				bit = BIT_OPT_5_HYMNUS_VN_VESP;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_VespHymnusVNferia[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_VespHymnusVNnedela[_global_jazyk]);
-			}
-			else if (_global_modlitba == MODL_PRVE_VESPERY) {
-				bit = BIT_OPT_5_HYMNUS_1VESP;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_1VHymnusNe[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_1VHymnusPC[_global_jazyk]);
+			else if ((_global_modlitba == MODL_PRVE_VESPERY) || (_global_modlitba == MODL_VESPERY)) {
+				if ((je_alternativa_hymnus_vn) && (_global_den.litobd == OBD_VELKONOCNE_I)) {
+					bit = BIT_OPT_5_HYMNUS_VN_VESP;
+					sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_VespHymnusVNferia[_global_jazyk]);
+					sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_VespHymnusVNnedela[_global_jazyk]);
+				}
+				else if (je_alternativa_hymnus_ocr) {
+					bit = BIT_OPT_5_HYMNUS_1VESP;
+					sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_1VHymnusNe[_global_jazyk]);
+					sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_1VHymnusPC[_global_jazyk]);
+				}
 			}
 			else {
 				podmienka = NIE;
 			}
+
+			Log("podmienka == %d po kontrole _global_modlitba == %s; bit == %ld...\n", podmienka, nazov_modlitby(_global_modlitba), bit);
 		}
 		else if (equals(paramname, PARAM_PSALMODIA)) {
 			bit = BIT_OPT_5_POPOL_STREDA_PSALMODIA;
