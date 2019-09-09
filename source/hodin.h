@@ -2638,7 +2638,7 @@ const char *html_text_opt_1_plne_resp[POCET_JAZYKOV + 1] =
 	"plné znenie responzórií",
 	"plné znění krátkých zpěvů",
 	"full version of short responsories",
-	"versio integra responsoriorum brevium",
+	"versionem integram responsoriorum brevium",
 	"",
 	"plné znění responsorií",
 	"a válaszos énekek teljes szövege",
@@ -3117,8 +3117,8 @@ const char *html_text_opt_1_vigilia[POCET_JAZYKOV + 1] =
 {
 	"predĺžené slávenie vigílie pre posvätné čítanie", //(na nedele, slávnosti a sviatky)
 	"prodloužené slavení vigilie pro modlitbu se čtením", // (pro neděle, slavnosti a svátky)
-	"celebrating of vigily for prayer with readings", // (for Sundays, solemnitas and festivus)
-	"",
+	"celebrating of vigil for prayer with readings", // (for Sundays, solemnitas and festivus)
+	"protractam celebrationem vigiliæ ad Officium lectionis",
 	"",
 	"prodloužené slavení vigilie pro modlitbu se čtením", // (pro neděle, slavnosti a svátky)
 	"hosszabb vigíliás ünneplés Olvasmányos imaórával", // (vasárnap, főünnep és ünnep előtt)
@@ -3131,8 +3131,8 @@ const char *html_text_opt_1_vigilia_explain[POCET_JAZYKOV + 1] =
 {
 	"Tí, čo chcú podľa tradície predĺžiť vigíliu nedele, slávnosti alebo sviatku, čo sa veľmi odporúča, najprv recitujú posvätné čítanie; po oboch čítaniach, pred hymnom Te Deum, pridávajú sa chválospevy a evanjelium.",
 	"Ti, kteří chtějí podle tradice prodloužit vigilii neděle, slavnosti nebo svátku, což se velmi doporučuje, recitují nejprve čtení; po obou čteních, před hymnem Te Deum, se přidávají chvalozpěvy a evangelium.",
-	"For Sundays, solemnitas and festivus: celebrating of vigily for prayer with readings.",
-	"",
+	"For Sundays, solemnitas and festivus: celebrating of vigil for prayer with readings.",
+	"Ii, qui celebrationem vigiliæ dominicalis, sollemnitatum et festorum protrahere, iuxta traditiam, cupiant, primo Officium lectionis celebretur; post vero ambas lectiones et ante Te Deum addantur cantica et Evangelium.",
 	"",
 	"Ti, kteří chtějí podle tradice prodloužit vigilii neděle, slavnosti nebo svátku, což se velmi doporučuje, recitují nejprve čtení; po obou čteních, před hymnem Te Deum, se přidávají chvalozpěvy a evangelium.",
 	"Akik a hagyományokhoz híven vasárnap, főünnep és ünnep előtt hosszabb vigíliás ünneplést akarnak tartani, először végezzék el az Olvasmányos imaórát, a két olvasmány után és a Téged, Isten, dicsérünk himnusz előtt vegyék hozzá a kantikumokat és utána az evangéliumot.",
@@ -3146,7 +3146,7 @@ const char *html_text_opt_1_spomienka_spolcast[POCET_JAZYKOV + 1] =
 	"na spomienky použiť časti zo spoločných častí",
 	"na památky použít části ze společných textů",
 	"take parts from celebration — commmons",
-	"",
+	"ad memorias partes Officii de Communi sumere",
 	"",
 	"na památky použít části ze společných částí",
 	"emléknapon vegye a jelzett részeket a közös részből",
@@ -3174,7 +3174,7 @@ const char *html_text_opt_1_spomienka_spolcast_NIE[POCET_JAZYKOV + 1] =
 	"na spomienky použiť časti zo dňa, nie zo spoločných častí",
 	"na památky použít části z běžného dne, ne ze společných textů",
 	"take parts from feria — not commmons",
-	"la_text",
+	"ad memorias partes Officii de feria, non de Communi, sumere",
 	"",
 	"na památky použít části z běžného dne, ne ze společných částí",
 	"emléknapon a jelzett részeket az adott napról vegye, ne a közös részből",
