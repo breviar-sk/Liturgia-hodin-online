@@ -5985,7 +5985,7 @@ const char *text_FEB_18_OPRAEM[POCET_JAZYKOV + 1] =
 };
 const char *text_FEB_18_CM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Františka Regisa Cleta, kňaza a mučeníka",
+	"Sv. Františka Regisa Cleta " HTML_LINE_BREAK "a Augustína Zhao Rong, kňazov, " HTML_LINE_BREAK "a spoločníkov, mučeníkov", // moved to 09JUL
 	"",
 	"",
 	"",

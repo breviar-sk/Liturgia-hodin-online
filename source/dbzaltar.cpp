@@ -10776,12 +10776,17 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_KRST_rHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_18JAN_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_05JUL_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_26JUL_rHYMNUS", 3 },
+	{ JAZYK_CZ, "CZ_26JUL_vHYMNUS", 3 },
 	{ JAZYK_CZ, "CZ_26JUL_cHYMNUS", 3 },
 	{ JAZYK_CZ, "CZ_16MAJ_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_25MAR_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_01NOV_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_15SEP_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_16SEP_cHYMNUS", 2 },
+	{ JAZYK_CZ, "25APR_cHYMNUS", 2 },
+	{ JAZYK_CZ, "21SEP_cHYMNUS", 2 },
+	{ JAZYK_CZ, "18OKT_cHYMNUS", 2 },
 	{ JAZYK_UNDEF, "SPMVSr_HYMNUS", 3 },
 	{ JAZYK_UNDEF, "SPMVSc_HYMNUS", 3 },
 	{ JAZYK_CZ, "CZ_SPMVSr_HYMNUS", 6 },
@@ -10860,6 +10865,7 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_SCPNV_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_SCSZ_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_SCSZV_cHYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_22JUL_cHYMNUS", 2 },
 	{ JAZYK_SK, "KNAZA_cHYMNUS", 2 }, // ad experimendum
 	{ JAZYK_SK, "KNAZA_rHYMNUS", 2 }, // ad experimendum
 	{ JAZYK_SK, "KNAZA_vHYMNUS", 2 }, // ad experimendum

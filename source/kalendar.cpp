@@ -4159,54 +4159,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_CZ_OPRAEM
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
-			if (poradie_svaty == 1) {
-
-				file_name_vlastny_kalendar(_global_kalendar);
-
-				// na spomienku v privilegovaný deň (spomienka v pôste)
-				if (je_privileg) {
-					if (query_type != PRM_DETAILY)
-						set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
-
-					modlitba = MODL_RANNE_CHVALY;
-					// _vlastna_cast_benediktus_spomprivileg; // TODO: treba doplniť antifónu zo spoločnej časti (do vlastnej časti) a odpoznámkovať tento kód, aby bolo správne zobrazené zakončenie
-					_vlastna_cast_modlitba_spomprivileg;
-
-					modlitba = MODL_VESPERY;
-					// _vlastna_cast_magnifikat_spomprivileg;
-					_vlastna_cast_modlitba_spomprivileg;
-
-					modlitba = MODL_POSV_CITANIE;
-					_vlastna_cast_2citanie_spomprivileg;
-					_vlastna_cast_modlitba;
-				}// je_privileg
-				else {
-					// definovanie parametrov pre modlitbu
-					if (query_type != PRM_DETAILY)
-						set_spolocna_cast(sc, poradie_svaty);
-
-					modlitba = MODL_RANNE_CHVALY;
-					_vlastna_cast_modlitba;
-
-					modlitba = MODL_POSV_CITANIE;
-					_vlastna_cast_modlitba;
-					_vlastna_cast_2citanie;
-
-					modlitba = MODL_VESPERY;
-					_vlastna_cast_modlitba;
-				}// nie je_privileg
-
-				break;
-			}
-
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
-			mystrcpy(_global_svaty1.meno, text_FEB_18_CM[_global_jazyk], MENO_SVIATKU);
-			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
-			_global_svaty1.farba = LIT_FARBA_CERVENA;
-			_global_svaty1.kalendar = _global_kalendar;
-		}// kalendár pre KALENDAR_SK_CM
-
 		if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))) {
 			if (poradie_svaty == 1) {
 
@@ -7356,15 +7308,31 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_vlastna_cast_antifona_inv;
 
 			modlitba = MODL_RANNE_CHVALY;
-			_vlastna_cast_full(modlitba);
+			if ((_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu)) {
+				_vlastna_cast_full_okrem_hymnu(modlitba);
+			}
+			else {
+				_vlastna_cast_full(modlitba);
+			}
+
 
 			modlitba = MODL_POSV_CITANIE;
-			_vlastna_cast_full_okrem_antifon(modlitba);
+			if (je_CZ_hymny_k_volnemu_vyberu) {
+				_vlastna_cast_full_okrem_hymnu_a_antifon(modlitba);
+			}
+			else {
+				_vlastna_cast_full_okrem_antifon(modlitba);
+			}
 
 			_vlastna_cast_mcd_kcitresp_modl;
 
 			modlitba = MODL_VESPERY;
-			_vlastna_cast_full(modlitba);
+			if ((_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu)) {
+				_vlastna_cast_full_okrem_hymnu(modlitba);
+			}
+			else {
+				_vlastna_cast_full(modlitba);
+			}
 
 			break;
 		}
@@ -8949,7 +8917,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
-			mystrcpy(_global_svaty1.meno, text_MAJ_09_CM[_global_jazyk], MENO_SVIATKU);
+			mystrcpy(_global_svaty1.meno, text_MAJ_09_CM[_global_jazyk], MENO_SVIATKU); // pôvodne sa slávila 15MAR (https://cmglobal.org/en/2017/03/08/revised-official-vincentian-calendar/)
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
@@ -14252,6 +14220,10 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 	short int pom_poradie = 1;
 
+	// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca
+	short int pom_den = den;
+	short int pom_mesiac = mesiac;
+
 	Log("mesiac júl\n");
 	switch (den) {
 
@@ -15011,6 +14983,36 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_global_svaty1.farba = LIT_FARBA_CERVENA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_SJ
+
+		else if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
+			if (poradie_svaty == 1) {
+
+				file_name_vlastny_kalendar(_global_kalendar);
+
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_modlitba;
+				_vlastna_cast_2citanie;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
+
+				break;
+			}
+
+			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+			mystrcpy(_global_svaty1.meno, text_FEB_18_CM[_global_jazyk], MENO_SVIATKU); // 18.2 nie je Regis Clet; je presunutý na 9.7. - https://cmglobal.org/en/2017/03/08/revised-official-vincentian-calendar/
+
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			_global_svaty1.farba = LIT_FARBA_CERVENA;
+			_global_svaty1.kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_SK_CM
 
 		else if (!(((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM)) || ((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_OFM)))) {
 
@@ -16397,7 +16399,12 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_vlastna_cast_modlitba;
 			_vlastna_cast_1citanie; // 2. možnosť zo spoločnej časti (Rim 12,1-21)
 			_vlastna_cast_2citanie;
-			_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+			if (_global_jazyk == JAZYK_CZ) {
+				_vlastna_cast_hymnus(modlitba, _global_den.litobd); // hymnus vlastní, sv. III, str. 1503
+			}
+			else {
+				_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+			}
 
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -16792,7 +16799,12 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			else {
-				_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
+				else {
+					_vlastna_cast_hymnus_ako_na_vespery(modlitba, _global_den.litobd); // hymnus ako na vešpery -- musí byť posledný pre danú modlitbu
+				}
 			}
 
 			modlitba = MODL_VESPERY;
@@ -17116,6 +17128,52 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_global_svaty1.farba = LIT_FARBA_BIELA;
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_CZ_OFMCAP
+
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
+
+			// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca | pre CM sa berú všetky vlastné časti z 30. júla
+			pom_den = den;
+			pom_mesiac = mesiac;
+
+			if (poradie_svaty == 1) {
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				// prepnutie na 30JUL
+				den = 30;
+				mesiac = MES_JUL + 1;
+
+				sprintf(_anchor_head, "%02d%s_", den, nazov_MES[mesiac - 1]);
+				Log("  _anchor_head == %s\n", _anchor_head);
+
+				sprintf(_file, "sv_%s.htm", nazov_mes[mesiac - 1]);
+				Log("  _file == %s\n", _file);
+
+				sprintf(_file_pc, "pc_sv_%s.htm", nazov_mes[mesiac - 1]);
+				Log("  _file_pc == %s\n", _file_pc);
+
+				set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_modlitba;
+				_vlastna_cast_2citanie;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
+
+				break;
+			}
+
+			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			mystrcpy(_global_svaty1.meno, text_JUL_30[_global_jazyk], MENO_SVIATKU); // kvôli vlastnému sláveniu sa sv. Peter Chryzológ v rodine CM slávi 28JUL
+			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP, MODL_SPOL_CAST_UCITEL_CIRKVI);
+			_global_svaty1.farba = LIT_FARBA_BIELA;
+			_global_svaty1.kalendar = KALENDAR_VSEOBECNY;
+		}// kalendár pre KALENDAR_SK_CM
 
 		break;
 
@@ -22489,13 +22547,16 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				set_spolocna_cast(sc, poradie_svaty);
 
 			modlitba = MODL_RANNE_CHVALY;
-			if (_global_jazyk != JAZYK_CZ) {
+			if (!((_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu))) {
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			_vlastna_cast_benediktus;
 			_vlastna_cast_modlitba;
 
 			modlitba = MODL_POSV_CITANIE;
+			if ((_global_jazyk == JAZYK_CZ) && (!je_CZ_hymny_k_volnemu_vyberu)) {
+				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+			}
 			_vlastna_cast_modlitba;
 			_vlastna_cast_1citanie;
 			_vlastna_cast_2citanie;
@@ -22503,7 +22564,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			_vlastna_cast_mcd_modlitba;
 
 			modlitba = MODL_VESPERY;
-			if (_global_jazyk != JAZYK_CZ) {
+			if (!((_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu))) {
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			_vlastna_cast_magnifikat;
