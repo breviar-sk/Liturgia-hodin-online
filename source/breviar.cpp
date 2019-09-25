@@ -1581,6 +1581,7 @@ void _main_prazdny_formular(void) {
 	Export("Programu neboli zadané argumenty.\n");
 } // _main_prazdny_formular()
 
+#define DetailLog emptyLog
 
 void export_div_to_continue_tts_voice_output(short int export_comment_begin = ANO) {
 	// used both in includeFile() and interpretParameter()
@@ -1593,7 +1594,23 @@ void export_div_to_continue_tts_voice_output(short int export_comment_begin = AN
 	}
 }// export_div_to_continue_tts_voice_output()
 
-#define DetailLog emptyLog
+void export_tts_pause(short int tts_pause_type = TTS_PAUSE) {
+	DetailLog("exporting TTS pause...\n");
+
+	Export("\n");
+
+	if (tts_pause_type == TTS_PAUSE) {
+		Export("<" HTML_SPAN_TTS_PAUSE ">");
+	}
+	else if (tts_pause_type == TTS_PAUSE_SHORT) {
+		Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
+	}
+	else if (tts_pause_type == TTS_PAUSE_LONG) {
+		Export("<" HTML_SPAN_TTS_PAUSE_LONG ">");
+	}
+
+	Export(HTML_SPAN_END "\n");
+}// export_tts_pause()
 
 #define MAX_ZAKONCENIE 200
 
@@ -1865,10 +1882,12 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 							Export(HTML_COMMENT_END "\n");
 
 							if (je_antifona == ANO) {
-								// stop exporting text for TTS (voice output)
+								// stop exporting text for TTS (voice output); add TTS pause
 								Export((_global_jazyk == JAZYK_HU) ? HTML_DIV_END : HTML_P_END); // HU uses <div class="antiphon ...">; end of antiphone
 
-								Export("\n" HTML_DIV_RUBRIC "\n"); // hide the rest of antiphone with beginning of psalm/canticle until the first verse's red cross
+								export_tts_pause();
+
+								Export(HTML_DIV_RUBRIC "\n"); // hide the rest of antiphone with beginning of psalm/canticle until the first verse's red cross
 
 								Export((_global_jazyk == JAZYK_HU) ? HTML_DIV_BEGIN : HTML_P_BEGIN); // HU uses <div class="antiphon ...">; synthetic begin of antiphone
 
@@ -2058,21 +2077,8 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 					|| equals(strbuff, PARAM_PAUSE_SHORT)
 					) && (vnutri_inkludovaneho == ANO))
 				{
-					DetailLog("exporting TTS pause...\n");
-
-					if (equals(strbuff, PARAM_PAUSE)) {
-						if (EXPORT_TTS_PAUSES) {
-							Export("<" HTML_SPAN_TTS_PAUSE ">");
-						}
-					}
-					else if (equals(strbuff, PARAM_PAUSE_SHORT)) {
-						if (EXPORT_TTS_PAUSES) {
-							Export("<" HTML_SPAN_TTS_PAUSE_SHORT ">");
-						}
-					}
-
 					if (EXPORT_TTS_PAUSES) {
-						Export(HTML_SPAN_END "\n");
+						export_tts_pause(equals(strbuff, PARAM_PAUSE) ? TTS_PAUSE : TTS_PAUSE_SHORT); // ToDo: TTS_PAUSE_LONG
 					}
 				}// normal (black) stuff
 

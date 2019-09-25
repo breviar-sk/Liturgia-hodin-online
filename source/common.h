@@ -140,6 +140,14 @@
 
 #pragma endregion
 
+#pragma region TTS
+
+#define TTS_PAUSE		1 // standard, for * in psalmody
+#define TTS_PAUSE_SHORT	2 // shorter, for + in psalmody
+#define TTS_PAUSE_LONG	3 // longer, reserved (not used yet)
+
+#pragma endregion
+
 #pragma region HTML string constants
 
 #define HTML_FORM_INPUT_SUBMIT   HTML_FORM_INPUT_DIV_BEGIN "<input type=\"submit\" class=\"button\""
@@ -226,10 +234,12 @@
 #define HTML_DIV_TTS_HEADING        "div class=\"tts_heading\""
 #define HTML_DIV_TTS_SECTION        "div class=\"tts_section\""
 
-// TTS special - pause (for special characters)
+// TTS special - pause (for special characters); see constants TTS_PAUSE above
 #define HTML_SPAN_TTS_PAUSE_RED     "span class=\"tts_pause red\""
+
 #define HTML_SPAN_TTS_PAUSE         "span class=\"tts_pause\""
 #define HTML_SPAN_TTS_PAUSE_SHORT   "span class=\"tts_pause_short\""
+#define HTML_SPAN_TTS_PAUSE_LONG    "span class=\"tts_pause_long\""
 
 // HTML tables defined using DIVs
 #define HTML_TABLE			        "div class=\"table\"" // "table"
