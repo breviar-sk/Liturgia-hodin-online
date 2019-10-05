@@ -136,4 +136,5 @@ body { background-color: #303030; color: #dddddd; }
 </html>
     ]]></string>
 
+    <string name="tts_language_not_available">A szövegfelolvasás nem érhető el az aktuális nyelvnél.</string>
 </resources>

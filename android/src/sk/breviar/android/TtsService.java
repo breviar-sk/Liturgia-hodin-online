@@ -14,6 +14,7 @@ import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -308,8 +309,10 @@ public class TtsService extends Service
       case INITIALIZING_TTS:
         switch (action.getAction()) {
           case TTS_INIT_DONE:
-            requestText();
-            return State.GETTING_TEXT;
+            if (requestText()) {
+              return State.GETTING_TEXT;
+            }
+            // if language is not supported, fallthrough to init failed.
 
           case TTS_INIT_FAILED:
             Log.v("breviar", "TTS init failed");
@@ -453,7 +456,17 @@ public class TtsService extends Service
     tts = null;
   }
 
-  void requestText() {
+  boolean requestText() {
+    int ret = tts.setLanguage(BreviarApp.appLanguageToLocale(language));
+    Log.v("breviar", "setTTSLanguage: " + ret);
+    if (ret == TextToSpeech.LANG_NOT_SUPPORTED ||
+        ret == TextToSpeech.LANG_MISSING_DATA) {
+      Toast toast = Toast.makeText(this, R.string.tts_language_not_available,
+                                   Toast.LENGTH_SHORT);
+      toast.show();
+      return false;
+    }
+
     tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
       @Override
       public void onDone(String utteranceId) {
@@ -464,9 +477,6 @@ public class TtsService extends Service
       @Override
       public void onStart(String utteranceId) {}
     });
-
-    int ret = tts.setLanguage(BreviarApp.appLanguageToLocale(language));
-    Log.v("breviar", "setTTSLanguage: " + ret);
 
     Log.v("breviar", "Loading nonpersistent url " + url);
     headless.LoadAndExecute(url,
@@ -532,6 +542,7 @@ public class TtsService extends Service
             processAction(new Intent(GOT_TEXT));
           }
         });
+    return true;
   }
 
   void initializeChunks() {

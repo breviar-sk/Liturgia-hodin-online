@@ -593,6 +593,34 @@ public class Breviar extends AppCompatActivity
       return opts.build();
     }
 
+    void disableRingOverride() {
+      if (ringMode != -1) {
+        AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        try {
+          manager.setRingerMode(ringMode);
+        } catch (java.lang.SecurityException e) {
+          Log.v("breviar", "Switching to silent mode is not allowed");
+        }
+        ringMode = -1;
+      }
+    }
+
+    void enableRingOverride() {
+      if (BreviarApp.getMute(getApplicationContext())) {
+        if (ringMode == -1) {
+          AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+          ringMode = manager.getRingerMode();
+          try {
+            manager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+          } catch (java.lang.SecurityException e) {
+            Log.v("breviar", "Switching to silent mode is not allowed");
+          }
+        }
+      } else {
+        disableRingOverride();
+      }
+    }
+
     boolean resumed = false;
     // After resume we need to update menu after the page is reloaded.
     boolean need_to_update_menu = false;
@@ -614,17 +642,7 @@ public class Breviar extends AppCompatActivity
         if (BreviarApp.getDimLock(getApplicationContext())) {
           lock.acquire();
         }
-        if (BreviarApp.getMute(getApplicationContext())) {
-          AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-          ringMode = manager.getRingerMode();
-          try {
-            manager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-          } catch (java.lang.SecurityException e) {
-            Log.v("breviar", "Switching to silent mode is not allowed");
-          }
-        } else {
-          ringMode = -1;
-        }
+        enableRingOverride();
         if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
       }
       super.onResume();
@@ -638,15 +656,7 @@ public class Breviar extends AppCompatActivity
         if (BreviarApp.getDimLock(getApplicationContext())) {
           lock.release();
         }
-        if (ringMode != -1) {
-          AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-          try {
-            manager.setRingerMode(ringMode);
-          } catch (java.lang.SecurityException e) {
-            Log.v("breviar", "Switching to silent mode is not allowed");
-          }
-          ringMode = -1;
-        }
+        disableRingOverride();
       }
     }
 
@@ -839,6 +849,7 @@ public class Breviar extends AppCompatActivity
           drawer_item_pause.setVisible(false);
           drawer_item_back.setVisible(false);
           drawer_item_forward.setVisible(false);
+          enableRingOverride();
           break;
         case SPEAKING:
           drawer_item.setTitle(R.string.tts_speaking);
@@ -855,6 +866,7 @@ public class Breviar extends AppCompatActivity
 
           drawer_item_back.setVisible(true);
           drawer_item_forward.setVisible(true);
+          disableRingOverride();
           break;
         case PAUSED:
           drawer_item.setTitle(R.string.tts_speaking);
@@ -871,6 +883,7 @@ public class Breviar extends AppCompatActivity
 
           drawer_item_back.setVisible(true);
           drawer_item_forward.setVisible(true);
+          enableRingOverride();
           break;
       }
     }

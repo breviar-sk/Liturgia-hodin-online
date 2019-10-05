@@ -138,4 +138,5 @@ body { background-color: #303030; color: #dddddd; }
 </html>
     ]]></string>
 
+    <string name="tts_language_not_available">Prevod textu na reč nie je k dispozícii pre aktuálny jazyk.</string>
 </resources>

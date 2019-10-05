@@ -138,4 +138,6 @@ body { background-color: #303030; color: #dddddd; }
 </html>
     ]]></string>
 
+    <string name="tts_language_not_available">TTS is not available for current language.</string>
+
 </resources>

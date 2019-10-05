@@ -1161,7 +1161,7 @@ void _set_chvalospev_vig_vn(short int modlitba) {
 } // _set_chvalospev_vig_vn()
 
 void _set_chvalospev_vig_sc_vpchr(short int modlitba) {
-	_set_chvalospev1(modlitba, "ch_tob13.htm", "CHVAL_TOB13,8-11VG");
+	_set_chvalospev1(modlitba, "ch_tob13.htm", "CHVAL_TOB13,8-16VG");
 	_set_chvalospev2(modlitba, "ch_iz2.htm", "CHVAL_IZ2VG");
 	_set_chvalospev3(modlitba, "ch_jer7.htm", "CHVAL_JER7VG");
 } // _set_chvalospev_vig_sc_vpchr()
@@ -2953,7 +2953,7 @@ void zaltar_zvazok(short int den, short int tyzzal, short int obdobie, short int
 
 		case DEN_PIATOK: // 4
 			// ranné chvály
-			set_zalm(2, MODL_RANNE_CHVALY, "ch_tob13.htm", "CHVAL_TOB13,8-11");
+			set_zalm(2, MODL_RANNE_CHVALY, "ch_tob13.htm", "CHVAL_TOB13,8-16");
 			set_zalm(3, MODL_RANNE_CHVALY, "z147.htm", "ZALM147,12-20");
 			// modlitba cez deň
 			set_zalmy_mcd_zaltar(den, tyzzal);
