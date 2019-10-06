@@ -15,6 +15,7 @@
     <string name="lang_c2">Cseh – domonkos</string>
     <string name="lang_sk">Szlovák</string>
     <string name="lang_hu">Magyar</string>
+    <string name="lang_la">Latin</string>
     <string name="override_locale">Rendszerszintű nyelvi beállítások felülírása</string>
 
     <string name="settings_title">Eszköz beállításai</string>

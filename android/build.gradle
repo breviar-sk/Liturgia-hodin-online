@@ -62,7 +62,14 @@ android {
       renderscript.srcDirs = ['src']
       res.srcDirs = ['res']
       assets.srcDirs = ['assets']
-      // jniLibs.srcDirs 'libs'
+    }
+    // Overrides for debug releases.
+    debug {
+      res.srcDirs = ['res.debug']
+    }
+    // Placeholders for values introduced in debug builds.
+    release {
+      res.srcDirs = ['res.release']
     }
   }
 

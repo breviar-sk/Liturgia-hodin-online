@@ -7,9 +7,11 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
@@ -68,6 +70,7 @@ public class TtsService extends Service
   static final String TTS_INIT_FAILED = "TTS_INIT_FAILED";
   static final String GOT_TEXT = "GOT_TEXT";
   static final String SYNTHESIS_DONE = "SYNTHESIS_DONE";
+  static final String SYNTHESIS_ERROR = "SYNTHESIS_ERROR";
   static final String IDLE_PROCESSING = "IDLE_PROCESSING";
 
   // Internal state.
@@ -87,6 +90,18 @@ public class TtsService extends Service
     if (state == State.IDLE) return TtsState.READY;
     if (state == State.PAUSED) return TtsState.PAUSED;
     return TtsState.SPEAKING;
+  }
+
+  void displayError() {
+    final Context parent = this;
+    Handler handler = new Handler(getMainLooper());
+    handler.post(new Runnable() {
+      public void run() {
+        CharSequence message = BreviarApp.getContextForCustomLocale(parent)
+            .getResources().getText(R.string.tts_language_not_available);
+        Toast.makeText(parent, message, Toast.LENGTH_LONG).show();
+      }
+    });
   }
 
   synchronized void processAction(Intent immediate_action) {
@@ -393,6 +408,9 @@ public class TtsService extends Service
             }
             return State.REJECT;
 
+          case SYNTHESIS_ERROR:
+            Log.v("breviar", "Synthesis error, displaying toast");
+            displayError();
           case TTS_STOP:
             if (state == State.PLAYING) stopSynthesis(TTS_STOP);
             chunks = null;
@@ -461,9 +479,7 @@ public class TtsService extends Service
     Log.v("breviar", "setTTSLanguage: " + ret);
     if (ret == TextToSpeech.LANG_NOT_SUPPORTED ||
         ret == TextToSpeech.LANG_MISSING_DATA) {
-      Toast toast = Toast.makeText(this, R.string.tts_language_not_available,
-                                   Toast.LENGTH_SHORT);
-      toast.show();
+      displayError();
       return false;
     }
 
@@ -473,7 +489,9 @@ public class TtsService extends Service
         processAction(new Intent(SYNTHESIS_DONE));
       }
       @Override
-      public void onError(String utteranceId) {}
+      public void onError(String utteranceId) {
+        processAction(new Intent(SYNTHESIS_ERROR));
+      }
       @Override
       public void onStart(String utteranceId) {}
     });
@@ -564,6 +582,7 @@ public class TtsService extends Service
       }
     }
     tts.stop();
+    Log.v("breviar", "TTS: stopped synthesis");
   }
 
   @Override

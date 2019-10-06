@@ -17,6 +17,7 @@
     <string name="lang_c2">Czech Dominicans</string>
     <string name="lang_sk">Slovak</string>
     <string name="lang_hu">Hungarian</string>
+    <string name="lang_la">Latin</string>
     <string name="override_locale">Override system-wide language settings</string>
 
     <string name="settings_title">Device settings</string>

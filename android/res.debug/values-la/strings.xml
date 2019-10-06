@@ -8,8 +8,8 @@
     <string name="pgup">Hore</string>
     <string name="pgdn">Ďalej</string>
 
-    <string name="lang_select">Jazyk</string>
-    <string name="settings">Nastavenia</string>
+    <string name="lang_select">Lingua</string>
+    <string name="settings">Occasus</string>
 
     <string name="lang_cz">Čeština</string>
     <string name="lang_c2">Čeština – dominikánsky</string>
@@ -54,15 +54,15 @@
     <string name="body_blood_sunday">Najsv. Kristovho tela a krvi sláviť v nedeľu</string>
     <string name="emphasize_local_calendar">Zvýrazniť slávenia v národnom kalendári</string>
 
-    <string name="alarms">Upozornenia</string>
+    <string name="alarms">Monita</string>
     <string name="alarmOff">nepripomínať</string>
 
-    <string name="fullscreenOn">Celá obrazovka</string>
+    <string name="fullscreenOn">Plenus ostentus</string>
 
-    <string name="nightmodeOn">Nočný režim</string>
-    <string name="nightmodeOff">Denný režim</string>
+    <string name="nightmodeOn">Nocte modus</string>
+    <string name="nightmodeOff">Diem modus</string>
 
-    <string name="onlyNonBoldFontOff">Aj tučné písmo</string>
+    <string name="onlyNonBoldFontOff">Etiam audax literis</string>
 
     <string name="navigation_drawer_open">Otvor menu</string>
     <string name="navigation_drawer_close">Zatvor menu</string>
@@ -85,7 +85,7 @@
     <string name="h12_notify">Je čas na modlitbu napoludnie!</string>
     <string name="h15_notify">Je čas na modlitbu popoludní!</string>
 
-    <string name="tts_ready">Prečítaj</string>
+    <string name="tts_ready">Recita</string>
     <string name="tts_speaking">Zastav čítanie</string>
     <string name="tts_pause">Preruš čítanie</string>
     <string name="tts_resume">Pokračuj v čítaní</string>

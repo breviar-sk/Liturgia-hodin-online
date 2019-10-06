@@ -85,6 +85,15 @@ public class BreviarApp extends Application {
     }
   }
 
+  static public Context getContextForCustomLocale(Context context) {
+    if (Build.VERSION.SDK_INT >= 17) {
+      return new CompatibilityHelper17().getContextForLocale(
+          context, currentLocale(context));
+    } else {
+      return context;
+    }
+  }
+
   static public void setBoolean(Context ctx, String key, boolean value) {
     SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
     SharedPreferences.Editor editor = settings.edit();

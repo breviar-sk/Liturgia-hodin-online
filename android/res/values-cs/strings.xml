@@ -15,6 +15,7 @@
     <string name="lang_c2">Čeština – dominikánský</string>
     <string name="lang_sk">Slovenština</string>
     <string name="lang_hu">Maďarština</string>
+    <string name="lang_la">Latinčina</string>
     <string name="override_locale">Použít tento jazyk také v ovládacích prvcích</string>
 
     <string name="settings_title">Nastavení zařízení</string>
