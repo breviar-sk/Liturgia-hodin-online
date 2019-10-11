@@ -1,7 +1,7 @@
 /************************************************************/
 /*                                                          */
 /* dbzaltar.h                                               */
-/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk          */
+/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk          */
 /*                                                          */
 /* description | contains definitions for 'database'        */
 /*               of liturgical calendars                    */
@@ -31,18 +31,18 @@ short int sviatky_svatych(short int, short int, short int, short int); // spusta
 extern short int modlitba;
 
 // anchors - nazvy kotiev pre zaltar styroch tyzdnov
-extern char _anchor[SMALL];
-
-extern char _anchor_head[SMALL];
+extern char _anchor[MAX_STR_AF_ANCHOR];
+extern char _anchor_head[MAX_STR_AF_ANCHOR];
+extern char _anchor_head_without_underscore[MAX_STR_AF_ANCHOR];
 
 extern char pismenko_modlitby(short int modlitba);
 extern void anchor_name_zaltar(short int den, short int tyzzal, short int modlitba, const char *anchor);
 extern void anchor_name_zaltar_alt(short int den, short int tyzzal, short int modlitba, const char *anchor, short int alt);
 
-extern char _file[SMALL]; // nazov súboru, napr. _1ne.htm
-extern char _file_pc[SMALL]; // nazov fajlu pre posvatne citania
-extern char _file_pc_tyzden[SMALL]; // nazov fajlu pre posvatne citania v zavislosti od tyzdna (obdobie cez rok)
-extern char _file_orig[SMALL]; // nazov súboru, do ktorého sa v prípade kompletória dočasne odloží pôvodný súbor
+extern char _file[MAX_STR_AF_FILE]; // nazov súboru, napr. _1ne.htm
+extern char _file_pc[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania
+extern char _file_pc_tyzden[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania v zavislosti od tyzdna (obdobie cez rok)
+extern char _file_orig[MAX_STR_AF_FILE]; // nazov súboru, do ktorého sa v prípade kompletória dočasne odloží pôvodný súbor
 
 // "funkcie" na store/restore pôvodného filename
 #define file_name_zapamataj()	strcpy(_file_orig, _file);
@@ -133,6 +133,8 @@ extern void _set_zalmy_vsetkych_svatych(short int modlitba);
 extern void _set_zalmy_najsv_mena_jezisovho_czop(short int modlitba);
 extern void _set_zalmy_najsv_mena_jezisovho_sk_ofm(short int modlitba);
 extern void _set_zalmy_cssr_titul(short int modlitba);
+extern void _set_zalmy_csa_augustin_obr(short int modlitba);
+extern void _set_zalmy_csa_augustin(short int modlitba);
 extern void _set_zalmy_sj_ignac(short int modlitba);
 extern void _set_zalmy_sj_vsetkych_svatych(short int modlitba);
 extern void _set_zalmy_sj_xaver(short int modlitba);
@@ -148,13 +150,16 @@ extern void _set_zalmy_pc_1_8_15(short int modlitba);
 extern void _set_zalmy_opraem_pc_1_8_21(short int modlitba);
 extern void _set_zalmy_opraem_pc_1_8_24(short int modlitba);
 extern void _set_zalmy_cm_pc_1_41_84(short int modlitba);
+extern void _set_zalmy_op_utrpenie(short int modlitba);
 extern void _set_zalmy_op_29apr(short int modlitba);
-extern void _set_zalmy_pc_1_21_92(short int modlitba);
+// extern void _set_zalmy_pc_1_21_92(short int modlitba);
 extern void _set_zalmy_pc_1_12_24(short int modlitba);
 extern void _set_zalmy_pc_15_66(short int modlitba);
+extern void _set_zalmy_pc_24_61_84(short int modlitba);
 extern void _set_zalmy_pc_40_27(short int modlitba);
 extern void _set_zalmy_pc_45_87(short int modlitba);
 extern void _set_zalmy_vesp_110_116_ef(short int modlitba);
+extern void _set_zalmy_vesp_110_122_zjv15(short int modlitba);
 extern void _set_zalmy_vesp_89_98_kol(short int modlitba);
 extern void _set_zalmy_vesp_113_146_ef(short int modlitba);
 extern void _set_zalmy_vesp_127_111_kol(short int modlitba);
@@ -197,16 +202,21 @@ extern void set_zalm(short int ktory, short int modlitba, const char *file, cons
 extern void _set_kcitanie(short int modlitba, const char *file, const char *anchor);
 extern void _set_kresponz(short int modlitba, const char *file, const char *anchor);
 
-// pri posvätnom čítaní platí magn/ben pre 2. čítanie
+// pre posvätné čítanie: 2. čítanie
 #define _set_citanie2 _set_benediktus
 
 #define _set_magnifikat _set_benediktus
-// pre kompletórium platí magn/ben pre ant. na Nunc dimittis
+
+// pre kompletórium: ant. na Nunc dimittis
 #define _set_nunc_dimittis _set_benediktus
+
+// pre kompletórium: úkon kajúcnosti
+#define _set_ukonkaj _set_prosby
 
 extern void _set_benediktus(short int modlitba, const char *file, const char *anchor);
 extern void _set_prosby(short int modlitba, const char *file, const char *anchor);
 extern void _set_modlitba(short int modlitba, const char *file, const char *anchor);
+extern void _set_maria_ant(short int modlitba, const char *file, const char *anchor);
 
 extern void _set_ant_spomprivileg(short int modlitba, const char *file, const char *anchor);
 extern void _set_modlitba_spomprivileg(short int modlitba, const char *file, const char *anchor);
@@ -217,13 +227,25 @@ extern void _set_chvalospev2(short int modlitba, const char *file, const char *a
 extern void _set_chvalospev3(short int modlitba, const char *file, const char *anchor);
 
 extern void _set_evanjelium(short int modlitba, const char *file, const char *anchor);
+
 extern void _set_chvalospev_vig_adv(short int modlitba);
 extern void _set_chvalospev_vig_vian(short int modlitba);
 extern void _set_chvalospev_vig_ocr(short int modlitba);
 extern void _set_chvalospev_vig_tk(short int modlitba);
 extern void _set_chvalospev_vig_srdca(short int modlitba);
+extern void _set_chvalospev_vig_knaza(short int modlitba);
+extern void _set_chvalospev_vig_vsetkych_svatych(short int modlitba);
+extern void _set_chvalospev_vig_krkrala(short int modlitba);
 extern void _set_chvalospev_vig_post(short int modlitba);
 extern void _set_chvalospev_vig_vn(short int modlitba);
+extern void _set_chvalospev_vig_sc_vpchr(short int modlitba);
+extern void _set_chvalospev_vig_sc_pm(short int modlitba);
+extern void _set_chvalospev_vig_sc_ap(short int modlitba);
+extern void _set_chvalospev_vig_sc_vm(short int modlitba);
+extern void _set_chvalospev_vig_sc_sm_sz(short int modlitba);
+extern void _set_chvalospev_vig_sviatok_obetovania(short int modlitba);
+extern void _set_chvalospev_vig_sc_pm_ocd(short int modlitba);
+extern void _set_chvalospev_vig_sc_sm_ocd(short int modlitba);
 
 extern const char *html_title[POCET_JAZYKOV + 1];
 
@@ -506,6 +528,13 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_set_hymnus(modlitba, _file, _anchor); \
 	set_LOG_svsv;}
 
+// hymnus (napr. pre posv. čítanie) ako na ranné chvály
+#define _vlastna_cast_hymnus_ako_na_rchvaly(modlitba, litobd) {\
+	_set_hymnus_alternativy_NO(modlitba, litobd);\
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_RANNE_CHVALY), ANCHOR_HYMNUS); \
+	_set_hymnus(modlitba, _file, _anchor); \
+	set_LOG_svsv;}
+
 // antifóny
 #define _vlastna_cast_antifony {\
 	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
@@ -673,7 +702,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_vlastna_cast_modlitba;\
 }
 
-#define _vlastna_cast_full_okrem_prosieb_a_hymnu(modl) {\
+#define _vlastna_cast_full_okrem_hymnu_a_prosieb(modl) {\
 	_vlastna_cast_antifony;\
 	if(modl == MODL_POSV_CITANIE){_vlastna_cast_1citanie;}\
 	else {_vlastna_cast_kcitanie;}\
@@ -696,6 +725,16 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_vlastna_cast_modlitba;\
 }
 
+#define _vlastna_cast_full_okrem_hymnu_kresp_a_prosieb(modl) {\
+	_vlastna_cast_antifony;\
+	if(modl == MODL_POSV_CITANIE){_vlastna_cast_1citanie;}\
+	else {_vlastna_cast_kcitanie;}\
+	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
+	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
+	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_modlitba;\
+}
+
 #define _vlastna_cast_full_okrem_antifon_a_prosieb(modl) {\
 	_vlastna_cast_hymnus(modl, _global_den.litobd);\
 	if(modl == MODL_POSV_CITANIE){_vlastna_cast_1citanie;}\
@@ -704,6 +743,15 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
 	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
 	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_modlitba;\
+}
+
+#define _vlastna_cast_full_okrem_antifon_a_kcit_kresp(modl) {\
+	_vlastna_cast_hymnus(modl, _global_den.litobd);\
+	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
+	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
+	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_prosby;\
 	_vlastna_cast_modlitba;\
 }
 
@@ -728,6 +776,26 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_vlastna_cast_modlitba;\
 }
 
+#define _vlastna_cast_full_okrem_hymnu_a_kcit_kresp(modl) {\
+	_vlastna_cast_antifony;\
+	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
+	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
+	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_prosby;\
+	_vlastna_cast_modlitba;\
+}
+
+#define _vlastna_cast_full_okrem_hymnu_a_kresp(modl) {\
+	_vlastna_cast_antifony;\
+	if(modl == MODL_POSV_CITANIE){_vlastna_cast_1citanie;}\
+	else {_vlastna_cast_kcitanie;}\
+	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
+	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
+	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_prosby;\
+	_vlastna_cast_modlitba;\
+}
+
 #define _vlastna_cast_full_okrem_kresp(modl) {\
 	_vlastna_cast_hymnus(modl, _global_den.litobd);\
 	_vlastna_cast_antifony;\
@@ -740,6 +808,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_vlastna_cast_modlitba;\
 }
 
+// _vlastna_cast_full_okrem_kcit == _vlastna_cast_full_okrem_1cit pre MODL_POSV_CITANIE
 #define _vlastna_cast_full_okrem_kcit(modl) {\
 	_vlastna_cast_hymnus(modl, _global_den.litobd);\
 	_vlastna_cast_antifony;\
@@ -768,6 +837,16 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
 	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
 	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_modlitba;\
+}
+
+#define _vlastna_cast_full_okrem_kcit_kresp(modl) {\
+	_vlastna_cast_hymnus(modl, _global_den.litobd);\
+	_vlastna_cast_antifony;\
+	if(modl == MODL_RANNE_CHVALY){_vlastna_cast_benediktus;}\
+	else if((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)){_vlastna_cast_magnifikat;}\
+	else if(modl == MODL_POSV_CITANIE){_vlastna_cast_2citanie;}\
+	_vlastna_cast_prosby;\
 	_vlastna_cast_modlitba;\
 }
 
@@ -809,16 +888,6 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define	_spolocna_cast_antifona_inv(m) {\
 	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(m) || ((force & FORCE_BRAT_ANTIFONY_INV) == FORCE_BRAT_ANTIFONY_INV)){\
 		_vlastna_cast_antifona_inv;\
-	}\
-}
-
-// pre invitatórium, ak je antifón viacero, napr. pre PM, ofícium na posviacku chrámu a pod.
-#define _spolocna_cast_antifona_inv_viac(m, kolko) {\
-	if(su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(m) || ((force & FORCE_BRAT_ANTIFONY_INV) == FORCE_BRAT_ANTIFONY_INV)){\
-		sprintf(_anchor, "%s%c%s%d", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1, (_global_den.den MOD kolko) + 1);\
-		if(modlitba == MODL_POSV_CITANIE){_set_antifona1(modlitba, _file_pc, _anchor);}\
-		else{_set_antifona1(modlitba, _file, _anchor);}\
-		set_LOG_svsv;\
 	}\
 }
 
@@ -1032,6 +1101,68 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 /* ---------------------------------------------------------------------------------------------------- */
 
+#define _spolocna_cast_set_vig_ant_sm_sz() { \
+	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_SV_MUZ], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
+	_set_antifona_vig(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_SV_MUZ], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _spolocna_cast_set_vig_ev_sm_sz() { \
+	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_SV_MUZ], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_SV_MUZ], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _spolocna_cast_set_vig_ev_jm_vm() { \
+	sprintf(_anchor, "%s_%c%s", ANCHOR_SPOL_CAST_JEDEN_MUCENIK, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_MUCENIK], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _spolocna_cast_set_vig_ev_dp() { \
+	sprintf(_anchor, "%s_%c%s", ANCHOR_SPOL_CAST_DUCH_PAST, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_DUCH_PAST_KNAZ], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _spolocna_cast_set_vig_ev_pm() { \
+	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_PANNA_MARIA], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_PANNA_MARIA], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _spolocna_cast_set_vig_ev_uc() { \
+	sprintf(_anchor, "%s_%c%s", nazov_spolc_ANCHOR[MODL_SPOL_CAST_UCITEL_CIRKVI], pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, nazov_spolc_htm[MODL_SPOL_CAST_UCITEL_CIRKVI], _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+// _anchor_head pre spoločné časti obsahuje už aj underscore; spoločné časti používajú súbor _file (nie _file_pc)
+#define _spolocna_cast_set_vig_ant(vlastny_anchor) { \
+	sprintf(_anchor, "%s%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
+	_set_antifona_vig(modlitba, _file, _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _spolocna_cast_set_vig_ev(vlastny_anchor) { \
+	sprintf(_anchor, "%s%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, _file, _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+// tak isto aj _anchor_head pre vlastné slávenie sviatkov svätých (kalendar.cpp) obsahuje underscore
+#define _vlastna_cast_vig_ant(_anchor_head) { \
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
+	_set_antifona_vig(modlitba, _file_pc, _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _vlastna_cast_vig_ev(_anchor_head) { \
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, _file_pc, _anchor); \
+	set_LOG_litobd_pc; \
+}
+
 #define _vlastne_slavenie_set_vig_ant(vlastny_anchor) { \
 	sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA_VIG); \
 	_set_antifona_vig(modlitba, _file_pc, _anchor); \
@@ -1040,6 +1171,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 #define _vlastne_slavenie_set_vig_ev(vlastny_anchor) { \
 	sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, _file_pc, _anchor); \
+	set_LOG_litobd_pc; \
+}
+
+#define _vlastne_slavenie_set_vig_ev_litrok(vlastny_anchor, litrok) { \
+	sprintf(_anchor, "%s_%c%s%c", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM, litrok); \
 	_set_evanjelium(modlitba, _file_pc, _anchor); \
 	set_LOG_litobd_pc; \
 }
@@ -1056,9 +1193,14 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_litobd_pc; \
 }
 
+// 1., 2. a 3. Adventná nedeľa = 3., 4. a 5. Cezročná nedeľa
+// 4. Adventná nedeľa = 6. Cezročná nedeľa
+// Pôstne obdobie má svoje čítania
+// 2., 3., 4., 5., 6. a 7. Veľkonočná nedeľa = 2., 3., 4., 5., 6. a 7. Cezročná nedeľa
 #define _liturgicke_obdobie_set_vig_ev_tyzden(modlitba, tyzden) { \
-	sprintf(_anchor, "%s%d_%c%s", nazov_OBD[litobd], tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
-	_set_evanjelium(modlitba, _file_pc, _anchor); \
+	sprintf(_anchor, "%s%d_%c%s", ((litobd != OBD_POSTNE_I) ? nazov_OBD[OBD_CEZ_ROK] : nazov_OBD[litobd]), \
+		((litobd == OBD_ADVENTNE_I) || (litobd == OBD_ADVENTNE_II)) ? tyzden + 2 : tyzden, pismenko_modlitby(modlitba), ANCHOR_EVANJELIUM); \
+	_set_evanjelium(modlitba, ((litobd == OBD_POSTNE_I) ? _file_pc : nazov_obd_htm_pc[OBD_CEZ_ROK]), _anchor); \
 	set_LOG_litobd_pc; \
 }
 
@@ -1086,7 +1228,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 /* ---------------------------------------------------------------------------------------------------- */
 
-// krátke čítanie
+// krátke čítanie, krátke responzórium, príp. responzórium a 1. čítanie pre modlitbu posv. čítania
 #define _vlastna_cast_kcitanie_ve {\
 	sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE, VELKONOCNA_PRIPONA);\
 	_set_kcitanie(modlitba, _file, _anchor);\
@@ -1104,6 +1246,49 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_svsv;\
 }
 
+#define _vlastna_cast_kresponz_po_ve {\
+	if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {\
+		_vlastna_cast_kresponz_ve;\
+	}\
+	else if ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN)) {\
+		_vlastna_cast_kresponz_po;\
+	}\
+}
+
+#define _vlastna_cast_kresponz_ve_obd {\
+	if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {\
+		_vlastna_cast_kresponz_ve;\
+	}\
+	else {\
+		_vlastna_cast_kresponz;\
+	}\
+}
+
+#define _vlastna_cast_kcitanie_ve_obd {\
+	if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {\
+		_vlastna_cast_kcitanie_ve;\
+	}\
+	else {\
+		_vlastna_cast_kcitanie;\
+	}\
+}
+
+#define _vlastna_cast_1citanie_ve {\
+	sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE1, VELKONOCNA_PRIPONA);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
+	set_LOG_svsv;\
+}
+
+#define _vlastna_cast_1citanie_ve_obd {\
+	if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {\
+		_vlastna_cast_1citanie_ve;\
+	}\
+	else {\
+		_vlastna_cast_1citanie;\
+	}\
+}
+
+// vlastná časť -- modlitba cez deň
 #define _vlastna_cast_mcd_ant_kcitresp_modl {\
 	modlitba = MODL_PREDPOLUDNIM;\
 	_vlastna_cast_antifony_rovnake;\
@@ -1119,6 +1304,18 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_vlastna_cast_antifony_rovnake;\
 	_vlastna_cast_kcitanie;\
 	_vlastna_cast_kresponz;\
+	_vlastna_cast_modlitba;\
+}
+
+#define _vlastna_cast_mcd_ant_modl {\
+	modlitba = MODL_PREDPOLUDNIM;\
+	_vlastna_cast_antifony_rovnake;\
+	_vlastna_cast_modlitba;\
+	modlitba = MODL_NAPOLUDNIE;\
+	_vlastna_cast_antifony_rovnake;\
+	_vlastna_cast_modlitba;\
+	modlitba = MODL_POPOLUDNI;\
+	_vlastna_cast_antifony_rovnake;\
 	_vlastna_cast_modlitba;\
 }
 
@@ -1237,6 +1434,10 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 /* #define END -------------------------------------------------------------------------------------------------------------------- */
 
+// substring for special cases (even, odd weeks in CZ)
+#define CZ_WEEK_EVEN   "SUDY"
+#define CZ_WEEK_ODD    "LICHY"
+
 // prefixes for special cases (anchors)
 #define CZ_HYMNUS_PREFIX    "CZ_"
 
@@ -1247,26 +1448,27 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define CEZROCNA_PRIPONA    "CR"
 
 // anchor identifiers
-#define ANCHOR_POPIS        "POPIS"
-#define ANCHOR_HYMNUS       "HYMNUS"
-#define ANCHOR_ANTIFONA1    "ANT1"
-#define ANCHOR_ANTIFONA2    "ANT2"
-#define ANCHOR_ANTIFONA3    "ANT3"
-#define ANCHOR_ANTIFONY     "ANTx" // pridané 2007-10-02 pre rovnaké antifóny 1., 2. a 3. - modlitba cez deň
-#define ANCHOR_ANTIFONA1V   "ANT1V"
-#define ANCHOR_ANTIFONA2V   "ANT2V"
-#define ANCHOR_ANTIFONA3V   "ANT3V"
-#define ANCHOR_KCITANIE     "CIT"
-#define ANCHOR_KRESPONZ     "RESP"
-#define ANCHOR_MAGNIFIKAT   "MAGNIFIKAT" // antifóna na Magnifikat
-#define ANCHOR_BENEDIKTUS   "BENEDIKTUS" // antifóna na Benediktus
+#define ANCHOR_POPIS         "POPIS"
+#define ANCHOR_HYMNUS        "HYMNUS"
+#define ANCHOR_ANTIFONA1     "ANT1"
+#define ANCHOR_ANTIFONA2     "ANT2"
+#define ANCHOR_ANTIFONA3     "ANT3"
+#define ANCHOR_ANTIFONY      "ANTx" // pridané 2007-10-02 pre rovnaké antifóny 1., 2. a 3. - modlitba cez deň
+#define ANCHOR_ANTIFONA1V    "ANT1V"
+#define ANCHOR_ANTIFONA2V    "ANT2V"
+#define ANCHOR_ANTIFONA3V    "ANT3V"
+#define ANCHOR_KCITANIE      "CIT"
+#define ANCHOR_KRESPONZ      "RESP"
+#define ANCHOR_MAGNIFIKAT    "MAGNIFIKAT" // antifóna na Magnifikat
+#define ANCHOR_BENEDIKTUS    "BENEDIKTUS" // antifóna na Benediktus
 #define ANCHOR_NUNC_DIMITTIS "NUNCDIMITTIS" // antifóna na Nunc dimittis
-#define ANCHOR_PROSBY       "PROSBY"
-#define ANCHOR_MODLITBA     "MODLITBA"
-#define ANCHOR_CITANIE1     "CIT1"
-#define ANCHOR_CITANIE2     "CIT2"
-#define ANCHOR_ANTIFONA_VIG "ANTVG"
-#define ANCHOR_EVANJELIUM   "EV"
+#define ANCHOR_PROSBY        "PROSBY"
+#define ANCHOR_MODLITBA      "MODLITBA"
+#define ANCHOR_CITANIE1      "CIT1"
+#define ANCHOR_CITANIE2      "CIT2"
+#define ANCHOR_ANTIFONA_VIG  "ANTVG"
+#define ANCHOR_EVANJELIUM    "EV"
+#define ANCHOR_UKON_KAJ      "UKONKAJ" // úkon kajúcnosti -- act of repentance
 
 // special identifiers + filename indentifiers (tuples)
 #define SPOM_PM_SOBOTA "SPMVS"
@@ -1296,6 +1498,9 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define ANCHOR_SRDCA_PM "SRDCAPM"
 #define FILE_SRDCA_PM "nspm.htm"
 
+#define ANCHOR_MARIE_MATKY_CIRKVI "PMMC"
+#define FILE_MARIE_MATKY_CIRKVI "pmmc.htm"
+
 #define ANCHOR_PM_BOHOROD "PMB"
 #define FILE_PM_BOHOROD "pmb.htm"
 
@@ -1314,10 +1519,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 #define FILE_DODATOK_PROSBY "dodprosby.htm"
 
-#define ANCHOR_MARIANSKE_ANTIFONY "MARIANSKE_ANTIFONY"
+#define ANCHOR_MARIANSKE_ANTIFONY "MARIANSKE-ANTIFONY"
 #define FILE_MARIANSKE_ANTIFONY "ord_km.htm"
 
 #define ANCHOR_ORDINARIUM "ORDINARIUM"
+
+#define ANCHOR_INFO "INFO"
 
 #define ANCHOR_CSSR_TITUL "TITUL"
 
@@ -1339,7 +1546,7 @@ extern const char *text_JAN_20_2[POCET_JAZYKOV + 1];
 extern const char *text_JAN_20_HU[POCET_JAZYKOV + 1];
 extern const char *text_JAN_21[POCET_JAZYKOV + 1];
 extern const char *text_JAN_22[POCET_JAZYKOV + 1];
-extern const char *text_JAN_22_HU[POCET_JAZYKOV + 1];
+extern const char *text_JAN_22_OFM_HU[POCET_JAZYKOV + 1];
 extern const char *text_JAN_23_SK[POCET_JAZYKOV + 1];
 extern const char *text_JAN_24[POCET_JAZYKOV + 1];
 extern const char *text_JAN_25[POCET_JAZYKOV + 1];
@@ -1431,6 +1638,7 @@ extern const char *text_MAJ_25_2[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_25_3[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_26[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_27[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_29[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_30_CZ[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_30_HU[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_31[POCET_JAZYKOV + 1];
@@ -1444,6 +1652,7 @@ extern const char *text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1];
 extern const char *text_KRISTA_KRALA[POCET_JAZYKOV + 1];
 extern const char *text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1];
 extern const char *text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1];
+extern const char *text_MARIE_MATKY_CIRKVI[POCET_JAZYKOV + 1];
 extern const char *text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1];
 extern const char *text_NARODENIE_PANA[POCET_JAZYKOV + 1];
 extern const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1];
@@ -1460,6 +1669,7 @@ extern const char *text_JUN_02[POCET_JAZYKOV + 1];
 extern const char *text_JUN_03[POCET_JAZYKOV + 1];
 extern const char *text_JUN_04_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUN_05[POCET_JAZYKOV + 1];
+extern const char *text_JUN_05_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUN_06[POCET_JAZYKOV + 1];
 extern const char *text_JUN_08_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUN_09[POCET_JAZYKOV + 1];
@@ -1495,8 +1705,6 @@ extern const char *text_JUL_05_LA[POCET_JAZYKOV + 1];
 extern const char *text_JUL_05_SK_CZ[POCET_JAZYKOV + 1];
 extern const char *text_JUL_05_BY[POCET_JAZYKOV + 1];
 extern const char *text_JUL_06[POCET_JAZYKOV + 1];
-extern const char *text_JUL_06_CZOP[POCET_JAZYKOV + 1];
-extern const char *text_JUL_08_HU[POCET_JAZYKOV + 1];
 extern const char *text_JUL_09[POCET_JAZYKOV + 1];
 extern const char *text_JUL_11[POCET_JAZYKOV + 1];
 extern const char *text_JUL_13[POCET_JAZYKOV + 1];
@@ -1605,7 +1813,7 @@ extern const char *text_OKT_08_HU[POCET_JAZYKOV + 1];
 extern const char *text_OKT_09_1[POCET_JAZYKOV + 1];
 extern const char *text_OKT_09_2[POCET_JAZYKOV + 1];
 extern const char *text_OKT_11[POCET_JAZYKOV + 1];
-extern const char *text_OKT_11_SK[POCET_JAZYKOV + 1];
+extern const char *text_OKT_10_SK[POCET_JAZYKOV + 1];
 extern const char *text_OKT_12_CZ[POCET_JAZYKOV + 1];
 extern const char *text_OKT_14[POCET_JAZYKOV + 1];
 extern const char *text_OKT_15[POCET_JAZYKOV + 1];
@@ -1651,6 +1859,7 @@ extern const char *text_NOV_16_BY[POCET_JAZYKOV + 1];
 extern const char *text_NOV_17[POCET_JAZYKOV + 1];
 extern const char *text_NOV_18[POCET_JAZYKOV + 1];
 extern const char *text_NOV_20_SK[POCET_JAZYKOV + 1];
+extern const char *text_NOV_20_SK_2[POCET_JAZYKOV + 1];
 extern const char *text_NOV_20_BY[POCET_JAZYKOV + 1];
 extern const char *text_NOV_21[POCET_JAZYKOV + 1];
 extern const char *text_NOV_22[POCET_JAZYKOV + 1];
@@ -1702,6 +1911,7 @@ extern const char *text_JAN_29_SVD[POCET_JAZYKOV + 1];
 extern const char *text_JUN_12_SVD[POCET_JAZYKOV + 1]; // HU
 
 // --------------- SDB propriá ---------------
+extern const char *text_JAN_08_SDB[POCET_JAZYKOV + 1];
 extern const char *text_JAN_15_SDB[POCET_JAZYKOV + 1];
 extern const char *text_JAN_22_SDB[POCET_JAZYKOV + 1];
 extern const char *text_JAN_24_SDB[POCET_JAZYKOV + 1];
@@ -1773,13 +1983,14 @@ extern const char *text_NOV_26_SJ[POCET_JAZYKOV + 1];
 extern const char *text_DEC_01_SJ[POCET_JAZYKOV + 1];
 extern const char *text_DEC_03_SJ[POCET_JAZYKOV + 1];
 
-// --------------- OFM propriá ---------------
+// --------------- OFM + OFMCap propriá ---------------
 extern const char *text_JAN_04_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_05_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_12_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_14_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_16_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_20_OFM[POCET_JAZYKOV + 1];
+extern const char *text_JAN_29_OFMCONV[POCET_JAZYKOV + 1];
 extern const char *text_JAN_30_OFM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_04_OFM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_06_OFM[POCET_JAZYKOV + 1];
@@ -1790,6 +2001,7 @@ extern const char *text_MAR_02_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAR_12_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAR_18_OFM[POCET_JAZYKOV + 1];
 extern const char *text_APR_21_OFM[POCET_JAZYKOV + 1];
+extern const char *text_APR_22_OFM[POCET_JAZYKOV + 1];
 extern const char *text_APR_23_OFM[POCET_JAZYKOV + 1];
 extern const char *text_APR_24_OFM[POCET_JAZYKOV + 1];
 extern const char *text_APR_28_OFM[POCET_JAZYKOV + 1];
@@ -1807,10 +2019,13 @@ extern const char *text_MAJ_17_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_18_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_19_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_20_OFM[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_21_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_24_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_28_OFM[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_27_OFM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_30_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_02_OFM[POCET_JAZYKOV + 1];
+extern const char *text_JUN_07_OFMCONV[POCET_JAZYKOV + 1];
 extern const char *text_JUN_08_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_12_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_12_2_OFM[POCET_JAZYKOV + 1];
@@ -1821,6 +2036,7 @@ extern const char *text_JUN_16_1_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_16_2_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_17_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_26_OFM[POCET_JAZYKOV + 1];
+extern const char *text_JUN_26_2_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_30_OFM[POCET_JAZYKOV + 1];
 extern const char *text_NEPOSKVRNENEHO_SRDCA_PM_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUL_08_OFM[POCET_JAZYKOV + 1];
@@ -1837,6 +2053,7 @@ extern const char *text_JUL_24_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUL_27_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUL_28_OFM[POCET_JAZYKOV + 1];
 extern const char *text_JUL_30_SK_OFM[POCET_JAZYKOV + 1];
+extern const char *text_JUL_30_OFMCAP[POCET_JAZYKOV + 1];
 extern const char *text_AUG_02_OFM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_07_OFM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_08_OFM[POCET_JAZYKOV + 1];
@@ -1858,10 +2075,12 @@ extern const char *text_SEP_18_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_19_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_22_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_23_OFM[POCET_JAZYKOV + 1];
+extern const char *text_SEP_24_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_25_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_26_OFM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_28_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_04_OFM[POCET_JAZYKOV + 1];
+extern const char *text_OKT_05_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_06_HU_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_10_HU_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_11_OFM[POCET_JAZYKOV + 1];
@@ -1874,9 +2093,11 @@ extern const char *text_OKT_23_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_25_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_26_OFM[POCET_JAZYKOV + 1];
 extern const char *text_OKT_30_HU_OFM[POCET_JAZYKOV + 1];
-extern const char *text_OKT_31_OFM[POCET_JAZYKOV + 1];
+extern const char *text_OKT_31_OFMCAP[POCET_JAZYKOV + 1];
 extern const char *text_NOV_03_OFM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_06_OFM[POCET_JAZYKOV + 1];
+extern const char *text_NOV_06_1_OFMCAP[POCET_JAZYKOV + 1];
+extern const char *text_NOV_06_2_OFMCAP[POCET_JAZYKOV + 1];
 extern const char *text_NOV_08_OFM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_13_OFM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_14_OFM[POCET_JAZYKOV + 1];
@@ -1889,8 +2110,10 @@ extern const char *text_NOV_28_OFM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_29_OFM[POCET_JAZYKOV + 1];
 extern const char *text_DEC_02_1_OFM[POCET_JAZYKOV + 1];
 extern const char *text_DEC_02_2_OFM[POCET_JAZYKOV + 1];
+extern const char *text_DEC_10_OFMCAP[POCET_JAZYKOV + 1];
 
 // --------------- OP propriá ---------------
+extern const char *text_JAN_03_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_10_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_10_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_11_OP[POCET_JAZYKOV + 1];
@@ -1912,6 +2135,7 @@ extern const char *text_FEB_18_OP[POCET_JAZYKOV + 1];
 extern const char *text_FEB_19_OP[POCET_JAZYKOV + 1];
 extern const char *text_FEB_20_OP[POCET_JAZYKOV + 1];
 extern const char *text_FEB_24_OP[POCET_JAZYKOV + 1];
+extern const char *text_FEB_24_OP_2[POCET_JAZYKOV + 1];
 extern const char *text_APR_10_OP[POCET_JAZYKOV + 1];
 extern const char *text_APR_13_OP[POCET_JAZYKOV + 1];
 extern const char *text_APR_14_OP[POCET_JAZYKOV + 1];
@@ -1922,11 +2146,12 @@ extern const char *text_APR_19_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_APR_20_OP[POCET_JAZYKOV + 1];
 extern const char *text_APR_27_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_04_OP[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_04_OP_2[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_07_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_08_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_10_OP[POCET_JAZYKOV + 1];
-extern const char *text_MAJ_11_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_12_OP[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_13_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_15_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_15_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_19_OP[POCET_JAZYKOV + 1];
@@ -1943,6 +2168,7 @@ extern const char *text_JUN_08_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUN_10_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUN_12_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUN_18_OP[POCET_JAZYKOV + 1];
+extern const char *text_JUN_20_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUN_23_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUL_04_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_JUL_04_2_OP[POCET_JAZYKOV + 1];
@@ -1968,6 +2194,8 @@ extern const char *text_AUG_26_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_02_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_02_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_04_OP[POCET_JAZYKOV + 1];
+extern const char *text_SEP_05_1_OP[POCET_JAZYKOV + 1];
+extern const char *text_SEP_05_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_06_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_06_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_SEP_18_OP[POCET_JAZYKOV + 1];
@@ -2014,7 +2242,7 @@ extern const char *text_FEB_04_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_10_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_17_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_18_OPRAEM[POCET_JAZYKOV + 1];
-extern const char *text_APR_24_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_APR_24_AUG[POCET_JAZYKOV + 1];
 extern const char *text_APR_26_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_02_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1];
@@ -2025,8 +2253,8 @@ extern const char *text_JUL_14_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_13_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_16_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_AUG_21_OPRAEM[POCET_JAZYKOV + 1];
-extern const char *text_AUG_27_OPRAEM[POCET_JAZYKOV + 1];
-extern const char *text_AUG_28_OPRAEM[POCET_JAZYKOV + 1];
+extern const char *text_AUG_27_AUG[POCET_JAZYKOV + 1];
+extern const char *text_AUG_28_AUG[POCET_JAZYKOV + 1];
 extern const char *text_AUG_30_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_12_OPRAEM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_18_OPRAEM[POCET_JAZYKOV + 1];
@@ -2078,6 +2306,7 @@ extern const char *text_SEP_12_OCD[POCET_JAZYKOV + 1];
 extern const char *text_SEP_17_OCD[POCET_JAZYKOV + 1];
 extern const char *text_OKT_01_OCD[POCET_JAZYKOV + 1];
 extern const char *text_OKT_15_OCD[POCET_JAZYKOV + 1];
+extern const char *text_OKT_30_OCD[POCET_JAZYKOV + 1];
 extern const char *text_NOV_06_OCD[POCET_JAZYKOV + 1];
 extern const char *text_NOV_07_OCD[POCET_JAZYKOV + 1];
 extern const char *text_NOV_08_OCD[POCET_JAZYKOV + 1];
@@ -2094,8 +2323,8 @@ extern const char *text_JAN_04_CM[POCET_JAZYKOV + 1];
 extern const char *text_JAN_25_CM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_01_CM[POCET_JAZYKOV + 1];
 extern const char *text_FEB_18_CM[POCET_JAZYKOV + 1];
-extern const char *text_MAR_15_CM[POCET_JAZYKOV + 1];
 extern const char *text_APR_26_CM[POCET_JAZYKOV + 1];
+extern const char *text_MAJ_09_CM[POCET_JAZYKOV + 1];
 extern const char *text_MAJ_23_CM[POCET_JAZYKOV + 1];
 extern const char *text_JUN_26_CM[POCET_JAZYKOV + 1];
 extern const char *text_JUL_30_CM[POCET_JAZYKOV + 1];
@@ -2105,6 +2334,10 @@ extern const char *text_SEP_11_CM[POCET_JAZYKOV + 1];
 extern const char *text_SEP_27_CM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_27_CM[POCET_JAZYKOV + 1];
 extern const char *text_NOV_28_CM[POCET_JAZYKOV + 1];
+
+// --------------- CSA propriá ---------------
+extern const char *text_JAN_09_CSA[POCET_JAZYKOV + 1];
+extern const char *text_DEC_09_CSA[POCET_JAZYKOV + 1];
 
 extern short int pocet_multi(char *_anchor, long type);
 

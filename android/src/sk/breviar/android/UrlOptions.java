@@ -20,6 +20,8 @@ public class UrlOptions {
     params = new java.util.HashMap<String, String>();
 
     Pattern p = Pattern.compile("(^|&)([^;=]+)=");
+    if (base_uri == null) return;
+    if (base_uri.getQuery() == null) return;
     Matcher m = p.matcher(base_uri.getQuery());
     while (m.find()) {
       String key = m.group(2);
@@ -38,14 +40,22 @@ public class UrlOptions {
     params.putAll(other.params);
   }
 
-  public String build(boolean build_query_only) {
+  public Uri.Builder getBuilder() {
     Uri.Builder builder = new Uri.Builder();
     builder.scheme(base_uri.getScheme());
     builder.encodedAuthority(base_uri.getEncodedAuthority());
-    builder.appendEncodedPath(base_uri.getEncodedPath().replaceAll("^/", ""));
+    String encoded_path = base_uri.getEncodedPath();
+    if (encoded_path != null) {
+      builder.appendEncodedPath(base_uri.getEncodedPath().replaceAll("^/", ""));
+    }
     for (Map.Entry<String, String> entry : params.entrySet()) {
       builder.appendQueryParameter(entry.getKey(), entry.getValue());
     }
+    return builder;
+  }
+
+  public String build(boolean build_query_only) {
+    Uri.Builder builder = getBuilder();
     String result;
     if (build_query_only) {
       result = "&amp;" + builder.build().getEncodedQuery().replaceAll("&", "&amp;");
@@ -78,6 +88,15 @@ public class UrlOptions {
     setBit("o0", 7, value);
   }
 
+  // of0bf
+  public boolean isBlindFriendly() {
+    return hasBit("o0", 8);
+  }
+
+  public void setBlindFriendly(boolean value) {
+    setBit("o0", 8, value);
+  }
+
   // of0v
   public boolean isVerseNumbering() {
     return hasBit("o0", 0);
@@ -94,6 +113,15 @@ public class UrlOptions {
 
   public void setBibleReferences(boolean value) {
     setBit("o0", 1, value);
+  }
+
+  // of0bc
+  public boolean isBibleRefBibleCom() {
+    return hasBit("o0", 12);
+  }
+
+  public void setBibleRefBibleCom(boolean value) {
+    setBit("o0", 12, value);
   }
 
   // of0ff
@@ -186,15 +214,6 @@ public class UrlOptions {
     setBit("o2", 5, value);
   }
 
-  // of2tw
-  public boolean isTextWrap() {
-    return hasBit("o2", 6);
-  }
-
-  public void setTextWrap(boolean value) {
-    setBit("o2", 6, value);
-  }
-
   // of2btnu
   public boolean isSmartButtons() {
     return hasBit("o2", 7);
@@ -211,15 +230,6 @@ public class UrlOptions {
 
   public void setNightmode(boolean value) {
     setBit("o2", 8, value);
-  }
-
-  // of2bo
-  public boolean isBackgroundOverride() {
-    return hasBit("o2", 16);
-  }
-
-  public void setBackgroundOverride(boolean value) {
-    setBit("o2", 16, value);
   }
 
   // of2rm

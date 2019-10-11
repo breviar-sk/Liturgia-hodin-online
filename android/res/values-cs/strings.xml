@@ -3,66 +3,69 @@
     <string name="app_name">Breviář</string>
     <string name="back">Zpátky</string>
     <string name="forward">Vpřed</string>
-    <string name="menu">Menu</string>
+    <string name="menu">Breviář</string>
     <string name="today">Dnes</string>
     <string name="pgup">Nahoru</string>
     <string name="pgdn">Dál</string>
 
-    <string name="lang_select">Nastavení</string>
+    <string name="lang_select">Jazyk</string>
+    <string name="settings">Nastavení</string>
 
-    <string name="lang_select_title">Jazyk:</string>
     <string name="lang_cz">Čeština</string>
+    <string name="lang_c2">Čeština – dominikánský</string>
     <string name="lang_sk">Slovenština</string>
     <string name="lang_hu">Maďarština</string>
+    <string name="lang_la">Latinčina</string>
     <string name="override_locale">Použít tento jazyk také v ovládacích prvcích</string>
 
-    <string name="settings_title">Nastavení zařízení:</string>
-    <string name="vol_buttons">použít tlačítka hlasitosti na listování</string>
-    <string name="dimlock">nezhasínat obrazovku</string>
-    <string name="mute">vypnout zvonění</string>
-    <string name="long_click_toggles_bar">dlouhé stlačení skryje navigační lištu</string>
-    <string name="transparent_nav">navigační šipka v textu</string>
+    <string name="settings_title">Nastavení zařízení</string>
+    <string name="vol_buttons">Použít tlačítka hlasitosti na listování</string>
+    <string name="dimlock">Nezhasínat obrazovku</string>
+    <string name="mute">Vypnout zvonění</string>
+    <string name="long_click_toggles_bar">Dlouhé stlačení skryje navigační lištu</string>
+    <string name="transparent_nav">Navigační šipka v textu</string>
 
-    <string name="prayer_content_settings1_title">Obsah modlitieb:</string>
-    <string name="various_options_in_prayers">rozličné volby v textech modliteb jako klikatelné odkazy</string>
-    <string name="alternatives">alternativy</string>
+    <string name="prayer_settings_title">Obsah modliteb</string>
+    <string name="prayer_content_settings_title">Obsah modliteb</string>
+    <string name="various_options_in_prayers">Rozličné volby v textech modliteb jako klikatelné odkazy</string>
+    <string name="alternatives">Alternativy</string>
 
-    <string name="prayer_content_settings_title">V textu modliteb zobrazit:</string>
-    <string name="display_communia_info">info, odkud se berou společné texty</string>
-    <string name="verse_numbering">číslování veršů</string>
-    <string name="bible_references">biblické odkazy</string>
-    <string name="footnotes">poznámky (v textu, pod čarou)</string>
-    <string name="liturgical_readings">liturgická čtení</string>
-    <string name="psalms_omisions">vynechávky ze žalmů</string>
+    <string name="prayer_display_settings_title">V textu modliteb zobrazit</string>
+    <string name="display_communia_info">Info, odkud se berou společné texty</string>
+    <string name="verse_numbering">Číslování veršů</string>
+    <string name="bible_references">Biblické odkazy</string>
+    <string name="bible_ref_bible_com">Biblické odkazy (YouVersion)</string>
+    <string name="footnotes">Poznámky (v textu, pod čarou)</string>
+    <string name="liturgical_readings">Mešní čtení</string>
+    <string name="psalms_omissions">Vynechávky ze žalmů</string>
 
-    <string name="display_settings_title">Další zobrazení:</string>
-    <string name="first_vespers_buttons">zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení</string>
-    <string name="navigation">zobrazit navigaci v textech modliteb</string>
-    <string name="wrapping_printed">zalomit dlouhé řádky poetických textů jako v tištěném vydání</string>
-    <string name="smart_buttons">tlačítka pro modlitby zobrazit úsporně</string>
-    <string name="night_mode">noční režim</string>
-    <string name="background_override">bílé/černé pozadí (projektor/AMOLED)</string>
-    <string name="normal_font">všude použít obyčejné písmo (ne tučné)</string>
-    <string name="buttons_order">navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby</string>
+    <string name="display_settings_title">Další zobrazení</string>
+    <string name="first_vespers_buttons">Zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení</string>
+    <string name="navigation">Zobrazit navigaci v textech modliteb</string>
+    <string name="smart_buttons">Tlačítka pro modlitby zobrazit úsporně</string>
+    <string name="night_mode">Noční režim</string>
+    <string name="background_override">Alternativní barva pozadí (žlutá)</string>
+    <string name="normal_font">Všude použít obyčejné písmo (ne tučné)</string>
+    <string name="buttons_order">Navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby</string>
 
-    <string name="calendar_settings_title">Liturgický kalendář:</string>
+    <string name="calendar_settings_title">Liturgický kalendář</string>
     <string name="epiphany_sunday">Zjevení Páně slavit v neděli mezi 2. a 8. lednem</string>
     <string name="ascension_sunday">Nanebevstoupení Páně slavit v neděli</string>
     <string name="body_blood_sunday">Těla a krve Páně slavit v neděli</string>
-    <string name="emphasize_local_calendar">zvýraznit slavení v národním kalendáři</string>
+    <string name="emphasize_local_calendar">Zvýraznit slavení v národním kalendáři</string>
 
     <string name="alarms">Notifikace</string>
-    <string name="alarms_title">Nastavení notifikací:</string>
     <string name="alarmOff">nepřipomínat</string>
 
     <string name="fullscreenOn">Celá obrazovka</string>
-    <string name="fullscreenOff">Zobraz navigaci</string>
 
     <string name="nightmodeOn">Noční režim</string>
     <string name="nightmodeOff">Denní režim</string>
 
-    <string name="onlyNonBoldFontOn">Obyčejné písmo</string>
     <string name="onlyNonBoldFontOff">I tučné písmo</string>
+
+    <string name="navigation_drawer_open">Otevři menu</string>
+    <string name="navigation_drawer_close">Zavři menu</string>
 
     <string name="inv">Uvedení</string>
     <string name="rch">Ranní chvály</string>
@@ -82,139 +85,57 @@
     <string name="h12_notify">Je čas na polední modlitbu!</string>
     <string name="h15_notify">Je čas na odpolední modlitbu!</string>
 
-    <string name="menu_about">O...</string>
-    <string name="about">O aplikaci</string>
+    <string name="tts_ready">Pročti</string>
+    <string name="tts_speaking">Ukonči předčítání</string>
+    <string name="tts_pause">Pozastavit předčítání</string>
+    <string name="tts_resume">Pokračovat v čtení</string>
+    <string name="tts_back">Pročti předchozí část</string>
+    <string name="tts_forward">Pročti následující část</string>
+
+    <string name="notification_not_allowed">Aplikaci jste dosud nepovolili vypnout zvonění.</string>
+
+    <string name="channel_name">Breviář</string>
+    <string name="channel_description">Notifikace na časy modliteb</string>
+
+    <string name="about_title">O aplikaci</string>
+    <string name="news_title">Změny ve verzích</string>
+
     <string name="about_PROJECT_URL">breviar.cz</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Aplikace Breviář pro OS Android</string>
-    <string name="about_SPECIAL_CREDITS">Děkuji za pomoc, spolupráci a souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.</string>
+    <string name="about_SPECIAL_CREDITS">Děkuji za pomoc, podporu, spolupráci a souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.</string>
     <string name="about_PROJECT_SOURCE_STORAGE">GitHub-u</string>
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
-    <string name="about_text">include_cz/about.htm</string>
 
-    <string name="btn_news">Co je nového</string>
-    <string name="news"><![CDATA[
+    <string name="tts_settings_title">Hlasový výstup</string>
+    <string name="tts_use_pause_in_psalms">Pro žalmy a kantika použít pauzu (hvězdičky, křížky)</string>
+    <string name="tts_settings_help">Návod pro hlasový výstup</string>
+    <string name="tts_settings_help_title">Návod pro hlasový výstup</string>
+    <string name="tts_settings_help_content"><![CDATA[
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style type="text/css">
-body { background-color: #000000; color: #cccccc; }
+body { background-color: #303030; color: #dddddd; }
 </style>
 </head>
 <body>
 
-<p><b>Aplikace Breviář | Co je nového</b>
+<h3>Jak nastavit hlasový výstup</h3>
 
-<!-- <li>Český dominikánský breviář (jenom pokusně!).</li> -->
+<p>Pokud jste dosud nepoužívali hlasový výstup, je třeba si nainstalovat aplikaci pro syntézu řeči (TTS, text-to-speech) a nastavit ji jako předvolenou v systémových nastaveních.</p>
 
-<p><b>Verze 1.14.2</b>
-<ul>
-<li>Zobrazení pouze jedné možnosti z více (hymny, první, druhé čtení, antifony, prosby).</li>
-<li>Oprava modlitby uvedení do dne pro dobu postní.</li>
-<li>Sobotní památka Panny Marie se nenabízí při střetu s jiným mariánským svátkem.</li>
-<li>Opravy v liturgickém kalendáři a textech.</li>
-</ul>
+<p>Čeština má dobrou podporu ve vestavěné androidové syntéze řeči, v aplikaci Google TTS (určitě to platí pro novější verze Androidu). Pokud ji chcete použít, doporučujeme stáhnout si podporu pro jazyk, který plánujete používat, do Vašeho zařízení.</p>
 
-<p><b>Verze 1.14.1</b>
-<ul>
-<li>Nová volba: Zobrazit jinou antifonu pro uvedení do modlitby pro adventní dobu.</li>
-<li>Vlastní texty pro salesiánskou rodinu opraveny a doplňeny.</li>
-<li>Opravy v liturgickém kalendáři a textech.</li>
-</ul>
+<p><button onclick="bridge.openTTSSettings()">Nastavit předvolenou aplikaci pro TTS"</button></p>
 
-<p><b>Verze 1.14</b>
-<ul>
-<li>Nová volba: Zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení.</li>
-<li>Možnost slavit slavení s vyšším stupněm (jako svátky/slavnosti).</li>
-<li>Opravy v liturgickém kalendáři.</li>
-</ul>
+<p>Po nastavení hlasového výstupu můzete v aplikaci spustit předčítání aktuálních modliteb z menu (vysouvací zleva) nebo z aplikační lišty (nahoru).</p>
 
-<p><b>Verze 1.13.2</b>
-<ul>
-<li>Nová volba: bílé/černé pozadí (projektor/AMOLED displej).</li>
-<li>Stupeň slavení pro 22. července povýšen na svátek.</li>
-</ul>
-
-<p><b>Verze 1.13.1</b>
-<ul>
-<li>Poznámky pod čarou ke druhým čtením: doplněn advent+vánoce.</li>
-<li>Vlastní texty pro salesiánskou rodinu opraveny a doplňeny.</li>
-</ul>
-
-<p><b>Verze 1.13</b>
-<ul>
-<li>Nová volba: Možnost zobrazit poznámky pod čarou ke druhým čtením (zatím pro mezidobí).</li>
-<li>Kalendář a vlastní texty pro salesiánskou rodinu.</li>
-</ul>
-
-<p><b>Verze 1.12.3</b>
-<ul>
-<li>Společné texty za zemřelé, možnost vzít žalm 146 nebo 150 pro ranní chvály.</li>
-<li>Možnost zobrazit navigační šipky v textu.</li>
-</ul>
-
-<p><b>Verze 1.12.2</b>
-<ul>
-<li>Možnost zobrazit/skrýt plné znění krátkych zpěvů (v ranních chválách a nešporách).</li>
-</ul>
-
-<p><b>Verze 1.12.1</b>
-<ul>
-<li>Nová volba: Možnost konfigurace při zobrazené navigační liště (umožnění označit text na kopírování).</li>
-<li>Nové slavení pro OFM Cap: 4. května.</li>
-<li>Oprava: Zobrazení hymnů (obyčejných, ne k volnému výběru).</li>
-</ul>
-
-<p><b>Verze 1.12</b>
-<ul>
-<li>Nová volba: Možnost použít hymny k volnému výběru.</li>
-<li>Možnost zobrazit společné texty.</li>
-<li>Úprava zalomení a korekce hymnů.</li>
-</ul>
-
-<p><b>Verze 1.11.2</b>
-<ul>
-<li>Nové slavení: Ježíše Krista, nejvyššího a věčného kněze.</li>
-<li>Nová volba v menu: Použít všude normální písmo (ne tučné).</li>
-<li>Rozšířená nastavení.</li>
-</ul>
-
-<p><b>Verze 1.11.1</b>
-<ul>
-<li>Oprava: Kompatibilita s Android 2.x a staršími.</li>
-</ul>
-
-<p><b>Verze 1.11</b>
-<ul>
-<li>Přepínání nočního/denního režimu přímo v hlavním menu.</li>
-<li>Větší výška řádkování pro lepší čitelnost.</li>
-<li>Dialog „O aplikaci“ upraven.</li>
-</ul>
-
-<p><b>Verze 1.10</b>
-<ul>
-<li>Možnost zobrazit modlitby v režimu pro nevidomé a slabozraké (text modliteb bez nadpisů a rubrik), vhodné pro hlasový výstup.</li>
-<li>Nová možnost na úvodní obrazovce: Ordinárium (Uspořádání).</li>
-<li>Oprava mariánských antifon (kompletář/modlitba před spaním) pro noční režim.</li>
-<li>Kompatibilita s Android 5.0 Lollipop.</li>
-</ul>
-
-<p><b>Verze 1.9.10</b>
-<ul>
-<li>Možnost automatického přepnutí zařízení do tichého režimu počas modlitby.</li>
-</ul>
-
-<p><b>Verze 1.9.8</b>
-<ul>
-<li>CSS změny: Zalamování žalmů a kantik přepracováno.</li>
-<li>Doplněno číslování veršů žalmů a kantik.</li>
-<li>Dlouhé stlačení skryje spodní navigační lištu.</li>
-<li>Přidaná možnost nezhasínat obrazovku.</li>
-</ul>
-
-</body></html>
+</body>
+</html>
     ]]></string>
 
+    <string name="tts_language_not_available">Prevod textu na reč nie je k dispozícii pre aktuálny jazyk.</string>
 </resources>

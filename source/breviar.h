@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* breviar.h                                                   */
-/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | contains declarations of global variables     */
 /*                                                             */
@@ -182,6 +182,9 @@ extern short int _global_opt_export_date_format;
 #define isGlobalOption(opt_i, bit_opt_i_component_j) ((opt_i == OPT_6_ALTERNATIVES_MULTI) ? ((_global_opt[opt_i] DIV bit_opt_i_component_j) MOD 10) : (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
 #define isGlobalOptionForce(opt_i, bit_opt_i_component_j) ((opt_i == OPT_6_ALTERNATIVES_MULTI) ? ((_global_force_opt[opt_i] DIV bit_opt_i_component_j) MOD 10) : (((_global_force_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
 
+// method for checking whether option 'i' should be applied (may be different from real setting - use isGlobalOption() for exact querying from parameters; difference caused e. g. by override with blind-friendly mode [voice output])
+extern short int useWhenGlobalOption(short opt_i, long bit_opt_i_component_j);
+
 // for setting option's 'i' 'j'-th bit-component to value (TRUE/FALSE); OPT 6 uses decimal-place logic
 extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value);
 
@@ -205,13 +208,13 @@ extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value
 #define je_velka_noc ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && (_global_den.denvt == DEN_NEDELA)) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA))
 #define je_aleluja_aleluja ((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && (_global_den.denvt == DEN_NEDELA)) || ((_global_den.denvr == _global_r._ZOSLANIE_DUCHA_SV.denvr) && ((_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_DRUHE_VESPERY))))
 #define je_34_ocr ((_global_den.litobd == OBD_CEZ_ROK) && (_global_den.tyzden == 34) && (_global_den.denvt != DEN_NEDELA))
-#define je_tedeum ((type == MODL_POSV_CITANIE) && (((_global_den.denvt == DEN_NEDELA) && (_global_den.litobd != OBD_POSTNE_I) && (_global_den.litobd != OBD_POSTNE_II_VELKY_TYZDEN)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA)))
+#define je_tedeum ((type == MODL_POSV_CITANIE) && (((_global_den.denvt == DEN_NEDELA) && (_global_den.litobd != OBD_POSTNE_I) && (_global_den.litobd != OBD_POSTNE_II_VELKY_TYZDEN)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA) || (_decode_spol_cast(_global_den.spolcast).a1 == MODL_SPOL_CAST_POSVIACKA_CHRAMU)))
 
 // je_privileg -- pre zistenie, či ide o privilegované dni (VSLH č. 238-239): to isté ako je_post + december počnúc 17.-tym (všedné di od 17. do 24. decembra a Vianočná oktáva); striktne by tu nemal byť veľký týždeň a veľkonočné trojdnie, ale nezaškodí to tu
 // override stupňa slávenia prebíja je_privileg (inými slovami, v privilegované dni je možné sláviť sviatky resp. slávnosti)
 #define je_privileg ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)) && ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))) || ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den >= 17))))
 
-// is antiphone for privileged day?
+// is antiphone & prayer for privileged day?
 #define je_ant_modl_spomprivileg (( \
 (_global_modlitba == MODL_RANNE_CHVALY &&  \
 	(_global_modl_ranne_chvaly.ant_spomprivileg.anchor != NULL) && (_global_modl_ranne_chvaly.ant_spomprivileg.file != NULL) && \
@@ -238,9 +241,31 @@ extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value
 ) \
 ))
 
-// predĺžené slávenie vigílií v rámci posvätných čítaní | is vigily (for office with readings)?
+// is prayer for privileged day? (antiphone may be undefined)
+#define je_modl_spomprivileg (( \
+(_global_modlitba == MODL_RANNE_CHVALY &&  \
+	(_global_modl_ranne_chvaly.modlitba_spomprivileg.anchor != NULL) && (_global_modl_ranne_chvaly.modlitba_spomprivileg.file != NULL) && \
+	(!equals(_global_modl_ranne_chvaly.modlitba_spomprivileg.anchor, STR_EMPTY)) && (!equals(_global_modl_ranne_chvaly.modlitba_spomprivileg.anchor, STR_UNDEF)) && \
+	(!equals(_global_modl_ranne_chvaly.modlitba_spomprivileg.file, STR_EMPTY)) && (!equals(_global_modl_ranne_chvaly.modlitba_spomprivileg.file, STR_UNDEF)) \
+) \
+||  \
+(_global_modlitba == MODL_VESPERY &&  \
+	(_global_modl_vespery.modlitba_spomprivileg.anchor != NULL) && (_global_modl_vespery.modlitba_spomprivileg.file != NULL) && \
+	(strcmp(_global_modl_vespery.modlitba_spomprivileg.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_vespery.modlitba_spomprivileg.anchor, STR_UNDEF) != 0) && \
+	(strcmp(_global_modl_vespery.modlitba_spomprivileg.file, STR_EMPTY) != 0) && (strcmp(_global_modl_vespery.modlitba_spomprivileg.file, STR_UNDEF) != 0) \
+) \
+||  \
+(_global_modlitba == MODL_POSV_CITANIE &&  \
+	(_global_modl_posv_citanie.citanie_spomprivileg.anchor != NULL) && (_global_modl_posv_citanie.citanie_spomprivileg.file != NULL) && \
+	(strcmp(_global_modl_posv_citanie.citanie_spomprivileg.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.citanie_spomprivileg.anchor, STR_UNDEF) != 0) &&  \
+	(strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.citanie_spomprivileg.file, STR_UNDEF) != 0) \
+) \
+))
+
+// predĺžené slávenie vigílií v rámci posvätných čítaní | is vigily (for office with readings)? | VSLH, č. 73: slávnosť, sviatok alebo nedeľa
 #define je_vigilia \
 (_global_modlitba == MODL_POSV_CITANIE &&  \
+	(_je_global_den_slavnost || _je_global_den_sviatok || _global_den.denvt == DEN_NEDELA || _global_den.litobd == OBD_OKTAVA_NARODENIA || _global_den.litobd == OBD_VELKONOCNA_OKTAVA || _global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && \
 	(_global_modl_posv_citanie.ant_chval.anchor != NULL) && (_global_modl_posv_citanie.ant_chval.file != NULL) && \
 	(strcmp(_global_modl_posv_citanie.ant_chval.anchor, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.ant_chval.anchor, STR_UNDEF) != 0) &&  \
 	(strcmp(_global_modl_posv_citanie.ant_chval.file, STR_EMPTY) != 0) && (strcmp(_global_modl_posv_citanie.ant_chval.file, STR_UNDEF) != 0) && \
@@ -322,9 +347,11 @@ extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value
 
 // are there alternate hymns for Ordinary time (per annum)? (for SK based on LA LH)
 #define je_alternativa_hymnus_ocr ( \
-(_global_modlitba == MODL_PRVE_VESPERY && ((_global_modl_prve_vespery.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
+((_global_modlitba == MODL_PRVE_VESPERY || (_global_modlitba == MODL_VESPERY && _global_den.denvt == DEN_SOBOTA)) && ((_global_modl_prve_vespery.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
 ||  \
 (_global_modlitba == MODL_PRVE_KOMPLETORIUM && ((_global_modl_prve_kompletorium.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
+||  \
+(_global_modlitba == MODL_VESPERY && ((_global_modl_vespery.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
 ||  \
 (_global_modlitba == MODL_DRUHE_KOMPLETORIUM && ((_global_modl_kompletorium.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
 ||  \
@@ -443,7 +470,7 @@ extern short int _typslav_override(short int typslav);
 )
 
 // should calendar be exported?
-#define PODMIENKA_EXPORTOVAT_KALENDAR (!((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || (_global_kalendar == default_kalendar[_global_jazyk])))
+#define PODMIENKA_EXPORTOVAT_KALENDAR (!((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || ((_global_kalendar == default_kalendar[_global_jazyk]) && !(_global_jazyk == JAZYK_CZ_OP))))
 
 #define PODMIENKA_EXPORTOVAT_FONTSIZE ( (_global_font_size != FONT_SIZE_UNDEF) && (_global_font_size != FONT_SIZE_CSS) )
 
@@ -479,6 +506,7 @@ extern short int _typslav_override(short int typslav);
 #define PRVA_ADVENTNA_NEDELA  _global_r._PRVA_ADVENTNA_NEDELA.denvr     // prvá adventná nedeľa
 #define ZOSLANIE_DUCHA_SV  _global_r._ZOSLANIE_DUCHA_SV.denvr           // zoslanie Ducha Svätého
 #define SV_RODINY  _global_r._SVATEJ_RODINY.denvr                       // sviatok svätej rodiny
+#define MARIE_MATKY_CIRKVI (ZOSLANIE_DUCHA_SV + 1)                      // pondelok po Zoslaní Ducha Svätého (ZOSLANIE_DUCHA_SV): spomienka Panny Márie, Matky Cirkvi (http://press.vatican.va/content/salastampa/it/bollettino/pubblico/2018/03/03/0168/00350.html)
 #define KRISTA_KNAZA (ZOSLANIE_DUCHA_SV + 4)                            // štvrtok po Zoslaní Ducha Svätého (ZOSLANIE_DUCHA_SV): sviatok Nášho Pána Ježiša Krista, najvyššieho a večného kňaza (http://www.tkkbs.sk/view.php?cisloclanku=20140115028)
 #define TROJICA (ZOSLANIE_DUCHA_SV + 7)                                 // prvá nedeľa po ZOSLANIE_DUCHA_SV: najsv. Trojice
 // #define TELAKRVI (ZOSLANIE_DUCHA_SV + 11)                               // štvrtok po Trojici: Kristovho tela a krvi (alebo: v krajinách, kde sa presúva na nedeľu)
@@ -490,10 +518,10 @@ extern short int _typslav_override(short int typslav);
 
 #ifndef OS_linux
 // kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 
-int main(int argc, char **argv);
+int main(int argc, const char **argv);
 #endif // OS_linux
 
-int breviar_main(int argc, char **argv);
+int breviar_main(int argc, const char **argv);
 
 #if (_MSC_VER >= 1400)       // VC8+ 2007-02-12 kvôli vc++ 2005 express edition
 	#pragma warning(disable : 4996)    // disable all deprecation warnings

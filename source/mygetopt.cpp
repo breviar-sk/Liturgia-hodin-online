@@ -4,7 +4,7 @@
 /* Copyright (C) 1989,90,91,92,93,94,96,97                     */
 /*                              Free Software Foundation, Inc. */
 /*                                                             */
-/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /***************************************************************/
 
@@ -72,7 +72,7 @@ USA.  */
    each non-option ARGV-element is returned here.  */
 
 // Zapoznamkoval duurko, lebo je to v mygetopt.h -- kedysi
-char *optarg = NULL;
+const char *optarg = NULL;
 
 /* Index in ARGV of the next element to be scanned.
    This is used for communication to and from the caller
@@ -104,7 +104,7 @@ int __getopt_initialized = 0;
    If this is zero, or a null string, it means resume the scan
    by advancing to the next ARGV-element.  */
 
-static char *nextchar;
+static const char *nextchar;
 
 /* Callers store zero here to inhibit the error message
    for unrecognized options.  */
@@ -198,7 +198,7 @@ static void exchange(char **argv){
 		{
 			/* Bottom segment is the short one.  */
 			int len = middle - bottom;
-			register int i;
+			int i;
 
 			/* Swap it with the top part of the top segment.  */
 			for (i = 0; i < len; i++)
@@ -215,7 +215,7 @@ static void exchange(char **argv){
 		{
 			/* Top segment is the short one.  */
 			int len = top - middle;
-			register int i;
+			int i;
 
 			/* Swap it with the bottom part of the bottom segment.  */
 			for (i = 0; i < len; i++)
@@ -331,7 +331,7 @@ static const char *_getopt_initialize(
 
 int _getopt_internal(
 	int argc,
-	char *const *argv,
+	const char *const *argv,
 	const char *optstring,
 	const struct option *longopts,
 	int *longind,
@@ -459,7 +459,7 @@ int _getopt_internal(
 		&& (argv[optind][1] == '-'
 		|| (long_only && (argv[optind][2] || !my_index(optstring, argv[optind][1])))))
 	{
-		char *nameend;
+		const char *nameend;
 		const struct option *p;
 		const struct option *pfound = NULL;
 		int exact = 0;
@@ -617,7 +617,7 @@ int _getopt_internal(
 		/* Convenience. Treat POSIX -W foo same as long option --foo */
 		if (temp[0] == 'W' && temp[1] == ';')
 		{
-			char *nameend;
+			const char *nameend;
 			const struct option *p;
 			const struct option *pfound = NULL;
 			int exact = 0;
@@ -790,7 +790,7 @@ int _getopt_internal(
 
 int getopt(
 	int argc,
-	char *const *argv,
+	const char *const *argv,
 	const char *optstring)
 {
 	return _getopt_internal(argc, argv, optstring,

@@ -1,7 +1,7 @@
 /*********************************************************/
 /*                                                       */
 /* mydefs.h                                              */
-/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk       */
+/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk       */
 /*                                                       */
 /* description | core basic define's                     */
 /*                                                       */
@@ -23,7 +23,6 @@
 #endif
 
 #include <stdio.h>
-#include "mydefs.h"
 #include "common.h"
 
 
@@ -133,42 +132,42 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_PRM_TABULKA "ptab"
 #endif
 
-#define PRM_DATUM   	0 // dotaz na konkretny datum
+#define PRM_DATUM   	0
 #ifdef LONG_PARAM_NAMES
 	#define STR_PRM_DATUM "PRM_DATUM"
 #else
 	#define STR_PRM_DATUM "pdt"
 #endif
 
-#define PRM_CEZ_ROK 	1    // dotaz na napr. piatok v tretom tyzdni
+#define PRM_CEZ_ROK 	1
 #ifdef LONG_PARAM_NAMES
 	#define STR_PRM_CEZ_ROK "PRM_CEZ_ROK"
 #else
 	#define STR_PRM_CEZ_ROK "pcr"
 #endif
 
-#define PRM_SVIATOK 	2    // dotaz na konkretny sviatok
+#define PRM_SVIATOK 	2
 #ifdef LONG_PARAM_NAMES
 	#define STR_PRM_SVIATOK "PRM_SVIATOK"
 #else
 	#define STR_PRM_SVIATOK "psv"
 #endif
 
-#define PRM_ANALYZA_ROKU	3   // dotaz na sviatky v roku
+#define PRM_ANALYZA_ROKU	3
 #ifdef LONG_PARAM_NAMES
 	#define STR_PRM_ANALYZA_ROKU "PRM_ANALYZA_ROKU"
 #else
 	#define STR_PRM_ANALYZA_ROKU "par"
 #endif
 
-#define PRM_DNES		4 // to, co bolo kedysi bez parametra - info o dnesnom dni
+#define PRM_DNES		4
 #ifdef LONG_PARAM_NAMES
 	#define STR_PRM_DNES "PRM_DNES"
 #else
 	#define STR_PRM_DNES "pdnes"
 #endif
 
-#define PRM_LIT_OBD 	5    // podľa pôvodného PRM_CEZ_ROK
+#define PRM_LIT_OBD 	5
 #ifdef LONG_PARAM_NAMES
 	#define STR_PRM_CEZ_ROK "PRM_LIT_OBD"
 #else
@@ -486,9 +485,17 @@ extern short int query_type; // contains constants PRM_...
 // referencie (biblické odkazy)
 #define FORCE_BIT_OPT_0_REF 62
 #ifdef LONG_PARAM_NAMES
-	#define STR_FORCE_BIT_OPT_0_REF "FORCE_BIT_OPT_0_REF"
+#define STR_FORCE_BIT_OPT_0_REF "FORCE_BIT_OPT_0_REF"
 #else
-	#define STR_FORCE_BIT_OPT_0_REF "of0r"
+#define STR_FORCE_BIT_OPT_0_REF "of0r"
+#endif
+
+// referencie (biblical references) to bible.com
+#define FORCE_BIT_OPT_0_REF_BIBLE_COM 136
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_REF_BIBLE_COM "FORCE_BIT_OPT_0_REF_BIBLE_COM"
+#else
+#define STR_FORCE_BIT_OPT_0_REF_BIBLE_COM "of0bc"
 #endif
 
 // liturgické čítania
@@ -540,11 +547,11 @@ extern short int query_type; // contains constants PRM_...
 #endif
 
 // blind-friendly mode
-#define FORCE_BIT_OPT_0_BLIND_FRIENDLY 69
+#define FORCE_BIT_OPT_0_VOICE_OUTPUT 69
 #ifdef LONG_PARAM_NAMES
-#define STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY "FORCE_BIT_OPT_0_BLIND_FRIENDLY"
+#define STR_FORCE_BIT_OPT_0_VOICE_OUTPUT "FORCE_BIT_OPT_0_VOICE_OUTPUT"
 #else
-#define STR_FORCE_BIT_OPT_0_BLIND_FRIENDLY "of0bf"
+#define STR_FORCE_BIT_OPT_0_VOICE_OUTPUT "of0bf"
 #endif
 
 // footnotes
@@ -683,6 +690,14 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST "FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST"
 #else
 #define STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST "of1sss"
+#endif
+
+// Mary antiphones for compline
+#define FORCE_BIT_OPT_1_KOMPL_MARIA_ANT 139
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT "FORCE_BIT_OPT_1_KOMPL_MARIA_ANT"
+#else
+#define STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT "of1cma"
 #endif
 
 // žalmy zo sviatku
@@ -847,14 +862,6 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR "of2sdc"
 #endif
 
-// override CSS background color -- BIT_OPT_2_BACKGROUND_OVERRIDE
-#define FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE 122
-#ifdef LONG_PARAM_NAMES
-	#define STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE "FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE"
-#else
-	#define STR_FORCE_BIT_OPT_2_BACKGROUND_OVERRIDE "of2bo"
-#endif
-
 // pre force option 6 jednotlivé decimal-place-komponenty (parciálne voľby)
 
 #define FORCE_PLACE_OPT_6_HYMNUS_MULTI 128
@@ -911,6 +918,20 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_PLACE_OPT_6_KRESP_MULTI "FORCE_PLACE_OPT_6_KRESP_MULTI"
 #else
 	#define STR_FORCE_PLACE_OPT_6_KRESP_MULTI "of6kr"
+#endif
+
+#define FORCE_PLACE_OPT_6_PSALM_MULTI 138
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_PLACE_OPT_6_PSALM_MULTI "FORCE_PLACE_OPT_6_PSALM_MULTI"
+#else
+#define STR_FORCE_PLACE_OPT_6_PSALM_MULTI "of6ps"
+#endif
+
+#define FORCE_PLACE_OPT_6_MARIA_ANT_MULTI 140
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_PLACE_OPT_6_MARIA_ANT_MULTI "FORCE_PLACE_OPT_6_MARIA_ANT_MULTI"
+#else
+#define STR_FORCE_PLACE_OPT_6_MARIA_ANT_MULTI "of6cma"
 #endif
 
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
@@ -1034,6 +1055,20 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT "of5i"
 #endif
 
+#define FORCE_BIT_OPT_5_OCR_34_HYMNS 137
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_5_OCR_34_HYMNS "FORCE_BIT_OPT_5_OCR_34_HYMNS"
+#else
+#define STR_FORCE_BIT_OPT_5_OCR_34_HYMNS "of5pa34h"
+#endif
+
+#define FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA 141
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA "FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA"
+#else
+#define STR_FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA "of5ko"
+#endif
+
 #define CSS 40
 #ifdef LONG_PARAM_NAMES
 	#define STR_CSS "CSS"
@@ -1129,7 +1164,7 @@ extern short int query_type; // contains constants PRM_...
 
 #define HTML_ISO_FORMAT      "%04d-%02d-%02d"
 
-#define TEXT_COPYRIGHT       "(c) 1999-2017 Juraj Vidéky"
+#define TEXT_COPYRIGHT       "(c) 1999-2019 Juraj Vidéky"
 #define TEXT_EMAIL           "videky@breviar.sk"
 
 // main XML element
@@ -1137,6 +1172,7 @@ extern short int query_type; // contains constants PRM_...
 
 // element XML_DAY with sub-elements
 #define XML_DAY              "CalendarDay"
+
 #define XML_CELEBRATION      "Celebration"
 #define XML_CELEBRATION_ID   "Id"
 #define XML_DATE_ISO         "DateISO"
@@ -1164,10 +1200,32 @@ extern short int query_type; // contains constants PRM_...
 
 // element XML_INFO with sub-elements
 #define XML_INFO             "Info"
+
 #define XML_COPYRIGHT        "Copyright"
 #define XML_ADDRESS          "Address"
 #define XML_BUILD_DATE       "BuildDate"
 #define XML_GENERATED        "Generated"
+
+// element XML_SUPPORTED_LANGUAGES
+#define XML_SUPPORTED_LANGUAGES "SupportedLanguages"
+
+#define XML_LANGUAGE "Language"
+
+// element XML_SUPPORTED_VALUES with sub-elements
+#define XML_SUPPORTED_VALUES "SupportedValues"
+
+#define XML_LIT_YEAR_LETTER_VALUES  "LiturgicalYearLetterValues"
+#define XML_LIT_SEASON_VALUES       "LiturgicalSeasonValues"
+#define XML_LIT_WEEK_VALUES         "LiturgicalWeekValues"
+#define XML_LIT_WEEK_PSALT_VALUES   "LiturgicalWeekOfPsalterValues"
+#define XML_LIT_TYPE_VALUES         "LiturgicalCelebrationTypeValues"
+#define XML_LIT_TYPE_LOCAL_VALUES   "LiturgicalCelebrationTypeLocalValues"
+#define XML_LIT_LEVEL_VALUES        "LiturgicalCelebrationLevelValues"
+#define XML_LIT_REQUIRED_VALUES     "LiturgicalCelebrationRequiredValues"
+#define XML_LIT_COMMUNIA_VALUES     "LiturgicalCelebrationCommuniaValues"
+#define XML_LIT_NAME_VALUES         "LiturgicalCelebrationNameValues"
+#define XML_LIT_COLOR_VALUES        "LiturgicalCelebrationColorValues"
+#define XML_LIT_CALENDAR_VALUES     "LiturgicalCalendarValues"
 
 // element XML_OPTIONS with sub-elements
 #define XML_OPTIONS          "Options"
@@ -1190,10 +1248,11 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_TELAKRVI_NEDELA           "BitOpt0CorpusChristiOnSunday"
 #define XML_BIT_OPT_0_FONT_NORMAL               "BitOpt0ForceNormalFontWeight"
 #define XML_BIT_OPT_0_BUTTONS_ORDER             "BitOpt0ButtonsOrder"
-#define XML_BIT_OPT_0_BLIND_FRIENDLY            "BitOpt0BlindFriendly"
+#define XML_BIT_OPT_0_VOICE_OUTPUT            "BitOpt0BlindFriendly"
 #define XML_BIT_OPT_0_FOOTNOTES                 "BitOpt0Footnotes"
 #define XML_BIT_OPT_0_TRANSPARENT_NAV           "BitOpt0TransparentNav"
 #define XML_BIT_OPT_0_ZALMY_FULL_TEXT           "BitOpt0PsalmsFullText"
+#define XML_BIT_OPT_0_REF_BIBLE_COM             "BitOpt0ReferencesBibleDotCom"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"
@@ -1214,6 +1273,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_1_ZAVER                     "BitOpt1PrayerConclusions"
 #define XML_BIT_OPT_1_OVERRIDE_STUP_SLAV        "BitOpt1OverrideCelebrationLevel"
 #define XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST     "BitOpt1CelebrationLevelForOverride"
+#define XML_BIT_OPT_1_KOMPL_MARIA_ANT           "BitOpt1ComplineMaryAnt"
 
 // POCET_OPT_2_HTML_EXPORT
 #define XML_BIT_OPT_2_ISO_DATUM                 "BitOpt2ISOFormat"
@@ -1232,7 +1292,6 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_2_HIDE_OPTIONS2             "BitOpt2HideOptionsPart2"
 #define XML_BIT_OPT_2_ALTERNATIVES              "BitOpt2Alternatives"
 #define XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR     "BitOpt2ShowDefaultCalendar"
-#define XML_BIT_OPT_2_BACKGROUND_OVERRIDE       "BitOpt2BackgroundOverride"
 
 // POCET_OPT_5_ALTERNATIVES
 #define XML_BIT_OPT_5_HYMNUS_KOMPL              "BitOpt5HymnCompl"
@@ -1252,6 +1311,8 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_OFF_DEF_PSALM_146_150     "BitOpt5OffDefPsalm146or150"
 #define XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON         "BitOpt5ConclusionPriestDiacon"
 #define XML_BIT_OPT_5_INVITATORIUM_ANT          "BitOpt5InvitatoryAnt"
+#define XML_BIT_OPT_5_OCR_34_HYMNS              "BitOpt5PerAnnum34Hymns"
+#define XML_BIT_OPT_5_KOMPLETORIUM_OKTAVA       "BitOpt5ComplOctaves"
 
 // POCET_OPT_6_ALTERNATIVES_MULTI
 #define XML_PLACE_OPT_6_HYMNUS_MULTI            "PlaceOpt6HymnusMulti"
@@ -1262,15 +1323,21 @@ extern short int query_type; // contains constants PRM_...
 #define XML_PLACE_OPT_6_PROSBY_MULTI            "PlaceOpt6PrecesMulti"
 #define XML_PLACE_OPT_6_KCIT_RESP_MULTI         "PlaceOpt6ShortReadingRespMulti"
 #define XML_PLACE_OPT_6_KRESP_MULTI             "PlaceOpt6ShortRespMulti"
+#define XML_PLACE_OPT_6_PSALM_MULTI             "PlaceOpt6PsalmMulti"
+#define XML_PLACE_OPT_6_MARIA_ANT_MULTI         "PlaceOpt6ComplMariaAntMulti"
 
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<" elem ">"
 #define ELEM_END(elem)       "</" elem ">"
 
-#define ELEMID_BEGIN(elem)   "<" elem " Id=\"%d\">"
-#define ELEMVAL_BEGIN(elem)  "<" elem " Value=\"%d\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
-#define ELEMOPT_BEGIN(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_FORCE_BIT_OPT_0_VERSE
-#define ELEMOPT_SLASH_BEGIN(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s/%s\">"
+#define ELEM_BEGIN_ID(elem)   "<" elem " Id=\"%d\">"
+#define ELEM_BEGIN_VALUE(elem)   "<" elem " Value=\"%s\">"
+#define ELEM_BEGIN_ID_VALUE(elem)   "<" elem " Id=\"%d\" Value=\"%s\">"
+#define ELEM_BEGIN_ID_CHARVALUE(elem)   "<" elem " Id=\"%d\" Value=\"%c\">"
+#define ELEM_BEGIN_NAME(elem)   "<" elem " Name=\"%s\">"
+#define ELEM_BEGIN_VALUE_NAME_FORCENAME_TEXT(elem)  "<" elem " Value=\"%d\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
+#define ELEM_BEGIN_ID_FORCENAME_TEXT(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_FORCE_BIT_OPT_0_VERSE
+#define ELEM_BEGIN_ID_FORCENAME_TEXT_SLASH(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s/%s\">"
 
 #endif // __MYDEFS_H_
 

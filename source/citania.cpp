@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* citania.cpp                                                 */
-/* (c)2010-2017 | Richard Královič                             */
+/* (c)2010-2019 | Richard Královič                             */
 /*                                                             */
 /* description | code for liturgical readings for Android app  */
 /*                                                             */
@@ -115,7 +115,7 @@ char *StringEncode(const char *in) {
 			i+=1;
 		} else {
 			out[i]='%';
-			out[i+1]=tab[(*s) >> 4];
+			out[i+1]=tab[((unsigned char)(*s)) >> 4];
 			out[i+2]=tab[(*s) & 0xf];
 			i+=3;
 		}

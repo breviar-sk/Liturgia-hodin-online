@@ -3,66 +3,69 @@
     <string name="app_name">Zsolozsma</string>
     <string name="back">Vissza</string>
     <string name="forward">Előre</string>
-    <string name="menu">Menü</string>
+    <string name="menu">Zsolozsma</string>
     <string name="today">Ma</string>
     <string name="pgup">Fel</string>
     <string name="pgdn">Le</string>
 
-    <string name="lang_select">Beállítások</string>
+    <string name="lang_select">Nyelv</string>
+    <string name="settings">Beállítások</string>
 
-    <string name="lang_select_title">Nyelv:</string>
     <string name="lang_cz">Cseh</string>
+    <string name="lang_c2">Cseh – domonkos</string>
     <string name="lang_sk">Szlovák</string>
     <string name="lang_hu">Magyar</string>
-    <string name="override_locale">rendszerszintű nyelvi beállítások felülírása</string>
+    <string name="lang_la">Latin</string>
+    <string name="override_locale">Rendszerszintű nyelvi beállítások felülírása</string>
 
-    <string name="settings_title">Eszköz beállításai:</string>
-    <string name="vol_buttons">hangerőt állító gombok használata görgetéshez</string>
-    <string name="dimlock">ne sötétüljön el a képernyő</string>
-    <string name="mute">a telefon csendes módba kapcsolása</string>
-    <string name="long_click_toggles_bar">hosszú lenyomása elrejti az alsó navigációs listát</string>
-    <string name="transparent_nav">navigációs nyilak mutatása</string>
+    <string name="settings_title">Eszköz beállításai</string>
+    <string name="vol_buttons">Hangerőt állító gombok használata görgetéshez</string>
+    <string name="dimlock">Ne sötétüljön el a képernyő</string>
+    <string name="mute">A csengetés kikapcsolása</string>
+    <string name="long_click_toggles_bar">Hosszú lenyomása elrejti az alsó navigációs listát</string>
+    <string name="transparent_nav">Navigációs nyilak mutatása</string>
 
-    <string name="prayer_content_settings1_title">Tartalom beállításai:</string>
-    <string name="various_options_in_prayers">mutassa az imáknál a különböző lehetőségeket hiperhivatkozásokként</string>
-    <string name="alternatives">lehetőségek</string>
+    <string name="prayer_settings_title">Tartalom beállításai</string>
+    <string name="prayer_content_settings_title">Tartalom beállításai</string>
+    <string name="various_options_in_prayers">Mutassa az imáknál a különböző lehetőségeket hiperhivatkozásokként</string>
+    <string name="alternatives">Lehetőségek</string>
 
-    <string name="prayer_content_settings_title">Az imaóra szövegében jelenjenek meg:</string>
-    <string name="display_communia_info">hogy a közös részek honnan lettek véve</string>
-    <string name="verse_numbering">a versek számai</string>
-    <string name="bible_references">a bibliai hivatkozások</string>
-    <string name="footnotes">jegyzetek, lábjegyzetek</string>
-    <string name="liturgical_readings">a liturgikus olvasmányok</string>
-    <string name="psalms_omisions">zsoltárok kihagyott részei</string>
+    <string name="prayer_display_settings_title">Az imaóra szövegében jelenjenek meg</string>
+    <string name="display_communia_info">Hogy a közös részek honnan lettek véve</string>
+    <string name="verse_numbering">A versek számai</string>
+    <string name="bible_references">A bibliai hivatkozások</string>
+    <string name="bible_ref_bible_com">A bibliai hivatkozások (YouVersion)</string>
+    <string name="footnotes">Jegyzetek, lábjegyzetek</string>
+    <string name="liturgical_readings">A liturgikus olvasmányok</string>
+    <string name="psalms_omissions">Zsoltárok kihagyott részei</string>
 
-    <string name="display_settings_title">Megjelenés beállításai:</string>
-    <string name="first_vespers_buttons">vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg</string>
-    <string name="navigation">navigáció mutatása az imaszövegben</string>
-    <string name="wrapping_printed">hosszú sorok tördelése, mint a nyomtatott kiadásban (versrészek)</string>
-    <string name="smart_buttons">az imaórák gombjainak gazdaságos elhelyezése</string>
-    <string name="night_mode">éjszakai mód</string>
-    <string name="background_override">fehér/fekete háttér (vetítő/AMOLED kijelző)</string>
-    <string name="normal_font">normál betűtípus használata (félkövér tiltása)</string>
-    <string name="buttons_order">dátumválasztó gombok megjelenítése az imaóraválasztó gombok után</string>
+    <string name="display_settings_title">Megjelenés beállításai</string>
+    <string name="first_vespers_buttons">Vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg</string>
+    <string name="navigation">Navigáció mutatása az imaszövegben</string>
+    <string name="smart_buttons">Az imaórák gombjainak gazdaságos elhelyezése</string>
+    <string name="night_mode">Éjszakai mód</string>
+    <string name="background_override">Választható háttérszín (sárga)</string>
+    <string name="normal_font">Normál betűtípus használata (félkövér tiltása)</string>
+    <string name="buttons_order">Dátumválasztó gombok megjelenítése az imaóraválasztó gombok után</string>
 
-    <string name="calendar_settings_title">Liturgikus naptár:</string>
+    <string name="calendar_settings_title">Liturgikus naptár</string>
     <string name="epiphany_sunday">Urunk megjelenését (Vízkeresztet) vasárnap ünnepelni, január 2. és 8. között</string>
     <string name="ascension_sunday">Urunk mennybemenetelét vasárnap ünnepelni</string>
     <string name="body_blood_sunday">Krisztus Szent Teste és Vére ünnepét vasárnap ünnepelni</string>
-    <string name="emphasize_local_calendar">kijelölni az ünnepeket a nemzeti naptárban</string>
+    <string name="emphasize_local_calendar">Kijelölni az ünnepeket a nemzeti naptárban</string>
 
     <string name="alarms">Értesítések</string>
-    <string name="alarms_title">Értesítések beállításai:</string>
     <string name="alarmOff">letiltás</string>
 
     <string name="fullscreenOn">Teljes képernyő</string>
-    <string name="fullscreenOff">Teljes képernyő elhagyása</string>
 
     <string name="nightmodeOn">Éjszakai mód</string>
     <string name="nightmodeOff">Nappali mód</string>
 
-    <string name="onlyNonBoldFontOn">Normál betűtípus</string>
     <string name="onlyNonBoldFontOff">Félkövér betűtípus</string>
+
+    <string name="navigation_drawer_open">Nyílt menü</string>
+    <string name="navigation_drawer_close">Zárja be menü</string>
 
     <string name="inv">Imádságra hívás</string>
     <string name="rch">Reggeli dicséret</string>
@@ -82,8 +85,21 @@
     <string name="h12_notify">Itt az idő a déli napközi imaórára!</string>
     <string name="h15_notify">Itt az idő a délután napközi imaórára!</string>
 
-    <string name="menu_about">Névjegy...</string>
-    <string name="about">Névjegy</string>
+    <string name="tts_ready">Olvas</string>
+    <string name="tts_speaking">Hagyja abba az olvasást</string>
+    <string name="tts_pause">Szüneteltesse az olvasást</string>
+    <string name="tts_resume">Folytassa az olvasást</string>
+    <string name="tts_back">Olvasd el az előző részt</string>
+    <string name="tts_forward">Olvassa el a következő részt</string>
+
+    <string name="notification_not_allowed">Még nem engedélyezte az alkalmazásnak a csengetés kikapcsolását.</string>
+
+    <string name="channel_name">Zsolozsma</string>
+    <string name="channel_description">Értesítések</string>
+
+    <string name="about_title">Névjegy</string>
+    <string name="news_title">Újdonságok</string>
+
     <string name="about_PROJECT_URL">zsolozsma.katolikus.hu</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Zsolozsma alkalmazás Androidhoz</string>
@@ -92,126 +108,34 @@
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
-    <string name="about_text">include_hu/about.htm</string>
 
-    <string name="btn_news">Újdonságok</string>
-    <string name="news"><![CDATA[
+    <string name="tts_settings_title">Hang kimenet</string>
+    <string name="tts_use_pause_in_psalms">A zsoltározás és kantikumok olvasásánál szüneteket tartani (csillagok, keresztek)</string>
+    <string name="tts_settings_help">Hang kimenet</string>
+    <string name="tts_settings_help_title">Hang kimenet</string>
+    <string name="tts_settings_help_content"><![CDATA[
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style type="text/css">
-body { background-color: #000000; color: #cccccc; }
+body { background-color: #303030; color: #dddddd; }
 </style>
 </head>
 <body>
 
-<p><b>Zsolozsma alkalmazás | Újdonságok</b>
+<h3>A hangkimenet beállítása</h3>
 
-<!-- <li>Új beállítási lehetőség: megjeleníteni a lábjegyzeteket a második olvasmány számára.</li> -->
+<p>Ha még nem használta a hangkimeneteket, akkor telepítenie kell egy beszédszintézis (TTS, text-to-speech) alkalmazást, és a rendszer beállításaiban preferáltatnia kell.</p>
 
-<p><b>Verzió 1.14.2</b>
-<ul>
-<li>Csak egy lehetőség megjelenítése több közül (himnusz, első, második olvasmány, antifónák, fohászok).</li>
-<li>Szűz Mária szombati emléknapja nincs a kínálatban más Szűz Mária emléknapkor ill. ünnepnapkor.</li>
-<li>Frissítések a honlapról.</li>
-</ul>
+<p>Néhány nyelvet (például a cseh, az angol és a magyar nyelvet) a natív Android beszédszintézis támogatja (legalábbis az Android legújabb verzióiban). Ha használni szeretné ezeket, javasoljuk, hogy töltse le azokat a nyelveket, amelyeket használni szeretne offline használatra.</p>
 
-<p><b>Verzió 1.14.1</b>
-<ul>
-<li>Frissítések a honlapról.</li>
-</ul>
+<p><button onclick="bridge.openTTSSettings()">A TTS beállításainak megnyitása</button></p>
 
-<p><b>Verzió 1.14</b>
-<ul>
-<li>Új beállítási lehetőség: Vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg.</li>
-<li>Lehetséges az emléknapokat és az ünnepeket magasabb fokon ünnepelni (ünnepek/főünnepek).</li>
-</ul>
+<p>A beszédszintézis konfigurálása után elindíthatja a megjelenített imákat a menüben (baloldalt) vagy az alkalmazásban lévő cselekvéssávon (fent).</p>
 
-<p><b>Verzió 1.13.2</b>
-<ul>
-<li>Új beállítási lehetőség: fehér/fekete háttért alkalmazni (vetítő/AMOLED kijelző).</li>
-<li>Július 22. ünnepként van bevezetve.</li>
-</ul>
-
-<p><b>Verzió 1.13 és 1.13.1</b>
-<ul>
-<li>Frissítések a honlapról.</li>
-</ul>
-
-<p><b>Verzió 1.12.3</b>
-<ul>
-<li>Ferences saját részekkel.</li>
-<li>Zsolozsma a meghaltakért: a reggeli dicséretben lehetséges a 146. vagy a 150. zsoltárt venni.</li>
-<li>Szövegben navigálás lehetősége nyilak segítségével.</li>
-</ul>
-
-<p><b>Verzió 1.12.2</b>
-<ul>
-<li>Lehetőség a válaszos énekek teljes szövegének megjelenítésére/elrejtésére (reggeli és esti dicséretnél).</li>
-</ul>
-
-<p><b>Verzió 1.12.1</b>
-<ul>
-<li>Új beállítási lehetőség: Az alkalmazás beállításának lehetősége, amíg az alsó navigációs sáv megjelenik (szöveg másolásra kijelölésének engedélyezése).</li>
-</ul>
-
-<p><b>Verzió 1.12</b>
-<ul>
-<li>A közös részből való szövegek kiválasztásának lehetősége (a Halotti zsolozsmát beleértve).</li>
-</ul>
-
-<p><b>Verzió 1.11.2</b>
-<ul>
-<li>Új menüelem: félkövér betűtípussal való megjelenítés engedélyezése/tiltása.</li>
-<li>Új beállítások hozzáadása.</li>
-</ul>
-
-<p><b>Verzió 1.11.1</b>
-<ul>
-<li>Visszafelé való kompatibilitás javítása az Android 2.x és régebbi verziókkal.</li>
-<li>Zsoltárok közötti térköz növelése azonos antifónák esetén.</li>
-<li>Több bekezdésből álló könyörgések olvashatóbb tagolása.</li>
-</ul>
-
-<p><b>Verzió 1.11</b>
-<ul>
-<li>Éjszakai/nappali mód váltása a főmenüből.</li>
-<li>Nagyobb sorköz a jobb olvashatóság érdekében.</li>
-<li>Frissített „Névjegy” párbeszédablak.</li>
-<li>Gépelési hibák javítása mindegyik nyelvnél.</li>
-</ul>
-
-<p><b>Verzió 1.10</b>
-<ul>
-<li>Az imák egyszerűsített megjelenítése (csak az imák szövege, címek és rubrikák nélkül) látássérültek számára. Felolvasó gépek használhatják.</li>
-<li>Új lehetőség a főoldalon: Általános rész.</li>
-<li>A Mária antifónák éjszakai módjának javítása.</li>
-<li>Android 5.0 (Lollipop) kompatibilitás.</li>
-</ul>
-
-<p><b>Verzió 1.9.10</b>
-<ul>
-<li>Új beállítási lehetőség: automatikus csendes módba kapcsolás imádság közben.</li>
-<li>Új beállítási lehetőség: I. Esti dicséret himnusza (évközi időben).</li>
-<li>Fohászok formázása.</li>
-</ul>
-
-<p><b>Verzió 1.9.9</b>
-<ul>
-<li>A befejező imaóra kantikuma félkövéren jelenik meg.</li>
-<li>Hármaspont karakter használata.</li>
-<li>Magyar helyesírás szerinti gondolatjel az angolszász helyett.</li>
-<li>Himnuszok, igehelyek és imaóra részek formázása.</li>
-</ul>
-
-<p><b>Verzió 1.9.8</b>
-<ul>
-<li>Hosszú érintésre elrejti az alsó navigációs sávot.</li>
-<li>Új opció: a képernyő ne sötétüljön el.</li>
-<li>Sok apró javítás.</li>
-</ul>
-
-</body></html>
+</body>
+</html>
     ]]></string>
 
+    <string name="tts_language_not_available">A szövegfelolvasás nem érhető el az aktuális nyelvnél.</string>
 </resources>

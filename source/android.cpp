@@ -100,7 +100,7 @@ FILE *fopen(const char *path, const char *mode) {
   return out;
 }
 
-char *getenv(const char *name) {
+char *android_getenv(const char *name) {
   // handled by java:
     // QUERY_STRING
     // REQUEST_METHOD
@@ -128,7 +128,7 @@ char *getenv(const char *name) {
   return NULL;
 }
 
-int putenv(const char *string) {
+int android_putenv(const char *string) {
   char *env3;
   int envlen3;
   int len = strlen(string);
@@ -146,7 +146,7 @@ int putenv(const char *string) {
   return 1;
 }
 
-int main(int argc, const char **argv);
+int breviar_main(int argc, const char **argv);
 
 void closeFd(JNIEnv* env, jobject fd) {
   close(getFd(env, fd));
@@ -172,9 +172,9 @@ JNIEXPORT jstring JNICALL Java_sk_breviar_android_Server_main(JNIEnv* env, jobje
   //int nullfd = open("/dev/null", O_RDONLY);
   //stdin_pipe = fdopen(nullfd, "r");
   
-//  __android_log_print(ANDROID_LOG_INFO, "Breviar", "calling main");
-  main(1, params);
-//  __android_log_print(ANDROID_LOG_INFO, "Breviar", "main finished");
+//  __android_log_print(ANDROID_LOG_INFO, "Breviar", "calling breviar_main");
+  breviar_main(1, params);
+//  __android_log_print(ANDROID_LOG_INFO, "Breviar", "breviar_main finished");
   char pom2[MAX_STR], pom3[MAX_STR];
   strcpy(pom2, ""); strcpy(pom3, "");
   prilep_request_options(pom2, pom3);

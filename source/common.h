@@ -1,7 +1,7 @@
 /*********************************************************/
 /*                                                       */
 /* common.h                                              */
-/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk       */
+/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk       */
 /*                                                       */
 /* description | new core basic define's                 */
 /*                                                       */
@@ -13,6 +13,8 @@
 #define __COMMON_H_
 
 #define Q_UNUSED(arg) (void)arg;
+
+#define CHAR_EMPTY 0
 
 #define SMALL 160
 #define VERY_SMALL 16
@@ -63,8 +65,11 @@
 // special characters in prayer texts (some of them to be removed for blind-friendly version)
 #define CHAR_SPACE             ' '
 #define CHAR_PRAYER_ASTERISK   '*'
-#define CHAR_PRAYER_CROSS      L'\x2020' /*†*/
+#define CHAR_PRAYER_CROSS      L'\x2020' /*†*/ // used as flexa | U+2020 DAGGER
 #define CHAR_PRAYER_CROSS_ALT  '+'
+#define CHAR_PRAYER_TRIANGLE   L'\x25B3' /*△*/ // 'uppercase delta': Δ (used for doxology) | U+25B3 WHITE UP-POINTING TRIANGLE
+#define CHAR_EM_DASH           L'\x2014' /*—*/ // em dash | U+2014
+#define CHAR_EN_DASH           L'\x2013' /*–*/ // en dash | U+2013
 
 // include parameters
 #define INCLUDE_BEGIN   "BEGIN" // zaciatok
@@ -121,15 +126,25 @@
 
 #pragma region string constants
 
-#define STR_DASH_EN "–"
-#define STR_DASH_EM "—"
+#define STR_EN_DASH "–"
+#define STR_EN_DASH_WITH_SPACES " – "
+#define STR_EM_DASH "—"
 #define STR_SPACE " "
 #define STR_VERTICAL_BAR "|"
 #define STR_VERTICAL_BAR_WITH_SPACES " | "
+#define STR_ASTERISK "*"
 #define STR_CROSS "†"
 #define STR_SLASH "/"
 #define STR_UNDERSCORE "_"
 #define STR_DOT "."
+
+#pragma endregion
+
+#pragma region TTS
+
+#define TTS_PAUSE		1 // standard, for * in psalmody
+#define TTS_PAUSE_SHORT	2 // shorter, for + in psalmody
+#define TTS_PAUSE_LONG	3 // longer, reserved (not used yet)
 
 #pragma endregion
 
@@ -177,7 +192,8 @@
 
 #define HTML_NONBREAKING_SPACE "&nbsp;"
 #define HTML_NONBREAKING_SPACE_LONG "&nbsp;&nbsp;&nbsp;"
-#define HTML_LINE_BREAK "<br/>"
+#define HTML_LINE_BREAK_PURE "<br/>" // not followed by real line-break
+#define HTML_LINE_BREAK "<br/>\n" // always followed by real line-break
 #define HTML_CRLF_LINE_BREAK "\n<br/>"
 #define HTML_NONBREAKING_SPACE_LOOONG "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 #define HTML_SLASH_SPACE_LOONG_LINE_BREAK (HTML_NONBREAKING_SPACE "" STR_SLASH "" HTML_NONBREAKING_SPACE "" HTML_LINE_BREAK "" HTML_NONBREAKING_SPACE_LOOONG)
@@ -192,6 +208,9 @@
 #define HTML_P_CENTER_SMALL         "<p " HTML_CLASS_SMALL_CENTER ">"
 #define HTML_P_INLINE               "<p " HTML_CLASS_INLINE ">"
 
+#define HTML_P_VERSE_START          "<p class=\"verse start\">"
+#define HTML_P_VERSE_CONT           "<p class=\"verse cont\">"
+
 #define HTML_A_HREF_BEGIN           "<a href="
 #define HTML_A_NAME_BEGIN           "<a name="
 #define HTML_A_END                  "</a>"
@@ -201,13 +220,26 @@
 
 #define HTML_DIV_CENTER             "<div " HTML_CLASS_CENTER ">"
 #define HTML_DIV_INLINE             "<div " HTML_CLASS_INLINE ">"
+#define HTML_DIV_RUBRIC             "<div " HTML_CLASS_RUBRIC ">"
 
 #define HTML_DIV_SMALL_INLINE       "div class=\"small inline\""
 #define HTML_DIV_SMALL              "div class=\"small\""
 #define HTML_DIV_RED_SMALL          "div class=\"redsmall\""
 #define HTML_DIV_RED_SUBTITLE       "div class=\"redsubtitle\""
 
+#define HTML_DIV_PSALM              "div class=\"psalm\""
 #define HTML_DIV_PSALM_INDENT       "div class=\"psalm-indent\""
+
+// TTS navigation
+#define HTML_DIV_TTS_HEADING        "div class=\"tts_heading\""
+#define HTML_DIV_TTS_SECTION        "div class=\"tts_section\""
+
+// TTS special - pause (for special characters); see constants TTS_PAUSE above
+#define HTML_SPAN_TTS_PAUSE_RED     "span class=\"tts_pause red\""
+
+#define HTML_SPAN_TTS_PAUSE         "span class=\"tts_pause\""
+#define HTML_SPAN_TTS_PAUSE_SHORT   "span class=\"tts_pause_short\""
+#define HTML_SPAN_TTS_PAUSE_LONG    "span class=\"tts_pause_long\""
 
 // HTML tables defined using DIVs
 #define HTML_TABLE			        "div class=\"table\"" // "table"
@@ -229,31 +261,58 @@
 
 #define HTML_TABLE_CELL_BORDER_END	HTML_TABLE_CELL_END
 
-#define HTML_SPAN_END               "</span>"
+#define HTML_CLASS                  "class"
 
-#define HTML_SPAN_NORMAL            "span class=\"normal\""
-#define HTML_SPAN_ITALIC            "span class=\"it\""
-#define HTML_SPAN_BOLD              "span class=\"bold\""
-#define HTML_SPAN_BOLD_IT           "span class=\"boldit\""
-#define HTML_SPAN_RED_TITLE         "span class=\"redtitle\""
-#define HTML_SPAN_RED               "span class=\"red\""
-#define HTML_SPAN_RED_BOLD          "span class=\"redbold\""
-#define HTML_SPAN_BLUE              "span class=\"blue\""
-#define HTML_SPAN_BLUE_BOLD         "span class=\"bluebold\""
-#define HTML_SPAN_RED_SMALL         "span class=\"redsmall\""
-#define HTML_SPAN_RED_SUBTITLE      "span class=\"redsubtitle\""
-#define HTML_SPAN_SMALL             "span class=\"small\""
-#define HTML_SPAN_EXPLAIN           "span class=\"explain\""
-#define HTML_SPAN_PARAMETER         "span class=\"parameter\""
-#define HTML_SPAN_VALUE             "span class=\"value\""
-#define HTML_SPAN_SMALLCAPS         "span class=\"smallcaps\""
-#define HTML_SPAN_XS_CAPS           "span class=\"xsmallcaps\""
-#define HTML_SPAN_HIDDEN            "span class=\"hidden\""
-#define HTML_SPAN_UPPERCASE         "span class=\"uppercase\""
+#define HTML_SPAN                   "span"
 
-#define HTML_SPAN_COMMENT           "span class=\"comment\""
+#define HTML_SPAN_CLASS             HTML_SPAN " " HTML_CLASS "=" // without quote
 
-#define HTML_CLASS_CALENDAR         "class=\"calendar\""
+#define HTML_SPAN_END               "</" HTML_SPAN ">"
+
+#define HTML_CLASS_NAME_NORMAL        "normal"
+#define HTML_CLASS_NAME_ITALIC        "it"
+#define HTML_CLASS_NAME_BOLD          "bold"
+#define HTML_CLASS_NAME_BOLD_IT       "boldit"
+#define HTML_CLASS_NAME_RED_TITLE     "redtitle"
+#define HTML_CLASS_NAME_RED           "red"
+#define HTML_CLASS_NAME_RED_BOLD      "redbold"
+#define HTML_CLASS_NAME_BLUE          "blue"
+#define HTML_CLASS_NAME_BLUE_BOLD     "bluebold"
+#define HTML_CLASS_NAME_RED_SMALL     "redsmall"
+#define HTML_CLASS_NAME_RED_SUBTITLE  "redsubtitle"
+#define HTML_CLASS_NAME_SMALL         "small"
+#define HTML_CLASS_NAME_SMALLCAPS     "smallcaps"
+#define HTML_CLASS_NAME_EXPLAIN       "explain"
+#define HTML_CLASS_NAME_PARAMETER     "parameter"
+#define HTML_CLASS_NAME_VALUE         "value"
+#define HTML_CLASS_NAME_XS_CAPS       "xsmallcaps"
+#define HTML_CLASS_NAME_HIDDEN        "hidden"
+#define HTML_CLASS_NAME_UPPERCASE     "uppercase"
+#define HTML_CLASS_NAME_TEXTNOTE      "textnote"
+
+#define HTML_SPAN_NORMAL          HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_NORMAL "\""
+#define HTML_SPAN_ITALIC          HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_ITALIC "\""
+#define HTML_SPAN_BOLD            HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_BOLD "\""
+#define HTML_SPAN_BOLD_IT         HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_BOLD_IT "\""
+#define HTML_SPAN_RED_TITLE       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED_TITLE "\""
+#define HTML_SPAN_RED             HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED "\""
+#define HTML_SPAN_RED_BOLD        HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED_BOLD "\""
+#define HTML_SPAN_BLUE            HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_BLUE "\""
+#define HTML_SPAN_BLUE_BOLD       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_BLUE_BOLD "\""
+#define HTML_SPAN_RED_SMALL       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED_SMALL "\""
+#define HTML_SPAN_RED_SUBTITLE    HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_RED_SUBTITLE "\""
+#define HTML_SPAN_SMALL           HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_SMALL "\""
+#define HTML_SPAN_SMALLCAPS       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_SMALLCAPS "\""
+#define HTML_SPAN_EXPLAIN         HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_EXPLAIN "\""
+#define HTML_SPAN_PARAMETER       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_PARAMETER "\""
+#define HTML_SPAN_VALUE           HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_VALUE "\""
+#define HTML_SPAN_XS_CAPS         HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_XS_CAPS "\""
+#define HTML_SPAN_HIDDEN          HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_HIDDEN "\""
+#define HTML_SPAN_UPPERCASE       HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_UPPERCASE "\""
+#define HTML_SPAN_TEXTNOTE        HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_TEXTNOTE "\""
+
+#define HTML_CLASS_CALENDAR       "class=\"calendar\""
+#define HTML_CLASS_SMALL          "class=\"small\""
 
 #define HTML_CALENDAR_HEADING       "span class=\"calendar heading\""
 #define HTML_CALENDAR_DAYS          "span class=\"calendar day_name\""
@@ -261,13 +320,13 @@
 #define HTML_CALENDAR_TODAY         "span class=\"calendar today\""
 
 #define HTML_CLASS_NAME_CALENDAR_TODAY_SUNDAY "calendar today bold"
-#define HTML_CLASS_NAME_CALENDAR_TODAY "calendar today"
-#define HTML_CLASS_NAME_CALENDAR_SUNDAY "calendar day bold"
-#define HTML_CLASS_NAME_CALENDAR_DAY "calendar day"
+#define HTML_CLASS_NAME_CALENDAR_TODAY        "calendar today"
+#define HTML_CLASS_NAME_CALENDAR_SUNDAY       "calendar day bold"
+#define HTML_CLASS_NAME_CALENDAR_DAY          "calendar day"
 
-#define HTML_SPAN_TOOLTIP           "span title=\"%s\"" // obsahuje %s
-#define HTML_SPAN_BOLD_TOOLTIP      "span class=\"bold\" title=\"%s\"" // obsahuje %s
-#define HTML_SPAN_NORMAL_TOOLTIP    "span class=\"normal\" title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_TOOLTIP           HTML_SPAN " " "title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_BOLD_TOOLTIP      HTML_SPAN " " "class=\"bold\" title=\"%s\"" // obsahuje %s
+#define HTML_SPAN_NORMAL_TOOLTIP    HTML_SPAN " " "class=\"normal\" title=\"%s\"" // obsahuje %s
 
 #define HTML_SUP_RED                "sup class=\"red\""
 
@@ -301,6 +360,11 @@
 #define HTML_COMMENT_BEGIN		    "<!--"
 #define HTML_COMMENT_END		    "-->"
 #define HTML_FONT_SIZE_FARBA	    "80%%"
+
+#define HTML_LEFT_ARROW_CLASSIC		"&larr;"
+#define HTML_RIGHT_ARROW_CLASSIC	"&rarr;"
+#define HTML_UP_ARROW_CLASSIC		"&uarr;"
+#define HTML_DOWN_ARROW_CLASSIC		"&darr;"
 
 #define HTML_LEFT_ARROW			    "&laquo;"
 #define HTML_RIGHT_ARROW		    "&raquo;"

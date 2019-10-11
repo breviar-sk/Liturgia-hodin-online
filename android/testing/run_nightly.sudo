@@ -1,3 +1,4 @@
 #!/bin/bash
 
+export PATH=/home/riso/Android/sdk/tools:/home/riso/Android/sdk/tools/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/home/riso/bin
 sudo -u riso /home/riso/Android/breviar-build/breviar/android/testing/run_nightly

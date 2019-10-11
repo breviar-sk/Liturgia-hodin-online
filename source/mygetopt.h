@@ -4,7 +4,7 @@
 /* Copyright (C) 1989,90,91,92,93,94,96,97                     */
 /*                              Free Software Foundation, Inc. */
 /*                                                             */
-/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /***************************************************************/
 
@@ -47,7 +47,7 @@ extern "C" {
    each non-option ARGV-element is returned here.  */
 
 extern
-char *optarg;
+const char *optarg;
 
 /* Index in ARGV of the next element to be scanned.
 	This is used for communication to and from the caller
@@ -119,7 +119,7 @@ struct option
 // added by JUV
 int getopt(
 	int argc,
-	char *const *argv,
+	const char *const *argv,
 	const char *optstring);
 
 #endif /* __GETOPT_H_ */

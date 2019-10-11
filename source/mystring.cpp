@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* mystring.cpp                                                */
-/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | proprietary string manipulation methods       */
 /*                                                             */
@@ -250,6 +250,62 @@ char* mystr_replace_char(const char *string, const char orig_char, const char re
 	}
 	return newstr;
 }// mystr_replace_char()
+
+char* mystr_remove_char(const char *string, const char char_to_remove) {
+	/* if substr is NULL, duplicate string a let caller handle it */
+	if (char_to_remove == 0) return strdup(string);
+
+	char *newstr = NULL;
+	newstr = strdup(string);
+
+	int i = 0, j = 0;
+
+	while (string[i] != '\0')
+	{
+		if (string[i] != char_to_remove)
+		{
+			newstr[j] = string[i];
+			j++;
+		}
+		i++;
+	}
+	newstr[j] = '\0';
+
+	return newstr;
+}// mystr_remove_char()
+
+char* mystr_remove_letters_and_parentheses(const char *string) {
+	/* if substr is NULL, duplicate string a let caller handle it */
+
+	char *newstr = NULL;
+	newstr = strdup(string);
+
+	short int i = 0, j = 0;
+	short int skip = NIE;
+
+	while (string[i] != '\0')
+	{
+		// remove everything in parentheses [CZ: alternative numbering of Psalms]
+		if (string[i] == '(') {
+			skip = ANO;
+		}
+		else if (string[i] == ')') {
+			skip = NIE;
+		}
+		else if (skip != ANO) {
+			// test character
+			if ((string[i] < 'a' && string[i] > 'Z') || (string[i] < 'A') || (string[i] > 'z'))
+			{
+				newstr[j] = string[i];
+				j++;
+			}
+		}
+		i++;
+	}
+	newstr[j] = '\0';
+
+	return newstr;
+}// mystr_remove_letters()
 
 char *mystr_first_lower(const char *string) {
 	char *newstr = NULL;

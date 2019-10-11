@@ -1,7 +1,7 @@
 /************************************************************/
 /*                                                          */
 /* liturgia.h                                               */
-/* (c)1999-2017 | Juraj Vidéky | videky@breviar.sk          */
+/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk          */
 /*                                                          */
 /* description | basic 'liturgical' constants, defines      */
 /*               and structures                             */
@@ -28,7 +28,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-#define MENO_SVIATKU 250
+#define MENO_SVIATKU 260
 #define MAX_LC_STR_ID 50
 
 // "null" year, month, day
@@ -106,11 +106,18 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define CSS_kbd_sk				3
 
 // static texts
-#define POCET_STATIC_TEXTOV               2
+#define POCET_STATIC_TEXTOV               3
 
 #define STATIC_TEXT_UNDEF                 0
 #define STATIC_TEXT_MARIANSKE_ANTIFONY    1
 #define STATIC_TEXT_ORDINARIUM            2
+#define STATIC_TEXT_INFO                  3
+
+// info files (used for mobile applications: about, version history...)
+#define POCET_INFO_TEXTOV       1
+
+#define INFO_ABOUT              0
+#define INFO_VERSION_HISTORY    1
 
 // number of fonts
 #define	POCET_FONTOV    10
@@ -169,42 +176,41 @@ typedef struct _anchor_and_file _struct_anchor_and_file;
 #define vchvalospev  zalm3
 #define magnifikat   benediktus
 
-struct tmodlitba1{
+struct tmodlitba1 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	_struct_anchor_and_file popis     ;
-	_struct_anchor_and_file hymnus    ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
-	_struct_anchor_and_file antifona2 ;
-	_struct_anchor_and_file zalm2     ;
-	_struct_anchor_and_file antifona3 ;
-	_struct_anchor_and_file zalm3     ;
-	_struct_anchor_and_file kcitanie  ;
-	_struct_anchor_and_file kresponz  ; 
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file hymnus;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
+	_struct_anchor_and_file antifona2;
+	_struct_anchor_and_file zalm2;
+	_struct_anchor_and_file antifona3;
+	_struct_anchor_and_file zalm3;
+	_struct_anchor_and_file kcitanie;
+	_struct_anchor_and_file kresponz;
 	_struct_anchor_and_file benediktus; // antifona na benediktus/magnifikat
-	_struct_anchor_and_file prosby    ; // pre posvatne citanie nedefinovane; 2011-03-16: "zneužité" (použité) pre hagiografické čítanie (ľubovoľnej) spomienky svätca v pôste
-	_struct_anchor_and_file modlitba  ;
+	_struct_anchor_and_file prosby; // pre posvatne citanie nedefinovane; 2011-03-16: "zneužité" (použité) pre hagiografické čítanie (ľubovoľnej) spomienky svätca v pôste
+	_struct_anchor_and_file modlitba;
 	_struct_anchor_and_file ant_spomprivileg; // 2010-05-21: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie) // 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 	_struct_anchor_and_file modlitba_spomprivileg; // 2010-05-21: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie) // 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 };
 typedef struct tmodlitba1 _type_ranne_chvaly;
 typedef struct tmodlitba1 _type_vespery;
 typedef struct tmodlitba1 _type_1vespery;
-// typedef struct tmodlitba1 _type_posv_citanie;
 
-struct tmodlitba2{
+struct tmodlitba2 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	_struct_anchor_and_file popis     ;
-	_struct_anchor_and_file hymnus    ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
-	_struct_anchor_and_file antifona2 ;
-	_struct_anchor_and_file zalm2     ;
-	_struct_anchor_and_file antifona3 ;
-	_struct_anchor_and_file zalm3     ;
-	_struct_anchor_and_file kcitanie  ;
-	_struct_anchor_and_file kresponz  ;
-	_struct_anchor_and_file modlitba  ;
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file hymnus;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
+	_struct_anchor_and_file antifona2;
+	_struct_anchor_and_file zalm2;
+	_struct_anchor_and_file antifona3;
+	_struct_anchor_and_file zalm3;
+	_struct_anchor_and_file kcitanie;
+	_struct_anchor_and_file kresponz;
+	_struct_anchor_and_file modlitba;
 };
 typedef struct tmodlitba2 _type_cez_den_9;
 typedef struct tmodlitba2 _type_cez_den_12;
@@ -215,57 +221,59 @@ typedef struct tmodlitba2 _type_cez_den_pred;
 typedef struct tmodlitba2 _type_cez_den_na;
 typedef struct tmodlitba2 _type_cez_den_po;
 
-struct tmodlitba3{
+struct tmodlitba3 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	short int pocet_zalmov            ; // pridané 2006-10-18; niekedy sú až 2 žalmy
-	_struct_anchor_and_file popis     ; // pridané 2006-10-11; zrušené antifona2, zalm2 a modlitba
-	_struct_anchor_and_file hymnus    ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
-	_struct_anchor_and_file antifona2 ; // pridané 2006-10-17; niekedy sú až 2 žalmy
-	_struct_anchor_and_file zalm2     ;
-	_struct_anchor_and_file kcitanie  ;
-	_struct_anchor_and_file kresponz  ;
+	short int pocet_zalmov; // pridané 2006-10-18; niekedy sú až 2 žalmy
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file ukonkaj; // added 2018-03-06; act of repentance
+	_struct_anchor_and_file hymnus;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
+	_struct_anchor_and_file antifona2;
+	_struct_anchor_and_file zalm2;
+	_struct_anchor_and_file kcitanie;
+	_struct_anchor_and_file kresponz;
 	_struct_anchor_and_file nunc_dimittis; // antifóna na nunc dimittis; pridané 2013-04-03 (kvôli OPRAEM, 08dec)
-	_struct_anchor_and_file modlitba  ;
+	_struct_anchor_and_file modlitba;
+	_struct_anchor_and_file maria_ant; // added 2018-03-23; Mary antiphone
 };
 typedef struct tmodlitba3 _type_kompletorium;
 typedef struct tmodlitba3 _type_1kompletorium;
 
-struct tmodlitba4{
+struct tmodlitba4 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	_struct_anchor_and_file popis     ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
 };
 typedef struct tmodlitba4 _type_invitatorium;
 
-struct tmodlitba5{
+struct tmodlitba5 {
 	short int alternativy; // bitové komponenty hovoria, ktoré časti môžu mať alternatívy
-	_struct_anchor_and_file popis     ;
-	_struct_anchor_and_file hymnus    ;
-	_struct_anchor_and_file antifona1 ;
-	_struct_anchor_and_file zalm1     ;
-	_struct_anchor_and_file antifona2 ;
-	_struct_anchor_and_file zalm2     ;
-	_struct_anchor_and_file antifona3 ;
-	_struct_anchor_and_file zalm3     ;
-	_struct_anchor_and_file kresponz  ; 
-	_struct_anchor_and_file citanie1  ; // 1. citanie pre posvatne citanie
-	_struct_anchor_and_file citanie2  ; // 2. citanie pre posvatne citanie
-	_struct_anchor_and_file citanie_spomprivileg ; // 2011-03-16: "zneužité" (použité) pre hagiografické čítanie (ľubovoľnej) spomienky svätca v pôste; 2011-03-25: nový typ -> nové meno
-	_struct_anchor_and_file ant_chval ; // vigília: antifóna pre chválospevy
-	_struct_anchor_and_file chval1    ; // vigília: chválospev I
-	_struct_anchor_and_file chval2    ; // vigília: chválospev II
-	_struct_anchor_and_file chval3    ; // vigília: chválospev III
+	_struct_anchor_and_file popis;
+	_struct_anchor_and_file hymnus;
+	_struct_anchor_and_file antifona1;
+	_struct_anchor_and_file zalm1;
+	_struct_anchor_and_file antifona2;
+	_struct_anchor_and_file zalm2;
+	_struct_anchor_and_file antifona3;
+	_struct_anchor_and_file zalm3;
+	_struct_anchor_and_file kresponz;
+	_struct_anchor_and_file citanie1; // 1. citanie pre posvatne citanie
+	_struct_anchor_and_file citanie2; // 2. citanie pre posvatne citanie
+	_struct_anchor_and_file citanie_spomprivileg; // 2011-03-16: "zneužité" (použité) pre hagiografické čítanie (ľubovoľnej) spomienky svätca v pôste; 2011-03-25: nový typ -> nové meno
+	_struct_anchor_and_file ant_chval; // vigília: antifóna pre chválospevy
+	_struct_anchor_and_file chval1; // vigília: chválospev I
+	_struct_anchor_and_file chval2; // vigília: chválospev II
+	_struct_anchor_and_file chval3; // vigília: chválospev III
 	_struct_anchor_and_file evanjelium; // vigília: evanjelium
-	_struct_anchor_and_file modlitba  ;
+	_struct_anchor_and_file modlitba;
 };
 typedef struct tmodlitba5 _type_posv_citanie;
 
-struct den_mesiac{ // takto povodne vyzerala struct dm
-	short int den;        // cislo dna mesiaca (1--31)
-	short int mesiac;     // cislo mesiaca (1--12) - ináč ako je potrebné pre väčšinu polí, kde je mesiac 0--11
+struct den_mesiac {
+	short int den;    // cislo dna mesiaca (1--31)
+	short int mesiac; // cislo mesiaca (1--12) - ináč ako je potrebné pre väčšinu polí, kde je mesiac 0--11
 };
 typedef struct den_mesiac _struct_den_mesiac;
 
@@ -370,9 +378,6 @@ extern const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 extern const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_Modlitby(a)	nazov_Modlitby_jazyk[a][_global_jazyk]
 
-extern const char *nazov_MODLITBY_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
-#define		nazov_MODLITBY(a)	nazov_MODLITBY_jazyk[a][_global_jazyk]
-
 // file templates for prayers
 #define TEMPLAT_INVITATORIUM     "m_invitat.htm"
 #define TEMPLAT_POSV_CITANIE     "m_posvcit.htm"
@@ -398,7 +403,18 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define ORDINARIUM_KOMPLETORIUM     "ord_komplet.htm"
 #define ORDINARIUM_EMPTY            STR_EMPTY // MODL_VSETKY + MODL_DETAILY
 
-extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
+extern const char *FILE_ORDINARIUM[POCET_MODLITIEB + 1];
+
+extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
+
+#define FILE_INFO_ABOUT            "about.htm"
+#if defined(IO_ANDROID)
+#define FILE_VERSION_HISTORY       "version-android.htm"
+#elif defined (__APPLE__)
+#define FILE_VERSION_HISTORY       "version-ios.htm"
+#else
+#define FILE_VERSION_HISTORY       "version-web.htm"
+#endif
 
 #define SHOW_TEMPLAT_MODLITBA      1 // use TEMPLAT[]
 #define SHOW_TEMPLAT_STATIC_TEXT   2 // use ORDINARIUM[]
@@ -425,6 +441,8 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_MODLITBA      "MODLITBA"
 #define PARAM_CITANIE1      "CITANIE1" // vlastne KCITANIE
 #define PARAM_CITANIE2      "CITANIE2" // vlastne BENEDIKTUS
+#define PARAM_UKON_KAJ      "UKONKAJ" // úkon kajúcnosti -- act of repentance
+#define PARAM_MARIA_ANT     "MARIA_ANT" // mariánske antifóny -- Mary antiphone
 
 #define PARAM_ANTIFONA1x    "ANTIFONA1_DRUHA"
 #define PARAM_ANTIFONA3x    "ANTIFONA3_PRVA"
@@ -450,7 +468,6 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_EVANJELIUM    "EVANJELIUM"
 
 #define PARAM_TEXT          "TEXT" // static text included into single file
-#define PARAM_MARIANSKE_ANTIFONY_LINK "MARIANSKE_ANTIFONY_LINK" // hyperlink to Maria antiphones (static HTML text or dynamically generated URL
 
 // these are used also for <a name...> -- do not use underscore in these names :)
 #define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // supplementary psalmody (for daily prayers: 9h, 12h, 15h)
@@ -482,16 +499,27 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ZALM146                  "ZALM146"
 #define PARAM_ZALM150                  "ZALM150"
 #define PARAM_INVITATORIUM_ANT(i)      "ANT-INVITAT" i
+#define PARAM_MARIANSKE_ANTIFONY       "MARIANSKE-ANTIFONY" // Maria antiphones at the end of compline
+#define PARAM_OKTAVA_PRVE_DRUHE_KOMPL  "OKTAVA-PRVE-DRUHE-KOMPLETORIUM"
+
+// these are used in template for invitatory (m_invitat.htm) for hyperlinks
+#define PARAM_INVITAT_PSALM_24        "INVITAT-PS-24"
+#define PARAM_INVITAT_PSALM_67        "INVITAT-PS-67"
+#define PARAM_INVITAT_PSALM_95        "INVITAT-PS-95"
+#define PARAM_INVITAT_PSALM_100       "INVITAT-PS-100"
 
 // keywords
 #define KEYWORD_BEGIN   "BEGIN"
 #define KEYWORD_END     "END"
 #define KEYWORD_MULTI   "MULTI"
+#define KEYWORD_OCR_34  "OCR-34"
+#define KEYWORD_INVITAT_COMMON          "INVITAT-COMMON"
+#define KEYWORD_INVITAT_PSALM_SIMPLE    "INVITAT-PSALM"
+#define KEYWORD_INVITAT_PSALM(i)        KEYWORD_INVITAT_PSALM_SIMPLE i
 
 #define KEYWORD_ALELUJA_ALELUJA         "ALELUJA_ALELUJA"
 #define KEYWORD_ALELUJA_NIE_V_POSTE     "ALELUJA_NIE_V_POSTE"
 #define KEYWORD_ALELUJA_VO_VELKONOCNOM  "V_O_ALELUJA"
-#define KEYWORD_HYMNUS_34_OCR_INY       "HYMNUS_34_OCR_INY"
 #define KEYWORD_OTCENAS                 "OTCENAS"
 #define KEYWORD_PARAM_CHVALOSPEV        "CHVALOSPEV"
 #define KEYWORD_KOMPLETORIUM_DVA_ZALMY	"KOMPLETORIUM_DVA_ZALMY"
@@ -510,10 +538,17 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define KEYWORD_ZAVER_KNAZ_DIAKON       "ZAVER_KNAZ_DIAKON"
 #define KEYWORD_ZAVER_OSTATNI           "ZAVER_OSTATNI"
 #define KEYWORD_HIDE_FOR_VOICE_OUTPUT   "HIDE_FOR_VOICE_OUTPUT"
+#define KEYWORD_TTS_HEADING             "TTS:HEADING"
+#define KEYWORD_TTS_SECTION             "TTS:SECTION"
+#define KEYWORD_MARIANSKE_ANTIFONY      "MARIANSKE-ANTIFONY" // Maria antiphones at the end of compline
 
 #define SYMBOL_END "/"
 
 // parameters
+#define PARAM_INVITAT_COMMON_BEGIN          KEYWORD_INVITAT_COMMON "" STR_UNDERSCORE "" KEYWORD_BEGIN
+#define PARAM_INVITAT_COMMON_END            KEYWORD_INVITAT_COMMON "" STR_UNDERSCORE "" KEYWORD_END
+#define PARAM_INVITAT_PSALM_BEGIN(i)        KEYWORD_INVITAT_PSALM(i) "" STR_UNDERSCORE "" KEYWORD_BEGIN
+#define PARAM_INVITAT_PSALM_END(i)          KEYWORD_INVITAT_PSALM(i) "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_ALELUJA_ALELUJA_BEGIN         KEYWORD_ALELUJA_ALELUJA "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_ALELUJA_ALELUJA_END           KEYWORD_ALELUJA_ALELUJA "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_ALELUJA_NIE_V_POSTE           KEYWORD_ALELUJA_NIE_V_POSTE
@@ -522,8 +557,6 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ALELUJA_VO_VELKONOCNOM        KEYWORD_ALELUJA_VO_VELKONOCNOM
 #define PARAM_ALELUJA_VO_VELKONOCNOM_BEGIN  KEYWORD_ALELUJA_VO_VELKONOCNOM "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_ALELUJA_VO_VELKONOCNOM_END    KEYWORD_ALELUJA_VO_VELKONOCNOM "" STR_UNDERSCORE "" KEYWORD_END
-#define PARAM_HYMNUS_34_OCR_INY_BEGIN       KEYWORD_HYMNUS_34_OCR_INY "" STR_UNDERSCORE "" KEYWORD_BEGIN
-#define PARAM_HYMNUS_34_OCR_INY_END         KEYWORD_HYMNUS_34_OCR_INY "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_OTCENAS_BEGIN                 KEYWORD_OTCENAS "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_OTCENAS_END                   KEYWORD_OTCENAS "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_CHVALOSPEV_BEGIN              KEYWORD_PARAM_CHVALOSPEV "" STR_UNDERSCORE "" KEYWORD_BEGIN
@@ -541,6 +574,9 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ZAVER_KNAZ_DIAKON_END         KEYWORD_ZAVER_KNAZ_DIAKON "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_ZAVER_OSTATNI_BEGIN           KEYWORD_ZAVER_OSTATNI "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_ZAVER_OSTATNI_END             KEYWORD_ZAVER_OSTATNI "" STR_UNDERSCORE "" KEYWORD_END
+#define PARAM_MARIANSKE_ANTIFONY_BEGIN      KEYWORD_MARIANSKE_ANTIFONY "" STR_UNDERSCORE "" KEYWORD_BEGIN
+#define PARAM_MARIANSKE_ANTIFONY_END        KEYWORD_MARIANSKE_ANTIFONY "" STR_UNDERSCORE "" KEYWORD_END
+
 #define PARAM_HIDE_FOR_VOICE_OUTPUT         KEYWORD_HIDE_FOR_VOICE_OUTPUT
 
 #define PARAM_COPYRIGHT_BEGIN               KEYWORD_COPYRIGHT "" STR_UNDERSCORE "" KEYWORD_BEGIN
@@ -566,6 +602,11 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_SPOMIENKA_PRIVILEG_BEGIN      KEYWORD_SPOMIENKA_PRIVILEG "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_SPOMIENKA_PRIVILEG_END        KEYWORD_SPOMIENKA_PRIVILEG "" STR_UNDERSCORE "" KEYWORD_END
 
+// TTS parameters
+#define PARAM_TTS_HEADING_BEGIN             KEYWORD_TTS_HEADING "" STR_UNDERSCORE "" KEYWORD_BEGIN
+#define PARAM_TTS_HEADING_END               KEYWORD_TTS_HEADING "" STR_UNDERSCORE "" KEYWORD_END
+#define PARAM_TTS_SECTION                   KEYWORD_TTS_SECTION
+
 // zobrazenie/skrytie myšlienky k žalmu -- pre cezročné obdobie alternatívnej antifóny žalmu/chválospevu ("myšlienka k žalmu" podľa bodu 111 a 114 VSLH)
 #define PARAM_PSALMODIA_MYSLIENKA           "PSALMODIA_MYSLIENKA" // 2011-08-31: zmenené; pôvodne bolo: PARAM_MYSLIENKA_K_ZALMU "MYSLIENKA_K_ZALMU"
 // zobrazenie/skrytie nadpisu k žalmu/chválospevu ("nadpis k žalmu" podľa bodu 111 VSLH)
@@ -582,6 +623,8 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 // rubriky priamo v includovaných HTML súboroch
 #define PARAM_RUBRIKA                       "RUBRIKA"
 
+#define PARAM_ALT_HYMNUS_OCR_34             PARAM_ALT_HYMNUS "-" KEYWORD_OCR_34
+
 // multiple alternatives
 #define PARAM_ALT_HYMNUS_MULTI              PARAM_ALT_HYMNUS "-" KEYWORD_MULTI
 #define PARAM_ALT_CITANIE2_MULTI            "ALT-CITANIE2-" KEYWORD_MULTI
@@ -591,6 +634,9 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_ALT_PROSBY_MULTI              "ALT-PROSBY-" KEYWORD_MULTI
 #define PARAM_ALT_KCIT_RESP_MULTI           "ALT-KCIT-RESP-" KEYWORD_MULTI
 #define PARAM_ALT_KRESP_MULTI               "ALT-KRESP-" KEYWORD_MULTI
+#define PARAM_ALT_PSALM_MULTI               "ALT-PSALM-" KEYWORD_MULTI
+#define PARAM_ALT_UKONKAJ_MULTI             "ALT-UKONKAJ-" KEYWORD_MULTI // used as acronym for PARAM_ALT_PROSBY_MULTI
+#define PARAM_ALT_MARIA_ANT_MULTI           "ALT-MARIA-ANT-" KEYWORD_MULTI
 
 // zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
@@ -627,10 +673,27 @@ extern const char *ORDINARIUM[POCET_MODLITIEB + 1];
 #define PARAM_PSALM_FULL_TEXT_SOFT_BEGIN    "full-text-soft"
 #define PARAM_PSALM_FULL_TEXT_SOFT_END      SYMBOL_END "" PARAM_PSALM_FULL_TEXT_SOFT_BEGIN
 
-// zobrazovanie/nezobrazovanie hviezdičky v krátkych responzóriách, príp. v antifónach (červenou farbou)
-#define PARAM_RED_KRIZIK                    "†"
-#define PARAM_RED_HVIEZDICKA                "*"
-#define PARAM_RED_TROJUHOLNIK               "△" // uppercase delta: Δ
+// pause, to be exported (in readings)
+#define PARAM_PAUSE                         "p"
+#define PARAM_PAUSE_SHORT                   "ps"
+
+// normal (black) stuff in psalmody (cross, asterisk)
+#define PARAM_NORMAL_CROSS                     "+"
+#define PARAM_NORMAL_ASTERISK                  "x"
+
+// red stuff in antiphones etc. (red cross, red asterisk, red triangle)
+#define PARAM_RED_CROSS                     "†" // used as flexa | U+2020 DAGGER
+#define PARAM_RED_CROSS_TXT                 "CROSS" // alternative due to Unicode problem when interpreting template (2017-08-14)
+#define PARAM_RED_ASTERISK                  "*"
+#define PARAM_RED_TRIANGLE                  "△" // 'uppercase delta': Δ (used for doxology) | U+25B3 WHITE UP-POINTING TRIANGLE
+#define PARAM_RED_TRIANGLE_TXT              "TRIANGLE" // alternative due to Unicode problem when interpreting template (2017-08-14)
+/*
+// red stuff prepared (not yet used) as indication for singing
+#define PARAM_RED_SINGLE_BAR                "|" // used for pause in antiphons & responsories (when singing)
+#define PARAM_RED_DOUBLE_BAR                "||" // used for indication that chorus should join (when singing antiphons & responsories)
+#define PARAM_RED_CROSS_DOUBLE_BAR          "†||"
+#define PARAM_RED_SMALL_CIRCLE              "°" // used for elevation in prayer
+*/
 
 // zobrazovanie/nezobrazenie krížika (antifóna totožná s veršom žalmu/chválospevu)
 #define PARAM_KRIZIK                        "KRIZIK"
@@ -863,17 +926,17 @@ const short int lit_obd_pocet_tyzdnov[POCET_OBDOBI + 1] =
 extern const char *nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_obdobia(a)	nazov_obdobia_jazyk[a][_global_jazyk]
 
+extern const char *nazov_obdobia_ext_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
+#define		nazov_obdobia_ext(a)	nazov_obdobia_ext_jazyk[a][_global_jazyk]
+
 extern const char *nazov_obdobia_[POCET_OBDOBI + 1];
 
 // lokal == 6. pad, v kom/com
 extern const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_obdobia_v(a)	nazov_obdobia_v_jazyk[a][_global_jazyk]
 
-extern const char *nazov_OBDOBIA_V_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
-#define		nazov_OBDOBIA_V(a)	nazov_OBDOBIA_V_jazyk[a][_global_jazyk]
-
-extern const char *nazov_OBDOBIA_AKA_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
-#define		nazov_OBDOBIA_AKA(a)	nazov_OBDOBIA_AKA_jazyk[a][_global_jazyk]
+extern const char *nazov_Obdobia_aka_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
+#define		nazov_Obdobia_aka(a)	nazov_Obdobia_aka_jazyk[a][_global_jazyk]
 
 // gen[itiv] == 2. pad, koho/coho
 
@@ -906,139 +969,142 @@ extern const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1];
 
 extern const char *nazov_slavenia_lokal[];
 
-#define LOKAL_SLAV_NEURCENE					0
-#define LOKAL_SLAV_ROZNAVA_KATEDRALA		1
-#define LOKAL_SLAV_TRNAVA_PATRON			2
-#define LOKAL_SLAV_TT_BB_KE_NR_RO			3
-#define LOKAL_SLAV_NITRA_PATRON				4
-#define LOKAL_SLAV_KOSICE					5
-#define LOKAL_SLAV_NITRA					6
-#define LOKAL_SLAV_BYSTRICA					7
-#define LOKAL_SLAV_SPIS						8
-#define LOKAL_SLAV_ROZNAVA					9
-#define LOKAL_SLAV_TRNAVA					10 // pôvodne bolo LOKAL_SLAV_TRNAVA, upravené 2007-08-31 na LOKAL_SLAV_BA_TT; naspäť na LOKAL_SLAV_TRNAVA 2008-06-23
-#define LOKAL_SLAV_DOM_SV_MARTINA			11
-#define LOKAL_SLAV_SPIS_PATRON				12
-#define LOKAL_SLAV_BYSTRICA_PATRON			13
-#define LOKAL_SLAV_TT_BB_NR_RO				14
-#define LOKAL_SLAV_KOSICE_PATRON			15
-#define LOKAL_SLAV_14_FEB_CYRIL_METOD		16
-#define LOKAL_SLAV_ROZNAVA_PATRON			17
-#define LOKAL_SLAV_KONSEKR_KOSTOLY			18
-#define LOKAL_SLAV_DRUHA_VELK_NEDELA		19
-#define LOKAL_SLAV_KONIEC_OKTAVY_NAR		20
+#define LOKAL_SLAV_NEURCENE							0
+#define LOKAL_SLAV_ROZNAVA_KATEDRALA				1
+#define LOKAL_SLAV_TRNAVA_PATRON					2
+#define LOKAL_SLAV_TT_BB_KE_NR_RO					3
+#define LOKAL_SLAV_NITRA_PATRON						4
+#define LOKAL_SLAV_KOSICE							5
+#define LOKAL_SLAV_NITRA							6
+#define LOKAL_SLAV_BYSTRICA							7
+#define LOKAL_SLAV_SPIS								8
+#define LOKAL_SLAV_ROZNAVA							9
+#define LOKAL_SLAV_TRNAVA							10 // pôvodne bolo LOKAL_SLAV_TRNAVA, upravené 2007-08-31 na LOKAL_SLAV_BA_TT; naspäť na LOKAL_SLAV_TRNAVA 2008-06-23
+#define LOKAL_SLAV_DOM_SV_MARTINA					11
+#define LOKAL_SLAV_SPIS_PATRON						12
+#define LOKAL_SLAV_BYSTRICA_PATRON					13
+#define LOKAL_SLAV_TT_BB_NR_RO						14
+#define LOKAL_SLAV_KOSICE_PATRON					15
+#define LOKAL_SLAV_14_FEB_CYRIL_METOD				16
+#define LOKAL_SLAV_ROZNAVA_PATRON					17
+#define LOKAL_SLAV_KONSEKR_KOSTOLY					18
+#define LOKAL_SLAV_DRUHA_VELK_NEDELA				19
+#define LOKAL_SLAV_KONIEC_OKTAVY_NAR				20
 #define LOKAL_SLAV_free_1		21 // free
-#define LOKAL_SLAV_PRAHA_PATRON				22
-#define LOKAL_SLAV_PRAHA					23
-#define LOKAL_SLAV_BRNO						24
-#define LOKAL_SLAV_MORAVA_SPOMIENKA			25
+#define LOKAL_SLAV_PRAHA_PATRON						22
+#define LOKAL_SLAV_PRAHA							23
+#define LOKAL_SLAV_BRNO								24
+#define LOKAL_SLAV_MORAVA_SPOMIENKA					25
 #define LOKAL_SLAV_free_3		26 // free
-#define LOKAL_SLAV_PRAHA_KATEDRALA			27
-#define LOKAL_SLAV_CESKE_BUDEJOVICE			28
-#define LOKAL_SLAV_OLOMOUC					29
-#define LOKAL_SLAV_CECHY_SPOMIENKA			30
-#define LOKAL_SLAV_PLZEN_PATRON				31
-#define LOKAL_SLAV_OSTRAVA_OPAVA			32
-#define LOKAL_SLAV_LITOMERICE				33
-#define LOKAL_SLAV_HRADEC_KRALOVE			34
+#define LOKAL_SLAV_PRAHA_KATEDRALA					27
+#define LOKAL_SLAV_CESKE_BUDEJOVICE					28
+#define LOKAL_SLAV_OLOMOUC							29
+#define LOKAL_SLAV_CECHY_SPOMIENKA					30
+#define LOKAL_SLAV_PLZEN_PATRON						31
+#define LOKAL_SLAV_OSTRAVA_OPAVA					32
+#define LOKAL_SLAV_LITOMERICE						33
+#define LOKAL_SLAV_HRADEC_KRALOVE					34
 #define LOKAL_SLAV_free_5		35 // free
-#define LOKAL_SLAV_PLZEN 					36
-#define LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST	37
-#define LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA	38
-#define LOKAL_SLAV_SPIS_BA_PATRON			39 // pre 11. novembra, patróna BA-arcidiecézy; nahrádza LOKAL_SLAV_SPIS_PATRON
-#define LOKAL_SLAV_BRATISLAVA				40
-#define LOKAL_SLAV_free_2		41 // free
-#define LOKAL_SLAV_KONGREGACIA_SSK			42
-#define LOKAL_SLAV_SPOMIENKA_OFMCAP			43
-#define LOKAL_SLAV_SVIATOK_OFM				44
-#define LOKAL_SLAV_SPOMIENKA_OFM			45
-#define LOKAL_SLAV_SVIATOK_OFMCAP			46 // nasledovné doplnené 2011-03-17
-#define LOKAL_SLAV_SPOMIENKA_FMA			47
-#define LOKAL_SLAV_SLAVNOST_FMA				48
-#define LOKAL_SLAV_SLAVNOST_SDB				49
-#define LOKAL_SLAV_SVIATOK_VDB				50
-#define LOKAL_SLAV_SVIATOK_SCSC				51
-#define LOKAL_SLAV_free_4		52 // free
-#define LOKAL_SLAV_SZOMBATHELYI_EGYH        53
-#define LOKAL_SLAV_NAGYSZ_PATRON            54
-#define LOKAL_SLAV_SZEGED_CSAN_PATRON       55
-#define LOKAL_SLAV_PECSI_EGYH               56
-#define LOKAL_SLAV_PECSI_EGYH_PATRON        57
-#define LOKAL_SLAV_SZEGED_CSAN_EGYH         58
-#define LOKAL_SLAV_VESZPREMI_EGYH_PATRON    59
-#define LOKAL_SLAV_GYORI_SZEKESFEH_EGYH     60
-#define LOKAL_SLAV_KAPORSVAR_FELSZ          61
-#define LOKAL_SLAV_VACI_FELSZ               62
-#define LOKAL_SLAV_KAL_KECS_FOEGYH          63
-#define LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH    64
-#define LOKAL_SLAV_KAL_KECS_FELSZ           65
-#define LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ   66
-#define LOKAL_SLAV_VACI_PATRON              67
-#define LOKAL_SLAV_SZEGED_CSAN_PATRON2      68
-#define LOKAL_SLAV_VESZPREM_FOEGYH          69
+#define LOKAL_SLAV_PLZEN 							36
+#define LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST			37
+#define LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA			38
+#define LOKAL_SLAV_SPIS_BA_PATRON					39 // pre 11. novembra, patróna BA-arcidiecézy; nahrádza LOKAL_SLAV_SPIS_PATRON
+#define LOKAL_SLAV_BRATISLAVA						40
+#define LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB			41
+#define LOKAL_SLAV_KONGREGACIA_SSK					42
+#define LOKAL_SLAV_SPOMIENKA_OFMCAP					43
+#define LOKAL_SLAV_SVIATOK_OFM						44
+#define LOKAL_SLAV_SPOMIENKA_OFM					45
+#define LOKAL_SLAV_SVIATOK_OFMCAP					46 // nasledovné doplnené 2011-03-17
+#define LOKAL_SLAV_SPOMIENKA_FMA					47
+#define LOKAL_SLAV_SLAVNOST_FMA						48
+#define LOKAL_SLAV_SLAVNOST_SDB						49
+#define LOKAL_SLAV_SVIATOK_VDB						50
+#define LOKAL_SLAV_SVIATOK_SCSC						51
+#define LOKAL_SLAV_SPOMIENKA_OFM_SLAVNOST_CONCEPT	52
+#define LOKAL_SLAV_SZOMBATHELYI_EGYH				53
+#define LOKAL_SLAV_NAGYSZ_PATRON					54
+#define LOKAL_SLAV_SZEGED_CSAN_PATRON				55
+#define LOKAL_SLAV_PECSI_EGYH						56
+#define LOKAL_SLAV_PECSI_EGYH_PATRON				57
+#define LOKAL_SLAV_SZEGED_CSAN_EGYH					58
+#define LOKAL_SLAV_VESZPREMI_EGYH_PATRON			59
+#define LOKAL_SLAV_GYORI_SZEKESFEH_EGYH				60
+#define LOKAL_SLAV_KAPORSVAR_FELSZ					61
+#define LOKAL_SLAV_VACI_FELSZ						62
+#define LOKAL_SLAV_KAL_KECS_FOEGYH					63
+#define LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH			64
+#define LOKAL_SLAV_KAL_KECS_FELSZ					65
+#define LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ			66
+#define LOKAL_SLAV_VACI_PATRON						67
+#define LOKAL_SLAV_SZEGED_CSAN_PATRON2				68
+#define LOKAL_SLAV_VESZPREM_FOEGYH					69
 #define LOKAL_SLAV_free_6		70 // free
-#define LOKAL_SLAV_SZEGED_CSAN_EGYH2        71
-#define LOKAL_SLAV_PECS_PATRON              72
-#define LOKAL_SLAV_SZOMBATHELYI_PATRON      73
-#define LOKAL_SLAV_SZEKESFEHERVAR_EGYH      74
-#define LOKAL_SLAV_EGER_FOEGYH              75
-#define LOKAL_SLAV_ESZTERGOM_EML            76
-#define LOKAL_SLAV_GYOR_EGYH                77
-#define LOKAL_SLAV_ESZTERGOM_FOEGYH         78
-#define LOKAL_SLAV_EGER_FOEGYH2             79
-#define LOKAL_SLAV_VESZPREM_FOEGYH_T        80
-#define LOKAL_SLAV_SZATMAR                  81
-#define LOKAL_SLAV_CESKO_BRNO               82
-#define LOKAL_SLAV_SVIATOK_OP_ZENY          83
-#define LOKAL_SLAV_ZILINA                   84
-#define LOKAL_SLAV_OPRAEM_SVIATOK_STRAHOV   85
-#define LOKAL_SLAV_OPRAEM_SLAVNOST_TEPLA    86
-#define LOKAL_SLAV_OPRAEM_NOVA_RISE         87
-#define LOKAL_SLAV_OPRAEM_STRAHOV_NOVA_RISE 88
-#define LOKAL_SLAV_OPRAEM_ZELIV             89
-#define LOKAL_SLAV_OPRAEM_STRAHOV           90
-#define LOKAL_SLAV_SZ_LASZLO                91
-#define LOKAL_SLAV_SLAVNOST_OSC             92
-#define LOKAL_SLAV_SVIATOK_OFMCONV          93
-#define LOKAL_SLAV_SVIATOK_OFS              94
-#define LOKAL_SLAV_SPOMIENKA_OFMCONV_OFMCAP 95
-#define LOKAL_SLAV_SPOMIENKA_OSC            96
-#define LOKAL_SLAV_NEDOVOLENE_SK            97
-#define LOKAL_SLAV_KATONAI_ORDINARIAT       98
-#define LOKAL_SLAV_DEBR_NYIREGY             99
-#define LOKAL_SLAV_OPRAEM_DOKSANY          100
-#define LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV    101
-#define LOKAL_SLAV_OPRAEM_TEPLA            102
-#define LOKAL_SLAV_KONGREGACIA_SMBM        103
-#define LOKAL_SLAV_SPOMIENKA_FMA_CZ	       104
-#define LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_CZ 105
-#define LOKAL_SLAV_SVIATOK_VDB_CZ          106
-#define LOKAL_SLAV_SLAVNOST_FMA_CZ         107
-#define LOKAL_SLAV_SZEGED_CSAN_EGYH3       108
-#define LOKAL_SLAV_ORDINARIAT              109
-#define LOKAL_SLAV_HU_KLARISSZAKNAL_EM     110
-#define LOKAL_SLAV_HU_KLARISSZAKNAL_FOU    111
-#define LOKAL_SLAV_LEN_MORAVA              112
-#define LOKAL_SLAV_LEN_CECHY               113
-#define LOKAL_SLAV_HU_CONCEPTIONISTAK_UN   114
-#define LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM    115
-#define LOKAL_SLAV_SLAVNOST_SDB_CZ         116
-#define LOKAL_SLAV_SPOMIENKA_CM_PARIZ      117
-#define LOKAL_SLAV_VICEB_SPOMIENKA         118
-#define LOKAL_SLAV_POSV_K_CH_MINSK         119
-#define LOKAL_SLAV_POSV_K_CH_PINSK         120
-#define LOKAL_SLAV_PINSK_MINSK             121
-#define LOKAL_SLAV_HRADEC_KRALOVE_SLAVNOST 122
-#define LOKAL_SLAV_CESKE_BUDEJOV_SLAVNOST  123
-#define LOKAL_SLAV_GRODZENSK               124
-#define LOKAL_SLAV_MINSK_MAG_VICEB         125
-#define LOKAL_SLAV_MINSK_SPOMIENKA         126
-#define LOKAL_SLAV_GRODZENSK_SVIATOK       127
-#define LOKAL_SLAV_MINSK_PINSK_GRODZENSK   128
-#define LOKAL_SLAV_VICEB                   129
-#define LOKAL_SLAV_MINSK_PINSK_SPOMIENKA   130
-#define LOKAL_SLAV_VICEB_SL_MINSK_PINSK_SV 131
-#define LOKAL_SLAV_GRODZ_SL_PINSK_MINSK_SP 132
+#define LOKAL_SLAV_SZEGED_CSAN_EGYH2				71
+#define LOKAL_SLAV_PECS_PATRON						72
+#define LOKAL_SLAV_SZOMBATHELYI_PATRON				73
+#define LOKAL_SLAV_SZEKESFEHERVAR_EGYH				74
+#define LOKAL_SLAV_EGER_FOEGYH						75
+#define LOKAL_SLAV_ESZTERGOM_EML					76
+#define LOKAL_SLAV_GYOR_EGYH						77
+#define LOKAL_SLAV_ESZTERGOM_FOEGYH					78
+#define LOKAL_SLAV_EGER_FOEGYH2						79
+#define LOKAL_SLAV_VESZPREM_FOEGYH_T				80
+#define LOKAL_SLAV_SZATMAR							81
+#define LOKAL_SLAV_CESKO_BRNO						82
+#define LOKAL_SLAV_SVIATOK_OP_ZENY					83
+#define LOKAL_SLAV_ZILINA							84
+#define LOKAL_SLAV_OPRAEM_SVIATOK_STRAHOV			85
+#define LOKAL_SLAV_OPRAEM_SLAVNOST_TEPLA			86
+#define LOKAL_SLAV_OPRAEM_NOVA_RISE					87
+#define LOKAL_SLAV_OPRAEM_STRAHOV_NOVA_RISE			88
+#define LOKAL_SLAV_OPRAEM_ZELIV						89
+#define LOKAL_SLAV_OPRAEM_STRAHOV					90
+#define LOKAL_SLAV_SZ_LASZLO						91
+#define LOKAL_SLAV_SLAVNOST_OSC						92
+#define LOKAL_SLAV_SVIATOK_OFMCONV					93
+#define LOKAL_SLAV_SVIATOK_OFS						94
+#define LOKAL_SLAV_SPOMIENKA_OFMCONV_OFMCAP			95
+#define LOKAL_SLAV_SPOMIENKA_OSC					96
+#define LOKAL_SLAV_NEDOVOLENE_SK					97
+#define LOKAL_SLAV_KATONAI_ORDINARIAT				98
+#define LOKAL_SLAV_DEBR_NYIREGY						99
+#define LOKAL_SLAV_OPRAEM_DOKSANY					100
+#define LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV				101
+#define LOKAL_SLAV_OPRAEM_TEPLA						102
+#define LOKAL_SLAV_KONGREGACIA_SMBM					103
+#define LOKAL_SLAV_SPOMIENKA_FMA_CZ					104
+#define LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_CZ			105
+#define LOKAL_SLAV_SVIATOK_VDB_CZ					106
+#define LOKAL_SLAV_SLAVNOST_FMA_CZ					107
+#define LOKAL_SLAV_SZEGED_CSAN_EGYH3				108
+#define LOKAL_SLAV_ORDINARIAT						109
+#define LOKAL_SLAV_HU_KLARISSZAKNAL_EM				110
+#define LOKAL_SLAV_HU_KLARISSZAKNAL_FOU				111
+#define LOKAL_SLAV_LEN_MORAVA						112
+#define LOKAL_SLAV_LEN_CECHY						113
+#define LOKAL_SLAV_HU_CONCEPTIONISTAK_UN			114
+#define LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM				115
+#define LOKAL_SLAV_SLAVNOST_SDB_CZ					116
+#define LOKAL_SLAV_SPOMIENKA_CM_PARIZ				117
+#define LOKAL_SLAV_VICEB_SPOMIENKA					118
+#define LOKAL_SLAV_POSV_K_CH_MINSK					119
+#define LOKAL_SLAV_POSV_K_CH_PINSK					120
+#define LOKAL_SLAV_PINSK_MINSK						121
+#define LOKAL_SLAV_HRADEC_KRALOVE_SLAVNOST			122
+#define LOKAL_SLAV_CESKE_BUDEJOV_SLAVNOST			123
+#define LOKAL_SLAV_GRODZENSK						124
+#define LOKAL_SLAV_MINSK_MAG_VICEB					125
+#define LOKAL_SLAV_MINSK_SPOMIENKA					126
+#define LOKAL_SLAV_GRODZENSK_SVIATOK				127
+#define LOKAL_SLAV_MINSK_PINSK_GRODZENSK			128
+#define LOKAL_SLAV_VICEB							129
+#define LOKAL_SLAV_MINSK_PINSK_SPOMIENKA			130
+#define LOKAL_SLAV_VICEB_SL_MINSK_PINSK_SV			131
+#define LOKAL_SLAV_GRODZ_SL_PINSK_MINSK_SP			132
+#define LOKAL_SLAV_PRAHA_OFM						133
+#define LOKAL_SLAV_OP_MNISKY_PAMATKA				134
+#define LOKAL_SLAV_SPOMIENKA_OFS					135
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined
@@ -1063,9 +1129,11 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_SK_OCD                    19
 #define KALENDAR_HU_SVD                    20
 #define KALENDAR_VSEOBECNY_BY              21
+#define KALENDAR_CZ_OFM                    22
+#define KALENDAR_SK_CSA                    23
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   21
+#define POCET_KALENDAROV                   23
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
@@ -1078,9 +1146,9 @@ const short int default_kalendar[POCET_JAZYKOV + 1] =
 	KALENDAR_VSEOBECNY_SK,
 	KALENDAR_VSEOBECNY_CZ,
 	/* ToDo */ KALENDAR_VSEOBECNY,
-	/* ToDo */ KALENDAR_VSEOBECNY,
+	KALENDAR_VSEOBECNY, /* general Latin calendar */
 	KALENDAR_NEURCENY,
-	KALENDAR_CZ_OP,
+	KALENDAR_VSEOBECNY_CZ,
 	KALENDAR_VSEOBECNY_HU,
 	KALENDAR_VSEOBECNY_RU,
 	KALENDAR_VSEOBECNY_BY,
@@ -1089,6 +1157,76 @@ const short int default_kalendar[POCET_JAZYKOV + 1] =
 
 // filenames for special calendars / názov súbora pre kalendáre
 extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];
+
+extern const char *nazov_kalendara_smart[POCET_KALENDAROV + 1];
+
+extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
+
+#if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
+#define nazov_kalendara_vyber nazov_kalendara_smart
+#else
+#define nazov_kalendara_vyber nazov_kalendara_long
+#endif
+
+const short int supported_languages[POCET_JAZYKOV + 1] =
+{
+	1, // JAZYK_SK
+	1, // JAZYK_CZ
+	0, // JAZYK_EN
+#if defined(OS_Windows_Ruby)
+	1, // JAZYK_LA -- only for debugging under Windows
+#else
+	0,
+#endif
+	0, // JAZYK_UNDEF
+	1, // JAZYK_CZ_OP
+	1, // JAZYK_HU
+	0, // JAZYK_RU
+	0, // JAZYK_BY
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
+
+#define SUPPORTED_CALENDARS_COUNT_MAX 10
+
+// count of supported calendars for specified language
+// note 1: KALENDAR_NEURCENY & KALENDAR_VSEOBECNY are always supported by default so these two do not count there
+// note 2: for calendars not yet published use '#if defined(DEBUG) || defined(OS_Windows_Ruby)' == code to be executed only for development (new calendars are added at the end of list supported_calendars_language[][])
+const short int supported_calendars_count[POCET_JAZYKOV + 1] =
+{
+	10,
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
+	6,
+#else
+	5,
+#endif
+	/* ToDo */ 1,
+	/* ToDo */ 1,
+	/* ToDo */ 1,
+	1,
+	3,
+	1,
+	1,
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
+// array of supported calendars for specified language | note: pad with zeros
+const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALENDARS_COUNT_MAX] =
+{
+	{ KALENDAR_VSEOBECNY_SK, KALENDAR_SK_CSSR, KALENDAR_SK_SVD, KALENDAR_SK_OFM, KALENDAR_SK_SDB, KALENDAR_SK_OP, KALENDAR_SK_SJ, KALENDAR_SK_CM, KALENDAR_SK_OCD, KALENDAR_SK_CSA },
+	{ KALENDAR_VSEOBECNY_CZ, KALENDAR_CZ_OPRAEM, KALENDAR_CZ_OFMCAP, KALENDAR_CZ_SDB, KALENDAR_CZ_OFM, KALENDAR_CZ_CSSR, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_CZ_OP, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_HU, KALENDAR_HU_OFM, KALENDAR_HU_SVD, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_RU, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_BY, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
+#define supported_calendars(a)	supported_calendars_language[_global_jazyk][a]
+
 
 // prikazany / neprikazany sviatok / ľubovoľná spomienka bez záväznosti (blahoslavení napr. pre SK_OP)
 #define PRIKAZANY_SVIATOK           0
@@ -1145,6 +1283,8 @@ extern const short int prvy_den[12];
 
 extern short int pocet_dni[12];
 
+extern const short int alphabet_jayzka[POCET_JAZYKOV + 1];
+
 extern const char char_nedelne_pismeno[POCET_DNI];
 extern const char *string_nedelne_pismeno[POCET_ALPHABET + 1][POCET_DNI];
 
@@ -1177,9 +1317,6 @@ extern const char *nazov_dna_asci_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 extern const char *nazov_Dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_Dna(a)	nazov_Dna_jazyk[a][_global_jazyk]
 
-extern const char *nazov_DNA_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
-#define		nazov_DNA(a)	nazov_DNA_jazyk[a][_global_jazyk]
-
 extern const char *nazov_Dn_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_Dn(a)	nazov_Dn_jazyk[a][_global_jazyk]
 
@@ -1195,9 +1332,6 @@ extern const char *nazov_mesiaca_asci_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 
 extern const char *nazov_Mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_Mesiaca(a)	nazov_Mesiaca_jazyk[a][_global_jazyk]
 
-extern const char *nazov_MESIACA_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
-#define		nazov_MESIACA(a)	nazov_MESIACA_jazyk[a][_global_jazyk]
-
 extern const char *nazov_mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca_gen(a)	nazov_mesiaca_gen_jazyk[a][_global_jazyk]
 
@@ -1211,9 +1345,6 @@ extern const char *nazov_mes[POCET_MESIACOV + 1];
 
 extern const char *poradie_Slovom_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1];
 #define		poradie_Slovom(a)	poradie_Slovom_jazyk[a][_global_jazyk]
-
-extern const char *poradie_SLOVOM_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1];
-#define		poradie_SLOVOM(a)	poradie_SLOVOM_jazyk[a][_global_jazyk]
 
 #define POCET_ALIASOV          7
 // sucast struktury lrok, indexy
@@ -1354,117 +1485,123 @@ extern long _global_force_opt[POCET_GLOBAL_OPT];
 #define USE_STR_OPT           -2
 #define USE_STR_FORCE_OPT     -1
 
-#define POCET_OPT_0_SPECIALNE              12 // jednotlivé komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               13 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
-#define BIT_OPT_0_VERSE                     1
-#define BIT_OPT_0_REFERENCIE                2
-#define BIT_OPT_0_CITANIA                   4
-#define BIT_OPT_0_ZJAVENIE_PANA_NEDELA      8 // či sa Zjavenie Pána slávi v nedeľu (1) alebo nie (teda 6. januára; hodnota 0 == default)
-#define BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA  16 // či sa Nanebovstúpenie Pána slávi v nedeľu (1) alebo nie (teda vo štvrtok, na 40.-ty deň po Veľkonočnej nedeli; hodnota 0 == default)
-#define BIT_OPT_0_TELAKRVI_NEDELA          32 // či sa Najsv. Kristovho tela a krvi slávi v nedeľu (1) alebo nie (teda vo štvrtok, 11.-ty deň po Zoslaní Ducha Sv.; hodnota 0 == default)
-#define BIT_OPT_0_FONT_NORMAL              64 // force font-weight: normal; // should be logically among OPT_2_HTML_EXPORT bit-options
-#define BIT_OPT_0_BUTTONS_ORDER           128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
-#define BIT_OPT_0_BLIND_FRIENDLY          256 // blind-friendly mode: 1 = use special CSS override to hide all red texts (rubrics)
-#define BIT_OPT_0_FOOTNOTES               512 // display footnotes and footnote references
-#define BIT_OPT_0_TRANSPARENT_NAV        1024 // transparent navigation arrow in text
-#define BIT_OPT_0_ZALMY_FULL_TEXT        2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
+#define BIT_OPT_0_VERSE                      1 // export also verse numbers
+#define BIT_OPT_0_REFERENCIE                 2 // export Bible references as live URLs (default: proper webpage for given language; override: BIT_OPT_0_REF_BIBLE_COM, use bible.com)
+#define BIT_OPT_0_CITANIA                    4 // export also scripture readings for mass
+#define BIT_OPT_0_ZJAVENIE_PANA_NEDELA       8 // či sa Zjavenie Pána slávi v nedeľu (1) alebo nie (teda 6. januára; hodnota 0 == default)
+#define BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA   16 // či sa Nanebovstúpenie Pána slávi v nedeľu (1) alebo nie (teda vo štvrtok, na 40.-ty deň po Veľkonočnej nedeli; hodnota 0 == default)
+#define BIT_OPT_0_TELAKRVI_NEDELA           32 // či sa Najsv. Kristovho tela a krvi slávi v nedeľu (1) alebo nie (teda vo štvrtok, 11.-ty deň po Zoslaní Ducha Sv.; hodnota 0 == default)
+#define BIT_OPT_0_FONT_NORMAL               64 // force font-weight: normal; // should be logically among OPT_2_HTML_EXPORT bit-options
+#define BIT_OPT_0_BUTTONS_ORDER            128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
+#define BIT_OPT_0_VOICE_OUTPUT             256 // voice-output (blind-friendly) mode: 1 = use special CSS override to hide all red texts (rubrics) + display text for speech synthesis + do not display text which should not be heard
+#define BIT_OPT_0_FOOTNOTES                512 // display footnotes and footnote references
+#define BIT_OPT_0_TRANSPARENT_NAV         1024 // transparent navigation arrow in text
+#define BIT_OPT_0_ZALMY_FULL_TEXT         2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
+#define BIT_OPT_0_REF_BIBLE_COM           4096 // precondition: BIT_OPT_0_REFERENCIE must be true; instead of standard URL, generates link to bible.com
 
-#define POCET_OPT_1_CASTI_MODLITBY         18 // jednotlivé komponenty option 1 -- bity pre force option 1
+#define POCET_OPT_1_CASTI_MODLITBY          19 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 // 2011-04-11: úprava významu (a interpretácie) option 1 == OPT_1_CASTI_MODLITBY (zobraziť/nezobraziť najmä pevné/nemenné súčasti modlitieb, ale aj iné, čo sú/nie sú v LH)
 // 2011-10-10: úprava niektorých bitov, posunutie popisu na koniec
-#define BIT_OPT_1_TEDEUM                    1
-#define BIT_OPT_1_RUBRIKY                   2
-#define BIT_OPT_1_CHVALOSPEVY               4
-#define BIT_OPT_1_SLAVA_OTCU                8
-#define BIT_OPT_1_OTCENAS                  16
-#define BIT_OPT_1_MCD_DOPLNKOVA            32 // používa sa pre modlitbu cez deň -- 1 = alternatívna, doplnková psalmódia
-#define BIT_OPT_1_PC_VIGILIA               64
-#define BIT_OPT_1_SPOMIENKA_SPOL_CAST     128 // pri slávení spomienky možno podľa všeobecných smerníc, č. 235 b), vziať niektoré časti alebo zo spoločnej časti (1), alebo zo dňa (0)
-#define BIT_OPT_1_PLNE_RESP               256
-#define BIT_OPT_1_ZALM95                  512 // používa sa pre ranné chvály a vešpery -- 1 = vziať namiesto žalmov 24, 67, 100 žalm 95 (0 = brať príslušný žalm 24, 67 resp. 100)
-#define BIT_OPT_1_PROSBY_ZVOLANIE        1024 // zvolanie v prosbách zobraziť (opakovať) po každej prosbe
-#define BIT_OPT_1_SKRY_POPIS             2048
-#define BIT_OPT_1_ZOBRAZ_SPOL_CAST       4096
-#define BIT_OPT_1_VESP_KRATSIE_PROSBY    8192 // použiť (pre ktorýkoľvek deň v roku) kratšie prosby k vešperám z dodatku (0 = default, zo dňa)
-#define BIT_OPT_1_MCD_ZALTAR_TRI        16384 // používa sa pre modlitbu cez deň -- 1 = psalmódia sa používa z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)
-#define BIT_OPT_1_ZAVER                 32768 // prayer conclusions
-#define BIT_OPT_1_OVERRIDE_STUP_SLAV    65536 // možnosť zvoliť vyšší stupeň slávenia (spomienku možno sláviť ako sviatok alebo slávnosť; sviatok ako slávnosť)
+#define BIT_OPT_1_TEDEUM                     1
+#define BIT_OPT_1_RUBRIKY                    2
+#define BIT_OPT_1_CHVALOSPEVY                4
+#define BIT_OPT_1_SLAVA_OTCU                 8
+#define BIT_OPT_1_OTCENAS                   16
+#define BIT_OPT_1_MCD_DOPLNKOVA             32 // používa sa pre modlitbu cez deň -- 1 = alternatívna, doplnková psalmódia
+#define BIT_OPT_1_PC_VIGILIA                64
+#define BIT_OPT_1_SPOMIENKA_SPOL_CAST      128 // pri slávení spomienky možno podľa všeobecných smerníc, č. 235 b), vziať niektoré časti alebo zo spoločnej časti (1), alebo zo dňa (0)
+#define BIT_OPT_1_PLNE_RESP                256
+#define BIT_OPT_1_ZALM95                   512 // používa sa pre ranné chvály a vešpery -- 1 = vziať namiesto žalmov 24, 67, 100 žalm 95 (0 = brať príslušný žalm 24, 67 resp. 100)
+#define BIT_OPT_1_PROSBY_ZVOLANIE         1024 // zvolanie v prosbách zobraziť (opakovať) po každej prosbe
+#define BIT_OPT_1_SKRY_POPIS              2048
+#define BIT_OPT_1_ZOBRAZ_SPOL_CAST        4096
+#define BIT_OPT_1_VESP_KRATSIE_PROSBY     8192 // použiť (pre ktorýkoľvek deň v roku) kratšie prosby k vešperám z dodatku (0 = default, zo dňa)
+#define BIT_OPT_1_MCD_ZALTAR_TRI         16384 // používa sa pre modlitbu cez deň -- 1 = psalmódia sa používa z troch týždňov žaltára (aktuálny, predchádzajúci, nasledujúci)
+#define BIT_OPT_1_ZAVER                  32768 // prayer conclusions
+#define BIT_OPT_1_OVERRIDE_STUP_SLAV     65536 // možnosť zvoliť vyšší stupeň slávenia (spomienku možno sláviť ako sviatok alebo slávnosť; sviatok ako slávnosť)
 #define BIT_OPT_1_STUP_SVIATOK_SLAVNOST 131072 // vyšší stupeň slávenia (0 = sviatok, 1 = slávnosť); aplikuje sa iba ak BIT_OPT_1_OVERRIDE_STUP_SLAV je true
+#define BIT_OPT_1_KOMPL_MARIA_ANT       262144 // pre kompletórium: či zobraziť mariánsku antifónu (jednu, ak BIT_OPT_2_ALTERNATIVES == 1)/mariánske antifóny na konci kompletória
 
-#define POCET_OPT_2_HTML_EXPORT            17 // jednotlivé komponenty option 2 -- bity pre force option 2
+#define POCET_OPT_2_HTML_EXPORT             16 // jednotlivé komponenty option 2 -- bity pre force option 2
 extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: úprava významu (a interpretácie) option 2 (rozličné prepínače pre [online aj offline] export, napr. tlačidlá, zobrazenie dátumov a podobne)
 // 2012-10-01: doplnené ďalšie komponenty najmä pre vzhľad úvodnej obrazovky
-#define BIT_OPT_2_ISO_DATUM                 1 // zobrazovať dátum v ISO formáte YYYY-MM-DD (0 = iba číslo dňa)
-#define BIT_OPT_2_BUTTON_PRVE_VESPERY       2 // zobrazovať prvé vešpery (a kompletórium po nich) pre ten deň, pre ktorý patria (teda pre nedeľu/slávnosť)
-#define BIT_OPT_2_FONT_FAMILY               4 // 0 = Serif, 1 = Sans Serif
-#define BIT_OPT_2_FONT_NAME_CHOOSER         8 // zobraziť drop-down list s možnosťou voľby font (family) name
-#define BIT_OPT_2_FONT_SIZE_CHOOSER        16 // zobraziť drop-down list s možnosťou voľby veľkosti fontu
-#define BIT_OPT_2_NAVIGATION               32 // zobraziť navigáciu v modlitbe (predošlá, nasledovná modlitba a pod.)
-#define BIT_OPT_2_TEXT_WRAP                64 // zobraziť zalomenie v textoch modlitby podľa tlačenej LH
-#define BIT_OPT_2_BUTTONY_USPORNE         128 // zobraziť buttony pre modlitby v úspornej podobe (tabuľka) kvôli mobilným zariadeniam
-#define BIT_OPT_2_NOCNY_REZIM             256 // zobraziť invertovane farby (biele na ciernom)
-#define BIT_OPT_2_ROZNE_MOZNOSTI          512 // zobraziť rozličné "hypertextové odkazy" v modlitbe (napr. pre modlitbu cez deň možnosť doplnkovej psalmódie)
-#define BIT_OPT_2_HIDE_NAVIG_BUTTONS     1024 // možnosť zobraziť/skryť navigáciu (tlačidlá) v modlitbe a pre "dnes", ak je zvolený 6. bit (BIT_OPT_2_NAVIGATION)
-#define BIT_OPT_2_HIDE_KALENDAR          2048 // skryť kalendárik pre "dnes" (0 = zobraziť)
-#define BIT_OPT_2_HIDE_OPTIONS1          4096 // skryť html_text_dalsie_moznosti_1[] pre "dnes" (0 = zobraziť)
-#define BIT_OPT_2_HIDE_OPTIONS2          8192 // skryť html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziť)
-#define BIT_OPT_2_ALTERNATIVES          16384 // ukázať iba jednu alternatívu (0 = ako doteraz; buď systém vyberie, alebo ukáže všetky možnosti)
-#define BIT_OPT_2_SHOW_DEFAULT_CALENDAR 32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
-#define BIT_OPT_2_BACKGROUND_OVERRIDE   65536 // override CSS background color (1 = use true black for night mode [AMOLED display] && true white for daily mode [beamer])
+#define BIT_OPT_2_ISO_DATUM                  1 // zobrazovať dátum v ISO formáte YYYY-MM-DD (0 = iba číslo dňa)
+#define BIT_OPT_2_BUTTON_PRVE_VESPERY        2 // zobrazovať prvé vešpery (a kompletórium po nich) pre ten deň, pre ktorý patria (teda pre nedeľu/slávnosť)
+#define BIT_OPT_2_FONT_FAMILY                4 // 0 = Serif, 1 = Sans Serif
+#define BIT_OPT_2_FONT_NAME_CHOOSER          8 // zobraziť drop-down list s možnosťou voľby font (family) name
+#define BIT_OPT_2_FONT_SIZE_CHOOSER         16 // zobraziť drop-down list s možnosťou voľby veľkosti fontu
+#define BIT_OPT_2_NAVIGATION                32 // zobraziť navigáciu v modlitbe (predošlá, nasledovná modlitba a pod.)
+#define BIT_OPT_2_TEXT_WRAP                 64 // zobraziť zalomenie v textoch modlitby podľa tlačenej LH
+#define BIT_OPT_2_BUTTONY_USPORNE          128 // zobraziť buttony pre modlitby v úspornej podobe (tabuľka) kvôli mobilným zariadeniam
+#define BIT_OPT_2_NOCNY_REZIM              256 // zobraziť invertovane farby (biele na ciernom)
+#define BIT_OPT_2_ROZNE_MOZNOSTI           512 // zobraziť rozličné "hypertextové odkazy" v modlitbe (napr. pre modlitbu cez deň možnosť doplnkovej psalmódie)
+#define BIT_OPT_2_HIDE_NAVIG_BUTTONS      1024 // možnosť zobraziť/skryť navigáciu (tlačidlá) v modlitbe a pre "dnes", ak je zvolený 6. bit (BIT_OPT_2_NAVIGATION)
+#define BIT_OPT_2_HIDE_KALENDAR           2048 // skryť kalendárik pre "dnes" (0 = zobraziť)
+#define BIT_OPT_2_HIDE_OPTIONS1           4096 // skryť html_text_dalsie_moznosti_1[] pre "dnes" (0 = zobraziť)
+#define BIT_OPT_2_HIDE_OPTIONS2           8192 // skryť html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziť)
+#define BIT_OPT_2_ALTERNATIVES           16384 // ukázať iba jednu alternatívu (0 = ako doteraz; buď systém vyberie, alebo ukáže všetky možnosti)
+#define BIT_OPT_2_SHOW_DEFAULT_CALENDAR  32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
 
-#define POCET_OPT_4_OFFLINE_EXPORT          4 // jednotlivé komponenty option 4 -- bity pre force option 4
+#define POCET_OPT_4_OFFLINE_EXPORT           4 // jednotlivé komponenty option 4 -- bity pre force option 4
 extern long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: úprava významu (a interpretácie) option 4 (rozličné prepínače pre offline export, napr. aj batch mód)
-#define BIT_OPT_4_MESIAC_RIADOK             1 // mesiac jednoducho (default: nie jednoducho, ale HTML pekne pre web) alebo pekne "zložito"
-#define BIT_OPT_4_FNAME_MODL_ID             2 // či pre názov súboru použiť (číselné) ID modlitby alebo písmenko modlitby (default)
-#define BIT_OPT_4_EXCLUDE_MCD_KOMPLET       4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
-#define BIT_OPT_4_DO_NOT_USE_BUTTON         8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
+#define BIT_OPT_4_MESIAC_RIADOK              1 // mesiac jednoducho (default: nie jednoducho, ale HTML pekne pre web) alebo pekne "zložito"
+#define BIT_OPT_4_FNAME_MODL_ID              2 // či pre názov súboru použiť (číselné) ID modlitby alebo písmenko modlitby (default)
+#define BIT_OPT_4_EXCLUDE_MCD_KOMPLET        4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
+#define BIT_OPT_4_DO_NOT_USE_BUTTON          8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
-#define POCET_OPT_5_ALTERNATIVES           17 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES            19 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
-#define BIT_OPT_5_HYMNUS_KOMPL              1 // hymnus na kompletórium (Cezročné obdobie, A/B)
-#define BIT_OPT_5_HYMNUS_PC                 2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
-#define BIT_OPT_5_HYMNUS_MCD_PREDPOL        4 // hymnus pre modlitbu cez deň, predpoludním (Cezročné obdobie)
-#define BIT_OPT_5_HYMNUS_MCD_NAPOL          8 // hymnus pre modlitbu cez deň, napoludnie (Cezročné obdobie)
-#define BIT_OPT_5_HYMNUS_MCD_POPOL         16 // hymnus pre modlitbu cez deň, popoludní (Cezročné obdobie)
-#define BIT_OPT_5_DOPLNK_PSALM_122_129     32 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 122 možno brať žalm 129
-#define BIT_OPT_5_DOPLNK_PSALM_127_131     64 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 127 možno brať žalm 131
-#define BIT_OPT_5_DOPLNK_PSALM_126_129    128 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 126 možno brať žalm 129
-#define BIT_OPT_5_HYMNUS_VN_PC            256 // hymnus pre posvätné čítanie (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
-#define BIT_OPT_5_HYMNUS_VN_RCH           512 // hymnus pre ranné chvály (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
-#define BIT_OPT_5_HYMNUS_VN_VESP         1024 // hymnus pre vešpery (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
-#define BIT_OPT_5_HYMNUS_1VESP           2048 // hymnus pre prvé vešpery (Cezročné obdobie: nedeľný alebo z posv. čítania)
-#define BIT_OPT_5_POPOL_STREDA_PSALMODIA 4096 // psalmódia pre ranné chvály popolcovej stredy (default: streda 4. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
-#define BIT_OPT_5_CZ_HYMNY_VYBER         8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
-#define BIT_OPT_5_OFF_DEF_PSALM_146_150 16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
-#define BIT_OPT_5_ZAVER_KNAZ_DIAKON     32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
-#define BIT_OPT_5_INVITATORIUM_ANT      65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
+#define BIT_OPT_5_HYMNUS_KOMPL               1 // hymnus na kompletórium (Cezročné obdobie, A/B)
+#define BIT_OPT_5_HYMNUS_PC                  2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
+#define BIT_OPT_5_HYMNUS_MCD_PREDPOL         4 // hymnus pre modlitbu cez deň, predpoludním (Cezročné obdobie)
+#define BIT_OPT_5_HYMNUS_MCD_NAPOL           8 // hymnus pre modlitbu cez deň, napoludnie (Cezročné obdobie)
+#define BIT_OPT_5_HYMNUS_MCD_POPOL          16 // hymnus pre modlitbu cez deň, popoludní (Cezročné obdobie)
+#define BIT_OPT_5_DOPLNK_PSALM_122_129      32 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 122 možno brať žalm 129
+#define BIT_OPT_5_DOPLNK_PSALM_127_131      64 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 127 možno brať žalm 131
+#define BIT_OPT_5_DOPLNK_PSALM_126_129     128 // pre modlitbu cez deň v doplnkovej psalmódii namiesto žalmu 126 možno brať žalm 129
+#define BIT_OPT_5_HYMNUS_VN_PC             256 // hymnus pre posvätné čítanie (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
+#define BIT_OPT_5_HYMNUS_VN_RCH            512 // hymnus pre ranné chvály (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
+#define BIT_OPT_5_HYMNUS_VN_VESP          1024 // hymnus pre vešpery (Veľkonočné obdobie I. po Oktáve: nedeľný alebo z férie)
+#define BIT_OPT_5_HYMNUS_1VESP            2048 // hymnus pre prvé vešpery (Cezročné obdobie: nedeľný alebo z posv. čítania)
+#define BIT_OPT_5_POPOL_STREDA_PSALMODIA  4096 // psalmódia pre ranné chvály popolcovej stredy (default: streda 4. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
+#define BIT_OPT_5_CZ_HYMNY_VYBER          8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
+#define BIT_OPT_5_OFF_DEF_PSALM_146_150  16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
+#define BIT_OPT_5_ZAVER_KNAZ_DIAKON      32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
+#define BIT_OPT_5_INVITATORIUM_ANT       65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
+#define BIT_OPT_5_OCR_34_HYMNS          131072 // different (special) hymns for 34th week per annum
+#define BIT_OPT_5_KOMPLETORIUM_OKTAVA   262144 // prvé alebo druhé nedeľné kompletórium (pre Veľkonočnú oktávu a Oktávu Narodenia Pána)
 
-#define POCET_OPT_6_ALTERNATIVES_MULTI      4 // this is not bitwise long, but simply decimal number; each decimal place representing one value
-extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI];
+#define POCET_OPT_6_ALTERNATIVES_MULTI       10 // count equals to the highest PLACE_OPT_6_... used
+extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI]; // this is not bitwise long, but simply decimal number; each decimal place representing one value (max. possibly 0--9)
 #define PLACE_OPT_6_HYMNUS_MULTI              1
-#define PLACE_OPT_6_CITANIE2_MULTI            2
-#define PLACE_OPT_6_CITANIE1_MULTI            3
-#define PLACE_OPT_6_ANTIFONA_MULTI            4
-#define PLACE_OPT_6_MODLITBA_MULTI            5
-#define PLACE_OPT_6_PROSBY_MULTI              6
-#define PLACE_OPT_6_KCIT_RESP_MULTI           7
-#define PLACE_OPT_6_KRESP_MULTI               8
+#define PLACE_OPT_6_PSALM_MULTI               2 // in fact, only for invitatory
+#define PLACE_OPT_6_CITANIE2_MULTI            3
+#define PLACE_OPT_6_CITANIE1_MULTI            4
+#define PLACE_OPT_6_ANTIFONA_MULTI            5
+#define PLACE_OPT_6_MODLITBA_MULTI            6
+#define PLACE_OPT_6_PROSBY_MULTI              7
+#define PLACE_OPT_6_MARIA_ANT_MULTI           8
+#define PLACE_OPT_6_KRESP_MULTI               9
+#define PLACE_OPT_6_KCIT_RESP_MULTI          10
 
 #define BASE_OPT_6_HYMNUS_MULTI               1
-#define BASE_OPT_6_CITANIE2_MULTI            10
-#define BASE_OPT_6_CITANIE1_MULTI           100
-#define BASE_OPT_6_ANTIFONA_MULTI          1000
-#define BASE_OPT_6_MODLITBA_MULTI         10000
-#define BASE_OPT_6_PROSBY_MULTI          100000
-#define BASE_OPT_6_KCIT_RESP_MULTI      1000000
-#define BASE_OPT_6_KRESP_MULTI         10000000
+#define BASE_OPT_6_PSALM_MULTI               10
+#define BASE_OPT_6_CITANIE2_MULTI           100 
+#define BASE_OPT_6_CITANIE1_MULTI          1000 
+#define BASE_OPT_6_ANTIFONA_MULTI         10000 
+#define BASE_OPT_6_MODLITBA_MULTI        100000 
+#define BASE_OPT_6_PROSBY_MULTI         1000000 
+#define BASE_OPT_6_MARIA_ANT_MULTI     10000000 
+#define BASE_OPT_6_KRESP_MULTI        100000000
+#define BASE_OPT_6_KCIT_RESP_MULTI   1000000000 // must not contain more than 3 possibilities at position 10 because long is limited to 2147483647
 
-
-#define MAX_POCET_OPT                      18 // malo by to byť aspoň maximum z POCET_OPT_0_... až POCET_OPT_5_...
+#define MAX_POCET_OPT                        19 // must be at least maximum from POCET_OPT_0_... to POCET_OPT_6_...
 
 const short int pocet_opt[POCET_GLOBAL_OPT] = { POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nemá bitové komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES, POCET_OPT_6_ALTERNATIVES_MULTI /* decimal-places */ };
 
@@ -1489,7 +1626,9 @@ extern short int _global_font_size;
 
 extern short int _global_pocet_zalmov_kompletorium;
 
-extern const char *nazov_jazyka[POCET_JAZYKOV + 1];
+extern const char *nazov_jazyka_native_jazyk[POCET_JAZYKOV + 1][POCET_JAZYKOV + 1];
+#define nazov_jazyka_native_jazyk(a) nazov_jazyka_native_jazyk[a][_global_jazyk]
+#define nazov_jazyka(a) nazov_jazyka_native_jazyk[a][a]
 extern const char *skratka_jazyka[POCET_JAZYKOV + 1];
 extern const char *postfix_jazyka[POCET_JAZYKOV + 1];
 extern const char *skratka_jazyka_title[POCET_JAZYKOV + 1];
@@ -1525,16 +1664,22 @@ short int _deallocate_global_var(void);
 short int cislo_mesiaca(char *mesiac);
 char *mystr_UPPERCASE(const char *input);
 char *mystr_remove_diacritics(const char *input);
+char *mystr_bible_com(const char *input);
 char *convert_nonbreaking_spaces(const char *input);
 
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align);
+char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align, short int force_month_numbers);
 char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
+char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, short int force_month_numbers);
+
 // podľa toho, ako sa funkcia volá, určím case (použitie veľkých/malých písmen)
 #define vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align)
+#define Vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_Case, typ, align)
+
 #define vytvor_global_link_class_new(den, mesiac, rok, typ, align, html_class, nazov_dna)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ + LINK_SHIFT, align, html_class, nazov_dna)
 #define vytvor_global_link_class(den, mesiac, rok, typ, align, html_class)	_vytvor_global_link(den, mesiac, rok, CASE_case, typ, align, html_class)
-#define Vytvor_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_Case, typ, align)
-#define VYTVOR_global_link(den, mesiac, rok, typ, align)	_vytvor_global_link(den, mesiac, rok, CASE_CASE, typ, align)
+#define Vytvor_global_link_class(den, mesiac, rok, typ, align, html_class)	_vytvor_global_link(den, mesiac, rok, CASE_Case, typ, align, html_class)
+
 // parameter align -- či zarovnať jednociferné dátumy (číslovka dňa) medzerou zľava
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class);
@@ -1543,7 +1688,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 #define PRILEP_REQUEST_OPTIONS_DEFAULT   0
 #define PRILEP_REQUEST_OPTIONS_AJ_FORCE  1
 #define PRILEP_REQUEST_OPTIONS_LEN_FORCE 2
-void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int force_opt = PRILEP_REQUEST_OPTIONS_DEFAULT);
+void prilep_request_options(char pom2 [MAX_STR], char pom3 [MAX_STR], short int special_handling = 0, short int force_opt = PRILEP_REQUEST_OPTIONS_DEFAULT);
 
 short int prestupny(short int);
 short int pocet_dni_v_roku(short int);
@@ -1665,6 +1810,7 @@ void analyzuj_rok(short int year);
 	a.alternativy = 0; \
 	a.pocet_zalmov = 1;\
 	_INIT_ANCHOR_AND_FILE(a.popis); \
+	_INIT_ANCHOR_AND_FILE(a.ukonkaj); \
 	_INIT_ANCHOR_AND_FILE(a.hymnus); \
 	_INIT_ANCHOR_AND_FILE(a.antifona1); \
 	_INIT_ANCHOR_AND_FILE(a.zalm1); \
@@ -1674,6 +1820,7 @@ void analyzuj_rok(short int year);
 	_INIT_ANCHOR_AND_FILE(a.kresponz); \
 	_INIT_ANCHOR_AND_FILE(a.nunc_dimittis); \
 	_INIT_ANCHOR_AND_FILE(a.modlitba); \
+	_INIT_ANCHOR_AND_FILE(a.maria_ant); \
 };
 
 #define _INIT_TMODLITBA4(a) {\
@@ -1743,6 +1890,7 @@ extern const char *text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1];
 extern const char *text_KRISTA_KRALA[POCET_JAZYKOV + 1];
 extern const char *text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1];
 extern const char *text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1];
+extern const char *text_MARIE_MATKY_CIRKVI[POCET_JAZYKOV + 1];
 extern const char *text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1];
 extern const char *text_NARODENIE_PANA[POCET_JAZYKOV + 1];
 extern const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1];
@@ -1773,11 +1921,7 @@ extern const char *text_ZAKONCENIE_KTORY_JE_dlhe; // len SK
 extern const char *text_ZAKONCENIE_KTORY_JE_kratke; // len SK
 extern const char *text_ZAKONCENIE_O_TO_TA_PROSIME[POCET_JAZYKOV + 1];
 
-extern const char *text_PRO_OP[POCET_JAZYKOV + 1];
-
 extern const char *html_text_batch_Back[POCET_JAZYKOV + 1];
-extern const char *html_text_batch_Prev[POCET_JAZYKOV + 1];
-extern const char *html_text_batch_Next[POCET_JAZYKOV + 1];
 
 struct _anchor_and_count {
 	short int language;
@@ -1785,6 +1929,10 @@ struct _anchor_and_count {
 	short int count;
 };
 typedef struct _anchor_and_count _struct_anchor_and_count;
+
+extern const char *bible_references_default[POCET_JAZYKOV + 1];
+
+extern const char *bible_version_id_default[POCET_JAZYKOV + 1];
 
 #endif // __LITURGIA_H_
 

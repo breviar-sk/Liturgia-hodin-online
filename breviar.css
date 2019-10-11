@@ -1,8 +1,26 @@
-.appeal {
-	font-weight: bold;
+/* WebKit/Blink Browsers */
+::selection {
+	background: #C39482; /* button middle-dark */
+}
+/* Gecko Browsers */
+::-moz-selection {
+	background: #C39482; /* button middle-dark */
 }
 
-.comment, p.comment, .hymn p.comment { 
+.comment, p.comment { 
+	font-size: 80%; 
+	font-weight: normal; 
+	padding-left: 1.2em !important;
+}
+
+.hymn p.comment { 
+	font-size: 80%; 
+	font-weight: normal; 
+	padding-left: -1.2em; 
+	text-indent: 0; 
+}
+
+.textnote, p.textnote, .hymn p.textnote { 
 	font-size: 80%; 
 	font-weight: normal; 
 }
@@ -54,6 +72,10 @@
 	font-weight: normal; 
 }
 
+.respons p.strong, .respons p strong { 
+	font-weight: bold; 
+}
+
 .respons p.respR, .respons p.respV, .respons p.respO, .respons p.respF, p.respR, p.respV, p.respO, p.respF, .respR, .respV, .respO, .respF { 
 	font-weight: bold; 
 	margin: 0; 
@@ -86,7 +108,11 @@
 	font-weight: bold; 
 }
 
-div.hymn, div.responsory, div.readings {
+.respons .redsmall { 
+	font-weight: normal;
+}
+
+div.hymn {
 	font-weight: bold;
 }
 
@@ -106,10 +132,6 @@ div.navm p {
 	text-align: center;
 }
 
-div.responsory {
-	margin: 1em 0;
-}
-
 .reading-source { 
 	color: #ff0000;
 	font-style: normal;
@@ -120,30 +142,23 @@ div.responsory {
 .reading-title { 
 	color: #ff0000;
 	font-style: italic;
-	font-weight: normal;
+	font-weight: normal !important;
 	text-align: center;
 }
 
 .calendar { 
-	padding: 2px; 
+	border-bottom: none; 
+	padding: 3px; 
 }
 
 .calendar.heading { 
-	border-bottom: 0px; 
-	border-left: 1px; 
-	border-right: 1px; 
-	border-top: 0px; 
-	/* display: inline; */
+	display: inline;
 	font-weight: bold; 
 	min-width: 22px; 
 	text-align: right;
 }
 
 .calendar.day_name { 
-	border-bottom: 0px; 
-	border-left: 1px; 
-	border-right: 1px; 
-	border-top: 0px; 
 	display: block; 
 	font-style: italic; 
 	min-width: 22px; 
@@ -151,21 +166,19 @@ div.responsory {
 }
 
 .calendar.day { 
-	border-bottom: 1px dotted; 
-	border-left: 1px dotted; 
-	border-right: 1px dotted; 
-	border-top: 1px dotted; 
+	background-color: #F3E4C4; /* button light */
 	display: block; 
 	min-width: 22px; 
 	text-align: right;
 }
 
+.calendar.day:hover {
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
+}
+
 .calendar.today { 
 	background-color: #1a1a1a; 
-	border-bottom: 1px dotted; 
-	border-left: 1px dotted; 
-	border-right: 1px dotted; 
-	border-top: 1px dotted; 
 	color: #FFFFCC; 
 	display: block; 
 	min-width: 22px; 
@@ -176,7 +189,7 @@ div.responsory {
 	font-weight: bold; 
 }
 
-.preces p.partR, p.partV, p.intro { 
+.preces p.partR, .preces p.partV, .preces p.intro { 
 	font-weight: bold; 
 	margin: 0; 
 	padding-left: 1.2em; 
@@ -185,11 +198,16 @@ div.responsory {
 	-webkit-margin-before: 0em; 
 }
 
+.preces p.partR.comment, .preces p.partV.comment, .preces p.intro.comment { 
+	font-weight: normal; 
+	text-indent: 0em; 
+}
+
 .preces p.partR { 
 	padding-top: 0.3em; 
 }
 
-.preces p.resp { 
+.preces p.resp, .preces p.resprep { 
 	font-style: italic; 
 	font-weight: normal; 
 	margin: 0; 
@@ -198,6 +216,18 @@ div.responsory {
 	padding-top: 0.3em; 
 	-webkit-margin-after: 0em; 
 	-webkit-margin-before: 0em; 
+}
+
+.preces p.resprep:before { 
+	color: #ff0000; 
+	content: '('; 
+	font-weight: normal; 
+}
+
+.preces p.resprep:after { 
+	color: #ff0000; 
+	content: ')'; 
+	font-weight: normal; 
 }
 
 .preces p.partV:before { 
@@ -211,6 +241,10 @@ div.responsory {
 	font-style: normal; 
 	font-weight: normal; 
 	margin: 0; 
+}
+
+.preces .redsmall { 
+	font-weight: normal;
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -253,6 +287,17 @@ div.responsory {
 .reading p.respR, .reading p.respV, .reading p.respO, .reading p.respF { 
 	padding-left: 0em; 
 	text-indent: 0em; 
+}
+
+.reading .comment, .reading p.comment { 
+	font-weight: normal; 
+	padding-left: 0em !important;
+	text-indent: 0em; 
+}
+
+.reading p.respR.comment, .reading p.respV.comment, .reading p.respO.comment , .reading p.respF.comment { 
+	font-weight: normal; 
+	padding-left: 0em !important;
 }
 
 .reading p.heading { 
@@ -349,13 +394,6 @@ div.responsory {
 	text-align: center; 
 }
 
-.psalm .titlehu {
-	color: #ff0000;
-	font-size: 80%;
-	font-weight: normal;
-	margin-top: 1em;
-}
-
 .psalm p.bold, .psalm p.strong { 
 	font-weight: bold; 
 }
@@ -397,14 +435,6 @@ div.responsory {
 	-webkit-margin-after: 1em; 
 }
 
-p.title, .hymn .title, .psalm .title, .readings .title , .responsory .title, .canticle .title, .prayers .title, .appeal .title , .tedeum .title { 
-	margin-top: 2em;
-	color: #ff0000; 
-	font-size: 80%; 
-	font-weight: normal;
-	/* text-align: left; */
-}
-
 .antiphon { 
 	font-weight: bold; 
 	margin-bottom: 1em; 
@@ -417,8 +447,7 @@ p.title, .hymn .title, .psalm .title, .readings .title , .responsory .title, .ca
 	text-align: center; 
 }
 
-.evening-praise > .prayer-title, .daytime-praise > .prayer-title, .morning-praise > .prayer-title, .ending-praise > .prayer-title, .invit-praise > .prayer-title, .reading-praise > .prayer-title { 
-	/* font-weight: bold; */ 
+.prayer-title { 
 	margin-top: 20px; 
 	text-align: center; 
 }
@@ -604,9 +633,9 @@ p.bibleref {
 }
 
 body, html { 
-	background-color: #FFFFCC;
+	background-color: #FFFFFF;
 	color: #1a1a1a;
-	font-family: Cambria, Constantia, Georgia, Lido STF, DejaVu, Liberation, GentiumPlus, Gentium, Garamond, Serif;
+	font-family: Cambria, Constantia, Georgia, Lido STF, "DejaVu Serif", Liberation, GentiumPlus, Gentium, Garamond, serif;
 	font-weight: normal; 
 	line-height: 1.3;
 	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
@@ -668,7 +697,7 @@ a {
 }
 
 a:hover { 
-	background-color: #663300; 
+	background-color: #C39482; /* button middle-dark */
 	border: none; 
 	color: white; 
 	text-decoration: none; 
@@ -714,16 +743,24 @@ td {
 }
 
 hr { 
-	color: gray; 
-	height: 0.2mm;
-	size: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	display: block;
+	height: 1px;
+	margin: auto;
+	padding: 0; 
 	width: 33%; 
 }
 
+hr.red { 
+	border-top: 1px solid #f00;
+}
+
 select { 
-	background: white; 
+	background-color: #FFFFFF;
 	color: #1a1a1a;
 	font-family: inherit; 
+	margin: 4px;
 }
 
 input { 
@@ -734,8 +771,8 @@ input {
 }
 
 /* prayer buttons */
-input.button, input.reset, .button, a.button { 
-	background: #ffcc99; /* #ffcc66; Tan; Peru; BurlyWood; */
+input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer { 
+	background-color: #F3E4C4; /* button light */
 	border: solid 0px #1a1a1a; 
 	color: #1a1a1a; 
 	cursor: pointer;
@@ -743,67 +780,66 @@ input.button, input.reset, .button, a.button {
 	font-size: inherit; 
 	font-style: normal;
 	margin-left: 0px !important;
-	min-height: 20px;
 	min-width: 76px;
-	padding: 4px 4px;
+	padding: 8px 4px;
 	text-decoration: none; 
 }
 
+input.button:hover, input.reset:hover, .button:hover, a.button:hover {
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
+}
+
+input.button, input.reset, .button, a.button {
+	min-height: 20px;
+}
+
 .button-prayer, input.button-prayer { 
-	background: #ffcc99; /* #ffcc66; Tan; Peru; BurlyWood; */
-	border: solid 0px #1a1a1a; 
-	color: #1a1a1a; 
-	cursor: pointer;
-	font-family: inherit; 
-	font-size: inherit; 
-	font-style: normal;
-	margin-left: 0px !important;
-	min-width: 76px;
-	padding: 4px 4px;
-	text-decoration: none; 
 	width: 100%; /* within table cell */
+}
+
+.button-prayer:hover, input.button-prayer:hover { 
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
 }
 
 button.button-prayer {
 	min-width: 80px; /* must be 4px more than .button-prayer due to padding */
 }
 
-/* << >> */
-input.button0, input.reset0, .button0 { 
-	background: DimGray;
+/* << button0 >> + button1 for today */
+input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 { 
+	background-color: #7A3E3B; /* button dark */
 	border: solid 0px #1a1a1a; 
-	color: White; 
+	color: white; 
 	cursor: pointer;
 	font-family: inherit; 
 	font-style: normal;
 	margin-left: 0px !important;
 	min-height: 20px;
 	min-width: 76px;
-	padding: 4px 4px;
+	padding: 8px 4px;
 	text-decoration: none; 
+}
+
+input.button0:hover, input.reset0:hover, .button0:hover, input.button1:hover, input.reset1:hover, .button1:hover { 
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
+}
+
+input.button0, input.reset0, .button0 {
 	width: 100%; /* within table cell */
 }
 
-/* button for today */
+/* button1 for today */
 input.button1, input.reset1, .button1 { 
-	background: DimGray;
-	border: solid 0px #1a1a1a; 
-	color: White;
-	cursor: pointer;
-	font-family: inherit; 
-	font-style: normal;
 	font-variant: none;
 	font-weight: bold;
-	min-height: 20px;
-	min-width: 76px;
-	margin-left: 0px !important;
-	padding: 4px 4px;
-	text-decoration: none; 
 }
 
 /* less important buttons */
 input.button2, input.reset2, .button2 { 
-	background: #DDAA77; /* #cccc99; */
+	background-color: #F3E4C4; /* button light */
 	border: solid 0px #1a1a1a; 
 	color: #1a1a1a; 
 	cursor: pointer;
@@ -812,19 +848,87 @@ input.button2, input.reset2, .button2 {
 	min-height: 20px;
 	min-width: 76px;
 	margin-left: 0px !important;
-	padding: 4px 4px;
+	padding: 8px 4px;
 	text-decoration: none; 
 	width: 100%; /* within table cell */
 }
 
+input.button2:hover, input.reset2:hover, .button2:hover, a.button2:hover {
+	background-color: #C39482; /* button middle-dark */
+	color: #FFFFCC; 
+}
+
 input.text { 
-	background: white; 
+	background-color: #FFFFFF;
 	border-style: solid; 
 }
 
-input.radio { }
+input.radio { 
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
 
-input.checkbox { }
+input.radio:before {
+	content: '';
+	background-color: #F3E4C4; /* button light */
+	border-radius: 100%;
+	display: inline-block;
+	width: 1.4em;
+	height: 1.4em;
+	position: relative;
+	vertical-align: top;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+}
+
+input.radio:checked:before {
+	background-color: #7A3E3B; /* button dark */
+	box-shadow: inset 0 0 0 5px #F3E4C4; /* button light */
+}
+
+input.radio:focus {
+	outline: none;
+}
+
+input.checkbox {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: #F3E4C4; /* button light */
+	border-radius: 3em;
+	cursor: pointer;
+	width: 2.7em;
+	height: 1.4em;
+	margin: 7px 5px -5px 5px;
+	position: relative;
+	outline: none;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+input.checkbox:checked {
+	background: #7A3E3B; /* button dark */
+}
+
+input.checkbox:after {
+	position: absolute;
+	content: '';
+	width: 1.4em;
+	height: 1.4em;
+	border-radius: 50%;
+	background-color: white;
+	-webkit-transform: scale(.7);
+	transform: scale(.7);
+	left: 0;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
+input.checkbox:checked:after {
+	left: calc(100% - 1.4em);
+}
 
 ol.level1 { 
 	list-style-type: decimal; 
@@ -889,7 +993,6 @@ sup {
 
 .table
 {
-	/* background: yellow; testing only */
 	border-collapse: collapse;
 	display: table;
 	margin: 0 auto; /* centered */
@@ -897,7 +1000,6 @@ sup {
 
 .table-left
 {
-	/* background: yellow; testing only */
 	border-collapse: collapse;
 	display: table;
 	margin-right: auto; /* left aligned */
@@ -905,7 +1007,6 @@ sup {
 
 .table-caption
 {
-	/* background: yellow; testing only */
 	display: table-caption;
 	margin: 0 auto; /* centered */
 	text-align: center;
@@ -920,14 +1021,14 @@ sup {
 {
 	display: table-cell;
 	margin: 0 auto;
-	padding: 1px; /* all four paddings */
+	padding: 3px; /* all four paddings */
 }
 
 .table-cell-3-columns
 {
 	display: table-cell;
 	margin: 0 auto;
-	padding: 1px; /* all four paddings */
+	padding: 3px; /* all four paddings */
 	width: 33%;
 }
 
@@ -935,14 +1036,14 @@ sup {
 {
 	display: table-cell;
 	margin: 0 auto;
-	padding: 1px; /* all four paddings */
+	padding: 3px; /* all four paddings */
 	vertical-align: top;
 }
 
 .table-cell-bordered {
 	display: table-cell;
 	border: 1px solid black;
-	padding: 2px; /* all four paddings */
+	padding: 4px; /* all four paddings */
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -956,6 +1057,14 @@ sup {
     display: none;
 }
 
+.tts_section {
+    display: none;
+}
+
+.tts_pause, .tts_pause_short {
+    display: inline;
+}
+
 .psalm-indent, .psalm-indent p.verse {
 	display: block;
 	font-size: 95%; 
@@ -967,6 +1076,15 @@ sup {
 	content: none; 
 }
 
+
+/* always use bold font - no override by breviar-normal-font.css */
+.strong-always { 
+	font-weight: bold !important;
+}
+
+p.strong-always, h3.strong-always { 
+	font-weight: bold !important;
+}
 
 .nav-arrow {
   background-size: contain;

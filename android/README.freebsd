@@ -1,0 +1,43 @@
+To build on FreeBSD, several hacks are needed:
+
+* Use gradle.properties to override aapt2 location. This is needed because
+  android sdk plugin does not support FreeBSD. (But gradle itself is for
+  FreeBSD, so we cannot override OS name to Linux.)
+
+* Hack ndk-bundle/ndk-build to contain
+  export UNAME_s=Linux
+  That makes ndk happy under linuxalator.
+
+* Link /usr/home to /compat/linux/usr/home. (Otherwise mkdir -p fails, but this
+  seems like a FreeBSD weirdness.)
+
+* If using ZFS, preload a library that works around missing fallocate syscall
+  (e.g., like below). It needs to be compiled as linux shared library and the
+  path to it put to /compat/linux/etc/ld.so.preload
+
+-------
+
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+static int do_fallocate(int fd, __off64_t offset, __off64_t len) {
+  lseek(fd, len - 1, SEEK_SET);
+  unsigned char val = 0;
+  write(fd, &val, 1);
+  lseek(fd, 0, SEEK_SET);
+  return 0;
+}
+
+int fallocate(int fd, int mode, off_t offset, off_t len) {
+  return do_fallocate(fd, offset, len);
+}
+int posix_fallocate(int fd, off_t offset, off_t len) {
+  return do_fallocate(fd, offset, len);
+}
+int fallocate64(int fd, int mode, __off64_t offset, __off64_t len) {
+  return do_fallocate(fd, offset, len);
+}
+int posix_fallocate64(int fd, __off64_t offset, __off64_t len) {
+  return do_fallocate(fd, offset, len);
+}

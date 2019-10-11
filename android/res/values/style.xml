@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+  <style name="BreviarTheme" parent="@style/Theme.AppCompat.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+  </style>
+  <style name="ListEntry" parent="BreviarTheme">
+    <item name="android:paddingLeft">?android:attr/listPreferredItemPaddingLeft</item>
+    <item name="android:paddingRight">?android:attr/listPreferredItemPaddingRight</item>
+    <item name="android:paddingTop">0dp</item>
+    <item name="android:paddingBottom">0dp</item>
+    <item name="android:drawablePadding">0dp</item>
+<!--    <item name="android:minHeight">?android:attr/listPreferredItemHeight</item> // -->
+    <item name="android:minHeight">48dp</item>
+  </style>
+</resources>

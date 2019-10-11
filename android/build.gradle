@@ -1,0 +1,97 @@
+buildscript {
+  repositories {
+    jcenter()
+    google()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.2.1'
+  }
+}
+
+allprojects {
+  repositories {
+    jcenter()
+      maven {
+        url "https://maven.google.com"
+      }
+  }
+}
+
+apply plugin: 'com.android.application'
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+  compileSdkVersion 26
+  
+  defaultConfig {
+    targetSdkVersion 26
+    minSdkVersion 14
+    ndk {
+      // Tells Gradle to build outputs for the following ABIs and package
+      // them into your APK.
+      abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+    }
+  }
+
+  /*
+   * TODO(riso): This would work fine, but recent NDK (at least since 15c)
+   * support only android-14 (android 4.0.0) or later. I am still somewhat
+   * reluctant to drop support for older devices.
+   */
+  externalNativeBuild {
+    ndkBuild {
+      path "jni/Android.mk"
+    }
+  }
+
+  sourceSets {
+    main {
+      manifest.srcFile 'AndroidManifest.xml'
+      java.srcDirs = ['src']
+      resources.srcDirs = ['src']
+      aidl.srcDirs = ['src']
+      renderscript.srcDirs = ['src']
+      res.srcDirs = ['res']
+      assets.srcDirs = ['assets']
+    }
+    // Overrides for debug releases.
+    debug {
+      res.srcDirs = ['res.debug']
+    }
+    // Placeholders for values introduced in debug builds.
+    release {
+      res.srcDirs = ['res.release']
+    }
+  }
+
+  signingConfigs {
+    release {
+      keyAlias keystoreProperties['keyAlias']
+      keyPassword keystoreProperties['keyPassword']
+      storeFile file(keystoreProperties['storeFile'])
+      storePassword keystoreProperties['storePassword']
+    }
+  }
+  buildTypes {
+    release {
+      signingConfig signingConfigs.release
+    }
+  }
+}
+
+dependencies {
+  compile 'com.android.support:support-v4:27.0.0'
+  compile 'com.android.support:support-core-utils:27.0.0'
+  compile 'com.android.support:design:27.0.0'
+  compile 'com.android.support:appcompat-v7:27.0.0'
+  compile 'com.android.support:support-media-compat:27.0.0'
+}

@@ -1,70 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version">1.14.2</string>
+    <string name="version" translatable="false">3.2</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
     <string name="forward">Forward</string>
-    <string name="menu">Menu</string>
+    <string name="menu">Breviary</string>
     <string name="today">Today</string>
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
 
-    <string name="lang_select">Settings</string>
+    <string name="lang_select">Language</string>
+    <string name="settings">Settings</string>
 
-    <string name="lang_select_title">Language:</string>
     <string name="lang_cz">Czech</string>
+    <string name="lang_c2">Czech Dominicans</string>
     <string name="lang_sk">Slovak</string>
     <string name="lang_hu">Hungarian</string>
-    <string name="override_locale">override system-wide language settings</string>
+    <string name="lang_la">Latin</string>
+    <string name="override_locale">Override system-wide language settings</string>
 
-    <string name="settings_title">Device settings:</string>
-    <string name="vol_buttons">use volume buttons for scrolling</string>
-    <string name="dimlock">do not dim screen</string>
-    <string name="mute">put phone to silent mode</string>
-    <string name="long_click_toggles_bar">long tap toggles navigation bar</string>
-    <string name="transparent_nav">navigation arrow in text</string>
+    <string name="settings_title">Device settings</string>
+    <string name="vol_buttons">Use volume buttons for scrolling</string>
+    <string name="dimlock">Do not dim screen</string>
+    <string name="mute">Put device to silent mode</string>
+    <string name="long_click_toggles_bar">Long tap toggles navigation bar</string>
+    <string name="transparent_nav">Navigation arrow in text</string>
 
-    <string name="prayer_content_settings1_title">Content settings:</string>
-    <string name="various_options_in_prayers">various options in prayers as clicable hyperlinks</string>
-    <string name="alternatives">alternatives</string>
+    <string name="prayer_settings_title">Content settings</string>
+    <string name="prayer_content_settings_title">Content settings</string>
+    <string name="various_options_in_prayers">Various options in prayers as clickable hyperlinks</string>
+    <string name="alternatives">Alternatives</string>
 
-    <string name="prayer_content_settings_title">In the text of prayers display:</string>
-    <string name="display_communia_info">display communia info</string>
-    <string name="verse_numbering">verse numbering</string>
-    <string name="bible_references">bible references</string>
-    <string name="footnotes">notes and footnotes</string>
-    <string name="liturgical_readings">liturgical readings</string>
-    <string name="psalms_omisions">omissions from psalms</string>
+    <string name="prayer_display_settings_title">What to display in prayers</string>
+    <string name="display_communia_info">Display communia info</string>
+    <string name="verse_numbering">Verse numbering</string>
+    <string name="bible_references">Bible references</string>
+    <string name="bible_ref_bible_com">Bible references (YouVersion)</string>
+    <string name="footnotes">Notes and footnotes</string>
+    <string name="liturgical_readings">Mass readings</string>
+    <string name="psalms_omissions">Omissions from psalms</string>
 
-    <string name="display_settings_title">Display settings:</string>
-    <string name="first_vespers_buttons">display button for first vespers for Sundays and solemnitas for the day of celebration</string>
-    <string name="navigation">display navigation buttons in prayer</string>
-    <string name="wrapping_printed">wrap long lines according to printed edition</string>
-    <string name="smart_buttons">tight display of buttons for prayers</string>
-    <string name="night_mode">night mode</string>
-    <string name="background_override">white/black background (beamer/AMOLED)</string>
-    <string name="normal_font">force normal font weight (no bold)</string>
-    <string name="buttons_order">date buttons display after buttons for prayers</string>
+    <string name="display_settings_title">Display settings</string>
+    <string name="first_vespers_buttons">Display button for first vespers for Sundays and solemnitas for the day of celebration</string>
+    <string name="navigation">Display navigation buttons in prayer</string>
+    <string name="smart_buttons">Tight display of buttons for prayers</string>
+    <string name="night_mode">Night mode</string>
+    <string name="background_override">Alternative background color (yellow)</string>
+    <string name="normal_font">Force normal font weight (no bold)</string>
+    <string name="buttons_order">Date buttons display after buttons for prayers</string>
 
-    <string name="calendar_settings_title">Liturgical calendar:</string>
-    <string name="epiphany_sunday">celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>
-    <string name="ascension_sunday">celebrate Ascension of the Lord on Sunday</string>
-    <string name="body_blood_sunday">celebrate The Most Holy Body and Blood of Christ on Sunday</string>
-    <string name="emphasize_local_calendar">mark celebrations in local (national) calendar</string>
+    <string name="calendar_settings_title">Liturgical calendar</string>
+    <string name="epiphany_sunday">Celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>
+    <string name="ascension_sunday">Celebrate Ascension of the Lord on Sunday</string>
+    <string name="body_blood_sunday">Celebrate The Most Holy Body and Blood of Christ on Sunday</string>
+    <string name="emphasize_local_calendar">Mark celebrations in local (national) calendar</string>
 
     <string name="alarms">Notifications</string>
-    <string name="alarms_title">Notification settings:</string>
     <string name="alarmOff">disabled</string>
 
     <string name="fullscreenOn">Fullscreen</string>
-    <string name="fullscreenOff">No fullscreen</string>
 
     <string name="nightmodeOn">Night mode</string>
     <string name="nightmodeOff">Day mode</string>
 
-    <string name="onlyNonBoldFontOn">No bold font</string>
     <string name="onlyNonBoldFontOff">Allow bold font</string>
+
+    <string name="navigation_drawer_open">Open menu</string>
+    <string name="navigation_drawer_close">Close menu</string>
 
     <string name="inv">Invitatory</string>
     <string name="rch">Lauds</string>
@@ -84,8 +87,21 @@
     <string name="h12_notify">Time for Sext!</string>
     <string name="h15_notify">Time for None!</string>
 
-    <string name="menu_about">About...</string>
-    <string name="about">About app</string>
+    <string name="tts_ready">Speak prayers</string>
+    <string name="tts_speaking">Stop speaking</string>
+    <string name="tts_pause">Pause speaking</string>
+    <string name="tts_resume">Resume speaking</string>
+    <string name="tts_back">Speak previous part</string>
+    <string name="tts_forward">Speak next part</string>
+
+    <string name="notification_not_allowed">You have not allowed the app to change ring mode yet.</string>
+
+    <string name="channel_name">Breviary</string>
+    <string name="channel_description">Notifications about prayer times</string>
+
+    <string name="about_title">Applicaton info</string>
+    <string name="news_title">Changelog</string>
+
     <string name="about_PROJECT_URL">breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Breviary app for OS Android</string>
@@ -94,154 +110,35 @@
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
-    <string name="about_text">include/about.htm</string>
 
-    <string name="about_text_head"><![CDATA[
+    <string name="tts_settings_title">Voice output</string>
+    <string name="tts_use_pause_in_psalms">Make pauses when reading psalms &amp; canticles</string>
+    <string name="tts_settings_help">Voice output help</string>
+    <string name="tts_settings_help_title">Voice output help</string>
+    <string name="tts_settings_help_content"><![CDATA[
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style type="text/css">
-body { background-color: #000000; color: #cccccc; }
-a { color: #ffaa00; }
-</style>
-</head>
-<body>
-    ]]></string>
-    <string name="about_text_tail"><![CDATA[
-      </body></html>
-    ]]></string>
-
-
-    <string name="btn_news">What\'s new</string>
-    <string name="news"><![CDATA[
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<style type="text/css">
-body { background-color: #000000; color: #cccccc; }
+body { background-color: #303030; color: #dddddd; }
 </style>
 </head>
 <body>
 
-<p><b>Breviary application | What\'s new</b>
+<h3>How to set up voice output</h3>
 
-<p><b>Version 1.14.2</b>
-<ul>
-<li>Display only one of various choices (hymns, first or second reading, antiphones, preces).</li>
-<li>Memorials of the Blessed Virgin Mary on Saturday are not celebrated as alternative to another feast of Virgin Mary.</li>
-<li>SK, CZ: Fixes for liturgical calendar.</li>
-<li>CZ: Fix for invitatory in Lent.</li>
-</ul>
+<p>If you have not used voice output yet, you need to install an application for speech synthesis (TTS, text-to-speech) and set it as preferred in your system settings.</p>
 
-<p><b>Version 1.14.1</b>
-<ul>
-<li>New option: Display other antiphone for invitatory prayer (SK: per annum; CZ: advent).</li>
-<li>SK, CZ: Fixes for liturgical calendar.</li>
-<li>CZ: Proper texts for salesians (SDB) updated.</li>
-</ul>
+<p>Some languages (e.g. Czech, English, and Hungarian) are well supported by native Android speech synthesis (at least on recent versions of Android). If you want to use those, we recommend you to download the languages you plan to use for offline usage.</p>
 
-<p><b>Version 1.14</b>
-<ul>
-<li>New option: Display button for first vespers for Sundays and solemnitas for the day of celebration.</li>
-<li>Enable to celebrate saints with higher level (as feasts/solemnities).</li>
-<li>Fixes for liturgical calendar.</li>
-</ul>
+<p><button onclick="bridge.openTTSSettings()">Open TTS settings"</button></p>
 
-<p><b>Version 1.13.2</b>
-<ul>
-<li>New option: White/black background color (beamer/AMOLED display).</li>
-<li>July 22th celebration level changed.</li>
-<li>SK: Calendar & proper texts for carmelites (OCD), vincentins’ family (CM), and jesuits (SJ).</li>
-</ul>
+<p>After configuring the speech synthesis, you may start voice output for the currently displayed prayers from the menu (left) or the action bar (top) in the application.</p>
 
-<p><b>Version 1.13.1</b>
-<ul>
-<li>New option: Display psalm omissions (works for SK only).</li>
-<li>Footnotes for second readings (prayer with readings): CZ Advent + Christmas added.</li>
-<li>CZ: Proper texts for salesians (SDB) fixed & completized.</li>
-</ul>
-
-<p><b>Version 1.13</b>
-<ul>
-<li>New option: Display footnotes for second readings (prayer with readings): CZ per annum only.</li>
-<li>SK: New celebrations added to particular calendar.</li>
-<li>CZ: Calendar & proper texts for salesians (SDB).</li>
-</ul>
-
-<p><b>Version 1.12.3</b>
-<ul>
-<li>Officium defunctorum, possibility to choose psalm 145 or 150 for morning prayer.</li>
-<li>Possibility to use navigation arrows in the text.</li>
-</ul>
-
-<p><b>Version 1.12.2</b>
-<ul>
-<li>Possibility to show/hide full text for short responsories (in morning & evening prayers).</li>
-</ul>
-
-<p><b>Version 1.12.1</b>
-<ul>
-<li>New option: Possibility to configure app while navigation bar is displayed (enable text selection for copying).</li>
-</ul>
-
-<p><b>Version 1.12</b>
-<ul>
-<li>Possibility to display communia.</li>
-</ul>
-
-<p><b>Version 1.11.2</b>
-<ul>
-<li>New menu item: Display only normal font (vs use also bold font).</li>
-<li>Added new settings.</li>
-</ul>
-
-<p><b>Version 1.11.1</b>
-<ul>
-<li>Liturgical readings: Backward compatibility with Android 2.x and older.</li>
-</ul>
-
-<p><b>Version 1.11</b>
-<ul>
-<li>Switching night/day mode from main menu.</li>
-<li>Bigger line height for better readability.</li>
-<li>Updated “About” dialog.</li>
-</ul>
-
-<p><b>Version 1.10.1</b>
-<ul>
-<li>Minor fixes.</li>
-</ul>
-
-<p><b>Version 1.10</b>
-<ul>
-<li>Setting for displaying text of prayer in blind-friendly mode (only prayer text, without headings & rubrics) suitable for text-to-speech output.</li>
-<li>New option in main screen: Ordinarium.</li>
-<li>Fix of night-mode for Mary antiphones (compline).</li>
-<li>Compatibility with Android 5.0 Lollipop.</li>
-</ul>
-
-<p><b>Version 1.9.10</b>
-<ul>
-<li>Setting for automatic turning on silent mode when praying.</li>
-<li>SK + HU: New option for first vespers hymn (ordinary time).</li>
-</ul>
-
-<p><b>Version 1.9.9</b>
-<ul>
-<li>SK: CSS formatting of hymns.</li>
-<li>HU: Plenty of small fixes & CSS formatting.</li>
-</ul>
-
-<p><b>Version 1.9.8</b>
-<ul>
-<li>Long tap hides bottom navigation bar.</li>
-<li>Added option for not-dimming screen.</li>
-<li>SK: Various fixes.</li>
-<li>CZ: CSS formatting of psalms and canticles.</li>
-<li>HU: Plenty of small fixes.</li>
-</ul>
-
-</body></html>
+</body>
+</html>
     ]]></string>
+
+    <string name="tts_language_not_available">TTS is not available for current language.</string>
 
 </resources>

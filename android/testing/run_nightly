@@ -6,8 +6,7 @@ start_emulator() {
   avd=$1
   pidfile=/tmp/$avd.pid
   echo "Starting emulator"
-  /sbin/start-stop-daemon -S -m -p $pidfile -b -x `which emulator` \
-    -- -avd $avd -no-window -wipe-data
+  daemon -f -p $pidfile `which emulator` -avd $avd -no-window -wipe-data
   sleep 240
   adb push testing/orng /data/orng >/dev/null 2>/dev/null
 }
@@ -15,17 +14,24 @@ start_emulator() {
 stop_emulator() {
   avd=$1
   pidfile=/tmp/$avd.pid
-  /sbin/start-stop-daemon -K -p $pidfile
+  kill -9 `cat $pidfile` && rm -f $pidfile
 }
 
-(
+GLOBALLOG=/tmp/breviar-nightlies.log
+rm -f $GLOBALLOG
 
+(
 echo "Running nightlies."
 . dir_setup.sh
 
 LOCK=/tmp/breviar-nightlies.lck
 (
-  flock -n 9 || (echo "Unable to get lock!"; exit 1)
+  if flock -w 5 9; then
+    true
+  else
+    echo "Unable to get lock!"
+    exit 1
+  fi
   pushd .. >/dev/null
 
   DATE=`date +%F`
@@ -33,12 +39,12 @@ LOCK=/tmp/breviar-nightlies.lck
 
   rm -rf $ROOT/$DATE
   mkdir -p $ROOT/$DATE
-  LOG=$ROOT/$DATE/log
-  
+  LOG=$ROOT/$DATE/log.txt
+
   echo "Git fetch and merge."
-  if ( git fetch --all && git merge origin/master ) >>$LOG 2>&1; then 
+  if ( git fetch --all && git merge juraj/master ) >>$LOG 2>&1; then
     echo "Git merge successful."
-  else 
+  else
     echo "Git merge failed! Log follows:"
     echo
     cat $LOG
@@ -46,12 +52,11 @@ LOCK=/tmp/breviar-nightlies.lck
   fi
 
   COMMIT=`git branch -v --no-abbrev | egrep "^. master" | sed "s/. master *//;s/ .*//"`
-  echo $COMMIT >$ROOT/$DATE/commit
+  echo $COMMIT >$ROOT/$DATE/commit.txt
 
-  echo "Build."
-  rm -rf bin
-  if (./build-assets && ndk-build clean && DEBUG_BUILD=yes ndk-build && ant debug && \
-      ndk-build clean && DEBUG_BUILD=no ndk-build && ant release) >>$LOG 2>&1; then 
+  echo "Build. Log file is at <a href=\"https://breviar.kralovic.org/nightlies/$DATE/log.txt\">https://breviar.kralovic.org/nightlies/$DATE/log.txt</a>"
+  if (./build-assets && gradle clean && gradle assembleDebug && \
+      gradle assembleRelease) >>$LOG 2>&1; then
     echo "Build finished successfully."
   else
     echo "Build failed! Log follows:"
@@ -60,26 +65,26 @@ LOCK=/tmp/breviar-nightlies.lck
     exit 0
   fi
 
-  cp bin/Breviar-release.apk $ROOT/$DATE/breviar.apk
-  cp bin/Breviar-debug.apk $ROOT/$DATE/breviar-debug.apk
-  echo "Nightly package is at: kedrigern.dcs.fmph.uniba.sk:$ROOT/$DATE/breviar.apk"
-  echo "Or: http://kedrigern.dcs.fmph.uniba.sk/~riso/breviar-testing/nightlies/$DATE/breviar.apk"
-  echo "Nightly debug package is at: kedrigern.dcs.fmph.uniba.sk:$ROOT/$DATE/breviar-debug.apk"
-  echo "Or: http://kedrigern.dcs.fmph.uniba.sk/~riso/breviar-testing/nightlies/$DATE/breviar-debug.apk"
+  cp build/outputs/apk/release/android-release.apk $ROOT/$DATE/breviar.apk
+  cp build/outputs/apk/debug/android-debug.apk $ROOT/$DATE/breviar-debug.apk
+  echo "Nightly package is at: breviar.kralovic.org:$ROOT/$DATE/breviar.apk"
+  echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar.apk"
+  echo "Nightly debug package is at: breviar.kralovic.org:$ROOT/$DATE/breviar-debug.apk"
+  echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar-debug.apk"
 
-  export ANDROID_SDK_HOME
-  start_emulator galaxy_nexus_4.2
+  ### Emulator is not that easy on FreeBSD, it has rather heavyweight linux dependencies (e.g. libsystemd, Qt5...)
+  #start_emulator android_24
 
-  echo "Running tests."
-  TEST_LOG=$ROOT/$DATE/test_log
-  mkdir -p $TEST_LOG
-  monkeyrunner testing/run_tests.py $TEST_LOG $DATE $COMMIT $VERSION
+  #echo "Running tests."
+  #TEST_LOG=$ROOT/$DATE/test_log
+  #mkdir -p $TEST_LOG
+  #monkeyrunner testing/run_tests.py $TEST_LOG $DATE $COMMIT $VERSION
 
-  stop_emulator galaxy_nexus_4.2
+  #stop_emulator android_24
 
-  echo "Test results are available at http://kedrigern.dcs.fmph.uniba.sk/~riso/breviar-testing/nightlies/$DATE/test_log/index.html"
+  #echo "Test results are available at http://kedrigern.dcs.fmph.uniba.sk/~riso/breviar-testing/nightlies/$DATE/test_log/index.html"
   popd >/dev/null
 ) 9>$LOCK
 
 rm -f $LOCK
-) 2>&1 | mail -s "Breviar nightly" android@breviar.sk videky@breviar.sk
+) 2>&1 | tee $GLOBALLOG | mail -s "Breviar nightly" android@breviar.sk videky@breviar.sk

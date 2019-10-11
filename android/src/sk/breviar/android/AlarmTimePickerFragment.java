@@ -8,7 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TimePicker;
 
 import sk.breviar.android.Util;
@@ -24,8 +24,8 @@ public class AlarmTimePickerFragment extends DialogFragment
     return Util.events[eventId()];
   }
 
-  CheckBox box() {
-    return (CheckBox)getActivity().findViewById(Util.events[eventId()].id);
+  CompoundButton box() {
+    return (CompoundButton)getActivity().findViewById(Util.events[eventId()].id);
   }
 
   @Override
@@ -38,7 +38,6 @@ public class AlarmTimePickerFragment extends DialogFragment
   }
 
   public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-    box().setChecked(true);
     Util.EventInfo e = event();
     e.setTime(getActivity(), hourOfDay, minute);
     e.updateBox(box(), new Util.AlarmTime(minute, hourOfDay, true));

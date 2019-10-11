@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <group android:id="@+id/group_languages">
+    <item android:id="@+id/lang_cz"
+          android:title="@string/lang_cz"
+    />
+
+    <item android:id="@+id/lang_c2"
+          android:title="@string/lang_c2"
+    />
+
+    <item android:id="@+id/lang_hu"
+          android:title="@string/lang_hu"
+    />
+
+    <item android:id="@+id/lang_sk"
+          android:title="@string/lang_sk"
+    />
+
+    <item android:id="@+id/lang_la"
+          android:title="@string/lang_la"
+    />
+  </group>
+
+  <group android:id="@+id/group_lang_settings">
+    <item android:id="@+id/override_locale"
+          android:title="@string/override_locale"
+          app:actionLayout="@layout/widget_switch"
+    />
+  </group>
+
+</menu>
+

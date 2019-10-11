@@ -13,12 +13,11 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.Log;
 import android.webkit.WebView;
-import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import java.util.GregorianCalendar;
 
 import sk.breviar.android.AlarmReceiver;
-import sk.breviar.android.CompatibilityHelper8;
 
 public class Util {
   static final String prefname = "BreviarPrefs";
@@ -69,7 +68,7 @@ public class Util {
       setAlarm(ctx);
     }
 
-    void updateBox(CheckBox box, AlarmTime t) {
+    void updateBox(CompoundButton box, AlarmTime t) {
       String s = box.getContext().getString(caption);
       if (t.enabled) {
         s += String.format(": %d:%02d", t.hour, t.minute);
@@ -141,69 +140,4 @@ public class Util {
     new EventInfo(R.id.vesp_check,  "alarm-vesp",  "mv",    R.string.vesp,  R.string.vesp_notify,  18, 00),
     new EventInfo(R.id.kompl_check, "alarm-kompl", "mk",    R.string.kompl, R.string.kompl_notify, 22, 00)
   };
-
-  static public Dialog createHtmlDialog(Activity act, String content) {
-    if (content == null) return null;
-    WebView wv = new WebView(act);
-    if (Build.VERSION.SDK_INT < 8) {
-      wv.loadData(content, "text/html; charset=utf-8", "utf-8");
-    } else {
-      
-      try {
-        wv.loadData(CompatibilityHelper8.Base64EncodeToString(
-                        content.getBytes("UTF-8")),
-                    "text/html; charset=utf-8", "base64");
-      } catch (java.io.UnsupportedEncodingException e) {
-        wv.loadData("unsupported encoding utf-8", "text/html", null);
-      }
-    }
-    return new AlertDialog.Builder(act)
-           .setView(wv)
-           .setCancelable(false)
-           .setNeutralButton("OK", new DialogInterface.OnClickListener() {
-               public void onClick(DialogInterface dialog, int id) {
-                    dialog.cancel();
-               }
-           })
-           .create();
-  }
-
-  static public String streamToString(java.io.InputStream stream) {
-    StringBuilder output = new StringBuilder();
-    java.io.InputStreamReader reader = new java.io.InputStreamReader(stream);
-    char[] buf = new char[4096];
-    int len;
-    try {
-      while ((len = reader.read(buf, 0, 4096)) != -1) {
-        output.append(buf, 0, len);
-      }
-    } catch (java.io.IOException e) {
-      Log.v("breviar", "Can not read file: " + e.getMessage());
-    }
-    return output.toString();
-  }
-
-  static public String getAboutText(Context ctx) {
-    try {
-      String output =
-          ctx.getString(R.string.about_text_head) +
-          streamToString(ctx.getAssets().open(ctx.getString(R.string.about_text))) +
-          ctx.getString(R.string.about_text_tail);
-
-      return output
-          .replaceAll("<!--\\{VERSION\\}-->", ctx.getString(R.string.version))
-          .replaceAll("<!--\\{PROJECT_URL\\}-->", ctx.getString(R.string.about_PROJECT_URL))
-          .replaceAll("<!--\\{E_MAIL\\}-->", ctx.getString(R.string.about_E_MAIL))
-          .replaceAll("<!--\\{APP_NAME\\}-->", ctx.getString(R.string.about_APP_NAME))
-          .replaceAll("<!--\\{SPECIAL_CREDITS\\}-->", ctx.getString(R.string.about_SPECIAL_CREDITS))
-          .replaceAll("<!--\\{PROJECT_SOURCE_STORAGE\\}-->", ctx.getString(R.string.about_PROJECT_SOURCE_STORAGE))
-          .replaceAll("<!--\\{PROJECT_SOURCE_URL\\}-->", ctx.getString(R.string.about_PROJECT_SOURCE_URL))
-          .replaceAll("<!--\\{PLATFORM_ANDROID\\}-->", ctx.getString(R.string.about_PLATFORM_ANDROID))
-          .replaceAll("<!--\\{PLATFORM_IOS\\}-->", ctx.getString(R.string.about_PLATFORM_IOS));
-    } catch (java.io.IOException e) {
-      Log.v("breviar", "Can not open file: " + e.getMessage());
-
-      return "";
-    }
-  }
 }
