@@ -551,7 +551,7 @@ public class Breviar extends AppCompatActivity
 
     @Override
     public boolean onScaleBegin(ScaleGestureDetector gd) {
-      return true;
+      return !BreviarApp.getNoZoom(this);
     }
 
     @Override

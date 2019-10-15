@@ -44,6 +44,10 @@ public class DisplaySettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setTransparentNav(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isTransparentNav(); }
     });
+    handleSwitch(R.id.no_zoom, new BooleanOption() {
+      public void set(boolean value) { BreviarApp.setNoZoom(act, value); }
+      public boolean get() { return BreviarApp.getNoZoom(act); }
+    });
   }
 }
 

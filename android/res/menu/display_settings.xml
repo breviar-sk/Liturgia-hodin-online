@@ -43,4 +43,9 @@
         app:actionLayout="@layout/widget_switch"
   />
 
+  <item android:id="@+id/no_zoom"
+        android:title="@string/no_zoom"
+        app:actionLayout="@layout/widget_switch"
+  />
+
 </menu>

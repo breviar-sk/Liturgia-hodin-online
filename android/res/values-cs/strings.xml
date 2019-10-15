@@ -59,6 +59,8 @@
 
     <string name="fullscreenOn">Celá obrazovka</string>
 
+    <string name="no_zoom">Zakázat gesto přiblížení (uzakmnout velikost písma)</string>
+
     <string name="nightmodeOn">Noční režim</string>
     <string name="nightmodeOff">Denní režim</string>
 

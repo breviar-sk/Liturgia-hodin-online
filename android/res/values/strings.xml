@@ -64,6 +64,8 @@
     <string name="nightmodeOn">Night mode</string>
     <string name="nightmodeOff">Day mode</string>
 
+    <string name="no_zoom">Disable zoom gesture (lock font size)</string>
+
     <string name="onlyNonBoldFontOff">Allow bold font</string>
 
     <string name="navigation_drawer_open">Open menu</string>

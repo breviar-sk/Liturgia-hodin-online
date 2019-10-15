@@ -123,6 +123,7 @@ public class BreviarApp extends Application {
   static final String booleanMute = "mute";
   static final String booleanBackgroundOverride = "background_override";
   static final String booleanTtsUsePauseInPsalms = "tts_use_pause_in_psalms";
+  static final String booleanNoZoom = "no_zoom";
   static final String stringUrlOptions = "params";
 
   static public boolean getVolButtons(Context ctx) {
@@ -163,6 +164,14 @@ public class BreviarApp extends Application {
 
   static public void setTtsUsePauseInPsalms(Context ctx, boolean use_pause) {
     setBoolean(ctx, booleanTtsUsePauseInPsalms, use_pause);
+  }
+
+  static public boolean getNoZoom(Context ctx) {
+    return getBoolean(ctx, booleanNoZoom, false);
+  }
+
+  static public void setNoZoom(Context ctx, boolean no_zoom) {
+    setBoolean(ctx, booleanNoZoom, no_zoom);
   }
 
   static public String getUrlOptions(Context ctx) {
