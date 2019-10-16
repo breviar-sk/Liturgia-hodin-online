@@ -12008,6 +12008,10 @@ void _export_rozbor_dna(short int typ) {
 #endif
 	_export_rozbor_dna_interpretuj_zoznam(EXPORT_TYP_WEB_MODE, typ, som_v_tabulke, (char *)STR_EMPTY, 0, 0);
 
+	// export this info only for XML
+	if (typ == EXPORT_DNA_XML) {
+		Export(ELEM_BEGIN(XML_STRING_VOLUME) "%s" ELEM_END(XML_STRING_VOLUME) "\n", _global_string2);
+	}
 	if (ANO == NIE) {
 		if (typ == EXPORT_DNA_VIAC_DNI) {
 			// ďalší stĺpec: rímske číslo podľa týždňa žaltára, pre nedele aj liturgický rok A, B resp. C
@@ -12025,9 +12029,6 @@ void _export_rozbor_dna(short int typ) {
 			// vypisanie rimskeho cisla (citanie)
 			Export("%s", _global_string2);
 		}// (typ == EXPORT_DNA_VIAC_DNI)
-		else if (typ == EXPORT_DNA_XML) {
-			Export(ELEM_BEGIN(XML_STRING_VOLUME) "%s" ELEM_END(XML_STRING_VOLUME) "\n", _global_string2);
-		}
 	}// do not export this information, it is not useful
 
 	if (som_v_tabulke == ANO) {
