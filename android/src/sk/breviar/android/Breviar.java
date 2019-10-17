@@ -51,7 +51,6 @@ import sk.breviar.android.Alarms;
 import sk.breviar.android.ClearProxy;
 import sk.breviar.android.CompatibilityHelper19;
 import sk.breviar.android.DialogActivity;
-import sk.breviar.android.HeadlessWebview;
 import sk.breviar.android.LangSelect;
 import sk.breviar.android.Server;
 import sk.breviar.android.TtsService;
