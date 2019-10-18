@@ -889,7 +889,7 @@ public class Breviar extends AppCompatActivity
 
     void startSpeaking() {
       UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-      opts.setBlindFriendly(true);
+      opts.setVoiceOutput(true);
       String url = opts.getBuilder().encodedAuthority("127.0.0.1:" + S.port_nonpersistent)
                        .build().toString();
 

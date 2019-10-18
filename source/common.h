@@ -62,7 +62,7 @@
 // underscore '_' used as placeholder for non-breaking space (it will be exported as HTML_NONBREAKING_SPACE == "&nbsp;" defined in mydefs.h) 
 #define CHAR_NONBREAKING_SPACE '_'
 
-// special characters in prayer texts (some of them to be removed for blind-friendly version)
+// special characters in prayer texts (some of them to be removed for voice output)
 #define CHAR_SPACE             ' '
 #define CHAR_PRAYER_ASTERISK   '*'
 #define CHAR_PRAYER_CROSS      L'\x2020' /*†*/ // used as flexa | U+2020 DAGGER

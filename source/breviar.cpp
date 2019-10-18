@@ -1740,7 +1740,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	// nastavenie toho, či sa má zobrazovať myšlienka k žalmom/chválospevom | doplnené aj nastavenie pre zobrazenie nadpisu pre žalm/chválospev (zatiaľ rovnako ako pre myšlienku)
 	// orig: if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.typslav == SLAV_VLASTNE) || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.smer == 1) && (_global_den.spolcast != _encode_spol_cast(MODL_SPOL_CAST_NEURCENA))) {
 	// last part was commented
-	// 2017-10-13: nevidím dôvod, prečo by sa to nemalo zobrazovať vždy OKREM blind-friendly režimu (voice output)
+	// 2017-10-13: nevidím dôvod, prečo by sa to nemalo zobrazovať vždy OKREM výstupu pre TTS (voice output)
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 		je_myslienka = NIE;
 		je_nadpis = NIE;
@@ -2620,7 +2620,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 						write = ANO;
 						Log("  opat writing to export file, end of hide-for-voice-output.\n");
 					}
-				}// hide passage for voice output (blind-friendly mode)
+				}// hide passage for voice output
 
 				if ((!(je_velka_noc)) && (equals(rest, PARAM_ALELUJA_VO_VELKONOCNOM))) {
 					if (equals(strbuff, INCLUDE_BEGIN) && (vnutri_inkludovaneho == 1)) {
@@ -2977,7 +2977,7 @@ void init_global_string_spol_cast_full(short int aj_vslh_235b) {
 			}// nebrať časti zo spol. časti
 		}// ide nanajvýš o spomienku (ak je to slávenie s vyšším stupňom, nemá zmysel voľba BIT_OPT_1_SPOMIENKA_SPOL_CAST)
 
-		// (aj_vslh_235b == ANO) means function is called from the generated prayer (for blind-friendly export is not necessary to export it at all) -- use different CSS style
+		// (aj_vslh_235b == ANO) means function is called from the generated prayer (for voice output is not necessary to export it at all) -- use different CSS style
 		if (aj_vslh_235b == ANO) {
 			strcat(_global_string_spol_cast_full, HTML_DIV_BEGIN);
 		}
@@ -3478,7 +3478,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 	} // PARAM_PODNADPIS
 
 	else if (equals(paramname, PARAM_SPOL_CAST)) {
-		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (blind-friendy: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (voice output: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 		Log("  _global_den.typslav == %d (%s)...\n", _global_den.typslav, nazov_slavenia(_global_den.typslav));
 
 		zobrazit = (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST));
@@ -8216,7 +8216,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		}
 
 		if (typ != EXPORT_DNA_VIAC_DNI_TXT) {
-			Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (blind-friendy: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+			Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_ZOBRAZ_SPOL_CAST: %d: (voice output: %d)\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 
 			if (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_SPOL_CAST)) {
 				ret_sc = init_global_string_spol_cast(MODL_SPOL_CAST_NULL, poradie_svateho);
@@ -8792,7 +8792,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 
 	short int podmienka = -1;
 
-	// current behaviour for normal (not blind-friendly) mode
+	// current behaviour for normal mode (not voice output)
 	if (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 		// zobrazujeme, iba ak nie je explicitne vyžiadané skrývanie
 		if (!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) {
@@ -8806,14 +8806,14 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
 
 			if ((!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) & ((aj_navigacia == ANO) || (aj_navigacia == CIASTOCNE))) {
-				podmienka = 2; // zobraziť pre blind-friendly
+				podmienka = 2; // zobraziť pre voice output
 			}
 			else {
 				podmienka = 0;
 			}
 		}
 		else {
-			ExportHtmlComment("no navigation for blind-friendly mode (hide navigation)");
+			ExportHtmlComment("no navigation for voice output (hide navigation)");
 		}
 	}
 
@@ -8842,7 +8842,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 	break;
 	case 2:
 	{
-		// 2014-10-20: pre blind-friendly zobrazujeme len "hore" pre daný deň
+		// pre voice output zobrazujeme len "hore" pre daný deň
 		char pom2[MAX_STR];
 		mystrcpy(pom2, STR_EMPTY, MAX_STR);
 		char pom3[MAX_STR];
@@ -12914,9 +12914,9 @@ LABEL_NIE_INE_VESPERY:
 
 	_export_heading_center(_global_string);
 
-	// úprava aj_navigacia pre TTS = blind-friendly = voice output
+	// úprava aj_navigacia pre TTS = voice output
 	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (modlitba != MODL_NEURCENA)) {
-		Log("pre blind-friendly verziu upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", modlitba);
+		Log("pre voice output upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", modlitba);
 		aj_navigacia = CIASTOCNE;
 	}
 
@@ -14357,9 +14357,9 @@ void _main_zaltar(char *den, char *tyzden, char *modlitba) {
 
 	Log("spustam showPrayer(%s)...\n", nazov_modlitby(_global_modlitba));
 
-	// úprava aj_navigacia pre TTS = blind-friendly = voice output
+	// úprava aj_navigacia pre TTS = voice output
 	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (p != MODL_NEURCENA)) {
-		Log("pre blind-friendly verziu upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", p);
+		Log("pre voice output upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", p);
 		aj_navigacia = CIASTOCNE;
 	}
 
@@ -14730,9 +14730,9 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	Log("_global_pocet_zalmov_kompletorium == %d...\n", _global_pocet_zalmov_kompletorium);
 	_export_heading_center(_global_string);
 
-	// úprava aj_navigacia pre TTS = blind-friendly = voice output
+	// úprava aj_navigacia pre TTS = voice output
 	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (p != MODL_NEURCENA)) {
-		Log("pre blind-friendly verziu upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", p);
+		Log("pre voice output upravujem aj_navigacia na NIE (lebo modlitba == %d)...\n", p);
 		aj_navigacia = CIASTOCNE;
 	}
 

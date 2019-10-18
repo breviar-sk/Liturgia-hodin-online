@@ -272,9 +272,9 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL)) {
 		_header_css(expt, level, nazov_css_normal_font_weight);
 	}
-	// blind-friendly CSS (no red text)
+	// voice output CSS (no red/rubrics text)
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
-		_header_css(expt, level, nazov_css_blind_friendly);
+		_header_css(expt, level, nazov_css_voice_output);
 	}
 
 #if defined(IO_ANDROID)

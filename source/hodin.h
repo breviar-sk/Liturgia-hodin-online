@@ -1104,8 +1104,8 @@ const char *nazov_css_invert_colors = "breviar-invert-colors.css";
 // CSS obsahujuci force normal font weight | CSS for "no-bold mode" (only normal font) - includes ONLY ammendment to base css (breviar.css)
 const char *nazov_css_normal_font_weight = "breviar-normal-font.css";
 
-// blind-friendly CSS | includes ONLY ammendment to base css (breviar.css)
-const char *nazov_css_blind_friendly = "breviar-blind-friendly.css";
+// voice output CSS | includes ONLY ammendment to base css (breviar.css)
+const char *nazov_css_voice_output = "breviar-voice-output.css";
 
 // language charset (encoding); used for HTML heading | use CHARSET_UTF_8
 const short int charset_jazyka[POCET_JAZYKOV + 1] =
@@ -2111,7 +2111,7 @@ const char *html_text_opt_0_specialne[POCET_JAZYKOV + 1] =
 // for other languages use: ""
 const char *html_text_opt_0_specialne_explain[POCET_JAZYKOV + 1] =
 {
-	"Možnosť zobraziť ďalšie údaje v texte modlitieb (čísla veršov, referencie a pod.).",
+	"Možnosť zobraziť ďalšie údaje v texte modlitieb (číslovanie veršov, referencie a pod.).",
 	"",
 	"",
 	"la_text",
@@ -2125,10 +2125,10 @@ const char *html_text_opt_0_specialne_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_0_verse[POCET_JAZYKOV + 1] =
 {
-	"číslovanie (čísla) veršov",
+	"číslovanie veršov",
 	"číslování veršů",
 	"verse numbering",
-	"numeratio versorum (numera)",
+	"numeratio versorum",
 	"",
 	"číslování veršů",
 	"a versek száma",
@@ -2350,15 +2350,15 @@ const char *html_text_opt_0_font_normal_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_0_buttons_order[POCET_JAZYKOV + 1] =
 {
-	"dátumové navigačné tlačidlá zobraziť až pod tlačidlami pre modlitby",
-	"navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby",
-	"date buttons display after buttons for prayers",
-	"ostende pulsabulas navigatorias sub pulsabulis pro orationes",
+	"dátumové navigačné tlačidlá pod tlačidlami pre modlitby",
+	"navigační tlačítka pro datum pod tlačítky pro modlitby",
+	"date buttons after buttons for prayers",
+	"pulsabulas navigatorias sub pulsabulis pro orationes",
 	"",
-	"navigační tlačítka pro datum zobrazit až pod tlačítky pro modlitby",
+	"navigační tlačítka pro datum pod tlačítky pro modlitby",
 	"a fejlécben a dátumválasztó gombok legyenek az imaóra választó gombok után",
 	"ru_text",
-	"паказваць кнопкі з датай пасля кнопак з малітвамі",
+	"кнопкі з датай пасля кнопак з малітвамі",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2379,13 +2379,13 @@ const char *html_text_opt_0_buttons_order_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_0_voice_output[POCET_JAZYKOV + 1] =
 {
-	"zobraziť iba text modlitieb (pre nevidiacich a slabozrakých) bez rubrík, pre hlasový výstup",
-	"zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik, pro hlasový výstup",
-	"blind-friendly text (without rubrics), for voice output",
-	"ostende solum textum orationum (pro caecis) sine rubricas, pro exitu vocale",
+	"iba text modlitieb pre hlasový výstup",
+	"jenom text modliteb pro hlasový výstup",
+	"only text for voice output",
+	"solum textum orationum, pro exitu vocale",
 	"",
-	"zobrazit jenom text modliteb (pro slepé a slabozraké) bez rubrik, pro hlasový výstup",
-	"mutassa meg csak az imaszövegeket (vakok és gyengénlátók részére) rubrikák nélkül",
+	"jenom text modliteb pro hlasový výstup",
+	"csak szöveg a hangkimenethez",
 	"ru_text",
 	"тэкст для невідушчых(без рубрык), для пераводу ў аўдыё",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -2408,12 +2408,12 @@ const char *html_text_opt_0_voice_output_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_0_footnotes[POCET_JAZYKOV + 1] =
 {
-	"zobraziť poznámky (v texte, pod čiarou)",
-	"zobrazit poznámky (v textu, pod čarou)",
-	"show notes and footnotes",
-	"ostende notas (in textu, sub lineam)",
+	"poznámky (v texte, pod čiarou)",
+	"poznámky (v textu, pod čarou)",
+	"notes and footnotes",
+	"notas (in textu, sub lineam)",
 	"",
-	"zobrazit poznámky (v textu, pod čarou)",
+	"poznámky (v textu, pod čarou)",
 	"jegyzetek, lábjegyzetek",
 	"ru_text",
 	"паказваць зноскі",
@@ -2466,24 +2466,24 @@ const char *html_text_opt_0_transparent_nav_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_0_zalmy_full_text[POCET_JAZYKOV + 1] =
 {
-	"zobraziť aj vynechané pasáže zo žalmov",
-	"zobrazit i vynechávky ze žalmů",
-	"show psalms omissions",
-	"ostende partes omissas psalmorum",
+	"vynechané pasáže zo žalmov a chválospevov",
+	"vynechávky ze žalmů a kantik",
+	"psalms and canticles omissions",
+	"partes omissas psalmorum",
 	"",
-	"zobrazit i vynechávky ze žalmů",
-	"mutassa meg a zsoltárok kihagyott részeit",
+	"vynechávky ze žalmů a kantik",
+	"a zsoltárok kihagyott részeit",
 	"ru_text",
-	"паказваць пропускі ў псальмах",
+	"пропускі ў псальмах",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
 // for other languages use: ""
 const char *html_text_opt_0_zalmy_full_text_explain[POCET_JAZYKOV + 1] =
 {
-	"Liturgia hodín vynecháva niektoré pasáže zo žalmov (napr. verš 6 v žalme 110). Je možné tieto vynechané pasáže zobraziť.",
+	"Liturgia hodín vynecháva niektoré pasáže zo žalmov a chválospevov (napr. verš 6 v žalme 110). Je možné tieto vynechané pasáže zobraziť.",
 	"",
-	"Liturgy of hours omits parts of some psalms (e. g. Ps 110, verse 6). It is possible to show also these omissions.",
+	"Liturgy of hours omits parts of some psalms and canticles (e. g. Ps 110, verse 6). It is possible to show also these omissions.",
 	"In Liturgia horarum omittuntur aliquae partes psalmorum (e.g. versus 6 in psalmo 110 (109)). Has partes ostendi possunt.",
 	"",
 	"",
@@ -3059,12 +3059,12 @@ const char *html_text_opt_1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_1_spolc_svaty[POCET_JAZYKOV + 1] =
 {
-	"zobraziť, odkiaľ sa berú spoločné časti k modlitbe svätého",
-	"zobrazit, odkud se berou společné texty",
+	"spoločné časti k modlitbe svätého",
+	"společné texty pro světce",
 	"display communia info",
 	"",
 	"",
-	"zobrazit, odkud se berou společné texty",
+	"společné texty pro světce",
 	"mutassa meg, hogy a közös részek honnan lettek véve a szentek zsolozsmájához",
 	"ru_text",
 	"паказваць інфармацыю пра агульныя тэксты пра святых",
@@ -3283,15 +3283,15 @@ const char *html_text_opt_2_html_export_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_2_prve_vespery[POCET_JAZYKOV + 1] =
 {
-	"zobraziť tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia",
-	"zobrazit tlačítko pro první nešpory pro neděle a slavnosti v den slavení",
-	"display button for first vespers for Sundays and solemnitas for the day of celebration",
+	"tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia",
+	"tlačítko pro první nešpory pro neděle a slavnosti v den slavení",
+	"button for first vespers for Sundays and solemnitas for the day of celebration",
 	"la_text",
 	"",
-	"zobrazit tlačítko pro první večerní chvály pro neděle a slavnosti v den slavení",
+	"tlačítko pro první večerní chvály pro neděle a slavnosti v den slavení",
 	"vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg",
 	"ru_text",
-	"паказваць кнопку з першымі Нешпарамі для нядзеляў і ўрачыстасцяў",
+	"кнопку з першымі Нешпарамі для нядзеляў і ўрачыстасцяў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3311,15 +3311,15 @@ const char *html_text_opt_2_prve_vespery_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_2_iso_datum[POCET_JAZYKOV + 1] =
 {
-	"zobraziť dátum v ISO 8601 formáte (RRRR-MM-DD)",
-	"zobrazit datum v ISO 8601 formátu (RRRR-MM-DD)",
-	"display date in ISO 8601 format (RRRR-MM-DD)",
+	"dátum v ISO 8601 formáte (RRRR-MM-DD)",
+	"datum v ISO 8601 formátu (RRRR-MM-DD)",
+	"date in ISO 8601 format (RRRR-MM-DD)",
 	"la_text",
 	"",
-	"zobrazit datum v ISO 8601 formátu (RRRR-MM-DD)",
+	"datum v ISO 8601 formátu (RRRR-MM-DD)",
 	"a dátum ISO 8601 formátumban (ÉÉÉÉ-HH-NN) jelenjen meg",
 	"ru_text",
-	"паказваць дату ў фармаце ISO 8601 (ГГГГ-ММ-ДД)",
+	"дату ў фармаце ISO 8601 (ГГГГ-ММ-ДД)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3467,12 +3467,12 @@ const char *html_text_opt_2_textwrap_explain[POCET_JAZYKOV + 1] =
 
 const char *html_text_opt_2_buttons_usporne[POCET_JAZYKOV + 1] =
 {
-	"tlačidlá pre modlitby zobraziť úsporne",
-	"tlačítka pro modlitby zobrazit úsporně",
-	"concise display of buttons for prayers",
+	"úsporné zobrazenie tlačidiel pre modlitby",
+	"úsporné zobrazení tlačítek pro modlitby",
+	"tight display of buttons for prayers",
 	"ostende pulsabulas pro orationibus cum parsimonia",
 	"",
-	"tlačítka pro modlitby zobrazit úsporně",
+	"úsporné zobrazení tlačítek pro modlitby",
 	"az imaórák gombjainak gazdaságos elhelyezése",
 	"ru_text",
 	"меншыя кнопкі ў малітвах",

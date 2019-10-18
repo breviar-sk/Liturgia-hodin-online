@@ -210,13 +210,13 @@ void ExportRawWchar(int c) {
 	Export("%s", buf);
 }// ExportRawWchar()
 
-void ExportChar(int c, short int skip_chars_for_blind_friendly_version /* = NIE */) {
+void ExportChar(int c, short int skip_chars_for_voice_output /* = NIE */) {
 	// ToDo: consider special behaviour for 'plain' text export
 
-	// blind-friendly export
-	if (skip_chars_for_blind_friendly_version == ANO) {
+	// voice output
+	if (skip_chars_for_voice_output == ANO) {
 		if ((c == CHAR_PRAYER_ASTERISK) || (c == CHAR_PRAYER_CROSS) || (c == CHAR_PRAYER_CROSS_ALT) || (c == CHAR_PRAYER_TRIANGLE)) {
-			; // skip special characters for blind-friendly version
+			; // skip special characters for voice output
 		}
 		else if (c == CHAR_NONBREAKING_SPACE) {
 			Export("%c", CHAR_SPACE);
@@ -237,7 +237,7 @@ void ExportChar(int c, short int skip_chars_for_blind_friendly_version /* = NIE 
 	return;
 }// ExportChar()
 
-void ExportStringCharByChar(const char * input, short int skip_chars_for_blind_friendly_version /* = NIE */) {
+void ExportStringCharByChar(const char * input, short int skip_chars_for_voice_output /* = NIE */) {
 	short int ok = TRUE;
 	const char* in = input;
 
@@ -251,7 +251,7 @@ void ExportStringCharByChar(const char * input, short int skip_chars_for_blind_f
 		}
 
 		if (ok == TRUE) {
-			ExportChar(c, skip_chars_for_blind_friendly_version);
+			ExportChar(c, skip_chars_for_voice_output);
 		}// ok == TRUE
 	}
 	return;

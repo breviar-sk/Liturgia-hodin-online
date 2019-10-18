@@ -1496,7 +1496,7 @@ extern long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_TELAKRVI_NEDELA           32 // či sa Najsv. Kristovho tela a krvi slávi v nedeľu (1) alebo nie (teda vo štvrtok, 11.-ty deň po Zoslaní Ducha Sv.; hodnota 0 == default)
 #define BIT_OPT_0_FONT_NORMAL               64 // force font-weight: normal; // should be logically among OPT_2_HTML_EXPORT bit-options
 #define BIT_OPT_0_BUTTONS_ORDER            128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
-#define BIT_OPT_0_VOICE_OUTPUT             256 // voice-output (blind-friendly) mode: 1 = use special CSS override to hide all red texts (rubrics) + display text for speech synthesis + do not display text which should not be heard
+#define BIT_OPT_0_VOICE_OUTPUT             256 // voice-output: 1 = use special CSS override to hide all red texts (rubrics) + display text for speech synthesis + do not display text which should not be heard
 #define BIT_OPT_0_FOOTNOTES                512 // display footnotes and footnote references
 #define BIT_OPT_0_TRANSPARENT_NAV         1024 // transparent navigation arrow in text
 #define BIT_OPT_0_ZALMY_FULL_TEXT         2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
@@ -1642,7 +1642,7 @@ extern const char *nazov_css[POCET_CSS + 1];
 extern const char *skratka_css[POCET_CSS + 1];
 extern const char *nazov_css_invert_colors;
 extern const char *nazov_css_normal_font_weight;
-extern const char *nazov_css_blind_friendly;
+extern const char *nazov_css_voice_output;
 extern const char *nazov_css_background_override;
 extern const char *nazov_css_background_ov_invert;
 

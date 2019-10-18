@@ -23,7 +23,7 @@
     <string name="dimlock">Ne sötétüljön el a képernyő</string>
     <string name="mute">A csengetés kikapcsolása</string>
     <string name="long_click_toggles_bar">Hosszú lenyomása elrejti az alsó navigációs listát</string>
-    <string name="transparent_nav">Navigációs nyilak mutatása</string>
+    <string name="no_zoom">Tiltsa le a zoom gesztusát (zárja be a betűméretet)</string>
 
     <string name="prayer_settings_title">Tartalom beállításai</string>
     <string name="prayer_content_settings_title">Tartalom beállításai</string>
@@ -47,6 +47,7 @@
     <string name="background_override">Választható háttérszín (sárga)</string>
     <string name="normal_font">Normál betűtípus használata (félkövér tiltása)</string>
     <string name="buttons_order">Dátumválasztó gombok megjelenítése az imaóraválasztó gombok után</string>
+    <string name="transparent_nav">Navigációs nyilak mutatása</string>
 
     <string name="calendar_settings_title">Liturgikus naptár</string>
     <string name="epiphany_sunday">Urunk megjelenését (Vízkeresztet) vasárnap ünnepelni, január 2. és 8. között</string>
@@ -58,8 +59,6 @@
     <string name="alarmOff">letiltás</string>
 
     <string name="fullscreenOn">Teljes képernyő</string>
-
-    <string name="no_zoom">Tiltsa le a zoom gesztusát (zárja be a betűméretet)</string>
 
     <string name="nightmodeOn">Éjszakai mód</string>
     <string name="nightmodeOff">Nappali mód</string>

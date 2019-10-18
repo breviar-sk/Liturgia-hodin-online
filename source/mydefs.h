@@ -546,7 +546,7 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_FORCE_BIT_OPT_0_BUTTONS_ORDER "of0bo"
 #endif
 
-// blind-friendly mode
+// voice output
 #define FORCE_BIT_OPT_0_VOICE_OUTPUT 69
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_0_VOICE_OUTPUT "FORCE_BIT_OPT_0_VOICE_OUTPUT"
@@ -1248,7 +1248,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_TELAKRVI_NEDELA           "BitOpt0CorpusChristiOnSunday"
 #define XML_BIT_OPT_0_FONT_NORMAL               "BitOpt0ForceNormalFontWeight"
 #define XML_BIT_OPT_0_BUTTONS_ORDER             "BitOpt0ButtonsOrder"
-#define XML_BIT_OPT_0_VOICE_OUTPUT            "BitOpt0BlindFriendly"
+#define XML_BIT_OPT_0_VOICE_OUTPUT              "BitOpt0VoiceOutput"
 #define XML_BIT_OPT_0_FOOTNOTES                 "BitOpt0Footnotes"
 #define XML_BIT_OPT_0_TRANSPARENT_NAV           "BitOpt0TransparentNav"
 #define XML_BIT_OPT_0_ZALMY_FULL_TEXT           "BitOpt0PsalmsFullText"

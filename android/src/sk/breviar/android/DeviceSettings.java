@@ -40,5 +40,9 @@ public class DeviceSettings extends SettingsActivity {
       }
       public boolean get() { return BreviarApp.getMute(act); }
     });
+    handleSwitch(R.id.no_zoom, new BooleanOption() {
+      public void set(boolean value) { BreviarApp.setNoZoom(act, value); }
+      public boolean get() { return BreviarApp.getNoZoom(act); }
+    });
   }
 }

@@ -89,11 +89,11 @@ public class UrlOptions {
   }
 
   // of0bf
-  public boolean isBlindFriendly() {
+  public boolean isVoiceOutput() {
     return hasBit("o0", 8);
   }
 
-  public void setBlindFriendly(boolean value) {
+  public void setVoiceOutput(boolean value) {
     setBit("o0", 8, value);
   }
 

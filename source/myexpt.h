@@ -26,8 +26,8 @@ short int ExportHtmlComment(const char *fmt, ...);
 short int Export_to_file(FILE * expt, const char *fmt, ...);
 
 void ExportRawWchar(int c);
-void ExportChar(int c, short int skip_chars_for_blind_friendly_version = NIE);
-void ExportStringCharByChar(const char * string, short int skip_chars_for_blind_friendly_version = NIE);
+void ExportChar(int c, short int skip_chars_for_voice_output = NIE);
+void ExportStringCharByChar(const char * string, short int skip_chars_for_voice_output = NIE);
 
 void bothExports(void);
 void dumpFile(char *fname);
