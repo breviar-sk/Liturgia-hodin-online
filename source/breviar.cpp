@@ -8705,6 +8705,9 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 
+	// for TTS, mute whole table
+	Export("<" HTML_DIV_TTS_MUTE ">\n");
+
 #ifdef BEHAVIOUR_WEB
 	if (som_v_tabulke == NIE) {
 		// table begin
@@ -8719,26 +8722,27 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 		// table cell begin
 		ExportTableCell(HTML_TABLE_CELL);
 
-		if (dnes_dnes >= ANO) {
+		if (dnes_dnes >= EXPORT_DNES_DNES_ANO) {
 			sprintf(action, "%s?%s=%s%s", script_name, STR_QUERY_TYPE, STR_PRM_DNES, pom2);
 			// Export("<form action=\"%s?%s=%s%s\" method=\"post\">\n", script_name, STR_QUERY_TYPE, STR_PRM_DNES, pom2);
 			Export_HtmlForm(action);
 			Export(HTML_FORM_INPUT_SUBMIT1" title=\"%s\" value=\"", html_button_dnes[_global_jazyk]);
 		}
-		else {
+		else if (dnes_dnes > EXPORT_DNES_DNES_NULL) {
 			sprintf(action, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, _global_den.den, STR_MESIAC, _global_den.mesiac, STR_ROK, _global_den.rok, pom2);
 			Export_HtmlForm(action);
 			Export(HTML_FORM_INPUT_SUBMIT1" title=\"%s\" value=\"", _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 		}
-		if (dnes_dnes == 2) {
+
+		if (dnes_dnes == EXPORT_DNES_DNES_ANO_SPEC) {
 			Export(HTML_LEFT_ARROW_CLASSIC);
 			Export(HTML_NONBREAKING_SPACE);
 			Export((char *)html_button_tento_den[_global_jazyk]);
 		}
-		else if (dnes_dnes == ANO) {
+		else if (dnes_dnes == EXPORT_DNES_DNES_ANO) {
 			Export((char *)html_button_dnes[_global_jazyk]);
 		}
-		else {
+		else if (dnes_dnes > EXPORT_DNES_DNES_NULL) {
 			Export(HTML_UP_ARROW_CLASSIC "" STR_SPACE);
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 			Export((char *)html_button_tento_den[_global_jazyk]);
@@ -8746,10 +8750,13 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 			Export(_vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 #endif
 		}
-		Export("\"" HTML_FORM_INPUT_END "\n");
+		
+		if (dnes_dnes > EXPORT_DNES_DNES_NULL) {
+			Export("\"" HTML_FORM_INPUT_END "\n");
+		}
 
-		// 2012-10-02: doplnenie možnosti skryť navigáciu
-		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)) { // len ak je táto možnosť (zobrazovanie všeličoho) zvolená
+		// show-hide navigation
+		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)) {
 			if (zobraz_odkaz_na_skrytie == ANO) {
 				char show[MAX_STR] = STR_EMPTY;
 				char hide[MAX_STR] = STR_EMPTY;
@@ -8773,6 +8780,8 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 	}
 #endif
 
+	Export(HTML_DIV_END);
+
 #ifdef OS_Windows_Ruby
 	ExportHtmlComment("buttons/dni/dnes:end");
 #endif
@@ -8782,8 +8791,8 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 // typ - ako v _export_rozbor_dna()
 //
 // exportuje buttony pre _export_rozbor_dna() a to button predosleho a nasledujuceho dna
-// 2011-07-03: pridaná možnosť zmeniť default look (tlačidlo "dnes" pre navigáciu v modlitbe nebude mať popis "dnes" a iné zmeny pre navigáciu)
-void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO */, short int aj_navigacia /* = ANO */) {
+// možnosť zmeniť default look (tlačidlo "dnes" pre navigáciu v modlitbe nebude mať popis "dnes" a iné zmeny pre navigáciu)
+void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes, short int aj_navigacia) {
 	Log("_export_rozbor_dna_buttons_dni(): začiatok\n");
 
 #ifdef OS_Windows_Ruby
@@ -8799,7 +8808,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 			podmienka = 1; // zobraziť: _export_rozbor_dna_buttons_dni_call(typ, dnes_dnes);
 		}
 		else {
-			podmienka = 0; // nezobraziť: hide buttons (only hyperlink enabling to display them back is displayed)
+			podmienka = 0; // nezobraziť: hide buttons (only hyperlink enabling to display them back is exported)
 		}
 	}
 	else {
@@ -8817,6 +8826,11 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 		}
 	}
 
+	char pom2[MAX_STR];
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
 	switch (podmienka)
 	{
 	case 0:
@@ -8824,6 +8838,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 #ifdef OS_Windows_Ruby
 		ExportHtmlComment("hide buttons");
 #endif
+		/*
 		char show[SMALL] = STR_EMPTY;
 		char hide[SMALL] = STR_EMPTY;
 		sprintf(show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
@@ -8832,7 +8847,11 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 		sprintf(before, HTML_P_CENTER_SMALL);
 		char after[SMALL] = STR_EMPTY;
 		mystrcpy(after, HTML_P_END, SMALL);
-		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY, (char *)STR_EMPTY);
+		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, (char *)HTML_DIV_TTS_MUTE, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY, (char *)HTML_DIV_END);
+		*/
+		prilep_request_options(pom2, pom3);
+
+		_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_NULL, NIE, pom2, ANO);
 	}
 	break;
 	case 1:
@@ -8843,11 +8862,6 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 	case 2:
 	{
 		// pre voice output zobrazujeme len "hore" pre daný deň
-		char pom2[MAX_STR];
-		mystrcpy(pom2, STR_EMPTY, MAX_STR);
-		char pom3[MAX_STR];
-		mystrcpy(pom3, STR_EMPTY, MAX_STR);
-
 		prilep_request_options(pom2, pom3);
 
 		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, NIE, pom2, ANO);
@@ -8863,7 +8877,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes /* = ANO 
 	Log("_export_rozbor_dna_buttons_dni(): koniec.\n");
 } // _export_rozbor_dna_buttons_dni()
 
-void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* = ANO */) {
+void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes) {
 	Log("--- _export_rozbor_dna_buttons_dni_orig(typ == %d) -- begin\n", typ);
 #ifdef OS_Windows_Ruby
 	ExportHtmlComment("buttons/dni/orig:begin");
@@ -8898,7 +8912,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 	if (query_type == PRM_LIT_OBD) {
 		Log("pre query_type == PRM_LIT_OBD sa dni netlačia (nemám nastavený dátum), iba 'dnes'...\n");
 
-		_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+		_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_ANO, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 
 		return;
 	}// query_type == PRM_LIT_OBD
@@ -8907,12 +8921,12 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 		// najprv dnes, potom ostatné
 		if ((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)) {
 
-			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+			_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_ANO, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 
 		}
 	}// if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2))
 
-	if (dnes_dnes != ANO) {
+	if (dnes_dnes != EXPORT_DNES_DNES_ANO) {
 		// pre tlačidlá predošlého a nasledujúceho dňa pre navigáciu v modlitbe treba použiť iný dátum ako _global_den, nakoľko pre vešpery v predvečer nedele resp. slávnosti sa dátum posunul o jeden deň...
 		// ExportHtmlComment("úprava _global_den na: den %d | mesiac %d | rok %d", _global_vstup_den, _global_vstup_mesiac, _global_vstup_rok);
 		_global_den.den = _global_vstup_den;
@@ -8934,7 +8948,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 		Log("--- _export_rozbor_dna_buttons_dni(): idem tlacit buttony...\n");
 		short int _local_rok;
 
-		if (dnes_dnes == ANO) {
+		if (dnes_dnes == EXPORT_DNES_DNES_ANO) {
 			ExportHtmlComment("tabuľka s buttonmi predošlý, nasledovný rok/mesiac/deň presunutá pred rozbor daného dňa (teda navrch stránky) (orig)");
 		}
 		else {
@@ -8951,7 +8965,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 			Export(HTML_P_BEGIN"\n");
 		}
 
-		if (dnes_dnes == ANO) {
+		if (dnes_dnes == EXPORT_DNES_DNES_ANO) {
 			// vypočítanie toho istého dňa v predošlom roku
 			datum.den = _global_den.den;
 			datum.mesiac = _global_den.mesiac;
@@ -9077,7 +9091,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 			Export_HtmlForm(pom);
 			// 2003-07-16; < zmenene na &lt; 2007-03-19: zmenené na HTML_LEFT_ARROW; 2011-01-26: zmenené na HTML_LEFT_ARROW_SINGLE
 			Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %s\" value=\"" HTML_LEFT_ARROW_SINGLE " ", html_button_predchadzajuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
-			if (dnes_dnes == ANO) {
+			if (dnes_dnes == EXPORT_DNES_DNES_ANO) {
 				Export((char *)html_text_den[_global_jazyk]);
 			}
 			else {
@@ -9151,7 +9165,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 			Export_HtmlForm(pom);
 			Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %s\" value=\"", html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 
-			if (dnes_dnes == ANO) {
+			if (dnes_dnes == EXPORT_DNES_DNES_ANO) {
 				Export((char *)html_text_den[_global_jazyk]);
 			}
 			else {
@@ -9170,7 +9184,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 			}
 		}
 
-		if (dnes_dnes == ANO) {
+		if (dnes_dnes == EXPORT_DNES_DNES_ANO) {
 			// >> nasledovný mesiac
 			if ((_global_den.mesiac - 1) == MES_DEC) {
 				datum.mesiac = MES_JAN + 1;
@@ -9257,7 +9271,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 		// najprv ostatné, potom dnes
 		if ((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)) {
 
-			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+			_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_ANO, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 
 		}
 	}// if((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2))
@@ -9272,7 +9286,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes /* =
 	Log("--- _export_rozbor_dna_buttons_dni_orig(typ == %d) -- end\n", typ);
 } // _export_rozbor_dna_buttons_dni_orig()
 
-void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /* = ANO */) {
+void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes) {
 	Log("--- _export_rozbor_dna_buttons_dni_compact(typ == %d) -- begin\n", typ);
 #ifdef OS_Windows_Ruby
 	ExportHtmlComment("buttons/dni/compact:begin");
@@ -9309,7 +9323,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 	if (query_type == PRM_LIT_OBD) {
 		Log("pre query_type == PRM_LIT_OBD sa dni netlačia (nemám nastavený dátum), iba 'dnes'...\n");
 
-		_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+		_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_ANO, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 
 		return;
 	}// query_type == PRM_LIT_OBD
@@ -9318,12 +9332,12 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 		// najprv dnes, potom ostatné
 		if ((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)) {
 
-			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+			_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_ANO, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 
 		}
 	}// if((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2))
 
-	if (dnes_dnes != ANO) {
+	if (dnes_dnes != EXPORT_DNES_DNES_ANO) {
 		_global_den.den = _global_vstup_den;
 		_global_den.mesiac = _global_vstup_mesiac;
 		_global_den.rok = _global_vstup_rok;
@@ -9343,7 +9357,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 		Log("--- _export_rozbor_dna_buttons_dni(): idem tlacit buttony...\n");
 		short int _local_rok;
 
-		if (dnes_dnes == ANO) {
+		if (dnes_dnes == EXPORT_DNES_DNES_ANO) {
 			ExportHtmlComment("tabuľka s buttonmi predošlý, nasledovný rok/mesiac/deň presunutá pred rozbor daného dňa (teda navrch stránky) (compact)");
 		}
 		else {
@@ -9413,7 +9427,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 			ExportTableCell(HTML_TABLE_CELL);
 			Export_HtmlForm(pom);
 			Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %s\" value=\"" HTML_LEFT_ARROW_SINGLE " ", html_button_predchadzajuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
-			// použijeme vždy, nielen keď if(dnes_dnes == ANO)
+			// použijeme vždy, nielen keď if(dnes_dnes == EXPORT_DNES_DNES_ANO)
 			Export((char *)html_text_den[_global_jazyk]);
 			Export(" \"" HTML_FORM_INPUT_END "\n");
 			Export("</form>\n");
@@ -9496,7 +9510,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 
 		// first triplet was finished (table row)
 
-		if (dnes_dnes == ANO) {
+		if (dnes_dnes == EXPORT_DNES_DNES_ANO) {
 			// ---------------------------------------------------
 
 			// << predošlý mesiac
@@ -9627,7 +9641,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 
 		}// predošlý, nasledovný rok -- len pre "dnes" (second triplet)
 
-		if (dnes_dnes == ANO) {
+		if (dnes_dnes == EXPORT_DNES_DNES_ANO) {
 			// ---------------------------------------------------
 
 			// vypočítanie toho istého dňa v predošlom roku
@@ -9719,12 +9733,12 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 		// najprv ostatné, potom dnes
 		if ((query_type == PRM_DATUM) && (_global_modlitba != MODL_NEURCENA)) {
 
-			_export_rozbor_dna_buttons_dni_dnes(ANO /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
+			_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_ANO, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 
 		}
 	}// if((_global_pocet_navigacia > 1) || (_global_pocet_volani_interpretTemplate >= 2))
 
-	// späť pôvodné nastavenia (pre dnes_dnes != ANO boli zmenené)
+	// späť pôvodné nastavenia (pre dnes_dnes != EXPORT_DNES_DNES_ANO boli zmenené)
 	_global_den.den = _orig_den;
 	_global_den.mesiac = _orig_mesiac;
 	_global_den.rok = _orig_rok;
@@ -9735,7 +9749,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes /
 } // _export_rozbor_dna_buttons_dni_compact()
 
 // enable to display date-navigation buttons in compact mode also for online web
-void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dnes /* = ANO */) {
+void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dnes) {
 #ifdef OS_Windows_Ruby
 	ExportHtmlComment("buttons/dni/call:begin");
 #endif

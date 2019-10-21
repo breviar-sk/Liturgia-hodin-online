@@ -1128,7 +1128,7 @@ extern short int query_type; // contains constants PRM_...
 	char pom3[MAX_STR];\
 	mystrcpy(pom3, STR_EMPTY, MAX_STR);\
 	prilep_request_options(pom2, pom3);\
-	_export_rozbor_dna_buttons_dni_dnes(2 /* dnes_dnes */, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
+	_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_ANO_SPEC, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
 	}
 
 // used in interpretParameter()

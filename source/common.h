@@ -230,6 +230,9 @@
 #define HTML_DIV_PSALM              "div class=\"psalm\""
 #define HTML_DIV_PSALM_INDENT       "div class=\"psalm-indent\""
 
+// TTS mute -- do not read for voice output
+#define HTML_DIV_TTS_MUTE           "div class=\"tts_mute\""
+
 // TTS navigation
 #define HTML_DIV_TTS_HEADING        "div class=\"tts_heading\""
 #define HTML_DIV_TTS_SECTION        "div class=\"tts_section\""
