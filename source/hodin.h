@@ -735,8 +735,8 @@ const char *html_farba_okraj[POCET_FARIEB_REALNYCH + 1] =
 { "#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* "black" */, "#000000" /* black */ };
 
 // codes for number of the week from psaltery (psalterium per quattuor hebdomadas distributum)
-const char *rimskymi_tyzden_zaltara[ZVAZKY_LH + 1] =
-{ "_", "I", "II", "III", "IV" };
+const char *rimskymi_tyzden_zaltara[ZVAZKY_LH + 2] =
+{ "_", "I", "II", "III", "IV", "V" }; // 5 == vlastné slávenie
 
 // const: ordinal number of the first day in specific month
 const short int prvy_den[12] =

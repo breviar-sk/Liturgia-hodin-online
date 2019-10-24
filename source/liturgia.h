@@ -1277,7 +1277,7 @@ extern const char *html_farba_popredie[POCET_FARIEB_REALNYCH + 1];
 
 // tyzden zaltara (1, 2, 3, 4) podla tyzdna t
 #define  tyzden_zaltara(t)  ((((t) + 3) % 4) + 1)
-extern const char *rimskymi_tyzden_zaltara[ZVAZKY_LH + 1];
+extern const char *rimskymi_tyzden_zaltara[ZVAZKY_LH + 2];
 
 extern const short int prvy_den[12];
 

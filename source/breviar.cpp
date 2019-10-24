@@ -7286,19 +7286,21 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 
 	// ____________________________________________________________
 	// initialization of _global_string2
-	if (((_global_r._POPOLCOVA_STREDA.den == _local_den.den) &&
-		(_global_r._POPOLCOVA_STREDA.mesiac == _local_den.mesiac)) || // popolcova streda
-		((_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (typ == EXPORT_DNA_VIAC_DNI)) || // pondelok -- streda velkeho tyzdna
-		(_local_den.smer > 8)) // nie slavnosti ani sviatky ani nedele
-	{
+	if ((
+			((_global_r._POPOLCOVA_STREDA.den == _local_den.den) && (_global_r._POPOLCOVA_STREDA.mesiac == _local_den.mesiac)) || // Popolcová streda
+			((_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (_local_den.denvt != DEN_NEDELA) && (_local_den.denvt != DEN_STVRTOK)) || // pondelok -- streda Veľkého týždňa
+			(_local_den.smer > 7) // nie špeciálne dni: Trojdnie (1), Narodenie, Zjavenie, Nanebovstúpenie, ZDS (2), nedele (2, 6), slávnosti (3), 01NOV, sviatky Pána (5)
+		)
+		&& (_local_den.litobd != OBD_OKTAVA_NARODENIA) // nie Oktáva Narodenia Pána
+	) {
 		mystrcpy(_global_string2, rimskymi_tyzden_zaltara[tyzden_zaltara(_global_den.tyzden)], MAX_GLOBAL_STR2);
 	}
 	else if (_local_den.denvt == DEN_NEDELA) {
-		// aj nedele majú týždeň žaltára
-		sprintf(_global_string2, "%c, %s", _local_den.litrok, rimskymi_tyzden_zaltara[tyzden_zaltara(_global_den.tyzden)]);
+		// aj nedele majú týždeň žaltára; ak ide o špeciálne nedele, vypíšeme rok (A, B, C) a "V"
+		sprintf(_global_string2, "%c, %s", _local_den.litrok, rimskymi_tyzden_zaltara[(_je_local_den_vlastne_slavenie_pismV) ? 5 : tyzden_zaltara(_global_den.tyzden)]);
 	}
 	else {
-		mystrcpy(_global_string2, "V", MAX_GLOBAL_STR2);
+		mystrcpy(_global_string2, rimskymi_tyzden_zaltara[5], MAX_GLOBAL_STR2);
 	}
 
 	Log("  -- _global_string2 == %s\n", _global_string2);
@@ -12026,24 +12028,25 @@ void _export_rozbor_dna(short int typ) {
 	if (typ == EXPORT_DNA_XML) {
 		Export(ELEM_BEGIN(XML_STRING_VOLUME) "%s" ELEM_END(XML_STRING_VOLUME) "\n", _global_string2);
 	}
-	if (ANO == NIE) {
-		if (typ == EXPORT_DNA_VIAC_DNI) {
-			// ďalší stĺpec: rímske číslo podľa týždňa žaltára, pre nedele aj liturgický rok A, B resp. C
-			if (som_v_tabulke == ANO) {
-				Export(HTML_TABLE_CELL_END "\n");
 
-				ExportHtmlComment("col:roman_number");
+#ifdef OS_Windows_Ruby
+	if (typ == EXPORT_DNA_VIAC_DNI) {
+		// ďalší stĺpec: rímske číslo podľa týždňa žaltára, pre nedele aj liturgický rok A, B resp. C
+		if (som_v_tabulke == ANO) {
+			Export(HTML_TABLE_CELL_END "\n");
 
-				Export("<" HTML_TABLE_CELL_VALIGN_TOP ">");
-			}
-			else {
-				Export(HTML_NONBREAKING_SPACE);
-			}
-			Export("\n");
-			// vypisanie rimskeho cisla (citanie)
-			Export("%s", _global_string2);
-		}// (typ == EXPORT_DNA_VIAC_DNI)
-	}// do not export this information, it is not useful
+			ExportHtmlComment("col:roman_number");
+
+			Export("<" HTML_TABLE_CELL_VALIGN_TOP ">");
+		}
+		else {
+			Export(HTML_NONBREAKING_SPACE);
+		}
+		Export("\n");
+		// vypisanie rimskeho cisla (citanie)
+		Export("%s", _global_string2);
+	}// (typ == EXPORT_DNA_VIAC_DNI)
+#endif
 
 	if (som_v_tabulke == ANO) {
 		Export(HTML_TABLE_CELL_END "\n");
@@ -12664,12 +12667,8 @@ void rozbor_dna_s_modlitbou(short int den, short int mesiac, short int rok, shor
 		Log("teraz uvidime, ci vespery/kompletorium nasledovneho dna nemaju nahodou prioritu...\n");
 
 		// netyka sa to zeleneho stvrtka, velkeho tyzdna, velkonocneho trojdnia
-		if (_global_den.denvr == (_global_r._VELKONOCNA_NEDELA.denvr - 3)) {
-			Log("netyka sa to zeleneho stvrtka\n");
-			goto LABEL_NIE_INE_VESPERY;
-		}
-		else if ((_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (_global_den.denvt != DEN_NEDELA)) {
-			Log("netyka sa to velkeho tyzdna (okrem druhych vespier kvetnej nedele)\n");
+		if ((_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (_global_den.denvt != DEN_NEDELA) && (_global_den.denvt != DEN_STVRTOK)) {
+			Log("netyka sa to Veľkého týždňa (okrem druhých vešpier Kvetnej nedele), ani Zeleného štvrtka\n");
 			goto LABEL_NIE_INE_VESPERY;
 		}
 		else if (_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) {

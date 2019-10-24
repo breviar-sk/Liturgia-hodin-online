@@ -18227,7 +18227,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_set_zalmy_op_dominik(modlitba);
 				/*
 				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if(_global_den.denvt != DEN_NEDELA) {
+				if (_global_den.denvt != DEN_NEDELA) {
 				_set_zalmy_mcd_doplnkova_psalmodia();
 				}
 				else {
