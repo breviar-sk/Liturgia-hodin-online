@@ -1880,6 +1880,7 @@ extern const char *text_DEC_06[POCET_JAZYKOV + 1];
 extern const char *text_DEC_07[POCET_JAZYKOV + 1];
 extern const char *text_DEC_08[POCET_JAZYKOV + 1];
 extern const char *text_DEC_09[POCET_JAZYKOV + 1];
+extern const char* text_DEC_10[POCET_JAZYKOV + 1];
 extern const char *text_DEC_11[POCET_JAZYKOV + 1];
 extern const char *text_DEC_12[POCET_JAZYKOV + 1];
 extern const char *text_DEC_13[POCET_JAZYKOV + 1];

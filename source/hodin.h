@@ -9612,7 +9612,7 @@ const char *text_JUL_16[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_16_OCD[POCET_JAZYKOV + 1] =
 {
-	"Preblahoslavenej Panny Márie z hory Karmel",
+	"Prebl. Panny Márie z_hory Karmel",
 	"",
 	"",
 	"",
@@ -10217,7 +10217,7 @@ const char *text_AUG_02_2[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_02_OFM[POCET_JAZYKOV + 1] =
 {
-	"Preblahoslavenej Panny Márie Anjelskej v Porciunkule",
+	"Prebl. Panny Márie Anjelskej v Porciunkule",
 	"Panny Marie Andělské z Porciunkule", // "Panny Marie Královny andělů",
 	"",
 	"",
@@ -14499,6 +14499,19 @@ const char *text_DEC_09_CSA[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
+	"hu_text",
+	"ru_text",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_DEC_10[POCET_JAZYKOV + 1] =
+{
+	"Prebl. Panny Márie z Loreta",
+	"Panny Marie z Loreta",
+	"",
+	"Beatæ Mariæ Virginis de Loreto",
+	"",
+	"Panny Marie z Loreta",
 	"hu_text",
 	"ru_text",
 	"",
