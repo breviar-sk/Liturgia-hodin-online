@@ -571,7 +571,7 @@ const char *nazov_slavenia_lokal[] =
  ""                                                                                                              // LOKAL_SLAV_NEURCENE
 ,"len v rožňavskej katedrále"                                                                                    // LOKAL_SLAV_ROZNAVA_KATEDRALA
 ,"hlavný patrón Trnavskej arcidiecézy"                                                                           // LOKAL_SLAV_TRNAVA_PATRON
-,"v Bratislavskej, Trnavskej a Košickej arcidiecéze " HTML_LINE_BREAK "a v Banskobystrickej, Nitrianskej a Rožňavskej diecéze" // LOKAL_SLAV_TT_BB_KE_NR_RO
+,"v Bratislavskej, Trnavskej a Košickej arcidiecéze " HTML_LINE_BREAK "a v Banskobystrickej, Nitrianskej a Rožňavskej diecéze" // LOKAL_SLAV_TT_BB_KE_NR_RO | not used
 ,"v Nitrianskej diecéze sviatok hlavných patrónov"                                                               // LOKAL_SLAV_NITRA_PATRON
 ,"len v Košickej arcidiecéze"                                                                                    // LOKAL_SLAV_KOSICE
 ,"len v Nitrianskej diecéze"                                                                                     // LOKAL_SLAV_NITRA
@@ -582,7 +582,7 @@ const char *nazov_slavenia_lokal[] =
 ,"len v Dóme sv. Martina v Bratislave"                                                                           // LOKAL_SLAV_DOM_SV_MARTINA
 ,"v Spišskej diecéze sviatok hlavného patróna"                                                                   // LOKAL_SLAV_SPIS_PATRON
 ,"v Banskobystrickej diecéze sviatok hlavného patróna"                                                           // LOKAL_SLAV_BYSTRICA_PATRON
-,"v Bratislavskej a Trnavskej arcidiecéze " HTML_LINE_BREAK "a v Banskobystrickej, Nitrianskej a Rožňavskej diecéze" // LOKAL_SLAV_TT_BB_NR_RO
+,"v Trnavskej arcidiecéze a v Banskobystrickej, " HTML_LINE_BREAK "Nitrianskej a Rožňavskej diecéze"             // LOKAL_SLAV_TT_BB_NR_RO
 ,"v Košickej arcidiecéze sviatok hlavného patróna"                                                               // LOKAL_SLAV_KOSICE_PATRON
 ,"len v Žilinskej diecéze — sviatok hlavných patrónov; " HTML_LINE_BREAK "v Európe sviatok patrónov Európy"      // LOKAL_SLAV_14_FEB_CYRIL_METOD | odstránený popis "na Slovensku sa slávi 5. júla, slávnosť"
 ,"v Rožňavskej diecéze sviatok hlavného patróna"                                                                 // LOKAL_SLAV_ROZNAVA_PATRON

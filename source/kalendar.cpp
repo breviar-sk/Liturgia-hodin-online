@@ -27491,7 +27491,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			_global_svaty1.typslav_lokal = LOKAL_SLAV_TT_BB_KE_NR_RO;
+			_global_svaty1.typslav_lokal = LOKAL_SLAV_TT_BB_NR_RO; // v Trnavskej arcidiecéze, v Banskobystrickej, Rožňavskej a Nitrianskej diecéze
 			mystrcpy(_global_svaty1.meno, text_NOV_05_SK[_global_jazyk], MENO_SVIATKU);
 			_global_svaty1.spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
 			_global_svaty1.farba = LIT_FARBA_BIELA;

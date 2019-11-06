@@ -972,14 +972,14 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_NEURCENE							0
 #define LOKAL_SLAV_ROZNAVA_KATEDRALA				1
 #define LOKAL_SLAV_TRNAVA_PATRON					2
-#define LOKAL_SLAV_TT_BB_KE_NR_RO					3
+#define LOKAL_SLAV_TT_BB_KE_NR_RO					3 // not used
 #define LOKAL_SLAV_NITRA_PATRON						4
 #define LOKAL_SLAV_KOSICE							5
 #define LOKAL_SLAV_NITRA							6
 #define LOKAL_SLAV_BYSTRICA							7
 #define LOKAL_SLAV_SPIS								8
 #define LOKAL_SLAV_ROZNAVA							9
-#define LOKAL_SLAV_TRNAVA							10 // pôvodne bolo LOKAL_SLAV_TRNAVA, upravené 2007-08-31 na LOKAL_SLAV_BA_TT; naspäť na LOKAL_SLAV_TRNAVA 2008-06-23
+#define LOKAL_SLAV_TRNAVA							10
 #define LOKAL_SLAV_DOM_SV_MARTINA					11
 #define LOKAL_SLAV_SPIS_PATRON						12
 #define LOKAL_SLAV_BYSTRICA_PATRON					13
@@ -1015,7 +1015,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SPOMIENKA_OFMCAP					43
 #define LOKAL_SLAV_SVIATOK_OFM						44
 #define LOKAL_SLAV_SPOMIENKA_OFM					45
-#define LOKAL_SLAV_SVIATOK_OFMCAP					46 // nasledovné doplnené 2011-03-17
+#define LOKAL_SLAV_SVIATOK_OFMCAP					46
 #define LOKAL_SLAV_SPOMIENKA_FMA					47
 #define LOKAL_SLAV_SLAVNOST_FMA						48
 #define LOKAL_SLAV_SLAVNOST_SDB						49
