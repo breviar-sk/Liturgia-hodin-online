@@ -567,10 +567,10 @@ void _xml_patka(FILE * expt) {
 	
 	for (c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
 		if (equalsi(skratka_kalendara[c], STR_EMPTY)) {
-			Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", c, nazov_kalendara_vyber[supported_calendars(c)]);
+			Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", supported_calendars(c), nazov_kalendara_vyber[supported_calendars(c)]);
 		}
 		else {
-			Export_to_file(expt, ELEM_BEGIN_ID_VALUE(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", c, skratka_kalendara[c], nazov_kalendara_vyber[supported_calendars(c)]);
+			Export_to_file(expt, ELEM_BEGIN_ID_VALUE(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", supported_calendars(c), skratka_kalendara[supported_calendars(c)], nazov_kalendara_vyber[supported_calendars(c)]);
 		}
 	}
 
