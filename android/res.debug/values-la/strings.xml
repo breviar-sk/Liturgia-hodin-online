@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Breviarium</string>
-    <string name="back">Späť</string>
-    <string name="forward">Vpred</string>
+    <string name="back">Rursus</string>
+    <string name="forward">Ante</string>
     <string name="menu">Breviarium</string>
     <string name="today">Hodie</string>
-    <string name="pgup">Hore</string>
-    <string name="pgdn">Ďalej</string>
+    <string name="pgup">Autem</string>
+    <string name="pgdn">Descendit</string>
 
     <string name="lang_select">Lingua</string>
     <string name="settings">Occasus</string>
@@ -19,19 +19,19 @@
     <string name="override_locale">Lingua quoque utor controls</string>
 
     <string name="settings_title">Apparatus</string>
-    <string name="vol_buttons">Bullae in volumine scrolling</string>
+    <string name="vol_buttons">Bullæ in volumine scrolling</string>
     <string name="dimlock">Screen extinguetur</string>
     <string name="mute">Non perturbare</string>
     <string name="no_zoom">Inactivare zoom motus (clauditis font size)</string>
     <string name="long_click_toggles_bar">Longo navigationis celat torcular</string>
 
     <string name="prayer_settings_title">Textuum precationum</string>
-    <string name="prayer_content_settings_title">Obsah modlitieb</string>
-    <string name="various_options_in_prayers">Rozličné možnosti priamo v textoch modlitieb ako klikateľné odkazy</string>
+    <string name="prayer_content_settings_title">Contentus orationes</string>
+    <string name="various_options_in_prayers">Varia possibilitates directe in textibus orationum</string>
     <string name="alternatives">Alternatives</string>
 
-    <string name="prayer_display_settings_title">V texte modlitieb zobraziť</string>
-    <string name="display_communia_info">Communae</string>
+    <string name="prayer_display_settings_title">In textu orationis ostende</string>
+    <string name="display_communia_info">Communæ</string>
     <string name="verse_numbering">Numeratio versorum</string>
     <string name="bible_references">Ad Scriptura references (Sväté Písmo)</string>
     <string name="bible_ref_bible_com">Ad Scriptura references (YouVersion)</string>
@@ -39,14 +39,14 @@
     <string name="liturgical_readings">Legens ad Missam</string>
     <string name="psalms_omissions">Ex his omissis psalmis et canticis laudabas</string>
 
-    <string name="display_settings_title">Ďalšie zobrazenia</string>
-    <string name="first_vespers_buttons">Zobraziť tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia</string>
-    <string name="navigation">Zobraziť navigáciu v textoch modlitieb</string>
-    <string name="smart_buttons">Tlačidlá pre modlitby zobraziť úsporne</string>
+    <string name="display_settings_title">Præsentationes aliæ</string>
+    <string name="first_vespers_buttons">Ostende pulsabula pro I Vesperas dominicarum et sollemnitatum die celebrationis</string>
+    <string name="navigation">Ostende navigationem in textibus orationum</string>
+    <string name="smart_buttons">Ostende pulsabulas pro orationibus cum parsimonia</string>
     <string name="night_mode">Modus noctem</string>
-    <string name="background_override">Alternatívna farba pozadia (žltá)</string>
-    <string name="normal_font">Všade použiť obyčajné písmo (nie tučné)</string>
-    <string name="buttons_order">Dátumové navigačné tlačidlá zobraziť až pod tlačidlami pre modlitby</string>
+    <string name="background_override">Aliud color chartam (flavo)</string>
+    <string name="normal_font">Ostende ubique litteras formae normalis (non crassas)</string>
+    <string name="buttons_order">Pulsabulas navigatorias sub pulsabulis pro orationes</string>
     <string name="transparent_nav">Sagittis in illud</string>
 
     <string name="calendar_settings_title">Calendario liturgico</string>
@@ -56,7 +56,7 @@
     <string name="emphasize_local_calendar">Exprime celebrationes in calendario nationale</string>
 
     <string name="alarms">Monita</string>
-    <string name="alarmOff">nepripomínať</string>
+    <string name="alarmOff">Noli admonere</string>
 
     <string name="fullscreenOn">Plenus ostentus</string>
 
@@ -65,45 +65,45 @@
 
     <string name="onlyNonBoldFontOff">Etiam audax literis</string>
 
-    <string name="navigation_drawer_open">Otvor menu</string>
-    <string name="navigation_drawer_close">Zatvor menu</string>
+    <string name="navigation_drawer_open">Foraminis menu</string>
+    <string name="navigation_drawer_close">Prope menu</string>
 
     <string name="inv">Invitatorium</string>
     <string name="rch">Laudes</string>
-    <string name="vesp">Vesperae</string>
+    <string name="vesp">Vesperæ</string>
     <string name="kompl">Completorium</string>
-    <string name="read">Posvätné čítanie</string>
+    <string name="read">Officium lectionis</string>
     <string name="h9">Ad nonam</string>
     <string name="h12">Ad tertiam</string>
     <string name="h15">Ad sextam</string>
 
-    <string name="inv_notify">Je čas na invitatórium!</string>
-    <string name="rch_notify">Je čas na ranné chvály!</string>
-    <string name="vesp_notify">Je čas na vešpery!</string>
-    <string name="kompl_notify">Je čas na kompletórium!</string>
-    <string name="read_notify">Je čas na posvätné čítanie!</string>
-    <string name="h9_notify">Je čas na modlitbu predpoludním!</string>
-    <string name="h12_notify">Je čas na modlitbu napoludnie!</string>
-    <string name="h15_notify">Je čas na modlitbu popoludní!</string>
+    <string name="inv_notify">Tempus est: Invitatorium</string>
+    <string name="rch_notify">Tempus est: Laudes</string>
+    <string name="vesp_notify">Tempus est: Vesperæ</string>
+    <string name="kompl_notify">Tempus est: Completorium</string>
+    <string name="read_notify">Tempus est: Officium lectionis</string>
+    <string name="h9_notify">Tempus est: Ad nonam</string>
+    <string name="h12_notify">Tempus est: Ad tertiam</string>
+    <string name="h15_notify">Tempus est: Ad sextam</string>
 
     <string name="tts_ready">Recita</string>
     <string name="tts_speaking">Nolite legere</string>
     <string name="tts_pause">Intermissum legere</string>
     <string name="tts_resume">Continue legere</string>
-    <string name="tts_back">Čítaj predošlú časť</string>
-    <string name="tts_forward">Čítaj nasledujúcu časť</string>
+    <string name="tts_back">Retrorsum legere</string>
+    <string name="tts_forward">Ante legere</string>
 
-    <string name="notification_not_allowed">Zatiaľ ste aplikácii nepovolili vypnúť zvonenie.</string>
+    <string name="notification_not_allowed">Sed tu non enabled per applicationem ad averte erecti.</string>
 
-    <string name="channel_name">Breviár</string>
-    <string name="channel_description">Upozornenia na čas modlitby</string>
+    <string name="channel_name">Breviarium</string>
+    <string name="channel_description">Tempore orationis genus monita</string>
 
     <string name="about_title">Info</string>
-    <string name="news_title">Zmeny vo verziách</string>
+    <string name="news_title">Mutationes in versiones</string>
 
     <string name="about_PROJECT_URL">breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
-    <string name="about_APP_NAME">Aplikácia Breviár pre OS Android</string>
+    <string name="about_APP_NAME">Breviarium applicatio quia OS Android</string>
     <string name="about_SPECIAL_CREDITS"></string>
     <string name="about_PROJECT_SOURCE_STORAGE">GitHub-e</string>
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
@@ -111,9 +111,9 @@
     <string name="about_PLATFORM_IOS">iOS</string>
 
     <string name="tts_settings_title">Vox output</string>
-    <string name="tts_use_pause_in_psalms">V psalmódii použiť pauzu (hviezdičky, krížiky)</string>
-    <string name="tts_settings_help">Návod pre hlasový výstup</string>
-    <string name="tts_settings_help_title">Návod pre hlasový výstup</string>
+    <string name="tts_use_pause_in_psalms">Usus psalmodii confractus (stellas, cruces)</string>
+    <string name="tts_settings_help">Dicendi præcepta output</string>
+    <string name="tts_settings_help_title">Dicendi præcepta output</string>
     <string name="tts_settings_help_content"><![CDATA[
 <html>
 <head>
@@ -124,7 +124,7 @@ body { background-color: #303030; color: #dddddd; }
 </head>
 <body>
 
-<h3>Ako si nastaviť hlasový výstup</h3>
+<h3>Dicendi præcepta output</h3>
 
 <p>Ak ste ešte nepoužívali hlasový výstup, je potrebné nainštalovať si aplikáciu pre syntézu reči (TTS, text-to-speech) a nastaviť ju ako predvolenú v systémových nastaveniach. Štandardná Google TTS aplikácia podporuje od januára 2018 aj slovenčinu, ale len pre novšie verzie systému Android.</p>
 
@@ -140,5 +140,5 @@ body { background-color: #303030; color: #dddddd; }
 </html>
     ]]></string>
 
-    <string name="tts_language_not_available">Prevod textu na reč nie je k dispozícii pre aktuálny jazyk.</string>
+    <string name="tts_language_not_available">Textum sermonis ad lingua est non praesto dispositio pro current.</string>
 </resources>
