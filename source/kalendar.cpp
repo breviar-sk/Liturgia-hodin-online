@@ -30593,7 +30593,8 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty);
 
-			if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
+			if ((_global_den.denvt == DEN_NEDELA) || ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP))) {
+				// český breviář má popis, ale ten sa nemá použiť, ak sa slávnosť presúva na 09DEC
 				set_popis_dummy();
 			}
 

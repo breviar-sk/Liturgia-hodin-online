@@ -37,14 +37,14 @@
     <string name="bible_ref_bible_com">Indices biblicæ (YouVersion)</string>
     <string name="footnotes">Adnotationes (sub linea, in textu)</string>
     <string name="liturgical_readings">Lectiones ad Missam</string>
-    <string name="psalms_omissions">Partes omissi ex psalmis et canticis</string>
+    <string name="psalms_omissions">Partes omissas ex psalmis et canticis</string>
 
     <string name="display_settings_title">Præsentatio</string>
     <string name="first_vespers_buttons">Ostende pulsabulam pro I Vesperas dominicarum et sollemnitatum die celebrationis</string>
     <string name="navigation">Ostende navigationem in textibus orationum</string>
     <string name="smart_buttons">Ostende pulsabulas pro orationibus cum parsimonia</string>
     <string name="night_mode">Modus noctem</string>
-    <string name="background_override">Alius color areæ posterioris (flavus)</string>
+    <string name="background_override">Alius color reductiorum (flavus)</string>
     <string name="normal_font">Ostende ubique litteras formæ normalis (non crassas)</string>
     <string name="buttons_order">Ostende pulsabulas navigatorias sub pulsabulis pro Horas</string>
     <string name="transparent_nav">Sagitta navigatoria in textu</string>
@@ -58,7 +58,7 @@
     <string name="alarms">Monitiones</string>
     <string name="alarmOff">Non monere</string>
 
-    <string name="fullscreenOn">Totus scrinium</string>
+    <string name="fullscreenOn">Totum scrinium</string>
 
     <string name="nightmodeOn">Modus nocturnus</string>
     <string name="nightmodeOff">Modus diurnalis</string>
