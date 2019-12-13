@@ -8,6 +8,12 @@ fi
 
 doLang() {
   xml=res/values-$1/strings.xml
+  if [ ! -f "$xml" ]; then
+    xml=res.release/values-$1/strings.xml
+  fi
+  if [ ! -f "$xml" ]; then
+    xml=res.debug/values-$1/strings.xml
+  fi
   dir=assets/$2
   basedir=../$2
 
@@ -35,3 +41,4 @@ doLang sk include
 doLang cs include_cz
 doLang cs include_czop
 doLang hu include_hu
+doLang la include_la
