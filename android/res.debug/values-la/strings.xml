@@ -40,7 +40,7 @@
     <string name="psalms_omissions">Partes omissas ex psalmis et canticis</string>
 
     <string name="display_settings_title">Præsentatio</string>
-    <string name="first_vespers_buttons">Ostende pulsabulam pro I Vesperas dominicarum et sollemnitatum die celebrationis</string>
+    <string name="first_vespers_buttons">Ostende pulsabulam pro I Vesp. dom. et sollemn. die celebrationis</string>
     <string name="navigation">Ostende navigationem in textibus orationum</string>
     <string name="smart_buttons">Ostende pulsabulas pro orationibus cum parsimonia</string>
     <string name="night_mode">Modus noctem</string>
@@ -52,7 +52,7 @@
     <string name="calendar_settings_title">Calendarium liturgicum</string>
     <string name="epiphany_sunday">Epiphaniam ad dominicam transferre</string>
     <string name="ascension_sunday">Ascensionem Domini ad dominicam transferre</string>
-    <string name="body_blood_sunday">Sollemnitatem SS.mi Corporis et Sanguinis Christi ad dominicam transferre</string>
+    <string name="body_blood_sunday">Sollemnitatem SS.mi Corp. et Sanguinis Chr. ad dominicam transferre</string>
     <string name="emphasize_local_calendar">Celebrationes in calendario proprio/nationale exprimere</string>
 
     <string name="alarms">Monitiones</string>
