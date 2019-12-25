@@ -1,3 +1,94 @@
+2019-12-24: generovanie modlitieb pre rok 2020
+
+	SK predgenerovanie
+
+	-- všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobSK.bat -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -134239 -2128
+		-- 2020-sk-full
+
+	-- žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobSK.bat -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -132 -2128
+		-- 2020-sk-short
+
+	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobSK.bat -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M3 -00 -134239 -2128 -48
+		-- 2020-sk-plain
+
+	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobSK.bat -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -15191 -2224
+		-- 2020-sk-handy
+
+	HU predgenerovanie
+	-- všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobHU.bat -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M2 -00 -134239 -2128
+		-- 2020-hu-full
+
+	-- žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobHU.bat -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M2 -00 -132 -2128
+		-- 2020-hu-short
+
+	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobHU.bat -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M3 -00 -134239 -2128 -48
+		-- 2020-hu-plain
+
+	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobHU.bat -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M2 -00 -15191 -2224
+		-- 2020-hu-handy
+
+	CZ predgenerovanie
+
+	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -15191 -2224
+		-- 2020-cz-handy
+
+	-- hymny k volnému výbìru, niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -15191 -2224 -58192
+		-- 2020-cz-hvv-handy
+
+	-- všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -134239 -2128
+		-- 2020-cz-full
+
+	-- hymny k volnému výbìru, všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -134239 -2128 -58192
+		-- 2020-cz-hvv-full
+
+	-- žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -132 -2128
+		-- 2020-cz-short
+
+	-- hymny k volnému výbìru, žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -132 -2128 -58192
+		-- 2020-cz-hvv-short
+
+	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M3 -00 -134239 -2128 -48
+		-- 2020-cz-plain
+
+	-- hymny k volnému výbìru, bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZ.bat -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M3 -00 -134239 -2128 -58192 -48
+		-- 2020-cz-hvv-plain
+
+	CZOP predgenerovanie
+
+	-- všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZop.bat -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M2 -00 -134239 -2128
+		-- 2020-czop-full
+
+	-- žiadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZop.bat -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M2 -00 -132 -2128
+		-- 2020-czop-short
+
+	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZop.bat -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M3 -00 -134239 -2128 -48
+		-- 2020-czop-plain
+
+	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
+		breviar.exe -qpbm -d1 -m1 -r2020 -f31 -g12 -p2020 -brobCZop.bat -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M2 -00 -15191 -2224
+		-- 2020-czop-handy
+
+__________________________________________________________________________________________________________________________________________
+
 2018-12-20: generovanie modlitieb pre rok 2019
 
 	CZOP predgenerovanie
@@ -92,7 +183,7 @@
 
 __________________________________________________________________________________________________________________________________________
 
-2016-12-18: generovanie modlitieb pre rok 2018
+2017-12-18: generovanie modlitieb pre rok 2018
 
 	SK predgenerovanie
 
