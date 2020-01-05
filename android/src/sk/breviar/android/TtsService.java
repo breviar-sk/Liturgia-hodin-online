@@ -254,7 +254,7 @@ public class TtsService extends Service
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
     if (headless == null) {
-      headless = new HeadlessWebview(getApplicationContext());
+      headless = new HeadlessWebview(getApplicationContext(), "tts_service");
     }
 
     // Log.v("breviar", "TtsService: got intent");

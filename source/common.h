@@ -1,7 +1,7 @@
 /*********************************************************/
 /*                                                       */
 /* common.h                                              */
-/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk       */
+/* (c)1999-2020 | Juraj Vidéky | videky@breviar.sk       */
 /*                                                       */
 /* description | new core basic define's                 */
 /*                                                       */
@@ -62,7 +62,7 @@
 // underscore '_' used as placeholder for non-breaking space (it will be exported as HTML_NONBREAKING_SPACE == "&nbsp;" defined in mydefs.h) 
 #define CHAR_NONBREAKING_SPACE '_'
 
-// special characters in prayer texts (some of them to be removed for blind-friendly version)
+// special characters in prayer texts (some of them to be removed for voice output)
 #define CHAR_SPACE             ' '
 #define CHAR_PRAYER_ASTERISK   '*'
 #define CHAR_PRAYER_CROSS      L'\x2020' /*†*/ // used as flexa | U+2020 DAGGER
@@ -229,6 +229,9 @@
 
 #define HTML_DIV_PSALM              "div class=\"psalm\""
 #define HTML_DIV_PSALM_INDENT       "div class=\"psalm-indent\""
+
+// TTS mute -- do not read for voice output
+#define HTML_DIV_TTS_MUTE           "div class=\"tts_mute\""
 
 // TTS navigation
 #define HTML_DIV_TTS_HEADING        "div class=\"tts_heading\""

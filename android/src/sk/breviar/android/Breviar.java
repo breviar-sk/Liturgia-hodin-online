@@ -51,7 +51,6 @@ import sk.breviar.android.Alarms;
 import sk.breviar.android.ClearProxy;
 import sk.breviar.android.CompatibilityHelper19;
 import sk.breviar.android.DialogActivity;
-import sk.breviar.android.HeadlessWebview;
 import sk.breviar.android.LangSelect;
 import sk.breviar.android.Server;
 import sk.breviar.android.TtsService;
@@ -551,7 +550,7 @@ public class Breviar extends AppCompatActivity
 
     @Override
     public boolean onScaleBegin(ScaleGestureDetector gd) {
-      return true;
+      return !BreviarApp.getNoZoom(this);
     }
 
     @Override
@@ -890,7 +889,7 @@ public class Breviar extends AppCompatActivity
 
     void startSpeaking() {
       UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
-      opts.setBlindFriendly(true);
+      opts.setVoiceOutput(true);
       String url = opts.getBuilder().encodedAuthority("127.0.0.1:" + S.port_nonpersistent)
                        .build().toString();
 

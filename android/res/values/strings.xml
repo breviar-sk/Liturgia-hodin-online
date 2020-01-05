@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version" translatable="false">3.2</string>
+    <string name="version" translatable="false">3.4</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -20,14 +20,14 @@
     <string name="lang_la">Latin</string>
     <string name="override_locale">Override system-wide language settings</string>
 
-    <string name="settings_title">Device settings</string>
-    <string name="vol_buttons">Use volume buttons for scrolling</string>
+    <string name="settings_title">Device</string>
+    <string name="vol_buttons">Volume buttons for scrolling</string>
     <string name="dimlock">Do not dim screen</string>
-    <string name="mute">Put device to silent mode</string>
+    <string name="mute">Do Not Disturb mode</string>
+    <string name="no_zoom">Disable zoom gesture (lock font size)</string>
     <string name="long_click_toggles_bar">Long tap toggles navigation bar</string>
-    <string name="transparent_nav">Navigation arrow in text</string>
 
-    <string name="prayer_settings_title">Content settings</string>
+    <string name="prayer_settings_title">Text Content</string>
     <string name="prayer_content_settings_title">Content settings</string>
     <string name="various_options_in_prayers">Various options in prayers as clickable hyperlinks</string>
     <string name="alternatives">Alternatives</string>
@@ -42,13 +42,14 @@
     <string name="psalms_omissions">Omissions from psalms</string>
 
     <string name="display_settings_title">Display settings</string>
-    <string name="first_vespers_buttons">Display button for first vespers for Sundays and solemnitas for the day of celebration</string>
-    <string name="navigation">Display navigation buttons in prayer</string>
+    <string name="first_vespers_buttons">Button for first vespers for Sundays and solemnitas for the day of celebration</string>
+    <string name="navigation">Navigation buttons in prayer</string>
     <string name="smart_buttons">Tight display of buttons for prayers</string>
     <string name="night_mode">Night mode</string>
     <string name="background_override">Alternative background color (yellow)</string>
     <string name="normal_font">Force normal font weight (no bold)</string>
-    <string name="buttons_order">Date buttons display after buttons for prayers</string>
+    <string name="buttons_order">Date buttons after buttons for prayers</string>
+    <string name="transparent_nav">Navigation arrow in text</string>
 
     <string name="calendar_settings_title">Liturgical calendar</string>
     <string name="epiphany_sunday">Celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>

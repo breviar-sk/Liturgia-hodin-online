@@ -1,7 +1,7 @@
 /***************************************************************/
 /*                                                             */
 /* breviar.h                                                   */
-/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk             */
+/* (c)1999-2020 | Juraj Vidéky | videky@breviar.sk             */
 /*                                                             */
 /* description | contains declarations of global variables     */
 /*                                                             */
@@ -44,12 +44,17 @@ extern short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydef
 #define EXPORT_TYP_WEB_MODE 0
 #define EXPORT_TYP_BATCH_MODE 1
 
+#define EXPORT_DNES_DNES_NULL -1
+#define EXPORT_DNES_DNES_NIE 0
+#define EXPORT_DNES_DNES_ANO 1
+#define EXPORT_DNES_DNES_ANO_SPEC 2
+
 extern void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short int den_zoznam = ANO, short int zobrazit_mcd = ANO);
 extern void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_tabulke, char pom2[MAX_STR], short int zobraz_odkaz_na_skrytie);
-extern void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes = ANO, short int aj_navigacia = ANO);
-extern void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes = ANO);
-extern void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes = ANO);
-extern void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dnes = ANO);
+extern void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes = EXPORT_DNES_DNES_ANO, short int aj_navigacia = ANO);
+extern void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes = EXPORT_DNES_DNES_ANO);
+extern void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes = EXPORT_DNES_DNES_ANO);
+extern void _export_rozbor_dna_buttons_dni_call(short int typ, short int dnes_dnes = EXPORT_DNES_DNES_ANO);
 extern void _export_rozbor_dna_kalendar_core(short int typ);
 extern void _export_rozbor_dna_kalendar(short int typ);
 
@@ -182,7 +187,7 @@ extern short int _global_opt_export_date_format;
 #define isGlobalOption(opt_i, bit_opt_i_component_j) ((opt_i == OPT_6_ALTERNATIVES_MULTI) ? ((_global_opt[opt_i] DIV bit_opt_i_component_j) MOD 10) : (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
 #define isGlobalOptionForce(opt_i, bit_opt_i_component_j) ((opt_i == OPT_6_ALTERNATIVES_MULTI) ? ((_global_force_opt[opt_i] DIV bit_opt_i_component_j) MOD 10) : (((_global_force_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
 
-// method for checking whether option 'i' should be applied (may be different from real setting - use isGlobalOption() for exact querying from parameters; difference caused e. g. by override with blind-friendly mode [voice output])
+// method for checking whether option 'i' should be applied (may be different from real setting - use isGlobalOption() for exact querying from parameters; difference caused e. g. by override for voice output)
 extern short int useWhenGlobalOption(short opt_i, long bit_opt_i_component_j);
 
 // for setting option's 'i' 'j'-th bit-component to value (TRUE/FALSE); OPT 6 uses decimal-place logic
@@ -449,26 +454,6 @@ extern short int _typslav_override(short int typslav);
 
 #define NAZOV_SLAVENIA_LOKAL_LOCAL_DEN_TYPSLAV_LOKAL ((_local_den.typslav_lokal == LOKAL_SLAV_KONSEKR_KOSTOLY) ? (char *)text_LEN_V_KONSEKROVANYCH_KOSTOLOCH[_global_jazyk] : ((_local_den.typslav_lokal == LOKAL_SLAV_KONIEC_OKTAVY_NAR) ? (char *)text_KONIEC_OKTAVY_NARODENIA_PANA[_global_jazyk] : ((_local_den.typslav_lokal == LOKAL_SLAV_DRUHA_VELK_NEDELA) ? (char *)text_NEDELA_VO_VELKONOCNEJ_OKTAVE_SUBSTRING[_global_jazyk] : nazov_slavenia_lokal[_local_den.typslav_lokal])))
 
-// 2014-04-08: presunuté do #define -- bolo na 2 rôznych miestach | sviatky Pána a svätých, ktoré majú prednosť pred Cezročnou nedeľou a majú (ak padnú na nedeľu) svoje vlastné prvé vešpery
-// ------------- pôvodné poznámky ------------- 
-// 2011-06-30: cyril a metod odvetvený pre SK a CZ only
-// 2011-07-22: doplnené pre HU: 20AUG
-// 2011-10-13: zapoznámkované 14SEP kvôli CZ // nespúšťalo sa totiž zaltar_zvazok(), a teda ani zaltar_kompletorium()
-// 2012-10-22: odpoznámkované 14SEP -- napr. pre rok 2014 potom nedávalo prvé vešpery, ak padne na nedeľu!
-// 2014-01-10: doplnené 02FEB (ak padne na nedeľu, má prvé vešpery)
-// 2014-04-08: 14SEP platí aj pre CZ (ak padne na nedeľu, má prvé vešpery)
-#define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR (\
-((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)) || \
-((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) || \
-((_global_den.den == 5) && (_global_den.mesiac - 1 == MES_JUL) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
-((_global_den.den == 6) && (_global_den.mesiac - 1 == MES_AUG)) || \
-((_global_den.den == 15) && (_global_den.mesiac - 1 == MES_AUG)) || \
-((_global_den.den == 20) && (_global_den.mesiac - 1 == MES_AUG) && (_global_jazyk == JAZYK_HU)) || \
-((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP)) || \
-((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
-((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV)) \
-)
-
 // should calendar be exported?
 #define PODMIENKA_EXPORTOVAT_KALENDAR (!((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || ((_global_kalendar == default_kalendar[_global_jazyk]) && !(_global_jazyk == JAZYK_CZ_OP))))
 
@@ -493,6 +478,7 @@ extern short int _typslav_override(short int typslav);
 // 2006-08-01: pozor, koncovky sú pre každý jazyk odlišné
 #define koncovka_dna_asci(denvt) ((nazov_dna((denvt))[strlen(nazov_dna((denvt))) - 1] == 'a')? 'a': 'y')
 #define koncovka_dna(denvt) ((nazov_dna((denvt))[strlen(nazov_dna((denvt))) - 1] == 'a')? "á": "ý")
+
 #define KRST _global_r._KRST_KRISTA_PANA.denvr                          // nedeľa po 6. januári; v krajinách, kde sa Zjavenie Pána slávi v nedeľu, a ak táto pripadne na 7. alebo 8. januára, Krst Krista Pána sa slávi nasledujúci pondelok
 #define POPOLCOVA_STREDA  _global_r._POPOLCOVA_STREDA.denvr             // popolcová streda
 #define VELKONOCNA_NEDELA   _global_r._VELKONOCNA_NEDELA.denvr          // veľkonočná nedeľa
@@ -515,6 +501,37 @@ extern short int _typslav_override(short int typslav);
 // 2006-08-22: kvôli ružovej farbe rúcha potrebujeme define aj pre 3. adventnú nedeľu a 4. pôstnu nedeľu
 #define TRETIA_ADVENTNA_NEDELA (PRVA_ADVENTNA_NEDELA + 14)              // tretia adventná nedeľa - dva týždne po prvej adventnej nedeli (PRVA_ADVENTNA_NEDELA)
 #define STVRTA_POSTNA_NEDELA (VELKONOCNA_NEDELA - 21)                   // štvrtá pôstna nedeľa - tri týždne pred VELKONOCNA_NEDELA
+
+#define OBETOVANIE_PANA 33
+
+// 2014-04-08: presunuté do #define -- bolo na 2 rôznych miestach | sviatky Pána a svätých, ktoré majú prednosť pred Cezročnou nedeľou a majú (ak padnú na nedeľu) svoje vlastné prvé vešpery
+// ------------- pôvodné poznámky ------------- 
+// 2011-06-30: cyril a metod odvetvený pre SK a CZ only
+// 2011-07-22: doplnené pre HU: 20AUG
+// 2011-10-13: zapoznámkované 14SEP kvôli CZ // nespúšťalo sa totiž zaltar_zvazok(), a teda ani zaltar_kompletorium()
+// 2012-10-22: odpoznámkované 14SEP -- napr. pre rok 2014 potom nedávalo prvé vešpery, ak padne na nedeľu!
+// 2014-01-10: doplnené 02FEB (ak padne na nedeľu, má prvé vešpery)
+// 2014-04-08: 14SEP platí aj pre CZ (ak padne na nedeľu, má prvé vešpery)
+#define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR (\
+((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)) || \
+((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) || \
+((_global_den.den == 5) && (_global_den.mesiac - 1 == MES_JUL) && ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
+((_global_den.den == 6) && (_global_den.mesiac - 1 == MES_AUG)) || \
+((_global_den.den == 15) && (_global_den.mesiac - 1 == MES_AUG)) || \
+((_global_den.den == 20) && (_global_den.mesiac - 1 == MES_AUG) && (_global_jazyk == JAZYK_HU)) || \
+((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP)) || \
+((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
+((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV)) \
+)
+
+#define _je_local_den_vlastne_slavenie_pismV (\
+(_local_den.denvr == OBETOVANIE_PANA) || \
+(_local_den.denvr == KRST) || \
+(_local_den.denvr == VELKONOCNA_NEDELA) || \
+(_local_den.denvr == ZOSLANIE_DUCHA_SV) || \
+(_local_den.denvr == TROJICA) || \
+(_local_den.denvr == SV_RODINY) \
+)
 
 #ifndef OS_linux
 // kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 

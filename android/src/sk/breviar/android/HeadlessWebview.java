@@ -1,6 +1,7 @@
 package sk.breviar.android;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
@@ -30,7 +31,10 @@ public class HeadlessWebview {
     }
   }
 
-  public HeadlessWebview(Context context) {
+  public HeadlessWebview(Context context, String process_id) {
+    if (Build.VERSION.SDK_INT >=28) {
+      CompatibilityHelper28.setDataDirectorySuffix(process_id);
+    }
     wv = new WebView(context);
     wv.getSettings().setJavaScriptEnabled(true);
     wv.addJavascriptInterface(new Bridge(this), "bridge");

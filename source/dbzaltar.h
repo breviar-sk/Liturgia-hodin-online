@@ -1,7 +1,7 @@
 /************************************************************/
 /*                                                          */
 /* dbzaltar.h                                               */
-/* (c)1999-2019 | Juraj Vidéky | videky@breviar.sk          */
+/* (c)1999-2020 | Juraj Vidéky | videky@breviar.sk          */
 /*                                                          */
 /* description | contains definitions for 'database'        */
 /*               of liturgical calendars                    */
@@ -1880,6 +1880,7 @@ extern const char *text_DEC_06[POCET_JAZYKOV + 1];
 extern const char *text_DEC_07[POCET_JAZYKOV + 1];
 extern const char *text_DEC_08[POCET_JAZYKOV + 1];
 extern const char *text_DEC_09[POCET_JAZYKOV + 1];
+extern const char* text_DEC_10[POCET_JAZYKOV + 1];
 extern const char *text_DEC_11[POCET_JAZYKOV + 1];
 extern const char *text_DEC_12[POCET_JAZYKOV + 1];
 extern const char *text_DEC_13[POCET_JAZYKOV + 1];
@@ -2123,9 +2124,7 @@ extern const char *text_JAN_22_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_23_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_27_OP[POCET_JAZYKOV + 1];
 extern const char *text_JAN_29_OP[POCET_JAZYKOV + 1];
-extern const char *text_FEB_03_1_OP[POCET_JAZYKOV + 1];
-extern const char *text_FEB_03_2_OP[POCET_JAZYKOV + 1];
-extern const char *text_FEB_03_3_OP[POCET_JAZYKOV + 1];
+extern const char* text_FEB_03_OP[POCET_JAZYKOV + 1];
 extern const char *text_FEB_04_OP[POCET_JAZYKOV + 1];
 extern const char *text_FEB_07_OP[POCET_JAZYKOV + 1];
 extern const char *text_FEB_12_OP[POCET_JAZYKOV + 1];
@@ -2224,7 +2223,6 @@ extern const char *text_OKT_27_OP[POCET_JAZYKOV + 1];
 extern const char *text_OKT_30_1_OP[POCET_JAZYKOV + 1];
 extern const char *text_OKT_30_2_OP[POCET_JAZYKOV + 1];
 extern const char *text_NOV_05_OP[POCET_JAZYKOV + 1];
-extern const char *text_NOV_06_OP[POCET_JAZYKOV + 1];
 extern const char *text_NOV_07_OP[POCET_JAZYKOV + 1];
 extern const char *text_NOV_08_OP[POCET_JAZYKOV + 1];
 extern const char *text_NOV_14_1_OP[POCET_JAZYKOV + 1];
