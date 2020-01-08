@@ -76,7 +76,7 @@ echo "\n</table>";
 echo date ("Y-m-d H:i:s", filemtime($_SERVER['SCRIPT_FILENAME']));
 ?>
 
-<br>© 1999-2016 <a href="mailto:videky@breviar.sk">Juraj Vidéky</a></font></center>
+<br>© 1999-2020 <a href="mailto:videky@breviar.sk">Juraj Vidéky</a></font></center>
 
 </body>
 </html>
