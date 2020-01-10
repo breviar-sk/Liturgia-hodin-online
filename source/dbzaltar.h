@@ -81,6 +81,7 @@ extern void _set_zalmy_mcd_doplnkova_psalmodia(short int je_predpisana_povinne =
 extern void _set_antifony_mcd_doplnkova_psalmodia(void);
 extern void _set_zalmy_1nedele_mcd(void);
 extern void _set_zalmy_2nedele_mcd(void);
+extern void _set_zalmy_mcd_1nedela_or_doplnkova_psalmodia(void);
 extern void _set_kompletorium_nedela_spolocne(short int modlitba);
 extern void _set_kompletorium_nedela(short int modlitba);
 extern void _set_kompletorium_slavnost(short int modlitba);
@@ -246,6 +247,7 @@ extern void _set_chvalospev_vig_sc_sm_sz(short int modlitba);
 extern void _set_chvalospev_vig_sviatok_obetovania(short int modlitba);
 extern void _set_chvalospev_vig_sc_pm_ocd(short int modlitba);
 extern void _set_chvalospev_vig_sc_sm_ocd(short int modlitba);
+extern void _set_chvalospev_vig_terezka_ocd(short int modlitba);
 
 extern const char *html_title[POCET_JAZYKOV + 1];
 

@@ -953,13 +953,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_hymnu(modlitba);
@@ -5439,13 +5433,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
-			// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-			if (_global_den.denvt != DEN_NEDELA) {
-				_set_zalmy_mcd_doplnkova_psalmodia();
-			}
-			else {
-				_set_zalmy_1nedele_mcd();
-			}
+			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
@@ -5570,13 +5558,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
-			// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-			if (_global_den.denvt != DEN_NEDELA) {
-				_set_zalmy_mcd_doplnkova_psalmodia();
-			}
-			else {
-				_set_zalmy_1nedele_mcd();
-			}
+			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
@@ -6882,13 +6864,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -12028,13 +12004,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// pre modlitbu cez deň na slávnosť sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -13633,13 +13603,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
-			// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-			if (_global_den.denvt != DEN_NEDELA) {
-				_set_zalmy_mcd_doplnkova_psalmodia();
-			}
-			else {
-				_set_zalmy_1nedele_mcd();
-			}
+			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
@@ -13880,13 +13844,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 				_vlastna_cast_mcd_full_okrem_hymnu;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -14032,13 +13990,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
-			// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-			if (_global_den.denvt != DEN_NEDELA) {
-				_set_zalmy_mcd_doplnkova_psalmodia();
-			}
-			else {
-				_set_zalmy_1nedele_mcd();
-			}
+			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
@@ -14634,13 +14586,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -15715,13 +15661,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// pre modlitbu cez deň na slávnosť sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -17405,13 +17345,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -17512,13 +17446,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// pre modlitbu cez deň na slávnosť sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -17595,13 +17523,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					modlitba = MODL_PRVE_VESPERY;
 					_vlastna_cast_full(modlitba);
 
-					// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-					if (_global_den.denvt != DEN_NEDELA) {
-						_set_zalmy_mcd_doplnkova_psalmodia();
-					}
-					else {
-						_set_zalmy_1nedele_mcd();
-					}
+					_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 				}
 
 				modlitba = MODL_INVITATORIUM;
@@ -18174,13 +18096,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				modlitba = MODL_POPOLUDNI;
 				_set_zalmy_op_dominik(modlitba);
 				/*
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-				_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-				_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 				*/
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -18355,13 +18271,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 					_vlastna_cast_mcd_ant_kcitresp_modl;
 
-					// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-					if (_global_den.denvt != DEN_NEDELA) {
-						_set_zalmy_mcd_doplnkova_psalmodia();
-					}
-					else {
-						_set_zalmy_1nedele_mcd();
-					}
+					_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 					modlitba = MODL_VESPERY;
 					_vlastna_cast_full(modlitba);
@@ -18404,6 +18314,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
+				_vlastna_cast_vig_ev(_anchor_head);
 
 				_vlastna_cast_mcd_kcitresp_modl;
 
@@ -18917,13 +18828,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
-			// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-			if (_global_den.denvt != DEN_NEDELA) {
-				_set_zalmy_mcd_doplnkova_psalmodia();
-			}
-			else {
-				_set_zalmy_1nedele_mcd();
-			}
+			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
@@ -19589,13 +19494,8 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				set_zalm(3, modlitba, "z61.htm", "ZALM61");
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
-				// modlitba cez deň na slávnosť: žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -20454,13 +20354,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					_set_zalmy_csa_augustin(modlitba);
 				}
 				else {
-					// pre modlitbu cez deň na slávnosť sa majú použiť žalmy z doplnkovej psalmódie
-					if (_global_den.denvt != DEN_NEDELA) {
-						_set_zalmy_mcd_doplnkova_psalmodia();
-					}
-					else {
-						_set_zalmy_1nedele_mcd();
-					}
+					_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 				}
 
 				modlitba = MODL_VESPERY;
@@ -21384,13 +21278,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_prosieb(modlitba);
@@ -21950,13 +21838,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			if (_global_jazyk == JAZYK_SK) {
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 			}// SK only
 
 			modlitba = MODL_VESPERY;
@@ -22081,6 +21963,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
+				_vlastna_cast_vig_ev(_anchor_head);
 
 				_vlastna_cast_mcd_kcitresp_modl;
 
@@ -23247,13 +23130,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -23345,13 +23222,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -23604,6 +23475,9 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				modlitba = MODL_POSV_CITANIE;
 				_set_zalmy_ocd_terezka(modlitba);
 				_vlastna_cast_full(modlitba);
+				_vlastna_cast_vig_ant(_anchor_head);
+				_set_chvalospev_vig_terezka_ocd(modlitba);
+				_vlastna_cast_vig_ev(_anchor_head);
 
 				_vlastna_cast_mcd_full_okrem_hymnu;
 
@@ -23789,13 +23663,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -24520,13 +24388,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -25290,13 +25152,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_set_zalmy_ocd_terezia(modlitba);
@@ -27087,13 +26943,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 			_vlastna_cast_mcd_ant_kcitresp_modl;
 
-			// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-			if (_global_den.denvt != DEN_NEDELA) {
-				_set_zalmy_mcd_doplnkova_psalmodia();
-			}
-			else {
-				_set_zalmy_1nedele_mcd();
-			}
+			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
@@ -28370,6 +28220,9 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				modlitba = MODL_POSV_CITANIE;
 				_set_zalmy_ocd_vsetci_svati(modlitba);
 				_vlastna_cast_full(modlitba);
+				_vlastna_cast_vig_ant(_anchor_head);
+				_set_chvalospev_vig_sc_vm(modlitba);
+				_vlastna_cast_vig_ev(_anchor_head);
 
 				_vlastna_cast_mcd_kcitresp_modl;
 
@@ -30626,13 +30479,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 			}
 
-			// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-			if (_global_den.denvt != DEN_NEDELA) {
-				_set_zalmy_mcd_doplnkova_psalmodia();
-			}
-			else {
-				_set_zalmy_1nedele_mcd();
-			}
+			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full(modlitba);
@@ -30717,13 +30564,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_set_zalmy_sviatok_duch_past(modlitba);
@@ -30977,6 +30818,9 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 				modlitba = MODL_POSV_CITANIE;
 				_set_zalmy_ocd_jan_z_kriza(modlitba);
 				_vlastna_cast_full(modlitba);
+				_vlastna_cast_vig_ant(_anchor_head);
+				_set_chvalospev_vig_sc_vpchr(modlitba);
+				_vlastna_cast_vig_ev(_anchor_head);
 
 				modlitba = MODL_RANNE_CHVALY;
 				_set_zalmy_ocd_jan_z_kriza(modlitba);
@@ -30984,13 +30828,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 
-				// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-				if (_global_den.denvt != DEN_NEDELA) {
-					_set_zalmy_mcd_doplnkova_psalmodia();
-				}
-				else {
-					_set_zalmy_1nedele_mcd();
-				}
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 				modlitba = MODL_VESPERY;
 				_set_zalmy_ocd_jan_z_kriza(modlitba);
@@ -31593,13 +31431,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 			Log("override stupňa slávenia => slávnosť, nastavujem prvé vešpery a kompletórium po prvých vešperách...\n");
 
-			// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
-			if (_global_den.denvt != DEN_NEDELA) {
-				_set_zalmy_mcd_doplnkova_psalmodia();
-			}
-			else {
-				_set_zalmy_1nedele_mcd();
-			}
+			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
 			if (je_modlitba_vlastna == ANO) {
 				modlitba = MODL_PRVE_VESPERY;

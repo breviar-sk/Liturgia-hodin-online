@@ -9612,7 +9612,7 @@ const char *text_JUL_16[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_16_OCD[POCET_JAZYKOV + 1] =
 {
-	"Prebl. Panny Márie z_hory Karmel",
+	"Prebl. Panny Márie z hory Karmel",
 	"",
 	"",
 	"",
