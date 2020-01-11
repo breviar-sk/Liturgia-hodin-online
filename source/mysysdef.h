@@ -137,6 +137,7 @@
 	#define BEHAVIOUR_CMDLINE
 	#define OS_Windows
 	#undef LOGGING
+	#undef EXPORT_HTML_SPECIALS
 	#define EXPORT_TO_FILE
 	#define EXPORT_CMDLINE_CSS
 // debugging in Windows/command-line -- all output is written into log file

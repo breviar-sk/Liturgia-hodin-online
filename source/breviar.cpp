@@ -1578,7 +1578,7 @@ void _export_link_communia(short int spol_cast, char html_tag_begin[SMALL], char
 // vypise hlasky o tom, ze je prazdny formular resp. skript bol spusteny bez vstupnych hodnot
 void _main_prazdny_formular(void) {
 	ALERT;
-	Export("Programu neboli zadané argumenty.\n");
+	Export("Neboli zadané vstupné argumenty.\n");
 } // _main_prazdny_formular()
 
 #define DetailLog emptyLog
@@ -2566,15 +2566,25 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 				// zobraziť/nezobraziť zalomenie veršov podľa tlačenej LH | ignore this switch (as if it would OFF) for mobile OS (Android, iOS) and voice output
 				if (equals(strbuff, PARAM_ZALOMENIE) && (vnutri_inkludovaneho == 1)) {
 #if defined(EXPORT_HTML_SPECIALS)
+					if (!write) {
+						// kvôli vnutri_full_text == ANO
+						Export("<!--");
+					}
+
 					Export("[%s:%s|rest=%s]", strbuff, modlparam, (rest == NULL) ? STR_EMPTY : rest);
 #endif
-					if (useWhenGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP) && (isMobileOS == 0)) {
+					if (useWhenGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP) && (isMobileOS == 0) && EXPORT_FULL_TEXT) {
 						// MAX_BUFFER bol zvýšený, lebo strbuff bol v tomto prípade veľmi dlhý
 						Export("zalomenie-->%s<!--zalomenie", rest);
 					}
 					else {
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("zalomenie-nie");
+
+						if (!write) {
+							// kvôli vnutri_full_text == ANO
+							Export("-->");
+						}
 #endif
 					}
 				}// zobraziť/nezobraziť zalomenie veršov podľa tlačenej LH -- PARAM_ZALOMENIE
