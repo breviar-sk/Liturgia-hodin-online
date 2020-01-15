@@ -3678,7 +3678,7 @@ const char *html_text_opt_5_PCHymnusI[POCET_JAZYKOV + 1] =
 const char *html_text_opt_5_PCHymnusII[POCET_JAZYKOV + 1] =
 {
 	"hymnus II. [Ak je posvätné čítanie cez deň]",
-	"hymnus II. [Během dne]",
+	"hymnus II. [uprostřed dne]",
 	"hymn II. [during the day]",
 	"hymnum II. [Quando Officium lectionis dicitur diurno tempore]",
 	"",
@@ -3874,7 +3874,7 @@ const char *html_text_opt_5_1VHymnusNe[POCET_JAZYKOV + 1] =
 const char *html_text_opt_5_1VHymnusPC[POCET_JAZYKOV + 1] =
 {
 	"hymnus ako je pre posvätné čítanie [cez deň]",
-	"hymnus pro čtení [během dne]",
+	"hymnus pro čtení [uprostřed dne]",
 	"hymn from readings [during the day]",
 	"hymnum de Officio lectionis [diurno tempore]",
 	"",

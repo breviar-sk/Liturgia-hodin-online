@@ -103,7 +103,7 @@
     <string name="about_title">Applicaton info</string>
     <string name="news_title">Changelog</string>
 
-    <string name="about_PROJECT_URL">breviar.sk</string>
+    <string name="about_PROJECT_URL">https://breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Breviary app for OS Android</string>
     <string name="about_SPECIAL_CREDITS"></string>

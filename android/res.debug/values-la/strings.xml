@@ -101,7 +101,7 @@
     <string name="about_title">Info</string>
     <string name="news_title">Mutationes in versionibus</string>
 
-    <string name="about_PROJECT_URL">breviar.sk</string>
+    <string name="about_PROJECT_URL">https://breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Applicatio programatura Breviarium pro SI Android</string>
     <string name="about_SPECIAL_CREDITS"></string>
