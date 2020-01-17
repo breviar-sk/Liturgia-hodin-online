@@ -1131,9 +1131,10 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_VSEOBECNY_BY              21
 #define KALENDAR_CZ_OFM                    22
 #define KALENDAR_SK_CSA                    23
+#define KALENDAR_SK_OSU                    24
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   23
+#define POCET_KALENDAROV                   24
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
@@ -1187,14 +1188,14 @@ const short int supported_languages[POCET_JAZYKOV + 1] =
 };
 
 
-#define SUPPORTED_CALENDARS_COUNT_MAX 10
+#define SUPPORTED_CALENDARS_COUNT_MAX 11
 
 // count of supported calendars for specified language
 // note 1: KALENDAR_NEURCENY & KALENDAR_VSEOBECNY are always supported by default so these two do not count there
 // note 2: for calendars not yet published use '#if defined(DEBUG) || defined(OS_Windows_Ruby)' == code to be executed only for development (new calendars are added at the end of list supported_calendars_language[][])
 const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 {
-	10,
+	11,
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 	6,
 #else
@@ -1213,7 +1214,7 @@ const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 // array of supported calendars for specified language | note: pad with zeros
 const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALENDARS_COUNT_MAX] =
 {
-	{ KALENDAR_VSEOBECNY_SK, KALENDAR_SK_CSSR, KALENDAR_SK_SVD, KALENDAR_SK_OFM, KALENDAR_SK_SDB, KALENDAR_SK_OP, KALENDAR_SK_SJ, KALENDAR_SK_CM, KALENDAR_SK_OCD, KALENDAR_SK_CSA },
+	{ KALENDAR_VSEOBECNY_SK, KALENDAR_SK_CSSR, KALENDAR_SK_SVD, KALENDAR_SK_OFM, KALENDAR_SK_SDB, KALENDAR_SK_OP, KALENDAR_SK_SJ, KALENDAR_SK_CM, KALENDAR_SK_OCD, KALENDAR_SK_CSA, KALENDAR_SK_OSU },
 	{ KALENDAR_VSEOBECNY_CZ, KALENDAR_CZ_OPRAEM, KALENDAR_CZ_OFMCAP, KALENDAR_CZ_SDB, KALENDAR_CZ_OFM, KALENDAR_CZ_CSSR, 0, 0, 0 },
 	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
 	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },

@@ -439,11 +439,11 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -471,6 +471,7 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "агульны BY"
 	, "CZ OFM"
 	, "SK CSA"
+	, "SK OSU"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -500,6 +501,7 @@ const char *nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, " BY"
 	, "OFM"
 	, "CSA"
+	, "OSU"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -531,6 +533,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "агульны [Belarus]"
 	, "s vlastními františkánskými texty (OFM)"
 	, "pre kanonisky sv. Augustína Notre Dame (CSA)"
+	, "pre Rímsku úniu Rádu svätej Uršule a pre meričiánske inštitúty (OSU)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -562,6 +565,7 @@ const char *nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "агульны [Belarus]"
 	, "pro františkány (OFM)"
 	, "pre kanonisky Notre Dame (CSA)"
+	, "pre uršulínky (OSU)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -5356,7 +5360,20 @@ const char *text_JAN_26[POCET_JAZYKOV + 1] =
 	"Св. Цімафея і Ціта, біскупаў",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_JAN_27[POCET_JAZYKOV + 1] =
+const char* text_JAN_27[POCET_JAZYKOV + 1] =
+{
+	"Sv. Angely Merici, panny",
+	"Sv. Anděly Mericiové, panny",
+	"",
+	"S. Angelæ Merici, virginis",
+	"",
+	"Sv. Anděly Mericiové, panny",
+	"Merici Szent Angéla szűz",
+	"ru_text",
+	"Св. Анжэлы Мэрычы, панны",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_JAN_27_OSU[POCET_JAZYKOV + 1] =
 {
 	"Sv. Angely Merici, panny",
 	"Sv. Anděly Mericiové, panny",
@@ -6759,9 +6776,22 @@ const char *text_APR_26_OPRAEM[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_APR_26_CM[POCET_JAZYKOV + 1] =
+const char* text_APR_26_CM[POCET_JAZYKOV + 1] =
 {
 	"Prenesenie pozostatkov sv. Vincenta de Paul",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_APR_26_OSU[POCET_JAZYKOV + 1] =
+{
+	"Panny Márie, Matky dobrej rady",
 	"",
 	"",
 	"",
@@ -6880,6 +6910,19 @@ const char *text_APR_30_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Benedikta z Urbina, kňaza, člena 1. rádu",
 	"Bl. Benedikta z Urbina, kněze",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_APR_30_OSU[POCET_JAZYKOV + 1] =
+{
+	"Sv. Márie od Vtelenia, rehoľníčky",
+	"",
 	"",
 	"",
 	"",
@@ -7499,6 +7542,19 @@ const char *text_MAJ_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Kantalicei Szent Félix, szerzetes az 1. Rendből",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_18_OSU[POCET_JAZYKOV + 1] =
+{
+	"Bl. Blandíny Mertenovej, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

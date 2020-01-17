@@ -4338,6 +4338,22 @@ void _set_zalmy_vesp_113_146_ef(short int modlitba){
 	Log("_set_zalmy_vesp_113_146_ef(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_vesp_113_146_ef()
 
+// OSU (27JAN)
+void _set_zalmy_osu_angela_merici(short int modlitba) {
+	Log("_set_zalmy_osu_angela_merici(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z19.htm", "ZALM19,8-15");
+		set_zalm(2, modlitba, "z45.htm", "ZALM45_I");
+		set_zalm(3, modlitba, "z45.htm", "ZALM45_II");
+	}
+	else if (modlitba == MODL_VESPERY) {
+		set_zalm(1, modlitba, "z110.htm", "ZALM110");
+		set_zalm(2, modlitba, "z122.htm", "ZALM122");
+		set_zalm(3, modlitba, "ch_zjv19.htm", "CHVAL_ZJV19");
+	}
+	Log("_set_zalmy_osu_angela_merici(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_osu_angela_merici()
+
 // CZ OFMCAP (11AUG); CZ OP (28JAN)
 void _set_zalmy_vesp_127_111_kol(short int modlitba){
 	Log("_set_zalmy_vesp_127_111_kol(%s) -- begin\n", nazov_modlitby(modlitba));
