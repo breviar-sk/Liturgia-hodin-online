@@ -7923,6 +7923,19 @@ const char *text_MAJ_29[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_MAJ_29_OSU[POCET_JAZYKOV + 1] =
+{
+	"Sv. Uršule Ledóchovskej, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_MAJ_29_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Viliama Arnauda, kňaza, a spoločníkov, mučeníkov",
@@ -8626,6 +8639,19 @@ const char *text_JUN_12_OP[POCET_JAZYKOV + 1] =
 const char *text_JUN_12_OCD[POCET_JAZYKOV + 1] =
 {
 	"Bl. Alfonza Máriu Mazurka, kňaza a mučeníka, a spoločníkov",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_JUN_12_OSU[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Klemensy Staszewskej, panny a mučenice",
 	"",
 	"",
 	"",
@@ -9417,6 +9443,19 @@ const char *text_JUL_09[POCET_JAZYKOV + 1] =
 	"Zhao Rong Szent Ágoston áldozópap és társai, kínai vértanúk",
 	"ru_text",
 	"Св. Аўгустына Джао Жонга, прэзбітэра, " HTML_LINE_BREAK "і паплечнікаў, мучанікаў",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_JUL_09_OSU[POCET_JAZYKOV + 1] =
+{
+	"Bl. Alžbety Terézie a spoločníčok, panien a mučeníc",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_JUL_09_OP[POCET_JAZYKOV + 1] =
@@ -11405,6 +11444,19 @@ const char *text_SEP_04_OFM[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_SEP_04_OSU[POCET_JAZYKOV + 1] =
+{
+	"Panny Márie, Matky potechy",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_SEP_05[POCET_JAZYKOV + 1] =
 {
 	"Sv. Terézie z Kalkaty (Matky Terezy), panny a rehoľnice",
@@ -12955,9 +13007,9 @@ const char *text_OKT_21_OP[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_OKT_21_OPRAEM[POCET_JAZYKOV + 1] =
+const char *text_OKT_21_OSU[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Uršule a spoločníčok, panien a mučeníc",
 	"Sv. Voršily a jejich družek, mučednic",
 	"",
 	"",
@@ -13029,6 +13081,19 @@ const char *text_OKT_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Kapisztrán Szent János, pap az I. Rendből",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_OKT_23_OSU[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Klotildy Angely a spoločníčok, " HTML_LINE_BREAK "panien a mučeníc",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
