@@ -111,6 +111,7 @@ char *_global_buf2;
 #define ishex(x) (((x) >= '0' && (x) <= '9') || ((x) >= 'a' && (x) <= 'f') || ((x) >= 'A' && (x) <= 'F'))
 
 #define MAX_BUFFER 256
+#define READ_BUFFER 4096
 
 #define ANCHOR_VYSVETLIVKY "VYSVETLIVKY"
 #define FILE_VYSVETLIVKY "vysvetl.htm"
@@ -1635,6 +1636,7 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	int c, buff_index = 0, fnref_index = 0, fn_index = 0, ref_index = 0, kat_index = 0, z95_index = 0;
 	char strbuff[MAX_BUFFER];
 	char rest[MAX_BUFFER];
+	char readbuff[READ_BUFFER];
 	char isbuff = 0;
 	short int write = NIE;
 	short int je_antifona = NIE;
@@ -1760,12 +1762,20 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	}
 	*/
 
-	int b;
+	unsigned int readbuff_pos = 0;
+	size_t readbuff_size = 0;
 	struct Utf8DecoderState state;
 	InitUtf8DecoderState(&state);
 
-	while ((b = fgetc(body)) != EOF) {
-		if (!Utf8StreamingDecoder(b, &state)) continue;
+	while (1) {
+		if (readbuff_pos >= readbuff_size) {
+			readbuff_size = fread(readbuff, 1, sizeof(readbuff), body);
+			readbuff_pos = 0;
+			if (readbuff_size <= 0) {
+				break;
+			}
+		}
+		if (!Utf8StreamingDecoder(readbuff[readbuff_pos++], &state)) continue;
 		c = state.result;
 		// Export("inside[%c]...", c);
 		switch (c) {
@@ -5216,6 +5226,7 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = ANO) {
 	short buff_index = 0;
 	char strbuff[MAX_BUFFER];
+	char readbuff[READ_BUFFER];
 	char isbuff = 0;
 
 	_global_pocet_slava_otcu = 0; // pre každý súbor templátu individuálne počítame sláva otcu; 2007-05-18
@@ -5236,12 +5247,20 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 		return;
 	}// chyba -- šablóna sa nenašla
 
-	int b;
+	size_t readbuff_size = 0;
+	unsigned int readbuff_pos = 0;
 	Utf8DecoderState c;
 	InitUtf8DecoderState(&c);
 
-	while ((b = fgetc(ftemplate)) != EOF) {
-		if (!Utf8StreamingDecoder(b, &c)) continue;
+	while (1) {
+		if (readbuff_pos >= readbuff_size) {
+			readbuff_size = fread(readbuff, 1, sizeof(readbuff), ftemplate);
+			readbuff_pos = 0;
+			if (readbuff_size <= 0) {
+				break;
+			}
+		}
+		if (!Utf8StreamingDecoder(readbuff[readbuff_pos++], &c)) continue;
 		switch (c.result) {
 		case CHAR_KEYWORD_BEGIN:
 			isbuff = 1;

@@ -34,6 +34,7 @@ FILE *exportfile;
 
 char *exptstr = NULL;
 int exptstrlen = 0;
+int exptstrsize = 0;
 
 short int initExport(void){
 #if defined(EXPORT_TO_FILE)
@@ -52,7 +53,8 @@ short int initExport(void){
 	exptused = SUCCESS;
 #elif defined(EXPORT_TO_STRING)
 	free(exptstr);
-	exptstr = NULL;
+	exptstr = (char *)calloc(1, MAX_STR);
+	exptstrsize = MAX_STR;
 	exptstrlen = 0;
 	exptused = SUCCESS;
 #else
@@ -104,10 +106,14 @@ short int Export_to_string(const char *fmt, va_list argptr) {
 	cnt = vsnprintf(NULL, 0, fmt, argptr2);
 	va_end(argptr2);
 
-	exptstr = (char *)realloc(exptstr, exptstrlen + cnt + 1);
-	if (!exptstr) {
-		exptstrlen = 0;
-		return 0;
+	if (exptstrlen + cnt >= exptstrsize) {
+		exptstrsize *= 2;
+		exptstr = (char *)realloc(exptstr, exptstrsize);
+		if (!exptstr) {
+			exptstrlen = 0;
+			exptstrsize = 0;
+			return 0;
+		}
 	}
 
 	cnt = vsnprintf(exptstr + exptstrlen, cnt + 1, fmt, argptr);
@@ -203,11 +209,22 @@ char *getExportedString(void) {
 
 // Converts wide char into utf8 string and exports it.
 void ExportRawWchar(int c) {
+#ifdef EXPORT_TO_STRING
+	if (exptstrlen + 5 >= exptstrsize) {
+		exptstrsize *= 2;
+		exptstr = (char *)realloc(exptstr, exptstrsize);
+	}
+	char *out = exptstr + exptstrlen;
+	EncodeWchar(c, &out);
+	*out = 0;
+	exptstrlen = (int)(out - exptstr);
+#else
 	char buf[5];
 	char *out = buf;
 	EncodeWchar(c, &out);
 	*out = 0;
 	Export("%s", buf);
+#endif
 }// ExportRawWchar()
 
 void ExportChar(int c, short int skip_chars_for_voice_output /* = NIE */) {

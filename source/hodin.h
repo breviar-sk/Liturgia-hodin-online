@@ -533,7 +533,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "агульны [Belarus]"
 	, "s vlastními františkánskými texty (OFM)"
 	, "pre kanonisky sv. Augustína Notre Dame (CSA)"
-	, "pre Rímsku úniu Rádu svätej Uršule a pre meričiánske inštitúty (OSU)"
+	, "pre uršulínky Rímskej únie (OSU)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
