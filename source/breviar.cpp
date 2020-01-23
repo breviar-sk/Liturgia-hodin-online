@@ -54,6 +54,7 @@ Examples:
 #ifndef __BREVIAR_CPP_
 #define __BREVIAR_CPP_
 
+#include <errno.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
@@ -1632,11 +1633,34 @@ char rest_krizik[MAX_BUFFER] = STR_EMPTY; // pre to, čo je za krížikom v anti
 char rest_zakoncenie[MAX_BUFFER] = STR_EMPTY;
 short int ant_invitat_krizik = 0; // antifóna pre invitatórium s krížikom
 
+struct ReadBuffer {
+	size_t pos = 0;
+	size_t size = 0;
+	char data[READ_BUFFER];
+};
+
+bool LoadToBuffer(FILE* stream, struct ReadBuffer* buffer) {
+	while (buffer->pos >= buffer->size) {
+		size_t new_size = fread(buffer->data, 1, sizeof(buffer->data), stream);
+		if (new_size <= 0) {
+			if (errno == EINTR) continue;
+			return false;
+		}
+		buffer->pos = 0;
+		buffer->size = new_size;
+	}
+	return true;
+}
+
+// Assumes that buffer is loaded.
+char ConsumeFromBuffer(struct ReadBuffer* buffer) {
+  return buffer->data[buffer->pos++];
+}
+
 void includeFile(short int type, const char *paramname, const char *fname, const char *modlparam) {
 	int c, buff_index = 0, fnref_index = 0, fn_index = 0, ref_index = 0, kat_index = 0, z95_index = 0;
 	char strbuff[MAX_BUFFER];
 	char rest[MAX_BUFFER];
-	char readbuff[READ_BUFFER];
 	char isbuff = 0;
 	short int write = NIE;
 	short int je_antifona = NIE;
@@ -1762,20 +1786,13 @@ void includeFile(short int type, const char *paramname, const char *fname, const
 	}
 	*/
 
-	unsigned int readbuff_pos = 0;
-	size_t readbuff_size = 0;
+	struct ReadBuffer readbuff;
 	struct Utf8DecoderState state;
 	InitUtf8DecoderState(&state);
 
 	while (1) {
-		if (readbuff_pos >= readbuff_size) {
-			readbuff_size = fread(readbuff, 1, sizeof(readbuff), body);
-			readbuff_pos = 0;
-			if (readbuff_size <= 0) {
-				break;
-			}
-		}
-		if (!Utf8StreamingDecoder(readbuff[readbuff_pos++], &state)) continue;
+		if (!LoadToBuffer(body, &readbuff)) break;
+		if (!Utf8StreamingDecoder(ConsumeFromBuffer(&readbuff), &state)) continue;
 		c = state.result;
 		// Export("inside[%c]...", c);
 		switch (c) {
@@ -5226,7 +5243,6 @@ void interpretParameter(short int type, char paramname[MAX_BUFFER], short int aj
 void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = ANO) {
 	short buff_index = 0;
 	char strbuff[MAX_BUFFER];
-	char readbuff[READ_BUFFER];
 	char isbuff = 0;
 
 	_global_pocet_slava_otcu = 0; // pre každý súbor templátu individuálne počítame sláva otcu; 2007-05-18
@@ -5247,20 +5263,13 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 		return;
 	}// chyba -- šablóna sa nenašla
 
-	size_t readbuff_size = 0;
-	unsigned int readbuff_pos = 0;
+	struct ReadBuffer readbuff;
 	Utf8DecoderState c;
 	InitUtf8DecoderState(&c);
 
 	while (1) {
-		if (readbuff_pos >= readbuff_size) {
-			readbuff_size = fread(readbuff, 1, sizeof(readbuff), ftemplate);
-			readbuff_pos = 0;
-			if (readbuff_size <= 0) {
-				break;
-			}
-		}
-		if (!Utf8StreamingDecoder(readbuff[readbuff_pos++], &c)) continue;
+		if (!LoadToBuffer(ftemplate, &readbuff)) break;
+		if (!Utf8StreamingDecoder(ConsumeFromBuffer(&readbuff), &c)) continue;
 		switch (c.result) {
 		case CHAR_KEYWORD_BEGIN:
 			isbuff = 1;
