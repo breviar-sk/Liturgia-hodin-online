@@ -1634,8 +1634,10 @@ char rest_zakoncenie[MAX_BUFFER] = STR_EMPTY;
 short int ant_invitat_krizik = 0; // antifóna pre invitatórium s krížikom
 
 struct ReadBuffer {
-	size_t pos = 0;
-	size_t size = 0;
+	ReadBuffer() : pos(0), size(0) {}
+
+	size_t pos;
+	size_t size;
 	char data[READ_BUFFER];
 };
 
