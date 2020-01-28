@@ -1132,9 +1132,10 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_CZ_OFM                    22
 #define KALENDAR_SK_CSA                    23
 #define KALENDAR_SK_OSU                    24
+#define KALENDAR_HU_SJ                     25
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   24
+#define POCET_KALENDAROV                   25
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
@@ -1205,7 +1206,7 @@ const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 	/* ToDo */ 1,
 	/* ToDo */ 1,
 	1,
-	3,
+	4,
 	1,
 	1,
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
@@ -1220,7 +1221,7 @@ const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALEND
 	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
 	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
 	{ KALENDAR_CZ_OP, 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_VSEOBECNY_HU, KALENDAR_HU_OFM, KALENDAR_HU_SVD, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_HU, KALENDAR_HU_OFM, KALENDAR_HU_SVD, KALENDAR_HU_SJ, 0, 0, 0, 0, 0 },
 	{ KALENDAR_VSEOBECNY_RU, 0, 0, 0, 0, 0, 0, 0, 0 },
 	{ KALENDAR_VSEOBECNY_BY, 0, 0, 0, 0, 0, 0, 0, 0 },
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */

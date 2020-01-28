@@ -439,11 +439,11 @@ const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char *skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char *nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
 
 const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -472,6 +472,7 @@ const char *nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "CZ OFM"
 	, "SK CSA"
 	, "SK OSU"
+	, "HU SJ"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -502,6 +503,7 @@ const char *nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, "OFM"
 	, "CSA"
 	, "OSU"
+	, "SJ"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -534,6 +536,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními františkánskými texty (OFM)"
 	, "pre kanonisky sv. Augustína Notre Dame (CSA)"
 	, "pre uršulínky Rímskej únie (OSU)"
+	, "jezsuita zsolozsmája (SJ)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -566,6 +569,7 @@ const char *nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "pro františkány (OFM)"
 	, "pre kanonisky Notre Dame (CSA)"
 	, "pre uršulínky (OSU)"
+	, "jezsuita zsolozsmája"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -4736,7 +4740,7 @@ const char *text_JAN_02[POCET_JAZYKOV + 1] =
 	"Св. Базыля Вялікага і Грыгорыя Назіянзскага, " HTML_LINE_BREAK "біскупаў і доктараў Касцёла",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_JAN_03[POCET_JAZYKOV + 1] =
+const char* text_JAN_03[POCET_JAZYKOV + 1] =
 {
 	"Najsvätejšieho mena Ježiš",
 	"Nejsvětějšího jména Ježíš",
@@ -4745,6 +4749,19 @@ const char *text_JAN_03[POCET_JAZYKOV + 1] =
 	"",
 	"Nejsvětějšího jména Ježíš",
 	"Jézus szent neve", // "Jézus Szentséges Nevének"
+	"ru_text",
+	"Найсвяцейшага Імя Езуса",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_JAN_03_SJ[POCET_JAZYKOV + 1] =
+{
+	"Najsvätejšieho mena Ježiš",
+	"Nejsvětějšího jména Ježíš",
+	"",
+	"Sanctissimi Nominis Iesu",
+	"",
+	"Nejsvětějšího jména Ježíš",
+	"Jézus szentséges neve" HTML_LINE_BREAK "Jézus társasága névünnepe",
 	"ru_text",
 	"Найсвяцейшага Імя Езуса",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5147,7 +5164,7 @@ const char *text_JAN_19_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"_",
-	"",
+	"Ogilvie szent János áldozópap; " HTML_LINE_BREAK "boldog De Azevedo Ignác áldozópap és társai; " HTML_LINE_BREAK "boldog Salės Jakab áldozópap; " HTML_LINE_BREAK "boldog Saultemouche Vilmos szerzetes, vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5644,7 +5661,7 @@ const char *text_FEB_04_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"De Brito szent János, áldozópap, " HTML_LINE_BREAK "boldog Acquviva Rudolf áldozópap és társai, vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5709,7 +5726,7 @@ const char *text_FEB_06_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Miki szent Pál szerzetes és társai; " HTML_LINE_BREAK "boldog Spinola Károly és Kimura Sebestyén, áldozópapok és társaik, " HTML_LINE_BREAK "boldog Kibe Kasui Péter áldozópap és társai",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5904,7 +5921,7 @@ const char *text_FEB_15_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"La Colombiėre Kolos áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6641,7 +6658,7 @@ const char *text_APR_22_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldogságos Szűz Mária, Jézus Társasága édesanyja",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6810,7 +6827,7 @@ const char *text_APR_27_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Kaníziusz szent Péter, áldozópap és egyháztanító, " HTML_LINE_BREAK "a Közép-Kelet-Európai asszisztencia védőszentje",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -7008,7 +7025,7 @@ const char *text_MAJ_04_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Rubio Szent József Mária áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -7424,7 +7441,7 @@ const char *text_MAJ_16_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bobola szent András, áldozópap és vértanú, " HTML_LINE_BREAK "a Közép-Kelet-Európai asszisztencia társvédőszentje",
 	"ru_text",
 	"Св. Андрэя Баболі, прэзбітэра і мучаніка",
 	/* STRING_2_FOR_NEW_LANGUAGE */

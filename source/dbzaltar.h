@@ -1965,7 +1965,8 @@ extern const char *text_NOV_25_SDB[POCET_JAZYKOV + 1];
 extern const char *text_DEC_05_SDB[POCET_JAZYKOV + 1];
 
 // --------------- SJ propriá ---------------
-extern const char *text_JAN_01_SJ[POCET_JAZYKOV + 1];
+extern const char* text_JAN_01_SJ[POCET_JAZYKOV + 1];
+extern const char* text_JAN_03_SJ[POCET_JAZYKOV + 1];
 extern const char *text_JAN_19_SJ[POCET_JAZYKOV + 1];
 extern const char *text_FEB_04_SJ[POCET_JAZYKOV + 1];
 extern const char *text_FEB_06_SJ[POCET_JAZYKOV + 1];
