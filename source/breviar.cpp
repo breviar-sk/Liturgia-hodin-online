@@ -5300,7 +5300,7 @@ void interpretTemplate(short int type, char *tempfile, short int aj_navigacia = 
 //
 // ak je vstupom typ vespery resp. kompletorium, a v _global_modlitba je nieco ine (t.j. prve/druhe), vtedy predpokladam, ze v premennych _global_[prve_]kompletorium/vespery su spravne data
 void showPrayer(short int type, short int ktore_templaty = SHOW_TEMPLAT_MODLITBA, short int aj_navigacia = ANO) {
-	char templat[SMALL];
+	char templat[SMALL] = STR_EMPTY;
 	char path[MAX_STR] = STR_EMPTY;
 	mystrcpy(path, include_dir, MAX_STR);
 	short int i = 0;
@@ -14139,23 +14139,23 @@ void _main_rozbor_dna_txt(short int typ, short int d, short int m, short int r) 
 		if (t != EXPORT_DNA_XML) {
 
 			Export("<h2>");
-			Export((char *)html_text_txt_export[_global_jazyk]);
+			Export((char*)html_text_txt_export[_global_jazyk]);
 			Export(": ");
-			Export((char *)html_text_lit_kalendar[_global_jazyk]);
+			Export((char*)html_text_lit_kalendar[_global_jazyk]);
 			Export(" ");
 
 			if (m == VSETKY_MESIACE) {
-				Export((char *)html_text_rok[_global_jazyk]);
+				Export((char*)html_text_rok[_global_jazyk]);
 				Export(" %d", r);
 			}// if(m == VSETKY_MESIACE)
 			else {
 				if (d == VSETKY_DNI) {
-					Export((char *)html_text_mesiac[_global_jazyk]);
+					Export((char*)html_text_mesiac[_global_jazyk]);
 				}
 				else {
-					Export((char *)html_text_den[_global_jazyk]);
+					Export((char*)html_text_den[_global_jazyk]);
 					Export(" %d.", d);
-					if ((t != EXPORT_DNA_JEDEN_DEN) || (t != EXPORT_DNA_XML)) {
+					if (t != EXPORT_DNA_JEDEN_DEN) {
 						t = EXPORT_DNA_JEDEN_DEN;
 					}
 				}
@@ -17359,7 +17359,7 @@ short int parseQueryString(void) {
 	short int i, pocet, ok;
 	char local_str[SMALL] = STR_EMPTY;
 	short int j; // kvôli prilep_request_options
-	short int ret; // návratová hodnota
+	short int ret = FAILURE; // návratová hodnota
 	char errmsg[SMALL] = STR_EMPTY;
 
 	Log("parseQueryString() -- begin\n");
@@ -17368,6 +17368,7 @@ short int parseQueryString(void) {
 	}
 	else {
 		Log("query_string is NULL, something is wrong...\n");
+		return ret;
 	}
 
 #ifndef LOG_PARAMS
@@ -18678,7 +18679,7 @@ int breviar_main(int argc, const char **argv) {
 	initExport();
 
 	// basic check for MAX_POCET_OPT contant
-	if (MAX_POCET_OPT < POCET_OPT_0_SPECIALNE || MAX_POCET_OPT < POCET_OPT_1_CASTI_MODLITBY || MAX_POCET_OPT < POCET_OPT_2_HTML_EXPORT || MAX_POCET_OPT < POCET_OPT_4_OFFLINE_EXPORT || MAX_POCET_OPT < POCET_OPT_5_ALTERNATIVES || MAX_POCET_OPT < POCET_OPT_6_ALTERNATIVES_MULTI) {
+	if ((MAX_POCET_OPT < POCET_OPT_0_SPECIALNE) || (MAX_POCET_OPT < POCET_OPT_1_CASTI_MODLITBY) || (MAX_POCET_OPT < POCET_OPT_2_HTML_EXPORT) || (MAX_POCET_OPT < POCET_OPT_4_OFFLINE_EXPORT) || (MAX_POCET_OPT < POCET_OPT_5_ALTERNATIVES) || (MAX_POCET_OPT < POCET_OPT_6_ALTERNATIVES_MULTI)) {
 		_main_LOG("Incorrect setting of value for `MAX_POCET_OPT'.\n");
 		goto _main_end;
 	}

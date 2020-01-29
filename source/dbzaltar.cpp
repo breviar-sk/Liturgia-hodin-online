@@ -696,11 +696,13 @@ void _set_zalm1(short int modlitba, const char *file, const char *anchor) {
 		mystrcpy(_global_modl_cez_den_9.zalm1.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_9.zalm1.anchor, anchor, MAX_STR_AF_ANCHOR);
 		if (modlitba == MODL_PREDPOLUDNIM) break;
+		// [[fallthrough]];
 	case MODL_NAPOLUDNIE:
 		// napoludnie
 		mystrcpy(_global_modl_cez_den_12.zalm1.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_12.zalm1.anchor, anchor, MAX_STR_AF_ANCHOR);
 		if (modlitba == MODL_NAPOLUDNIE) break;
+		// [[fallthrough]];
 	case MODL_POPOLUDNI:
 		// popoludni
 		mystrcpy(_global_modl_cez_den_3.zalm1.file, file, MAX_STR_AF_FILE);
@@ -735,18 +737,20 @@ void _set_zalm2(short int modlitba, const char *file, const char *anchor) {
 		mystrcpy(_global_modl_ranne_chvaly.zalm2.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_ranne_chvaly.zalm2.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
-		// modlitby cez den maju spolocnu psalmodiu, pokial si pouzivatel nevyziada doplnkovu psalmodiu (seria 1-3), preto nastavujem aj spolocne pre vsetky modlitby | 2003-08-13
+		// modlitby cez den maju spolocnu psalmodiu, pokial si pouzivatel nevyziada doplnkovu psalmodiu (seria 1-3), preto nastavujem aj spolocne pre vsetky modlitby
 	case MODL_CEZ_DEN_VSETKY:
 	case MODL_PREDPOLUDNIM:
 		// predpoludnim
 		mystrcpy(_global_modl_cez_den_9.zalm2.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_9.zalm2.anchor, anchor, MAX_STR_AF_ANCHOR);
 		if (modlitba == MODL_PREDPOLUDNIM) break;
+		// [[fallthrough]];
 	case MODL_NAPOLUDNIE:
 		// napoludnie
 		mystrcpy(_global_modl_cez_den_12.zalm2.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_12.zalm2.anchor, anchor, MAX_STR_AF_ANCHOR);
 		if (modlitba == MODL_NAPOLUDNIE) break;
+		// [[fallthrough]];
 	case MODL_POPOLUDNI:
 		// popoludni
 		mystrcpy(_global_modl_cez_den_3.zalm2.file, file, MAX_STR_AF_FILE);
@@ -779,14 +783,14 @@ void _set_zalm3(short int modlitba, const char *file, const char *anchor) {
 		// predpoludnim
 		mystrcpy(_global_modl_cez_den_9.zalm3.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_9.zalm3.anchor, anchor, MAX_STR_AF_ANCHOR);
-		if (modlitba == MODL_PREDPOLUDNIM)
-			break;
+		if (modlitba == MODL_PREDPOLUDNIM) break;
+		// [[fallthrough]];
 	case MODL_NAPOLUDNIE:
 		// napoludnie
 		mystrcpy(_global_modl_cez_den_12.zalm3.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_12.zalm3.anchor, anchor, MAX_STR_AF_ANCHOR);
-		if (modlitba == MODL_NAPOLUDNIE)
-			break;
+		if (modlitba == MODL_NAPOLUDNIE) break;
+		// [[fallthrough]];
 	case MODL_POPOLUDNI:
 		// popoludni
 		mystrcpy(_global_modl_cez_den_3.zalm3.file, file, MAX_STR_AF_FILE);
@@ -4561,7 +4565,7 @@ void _vlastne_slavenie_hymnus(short int modlitba, char vlastny_anchor[SMALL], sh
 void _velk1_hymnus(short int den, short int modlitba, short int litobd) {
 	Log("_velk1_hymnus(): začiatok\n");
 	short int ktory; // 0 alebo 1 (2 = obidve alternatívy; -1 = do not use this variable for generating anchor)
-	short int bit;
+	short int bit = BIT_OPT_5_HYMNUS_VN_RCH; // necessary to initialize
 
 	switch (modlitba) {
 	case MODL_POSV_CITANIE: bit = BIT_OPT_5_HYMNUS_VN_PC; break;
@@ -5880,7 +5884,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 // switch(litobd), case OBD_OKTAVA_NARODENIA -- begin -----------------------------------------
 
 		// narodenie Pana -- 1. jan.
-		case OBD_OKTAVA_NARODENIA:
+		case OBD_OKTAVA_NARODENIA: {
 
 			// tu v skutočnosti začína VIANOČNÁ OKTÁVA = OKTÁVA NARODENIA PÁNA
 
@@ -5892,9 +5896,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			Log("OBD_OKTAVA_NARODENIA - pokračujeme ako vianočné obdobie I...\n");
 			// a pokracujeme ako vianocne obdobie I
+		}
+		// [[fallthrough]];
 
 // switch(litobd), case OBD_VIANOCNE_I -- begin -----------------------------------------------
-		case OBD_VIANOCNE_I :// do slavnosti zjavenia pana
+		// do slavnosti zjavenia pana
+		case OBD_VIANOCNE_I: {
 			Log("OBD_VIANOCNE_I\n");
 
 			// tu v skutočnosti začína VIANOČNÉ OBDOBIE I.
@@ -6253,7 +6260,8 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				// hoci sú vo vlastnej časti uvedené aj antifóny pre modlitbu cez deň, sú rovnaké ako pre vianočné obdobie, preto netreba nastavovať
 
 			}// _global_den.denvr == _global_r._SVATEJ_RODINY.denvr
-			break;
+		}
+		break;
 // switch(litobd), case OBD_OKTAVA_NARODENIA -- end -------------------------------------------
 // switch(litobd), case OBD_VIANOCNE_I -- end -------------------------------------------------
 
@@ -6661,7 +6669,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 // switch(litobd), case OBD_VIANOCNE_II -- end ------------------------------------------------
 
 // switch(litobd), case OBD_CEZ_ROK -- begin --------------------------------------------------
-		case OBD_CEZ_ROK:{
+		case OBD_CEZ_ROK: {
 			Log("OBD_CEZ_ROK\n");
 
 			// tu v skutočnosti začína CEZROČNÉ OBDOBIE
@@ -8951,7 +8959,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			}// nedeľa
 
 			// override hymnov v prípade je_CZ_hymny_k_volnemu_vyberu
-			if ((_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu)) {
+			if (je_CZ_hymny_k_volnemu_vyberu) {
 
 				file_name_litobd(OBD_VELKONOCNE_I);
 				mystrcpy(_file_pc, nazov_obd_htm_pc[OBD_VELKONOCNE_I], MAX_STR_AF_FILE);

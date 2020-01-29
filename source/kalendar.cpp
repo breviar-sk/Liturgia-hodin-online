@@ -7330,7 +7330,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_vlastna_cast_antifona_inv;
 
 			modlitba = MODL_RANNE_CHVALY;
-			if ((_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu)) {
+			if (je_CZ_hymny_k_volnemu_vyberu) {
 				_vlastna_cast_full_okrem_hymnu(modlitba);
 			}
 			else {
@@ -7348,7 +7348,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_vlastna_cast_mcd_kcitresp_modl;
 
 			modlitba = MODL_VESPERY;
-			if ((_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu)) {
+			if (je_CZ_hymny_k_volnemu_vyberu) {
 				_vlastna_cast_full_okrem_hymnu(modlitba);
 			}
 			else {
@@ -9715,8 +9715,9 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			// Kongregácia pre Boží kult a disciplínu sviatostí vložila do saleziánskeho vlastného kalendára (ľubovoľnú) spomienku Panny Márie Fatimskej na 15. máj, presunutím z 13. mája. (Rasťo H., 2018-10-22)
 
 			// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca | pre slovenský breviár sa berú všetky vlastné časti z 13. mája
-			pom_den = den;
-			pom_mesiac = mesiac;
+			// pom_den = den;
+			// pom_mesiac = mesiac;
+			// uncomment above two lines if you need to recover original values
 
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
@@ -14467,8 +14468,8 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 	short int pom_poradie = 1;
 
 	// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca
-	short int pom_den = den;
-	short int pom_mesiac = mesiac;
+	// short int pom_den = den;
+	// short int pom_mesiac = mesiac;
 
 	Log("mesiac júl\n");
 	switch (den) {
@@ -17403,8 +17404,9 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
 
 			// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca | pre CM sa berú všetky vlastné časti z 30. júla
-			pom_den = den;
-			pom_mesiac = mesiac;
+			// pom_den = den;
+			// pom_mesiac = mesiac;
+			// uncomment above two lines if you need to recover original values
 
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
@@ -22814,7 +22816,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			_vlastna_cast_mcd_modlitba;
 
 			modlitba = MODL_VESPERY;
-			if (!((_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu))) {
+			if (!(je_CZ_hymny_k_volnemu_vyberu)) {
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			_vlastna_cast_magnifikat;

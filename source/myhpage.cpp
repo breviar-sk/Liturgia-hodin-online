@@ -67,8 +67,8 @@ const char *HTML_MAIL_LABEL_SHORT = "J. Vidéky";
 #define MAX_EXT 5
 char html_mail_label[MAX_MAIL_LABEL];
 char pismeno_modlitby;
-char pismeno_prev[1];
-char pismeno_next[1];
+char pismeno_prev[8];
+char pismeno_next[8];
 char ext[MAX_EXT];
 char file_name_pom[MAX_STR];
 char *ptr;
@@ -134,7 +134,7 @@ void _buttons_prev_up_next(FILE * expt){
 			else{
 				sprintf(pismeno_prev, "%d", _local_modlitba_prev);
 			}
-			strncpy(ptr, pismeno_prev, 1);
+			strncpy(ptr, pismeno_prev, strlen(pismeno_prev));
 		}
 		Export_to_file(expt, HTML_A_HREF_BEGIN "\"%s\"%s>", file_name_pom, optional_html_class_button);
 		Export_to_file(expt, optional_html_button_begin);
@@ -164,7 +164,7 @@ void _buttons_prev_up_next(FILE * expt){
 			else{
 				sprintf(pismeno_next, "%d", _local_modlitba_next);
 			}
-			strncpy(ptr, pismeno_next, 1);
+			strncpy(ptr, pismeno_next, strlen(pismeno_next));
 		}
 		// |
 		Export_to_file(expt, STR_VERTICAL_BAR_WITH_SPACES);
