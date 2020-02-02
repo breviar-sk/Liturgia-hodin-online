@@ -5164,7 +5164,7 @@ const char *text_JAN_19_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"_",
-	"Ogilvie szent János áldozópap; " HTML_LINE_BREAK "boldog De Azevedo Ignác áldozópap és társai; " HTML_LINE_BREAK "boldog Salės Jakab áldozópap; " HTML_LINE_BREAK "boldog Saultemouche Vilmos szerzetes, vértanúk",
+	"Ogilvie Szent János áldozópap; " HTML_LINE_BREAK "Boldog De Azevedo Ignác áldozópap és társai; " HTML_LINE_BREAK "Boldog Salės Jakab áldozópap; " HTML_LINE_BREAK "Boldog Saultemouche Vilmos szerzetes, vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5661,7 +5661,7 @@ const char *text_FEB_04_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"De Brito szent János, áldozópap, " HTML_LINE_BREAK "boldog Acquviva Rudolf áldozópap és társai, vértanúk",
+	"De Brito Szent János, áldozópap, " HTML_LINE_BREAK "Boldog Acquviva Rudolf áldozópap és társai, vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5726,7 +5726,7 @@ const char *text_FEB_06_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Miki szent Pál szerzetes és társai; " HTML_LINE_BREAK "boldog Spinola Károly és Kimura Sebestyén, áldozópapok és társaik, " HTML_LINE_BREAK "boldog Kibe Kasui Péter áldozópap és társai",
+	"Miki Szent Pál szerzetes és társai; " HTML_LINE_BREAK "Boldog Spinola Károly és Kimura Sebestyén, áldozópapok és társaik, " HTML_LINE_BREAK "Boldog Kibe Kasui Péter áldozópap és társai",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5921,7 +5921,7 @@ const char *text_FEB_15_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"La Colombiėre Kolos áldozópap",
+	"La Colombiėre Szent Kolos áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6335,7 +6335,7 @@ const char *text_MAR_18_OFM[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_MAR_19[POCET_JAZYKOV + 1] =
+const char* text_MAR_19[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jozefa, ženícha Panny Márie",
 	"Sv. Josefa, Snoubence Panny Marie",
@@ -6344,6 +6344,19 @@ const char *text_MAR_19[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Josefa, Snoubence Panny Marie",
 	"Szent József, a Boldogságos Szűz Mária jegyese",
+	"ru_text",
+	"Св. Юзафа, абранніка Найсвяцейшай Панны Марыі",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAR_19_SJ[POCET_JAZYKOV + 1] =
+{
+	"Sv. Jozefa, ženícha Panny Márie, " HTML_LINE_BREAK "patróna Spoločnosti Ježišovej",
+	"Sv. Josefa, Snoubence Panny Marie",
+	"",
+	"S. Ioseph, Sponsi Beatæ Mariæ Virginis",
+	"",
+	"Sv. Josefa, Snoubence Panny Marie",
+	"Szent József, a Boldogságos Szűz Mária jegyese, " HTML_LINE_BREAK "Jézus Társaságának védőszentje",
 	"ru_text",
 	"Св. Юзафа, абранніка Найсвяцейшай Панны Марыі",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6658,7 +6671,7 @@ const char *text_APR_22_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Boldogságos Szűz Mária, Jézus Társasága édesanyja",
+	"Boldogságos Szűz Mária, Jézus Társasága Édesanyja",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6684,7 +6697,7 @@ const char *text_APR_23_HU[POCET_JAZYKOV + 1] =
 	"S. Adalberti, episcopi et martyris",
 	"",
 	"Sv. Vojtěcha, biskupa a mučedníka",
-	"Szent Adalbert (Béla) püspök és vértanú, az Esztergomi főegyházmegye védőszentje",
+	"Szent Adalbert (Béla) püspök és vértanú, " HTML_LINE_BREAK "az Esztergomi főegyházmegye védőszentje",
 	"ru_text",
 	"Св. Адальбэрта (Войцеха), біскупа і мучаніка",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6827,7 +6840,7 @@ const char *text_APR_27_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Kaníziusz szent Péter, áldozópap és egyháztanító, " HTML_LINE_BREAK "a Közép-Kelet-Európai asszisztencia védőszentje",
+	"Kaníziusz Szent Péter, áldozópap és egyháztanító, " HTML_LINE_BREAK "a Közép- és Keleteurópai asszisztencia védőszentje",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -7025,7 +7038,7 @@ const char *text_MAJ_04_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Rubio Szent József Mária áldozópap",
+	"Rubio Szent József Mária, áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -7441,7 +7454,7 @@ const char *text_MAJ_16_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Bobola szent András, áldozópap és vértanú, " HTML_LINE_BREAK "a Közép-Kelet-Európai asszisztencia társvédőszentje",
+	"Bobola Szent András, áldozópap és vértanú, " HTML_LINE_BREAK "a Közép- és Keleteurópai asszisztencia társvédőszentje",
 	"ru_text",
 	"Св. Андрэя Баболі, прэзбітэра і мучаніка",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -7717,6 +7730,19 @@ const char *text_MAJ_22[POCET_JAZYKOV + 1] =
 	"Szent Rita szerzetesnő",
 	"ru_text",
 	"Св. Рыты з Касіі, законніцы",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_22_SJ[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Úti Boldogasszony",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_MAJ_22_OCD[POCET_JAZYKOV + 1] =
@@ -8544,7 +8570,7 @@ const char *text_JUN_08_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Berthieu Szent Jakab, áldozópap és vértanú",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -8570,7 +8596,7 @@ const char *text_JUN_09_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"De Anchieta SzentJózsef, áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -8986,7 +9012,7 @@ const char *text_JUN_21_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Gonzága Szent Alajos, szerzetes",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -9256,13 +9282,13 @@ const char *text_JUN_30_OFM[POCET_JAZYKOV + 1] =
 
 const char *text_JUL_02_SJ[POCET_JAZYKOV + 1] =
 {
-	"Sv. Bernardína Realina, sv. Jána Františka Régisa, sv. Františka de Geronimo, " HTML_LINE_BREAK "bl. Juliána Maunoira, bl. Antona Baldinucciho, kňazov", // text_JUL_01_SJ: na Slovensku sa slávi 1. júla
+	"Sv. Bernardína Realina, sv. Jána Františka Régisa, sv. Františka de Geronimo, " HTML_LINE_BREAK "bl. Juliána Maunoira, bl. Antona Baldinucciho, kňazov", // text_JUL_01_SJ: na Slovensku aj v Maďarsku sa slávi 1. júla
 	"",
 	"",
 	"",
 	"",
 	"",
-	"",
+	"Realino Szent Benardin, Régis Szent János Ferenc és de Geronimo Szent Ferenc; " HTML_LINE_BREAK "Boldog Maunoir Julián és Boldog Baldinucci Antal, áldozópapok",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -9509,7 +9535,7 @@ const char *text_JUL_09_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Mangin Szent Leó Ignác áldozópap, " HTML_LINE_BREAK "Zhu Wu Mária és társaik, vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -10237,7 +10263,7 @@ const char *text_JUL_31_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Loyolai Szent Ignác áldozópap és Jézus Társaságának alapítója",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -10387,7 +10413,7 @@ const char *text_AUG_02_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Favre Szent Péter, áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -10849,13 +10875,13 @@ const char *text_AUG_18_HU[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_18_SJ[POCET_JAZYKOV + 1] =
 {
-	"Bl. Alberta Hurtada Cruchagu, kňaza",
+	"Sv. Alberta Hurtada Cruchagu, kňaza",
 	"",
 	"",
 	"",
 	"",
 	"",
-	"",
+	"Hurtado Cruchaga Szent Albert, áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -11357,6 +11383,19 @@ const char *text_SEP_02_CM[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_SEP_02_SJ[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Bonnaud Jakab, áldozópap és társai; Boldog Imbert József és Cordier Miklós, áldozópapok; " HTML_LINE_BREAK "Boldog Sitjar Tamás, áldozópap és társai vértanúk",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_SEP_02_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Gualu z Bergama, biskupa",
@@ -11573,7 +11612,7 @@ const char *text_SEP_07_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Pongrácz Szent István, Grodzieski Szent Menyhért áldozópapok és Kőrösi Márk esztergomi kanonok, " HTML_LINE_BREAK "a Magyarországi Rendtartomány védőszentjei, vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -11625,7 +11664,7 @@ const char *text_SEP_09_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Claver Szent Péter áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -11638,7 +11677,7 @@ const char *text_SEP_10_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Gárate Ferenc, szerzetes",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -11807,7 +11846,7 @@ const char *text_SEP_17_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bellarmino Szent Róbert, püspök és egyháztanító",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -12317,7 +12356,7 @@ const char *text_OKT_03_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"De Borja Szent Ferenc, áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -12467,7 +12506,7 @@ const char *text_OKT_06[POCET_JAZYKOV + 1] =
 };
 const char *text_OKT_06_SJ[POCET_JAZYKOV + 1] =
 {
-	"Bl. Diega Alojza de san Vitores, kňaza a mučeníka",
+	"Bl. Diega Alojza de san Vitores, kňaza a mučeníka", // HU SJ: 21OKT
 	"",
 	"",
 	"",
@@ -12707,7 +12746,7 @@ const char *text_OKT_12_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Beyzym János, áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -12941,7 +12980,7 @@ const char *text_OKT_19_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"De Brebeuf Szent János, Jogues Izsák, áldozópapok és társaik vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13007,6 +13046,19 @@ const char *text_OKT_21_CZ[POCET_JAZYKOV + 1] =
 	"",
 	"Bl. Karla Rakouského",
 	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_OKT_21_SJ[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog de San Vitores Didák Alajos, áldozópap és Calungsod Péter, vértanúk", // SK 06: 21OKT
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13357,7 +13409,7 @@ const char *text_OKT_30_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Collins Domonkos, szerzetes",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13435,7 +13487,7 @@ const char *text_OKT_31_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Rodríguez Szent Alfonz, szerzetes",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13529,7 +13581,7 @@ const char *text_NOV_03_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Mayer Rupert, áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13576,12 +13628,12 @@ const char *text_NOV_05_SK[POCET_JAZYKOV + 1] =
 const char *text_NOV_05_SJ[POCET_JAZYKOV + 1] =
 {
 	"Všetkých svätých a blahoslavených zo Spoločnosti Ježišovej",
+	"Všech svatých a blahoslavených Tovaryšstva Ježíšova",
 	"",
 	"",
 	"",
 	"",
-	"",
-	"",
+	"Jézus Társasága minden szentje és boldogja", // HU SJ_ 06NOV
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13686,6 +13738,19 @@ const char *text_NOV_07_OP[POCET_JAZYKOV + 1] =
 	"",
 	"Všech svatých Řádu kazatelů",
 	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_NOV_07_SJ[POCET_JAZYKOV + 1] =
+{
+	"Spomienka na všetkých zosnulých " HTML_LINE_BREAK "zo Spoločnosti Ježišovej",
+	"Všech zemřelých bratří a sester " HTML_LINE_BREAK "Tovaryšstva Ježíšova",
+	"",
+	"",
+	"",
+	"",
+	"Megemlékezés Jézus Társasága minden halottjáról",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13815,7 +13880,7 @@ const char *text_NOV_13_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Kosztka Szent Szaniszló, szerzetes",
 	"ru_text",
 	"Св. Станіслава Косткі, законніка", // BY: 18SEP
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13880,7 +13945,7 @@ const char *text_NOV_14_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Pignatelli Szent József, áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -14023,7 +14088,7 @@ const char *text_NOV_16_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"González Szent Rókus, Rodríguez Szent Alfonz, " HTML_LINE_BREAK "del Castillo Szent János, áldozópapok és vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -14218,7 +14283,7 @@ const char *text_NOV_23_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Pro Mihály Ágoston, áldozópap és vértanú",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -14296,7 +14361,7 @@ const char *text_NOV_26_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Berchmans Szent János, szerzetes",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -14392,6 +14457,19 @@ const char *text_NOV_28_HU[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_NOV_29_SJ[POCET_JAZYKOV + 1] =
+{
+	"Bl. Františka Hoyos, kňaza",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog de Hoyos Ferenc, áldozópap",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_NOV_29_OFM[POCET_JAZYKOV + 1] =
 {
 	"Všetkých svätých troch františkánskych rádov",
@@ -14442,7 +14520,7 @@ const char *text_DEC_01_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Edmunda Kampiána, kněze a mučedníka",
-	"",
+	"Campion Szent Ödön, Southwell Szent Róbert áldozópapok és társaik, vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -14533,7 +14611,7 @@ const char *text_DEC_03_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Xavéri Szent Ferenc, áldozópap",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
