@@ -536,7 +536,7 @@ const char *nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními františkánskými texty (OFM)"
 	, "pre kanonisky sv. Augustína Notre Dame (CSA)"
 	, "pre uršulínky Rímskej únie (OSU)"
-	, "jezsuita zsolozsmája (SJ)"
+	, "jezsuiták zsolozsmája (SJ)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -569,7 +569,7 @@ const char *nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "pro františkány (OFM)"
 	, "pre kanonisky Notre Dame (CSA)"
 	, "pre uršulínky (OSU)"
-	, "jezsuita zsolozsmája"
+	, "jezsuiták zsolozsmája (SJ)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 

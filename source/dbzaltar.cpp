@@ -10611,8 +10611,9 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 			_set_zalmy_posviacka_chramu(modlitba);
 		}
 		_spolocna_cast_full(modlitba);
-		if((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II))
+		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kresp_ve;
+		}
 
 		// žalmy sa berú ako vo všedný deň, antifóny z vlastnej časti
 		// vyriešené aj pre výročie posviacky Lateránskej baziliky (sviatok; nemajú sa vziať antifóny a žalmy zo spoločnej časti, ale zo dňa)
@@ -10642,6 +10643,18 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		}// v OBD_OKTAVA_NARODENIA -- vešpery sú zo dňa
 
 	}// MODL_SPOL_CAST_POSVIACKA_CHRAMU
+
+	if (_je_global_den_slavnost) {
+		modlitba = MODL_KOMPLETORIUM;
+		if (_global_den.den != DEN_NEDELA) {
+			// kompletórium zo slávnosti mimo nedieľ
+			_set_kompletorium_slavnost(modlitba);
+		}
+		else {
+			// kompletórium z nedele
+			_set_kompletorium_nedela(modlitba);
+		}
+	}
 
 	Log("_set_spolocna_cast(%s) -- end\n", nazov_spolc(a));
 }// _set_spolocna_cast(); -- dva argumenty
