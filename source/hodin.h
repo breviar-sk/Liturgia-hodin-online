@@ -7167,7 +7167,7 @@ const char *text_MAJ_08_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Panny Marie, ochránkyně Řádu kazatelů",
 	"",
 	"ru_text",
 	"by_text",
@@ -7405,19 +7405,6 @@ const char *text_MAJ_14[POCET_JAZYKOV + 1] =
 	"Szent Mátyás apostol", // v HU sa slávi 24.2.
 	"ru_text",
 	"Св. Мацея, апостала",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-const char *text_MAJ_15_CZOP[POCET_JAZYKOV + 1] =
-{
-	"",
-	"",
-	"",
-	"",
-	"",
-	"Panny Marie, ochránkyně Řádu kazatelů",
-	"",
-	"ru_text",
-	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char *text_MAJ_15_1_OP[POCET_JAZYKOV + 1] =
@@ -9358,7 +9345,7 @@ const char *text_JUL_04_1_OP[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char *text_JUL_04_2_OP[POCET_JAZYKOV + 1] =
+const char *text_JUL_04_2_OP[POCET_JAZYKOV + 1] = // CZ OP: 07JUL
 {
 	"Bl. Petra Juraja Frassatiho, laika",
 	"Bl. Petra Jiřího Frassatiho, terciáře",
@@ -13672,6 +13659,19 @@ const char* text_NOV_06_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_NOV_06_OP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Bonaventúru Garcia Paredesa, Hyacinta Serrana Lopeza, kňazov, " HTML_LINE_BREAK "a spoločníkov, španielskych mučeníkov",
+	"Bl. Bonaventury Garcia Paredese, Hyacinta Serrana Lopeze, kněží, " HTML_LINE_BREAK "a druhů, španělských mučedníků",
+	"",
+	"",
+	"",
+	"Bl. Bonaventury Garcia Paredese, Hyacinta Serrana Lopeze, kněží, " HTML_LINE_BREAK "a druhů, španělských mučedníků",
 	"",
 	"ru_text",
 	"by_text",
