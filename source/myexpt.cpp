@@ -105,7 +105,6 @@ void dumpFile(char *fname){
 // Make sure that exptstr accomodates at least cnt more bytes. If memory
 // allocation fails, return 0 and reset lengths to 0.
 bool ExpandExptstr(int cnt) {
-	if (exptstrlen == 0) return false;
 	if (exptstrlen + cnt >= exptstrsize) {
 		while (exptstrlen + cnt >= exptstrsize) {
 			exptstrsize *= 2;
