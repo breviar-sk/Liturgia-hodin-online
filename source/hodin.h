@@ -1792,12 +1792,12 @@ const char *html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 	/* STRING_2_FOR_NEW_LANGUAGE */
 },
 {
-	"Nedeľa" HTML_LINE_BREAK "Svätej" HTML_LINE_BREAK "rodiny",
-	"Neděle" HTML_LINE_BREAK "Svaté" HTML_LINE_BREAK "rodiny",
+	"Sviatok" HTML_LINE_BREAK "Svätej" HTML_LINE_BREAK "rodiny",
+	"Svátek" HTML_LINE_BREAK "Svaté" HTML_LINE_BREAK "rodiny",
 	"...",
-	"Dominica" HTML_LINE_BREAK "Sanctæ" HTML_LINE_BREAK "Familiæ",
+	"Festum" HTML_LINE_BREAK "Sanctæ" HTML_LINE_BREAK "Familiæ",
 	"",
-	"Neděle" HTML_LINE_BREAK "Svaté" HTML_LINE_BREAK "rodiny",
+	"Svátek" HTML_LINE_BREAK "Svaté" HTML_LINE_BREAK "rodiny",
 	"Szent" HTML_LINE_BREAK "Család" HTML_LINE_BREAK "ünnepe",
 	"ru_text",
 	"Святой Сям'і: Езуса, Марыі і Юзафа",

@@ -6345,8 +6345,8 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						sprintf(_global_den.lc_str_id, "%d.%d.", _global_den.den, _global_den.mesiac);
 					}
 					else if (_global_den.denvr == SV_RODINY) {
-						// nedela sv. rodiny
-						_rozbor_dna_LOG("/* nedela sv. rodiny */\n");
+						// nedela/sviatok sv. rodiny
+						_rozbor_dna_LOG("/* nedela/sviatok sv. rodiny */\n");
 						// ked padne NARODENIE_PANA na nedelu, sviatok sv. rodiny sa slavi 30. dec a nema prve vespery
 						_global_den = _global_r._SVATEJ_RODINY;
 					}
