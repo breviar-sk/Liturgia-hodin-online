@@ -1121,15 +1121,17 @@ extern short int query_type; // contains constants PRM_...
 #endif
 
 #define ALERT	{\
-	Log("ALERT\n");\
-	hlavicka((char *)html_title[_global_jazyk]);\
-	char pom2[MAX_STR];\
-	mystrcpy(pom2, STR_EMPTY, MAX_STR);\
-	char pom3[MAX_STR];\
-	mystrcpy(pom3, STR_EMPTY, MAX_STR);\
-	prilep_request_options(pom2, pom3);\
-	_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_ANO_SPEC, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
-	}
+	if(query_type != PRM_XML){\
+		Log("ALERT\n");\
+		hlavicka((char *)html_title[_global_jazyk]);\
+		char pom2[MAX_STR];\
+		mystrcpy(pom2, STR_EMPTY, MAX_STR);\
+		char pom3[MAX_STR];\
+		mystrcpy(pom3, STR_EMPTY, MAX_STR);\
+		prilep_request_options(pom2, pom3);\
+		_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_ANO_SPEC, NIE /* som_v_tabulke */, pom2, NIE /* zobraz_odkaz_na_skrytie */);\
+	}\
+}
 
 // used in interpretParameter()
 #define HTML_SEQUENCE_NONE       0
@@ -1169,6 +1171,8 @@ extern short int query_type; // contains constants PRM_...
 
 // main XML element
 #define XML_MAIN             "LHData"
+#define XML_ERROR            "LHError"
+#define XML_TITLE            "PrayerTitle"
 
 // element XML_DAY with sub-elements
 #define XML_DAY              "CalendarDay"
@@ -1197,6 +1201,13 @@ extern short int query_type; // contains constants PRM_...
 #define XML_LIT_COLOR        "LiturgicalCelebrationColor"
 #define XML_LIT_CALENDAR     "LiturgicalCalendar"
 #define XML_LIT_READINGS     "LiturgicalReadingsId"
+
+// element XML_INDEX with sub-elements
+#define XML_INDEX            "Index" // pointing to structure _struct_anchor_and_file primarily used as 'filename/anchor within that file' structure; may be transformed to DB structure
+
+#define XML_FILENAME         "FileName"
+#define XML_ANCHOR           "Anchor"
+#define XML_LOCATION_ID      "LocationId"
 
 // element XML_INFO with sub-elements
 #define XML_INFO             "Info"

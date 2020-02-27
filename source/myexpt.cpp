@@ -20,6 +20,7 @@
 #include "common.h"
 #include "myexpt.h"
 #include "mysysdef.h"
+#include "mydefs.h"
 
 char FILE_EXPORT[MAX_STR] = DEFAULT_FILE_EXPORT;
 
@@ -163,8 +164,8 @@ short int Export(const char *fmt, ...){
 	return(cnt);
 }
 
-short int ExportHtmlComment(const char *fmt, ...){
-	
+short int ExportHtmlComment(const char* fmt, ...) {
+
 	va_list argptr;
 	short int cnt = Export("\n" HTML_COMMENT_BEGIN);
 
@@ -172,19 +173,44 @@ short int ExportHtmlComment(const char *fmt, ...){
 #ifdef EXPORT_TO_STRING
 	cnt += Export_to_string(fmt, argptr);
 #else
-	if (exptused == SUCCESS){
+	if (exptused == SUCCESS) {
 		cnt += vfprintf(exportfile, fmt, argptr);
-		if (isbothExports){
+		if (isbothExports) {
 			cnt += vprintf(fmt, argptr);
 		}
 	}
-	else{
+	else {
 		cnt += vprintf(fmt, argptr);
 	}
 #endif /* EXPORT_TO_STRING */
 	va_end(argptr);
 
 	cnt += Export(HTML_COMMENT_END "\n");
+	return(cnt);
+}
+
+short int ExportXmlError(const char* fmt, ...) {
+
+	va_list argptr;
+	short int cnt = Export("\n" ELEM_BEGIN(XML_ERROR) "\n");
+
+	va_start(argptr, fmt);
+#ifdef EXPORT_TO_STRING
+	cnt += Export_to_string(fmt, argptr);
+#else
+	if (exptused == SUCCESS) {
+		cnt += vfprintf(exportfile, fmt, argptr);
+		if (isbothExports) {
+			cnt += vprintf(fmt, argptr);
+		}
+	}
+	else {
+		cnt += vprintf(fmt, argptr);
+	}
+#endif /* EXPORT_TO_STRING */
+	va_end(argptr);
+
+	cnt += Export("\n" ELEM_END(XML_ERROR) "\n");
 	return(cnt);
 }
 
