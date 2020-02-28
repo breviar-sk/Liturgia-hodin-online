@@ -1230,10 +1230,102 @@ const char *html_title[POCET_JAZYKOV + 1] =
 
 // html <title> element for pages generated for batch mode
 const char *html_title_batch_mode[POCET_JAZYKOV + 1] =
-{ "Liturgia hodín – statické texty", "Liturgie hodin – statické texty", "Liturgy of Hours – static texts", "Liturgia horarum – scripta statica", "", "Liturgie hodin – statické texty", "Az Imaórák Liturgiája – állandó szövegek", "Литургия часов – статическиe тексты", "Літургія гадзінаў – by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{
+	"Liturgia hodín – statické texty",
+	"Liturgie hodin – statické texty",
+	"Liturgy of Hours – static texts",
+	"Liturgia horarum – scripta statica",
+	"",
+	"Liturgie hodin – statické texty",
+	"Az Imaórák Liturgiája – állandó szövegek",
+	"Литургия часов – статическиe тексты",
+	"Літургія гадзінаў – by_text",
+	/* STRING_1_FOR_NEW_LANGUAGE */
+};
 
-const char *html_error_template[POCET_JAZYKOV + 1] =
-{ "Šablóna pre modlitbu sa nenašla. Zrejme neexistuje súbor `%s'.", "Šablona pro modlitbu se nenašla. Patrně neexistuje soubor `%s'.", "Template for prayer not found. File `%s' does not exist.", "Template for prayer not found. File `%s' does not exist.", "", "Šablona pro modlitbu se nenašla. Patrně neexistuje soubor `%s'.", "Nem található sablon az imához. %s' fájl nem létezik.", "Template for prayer not found. File `%s' does not exist.", "by_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char* html_error_template[POCET_JAZYKOV + 1] =
+{
+	"Šablóna pre modlitbu sa nenašla. Zrejme neexistuje súbor `%s'.",
+	"Šablona pro modlitbu se nenašla. Patrně neexistuje soubor `%s'.",
+	"Template for prayer not found. File `%s' does not exist.",
+	"Template for prayer not found. File `%s' does not exist.",
+	"Template for prayer not found. File `%s' does not exist.",
+	"Šablona pro modlitbu se nenašla. Patrně neexistuje soubor `%s'.",
+	"Nem található sablon az imához. %s' fájl nem létezik.",
+	"Template for prayer not found. File `%s' does not exist.",
+	"by_text %s",
+	/* STRING_1_FOR_NEW_LANGUAGE */
+};
+
+const char* html_error_saint[POCET_JAZYKOV + 1] =
+{
+	"V tento deň nie je sviatok žiadneho svätého, preto nemôžete požadovať svätého č. %d.",
+	"V tento den nemá svátek žádný svatý, proto nemůžete požadovat svatého č. %d.",
+	"For this date you cannot require saint nr. %d.",
+	"For this date you cannot require saint nr. %d.",
+	"For this date you cannot require saint nr. %d.",
+	"V tento den nemá svátek žádný svatý, proto nemůžete požadovat svatého č. %d.",
+	"hu_text %d.",
+	"For this date you cannot require saint nr. %d.",
+	"by_text %d",
+	/* STRING_1_FOR_NEW_LANGUAGE */
+};
+
+const char* html_error_saints[POCET_JAZYKOV + 1] =
+{
+	"Nie je viac ako %d sviatkov svätých v tento deň, preto nemôžete požadovať svätého č. %d.",
+	"Není více slavení svatých jako %d, proto nemůžete požadovat svatého č. %d.",
+	"For this date is not more saints than %d so you cannot require saint nr. %d.",
+	"For this date is not more saints than %d so you cannot require saint nr. %d.",
+	"For this date is not more saints than %d so you cannot require saint nr. %d.",
+	"Není více slavení svatých jako %d, proto nemůžete požadovat svatého č. %d.",
+	"hu_text %d; %d.",
+	"For this date is not more saints than %d so you cannot require saint nr. %d.",
+	"by_text %d; %d",
+	/* STRING_1_FOR_NEW_LANGUAGE */
+};
+
+const char* html_error_saturday_VM[POCET_JAZYKOV + 1] =
+{
+	"Tento deň je %s, a nie je sobota, takže nemôžete požadovať modlitbu `Spomienka Panny Márie v sobotu'.",
+	"Tento den je %s, a není sobota, proto nemůžete požadovat modlitbu `Sobotní památka Panny Marie'.",
+	"This day is %s, and is not Saturday, so you cannot require prayer `Saturday's memory of Virgin Mary'.",
+	"This day is %s, and is not Saturday, so you cannot require prayer `Saturday's memory of Virgin Mary'.",
+	"This day is %s, and is not Saturday, so you cannot require prayer `Saturday's memory of Virgin Mary'.",
+	"Tento den je %s, a není sobota, proto nemůžete požadovat modlitbu `Sobotní památka Panny Marie'.",
+	"hu_text %s.",
+	"This day is %s, and is not Saturday, so you cannot require prayer `Saturday's memory of Virgin Mary'.",
+	"by_text %s",
+	/* STRING_1_FOR_NEW_LANGUAGE */
+};
+
+const char* html_error_no_args[POCET_JAZYKOV + 1] =
+{
+	"Neboli zadané vstupné argumenty.",
+	"Nebyli zadané vstupní argumenty.",
+	"No input arguments.",
+	"No input arguments.",
+	"No input arguments.",
+	"Nebyli zadané vstupní argumenty.",
+	"No input arguments.",
+	"No input arguments.",
+	"by_text",
+	/* STRING_1_FOR_NEW_LANGUAGE */
+};
+
+const char* html_error_unknown_prayer[POCET_JAZYKOV + 1] =
+{
+	"Neznámy typ modlitby.",
+	"Neznámý typ modlitby.",
+	"Unknown prayer type.",
+	"Unknown prayer type.",
+	"Unknown prayer type.",
+	"Neznámý typ modlitby.",
+	"Unknown prayer type.",
+	"Unknown prayer type.",
+	"by_text",
+	/* STRING_1_FOR_NEW_LANGUAGE */
+};
 
 // navigation buttons/texts: previous, next, today
 const char *html_button_predchadzajuci_[POCET_JAZYKOV + 1] = { "Predchádzajúci", "Předchozí", "Previous", "Præcedens", "", "Předchozí", "Előző", "Предыдущий", "папярэдні", /* STRING_1_FOR_NEW_LANGUAGE */ };

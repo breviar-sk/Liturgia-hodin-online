@@ -379,7 +379,7 @@ extern const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_Modlitby(a)	nazov_Modlitby_jazyk[a][_global_jazyk]
 
 #define TEMPLATE_PREFIX_HTML	"m"
-#define TEMPLATE_PREFIX_XML		"../x"
+#define TEMPLATE_PREFIX_XML		"../m"
 
 #define TEMPLATE_POSTFIX_HTML	"htm"
 #define TEMPLATE_POSTFIX_XML	"xml"

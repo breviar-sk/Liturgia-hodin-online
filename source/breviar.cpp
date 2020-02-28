@@ -1591,8 +1591,13 @@ void _export_link_communia(short int spol_cast, char html_tag_begin[SMALL], char
 
 // vypise hlasky o tom, ze je prazdny formular resp. skript bol spusteny bez vstupnych hodnot
 void _main_prazdny_formular(void) {
-	ALERT;
-	Export("Neboli zadané vstupné argumenty.\n");
+	if (query_type == PRM_XML) {
+		ExportXmlError((char*)html_error_no_args[_global_jazyk]);
+	}
+	else {
+		ALERT;
+		Export((char *)html_error_no_args[_global_jazyk]);
+	}
 } // _main_prazdny_formular()
 
 #define DetailLog emptyLog
@@ -4333,7 +4338,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		Log("  _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS == %ld: ", _global_opt[OPT_1_CASTI_MODLITBY] & BIT_OPT_1_SKRY_POPIS);
 		Log("  _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT == %ld: ", _global_opt[OPT_0_SPECIALNE] & BIT_OPT_0_VOICE_OUTPUT);
 
-		if (!(useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS))) {
+		if (!(useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SKRY_POPIS)) && (je_popis)) {
 			Log("interpretParameter: PARAM_POPIS: including POPIS...\n");
 			switch (modlitba) {
 			case MODL_INVITATORIUM:
@@ -5058,66 +5063,78 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		}
 	} // PARAM_MODL_SPOMPRIVILEG
 	else if (equals(paramname, PARAM_CITANIE2_SPOMPRIVILEG)) { // 2011-03-16: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po 2. čítaní)
-		switch (modlitba) {
-		case MODL_POSV_CITANIE:
-			ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.citanie_spomprivileg);
-			break;
-		default:
-			// tieto modlitby nemajú možnosť spomienky na svätca v pôstnom období
-			break;
-		} // switch
+		if (_global_skip_in_prayer == NIE) {
+			switch (modlitba) {
+			case MODL_POSV_CITANIE:
+				ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.citanie_spomprivileg);
+				break;
+			default:
+				// tieto modlitby nemajú možnosť spomienky na svätca v pôstnom období
+				break;
+			} // switch
+		}
 	} // PARAM_CITANIE2_SPOMPRIVILEG
 
 	// predĺžené slávenie vigílií v rámci posvätných čítaní
 	else if (equals(paramname, PARAM_ANTIFONA_VIG)) {
-		switch (modlitba) {
-		case MODL_POSV_CITANIE:
-			ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.ant_chval);
-			break;
-		default:
-			// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
-			break;
-		} // switch
+		if (_global_skip_in_prayer == NIE) {
+			switch (modlitba) {
+			case MODL_POSV_CITANIE:
+				ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.ant_chval);
+				break;
+			default:
+				// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
+				break;
+			} // switch
+		}
 	} // PARAM_ANTIFONA_VIG
 	else if (equals(paramname, PARAM_CHVALOSPEV1)) {
-		switch (modlitba) {
-		case MODL_POSV_CITANIE:
-			ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.chval1);
-			break;
-		default:
-			// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
-			break;
-		} // switch
+		if (_global_skip_in_prayer == NIE) {
+			switch (modlitba) {
+			case MODL_POSV_CITANIE:
+				ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.chval1);
+				break;
+			default:
+				// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
+				break;
+			} // switch
+		}
 	} // PARAM_CHVALOSPEV1
 	else if (equals(paramname, PARAM_CHVALOSPEV2)) {
-		switch (modlitba) {
-		case MODL_POSV_CITANIE:
-			ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.chval2);
-			break;
-		default:
-			// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
-			break;
-		} // switch
+		if (_global_skip_in_prayer == NIE) {
+			switch (modlitba) {
+			case MODL_POSV_CITANIE:
+				ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.chval2);
+				break;
+			default:
+				// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
+				break;
+			} // switch
+		}
 	} // PARAM_CHVALOSPEV2
 	else if (equals(paramname, PARAM_CHVALOSPEV3)) {
-		switch (modlitba) {
-		case MODL_POSV_CITANIE:
-			ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.chval3);
-			break;
-		default:
-			// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
-			break;
-		} // switch
+		if (_global_skip_in_prayer == NIE) {
+			switch (modlitba) {
+			case MODL_POSV_CITANIE:
+				ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.chval3);
+				break;
+			default:
+				// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
+				break;
+			} // switch
+		}
 	} // PARAM_CHVALOSPEV3
 	else if (equals(paramname, PARAM_EVANJELIUM)) {
-		switch (modlitba) {
-		case MODL_POSV_CITANIE:
-			ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.evanjelium);
-			break;
-		default:
-			// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
-			break;
-		} // switch
+		if (_global_skip_in_prayer == NIE) {
+			switch (modlitba) {
+			case MODL_POSV_CITANIE:
+				ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.evanjelium);
+				break;
+			default:
+				// tieto modlitby nemajú možnosť predĺženého slávenia vigílie
+				break;
+			} // switch
+		}
 	} // PARAM_EVANJELIUM
 	else if (equals(paramname, PARAM_TEXT)) {
 		// bez ohľadu na modlitba, ktorý nie je nastavený, sa includuje nastavený súbor
@@ -5259,8 +5276,13 @@ void showPrayer(short int typ, short int modlitba, short int ktore_templaty = SH
 
 	// umožníme aj MODL_NEURCENA -- pre statické texty
 	if (((modlitba > MODL_PRVE_KOMPLETORIUM) || (modlitba < MODL_INVITATORIUM))) {
-		ALERT;
-		Export("Neznámy typ modlitby.\n");
+		if (query_type == PRM_XML) {
+			ExportXmlError((char*)html_error_unknown_prayer[_global_jazyk]);
+		}
+		else {
+			ALERT;
+			Export((char*)html_error_unknown_prayer[_global_jazyk]);
+		}
 		return;
 	}// neznámy typ modlitby
 
@@ -6293,20 +6315,35 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 	// kontrola: ak bolo požadované väčšie číslo (poradie svätého), ako je v _global_pocet_svatych, resp. keď nie je sobota a je požadované PORADIE_PM_SOBOTA (spomienka P. Márie v sobotu)
 	if ((_global_pocet_svatych == 0) && (_global_pocet_svatych < poradie_svaty) && (poradie_svaty != PORADIE_PM_SOBOTA)) {
 		_rozbor_dna_LOG("returning from _rozbor_dna(), because: (_global_pocet_svatych == 0) && (_global_pocet_svatych < poradie_svaty) && (poradie_svaty != %d)\n", PORADIE_PM_SOBOTA);
-		ALERT;
-		Export("V tento deň nie je sviatok žiadneho svätého, preto nemôžete požadovať svätého č. %d.", poradie_svaty);
+		if (query_type == PRM_XML) {
+			ExportXmlError((char*)html_error_saint[_global_jazyk], poradie_svaty);
+		}
+		else {
+			ALERT;
+			Export((char *)html_error_saint[_global_jazyk], poradie_svaty);
+		}
 		return FAILURE;
 	}
 	else if ((_global_pocet_svatych < poradie_svaty) && (poradie_svaty != PORADIE_PM_SOBOTA)) {
 		_rozbor_dna_LOG("returning from _rozbor_dna(), because: (_global_pocet_svatych < poradie_svaty) && (poradie_svaty != %d)\n", PORADIE_PM_SOBOTA);
-		ALERT;
-		Export("Nie je viac ako %d sviatkov svätých v tento deň, preto nemôžete požadovať svätého č. %d.", _global_pocet_svatych, poradie_svaty);
+		if (query_type == PRM_XML) {
+			ExportXmlError((char*)html_error_saints[_global_jazyk], _global_pocet_svatych, poradie_svaty);
+		}
+		else {
+			ALERT;
+			Export((char*)html_error_saints[_global_jazyk], _global_pocet_svatych, poradie_svaty);
+		}
 		return FAILURE;
 	}
 	else if ((_global_den.denvt != DEN_SOBOTA) && (poradie_svaty == PORADIE_PM_SOBOTA)) {
 		_rozbor_dna_LOG("returning from _rozbor_dna(), because: (_global_den.denvt != DEN_SOBOTA) && (poradie_svaty == %d)\n", PORADIE_PM_SOBOTA);
-		ALERT;
-		Export("Tento deň je %s, a nie je sobota, takže nemôžete požadovať modlitbu `Spomienka Panny Márie v sobotu'.\n", nazov_dna(_global_den.denvt));
+		if (query_type == PRM_XML) {
+			ExportXmlError((char*)html_error_saturday_VM[_global_jazyk], nazov_dna(_global_den.denvt));
+		}
+		else {
+			ALERT;
+			Export((char*)html_error_saturday_VM[_global_jazyk], nazov_dna(_global_den.denvt));
+		}
 		return FAILURE;
 	}
 
@@ -6553,8 +6590,13 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		// do _local_den priradim slavenie pm v sobotu v dalsom
 		if (_global_den.denvt != DEN_SOBOTA) {
 			Log("Tento den nie je sobota, preto nemoze mat spomienku P. Marie v sobotu!\n");
-			ALERT;
-			Export("Tento deň nie je sobota, preto nemôže mať `spomienku Panny Márie v sobotu'!\n");
+			if (query_type == PRM_XML) {
+				ExportXmlError((char*)html_error_saturday_VM[_global_jazyk], nazov_dna(_global_den.denvt));
+			}
+			else {
+				ALERT;
+				Export((char*)html_error_saturday_VM[_global_jazyk], nazov_dna(_global_den.denvt));
+			}
 			return FAILURE;
 		}
 		else {
@@ -7347,7 +7389,9 @@ void init_global_string_modlitba(short int modlitba) {
 	Log("-- init_global_string_modlitba(%d, %s) -- začiatok\n", modlitba, nazov_modlitby(modlitba));
 	Log("pôvodná hodnota: %s\n", _global_string_modlitba);
 	if (modlitba != _global_modlitba) {
-		ExportHtmlComment("modlitba == %d, _global_modlitba == %d", modlitba, _global_modlitba);
+		if (query_type != PRM_XML) {
+			ExportHtmlComment("modlitba == %d, _global_modlitba == %d", modlitba, _global_modlitba);
+		}
 	}
 	if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV) && ((_global_modlitba == MODL_DRUHE_VESPERY) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM))) {
 		Log("Spomienka vsetkych vernych zosnulych -- nevypisem, ze su druhe vespery (resp. kompletórium po nich)...\n");
@@ -7371,7 +7415,9 @@ void init_global_string_podnadpis(short int modlitba) {
 	Log("pôvodná hodnota: %s\n", _global_string_podnadpis);
 
 	if (modlitba != _global_modlitba) {
-		ExportHtmlComment("modlitba == %d, _global_modlitba == %d", modlitba, _global_modlitba);
+		if (query_type != PRM_XML) {
+			ExportHtmlComment("modlitba == %d, _global_modlitba == %d", modlitba, _global_modlitba);
+		}
 	}
 
 	// pre modlitbu cez deň dáme do nadpisu informáciu o tom, že ide o doplnkovú psalmódiu
@@ -7815,8 +7861,13 @@ short int _rozbor_dna_s_modlitbou(_struct_den_mesiac datum, short int rok, short
 
 	if ((poradie_svateho == PORADIE_PM_SOBOTA) && (_global_den.denvt != DEN_SOBOTA)) {
 		Log("(poradie_svateho == %d) && (_global_den.denvt != DEN_SOBOTA), so returning FAILURE...\n", PORADIE_PM_SOBOTA);
-		ALERT;
-		Export("Nemôžete požadovať túto modlitbu, pretože nie je sobota.\n");
+		if (query_type == PRM_XML) {
+			ExportXmlError((char*)html_error_saturday_VM[_global_jazyk], nazov_dna(_global_den.denvt));
+		}
+		else {
+			ALERT;
+			Export((char*)html_error_saturday_VM[_global_jazyk], nazov_dna(_global_den.denvt));
+		}
 		return FAILURE;
 	}
 	else if ((poradie_svateho == PORADIE_PM_SOBOTA) && (_global_den.denvt == DEN_SOBOTA) && ((modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM))) {
@@ -7832,8 +7883,13 @@ short int _rozbor_dna_s_modlitbou(_struct_den_mesiac datum, short int rok, short
 	}
 	else if ((poradie_svateho != PORADIE_PM_SOBOTA) && (_global_pocet_svatych < poradie_svateho)) {
 		Log("(poradie_svateho != %d) && (_global_pocet_svatych < poradie_svateho), so returning FAILURE...\n", PORADIE_PM_SOBOTA);
-		ALERT;
-		Export("Nemôžete požadovať túto modlitbu, pretože na daný deň je menej svätých.\n");
+		if (query_type == PRM_XML) {
+			ExportXmlError((char*)html_error_saints[_global_jazyk], _global_pocet_svatych, poradie_svateho);
+		}
+		else {
+			ALERT;
+			Export((char*)html_error_saints[_global_jazyk], _global_pocet_svatych, poradie_svateho);
+		}
 		return FAILURE;
 	}
 
@@ -13852,7 +13908,12 @@ void _main_rozbor_dna(short int typ, short int d, short int m, short int r, shor
 	// kontrola údajov ukončená, podľa nej pokračujeme ďalej
 	if (result == FAILURE) {
 		Log("/* teraz result == FAILURE */\n");
-		ALERT;
+		if (query_type == PRM_XML) {
+			// nothing to do
+		}
+		else {
+			ALERT;
+		}
 		return;
 	}
 
@@ -14067,7 +14128,12 @@ void _main_rozbor_dna_txt_xml(short int typ, short int d, short int m, short int
 	// kontrola údajov ukončená, podľa nej pokračujeme ďalej
 	if (result == FAILURE) {
 		Log("/* teraz result == FAILURE */\n");
-		ALERT;
+		if (query_type == PRM_XML) {
+			// nothing to do
+		}
+		else {
+			ALERT;
+		}
 		return;
 	}
 
@@ -15458,7 +15524,12 @@ void _main_batch_mode(
 	// udaje su skontrolovane
 	if (result == FAILURE) {
 		Log("/* teraz result == FAILURE */\n");
-		ALERT;
+		if (query_type == PRM_XML) {
+			// nothing to do
+		}
+		else {
+			ALERT;
+		}
 		return;
 	}
 	else {
