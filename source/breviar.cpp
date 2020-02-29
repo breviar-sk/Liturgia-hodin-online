@@ -2666,7 +2666,11 @@ void includeFile(short int typ, short int modlitba, const char *paramname, const
 				}// zobraziť/nezobraziť číslovanie veršov
 
 				if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (equals(rest, PARAM_HIDE_FOR_VOICE_OUTPUT))) {
+
 					if (equals(strbuff, INCLUDE_BEGIN) && (vnutri_inkludovaneho == 1)) {
+
+						_global_skip_in_prayer += ANO; // increment
+
 						write = NIE;
 #if defined(EXPORT_HTML_SPECIALS)
 						Export("(stop)hide-for-voice-output");
@@ -2678,6 +2682,9 @@ void includeFile(short int typ, short int modlitba, const char *paramname, const
 						Export("hide-for-voice-output(start)");
 #endif
 						write = ANO;
+
+						_global_skip_in_prayer -= ANO; // decrement
+
 						Log("  opat writing to export file, end of hide-for-voice-output.\n");
 					}
 				}// hide passage for voice output
@@ -2925,7 +2932,7 @@ void includeFile(short int typ, short int modlitba, const char *paramname, const
 			if (vnutri_z95 == ANO) {
 				AppendWchar(c, sizeof(z95buff), z95buff, &z95_index);
 			}
-			if (write == ANO) {
+			if (write == ANO && _global_skip_in_prayer == NIE) {
 				// nezlomiteľné medzery; v DetailLog logujeme 1:1 presne znak bez transformácie
 				ExportChar(c, isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 				// DetailLog("%c", c);
@@ -2941,7 +2948,7 @@ void includeFile(short int typ, short int modlitba, const char *paramname, const
 			if (((isbuff == 1) && (strlen(strbuff) > MAX_BUFFER - 2)) || (buff_index > MAX_BUFFER - 2)) {
 				Log("pravdepodobne osamotený znak '{'...\n");
 				isbuff = 0;
-				if (write == ANO) {
+				if (write == ANO && _global_skip_in_prayer == NIE) {
 					// nezlomiteľné medzery; v DetailLog logujeme 1:1 presne reťazec bez transformácie
 					Export("%s", convert_nonbreaking_spaces(strbuff));
 					// DetailLog("%s", strbuff);
