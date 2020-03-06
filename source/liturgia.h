@@ -1023,7 +1023,7 @@ extern const char *nazov_slavenia_lokal[];
 #define LOKAL_SLAV_KONSEKR_KOSTOLY					18
 #define LOKAL_SLAV_DRUHA_VELK_NEDELA				19
 #define LOKAL_SLAV_KONIEC_OKTAVY_NAR				20
-#define LOKAL_SLAV_free_1		21 // free
+#define LOKAL_SLAV_OCD_IT							21
 #define LOKAL_SLAV_PRAHA_PATRON						22
 #define LOKAL_SLAV_PRAHA							23
 #define LOKAL_SLAV_BRNO								24
