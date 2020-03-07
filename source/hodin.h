@@ -5791,6 +5791,19 @@ const char *text_FEB_04_OPRAEM[POCET_JAZYKOV + 1] =
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_FEB_04_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Máriu Eugena od Dieťaťa Ježiša, kňaza",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char *text_FEB_05[POCET_JAZYKOV + 1] =
 {
 	"Sv. Agáty, panny a mučenice", // direktóriá uvádzajú Agáta s dlhým "á"; LH s krátkym "a" Agata
@@ -7176,6 +7189,19 @@ const char *text_MAJ_04_OP_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Utrpení našeho Pána Ježíše Krista",
+	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_04_OCD[POCET_JAZYKOV + 1] =
+{
+	"Bl. Angela Máriu Prata, Lukáša od sv. Jozefa, " HTML_LINE_BREAK "kňazov, a spoločníkov, mučeníkov",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"ru_text",
 	"by_text",
