@@ -7300,7 +7300,7 @@ const char *text_MAJ_08_OP[POCET_JAZYKOV + 1] =
 };
 const char *text_MAJ_08_OFM[POCET_JAZYKOV + 1] =
 {
-	"Preblahoslavenej Panny Márie, Matky a Sprostredkovateľky milostí",
+	"Prebl. Panny Márie, Matky a Sprostredkovateľky milostí",
 	"",
 	"",
 	"",
@@ -9563,7 +9563,7 @@ const char *text_JUL_07_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_07_OCD[POCET_JAZYKOV + 1] =
 {
-	"Panny Márie, Matky Božej milosti",
+	"Prebl. Panny Márie, Matky Božej milosti",
 	"",
 	"",
 	"",
@@ -11273,7 +11273,7 @@ const char *text_AUG_26_BY[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_26_OCD[POCET_JAZYKOV + 1] =
 {
-	"Spomienka prebodnutia srdca sv. Terézie od Ježiša, našej Matky",
+	"Spomienka prebodnutia srdca sv. Terézie od Ježiša, našej matky",
 	"",
 	"",
 	"",
