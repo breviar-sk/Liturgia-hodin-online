@@ -273,6 +273,10 @@ div.navm p {
 	text-indent: 1.2em; 
 }
 
+.reading p.last {
+	padding-bottom: 1em; 
+}
+
 .reading p.resp {
 	color: #ff0000; 
 	font-size: 80%;

@@ -4585,7 +4585,7 @@ const char *html_text_kalendar[POCET_JAZYKOV + 1] =
 	"kalendár",
 	"kalendář",
 	"calendar",
-	"calendario",
+	"calendarium",
 	"",
 	"kalendář",
 	"a naptárat",
