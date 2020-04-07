@@ -12684,7 +12684,7 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 		Log("teraz uvidime, ci vespery/kompletorium nasledovneho dna nemaju nahodou prioritu...\n");
 
 		// netyka sa to zeleneho stvrtka, velkeho tyzdna, velkonocneho trojdnia
-		if ((_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (_global_den.denvt != DEN_NEDELA) && (_global_den.denvt != DEN_STVRTOK)) {
+		if (((_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) && (_global_den.denvt != DEN_NEDELA)) || (_global_den.denvr == ZELENY_STVRTOK)) {
 			Log("netyka sa to Veľkého týždňa (okrem druhých vešpier Kvetnej nedele), ani Zeleného štvrtka\n");
 			goto LABEL_NIE_INE_VESPERY;
 		}
@@ -12693,7 +12693,7 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 			goto LABEL_NIE_INE_VESPERY;
 		}
 		// ...a tiez sa to netyka popolcovej stredy, 09/03/2000A.D.
-		if ((_global_den.denvr == _global_r._POPOLCOVA_STREDA.denvr) || ((_global_den.denvr == (_global_r._POPOLCOVA_STREDA.denvr - 1)))) {
+		if ((_global_den.denvr == POPOLCOVA_STREDA) || ((_global_den.denvr == (POPOLCOVA_STREDA - 1)))) {
 			// preto aj POPOLCOVA_STREDA aj POPOLCOVA_STREDA - 1, lebo prve aj druhe vespery
 			Log("netyka sa to popolcovej stredy\n");
 			goto LABEL_NIE_INE_VESPERY;
