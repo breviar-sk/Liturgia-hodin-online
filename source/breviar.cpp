@@ -5622,7 +5622,7 @@ short int atomodlitba(char *modlitba) {
 	short int p = MODL_NEURCENA;
 	// rozparsovanie parametra modlitba
 	Log("atomodlitba(%s): rozparsovanie parametra modlitba...\n", modlitba);
-	if (equals(modlitba, STR_EMPTY))
+	if (equals(modlitba, STR_EMPTY) || strlen(modlitba) < 1)
 		p = MODL_NEURCENA;
 	else if (equals(modlitba, STR_MODL_VSETKY))
 		p = MODL_VSETKY;
@@ -5652,12 +5652,12 @@ short int atomodlitba(char *modlitba) {
 		p = MODL_NEURCENA;
 
 	// este treba skontrolovat, ci nazov modlitby nie je string ...azov_modlitby[...]
-	if (p == MODL_NEURCENA) {
+	if ((p == MODL_NEURCENA) && strlen(modlitba) > 0) {
 		int pom_i = atoi(modlitba);
 		// atoi() vracia hodnotu 0 (naša hodnota MODL_INVITATORIUM) pre každý reťazec, ktorý nie je konvertovateľný na číslo, 
 		// preto sme vyššie porovnali s "0" špeciálne a tu značí pom_i == 0 nie MODL_INVITATORIUM, ale chybu
 		Log("atomodlitba(): pokus určenia modlitby konverziou reťazca `%s' na číslo (%d)...\n", modlitba, pom_i);
-		if ((pom_i < MODL_POSV_CITANIE) || (pom_i > MODL_VSETKY)) {
+		if ((pom_i < MODL_INVITATORIUM) || (pom_i > MODL_VSETKY)) {
 			// postupne porovnavame s troma konstantami, nazov_[modlitby|Modlitby|MODLITBY], a to pre konstanty MODL_INVITATORIUM -- MODL_VSETKY (vratane)
 			Log("atomodlitba(): pokus určenia modlitby podľa jazykovo závislých reťazcov pre modlitba == `%s'...\n", modlitba);
 			for (pom_i = MODL_INVITATORIUM; pom_i <= MODL_VSETKY; pom_i++) {
