@@ -19084,7 +19084,7 @@ int breviar_main(int argc, const char **argv) {
 
 	if (ret_pom != SUCCESS) {
 		ALERT;
-		Export("Neboli zadané vhodné parametre (1).\n");
+		Export("Neboli zadané vhodné parametre (1; params == %d).\n", params);
 		Export(HTML_P_BEGIN"Chyba: %s\n", bad_param_str);
 	}
 
@@ -19385,7 +19385,7 @@ int breviar_main(int argc, const char **argv) {
 	else {
 		if (ret_pom != SUCCESS) {
 			ALERT;
-			Export("Neboli zadané vhodné parametre (2).\n");
+			Export("Neboli zadané vhodné parametre (2; params == %d).\n", params);
 			Export(HTML_P_BEGIN"Chyba: %s\n", bad_param_str);
 		}
 		// else: netreba vypisovať, lebo sa vypísalo už vyššie
