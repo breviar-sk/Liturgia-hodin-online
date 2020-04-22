@@ -5657,7 +5657,8 @@ short int atomodlitba(char *modlitba) {
 		// atoi() vracia hodnotu 0 (naša hodnota MODL_INVITATORIUM) pre každý reťazec, ktorý nie je konvertovateľný na číslo, 
 		// preto sme vyššie porovnali s "0" špeciálne a tu značí pom_i == 0 nie MODL_INVITATORIUM, ale chybu
 		Log("atomodlitba(): pokus určenia modlitby konverziou reťazca `%s' na číslo (%d)...\n", modlitba, pom_i);
-		if ((pom_i < MODL_INVITATORIUM) || (pom_i > MODL_VSETKY)) {
+		// for strings, atoi()'s behavior: zero is returned
+		if ((pom_i == 0) || (pom_i < MODL_INVITATORIUM) || (pom_i > MODL_VSETKY)) {
 			// postupne porovnavame s troma konstantami, nazov_[modlitby|Modlitby|MODLITBY], a to pre konstanty MODL_INVITATORIUM -- MODL_VSETKY (vratane)
 			Log("atomodlitba(): pokus určenia modlitby podľa jazykovo závislých reťazcov pre modlitba == `%s'...\n", modlitba);
 			for (pom_i = MODL_INVITATORIUM; pom_i <= MODL_VSETKY; pom_i++) {
