@@ -1900,6 +1900,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 10: mystrcpy(str, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV, SMALL); break; // BIT_OPT_0_TRANSPARENT_NAV
 			case 11: mystrcpy(str, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, SMALL); break; // BIT_OPT_0_ZALMY_FULL_TEXT
 			case 12: mystrcpy(str, STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, SMALL); break; // BIT_OPT_0_REF_BIBLE_COM
+			case 13: mystrcpy(str, STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL, SMALL); break; // BIT_OPT_0_ITALICS_CONDITIONAL
 			}
 		}
 		break;

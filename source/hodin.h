@@ -2314,6 +2314,34 @@ const char *html_text_opt_0_ref_bible_com_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char* html_text_opt_0_italics_cond[POCET_JAZYKOV + 1] =
+{
+	"podmienečné zobrazenie niektorých textov kurzívou",
+	"podmíneční zobrazení některých textů kurzívou",
+	"conditionally display some texts in italics",
+	"la_text",
+	"",
+	"podmíneční zobrazení některých textů kurzívou",
+	"hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_0_italics_cond_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char *html_text_opt_0_citania[POCET_JAZYKOV + 1] =
 {
 	"čítania v omši",

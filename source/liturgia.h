@@ -699,6 +699,10 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_LINK_ZALM95_BEGIN				"z95"
 #define PARAM_LINK_ZALM95_END				SYMBOL_END "" PARAM_LINK_ZALM95_BEGIN
 
+// zobrazenie znakov kurzívou (podmienečné)
+#define PARAM_ITALICS_COND_BEGIN			"i"
+#define PARAM_ITALICS_COND_END				SYMBOL_END "" PARAM_ITALICS_COND_BEGIN
+
 // full text of psalms (also verses omitted from official Latin LH)
 #define PARAM_PSALM_FULL_TEXT_BEGIN         "full-text"
 #define PARAM_PSALM_FULL_TEXT_END           SYMBOL_END "" PARAM_PSALM_FULL_TEXT_BEGIN
@@ -1520,7 +1524,7 @@ extern long _global_force_opt[POCET_GLOBAL_OPT];
 #define USE_STR_OPT           -2
 #define USE_STR_FORCE_OPT     -1
 
-#define POCET_OPT_0_SPECIALNE               13 // jednotlivé komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               14 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                      1 // export also verse numbers
@@ -1536,6 +1540,7 @@ extern long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_TRANSPARENT_NAV         1024 // transparent navigation arrow in text
 #define BIT_OPT_0_ZALMY_FULL_TEXT         2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
 #define BIT_OPT_0_REF_BIBLE_COM           4096 // precondition: BIT_OPT_0_REFERENCIE must be true; instead of standard URL, generates link to bible.com
+#define BIT_OPT_0_ITALICS_CONDITIONAL     8192 // display text in italics (conditional)
 
 #define POCET_OPT_1_CASTI_MODLITBY          19 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];

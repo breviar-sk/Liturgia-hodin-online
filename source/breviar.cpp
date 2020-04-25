@@ -2665,6 +2665,30 @@ void includeFile(short int typ, short int modlitba, const char *paramname, const
 					}
 				}// zobraziť/nezobraziť číslovanie veršov
 
+				// zobraziť/nezobraziť text kurzívou
+				if (equals(strbuff, PARAM_ITALICS_COND_BEGIN) && (vnutri_inkludovaneho == 1)) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ITALICS_CONDITIONAL)) {
+						Export("<i>");
+					}
+					else {
+#if defined(EXPORT_HTML_SPECIALS)
+						// Export("<!--it.cond.:zač.-->");
+#endif
+						Log("  ruším writing to export file, kvôli PARAM_ITALICS_COND_BEGIN...\n");
+					}
+				}// zobraziť/nezobraziť text kurzívou
+				if (equals(strbuff, PARAM_ITALICS_COND_END) && (vnutri_inkludovaneho == 1)) {
+					if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ITALICS_CONDITIONAL)) {
+						Export("</i>");
+					}
+					else {
+#if defined(EXPORT_HTML_SPECIALS)
+						// Export("<!--it.cond.:end-->");
+#endif
+						Log("  opäť writing to export file, PARAM_ITALICS_COND_END...\n");
+					}
+				}// zobraziť/nezobraziť číslovanie veršov
+
 				if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) && (equals(rest, PARAM_HIDE_FOR_VOICE_OUTPUT))) {
 
 					if (equals(strbuff, INCLUDE_BEGIN) && (vnutri_inkludovaneho == 1)) {
@@ -3181,6 +3205,28 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			else {
 				// Log("  opäť writing to export file, PARAM_CISLO_VERSA_END...\n");
 				_global_skip_in_prayer_2 = NIE;
+			}
+		}
+	}// zobraziť/nezobraziť číslovanie veršov
+
+	// verse numbering
+	else if (equals(paramname, PARAM_ITALICS_COND_BEGIN)) {
+		if (_global_skip_in_prayer == NIE) {
+			if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ITALICS_CONDITIONAL)) {
+				Export("<i>");
+			}
+			else {
+				// just print what follows
+			}
+		}
+	}// zobraziť/nezobraziť číslovanie veršov
+	else if (equals(paramname, PARAM_ITALICS_COND_END)) {
+		if (_global_skip_in_prayer == NIE) {
+			if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ITALICS_CONDITIONAL)) {
+				Export("</i>");
+			}
+			else {
+				// nothing to do
 			}
 		}
 	}// zobraziť/nezobraziť číslovanie veršov
@@ -7601,6 +7647,9 @@ void xml_export_options(void) {
 				case 12: // BIT_OPT_0_REF_BIBLE_COM
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_REF_BIBLE_COM)"%ld" ELEM_END(XML_BIT_OPT_0_REF_BIBLE_COM) "\n", BIT_OPT_0_REF_BIBLE_COM, STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, html_text_opt_0_ref_bible_com[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)));
 					break;
+				case 13: // BIT_OPT_0_ITALICS_CONDITIONAL
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_ITALICS_CONDITIONAL)"%ld" ELEM_END(XML_BIT_OPT_0_ITALICS_CONDITIONAL) "\n", BIT_OPT_0_ITALICS_CONDITIONAL, STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL, html_text_opt_0_italics_cond[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ITALICS_CONDITIONAL)));
+					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE) "\n");
@@ -10527,6 +10576,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_VERSE
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_VERSE, STR_FORCE_BIT_OPT_0_VERSE, html_text_opt_0_verse[_global_jazyk], html_text_opt_0_verse_explain[_global_jazyk]);
+
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ITALICS_CONDITIONAL, STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL, html_text_opt_0_italics_cond[_global_jazyk], html_text_opt_0_italics_cond_explain[_global_jazyk]);
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_REF
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE, STR_FORCE_BIT_OPT_0_REF, html_text_opt_0_referencie[_global_jazyk], html_text_opt_0_referencie_explain[_global_jazyk]);

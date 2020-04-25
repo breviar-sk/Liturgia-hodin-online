@@ -498,6 +498,14 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_0_REF_BIBLE_COM "of0bc"
 #endif
 
+// podmienečné zobrazenie textu kurzívou
+#define FORCE_BIT_OPT_0_ITALICS_CONDITIONAL 142
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL "FORCE_BIT_OPT_0_ITALICS_CONDITIONAL"
+#else
+#define STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL "of0ic"
+#endif
+
 // liturgické čítania
 #define FORCE_BIT_OPT_0_CIT 63
 #ifdef LONG_PARAM_NAMES
@@ -1264,6 +1272,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_TRANSPARENT_NAV           "BitOpt0TransparentNav"
 #define XML_BIT_OPT_0_ZALMY_FULL_TEXT           "BitOpt0PsalmsFullText"
 #define XML_BIT_OPT_0_REF_BIBLE_COM             "BitOpt0ReferencesBibleDotCom"
+#define XML_BIT_OPT_0_ITALICS_CONDITIONAL       "BitOpt0ItalicsConditional"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"
