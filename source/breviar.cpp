@@ -10577,9 +10577,6 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_VERSE
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_VERSE, STR_FORCE_BIT_OPT_0_VERSE, html_text_opt_0_verse[_global_jazyk], html_text_opt_0_verse_explain[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ITALICS_CONDITIONAL, STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL, html_text_opt_0_italics_cond[_global_jazyk], html_text_opt_0_italics_cond_explain[_global_jazyk]);
-
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_REF
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE, STR_FORCE_BIT_OPT_0_REF, html_text_opt_0_referencie[_global_jazyk], html_text_opt_0_referencie_explain[_global_jazyk]);
 
@@ -10604,6 +10601,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, html_text_opt_0_zalmy_full_text[_global_jazyk], html_text_opt_0_zalmy_full_text_explain[_global_jazyk]);
+
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ITALICS_CONDITIONAL, STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL, html_text_opt_0_italics_cond[_global_jazyk], html_text_opt_0_italics_cond_explain[_global_jazyk]);
 
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");

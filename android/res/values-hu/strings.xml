@@ -38,6 +38,7 @@
     <string name="footnotes">Jegyzetek, lábjegyzetek</string>
     <string name="liturgical_readings">A liturgikus olvasmányok</string>
     <string name="psalms_omissions">Zsoltárok kihagyott részei</string>
+    <string name="italics_conditional">Néhány szöveg (elizálva) dőlt betűvel</string>
 
     <string name="display_settings_title">Megjelenés beállításai</string>
     <string name="first_vespers_buttons">Vasárnapok és főünnepek esetén az I. Esti dicséret gombja az ünneplés napján jelenjen meg</string>

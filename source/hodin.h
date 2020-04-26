@@ -2316,13 +2316,13 @@ const char *html_text_opt_0_ref_bible_com_explain[POCET_JAZYKOV + 1] =
 
 const char* html_text_opt_0_italics_cond[POCET_JAZYKOV + 1] =
 {
-	"podmienečné zobrazenie niektorých textov kurzívou",
-	"podmíneční zobrazení některých textů kurzívou",
-	"conditionally display some texts in italics",
-	"la_text",
+	"niektoré texty (elízie) kurzívou",
+	"některé texty (elize) kurzívou",
+	"special texts (elisions) in italics",
+	"elisiones in hymnis italice notantur",
 	"",
-	"podmíneční zobrazení některých textů kurzívou",
-	"hu_text",
+	"některé texty (elize) kurzívou",
+	"néhány szöveg (elizálva) dőlt betűvel",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

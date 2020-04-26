@@ -53,6 +53,11 @@
           android:title="@string/psalms_omissions"
           app:actionLayout="@layout/widget_switch"
     />
+
+    <item android:id="@+id/italics_conditional"
+          android:title="@string/italics_conditional"
+          app:actionLayout="@layout/widget_switch"
+    />
   </menu>
   </item>
 </menu>

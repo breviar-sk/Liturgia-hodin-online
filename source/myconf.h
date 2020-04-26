@@ -61,8 +61,8 @@ extern char cfg_bible_com_version_id_default[POCET_JAZYKOV + 1][MAX_SMALL_STR];
 
 #define CFG_OPTION_DEFAULT(i) cfg_option_default[i][_global_jazyk]
 
-const long cfg_option_default_PROG[POCET_GLOBAL_OPT] = 
-{130, 5376, 29432, 0, 0, 0, 0};
+const long cfg_option_default_PROG[POCET_GLOBAL_OPT] =
+{ 8835, 5376, 29432, 0, 0, 0, 0 };
 
 void setConfigDefaultsOther(short int j);
 
@@ -70,4 +70,3 @@ void readConfig(void);
 void printConfig(void);
 
 #endif /* __MYCONF_H_ */
-

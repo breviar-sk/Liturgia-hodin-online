@@ -59,5 +59,9 @@ public class PrayerSettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setPsalmsOmissions(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isPsalmsOmissions(); }
     });
+    handleSwitch(R.id.italics_conditional, new BooleanUrlOption() {
+      public void setOpt(UrlOptions opts, boolean value) { opts.setItalicsConditional(value); }
+      public boolean getOpt(UrlOptions opts) { return opts.isItalicsConditional(); }
+    });
   }
 }

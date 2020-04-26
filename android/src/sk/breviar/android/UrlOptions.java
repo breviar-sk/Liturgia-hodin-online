@@ -142,13 +142,22 @@ public class UrlOptions {
     setBit("o0", 2, value);
   }
 
-  // of0cit
+  // of0zft
   public boolean isPsalmsOmissions() {
     return hasBit("o0", 11);
   }
 
   public void setPsalmsOmissions(boolean value) {
     setBit("o0", 11, value);
+  }
+
+  // of0ic
+  public boolean isItalicsConditional() {
+    return hasBit("o0", 13);
+  }
+
+  public void setItalicsConditional(boolean value) {
+    setBit("o0", 13, value);
   }
 
   // of0zjvne

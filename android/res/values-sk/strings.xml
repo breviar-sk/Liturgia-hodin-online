@@ -38,6 +38,7 @@
     <string name="footnotes">Poznámky (v texte, pod čiarou)</string>
     <string name="liturgical_readings">Čítania v omši</string>
     <string name="psalms_omissions">Vynechané pasáže zo žalmov a chválospevov</string>
+    <string name="italics_conditional">Niektoré texty (elízie) kurzívou</string>
 
     <string name="display_settings_title">Zobrazenie</string>
     <string name="first_vespers_buttons">Tlačidlo pre prvé vešpery pre nedele a slávnosti v deň slávenia</string>
