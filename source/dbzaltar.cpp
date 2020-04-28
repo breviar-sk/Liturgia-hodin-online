@@ -7871,19 +7871,36 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	_set_antifona1(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
-// pre Trojdnie nie je použitý _special_anchor_prefix pre CZ (nie sú hymny k volnému výběru)
+// pre Trojdnie nie je použitý _special_anchor_prefix pre CZ (nie sú hymny k volnému výběru) -- okrem nedele, kedy môžeme vziať z OBD_VELKONOCNE_I (treba zmeniť _file resp. _file_pc a potom vrátiť späť)
 #define _vtroj_hymnus {\
-	c = pismenko_modlitby(modlitba);\
-	if(modlitba == MODL_PRVE_VESPERY)\
-		c = pismenko_modlitby(MODL_VESPERY);\
-	sprintf(_anchor, "%s_%c%s%s", nazov_OBD[OBD_VELKONOCNE_TROJDNIE], c, nazov_DN_asci[den], ANCHOR_HYMNUS);\
-	if(modlitba == MODL_POSV_CITANIE){\
-		_set_hymnus(modlitba, _file_pc, _anchor);\
-		set_LOG_litobd_pc;\
+	if((den == DEN_NEDELA) && (_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu)){\
+		if(modlitba == MODL_POSV_CITANIE){\
+			file_name_litobd_pc(OBD_VELKONOCNE_I);\
+		}\
+		else{\
+			file_name_litobd(OBD_VELKONOCNE_I);\
+		}\
+		_velk1_hymnus(den, modlitba, OBD_VELKONOCNE_I);\
+		if(modlitba == MODL_POSV_CITANIE){\
+			file_name_litobd_pc(litobd);\
+		}\
+		else{\
+			file_name_litobd(litobd);\
+		}\
 	}\
 	else{\
-		_set_hymnus(modlitba, _file, _anchor);\
-		set_LOG_litobd;\
+		c = pismenko_modlitby(modlitba);\
+		if(modlitba == MODL_PRVE_VESPERY)\
+			c = pismenko_modlitby(MODL_VESPERY);\
+		sprintf(_anchor, "%s_%c%s%s", nazov_OBD[OBD_VELKONOCNE_TROJDNIE], c, nazov_DN_asci[den], ANCHOR_HYMNUS);\
+		if(modlitba == MODL_POSV_CITANIE){\
+			_set_hymnus(modlitba, _file_pc, _anchor);\
+			set_LOG_litobd_pc;\
+		}\
+		else{\
+			_set_hymnus(modlitba, _file, _anchor);\
+			set_LOG_litobd;\
+		}\
 	}\
 }
 #define _vtroj_kcitanie {\
