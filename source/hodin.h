@@ -7110,7 +7110,7 @@ const char *text_MAJ_01[POCET_JAZYKOV + 1] =
 	"Sv. Jozefa, robotníka",
 	"Sv. Josefa, Dělníka",
 	"",
-	"S. loseph Opificis",
+	"S. Ioseph Opificis",
 	"",
 	"Sv. Josefa, Dělníka",
 	"Munkás Szent József",
