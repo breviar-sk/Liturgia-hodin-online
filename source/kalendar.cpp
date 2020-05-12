@@ -6748,12 +6748,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				_vlastna_cast_full(modlitba);
 
 				modlitba = MODL_POSV_CITANIE;
-				if (_global_jazyk == JAZYK_SK) {
-					_vlastna_cast_full(modlitba);
-				}
-				else {
-					_vlastna_cast_full_okrem_hymnu(modlitba);
-				}
+				_vlastna_cast_full(modlitba);
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
@@ -10926,15 +10921,18 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
-				// _vlastna_cast_benediktus;
+				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
-				// _vlastna_cast_magnifikat;
+				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
 
 				break;
