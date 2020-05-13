@@ -11505,7 +11505,7 @@ const char* text_SEP_02_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Boldog Bonnaud Jakab, áldozópap és társai; Boldog Imbert József és Cordier Miklós, áldozópapok; " HTML_LINE_BREAK "Boldog Sitjar Tamás, áldozópap és társai vértanúk",
+	"Boldog Bonnaud Jakab, áldozópap és társai; " HTML_LINE_BREAK "Boldog Imbert József és Cordier Miklós, áldozópapok; " HTML_LINE_BREAK "Boldog Sitjar Tamás, áldozópap és társai vértanúk",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13172,7 +13172,7 @@ const char* text_OKT_21_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Boldog de San Vitores Didák Alajos, áldozópap és Calungsod Péter, vértanúk", // SK 06: 21OKT
+	"Boldog de San Vitores Didák Alajos, áldozópap és Calungsod Péter, vértanúk", // HU SJ: 21OKT
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -13747,7 +13747,7 @@ const char *text_NOV_05_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Jézus Társasága minden szentje és boldogja", // HU SJ_ 06NOV
+	"Jézus Társasága minden szentje és boldogja", // HU SJ: 06NOV
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
