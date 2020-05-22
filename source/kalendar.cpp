@@ -4731,12 +4731,14 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_modlitba;
-				_vlastna_cast_hymnus_ako_na_rchvaly(modlitba, _global_den.litobd); // hymnus ako na ranné chvály -- musí byť posledný pre danú modlitbu
 				_vlastna_cast_2citanie;
+				_vlastna_cast_hymnus_ako_na_rchvaly(modlitba, _global_den.litobd); // hymnus ako na ranné chvály -- musí byť posledný pre danú modlitbu
 
 				_vlastna_cast_mcd_modlitba;
 
 				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
+				_vlastna_cast_magnifikat;
 				if (_global_den.litobd == OBD_CEZ_ROK) {
 					// Évközi időben: mint az OLVASMÁNYOS IMAÓRA
 					_vlastna_cast_hymnus_ako_na_rchvaly(modlitba, _global_den.litobd); // hymnus ako na ranné chvály -- musí byť posledný pre danú modlitbu
@@ -4745,8 +4747,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					// Nagyböjtben: "Az égi udvar díszei,"
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				}
-				_vlastna_cast_modlitba;
-				_vlastna_cast_magnifikat;
 
 				break;
 			}
@@ -8558,9 +8558,9 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
 
 				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
+				_vlastna_cast_hymnus_ako_na_rchvaly(modlitba, _global_den.litobd); // hymnus ako na ranné chvály -- musí byť posledný pre danú modlitbu
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
@@ -8667,17 +8667,27 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_full_okrem_prosieb(modlitba);
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
+				_vlastna_cast_full_okrem_hymnu_a_prosieb(modlitba);
 				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-				_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_2citanie;
+				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_full_okrem_kcit_kresp_a_prosieb(modlitba);
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
+				_vlastna_cast_antifony;
 				_set_zalmy_sviatok_muc(modlitba);
+				_vlastna_cast_magnifikat;
+				_vlastna_cast_modlitba;
 
 				break;
 			}
