@@ -12571,7 +12571,7 @@ const char *text_OKT_05_SK[POCET_JAZYKOV + 1] =
 	"Sv. Faustíny Kowalskej, panny",
 	"",
 	"",
-	"",
+	"S. Faustinæ Kowalska, virginis",
 	"",
 	"",
 	"",
