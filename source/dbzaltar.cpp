@@ -6917,18 +6917,27 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_najsv_trojice(modlitba);
+					if (!je_CZ_hymny_k_volnemu_vyberu) {
+						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+					}
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_NAPOLUDNIE;
 					_set_zalmy_najsv_trojice(modlitba);
+					if (!je_CZ_hymny_k_volnemu_vyberu) {
+						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+					}
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_najsv_trojice(modlitba);
+					if (!je_CZ_hymny_k_volnemu_vyberu) {
+						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+					}
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
@@ -10951,6 +10960,9 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_ZDS_1HYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_ZDS_vHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_TK_rHYMNUS", 2 },
+	{ JAZYK_CZ, "TROJ_9HYMNUS", 2 }, // nedáváme možnost vzít hymny podle sudého/lichého týdne
+	{ JAZYK_CZ, "TROJ_2HYMNUS", 2 },
+	{ JAZYK_CZ, "TROJ_3HYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_SRDCA_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_SRDCA_rHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_SRDCA_1HYMNUS", 2 },

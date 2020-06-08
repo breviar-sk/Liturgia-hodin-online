@@ -358,6 +358,14 @@ div.navm p {
 	text-indent: -1.2em; 
 }
 
+.hymn p.cont2 { 
+	text-indent: 0em; 
+}
+
+.hymn p.cont3 { 
+	text-indent: 1.2em; 
+}
+
 .hymn p.last {
 	padding-bottom: 1em; 
 }
