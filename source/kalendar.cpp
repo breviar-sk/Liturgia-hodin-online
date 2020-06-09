@@ -22678,21 +22678,21 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				}// KALENDAR_CZ_OFM, KALENDAR_CZ_OFMCAP
 
 				modlitba = MODL_RANNE_CHVALY;
-				if ((_global_jazyk == JAZYK_CZ) && (!je_CZ_hymny_k_volnemu_vyberu)) {
+				if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				}// KALENDAR_CZ_OFM, KALENDAR_CZ_OFMCAP
 				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
-				if ((_global_jazyk == JAZYK_CZ) && (!je_CZ_hymny_k_volnemu_vyberu)) {
+				if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				}// KALENDAR_CZ_OFM, KALENDAR_CZ_OFMCAP
 				_vlastna_cast_modlitba;
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
-				if ((_global_jazyk == JAZYK_CZ) && (!je_CZ_hymny_k_volnemu_vyberu)) {
+				if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 					_vlastna_cast_full_okrem_antifon(modlitba);
 				}// KALENDAR_CZ_OFM, KALENDAR_CZ_OFMCAP
 				else {
@@ -22960,7 +22960,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			_vlastna_cast_modlitba;
 
 			modlitba = MODL_POSV_CITANIE;
-			if ((_global_jazyk == JAZYK_CZ) && (!je_CZ_hymny_k_volnemu_vyberu)) {
+			if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			_vlastna_cast_modlitba;
@@ -27597,7 +27597,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			*/
 
 			modlitba = MODL_RANNE_CHVALY;
-			if ((_global_jazyk == JAZYK_CZ) && (!je_CZ_hymny_k_volnemu_vyberu)) {
+			if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			if (_global_jazyk != JAZYK_CZ_OP) {
@@ -27619,7 +27619,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			}
 
 			modlitba = MODL_VESPERY;
-			if ((_global_jazyk == JAZYK_CZ) && (!je_CZ_hymny_k_volnemu_vyberu)) {
+			if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			if (_global_jazyk != JAZYK_CZ_OP) {

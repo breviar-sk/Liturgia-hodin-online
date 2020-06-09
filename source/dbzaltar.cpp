@@ -6917,7 +6917,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_najsv_trojice(modlitba);
-					if (!je_CZ_hymny_k_volnemu_vyberu) {
+					if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
 					}
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
@@ -6926,7 +6926,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_NAPOLUDNIE;
 					_set_zalmy_najsv_trojice(modlitba);
-					if (!je_CZ_hymny_k_volnemu_vyberu) {
+					if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
 					}
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
@@ -6935,7 +6935,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_najsv_trojice(modlitba);
-					if (!je_CZ_hymny_k_volnemu_vyberu) {
+					if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
 					}
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
@@ -7882,7 +7882,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 }
 // pre Trojdnie nie je použitý _special_anchor_prefix pre CZ (nie sú hymny k volnému výběru) -- okrem nedele, kedy môžeme vziať z OBD_VELKONOCNE_I (treba zmeniť _file resp. _file_pc a potom vrátiť späť)
 #define _vtroj_hymnus {\
-	if((den == DEN_NEDELA) && (_global_jazyk == JAZYK_CZ) && (je_CZ_hymny_k_volnemu_vyberu)){\
+	if((den == DEN_NEDELA) && (je_CZ_hymny_k_volnemu_vyberu)){\
 		if(modlitba == MODL_POSV_CITANIE){\
 			file_name_litobd_pc(OBD_VELKONOCNE_I);\
 		}\

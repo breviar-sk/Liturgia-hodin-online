@@ -386,6 +386,7 @@ extern void setGlobalOption(short opt_i, long bit_opt_i_component_j, short value
 
 // for JAZYK_CZ, is chosen alternative for hymns of supplement?
 #define je_CZ_hymny_k_volnemu_vyberu ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))
+#define je_CZ_nie_hymny_k_volnemu_vyberu ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))
 
 // ToDo: before replacing anchor from file with HTML scratch, try to remove _special_anchor_prefix/postfix!!!
 #define specialne_dni_bez_hymnov_k_volnemu_vyberu_CZ ((_global_den.denvr == VELKONOCNA_NEDELA) || (_global_den.denvr == SV_RODINY))
