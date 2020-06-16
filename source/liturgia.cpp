@@ -428,6 +428,10 @@ char *convert_nonbreaking_spaces(const char *input){
 			strcpy(out, HTML_NONBREAKING_SPACE);
 			out += strlen(HTML_NONBREAKING_SPACE);
 		}// c == CHAR_NONBREAKING_SPACE
+		else if (c == CHAR_NONBREAKING_THIN_SPACE) {
+			strcpy(out, HTML_NONBREAKING_THIN_SPACE);
+			out += strlen(HTML_NONBREAKING_THIN_SPACE);
+		}// c == CHAR_NONBREAKING_THIN_SPACE
 		else {
 			EncodeWchar(c, &out);
 		}

@@ -274,6 +274,9 @@ void ExportChar(int c, short int skip_chars_for_voice_output /* = NIE */) {
 		else if (c == CHAR_NONBREAKING_SPACE) {
 			Export("%c", CHAR_SPACE);
 		}
+		else if (c == CHAR_NONBREAKING_THIN_SPACE) {
+			Export("%c", CHAR_SPACE);
+		}
 		else {
 			ExportRawWchar(c);
 		}
@@ -283,6 +286,9 @@ void ExportChar(int c, short int skip_chars_for_voice_output /* = NIE */) {
 	// ordinary behaviour
 	if (c == CHAR_NONBREAKING_SPACE) {
 		Export(HTML_NONBREAKING_SPACE);
+	}
+	else if (c == CHAR_NONBREAKING_THIN_SPACE) {
+		Export(HTML_NONBREAKING_THIN_SPACE);
 	}
 	else {
 		ExportRawWchar(c);

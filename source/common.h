@@ -59,8 +59,10 @@
 #define CHAR_KEYWORD_END     '}'
 #define CHAR_KEYWORD_DIVIDER ':'
 
-// underscore '_' used as placeholder for non-breaking space (it will be exported as HTML_NONBREAKING_SPACE == "&nbsp;" defined in mydefs.h) 
+// underscore '_' used as placeholder for non-breaking space (it will be exported as HTML_NONBREAKING_SPACE defined in mydefs.h) 
 #define CHAR_NONBREAKING_SPACE '_'
+// char 127 used as placeholder for non-breaking thin space (it will be exported as HTML_NONBREAKING_THIN_SPACE defined in mydefs.h) 
+#define CHAR_NONBREAKING_THIN_SPACE ''
 
 // special characters in prayer texts (some of them to be removed for voice output)
 #define CHAR_SPACE             ' '
@@ -137,6 +139,7 @@
 #define STR_SLASH "/"
 #define STR_UNDERSCORE "_"
 #define STR_DOT "."
+#define STR_MIDDLE_DOT "·"
 
 #pragma endregion
 
@@ -190,6 +193,7 @@
 #define HTML_TARGET_BLANK " target=\"_blank\" "
 #define HTML_TARGET_TOP " target=\"_top\" "
 
+#define HTML_NONBREAKING_THIN_SPACE "&#8239;"
 #define HTML_NONBREAKING_SPACE "&nbsp;"
 #define HTML_NONBREAKING_SPACE_LONG "&nbsp;&nbsp;&nbsp;"
 #define HTML_LINE_BREAK_PURE "<br/>" // not followed by real line-break
