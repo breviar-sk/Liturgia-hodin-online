@@ -1044,7 +1044,7 @@
  { "132052303", "1Kor 7,25-31; Ž 45,11-12. 14-15. 16-17; Lk 6,20-26", "Čuj, dcéra, a pozoruj a nakloň svoj sluch", "" }, /* , , 2008-09-10 */
  { "132052304", "1Kor 8,1b<Ale*>-7. 10-13; Ž 139,1-3. 13-14b<*ivu>. 23-24; Lk 6,27-38", "Veď ma, Pane, po ceste k večnosti", "" }, /* , , 2008-09-11 */
  { "132052305", "1Kor 9,16-19. 22b<Pre v*>-27; Ž 84,3. 4. 5-6. 12; Lk 6,39-42", "Aké milé sú tvoje chrámy, Pane", "" }, /* (ľubovoľná spomienka), Najsvätejšieho mena Panny Márie, 2008-09-12 */
- { "132052306", "1Kor 10,14-22; Ž 116,12-13. 17-18; Lk 6,43-49", "Prinesiem ti, Pane, obetu chválu", "" }, /* (spomienka), Svätého Jána Zlatoústeho, biskupa a učiteľa Cirkvi, 2008-09-13 */
+ { "132052306", "1Kor 10,14-22; Ž 116,12-13. 17-18; Lk 6,43-49", "Prinesiem ti, Pane, obetu chvály", "" }, /* (spomienka), Svätého Jána Zlatoústeho, biskupa a učiteľa Cirkvi, 2008-09-13 */
  { "132052402", "1Kor 12,12-14. 27-31a<*ti.>; Ž 100,2. 3. 4. 5; Lk 7,11-17", "Sme jeho ľud a ovce z jeho stáda", "" }, /* (spomienka), Svätých Kornélia, pápeža, a Cypriána, biskupa, mučeníkov, 2008-09-16 */
  { "132052403", "1Kor 12,31 - 13,13; Ž 33,2-3. 4-5. 12+22; Lk 7,31-35", "Blažený ľud, ktorý si Pán vyvolil za dedičstvo", "" }, /* (ľubovoľná spomienka), Svätého Róberta Bellarmína, biskupa a učiteľa Cirkvi, 2008-09-17 */
  { "132052404", "1Kor 15,1-11; Ž 118,1-2. 16ab<*ihla.>+17. 28; Lk 7,36-50", "Oslavujme Pána, lebo je dobrý, lebo jeho milosrdenstvo trvá naveky", "" }, /* , , 2008-09-18 */

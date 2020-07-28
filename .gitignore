@@ -1,0 +1,4 @@
+*.o
+l.cgi
+print_codes
+.gradle

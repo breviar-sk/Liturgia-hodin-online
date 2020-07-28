@@ -4,6 +4,7 @@
  { "02A000100", "Iz 2,1-5; Ž 122,1-2.4-9; Rim 13,11-14a; Mt 24,37-44", "S radosťou pôjdeme do domu Pánovho.", "Ukáž nám, Pane, svoje milosrdenstvo a daj nám svoju spásu." },  /* 2019-12-01  */
  { "02A000200", "Iz 11,1-10; Ž 72,1-2.7-8.12-13.17; Rim 15,4-9; Mt 3,1-12", "V jeho dňoch bude prekvitať spravodlivosť a plnosť pokoja naveky.", "Pripravte cestu Pánovi, vyrovnajte mu chodníky! A každé telo uvidí jeho spásu." },  /* 2019-12-08  */
  { "02A000300", "Iz 35,1-6a.10; Ž 146,6-10; Jak 5,7-10; Mt 11,2-11", "Príď, Pane, príď a zachráň nás.", "Duch Pána je nado mnou; poslal ma hlásať radostnú zvesť chudobným." },  /* 2019-12-15  */
+ { "02A010300", "Iz 35,1-6a.10; Ž 146,6-10; Jak 5,7-10; Mt 11,2-11", "Príď, Pane, príď a zachráň nás.", "Duch Pána je nado mnou; poslal ma hlásať radostnú zvesť chudobným." },  /* 2028-12-17  */
  { "02A010400", "Iz 7,10-14; Ž 24,1-6; Rim 1,1-7; Mt 1,18-24", "Hľa, prichádza Pán, on je Kráľ slávy.", "Hľa, panna počne a porodí syna a dajú mu meno Emanuel, Boh s nami." },  /* 2019-12-22  */
  { "02A060100", "Gn 2,7-9.3,1-7a; Ž 51,3-6.12-14.17; Rim 5,12-19 /kr./ Rim 5,12.17-19; Mt 4,1-11", "Zmiluj sa, Pane, lebo sme zhrešili", "" },  /* 2014-03-09  */
  { "02A060200", "Gn 12,1-4a; Ž 33,4.5.18-20.22; 2Tim 1,8b-10; Mt 17,1-9", "Tvoje milosrdenstvo, Pane, nech je nad nami, ako dúfame v teba", "" },  /* 2014-03-16  */
@@ -35,6 +36,7 @@
  { "02B000100", "Iz 63,16d-17.19e.64,2c-7; Ž 80,2+3bc.15-16.18-19; 1Kor 1,3-9; Mk 13,33-37", "Bože obnov nás, rozjasni svoju tvár a budeme spasený.", "Ukáž nám Pan svoje milosrdenstvo a daj nám svoju spásu." }, /* , 1. adventná nedeľa (rok B, cyklus I) , 2008-11-30 */
  { "02B000200", "Iz 40,1-5; Ž 85,9ab<*svätým>+10.11-12.13-14; 2Pt 3,8-14; Mk 1,1-8", "Ukáž nám, Pane, svoje milorsdenstvo a daj nám svoju spásu.", "Pripravte cestu Pánovi, vyrovnajte mu chodníky! Akaždé telo uvidí jeho spásu." }, /* , 2. adventná nedeľa, 2008-12-07 */
  { "02B000300", "Iz 61,1-2a<*sti>.10-11; 1Sol 5,16-24; Jn 1,6-8.19-28", "Duša mi plesá v mojom Bohu.", "Duch Pána je nado mnou; poslal ma hlásať radostnú zvesť chudobným." }, /* , 3. adventná nedeľa, 2008-12-14 */
+ { "02B010300", "Iz 61, 1-2a. 10-11; (Ž) Lk 1, 46b-48. 49-50. 53-54; 1 Sol 5, 16-24; Jn 1, 6-8. 19-28", "Duša mi plesá v mojom Bohu.", "Duch Pána je nado mnou; poslal ma hlásať radostnú zvesť chudobným." },  /* 2023-12-17  */
  { "02B010400", "2Sam 7,1-5.8b<Ja*>-12.14a<*nom.>.16; Rim 16,25-27; Lk 1,26-38", "Tvoje milosrdenstvo, Pane, ospevovať budem naveky.", "Hľa, služobníca Pána, nech sa mi stane podľa tvojho slova." }, /* , 4. adventná nedeľa, 2008-12-21 */
  { "02B060100", "Gn 9,8-15; Ž 25,4-5b<*ása,>.6+7bc<ale*>.8-9; 1Pt 3,18-22; Mk 1,12-15", "Cesty Pánove sú milosrdenstvo a vernosť.", "Nielen z chleba žije človek, ale z každého slova, ktoré vychádza z Božích úst." }, /* , 1. nedeľa v pôstnom období, 2009-03-01 */
  { "02B060200", "Gn 22,1-2.9a<*vo,>.10-13.15-18; Ž 116,10+15.16-17.18-19; Rim 8,31b<Ak*>-34; Mk 9,2-10", "Pred tvárou Pána budem kráčať v krajine žijúcich.", "V žiarivom oblaku bolo počuť Otcov hlas: Toto je môj milovaný Syn, počúvajte ho!" }, /* , 2. nedeľa v pôstnom období, 2009-03-08 */
@@ -66,6 +68,7 @@
  { "02C000100", "Jer 33,14-16; Ž 25,4-5b<*sa>.8-9.10+14; 1Sol 3,12-4,2; Lk 21,25-28.34-36", "K tebe, Pane, dvíham svoju dušu.", "Ukáž nám, Pane, svoje milosrdenstvo a daj nám svoju spásu." }, /* , 1. adventná nedeľa (rok C, cyklus II), 2009-11-29 */
  { "02C000200", "Bar 5,1-9; Ž 126,1-6; Flp 1,4-6.8-11; Lk 3,1-6", "Veľké veci urobil s nami Pán a máme z toho radosť.", "" },  /* 2015-12-06  */
  { "02C000300", "Sof 3,14-18a; Iz 12,2-6; Flp 4,4-7; Lk 3,11-18", "Plesajme a jasajme, lebo uprostred nás je Svätý, Boh.", "" },  /* 2015-12-13  */
+ { "02C010300", "Sof 3,14-18a; Iz 12,2-6; Flp 4,4-7; Lk 3,11-18", "Plesajme a jasajme, lebo uprostred nás je Svätý, Boh.", "Duch Pána je nado mnou; poslal ma hlásať radostnú zvesť chudobným." },  /* 2045-12-17  */
  { "02C010400", "Mich 5,1-4a; Ž 80,2-19; Hebr 10,5-10; Lk 1,39-45", "Bože, obnov nás, rozjasni svoju tvár a budeme spasení.", "" },  /* 2015-12-20  */
  { "02C060100", "Dt 26,4-10; Ž 91,1-15; Rim 10,8-13; Lk 4,1-13", "Pane, buď so mnou v mojich skúškach.", "" },  /* 2016-02-14  */
  { "02C060200", "Gn 15,5-12.17-18; Ž 27,1-14; Flp 3,17-4,1; Lk 9,28b<vzal*>-36", "Pán je moje svetlo a moja spása.", "" },  /* 2016-02-21  */
@@ -171,6 +174,7 @@
  { "06A0510", "Oz 6,3-6; Ž 50,1+8. 12-13. 14-15; Rim 4,18-25; Mt 9,9-13", "Prijmi od nás, Pane, obetu chvály", "" }, /* , 10. nedeľa v období cez rok, 2008-06-08 */
  { "06A0511", "Ex 19,2-6a<*dom.«>; Ž 92,2-3. 13-14. 15-16; Rim 5,6-11; Mt 9,36 - 10,8", "Ako je dobre oslavovať teba, Pane", "" }, /* , 11. nedeľa v období cez rok, 2008-06-15 */
  { "06A0512", "Jer 20,10-13; Ž 107,23-24. 25-26. 28-29. 30-31; Rim 5,12-15; Mt 10,26-33", "Oslavujte Pána,:lebo jeho milosrdenstvo trvá naveky", "" }, /* , 12. nedeľa v období cez rok, 2008-06-22 */
+ { "06A0513", "2 Kr 4, 8-12a. 14-16a; Ž 89, 2-3. 16-17. 18-19; Rim 6, 3-4. 8-11; Mt 10, 37-42", "Tvoje milosrdenstvo, Pane, ospevovať budem naveky.", "Vy ste vyvolený rod, kráľovské kňazstvo, svätý národ; aby ste zvestovali slávne skutky toho, ktorý vás z tmy povolal do svojho obdivuhodného svetla." },  /* 2020-06-28  */
  { "06A0514", "Zach 9,9-10; Ž 145,1-2. 8-9. 10-11. 13c<Pán*>-14; Rim 8,9. 11-13; Mt 11,25-30", "Budem ťa velebiť, Pane, pokorný Kráľ slávy", "" }, /* , 14. nedeľa v období cez rok, 2008-07-06 */
  { "06A0515", "Iz 55,10-11; Ž 65,10a–d. 10e-11. 12-13.14; Rim 8,18-23; Mt 13,1-23 /kr./ Mt 13,1-9", "Pane, navštív našu zem a požehnaj jej rastliny", "" }, /* , 15. nedeľa v období cez rok, 2008-07-13 */
  { "06A0516", "Múd 12,13. 16-19; Ž 86,5-6. 9-10. 15-16a<*mnou>; Rim 8,26-27; Mt 13,24-43 /kr./ Mt 13,24-30", "Ty, Pane, si dobrý, veľmi láskavý", "" }, /* , 16. nedeľa v období cez rok, 2008-07-20 */
@@ -181,6 +185,7 @@
  { "06A0521", "Iz 22,19-23; Ž 138,1-2a. 2bc+3. 6+8bc<Pan*>; Rim 11,33-36; Mt 16,13-20", "Pre svoje milosrdenstvo neopusť nás, Pane", "" }, /* , 21. nedeľa v období cez rok, 2008-08-24 */
  { "06A0522", "Jer 20,7-9; Ž 63,2. 3-4. 5-6. 8-9; Rim 12,1-2; Mt 16,21-27", "Za tebou prahne moja duša, Pane, Bože môj", "" }, /* , 22. druhá nedeľa v období cez rok, 2008-08-31 */
  { "06A0523", "Ez 33,7-9; Ž 95,1-2. 6-7. 8-9; Rim 13,8-10; Mt 18,15-20", "Pane, daj, aby sme počúvali tvoj hlas a nezatvrdzovali si srdcia", "" }, /* , 23. nedeľa v období cez rok, 2008-09-07 */
+ { "06A0524", "Sir 27,33-28,9; Ž 103, 1-2. 3-4. 9-10. 11-12; Rim 14, 7-9; Mt 18, 21-35", "Milostivý a milosrdný je Pán.", "NMilostivý a milosrdný je Pán.ové prikázanie vám dávam, hovorí Pán; aby ste sa milovali navzájom, ako som ja miloval vás." },  /* 2020-09-13  */
  { "06A0525", "Iz 55,6-9; Ž 145,2-3. 8-9. 17-18; Flp 1,20c<pev*>-24. 27a<*liu>; Mt 20,1-16", "Blízky je Pán všetkým, čo ho vzývajú", "" }, /* , 25. nedeľa v období cez rok, 2008-09-21 */
  { "06A0526", "Ez 18,25-28; Ž 25,4-5. 6-7. 8-9; Flp 2,1-11 /kr./ Flp 2,1-5; Mt 21,28-32", "Rozpomeň sa, Pane, na svoje zľutovanie", "" }, /* , 26. nedeľa v období cez rok, 2008-09-28 */
  { "06A0527", "Iz 5,1-7; Ž 80,9+12. 13-14. 15-16. 19-20; Flp 4,6-9; Mt 21,33-43", "Vinicou Pánovou je jeho ľud", "" }, /* , 27. nedeľa v období cez rok, 2008-10-05 */
@@ -188,6 +193,7 @@
  { "06A0529", "Iz 45,1. 4-6; Ž 96,1+3. 4-5. 7-8. 9-10ac; 1Sol 1,1-5b<*osti.>; Mt 22,15-21", "Vzdávajme Pánovi slávu a česť", "" }, /* , 29. nedeľa v období cez rok, 2008-10-19 */
  { "06A0530", "Ex 22,20-26; Ž 18,2-3a. 3b-4. 47+51ab<*mu.>; 1Sol 1,5c<veď*>-10; Mt 22,34-40", "Milujem ťa, Pane, ty moja sila", "" }, /* , 30. nedeľa v období cez rok, 2008-10-26 */
  { "06A0531", "Jób 19,1. 23-27a<*dím.>; Ž 27,1. 4. 7+8b<Pan*>+9a<*mňa.>. 13-14; 2Kor 4,14-5,1; Jn 14,1-6", "Pán je moje svetlo a moja spása", "" }, /* , 31. nedeľa v období cez rok - spomienka na všetkých verných zosnulých [1], 2008-11-02 */
+ { "06A0532", "Múd 6, 12-16; Ž 63, 2. 3-4. 5-6. 7-8; 1 Sol 4, 13-18 /al./ 1 Sol 4, 13-14; Mt 25, 1-13", "Za tebou prahne moja duša, Pane, Bože môj.", "Bdejte a buďte pripravení, lebo Syn človeka príde v hodinu, o ktorej neviete." },  /* 2020-11-08  */
  { "06A0533", "Prís 31,10-13. 19-20. 30-31; Ž 128,1-2. 3. 4-5; 1Sol 5,1-6; Mt 25,14-30 /kr./ Mt 25,14-15. 19-20", "Blažení sú všetci, čo sa boja Pána", "" }, /* , 33. nedeľa v období cez rok, 2008-11-16 */
  { "06B0302", "Sir 24,1-2.12-16; Ž 147,12-13. 14-15. 19-20; Ef 1,3-6.15-18; Jn 1,1-18", "Slovo sa telom stalo a prebývalo medzi nami.", "Sláva ti Kriste, teba zvestovali národom; sláva ti Kriste, v teba uverili na svete." }, /* , 2. nedeľa po narodení Pána, 2009-01-04 */
  { "06B0502", "1Sam 3,3b<Sam*>-10.19; Ž 40,2+4ab<*hu.>. 7-8a. 8b-9. 10; 1Kor 6,13c<telo*>-15a<*údmi>.17-20; Jn 1,35-42", "Hľa, prichádzam, Pane, chcem plniť  tvoju vôľu.", "Našli sme Mesiáša, Krista. Milosť a pravda prišli skrze neho." }, /* , 2. nedeľa v období cez rok, 2009-01-18 */
@@ -196,9 +202,13 @@
  { "06B0505", "Jób 7,1-4.6-7; Ž 147,1-2.3-4.5-6; 1Kor 9,16-19.22-23; Mk 1,29-39", "Chváľme Pána, on uzdravuje skľúčených srdcom.", "Kristus vzal na seba naše slabosti a niesol naše choroby." }, /* , 5. nedeľa v období cez rok, 2009-02-08 */
  { "06B0506", "Lv 13,1-2.45-46; Ž 32,1-2.5.11; 1Kor 10,31-11,1; Mk 1,40-45", "Ty, Pane, si moje útočište; zahŕňaš ma radosťou zo spásy.", "Veľký prorok povstal medzi nami a Boh navštívil svoj ľud." }, /* , 6. nedeľa v období cez rok, 2009-02-15 */
  { "06B0507", "Iz 43,18-19.21-22.24c<lež*>-25; Ž 41,2-3.4-5.13-14; 2Kor 1,18-22; Mk 2,1-12", "Uzdrav ma, Pane, zhrešil som proti tebe.", "Pán ma poslal hlásať evanjelium chudobným, oznámiť zajatým, že budú prepustení." }, /* , 7. nedeľa v období cez rok, 2009-02-22 */
+ { "06B0508", "Oz 2, 16bc. 17c-e. 21-22; Ž 103, 1-2. 3-4. 8+10. 12-13; 2 Kor 3, 1b-6; Mk 2, 18-22", "Milostivý a milosrdný je Pán.", "Otec nás zo svojej vôle zrodil slovom pravdy, aby sme boli ako prvotiny jeho stvorenia." },  /* 2030-03-03  */
+ { "06B0509", "Dt 5, 12-15; Ž 81, 3-4. 5-6b. 6c-8a. 10-11b; 2 Kor 4, 6-11; Mk 2,23 - 3,6 /al./ Mk 2, 23-28", "Plesajte Bohu, ktorý nám pomáha.", "Tvoje slovo, Pane, je pravda; posväť nás pravdou." },  /* 2024-06-02  */
+ { "06B0510", "Gn 3, 9-15; Ž 130, 1-2. 3-4. 5-7a. 7b-8; 2Kor 4,13-5,1; Mk 3, 20-35", "U Pána je milosrdenstvo a hojné vykúpenie.", "Teraz bude knieža tohto sveta vyhodené von, hovorí Pán; a ja, až budem vyzdvihnutý od zeme, všetkých pritiahnem k sebe." },  /* 2021-06-06  */
  { "06B0511", "Ez 17,22-24; Ž 92,2-3.13-14.15-16; 2Kor 5,6-10; Mk 4,26-34", "Ako je dobre oslavovať teba, Pane!", "Semeno je Božie slovo, rozsievač je Kristus. Každý, kto ho nájde, bude žiť naveky." }, /* , 11. nedeľa v období cez rok, 2009-06-14 */
  { "06B0512", "Jób 38,1.8-11; Ž 107,23-24.25-26.28-29.30-31; 2Kor 5,14-17; Mk 4,35-41", "Oslavujme Pána, lebo jeho milosrdenstvo trvá naveky.", "Veľký prorok povstal medzi nami a Boh navštívil svoj ľud." }, /* , 12. nedeľa v období cez rok , 2009-06-21 */
  { "06B0513", "Múd 1,13-15.2,23-24; Ž 30,2+4.5-6.11-12a<*nec>+13b<Pane*>; 2Kor 8,7.9.13-15; Mk 5,21-43", "Budem ťa, Pane, oslavovať, že si ma vyslobodil.", "Náš Spasiteľ Ježiš Kristus zničil smrť a evanjeliom zjavil život." }, /* , 13. nedeľa v období cez rok, 2009-06-28 */
+ { "06B0514", "Ez 2, 2-5; Ž 123, 1-2a. 2b-d. 3-4; 2 Kor 12, 7b-10; Mk 6,1-6", "Naše oči hľadia na Pána, kým sa nezmiluje nad nami.", "Duch Pána je nado mnou; poslal ma hlásať evanjelium chudobným." },  /* 2021-07-04  */
  { "06B0515", "Am 7,12-15; Ž 85,9ab<*svätým>+10.11-12.13-14; Ef 1,3-14 /kr./ Ef 1,3-10; Mk 6,7-13", "Ukáž nám, Pane, svoje milosrdenstvo a daj nám svoju spásu.", "Otec nášho Pána Ježiša Krista nech osvieti oči nášho srdca, aby sme videli, aká je nádej z nášho povolania." }, /* , 15. nedeľa v období cez rok, 2009-07-12 */
  { "06B0516", "Jer 23,1-6; Ž 23,1-3.4.5.6; Ef 2,13-18; Mk 6,30-34", "Pán je môj pastier, nič mi nechýba.", "Moje ovce počúvajú môj hlas, hovorí Pán; ja ich poznám a ony idú za mnou." }, /* , 16. nedeľa v období cez rok, 2009-07-19 */
  { "06B0517", "2Kr 4,42-44; Ž 145,10-11.15-16.17-18; Ef 4,1-6; Jn 6,1-15", "Otvor svoju ruku, Pane, a nasýť nás.", "Veľký prorok povstal medzi nami a Boh navštívil svoj ľud." }, /* , 17. nedeľa v období cez rok, 2009-07-26 */
@@ -215,6 +225,7 @@
  { "06B0528", "Múd 7,7-11; Ž 90,12-13.14-15.16-17; Hebr 4,12-13; Mk 10,17-30 /kr./ Mk 10,17-27", "Obdaruj nás, Pane, múdrosťou srdca.", "Blahoslavení chudobní v duchu, lebo ich je nebeské kráľovstvo." }, /* , 28. nedeľa v období cez rok, 2009-10-11 */
  { "06B0529", "Iz 53,10-11; Ž 33,4-5.18-19.20+22; Hebr 4,14-16; Mk 10,35-45 /kr./ Mk 10,42-45", "Tvoje milosrdenstvo, Pane, nech je nad nami, ako dúfame v teba.", "Syn človeka prišiel, aby slúžil a položil svoj život ako výkupné za mnohých." }, /* , 29. nedeľa v období cez rok, 2009-10-18 */
  { "06B0530", "Jer 31,7-9; Ž 126,1-2b.2c-3.4-5.6; Hebr 5,1-6; Mk 10,46b<A *>-52", "Veľké veci urobil s nami Pán a máme z toho radosť.", "Ja som svetlo sveta, hovorí Pán; kto mňa nasleduje, bude mať svetlo života." }, /* , 30. nedeľa v období cez rok, 2009-10-25 */
+ { "06B0531", "Dt 6, 2-6; Ž 18, 2-3a. 3b-4. 47+51ab; Hebr 7, 23-28; Mk 12, 28b-34", "Milujem ťa, Pane, ty moja sila.", "Kto ma miluje, bude zachovávať moje slovo, hovorí Pán; a môj Otec ho bude milovať a prídeme k nemu." },  /* 2021-10-31  */
  { "06B0532", "1Kr 17,10-16; Ž 146,6c<On z*>-7.8-9a.9b-10; Hebr 9,24-28; Mk 12,38-44 /kr./ Mk 12,41-44", "Chváľ, duša moja, Pána.", "Blahoslavení chudobní v duchu, lebo ich je nebeské kráľovstvo." }, /* , 32. nedeľa v období cez rok, 2009-11-08 */
  { "06B0533", "Dan 12,1-3; Ž 16,5+8.9-10.11; Hebr 10,11-14.18; Mk 13,24-32", "Ochráň ma, Bože, k tebe sa utiekam.", "Bdejte celý čas a modlite sa, aby ste sa mohli postaviť pred Syna človeka." }, /* , 33. nedeľa v období cez rok, 2009-11-15 */
  { "06C0302", "Sir 24,1-2.12-16; Ž 147; Ef 1,3-6.15-18; Jn 1,1-18", "Slovo sa telom stalo a prebývalo medzi nami", "" },  /* 2016-01-03 2. nedeľa po Narodení Pána */
@@ -224,8 +235,11 @@
  { "06C0505", "Iz 6,1-2a<*ni>.3-8; Ž 138,1~8; 1Kor 15,1-11; Lk 5,1-11", "Budem ti hrať pred tvárou anjelov.", "" },  /* 2016-02-07  */
  { "06C0506", "Jer 17,5-8; Ž 1,1-6; 1Kor 15,12.16-20; Lk 6,17.20-26", "Blažený človek, čo v Pána skladá dôveru.", "" }, /* , 6. nedeľa v období cez rok, 2007-02-11 */
  { "06C0507", "1Sam 26,2.7-9.12-13.22-23; Ž 103,1-13; 1Kor 15,45-49; Lk 6,27-38", "Milostivý a milosrdný je Pán.", "" }, /* , 7. nedeľa v období cez rok, 2007-02-18 */
+ { "06C0508", "Sir 27, 5-8; Ž 92, 2-3. 13-14. 15-16; 1 Kor 15, 54-58; Lk 6, 39-45", "Ako je dobre oslavovať teba, Pane!", "Svieťte ako svetlá na svete a držte sa pevne slova života." },  /* 2022-02-27  */
+ { "06C0509", "1 Kr 8, 41-43; Ž 117, 1. 2; Gal 1, 1-2. 6-10; Lk 7, 1-10", "Budú sa ti klaňať, Pane, všetky národy zeme.", "Boh tak miloval svet, že dal svojho jednorodeného Syna; každý, kto v neho verí, má večný život." },  /* 2040-06-03  */
  { "06C0510", "1Kr 17,17-24; Ž 30,2-13; Gal 1,11-19; Lk 7,11-17", "Budem ťa, Pane, oslavovať, že si ma vyslobodil.", "" }, /* , 10. nedeľa v období cez rok, 2007-06-10 */
  { "06C0511", "2Sam 12,7-10.13; Ž 32,1-11; Gal 2,16.19-21; Lk 7,36-8,3", "Odpusťmi, Pane, vinu môjho hriechu.", "" }, /* , 11. nedeľa v období cez rok, 2007-06-17 */
+ { "06C0512", "Zach 12, 10-11; 13, 1; Ž 63, 2. 3-4. 5-6. 8-9; Gal 3, 26-29; Lk 9, 18-24", "Za tebou prahne moja duša, Pane, Bože môj.", "Moje ovce počúvajú môj hlas, hovorí Pán; ja ich poznám a ony idú za mnou." },  /* 2022-06-19  */
  { "06C0513", "1Kr 19,16b<Saf*>.19-21; Ž 16,1-11; Gal 5,1.13-18; Lk 9,51-62", "Ty, Pane, si moje jediné dobro.", "" }, /* , 13. nedeľa v období cez rok, 2007-07-01 */
  { "06C0514", "Iz 66,10-14c<*hom>; Ž 66,1-20; Gal 6,14-18; Lk 10,1-12.17-20", "Jasaj Bohu, celá zem.", "" }, /* , 14. nedeľa v období cez rok, 2007-07-08 */
  { "06C0515", "Dt 30,10-14; Ž 69,14-37 /al./ Ž 19,8-11; Kol 1,15-20; Lk 10,26 37", "Hľadajte, pokorní, Pána a srdce vám oživne. /al./ Rozhodnutia Pánove sú správne, potešujú srdce.", "" }, /* , 15. nedeľa v období cez rok, 2007-07-15 */
@@ -282,6 +296,9 @@
  { "090122", "1Sam 1,24-28; (Ž) 1Sam 2,1b–e<.Sr*>. 4-5. 6-7. 8a–d; Lk 1,46-56", "Srdce mi plesá v mojom Bohu.", "" },  /* 2015-12-22  */
  { "090123", "Mal 3,1-4.23-24; Ž 25,4-5b.8-10+14; Lk 1,57-66", "Zodvihnite hlavu, blíži sa Vaše vykúpenie.", "Kráľ národov a uholný kameň Cirkvi; príď a spas človeka, ktorého si utvoril zo zeme." },  /* 2019-12-23  */
  { "090124", "2Sam 7,1-5.8b-12.14a.16; Ž 89,2-5.27+29; Lk 1,67-79: Hviezda, čo vychádza, jas večného Svetla a Slnko spravodlivosti, príď a osviť tých, čo sedia v temnotách a v tieni smrti.; {Vigília} Iz 62,1-5; Ž 89 4-5.16-17.27+29; Sk 13,16-17.22-25; Mt 1,1-25 /al./ Mt 1,18-25: Zajtra bude zahladená neprávosť zeme a začne nad nami kraľovať Spasiteľ sveta.", "Tvoje milosrdenstvo, Pane, ospevovať budem naveky.", "" },  /* 2019-12-24  */
+ { "09022", "Sk 6, 8-10; 7, 54-60; Ž 31, 3c-4. 6+8ab. 16b-17; Mt 10, 17-22", "Do tvojich rúk, Pane, porúčam svojho ducha.", "Požehnaný, ktorý prichádza v mene Pánovom. Boh, Pán, je naším svetlom." },  /* 2020-12-26  */
+ { "09023", "1 Jn 1, 1-4; Ž 97, 1-2. 5-6. 11-12; Jn 20, 2-8", "Radujte sa, spravodliví, tešte sa v Pánovi.", "Teba, Bože, chválime, teba, Pane, velebíme. Teba, Pane, oslavuje slávny zbor apoštolov." },  /* 2021-12-27  */
+ { "09024", "1Jn 1,5-2,2; Ž 124, 2-3. 4-5. 7c-8; Mt 2, 13-18", "Naša duša unikla ako vtáča zo siete poľovníkov.", "Teba, Bože, chválime, teba, Pane, velebíme. Teba, Pane, chváli vznešený zástup mučeníkov." },  /* 2020-12-28  */
  { "09025", "1Jn 2,3-11; Ž 96,1-6; Lk 2,22-35", "Tešte sa, nebesia, a plesaj, zem.", "" },  /* 2015-12-29  */
  { "09026", "1Jn 2,12-17; Ž 96,7-10; Lk 2,36-40", "Tešte sa, nebesia, a plesaj zem.", "Posvätný deň nám zažiaril: poďte, národy, a klaňajte sa Pánovi. Dnes zostúpilo na zem veľké svetlo." },  /* 2019-12-30  */
  { "09027", "1Jn 2,18-21; Ž 96,1-2.11-13; Jn 1,1-18", "Tešte sa, nebesia, a plesaj zem.", "Slovo sa telom stalo a prebývalo medzi nami. Tým, ktorí ho prijali, dalo moc stať sa Božími deťmi." },  /* 2019-12-31  */
@@ -397,6 +414,7 @@
  { "131000104", "Iz 26,1-6; Ž 118,1+8-9. 19-21. 25-27a<*lom.>; Mt 7,21.24-27", "Požehnaný, ktorý prichádza v mene Pánovom.", "Hľadajte Pána, kým ho možno nájsť; volajte ho, kým je na blízku." }, /* (ľubovoľná spomienka), Svätého Jána Damascénskeho, kňaza učiteľa cirkvi, 2008-12-04 */
  { "131000105", "Iz 29,17-24; Ž 27,1. 4. 13-14; Mt 9,27-31", "Pán je moje svetlo a moja spása.", "Hľa náš Pán príde s veľkou mocou a osvieti zrak svojich služobníkov." }, /* , , 2008-12-05 */
  { "131000106", "Iz 30,19-21.23-26; Ž 147,1-2.3-4.5-6; Mt 9,35-10,1.5a<*im: .>.6-8", "Blahoslavení všetci, čo očakávajú Pána.", "Pán je náš sudca, Pán je náš zákonodarca, Pán je náš kráľ; on nás spasí." }, /* (ľubovoľná spomienka), Svätého Mikuláša, biskupa, 2008-12-06 */
+ { "131000201", "Iz 35, 1-10; Ž 85, 9ab+10. 11-12. 13-14; Lk 5, 17-26", "Hľa, náš Boh príde a spasí nás.", "Hľa, príde Kráľ, Pán zeme; on sám vezme z nás jarmo nášho zajatia." },  /* 2020-12-07  */
  { "131000202", "Iz 40,1-11; Ž 96,1-2.3+10ac.11-12a.12b-13; Mt 18,12-14", "Hľa, Pán, Boh prichádza so všetkou mocou.", "Blízko je deň Pána; hľa, príde a spasí nás." }, /* (ľubovoľná spomienka), Svätého Jána Didaka Cauhtlatoatzin, 2008-12-09 */
  { "131000203", "Iz 40,25-31; Ž 103,1-2. 3-4. 8+10; Mt 11,28-30", "Dobroreč, duša moja, svojmu Pánovi.", "Hľa, Pán príde a spasí svoj ľud; blahoslavení tí, čo sú pripravení uvítať ho." }, /* , , 2008-12-10 */
  { "131000204", "Iz 41,13-20; Ž 145,1+9. 10-11. 12-13b<*nia.>; Mt 11,11-15", "Milostivý a milosrdný je Pán, zhovievavý a veľmi láskavý.", "Roste, nebesia, z výsosti, oblaky, dajte Spravodlivého; otvor sa, zem, a zroď Spasiteľa." }, /* (ľubovoľná spomienka), Svätého Damaza I., pápeža, 2008-12-11 */
@@ -404,6 +422,9 @@
  { "131000206", "Sir 48,1-4.9-11; Ž 80,2ac+3bc<Vzb*>. 15-16. 18-19; Mt 17,10-13", "Bože, obnov nás, rozjasni svoju tvár a budeme spasení.", "Pripravte cestu Pánovi, vyrovnajte mu chodníky! Akaždé telo uvidí jeho spásu." }, /* (ľubovoľná spomienka), Svätej Lucie, panny mučenice, 2008-12-13 */
  { "131000301", "Nm 24,2-7.15-17d<*ela.>; Ž 25,4-5b.6+7bc.8-9;Mt 21,23-27", "Pouč ma, Pane, o svojich chodníkoch.", "Ukáž nám, Pane, svoje milosrdenstvo a daj nám svoju spásu." }, /* , , 2008-12-15 */
  { "131000302", "Sof 3,1-2.9-13; Ž 34,2-3.6-7.17-18.19+23; Mt 21,28-32", "Úbožiak zavolal a Pán ho vyslyšal.", "Príď, Pane, nemeškaj! Zbav svoj ľud jeho zlých skutkov." }, /* , , 2008-12-16 */
+ { "131000303", "Iz 45, 6c-8. 18. 21d-25; Ž 85, 9ab+10. 11-12. 13-14; Lk 7, 19-23", "Roste, nebesia, z výsosti, z oblakov nech prší spravodlivosť.", "Zodvihni mocne svoj hlas, ty, čo hlásaš radostnú zvesť; hľa, Pán, Boh, prichádza so všetkou mocou." },  /* 2020-12-16  */
+ { "131000304", "Iz 54, 1-10; Ž 30, 2+4. 5-6. 11-12a+13b; Lk 7, 24-30", "Budem ťa, Pane, oslavovať, že si ma vyslobodil.", "Pripravte cestu Pánovi, vyrovnajte mu chodníky! A každé telo uvidí Božiu spásu." },  /* 2022-12-15  */
+ { "131000305", "Iz 56, 1-3b. 6-8; Ž 67, 2-3. 5. 7-8; Jn 5, 33-36", "Bože, nech ťa velebia národy, nech ťa velebia všetky národy.", "Príď, Pane, navštív nás v pokoji, aby sme sa radovali z celého srdca pred tebou." },  /* 2022-12-16  */
  { "131030201", "1Jn 2,22-28; Ž 98,1-4; Jn 1,19-28", "Uzreli všetky končiny zeme spásu nášho Boha", "Mnoho ráz hovoril kedysi Boh otcom skrze prorokov. V týchto posledných dňoch prehovoril k nám v Synovi." }, /* (spomienka), Svätých Bazila Veľkého a Gregora Nazianzského, biskupov a učiteľov Cirkvi, 2009-01-02 */
  { "131030301", "1Jn 2,29 - 3,6; Ž 98,1-6; Jn 1,29-34", "Uzreli všetky končiny zeme spásu nášho Boha.", "Slovo sa telom stalo a prebývalo medzi nami. Tým, ktorí ho prijali, dalo moc stať sa Božími deťmi." }, /* (ľubovoľná spomienka), Najsvätejšieho mena Ježiš, 2009-01-03 */
  { "131030401", "1Jn 3,7-10; Ž 98,1-9; Jn 1,35-42", "Uzreli všetky končiny zeme spásu nášho Boha.", "" }, /* , , 2007-01-04 */
@@ -413,6 +434,7 @@
  { "131040901", "1Jn 4,11-18; Ž 72,1-2. 10-11. 12-13; Mk 6,45-52", "Budú sa ti klaňať, Pane, všetky národy sveta.", "Sláva ti Kriste, teba zvestovali národom; sláva ti Kriste, v teba uverili na svete." }, /* , , 2009-01-09 */
  { "131041001", "1Jn 4,19 - 5,4; Ž 72,1-2. 14+15bc<stál*>. 17; Lk 4,14-22a<*úst>", "Budú sa ti klaňať, Pane, všetky národy sveta", "Pán ma poslal hlásať evanjelium chudobným, oznámiť zajatým, že budú prepustení." }, /* , , 2009-01-10 */
  { "131041101", "1Jn 5,5-13; Ž 147,12-13. 14-15. 19-20; Lk 5,12-16", "Chváľ, Jeruzalem Pána, oslavuj, Sion, svojho Boha", "" }, /* , , 2008-01-11 */
+ { "131041201", "1 Jn 5, 14-21; Ž 149, 1-2. 3-4. 5-6a+9b; Jn 3, 22-30", "Pán, Boh, miluje svoj ľud.", "Ľud bývajúci v temnotách uvidel veľké svetlo. Svetlo zažiarilo tým, čo sedeli v temnom kraji smrti." },  /* 2019-01-12  */
  { "131050101", "Hebr 1,1-6; Ž 97,1-9; Mk 1,14-20", "Klaňajme sa Bohu spolu s jeho anjelmi.", "" }, /* , , 2007-01-08 */
  { "131050102", "Hebr 2,5-12; Ž 8,2-9; Mk 1,21-28", "Svojho Syna si ustanovil za vládcu nad dielami svojich rúk.", "" }, /* , , 2007-01-09 */
  { "131050103", "Hebr 2,14-18; Ž 105,1-2. 3-4. 6-7. 8-9; Mk 1,29-39", "Pán večne pamätá na svoju zmluvu.", "Moje ovce počujú môj hlas, hovorí Pán; ja ich poznám a ony idú za mnou." }, /* , , 2009-01-14 */
@@ -451,6 +473,10 @@
  { "131050606", "Hebr 11,1-7; Ž 145,2-11; Mk 9,2-13", "Oslavovať ťa chcem naveky, Bože, môj kráľ.", "" }, /* (ľubovoľná spomienka), Siedmich svätých zakladateľov rehole Služobníkov Panny Márie, 2007-02-17 */
  { "131050701", "Sir 1,1-10; Ž 93,1-5; Mk 9,14-29", "Náš Pán kraľuje, oslavujme ho.", "" }, /* , , 2007-02-19 */
  { "131050702", "Sir 2,1-13; Ž 37,3-40; Mk 9,30-37", "Pánovi zver svoje cesty, on sa už postará.", "" }, /* , , 2007-02-20 */
+ { "131050703", "Sir 4, 12-22; Ž 119, 165. 168. 171. 172. 174. 175; Mk 9, 38-40", "Trvalý pokoj požívajú tí, čo milujú tvoj zákon, Pane.", "Ja som cesta, pravda a život, hovorí Pán; nik nepríde k Otcovi, iba cezo mňa." },  /* 2025-02-26  */
+ { "131050704", "Sir 5, 1-10; Ž 1, 1-2. 3. 4+6; Mk 9, 41-43. 45. 47-50", "Blažený človek, čo v Pána skladá dôveru.", "Prijmite Božie slovo, nie ako ľudské slovo, ale – aké naozaj je – ako slovo Božie." },  /* 2025-02-27  */
+ { "131050705", "Sir 6, 5-17; Ž 119, 12. 16. 18. 27. 34. 35; Mk 10, 1-12", "Priveď ma, Pane, na chodník svojich príkazov.", "Tvoje slovo, Pane, je pravda; posväť nás pravdou." },  /* 2025-02-28  */
+ { "131050706", "Sir 17, 1-13; Ž 103, 13-14. 15-16. 17-18a; Mk 10, 13-16", "Milosrdenstvo Pánovo je od večnosti voči tým, čo sa ho boja.", "Zvelebujem ťa, Otče, Pán neba i zeme, že si zjavil maličkým tajomstvá Božieho kráľovstva." },  /* 2025-03-01  */
  { "131050801", "Sir 17,20-28; Ž 32,1-7; Mk 10,17-27", "Radujte sa, spravodliví, a plesajte v Pánovi.", "" }, /* , , 2007-05-28 */
  { "131050802", "Sir 35,1-15; Ž 50,5-23; Mk 10,28-31", "Obetuj Bohu obetu chvály.", "" }, /* , , 2007-05-29 */
  { "131050803", "Sir 36,1-2a<*tebou,>.5-6.13-19; Ž 79,8-13; Mk 10,32-45", "Ukáž nám, Pane, svetlo svojho milosrdenstva.", "" }, /* , , 2007-05-30 */
@@ -481,8 +507,10 @@
  { "131051204", "Gn 16,1-12.15-16; Ž 106,1-5; Mt 7,21-29", "Oslavujme Pána, lebo je dobrý.", "" }, /* (spomienka), Svätého Ireneja, biskupa mučeníka, 2007-06-28 */
  { "131051205", "Gn 17,1.4-5.9-10.15-22; Ž 128,1-2.3.4-5; Mt 8,1-4", "Tak bude požehnaný muž, ktorý sa bojí Pána.", "Kristus vzal na seba naše slabosti a niesol naše choroby." }, /* , , 2009-06-26 */
  { "131051206", "Gn 18,1-15; (Ž) Lk 1,46-47.48-49.50+53.54-55; Mt 8,5-17", "Pán Boh pamätal na svoje milosrdenstvo.", "Kristus vzal na seba naše slabosti a niesol naše choroby." }, /* (ľubovoľná spomienka), Svätého Ladislava alebo Svätého Cyrila Alexandrijského, biskupa a učiteľa Cirkvi, 2009-06-27 */
+ { "131051301", "Gn 18, 16-33; Ž 103, 1-2. 3-4. 8-9. 10-11; Mt 8, 18-22", "Milostivý a milosrdný je Pán.", "Nezatvrdzujte dnes svoje srdcia, ale počúvajte Pánov hlas." },  /* 2021-06-28  */
  { "131051302", "Gn 19,15-29; Ž 26,2-3.9-10.11-12; Mt 8,23-27", "Mám pred očami, Pane, tvoju dobrotu.", "Spolieham sa na Pána, moja duša sa spolieha na jeho slovo." }, /* (ľubovoľná spomienka), Prvých svätých mučeníkov Cirkvi v Ríme, 2009-06-30 */
  { "131051303", "Gn 21,5.8-20; Ž 34,7-13; Mt 8,28-34", "Úbožiak zavolal a Pán ho vyslyšal.", "" }, /* (ľubovoľná spomienka), Svätej Alžbety Portugalskej, 2007-07-04 */
+ { "131051304", "Gn 22, 1-19; Ž 116, 1-2. 3-4. 5-6. 8-9; Mt 9,1-8", "Pred tvárou Pána budem kráčať v krajine žijúcich.", "V Kristovi Boh zmieril svet so sebou a nám odovzdal slovo zmierenia." },  /* 2021-07-01  */
  { "131051305", "Gn 23,1-4.19. 24,1-8.62-67; Ž 106,1-5; Mt 9,9-13", "Oslavujme Pána, leboje dobrý.", "" }, /* (ľubovoľná spomienka), Svätej Márie Goretti, panny mučenice, 2007-07-06 */
  { "131051306", "Gn 27,1-5.15-29; Ž 135,1-2.3-4.5-6; Mt 9,14-17", "Chváľte Pána, lebo Pánje dobrý.", "Moje ovce počúvajú môj hlas, hovorí Pán; ja ich poznám a ony idú za mnou." }, /* (ľubovoľná spomienka), Svätej Alžbety Portugalskej, 2009-07-04 */
  { "131051401", "Gn 28,10-22a<*om.>; Ž 91,1-15; Mt 9,18-26", "V tebe mám dôveru, Pane, Bože môj.", "" }, /* (ľubovoľná spomienka), Svätého Augustína Zhao Rong, kňaza, a spol., mučeníkov, 2007-07-09 */
@@ -556,6 +584,7 @@
  { "131052503", "Ezd 9,5-9; (Ž) Tob 13,2-6; Lk 9,1-6", "Nech je zvelebený Boh, ktorý žije naveky.", "" }, /* (ľubovoľná spomienka), Svätých Kozmu a Damiána, mučeníkov, 2007-09-26 */
  { "131052504", "Ag 1,1-8; Ž 149,1-2.3-4.5-6a<*rách>+9b<Vš*u.>; Lk 9,7-9", "Pán Boh miluje svoj ľud.", "Ja som cesta, pravda a život, hovorí Pán; nik nepríde k Otcovi, iba cezo mňa." }, /* , , 2009-09-24 */
  { "131052505", "Ag 1,15b<v dr*>-2,9;Ž 43,1.2.3.4; Lk 9,18-22", "Dúfam v Pána, môjho Boha, v spásu mojej tváre.", "Syn človeka prišiel, aby slúžil a položil svoj život ako výkupné za mnohých." }, /* , , 2009-09-25 */
+ { "131052506", "Zach 2, 5-9. 14-15d; (Ž) Jer 31, 10. 11-12b. 13; Lk 9,43b-45", "Pán nás bude strážiť ako pastier svoje stádo.", "Náš Spasiteľ Ježiš Kristus zničil smrť a evanjeliom zjavil život." },  /* 2021-09-25  */
  { "131052601", "Zach 8,1-8; Ž 102,16-18.19-21.29+22-23; Lk 9,46-50", "Pán vystavil Sion a zjavil sa vo svojej sláve.", "Syn človeka prišiel, aby slúžil a položil svoj život ako výkupné za mnohých." }, /* (ľubovoľná spomienka), Svätého Václava, mučeníka, svätého Vavrinca Ruiza a spol. , mučeníkov, 2009-09-28 */
  { "131052602", "Ex 23,20-23a<*bou>;Ž 91,1-11; Mt 18,1-5.10", "Svojim anjelom dá príkaz o tebe, aby ťa strážili na tvojich cestách.", "" }, /* (spomienka), Svätých anjelov strážcov, 2007-10-02 */
  { "131052603", "Neh 2,1-8; Ž 137,1-2.3.4-5.6; Lk 9,57-62", "Pane, chcem stále pamätať na teba.", "Všetko pokladám za stratu a za odpadky, aby som získal Krista a našiel sa v ňom." }, /* (spomienka), Svätého Hieronyma, kňaza a učiteľa Cirkvi, 2009-09-30 */
@@ -618,6 +647,7 @@
  { "131100206", "Sk 6,1-7; Ž 33,1-19; Jn 6,16-21", "Tvoje milosrdenstvo, Pane, nech je nad nami, ako dúfame v teba.", "" }, /* (ľubovoľná spomienka), Svätého Anzelma, biskupa, učiteľa cirkvi, 2007-04-21 */
  { "131100301", "Sk 6,8-15; Ž 119,23-24.26-27.29-30; Jn 6,22-29", "Blažení tí, čo kráčajú podľa zákona Pánovho.", "Nielen z chleba žije človek, ale z každého slova, ktoré vychádza z Božích úst." }, /* , , 2009-04-27 */
  { "131100302", "Sk 7,51 - 8,1a<*bili.>; Ž 31,3c<Bu*>-4.6+7b<ale*>-8a<*dný>.17+21ab<*du.>; Jn 6,30-35", "Do tvojich rúk, Pane, porúčam svojho ducha.", "Ja som chlieb života, hovorí Pán; kto prichádza ku mne, nikdy nebude hladovať." }, /* (ľubovoľná spomienka), Svätého Petra Chanela, kňaza a mučeníka; alebo svätého Ľudovíta Márie Grignion de Montfort, kňaza, 2009-04-28 */
+ { "131100303", "Sk 8, 1b-8; Ž 66, 1-3a. 4-5. 6-7a; Jn 6, 35-40", "Jasaj Bohu, celá zem.", "Každý, kto verí vo mňa, má večný život a ja ho vzkriesim v posledný deň, hovorí Pán." },  /* 2021-04-21  */
  { "131100304", "Sk 8,26-36.38-40; Ž 66,8-20; Jn 6,44-51", "Jasaj Bohu, celá zem.", "" }, /* , , 2007-04-26 */
  { "131100305", "Sk 9,1-20; Ž 117,1-2; Jn 6,52-59", "Chodte do celého sveta a hlásajte evanjelium.", "" }, /* , , 2007-04-27 */
  { "131100306", "Sk 9,31-42; Ž 116,12-13.14-15.16-17; Jn 6,60-69", "Čím sa odvďačím Pánovi za všetko, čo mi dal?", "Tvoje slová, Pane, sú Duch a život. Ty máš slová večného života." }, /* (spomienka), Svätého Atanáza, biskupa a učiteľa Cirkvi, 2009-05-02 */
@@ -659,6 +689,8 @@
  { "132000301", "Nm 24,2-7.15-17d; Ž 25,4-9; Mt 21,23-27", "Pouč ma, Pane, o svojich chodníkoch.", "Ukáž nám, Pane, svoje milosrdenstvo a daj nám svoju spásu." },  /* 2019-12-16  */
  { "132000302", "Sof 3,1-2.9-13; Ž 34,2-7.17-23; Mt 21,28-32", "Úbožiak zavolal a Pán ho vyslyšal.", "" },  /* 2015-12-15  */
  { "132000303", "Iz 45,6c-8.18.21d-25; Ž 85,9-14; Lk 7,19-23", "Roste, nebesia z výsosti, z oblakov nech prší spravodliosť.", "" },  /* 2015-12-16  */
+ { "132000304", "Iz 54, 1-10; Ž 30, 2+4. 5-6. 11-12a+13b; Lk 7, 24-30", "Budem ťa, Pane, oslavovať, že si ma vyslobodil.", "Pripravte cestu Pánovi, vyrovnajte mu chodníky! A každé telo uvidí Božiu spásu." },  /* 2021-12-16  */
+ { "132000305", "Iz 56, 1-3b. 6-8; Ž 67, 2-3. 5. 7-8; Jn 5, 33-36", "Bože, nech ťa velebia národy, nech ťa velebia všetky národy.", "Príď, Pane, navštív nás v pokoji, aby sme sa radovali z celého srdca pred tebou." },  /* 2033-12-16  */
  { "132030103", "1Jn 2,22-28; Ž 98,1. 2-3b. 3c-4; Jn 1,19-28", "Uzreli všetky končiny zeme spásu nášho Boha", "" }, /* (spomienka), Svätých Bazila Veľkého a Gregora Nazianzského, biskupov a učiteľov Cirkvi, 2008-01-02 */
  { "132030104", "1Jn 2,29 - 3,6; Ž 8,4-5. 6-7. 8-9; Jn 1,29-34", "Pane, náš Vládca, aké vznešené je tvoje meno na celej zemi", "" }, /* (ľubovoľná spomienka), Najsvätejšieho mena Ježiš, 2008-01-03 */
  { "132030105", "1Jn 3,7-10; Ž 98,1. 7-8. 9; Jn 1,35-42", "Uzreli všetky končiny zeme spásu nášho Boha", "" }, /* , , 2008-01-04 */
@@ -678,6 +710,7 @@
  { "132040901", "1Jn 4,11-18; Ž 72,1-2.10-13; Mk 6,45-52", "Budú sa ti klaňať, Pane, všetky národy sveta.", "Sláva ti Kriste, teba zvestovali národom; sláva ti Kriste, v teba uverili na svete." },  /* 2014-01-09  */
  { "132041001", "1Jn 4,19-5,4; Ž 72,1-2.14-15.17; Lk 4,14-22a", "Budú sa ti klaňať, Pane, všetky národy sveta", "Pán ma poslal hlásať evanjelium chudobným, oznámiť zajatým, že budú prepustení." },  /* 2014-01-10  */
  { "132041101", "1Jn 5,5-13; Ž 147,12-15.19-20; Lk 5,12-16", "Chváľ, Jeruzalem Pána, oslavuj, Sion, svojho Boha", "Ježiš hlásal evanjelium o kráľovstve a uzdravoval každú chorobu medzi ľudom." },  /* 2020-01-11  */
+ { "132041201", "1 Jn 5, 14-21; Ž 149, 1-2. 3-4. 5-6a+9b; Jn 3, 22-30", "Pán, Boh, miluje svoj ľud.", "Ľud bývajúci v temnotách uvidel veľké svetlo. Svetlo zažiarilo tým, čo sedeli v temnom kraji smrti." },  /* 2030-01-12  */
  { "132050101", "1Sam 1,1-8; Ž 116,12-14+17-9; Mk 1,14-20", "Prinesiem ti, Pane, obetu chvály", "Priblížilo sa Božie kráľovstvo, hovorí Pán; kajajte sa a verte evanjeliu." },  /* 2020-01-13  */
  { "132050102", "1Sam 1,9-20; (Ž) 1Sam 2,1.4-8; Mk 1,21-28", "Srdce mi plesá v mojom Bohu", "Prijmite Božie slovo, nie ako ľudské slovo, ale – aké naozaj je – ako slovo Božie." },  /* 2020-01-14  */
  { "132050103", "1Sam 3,1-10.19-20; Ž 40,2.5.7-10; Mk 1,29-39", "Hľa, prichádzam, Pane, chcem plniť tvoju vôľu", "Moje ovce počúvajú môj hlas, hovorí Pán; ja ich poznám a ony idú za mnou." },  /* 2020-01-15  */
@@ -724,6 +757,8 @@
  { "132050802", "1Pt 1,10-16; Ž 98,1-4; Mk 10,28-31", "Uzreli všetky končiny zeme spásu nášho Boha", "" },  /* 2014-03-04  */
  { "132050803", "1Pt 1,18-25; Ž 147,12-13. 14-15. 19-20; Mk 10,32-45", "Chváľ, Jeruzalem, Pána, oslavuj, Sion, svojho Boha", "" }, /* , , 2008-05-28 */
  { "132050804", "1Pt 2,2-5. 9-12; Ž 100,2. 3. 4. 5; Mk 10,46-52", "Sme jeho ľud a ovce z jeho stáda", "" }, /* , , 2008-05-29 */
+ { "132050805", "1 Pt 4, 7-13; Ž 96, 10. 11-12a. 12b-13; Mk 11, 11-25", "Pán príde súdiť všetky národy.", "Ja som si vás vyvolil, aby ste išli a prinášali ovocie a aby vaše ovocie zostalo, hovorí Pán." },  /* 2024-05-31  */
+ { "132050806", "Júd 17. 20b-25; Ž 63, 2. 3-4. 5-6; Mk 11, 27-33", "Za tebou prahne moja duša, Pane, Bože môj.", "Slovo Kristovo nech vo vás bohato prebýva; skrze Krista vzdávajte vďaky Bohu Otcovi." },  /* 2024-06-01  */
  { "132050901", "2Pt 1,1-7; Ž 91,1-2. 14-15b. 15c-16; Mk 12,1-12", "V tebe mám dôveru, Pane, Bože môj", "" }, /* (ľubovoľná spomienka), Svätých. Marcelína a Petra, mučeníkov, 2008-06-02 */
  { "132050902", "2Pt 3,12-16a<*vorí.>. 17-18; Ž 90,2. 3-4. 10. 14+16; Mk 12,13-17", "Pane, stal si sa nám útočišťom z pokolenia na pokolenie", "" }, /* (spomienka), Svätého Karola Lwangu a spoločníkov, mučeníkov, 2008-06-03 */
  { "132050903", "2Tim 1,1-3. 6-12; Ž 123,1-2a. 2b-d; Mk 12,18-27", "Oči dvíham k tebe, Pane, čo na nebesiach prebývaš", "" }, /* , , 2008-06-04 */
@@ -743,17 +778,22 @@
  { "132051105", "2Kr 11,1-4. 9-18. 20; Ž 132,11. 12. 13-14. 17-18; Mt 6,19-23", "Pán si vyvolil Sion za svoj príbytok", "" }, /* , , 2008-06-20 */
  { "132051106", "2Krn 24,17-25; Ž 89,4-5. 29-30. 31-33. 34; Mt 6,24-34", "Pánovo milosrdenstvo trvá naveky", "" }, /* (spomienka), Svätého Alojza Gonzágu, rehoľníka, 2008-06-21 */
  { "132051201", "2Kr 17,5-8. 13-15a<*ťou>. 18; Ž 60,3. 4-5. 12-13; Mt 7,1-5", "Vyslyš nás, Pane, pomôž nám svojou pravicou", "" }, /* , , 2008-06-23 */
+ { "132051202", "2 Kr 19, 9b-11. 14-21. 31-35a. 36; Ž 48, 2-3a. 3b-4. 10-11; Mt 7, 6. 12-14", "Boh založil svoje mesto naveky.", "Ja som svetlo sveta, hovorí Pán; kto mňa nasleduje, bude mať svetlo života." },  /* 2020-06-23  */
  { "132051203", "2Kr 22,8-13. 23,1-3; Ž 119,33. 34. 35. 36. 37. 40; Mt 7,15-20", "Ukáž mi, Pane, cestu svojich prikázaní", "" }, /* , , 2008-06-25 */
  { "132051204", "2Kr 24,8-17; Ž 79,1-2. 3-5. 8. 9; Mt 7,21-29", "Pre slávu svojho mena vysloboď nás, Pane", "" }, /* , , 2008-06-26 */
  { "132051205", "2Kr 25,1-12; Ž 137,1-2. 3. 4-5. 6; Mt 8,1-4", "Pane, chcem stále pamätať na teba", "" }, /* (ľubovoľná spomienka), Svätého Ladislava /al./ Svätého Cyrila Alexandrijského, biskupa a učiteľa Cirkvi, 2008-06-27 */
  { "132051206", "Nár 2,10-14. 18-19; Ž 74,1-2. 3-4. 5-7. 20-21; Mt 8,5-17", "Nezabúdaj, Pane, na svojich úbožiakov", "" }, /* (spomienka), Svätého Ireneja, biskupa a mučeníka, 2008-06-28 */
  { "132051301", "Am 2,6-10. 13-16; Ž 50,16b<.Pre*>-17. 18-19. 20-21. 22-23; Mt 8,18-22", "Spamätajte sa a nezabúdajte na Boha", "" }, /* (ľubovoľná spomienka), Prvých svätých mučeníkov Cirkvi v Ríme, 2008-06-30 */
  { "132051302", "Am 3,1-8. 4,11-12; Ž 5,5-6. 7. 8; Mt 8,23-27", "Pane, veď ma vo svojej spravodlivosti", "" }, /* , , 2008-07-01 */
+ { "132051303", "Am 5, 14-15. 21-24; Ž 50, 7. 8-9. 10-11. 12-13. 16b-17; Mt 8, 28-34", "Kto kráča bez úhony, tomu ukážem Božiu spásu.", "Otec nás zo svojej vôle zrodil slovom pravdy, aby sme boli ako prvotiny jeho stvorenia." },  /* 2020-07-01  */
+ { "132051304", "Sof 3, 14-18 /al./ Rim 12, 9-16b; (Ž) Iz 12, 2-3. 4b-d. 5-6; Lk 1, 39-56", "Plesajme a jasajme, lebo uprostred nás je Svätý, Boh.", "Blahoslavená si Panna Mária, lebo si uverila, že sa splní, čo ti povedal Pán." },  /* 2020-07-02  */
  { "132051305", "Am 8,4-6. 9-12; Ž 119,2. 10. 20. 30. 40. 131; Mt 9,9-13", "Nielen z chleba žije človek, ale z každého slova, ktoré vychádza z Božích úst", "" }, /* (ľubovoľná spomienka), Svätej Alžbety Portugalskej, 2008-07-04 */
+ { "132051306", "Am 9, 11-15; Ž 85, 9. 11-12. 13-14; Mt 9, 14-17", "Pán, Boh, ohlási pokoj svojmu ľudu a svojim svätým.", "Moje ovce počúvajú môj hlas, hovorí Pán; ja ich poznám a ony idú za mnou." },  /* 2020-07-04  */
  { "132051401", "Oz 2,16. 17c<tam p*>-18. 21-22; Ž 145,2-3. 4-5. 6-7. 8-9; Mt 9,18-26", "Milostivý a milosrdný je Pán", "" }, /* (ľubovoľná spomienka), Svätého Antona Márie Zaccaria, kňaza, 2008-07-07 */
  { "132051402", "Oz 8,4-7. 11-13; Ž 115,3-4. 5-6. 7ab<*dia,>+8. 9-10; Mt 9,32-38", "My dúfame v teba, Pane, Bože náš", "" }, /* , , 2008-07-08 */
  { "132051403", "Oz 10,1-3. 7-8. 12; Ž 105,2-3. 4-5. 6-7; Mt 10,1-7", "Hľadajte Pána, hľadajte jeho tvár", "" }, /* (ľubovoľná spomienka), Svätého Augustína Zhao Rong, kňaza, a spoločníkov, mučeníkov, 2008-07-09 */
  { "132051404", "Oz 11,1. 3-4. 8e<Srd*>-9; Ž 80,2ac+3bc<Vzb*>. 15-16; Mt 10,7-15", "Bože obnov nás, rozjasni svoju tvár a budeme spasení", "" }, /* , , 2008-07-10 */
+ { "132051405", "Oz 14, 2-10; Ž 51, 3-4. 8-9. 12-13. 14+17; Mt 10, 16-23", "Moje ústa, Pane, budú ohlasovať tvoju slávu.", "Keď príde Duch pravdy, uvedie vás do plnej pravdy a pripomenie vám všetko, čo som vám povedal." },  /* 2020-07-10  */
  { "132051406", "Iz 6,1-8; Ž 93,1ab. 1c-2. 5; Mt 10,24-33", "Pán kraľuje, velebou sa zaodel", "" }, /* , , 2008-07-12 */
  { "132051501", "Iz 1,10ab<*ské,>. 11-17; Ž 50,8-9. 16b<.Pre*>-17. 21+23; Mt 10,34 - 11,1", "Ukáž nám, Pane, cestu spásy", "" }, /* (ľubovoľná spomienka), Svätého Kamila de Lellis, kňaza, 2008-07-14 */
  { "132051502", "Iz 7,1-9; Ž 48,2-3a. 3b-4. 5-6. 7-8; Mt 11,20-24", "Boh založil svoje mesto naveky", "" }, /* (spomienka), Svätého Bonaventúru, kňaza a učiteľa Cirkvi, 2008-07-15 */
@@ -765,6 +805,7 @@
  { "132051602", "Pies 3,1-4a<*išla> /al./ 2Kor 5,14-17; Ž 63,2. 3-4. 5-6. 8-9; Jn 20,1-2. 11-18", "Za tebou prahne moja duša, Pane, Bože môj", "" }, /* (spomienka), Svätej Márie Magdalény, 2008-07-22 */
  { "132051603", "Gal 2,9-20; Ž 34,2-3. 4-5. 6-7. 8-9. 10-11; Jn 15,1-8", "Velebiť budem Pána v každom čase", "" }, /* (sviatok), Svätej Brigity, rehoľníčky, spolupatrónky Európy, 2008-07-23 */
  { "132051604", "Jer 2,1-3. 7-8. 12-13; Ž 36,6-7b<*ina.>. 8-9. 10-11; Mt 13,10-17", "Pane, u teba je zdroj života", "" }, /* (ľubovoľná spomienka), Svätého Sarbela Makhlufa, kňaza, 2008-07-24 */
+ { "132051605", "Jer 3, 14-17; (Ž) Jer 31, 10. 11-12b. 13; Mt 13, 18-23", "Pán nás bude strážiť ako pastier svoje stádo.", "Blahoslavení sú tí, čo zachovávajú Božie slovo v dobrom a šľachetnom srdci a s vytrvalosťou prinášajú úrodu." },  /* 2020-07-24  */
  { "132051606", "Jer 7,1-11; Ž 84,3. 4. 5-6a<*haš.>+8a<*da.>. 11; Mt 13,24-30", "Aké milé sú tvoje príbytky, Pane, zástupov", "" }, /* (spomienka), Svätých Joachima a Anny, rodičov Panny Márie, 2008-07-26 */
  { "132051701", "Jer 13,1-11; (Ž) Dt 32,18-19. 20. 21; Mt 13,31-35", "Opustil si Boha, svojho stvoriteľa", "" }, /* , , 2008-07-28 */
  { "132051702", "1Jn 4,7-16; Ž 34,2-3. 4-5. 6-7. 8-9. 10-11; Jn 11,19-27 /al./ Lk 10,38-42", "Skúste a presvedčte sa, aký dobrý je Pán", "" }, /* (spomienka), Svätej Marty, 2008-07-29 */
@@ -774,6 +815,7 @@
  { "132051706", "Jer 26,11-16. 24; Ž 69,15-16. 30-31. 33-34; Mt 14,1-12", "V tomto čase milosti vyslyš, ma, Pane", "" }, /* (ľubovoľná spomienka), Svätého Euzébia Vercellského, biskupa; /al./ svätého Petra Juliána Eymarda, kňaza, 2008-08-02 */
  { "132051801", "Jer 28,1-17; Ž 119,29. 43. 79. 80. 95. 102; Mt 14,22-36", "Pane, daj mi poznať tvoju spravodlivosť", "" }, /* (spomienka), Svätého Jána Márie Vianneyho, kňaza, 2008-08-04 */
  { "132051802", "Jer 30,1-2. 12-15. 18-22; Ž 102,16-18. 19-21. 29+22-23; Mt 15,1-2. 10-14", "Pán vystavil Sion a zjavil sa vo svojej sláve", "" }, /* (ľubovoľná spomienka), Výročie posviacky hlavnej mariánskej baziliky v Ríme, 2008-08-05 */
+ { "132051803", "Jer 31, 1-7; (Ž) Jer 31, 10. 11-12b. 13; Mt 15, 21-28", "Pán nás bude strážiť ako pastier svoje stádo.", "Veľký prorok povstal medzi nami a Boh navštívil svoj ľud." },  /* 2020-08-05  */
  { "132051804", "Jer 31,31-34; Ž 51,12-13. 14-15. 18-19; Mt 16,13-23", "Bože, stvor vo mne srdce čisté", "" }, /* (ľubovoľná spomienka), Svätého Sixta II., pápeža, a jeho spoločníkov, mučeníkov; /al./ Svätého Kajetána, kňaza, 2008-08-07 */
  { "132051805", "Nah 2,1. 3. 3,1-3. 6-7; (Ž) Dt 32,35c<Veď*>-36b<*hom.>. 39a–d<*jem.>. 41; Mt 16,24-28", "Pane, zľutuj sa sa nad svojimi služobníkmi", "" }, /* (spomienka), Svätého Dominika, kňaza, 2008-08-08 */
  { "132051806", "Oz 2,16bc<za*>. 17c–e<tam p*>. 21-22; Ž 45,11-12. 14-15. 16-17; Mt 25,1-13", "Ženích prichádza, vyjdite v ústrety Kristu Pánovi!", "" }, /* (sviatok), Svätej Terézie Benedikty z kríža, panny a mučenice, spolupatrónky Európy, 2008-08-09 */
@@ -781,6 +823,7 @@
  { "132051902", "Ez 2,8 - 3,4; Ž 119,14. 24. 72. 103. 111. 131; Mt 18,1-5. 10. 12-14", "Tvojr výroky, Pane, mojim ústam sú sladšie ako med", "" }, /* (ľubovoľná spomienka), Svätej. Jany Františky de Chantal, rehoľníčky(z 12. dec.), 2008-08-12 */
  { "132051903", "Ez 9,1-7. 10,18-22; Ž 113,1-2. 3-4. 5-6; Mt 18,15-20", "Pánova sláva prevyšuje nebesia", "" }, /* (ľubovoľná spomienka), Svätého Ponciána, pápeža, a svätého Hypolita, kňaza, mučeníkov, 2008-08-13 */
  { "132051904", "Ez 12,1-12; Ž 78,56-57. 58-59. 64-62; Mt 18,21 - 19,1", "Nezabúdajme na Božie diela", "" }, /* (spomienka), Svätého Maximiliána Márie Kolbeho, kňaza, mučeníka, 2008-08-14 */
+ { "132051905", "Ez 16, 1-15. 60. 63 /al./ Ez 16, 59-63; (Ž) Iz 12, 2-3. 4b-d. 5-6; Mt 19, 3-12", "Odvrátil sa tvoj hnev a potešil si ma.", "Prijmite Božie slovo, nie ako ľudské slovo, ale – aké naozaj je – ako slovo Božie." },  /* 2020-08-14  */
  { "132051906", "Ez 18,1-10. 13b<či*žiť\\?>. 30-32; Ž 51,12-13. 14-15. 18-19; Mt 19,13-15", "Bože, stvor vo mne srdce čisté", "" }, /* (ľubovoľná spomienka), Svätého Štefana Uhorského, 2008-08-16 */
  { "132052001", "Ez 24,15-24; (Ž) Dt 32,18-19. 20. 21; Mt 19,16-22", "Opustil si Boha, svojho stvoriteľa", "" }, /* , , 2008-08-18 */
  { "132052002", "Ez 28,1-10; (Ž) Dt 32,26-27b. 27c-28. 30. 35c<Veď*>-36b<*hom.>; Mt 19,23-30", "Zľutuj sa, Pane, nad svojimi služobníkmi", "" }, /* (ľubovoľná spomienka), Svätého Jána Eudes, kňaza, 2008-08-19 */
@@ -800,11 +843,13 @@
  { "132052204", "1Kor 3,18-23; Ž 24,1-2. 3-4b<*sti>. 5-6; Lk 5,1-11", "Pánova je zem i všetko, čo ju napĺňa", "" }, /* , , 2008-09-04 */
  { "132052205", "1Kor 4,1-5; Ž 37,3-4. 5-6. 27-28b<*tých.>. 39-40; Lk 5,33-39", "Spása spravodlivých prichádza od Pána", "" }, /* , , 2008-09-05 */
  { "132052206", "1Kor 4,9-15; Ž 145,17-18. 19-20. 21; Lk 6,1-5", "Blízky je Pán všetkým, čo ho vzývajú", "" }, /* , , 2008-09-06 */
+ { "132052301", "1 Kor 5, 1-8; Ž 5, 5-6. 7. 12; Lk 6, 6-11", "Pane, veď ma vo svojej spravodlivosti.", "Moje ovce počúvajú môj hlas, hovorí Pán; ja ich poznám a ony idú za mnou." },  /* 2020-09-07  */
  { "132052302", "1Kor 6,1-11; Ž 149,1-2. 3-4. 5-6a<*rách>+9b<Vše*>; Lk 6,12-19", "Pán Boh miluje svoj ľud", "" }, /* (ľubovoľná spomienka), Svätého Petra Clavera, kňaza, 2008-09-09 */
  { "132052303", "1Kor 7,25-31; Ž 45,11-12. 14-15. 16-17; Lk 6,20-26", "Čuj, dcéra, a pozoruj a nakloň svoj sluch", "" }, /* , , 2008-09-10 */
  { "132052304", "1Kor 8,1b<Ale*>-7. 10-13; Ž 139,1-3. 13-14b<*ivu>. 23-24; Lk 6,27-38", "Veď ma, Pane, po ceste k večnosti", "" }, /* , , 2008-09-11 */
  { "132052305", "1Kor 9,16-19. 22b<Pre v*>-27; Ž 84,3. 4. 5-6. 12; Lk 6,39-42", "Aké milé sú tvoje chrámy, Pane", "" }, /* (ľubovoľná spomienka), Najsvätejšieho mena Panny Márie, 2008-09-12 */
- { "132052306", "1Kor 10,14-22; Ž 116,12-13. 17-18; Lk 6,43-49", "Prinesiem ti, Pane, obetu chválu", "" }, /* (spomienka), Svätého Jána Zlatoústeho, biskupa a učiteľa Cirkvi, 2008-09-13 */
+ { "132052306", "1Kor 10,14-22; Ž 116,12-13. 17-18; Lk 6,43-49", "Prinesiem ti, Pane, obetu chvály", "" }, /* (spomienka), Svätého Jána Zlatoústeho, biskupa a učiteľa Cirkvi, 2008-09-13 */
+ { "132052401", "Nm 21, 4c-9 /al./ Flp 2, 6-11; Ž 78, 1-2. 34-35. 36-37. 38; Jn 3, 13-17", "Nezabúdajme na Pánove diela.", "Klaniame sa ti, Kriste, a dobrorečíme ti, lebo si svojim krížom vykúpil svet." },  /* 2020-09-14  */
  { "132052402", "1Kor 12,12-14. 27-31a<*ti.>; Ž 100,2. 3. 4. 5; Lk 7,11-17", "Sme jeho ľud a ovce z jeho stáda", "" }, /* (spomienka), Svätých Kornélia, pápeža, a Cypriána, biskupa, mučeníkov, 2008-09-16 */
  { "132052403", "1Kor 12,31 - 13,13; Ž 33,2-3. 4-5. 12+22; Lk 7,31-35", "Blažený ľud, ktorý si Pán vyvolil za dedičstvo", "" }, /* (ľubovoľná spomienka), Svätého Róberta Bellarmína, biskupa a učiteľa Cirkvi, 2008-09-17 */
  { "132052404", "1Kor 15,1-11; Ž 118,1-2. 16ab<*ihla.>+17. 28; Lk 7,36-50", "Oslavujme Pána, lebo je dobrý, lebo jeho milosrdenstvo trvá naveky", "" }, /* , , 2008-09-18 */
@@ -816,6 +861,7 @@
  { "132052504", "Kaz 1,2-11; Ž 90,3-4. 5-6. 12-13. 14+17; Lk 9,7-9", "Pane, stal si sa nám útočišťom z pokolenia na pokolenie", "" }, /* , , 2008-09-25 */
  { "132052505", "Kaz 3,1-11; Ž 144,1a<*ca.>+2ac<*ham.>. 3-4; Lk 9,18-22", "Nech je zvelebený Pán, môj ochranca", "" }, /* (ľubovoľná spomienka), Svätých Kozmu a Damiána, mučeníkov, 2008-09-26 */
  { "132052506", "Kaz 11,9 - 12,8; Ž 90,3-4. 5-6. 12-13. 14+17; Lk 9,43b<Keď*>-45", "Pane, stal si sa nám útočišťom z pokolenia na pokolenie", "" }, /* (spomienka), Svätého Vincenta de Paul, kňaza, 2008-09-27 */
+ { "132052601", "Jób 1, 6-22; Ž 17, 1. 2-3. 6-7; Lk 9, 46-50", "Nakloň ku mne svoj sluch a vypočuj moje slová.", "Syn človeka prišiel, aby slúžil a položil svoj život ako výkupné za mnohých." },  /* 2020-09-28  */
  { "132052602", "Jób 3,1-3. 11-17. 20-23; Ž 88,2-3. 4-5. 6. 7-8; Lk 9,51-56", "Kiež prenikne k tebe, Pane, moja modlitba", "" }, /* (spomienka), Svätého Hieronyma, kňaza a učiteľa Cirkvi, 2008-09-30 */
  { "132052603", "Jób 9,1-12. 14-16; Ž 17,1. 2-3. 6-7; Lk 9,57-62", "Nakloň ku mne svoj sluch a vypočuj moje slová", "" }, /* (spomienka), Svätej Terézie z Lisieux, panny a učiteľky Cirkvi, 2008-10-01 */
  { "132052604", "Ex 23,20-23a<*ou>; Ž 91,1-2. 3-4. 5-6. 10-11; Mt 18,1-5. 10", "Svojim anjelom dá príkaz o tebe, aby ťa strážili na tvojich cestách", "" }, /* (spomienka), Svätých anjelov strážcov, 2008-10-02 */
@@ -832,6 +878,7 @@
  { "132052803", "Gal 5,18-25; Ž 1,1-2. 3. 4+6; Lk 11,42-46", "Pane, kto nasleduje teba, bude mať svetlo života", "" }, /* (spomienka), Svätej Terézie od Ježiša, panny a učiteľky Cirkvi, 2008-10-15 */
  { "132052804", "Ef 1,1-10<*mi.>; Ž 98,1. 2-3b. 3c-4. 5-6; Lk 11,47-54", "Tvoja spása, Pane, objíma celý svet", "" }, /* (ľubovoľná spomienka), Svätej Hedvigy, rehoľníčky; /al./ svätej Margity Márie Alacoque, panny, 2008-10-16 */
  { "132052805", "Ef 1,11-14; Ž 33,1-2. 4-5. 12-13; Lk 12,1-7", "Blažený ľud, ktorý si Pán vyvolil za dedičstvo", "" }, /* (spomienka), Svätého Ignáca Antiochijského, biskupa a mučeníka, 2008-10-17 */
+ { "132052806", "Ef 1, 15-23; Ž 8, 2-3a. 4-5. 6-7; Lk 12, 8-12", "Svojho Syna si ustanovil za vládcu nad dielami svojich rúk.", "Duch pravdy vydá o mne svedectvo, hovorí Pán; aj vy vydávate svedectvo." },  /* 2020-10-17  */
  { "132052901", "Ef 2,1-10; Ž 100,2. 3. 4. 5; Lk 12,13-21", "Pán je náš stvoriteľ a jemu patríme", "" }, /* , , 2008-10-20 */
  { "132052902", "Ef 2,12-22; Ž 85,9ab<*ätým>+10. 11-12. 13-14; Lk 12,35-38", "Pán, Boh, ohlási pokoj svojmu ľudu a svojim svätým", "" }, /* , , 2008-10-21 */
  { "132052903", "Ef 3,2-12; (Ž) Iz 12,2-3. 4b–d<.Osl*>. 5-6; Lk 12,39-48", "Čerpajme vodu s radosťou z prameňov spásy", "" }, /* , , 2008-10-22 */
@@ -839,9 +886,11 @@
  { "132052905", "Ef 4,1-6; Ž 24,1-2. 3-4b<*osti>. 5-6; Lk 12,54-59", "Tvoju tvár, Pane, s úprimným srdcom hľadáme", "" }, /* (ľubovoľná spomienka), Svätého Antona Clareta, biskupa, 2008-10-24 */
  { "132052906", "Ef 4,7-16; Ž 122,1-2. 3-4a. 4b-5; Lk 13,1-9", "S radosťou pôjdeme do domu Pánovho", "" }, /* , , 2008-10-25 */
  { "132053001", "Ef 4,32 - 5,8; Ž 1,1-2. 3. 4+6; Lk 13,10-17", "Napodobňujme Boha ako jeho milované deti", "" }, /* , , 2008-10-27 */
+ { "132053002", "Ef 5, 21-33; Ž 128, 1-2. 3. 4-5; Lk 13, 18-21", "Blažení všetci, čo sa boja Pána, a kráčajú po jeho cestách.", "Zvelebujem ťa, Otče, Pán neba i zeme, že si zjavil maličkým tajomstvá Božieho kráľovstva." },  /* 2020-10-27  */
  { "132053003", "Ef 6,1-9; Ž 145,10-11. 12-13b. 13c-14; Lk 13,22-30", "Pán je pravdivý vo všetkých svojich slovách", "" }, /* , , 2008-10-29 */
  { "132053004", "Ef 6,10-20; Ž 144,1. 2. 9-10; Lk 13,31-35", "Nech je zvelebený Pán, môj ochranca", "" }, /* , , 2008-10-30 */
  { "132053005", "Flp 1,1-11; Ž 111,1-2. 3-4. 5-6; Lk 14,1-6", "Nádherné a vznešené sú tvoje diela, Pane", "" }, /* , , 2008-10-31 */
+ { "132053006", "Flp 1, 18b-26; Ž 42, 2. 3. 5b-e; Lk 14, 1. 7-11", "Po Bohu žízni moja duša, po Bohu živom.", "Vezmite na seba moje jarmo a učte sa odo mňa, lebo som tichý a pokorný srdcom." },  /* 2020-10-31  */
  { "132053101", "Flp 2,1-4; Ž 131,1. 2. 3; Lk 14,12-14", "Pane, zachovaj moju dušu v tvojom pokoji", "" }, /* (ľubovoľná spomienka), Svätého Martina Porres, rehoľníka, 2008-11-03 */
  { "132053102", "Flp 2,5-11; Ž 22,26b<svo*>-27. 28-30a<*mou.>. 31-32; Lk 14,15-24", "Tebe, Pane, patrí moja chvála v tomto našom zhromaždení", "" }, /* (spomienka), Svätého Karola Boromeo, biskupa, 2008-11-04 */
  { "132053103", "Flp 2,12-18; Ž 27,1. 4. 13-14; Lk 14,25-33", "Pán je moje svetlo a moja spása", "" }, /* (ľubovoľná spomienka), Svätého Imricha, 2008-11-05 */
@@ -888,13 +937,16 @@
  { "132100502", "Sk 14,19-28; Ž 145,10-11. 12-13b<*nia.>. 21; Jn 14,27-31a<*ec.>", "Velebíme ťa, Pane, pre tvoju slávu", "" }, /* , , 2008-04-22 */
  { "132100503", "Sk 15,1-6; Ž 122,1-2. 3-4a. 4b-5; Jn 15,1-8", "S radosťou pôjdeme do domu Pánovho", "" }, /* (spomienka), Svätého Vojtecha, biskupa a mučeníka, 2008-04-23 */
  { "132100504", "Sk 15,7-21; Ž 96,1-2a. 2b-3. 10; Jn 15,9-11", "Zvestujte všetkým národom zázraky Pánove", "" }, /* (ľubovoľná spomienka), Svätého Juraja, mučeníka; /al./ svätého Fidela zo Sigmaringenu, kňaza a mučeníka, 2008-04-24 */
+ { "132100505", "Sk 15, 22-31; Ž 57, 8-9. 10-12; Jn 15, 12-17", "Budem ťa, Pane, velebiť medzi národmi.", "Nazval som vás priateľmi, hovorí Pán; pretože som vám oznámil všetko, čo som počul od svojho Otca." },  /* 2020-05-15  */
  { "132100506", "Sk 16,1-10; Ž 100,2. 3. 5; Jn 15,18-21", "Boh je náš Pán a my sme jeho ľud", "" }, /* , , 2008-04-26 */
  { "132100601", "Sk 16,11-15; Ž 149,1-2. 3-4. 5-6a<*rách>+9b<Vš*vu.>; Jn 15,26 - 16,4a<*ril.>", "Pán, Boh, miluje svoj ľud", "" }, /* (ľubovoľná spomienka), Svätého Petra Chanela, kňaza a mučeníka; /al./ svätého Ľudovíta Márie Grignion de Montfort, kňaza, 2008-04-28 */
+ { "132100602", "Sk 16, 22-34; Ž 138, 1-2a. 2bc+3. 7c-8; Jn 16, 5-11", "Chráni ma tvoja pravica, Pane, Bože môj.", "Pošlem vám Ducha pravdy, hovorí Pán; on vás uvedie do plnej pravdy." },  /* 2020-05-19  */
  { "132100603", "Sk 17,15. 22-18,1; Ž 148,1-2. 11-13a. 13b-14; Jn 16,12-15", "Plné sú nebo i zem tvojej slávy", "" }, /* (ľubovoľná spomienka), Svätého Pia V., pápeža, 2008-04-30 */
  { "132110605", "Sk 18,9-18; Ž 47,2-3. 4-5. 6-7; Jn 16,20-23a<*vať.>", "Boh je kráľom celej zeme, spievajme mu chválospev", "" }, /* (spomienka), Svätého Atanáza, biskupa a učiteľa Cirkvi, 2008-05-02 */
+ { "132110606", "Sk 18, 23-28; Ž 47, 2-3. 8-9. 10; Jn 16, 23b-28", "Boh je kráľom celej zeme, spievajme mu chválospev.", "Vyšiel som od Otca a prišiel som na svet; a zasa opúšťam svet a idem k Otcovi." },  /* 2020-05-23  */
  { "132110701", "Sk 19,1-8; Ž 68,2-3. 4-5ac<*Pán.>. 6-7b<*stiu>; Jn 16,29-33", "Spievajme nášmu Pánovi hlasom radostným", "" }, /* , , 2008-05-05 */
  { "132110702", "Sk 20,17-27; Ž 68,10-11. 20-21; Jn 17,1-11a<*be.>", "Spievajme nášmu Pánovi hlasom radostným", "" }, /* , , 2008-05-06 */
  { "132110703", "Sk 20,28-38; Ž 68,29-30. 33-35a. 35bc+ 36c<Zve*>; Jn 17,11b<Svätý*>-19", "Spievajme nášmu Pánovi hlasom radostným", "" }, /* , , 2008-05-07 */
  { "132110704", "Sk 22,30. 23,6-11; Ž 16,1-2a<*Pán.>+5. 7-8. 9-10. 11; Jn 17,20-26", "Ochráň ma, Bože, k tebe sa utiekam", "" }, /* , , 2008-05-08 */
  { "132110705", "Sk 25,13-21; Ž 103,1-2. 11-12. 19-20b<*ová>; Jn 21,15-19", "Pán kraľuje nad všetkými, trón má v nebesiach", "" }, /* , , 2008-05-09 */
- { "132110706", "Sk 28,16-20. 30-31; Ž 11,4. 5+7; Jn 21,20-25", "Pán tróni na nebesiach; statoční uvidia jeho tvár", "" }, /* , , 2008-05-10 */
+ { "132110706", "Sk 28, 16-20. 30-31; Ž 11, 4. 5+7; Jn 21, 20-25", "Pán tróni na nebesiach; statoční uvidia jeho tvár.", "Pošlem vám Ducha pravdy, hovorí Pán; on vás uvedie do plnej pravdy." },  /* 2020-05-30  */
