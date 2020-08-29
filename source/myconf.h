@@ -48,7 +48,7 @@
 
 extern char cfg_INCLUDE_DIR_default [MAX_INCD_STR];
 
-extern long cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
+extern unsigned long long cfg_option_default[POCET_GLOBAL_OPT][POCET_JAZYKOV + 1];
 
 #define POCET_DALSICH_CONF 6
 

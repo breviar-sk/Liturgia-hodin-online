@@ -965,7 +965,7 @@ void _set_prosby(short int modlitba, const char *file, const char *anchor) {
 	} // switch(modlitba)
 } // _set_prosby()
 
-void _set_maria_ant(short int modlitba, const char *file, const char *anchor) {
+void _set_maria_ant(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_KOMPLETORIUM:
 		mystrcpy(_global_modl_kompletorium.maria_ant.file, file, MAX_STR_AF_FILE);
@@ -976,7 +976,24 @@ void _set_maria_ant(short int modlitba, const char *file, const char *anchor) {
 		mystrcpy(_global_modl_prve_kompletorium.maria_ant.anchor, anchor, MAX_STR_AF_ANCHOR);
 		break;
 	} // switch(modlitba)
-} // _set_prosby()
+} // _set_maria_ant()
+
+void _set_otcenas_uvod(short int modlitba, const char* file, const char* anchor) {
+	switch (modlitba) {
+	case MODL_RANNE_CHVALY:
+		mystrcpy(_global_modl_ranne_chvaly.otcenas_uvod.file, file, MAX_STR_AF_FILE);
+		mystrcpy(_global_modl_ranne_chvaly.otcenas_uvod.anchor, anchor, MAX_STR_AF_ANCHOR);
+		break;
+	case MODL_VESPERY:
+		mystrcpy(_global_modl_vespery.otcenas_uvod.file, file, MAX_STR_AF_FILE);
+		mystrcpy(_global_modl_vespery.otcenas_uvod.anchor, anchor, MAX_STR_AF_ANCHOR);
+		break;
+	case MODL_PRVE_VESPERY:
+		mystrcpy(_global_modl_prve_vespery.otcenas_uvod.file, file, MAX_STR_AF_FILE);
+		mystrcpy(_global_modl_prve_vespery.otcenas_uvod.anchor, anchor, MAX_STR_AF_ANCHOR);
+		break;
+	} // switch(modlitba)
+} // _set_otcenas_uvod()
 
 void _set_modlitba(short int modlitba, const char *file, const char *anchor) {
 	switch (modlitba) {
@@ -1879,7 +1896,16 @@ void set_maria_ant(short int modlitba) {
 	_set_maria_ant(modlitba, _file, _anchor);
 	set_LOG_zaltar;
 	file_name_obnov();
-} // set_ukonkaj();
+} // set_maria_ant();
+
+void set_otcenas_uvod(short int modlitba) {
+	file_name_zapamataj();
+	sprintf(_file, "%s", FILE_OTCENAS_UVOD);
+	sprintf(_anchor, "_%s", ANCHOR_OTCENAS_UVOD);
+	_set_otcenas_uvod(modlitba, _file, _anchor);
+	set_LOG_zaltar;
+	file_name_obnov();
+} // set_otcenas_uvod();
 
 void set_popis(short int modlitba, char *file, char *anchor) {
 	_set_popis(modlitba, file, anchor);
@@ -11160,6 +11186,10 @@ _struct_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_MODLITBA", 6 },
 };
 
+_struct_anchor_and_count pocet_otcenas_uvod_multi_anchor_count[] = {
+	{ JAZYK_UNDEF, "_OTCENAS-UVOD", 10 },
+};
+
 _struct_anchor_and_count pocet_prosby_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_PROSBY", 2 },
 	{ JAZYK_UNDEF, "SCPM_1PROSBY", 2 },
@@ -11179,7 +11209,7 @@ _struct_anchor_and_count pocet_kcit_resp_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "OZZ_vRESP", 2 },
 };
 
-short int pocet_multi(char *_anchor, long type) {
+short int pocet_multi(char *_anchor, unsigned long long type) {
 	short int count = 0;
 	short int i = 0;
 	short int lng = JAZYK_UNDEF;
@@ -11213,6 +11243,10 @@ short int pocet_multi(char *_anchor, long type) {
 	else if (type == BASE_OPT_6_PROSBY_MULTI) {
 		ptr = pocet_prosby_multi_anchor_count;
 		size = sizeof(pocet_prosby_multi_anchor_count);
+	}
+	else if (type == BASE_OPT_6_OTCENAS_UVOD_MULTI) {
+		ptr = pocet_otcenas_uvod_multi_anchor_count;
+		size = sizeof(pocet_otcenas_uvod_multi_anchor_count);
 	}
 	else if (type == BASE_OPT_6_MARIA_ANT_MULTI) {
 		ptr = pocet_maria_ant_multi_anchor_count;

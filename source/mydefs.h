@@ -708,6 +708,14 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT "of1cma"
 #endif
 
+// intro for Pater noster
+#define FORCE_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD 143
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD "FORCE_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD"
+#else
+#define STR_FORCE_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD "of1zou"
+#endif
+
 // žalmy zo sviatku
 #define FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST 79
 #ifdef LONG_PARAM_NAMES
@@ -1294,6 +1302,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_1_OVERRIDE_STUP_SLAV        "BitOpt1OverrideCelebrationLevel"
 #define XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST     "BitOpt1CelebrationLevelForOverride"
 #define XML_BIT_OPT_1_KOMPL_MARIA_ANT           "BitOpt1ComplineMaryAnt"
+#define XML_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD       "BitOpt1IntroPaterNoster"
 
 // POCET_OPT_2_HTML_EXPORT
 #define XML_BIT_OPT_2_ISO_DATUM                 "BitOpt2ISOFormat"

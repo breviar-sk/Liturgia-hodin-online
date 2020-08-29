@@ -3013,7 +3013,7 @@ const char *html_text_opt_1_zaver_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_opt_1_maria_ant[POCET_JAZYKOV + 1] =
+const char* html_text_opt_1_maria_ant[POCET_JAZYKOV + 1] =
 {
 	"mariánske antifóny",
 	"mariánské antifony",
@@ -3036,6 +3036,34 @@ const char *html_text_opt_1_maria_ant_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_1_otcenas_uvod[POCET_JAZYKOV + 1] =
+{
+	"úvod k modlitbe Pána",
+	"úvod k modlitbě Páně",
+	"intro to Our Father",
+	"Pater noster intro",
+	"",
+	"úvod k modlitbě Páně",
+	"hu_text",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_1_otcenas_uvod_explain[POCET_JAZYKOV + 1] =
+{
+	"úvod k modlitbe Pána",
+	"úvod k modlitbě Páně",
+	"intro to Our Father",
+	"Pater noster intro",
+	"",
+	"úvod k modlitbě Páně",
+	"hu_text",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -4485,6 +4513,20 @@ const char *html_text_opt_6_alternatives_multi_prosby[POCET_JAZYKOV + 1] =
 	"",
 	"jiné prosby",
 	"más fohászok",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_6_alternatives_multi_otcenas_uvod[POCET_JAZYKOV + 1] =
+{
+	"iný úvod",
+	"jiný úvod",
+	"another introduction",
+	"introit alius",
+	"",
+	"jiný úvod",
+	"hu_text",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

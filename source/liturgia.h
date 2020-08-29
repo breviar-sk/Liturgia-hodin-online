@@ -193,6 +193,7 @@ struct tmodlitba1 {
 	_struct_anchor_and_file modlitba;
 	_struct_anchor_and_file ant_spomprivileg; // 2010-05-21: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie) // 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
 	_struct_anchor_and_file modlitba_spomprivileg; // 2010-05-21: pridané kvôli spomienkam a ľubovoľným spomienkam v pôstnom období (zobrazenie po modlitbe dňa pôstnej férie) // 2012-02-09: zovšeobecnené v zmysle VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
+	_struct_anchor_and_file otcenas_uvod; // 2020-08-27: intro for Pater noster
 };
 typedef struct tmodlitba1 _type_ranne_chvaly;
 typedef struct tmodlitba1 _type_vespery;
@@ -514,6 +515,8 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_CHVALOSPEV               "CHVALOSPEV"
 #define PARAM_TEDEUM		           "TEDEUM"
 #define PARAM_OTCENAS                  "OTCENAS"
+#define PARAM_OTCENAS_UVOD             "OTCENAS-UVOD"
+#define PARAM_ZOBRAZ_OTCENAS_UVOD      "ZOBRAZ-OTCENAS-UVOD"
 #define PARAM_ZVOLANIA                 "ZVOLANIA"
 #define PARAM_SLAVAOTCU	               "SLAVAOTCU"
 #define PARAM_RESPONZ                  "RESPONZ"
@@ -574,6 +577,7 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define KEYWORD_TTS_HEADING             "TTS:HEADING"
 #define KEYWORD_TTS_SECTION             "TTS:SECTION"
 #define KEYWORD_MARIANSKE_ANTIFONY      "MARIANSKE-ANTIFONY" // Maria antiphones at the end of compline
+#define KEYWORD_ZOBRAZ_OTCENAS_UVOD     "UVOD-OTCENAS" // must not start with already used "OTCENAS" keyword because startsWith() is used
 
 #define SYMBOL_END "/"
 
@@ -592,6 +596,8 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ALELUJA_VO_VELKONOCNOM_END    KEYWORD_ALELUJA_VO_VELKONOCNOM "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_OTCENAS_BEGIN                 KEYWORD_OTCENAS "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_OTCENAS_END                   KEYWORD_OTCENAS "" STR_UNDERSCORE "" KEYWORD_END
+#define PARAM_ZOBRAZ_OTCENAS_UVOD_BEGIN     KEYWORD_ZOBRAZ_OTCENAS_UVOD "" STR_UNDERSCORE "" KEYWORD_BEGIN
+#define PARAM_ZOBRAZ_OTCENAS_UVOD_END       KEYWORD_ZOBRAZ_OTCENAS_UVOD "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_CHVALOSPEV_BEGIN              KEYWORD_PARAM_CHVALOSPEV "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_CHVALOSPEV_END                KEYWORD_PARAM_CHVALOSPEV "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_KOMPLETORIUM_DVA_ZALMY_BEGIN	KEYWORD_KOMPLETORIUM_DVA_ZALMY "" STR_UNDERSCORE "" KEYWORD_BEGIN
@@ -664,6 +670,7 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ALT_CITANIE1_MULTI            "ALT-CITANIE1-" KEYWORD_MULTI
 #define PARAM_ALT_ANTIFONA_MULTI            "ALT-ANTIFONA-" KEYWORD_MULTI
 #define PARAM_ALT_MODLITBA_MULTI            "ALT-MODLITBA-" KEYWORD_MULTI
+#define PARAM_ALT_OTCENAS_UVOD_MULTI        "ALT-OTCENAS-UVOD-" KEYWORD_MULTI
 #define PARAM_ALT_PROSBY_MULTI              "ALT-PROSBY-" KEYWORD_MULTI
 #define PARAM_ALT_KCIT_RESP_MULTI           "ALT-KCIT-RESP-" KEYWORD_MULTI
 #define PARAM_ALT_KRESP_MULTI               "ALT-KRESP-" KEYWORD_MULTI
@@ -1516,16 +1523,16 @@ extern short int _global_pocet_svatych;
 #define OPT_6_ALTERNATIVES_MULTI   6
 
 // globálna premenná -- pole -- obsahujúca options; pôvodne to boli globálne premenné _global_opt 1..9 atď., obsahujú pom_OPT...
-extern long _global_opt[POCET_GLOBAL_OPT];
+extern unsigned long long _global_opt[POCET_GLOBAL_OPT];
 // globálna premenná -- pole -- obsahujúca force options; pôvodne to boli globálne premenné _global_force_opt 1..9 atď., obsahujú pom_FORCE_OPT...
-extern long _global_force_opt[POCET_GLOBAL_OPT];
+extern unsigned long long _global_force_opt[POCET_GLOBAL_OPT];
 
 // for function strcat_str_opt_bit_order()
 #define USE_STR_OPT           -2
 #define USE_STR_FORCE_OPT     -1
 
 #define POCET_OPT_0_SPECIALNE               14 // jednotlivé komponenty option 0 -- bity pre force option 0
-extern long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
+extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                      1 // export also verse numbers
 #define BIT_OPT_0_REFERENCIE                 2 // export Bible references as live URLs (default: proper webpage for given language; override: BIT_OPT_0_REF_BIBLE_COM, use bible.com)
@@ -1542,8 +1549,8 @@ extern long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_REF_BIBLE_COM           4096 // precondition: BIT_OPT_0_REFERENCIE must be true; instead of standard URL, generates link to bible.com
 #define BIT_OPT_0_ITALICS_CONDITIONAL     8192 // display text in italics (conditional), e. g. elisions
 
-#define POCET_OPT_1_CASTI_MODLITBY          19 // jednotlivé komponenty option 1 -- bity pre force option 1
-extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
+#define POCET_OPT_1_CASTI_MODLITBY          20 // jednotlivé komponenty option 1 -- bity pre force option 1
+extern unsigned long long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 // 2011-04-11: úprava významu (a interpretácie) option 1 == OPT_1_CASTI_MODLITBY (zobraziť/nezobraziť najmä pevné/nemenné súčasti modlitieb, ale aj iné, čo sú/nie sú v LH)
 // 2011-10-10: úprava niektorých bitov, posunutie popisu na koniec
 #define BIT_OPT_1_TEDEUM                     1
@@ -1565,9 +1572,10 @@ extern long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 #define BIT_OPT_1_OVERRIDE_STUP_SLAV     65536 // možnosť zvoliť vyšší stupeň slávenia (spomienku možno sláviť ako sviatok alebo slávnosť; sviatok ako slávnosť)
 #define BIT_OPT_1_STUP_SVIATOK_SLAVNOST 131072 // vyšší stupeň slávenia (0 = sviatok, 1 = slávnosť); aplikuje sa iba ak BIT_OPT_1_OVERRIDE_STUP_SLAV je true
 #define BIT_OPT_1_KOMPL_MARIA_ANT       262144 // pre kompletórium: či zobraziť mariánsku antifónu (jednu, ak BIT_OPT_2_ALTERNATIVES == 1)/mariánske antifóny na konci kompletória
+#define BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD   524288 // pre ranné chvály a vešpery: či zobraziť úvod k modlitbe Pána (Otčenás)
 
 #define POCET_OPT_2_HTML_EXPORT             16 // jednotlivé komponenty option 2 -- bity pre force option 2
-extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
+extern unsigned long long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 // 2011-04-12: úprava významu (a interpretácie) option 2 (rozličné prepínače pre [online aj offline] export, napr. tlačidlá, zobrazenie dátumov a podobne)
 // 2012-10-01: doplnené ďalšie komponenty najmä pre vzhľad úvodnej obrazovky
 #define BIT_OPT_2_ISO_DATUM                  1 // zobrazovať dátum v ISO formáte YYYY-MM-DD (0 = iba číslo dňa)
@@ -1588,7 +1596,7 @@ extern long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_SHOW_DEFAULT_CALENDAR  32768 // ukázať v podnadpise, metódou init_global_string(), aj default regionálny kalendár (0 = po novom, neukazovať; 1 = po starom, ukázať)
 
 #define POCET_OPT_4_OFFLINE_EXPORT           4 // jednotlivé komponenty option 4 -- bity pre force option 4
-extern long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
+extern unsigned long long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 // 2011-04-08: úprava významu (a interpretácie) option 4 (rozličné prepínače pre offline export, napr. aj batch mód)
 #define BIT_OPT_4_MESIAC_RIADOK              1 // mesiac jednoducho (default: nie jednoducho, ale HTML pekne pre web) alebo pekne "zložito"
 #define BIT_OPT_4_FNAME_MODL_ID              2 // či pre názov súboru použiť (číselné) ID modlitby alebo písmenko modlitby (default)
@@ -1596,7 +1604,7 @@ extern long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPORT];
 #define BIT_OPT_4_DO_NOT_USE_BUTTON          8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
 #define POCET_OPT_5_ALTERNATIVES            19 // jednotlivé komponenty option 5 -- bity pre force option 5
-extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
+extern unsigned long long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL               1 // hymnus na kompletórium (Cezročné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                  2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
 #define BIT_OPT_5_HYMNUS_MCD_PREDPOL         4 // hymnus pre modlitbu cez deň, predpoludním (Cezročné obdobie)
@@ -1617,31 +1625,33 @@ extern long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_OCR_34_HYMNS          131072 // different (special) hymns for 34th week per annum
 #define BIT_OPT_5_KOMPLETORIUM_OKTAVA   262144 // prvé alebo druhé nedeľné kompletórium (pre Veľkonočnú oktávu a Oktávu Narodenia Pána)
 
-#define POCET_OPT_6_ALTERNATIVES_MULTI       10 // count equals to the highest PLACE_OPT_6_... used
-extern long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI]; // this is not bitwise long, but simply decimal number; each decimal place representing one value (max. possibly 0--9)
-#define PLACE_OPT_6_HYMNUS_MULTI              1
-#define PLACE_OPT_6_PSALM_MULTI               2 // in fact, only for invitatory
-#define PLACE_OPT_6_CITANIE2_MULTI            3
-#define PLACE_OPT_6_CITANIE1_MULTI            4
-#define PLACE_OPT_6_ANTIFONA_MULTI            5
-#define PLACE_OPT_6_MODLITBA_MULTI            6
-#define PLACE_OPT_6_PROSBY_MULTI              7
-#define PLACE_OPT_6_MARIA_ANT_MULTI           8
-#define PLACE_OPT_6_KRESP_MULTI               9
-#define PLACE_OPT_6_KCIT_RESP_MULTI          10
+#define POCET_OPT_6_ALTERNATIVES_MULTI       11 // count equals to the highest PLACE_OPT_6_... used
+extern unsigned long long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI]; // this is not bitwise long, but simply decimal number; each decimal place representing one value (max. possibly 0--9)
+#define PLACE_OPT_6_HYMNUS_MULTI                 1
+#define PLACE_OPT_6_PSALM_MULTI                  2 // in fact, only for invitatory
+#define PLACE_OPT_6_CITANIE2_MULTI               3
+#define PLACE_OPT_6_CITANIE1_MULTI               4
+#define PLACE_OPT_6_ANTIFONA_MULTI               5
+#define PLACE_OPT_6_MODLITBA_MULTI               6
+#define PLACE_OPT_6_PROSBY_MULTI                 7
+#define PLACE_OPT_6_MARIA_ANT_MULTI              8
+#define PLACE_OPT_6_KRESP_MULTI                  9
+#define PLACE_OPT_6_KCIT_RESP_MULTI             10
+#define PLACE_OPT_6_OTCENAS_UVOD_MULTI          11
 
-#define BASE_OPT_6_HYMNUS_MULTI               1
-#define BASE_OPT_6_PSALM_MULTI               10
-#define BASE_OPT_6_CITANIE2_MULTI           100 
-#define BASE_OPT_6_CITANIE1_MULTI          1000 
-#define BASE_OPT_6_ANTIFONA_MULTI         10000 
-#define BASE_OPT_6_MODLITBA_MULTI        100000 
-#define BASE_OPT_6_PROSBY_MULTI         1000000 
-#define BASE_OPT_6_MARIA_ANT_MULTI     10000000 
-#define BASE_OPT_6_KRESP_MULTI        100000000
-#define BASE_OPT_6_KCIT_RESP_MULTI   1000000000 // must not contain more than 3 possibilities at position 10 because long is limited to 2147483647
+#define BASE_OPT_6_HYMNUS_MULTI                  1
+#define BASE_OPT_6_PSALM_MULTI                  10
+#define BASE_OPT_6_CITANIE2_MULTI              100
+#define BASE_OPT_6_CITANIE1_MULTI             1000
+#define BASE_OPT_6_ANTIFONA_MULTI            10000
+#define BASE_OPT_6_MODLITBA_MULTI           100000
+#define BASE_OPT_6_PROSBY_MULTI            1000000
+#define BASE_OPT_6_MARIA_ANT_MULTI        10000000
+#define BASE_OPT_6_KRESP_MULTI           100000000
+#define BASE_OPT_6_KCIT_RESP_MULTI      1000000000 // when data type was only "long", this note made sense: 'must not contain more than 3 possibilities at position 10 because long is limited to 2147483647'
+#define BASE_OPT_6_OTCENAS_UVOD_MULTI  10000000000
 
-#define MAX_POCET_OPT                        19 // must be at least maximum from POCET_OPT_0_... to POCET_OPT_6_...
+#define MAX_POCET_OPT                           20 // must be at least maximum from POCET_OPT_0_... to POCET_OPT_6_...
 
 const short int pocet_opt[POCET_GLOBAL_OPT] = { POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nemá bitové komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES, POCET_OPT_6_ALTERNATIVES_MULTI /* decimal-places */ };
 
@@ -1829,6 +1839,7 @@ void analyzuj_rok(short int year);
 	_INIT_ANCHOR_AND_FILE(a.modlitba); \
 	_INIT_ANCHOR_AND_FILE(a.ant_spomprivileg); \
 	_INIT_ANCHOR_AND_FILE(a.modlitba_spomprivileg); \
+	_INIT_ANCHOR_AND_FILE(a.otcenas_uvod); \
 };
 
 #define _INIT_TMODLITBA2(a) {\

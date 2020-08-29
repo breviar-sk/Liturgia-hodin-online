@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include "mystring.h"
 #include "mysystem.h"
 #include "mysysdef.h"
@@ -369,6 +370,14 @@ short int endsWith(char* base, char* str){
 		return (0 == strcmp(base + blen - slen, str));
 	}
 	return 0;
+}
+
+unsigned long long atoui64(const char* szUnsignedInt) {
+#ifdef OS_linux
+	return strtoull(szUnsignedInt, NULL, 10);
+#else
+	return _strtoui64(szUnsignedInt, NULL, 10);
+#endif
 }
 
 #endif // __MYSTRING_CPP_

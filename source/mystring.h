@@ -52,4 +52,6 @@ short int startsWith(char* base, char* str);
 // detecting whether base is ends with str
 short int endsWith(char* base, char* str);
 
+unsigned long long atoui64(const char* szUnsignedInt);
+
 #endif // __MYSTRING_H_

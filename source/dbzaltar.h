@@ -219,6 +219,7 @@ extern void _set_benediktus(short int modlitba, const char *file, const char *an
 extern void _set_prosby(short int modlitba, const char *file, const char *anchor);
 extern void _set_modlitba(short int modlitba, const char *file, const char *anchor);
 extern void _set_maria_ant(short int modlitba, const char *file, const char *anchor);
+extern void _set_otcenas_uvod(short int modlitba, const char* file, const char* anchor);
 
 extern void _set_ant_spomprivileg(short int modlitba, const char *file, const char *anchor);
 extern void _set_modlitba_spomprivileg(short int modlitba, const char *file, const char *anchor);
@@ -310,47 +311,31 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 *
 */
 #define _SET_SPOLOCNE_VECI_NEDELA(m) {\
-	if((m == MODL_RANNE_CHVALY) || (m == MODL_VESPERY)){ \
-		set_hymnus  (den, tyzzal, m); \
-		set_antifony(den, tyzzal, zvazok, m); \
-		set_kcitanie(den, tyzzal, m); \
-		set_kresponz(den, tyzzal, m); \
-		set_prosby  (den, tyzzal, m); \
-		} \
-		else{ \
-		set_hymnus  (den, tyzzal, m); \
-		if((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI)) && (je_modlitba_cez_den(m))){ \
-			set_antifony(den, UPRAV_TYZZAL(tyzzal, m), zvazok, m); \
-				} \
-				else{ \
-			set_antifony(den, tyzzal, zvazok, m); \
-		} \
-		set_kcitanie(den, tyzzal, m); \
-		set_kresponz(den, tyzzal, m); \
-		set_prosby  (den, tyzzal, m); \
+	set_hymnus  (den, tyzzal, m); \
+	if((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI)) && (je_modlitba_cez_den(m))){ \
+		set_antifony(den, UPRAV_TYZZAL(tyzzal, m), zvazok, m); \
 	} \
+	else{ \
+		set_antifony(den, tyzzal, zvazok, m); \
+	} \
+	set_kcitanie(den, tyzzal, m); \
+	set_kresponz(den, tyzzal, m); \
+	set_prosby  (den, tyzzal, m); \
+	set_otcenas_uvod(m); \
 }
 #define _SET_SPOLOCNE_VECI_NIE_NEDELA(m) {\
-	if((m == MODL_RANNE_CHVALY) || (m == MODL_VESPERY)){ \
-		set_hymnus  (den, tyzzal, m); \
-		set_antifony(den, tyzzal, zvazok, m); \
-		set_kcitanie(den, tyzzal, m); \
-		set_kresponz(den, tyzzal, m); \
-		set_prosby  (den, tyzzal, m); \
-		set_modlitba(den, tyzzal, m); \
-		} \
-		else{ \
-		set_hymnus  (den, tyzzal, m); \
+	set_hymnus  (den, tyzzal, m); \
 		if((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI)) && (je_modlitba_cez_den(m))){ \
 			set_antifony(den, UPRAV_TYZZAL(tyzzal, m), zvazok, m); \
-				} \
-				else{ \
+		} \
+		else{ \
 			set_antifony(den, tyzzal, zvazok, m); \
 		} \
-		set_kcitanie(den, tyzzal, m); \
-		set_kresponz(den, tyzzal, m); \
-		set_modlitba(den, tyzzal, m); \
-	} \
+	set_kcitanie(den, tyzzal, m); \
+	set_kresponz(den, tyzzal, m); \
+	set_prosby  (den, tyzzal, m); \
+	set_otcenas_uvod(m); \
+	set_modlitba(den, tyzzal, m); \
 }
 
 #define _SET_HYMNUS_ANTINFONY_MCD(m) {\
@@ -358,7 +343,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	if((isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_ZALTAR_TRI)) && (je_modlitba_cez_den(m))){ \
 		set_antifony(den, UPRAV_TYZZAL(tyzzal, m), zvazok, m); \
 		} \
-		else{ \
+	else{ \
 		set_antifony(den, tyzzal, zvazok, m); \
 	} \
 }
@@ -1541,6 +1526,9 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define ANCHOR_MARIANSKE_ANTIFONY "MARIANSKE-ANTIFONY"
 #define FILE_MARIANSKE_ANTIFONY "ord_km.htm"
 
+#define ANCHOR_OTCENAS_UVOD "OTCENAS-UVOD"
+#define FILE_OTCENAS_UVOD "doduvodmp.htm"
+
 #define ANCHOR_ORDINARIUM "ORDINARIUM"
 
 #define ANCHOR_INFO "INFO"
@@ -2374,6 +2362,6 @@ extern const char* text_SEP_04_OSU[POCET_JAZYKOV + 1];
 extern const char* text_OKT_21_OSU[POCET_JAZYKOV + 1];
 extern const char* text_OKT_23_OSU[POCET_JAZYKOV + 1];
 
-extern short int pocet_multi(char *_anchor, long type);
+extern short int pocet_multi(char *_anchor, unsigned long long type);
 
 #endif // __DBZALTAR_H_
