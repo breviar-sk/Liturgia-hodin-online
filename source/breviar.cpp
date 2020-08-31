@@ -606,7 +606,6 @@ short int useWhenGlobalOption(short opt_i, unsigned long long bit_opt_i_componen
 			|| (bit_opt_i_component_j == BIT_OPT_1_ZAVER)
 			|| (bit_opt_i_component_j == BIT_OPT_1_SKRY_POPIS)
 			|| (bit_opt_i_component_j == BIT_OPT_1_KOMPL_MARIA_ANT)
-			|| (bit_opt_i_component_j == BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD)
 			)) {
 			return ANO;
 		}
