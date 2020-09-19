@@ -4120,7 +4120,7 @@ const char *html_text_opt_5_CZHymnus_extra[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_opt_5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
+const char* html_text_opt_5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
 {
 	"psalmódia pre Popolcovú stredu zo stredy 4. týždňa žaltára",
 	"žalmy pro Popeleční středu ze středy 4. týdne žaltáře",
@@ -4134,7 +4134,7 @@ const char *html_text_opt_5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char *html_text_opt_5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
+const char* html_text_opt_5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
 {
 	"psalmódia pre Popolcovú stredu z piatka 3. týždňa žaltára",
 	"žalmy pro Popeleční středu z pátku 3. týdne žaltáře",
@@ -4143,6 +4143,34 @@ const char *html_text_opt_5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
 	"",
 	"žalmy pro Popeleční středu z pátku 3. týdne žaltáře",
 	"Hamvazószerdán vegye a zsoltározást a 3. zsoltáros hét péntekjéről",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_5_ZelStvPsalm_2STV[POCET_JAZYKOV + 1] =
+{
+	"psalmódia pre Zelený štvrtok zo štvrtka 2. týždňa žaltára",
+	"žalmy pro Zelený čtvrtek ze čtvrtka 2. týdne žaltáře",
+	"for Maundy Thursday take psalmody from Thursday, 2th week of Psalter",
+	"psalmodia pro Feria V Hebdomadæ sanctæ de Feria V hebdomadæ II Psaltarii",
+	"",
+	"žalmy pro Zelený čtvrtek ze čtvrtka 2. týdne žaltáře",
+	"Nagycsütörtök vegye a zsoltározást a 2. zsoltáros hét csütörtökjáról",
+	"ru_text",
+	"by_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_5_ZelStvPsalm_3PI[POCET_JAZYKOV + 1] =
+{
+	"psalmódia pre Zelený štvrtok z piatka 3. týždňa žaltára",
+	"žalmy pro Zelený čtvrtek z pátku 3. týdne žaltáře",
+	"for Maundy Thursday take psalmody from Friday, 3rd week of Psalter",
+	"psalmodia pro Feria V Hebdomadæ sanctæ de Feria IV hebdomadæ III Psaltarii",
+	"",
+	"žalmy pro Zelený čtvrtek z pátku 3. týdne žaltáře",
+	"Nagycsütörtök vegye a zsoltározást a 3. zsoltáros hét péntekjéről",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -4526,7 +4554,7 @@ const char* html_text_opt_6_alternatives_multi_otcenas_uvod[POCET_JAZYKOV + 1] =
 	"introit alius",
 	"",
 	"jiný úvod",
-	"hu_text",
+	"más bevezetés",
 	"ru_text",
 	"by_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -6175,7 +6203,7 @@ const char *text_FEB_18_OPRAEM[POCET_JAZYKOV + 1] =
 };
 const char *text_FEB_18_CM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Františka Regisa Cleta " HTML_LINE_BREAK "a Augustína Zhao Rong, kňazov, " HTML_LINE_BREAK "a spoločníkov, mučeníkov", // moved to 09JUL
+	"Sv. Františka Regisa Cleta " HTML_LINE_BREAK "a Augustína Zhao Ronga, kňazov, " HTML_LINE_BREAK "a spoločníkov, mučeníkov", // moved to 09JUL
 	"",
 	"",
 	"",
@@ -6402,7 +6430,7 @@ const char *text_MAR_07[POCET_JAZYKOV + 1] =
 };
 const char *text_MAR_08[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána z Boha, rehoľníka",
+	"Sv. Jána od Boha, rehoľníka", // kedysi: "Sv. Jána z Boha, rehoľníka"
 	"Sv. Jana z Boha, řeholníka",
 	"",
 	"S. Ioannis a Deo, religiosi",
@@ -7055,7 +7083,7 @@ const char *text_APR_28_1[POCET_JAZYKOV + 1] =
 };
 const char *text_APR_28_2[POCET_JAZYKOV + 1] =
 {
-	"Sv. Ľudovíta Máriu Grignion de Montfort, kňaza",
+	"Sv. Ľudovíta Máriu Grigniona z Montfortu, kňaza",
 	"Sv. Ludvíka Marie Grigniona z Montfortu, kněze",
 	"",
 	"S. Ludovici M. Grignion de Montfort, presbyteri",
@@ -9672,7 +9700,7 @@ const char *text_JUL_08_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_09[POCET_JAZYKOV + 1] =
 {
-	"Sv. Augustína Zhao Rong, kňaza, " HTML_LINE_BREAK "a spoločníkov, mučeníkov",
+	"Sv. Augustína Zhao Ronga, kňaza, " HTML_LINE_BREAK "a spoločníkov, mučeníkov",
 	"Sv. Augustina Žao Ronga, kněze, " HTML_LINE_BREAK "a druhů, mučedníků",
 	"",
 	"Ss. Augustini Zhao Rong, presbyteri, " HTML_LINE_BREAK "et sociorum, martyrum",
@@ -10166,7 +10194,7 @@ const char *text_JUL_23[POCET_JAZYKOV + 1] =
 };
 const char *text_JUL_24[POCET_JAZYKOV + 1] =
 {
-	"Sv. Šarbela Makhlufa, kňaza", // 2009-07-15: direktórium (2012, str. 171) má "Sarbel", predtým bolo "Charbel" a zrejme sa číta "Šarbel"
+	"Sv. Šarbela Machlúfa, kňaza", // 2009-07-15: direktórium (2012, str. 171) má "Sarbel", predtým bolo "Charbel" ale číta sa "Šarbel", tak Direktórium 2020/2012; kedysi priezvisko: Makhluf, po novom fonetický prepis: Machlúf
 	"Sv. Šarbela Makhlufa, kněze",
 	"",
 	"S. Sarbelii Makhlūf, presbyteri",
@@ -10589,7 +10617,7 @@ const char *text_AUG_02_SJ[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_04[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána Máriu Vianneyho, kňaza", // 'Vianneyho' podľa Direktória 2012, str. 176
+	"Sv. Jána Máriu Vianneya, kňaza", // 'Vianneyho' podľa Direktória 2012, str. 176; späť na 'Vianneya' podľa Direktória 2020
 	"Sv. Jana Marie Vianneye, kněze",
 	"",
 	"S. Ioannis Mariæ Vianney, presbyteri",
@@ -10732,7 +10760,7 @@ const char *text_AUG_08_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_09[POCET_JAZYKOV + 1] =
 {
-	"Sv. Terézie Benedikty z Kríža (Edity Steinovej), " HTML_LINE_BREAK "panny a mučenice, patrónky Európy", // podľa Direktória 2012, str. 178
+	"Sv. Terézie Benedikty od Kríža, " HTML_LINE_BREAK "panny a mučenice, patrónky Európy", // podľa Direktória 2012, str. 178: "Sv. Terézie Benedikty z Kríža (Edity Steinovej), "; Direktórium 2020: oprava
 	"Sv. Terezie Benedikty od Kříže, panny a mučednice, " HTML_LINE_BREAK "patronky Evropy",
 	"",
 	"S. Teresiæ Benedictæ et Cruce, virginis et martyris",
@@ -10849,7 +10877,7 @@ const char *text_AUG_12_3_OP[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_13[POCET_JAZYKOV + 1] =
 {
-	"Sv. Ponciána, pápeža, a sv. Hypolita, kňaza, mučeníkov",
+	"Sv. Ponciána, pápeža, a Hypolita, kňaza, mučeníkov", // kedysi "Sv. Ponciána, pápeža, a sv. Hypolita, kňaza, mučeníkov"
 	"Sv. Ponciána, papeže, a Hippolyta, kněze, mučedníků",
 	"",
 	"Ss. Pontiani, papæ, et Hippolyti, presbyteri, martyrum",
@@ -10927,7 +10955,7 @@ const char *text_AUG_14_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_15[POCET_JAZYKOV + 1] =
 {
-	"Nanebovzatie prebl. Panny Márie",
+	"Nanebovzatie Panny Márie", // kedysi: "Nanebovzatie prebl. Panny Márie"
 	"Nanebevzetí Panny Marie",
 	"",
 	"In Assumptione Beatæ Mariæ Virginis",
@@ -11096,7 +11124,7 @@ const char *text_AUG_18_2_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_19[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána Eudes, kňaza",
+	"Sv. Jána Eudesa, kňaza",
 	"Sv. Jana Eudese, kněze",
 	"",
 	"S. Ioannis Eudes, presbyteri",
@@ -11226,7 +11254,7 @@ const char *text_AUG_24[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_25_1[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jozefa de Calasanz, kňaza",
+	"Sv. Jozefa Kalazanského, kňaza", // kedysi: "Sv. Jozefa de Calasanz, kňaza"
 	"Sv. Josefa Kalasanského, kněze",
 	"",
 	"S. Ioseph de Calasanz, presbyteri",
@@ -11970,7 +11998,7 @@ const char *text_SEP_16_CZ[POCET_JAZYKOV + 1] =
 };
 const char *text_SEP_16[POCET_JAZYKOV + 1] =
 {
-	"Sv. Kornélia, pápeža, a sv. Cypriána, biskupa, mučeníkov",
+	"Sv. Kornélia, pápeža, a Cypriána, biskupa, mučeníkov",
 	"Sv. Kornélia, papeže, a Cypriána, biskupa, mučedníků",
 	"",
 	"Ss. Cornelii, papæ, et Cypriani, episcopi, martyrum",
@@ -12100,7 +12128,7 @@ const char *text_SEP_19_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_SEP_20[POCET_JAZYKOV + 1] =
 {
-	"Sv. Andreja Kim Taegona, kňaza, " HTML_LINE_BREAK "a sv. Pavla Chong Hasanga a spoločníkov, mučeníkov",
+	"Sv. Andreja Kima Taegona, kňaza, " HTML_LINE_BREAK "a sv. Pavla Chonga Hasanga a spoločníkov, mučeníkov",
 	"Sv. Ondřeje Kim Tae-g&#335;na, kněze, " HTML_LINE_BREAK "Pavla Ch&#335;ng Ha-sanga a druhů, mučedníků",
 	"",
 	"Ss. Andreæ Kim Taegǒn, presbyteri, " HTML_LINE_BREAK "et Pauli Chǒng Hasang, et sociorum, martyrum",
@@ -12467,7 +12495,7 @@ const char *text_SEP_30[POCET_JAZYKOV + 1] =
 
 const char *text_OKT_01[POCET_JAZYKOV + 1] =
 {
-	"Sv. Terézie z Lisieux, panny a učiteľky Cirkvi",
+	"Sv. Terézie od Dieťaťa Ježiša (z Lisieux), " HTML_LINE_BREAK "panny a učiteľky Cirkvi", // kedysi: "Sv. Terézie z Lisieux, panny a učiteľky Cirkvi"
 	"Sv. Terezie od Dítěte Ježíše, panny a učitelky církve",
 	"",
 	"S. Teresiæ a Iesu Infante, virginis et doctoris Ecclesiæ",
@@ -13117,7 +13145,7 @@ const char *text_OKT_19_1[POCET_JAZYKOV + 1] =
 };
 const char *text_OKT_19_2[POCET_JAZYKOV + 1] =
 {
-	"Sv. Pavla z Kríža, kňaza",
+	"Sv. Pavla od Kríža, kňaza", // kedysi: "Sv. Pavla z Kríža, kňaza"
 	"Sv. Pavla od Kříže, kněze",
 	"",
 	"S. Pauli a Cruce, presbyteri",
@@ -13718,7 +13746,7 @@ const char *text_NOV_02[POCET_JAZYKOV + 1] =
 };
 const char *text_NOV_03[POCET_JAZYKOV + 1] =
 {
-	"Sv. Martina Porres, rehoľníka", // 'de Porres': podľa Direktória 2012, str. 218, nie je 'de'
+	"Sv. Martina de Porres, rehoľníka", // 'de Porres': podľa Direktória 2012, str. 218, nie je 'de'; Direktórium 2020/2021 opäť "de"
 	"Sv. Martina de Porres, řeholníka",
 	"",
 	"S. Martini de Porres, religiosi",
@@ -13757,7 +13785,7 @@ const char *text_NOV_03_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_NOV_04[POCET_JAZYKOV + 1] =
 {
-	"Sv. Karola Borromea, biskupa",
+	"Sv. Karola Boromejského, biskupa", // kedysi: "Sv. Karola Borromea, biskupa"
 	"Sv. Karla Boromejského, biskupa",
 	"",
 	"S. Caroli Borromeo, episcopi",
@@ -14290,7 +14318,7 @@ const char *text_NOV_17_OFM[POCET_JAZYKOV + 1] =
 };
 const char *text_NOV_18[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky bazilík " HTML_LINE_BREAK "sv. Petra a sv. Pavla, apoštolov",
+	"Výročie posviacky bazilík " HTML_LINE_BREAK "sv. Petra a Pavla, apoštolov",
 	"Posvěcení římských bazilik " HTML_LINE_BREAK "svatých apoštolů Petra a Pavla",
 	"",
 	"In dedicatione basilicarum " HTML_LINE_BREAK "Ss. Petri et Pauli, apostolorum",
@@ -14865,7 +14893,7 @@ const char *text_DEC_08[POCET_JAZYKOV + 1] =
 };
 const char *text_DEC_09[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána Didaka Cuauhtlatoatzin",
+	"Sv. Jána Diega Cuauhtlatoatzina", // v španielčine sa volá Juan Diego, čo by v slovenčine malo byť Ján Jakub; do latinčiny preložili ako s. Joannes Didacus; z toho pri preklade textov vzniklo slovenské Ján Didak; v novom misáli: "sv. Jána Diega"
 	"Sv. Jana Didaka Cuauhtlatoatzina",
 	"",
 	"S. Ioannis Didaci Cuauhtlatoatzin",
@@ -14969,7 +14997,7 @@ const char *text_DEC_13[POCET_JAZYKOV + 1] =
 };
 const char *text_DEC_14[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána z Kríža, kňaza a učiteľa Cirkvi",
+	"Sv. Jána od Kríža, kňaza a učiteľa Cirkvi", // kedysi: "Sv. Jána z Kríža, kňaza a učiteľa Cirkvi",
 	"Sv. Jana od Kříže, kněze a učitele církve",
 	"",
 	"S. Ioannis a Cruce, presbyteri et Ecclesiæ doctoris",
@@ -15271,7 +15299,7 @@ const char *text_KONIEC_OKTAVY_NARODENIA_PANA[POCET_JAZYKOV + 1] =
 };
 const char *text_LEN_V_KONSEKROVANYCH_KOSTOLOCH[POCET_JAZYKOV + 1] =
 {
-	"len v konsekrovaných kostoloch",
+	"len v posvätených kostoloch", // kedysi: "len v konsekrovaných kostoloch"
 	"jen v posvěcených kostelích",
 	"",
 	"in ecclesiis consecratis tantum",

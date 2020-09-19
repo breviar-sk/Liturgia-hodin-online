@@ -7836,6 +7836,20 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_post2_kresponz;
 			_post2_modlitba;
 
+			// špeciálne pre Zelený štvrtok
+			if (_global_den.denvr == ZELENY_STVRTOK) {
+
+				Log("liturgicke_obdobie(): ZELENY_STVRTOK\n...");
+				// Log("_global_den.denvt == %d\n", _global_den.denvt);
+
+				if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA)) {
+					set_antifony(DEN_PIATOK, 3, zvazok_breviara[litobd], MODL_POSV_CITANIE);
+					set_zalm(1, MODL_POSV_CITANIE, "z69.htm", "ZALM69_I");
+					set_zalm(2, MODL_POSV_CITANIE, "z69.htm", "ZALM69_II");
+					set_zalm(3, MODL_POSV_CITANIE, "z69.htm", "ZALM69_III");
+				}
+			}
+
 			// modlitba cez deň MODL_PREDPOLUDNIM + MODL_NAPOLUDNIE + MODL_POPOLUDNI
 			modlitba = MODL_PREDPOLUDNIM;
 			_post2_hymnus;
@@ -11187,7 +11201,11 @@ _struct_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
 };
 
 _struct_anchor_and_count pocet_otcenas_uvod_multi_anchor_count[] = {
-	{ JAZYK_UNDEF, "_OTCENAS-UVOD", 10 },
+	{ JAZYK_SK, "_OTCENAS-UVOD", 10 },
+	{ JAZYK_LA, "_OTCENAS-UVOD", 10 },
+	{ JAZYK_CZ_OP, "_OTCENAS-UVOD", 10 },
+	{ JAZYK_CZ, "_OTCENAS-UVOD", 7 },
+	{ JAZYK_HU, "_OTCENAS-UVOD", 10 }, // they have 12 intros (according to vol. I & II of first Latin editio but technically we can support max. 10 options
 };
 
 _struct_anchor_and_count pocet_prosby_multi_anchor_count[] = {

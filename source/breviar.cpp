@@ -4214,14 +4214,29 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			Log("podmienka == %d po kontrole _global_modlitba == %s; bit == %llu...\n", podmienka, nazov_modlitby(_global_modlitba), bit);
 		}
 		else if (equals(paramname, PARAM_PSALMODIA)) {
-			bit = BIT_OPT_5_POPOL_STREDA_PSALMODIA;
 
 			opt = OPT_5_ALTERNATIVES;
 			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
-			podmienka &= ((_global_den.denvr == POPOLCOVA_STREDA) && (_global_modlitba == MODL_RANNE_CHVALY));
 
-			sprintf(popis_show, "%s", html_text_opt_5_PopolStrPsalm_4STR[_global_jazyk]);
-			sprintf(popis_hide, "%s", html_text_opt_5_PopolStrPsalm_3PI[_global_jazyk]);
+			if (_global_modlitba == MODL_RANNE_CHVALY) {
+				bit = BIT_OPT_5_POPOL_STREDA_PSALMODIA;
+
+				podmienka &= (_global_den.denvr == POPOLCOVA_STREDA);
+
+				sprintf(popis_show, "%s", html_text_opt_5_PopolStrPsalm_4STR[_global_jazyk]);
+				sprintf(popis_hide, "%s", html_text_opt_5_PopolStrPsalm_3PI[_global_jazyk]);
+			}
+			else if (_global_modlitba == MODL_POSV_CITANIE) {
+				bit = BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA;
+
+				podmienka &= (_global_den.denvr == ZELENY_STVRTOK);
+
+				sprintf(popis_show, "%s", html_text_opt_5_ZelStvPsalm_2STV[_global_jazyk]);
+				sprintf(popis_hide, "%s", html_text_opt_5_ZelStvPsalm_3PI[_global_jazyk]);
+			}
+			else {
+				podmienka &= 0;
+			}
 		}
 
 		// má zmysel, len ak platí daná podmienka
@@ -7908,6 +7923,9 @@ void xml_export_options(void) {
 				case 18: // BIT_OPT_5_KOMPLETORIUM_OKTAVA
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT_SLASH(XML_BIT_OPT_5_KOMPLETORIUM_OKTAVA)"%ld" ELEM_END(XML_BIT_OPT_5_KOMPLETORIUM_OKTAVA) "\n", BIT_OPT_5_KOMPLETORIUM_OKTAVA, STR_FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA, html_text_opt_5_KomplOkt1[_global_jazyk], html_text_opt_5_KomplOkt2[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_KOMPLETORIUM_OKTAVA)));
 					break;
+				case 19: // BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT_SLASH(XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA)"%ld" ELEM_END(XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA) "\n", BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, html_text_opt_5_ZelStvPsalm_2STV[_global_jazyk], html_text_opt_5_ZelStvPsalm_3PI[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA)));
+					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_5_ALTERNATIVES) "\n");
@@ -10570,6 +10588,13 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA
 			_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA, html_text_opt_5_PopolStrPsalm_4STR[_global_jazyk], html_text_opt_5_PopolStrPsalm_3PI[_global_jazyk]);
 
+			// posvätné čítanie na Zelený štvrtok
+			Export(HTML_CRLF_LINE_BREAK);
+			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s (%s)" HTML_SPAN_END, nazov_modlitby(MODL_RANNE_CHVALY), nazov_modlitby(MODL_RANNE_CHVALY), text_ZELENY_STVRTOK[_global_jazyk]);
+
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA
+			_export_main_formular_checkbox_slash(OPT_5_ALTERNATIVES, BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, html_text_opt_5_ZelStvPsalm_2STV[_global_jazyk], html_text_opt_5_ZelStvPsalm_3PI[_global_jazyk]);
+
 			// ranné chvály Ofícia za zosnulých
 			Export(HTML_CRLF_LINE_BREAK);
 			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s (%s %s)" HTML_SPAN_END, nazov_modlitby(MODL_RANNE_CHVALY), nazov_modlitby(MODL_RANNE_CHVALY), nazov_spolc_oficiumza_jazyk[_global_jazyk], nazov_spolc(MODL_SPOL_CAST_ZA_ZOSNULYCH));
@@ -10605,6 +10630,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_1VESP, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_1VESP)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)) ? ANO : NIE);
