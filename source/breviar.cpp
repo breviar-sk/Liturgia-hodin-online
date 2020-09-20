@@ -15078,21 +15078,83 @@ void ExportAnalyzaRokuRow(char *_global_link, const char *description) {
 	Export(HTML_TABLE_ROW_END "\n");
 } // ExportAnalyzaRokuRow()
 
+void _main_analyza_roku_prev_next(short int year, char pom2[MAX_STR]) {
+	Log("_main_analyza_roku_prev_next(): begin...\n");
+
+	char action[MAX_STR];
+	mystrcpy(action, STR_EMPTY, MAX_STR);
+
+	if ((_global_linky == ANO) && (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK))) {
+		Export(HTML_LINE_BREAK);
+		Export("<" HTML_TABLE ">\n");
+
+		Export("<" HTML_TABLE_ROW ">\n");
+
+		// predošlý rok -- button
+		ExportTableCell(HTML_TABLE_CELL);
+		sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_ANALYZA_ROKU,
+			STR_ANALYZA_ROKU, year - 1,
+			pom2);
+		Export_HtmlForm(action);
+		Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %d\" value=\"" HTML_LEFT_ARROW " %d", html_button_predchadzajuci_[_global_jazyk], html_text_rok[_global_jazyk], year - 1, year - 1);
+
+#ifdef DISPLAY_TEXT_PREV_NEXT_YEAR
+		Export(" (");
+		Export((char*)html_button_predchadzajuci_[_global_jazyk]);
+		Export(" ");
+		Export((char*)html_text_rok[_global_jazyk]);
+		Export(")");
+#endif
+
+		Export("\"" HTML_FORM_INPUT_END "\n");
+		Export("</form>\n");
+		Export(HTML_TABLE_CELL_END "\n");
+
+		// nasledujúci rok -- button
+		ExportTableCell(HTML_TABLE_CELL);
+		sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_ANALYZA_ROKU,
+			STR_ANALYZA_ROKU, year + 1,
+			pom2);
+		Export_HtmlForm(action);
+		Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %d\" value=\"", html_button_nasledujuci_[_global_jazyk], html_text_rok[_global_jazyk], year + 1);
+
+#ifdef DISPLAY_TEXT_PREV_NEXT_YEAR
+		Export("(");
+		Export((char*)html_button_nasledujuci_[_global_jazyk]);
+		Export(" ");
+		Export((char*)html_text_rok[_global_jazyk]);
+		Export(") ");
+#endif
+
+		Export("%d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", year + 1);
+		Export("</form>\n");
+		Export(HTML_TABLE_CELL_END "\n");
+
+		// koniec buttonov
+		Export(HTML_TABLE_ROW_END "\n");
+
+		Export(HTML_TABLE_END "\n");
+	}
+
+	Log("_main_analyza_roku_prev_next(): end.\n");
+}// _main_analyza_roku_prev_next()
+
 // dostane char *, najprv ho skontroluje a potom ak je vsetko v poriadku, exportuje stranku s jednotlivymi vyznacnymi dnami roka a linkami na vsetky mesiace
 void _main_analyza_roku(char *rok) {
 	_struct_den_mesiac datum;
 	short int i;
 	short int year;
-	char pom[MAX_STR];
 
-	char pom2[MAX_STR];
+	char pom[MAX_STR];
 	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	char pom2[MAX_STR];
 	mystrcpy(pom2, STR_EMPTY, MAX_STR);
 	char pom3[MAX_STR];
 	mystrcpy(pom3, STR_EMPTY, MAX_STR);
-
-	char action[MAX_STR];
-	mystrcpy(action, STR_EMPTY, MAX_STR);
 
 	Log("-- _main_analyza_roku(): zaciatok\n");
 
@@ -15121,6 +15183,8 @@ void _main_analyza_roku(char *rok) {
 	LOG("vchadzam do analyzuj_rok()...\n");
 	analyzuj_rok(year); // výsledok dá do _global_r
 	LOG("analyzuj_rok() ukoncena.\n");
+
+	_main_analyza_roku_prev_next(year, pom2);
 
 	Export("<" HTML_SPAN_RED ">");
 	Export((char *)html_text_zakladne_info[_global_jazyk]);
@@ -15319,53 +15383,52 @@ void _main_analyza_roku(char *rok) {
 	}
 	Export("\n" HTML_P_END "\n");
 
+	_main_analyza_roku_prev_next(year, pom2);
+
+	Log("-- _main_analyza_roku(): koniec\n");
+} // _main_analyza_roku()
+
+void _main_tabulka_shift_back_fwd(short int rfrom, short int rto, short int hl, char pom2[MAX_STR]) {
+	Log("_main_tabulka_shift_back_fwd(): begin...\n");
+
+	char action[MAX_STR];
+	mystrcpy(action, STR_EMPTY, MAX_STR);
+
 	if ((_global_linky == ANO) && (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_MESIAC_RIADOK))) {
 		Export(HTML_LINE_BREAK);
 		Export("<" HTML_TABLE ">\n");
 
 		Export("<" HTML_TABLE_ROW ">\n");
 
-		// predošlý rok -- button
+		// posun k predošlým rokom -- button
 		ExportTableCell(HTML_TABLE_CELL);
-		sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d%s",
+		sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s",
 			script_name,
-			STR_QUERY_TYPE, STR_PRM_ANALYZA_ROKU,
-			STR_ANALYZA_ROKU, year - 1,
+			STR_QUERY_TYPE, STR_PRM_TABULKA,
+			STR_ROK_FROM, rfrom - 1,
+			STR_ROK_TO, rto - 1,
+			STR_TABULKA_LINKY, hl,
 			pom2);
 		Export_HtmlForm(action);
-		Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %d\" value=\"" HTML_LEFT_ARROW " %d", html_button_predchadzajuci_[_global_jazyk], html_text_rok[_global_jazyk], year - 1, year - 1);
-
-#ifdef DISPLAY_TEXT_PREV_NEXT_YEAR
-		Export(" (");
-		Export((char *)html_button_predchadzajuci_[_global_jazyk]);
-		Export(" ");
-		Export((char *)html_text_rok[_global_jazyk]);
-		Export(")");
-#endif
+		Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%d%s%d\" value=\"" HTML_LEFT_ARROW " (%d%s%d)", rfrom - 1, STR_EN_DASH_WITH_SPACES, rto - 1, rfrom - 1, STR_EN_DASH_WITH_SPACES, rto - 1);
 
 		Export("\"" HTML_FORM_INPUT_END "\n");
 		Export("</form>\n");
 		Export(HTML_TABLE_CELL_END "\n");
 
-		// nasledujúci rok -- button
+		// posun k nasledujúcim rokom -- button
 		ExportTableCell(HTML_TABLE_CELL);
-		sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d%s",
+		sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s",
 			script_name,
-			STR_QUERY_TYPE, STR_PRM_ANALYZA_ROKU,
-			STR_ANALYZA_ROKU, year + 1,
+			STR_QUERY_TYPE, STR_PRM_TABULKA,
+			STR_ROK_FROM, rfrom + 1,
+			STR_ROK_TO, rto + 1,
+			STR_TABULKA_LINKY, hl,
 			pom2);
 		Export_HtmlForm(action);
-		Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %d\" value=\"", html_button_nasledujuci_[_global_jazyk], html_text_rok[_global_jazyk], year + 1);
+		Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%d%s%d\" value=\" (%d%s%d) " HTML_RIGHT_ARROW, rfrom + 1, STR_EN_DASH_WITH_SPACES, rto + 1, rfrom + 1, STR_EN_DASH_WITH_SPACES, rto + 1);
 
-#ifdef DISPLAY_TEXT_PREV_NEXT_YEAR
-		Export("(");
-		Export((char *)html_button_nasledujuci_[_global_jazyk]);
-		Export(" ");
-		Export((char *)html_text_rok[_global_jazyk]);
-		Export(") ");
-#endif
-
-		Export("%d " HTML_RIGHT_ARROW "\"" HTML_FORM_INPUT_END "\n", year + 1);
+		Export("\"" HTML_FORM_INPUT_END "\n");
 		Export("</form>\n");
 		Export(HTML_TABLE_CELL_END "\n");
 
@@ -15375,8 +15438,8 @@ void _main_analyza_roku(char *rok) {
 		Export(HTML_TABLE_END "\n");
 	}
 
-	Log("-- _main_analyza_roku(): koniec\n");
-} // _main_analyza_roku()
+	Log("_main_tabulka_shift_back_fwd(): end.\n");
+}// _main_tabulka_shift_back_fwd()
 
 // dostane char *, char * (a pripadne char *); najprv ich skontroluje a potom
 // ak je vsetko v poriadku, exportuje stranku s tabulkou datumov pohyblivych slaveni
@@ -15385,6 +15448,11 @@ void _main_tabulka(char *rok_from, char *rok_to, char *tab_linky) {
 	_struct_den_mesiac datum;
 	short int i;
 	short int rfrom, rto, year, linky;
+
+	char pom2[MAX_STR];
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
 
 	Log("-- _main_tabulka(): zaciatok\n");
 
@@ -15411,6 +15479,10 @@ void _main_tabulka(char *rok_from, char *rok_to, char *tab_linky) {
 	}
 
 	_export_heading_center(query_type, (char *)html_text_datumy_pohyblivych_slaveni[_global_jazyk]);
+
+	prilep_request_options(pom2, pom3, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
+
+	_main_tabulka_shift_back_fwd(rfrom, rto, linky, pom2);
 
 	Export("<" HTML_TABLE ">\n");
 
@@ -15519,6 +15591,8 @@ void _main_tabulka(char *rok_from, char *rok_to, char *tab_linky) {
 	Export(HTML_TABLE_END "\n");
 
 	vysvetlivky_tabulka();
+
+	_main_tabulka_shift_back_fwd(rfrom, rto, linky, pom2);
 
 	Log("-- _main_tabulka(): koniec\n");
 } // _main_tabulka()

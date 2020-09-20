@@ -1219,11 +1219,7 @@ const short int supported_languages[POCET_JAZYKOV + 1] =
 	1, // JAZYK_SK
 	1, // JAZYK_CZ
 	0, // JAZYK_EN
-#if defined(OS_Windows_Ruby)
-	1, // JAZYK_LA -- only for debugging under Windows
-#else
-	0,
-#endif
+	1, // JAZYK_LA
 	0, // JAZYK_UNDEF
 	1, // JAZYK_CZ_OP
 	1, // JAZYK_HU
