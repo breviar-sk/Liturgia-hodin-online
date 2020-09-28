@@ -12042,9 +12042,13 @@ void _exportXmlDay() {
 	Export(ELEM_BEGIN(XML_DATE_YEAR) "%d" ELEM_END(XML_DATE_YEAR) "\n", _global_den.rok);
 	Export(ELEM_BEGIN(XML_DAY_OF_YEAR) "%d" ELEM_END(XML_DAY_OF_YEAR) "\n", _global_den.denvr);
 	Export(ELEM_BEGIN_ID(XML_DAY_OF_WEEK) "%s" ELEM_END(XML_DAY_OF_WEEK) "\n", _global_den.denvt, nazov_dna(_global_den.denvt));
-	Export(ELEM_BEGIN(XML_STRING_VOLUME) "%s" ELEM_END(XML_STRING_VOLUME) "\n", _global_string2);
 	// _export_rozbor_dna_interpretuj_zoznam() produces XML_CELEBRATION structures
-}
+} // _exportXmlDay()
+
+void _exportXmlDay2() {
+	// _global_string2 initialized in init_global_string(); called from _export_rozbor_dna_buttons(); _rozbor_dna_s_modlitbou() and _main_liturgicke_obdobie() -- this method _exportXmlDay2() must be called after that initialization
+	Export(ELEM_BEGIN(XML_STRING_VOLUME) "%s" ELEM_END(XML_STRING_VOLUME) "\n", _global_string2);
+}// _exportXmlDay2()
 
 void _export_rozbor_dna(short int typ) {
 	// treba brat do uvahy:
@@ -12192,7 +12196,7 @@ void _export_rozbor_dna(short int typ) {
 
 #ifdef OS_Windows_Ruby
 	if (typ == EXPORT_DNA_VIAC_DNI) {
-		// ďalší stĺpec: rímske číslo podľa týždňa žaltára, pre nedele aj liturgický rok A, B resp. C
+		// ďalší stĺpec: rímske číslo podľa týždňa žaltára, pre nedele aj liturgický rok A, B resp. C; _global_string2 set above within call of _export_rozbor_dna_interpretuj_zoznam(); for XML export see below -- exported by _exportXmlDay2();
 		if (som_v_tabulke == ANO) {
 			Export(HTML_TABLE_CELL_END "\n");
 
@@ -12269,6 +12273,7 @@ void _export_rozbor_dna(short int typ) {
 
 	// XML export -- koniec pre daný deň (dátum)
 	if (typ == EXPORT_DNA_XML) {
+		_exportXmlDay2();
 		Export(ELEM_END(XML_DAY) "\n\n");
 	}
 
@@ -12755,7 +12760,7 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 			datum.den = den + 1;
 			datum.mesiac = mesiac;
 		}
-		Log("spustam analyzu roka (rok %d)...\n", _local_rok);
+		Log("spúšťam analýzu roka (rok %d)...\n", _local_rok);
 		analyzuj_rok(_local_rok); // výsledok dá do _global_r
 		LOG_ciara;
 
@@ -12788,18 +12793,17 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 		// Log("_local_modl_prve_kompletorium obsahuje:\n"); Log(_local_modl_prve_kompletorium);
 
 		LOG_ciara;
-
 	}// kompletorium alebo vespery
 
 	// teraz analyzujem dnesny den
-	Log("teraz analyzujem dnesny (ten vyziadany) den...\n");
+	Log("teraz analyzujem dnešný (ten vyžiadaný) deň...\n");
 	datum.den = den;
 	datum.mesiac = mesiac;
 	if (_local_rok != rok) {
-		Log("spustam analyzu roka (rok %d)...\n", rok);
+		Log("spúšťam analýzu roka (rok %d)...\n", rok);
 		analyzuj_rok(rok); // výsledok dá do _global_r
 	}
-	Log("spustam analyzu tohto dna (%d. %s %d)...\n", datum.den, nazov_mesiaca(datum.mesiac - 1), rok);
+	Log("rozbor_dna_s_modlitbou(): spúšťam analýzu tohto dňa (%d. %s %d)...\n", datum.den, nazov_mesiaca(datum.mesiac - 1), rok);
 	ret = _rozbor_dna_s_modlitbou(datum, rok, modlitba, poradie_svaty);
 	if (ret == FAILURE) {
 		Log("_rozbor_dna_s_modlitbou() returned FAILURE, so...\n");
@@ -13096,6 +13100,7 @@ LABEL_NIE_INE_VESPERY:
 		Export(ELEM_BEGIN(XML_DAY) "\n");
 		_exportXmlDay();
 		_export_rozbor_dna_buttons(EXPORT_DNA_XML, poradie_svaty, ANO, NIE);
+		_exportXmlDay2();
 		Export(ELEM_END(XML_DAY) "\n\n");
 	}
 
