@@ -10877,7 +10877,7 @@ const char *text_AUG_12_3_OP[POCET_JAZYKOV + 1] =
 };
 const char *text_AUG_13[POCET_JAZYKOV + 1] =
 {
-	"Sv. Ponciána, pápeža, a Hypolita, kňaza, mučeníkov", // kedysi "Sv. Ponciána, pápeža, a sv. Hypolita, kňaza, mučeníkov"
+	"Sv. Ponciána, pápeža, a Hipolyta, kňaza, mučeníkov", // kedysi "Sv. Ponciána, pápeža, a sv. Hypolita, kňaza, mučeníkov"
 	"Sv. Ponciána, papeže, a Hippolyta, kněze, mučedníků",
 	"",
 	"Ss. Pontiani, papæ, et Hippolyti, presbyteri, martyrum",
