@@ -56,7 +56,7 @@ LOCK=/tmp/breviar-nightlies.lck
 
   echo "Build. Log file is at <a href=\"https://breviar.kralovic.org/nightlies/$DATE/log.txt\">https://breviar.kralovic.org/nightlies/$DATE/log.txt</a>"
   if (./build-assets && gradle clean && gradle assembleDebug && \
-      gradle assembleRelease) >>$LOG 2>&1; then
+      gradle assembleRelease && gradle bundleRelease ) >>$LOG 2>&1; then
     echo "Build finished successfully."
   else
     echo "Build failed! Log follows:"
@@ -66,9 +66,12 @@ LOCK=/tmp/breviar-nightlies.lck
   fi
 
   cp build/outputs/apk/release/android-release.apk $ROOT/$DATE/breviar.apk
+  cp build/outputs/bundle/release/android.aab $ROOT/$DATE/breviar.aab
   cp build/outputs/apk/debug/android-debug.apk $ROOT/$DATE/breviar-debug.apk
   echo "Nightly package is at: breviar.kralovic.org:$ROOT/$DATE/breviar.apk"
   echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar.apk"
+  echo "Nightly bundle is at: breviar.kralovic.org:$ROOT/$DATE/breviar.aab"
+  echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar.aab"
   echo "Nightly debug package is at: breviar.kralovic.org:$ROOT/$DATE/breviar-debug.apk"
   echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar-debug.apk"
 

@@ -15063,11 +15063,11 @@ const char *text_DEC_21[POCET_JAZYKOV + 1] =
 const char *text_DEC_22_CZ[POCET_JAZYKOV + 1] =
 {
 	"",
-	"Výročí posvěcení katedrály Sv. Mikuláše",
+	"Výročí posvěcení katedrály sv. Mikuláše",
 	"",
 	"",
 	"",
-	"Výročí posvěcení katedrály Sv. Mikuláše",
+	"Výročí posvěcení katedrály sv. Mikuláše",
 	"",
 	"ru_text",
 	"by_text",
