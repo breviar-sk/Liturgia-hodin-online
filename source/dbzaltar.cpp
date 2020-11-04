@@ -1899,12 +1899,19 @@ void set_maria_ant(short int modlitba) {
 } // set_maria_ant();
 
 void set_otcenas_uvod(short int modlitba) {
-	file_name_zapamataj();
-	sprintf(_file, "%s", FILE_OTCENAS_UVOD);
-	sprintf(_anchor, "_%s", ANCHOR_OTCENAS_UVOD);
-	_set_otcenas_uvod(modlitba, _file, _anchor);
-	set_LOG_zaltar;
-	file_name_obnov();
+	Log("set_otcenas_uvod(): začiatok...\n");
+	if ((modlitba == MODL_RANNE_CHVALY) || (modlitba == MODL_PRVE_VESPERY) || (modlitba == MODL_DRUHE_VESPERY) || (modlitba == MODL_VESPERY)) {
+		file_name_zapamataj();
+		sprintf(_file, "%s", FILE_OTCENAS_UVOD);
+		sprintf(_anchor, "_%s", ANCHOR_OTCENAS_UVOD);
+		_set_otcenas_uvod(modlitba, _file, _anchor);
+		set_LOG_zaltar;
+		file_name_obnov();
+	}
+	else {
+		Log("set_otcenas_uvod(): skipped...\n");
+	}
+	Log("set_otcenas_uvod(): koniec.\n");
 } // set_otcenas_uvod();
 
 void set_popis(short int modlitba, char *file, char *anchor) {
@@ -2429,6 +2436,13 @@ void set_zalmy_mcd_zaltar(short int den, short int tyzzal) {
 	Log("set_zalmy_mcd_zaltar(%d, %d) -- end\n", den, tyzzal);
 } // set_zalmy_mcd_zaltar()
 
+void set_spolocne_veci_common() {
+	// currently suffices for morning and evening prayer
+	_SET_SPOLOCNE_VECI_COMMON(MODL_PRVE_VESPERY);
+	_SET_SPOLOCNE_VECI_COMMON(MODL_RANNE_CHVALY);
+	_SET_SPOLOCNE_VECI_COMMON(MODL_VESPERY);
+}// set_spolocne_veci_common()
+
 void zaltar_zvazok(short int den, short int tyzzal, short int obdobie, short int specialne) {
 	Log("zaltar_zvazok(%d, %d, %d, %d) -- begin\n", den, tyzzal, obdobie, specialne);
 	short int zvazok = zvazok_breviara[obdobie];
@@ -2437,6 +2451,9 @@ void zaltar_zvazok(short int den, short int tyzzal, short int obdobie, short int
 
 	Log("nastavujem veci pre kompletórium...\n");
 	zaltar_kompletorium(den, obdobie, specialne, tyzzal);
+
+	Log("nastavujem spoločné veci (nateraz pre ranné chvály a vešpery)...\n");
+	set_spolocne_veci_common(); // ToDo: zvážiť | možno časom by aj nastavenie pre kompletórium mohlo ísť sem dovnútra... potom by nebolo treba špeciálne nastavovať napr. pre slávnosti
 
 	if (specialne == ZALTAR_VSETKO) {
 		Log("ZALTAR_VSETKO -- takže nastavujem všetko zo žaltára... (zaltar_zvazok)\n");
@@ -4777,6 +4794,9 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	else {
 		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR: ELSE | NEjde o: premenenie pána || obetovanie pána || petra a pavla || povýšenie sv. kríža || všetkých svätých || nanebovzatia PM...\n");
 	}
+
+	Log("...a pre ranné chvály resp. vešpery ešte úvod k Otčenášu...\n");
+	set_spolocne_veci_common();
 
 	if (skip_big_switch == NIE) {
 		// this also must not be run for PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR; prayers other than during the day (see above); before # 6dbb2650 was returned (exited) above

@@ -321,7 +321,6 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_kcitanie(den, tyzzal, m); \
 	set_kresponz(den, tyzzal, m); \
 	set_prosby  (den, tyzzal, m); \
-	set_otcenas_uvod(m); \
 }
 #define _SET_SPOLOCNE_VECI_NIE_NEDELA(m) {\
 	set_hymnus  (den, tyzzal, m); \
@@ -334,7 +333,6 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_kcitanie(den, tyzzal, m); \
 	set_kresponz(den, tyzzal, m); \
 	set_prosby  (den, tyzzal, m); \
-	set_otcenas_uvod(m); \
 	set_modlitba(den, tyzzal, m); \
 }
 
@@ -346,6 +344,10 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	else{ \
 		set_antifony(den, tyzzal, zvazok, m); \
 	} \
+}
+
+#define _SET_SPOLOCNE_VECI_COMMON(m) {\
+	set_otcenas_uvod(m); \
 }
 
 /* ------------------------------------------------------------------------------------------- */
