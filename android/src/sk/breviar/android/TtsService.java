@@ -498,11 +498,6 @@ public class TtsService extends Service
 
     Log.v("breviar", "Loading nonpersistent url " + url);
     headless.LoadAndExecute(url,
-        "var x = document.querySelectorAll(\"h2,form\"); " +
-        "for (var i = 0; i < x.length; ++i) { " +
-        "  x[i].style.display = \"none\"; " +
-        "}; " +
-        "" +
         "function getText(node, sections) {" +
         "  if (node.nodeType == Node.TEXT_NODE) {" +
         "    sections[sections.length - 1] += node.textContent;" +
