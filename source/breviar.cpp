@@ -7723,6 +7723,15 @@ void xml_export_options(void) {
 				case 13: // BIT_OPT_0_ITALICS_CONDITIONAL
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_ITALICS_CONDITIONAL)"%ld" ELEM_END(XML_BIT_OPT_0_ITALICS_CONDITIONAL) "\n", BIT_OPT_0_ITALICS_CONDITIONAL, STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL, html_text_opt_0_italics_cond[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ITALICS_CONDITIONAL)));
 					break;
+				case 14: // BIT_OPT_0_PRINTED_EDITION
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_PRINTED_EDITION)"%ld" ELEM_END(XML_BIT_OPT_0_PRINTED_EDITION) "\n", BIT_OPT_0_PRINTED_EDITION, STR_FORCE_BIT_OPT_0_PRINTED_EDITION, html_text_opt_0_printed_edition[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_PRINTED_EDITION)));
+					break;
+				case 15: // BIT_OPT_0_USE_TWO_YEARS_CYCLE
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE)"%ld" ELEM_END(XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE) "\n", BIT_OPT_0_USE_TWO_YEARS_CYCLE, STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE, html_text_opt_0_use_two_years_cycle[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_USE_TWO_YEARS_CYCLE)));
+					break;
+				case 16: // BIT_OPT_0_TWO_YEARS_CYCLE_ID
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID)"%ld" ELEM_END(XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID) "\n", BIT_OPT_0_TWO_YEARS_CYCLE_ID, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, html_text_opt_0_two_years_cycle_id[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_ID)));
+					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE) "\n");
@@ -10324,8 +10333,21 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("<" HTML_TABLE_ROW ">\n");
 		ExportTableCell(HTML_TABLE_CELL);
 
+		Export("<" HTML_TABLE_LEFT ">\n"); // main options
+
+		Export("<" HTML_TABLE_ROW ">\n");
+		ExportTableCell(HTML_TABLE_CELL);
+
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_PRINTED_EDITION
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_PRINTED_EDITION, STR_FORCE_BIT_OPT_0_PRINTED_EDITION, html_text_opt_0_printed_edition[_global_jazyk], html_text_opt_0_printed_edition_explain[_global_jazyk], NIE);
+
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI, STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI, html_text_opt_2_moznosti[_global_jazyk], html_text_opt_2_moznosti_explain[_global_jazyk], NIE);
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI, STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI, html_text_opt_2_moznosti[_global_jazyk], html_text_opt_2_moznosti_explain[_global_jazyk]);
+
+		Export(HTML_TABLE_CELL_END "\n");
+		Export(HTML_TABLE_ROW_END "\n");
+
+		Export(HTML_TABLE_END "\n"); // main options
 
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
@@ -10488,6 +10510,18 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131
 			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_127_131, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131, html_text_opt_5_DPsalmZ127_131[_global_jazyk], html_text_opt_5_DPsalmZ127_131_explain[_global_jazyk]);
+
+			// posvätné čítanie
+			Export(HTML_CRLF_LINE_BREAK);
+			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, nazov_modlitby(MODL_POSV_CITANIE), nazov_modlitby(MODL_POSV_CITANIE));
+
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE
+			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_USE_TWO_YEARS_CYCLE, STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE, html_text_opt_0_use_two_years_cycle[_global_jazyk], html_text_opt_0_use_two_years_cycle_explain[_global_jazyk]);
+
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID
+			Export(HTML_CRLF_LINE_BREAK);
+			Export(HTML_NONBREAKING_SPACE_LOOONG);
+			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_ID, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, html_text_opt_0_two_years_cycle_id[_global_jazyk], html_text_opt_0_two_years_cycle_id_explain[_global_jazyk], NIE);
 
 			if (_global_jazyk != JAZYK_CZ) {
 

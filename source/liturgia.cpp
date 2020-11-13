@@ -1906,6 +1906,9 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 11: mystrcpy(str, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, SMALL); break; // BIT_OPT_0_ZALMY_FULL_TEXT
 			case 12: mystrcpy(str, STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, SMALL); break; // BIT_OPT_0_REF_BIBLE_COM
 			case 13: mystrcpy(str, STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL, SMALL); break; // BIT_OPT_0_ITALICS_CONDITIONAL
+			case 14: mystrcpy(str, STR_FORCE_BIT_OPT_0_PRINTED_EDITION, SMALL); break; // BIT_OPT_0_PRINTED_EDITION
+			case 15: mystrcpy(str, STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE, SMALL); break; // BIT_OPT_0_USE_TWO_YEARS_CYCLE
+			case 16: mystrcpy(str, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, SMALL); break; // BIT_OPT_0_TWO_YEARS_CYCLE_ID
 			}
 		}
 		break;

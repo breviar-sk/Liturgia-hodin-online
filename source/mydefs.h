@@ -506,6 +506,30 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL "of0ic"
 #endif
 
+// zobrazenie textu podľa tlačeného vydania
+#define FORCE_BIT_OPT_0_PRINTED_EDITION 145
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_PRINTED_EDITION "FORCE_BIT_OPT_0_PRINTED_EDITION"
+#else
+#define STR_FORCE_BIT_OPT_0_PRINTED_EDITION "of0pe"
+#endif
+
+// použiť dvojročný cyklus pre posvätné čítania?
+#define FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE 146
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE "FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE"
+#else
+#define STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE "of0u2rc"
+#endif
+
+// ktorý rok použiť pre dvojročný cyklus pre posvätné čítania?
+#define FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID 147
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID "FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID"
+#else
+#define STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID "of02rcid"
+#endif
+
 // liturgické čítania
 #define FORCE_BIT_OPT_0_CIT 63
 #ifdef LONG_PARAM_NAMES
@@ -1288,6 +1312,9 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_ZALMY_FULL_TEXT           "BitOpt0PsalmsFullText"
 #define XML_BIT_OPT_0_REF_BIBLE_COM             "BitOpt0ReferencesBibleDotCom"
 #define XML_BIT_OPT_0_ITALICS_CONDITIONAL       "BitOpt0ItalicsConditional"
+#define XML_BIT_OPT_0_PRINTED_EDITION           "BitOpt0PrintedEdition"
+#define XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE       "BitOpt0UseTwoYearsCycle"
+#define XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID        "BitOpt0TwoYearsCycleId"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"
