@@ -1515,10 +1515,14 @@ void _export_link_communia(short int spol_cast, char html_tag_begin[SMALL], char
 	char pom3[MAX_STR];
 	mystrcpy(pom3, STR_EMPTY, MAX_STR);
 
+	if (spol_cast < 0) {
+		Log("ToDo | warning! should not happen!\n");
+	}
+
 	// nastavíme spoločnú časť
-	if (_global_opt[opt] != spol_cast) {
+	if (_global_opt[opt] != (unsigned)spol_cast) {
 		Log("Pre option %d nastavujem spoločnú časť na '%d'\n", opt, spol_cast);
-		_global_opt[opt] = spol_cast;
+		_global_opt[opt] = (unsigned)spol_cast;
 	}
 
 	prilep_request_options(pom2, pom3);
@@ -4533,7 +4537,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 		sprintf(anchor, HTML_A_HREF_BEGIN "\"#%s\">%s" HTML_A_END, popis_hide, html_text_invitatory_psalm(current_value));
 
-		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES) && isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI) != current_value) {
+		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES) && isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI) != (unsigned)current_value) {
 			_export_link_multi(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI, 4, (char *)html_text_invitatory_psalm(current_value), (char *)HTML_SPAN_NORMAL, (char *)HTML_CLASS_QUIET, before, after, popis_hide, (char *)HTML_SPAN_END, CHAR_EMPTY, CHAR_EMPTY, current_value);
 		}
 		else {
@@ -6597,21 +6601,21 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 		if (sc.a1 != MODL_SPOL_CAST_NEURCENA) {
 			if (sc.a2 != MODL_SPOL_CAST_NEURCENA) {
 				if (sc.a3 != MODL_SPOL_CAST_NEURCENA) {
-					if ((_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1)
-						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a2)
-						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a3)) {
+					if ((_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a1))
+						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a2))
+						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a3))) {
 						_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
 					}
 				}
 				else {
-					if ((_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1)
-						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a2)) {
+					if ((_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a1))
+						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a2))) {
 						_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
 					}
 				}
 			}
 			else {
-				if (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1) {
+				if (_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a1)) {
 					_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
 				}
 			}
@@ -11375,7 +11379,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			if (poradie_spol_cast[i] == MODL_SPOL_CAST_NEURCENA) {
 				continue;
 			}
-			Export("<option%s>%s</option>\n", (poradie_spol_cast[i] != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(poradie_spol_cast[i]));
+			Export("<option%s>%s</option>\n", ((unsigned)(poradie_spol_cast[i]) != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(poradie_spol_cast[i]));
 		}
 		Export("</select>\n");
 
@@ -12616,9 +12620,9 @@ void showDetails(short int den, short int mesiac, short int rok, short int porad
 		if (je_spolocna_cast_urcena(sc.a1)) {
 			Export("<option%s>%s</option>\n", html_option_selected, nazov_spolc(sc.a1));
 			if (je_spolocna_cast_urcena(sc.a2)) {
-				Export("<option%s>%s</option>\n", (sc.a2 != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(sc.a2));
+				Export("<option%s>%s</option>\n", ((unsigned)(sc.a2) != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(sc.a2));
 				if (je_spolocna_cast_urcena(sc.a3)) {
-					Export("<option%s>%s</option>\n", (sc.a3 != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(sc.a3));
+					Export("<option%s>%s</option>\n", ((unsigned)(sc.a3) != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(sc.a3));
 				}
 			}
 			if (je_mozne_spol_cast_nebrat(poradie_svaty)) {

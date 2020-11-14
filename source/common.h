@@ -38,7 +38,7 @@
 
 #define MAX_STR           1024 // max string length
 
-#define GLOBAL_OPTION_NULL  -1 // undefined value for global option
+#define GLOBAL_OPTION_NULL  18446744073709551615u // undefined value for global option
 
 // div, mod: delenie pre short int
 #define DIV	/

@@ -1447,7 +1447,7 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba) {
 
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) {
 				// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
-				ktory = (isGlobalOption(OPT_5_ALTERNATIVES, bit)) ? 1 : 0;
+				ktory = (isGlobalOption(OPT_5_ALTERNATIVES, (unsigned)bit)) ? 1 : 0;
 				Log("set_hymnus() [1]: ktory == %d...\n", ktory);
 			}
 			else {
@@ -4629,7 +4629,7 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd) {
 	}
 	else if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) {
 		// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
-		ktory = (isGlobalOption(OPT_5_ALTERNATIVES, bit)) ? 1 : 0;
+		ktory = (isGlobalOption(OPT_5_ALTERNATIVES, (unsigned)bit)) ? 1 : 0;
 		Log("_velk1_hymnus(): ktory == %d...\n", ktory);
 	}
 	else {
@@ -10799,20 +10799,20 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 
 	// podla _global_opt[OPT_3_SPOLOCNA_CAST] urcime, ktoru spolocnu cast dat
 	if (sc.a1 != MODL_SPOL_CAST_NEURCENA) {
-		if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1) {
+		if (_global_opt[OPT_3_SPOLOCNA_CAST] == (unsigned)(sc.a1)) {
 			Log("	vstupujem do _set_spolocna_cast()...(_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1)\n");
 			_set_spolocna_cast((short int)_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
 		}
 		else {
 			Log("	neplatí _global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1 ...\n");
 			if (sc.a2 != MODL_SPOL_CAST_NEURCENA) {
-				if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a2) {
+				if (_global_opt[OPT_3_SPOLOCNA_CAST] == (unsigned)(sc.a2)) {
 					Log("	vstupujem do _set_spolocna_cast()...(_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a2)\n");
 					_set_spolocna_cast((short int)_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
 				}
 				else {
 					if (sc.a3 != MODL_SPOL_CAST_NEURCENA) {
-						if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a3) {
+						if (_global_opt[OPT_3_SPOLOCNA_CAST] == (unsigned)(sc.a3)) {
 							Log("	vstupujem do _set_spolocna_cast()...(_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a3)\n");
 							_set_spolocna_cast((short int)_global_opt[OPT_3_SPOLOCNA_CAST], poradie_svaty, force);
 						}
