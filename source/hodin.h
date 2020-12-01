@@ -5167,7 +5167,7 @@ const char *text_JAN_08_OCD[POCET_JAZYKOV + 1] =
 const char *text_JAN_08_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Titusa Zemana, kňaza a mučeníka",
-	"",
+	"Bl. Tita Zemana, kněze a mučedníka",
 	"",
 	"",
 	"",
@@ -12684,7 +12684,7 @@ const char *text_OKT_04_OP[POCET_JAZYKOV + 1] =
 const char *text_OKT_05_SDB[POCET_JAZYKOV + 1] =
 {
 	"Bl. Alberta Marvelliho, mladíka",
-	"Bl. Alberta Marvelliho",
+	"Bl. Alberta Marvelliho, oratoriána",
 	"",
 	"",
 	"",

@@ -1974,12 +1974,21 @@ extern const char *text_ZAKONCENIE_O_TO_TA_PROSIME[POCET_JAZYKOV + 1];
 
 extern const char *html_text_batch_Back[POCET_JAZYKOV + 1];
 
-struct _anchor_and_count {
+struct _lang_anchor_and_count {
 	short int language;
 	char anchor[MAX_STR_AF_ANCHOR];
 	short int count;
 };
-typedef struct _anchor_and_count _struct_anchor_and_count;
+typedef struct _lang_anchor_and_count _struct_lang_anchor_and_count;
+
+struct _lang_cal_type_anchor_and_count {
+	short int language;
+	short int calendar;
+	unsigned long long type; // e. g. BASE_OPT_6_CITANIE2_MULTI
+	char anchor[MAX_STR_AF_ANCHOR];
+	short int count;
+};
+typedef struct _lang_cal_type_anchor_and_count _struct_lang_cal_type_anchor_and_count;
 
 extern const char *bible_references_default[POCET_JAZYKOV + 1];
 

@@ -10886,7 +10886,7 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 
 // NOTE: each item in the following arrays must not have 'count' more than 10 (values 0--9) because only one decimal place within option 6 value is dedicated
 
-_struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
+_struct_lang_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_PMB_rHYMNUS", 3 },
 	{ JAZYK_CZ, "CZ_PMB_vHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_PMB_cHYMNUS", 2 },
@@ -11144,7 +11144,7 @@ _struct_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_SK, "OCR34v_HYMNUS", 2 },
 };
 
-_struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
+_struct_lang_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "OZZ_cCIT1", 3 },
 	{ JAZYK_UNDEF, "SCPM_OCR_cCIT1", 2 },
 	{ JAZYK_UNDEF, "SCSM_ZVI_cCIT1", 2 },
@@ -11158,7 +11158,7 @@ _struct_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCSZM_OCR_cCIT1", 2 },
 };
 
-_struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
+_struct_lang_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSc_CIT2", 4 },
 	{ JAZYK_SK, "05JUL_cCIT2", 3 },
 	{ JAZYK_UNDEF, "OZZ_cCIT2", 2 },
@@ -11186,7 +11186,7 @@ _struct_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_HU, "24OKT2_cCIT2", 2 },
 };
 
-_struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
+_struct_lang_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCSZ_iANT1", 2 },
 	{ JAZYK_UNDEF, "SCPN_iANT1", 2 },
 	{ JAZYK_UNDEF, "SCPNV_iANT1", 2 },
@@ -11208,7 +11208,7 @@ _struct_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_CZ_OP, "15AUG_rBENEDIKTUS", 2 },
 };
 
-_struct_anchor_and_count pocet_maria_ant_multi_anchor_count[] = {
+_struct_lang_anchor_and_count pocet_maria_ant_multi_anchor_count[] = {
 	{ JAZYK_SK, "_k_MARIANSKE-ANTIFONY", 6 }, // including special case for OFM family
 	{ JAZYK_CZ, "_k_MARIANSKE-ANTIFONY", 7 }, // including two alternative cases
 	{ JAZYK_CZ_OP, "_k_MARIANSKE-ANTIFONY", 6 }, // including Latin Salve Regina
@@ -11216,19 +11216,19 @@ _struct_anchor_and_count pocet_maria_ant_multi_anchor_count[] = {
 	{ JAZYK_HU, "_k_MARIANSKE-ANTIFONYVE", 2 }, // including alternative translations
 };
 
-_struct_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
+_struct_lang_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_MODLITBA", 6 },
 };
 
-_struct_anchor_and_count pocet_otcenas_uvod_multi_anchor_count[] = {
+_struct_lang_anchor_and_count pocet_otcenas_uvod_multi_anchor_count[] = {
 	{ JAZYK_SK, "_OTCENAS-UVOD", 10 },
 	{ JAZYK_LA, "_OTCENAS-UVOD", 10 },
 	{ JAZYK_CZ_OP, "_OTCENAS-UVOD", 10 },
 	{ JAZYK_CZ, "_OTCENAS-UVOD", 7 },
-	{ JAZYK_HU, "_OTCENAS-UVOD", 10 }, // they have 12 intros (according to vol. I & II of first Latin editio but technically we can support max. 10 options
+	{ JAZYK_HU, "_OTCENAS-UVOD", 10 }, // they have 12 intros (according to vol. I & II of first Latin editio) but technically we can support max. 10 options
 };
 
-_struct_anchor_and_count pocet_prosby_multi_anchor_count[] = {
+_struct_lang_anchor_and_count pocet_prosby_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_PROSBY", 2 },
 	{ JAZYK_UNDEF, "SCPM_1PROSBY", 2 },
 	{ JAZYK_UNDEF, "SCPM_rPROSBY", 2 },
@@ -11241,22 +11241,52 @@ _struct_anchor_and_count pocet_prosby_multi_anchor_count[] = {
 	{ JAZYK_CZ_OP, "_k_UKONKAJ", 4 },
 };
 
-_struct_anchor_and_count pocet_kcit_resp_multi_anchor_count[] = {
+_struct_lang_anchor_and_count pocet_kcit_resp_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_CIT", 3 },
 	{ JAZYK_UNDEF, "SPMVSr_RESP", 3 },
 	{ JAZYK_UNDEF, "OZZ_vRESP", 2 },
 };
 
+// override for propria
+_struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] = {
+	{ JAZYK_CZ, KALENDAR_CZ_SDB, BASE_OPT_6_CITANIE2_MULTI, "06MAJ_cCIT2", 3 },
+};
+
 short int pocet_multi(char *_anchor, unsigned long long type) {
 	short int count = 0;
 	short int i = 0;
-	short int lng = JAZYK_UNDEF;
+	short int lang = JAZYK_UNDEF;
+	short int cal = KALENDAR_NEURCENY;
 
 	short int size = 0;
-	// short int 
 
-	_struct_anchor_and_count* ptr = NULL;
-	_struct_anchor_and_count* orig = NULL;
+	// first, check propria override
+
+	_struct_lang_cal_type_anchor_and_count* ptr_propria = NULL;
+	_struct_lang_cal_type_anchor_and_count* orig_propria = pocet_multi_lang_cal_type_anchor_count;
+	size = sizeof(pocet_multi_lang_cal_type_anchor_count);
+
+	_struct_lang_cal_type_anchor_and_count* endPtr_propria = ptr_propria + size / sizeof(orig_propria[0]);
+
+	i = 0;
+
+	while (ptr_propria < endPtr_propria) {
+		lang = orig_propria[i].language;
+		cal = orig_propria[i].calendar;
+		if (equals(_anchor, orig_propria[i].anchor) && (lang == _global_jazyk) && (cal == _global_kalendar) && (type == orig_propria[i].type)) {
+			count = orig_propria[i].count;
+			return count;
+		}
+		ptr_propria++;
+		i++;
+	}
+
+	// now, check ordinary arrays
+
+	size = 0;
+
+	_struct_lang_anchor_and_count* ptr = NULL;
+	_struct_lang_anchor_and_count* orig = NULL;
 
 	if (type == BASE_OPT_6_HYMNUS_MULTI) {
 		ptr = pocet_hymnus_multi_anchor_count;
@@ -11296,13 +11326,14 @@ short int pocet_multi(char *_anchor, unsigned long long type) {
 	}
 	// here, PLACE_OPT_6_PSALM_MULTI is not used
 
+	i = 0;
 	orig = ptr; // preserve original pointer to array due to dereferencing by [i]
 
-	_struct_anchor_and_count* endPtr = ptr + size / sizeof(orig[0]);
+	_struct_lang_anchor_and_count* endPtr = ptr + size / sizeof(orig[0]);
 
 	while (ptr < endPtr) {
-		lng = orig[i].language;
-		if (equals(_anchor, orig[i].anchor) && (lng == JAZYK_UNDEF || lng == _global_jazyk)) {
+		lang = orig[i].language;
+		if (equals(_anchor, orig[i].anchor) && (lang == JAZYK_UNDEF || lang == _global_jazyk)) {
 			count = orig[i].count;
 			break;
 		}

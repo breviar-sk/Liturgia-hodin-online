@@ -574,7 +574,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			_global_svaty1.kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD
 
-		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) {
+		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))) {
 			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
@@ -24408,9 +24408,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				if (_global_jazyk == JAZYK_SK) {
-					_vlastna_cast_2citanie;
-				}
+				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
