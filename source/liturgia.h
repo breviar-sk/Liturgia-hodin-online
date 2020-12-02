@@ -52,25 +52,22 @@
 #define RITUS_GR_KAT    1
 
 // language IDs (constants) according to ISO 3166-1 alpha-2
-// 2006-07-11: created
-// 2006-12-12: added JAZYK_LA
-// 2008-08-15: added JAZYK_CZ_OP
-// 2009-01-29: added JAZYK_HU
-// 2015-04-02: added JAZYK_RU
 #define JAZYK_SK	0
 #define JAZYK_CZ	1
 #define JAZYK_EN	2
 #define JAZYK_LA    3
-#define JAZYK_UNDEF 4 // used also as JAZYK_ANY
+#define JAZYK_UNDEF 4
 #define JAZYK_CZ_OP 5
 #define JAZYK_HU    6
 #define JAZYK_RU    7
 #define JAZYK_BY    8
+#define JAZYK_IS    9
 /* ADD_VALUE_FOR_NEW_LANGUAGE */
 
 // rite for languages
 const short int ritus_jazyka[POCET_JAZYKOV + 1] =
 {
+	RITUS_RIM_KAT,
 	RITUS_RIM_KAT,
 	RITUS_RIM_KAT,
 	RITUS_RIM_KAT,
@@ -1177,9 +1174,10 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_SK_CSA                    23
 #define KALENDAR_SK_OSU                    24
 #define KALENDAR_HU_SJ                     25
+#define KALENDAR_VSEOBECNY_IS              26
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   25
+#define POCET_KALENDAROV                   26
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
@@ -1198,6 +1196,7 @@ const short int default_kalendar[POCET_JAZYKOV + 1] =
 	KALENDAR_VSEOBECNY_HU,
 	KALENDAR_VSEOBECNY_RU,
 	KALENDAR_VSEOBECNY_BY,
+	KALENDAR_VSEOBECNY_IS,
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
@@ -1225,6 +1224,7 @@ const short int supported_languages[POCET_JAZYKOV + 1] =
 	1, // JAZYK_HU
 	0, // JAZYK_RU
 	0, // JAZYK_BY
+	1, // JAZYK_IS
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
@@ -1249,6 +1249,7 @@ const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 	4,
 	1,
 	1,
+	1,
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
@@ -1264,6 +1265,7 @@ const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALEND
 	{ KALENDAR_VSEOBECNY_HU, KALENDAR_HU_OFM, KALENDAR_HU_SVD, KALENDAR_HU_SJ, 0, 0, 0, 0, 0 },
 	{ KALENDAR_VSEOBECNY_RU, 0, 0, 0, 0, 0, 0, 0, 0 },
 	{ KALENDAR_VSEOBECNY_BY, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_IS, 0, 0, 0, 0, 0, 0, 0, 0 },
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 

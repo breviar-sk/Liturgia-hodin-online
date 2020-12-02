@@ -31,7 +31,7 @@
 
 // number of supported languages | Warning: for all string constants we use arrays [POCET_JAZYKOV + 1] => be careful when incrementing POCET_JAZYKOV!
 /* INCREMENT_FOR_NEW_LANGUAGE */
-#define	POCET_JAZYKOV	     8
+#define	POCET_JAZYKOV	     9
 
 // when adding new language, the following comments MUST BE replaced:
 // 
@@ -59,6 +59,8 @@
 // /* STRING_2_FOR_NEW_LANGUAGE */
 //
 // 4. string arrays: STRING_ARRAY_FOR_NEW_LANGUAGE to be replaced manually
+//
+// 5. technical strings for new language: STRING_3_FOR_NEW_LANGUAGE (usually suffices to copy from previous languages; mostly are the same for all languages)
 
 #define POCET_GLOBAL_OPT     7
 
