@@ -105,7 +105,7 @@
 // #define		BIBLE_BOOK_DC_PrMan
 
 // taken from https://crosswire.org/wiki/OSIS_Book_Abbreviations
-const char *bible_paratext_shortcut[BIBLE_BOOKS_COUNT + 1] =
+const char* bible_paratext_shortcut[BIBLE_BOOKS_COUNT + 1] =
 {
 	"GEN", /* BIBLE_BOOK_OT_Gen */
 	"EXO", /* BIBLE_BOOK_OT_Exod */
@@ -182,7 +182,7 @@ const char *bible_paratext_shortcut[BIBLE_BOOKS_COUNT + 1] =
 	"2MA", /* BIBLE_BOOK_DC_2Macc */
 };
 
-const char *bible_paratext_shortcut_with_dot[BIBLE_BOOKS_COUNT + 1] =
+const char* bible_paratext_shortcut_with_dot[BIBLE_BOOKS_COUNT + 1] =
 {
 	"GEN.", /* BIBLE_BOOK_OT_Gen */
 	"EXO.", /* BIBLE_BOOK_OT_Exod */
@@ -260,7 +260,7 @@ const char *bible_paratext_shortcut_with_dot[BIBLE_BOOKS_COUNT + 1] =
 };
 
 // default Bible online translation URLs
-const char *bible_references_default[POCET_JAZYKOV + 1] =
+const char* bible_references_default[POCET_JAZYKOV + 1] =
 {
 	"https://dkc.kbs.sk/?in=",
 	"",
@@ -278,10 +278,10 @@ const char *bible_references_default[POCET_JAZYKOV + 1] =
 
 // bible.com version id codes; usage for web HTTP requests
 // ToDo: to be moved as default to config file
-const char *bible_version_id_default[POCET_JAZYKOV + 1] =
+const char* bible_version_id_default[POCET_JAZYKOV + 1] =
 { "163", "509", "463", "823", "", "509", "198", "ru_text", "by_text", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
-const char *bible_book_shortcut_jazyk[BIBLE_BOOKS_COUNT + 1][POCET_JAZYKOV + 1] =
+const char* bible_book_shortcut_jazyk[BIBLE_BOOKS_COUNT + 1][POCET_JAZYKOV + 1] =
 {
 	{ /*BIBLE_BOOK_OT_Gen */ "Gn", "Gn", "Gn", "Gn", "", "Gn", "Ter", "ru_text", "by_text", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	,{ /*BIBLE_BOOK_OT_Exod */ "Ex", "Ex", "Ex", "Ex", "", "Ex", "Ex", "ru_text", "by_text", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ }

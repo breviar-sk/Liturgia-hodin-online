@@ -14,9 +14,9 @@
 
 #define EmptyLog NoLog
 #define emptyLog NoLog
-short int NoLog(const char *fmt, ...);
+short int NoLog(const char* fmt, ...);
 
-short int initLog(const char *fname);
+short int initLog(const char* fname);
 
 void bothLogs(void);
 void fileLog(void);
@@ -24,7 +24,7 @@ void fileLog(void);
 short int isbothLogs(void);
 short int closeLog(void);
 
-short int __Log(const char *fmt, ...);
+short int __Log(const char* fmt, ...);
 void Logint(int c);
 
 #endif // __MYLOG_H_

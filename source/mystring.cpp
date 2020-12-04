@@ -38,7 +38,7 @@ char *mystrcpy(char *dest, char *src, short int count){
 	return ret;
 }
 
-char *mystrcpy(char *dest, const char *src, short int count){
+char *mystrcpy(char *dest, const char* src, short int count){
 	// do nothing is src is NULL
 	if (src == NULL) {
 		return dest;
@@ -73,7 +73,7 @@ short int equals(char *s1, char *s2){
 	}
 }
 
-short int equals(const char *s1, char *s2){
+short int equals(const char* s1, char *s2){
 	if (strcmp(s1, s2) == 0){
 		return 1;
 	}
@@ -82,7 +82,7 @@ short int equals(const char *s1, char *s2){
 	}
 }
 
-short int equals(const char *s1, const char *s2){
+short int equals(const char* s1, const char* s2){
 	if (strcmp(s1, s2) == 0){
 		return 1;
 	}
@@ -91,7 +91,7 @@ short int equals(const char *s1, const char *s2){
 	}
 }
 
-short int equals(char *s1, const char *s2){
+short int equals(char *s1, const char* s2){
 	if (strcmp(s1, s2) == 0){
 		return 1;
 	}
@@ -126,7 +126,7 @@ short int equalsi(char *is1, char *is2){
 #endif
 }
 
-short int equalsi(const char *is1, char *is2){
+short int equalsi(const char* is1, char *is2){
 #if defined(DEFINED_strcmpi)
 	if (strcmpi(is1, is2) == 0){
 		return 1;
@@ -151,7 +151,7 @@ short int equalsi(const char *is1, char *is2){
 #endif
 }
 
-short int equalsi(const char *is1, const char *is2){
+short int equalsi(const char* is1, const char* is2){
 #if defined(DEFINED_strcmpi)
 	if (strcmpi(is1, is2) == 0){
 		return 1;
@@ -176,7 +176,7 @@ short int equalsi(const char *is1, const char *is2){
 #endif
 }
 
-short int equalsi(char *is1, const char *is2){
+short int equalsi(char *is1, const char* is2){
 #if defined(DEFINED_strcmpi)
 	if (strcmpi(is1, is2) == 0){
 		return 1;
@@ -203,7 +203,7 @@ short int equalsi(char *is1, const char *is2){
 
 // funkcia mystr_replace() nahradí všetky výskyty podreťazca substr v reťazci string reťazcom replacement
 // http://coding.debuntu.org/c-implementing-str_replace-replace-all-occurrences-substring | 2013-01-11
-char *mystr_replace(const char *string, const char *substr, const char *replacement) {
+char *mystr_replace(const char* string, const char* substr, const char* replacement) {
 	char *tok = NULL;
 	char *newstr = NULL;
 	char *oldstr = NULL;
@@ -233,7 +233,7 @@ char *mystr_replace(const char *string, const char *substr, const char *replacem
 	return newstr;
 }// mystr_replace()
 
-char* mystr_replace_char(const char *string, const char orig_char, const char replacement) {
+char* mystr_replace_char(const char* string, const char orig_char, const char replacement) {
 	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
 	if (orig_char == 0 || replacement == 0) return strdup(string);
 
@@ -252,7 +252,7 @@ char* mystr_replace_char(const char *string, const char orig_char, const char re
 	return newstr;
 }// mystr_replace_char()
 
-char* mystr_remove_char(const char *string, const char char_to_remove) {
+char* mystr_remove_char(const char* string, const char char_to_remove) {
 	/* if substr is NULL, duplicate string a let caller handle it */
 	if (char_to_remove == 0) return strdup(string);
 
@@ -275,7 +275,7 @@ char* mystr_remove_char(const char *string, const char char_to_remove) {
 	return newstr;
 }// mystr_remove_char()
 
-char* mystr_remove_letters_and_parentheses(const char *string) {
+char* mystr_remove_letters_and_parentheses(const char* string) {
 	/* if substr is NULL, duplicate string a let caller handle it */
 
 	char *newstr = NULL;
@@ -308,7 +308,7 @@ char* mystr_remove_letters_and_parentheses(const char *string) {
 	return newstr;
 }// mystr_remove_letters()
 
-char *mystr_first_lower(const char *string) {
+char *mystr_first_lower(const char* string) {
 	char *newstr = NULL;
 	char c;
 	newstr = strdup(string);
@@ -320,7 +320,7 @@ char *mystr_first_lower(const char *string) {
 	return newstr;
 }// mystr_first_lower()
 
-char *mystr_first_upper(const char *string) {
+char *mystr_first_upper(const char* string) {
 	char *newstr = NULL;
 	char c;
 	newstr = strdup(string);
@@ -335,9 +335,9 @@ char *mystr_first_upper(const char *string) {
 // convert integer value to Roman numeral string; caller is responsible for buffer size
 // http://stackoverflow.com/questions/4986521/how-to-convert-integer-value-to-roman-numeral-string | 2016-08-16
 void convertToRoman(int val, char *res) {
-	const char *huns[] = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
-	const char *tens[] = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
-	const char *ones[] = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+	const char* huns[] = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+	const char* tens[] = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+	const char* ones[] = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
 	int         size[] = { 0,   1,    2,     3,    2,   1,    2,     3,      4,    2 };
 
 	//  Add 'M' until we drop below 1000.

@@ -536,10 +536,10 @@ extern short int _typslav_override(short int typslav);
 
 #ifndef OS_linux
 // kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 
-int main(int argc, const char **argv);
+int main(int argc, const char** argv);
 #endif // OS_linux
 
-int breviar_main(int argc, const char **argv);
+int breviar_main(int argc, const char** argv);
 
 #if (_MSC_VER >= 1400)       // VC8+ 2007-02-12 kvôli vc++ 2005 express edition
 	#pragma warning(disable : 4996)    // disable all deprecation warnings

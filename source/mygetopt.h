@@ -47,7 +47,7 @@ extern "C" {
    each non-option ARGV-element is returned here.  */
 
 extern
-const char *optarg;
+const char* optarg;
 
 /* Index in ARGV of the next element to be scanned.
 	This is used for communication to and from the caller
@@ -119,8 +119,8 @@ struct option
 // added by JUV
 int getopt(
 	int argc,
-	const char *const *argv,
-	const char *optstring);
+	const char* const *argv,
+	const char* optstring);
 
 #endif /* __GETOPT_H_ */
 

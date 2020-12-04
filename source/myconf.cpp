@@ -55,11 +55,11 @@ char cfg_http_bible_references_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_http_bible_com_references_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_bible_com_version_id_default[POCET_JAZYKOV + 1][MAX_SMALL_STR];
 
-const char *cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] =
+const char* cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] =
 { "specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "alternatives_multi", "http_adresa", "http_zobraz_adr", "mail_adresa", "http_bible_references", "http_bible_com_references", "bible_com_version_id" };
 #define ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX "_"
 
-const char *cfg_option_postfix[POCET_JAZYKOV + 1] =
+const char* cfg_option_postfix[POCET_JAZYKOV + 1] =
 { "def", "cz", "en", "la", "", "czop", "hu", "ru", "by", "is", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 void printConfigOptions(void){

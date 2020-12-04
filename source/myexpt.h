@@ -21,14 +21,14 @@
 #define DEFAULT_HTML_EXPORT "zoznam.htm" // "export2.htm"
 #define DEFAULT_MONTH_EXPORT "index.htm" // "^ hore"
 
-short int Export(const char *fmt, ...);
+short int Export(const char* fmt, ...);
 short int ExportHtmlComment(const char* fmt, ...);
 short int ExportXmlError(const char* fmt, ...);
-short int Export_to_file(FILE * expt, const char *fmt, ...);
+short int Export_to_file(FILE * expt, const char* fmt, ...);
 
 void ExportRawWchar(int c);
 void ExportChar(int c, short int skip_chars_for_voice_output = NIE);
-void ExportStringCharByChar(const char * string, short int skip_chars_for_voice_output = NIE);
+void ExportStringCharByChar(const char*  string, short int skip_chars_for_voice_output = NIE);
 
 void bothExports(void);
 void dumpFile(char *fname);
@@ -39,7 +39,7 @@ extern short int exptused;
 extern FILE *exportfile;
 
 short int initExport(void);
-short int initExport(const char *expt_filename);
+short int initExport(const char* expt_filename);
 short int closeExport(void);
 
 char *getExportedString(void);

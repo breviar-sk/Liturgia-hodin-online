@@ -41,7 +41,7 @@ short int used;
  * vracia: on success, returns 0
  *         on error, returns 1
  */
-short int initLog(const char *fname){
+short int initLog(const char* fname){
 	fileLog();
 #if defined(LOG_TO_FILE)
 	logfile = fopen(fname, "wt");
@@ -83,7 +83,7 @@ short int closeLog(void){
 	return ret;
 }
 
-short int __Log(const char *fmt, ...)
+short int __Log(const char* fmt, ...)
 {
 	va_list argptr;
 	short int cnt;
@@ -144,7 +144,7 @@ void Logint(short int c){
 
 #else /* nie LOGGING */
 
-short int initLog(const char *fname){
+short int initLog(const char* fname){
 	Q_UNUSED(fname);
 	return 0;
 }
@@ -153,7 +153,7 @@ short int closeLog(void){
 	return 0;
 }
 
-short int __Log(const char *fmt, ...){
+short int __Log(const char* fmt, ...){
 	Q_UNUSED(fmt);
 	return 0;
 }
@@ -165,7 +165,7 @@ void Logint(short int c){
 #endif /* LOGGING */
 
 //---------------------------------------------------------------------
-short int NoLog(const char *fmt, ...){
+short int NoLog(const char* fmt, ...){
 	return(fmt == 0);
 }
 

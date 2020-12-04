@@ -313,7 +313,7 @@ char *mystr_UPPERCASE(const char* input) {
  // odstráni diakritiku
  // nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash;
  // zmení aj dlhé pomlčky na obyčajný spojovník (znak mínus)
-char *mystr_remove_diacritics(const char *input) {
+char *mystr_remove_diacritics(const char* input) {
 	short int ok = TRUE;
 	const char* in = input;
 	char* out = _global_pom_str;
@@ -343,7 +343,7 @@ char *mystr_remove_diacritics(const char *input) {
 // The URL schema we use is pretty simple.Here’s an an example : https://www.bible.com/bible/111/JHN.1.1. The “111” here is the version id, which in this case is the NIV version. For a single verse, you can use a three letter code for the book, “JHN” for John in this case, followed by “.chapter#” then “.verse#”. For a verse range, you can use a schema of "1.1-5” (https://www.bible.com/bible/111/JHN.1.1-5) and for multiple verses in the same chapter you can use a schema of “1.2,4” (https://www.bible.com/bible/111/JHN.1.2,4).
 // For users that have the YouVersion Bible App installed, tapping on a URL with this schema will open up the Bible App to that scripture reference in our reader.If users don’t have our app, it will open it up in bible.com.
 //---------------------------------------------------------------------
-char *mystr_bible_com_helper(const char *input, short int book_number_prefix = 0) {
+char *mystr_bible_com_helper(const char* input, short int book_number_prefix = 0) {
 	char input_with_prefix[SMALL];
 
 	mystrcpy(input_with_prefix, (input != NULL) ? input : STR_EMPTY, SMALL);
@@ -373,7 +373,7 @@ char *mystr_bible_com_helper(const char *input, short int book_number_prefix = 0
 	return mystr_remove_letters_and_parentheses(mystr_replace_char(mystr_replace_char(mystr_replace_char(input_with_prefix, '.', '@'), ',', '.'), '@', ','));
 }// mystr_bible_com_helper()
 
-char *mystr_bible_com(const char *input) {
+char *mystr_bible_com(const char* input) {
 	char* in = strdup(input);
 	char* token;
 	short int book_number_prefix = 0;
@@ -418,7 +418,7 @@ char *mystr_bible_com(const char *input) {
 //---------------------------------------------------------------------
 // konvertuje underscore na nezlomiteľné medzery
 // (char sa musí najprv konvertovať na char * a až potom appendovať strcat)
-char *convert_nonbreaking_spaces(const char *input){
+char *convert_nonbreaking_spaces(const char* input){
 	Log("convert_nonbreaking_spaces() -- začiatok...\n");
 	const char* in = input;
 	char* out = _global_pom_str;
@@ -735,13 +735,13 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 	Log("_vytvor_global_link(orig): koniec.\n");
 }// _vytvor_global_link()
 
-void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class) {
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char*  html_class) {
 	Log("_vytvor_global_link(orig): volám s hodnotou html_class == NULL...\n");
 	_vytvor_global_link(den, mesiac, rok, _case, typ, align, html_class, STR_EMPTY);
 	Log("_vytvor_global_link(orig): koniec.\n");
 }// _vytvor_global_link()
 
-void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class, const char * nazov_dna = STR_EMPTY) {
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char*  html_class, const char*  nazov_dna = STR_EMPTY) {
 	Log("_vytvor_global_link(new): začiatok...\n");
 	Log("den == %d, mesiac == %d, rok == %d...\n", den, mesiac, rok);
 

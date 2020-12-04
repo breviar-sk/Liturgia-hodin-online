@@ -68,7 +68,7 @@ short int initExport(void){
 	return exptused;
 }
 
-short int initExport(const char *expt_filename){
+short int initExport(const char* expt_filename){
 	if (exptused == SUCCESS){
 		closeExport();
 	}
@@ -120,7 +120,7 @@ bool ExpandExptstr(int cnt) {
 	return true;
 }
 
-short int Export_to_string(const char *fmt, va_list argptr) {
+short int Export_to_string(const char* fmt, va_list argptr) {
 	short int cnt;
 	va_list argptr2;
 
@@ -141,7 +141,7 @@ short int Export_to_string(const char *fmt, va_list argptr) {
  *    naviac ak isbothExports, tak sa posiela vystup aj na konzolu (stdout),
  * ak premenna exptused je 1,  tak sa posiela vystup iba na konzolu (stdout)
  */
-short int Export(const char *fmt, ...){
+short int Export(const char* fmt, ...){
 	va_list argptr;
 	short int cnt;
 
@@ -214,7 +214,7 @@ short int ExportXmlError(const char* fmt, ...) {
 	return(cnt);
 }
 
-short int Export_to_file(FILE * expt, const char *fmt, ...){
+short int Export_to_file(FILE * expt, const char* fmt, ...){
 	va_list argptr;
 	short int cnt;
 
@@ -296,7 +296,7 @@ void ExportChar(int c, short int skip_chars_for_voice_output /* = NIE */) {
 	return;
 }// ExportChar()
 
-void ExportStringCharByChar(const char * input, short int skip_chars_for_voice_output /* = NIE */) {
+void ExportStringCharByChar(const char*  input, short int skip_chars_for_voice_output /* = NIE */) {
 	short int ok = TRUE;
 	const char* in = input;
 

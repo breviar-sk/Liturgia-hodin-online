@@ -368,12 +368,12 @@ const short int poradie_modlitieb_long[POCET_PORADIE_MODLITIEB_LONG + 1] = {
 
 // added for batch mode
 extern const char char_modlitby[POCET_MODLITIEB + 1];
-extern const char *str_modlitby[POCET_MODLITIEB + 1];
+extern const char* str_modlitby[POCET_MODLITIEB + 1];
 
-extern const char *nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_modlitby(a)	nazov_modlitby_jazyk[a][_global_jazyk]
 
-extern const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_Modlitby(a)	nazov_Modlitby_jazyk[a][_global_jazyk]
 
 #define TEMPLATE_PREFIX_HTML	"m"
@@ -424,7 +424,7 @@ extern const char *nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 // compline in Ordinary time
 #define nazov_obd_KOMPLETORIUM   "cezrok_k.htm"
 
-extern const char *TEMPLAT[POCET_MODLITIEB + 1];
+extern const char* TEMPLAT[POCET_MODLITIEB + 1];
 
 #define ORDINARIUM_INVITATORIUM     "ord_invitat.htm"
 #define ORDINARIUM_POSV_CITANIE     "ord_posvcit.htm"
@@ -434,9 +434,9 @@ extern const char *TEMPLAT[POCET_MODLITIEB + 1];
 #define ORDINARIUM_KOMPLETORIUM     "ord_komplet.htm"
 #define ORDINARIUM_EMPTY            STR_EMPTY // MODL_VSETKY + MODL_DETAILY
 
-extern const char *FILE_ORDINARIUM[POCET_MODLITIEB + 1];
+extern const char* FILE_ORDINARIUM[POCET_MODLITIEB + 1];
 
-extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
+extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 
 #define FILE_INFO_ABOUT            "about.htm"
 #if defined(IO_ANDROID)
@@ -783,22 +783,22 @@ extern const char *FILE_INFO[POCET_INFO_TEXTOV + 1];
 // force all
 #define FORCE_BRAT_VSETKO      65535 // FORCE_BRAT_ANTIFONY + FORCE_BRAT_ZALMY + ... (všetky / all)
 
-extern const char *str_ano[POCET_JAZYKOV + 1];
+extern const char* str_ano[POCET_JAZYKOV + 1];
 #ifndef		STR_ANO
 #define		STR_ANO		str_ano[_global_jazyk]
 #endif
 
-extern const char *str_nie[POCET_JAZYKOV + 1];
+extern const char* str_nie[POCET_JAZYKOV + 1];
 #ifndef		STR_NIE
 #define		STR_NIE		str_nie[_global_jazyk]
 #endif
 
-extern const char *str_modl_zalmy_zo_dna[POCET_JAZYKOV + 1];
+extern const char* str_modl_zalmy_zo_dna[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_ZALMY_ZO_DNA
 #define		STR_MODL_ZALMY_ZO_DNA 	str_modl_zalmy_zo_dna[_global_jazyk]
 #endif
 
-extern const char *str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
+extern const char* str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_ZALMY_ZO_SV
 #define		STR_MODL_ZALMY_ZO_SV 	str_modl_zalmy_zo_sv[_global_jazyk]
 #endif
@@ -872,25 +872,25 @@ const short int poradie_spol_cast[POCET_SPOL_CASTI + 1] = {
 	MODL_SPOL_CAST_NEURCENA
 };
 
-extern const char *str_doplnkova_psalmodia[POCET_JAZYKOV + 1];
+extern const char* str_doplnkova_psalmodia[POCET_JAZYKOV + 1];
 
-extern const char *str_modl_cez_den_zalmy_zo_dna[POCET_JAZYKOV + 1];
+extern const char* str_modl_cez_den_zalmy_zo_dna[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_CEZ_DEN_ZALMY_ZO_DNA
 #define		STR_MODL_CEZ_DEN_ZALMY_ZO_DNA	str_modl_cez_den_zalmy_zo_dna[_global_jazyk]
 #endif
 
-extern const char *str_modl_cez_den_doplnkova_psalmodia[POCET_JAZYKOV + 1];
+extern const char* str_modl_cez_den_doplnkova_psalmodia[POCET_JAZYKOV + 1];
 #ifndef		STR_MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA
 #define		STR_MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA	str_modl_cez_den_doplnkova_psalmodia[_global_jazyk]
 #endif
 
-extern const char *nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1];
 #ifndef		nazov_spolc
 #define		nazov_spolc(a)	nazov_spolc_jazyk[a][_global_jazyk]
 #endif
 
-extern const char *nazov_spolc_htm[MODL_SPOL_CAST_NEBRAT + 1];
-extern const char *nazov_spolc_ANCHOR[MODL_SPOL_CAST_NEBRAT + 1];
+extern const char* nazov_spolc_htm[MODL_SPOL_CAST_NEBRAT + 1];
+extern const char* nazov_spolc_ANCHOR[MODL_SPOL_CAST_NEBRAT + 1];
 
 #define ANCHOR_SPOL_CAST_DUCH_PAST "SCDP"
 
@@ -964,31 +964,31 @@ const short int zvazok_breviara[POCET_OBDOBI + 1] =
 const short int lit_obd_pocet_tyzdnov[POCET_OBDOBI + 1] = 
 {4, 1, 1, 2, 1, 34, 6, 1, 1, 1, 7, 2};
 
-extern const char *nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_obdobia(a)	nazov_obdobia_jazyk[a][_global_jazyk]
 
-extern const char *nazov_obdobia_ext_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_obdobia_ext_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_obdobia_ext(a)	nazov_obdobia_ext_jazyk[a][_global_jazyk]
 
-extern const char *nazov_obdobia_[POCET_OBDOBI + 1];
+extern const char* nazov_obdobia_[POCET_OBDOBI + 1];
 
 // lokal == 6. pad, v kom/com
-extern const char *nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_obdobia_v(a)	nazov_obdobia_v_jazyk[a][_global_jazyk]
 
-extern const char *nazov_Obdobia_aka_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_Obdobia_aka_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1];
 #define		nazov_Obdobia_aka(a)	nazov_Obdobia_aka_jazyk[a][_global_jazyk]
 
 // gen[itiv] == 2. pad, koho/coho
 
 // nazov_obdobia: string pre nazov suboru .htm liturgickeho obdobia
-extern const char *nazov_obd_htm[POCET_OBDOBI + 1];
+extern const char* nazov_obd_htm[POCET_OBDOBI + 1];
 // nazov_obdobia: string pre nazov kotvy v .htm liturgickeho obdobia
-extern const char *nazov_OBD[POCET_OBDOBI + 1];
+extern const char* nazov_OBD[POCET_OBDOBI + 1];
 // nazov_obdobia pc: string pre nazov suboru .htm liturgickeho obdobia pre posvatne citania
-extern const char *nazov_obd_htm_pc[POCET_OBDOBI + 1];
+extern const char* nazov_obd_htm_pc[POCET_OBDOBI + 1];
 // 2005-08-05: Pridané. zväzok breviára (LH) pre spoločné časti svätých v kotvách
-extern const char *zvazok_OBD[POCET_OBDOBI + 1];
+extern const char* zvazok_OBD[POCET_OBDOBI + 1];
 
 // celebration types
 #define SLAV_NEURCENE            0
@@ -1002,13 +1002,13 @@ extern const char *zvazok_OBD[POCET_OBDOBI + 1];
 #define	POCET_SLAVENI            5
 
 // nazov_slavenia: string pre nazov typu slavenia
-extern const char *nazov_slavenia_jazyk[POCET_SLAVENI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_slavenia_jazyk[POCET_SLAVENI + 1][POCET_JAZYKOV + 1];
 #define		nazov_slavenia(a)	nazov_slavenia_jazyk[a][_global_jazyk]
 
 // the name of celebration -- for memoria (in privileged days)
-extern const char *nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1];
+extern const char* nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1];
 
-extern const char *nazov_slavenia_lokal[];
+extern const char* nazov_slavenia_lokal[];
 
 #define LOKAL_SLAV_NEURCENE							0
 #define LOKAL_SLAV_ROZNAVA_KATEDRALA				1
@@ -1175,9 +1175,10 @@ extern const char *nazov_slavenia_lokal[];
 #define KALENDAR_SK_OSU                    24
 #define KALENDAR_HU_SJ                     25
 #define KALENDAR_VSEOBECNY_IS              26
+#define KALENDAR_CZ_SJ                     27
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   26
+#define POCET_KALENDAROV                   27
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
@@ -1201,11 +1202,11 @@ const short int default_kalendar[POCET_JAZYKOV + 1] =
 };
 
 // filenames for special calendars / názov súbora pre kalendáre
-extern const char *nazov_htm_kalendar[POCET_KALENDAROV + 1];
+extern const char* nazov_htm_kalendar[POCET_KALENDAROV + 1];
 
-extern const char *nazov_kalendara_smart[POCET_KALENDAROV + 1];
+extern const char* nazov_kalendara_smart[POCET_KALENDAROV + 1];
 
-extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
+extern const char* nazov_kalendara_long[POCET_KALENDAROV + 1];
 
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 #define nazov_kalendara_vyber nazov_kalendara_smart
@@ -1238,9 +1239,9 @@ const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 {
 	11,
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
-	6,
+	7,
 #else
-	5,
+	6,
 #endif
 	/* ToDo */ 1,
 	/* ToDo */ 1,
@@ -1257,15 +1258,15 @@ const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALENDARS_COUNT_MAX] =
 {
 	{ KALENDAR_VSEOBECNY_SK, KALENDAR_SK_CSSR, KALENDAR_SK_SVD, KALENDAR_SK_OFM, KALENDAR_SK_SDB, KALENDAR_SK_OP, KALENDAR_SK_SJ, KALENDAR_SK_CM, KALENDAR_SK_OCD, KALENDAR_SK_CSA, KALENDAR_SK_OSU },
-	{ KALENDAR_VSEOBECNY_CZ, KALENDAR_CZ_OPRAEM, KALENDAR_CZ_OFMCAP, KALENDAR_CZ_SDB, KALENDAR_CZ_OFM, KALENDAR_CZ_CSSR, 0, 0, 0 },
-	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
-	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
-	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_CZ_OP, 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_VSEOBECNY_HU, KALENDAR_HU_OFM, KALENDAR_HU_SVD, KALENDAR_HU_SJ, 0, 0, 0, 0, 0 },
-	{ KALENDAR_VSEOBECNY_RU, 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_VSEOBECNY_BY, 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_VSEOBECNY_IS, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_CZ, KALENDAR_CZ_OPRAEM, KALENDAR_CZ_OFMCAP, KALENDAR_CZ_SDB, KALENDAR_CZ_OFM, KALENDAR_CZ_SJ, KALENDAR_CZ_CSSR, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_CZ_OP, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_HU, KALENDAR_HU_OFM, KALENDAR_HU_SVD, KALENDAR_HU_SJ, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_RU, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_BY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_IS, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
@@ -1311,17 +1312,17 @@ const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALEND
 #define POCET_FARIEB_REALNYCH		6
 
 // nazov_farby: string pre názov liturgickej farby
-extern const char *nazov_farby_jazyk[POCET_FARIEB_REALNYCH + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_farby_jazyk[POCET_FARIEB_REALNYCH + 1][POCET_JAZYKOV + 1];
 #define		nazov_farby(a)	nazov_farby_jazyk[a][_global_jazyk]
 
-extern const char *html_farba_pozadie[POCET_FARIEB_REALNYCH + 1];
-extern const char *html_farba_popredie[POCET_FARIEB_REALNYCH + 1];
+extern const char* html_farba_pozadie[POCET_FARIEB_REALNYCH + 1];
+extern const char* html_farba_popredie[POCET_FARIEB_REALNYCH + 1];
 
 #define ZVAZKY_LH 4
 
 // tyzden zaltara (1, 2, 3, 4) podla tyzdna t
 #define  tyzden_zaltara(t)  ((((t) + 3) % 4) + 1)
-extern const char *rimskymi_tyzden_zaltara[ZVAZKY_LH + 2];
+extern const char* rimskymi_tyzden_zaltara[ZVAZKY_LH + 2];
 
 extern const short int prvy_den[12];
 
@@ -1330,11 +1331,11 @@ extern short int pocet_dni[12];
 extern const short int alphabet_jayzka[POCET_JAZYKOV + 1];
 
 extern const char char_nedelne_pismeno[POCET_DNI];
-extern const char *string_nedelne_pismeno[POCET_ALPHABET + 1][POCET_DNI];
+extern const char* string_nedelne_pismeno[POCET_ALPHABET + 1][POCET_DNI];
 
 #define POCET_NEDELNY_CYKLUS 3
 extern const char char_nedelny_cyklus[POCET_NEDELNY_CYKLUS];
-extern const char *string_nedelny_cyklus[POCET_ALPHABET + 1][POCET_NEDELNY_CYKLUS];
+extern const char* string_nedelny_cyklus[POCET_ALPHABET + 1][POCET_NEDELNY_CYKLUS];
 
 #define	POCET_NEDIEL_CEZ_ROK	34
 #define	KRISTA_KRALA	34 // 34. nedela v obdobi cez rok je sviatok K.K.
@@ -1352,42 +1353,42 @@ extern const char *string_nedelny_cyklus[POCET_ALPHABET + 1][POCET_NEDELNY_CYKLU
 #define CASE_Case 1 // Prve Pismeno Velke
 #define CASE_CASE 2 // VSETKO VELKE
 
-extern const char *nazov_dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_dna(a)	nazov_dna_jazyk[a][_global_jazyk]
 
-extern const char *nazov_dna_asci_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_dna_asci_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_dna_asci(a)	nazov_dna_asci_jazyk[a][_global_jazyk]
 
-extern const char *nazov_Dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_Dna_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_Dna(a)	nazov_Dna_jazyk[a][_global_jazyk]
 
-extern const char *nazov_Dn_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_Dn_jazyk[POCET_DNI + 1][POCET_JAZYKOV + 1];
 #define		nazov_Dn(a)	nazov_Dn_jazyk[a][_global_jazyk]
 
-extern const char *nazov_DN_asci[POCET_DNI + 1];
-extern const char *nazov_dn_asci[POCET_DNI + 1];
+extern const char* nazov_DN_asci[POCET_DNI + 1];
+extern const char* nazov_dn_asci[POCET_DNI + 1];
 
-extern const char *nazov_mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca(a)	nazov_mesiaca_jazyk[a][_global_jazyk]
 
-extern const char *nazov_mesiaca_asci_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_mesiaca_asci_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca_asci(a)	nazov_mesiaca_asci_jazyk[a][_global_jazyk]
 
-extern const char *nazov_Mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_Mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_Mesiaca(a)	nazov_Mesiaca_jazyk[a][_global_jazyk]
 
-extern const char *nazov_mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_mesiaca_gen(a)	nazov_mesiaca_gen_jazyk[a][_global_jazyk]
 
-extern const char *nazov_Mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_Mesiaca_gen_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1];
 #define		nazov_Mesiaca_gen(a)	nazov_Mesiaca_gen_jazyk[a][_global_jazyk]
 
-extern const char *nazov_MES[POCET_MESIACOV + 1];
-extern const char *nazov_mes[POCET_MESIACOV + 1];
+extern const char* nazov_MES[POCET_MESIACOV + 1];
+extern const char* nazov_mes[POCET_MESIACOV + 1];
 
 #define		POCET_TYZDNOV 34
 
-extern const char *poradie_Slovom_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1];
+extern const char* poradie_Slovom_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1];
 #define		poradie_Slovom(a)	poradie_Slovom_jazyk[a][_global_jazyk]
 
 #define POCET_ALIASOV          7
@@ -1678,35 +1679,35 @@ extern short int _global_font_size;
 
 extern short int _global_pocet_zalmov_kompletorium;
 
-extern const char *nazov_jazyka_native_jazyk[POCET_JAZYKOV + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_jazyka_native_jazyk[POCET_JAZYKOV + 1][POCET_JAZYKOV + 1];
 #define nazov_jazyka_native_jazyk(a) nazov_jazyka_native_jazyk[a][_global_jazyk]
 #define nazov_jazyka(a) nazov_jazyka_native_jazyk[a][a]
-extern const char *skratka_jazyka[POCET_JAZYKOV + 1];
-extern const char *postfix_jazyka[POCET_JAZYKOV + 1];
-extern const char *skratka_jazyka_title[POCET_JAZYKOV + 1];
+extern const char* skratka_jazyka[POCET_JAZYKOV + 1];
+extern const char* postfix_jazyka[POCET_JAZYKOV + 1];
+extern const char* skratka_jazyka_title[POCET_JAZYKOV + 1];
 
-extern const char *nazov_kalendara_short[POCET_KALENDAROV + 1];
-extern const char *skratka_kalendara[POCET_KALENDAROV + 1];
-extern const char *nazov_kalendara_propria_only[POCET_KALENDAROV + 1];
-extern const char *nazov_kalendara_long[POCET_KALENDAROV + 1];
+extern const char* nazov_kalendara_short[POCET_KALENDAROV + 1];
+extern const char* skratka_kalendara[POCET_KALENDAROV + 1];
+extern const char* nazov_kalendara_propria_only[POCET_KALENDAROV + 1];
+extern const char* nazov_kalendara_long[POCET_KALENDAROV + 1];
 
-extern const char *nazov_css[POCET_CSS + 1];
-extern const char *skratka_css[POCET_CSS + 1];
-extern const char *nazov_css_invert_colors;
-extern const char *nazov_css_normal_font_weight;
-extern const char *nazov_css_voice_output;
-extern const char *nazov_css_background_override;
-extern const char *nazov_css_background_ov_invert;
+extern const char* nazov_css[POCET_CSS + 1];
+extern const char* skratka_css[POCET_CSS + 1];
+extern const char* nazov_css_invert_colors;
+extern const char* nazov_css_normal_font_weight;
+extern const char* nazov_css_voice_output;
+extern const char* nazov_css_background_override;
+extern const char* nazov_css_background_ov_invert;
 
 extern const short int charset_jazyka[POCET_JAZYKOV + 1];
-extern const char *nazov_charset[POCET_CHARSET + 1];
+extern const char* nazov_charset[POCET_CHARSET + 1];
 
-extern const char *nazov_fontu[POCET_FONTOV + 1];
-extern const char *nazov_fontu_CHECKBOX[POCET_JAZYKOV + 1];
-extern const char *nazov_fontu_CSS[POCET_JAZYKOV + 1];
+extern const char* nazov_fontu[POCET_FONTOV + 1];
+extern const char* nazov_fontu_CHECKBOX[POCET_JAZYKOV + 1];
+extern const char* nazov_fontu_CSS[POCET_JAZYKOV + 1];
 
-extern const char *nazov_font_size_jazyk[POCET_FONT_SIZE + 1][POCET_JAZYKOV + 1];
-extern const char *nazov_font_size_css[POCET_FONT_SIZE + 1];
+extern const char* nazov_font_size_jazyk[POCET_FONT_SIZE + 1][POCET_JAZYKOV + 1];
+extern const char* nazov_font_size_css[POCET_FONT_SIZE + 1];
 
 //---------------------------------------------------------------------
 
@@ -1714,10 +1715,10 @@ short int _allocate_global_var(void);
 short int _deallocate_global_var(void);
 
 short int cislo_mesiaca(char *mesiac);
-char *mystr_UPPERCASE(const char *input);
-char *mystr_remove_diacritics(const char *input);
-char *mystr_bible_com(const char *input);
-char *convert_nonbreaking_spaces(const char *input);
+char *mystr_UPPERCASE(const char* input);
+char *mystr_remove_diacritics(const char* input);
+char *mystr_bible_com(const char* input);
+char *convert_nonbreaking_spaces(const char* input);
 
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align);
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align, short int force_month_numbers);
@@ -1734,8 +1735,8 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 
 // parameter align -- či zarovnať jednociferné dátumy (číslovka dňa) medzerou zľava
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
-void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class);
-void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char * html_class, const char * nazov_dna);
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char*  html_class);
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char*  html_class, const char*  nazov_dna);
 
 #define PRILEP_REQUEST_OPTIONS_DEFAULT   0
 #define PRILEP_REQUEST_OPTIONS_AJ_FORCE  1
@@ -1931,50 +1932,50 @@ _struct_sc _decode_spol_cast(int);
 
 void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_order);
 
-extern const char *text_JAN_06[POCET_JAZYKOV + 1];
-extern const char *text_JAN_KRST[POCET_JAZYKOV + 1];
-extern const char *text_POPOLCOVA_STREDA[POCET_JAZYKOV + 1];
-extern const char *text_NANEBOVSTUPENIE_PANA[POCET_JAZYKOV + 1];
-extern const char *text_VELKONOCNA_NEDELA[POCET_JAZYKOV + 1];
-extern const char *text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1];
-extern const char *text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1];
-extern const char *text_DEN_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1];
-extern const char *text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1];
-extern const char *text_KRISTA_KRALA[POCET_JAZYKOV + 1];
-extern const char *text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1];
-extern const char *text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1];
-extern const char *text_MARIE_MATKY_CIRKVI[POCET_JAZYKOV + 1];
-extern const char *text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1];
-extern const char *text_NARODENIE_PANA[POCET_JAZYKOV + 1];
-extern const char *text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1];
-extern const char *text_PRVA_ADVENTNA_NEDELA[POCET_JAZYKOV + 1];
-extern const char *text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1];
-extern const char *text_SPOMIENKA_PM_V_SOBOTU[POCET_JAZYKOV + 1];
-extern const char *text_ZELENY_STVRTOK[POCET_JAZYKOV + 1];
-extern const char *text_VELKY_PIATOK[POCET_JAZYKOV + 1];
-extern const char *text_BIELA_SOBOTA[POCET_JAZYKOV + 1];
-extern const char *text_KVETNA_NEDELA[POCET_JAZYKOV + 1];
-extern const char *text_DRUHA_NEDELA_PO_NAR_PANA[POCET_JAZYKOV + 1];
-extern const char *text_PO_POPOLCOVEJ_STREDE[POCET_JAZYKOV + 1];
-extern const char *text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1];
+extern const char* text_JAN_06[POCET_JAZYKOV + 1];
+extern const char* text_JAN_KRST[POCET_JAZYKOV + 1];
+extern const char* text_POPOLCOVA_STREDA[POCET_JAZYKOV + 1];
+extern const char* text_NANEBOVSTUPENIE_PANA[POCET_JAZYKOV + 1];
+extern const char* text_VELKONOCNA_NEDELA[POCET_JAZYKOV + 1];
+extern const char* text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1];
+extern const char* text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1];
+extern const char* text_DEN_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1];
+extern const char* text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1];
+extern const char* text_KRISTA_KRALA[POCET_JAZYKOV + 1];
+extern const char* text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1];
+extern const char* text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1];
+extern const char* text_MARIE_MATKY_CIRKVI[POCET_JAZYKOV + 1];
+extern const char* text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1];
+extern const char* text_NARODENIE_PANA[POCET_JAZYKOV + 1];
+extern const char* text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1];
+extern const char* text_PRVA_ADVENTNA_NEDELA[POCET_JAZYKOV + 1];
+extern const char* text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1];
+extern const char* text_SPOMIENKA_PM_V_SOBOTU[POCET_JAZYKOV + 1];
+extern const char* text_ZELENY_STVRTOK[POCET_JAZYKOV + 1];
+extern const char* text_VELKY_PIATOK[POCET_JAZYKOV + 1];
+extern const char* text_BIELA_SOBOTA[POCET_JAZYKOV + 1];
+extern const char* text_KVETNA_NEDELA[POCET_JAZYKOV + 1];
+extern const char* text_DRUHA_NEDELA_PO_NAR_PANA[POCET_JAZYKOV + 1];
+extern const char* text_PO_POPOLCOVEJ_STREDE[POCET_JAZYKOV + 1];
+extern const char* text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1];
 
-extern const char *text_DEC_08[POCET_JAZYKOV + 1];
-extern const char *text_AUG_15[POCET_JAZYKOV + 1];
-extern const char *text_NOV_01[POCET_JAZYKOV + 1];
+extern const char* text_DEC_08[POCET_JAZYKOV + 1];
+extern const char* text_AUG_15[POCET_JAZYKOV + 1];
+extern const char* text_NOV_01[POCET_JAZYKOV + 1];
 
-extern const char *text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1];
-extern const char *text_ZAKONCENIE_SKRZE_kratke[POCET_JAZYKOV + 1];
-extern const char *text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1];
-extern const char *text_ZAKONCENIE_LEBO_ON_kratke[POCET_JAZYKOV + 1];
-extern const char *text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1];
-extern const char *text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1];
-extern const char *text_ZAKONCENIE_ON_JE_dlhe; // len SK
-extern const char *text_ZAKONCENIE_ON_JE_kratke; // len SK
-extern const char *text_ZAKONCENIE_KTORY_JE_dlhe; // len SK
-extern const char *text_ZAKONCENIE_KTORY_JE_kratke; // len SK
-extern const char *text_ZAKONCENIE_O_TO_TA_PROSIME[POCET_JAZYKOV + 1];
+extern const char* text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1];
+extern const char* text_ZAKONCENIE_SKRZE_kratke[POCET_JAZYKOV + 1];
+extern const char* text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1];
+extern const char* text_ZAKONCENIE_LEBO_ON_kratke[POCET_JAZYKOV + 1];
+extern const char* text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1];
+extern const char* text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1];
+extern const char* text_ZAKONCENIE_ON_JE_dlhe; // len SK
+extern const char* text_ZAKONCENIE_ON_JE_kratke; // len SK
+extern const char* text_ZAKONCENIE_KTORY_JE_dlhe; // len SK
+extern const char* text_ZAKONCENIE_KTORY_JE_kratke; // len SK
+extern const char* text_ZAKONCENIE_O_TO_TA_PROSIME[POCET_JAZYKOV + 1];
 
-extern const char *html_text_batch_Back[POCET_JAZYKOV + 1];
+extern const char* html_text_batch_Back[POCET_JAZYKOV + 1];
 
 struct _lang_anchor_and_count {
 	short int language;
@@ -1992,9 +1993,9 @@ struct _lang_cal_type_anchor_and_count {
 };
 typedef struct _lang_cal_type_anchor_and_count _struct_lang_cal_type_anchor_and_count;
 
-extern const char *bible_references_default[POCET_JAZYKOV + 1];
+extern const char* bible_references_default[POCET_JAZYKOV + 1];
 
-extern const char *bible_version_id_default[POCET_JAZYKOV + 1];
+extern const char* bible_version_id_default[POCET_JAZYKOV + 1];
 
 #endif // __LITURGIA_H_
 

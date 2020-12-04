@@ -268,7 +268,7 @@ short int su_kcit_kresp_modlitba_mcd_vlastne(short int m) {
  * 
  */
 
-void _set_popis(short int modlitba, const char *file, const char *anchor){
+void _set_popis(short int modlitba, const char* file, const char* anchor){
 	switch (modlitba){
 	case MODL_INVITATORIUM:
 		mystrcpy(_global_modl_invitatorium.popis.file, file, MAX_STR_AF_FILE);
@@ -511,7 +511,7 @@ void _set_hymnus_alternativy_NO(short int modlitba){
 	_set_hymnus_alternativy_NO(modlitba, OBD_CEZ_ROK);
 }// _set_hymnus_alternativy_NO()
 
-void _set_hymnus(short int modlitba, const char *file, const char *anchor) {
+void _set_hymnus(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_PRVE_KOMPLETORIUM:
 		mystrcpy(_global_modl_prve_kompletorium.hymnus.file, file, MAX_STR_AF_FILE);
@@ -552,7 +552,7 @@ void _set_hymnus(short int modlitba, const char *file, const char *anchor) {
 	} // switch(modlitba)
 } // _set_hymnus()
 
-void _set_antifona1(short int modlitba, const char *file, const char *anchor) {
+void _set_antifona1(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_INVITATORIUM:
 		mystrcpy(_global_modl_invitatorium.antifona1.file, file, MAX_STR_AF_FILE);
@@ -597,7 +597,7 @@ void _set_antifona1(short int modlitba, const char *file, const char *anchor) {
 	} // switch(modlitba)
 } // _set_antifona1()
 
-void _set_antifona2(short int modlitba, const char *file, const char *anchor) {
+void _set_antifona2(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_PRVE_KOMPLETORIUM:
 		mystrcpy(_global_modl_prve_kompletorium.antifona2.file, file, MAX_STR_AF_FILE);
@@ -638,7 +638,7 @@ void _set_antifona2(short int modlitba, const char *file, const char *anchor) {
 	} // switch(modlitba)
 } // _set_antifona2()
 
-void _set_antifona3(short int modlitba, const char *file, const char *anchor) {
+void _set_antifona3(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_RANNE_CHVALY:
 		mystrcpy(_global_modl_ranne_chvaly.antifona3.file, file, MAX_STR_AF_FILE);
@@ -671,7 +671,7 @@ void _set_antifona3(short int modlitba, const char *file, const char *anchor) {
 	} // switch(modlitba)
 } // _set_antifona3()
 
-void _set_zalm1(short int modlitba, const char *file, const char *anchor) {
+void _set_zalm1(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_INVITATORIUM:
 		mystrcpy(_global_modl_invitatorium.zalm1.file, file, MAX_STR_AF_FILE);
@@ -723,7 +723,7 @@ void _set_zalm1(short int modlitba, const char *file, const char *anchor) {
 	} // switch(modlitba)
 } // _set_zalm1()
 
-void _set_zalm2(short int modlitba, const char *file, const char *anchor) {
+void _set_zalm2(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_PRVE_KOMPLETORIUM:
 		mystrcpy(_global_modl_prve_kompletorium.zalm2.file, file, MAX_STR_AF_FILE);
@@ -771,7 +771,7 @@ void _set_zalm2(short int modlitba, const char *file, const char *anchor) {
 	} // switch(modlitba)
 } // _set_zalm2()
 
-void _set_zalm3(short int modlitba, const char *file, const char *anchor) {
+void _set_zalm3(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_RANNE_CHVALY:
 		mystrcpy(_global_modl_ranne_chvaly.zalm3.file, file, MAX_STR_AF_FILE);
@@ -811,7 +811,7 @@ void _set_zalm3(short int modlitba, const char *file, const char *anchor) {
 	} // switch(modlitba)
 } // _set_zalm3()
 
-void set_zalm(short int ktory, short int modlitba, const char *file, const char *anchor) {
+void set_zalm(short int ktory, short int modlitba, const char* file, const char* anchor) {
 	switch (ktory) {
 	case 1:
 		_set_zalm1(modlitba, file, anchor);
@@ -826,7 +826,7 @@ void set_zalm(short int ktory, short int modlitba, const char *file, const char 
 	Log("_set_zalm%d: %s: súbor `%s', kotva `%s' [volanie set_zalm()]\n", ktory, (modlitba == MODL_CEZ_DEN_VSETKY) ? "MCD-all" : ((modlitba <= POCET_MODLITIEB) ? nazov_modlitby(modlitba) : STR_EMPTY), file, anchor);
 } // set_zalm()
 
-void _set_kcitanie(short int modlitba, const char *file, const char *anchor) {
+void _set_kcitanie(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_PRVE_KOMPLETORIUM:
 		mystrcpy(_global_modl_prve_kompletorium.kcitanie.file, file, MAX_STR_AF_FILE);
@@ -868,7 +868,7 @@ void _set_kcitanie(short int modlitba, const char *file, const char *anchor) {
 } // _set_kcitanie()
 
 // pri posvatnom citani plati pre responz _pred_ citaniami
-void _set_kresponz(short int modlitba, const char *file, const char *anchor) {
+void _set_kresponz(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_PRVE_KOMPLETORIUM:
 		mystrcpy(_global_modl_prve_kompletorium.kresponz.file, file, MAX_STR_AF_FILE);
@@ -910,7 +910,7 @@ void _set_kresponz(short int modlitba, const char *file, const char *anchor) {
 } // _set_kresponz()
 
 // the same: _set_magnifikat
-void _set_benediktus(short int modlitba, const char *file, const char *anchor) {
+void _set_benediktus(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_RANNE_CHVALY:
 		mystrcpy(_global_modl_ranne_chvaly.benediktus.file, file, MAX_STR_AF_FILE);
@@ -940,7 +940,7 @@ void _set_benediktus(short int modlitba, const char *file, const char *anchor) {
 } // _set_benediktus()
 
 // the same: _set_ukonkaj
-void _set_prosby(short int modlitba, const char *file, const char *anchor) {
+void _set_prosby(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_RANNE_CHVALY:
 		mystrcpy(_global_modl_ranne_chvaly.prosby.file, file, MAX_STR_AF_FILE);
@@ -995,7 +995,7 @@ void _set_otcenas_uvod(short int modlitba, const char* file, const char* anchor)
 	} // switch(modlitba)
 } // _set_otcenas_uvod()
 
-void _set_modlitba(short int modlitba, const char *file, const char *anchor) {
+void _set_modlitba(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_RANNE_CHVALY:
 		mystrcpy(_global_modl_ranne_chvaly.modlitba.file, file, MAX_STR_AF_FILE);
@@ -1037,7 +1037,7 @@ void _set_modlitba(short int modlitba, const char *file, const char *anchor) {
 } // _set_modlitba()
 
 // VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
-void _set_ant_spomprivileg(short int modlitba, const char *file, const char *anchor) {
+void _set_ant_spomprivileg(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_RANNE_CHVALY:
 		mystrcpy(_global_modl_ranne_chvaly.ant_spomprivileg.file, file, MAX_STR_AF_FILE);
@@ -1051,7 +1051,7 @@ void _set_ant_spomprivileg(short int modlitba, const char *file, const char *anc
 } // _set_ant_spomprivileg()
 
 // VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
-void _set_modlitba_spomprivileg(short int modlitba, const char *file, const char *anchor) {
+void _set_modlitba_spomprivileg(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_RANNE_CHVALY:
 		mystrcpy(_global_modl_ranne_chvaly.modlitba_spomprivileg.file, file, MAX_STR_AF_FILE);
@@ -1065,7 +1065,7 @@ void _set_modlitba_spomprivileg(short int modlitba, const char *file, const char
 } // _set_modlitba_spomprivileg()
 
 // VSLH č. 238 (Spomienky pripadajúce na privilegované dni)
-void _set_2citanie_spomprivileg(short int modlitba, const char *file, const char *anchor) {
+void _set_2citanie_spomprivileg(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_POSV_CITANIE:
 		mystrcpy(_global_modl_posv_citanie.citanie_spomprivileg.file, file, MAX_STR_AF_FILE);
@@ -1074,7 +1074,7 @@ void _set_2citanie_spomprivileg(short int modlitba, const char *file, const char
 	} // switch(modlitba)
 } // _set_2citanie_spomprivileg()
 
-void _set_antifona_vig(short int modlitba, const char *file, const char *anchor) {
+void _set_antifona_vig(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_POSV_CITANIE:
 		mystrcpy(_global_modl_posv_citanie.ant_chval.file, file, MAX_STR_AF_FILE);
@@ -1083,7 +1083,7 @@ void _set_antifona_vig(short int modlitba, const char *file, const char *anchor)
 	} // switch(modlitba)
 } // _set_antifona_vig()
 
-void _set_chvalospev1(short int modlitba, const char *file, const char *anchor) {
+void _set_chvalospev1(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_POSV_CITANIE:
 		mystrcpy(_global_modl_posv_citanie.chval1.file, file, MAX_STR_AF_FILE);
@@ -1092,7 +1092,7 @@ void _set_chvalospev1(short int modlitba, const char *file, const char *anchor) 
 	} // switch(modlitba)
 } // _set_chvalospev1()
 
-void _set_chvalospev2(short int modlitba, const char *file, const char *anchor) {
+void _set_chvalospev2(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_POSV_CITANIE:
 		mystrcpy(_global_modl_posv_citanie.chval2.file, file, MAX_STR_AF_FILE);
@@ -1101,7 +1101,7 @@ void _set_chvalospev2(short int modlitba, const char *file, const char *anchor) 
 	} // switch(modlitba)
 } // _set_chvalospev2()
 
-void _set_chvalospev3(short int modlitba, const char *file, const char *anchor) {
+void _set_chvalospev3(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_POSV_CITANIE:
 		mystrcpy(_global_modl_posv_citanie.chval3.file, file, MAX_STR_AF_FILE);
@@ -1110,7 +1110,7 @@ void _set_chvalospev3(short int modlitba, const char *file, const char *anchor) 
 	} // switch(modlitba)
 } // _set_chvalospev3()
 
-void _set_evanjelium(short int modlitba, const char *file, const char *anchor) {
+void _set_evanjelium(short int modlitba, const char* file, const char* anchor) {
 	switch (modlitba) {
 	case MODL_POSV_CITANIE:
 		mystrcpy(_global_modl_posv_citanie.evanjelium.file, file, MAX_STR_AF_FILE);
@@ -1301,11 +1301,11 @@ char pismenko_modlitby(short int modlitba) {
 	return 0;
 } // pismenko_modlitby();
 
-void anchor_name_zaltar(short int den, short int tyzzal, short int modlitba, const char *anchor) {
+void anchor_name_zaltar(short int den, short int tyzzal, short int modlitba, const char* anchor) {
 	sprintf(_anchor, "_%d%s_%c%s", tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor);
 }
 
-void anchor_name_zaltar_alt(short int den, short int tyzzal, short int modlitba, const char *anchor, short int alt) {
+void anchor_name_zaltar_alt(short int den, short int tyzzal, short int modlitba, const char* anchor, short int alt) {
 	sprintf(_anchor, "_%d%s_%c%s%d", tyzzal, nazov_DN_asci[den], pismenko_modlitby(modlitba), anchor, alt);
 }
 
@@ -9378,7 +9378,7 @@ void _spolocna_cast_ant3_viac_ozz(char *_anchor_head, char *_anchor, char *_file
 // - I. zväzok (advent, vianoce) a II. zväzok (pôst),
 // - II. zväzok (veľká noc),
 // - III. a IV. zväzok (obdobie cez rok).
-void _spolocna_cast_1cit_zvazok(short int modlitba, const char *_anchor_pom, const char *_anchor_zvazok, const char *_anchor, const char *_file, int force /* = 0 */){
+void _spolocna_cast_1cit_zvazok(short int modlitba, const char* _anchor_pom, const char* _anchor_zvazok, const char* _anchor, const char* _file, int force /* = 0 */){
 	char _anchor_lokal[SMALL]; // 2005-08-08: lokálna premenná
 	Log("_spolocna_cast_1cit_zvazok: začiatok\n");
 	Log("\tmodlitba == %s\n", nazov_modlitby(modlitba));
@@ -11252,7 +11252,7 @@ _struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] 
 	{ JAZYK_CZ, KALENDAR_CZ_SDB, BASE_OPT_6_CITANIE2_MULTI, "06MAJ_cCIT2", 3 },
 };
 
-short int pocet_multi(char *_anchor, unsigned long long type) {
+short int pocet_multi(char* _anchor, unsigned long long type) {
 	short int count = 0;
 	short int i = 0;
 	short int lang = JAZYK_UNDEF;

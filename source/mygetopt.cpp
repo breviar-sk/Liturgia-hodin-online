@@ -72,7 +72,7 @@ USA.  */
    each non-option ARGV-element is returned here.  */
 
 // Zapoznamkoval duurko, lebo je to v mygetopt.h -- kedysi
-const char *optarg = NULL;
+const char* optarg = NULL;
 
 /* Index in ARGV of the next element to be scanned.
    This is used for communication to and from the caller
@@ -104,7 +104,7 @@ int __getopt_initialized = 0;
    If this is zero, or a null string, it means resume the scan
    by advancing to the next ARGV-element.  */
 
-static const char *nextchar;
+static const char* nextchar;
 
 /* Callers store zero here to inhibit the error message
    for unrecognized options.  */
@@ -238,10 +238,10 @@ static void exchange(char **argv){
 
 /* Initialize the internal data when the first call is made.  */
 
-static const char *_getopt_initialize(
+static const char* _getopt_initialize(
 	/*	int argc,
 		char *const *argv, */
-		const char *optstring)
+		const char* optstring)
 {
 	/* Start processing options with ARGV-element 1 (since ARGV-element 0
 	   is the program name); the sequence of previously skipped
@@ -331,8 +331,8 @@ static const char *_getopt_initialize(
 
 int _getopt_internal(
 	int argc,
-	const char *const *argv,
-	const char *optstring,
+	const char* const *argv,
+	const char* optstring,
 	const struct option *longopts,
 	int *longind,
 	int long_only)
@@ -459,7 +459,7 @@ int _getopt_internal(
 		&& (argv[optind][1] == '-'
 		|| (long_only && (argv[optind][2] || !my_index(optstring, argv[optind][1])))))
 	{
-		const char *nameend;
+		const char* nameend;
 		const struct option *p;
 		const struct option *pfound = NULL;
 		int exact = 0;
@@ -617,7 +617,7 @@ int _getopt_internal(
 		/* Convenience. Treat POSIX -W foo same as long option --foo */
 		if (temp[0] == 'W' && temp[1] == ';')
 		{
-			const char *nameend;
+			const char* nameend;
 			const struct option *p;
 			const struct option *pfound = NULL;
 			int exact = 0;
@@ -790,8 +790,8 @@ int _getopt_internal(
 
 int getopt(
 	int argc,
-	const char *const *argv,
-	const char *optstring)
+	const char* const *argv,
+	const char* optstring)
 {
 	return _getopt_internal(argc, argv, optstring,
 		(const struct option *) 0,

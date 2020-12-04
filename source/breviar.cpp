@@ -165,15 +165,15 @@ static struct _breviar_env_entry _breviar_env[ENV_ENTRIES];
 // Android libc (bionic) has no such problems, putenv copies the values as
 // well. On the other hand, setenv seems to be not working properly there, so
 // we disable this logic for android.
-static int _breviar_putenv(char *s) {
-	char *key = strdup(s);
+static int _breviar_putenv(char* s) {
+	char* key = strdup(s);
 	int i;
 
 	if (!key) {
 		return -1;
 	}
 
-	char *val = strchr(key, '=');
+	char* val = strchr(key, '=');
 	if (!val) {
 		free(key);
 		return -1;
@@ -189,7 +189,7 @@ static int _breviar_putenv(char *s) {
 		return -1;
 	}
 
-	for (i=0; i<ENV_ENTRIES; i++) {
+	for (i = 0; i < ENV_ENTRIES; i++) {
 		if (_breviar_env[i].k[0] == 0 || strcmp(_breviar_env[i].k, key) == 0) {
 			strcpy(_breviar_env[i].k, key);
 			strcpy(_breviar_env[i].v, val);
@@ -207,19 +207,19 @@ static int _breviar_putenv(char *s) {
 	return 0;
 }
 
-static char *_breviar_getenv(const char *k) {
-    int i;
+static char* _breviar_getenv(const char* k) {
+	int i;
 	if (strlen(k) >= ENV_K_SIZE) {
 		Log("Environment key too long: '%s'\n", k);
 		return NULL;
 	}
 
-    for (i=0; i<ENV_ENTRIES && _breviar_env[i].k[0]; i++) {
-        if (strcmp(k, _breviar_env[i].k) == 0) {
-            return _breviar_env[i].v;
-        }
-    }
-    return NULL;
+	for (i = 0; i < ENV_ENTRIES && _breviar_env[i].k[0]; i++) {
+		if (strcmp(k, _breviar_env[i].k) == 0) {
+			return _breviar_env[i].v;
+		}
+	}
+	return NULL;
 }
 
 #undef getenv
@@ -236,13 +236,13 @@ static char *_breviar_getenv(const char *k) {
 // Android libc (bionic) has no such problems, putenv copies the values as
 // well. On the other hand, setenv seems to be not working properly there, so
 // we disable this logic for android.
-static int my_putenv(char *s) {
-	char *key = strdup(s);
+static int my_putenv(char* s) {
+	char* key = strdup(s);
 	if (!key) {
 		return 0;
 	}
 
-	char *val = strchr(key, '=');
+	char* val = strchr(key, '=');
 	if (!val) {
 		free(key);
 		return 0;
@@ -587,6 +587,11 @@ short int useWhenGlobalOption(short opt_i, unsigned long long bit_opt_i_componen
 		else if ((opt_i == OPT_2_HTML_EXPORT) && (
 			(bit_opt_i_component_j == BIT_OPT_2_TEXT_WRAP)
 			|| (bit_opt_i_component_j == BIT_OPT_2_ROZNE_MOZNOSTI)
+			)) {
+			return NIE;
+		}
+		else if ((opt_i == OPT_5_ALTERNATIVES) && (
+			(bit_opt_i_component_j == BIT_OPT_5_ZAVER_KNAZ_DIAKON)
 			)) {
 			return NIE;
 		}
@@ -1285,7 +1290,7 @@ void ExportEmptyCell(short begin = ANO, short end = ANO) {
 
 // exportuje heading velkosti size;
 // jednotne exportovanie. <h2> pre Liturgiu hodin, <h3> pre detailnejsi vypis
-void _export_heading(/* int size, */const char *string) {
+void _export_heading(/* int size, */const char* string) {
 	short int size = 2;
 	Export("\n<h%d>Kontrola údajov</h%d>\n\n", size, size);
 
@@ -1293,7 +1298,7 @@ void _export_heading(/* int size, */const char *string) {
 	Export("\n<h%d " HTML_CLASS_BLUE ">%s</h%d>\n\n", size, string, size);
 } // _export_heading()
 
-void _export_heading_center(short int typ, const char *string) {
+void _export_heading_center(short int typ, const char* string) {
 	short int size = 2;
 	if (typ == PRM_XML) {
 		Export("\n" ELEM_BEGIN(XML_TITLE) "\n");
@@ -1686,7 +1691,7 @@ char ConsumeFromBuffer(struct ReadBuffer* buffer) {
 
 #define ExportHtmlOnlyFormat(a, b) { if (typ != PRM_XML) { Export(a, b); } }
 
-void includeFile(short int typ, short int modlitba, const char *paramname, const char *fname, const char *modlparam) {
+void includeFile(short int typ, short int modlitba, const char* paramname, const char* fname, const char* modlparam) {
 	int c, buff_index = 0, fnref_index = 0, fn_index = 0, ref_index = 0, kat_index = 0, z95_index = 0;
 	char strbuff[MAX_BUFFER];
 	char rest[MAX_BUFFER];
@@ -2993,11 +2998,11 @@ void includeFile(short int typ, short int modlitba, const char *paramname, const
 	Log("--includeFile(): end\n");
 } // includeFile()
 
-void _export_rozbor_dna_navig_top_bottom_simple(char *target, const char *text, const char *arrow) {
+void _export_rozbor_dna_navig_top_bottom_simple(char* target, const char* text, const char* arrow) {
 	Export(HTML_A_HREF_BEGIN "\"#%s\" " HTML_CLASS_QUIET ">%s %s" HTML_A_END, target, arrow, text);
 } // _export_rozbor_dna_navig_top_bottom_simple()
 
-void _export_rozbor_dna_navig_top_bottom(char *target, const char *text, const char *arrow) {
+void _export_rozbor_dna_navig_top_bottom(char* target, const char* text, const char* arrow) {
 	ExportHtmlComment("p-navigation:begin");
 
 	Export(HTML_P_CENTER_SMALL);
@@ -3489,11 +3494,11 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_OSTATNI)) {
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
+			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !useWhenGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_KNAZ_DIAKON)) {
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
+			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && useWhenGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER)) {
@@ -10105,7 +10110,7 @@ void _export_rozbor_dna_kalendar_core(short int typ) {
 	Log("--- _export_rozbor_dna_kalendar_core(typ == %d) -- end\n", typ);
 } // _export_rozbor_dna_kalendar_core()
 
-void _export_main_formular_checkbox(short int opt, unsigned long long bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description, const char * html_text_opt_description_explain, short int line_break_before = ANO) {
+void _export_main_formular_checkbox(short int opt, unsigned long long bit_opt, const char* str_modl_force_opt, const char* html_text_opt_description, const char* html_text_opt_description_explain, short int line_break_before = ANO) {
 	Log("_export_main_formular_checkbox(%d, %llu, %s, %s, %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
 	char html_label[MAX_STR];
 	mystrcpy(html_label, html_text_opt_description, MAX_STR);
@@ -10126,14 +10131,14 @@ void _export_main_formular_checkbox(short int opt, unsigned long long bit_opt, c
 
 	Export("<" HTML_SPAN_TOOLTIP ">", html_text_opt_description_explain);
 
-	_export_link_show_hide(opt, bit_opt, (char *)html_label, (char *)html_label, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, 0, 0); // Export("%s", html_label);
+	_export_link_show_hide(opt, bit_opt, (char*)html_label, (char*)html_label, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)STR_EMPTY, 0, 0); // Export("%s", html_label);
 
 	Export(HTML_SPAN_END);
 
 	Log("_export_main_formular_checkbox(%d, %llu, %s, %s, %s) -- end.\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
 } // _export_main_formular_checkbox()
 
-void _export_main_formular_checkbox_slash(short int opt, long bit_opt, const char * str_modl_force_opt, const char * html_text_opt_description1, const char * html_text_opt_description2, short int line_break_before = ANO) {
+void _export_main_formular_checkbox_slash(short int opt, long bit_opt, const char* str_modl_force_opt, const char* html_text_opt_description1, const char* html_text_opt_description2, short int line_break_before = ANO) {
 	Log("_export_main_formular_checkbox(%d, %ld, %s, %s / %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description1, html_text_opt_description2);
 	char html_label[MAX_STR];
 	sprintf(html_label, "%s%s%s", html_text_opt_description1, (line_break_before == ANO) ? HTML_SLASH_SPACE_LOONG_LINE_BREAK : HTML_SLASH_SPACE_LOONG, html_text_opt_description2);
@@ -15109,7 +15114,7 @@ void _main_sviatok(char *sviatok) {
 
 #define NewlineExport	Export(HTML_LINE_BREAK); Export
 
-void ExportAnalyzaRokuRow(char *_global_link, const char *description) {
+void ExportAnalyzaRokuRow(char* _global_link, const char* description) {
 	Export("<" HTML_TABLE_ROW ">\n");
 	ExportTableCell(HTML_TABLE_CELL);
 	Export("%s", _global_link);
@@ -15863,10 +15868,10 @@ void _main_batch_mode(
 						}
 						fprintf(batch_html_file, "\n");
 						if (_global_jazyk == JAZYK_HU) {
-							fprintf(batch_html_file, "output = output + '<li>'+tag1+cesta_mesiac+'>%s (20'+rok+'/'+mesiac+')'+tag2+'</li></ul>';\n", (char *)html_text_Prehlad_mesiaca[_global_jazyk]);
+							fprintf(batch_html_file, "output = output + '<li>'+tag1+cesta_mesiac+'>%s (20'+rok+'/'+mesiac+')'+tag2+'</li></ul>';\n", (char*)html_text_Prehlad_mesiaca[_global_jazyk]);
 						}
 						else {
-							fprintf(batch_html_file, "output = output + '<li>'+tag1+cesta_mesiac+'>%s ('+mesiac+'/20'+rok+')'+tag2+'</li></ul>';\n", (char *)html_text_Prehlad_mesiaca[_global_jazyk]);
+							fprintf(batch_html_file, "output = output + '<li>'+tag1+cesta_mesiac+'>%s ('+mesiac+'/20'+rok+')'+tag2+'</li></ul>';\n", (char*)html_text_Prehlad_mesiaca[_global_jazyk]);
 						}
 						fprintf(batch_html_file, "\n");
 						fprintf(batch_html_file, "document.write(output);\n");
@@ -15886,10 +15891,10 @@ void _main_batch_mode(
 					if (_global_opt_batch_monthly == ANO) {
 						fprintf(batch_html_file, "<h4>");
 						if (_global_jazyk == JAZYK_HU) {
-							fprintf(batch_html_file, (const char *)html_text_batch_obdobie1m[_global_jazyk], r_from, nazov_mesiaca_gen(m_from), d_from, r_to, nazov_mesiaca_gen(m_to), d_to);
+							fprintf(batch_html_file, (const char*)html_text_batch_obdobie1m[_global_jazyk], r_from, nazov_mesiaca_gen(m_from), d_from, r_to, nazov_mesiaca_gen(m_to), d_to);
 						}
 						else {
-							fprintf(batch_html_file, (const char *)html_text_batch_obdobie1m[_global_jazyk], d_from, nazov_mesiaca_gen(m_from), r_from, d_to, nazov_mesiaca_gen(m_to), r_to);
+							fprintf(batch_html_file, (const char*)html_text_batch_obdobie1m[_global_jazyk], d_from, nazov_mesiaca_gen(m_from), r_from, d_to, nazov_mesiaca_gen(m_to), r_to);
 						}
 						fprintf(batch_html_file, "</h4>\n");
 					}
@@ -16598,16 +16603,16 @@ short int getQueryTypeFrom_WWW(void) {
 // vracia: on success, returns SUCCESS
 //         on error,   returns FAILURE
 // popritom: nastavi do query_type to, co by malo byt po switchi -q
-short int getArgv(int argc, const char **argv) {
+short int getArgv(int argc, const char** argv) {
 	short int c;
 	optind = 0; // pokial tu toto nebolo, tak getopt sa neinicializovala pri dalsich volaniach
-	char *option_string;
+	char* option_string;
 	char pom_name_binary_executable[MAX_STR] = STR_EMPTY; // 2009-08-02: doplnené pre prilepenie ..\ pred názov name_binary_executable
 	char pom_include_dir[MAX_STR] = STR_EMPTY; // 2009-08-02: doplnené pre prilepenie ..\ pred názov include_dir
 
 	Log("allocating memory for option_string...\n");
 	// allocate memory for string
-	if ((option_string = (char *)malloc(MAX_STR)) == NULL) {
+	if ((option_string = (char*)malloc(MAX_STR)) == NULL) {
 		Log("Not enough memory to allocate buffer, so returning FAILURE\n");
 		//printf("Not enough memory to allocate buffer (getArgv(), char *option_string)\n");
 		// exit(1); -- terminate program if out of memory
@@ -18777,7 +18782,7 @@ void normalize_calendar_for_language() {
 
 	// check whether desired calendar is possible for selected language
 	_main_LOG_to_Export("kontrola kalendár (%s | %s) vs. jazyk (%s | %s)...\n", nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar], nazov_jazyka(_global_jazyk), skratka_jazyka[_global_jazyk]);
-	
+
 #ifdef DEBUG
 	// this special change is just for debugging reasons (for Czech language, behave as if CZ OP would be another calendar though it is not listed among supported_calendars[] for JAZYK_CZ
 	if (_global_jazyk == JAZYK_CZ && _global_kalendar == KALENDAR_CZ_OP) {
@@ -18787,14 +18792,14 @@ void normalize_calendar_for_language() {
 #endif
 
 	short int c = 0;
-	
+
 	for (c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
 		if (supported_calendars(c) == _global_kalendar) {
 			Log("...OK.\n");
 			break;
 		}
 	}
-	
+
 	if (c >= supported_calendars_count[_global_jazyk]) {
 		_global_kalendar = default_kalendar[_global_jazyk];
 		Log("kalendár zmenený na default pre daný jazyk (%d teda %s | %s).", _global_kalendar, nazov_kalendara_short[_global_kalendar], skratka_kalendara[_global_kalendar]);
@@ -18804,7 +18809,7 @@ void normalize_calendar_for_language() {
 }
 
 // main
-int breviar_main(int argc, const char **argv) {
+int breviar_main(int argc, const char** argv) {
 	short int i;
 	short int local_den, local_mesiac, local_rok, local_modlitba;
 
@@ -19409,7 +19414,7 @@ int breviar_main(int argc, const char **argv) {
 			_main_LOG_to_Export("kontrola, či include adresár končí reťazcom `%s'...\n", postfix_jazyka[_global_jazyk]);
 			// treba najskôr skontrolovať, či include dir už náhodou neobsahuje aj prilepený postfix jazyka; include_dir[len] alebo include_dir[len + 1] obsahuje PATH_SEPARATOR
 			// teda znaky jeden a dva pred by mali obsahovať postfix_jazyka[_global_jazyk][0] a [1] | nemožno kontrolovať fixne 2 znaky, pretože postfix_jazyka môže byť dlhší (napr. pre "czop")
-			char *include_dir_pom;
+			char* include_dir_pom;
 			long len_postfix_jazyka = strlen(postfix_jazyka[_global_jazyk]);
 			short int kontrola_prilepenia_postfix_jazyka = NIE;
 			include_dir_pom = strstr(include_dir, postfix_jazyka[_global_jazyk]);
@@ -19680,11 +19685,11 @@ _main_end:
 }// breviar_main()
 
 #ifndef SKIP_MAIN
-int main(int argc, const char **argv) {
+int main(int argc, const char** argv) {
 	int ret = breviar_main(argc, argv);
 
 #ifdef EXPORT_TO_STRING
-	char *result = getExportedString();
+	char* result = getExportedString();
 	int resultLength = strlen(result);
 	fwrite(result, resultLength, 1, stdout);
 #endif
