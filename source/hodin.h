@@ -14294,12 +14294,12 @@ const char* text_OKT_21_CZ[POCET_JAZYKOV + 1] =
 const char* text_OKT_21_SJ[POCET_JAZYKOV + 1] =
 {
 	"",
-	"Bl. Diega Luise de San Vitores, kněze, a sv. Petra Calungsoda, mučedníků",
+	"Bl. Diega Luise de San Vitores, kněze, " HTML_LINE_BREAK "a sv. Petra Calungsoda, mučedníků",
 	"",
 	"",
 	"",
-	"Bl. Diega Luise de San Vitores, kněze, a sv. Petra Calungsoda, mučedníků",
-	"Boldog de San Vitores Didák Alajos, áldozópap és Calungsod Péter, vértanúk", // HU SJ: 21OKT
+	"Bl. Diega Luise de San Vitores, kněze, " HTML_LINE_BREAK "a sv. Petra Calungsoda, mučedníků",
+	"Boldog de San Vitores Didák Alajos, áldozópap " HTML_LINE_BREAK "és Calungsod Péter, vértanúk", // HU SJ: 21OKT
 	"",
 	"",
 	"",
