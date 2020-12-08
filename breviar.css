@@ -78,17 +78,23 @@
 	font-weight: bold; 
 }
 
-.respons p.respR, .respons p.respV, .respons p.respO, .respons p.respF, p.respR, p.respV, p.respO, p.respF, .respR, .respV, .respO, .respF { 
+.respons p.respR, .respons p.respS, .respons p.respV, .respons p.respO, .respons p.respF, p.respR, p.respS, p.respV, p.respO, p.respF, .respR, .respS, .respV, .respO, .respF { 
 	font-weight: bold; 
 	margin: 0; 
 	-webkit-margin-after: 0em; 
 	-webkit-margin-before: 0em; 
 }
 
-/* for SK & LA, R/V is used; for CZ, O/V is used; for HU, V/F is used */
+/* for SK & LA, V/R is used; for CZ, V/O is used; for HU, V/F is used; for IS, V/S is used */
 .respons p.respR:before, .respR:before { 
 	color: #ff0000; 
 	content: 'R. '; 
+	font-weight: bold; 
+}
+
+.respons p.respS:before, .respS:before { 
+	color: #ff0000; 
+	content: 'S. '; 
 	font-weight: bold; 
 }
 
@@ -290,7 +296,7 @@ div.navm p {
 	padding-top: 0em;
 }
 
-.reading p.respR, .reading p.respV, .reading p.respO, .reading p.respF { 
+.reading p.respR, .reading p.respS, .reading p.respV, .reading p.respO, .reading p.respF { 
 	padding-left: 0em; 
 	text-indent: 0em; 
 }
@@ -301,7 +307,7 @@ div.navm p {
 	text-indent: 0em; 
 }
 
-.reading p.respR.comment, .reading p.respV.comment, .reading p.respO.comment , .reading p.respF.comment { 
+.reading p.respR.comment, .reading p.respS.comment, .reading p.respV.comment, .reading p.respO.comment , .reading p.respF.comment { 
 	font-weight: normal; 
 	padding-left: 0em !important;
 }

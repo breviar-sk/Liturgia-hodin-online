@@ -41,6 +41,10 @@
 	color: #FF3333;
 }
 
+.respons p.respS:before, .respS:before { 
+	color: #FF3333;
+}
+
 .respons p.respV:before, .respV:before { 
 	color: #FF3333;
 }
