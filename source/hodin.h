@@ -5320,7 +5320,7 @@ const char* text_JAN_03[POCET_JAZYKOV + 1] =
 const char* text_JAN_03_SJ[POCET_JAZYKOV + 1] =
 {
 	"Najsvätejšieho mena Ježiš",
-	"Nejsvětějšího jména Ježíš",
+	"Nejsvětějšího jména Ježíš" HTML_LINE_BREAK "(Titulární slavnost Tovaryšstva Ježíšova)",
 	"",
 	"Sanctissimi Nominis Iesu",
 	"",
@@ -13957,7 +13957,7 @@ const char* text_OKT_12_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_12_SJ[POCET_JAZYKOV + 1] =
 {
-	"Bl. Jána Beyzyma, kňaza a mučeníka",
+	"Bl. Jána Beyzyma, kňaza",
 	"Bl. Jana Beyzyma, kněze",
 	"",
 	"",
@@ -14042,12 +14042,12 @@ const char* text_OKT_14[POCET_JAZYKOV + 1] =
 const char* text_OKT_14_SJ[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána Ogilvieho, kňaza a mučeníka",
+	"Sv. Jana Ogilvie, kněze a mučedníka", // CZ: 10MAR
+	"",
+	"",
+	"",
 	"Sv. Jana Ogilvie, kněze a mučedníka",
-	"",
-	"",
-	"",
-	"",
-	"",
+	"Ogilvie Szent János áldozópap és vértanú",
 	"",
 	"",
 	"",
