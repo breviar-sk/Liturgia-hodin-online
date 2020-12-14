@@ -1548,7 +1548,7 @@ const char* html_text_tyzden_zaltara_cislo[POCET_JAZYKOV + 1] = {
 	"%d. zsoltáros hét",
 	"%d. ru_text",
 	"%d. by_text",
-	"%d. vika saltari",
+	"%d. vika saltara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -1590,7 +1590,7 @@ const char* html_text_v_tyzdni_zaltara[POCET_JAZYKOV + 1] = {
 	". zsoltáros hét",
 	"ru_text",
 	"by_text",
-	". vika saltari",
+	". vika saltara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
