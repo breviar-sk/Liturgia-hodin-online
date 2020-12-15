@@ -30,10 +30,10 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-  compileSdkVersion 28
+  compileSdkVersion 29
   
   defaultConfig {
-    targetSdkVersion 28
+    targetSdkVersion 29
     minSdkVersion 14
     ndk {
       // Tells Gradle to build outputs for the following ABIs and package

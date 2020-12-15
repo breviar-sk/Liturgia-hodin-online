@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="sk.breviar.android"
-      android:versionCode="107"
+      android:versionCode="108"
       android:versionName="4.3"
       android:installLocation="auto">
-    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="28"/>
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="29"/>
     <supports-screens android:xlargeScreens="true"/>
     <application android:label="@string/app_name"
                  android:name="sk.breviar.android.BreviarApp"
