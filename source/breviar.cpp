@@ -273,11 +273,6 @@ _struct_dm *_global_den_ptr;
 // globalne premenne, do ktorych sa ukladaju info o analyzovanom dni o sviatkoch svatych
 _struct_dm *(_global_svaty_ptr[MAX_POCET_SVATY]); // an array of '_struct_dm' pointers
 #define _global_svaty(i) (*(_global_svaty_ptr[i - 1]))
-#define _global_svaty1 (*_global_svaty_ptr[0])
-#define _global_svaty2 (*_global_svaty_ptr[1])
-#define _global_svaty3 (*_global_svaty_ptr[2])
-#define _global_svaty4 (*_global_svaty_ptr[3])
-#define _global_svaty5 (*_global_svaty_ptr[4])
 
 // globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu
 
@@ -3645,6 +3640,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			}
 			// pre miestne sviatky má zmysel pre MCD (nie pre kompletórium)
 			else {
+				// _global_poradie_svaty > 0
 				zobrazit &= ((_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM));
 				if (zobrazit == ANO) {
 					if ((_global_poradie_svaty > 0) && (_global_poradie_svaty < PORADIE_PM_SOBOTA)) {
@@ -6488,7 +6484,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 	if (_global_pocet_svatych > 0) {
 
 		// treba pamatat na to, ze v poste sa vsetky spomienky stavaju lubovolnymi (c. 14 vseob. smernic)
-		// 2012-03-21: doplnené: aj _global_svaty2/3 môže maž v sebe "spomienku" (miestnu), preto treba opraviť aj toto
+		// 2012-03-21: doplnené: aj _global_svaty(i) pre i > 1 môže maž v sebe "spomienku" (miestnu), preto treba opraviť aj toto
 		for (short int i = 0; i < MAX_POCET_SVATY; i++) {
 			if ((_global_den.litobd == OBD_POSTNE_I) && (_global_pocet_svatych > i) &&
 				(_global_svaty(i + 1).typslav == SLAV_SPOMIENKA)) {
@@ -6528,10 +6524,10 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 		// c. 12 v c. 59 vseob. smernic: "lubovolne spomienky, ktore sa mozu slavit aj v dnoch uvedenych pod c. 9 [...] tak isto v omsi a oficiu
 		// na sposob lubovolnych spomienok mozno slavit tie povinne spomienky, ktore obcas pripadnu na vsedne dni v poste." ...
 		// ... alebo c. 60: "ak na jeden den pripadnu viacere slavenia, uprednostni sa to, ktore ma v tabulke liturgickych dni vyssi stupen [t.j. .smer].
-		if (((_global_den.smer == 9) && (_global_svaty1.typslav == SLAV_LUB_SPOMIENKA)) || (podmienka_svaty_vedie == ANO)) {
+		if (((_global_den.smer == 9) && (_global_svaty(1).typslav == SLAV_LUB_SPOMIENKA)) || (podmienka_svaty_vedie == ANO)) {
 
 			_rozbor_dna_LOG("svaty ma prednost pred dnom (SVATY_VEDIE)\n");
-			_rozbor_dna_LOG("_global_den.smer == %d, _global_svaty1.smer == %d, _global_svaty1.prik == %d\n", _global_den.smer, _global_svaty1.smer, _global_svaty1.prik);
+			_rozbor_dna_LOG("_global_den.smer == %d, _global_svaty(1).smer == %d, _global_svaty(1).prik == %d\n", _global_den.smer, _global_svaty(1).smer, _global_svaty(1).prik);
 
 			_rozbor_dna_LOG("modlitba == %d (%s)...\n", _global_modlitba, nazov_modlitby(_global_modlitba));
 			if ((_global_modlitba != MODL_NEURCENA) &&
@@ -6540,8 +6536,8 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 					((poradie_svaty == UNKNOWN_PORADIE_SVATEHO)
 						// a je to alebo slávnosť, alebo sviatok Pána v Cezročnom období, ktorý padne na nedeľu (2013-02-03: opravené) -- napr. kvôli Obetovaniu Pána 2.2.2003/2014, prvé vešpery
 						&& (
-						(_global_svaty1.smer < 5) ||
-							((_global_svaty1.smer == 5) && (_global_den.denvt == DEN_NEDELA) && ((_global_den.litobd == OBD_CEZ_ROK) || je_vianocne(_global_den.litobd)))
+						(_global_svaty(1).smer < 5) ||
+							((_global_svaty(1).smer == 5) && (_global_den.denvt == DEN_NEDELA) && ((_global_den.litobd == OBD_CEZ_ROK) || je_vianocne(_global_den.litobd)))
 							)
 						// a neplatí, že ide o MIESTNE_SLAVENIE_LOKAL_SVATY(i): nesmie prebiť všedný deň resp. nemá prebíjať "globálne" slávenie v danom kalendári
 						&& !MIESTNE_SLAVENIE_LOKAL_SVATY(1)
@@ -6771,9 +6767,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		// odvetvené kvôli tým prípadom, keď na nedeľu padne sviatok pána, ale používa sa poradie_svaty == UNKNOWN_PORADIE_SVATEHO == 0 
 		// časť prevzatá z: liturgicke_obdobie(), začiatok funkcie; hoci tu sa použije len pre smer == 5 (sviatky pána); slávnosti sa riešia samostatne
 		Log("_global_den.smer == %d\n", _global_den.smer);
-		Log("_global_svaty1.smer == %d\n", _global_svaty1.smer);
+		Log("_global_svaty(1).smer == %d\n", _global_svaty(1).smer);
 		// presunuté do #define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR | sviatky Pána a svätých, ktoré majú prednosť pred Cezročnou nedeľou a majú (ak padnú na nedeľu) svoje vlastné prvé vešpery
-		if ((_global_svaty1.smer == 5) && (PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR)) {
+		if ((_global_svaty(1).smer == 5) && (PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR)) {
 			// do _local_den priradim dane slavenie
 			_local_den = _global_svaty(1);
 #ifdef LITURGICKE_CITANIA_ANDROID
@@ -6805,13 +6801,13 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	// spomienka panny márie v sobotu
 	// este spomienka panny marie v sobotu, cl. 15
 	// pridané posv. čítania a upravené; keďže smer == 11 používame pre lokálne povinné spomienky, upravili sme kontrolu z 12 na 11
-	// porovnávame klasicky, resp. špeciálne pre body 4, 8, 11 [Miestne slávnosti, Miestne sviatky, Miestne povinné spomienky] pred touto úpravou tu bola kontrola (_global_svaty1.smer >= 11)
+	// porovnávame klasicky, resp. špeciálne pre body 4, 8, 11 [Miestne slávnosti, Miestne sviatky, Miestne povinné spomienky] pred touto úpravou tu bola kontrola (_global_svaty(1).smer >= 11)
 	// MIESTNE_SLAVENIE_LOKAL_SVATY(i) použité pre lokálne slávenia, aby sa zjednodušila podmienka
 	if ((_global_den.litobd == OBD_CEZ_ROK) &&
 		(_global_den.denvt == DEN_SOBOTA) &&
 		(
 		((_global_den.smer >= 11) && (_global_pocet_svatych == 0)) ||
-			(((_global_svaty1.smer >= 12) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (_global_pocet_svatych > 0))) &&
+			(((_global_svaty(1).smer >= 12) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (_global_pocet_svatych > 0))) &&
 			(poradie_svateho == PORADIE_PM_SOBOTA)) {
 		// teraz do _global_den priradim dane slavenie
 		_local_den = _global_pm_sobota;
@@ -11832,7 +11828,7 @@ void _export_rozbor_dna_zoznam(short int typ) {
 		// ... alebo c. 60: "ak na jeden den pripadnu viacere slavenia, uprednostni sa to, ktore ma v tabulke liturgickych dni vyssi stupen [t.j. .smer].
 
 		// 2006-12-07: slávnosti svätých (k fixným dátumom: napr. 8.12., 29.6., 5.7., 15.8.), ktoré nepripadnú na nedeľu, neboli správne zobrazované
-		// 2010-07-28: doplnené alternatívne porovnanie aj s _global_svaty2.smer (kvôli dominikánskej slávnosti 8.8.)
+		// 2010-07-28: doplnené alternatívne porovnanie aj s _global_svaty(2).smer (kvôli dominikánskej slávnosti 8.8.)
 		// 2010-10-06: upravené; nesmie ísť o lokálnu slávnosť (smer == 4) lebo nemá prebíjať "globálnu" v danom kalendári [napr. czop pre 22.10.]
 		// 2011-02-02: zadefinované MIESTNE_SLAVENIE_CZOP_SVATY(i), aby sa zjednodušila podmienka (platí len pre CZOP)
 		// 2011-03-07: MIESTNE_SLAVENIE_CZOP_SVATY(i) použité aj pre iné lokálne slávenia ako MIESTNE_SLAVENIE_LOKAL_SVATY(i)
@@ -11861,26 +11857,26 @@ void _export_rozbor_dna_zoznam(short int typ) {
 	else if (_global_pocet_svatych > 0) {
 		Log("NIE nedele a prikázané sviatky; _global_pocet_svatych (%d) > 0...\n", _global_pocet_svatych);
 		// sviatky (spomienky, ls) svatych
-		// 2010-07-28: doplnené alternatívne porovnanie aj s _global_svaty2.smer (kvôli dominikánskej slávnosti 8.8.)
+		// 2010-07-28: doplnené alternatívne porovnanie aj s _global_svaty(2).smer (kvôli dominikánskej slávnosti 8.8.)
 		// 2014-03-22: v skutočnosti môže byť podmienka_svaty_vedie_pom == ANO, a pritom podmienka_svaty_vedie == NIE
 		if ((podmienka_svaty_vedie_pom == ANO) ||
-			((_global_den.smer == 9) && (_global_svaty1.smer == 12))) {
+			((_global_den.smer == 9) && (_global_svaty(1).smer == 12))) {
 			Log("svätý má prednosť...\n");
 			// svaty
 			// 2009-01-05: Vlado K. ma upozornil, že ak je smer svätý == 12, ale deň je 9 (bod 59. smerníc o LH a kalendári, č. 12), bolo by lepšie ponúknuť najprv deň a až potom ostatné slávenia 
 			// 2010-05-21: Rastislav Hamráček SDB <rastohamracek@sdb.sk> upozornil defacto na to isté ako Vlado: aby to bolo podľa direktória
 			// ----------------------------------------------------------------------------
 			// 2005-08-22: pôvodne sa tu porovnávalo s 12, ale aj pre 11 (lokálne slávenia) by mal systém ponúknuť všedný deň - keď je to napr. v inej diecéze
-			// 2009-11-26: porovnávame klasicky, resp. špeciálne pre body 4, 8, 11 [Miestne slávnosti, Miestne sviatky, Miestne povinné spomienky] pred touto úpravou tu bolo: if((_global_svaty1.smer >= 11) && atď.
+			// 2009-11-26: porovnávame klasicky, resp. špeciálne pre body 4, 8, 11 [Miestne slávnosti, Miestne sviatky, Miestne povinné spomienky] pred touto úpravou tu bolo: if((_global_svaty(1).smer >= 11) && atď.
 			// 2010-05-21: sem presunuté potenciálne vypisovanie (export) všedného dňa pred prvého svätca, ak je ľubovoľná spomienka teraz vlastne obe vetvy vyzerajú rovnako, asi to zjednotím časom...
-			// 2010-05-24: zjednotené; bolo odvetvené "if(_global_den.smer > _global_svaty1.smer)"; 
+			// 2010-05-24: zjednotené; bolo odvetvené "if(_global_den.smer > _global_svaty(1).smer)"; 
 			//             else vetva mala napísané: "ľubovoľná spomienka svätého/svätých, pričom všedný deň má vyššiu prioritu slávenia"
 			//             a ešte: "2010-05-21: odtiaľto presunuté potenciálne vypisovanie (export) všedného dňa pred prvého svätca, ak je ľubovoľná spomienka"
 			// 2011-02-02: zadefinované MIESTNE_SLAVENIE_CZOP_SVATY(i), aby sa zjednodušila podmienka (platí len pre CZOP)
 			// 2011-03-07: MIESTNE_SLAVENIE_CZOP_SVATY(i) použité aj pre iné lokálne slávenia ako MIESTNE_SLAVENIE_LOKAL_SVATY(i)
 			// 2012-08-21: cdoplnená premenná (kvôli tomu, či sa majú pre svätca 1 zobraziť buttons modlitba cez deň)
 			aj_feria = NIE;
-			if (((_global_svaty1.smer >= 12) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (typ != EXPORT_DNA_VIAC_DNI)) {
+			if (((_global_svaty(1).smer >= 12) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (typ != EXPORT_DNA_VIAC_DNI)) {
 				Log("nastavujem: aj féria...\n");
 				// ak je to iba lubovolna spomienka, tak vsedny den
 				aj_feria = ANO;
@@ -11938,7 +11934,7 @@ void _export_rozbor_dna_zoznam(short int typ) {
 
 	Log("počet == %d (pred kontrolou PM v sobotu; POCET_ZOZNAM == %d)\n", pocet, POCET_ZOZNAM);
 
-	// Log("PM v sobotu: _global_den.smer == %d, _global_pocet_svatych == %d, _global_svaty1.smer == %d, _global_svaty1.spolcast == %d, \n", _global_den.smer, _global_pocet_svatych, _global_svaty1.smer, _global_svaty1.spolcast);
+	// Log("PM v sobotu: _global_den.smer == %d, _global_pocet_svatych == %d, _global_svaty(1).smer == %d, _global_svaty(1).spolcast == %d, \n", _global_den.smer, _global_pocet_svatych, _global_svaty(1).smer, _global_svaty(1).spolcast);
 
 	// este spomienka panny marie v sobotu, cl. 15 (nemôže byť ani vtedy, ak je iná ľubovoľná spomienka PM; napr. 16JUL, 12SEP)
 	if ((PODMIENKA_MOZE_BYT_SPOMIENKA_PM_V_SOBOTU) && (typ != EXPORT_DNA_VIAC_DNI)) {
@@ -12095,11 +12091,9 @@ void _exportXmlDay2() {
 
 void _export_rozbor_dna(short int typ) {
 	// treba brat do uvahy:
-	// 1. ked ma sviatok prioritu, tak ide on (ulozeny v _global_den, ak pocet_svatych == 0; resp. v _global_svaty1, ak pocet_svatych > 0;)
+	// 1. ked ma sviatok prioritu, tak ide on (ulozeny v _global_den, ak pocet_svatych == 0; resp. v _global_svaty(1), ak pocet_svatych > 0;)
 	// 2. ked su lubovolne spomienky, su ulozene v premennych
-	//    _global_svaty1 (_global_pocet_svatych == 1),
-	//    _global_svaty2 (_global_pocet_svatych == 2),
-	//    _global_svaty3 (_global_pocet_svatych == 3),
+	//    _global_svaty(i), i > 0
 	//    naviac treba napisat _global_den (ako vsedny den)
 	// 3. ak ide o sobotu v OBD_CEZ_ROK, treba ponuknut moznost _global_pm_sobota (spomienka panny marie v sobotu)
 	short int i;
@@ -12327,8 +12321,8 @@ void _export_rozbor_dna_batch(short int typ, short int modlitba = MODL_NEURCENA,
 	// poznamky bez uvedenia datumu su prevzate z _export_rozbor_dna; 2003-07-07
 
 	// treba brat do uvahy:
-	// 1. ked ma sviatok prioritu, tak ide on (ulozeny v _global_den, ak pocet_svatych == 0; resp. v _global_svaty1, ak pocet_svatych > 0;)
-	// 2. ked su lubovolne spomienky, su ulozene v premennych _global_svaty1 (_global_pocet_svatych == 1), _global_svaty2 (_global_pocet_svatych == 2), _global_svaty3 (_global_pocet_svatych == 3),
+	// 1. ked ma sviatok prioritu, tak ide on (ulozeny v _global_den, ak pocet_svatych == 0; resp. v _global_svaty(1), ak pocet_svatych > 0;)
+	// 2. ked su lubovolne spomienky, su ulozene v premennych _global_svaty(i) (i > 0 && i <= _global_pocet_svatych),
 	//    naviac treba napisat _global_den (ako vsedny den)
 	// 3. ak ide o sobotu v OBD_CEZ_ROK, treba ponuknut moznost _global_pm_sobota (spomienka panny marie v sobotu)
 	// 4. ak ide o ľubovoľné spomienky, odkaz na modlitbu cez deň má byť pre všedný deň (== 0) [2014-10-03, Laci Dvornik]

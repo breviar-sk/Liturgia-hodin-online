@@ -9126,7 +9126,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	// v ďalších častiach 'else' platí, že poradie_svateho == 0 (UNKNOWN_PORADIE_SVATEHO)
 	// ak poradie_svateho bolo UNKNOWN_PORADIE_SVATEHO, znamená to, že sa chcelo volanie možno pre nasledovný deň; problém sv. Jozefa - antifóny pre kompletórium nastavené pri prvom spustení volania "sviatky svätých" prekrylo nastavenie z liturgického obdobia...
 	else if ((poradie_svateho == UNKNOWN_PORADIE_SVATEHO) && (_global_pocet_svatych > 0)
-		&& (_global_den.smer >= _global_svaty1.smer) && (_je_global_svaty_i_slavnost(1))
+		&& (_global_den.smer >= _global_svaty(1).smer) && (_je_global_svaty_i_slavnost(1))
 		// a neplatí, že ide o lokálnu slávnosť: tá nesmie prebiť všedný deň
 		// 2010-10-06: upravené; nesmie ísť o lokálnu slávnosť (smer == 4) lebo nemá prebíjať "globálnu" v danom kalendári [napr. czop pre 22.10.]
 		// 2011-02-02: zadefinované MIESTNE_SLAVENIE_CZOP_SVATY(i), aby sa zjednodušila podmienka (platí len pre CZOP)
@@ -9136,9 +9136,9 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 		Log("poradie_svateho == UNKNOWN_PORADIE_SVATEHO...\n");
 		Log("_global_pocet_svatych == %d\n", _global_pocet_svatych);
 		Log("_global_den.smer == %d\n", _global_den.smer);
-		Log("_global_svaty1.smer == %d\n", _global_svaty1.smer);
+		Log("_global_svaty(1).smer == %d\n", _global_svaty(1).smer);
 		// do _local_den priradim dane slavenie
-		_local_den = _global_svaty1;
+		_local_den = _global_svaty(1);
 		poradie_svateho = 1;
 		Log("spustam druhykrat sviatky_svatych(), tentokrat pre %d. svateho\n", poradie_svateho);
 		sviatky_svatych(_local_den.den, _local_den.mesiac, poradie_svateho, 2 /* druhýkrát */);
@@ -9254,7 +9254,7 @@ short int modlitba;
 
 /* sviatky_svatych();
  *
- * nastavi do _global_svaty1 nasledovne udaje:
+ * nastavi do _global_svaty(1) nasledovne udaje:
  *
  *	   typslav;    // typ slavenia (1--5): SLAV_...
  *     smer;       // poradove cislo z c.59 Vseobecnych smernic
@@ -10778,7 +10778,7 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	// tento POPIS nie je dobre nastaveny pre spomienku
 	// "Nepoškvrneného Srdca prebl. Panny Márie" -> "Nepoškvrneného Srdca Panny Márie", preto je tam nastaveny este raz na dummy, vid ZNOVUNASTAVENIE_POPISU_NA_DUMMY
 
-	// pokusne aj _global_svaty1.typslav
+	// pokusne aj _global_svaty(1).typslav
 	if (_je_global_den_slavnost || (_je_global_svaty_i_slavnost(1))) {
 		Log("	teraz nastavujem žalmy pre modlitbu cez deň slávností...\n");
 		if (_global_den.denvt != DEN_NEDELA) {

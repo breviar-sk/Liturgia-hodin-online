@@ -74,11 +74,6 @@ extern _struct_dm *_global_den_ptr;
 // globalne premenne, do ktorych sa ukladaju info o analyzovanom dni o sviatkoch svatych
 extern _struct_dm *(_global_svaty_ptr[MAX_POCET_SVATY]); // an array of '_struct_dm' pointers
 #define _global_svaty(i) (*(_global_svaty_ptr[i - 1]))
-#define _global_svaty1 (*_global_svaty_ptr[0])
-#define _global_svaty2 (*_global_svaty_ptr[1])
-#define _global_svaty3 (*_global_svaty_ptr[2])
-#define _global_svaty4 (*_global_svaty_ptr[3])
-#define _global_svaty5 (*_global_svaty_ptr[4])
 
 // globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu
 extern _struct_dm *_global_pm_sobota_ptr;
@@ -346,7 +341,7 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 	(je_spomienka_PM_v_sobotu) && \
 	( \
 		((_global_den.smer >= 11) && (_global_pocet_svatych == 0)) || \
-		((((_global_svaty1.smer >= 12) && (_decode_spol_cast(_global_svaty1.spolcast).a1 != MODL_SPOL_CAST_PANNA_MARIA)) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (_global_pocet_svatych > 0)) \
+		((((_global_svaty(1).smer >= 12) && (_decode_spol_cast(_global_svaty(1).spolcast).a1 != MODL_SPOL_CAST_PANNA_MARIA)) || MIESTNE_SLAVENIE_LOKAL_SVATY(1)) && (_global_pocet_svatych > 0)) \
 	) \
 )
 
