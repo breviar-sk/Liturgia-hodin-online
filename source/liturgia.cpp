@@ -1,7 +1,7 @@
 /************************************************************/
 /*                                                          */
 /* liturgia.cpp                                             */
-/* (c)1999-2020 | Juraj Vidéky | videky@breviar.sk          */
+/* (c)1999-2021 | Juraj Vidéky | videky@breviar.sk          */
 /*                                                          */
 /* description | basic 'liturgical' methods for calendar,   */
 /*               working with dates and strings             */
