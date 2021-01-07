@@ -6220,8 +6220,9 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_vian1_kresponz;
 				_vian1_2ne_modlitba;
 
-				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				modlitba = MODL_POSV_CITANIE;
+				_vian1_2ne_modlitba;
+				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
 				_set_chvalospev_vig_vian(modlitba);
 				_liturgicke_obdobie_set_vig_ev(modlitba);
