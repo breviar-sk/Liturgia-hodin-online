@@ -1244,7 +1244,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 				}
 				else {
 					_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
-					_vlastna_cast_modlitba_ina; // Alebo ako na ranné chvály.
+					// _vlastna_cast_modlitba_ina; // Alebo ako na ranné chvály.
 				}
 
 				break;
