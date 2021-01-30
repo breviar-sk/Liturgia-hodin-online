@@ -6888,10 +6888,10 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		(_local_den.prik == PRIKAZANY_SVIATOK)) {
 		// prikazane sviatky a nedele
 		farba = COLOR_RED;
-		Log("ano\n");
+		Log("COLOR_RED: ano\n");
 	}
 	else {
-		Log("nie\n");
+		Log("COLOR_RED: nie\n");
 	}
 
 	// najprv názov; ak ide o ľubovoľnú spomienku na blahoslaveného (napr. SK OP), zobrazí sa názov kurzívou
@@ -7509,6 +7509,10 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			strcat(_global_string_farba, pom);
 		}// else (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT)
 	}// export farby
+	else {
+		Log("export_farby is false.\n");
+	}
+
 	Log("  -- _global_string_farba == %s\n", _global_string_farba);
 
 	Log("-- init_global_string(EXPORT_DNA_%d, %d, %s, %d) -- returning SUCCESS\n", typ, poradie_svateho, nazov_modlitby(modlitba), aj_citanie);
@@ -12718,6 +12722,8 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 	short int _local_spol_cast = MODL_SPOL_CAST_NEURCENA;
 	short int _local_opt_3_spol_cast = MODL_SPOL_CAST_NEURCENA;
 
+	short int label_zmena_vynimky = NIE; // špeciálne výnimky, kedy sa tiež berie pre vešpery modlitba z nasledujúceho dňa; pozri časť VYNIMKY
+
 	Log("Allocating memory...\n");
 	// _local_modl_prve_vespery_ptr
 	if ((_local_modl_prve_vespery_ptr = (_type_1vespery*)malloc(sizeof(_type_1vespery))) == NULL) {
@@ -12905,15 +12911,21 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 		// Log("(3) _global_modl_prve_vespery obsahuje:\n"); Log(_global_modl_prve_vespery);
 		// Log("(3) _global_modl_prve_kompletorium obsahuje:\n"); Log(_global_modl_prve_kompletorium);
 
-		// if VYNIMKY: porov. nizsie. 14/03/2000A.D.
-		if ((_global_den.smer > _local_den.smer) ||
-			((_global_den.smer == _local_den.smer) &&
-			(
-				((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) && (_global_den.denvt == DEN_SOBOTA)) || // 2. velkonocna nedela
-				((_local_den.mesiac - 1 == MES_DEC) && (_local_den.den == 25)) // ked narodenie pana pripadne na pondelok, tak prve vespery maju prednost pred 4. adventnou nedelou; napr. rok 2000
-				)
-				)
+		// časť: nastavenie VYNIMKY
+		if (
+			((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) && (_global_den.denvt == DEN_SOBOTA)) // 2. velkonocna nedela
+			|| ((_local_den.mesiac - 1 == MES_DEC) && (_local_den.den == 25)) // ked narodenie pana pripadne na pondelok, tak prve vespery maju prednost pred 4. adventnou nedelou; napr. rok 2000
+			|| ((_local_den.denvr == SRDCA) && (_local_den.mesiac - 1 == MES_JUN) && (_local_den.den == 24)) // keď Najsv. Srdca Ježišovho padne na 24. júna, napr. rok 2022, tak prvé vešpery nasledujúceho dňa (Najsv. Srdca Ježišovho) majú prednosť pred druhými vešperami slávnosti sv. Jána Krstiteľa, ktorá sa špeciálne preložila na 23.6.
+			|| ((_local_den.denvr == SRDCA) && (_local_den.mesiac - 1 == MES_JUN) && (_local_den.den == 29)) // analogicky, keď Najsv. Srdca Ježišovho padne na 29. júna, napr. rok 2057, tak prvé vešpery nasledujúceho dňa (Najsv. Srdca Ježišovho) majú prednosť pred druhými vešperami slávnosti sv. Petra a Pavla, ktorá sa zrejme špeciálne bude prekladať na 28.6.
 			) {
+			Log("VYNIMKY...\n");
+			label_zmena_vynimky = ANO;
+		}
+
+		// časť: test VYNIMKY
+		if ((_global_den.smer > _local_den.smer) ||
+			((_global_den.smer == _local_den.smer) && (label_zmena_vynimky == ANO))
+		) {
 			Log("jumping to LABEL_ZMENA...\n");
 			goto LABEL_ZMENA;
 		}
@@ -12974,18 +12986,17 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 			) {
 			Log("LABEL_ZMENA:...\n");
 			// č. 61: ak na ten isty den pripadnu vespery bezneho dna a prve vespery nasledujuceho dna, maju prednost vespery slavenia,
-			// ktore ma v tabulke liturgickych dni vyssi stupen. v pripade rovnosti sa beru vespery bezneho dna.
-			// tento if je kopirovany z vyssieho, VYNIMKY
-			if (
-				(_global_den.smer > _local_den.smer)
-				|| ((_global_den.smer == _local_den.smer)
-					&& (
-					((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) && (_global_den.denvt == DEN_SOBOTA)) ||// 2. velkonocna nedela, pridane 09/03/2000A.D.
-						((_local_den.mesiac - 1 == MES_DEC) && (_local_den.den == 25)) // ked narodenie pana pripadne na pondelok, tak prve vespery maju prednost pred 4. adventnou nedelou; napr. rok 2000, pridane 14/03/2000A.D.
-						)
-					)
-				) {
-				Log("čl. 61 VSLH: beriem vešpery z nasledujúceho dňa...\n");
+			// ktore ma v tabulke liturgickych dni vyssi stupen. v pripade rovnosti sa beru vespery bezneho dna. sú tu špeciálne výnimky
+			// časť: test VYNIMKY
+			if ((_global_den.smer > _local_den.smer)
+				|| ((_global_den.smer == _local_den.smer) && (label_zmena_vynimky == ANO))
+			) {
+				if ((_global_den.smer == _local_den.smer) && (label_zmena_vynimky == ANO)) {
+					Log("slávenia síce majú rovnaký stupeň, ale ide o špeciálne výnimky... see: VYNIMKY\n");
+				}
+				else {
+					Log("čl. 61 VSLH: beriem vešpery z nasledujúceho dňa...\n");
+				}
 
 				short int d, m, r;
 				d = _global_den.den;

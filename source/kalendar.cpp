@@ -12212,6 +12212,8 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	short int pom_poradie = 1;
 
+	short int presunutie_slavnosti = NIE; // kvôli presúvaniam slávností 24.6. a 29.6. o deň prv; vtedy nemajú svoje druhé vešpery
+
 	Log("mesiac jún\n");
 	switch (den) {
 
@@ -14099,6 +14101,16 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	case 23: // MES_JUN -- 23JUN
 
+		if (/* (_global_den.denvt == DEN_STVRTOK) && */(_global_den.denvr == SRDCA - 1)) {
+			// t.j. slávnosť sv. Jána Krstiteľa padla na piatok, kedy je slávnosť Najsv. Srdca Ježišovho -- preto sa prekladá na predošlý deň (t. j. štvrtok 23.6.)
+			sprintf(_anchor_head, "%02d%s_", den + 1, nazov_MES[MES_JUN]);
+			Log("  _anchor_head == %s\n", _anchor_head);
+			Log("jumping to label_24_JUN...\n");
+			presunutie_slavnosti = ANO;
+			goto label_24_JUN;
+		}
+		break;
+
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))) {
 			if (poradie_svaty == 1) {
 
@@ -14167,6 +14179,8 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	case 24: // MES_JUN -- 24JUN
 
+	label_24_JUN:
+
 		if ((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) || (poradie_svaty == 1)) {
 			// definovanie parametrov pre modlitbu
 			if ((poradie_svaty == 1) &&
@@ -14204,12 +14218,15 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
-			modlitba = MODL_VESPERY;
-			_vlastna_cast_full(modlitba);
-			_set_zalmy_sviatok_sv_muzov(modlitba);
+			if (presunutie_slavnosti != ANO) {
+				// pre 23.6.2022 (na ktorý sa presúva slávnosť sv. Jána Krstiteľa) sa majú sláviť prvé vešpery Najsv. Srdca Ježišovho
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_full(modlitba);
+				_set_zalmy_sviatok_sv_muzov(modlitba);
 
-			modlitba = MODL_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba);
+				modlitba = MODL_KOMPLETORIUM;
+				_set_kompletorium_slavnost(modlitba);
+			}
 
 			if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
 				break;
@@ -14523,6 +14540,16 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	case 28: // MES_JUN -- 28JUN
 
+		if (/* (_global_den.denvt == DEN_STVRTOK) && */(_global_den.denvr == SRDCA - 1)) {
+			// t.j. slávnosť sv. Petra a Pavla padla na piatok, kedy je slávnosť Najsv. Srdca Ježišovho -- preto sa (analogicky k 23JUN, 2022-06-23) prekladá na predošlý deň (t. j. štvrtok 28.6.)
+			sprintf(_anchor_head, "%02d%s_", den + 1, nazov_MES[MES_JUN]);
+			Log("  _anchor_head == %s\n", _anchor_head);
+			Log("jumping to label_29_JUN...\n");
+			presunutie_slavnosti = ANO;
+			goto label_29_JUN;
+		}
+		break;
+
 		if (poradie_svaty == 1) {
 			// definovanie parametrov pre modlitbu
 			if (query_type != PRM_DETAILY)
@@ -14549,6 +14576,8 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 		break;
 
 	case 29: // MES_JUN -- 29JUN
+
+	label_29_JUN:
 
 		if ((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) || (poradie_svaty == 1)) {
 
@@ -14595,16 +14624,19 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
-			modlitba = MODL_VESPERY;
-			_vlastna_cast_full(modlitba);
-			_set_zalmy_sviatok_apostolov(modlitba);
+			if (presunutie_slavnosti != ANO) {
+				// pre 28.6.2057 (na ktorý sa presúva slávnosť sv. Petra a Pavla) sa majú sláviť prvé vešpery Najsv. Srdca Ježišovho
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_full(modlitba);
+				_set_zalmy_sviatok_apostolov(modlitba);
 
-			modlitba = MODL_KOMPLETORIUM;
-			if (den != DEN_NEDELA) {
-				_set_kompletorium_slavnost(modlitba);
-			}
-			else {
-				_set_kompletorium_nedela(modlitba);
+				modlitba = MODL_KOMPLETORIUM;
+				if (den != DEN_NEDELA) {
+					_set_kompletorium_slavnost(modlitba);
+				}
+				else {
+					_set_kompletorium_nedela(modlitba);
+				}
 			}
 
 			if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
@@ -28020,11 +28052,11 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 	case 3: // MES_NOV -- 03NOV
 
-	label_03NOV :
+	label_03_NOV :
 
 		if (((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP))) {
-			// alebo keď je v tento deň prekážka, tak najbližší voľný deň (vyriešené cez label_03NOV)
+			// alebo keď je v tento deň prekážka, tak najbližší voľný deň (vyriešené cez label_03_NOV)
 			if (poradie_svaty == 1) {
 
 				sprintf(_anchor_head, "%02d%s_", 2, nazov_MES[mesiac]); // MES_NOV // 2. čítanie: 02NOV (použité natvrdo kvôli prípadnému prekladaniu na 05NOV)
@@ -28256,8 +28288,8 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			// t.j. Vzpomínka na všechny zemřelé serafínského řádu padla na nedeľu; pondelok 04NOV je památka Karla Boromejského, a to byl kardinál-protektor řádu
 			sprintf(_anchor_head, "%02d%s_", den - 2, nazov_MES[mesiac]); // MES_NOV
 			Log("  _anchor_head == %s\n", _anchor_head);
-			Log("jumping to label_03NOV...\n");
-			goto label_03NOV;
+			Log("jumping to label_03_NOV...\n");
+			goto label_03_NOV;
 		}// kalendár pre KALENDAR_CZ_OFM, KALENDAR_CZ_OFMCAP
 
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SJ))
