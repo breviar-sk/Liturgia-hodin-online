@@ -11218,15 +11218,15 @@ const char* text_JUL_28_OCD[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_29[POCET_JAZYKOV + 1] =
 {
-	"Sv. Marty",
-	"Sv. Marty",
+	"Sv. Marty, Márie a Lazára",
+	"Sv. Marty, Marie a Lazara",
 	"",
-	"S. Marthæ",
+	"S. Marthæ, Mariæ et Lazari",
 	"",
-	"Sv. Marty",
-	"Szent Márta",
+	"Sv. Marty, Marie a Lazara",
+	"Szent Márta, Mária és Lazár",
 	"ru_text",
-	"Св. Марты",
+	"Св. Марты", // ToDo
 	"is_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -13665,15 +13665,15 @@ const char* text_OKT_05_HU[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_OKT_05_SK[POCET_JAZYKOV + 1] =
+const char* text_OKT_05[POCET_JAZYKOV + 1] =
 {
 	"Sv. Faustíny Kowalskej, panny",
-	"",
+	"Sv. Faustiny Kowalské, panny",
 	"",
 	"S. Faustinæ Kowalska, virginis",
 	"",
-	"",
-	"",
+	"Sv. Faustiny Kowalské, panny",
+	"Kowalska Szent Fausztina szűz",
 	"",
 	"",
 	"",
