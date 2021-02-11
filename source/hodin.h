@@ -6836,6 +6836,20 @@ const char* text_FEB_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_FEB_27[POCET_JAZYKOV + 1] =
+{
+	"Sv. Gregora z Nareku, opáta a učiteľa Cirkvi",
+	"Sv. Řehoře z Nareku, opata a učitele církve",
+	"",
+	"S. Gregorii Narecensis, abbatis et Ecclesiæ doctoris",
+	"",
+	"Sv. Řehoře z Nareku, opata a učitele církve",
+	"Naregi Szent Gergely apát és egyháztanító",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 
 // --------------- 00 pohyblivé slávenia ---------------
 
@@ -8047,6 +8061,20 @@ const char* text_MAJ_10_OP[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Antonína Florentského, biskupa",
 	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_10[POCET_JAZYKOV + 1] =
+{
+	"Sv. Jána z Avily, kňaza a učiteľa Cirkvi",
+	"Sv. Jana z Avily, kněze a učitele církve",
+	"",
+	"S. Ioannis De Avila, presbyteri et Ecclesiæ doctoris",
+	"",
+	"Sv. Jana z Avily, kněze a učitele církve",
+	"Avilai Szent János áldozópap és egyháztanító",
 	"",
 	"",
 	"",
@@ -11221,7 +11249,7 @@ const char* text_JUL_29[POCET_JAZYKOV + 1] =
 	"Sv. Marty, Márie a Lazára",
 	"Sv. Marty, Marie a Lazara",
 	"",
-	"S. Marthæ, Mariæ et Lazari",
+	"Ss. Marthæ, Mariæ et Lazari",
 	"",
 	"Sv. Marty, Marie a Lazara",
 	"Szent Márta, Mária és Lazár",
@@ -13004,6 +13032,20 @@ const char* text_SEP_17[POCET_JAZYKOV + 1] =
 	"is_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_SEP_17_2[POCET_JAZYKOV + 1] =
+{
+	"Sv. Hildegardy z Bingenu, panny a učiteľky Cirkvi",
+	"Sv. Hildegardy z Bingen, panny a učitelky církve",
+	"",
+	"S. Hildegardis Bingensis, virginis et Ecclesiæ doctoris",
+	"",
+	"Sv. Hildegardy z Bingen, panny a učitelky církve",
+	"Bingeni Szent Hildegárd szűz és egyháztanító",
+	"ru_text",
+	"",
+	"is_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_SEP_17_SJ[POCET_JAZYKOV + 1] =
 {
 	"Sv. Róberta Bellarmina, biskupa a učiteľa Cirkvi",
@@ -13516,7 +13558,7 @@ const char* text_OKT_01[POCET_JAZYKOV + 1] =
 	"Sv. Terézie od Dieťaťa Ježiša (z Lisieux), " HTML_LINE_BREAK "panny a učiteľky Cirkvi", // kedysi: "Sv. Terézie z Lisieux, panny a učiteľky Cirkvi"
 	"Sv. Terezie od Dítěte Ježíše, panny a učitelky církve",
 	"",
-	"S. Teresiæ a Iesu Infante, virginis et doctoris Ecclesiæ",
+	"S. Teresiæ a Iesu Infante, virginis et Ecclesiæ doctoris",
 	"",
 	"Sv. Terezie od Dítěte Ježíše, panny a učitelky církve",
 	"A Gyermek Jézusról nevezett (Lisieux-i) Szent Teréz szűz és egyháztanító",
