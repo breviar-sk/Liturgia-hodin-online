@@ -5519,7 +5519,7 @@ const char* text_JAN_10_1_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_JAN_10_2_OP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Anny Monteagudovej, panny",
+	"Bl. Anny od Anjelov Monteagudovej, panny",
 	"Bl. Anny od Andělů Monteagudové, panny, mnišky",
 	"",
 	"",
@@ -5638,20 +5638,6 @@ const char* text_JAN_15_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Remete Szent Pál szerzetes",
-	"",
-	"",
-	"",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-const char* text_JAN_15_OP[POCET_JAZYKOV + 1] =
-{
-	"Sv. Františka Fernándeza de Capillas, kňaza, " HTML_LINE_BREAK "sv. Petra Sansa, biskupa, a spoločníkov, mučeníkov",
-	"",
-	"",
-	"",
-	"",
-	"Sv. Františka Fernándeze de Capillas, kněze, " HTML_LINE_BREAK "Petra Sanse, biskupa, a druhů, čínských mučedníků",
-	"",
 	"",
 	"",
 	"",
@@ -8950,7 +8936,7 @@ const char* text_MAJ_30_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_30_CZ[POCET_JAZYKOV + 1] =
 {
-	"Sv. Zdislavy, matky rodiny", // SK OP
+	"Sv. Zdislavy z Lemberka, matky rodiny", // všeobecný OP kalendár: 04JAN (prekladanie v CZ)
 	"Sv. Zdislavy",
 	"",
 	"",
@@ -10558,7 +10544,7 @@ const char* text_JUL_09_OSU[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUL_09_OP[POCET_JAZYKOV + 1] =
+const char* text_JUL_09_1_OP[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána Kolínskeho, kňaza, a spoločníkov, mučeníkov",
 	"",
@@ -10566,6 +10552,20 @@ const char* text_JUL_09_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Jana Kolínského, kněze, a druhů, mučedníků",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_JUL_09_2_OP[POCET_JAZYKOV + 1] =
+{
+	"Sv. Františka Fernándeza de Capillas, kňaza, " HTML_LINE_BREAK "sv. Petra Sansa, biskupa, sv. Augustína Zhao Ronga, kňaza, " HTML_LINE_BREAK "a spoločníkov, mučeníkov",
+	"",
+	"",
+	"",
+	"",
+	"Sv. Františka Fernándeze de Capillas, kněze, " HTML_LINE_BREAK "Petra Sanse, biskupa, Sv.Augustina Žao Ronga, kněze, " HTML_LINE_BREAK "a druhů, čínských mučedníků",
 	"",
 	"",
 	"",
