@@ -10565,7 +10565,7 @@ const char* text_JUL_09_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Sv. Františka Fernándeze de Capillas, kněze, " HTML_LINE_BREAK "Petra Sanse, biskupa, Sv.Augustina Žao Ronga, kněze, " HTML_LINE_BREAK "a druhů, čínských mučedníků",
+	"Sv. Františka Fernándeze de Capillas, kněze, " HTML_LINE_BREAK "Petra Sanse, biskupa, Augustina Žao Ronga, kněze, " HTML_LINE_BREAK "a druhů, čínských mučedníků",
 	"",
 	"",
 	"",

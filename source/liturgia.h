@@ -1277,7 +1277,7 @@ const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALEND
 // prikazany / neprikazany sviatok / ľubovoľná spomienka bez záväznosti (blahoslavení napr. pre SK_OP)
 #define PRIKAZANY_SVIATOK           0
 #define NIE_JE_PRIKAZANY_SVIATOK    1
-#define VOLNA_LUBOVOLNA_SPOMIENKA   2 // pre SK OP; v kalendári značené kurzívou (bez popisu "ľubovoľná spomienka"); 2012-04-01
+#define VOLNA_LUBOVOLNA_SPOMIENKA   2 // najmä pre OP; v kalendári značené kurzívou (bez popisu "ľubovoľná spomienka"); votívne ofícium
 
 // dodefinované rôzne správanie funkcie zaltar_zvazok();
 #define	ZALTAR_VSETKO                0

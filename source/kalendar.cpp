@@ -2807,7 +2807,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			}
 
 			if (_global_jazyk == JAZYK_CZ_OP) {
-				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
+				_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			}
 			else {
 				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
@@ -3741,6 +3741,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			_global_svaty(1).prik = VOLNA_LUBOVOLNA_SPOMIENKA; // ľubovoľná spomienka uvedená kurzívou bez popisu
 			mystrcpy(_global_svaty(1).meno, text_FEB_12_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
