@@ -6251,11 +6251,11 @@ const char* text_FEB_03_2[POCET_JAZYKOV + 1] =
 const char* text_FEB_03_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Petra z Ruff&#236;a, Antona Pavoniho a Bartolomeja Cerveriho, kňazov a mučeníkov", // &igrave;
-	"Bl. Petra z Ruffia, Antonína Pavoniho a Bartoloměje Cerveriho, kněží a mučedníků",
+	"Bl. Petra z Ruffìa, Antonína Pavoniho a Bartoloměje Cerveriho, kněží a mučedníků",
 	"",
 	"",
 	"",
-	"Bl. Petra z Ruffia, Antonína Pavoniho a Bartoloměje Cerveriho, kněží a mučedníků",
+	"Bl. Petra z Ruffìa, Antonína Pavoniho a Bartoloměje Cerveriho, kněží a mučedníků",
 	"",
 	"",
 	"",
@@ -7111,6 +7111,20 @@ const char* text_MAR_25[POCET_JAZYKOV + 1] =
 
 // --------------- 04 apríl | april ---------------
 
+const char* text_APR_01_OP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Jozefa Girottiho, kňaza a mučeníka",
+	"Bl. Josefa Girottiho, kněze a mučedníka",
+	"",
+	"",
+	"",
+	"Bl. Josefa Girottiho, kněze a mučedníka",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_APR_02[POCET_JAZYKOV + 1] =
 {
 	"Sv. Františka z Paoly, pustovníka",
@@ -7828,7 +7842,7 @@ const char* text_MAJ_04_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_MAJ_04_OP_2[POCET_JAZYKOV + 1] =
+const char* text_MAJ_04_2_OP[POCET_JAZYKOV + 1] =
 {
 	"",
 	"Utrpení našeho Pána Ježíše Krista",
@@ -7886,7 +7900,7 @@ const char* text_MAJ_06_SDB[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_07_OP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Alberta z Bergama, otca rodiny",
+	"Bl. Alberta z Bergama",
 	"Bl. Alberta z Bergama, terciáře",
 	"",
 	"",
@@ -7947,7 +7961,21 @@ const char* text_MAJ_08_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Panny Marie, ochránkyně Řádu kazatelů",
+	"Panny Marie, ochránkyně Řádu kazatelů", // CZ: 15MAJ
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_08_2_OP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Petra Claverieho, biskupa, a spoločníkov, mučeníkov",
+	"Bl. Petra Claverieho, biskupa, a druhů, mučedníků",
+	"",
+	"",
+	"",
+	"Bl. Petra Claverieho, biskupa, a druhů, mučedníků",
 	"",
 	"",
 	"",
@@ -8332,6 +8360,20 @@ const char* text_MAJ_16_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_MAJ_16_OP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Vladimíra Ghika, mučeníka",
+	"Bl. Vladimíra Ghiky, mučedníka",
+	"",
+	"",
+	"",
+	"Bl. Vladimíra Ghiky, mučedníka",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_MAJ_17_OCD[POCET_JAZYKOV + 1] =
 {
 	"Sv. Šimona Stocka, rehoľníka",
@@ -8460,7 +8502,7 @@ const char* text_MAJ_19_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_19_OP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Františka Colla Guitarta, kňaza",
+	"Sv. Františka Colla Guitarta, kňaza",
 	"Sv. Františka Colla Guitarta, kněze",
 	"",
 	"",
@@ -8514,14 +8556,14 @@ const char* text_MAJ_20_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_MAJ_20_OP[POCET_JAZYKOV + 1] =
+const char* text_MAJ_21_2_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Kolumby z Rieti, panny",
-	"Bl. Kolumby Guadagnoliové neboli z Rieti, panny, řeholnice",
+	"Bl. Kolumby z Rieti, panny, řeholnice",
 	"",
 	"",
 	"",
-	"Bl. Kolumby Guadagnoliové neboli z Rieti, panny, řeholnice",
+	"Bl. Kolumby z Rieti, panny, řeholnice",
 	"",
 	"",
 	"",
