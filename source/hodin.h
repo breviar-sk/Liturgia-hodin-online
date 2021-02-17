@@ -6600,7 +6600,7 @@ const char* text_FEB_15_CZ[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_16_OP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Mikuláša Pagliu, kňaza",
+	"Bl. Mikuláša Pagliu, kňaza", // SK OP: 13FEB
 	"Bl. Mikuláše Paglia, kněze",
 	"",
 	"",
@@ -6782,12 +6782,12 @@ const char* text_FEB_24_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_24_OP_2[POCET_JAZYKOV + 1] =
 {
-	"Bl. Ascensiony Nicol Goni, panny a rehoľníčky",
-	"Bl. Ascensiony Nicol Goni, panny, řeholnice",
+	"Bl. Ascensiony Nicol Goñi, panny a rehoľníčky",
+	"Bl. Ascensiony Nicol Goñi, panny, řeholnice",
 	"",
 	"",
 	"",
-	"Bl. Ascensiony Nicol Goni, panny, řeholnice",
+	"Bl. Ascensiony Nicol Goñi, panny, řeholnice",
 	"",
 	"",
 	"",
