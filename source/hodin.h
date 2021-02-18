@@ -5898,11 +5898,11 @@ const char* text_JAN_23_SK[POCET_JAZYKOV + 1] =
 const char* text_JAN_23_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Henricha Suzu, kňaza",
-	"Bl. Jindřicha Seuse neboli Susa, kněze",
+	"Bl. Jindřicha Seuse, kněze",
 	"",
 	"",
 	"",
-	"Bl. Jindřicha Seuse neboli Susa, kněze",
+	"Bl. Jindřicha Seuse, kněze",
 	"",
 	"",
 	"",
@@ -8983,7 +8983,7 @@ const char* text_MAJ_30_CZ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Sv. Zdislavy z Lemberka, matky rodiny, terciářky, " HTML_LINE_BREAK "spolupatronky provincie",
+	"Sv. Zdislavy z Lemberka, matky rodiny, terciářky, " HTML_LINE_BREAK "patronky provincie",
 	"",
 	"",
 	"",
@@ -9536,11 +9536,11 @@ const char* text_JUN_08_SDB[POCET_JAZYKOV + 1] =
 const char* text_JUN_08_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Diany a Cecílie, panien",
-	"Bl. Diany Andalo a Cecílie, panen, mnišek",
+	"Bl. Diany a Cecílie, panen, mnišek",
 	"",
 	"",
 	"",
-	"Bl. Diany Andalo a Cecílie, panen, mnišek",
+	"Bl. Diany a Cecílie, panen, mnišek",
 	"",
 	"",
 	"",
