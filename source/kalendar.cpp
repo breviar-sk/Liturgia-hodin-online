@@ -16265,14 +16265,27 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_full_okrem_antifon(modlitba);
+				}
+				else {
+					_vlastna_cast_modlitba;
+				}
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_full_okrem_antifon(modlitba);
+				}
+				else {
+					_vlastna_cast_modlitba;
+				}
 
 				break;
 			}
@@ -16300,15 +16313,28 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_benediktus;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_benediktus;
+				}
+				else {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_magnifikat;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_magnifikat;
+				}
+				else {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_modlitba;
 
 				break;
