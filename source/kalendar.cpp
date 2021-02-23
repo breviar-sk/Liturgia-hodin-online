@@ -18964,10 +18964,16 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
 
@@ -21047,7 +21053,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OCD))
 			) {
-				if (poradie_svaty == 3) {
+				pom_poradie = (_global_jazyk == JAZYK_CZ) ? 5 : 3;
+
+				if (poradie_svaty == pom_poradie) {
 
 					file_name_vlastny_kalendar(_global_kalendar);
 
@@ -21056,25 +21064,34 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 						set_spolocna_cast(sc, poradie_svaty);
 
 					modlitba = MODL_RANNE_CHVALY;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+					}
 					_vlastna_cast_modlitba;
 
 					modlitba = MODL_POSV_CITANIE;
-					_vlastna_cast_modlitba;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+					}
 					_vlastna_cast_2citanie;
+					_vlastna_cast_modlitba;
 
 					modlitba = MODL_VESPERY;
+					if (_global_jazyk == JAZYK_CZ) {
+						_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+					}
 					_vlastna_cast_modlitba;
 
 					break;
 				}
 
-				pocet = 3;
+				pocet = pom_poradie;
 
-				_set_slavenie_typslav_smer(3, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-				mystrcpy(_global_svaty(3).meno, text_AUG_25_OCD[_global_jazyk], MENO_SVIATKU);
-				_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
-				_global_svaty(3).farba = LIT_FARBA_BIELA;
-				_global_svaty(3).kalendar = _global_kalendar;
+				_set_slavenie_typslav_smer(pom_poradie, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+				mystrcpy(_global_svaty(pom_poradie).meno, text_AUG_25_OCD[_global_jazyk], MENO_SVIATKU);
+				_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+				_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
+				_global_svaty(pom_poradie).kalendar = _global_kalendar;
 			}// KALENDAR_SK_OCD a KALENDAR_CZ_OCD
 
 			if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))) {
