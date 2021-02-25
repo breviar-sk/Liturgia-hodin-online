@@ -6449,7 +6449,7 @@ const char* text_FEB_08_2[POCET_JAZYKOV + 1] =
 	"Sv. Jozefíny Bakhity, panny",
 	"Sv. Josefiny Bakhity, panny",
 	"",
-	"",
+	"S. Iosephinæ Bakhita, virginis",
 	"",
 	"Sv. Josefiny Bakhity, panny",
 	"Bakhita Szent Jozefina szűz",
