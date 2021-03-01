@@ -11187,6 +11187,7 @@ _struct_lang_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_CZ_OP, "16SEP2_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "17SEP3_cCIT2", 2 },
 	{ JAZYK_HU, "24OKT2_cCIT2", 2 },
+	{ JAZYK_LA, "29JUL_cCIT2", 2 }, // added new reading (old reading left as second alternative)
 };
 
 _struct_lang_anchor_and_count pocet_antifona_multi_anchor_count[] = {
