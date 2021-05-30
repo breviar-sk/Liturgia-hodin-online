@@ -43,6 +43,12 @@ public class LangSelect extends SettingsActivity {
         act.finish();
       }
     });
+    handleClick(R.id.lang_is, new Runnable() {
+      public void run() {
+        act.setResult(RESULT_OK, new Intent().putExtra("lang", "is"));
+        act.finish();
+      }
+    });
     handleSwitch(R.id.override_locale, new BooleanOption() {
       public void set(boolean value) {
         BreviarApp.setOverrideLocale(getApplicationContext(), value);

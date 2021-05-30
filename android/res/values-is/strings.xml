@@ -2,84 +2,84 @@
 <resources>
     <string name="version" translatable="false">4.4</string>
 
-    <string name="app_name">Breviary</string>
+    <string name="app_name">Tíðabænabók</string>
     <string name="back">Back</string>
     <string name="forward">Forward</string>
-    <string name="menu">Breviary</string>
-    <string name="today">Today</string>
+    <string name="menu">Tíðabænabók</string>
+    <string name="today">Í dag</string>
     <string name="pgup">PgUp</string>
     <string name="pgdn">PgDn</string>
 
-    <string name="lang_select">Language</string>
-    <string name="settings">Settings</string>
+    <string name="lang_select">Tungumál</string>
+    <string name="settings">Stillingar</string>
 
-    <string name="lang_cz">Czech</string>
-    <string name="lang_c2">Czech Dominicans</string>
-    <string name="lang_sk">Slovak</string>
-    <string name="lang_hu">Hungarian</string>
-    <string name="lang_la">Latin</string>
-    <string name="lang_is">Icelandic</string>
+    <string name="lang_cz">Tékkneska</string>
+    <string name="lang_c2">Tékkneska/dóminíkönsk</string>
+    <string name="lang_sk">Slóvakíska</string>
+    <string name="lang_hu">Ungverska</string>
+    <string name="lang_la">Latneska</string>
+    <string name="lang_is">Íslenska</string>
     <string name="override_locale">Override system-wide language settings</string>
 
-    <string name="settings_title">Device</string>
-    <string name="vol_buttons">Volume buttons for scrolling</string>
-    <string name="dimlock">Do not dim screen</string>
-    <string name="mute">Do Not Disturb mode</string>
-    <string name="no_zoom">Disable zoom gesture (lock font size)</string>
-    <string name="long_click_toggles_bar">Long tap toggles navigation bar</string>
+    <string name="settings_title">Tæki</string>
+    <string name="vol_buttons">Hljóðstyrkstakkar til að fletta</string>
+    <string name="dimlock">Ekki deyfa skjáinn</string>
+    <string name="mute">Ekki trufla ham</string>
+    <string name="no_zoom">Slökkva á aðdrætti (læsa leturstærð)</string>
+    <string name="long_click_toggles_bar">Langt tappi skiptir um leiðsögustikuna</string>
 
-    <string name="prayer_settings_title">Text Content</string>
-    <string name="prayer_content_settings_title">Content settings</string>
-    <string name="various_options_in_prayers">Various options in prayers as clickable hyperlinks</string>
-    <string name="alternatives">Alternatives</string>
+    <string name="prayer_settings_title">Textainnihald</string>
+    <string name="prayer_content_settings_title">Efnisstillingar</string>
+    <string name="various_options_in_prayers">Ýmsir möguleikar í bænum sem smella tenglar</string>
+    <string name="alternatives">Valkostur</string>
 
-    <string name="prayer_display_settings_title">What to display in prayers</string>
+    <string name="prayer_display_settings_title">Hvað á að sýna í bænum</string>
     <string name="display_communia_info">Display communia info</string>
-    <string name="verse_numbering">Verse numbering</string>
-    <string name="bible_references">Bible references</string>
-    <string name="bible_ref_bible_com">Bible references (YouVersion)</string>
-    <string name="footnotes">Notes and footnotes</string>
-    <string name="liturgical_readings">Mass readings</string>
-    <string name="psalms_omissions">Omissions from psalms</string>
-    <string name="italics_conditional">Special text (elisions) in italics</string>
+    <string name="verse_numbering">Vísunúmerun</string>
+    <string name="bible_references">Biblíutilvísanir</string>
+    <string name="bible_ref_bible_com">Biblíutilvísanir (YouVersion)</string>
+    <string name="footnotes">Skýringar og neðanmálsgreinar</string>
+    <string name="liturgical_readings">Messulestur</string>
+    <string name="psalms_omissions">Aðgerðaleysi frá sálmum</string>
+    <string name="italics_conditional">Sérstakur texti (elisions) skáletrað</string>
 
-    <string name="display_settings_title">Display settings</string>
+    <string name="display_settings_title">Sýna stillingar</string>
     <string name="first_vespers_buttons">Button for first vespers for Sundays and solemnitas for the day of celebration</string>
     <string name="navigation">Navigation buttons in prayer</string>
     <string name="smart_buttons">Tight display of buttons for prayers</string>
-    <string name="night_mode">Night mode</string>
+    <string name="night_mode">Næturstilling</string>
     <string name="background_override">Alternative background color (yellow)</string>
     <string name="normal_font">Force normal font weight (no bold)</string>
     <string name="buttons_order">Date buttons after buttons for prayers</string>
     <string name="transparent_nav">Navigation arrow in text</string>
 
-    <string name="calendar_settings_title">Liturgical calendar</string>
+    <string name="calendar_settings_title">Litúrgískt dagatal</string>
     <string name="epiphany_sunday">Celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>
     <string name="ascension_sunday">Celebrate Ascension of the Lord on Sunday</string>
     <string name="body_blood_sunday">Celebrate The Most Holy Body and Blood of Christ on Sunday</string>
     <string name="emphasize_local_calendar">Mark celebrations in local (national) calendar</string>
 
-    <string name="alarms">Notifications</string>
-    <string name="alarmOff">disabled</string>
+    <string name="alarms">Tilkynningar</string>
+    <string name="alarmOff">fatlaðir</string>
 
-    <string name="fullscreenOn">Fullscreen</string>
+    <string name="fullscreenOn">Fullskjár</string>
 
-    <string name="nightmodeOn">Night mode</string>
-    <string name="nightmodeOff">Day mode</string>
+    <string name="nightmodeOn">Næturstilling</string>
+    <string name="nightmodeOff">Dagsstilling</string>
 
-    <string name="onlyNonBoldFontOff">Allow bold font</string>
+    <string name="onlyNonBoldFontOff">Leyfa feitletrað leturgerð</string>
 
-    <string name="navigation_drawer_open">Open menu</string>
-    <string name="navigation_drawer_close">Close menu</string>
+    <string name="navigation_drawer_open">Opna matseðil</string>
+    <string name="navigation_drawer_close">Lokaðu matseðli</string>
 
-    <string name="inv">Invitatory</string>
-    <string name="rch">Lauds</string>
-    <string name="vesp">Vespers</string>
-    <string name="kompl">Compline</string>
-    <string name="read">Readings</string>
-    <string name="h9">Terce</string>
-    <string name="h12">Sext</string>
-    <string name="h15">None</string>
+    <string name="inv">Inngöngusöngur</string>
+    <string name="rch">Efri óttusöngur</string>
+    <string name="vesp">Aftansöngur</string>
+    <string name="kompl">Náttsöngur</string>
+    <string name="read">Óttusöngur hinn fyrri</string>
+    <string name="h9">Miðdegisbæn fyrir hádegi</string>
+    <string name="h12">Miðdegisbæn</string>
+    <string name="h15">Miðdegisbæn eftir hádegi</string>
 
     <string name="inv_notify">Time for Invitatory!</string>
     <string name="rch_notify">Time for Lauds!</string>
@@ -99,25 +99,25 @@
 
     <string name="notification_not_allowed">You have not allowed the app to change ring mode yet.</string>
 
-    <string name="channel_name">Breviary</string>
+    <string name="channel_name">Tíðabænabók</string>
     <string name="channel_description">Notifications about prayer times</string>
 
-    <string name="about_title">Applicaton info</string>
+    <string name="about_title">Umsóknarupplýsingar</string>
     <string name="news_title">Changelog</string>
 
     <string name="about_PROJECT_URL">https://breviar.sk</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
-    <string name="about_APP_NAME">Breviary app for OS Android</string>
+    <string name="about_APP_NAME">Tíðabænabók app fyrir OS Android</string>
     <string name="about_SPECIAL_CREDITS"></string>
     <string name="about_PROJECT_SOURCE_STORAGE">GitHub</string>
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
 
-    <string name="tts_settings_title">Voice output</string>
-    <string name="tts_use_pause_in_psalms">Make pauses when reading psalms &amp; canticles</string>
-    <string name="tts_settings_help">Voice output help</string>
-    <string name="tts_settings_help_title">Voice output help</string>
+    <string name="tts_settings_title">Raddútgangur</string>
+    <string name="tts_use_pause_in_psalms">Gerðu hlé þegar þú lest sálma &amp; kantíur</string>
+    <string name="tts_settings_help">Raddútgangshjálp</string>
+    <string name="tts_settings_help_title">Raddútgangshjálp</string>
     <string name="tts_settings_help_content"><![CDATA[
 <html>
 <head>

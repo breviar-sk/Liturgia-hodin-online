@@ -16,6 +16,7 @@
     <string name="lang_sk">Slovenština</string>
     <string name="lang_hu">Maďarština</string>
     <string name="lang_la">Latina</string>
+    <string name="lang_is">Islandština</string>
     <string name="override_locale">Použít tento jazyk také v ovládacích prvcích</string>
 
     <string name="settings_title">Zařízení</string>

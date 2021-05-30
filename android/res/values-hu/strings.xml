@@ -16,6 +16,7 @@
     <string name="lang_sk">Szlovák</string>
     <string name="lang_hu">Magyar</string>
     <string name="lang_la">Latin</string>
+    <string name="lang_is">Icelandic</string>
     <string name="override_locale">Rendszerszintű nyelvi beállítások felülírása</string>
 
     <string name="settings_title">Eszköz beállításai</string>
