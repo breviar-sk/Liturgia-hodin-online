@@ -4056,7 +4056,7 @@ void _set_zalmy_op_dominik(short int modlitba){
 	Log("_set_zalmy_op_dominik(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_op_dominik()
 
-// OFMCap (08AUG)
+// OFMCap. (08AUG)
 void _set_zalmy_ofmcap_dominik(short int modlitba){
 	Log("_set_zalmy_ofmcap_dominik(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY){ // ako _set_zalmy_sviatok_duch_past()

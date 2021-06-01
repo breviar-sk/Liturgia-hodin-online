@@ -3059,7 +3059,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				// antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období 
 				// tak je to vo zväzku II (pôst+veľká noc); avak v III je to normálne, vlastná ant.; opravené
 				// LA LH, vol. III, p. 1194-1195, nemá vlastné antifóny; ani SK
-				// pre SK OFM resp. CZ OFMCap je vlastná antifóna
+				// pre SK OFM resp. CZ OFMCap. je vlastná antifóna
 				if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM))
 					|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM))
 					|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP))
@@ -3077,7 +3077,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				// antifóna na benediktus/magnifikat: vlastná sa berie iba na spomienku v pôstnom období 
 				// tak je to vo zväzku II (pôst+veľká noc); avak v III je to normálne, vlastná ant.; opravené
 				// LA LH, vol. III, p. 1194-1195, nemá vlastné antifóny; ani SK
-				// pre SK OFM resp. CZ OFMCap je vlastná antifóna
+				// pre SK OFM resp. CZ OFMCap. je vlastná antifóna
 				if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM))
 					|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM))
 					|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP))
@@ -13887,7 +13887,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
 			// SK OFM: poradie 1 je text_JUN_16_SK; poradie 2 text_JUN_16_1_OFM; poradie 3 text_JUN_16_2_OFM
-			// CZ OFMCap: poradie 1 je text_JUN_16_2_OFM
+			// CZ OFMCap.: poradie 1 je text_JUN_16_2_OFM
 			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
