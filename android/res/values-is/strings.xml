@@ -1,76 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version" translatable="false">4.4</string>
-
     <string name="app_name">Tíðabænabók</string>
-    <string name="back">Back</string>
-    <string name="forward">Forward</string>
+    <string name="back">Til baka</string>
+    <string name="forward">Áfram</string>
     <string name="menu">Tíðabænabók</string>
     <string name="today">Í dag</string>
-    <string name="pgup">PgUp</string>
-    <string name="pgdn">PgDn</string>
+    <string name="pgup">Síða upp</string>
+    <string name="pgdn">Síða niður</string>
 
     <string name="lang_select">Tungumál</string>
     <string name="settings">Stillingar</string>
 
     <string name="lang_cz">Tékkneska</string>
-    <string name="lang_c2">Tékkneska/dóminíkönsk</string>
+    <string name="lang_c2">Tékkneska – dóminíkönsk tíðabænabók</string>
     <string name="lang_sk">Slóvakíska</string>
     <string name="lang_hu">Ungverska</string>
     <string name="lang_la">Latneska</string>
     <string name="lang_is">Íslenska</string>
-    <string name="override_locale">Override system-wide language settings</string>
+    <string name="override_locale">Notið tungumálið líka í stillingum</string>
 
     <string name="settings_title">Tæki</string>
-    <string name="vol_buttons">Hljóðstyrkstakkar til að fletta</string>
-    <string name="dimlock">Ekki deyfa skjáinn</string>
-    <string name="mute">Ekki trufla ham</string>
-    <string name="no_zoom">Slökkva á aðdrætti (læsa leturstærð)</string>
-    <string name="long_click_toggles_bar">Langt tappi skiptir um leiðsögustikuna</string>
+    <string name="vol_buttons">Notið hljóðhnappana til að skruna</string>
+    <string name="dimlock">Ekki slökkva á skjánum</string>
+    <string name="mute">Ekki trufla haminn</string>
+    <string name="no_zoom">Aftengið aðdrátt (læsið leturstærð)</string>
+    <string name="long_click_toggles_bar">Langur ásláttur breytir stiklurönd</string>
 
-    <string name="prayer_settings_title">Textainnihald</string>
-    <string name="prayer_content_settings_title">Efnisstillingar</string>
-    <string name="various_options_in_prayers">Ýmsir möguleikar í bænum sem smella tenglar</string>
-    <string name="alternatives">Valkostur</string>
+    <string name="prayer_settings_title">Efni bænatexta</string>
+    <string name="prayer_content_settings_title">Stillingar efnis</string>
+    <string name="various_options_in_prayers">Valmöguleikar í bænatextum sem smellanlegir hlekkir</string>
+    <string name="alternatives">Valkostir</string>
 
-    <string name="prayer_display_settings_title">Hvað á að sýna í bænum</string>
-    <string name="display_communia_info">Display communia info</string>
-    <string name="verse_numbering">Vísunúmerun</string>
-    <string name="bible_references">Biblíutilvísanir</string>
-    <string name="bible_ref_bible_com">Biblíutilvísanir (YouVersion)</string>
-    <string name="footnotes">Skýringar og neðanmálsgreinar</string>
-    <string name="liturgical_readings">Messulestur</string>
-    <string name="psalms_omissions">Aðgerðaleysi frá sálmum</string>
-    <string name="italics_conditional">Sérstakur texti (elisions) skáletrað</string>
+    <string name="prayer_display_settings_title">Það sem birtist í texta bænanna</string>
+    <string name="display_communia_info">Sýnið almenna hluta heilagra</string>
+    <string name="verse_numbering">Tölusetning versa</string>
+    <string name="bible_references">Biblíuhlekkir (appið Biblía)</string>
+    <string name="bible_ref_bible_com">Biblíuhlekkir (appið YouVersion)</string>
+    <string name="footnotes">Athugasemdir (í texta, neðanmáls)</string>
+    <string name="liturgical_readings">Messulestrar</string>
+    <string name="psalms_omissions">Kaflar sem sleppt er í sálmum og lofsöngvum</string>
+    <string name="italics_conditional">Nokkrir textar (elízie) skáletraðir</string>
 
-    <string name="display_settings_title">Sýna stillingar</string>
-    <string name="first_vespers_buttons">Button for first vespers for Sundays and solemnitas for the day of celebration</string>
-    <string name="navigation">Navigation buttons in prayer</string>
-    <string name="smart_buttons">Tight display of buttons for prayers</string>
-    <string name="night_mode">Næturstilling</string>
-    <string name="background_override">Alternative background color (yellow)</string>
-    <string name="normal_font">Force normal font weight (no bold)</string>
-    <string name="buttons_order">Date buttons after buttons for prayers</string>
-    <string name="transparent_nav">Navigation arrow in text</string>
+    <string name="display_settings_title">Birtingarstilling</string>
+    <string name="first_vespers_buttons">Hnappur fyrir fyrsta aftansöng á sunnudögum og stórhátíðum á hátíðardegi</string>
+    <string name="navigation">Leiðsöguhnappar í bænatextum</string>
+    <string name="smart_buttons">Þrengri birting fyrir bænir</string>
+    <string name="night_mode">Nátthamur</string>
+    <string name="background_override">Annars konar bakgrunnslitur (gulur)</string>
+    <string name="normal_font">Venjulegt letur (ekki feitletrað)</string>
+    <string name="buttons_order">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
+    <string name="transparent_nav">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
 
-    <string name="calendar_settings_title">Litúrgískt dagatal</string>
-    <string name="epiphany_sunday">Celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>
-    <string name="ascension_sunday">Celebrate Ascension of the Lord on Sunday</string>
-    <string name="body_blood_sunday">Celebrate The Most Holy Body and Blood of Christ on Sunday</string>
-    <string name="emphasize_local_calendar">Mark celebrations in local (national) calendar</string>
+    <string name="calendar_settings_title">Helgisiðadagatal</string>
+    <string name="epiphany_sunday">Birting Drottins haldin á sunnudegi á milli 2. og 8. janúar</string>
+    <string name="ascension_sunday">Uppstigning Drottins haldin á sunnudegi</string>
+    <string name="body_blood_sunday">Stórhátíð Líkama og Blóðs Krists haldin á sunnudegi</string>
+    <string name="emphasize_local_calendar">Merkja hátíðisdaga í dagatali staðarins</string>
 
-    <string name="alarms">Tilkynningar</string>
-    <string name="alarmOff">fatlaðir</string>
+    <string name="alarms">Ábendingar</string>
+    <string name="alarmOff">Slökkva á ábendingum</string>
 
-    <string name="fullscreenOn">Fullskjár</string>
+    <string name="fullscreenOn">Allur skjár</string>
 
-    <string name="nightmodeOn">Næturstilling</string>
-    <string name="nightmodeOff">Dagsstilling</string>
+    <string name="nightmodeOn">Nátthamur</string>
+    <string name="nightmodeOff">Dagshamur</string>
 
-    <string name="onlyNonBoldFontOff">Leyfa feitletrað leturgerð</string>
+    <string name="onlyNonBoldFontOff">Leyfa feitletrun</string>
 
-    <string name="navigation_drawer_open">Opna matseðil</string>
-    <string name="navigation_drawer_close">Lokaðu matseðli</string>
+    <string name="navigation_drawer_open">Opna valmynd</string>
+    <string name="navigation_drawer_close">Loka valmynd</string>
 
     <string name="inv">Inngöngusöngur</string>
     <string name="rch">Efri óttusöngur</string>
@@ -81,43 +79,43 @@
     <string name="h12">Miðdegisbæn</string>
     <string name="h15">Miðdegisbæn eftir hádegi</string>
 
-    <string name="inv_notify">Time for Invitatory!</string>
-    <string name="rch_notify">Time for Lauds!</string>
-    <string name="vesp_notify">Time for Vespers!</string>
-    <string name="kompl_notify">Time for Compline!</string>
-    <string name="read_notify">Time for Readings!</string>
-    <string name="h9_notify">Time for Terce!</string>
-    <string name="h12_notify">Time for Sext!</string>
-    <string name="h15_notify">Time for None!</string>
+    <string name="inv_notify">Tími kominn fyrir inngöngusöng!</string>
+    <string name="rch_notify">Tími kominn fyrir inngöngusöng!</string>
+    <string name="vesp_notify">Tími kominn fyrir aftansöng!</string>
+    <string name="kompl_notify">Tími kominn fyrir náttsöng!</string>
+    <string name="read_notify">Tími kominn fyrir óttusöng hinn fyrri!</string>
+    <string name="h9_notify">Tími kominn fyrir miðdegisbæn fyrir hádegi!</string>
+    <string name="h12_notify">Tími kominn fyrir miðdegisbæn!</string>
+    <string name="h15_notify">Tími tkominn fyrir miðdegisbæn eftir hádegi!</string>
 
-    <string name="tts_ready">Speak prayers</string>
-    <string name="tts_speaking">Stop speaking</string>
-    <string name="tts_pause">Pause speaking</string>
-    <string name="tts_resume">Resume speaking</string>
-    <string name="tts_back">Speak previous part</string>
-    <string name="tts_forward">Speak next part</string>
+    <string name="tts_ready">Lestu</string>
+    <string name="tts_speaking">Hætt að lesa</string>
+    <string name="tts_pause">Hlé á lestri</string>
+    <string name="tts_resume">HHalda áfram lestri</string>
+    <string name="tts_back">Lesa undanfarandi hluta</string>
+    <string name="tts_forward">Lesa eftirfarandi hluta</string>
 
-    <string name="notification_not_allowed">You have not allowed the app to change ring mode yet.</string>
+    <string name="notification_not_allowed">Appinu er enn ekki leyft að slökkva á hringingu</string>
 
     <string name="channel_name">Tíðabænabók</string>
-    <string name="channel_description">Notifications about prayer times</string>
+    <string name="channel_description">Ábending fyrir bænatíma</string>
 
-    <string name="about_title">Umsóknarupplýsingar</string>
-    <string name="news_title">Changelog</string>
+    <string name="about_title">Upplýsingar</string>
+    <string name="news_title">Skrá um breytingar í útgáfum</string>
 
-    <string name="about_PROJECT_URL">https://breviar.sk</string>
+    <string name="about_PROJECT_URL">https://breviar.sk/is</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
-    <string name="about_APP_NAME">Tíðabænabók app fyrir OS Android</string>
+    <string name="about_APP_NAME">Appið Breviár fyrir OS Android</string>
     <string name="about_SPECIAL_CREDITS"></string>
-    <string name="about_PROJECT_SOURCE_STORAGE">GitHub</string>
+    <string name="about_PROJECT_SOURCE_STORAGE">GitHub-e</string>
     <string name="about_PROJECT_SOURCE_URL">https://github.com/breviar-sk/Liturgia-hodin-online</string>
     <string name="about_PLATFORM_ANDROID">Android</string>
     <string name="about_PLATFORM_IOS">iOS</string>
 
-    <string name="tts_settings_title">Raddútgangur</string>
-    <string name="tts_use_pause_in_psalms">Gerðu hlé þegar þú lest sálma &amp; kantíur</string>
-    <string name="tts_settings_help">Raddútgangshjálp</string>
-    <string name="tts_settings_help_title">Raddútgangshjálp</string>
+    <string name="tts_settings_title">Raddúttak</string>
+    <string name="tts_use_pause_in_psalms">Gera hlé við lestur Saltara (stjörnur, krossar)</string>
+    <string name="tts_settings_help">Leiðbeiningar fyrir raddúttak</string>
+    <string name="tts_settings_help_title">Leiðbeiningar fyrir raddúttak</string>
     <string name="tts_settings_help_content"><![CDATA[
 <html>
 <head>
@@ -142,6 +140,6 @@ body { background-color: #303030; color: #dddddd; }
 </html>
     ]]></string>
 
-    <string name="tts_language_not_available">TTS is not available for current language.</string>
+    <string name="tts_language_not_available">Yfirfærsla texta í tal er ekki til í þessu tungumáli</string>
 
 </resources>
