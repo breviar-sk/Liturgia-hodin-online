@@ -126,15 +126,15 @@ body { background-color: #303030; color: #dddddd; }
 </head>
 <body>
 
-<h3>How to set up voice output</h3>
+<h3>Hvernig setja á upp talgervil</h3>
 
-<p>If you have not used voice output yet, you need to install an application for speech synthesis (TTS, text-to-speech) and set it as preferred in your system settings.</p>
+<p>Ef þú hefur enn ekki notað talgervil þarft þú að hlaða niður appi fyrir vélrænt tal (TTS, texti-í-tal) og setja það upp á þann hátt sem gert er ráð fyrir í kerfisstillingum þínum.</p>
 
-<p>Some languages (e.g. Czech, English, and Hungarian) are well supported by native Android speech synthesis (at least on recent versions of Android). If you want to use those, we recommend you to download the languages you plan to use for offline usage.</p>
+<p>Sum tungumál (svo sem tékkneska, enska og ungverska) eru vel stödd hvað snertir texta í tal (a.m.k. ein nýleg gerð í Android). Ef þú vilt nota þau mælum við með að þú hlaðir niður þeim tungumálum sem þú hyggst nota utan nets.</p>
 
-<p><button onclick="bridge.openTTSSettings()">Open TTS settings"</button></p>
+<p><button onclick="bridge.openTTSSettings()">nappur til að opna fyrir TTS stillingar</button></p>
 
-<p>After configuring the speech synthesis, you may start voice output for the currently displayed prayers from the menu (left) or the action bar (top) in the application.</p>
+<p>Eftir að tal-í-texta hefur verið sett upp getur þú byrjað að láta lesa þann texta sem sýndur er í bænunum frá valmyndinni (til vinstri) eða frá aðgerðastiklunni (efst) í appinu.</p>
 
 </body>
 </html>

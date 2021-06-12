@@ -132,7 +132,7 @@ body { background-color: #303030; color: #dddddd; }
 
 <p>Čeština má dobrou podporu ve vestavěné androidové syntéze řeči, v aplikaci Google TTS (určitě to platí pro novější verze Androidu). Pokud ji chcete použít, doporučujeme stáhnout si podporu pro jazyk, který plánujete používat, do Vašeho zařízení.</p>
 
-<p><button onclick="bridge.openTTSSettings()">Nastavit předvolenou aplikaci pro TTS"</button></p>
+<p><button onclick="bridge.openTTSSettings()">Nastavit předvolenou aplikaci pro TTS</button></p>
 
 <p>Po nastavení hlasového výstupu můzete v aplikaci spustit předčítání aktuálních modliteb z menu (vysouvací zleva) nebo z aplikační lišty (nahoru).</p>
 

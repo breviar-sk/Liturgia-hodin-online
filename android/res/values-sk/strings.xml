@@ -132,9 +132,9 @@ body { background-color: #303030; color: #dddddd; }
 
 <p>Pre staršie verzie OS Android, na ktorých nie je možnosť doinštalovania slovenčiny pre Google TTS, existuje napr. aplikácia eSpeak, ktorá je k dispozícii zdarma. Existujú aj platené aplikácie s lepšou kvalitou hlasového výstupu resp. hlasové výstupy niektorých výrobcov, podporujúce slovenčinu (napr. Samsung). V aplikácii je ešte potrebné stiahnuť si podporu pre slovenčinu.</p>
 
-<p><button onclick="bridge.openIntent('https://play.google.com/store/apps/details?id=com.redzoc.ramees.tts.espeak')">Nainštalovať eSpeak z Google Play"</button></p>
+<p><button onclick="bridge.openIntent('https://play.google.com/store/apps/details?id=com.redzoc.ramees.tts.espeak')">Nainštalovať eSpeak z Google Play</button></p>
 
-<p><button onclick="bridge.openTTSSettings()">Nastaviť predvolenú aplikáciu pre TTS"</button></p>
+<p><button onclick="bridge.openTTSSettings()">Nastaviť predvolenú aplikáciu pre TTS</button></p>
 
 <p>Po nastavení hlasového výstupu môzete v aplikácii spustiť čítanie aktuálnych modlitieb z menu (vysúvacie zľava) alebo z aplikačnej lišty (hore).</p>
 
