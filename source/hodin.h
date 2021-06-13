@@ -5144,7 +5144,7 @@ const char* text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1] =
 	"A mi Urunk, Jézus Krisztus, a te Fiad által, aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Fyrir Drottin vorn Jesúm Krist, Son þinn, sem með þér lifir of ríkir í einingu Heilags Anda, Guð um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5159,7 +5159,7 @@ const char* text_ZAKONCENIE_SKRZE_kratke[POCET_JAZYKOV + 1] =
 	"Krisztus, a mi Urunk által.",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Fyrir Krist, Drottin vorn.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5174,7 +5174,7 @@ const char* text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1] =
 	"Aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Sem með þér lifir og ríkir í einingu Heilags Anda, Guð um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5189,7 +5189,7 @@ const char* text_ZAKONCENIE_LEBO_ON_kratke[POCET_JAZYKOV + 1] =
 	"Aki él és uralkodik mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Sem lifir og ríkir um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5204,7 +5204,7 @@ const char* text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1] =
 	"Aki élsz és uralkodol az Atyaistennel és a Szentlélek­kel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Sem lifir og ríkir með Guði Föður og Heilögum Anda, Guð um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5219,7 +5219,7 @@ const char* text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1] =
 	"Aki élsz és uralkodol mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Þú, sem lifir og ríkir um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
