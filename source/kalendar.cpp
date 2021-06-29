@@ -14277,7 +14277,6 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			presunutie_slavnosti = ANO;
 			goto label_24_JUN;
 		}
-		break;
 
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB)) || ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))) {
 			if (poradie_svaty == 1) {
@@ -14348,6 +14347,14 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 	case 24: // MES_JUN -- 24JUN
 
 	label_24_JUN:
+
+		if (/* (_global_den.denvt == DEN_PIATOK) && */(_global_den.denvr == SRDCA)) {
+			poradie_svaty = UNKNOWN_PORADIE_SVATEHO;
+
+			slavnost_srdca();
+
+			break;
+		}
 
 		if ((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) || (poradie_svaty == 1)) {
 			// definovanie parametrov pre modlitbu
@@ -14718,7 +14725,6 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			presunutie_slavnosti = ANO;
 			goto label_29_JUN;
 		}
-		break;
 
 		if (poradie_svaty == 1) {
 			// definovanie parametrov pre modlitbu
@@ -14748,6 +14754,13 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 	case 29: // MES_JUN -- 29JUN
 
 	label_29_JUN:
+
+		if (/* (_global_den.denvt == DEN_PIATOK) && */(_global_den.denvr == SRDCA)) {
+			poradie_svaty = UNKNOWN_PORADIE_SVATEHO;
+
+			slavnost_srdca();
+			break;
+		}
 
 		if ((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) || (poradie_svaty == 1)) {
 

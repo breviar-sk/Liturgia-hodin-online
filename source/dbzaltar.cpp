@@ -4715,6 +4715,96 @@ void _set_hymnus_alternativy_obdobie(short litobd, short len_kompletorium = NIE)
 	Log("_set_hymnus_alternativy_ocr(): koniec.\n");
 }// _set_hymnus_alternativy_ocr()
 
+void slavnost_srdca(short int litobd /* = OBD_CEZ_ROK */) {
+	Log("slavnost_srdca(): začiatok...\n");
+
+	char _anchor_vlastne_slavenie[SMALL];
+
+	// Najsv. Srdca Ježišovho
+	mystrcpy(_file, FILE_SRDCA, MAX_STR_AF_FILE);
+	mystrcpy(_file_pc, FILE_SRDCA, MAX_STR_AF_FILE); // kvôli define _vlastne_slavenie_set_vig_ant()
+	mystrcpy(_anchor, ANCHOR_SRDCA, MAX_STR_AF_ANCHOR);
+	mystrcpy(_anchor_vlastne_slavenie, ANCHOR_SRDCA, MAX_STR_AF_ANCHOR);
+	Log("  ide o slávnosť Najsv. srdca Ježišovho: _file = `%s', _anchor = %s...\n", _file, _anchor);
+
+	// kompletórium
+	modlitba = MODL_PRVE_KOMPLETORIUM;
+	_set_kompletorium_slavnost(modlitba);
+
+	modlitba = MODL_KOMPLETORIUM;
+	_set_kompletorium_slavnost(modlitba);
+
+	// prvé vešpery
+	modlitba = MODL_PRVE_VESPERY;
+	_set_zalmy_srdca(modlitba);
+	_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+	_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+
+	// invitatórium
+	modlitba = MODL_INVITATORIUM;
+	_vlastne_slavenie_invitat(_anchor_vlastne_slavenie);
+
+	modlitba = MODL_RANNE_CHVALY;
+	_set_zalmy_srdca(modlitba);
+	_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+	_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+
+	modlitba = MODL_VESPERY;
+	_set_zalmy_srdca(modlitba);
+	_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+	_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+
+	modlitba = MODL_POSV_CITANIE;
+	_set_zalmy_srdca(modlitba);
+	_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
+	_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+	// posvätné čítanie -- predĺžené slávenie vigílie
+	modlitba = MODL_POSV_CITANIE;
+	_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
+	_set_chvalospev_vig_srdca(modlitba);
+	_vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
+
+	modlitba = MODL_PREDPOLUDNIM;
+	_set_zalmy_srdca(modlitba);
+	_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+	modlitba = MODL_NAPOLUDNIE;
+	_set_zalmy_srdca(modlitba);
+	_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+	modlitba = MODL_POPOLUDNI;
+	_set_zalmy_srdca(modlitba);
+	_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+	_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+
+	Log("slavnost_srdca(): koniec.\n");
+}
+
 void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short int tyzzal, short int poradie_svateho){
 	short int modlitba, t, tyzden_pom, litobd_pom;
 	char _anchor_vlastne_slavenie[SMALL];
@@ -7234,87 +7324,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				}
 
 				if (_global_den.denvr == SRDCA){
-					// Najsv. srdca Ježišovho
-					mystrcpy(_file, FILE_SRDCA, MAX_STR_AF_FILE);
-					mystrcpy(_file_pc, FILE_SRDCA, MAX_STR_AF_FILE); // kvôli define _vlastne_slavenie_set_vig_ant()
-					mystrcpy(_anchor, ANCHOR_SRDCA, MAX_STR_AF_ANCHOR);
-					mystrcpy(_anchor_vlastne_slavenie, ANCHOR_SRDCA, MAX_STR_AF_ANCHOR);
-					Log("  ide o slávnosť Najsv. srdca Ježišovho: _file = `%s', _anchor = %s...\n", _file, _anchor);
-
-					// kompletórium
-					modlitba = MODL_PRVE_KOMPLETORIUM;
-					_set_kompletorium_slavnost(modlitba);
-
-					modlitba = MODL_KOMPLETORIUM;
-					_set_kompletorium_slavnost(modlitba);
-
-					// prvé vešpery
-					modlitba = MODL_PRVE_VESPERY;
-					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
-					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-
-					// invitatórium
-					modlitba = MODL_INVITATORIUM;
-					_vlastne_slavenie_invitat(_anchor_vlastne_slavenie);
-
-					modlitba = MODL_RANNE_CHVALY;
-					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
-					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-
-					modlitba = MODL_VESPERY;
-					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
-					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-
-					modlitba = MODL_POSV_CITANIE;
-					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd);
-					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-					// posvätné čítanie -- predĺžené slávenie vigílie
-					modlitba = MODL_POSV_CITANIE;
-					_vlastne_slavenie_set_vig_ant(_anchor_vlastne_slavenie);
-					_set_chvalospev_vig_srdca(modlitba);
-					_vlastne_slavenie_set_vig_ev(_anchor_vlastne_slavenie);
-
-					modlitba = MODL_PREDPOLUDNIM;
-					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					modlitba = MODL_NAPOLUDNIE;
-					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
-					modlitba = MODL_POPOLUDNI;
-					_set_zalmy_srdca(modlitba);
-					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+					slavnost_srdca(litobd);
 				}// srdca
 				else if (_global_den.denvr == KRISTA_KNAZA) {
 					// Nášho Pána Ježiša Krista, najvyššieho a večného kňaza

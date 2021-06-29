@@ -276,6 +276,8 @@ extern void zaltar(short int den, short int tyzzal);
 
 extern void zaltar_zvazok(short int den, short int tyzzal, short int obdobie);
 
+extern void slavnost_srdca(short int litobd = OBD_CEZ_ROK);
+
 extern void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short int tyzzal, short int poradie_svateho);
 
 extern short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
