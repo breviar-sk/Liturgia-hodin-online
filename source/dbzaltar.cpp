@@ -7323,7 +7323,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					}
 				}
 
-				if (_global_den.denvr == SRDCA){
+				if (_global_den.denvr == SRDCA) {
 					slavnost_srdca(litobd);
 				}// srdca
 				else if (_global_den.denvr == KRISTA_KNAZA) {
