@@ -5204,7 +5204,7 @@ const char* text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1] =
 	"Aki élsz és uralkodol az Atyaistennel és a Szentlélek­kel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Sem lifir og ríkir með Guði Föður og Heilögum Anda, Guð um aldir alda.",
+	"Sem lifir og ríkir með Guði Föður, í einingu Heilags Anda, Guð, um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5219,7 +5219,7 @@ const char* text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1] =
 	"Aki élsz és uralkodol mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Þú, sem lifir og ríkir um aldir alda.",
+	"Sem lifir og ríkir um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
