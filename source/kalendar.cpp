@@ -15438,11 +15438,15 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
-				if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ)) {
+				if (_global_jazyk == JAZYK_SK) {
 					_vlastna_cast_full(modlitba);
 				}
-				else {
-					// pre CZOP sú antifóny a krátky responz pred 1. čítaním zo spoločnej časti
+				if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
+					// pre CZ + CZOP sú antifóny a krátky responz pred 1. čítaním zo spoločnej časti
+					if (_global_jazyk == JAZYK_CZ) {
+						// pre CZ hymnus vlastný
+						_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+					}
 					_vlastna_cast_1citanie;
 					_vlastna_cast_2citanie;
 					_vlastna_cast_modlitba;
