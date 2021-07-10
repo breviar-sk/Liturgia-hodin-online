@@ -5174,7 +5174,7 @@ const char* text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1] =
 	"Aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Sem með þér lifir og ríkir í einingu Heilags Anda, Guð um aldir alda.",
+	"Því að hann er Guð, sem með þér lifir og ríkir í einingu Heilags Anda, Guð, um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5189,7 +5189,7 @@ const char* text_ZAKONCENIE_LEBO_ON_kratke[POCET_JAZYKOV + 1] =
 	"Aki él és uralkodik mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Sem lifir og ríkir um aldir alda.",
+	"Hann, sem lifir og ríkir um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5204,7 +5204,7 @@ const char* text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1] =
 	"Aki élsz és uralkodol az Atyaistennel és a Szentlélek­kel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Sem lifir og ríkir með Guði Föður, í einingu Heilags Anda, Guð, um aldir alda.",
+	"Því að þú ert Guð, sem lifir og ríkir með Guði Föður, í einingu Heilags Anda, Guð, um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5219,7 +5219,7 @@ const char* text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1] =
 	"Aki élsz és uralkodol mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Sem lifir og ríkir um aldir alda.",
+	"Þú sem lifir og ríkir um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 

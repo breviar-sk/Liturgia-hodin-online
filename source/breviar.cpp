@@ -2113,7 +2113,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						} // PARAM_ZAKONCENIE_O_TO_TA_PROSIME
 
 						if (equals(rest_zakoncenie, PARAM_ZAKONCENIE_SKRZE_MALE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_LEBO_TY_MALE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_LEBO_ON_MALE)) {
-							zakoncenie[0] = zakoncenie[0] + ('a' - 'A'); // posun z veľkého písmena na malé: pozor, funguje len pre základné znaky ASCII
+							FirstToLower(zakoncenie, sizeof(zakoncenie));  // posun z veľkého písmena na malé
 						}
 						// nezlomiteľné medzery
 						Export("%s", convert_nonbreaking_spaces(zakoncenie));

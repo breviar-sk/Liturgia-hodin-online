@@ -24,9 +24,24 @@ void TestChar(const char* s) {
   EXPECT(!strcmp(in, out), "%s == %s\n", s, buf);
 }
 
+void TestFirstToLower() {
+  {
+    char s[] = "Ľšč4567";
+    FirstToLower(s, 16);
+    EXPECT(!strcmp(s, "ľšč4567"), "%s == %s\n", s, "ľšč4567");
+  }
+  {
+    char s[] = "Ľšč4567";
+    FirstToLower(s, 8);
+    EXPECT(!strcmp(s, "ľšč4"), "%s == %s\n", s, "ľšč4");
+  }
+}
+
 int main() {
   TestChar("ľ");
   TestChar("\xe2\xb0\xbf");
+
+  TestFirstToLower();
 
   return 0;
 }

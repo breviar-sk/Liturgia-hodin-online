@@ -91,7 +91,11 @@ inline void AppendWchar(int w, int buf_size, char* buf, int* index) {
 }
 
 int WcharToUppercase(int w);
+int WcharToLowercase(int w);
 
 int RemoveDiacriticsFromWchar(int w);
+
+// Convert first character of utf-8 string s to lowercase. Do not exceed size len.
+void FirstToLower(char* s, int len);
 
 #endif // __UTF8_UTILS_H_
