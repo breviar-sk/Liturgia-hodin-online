@@ -271,7 +271,7 @@ _struct_dm *_global_den_ptr;
 #define _global_den (*_global_den_ptr)
 
 // globalne premenne, do ktorych sa ukladaju info o analyzovanom dni o sviatkoch svatych
-_struct_dm *(_global_svaty_ptr[MAX_POCET_SVATY]); // an array of '_struct_dm' pointers
+_struct_dm* _global_svaty_ptr[MAX_POCET_SVATY]; // an array of '_struct_dm' pointers
 #define _global_svaty(i) (*(_global_svaty_ptr[i - 1]))
 
 // globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu

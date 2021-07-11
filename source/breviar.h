@@ -68,65 +68,65 @@ extern char optional_html_button_prayer_begin[MAX_STR];
 extern char optional_html_button_end[MAX_STR];
 
 // globalna premenna, do ktorej sa ukladaju info o analyzovanom dni
-extern _struct_dm *_global_den_ptr;
+extern _struct_dm* _global_den_ptr;
 #define _global_den (*_global_den_ptr)
 
 // globalne premenne, do ktorych sa ukladaju info o analyzovanom dni o sviatkoch svatych
-extern _struct_dm *(_global_svaty_ptr[MAX_POCET_SVATY]); // an array of '_struct_dm' pointers
+extern _struct_dm* _global_svaty_ptr[MAX_POCET_SVATY]; // an array of '_struct_dm' pointers
 #define _global_svaty(i) (*(_global_svaty_ptr[i - 1]))
 
 // globalna premenna, ktora obsahuje data o spomienke panny marie v sobotu
-extern _struct_dm *_global_pm_sobota_ptr;
+extern _struct_dm* _global_pm_sobota_ptr;
 #define _global_pm_sobota (*_global_pm_sobota_ptr)
 
 // globalne premenne obsahujuce data modlitbach
 
-extern _type_1vespery     *_global_modl_prve_vespery_ptr;
+extern _type_1vespery* _global_modl_prve_vespery_ptr;
 #define _global_modl_prve_vespery (*_global_modl_prve_vespery_ptr)
 
-extern _type_1kompletorium *_global_modl_1kompletorium_ptr;
+extern _type_1kompletorium* _global_modl_1kompletorium_ptr;
 #define _global_modl_prve_kompletorium (*_global_modl_1kompletorium_ptr)
 
-extern _type_invitatorium *_global_modl_invitatorium_ptr;
+extern _type_invitatorium* _global_modl_invitatorium_ptr;
 #define _global_modl_invitatorium (*_global_modl_invitatorium_ptr)
 
-extern _type_posv_citanie *_global_modl_posv_citanie_ptr;
+extern _type_posv_citanie* _global_modl_posv_citanie_ptr;
 #define _global_modl_posv_citanie (*_global_modl_posv_citanie_ptr)
 
-extern _type_ranne_chvaly *_global_modl_ranne_chvaly_ptr;
+extern _type_ranne_chvaly* _global_modl_ranne_chvaly_ptr;
 #define _global_modl_ranne_chvaly (*_global_modl_ranne_chvaly_ptr)
 
-extern _type_cez_den_9     *_global_modl_cez_den_9_ptr;
+extern _type_cez_den_9* _global_modl_cez_den_9_ptr;
 #define _global_modl_cez_den_9 (*_global_modl_cez_den_9_ptr)
-extern _type_cez_den_12     *_global_modl_cez_den_12_ptr;
+extern _type_cez_den_12* _global_modl_cez_den_12_ptr;
 #define _global_modl_cez_den_12 (*_global_modl_cez_den_12_ptr)
-extern _type_cez_den_3     *_global_modl_cez_den_3_ptr;
+extern _type_cez_den_3* _global_modl_cez_den_3_ptr;
 #define _global_modl_cez_den_3 (*_global_modl_cez_den_3_ptr)
 
-extern _type_vespery      *_global_modl_vespery_ptr;
+extern _type_vespery* _global_modl_vespery_ptr;
 #define _global_modl_vespery (*_global_modl_vespery_ptr)
 
-extern _type_kompletorium *_global_modl_kompletorium_ptr;
+extern _type_kompletorium* _global_modl_kompletorium_ptr;
 #define _global_modl_kompletorium (*_global_modl_kompletorium_ptr)
 
-extern _struct_anchor_and_file *_global_include_static_text_ptr;
+extern _struct_anchor_and_file* _global_include_static_text_ptr;
 #define _global_include_static_text (*_global_include_static_text_ptr)
 
 // globalna premenna, ktora obsahuje MODL_...
 extern short int _global_modlitba;
 
 // globalna premenna, do ktorej ukladaju funkcie vytvor_query_string_... linku tvaru SCRIPT_PATH(SCRIPT_NAME) ++ "?param1=val&param2=val&..."
-extern char *_global_link_ptr;
+extern char* _global_link_ptr;
 #define _global_link _global_link_ptr
 
-extern char *_global_pom_str; // pomocny string pre velke pismena
+extern char* _global_pom_str; // pomocny string pre velke pismena
 
 // globalna premenna, do ktorej sa ukladaju info o jednotlivych vyznacnych liturgickych dni, pouzivaju void _dm_...() funkcie a void analyzuj_rok() funkcia
-extern _struct_dm *_global_result_ptr;
+extern _struct_dm* _global_result_ptr;
 #define _global_result (*_global_result_ptr)
 
 // globalna premenna, do ktorej sa uklada info o liturgickom roku pouziva void analyzuj_rok() funkcia
-extern _struct_lrok *_global_r_ptr;
+extern _struct_lrok* _global_r_ptr;
 #define _global_r (*_global_r_ptr)
 
 // globalna premenna, do ktorej sviatky_svatych() uklada pocet sviatkov (de facto lubovolnych spomienok), ktore pripadaju na dany den
@@ -139,14 +139,14 @@ extern unsigned long long _global_opt[POCET_GLOBAL_OPT];
 extern unsigned long long _global_force_opt[POCET_GLOBAL_OPT];
 
 // globalna premenna, co obsahuje string vypisany na obsazovku
-extern char *_global_string;
-extern char *_global_string2; // obsahuje I, II, III, IV, V alebo pismeno roka
-extern char *_global_string_farba;
+extern char* _global_string;
+extern char* _global_string2; // obsahuje I, II, III, IV, V alebo pismeno roka
+extern char* _global_string_farba;
 // 2011-10-04: pridané, pre titulok modlitby (už sa nepriliepa do _global_string)
 // extern char _global_string_modlitba[SMALL];
 
-extern char *_global_buf; // 2006-08-01: túto premennú tiež alokujeme
-extern char *_global_buf2; // 2006-08-01: túto premennú tiež alokujeme
+extern char* _global_buf; // 2006-08-01: túto premennú tiež alokujeme
+extern char* _global_buf2; // 2006-08-01: túto premennú tiež alokujeme
 //---------------------------------------------------------------------
 
 extern short int _global_jazyk;
@@ -537,8 +537,8 @@ int main(int argc, const char** argv);
 int breviar_main(int argc, const char** argv);
 
 #if (_MSC_VER >= 1400)       // VC8+ 2007-02-12 kvôli vc++ 2005 express edition
-	#pragma warning(disable : 4996)    // disable all deprecation warnings
-	#define putenv _putenv
+#pragma warning(disable : 4996)    // disable all deprecation warnings
+#define putenv _putenv
 #endif   // VC8+
 
 #endif // __BREVIAR_H_

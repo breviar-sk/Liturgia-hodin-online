@@ -695,19 +695,19 @@ void _set_zalm1(short int modlitba, const char* file, const char* anchor) {
 		// predpoludnim
 		mystrcpy(_global_modl_cez_den_9.zalm1.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_9.zalm1.anchor, anchor, MAX_STR_AF_ANCHOR);
-		if (modlitba == MODL_PREDPOLUDNIM) break;
+		if (modlitba != MODL_CEZ_DEN_VSETKY) break;
 		// [[fallthrough]];
 	case MODL_NAPOLUDNIE:
 		// napoludnie
 		mystrcpy(_global_modl_cez_den_12.zalm1.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_12.zalm1.anchor, anchor, MAX_STR_AF_ANCHOR);
-		if (modlitba == MODL_NAPOLUDNIE) break;
+		if (modlitba != MODL_CEZ_DEN_VSETKY) break;
 		// [[fallthrough]];
 	case MODL_POPOLUDNI:
 		// popoludni
 		mystrcpy(_global_modl_cez_den_3.zalm1.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_3.zalm1.anchor, anchor, MAX_STR_AF_ANCHOR);
-		break;
+		break; // also for MODL_CEZ_DEN_VSETKY
 	case MODL_VESPERY:
 		mystrcpy(_global_modl_vespery.zalm1.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_vespery.zalm1.anchor, anchor, MAX_STR_AF_ANCHOR);
@@ -743,19 +743,19 @@ void _set_zalm2(short int modlitba, const char* file, const char* anchor) {
 		// predpoludnim
 		mystrcpy(_global_modl_cez_den_9.zalm2.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_9.zalm2.anchor, anchor, MAX_STR_AF_ANCHOR);
-		if (modlitba == MODL_PREDPOLUDNIM) break;
+		if (modlitba != MODL_CEZ_DEN_VSETKY) break;
 		// [[fallthrough]];
 	case MODL_NAPOLUDNIE:
 		// napoludnie
 		mystrcpy(_global_modl_cez_den_12.zalm2.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_12.zalm2.anchor, anchor, MAX_STR_AF_ANCHOR);
-		if (modlitba == MODL_NAPOLUDNIE) break;
+		if (modlitba != MODL_CEZ_DEN_VSETKY) break;
 		// [[fallthrough]];
 	case MODL_POPOLUDNI:
 		// popoludni
 		mystrcpy(_global_modl_cez_den_3.zalm2.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_3.zalm2.anchor, anchor, MAX_STR_AF_ANCHOR);
-		break;
+		break; // also for MODL_CEZ_DEN_VSETKY
 	case MODL_VESPERY:
 		mystrcpy(_global_modl_vespery.zalm2.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_vespery.zalm2.anchor, anchor, MAX_STR_AF_ANCHOR);
@@ -783,19 +783,19 @@ void _set_zalm3(short int modlitba, const char* file, const char* anchor) {
 		// predpoludnim
 		mystrcpy(_global_modl_cez_den_9.zalm3.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_9.zalm3.anchor, anchor, MAX_STR_AF_ANCHOR);
-		if (modlitba == MODL_PREDPOLUDNIM) break;
+		if (modlitba != MODL_CEZ_DEN_VSETKY) break;
 		// [[fallthrough]];
 	case MODL_NAPOLUDNIE:
 		// napoludnie
 		mystrcpy(_global_modl_cez_den_12.zalm3.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_12.zalm3.anchor, anchor, MAX_STR_AF_ANCHOR);
-		if (modlitba == MODL_NAPOLUDNIE) break;
+		if (modlitba != MODL_CEZ_DEN_VSETKY) break;
 		// [[fallthrough]];
 	case MODL_POPOLUDNI:
 		// popoludni
 		mystrcpy(_global_modl_cez_den_3.zalm3.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_cez_den_3.zalm3.anchor, anchor, MAX_STR_AF_ANCHOR);
-		break;
+		break; // also for MODL_CEZ_DEN_VSETKY
 	case MODL_VESPERY:
 		mystrcpy(_global_modl_vespery.zalm3.file, file, MAX_STR_AF_FILE);
 		mystrcpy(_global_modl_vespery.zalm3.anchor, anchor, MAX_STR_AF_ANCHOR);

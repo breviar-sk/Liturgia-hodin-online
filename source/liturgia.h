@@ -1448,7 +1448,7 @@ extern _struct_dm *_global_pm_sobota_ptr;
 #define _global_pm_sobota (*_global_pm_sobota_ptr)
 
 // globalne premenne, do ktorych sa ukladaju info o analyzovanom dni o sviatkoch svatych
-extern _struct_dm *(_global_svaty_ptr[MAX_POCET_SVATY]); // an array of '_struct_dm' pointers
+extern _struct_dm* _global_svaty_ptr[MAX_POCET_SVATY]; // an array of '_struct_dm' pointers
 #define _global_svaty(i) (*(_global_svaty_ptr[i - 1]))
 
 // globalne premenne obsahujuce data modlitbach

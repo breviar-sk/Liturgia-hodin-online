@@ -5144,7 +5144,7 @@ const char* text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1] =
 	"A mi Urunk, Jézus Krisztus, a te Fiad által, aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Fyrir Drottin vorn Jesúm Krist, Son þinn, sem með þér lifir of ríkir í einingu Heilags Anda, Guð um aldir alda.",
+	"Fyrir Drottin vorn Jesúm Krist, Son þinn, sem með þér lifir og ríkir í einingu Heilags Anda, Guð um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
