@@ -663,8 +663,8 @@ int WcharToUppercase(int w) {
 }
 
 int WcharToLowercase(int w) {
-	if (w >= 'a' && w <= 'z') {
-		return w - 'a' + 'A';
+	if (w >= 'A' && w <= 'Z') {
+		return w + 'a' - 'A';
 	}
 	switch (w) {
 	case L'\x00C0'/*À*/: return L'\x00E0'/*à*/;
@@ -2219,12 +2219,14 @@ int RemoveDiacriticsFromWchar(int w) {
 }
 
 void FirstToLower(char* s, int len) {
-  char* t = (char *)malloc(len + 16);
-  char* s2 = s;
-  char* t2 = t;
-  EncodeWchar(WcharToLowercase(DecodeWchar((const char **)(&s2))), &t2);
-  strncpy(t2, s2, len + 16 - (t2 - t));
-  strncpy(s, t, len);
-  s[len - 1] = 0;
-  free(t);
+	char* t = (char*)malloc(len + 16);
+	char* s2 = s;
+	char* t2 = t;
+	EncodeWchar(WcharToLowercase(DecodeWchar((const char**)(&s2))), &t2);
+	strncpy(t2, s2, len + 16 - (t2 - t));
+	if (t != 0) {
+		strncpy(s, t, len);
+	}
+	s[len - 1] = 0;
+	free(t);
 }
