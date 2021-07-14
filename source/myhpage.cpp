@@ -235,7 +235,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 	}// else
 	Log("_global_css_font_family == %s...\n", _global_css_font_family);
 
-	// nastavenie font-size
+	// nastavenie font size
 	if (_global_font_size == FONT_SIZE_UNDEF) {
 		mystrcpy(_global_css_font_size, STR_EMPTY, SMALL);
 	}// (_global_font_size == FONT_SIZE_UNDEF)
@@ -292,14 +292,17 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 	Log("element <body>...\n");
 	Export_to_file(expt, "<body");
 
-	if ((_global_font != FONT_CSS) || (_global_font_size != FONT_SIZE_CSS) || (_global_style_margin != 0)) {
+	if ((_global_font != FONT_CSS) || (_global_font_size != FONT_SIZE_CSS) || (_global_style_margin != 0) || (_global_font_size_pt != 0)) {
 		Export_to_file(expt, " style=\"");
 		if (_global_font != FONT_CSS) {
 			Export_to_file(expt, "font-family: %s; ", _global_css_font_family);
 		}
-		if (_global_font_size != FONT_SIZE_CSS) {
-			Export_to_file(expt, "font-size: %s; ", _global_css_font_size);
+		if ((_global_font_size_pt > 0) && (_global_font_size_pt != FONT_SIZE_PT_DEFAULT)) {
+			Export_to_file(expt, "font-size: %dpt; ", _global_font_size_pt);
 		}
+		else if (_global_font_size != FONT_SIZE_CSS) {
+			Export_to_file(expt, "font-size: %s; ", _global_css_font_size);
+		}// else nothing for font-size
 		if (_global_style_margin != 0) {
 			Export_to_file(expt, "margin-left: %dpx; margin-right: %dpx; ", _global_style_margin, _global_style_margin);
 		}

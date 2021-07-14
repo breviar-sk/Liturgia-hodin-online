@@ -491,6 +491,15 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int sp
 		Log("\tNetreba prilepiť font size (_global_font_size == %d, názov == %s)\n", _global_font_size, nazov_font_size_css[_global_font_size]);
 	}
 
+	if (PODMIENKA_EXPORTOVAT_FONTSIZE_PT) {
+		sprintf(pom3, HTML_AMPERSAND"%s=%d", STR_FONT_SIZE_PT, _global_font_size_pt);
+		strcat(pom2, pom3);
+		Log("\tPrilepil som aj font size v pt: `%s'\n", pom3);
+	}
+	else {
+		Log("\tNetreba prilepiť font size pt (_global_font_size_pt == %d)\n", _global_font_size_pt);
+	}
+
 	if (PODMIENKA_EXPORTOVAT_STYLE_MARGIN) {
 		sprintf(pom3, HTML_AMPERSAND"%s=%d", STR_STYLE_MARGIN, _global_style_margin);
 		strcat(pom2, pom3);

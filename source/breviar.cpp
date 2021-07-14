@@ -382,6 +382,7 @@ short int _global_css;
 
 short int _global_font;
 short int _global_font_size;
+short int _global_font_size_pt;
 short int _global_style_margin;
 
 short int _global_pocet_zalmov_kompletorium;
@@ -448,24 +449,25 @@ char pom_FORCE_OPT_4_OFFLINE_EXPORT[POCET_OPT_4_OFFLINE_EXPORT][SMALL];
 char pom_FORCE_OPT_5_ALTERNATIVES[POCET_OPT_5_ALTERNATIVES][SMALL];
 char pom_FORCE_OPT_6_ALTERNATIVES_MULTI[POCET_OPT_6_ALTERNATIVES_MULTI][SMALL];
 
-char pom_OPT_APPEND  [SMALL] = STR_EMPTY;
+char pom_OPT_APPEND[SMALL] = STR_EMPTY;
 char pom_DALSI_SVATY[SMALL] = STR_EMPTY;
 
-char pom_ROK_FROM   [SMALL] = STR_EMPTY;
-char pom_ROK_TO     [SMALL] = STR_EMPTY;
+char pom_ROK_FROM[SMALL] = STR_EMPTY;
+char pom_ROK_TO[SMALL] = STR_EMPTY;
 
-char pom_LINKY		[SMALL] = STR_EMPTY;
+char pom_LINKY[SMALL] = STR_EMPTY;
 
-char pom_JAZYK		[SMALL] = STR_EMPTY;
-char pom_KALENDAR   [SMALL] = STR_EMPTY;
+char pom_JAZYK[SMALL] = STR_EMPTY;
+char pom_KALENDAR[SMALL] = STR_EMPTY;
 
-char pom_CSS		[SMALL] = STR_EMPTY;
+char pom_CSS[SMALL] = STR_EMPTY;
 
-char pom_FONT		[SMALL] = STR_EMPTY;
-char pom_FONT_SIZE	[VERY_SMALL] = STR_EMPTY;
-char pom_STYLE_MARGIN [VERY_SMALL] = STR_EMPTY;
+char pom_FONT[SMALL] = STR_EMPTY;
+char pom_FONT_SIZE[VERY_SMALL] = STR_EMPTY;
+char pom_FONT_SIZE_PT[VERY_SMALL] = STR_EMPTY;
+char pom_STYLE_MARGIN[VERY_SMALL] = STR_EMPTY;
 
-char pom_OPT_DATE_FORMAT [SMALL] = STR_EMPTY;
+char pom_OPT_DATE_FORMAT[SMALL] = STR_EMPTY;
 
 char pom_EXPORT_MONTHLY [SMALL] = STR_EMPTY;
 // pre batch mód po mesiacoch; 0 = doterajší spôsob (riadok s dátumom a potom linky na modlitby)
@@ -1157,6 +1159,16 @@ short int setForm(void) {
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_FONT_SIZE), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_FONT_SIZE);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
+		ret = putenv(local_str);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
+	}
+
+	mystrcpy(local_str, STR_EMPTY, SMALL);
+	if (!equals(pom_FONT_SIZE_PT, STR_EMPTY)) {
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_FONT_SIZE_PT), SMALL);
+		strcat(local_str, "=");
+		strcat(local_str, pom_FONT_SIZE_PT);
 		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
 		LogParams("--- setForm: putenv returned %d.\n", ret);
@@ -16656,9 +16668,10 @@ short int getArgv(int argc, const char** argv) {
 	// 2011-05-06: upravené (hodnota `F' ani `H' sa nepoužívali)
 	//            `F' (font): možnosť zvoliť font pre override CSS
 	// 2012-09-07: 'H' (header) disables header and footer
+	// 2021-07-13: 'T' (font size pT) force font size in pt
 
-	// 2015-06-02: 'v', 'w' and 'y' are still available :)
-	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::5::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::", MAX_STR);
+	// 2021-07-13: 'y', 'v' and 'w' are still available :)
+	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::5::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::T::", MAX_STR);
 	// tie options, ktore maju za sebou : maju povinny argument; ak maju :: tak maju volitelny
 
 	Log("-- getArgv(): begin\n");
@@ -16736,6 +16749,11 @@ short int getArgv(int argc, const char** argv) {
 			case 'S':
 				if (optarg != NULL) {
 					mystrcpy(pom_FONT_SIZE, optarg, VERY_SMALL);
+				}
+				Log("option %c with value `%s'\n", c, optarg); break;
+			case 'T':
+				if (optarg != NULL) {
+					mystrcpy(pom_FONT_SIZE_PT, optarg, VERY_SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 			case 'G':
@@ -17051,6 +17069,13 @@ short int getForm(void) {
 	if (ptr != NULL) {
 		if (strcmp(ptr, STR_EMPTY) != 0) {
 			mystrcpy(pom_FONT_SIZE, ptr, VERY_SMALL);
+		}
+	}
+
+	ptr = getenv(ADD_WWW_PREFIX_(STR_FONT_SIZE_PT));
+	if (ptr != NULL) {
+		if (strcmp(ptr, STR_EMPTY) != 0) {
+			mystrcpy(pom_FONT_SIZE_PT, ptr, VERY_SMALL);
 		}
 	}
 
@@ -17783,6 +17808,18 @@ short int parseQueryString(void) {
 			// ide o parameter STR_FONT_SIZE
 			mystrcpy(pom_FONT_SIZE, param[i].val, VERY_SMALL);
 			LogParams("font size zistená (%s).\n", pom_FONT_SIZE);
+		}
+	}
+
+	i = pocet;
+	LogParams("pokúšam sa zistiť font size pt (od posledného parametra k prvému, t. j. odzadu)...\n");
+	while ((equalsi(pom_FONT_SIZE_PT, STR_EMPTY)) && (i > 0)) {
+		--i;
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		if (equals(param[i].name, STR_FONT_SIZE_PT)) {
+			// ide o parameter STR_FONT_SIZE_PT
+			mystrcpy(pom_FONT_SIZE_PT, param[i].val, VERY_SMALL);
+			LogParams("font size zistená (%s).\n", pom_FONT_SIZE_PT);
 		}
 	}
 
@@ -18639,6 +18676,7 @@ END_parseQueryString:
 	_main_LOG_to_Export("\tparam  == %s (pom_CSS)\n", pom_CSS);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT)\n", pom_FONT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE)\n", pom_FONT_SIZE);\
+	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE_PT)\n", pom_FONT_SIZE_PT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_STYLE_MARGIN)\n", pom_STYLE_MARGIN);\
 	_main_LOG_to_Export("\tparam  == %s (pom_OPT_DATE_FORMAT)\n", pom_OPT_DATE_FORMAT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_EXPORT_MONTHLY)\n", pom_EXPORT_MONTHLY);\
@@ -18871,6 +18909,7 @@ int breviar_main(int argc, const char** argv) {
 	strcpy(pom_CSS, STR_EMPTY);
 	strcpy(pom_FONT, STR_EMPTY);
 	strcpy(pom_FONT_SIZE, STR_EMPTY);
+	strcpy(pom_FONT_SIZE_PT, STR_EMPTY);
 	strcpy(pom_STYLE_MARGIN, STR_EMPTY);
 	strcpy(pom_OPT_DATE_FORMAT, STR_EMPTY);
 	strcpy(pom_EXPORT_MONTHLY, STR_EMPTY); // 2009-08-03: Pridané kvôli rôznym spôsobom exportu po mesiacoch, prepínač -M
@@ -19133,6 +19172,15 @@ int breviar_main(int argc, const char** argv) {
 			}
 			_main_LOG_to_Export("...font size (%s) = %d, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
 
+			// načítanie veľkosti fontu v pt (override)
+			_main_LOG_to_Export("zisťujem font size pt...\n");
+			_global_font_size_pt = atoi(pom_FONT_SIZE_PT);
+			if (_global_font_size_pt == FONT_SIZE_UNDEF) {
+				_global_font_size_pt = FONT_SIZE_PT_DEFAULT;
+				_main_LOG_to_Export("\t(vzhľadom k neurčenej font size používam default)\n");
+			}
+			_main_LOG_to_Export("...font size pt (%s) = %d\n", pom_FONT_SIZE_PT, _global_font_size_pt);
+
 			// reading of style margin
 			_main_LOG_to_Export("zisťujem style margin...\n");
 			_global_style_margin = atoi(pom_STYLE_MARGIN);
@@ -19321,6 +19369,15 @@ int breviar_main(int argc, const char** argv) {
 		_main_LOG_to_Export("\t(vzhľadom k neurčenej font size používam default -- brať font size z CSS)\n");
 	}
 	_main_LOG_to_Export("...font size (%s) = %d, teda %s\n", pom_FONT_SIZE, _global_font_size, nazov_font_size(_global_font_size));
+
+	// reading of font size in pt (override)
+	_main_LOG_to_Export("zisťujem font size pt...\n");
+	_global_font_size_pt = atoi(pom_FONT_SIZE_PT);
+	if (_global_font_size_pt == FONT_SIZE_UNDEF) {
+		_global_font_size_pt = FONT_SIZE_PT_DEFAULT;
+		_main_LOG_to_Export("\t(vzhľadom k neurčenej font size pt používam default)\n");
+	}
+	_main_LOG_to_Export("...font size pt (%s) = %d\n", pom_FONT_SIZE_PT, _global_font_size_pt);
 
 	// reading of style margin
 	_main_LOG_to_Export("zisťujem style margin...\n");

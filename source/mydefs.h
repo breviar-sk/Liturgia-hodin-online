@@ -1148,9 +1148,16 @@ extern short int query_type; // contains constants PRM_...
 
 #define FONT_SIZE 44
 #ifdef LONG_PARAM_NAMES
-	#define STR_FONT_SIZE "FONT_SIZE"
+#define STR_FONT_SIZE "FONT_SIZE"
 #else
-	#define STR_FONT_SIZE "s"
+#define STR_FONT_SIZE "s"
+#endif
+
+#define FONT_SIZE_PT 46
+#ifdef LONG_PARAM_NAMES
+#define STR_FONT_SIZE_PT "FONT_SIZE_PT"
+#else
+#define STR_FONT_SIZE_PT "ff"
 #endif
 
 // margin, value to 255

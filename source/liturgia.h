@@ -146,6 +146,9 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define FONT_SIZE_X_LARGE 	7
 #define FONT_SIZE_XX_LARGE	8
 
+// font size in pt, default
+#define FONT_SIZE_PT_DEFAULT 0 // pt; let user set what he/she wants
+
 #define MIN_STYLE_MARGIN      0
 #define MAX_STYLE_MARGIN   1024
 #define DEF_STYLE_MARGIN      5
@@ -1672,6 +1675,7 @@ extern short int _global_css;
 
 extern short int _global_font;
 extern short int _global_font_size;
+extern short int _global_font_size_pt;
 
 extern short int _global_pocet_zalmov_kompletorium;
 

@@ -157,6 +157,7 @@ extern short int _global_css;
 
 extern short int _global_font;
 extern short int _global_font_size;
+extern short int _global_font_size_pt;
 extern short int _global_style_margin; // for usage in <body> for style margin-left & margin-right
 
 extern short int _global_pocet_zalmov_kompletorium; // kompletórium niekedy obsahuje až dva žalmy
@@ -452,6 +453,8 @@ extern short int _typslav_override(short int typslav);
 
 // should calendar be exported?
 #define PODMIENKA_EXPORTOVAT_KALENDAR (!((_global_kalendar == KALENDAR_NEURCENY) || (_global_kalendar == KALENDAR_VSEOBECNY) || ((_global_kalendar == default_kalendar[_global_jazyk]) && !(_global_jazyk == JAZYK_CZ_OP))))
+
+#define PODMIENKA_EXPORTOVAT_FONTSIZE_PT ( (_global_font_size_pt > 0) && (_global_font_size_pt != FONT_SIZE_PT_DEFAULT) )
 
 #define PODMIENKA_EXPORTOVAT_FONTSIZE ( (_global_font_size != FONT_SIZE_UNDEF) && (_global_font_size != FONT_SIZE_CSS) )
 
