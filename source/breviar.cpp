@@ -8546,12 +8546,10 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		// ToDo: doriešiť pre všelijaké špeciálne "konflikty", napr. 8. apríl 2013 (presunutá slávnosť Zvestovania Pána na pondelok po Veľkonočnej oktáve) -- má mať prvé vešpery? a pod.
 		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) {
 
-			smer = _smer_override(_global_den.smer, _global_den.typslav);
+			smer = _global_den_smer_override;
 
 			if ((poradie_svateho >= 1) && (poradie_svateho < PORADIE_PM_SOBOTA)) {
-				smer = (smer > _smer_override(_global_svaty(poradie_svateho).smer, _global_svaty(poradie_svateho).typslav)) ?
-					_smer_override(_global_svaty(poradie_svateho).smer, _global_svaty(poradie_svateho).typslav) :
-					smer;
+				smer = (smer > _global_svaty_i_smer_override(poradie_svateho)) ? _global_svaty_i_smer_override(poradie_svateho) : smer;
 			}
 
 			if ((
@@ -8605,7 +8603,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 				su_prve_vespery = ANO; // aby sa pri normálnych vešperách (v ďalšom) vedelo, že to sú "druhé vešpery"
 
-			}// if(_global_den.smer < 5)...
+			}// if(_global_den.smer -> smer < 5)...
 			else {
 				// Log Export("nemôžu byť prvé vešpery (smer == %d, denvt == %d, denvr == %d, VELKONOCNA_NEDELA == %d, KVETNA_NEDELA == %d, POPOLCOVA_STREDA == %d)...\n", _global_den.smer, _global_den.denvt, _global_den.denvr, VELKONOCNA_NEDELA, KVETNA_NEDELA, POPOLCOVA_STREDA);
 				// oddelenie
@@ -12915,9 +12913,9 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 		// Log("_local_modl_prve_vespery obsahuje:\n"); Log(_local_modl_prve_vespery);
 		// Log("_local_modl_prve_kompletorium obsahuje:\n"); Log(_local_modl_prve_kompletorium);
 
-		Log("tento deň (%d.%d.): _global_den.smer == %d, _global_den.denvt == %s, _global_den.litobd == %s (%d)\n",
+		Log("tento deň (%d.%d.): _global_den.smer == %d, prípadný override: _global_den_smer_override == %d, _global_den.denvt == %s, _global_den.litobd == %s (%d/%d)\n",
 			_global_den.den, _global_den.mesiac,
-			_global_den.smer, nazov_dna(_global_den.denvt), nazov_obdobia_ext(_global_den.litobd), _global_den.smer);
+			_global_den.smer, _global_den_smer_override, nazov_dna(_global_den.denvt), nazov_obdobia_ext(_global_den.litobd), _global_den.smer, _global_den_smer_override);
 
 		// Log(_global_den);
 		// Log("(3) _global_modl_prve_vespery obsahuje:\n"); Log(_global_modl_prve_vespery);
@@ -12934,9 +12932,9 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 			label_zmena_vynimky = ANO;
 		}
 
-		// časť: test VYNIMKY
-		if ((_global_den.smer > _local_den.smer) ||
-			((_global_den.smer == _local_den.smer) && (label_zmena_vynimky == ANO))
+		// časť: test VYNIMKY; it is necessary for "current" day take into account potentially required override (celebration of higher level)
+		if ((/* _global_den.smer */ _global_den_smer_override > _local_den.smer) ||
+			((/* _global_den.smer */ _global_den_smer_override == _local_den.smer) && (label_zmena_vynimky == ANO))
 		) {
 			Log("jumping to LABEL_ZMENA...\n");
 			goto LABEL_ZMENA;
@@ -12944,9 +12942,9 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 
 		if (
 			// č. 11: slávnosti su zvlášť význačnými dňami. ich slávenie sa začína prvými vešperami v predchádzajúci deň
-			(_global_den.smer < 5)
+			(/* _global_den.smer */ _global_den_smer_override < 5)
 			// č. 13: sviatky sa slávia v rozsahu jedného dňa, a preto nemajú prvé vešpery, ak len nejde o sviatky Pána, ktoré pripadajú na Cezročnú neďelu a na nedeľu vo vianočnom období a nahradzujú nedeľňajšiu liturgiu hodín
-			|| ((_global_den.smer == 5) && (_global_den.denvt == DEN_NEDELA) && ((_global_den.litobd == OBD_CEZ_ROK) || je_vianocne(_global_den.litobd)))
+			|| ((/* _global_den.smer */ _global_den_smer_override == 5) && (_global_den.denvt == DEN_NEDELA) && ((_global_den.litobd == OBD_CEZ_ROK) || je_vianocne(_global_den.litobd)))
 			// nedeľa
 			|| (_global_den.denvt == DEN_NEDELA)
 			) {
@@ -12963,16 +12961,16 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 			}
 			// Spomienka vsetkych vernych zosnulych -- nevypisem, ze su druhe vespery -- zapracované do init_global_string_modlitba()
 
-			Log("nastavujem _global_string_modlitba... if((_global_den.smer < 5) || ...\n");
+			Log("nastavujem _global_string_modlitba... if((_global_den.smer -> _global_den_smer_override < 5) || ...\n");
 			init_global_string_modlitba(modlitba);
 
-			Log("nastavujem _global_string_podnadpis... if((_global_den.smer < 5) || ...\n");
+			Log("nastavujem _global_string_podnadpis... if((_global_den.smer -> _global_den_smer_override < 5) || ...\n");
 			init_global_string_podnadpis(modlitba);
 
 			// this is not necessary (in fact, it causes problems: wrong description for http://localhost:2000/cgi-bin/l.cgi?qt=pdt&d=25&m=10&r=2015&p=mv&ds=1&j=cz&o0=134&o1=5376&o2=29432&o3=6)
 			// introduced by commit # c48527f0d3 but now hopefully not necessary
 			/*
-			Log("kontrolujem _global_opt[OPT_3_SPOLOCNA_CAST]... if((_global_den.smer < 5) || : ");
+			Log("kontrolujem _global_opt[OPT_3_SPOLOCNA_CAST]... if((_global_den.smer -> _global_den_smer_override < 5) || : ");
 			if (_local_spol_cast != MODL_SPOL_CAST_NEURCENA) {
 				_global_opt[OPT_3_SPOLOCNA_CAST] = _local_spol_cast;
 				Log("upravené podľa _local_spol_cast na %s (%d)\n", nazov_spolc(_local_spol_cast), _local_spol_cast);
@@ -12982,7 +12980,7 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 			}
 			*/
 
-			Log("nastavujem _global_string_spol_cast... if((_global_den.smer < 5) || ...\n");
+			Log("nastavujem _global_string_spol_cast... if((_global_den.smer -> _global_den_smer_override < 5) || ...\n");
 			ret_sc = init_global_string_spol_cast(odfiltrujSpolCast(modlitba, _global_opt[OPT_3_SPOLOCNA_CAST]), poradie_svaty);
 		}// _global_den ma dvoje vespery/kompletorium, teda musime brat DRUHE
 
@@ -13000,10 +12998,10 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 			// č. 61: ak na ten isty den pripadnu vespery bezneho dna a prve vespery nasledujuceho dna, maju prednost vespery slavenia,
 			// ktore ma v tabulke liturgickych dni vyssi stupen. v pripade rovnosti sa beru vespery bezneho dna. sú tu špeciálne výnimky
 			// časť: test VYNIMKY
-			if ((_global_den.smer > _local_den.smer)
-				|| ((_global_den.smer == _local_den.smer) && (label_zmena_vynimky == ANO))
+			if ((/* _global_den.smer */ _global_den_smer_override > _local_den.smer)
+				|| ((/* _global_den.smer */ _global_den_smer_override == _local_den.smer) && (label_zmena_vynimky == ANO))
 			) {
-				if ((_global_den.smer == _local_den.smer) && (label_zmena_vynimky == ANO)) {
+				if ((/* _global_den.smer */ _global_den_smer_override == _local_den.smer) && (label_zmena_vynimky == ANO)) {
 					Log("slávenia síce majú rovnaký stupeň, ale ide o špeciálne výnimky... see: VYNIMKY\n");
 				}
 				else {
@@ -13249,14 +13247,12 @@ void showAllPrayers(short int typ, short int den, short int mesiac, short int ro
 
 	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) {
 
-		short int smer = _smer_override(_global_den.smer, _global_den.typslav);
+		short int smer = _global_den_smer_override;
 
 		Log("showAllPrayers().smer == %d...\n", smer);
 
 		if ((poradie_svaty >= 1) && (poradie_svaty < PORADIE_PM_SOBOTA)) {
-			smer = (smer > _smer_override(_global_svaty(poradie_svaty).smer, _global_svaty(poradie_svaty).typslav)) ?
-				_smer_override(_global_svaty(poradie_svaty).smer, _global_svaty(poradie_svaty).typslav) :
-				smer;
+			smer = (smer > _global_svaty_i_smer_override(poradie_svaty)) ? _global_svaty_i_smer_override(poradie_svaty) : smer;
 
 			Log("showAllPrayers().smer == %d...\n", smer);
 		}
