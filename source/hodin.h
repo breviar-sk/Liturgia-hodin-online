@@ -16250,11 +16250,11 @@ const char* text_DEC_09_OP[POCET_JAZYKOV + 1] =
 const char* text_DEC_10[POCET_JAZYKOV + 1] =
 {
 	"Prebl. Panny Márie Loretánskej",
-	"Panny Marie z Loreta",
+	"Panny Marie Loretánské",
 	"",
 	"Beatæ Mariæ Virginis de Loreto",
 	"",
-	"Panny Marie z Loreta",
+	"Panny Marie Loretánské",
 	"A Loretói Boldogságos Szűz Mária",
 	"ru_text",
 	"by_text",

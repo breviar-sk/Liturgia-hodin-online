@@ -25276,11 +25276,15 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_vlastna_cast_modlitba;
 
 			modlitba = MODL_RANNE_CHVALY;
-			_vlastna_cast_benediktus;
+			if (!((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) {
+				_vlastna_cast_benediktus;
+			}
 			_vlastna_cast_modlitba;
 
 			modlitba = MODL_VESPERY;
-			_vlastna_cast_magnifikat;
+			if (!((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) {
+				_vlastna_cast_magnifikat;
+			}
 			_vlastna_cast_modlitba;
 
 			break;
@@ -33418,7 +33422,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 			mystrcpy(_anchor_head, ANCHOR_MARIE_MATKY_CIRKVI, MAX_STR_AF_ANCHOR);
 			strcat(_anchor_head, STR_UNDERSCORE); // must be at the end of _anchor_head due to set_popis_svaty_rch_mcd_pc_vesp()
 
-			if (_global_jazyk != JAZYK_CZ_OP) {
+			if (!((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) {
 				Log("vo funkcii sviatky_svatych() spustam set_popis_dummy(); - kvoli spomienke panny marie matky cirkvi...\n");
 				set_popis_dummy();
 				Log("set_popis_dummy() skoncila.\n");
