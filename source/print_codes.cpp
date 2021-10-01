@@ -50,7 +50,7 @@ int main() {
   int d,m,r;
 
   checkCitania();
-  for (r = 2019; r <= 2020; r++) {
+  for (r = 2021; r <= 2021; r++) {
     for (m = 1; m <= 12; m++) {
       for (d=1; d<=D[m-1] + (m==2 && r%4==0); d++) {
         sprintf(ds, "-d%02d", d);
@@ -58,14 +58,8 @@ int main() {
         sprintf(ys, "-r%04d", r);
         breviar_main(5, v);
         PrintDay(r, m, d, &_global_den);
-        if (_global_pocet_svatych >= 1) {
-          PrintDay(r, m, d, &_global_svaty1);
-        }
-        if (_global_pocet_svatych >= 2) {
-          PrintDay(r, m, d, &_global_svaty2);
-        }
-        if (_global_pocet_svatych >= 3) {
-          PrintDay(r, m, d, &_global_svaty2);
+        for (int sv = 1; sv <= _global_pocet_svatych; ++sv) {
+          PrintDay(r, m, d, &_global_svaty(sv));
         }
         _deallocate_global_var();
       }
