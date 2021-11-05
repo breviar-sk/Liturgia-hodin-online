@@ -23444,6 +23444,12 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				}// KALENDAR_CZ_OFM, KALENDAR_CZ_OFMCAP
+				// pre slávenie s vyšším stupňom nastavíme niektoré časti modlitby z 19MAR
+				if (_je_global_den_slavnost || _je_global_den_sviatok) {
+					_vlastna_cast_kcitanie;
+					_vlastna_cast_kresponz;
+					_vlastna_cast_prosby;
+				}
 				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
@@ -23456,12 +23462,16 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				modlitba = MODL_VESPERY;
 				if (je_CZ_nie_hymny_k_volnemu_vyberu) {
-					_vlastna_cast_full_okrem_antifon(modlitba);
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				}// KALENDAR_CZ_OFM, KALENDAR_CZ_OFMCAP
-				else {
-					_vlastna_cast_magnifikat;
-					_vlastna_cast_modlitba;
-				}// KALENDAR_SK_OFM, KALENDAR_HU_OFM
+				// pre slávenie s vyšším stupňom nastavíme niektoré časti modlitby z 19MAR
+				if (_je_global_den_slavnost || _je_global_den_sviatok) {
+					_vlastna_cast_kcitanie;
+					_vlastna_cast_kresponz;
+					_vlastna_cast_prosby;
+				}
+				_vlastna_cast_magnifikat;
+				_vlastna_cast_modlitba;
 
 				break;
 			}
