@@ -2133,9 +2133,9 @@ const char* html_text_detaily_uvod[POCET_JAZYKOV + 1] =
 	"",
 	"Následující možnosti mají vliv na vzhled i obsah vygenerované modlitby.\nVyberte si možnosti, podle kterých má být modlitba vygenerována.",
 	"Ez a választási lehetőség befolyásolja a megszerkesztett ima megjelenítését és tartalmát.\nVálasszon a szerkeszthető lehetőségek közül.",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2193,9 +2193,9 @@ const char* html_text_opt_1_nemenne_sucasti_explain[POCET_JAZYKOV + 1] =
 	"",
 	"Každé ranní chvály obsahují Zachariášovo kantikum, večerní chvály kantikum Panny Marie, obě modlitbu Páně a zakončení modlitby, a konečně modlitba se čtením někdy obsahuje hymnus Te Deum; tyto části je možné zobrazit/skrýt.",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2224,9 +2224,9 @@ const char* html_text_opt_1_dalsie_prepinace_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2315,9 +2315,9 @@ const char* html_text_opt_0_specialne_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2434,10 +2434,10 @@ const char* html_text_opt_0_italics_cond_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"hu_text",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2464,10 +2464,10 @@ const char* html_text_opt_0_printed_edition_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"hu_text",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2494,10 +2494,10 @@ const char* html_text_opt_0_use_two_years_cycle_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"hu_text",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2524,10 +2524,10 @@ const char* html_text_opt_0_two_years_cycle_id_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"hu_text",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2585,9 +2585,9 @@ const char* html_text_opt_0_zjv_ne_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Urunk megjelenése (Vízkereszt) január 6-án van; egyes országokban azonban vasárnap, január 2. és 8. között ünneplik.",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2615,9 +2615,9 @@ const char* html_text_opt_0_nan_ne_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Urunk mennybemenetele húsvét után a 40. napon van (tehát csütörtökön); egyes országokban azonban a legközelebbi vasárnapon ünneplik (vagyis Húsvét 7. vasárnapján).",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2645,9 +2645,9 @@ const char* html_text_opt_0_tk_ne_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Krisztus Szent Teste és Vére Pünkösd után a 11. napon van (tehát Szentháromság utáni csütörtökön); egyes országokban azonban a legközelebbi vasárnapon ünneplik.",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2676,9 +2676,9 @@ const char* html_text_opt_0_font_normal_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2707,9 +2707,9 @@ const char* html_text_opt_0_buttons_order_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2738,9 +2738,9 @@ const char* html_text_opt_0_voice_output_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2769,9 +2769,9 @@ const char* html_text_opt_0_footnotes_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2800,9 +2800,9 @@ const char* html_text_opt_0_transparent_nav_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3243,9 +3243,9 @@ const char* html_text_opt_1_zaver_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3273,9 +3273,9 @@ const char* html_text_opt_1_maria_ant_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4051,9 +4051,9 @@ const char* html_text_opt_2_background_override_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4068,7 +4068,7 @@ const char* html_text_opt_5_KomplHymnusA[POCET_JAZYKOV + 1] =
 	"Immár a nap leáldozott",
 	"ru_text",
 	"гімн A",
-	"is_text",
+	"hymni A: Ó, Drottinn hjá mér dvel í nótt",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4083,7 +4083,7 @@ const char* html_text_opt_5_KomplHymnusB[POCET_JAZYKOV + 1] =
 	"Krisztus, tündöklő nappalunk",
 	"ru_text",
 	"гімн Б",
-	"is_text",
+	"hymni B: Þú, Jesús, lífsins lindin best",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4128,7 +4128,7 @@ const char* html_text_opt_5_PCHymnusI[POCET_JAZYKOV + 1] =
 	"himnusz I. [Amikor az imaórát éjszaka vagy kora hajnalban mondják]",
 	"ru_text",
 	"гімн I",
-	"is_text",
+	"hymni I.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4143,7 +4143,7 @@ const char* html_text_opt_5_PCHymnusII[POCET_JAZYKOV + 1] =
 	"himnusz II. [Amikor az imaórát a nap nem reggeli órájában végzik]",
 	"ru_text",
 	"гімн II",
-	"is_text",
+	"hymni II.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4248,7 +4248,7 @@ const char* html_text_opt_5_MCDPredHymnus1[POCET_JAZYKOV + 1] =
 	"Most jöjj, Szentlélek, szállj közénk",
 	"ru_text",
 	"гімн 1",
-	"is_text",
+	"hymni Þú, Jesús, ert vegur til himinsins heim",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4263,7 +4263,7 @@ const char* html_text_opt_5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
 	"Idők rendjét megtartva most",
 	"ru_text",
 	"гімн 2",
-	"is_text",
+	"hymni Almáttugur Guð, allra stétta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4278,7 +4278,7 @@ const char* html_text_opt_5_MCDNaHymnus1[POCET_JAZYKOV + 1] =
 	"Urunk, felséges Istenünk",
 	"ru_text",
 	"гімн 1",
-	"is_text",
+	"hymni Þinn andi, Guð, til Jesú Krists mig kalli",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4293,7 +4293,7 @@ const char* html_text_opt_5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
 	"Dicsérjük dallal az Urat",
 	"ru_text",
 	"гімн 2",
-	"is_text",
+	"hymni Vér stöndum á bjargi, sem bifast ei má",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4308,7 +4308,7 @@ const char* html_text_opt_5_MCDPoHymnus1[POCET_JAZYKOV + 1] =
 	"Világfenntartó Istenünk",
 	"ru_text",
 	"гімн 1",
-	"is_text",
+	"hymni Í bljúgri bæn og þökk til þín",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4323,7 +4323,7 @@ const char* html_text_opt_5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
 	"Háromszor három óra már",
 	"ru_text",
 	"гімн 2",
-	"is_text",
+	"hymni Hygg að, því barni mest er mjúkt",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5430,7 +5430,7 @@ const char* text_JAN_06[POCET_JAZYKOV + 1] = // 6. januára | alebo nedeľu medz
 	"Urunk megjelenése (Vízkereszt)",
 	"ru_text",
 	"Аб'яўленне Пана",
-	"Geisladagur",
+	"Birting Drottins", // Geisladagur
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_07[POCET_JAZYKOV + 1] =
