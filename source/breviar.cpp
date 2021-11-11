@@ -8730,14 +8730,32 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 			}
 		}// NEzobraziť buttony pre modlitbu cez deň + kompletórium
 
+		Log("poradie_svateho == %d...\n", poradie_svateho);
+		Log("_je_global_svaty_i_slavnost(poradie_svateho) == %d...\n", _je_global_svaty_i_slavnost(poradie_svateho));
+		Log("isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY) == %d...\n", isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY));
+		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR == %d...\n", PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR);
+		Log("nie_su_vespery == %d...\n", nie_su_vespery);
+
 		// spomienka panny márie v sobotu nemá vešpery (ani kompletórium po nich)
 		// ak je isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY), zobrazujú sa prvé vešpery pre nedele a slávnosti priamo pre tie dni
-		// vešpery a kompletórium nemá zmysel zobrazovať, ak ide o sobotu a ďalšieho svätého (pri viacerých ľubovoľných spomienkach)
+		// vešpery a kompletórium nemá zmysel zobrazovať, ak ide o sobotu a ďalšieho svätého (pri viacerých ľubovoľných spomienkach) -- iba ak by šlo o lokálnu slávnosť
 		// zavedené "nie_su_vespery" kvôli Bielej (veľkej) sobote
 		// (druhé) vešpery sa musia zobrazovať pre sviatky Pána mimo nedele
-		if ((poradie_svateho != PORADIE_PM_SOBOTA)
-			&& !((isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) && (nie_su_vespery) && !(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR))
-			&& (((zobrazit_mcd == ANO) || (_global_den.denvt != DEN_SOBOTA)) || (poradie_svateho == 0))
+		if (
+			(poradie_svateho != PORADIE_PM_SOBOTA) // odlišná modlitba ako spomienka panny márie v sobotu
+
+			&& !(
+				// neplatí žiadna podmienka nižšie
+				(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) // zobrazuj prvé vešpery + prvé kompletórium v deň slávenia
+				&& (nie_su_vespery) // nie sú vešpery (špecialita pre Bielu sobotu)
+				&& !(PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR || _je_global_svaty_i_slavnost(poradie_svateho)) // nie je to sviatok Pána, čo má prednosť pred OCR nedeľou, alebo to nie je lokálna slávnosť
+				)
+
+			&& (
+				(zobrazit_mcd == ANO) // majú sa zobrazovať mcd
+				|| _je_global_svaty_i_slavnost(poradie_svateho) // je to (hoci lokálna) slávnosť
+				|| (_global_den.denvt != DEN_SOBOTA) // nie je to sobota
+				|| (poradie_svateho == 0)) // alebo je to základné slávenie
 			) {
 			// vešpery -- button
 			i = MODL_VESPERY;
@@ -14481,20 +14499,25 @@ struct tm _get_dnes(void) {
 	struct tm dnes;
 
 	// get current timestamp (date + time)
-	// 2009-05-22: pôvodne tu bolo: timer = time(NULL); 
+	// 2009-05-22: originaly here was: timer = time(NULL); 
+	// some people use breviary also after midnight for the "previous" day (they want to complete the day prayers even after the midnight) => we are shifting the "real" date approx. 2 hours later
 	// Pavel Kučera <teni@volny.cz> však poprosil, aby aj po polnoci ešte chvíľu bolo možné modliť sa kompletórium
-	// posunuté na pol tretiu: má to hlbokú logiku: pravdepodobne nik sa -- hoci aj po polnoci -- nemodlí ofícium z nasledovného dňa... 
+	// posunuté na pol tretiu: má to hlbokú logiku: pravdepodobne nik sa -- hoci aj po polnoci -- nemodlí ofícium z nasledovného dňa => predsa opravené na 2.01
 	// invitatórium by malo byť prvou rannou modlitbou po zobudení. 
 	// myslím, že sú výnimočné prípady, že ľuda regulérne modliaci sa breviár vstávajú o jednej, o druhej v noci (čím začne ich nový deň).
-	timer = time(NULL) - (time_t)(2.5 * 60 * 60);
+	timer = time(NULL) - (time_t)(2.01 * 60 * 60);
 
-	// konvertuje date/time na strukturu
+	// converts date/time to structure
 	dnes = *localtime(&timer);
 
-	// upravenie time_check structure with the data
+	// modifiyng time_check structure with the data
 	dnes.tm_mon = dnes.tm_mon + 1;
 	dnes.tm_year = dnes.tm_year + 1900;
 	dnes.tm_yday = dnes.tm_yday + 1;
+
+	// !!! tmp if you want to simulate that TODAY is another date (from the past or future), simply modify this method
+	// dnes.tm_mon = 5;
+	// dnes.tm_mday = 13;
 
 	return dnes;
 } // _get_dnes()

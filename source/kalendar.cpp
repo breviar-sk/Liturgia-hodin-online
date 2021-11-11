@@ -33293,6 +33293,9 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	Log("KAL:Koniec veľkého switch()-u podľa mesiacov a dní.\n");
 	LOG_ciara_sv;
 
+	Log("poradie_svaty == %d...\n", poradie_svaty);
+	Log("_je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty) == %d...\n", _je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty));
+
 	if ((poradie_svaty > 0) && (_je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty))) {
 
 		// spolieham sa na to, že _file, _anchor, _anchor_head ostali správne nastavené...
@@ -33302,9 +33305,12 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 			_vlastna_cast_mcd_modlitba;
 		}
 
-		if ((_je_global_svaty_i_slavnost(poradie_svaty)) && (_global_svaty(poradie_svaty).typslav != SLAV_SLAVNOST)) {
+		Log("_je_global_svaty_i_slavnost(poradie_svaty) == %d...\n", _je_global_svaty_i_slavnost(poradie_svaty));
+		Log("_global_svaty(poradie_svaty).typslav == %d...\n", _global_svaty(poradie_svaty).typslav); // pôvodne sa kontorlovalo aj toto, lenže pre lokálne slávnosti bolo nastavené (nemuselo nutne znamenať override)
 
-			Log("override stupňa slávenia => slávnosť, nastavujem prvé vešpery a kompletórium po prvých vešperách...\n");
+		if (_je_global_svaty_i_slavnost(poradie_svaty)) {
+
+			Log("override stupňa slávenia => slávnosť, nastavujem veci pre slávnosť (mcd: psalmódia; prvé vešpery: modlitba; komplet 1. aj 2. kompletórium (hoci možno už boli nastavené)...\n");
 
 			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 
