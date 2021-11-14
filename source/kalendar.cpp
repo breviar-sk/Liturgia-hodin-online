@@ -33524,7 +33524,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	}
 
 	Log("_global_svaty[1...%d] som nemenil, lebo poradie_svaty == %d\n", MAX_POCET_SVATY, poradie_svaty);
-	if ((poradie_svaty > 0) && (poradie_svaty < PORADIE_PM_SOBOTA)) {
+	if (JE_PORADIE_SVATY_OK(poradie_svaty)) {
 		Log("teraz priradim do _global_den vsetko z _global_svaty(%d)...\n", poradie_svaty);
 		// 0: všetko je nastavené v _global_den
 		_global_den = _global_svaty(poradie_svaty);

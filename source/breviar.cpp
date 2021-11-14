@@ -1343,6 +1343,7 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 	if (_global_modlitba != MODL_NEURCENA) {
 		sprintf(pom3, HTML_LINK_CALL_PARAM, STR_MODLITBA, str_modlitby[_global_modlitba]);
 		strcat(pom2, pom3);
+		Log("_export_link_helper(): pom2 == %s...\n", pom2);
 	}
 
 	// napokon prilepíme #anchor
@@ -3655,7 +3656,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 				// _global_poradie_svaty > 0
 				zobrazit &= ((_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM));
 				if (zobrazit == ANO) {
-					if ((_global_poradie_svaty > 0) && (_global_poradie_svaty < PORADIE_PM_SOBOTA)) {
+					if (JE_PORADIE_SVATY_OK(_global_poradie_svaty)) {
 						zobrazit = (((_global_svaty(_global_poradie_svaty).typslav != SLAV_LUB_SPOMIENKA) && (_global_svaty(_global_poradie_svaty).typslav != SLAV_SPOMIENKA)) || ((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI) && (_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM)));
 						zobrazit |= (MIESTNE_SLAVENIE_LOKAL_SVATY(_global_poradie_svaty)) && (je_modlitba_cez_den(_global_modlitba));
 						// napokon rozkódujeme, čo je v _global_svaty(_global_poradie_svaty).spolcast
@@ -5369,6 +5370,7 @@ void showPrayer(short int typ, short int modlitba, short int ktore_templaty = SH
 		Log("/* teraz nasleduje zobrazenie modlitby %d */\n", modlitba);
 	}
 	Log("showPrayer(): begin\n");
+	Log("showPrayer(), modlitba == %d, _global_modlitba == %d...\n", modlitba, _global_modlitba);
 
 	Log("2006-10-18: _global_pocet_zalmov_kompletorium == %d\n", _global_pocet_zalmov_kompletorium);
 
@@ -5430,6 +5432,9 @@ void showPrayer(short int typ, short int modlitba, short int ktore_templaty = SH
 	}// neznámy typ modlitby
 
 	if (_global_modlitba != modlitba) {
+
+		Log("_global_modlitba != modlitba...\n");
+
 		// zrejme ide o prvé/druhé vešpery či kompletórium
 		if ((_global_modlitba == MODL_PRVE_VESPERY) && (modlitba == MODL_VESPERY)) {
 			_global_modl_vespery = _global_modl_prve_vespery;
@@ -6749,7 +6754,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			Log("priradujem _local_den = _global_pm_sobota;\n");
 		}
 	}// poradie_svateho == PORADIE_PM_SOBOTA
-	else if ((poradie_svateho > 0) && (poradie_svateho < PORADIE_PM_SOBOTA)) {
+	else if (JE_PORADIE_SVATY_OK(poradie_svateho)) {
 		if (_global_pocet_svatych > poradie_svateho - 1) {
 			// do _local_den priradim dane slavenie
 			_local_den = _global_svaty(poradie_svateho);
@@ -8546,9 +8551,11 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		// ToDo: doriešiť pre všelijaké špeciálne "konflikty", napr. 8. apríl 2013 (presunutá slávnosť Zvestovania Pána na pondelok po Veľkonočnej oktáve) -- má mať prvé vešpery? a pod.
 		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) {
 
+			Log("isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)...\n");
+
 			smer = _global_den_smer_override;
 
-			if ((poradie_svateho >= 1) && (poradie_svateho < PORADIE_PM_SOBOTA)) {
+			if (JE_PORADIE_SVATY_OK(poradie_svateho)) {
 				smer = (smer > _global_svaty_i_smer_override(poradie_svateho)) ? _global_svaty_i_smer_override(poradie_svateho) : smer;
 			}
 
@@ -8605,7 +8612,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 
 			}// if(_global_den.smer -> smer < 5)...
 			else {
-				// Log Export("nemôžu byť prvé vešpery (smer == %d, denvt == %d, denvr == %d, VELKONOCNA_NEDELA == %d, KVETNA_NEDELA == %d, POPOLCOVA_STREDA == %d)...\n", _global_den.smer, _global_den.denvt, _global_den.denvr, VELKONOCNA_NEDELA, KVETNA_NEDELA, POPOLCOVA_STREDA);
+				Log("nemôžu byť prvé vešpery (smer == %d, denvt == %d, denvr == %d, VELKONOCNA_NEDELA == %d, KVETNA_NEDELA == %d, POPOLCOVA_STREDA == %d)...\n", _global_den.smer, _global_den.denvt, _global_den.denvr, VELKONOCNA_NEDELA, KVETNA_NEDELA, POPOLCOVA_STREDA);
 				// oddelenie
 				if (som_v_tabulke == ANO) {
 					if (!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE)) {
@@ -8731,7 +8738,9 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		}// NEzobraziť buttony pre modlitbu cez deň + kompletórium
 
 		Log("poradie_svateho == %d...\n", poradie_svateho);
-		Log("_je_global_svaty_i_slavnost(poradie_svateho) == %d...\n", _je_global_svaty_i_slavnost(poradie_svateho));
+		if (JE_PORADIE_SVATY_OK(poradie_svateho)) {
+			Log("_je_global_svaty_i_slavnost(poradie_svateho) == %d...\n", _je_global_svaty_i_slavnost(poradie_svateho));
+		}
 		Log("isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY) == %d...\n", isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY));
 		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR == %d...\n", PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR);
 		Log("nie_su_vespery == %d...\n", nie_su_vespery);
@@ -12639,7 +12648,7 @@ void showDetails(short int den, short int mesiac, short int rok, short int porad
 
 	Export("</li>\n");
 
-	if ((poradie_svaty > 0) && (poradie_svaty < PORADIE_PM_SOBOTA)) {
+	if (JE_PORADIE_SVATY_OK(poradie_svaty)) {
 
 		// najprv si rozkodujeme, co je v _global_den.spolcast
 		_struct_sc sc = _decode_spol_cast(_global_den.spolcast);
@@ -13031,14 +13040,33 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 				m = _global_den.mesiac;
 				r = _global_den.rok;
 
-				Log("LABEL_ZMENA: den == %d (%d), mesiac == %d (%d), rok == %d (%d)...\n", d, den, m, mesiac, r, rok); // it should be the same: d == den, m == mesiac, r == rok
+				Log("LABEL_ZMENA: den == %d (d == %d), mesiac == %d (m == %d), rok == %d (r == %d)...\n", den, d, mesiac, m, rok, r); // it should be the same: d == den, m == mesiac, r == rok
 
-				_global_den = _local_den;
+				_global_den = _local_den; // note that also date is overriden! we have to back up day, month and year
 
-				// note that also date is overriden! we have to back up day, month and year
-				_global_den.den = d; // den;
-				_global_den.mesiac = m; // mesiac;
-				_global_den.rok = r; // rok;
+				Log("LABEL_ZMENA: _global_den.den == %d, _global_den.mesiac == %d, _global_den.rok == %d...\n", _global_den.den, _global_den.mesiac, _global_den.rok);
+
+				Log("isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY) == %d...\n", isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY));
+
+				if (!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) {
+					// we do this ONLY when special option [display buttons for 1st vespers & 1st compline within the celebration] is NOT selected; in such case it is safer to CHANGE the date!
+					_global_den.den = d; // den;
+					_global_den.mesiac = m; // mesiac;
+					_global_den.rok = r; // rok;
+
+					Log("LABEL_ZMENA: _global_den.den == %d, _global_den.mesiac == %d, _global_den.rok == %d...\n", _global_den.den, _global_den.mesiac, _global_den.rok);
+
+					// note that den, mesiac and rok have not been changed
+				}
+				else {
+					// we will change the date (no backup used); this is the only special case we override input date values (_global_vstup_... values)
+					_global_vstup_den = den = _global_den.den;
+					_global_vstup_mesiac = mesiac = _global_den.mesiac;
+					_global_vstup_rok = rok = _global_den.rok;
+
+					Log("LABEL_ZMENA: The date HAS BEEN CHANGED!!! Also _global_vstup_... variables has been changed. (This is intentional behaviour. Example: Slovak calendar, May 12th, 2021.)\n");
+					Log("LABEL_ZMENA: den == %d (d == %d), mesiac == %d (m == %d), rok == %d (r == %d)...\n", den, d, mesiac, m, rok, r);
+				}
 
 				if (su_vespery12(modlitba)) {
 					Log("priraďujem %s z ďalšieho dňa:\n", nazov_modlitby(modlitba));
@@ -13197,11 +13225,18 @@ LABEL_NIE_INE_VESPERY:
 		// ignoring for TXT and XML export
 	}// _global_modlitba == MODL_DETAILY
 	else {
-		Log("spustam showPrayer(_global_modlitba == %s) z funkcie rozbor_dna_s_modlitbou()...\n", nazov_modlitby(_global_modlitba));
-		// 2017-11-15: historical note: predpokladam, ze aj _global_modlitba je prve/druhe vespery, v _global_prve_vespery su spravne udaje (podobne kompletorium)
-		// currently changed due to fixing problems of hyperlinks in first vespers
-		_global_modlitba = backup_global_modlitba; // restore this value due to generating hyperlinks in _export_link_helper()
-		// maybe also restoring value for _global_poradie_svaty would be necessary
+		Log("spustam showPrayer(_global_modlitba == %s; modlitba == %s) z funkcie rozbor_dna_s_modlitbou()...\n", nazov_modlitby(_global_modlitba), nazov_modlitby(modlitba));
+
+		if (!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY)) {
+			Log("changing _global_modlitba to backup_global_modlitba...\n");
+			// 2017-11-15: historical note: predpokladam, ze aj _global_modlitba je prve/druhe vespery, v _global_prve_vespery su spravne udaje (podobne kompletorium)
+			// currently changed due to fixing problems of hyperlinks in first vespers
+			_global_modlitba = backup_global_modlitba; // restore this value due to generating hyperlinks in _export_link_helper()
+			// maybe also restoring value for _global_poradie_svaty would be necessary
+		}
+		else {
+			Log("no change of _global_modlitba\n...");
+		}
 
 		LOG_ciara;
 		showPrayer(typ, modlitba, SHOW_TEMPLAT_MODLITBA, aj_navigacia);
@@ -13269,7 +13304,7 @@ void showAllPrayers(short int typ, short int den, short int mesiac, short int ro
 
 		Log("showAllPrayers().smer == %d...\n", smer);
 
-		if ((poradie_svaty >= 1) && (poradie_svaty < PORADIE_PM_SOBOTA)) {
+		if (JE_PORADIE_SVATY_OK(poradie_svaty)) {
 			smer = (smer > _global_svaty_i_smer_override(poradie_svaty)) ? _global_svaty_i_smer_override(poradie_svaty) : smer;
 
 			Log("showAllPrayers().smer == %d...\n", smer);
