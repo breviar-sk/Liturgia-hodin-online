@@ -1180,9 +1180,10 @@ extern const char* nazov_slavenia_lokal[];
 #define KALENDAR_VSEOBECNY_IS              26
 #define KALENDAR_CZ_SJ                     27
 #define KALENDAR_CZ_OCD                    28
+#define KALENDAR_CZ_OFMCONV                29
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   28
+#define POCET_KALENDAROV                   29
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
@@ -1243,9 +1244,9 @@ const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 {
 	11,
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
-	8,
+	9,
 #else
-	7,
+	8,
 #endif
 	/* ToDo */ 1,
 	/* ToDo */ 1,
@@ -1262,7 +1263,7 @@ const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALENDARS_COUNT_MAX] =
 {
 	{ KALENDAR_VSEOBECNY_SK, KALENDAR_SK_CSSR, KALENDAR_SK_SVD, KALENDAR_SK_OFM, KALENDAR_SK_SDB, KALENDAR_SK_OP, KALENDAR_SK_SJ, KALENDAR_SK_CM, KALENDAR_SK_OCD, KALENDAR_SK_CSA, KALENDAR_SK_OSU },
-	{ KALENDAR_VSEOBECNY_CZ, KALENDAR_CZ_OPRAEM, KALENDAR_CZ_OFMCAP, KALENDAR_CZ_SDB, KALENDAR_CZ_OFM, KALENDAR_CZ_SJ, KALENDAR_CZ_OCD, KALENDAR_CZ_CSSR, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_CZ, KALENDAR_CZ_OPRAEM, KALENDAR_CZ_OFMCAP, KALENDAR_CZ_SDB, KALENDAR_CZ_OFM, KALENDAR_CZ_SJ, KALENDAR_CZ_OCD, KALENDAR_CZ_OFMCONV, KALENDAR_CZ_CSSR, 0, 0 },
 	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },

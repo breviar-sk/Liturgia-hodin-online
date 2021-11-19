@@ -3851,7 +3851,7 @@ void _set_zalmy_najsv_mena_jezisovho_sk_ofm(short int modlitba) {
 	}
 	if (modlitba == MODL_POSV_CITANIE) {
 		set_zalm(1, modlitba, "z8.htm", "ZALM8");
-		if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFM))) {
+		if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFM) || (_global_kalendar == KALENDAR_CZ_OFMCONV))) {
 			set_zalm(2, modlitba, "z19.htm", "ZALM19");
 		}
 		else {

@@ -2008,7 +2008,7 @@ extern const char* text_NOV_29_SJ[POCET_JAZYKOV + 1];
 extern const char* text_DEC_01_SJ[POCET_JAZYKOV + 1];
 extern const char* text_DEC_03_SJ[POCET_JAZYKOV + 1];
 
-// --------------- OFM + OFMCap propriá ---------------
+// --------------- OFM + OFMCap + OFMConv propriá ---------------
 extern const char* text_JAN_04_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JAN_05_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JAN_12_OFM[POCET_JAZYKOV + 1];
@@ -2113,6 +2113,7 @@ extern const char* text_OKT_12_OFM[POCET_JAZYKOV + 1];
 extern const char* text_OKT_13_OFM[POCET_JAZYKOV + 1];
 extern const char* text_OKT_19_OFM[POCET_JAZYKOV + 1];
 extern const char* text_OKT_20_OFM[POCET_JAZYKOV + 1];
+extern const char* text_OKT_21_OFMCAP[POCET_JAZYKOV + 1];
 extern const char* text_OKT_22_HU_OFM[POCET_JAZYKOV + 1];
 extern const char* text_OKT_23_OFM[POCET_JAZYKOV + 1];
 extern const char* text_OKT_25_OFM[POCET_JAZYKOV + 1];

@@ -9011,7 +9011,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes, short in
 	else {
 		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
 
-			if ((!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) & ((aj_navigacia == ANO) || (aj_navigacia == CIASTOCNE))) {
+			if ((!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) && ((aj_navigacia == ANO) || (aj_navigacia == CIASTOCNE))) {
 				podmienka = 2; // zobraziť pre voice output
 			}
 			else {

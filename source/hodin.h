@@ -447,11 +447,11 @@ const char* nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char* skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", "czofmconv", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char* nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */ };
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", "pro_ofmconv.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -484,6 +484,7 @@ const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "almennur IS"
 	, "CZ SJ"
 	, "CZ OCD"
+	, "CZ OFMCONV"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -518,6 +519,7 @@ const char* nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, " IS"
 	, "SJ"
 	, "OCD"
+	, "OFMconv"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -554,6 +556,7 @@ const char* nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "general [Iceland]"
 	, "s vlastními texty jezuitského řádu (SJ)"
 	, "s vlastními texty bosých karmelitánů (OCD)"
+	, "s vlastními minoritskými texty (OFMConv.)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -590,6 +593,7 @@ const char* nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "general [Iceland]"
 	, "pro jezuity (SJ)"
 	, "pro bosé karmelitány (OCD)"
+	, "pro minority (OFMConv)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -6108,7 +6112,7 @@ const char* text_JAN_29_OP[POCET_JAZYKOV + 1] =
 const char* text_JAN_29_OFMCONV[POCET_JAZYKOV + 1] =
 {
 	"Bl. Františka Zirana, kňaza a mučeníka",
-	"",
+	"Bl. Františka Zirana, kněze a mučedníka",
 	"",
 	"",
 	"",
@@ -8041,7 +8045,7 @@ const char* text_MAJ_08_SJ[POCET_JAZYKOV + 1] =
 const char* text_MAJ_09_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Kataríny z Bologne, panny, členky 2. rádu",
-	"",
+	"Sv. Kateřiny z Boloně, panny, členky 2. řádu",
 	"",
 	"",
 	"",
@@ -9480,7 +9484,7 @@ const char* text_JUN_07_OCD[POCET_JAZYKOV + 1] =
 const char* text_JUN_07_OFMCONV[POCET_JAZYKOV + 1] =
 {
 	"Bl. Michala Tomaszeka a Zbigneva Strzałkowského, kňazov a mučeníkov",
-	"",
+	"Bl. Michala Tomaszka a Zbyňka Strzałkowského, kněží mučedníků 1. řádu",
 	"",
 	"",
 	"",
@@ -14368,7 +14372,7 @@ const char* text_OKT_19_OFM[POCET_JAZYKOV + 1] =
 const char* text_OKT_20_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jakuba Strepu, biskupa, člena 1. rádu",
-	"",
+	"Bl. Jakuba Strepy, biskupa",
 	"",
 	"",
 	"",
@@ -14429,6 +14433,20 @@ const char* text_OKT_21_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Petra z Citt&#224; di Castello, kněze",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_OKT_21_OFMCAP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Laurencie Longo, rehoľníčky",
+	"Bl. Marie Laurencie Longo, řeholnice",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"",
 	"",
