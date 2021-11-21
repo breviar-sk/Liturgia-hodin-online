@@ -32199,7 +32199,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 		_global_svaty(1).farba = LIT_FARBA_BIELA;
 		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 
-		if (_global_jazyk == JAZYK_SK) {
+		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_IS)) {
 			if (poradie_svaty == 2) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -32218,8 +32218,13 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			mystrcpy(_global_svaty(2).meno, text_DEC_04_2[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENICA, MODL_SPOL_CAST_PANNA);
 			_global_svaty(2).farba = LIT_FARBA_CERVENA;
-			_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_SK;
-		}// SK only
+			if (_global_jazyk == JAZYK_SK) {
+				_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_SK;
+			}
+			else if (_global_jazyk == JAZYK_IS) {
+				_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_IS;
+			}
+		}// SK, IS only
 
 		if (_global_jazyk == JAZYK_BY) {
 			if (poradie_svaty == 2) {

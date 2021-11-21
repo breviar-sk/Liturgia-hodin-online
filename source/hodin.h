@@ -16021,7 +16021,7 @@ const char* text_NOV_30[POCET_JAZYKOV + 1] =
 	"Szent András apostol",
 	"ru_text",
 	"Св. Андрэя, апостала",
-	"is_text",
+	"Hl. Andrésar, postula",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -16122,7 +16122,7 @@ const char* text_DEC_03[POCET_JAZYKOV + 1] =
 	"Xavéri Szent Ferenc áldozópap",
 	"ru_text",
 	"Св. Фрацішка Ксавэрыя, прэзбітэра",
-	"is_text",
+	"Hl. Frans Xavier, prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_03_SJ[POCET_JAZYKOV + 1] =
@@ -16150,7 +16150,7 @@ const char* text_DEC_04[POCET_JAZYKOV + 1] =
 	"Damaszkuszi Szent János áldozópap és egyháztanító",
 	"ru_text",
 	"Св. Яна Дамаскіна, прэзбітэра і доктара Касцёла",
-	"is_text",
+	"Hl. Jóhannesar Damasenus, prests og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_04_2[POCET_JAZYKOV + 1] =
@@ -16164,7 +16164,7 @@ const char* text_DEC_04_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Hl. Barböru, meyjar og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_05_SDB[POCET_JAZYKOV + 1] =
@@ -16192,7 +16192,7 @@ const char* text_DEC_06[POCET_JAZYKOV + 1] =
 	"Szent Miklós püspök",
 	"ru_text",
 	"Св. Мікалая, біскупа",
-	"is_text",
+	"Hl. Nikulásar, biskups",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_07[POCET_JAZYKOV + 1] =
@@ -16206,7 +16206,7 @@ const char* text_DEC_07[POCET_JAZYKOV + 1] =
 	"Szent Ambrus püspök és egyháztanító",
 	"ru_text",
 	"Св. Амброзія, біскупа і доктара Касцёла",
-	"is_text",
+	"Hl. Ambrósíusar, biskups og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_08[POCET_JAZYKOV + 1] =
@@ -16220,7 +16220,7 @@ const char* text_DEC_08[POCET_JAZYKOV + 1] =
 	"A Boldogságos Szűz Mária szeplőtelen fogantatása",
 	"ru_text",
 	"Беззаганнага зачацця Найсв. Панны Марыі",
-	"is_text",
+	"Flekklaus getnaður Maríu meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_09[POCET_JAZYKOV + 1] =
@@ -16234,7 +16234,7 @@ const char* text_DEC_09[POCET_JAZYKOV + 1] =
 	"Szent Juan Diego Cuauhtlatoatzin, Guadalupei látnok",
 	"ru_text",
 	"Св. Яна Дзідаха Куаухтлатоацына",
-	"is_text",
+	"Hl. Juans Diego Cuauhtlatoatzin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_09_CSA[POCET_JAZYKOV + 1] =
@@ -16304,7 +16304,7 @@ const char* text_DEC_11[POCET_JAZYKOV + 1] =
 	"Szent I. Damazusz pápa",
 	"ru_text",
 	"Св. Дамаса I, папы",
-	"is_text",
+	"Hl. Damasusar I., páfa",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_11_OCD[POCET_JAZYKOV + 1] =
@@ -16332,7 +16332,7 @@ const char* text_DEC_12[POCET_JAZYKOV + 1] =
 	"A Guadalupei Boldogságos Szűz Mária",
 	"ru_text",
 	"Найсв. Панны Марыі з Гвадэлупы",
-	"is_text",
+	"Alsællar Maríu meyjar frá Guadalupe",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_13[POCET_JAZYKOV + 1] =
@@ -16346,7 +16346,7 @@ const char* text_DEC_13[POCET_JAZYKOV + 1] =
 	"Szent Lúcia szűz és vértanú",
 	"ru_text",
 	"Св. Люцыі, панны і мучаніцы",
-	"is_text",
+	"Hl. Lúsíu, meyjar og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_14[POCET_JAZYKOV + 1] =
@@ -16360,7 +16360,7 @@ const char* text_DEC_14[POCET_JAZYKOV + 1] =
 	"Keresztes Szent János áldozópap és egyháztanító",
 	"ru_text",
 	"Св. Яна ад Крыжа, прэзбітэра і доктара Касцёла",
-	"is_text",
+	"Hl. Jóhannesar af krossi, prests og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_14_OCD[POCET_JAZYKOV + 1] =
@@ -16416,7 +16416,7 @@ const char* text_DEC_21[POCET_JAZYKOV + 1] =
 	"Kaníziusz Szent Péter áldozópap és egyháztanító",
 	"ru_text",
 	"Св. Пятра Канізія, прэзбітэра і доктара Касцёла",
-	"is_text",
+	"Hl. Péturs Canisíus, prests og  kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_22_CZ[POCET_JAZYKOV + 1] =
@@ -16472,7 +16472,7 @@ const char* text_DEC_26[POCET_JAZYKOV + 1] =
 	"Szent István első vértanú",
 	"ru_text",
 	"Св. Стэфана, першамучаніка",
-	"is_text",
+	"Hl. Stefáns, frumvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_27[POCET_JAZYKOV + 1] =
@@ -16486,7 +16486,7 @@ const char* text_DEC_27[POCET_JAZYKOV + 1] =
 	"Szent János apostol és evangélista",
 	"ru_text",
 	"Св. Яна, апостала і евангеліста",
-	"is_text",
+	"Hl. Jóhannesar postula og guðspjallamanns",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_28[POCET_JAZYKOV + 1] =
@@ -16500,7 +16500,7 @@ const char* text_DEC_28[POCET_JAZYKOV + 1] =
 	"Aprószentek",
 	"ru_text",
 	"Св. Немаўлят, мучанікаў",
-	"is_text",
+	"Saklausu börnin í Betlehem",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_29[POCET_JAZYKOV + 1] =
@@ -16514,7 +16514,7 @@ const char* text_DEC_29[POCET_JAZYKOV + 1] =
 	"Becket Szent Tamás püspök és vértanú",
 	"ru_text",
 	"Св. Томаса Бекета, біскупа і мучаніка",
-	"is_text",
+	"Hl. Tómasar Becket, biskups og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_31[POCET_JAZYKOV + 1] =
@@ -16528,7 +16528,7 @@ const char* text_DEC_31[POCET_JAZYKOV + 1] =
 	"Szent I. Szilveszter pápa",
 	"ru_text",
 	"Св. Сільвэстра I, папы",
-	"is_text",
+	"Hl. Silvesters I., páfa",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
