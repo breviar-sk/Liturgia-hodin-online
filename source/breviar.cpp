@@ -6886,11 +6886,11 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	else if ((_je_local_den_sviatok) && (poradie_svateho != PORADIE_PM_SOBOTA)) {
 		// sviatky
 		Log("SLAV_SVIATOK");
-		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP)) {
-			velkost = CASE_KAPITALKY;
+		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP) || (_global_jazyk == JAZYK_IS)) {
+			velkost = CASE_KAPITALKY; // use small caps
 		}
 		else if (_global_jazyk == JAZYK_BY) {
-			velkost = CASE_VERZALKY;
+			velkost = CASE_VERZALKY; // use all caps
 		}
 	}
 	else {
@@ -7180,22 +7180,22 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	}// if(equals(_local_den.meno, STR_EMPTY))
 	else {
 		Log("pridávam vlastný názov...\n");
-		// vlastny nazov
+		// vlastny nazov | proper celebration's name; respecting selected 'case' style
 		if (_local_den.denvt == DEN_NEDELA) {
-			// nedela co ma vlastny nazov
+			// nedela co ma vlastny nazov | Sunday with proper name
 			strcat(pom, mystr_UPPERCASE(_local_den.meno));
 		}
 		else if (velkost == CASE_VERZALKY) {
-			// STACK OVERFLOW
+			// STACK OVERFLOW | uppercase
 			strcat(pom, mystr_UPPERCASE(_local_den.meno));
 		}
 		else {
 			if (velkost == CASE_KAPITALKY) {
-				// Sᴛᴀᴄᴋ Oᴠᴇʀғʟᴏᴡ
+				// Sᴛᴀᴄᴋ Oᴠᴇʀғʟᴏᴡ | small case
 				strcat(pom, "<" HTML_SPAN_SMALLCAPS ">");
 			}
 
-			// Stack Overflow
+			// Stack Overflow | normal
 			strcat(pom, _local_den.meno);
 
 			if (velkost == CASE_KAPITALKY) {
@@ -7255,7 +7255,8 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		}
 
 		if (_global_jazyk == JAZYK_CZ_OP) {
-		// if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP)) {
+			// for CZ OP, also the celebration's name is for "svátek" in small caps
+
 			// respect CASE_ of celebration proper name
 			if (velkost == CASE_VERZALKY) {
 				html_span_capitalization = ANO;

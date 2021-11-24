@@ -3950,7 +3950,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 		}// SK only
 
-		if (_global_jazyk == JAZYK_HU) {
+		if ((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_IS)) {
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -3973,12 +3973,17 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+			if (_global_jazyk == JAZYK_HU) {
+				_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+			}
+			else {
+				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
+			}
 			mystrcpy(_global_svaty(1).meno, text_FEB_14[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
-		}// HU only
+		}// HU, IS only
 
 		break;
 

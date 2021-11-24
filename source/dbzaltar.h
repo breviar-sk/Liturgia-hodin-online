@@ -1806,6 +1806,7 @@ extern const char* text_SEP_16_CZ[POCET_JAZYKOV + 1];
 extern const char* text_SEP_16[POCET_JAZYKOV + 1];
 extern const char* text_SEP_17[POCET_JAZYKOV + 1];
 extern const char* text_SEP_17_2[POCET_JAZYKOV + 1];
+extern const char* text_SEP_17_IS[POCET_JAZYKOV + 1];
 extern const char* text_SEP_19[POCET_JAZYKOV + 1];
 extern const char* text_SEP_20[POCET_JAZYKOV + 1];
 extern const char* text_SEP_20_CZ[POCET_JAZYKOV + 1];

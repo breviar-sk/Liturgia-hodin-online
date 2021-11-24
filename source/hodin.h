@@ -6809,7 +6809,7 @@ const char* text_FEB_24_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bl. Jósefu Naval Girbés", // 07NOV?
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_25_SDB[POCET_JAZYKOV + 1] =
@@ -6837,7 +6837,7 @@ const char* text_FEB_27[POCET_JAZYKOV + 1] =
 	"Naregi Szent Gergely apát és egyháztanító",
 	"",
 	"",
-	"is_text",
+	"Hl. Gregoríusar frá Narec, ábóta og kirkjufræðara", // ToDo
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -7067,7 +7067,7 @@ const char* text_MAR_19[POCET_JAZYKOV + 1] =
 	"Szent József, a Boldogságos Szűz Mária jegyese",
 	"ru_text",
 	"Св. Юзафа, абранніка Найсвяцейшай Панны Марыі",
-	"Hl. Jósefs, brúðguma Maríu meyjar",
+	"Hl. Jósefs, brúðguma sællar Maríu meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_19_SJ[POCET_JAZYKOV + 1] =
@@ -8095,7 +8095,7 @@ const char* text_MAJ_10[POCET_JAZYKOV + 1] =
 	"Avilai Szent János áldozópap és egyháztanító",
 	"",
 	"",
-	"",
+	"Hl. Jóhannesar frá Avila, prests og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_11_SK[POCET_JAZYKOV + 1] =
@@ -8599,7 +8599,7 @@ const char* text_MAJ_21[POCET_JAZYKOV + 1] =
 	"Magallán Szent Kristóf áldozópap és társai, mexikói vértanúk",
 	"ru_text",
 	"Св. Хрыстафора Магалана, прэзбітэра, і паплечнікаў, мучанікаў",
-	"Hl. Kristófers Magellan, prests og félaga, píslarvotta",
+	"Hl. Kristófers Magellan, prests, og félaga, píslarvotta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_21_OP[POCET_JAZYKOV + 1] =
@@ -8641,7 +8641,7 @@ const char* text_MAJ_22[POCET_JAZYKOV + 1] =
 	"Szent Rita szerzetesnő",
 	"ru_text",
 	"Св. Рыты з Касіі, законніцы",
-	"Hl. Ritu frá Cascia, nunnu",
+	"Hl. Ritu frá Cascia, nunnu", // reglusystir?
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_22_SJ[POCET_JAZYKOV + 1] =
@@ -9076,9 +9076,9 @@ const char* text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1] = // 2012-12-
 	"",
 	"",
 	", " HTML_LINE_BREAK "Krisztus feltámadása",
-	"ru_text",
+	"",
 	", " HTML_LINE_BREAK "урачыстасць Уваскрасення Пана",
-	"is_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
@@ -9167,7 +9167,7 @@ const char* text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1] =
 	"Szentháromság vasárnapja",
 	"ru_text",
 	"Найсвяцейшай Тройцы",
-	"is_text",
+	"Alheilög Þrenning",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_KRISTA_KRALA[POCET_JAZYKOV + 1] =
@@ -9181,7 +9181,7 @@ const char* text_KRISTA_KRALA[POCET_JAZYKOV + 1] =
 	"Krisztus Király",
 	"ru_text",
 	"Урачыстасць Пана Нашага Езуса Хрыста," HTML_LINE_BREAK " Валадара Сусвету",
-	"Kristur Konungur",
+	"Kristur Konungur", // Drottinn vor Jesús Kristur Konungur alheims
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1] =
@@ -9195,7 +9195,7 @@ const char* text_NAJSV_KRISTOVHO_TELA_A_KRVI[POCET_JAZYKOV + 1] =
 	"Krisztus Szent Teste és Vére",
 	"ru_text",
 	"Найсвяцейшага Цела і Крыві Хрыста",
-	"Stórhátíð líkama og blóðs Krists",
+	"Alheilagur líkama og blóðs Krists",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1] =
@@ -9209,7 +9209,7 @@ const char* text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1] =
 	"Jézus Szent Szíve",
 	"ru_text",
 	"Найсвяцейшага Сэрца Езуса",
-	"Hið Heilaga Hjarta Jesú",
+	"Hið AlhelgaHjarta Jesú",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1] =
@@ -9223,7 +9223,7 @@ const char* text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1] =
 	"A Boldogságos Szűz Mária Szeplőtelen Szíve",
 	"ru_text",
 	"Беззаганнага Сэрца Найсвяцейшай Панны Марыі",
-	"Hið Flekklausa Hjarta Sællar Maríu Meyjar",
+	"Hið flekklausa hjarta sællar Maríu meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NEPOSKVRNENEHO_SRDCA_PM_OFM[POCET_JAZYKOV + 1] =
@@ -9251,7 +9251,7 @@ const char* text_NARODENIE_PANA[POCET_JAZYKOV + 1] =
 	"Urunk születése (Karácsony)",
 	"ru_text",
 	"Нараджэнне Пана",
-	"is_text",
+	"Fæðing Drottins", // Fæðingarhátíð Drottins
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_ZOSLANIE_DUCHA_SVATEHO[POCET_JAZYKOV + 1] =
@@ -9293,7 +9293,7 @@ const char* text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1] =
 	"A Szent Család: Jézus, Mária és József", // "Szent Család ünnepe"
 	"ru_text",
 	"Святой Сям'і: Езуса, Марыі і Юзафа",
-	"Hin Heilaga Fjölskylda",
+	"Hin Heilaga Fjölskylda Jesú, Maríu og Jósefs", // HEILÖG FJÖLSKYLDA JESÚ, MARÍU OG JÓSEFS
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SPOMIENKA_PM_V_SOBOTU[POCET_JAZYKOV + 1] =
@@ -10276,7 +10276,7 @@ const char* text_JUN_29[POCET_JAZYKOV + 1] =
 	"Szent Péter és Szent Pál apostolok",
 	"ru_text",
 	"Св. Пятра і Паўла, апосталаў",
-	"Pétursmessa og Páls, is_text",
+	"Pétursmessa og Páls, postula",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_29_OPRAEM[POCET_JAZYKOV + 1] =
@@ -10601,7 +10601,7 @@ const char* text_JUL_09[POCET_JAZYKOV + 1] =
 	"Zhao Rong Szent Ágoston áldozópap és társai, kínai vértanúk",
 	"ru_text",
 	"Св. Аўгустына Джао Жонга, прэзбітэра, " HTML_LINE_BREAK "і паплечнікаў, мучанікаў",
-	"Hl. Ágústínusar Zhao Rong og félaga, píslarvotta",
+	"Hl. Ágústínusar Zhao Rong, prestur, " HTML_LINE_BREAK "og félaga, píslarvotta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_09_OSU[POCET_JAZYKOV + 1] =
@@ -10881,7 +10881,7 @@ const char* text_JUL_15[POCET_JAZYKOV + 1] =
 	"Szent Bonaventura püspök és egyháztanító",
 	"ru_text",
 	"Св. Бонавэнтуры, біскупа і доктара Касцёла",
-	"Hl. Bonaventura, biskup og kirkjufræðari",
+	"Hl. Bónaventura, biskups og kirkjufræðari",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_15_OFM[POCET_JAZYKOV + 1] =
@@ -11063,7 +11063,7 @@ const char* text_JUL_20[POCET_JAZYKOV + 1] =
 	"Szent Apollinaris püspök és vértanú",
 	"ru_text",
 	"Св. Апалінарыя, біскупа і мучаніка",
-	"Hl. Appollinaris, biskup og píslarvottur",
+	"Hl. Appollinaris, biskups og píslarvottur",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_20_IS[POCET_JAZYKOV + 1] =
@@ -11273,7 +11273,7 @@ const char* text_JUL_26[POCET_JAZYKOV + 1] =
 	"Szent Joakim és Szent Anna, a Boldogságos Szűz Mária szülei",
 	"ru_text",
 	"Св. Яўхіма і Ганны, бацькоў Найсв. Панны Марыі",
-	"Hl. Jóakims og hl. Önnu, foreldra Maríu meyjar",
+	"Hl. Jóakims og hl. Önnu, foreldra Maríu meyjar", // Anna?
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_27[POCET_JAZYKOV + 1] =
@@ -11357,7 +11357,7 @@ const char* text_JUL_29[POCET_JAZYKOV + 1] =
 	"Szent Márta, Mária és Lazár",
 	"ru_text",
 	"Св. Марты", // ToDo
-	"Hl. Mörtu, is_text", 
+	"Hl. Mörtu, is_text", // Marta?
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_29_IS[POCET_JAZYKOV + 1] =
@@ -11546,7 +11546,7 @@ const char* text_AUG_02_1[POCET_JAZYKOV + 1] =
 	"Vercelli Szent Özséb püspök",
 	"ru_text",
 	"Св. Эўзэбія Вэрчэльскага, біскупа",
-	"Hl. Efsebíusar frá Vercelli, biskups",
+	"Hl. Efsebíusar frá Vercelli, biskups", // Evsebíus?
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_02_2[POCET_JAZYKOV + 1] =
@@ -11560,7 +11560,7 @@ const char* text_AUG_02_2[POCET_JAZYKOV + 1] =
 	"Eymard Szent Julián Péter áldozópap",
 	"ru_text",
 	"Св. Пятра Юліяна Эймарда, прэзбітэра",
-	"Hl. Péturs Julian Eymard, prests",
+	"Hl. Péturs Julian Eymard, prests", // Júlíanus?
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_02_OFM[POCET_JAZYKOV + 1] =
@@ -12655,7 +12655,7 @@ const char* text_SEP_01_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Hl. Margrétar af hinu alhelga hjarta Jesú, meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_02_CM[POCET_JAZYKOV + 1] =
@@ -12753,7 +12753,7 @@ const char* text_SEP_03[POCET_JAZYKOV + 1] =
 	"Nagy Szent Gergely pápa és egyháztanító",
 	"ru_text",
 	"Св. Грыгорыя Вялікага, папы і доктара Касцёла",
-	"is_text",
+	"Hl. Gregoríusar mikla, páfa og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_04_BY[POCET_JAZYKOV + 1] =
@@ -12823,7 +12823,7 @@ const char* text_SEP_05[POCET_JAZYKOV + 1] =
 	"Kalkuttai Szent Teréz szűz",
 	"",
 	"",
-	"",
+	"Hl. Móðir Teresa, stofnandi reglunnar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_05_1_OP[POCET_JAZYKOV + 1] =
@@ -12935,7 +12935,7 @@ const char* text_SEP_08[POCET_JAZYKOV + 1] =
 	"Szűz Mária születése (Kisboldogasszony)",
 	"ru_text",
 	"Нараджэнне Найсв. Панны Марыі",
-	"is_text",
+	"Fæðing Sællar Maríu Meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_08_BY[POCET_JAZYKOV + 1] =
@@ -12963,7 +12963,7 @@ const char* text_SEP_09[POCET_JAZYKOV + 1] =
 	"Claver Szent Péter áldozópap",
 	"ru_text",
 	"Св. Пятра Клявэра, прэзбітэра",
-	"is_text",
+	"Hl. Péturs Claver, prests", // Klaver?
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_09_SJ[POCET_JAZYKOV + 1] =
@@ -13033,7 +13033,7 @@ const char* text_SEP_11_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bl. Maríu af Jesú, meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_12[POCET_JAZYKOV + 1] =
@@ -13047,7 +13047,7 @@ const char* text_SEP_12[POCET_JAZYKOV + 1] =
 	"Szűz Mária Szent Neve",
 	"ru_text",
 	"Найсвяцейшага Імя Марыі",
-	"is_text",
+	"Alheilagt nafn Maríu meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_12_OPRAEM[POCET_JAZYKOV + 1] =
@@ -13075,7 +13075,7 @@ const char* text_SEP_13[POCET_JAZYKOV + 1] =
 	"Aranyszájú (Krizosztomosz) Szent János püspök és egyháztanító",
 	"ru_text",
 	"Св. Яна Златавуснага (Хрызастома), " HTML_LINE_BREAK "біскупа і доктара Касцёла",
-	"is_text",
+	"Hl. Jóhannesar Krýsostómusar, biskups og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_13_HU[POCET_JAZYKOV + 1] =
@@ -13103,7 +13103,7 @@ const char* text_SEP_14[POCET_JAZYKOV + 1] =
 	"A Szent Kereszt felmagasztalása",
 	"ru_text",
 	"Узвышэнне святога Крыжа",
-	"is_text",
+	"Upphafningar hins heilaga kross",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_15[POCET_JAZYKOV + 1] =
@@ -13117,7 +13117,7 @@ const char* text_SEP_15[POCET_JAZYKOV + 1] =
 	"A Fájdalmas Szűzanya",
 	"ru_text",
 	"Найсв. Панны Марыі Балеснай",
-	"is_text",
+	"Harmkvæli Maríu meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_16_CZ[POCET_JAZYKOV + 1] =
@@ -13145,7 +13145,7 @@ const char* text_SEP_16[POCET_JAZYKOV + 1] =
 	"Szent Kornél pápa és Szent Ciprián püspök vértanúk",
 	"ru_text",
 	"Св. Карнэлія, папы, і Кіпрыяна, біскупа, мучанікаў",
-	"is_text",
+	"Hl. Kornelíusar páfa og hl. Kypríanusar, biskups, píslarvotta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_17[POCET_JAZYKOV + 1] =
@@ -13159,7 +13159,7 @@ const char* text_SEP_17[POCET_JAZYKOV + 1] =
 	"Bellarmin Szent Róbert püspök és egyháztanító",
 	"ru_text",
 	"Св. Робэрта Бэлярміна, біскупа і доктара Касцёла",
-	"is_text",
+	"Hl. Róberts Bellarmínó, biskups og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_17_2[POCET_JAZYKOV + 1] =
@@ -13173,7 +13173,21 @@ const char* text_SEP_17_2[POCET_JAZYKOV + 1] =
 	"Bingeni Szent Hildegárd szűz és egyháztanító",
 	"ru_text",
 	"",
-	"is_text",
+	"Hl. Hildegarda frá Bingen, meyjar og kirkjufræðara",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_SEP_17_IS[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Hl. Lamberts, biskups og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_17_SJ[POCET_JAZYKOV + 1] =
@@ -13215,7 +13229,7 @@ const char* text_SEP_17_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Hl. Alberts frá Jerúsalem, biskups",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_18_OFM[POCET_JAZYKOV + 1] =
@@ -13271,7 +13285,7 @@ const char* text_SEP_19[POCET_JAZYKOV + 1] =
 	"Szent Januáriusz püspök és vértanú",
 	"ru_text",
 	"Св. Януарыя, біскупа і мучаніка",
-	"is_text",
+	"Hl. Janúaríusar, biskups og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_19_OFM[POCET_JAZYKOV + 1] =
@@ -13313,7 +13327,7 @@ const char* text_SEP_20[POCET_JAZYKOV + 1] =
 	"Kim Taegon Szent András áldozópap, " HTML_LINE_BREAK "Csong Haszang Szent Pál és társaik, koreai vértanúk",
 	"ru_text",
 	"Св. Андрэя Кім Таэгона, прэзбітэра, " HTML_LINE_BREAK "і Паўла Чон Хасана, і паплечнікаў, мучанікаў",
-	"is_text",
+	"Hl. Andrésar Kim Taegon, prests " HTML_LINE_BREAK "og hl. Páls Chǒng Ha-sang og félaga, píslarvotta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_20_CZ[POCET_JAZYKOV + 1] =
@@ -13369,7 +13383,7 @@ const char* text_SEP_21[POCET_JAZYKOV + 1] =
 	"Szent Máté apostol és evangélista",
 	"ru_text",
 	"Св. Мацвея, апостала і евангеліста",
-	"is_text",
+	"Hl. Matteusar, postula og guðspjallamanns",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_22_SK[POCET_JAZYKOV + 1] =
@@ -13425,7 +13439,7 @@ const char* text_SEP_23[POCET_JAZYKOV + 1] =
 	"Pietrelcinai Szent Pio áldozópap",
 	"ru_text",
 	"Св. Піо з П'етрэльчыны, прэзбітэра",
-	"is_text",
+	"Hl. Pio de Pietrelcina, prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_23_OFM[POCET_JAZYKOV + 1] =
@@ -13523,7 +13537,7 @@ const char* text_SEP_26[POCET_JAZYKOV + 1] =
 	"Szent Kozma és Damján vértanúk",
 	"ru_text",
 	"Св. Космы і Дам'яна, мучанікаў",
-	"is_text",
+	"Hl. Kosmasar og Damíanusar, píslarvotta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_26_CSSR[POCET_JAZYKOV + 1] =
@@ -13565,7 +13579,7 @@ const char* text_SEP_27[POCET_JAZYKOV + 1] =
 	"Páli Szent Vince áldozópap",
 	"ru_text",
 	"Св. Вінцэнта дэ Поля, прэзбітэра",
-	"is_text",
+	"Hl. Vinsents af Páli, prests og reglustofnanda",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_27_CM[POCET_JAZYKOV + 1] =
@@ -13593,7 +13607,7 @@ const char* text_SEP_28[POCET_JAZYKOV + 1] =
 	"Szent Vencel vértanú",
 	"ru_text",
 	"Св. Вацлава, мучаніка",
-	"is_text",
+	"Hl. Venceslas, píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_28_2[POCET_JAZYKOV + 1] =
@@ -13607,7 +13621,7 @@ const char* text_SEP_28_2[POCET_JAZYKOV + 1] =
 	"Ruiz Szent Lőrinc és társai, Fülöp-szigeteki vértanúk",
 	"ru_text",
 	"Св. Лаўрэнція Руіса і паплечнікаў, мучанікаў",
-	"is_text",
+	"Hl. Laurentius Ruiz og félaga, píslarvotta", // Lárentíus?
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_28_OP[POCET_JAZYKOV + 1] =
@@ -13663,7 +13677,7 @@ const char* text_SEP_29[POCET_JAZYKOV + 1] =
 	"Szent Mihály, Szent Gábor és Szent Rafael főangyalok",
 	"ru_text",
 	"Св. Міхала Арханёла " HTML_LINE_BREAK "(апекуна Мінска-Магілёўскай правінцыі касцёла), " HTML_LINE_BREAK "св. Габрыэля і Рафала, арханёлаў",
-	"is_text",
+	"Hl. Mikaels, Gabríels og Rafaels, erkienglar", // höfuðengla
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_30[POCET_JAZYKOV + 1] =
@@ -13677,7 +13691,7 @@ const char* text_SEP_30[POCET_JAZYKOV + 1] =
 	"Szent Jeromos áldozópap és egyháztanító",
 	"ru_text",
 	"Св. Гераніма, прэзбітэра і доктара Касцёла",
-	"is_text",
+	"Hl. Híerónýmusar, prests og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -13694,7 +13708,7 @@ const char* text_OKT_01[POCET_JAZYKOV + 1] =
 	"A Gyermek Jézusról nevezett (Lisieux-i) Szent Teréz szűz és egyháztanító",
 	"ru_text",
 	"Св. Тэрэзы ад Дзіцятка Езус, панны і доктара Касцёла",
-	"is_text",
+	"Hl. Teresu af Jesúbarninu, meyjar og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_01_OCD[POCET_JAZYKOV + 1] =
@@ -13722,7 +13736,7 @@ const char* text_OKT_02[POCET_JAZYKOV + 1] =
 	"Szent Őrzőangyalok",
 	"ru_text",
 	"Св. Анёлаў Ахоўнікаў",
-	"is_text",
+	"Hl. verndarenglar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_03_SJ[POCET_JAZYKOV + 1] =
@@ -13764,7 +13778,7 @@ const char* text_OKT_04[POCET_JAZYKOV + 1] =
 	"Assisi Szent Ferenc",
 	"ru_text",
 	"Св. Францішка Асізскага",
-	"is_text",
+	"Hl. Frans frá Assisi, reglustofnanda",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_04_OFM[POCET_JAZYKOV + 1] =
@@ -13848,7 +13862,7 @@ const char* text_OKT_05[POCET_JAZYKOV + 1] =
 	"Kowalska Szent Fausztina szűz",
 	"",
 	"",
-	"",
+	"is_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_05_OP[POCET_JAZYKOV + 1] =
@@ -13890,7 +13904,7 @@ const char* text_OKT_06[POCET_JAZYKOV + 1] =
 	"Szent Brúnó áldozópap",
 	"ru_text",
 	"Св. Бруна, прэзбітэра",
-	"is_text",
+	"Hl. Brúnó, prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_06_SJ[POCET_JAZYKOV + 1] =
@@ -13946,7 +13960,7 @@ const char* text_OKT_07[POCET_JAZYKOV + 1] =
 	"Rózsafüzér Királynője",
 	"ru_text",
 	"Найсв. Панны Марыі Ружанцовай",
-	"is_text",
+	"Rósakransmessa, hl. Maríu meyjar", // ToDo
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_08_HU[POCET_JAZYKOV + 1] =
@@ -14002,7 +14016,7 @@ const char* text_OKT_09_1[POCET_JAZYKOV + 1] =
 	"Szent Dénes püspök és társai vértanúk",
 	"ru_text",
 	"Св. Дыянісія, біскупа, і паплечнікаў, мучанікаў",
-	"is_text",
+	"Hl. Díónysíusar og félaga, píslarvotta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_09_2[POCET_JAZYKOV + 1] =
@@ -14016,7 +14030,7 @@ const char* text_OKT_09_2[POCET_JAZYKOV + 1] =
 	"Leonardi Szent János áldozópap",
 	"ru_text",
 	"Св. Яна Леанардзі, прэзбітэра",
-	"is_text",
+	"Hl. Jóhannesar Leonardi, prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_09_OP[POCET_JAZYKOV + 1] =
@@ -14086,7 +14100,7 @@ const char* text_OKT_11[POCET_JAZYKOV + 1] =
 	"Szent XXIII. János pápa",
 	"ru_text",
 	"Св. Яна XXIII, папы",
-	"is_text",
+	"Hl. Jóhannesar XXIII., páfa",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_11_OFM[POCET_JAZYKOV + 1] =
@@ -14226,7 +14240,7 @@ const char* text_OKT_14[POCET_JAZYKOV + 1] =
 	"Szent I. Kallixtusz pápa és vértanú",
 	"ru_text",
 	"Св. Калікста I, папы і мучаніка",
-	"is_text",
+	"Hl. Kalixtusar I., páfa og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_14_SJ[POCET_JAZYKOV + 1] =
@@ -14268,7 +14282,7 @@ const char* text_OKT_15[POCET_JAZYKOV + 1] =
 	"A Jézusról nevezett (Avilai) Szent Teréz " HTML_LINE_BREAK "szűz és egyháztanító",
 	"ru_text",
 	"Св. Тэрэзы ад Езуса, " HTML_LINE_BREAK "панны і доктара Касцёла",
-	"is_text",
+	"Hl. Teresu af Jesú, meyjar og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_15_OCD[POCET_JAZYKOV + 1] =
@@ -14282,7 +14296,7 @@ const char* text_OKT_15_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Hl. Teresu af Jesú, meyjar og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_16_1[POCET_JAZYKOV + 1] =
@@ -14296,7 +14310,7 @@ const char* text_OKT_16_1[POCET_JAZYKOV + 1] =
 	"Alacoque Szent Margit Mária szűz",
 	"ru_text",
 	"Св. Маргарыты Марыі Алякок, панны",
-	"is_text",
+	"Hl. Margrétar Maríu Alacoque, meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_16_2[POCET_JAZYKOV + 1] =
@@ -14310,7 +14324,7 @@ const char* text_OKT_16_2[POCET_JAZYKOV + 1] =
 	"Szent Hedvig szerzetesnő",
 	"ru_text",
 	"Св. Ядзвігі, законніцы",
-	"is_text",
+	"Hl. Heiðveigar, reglusystur",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_16_3[POCET_JAZYKOV + 1] =
@@ -14352,7 +14366,7 @@ const char* text_OKT_17[POCET_JAZYKOV + 1] =
 	"Antiochiai Szent Ignác püspök és vértanú",
 	"ru_text",
 	"Св. Ігнацыя з Антыёхіі, біскупа і мучаніка",
-	"is_text",
+	"Hl. Ignatíusar frá Antiokkíu, biskups og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_18[POCET_JAZYKOV + 1] =
@@ -14366,7 +14380,7 @@ const char* text_OKT_18[POCET_JAZYKOV + 1] =
 	"Szent Lukács evangélista",
 	"ru_text",
 	"Св. Лукі, евангеліста",
-	"is_text",
+	"Hl. Lúkasar, guðspjallamanns",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_19_1[POCET_JAZYKOV + 1] =
@@ -14380,7 +14394,7 @@ const char* text_OKT_19_1[POCET_JAZYKOV + 1] =
 	"De Brébeuf Szent János és Jogues Szent Izsák áldozópap " HTML_LINE_BREAK "és társaik, észak-amerikai vértanúk",
 	"ru_text",
 	"Св. Жана дэ Брэбёфа і Ісаака Жога, прэзбітэраў, " HTML_LINE_BREAK "і паплечнікаў, мучанікаў",
-	"is_text",
+	"Hl. Jóhannes de Brébeuf og félaga, píslarvotta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_19_2[POCET_JAZYKOV + 1] =
@@ -14394,7 +14408,7 @@ const char* text_OKT_19_2[POCET_JAZYKOV + 1] =
 	"Keresztes Szent Pál áldozópap",
 	"ru_text",
 	"Св. Паўла ад Крыжа, прэзбітэра",
-	"is_text",
+	"Hl. Páls af krossi, prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_19_SJ[POCET_JAZYKOV + 1] =
@@ -14469,7 +14483,7 @@ const char* text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_21_CZ[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Karla Habsburského",
 	"Bl. Karla Rakouského",
 	"",
 	"",
@@ -14576,7 +14590,7 @@ const char* text_OKT_22[POCET_JAZYKOV + 1] =
 	"Szent II. János Pál pápa",
 	"ru_text",
 	"Св. Яна Паўла II, папы",
-	"is_text",
+	"Hl. Jóhannesar Páls II., páfa",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_23[POCET_JAZYKOV + 1] =
@@ -14590,7 +14604,7 @@ const char* text_OKT_23[POCET_JAZYKOV + 1] =
 	"Kapisztrán Szent János áldozópap",
 	"ru_text",
 	"Св. Яна Капістрана, прэзбітэра",
-	"is_text",
+	"Hl. Jóhannesar frá Capistrano, prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_23_OFM[POCET_JAZYKOV + 1] =
@@ -14632,7 +14646,7 @@ const char* text_OKT_24[POCET_JAZYKOV + 1] =
 	"Claret Szent Antal Mária püspök",
 	"ru_text",
 	"Св. Антонія Марыі Клярэта, біскупа",
-	"is_text",
+	"Hl. Antóníusar Maríu Claret, biskups",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_24_SDB[POCET_JAZYKOV + 1] =
@@ -14828,7 +14842,7 @@ const char* text_OKT_28[POCET_JAZYKOV + 1] =
 	"Szent Simon és Szent Júdás Tádé apostolok",
 	"ru_text",
 	"Св. Сымона і Юды, апосталаў",
-	"is_text",
+	"Hl. Símonar og Júdasar (Taddeusar), postula",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_29_SDB[POCET_JAZYKOV + 1] =
@@ -14884,7 +14898,7 @@ const char* text_OKT_30_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bl. María Teresa, stofnandi reglunnar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_30_1_OP[POCET_JAZYKOV + 1] =
@@ -15013,7 +15027,7 @@ const char* text_NOV_01[POCET_JAZYKOV + 1] =
 	"Mindenszentek",
 	"ru_text",
 	"Усіх Святых",
-	"is_text",
+	"Allra heilagra",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_02[POCET_JAZYKOV + 1] =
@@ -15027,7 +15041,7 @@ const char* text_NOV_02[POCET_JAZYKOV + 1] =
 	"Halottak napja",
 	"ru_text",
 	"Успамін усіх памерлых вернікаў",
-	"is_text",
+	"Minning allra framliðinna",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_03[POCET_JAZYKOV + 1] =
@@ -15041,7 +15055,7 @@ const char* text_NOV_03[POCET_JAZYKOV + 1] =
 	"Porres Szent Márton szerzetes",
 	"ru_text",
 	"Св. Марціна дэ Порэса, законніка",
-	"is_text",
+	"Hl. Martins frá Porres",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_03_SJ[POCET_JAZYKOV + 1] =
@@ -15083,7 +15097,7 @@ const char* text_NOV_04[POCET_JAZYKOV + 1] =
 	"Borromeo Szent Károly püspök",
 	"ru_text",
 	"Св. Караля Барамэя, біскупа",
-	"is_text",
+	"Hl. Karls Borrómeus, biskups",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_05_SK[POCET_JAZYKOV + 1] =
@@ -15279,7 +15293,7 @@ const char* text_NOV_08_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Hl. Elísabetar af Þrenningunni, meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_08_OFM[POCET_JAZYKOV + 1] =
@@ -15335,7 +15349,7 @@ const char* text_NOV_09[POCET_JAZYKOV + 1] =
 	"A lateráni-bazilika felszentelése",
 	"ru_text",
 	"Гадавіна пасвячэння Латэранскай базылікі",
-	"is_text",
+	"Vígsludagur basilíkunnar í Lateran", // Vígsla Höfuðkirkjunnar í Lateran
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_10[POCET_JAZYKOV + 1] =
@@ -15349,7 +15363,7 @@ const char* text_NOV_10[POCET_JAZYKOV + 1] =
 	"Nagy Szent Leó pápa és egyháztanító",
 	"ru_text",
 	"Св. Льва Вялікага, папы і доктара Касцёла",
-	"is_text",
+	"Hl. Leós mikla, páfa og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_11[POCET_JAZYKOV + 1] =
@@ -15363,7 +15377,7 @@ const char* text_NOV_11[POCET_JAZYKOV + 1] =
 	"Tours-i Szent Márton püspök",
 	"ru_text",
 	"Св. Марціна Турскага, біскупа",
-	"is_text",
+	"Hl. Marteins frá Tours, biskups",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_12[POCET_JAZYKOV + 1] =
@@ -15377,7 +15391,7 @@ const char* text_NOV_12[POCET_JAZYKOV + 1] =
 	"Szent Jozafát püspök és vértanú",
 	"ru_text",
 	"Св. Язафата, біскупа і мучачніка",
-	"is_text",
+	"Hl. Jósafats, biskups og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_13_SDB[POCET_JAZYKOV + 1] =
@@ -15461,7 +15475,7 @@ const char* text_NOV_14_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Allrasálnamessa Karmelreglunnar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_14_SJ[POCET_JAZYKOV + 1] =
@@ -15545,7 +15559,7 @@ const char* text_NOV_15[POCET_JAZYKOV + 1] =
 	"Nagy Szent Albert püspök és egyháztanító",
 	"ru_text",
 	"Св. Альбэрта Вялікага, біскупа і доктара Касцёла",
-	"is_text",
+	"Hl. Alberts mikla, biskups og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_15_OCD[POCET_JAZYKOV + 1] =
@@ -15587,7 +15601,7 @@ const char* text_NOV_16_1[POCET_JAZYKOV + 1] =
 	"Skóciai Szent Margit",
 	"ru_text",
 	"Св. Маргарыты Шатландскай",
-	"is_text",
+	"Hl. Margrétar frá Skotlandi",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_16_2[POCET_JAZYKOV + 1] =
@@ -15601,7 +15615,7 @@ const char* text_NOV_16_2[POCET_JAZYKOV + 1] =
 	"Nagy Szent Gertrúd szűz", // HU 17NOV
 	"ru_text",
 	"Св. Гертруды, панны",
-	"is_text",
+	"Hl. Geirþrúðar, meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_16_BY[POCET_JAZYKOV + 1] =
@@ -15643,7 +15657,7 @@ const char* text_NOV_17[POCET_JAZYKOV + 1] =
 	"Árpád-házi Szent Erzsébet", // HU 19NOV
 	"ru_text",
 	"Св. Альжбеты Венгерскай, законніцы",
-	"is_text",
+	"Hl. Elísabetar frá Ungverjalandi, reglusystir",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_17_OFM[POCET_JAZYKOV + 1] =
@@ -15671,7 +15685,7 @@ const char* text_NOV_18[POCET_JAZYKOV + 1] =
 	"Szent Péter- és Szent Pál-bazilikák felszentelése",
 	"ru_text",
 	"Гадавіна пасвячэння рымскіх базылік " HTML_LINE_BREAK "св. апосталаў Пятра і Паўла",
-	"is_text",
+	"Vígsludagur höfuðkirkna postulanna Péturs og Páls", // Vígsla höfuðkirkna hinna heilögu postula Péturs og Páls
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_18_OFM[POCET_JAZYKOV + 1] =
@@ -15741,7 +15755,7 @@ const char* text_NOV_19_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Hl. Rafaels Kalinowski, prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_20_SK[POCET_JAZYKOV + 1] =
@@ -15797,7 +15811,7 @@ const char* text_NOV_21[POCET_JAZYKOV + 1] =
 	"A Boldogságos Szűz Mária bemutatása a templomban",
 	"ru_text",
 	"Ахвяраванне Найсв. Панны Марыі",
-	"is_text",
+	"Offurgerð Maríu",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_22[POCET_JAZYKOV + 1] =
@@ -15811,7 +15825,7 @@ const char* text_NOV_22[POCET_JAZYKOV + 1] =
 	"Szent Cecília szűz és vértanú",
 	"ru_text",
 	"Св. Цэцыліі, панны і мучаніцы",
-	"is_text",
+	"Hl. Sesselju, meyjar og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_23_1[POCET_JAZYKOV + 1] =
@@ -15825,7 +15839,7 @@ const char* text_NOV_23_1[POCET_JAZYKOV + 1] =
 	"Szent I. Kelemen pápa és vértanú",
 	"ru_text",
 	"Св. Клімэнта I, папы і мучаніка",
-	"is_text",
+	"Hl. Klemensar I., páfa og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_23_2[POCET_JAZYKOV + 1] =
@@ -15839,7 +15853,7 @@ const char* text_NOV_23_2[POCET_JAZYKOV + 1] =
 	"Szent Kolumbán apát",
 	"ru_text",
 	"Св. Калюмбана, абата",
-	"Hl. Kólúmba, ábóta", // IS: 09JUN
+	"Hl. Kólúmbanusar, ábóta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_23_SJ[POCET_JAZYKOV + 1] =
@@ -15859,15 +15873,15 @@ const char* text_NOV_23_SJ[POCET_JAZYKOV + 1] =
 const char* text_NOV_24[POCET_JAZYKOV + 1] =
 {
 	"Sv. Ondreja Dung-Laka, kňaza, " HTML_LINE_BREAK "a spoločníkov, mučeníkov",
-	"Sv. Ondřeje Dung-Laca, kněze, a druhů, mučedníků", //VKor: Dung se píše s <utilde> - v HTML5 Entities je to 00169 - viz http://www.w3schools.com/charsets/ref_html_entities_u.asp // Laca se píše L&#7841;ca viz: http://www.fileformat.info/info/unicode/char/1ea1/index.htm
+	"Sv. Ondřeje Dũng-Lạca, kněze, a druhů, mučedníků",
 	"",
-	"Ss. Andreæ Dung-Lac, presbyteri, et sociorum, martyrum",
+	"Ss. Andreæ Dũng-Lạc, presbyteri, et sociorum, martyrum",
 	"",
 	"Sv. Ignáce Delgada, biskupa, Vincence Liema, kněze, " HTML_LINE_BREAK "Dominika An-Khama, otce rodiny, a druhů, vietnamských mučedníků",
 	"Dung-Lac Szent András áldozópap és társai, vietnámi vértanúk",
 	"ru_text",
 	"Св. Андрэя Зунг Лака, прэзбітэра, " HTML_LINE_BREAK "і паплечнікаў, мучанікаў",
-	"is_text",
+	"Hl. Andrésar Dũng Lạc, prestur, og félaga, píslarvotta",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_24_OP[POCET_JAZYKOV + 1] =
@@ -15895,7 +15909,7 @@ const char* text_NOV_25[POCET_JAZYKOV + 1] =
 	"Alexandriai Szent Katalin szűz és vértanú",
 	"ru_text",
 	"Св. Кацярыны Александрыйскай, панны і мучаніцы",
-	"is_text",
+	"Hl. Katrínar frá Alexandríu, meyjar og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_25_HU[POCET_JAZYKOV + 1] =
@@ -16290,7 +16304,7 @@ const char* text_DEC_08[POCET_JAZYKOV + 1] =
 	"A Boldogságos Szűz Mária szeplőtelen fogantatása",
 	"ru_text",
 	"Беззаганнага зачацця Найсв. Панны Марыі",
-	"Flekklaus getnaður Maríu meyjar",
+	"Flekklaus getnaður Maríu meyjar", // MARÍUMESSA, MARÍA MEY GETIN ÁN ERFÐASYNDAR
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_09[POCET_JAZYKOV + 1] =
@@ -16522,13 +16536,13 @@ const char* text_DEC_23[POCET_JAZYKOV + 1] =
 	"Sv. Jána Kentského, kňaza",
 	"Sv. Jana Kentského, kněze",
 	"",
-	"S. Ioannis de K&#281;ty, presbyteri",
+	"S. Ioannis de Kęty, presbyteri",
 	"",
 	"Sv. Jana Kentského, kněze",
-	"K&#281;ty Szent János áldozópap",
+	"Kęty Szent János áldozópap",
 	"ru_text",
 	"Св. Яна Кенцкага, прэзбітэра",
-	"is_text",
+	"Hl. Jóhannesar frá Kęty, prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_26[POCET_JAZYKOV + 1] =
@@ -16570,7 +16584,7 @@ const char* text_DEC_28[POCET_JAZYKOV + 1] =
 	"Aprószentek",
 	"ru_text",
 	"Св. Немаўлят, мучанікаў",
-	"Saklausu börnin í Betlehem",
+	"Hl. börnin saklausu",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_29[POCET_JAZYKOV + 1] =
