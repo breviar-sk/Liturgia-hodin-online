@@ -447,11 +447,11 @@ const char* nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char* skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", "czofmconv", /* ADD_VALUE_FOR_NEW_CALENDAR */};
+{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", "czofmconv", "skopraem", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char* nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", "pro_ofmconv.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */};
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", "pro_ofmconv.htm", "pro_opraem.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -485,6 +485,7 @@ const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "CZ SJ"
 	, "CZ OCD"
 	, "CZ OFMCONV"
+	, "SK OPRAEM"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -520,6 +521,7 @@ const char* nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, "SJ"
 	, "OCD"
 	, "OFMconv"
+	, "OPRaem"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -557,6 +559,7 @@ const char* nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními texty jezuitského řádu (SJ)"
 	, "s vlastními texty bosých karmelitánů (OCD)"
 	, "s vlastními minoritskými texty (OFMConv.)"
+	, "pre premonštrátov (OPraem)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -594,6 +597,7 @@ const char* nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "pro jezuity (SJ)"
 	, "pro bosé karmelitány (OCD)"
 	, "pro minority (OFMConv)"
+	, "pre premonštrátov (OPraem)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -5621,7 +5625,7 @@ const char* text_JAN_14_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_JAN_14_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Bohumíra, rehoľníka z našej rehole",
 	"Sv. Gotfrída, řeholníka z premonstrátského řádu",
 	"",
 	"",
@@ -6310,7 +6314,7 @@ const char* text_FEB_04_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_04_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Fridricha, opáta z našej rehole",
 	"Sv. Bedřicha, opata z premonstrátského řádu",
 	"",
 	"",
@@ -6506,7 +6510,7 @@ const char* text_FEB_10[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_10_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Huga, prvého opáta v Premóntré",
 	"Bl. Huga, opata z premonstrátského řádu",
 	"",
 	"",
@@ -6632,7 +6636,7 @@ const char* text_FEB_17[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_17_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Evermoda, biskupa z našej rehole",
 	"Sv. Evermoda, biskupa z premonstrátského řádu",
 	"",
 	"",
@@ -6646,7 +6650,7 @@ const char* text_FEB_17_OPRAEM[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_18_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Siedmich svätých zakladateľov rehole Služobníkov Panny Márie",
 	"Sv. sedmi zakladatelů řádu servitů",
 	"",
 	"",
@@ -15705,7 +15709,7 @@ const char* text_NOV_18_OFM[POCET_JAZYKOV + 1] =
 const char* text_NOV_19_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Agnesy z Assisi, panny, členky 2. rádu",
-	"",
+	"Sv. Anežky z Assisi, panny",
 	"",
 	"",
 	"",
