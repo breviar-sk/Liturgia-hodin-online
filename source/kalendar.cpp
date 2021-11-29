@@ -4967,6 +4967,10 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, short int poradie_svaty, _struct_sc sc) {
 	short int pom_poradie = 1;
 
+	// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca
+	short int pom_den = den;
+	short int pom_mesiac = mesiac;
+
 	Log("mesiac marec & apríl\n");
 
 	// toto priradujeme preto, aby sme nemuseli pri kazdom svatom priradovat pocet = 1;
@@ -7049,6 +7053,80 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_CZ_OFM
 
+		if (((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM))
+			|| ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OPRAEM))
+			) {
+
+			// prepnutie na 24APR (mesiac ostáva), presun slávení zo všeobecného kalendára
+			den = 24;
+
+			if (poradie_svaty == 1) {
+				sprintf(_anchor_head, "%02d%s_", den, nazov_MES[mesiac - 1]);
+				Log("  _anchor_head == %s\n", _anchor_head);
+
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_modlitba;
+				_vlastna_cast_2citanie;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
+
+				break;
+			}
+			else if (poradie_svaty == 2) {
+				sprintf(_anchor_head, "%02d%s%d_", den, nazov_MES[mesiac - 1], poradie_svaty);
+				Log("  _anchor_head == %s\n", _anchor_head);
+
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_modlitba;
+				_vlastna_cast_2citanie;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
+
+				break;
+			}
+
+			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			mystrcpy(_global_svaty(1).meno, text_APR_24_1[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
+			_global_svaty(1).farba = LIT_FARBA_CERVENA;
+			_global_svaty(1).kalendar = _global_kalendar;
+
+			pocet = 2;
+
+			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			mystrcpy(_global_svaty(2).meno, text_APR_24_2[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			_global_svaty(2).farba = LIT_FARBA_CERVENA;
+			_global_svaty(2).kalendar = _global_kalendar;
+
+			// premenná pom_den na uchovanie pôvodného dňa (mesiac ostal) | v tejto časti sa hodnoty upravujú späť na pôvodné
+			den = pom_den;
+
+			sprintf(_anchor_head, "%02d%s_", den, nazov_MES[mesiac - 1]);
+			Log("  _anchor_head == %s\n", _anchor_head);
+
+		}// kalendár pre KALENDAR_*_OPRAEM
+
 		break;
 
 	case 23: // MES_APR -- 23APR
@@ -7293,7 +7371,9 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_CSA
 
-		else if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)) {
+		else if (((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM))
+			|| ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OPRAEM))
+			) {
 			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
@@ -7327,7 +7407,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP, MODL_SPOL_CAST_UCITEL_CIRKVI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
-		}// kalendár pre KALENDAR_CZ_OPRAEM
+		}// kalendár pre KALENDAR_*_OPRAEM
 
 		// vo všeobecnom kalendári sú 23. apríla sv. Juraj a sv. Vojtech
 		else if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM))
@@ -7610,7 +7690,9 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 	case 26: // MES_APR -- 26APR
 
-		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)) {
+		if (((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM))
+			|| ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OPRAEM))
+			) {
 			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
@@ -7639,7 +7721,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
 			_global_svaty(1).kalendar = _global_kalendar;
-		}// kalendár pre KALENDAR_CZ_OPRAEM
+		}// kalendár pre KALENDAR_*_OPRAEM
 
 		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
 			if (poradie_svaty == 1) {
