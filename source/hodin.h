@@ -7768,8 +7768,8 @@ const char* text_MAJ_02[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_02_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
-	"Přenesení sv. Norberta, našeho otce", // iba na Stahove
+	"Prenesenie nášho Otca svätého Norberta",
+	"Přenesení sv. Norberta, našeho otce", // iba na Strahove
 	"",
 	"",
 	"",
@@ -8720,7 +8720,7 @@ const char* text_MAJ_24_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Hermanna Jozefa, kňaza z našej rehole",
 	"Sv. Heřmana Josefa, kněze z premonstrátského řádu",
 	"",
 	"",
@@ -9459,7 +9459,7 @@ const char* text_JUN_06[POCET_JAZYKOV + 1] =
 };
 const char* text_JUN_06_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Nášho Otca sv. Norberta, biskupa a zakladateľa našej rehole",
 	"Našeho otce sv. Norberta, biskupa " HTML_LINE_BREAK "a zakladatele premonstrátského řádu",
 	"",
 	"",
@@ -9935,7 +9935,7 @@ const char* text_JUN_16_2_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_JUN_16_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Isfrída, biskupa z našej rehole", // SK OPraem: 15JUN
 	"Sv. Isfrída, biskupa z premonstrátského řádu",
 	"",
 	"",
@@ -10292,9 +10292,9 @@ const char* text_JUN_29_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Petra a Pavla, apoštolů",
 	"Szent Péter és Szent Pál apostolok",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_30[POCET_JAZYKOV + 1] =
@@ -10680,7 +10680,7 @@ const char* text_JUL_09_SJ[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_09_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Adriána a Jakuba, kňazov z našej rehole " HTML_LINE_BREAK "a spoločníkov, gorkumských mučeníkov",
 	"Sv. Adriána a Jakuba, kněží premonstrátského řádu, " HTML_LINE_BREAK "a jejich druhů, mučedníků Gorkumských",
 	"",
 	"",
@@ -10848,7 +10848,7 @@ const char* text_JUL_14_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_14_CZ[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Hroznatu, mučeníka",
 	"Bl. Hroznaty, mučedníka",
 	"",
 	"",
@@ -10862,7 +10862,7 @@ const char* text_JUL_14_CZ[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_14_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Hroznatu, mučeníka našej rehole",
 	"Bl. Hroznaty, mučedníka z premonstrátského řádu",
 	"",
 	"",
@@ -11933,7 +11933,7 @@ const char* text_AUG_13_HU[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_13_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Gertrúdy, panny našej rehole",
 	"Bl. Gertrudy, panny z premonstrátského řádu",
 	"",
 	"",
@@ -12045,7 +12045,7 @@ const char* text_AUG_16[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_16_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Rocha",
 	"Sv. Rocha",
 	"",
 	"",
@@ -12521,7 +12521,7 @@ const char* text_AUG_27[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_27_AUG[POCET_JAZYKOV + 1] =
 {
-	"Sv. Moniky, matky nášho svätého otca Augustína", // SK CSA
+	"Sv. Moniky, matky nášho svätého otca Augustína", // SK CSA, SK OPraem
 	"Sv. Moniky, matky našeho otce sv. Augustina", // CZ OPraem
 	"",
 	"",
@@ -12549,7 +12549,7 @@ const char* text_AUG_28[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_28_AUG[POCET_JAZYKOV + 1] =
 {
-	"Nášho otca sv. Augustína, biskupa a učiteľa Cirkvi", // SK CSA
+	"Nášho otca sv. Augustína, biskupa a učiteľa Cirkvi", // SK CSA, SK OPraem
 	"Našeho otce sv. Augustina, biskupa a učitele církve", // CZ OPraem
 	"",
 	"",
@@ -12605,7 +12605,7 @@ const char* text_AUG_30_CM[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_30_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Bronislavy, panny našej rehole",
 	"Bl. Bronislavy, panny z premonstrátského řádu",
 	"",
 	"",
@@ -13056,7 +13056,7 @@ const char* text_SEP_12[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_12_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Najsv. mena Panny Márie",
 	"Nejsvětějšího jména Panny Marie",
 	"",
 	"",
@@ -14067,7 +14067,7 @@ const char* text_OKT_10_SK[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_10_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Gereona a spoločníkov, mučeníkov",
 	"Sv. Gereona a druhů, mučedníků",
 	"",
 	"",
@@ -14473,7 +14473,7 @@ const char* text_OKT_20_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Jakuba Kerna, kňaza našej rehole",
 	"Bl. Jakuba Kerna, kněze z premonstrátského řádu",
 	"",
 	"",
@@ -14781,7 +14781,7 @@ const char* text_OKT_26_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_26_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Gilberta, opáta našej rehole",
 	"Sv. Gilberta, opata z premonstrátského řádu",
 	"",
 	"",
@@ -15330,7 +15330,7 @@ const char* text_NOV_08_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_08_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Všetkých svätých vašej rehole " HTML_LINE_BREAK "a všetkých svätých rehoľných kanonikov",
 	"Všech svatých premonstrátského řádu " HTML_LINE_BREAK "a všech svatých z řádů řeholních kanovníků",
 	"",
 	"",
@@ -15498,7 +15498,7 @@ const char* text_NOV_14_SJ[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_14_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Siarda, opáta našej rehole",
 	"Sv. Siarda, opata z premonstrátského řádu",
 	"",
 	"",
