@@ -4967,9 +4967,8 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, short int poradie_svaty, _struct_sc sc) {
 	short int pom_poradie = 1;
 
-	// premenné pom_den a pom_mesiac na uchovanie pôvodného dňa a mesiaca
+	// premenná pom_den na uchovanie pôvodného dňa
 	short int pom_den = den;
-	short int pom_mesiac = mesiac;
 
 	Log("mesiac marec & apríl\n");
 
@@ -31952,6 +31951,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
@@ -31959,6 +31959,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
+				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
 
 				break;

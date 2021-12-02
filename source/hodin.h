@@ -16145,12 +16145,12 @@ const char* text_DEC_01_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_DEC_01_CZ[POCET_JAZYKOV + 1] =
 {
-	"Sv. Edmunda Campiona, Róberta Southwella a ich spoločníkov, mučeníkov",
-	"Sv. Edmunda Kampiána a Roberta Southwella, kněží, a druhů, mučedníků", // bolo: "Sv. Edmunda Kampiána, kněze a mučedníka"
+	"Sv. Edmunda Campiona, kňaza a mučeníka",
+	"Sv. Edmunda Kampiána, kněze a mučedníka",
 	"",
 	"",
 	"",
-	"Sv. Edmunda Kampiána a Roberta Southwella, kněží, a druhů, mučedníků", // bolo: "Sv. Edmunda Kampiána, kněze a mučedníka"
+	"Sv. Edmunda Kampiána, kněze a mučedníka",
 	"",
 	"",
 	"",

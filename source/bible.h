@@ -104,7 +104,7 @@
 // #define		BIBLE_BOOK_DC_2Esd
 // #define		BIBLE_BOOK_DC_PrMan
 
-// taken from https://crosswire.org/wiki/OSIS_Book_Abbreviations
+// taken from https://wiki.crosswire.org/OSIS_Book_Abbreviations
 const char* bible_paratext_shortcut[BIBLE_BOOKS_COUNT + 1] =
 {
 	"GEN", /* BIBLE_BOOK_OT_Gen */
