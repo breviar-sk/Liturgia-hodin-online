@@ -767,6 +767,8 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ZAKONCENIE_ON_JE              "ON_JE"
 // ešte jedno zakončenie modlitby pre slovenčinu, krátke resp. dlhé
 #define PARAM_ZAKONCENIE_KTORY_JE           "KTORY_JE"
+// zakončenia modlitby pre IS
+#define PARAM_ZAKONCENIE_KTORY_ZIJES        "KTORY_ZIJES"
 // predslovy k zakončeniam, ktoré sa pre férie nemajú zobraziť, ak sa slávi spomienka v privilegovaných dňoch
 #define PARAM_ZAKONCENIE_O_TO_TA_PROSIME    "O_TO_TA_PROSIME"
 
@@ -1969,18 +1971,6 @@ extern const char* text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1];
 extern const char* text_DEC_08[POCET_JAZYKOV + 1];
 extern const char* text_AUG_15[POCET_JAZYKOV + 1];
 extern const char* text_NOV_01[POCET_JAZYKOV + 1];
-
-extern const char* text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1];
-extern const char* text_ZAKONCENIE_SKRZE_kratke[POCET_JAZYKOV + 1];
-extern const char* text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1];
-extern const char* text_ZAKONCENIE_LEBO_ON_kratke[POCET_JAZYKOV + 1];
-extern const char* text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1];
-extern const char* text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1];
-extern const char* text_ZAKONCENIE_ON_JE_dlhe; // len SK
-extern const char* text_ZAKONCENIE_ON_JE_kratke; // len SK
-extern const char* text_ZAKONCENIE_KTORY_JE_dlhe; // len SK
-extern const char* text_ZAKONCENIE_KTORY_JE_kratke; // len SK
-extern const char* text_ZAKONCENIE_O_TO_TA_PROSIME[POCET_JAZYKOV + 1];
 
 extern const char* html_text_batch_Back[POCET_JAZYKOV + 1];
 

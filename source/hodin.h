@@ -5152,7 +5152,7 @@ const char* text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1] =
 	"A mi Urunk, Jézus Krisztus, a te Fiad által, aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Fyrir Drottin vorn Jesúm Krist, Son þinn, sem með þér lifir og ríkir í einingu Heilags Anda, Guð um aldir alda.",
+	"Fyrir Drottin vorn Jesúm Krist, Son þinn, sem með þér lifir og ríkir í einingu Heilags Anda, Guð, um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5232,10 +5232,15 @@ const char* text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1] =
 };
 
 // SK only (POST1_MODLITBA5NE)
-const char* text_ZAKONCENIE_ON_JE_dlhe = "On je Boh a s_tebou žije a kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.";
-const char* text_ZAKONCENIE_ON_JE_kratke = "On žije a kraľuje na veky vekov.";
-const char* text_ZAKONCENIE_KTORY_JE_dlhe = "ktorý je Boh a s_tebou žije a kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.";
-const char* text_ZAKONCENIE_KTORY_JE_kratke = "ktorý žije a kraľuje na veky vekov.";
+const char* text_SK_ZAKONCENIE_ON_JE_dlhe = "On je Boh a s_tebou žije a kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.";
+const char* text_SK_ZAKONCENIE_ON_JE_kratke = "On žije a kraľuje na veky vekov.";
+const char* text_SK_ZAKONCENIE_KTORY_JE_dlhe = "ktorý je Boh a s_tebou žije a kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.";
+const char* text_SK_ZAKONCENIE_KTORY_JE_kratke = "ktorý žije a kraľuje na veky vekov.";
+// IS only
+const char* text_IS_ZAKONCENIE_KTORY_JE_dlhe = "sem með þér lifir og ríkir í einingu Heilags Anda, Guð, um aldir alda.";
+const char* text_IS_ZAKONCENIE_KTORY_JE_kratke = "sem með þér lifir og ríkir um aldir alda.";
+const char* text_IS_ZAKONCENIE_KTORY_ZIJES_dlhe = "Þú sem lifir og ríkir með Guði Föður, í einingu Heilags Anda, Guð, um aldir alda.";
+const char* text_IS_ZAKONCENIE_KTORY_ZIJES_kratke = "Þú sem lifir og ríkir um aldir alda.";
 
 const char* text_ZAKONCENIE_O_TO_TA_PROSIME[POCET_JAZYKOV + 1] =
 {

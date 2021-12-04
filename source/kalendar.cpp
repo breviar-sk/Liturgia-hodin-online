@@ -25343,7 +25343,6 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 		mystrcpy(_global_svaty(1).meno, text_OKT_05[_global_jazyk], MENO_SVIATKU);
 		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 		_global_svaty(1).farba = LIT_FARBA_BIELA;
-		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_SK;
 
 		if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))) {
 			if (poradie_svaty == pom_poradie) {
