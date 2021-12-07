@@ -11328,6 +11328,8 @@ _struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] 
 	{ JAZYK_SK, KALENDAR_SK_OP, BASE_OPT_6_CITANIE2_MULTI, "08NOV_cCIT2", 4 },
 	{ JAZYK_SK, KALENDAR_SK_OP, BASE_OPT_6_CITANIE2_MULTI, "15NOV_cCIT2", 2 },
 	{ JAZYK_SK, KALENDAR_SK_OP, BASE_OPT_6_CITANIE2_MULTI, "24NOV_cCIT2", 3 },
+	{ JAZYK_SK, KALENDAR_SK_OPRAEM, BASE_OPT_6_CITANIE2_MULTI, "04FEB_cCIT2", 2 },
+	{ JAZYK_SK, KALENDAR_SK_OPRAEM, BASE_OPT_6_CITANIE2_MULTI, "28AUG_cCIT2", 2 },
 };
 
 short int pocet_multi(char* _anchor, unsigned long long type) {

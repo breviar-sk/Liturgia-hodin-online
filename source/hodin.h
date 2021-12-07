@@ -5143,7 +5143,7 @@ const char* html_text_batch_Back[POCET_JAZYKOV + 1] = { "hore", "nahoru", "up", 
 // zakončenie modlitby trojaké, krátke resp. dlhé | triple prayer ending (short, long)
 const char* text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1] =
 {
-	"Skrze nášho Pána Ježiša Krista, tvojho Syna, ktorý je Boh a s_tebou žije a kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.",
+	"Skrze nášho Pána Ježiša Krista, tvojho Syna, ktorý je Boh a s_tebou žije a kraľuje v_jednote Ducha Svätého po všetky veky vekov.",
 	"Skrze tvého Syna Ježíše Krista, našeho Pána, neboť on s_tebou v_jednotě Ducha Svatého žije a kraluje po všechny věky věků.",
 	"",
 	"Per D&#243;minum nostrum Iesum Christum, F&#237;lium tuum, qui tecum vivit et regnat in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula sæcul&#243;rum.",
@@ -5173,7 +5173,7 @@ const char* text_ZAKONCENIE_SKRZE_kratke[POCET_JAZYKOV + 1] =
 
 const char* text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1] =
 {
-	"Lebo on je Boh a s_tebou žije a kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.",
+	"Lebo on je Boh a s_tebou žije a kraľuje v_jednote Ducha Svätého po všetky veky vekov.",
 	"Neboť on s_tebou v_jednotě Ducha Svatého žije a kraluje po všechny věky věků.",
 	"",
 	"Qui tecum vivit et regnat in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula sæcul&#243;rum.",
@@ -5203,7 +5203,7 @@ const char* text_ZAKONCENIE_LEBO_ON_kratke[POCET_JAZYKOV + 1] =
 
 const char* text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1] =
 {
-	"Lebo ty si Boh a žiješ a kraľuješ s Bohom Otcom v_jednote s_Duchom Svätým po všetky veky vekov.",
+	"Lebo ty si Boh a žiješ a kraľuješ s Bohom Otcom v_jednote Ducha Svätého po všetky veky vekov.",
 	"Neboť ty žiješ a kraluješ s_Bohem Otcem v_jednotě Ducha Svatého po všechny věky věků.",
 	"",
 	"Qui vivis et regnas cum Deo Patre in unit&#225;te Sp&#237;ritus Sancti, Deus, per &#243;mnia s&#509;cula sæculórum.",
@@ -5232,9 +5232,9 @@ const char* text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1] =
 };
 
 // SK only (POST1_MODLITBA5NE)
-const char* text_SK_ZAKONCENIE_ON_JE_dlhe = "On je Boh a s_tebou žije a kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.";
+const char* text_SK_ZAKONCENIE_ON_JE_dlhe = "On je Boh a s_tebou žije a kraľuje v_jednote Ducha Svätého po všetky veky vekov.";
 const char* text_SK_ZAKONCENIE_ON_JE_kratke = "On žije a kraľuje na veky vekov.";
-const char* text_SK_ZAKONCENIE_KTORY_JE_dlhe = "ktorý je Boh a s_tebou žije a kraľuje v_jednote s_Duchom Svätým po všetky veky vekov.";
+const char* text_SK_ZAKONCENIE_KTORY_JE_dlhe = "ktorý je Boh a s_tebou žije a kraľuje v_jednote Ducha Svätého po všetky veky vekov.";
 const char* text_SK_ZAKONCENIE_KTORY_JE_kratke = "ktorý žije a kraľuje na veky vekov.";
 // IS only
 const char* text_IS_ZAKONCENIE_KTORY_JE_dlhe = "sem með þér lifir og ríkir í einingu Heilags Anda, Guð, um aldir alda.";
@@ -7560,7 +7560,7 @@ const char* text_APR_25[POCET_JAZYKOV + 1] =
 };
 const char* text_APR_26_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Sv. Ludolfa, biskupa a mučeníka z našej rehole",
 	"Sv. Ludolfa, biskupa a mučedníka " HTML_LINE_BREAK "z premonstrátského řádu",
 	"",
 	"",

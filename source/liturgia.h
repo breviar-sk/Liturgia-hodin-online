@@ -1246,11 +1246,7 @@ const short int supported_languages[POCET_JAZYKOV + 1] =
 // note 3: ADD_VALUE_FOR_NEW_CALENDAR: change the number of supported calendars in proper language
 const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 {
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
 	12,
-#else
-	11,
-#endif
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 	9,
 #else
