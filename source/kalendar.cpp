@@ -12871,6 +12871,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_PRVE_VESPERY;
 				_vlastna_cast_full(modlitba);
+				_vlastna_cast_kresponz_ve_obd;
 
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
@@ -12889,6 +12890,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
+				_vlastna_cast_kresponz_ve_obd;
 
 				break;
 			}
@@ -16607,28 +16609,53 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
-				modlitba = MODL_INVITATORIUM;
-				_vlastna_cast_antifona_inv;
+				if (_global_kalendar == KALENDAR_CZ_OPRAEM) {
+					modlitba = MODL_INVITATORIUM;
+					_vlastna_cast_antifona_inv;
+				}
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_full_okrem_prosieb(modlitba);
+				if (_global_kalendar == KALENDAR_CZ_OPRAEM) {
+					_vlastna_cast_full_okrem_prosieb(modlitba);
+				}
+				else {
+					_vlastna_cast_benediktus;
+					_vlastna_cast_modlitba;
+				}
 
 				modlitba = MODL_VESPERY;
-				_set_zalmy_sviatok_duch_past(modlitba);
-				_vlastna_cast_full_okrem_prosieb(modlitba);
+				if (_global_kalendar == KALENDAR_CZ_OPRAEM) {
+					_set_zalmy_sviatok_duch_past(modlitba);
+					_vlastna_cast_full_okrem_prosieb(modlitba);
+				}
+				else {
+					_vlastna_cast_magnifikat;
+					_vlastna_cast_modlitba;
+				}
 
 				modlitba = MODL_POSV_CITANIE;
-				_set_zalmy_sviatok_duch_past(modlitba);
-				_vlastna_cast_full(modlitba);
+				if (_global_kalendar == KALENDAR_CZ_OPRAEM) {
+					_set_zalmy_sviatok_duch_past(modlitba);
+					_vlastna_cast_full(modlitba);
+				}
+				else {
+					_vlastna_cast_2citanie;
+					_vlastna_cast_modlitba;
+				}
 
-				_vlastna_cast_mcd_kcitresp_modl;
+				if (_global_kalendar == KALENDAR_CZ_OPRAEM) {
+					_vlastna_cast_mcd_kcitresp_modl;
+				}
 
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
 			if (_global_kalendar == KALENDAR_CZ_OPRAEM) {
+				_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
 				_global_svaty(1).typslav_lokal = LOKAL_SLAV_OPRAEM_SLAVNOST_TEPLA;
+			}
+			else {
+				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
 			}
 			mystrcpy(_global_svaty(1).meno, text_JUL_14_OPRAEM[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);

@@ -151,18 +151,18 @@ const char* html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 
 // the prefix for common parts of celebration
 const char* nazov_spolc_zospolc_jazyk[POCET_JAZYKOV + 1] =
-{ "Zo spoločnej časti", "Společné texty", "Common texts", "Communia", "", "Společné texty", "közös zsolozsmája", "ru_text", "Агульныя тэксты", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Zo spoločnej časti", "Společné texty", "Common texts", "Communia", "", "Společné texty", "közös zsolozsmája", "ru_text", "Агульныя тэксты", "Frá almennum hlutum", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* nazov_spolc_oficiumza_jazyk[POCET_JAZYKOV + 1] =
-{ "Ofícium za", "Společné texty", "Common texts", "Communia", "", "Společné texty", "közös zsolozsmája", "ru_text", "Агульныя тэксты", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Ofícium za", "Společné texty", "Common texts", "Communia", "", "Společné texty", "közös zsolozsmája", "ru_text", "Агульныя тэксты", "Tíðabænir", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // the --CELEBRATION-- for common parts of celebration
 const char* nazov_spolc_sviatky_jazyk[POCET_JAZYKOV + 1] =
-{ "na sviatky", "na svátky", "", "", "", "na svátky", "", "ru_text", "пра", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "na sviatky", "na svátky", "", "", "", "na svátky", "", "ru_text", "пра", "á hátíðardögum", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // the --ANNIVERSARY-- for common parts of celebration
 const char* nazov_spolc_vyrocie_jazyk[POCET_JAZYKOV + 1] =
-{ "na výročie", "na výročí", "", "ad anniversarium", "", "na výročí", "", "ru_text", "на", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "na výročie", "na výročí", "", "ad anniversarium", "", "na výročí", "", "ru_text", "на", "fyrir árlegan minningardag", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // the --OR-- (alternative) for common parts of celebration
 const char* nazov_spolc_alebo_jazyk[POCET_JAZYKOV + 1] =
@@ -171,34 +171,34 @@ const char* nazov_spolc_alebo_jazyk[POCET_JAZYKOV + 1] =
 // the names of the common texts (e.g.: for bishops, for saint men, for apostles...)
 const char* nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
 {
-	{ "neurčená", "neurčena", "not decided", "non definitæ", "", "", "", "ru_text", "by_text", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "duchovných pastierov: pre kňazov", "o duchovních pastýřích (o kněžích)", "", "pastorum: pro presbytero", "", "O duchovních pastýřích – o kněžích", "lelkipásztorok – papok", "ru_text", "пастыраў: пра прэзбітэраў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "duchovných pastierov: pre biskupov", "o duchovních pastýřích (o biskupech)", "", "pastorum: pro episcopo", "", "O duchovních pastýřích – o biskupech", "lelkipásztorok – püspökök", "ru_text", "пастыраў: пра біскупаў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "duchovných pastierov: pre pápežov", "o duchovních pastýřích (o papeži)", "", "pastorum: pro papa", "", "O duchovních pastýřích – o papeži", "lelkipásztorok – pápa", "ru_text", "пастыраў: пра папу", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "učiteľov Cirkvi", "o učitelích církve", "", "doctorum Ecclesiæ", "", "O učitelích církve", "egyháztanítók", "ru_text", "доктараў Касцёла", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "apoštolov", "o apoštolech", "", "Apostolorum", "", "O apoštolech", "apostolok", "ru_text", "Апосталаў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "jedného mučeníka", "o jednom mučedníkovi", "", "unius martyris", "", "O mučedníkovi", "vértanú férfi", "ru_text", /* аднаго */ "мучаніка", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "viacerých mučeníkov", "o více mučednících", "", "plurimorum martyrum", "", "O více mučednících", "több vértanú", "ru_text", "некалькіх мучанікаў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Panny Márie", "o Panně Marii", "", "Beatæ Mariæ Virginis", "", "O Panně Marii", "Szűz Mária", "ru_text", "Найсвяцейшую Панну Марыю", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre rehoľníkov", "o svatých mužích (o řeholnících)", "", "sanctorum virorum: pro religiosis", "", "O svatých mužích – o řeholnících", "szerzetes", "ru_text", "святых мужчын: пра законнікаў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov", "o svatých mužích", "", "sanctorum virorum", "", "O svatých mužích", "szent férfiak", "ru_text", "святых мужчын", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "panien", "o pannách", "", "virginum", "", "O pannách", "szüzek", "ru_text", "паннаў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre rehoľnice", "o svatých ženách (o řeholnicích)", "", "sanctarum mulierum: pro religiosis", "", "O svatých ženách – o řeholnicích", "apáca", "ru_text", "святых жанчын: пра законніц", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien", "o svatých ženách", "", "sanctarum mulierum", "", "O svatých ženách", "szent asszonyok", "ru_text", "святых жанчын", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "duchovných pastierov: pre viacerých", "o více duchovních pastýřích", "", "plurium pastorum", "", "O více duchovních pastýřích", "több lelkipásztor", "ru_text", "некалькіх пастыраў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "jednej mučenice", "o jedné mučednici", "", "unius martyris", "", "O mučednici", "vértanú nő", "ru_text", "мyчаніцy", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre vychovávateľky", "o svatých ženách (o vychovatelkách)", "", "sanctarum mulierum: pro educatoribus", "", "O svatých ženách – o vychovatelkách", "nevelő asszonyok", "ru_text", "святых жанчын: пра выхавацеляў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre vychovávateľov", "o svatých mužích (o vychovatelích)", "", "sanctorum virorum: pro educatoribus", "", "O svatých mužích – o vychovatelích", "nevelő férfiak", "ru_text", "святых мужчын: пра выхавацеляў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre tie, čo konali skutky milosrdenstva", "o svatých ženách (které vynikaly milosrdnými skutky)", "", "sanctarum mulierum: pro iis qui opera misericordiæ exercuerunt", "", "O svatých ženách – o ženě, která vynikala milosrdnými skutky", "jótékonykodó asszonyok", "ru_text", "святых жанчын, якія здзяйснялі ўчынкі міласэрнасці", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre tých, čo konali skutky milosrdenstva", "o svatých mužích (kteří vynikali milosrdnými skutky)", "", "sanctorum virorum: pro iis qui opera misericordiæ exercuerunt", "", "O svatých mužích – o muži, který vynikal milosrdnými skutky", "jótékonykodó férfiak", "ru_text", "святых мужчын, якія здзяйснялі ўчынкі міласэрнасці", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre viaceré", "o svatých ženách (o více svatých)", "", "plurium mulierum", "", "O svatých ženách – o více svatých", "több szent asszony", "ru_text", "некалькіх святых жанчын", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre viacerých", "o svatých mužích (o více svatých)", "", "plurium virorum", "", "O svatých mužích – o více svatých", "több szent férfi", "ru_text", "некалькіх святых мужчын", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "viacerých panien", "o pannách – o více pannách", "", "plurium virginum", "", "O pannách – o více pannách", "több szűz", "ru_text", "некалькіх паннаў", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "posviacky chrámu", "o posvěcení kostela", "", "dedicationis ecclesiæ", "", "Posvěcení kostela", "templomszentelés", "ru_text", "пасвячэнне касцёла", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "zosnulých", "za zemřelé", "", "defunctorum", "", "Za zemřelé", "halottakért", "ru_text", "за памерлых", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre tie, čo žili v manželstve", "o svatých ženách (které žily v manželství)", "", "sanctarum mulierum: pro iis quæ in matrimonio vixit", "", "O svatých ženách – o ženě, která žila v manželství", "házas szent asszonyok", "ru_text", "святых жанчын: ", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých mužov: pre tých, čo žili v manželstve", "o svatých mužích (kterí žili v manželství)", "", "sanctorum virorum: pro iis qui in matrimonio vixit", "", "O svatých mužích – o muži, který žil v manželství", "házas szent férfiak", "ru_text", "святых мужчын: ", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "nebrať", "nepoužít", "do not use", "non sumere", "", "nepoužít", "mindent sajátból", "ru_text", "by_text", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	{ "neurčená", "neurčena", "not decided", "non definitæ", "", "", "", "ru_text", "by_text", "ótilgreint", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "duchovných pastierov: pre kňazov", "o duchovních pastýřích (o kněžích)", "", "pastorum: pro presbytero", "", "O duchovních pastýřích – o kněžích", "lelkipásztorok – papok", "ru_text", "пастыраў: пра прэзбітэраў", "fyrir daga hirða: prestar", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "duchovných pastierov: pre biskupov", "o duchovních pastýřích (o biskupech)", "", "pastorum: pro episcopo", "", "O duchovních pastýřích – o biskupech", "lelkipásztorok – püspökök", "ru_text", "пастыраў: пра біскупаў", "fyrir daga hirða: biskupar", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "duchovných pastierov: pre pápežov", "o duchovních pastýřích (o papeži)", "", "pastorum: pro papa", "", "O duchovních pastýřích – o papeži", "lelkipásztorok – pápa", "ru_text", "пастыраў: пра папу", "fyrir daga hirða: páfar", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "učiteľov Cirkvi", "o učitelích církve", "", "doctorum Ecclesiæ", "", "O učitelích církve", "egyháztanítók", "ru_text", "доктараў Касцёла", "fyrir daga kirkjufræðara", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "apoštolov", "o apoštolech", "", "Apostolorum", "", "O apoštolech", "apostolok", "ru_text", "Апосталаў", "fyrir daga  postula", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "jedného mučeníka", "o jednom mučedníkovi", "", "unius martyris", "", "O mučedníkovi", "vértanú férfi", "ru_text", /* аднаго */ "мучаніка", "fyrir daga eins píslarvotts", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "viacerých mučeníkov", "o více mučednících", "", "plurimorum martyrum", "", "O více mučednících", "több vértanú", "ru_text", "некалькіх мучанікаў", "fyrir daga fleiri en eins píslarvotts", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Panny Márie", "o Panně Marii", "", "Beatæ Mariæ Virginis", "", "O Panně Marii", "Szűz Mária", "ru_text", "Найсвяцейшую Панну Марыю", "fyrir daga sællar Maríu meyjar", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre rehoľníkov", "o svatých mužích (o řeholnících)", "", "sanctorum virorum: pro religiosis", "", "O svatých mužích – o řeholnících", "szerzetes", "ru_text", "святых мужчын: пра законнікаў", "fyrir daga heilagra manna: klaustur- og reglufólk", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov", "o svatých mužích", "", "sanctorum virorum", "", "O svatých mužích", "szent férfiak", "ru_text", "святых мужчын", "fyrir daga heilagra manna", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "panien", "o pannách", "", "virginum", "", "O pannách", "szüzek", "ru_text", "паннаў", "fyrir daga meyja", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre rehoľnice", "o svatých ženách (o řeholnicích)", "", "sanctarum mulierum: pro religiosis", "", "O svatých ženách – o řeholnicích", "apáca", "ru_text", "святых жанчын: пра законніц", "fyrir daga heilagra kvenna: nunnur", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien", "o svatých ženách", "", "sanctarum mulierum", "", "O svatých ženách", "szent asszonyok", "ru_text", "святых жанчын", "fyrir daga heilagra kvenna", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "duchovných pastierov: pre viacerých", "o více duchovních pastýřích", "", "plurium pastorum", "", "O více duchovních pastýřích", "több lelkipásztor", "ru_text", "некалькіх пастыраў", "fyrir daga hirða: fleiri en einn hirði", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "jednej mučenice", "o jedné mučednici", "", "unius martyris", "", "O mučednici", "vértanú nő", "ru_text", "мyчаніцy", "fyrir daga píslarvotts úr röðum heilagra kvenna", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre vychovávateľky", "o svatých ženách (o vychovatelkách)", "", "sanctarum mulierum: pro educatoribus", "", "O svatých ženách – o vychovatelkách", "nevelő asszonyok", "ru_text", "святых жанчын: пра выхавацеляў", "fyrir daga heilagra kvenna: uppalendur", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre vychovávateľov", "o svatých mužích (o vychovatelích)", "", "sanctorum virorum: pro educatoribus", "", "O svatých mužích – o vychovatelích", "nevelő férfiak", "ru_text", "святых мужчын: пра выхавацеляў", "fyrir daga heilagra karla: uppalendur", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre tie, čo konali skutky milosrdenstva", "o svatých ženách (které vynikaly milosrdnými skutky)", "", "sanctarum mulierum: pro iis qui opera misericordiæ exercuerunt", "", "O svatých ženách – o ženě, která vynikala milosrdnými skutky", "jótékonykodó asszonyok", "ru_text", "святых жанчын, якія здзяйснялі ўчынкі міласэрнасці", "fyrir daga heilagra kvenna: þær sem vinna miskunnarverk", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre tých, čo konali skutky milosrdenstva", "o svatých mužích (kteří vynikali milosrdnými skutky)", "", "sanctorum virorum: pro iis qui opera misericordiæ exercuerunt", "", "O svatých mužích – o muži, který vynikal milosrdnými skutky", "jótékonykodó férfiak", "ru_text", "святых мужчын, якія здзяйснялі ўчынкі міласэрнасці", "fyrir daga heilaga karla: þeir sem vinna miskunnarverk", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre viaceré", "o svatých ženách (o více svatých)", "", "plurium mulierum", "", "O svatých ženách – o více svatých", "több szent asszony", "ru_text", "некалькіх святых жанчын", "fyrir daga heilagra kvenna:  fleiri en ein", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre viacerých", "o svatých mužích (o více svatých)", "", "plurium virorum", "", "O svatých mužích – o více svatých", "több szent férfi", "ru_text", "некалькіх святых мужчын", "fyrirdaga heilagra karla: fleiri en einn ", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "viacerých panien", "o pannách – o více pannách", "", "plurium virginum", "", "O pannách – o více pannách", "több szűz", "ru_text", "некалькіх паннаў", "fyrir daga margra meyja", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "posviacky chrámu", "o posvěcení kostela", "", "dedicationis ecclesiæ", "", "Posvěcení kostela", "templomszentelés", "ru_text", "пасвячэнне касцёла", "fyrir vígsluafmæli kirkjunnar", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "zosnulých", "za zemřelé", "", "defunctorum", "", "Za zemřelé", "halottakért", "ru_text", "за памерлых", "fyrir daga framliðinna", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre tie, čo žili v manželstve", "o svatých ženách (které žily v manželství)", "", "sanctarum mulierum: pro iis quæ in matrimonio vixit", "", "O svatých ženách – o ženě, která žila v manželství", "házas szent asszonyok", "ru_text", "святых жанчын: ", "fyrir daga heilagra kvenna: sem lifðu í hjónabandi", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých mužov: pre tých, čo žili v manželstve", "o svatých mužích (kterí žili v manželství)", "", "sanctorum virorum: pro iis qui in matrimonio vixit", "", "O svatých mužích – o muži, který žil v manželství", "házas szent férfiak", "ru_text", "святых мужчын: ", "fyrir daga heilagra karla: sem lifðu í hjónabandi", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "nebrať", "nepoužít", "do not use", "non sumere", "", "nepoužít", "mindent sajátból", "ru_text", "by_text", "taka ekki", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
 #define		nazov_spolc(a)	nazov_spolc_jazyk[a][_global_jazyk]
@@ -214,7 +214,7 @@ const char* nazov_bit_opt_1_spomienka_spol_cast_jazyk[POCET_JAZYKOV + 1] =
 	"az a lehetőség volt választva, hogy az emléknapoknál bizonyos részek vehetők a soros köznapról; Általános Rendelkezések az Imaórák Liturgiájáról, 235 b",
 	"ru_text",
 	"ён быў абраны, некаторыя часткі ў святкаванні успамінаў ўзяць з агульнымі кіруючымі прынцыпамі, няма. 235 пункт. б",
-	"is_text",
+	"á minningardögum var valinn möguleiki að taka nokkra hluti af venjulegum degi eftir almennum reglum nr. 225, stafur B",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5125,7 +5125,7 @@ const char* html_text_inv_slavaotcu[POCET_JAZYKOV + 1] =
 	"Következik a <" HTML_SPAN_NORMAL ">Dicsőség az Atyának" HTML_SPAN_END " és megismételjük az antifónát.",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Fylgir <" HTML_SPAN_NORMAL ">Dýrð sé Föðurnum" HTML_SPAN_END " og andstefin er endurtekin.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -9162,7 +9162,7 @@ const char* text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] =
 	"A mi Urunk, Jézus Krisztus, az Örök Főpap",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Drottins vors Jesú Krists " HTML_LINE_BREAK "hinn æðsta og eilífa prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1] =

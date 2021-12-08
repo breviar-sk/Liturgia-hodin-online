@@ -262,7 +262,7 @@ const char* bible_paratext_shortcut_with_dot[BIBLE_BOOKS_COUNT + 1] =
 // default Bible online translation URLs
 const char* bible_references_default[POCET_JAZYKOV + 1] =
 {
-	"https://dkc.kbs.sk/?in=",
+	"https://dkc.kbs.sk/dkc.php?in=",
 	"",
 	"",
 	"http://www.vatican.va/archive/bible/nova_vulgata/documents/",

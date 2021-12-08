@@ -11237,6 +11237,7 @@ _struct_lang_anchor_and_count pocet_kcit_resp_multi_anchor_count[] = {
 _struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] = {
 	{ JAZYK_CZ, KALENDAR_CZ_OPRAEM, BASE_OPT_6_CITANIE2_MULTI, "04FEB_cCIT2", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OPRAEM, BASE_OPT_6_CITANIE2_MULTI, "28AUG_cCIT2", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OPRAEM, BASE_OPT_6_HYMNUS_MULTI, "06JUN_vHYMNUS", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OFM, BASE_OPT_6_CITANIE2_MULTI, "08NOV_cCIT2", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OFMCAP, BASE_OPT_6_CITANIE2_MULTI, "25SEP_cCIT2", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OFMCAP, BASE_OPT_6_CITANIE2_MULTI, "13OKT_cCIT2", 2 },
@@ -11330,6 +11331,7 @@ _struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] 
 	{ JAZYK_SK, KALENDAR_SK_OP, BASE_OPT_6_CITANIE2_MULTI, "24NOV_cCIT2", 3 },
 	{ JAZYK_SK, KALENDAR_SK_OPRAEM, BASE_OPT_6_CITANIE2_MULTI, "04FEB_cCIT2", 2 },
 	{ JAZYK_SK, KALENDAR_SK_OPRAEM, BASE_OPT_6_CITANIE2_MULTI, "28AUG_cCIT2", 2 },
+	{ JAZYK_SK, KALENDAR_SK_OPRAEM, BASE_OPT_6_HYMNUS_MULTI, "06JUN_vHYMNUS", 2 },
 };
 
 short int pocet_multi(char* _anchor, unsigned long long type) {
