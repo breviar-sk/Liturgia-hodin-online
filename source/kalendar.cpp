@@ -8526,7 +8526,8 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				_set_zalmy_opraem_pc_1_8_24(modlitba);
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
+				_vlastna_cast_full(modlitba);
+				_vlastna_cast_kresponz_po_ve;
 
 				break;
 			}
