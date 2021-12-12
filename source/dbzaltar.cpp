@@ -11204,6 +11204,7 @@ _struct_lang_anchor_and_count pocet_maria_ant_multi_anchor_count[] = {
 
 _struct_lang_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_MODLITBA", 6 },
+	{ JAZYK_SK, "SRDCA_MODLITBA", 2 },
 };
 
 _struct_lang_anchor_and_count pocet_otcenas_uvod_multi_anchor_count[] = {
