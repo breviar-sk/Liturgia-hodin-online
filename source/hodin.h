@@ -6249,7 +6249,7 @@ const char* text_FEB_03_1[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_03_2[POCET_JAZYKOV + 1] =
 {
-	"Sv. Oskára, biskupa",
+	"Sv. Oskara, biskupa",
 	"Sv. Ansgara, biskupa",
 	"",
 	"S. Ansgarii, episcopi",
@@ -6627,7 +6627,7 @@ const char* text_FEB_16_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_17[POCET_JAZYKOV + 1] =
 {
-	"Siedmich svätých zakladateľov " HTML_LINE_BREAK "rehole Služobníkov Panny Márie",
+	"Siedmich svätých zakladateľov " HTML_LINE_BREAK "rehole Služobníkov prebl. Panny Márie", // 3RM: doplnené "PREBLAHOSLAVENEJ" P. M.
 	"Sv. Alexia a druhů, řeholníků",
 	"",
 	"Ss. Septem Fundatorum " HTML_LINE_BREAK "Ordinis Servorum B. M. V.",
@@ -7067,7 +7067,7 @@ const char* text_MAR_18_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_MAR_19[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jozefa, ženícha Panny Márie",
+	"Sv. Jozefa, ženícha prebl. Panny Márie", // 3RM: "PREBLAHOSLAVENEJ"
 	"Sv. Josefa, Snoubence Panny Marie",
 	"",
 	"S. Ioseph, Sponsi Beatæ Mariæ Virginis",
@@ -7081,7 +7081,7 @@ const char* text_MAR_19[POCET_JAZYKOV + 1] =
 };
 const char* text_MAR_19_SJ[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jozefa, ženícha Panny Márie, " HTML_LINE_BREAK "patróna Spoločnosti Ježišovej",
+	"Sv. Jozefa, ženícha prebl. Panny Márie, " HTML_LINE_BREAK "patróna Spoločnosti Ježišovej",
 	"Sv. Josefa, Snoubence Panny Marie, " HTML_LINE_BREAK "patrona Tovaryšstva Ježíšova",
 	"",
 	"S. Ioseph, Sponsi Beatæ Mariæ Virginis",
@@ -8641,7 +8641,7 @@ const char* text_MAJ_21_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_22[POCET_JAZYKOV + 1] =
 {
-	"Sv. Rity z Kassie, rehoľníčky",
+	"Sv. Rity z Cascie, rehoľníčky",
 	"Sv. Rity z Cascie, řeholnice",
 	"",
 	"S. Ritæ de Cascia, religiosæ",
@@ -10825,7 +10825,7 @@ const char* text_JUL_13_OCD[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_14[POCET_JAZYKOV + 1] =
 {
-	"Sv. Kamila de Lellis, kňaza",
+	"Sv. Kamila z Lellisu, kňaza", // podľa 3RM; predtým: Kamila de Lellis
 	"Sv. Kamila de Lellis, kněze",
 	"",
 	"S. Camilli de Lellis, presbyteri",
@@ -10951,7 +10951,7 @@ const char* text_JUL_16_CZ[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_17_SK[POCET_JAZYKOV + 1] =
 {
-	"Sv. Andreja Svorada a Benedikta, pustovníkov", // od r. 2016 direktórium nepoužíva spojovník, kedysi: "Andreja-Svorada"
+	"Sv. Andreja Svorada a Beňadika, pustovníkov", // od r. 2016 direktórium nepoužíva spojovník, kedysi: "Andreja-Svorada"; 3RM: Beňadika; predtým: Beneditka
 	"",
 	"",
 	"Ss. Andreæ-Zœrardi et Benedicti, eremitarum",
@@ -11399,7 +11399,7 @@ const char* text_JUL_30[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_30_SK[POCET_JAZYKOV + 1] =
 {
-	"Bl. Zdenky Cecílie Schelingovej, panny a mučenice", // Direktórium 2012, str. 173, neuvádza priezvisko ('Schelingovej'); dekrét https://www.kbs.sk/obsah/sekcia/h/dokumenty-a-vyhlasenia/p/dokumenty-kbs/c/dekret-o-doplneni-partikularneho-kalendara-2016 uvádza plné meno
+	"Bl. Zdenky Cecílie Schelingovej, panny a mučenice", // Direktórium 2012, str. 173, neuvádza priezvisko ('Schelingovej'); dekrét https://www.kbs.sk/obsah/sekcia/h/dokumenty-a-vyhlasenia/p/dokumenty-kbs/c/dekret-o-doplneni-partikularneho-kalendara-2016 uvádza plné meno (aj 3RM, 2021)
 	"",
 	"",
 	"B. Sidoniæ Schelling, virginis et martyris",
@@ -11413,7 +11413,7 @@ const char* text_JUL_30_SK[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_30_SK_OFM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Zdenky Schelingovej, panny a mučenice, " HTML_LINE_BREAK "rehoľníčky, členky 3. rádu",
+	"Bl. Zdenky Cecílie Schelingovej, panny a mučenice, " HTML_LINE_BREAK "rehoľníčky, členky 3. rádu",
 	"",
 	"",
 	"",
