@@ -12022,7 +12022,7 @@ const char* text_AUG_14_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_15[POCET_JAZYKOV + 1] =
 {
-	"Nanebovzatie Panny Márie", // kedysi: "Nanebovzatie prebl. Panny Márie"
+	"Nanebovzatie prebl. Panny Márie", // kedysi: "Nanebovzatie prebl. Panny Márie"; 3RM: PREBLAHOSLAVENEJ
 	"Nanebevzetí Panny Marie",
 	"",
 	"In Assumptione Beatæ Mariæ Virginis",
@@ -12288,7 +12288,7 @@ const char* text_OPATSKY_KOSTOL_OPRAEM[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_22[POCET_JAZYKOV + 1] =
 {
-	"Panny Márie Kráľovnej", // podľa Direktória 2012, str. 183; 2018, str. 225, tam nie je 'Prebl.'
+	"Prebl. Panny Márie Kráľovnej", // podľa Direktória 2012, str. 183; 2018, str. 225, tam nie je 'Prebl.'; 3RM má PREBLAHOSLAVENEJ
 	"Panny Marie Královny",
 	"",
 	"Beatæ Mariæ Virginis Reginæ",
