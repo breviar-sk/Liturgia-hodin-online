@@ -12893,7 +12893,7 @@ const char* text_SEP_06_2_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_07[POCET_JAZYKOV + 1] =
 {
-	"Sv. Marka Križina, Melichara Grodzieckého " HTML_LINE_BREAK "a Štefana Pongrácza, kňazov a mučeníkov",
+	"Sv. Marka Križina, Melichara Grodzieckeho " HTML_LINE_BREAK "a Štefana Pongrácza, kňazov a mučeníkov",
 	"Sv. Melichara Grodeckého, kněze a mučedníka",
 	"",
 	"",
@@ -12921,7 +12921,7 @@ const char* text_SEP_07_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_07_SJ[POCET_JAZYKOV + 1] =
 {
-	"Sv. košických mučeníkov: Štefana Pongrácza a Melichara Grodzieckého, kňazov Spoločnosti Ježišovej; " HTML_LINE_BREAK "Marka Križina, ostrihomského kanonika, patrónov Slovenskej provincie Spoločnosti Ježišovej",
+	"Sv. košických mučeníkov: Štefana Pongrácza a Melichara Grodzieckeho, kňazov Spoločnosti Ježišovej; " HTML_LINE_BREAK "Marka Križina, ostrihomského kanonika, patrónov Slovenskej provincie Spoločnosti Ježišovej",
 	"Sv. Štěpána Pongrácze, Melichara Grodeckého, kněží, " HTML_LINE_BREAK "a Marka Križína, kanovníka ostřihomského, mučedníků",
 	"",
 	"",
@@ -12935,7 +12935,7 @@ const char* text_SEP_07_SJ[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_08[POCET_JAZYKOV + 1] =
 {
-	"Narodenie Panny Márie", // podľa Direktória 2012, str. 191, tam nie je 'prebl.'
+	"Narodenie prebl. Panny Márie", // podľa Direktória 2012, str. 191, tam nie je 'prebl.'; 3RM už opäť má PREBLAHOSLAVENEJ
 	"Narození Panny Marie",
 	"",
 	"In Nativitate Beatæ Mariæ Virginis",
@@ -13047,7 +13047,7 @@ const char* text_SEP_11_OCD[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_12[POCET_JAZYKOV + 1] =
 {
-	"Najsv. mena Panny Márie", // podľa Direktória 2012, str. 192; pôvodne bolo: 'Mena prebl. Panny Márie'
+	"Najsv. mena Mária", // podľa Direktória 2012, str. 192; pôvodne bolo: 'Mena prebl. Panny Márie'; 3RM: NAJSVÄTEJŠIEHO MENA MÁRIA
 	"Jména Panny Marie",
 	"",
 	"Ss. Nominis B. Mariæ Virginis",
@@ -13145,7 +13145,7 @@ const char* text_SEP_16_CZ[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_16[POCET_JAZYKOV + 1] =
 {
-	"Sv. Kornélia, pápeža, a Cypriána, biskupa, mučeníkov",
+	"Sv. Kornela, pápeža, a Cypriána, biskupa, mučeníkov", // kedysi: Kornélia, opravené podľa 3RM
 	"Sv. Kornélia, papeže, a Cypriána, biskupa, mučedníků",
 	"",
 	"Ss. Cornelii, papæ, et Cypriani, episcopi, martyrum",
@@ -13327,7 +13327,7 @@ const char* text_SEP_19_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_20[POCET_JAZYKOV + 1] =
 {
-	"Sv. Andreja Kima Taegona, kňaza, " HTML_LINE_BREAK "a sv. Pavla Chonga Hasanga a spoločníkov, mučeníkov",
+	"Sv. Andreja Kima Taegona, kňaza, " HTML_LINE_BREAK "Pavla Chonga Hasanga a spoločníkov, mučeníkov",
 	"Sv. Ondřeje Kim Tae-g&#335;na, kněze, " HTML_LINE_BREAK "Pavla Ch&#335;ng Ha-sanga a druhů, mučedníků",
 	"",
 	"Ss. Andreæ Kim Taegǒn, presbyteri, " HTML_LINE_BREAK "et Pauli Chǒng Hasang, et sociorum, martyrum",
@@ -13960,7 +13960,7 @@ const char* text_OKT_06_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_07[POCET_JAZYKOV + 1] =
 {
-	"Ružencovej Panny Márie", // podľa Direktória 2012, str. 206, nie je 'prebl.'
+	"Ružencovej Panny Márie", // podľa Direktória 2012, str. 206, nie je 'prebl.', ani 3RM nemá
 	"Panny Marie Růžencové",
 	"",
 	"Beatæ Mariæ Virginis a Rosario",
@@ -14282,7 +14282,7 @@ const char* text_OKT_14_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_15[POCET_JAZYKOV + 1] =
 {
-	"Sv. Terézie od Ježiša, " HTML_LINE_BREAK "panny a učiteľky Cirkvi", // 'z Avily' upravené podľa Direktória 2012, str. 209
+	"Sv. Terézie od Ježiša (z Avily), " HTML_LINE_BREAK "panny a učiteľky Cirkvi", // 'z Avily' upravené podľa Direktória 2012, str. 209; "(Z AVILY)" podľa 3RM
 	"Sv. Terezie od Ježíše, " HTML_LINE_BREAK "panny a učitelky církve",
 	"",
 	"S. Teresiæ a Iesu, virginis et Ecclesiæ doctoris",
@@ -15811,7 +15811,7 @@ const char* text_NOV_20_BY[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_21[POCET_JAZYKOV + 1] =
 {
-	"Obetovanie Panny Márie", // podľa Direktória 2012, str. 226, nie je 'prebl.'
+	"Obetovanie prebl. Panny Márie", // podľa Direktória 2012, str. 226, nie je 'prebl.'; 3RM má: PREBLAHOSLAVENEJ
 	"Zasvěcení Panny Marie v Jeruzalémě",
 	"",
 	"In Præsentatione Beatæ Mariæ Virginis",
@@ -15839,7 +15839,7 @@ const char* text_NOV_22[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_23_1[POCET_JAZYKOV + 1] =
 {
-	"Sv. Klementa I. pápeža a mučeníka",
+	"Sv. Klimenta I. pápeža a mučeníka", // upravené podľa 3RM; predtým "Klement"
 	"Sv. Klementa I., papeže a mučedníka",
 	"",
 	"S. Clementis I, papæ et martyris",
@@ -15881,7 +15881,7 @@ const char* text_NOV_23_SJ[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_24[POCET_JAZYKOV + 1] =
 {
-	"Sv. Ondreja Dung-Laka, kňaza, " HTML_LINE_BREAK "a spoločníkov, mučeníkov",
+	"Sv. Andreja Dung-Laka, kňaza, " HTML_LINE_BREAK "a spoločníkov, mučeníkov", // upravené podľa 3RM; kedysi: Ondreja Dung-Laca
 	"Sv. Ondřeje Dũng-Lạca, kněze, a druhů, mučedníků",
 	"",
 	"Ss. Andreæ Dũng-Lạc, presbyteri, et sociorum, martyrum",
@@ -16304,7 +16304,7 @@ const char* text_DEC_07[POCET_JAZYKOV + 1] =
 };
 const char* text_DEC_08[POCET_JAZYKOV + 1] =
 {
-	"Nepoškvrnené počatie Panny Márie",
+	"Nepoškvrnené počatie prebl. Panny Márie",
 	"Panny Marie, počaté bez poskvrny prvotního hříchu",
 	"",
 	"In Conceptione Immaculata Beatæ Mariæ Virginis",

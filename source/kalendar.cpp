@@ -32257,6 +32257,16 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 					set_popis_dummy();
 				}
 
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_modlitba;
+				// _vlastna_cast_2citanie;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_modlitba;
+
 				break;
 			}
 
