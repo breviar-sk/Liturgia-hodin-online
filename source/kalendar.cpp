@@ -13900,7 +13900,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 	case 16: // MES_JUN -- 16JUN
 
 		if (_global_jazyk == JAZYK_SK) {
-			// spomienka len v rožňavskej katedrále
+			// spomienka v rožňavskej diecéze
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -13920,7 +13920,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
-			_global_svaty(1).typslav_lokal = LOKAL_SLAV_ROZNAVA_KATEDRALA;
+			_global_svaty(1).typslav_lokal = LOKAL_SLAV_ROZNAVA;
 			mystrcpy(_global_svaty(1).meno, text_JUN_16_SK[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
@@ -14865,7 +14865,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				pocet = 2;
 
 				_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-				_global_svaty(2).typslav_lokal = LOKAL_SLAV_TT_BB_NR_RO; // v Trnavskej arcidiecéze, v Banskobystrickej, Rožňavskej a Nitrianskej diecéze
+				_global_svaty(2).typslav_lokal = LOKAL_SLAV_TT_BB_NR_RO; // v Trnavskej arcidiecéze a v Banskobystrickej, Nitrianskej a Rožňavskej diecéze
 				mystrcpy(_global_svaty(2).meno, text_JUN_27_SK_HU[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
@@ -29094,7 +29094,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			_global_svaty(1).typslav_lokal = LOKAL_SLAV_TT_BB_NR_RO; // v Trnavskej arcidiecéze, v Banskobystrickej, Rožňavskej a Nitrianskej diecéze
+			_global_svaty(1).typslav_lokal = LOKAL_SLAV_TT_BB_NR_RO; // v Trnavskej arcidiecéze a v Banskobystrickej, Nitrianskej a Rožňavskej diecéze
 			mystrcpy(_global_svaty(1).meno, text_NOV_05_SK[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;

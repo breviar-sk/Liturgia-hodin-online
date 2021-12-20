@@ -1016,7 +1016,7 @@ extern const char* nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1];
 extern const char* nazov_slavenia_lokal[];
 
 #define LOKAL_SLAV_NEURCENE							0
-#define LOKAL_SLAV_ROZNAVA_KATEDRALA				1
+#define LOKAL_SLAV_ROZNAVA_KATEDRALA				1 // not used
 #define LOKAL_SLAV_TRNAVA_PATRON					2
 #define LOKAL_SLAV_TT_BB_KE_NR_RO					3 // not used
 #define LOKAL_SLAV_NITRA_PATRON						4
@@ -1085,7 +1085,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_VACI_PATRON						67
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON2				68
 #define LOKAL_SLAV_VESZPREM_FOEGYH					69
-#define LOKAL_SLAV_free_6		70 // free
+#define LOKAL_SLAV_free_6							70 // free
 #define LOKAL_SLAV_SZEGED_CSAN_EGYH2				71
 #define LOKAL_SLAV_PECS_PATRON						72
 #define LOKAL_SLAV_SZOMBATHELYI_PATRON				73
