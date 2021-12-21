@@ -4,7 +4,7 @@ buildscript {
     google()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.2.1'
+    classpath 'com.android.tools.build:gradle:7.0.0'
   }
 }
 
@@ -89,9 +89,9 @@ android {
 }
 
 dependencies {
-  compile 'com.android.support:support-v4:27.0.0'
-  compile 'com.android.support:support-core-utils:27.0.0'
-  compile 'com.android.support:design:27.0.0'
-  compile 'com.android.support:appcompat-v7:27.0.0'
-  compile 'com.android.support:support-media-compat:27.0.0'
+  implementation 'com.android.support:support-v4:27.0.0'
+  implementation 'com.android.support:support-core-utils:27.0.0'
+  implementation 'com.android.support:design:27.0.0'
+  implementation 'com.android.support:appcompat-v7:27.0.0'
+  implementation 'com.android.support:support-media-compat:27.0.0'
 }
