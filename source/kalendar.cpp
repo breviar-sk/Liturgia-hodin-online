@@ -14435,8 +14435,9 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	case 23: // MES_JUN -- 23JUN
 
-		if (/* (_global_den.denvt == DEN_STVRTOK) && */(_global_den.denvr == SRDCA - 1)) {
+		if (_global_den.denvr == SRDCA - 1) {
 			// t.j. slávnosť sv. Jána Krstiteľa padla na piatok, kedy je slávnosť Najsv. Srdca Ježišovho -- preto sa prekladá na predošlý deň (t. j. štvrtok 23.6.)
+			// kedysi: if ((_global_den.denvt == DEN_STVRTOK) && (_global_den.denvr == SRDCA - 1))
 			sprintf(_anchor_head, "%02d%s_", den + 1, nazov_MES[MES_JUN]);
 			Log("  _anchor_head == %s\n", _anchor_head);
 			Log("jumping to label_24_JUN...\n");
@@ -14514,7 +14515,8 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	label_24_JUN:
 
-		if (/* (_global_den.denvt == DEN_PIATOK) && */(_global_den.denvr == SRDCA)) {
+		if (_global_den.denvr == SRDCA) {
+			// kedysi: if ((_global_den.denvt == DEN_PIATOK) && (_global_den.denvr == SRDCA))
 			poradie_svaty = UNKNOWN_PORADIE_SVATEHO;
 
 			slavnost_srdca();
@@ -14877,8 +14879,9 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	case 28: // MES_JUN -- 28JUN
 
-		if (/* (_global_den.denvt == DEN_STVRTOK) && */(_global_den.denvr == SRDCA - 1)) {
+		if (_global_den.denvr == SRDCA - 1) {
 			// t.j. slávnosť sv. Petra a Pavla padla na piatok, kedy je slávnosť Najsv. Srdca Ježišovho -- preto sa (analogicky k 23JUN, 2022-06-23) prekladá na predošlý deň (t. j. štvrtok 28.6.)
+			// kedysi: if ((_global_den.denvt == DEN_STVRTOK) && (_global_den.denvr == SRDCA - 1))
 			sprintf(_anchor_head, "%02d%s_", den + 1, nazov_MES[MES_JUN]);
 			Log("  _anchor_head == %s\n", _anchor_head);
 			Log("jumping to label_29_JUN...\n");
@@ -14915,7 +14918,8 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	label_29_JUN:
 
-		if (/* (_global_den.denvt == DEN_PIATOK) && */(_global_den.denvr == SRDCA)) {
+		if (_global_den.denvr == SRDCA) {
+			// kedysi: if ((_global_den.denvt == DEN_PIATOK) && (_global_den.denvr == SRDCA))
 			poradie_svaty = UNKNOWN_PORADIE_SVATEHO;
 
 			slavnost_srdca();
