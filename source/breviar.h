@@ -328,8 +328,11 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 ))
 
 // či sa NEMAJÚ zobrazovať vešpery; doteraz sa kontrolovalo len to, či je sobota -- opravené pre Veľkú (bielu) sobotu | are NOT vespers (= should I hide button for evening prayer)?
+// slávnosti majú (druhé) vešpery vždy | solemnities always have (second) vespers
 #define nie_su_vespery ( \
-	(_global_den.denvt == DEN_SOBOTA) && (!((_global_den.denvt == DEN_SOBOTA) && (_global_den.litobd == OBD_VELKONOCNE_TROJDNIE))) \
+	(_global_den.denvt == DEN_SOBOTA) \
+	&& (!((_global_den.denvt == DEN_SOBOTA) && (_global_den.litobd == OBD_VELKONOCNE_TROJDNIE))) \
+	&& (!(_global_den.smer < 5)) \
 )
 
 // či sa môže sláviť ľubovoľná spomienka Panny Márie v sobotu (prvý level kontroly)
@@ -482,18 +485,18 @@ extern short int _typslav_override(short int typslav);
 #define koncovka_dna(denvt) ((nazov_dna((denvt))[strlen(nazov_dna((denvt))) - 1] == 'a')? "á": "ý")
 
 #define KRST _global_r._KRST_KRISTA_PANA.denvr                          // nedeľa po 6. januári; v krajinách, kde sa Zjavenie Pána slávi v nedeľu, a ak táto pripadne na 7. alebo 8. januára, Krst Krista Pána sa slávi nasledujúci pondelok
-#define POPOLCOVA_STREDA  _global_r._POPOLCOVA_STREDA.denvr             // popolcová streda
-#define VELKONOCNA_NEDELA   _global_r._VELKONOCNA_NEDELA.denvr          // veľkonočná nedeľa
-#define KVETNA_NEDELA (VELKONOCNA_NEDELA - 7)                           // kvetná nedeľa
-#define ZELENY_STVRTOK   (VELKONOCNA_NEDELA - 3)                        // zelený štvrtok
-#define VELKY_PIATOK   (VELKONOCNA_NEDELA - 2)                          // veľký piatok
-#define BIELA_SOBOTA   (VELKONOCNA_NEDELA - 1)                          // biela sobota
-#define VELKONOCNY_PONDELOK (VELKONOCNA_NEDELA + 1)                     // veľkonočný pondelok
-#define DRUHA_VELKONOCNA_NEDELA  (VELKONOCNA_NEDELA + 7)                // nedeľa vo veľkonočnej oktáve
+#define POPOLCOVA_STREDA  _global_r._POPOLCOVA_STREDA.denvr             // Popolcová streda
+#define VELKONOCNA_NEDELA   _global_r._VELKONOCNA_NEDELA.denvr          // Veľkonočná nedeľa
+#define KVETNA_NEDELA (VELKONOCNA_NEDELA - 7)                           // Kvetná nedeľa
+#define ZELENY_STVRTOK   (VELKONOCNA_NEDELA - 3)                        // Zelený štvrtok
+#define VELKY_PIATOK   (VELKONOCNA_NEDELA - 2)                          // Veľký piatok
+#define BIELA_SOBOTA   (VELKONOCNA_NEDELA - 1)                          // Biela sobota
+#define VELKONOCNY_PONDELOK (VELKONOCNA_NEDELA + 1)                     // Veľkonočný pondelok
+#define DRUHA_VELKONOCNA_NEDELA  (VELKONOCNA_NEDELA + 7)                // nedeľa vo Veľkonočnej oktáve
 #define NANEBOVSTUPENIE  _global_r._NANEBOVSTUPENIE_PANA.denvr          // nanebovstúpenie Pána (štvrtok, 40. deň po veľkej noci, alebo v krajinách, kde sa presúva na nasledujúcu nedeľu ("7. veľkonočná nedeľa")
-#define PRVA_ADVENTNA_NEDELA  _global_r._PRVA_ADVENTNA_NEDELA.denvr     // prvá adventná nedeľa
-#define ZOSLANIE_DUCHA_SV  _global_r._ZOSLANIE_DUCHA_SV.denvr           // zoslanie Ducha Svätého
-#define SV_RODINY  _global_r._SVATEJ_RODINY.denvr                       // sviatok svätej rodiny
+#define PRVA_ADVENTNA_NEDELA  _global_r._PRVA_ADVENTNA_NEDELA.denvr     // Prvá adventná nedeľa
+#define ZOSLANIE_DUCHA_SV  _global_r._ZOSLANIE_DUCHA_SV.denvr           // Zoslanie Ducha Svätého
+#define SV_RODINY  _global_r._SVATEJ_RODINY.denvr                       // sviatok Svätej rodiny
 #define MARIE_MATKY_CIRKVI (ZOSLANIE_DUCHA_SV + 1)                      // pondelok po Zoslaní Ducha Svätého (ZOSLANIE_DUCHA_SV): spomienka Panny Márie, Matky Cirkvi (http://press.vatican.va/content/salastampa/it/bollettino/pubblico/2018/03/03/0168/00350.html)
 #define KRISTA_KNAZA (ZOSLANIE_DUCHA_SV + 4)                            // štvrtok po Zoslaní Ducha Svätého (ZOSLANIE_DUCHA_SV): sviatok Nášho Pána Ježiša Krista, najvyššieho a večného kňaza (http://www.tkkbs.sk/view.php?cisloclanku=20140115028)
 #define TROJICA (ZOSLANIE_DUCHA_SV + 7)                                 // prvá nedeľa po ZOSLANIE_DUCHA_SV: najsv. Trojice

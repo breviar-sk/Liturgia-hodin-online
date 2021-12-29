@@ -8571,7 +8571,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 			if ((
 				// č. 11: slávnosti su zvlášť význačnými dňami. ich slávenie sa začína prvými vešperami v predchádzajúci deň
 				(smer < 5)
-				// č. 13: sviatky sa slávia v rozsahu jedného dňa, a preto nemajú prvé vešpery, ak len nejde o sviatky Pána, ktoré pripadajú na Cezročnú neďelu a na nedeľu vo vianočnom období a nahradzujú nedeľňajšiu liturgiu hodín
+				// č. 13: sviatky sa slávia v rozsahu jedného dňa, a preto nemajú prvé vešpery, ak len nejde o sviatky Pána, ktoré pripadajú na Cezročnú neďelu a na nedeľu vo Vianočnom období a nahradzujú nedeľňajšiu liturgiu hodín
 				|| ((smer == 5) && (_global_den.denvt == DEN_NEDELA) && ((_global_den.litobd == OBD_CEZ_ROK) || je_vianocne(_global_den.litobd)))
 				// nedeľa
 				|| (_global_den.denvt == DEN_NEDELA)
@@ -8583,11 +8583,12 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 				)
 				&& !(
 					// a nie je to špeciálny deň
-				((_global_den.denvr <= VELKONOCNA_NEDELA + 6) && (_global_den.denvr >= KVETNA_NEDELA + 1)) // všedné dni veľkého týždňa počnúc pondelkom, veľkonočné trojdnie od veľkého piatka do veľkonočnej oktávy, soboty
+					((_global_den.denvr <= VELKONOCNA_NEDELA + 6) && (_global_den.denvr >= KVETNA_NEDELA + 1)) // všedné dni veľkého týždňa počnúc pondelkom, veľkonočné trojdnie od veľkého piatka do veľkonočnej oktávy, soboty
 					|| (_global_den.denvr == POPOLCOVA_STREDA) // Popolcová streda
 					|| ((_global_den.denvt != DEN_NEDELA) && (_global_den.den == 2) && (_global_den.mesiac == MES_NOV + 1)) // 02NOV: Spomienka na všetkých verných zosnulých, ktorá nepadla na nedeľu
-					)
-				) {
+					|| (_global_den.denvr == SV_RODINY && (_global_den.den == 26))	// pre sviatky Pána vo Vianočnom období treba doriešiť prípad, že Nedeľa Svätej rodiny padne na 26.12., teda na deň bezprostredne nasledujúci po slávnosti Narodenia Pána
+				)
+			) {
 				// oddelenie riadka
 				if ((som_v_tabulke == ANO) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE))) {
 					ExportHtmlComment("table-row");
@@ -8754,7 +8755,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		Log("PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR == %d...\n", PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR);
 		Log("nie_su_vespery == %d...\n", nie_su_vespery);
 
-		// spomienka panny márie v sobotu nemá vešpery (ani kompletórium po nich)
+		// spomienka Panny Márie v sobotu nemá vešpery (ani kompletórium po nich)
 		// ak je isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTON_PRVE_VESPERY), zobrazujú sa prvé vešpery pre nedele a slávnosti priamo pre tie dni
 		// vešpery a kompletórium nemá zmysel zobrazovať, ak ide o sobotu a ďalšieho svätého (pri viacerých ľubovoľných spomienkach) -- iba ak by šlo o lokálnu slávnosť
 		// zavedené "nie_su_vespery" kvôli Bielej (veľkej) sobote
