@@ -9294,11 +9294,11 @@ const char* text_PRVA_ADVENTNA_NEDELA[POCET_JAZYKOV + 1] =
 const char* text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1] =
 {
 	"Svätej rodiny Ježiša, Márie a Jozefa",
-	"Sv. Rodiny Ježíše, Marie a Josefa",
+	"Svaté rodiny Ježíše, Marie a Josefa",
 	"",
 	"Sanctæ Familiæ Iesu, Mariæ et Ioseph",
 	"",
-	"Sv. Rodiny Ježíše, Marie a Josefa",
+	"Svaté rodiny Ježíše, Marie a Josefa",
 	"A Szent Család: Jézus, Mária és József", // "Szent Család ünnepe"
 	"ru_text",
 	"Святой Сям'і: Езуса, Марыі і Юзафа",
