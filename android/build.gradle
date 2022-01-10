@@ -1,6 +1,6 @@
 buildscript {
   repositories {
-    jcenter()
+    mavenCentral()
     google()
   }
   dependencies {
@@ -10,10 +10,19 @@ buildscript {
 
 allprojects {
   repositories {
-    jcenter()
-      maven {
-        url "https://maven.google.com"
-      }
+    mavenCentral()
+    maven {
+      url "https://maven.google.com"
+    }
+  }
+
+  gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+      // Using deprecated API is ok, since we want to support old Android
+      // versions.
+      // options.compilerArgs << "-Xlint:deprecation"
+      options.compilerArgs << "-Xlint:unchecked"
+    }
   }
 }
 

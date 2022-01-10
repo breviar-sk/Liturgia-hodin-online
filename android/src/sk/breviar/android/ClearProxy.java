@@ -53,7 +53,7 @@ public class ClearProxy {
       Log.d(LOG_TAG, "Setting proxy with <= 3.2 API.");
 
       // Getting network
-      Class networkClass = null;
+      Class<?> networkClass = null;
       Object network = null;
       try {
           networkClass = Class.forName("android.webkit.Network");
@@ -117,7 +117,7 @@ public class ClearProxy {
       {
           Log.d(LOG_TAG, "Setting proxy with 4.0 API.");
 
-          Class jwcjb = Class.forName("android.webkit.JWebCoreJavaBridge");
+          Class<?> jwcjb = Class.forName("android.webkit.JWebCoreJavaBridge");
           Class params[] = new Class[1];
           params[0] = Class.forName("android.net.ProxyProperties");
           Method updateProxyInstance = jwcjb.getDeclaredMethod("updateProxy", params);
@@ -154,7 +154,7 @@ public class ClearProxy {
       Log.d(LOG_TAG, "Setting proxy with 4.1 - 4.3 API.");
 
       try {
-          Class wvcClass = Class.forName("android.webkit.WebViewClassic");
+          Class<?> wvcClass = Class.forName("android.webkit.WebViewClassic");
           Class wvParams[] = new Class[1];
           wvParams[0] = Class.forName("android.webkit.WebView");
           Method fromWebView = wvcClass.getDeclaredMethod("fromWebView", wvParams);
@@ -172,7 +172,7 @@ public class ClearProxy {
           Field sJavaBridgeField = bf.getDeclaredField("sJavaBridge");
           Object sJavaBridge = getFieldValueSafely(sJavaBridgeField, mBrowserFrame);
 
-          Class jwcjb = Class.forName("android.webkit.JWebCoreJavaBridge");
+          Class<?> jwcjb = Class.forName("android.webkit.JWebCoreJavaBridge");
           Class params[] = new Class[1];
           params[0] = Class.forName("android.net.ProxyProperties");
           Method updateProxyInstance = jwcjb.getDeclaredMethod("updateProxy", params);
@@ -209,7 +209,7 @@ public class ClearProxy {
           ArrayMap receivers = (ArrayMap) receiversField.get(loadedApk);
           for (Object receiverMap : receivers.values()) {
               for (Object rec : ((ArrayMap) receiverMap).keySet()) {
-                  Class clazz = rec.getClass();
+                  Class<?> clazz = rec.getClass();
                   if (clazz.getName().contains("ProxyChangeListener")) {
                       Method onReceiveMethod = clazz.getDeclaredMethod("onReceive", Context.class, Intent.class);
                       Intent intent = new Intent(Proxy.PROXY_CHANGE_ACTION);
