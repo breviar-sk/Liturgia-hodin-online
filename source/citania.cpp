@@ -61,7 +61,14 @@ static char ferialnyCyklus(_struct_dm* d) {
 }
 
 char* getCode(_struct_dm* d) {
-	static char buf[100];
+	static char* buf = NULL;
+	static int buflen = 0;
+
+	int required = 50 + strlen(d->meno);
+	if (buflen < required) {
+		buflen = required;
+		buf = (char *)realloc(buf, buflen);
+	}
 
 	if (d->smer == 1) {
 		sprintf(buf, "%02d%02d%d", d->smer, d->litobd, d->denvt); // Velkonocne trojdnie

@@ -203,14 +203,14 @@ short int equalsi(char *is1, const char* is2){
 
 // funkcia mystr_replace() nahradí všetky výskyty podreťazca substr v reťazci string reťazcom replacement
 // http://coding.debuntu.org/c-implementing-str_replace-replace-all-occurrences-substring | 2013-01-11
-char *mystr_replace(const char* string, const char* substr, const char* replacement) {
+std::string mystr_replace(const char* string, const char* substr, const char* replacement) {
 	char *tok = NULL;
 	char *newstr = NULL;
 	char *oldstr = NULL;
 	char *head = NULL;
 
 	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
-	if (substr == NULL || replacement == NULL) return strdup(string);
+	if (substr == NULL || replacement == NULL) return std::string(string);
 
 	newstr = strdup(string);
 	head = newstr;
@@ -220,7 +220,8 @@ char *mystr_replace(const char* string, const char* substr, const char* replacem
 		/* failed to alloc mem, free old string and return NULL */
 		if (newstr == NULL) {
 			free(oldstr);
-			return NULL;
+			free(newstr);
+			return "";
 		}
 		memcpy(newstr, oldstr, tok - oldstr);
 		memcpy(newstr + (tok - oldstr), replacement, strlen(replacement));
@@ -230,15 +231,16 @@ char *mystr_replace(const char* string, const char* substr, const char* replacem
 		head = newstr + (tok - oldstr) + strlen(replacement);
 		free(oldstr);
 	}
-	return newstr;
+	std::string val(newstr);
+	free(newstr);
+	return val;
 }// mystr_replace()
 
-char* mystr_replace_char(const char* string, const char orig_char, const char replacement) {
+std::string mystr_replace_char(const char* string, const char orig_char, const char replacement) {
 	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
 	if (orig_char == 0 || replacement == 0) return strdup(string);
 
-	char *newstr = NULL;
-	newstr = strdup(string);
+	char *newstr = strdup(string);
 
 	int i = 0;
 	while (string[i] != '\0')
@@ -249,12 +251,14 @@ char* mystr_replace_char(const char* string, const char orig_char, const char re
 		}
 		i++;
 	}
-	return newstr;
+	std::string val(newstr);
+	free(newstr);
+	return val;
 }// mystr_replace_char()
 
-char* mystr_remove_char(const char* string, const char char_to_remove) {
+std::string mystr_remove_char(const char* string, const char char_to_remove) {
 	/* if substr is NULL, duplicate string a let caller handle it */
-	if (char_to_remove == 0) return strdup(string);
+	if (char_to_remove == 0) return std::string(string);
 
 	char *newstr = NULL;
 	newstr = strdup(string);
@@ -272,10 +276,12 @@ char* mystr_remove_char(const char* string, const char char_to_remove) {
 	}
 	newstr[j] = '\0';
 
-	return newstr;
+	std::string val(newstr);
+	free(newstr);
+	return val;
 }// mystr_remove_char()
 
-char* mystr_remove_letters_and_parentheses(const char* string) {
+std::string mystr_remove_letters_and_parentheses(const char* string) {
 	/* if substr is NULL, duplicate string a let caller handle it */
 
 	char *newstr = NULL;
@@ -305,10 +311,12 @@ char* mystr_remove_letters_and_parentheses(const char* string) {
 	}
 	newstr[j] = '\0';
 
-	return newstr;
+	std::string val(newstr);
+	free(newstr);
+	return val;
 }// mystr_remove_letters()
 
-char *mystr_first_lower(const char* string) {
+std::string mystr_first_lower(const char* string) {
 	char *newstr = NULL;
 	char c;
 	newstr = strdup(string);
@@ -317,10 +325,12 @@ char *mystr_first_lower(const char* string) {
 		c = tolower(c);
 		newstr[0] = c;
 	}
-	return newstr;
+	std::string val(newstr);
+	free(newstr);
+	return val;
 }// mystr_first_lower()
 
-char *mystr_first_upper(const char* string) {
+std::string mystr_first_upper(const char* string) {
 	char *newstr = NULL;
 	char c;
 	newstr = strdup(string);
@@ -329,7 +339,9 @@ char *mystr_first_upper(const char* string) {
 		c = toupper(c);
 		newstr[0] = c;
 	}
-	return newstr;
+	std::string val(newstr);
+	free(newstr);
+	return val;
 }// mystr_first_upper()
 
 // convert integer value to Roman numeral string; caller is responsible for buffer size

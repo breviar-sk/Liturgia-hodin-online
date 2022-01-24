@@ -5182,7 +5182,7 @@ const char* text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1] =
 	"Aki veled él és uralkodik a Szentlélekkel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Því að hann er Guð, sem með þér lifir og ríkir í einingu Heilags Anda, Guð, um aldir alda.",
+	"Því að hann er Guð, sem með þér lifir og ríkir í einingu Heilags Anda, um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5212,7 +5212,7 @@ const char* text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1] =
 	"Aki élsz és uralkodol az Atyaistennel és a Szentlélek­kel egységben, Isten mindörökkön-örökké.",
 	"ru_text",
 	"by_text",
-	"Því að þú ert Guð, sem lifir og ríkir með Guði Föður, í einingu Heilags Anda, Guð, um aldir alda.",
+	"Því að þú ert Guð, sem lifir og ríkir með Guði Föður, í einingu Heilags Anda, um aldir alda.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5378,13 +5378,13 @@ const char* text_JAN_04_OCD[POCET_JAZYKOV + 1] =
 };
 const char* text_JAN_04_OFM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Angely z Foligna, rehoľníčky, členky 3. rádu",
-	"Bl. Anděly z Foligna, členky 3. řádu",
+	"Sv. Angely z Foligna, rehoľníčky, členky 3. rádu",
+	"Sv. Anděly z Foligna, členky 3. řádu",
 	"",
 	"",
 	"",
-	"Bl. Anděly z Foligna, členky 3. řádu",
-	"Folignói Boldog Angéla, szerzetesnő a III. Rendből",
+	"Sv. Anděly z Foligna, členky 3. řádu",
+	"Folignói Szent Angéla, szerzetesnő a III. Rendből",
 	"",
 	"",
 	"",
@@ -8725,7 +8725,7 @@ const char* text_MAJ_24_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Hermanna Jozefa, kňaza z našej rehole",
+	"Sv. Hermana Jozefa, kňaza z našej rehole",
 	"Sv. Heřmana Josefa, kněze z premonstrátského řádu",
 	"",
 	"",
@@ -10262,16 +10262,16 @@ const char* text_JUN_27_CSSR[POCET_JAZYKOV + 1] =
 };
 const char* text_JUN_28[POCET_JAZYKOV + 1] =
 {
-	"Sv. Ireneja, biskupa a mučeníka",
-	"Sv. Ireneje, biskupa a mučedníka",
+	"Sv. Ireneja, biskupa a mučeníka, učiteľa Cirkvi",
+	"Sv. Ireneje, biskupa a mučedníka, učitele církve",
 	"",
-	"S. Irenæi, episcopi et martyris",
+	"S. Irenæi, episcopi et martyris, Ecclesiæ doctoris",
 	"",
-	"Sv. Ireneje, biskupa a mučedníka",
-	"Szent Iréneusz püspök és vértanú",
+	"Sv. Ireneje, biskupa a mučedníka, učitele církve",
+	"Szent Iréneusz püspök és vértanú, egyháztanító",
 	"ru_text",
-	"Св. Ірэнэя, біскупа і мучаніка",
-	"Hl. Íreneusar, biskups og píslarvotts",
+	"Св. Ірэнэя, біскупа і мучаніка, доктара Касцёла",
+	"Hl. Íreneusar, biskups og píslarvotts, kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_29[POCET_JAZYKOV + 1] =

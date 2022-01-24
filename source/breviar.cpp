@@ -182,10 +182,12 @@ static int _breviar_putenv(char* s) {
 
 	if (strlen(key) >= ENV_K_SIZE) {
 		Log("Too long key in _breviar_putenv(): '%s'\n", key);
+		free(key);
 		return -1;
 	}
 	if (strlen(val) >= ENV_V_SIZE) {
 		Log("Too long value in _breviar_putenv(): '%s'\n", val);
+		free(key);
 		return -1;
 	}
 
@@ -1211,7 +1213,7 @@ short int getSrciptParamFrom(int argc) {
 		Log("qs (query_string) == %s\n", qs);
 
 		Log("trying to unescape &amp; characters...\n");
-		mystrcpy(query_string, mystr_replace(qs, HTML_AMPERSAND, "&"), MAX_QUERY_STR);
+		mystrcpy(query_string, mystr_replace(qs, HTML_AMPERSAND, "&").c_str(), MAX_QUERY_STR);
 	}
 	else {
 		mystrcpy(query_string, STR_EMPTY, MAX_QUERY_STR);
@@ -2453,15 +2455,15 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						// now, the reference is complete (but it may contain diacritics and/or special characters (Unicode long dashes etc.)
 						if (EXPORT_REFERENCIA) {
 							if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) {
-								Export("%s", mystr_bible_com(mystr_replace(reference, STR_EM_DASH, STR_EN_DASH))); // no need to remove diacritics for bible.com even on Android
+								Export("%s", mystr_bible_com(mystr_replace(reference, STR_EM_DASH, STR_EN_DASH).c_str())); // no need to remove diacritics for bible.com even on Android
 							}
 							else {
 #ifdef IO_ANDROID
 								// diacritics removal left only for Android
-								Export("%s", mystr_remove_diacritics(mystr_replace(reference, STR_EM_DASH, STR_EN_DASH)));
+								Export("%s", mystr_remove_diacritics(mystr_replace(reference, STR_EM_DASH, STR_EN_DASH).c_str()));
 #else
 								// replace em-dash with en-dash
-								Export("%s", mystr_replace(reference, STR_EM_DASH, STR_EN_DASH));
+								Export("%s", mystr_replace(reference, STR_EM_DASH, STR_EN_DASH).c_str());
 #endif
 							}
 						}
@@ -3105,7 +3107,7 @@ void init_global_string_spol_cast_full(short int aj_vslh_235b) {
 		if (_global_jazyk == JAZYK_HU) {
 			sprintf(pom_main, "%s %s %s%s.",
 				(ret_sc != MODL_SPOL_CAST_ZA_ZOSNULYCH) ? ((ret_sc == MODL_SPOL_CAST_POSVIACKA_CHRAMU) ? nazov_spolc_vyrocie_jazyk[_global_jazyk] : nazov_spolc_sviatky_jazyk[_global_jazyk]) : STR_EMPTY,
-				mystr_first_upper(_global_string_spol_cast),
+				mystr_first_upper(_global_string_spol_cast).c_str(),
 				(ret_sc == MODL_SPOL_CAST_ZA_ZOSNULYCH) ? nazov_spolc_oficiumza_jazyk[_global_jazyk] : nazov_spolc_zospolc_jazyk[_global_jazyk],
 				pom);
 		}
@@ -8110,7 +8112,7 @@ short int _rozbor_dna_s_modlitbou(_struct_den_mesiac datum, short int rok, short
 void Export_HtmlFormGET(char* action) {
 	char action_changed[MAX_STR];
 	// 1. replace HTML_AMPERSAND "&amp;" to simple "&" char
-	mystrcpy(action_changed, mystr_replace(action, HTML_AMPERSAND, "&"), MAX_STR);
+	mystrcpy(action_changed, mystr_replace(action, HTML_AMPERSAND, "&").c_str(), MAX_STR);
 	// 2. export
 	Export(HTML_FORM_METHOD_GET, action_changed);
 } // Export_HtmlFormGET()
@@ -8207,13 +8209,13 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 
 	if ((som_v_tabulke == ANO) && (typ != EXPORT_DNA_JEDEN_DEN_LOCAL)) {
 		Export(HTML_FORM_INPUT_SUBMIT_PRAYER" title=\"%s\" value=\"", nazov_modlitby(modl_visible));
-		ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl_visible), CHAR_SPACE, CHAR_NONBREAKING_SPACE), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+		ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl_visible), CHAR_SPACE, CHAR_NONBREAKING_SPACE).c_str(), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 		Export("\"" HTML_FORM_INPUT_END "\n");
 		Export("</form>\n");
 	}
 	else {
 		if (typ == EXPORT_DNA_JEDEN_DEN_LOCAL) {
-			ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl_visible), CHAR_SPACE, CHAR_NONBREAKING_SPACE), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+			ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl_visible), CHAR_SPACE, CHAR_NONBREAKING_SPACE).c_str(), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 		}
 		else {
 			Export("%s", nazov_modlitby(modl_visible));
@@ -8299,7 +8301,7 @@ void _export_rozbor_dna_button_modlitba2(short int modl, char pom[MAX_STR]) {
 	}// !(query_type == PRM_LIT_OBD)
 	Export_HtmlForm(action);
 	Export(HTML_FORM_INPUT_SUBMIT2" title=\"%s\" value=\"", nazov_modlitby(modl));
-	ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl), CHAR_SPACE, CHAR_NONBREAKING_SPACE), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+	ExportStringCharByChar(mystr_replace_char((char *)html_button_nazov_modlitby(modl), CHAR_SPACE, CHAR_NONBREAKING_SPACE).c_str(), isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 	Export("\"" HTML_FORM_INPUT_END "\n");
 	Export("</form>\n");
 }// _export_rozbor_dna_button_modlitba2
@@ -19752,6 +19754,7 @@ int breviar_main(int argc, const char** argv) {
 			if (query_type == PRM_XML) {
 				xml_patka();
 			}
+
 			else {
 				patka(); // doplnené (ešte pred dealokovanie premenných)
 			}

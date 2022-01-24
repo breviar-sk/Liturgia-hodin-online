@@ -33,9 +33,9 @@ public class HeadlessWebview {
 
   public HeadlessWebview(Context context, String process_id) {
     if (Build.VERSION.SDK_INT >=28) {
-      // TODO(riso): Not needed? Complaints that 'WebView already initialized'
       CompatibilityHelper28.setDataDirectorySuffix(process_id);
     }
+
     wv = new WebView(context);
     wv.getSettings().setJavaScriptEnabled(true);
     wv.addJavascriptInterface(new Bridge(this), "bridge");

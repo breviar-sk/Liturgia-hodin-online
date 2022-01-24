@@ -192,7 +192,7 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 #define odfiltrujSpolCast(modlitba, opt3) ((short int)(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA)) ? MODL_SPOL_CAST_NULL : opt3))
 
 // prvé písmeno veľké majú len názvy vlastných častí pre CZOP (pre SK chybne dávalo: "panny Márie")
-#define lowered_nazov_spolc(a) ((_global_jazyk == JAZYK_CZ_OP)? mystr_first_lower(nazov_spolc(a)) : nazov_spolc(a))
+#define lowered_nazov_spolc(a) ((_global_jazyk == JAZYK_CZ_OP)? mystr_first_lower(nazov_spolc(a)).c_str() : nazov_spolc(a))
 
 // define for decide whether offline (Android) app supports hyperlinks to Bible app for liturgical readings -- currently in SK only
 #define su_liturgicke_citania_offline (_global_jazyk == JAZYK_SK)
