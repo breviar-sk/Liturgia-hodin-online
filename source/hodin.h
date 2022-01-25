@@ -15333,10 +15333,10 @@ const char* text_NOV_08_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_NOV_08_OPRAEM[POCET_JAZYKOV + 1] =
+const char* text_NOV_13_OPRAEM[POCET_JAZYKOV + 1] =
 {
 	"Všetkých svätých vašej rehole " HTML_LINE_BREAK "a všetkých svätých rehoľných kanonikov",
-	"Všech svatých premonstrátského řádu " HTML_LINE_BREAK "a všech svatých z řádů řeholních kanovníků",
+	"Všech svatých premonstrátského řádu " HTML_LINE_BREAK "a všech svatých z řádů řeholních kanovníků", // CZ 08NOV
 	"",
 	"",
 	"",
