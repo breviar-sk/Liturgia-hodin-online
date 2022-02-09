@@ -100,9 +100,6 @@ short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m) {
 	if ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_NOV)) {
 		ret = TRUE;
 	}// NOV02 == 02NOV
-	if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP) && ((_global_den.den == 26) || (_global_den.den == 29)) && (_global_den.mesiac - 1 == MES_NOV) && (!(je_modlitba_cez_den(m)))) {
-		ret = TRUE;
-	}// 26NOV + 29NOV pre KALENDAR_CZ_OFMCAP majú vlastné hymny pre RCH, PC, V
 	Log("%d\n", ret);
 	return ret;
 }// su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne()
