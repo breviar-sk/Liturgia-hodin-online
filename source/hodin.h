@@ -639,7 +639,7 @@ const char* nazov_slavenia_lokal[] =
 , "v ostravsko-opavské diecézi"                                                                                  // LOKAL_SLAV_OSTRAVA_OPAVA
 , "v litoměřické diecézi"                                                                                        // LOKAL_SLAV_LITOMERICE
 , "v královéhradecké diecézi"                                                                                    // LOKAL_SLAV_HRADEC_KRALOVE
-, "free"                                                                                   // LOKAL_SLAV_free
+, "len pre SDB"																					                 // LOKAL_SLAV_SDB_ONLY
 , "v plzeňské diecézi"                                                                                           // LOKAL_SLAV_PLZEN 
 , "v ostravsko-opavské diecézi: slavnost"                                                                        // LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST
 , "v českobudějovické diecézi: památka"                                                                          // LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA
@@ -647,10 +647,10 @@ const char* nazov_slavenia_lokal[] =
 , "v Bratislavskej arcidiecéze"                                                                                  // LOKAL_SLAV_BRATISLAVA
 , "pre FMA a VDB: ľubovoľná spomienka"                                                                           // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB
 , "len pre Inštitút milosrdných sestier Sv. kríža"                                                               // LOKAL_SLAV_KONGREGACIA_SSK // 2013-08-12: pôvodne bolo: "len pre Kongregáciu milosrdných sestier Sv. kríža"
-, "pre OFMCap.: spomienka"                                                                                        // LOKAL_SLAV_SPOMIENKA_OFMCAP
+, "pre OFMCap.: spomienka"                                                                                       // LOKAL_SLAV_SPOMIENKA_OFMCAP
 , "pre OFM: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_OFM
 , "pre OFM: spomienka"                                                                                           // LOKAL_SLAV_SPOMIENKA_OFM
-, "pre OFMCap.: sviatok"                                                                                          // LOKAL_SLAV_SVIATOK_OFMCAP
+, "pre OFMCap.: sviatok"                                                                                         // LOKAL_SLAV_SVIATOK_OFMCAP
 , "pre FMA: spomienka"                                                                                           // LOKAL_SLAV_SPOMIENKA_FMA
 , "pre FMA: slávnosť"                                                                                            // LOKAL_SLAV_SLAVNOST_FMA
 , "pre SDB: slávnosť"                                                                                            // LOKAL_SLAV_SLAVNOST_SDB
@@ -699,7 +699,7 @@ const char* nazov_slavenia_lokal[] =
 , "pre OSC: slávnosť"                                                                                            // LOKAL_SLAV_SLAVNOST_OSC
 , "pre OFMConv.: sviatok"                                                                                        // LOKAL_SLAV_SVIATOK_OFMCONV
 , "pre OFS: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_OFS
-, "pre OFMConv., OFMCap.: spomienka"                                                                              // LOKAL_SLAV_SPOMIENKA_OFMCONV_OFMCAP
+, "pre OFMConv., OFMCap.: spomienka"                                                                             // LOKAL_SLAV_SPOMIENKA_OFMCONV_OFMCAP
 , "pre OSC: slávnosť"                                                                                            // LOKAL_SLAV_SPOMIENKA_OSC
 , "pre Slovensko zatiaľ nedovolené slávenie"                                                                     // LOKAL_SLAV_NEDOVOLENE_SK
 , "Katonai Ordinariátus: " HTML_LINE_BREAK "Az Ordinariátus védőszentje; főünnep"                                // LOKAL_SLAV_KATONAI_ORDINARIAT
@@ -712,34 +712,34 @@ const char* nazov_slavenia_lokal[] =
 , "pro FMA a VDB nezávazná památka"                                                                              // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_CZ
 , "pro VDB svátek"                                                                                               // LOKAL_SLAV_SVIATOK_VDB_CZ
 , "pro FMA slavnost"                                                                                             // LOKAL_SLAV_SLAVNOST_FMA_CZ
-, "A Szeged-Csanádi egyházmegyében"                                                                             // LOKAL_SLAV_SZEGED_CSAN_EGYH3
-, "len pre Ordinariát ozbrojených síl a ozbrojených zborov SR"                                                  // LOKAL_SLAV_ORDINARIAT
-, "A Klarisszáknál: Emléknap"                                                                                   // LOKAL_SLAV_HU_KLARISSZAKNAL_EM
-, "A Klarisszáknál: Főünnep"                                                                                    // LOKAL_SLAV_HU_KLARISSZAKNAL_FOU
-, "jen na Moravě"                                                                                               // LOKAL_SLAV_LEN_MORAVA
-, "jen v Čechách"                                                                                               // LOKAL_SLAV_LEN_CECHY
-, "A Conceptionistáknál: Ünnep"                                                                                 // LOKAL_SLAV_HU_CONCEPTIONISTAK_UN
-, "v kláštoroch bosých karmelitánok – spomienka"                                                                // LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM
-, "pro SDB: slavnost"                                                                                           // LOKAL_SLAV_SLAVNOST_SDB_CZ
-, "v dome sv. Lazára v Paríži: spomienka"                                                                       // LOKAL_SLAV_SPOMIENKA_CM_PARIZ
-, "у Віцебскай дыяцэзіі: успамін"                                                                               // LOKAL_SLAV_VICEB_SPOMIENKA
-, "у Мінска-Магілёўскай архідыяцэзіі"                                                                           // LOKAL_SLAV_POSV_K_CH_MINSK
-, "у Пінскай дыяцэзіі"                                                                                          // LOKAL_SLAV_POSV_K_CH_PINSK
+, "A Szeged-Csanádi egyházmegyében"                                                                              // LOKAL_SLAV_SZEGED_CSAN_EGYH3
+, "len pre Ordinariát ozbrojených síl a ozbrojených zborov SR"                                                   // LOKAL_SLAV_ORDINARIAT
+, "A Klarisszáknál: Emléknap"                                                                                    // LOKAL_SLAV_HU_KLARISSZAKNAL_EM
+, "A Klarisszáknál: Főünnep"                                                                                     // LOKAL_SLAV_HU_KLARISSZAKNAL_FOU
+, "jen na Moravě"                                                                                                // LOKAL_SLAV_LEN_MORAVA
+, "jen v Čechách"                                                                                                // LOKAL_SLAV_LEN_CECHY
+, "A Conceptionistáknál: Ünnep"                                                                                  // LOKAL_SLAV_HU_CONCEPTIONISTAK_UN
+, "v kláštoroch bosých karmelitánok – spomienka"                                                                 // LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM
+, "pro SDB: slavnost"                                                                                            // LOKAL_SLAV_SLAVNOST_SDB_CZ
+, "v dome sv. Lazára v Paríži: spomienka"                                                                        // LOKAL_SLAV_SPOMIENKA_CM_PARIZ
+, "у Віцебскай дыяцэзіі: успамін"                                                                                // LOKAL_SLAV_VICEB_SPOMIENKA
+, "у Мінска-Магілёўскай архідыяцэзіі"                                                                            // LOKAL_SLAV_POSV_K_CH_MINSK
+, "у Пінскай дыяцэзіі"                                                                                           // LOKAL_SLAV_POSV_K_CH_PINSK
 , "у Пінскай дыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Віцебскай дыяцэзіі: успамін" // LOKAL_SLAV_PINSK_MINSK
-, "v královéhradecké diecézi: slavnost"                                                                         // LOKAL_SLAV_HRADEC_KRALOVE_SLAVNOST
-, "v českobudějovické diecézi: slavnost"                                                                        // LOKAL_SLAV_CESKE_BUDEJOV_SLAVNOST
-, "у Гродзенскай дыяцэзіі"                                                                                      // LOKAL_SLAV_GRODZENSK
-, "у Мінска-Магілёўскай архідыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Віцебскай дыяцэзіі: свята"              // LOKAL_SLAV_MINSK_MAG_VICEB
-, "у Мінска-Магілёўскай архідыяцэзіі: успамін"                                                                  // LOKAL_SLAV_MINSK_SPOMIENKA
-, "у Гродзенскай дыяцэзіі: свята"                                                                               // LOKAL_SLAV_GRODZENSK_SVIATOK
-, "У Мінска-Магілёўскай архідыяцэзіі, Пінскай дыяцэзіі і Гродзенскай дыяцэзіі"                                  // LOKAL_SLAV_MINSK_PINSK_GRODZENSK
-, "у Віцебскай дыяцэзіі"                                                                                        // LOKAL_SLAV_VICEB
-, "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: успамін"                                               // LOKAL_SLAV_MINSK_PINSK_SPOMIENKA
+, "v královéhradecké diecézi: slavnost"                                                                          // LOKAL_SLAV_HRADEC_KRALOVE_SLAVNOST
+, "v českobudějovické diecézi: slavnost"                                                                         // LOKAL_SLAV_CESKE_BUDEJOV_SLAVNOST
+, "у Гродзенскай дыяцэзіі"                                                                                       // LOKAL_SLAV_GRODZENSK
+, "у Мінска-Магілёўскай архідыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Віцебскай дыяцэзіі: свята"               // LOKAL_SLAV_MINSK_MAG_VICEB
+, "у Мінска-Магілёўскай архідыяцэзіі: успамін"                                                                   // LOKAL_SLAV_MINSK_SPOMIENKA
+, "у Гродзенскай дыяцэзіі: свята"                                                                                // LOKAL_SLAV_GRODZENSK_SVIATOK
+, "У Мінска-Магілёўскай архідыяцэзіі, Пінскай дыяцэзіі і Гродзенскай дыяцэзіі"                                   // LOKAL_SLAV_MINSK_PINSK_GRODZENSK
+, "у Віцебскай дыяцэзіі"                                                                                         // LOKAL_SLAV_VICEB
+, "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: успамін"                                                // LOKAL_SLAV_MINSK_PINSK_SPOMIENKA
 , "у Віцебскай дыяцэзіі: урачыстасць, " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: свята" // LOKAL_SLAV_VICEB_SL_MINSK_PINSK_SV
 , "у Гродзенскай дыяцэзіі: урачыстасць; " HTML_LINE_BREAK "у Мінска-Магілёўскай архідыяцэзіі і Пінскай дыяцэзіі: успамін" // LOKAL_SLAV_GRODZ_SL_PINSK_MINSK_SP
-, "v pražském klášteře u Panny Marie Sněžné: slavnost"                                                          // LOKAL_SLAV_PRAHA_OFM
-, "pro mnišky: památka"                                                                                         // LOKAL_SLAV_OP_MNISKY_PAMATKA
-, "pre OFS: spomienka"                                                                                          // LOKAL_SLAV_SPOMIENKA_OFS
+, "v pražském klášteře u Panny Marie Sněžné: slavnost"                                                           // LOKAL_SLAV_PRAHA_OFM
+, "pro mnišky: památka"                                                                                          // LOKAL_SLAV_OP_MNISKY_PAMATKA
+, "pre OFS: spomienka"                                                                                           // LOKAL_SLAV_SPOMIENKA_OFS
 };
 
 // names of liturgical colors

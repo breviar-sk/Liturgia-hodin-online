@@ -1050,7 +1050,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_OSTRAVA_OPAVA					32
 #define LOKAL_SLAV_LITOMERICE						33
 #define LOKAL_SLAV_HRADEC_KRALOVE					34
-#define LOKAL_SLAV_free_5		35 // free
+#define LOKAL_SLAV_SDB_ONLY		                    35
 #define LOKAL_SLAV_PLZEN 							36
 #define LOKAL_SLAV_OSTRAVA_OPAVA_SLAVNOST			37
 #define LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA			38
@@ -1085,7 +1085,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_VACI_PATRON						67
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON2				68
 #define LOKAL_SLAV_VESZPREM_FOEGYH					69
-#define LOKAL_SLAV_free_6							70 // free
+#define LOKAL_SLAV_free_6		70 // free
 #define LOKAL_SLAV_SZEGED_CSAN_EGYH2				71
 #define LOKAL_SLAV_PECS_PATRON						72
 #define LOKAL_SLAV_SZOMBATHELYI_PATRON				73

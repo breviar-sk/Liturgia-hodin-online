@@ -67,11 +67,25 @@
 // special characters in prayer texts (some of them to be removed for voice output)
 #define CHAR_SPACE             ' '
 #define CHAR_PRAYER_ASTERISK   '*'
-#define CHAR_PRAYER_CROSS      L'\x2020' /*†*/ // used as flexa | U+2020 DAGGER
+#define CHAR_PRAYER_CROSS      L'\x2020' /*†*/ // dagger -- used as flexa (obelisk, long cross, oblong cross) | U+2020
 #define CHAR_PRAYER_CROSS_ALT  '+'
+#define CHAR_PRAYER_CROSS_D    L'\x2021' /*‡*/ // double dagger (diesis, double obelisk) | U+2021
 #define CHAR_PRAYER_TRIANGLE   L'\x25B3' /*△*/ // 'uppercase delta': Δ (used for doxology) | U+25B3 WHITE UP-POINTING TRIANGLE
 #define CHAR_EM_DASH           L'\x2014' /*—*/ // em dash | U+2014
 #define CHAR_EN_DASH           L'\x2013' /*–*/ // en dash | U+2013
+#define CHAR_QUOTATION_MARK_1  L'\x201E' /*„*/ // low double comma quotation mark | U+201E | SK double opening low-9
+#define CHAR_QUOTATION_MARK_2  L'\x201C' /*“*/ // double turned comma quotation mark | U+201C | SK double closing top-6
+#define CHAR_QUOTATION_MARK_3  L'\x201A' /*‚*/ // low single comma quotation mark | U+201A | SK signle opening low-9
+#define CHAR_QUOTATION_MARK_4  L'\x2018' /*‘*/ // single turned comma quotation mark | U+2018 | SK single closing top-6
+#define CHAR_QUOTATION_MARK_5  L'\x201D' /*”*/ // double comma quotation mark | U+201D
+#define CHAR_QUOTATION_MARK_6  L'\x201F' /*‟*/ // double reversed comma quotation mark | U+201F
+#define CHAR_QUOTATION_MARK_7  L'\x201B' /*‛*/ // single reversed comma quotation mark | U+201B
+#define CHAR_QUOTATION_MARK_8  L'\x2039' /*‹*/ // left pointing single guillemet (Single Left-Pointing Angle Quotation Mark) | U+2039
+#define CHAR_QUOTATION_MARK_9  L'\x203A' /*›*/ // right pointing single guillemet (Single Right-Pointing Angle Quotation Mark) | U+201B
+#define CHAR_QUOTATION_MARK_10 L'\x00AB' /*«*/ // left guillemet, chevrons (Left-Pointing Double Angle Quotation Mark) | U+00AB
+#define CHAR_QUOTATION_MARK_11 L'\x00BB' /*»*/ // right guillemet (Right-Pointing Double Angle Quotation Mark) | U+00BB
+
+#define CHAR_APOSTROPHE        L'\x2019' /*’*/ // single comma quotation mark | U+2019 | SK apostrophe // not to be excluded for voice output in method ExportChar()
 
 // include parameters
 #define INCLUDE_BEGIN   "BEGIN" // zaciatok

@@ -271,11 +271,18 @@ void ExportChar(int c, short int skip_chars_for_voice_output /* = NIE */) {
 		if ((c == CHAR_PRAYER_ASTERISK) || (c == CHAR_PRAYER_CROSS) || (c == CHAR_PRAYER_CROSS_ALT) || (c == CHAR_PRAYER_TRIANGLE)) {
 			; // skip special characters for voice output
 		}
+		else if (
+			(c == CHAR_QUOTATION_MARK_1) || (c == CHAR_QUOTATION_MARK_2) || (c == CHAR_QUOTATION_MARK_3) || (c == CHAR_QUOTATION_MARK_4)
+			|| (c == CHAR_QUOTATION_MARK_5) || (c == CHAR_QUOTATION_MARK_6) || (c == CHAR_QUOTATION_MARK_7) || (c == CHAR_QUOTATION_MARK_8)
+			|| (c == CHAR_QUOTATION_MARK_9) || (c == CHAR_QUOTATION_MARK_10) || (c == CHAR_QUOTATION_MARK_11)
+			) {
+			; // skip quotation marks, apostrophes etc. for voice output
+		}
 		else if (c == CHAR_NONBREAKING_SPACE) {
 			Export("%c", CHAR_SPACE);
 		}
 		else if (c == CHAR_NONBREAKING_THIN_SPACE) {
-			Export("%c", CHAR_SPACE);
+			; // Export("%c", CHAR_SPACE); // skip non-breaking thin space (used with guillemets in LA texts)
 		}
 		else {
 			ExportRawWchar(c);
