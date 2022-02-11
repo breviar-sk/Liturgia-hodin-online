@@ -33278,10 +33278,17 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 			_vlastna_cast_mcd_kcitresp_modl;
 
-			// vespery -- vsetko je z oktavy narodenia Pana (okrem hymnu pre CZ k vlastnímu výběru)
-			if (je_CZ_hymny_k_volnemu_vyberu) {
+			// Vešpery -- Všetko je z Oktávy Narodenia Pána
+			// Ak sa niekde sviatok sv. Štefana slávi ako slávnosť, berie sa hymnus, antifóny, krátke čítanie a responzórium z ranných chvál, žalmy, chválospev a prosby zo spoločnej časti na sviatky jedného mučeníka.
+			if (_global_svaty_i_smer_override(1) <= 4) {
+				// take proper texts only for solemnity
+
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				_vlastna_cast_full_okrem_benmagn_a_prosieb(modlitba);
+
+				if (je_CZ_hymny_k_volnemu_vyberu) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 			}
 
 			break;
@@ -33322,10 +33329,17 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			_vlastna_cast_modlitba;
 			_set_zalmy_sviatok_jana_ap(modlitba);
 
-			// vespery -- vsetko je z oktavy narodenia Pana (okrem hymnu pre CZ k vlastnímu výběru)
-			if (je_CZ_hymny_k_volnemu_vyberu) {
+			// Vešpery -- Všetko je z Oktávy Narodenia Pána
+			// Ak sa niekde sviatok sv. Jána slávi ako slávnosť, berie sa hymnus, antifóny, krátke čítanie a responzórium z ranných chvál, žalmy, chválospev a prosby zo spoločnej časti na sviatky apoštolov.
+			if (_global_svaty_i_smer_override(1) <= 4) {
+				// take proper texts only for solemnity
+
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				_vlastna_cast_full_okrem_kresp_benmagn_a_prosieb(modlitba);
+
+				if (je_CZ_hymny_k_volnemu_vyberu) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 			}
 
 			break;
@@ -33363,10 +33377,17 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 			_vlastna_cast_mcd_kcitresp_modl;
 
-			// vespery -- vsetko je z oktavy narodenia Pana (okrem hymnu pre CZ k vlastnímu výběru)
-			if (je_CZ_hymny_k_volnemu_vyberu) {
+			// Vešpery -- Všetko je z Oktávy Narodenia Pána
+			// Ak sa niekde sviatok sv. Neviniatok slávi ako slávnosť, berie sa hymnus, antifóny, krátke čítanie a responzórium z ranných chvál, žalmy, chválospev a prosby zo spoločnej časti na sviatky mučeníkov.
+			if (_global_svaty_i_smer_override(1) <= 4) {
+				// take proper texts only for solemnity
+
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				_vlastna_cast_full_okrem_benmagn_a_prosieb(modlitba);
+
+				if (je_CZ_hymny_k_volnemu_vyberu) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 			}
 
 			break;
