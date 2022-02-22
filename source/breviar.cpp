@@ -2115,7 +2115,8 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 								mystrcpy(zakoncenie, text_SK_ZAKONCENIE_ON_JE_dlhe, MAX_ZAKONCENIE);
 							}
 						} // SK: ZAKONCENIE_ON_JE
-						else if (equals(rest, PARAM_ZAKONCENIE_KTORY_JE) && (_global_jazyk == JAZYK_SK || _global_jazyk == JAZYK_IS)) {
+						else if ((equals(rest, PARAM_ZAKONCENIE_KTORY_JE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_KTORY_JE_MALE))
+							&& (_global_jazyk == JAZYK_SK || _global_jazyk == JAZYK_IS)) {
 							if (je_modlitba_cez_den(_global_modlitba) || je_kompletorium12(_global_modlitba) || (je_velkonocna_nedela_posv_cit)) {
 								mystrcpy(zakoncenie, (_global_jazyk == JAZYK_SK) ? text_SK_ZAKONCENIE_KTORY_JE_kratke : text_IS_ZAKONCENIE_KTORY_JE_kratke, MAX_ZAKONCENIE);
 							}
@@ -2135,7 +2136,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 							mystrcpy(zakoncenie, text_ZAKONCENIE_O_TO_TA_PROSIME[_global_jazyk], MAX_ZAKONCENIE);
 						} // PARAM_ZAKONCENIE_O_TO_TA_PROSIME
 
-						if (equals(rest_zakoncenie, PARAM_ZAKONCENIE_SKRZE_MALE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_LEBO_TY_MALE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_LEBO_ON_MALE)) {
+						if (equals(rest_zakoncenie, PARAM_ZAKONCENIE_SKRZE_MALE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_LEBO_TY_MALE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_LEBO_ON_MALE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_KTORY_JE_MALE)) {
 							FirstToLower(zakoncenie, sizeof(zakoncenie));  // posun z veľkého písmena na malé
 						}
 						// nezlomiteľné medzery

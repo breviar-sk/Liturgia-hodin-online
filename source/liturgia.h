@@ -765,7 +765,8 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ZAKONCENIE_LEBO_ON_MALE       "LEBO_ON_MALE"
 // ešte jedno zakončenie modlitby pre slovenčinu, krátke resp. dlhé (POST1_MODLITBA5NE)
 #define PARAM_ZAKONCENIE_ON_JE              "ON_JE"
-// ešte jedno zakončenie modlitby pre slovenčinu, krátke resp. dlhé
+// ešte jedno zakončenie modlitby pre slovenčinu resp. pre IS, krátke resp. dlhé
+#define PARAM_ZAKONCENIE_KTORY_JE_MALE      "KTORY_JE_MALE"
 #define PARAM_ZAKONCENIE_KTORY_JE           "KTORY_JE"
 // zakončenia modlitby pre IS
 #define PARAM_ZAKONCENIE_KTORY_ZIJES        "KTORY_ZIJES"
