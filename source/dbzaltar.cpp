@@ -11296,6 +11296,8 @@ _struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] 
 	{ JAZYK_CZ, KALENDAR_CZ_SDB, BASE_OPT_6_CITANIE2_MULTI, "24OKT2_cCIT2", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_SDB, BASE_OPT_6_CITANIE2_MULTI, "29OKT_cCIT2", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_SDB, BASE_OPT_6_CITANIE2_MULTI, "15NOV2_cCIT2", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_SJ, BASE_OPT_6_HYMNUS_MULTI, "16MAJ_cHYMNUS", 0 }, // !!! override language-default (not use multiple hymns)
+	{ JAZYK_CZ, KALENDAR_CZ_SJ, BASE_OPT_6_HYMNUS_MULTI, "CZ_16MAJ_cHYMNUS", 0 }, // !!! override language-default (not use multiple hymns)
 	{ JAZYK_SK, KALENDAR_SK_CSSR, BASE_OPT_6_CITANIE1_MULTI, "TITUL_cCIT1", 2 },
 	{ JAZYK_SK, KALENDAR_SK_SDB, BASE_OPT_6_CITANIE2_MULTI, "24JAN_cCIT2", 2 },
 	{ JAZYK_SK, KALENDAR_SK_SDB, BASE_OPT_6_CITANIE2_MULTI, "31JAN_cCIT2", 2 },

@@ -10309,6 +10309,11 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 		else if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP) || (_global_jazyk == JAZYK_HU)) {
 			if (poradie_svaty == 1) {
+
+				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SJ)) {
+					file_name_vlastny_kalendar(_global_kalendar);
+				}// kalendár pre KALENDAR_CZ_SJ
+
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
@@ -10360,14 +10365,13 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				_global_svaty(1).typslav_lokal = LOKAL_SLAV_ROZNAVA_PATRON;
 			}// SK
 
-			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
-
-			if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SJ)){
+			if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SJ)) {
 				mystrcpy(_global_svaty(1).meno, text_MAJ_16_CZ_SJ[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(1).kalendar = _global_kalendar;
-			}
+			}// kalendár pre KALENDAR_CZ_SJ
 			else {
 				mystrcpy(_global_svaty(1).meno, text_MAJ_16[_global_jazyk], MENO_SVIATKU);
+				_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 			}
 
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
