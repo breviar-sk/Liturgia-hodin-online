@@ -2638,7 +2638,6 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full(modlitba);
-			_set_zalmy_1nedele_rch();
 
 			// MCD: antifóny a žalmy sú z bežného dňa; special case for OPraem added
 			if (((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM))
@@ -5782,7 +5781,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full(modlitba);
 			_vlastna_cast_kresponz_po_ve;
-			_set_zalmy_1nedele_rch();
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
@@ -5911,7 +5909,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full(modlitba);
 			_vlastna_cast_kresponz_po_ve;
-			_set_zalmy_1nedele_rch();
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
@@ -10646,7 +10643,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 					) {
 					_vlastna_cast_full(modlitba);
 					_vlastna_cast_kresponz_po_ve;
-					_set_zalmy_1nedele_rch();
+					_set_zalmy_1nedele_rch(); // kvôli SK (CZ má sviatok, tam je to automaticky)
 				}
 				else {
 					if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM)) {
@@ -14651,7 +14648,6 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full(modlitba);
-			_set_zalmy_1nedele_rch();
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
@@ -14903,7 +14899,6 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
-				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
@@ -15687,7 +15682,6 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
-				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
 				if (_global_jazyk == JAZYK_SK) {
@@ -17723,7 +17717,6 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			_vlastna_cast_antifony;
-			_set_zalmy_1nedele_rch();
 			_vlastna_cast_kresponz;
 			_vlastna_cast_kcitanie; // má byť rovnaké ako zo spoločnej časti svätých žien
 			_vlastna_cast_benediktus;
@@ -17778,7 +17771,6 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				_vlastna_cast_antifony;
-				_set_zalmy_1nedele_rch();
 				_vlastna_cast_kresponz;
 				_vlastna_cast_kcitanie; // má byť rovnaké ako zo spoločnej časti svätých žien
 				_vlastna_cast_benediktus;
@@ -20170,7 +20162,6 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full(modlitba);
-			_set_zalmy_1nedele_rch();
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);
@@ -20827,7 +20818,6 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
-				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
@@ -22846,7 +22836,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
-				if (_global_kalendar == KALENDAR_SK_SJ) {
+				if (_global_kalendar != KALENDAR_HU_SJ) {
 					_vlastna_cast_2citanie;
 				}
 				_vlastna_cast_modlitba;
@@ -23293,7 +23283,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			else {
 				_vlastna_cast_full_okrem_prosieb(modlitba);
 			}
-			_set_zalmy_1nedele_rch();
+			_set_zalmy_1nedele_rch(); // kvôli iným ako SK (SK má slávnosť, tam je to automaticky)
 
 			modlitba = MODL_POSV_CITANIE;
 			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)) {
@@ -24491,7 +24481,6 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
-				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
@@ -24875,7 +24864,6 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
-				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -26078,13 +26066,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				_vlastna_cast_antifona_inv;
 
 				modlitba = MODL_RANNE_CHVALY;
-				if (_global_jazyk == JAZYK_CZ_OP) {
-					_vlastna_cast_full_okrem_prosieb(modlitba);
-				}
-				else {
-					_vlastna_cast_full(modlitba);
-				}
-				_set_zalmy_1nedele_rch();
+				_vlastna_cast_full(modlitba);
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
@@ -29569,7 +29551,6 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
-				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
@@ -29779,7 +29760,6 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full_okrem_prosieb(modlitba); // PROSBY ze Společných textů svatých mužů
-				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_1citanie;
@@ -30209,7 +30189,6 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full_okrem_prosieb(modlitba);
-				_set_zalmy_1nedele_rch();
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_1citanie;
@@ -32627,7 +32606,6 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full(modlitba);
-			_set_zalmy_1nedele_rch();
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_full(modlitba);

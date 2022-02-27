@@ -9465,6 +9465,16 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 	Log("poradie_svaty = %d\n", poradie_svaty);
 	Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);
 
+	Log("ak je slávnosť alebo sviatok, žalmy z nedele 1. týždňa pre ranné chvály...\n");
+	// ranné chvály
+	modlitba = MODL_RANNE_CHVALY;
+	if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) {
+		_set_zalmy_1nedele_rch();
+	}
+	// netreba nastavovať, ak (a == MODL_SPOL_CAST_ZA_ZOSNULYCH) || (a == MODL_SPOL_CAST_POSVIACKA_CHRAMU)
+
+	// ToDo: consider to set psalms for prayer during the day for solemnities; in such case use _set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
+
 	if (je_spolocna_cast_urcena(a)){
 		Log("/* nastavenie nazvu suboru, kotvy apod. (_set_spolocna_cast) */\n");
 		// nastavenie nazvu suboru, kotvy apod.
@@ -9474,7 +9484,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		Log("  _file == %s\n", _file);
 	}
 	else{
-		Log("   nebrat... takze nenastavujem kotvy ani nic\n");
+		Log("   nebrať... takže nenastavujem kotvy ani nič (iba, ak je slávnosť alebo sviatok, žalmy z nedele 1. týždňa pre ranné chvály)\n");
 
 		Log("_set_spolocna_cast(%s) -- end\n", nazov_spolc(a));
 		return;
@@ -9527,13 +9537,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		// 2006-01-25: Pôvodne tu bolo AND; upravené kvôli tomu, aby sa žalmy z nedele 1. týždňa zobrazili aj v prípade, ak by podľa smerníc nemali (nemuseli) byť,
-		//             ale používateľ si to v detailoch vyberie.
-		//             Pritom default pre _global_opt 2 sme zmenili na MODL_ZALMY_ZO_DNA. Takto isto zmenené na všetkých ostatných miestach - bez poznámky. | 2006-01-25_ZALMY1NE_FIX
-		// 2011-04-12: _global_opt 2 je časťou _global_opt 1 (BIT_OPT_1_ZALMY_ZO_SVIATKU)
-		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { /* 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy */
-			_set_zalmy_1nedele_rch();
-		}
 		_spolocna_cast_full(modlitba);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kresp_ve;
@@ -9632,9 +9635,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
-			_set_zalmy_1nedele_rch();
-		}
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
@@ -9809,9 +9809,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
-			_set_zalmy_1nedele_rch();
-		}
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		// _spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file);
@@ -9908,9 +9905,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
-			_set_zalmy_1nedele_rch();
-		}
 		_spolocna_cast_full(modlitba);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kcit_kresp_chval_ve;
@@ -10236,9 +10230,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
-			_set_zalmy_1nedele_rch();
-		}
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		_spolocna_cast_benediktus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
@@ -10328,9 +10319,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
-			_set_zalmy_1nedele_rch();
-		}
 		_spolocna_cast_full(modlitba);
 		_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
@@ -10413,9 +10401,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
-			_set_zalmy_1nedele_rch();
-		}
 		_spolocna_cast_full(modlitba);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kresp_ve;
@@ -10504,9 +10489,6 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		if (su_zalmy_vlastne(modlitba) || /* (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZALMY_ZO_SVIATKU)) || */ ((force & FORCE_BRAT_ZALMY) == FORCE_BRAT_ZALMY)) { // 2006-01-25_ZALMY1NE_FIX; 2009-09-18: doplnené brat_zalmy
-			_set_zalmy_1nedele_rch();
-		}
 		_spolocna_cast_full(modlitba);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kresp_ve;
