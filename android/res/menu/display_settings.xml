@@ -33,6 +33,11 @@
         app:actionLayout="@layout/widget_switch"
   />
 
+  <item android:id="@+id/buttons_rounded_corners"
+        android:title="@string/buttons_rounded_corners"
+        app:actionLayout="@layout/widget_switch"
+  />
+
   <item android:id="@+id/buttons_order"
         android:title="@string/buttons_order"
         app:actionLayout="@layout/widget_switch"

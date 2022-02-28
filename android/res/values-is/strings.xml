@@ -48,6 +48,7 @@
     <string name="night_mode">Nátthamur</string>
     <string name="background_override">Annars konar bakgrunnslitur (gulur)</string>
     <string name="normal_font">Venjulegt letur (ekki feitletrað)</string>
+    <string name="buttons_rounded_corners">Ávöl horn á hnöppum</string>
     <string name="buttons_order">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
     <string name="transparent_nav">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
 

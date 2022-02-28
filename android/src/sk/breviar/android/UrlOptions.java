@@ -259,6 +259,15 @@ public class UrlOptions {
     setBit("o2", 14, value);
   }
 
+  // of2rc
+  public boolean isRoundedCorners() {
+    return hasBit("o2", 16);
+  }
+
+  public void setRoundedCorners(boolean value) {
+    setBit("o2", 16, value);
+  }
+
   // of2sdc
   public boolean isEmphasizeLocalCalendar() {
     return hasBit("o2", 15);

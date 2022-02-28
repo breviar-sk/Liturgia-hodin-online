@@ -1148,6 +1148,9 @@ const char* nazov_css_normal_font_weight = "breviar-normal-font.css";
 // voice output CSS | includes ONLY ammendment to base css (breviar.css)
 const char* nazov_css_voice_output = "breviar-voice-output.css";
 
+// CSS for rounded corners of buttons | includes ONLY ammendment to base css (breviar.css)
+const char* nazov_css_rounded_corners = "breviar-rounded-corners.css";
+
 // language charset (encoding); used for HTML heading | use CHARSET_UTF_8
 const short int charset_jazyka[POCET_JAZYKOV + 1] =
 { CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, /* ADD_VALUE_FOR_NEW_LANGUAGE */ };
@@ -3972,6 +3975,36 @@ const char* html_text_opt_2_nocny_rezim_explain[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"is_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_2_rounded_corners[POCET_JAZYKOV + 1] =
+{
+	"zaoblené rohy tlačidiel",
+	"zaoblené rohy tlačítek",
+	"rounded corners of buttons",
+	"angulis rotundatis",
+	"",
+	"zaoblené rohy tlačítek",
+	"lekerekített sarok",
+	"закругленные углы",
+	"закругленыя куты",
+	"ávöl horn",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_2_rounded_corners_explain[POCET_JAZYKOV + 1] =
+{
+	"Zobrazí zaoblené rohy tlačidiel.",
+	"Zobrazí zaoblené rohy tlačítek.",
+	"Displays rounded corners of buttons.",
+	"",
+	"",
+	"Zobrazí zaoblené rohy tlačítek.",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 

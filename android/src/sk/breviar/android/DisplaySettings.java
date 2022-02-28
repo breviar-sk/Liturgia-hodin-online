@@ -36,6 +36,10 @@ public class DisplaySettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setOnlyNonBoldFont(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isOnlyNonBoldFont(); }
     });
+    handleSwitch(R.id.buttons_rounded_corners, new BooleanUrlOption() {
+      public void setOpt(UrlOptions opts, boolean value) { opts.setRoundedCorners(value); }
+      public boolean getOpt(UrlOptions opts) { return opts.isRoundedCorners(); }
+    });
     handleSwitch(R.id.buttons_order, new BooleanUrlOption() {
       public void setOpt(UrlOptions opts, boolean value) { opts.setButtonsOrder(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isButtonsOrder(); }

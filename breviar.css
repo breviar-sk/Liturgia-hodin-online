@@ -155,7 +155,6 @@ div.navm p {
 }
 
 .calendar { 
-	border-bottom: none; 
 	padding: 3px; 
 }
 
@@ -174,22 +173,34 @@ div.navm p {
 }
 
 .calendar.day { 
-	background-color: #F3E4C4; /* button light */
+	background-color: transparent;
+	border: solid 1px #1a1a1a; 
 	display: block; 
 	min-width: 22px; 
+	padding: 4px 4px;
 	text-align: right;
+	text-decoration: none; 
+	transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	width: auto;
+	will-change: transform;
 }
 
 .calendar.day:hover {
 	background-color: #C39482; /* button middle-dark */
-	color: #FFFFCC; 
+	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 16px;
+	transform: translateY(-2px);
 }
 
 .calendar.today { 
 	background-color: #1a1a1a; 
-	color: #FFFFCC; 
+	border: solid 1px #1a1a1a; 
+	color: #FFFFFF; 
 	display: block; 
 	min-width: 22px; 
+	padding: 4px 4px;
 	text-align: right;
 }
 
@@ -790,65 +801,56 @@ input {
 	font-size: inherit; 
 }
 
-/* prayer buttons */
-input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer { 
-	background-color: #F3E4C4; /* button light */
-	border: solid 0px #1a1a1a; 
-	color: #1a1a1a; 
+/* buttons */
+input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer /* prayer buttons */
+, input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 /* << button0 >> + button1 for today */
+, input.button2, input.reset2, .button2 { 
+	background-color: transparent;
+	border: solid 2px #1a1a1a; 
+	/* border-radius: 10px; */
+	box-sizing: border-box;
 	cursor: pointer;
 	font-family: inherit; 
 	font-size: inherit; 
 	font-style: normal;
-	margin-left: 0px !important;
-	min-width: 76px;
-	padding: 8px 4px;
-	text-decoration: none; 
-}
-
-input.button:hover, input.reset:hover, .button:hover, a.button:hover {
-	background-color: #C39482; /* button middle-dark */
-	color: #FFFFCC; 
-}
-
-input.button, input.reset, .button, a.button {
-	min-height: 20px;
-}
-
-.button-prayer, input.button-prayer { 
-	width: 100%; /* within table cell */
-}
-
-.button-prayer:hover, input.button-prayer:hover { 
-	background-color: #C39482; /* button middle-dark */
-	color: #FFFFCC; 
-}
-
-button.button-prayer {
-	min-width: 80px; /* must be 4px more than .button-prayer due to padding */
-}
-
-/* << button0 >> + button1 for today */
-input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 { 
-	background-color: #7A3E3B; /* button dark */
-	border: solid 0px #1a1a1a; 
-	color: white; 
-	cursor: pointer;
-	font-family: inherit; 
-	font-style: normal;
+	line-height: normal;
 	margin-left: 0px !important;
 	min-height: 20px;
 	min-width: 76px;
-	padding: 8px 4px;
+	padding: 8px 8px;
+	text-align: center;
 	text-decoration: none; 
+	transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	width: 100%;
+	will-change: transform;
 }
 
-input.button0:hover, input.reset0:hover, .button0:hover, input.button1:hover, input.reset1:hover, .button1:hover { 
+input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer
+, input.button2, input.reset2, .button2 { 
+	color: #1a1a1a; 
+}
+
+input.button, input.reset, .button, a.button
+, input.button1, input.reset1, .button1
+, input.button2, input.reset2, .button2  {
+	width: auto;
+}
+
+input.button:hover, input.reset:hover, .button:hover, a.button:hover, .button-prayer:hover, input.button-prayer:hover
+, input.button0:hover, input.reset0:hover, .button0:hover, input.button1:hover, input.reset1:hover, .button1:hover
+, input.button2:hover, input.reset2:hover, .button2:hover, a.button2:hover {
 	background-color: #C39482; /* button middle-dark */
-	color: #FFFFCC; 
+	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 16px;
+	transform: translateY(-2px);
 }
 
-input.button0, input.reset0, .button0 {
-	width: 100%; /* within table cell */
+input.button:active, input.reset:active, .button:active, a.button:active, .button-prayer:active, input.button-prayer:active {
+	background-color: transparent;
+	box-shadow: none;
+	transform: translateY(0);
 }
 
 /* button1 for today */
@@ -859,23 +861,9 @@ input.button1, input.reset1, .button1 {
 
 /* less important buttons */
 input.button2, input.reset2, .button2 { 
-	background-color: #F3E4C4; /* button light */
-	border: solid 0px #1a1a1a; 
-	color: #1a1a1a; 
-	cursor: pointer;
 	font-family: inherit; 
 	font-style: italic;
-	min-height: 20px;
-	min-width: 76px;
 	margin-left: 0px !important;
-	padding: 8px 4px;
-	text-decoration: none; 
-	width: 100%; /* within table cell */
-}
-
-input.button2:hover, input.reset2:hover, .button2:hover, a.button2:hover {
-	background-color: #C39482; /* button middle-dark */
-	color: #FFFFCC; 
 }
 
 input.text { 

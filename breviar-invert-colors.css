@@ -66,17 +66,18 @@
 }
 
 .calendar.day {
-	background-color: #7A3E3B; /* button dark */
+	border: solid 1px #CCCCCC; 
 	color: #AAAAAA; 
 }
 
 .calendar.day:hover {
 	background-color: #C39482; /* button middle-dark */
-	color: #FFFFCC; 
+	color: #000000; 
 }
 
 .calendar.today { 
 	background-color: #CCCCCC; 
+	border: solid 1px #CCCCCC; 
 	color: #191919; /* #333333; */
 }
 
@@ -214,22 +215,23 @@ input {
 	color: #CCCCCC; 
 }
 
-input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer { 
-	background-color: #7A3E3B; /* button dark */
-	border: solid 0px #CCCCCC; 
-	color: #AAAAAA; 
+/* buttons */
+input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer /* prayer buttons */
+, input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 /* << button0 >> + button1 for today */
+, input.button2, input.reset2, .button2 { 
+	background-color: transparent;
+	border: solid 2px #CCCCCC; 
 }
 
-input.button2, input.reset2, .button2 { 
-	background-color: #612821; /* button darker */
-	border: solid 0px #CCCCCC; 
-	color: #A0A0A0;
+input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer
+, input.button2, input.reset2, .button2 { 
+	color: #AAAAAA;
 }
 
-input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 { 
-	background-color: #441513; /* button darkest */
-	border: solid 0px #A0A0A0; 
-	color: #A0A0A0;
+input.button:hover, input.reset:hover, .button:hover, a.button:hover, .button-prayer:hover, input.button-prayer:hover
+, input.button0:hover, input.reset0:hover, .button0:hover, input.button1:hover, input.reset1:hover, .button1:hover
+, input.button2:hover, input.reset2:hover, .button2:hover, a.button2:hover {
+	color: #000000; 
 }
 
 input.text { 

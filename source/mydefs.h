@@ -848,6 +848,14 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_FORCE_BIT_OPT_2_NOCNY_REZIM "of2nr"
 #endif
 
+// rounded corners CSS override
+#define FORCE_BIT_OPT_2_ROUNDED_CORNERS 122
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_2_ROUNDED_CORNERS "FORCE_BIT_OPT_2_ROUNDED_CORNERS"
+#else
+#define STR_FORCE_BIT_OPT_2_ROUNDED_CORNERS "of2rc"
+#endif
+
 // rôzne možnosti zobrazovať priamo v texte modlitieb (najmä pre android)
 #define FORCE_BIT_OPT_2_ROZNE_MOZNOSTI 93
 #ifdef LONG_PARAM_NAMES
@@ -1364,6 +1372,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_2_HIDE_OPTIONS2             "BitOpt2HideOptionsPart2"
 #define XML_BIT_OPT_2_ALTERNATIVES              "BitOpt2Alternatives"
 #define XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR     "BitOpt2ShowDefaultCalendar"
+#define XML_BIT_OPT_2_ROUNDED_CORNERS           "BitOpt2RoundedCorners"
 
 // POCET_OPT_5_ALTERNATIVES
 #define XML_BIT_OPT_5_HYMNUS_KOMPL              "BitOpt5HymnCompl"

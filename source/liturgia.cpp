@@ -1971,6 +1971,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 13: mystrcpy(str, STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2, SMALL); break; // BIT_OPT_2_HIDE_OPTIONS2
 			case 14: mystrcpy(str, STR_FORCE_BIT_OPT_2_ALTERNATIVES, SMALL); break; // BIT_OPT_2_ALTERNATIVES
 			case 15: mystrcpy(str, STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR, SMALL); break; // BIT_OPT_2_SHOW_DEFAULT_CALENDAR
+			case 16: mystrcpy(str, STR_FORCE_BIT_OPT_2_ROUNDED_CORNERS, SMALL); break; // BIT_OPT_2_ROUNDED_CORNERS
 			}
 		}
 		break;

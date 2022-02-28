@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version" translatable="false">4.7</string>
+    <string name="version" translatable="false">4.8</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -50,6 +50,7 @@
     <string name="night_mode">Night mode</string>
     <string name="background_override">Alternative background color (yellow)</string>
     <string name="normal_font">Force normal font weight (no bold)</string>
+    <string name="buttons_rounded_corners">Rounded corners of buttons</string>
     <string name="buttons_order">Date buttons after buttons for prayers</string>
     <string name="transparent_nav">Navigation arrow in text</string>
 
