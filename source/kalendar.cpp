@@ -7240,7 +7240,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
@@ -7248,7 +7247,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
 
 				break;
@@ -7259,7 +7257,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
@@ -7267,7 +7264,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
 
 				break;
@@ -7286,7 +7282,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
 			_global_svaty(2).farba = LIT_FARBA_CERVENA;
 			_global_svaty(2).kalendar = KALENDAR_VSEOBECNY;
-		}// všeobecný kalendár
+		}// všeobecný kalendár (LA, IS...)
 
 		if (_global_jazyk == JAZYK_HU) {
 			if (poradie_svaty == 2) {
@@ -7613,7 +7609,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
@@ -7621,7 +7616,6 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
 
 				break;
@@ -7632,7 +7626,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
-		}
+		}// všeobecný kalendár (LA, IS...)
 
 		break;
 
