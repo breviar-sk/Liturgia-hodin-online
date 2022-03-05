@@ -360,7 +360,7 @@ const char* nazov_obdobia_v_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 	{ "vo Vianočnom období", "v době vánoční", "", "tempore Nativitatis", "", "v době vánoční", "a karácsonyi időben", "ru_text", "by_text", "Á jólatíð", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "v Cezročnom období", "v mezidobí", "", "per annum", "", "v mezidobí", "az évközi időben", "ru_text", "by_text", "Innan ársins", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "v Pôstnom období", "v době postní", "", "tempore Quadragesimæ", "", "v době postní", "a nagyböjti időben", "ru_text", "by_text", "Á föstutíð", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vo Veľkom týždni", "ve Svatém týdnu", "", "in Hebdomada sancta", "", "ve Svatém týdnu", "a nagyhéten", "ru_text", "by_text", "Á Dymbilvikam", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vo Veľkom týždni", "ve Svatém týdnu", "", "in Hebdomada sancta", "", "ve Svatém týdnu", "a nagyhéten", "ru_text", "by_text", "Í Dymbilviku", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "vo Veľkonočnom Trojdní", "ve velikonočním triduu", "", "in Triduo Paschali", "", "ve velikonočním triduu", "a szent három napban", "ru_text", "by_text", "Á heilögum bænadögum", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "vo Veľkonočnej oktáve", "ve velikonočním oktávu", "", "infra octavam Paschæ", "", "ve velikonočním oktávu", "húsvét nyolcadában", "ru_text", "у актаве Пасхі", "á páskaáttund", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "vo Veľkonočnom období", "v době velikonoční", "", "tempore Paschæ", "", "v době velikonoční", "a húsvéti időben", "ru_text", "by_text", "Á páskatíð", /* STRING_1_FOR_NEW_LANGUAGE */ },
@@ -380,7 +380,7 @@ const char* nazov_Obdobia_aka_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 	{ "Vianočná", "vánoční", "", "post Nativitatem", "", "vánoční", "Karácsony", "ru_text", "by_text", "á jólatíð", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "Cezročná", "v mezidobí", "", "per annum", "", "během roku", "Évközi", "ru_text", "by_text", "innan ársins", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "Pôstna", "postní", "", "Quadragesimæ", "", "postní", "Nagyböjt", "ru_text", "by_text", "á föstutíð", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vo Veľkom týždni", "ve Svatém týdnu", "", "in Hebdomada sancta", "", "ve Svatém týdnu", "hu_", "ru_text", "by_text", "á Dymbilvikam", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sas
+	{ "Vo Veľkom týždni", "ve Svatém týdnu", "", "in Hebdomada sancta", "", "ve Svatém týdnu", "hu_", "ru_text", "by_text", "í Dymbilviku", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sas
 	{ "Vo Veľkonočnom Trojdní", "ve velikonočním triduu", "", "in Triduo Paschali", "", "ve velikonočním triduu", "hu_", "ru_text", "by_text", "á heilögum bænadögum", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
 	{ "Vo Veľkonočnej oktáve", "ve velikonočním oktávu", "", "infra octavam Paschalis", "", "v oktávu velikonočním", "Húsvét nyolcacadában", "ru_text", "у актаве пасхі", "á páskaáttund", /* STRING_1_FOR_NEW_LANGUAGE */ }, // not used / nepoužíva sa
 	{ "Veľkonočná", "velikonoční", "", "Paschæ", "", "velikonoční", "Húsvét", "ru_text", "велікодная", "á páskatíð", /* STRING_1_FOR_NEW_LANGUAGE */ },
@@ -3642,7 +3642,7 @@ const char* html_text_opt_1_override_stupen_slavenia_explain[POCET_JAZYKOV + 1] 
 	"Lehetséges a (tetszés szerinti) emléknapot, mint ünnepet vagy főünnepet venni, hasonlóan az ünnepet mint főünnepet venni (hejbéli ünnep/főünnep).",
 	"ru_text",
 	"Магчымасць цэлебраваць успамін як свята альбо ўрачыстасць; таксама магчымасць цэлебраваць свята як урачыстасць.",
-	"is_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3762,7 +3762,7 @@ const char* html_text_opt_2_iso_datum[POCET_JAZYKOV + 1] =
 	"a dátum ISO 8601 formátumban (ÉÉÉÉ-HH-NN) jelenjen meg",
 	"ru_text",
 	"дату ў фармаце ISO 8601 (ГГГГ-ММ-ДД)",
-	"is_text",
+	"ISO 8601 format (RRRR-MM-DD)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3806,9 +3806,9 @@ const char* html_text_opt_2_font_family_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Válasszon talpas (Serif) vagy talp nélküli (Sans Serif) betűt, kényelem szerint. A böngészőablakban mutatott betűtípus az alapértelmezett.",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3972,9 +3972,9 @@ const char* html_text_opt_2_nocny_rezim_explain[POCET_JAZYKOV + 1] =
 	"",
 	"Zobrazí světlý text na tmavém pozadí.",
 	"Világos szöveg megjelenítése sötét háttéren.",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4032,9 +4032,9 @@ const char* html_text_opt_2_alternatives_explain[POCET_JAZYKOV + 1] =
 	"",
 	"Zobrazí v textu modliteb jenom jednu možnost (je možné přepínat).",
 	"Megmutatja…",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4062,9 +4062,9 @@ const char* html_text_opt_2_show_defalut_calendar_explain[POCET_JAZYKOV + 1] =
 	"",
 	"V podnadpisu modlitby zobrazí informaci, že slávení je v národním kalendáři (tedy ne v obecním kalendáři).",
 	"Az ima felirata alatt megmutatja az információt, hogy az ünnep a nemzeti naptárban van (tehát nem az általánosban).",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4198,8 +4198,8 @@ const char* html_text_opt_5_PCHymnusVNnedela[POCET_JAZYKOV + 1] =
 	"hymnus nedělní",
 	"Urunknak áldott napja ez",
 	"ru_text",
-	"гімн",
-	"is_text",
+	"гімн ...",
+	"hymni Lofum þann sem lífið gefur",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4213,8 +4213,8 @@ const char* html_text_opt_5_PCHymnusVNferia[POCET_JAZYKOV + 1] =
 	"hymnus z férie",
 	"Örvendj, ég, messzi csillagok",
 	"ru_text",
-	"гімн",
-	"is_text",
+	"гімн ...",
+	"hymni Guð helgur andi himni af",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4228,8 +4228,8 @@ const char* html_text_opt_5_RChHymnusVNnedela[POCET_JAZYKOV + 1] =
 	"hymnus nedělní",
 	"Rózsálló hajnalfény ragyog",
 	"ru_text",
-	"гімн",
-	"is_text",
+	"гімн ...",
+	"hymni Kristur, þig kallar á",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4243,8 +4243,8 @@ const char* html_text_opt_5_RChHymnusVNferia[POCET_JAZYKOV + 1] =
 	"hymnus z férie",
 	"Az új Sionnak kórusa",
 	"ru_text",
-	"гімн",
-	"is_text",
+	"гімн ...",
+	"hymni Guðs föður dýrðar dásöm mynd",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4258,8 +4258,8 @@ const char* html_text_opt_5_VespHymnusVNnedela[POCET_JAZYKOV + 1] =
 	"hymnus nedělní",
 	"Ím, vár a Bárány asztala",
 	"ru_text",
-	"гімн",
-	"is_text",
+	"гімн ...",
+	"hymni Nú vil eg enn í nafni þínu",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4273,8 +4273,8 @@ const char* html_text_opt_5_VespHymnusVNferia[POCET_JAZYKOV + 1] =
 	"hymnus z férie",
 	"Örök Királyunk, szent Urunk",
 	"ru_text",
-	"гімн",
-	"is_text",
+	"гімн ...",
+	"hymni Hann sagði við þá: Sjá, ég kem í skýjum",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4378,7 +4378,7 @@ const char* html_text_opt_5_1VHymnusNe[POCET_JAZYKOV + 1] =
 	"hymnus pro první večerní chvály",
 	"I. Esti dicséret himnusza",
 	"ru_text",
-	"гімн",
+	"гімн ...",
 	"hymni fyrir fyrsta aftansöng",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -4393,7 +4393,7 @@ const char* html_text_opt_5_1VHymnusPC[POCET_JAZYKOV + 1] =
 	"hymnus pro čtení [během dne]",
 	"Olvasmányos imaóra himnusza [napközben]",
 	"ru_text",
-	"гімн",
+	"гімн ...",
 	"hymni er eins og í óttusöng hinn fyrri [um daginn]",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -5017,7 +5017,7 @@ const char* html_text_font_name[POCET_JAZYKOV + 1] =
 	"betűtípus kiválasztása",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"eða notaðu leturgerð",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -7121,9 +7121,9 @@ const char* text_MAR_19_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"Sv. Josefa, Snoubence Panny Marie, " HTML_LINE_BREAK "patrona Tovaryšstva Ježíšova",
 	"Szent József, a Boldogságos Szűz Mária jegyese, " HTML_LINE_BREAK "Jézus Társaságának védőszentje",
-	"ru_text",
+	"",
 	"Св. Юзафа, абранніка Найсвяцейшай Панны Марыі",
-	"is_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_23[POCET_JAZYKOV + 1] =
@@ -7182,7 +7182,7 @@ const char* text_APR_02[POCET_JAZYKOV + 1] =
 	"Paolai Szent Ferenc remete",
 	"ru_text",
 	"Св. Францішка з Паолы, пустэльніка",
-	"is_text",
+	"Hl. Frans frá Paola, einsetumanns",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_04[POCET_JAZYKOV + 1] =
@@ -9120,7 +9120,7 @@ const char* text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1] = // 2012-12-
 	", " HTML_LINE_BREAK "Krisztus feltámadása",
 	"",
 	", " HTML_LINE_BREAK "урачыстасць Уваскрасення Пана",
-	"",
+	HTML_LINE_BREAK " &#8212; Upprisuhátíð Drottins",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
@@ -9134,7 +9134,7 @@ const char* text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
 	"Vasárnap Húsvét nyolcadában",
 	"ru_text",
 	"II Велікодная нядзеля", // convertToRoman()
-	"is_text",
+	"Áttundi dagur Páskanna",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NEDELA_VO_VELKONOCNEJ_OKTAVE_SUBSTRING[POCET_JAZYKOV + 1] =
@@ -9148,7 +9148,7 @@ const char* text_NEDELA_VO_VELKONOCNEJ_OKTAVE_SUBSTRING[POCET_JAZYKOV + 1] =
 	"Húsvét 2. vasárnapja – Az Isteni Irgalmasság vasárnapja",
 	"ru_text",
 	"by_text",
-	"2. sunnudagur á páskatíma – Sunnudagur hinnar guðdómlegu miskunnsemi",
+	"II. Sunnudagur á Páskatíma – Sunnudagur hinnar guðdómlegu miskunnsemi",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEN_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
@@ -9162,11 +9162,25 @@ const char* text_DEN_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1] =
 	"%s Húsvét nyolcadában",
 	"ru_text",
 	"%s у актаве Пасхі",
-	"is_text",
+	"%s á Páskaviku",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char* text_HU_VELKONOCNY_PONDELOK = "Húsvéthétfő"; // pre HU špeciálny názov veľkonočného pondelka
+// pre HU + IS špeciálny názov veľkonočného pondelka
+const char* text_VELKONOCNY_PONDELOK[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Húsvéthétfő",
+	"",
+	"",
+	"Annar Páskadagur",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 
 const char* text_HU_VELKY_TYZDEN_PREFIX = "Nagy"; // pre HU špeciálne názvy dní veľkného týždňa (pondelok až streda)
 
@@ -9181,7 +9195,7 @@ const char* text_MARIE_MATKY_CIRKVI[POCET_JAZYKOV + 1] =
 	"Szűz Mária az Egyház anyja",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Maríu meyjar, móður kirkjunnar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NPJK_NAJ_KNAZA[POCET_JAZYKOV + 1] =
@@ -9840,9 +9854,9 @@ const char* text_JUN_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Páduai Szent Antal, pap, egyháztanító az I. Rendből",
-	"ru_text",
+	"",
 	"Св. Антонія Падуанскага, прэзбітэра і доктара Касцёла",
-	"is_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_14_HU[POCET_JAZYKOV + 1] =
@@ -11399,7 +11413,7 @@ const char* text_JUL_29[POCET_JAZYKOV + 1] =
 	"Szent Márta, Mária és Lazár",
 	"ru_text",
 	"Св. Марты", // ToDo
-	"Hl. Mörtu, is_text", // Marta?
+	"Hl. Mörtu, Maríu og Lasarusar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_29_IS[POCET_JAZYKOV + 1] =
@@ -13904,7 +13918,7 @@ const char* text_OKT_05[POCET_JAZYKOV + 1] =
 	"Kowalska Szent Fausztina szűz",
 	"",
 	"",
-	"is_text",
+	"Hl. Fástínu Kowalska, meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_05_OP[POCET_JAZYKOV + 1] =
@@ -16402,7 +16416,7 @@ const char* text_DEC_10[POCET_JAZYKOV + 1] =
 	"A Loretói Boldogságos Szűz Mária",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"Hl. María mey frá Loreto",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_10_OFMCAP[POCET_JAZYKOV + 1] =
@@ -16741,7 +16755,7 @@ const char* text_BIELA_SOBOTA[POCET_JAZYKOV + 1] =
 	"Nagyszombat",
 	"ru_text",
 	"Вялікая субота",
-	"Páskavaka",
+	"Laugardagur í Dymbilviku",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_KVETNA_NEDELA[POCET_JAZYKOV + 1] =
@@ -16755,7 +16769,7 @@ const char* text_KVETNA_NEDELA[POCET_JAZYKOV + 1] =
 	"Virágvasárnap, vagyis az Úr szenvedésének vasárnapja",
 	"ru_text",
 	"Пальмовая нядзеля альбо нядзеля Мукі Пана",
-	"is_text",
+	"Pálmasunnudagur",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_PO_POPOLCOVEJ_STREDE[POCET_JAZYKOV + 1] =
@@ -16769,7 +16783,7 @@ const char* text_PO_POPOLCOVEJ_STREDE[POCET_JAZYKOV + 1] =
 	"Hamvazószerda után",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"eftir Öskudag",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1] =
@@ -16783,7 +16797,7 @@ const char* text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1] =
 	"Karácsony nyolcada",
 	"ru_text",
 	"ў актаве Нараджэння Пана",
-	"is_text",
+	"í Jólaviku",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_KONIEC_OKTAVY_NARODENIA_PANA[POCET_JAZYKOV + 1] =

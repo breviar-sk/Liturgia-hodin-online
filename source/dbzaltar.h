@@ -1679,6 +1679,7 @@ extern const char* text_NANEBOVSTUPENIE_PANA[POCET_JAZYKOV + 1];
 extern const char* text_VELKONOCNA_NEDELA[POCET_JAZYKOV + 1];
 extern const char* text_NEDELA_PANOVHO_ZMRTVYCHVSTANIA[POCET_JAZYKOV + 1];
 extern const char* text_NEDELA_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1];
+extern const char* text_VELKONOCNY_PONDELOK[POCET_JAZYKOV + 1];
 extern const char* text_DEN_VO_VELKONOCNEJ_OKTAVE[POCET_JAZYKOV + 1];
 extern const char* text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1];
 extern const char* text_KRISTA_KRALA[POCET_JAZYKOV + 1];

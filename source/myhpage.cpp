@@ -45,7 +45,7 @@ const char* html_header_css = "\t<link rel=\"stylesheet\" type=\"text/css\" href
 
 const char* xml_header = "<?xml version=\"1.0\" encoding=\"%s\"?>\n\n";
 
-const char* generated[POCET_JAZYKOV + 1] = { "Generované: ", "Generováno: ", "Generated: ", "Generated: ", "Generated: ", "Generováno: ", "Generálva: ", "ru_text", "by_text", "is_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char* generated[POCET_JAZYKOV + 1] = { "Generované: ", "Generováno: ", "Generated: ", "Generated: ", "Generated: ", "Generováno: ", "Generálva: ", "ru_text", "by_text", "Myndast: ", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 // Generované + dátum: "%d. %s %d, %02d:%02d:%02d" -- pôvodne to bolo v zátvorkách
 const char* datum_cas_template[POCET_JAZYKOV + 1] = { "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", "%d. %s %d, %02d:%02d", /* STRING_3_FOR_NEW_LANGUAGE */ };

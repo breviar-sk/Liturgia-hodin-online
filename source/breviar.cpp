@@ -6186,10 +6186,10 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						else if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 							sprintf(_global_den.meno, text_DEN_VO_VELKONOCNEJ_OKTAVE[_global_jazyk], nazov_Dna(_global_den.denvt));
 						}
-						else if (_global_jazyk == JAZYK_HU) {
+						else if ((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_IS)) {
 							if (_global_den.denvt == DEN_PONDELOK) {
 								// veľkonočný pondelok ináč
-								mystrcpy(_global_den.meno, (char *)text_HU_VELKONOCNY_PONDELOK, MENO_SVIATKU);
+								mystrcpy(_global_den.meno, text_VELKONOCNY_PONDELOK[_global_jazyk], MENO_SVIATKU);
 							}
 							else {
 								sprintf(_global_den.meno, text_DEN_VO_VELKONOCNEJ_OKTAVE[_global_jazyk], nazov_dna(_global_den.denvt));
