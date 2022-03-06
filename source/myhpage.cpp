@@ -212,10 +212,9 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 	Log("nazov_css_suboru == %s...\n", nazov_css_suboru);
 
 	// nastavenie font-family
-	// zatiaľ len pevné reťazce; časom možno bude premenná pre názov fontu
 	// najprv sa testuje nastavenie _global_font; následne sa prípadne nastavia defaulty
-	if ((_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)) {
-		Log("(_global_font == FONT_UNDEF) || (_global_font == FONT_CHECKBOX)...\n");
+	if (_global_font == FONT_CHECKBOX) {
+		Log("_global_font == FONT_CHECKBOX...\n");
 		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_FAMILY)) {
 			Log("_global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY...\n");
 			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SANS_SERIF, SMALL);
@@ -224,13 +223,16 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 			Log("NOT _global_opt[OPT_2_HTML_EXPORT] & BIT_OPT_2_FONT_FAMILY...\n");
 			mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_SERIF, SMALL);
 		}
-	}// (_global_font == FONT_UNDEF)  || (_global_font == FONT_CHECKBOX)
+	}// (_global_font == FONT_CHECKBOX)
 	else if (_global_font == FONT_CSS) {
 		Log("_global_font == FONT_CSS...\n");
 		mystrcpy(_global_css_font_family, DEFAULT_FONT_FAMILY_INHERIT, SMALL);
 	}// (_global_font == FONT_CSS)
+	else if ((_global_font == FONT_CUSTOM) && (!equals(pom_FONT, STR_EMPTY))) {
+		mystrcpy(_global_css_font_family, pom_FONT, SMALL);
+	}
 	else {
-		Log("_global_font != FONT_CSS...\n");
+		Log("_global_font != FONT_CSS or _global_font == FONT_CUSTOM but font name not set...\n");
 		mystrcpy(_global_css_font_family, nazov_fontu[_global_font], SMALL);
 	}// else
 	Log("_global_css_font_family == %s...\n", _global_css_font_family);

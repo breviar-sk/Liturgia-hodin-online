@@ -120,7 +120,7 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define	POCET_FONTOV    10
 
 // fonts used in drop-down list
-#define FONT_UNDEF       0
+#define FONT_CUSTOM      0
 #define FONT_CSS         1
 #define FONT_CHECKBOX    2
 #define FONT_CAMBRIA     3

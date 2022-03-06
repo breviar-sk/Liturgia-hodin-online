@@ -474,13 +474,18 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int sp
 		Log("\tPrilepil som aj css: `%s'\n", pom3);
 	}
 
-	if ((_global_font != FONT_CSS) && (_global_font != FONT_UNDEF)) {
+	if (PODMIENKA_EXPORTOVAT_CUSTOM_FONT) {
+		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_FONT_NAME, pom_FONT);
+		strcat(pom2, pom3);
+		Log("\tPrilepil som aj custom font: `%s'\n", pom3);
+	}
+	else if (PODMIENKA_EXPORTOVAT_STATIC_FONT) {
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_FONT_NAME, nazov_fontu[_global_font]);
 		strcat(pom2, pom3);
 		Log("\tPrilepil som aj font: `%s'\n", pom3);
 	}
 	else {
-		Log("\tNetreba prilepiť font (_global_font == %d, názov == %s)\n", _global_font, nazov_fontu[_global_font]);
+		Log("\tNetreba prilepiť font (_global_font == %d, názov == %s, pom_FONT == %s)\n", _global_font, nazov_fontu[_global_font], pom_FONT);
 	}
 
 	if (PODMIENKA_EXPORTOVAT_FONTSIZE) {

@@ -464,9 +464,13 @@ extern short int _typslav_override(short int typslav);
 
 #define PODMIENKA_EXPORTOVAT_FONTSIZE ( (_global_font_size != FONT_SIZE_UNDEF) && (_global_font_size != FONT_SIZE_CSS) )
 
-#define PODMIENKA_EXPORTOVAT_FONT ( (_global_font != FONT_UNDEF) && (_global_font != FONT_CSS) && (_global_font != FONT_CHECKBOX) )
+extern char pom_FONT[SMALL];
 
-#define PODMIENKA_EXPORTOVAT_CSS ( (_global_css != CSS_UNDEF) && (_global_css != CSS_breviar_sk) )
+#define PODMIENKA_EXPORTOVAT_CUSTOM_FONT ((_global_font == FONT_CUSTOM) && (!equals(pom_FONT, STR_EMPTY)))
+
+#define PODMIENKA_EXPORTOVAT_STATIC_FONT ((_global_font != FONT_CUSTOM) && (_global_font != FONT_CSS) && (_global_font != FONT_CHECKBOX))
+
+#define PODMIENKA_EXPORTOVAT_CSS ((_global_css != CSS_UNDEF) && (_global_css != CSS_breviar_sk))
 
 #define PODMIENKA_EXPORTOVAT_STYLE_MARGIN ( (_global_style_margin > MIN_STYLE_MARGIN) && (_global_style_margin < MAX_STYLE_MARGIN) )
 

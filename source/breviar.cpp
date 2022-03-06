@@ -382,7 +382,7 @@ short int _global_ritus;
 
 short int _global_css;
 
-short int _global_font;
+short int _global_font; // for value FONT_CUSTOM, we use pom_FONT as global variable unless empty
 short int _global_font_size;
 short int _global_font_size_pt;
 short int _global_style_margin;
@@ -396,7 +396,7 @@ char _global_export_navig_hore[SMALL] = DEFAULT_MONTH_EXPORT;
 char _global_export_navig_hore_month[SMALL] = DEFAULT_MONTH_EXPORT;
 char _global_export_navig_hore_day[SMALL] = DEFAULT_MONTH_EXPORT;
 
-char _global_css_font_family[SMALL] = DEFAULT_FONT_FAMILY_SERIF; // zatiaľ len pevné reťazce; časom možno bude premenná pre názov fontu
+char _global_css_font_family[SMALL] = DEFAULT_FONT_FAMILY_SERIF;
 char _global_css_font_size[SMALL] = STR_EMPTY;
 
 short int _global_vstup_den = 0;
@@ -5721,7 +5721,7 @@ short int atocss(char *css) {
 } // atocss()
 
 // popis: vráti číslo fontu
-//        inak vráti FONT_UNDEF
+//        inak vráti FONT_CUSTOM
 short int atofont(char *font) {
 	short int i = 0;
 	do {
@@ -5736,7 +5736,7 @@ short int atofont(char *font) {
 		}
 		i++;
 	} while (i <= POCET_FONTOV);
-	return FONT_UNDEF;
+	return FONT_CUSTOM;
 } // atofont()
 
 // popis: vráti index veľkosti fontu
@@ -10844,8 +10844,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			// pole WWW_/STR_FORCE_BIT_OPT_2_FONT_NAME_CHOOSER
 			Export(HTML_FORM_SELECT"name=\"%s\" title=\"%s\">\n", STR_FONT_NAME, html_text_font_name_explain[_global_jazyk]);
-			// FONT_UNDEF neexportujeme
-			for (font = FONT_UNDEF + 1; font <= POCET_FONTOV; font++) {
+			// FONT_CUSTOM neexportujeme do drop-down listu
+			for (font = FONT_CUSTOM + 1; font <= POCET_FONTOV; font++) {
 				// pom2 bolo nastavené funkciou prilep_request_options() a používa sa v ďalšom; použiť môžeme pom3
 				mystrcpy(pom3, nazov_fontu[font], MAX_STR);
 				if ((_global_jazyk != JAZYK_SK) && ((font == FONT_CSS) || (font == FONT_CHECKBOX))) {
@@ -11545,12 +11545,17 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem kalendár: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
-	// 2011-11-30: exportovanie parametra F (_global_font)
-	if (PODMIENKA_EXPORTOVAT_FONT) {
+	// 2011-11-30, 2021-03-05: exportovanie parametra F (_global_font)
+	if (PODMIENKA_EXPORTOVAT_CUSTOM_FONT) {
+		Log("\tPrilepujem custom font (font == %s)\n", pom_FONT);
+		sprintf(pom, " -F%s", pom_FONT);
+	}
+	else if (PODMIENKA_EXPORTOVAT_STATIC_FONT) {
+		Log("\tPrilepujem static font (font == %s)\n", nazov_fontu[_global_font]);
 		sprintf(pom, " -F%s", nazov_fontu[_global_font]);
 	}
 	else {
-		Log("\tNetreba prilepiť font (font == %s)\n", nazov_fontu[_global_font]);
+		Log("\tNetreba prilepiť font...\n");
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
@@ -12452,12 +12457,17 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r) {
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem kalendár: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
-	// 2011-11-30: exportovanie parametra F (_global_font)
-	if (PODMIENKA_EXPORTOVAT_FONT) {
+	// 2011-11-30, 2021-03-05: exportovanie parametra F (_global_font)
+	if (PODMIENKA_EXPORTOVAT_CUSTOM_FONT) {
+		Log("\tPrilepujem custom font (font == %s)\n", pom_FONT);
+		sprintf(pom, " -F%s", pom_FONT);
+	}
+	else if (PODMIENKA_EXPORTOVAT_STATIC_FONT) {
+		Log("\tPrilepujem static font (font == %s)\n", nazov_fontu[_global_font]);
 		sprintf(pom, " -F%s", nazov_fontu[_global_font]);
 	}
 	else {
-		Log("\tNetreba prilepiť font (font == %s)\n", nazov_fontu[_global_font]);
+		Log("\tNetreba prilepiť font...\n");
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
@@ -19230,11 +19240,8 @@ int breviar_main(int argc, const char** argv) {
 			// načítanie názvu fontu kvôli rôznym fontom
 			_main_LOG_to_Export("zisťujem font...\n");
 			_global_font = atofont(pom_FONT);
-			if (_global_font == FONT_UNDEF) {
-				_global_font = FONT_CSS;
-				_main_LOG_to_Export("\t(vzhľadom k neurčenému fontu používam default -- brať font z CSS)\n");
-			}
 			_main_LOG_to_Export("...font (%s) = %d, teda %s\n", pom_FONT, _global_font, nazov_fontu[_global_font]);
+			// for FONT_CUSTOM, we still use pom_FONT as global variable unless empty
 
 			// načítanie veľkosti fontu
 			_main_LOG_to_Export("zisťujem font size...\n");
@@ -19428,11 +19435,8 @@ int breviar_main(int argc, const char** argv) {
 	// načítanie názvu fontu kvôli rôznym fontom
 	_main_LOG_to_Export("zisťujem font...\n");
 	_global_font = atofont(pom_FONT);
-	if (_global_font == FONT_UNDEF) {
-		_global_font = FONT_CSS;
-		_main_LOG_to_Export("\t(vzhľadom k neurčenému fontu používam default -- brať font z CSS)\n");
-	}
 	_main_LOG_to_Export("...font (%s) = %d, teda %s\n", pom_FONT, _global_font, nazov_fontu[_global_font]);
+	// for FONT_CUSTOM, we still use pom_FONT as global variable unless empty
 
 	// načítanie veľkosti fontu
 	_main_LOG_to_Export("zisťujem font size...\n");
