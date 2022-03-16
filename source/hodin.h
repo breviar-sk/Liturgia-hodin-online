@@ -624,7 +624,7 @@ const char* nazov_slavenia_lokal[] =
 ,"v Rožňavskej diecéze sviatok hlavného patróna"                                                                 // LOKAL_SLAV_ROZNAVA_PATRON
 ,"len v konsekrovaných kostoloch"                                                                                // LOKAL_SLAV_KONSEKR_KOSTOLY
 ,"Druhá veľkonočná nedeľa — Božieho milosrdenstva"                                                               // LOKAL_SLAV_DRUHA_VELK_NEDELA
-,"koniec Oktávy narodenia Pána"                                                                                  // LOKAL_SLAV_KONIEC_OKTAVY_NAR
+,"koniec Oktávy narodenia Pána"                                                                                  // LOKAL_SLAV_KONIEC_OKTAVY_NAR | string here: text_KONIEC_OKTAVY_NARODENIA_PANA[]
 , "len v provinciách Talianska"                                                                                  // LOKAL_SLAV_OCD_IT
 , "hlavního patrona pražské arcidiecéze"                                                                         // LOKAL_SLAV_PRAHA_PATRON
 , "v pražské arcidiecézi"                                                                                        // LOKAL_SLAV_PRAHA
@@ -2460,10 +2460,10 @@ const char* html_text_opt_0_printed_edition[POCET_JAZYKOV + 1] =
 	"la_text",
 	"",
 	"vzít texty podle tištěného vydání",
-	"hu_text",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2490,10 +2490,10 @@ const char* html_text_opt_0_use_two_years_cycle[POCET_JAZYKOV + 1] =
 	"la_text",
 	"",
 	"vzít dvouroční cyklus pro čtení",
-	"hu_text",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2517,13 +2517,13 @@ const char* html_text_opt_0_two_years_cycle_id[POCET_JAZYKOV + 1] =
 	"pre dvojročný cyklus vziať prvý resp. druhý rok",
 	"pro dvouroční cyklus vzít první nebo druhý rok",
 	"for two years cycle use first or second year",
-	"la_text",
+	"",
 	"",
 	"pro dvouroční cyklus vzít první nebo druhý rok",
-	"hu_text",
-	"ru_text",
-	"by_text",
-	"is_text",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3793,7 +3793,7 @@ const char* html_text_opt_2_font_family[POCET_JAZYKOV + 1] =
 	"talp nélküli betűk használata",
 	"ru_text",
 	"выкарыстоўваць шрыфт без засечак?",
-	"is_text",
+	"nota leturgerð (aðra gerð)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4049,7 +4049,7 @@ const char* html_text_opt_2_show_defalut_calendar[POCET_JAZYKOV + 1] =
 	"kijelölni az ünnepeket a nemzeti naptárban",
 	"ru_text",
 	"пазначаць цэлебрацыі лакальнага календара",
-	"is_text",
+	"feitletra helgihald í þjóðardagatali",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4079,7 +4079,7 @@ const char* html_text_opt_2_background_override[POCET_JAZYKOV + 1] =
 	"fehér/fekete háttért alkalmazni (vetítő/AMOLED kijelző)",
 	"ru_text",
 	"Выкарыстоўваць белы / чорны фон (праектар / дысплэі AMOLED)",
-	"is_text",
+	"nota hvítan / svartan bakgrunn (skjávarpi / AMOLED skjár)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5047,7 +5047,7 @@ const char* html_text_font_size[POCET_JAZYKOV + 1] =
 	"betűméret",
 	"ru_text",
 	"памер шрыфта",
-	"is_text",
+	"leturstærð",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -5062,7 +5062,7 @@ const char* html_text_font_size_explain[POCET_JAZYKOV + 1] =
 	"betűméret",
 	"",
 	"",
-	"",
+	"Leturstærð",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -7308,7 +7308,7 @@ const char* text_APR_16[POCET_JAZYKOV + 1] =
 	"Soubirous Szent Mária Bernadett szűz",
 	"",
 	"",
-	"is_text",
+	"Heilög María Bernadetta Soubirous, meyja",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_17_1_OP[POCET_JAZYKOV + 1] =
@@ -7843,7 +7843,7 @@ const char* text_MAJ_04[POCET_JAZYKOV + 1] =
 	"Szent Flórián vértanú",
 	"",
 	"Св. Флоряна, мучаніка",
-	"is_text",
+	"Heilagur Flórían, píslavottur",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_04_SJ[POCET_JAZYKOV + 1] =
@@ -11542,7 +11542,7 @@ const char* text_POSVIACKA_KATEDRALNEHO_CHRAMU[POCET_JAZYKOV + 1] =
 	"A székesegyház felszentelése",
 	"ru_text",
 	"Гадавіна пасвячэння катэдральнага касцёла",
-	"is_text",
+	"Vígsluafmæli dómkirkju",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -16811,7 +16811,7 @@ const char* text_KONIEC_OKTAVY_NARODENIA_PANA[POCET_JAZYKOV + 1] =
 	"Karácsony nyolcada – Kiskarácsony",
 	"ru_text",
 	"канец Актавы нараджэння Пана",
-	"is_text",
+	"lok Áttundar Fæðingar Drottins",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_LEN_V_KONSEKROVANYCH_KOSTOLOCH[POCET_JAZYKOV + 1] =
@@ -16825,7 +16825,7 @@ const char* text_LEN_V_KONSEKROVANYCH_KOSTOLOCH[POCET_JAZYKOV + 1] =
 	"csak a felszentelt templomokban",
 	"ru_text",
 	"by_text",
-	"is_text",
+	"bara í vígðum kirkjum",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
