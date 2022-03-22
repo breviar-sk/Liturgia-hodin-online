@@ -42,6 +42,7 @@
     <string name="liturgical_readings">Mass readings</string>
     <string name="psalms_omissions">Omissions from psalms</string>
     <string name="italics_conditional">Special text (elisions) in italics</string>
+    <string name="printed_edtition">Texts according to printed edition</string>
 
     <string name="display_settings_title">Display settings</string>
     <string name="first_vespers_buttons">Button for first vespers for Sundays and solemnitas for the day of celebration</string>

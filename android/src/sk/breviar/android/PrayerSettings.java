@@ -63,5 +63,9 @@ public class PrayerSettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setItalicsConditional(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isItalicsConditional(); }
     });
+    handleSwitch(R.id.printed_edtition, new BooleanUrlOption() {
+      public void setOpt(UrlOptions opts, boolean value) { opts.setPrintedEdition(value); }
+      public boolean getOpt(UrlOptions opts) { return opts.isPrintedEdition(); }
+    });
   }
 }

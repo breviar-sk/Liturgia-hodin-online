@@ -11423,5 +11423,80 @@ short int pocet_multi(char* _anchor, unsigned long long type) {
 	return count;
 }
 
+// explicitly listed anchors which may have "printed edition text" equivalent
+_struct_lang_param_and_anchor printed_edition_lang_text_anchor[] = {
+	{ JAZYK_SK, PARAM_KRESPONZ, "POST1_rRESP" },
+	{ JAZYK_SK, PARAM_CITANIE1, "OCR19PIc_CIT1" },
+	{ JAZYK_SK, PARAM_PROSBY, "_1PO_vPROSBY" },
+	{ JAZYK_SK, PARAM_PROSBY, "_2UT_vPROSBY" },
+	{ JAZYK_SK, PARAM_PROSBY, "_3STV_vPROSBY" },
+	{ JAZYK_SK, PARAM_PROSBY, "ADV11PIv_PROSBY" },
+	{ JAZYK_SK, PARAM_PROSBY, "VTYZ_rPROSBYSTV" },
+	{ JAZYK_SK, PARAM_PROSBY, "SCAP_rPROSBY" },
+	{ JAZYK_SK, PARAM_HYMNUS, "p_HYMNUS_0" },
+	{ JAZYK_SK, PARAM_HYMNUS, "k_HYMNUS_0" },
+};
+
+// override for propria
+_struct_lang_cal_param_and_anchor printed_edition_lang_cal_text_anchor[] = {
+	{ JAZYK_SK, KALENDAR_CZ_CSSR, PARAM_KRESPONZ, "POST1_rRESP" }, // this is nonsense only for example; remove when first real record will be added!!!
+};
+
+short int is_printed_edition_text(char* _anchor, char* _paramname) {
+	// Log("is_printed_edition_text: %s %s...\n", _anchor, _paramname);
+
+	short int i = 0;
+	short int lang = JAZYK_UNDEF;
+	short int cal = KALENDAR_NEURCENY;
+
+	short int size = 0;
+
+	// first, check propria override
+
+	_struct_lang_cal_param_and_anchor* ptr_propria = NULL;
+	_struct_lang_cal_param_and_anchor* orig_propria = printed_edition_lang_cal_text_anchor;
+	size = sizeof(printed_edition_lang_cal_text_anchor);
+
+	_struct_lang_cal_param_and_anchor* endPtr_propria = ptr_propria + size / sizeof(orig_propria[0]);
+
+	i = 0;
+
+	while (ptr_propria < endPtr_propria) {
+		lang = orig_propria[i].language;
+		cal = orig_propria[i].calendar;
+		if (equals(_anchor, orig_propria[i].anchor) && (lang == _global_jazyk) && (cal == _global_kalendar) && equals(_paramname, orig_propria[i].paramname)) {
+			return TRUE;
+		}
+		ptr_propria++;
+		i++;
+	}
+
+	// now, check ordinary arrays
+
+	size = 0;
+
+	_struct_lang_param_and_anchor* ptr = NULL;
+	_struct_lang_param_and_anchor* orig = NULL;
+
+	ptr = printed_edition_lang_text_anchor;
+	size = sizeof(printed_edition_lang_text_anchor);
+
+	i = 0;
+	orig = ptr; // preserve original pointer to array due to dereferencing by [i]
+
+	_struct_lang_param_and_anchor* endPtr = ptr + size / sizeof(orig[0]);
+
+	while (ptr < endPtr) {
+		lang = orig[i].language;
+		if (equals(_anchor, orig[i].anchor) && (lang == JAZYK_UNDEF || lang == _global_jazyk) && equals(_paramname, orig[i].paramname)) {
+			return TRUE;
+		}
+		ptr++;
+		i++;
+	}
+
+	return FALSE;
+}
+
 #endif // __DBZALTAR_CPP_
 

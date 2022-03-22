@@ -111,7 +111,6 @@ char *_global_buf2;
 
 #define ishex(x) (((x) >= '0' && (x) <= '9') || ((x) >= 'a' && (x) <= 'f') || ((x) >= 'A' && (x) <= 'F'))
 
-#define MAX_BUFFER 256
 #define READ_BUFFER 4096
 
 #define ANCHOR_VYSVETLIVKY "VYSVETLIVKY"
@@ -3156,6 +3155,18 @@ void _export_global_string_spol_cast(short int aj_vslh_235b) {
 #define _global_modl_maria_ant_anchor (modlitba == MODL_KOMPLETORIUM) ? _global_modl_kompletorium.maria_ant.anchor : _global_modl_prve_kompletorium.maria_ant.anchor
 
 void ExportFileAnchor(short int typ, short int modlitba, char paramname[MAX_BUFFER], _struct_anchor_and_file anchor_and_file) {
+	// this is the endpoint where anchor & file are sent either to XML output or to method which includes them into HTML result
+
+	Log("ExportFileAnchor(): typ == %d, modlitba == %d, paramname == %s, file == %s, anchor == %s...\n", typ, modlitba, paramname, anchor_and_file.file, anchor_and_file.anchor);
+
+	// when "use printed-edition text" option is switched ON, check whether anchor is listed in special arrays; in such case add special postfix
+	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_PRINTED_EDITION)) && (is_printed_edition_text(anchor_and_file.anchor, paramname) == TRUE)) {
+
+		strcat(anchor_and_file.anchor, PRINTED_EDITION_POSTFIX);
+		
+		Log("ExportFileAnchor(): BIT_OPT_0_PRINTED_EDITION == true + anchor exists in the list with possibility to ask printed edition text, so changing the anchor to: %s...\n", anchor_and_file.anchor);
+	}
+
 	if (typ == PRM_XML) {
 		Export(ELEM_BEGIN(XML_INDEX) "\n");
 		Export(ELEM_BEGIN(XML_FILENAME) "%s" ELEM_END(XML_FILENAME) "\n", anchor_and_file.file);
@@ -3170,7 +3181,7 @@ void ExportFileAnchor(short int typ, short int modlitba, char paramname[MAX_BUFF
 
 		includeFile(typ, modlitba, paramname, path, anchor_and_file.anchor);
 	}
-}
+}// ExportFileAnchor()
 
 // dostane vstup to, co sa pri parsovani templatu nachadza medzi znakmi CHAR_KEYWORD_BEGIN a CHAR_KEYWORD_END;
 // zrejme ide o parameter; podla neho inkluduje subor (alebo cast suboru)
@@ -4604,7 +4615,6 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			break;
 		} // switch
 	} // PARAM_HYMNUS
-
 	else if (equals(paramname, PARAM_ANTIFONA1)) {
 		antifona_pocet++;
 		switch (modlitba) {
@@ -5229,7 +5239,6 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			} // switch
 		}
 	} // PARAM_CITANIE2_SPOMPRIVILEG
-
 	// predĺžené slávenie vigílií v rámci posvätných čítaní
 	else if (equals(paramname, PARAM_ANTIFONA_VIG)) {
 		if (_global_skip_in_prayer == NIE) {
@@ -5291,6 +5300,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			} // switch
 		}
 	} // PARAM_EVANJELIUM
+
 	else if (equals(paramname, PARAM_TEXT)) {
 		// bez ohľadu na modlitba, ktorý nie je nastavený, sa includuje nastavený súbor
 		Log("volám includeFile(%d, %s, file = %s, anchor = %s)...\n", modlitba, paramname, _global_include_static_text.file, _global_include_static_text);

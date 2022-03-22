@@ -160,6 +160,15 @@ public class UrlOptions {
     setBit("o0", 13, value);
   }
 
+  // of0pe
+  public boolean isPrintedEdition() {
+    return hasBit("o0", 14);
+  }
+
+  public void setPrintedEdition(boolean value) {
+    setBit("o0", 14, value);
+  }
+
   // of0zjvne
   public boolean isEpiphanySunday() {
     return hasBit("o0", 3);

@@ -58,6 +58,11 @@
           android:title="@string/italics_conditional"
           app:actionLayout="@layout/widget_switch"
     />
+
+    <item android:id="@+id/printed_edtition"
+          android:title="@string/printed_edtition"
+          app:actionLayout="@layout/widget_switch"
+    />
   </menu>
   </item>
 </menu>

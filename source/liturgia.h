@@ -1987,6 +1987,21 @@ struct _lang_cal_type_anchor_and_count {
 };
 typedef struct _lang_cal_type_anchor_and_count _struct_lang_cal_type_anchor_and_count;
 
+struct _lang_param_and_anchor {
+	short int language;
+	char paramname[MAX_BUFFER];
+	char anchor[MAX_STR_AF_ANCHOR];
+};
+typedef struct _lang_param_and_anchor _struct_lang_param_and_anchor;
+
+struct _lang_cal_param_and_anchor {
+	short int language;
+	short int calendar;
+	char paramname[MAX_BUFFER];
+	char anchor[MAX_STR_AF_ANCHOR];
+};
+typedef struct _lang_cal_param_and_anchor _struct_lang_cal_param_and_anchor;
+
 extern const char* bible_references_default[POCET_JAZYKOV + 1];
 
 extern const char* bible_version_id_default[POCET_JAZYKOV + 1];

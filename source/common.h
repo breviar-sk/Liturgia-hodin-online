@@ -19,6 +19,8 @@
 #define SMALL 160
 #define VERY_SMALL 16
 
+#define MAX_BUFFER 256
+
 // navratova hodnota funkcii
 #define NO_RESULT 2
 #define FAILURE 1
