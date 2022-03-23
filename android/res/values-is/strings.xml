@@ -40,6 +40,7 @@
     <string name="liturgical_readings">Messulestrar</string>
     <string name="psalms_omissions">Kaflar sem sleppt er í sálmum og lofsöngvum</string>
     <string name="italics_conditional">Nokkrir textar (elízie) skáletraðir</string>
+    <string name="printed_edtition">Textar samkvæmt prentuðu upplagi</string>
 
     <string name="display_settings_title">Birtingarstilling</string>
     <string name="first_vespers_buttons">Hnappur fyrir fyrsta aftansöng á sunnudögum og stórhátíðum á hátíðardegi</string>

@@ -40,6 +40,7 @@
     <string name="liturgical_readings">Lectiones ad Missam</string>
     <string name="psalms_omissions">Partes omissas ex psalmis et canticis</string>
     <string name="italics_conditional">Elisiones in hymnis italice notantur</string>
+    <string name="printed_edtition">Textus iuxta editionem typis impressam</string>
 
     <string name="display_settings_title">Præsentatio</string>
     <string name="first_vespers_buttons">Ostende pulsabulam pro I Vesp. dom. et sollemn. die celebrationis</string>
