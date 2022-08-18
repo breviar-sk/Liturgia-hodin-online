@@ -398,3 +398,6 @@
  { "092060206", "Mich 7,14-15.18-20; Ž 103,1-4.9-12; Lk 15,1-3.11-32", "Milostivý a milosrdný je Pán", "" },  /* 2016-02-27  */
  { "02C060300", "Ex 3,1-8a<*ťanov>.13-15; Ž 103,1-11; 1Kor 10,1-6.10-12; Lk 13,1-9", "Milostivý a milosrdný je Pán.", "" },  /* 2016-02-28  */
  { "092060301", "2Kr 5,1-15a; Ž 42,2-3.43,3-4; Lk 4,24-30", "Po Bohu žízni moja duša, po Bohu živom", "" },  /* 2016-02-29  */
+ { "07Sv. Terezie Benedikty od Kriza, <br/>\npanny a mucenice, patronky Europy", "Oz 2,16bc<za*>. 17c–e<tam p*>. 21-22; Ž 45,11-12. 14-15. 16-17; Mt 25,1-13", "Ženích prichádza, vyjdite v ústrety Kristu Pánovi!", "" }, /* (sviatok), Svätej Terézie Benedikty z kríža, panny a mučenice, spolupatrónky Európy 2022-08-09 */
+ { "10Ruzencovej Panny Marie", "Sk 1,12-14; (Ž) Lk 1,46-47.48-49.50-51.52-53.54-55; Lk 1,26-38", "Blahoslavená si, Panna Mária, lebo si nosila Syna večného Otca", "" },  /* 2022-10-07 Ružencovej Panny Márie */
+ { "03CSpomienka na vsetkych vernych zosnulych", "Jób 19,1. 23-27a; Ž 27,1. 4. 7+8b+9a. 13-14; 2Kor 4,14-5,1; Jn 14, 1-6", "Pán je moje svetlo a moja spása. /al./ Verím, že uvidím dobrodenia Pánove v krajine žijúcich.", "" },  /* 2022-11-02 Spomienka na všetkých verných zosnulých */
