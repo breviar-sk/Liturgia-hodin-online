@@ -135,7 +135,6 @@
  { "03CNeposkvrnene pocatie Panny Marie", "Gn 3,9-15.20; Ž 85,9-14; Ef 1,3-6.11-12; Lk 1,26-38", "Spievajte Pánovi pieseň novú, lebo vykonal veci zázračné.", "" },  /* 2015-12-08 Nepoškvrnené počatie Panny Márie */
  { "03CPanny Marie Bohorodicky", "Nm 6,22-27; Ž 67,2-8; Gal 4,4-7; Lk 2,16-21", "Bože, buď nám milostivý a žehnaj nás.", "" },  /* 2016-01-01 Panny Márie Bohorodičky */
  { "03CSedembolestnej Panny Marie, patronky Slovenska", "Sk 1,12-14; (Ž) Lk 1,46-55; 1Pt 4,13-16; Jn 19,25-27 /al./ Lk 2,33-35", "Ty si sláva nášho národa, ty si radosť nášho ľudu.", "" }, /* (slávnosť), Sedembolestnej Panny Márie, patrónky Slovenska, 2007-09-15 */
- { "03CSpomienka na vsetkych vernych zosnulych", "Jób 19,1. 23-27a; Ž 27,1. 4. 7+8b+9a. 13-14; 2Kor 4,14-5,1; Jn 14, 1-6", "Pán je moje svetlo a moja spása. /al./ Verím, že uvidím dobrodenia Pánove v krajine žijúcich.", "" },  /* 2022-11-02 Spomienka na všetkých verných zosnulých */
  { "03CSv. Cyrila a Metoda, slovanskych vierozvestov, apostolov", "Sir 44,1.4-7.11-15; Ž 117,1-2; Ef 4,1-7.11-13; Mt 28,16-20", "Choďte do celého sveta a hlásajte evanjelium.", "" }, /* (slávnosť), Svätých Cyrila a Metoda, slovanských vierozvestov, 2007-07-05 */
  { "03CSv. Jozefa, zenicha Panny Marie", "2Sam 7,4-5a<*án:>.12-14a<*nom.>.16; Ž 89,2-5.27-29; Rim 4,13.16-18.22; Mt 1,16.18-21.24a<*anjel.> /al./ Lk 2,41-51a<*ný.>", "Jeho rod bude trvať naveky.", "" }, /* (slávnosť), Svätého Jozefa, ženícha Panny Márie, 2007-03-19 */
  { "03CSv. Petra a Pavla, apostolov", "Sk 12,1-11; Ž 34,2-9; 2Tim 4,6-8.17-18; Mt 16,13-19", "Pán ma vyslobodil zo všetkej hrôzy.", "" }, /* (slávnosť), Svätých Petra a Pavla, apoštolov, 2007-06-29 */
@@ -283,7 +282,6 @@
  { "07Sv. Ondreja, apostola", "Rim 10,9-18; Ž 19,2-3.4-5; Mt 4,18-22", "Po celej zemi rozlieha sa ich hlas.", "Poďte za mnou, hovorí Pán; a urobím z vás rybárov ľudí." }, /* (sviatok), Svätého Ondreja, apoštola, 2009-11-30 */
  { "07Sv. Simona a Judu, apostolov", "Ef 2,19-22; Ž 19,2-3. 4-5; Lk 6,12-19", "Po celej zemi rozlieha sa ich hlas", "" }, /* (sviatok), Svätých Šimona a Júdu, apoštolov, 2008-10-28 */
  { "07Sv. Stefana, prveho mucenika", "Sk 6,8-10.7,54-60; Ž 31,3c-4.6.8ab.16b-17; Mt 10,17-22", "Do tvojich rúk, Pane, porúčam svojho ducha.", "Požehnaný, ktorý prichádza v mene Pánovom. Boh, Pán, je naším svetlom." },  /* 2019-12-26 Sv. Štefana, prvého mučeníka */
- { "07Sv. Terezie Benedikty od Kriza, <br/>\npanny a mucenice, patronky Europy", "Oz 2,16bc<za*>. 17c–e<tam p*>. 21-22; Ž 45,11-12. 14-15. 16-17; Mt 25,1-13", "Ženích prichádza, vyjdite v ústrety Kristu Pánovi!", "" }, /* (sviatok), Svätej Terézie Benedikty z kríža, panny a mučenice, spolupatrónky Európy 2022-08-09 */
  { "07Sv. Tomasa, apostola", "Ef 2,19-22; Ž 117,1-2; Jn 20,24-29", "Choďte do celého sveta a hlásajte evanjelium.", "" }, /* (sviatok), Svätého Tomáša, apoštola, 2007-07-03 */
  { "07Sv. Vavrinca, diakona a mucenika", "2Kor 9,6-10; Ž 112,1-2.5-6.7-8.9; Jn 12,24-26", "V obľube je človek, čo sa zľutúva a rád pomáha.", "Kto mňa nasleduje, nebude chodiť v tmách, ale bude mať svetlo života, hovorí Pán." }, /* (sviatok), Svätého Vavrinca, diakona, mučeníka, 2009-08-10 */
  { "07Svatych Neviniatok, mucenikov", "1Jn 1,5-2,2; Ž 124,2-5.7c-8; Mt 2,13-18", "Naša duša unikla ako vtáča zo siete poľovníkov.", "Teba, Bože, chválime, teba, Pane, velebíme. Teba, Pane, chváli vznešený zástup mučeníkov." },  /* 2019-12-28 Svätých Neviniatok, mučeníkov */
@@ -382,7 +380,6 @@
  { "10Obetovanie Panny Marie", "Zach 2, 14-17; (Ž) Lk 1,46-47.48-49.50-51.52-53.54-55; Mt 12,46-50", "Blahoslavená si, Panna Mária, lebo si nosila Syna večného Otca.  ", "Blahoslavení sú tí, čo počúvajú Božie slovo a zachovávajú ho." },  /* 2019-11-21 Obetovanie Panny Márie */
  { "10Obetovanie prebl. Panny Marie", "Zach 2,14-17; (Ž) Lk 1,46-47. 48-49. 50-51. 52-53. 54-55; Mt 12,46-50", "Blahoslavená si, Panna Mária, lebo si nosila Syna večného Otca", "" }, /* , /al./ o Panne Márii, 2008-11-21 */
  { "10Prebl. Panny Marie Kralovnej", "Iz 9,1-3. 5-6; Ž 113,1-2. 3-4. 5-6. 7-8; Lk 1,26-38", "Pánovo meno chváľme, zvelebujme", "" }, /* , /al./ o Panne Márii, 2008-08-22 */
- { "10Ruzencovej Panny Marie", "Sk 1,12-14; (Ž) Lk 1,46-47.48-49.50-51.52-53.54-55; Lk 1,26-38", "Blahoslavená si, Panna Mária, lebo si nosila Syna večného Otca", "" },  /* 2022-10-07 Ružencovej Panny Márie */
  { "10Ruzencovej prebl. Panny Marie", "Sk 1,12-14; (Ž) Lk 1,46-47. 48-49. 50-51. 52-53. 54-55; Lk 1,26-38", "Blahoslavená si Panna Mária, lebo si nosila Syna večného Otca", "" }, /* , /al./, 2008-10-07 */
  { "10Sv. Alzbety Uhorskej, reholnicky", "/1. čítanie zo spoločnej časti svätých žien/; Ž 128,1-2. 3. 4-5; 1Jn 3,14-18; Lk 6,27-38", "Blažení sú všetci, čo sa boja Pána", "" }, /* (slávnosť), Košice - mesto - Svetej Alžbety, rehoľníčky, titul katedrály a patrónky mesta Košíc, 2008-11-17 */
  { "10Sv. Andreja-Svorada a Benedikta, pustovnikov", "1Kr 19,16b. 19-21 /al./ Flp 4,4-9; Ž 16,1-2a<*án.>+5. 7-8. 11; Lk 12,35-40", "Ty, Pane, si moje jediné dobro", "" }, /* (sviatok), V Nitrianskej diecéze, 2008-07-17 */
@@ -819,8 +816,8 @@
  { "132051704", "Jer 18,1-6; Ž 146,1-2. 3-4. 5-6b<*om.>; Mt 13,47-53", "Blažený človek, ktorý sa spolieha na Pána, svojho Boha", "" }, /* (spomienka), Svätého Ignáca z Loyoly, kňaza, 2008-07-31 */
  { "132051705", "Jer 26,1-9; Ž 69,5. 8-10. 14; Mt 13,54-58", "Vo svojej veľkej láske vyslyš ma, Pane", "" }, /* (spomienka), Svätého Alfonza Márie de Liguori, biskupa a učiteľa Cirkvi, 2008-08-01 */
  { "132051706", "Jer 26,11-16. 24; Ž 69,15-16. 30-31. 33-34; Mt 14,1-12", "V tomto čase milosti vyslyš, ma, Pane", "" }, /* (ľubovoľná spomienka), Svätého Euzébia Vercellského, biskupa; /al./ svätého Petra Juliána Eymarda, kňaza, 2008-08-02 */
- { "132051801", "Jer 28,1-17; Ž 119,29. 43. 79. 80. 95. 102; Mt 14,13-21", "Pane, daj mi poznať tvoju spravodlivosť", "" }, /* (spomienka), Svätého Jána Márie Vianneyho, kňaza, 2008-08-04 */
- { "132051802", "Jer 30,1-2. 12-15. 18-22; Ž 102,16-18. 19-21. 29+22-23; Mt 14,22-36", "Pán vystavil Sion a zjavil sa vo svojej sláve", "" }, /* (ľubovoľná spomienka), Výročie posviacky hlavnej mariánskej baziliky v Ríme, 2008-08-05 */
+ { "132051801", "Jer 28,1-17; Ž 119,29. 43. 79. 80. 95. 102; Mt 14,22-36", "Pane, daj mi poznať tvoju spravodlivosť", "" }, /* (spomienka), Svätého Jána Márie Vianneyho, kňaza, 2008-08-04 */
+ { "132051802", "Jer 30,1-2. 12-15. 18-22; Ž 102,16-18. 19-21. 29+22-23; Mt 15,1-2. 10-14", "Pán vystavil Sion a zjavil sa vo svojej sláve", "" }, /* (ľubovoľná spomienka), Výročie posviacky hlavnej mariánskej baziliky v Ríme, 2008-08-05 */
  { "132051803", "Jer 31, 1-7; (Ž) Jer 31, 10. 11-12b. 13; Mt 15, 21-28", "Pán nás bude strážiť ako pastier svoje stádo.", "Veľký prorok povstal medzi nami a Boh navštívil svoj ľud." },  /* 2020-08-05  */
  { "132051804", "Jer 31,31-34; Ž 51,12-13. 14-15. 18-19; Mt 16,13-23", "Bože, stvor vo mne srdce čisté", "" }, /* (ľubovoľná spomienka), Svätého Sixta II., pápeža, a jeho spoločníkov, mučeníkov; /al./ Svätého Kajetána, kňaza, 2008-08-07 */
  { "132051805", "Nah 2,1. 3. 3,1-3. 6-7; (Ž) Dt 32,35c<Veď*>-36b<*hom.>. 39a–d<*jem.>. 41; Mt 16,24-28", "Pane, zľutuj sa sa nad svojimi služobníkmi", "" }, /* (spomienka), Svätého Dominika, kňaza, 2008-08-08 */
@@ -834,14 +831,14 @@
  { "132052001", "Ez 24,15-24; (Ž) Dt 32,18-19. 20. 21; Mt 19,16-22", "Opustil si Boha, svojho stvoriteľa", "" }, /* , , 2008-08-18 */
  { "132052002", "Ez 28,1-10; (Ž) Dt 32,26-27b. 27c-28. 30. 35c<Veď*>-36b<*hom.>; Mt 19,23-30", "Zľutuj sa, Pane, nad svojimi služobníkmi", "" }, /* (ľubovoľná spomienka), Svätého Jána Eudes, kňaza, 2008-08-19 */
  { "132052003", "Ez 34,1-11; Ž 23,1-3. 4. 5. 6; Mt 20,1-16", "Pán je môj pastier, nič mi nechýba", "" }, /* (spomienka), Svätého Bernarda, opáta a učiteľa Cirkvi, 2008-08-20 */
- { "132052004", "Ez 36,23-28; Ž 51,12-13. 14-15. 18-19; Mt 22,1-14", "Vylejem na vás čistú vodu a budete očistení", "" }, /* (spomienka), Svätého Pia X., pápeža, 2008-08-21 */
+ { "132052004", "Ez 36,23-28; Ž 51,51,12-13. 14-15. 18-19; Mt 22,1-14", "Vylejem na vás čistú vodu a budete očistení", "" }, /* (spomienka), Svätého Pia X., pápeža, 2008-08-21 */
  { "132052005", "Ez 37,1-14; Ž 107,2-3. 4-5. 6-7. 8-9; Mt 22,34-40", "Oslavujte Pána, lebo jeho milosrdenstvo trvá naveky", "" }, /* (spomienka), Panny Márie Kráľovnej, 2008-08-22 */
  { "132052006", "Ez 43,1-7a<*nôh.>; Ž 85,9ab<*ätým>+10. 11-12. 13-14; Mt 23,1-12", "Pánova sláva bude prebývať v našej krajine", "" }, /* (ľubovoľná spomienka), Svätej Ruženy Limskej, panny, 2008-08-23 */
  { "132052101", "2Sol 1,1-5. 11b<aby*>-12; Ž 96,1-2a. 2b-3. 4-5; Mt 23,13. 15-22", "Zvestujte všetkým národom zázraky Pánove", "" }, /* (ľubovoľná spomienka), Svätého Ľudovíta; /al./ svätého Jozefa de Calasanz, 2008-08-25 */
  { "132052102", "2Sol 2,1-3a<*bom.>. 14-17; Ž 96,10. 11-12a. 12b-13; Mt 23,23-26", "Pán príde súdiť všetky národy", "" }, /* , , 2008-08-26 */
  { "132052103", "2Sol 3,6-10. 16-18; Ž 128,1-2. 4-5; Mt 23,27-32", "Blažení sú všetci, čo sa boja Pána", "" }, /* (spomienka), Svätej Moniky, 2008-08-27 */
  { "132052104", "1Kor 1,1-9; Ž 145,2-3. 4-5. 6-7; Mt 24,42-51", "Oslavovať ťa chcem naveky, Bože môj kráľ", "" }, /* (spomienka), Svätého Augustína, biskupa a učiteľa Cirkvi, 2008-08-28 */
- { "132052105", "1Kor 1,17-25; Ž 33,1-2. 4-5. 10-11; Mk 25,1-13", "Milosti Pánovej plná je zem.", "" }, /* 2022-08-26 */
+ { "132052105", "Jer 1,17-19; Ž 71,1-2. 3-4a<*ika.>. 5-6b<*com.>. 15ab<*deň>+17; Mk 6,17-29", "Moje ústa, Pane, budú hlásať tvoju slávu", "" }, /* (spomienka), Mučenícka smrť svätého Jána Krstiteľa, 2008-08-29 */
  { "132052106", "1Kor 1,26-31; Ž 33,12-13. 18-19. 20-21; Mt 25,14-30", "Blažený ľud, ktorý si Pán vyvolil za dedičstvo", "" }, /* , , 2008-08-30 */
  { "132052201", "1Kor 2,1-5; Ž 119,97. 98. 99. 100. 101. 102; Lk 4,16-30", "Pane, tvoj zákon veľmi milujem", "" }, /* , , 2008-09-01 */
  { "132052202", "1Kor 2,10b<Duch *>-16; Ž 145,8-9. 10-11. 12-13b. 13c-14; Lk 4,31-37", "Spravodlivý je Pán na všetkých svojich cestách", "" }, /* , , 2008-09-02 */
@@ -868,7 +865,7 @@
  { "132052506", "Kaz 11,9 - 12,8; Ž 90,3-4. 5-6. 12-13. 14+17; Lk 9,43b<Keď*>-45", "Pane, stal si sa nám útočišťom z pokolenia na pokolenie", "" }, /* (spomienka), Svätého Vincenta de Paul, kňaza, 2008-09-27 */
  { "132052601", "Jób 1, 6-22; Ž 17, 1. 2-3. 6-7; Lk 9, 46-50", "Nakloň ku mne svoj sluch a vypočuj moje slová.", "Syn človeka prišiel, aby slúžil a položil svoj život ako výkupné za mnohých." },  /* 2020-09-28  */
  { "132052602", "Jób 3,1-3. 11-17. 20-23; Ž 88,2-3. 4-5. 6. 7-8; Lk 9,51-56", "Kiež prenikne k tebe, Pane, moja modlitba", "" }, /* (spomienka), Svätého Hieronyma, kňaza a učiteľa Cirkvi, 2008-09-30 */
- { "132052603", "Jób 9,1-12. 14-16; Ž 88,10b-11. 12-13. 14-15; Lk 9,57-62", "Kiež prenikne k tebe, Pane, moja modlitba", "" }, /* 2022-09-28 */
+ { "132052603", "Jób 9,1-12. 14-16; Ž 17,1. 2-3. 6-7; Lk 9,57-62", "Nakloň ku mne svoj sluch a vypočuj moje slová", "" }, /* (spomienka), Svätej Terézie z Lisieux, panny a učiteľky Cirkvi, 2008-10-01 */
  { "132052604", "Ex 23,20-23a<*ou>; Ž 91,1-2. 3-4. 5-6. 10-11; Mt 18,1-5. 10", "Svojim anjelom dá príkaz o tebe, aby ťa strážili na tvojich cestách", "" }, /* (spomienka), Svätých anjelov strážcov, 2008-10-02 */
  { "132052605", "Jób 38,1. 12-21. 40,3-5; Ž 139,1-3. 7-8. 9-10. 13-14b<*ivu>; Lk 10,13-16", "Veď ma, Pane, po ceste k večnosti", "" }, /* , , 2008-10-03 */
  { "132052606", "Jób 42,1-3. 5-6. 12-16; Ž 119,66. 71. 75. 91. 125. 130; Lk 10,17-24", "Vyjasni tvár, Pane, nad svojím služobníkom", "" }, /* (spomienka), Svätého Františka Assiského, 2008-10-04 */
@@ -903,7 +900,7 @@
  { "132053105", "Flp 3,17 - 4,1; Ž 122,1-2. 4b<aby*>-5; Lk 16,1-8", "S radosťou pôjdeme do domu Pánovho", "" }, /* , , 2008-11-07 */
  { "132053106", "Flp 4,10-19; Ž 112,1-2. 5-6. 8a<*sa.>+9; Lk 16,9-15", "Blažený muž, ktorý sa bojí Pána", "" }, /* , , 2008-11-08 */
  { "132053201", "Tít 1,1-9; Ž 24,1-2. 3-4b<*sti>. 5-6; Lk 17,1-6", "Tvoju tvár, Pane, s úprimným srdcom hľadáme", "" }, /* (spomienka), Svätého Leva Veľkého, pápeža a učiteľa Cirkvi, 2008-11-10 */
- { "132053202", "Tít 2,1-8. 11-14; Ž 37,3-4. 18+23. 27+29; Lk 17, 7-10", "Pane, spas ma; ochraňuj ma v čase súženia", "" }, /* 2022-11-08 */
+ { "132053202", "Iz 61,1-3; Ž 89,2-3. 4-5. 21-22. 25+27; Mt 25,31-40", "Tvoje milosrdenstvo, Pane, ospevovať budem naveky", "" }, /* (sviatok; v katedrále slávnosť), Spišská Kapitula - hlavného patróna diecézy, 2008-11-11 */
  { "132053203", "Tít 3,1-7; Ž 23,1-3. 4. 5. 6; Lk 17,11-19", "Pán je môj pastier, nič mi nechýba", "" }, /* (spomienka), Svätého Jozafáta, biskupa a mučeníka, 2008-11-12 */
  { "132053204", "Flm 7-20; Ž 146,6c<On z*>-7. 8-9a. 9b-10; Lk 17,20-25", "Blažený človek, ktorý sa spolieha na Pána, svojho Boha", "" }, /* , , 2008-11-13 */
  { "132053205", "2Jn 4-9; Ž 119,1. 2. 10. 11. 17. 18; Lk 17,26-37", "Blažení tí, čo kráčajú podľa zákona Pánovho", "" }, /* , , 2008-11-14 */
