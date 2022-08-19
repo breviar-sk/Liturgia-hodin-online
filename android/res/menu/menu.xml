@@ -3,6 +3,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
+  <group android:id="@+id/group_home">
+    <item android:id="@+id/today"
+          android:title="@string/today"
+          android:icon="@drawable/ic_home_white_24dp"
+    />
+  </group>
+
   <group android:id="@+id/group_settings_activities">
     <item android:id="@+id/lang_select"
           android:title="@string/lang_select"

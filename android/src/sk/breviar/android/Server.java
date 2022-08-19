@@ -293,12 +293,24 @@ public class Server extends Thread {
           dokument.substring(0,scriptname.length()).equals(scriptname)) {
         handleCgi(client, dokument, postmethod, cntlen, buf, persistent);
       } else {
-        if (backgroundOverride && dokument.equals("breviar.css")) {
+        boolean is_css = dokument.equals("breviar.css");
+        if (backgroundOverride && is_css) {
           Log.v("breviar", "Overriding url due to background override");
           dokument = "breviar-background-override.css";
         }
         try {
-          InputStream infile = ctx.getAssets().open(dokument, AssetManager.ACCESS_STREAMING);
+          InputStream infile;
+          if (dokument.startsWith("file/")) {
+            String fn = dokument.substring(4);
+            Log.v("breviar", "request for file " + fn);
+            try {
+              infile = new java.io.FileInputStream(fn);
+            } catch (java.io.IOException e) {
+              infile = new java.io.ByteArrayInputStream(new byte[0]);
+            }
+          } else {
+            infile = ctx.getAssets().open(dokument, AssetManager.ACCESS_STREAMING);
+          }
           client.getOutputStream().write(
               (
               "HTTP/1.1 200 OK\n" +
@@ -306,6 +318,16 @@ public class Server extends Thread {
               "Connection: close\n\n"
               ).getBytes("UTF-8")
           );
+
+          try {
+            if (is_css) {
+              client.getOutputStream().write(
+                  BreviarApp.getFontsCss(ctx).getBytes("UTF-8"));
+            }
+          } catch (java.io.IOException e) {
+            Log.v("Breviar:", "IOException " + e.getMessage());
+          }
+
           // do not start new thread, just copy here.
           new Copy( infile, client.getOutputStream() ).run();
         } catch (IOException e) {

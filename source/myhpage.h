@@ -30,22 +30,22 @@
 #define HTML_P_PATKA "p class=\"patka\""
 
 // header
-void hlavicka(char *title, short int level = 0, short int spec = 0);
-void hlavicka(char *title, FILE * expt, short int level = 0, short int spec = 0);
+void hlavicka(char* title, short int level = 0, short int spec = 0);
+void hlavicka(char* title, FILE* expt, short int level = 0, short int spec = 0);
 
 // XML header
 void xml_hlavicka(void);
-void xml_hlavicka(FILE * expt);
+void xml_hlavicka(FILE* expt);
 
 // footer
 void patka(void);
-void patka(FILE * expt);
+void patka(FILE* expt);
 
 // XML footer
 void xml_patka(void);
-void xml_patka(FILE * expt);
+void xml_patka(FILE* expt);
 
-void myhpage_init_globals();
+void myhpage_init_globals(void);
 
 #endif // __MYHPAGE_H_
 

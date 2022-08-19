@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "common.h"
+#include "breviar.h"
 #include "myexpt.h"
 #include "mysysdef.h"
 #include "mydefs.h"
@@ -263,6 +264,15 @@ void ExportRawWchar(int c) {
 #endif
 }// ExportRawWchar()
 
+void ExportNonbreakingSpace(void) {
+	if (_global_override_thin_nbsp == ANO) {
+		Export(HTML_NONBREAKING_THIN_SPACE);
+	}
+	else {
+		Export(HTML_NONBREAKING_SPACE);
+	}
+}// ExportNonbreakingSpace()
+
 void ExportChar(int c, short int skip_chars_for_voice_output /* = NIE */) {
 	// ToDo: consider special behaviour for 'plain' text export
 
@@ -292,7 +302,7 @@ void ExportChar(int c, short int skip_chars_for_voice_output /* = NIE */) {
 
 	// ordinary behaviour
 	if (c == CHAR_NONBREAKING_SPACE) {
-		Export(HTML_NONBREAKING_SPACE);
+		ExportNonbreakingSpace();
 	}
 	else if (c == CHAR_NONBREAKING_THIN_SPACE) {
 		Export(HTML_NONBREAKING_THIN_SPACE);

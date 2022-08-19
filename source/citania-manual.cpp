@@ -398,3 +398,12 @@
  { "092060206", "Mich 7,14-15.18-20; Ž 103,1-4.9-12; Lk 15,1-3.11-32", "Milostivý a milosrdný je Pán", "" },  /* 2016-02-27  */
  { "02C060300", "Ex 3,1-8a<*ťanov>.13-15; Ž 103,1-11; 1Kor 10,1-6.10-12; Lk 13,1-9", "Milostivý a milosrdný je Pán.", "" },  /* 2016-02-28  */
  { "092060301", "2Kr 5,1-15a; Ž 42,2-3.43,3-4; Lk 4,24-30", "Po Bohu žízni moja duša, po Bohu živom", "" },  /* 2016-02-29  */
+ { "03CSpomienka na vsetkych vernych zosnulych", "Jób 19,1. 23-27a; Ž 27,1. 4. 7+8b+9a. 13-14; 2Kor 4,14-5,1; Jn 14, 1-6", "Pán je moje svetlo a moja spása. /al./ Verím, že uvidím dobrodenia Pánove v krajine žijúcich.", "" },  /* 2022-11-02 Spomienka na všetkých verných zosnulých */
+ { "07Sv. Terezie Benedikty od Kriza, <br/>\npanny a mucenice, patronky Europy", "Oz 2,16bc<za*>. 17c–e<tam p*>. 21-22; Ž 45,11-12. 14-15. 16-17; Mt 25,1-13", "Ženích prichádza, vyjdite v ústrety Kristu Pánovi!", "" }, /* (sviatok), Svätej Terézie Benedikty z kríža, panny a mučenice, spolupatrónky Európy 2022-08-09 */
+ { "10Ruzencovej Panny Marie", "Sk 1,12-14; (Ž) Lk 1,46-47.48-49.50-51.52-53.54-55; Lk 1,26-38", "Blahoslavená si, Panna Mária, lebo si nosila Syna večného Otca", "" },  /* 2022-10-07 Ružencovej Panny Márie */
+ { "132051801", "Jer 28,1-17; Ž 119,29. 43. 79. 80. 95. 102; Mt 14,13-21", "Pane, daj mi poznať tvoju spravodlivosť", "" }, /* (spomienka), Svätého Jána Márie Vianneyho, kňaza, 2008-08-04 */
+ { "132051802", "Jer 30,1-2. 12-15. 18-22; Ž 102,16-18. 19-21. 29+22-23; Mt 14,22-36", "Pán vystavil Sion a zjavil sa vo svojej sláve", "" }, /* (ľubovoľná spomienka), Výročie posviacky hlavnej mariánskej baziliky v Ríme, 2008-08-05 */
+ { "132052004", "Ez 36,23-28; Ž 51,12-13. 14-15. 18-19; Mt 22,1-14", "Vylejem na vás čistú vodu a budete očistení", "" }, /* (spomienka), Svätého Pia X., pápeža, 2008-08-21 */
+ { "132052105", "1Kor 1,17-25; Ž 33,1-2. 4-5. 10-11; Mk 25,1-13", "Milosti Pánovej plná je zem.", "" }, /* 2022-08-26 */
+ { "132052603", "Jób 9,1-12. 14-16; Ž 88,10b-11. 12-13. 14-15; Lk 9,57-62", "Kiež prenikne k tebe, Pane, moja modlitba", "" }, /* 2022-09-28 */
+ { "132053202", "Tít 2,1-8. 11-14; Ž 37,3-4. 18+23. 27+29; Lk 17, 7-10", "Pane, spas ma; ochraňuj ma v čase súženia", "" }, /* 2022-11-08 */

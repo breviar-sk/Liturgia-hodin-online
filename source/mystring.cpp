@@ -17,6 +17,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <wctype.h>
+#include "utf8-utils.h"
 #include "mystring.h"
 #include "mysystem.h"
 #include "mysysdef.h"
@@ -315,6 +317,83 @@ std::string mystr_remove_letters_and_parentheses(const char* string) {
 	free(newstr);
 	return val;
 }// mystr_remove_letters()
+
+//---------------------------------------------------------------------
+// converts UTF-8 string to UPPERCASE
+// nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash; na veľké písmená
+char* mystr_UPPERCASE(const char* input) {
+	short int ok = TRUE;
+	const char* in = input;
+	char* out = _global_pom_str;
+	while (out - _global_pom_str < MAX_STR - 5 && *in) {
+		int c = DecodeWchar(&in);
+		if ((c == '&') && (ok == TRUE)) {
+			ok = FALSE;
+		}
+		if ((c == ';') && (ok == FALSE)) {
+			ok = TRUE;
+		}
+		// ToDo: ešte by bolo potrebné ošetriť aj to, že za & nenasleduje regulérny znak pre špeciálny HTML kód, t. j. niečo iné ako upper+lowercase ascii abeceda + # a číslice
+		if (ok == TRUE) {
+			c = WcharToUppercase(c);
+		}// ok == TRUE
+		EncodeWchar(c, &out);
+	}
+	*out = 0;
+	return (_global_pom_str);
+}// mystr_UPPERCASE()
+
+ //---------------------------------------------------------------------
+ // odstráni diakritiku
+ // nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash;
+ // zmení aj dlhé pomlčky na obyčajný spojovník (znak mínus)
+char* mystr_remove_diacritics(const char* input) {
+	short int ok = TRUE;
+	const char* in = input;
+	char* out = _global_pom_str;
+	while (out - _global_pom_str < MAX_STR - 5 && *in) {
+		int c = DecodeWchar(&in);
+		if ((c == '&') && (ok == TRUE)) {
+			ok = FALSE;
+		}
+		if ((c == ';') && (ok == FALSE)) {
+			ok = TRUE;
+		}
+		// ToDo: ešte by bolo potrebné ošetriť aj to, že za & nenasleduje regulérny znak pre špeciálny HTML kód, t. j. niečo iné ako upper+lowercase ascii abeceda + # a číslice
+		if (ok == TRUE) {
+			c = RemoveDiacriticsFromWchar(c);
+		}// ok == TRUE
+		EncodeWchar(c, &out);
+	}
+	*out = 0;
+	return (_global_pom_str);
+}// mystr_remove_diacritics()
+
+//---------------------------------------------------------------------
+// konvertuje underscore na nezlomiteľné medzery
+// (char sa musí najprv konvertovať na char * a až potom appendovať strcat)
+char* convert_nonbreaking_spaces(const char* input) {
+	// Log("convert_nonbreaking_spaces() -- začiatok...\n");
+	const char* in = input;
+	char* out = _global_pom_str;
+	while (out - _global_pom_str < MAX_STR - 7 && *in) {
+		int c = DecodeWchar(&in);
+		if ((c == CHAR_NONBREAKING_THIN_SPACE) || ((_global_override_thin_nbsp == ANO) && (c == CHAR_NONBREAKING_SPACE))) {
+			strcpy(out, HTML_NONBREAKING_THIN_SPACE);
+			out += strlen(HTML_NONBREAKING_THIN_SPACE);
+		}// c == CHAR_NONBREAKING_THIN_SPACE or special override of CHAR_NONBREAKING_SPACE
+		else if (c == CHAR_NONBREAKING_SPACE) {
+			strcpy(out, HTML_NONBREAKING_SPACE);
+			out += strlen(HTML_NONBREAKING_SPACE);
+		}// c == CHAR_NONBREAKING_SPACE
+		else {
+			EncodeWchar(c, &out);
+		}
+	}
+	*out = 0;
+	// Log("convert_nonbreaking_spaces() -- koniec, returning `%s'.\n", _global_pom_str);
+	return (_global_pom_str);
+}// convert_nonbreaking_spaces()
 
 std::string mystr_first_lower(const char* string) {
 	char *newstr = NULL;

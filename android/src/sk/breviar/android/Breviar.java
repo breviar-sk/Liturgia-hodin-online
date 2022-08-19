@@ -958,6 +958,11 @@ public class Breviar extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
       UrlOptions opts;
       switch (item.getItemId()) {
+        case R.id.today:
+          syncScale();
+          goHome();
+          break;
+
         case R.id.lang_select:
           syncPreferences();
           need_to_reload_preferences = true;

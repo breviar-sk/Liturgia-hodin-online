@@ -28,6 +28,9 @@ char *mystrcpy(char *dest, char *src, short int count);
 char *mystrcpy(char *dest, const char* src, short int count);
 int substring(char *str1, char *str2);
 
+extern char* _global_pom_str; // pomocny string pre velke/male pismena (konverzie)
+extern short int _global_override_thin_nbsp;
+
 // string comparator -- pre vsetky kombinacie dvojic [const] char, [const] char
 short int equals(char *, char *);
 short int equals(const char* , const char* );
@@ -43,6 +46,10 @@ std::string mystr_replace(const char* string, const char* substr, const char* re
 std::string mystr_replace_char(const char* string, const char orig_char, const char replacement);
 std::string mystr_remove_char(const char* string, const char char_to_remove);
 std::string mystr_remove_letters_and_parentheses(const char* string);
+
+char* mystr_UPPERCASE(const char* input);
+char* mystr_remove_diacritics(const char* input);
+char* convert_nonbreaking_spaces(const char* input);
 
 std::string mystr_first_lower(const char* string);
 std::string mystr_first_upper(const char* string);

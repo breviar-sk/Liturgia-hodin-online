@@ -286,6 +286,17 @@ public class UrlOptions {
     setBit("o2", 15, value);
   }
 
+  public String getFont() {
+    return params.get("f");
+  }
+
+  public void setFont(String font) {
+    params.remove("f");
+    if (font != null) {
+      params.put("f", font);
+    }
+  }
+
   int getInt(String key) {
     try {
       return Integer.parseInt(params.get(key));

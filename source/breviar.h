@@ -26,6 +26,8 @@
 //---------------------------------------------------------------------
 // globalne premenne -- deklarovane v liturgia.h, definovane tu
 
+extern short int isAndroid;
+
 extern short int _global_vstup_den;
 extern short int _global_vstup_mesiac;
 extern short int _global_vstup_rok;
@@ -173,6 +175,7 @@ extern short int _global_patka_Export;
 
 extern char _global_css_font_family[SMALL];
 extern char _global_css_font_size[SMALL];
+extern short int _global_override_thin_nbsp;
 
 extern char _global_export_navig_hore[SMALL];
 extern short int _global_opt_export_date_format;
@@ -211,7 +214,7 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 #define je_34_ocr ((_global_den.litobd == OBD_CEZ_ROK) && (_global_den.tyzden == 34) && (_global_den.denvt != DEN_NEDELA))
 #define je_tedeum ((modlitba == MODL_POSV_CITANIE) && (((_global_den.denvt == DEN_NEDELA) && (_global_den.litobd != OBD_POSTNE_I) && (_global_den.litobd != OBD_POSTNE_II_VELKY_TYZDEN)) || _je_global_den_slavnost || _je_global_den_sviatok || (_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA) || ((_decode_spol_cast(_global_den.spolcast).a1 == MODL_SPOL_CAST_POSVIACKA_CHRAMU) && (_je_global_den_slavnost || _je_global_den_sviatok))))
 
-// je_privileg -- pre zistenie, či ide o privilegované dni (VSLH č. 238-239): to isté ako je_post + december počnúc 17.-tym (všedné di od 17. do 24. decembra a Vianočná oktáva); striktne by tu nemal byť veľký týždeň a veľkonočné trojdnie, ale nezaškodí to tu
+// je_privileg -- pre zistenie, či ide o privilegované dni (VSLH č. 238-239): to isté ako je_post + december počnúc 17.-tym (všedné di od 17. do 24. decembra a Vianočná oktáva); striktne by tu nemal byť Svätý týždeň a veľkonočné trojdnie, ale nezaškodí to tu
 // override stupňa slávenia prebíja je_privileg (inými slovami, v privilegované dni je možné sláviť sviatky resp. slávnosti)
 #define je_privileg ((!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)) && ((_global_den.litobd == OBD_POSTNE_I) || (_global_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) || ((_global_den.litobd == OBD_VELKONOCNE_TROJDNIE) && ((_global_den.denvt == DEN_PIATOK) || (_global_den.denvt == DEN_SOBOTA))) || ((_global_den.mesiac - 1 == MES_DEC) && (_global_den.den >= 17))))
 
@@ -327,7 +330,7 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 ) \
 ))
 
-// či sa NEMAJÚ zobrazovať vešpery; doteraz sa kontrolovalo len to, či je sobota -- opravené pre Veľkú (bielu) sobotu | are NOT vespers (= should I hide button for evening prayer)?
+// či sa NEMAJÚ zobrazovať vešpery; doteraz sa kontrolovalo len to, či je sobota -- opravené pre Svätú sobotu (Bielu sobotu) | are NOT vespers (= should I hide button for evening prayer)?
 // slávnosti majú (druhé) vešpery vždy | solemnities always have (second) vespers
 #define nie_su_vespery ( \
 	(_global_den.denvt == DEN_SOBOTA) \
@@ -491,10 +494,10 @@ extern char pom_FONT[SMALL];
 #define KRST _global_r._KRST_KRISTA_PANA.denvr                          // nedeľa po 6. januári; v krajinách, kde sa Zjavenie Pána slávi v nedeľu, a ak táto pripadne na 7. alebo 8. januára, Krst Krista Pána sa slávi nasledujúci pondelok
 #define POPOLCOVA_STREDA  _global_r._POPOLCOVA_STREDA.denvr             // Popolcová streda
 #define VELKONOCNA_NEDELA   _global_r._VELKONOCNA_NEDELA.denvr          // Veľkonočná nedeľa
-#define KVETNA_NEDELA (VELKONOCNA_NEDELA - 7)                           // Kvetná nedeľa
-#define ZELENY_STVRTOK   (VELKONOCNA_NEDELA - 3)                        // Zelený štvrtok
-#define VELKY_PIATOK   (VELKONOCNA_NEDELA - 2)                          // Veľký piatok
-#define BIELA_SOBOTA   (VELKONOCNA_NEDELA - 1)                          // Biela sobota
+#define KVETNA_NEDELA (VELKONOCNA_NEDELA - 7)                           // Palmová (Kvetná) nedeľa
+#define ZELENY_STVRTOK   (VELKONOCNA_NEDELA - 3)                        // Štvrtok Svätého týždňa (Zelený štvrtok)
+#define VELKY_PIATOK   (VELKONOCNA_NEDELA - 2)                          // Piatok utrpenia Pána (Veľký piatok)
+#define BIELA_SOBOTA   (VELKONOCNA_NEDELA - 1)                          // Svätá sobota (Biela sobota)
 #define VELKONOCNY_PONDELOK (VELKONOCNA_NEDELA + 1)                     // Veľkonočný pondelok
 #define DRUHA_VELKONOCNA_NEDELA  (VELKONOCNA_NEDELA + 7)                // nedeľa vo Veľkonočnej oktáve
 #define NANEBOVSTUPENIE  _global_r._NANEBOVSTUPENIE_PANA.denvr          // nanebovstúpenie Pána (štvrtok, 40. deň po veľkej noci, alebo v krajinách, kde sa presúva na nasledujúcu nedeľu ("7. veľkonočná nedeľa")

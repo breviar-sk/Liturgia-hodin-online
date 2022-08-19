@@ -52,6 +52,10 @@
     <string name="buttons_rounded_corners">Zaoblené rohy tlačidiel</string>
     <string name="buttons_order">Dátumové navigačné tlačidlá pod tlačidlami pre modlitby</string>
     <string name="transparent_nav">Navigačná šípka v texte</string>
+    <string name="font_select">Výber písma</string>
+    <string name="default_font">(predvolené)</string>
+    <string name="default_serif_font">(pätkové)</string>
+    <string name="default_sans_serif_font">(bezpätkové)</string>
 
     <string name="calendar_settings_title">Liturgický kalendár</string>
     <string name="epiphany_sunday">Zjavenie Pána sláviť v nedeľu medzi 2. a 8. januárom</string>

@@ -14,6 +14,8 @@
 
 #define Q_UNUSED(arg) (void)arg;
 
+#define GLOBAL_NULL	-1
+
 #define CHAR_EMPTY 0
 
 #define SMALL 160
@@ -210,7 +212,7 @@
 #define HTML_TARGET_TOP " target=\"_top\" "
 
 #define HTML_NONBREAKING_THIN_SPACE "&#8239;"
-#define HTML_NONBREAKING_SPACE "&nbsp;"
+#define HTML_NONBREAKING_SPACE "&nbsp;" // "&#160;"
 #define HTML_NONBREAKING_SPACE_LONG "&nbsp;&nbsp;&nbsp;"
 #define HTML_LINE_BREAK_PURE "<br/>" // not followed by real line-break
 #define HTML_LINE_BREAK "<br/>\n" // always followed by real line-break

@@ -52,6 +52,10 @@
     <string name="buttons_rounded_corners">Gombok lekerekített sarkai</string>
     <string name="buttons_order">Dátumválasztó gombok megjelenítése az imaóraválasztó gombok után</string>
     <string name="transparent_nav">Navigációs nyilak mutatása</string>
+    <string name="font_select">Válassza ki a betűtípust</string>
+    <string name="default_font">(alapértelmezett)</string>
+    <string name="default_serif_font">(serif)</string>
+    <string name="default_sans_serif_font">(sans serif)</string>
 
     <string name="calendar_settings_title">Liturgikus naptár</string>
     <string name="epiphany_sunday">Urunk megjelenését (Vízkeresztet) vasárnap ünnepelni, január 2. és 8. között</string>

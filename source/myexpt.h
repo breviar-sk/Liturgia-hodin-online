@@ -27,6 +27,7 @@ short int ExportXmlError(const char* fmt, ...);
 short int Export_to_file(FILE * expt, const char* fmt, ...);
 
 void ExportRawWchar(int c);
+void ExportNonbreakingSpace(void);
 void ExportChar(int c, short int skip_chars_for_voice_output = NIE);
 void ExportStringCharByChar(const char*  string, short int skip_chars_for_voice_output = NIE);
 

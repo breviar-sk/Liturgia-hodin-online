@@ -74,22 +74,22 @@ char file_name_pom[MAX_STR];
 char *ptr;
 short int _local_modlitba;
 
-void myhpage_init_globals() {
+void myhpage_init_globals(void) {
 	bol_content_type_text_html = NIE;
 	bol_content_type_text_xml = NIE;
-}
+}// myhpage_init_globals()
 
 void _header_css(FILE* expt, short int level, const char* nazov_css_suboru) {
 	Export_to_file(expt, html_header_css);
 #ifdef	EXPORT_CMDLINE_CSS
-	if(level == 0 && _global_opt_batch_monthly == ANO)
+	if (level == 0 && _global_opt_batch_monthly == ANO)
 		level = 1;
-	if(level < 0 || level > 5)
+	if (level < 0 || level > 5)
 		level = 0;
-	if(level == 0)
+	if (level == 0)
 		Export_to_file(expt, ".");
-	else{
-		while(level > 1){
+	else {
+		while (level > 1) {
 			Export_to_file(expt, "..");
 			Export_to_file(expt, STR_PATH_SEPARATOR_HTML);
 			level--;
@@ -102,21 +102,21 @@ void _header_css(FILE* expt, short int level, const char* nazov_css_suboru) {
 	Export_to_file(expt, "/");
 #endif
 	Export_to_file(expt, "%s\" />\n", nazov_css_suboru);
-}
+}// _header_css()
 
 // exportuje buttony pre predchádzajúcu a nasledujúcu modlitbu | bolo v _hlavicka() aj _patka()
-void _buttons_prev_up_next(FILE * expt){
+void _buttons_prev_up_next(FILE* expt) {
 	short int _local_modlitba_prev, _local_modlitba_next;
 	_local_modlitba_prev = modlitba_predchadzajuca(_local_modlitba, (isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_EXCLUDE_MCD_KOMPLET)));
 	_local_modlitba_next = modlitba_nasledujuca(_local_modlitba, (isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_EXCLUDE_MCD_KOMPLET)));
 
 	Export_to_file(expt, "\n<div class=\"nav\">");
 	pismeno_modlitby = CHAR_MODL_NEURCENA;
-	if ((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)){
-		if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)){
+	if ((_local_modlitba < MODL_NEURCENA) && (_local_modlitba >= MODL_INVITATORIUM)) {
+		if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)) {
 			pismeno_modlitby = char_modlitby[_local_modlitba];
 		}
-		else{
+		else {
 			pismeno_modlitby = _local_modlitba + '0';
 		}
 	}
@@ -126,12 +126,12 @@ void _buttons_prev_up_next(FILE * expt){
 	// << prev
 	mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
 	ptr = strstr(file_name_pom, ext);
-	if ((_local_modlitba < MODL_NEURCENA) && (_local_modlitba > MODL_INVITATORIUM) && (_local_modlitba_prev < MODL_NEURCENA)){
-		if (ptr != NULL){
-			if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)){
+	if ((_local_modlitba < MODL_NEURCENA) && (_local_modlitba > MODL_INVITATORIUM) && (_local_modlitba_prev < MODL_NEURCENA)) {
+		if (ptr != NULL) {
+			if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)) {
 				sprintf(pismeno_prev, "%c", char_modlitby[_local_modlitba_prev]);
 			}
-			else{
+			else {
 				sprintf(pismeno_prev, "%d", _local_modlitba_prev);
 			}
 			strncpy(ptr, pismeno_prev, strlen(pismeno_prev));
@@ -140,7 +140,7 @@ void _buttons_prev_up_next(FILE * expt){
 		Export_to_file(expt, optional_html_button_begin);
 		Export_to_file(expt, HTML_LEFT_ARROW_CLASSIC);
 		Export_to_file(expt, " ");
-		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_prev));
+		Export_to_file(expt, (char*)nazov_modlitby(_local_modlitba_prev));
 		Export_to_file(expt, optional_html_button_end);
 		Export_to_file(expt, HTML_A_END);
 		// |
@@ -150,18 +150,18 @@ void _buttons_prev_up_next(FILE * expt){
 	Export_to_file(expt, HTML_A_HREF_BEGIN "\".%s%s\"%s>", STR_PATH_SEPARATOR_HTML, _global_export_navig_hore, optional_html_class_button); // v tom istom adresári
 	Export_to_file(expt, optional_html_button_begin);
 	Export_to_file(expt, HTML_UP_ARROW_CLASSIC "" STR_SPACE);
-	Export_to_file(expt, (char *)html_text_batch_Back[_global_jazyk]);
+	Export_to_file(expt, (char*)html_text_batch_Back[_global_jazyk]);
 	Export_to_file(expt, optional_html_button_end);
 	Export_to_file(expt, HTML_A_END);
 	// >> next
 	mystrcpy(file_name_pom, FILE_EXPORT, MAX_STR);
 	ptr = strstr(file_name_pom, ext);
-	if ((_local_modlitba != MODL_NEURCENA) && (_local_modlitba < MODL_KOMPLETORIUM) && (_local_modlitba_next < MODL_NEURCENA)){
-		if (ptr != NULL){
-			if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)){
+	if ((_local_modlitba != MODL_NEURCENA) && (_local_modlitba < MODL_KOMPLETORIUM) && (_local_modlitba_next < MODL_NEURCENA)) {
+		if (ptr != NULL) {
+			if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)) {
 				sprintf(pismeno_next, "%c", char_modlitby[_local_modlitba_next]);
 			}
-			else{
+			else {
 				sprintf(pismeno_next, "%d", _local_modlitba_next);
 			}
 			strncpy(ptr, pismeno_next, strlen(pismeno_next));
@@ -170,7 +170,7 @@ void _buttons_prev_up_next(FILE * expt){
 		Export_to_file(expt, STR_VERTICAL_BAR_WITH_SPACES);
 		Export_to_file(expt, HTML_A_HREF_BEGIN "\"%s\"%s>", file_name_pom, optional_html_class_button);
 		Export_to_file(expt, optional_html_button_begin);
-		Export_to_file(expt, (char *)nazov_modlitby(_local_modlitba_next));
+		Export_to_file(expt, (char*)nazov_modlitby(_local_modlitba_next));
 		Export_to_file(expt, " ");
 		Export_to_file(expt, HTML_RIGHT_ARROW_CLASSIC);
 		Export_to_file(expt, optional_html_button_end);
@@ -178,10 +178,10 @@ void _buttons_prev_up_next(FILE * expt){
 	}
 	Export_to_file(expt, HTML_P_END);
 	Export_to_file(expt, HTML_DIV_END"\n");
-}
+}// _buttons_prev_up_next()
 
 // exportuje hlavicku HTML dokumentu, kam pojde vysledok query
-void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
+void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	Log("_hlavicka() -- begin...\n");
 
 	_local_modlitba = _global_modlitba;
@@ -259,7 +259,7 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 	Log("creating header...\n");
 
 	Log("element <head>...\n");
-	Export_to_file(expt, (char *)html_header_1, nazov_charset[charset_jazyka[_global_jazyk]]);
+	Export_to_file(expt, (char*)html_header_1, nazov_charset[charset_jazyka[_global_jazyk]]);
 
 	// CSS (one or more)
 	if (_global_css != CSS_breviar_sk) {
@@ -298,22 +298,35 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 	Log("element <body>...\n");
 	Export_to_file(expt, "<body");
 
-	if ((_global_font != FONT_CSS) || (_global_font_size != FONT_SIZE_CSS) || (_global_style_margin != 0) || (_global_font_size_pt != 0)) {
+	bool has_font_family = _global_font != FONT_CSS && strlen(_global_css_font_family) > 0;
+	bool has_font_size = (_global_font_size_pt > 0) && (_global_font_size_pt != FONT_SIZE_PT_DEFAULT);
+	bool has_font_size_global = _global_font_size != FONT_SIZE_CSS;
+	bool has_font_margin = _global_style_margin != 0;
+
+	if (has_font_family || has_font_size || has_font_size_global || has_font_margin) {
 		Export_to_file(expt, " style=\"");
-		if (_global_font != FONT_CSS) {
+		if (has_font_family) {
 			Export_to_file(expt, "font-family: %s; ", _global_css_font_family);
 		}
-		if ((_global_font_size_pt > 0) && (_global_font_size_pt != FONT_SIZE_PT_DEFAULT)) {
+		if (has_font_size) {
 			Export_to_file(expt, "font-size: %dpt; ", _global_font_size_pt);
 		}
-		else if (_global_font_size != FONT_SIZE_CSS) {
+		else if (has_font_size_global) {
 			Export_to_file(expt, "font-size: %s; ", _global_css_font_size);
 		}// else nothing for font-size
-		if (_global_style_margin != 0) {
+		if (has_font_margin) {
 			Export_to_file(expt, "margin-left: %dpx; margin-right: %dpx; ", _global_style_margin, _global_style_margin);
 		}
 		Export_to_file(expt, "\"");
 	}
+
+#if !(defined(__APPLE__))
+	// special hack for Hoefler Text font (non-Apple devices using TTF from the web have problem with non-breaking space which is too wide => in such case, use thin nbsp); maybe in the future move to settings
+	// https://graphicdesign.stackexchange.com/questions/147243/hoefler-text-non-breaking-space-is-too-wide [2022-04-02] It actually looks like a bug in the font. Probably fixed in newer versions for iOS but not fixed in old available TTF on the web (4.1d3, 5.0d7e2).
+	if (has_font_family && strstr(_global_css_font_family, "Hoefler") != NULL && strstr(_global_css_font_family, "Text") != NULL) {
+		_global_override_thin_nbsp = ANO;
+	}
+#endif
 
 	// kvôli špeciálnemu "zoznam.htm"
 	if (spec == 1) {
@@ -341,16 +354,16 @@ void _hlavicka(char *title, FILE * expt, short int level, short int spec) {
 	return;
 }// _hlavicka()
 
-void hlavicka(char *title, short int level, short int spec) {
+void hlavicka(char* title, short int level, short int spec) {
 	_hlavicka(title, NULL, level, spec);
-}
+}// hlavicka()
 
-void hlavicka(char *title, FILE * expt, short int level, short int spec) {
+void hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	_hlavicka(title, expt, level, spec);
-}
+}// hlavicka()
 
 // exportuje hlavicku XML dokumentu
-void _xml_hlavicka(FILE * expt) {
+void _xml_hlavicka(FILE* expt) {
 	Log("_xml_hlavicka() -- begin...\n");
 
 	if (bol_content_type_text_xml == NIE) {
@@ -364,7 +377,7 @@ void _xml_hlavicka(FILE * expt) {
 		bol_content_type_text_xml = ANO;
 	}
 
-	Export_to_file(expt, (char *)xml_header, nazov_charset[charset_jazyka[_global_jazyk]]);
+	Export_to_file(expt, (char*)xml_header, nazov_charset[charset_jazyka[_global_jazyk]]);
 	Export_to_file(expt, ELEM_BEGIN(XML_MAIN) "\n");
 
 	Log("_xml_hlavicka() -- end.\n");
@@ -373,13 +386,13 @@ void _xml_hlavicka(FILE * expt) {
 
 void xml_hlavicka(void) {
 	_xml_hlavicka(NULL);
-}
+}// xml_hlavicka()
 
-void xml_hlavicka(FILE * expt) {
+void xml_hlavicka(FILE* expt) {
 	_xml_hlavicka(expt);
-}
+}// xml_hlavicka()
 
-void _patka_body_html_end(FILE * expt) {
+void _patka_body_html_end(FILE* expt) {
 	Log("_patka_body_html_end() -- begin...\n");
 
 #ifdef BEHAVIOUR_WEB
@@ -394,10 +407,10 @@ void _patka_body_html_end(FILE * expt) {
 	Export_to_file(expt, "</body>\n</html>\n");
 
 	Log("_patka_body_html_end() -- end.\n");
-}
+}// _patka_body_html_end()
 
 // exportuje patku HTML dokumentu (vysledok query)
-void _patka(FILE * expt) {
+void _patka(FILE* expt) {
 	char mail_addr[MAX_MAIL_STR] = "";
 	Log("_patka() -- begin...\n");
 
@@ -434,11 +447,11 @@ void _patka(FILE * expt) {
 
 	// prepare display name (label) for e-mail address
 	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE) {
-		mystrcpy(html_mail_label, (char *)HTML_MAIL_LABEL_SHORT, MAX_MAIL_LABEL);
+		mystrcpy(html_mail_label, (char*)HTML_MAIL_LABEL_SHORT, MAX_MAIL_LABEL);
 	}
 	else
 	{
-		mystrcpy(html_mail_label, (char *)HTML_MAIL_LABEL_LONG, MAX_MAIL_LABEL);
+		mystrcpy(html_mail_label, (char*)HTML_MAIL_LABEL_LONG, MAX_MAIL_LABEL);
 	}
 
 	Export("\n");
@@ -452,13 +465,13 @@ void _patka(FILE * expt) {
 
 		// print without or with timestamp
 #if defined(EXPORT_TO_FILE)
-		Export_to_file(expt, (char *)datum_template[_global_jazyk],
+		Export_to_file(expt, (char*)datum_template[_global_jazyk],
 			dnes.tm_mday,
 			nazov_mesiaca(dnes.tm_mon), // nm[dnes.tm_mon]
 			dnes.tm_year
 		);
 #else
-		Export_to_file(expt, (char *)datum_cas_template[_global_jazyk],
+		Export_to_file(expt, (char*)datum_cas_template[_global_jazyk],
 			dnes.tm_mday,
 			nazov_mesiaca(dnes.tm_mon), // nm[dnes.tm_mon]
 			dnes.tm_year,
@@ -471,7 +484,7 @@ void _patka(FILE * expt) {
 		Export_to_file(expt, ". "); // final dot at the end of sentence (Generated...)
 	}
 
-	Export_to_file(expt, (char *)build_template[_global_jazyk], BUILD_DATE);
+	Export_to_file(expt, (char*)build_template[_global_jazyk], BUILD_DATE);
 #endif
 
 #ifndef BEHAVIOUR_CMDLINE
@@ -484,7 +497,7 @@ void _patka(FILE * expt) {
 
 	Log("mail_addr == %s\n", mail_addr);
 	if (strlen(mail_addr) < 6) {
-		mystrcpy(mail_addr, (char *)MAIL_ADDRESS_DEFAULT, MAX_MAIL_STR);
+		mystrcpy(mail_addr, (char*)MAIL_ADDRESS_DEFAULT, MAX_MAIL_STR);
 	}
 
 	Log("mail_addr == %s\n", mail_addr);
@@ -512,9 +525,9 @@ void patka(void) {
 	_patka_body_html_end(NULL);
 
 	Log("patka(void) -- end.\n");
-}
+}// patka()
 
-void patka(FILE * expt) {
+void patka(FILE* expt) {
 	Log("patka(FILE) -- begin...\n");
 
 	// aby sa pätka neexportovala viackrát
@@ -530,10 +543,10 @@ void patka(FILE * expt) {
 	_patka_body_html_end(expt);
 
 	Log("patka(FILE) -- end.\n");
-}
+}// patka()
 
 // exportuje patku XML dokumentu
-void _xml_patka(FILE * expt) {
+void _xml_patka(FILE* expt) {
 	Log("_xml_patka() -- begin...\n");
 
 	// aby sa pätka neexportovala viackrát
@@ -573,7 +586,7 @@ void _xml_patka(FILE * expt) {
 
 	// sub-element XML_LIT_CALENDAR_VALUES
 	Export_to_file(expt, ELEM_BEGIN_NAME(XML_LIT_CALENDAR_VALUES) "\n", STR_KALENDAR);
-	
+
 	for (c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
 		if (equalsi(skratka_kalendara[c], STR_EMPTY)) {
 			Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", supported_calendars(c), nazov_kalendara_vyber[supported_calendars(c)]);
@@ -654,7 +667,7 @@ void xml_patka(void) {
 	_xml_patka(NULL);
 }
 
-void xml_patka(FILE * expt) {
+void xml_patka(FILE* expt) {
 	_xml_patka(expt);
 }
 

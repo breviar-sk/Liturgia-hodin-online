@@ -1408,6 +1408,13 @@ extern short int query_type; // contains constants PRM_...
 #define XML_PLACE_OPT_6_PSALM_MULTI             "PlaceOpt6PsalmMulti"
 #define XML_PLACE_OPT_6_MARIA_ANT_MULTI         "PlaceOpt6ComplMariaAntMulti"
 
+// element XML_MENU with sub-elements
+#define XML_MENU				"Menu"
+
+#define XML_MENU_GROUP			"MenuGroup"
+
+#define XML_MENU_ITEM			"MenuItem"
+
 // starting, closing element (XML, HTML)
 #define ELEM_BEGIN(elem)     "<" elem ">"
 #define ELEM_END(elem)       "</" elem ">"
@@ -1420,6 +1427,10 @@ extern short int query_type; // contains constants PRM_...
 #define ELEM_BEGIN_VALUE_NAME_FORCENAME_TEXT(elem)  "<" elem " Value=\"%d\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
 #define ELEM_BEGIN_ID_FORCENAME_TEXT(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_FORCE_BIT_OPT_0_VERSE
 #define ELEM_BEGIN_ID_FORCENAME_TEXT_SLASH(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s/%s\">"
+#define ELEM_BEGIN_ID_TYPE(elem)   "<" elem " Id=\"%d\" Type=\"%s\">"
+#define ELEM_BEGIN_ID_TYPE_VALUE(elem)   "<" elem " Id=\"%d\" Type=\"%s\" Value=\"%s\">"
+#define ELEM_BEGIN_ID_TYPE_VALUE_ELEMENT(elem)   "<" elem " Id=\"%d\" Type=\"%s\" Value=\"%s\" XmlElement=\"%s\">"
+#define ELEM_BEGIN_ID_TYPE_OPTION_VALUE_ELEMENT(elem)   "<" elem " Id=\"%d\" Type=\"%s\" Option=\"%s\" Value=\"%s\" XmlElement=\"%s\">"
 
 #endif // __MYDEFS_H_
 

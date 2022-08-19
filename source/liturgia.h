@@ -23,6 +23,7 @@
 #include "mydefs.h"
 #include "common.h"
 #include "mylog.h"
+#include "myconf.h"
 #include <time.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -940,6 +941,7 @@ struct dm{
 typedef struct dm _struct_dm;
 
 // liturgické obdobia | liturgical times/seasons
+#define OBD_NEURCENE              -1 // not defined; should not be used normally; only for special cases
 //OBD_ADVENTNE
 #define OBD_ADVENTNE_I             0 // do 16. decembra
 #define OBD_ADVENTNE_II            1 // po 16. decembri
@@ -1042,7 +1044,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_PRAHA							23
 #define LOKAL_SLAV_BRNO								24
 #define LOKAL_SLAV_MORAVA_SPOMIENKA					25
-#define LOKAL_SLAV_free_3		26 // free
+#define LOKAL_SLAV_SVIATOK_OFMCAP_PRESUN_OFM		26
 #define LOKAL_SLAV_PRAHA_KATEDRALA					27
 #define LOKAL_SLAV_CESKE_BUDEJOVICE					28
 #define LOKAL_SLAV_OLOMOUC							29
@@ -1086,7 +1088,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_VACI_PATRON						67
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON2				68
 #define LOKAL_SLAV_VESZPREM_FOEGYH					69
-#define LOKAL_SLAV_free_6		70 // free
+#define LOKAL_SLAV_CSSR_SVIATOK						70
 #define LOKAL_SLAV_SZEGED_CSAN_EGYH2				71
 #define LOKAL_SLAV_PECS_PATRON						72
 #define LOKAL_SLAV_SZOMBATHELYI_PATRON				73
@@ -1504,7 +1506,7 @@ extern short int _global_modlitba;
 extern char *_global_link_ptr;
 #define _global_link _global_link_ptr
 
-extern char *_global_pom_str; // pomocny string pre velke pismena
+extern char *_global_pom_str; // pomocny string pre velke/male pismena (konverzie)
 
 // globalna premenna, do ktorej sa ukladaju info o jednotlivych vyznacnych liturgickych dni, pouzivaju void _dm_...() funkcie a void analyzuj_rok() funkcia
 extern _struct_dm *_global_result_ptr;
@@ -1590,12 +1592,12 @@ extern unsigned long long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_FONT_FAMILY                4 // 0 = Serif, 1 = Sans Serif
 #define BIT_OPT_2_FONT_NAME_CHOOSER          8 // zobraziť drop-down list s možnosťou voľby font (family) name
 #define BIT_OPT_2_FONT_SIZE_CHOOSER         16 // zobraziť drop-down list s možnosťou voľby veľkosti fontu
-#define BIT_OPT_2_NAVIGATION                32 // zobraziť navigáciu v modlitbe (predošlá, nasledovná modlitba a pod.)
+#define BIT_OPT_2_NAVIGATION                32 // zobraziť navigáciu v modlitbe (tlačidlá pre ranné chvály, vešpery a pod.) | navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
 #define BIT_OPT_2_TEXT_WRAP                 64 // zobraziť zalomenie v textoch modlitby podľa tlačenej LH
 #define BIT_OPT_2_BUTTONY_USPORNE          128 // zobraziť buttony pre modlitby v úspornej podobe (tabuľka) kvôli mobilným zariadeniam
 #define BIT_OPT_2_NOCNY_REZIM              256 // zobraziť invertovane farby (biele na ciernom)
 #define BIT_OPT_2_ROZNE_MOZNOSTI           512 // zobraziť rozličné "hypertextové odkazy" v modlitbe (napr. pre modlitbu cez deň možnosť doplnkovej psalmódie)
-#define BIT_OPT_2_HIDE_NAVIG_BUTTONS      1024 // možnosť zobraziť/skryť navigáciu (tlačidlá) v modlitbe a pre "dnes", ak je zvolený 6. bit (BIT_OPT_2_NAVIGATION)
+#define BIT_OPT_2_HIDE_NAVIG_BUTTONS      1024 // možnosť zobraziť/skryť navigáciu (tlačidlá pre deň, mesiac, rok, dnes) v modlitbe a pre "dnes", ak je zvolený 6. bit (BIT_OPT_2_NAVIGATION)
 #define BIT_OPT_2_HIDE_KALENDAR           2048 // skryť kalendárik pre "dnes" (0 = zobraziť)
 #define BIT_OPT_2_HIDE_OPTIONS1           4096 // skryť html_text_dalsie_moznosti_1[] pre "dnes" (0 = zobraziť)
 #define BIT_OPT_2_HIDE_OPTIONS2           8192 // skryť html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziť)
@@ -1632,7 +1634,7 @@ extern unsigned long long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_INVITATORIUM_ANT       65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
 #define BIT_OPT_5_OCR_34_HYMNS          131072 // different (special) hymns for 34th week per annum
 #define BIT_OPT_5_KOMPLETORIUM_OKTAVA   262144 // prvé alebo druhé nedeľné kompletórium (pre Veľkonočnú oktávu a Oktávu Narodenia Pána)
-#define BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA  524288 // psalmódia pre posvätné čítanie štvrtka vo Veľkom týždni (default: štvrtok 2. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
+#define BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA  524288 // psalmódia pre posvätné čítanie štvrtka vo Svätom týždni (default: štvrtok 2. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
 
 #define POCET_OPT_6_ALTERNATIVES_MULTI       11 // count equals to the highest PLACE_OPT_6_... used
 extern unsigned long long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI]; // this is not bitwise long, but simply decimal number; each decimal place representing one value (max. possibly 0--9)
@@ -1721,10 +1723,10 @@ short int _allocate_global_var(void);
 short int _deallocate_global_var(void);
 
 short int cislo_mesiaca(char *mesiac);
-char *mystr_UPPERCASE(const char* input);
-char *mystr_remove_diacritics(const char* input);
+extern char *mystr_UPPERCASE(const char* input);
+extern char *mystr_remove_diacritics(const char* input);
 char *mystr_bible_com(const char* input);
-char *convert_nonbreaking_spaces(const char* input);
+extern char *convert_nonbreaking_spaces(const char* input);
 
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align);
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align, short int force_month_numbers);
@@ -1958,6 +1960,7 @@ extern const char* text_PRVA_ADVENTNA_NEDELA[POCET_JAZYKOV + 1];
 extern const char* text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1];
 extern const char* text_SPOMIENKA_PM_V_SOBOTU[POCET_JAZYKOV + 1];
 extern const char* text_ZELENY_STVRTOK[POCET_JAZYKOV + 1];
+extern const char* text_ZELENY_STVRTOK_VESPERY[POCET_JAZYKOV + 1];
 extern const char* text_VELKY_PIATOK[POCET_JAZYKOV + 1];
 extern const char* text_BIELA_SOBOTA[POCET_JAZYKOV + 1];
 extern const char* text_KVETNA_NEDELA[POCET_JAZYKOV + 1];
@@ -2005,6 +2008,126 @@ typedef struct _lang_cal_param_and_anchor _struct_lang_cal_param_and_anchor;
 extern const char* bible_references_default[POCET_JAZYKOV + 1];
 
 extern const char* bible_version_id_default[POCET_JAZYKOV + 1];
+
+#define POCET_MENU_GROUPS	6
+
+#define MAX_POCET_MENU_ITEMS	33
+
+#define MENU_0_GENERAL			0
+#define MENU_1_DEVICE			1
+#define MENU_2_LOOK				2
+#define MENU_3_TEXT_CONTENT 	3
+#define MENU_4_CALENDAR			4
+#define	MENU_5_TTS				5 // not supported for web
+
+#define POCET_MENU_0_ITEMS	3
+
+#define MENU_0_ITEM_LANGUAGE	0
+#define MENU_0_ITEM_CALENDAR	1
+#define MENU_0_ITEM_WHEN_ONLINE	2
+
+#define POCET_MENU_1_ITEMS	4
+
+#define MENU_1_ITEM_VOLUME_BUTTONS	0 // Android only
+#define MENU_1_ITEM_SCREEN_ALWAYS	1
+#define MENU_1_ITEM_DO_NOT_DISTURB	2
+#define MENU_1_ITEM_LOCK_FONT_SIZE	3 // do not allow font size change by standard gestures
+
+#define POCET_MENU_2_ITEMS	9
+
+#define MENU_2_ITEM_FONT					0
+#define MENU_2_ITEM_COLOR_SCHEMA			1 // Android: night mode
+#define MENU_2_ITEM_NORMAL_FONT				2 // do not allow bold font
+#define MENU_2_ITEM_ROUNDED_CORNERS			3 // for buttons
+#define MENU_2_ITEM_ALT_BACKGROUND			4 // Android only
+#define MENU_2_ITEM_NAVIGATION_ARROWS		5 // used especially for e-book readers
+#define MENU_2_ITEM_BUTTONS_CONDENSED		6 // default (Android, web): ON; historically all buttons for prayers could be displayed in single line (table row)
+#define MENU_2_ITEM_BUTTONS_ORDERING		7 // ordering of buttons for prayers and buttons for date-navigation
+#define MENU_2_ITEM_NAVIGATION_IN_PRAYER	8 // navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
+
+#define POCET_MENU_3_ITEMS	33
+
+#define MENU_3_ITEM_SWITCHES_IN_TEXT	0 // switches as clickable hyperlinks directly in prayer texts; default: ON
+
+#define MENU_3_ITEM_ALTERNATIVES		1
+
+#define MENU_3_ITEM_COMMUNIA_INFO		2
+#define MENU_3_ITEM_COMMUNIA_FORCE		3
+#define MENU_3_ITEM_VERSE_NUMBERING		4
+#define MENU_3_ITEM_PSALM_OMMISIONS		5
+#define MENU_3_ITEM_ELISIONS_ITALICS	6
+#define MENU_3_ITEM_TEXT_NOTES			7 // footnotes & endnotes
+#define MENU_3_ITEM_SAINT_DETAILS_HIDE	8
+#define MENU_3_ITEM_MCD_SUPPL_PSALMS	9
+#define MENU_3_ITEM_MCD_SPECIAL_PS		10
+#define MENU_3_ITEM_INV_PSALM_95		11
+#define MENU_3_ITEM_PRECES_REPEAT		12
+#define MENU_3_ITEM_VESPERS_SPEC_PREC	13
+#define MENU_3_ITEM_VIGILIES			14
+#define MENU_3_ITEM_ALT_CONCLUSION		15
+#define MENU_3_ITEM_ALT_PS_122_129		16
+#define MENU_3_ITEM_ALT_PS_126_129		17
+#define MENU_3_ITEM_ALT_PS_127_131		18
+#define MENU_3_ITEM_ALT_PA_34_HYMNS		19
+#define MENU_3_ITEM_ALT_ASH_WED_PS		20
+#define MENU_3_ITEM_ALT_GREEN_TH_PS		21
+#define MENU_3_ITEM_ALT_DEF_PS_146_150 	22
+#define MENU_3_ITEM_ALT_READ_PA_HYMNS	23
+#define MENU_3_ITEM_ALT_MCD_9_HYMN		24
+#define MENU_3_ITEM_ALT_MCD_12_HYMN		25
+#define MENU_3_ITEM_ALT_MCD_15_HYMN		26
+#define MENU_3_ITEM_LINE_BREAKS_PRINTED	27
+#define MENU_3_ITEM_ALT_PA_HYMN_SUN		28
+#define MENU_3_ITEM_ALT_COMPL_HYMN		29
+#define MENU_3_ITEM_ALT_READ_EAST_HYMN	30
+#define MENU_3_ITEM_ALT_LAUD_EAST_HYMN	31
+#define MENU_3_ITEM_ALT_VESP_EAST_HYMN	32
+
+#define POCET_MENU_4_ITEMS	4
+
+#define MENU_4_ITEM_EPIPHANY 		0
+#define MENU_4_ITEM_ASSUMPT			1
+#define	MENU_4_ITEM_BODY_BLOOD 		2
+#define	MENU_4_ITEM_LOCAL_CAL_EMPH 	3
+
+#define POCET_MENU_5_ITEMS	3
+
+#define MENU_5_ITEM_SPEED	0 // iOS only
+#define MENU_5_ITEM_PAUSES	1 // special pauses for asterisks and crosses in psalmody
+#define	MENU_5_ITEM_HELP	2 // Android only
+
+const short int pocet_menu_items[POCET_MENU_GROUPS] = { POCET_MENU_0_ITEMS, POCET_MENU_1_ITEMS, POCET_MENU_2_ITEMS, POCET_MENU_3_ITEMS, POCET_MENU_4_ITEMS, POCET_MENU_5_ITEMS };
+
+#define POCET_MENU_ITEM_TYPE	3
+
+#define MENU_ITEM_TYPE_UNDEFINED		0 // this menu item is not defined/not used yet; similar to 0 in supported_calendars_language[][]
+#define MENU_ITEM_TYPE_MAIN_SWITCH		1 // switch, like 'j' (language) or 'c' (calendar)
+#define MENU_ITEM_TYPE_BIT_OPTION		2 // bit option given by option and bit-component, like OPT_2_HTML_EXPORT and BIT_OPT_2_NOCNY_REZIM
+#define MENU_ITEM_TYPE_APP_SPECIFIC		3 // these are not supported by this core CGI module; apps handle them on their own
+
+extern const char* menu_item_type_name[POCET_MENU_ITEM_TYPE + 1];
+
+const short int menu_item_type[POCET_MENU_GROUPS][MAX_POCET_MENU_ITEMS] = {
+	/*MENU_0_GENERAL*/		{ MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_APP_SPECIFIC, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	/*MENU_1_DEVICE*/		{ MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	/*MENU_2_LOOK*/			{ MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	/*MENU_3_TEXT_CONTENT*/	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	/*MENU_4_CALENDAR*/		{ MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	/*MENU_5_TTS*/			{ MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+};
+
+struct menu_item_switch_str_name {
+	char switch_str[SMALL];
+	char switch_xml[SMALL]; // XML element name
+	char switch_name[SMALL];
+};
+
+struct menu_item_option_str_name {
+	char option_str[SMALL]; // option group
+	char option_force[SMALL]; // bit opt force
+	char option_xml[SMALL]; // XML element name
+	char option_name[SMALL];
+};
 
 #endif // __LITURGIA_H_
 

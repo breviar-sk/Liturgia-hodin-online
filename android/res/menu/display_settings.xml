@@ -48,4 +48,9 @@
         app:actionLayout="@layout/widget_switch"
   />
 
+  <item android:id="@+id/font_select"
+        android:title="@string/font_select"
+        app:actionLayout="@layout/widget_spinner"
+  />
+
 </menu>
