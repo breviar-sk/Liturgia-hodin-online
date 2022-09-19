@@ -13269,6 +13269,10 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 	// teraz mam vsetky data v _global_den, _global_modl_...
 	Log("teraz mam vsetky data v _global_den, _global_modl_...\n");
 
+	// keďže test napr. na je_alternativa_doplnkova_psalmodia_z122_129 sa používal iba v _set_zalmy_mcd_doplnkova_psalmodia() volanej z zaltar_zvazok(), dávno predtým, ako sa pre obyčajnú spomienku nastaví napr. cez vlastnú časť, kalendár, v metóde _set_zalmy_sviatok_marie(), _set_mcd_doplnkova_psalmodia_z122_129()...
+	Log("nedokonalý fix pre alternatívne žalmy v modlitbe cez deň, ak boli nastavené až neskôr, ako sa už predtým nastavila pre mcd doplnková psalmódia (napr. 15SEP pre ne-SK kalendár)...\n");
+	__skus_zohladnit_set_zalmy_mcd_doplnkova_psalmodia_alternativy(modlitba);
+
 	Log("nastavujem _global_string_modlitba...\n");
 	init_global_string_modlitba(modlitba);
 	Log("nastavujem _global_string_podnadpis...\n");

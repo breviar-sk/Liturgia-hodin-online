@@ -3205,6 +3205,10 @@ void _set_zalmy_1nedele_pc(void) {// prvé vešpery
 
 void _set_zalmy_posviacka_chramu(short int modlitba) {
 	Log("_set_zalmy_posviacka_chramu(%s) -- begin\n", nazov_modlitby(modlitba));
+
+	// pre MCD nastavíme info, že v predpísanej psalmódii môže dôjsť k opakovaniu žalmov, a preto je možnosť alternatívy (vyňaté mimo konkrétnej modlitby)
+	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
+
 	if (modlitba == MODL_VESPERY) {
 		set_zalm(1, modlitba, "z46.htm", "ZALM46");
 		set_zalm(2, modlitba, "z122.htm", "ZALM122");
@@ -3242,7 +3246,7 @@ void _set_zalmy_posviacka_chramu(short int modlitba) {
 	else if (je_modlitba_cez_den(modlitba)) {
 		_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
 	}
-	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM); // 2013-07-04: vyňaté mimo konkrétnej modlitby | oprava zásahu z 2013-05-15 (oprava: pre 14MAJ sa omylom na MCD brali žalmy z doplnkovej psalmódie) | nevadí, že sa vykoná/nastaví viackrát...
+
 	Log("_set_zalmy_posviacka_chramu(%s) -- end\n", nazov_modlitby(modlitba));
 } // _set_zalmy_posviacka_chramu()
 
@@ -3576,12 +3580,20 @@ void _set_zalmy_sviatok_duch_past(short int modlitba) {
 		set_zalm(2, modlitba, "z92.htm", "ZALM92_I");
 		set_zalm(3, modlitba, "z92.htm", "ZALM92_II");
 	}
+	else if (modlitba == MODL_RANNE_CHVALY) {
+		_set_zalmy_1nedele_rch();
+	}
 	Log("_set_zalmy_sviatok_duch_past(%s) -- end\n", nazov_modlitby(modlitba));
 } // _set_zalmy_sviatok_duch_past()
 
 void _set_zalmy_sviatok_panien(short int modlitba) {
 	// používa sa aj pre sviatky svätých žien
 	Log("_set_zalmy_sviatok_panien(%s) -- begin [používa sa aj pre sviatky svätých žien]\n", nazov_modlitby(modlitba));
+
+	// pre MCD nastavíme info, že v predpísanej psalmódii môže dôjsť k opakovaniu žalmov, a preto je možnosť alternatívy (vyňaté mimo konkrétnej modlitby)
+	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
+	_set_mcd_doplnkova_psalmodia_z127_131(MODL_POPOLUDNI);
+
 	if (modlitba == MODL_VESPERY) {
 		set_zalm(1, modlitba, "z122.htm", "ZALM122");
 		set_zalm(2, modlitba, "z127.htm", "ZALM127");
@@ -3600,15 +3612,21 @@ void _set_zalmy_sviatok_panien(short int modlitba) {
 	else if (je_modlitba_cez_den(modlitba)) {
 		_set_zalmy_mcd_doplnkova_psalmodia(!je_len_doplnkova_psalmodia(modlitba)); // toto je potrebné z technického dôvodu, pretože doplnková psalmódia bola nastavená ešte pri nastavovaní žaltára (pred vlastnými časťami svätých)
 	}
-	// vyňaté mimo konkrétnej modlitby
-	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
-	_set_mcd_doplnkova_psalmodia_z127_131(MODL_POPOLUDNI);
+	else if (modlitba == MODL_RANNE_CHVALY) {
+		_set_zalmy_1nedele_rch();
+	}
+
 	Log("_set_zalmy_sviatok_panien(%s) -- end [používa sa aj pre sviatky svätých žien]\n", nazov_modlitby(modlitba));
 } // _set_zalmy_sviatok_panien()
 
 // Sviatky Panny Márie majú pre ranné chvály a vešpery rovnaké žalmy ako sviatky panien, ale pre posvätné čítania sú iné žalmy.
 void _set_zalmy_sviatok_marie(short int modlitba) {
 	Log("_set_zalmy_sviatok_marie(%s) -- begin\n", nazov_modlitby(modlitba));
+
+	// pre MCD nastavíme info, že v predpísanej psalmódii môže dôjsť k opakovaniu žalmov, a preto je možnosť alternatívy (vyňaté mimo konkrétnej modlitby)
+	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
+	_set_mcd_doplnkova_psalmodia_z127_131(MODL_POPOLUDNI);
+
 	if ((modlitba == MODL_VESPERY) || (modlitba == MODL_PRVE_VESPERY)) {
 		_set_zalmy_sviatok_panien(modlitba);
 	}
@@ -3623,9 +3641,10 @@ void _set_zalmy_sviatok_marie(short int modlitba) {
 		set_zalm(2, modlitba, "z46.htm", "ZALM46");
 		set_zalm(3, modlitba, "z87.htm", "ZALM87");
 	}
-	// vyňaté mimo konkrétnej modlitby
-	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
-	_set_mcd_doplnkova_psalmodia_z127_131(MODL_POPOLUDNI);
+	else if (modlitba == MODL_RANNE_CHVALY) {
+		_set_zalmy_1nedele_rch();
+	}
+
 	Log("_set_zalmy_sviatok_marie(%s) -- end\n", nazov_modlitby(modlitba));
 } // _set_zalmy_sviatok_marie()
 
@@ -4094,6 +4113,11 @@ void _set_zalmy_ocd_terezka(short int modlitba){
 // SK OCD (15OKT)
 void _set_zalmy_ocd_terezia(short int modlitba){
 	Log("_set_zalmy_ocd_terezia(%s) -- begin\n", nazov_modlitby(modlitba));
+
+	// pre MCD nastavíme info, že v predpísanej psalmódii môže dôjsť k opakovaniu žalmov, a preto je možnosť alternatívy (vyňaté mimo konkrétnej modlitby)
+	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
+	_set_mcd_doplnkova_psalmodia_z127_131(MODL_POPOLUDNI);
+
 	if (modlitba == MODL_VESPERY){
 		set_zalm(1, modlitba, "z122.htm", "ZALM122");
 		set_zalm(2, modlitba, "z127.htm", "ZALM127");
@@ -4115,9 +4139,6 @@ void _set_zalmy_ocd_terezia(short int modlitba){
 	else if (je_modlitba_cez_den(modlitba)){
 		_set_zalmy_mcd_doplnkova_psalmodia(!je_len_doplnkova_psalmodia(modlitba)); // toto je potrebné z technického dôvodu, pretože doplnková psalmódia bola nastavená ešte pri nastavovaní žaltára (pred vlastnými časťami svätých)
 	}
-	// vyňaté mimo konkrétnej modlitby
-	_set_mcd_doplnkova_psalmodia_z122_129(MODL_PREDPOLUDNIM);
-	_set_mcd_doplnkova_psalmodia_z127_131(MODL_POPOLUDNI);
 
 	Log("_set_zalmy_ocd_terezia(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_ocd_terezia()
@@ -9447,7 +9468,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 	short int b; // pre ucitelov cirkvi, odkial sa maju brat ine casti
 	short int podmienka = NIE;
 
-	Log("_set_spolocna_cast(%s) -- begin\n", nazov_spolc(a));
+	Log("__set_spolocna_cast(%s) -- begin\n", nazov_spolc(a));
 
 	Log("poradie_svaty = %d\n", poradie_svaty);
 	Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);
@@ -9473,7 +9494,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 	else{
 		Log("   nebrať... takže nenastavujem kotvy ani nič (iba, ak je slávnosť alebo sviatok, žalmy z nedele 1. týždňa pre ranné chvály)\n");
 
-		Log("_set_spolocna_cast(%s) -- end\n", nazov_spolc(a));
+		Log("__set_spolocna_cast(%s) -- end\n", nazov_spolc(a));
 		return;
 	}
 
@@ -10696,8 +10717,8 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		}
 	}
 
-	Log("_set_spolocna_cast(%s) -- end\n", nazov_spolc(a));
-}// _set_spolocna_cast(); -- dva argumenty
+	Log("__set_spolocna_cast(%s) -- end\n", nazov_spolc(a));
+}// __set_spolocna_cast(); -- dva argumenty
 
 void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty){
 	// poradie_svaty sa tu vlastne vôbec nepoužíva
