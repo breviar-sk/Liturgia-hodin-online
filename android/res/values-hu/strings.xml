@@ -109,7 +109,7 @@
     <string name="about_title">Névjegy</string>
     <string name="news_title">Újdonságok</string>
 
-    <string name="about_PROJECT_URL">zsolozsma.katolikus.hu</string>
+    <string name="about_PROJECT_URL">https://zsolozsma.katolikus.hu</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Zsolozsma alkalmazás Androidhoz</string>
     <string name="about_SPECIAL_CREDITS">Speciális köszönet: Blahó Julianna, Dvornik László, Elek László SJ, Fülöpová Andrea, Izing Gabriel.</string>

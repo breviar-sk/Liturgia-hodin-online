@@ -109,7 +109,7 @@
     <string name="about_title">O aplikaci</string>
     <string name="news_title">Změny ve verzích</string>
 
-    <string name="about_PROJECT_URL">breviar.cz</string>
+    <string name="about_PROJECT_URL">http://breviar.cz</string>
     <string name="about_E_MAIL">android@breviar.sk</string>
     <string name="about_APP_NAME">Aplikace Breviář pro OS Android</string>
     <string name="about_SPECIAL_CREDITS">Děkuji za pomoc, podporu, spolupráci a souhlas na publikování textů Arcibiskupství pražskému a za podporu Arcibiskupství olomouckému.</string>

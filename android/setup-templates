@@ -42,3 +42,4 @@ doLang cs include_cz
 doLang cs include_czop
 doLang hu include_hu
 doLang la include_la
+doLang is include_is

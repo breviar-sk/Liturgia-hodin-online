@@ -23,6 +23,10 @@
     <item android:id="@+id/lang_la"
           android:title="@string/lang_la"
     />
+
+    <item android:id="@+id/lang_is"
+          android:title="@string/lang_is"
+    />
   </group>
 
   <group android:id="@+id/group_lang_settings">
