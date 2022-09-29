@@ -11196,6 +11196,7 @@ _struct_lang_anchor_and_count pocet_maria_ant_multi_anchor_count[] = {
 	{ JAZYK_CZ_OP, "_k_MARIANSKE-ANTIFONY", 6 }, // including Latin Salve Regina
 	{ JAZYK_HU, "_k_MARIANSKE-ANTIFONY", 10 }, // including alternative translations
 	{ JAZYK_HU, "_k_MARIANSKE-ANTIFONYVE", 2 }, // including alternative translations
+	{ JAZYK_IS, "_k_MARIANSKE-ANTIFONY", 5 }, 
 };
 
 _struct_lang_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
