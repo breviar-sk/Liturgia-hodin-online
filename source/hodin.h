@@ -447,11 +447,11 @@ const char* nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char* skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", "czofmconv", "skopraem", /* ADD_VALUE_FOR_NEW_CALENDAR */};
+{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", "czofmconv", "skopraem", "husdb", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char* nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", "pro_ofmconv.htm", "pro_opraem.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */};
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", "pro_ofmconv.htm", "pro_opraem.htm", "pro_sdb.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -486,6 +486,7 @@ const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "CZ OCD"
 	, "CZ OFMCONV"
 	, "SK OPRAEM"
+	, "HU SVD"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -522,6 +523,7 @@ const char* nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, "OCD"
 	, "OFMconv"
 	, "OPRaem"
+	, "SDB"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -560,6 +562,7 @@ const char* nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními texty bosých karmelitánů (OCD)"
 	, "s vlastními minoritskými texty (OFMConv.)"
 	, "pre premonštrátov (OPraem)"
+	, "szalézi zsolozsmája"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -598,6 +601,7 @@ const char* nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "pro bosé karmelitány (OCD)"
 	, "pro minority (OFMConv)"
 	, "pre premonštrátov (OPraem)"
+	, "szalézi zsolozsmája"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -5544,7 +5548,7 @@ const char* text_JAN_08_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Zeman Titusz áldozópap és vértanú",
 	"",
 	"",
 	"",
@@ -5740,7 +5744,7 @@ const char* text_JAN_15_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Variara Alajos áldozópap",
 	"",
 	"",
 	"",
