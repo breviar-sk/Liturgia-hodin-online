@@ -6010,7 +6010,7 @@ const char* text_JAN_24_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Szalézi Szent Ferenc püspök és egyháztanító, " HTML_LINE_BREAK "A Szalézi Szent Ferenc Társaság névadója és pártfogója",
+	"Szalézi Szent Ferenc püspök és egyháztanító, " HTML_LINE_BREAK "a Szalézi Szent Ferenc Társaság névadója és pártfogója",
 	"",
 	"",
 	"",
@@ -8831,7 +8831,21 @@ const char* text_MAJ_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_MAJ_24[POCET_JAZYKOV + 1] = // ToDo rozdeliť pre všeobecný kalendár a pre SDB
+const char* text_MAJ_24[POCET_JAZYKOV + 1] =
+{
+	"Panny Márie, Pomocnice kresťanov",
+	"Panny Marie Pomocnice křesťanů",
+	"",
+	"",
+	"",
+	"",
+	"Szűz Mária, a keresztények segítsége",
+	"",
+	"",
+	"Hl. Maríu meyjar, hjálpar kristinna manna",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_24_SDB[POCET_JAZYKOV + 1] =
 {
 	"Panny Márie, Pomocnice kresťanov, " HTML_LINE_BREAK "hlavnej patrónky Spoločnosti sv. Františka Saleského " HTML_LINE_BREAK "a Inštitútu dcér Márie Pomocnice",
 	"Panny Marie Pomocnice křesťanů, " HTML_LINE_BREAK "hlavní patronky Společnosti sv. Františka Saleského, " HTML_LINE_BREAK "Institutu Dcer Panny Marie " HTML_LINE_BREAK "a Sekulárního institutu Volontárií Dona Boska",
@@ -8839,7 +8853,7 @@ const char* text_MAJ_24[POCET_JAZYKOV + 1] = // ToDo rozdeliť pre všeobecný k
 	"",
 	"",
 	"",
-	"Szűz Mária, a keresztények segítsége",
+	"Szűz Mária, a keresztények segítsége, " HTML_LINE_BREAK "a Szalézi Szent Ferenc Társaság, " HTML_LINE_BREAK "a Segítő Szűz Mária Leányai Intézménye " HTML_LINE_BREAK "és a Don Bosco Voluntáriák Világi Intézménye főpatrónája",
 	"",
 	"",
 	"Hl. Maríu meyjar, hjálpar kristinna manna",
@@ -9021,7 +9035,7 @@ const char* text_MAJ_29_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Kowalski József áldozópap",
 	"",
 	"",
 	"",
@@ -9620,7 +9634,7 @@ const char* text_JUN_08_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Sándor István szalézi szerzetes testvér",
 	"",
 	"",
 	"",
@@ -9740,13 +9754,13 @@ const char* text_JUN_12_BY[POCET_JAZYKOV + 1] =
 };
 const char* text_JUN_12_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Františka K&#281;syho a spoločníkov, mučeníkov", // Bl. Františka Kesyho a spoločníkov, mučeníkov (small latin letter e with ogonek)
-	"Bl. Františka K&#281;syho a druhů, mučedníků",
+	"Bl. Františka Kęsyho a spoločníkov, mučeníkov", // Bl. Františka Kesyho a spoločníkov, mučeníkov (ę = small latin letter e with ogonek = &#281;)
+	"Bl. Františka Kęsyho a druhů, mučedníků",
 	"",
 	"",
 	"",
 	"",
-	"",
+	"Boldog Kęsy Ferenc és négy oratorista társa vértanúk",
 	"",
 	"",
 	"",
@@ -10208,7 +10222,7 @@ const char* text_JUN_23_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Cafasso Szent József áldozópap",
 	"",
 	"",
 	"",
@@ -10603,7 +10617,7 @@ const char* text_JUL_07_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Romero Mária szűz",
 	"",
 	"",
 	"",

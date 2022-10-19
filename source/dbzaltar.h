@@ -1993,6 +1993,7 @@ extern const char* text_MAJ_06_SDB[POCET_JAZYKOV + 1];
 extern const char* text_MAJ_13_SDB[POCET_JAZYKOV + 1];
 extern const char* text_MAJ_16_SDB[POCET_JAZYKOV + 1];
 extern const char* text_MAJ_18_SDB[POCET_JAZYKOV + 1];
+extern const char* text_MAJ_24_SDB[POCET_JAZYKOV + 1];
 extern const char* text_MAJ_29_SDB[POCET_JAZYKOV + 1];
 extern const char* text_JUN_08_SDB[POCET_JAZYKOV + 1];
 extern const char* text_JUN_12_SDB[POCET_JAZYKOV + 1];
