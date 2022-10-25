@@ -562,7 +562,7 @@ const char* nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními texty bosých karmelitánů (OCD)"
 	, "s vlastními minoritskými texty (OFMConv.)"
 	, "pre premonštrátov (OPraem)"
-	, "szalézi zsolozsmája"
+	, "szalézi zsolozsma"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -601,7 +601,7 @@ const char* nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "pro bosé karmelitány (OCD)"
 	, "pro minority (OFMConv)"
 	, "pre premonštrátov (OPraem)"
-	, "szalézi zsolozsmája"
+	, "szalézi zsolozsma"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -11716,7 +11716,7 @@ const char* text_AUG_02_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Czartoryski Ágoston áldozópap",
 	"",
 	"",
 	"",
@@ -12528,7 +12528,7 @@ const char* text_AUG_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Troncatti Mária szűz",
 	"",
 	"",
 	"",
@@ -12584,7 +12584,7 @@ const char* text_AUG_26_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Namuncurá Ceferino ifjú",
 	"",
 	"",
 	"",
@@ -13533,13 +13533,13 @@ const char* text_SEP_22_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_22_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Jozefa Calasanza Marquésa a Enrica Sáiza Aparicia, kňazov, " HTML_LINE_BREAK "a 93 spoločníkov, mučeníkov",
+	"Bl. Jozefa Calasanza Marquésa " HTML_LINE_BREAK "a Enrica Sáiza Aparicia, kňazov, " HTML_LINE_BREAK "a 93 spoločníkov, mučeníkov",
 	"Bl. Josefa Calasanze Marquéze " HTML_LINE_BREAK "a Enrika Sáize Aparicia, kněží a druhů, mučedníků",
 	"",
 	"",
 	"",
 	"",
-	"",
+	"Boldog Calasanz Marqués József " HTML_LINE_BREAK "és Sáiz Aparicio Henrik áldozópapok " HTML_LINE_BREAK "és kilencvenhárom társa vértanúk",
 	"",
 	"",
 	"",
@@ -13934,7 +13934,7 @@ const char* text_OKT_05_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Maravelli Albert laikus",
 	"",
 	"",
 	"",
@@ -14312,7 +14312,7 @@ const char* text_OKT_13_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Da Costa Alexandrina Mária szűz",
 	"",
 	"",
 	"",
@@ -14760,7 +14760,7 @@ const char* text_OKT_24_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Guanalla Szent Alajos áldozópap",
 	"",
 	"",
 	"",
@@ -14816,7 +14816,7 @@ const char* text_OKT_25_CONS[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"A saját templom feleszentelése", // HU SDB
 	"",
 	"",
 	"",
@@ -14956,7 +14956,7 @@ const char* text_OKT_29_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Rua Mihály áldozópap",
 	"",
 	"",
 	"",
@@ -15505,7 +15505,7 @@ const char* text_NOV_13_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Zatti Artemide szerzetes testvér",
 	"",
 	"",
 	"",
@@ -15687,7 +15687,7 @@ const char* text_NOV_15_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Morano Magdolna szűz",
 	"",
 	"",
 	"",
@@ -16037,7 +16037,7 @@ const char* text_NOV_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"¨hu_text",
 	"",
 	"",
 	"",
@@ -16362,7 +16362,7 @@ const char* text_DEC_05_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Rinaldi Fülöp áldozópap",
 	"",
 	"",
 	"",
