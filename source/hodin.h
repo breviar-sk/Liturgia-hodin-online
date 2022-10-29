@@ -5940,7 +5940,7 @@ const char* text_JAN_22_OFM_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Boldog Batthyány-Strattmann László családapa",
+	"Boldog Batthyány-Strattmann László hitvalló",
 	"",
 	"",
 	"",
@@ -6909,7 +6909,7 @@ const char* text_FEB_27[POCET_JAZYKOV + 1] =
 	"S. Gregorii Narecensis, abbatis et Ecclesiæ doctoris",
 	"",
 	"Sv. Řehoře z Nareku, opata a učitele církve",
-	"Naregi Szent Gergely apát és egyháztanító",
+	"Nareki Szent Gergely apát és egyháztanító",
 	"",
 	"",
 	"Hl. Gregoríusar frá Narec, ábóta og kirkjufræðara", // ToDo
@@ -11009,7 +11009,7 @@ const char* text_JUL_16[POCET_JAZYKOV + 1] =
 	"Beatæ Mariæ Virginis de Monte Carmelo",
 	"",
 	"Panny Marie Karmelské",
-	"Kármel-hegyi Boldogasszony",
+	"Kármelhegyi Boldogságos Szűz Mária",
 	"ru_text",
 	"Найсв. Панны Марыі з гары Кармэль",
 	"Hl. Maríu meyjar frá Karmelfjalli",
@@ -11457,7 +11457,7 @@ const char* text_JUL_29[POCET_JAZYKOV + 1] =
 	"Ss. Marthæ, Mariæ et Lazari",
 	"",
 	"Sv. Marty, Marie a Lazara",
-	"Szent Márta, Mária és Lazár",
+	"Szent Márta, Szent Mária és Szent Lázár",
 	"ru_text",
 	"Св. Марты", // ToDo
 	"Hl. Mörtu, Maríu og Lasarusar",
@@ -12142,15 +12142,15 @@ const char* text_AUG_16[POCET_JAZYKOV + 1] =
 	"Hl. Stefáns frá Ungverjalandi",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_AUG_16_OPRAEM[POCET_JAZYKOV + 1] =
+const char* text_AUG_16_2[POCET_JAZYKOV + 1] =
 {
-	"Sv. Rocha",
-	"Sv. Rocha",
+	"Sv. Rocha", // not used yet
+	"Sv. Rocha", // CZ: OPraem only
 	"",
 	"",
 	"",
 	"",
-	"",
+	"Szent Rókus hitvalló", // HU: general calendar
 	"",
 	"",
 	"",
@@ -12923,7 +12923,7 @@ const char* text_SEP_05[POCET_JAZYKOV + 1] =
 	"S. Teresiæ de Calcutta, virginis",
 	"",
 	"Sv. Terezie z Kalkaty (Matky Terezy), panny a řeholnice",
-	"Kalkuttai Szent Teréz szűz",
+	"Kalkuttai Szent Teréz szűz", // Mother Theresa of Calcutta - removed from the hungarian roman general calendar (at the Vatican request)
 	"",
 	"",
 	"Hl. Móðir Teresa, stofnandi reglunnar",
@@ -13287,7 +13287,7 @@ const char* text_SEP_17_2[POCET_JAZYKOV + 1] =
 	"S. Hildegardis Bingensis, virginis et Ecclesiæ doctoris",
 	"",
 	"Sv. Hildegardy z Bingenu, panny a učitelky církve",
-	"Bingeni Szent Hildegárd szűz és egyháztanító",
+	"Bingeni Szent Hildegárd apátnő és egyháztanító",
 	"ru_text",
 	"",
 	"Hl. Hildegarda frá Bingen, meyjar og kirkjufræðara",
@@ -13976,7 +13976,7 @@ const char* text_OKT_05[POCET_JAZYKOV + 1] =
 	"S. Faustinæ Kowalska, virginis",
 	"",
 	"Sv. Faustiny Kowalské, panny",
-	"Kowalska Szent Fausztina szűz",
+	"Szent Faustina Kowalska szűz",
 	"",
 	"",
 	"Hl. Fástínu Kowalska, meyjar",
@@ -14060,7 +14060,7 @@ const char* text_OKT_07[POCET_JAZYKOV + 1] =
 	"Beatæ Mariæ Virginis a Rosario",
 	"",
 	"Panny Marie Růžencové",
-	"Rózsafüzér Királynője",
+	"A Boldogságos Szűz Mária, a szentolvasó Királynéja", // HU: old name: "Rózsafüzér Királynője"
 	"ru_text",
 	"Найсв. Панны Марыі Ружанцовай",
 	"Rósakransmessa, hl. Maríu meyjar", // ToDo
@@ -14074,7 +14074,7 @@ const char* text_OKT_08_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Szűz Mária, Magyarok Nagyasszonya, Magyarország főpátronája",
+	"Szűz Mária, Magyarok Nagyasszonya, " HTML_LINE_BREAK "Magyarország főpátronája",
 	"",
 	"",
 	"",
@@ -14852,13 +14852,13 @@ const char* text_OKT_25_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_26[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky chrámov, " HTML_LINE_BREAK "ktorých deň posviacky nie je známy",  // 'je neznámy' opravené podľa Direktória 2012, str. 214
+	"Výročie posviacky chrámov, " HTML_LINE_BREAK "ktorých deň posviacky nie je známy", // 'je neznámy' opravené podľa Direktória 2012, str. 214
 	"Výročí posvěcení chrámu, " HTML_LINE_BREAK "jehož den dedikace není známý",
 	"",
 	"",
 	"",
 	"Výročí posvěcení chrámu, " HTML_LINE_BREAK "jehož den dedikace není známý",
-	"A saját templom felszentelése " HTML_LINE_BREAK "(amennyiben annak napja nem ismeretes)", // A felszentelt templomokban: A saját templom felszentelése
+	"A saját templom felszentelése " HTML_LINE_BREAK "(ha annak napja nem ismeretes)", // A felszentelt templomokban: A saját templom felszentelése; HU: old subtitle: "amennyiben annak napja nem ismeretes"
 	"",
 	"",
 	"",

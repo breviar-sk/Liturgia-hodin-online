@@ -2335,7 +2335,7 @@ extern const char* text_JUN_16_OPRAEM[POCET_JAZYKOV + 1];
 extern const char* text_JUL_09_OPRAEM[POCET_JAZYKOV + 1];
 extern const char* text_JUL_14_OPRAEM[POCET_JAZYKOV + 1];
 extern const char* text_AUG_13_OPRAEM[POCET_JAZYKOV + 1];
-extern const char* text_AUG_16_OPRAEM[POCET_JAZYKOV + 1];
+extern const char* text_AUG_16_2[POCET_JAZYKOV + 1];
 extern const char* text_AUG_21_OPRAEM[POCET_JAZYKOV + 1];
 extern const char* text_AUG_27_AUG[POCET_JAZYKOV + 1];
 extern const char* text_AUG_28_AUG[POCET_JAZYKOV + 1];
