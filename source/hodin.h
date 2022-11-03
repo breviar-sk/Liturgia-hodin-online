@@ -1883,7 +1883,7 @@ const char* html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 },
 {
 	// see also: text_JAN_KRST[]
-	"Krst" HTML_LINE_BREAK "Krista" HTML_LINE_BREAK "Pána",
+	"Krst" HTML_LINE_BREAK "Pána",
 	"Křtu" HTML_LINE_BREAK "Páně",
 	"Bapt. of" HTML_LINE_BREAK "the Lord",
 	"Bapt." HTML_LINE_BREAK "Domini",
@@ -2007,7 +2007,7 @@ const char* html_text_Nedelne_pismeno[POCET_JAZYKOV + 1] = { "Nedeľné písmeno
 const char* html_text_Nedelne_pismena[POCET_JAZYKOV + 1] = { "Nedeľné písmená", "Nedělní písmena", "Sunday letters", "Litteræ dominicæ", "", "Nedělní písmena", "A vasárnap betűje", "ru_text", "Нядзельныя цыклы", "Sunnudagsstafir", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* html_text_Od_prvej_adv_atd[POCET_JAZYKOV + 1] = {
-	"Od prvej adventnej nedele v roku %d (%s) pokračuje " HTML_A_HREF_BEGIN "\"%s%s\">liturgický rok" HTML_A_END " <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END ".",
+	"Od Prvej adventnej nedele v roku %d (%s) pokračuje " HTML_A_HREF_BEGIN "\"%s%s\">liturgický rok" HTML_A_END " <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END ".",
 	"Od první neděle adventní v roku %d (%s) pokračuje " HTML_A_HREF_BEGIN "\"%s%s\">liturgický rok" HTML_A_END " <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END ".",
 	"From the 1st Advent Sunday in the year %d (%s) continues " HTML_A_HREF_BEGIN "\"%s%s\">liturgical year" HTML_A_END " <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END ".",
 	"Anno Domini %d (%s) a Dominica I Adventus pergit " HTML_A_HREF_BEGIN "\"%s%s\">annus liturgicus" HTML_A_END " <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END ".",
@@ -5626,7 +5626,7 @@ const char* text_JAN_11_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_JAN_KRST[POCET_JAZYKOV + 1] = // v nedeľu po 6. januári | (v nedeľu po Zjavení Pána) alebo: ak však táto nedeľa (zrejme Zjavenia Pána) padne na deň 7. alebo 8. januára, ofícium sa slávi v nasledujúci deň
 {
-	"Krst Krista Pána",
+	"Krst Pána", // bolo: "Krst Krista Pána"; podľa 3RM opravené bez 'Krista'
 	"Křtu Páně",
 	"",
 	"In Baptismate Domini",
@@ -6637,7 +6637,7 @@ const char* text_FEB_13_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_14[POCET_JAZYKOV + 1] =
 {
-	"Sv. Cyrila, mnícha, a sv. Metoda, biskupa", // (na Slovensku sa slávi 5. júla) | odstránený popis "patrónov Európy"
+	"Sv. Cyrila, mnícha, a Metoda, biskupa", // (na Slovensku sa slávi 5. júla) | odstránený popis "patrónov Európy"
 	"(slaví se 5. června)",
 	"",
 	"Ss. Cyrilli, monachi, et Methodii, episcoporum",
@@ -9113,7 +9113,7 @@ const char* text_MAJ_30_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_31[POCET_JAZYKOV + 1] =
 {
-	"Návšteva Panny Márie",
+	"Návšteva prebl. Panny Márie", // doplnené "prebl." podľa 3RM
 	"Navštívení Panny Marie",
 	"",
 	"In visitatione Beatæ Mariæ Virginis",
@@ -9275,7 +9275,7 @@ const char* text_NAJSVATEJSEJ_TROJICE[POCET_JAZYKOV + 1] =
 };
 const char* text_KRISTA_KRALA[POCET_JAZYKOV + 1] =
 {
-	"Krista Kráľa",
+	"Nášho Pána Ježiša Krista, " HTML_LINE_BREAK "Kráľa neba i zeme", // podľa 3RM
 	"Ježíše Krista Krále",
 	"",
 	"Domini nostri Iesu Christi " HTML_LINE_BREAK "universorum regis",
@@ -9317,7 +9317,7 @@ const char* text_NAJSV_SRDCA_JEZISOVHO[POCET_JAZYKOV + 1] =
 };
 const char* text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1] =
 {
-	"Nepoškvrneného Srdca Panny Márie", // 2010-06-16: opravený názov podľa breviára i direktória
+	"Nepoškvrneného Srdca prebl. Panny Márie", // 2010-06-16: opravený názov podľa breviára i direktória; opätovne opravené podľa 3RM
 	"Neposkvrněného Srdce Panny Marie",
 	"",
 	"Immaculati Cordis Beatæ Mariæ Virginis",
@@ -9331,7 +9331,7 @@ const char* text_NEPOSKVRNENEHO_SRDCA_PM[POCET_JAZYKOV + 1] =
 };
 const char* text_NEPOSKVRNENEHO_SRDCA_PM_OFM[POCET_JAZYKOV + 1] =
 {
-	"Nepoškvrneného Srdca Panny Márie, " HTML_LINE_BREAK "patrónky slovenskej provincie Rádu menších bratov kapucínov",
+	"Nepoškvrneného Srdca prebl. Panny Márie, " HTML_LINE_BREAK "patrónky slovenskej provincie Rádu menších bratov kapucínov",
 	"",
 	"",
 	"",
@@ -10188,7 +10188,7 @@ const char* text_JUN_22_2[POCET_JAZYKOV + 1] =
 };
 const char* text_JUN_22_1[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána Fishera, biskupa, " HTML_LINE_BREAK "a sv. Tomáša Morusa, mučeníkov", // kedysi: Mórusa; Direktórium 2012, str. 156, uvádza už iba s krátkym "o"
+	"Sv. Jána Fishera, biskupa, " HTML_LINE_BREAK "a Tomáša Morusa, mučeníkov", // kedysi: Mórusa; Direktórium 2012, str. 156, uvádza už iba s krátkym "o"; 3RM uvádza bez druhého "sv." (prvé "Sv." sa myslí ako plurál)
 	"Sv. Jana Fishera, biskupa, " HTML_LINE_BREAK "a Tomáše Mora, mučedníků",
 	"",
 	"Ss. Ioannis Fisher, episcopi, " HTML_LINE_BREAK "et Thomæ More, martyrum",
@@ -10569,7 +10569,7 @@ const char* text_JUL_05_LA[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_05_SK_CZ[POCET_JAZYKOV + 1] =
 {
-	"Sv. Cyrila a Metoda, slovanských vierozvestov",
+	"Sv. Cyrila, mnícha, a Metoda, biskupa, " HTML_LINE_BREAK "slovanských vierozvestov, patrónov Európy", // názov upravený podľa 3RM
 	"Sv. Cyrila, mnicha, a Metoděje, biskupa, " HTML_LINE_BREAK "patronů Evropy, hlavních patronů Moravy",
 	"",
 	"",
@@ -11367,7 +11367,7 @@ const char* text_JUL_25[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_26[POCET_JAZYKOV + 1] =
 {
-	"Sv. Joachima a Anny, rodičov Panny Márie",
+	"Sv. Joachima a Anny, rodičov prebl. Panny Márie", // doplnené "prebl." podľa 3RM
 	"Sv. Jáchyma a Anny, rodičů Panny Marie",
 	"",
 	"Ss. Ioachim et Annæ, parentum Beatæ Mariæ Virginis",
@@ -11752,7 +11752,7 @@ const char* text_AUG_04[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_05[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky Hlavnej mariánskej baziliky v Ríme",
+	"Výročie posviacky hlavnej mariánskej baziliky v Ríme", // malé 'h' podľa 3RM
 	"Posvěcení římské baziliky Panny Marie",
 	"",
 	"In dedicatione Basilicæ s. Mariæ",
@@ -13309,7 +13309,7 @@ const char* text_SEP_17_IS[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_17_SJ[POCET_JAZYKOV + 1] =
 {
-	"Sv. Róberta Bellarmina, biskupa a učiteľa Cirkvi",
+	"Sv. Róberta Bellarmína, biskupa a učiteľa Cirkvi", // dlhé í podľa 3RM
 	"Sv. Roberta Bellarmina, biskupa a učitele církve",
 	"",
 	"",
@@ -15135,7 +15135,7 @@ const char* text_NOV_01[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_02[POCET_JAZYKOV + 1] =
 {
-	"Spomienka na všetkých verných zosnulých", // podľa Direktória 2012, str. 218
+	"Spomienka na všetkých zosnulých veriacich", // podľa Direktória 2012, str. 218: "Spomienka na všetkých verných zosnulých"; opravené podľa 3RM (2022)
 	"Vzpomínka na všechny věrné zemřelé",
 	"",
 	"In Commemoratione omnium fidelium defunctorum",

@@ -6917,7 +6917,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	else if ((_je_local_den_sviatok) && (poradie_svateho != PORADIE_PM_SOBOTA)) {
 		// sviatky
 		Log("SLAV_SVIATOK");
-		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP) || (_global_jazyk == JAZYK_IS)) {
+		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP) || (_global_jazyk == JAZYK_IS) || (_global_jazyk == JAZYK_SK)) {
 			velkost = CASE_KAPITALKY; // use small caps
 		}
 		else if (_global_jazyk == JAZYK_BY) {
