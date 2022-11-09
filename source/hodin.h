@@ -14629,7 +14629,7 @@ const char* text_OKT_21_OP[POCET_JAZYKOV + 1] =
 const char* text_OKT_21_OFMCAP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Laurencie Longo, rehoľníčky",
-	"Bl. Marie Laurencie Longo, řeholnice",
+	"Bl. Marie Laurencie Longo, řeholnice a zakladatelky", // br. Petr, doplněno dle italské předlohy
 	"",
 	"",
 	"",

@@ -16156,6 +16156,9 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
+				if (_global_jazyk == JAZYK_CZ_OP) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
