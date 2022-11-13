@@ -744,6 +744,10 @@ const char* nazov_slavenia_lokal[] =
 , "v pražském klášteře u Panny Marie Sněžné: slavnost"                                                           // LOKAL_SLAV_PRAHA_OFM
 , "pro mnišky: památka"                                                                                          // LOKAL_SLAV_OP_MNISKY_PAMATKA
 , "pre OFS: spomienka"                                                                                           // LOKAL_SLAV_SPOMIENKA_OFS
+, "a FMA: Főünnep"                                                                                               // LOKAL_SLAV_SLAVNOST_FMA_HU
+, "a FMA: Emléknap"                                                                                              // LOKAL_SLAV_SPOMIENKA_FMA_HU
+, "a FMA és VDB: tetszés szerinti emléknap"                                                                      // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_HU
+, "a VDB: Ünnep"                                                                                                 // LOKAL_SLAV_SVIATOK_VDB_HU
 };
 
 // names of liturgical colors
@@ -16993,6 +16997,66 @@ const char* menu_text_alt_background[POCET_JAZYKOV + 1] =
 	"by_text",
 	"Annars konar bakgrunnslitur (gulur)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+short int lokal_slav_slavnost_fma[POCET_JAZYKOV + 1] =
+{
+	LOKAL_SLAV_SLAVNOST_FMA,
+	LOKAL_SLAV_SLAVNOST_FMA_CZ,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_SLAVNOST_FMA_CZ,
+	LOKAL_SLAV_SLAVNOST_FMA_HU,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
+short int lokal_slav_spomienka_fma[POCET_JAZYKOV + 1] =
+{
+	LOKAL_SLAV_SPOMIENKA_FMA,
+	LOKAL_SLAV_SPOMIENKA_FMA_CZ,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_SPOMIENKA_FMA_CZ,
+	LOKAL_SLAV_SPOMIENKA_FMA_HU,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
+short int lokal_slav_lub_spomienka_fma_vdb[POCET_JAZYKOV + 1] =
+{
+	LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB,
+	LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_CZ,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_CZ,
+	LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_HU,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
+short int lokal_slav_sviatok_vdb[POCET_JAZYKOV + 1] =
+{
+	LOKAL_SLAV_SVIATOK_VDB,
+	LOKAL_SLAV_SVIATOK_VDB_CZ,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_SVIATOK_VDB_CZ,
+	LOKAL_SLAV_SVIATOK_VDB_HU,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
 #endif // __HODIN_H_

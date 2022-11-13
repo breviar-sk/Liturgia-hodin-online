@@ -1154,6 +1154,10 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_PRAHA_OFM						133
 #define LOKAL_SLAV_OP_MNISKY_PAMATKA				134
 #define LOKAL_SLAV_SPOMIENKA_OFS					135
+#define LOKAL_SLAV_SLAVNOST_FMA_HU					136
+#define LOKAL_SLAV_SPOMIENKA_FMA_HU					137
+#define LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_HU			138
+#define LOKAL_SLAV_SVIATOK_VDB_HU					139
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined
@@ -1972,6 +1976,11 @@ extern const char* text_V_OKTAVE_NARODENIA[POCET_JAZYKOV + 1];
 extern const char* text_DEC_08[POCET_JAZYKOV + 1];
 extern const char* text_AUG_15[POCET_JAZYKOV + 1];
 extern const char* text_NOV_01[POCET_JAZYKOV + 1];
+
+extern short int lokal_slav_slavnost_fma[POCET_JAZYKOV + 1];
+extern short int lokal_slav_spomienka_fma[POCET_JAZYKOV + 1];
+extern short int lokal_slav_lub_spomienka_fma_vdb[POCET_JAZYKOV + 1];
+extern short int lokal_slav_sviatok_vdb[POCET_JAZYKOV + 1];
 
 extern const char* html_text_batch_Back[POCET_JAZYKOV + 1];
 
