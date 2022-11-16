@@ -744,10 +744,10 @@ const char* nazov_slavenia_lokal[] =
 , "v pražském klášteře u Panny Marie Sněžné: slavnost"                                                           // LOKAL_SLAV_PRAHA_OFM
 , "pro mnišky: památka"                                                                                          // LOKAL_SLAV_OP_MNISKY_PAMATKA
 , "pre OFS: spomienka"                                                                                           // LOKAL_SLAV_SPOMIENKA_OFS
-, "a FMA: Főünnep"                                                                                               // LOKAL_SLAV_SLAVNOST_FMA_HU
-, "a FMA: Emléknap"                                                                                              // LOKAL_SLAV_SPOMIENKA_FMA_HU
-, "a FMA és VDB: tetszés szerinti emléknap"                                                                      // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_HU
-, "a VDB: Ünnep"                                                                                                 // LOKAL_SLAV_SVIATOK_VDB_HU
+, "az FMA számára: Főünnep"                                                                                      // LOKAL_SLAV_SLAVNOST_FMA_HU
+, "az FMA számára: Emléknap"                                                                                     // LOKAL_SLAV_SPOMIENKA_FMA_HU
+, "az FMA és VDB számára: tetszés szerinti emléknap"                                                             // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_HU
+, "a VDB számára: Ünnep"                                                                                         // LOKAL_SLAV_SVIATOK_VDB_HU
 };
 
 // names of liturgical colors

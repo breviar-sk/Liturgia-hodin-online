@@ -11725,17 +11725,14 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				}
 				if (_global_jazyk != JAZYK_CZ) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
-				}
-				if (_global_jazyk == JAZYK_SK) {
 					_vlastna_cast_kresponz_ve_obd;
 					_vlastna_cast_1citanie_ve_obd;
 				}
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
-				if (_global_jazyk != JAZYK_HU) {
-					_vlastna_cast_kresponz_ve_obd;
-				}
+				_vlastna_cast_kcitanie_ve_obd;
+				_vlastna_cast_kresponz_ve_obd;
 
 				if (_global_jazyk == JAZYK_HU) {
 					_vlastna_cast_mcd_full_okrem_hymnu;
@@ -25787,15 +25784,19 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_vlastna_cast_modlitba;
 
 			modlitba = MODL_RANNE_CHVALY;
-			if (!((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) {
+			/*
+			if (_global_jazyk == JAZYK_SK) {
 				_vlastna_cast_benediktus;
 			}
+			*/
 			_vlastna_cast_modlitba;
 
 			modlitba = MODL_VESPERY;
-			if (!((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) {
+			/*
+			if (_global_jazyk == JAZYK_SK) {
 				_vlastna_cast_magnifikat;
 			}
+			*/
 			_vlastna_cast_modlitba;
 
 			break;
