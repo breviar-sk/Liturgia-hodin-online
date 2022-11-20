@@ -118,7 +118,7 @@ public class Util {
     intent.setAction("sk.breviar.android.NOTIFY");
     intent.putExtra("id", id);
 
-    PendingIntent pi = PendingIntent.getBroadcast(ctx, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    PendingIntent pi = PendingIntent.getBroadcast(ctx, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
     AlarmManager am = (AlarmManager)ctx.getSystemService(Context.ALARM_SERVICE);
     if (next == Long.MAX_VALUE) {
       am.cancel(pi);

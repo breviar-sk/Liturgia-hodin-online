@@ -4,7 +4,7 @@
       android:versionCode="118"
       android:versionName="5.3"
       android:installLocation="auto">
-    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="30"/>
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="31"/>
     <supports-screens android:xlargeScreens="true"/>
     <queries>
       <intent>
@@ -20,6 +20,7 @@
         <activity android:name="Breviar"
                   android:configChanges="orientation|screenSize"
                   android:launchMode="singleTask"
+                  android:exported="true"
                   android:resizeableActivity="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +35,7 @@
         <activity android:name="Alarms"
                   android:configChanges="orientation|screenSize"
                   android:parentActivityName="sk.breviar.android.Breviar"
+                  android:exported="false"
                   android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -105,7 +107,8 @@
                   android:configChanges="orientation|screenSize"
                   android:launchMode="singleTop">
         </activity>
-        <receiver android:name="AlarmReceiver" >
+        <receiver android:name="AlarmReceiver"
+                  android:exported="true">
             <intent-filter>
               <action android:name="sk.breviar.android.NOTIFY"></action>
             </intent-filter>

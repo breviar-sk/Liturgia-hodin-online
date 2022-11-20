@@ -174,19 +174,19 @@ public class TtsService extends Service
           }
 
           PendingIntent open_activity = PendingIntent.getActivity(this, 0,
-            new Intent("sk.breviar.android.action.SHOW"), PendingIntent.FLAG_UPDATE_CURRENT);
+            new Intent("sk.breviar.android.action.SHOW"), PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
           PendingIntent stop = PendingIntent.getService(this, 0,
               new Intent().setClass(this, TtsService.class)
-                          .setAction(TtsService.TTS_STOP), 0);
+                          .setAction(TtsService.TTS_STOP),  PendingIntent.FLAG_IMMUTABLE);
 
           PendingIntent forward = PendingIntent.getService(this, 0,
               new Intent().setClass(this, TtsService.class)
-                          .setAction(TtsService.TTS_FORWARD), 0);
+                          .setAction(TtsService.TTS_FORWARD), PendingIntent.FLAG_IMMUTABLE);
 
           PendingIntent back = PendingIntent.getService(this, 0,
               new Intent().setClass(this, TtsService.class)
-                          .setAction(TtsService.TTS_BACK), 0);
+                          .setAction(TtsService.TTS_BACK), PendingIntent.FLAG_IMMUTABLE);
 
           if (Build.VERSION.SDK_INT >= 26) {
             CompatibilityHelper26.updateChannel(this, false);
@@ -212,12 +212,12 @@ public class TtsService extends Service
           if (new_public_state == TtsState.SPEAKING) {
             PendingIntent pause = PendingIntent.getService(this, 0,
                 new Intent().setClass(this, TtsService.class)
-                            .setAction(TtsService.TTS_PAUSE), 0);
+                            .setAction(TtsService.TTS_PAUSE), PendingIntent.FLAG_IMMUTABLE);
             builder.addAction(R.drawable.ic_pause_white_24dp, getString(R.string.tts_pause), pause);
           } else {
             PendingIntent resume = PendingIntent.getService(this, 0,
                 new Intent().setClass(this, TtsService.class)
-                            .setAction(TtsService.TTS_RESUME), 0);
+                            .setAction(TtsService.TTS_RESUME), PendingIntent.FLAG_IMMUTABLE);
             builder.addAction(R.drawable.ic_play_arrow_white_24dp, getString(R.string.tts_resume), resume);
           }
 

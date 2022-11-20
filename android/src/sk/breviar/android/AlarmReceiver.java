@@ -26,7 +26,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         PendingIntent pi = PendingIntent.getActivity(ctx, 0, 
           new Intent("sk.breviar.android.action.SHOW")
-              .putExtra("id", id), PendingIntent.FLAG_UPDATE_CURRENT);
+              .putExtra("id", id), PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         if (Build.VERSION.SDK_INT >= 26) {
           CompatibilityHelper26.updateChannel(ctx, true);
