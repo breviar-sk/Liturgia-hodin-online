@@ -11157,7 +11157,6 @@ _struct_lang_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_SK, "25NOV_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "03JAN2_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "07JAN2_cCIT2", 2 },
-//	{JAZYK_CZ_OP, "15JAN_cCIT2", 2}, // not used
 	{ JAZYK_CZ_OP, "19JAN_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "28JAN2_cCIT2", 3 },
 	{ JAZYK_CZ_OP, "04FEB_cCIT2", 2 },
@@ -11170,7 +11169,7 @@ _struct_lang_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_CZ_OP, "10MAJ_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "30MAJ2_cCIT2", 4 },
 	{ JAZYK_CZ_OP, "04JUN_cCIT2", 2 },
-	{ JAZYK_CZ_OP, "07JUL_cCIT2", 2 },
+	{ JAZYK_CZ_OP, "04JUL3_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "09JUL_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "09JUL2_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "17JUL2_cCIT2", 2 },
