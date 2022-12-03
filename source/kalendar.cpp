@@ -31679,7 +31679,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 			_set_slavenie_typslav_smer(3, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty(3).meno, text_NOV_23_SJ[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
+			_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
 			_global_svaty(3).farba = LIT_FARBA_CERVENA;
 			_global_svaty(3).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_SJ

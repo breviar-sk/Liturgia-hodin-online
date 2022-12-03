@@ -10461,12 +10461,12 @@ const char* text_JUN_30_OFM[POCET_JAZYKOV + 1] =
 
 const char* text_JUL_02_SJ[POCET_JAZYKOV + 1] =
 {
-	"Sv. Bernardína Realina, sv. Jána Františka Régisa, sv. Františka de Geronimo, " HTML_LINE_BREAK "bl. Juliána Maunoira, bl. Antona Baldinucciho, kňazov", // text_JUL_01_SJ: na Slovensku aj v Maďarsku sa slávi 1. júla
-	"Sv. Bernardina Realino, Jana Františka Régis a Františka de Geronimo; " HTML_LINE_BREAK "bl. Juliana Maunoira, Antonína Baldinucciho a Tiburcia Arnaize, kněží",
+	"Sv. Bernardína Realina, Jána Františka Régisa a Františka de Geronimo; " HTML_LINE_BREAK "bl. Juliána Maunoira, Antona Baldinucciho a Jána Filipa Jeningena, kňazov", // text_JUL_01_SJ: na Slovensku aj v Maďarsku sa slávi 1. júla
+	"Sv. Bernardina Realino, Jana Františka Régis a Františka de Geronimo; " HTML_LINE_BREAK "bl. Juliana Maunoira, Antonína Baldinucciho, Tiburcia Arnaize a Jana Filipa Jeningena, kněží",
 	"",
 	"",
 	"",
-	"Sv. Bernardina Realino, Jana Františka Régis a Františka de Geronimo; " HTML_LINE_BREAK "bl. Juliana Maunoira, Antonína Baldinucciho a Tiburcia Arnaize, kněží",
+	"Sv. Bernardina Realino, Jana Františka Régis a Františka de Geronimo; " HTML_LINE_BREAK "bl. Juliana Maunoira, Antonína Baldinucciho, Tiburcia Arnaize a Jana Filipa Jeningena, kněží",
 	"Realino Szent Benardin, Régis Szent János Ferenc és de Geronimo Szent Ferenc; " HTML_LINE_BREAK "Boldog Maunoir Julián és Boldog Baldinucci Antal, áldozópapok",
 	"",
 	"",
@@ -15741,12 +15741,12 @@ const char* text_NOV_16_BY[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_16_SJ[POCET_JAZYKOV + 1] =
 {
-	"Sv. Rocha Gonzáleza, Alfonza Rodrígueza " HTML_LINE_BREAK "a Jána del Castillo, kňazov a mučeníkov",
-	"Sv. Rocha Gonzáleze, Alfonse Rodrígueze " HTML_LINE_BREAK "a Jana del Castillo, kněží a mučedníků",
+	"Sv. Rocha Gonzáleza, Alfonza Rodrígueza " HTML_LINE_BREAK "a Jána del Castillo; bl. Jána Antona Solinasa, kňazov a mučeníkov",
+	"Sv. Rocha Gonzáleze, Alfonse Rodrígueze " HTML_LINE_BREAK "a Jana del Castillo; bl. Jana Antonína Solinase, kněží a mučedníků",
 	"",
 	"",
 	"",
-	"Sv. Rocha Gonzáleze, Alfonse Rodrígueze " HTML_LINE_BREAK "a Jana del Castillo, kněží a mučedníků",
+	"Sv. Rocha Gonzáleze, Alfonse Rodrígueze " HTML_LINE_BREAK "a Jana del Castillo; bl. Jana Antonína Solinase, kněží a mučedníků",
 	"González Szent Rókus, Rodríguez Szent Alfonz, " HTML_LINE_BREAK "del Castillo Szent János, áldozópapok és vértanúk",
 	"",
 	"",
@@ -15965,12 +15965,12 @@ const char* text_NOV_23_2[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_23_SJ[POCET_JAZYKOV + 1] =
 {
-	"Bl. Michala Augustína Pro, kňaza a mučeníka",
-	"Bl. Michaela Augustina Pro a Emilia Moscosa, kněží a mučedníků",
+	"Bl. Michala Augustína Pro, Emilia Moscosa a Rutília Grandeho, kňazov a mučeníkov",
+	"Bl. Michaela Augustina Pro, Emilia Moscosa a Rutilia Grandeho, kněží a mučedníků",
 	"",
 	"",
 	"",
-	"Bl. Michaela Augustina Pro a Emilia Moscosa, kněží a mučedníků",
+	"Bl. Michaela Augustina Pro, Emilia Moscosa a Rutilia Grandeho, kněží a mučedníků",
 	"Boldog Pro Mihály Ágoston, áldozópap és vértanú",
 	"",
 	"",
