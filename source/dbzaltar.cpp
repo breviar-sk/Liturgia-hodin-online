@@ -2068,7 +2068,10 @@ void _set_zalmy_2nedele_mcd(void) {// modlitba cez deň; rovnaké žalmy sú pre
 void _set_zalmy_mcd_1nedela_or_doplnkova_psalmodia(void) {
 	// ak je modlitba cez deň na slávnosť, tak sa majú použiť žalmy z doplnkovej psalmódie
 	if (_global_den.denvt != DEN_NEDELA) {
-		_set_zalmy_mcd_doplnkova_psalmodia();
+		if (_je_global_den_slavnost) {
+			_set_zalmy_mcd_doplnkova_psalmodia();
+		}
+		// pre sviatok sa použije bežná psalmódia t férie
 	}
 	else if (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA)) {
 		_set_zalmy_1nedele_mcd();
