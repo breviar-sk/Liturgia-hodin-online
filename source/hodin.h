@@ -6300,7 +6300,7 @@ const char* text_FEB_02[POCET_JAZYKOV + 1] =
 	"Urunk bemutatása (Gyertyaszentelő Boldogasszony)",
 	"ru_text",
 	"Ахвяраванне Пана",
-	"Kyndilmessa",
+	"Kyndilmessa (Jesús færður Drottni í musterinu)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_03_1[POCET_JAZYKOV + 1] =
