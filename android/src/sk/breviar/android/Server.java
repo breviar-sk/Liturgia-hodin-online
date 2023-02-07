@@ -251,7 +251,63 @@ public class Server extends Thread {
       } while (!ok);
     }
 
-    synchronized void handle(Socket client, boolean persistent) throws IOException {
+    synchronized void handleFile(Socket client, String dokument, boolean persistent) throws IOException {
+      boolean is_css = dokument.equals("breviar.css");
+      if (backgroundOverride && is_css) {
+        Log.v("breviar", "Overriding url due to background override");
+        dokument = "breviar-background-override.css";
+      }
+      try {
+        InputStream infile;
+        if (dokument.startsWith("file/")) {
+          String fn = dokument.substring(4);
+          Log.v("breviar", "request for file " + fn);
+          try {
+            infile = new java.io.FileInputStream(fn);
+          } catch (java.io.IOException e) {
+            infile = new java.io.ByteArrayInputStream(new byte[0]);
+          }
+        } else {
+          infile = ctx.getAssets().open(dokument, AssetManager.ACCESS_STREAMING);
+        }
+        client.getOutputStream().write(
+            (
+            "HTTP/1.1 200 OK\n" +
+            "Server: Breviar\n" +
+            "Connection: close\n\n"
+            ).getBytes("UTF-8")
+        );
+
+        try {
+          if (is_css) {
+            client.getOutputStream().write(
+                BreviarApp.getFontsCss(ctx).getBytes("UTF-8"));
+          }
+        } catch (java.io.IOException e) {
+          Log.v("Breviar:", "IOException " + e.getMessage());
+        }
+
+        // do not start new thread, just copy here.
+        new Copy(infile, client.getOutputStream() ).run();
+      } catch (IOException e) {
+        Log.v("breviar", "file not found: " + dokument);
+        // last effort - default page
+        try {
+          handleCgi(client, scriptname + "?qt=pdnes&" + persistentOpts , false, 0, new byte[0], persistent);
+        } catch (IOException e2) {
+          client.getOutputStream().write(
+              (
+              "HTTP/1.1 404 - File Not Found\n" +
+              "Server: Breviar\n" +
+              "Connection: close\n"
+              ).getBytes("UTF-8")
+          );
+          client.getOutputStream().close();
+        }
+      }
+    }
+
+    void handle(Socket client, boolean persistent) throws IOException {
       String dokument = "unknown";
       BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
       byte[] buf;
@@ -293,64 +349,12 @@ public class Server extends Thread {
           dokument.substring(0,scriptname.length()).equals(scriptname)) {
         handleCgi(client, dokument, postmethod, cntlen, buf, persistent);
       } else {
-        boolean is_css = dokument.equals("breviar.css");
-        if (backgroundOverride && is_css) {
-          Log.v("breviar", "Overriding url due to background override");
-          dokument = "breviar-background-override.css";
-        }
-        try {
-          InputStream infile;
-          if (dokument.startsWith("file/")) {
-            String fn = dokument.substring(4);
-            Log.v("breviar", "request for file " + fn);
-            try {
-              infile = new java.io.FileInputStream(fn);
-            } catch (java.io.IOException e) {
-              infile = new java.io.ByteArrayInputStream(new byte[0]);
-            }
-          } else {
-            infile = ctx.getAssets().open(dokument, AssetManager.ACCESS_STREAMING);
-          }
-          client.getOutputStream().write(
-              (
-              "HTTP/1.1 200 OK\n" +
-              "Server: Breviar\n" +
-              "Connection: close\n\n"
-              ).getBytes("UTF-8")
-          );
-
-          try {
-            if (is_css) {
-              client.getOutputStream().write(
-                  BreviarApp.getFontsCss(ctx).getBytes("UTF-8"));
-            }
-          } catch (java.io.IOException e) {
-            Log.v("Breviar:", "IOException " + e.getMessage());
-          }
-
-          // do not start new thread, just copy here.
-          new Copy( infile, client.getOutputStream() ).run();
-        } catch (IOException e) {
-          Log.v("breviar", "file not found: " + dokument);
-          // last effort - default page
-          try {
-            handleCgi(client, scriptname + "?qt=pdnes&" + persistentOpts , false, 0, new byte[0], persistent);
-          } catch (IOException e2) {
-            client.getOutputStream().write(
-                (
-                "HTTP/1.1 404 - File Not Found\n" +
-                "Server: Breviar\n" +
-                "Connection: close\n"
-                ).getBytes("UTF-8")
-            );
-            client.getOutputStream().close();
-          }
-        }
+        handleFile(client, dokument, persistent);
       }
     }
 
     static {
-        System.loadLibrary("breviar");
+      System.loadLibrary("breviar");
     }
 
 }
