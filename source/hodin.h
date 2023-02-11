@@ -16652,6 +16652,20 @@ const char* text_DEC_23[POCET_JAZYKOV + 1] =
 	"Hl. Jóhannesar frá Kęty, prests",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_DEC_23_IS[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Þorláksmessa á vetri",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_DEC_26[POCET_JAZYKOV + 1] =
 {
 	"Sv. Štefana, prvého mučeníka",
