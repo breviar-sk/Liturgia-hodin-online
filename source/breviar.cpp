@@ -392,6 +392,7 @@ short int _global_pocet_zalmov_kompletorium;
 
 char _special_anchor_prefix[SMALL]; // used for CZ hymns
 char _special_anchor_postfix[SMALL]; // used for CZ hymns in Per Annum
+char _special_anchor_prefix2[SMALL]; // used for CZ 2nd readings
 
 char _global_export_navig_hore[SMALL] = DEFAULT_MONTH_EXPORT;
 char _global_export_navig_hore_month[SMALL] = DEFAULT_MONTH_EXPORT;
@@ -7790,6 +7791,9 @@ void xml_export_options(void) {
 				case 16: // BIT_OPT_0_TWO_YEARS_CYCLE_ID
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID)"%ld" ELEM_END(XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID) "\n", BIT_OPT_0_TWO_YEARS_CYCLE_ID, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, html_text_opt_0_two_years_cycle_id[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_ID)));
 					break;
+				case 17: // BIT_OPT_0_ALTERNATIVE_READINGS
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_ALTERNATIVE_READINGS)"%ld" ELEM_END(XML_BIT_OPT_0_ALTERNATIVE_READINGS) "\n", BIT_OPT_0_ALTERNATIVE_READINGS, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, html_text_opt_0_alternative_readings[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ALTERNATIVE_READINGS)));
+					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE) "\n");
@@ -10918,6 +10922,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_CRLF_LINE_BREAK);
 			Export(HTML_NONBREAKING_SPACE_LOOONG);
 			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_ID, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, html_text_opt_0_two_years_cycle_id[_global_jazyk], html_text_opt_0_two_years_cycle_id_explain[_global_jazyk], NIE);
+
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS
+			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ALTERNATIVE_READINGS, STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS, html_text_opt_0_alternative_readings[_global_jazyk], html_text_opt_0_alternative_readings_explain[_global_jazyk]);
 
 			if (_global_jazyk != JAZYK_CZ) {
 
@@ -19995,6 +20002,17 @@ int breviar_main(int argc, const char** argv) {
 				mystrcpy(_special_anchor_prefix, STR_EMPTY, SMALL);
 				mystrcpy(_special_anchor_postfix, STR_EMPTY, SMALL);
 			}
+			Log("_special_anchor_prefix == %s\n", _special_anchor_prefix);
+			Log("_special_anchor_postfix == %s\n", _special_anchor_postfix);
+
+			// setting gloval variable used for CZ alternative 2nd readings
+			if (je_alternativne_2citanie) {
+				sprintf(_special_anchor_prefix2, "%s", ALT_TEXT_PREFIX);
+			}
+			else {
+				mystrcpy(_special_anchor_prefix2, STR_EMPTY, SMALL);
+			}
+			Log("_special_anchor_prefix2 == %s\n", _special_anchor_prefix2);
 
 			Log("export_monthly_druh == %d\n", export_monthly_druh);
 

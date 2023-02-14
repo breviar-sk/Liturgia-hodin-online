@@ -516,7 +516,7 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_0_PRINTED_EDITION "of0pe"
 #endif
 
-// použiť dvojročný cyklus pre posvätné čítania?
+// použiť dvojročný cyklus pre posvätné čítanie (prvé, biblické čítanie)?
 #define FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE 146
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE "FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE"
@@ -524,12 +524,20 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE "of0u2rc"
 #endif
 
-// ktorý rok použiť pre dvojročný cyklus pre posvätné čítania?
+// ktorý rok použiť pre dvojročný cyklus pre posvätné čítanie (prvé, biblické čítanie)?
 #define FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID 147
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID "FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID"
 #else
 #define STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID "of02rcid"
+#endif
+
+// použiť alternatívne čítania pre posvätné čítanie (druhé čítanie)
+#define FORCE_BIT_OPT_0_ALTERNATIVE_READINGS 148
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS "FORCE_BIT_OPT_0_ALTERNATIVE_READINGS"
+#else
+#define STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS "of0uac"
 #endif
 
 // liturgické čítania
@@ -1332,6 +1340,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_PRINTED_EDITION           "BitOpt0PrintedEdition"
 #define XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE       "BitOpt0UseTwoYearsCycle"
 #define XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID        "BitOpt0TwoYearsCycleId"
+#define XML_BIT_OPT_0_ALTERNATIVE_READINGS      "BitOpt0AlternativeReadings"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"

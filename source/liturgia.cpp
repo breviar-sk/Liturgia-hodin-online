@@ -1847,6 +1847,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 14: mystrcpy(str, STR_FORCE_BIT_OPT_0_PRINTED_EDITION, SMALL); break; // BIT_OPT_0_PRINTED_EDITION
 			case 15: mystrcpy(str, STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE, SMALL); break; // BIT_OPT_0_USE_TWO_YEARS_CYCLE
 			case 16: mystrcpy(str, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, SMALL); break; // BIT_OPT_0_TWO_YEARS_CYCLE_ID
+			case 17: mystrcpy(str, STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS, SMALL); break; // BIT_OPT_0_ALTERNATIVE_READINGS
 			}
 		}
 		break;

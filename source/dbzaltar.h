@@ -1492,6 +1492,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 // prefixes for special cases (anchors)
 #define CZ_HYMNUS_PREFIX    "CZ_"
+#define ALT_TEXT_PREFIX     "VAR_"
 
 // postfixes for special cases (anchors)
 #define CZ_HYMNUS_POSTFIX       "_CZ"
