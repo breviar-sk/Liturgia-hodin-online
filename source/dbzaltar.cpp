@@ -7816,8 +7816,9 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 	_set_citanie1(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
+// use _special_anchor_prefix2 prefix according to BIT_OPT_0_ALTERNATIVE_READINGS
 #define _post2_citanie2 {\
-	sprintf(_anchor, "%s_%c%s_%d%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, tyzden, nazov_DN_asci[den]);\
+	sprintf(_anchor, "%s%s_%c%s_%d%s", _special_anchor_prefix2, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, tyzden, nazov_DN_asci[den]);\
 	_set_citanie2(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
