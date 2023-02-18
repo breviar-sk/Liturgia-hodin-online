@@ -2564,6 +2564,21 @@ const char* html_text_opt_0_two_years_cycle_id_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char* html_text_opt_0_alternative_readings_NORMAL[POCET_JAZYKOV + 1] =
+{
+	"použiť štandardné čítania pre posvätné čítanie",
+	"vzít standardní čtení pro modlitbu se čtením",
+	"use standard readings for prayer with readings",
+	"la_text",
+	"",
+	"vzít standardní čtení pro modlitbu se čtením",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char* html_text_opt_0_alternative_readings[POCET_JAZYKOV + 1] =
 {
 	"použiť alternatívne čítania pre posvätné čítanie",

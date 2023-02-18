@@ -679,6 +679,9 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ALT_UKONKAJ_MULTI             "ALT-UKONKAJ-" KEYWORD_MULTI // used as acronym for PARAM_ALT_PROSBY_MULTI
 #define PARAM_ALT_MARIA_ANT_MULTI           "ALT-MARIA-ANT-" KEYWORD_MULTI
 
+// variants (other alternatives)
+#define PARAM_VAR_CITANIE2                  "VAR-CITANIE2"
+
 // zobrazenie/skrytie číslovania veršov v žalmoch, chválospevoch a biblických čítaniach
 #define PARAM_CISLO_VERSA_BEGIN				"v"
 #define PARAM_CISLO_VERSA_END				SYMBOL_END "" PARAM_CISLO_VERSA_BEGIN

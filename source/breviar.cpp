@@ -1997,11 +1997,11 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 					mystrcpy(anchor, STR_EMPTY, SMALL);
 
 					short int podmienka = (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)); // len ak je táto možnosť (zobrazovanie všeličoho) zvolená
-					podmienka &= (_global_skip_in_prayer == NIE);
+					podmienka = podmienka && (_global_skip_in_prayer == NIE);
 
 					if (equals(strbuff, PARAM_DOPLNK_PSALM_122_129)) {
-						podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)); // len ak je táto možnosť (zobrazovanie alternatívy) zvolená
-						podmienka &= (je_alternativa_doplnkova_psalmodia_z122_129(_global_modlitba));
+						podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)); // len ak je táto možnosť (zobrazovanie alternatívy) zvolená
+						podmienka = podmienka && (je_alternativa_doplnkova_psalmodia_z122_129(_global_modlitba));
 						mystrcpy(specific_string, HTML_P_BEGIN, SMALL);
 						bit = BIT_OPT_5_DOPLNK_PSALM_122_129;
 						sprintf(popis_show, "%s", html_text_opt_5_DPsalmZ122_NORMAL[_global_jazyk]);
@@ -2010,8 +2010,8 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						nastavene = ANO;
 					}
 					if (!nastavene && equals(strbuff, PARAM_DOPLNK_PSALM_126_129)) {
-						podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)); // len ak je táto možnosť (zobrazovanie alternatívy) zvolená
-						podmienka &= (je_alternativa_doplnkova_psalmodia_z126_129(_global_modlitba));
+						podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)); // len ak je táto možnosť (zobrazovanie alternatívy) zvolená
+						podmienka = podmienka && (je_alternativa_doplnkova_psalmodia_z126_129(_global_modlitba));
 						mystrcpy(specific_string, HTML_P_BEGIN, SMALL);
 						bit = BIT_OPT_5_DOPLNK_PSALM_126_129;
 						sprintf(popis_show, "%s", html_text_opt_5_DPsalmZ126_NORMAL[_global_jazyk]);
@@ -2020,8 +2020,8 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						nastavene = ANO;
 					}
 					if (!nastavene && equals(strbuff, PARAM_DOPLNK_PSALM_127_131)) {
-						podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)); // len ak je táto možnosť (zobrazovanie alternatívy) zvolená
-						podmienka &= (je_alternativa_doplnkova_psalmodia_z127_131(_global_modlitba));
+						podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)); // len ak je táto možnosť (zobrazovanie alternatívy) zvolená
+						podmienka = podmienka && (je_alternativa_doplnkova_psalmodia_z127_131(_global_modlitba));
 						mystrcpy(specific_string, HTML_P_BEGIN, SMALL);
 						bit = BIT_OPT_5_DOPLNK_PSALM_127_131;
 						sprintf(popis_show, "%s", html_text_opt_5_DPsalmZ127_NORMAL[_global_jazyk]);
@@ -2030,8 +2030,8 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						nastavene = ANO;
 					}
 					if (!nastavene && equals(strbuff, PARAM_OFF_DEF_PSALM_146_150)) {
-						podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)); // len ak je táto možnosť (zobrazovanie alternatívy) zvolená
-						podmienka &= (je_alternativa_off_def_z146_150(_global_modlitba));
+						podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)); // len ak je táto možnosť (zobrazovanie alternatívy) zvolená
+						podmienka = podmienka && (je_alternativa_off_def_z146_150(_global_modlitba));
 						mystrcpy(specific_string, HTML_P_BEGIN, SMALL);
 						bit = BIT_OPT_5_OFF_DEF_PSALM_146_150;
 						sprintf(popis_show, "%s", html_text_opt_5_OffDefZ146_150_NORMAL[_global_jazyk]);
@@ -2361,7 +2361,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 				if ((equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN) || equals(strbuff, PARAM_PSALM_FULL_TEXT_SOFT_BEGIN)) && (vnutri_inkludovaneho == ANO)) {
 
 					vnutri_full_text = ANO;
-					write &= (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT));
+					write = write && (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT));
 
 					if (write && equals(strbuff, PARAM_PSALM_FULL_TEXT_BEGIN)) {
 						Export("<" HTML_DIV_PSALM_INDENT ">");
@@ -3436,28 +3436,28 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		mystrcpy(tag_to_export_end, STR_EMPTY, SMALL);
 
 		if (startsWith(paramname, (char *)KEYWORD_PARAM_CHVALOSPEV)) {
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY));
+			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY));
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_TEDEUM)) {
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE));
+			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM) && (_global_opt_tedeum == ANO) && (_global_skip_in_prayer == NIE));
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_JE_TEDEUM)) {
-			podmienka &= (_global_opt_tedeum == ANO);
+			podmienka = podmienka && (_global_opt_tedeum == ANO);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_OTCENAS)) {
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS));
+			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char*)KEYWORD_MARIANSKE_ANTIFONY)) {
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_KOMPL_MARIA_ANT));
+			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_KOMPL_MARIA_ANT));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char*)KEYWORD_ZOBRAZ_OTCENAS_UVOD)) {
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD));
+			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_INVITAT_COMMON)) {
-			podmienka &= !(_global_skip_in_prayer >= ANO);
+			podmienka = podmienka && !(_global_skip_in_prayer >= ANO);
 			exportovat_html_note = ANO;
 
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) {
@@ -3465,84 +3465,84 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			}
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM_SIMPLE)) {
-			podmienka &= !(_global_skip_in_prayer >= ANO);
+			podmienka = podmienka && !(_global_skip_in_prayer >= ANO);
 			exportovat_html_note = ANO;
 
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) {
 				short int ktory = getGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI);
 
 				switch (ktory) {
-				case 0: podmienka &= startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("0"));
+				case 0: podmienka = podmienka && startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("0"));
 					break;
-				case 1: podmienka &= startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("1"));
+				case 1: podmienka = podmienka && startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("1"));
 					break;
-				case 2: podmienka &= startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("2"));
+				case 2: podmienka = podmienka && startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("2"));
 					break;
-				case 3: podmienka &= startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("3"));
+				case 3: podmienka = podmienka && startsWith(paramname, (char *)KEYWORD_INVITAT_PSALM("3"));
 					break;
 				} // switch (ktory)
 			}
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ALELUJA_ALELUJA)) {
-			podmienka &= !(_global_skip_in_prayer >= ANO) && (je_aleluja_aleluja);
+			podmienka = podmienka && !(_global_skip_in_prayer >= ANO) && (je_aleluja_aleluja);
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ALELUJA_VO_VELKONOCNOM)) {
-			podmienka &= (je_velka_noc);
+			podmienka = podmienka && (je_velka_noc);
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ALELUJA_NIE_V_POSTE)) {
-			podmienka &= (!je_post);
+			podmienka = podmienka && (!je_post);
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_JE_VIGILIA)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA) && (je_vigilia));
+			podmienka = podmienka && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_PC_VIGILIA) && (je_vigilia));
 			_global_som_vo_vigilii = (je_begin);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_KOMPLETORIUM_DVA_ZALMY)) {
 			Log("interpretParameter(): _global_modl_kompletorium.pocet_zalmov == %d...\n", _global_modl_kompletorium.pocet_zalmov);
 			Log("interpretParameter(): _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_prve_kompletorium.pocet_zalmov);
-			podmienka &= (_global_pocet_zalmov_kompletorium > 1);
+			podmienka = podmienka && (_global_pocet_zalmov_kompletorium > 1);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_RUBRIKA)) {
-			podmienka &= (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+			podmienka = podmienka && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_VN_VYNECHAJ)) {
 			Log("podmienka == %d; _global_den.denvr == %d, VELKONOCNA_NEDELA == %d...\n", podmienka, _global_den.denvr, VELKONOCNA_NEDELA);
-			podmienka &= (_global_den.denvr != VELKONOCNA_NEDELA);
+			podmienka = podmienka && (_global_den.denvr != VELKONOCNA_NEDELA);
 			Log("podmienka == %d...\n", podmienka);
 			exportovat_html_note = ANO;
 			_global_skip_in_prayer_vnpc = (!podmienka) && (je_begin);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_COPYRIGHT)) {
-			podmienka &= !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
-			podmienka &= ((query_type != PRM_STATIC_TEXT) || (_global_pocet_svatych <= STATIC_TEXT_ORDINARIUM)); // display (c) only for some static texts
+			podmienka = podmienka && !(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
+			podmienka = podmienka && ((query_type != PRM_STATIC_TEXT) || (_global_pocet_svatych <= STATIC_TEXT_ORDINARIUM)); // display (c) only for some static texts
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_SKRY_ANTIFONU)) {
-			podmienka &= (_global_ant_mcd_rovnake == NIE);
+			podmienka = podmienka && (_global_ant_mcd_rovnake == NIE);
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZOBRAZ_ANTIFONU)) {
-			podmienka &= (_global_ant_mcd_rovnake == ANO);
+			podmienka = podmienka && (_global_ant_mcd_rovnake == ANO);
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_SPOMIENKA_PRIVILEG)) {
-			podmienka &= (je_privileg && je_modl_spomprivileg);
+			podmienka = podmienka && (je_privileg && je_modl_spomprivileg);
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_OSTATNI)) {
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !useWhenGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
+			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && !useWhenGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER_KNAZ_DIAKON)) {
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && useWhenGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
+			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER) && useWhenGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_ZAVER)) {
 			// must be after two previous! (the same prefix)
-			podmienka &= (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER));
+			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER));
 			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_TTS_HEADING)) {
@@ -3678,29 +3678,29 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 				// napokon rozkódujeme, čo je v _global_den.spolcast
 				sc = _decode_spol_cast(_global_den.spolcast);
 				Log("sc.a1 == %d (%s)...\n", sc.a1, nazov_spolc(sc.a1));
-				zobrazit &= je_spolocna_cast_urcena(sc.a1);
+				zobrazit = zobrazit && je_spolocna_cast_urcena(sc.a1);
 				Log("zobrazit == %d...\n", zobrazit);
 				// je_sviatok_alebo_slavnost = (je_global_den_slavnost || je_global_den_sviatok);
 			}
 			// pre miestne sviatky má zmysel pre MCD (nie pre kompletórium)
 			else {
 				// _global_poradie_svaty > 0
-				zobrazit &= ((_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM));
+				zobrazit = zobrazit && ((_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM));
 				if (zobrazit == ANO) {
 					if (JE_PORADIE_SVATY_OK(_global_poradie_svaty)) {
 						zobrazit = (((_global_svaty(_global_poradie_svaty).typslav != SLAV_LUB_SPOMIENKA) && (_global_svaty(_global_poradie_svaty).typslav != SLAV_SPOMIENKA)) || ((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI) && (_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM)));
-						zobrazit |= (MIESTNE_SLAVENIE_LOKAL_SVATY(_global_poradie_svaty)) && (je_modlitba_cez_den(_global_modlitba));
+						zobrazit = zobrazit || ((MIESTNE_SLAVENIE_LOKAL_SVATY(_global_poradie_svaty)) && (je_modlitba_cez_den(_global_modlitba)));
 						// napokon rozkódujeme, čo je v _global_svaty(_global_poradie_svaty).spolcast
 						sc = _decode_spol_cast(_global_svaty(_global_poradie_svaty).spolcast);
 						je_sviatok_alebo_slavnost = (_je_global_svaty_i_slavnost(_global_poradie_svaty)) || (_je_global_svaty_i_sviatok(_global_poradie_svaty));
 					}
 					else if (_global_poradie_svaty == PORADIE_PM_SOBOTA) {
 						zobrazit = (((_global_pm_sobota.typslav != SLAV_LUB_SPOMIENKA) && (_global_pm_sobota.typslav != SLAV_SPOMIENKA)) || ((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI) && (_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM)));
-						// zobrazit |= (MIESTNE_SLAVENIE_LOKAL_SVATY(_global_poradie_svaty)) && (je_modlitba_cez_den(_global_modlitba));
+						// zobrazit = zobrazit || ((MIESTNE_SLAVENIE_LOKAL_SVATY(_global_poradie_svaty)) && (je_modlitba_cez_den(_global_modlitba)));
 						// napokon rozkódujeme, čo je v _global_pm_sobota.spolcast
 						sc = _decode_spol_cast(_global_pm_sobota.spolcast);
 					}
-					zobrazit &= je_spolocna_cast_urcena(sc.a1);
+					zobrazit = zobrazit && je_spolocna_cast_urcena(sc.a1);
 				}// ináč nemá zmysel komplikované rozhodovanie (pre kompletórium)
 			}
 		}// ináč nemá zmysel komplikované rozhodovanie (ak nie je zvolený BIT_OPT_1_ZOBRAZ_SPOL_CAST)
@@ -3751,6 +3751,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		|| (equals(paramname, PARAM_RESPONZ))
 		|| (equals(paramname, PARAM_NADPIS))
 		|| (equals(paramname, PARAM_KRATSIE_PROSBY))
+		|| (equals(paramname, PARAM_VAR_CITANIE2))
 		|| (equals(paramname, PARAM_VIGILIA))
 		|| (equals(paramname, PARAM_ALT_HYMNUS))
 		|| (equals(paramname, PARAM_ALT_HYMNUS_OCR_34))
@@ -3796,8 +3797,8 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		mystrcpy(anchor, paramname, SMALL);
 
 		podmienka = (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI));
-		podmienka &= (_global_skip_in_prayer == NIE);
-		podmienka &= (typ != PRM_XML);
+		podmienka = podmienka && (_global_skip_in_prayer == NIE);
+		podmienka = podmienka && (typ != PRM_XML);
 
 		if (equals(paramname, PARAM_OTCENAS)) {
 			bit = BIT_OPT_1_OTCENAS;
@@ -3833,14 +3834,14 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		else if (equals(paramname, PARAM_ZAVER_OSTATNI)) {
 			opt = OPT_5_ALTERNATIVES;
 			bit = BIT_OPT_5_ZAVER_KNAZ_DIAKON;
-			podmienka &= (!isGlobalOption(opt, bit));
+			podmienka = podmienka && (!isGlobalOption(opt, bit));
 			mystrcpy(popis_show, html_text_opt_5_zaver_knaz_diakon_NORMAL[_global_jazyk], SMALL); // not used
 			mystrcpy(popis_hide, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], SMALL);
 		}
 		else if (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON)) {
 			opt = OPT_5_ALTERNATIVES;
 			bit = BIT_OPT_5_ZAVER_KNAZ_DIAKON;
-			podmienka &= (isGlobalOption(opt, bit));
+			podmienka = podmienka && (isGlobalOption(opt, bit));
 			mystrcpy(popis_show, html_text_opt_5_zaver_knaz_diakon_NORMAL[_global_jazyk], SMALL);
 			mystrcpy(popis_hide, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], SMALL); // not used
 		}
@@ -3862,19 +3863,26 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			bit = BIT_OPT_1_PROSBY_ZVOLANIE;
 			mystrcpy(popis_show, html_text_option_skryt_zvolania[_global_jazyk], SMALL);
 			mystrcpy(popis_hide, html_text_option_zobrazit_zvolania[_global_jazyk], SMALL);
-			podmienka &= (!(((_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_PRVE_VESPERY)) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_VESP_KRATSIE_PROSBY)))); // ak sú zvolené kratšie prosby, tam sa neopakuje zvolanie (zatiaľ)
+			podmienka = podmienka && (!(((_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_PRVE_VESPERY)) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_VESP_KRATSIE_PROSBY)))); // ak sú zvolené kratšie prosby, tam sa neopakuje zvolanie (zatiaľ)
 		}
 		else if (equals(paramname, PARAM_KRATSIE_PROSBY)) {
 			bit = BIT_OPT_1_VESP_KRATSIE_PROSBY;
 			mystrcpy(popis_show, html_text_option_skryt_kratsie_prosby[_global_jazyk], SMALL);
 			mystrcpy(popis_hide, html_text_option_zobrazit_kratsie_prosby[_global_jazyk], SMALL);
 		}
+		else if (equals(paramname, PARAM_VAR_CITANIE2)) {
+			opt = OPT_0_SPECIALNE;
+			bit = BIT_OPT_0_ALTERNATIVE_READINGS;
+			podmienka = podmienka && (_global_jazyk == JAZYK_CZ) && (je_post_I_a_II); // (isGlobalOption(opt, bit));
+			mystrcpy(popis_show, html_text_opt_0_alternative_readings_NORMAL[_global_jazyk], SMALL);
+			mystrcpy(popis_hide, html_text_opt_0_alternative_readings[_global_jazyk], SMALL);
+		}
 		else if (equals(paramname, PARAM_DOPLNKOVA_PSALMODIA)) {
 			bit = BIT_OPT_1_MCD_DOPLNKOVA;
 			Log("  _global_den.typslav == %d (%s)...\n", _global_den.typslav, nazov_slavenia(_global_den.typslav));
 			Log("  _global_den.smer == %d...\n", _global_den.smer);
-			podmienka &= (!(je_len_doplnkova_psalmodia(_global_modlitba)));
-			podmienka &= (je_modlitba_cez_den(_global_modlitba));
+			podmienka = podmienka && (!(je_len_doplnkova_psalmodia(_global_modlitba)));
+			podmienka = podmienka && (je_modlitba_cez_den(_global_modlitba));
 			mystrcpy(popis_show, html_text_opt_1_mcd_zalmy_nie_ine_short[_global_jazyk], SMALL);
 			mystrcpy(popis_hide, html_text_opt_1_mcd_zalmy_ine_short[_global_jazyk], SMALL);
 		}
@@ -3882,9 +3890,9 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			bit = BIT_OPT_1_MCD_ZALTAR_TRI;
 			Log("  _global_den.typslav == %d (%s)...\n", _global_den.typslav, nazov_slavenia(_global_den.typslav));
 			Log("  _global_den.smer == %d...\n", _global_den.smer);
-			podmienka &= (!(je_len_doplnkova_psalmodia(_global_modlitba)));
-			podmienka &= (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA));
-			podmienka &= (je_modlitba_cez_den(_global_modlitba));
+			podmienka = podmienka && (!(je_len_doplnkova_psalmodia(_global_modlitba)));
+			podmienka = podmienka && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA));
+			podmienka = podmienka && (je_modlitba_cez_den(_global_modlitba));
 			mystrcpy(popis_show, html_text_opt_1_mcd_zalmy_nie_tri_short[_global_jazyk], SMALL);
 			mystrcpy(popis_hide, html_text_opt_1_mcd_zalmy_tri_short[_global_jazyk], SMALL);
 		}
@@ -3892,7 +3900,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			bit = BIT_OPT_1_SKRY_POPIS;
 			mystrcpy(popis_show, html_text_option_zobrazit[_global_jazyk], SMALL);
 			mystrcpy(popis_hide, html_text_option_skryt[_global_jazyk], SMALL);
-			podmienka &= (je_popis);
+			podmienka = podmienka && (je_popis);
 		}
 		else if (equals(paramname, PARAM_SLAVAOTCU)) {
 			bit = BIT_OPT_1_SLAVA_OTCU;
@@ -3901,7 +3909,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		}
 		else if (equals(paramname, PARAM_RESPONZ)) {
 			bit = BIT_OPT_1_PLNE_RESP;
-			podmienka &= ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_PRVE_VESPERY) || (_global_modlitba == MODL_DRUHE_VESPERY) || (_global_modlitba == MODL_KOMPLETORIUM) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM));
+			podmienka = podmienka && ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY) || (_global_modlitba == MODL_PRVE_VESPERY) || (_global_modlitba == MODL_DRUHE_VESPERY) || (_global_modlitba == MODL_KOMPLETORIUM) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM));
 			if (_global_modlitba == MODL_POSV_CITANIE) {
 				specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 			}
@@ -3916,11 +3924,11 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		}
 		else if (equals(paramname, PARAM_SPOL_CAST_SPOM)) {
 			bit = BIT_OPT_1_SPOMIENKA_SPOL_CAST;
-			podmienka &= ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA));
+			podmienka = podmienka && ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA));
 			sc = _decode_spol_cast(_global_den.spolcast);
-			podmienka &= je_spolocna_cast_urcena(sc.a1);
+			podmienka = podmienka && je_spolocna_cast_urcena(sc.a1);
 			Log("podmienka == %d [_global_den.spolcast == %d; sc.a1 = %d]\n", podmienka, _global_den.spolcast, sc.a1);
-			podmienka &= !isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV);
+			podmienka = podmienka && !isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV);
 			Log("podmienka == %d [isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) == %d]\n", podmienka, isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV));
 			specific_string = HTML_SEQUENCE_DIV;
 			sprintf(popis_show, "%s", html_text_opt_1_spomienka_spolcast_NIE[_global_jazyk]);
@@ -3928,18 +3936,18 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		}
 		else if (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA)) {
 			bit = BIT_OPT_1_OVERRIDE_STUP_SLAV;
-			podmienka &= ((_global_den.typslav == SLAV_SVIATOK) || (_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA));
+			podmienka = podmienka && ((_global_den.typslav == SLAV_SVIATOK) || (_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA));
 			Log("podmienka == %d [_global_den.typslav == %d, override == %d]\n", podmienka, _global_den.typslav, _typslav_override(_global_den.typslav));
-			podmienka &= (_global_poradie_svaty != PORADIE_PM_SOBOTA);
+			podmienka = podmienka && (_global_poradie_svaty != PORADIE_PM_SOBOTA);
 			Log("podmienka == %d [_global_poradie_svaty == %d, PORADIE_PM_SOBOTA == %d]\n", podmienka, _global_poradie_svaty, PORADIE_PM_SOBOTA);
 			sprintf(popis_show, "%s", html_text_opt_1_override_stupen_slavenia_NIE[_global_jazyk]);
 			sprintf(popis_hide, "%s – %s", html_text_opt_1_override_stupen_slavenia[_global_jazyk], ((_global_den.typslav == SLAV_SVIATOK) || (_typslav_override(_global_den.typslav) == SLAV_SLAVNOST) || isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST) ? html_text_opt_1_slavit_ako_slavnost[_global_jazyk] : html_text_opt_1_slavit_ako_sviatok[_global_jazyk]));
 		}
 		else if (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV)) {
 			bit = BIT_OPT_1_STUP_SVIATOK_SLAVNOST;
-			podmienka &= ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA));
+			podmienka = podmienka && ((_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA));
 			Log("podmienka == %d [_global_den.typslav == %d, override == %d]\n", podmienka, _global_den.typslav, _typslav_override(_global_den.typslav));
-			podmienka &= (_global_poradie_svaty != PORADIE_PM_SOBOTA);
+			podmienka = podmienka && (_global_poradie_svaty != PORADIE_PM_SOBOTA);
 			Log("podmienka == %d [_global_poradie_svaty == %d, PORADIE_PM_SOBOTA == %d]\n", podmienka, _global_poradie_svaty, PORADIE_PM_SOBOTA);
 			sprintf(popis_show, "%s", html_text_opt_1_slavit_ako_sviatok[_global_jazyk]);
 			sprintf(popis_hide, "%s", html_text_opt_1_slavit_ako_slavnost[_global_jazyk]);
@@ -3947,7 +3955,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		else if (equals(paramname, PARAM_OKTAVA_PRVE_DRUHE_KOMPL)) {
 			opt = OPT_5_ALTERNATIVES;
 			bit = BIT_OPT_5_KOMPLETORIUM_OKTAVA;
-			podmienka &= ((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA));
+			podmienka = podmienka && ((_global_den.litobd == OBD_VELKONOCNA_OKTAVA) || (_global_den.litobd == OBD_OKTAVA_NARODENIA));
 			Log("podmienka == %d [_global_den.litobd == %d]\n", podmienka, _global_den.litobd);
 			sprintf(popis_show, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_opt_5_KomplOkt1[_global_jazyk]);
 			sprintf(popis_hide, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_opt_5_KomplOkt2[_global_jazyk]);
@@ -3956,7 +3964,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			bit = BIT_OPT_1_PC_VIGILIA;
 			Log("podmienka == %d; _global_modlitba == %d; _je_global_den_slavnost == %d; _je_global_den_sviatok == %d; ant_chval.anchor == %s; ant_chval.file == %s; chval1.anchor == %s; chval1.file == %s; evanjelium.anchor == %s; evanjelium.file == %s\n",
 				podmienka, _global_modlitba, _je_global_den_slavnost, _je_global_den_sviatok, _global_modl_posv_citanie.ant_chval.anchor, _global_modl_posv_citanie.ant_chval.file, _global_modl_posv_citanie.chval1.anchor, _global_modl_posv_citanie.chval1.file, _global_modl_posv_citanie.evanjelium.anchor, _global_modl_posv_citanie.evanjelium.file);
-			podmienka &= (je_vigilia);
+			podmienka = podmienka && (je_vigilia);
 			Log("podmienka after & je_vigilia == %d\n", podmienka);
 			specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_vigilia[_global_jazyk]);
@@ -3964,9 +3972,9 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		}
 		else if (equals(paramname, PARAM_INVITATORIUM_ANT("1")) || equals(paramname, PARAM_INVITATORIUM_ANT("2")) || equals(paramname, PARAM_INVITATORIUM_ANT("3")) || equals(paramname, PARAM_INVITATORIUM_ANT("4"))) {
 			opt = OPT_5_ALTERNATIVES;
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log("podmienka == %d pred kontrolou je_alternativa_invitatorium_ant...\n", podmienka);
-			podmienka &= (je_alternativa_invitatorium_ant);
+			podmienka = podmienka && (je_alternativa_invitatorium_ant);
 
 			bit = BIT_OPT_5_INVITATORIUM_ANT;
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_antifona[_global_jazyk]);
@@ -3979,12 +3987,12 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			mystrcpy(new_anchor, _global_modl_posv_citanie.citanie1.anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
 			multi_count = pocet_multi(new_anchor, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_citanie[_global_jazyk]);
 		}
@@ -3995,12 +4003,12 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			mystrcpy(new_anchor, _global_modl_posv_citanie.citanie2.anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
 			multi_count = pocet_multi(new_anchor, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_citanie[_global_jazyk]);
 		}
@@ -4011,13 +4019,13 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			mystrcpy(new_anchor, _global_modl_hymnus_anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log(_global_modl_hymnus_anchor);
 
 			multi_count = pocet_multi(new_anchor, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_hymnus[_global_jazyk]);
 		}
@@ -4026,12 +4034,12 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			bit = BASE_OPT_6_PSALM_MULTI;
 			multi = ANO;
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log(_global_modl_hymnus_anchor);
 
 			multi_count = 4; // psalms 0--3 for invitatory prayer
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_psalm[_global_jazyk]);
 		}
@@ -4042,13 +4050,13 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			mystrcpy(new_anchor, _global_modl_prosby_anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log(_global_modl_prosby_anchor);
 
 			multi_count = pocet_multi(new_anchor, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			if (equals(paramname, PARAM_ALT_PROSBY_MULTI)) {
 				sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_prosby[_global_jazyk]);
@@ -4065,12 +4073,12 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			mystrcpy(new_anchor, _global_modl_kcit_anchor, MAX_STR_AF_ANCHOR);
 			mystrcpy(new_anchor2, _global_modl_kresp_anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
 			multi_count = pocet_multi(new_anchor, bit); // should be the same for new_anchor2
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']... (malo by byť rovnako aj pre '%s')\n", podmienka, multi_count, new_anchor, new_anchor2);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_kcit_resp[_global_jazyk]);
 		}
@@ -4081,12 +4089,12 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			mystrcpy(new_anchor, _global_modl_maria_ant_anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
 			multi_count = pocet_multi(new_anchor, bit); // should be the same for new_anchor2
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_maria_ant[_global_jazyk]);
 		}
@@ -4097,12 +4105,12 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			mystrcpy(new_anchor, _global_modl_kresp_anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
 			multi_count = pocet_multi(new_anchor, bit); // should be the same for new_anchor2
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_kresp[_global_jazyk]);
 		}
@@ -4113,13 +4121,13 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			mystrcpy(new_anchor, _global_modl_otcenas_uvod_anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log(_global_modl_otcenas_uvod_anchor);
 
 			multi_count = pocet_multi(new_anchor, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_otcenas_uvod[_global_jazyk]);
 		}
@@ -4130,13 +4138,13 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			mystrcpy(new_anchor, _global_modl_modlitba_anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log(_global_modl_modlitba_anchor);
 
 			multi_count = pocet_multi(new_anchor, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_modlitba[_global_jazyk]);
 		}
@@ -4147,12 +4155,12 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			mystrcpy(new_anchor, _global_modl_antifona_anchor, MAX_STR_AF_ANCHOR);
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
 			multi_count = pocet_multi(new_anchor, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
-			podmienka &= (multi_count > 0);
+			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_antifona[_global_jazyk]);
 		}
@@ -4160,33 +4168,33 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			opt = OPT_5_ALTERNATIVES;
 			bit = BIT_OPT_5_OCR_34_HYMNS;
 
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
 			Log("podmienka == %d pred kontrolou je_34_ocr [_global_modlitba == %d]...\n", podmienka, _global_modlitba);
 
-			podmienka &= je_34_ocr;
+			podmienka = podmienka && je_34_ocr;
 
 			Log("podmienka == %d pred kontrolou _global_modlitba == %s...\n", podmienka, nazov_modlitby(_global_modlitba));
 
 			if (_global_jazyk == JAZYK_CZ) {
 				// CZ has special hymn also for prayer during the day
-				podmienka &= (!(_global_modlitba == MODL_KOMPLETORIUM));
+				podmienka = podmienka && (!(_global_modlitba == MODL_KOMPLETORIUM));
 			}
 			else {
-				podmienka &= ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY));
+				podmienka = podmienka && ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY));
 			}
 
-			podmienka &= !su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(_global_modlitba);
+			podmienka = podmienka && !su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(_global_modlitba);
 
 			sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_OCR34Hymns_ordinary[_global_jazyk]);
 			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_OCR34Hymns[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS)) {
 			opt = OPT_5_ALTERNATIVES;
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 			Log("podmienka == %d pred kontrolou je_alternativa_hymnus_ocr/je_alternativa_hymnus_vn [_global_modlitba == %d]...\n", podmienka, _global_modlitba);
 
-			podmienka &= ((je_alternativa_hymnus_ocr) || ((je_alternativa_hymnus_vn) && (_global_den.litobd == OBD_VELKONOCNE_I)));
+			podmienka = podmienka && ((je_alternativa_hymnus_ocr) || ((je_alternativa_hymnus_vn) && (_global_den.litobd == OBD_VELKONOCNE_I)));
 			specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 
 			Log("podmienka == %d pred kontrolou _global_modlitba == %s...\n", podmienka, nazov_modlitby(_global_modlitba));
@@ -4259,12 +4267,12 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		else if (equals(paramname, PARAM_PSALMODIA)) {
 
 			opt = OPT_5_ALTERNATIVES;
-			podmienka &= (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
 
 			if (_global_modlitba == MODL_RANNE_CHVALY) {
 				bit = BIT_OPT_5_POPOL_STREDA_PSALMODIA;
 
-				podmienka &= (_global_den.denvr == POPOLCOVA_STREDA);
+				podmienka = podmienka && (_global_den.denvr == POPOLCOVA_STREDA);
 
 				sprintf(popis_show, "%s", html_text_opt_5_PopolStrPsalm_4STR[_global_jazyk]);
 				sprintf(popis_hide, "%s", html_text_opt_5_PopolStrPsalm_3PI[_global_jazyk]);
@@ -4272,13 +4280,13 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			else if (_global_modlitba == MODL_POSV_CITANIE) {
 				bit = BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA;
 
-				podmienka &= (_global_den.denvr == ZELENY_STVRTOK);
+				podmienka = podmienka && (_global_den.denvr == ZELENY_STVRTOK);
 
 				sprintf(popis_show, "%s", html_text_opt_5_ZelStvPsalm_2STV[_global_jazyk]);
 				sprintf(popis_hide, "%s", html_text_opt_5_ZelStvPsalm_3PI[_global_jazyk]);
 			}
 			else {
-				podmienka &= 0;
+				podmienka = NIE;
 			}
 		}
 
