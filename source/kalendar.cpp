@@ -11367,7 +11367,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_modlitba;
-				if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)) {
+				if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_IS)) {
 					_vlastna_cast_2citanie; // 2011-02-09: doplnený pracovný preklad
 				}
 
