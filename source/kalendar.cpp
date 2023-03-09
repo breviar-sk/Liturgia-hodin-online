@@ -17635,34 +17635,37 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD a KALENDAR_CZ_OCD
 
-		else if (_global_jazyk == JAZYK_IS) {
-			if (poradie_svaty == 1) {
-				// definovanie parametrov pre modlitbu
-				if (query_type != PRM_DETAILY)
-					set_spolocna_cast(sc, poradie_svaty);
-
-				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
-
-				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_modlitba;
-				// _vlastna_cast_2citanie;
-
-				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
-
-				break;
-			}
-
-			_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
-			mystrcpy(_global_svaty(1).meno, text_JUL_20_IS[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP);
-			_global_svaty(1).farba = LIT_FARBA_BIELA;
-			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_IS;
-		}// IS only
-
 		else {
-			if (poradie_svaty == 1) {
+			if (_global_jazyk == JAZYK_IS) {
+
+				pom_poradie = 2;
+
+				if (poradie_svaty == 1) {
+					// definovanie parametrov pre modlitbu
+					if (query_type != PRM_DETAILY)
+						set_spolocna_cast(sc, poradie_svaty);
+
+					modlitba = MODL_RANNE_CHVALY;
+					_vlastna_cast_modlitba;
+
+					modlitba = MODL_POSV_CITANIE;
+					_vlastna_cast_modlitba;
+					// _vlastna_cast_2citanie;
+
+					modlitba = MODL_VESPERY;
+					_vlastna_cast_modlitba;
+
+					break;
+				}
+
+				_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+				mystrcpy(_global_svaty(1).meno, text_JUL_20_IS[_global_jazyk], MENO_SVIATKU);
+				_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP);
+				_global_svaty(1).farba = LIT_FARBA_BIELA;
+				_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_IS;
+			}// IS only
+
+			if (poradie_svaty == pom_poradie) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
@@ -17681,11 +17684,13 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			mystrcpy(_global_svaty(1).meno, text_JUL_20[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
-			_global_svaty(1).farba = LIT_FARBA_CERVENA;
-			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
+			pocet = pom_poradie;
+
+			_set_slavenie_typslav_smer(pom_poradie, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			mystrcpy(_global_svaty(pom_poradie).meno, text_JUL_20[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
+			_global_svaty(pom_poradie).farba = LIT_FARBA_CERVENA;
+			_global_svaty(pom_poradie).kalendar = KALENDAR_VSEOBECNY;
 		}// všeobecný kalendár
 
 		break;
@@ -33503,6 +33508,9 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 	case 23: // MES_DEC -- 23DEC
 
 		if (_global_jazyk == JAZYK_IS) {
+
+			pom_poradie = 2;
+
 			if (poradie_svaty == 1) {
 
 				// prepnutie na 20JUL
@@ -33542,53 +33550,53 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_IS;
 		}// IS only
 
-		else {
-			if (poradie_svaty == 1) {
-				// na spomienku v privilegovaný deň (spomienka v advente v dňoch 17.-24. decembra)
-				if (je_privileg) {
-					if (query_type != PRM_DETAILY)
-						set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
+		if (poradie_svaty == pom_poradie) {
+			// na spomienku v privilegovaný deň (spomienka v advente v dňoch 17.-24. decembra)
+			if (je_privileg) {
+				if (query_type != PRM_DETAILY)
+					set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
-					modlitba = MODL_RANNE_CHVALY;
-					_vlastna_cast_benediktus_spomprivileg;
-					_vlastna_cast_modlitba_spomprivileg;
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_benediktus_spomprivileg;
+				_vlastna_cast_modlitba_spomprivileg;
 
-					modlitba = MODL_VESPERY;
-					_vlastna_cast_magnifikat_spomprivileg;
-					_vlastna_cast_modlitba_spomprivileg;
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_magnifikat_spomprivileg;
+				_vlastna_cast_modlitba_spomprivileg;
 
-					modlitba = MODL_POSV_CITANIE;
-					_vlastna_cast_2citanie_spomprivileg;
-					_vlastna_cast_modlitba;
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_2citanie_spomprivileg;
+				_vlastna_cast_modlitba;
 
-				}// je_privileg
-				else {
-					// definovanie parametrov pre modlitbu
-					if (query_type != PRM_DETAILY)
-						set_spolocna_cast(sc, poradie_svaty);
+			}// je_privileg
+			else {
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
 
-					modlitba = MODL_RANNE_CHVALY;
-					_vlastna_cast_benediktus;
-					_vlastna_cast_modlitba;
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_benediktus;
+				_vlastna_cast_modlitba;
 
-					modlitba = MODL_POSV_CITANIE;
-					_vlastna_cast_modlitba;
-					_vlastna_cast_2citanie;
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_modlitba;
+				_vlastna_cast_2citanie;
 
-					modlitba = MODL_VESPERY;
-					_vlastna_cast_magnifikat;
-					_vlastna_cast_modlitba;
-				}// nie je_privileg
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_magnifikat;
+				_vlastna_cast_modlitba;
+			}// nie je_privileg
 
-				break;
-			}
+			break;
+		}
 
-			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			mystrcpy(_global_svaty(1).meno, text_DEC_23[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
-			_global_svaty(1).farba = LIT_FARBA_BIELA;
-			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
-		}// general calendar
+		pocet = pom_poradie;
+
+		_set_slavenie_typslav_smer(pom_poradie, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+		mystrcpy(_global_svaty(pom_poradie).meno, text_DEC_23[_global_jazyk], MENO_SVIATKU);
+		_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+		_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
+		_global_svaty(pom_poradie).kalendar = KALENDAR_VSEOBECNY;
 
 		break;
 
