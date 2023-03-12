@@ -387,6 +387,7 @@ short int _global_font; // for value FONT_CUSTOM, we use pom_FONT as global vari
 short int _global_font_size;
 short int _global_font_size_pt;
 short int _global_style_margin;
+short int _global_line_height_perc;
 
 short int _global_pocet_zalmov_kompletorium;
 
@@ -471,6 +472,7 @@ char pom_FONT[SMALL] = STR_EMPTY;
 char pom_FONT_SIZE[VERY_SMALL] = STR_EMPTY;
 char pom_FONT_SIZE_PT[VERY_SMALL] = STR_EMPTY;
 char pom_STYLE_MARGIN[VERY_SMALL] = STR_EMPTY;
+char pom_LINE_HEIGHT_PERC[VERY_SMALL] = STR_EMPTY;
 
 char pom_OPT_DATE_FORMAT[SMALL] = STR_EMPTY;
 
@@ -1184,6 +1186,16 @@ short int setForm(void) {
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_STYLE_MARGIN), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_STYLE_MARGIN);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
+		ret = putenv(local_str);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
+	}
+
+	mystrcpy(local_str, STR_EMPTY, SMALL);
+	if (!equals(pom_LINE_HEIGHT_PERC, STR_EMPTY)) {
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_LINE_HEIGHT_PERC), SMALL);
+		strcat(local_str, "=");
+		strcat(local_str, pom_LINE_HEIGHT_PERC);
 		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
 		LogParams("--- setForm: putenv returned %d.\n", ret);
@@ -11937,6 +11949,17 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem style margin: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
+	// 2023-03-11: exportovanie parametra L (_global_line_height_perc)
+	if (PODMIENKA_EXPORTOVAT_LINE_HEIGHT_PERC) {
+		sprintf(pom, " -L%d", _global_line_height_perc);
+	}
+	else {
+		Log("\tNetreba prilepiť line height (line height == %d)\n", _global_line_height_perc);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem line height: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
 	// 2013-12-12: exportovanie parametra c (_global_css)
 	if (PODMIENKA_EXPORTOVAT_CSS) {
 		sprintf(pom, " -c%s", skratka_css[_global_css]); // nazov_css[_global_css]
@@ -12848,6 +12871,17 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r) {
 	}
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem style margin: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
+	// 2023-03-11: exportovanie parametra L (_global_line_height_perc)
+	if (PODMIENKA_EXPORTOVAT_LINE_HEIGHT_PERC) {
+		sprintf(pom, " -L%d", _global_line_height_perc);
+	}
+	else {
+		Log("\tNetreba prilepiť line height (line height == %d)\n", _global_line_height_perc);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem line height: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// 2013-12-12: exportovanie parametra c (_global_css)
 	if (PODMIENKA_EXPORTOVAT_CSS) {
@@ -14182,6 +14216,7 @@ void _rozparsuj_parametre_OPT(void) {
 	}// for i
 
 	LogParams("=== Po potenciálnych úpravách (nastavenie default hodnôt podľa jazyka) ===\n");
+
 #ifdef LOG_PARAMS
 	log_pom_OPT();
 	log_pom_FORCE_OPT();
@@ -17115,7 +17150,7 @@ short int getArgv(int argc, const char** argv) {
 	// 2021-07-13: 'T' (font size pT) force font size in pt
 
 	// 2021-07-13: 'y', 'v' and 'w' are still available :)
-	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::5::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::T::", MAX_STR);
+	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::5::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::T::G::L", MAX_STR);
 	// tie options, ktore maju za sebou : maju povinny argument; ak maju :: tak maju volitelny
 
 	Log("-- getArgv(): begin\n");
@@ -17203,6 +17238,11 @@ short int getArgv(int argc, const char** argv) {
 			case 'G':
 				if (optarg != NULL) {
 					mystrcpy(pom_STYLE_MARGIN, optarg, VERY_SMALL);
+				}
+				Log("option %c with value `%s'\n", c, optarg); break;
+			case 'L':
+				if (optarg != NULL) {
+					mystrcpy(pom_LINE_HEIGHT_PERC, optarg, VERY_SMALL);
 				}
 				Log("option %c with value `%s'\n", c, optarg); break;
 			case 'g': // tabulka - rok to; pre batch mode je to MESIAC DO
@@ -17527,6 +17567,13 @@ short int getForm(void) {
 	if (ptr != NULL) {
 		if (strcmp(ptr, STR_EMPTY) != 0) {
 			mystrcpy(pom_STYLE_MARGIN, ptr, VERY_SMALL);
+		}
+	}
+
+	ptr = getenv(ADD_WWW_PREFIX_(STR_LINE_HEIGHT_PERC));
+	if (ptr != NULL) {
+		if (strcmp(ptr, STR_EMPTY) != 0) {
+			mystrcpy(pom_LINE_HEIGHT_PERC, ptr, VERY_SMALL);
 		}
 	}
 
@@ -18263,7 +18310,7 @@ short int parseQueryString(void) {
 		if (equals(param[i].name, STR_FONT_SIZE_PT)) {
 			// ide o parameter STR_FONT_SIZE_PT
 			mystrcpy(pom_FONT_SIZE_PT, param[i].val, VERY_SMALL);
-			LogParams("font size zistená (%s).\n", pom_FONT_SIZE_PT);
+			LogParams("font size pt zistená (%s).\n", pom_FONT_SIZE_PT);
 		}
 	}
 
@@ -18275,7 +18322,19 @@ short int parseQueryString(void) {
 		if (equals(param[i].name, STR_STYLE_MARGIN)) {
 			// ide o parameter STR_STYLE_MARGIN
 			mystrcpy(pom_STYLE_MARGIN, param[i].val, VERY_SMALL);
-			LogParams("font size zistená (%s).\n", pom_STYLE_MARGIN);
+			LogParams("style margin zistený (%s).\n", pom_STYLE_MARGIN);
+		}
+	}
+
+	i = pocet;
+	LogParams("pokúšam sa zistiť line height (od posledného parametra k prvému, t. j. odzadu)...\n");
+	while ((equalsi(pom_LINE_HEIGHT_PERC, STR_EMPTY)) && (i > 0)) {
+		--i;
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		if (equals(param[i].name, STR_LINE_HEIGHT_PERC)) {
+			// ide o parameter STR_LINE_HEIGHT_PERC
+			mystrcpy(pom_LINE_HEIGHT_PERC, param[i].val, VERY_SMALL);
+			LogParams("line height zistená (%s).\n", pom_LINE_HEIGHT_PERC);
 		}
 	}
 
@@ -18515,7 +18574,7 @@ short int parseQueryString(void) {
 
 		// premenná WWW_FORCE_PLACE_OPT_6_... (nepovinná), j = 0 až POCET_OPT_6_ALTERNATIVES_MULTI
 		i = pocet; // backwards; param[0] by mal síce obsahovať query type, ale radšej kontrolujeme až po 0
-		LogParams("attempt to get value of param %s... parseQueryString(), force, bit-komponenty 5 / pom_FORCE_OPT_5_ALTERNATIVES[%d] = %s\n", local_str, j, pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j]);
+		LogParams("attempt to get value of param %s... parseQueryString(), force, bit-komponenty 6 / pom_FORCE_OPT_6_ALTERNATIVES_MULTI[%d] = %s\n", local_str, j, pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j]);
 		while ((equalsi(pom_FORCE_OPT_6_ALTERNATIVES_MULTI[j], STR_EMPTY)) && (i > 0)) {
 			--i;
 			// LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
@@ -19122,6 +19181,7 @@ END_parseQueryString:
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE)\n", pom_FONT_SIZE);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE_PT)\n", pom_FONT_SIZE_PT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_STYLE_MARGIN)\n", pom_STYLE_MARGIN);\
+	_main_LOG_to_Export("\tparam  == %s (pom_LINE_HEIGHT_PERC)\n", pom_LINE_HEIGHT_PERC);\
 	_main_LOG_to_Export("\tparam  == %s (pom_OPT_DATE_FORMAT)\n", pom_OPT_DATE_FORMAT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_EXPORT_MONTHLY)\n", pom_EXPORT_MONTHLY);\
 	for(i = 0; i < POCET_GLOBAL_OPT; i++){\
@@ -19362,6 +19422,7 @@ int breviar_main(int argc, const char** argv) {
 	strcpy(pom_FONT_SIZE, STR_EMPTY);
 	strcpy(pom_FONT_SIZE_PT, STR_EMPTY);
 	strcpy(pom_STYLE_MARGIN, STR_EMPTY);
+	strcpy(pom_LINE_HEIGHT_PERC, STR_EMPTY);
 	strcpy(pom_OPT_DATE_FORMAT, STR_EMPTY);
 	strcpy(pom_EXPORT_MONTHLY, STR_EMPTY); // 2009-08-03: Pridané kvôli rôznym spôsobom exportu po mesiacoch, prepínač -M
 	_global_modlitba = MODL_NEURCENA;
@@ -19382,6 +19443,7 @@ int breviar_main(int argc, const char** argv) {
 	_global_font = 0;
 	_global_font_size = 0;
 	_global_style_margin = DEF_STYLE_MARGIN;
+	_global_line_height_perc = DEF_LINE_HEIGHT_PERC;
 	_global_override_thin_nbsp = NIE;
 
 	_global_pocet_navigacia = 0;
@@ -19592,7 +19654,7 @@ int breviar_main(int argc, const char** argv) {
 			_main_LOG_to_Export("spúšťam setConfigDefaults()...\n");
 			setConfigDefaults(_global_jazyk); // 2011-04-13: doplnené
 
-			Log("volám _rozparsuj_parametre_OPT()... | case SCRIPT_PARAM_FROM_ARGV\n");
+			Log("volám _rozparsuj_parametre_OPT()... | breviar_main(), case SCRIPT_PARAM_FROM_ARGV\n");
 			_rozparsuj_parametre_OPT();
 
 			// parsovanie jazyka kvôli jazykovým mutáciám -- kalendár, napr. rehoľný (dané aj nižše, ako jazyk)
@@ -19642,6 +19704,19 @@ int breviar_main(int argc, const char** argv) {
 				_main_LOG_to_Export("\t(less than min... style margin set to %d)\n", _global_style_margin);
 			}
 			_main_LOG_to_Export("...style margin (%s) = %d (interpreted in HTML/CSS as px)\n", pom_STYLE_MARGIN, _global_style_margin);
+
+			// reading of line height
+			_main_LOG_to_Export("zisťujem line height...\n");
+			_global_line_height_perc = atoi(pom_LINE_HEIGHT_PERC);
+			if (_global_line_height_perc > MAX_LINE_HEIGHT_PERC) {
+				_global_line_height_perc = MAX_LINE_HEIGHT_PERC;
+				_main_LOG_to_Export("\t(more than max... line height set to %d)\n", _global_line_height_perc);
+			}
+			if (_global_line_height_perc < MIN_LINE_HEIGHT_PERC) {
+				_global_line_height_perc = MIN_LINE_HEIGHT_PERC;
+				_main_LOG_to_Export("\t(less than min... line height set to %d)\n", _global_line_height_perc);
+			}
+			_main_LOG_to_Export("...line height (%s) = %d (interpreted in HTML/CSS as percent)\n", pom_LINE_HEIGHT_PERC, _global_line_height_perc);
 
 			// načítanie css
 			_main_LOG_to_Export("zisťujem css...\n");
@@ -19787,7 +19862,7 @@ int breviar_main(int argc, const char** argv) {
 	_main_LOG_to_Export("spúšťam setConfigDefaults()...\n");
 	setConfigDefaults(_global_jazyk);
 
-	Log("volám _rozparsuj_parametre_OPT()...\n");
+	Log("volám _rozparsuj_parametre_OPT()  | breviar_main()...\n");
 	_rozparsuj_parametre_OPT();
 
 	// parsovanie jazyka kvôli jazykovým mutáciám -- kalendár, napr. rehoľný (dané aj vyššie, ako jazyk)
@@ -19837,6 +19912,19 @@ int breviar_main(int argc, const char** argv) {
 		_main_LOG_to_Export("\t(less than min... style margin set to %d)\n", _global_style_margin);
 	}
 	_main_LOG_to_Export("...style margin (%s) = %d (interpreted in HTML/CSS as px)\n", pom_STYLE_MARGIN, _global_style_margin);
+
+	// reading of line height
+	_main_LOG_to_Export("zisťujem line height...\n");
+	_global_line_height_perc = atoi(pom_LINE_HEIGHT_PERC);
+	if (_global_line_height_perc > MAX_LINE_HEIGHT_PERC) {
+		_global_line_height_perc = MAX_LINE_HEIGHT_PERC;
+		_main_LOG_to_Export("\t(more than max... line height set to %d)\n", _global_line_height_perc);
+	}
+	if (_global_line_height_perc < MIN_LINE_HEIGHT_PERC) {
+		_global_line_height_perc = MIN_LINE_HEIGHT_PERC;
+		_main_LOG_to_Export("\t(less than min... line height set to %d)\n", _global_line_height_perc);
+	}
+	_main_LOG_to_Export("...line height (%s) = %d (interpreted in HTML/CSS as percents)\n", pom_LINE_HEIGHT_PERC, _global_line_height_perc);
 
 	// načítanie css kvôli rôznym css
 	_main_LOG_to_Export("zisťujem css...\n");
@@ -19998,8 +20086,9 @@ int breviar_main(int argc, const char** argv) {
 			_global_modlitba = atomodlitba(pom_MODLITBA);
 
 			// rozparsovanie parametrov opt...; v prípade nenastavenia sa nastaví hodnota GLOBAL_OPTION_NULL
-			Log("volám _rozparsuj_parametre_OPT z main()...\n");
+			Log("volám _rozparsuj_parametre_OPT z main() | breviar_main()...\n");
 			_rozparsuj_parametre_OPT();
+			Log("_rozparsuj_parametre_OPT z main() | breviar_main(): hotovo.\n");
 
 			// setting global variable used for CZ hymns
 			if (je_CZ_hymny_k_volnemu_vyberu) {

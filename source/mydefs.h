@@ -1184,6 +1184,13 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_STYLE_MARGIN "mm"
 #endif
 
+#define LINE_HEIGHT_PERC 47
+#ifdef LONG_PARAM_NAMES
+#define STR_LINE_HEIGHT_PERC "LINE_HEIGHT_PERC"
+#else
+#define STR_LINE_HEIGHT_PERC "lh"
+#endif
+
 // query type
 #define QUERY_TYPE	20
 #ifdef LONG_PARAM_NAMES

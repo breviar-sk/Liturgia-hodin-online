@@ -302,8 +302,9 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	bool has_font_size = (_global_font_size_pt > 0) && (_global_font_size_pt != FONT_SIZE_PT_DEFAULT);
 	bool has_font_size_global = _global_font_size != FONT_SIZE_CSS;
 	bool has_font_margin = _global_style_margin != 0;
+	bool has_line_height = _global_line_height_perc != 0;
 
-	if (has_font_family || has_font_size || has_font_size_global || has_font_margin) {
+	if (has_font_family || has_font_size || has_font_size_global || has_font_margin || has_line_height) {
 		Export_to_file(expt, " style=\"");
 		if (has_font_family) {
 			Export_to_file(expt, "font-family: %s; ", _global_css_font_family);
@@ -316,6 +317,9 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 		}// else nothing for font-size
 		if (has_font_margin) {
 			Export_to_file(expt, "margin-left: %dpx; margin-right: %dpx; ", _global_style_margin, _global_style_margin);
+		}
+		if (has_line_height) {
+			Export_to_file(expt, "line-height: %d%%; ", _global_line_height_perc);
 		}
 		Export_to_file(expt, "\"");
 	}

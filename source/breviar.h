@@ -161,6 +161,7 @@ extern short int _global_font;
 extern short int _global_font_size;
 extern short int _global_font_size_pt;
 extern short int _global_style_margin; // for usage in <body> for style margin-left & margin-right
+extern short int _global_line_height_perc;
 
 extern short int _global_pocet_zalmov_kompletorium; // kompletórium niekedy obsahuje až dva žalmy
 
@@ -479,7 +480,9 @@ extern char pom_FONT[SMALL];
 
 #define PODMIENKA_EXPORTOVAT_CSS ((_global_css != CSS_UNDEF) && (_global_css != CSS_breviar_sk))
 
-#define PODMIENKA_EXPORTOVAT_STYLE_MARGIN ( (_global_style_margin > MIN_STYLE_MARGIN) && (_global_style_margin < MAX_STYLE_MARGIN) )
+#define PODMIENKA_EXPORTOVAT_STYLE_MARGIN ( (_global_style_margin > MIN_STYLE_MARGIN) && (_global_style_margin < MAX_STYLE_MARGIN)  && (_global_style_margin != DEF_STYLE_MARGIN) )
+
+#define PODMIENKA_EXPORTOVAT_LINE_HEIGHT_PERC ( (_global_line_height_perc > MIN_LINE_HEIGHT_PERC) && (_global_line_height_perc < MAX_LINE_HEIGHT_PERC) && (_global_line_height_perc != DEF_LINE_HEIGHT_PERC) )
 
 #define PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT ((_global_opt_batch_monthly == ANO) && (export_monthly_druh > 2))
 
