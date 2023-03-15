@@ -545,6 +545,7 @@ public class Breviar extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.breviar_toolbar_menu, menu);
         updateTtsState();
+        updateMenu();
         return true;
     }
 
