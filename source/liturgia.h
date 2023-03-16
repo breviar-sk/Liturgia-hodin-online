@@ -514,7 +514,7 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_DOPLNKOVA_PSALMODIA      "DOPLNKOVA-PSALMODIA" // supplementary psalmody (for daily prayers: 9h, 12h, 15h)
 #define PARAM_PSALMODIA                "PSALMODIA" // alternative psalmody (e. g. for morning prayer, Ash Wednesday)
 
-#define PARAM_PSALMODIA_TRI_TYZDNE     "PSALMODIA-TRI-TYZDNE"
+#define PARAM_PSALMODIA_TRI_TYZDNE     "PSALMODIA-TRI-TYZDNE" // v zmysle De Liturgia Horarum; Notitiae 8 (1972) p. 254-264
 
 #define PARAM_ZAVER                    "ZAVER"
 #define PARAM_ZAVER_KNAZ_DIAKON        "ZAVER-KNAZ-DIAKON"
