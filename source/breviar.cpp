@@ -12604,6 +12604,9 @@ void _export_rozbor_dna(short int typ) {
 	if (i == LINK_DEN_MESIAC_NIE) {
 		mystrcpy(_global_link, STR_EMPTY, MAX_STR);
 	}
+	else if (PODMIENKA_JE_BATCH_MODE_MONTHLY__AND__PLAIN_EXPORT) {
+		vytvor_global_link_class_new(_global_den.den, _global_den.mesiac, _global_den.rok, i, NIE, STR_EMPTY, pom3);
+	}
 	else {
 		vytvor_global_link_class_new(_global_den.den, _global_den.mesiac, _global_den.rok, i, NIE, HTML_CLASS_NAME_CALENDAR_DAY, pom3); // this method fills the following global string variables: _global_string, _global_string2 and _global_string_farba
 	}
@@ -14228,7 +14231,7 @@ void _rozparsuj_parametre_OPT(void) {
 		mystrcpy(optional_html_button_begin, STR_EMPTY, MAX_STR);
 		mystrcpy(optional_html_button_prayer_begin, STR_EMPTY, MAX_STR);
 		mystrcpy(optional_html_button_end, STR_EMPTY, MAX_STR);
-		mystrcpy(optional_html_class_button, " " HTML_CLASS_BUTTON, MAX_STR);
+		mystrcpy(optional_html_class_button, STR_EMPTY, MAX_STR); // mystrcpy(optional_html_class_button, " " HTML_CLASS_BUTTON, MAX_STR);
 		mystrcpy(optional_html_line_break, HTML_LINE_BREAK, MAX_STR);
 	}
 	else {
