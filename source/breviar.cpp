@@ -3886,6 +3886,23 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			opt = OPT_0_SPECIALNE;
 			bit = BIT_OPT_0_ALTERNATIVE_READINGS;
 			podmienka = podmienka && (_global_jazyk == JAZYK_CZ) && (je_post_I_a_II); // (isGlobalOption(opt, bit));
+
+			// slávnosť sv. Jozefa nemá vlastné alternatívne čítanie
+			if (je_slavnost_sv_Jozefa_prekladana_na_20MAR || je_slavnost_sv_Jozefa_prekladana_pred_Kvetnu_nedenu) {
+				podmienka = NIE;
+			}
+			else {
+				podmienka = podmienka && !((_global_den.den == 19) && (_global_den.mesiac == MES_MAR + 1) && (_global_den.typslav == SLAV_SLAVNOST));
+			}
+
+			// slávnosť Zvestovania Pána nemá vlastné alternatívne čítanie
+			if (je_slavnost_Zvestovania_prekladana_na_26MAR || je_slavnost_Zvestovania_prekladana_po_Velkonocnej_oktave_MAR || je_slavnost_Zvestovania_prekladana_po_Velkonocnej_oktave_APR) {
+				podmienka = NIE;
+			}
+			else {
+				podmienka = podmienka && !((_global_den.den == 25) && (_global_den.mesiac == MES_MAR + 1) && (_global_den.typslav == SLAV_SLAVNOST));
+			}
+
 			mystrcpy(popis_show, html_text_opt_0_alternative_readings_NORMAL[_global_jazyk], SMALL);
 			mystrcpy(popis_hide, html_text_opt_0_alternative_readings[_global_jazyk], SMALL);
 		}

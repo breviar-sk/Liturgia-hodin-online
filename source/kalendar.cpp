@@ -5063,7 +5063,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 	// najskorší možný dátum veľkonočnej nedele: 22. marec (najneskorší: 25. apríla)
 
 	// kontrola: Veľká noc padne na 22.-26. marca; vtedy je 19. marca vo Svätom týždni, a preto sa prekladá na sobotu pred Kvetnou nedeľou
-	if ((_global_den.denvt == DEN_SOBOTA) && (_global_den.denvr == _global_r._VELKONOCNA_NEDELA.denvr - 8) && (_global_r._VELKONOCNA_NEDELA.mesiac == MES_MAR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 22) && (_global_r._VELKONOCNA_NEDELA.den <= 26)) {
+	if (je_slavnost_sv_Jozefa_prekladana_pred_Kvetnu_nedenu) {
 		// t.j. slávnosť sv. Jozefa sa prekladá pred Svätý týždeň, na sobotu pred Kvetnou nedeľou, ako to bolo v r. 2008
 		sprintf(_anchor_head, "%02d%s_", 19, nazov_MES[mesiac - 1]); // MES_MAR
 		Log("  _anchor_head == %s\n", _anchor_head);
@@ -5072,7 +5072,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 	}// prekladanie: slávnosť sv. Jozefa
 
 	// kontrola: Veľká noc padne na 22.-31. marca; vtedy je 25. marca vo Svätom týždni, Trojdní resp. Veľkonočnej oktáve, a preto sa prekladá na pondelok po skončení Veľkonočnej oktávy
-	if ((_global_den.denvt == DEN_PONDELOK) && (_global_den.denvr == _global_r._VELKONOCNA_NEDELA.denvr + 8) && (_global_r._VELKONOCNA_NEDELA.mesiac == MES_MAR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 22) && (_global_r._VELKONOCNA_NEDELA.den <= 31)) {
+	if (je_slavnost_Zvestovania_prekladana_po_Velkonocnej_oktave_MAR) {
 		// t.j. slávnosť Zvestovania Pána sa prekladá za Veľkonočnú oktávu, na pondelok po Veľkonočnej oktáve, ako to bolo v r. 2008, 2005, 2002, 1989
 		sprintf(_anchor_head, "%02d%s_", 25, nazov_MES[mesiac - 1]); // MES_MAR
 		Log("  _anchor_head == %s\n", _anchor_head);
@@ -6050,8 +6050,8 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 	// kontrola: Veľká noc padne na 24. marca -- 1. apríla; vtedy je 25. marca vo Svätom týždni, Trojdní resp. Veľkonočnej oktáve, a preto sa prekladá na pondelok po skončení Veľkonočnej oktávy
 	// ak padne Veľká noc na 2. apríla a neskôr, 25. marca padne pred Kvetnú nedeľu (teda tam sa nič neprekladá)
 	// keď padne VN na 1. apríla (napr. 2018, 2029), Zvestovanie Pána sa nepreloží o jeden deň prv, teda pred Kvetnú nedeľu, ale štandardne až po Veľkonočnej oktáve (t. j. na pondelok po VNOKT)
-	if ((_global_den.denvt == DEN_PONDELOK) && (_global_den.denvr == _global_r._VELKONOCNA_NEDELA.denvr + 8) && (((_global_r._VELKONOCNA_NEDELA.mesiac == MES_APR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 1) && (_global_r._VELKONOCNA_NEDELA.den <= 1)) || ((_global_r._VELKONOCNA_NEDELA.mesiac == MES_MAR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 24) && (_global_r._VELKONOCNA_NEDELA.den <= 31)))) {
-		// t.j. slávnosť Zvestovania Pána sa prekladá za Veľkonočnú oktávu, na pondelok po Veľkonočnej oktáve, ako to bolo v r. 2008, 2005, 2002, 1989
+	if (je_slavnost_Zvestovania_prekladana_po_Velkonocnej_oktave_APR) {
+		// t.j. slávnosť Zvestovania Pána sa prekladá za Veľkonočnú oktávu, na pondelok po Veľkonočnej oktáve, ako to bolo v r. 2018, 2016, 2013, 2008, 2005, 2002, 1989
 		sprintf(_anchor_head, "%02d%s_", 25, nazov_MES[MES_MAR]); // MES_MAR -- musí tu byť natvrdo, lebo je to už v mesiaci 'apríl' (na rozdiel od analogickej kontroly na začiatku marca)
 		Log("  _anchor_head == %s\n", _anchor_head);
 		Log("(rok 2008, pondelok 31. marca) jumping to label_25_MAR...\n");

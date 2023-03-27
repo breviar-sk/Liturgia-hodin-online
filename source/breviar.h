@@ -398,6 +398,14 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 // ToDo: before replacing anchor from file with HTML scratch, try to remove _special_anchor_prefix/postfix!!!
 #define specialne_dni_bez_hymnov_k_volnemu_vyberu_CZ ((_global_den.denvr == VELKONOCNA_NEDELA) || (_global_den.denvr == SV_RODINY))
 
+// Veľká noc padne na 22.-26. marca; vtedy je 19. marca vo Svätom týždni, a preto sa prekladá na sobotu pred Kvetnou nedeľou
+#define je_slavnost_sv_Jozefa_prekladana_pred_Kvetnu_nedenu ((_global_den.denvt == DEN_SOBOTA) && (_global_den.denvr == _global_r._VELKONOCNA_NEDELA.denvr - 8) && (_global_r._VELKONOCNA_NEDELA.mesiac == MES_MAR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 22) && (_global_r._VELKONOCNA_NEDELA.den <= 26))
+#define je_slavnost_sv_Jozefa_prekladana_na_20MAR ((_global_den.denvt == DEN_PONDELOK) && (_global_den.den == 20) && (_global_den.mesiac == MES_MAR + 1))
+// Veľká noc padne na 22.-31. marca; vtedy je 25. marca vo Svätom týždni, Trojdní resp. Veľkonočnej oktáve, a preto sa prekladá na pondelok po skončení Veľkonočnej oktávy
+#define je_slavnost_Zvestovania_prekladana_po_Velkonocnej_oktave_MAR ((_global_den.denvt == DEN_PONDELOK) && (_global_den.denvr == _global_r._VELKONOCNA_NEDELA.denvr + 8) && (_global_r._VELKONOCNA_NEDELA.mesiac == MES_MAR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 22) && (_global_r._VELKONOCNA_NEDELA.den <= 31))
+#define je_slavnost_Zvestovania_prekladana_po_Velkonocnej_oktave_APR ((_global_den.denvt == DEN_PONDELOK) && (_global_den.denvr == _global_r._VELKONOCNA_NEDELA.denvr + 8) && (((_global_r._VELKONOCNA_NEDELA.mesiac == MES_APR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 1) && (_global_r._VELKONOCNA_NEDELA.den <= 1)) || ((_global_r._VELKONOCNA_NEDELA.mesiac == MES_MAR + 1) && (_global_r._VELKONOCNA_NEDELA.den >= 24) && (_global_r._VELKONOCNA_NEDELA.den <= 31))))
+#define je_slavnost_Zvestovania_prekladana_na_26MAR ((_global_den.denvt == DEN_PONDELOK) && (_global_den.den == 26) && (_global_den.mesiac == MES_MAR + 1))
+
 // is supplementary psalmody?
 #define je_len_doplnkova_psalmodia(modlitba) (\
 	((modlitba == MODL_PREDPOLUDNIM) && ((_global_modl_predpol.alternativy & BIT_ALT_LEN_DOPLNKOVA_PSALMODIA) == BIT_ALT_LEN_DOPLNKOVA_PSALMODIA)) \
