@@ -29134,12 +29134,10 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			if (query_type != PRM_DETAILY)
 				set_spolocna_cast(sc, poradie_svaty); // netreba: set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_VSETKO);
 
-			/*
-			// pre SK je tam rubrika... radšej to tu nechám len pre istotu do budúcnosti
-			if((_global_jazyk != JAZYK_CZ) || (_global_jazyk != JAZYK_CZ_OP)) {
-			set_popis_dummy();
+			// rubrika je v LH uvedená pre prípad, kedy 02NOV padne na nedeľu (rieši je_Spomienka_na_zosnulych_02NOV_nedela)
+			if (!((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) {
+				set_popis_dummy();
 			}
-			*/
 
 			modlitba = MODL_RANNE_CHVALY;
 			if (je_CZ_nie_hymny_k_volnemu_vyberu) {
@@ -29174,7 +29172,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			break;
 		}
 
-		// ak padne toto slávenie na nedeľu, berie sa nedeľné ofícium
+		// ak padne toto slávenie na nedeľu, berie sa nedeľné ofícium pre Liturgiu hodín (hoci v direktóriu by malo byť uvedené, že je Všetkých zosnulých a omša je zo zosnulých); rieši je_Spomienka_na_zosnulych_02NOV_nedela
 		if (_global_den.denvt != DEN_NEDELA) {
 			_set_slavenie_typslav_smer(1, SLAV_VLASTNE, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári | všetkých verných zosnulých (podľa Tabuľky liturgických dní usporiadaných podľa prednosti) - typslav je spomienka!
 		}

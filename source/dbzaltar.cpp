@@ -10725,6 +10725,34 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 	Log("__set_spolocna_cast(%s) -- end\n", nazov_spolc(a));
 }// __set_spolocna_cast(); -- dva argumenty
 
+void set_popis_svaty_rch_mcd_pc_vesp_den_mesiac(short int den, short int mesiac) {
+	Log("set_popis_svaty_rch_mcd_pc_vesp_den_mesiac(den: %d; mesiac: %d) -- začiatok...\n", den, mesiac);
+	Log("  teraz nastavujem POPIS (pre daný dátum)...\n");
+
+	char local_anchor[MAX_STR_AF_ANCHOR];
+	char local_file[MAX_STR_AF_FILE]; // nazov súboru, napr. _1ne.htm
+
+	sprintf(local_anchor, "%02d%s_", den, nazov_MES[mesiac - 1]);
+	Log("  local_anchor == %s\n", local_anchor);
+	sprintf(local_file, "sv_%s.htm", nazov_mes[mesiac - 1]);
+	Log("  local_file == %s\n", local_file);
+
+	strcat(local_anchor, ANCHOR_POPIS);
+
+	set_popis(MODL_PRVE_VESPERY, local_file, local_anchor);
+	set_popis(MODL_RANNE_CHVALY, local_file, local_anchor);
+	set_popis(MODL_VESPERY, local_file, local_anchor);
+	set_popis(MODL_POSV_CITANIE, local_file, local_anchor);
+	// popisy pre modlitby cez deň: pre ľubovoľné aj záväzné spomienky nemá význam | č. 236 VSLH: V modlitbe cez deň, čiže predpoludním, napoludnie a popoludní, a v kompletóriu sa neberie nič z ofícia o svätom, všetko je zo všedného dňa.
+	if ((_global_den.typslav != SLAV_LUB_SPOMIENKA) && (_global_den.typslav != SLAV_SPOMIENKA)) {
+		set_popis(MODL_PREDPOLUDNIM, local_file, local_anchor);
+		set_popis(MODL_NAPOLUDNIE, local_file, local_anchor);
+		set_popis(MODL_POPOLUDNI, local_file, local_anchor);
+	}
+	Log("set_popis_svaty_rch_mcd_pc_vesp_den_mesiac(den, mesiac) -- koniec.\n");
+}// set_popis_svaty_rch_mcd_pc_vesp_den_mesiac()
+
+
 void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty){
 	// poradie_svaty sa tu vlastne vôbec nepoužíva
 	Log("set_popis_svaty_rch_mcd_pc_vesp(%d) -- začiatok...\n", poradie_svaty);

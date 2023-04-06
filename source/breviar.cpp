@@ -7084,6 +7084,24 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				strcat(_local_string, HTML_LINE_BREAK);
 			}
 
+			// special cases
+
+			// ak padne toto slávenie na nedeľu, berie sa nedeľné ofícium pre Liturgiu hodín (hoci v direktóriu by malo byť uvedené, že je Všetkých zosnulých a omša je zo zosnulých)
+			if (je_Spomienka_na_zosnulych_02NOV_nedela) {
+				sprintf(pom, "<" HTML_SPAN_SMALL ">");
+				sprintf(pom2, "(");
+				strcat(pom, pom2);
+				sprintf(pom2, mystr_UPPERCASE(text_NOV_02[_global_jazyk]));
+				strcat(pom, pom2);
+				sprintf(pom2, ")");
+				strcat(pom, pom2);
+				strcat(pom, HTML_SPAN_END);
+
+				strcat(_local_string, pom);
+
+				strcat(_local_string, HTML_LINE_BREAK);
+			}
+
 			// prilepenie "týždňa žaltára" aj pre nedele
 			if ((typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE) && (typ != EXPORT_DNA_VIAC_DNI_TXT)) {
 				sprintf(pom, "<" HTML_SPAN_SMALL ">");
@@ -13590,6 +13608,11 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 	// predosla pasaz, kedy sa kontroluje priorita nasledujuceho dna, preskakujeme pre ostatne modlitby okrem vespier a kompletoria; poznamka pridana 2003-08-13
 
 LABEL_NIE_INE_VESPERY:
+
+	// special cases
+	if (je_Spomienka_na_zosnulych_02NOV_nedela) {
+		set_popis_svaty_rch_mcd_pc_vesp_den_mesiac(2, MES_NOV + 1);
+	}
 
 	LOG_ciara;
 	Log("/* vypisanie udajov, podla ktorych vlastne budem generovat modlitbu */\n");
