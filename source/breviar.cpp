@@ -7091,7 +7091,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				sprintf(pom, "<" HTML_SPAN_SMALL ">");
 				sprintf(pom2, "(");
 				strcat(pom, pom2);
-				sprintf(pom2, mystr_UPPERCASE(text_NOV_02[_global_jazyk]));
+				sprintf(pom2, "%s", mystr_UPPERCASE((char *)text_NOV_02[_global_jazyk]));
 				strcat(pom, pom2);
 				sprintf(pom2, ")");
 				strcat(pom, pom2);
