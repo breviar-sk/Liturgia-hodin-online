@@ -189,7 +189,7 @@ public class TtsService extends Service
                           .setAction(TtsService.TTS_BACK), PendingIntent.FLAG_IMMUTABLE);
 
           if (Build.VERSION.SDK_INT >= 26) {
-            CompatibilityHelper26.updateChannel(this, false);
+            CompatibilityHelper26.updateChannel(this);
           }
 
           int priority;
@@ -199,7 +199,7 @@ public class TtsService extends Service
             priority = NotificationCompat.PRIORITY_HIGH;
           }
 
-          NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default")
+          NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "tts")
                 .setContentText(getString(R.string.channel_name))
                 .setContentTitle(title)
                 .setSmallIcon(icon)

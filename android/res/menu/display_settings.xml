@@ -53,4 +53,19 @@
         app:actionLayout="@layout/widget_spinner"
   />
 
+  <item android:id="@+id/option_mm"
+        android:title="@string/option_mm"
+        app:actionLayout="@layout/widget_int"
+  />
+
+  <item android:id="@+id/option_lh"
+        android:title="@string/option_lh"
+        app:actionLayout="@layout/widget_int"
+  />
+
+  <item android:id="@+id/option_ff"
+        android:title="@string/option_ff"
+        app:actionLayout="@layout/widget_int"
+  />
+
 </menu>

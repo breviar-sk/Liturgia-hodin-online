@@ -251,6 +251,10 @@ public class Breviar extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState) {
       Log.v("breviar", "onCreate");
 
+      if (Build.VERSION.SDK_INT >= 26) {
+        CompatibilityHelper26.updateChannel(this);
+      }
+
       tts_receiver = new TtsStateReceiver(this);
       appEventId = BreviarApp.getEventId();
 

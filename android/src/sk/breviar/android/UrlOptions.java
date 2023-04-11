@@ -3,6 +3,7 @@ package sk.breviar.android;
 import android.net.Uri;
 import android.util.Log;
 import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -286,6 +287,54 @@ public class UrlOptions {
     setBit("o2", 15, value);
   }
 
+  // mm
+  public int getMm() {
+    Optional<Integer> maybeVal = maybeGetInt("mm");
+    if (!maybeVal.isPresent()) {
+      // Default value, must be consistent with DEF_STYLE_MARGIN in liturgia.h.
+      // Alternatively, native code should always export mm parameter.
+      return 5;
+    }
+    return maybeVal.get().intValue();
+  }
+
+  public void setMm(int value) {
+    params.remove("mm");
+    params.put("mm", Integer.toString(value));
+  }
+
+  // lh
+  public int getLh() {
+    Optional<Integer> maybeVal = maybeGetInt("lh");
+    if (!maybeVal.isPresent()) {
+      // Default value, must be consistent with liturgia.h.
+      // Alternatively, native code should always export mm parameter.
+      return 130;
+    }
+    return maybeVal.get().intValue();
+  }
+
+  public void setLh(int value) {
+    params.remove("lh");
+    params.put("lh", Integer.toString(value));
+  }
+
+  // ff
+  public int getFf() {
+    Optional<Integer> maybeVal = maybeGetInt("ff");
+    if (!maybeVal.isPresent()) {
+      // Default value, must be consistent with liturgia.h.
+      // Alternatively, native code should always export mm parameter.
+      return 12;
+    }
+    return maybeVal.get().intValue();
+  }
+
+  public void setFf(int value) {
+    params.remove("ff");
+    params.put("ff", Integer.toString(value));
+  }
+
   public String getFont() {
     return params.get("f");
   }
@@ -297,12 +346,20 @@ public class UrlOptions {
     }
   }
 
-  int getInt(String key) {
+  Optional<Integer> maybeGetInt(String key) {
     try {
-      return Integer.parseInt(params.get(key));
+      return Optional.of(new Integer(Integer.parseInt(params.get(key))));
     } catch (java.lang.Exception e) {
+      return Optional.empty();
+    }
+  }
+
+  int getInt(String key) {
+    Optional<Integer> val = maybeGetInt(key);
+    if (!val.isPresent()) {
       return 0;
     }
+    return val.get();
   }
 
   boolean hasBit(String key, int bit) {

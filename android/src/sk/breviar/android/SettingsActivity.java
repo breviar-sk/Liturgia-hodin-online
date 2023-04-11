@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
+import android.widget.NumberPicker;
 
 public class SettingsActivity extends AppCompatActivity
                               implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +28,7 @@ public class SettingsActivity extends AppCompatActivity
   public void onCreate(Bundle savedInstanceState) {
     switch_handlers = new java.util.LinkedHashMap<Integer, BooleanOption>();
     click_handlers = new java.util.LinkedHashMap<Integer, Runnable>();
+    int_handlers = new java.util.LinkedHashMap<Integer, IntOption>();
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.settings_activity);
@@ -72,8 +74,34 @@ public class SettingsActivity extends AppCompatActivity
     public abstract boolean getOpt(UrlOptions opts);
   }
 
+  public interface IntOption {
+    abstract public void set(int value);
+    abstract public int get();
+  }
+
+  public abstract class IntUrlOption implements IntOption {
+    public void set(int value) {
+      UrlOptions opts = initOpts();
+      setOpt(opts, value);
+      BreviarApp.setUrlOptions(getApplicationContext(), opts.build(true));
+    }
+
+    public int get() {
+      return getOpt(initOpts());
+    }
+
+    private UrlOptions initOpts() {
+      return new UrlOptions(BreviarApp.getUrlOptions(getApplicationContext()));
+    }
+
+    public abstract void setOpt(UrlOptions opts, int value);
+    public abstract int getOpt(UrlOptions opts);
+  }
+
+
   java.util.LinkedHashMap<Integer, BooleanOption> switch_handlers;
   java.util.LinkedHashMap<Integer, Runnable> click_handlers;
+  java.util.LinkedHashMap<Integer, IntOption> int_handlers;
 
   public void handleClick(int menu_resource, Runnable handler) {
     click_handlers.put(menu_resource, handler);
@@ -93,6 +121,40 @@ public class SettingsActivity extends AppCompatActivity
                       return;
                     }
                     final_handler.set(isChecked);
+                    updateMenu();
+                  }
+              });
+    } catch (java.lang.NullPointerException e) {
+      Log.v("breviar", "Cannot setup navigation view!");
+    }
+  }
+
+  public void handleInt(int menu_resource, int min, int max, IntOption handler) {
+    int_handlers.put(menu_resource, handler);
+
+    final IntOption final_handler = handler;
+    final int minVal = min;
+    final int maxVal = max;
+    try {
+      NumberPicker picker = (NumberPicker)MenuItemCompat.getActionView(
+          navigationView.getMenu().findItem(menu_resource));
+      picker.setMinValue(min);
+      picker.setMaxValue(max);
+
+      picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                  @Override public void onValueChange(NumberPicker picker,
+                                                      int oldVal, int newVal) {
+                    int curVal = final_handler.get();
+                    if (newVal == curVal) {
+                      return;
+                    }
+                    if (newVal < minVal) {
+                      newVal = minVal;
+                    }
+                    if (newVal > maxVal) {
+                      newVal = maxVal;
+                    }
+                    final_handler.set(newVal);
                     updateMenu();
                   }
               });
@@ -135,6 +197,15 @@ public class SettingsActivity extends AppCompatActivity
             menu.findItem(entry.getKey().intValue()));
         if (button.isChecked() != value) {
           button.setChecked(value);
+        }
+      }
+      for (java.util.Map.Entry<Integer, IntOption> entry :
+           int_handlers.entrySet()) {
+        int value = entry.getValue().get();
+        NumberPicker picker = (NumberPicker)MenuItemCompat.getActionView(
+            menu.findItem(entry.getKey().intValue()));
+        if (picker.getValue() != value) {
+          picker.setValue(value);
         }
       }
     } catch (java.lang.NullPointerException e) {
