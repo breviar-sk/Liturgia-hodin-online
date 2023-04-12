@@ -4198,12 +4198,12 @@ const char* html_text_opt_5_KomplHymnusB[POCET_JAZYKOV + 1] =
 const char* html_text_opt_5_KomplOkt1[POCET_JAZYKOV + 1] =
 {
 	"prvé nedeľné kompletórium",
-	"",
-	"",
+	"první nedělní kompletář",
+	"1st Sunday Compline",
 	"I Completorium Dominicæ",
 	"",
-	"",
-	"",
+	"první nedělní kompletář",
+	"befejező imaóra I. e. d. után",
 	"ru_text",
 	"by_text",
 	"fyrsti náttsöngur sunnudags",
@@ -4213,12 +4213,12 @@ const char* html_text_opt_5_KomplOkt1[POCET_JAZYKOV + 1] =
 const char* html_text_opt_5_KomplOkt2[POCET_JAZYKOV + 1] =
 {
 	"druhé nedeľné kompletórium",
-	"",
-	"",
+	"druhý nedělní kompletář",
+	"2nd Sunday Compline",
 	"II Completorium Dominicæ",
 	"",
-	"",
-	"",
+	"druhý nedělní kompletář",
+	"befejező imaóra II. e. d. után",
 	"ru_text",
 	"by_text",
 	"annar náttsöngur sunnudags",
