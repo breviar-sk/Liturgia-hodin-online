@@ -604,7 +604,7 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_0_FOOTNOTES "of0ff"
 #endif
 
-// transparent navigation arrow
+// transparent navigation arrows (default: on the right)
 #define FORCE_BIT_OPT_0_TRANSPARENT_NAV 120
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV "FORCE_BIT_OPT_0_TRANSPARENT_NAV"
@@ -612,7 +612,15 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV "of0tn"
 #endif
 
-// transparent navigation arrow
+// transparent navigation arrows on the left
+#define FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT 148
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT "FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT"
+#else
+#define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT "of0ltn" // of0tnl would be more logical but we want to avoid the same prefixes to be used
+#endif
+
+// full text of psalms etc.
 #define FORCE_BIT_OPT_0_ZALMY_FULL_TEXT 121
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT "FORCE_BIT_OPT_0_ZALMY_FULL_TEXT"
@@ -1348,6 +1356,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE       "BitOpt0UseTwoYearsCycle"
 #define XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID        "BitOpt0TwoYearsCycleId"
 #define XML_BIT_OPT_0_ALTERNATIVE_READINGS      "BitOpt0AlternativeReadings"
+#define XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT      "BitOpt0TransparentNavLeft"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"

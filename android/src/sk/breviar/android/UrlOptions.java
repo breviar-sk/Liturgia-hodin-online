@@ -3,7 +3,6 @@ package sk.breviar.android;
 import android.net.Uri;
 import android.util.Log;
 import java.util.Map;
-import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -206,6 +205,15 @@ public class UrlOptions {
     setBit("o0", 10, value);
   }
 
+  // of0ltn
+  public boolean isTransparentNavLeft() {
+    return hasBit("o0", 18);
+  }
+
+  public void setTransparentNavLeft(boolean value) {
+    setBit("o0", 18, value);
+  }
+
   // of1zspc
   public boolean isDisplayCommuniaInfo() {
     return hasBit("o1", 12);
@@ -289,13 +297,9 @@ public class UrlOptions {
 
   // mm
   public int getMm() {
-    Optional<Integer> maybeVal = maybeGetInt("mm");
-    if (!maybeVal.isPresent()) {
-      // Default value, must be consistent with DEF_STYLE_MARGIN in liturgia.h.
-      // Alternatively, native code should always export mm parameter.
-      return 5;
-    }
-    return maybeVal.get().intValue();
+    // Default value, must be consistent with DEF_STYLE_MARGIN in liturgia.h.
+    // Alternatively, native code should always export mm parameter.
+    return getInt("mm", 5);
   }
 
   public void setMm(int value) {
@@ -305,13 +309,9 @@ public class UrlOptions {
 
   // lh
   public int getLh() {
-    Optional<Integer> maybeVal = maybeGetInt("lh");
-    if (!maybeVal.isPresent()) {
-      // Default value, must be consistent with liturgia.h.
-      // Alternatively, native code should always export mm parameter.
-      return 130;
-    }
-    return maybeVal.get().intValue();
+    // Default value, must be consistent with liturgia.h.
+    // Alternatively, native code should always export mm parameter.
+    return getInt("lh", 130);
   }
 
   public void setLh(int value) {
@@ -321,13 +321,9 @@ public class UrlOptions {
 
   // ff
   public int getFf() {
-    Optional<Integer> maybeVal = maybeGetInt("ff");
-    if (!maybeVal.isPresent()) {
-      // Default value, must be consistent with liturgia.h.
-      // Alternatively, native code should always export mm parameter.
-      return 12;
-    }
-    return maybeVal.get().intValue();
+    // Default value, must be consistent with liturgia.h.
+    // Alternatively, native code should always export mm parameter.
+    return getInt("ff", 12);
   }
 
   public void setFf(int value) {
@@ -346,20 +342,16 @@ public class UrlOptions {
     }
   }
 
-  Optional<Integer> maybeGetInt(String key) {
+  int getInt(String key, int dflt) {
     try {
-      return Optional.of(new Integer(Integer.parseInt(params.get(key))));
+      return Integer.parseInt(params.get(key));
     } catch (java.lang.Exception e) {
-      return Optional.empty();
+      return dflt;
     }
   }
 
   int getInt(String key) {
-    Optional<Integer> val = maybeGetInt(key);
-    if (!val.isPresent()) {
-      return 0;
-    }
-    return val.get();
+    return getInt(key, 0);
   }
 
   boolean hasBit(String key, int bit) {

@@ -2855,21 +2855,52 @@ const char* html_text_opt_0_footnotes_explain[POCET_JAZYKOV + 1] =
 
 const char* html_text_opt_0_transparent_nav[POCET_JAZYKOV + 1] =
 {
-	"zobraziť navigačné šípky",
-	"zobrazit navigační šipky",
-	"show navigation arrows",
-	"ostende indices navigatoria",
+	"zobraziť navigačné šípky (vpravo)",
+	"zobrazit navigační šipky (vpravo)",
+	"show navigation arrows (on the right)",
+	"ostende sagittas navigationis (in dextro)",
 	"",
-	"zobrazit navigační šipky",
-	"navigációs nyilak mutatása",
+	"zobrazit navigační šipky (vpravo)",
+	"navigációs nyilak mutatása (jobb oldalon)",
 	"ru_text",
 	"паказваць стрэлкі навігацыі",
-	"að sýna bendiör",
+	"sýna leiðsöguörvar (hægra megin)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
 // for other languages use: ""
 const char* html_text_opt_0_transparent_nav_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_0_transparent_nav_left[POCET_JAZYKOV + 1] =
+{
+	"navigačné šípky vľavo",
+	"navigační šipky nalevo",
+	"navigation arrows on the left",
+	"pharetra sagittis a sinistris",
+	"",
+	"navigační šipky nalevo",
+	"navigációs nyilak a bal oldalon",
+	"ru_text",
+	"паказваць стрэлкі навігацыі",
+	"leiðsöguörvar til vinstri",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+// for other languages use: ""
+const char* html_text_opt_0_transparent_nav_explain_left[POCET_JAZYKOV + 1] =
 {
 	"",
 	"",

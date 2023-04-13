@@ -51,7 +51,8 @@
     <string name="normal_font">Ostende ubique litteras formæ normalis (non crassas)</string>
     <string name="buttons_rounded_corners">Angulis rotundatis bullarum</string>
     <string name="buttons_order">Ostende pulsabulas navigatorias sub pulsabulis pro Horas</string>
-    <string name="transparent_nav">Sagitta navigatoria in textu</string>
+    <string name="transparent_nav">Ostende sagittas navigationis (in dextro)</string>
+    <string name="transparent_nav_left">Pharetra sagittis a sinistris</string>
     <string name="font_select">Lego font</string>
     <string name="default_font">(defaltam)</string>
     <string name="default_serif_font">(serif)</string>

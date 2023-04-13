@@ -340,7 +340,12 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 
 	// display transparent navigation (up/down arrows)
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)) {
-		Export_to_file(expt, HTML_TRANSPARENT_NAV "\n");
+		if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_LEFT)) {
+			Export_to_file(expt, HTML_TRANSPARENT_NAV_LEFT "\n");
+		}
+		else {
+			Export_to_file(expt, HTML_TRANSPARENT_NAV_RIGHT "\n");
+		}
 	}
 
 #ifdef BEHAVIOUR_WEB

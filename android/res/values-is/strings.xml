@@ -51,7 +51,8 @@
     <string name="normal_font">Venjulegt letur (ekki feitletrað)</string>
     <string name="buttons_rounded_corners">Ávöl horn á hnöppum</string>
     <string name="buttons_order">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
-    <string name="transparent_nav">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
+    <string name="transparent_nav">Sýna leiðsöguörvar (hægra megin)</string>
+    <string name="transparent_nav_left">Leiðsöguörvar til vinstri</string>
     <string name="font_select">Veldu leturgerð</string>
     <string name="default_font">(sjálfgefið)</string>
     <string name="default_serif_font">(serif)</string>

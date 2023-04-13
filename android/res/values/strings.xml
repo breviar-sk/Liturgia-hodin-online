@@ -53,7 +53,8 @@
     <string name="normal_font">Force normal font weight (no bold)</string>
     <string name="buttons_rounded_corners">Rounded corners of buttons</string>
     <string name="buttons_order">Date buttons after buttons for prayers</string>
-    <string name="transparent_nav">Navigation arrow in text</string>
+    <string name="transparent_nav">Navigation arrows in text (right side)</string>
+    <string name="transparent_nav_left">Navigation arrows on the left side</string>
     <string name="font_select">Select font</string>
     <string name="option_mm">Margin size (px)</string>
     <string name="option_lh">Line height (%)</string>

@@ -51,7 +51,8 @@
     <string name="normal_font">Obyčejné písmo (ne tučné)</string>
     <string name="buttons_rounded_corners">Zaoblené rohy pro tlačítka</string>
     <string name="buttons_order">Navigační tlačítka pro datum pod tlačítky pro modlitby</string>
-    <string name="transparent_nav">Navigační šipka v textu</string>
+    <string name="transparent_nav">Navigační šipky v textu (pravý okraj)</string>
+    <string name="transparent_nav_left">Navigační šipky u levého okraje</string>
     <string name="font_select">Výběr písma</string>
     <string name="default_font">(výchozí)</string>
     <string name="default_serif_font">(patkové)</string>

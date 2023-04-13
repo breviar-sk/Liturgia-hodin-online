@@ -1551,7 +1551,7 @@ extern unsigned long long _global_force_opt[POCET_GLOBAL_OPT];
 #define USE_STR_OPT           -2
 #define USE_STR_FORCE_OPT     -1
 
-#define POCET_OPT_0_SPECIALNE               18 // jednotlivé komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               19 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                      1 // export also verse numbers
@@ -1564,7 +1564,7 @@ extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_BUTTONS_ORDER            128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
 #define BIT_OPT_0_VOICE_OUTPUT             256 // voice-output: 1 = use special CSS override to hide all red texts (rubrics) + display text for speech synthesis + do not display text which should not be heard
 #define BIT_OPT_0_FOOTNOTES                512 // display footnotes and footnote references
-#define BIT_OPT_0_TRANSPARENT_NAV         1024 // transparent navigation arrow in text
+#define BIT_OPT_0_TRANSPARENT_NAV         1024 // transparent navigation arrow in text; default: on the right side of the screen (right-handed)
 #define BIT_OPT_0_ZALMY_FULL_TEXT         2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
 #define BIT_OPT_0_REF_BIBLE_COM           4096 // precondition: BIT_OPT_0_REFERENCIE must be true; instead of standard URL, generates link to bible.com
 #define BIT_OPT_0_ITALICS_CONDITIONAL     8192 // display text in italics (conditional), e. g. elisions
@@ -1572,6 +1572,7 @@ extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_USE_TWO_YEARS_CYCLE    32768 // use two-years' cycle for readings (Biblical, first readings in prayer with readings)
 #define BIT_OPT_0_TWO_YEARS_CYCLE_ID     65536 // when use two-years' cycle for readings (BIT_OPT_0_TWO_YEARS_CYCLE is set), 0 = 1st year, 1 = 2nd year of two-years' cycle
 #define BIT_OPT_0_ALTERNATIVE_READINGS  131072 // use alternative second readings in prayer with readings (CZ only)
+#define BIT_OPT_0_TRANSPARENT_NAV_LEFT  262144 // transparent navigation arrow in text; override: on the left side of the screen (left-handed)
 
 #define POCET_OPT_1_CASTI_MODLITBY          20 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern unsigned long long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
@@ -2060,10 +2061,11 @@ extern const char* bible_version_id_default[POCET_JAZYKOV + 1];
 #define MENU_2_ITEM_NORMAL_FONT				2 // do not allow bold font
 #define MENU_2_ITEM_ROUNDED_CORNERS			3 // for buttons
 #define MENU_2_ITEM_ALT_BACKGROUND			4 // Android only
-#define MENU_2_ITEM_NAVIGATION_ARROWS		5 // used especially for e-book readers
-#define MENU_2_ITEM_BUTTONS_CONDENSED		6 // default (Android, web): ON; historically all buttons for prayers could be displayed in single line (table row)
-#define MENU_2_ITEM_BUTTONS_ORDERING		7 // ordering of buttons for prayers and buttons for date-navigation
-#define MENU_2_ITEM_NAVIGATION_IN_PRAYER	8 // navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
+#define MENU_2_ITEM_NAVIGATION_ARROWS		5 // navigation arrows (default: on the right side); used especially for e-book readers
+#define MENU_2_ITEM_NAVIGATION_ARROWS_LEFT  6 // navigation arrows on the left side; used especially for e-book readers
+#define MENU_2_ITEM_BUTTONS_CONDENSED		7 // default (Android, web): ON; historically all buttons for prayers could be displayed in single line (table row)
+#define MENU_2_ITEM_BUTTONS_ORDERING		8 // ordering of buttons for prayers and buttons for date-navigation
+#define MENU_2_ITEM_NAVIGATION_IN_PRAYER	9 // navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
 
 #define POCET_MENU_3_ITEMS	33
 

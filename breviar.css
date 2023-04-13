@@ -1094,14 +1094,21 @@ p.strong-always, h3.strong-always {
 	font-weight: bold !important;
 }
 
-.nav-arrow {
+.nav-arrow-right, .nav-arrow-left {
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 1;
   width: 4em;
   height: 2.4em;
   position: fixed;
+}
+
+.nav-arrow-right {
   right: 0.3em;
+}
+
+.nav-arrow-left {
+  left: 0.3em;
 }
 
 #nav-arrow-down {
