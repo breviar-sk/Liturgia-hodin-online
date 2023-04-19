@@ -62,6 +62,9 @@
     <string name="default_font">(default)</string>
     <string name="default_serif_font">(serif)</string>
     <string name="default_sans_serif_font">(sans serif)</string>
+    <string name="int_dialog_ok">Ok</string>
+    <string name="int_dialog_cancel">Cancel</string>
+    <string name="int_dialog_default">Default</string>
 
     <string name="calendar_settings_title">Liturgical calendar</string>
     <string name="epiphany_sunday">Celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>

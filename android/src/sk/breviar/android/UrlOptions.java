@@ -296,39 +296,51 @@ public class UrlOptions {
   }
 
   // mm
+  static int kDefaultMm = 5;
   public int getMm() {
     // Default value, must be consistent with DEF_STYLE_MARGIN in liturgia.h.
     // Alternatively, native code should always export mm parameter.
-    return getInt("mm", 5);
+    return getInt("mm", kDefaultMm);
+  }
+
+  public void resetMm() {
+    resetInt("mm");
   }
 
   public void setMm(int value) {
-    params.remove("mm");
-    params.put("mm", Integer.toString(value));
+    setInt("mm", value, kDefaultMm);
   }
 
   // lh
+  static int kDefaultLh = 130;
   public int getLh() {
     // Default value, must be consistent with liturgia.h.
     // Alternatively, native code should always export mm parameter.
-    return getInt("lh", 130);
+    return getInt("lh", kDefaultLh);
+  }
+
+  public void resetLh() {
+    resetInt("lh");
   }
 
   public void setLh(int value) {
-    params.remove("lh");
-    params.put("lh", Integer.toString(value));
+    setInt("lh", value, kDefaultLh);
   }
 
   // ff
+  static int kDefaultFf = 12;
   public int getFf() {
     // Default value, must be consistent with liturgia.h.
     // Alternatively, native code should always export mm parameter.
-    return getInt("ff", 12);
+    return getInt("ff", kDefaultFf);
+  }
+
+  public void resetFf() {
+    resetInt("ff");
   }
 
   public void setFf(int value) {
-    params.remove("ff");
-    params.put("ff", Integer.toString(value));
+    setInt("ff", value, kDefaultFf);
   }
 
   public String getFont() {
@@ -352,6 +364,20 @@ public class UrlOptions {
 
   int getInt(String key) {
     return getInt(key, 0);
+  }
+
+  void resetInt(String key) {
+    params.remove(key);
+    params.put(key, "");
+  }
+
+  void setInt(String key, int value, int dflt) {
+    params.remove(key);
+    if (value != dflt) {
+      params.put(key, Integer.toString(value));
+    } else {
+      params.put(key, "");
+    }
   }
 
   boolean hasBit(String key, int bit) {

@@ -66,14 +66,17 @@ public class DisplaySettings extends SettingsActivity {
     });
     handleInt(R.id.option_mm, 1, 200, new IntUrlOption() {
       public void setOpt(UrlOptions opts, int value) { opts.setMm(value); }
+      public void resetOpt(UrlOptions opts) { opts.resetMm(); }
       public int getOpt(UrlOptions opts) { return opts.getMm(); }
     });
     handleInt(R.id.option_lh, 1, 500, new IntUrlOption() {
       public void setOpt(UrlOptions opts, int value) { opts.setLh(value); }
+      public void resetOpt(UrlOptions opts) { opts.resetLh(); }
       public int getOpt(UrlOptions opts) { return opts.getLh(); }
     });
     handleInt(R.id.option_ff, 4, 60, new IntUrlOption() {
       public void setOpt(UrlOptions opts, int value) { opts.setFf(value); }
+      public void resetOpt(UrlOptions opts) { opts.resetFf(); }
       public int getOpt(UrlOptions opts) { return opts.getFf(); }
     });
 
