@@ -57,6 +57,12 @@
     <string name="default_font">(alapértelmezett)</string>
     <string name="default_serif_font">(serif)</string>
     <string name="default_sans_serif_font">(sans serif)</string>
+    <string name="option_mm">Margók (px)</string>
+    <string name="option_lh">Sorköz (%)</string>
+    <string name="option_ff">Betűméret (pt)</string>
+    <string name="int_dialog_ok">OK</string>
+    <string name="int_dialog_cancel">Megszünteti</string>
+    <string name="int_dialog_default">Alapértelmezett</string>
 
     <string name="calendar_settings_title">Liturgikus naptár</string>
     <string name="epiphany_sunday">Urunk megjelenését (Vízkeresztet) vasárnap ünnepelni, január 2. és 8. között</string>

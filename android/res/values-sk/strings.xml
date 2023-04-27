@@ -57,6 +57,12 @@
     <string name="default_font">(predvolené)</string>
     <string name="default_serif_font">(pätkové)</string>
     <string name="default_sans_serif_font">(bezpätkové)</string>
+    <string name="option_mm">Okraje (pixely)</string>
+    <string name="option_lh">Výška riadkov (%)</string>
+    <string name="option_ff">Veľkosť písma (pt)</string>
+    <string name="int_dialog_ok">OK</string>
+    <string name="int_dialog_cancel">Zrušiť</string>
+    <string name="int_dialog_default">Predvolené</string>
 
     <string name="calendar_settings_title">Liturgický kalendár</string>
     <string name="epiphany_sunday">Zjavenie Pána sláviť v nedeľu medzi 2. a 8. januárom</string>

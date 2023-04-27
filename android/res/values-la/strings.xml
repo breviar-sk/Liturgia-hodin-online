@@ -57,6 +57,12 @@
     <string name="default_font">(defaltam)</string>
     <string name="default_serif_font">(serif)</string>
     <string name="default_sans_serif_font">(sans serif)</string>
+    <string name="option_mm">Marginibus (px)</string>
+    <string name="option_lh">Linea spatio (%)</string>
+    <string name="option_ff">Font size (pt)</string>
+    <string name="int_dialog_ok">OK</string>
+    <string name="int_dialog_cancel">Zrušit</string>
+    <string name="int_dialog_default">Defaltam</string>
 
     <string name="calendar_settings_title">Calendarium liturgicum</string>
     <string name="epiphany_sunday">Epiphaniam ad dominicam transferre</string>

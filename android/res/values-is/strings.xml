@@ -57,6 +57,12 @@
     <string name="default_font">(sjálfgefið)</string>
     <string name="default_serif_font">(serif)</string>
     <string name="default_sans_serif_font">(sans serif)</string>
+    <string name="option_mm">Framlegð (pixely)</string>
+    <string name="option_lh">Línubil (%)</string>
+    <string name="option_ff">Leturstærð (pt)</string>
+    <string name="int_dialog_ok">OK</string>
+    <string name="int_dialog_cancel">Hætta við</string>
+    <string name="int_dialog_default">Sjálfgefið</string>
 
     <string name="calendar_settings_title">Helgisiðadagatal</string>
     <string name="epiphany_sunday">Birting Drottins haldin á sunnudegi á milli 2. og 8. janúar</string>
