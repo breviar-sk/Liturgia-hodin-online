@@ -11734,7 +11734,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				_vlastna_cast_kcitanie_ve_obd;
 				_vlastna_cast_kresponz_ve_obd;
 
-				if (_global_jazyk == JAZYK_HU) {
+				if (_global_jazyk != JAZYK_CZ) {
 					_vlastna_cast_mcd_full_okrem_hymnu;
 				}
 				else {
