@@ -24425,7 +24425,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				set_spolocna_cast(sc, poradie_svaty, (_global_jazyk == JAZYK_CZ) ? FORCE_BRAT_HYMNUS : FORCE_NEBRAT);
 
 			modlitba = MODL_RANNE_CHVALY;
-			if (_global_jazyk != JAZYK_CZ) {
+			if (!(je_CZ_hymny_k_volnemu_vyberu)) {
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			_vlastna_cast_benediktus;
@@ -27337,7 +27337,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_vlastna_cast_antifona_inv;
 
 			modlitba = MODL_RANNE_CHVALY;
-			if (_global_jazyk == JAZYK_CZ) {
+			if (je_CZ_hymny_k_volnemu_vyberu) {
 				_vlastna_cast_full_okrem_hymnu(modlitba);
 			}
 			else {
