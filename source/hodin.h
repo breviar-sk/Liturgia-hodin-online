@@ -8944,7 +8944,7 @@ const char* text_MAJ_25_1[POCET_JAZYKOV + 1] =
 	"Sv. Bédu Ctihodného, kňaza a učiteľa Cirkvi",
 	"Sv. Bedy Ctihodného, kněze a učitele církve",
 	"",
-	"S. Bedæ Venerdbilis, presbyteri et Ecclesiæ doct.",
+	"S. Bedæ Venerabilis, presbyteri et Ecclesiæ doct.",
 	"",
 	"Sv. Bedy Ctihodného, kněze a učitele církve",
 	"Tiszteletreméltó Szent Béda áldozópap és egyháztanító",
