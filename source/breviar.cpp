@@ -3514,6 +3514,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		else if (startsWith(paramname, (char *)KEYWORD_KOMPLETORIUM_DVA_ZALMY)) {
 			Log("interpretParameter(): _global_modl_kompletorium.pocet_zalmov == %d...\n", _global_modl_kompletorium.pocet_zalmov);
 			Log("interpretParameter(): _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_prve_kompletorium.pocet_zalmov);
+			Log("_global_modl_kompletorium.alternativy == %d; _global_modl_prve_kompletorium.alternativy == %d...\n", _global_modl_kompletorium.alternativy, _global_modl_prve_kompletorium.alternativy);
 			podmienka = podmienka && (_global_pocet_zalmov_kompletorium > 1);
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_RUBRIKA)) {
@@ -4756,6 +4757,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		case MODL_KOMPLETORIUM:
 			// 2008-04-03: pridaná podmienka, aby sa preskakovalo v modlitbe kompletória pre veľkonočné obdobie - vnorená kotva
 			Log("interpretParameter(): _global_modl_kompletorium.pocet_zalmov == %d...\n", _global_modl_kompletorium.pocet_zalmov);
+			Log("_global_modl_kompletorium.alternativy == %d...\n", _global_modl_kompletorium.alternativy);
 			if ((_global_modl_kompletorium.pocet_zalmov == 2) && (_global_skip_in_prayer == NIE)) {
 				ExportFileAnchor(typ, modlitba, paramname, _global_modl_kompletorium.antifona2);
 			}
@@ -4766,6 +4768,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		case MODL_PRVE_KOMPLETORIUM:
 			// podmienka, aby sa preskakovalo v modlitbe kompletória pre veľkonočné obdobie - vnorená kotva
 			Log("interpretParameter(): _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_prve_kompletorium.pocet_zalmov);
+			Log("_global_modl_prve_kompletorium.alternativy == %d...\n", _global_modl_prve_kompletorium.alternativy);
 			if ((_global_modl_prve_kompletorium.pocet_zalmov == 2) && (_global_skip_in_prayer == NIE)) {
 				ExportFileAnchor(typ, modlitba, paramname, _global_modl_prve_kompletorium.antifona2);
 			}
@@ -13340,6 +13343,14 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 		// Log("_global_modl_kompletorium obsahuje:\n"); Log(_global_modl_kompletorium);
 		// Log("_global_modl_prve_kompletorium obsahuje:\n"); Log(_global_modl_prve_kompletorium);
 		// Log("_local_modl_prve_kompletorium obsahuje:\n"); Log(_local_modl_prve_kompletorium);
+
+		// cleanup kvôli tomu, že sa idú nastavovať (kompletórium pre ZDS - nasledujúci deň je OCR s alternatívami hymnov A/B, ale ZDS to nemá ponúkať; ostalo nastavenie v member premennej alternativy)
+		Log("running cleanup pre _global_modl_* premenné...\n");
+
+		_INIT_TMODLITBA1(_global_modl_vespery);
+		_INIT_TMODLITBA3(_global_modl_kompletorium);
+		_INIT_TMODLITBA1(_global_modl_prve_vespery);
+		_INIT_TMODLITBA3(_global_modl_prve_kompletorium);
 
 		LOG_ciara;
 	}// kompletorium alebo vespery

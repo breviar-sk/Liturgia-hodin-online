@@ -2212,6 +2212,7 @@ void zaltar_kompletorium(short int den, short int obdobie, short int specialne, 
 		_global_modl_kompletorium.pocet_zalmov = 1;
 	}
 	Log("_global_modl_kompletorium.pocet_zalmov == %d; _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_kompletorium.pocet_zalmov, _global_modl_prve_kompletorium.pocet_zalmov);
+	Log("_global_modl_kompletorium.alternativy == %d; _global_modl_prve_kompletorium.alternativy == %d...\n", _global_modl_kompletorium.alternativy, _global_modl_prve_kompletorium.alternativy);
 
 	if (specialne == ZALTAR_VSETKO) {
 		Log("ZALTAR_VSETKO -- takže nastavujem všetko zo žaltára... (zaltar_kompletorium)\n");
@@ -8638,8 +8639,8 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 }
 
 // citania ako v OBD_VELKONOCNE_I; 7. tyzden ma na vespery vlastne citanie
+// bol tu 1. riadok: Log("\n\n _velk2_kcitanie \n\n");
 #define _velk2_kcitanie {\
-	Log("\n\n _velk2_kcitanie \n\n");\
 	if(((den == DEN_NEDELA) || (modlitba == MODL_RANNE_CHVALY) || (tyzden == 6))\
 		/* modlitba cez deň */\
 		|| je_modlitba_cez_den(modlitba)){\

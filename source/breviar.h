@@ -376,7 +376,7 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 (_global_modlitba == MODL_POPOLUDNI && ((_global_modl_popol.alternativy & BIT_ALT_HYMNUS) == BIT_ALT_HYMNUS)) \
 )
 
-// are there alternate hymns for Easter? (for SK based on LA LH)
+// are there alternate hymns for Easter? (for SK based on LA LH; only for Easter I)
 #define je_alternativa_hymnus_vn ( \
 (_global_modlitba == MODL_RANNE_CHVALY && ((_global_modl_ranne_chvaly.alternativy & BIT_ALT_HYMNUS_VN) == BIT_ALT_HYMNUS_VN)) \
 ||  \
