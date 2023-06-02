@@ -5020,6 +5020,9 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_HU) {
+					_vlastna_cast_benediktus;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
@@ -5027,6 +5030,9 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
+				if (_global_jazyk == JAZYK_HU) {
+					_vlastna_cast_magnifikat;
+				}
 				_vlastna_cast_modlitba;
 			}// nie je_privileg
 
@@ -34130,23 +34136,17 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 			Log("  ide o spomienku panny marie matky cirkvi: _file = `%s', _anchor = %s...\n", _file, _anchor);
 
 			modlitba = MODL_RANNE_CHVALY;
-			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
-				_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
-			}
+			_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
 			_vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
 			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 
 			modlitba = MODL_POSV_CITANIE;
-			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
-				_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
-			}
+			_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
 			_vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
 			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 
 			modlitba = MODL_VESPERY;
-			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
-				_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
-			}
+			_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, OBD_CEZ_ROK);
 			_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 			_vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
 		}
