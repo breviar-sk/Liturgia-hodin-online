@@ -13367,7 +13367,7 @@ const char* text_SEP_17_2[POCET_JAZYKOV + 1] =
 	"S. Hildegardis Bingensis, virginis et Ecclesiæ doctoris",
 	"",
 	"Sv. Hildegardy z Bingenu, panny a učitelky církve",
-	"Bingeni Szent Hildegárd apátnő és egyháztanító",
+	"Bingeni Szent Hildegárd szűz és egyháztanító",
 	"ru_text",
 	"",
 	"Hl. Hildegarda frá Bingen, meyjar og kirkjufræðara",
