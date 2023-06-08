@@ -14664,7 +14664,7 @@ const char* text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_OKT_21_CZ[POCET_JAZYKOV + 1] =
+const char* text_OKT_21_CZ_HU[POCET_JAZYKOV + 1] =
 {
 	"Bl. Karla Habsburského",
 	"Bl. Karla Rakouského",
@@ -14672,7 +14672,7 @@ const char* text_OKT_21_CZ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Karla Rakouského",
-	"",
+	"Boldog IV. Károly király",
 	"",
 	"",
 	"",

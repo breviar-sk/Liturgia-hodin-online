@@ -1893,7 +1893,7 @@ extern const char* text_OKT_17[POCET_JAZYKOV + 1];
 extern const char* text_OKT_18[POCET_JAZYKOV + 1];
 extern const char* text_OKT_19_1[POCET_JAZYKOV + 1];
 extern const char* text_OKT_19_2[POCET_JAZYKOV + 1];
-extern const char* text_OKT_21_CZ[POCET_JAZYKOV + 1];
+extern const char* text_OKT_21_CZ_HU[POCET_JAZYKOV + 1];
 extern const char* text_OKT_22[POCET_JAZYKOV + 1];
 extern const char* text_OKT_23[POCET_JAZYKOV + 1];
 extern const char* text_OKT_24[POCET_JAZYKOV + 1];

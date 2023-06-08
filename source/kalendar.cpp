@@ -25751,19 +25751,9 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_vlastna_cast_modlitba;
 
 			modlitba = MODL_RANNE_CHVALY;
-			/*
-			if (_global_jazyk == JAZYK_SK) {
-				_vlastna_cast_benediktus;
-			}
-			*/
 			_vlastna_cast_modlitba;
 
 			modlitba = MODL_VESPERY;
-			/*
-			if (_global_jazyk == JAZYK_SK) {
-				_vlastna_cast_magnifikat;
-			}
-			*/
 			_vlastna_cast_modlitba;
 
 			break;
@@ -27688,9 +27678,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 		if (((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_SJ))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SJ))) {
 
-			if (_global_jazyk == JAZYK_CZ) {
-				pom_poradie = 2;
-			}
+			pom_poradie = 2;
 
 			if (poradie_svaty == pom_poradie) {
 
@@ -27722,7 +27710,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_global_svaty(pom_poradie).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_HU_SJ + KALENDAR_CZ_SJ; SK SJ: 06OKT
 
-		if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
+		if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP) || (_global_jazyk == JAZYK_HU)) {
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
@@ -27742,11 +27730,11 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			mystrcpy(_global_svaty(1).meno, text_OKT_21_CZ[_global_jazyk], MENO_SVIATKU);
+			mystrcpy(_global_svaty(1).meno, text_OKT_21_CZ_HU[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
-			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_CZ;
-		}// CZ, CZOP only
+			_global_svaty(1).kalendar = (_global_jazyk == JAZYK_HU) ? KALENDAR_VSEOBECNY_HU : KALENDAR_VSEOBECNY_CZ;
+		}// HU, CZ, CZOP only
 
 		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)) {
 			// 2013-12-11, e-mail od Mareka OPraem: památka sv. Voršily (21. října): texty ze Společných textů o více mučednících vyjma 2. čtení v Modlitbě se čtením. Toto 2. čtení v modlitbě se čtením se má vybrat z několika nabízených dle propria – navrhl bych, aby se vybralo jedno, a nastálo se pak uvádělo v mobilní verzi; zde bych navrhl 2. čtení pro památku sv. Stanislava, biskupa a mučedníka (11. dubna). Ti pak, kdo užívají běžné tištěné texty, ať si vyberou dle nabídky v knize propria…
