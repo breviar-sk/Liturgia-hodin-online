@@ -1953,6 +1953,7 @@ extern const char* text_DEC_11[POCET_JAZYKOV + 1];
 extern const char* text_DEC_12[POCET_JAZYKOV + 1];
 extern const char* text_DEC_13[POCET_JAZYKOV + 1];
 extern const char* text_DEC_14[POCET_JAZYKOV + 1];
+extern const char* text_DEC_15_HU[POCET_JAZYKOV + 1];
 extern const char* text_DEC_21[POCET_JAZYKOV + 1];
 extern const char* text_DEC_22_CZ[POCET_JAZYKOV + 1];
 extern const char* text_DEC_23[POCET_JAZYKOV + 1];

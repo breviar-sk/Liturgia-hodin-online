@@ -16540,7 +16540,7 @@ const char* text_DEC_10[POCET_JAZYKOV + 1] =
 	"Beatæ Mariæ Virginis de Loreto",
 	"",
 	"Panny Marie Loretánské",
-	"A Loretói Boldogságos Szűz Mária",
+	"A loretói Boldogságos Szűz Mária",
 	"ru_text",
 	"by_text",
 	"Hl. María mey frá Loreto",
@@ -16639,6 +16639,20 @@ const char* text_DEC_14_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_DEC_15_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"B. Ioannis Brenner, martyr",
+	"",
+	"",
+	"Boldog Brenner János vértanú",
 	"",
 	"",
 	"",
