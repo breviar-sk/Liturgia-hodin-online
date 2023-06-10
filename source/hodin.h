@@ -16652,7 +16652,7 @@ const char* text_DEC_15_HU[POCET_JAZYKOV + 1] =
 	"B. Ioannis Brenner, martyr",
 	"",
 	"",
-	"Boldog Brenner János vértanú",
+	"Boldog Brenner János áldozópap és vértanú",
 	"",
 	"",
 	"",
