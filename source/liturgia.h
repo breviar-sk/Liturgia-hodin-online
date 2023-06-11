@@ -786,7 +786,7 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 // force pre jednotlivé časti modlitby, funkcie _set_spolocna_cast()...
 #define FORCE_NEBRAT               0
 #define FORCE_BRAT_ANTIFONY        1 // antifóny pre ranné chvály, posv. čítanie a vešpery
-#define FORCE_BRAT_ZALMY           2
+#define FORCE_BRAT_ZALMY           2 // psalmódia pre ranné chvály, posv. čítanie a vešpery; ak niekde je vlastná psalmódia len pre časť týchto modlitieb, je potrebné nastavovať ju ručne
 #define FORCE_BRAT_KCIT_1CIT       4 // krátke čítanie pre rch+v a mcd; 1. čítanie pre posvätné čítanie
 #define FORCE_BRAT_KRESP           8 // krátke responzórium pre ranné chvály, vešpery, posv. čítanie a mcd
 #define FORCE_BRAT_2CITANIE       16 // 2. čítanie pre posvätné čítanie

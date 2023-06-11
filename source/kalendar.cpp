@@ -12573,7 +12573,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
-					set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_ZALMY);
+					set_spolocna_cast(sc, poradie_svaty);
 
 				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
 					modlitba = MODL_INVITATORIUM;
@@ -12581,6 +12581,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				}
 
 				modlitba = MODL_RANNE_CHVALY;
+				_set_zalmy_1nedele_rch();
 				_vlastna_cast_full_okrem_prosieb(modlitba);
 				_vlastna_cast_kresponz_po_ve;
 
@@ -12590,6 +12591,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
+				_set_zalmy_sviatok_sv_zien(modlitba);
 				_vlastna_cast_full_okrem_prosieb(modlitba);
 				_vlastna_cast_kresponz_po_ve;
 

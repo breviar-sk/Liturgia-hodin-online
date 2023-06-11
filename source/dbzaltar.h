@@ -118,6 +118,7 @@ extern void _set_zalmy_zjv(short int modlitba);
 extern void _set_zalmy_premenenie(short int modlitba);
 extern void _set_zalmy_sviatok_apostolov(short int modlitba);
 #define _set_zalmy_sviatok_sv_muzov(a) _set_zalmy_sviatok_duch_past(a)
+#define _set_zalmy_sviatok_sv_zien(a) _set_zalmy_sviatok_panien(a)
 extern void _set_zalmy_sviatok_duch_past(short int modlitba);
 extern void _set_zalmy_sviatok_panien(short int modlitba);
 extern void _set_zalmy_sviatok_marie(short int modlitba);
