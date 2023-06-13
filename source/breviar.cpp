@@ -13553,17 +13553,16 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 				}
 
 				if (su_vespery12(modlitba)) {
-					Log("priraďujem %s z ďalšieho dňa:\n", nazov_modlitby(modlitba));
+					Log("su_vespery12(); priraďujem %s z ďalšieho dňa:\n", nazov_modlitby(modlitba));
 					_global_modl_prve_vespery = _local_modl_prve_vespery;
 					_global_modl_vespery = _local_modl_prve_vespery;
 				}
 
 				if (je_kompletorium12(modlitba)) {
-					Log("priraďujem %s z ďalšieho dňa, ale iba ak ide o slávnosť!\n", nazov_modlitby(modlitba));
-					if (_local_den.smer < 5) {
-						_global_modl_prve_kompletorium = _local_modl_prve_kompletorium;
-						_global_modl_kompletorium = _local_modl_prve_kompletorium;
-					}
+					Log("je_kompletorium12(); priraďujem %s z ďalšieho dňa (do „dnešného“ kompletória dávam prvé kompletórium z ďalšieho dňa...\n", nazov_modlitby(modlitba));
+					// if (_local_den.smer < 5) { // introduced by # 7fc3d1a41306d9acb1254519db303561d9e27b00 (worked until # bad8fa0f0906472f4) // Log("priraďujem %s z ďalšieho dňa, ale iba ak ide o slávnosť (presnejšie, smer < 5)...\n", nazov_modlitby(modlitba));
+					_global_modl_prve_kompletorium = _local_modl_prve_kompletorium;
+					_global_modl_kompletorium = _local_modl_prve_kompletorium;
 				}
 
 				// 2012-11-20: doplnené priradenie, lebo sa zmenila premenná _global_den
