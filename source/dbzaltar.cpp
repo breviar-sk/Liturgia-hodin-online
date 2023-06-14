@@ -8770,8 +8770,8 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 			_velk2_kcitanie;
 			_velk2_modlitba;
 
-			if(den == DEN_NEDELA){
-				if(_global_den.denvr == _global_r._ZOSLANIE_DUCHA_SV.denvr){
+			if (den == DEN_NEDELA) {
+				if (_global_den.denvr == _global_r._ZOSLANIE_DUCHA_SV.denvr) {
 
 					// kompletórium po prvých vešperách
 					modlitba = MODL_PRVE_KOMPLETORIUM;
@@ -8841,27 +8841,36 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					modlitba = MODL_PREDPOLUDNIM;
 					_set_zalmy_zoslanie_ducha_sv(modlitba);
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd, NIE);
+					if (_global_jazyk != JAZYK_CZ) {
+						// pro český breviář jsou užity stejné hymny jako pro dobu velikonoční po Nanebevstoupení Páně
+						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd, NIE);
+					}
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_zds_modlitba;
 					modlitba = MODL_NAPOLUDNIE;
 					_set_zalmy_zoslanie_ducha_sv(modlitba);
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd, NIE);
+					if (_global_jazyk != JAZYK_CZ) {
+						// pro český breviář jsou užity stejné hymny jako pro dobu velikonoční po Nanebevstoupení Páně
+						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd, NIE);
+					}
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_zds_modlitba;
 					modlitba = MODL_POPOLUDNI;
 					_set_zalmy_zoslanie_ducha_sv(modlitba);
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
-					_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd, NIE);
+					if (_global_jazyk != JAZYK_CZ) {
+						// pro český breviář jsou užity stejné hymny jako pro dobu velikonoční po Nanebevstoupení Páně
+						_vlastne_slavenie_hymnus(modlitba, _anchor_vlastne_slavenie, litobd, NIE);
+					}
 					_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 					_zds_modlitba;
 
 				}// Zoslanie Ducha Svätého
-				else{ // nedeľa vo veľkonočnom období II.
+				else { // nedeľa vo veľkonočnom období II.
 					// posvätné čítanie -- predĺžené slávenie vigílie
 					modlitba = MODL_POSV_CITANIE;
 					_liturgicke_obdobie_set_vig_ant(modlitba);
