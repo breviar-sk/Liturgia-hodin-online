@@ -447,11 +447,11 @@ const char* nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char* skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", "czofmconv", "skopraem", "husdb", /* ADD_VALUE_FOR_NEW_CALENDAR */};
+{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", "czofmconv", "skopraem", "husdb", "schp", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char* nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", "pro_ofmconv.htm", "pro_opraem.htm", "pro_sdb.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */};
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", "pro_ofmconv.htm", "pro_opraem.htm", "pro_sdb.htm", "pro_schp.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -487,6 +487,7 @@ const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "CZ OFMCONV"
 	, "SK OPRAEM"
 	, "HU SVD"
+	, "SK SCHP"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -524,6 +525,7 @@ const char* nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, "OFMconv"
 	, "OPRaem"
 	, "SDB"
+	, "SchP"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -563,6 +565,7 @@ const char* nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními minoritskými texty (OFMConv.)"
 	, "pre premonštrátov (OPraem)"
 	, "szalézi zsolozsma"
+	, "pre piaristov (SchP)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -602,6 +605,7 @@ const char* nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "pro minority (OFMConv)"
 	, "pre premonštrátov (OPraem)"
 	, "szalézi zsolozsma"
+	, "pre piaristov (SchP)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -6981,6 +6985,20 @@ const char* text_FEB_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_FEB_26_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_FEB_27[POCET_JAZYKOV + 1] =
 {
 	"Sv. Gregora z Nareku, opáta a učiteľa Cirkvi",
@@ -7083,6 +7101,20 @@ const char* text_MAR_08[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"Св. Яна Божага, законніка",
 	"Hl. Jóhannesar af Guði, reglubróður",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAR_08_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_09[POCET_JAZYKOV + 1] =
@@ -7200,6 +7232,20 @@ const char* text_MAR_18[POCET_JAZYKOV + 1] =
 const char* text_MAR_18_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Salvatora z Horty, kňaza, člena 1. rádu",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAR_18_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
 	"",
 	"",
 	"",
@@ -8192,6 +8238,20 @@ const char* text_MAJ_08_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"Bl. Jana Sullivana, kněze",
 	"hu_texz",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_08_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"",
 	"",
@@ -11081,6 +11141,20 @@ const char* text_JUL_15_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_JUL_15_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_JUL_16[POCET_JAZYKOV + 1] =
 {
 	"Prebl. Panny Márie Karmelskej",
@@ -12628,6 +12702,20 @@ const char* text_AUG_25_OCD[POCET_JAZYKOV + 1] =
 	"Hl. Maríu af hinum krossfesta Jesú, meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_AUG_25_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_AUG_26_BY[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -13513,6 +13601,20 @@ const char* text_SEP_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_SEP_19_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_SEP_20[POCET_JAZYKOV + 1] =
 {
 	"Sv. Andreja Kima Taegona, kňaza, " HTML_LINE_BREAK "Pavla Chonga Hasanga a spoločníkov, mučeníkov",
@@ -13620,6 +13722,20 @@ const char* text_SEP_22_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Boldog Calasanz Marqués József " HTML_LINE_BREAK "és Sáiz Aparicio Henrik áldozópapok " HTML_LINE_BREAK "és kilencvenhárom társa vértanúk",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_SEP_22_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"",
 	"",
@@ -14528,6 +14644,20 @@ const char* text_OKT_16_CSSR[POCET_JAZYKOV + 1] =
 {
 	"Sv. Gerarda Majellu, rehoľníka",
 	"Sv. Gerarda Majelly, řeholníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_OKT_16_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
 	"",
 	"",
 	"",
@@ -15885,6 +16015,20 @@ const char* text_NOV_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_NOV_18_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_NOV_19_OFM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Agnesy z Assisi, panny, členky 2. rádu",
@@ -16118,6 +16262,20 @@ const char* text_NOV_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"¨hu_text",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_NOV_25_SCHP[POCET_JAZYKOV + 1] =
+{
+	"sk_text",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"",
 	"",

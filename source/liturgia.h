@@ -1201,9 +1201,10 @@ extern const char* nazov_slavenia_lokal[];
 #define KALENDAR_CZ_OFMCONV                29
 #define KALENDAR_SK_OPRAEM                 30
 #define KALENDAR_HU_SDB                    31
+#define KALENDAR_SK_SCHP                   32
 
 /* INCREMENT_FOR_NEW_CALENDAR */
-#define POCET_KALENDAROV                   31
+#define POCET_KALENDAROV                   32
 // when adding new calendar, the following comments MUST BE replaced:
 // 
 // few numeric/string constants [ADD_VALUE_FOR_NEW_CALENDAR]
@@ -1255,7 +1256,7 @@ const short int supported_languages[POCET_JAZYKOV + 1] =
 };
 
 
-#define SUPPORTED_CALENDARS_COUNT_MAX 12
+#define SUPPORTED_CALENDARS_COUNT_MAX 13
 
 // count of supported calendars for specified language
 // note 1: KALENDAR_NEURCENY & KALENDAR_VSEOBECNY are always supported by default so these two do not count there
@@ -1263,7 +1264,11 @@ const short int supported_languages[POCET_JAZYKOV + 1] =
 // note 3: ADD_VALUE_FOR_NEW_CALENDAR: change the number of supported calendars in proper language
 const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 {
+#if defined(DEBUG) || defined(OS_Windows_Ruby)
+	13, // JAZYK_CZ
+#else
 	12, // JAZYK_SK
+#endif
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 	9, // JAZYK_CZ
 #else
@@ -1280,19 +1285,19 @@ const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
-// array of supported calendars for specified language | note: pad with zeros
+// array of supported calendars for specified language | note: pad with zeros | /* ADD_VALUE_FOR_NEW_CALENDAR */ for specified language
 const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALENDARS_COUNT_MAX] =
 {
-	{ KALENDAR_VSEOBECNY_SK, KALENDAR_SK_CSSR, KALENDAR_SK_SVD, KALENDAR_SK_OFM, KALENDAR_SK_SDB, KALENDAR_SK_OP, KALENDAR_SK_SJ, KALENDAR_SK_CM, KALENDAR_SK_OCD, KALENDAR_SK_CSA, KALENDAR_SK_OSU, KALENDAR_SK_OPRAEM },
-	{ KALENDAR_VSEOBECNY_CZ, KALENDAR_CZ_OPRAEM, KALENDAR_CZ_OFMCAP, KALENDAR_CZ_SDB, KALENDAR_CZ_OFM, KALENDAR_CZ_SJ, KALENDAR_CZ_OCD, KALENDAR_CZ_OFMCONV, KALENDAR_CZ_CSSR, 0, 0, 0 },
-	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_CZ_OP, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_VSEOBECNY_HU, KALENDAR_HU_OFM, KALENDAR_HU_SVD, KALENDAR_HU_SJ, KALENDAR_HU_SDB, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_VSEOBECNY_RU, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_VSEOBECNY_BY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ KALENDAR_VSEOBECNY_IS, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_SK, KALENDAR_SK_CSSR, KALENDAR_SK_SVD, KALENDAR_SK_OFM, KALENDAR_SK_SDB, KALENDAR_SK_OP, KALENDAR_SK_SJ, KALENDAR_SK_CM, KALENDAR_SK_OCD, KALENDAR_SK_CSA, KALENDAR_SK_OSU, KALENDAR_SK_OPRAEM, KALENDAR_SK_SCHP },
+	{ KALENDAR_VSEOBECNY_CZ, KALENDAR_CZ_OPRAEM, KALENDAR_CZ_OFMCAP, KALENDAR_CZ_SDB, KALENDAR_CZ_OFM, KALENDAR_CZ_SJ, KALENDAR_CZ_OCD, KALENDAR_CZ_OFMCONV, KALENDAR_CZ_CSSR, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	/* ToDo */ { KALENDAR_VSEOBECNY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_CZ_OP, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_HU, KALENDAR_HU_OFM, KALENDAR_HU_SVD, KALENDAR_HU_SJ, KALENDAR_HU_SDB, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_RU, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_BY, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+	{ KALENDAR_VSEOBECNY_IS, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 

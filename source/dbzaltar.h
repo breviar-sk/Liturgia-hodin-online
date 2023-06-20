@@ -2439,6 +2439,19 @@ extern const char* text_SEP_04_OSU[POCET_JAZYKOV + 1];
 extern const char* text_OKT_21_OSU[POCET_JAZYKOV + 1];
 extern const char* text_OKT_23_OSU[POCET_JAZYKOV + 1];
 
+// --------------- SchP propriá ---------------
+extern const char* text_FEB_26_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_MAR_08_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_MAR_18_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_MAJ_08_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_JUL_15_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_AUG_25_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_SEP_19_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_SEP_22_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_OKT_16_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_NOV_18_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_NOV_25_SCHP[POCET_JAZYKOV + 1];
+
 extern short int pocet_multi(char *_anchor, unsigned long long type);
 extern short int is_printed_edition_text(char* _anchor, char* _paramname);
 
