@@ -565,7 +565,7 @@ const char* nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "s vlastními minoritskými texty (OFMConv.)"
 	, "pre premonštrátov (OPraem)"
 	, "szalézi zsolozsma"
-	, "pre piaristov (SchP)"
+	, "pre rehoľu Piaristov (SchP)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -6987,7 +6987,7 @@ const char* text_FEB_25_SDB[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_26_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Sv. Pauly Montal, panny a rehoľníčky, " HTML_LINE_BREAK "zakladateľky Kongregácie sestier piaristiek",
 	"",
 	"",
 	"",
@@ -7105,7 +7105,7 @@ const char* text_MAR_08[POCET_JAZYKOV + 1] =
 };
 const char* text_MAR_08_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Sv. Faustina Mígueza, rehoľníka, " HTML_LINE_BREAK "zakladateľa Inštitútu dcér Božskej Pastierky",
 	"",
 	"",
 	"",
@@ -7245,7 +7245,7 @@ const char* text_MAR_18_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_MAR_18_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Bl. Celestiny Donati, panny, " HTML_LINE_BREAK "zakladateľky sestier Kalazanciánok",
 	"",
 	"",
 	"",
@@ -8245,7 +8245,7 @@ const char* text_MAJ_08_SJ[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_08_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Preblahoslavenej Panny Márie, " HTML_LINE_BREAK "Matky Zbožných škôl",
 	"",
 	"",
 	"",
