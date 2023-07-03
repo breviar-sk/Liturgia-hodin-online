@@ -14708,7 +14708,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 			pocet = pom_poradie;
 
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
+			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			_global_svaty(1).typslav_lokal = LOKAL_SLAV_CESKE_BUDEJOVICE_PAMATKA; // povinná spomienka len v čb-diecéze
 			mystrcpy(_global_svaty(1).meno, text_JUN_19_CZ[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP);
