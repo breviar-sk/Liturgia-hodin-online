@@ -11340,7 +11340,7 @@ const char* text_JUL_20_IS[POCET_JAZYKOV + 1] =
 const char* text_JUL_20_OCD[POCET_JAZYKOV + 1] =
 {
 	"Sv. Eliáša, proroka a nášho Otca",
-	"Sv. Eliáše, proroka", // CZ: nemá "a našeho Otce"
+	"Sv. Eliáše, proroka a našeho Otce", // CZ v PDF: nemá "a našeho Otce"
 	"",
 	"",
 	"",

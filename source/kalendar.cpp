@@ -17826,7 +17826,15 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
 			mystrcpy(_global_svaty(1).meno, text_JUL_20_OCD[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
-			_global_svaty(1).farba = LIT_FARBA_BIELA;
+
+			// CZ: proroci prý mají červenou barvu jako barvu Ducha Svatého
+			if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OCD)) {
+				_global_svaty(1).farba = LIT_FARBA_CERVENA;
+			}
+			else {
+				_global_svaty(1).farba = LIT_FARBA_BIELA;
+			}
+		
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD a KALENDAR_CZ_OCD
 
