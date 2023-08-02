@@ -11143,7 +11143,7 @@ const char* text_JUL_15_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_15_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Sv. Pompilia Máriu Pirrottiho, kňaza a rehoľníka",
 	"",
 	"",
 	"",
@@ -12704,7 +12704,7 @@ const char* text_AUG_25_OCD[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_25_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Sv. Jozefa Kalazanského, kňaza a rehoľníka, " HTML_LINE_BREAK "zakladateľa rehole Piaristov",
 	"",
 	"",
 	"",

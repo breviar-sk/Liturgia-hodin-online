@@ -17264,6 +17264,39 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 		}// všeobecný kalendár
 
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SCHP)) {
+			if (poradie_svaty == 2) {
+
+				file_name_vlastny_kalendar(_global_kalendar);
+
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_2citanie;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_benediktus;
+				_vlastna_cast_modlitba;
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_magnifikat;
+				_vlastna_cast_modlitba;
+
+				break;
+			}
+
+			pocet = 2;
+
+			_set_slavenie_typslav_smer(2, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
+			mystrcpy(_global_svaty(2).meno, text_JUL_15_SCHP[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			_global_svaty(2).farba = LIT_FARBA_BIELA;
+			_global_svaty(2).kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_SK_SCHP
+
 		break;
 
 	case 16: // MES_JUL -- 16JUL
@@ -21554,6 +21587,48 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OFM, KALENDAR_CZ_OFM*, KALENDAR_HU_OFM
+
+		else if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SCHP)) {
+			if (poradie_svaty == 1) {
+
+				file_name_vlastny_kalendar(_global_kalendar);
+
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CSA)) {
+					set_popis_dummy();
+				}
+
+				modlitba = MODL_PRVE_VESPERY;
+				_vlastna_cast_full(modlitba);
+
+				modlitba = MODL_INVITATORIUM;
+				_vlastna_cast_antifona_inv;
+
+				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_full_okrem_hymnu(modlitba);
+
+				modlitba = MODL_POSV_CITANIE;
+				_vlastna_cast_full_okrem_hymnu(modlitba);
+
+				_vlastna_cast_mcd_ant_kcitresp_modl;
+
+				_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
+
+				modlitba = MODL_VESPERY;
+				_vlastna_cast_full_okrem_hymnu(modlitba);
+
+				break;
+			}
+
+			_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+			mystrcpy(_global_svaty(1).meno, text_AUG_25_SCHP[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_VYCH, MODL_SPOL_CAST_SV_MUZ_REHOLNIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			_global_svaty(1).kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_SK_SCHP
 
 		else {
 			if (poradie_svaty == 1) {
