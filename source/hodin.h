@@ -13603,7 +13603,7 @@ const char* text_SEP_19_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_19_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Bl. Márie Baldillou, panny, a spoločníčok, mučeníc",
 	"",
 	"",
 	"",
@@ -13729,7 +13729,7 @@ const char* text_SEP_22_SDB[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_22_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Bl. Dionýza Pamplonu a spoločníkov, mučeníkov",
 	"",
 	"",
 	"",
@@ -14656,7 +14656,7 @@ const char* text_OKT_16_CSSR[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_16_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Bl. Petra Casaniho, kňaza a rehoľníka",
 	"",
 	"",
 	"",
@@ -16017,7 +16017,7 @@ const char* text_NOV_18_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_18_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Všetkých svätých Zbožných škôl",
 	"",
 	"",
 	"",
@@ -16269,7 +16269,7 @@ const char* text_NOV_25_SDB[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_25_SCHP[POCET_JAZYKOV + 1] =
 {
-	"sk_text",
+	"Patrocínium sv. Jozefa Kalazanského",
 	"",
 	"",
 	"",
