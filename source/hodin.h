@@ -12049,7 +12049,7 @@ const char* text_AUG_09[POCET_JAZYKOV + 1] =
 	"Sv. Terézie Benedikty od Kríža, " HTML_LINE_BREAK "panny a mučenice, patrónky Európy", // podľa Direktória 2012, str. 178: "Sv. Terézie Benedikty z Kríža (Edity Steinovej), "; Direktórium 2020: oprava
 	"Sv. Terezie Benedikty od Kříže, panny a mučednice, " HTML_LINE_BREAK "patronky Evropy",
 	"",
-	"S. Teresiæ Benedictæ et Cruce, virginis et martyris",
+	"S. Teresiæ Benedictæ a Cruce, virginis et martyris",
 	"",
 	"Sv. Terezie Benedikty od Kříže, panny a mučednice, " HTML_LINE_BREAK "patronky Evropy",
 	"A keresztről nevezett Szent Teréz Benedikta (Edith Stein) " HTML_LINE_BREAK "szűz és vértanú, Európa társvédőszentje",
