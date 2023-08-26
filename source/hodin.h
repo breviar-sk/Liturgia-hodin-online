@@ -5780,7 +5780,7 @@ const char* text_JAN_14_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_JAN_14_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Bohumíra, rehoľníka z našej rehole",
+	"Sv. Gottfrieda (Bohumíra), rehoľníka z našej rehole",
 	"Sv. Gotfrída, řeholníka z premonstrátského řádu",
 	"",
 	"",
@@ -6665,7 +6665,7 @@ const char* text_FEB_10[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_10_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Huga, prvého opáta v Premóntré",
+	"Bl. Huga, prvého opáta v Prémontré",
 	"Bl. Huga, opata z premonstrátského řádu",
 	"",
 	"",
@@ -15639,7 +15639,7 @@ const char* text_NOV_08_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_13_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"Všetkých svätých vašej rehole " HTML_LINE_BREAK "a všetkých svätých rehoľných kanonikov",
+	"Všetkých svätých našej rehole " HTML_LINE_BREAK "a všetkých svätých rehoľných kanonikov",
 	"Všech svatých premonstrátského řádu " HTML_LINE_BREAK "a všech svatých z řádů řeholních kanovníků", // CZ 08NOV
 	"",
 	"",
