@@ -12522,7 +12522,7 @@ const char* text_AUG_21[POCET_JAZYKOV + 1] =
 };
 const char* text_OPATSKY_KOSTOL_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Výročie posviacky opátskeho chrámu " HTML_LINE_BREAK "sv. Jána Krstiteľa",
 	"Výročí posvěcení opatského kostela",
 	"",
 	"",
@@ -14516,7 +14516,7 @@ const char* text_OKT_13_SDB[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_13_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Petra Adriána Toulorge, " HTML_LINE_BREAK "kňaza a mučeníka z našej rehole",
 	"Bl. Petra Adriána Toulorge, kněze a mučedníka " HTML_LINE_BREAK "z premonstrátského řádu",
 	"",
 	"",
@@ -14782,7 +14782,7 @@ const char* text_OKT_20_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Jakuba Kerna, kňaza našej rehole",
+	"Bl. Jakuba Kerna, kňaza z našej rehole",
 	"Bl. Jakuba Kerna, kněze z premonstrátského řádu",
 	"",
 	"",

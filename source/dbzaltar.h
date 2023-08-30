@@ -82,9 +82,9 @@ extern void _set_antifony_mcd_doplnkova_psalmodia(void);
 extern void _set_zalmy_1nedele_mcd(void);
 extern void _set_zalmy_2nedele_mcd(void);
 extern void _set_zalmy_mcd_1nedela_or_doplnkova_psalmodia(void);
-extern void _set_kompletorium_nedela_spolocne(short int modlitba);
-extern void _set_kompletorium_nedela(short int modlitba);
-extern void _set_kompletorium_slavnost(short int modlitba);
+extern void _set_kompletorium_nedela_spolocne(short int modlitba, int force = 0);
+extern void _set_kompletorium_nedela(short int modlitba, int force = 0);
+extern void _set_kompletorium_slavnost(short int modlitba, int force = 0);
 extern void _set_kompletorium_slavnost_oktava(short int modlitba, short int litobd, short int ktore);
 
 extern void zaltar_kompletorium_okrem_zalmov(short int den, short int obdobie, short int specialne, short int tyzzal, short int modlitba);

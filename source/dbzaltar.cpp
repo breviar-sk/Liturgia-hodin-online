@@ -2078,7 +2078,7 @@ void _set_zalmy_mcd_1nedela_or_doplnkova_psalmodia(void) {
 	}
 }// _set_zalmy_mcd_1nedela_or_doplnkova_psalmodia() -- ak sviatok/slávnosť padne na nedeľu, berú sa žalmy z nedele 1. týždňa (s možnosťou prepnúť na doplnkovú psalmódiu), v opačnom prípade (pre slávenie mimo nedele) je predpísaná doplnková psalmódia
 
-void _set_kompletorium_nedela_spolocne(short int modlitba) {
+void _set_kompletorium_nedela_spolocne(short int modlitba, int force /* = 0 */) {
 	Log("_set_kompletorium_nedela_spolocne(%d - %s) -- begin\n", modlitba, nazov_modlitby(modlitba));
 	if (modlitba == MODL_PRVE_KOMPLETORIUM) {
 		_global_modl_prve_kompletorium.pocet_zalmov = 2;
@@ -2093,16 +2093,19 @@ void _set_kompletorium_nedela_spolocne(short int modlitba) {
 	// hymnus pre CZ: pre prvé kompletórium bude kotva 'p_HYMNUS_NE' = 'k_HYMNUS_SO', pre druhé kompletórium kotva 'k_HYMNUS_NE'
 	set_hymnus(DEN_NEDELA, _global_den.tyzzal, modlitba); // set_hymnus() v skutočnosti volá pre kompletórium funkciu set_hymnus_kompletorium_obd()
 	set_antifony(DEN_NEDELA, _global_den.tyzzal, 2 /* zvazok - pre kompletórium sa nepoužíva, len kvôli posv. čítaniu */, modlitba);
-	set_nunc_dimittis(modlitba); // 2013-06-28: doplnené podľa zaltar_kompletorium()
+	if ((force & FORCE_BRAT_ANTIFONY_B_M) != FORCE_BRAT_ANTIFONY_B_M) {
+		// preserve proper antiphone set for special occasion
+		set_nunc_dimittis(modlitba); // 2013-06-28: doplnené podľa zaltar_kompletorium()
+	}
 	set_ukonkaj(modlitba);
 	set_maria_ant(modlitba);
 	Log("_set_kompletorium_nedela_spolocne(%d) -- end\n", modlitba);
 } // _set_kompletorium_nedela_spolocne()
 
 // nedeľné kompletórium (používa sa aj pre špeciálne dni, napr. zelený štvrtok)
-void _set_kompletorium_nedela(short int modlitba) {
+void _set_kompletorium_nedela(short int modlitba, int force /* = 0 */) {
 	Log("_set_kompletorium_nedela(%d - %s) -- begin\n", modlitba, nazov_modlitby(modlitba));
-	_set_kompletorium_nedela_spolocne(modlitba);
+	_set_kompletorium_nedela_spolocne(modlitba, force);
 	set_kcitanie(DEN_NEDELA, _global_den.tyzzal, modlitba);
 	set_kresponz(DEN_NEDELA, _global_den.tyzzal, modlitba);
 	set_modlitba(DEN_NEDELA, _global_den.tyzzal, modlitba);
@@ -2110,16 +2113,17 @@ void _set_kompletorium_nedela(short int modlitba) {
 } // _set_kompletorium_nedela()
 
 // ak je slávnosť, berie sa iná modlitba ako na nedeľné kompletórium
-void _set_kompletorium_slavnost(short int modlitba) {
+// added 'force' parameter similar to its usage in set_spolocna_cast() - when we want to force using proper texts, we set it in the call [currently for special occasions only for antiphone for Nunc dimittis]
+void _set_kompletorium_slavnost(short int modlitba, int force /* = 0 */) {
 	Log("_set_kompletorium_slavnost(%d - %s) -- begin\n", modlitba, nazov_modlitby(modlitba));
 
 	// ak padne slávnosť resp. sviatok Pána na sobotu, vtedy je tiež nedeľné kompletórium (po druhých vešperách) -- ??? neplatí pre Všetkých svätých, 2014
 	if (_global_den.denvt == DEN_NEDELA) {
 		Log("=> ak slávnosť padne na nedeľu, berie sa nedeľné kompletórium\n");
-		_set_kompletorium_nedela(modlitba);
+		_set_kompletorium_nedela(modlitba, force);
 	}
 	else {
-		_set_kompletorium_nedela_spolocne(modlitba);
+		_set_kompletorium_nedela_spolocne(modlitba, force);
 		set_modlitba(DEN_UNKNOWN, _global_den.tyzzal, modlitba); // je to jeden konkrétny deň mimo nedele
 		// nasledujúce závisia od liturgického obdobia, preto nastavíme inú kotvu (pevne z nedele)
 		set_kcitanie(DEN_NEDELA, _global_den.tyzzal, modlitba);

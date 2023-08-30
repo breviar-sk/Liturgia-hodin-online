@@ -792,7 +792,7 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define FORCE_BRAT_2CITANIE       16 // 2. čítanie pre posvätné čítanie
 #define FORCE_BRAT_ANTIFONY_MCD   32 // antifóny pre modlitbu cez deň
 #define FORCE_BRAT_HYMNUS         64 // hymnus pre všetky modlitby
-#define FORCE_BRAT_ANTIFONY_B_M  128 // Benediktus + Magnifikat
+#define FORCE_BRAT_ANTIFONY_B_M  128 // Benediktus + Magnifikat (výnimočne aj pre na Nunc dimittis)
 #define FORCE_BRAT_ANTIFONY_INV  256 // antifóny pre invitatórium
 #define FORCE_BRAT_MODLITBA      512 // modlitba (používa sa pre modlitbu cez deň)
 #define FORCE_BRAT_PROSBY       1024 // prosby pre ranné chvály a vešpery

@@ -23,6 +23,8 @@
 
 short int je_modlitba_vlastna = ANO;
 
+short int svaty_force = 0; // if we want to preserve some special force bits, we use this global variable
+
 short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _struct_sc sc) {
 	short int pom_poradie = 1;
 	// toto priradujeme preto, aby sme nemuseli pri kazdom svatom priradovat pocet = 1;
@@ -4372,12 +4374,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 				break;
 			}
 
-			if (_global_kalendar == KALENDAR_CZ_OPRAEM) {
-				_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			}
-			else {
-				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
-			}
+			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty(1).meno, text_FEB_18_OPRAEM[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
@@ -8864,7 +8861,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 	case 4: // MES_MAY -- 04MAJ
 
 		if (((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM))
-			/* || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OPRAEM)) */
+			|| ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OPRAEM))
 			) {
 
 			// prepnutie na 02MAJ (mesiac ostáva), presun slávenia zo všeobecného kalendára
@@ -12065,7 +12062,12 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
 			mystrcpy(_global_svaty(1).meno, text_MAJ_24_OPRAEM[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			if (_global_jazyk == JAZYK_CZ) {
+				_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			}
+			else {
+				_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+			}
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_*_OPRAEM
@@ -20647,6 +20649,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)) {
 			// 2013-12-11, e-mail od Mareka OPraem: památka sv. Rocha (16. srpna): texty ze Společných textů o svatých mužích: o svatých, kteří vynikali milosrdnými skutky. (Pozn.: V našem „propriu“, čili v té A5 červené knize, je odkaz na tyto společné texty; vlastní je pouze modlitba – ta se však může vzít ze společných textů…).
+			// 2023-08-16, vlastní modlitba doplněna dle Alena Mirjam Režná <jessie.r@centrum.cz>
 			if (poradie_svaty == 2) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
@@ -20656,13 +20659,13 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
-				// _vlastna_cast_modlitba;
+				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
-				// _vlastna_cast_modlitba;
+				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_modlitba;
+				_vlastna_cast_modlitba;
 				break;
 			}
 
@@ -25144,6 +25147,29 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_CZ_OFM
 
+		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OPRAEM)) {
+			if (poradie_svaty == 2) {
+
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY) {
+					set_spolocna_cast(sc, poradie_svaty);
+				}
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
+
+				set_popis_dummy();
+
+				break;
+			}
+
+			pocet = 2;
+
+			_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 8); // miestne sviatky
+			mystrcpy(_global_svaty(2).meno, text_OPATSKY_KOSTOL_OPRAEM[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+			_global_svaty(2).farba = LIT_FARBA_BIELA;
+			_global_svaty(2).kalendar = _global_kalendar;
+		}// kalendár pre KALENDAR_SK_OPRAEM
+
 		break;
 
 	case 25: // MES_SEP -- 25SEP
@@ -27255,8 +27281,10 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OFM, KALENDAR_CZ_OFMCAP
 
-		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)) {
-			if (poradie_svaty == 1) {
+		if (((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM))
+			|| ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OPRAEM))
+			) {
+				if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -27282,7 +27310,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
 			_global_svaty(1).kalendar = _global_kalendar;
-		}// kalendár pre KALENDAR_CZ_OPRAEM
+		}// kalendár pre KALENDAR_*_OPRAEM
 
 		break;
 
@@ -33400,7 +33428,9 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 			}// kalendár pre KALENDAR_SK_OP
 
-			if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)) {
+			if (((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM))
+				|| ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OPRAEM))
+				) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -33410,7 +33440,9 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 				modlitba = MODL_KOMPLETORIUM;
 				_vlastna_cast_nunc_dimittis;
 
-			}// kalendár pre KALENDAR_CZ_OPRAEM
+				svaty_force = FORCE_BRAT_ANTIFONY_B_M;
+
+			}// kalendár pre KALENDAR_*_OPRAEM
 
 			if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
 				break;
@@ -34329,6 +34361,9 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 	Log("-- sviatky_svatych(%d, %d) -- zaciatok\n", den, mesiac);
 
+	// je_modlitba_vlastna = ANO;
+	svaty_force = 0;
+
 	// nasledujuca pasaz v pripade, ze poradie_svaty nie je dane (t.j. nie je 1, 2 alebo 3) vycisti udaje; to je vtedy, ked je tato funkcia volana po prvykrat
 	if ((poradie_svaty < 1) || (poradie_svaty > MAX_POCET_SVATY)) { // napr. aj UNKNOWN_PORADIE_SVATEHO
 		for (short int i = 0; i < MAX_POCET_SVATY; i++) {
@@ -34472,11 +34507,13 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 				_vlastna_cast_modlitba;
 			}
 
+			Log("(zatiaľ sa používa len pre kompletórium) svaty_force == %d...\n", svaty_force);
+
 			modlitba = MODL_PRVE_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba);
+			_set_kompletorium_slavnost(modlitba, svaty_force);
 
 			modlitba = MODL_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba);
+			_set_kompletorium_slavnost(modlitba, svaty_force);
 		}
 	}
 
