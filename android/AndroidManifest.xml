@@ -4,7 +4,7 @@
       android:versionCode="123"
       android:versionName="5.8"
       android:installLocation="auto">
-    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="31"/>
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="33"/>
     <supports-screens android:xlargeScreens="true"/>
     <queries>
       <intent>

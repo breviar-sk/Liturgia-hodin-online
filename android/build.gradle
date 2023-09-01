@@ -39,10 +39,10 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-  compileSdkVersion 31
+  compileSdkVersion 33
   
   defaultConfig {
-    targetSdkVersion 31
+    targetSdkVersion 33
       // TODO: api 33 has changes in notifications: POST_NOTIFICATIONS permission
     minSdkVersion 14
     ndk {

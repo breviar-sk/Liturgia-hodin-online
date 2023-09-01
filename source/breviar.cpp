@@ -12728,6 +12728,7 @@ void _export_rozbor_dna(short int typ) {
 #endif
 	_export_rozbor_dna_interpretuj_zoznam(EXPORT_TYP_WEB_MODE, typ, som_v_tabulke, (char *)STR_EMPTY, 0, 0);
 
+	// ToDo: # c6e031537b removed this funcionality, # a675c94dfb recovered it only for Windows/Ruby + fixed for XML export; ToDo: enable if user wants (create new bit-component option to show Roman letter)
 #ifdef OS_Windows_Ruby
 	if (typ == EXPORT_DNA_VIAC_DNI) {
 		// ďalší stĺpec: rímske číslo podľa týždňa žaltára, pre nedele aj liturgický rok A, B resp. C; _global_string2 set above within call of _export_rozbor_dna_interpretuj_zoznam(); for XML export see below -- exported by _exportXmlDay2();
