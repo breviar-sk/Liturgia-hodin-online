@@ -16003,6 +16003,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_VIACERI); // aj pre JAZYK_SK treba kvôli predĺženému sláveniu vigílií
+			Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 			_global_opt[OPT_3_SPOLOCNA_CAST] = _decode_spol_cast(_global_svaty(1).spolcast).a1;
 			_global_den.typslav = SLAV_SLAVNOST; // doplnené kvôli správnemu fungovaniu set_spolocna_cast(), t. j. tamojších kontrol, či napr. sú žalmy vlastné
 			_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
@@ -19104,9 +19105,25 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _struct_sc sc) {
 	// toto priradujeme preto, aby sme nemuseli pri kazdom svatom priradovat pocet = 1;
 	short int pocet = 1;
+	short int mesiac = MES_AUG;
 	short int pom_poradie = 1;
 
 	Log("mesiac august\n");
+
+	// for Iceland, 15AUG is moved to next nearest (following) Sunday
+	if ((_global_den.denvt == DEN_NEDELA) && (_global_jazyk == JAZYK_IS) && (_global_den.den >= 16) && (_global_den.den <= 21)) {
+		Log("special case for IS: 15AUG transferred to Sunday...\n");
+
+		den = 15; // as if it was 15AUG
+		pocet = 1;
+		poradie_svaty = 1;
+
+		sprintf(_anchor_head, "%02d%s_", den, nazov_MES[mesiac]); // MES_AUG
+		Log("  _anchor_head == %s\n", _anchor_head);
+
+		goto label_15_AUG;
+	}
+
 	switch (den) {
 
 	case 1: // MES_AUG -- 01AUG
@@ -20524,12 +20541,26 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 	case 15: // MES_AUG -- 15AUG
 
+		// for Iceland, 15AUG is moved to next nearest (following) Sunday
+		if ((_global_den.denvt != DEN_NEDELA) && (_global_jazyk == JAZYK_IS)) {
+
+			pocet = 0;
+
+			break;
+		}// JAZYK_IS only
+
+		label_15_AUG:
+
 		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+		Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
+		_global_opt[OPT_3_SPOLOCNA_CAST] = _decode_spol_cast(_global_svaty(1).spolcast).a1;
+
 		if ((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) || (poradie_svaty == 1)) {
 			// preto 0 -> UNKNOWN_PORADIE_SVATEHO, ze aj ked nie je svaty urceny, ide o sviatok Pana, ktora ma velku prioritu, a preto ma aj - ak je nedela - prve vespery 
 
 			// definovanie parametrov pre modlitbu
 			sc = _decode_spol_cast(_global_svaty(1).spolcast);
+
 			Log("15AUG | Nanebovzatie prebl. Panny Márie: sc: {%s, %s, %s}, svaty == %d\n\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3), poradie_svaty);
 
 			if (query_type != PRM_DETAILY)
@@ -20566,7 +20597,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_sviatok_panien(modlitba);
 
-			if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
+			if ((poradie_svaty != UNKNOWN_PORADIE_SVATEHO) && (_global_jazyk != JAZYK_IS)) {
 				break;
 			}
 		}
@@ -21204,6 +21235,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 		if (_global_jazyk == JAZYK_HU) {
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
+			Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 			_global_opt[OPT_3_SPOLOCNA_CAST] = _decode_spol_cast(_global_svaty(1).spolcast).a1;
 			_global_den.typslav = SLAV_SLAVNOST; // doplnené kvôli správnemu fungovaniu set_spolocna_cast(), t. j. tamojších kontrol, či napr. sú žalmy vlastné
 			_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
@@ -22446,7 +22478,11 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 	short int mesiac = MES_SEP;
 	short int pom_poradie = 1;
 
+	// premenná pom_den na uchovanie pôvodného dňa
+	// short int pom_den = den;
+
 	Log("mesiac september\n");
+
 	switch (den) {
 
 	case 1: // MES_SEP -- 01SEP
@@ -23755,11 +23791,15 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 	case 15: // MES_SEP -- 15SEP
 
 		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+		Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
+		_global_opt[OPT_3_SPOLOCNA_CAST] = _decode_spol_cast(_global_svaty(1).spolcast).a1;
+
 		if (((poradie_svaty == UNKNOWN_PORADIE_SVATEHO) && (_global_jazyk == JAZYK_SK)) || (poradie_svaty == 1)) {
 			// preto 0 -> UNKNOWN_PORADIE_SVATEHO, ze aj ked nie je svaty urceny, ide o slavnost (2006-09-12: len na Slovensku), ktora ma takmer najvacsiu prioritu, a preto ma aj prve vespery - a vtedy by to normalne nefungovalo; nastavenie veci pre modlitbu by sa muselo diat v predoslom dni, co je neciste riesenie
 
 			// definovanie parametrov pre modlitbu
 			sc = _decode_spol_cast(_global_svaty(1).spolcast);
+
 			Log("15SEP | Sedembolestnej Panny Marie, patronky Slovenska: sc: {%s, %s, %s}, svaty == %d\n\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3), poradie_svaty);
 
 			if (query_type != PRM_DETAILY) {
@@ -23785,9 +23825,14 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			modlitba = MODL_RANNE_CHVALY;
 			if (_global_jazyk == JAZYK_SK) {
 				_vlastna_cast_full(modlitba);
-			}
+			}// SK only
 			else {
-				_vlastna_cast_full_okrem_prosieb(modlitba);
+				if (_global_jazyk == JAZYK_IS) {
+					_vlastna_cast_full_okrem_hymnu_a_prosieb(modlitba);
+				}// IS only
+				else {
+					_vlastna_cast_full_okrem_prosieb(modlitba);
+				}
 				_set_zalmy_sviatok_marie(modlitba); // kvôli iným ako SK (SK má slávnosť, tam je to automaticky)
 			}
 
@@ -23797,7 +23842,9 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			}// SK, HU only
 			else {
 				_vlastna_cast_modlitba;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				if (_global_jazyk != JAZYK_IS) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}// except IS 
 				_vlastna_cast_2citanie;
 			}
 
@@ -23810,7 +23857,10 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			modlitba = MODL_VESPERY;
 			if (_global_jazyk == JAZYK_SK) {
 				_vlastna_cast_full(modlitba);
-			}
+			}// SK only
+			else if (_global_jazyk == JAZYK_IS) {
+				_vlastna_cast_full_okrem_hymnu_a_prosieb(modlitba);
+			}// IS only
 			else {
 				_vlastna_cast_full_okrem_prosieb(modlitba);
 			}
@@ -25444,6 +25494,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 		if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) { // odvetvené len pre Česko; prevzaté podľa cyrila a metoda
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
+			Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 			_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_MUCENIK;
 			_global_svaty(1).typslav = SLAV_SLAVNOST; // doplnené kvôli správnemu fungovaniu set_spolocna_cast(), t. j. tamojších kontrol, či napr. sú žalmy vlastné
 			_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
@@ -34723,6 +34774,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	Log("a hned nastavujem _global_opt[OPT_3_SPOLOCNA_CAST] (ak je neurčené: je teraz %d) na sc.a1):\n", _global_opt[OPT_3_SPOLOCNA_CAST]);
 	// ak opt_3 je MODL_SPOL_CAST_NEURCENA, tak ju urcime podla 1. spolocnej casti
 	if (_global_opt[OPT_3_SPOLOCNA_CAST] == MODL_SPOL_CAST_NEURCENA) {
+		Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 		_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1;
 		Log("setting _global_opt[OPT_3_SPOLOCNA_CAST] to sc.a1 == %d\n", sc.a1);
 	}

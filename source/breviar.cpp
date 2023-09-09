@@ -5961,8 +5961,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 	_global_den.kalendar = KALENDAR_NEURCENY;
 	mystrcpy(_global_den.lc_str_id, STR_EMPTY, MAX_LC_STR_ID);
 
-	// určenie ostatných špecifických "liturgických" záležitostí:
-	//
+	_rozbor_dna_LOG("určenie ostatných špecifických 'liturgických' záležitostí...\n");
 	// tyzzal, litobd, tyzden, smer, typslav, prip. meno
 	if (_global_den.denvr < VELKONOCNA_NEDELA) {
 		// pred velkou nocou
@@ -6356,6 +6355,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						mystrcpy(_global_den.meno, text_MARIE_MATKY_CIRKVI[_global_jazyk], MENO_SVIATKU);
 
 						_global_den.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+						Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 						_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_PANNA_MARIA;
 
 						/*
@@ -6396,6 +6396,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 							mystrcpy(_global_den.meno, text_NEPOSKVRNENEHO_SRDCA_PM[_global_jazyk], MENO_SVIATKU);
 						}
 						_global_den.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+						Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 						_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_PANNA_MARIA;
 						// 2003-06-30: porov. pasaz venovanu srdcu pm vo funkcii dbzaltar.cpp::sviatky_svatych(); -- 2 vstupy
 
@@ -6684,18 +6685,21 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 					if ((_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a1))
 						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a2))
 						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a3))) {
+						Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 						_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
 					}
 				}
 				else {
 					if ((_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a1))
 						&& (_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a2))) {
+						Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 						_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
 					}
 				}
 			}
 			else {
 				if (_global_opt[OPT_3_SPOLOCNA_CAST] != (unsigned)(sc.a1)) {
+					Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 					_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1; // iba ak nie je ani podľa jednej z nenullovývch, zmením
 				}
 			}
@@ -13484,6 +13488,7 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 			/*
 			Log("kontrolujem _global_opt[OPT_3_SPOLOCNA_CAST]... if((_global_den.smer -> _global_den_smer_override < 5) || : ");
 			if (_local_spol_cast != MODL_SPOL_CAST_NEURCENA) {
+				Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 				_global_opt[OPT_3_SPOLOCNA_CAST] = _local_spol_cast;
 				Log("upravené podľa _local_spol_cast na %s (%d)\n", nazov_spolc(_local_spol_cast), _local_spol_cast);
 			}
@@ -13614,6 +13619,7 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 
 				Log("v časti LABEL_ZMENA kontrolujem _global_opt[OPT_3_SPOLOCNA_CAST]: ");
 				if (_local_spol_cast != MODL_SPOL_CAST_NEURCENA) {
+					Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 					_global_opt[OPT_3_SPOLOCNA_CAST] = _local_spol_cast;
 					Log("upravené podľa _local_spol_cast na %s (%d)\n", nazov_spolc(_local_spol_cast), _local_spol_cast);
 				}
@@ -13831,6 +13837,7 @@ void showAllPrayers(short int typ, short int den, short int mesiac, short int ro
 
 		_global_modlitba = modlitba;
 
+		Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 		_global_opt[OPT_3_SPOLOCNA_CAST] = opt_3; // potrebné nastaviť pôvodnú hodnotu, lebo sa niekde v rozbor_dna_s_modlitbou() upravuje
 
 		if (je_modlitba_cez_den(modlitba)) {
@@ -14123,6 +14130,7 @@ void _rozparsuj_parametre_OPT(void) {
 	if (strlen(pom_OPT[OPT_3_SPOLOCNA_CAST]) > 0) {
 		while (i <= MODL_SPOL_CAST_NEBRAT) {
 			if (equals(pom_OPT[OPT_3_SPOLOCNA_CAST], nazov_spolc(i))) {
+				Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 				_global_opt[OPT_3_SPOLOCNA_CAST] = i;
 				break;
 			}
@@ -14133,6 +14141,7 @@ void _rozparsuj_parametre_OPT(void) {
 		i = MODL_SPOL_CAST_NEBRAT + 1; // simulation of overflow in while
 	}
 	if (i > MODL_SPOL_CAST_NEBRAT) {
+		Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 		_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
 	}
 	LogParams("opt %d == `%s' (%llu)\n", OPT_3_SPOLOCNA_CAST, pom_OPT[OPT_3_SPOLOCNA_CAST], _global_opt[OPT_3_SPOLOCNA_CAST]);
@@ -16719,6 +16728,7 @@ void _main_batch_mode(
 							for (i = poradie(d_from, m_from + 1, r_from); i <= poradie(31, MES_DEC + 1, r_from); i++) {
 								Log("%d. den v roku %d...\n", i, r_from);
 								// doplnenie nastavenia premenných kvôli tomu, že v batch móde používame viackrát
+								Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 								_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
 								d_a_m = por_den_mesiac(i, r_from);
 								d = d_a_m.den;
@@ -16784,6 +16794,7 @@ void _main_batch_mode(
 								for (i = poradie(1, MES_JAN + 1, y); i <= poradie(31, MES_DEC + 1, y); i++) {
 									Log("%d. den v roku %d...\n", i, y);
 									// doplnenie nastavenia premenných kvôli tomu, že v batch móde používame viackrát
+									Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 									_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
 									d_a_m = por_den_mesiac(i, y);
 									d = d_a_m.den;
@@ -16849,6 +16860,7 @@ void _main_batch_mode(
 							for (i = poradie(1, MES_JAN + 1, r_to); i <= poradie(d_to, m_to + 1, r_to); i++) {
 								Log("%d. den v roku %d...\n", i, r_to);
 								// doplnenie nastavenia premenných kvôli tomu, že v batch móde používame viackrát
+								Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 								_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
 								d_a_m = por_den_mesiac(i, r_to);
 								d = d_a_m.den;
@@ -16913,6 +16925,7 @@ void _main_batch_mode(
 							for (i = poradie(d_from, m_from + 1, r_from); i <= poradie(d_to, m_to + 1, r_to); i++) {
 								Log("%d. den v roku %d...\n", i, r_from);
 								// doplnenie nastavenia premenných kvôli tomu, že v batch móde používame viackrát
+								Log("setting _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 								_global_opt[OPT_3_SPOLOCNA_CAST] = MODL_SPOL_CAST_NEURCENA;
 								d_a_m = por_den_mesiac(i, r_from);
 								d = d_a_m.den;
@@ -20186,6 +20199,8 @@ int breviar_main(int argc, const char** argv) {
 			local_den = local_mesiac = local_rok = local_modlitba = 0;
 			_rozparsuj_parametre_DEN_MESIAC_ROK(pom_DEN, pom_MESIAC, pom_ROK, pom_MODLITBA, local_den, local_mesiac, local_rok, local_modlitba);
 
+			LOG_ciara;
+
 			// nastavenie titulku pre hlavičku
 			if (query_type != PRM_XML) {
 				init_global_string_as_html_title(local_den, local_mesiac, local_rok, local_modlitba);
@@ -20205,8 +20220,9 @@ int breviar_main(int argc, const char** argv) {
 			// main switch
 			Log("export_monthly_druh == %d\n", export_monthly_druh);
 
-			_main_LOG_to_Export("/* teraz nasleduje vykonanie jadra programu podla parametrov */\n");
-			_main_LOG_to_Export("switch: podla query_type...\n");
+			LOG_ciara;
+
+			_main_LOG_to_Export("teraz nasleduje vykonanie jadra programu podla parametrov: switch podla query_type...\n");
 			switch (query_type) {
 			case PRM_DETAILY:
 				// presne to iste co PRM_DATUM s jedinkym rozdielom: co sa tyka formularov, prvy (uvodny) formular pre PRM_DATUM vycisti modlitbu 
