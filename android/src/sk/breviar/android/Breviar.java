@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.net.Uri;
@@ -42,6 +43,7 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.lang.Character;
@@ -959,10 +961,33 @@ public class Breviar extends AppCompatActivity
       syncPreferences();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public void onRequestPermissionsResult(
+        int requestCode, String[] permissions, int[] grantResults) {
+      if (grantResults.length > 0 &&
+          grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        onNavigationItemSelected(requestCode);
+      }
+    }
+
+    boolean doCheckNotificationPermission(int code) {
+      String permission = android.Manifest.permission.POST_NOTIFICATIONS;
+      if (checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED) return true;
+      if (shouldShowRequestPermissionRationale(permission)) {
+        CharSequence message = getResources().getText(R.string.need_notification_permission);
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+      }
+      requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, code);
+      return false;
+    }
+
+    boolean checkNotificationPermission(int code) {
+      if (Build.VERSION.SDK_INT < 33) return true;
+      return doCheckNotificationPermission(code);
+    }
+
+    boolean onNavigationItemSelected(int item_id) {
       UrlOptions opts;
-      switch (item.getItemId()) {
+      switch (item_id) {
         case R.id.today:
           syncScale();
           goHome();
@@ -1002,14 +1027,17 @@ public class Breviar extends AppCompatActivity
           break;
 
         case R.id.menu_alarms:
+          if (!checkNotificationPermission(item_id)) break;
           startActivity(new Intent("sk.breviar.android.ALARMS"));
           break;
 
         case R.id.speak_toggle:
+          if (!checkNotificationPermission(item_id)) break;
           toggleSpeakState();
           break;
 
         case R.id.speak_pause_toggle:
+          if (!checkNotificationPermission(item_id)) break;
           if (tts_state == TtsService.TtsState.SPEAKING) {
             pauseSpeaking();
           } else if (tts_state == TtsService.TtsState.PAUSED) {
@@ -1018,16 +1046,23 @@ public class Breviar extends AppCompatActivity
           break;
 
         case R.id.speak_back:
+          if (!checkNotificationPermission(item_id)) break;
           speakBack();
           break;
 
         case R.id.speak_forward:
+          if (!checkNotificationPermission(item_id)) break;
           speakForward();
           break;
       }
       updateMenu();
       drawer.closeDrawer(GravityCompat.START);
       return true;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+      return onNavigationItemSelected(item.getItemId());
     }
 
     @Override
