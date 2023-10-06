@@ -11009,7 +11009,7 @@ _struct_lang_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "VN1_p_HYMNUS_CZ", 7 },
 	{ JAZYK_CZ, "_2NE_1HYMNUS_CZ", 3 },
 	{ JAZYK_CZ, "_2NE_rHYMNUS_CZ", 2 },
-	{ JAZYK_CZ, "_2NE_vHYMNUS_CZ", 2 },
+	{ JAZYK_CZ, "_2NE_vHYMNUS_CZ", 3 },
 	{ JAZYK_CZ, "_2PO_vHYMNUS_CZ", 2 },
 	{ JAZYK_CZ, "_2UT_vHYMNUS_CZ", 2 },
 	{ JAZYK_CZ, "_2STR_rHYMNUS_CZ", 2 },
