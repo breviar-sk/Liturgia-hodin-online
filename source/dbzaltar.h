@@ -2446,6 +2446,8 @@ extern const char* text_MAR_18_SCHP[POCET_JAZYKOV + 1];
 extern const char* text_MAJ_08_SCHP[POCET_JAZYKOV + 1];
 extern const char* text_JUL_15_SCHP[POCET_JAZYKOV + 1];
 extern const char* text_AUG_25_SCHP[POCET_JAZYKOV + 1];
+extern const char* text_SEP_12_SCHP[POCET_JAZYKOV + 1]; // HU
+extern const char* text_SEP_17_SCHP[POCET_JAZYKOV + 1]; // HU
 extern const char* text_SEP_19_SCHP[POCET_JAZYKOV + 1];
 extern const char* text_SEP_22_SCHP[POCET_JAZYKOV + 1];
 extern const char* text_OKT_16_SCHP[POCET_JAZYKOV + 1];

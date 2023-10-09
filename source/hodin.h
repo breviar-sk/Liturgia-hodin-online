@@ -447,11 +447,11 @@ const char* nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1] =
 
 // calendar codes; internal usage for HTTP requests
 const char* skratka_kalendara[POCET_KALENDAROV + 1] =
-{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", "czofmconv", "skopraem", "husdb", "schp", /* ADD_VALUE_FOR_NEW_CALENDAR */};
+{ "", "la", "sk", "cz", "czop", "cssr", "hu", "svd", "sj", "sdb", "ofm", "op", "cm", "opraem", "ofmcap", "czcssr", "czsdb", "ru", "huofm", "ocd", "husvd", "by", "czofm", "csa", "osu", "husj", "is", "czsj", "czocd", "czofmconv", "skopraem", "husdb", "schp", "huschp", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 // filenames for special calendars / názov súbora pre kalendáre -- "pro" == propriá
 const char* nazov_htm_kalendar[POCET_KALENDAROV + 1] =
-{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", "pro_ofmconv.htm", "pro_opraem.htm", "pro_sdb.htm", "pro_schp.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */};
+{ "", "", "", "", "", "pro_cssr.htm", "", "pro_svd.htm", "pro_sj.htm", "pro_sdb.htm", "pro_ofm.htm", "pro_op.htm", "pro_cm.htm", "pro_opraem.htm", "pro_ofmcap.htm", "pro_cssr.htm", "pro_sdb.htm", "", "pro_ofm.htm", "pro_ocd.htm", "pro_svd.htm", "", "pro_ofm.htm", "pro_csa.htm", "pro_osu.htm", "pro_sj.htm", "", "pro_sj.htm", "pro_ocd.htm", "pro_ofmconv.htm", "pro_opraem.htm", "pro_sdb.htm", "pro_schp.htm", "pro_schp.htm", /* ADD_VALUE_FOR_NEW_CALENDAR */};
 
 const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 {
@@ -488,6 +488,7 @@ const char* nazov_kalendara_short[POCET_KALENDAROV + 1] =
 	, "SK OPRAEM"
 	, "HU SVD"
 	, "SK SCHP"
+	, "HU SCHP"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -525,6 +526,7 @@ const char* nazov_kalendara_propria_only[POCET_KALENDAROV + 1] =
 	, "OFMconv"
 	, "OPRaem"
 	, "SDB"
+	, "SchP"
 	, "SchP"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
@@ -566,6 +568,7 @@ const char* nazov_kalendara_long[POCET_KALENDAROV + 1] =
 	, "pre premonštrátov (OPraem)"
 	, "szalézi zsolozsma"
 	, "pre rehoľu Piaristov (SchP)"
+	, "piaristák zsolozsmája (SchP)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -606,6 +609,7 @@ const char* nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "pre premonštrátov (OPraem)"
 	, "szalézi zsolozsma"
 	, "pre piaristov (SchP)"
+	, "piaristák zsolozsmája (SchP)"
 	, /* ADD_VALUE_FOR_NEW_CALENDAR */
 };
 
@@ -6993,7 +6997,7 @@ const char* text_FEB_26_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Paula Montal, szűz, rendalapító",
 	"",
 	"",
 	"",
@@ -7111,7 +7115,7 @@ const char* text_MAR_08_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Faustino Míguez, áldozópap",
 	"",
 	"",
 	"",
@@ -8251,7 +8255,7 @@ const char* text_MAJ_08_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Kegyes Iskolák Édesanyja, " HTML_LINE_BREAK "a boldogságos szűz Mária, rendünk pártfogója",
 	"",
 	"",
 	"",
@@ -11149,7 +11153,7 @@ const char* text_JUL_15_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Pirrotti Szent Pompilius, áldozópap",
 	"",
 	"",
 	"",
@@ -12710,7 +12714,7 @@ const char* text_AUG_25_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Kalazanci Szent József, áldozópap, " HTML_LINE_BREAK "rendünk alapítója",
 	"",
 	"",
 	"",
@@ -13349,6 +13353,20 @@ const char* text_SEP_12_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_SEP_12_SCHP[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Szűz Mária szent neve, rendünk titulusa",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_SEP_13[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána Zlatoústeho, biskupa a učiteľa Cirkvi",
@@ -13515,6 +13533,20 @@ const char* text_SEP_17_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Alberts frá Jerúsalem, biskups",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_SEP_17_SCHP[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Anton Maria Schwartz, áldozópap",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_18_OFM[POCET_JAZYKOV + 1] =
@@ -13735,7 +13767,7 @@ const char* text_SEP_22_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Dionisio Pamplona és tizenkét társa, vértanúk",
 	"",
 	"",
 	"",
@@ -14662,7 +14694,7 @@ const char* text_OKT_16_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Pietro Casani, áldozópap",
 	"",
 	"",
 	"",
