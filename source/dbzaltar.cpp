@@ -11437,6 +11437,7 @@ _struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] 
 	{ JAZYK_HU, KALENDAR_HU_SDB, BASE_OPT_6_CITANIE2_MULTI, "24MAJ_cCIT2", 2 },
 	{ JAZYK_SK, KALENDAR_SK_SCHP, BASE_OPT_6_CITANIE2_MULTI, "25NOV_cCIT2", 0 }, // !!! override language-default (not use multiple hymns)
 	{ JAZYK_HU, KALENDAR_HU_SCHP, BASE_OPT_6_CITANIE2_MULTI, "22SEP_cCIT2", 2 },
+	{ JAZYK_HU, KALENDAR_HU_SCHP, BASE_OPT_6_CITANIE2_MULTI, "16OKT_cCIT2", 2 },
 };
 
 short int pocet_multi(char* _anchor, unsigned long long type) {

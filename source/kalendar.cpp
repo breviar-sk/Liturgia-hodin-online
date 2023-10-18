@@ -24354,8 +24354,8 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				}// KALENDAR_CZ_OFM*
-				// pre slávenie s vyšším stupňom nastavíme niektoré časti modlitby z 19MAR
-				if (_je_global_den_slavnost || _je_global_den_sviatok) {
+				// CZ: pre slávenie s vyšším stupňom nastavíme niektoré časti modlitby
+				if ((_global_jazyk == JAZYK_CZ) && (_je_global_den_slavnost || _je_global_den_sviatok)) {
 					_vlastna_cast_kcitanie;
 					_vlastna_cast_kresponz;
 					_vlastna_cast_prosby;
@@ -24374,8 +24374,8 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				if (je_CZ_nie_hymny_k_volnemu_vyberu) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				}// KALENDAR_CZ_OFM*
-				// pre slávenie s vyšším stupňom nastavíme niektoré časti modlitby z 19MAR
-				if (_je_global_den_slavnost || _je_global_den_sviatok) {
+				// CZ: pre slávenie s vyšším stupňom nastavíme niektoré časti modlitby
+				if ((_global_jazyk == JAZYK_CZ) && (_je_global_den_slavnost || _je_global_den_sviatok)) {
 					_vlastna_cast_kcitanie;
 					_vlastna_cast_kresponz;
 					_vlastna_cast_prosby;
@@ -27747,7 +27747,8 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_CSSR a KALENDAR_CZ_CSSR
 
-		else if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SCHP)) {
+		else if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SCHP))
+			|| ((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_SCHP))) {
 			if (poradie_svaty == 1) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
@@ -27761,7 +27762,9 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_POSV_CITANIE;
-				// _vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_HU) {
+					_vlastna_cast_2citanie;
+				}
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
@@ -27776,7 +27779,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
-		}// kalendár pre KALENDAR_SK_SCHP
+		}// kalendár pre KALENDAR_SK_SCHP, KALENDAR_HU_SCHP
 
 		else {
 			if (poradie_svaty == 1) {
