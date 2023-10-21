@@ -676,7 +676,7 @@ const char* nazov_slavenia_lokal[] =
 , "A Pécsi egyházmegyében: az egyházmegye védőszentje; főünnep"                                                  // LOKAL_SLAV_PECSI_EGYH_PATRON
 , "A Szeged-Csanádi egyházmegye északi részében; ünnep"                                                          // LOKAL_SLAV_SZEGED_CSAN_EGYH
 , "A Veszprémi főegyházmegyében: Szent Anna, a főegyházmegye védőszentje; főünnep"                               // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
-, "A Győri és Székesfehérvári egyházmegyében: az egyházmegye védőszentje"                                        // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH
+, "Győr és Székesfehérvár: az egyházmegye védőszentje; főünnep"                                                  // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH
 , "A Kaposvári egyházmegyében; ünnep"                                                                            // LOKAL_SLAV_KAPORSVAR_FELSZ
 , "A Váci egyházmegyében; ünnep"                                                                                 // LOKAL_SLAV_VACI_FELSZ
 , "A Kalocsa-Kecskeméti főegyházmegyében: a főegyházmegye védőszentje; főünnep"                                  // LOKAL_SLAV_KAL_KECS_FOEGYH
@@ -756,6 +756,8 @@ const char* nazov_slavenia_lokal[] =
 , "az FMA számára: Emléknap"                                                                                     // LOKAL_SLAV_SPOMIENKA_FMA_HU
 , "az FMA és VDB számára: tetszés szerinti emléknap"                                                             // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_HU
 , "a VDB számára: Ünnep"                                                                                         // LOKAL_SLAV_SVIATOK_VDB_HU
+, "A pozsonyi főszékesegyházban"                                                                                 // LOKAL_SLAV_SPOMIENKA_POZSONYI_HU
+, "A székesegyházban: főünnep"                                                                                   // LOKAL_SLAV_CATHERDAL_SLAVNOST_HU
 };
 
 // names of liturgical colors
@@ -5482,7 +5484,7 @@ const char* text_JAN_03[POCET_JAZYKOV + 1] =
 	"Sanctissimi Nominis Iesu",
 	"",
 	"Nejsvětějšího jména Ježíš",
-	"Jézus szent neve", // "Jézus Szentséges Nevének"
+	"Jézus Szent Neve", // "Jézus Szentséges Nevének"
 	"ru_text",
 	"Найсвяцейшага Імя Езуса",
 	"Alheilagt nafn Jesú",
@@ -5972,7 +5974,7 @@ const char* text_JAN_20_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Esztergomi Boldog Özséb áldozópap",
+	"Boldog Özséb áldozópap", // before: "Esztergomi Boldog Özséb áldozópap"
 	"",
 	"",
 	"",
@@ -6056,7 +6058,7 @@ const char* text_JAN_23_SK[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Alamizsnás Szent János",
 	"",
 	"",
 	"",
@@ -8857,7 +8859,7 @@ const char* text_MAJ_22[POCET_JAZYKOV + 1] =
 	"S. Ritæ de Cascia, religiosæ",
 	"",
 	"Sv. Rity z Cascie, řeholnice",
-	"Szent Rita szerzetesnő",
+	"Casciai Szent Rita szerzetesnő",
 	"ru_text",
 	"Св. Рыты з Касіі, законніцы",
 	"Hl. Ritu frá Cascia, nunnu", // reglusystir?
@@ -8983,7 +8985,7 @@ const char* text_MAJ_24[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Szűz Mária, a keresztények segítsége",
+	"Szűz Mária, a keresztények Segítsége",
 	"",
 	"",
 	"Hl. Maríu meyjar, hjálpar kristinna manna",
@@ -8997,7 +8999,7 @@ const char* text_MAJ_24_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Szűz Mária, a keresztények segítsége, " HTML_LINE_BREAK "a Szalézi Szent Ferenc Társaság, " HTML_LINE_BREAK "a Segítő Szűz Mária Leányai Intézménye " HTML_LINE_BREAK "és a Don Bosco Voluntáriák Világi Intézménye főpatrónája",
+	"Szűz Mária, a keresztények Segítsége, " HTML_LINE_BREAK "a Szalézi Szent Ferenc Társaság, " HTML_LINE_BREAK "a Segítő Szűz Mária Leányai Intézménye " HTML_LINE_BREAK "és a Don Bosco Voluntáriák Világi Intézménye főpatrónája",
 	"",
 	"",
 	"Hl. Maríu meyjar, hjálpar kristinna manna",
@@ -10058,7 +10060,7 @@ const char* text_JUN_14_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"A Szombathelyi székesegyház felszentelése",
+	"Szombathelyi: A székesegyház felszentelése",
 	"",
 	"",
 	"",
@@ -10999,7 +11001,7 @@ const char* text_JUL_13[POCET_JAZYKOV + 1] =
 	"S. Henrici",
 	"",
 	"Sv. Jindřicha",
-	"Szent Henrik",
+	"Szent II. Henrik császár",
 	"ru_text",
 	"Св. Генрыха",
 	"Hl. Henriks",
@@ -11321,7 +11323,7 @@ const char* text_JUL_20[POCET_JAZYKOV + 1] =
 	"S. Apollinaris, episcopi et martyris",
 	"",
 	"Sv. Apolináře, biskupa a mučedníka",
-	"Szent Apollinaris püspök és vértanú",
+	"Szent Apollinárisz püspök és vértanú",
 	"ru_text",
 	"Св. Апалінарыя, біскупа і мучаніка",
 	"Hl. Appollinaris, biskups og píslarvottur",
@@ -11419,7 +11421,7 @@ const char* text_JUL_23[POCET_JAZYKOV + 1] =
 	"S. Brigitæ, religiosæ",
 	"",
 	"Sv. Brigity, řeholnice, " HTML_LINE_BREAK "patronky Evropy",
-	"Szent Brigitta szerzetesnő, " HTML_LINE_BREAK "Európa társvédőszentje",
+	"Svéd Szent Brigitta szerzetesnő, " HTML_LINE_BREAK "Európa társvédőszentje",
 	"ru_text",
 	"Св. Брыгіты, законніцы, апякункі Еўропы",
 	"Hl. Birgittu, reglustofnanda " HTML_LINE_BREAK "og verndardýrlings Evrópu",
@@ -11643,7 +11645,7 @@ const char* text_JUL_30[POCET_JAZYKOV + 1] =
 	"S. Petri Chrysologi, episcopi et Ecclesiæ doctoris",
 	"",
 	"Sv. Petra Chryzologa, biskupa a učitele církve",
-	"Aranyszavú (Krizologosz) Szent Péter püspök és egyháztanító",
+	"Aranyszavú (Krizológ) Szent Péter püspök és egyháztanító",
 	"ru_text",
 	"Св. Пятра Хрызалога, біскупа і доктара Касцёла",
 	"Hl. Péturs Krýsológus, biskups og kirkjufræðara",
@@ -11818,7 +11820,7 @@ const char* text_AUG_02_2[POCET_JAZYKOV + 1] =
 	"S. Petri Iuliani Eymard, presbyteri",
 	"",
 	"Sv. Petra Juliána Eymarda, kněze",
-	"Eymard Szent Julián Péter áldozópap",
+	"Szent Eymard Péter Julián áldozópap",
 	"ru_text",
 	"Св. Пятра Юліяна Эймарда, прэзбітэра",
 	"Hl. Péturs Julian Eymard, prests", // Júlíanus?
@@ -13655,7 +13657,7 @@ const char* text_SEP_20[POCET_JAZYKOV + 1] =
 	"Ss. Andreæ Kim Taegǒn, presbyteri, " HTML_LINE_BREAK "et Pauli Chǒng Hasang, et sociorum, martyrum",
 	"",
 	"Sv. Ondřeje Kim Tae-g&#335;na, kněze, " HTML_LINE_BREAK "Pavla Ch&#335;ng Ha-sanga a druhů, mučedníků",
-	"Kim Taegon Szent András áldozópap, " HTML_LINE_BREAK "Csong Haszang Szent Pál és társaik, koreai vértanúk",
+	"Kim Tae-gon Szent András áldozópap, " HTML_LINE_BREAK "Csong Ha-szang Szent Pál és társaik, koreai vértanúk",
 	"ru_text",
 	"Св. Андрэя Кім Таэгона, прэзбітэра, " HTML_LINE_BREAK "і Паўла Чон Хасана, і паплечнікаў, мучанікаў",
 	"Hl. Andrésar Kim Taegon, prests " HTML_LINE_BREAK "og hl. Páls Chǒng Ha-sang og félaga, píslarvotta",
@@ -13781,7 +13783,7 @@ const char* text_SEP_23[POCET_JAZYKOV + 1] =
 	"S. Pii de Pietrelcina, presbyteri",
 	"",
 	"Sv. Pia z Pietrelciny, kněze",
-	"Pietrelcinai Szent Pio áldozópap",
+	"Pietrelcinai Szent Pió áldozópap",
 	"ru_text",
 	"Св. Піо з П'етрэльчыны, прэзбітэра",
 	"Hl. Pio de Pietrelcina, prests",
@@ -14190,7 +14192,7 @@ const char* text_OKT_05_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Veszprém: A bazilika-főszékesegyház felszentelése",
+	"Veszprém: A bazilika-székesegyház felszentelése",
 	"",
 	"",
 	"",
@@ -14288,7 +14290,7 @@ const char* text_OKT_07[POCET_JAZYKOV + 1] =
 	"Beatæ Mariæ Virginis a Rosario",
 	"",
 	"Panny Marie Růžencové",
-	"A Boldogságos Szűz Mária, a szentolvasó Királynéja", // HU: old name: "Rózsafüzér Királynője"
+	"Boldogságos Szűz Mária, a szentolvasó Királynője (Rózsafüzér Királynője)", // HU: old name: "Rózsafüzér Királynője" / "A Boldogságos Szűz Mária, a szentolvasó Királynéja"
 	"ru_text",
 	"Найсв. Панны Марыі Ружанцовай",
 	"Rósakransmessa, hl. Maríu meyjar", // ToDo
@@ -14344,7 +14346,7 @@ const char* text_OKT_09_1[POCET_JAZYKOV + 1] =
 	"Ss. Dionysii, episcopi, et sociorum martyrum",
 	"",
 	"Sv. Dionýsia, biskupa, a druhů, mučedníků",
-	"Szent Dénes püspök és társai vértanúk",
+	"Szent Dénes püspök és társai, vértanúk",
 	"ru_text",
 	"Св. Дыянісія, біскупа, і паплечнікаў, мучанікаў",
 	"Hl. Díónysíusar og félaga, píslarvotta",
@@ -14666,7 +14668,7 @@ const char* text_OKT_16_3[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Gaál áldozópap",
 	"",
 	"",
 	"",
@@ -14736,7 +14738,7 @@ const char* text_OKT_19_1[POCET_JAZYKOV + 1] =
 	"Ss. Ioannis de Brebeuf et Isaac Jogues, presbyterorum, " HTML_LINE_BREAK "et sociorum, martyrum",
 	"",
 	"Sv. Jana de Brébeuf a Izáka Joguese, kněží, " HTML_LINE_BREAK "a druhů, mučedníků",
-	"De Brébeuf Szent János és Jogues Szent Izsák áldozópap " HTML_LINE_BREAK "és társaik, észak-amerikai vértanúk",
+	"De Brébeuf Szent János és Jogues Szent Izsák áldozópapok " HTML_LINE_BREAK "és társaik, észak-amerikai vértanúk",
 	"ru_text",
 	"Св. Жана дэ Брэбёфа і Ісаака Жога, прэзбітэраў, " HTML_LINE_BREAK "і паплечнікаў, мучанікаў",
 	"Hl. Jóhannes de Brébeuf og félaga, píslarvotta",
@@ -16618,7 +16620,7 @@ const char* text_DEC_04_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Szent Borbála szűz és vértanú",
 	"",
 	"",
 	"Hl. Barböru, meyjar og píslarvotts",
