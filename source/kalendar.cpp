@@ -28221,7 +28221,12 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty(1).meno, text_OKT_20_OFM[_global_jazyk], MENO_SVIATKU); // HU: different saint!
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP);
+			if (_global_jazyk == JAZYK_HU) {
+				_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ); // HU: layman
+			}
+			else {
+				_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP);
+			}
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OFM, KALENDAR_HU_OFM, KALENDAR_CZ_OFMCONV?
