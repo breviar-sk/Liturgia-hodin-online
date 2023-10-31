@@ -30971,7 +30971,12 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			pocet = pom_poradie;
 
 			if (_global_jazyk == JAZYK_CZ) {
-				_set_slavenie_typslav_smer(pom_poradie, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+				if (_global_kalendar == KALENDAR_CZ_OFMCAP) {
+					_set_slavenie_typslav_smer(pom_poradie, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
+				}
+				else {
+					_set_slavenie_typslav_smer(pom_poradie, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+				}
 				mystrcpy(_global_svaty(pom_poradie).meno, text_NOV_13_CZ[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 				_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
