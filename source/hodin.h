@@ -694,7 +694,7 @@ const char* nazov_slavenia_lokal[] =
 , "Az Egri főegyházmegyében: a főegyházmegye védőszentje; főünnep"                                               // LOKAL_SLAV_EGER_FOEGYH
 , "Az Esztergomi főegyházmegyében; emléknap"                                                                     // LOKAL_SLAV_ESZTERGOM_EML
 , "A Győri egyházmegyében"                                                                                       // LOKAL_SLAV_GYOR_EGYH
-, "Az Esztergomi főegyházmegyében"                                                                               // LOKAL_SLAV_ESZTERGOM_FOEGYH
+, "Az Esztergom-Budapesti Főegyházmegyében: a főegyházmegye védőszentje; főünnep"                                // LOKAL_SLAV_ESZTERGOM_FOEGYH
 , "Az Egri főegyházmegyében"                                                                                     // LOKAL_SLAV_EGER_FOEGYH2
 , "A Veszprémi főegyházmegyében: a főegyházmegye társvédőszentje; főünnep"                                       // LOKAL_SLAV_VESZPREM_FOEGYH_T
 , "A Szatmári egyházmegyében; emléknap"                                                                          // LOKAL_SLAV_SZATMAR
@@ -758,6 +758,7 @@ const char* nazov_slavenia_lokal[] =
 , "a VDB számára: Ünnep"                                                                                         // LOKAL_SLAV_SVIATOK_VDB_HU
 , "A pozsonyi főszékesegyházban"                                                                                 // LOKAL_SLAV_SPOMIENKA_POZSONYI_HU
 , "A székesegyházban: főünnep"                                                                                   // LOKAL_SLAV_CATHERDAL_SLAVNOST_HU
+, "A Szabadkai Egyházmegyében"                                                                                   // LOKAL_SLAV_SZABADKAI_SLAVNOST_HU
 };
 
 // names of liturgical colors
@@ -6120,6 +6121,20 @@ const char* text_JAN_25[POCET_JAZYKOV + 1] =
 	"Hátíð sinnaskipta hl. Páls postula",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_JAN_25_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"In Conversione S. Pauli, apostoli",
+	"",
+	"",
+	"Szent Pál apostol megtérése," HTML_LINE_BREAK "az egyházmegye fővédőszentje",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_JAN_25_CM[POCET_JAZYKOV + 1] =
 {
 	"Obrátenie svätého Pavla, apoštola" HTML_LINE_BREAK "Výročný deň založenia Misijnej spoločnosti",
@@ -7145,7 +7160,7 @@ const char* text_MAR_10_SK[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Pozsony: a székesegyház felszentelése",
 	"",
 	"",
 	"",
@@ -7644,20 +7659,6 @@ const char* text_APR_23[POCET_JAZYKOV + 1] =
 	"Hl. Aðalberts, biskups og píslarvotts",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_APR_23_HU[POCET_JAZYKOV + 1] =
-{
-	"Sv. Vojtecha, biskupa a mučeníka",
-	"Sv. Vojtěcha, biskupa a mučedníka",
-	"",
-	"S. Adalberti, episcopi et martyris",
-	"",
-	"Sv. Vojtěcha, biskupa a mučedníka",
-	"Szent Adalbert (Béla) püspök és vértanú, " HTML_LINE_BREAK "az Esztergomi főegyházmegye védőszentje",
-	"",
-	"Св. Адальбэрта (Войцеха), біскупа і мучаніка",
-	"",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
 const char* text_APR_23_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Egida z Assisi, rehoľníka, člena 1. rádu",
@@ -7698,6 +7699,20 @@ const char* text_APR_24_2[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"Св. Фідэля Сігмарынгенскага, прэзбітэра і мучаніка",
 	"Hl. Fídelis frá Sigmaringen, prests og píslarvotts",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_APR_24_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Temesvár: A székesegyház felszentelése",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_24_OFM[POCET_JAZYKOV + 1] =

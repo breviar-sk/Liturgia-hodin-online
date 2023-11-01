@@ -1169,6 +1169,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SVIATOK_VDB_HU					139
 #define LOKAL_SLAV_SPOMIENKA_POZSONYI_HU			140
 #define LOKAL_SLAV_CATHERDAL_SLAVNOST_HU			141
+#define LOKAL_SLAV_SZABADKAI_SLAVNOST_HU			142
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined
