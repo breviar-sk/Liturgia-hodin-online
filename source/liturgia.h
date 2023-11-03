@@ -1028,9 +1028,9 @@ extern const char* nazov_slavenia_na_spomienku_jazyk[POCET_JAZYKOV + 1];
 extern const char* nazov_slavenia_lokal[];
 
 #define LOKAL_SLAV_NEURCENE							0
-#define LOKAL_SLAV_ROZNAVA_KATEDRALA				1 // not used
+#define LOKAL_SLAV_ROZNAVA_SZLOVAKIA				1
 #define LOKAL_SLAV_TRNAVA_PATRON					2
-#define LOKAL_SLAV_TT_BB_KE_NR_RO					3 // not used
+#define LOKAL_SLAV_ROZNAVA_HU					    3
 #define LOKAL_SLAV_NITRA_PATRON						4
 #define LOKAL_SLAV_KOSICE							5
 #define LOKAL_SLAV_NITRA							6
@@ -1083,7 +1083,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SZOMBATHELYI_EGYH				53
 #define LOKAL_SLAV_NAGYSZ_PATRON					54
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON				55
-#define LOKAL_SLAV_PECSI_EGYH						56
+#define LOKAL_SLAV_SZLOVAKIA_FOUNNEP				56
 #define LOKAL_SLAV_PECSI_EGYH_PATRON				57
 #define LOKAL_SLAV_SZEGED_CSAN_EGYH					58
 #define LOKAL_SLAV_VESZPREMI_EGYH_PATRON			59
@@ -1106,7 +1106,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_ESZTERGOM_EML					76
 #define LOKAL_SLAV_GYOR_EGYH						77
 #define LOKAL_SLAV_ESZTERGOM_FOEGYH					78
-#define LOKAL_SLAV_EGER_FOEGYH2						79
+#define LOKAL_SLAV_BAZILIKA_FOUNNEP					79
 #define LOKAL_SLAV_VESZPREM_FOEGYH_T				80
 #define LOKAL_SLAV_SZATMAR							81
 #define LOKAL_SLAV_CESKO_BRNO						82
@@ -1126,7 +1126,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SPOMIENKA_OSC					96
 #define LOKAL_SLAV_NEDOVOLENE_SK					97
 #define LOKAL_SLAV_KATONAI_ORDINARIAT				98
-#define LOKAL_SLAV_DEBR_NYIREGY						99
+#define LOKAL_SLAV_ESZTERGOM_BUD_FOEGYH				99
 #define LOKAL_SLAV_OPRAEM_DOKSANY					100
 #define LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV				101
 #define LOKAL_SLAV_OPRAEM_TEPLA						102
@@ -1170,6 +1170,12 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SPOMIENKA_POZSONYI_HU			140
 #define LOKAL_SLAV_CATHERDAL_SLAVNOST_HU			141
 #define LOKAL_SLAV_SZABADKAI_SLAVNOST_HU			142
+#define LOKAL_SLAV_ESZTERGOM_BUD_SZLOVAK			143
+#define LOKAL_SLAV_SZOMBATHELYI_PANNONHALMI			144
+#define LOKAL_SLAV_MURASZOMBATI_SZLOVAKIA			145
+#define LOKAL_SLAV_PANNONHALMA_HU					146
+#define LOKAL_SLAV_NITRA_HU							147
+#define LOKAL_SLAV_SZLOVAKIA_HU						148
 
 // calendar
 #define KALENDAR_NEURCENY                   0 // undefined
