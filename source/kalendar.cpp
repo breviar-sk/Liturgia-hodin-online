@@ -2684,7 +2684,10 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
-			_global_svaty(1).typslav_lokal = LOKAL_SLAV_SDB_ONLY;
+			if (_global_jazyk == JAZYK_SK) {
+				_global_svaty(1).typslav_lokal = LOKAL_SLAV_SDB_ONLY;
+			}
+			// ToDo: KALENDAR_CZ_SDB, KALENDAR_HU_SDB?
 			mystrcpy(_global_svaty(1).meno, text_FEB_01_SDB[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_ZA_ZOSNULYCH);
 			_global_svaty(1).farba = LIT_FARBA_FIALOVA_CIERNA;
@@ -9412,7 +9415,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			mystrcpy(_global_svaty(2).meno, text_MAJ_07_HU_2[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty(2).farba = LIT_FARBA_BIELA;
-			_global_svaty(2).typslav_lokal = LOKAL_SLAV_BAZILIKA_FOUNNEP;
+			_global_svaty(2).typslav_lokal = LOKAL_SLAV_BAZILIKA_ARCI_FOUNNEP_HU;
 			_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_HU;
 		}// HU only
 
@@ -12683,6 +12686,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			if (_global_jazyk == JAZYK_SK) {
 				_global_svaty(2).typslav_lokal = LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB;
 			}
+			// ToDo: use _global_svaty(pom_poradie).typslav_lokal = lokal_slav_lub_spomienka_fma_vdb[_global_jazyk]; instead?
 			mystrcpy(_global_svaty(2).meno, text_MAJ_29_SDB[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
 			_global_svaty(2).farba = LIT_FARBA_CERVENA;
@@ -13720,6 +13724,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			if (_global_jazyk == JAZYK_SK) {
 				_global_svaty(1).typslav_lokal = LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB;
 			}
+			// ToDo: use _global_svaty(pom_poradie).typslav_lokal = lokal_slav_lub_spomienka_fma_vdb[_global_jazyk]; instead?
 			mystrcpy(_global_svaty(1).meno, text_JUN_08_SDB[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
@@ -17660,7 +17665,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty(1).meno, text_JUL_17_SK[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).typslav_lokal = LOKAL_SLAV_NITRA_HU;
+			_global_svaty(1).typslav_lokal = LOKAL_SLAV_NITRA_FOUNNEP_HU;
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_VIACERI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_HU;
@@ -21140,6 +21145,23 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				break;
 			}
+			else if ((poradie_svaty == 3) && (_global_kalendar != KALENDAR_HU_SJ)) {
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				modlitba = MODL_RANNE_CHVALY;
+				// _vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				// _vlastna_cast_modlitba;
+				// _vlastna_cast_2citanie;
+
+				modlitba = MODL_VESPERY;
+				// _vlastna_cast_modlitba;
+
+				break;
+			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 8); // miestne sviatky
 			_global_svaty(1).typslav_lokal = LOKAL_SLAV_CATHERDAL_SLAVNOST_HU;
@@ -21149,13 +21171,20 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_HU;
 
 			if (_global_kalendar != KALENDAR_HU_SJ) {
-				pocet = 2;
+				pocet = 3;
 
 				_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 				mystrcpy(_global_svaty(2).meno, text_AUG_19[_global_jazyk], MENO_SVIATKU); // HU 18AUG
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
 				_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_HU;
+
+				_set_slavenie_typslav_smer(3, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+				_global_svaty(3).typslav_lokal = LOKAL_SLAV_SZLOVAKIA_HU;
+				mystrcpy(_global_svaty(3).meno, text_AUG_18[_global_jazyk], MENO_SVIATKU);
+				_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA);
+				_global_svaty(3).farba = LIT_FARBA_BIELA;
+				_global_svaty(3).kalendar = KALENDAR_VSEOBECNY_HU;
 			}
 		}// HU only
 
@@ -21560,6 +21589,27 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_PAPEZ);
 		_global_svaty(1).farba = LIT_FARBA_BIELA;
 		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
+
+		if (_global_jazyk == JAZYK_HU) {
+			if (poradie_svaty == 2) {
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY) {
+					set_spolocna_cast(sc, poradie_svaty);
+				}
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
+
+				break;
+			}
+
+			pocet = 2;
+			
+			_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 8); // miestne sviatky
+			_global_svaty(2).typslav_lokal = LOKAL_SLAV_CATHERDAL_SLAVNOST_HU;
+			mystrcpy(_global_svaty(2).meno, text_AUG_21_HU[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+			_global_svaty(2).farba = LIT_FARBA_BIELA;
+			_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_HU;
+		}// HU only
 
 		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)) {
 			if (poradie_svaty == 2) {
@@ -22022,7 +22072,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				pocet = 3;
 
 				_set_slavenie_typslav_smer(3, SLAV_SVIATOK, 8); // miestne sviatky
-				_global_svaty(3).typslav_lokal = LOKAL_SLAV_KAL_KECS_FELSZ;
+				_global_svaty(3).typslav_lokal = LOKAL_SLAV_ARCI_CATHEDRAL_FOUNNEP_HU;
 				mystrcpy(_global_svaty(3).meno, text_AUG_25_HU[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 				_global_svaty(3).farba = LIT_FARBA_BIELA;
@@ -22362,6 +22412,27 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				mystrcpy(_global_svaty(1).meno, text_AUG_27[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 			}// všeobecný kalendár
+
+			if (_global_jazyk == JAZYK_HU) {
+				if (poradie_svaty == 2) {
+					// definovanie parametrov pre modlitbu
+					if (query_type != PRM_DETAILY) {
+						set_spolocna_cast(sc, poradie_svaty);
+					}
+					je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
+
+					break;
+				}
+
+				pocet = 2;
+
+				_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 8); // miestne sviatky
+				_global_svaty(2).typslav_lokal = LOKAL_SLAV_BAZILIKA_FOUNNEP_HU;
+				mystrcpy(_global_svaty(2).meno, text_AUG_27_HU[_global_jazyk], MENO_SVIATKU);
+				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+				_global_svaty(2).farba = LIT_FARBA_BIELA;
+				_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_HU;
+			}// HU only
 		}
 
 		break;
@@ -22604,6 +22675,25 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			pom_poradie = 2;
 		}// SK only
 
+		if (_global_jazyk == JAZYK_HU) {
+			if (poradie_svaty == 1) {
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY) {
+					set_spolocna_cast(sc, poradie_svaty);
+				}
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
+
+				break;
+			}
+
+			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 8); // miestne sviatky
+			_global_svaty(1).typslav_lokal = LOKAL_SLAV_ARCI_CATHEDRAL_FOUNNEP_HU;
+			mystrcpy(_global_svaty(1).meno, text_AUG_30_HU[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+			_global_svaty(3).farba = LIT_FARBA_BIELA;
+			_global_svaty(3).kalendar = KALENDAR_VSEOBECNY_HU;
+		}// HU only
+
 		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
 
 			if (poradie_svaty == pom_poradie) {
@@ -22692,7 +22782,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 8); // miestne sviatky
-			_global_svaty(1).typslav_lokal = LOKAL_SLAV_CATHERDAL_SLAVNOST_HU;
+			_global_svaty(1).typslav_lokal = LOKAL_SLAV_ARCI_CATHEDRAL_FOUNNEP_HU;
 			mystrcpy(_global_svaty(1).meno, text_AUG_31_HU[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
@@ -23235,7 +23325,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 	case 6: // MES_SEP -- 06SEP
 
-		if (_global_jazyk == JAZYK_SK) {
+		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)) {
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY) {
@@ -23247,12 +23337,17 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 8); // miestne sviatky
-			_global_svaty(1).typslav_lokal = LOKAL_SLAV_KOSICE;
+			if (_global_jazyk == JAZYK_SK) {
+				_global_svaty(1).typslav_lokal = LOKAL_SLAV_KOSICE;
+			}
+			else if (_global_jazyk == JAZYK_HU) {
+				_global_svaty(1).typslav_lokal = LOKAL_SLAV_ARCI_CATHEDRAL_FOUNNEP_HU;
+			}
 			mystrcpy(_global_svaty(1).meno, text_SEP_06_SK[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
-			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_SK;
-		}// SK only
+			_global_svaty(1).kalendar = default_kalendar[_global_jazyk];
+		}// SK + HU only
 
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) || (_global_jazyk == JAZYK_CZ_OP)) {
 
@@ -23392,6 +23487,9 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 			if (_global_jazyk == JAZYK_HU) {
 				_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
+				if (_global_kalendar != KALENDAR_HU_SJ) {
+					_global_svaty(1).typslav_lokal = LOKAL_SLAV_SZLOVAKIA_EMLEKNAP_HU;
+				}
 			}
 			else if (_global_jazyk == JAZYK_SK) {
 				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
@@ -24149,6 +24247,9 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
 		_global_svaty(1).farba = LIT_FARBA_BIELA;
 		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
+		if (_global_jazyk == JAZYK_HU) {
+			_global_svaty(1).typslav_lokal = LOKAL_SLAV_SZLOVAKIA_FOPATRONAJA_HU;
+		}
 
 		break;
 
@@ -25128,31 +25229,42 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 		pom_poradie = 1;
 
-		if (_global_jazyk == JAZYK_SK) {
+		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)) {
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_modlitba;
+				}
 
 				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_modlitba;
-				_vlastna_cast_2citanie;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_modlitba;
+					_vlastna_cast_2citanie;
+				}
 
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_SK) {
+					_vlastna_cast_modlitba;
+				}
 
 				break;
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
-			_global_svaty(1).typslav_lokal = LOKAL_SLAV_NITRA;
+			if (_global_jazyk == JAZYK_SK) {
+				_global_svaty(1).typslav_lokal = LOKAL_SLAV_NITRA;
+			}
+			else if (_global_jazyk == JAZYK_HU) {
+				_global_svaty(1).typslav_lokal = LOKAL_SLAV_NITRA_HU;
+			}
 			mystrcpy(_global_svaty(1).meno, text_SEP_22_SK[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
-			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_SK;
+			_global_svaty(1).kalendar = default_kalendar[_global_jazyk];
 
 			pom_poradie = 2;
 		}// SK only
@@ -25431,14 +25543,34 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
 				_set_zalmy_sviatok_muc(modlitba);
+
+				break;
 			}
+			else if (poradie_svaty == 2) {
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY) {
+					set_spolocna_cast(sc, poradie_svaty);
+				}
+				je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
+
+				break;
+			}
+
+			pocet = 2;
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
 			_global_svaty(1).typslav_lokal = LOKAL_SLAV_SZEGED_CSAN_PATRON2;
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_HU;
-			mystrcpy(_global_svaty(1).meno, text_SEP_24_HU[_global_jazyk], MENO_SVIATKU);
+			mystrcpy(_global_svaty(1).meno, text_SEP_24_1_HU[_global_jazyk], MENO_SVIATKU);
+
+			_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 8); // miestne sviatky
+			_global_svaty(2).typslav_lokal = LOKAL_SLAV_CATHERDAL_SLAVNOST_HU;
+			mystrcpy(_global_svaty(2).meno, text_SEP_24_2_HU[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+			_global_svaty(2).farba = LIT_FARBA_BIELA;
+			_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_HU;
 		}// HU only
 
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) || (_global_jazyk == JAZYK_CZ_OP)) {
@@ -25993,7 +26125,28 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
 				_global_svaty(2).farba = LIT_FARBA_CERVENA;
 				_global_svaty(2).kalendar = KALENDAR_VSEOBECNY;
-			}
+
+				if (_global_jazyk == JAZYK_HU) {
+					if (poradie_svaty == 3) {
+						// definovanie parametrov pre modlitbu
+						if (query_type != PRM_DETAILY) {
+							set_spolocna_cast(sc, poradie_svaty);
+						}
+						je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
+
+						break;
+					}
+
+					pocet = 3;
+
+					_set_slavenie_typslav_smer(3, SLAV_SVIATOK, 8); // miestne sviatky
+					_global_svaty(3).typslav_lokal = LOKAL_SLAV_CATHERDAL_SLAVNOST_HU;
+					mystrcpy(_global_svaty(3).meno, text_SEP_28_HU[_global_jazyk], MENO_SVIATKU);
+					_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+					_global_svaty(3).farba = LIT_FARBA_BIELA;
+					_global_svaty(3).kalendar = KALENDAR_VSEOBECNY_HU;
+				}// HU only
+			}// všeobecný kalendár okrem CZ
 
 			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) {
 				if (poradie_svaty == 3) {
@@ -26238,6 +26391,35 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 		break;
 
 	case 3: // MES_OCT -- 03OKT
+
+		if ((_global_jazyk == JAZYK_HU) && (_global_kalendar != KALENDAR_HU_SJ)) {
+			if (poradie_svaty == 1) {
+				// definovanie parametrov pre modlitbu
+				if (query_type != PRM_DETAILY)
+					set_spolocna_cast(sc, poradie_svaty);
+
+				modlitba = MODL_RANNE_CHVALY;
+				// _vlastna_cast_benediktus;
+				// _vlastna_cast_modlitba;
+
+				modlitba = MODL_POSV_CITANIE;
+				// _vlastna_cast_modlitba;
+				// _vlastna_cast_2citanie;
+
+				modlitba = MODL_VESPERY;
+				// _vlastna_cast_magnifikat;
+				// _vlastna_cast_modlitba;
+
+				break;
+			}
+
+			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+			mystrcpy(_global_svaty(1).meno, text_OKT_03_HU[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(1).typslav_lokal = LOKAL_SLAV_NAGYVARADI_EGYH;
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_BISKUP);
+			_global_svaty(1).farba = LIT_FARBA_CERVENA;
+			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_HU;
+		}// HU only except KALENDAR_HU_SJ
 
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SJ))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SJ))
@@ -26506,7 +26688,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			pocet = pom_poradie;
 
 			_set_slavenie_typslav_smer(pom_poradie, SLAV_SVIATOK, 8); // miestne sviatky
-			_global_svaty(pom_poradie).typslav_lokal = LOKAL_SLAV_VESZPREM_FOEGYH;
+			_global_svaty(pom_poradie).typslav_lokal = LOKAL_SLAV_BAZILIKA_FOUNNEP_HU;
 			mystrcpy(_global_svaty(pom_poradie).meno, text_OKT_05_HU[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
@@ -27729,6 +27911,27 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK, MODL_SPOL_CAST_DUCH_PAST_PAPEZ);
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
+
+			if (_global_jazyk == JAZYK_HU) {
+				if (poradie_svaty == 2) {
+					// definovanie parametrov pre modlitbu
+					if (query_type != PRM_DETAILY) {
+						set_spolocna_cast(sc, poradie_svaty);
+					}
+					je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
+
+					break;
+				}
+
+				pocet = 2;
+
+				_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 8); // miestne sviatky
+				_global_svaty(2).typslav_lokal = LOKAL_SLAV_BAZILIKA_FOUNNEP_HU;
+				mystrcpy(_global_svaty(2).meno, text_OKT_14_HU[_global_jazyk], MENO_SVIATKU);
+				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+				_global_svaty(2).farba = LIT_FARBA_BIELA;
+				_global_svaty(2).kalendar = KALENDAR_VSEOBECNY_HU;
+			}// HU only
 		}// všeobecný kalendár
 
 		if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
@@ -28047,6 +28250,9 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 				_set_slavenie_typslav_smer(3, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 				mystrcpy(_global_svaty(3).meno, text_OKT_16_3[_global_jazyk], MENO_SVIATKU);
+				if (_global_jazyk == JAZYK_HU) {
+					_global_svaty(3).typslav_lokal = LOKAL_SLAV_SZLOVAKIA_HU;
+				}
 				_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
 				_global_svaty(3).farba = LIT_FARBA_BIELA;
 				_global_svaty(3).kalendar = (_global_jazyk == JAZYK_SK) ? KALENDAR_VSEOBECNY_SK : KALENDAR_VSEOBECNY_HU;
@@ -28498,6 +28704,9 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty(1).meno, text_OKT_21_CZ_HU[_global_jazyk], MENO_SVIATKU);
+			if (_global_jazyk == JAZYK_HU) {
+				_global_svaty(1).typslav_lokal = LOKAL_SLAV_ESZTERGOM_BUD_FOEGYH;
+			}
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = (_global_jazyk == JAZYK_HU) ? KALENDAR_VSEOBECNY_HU : KALENDAR_VSEOBECNY_CZ;
@@ -28888,7 +29097,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			pocet = 2;
 
 			_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 8); // miestne sviatky
-			_global_svaty(2).typslav_lokal = LOKAL_SLAV_SZEGED_CSAN_EGYH2;
+			_global_svaty(2).typslav_lokal = LOKAL_SLAV_CATHERDAL_SLAVNOST_HU;
 			mystrcpy(_global_svaty(2).meno, text_OKT_24_HU[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty(2).farba = LIT_FARBA_BIELA;
@@ -29297,7 +29506,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 	case 27: // MES_OCT -- 27OKT
 
-		if (_global_jazyk == JAZYK_SK) {
+		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)) {
 			if (poradie_svaty == 1) {
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY) {
@@ -29309,12 +29518,17 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 8); // miestne sviatky
-			_global_svaty(1).typslav_lokal = LOKAL_SLAV_ROZNAVA;
+			if (_global_jazyk == JAZYK_SK) {
+				_global_svaty(1).typslav_lokal = LOKAL_SLAV_ROZNAVA;
+			}
+			else if (_global_jazyk == JAZYK_HU) {
+				_global_svaty(1).typslav_lokal = LOKAL_SLAV_CATHERDAL_SLAVNOST_HU;
+			}
 			mystrcpy(_global_svaty(1).meno, text_OKT_27_SK[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
-			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_SK;
-		}// SK only
+			_global_svaty(1).kalendar = default_kalendar[_global_jazyk];
+		}// SK + HU only
 
 		if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))) {
 
@@ -31213,6 +31427,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			if (_global_jazyk == JAZYK_SK) {
 				_global_svaty(pom_poradie).typslav_lokal = LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB;
 			}
+			// ToDo: use _global_svaty(pom_poradie).typslav_lokal = lokal_slav_lub_spomienka_fma_vdb[_global_jazyk]; instead?
 			mystrcpy(_global_svaty(pom_poradie).meno, text_NOV_13_SDB[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 			_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
@@ -32759,7 +32974,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				pocet = 2;
 
 				_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 8); // miestne sviatky
-				_global_svaty(2).typslav_lokal = LOKAL_SLAV_SZEKESFEHERVAR_EGYH;
+				_global_svaty(2).typslav_lokal = LOKAL_SLAV_CATHERDAL_SLAVNOST_HU;
 				mystrcpy(_global_svaty(2).meno, text_NOV_25_HU[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
