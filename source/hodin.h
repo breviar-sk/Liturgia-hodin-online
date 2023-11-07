@@ -677,12 +677,12 @@ const char* nazov_slavenia_lokal[] =
 , "A Nagyváradi Egyházmegyében"                                                                                  // LOKAL_SLAV_NAGYVARADI_EGYH
 , "A Veszprémi Főegyházmegyében: Szent Anna, a főegyházmegye védőszentje; főünnep"                               // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
 , "Győr és Székesfehérvár: az egyházmegye védőszentje; főünnep"                                                  // LOKAL_SLAV_GYORI_SZEKESFEH_EGYH
-, "A Kaposvári Egyházmegyében; ünnep"                                                                            // LOKAL_SLAV_KAPORSVAR_FELSZ
-, "A Váci Egyházmegyében; ünnep"                                                                                 // LOKAL_SLAV_VACI_FELSZ
+, "Nagyszombat, Besztercebánya, Nyitra, Rozsnyó: tetszés szerinti emléknap"                                      // LOKAL_SLAV_IMRE_EMLEKNAP
+, "Kassai Főegyházmegye"                                                                                         // LOKAL_SLAV_KOSICE_HU
 , "Kalocsa-Kecskemét és Szatmár: a (fő)egyházmegye védőszentje; főünnep"                                         // LOKAL_SLAV_KAL_KECS_FOEGYH
-, "A Esztergom-Budapesti Főegyházmegyében: a főszékesegyházban; főünnep"                                         // LOKAL_SLAV_ESZTERGOM_BUDA_FOEGYH
+, "Kassa: a főegyházmegye védőszentje; főünnep"                                                                  // LOKAL_SLAV_KOSICE_FOUNNEP_HU
 , "A főszékesegyházban; főünnep"                                                                                 // LOKAL_SLAV_ARCI_CATHEDRAL_FOUNNEP_HU
-, "A Győri Egyházmegyében: a székesegyház felszentelése; ünnep"                                                  // LOKAL_SLAV_GYORI_SZEKESEGYH_FELSZ
+, "Besztercebánya: az egyházmegye védőszentje; főünnep"                                                          // LOKAL_SLAV_BESZTERCEBANYA_EGYH
 , "Vác és Gyulafehérvár: Szent Mihály főangyal, az egyházmegye védőszentje; főünnep"                             // LOKAL_SLAV_VACI_PATRON
 , "Szeged-Csanád, Temesvár és Nagybecskerek: az egyházmegye védőszentje; főünnep"                                // LOKAL_SLAV_SZEGED_CSAN_PATRON2
 , "A Veszprémi Főegyházmegyében: a főszékesegyházban; főünnep"													 // LOKAL_SLAV_VESZPREM_FOEGYH
@@ -16303,7 +16303,7 @@ const char* text_NOV_20_SK[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Nyitra: A székesegyház felszentelése",
 	"",
 	"",
 	"",
@@ -16317,7 +16317,7 @@ const char* text_NOV_20_SK_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Kolesar Anna szűz és vértanú",
 	"",
 	"",
 	"",
@@ -16457,7 +16457,7 @@ const char* text_NOV_25_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"A bazilika-székesegyház felszentelése",
+	"Székesfehérvár: A bazilika-székesegyház felszentelése",
 	"",
 	"",
 	"",
