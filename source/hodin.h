@@ -15869,7 +15869,7 @@ const char* text_NOV_09[POCET_JAZYKOV + 1] =
 	"In dedicatione basilicæ Lateranensis",
 	"",
 	"Posvěcení lateránské baziliky",
-	"A lateráni-bazilika felszentelése",
+	"A lateráni bazilika felszentelése",
 	"ru_text",
 	"Гадавіна пасвячэння Латэранскай базылікі",
 	"Vígsludagur basilíkunnar í Lateran", // Vígsla Höfuðkirkjunnar í Lateran
