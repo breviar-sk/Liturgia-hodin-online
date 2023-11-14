@@ -22689,9 +22689,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 8); // miestne sviatky
 			_global_svaty(1).typslav_lokal = LOKAL_SLAV_ARCI_CATHEDRAL_FOUNNEP_HU;
 			mystrcpy(_global_svaty(1).meno, text_AUG_30_HU[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
-			_global_svaty(3).farba = LIT_FARBA_BIELA;
-			_global_svaty(3).kalendar = KALENDAR_VSEOBECNY_HU;
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY_HU;
 		}// HU only
 
 		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_CM)) {
@@ -28253,9 +28253,15 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				if (_global_jazyk == JAZYK_HU) {
 					_global_svaty(3).typslav_lokal = LOKAL_SLAV_SZLOVAKIA_HU;
 				}
-				_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+				if (_global_jazyk == JAZYK_SK) {
+					_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+				}
+				else
+				{
+					_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+				}
 				_global_svaty(3).farba = LIT_FARBA_BIELA;
-				_global_svaty(3).kalendar = (_global_jazyk == JAZYK_SK) ? KALENDAR_VSEOBECNY_SK : KALENDAR_VSEOBECNY_HU;
+				_global_svaty(3).kalendar = default_kalendar[_global_jazyk];
 			}// SK + HU only
 
 		}// všeobecný kalendár
@@ -31317,7 +31323,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				}
 
 				modlitba = MODL_POSV_CITANIE;
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
+				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV))) {
 					_vlastna_cast_full(modlitba);
 				}
 				else {
@@ -31326,7 +31332,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				}
 
 				modlitba = MODL_RANNE_CHVALY;
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
+				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV))) {
 					_vlastna_cast_full(modlitba);
 				}
 				else if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM)) {
@@ -31338,7 +31344,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				}
 
 				modlitba = MODL_VESPERY;
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
+				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV))) {
 					_vlastna_cast_full(modlitba);
 				}
 				else if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM)) {
@@ -31349,7 +31355,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 					_vlastna_cast_modlitba;
 				}
 
-				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFMCAP)) {
+				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV))) {
 					_vlastna_cast_mcd_full_okrem_ant;
 				}
 
