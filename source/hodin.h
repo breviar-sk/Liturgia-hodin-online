@@ -15919,8 +15919,8 @@ const char* text_NOV_12[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_13_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Artemida Zattiho, rehoľníka", // rehoľníka doplnené podľa CZ SDB -> koadjutora
-	"Bl. Artemide Zattiho, koadjutora",
+	"Sv. Artemida Zattiho, rehoľníka", // rehoľníka doplnené podľa CZ SDB -> koadjutora
+	"Sv. Artemide Zattiho, koadjutora",
 	"",
 	"",
 	"",
