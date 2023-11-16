@@ -31472,7 +31472,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV); // CZ: MODL_SPOL_CAST_SV_MUZ_VIACERI
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_VIACERI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			mystrcpy(_global_svaty(1).meno, text_NOV_13_OPRAEM[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).kalendar = _global_kalendar;
