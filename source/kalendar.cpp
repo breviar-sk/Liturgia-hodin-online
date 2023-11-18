@@ -31365,7 +31365,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			pocet = pom_poradie;
 
 			if (_global_jazyk == JAZYK_CZ) {
-				if (_global_kalendar == KALENDAR_CZ_OFMCAP) {
+				if ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV)) {
 					_set_slavenie_typslav_smer(pom_poradie, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
 				}
 				else {
