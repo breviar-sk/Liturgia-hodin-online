@@ -16477,20 +16477,6 @@ const char* text_NOV_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_NOV_25_SCHP[POCET_JAZYKOV + 1] =
-{
-	"Patrocínium sv. Jozefa Kalazanského",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
 const char* text_NOV_26_SJ[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána Berchmansa, rehoľníka",
