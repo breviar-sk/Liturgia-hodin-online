@@ -4204,7 +4204,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			podmienka = podmienka && je_34_ocr;
 
-			Log("podmienka == %d pred kontrolou _global_modlitba == %s...\n", podmienka, nazov_modlitby(_global_modlitba));
+			Log("podmienka == %d pred kontrolou _global_modlitba == %s... [PARAM_ALT_HYMNUS_OCR_34]\n", podmienka, nazov_modlitby(_global_modlitba));
 
 			if (_global_jazyk == JAZYK_CZ) {
 				// CZ has special hymn also for prayer during the day
@@ -4227,7 +4227,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			podmienka = podmienka && ((je_alternativa_hymnus_ocr) || ((je_alternativa_hymnus_vn) && (_global_den.litobd == OBD_VELKONOCNE_I)));
 			specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 
-			Log("podmienka == %d pred kontrolou _global_modlitba == %s...\n", podmienka, nazov_modlitby(_global_modlitba));
+			Log("podmienka == %d pred kontrolou _global_modlitba == %s... [PARAM_ALT_HYMNUS]\n", podmienka, nazov_modlitby(_global_modlitba));
 
 			if (_global_jazyk == JAZYK_CZ) {
 				podmienka = (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI));
@@ -4235,8 +4235,8 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 				sprintf(popis_show, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_opt_5_CZHymnus_ordinary[_global_jazyk]);
 				sprintf(popis_hide, "%s %s", html_text_option_pouzit[_global_jazyk], html_text_opt_5_CZHymnus_extra[_global_jazyk]);
 
-				if (je_34_ocr && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS)) {
-					// do not display this switch for 34. week per annum (when BIT_OPT_5_OCR_34_HYMNS is switched ON)
+				if (je_34_ocr && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS) && (!(_global_modlitba == MODL_KOMPLETORIUM))) {
+					// do not display this switch for 34. week per annum (when BIT_OPT_5_OCR_34_HYMNS is switched ON; NOT for compline -- still display for compline)
 					podmienka = NIE;
 				}
 			}

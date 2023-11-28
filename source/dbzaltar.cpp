@@ -469,8 +469,8 @@ void _set_hymnus_alternativy_NO(short int modlitba, short int litobd){
 		break;
 	} // switch(litobd)
 
-	if (bit > 0){
-		switch (modlitba){
+	if (bit > 0) {
+		switch (modlitba) {
 		case MODL_PRVE_KOMPLETORIUM:
 			_global_modl_prve_kompletorium.alternativy -= ((_global_modl_prve_kompletorium.alternativy & bit) == bit) ? bit : 0;
 			break;
@@ -504,7 +504,7 @@ void _set_hymnus_alternativy_NO(short int modlitba, short int litobd){
 }// _set_hymnus_alternativy_NO() -- dva parametre
 
 // pre Cezročné obdobie | per annum
-void _set_hymnus_alternativy_NO(short int modlitba){
+void _set_hymnus_alternativy_NO(short int modlitba) {
 	_set_hymnus_alternativy_NO(modlitba, OBD_CEZ_ROK);
 }// _set_hymnus_alternativy_NO()
 
@@ -1344,6 +1344,7 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 	}
 
 	if ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))) {
+		Log("set_hymnus_kompletorium_obd(): CZ, hymnus nie HVV\n");
 		sprintf(_anchor, "%c_%s_%s", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, nazov_DN_asci[den]);
 	}
 	else {
@@ -1373,7 +1374,6 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 			Log("set_hymnus_kompletorium_obd(else/else)...\n");
 
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES) && !(je_CZ_hymny_k_volnemu_vyberu)) {
-
 				// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
 				ktory = (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_KOMPL)) ? 1 : 0;
 				Log("set_hymnus_kompletorium_obd(): ktory == %d...\n", ktory);
