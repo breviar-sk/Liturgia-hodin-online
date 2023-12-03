@@ -1208,7 +1208,7 @@ extern short int query_type; // contains constants PRM_...
 #endif
 
 #define ALERT	{\
-	if(query_type != PRM_XML){\
+	if (query_type != PRM_XML) {\
 		Log("ALERT\n");\
 		hlavicka((char *)html_title[_global_jazyk]);\
 		char pom2[MAX_STR];\

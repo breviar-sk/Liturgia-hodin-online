@@ -769,7 +769,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 
 		prilep_request_options(_global_link, pom2, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
 
-	}// if(_global_opt_batch_monthly == NIE)
+	}// if (_global_opt_batch_monthly == NIE)
 	else {
 		// najprv podľa typu exportu rozhodneme, či treba predlepiť aj adresár
 		if (typ == LINK_DEN_MESIAC_PREDOSLY || typ == LINK_DEN_MESIAC_NASLEDOVNY) {
@@ -849,7 +849,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 					sprintf(pom, " %d", rok);
 				}
 			}// mesiac != VSETKY_MESIACE
-		}// if(den == VSETKY_DNI)
+		}// if (den == VSETKY_DNI)
 		else {
 			if (typ == LINK_DEN_MESIAC_PREDOSLY) {
 				sprintf(pom, HTML_LEFT_ARROW_WIDE);

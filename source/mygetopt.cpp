@@ -181,7 +181,7 @@ static int last_nonopt;
 	`first_nonopt' and `last_nonopt' are relocated so that they describe
    the new indices of the non-options in ARGV after they are moved.  */
 
-static void exchange(char **argv){
+static void exchange(char **argv) {
 	int bottom = first_nonopt;
 	int middle = last_nonopt;
 	int top = optind;
@@ -518,14 +518,14 @@ int _getopt_internal(
 				else
 				{
 					// 2013-06-27: vyriešenie warningu g++ | mygetopt.cpp:539: warning: suggest explicit braces to avoid ambiguous 'else'
-					if (opterr){
-						if (argv[optind - 1][1] == '-'){
+					if (opterr) {
+						if (argv[optind - 1][1] == '-') {
 							/* --option */
 							fprintf(stderr,
 								_("%s: option `--%s' doesn't allow an argument\n"),
 								argv[0], pfound->name);
 						}
-						else{
+						else {
 							/* +option or -option */
 							fprintf(stderr,
 								_("%s: option `%c%s' doesn't allow an argument\n"),
@@ -804,17 +804,17 @@ int getopt(
 /* Compile with -DTEST to make an executable for use in testing
    the above definition of `getopt'.  */
 
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
 	int c;
 	int digit_optind = 0;
-	while (1){
+	while (1) {
 		int this_option_optind = optind ? optind : 1;
 		c = getopt (argc, argv, "?abc:w:d:0123456789");
 		/* tie options, ktore maju za sebou : maju povinny argument;
 			ak maju :: tak maju volitelny */
 		if (c == -1)
 			break;
-		switch (c){
+		switch (c) {
 		case '0':
 		case '1':
 		case '2':
@@ -846,7 +846,7 @@ int main(int argc, char **argv){
 		}/*switch*/
 	}/*while*/
 
-	if(optind < argc){
+	if (optind < argc) {
 		printf("non-option ARGV-elements: ");
 		while(optind < argc)
 			printf("%s ", argv[optind++]);

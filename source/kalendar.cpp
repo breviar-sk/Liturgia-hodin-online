@@ -5579,7 +5579,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 		break;
 
-		// do 9. marca sú propriá vo zväzku III (cezročné obdobie), potom sa pokračuje až dňom 12. mája; zrušené preto časti "else" vetiev if(je_post), lebo nie sú potrebné
+		// do 9. marca sú propriá vo zväzku III (cezročné obdobie), potom sa pokračuje až dňom 12. mája; zrušené preto časti "else" vetiev if (je_post), lebo nie sú potrebné
 
 	case 10: // MES_MAR -- 10MAR
 
@@ -8788,7 +8788,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 		if (((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OPRAEM)) 
 			|| ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OPRAEM))
-		){
+		) {
 			pom_poradie = (_global_kalendar == KALENDAR_CZ_OPRAEM) ? 2 : 1;
 
 			if (poradie_svaty == pom_poradie) {

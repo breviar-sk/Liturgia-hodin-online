@@ -24,9 +24,9 @@
 
 short int both;
 
-void bothLogs(void){ both = (0 == 0); }
-void fileLog(void){ both = (0 != 0); }
-short int isbothLogs(void){ return both; }
+void bothLogs(void) { both = (0 == 0); }
+void fileLog(void) { both = (0 != 0); }
+short int isbothLogs(void) { return both; }
 
 #ifdef LOGGING
 
@@ -41,7 +41,7 @@ short int used;
  * vracia: on success, returns 0
  *         on error, returns 1
  */
-short int initLog(const char* fname){
+short int initLog(const char* fname) {
 	fileLog();
 #if defined(LOG_TO_FILE)
 	logfile = fopen(fname, "wt");
@@ -62,11 +62,11 @@ short int initLog(const char* fname){
  *         on error, returns EOF; presne ako fclose()
  * 2003-08-07: dorobene, ze ked LOG_TO_STDOUT, tak ina hlaska, nie error
  */
-short int closeLog(void){
+short int closeLog(void) {
 	short int ret;
-	if(used == 0){
+	if (used == 0) {
 #if defined(LOG_TO_FILE)
-		if((ret = fclose(logfile)) == EOF)
+		if ((ret = fclose(logfile)) == EOF)
 			fprintf(stderr, "Cannot close log file\n");
 #elif defined(LOG_TO_STDOUT)
 		fprintf(stderr, "Log finished, I do not close log file (stdout)\n");
@@ -76,7 +76,7 @@ short int closeLog(void){
 #error Unsupported logging model (use _LOG_TO_STDOUT or _LOG_TO_FILE)
 #endif
 	}
-	else{
+	else {
 		fprintf(stderr, "Log file not opened\n");
 		ret = EOF;
 	}
@@ -97,9 +97,9 @@ short int __Log(const char* fmt, ...)
 	__android_log_vprint(ANDROID_LOG_VERBOSE, "Breviar", fmt, argptr);
 
 #else // not LOG_TO_ANDROID
-	if(used == 0){
+	if (used == 0) {
 		cnt = vfprintf(logfile, fmt, argptr);
-		if (both){
+		if (both) {
 			cnt = vprintf(fmt, argptr);
 		}
 	}
@@ -118,54 +118,54 @@ short int __Log(const char* fmt, ...)
 /* popis: zapise do logfile ciferne (po cifrach) int c
  * priklad: pre c==234 napise znaky '2', '3', '4'
  */
-void Logint(short int c){
+void Logint(short int c) {
 	short int d = 10000;
-	if(used == 0){ // iba ak je pouzivany logfile
-		if(c < 0){
+	if (used == 0) { // iba ak je pouzivany logfile
+		if (c < 0) {
 			fputc('-', logfile);
-			if(both)
+			if (both)
 				fputc('-', stdout);
 			c = -c;
 		}
-		while(d > 1){
-			if(c >= d){
+		while(d > 1) {
+			if (c >= d) {
 				fputc(48 + (c/d), logfile);
-				if(both)
+				if (both)
 					fputc(48 + (c/d), stdout);
 				c = c - d * (c/d);
 			}
 			d = d/10;
 		}
 		fputc(48 + c, logfile);
-		if(both)
+		if (both)
 			fputc(48 + c, stdout);
 	}
 }
 
 #else /* nie LOGGING */
 
-short int initLog(const char* fname){
+short int initLog(const char* fname) {
 	Q_UNUSED(fname);
 	return 0;
 }
 
-short int closeLog(void){
+short int closeLog(void) {
 	return 0;
 }
 
-short int __Log(const char* fmt, ...){
+short int __Log(const char* fmt, ...) {
 	Q_UNUSED(fmt);
 	return 0;
 }
 
-void Logint(short int c){
+void Logint(short int c) {
 	Q_UNUSED(c);
 };
 
 #endif /* LOGGING */
 
 //---------------------------------------------------------------------
-short int NoLog(const char* fmt, ...){
+short int NoLog(const char* fmt, ...) {
 	return(fmt == 0);
 }
 

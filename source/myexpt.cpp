@@ -27,7 +27,7 @@ char FILE_EXPORT[MAX_STR] = DEFAULT_FILE_EXPORT;
 
 short int isbothExports = NIE;
 
-void bothExports(void){
+void bothExports(void) {
 	isbothExports = ANO;
 }
 
@@ -38,17 +38,17 @@ char *exptstr = NULL;
 int exptstrlen = 0;
 int exptstrsize = 0;
 
-short int initExport(void){
+short int initExport(void) {
 #if defined(EXPORT_TO_FILE)
-	if(FILE_EXPORT[strlen(FILE_EXPORT) - 1] == '+'){
+	if (FILE_EXPORT[strlen(FILE_EXPORT) - 1] == '+') {
 		FILE_EXPORT[strlen(FILE_EXPORT) - 1] = '\0'; /* zrusime '+' na konci */
 		exportfile = fopen(FILE_EXPORT, "a+t");
 	}
-	else{
+	else {
 		exportfile = fopen(FILE_EXPORT, "wt");
 	}
 	exptused = (exportfile == NULL)? FAILURE: SUCCESS;
-	if(exportfile == NULL)
+	if (exportfile == NULL)
 		exportfile = stdout;
 #elif defined(EXPORT_TO_STDOUT)
 	exportfile = stdout;
@@ -69,29 +69,29 @@ short int initExport(void){
 	return exptused;
 }
 
-short int initExport(const char* expt_filename){
-	if (exptused == SUCCESS){
+short int initExport(const char* expt_filename) {
+	if (exptused == SUCCESS) {
 		closeExport();
 	}
 	strcpy(FILE_EXPORT, expt_filename);
 	return initExport();
 }
 
-short int closeExport(void){
+short int closeExport(void) {
 	short int ret = 0;
 #if defined(EXPORT_TO_FILE)
 	ret = EOF;  /* error closing file */
-	if(exptused == SUCCESS){
+	if (exptused == SUCCESS) {
 		ret = fclose(exportfile);
 	}
 #endif
 	return ret;
 }
 
-void dumpFile(char *fname){
+void dumpFile(char *fname) {
 	short int c;
 	FILE *input_file = fopen(fname, "rb");
-	if (input_file != NULL){
+	if (input_file != NULL) {
 		while ((c = fgetc(input_file)) != EOF)
 			fputc(c, exportfile);
 	}
@@ -142,7 +142,7 @@ short int Export_to_string(const char* fmt, va_list argptr) {
  *    naviac ak isbothExports, tak sa posiela vystup aj na konzolu (stdout),
  * ak premenna exptused je 1,  tak sa posiela vystup iba na konzolu (stdout)
  */
-short int Export(const char* fmt, ...){
+short int Export(const char* fmt, ...) {
 	va_list argptr;
 	short int cnt;
 
@@ -150,13 +150,13 @@ short int Export(const char* fmt, ...){
 #ifdef EXPORT_TO_STRING
 	cnt = Export_to_string(fmt, argptr);
 #else
-	if (exptused == SUCCESS){
+	if (exptused == SUCCESS) {
 		cnt = vfprintf(exportfile, fmt, argptr);
-		if (isbothExports){
+		if (isbothExports) {
 			cnt = vprintf(fmt, argptr);
 		}
 	}
-	else{
+	else {
 		cnt = vprintf(fmt, argptr);
 	}
 #endif /* EXPORT_TO_STRING */
@@ -215,23 +215,23 @@ short int ExportXmlError(const char* fmt, ...) {
 	return(cnt);
 }
 
-short int Export_to_file(FILE * expt, const char* fmt, ...){
+short int Export_to_file(FILE * expt, const char* fmt, ...) {
 	va_list argptr;
 	short int cnt;
 
 	// klasické volanie ako Export
-	if ((expt == NULL) && (exptused == SUCCESS)){
+	if ((expt == NULL) && (exptused == SUCCESS)) {
 		expt = exportfile;
 	}
 
 	va_start(argptr, fmt);
-	if (expt != NULL){
+	if (expt != NULL) {
 		cnt = vfprintf(expt, fmt, argptr);
-		if (isbothExports){
+		if (isbothExports) {
 			cnt = vprintf(fmt, argptr);
 		}
 	}
-	else{
+	else {
 #ifdef EXPORT_TO_STRING
 		cnt = Export_to_string(fmt, argptr);
 #else
@@ -335,19 +335,19 @@ void ExportStringCharByChar(const char*  input, short int skip_chars_for_voice_o
 
 #define YYdefault() { { \
 	fprintf(exportfile, "%c", c); \
-	if(isbothExports) \
+	if (isbothExports) \
 		printf("%c", c); \
 	} }
 
 #define YYcharHTML(Kam, Lat2, ASCII, HTML, TeX, IBM)	{ { \
 	fprintf(exportfile, "%s", HTML); \
-	if(isbothExports) \
+	if (isbothExports) \
 		printf("%s", HTML); \
 	} }
 
 #define YYcharASCII(Kam, Lat2, ASCII, HTML, TeX, IBM)	{ { \
 	fprintf(exportfile, "%c", ASCII); \
-	if(isbothExports) \
+	if (isbothExports) \
 		printf("%c", ASCII); \
 	} }
 

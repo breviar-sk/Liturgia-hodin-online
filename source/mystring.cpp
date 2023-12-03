@@ -27,7 +27,7 @@
 // 1. zisti velkost dest -- sizeof(dest)
 // 2. kopiruje nanajvys count - 1 znakov z src do dest (pomocou strncpy)
 // 3. v kazdom pripade prida na koniec v dest '\0' (terminating null)
-char *mystrcpy(char *dest, char *src, short int count){
+char *mystrcpy(char *dest, char *src, short int count) {
 	// do nothing is src is NULL
 	if (src == NULL) {
 		return dest;
@@ -40,7 +40,7 @@ char *mystrcpy(char *dest, char *src, short int count){
 	return ret;
 }
 
-char *mystrcpy(char *dest, const char* src, short int count){
+char *mystrcpy(char *dest, const char* src, short int count) {
 	// do nothing is src is NULL
 	if (src == NULL) {
 		return dest;
@@ -60,55 +60,55 @@ char *mystrcpy(char *dest, const char* src, short int count){
 // The behavior of strncpy is undefined if the source and destination strings overlap.
 // This function returns strDest. No return value is reserved to indicate an error.
 
-int substring(char *str1, char *str2){
+int substring(char *str1, char *str2) {
 	// vráti true, ak str2 je substring v reťazci str1
 	return (strstr(str1, str2) != NULL);
 }
 
 // string comparator -- pre vsetky kombinacie dvojic [const] char, [const] char
-short int equals(char *s1, char *s2){
-	if (strcmp(s1, s2) == 0){
+short int equals(char *s1, char *s2) {
+	if (strcmp(s1, s2) == 0) {
 		return 1;
 	}
-	else{
+	else {
 		return 0;
 	}
 }
 
-short int equals(const char* s1, char *s2){
-	if (strcmp(s1, s2) == 0){
+short int equals(const char* s1, char *s2) {
+	if (strcmp(s1, s2) == 0) {
 		return 1;
 	}
-	else{
+	else {
 		return 0;
 	}
 }
 
-short int equals(const char* s1, const char* s2){
-	if (strcmp(s1, s2) == 0){
+short int equals(const char* s1, const char* s2) {
+	if (strcmp(s1, s2) == 0) {
 		return 1;
 	}
-	else{
+	else {
 		return 0;
 	}
 }
 
-short int equals(char *s1, const char* s2){
-	if (strcmp(s1, s2) == 0){
+short int equals(char *s1, const char* s2) {
+	if (strcmp(s1, s2) == 0) {
 		return 1;
 	}
-	else{
+	else {
 		return 0;
 	}
 }
 
 // string comparator without case sensitivity -- pre vsetky kombinacie dvojic [const] char, [const] char
-short int equalsi(char *is1, char *is2){
+short int equalsi(char *is1, char *is2) {
 #if defined(DEFINED_strcmpi)
-	if (strcmpi(is1, is2) == 0){
+	if (strcmpi(is1, is2) == 0) {
 		return 1;
 	}
-	else{
+	else {
 		return 0;
 	}
 #else
@@ -117,23 +117,23 @@ short int equalsi(char *is1, char *is2){
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
 	length = strlen(s1);
-	for (i = 0; i < length; i++){
+	for (i = 0; i < length; i++) {
 		s1[i] = (char)tolower(s1[i]);
 	}
 	length = strlen(s2);
-	for (i = 0; i < length; i++){
+	for (i = 0; i < length; i++) {
 		s2[i] = (char)tolower(s2[i]);
 	}
 	return equals(s1, s2);
 #endif
 }
 
-short int equalsi(const char* is1, char *is2){
+short int equalsi(const char* is1, char *is2) {
 #if defined(DEFINED_strcmpi)
-	if (strcmpi(is1, is2) == 0){
+	if (strcmpi(is1, is2) == 0) {
 		return 1;
 	}
-	else{
+	else {
 		return 0;
 	}
 #else
@@ -142,23 +142,23 @@ short int equalsi(const char* is1, char *is2){
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
 	length = strlen(s1);
-	for (i = 0; i < length; i++){
+	for (i = 0; i < length; i++) {
 		s1[i] = (char)tolower(s1[i]);
 	}
 	length = strlen(s2);
-	for (i = 0; i < length; i++){
+	for (i = 0; i < length; i++) {
 		s2[i] = (char)tolower(s2[i]);
 	}
 	return equals(s1, s2);
 #endif
 }
 
-short int equalsi(const char* is1, const char* is2){
+short int equalsi(const char* is1, const char* is2) {
 #if defined(DEFINED_strcmpi)
-	if (strcmpi(is1, is2) == 0){
+	if (strcmpi(is1, is2) == 0) {
 		return 1;
 	}
-	else{
+	else {
 		return 0;
 	}
 #else
@@ -167,23 +167,23 @@ short int equalsi(const char* is1, const char* is2){
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
 	length = strlen(s1);
-	for (i = 0; i < length; i++){
+	for (i = 0; i < length; i++) {
 		s1[i] = (char)tolower(s1[i]);
 	}
 	length = strlen(s2);
-	for (i = 0; i < length; i++){
+	for (i = 0; i < length; i++) {
 		s2[i] = (char)tolower(s2[i]);
 	}
 	return equals(s1, s2);
 #endif
 }
 
-short int equalsi(char *is1, const char* is2){
+short int equalsi(char *is1, const char* is2) {
 #if defined(DEFINED_strcmpi)
-	if (strcmpi(is1, is2) == 0){
+	if (strcmpi(is1, is2) == 0) {
 		return 1;
 	}
-	else{
+	else {
 		return 0;
 	}
 #else
@@ -192,11 +192,11 @@ short int equalsi(char *is1, const char* is2){
 	mystrcpy(s1, is1, MAX_STR);
 	mystrcpy(s2, is2, MAX_STR);
 	length = strlen(s1);
-	for(i = 0; i < length; i++){
+	for(i = 0; i < length; i++) {
 		s1[i] = (char)tolower(s1[i]);
 	}
 	length = strlen(s2);
-	for(i = 0; i < length; i++){
+	for(i = 0; i < length; i++) {
 		s2[i] = (char)tolower(s2[i]);
 	}
 	return equals(s1, s2);
@@ -453,7 +453,7 @@ short int startsWith(char* base, char* str) {
 }
 
 // Custom function for detecting whether base is ends with str
-short int endsWith(char* base, char* str){
+short int endsWith(char* base, char* str) {
 	long blen = strlen(base);
 	long slen = strlen(str);
 	if (slen <= blen)
