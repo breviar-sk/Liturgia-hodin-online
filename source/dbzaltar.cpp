@@ -10766,7 +10766,6 @@ void set_popis_svaty_rch_mcd_pc_vesp_den_mesiac(short int den, short int mesiac)
 	Log("set_popis_svaty_rch_mcd_pc_vesp_den_mesiac(den, mesiac) -- koniec.\n");
 }// set_popis_svaty_rch_mcd_pc_vesp_den_mesiac()
 
-
 void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty) {
 	// poradie_svaty sa tu vlastne vôbec nepoužíva
 	Log("set_popis_svaty_rch_mcd_pc_vesp(%d) -- začiatok...\n", poradie_svaty);
@@ -10785,6 +10784,18 @@ void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty) {
 	}
 	Log("set_popis_svaty_rch_mcd_pc_vesp() -- koniec.\n");
 }// set_popis_svaty_rch_mcd_pc_vesp()
+
+// for special cases
+void set_popis_svaty_modlitba(short int poradie_svaty, short int modlitba) {
+	// poradie_svaty sa tu vlastne vôbec nepoužíva
+	Log("set_popis_svaty_modlitba(%d, %d) -- začiatok...\n", poradie_svaty, modlitba);
+	Log("  teraz nastavujem POPIS (pre daneho svateho)...\n");
+
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_POPIS);
+
+	set_popis(modlitba, _file, _anchor);
+	Log("set_popis_svaty_modlitba() -- koniec.\n");
+}// set_popis_svaty_modlitba()
 
 void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 */) {
 	// poradie_svaty je vstupom iba kvoli tomu, ze ak je 0 -> UNKNOWN_PORADIE_SVATEHO, potom nas neznepokojuju vypisy typu Error: not assigned...
@@ -10923,9 +10934,9 @@ _struct_lang_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "CZ_ADV29_HYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_ADV22_HYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_ADV23_HYMNUS", 2 },
-	{ JAZYK_CZ, "CZ_KRKRALA_9HYMNUS", 3 },
-	{ JAZYK_CZ, "CZ_KRKRALA_2HYMNUS", 3 },
-	{ JAZYK_CZ, "CZ_KRKRALA_3HYMNUS", 3 },
+	{ JAZYK_CZ, "CZ_KRKRALA_9HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_KRKRALA_2HYMNUS", 2 },
+	{ JAZYK_CZ, "CZ_KRKRALA_3HYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_KRST_rHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_18JAN_cHYMNUS", 2 },
 	{ JAZYK_CZ, "CZ_05JUL_1HYMNUS", 2 },
@@ -11130,9 +11141,9 @@ _struct_lang_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_CZ, "2_HYMNUS_SUDY_SO", 2 },
 	{ JAZYK_CZ, "3_HYMNUS_SUDY_SO", 2 },
 	// CZ mezidobí, modlitba uprostřed dne, hymny k volnému výběru
-	{ JAZYK_CZ, "9_HYMNUS", 3 },
-	{ JAZYK_CZ, "2_HYMNUS", 3 },
-	{ JAZYK_CZ, "3_HYMNUS", 3 },
+	{ JAZYK_CZ, "9_HYMNUS", 2 },
+	{ JAZYK_CZ, "2_HYMNUS", 2 },
+	{ JAZYK_CZ, "3_HYMNUS", 2 },
 	// CZ doba adventní, modlitba uprostřed dne, hymny ze žaltáře
 	{ JAZYK_CZ, "ADV19_HYMNUS", 2 },
 	{ JAZYK_CZ, "ADV12_HYMNUS", 2 },
@@ -11239,6 +11250,7 @@ _struct_lang_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_CZ_OP, "09JUL2_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "17JUL2_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "22JUL2_cCIT2", 2 },
+	{ JAZYK_CZ_OP, "29JUL_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "08AUG2_cCIT2", 4 },
 	{ JAZYK_CZ_OP, "15AUG_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "17AUG_cCIT2", 2 },
@@ -11284,6 +11296,7 @@ _struct_lang_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCSZRH_vMAGNIFIKAT", 2 },
 	{ JAZYK_UNDEF, "SCSMRH_vMAGNIFIKAT", 2 },
 	{ JAZYK_CZ_OP, "15AUG_rBENEDIKTUS", 2 },
+	{ JAZYK_CZ_OP, "29JUL_rBENEDIKTUS", 2 },
 };
 
 _struct_lang_anchor_and_count pocet_maria_ant_multi_anchor_count[] = {

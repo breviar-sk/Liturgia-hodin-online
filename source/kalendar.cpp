@@ -19803,6 +19803,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_vlastna_cast_mcd_ant_kcitresp_modl;
 			}
 
+			modlitba = MODL_PREDPOLUDNIM;
+			set_popis_svaty_modlitba(1, modlitba);
+
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full(modlitba);
 			_set_zalmy_premenenie(modlitba);

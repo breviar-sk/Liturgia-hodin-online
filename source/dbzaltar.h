@@ -297,6 +297,7 @@ extern void _spolocna_cast_kresponz_zvazok(short int modlitba, char *_anchor_pom
 extern void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, int force = 0);
 extern void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty);
 extern void set_popis_svaty_rch_mcd_pc_vesp_den_mesiac(short int den, short int mesiac);
+extern void set_popis_svaty_modlitba(short int poradie_svaty, short int modlitba);
 extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force = 0);
 
 /* #define BEGIN -------------------------------------------------------------------------------------------------------------------- */
