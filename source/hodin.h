@@ -637,7 +637,7 @@ const char* nazov_slavenia_lokal[] =
 , "len v konsekrovaných kostoloch"                                                                               // LOKAL_SLAV_KONSEKR_KOSTOLY
 , "Druhá veľkonočná nedeľa — Božieho milosrdenstva"                                                              // LOKAL_SLAV_DRUHA_VELK_NEDELA
 , "koniec Oktávy narodenia Pána"                                                                                 // LOKAL_SLAV_KONIEC_OKTAVY_NAR | string here: text_KONIEC_OKTAVY_NARODENIA_PANA[]
-, "len v provinciách Talianska"                                                                                  // LOKAL_SLAV_OCD_IT
+, ""						                                                                                     // LOKAL_SLAV_OCD_IT
 , "hlavního patrona pražské arcidiecéze"                                                                         // LOKAL_SLAV_PRAHA_PATRON
 , "v pražské arcidiecézi"                                                                                        // LOKAL_SLAV_PRAHA
 , "v brněnské diecézi"                                                                                           // LOKAL_SLAV_BRNO
