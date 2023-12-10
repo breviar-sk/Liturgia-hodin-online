@@ -2390,7 +2390,29 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 					strcpy(fnrest, STR_EMPTY);
 				}
 
-				// biblical references
+// full text of other text [e.g. readings]
+
+				if (equals(strbuff, PARAM_PSALM_FULL_TEXT_TXT_BEGIN) && (vnutri_inkludovaneho == ANO)) {
+
+					vnutri_full_text = ANO;
+					write = write && (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT));
+
+					if (write && equals(strbuff, PARAM_PSALM_FULL_TEXT_TXT_BEGIN)) {
+						Export("<" HTML_SPAN_SMALL ">");
+					}
+				}
+				if (equals(strbuff, PARAM_PSALM_FULL_TEXT_TXT_END) && (vnutri_inkludovaneho == ANO)) {
+
+					if (write) {
+						Export(HTML_SPAN_END);
+					}
+
+					vnutri_full_text = NIE;
+					write = ANO;
+					strcpy(fnrest, STR_EMPTY);
+				}
+
+// biblical references
 
 				// upraviť referencie na hyperlinky
 				if (equals(strbuff, PARAM_REFERENCIA_BEGIN) && (vnutri_inkludovaneho == ANO)) {
@@ -3784,7 +3806,6 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		|| (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA))
 		|| (equals(paramname, PARAM_STUPEN_SLAVENIA_SVI_SLAV))
 		|| (equals(paramname, PARAM_MARIANSKE_ANTIFONY))
-		|| (equals(paramname, PARAM_INVITATORIUM_ANT("1")) || equals(paramname, PARAM_INVITATORIUM_ANT("2")) || equals(paramname, PARAM_INVITATORIUM_ANT("3")) || equals(paramname, PARAM_INVITATORIUM_ANT("4")))
 		|| (equals(paramname, PARAM_OKTAVA_PRVE_DRUHE_KOMPL))
 		) {
 
@@ -3999,16 +4020,6 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			specific_string = HTML_SEQUENCE_PARAGRAPH; // HTML_P_BEGIN
 			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_vigilia[_global_jazyk]);
 			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_vigilia[_global_jazyk]);
-		}
-		else if (equals(paramname, PARAM_INVITATORIUM_ANT("1")) || equals(paramname, PARAM_INVITATORIUM_ANT("2")) || equals(paramname, PARAM_INVITATORIUM_ANT("3")) || equals(paramname, PARAM_INVITATORIUM_ANT("4"))) {
-			opt = OPT_5_ALTERNATIVES;
-			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
-			Log("podmienka == %d pred kontrolou je_alternativa_invitatorium_ant...\n", podmienka);
-			podmienka = podmienka && (je_alternativa_invitatorium_ant);
-
-			bit = BIT_OPT_5_INVITATORIUM_ANT;
-			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_antifona[_global_jazyk]);
-			sprintf(popis_hide, "%s", html_text_opt_6_alternatives_multi_antifona[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_CITANIE1_MULTI)) {
 			opt = OPT_6_ALTERNATIVES_MULTI;
@@ -11125,13 +11136,6 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150
 			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], html_text_opt_5_zaver_knaz_diakon_explain[_global_jazyk]);
-
-			// invitatórium (antifóna)
-			Export(HTML_CRLF_LINE_BREAK);
-			Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s" HTML_SPAN_END, STR_EMPTY, nazov_modlitby(MODL_INVITATORIUM));
-
-			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT
-			_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, html_text_opt_6_alternatives_multi_antifona[_global_jazyk], STR_EMPTY);
 		}
 		else {
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_DOPLNK_PSALM_122_129)) ? ANO : NIE);
@@ -11151,7 +11155,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)) ? ANO : NIE); // not used
 		} // else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
 		Export(HTML_TABLE_CELL_END "\n");

@@ -541,7 +541,6 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_ZALM131                  "ZALM131"
 #define PARAM_ZALM146                  "ZALM146"
 #define PARAM_ZALM150                  "ZALM150"
-#define PARAM_INVITATORIUM_ANT(i)      "ANT-INVITAT" i
 #define PARAM_MARIANSKE_ANTIFONY       "MARIANSKE-ANTIFONY" // Maria antiphones at the end of compline
 #define PARAM_OKTAVA_PRVE_DRUHE_KOMPL  "OKTAVA-PRVE-DRUHE-KOMPLETORIUM"
 
@@ -726,6 +725,9 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 // these two have the same usage as previous two except adding div's (used within section divided due to different psalm strophes as in Ps 55)
 #define PARAM_PSALM_FULL_TEXT_SOFT_BEGIN    "full-text-soft"
 #define PARAM_PSALM_FULL_TEXT_SOFT_END      SYMBOL_END "" PARAM_PSALM_FULL_TEXT_SOFT_BEGIN
+// full text of other text [e.g. readings] (also verses omitted from official Latin LH)
+#define PARAM_PSALM_FULL_TEXT_TXT_BEGIN     "full-text-txt"
+#define PARAM_PSALM_FULL_TEXT_TXT_END       SYMBOL_END "" PARAM_PSALM_FULL_TEXT_TXT_BEGIN
 
 // pause, to be exported (in readings)
 #define PARAM_PAUSE                         "p"
@@ -1663,7 +1665,8 @@ extern unsigned long long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_CZ_HYMNY_VYBER          8192 // CZ: hymny z breviáře ("písničky") nebo k volnému výběru (podle LA, "Renč")
 #define BIT_OPT_5_OFF_DEF_PSALM_146_150  16384 // pre ranné chvály ofícia za zosnulých možno brať ako tretí žalm 146 resp. 150
 #define BIT_OPT_5_ZAVER_KNAZ_DIAKON      32768 // prayer conclusions for morning and evening prayer: whether take when priest/diacon is present (default: 0, no)
-#define BIT_OPT_5_INVITATORIUM_ANT       65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.)
+// deprecated: BIT_OPT_5_INVITATORIUM_ANT
+#define BIT_OPT_5_INVITATORIUM_ANT       65536 // invitatory prayer: 1st or 2nd choice (SK: pôst I., CZ: advent I.) // not used
 #define BIT_OPT_5_OCR_34_HYMNS          131072 // different (special) hymns for 34th week per annum
 #define BIT_OPT_5_KOMPLETORIUM_OKTAVA   262144 // prvé alebo druhé nedeľné kompletórium (pre Veľkonočnú oktávu a Oktávu Narodenia Pána)
 #define BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA  524288 // psalmódia pre posvätné čítanie štvrtka vo Svätom týždni (default: štvrtok 2. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)

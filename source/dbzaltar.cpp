@@ -4693,32 +4693,6 @@ void _velk1_hymnus(short int den, short int modlitba, short int litobd) {
 	}
 }// _velk1_hymnus()
 
-void _obd_invitat_viac(short litobd, short modlitba) {
-	short int ktory; // currently 0 or 1
-	short int bit = BIT_ALT_ANT_INVITATORIUM;
-
-	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES)) {
-		// podľa nastavenia _global_opt[OPT_5_ALTERNATIVES]
-		ktory = (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)) ? 1 : 0;
-		Log("_obd_invitat_viac(): ktory == %d...\n", ktory);
-
-		_global_modl_invitatorium.alternativy += ((_global_modl_invitatorium.alternativy & bit) != bit) ? bit : 0;
-	}
-	else {
-		// pôvodne bol náhodný výber
-		ktory = 2; // obidva!
-	}
-
-	if (ktory < 2) {
-		sprintf(_anchor, "%s_%c%s_%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1, ktory);
-	}
-	else {
-		sprintf(_anchor, "%s_%c%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);
-	}
-	_set_antifona1(modlitba, _file, _anchor);
-	set_LOG_litobd;
-}// _obd_invitat_viac()
-
 void _set_hymnus_alternativy_obdobie(short litobd, short len_kompletorium = NIE) {
 	Log("_set_hymnus_alternativy_ocr(): začiatok...\n");
 
@@ -5052,12 +5026,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			// invitatórium
 			modlitba = MODL_INVITATORIUM;
-			if (_global_jazyk == JAZYK_CZ) {
-				_obd_invitat_viac(litobd, modlitba);
-			}
-			else {
-				_obd_invitat;
-			}
+			_obd_invitat;
 
 			// ranné chvály
 			modlitba = MODL_RANNE_CHVALY;
@@ -7588,12 +7557,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			// invitatórium
 			modlitba = MODL_INVITATORIUM;
-			if (_global_jazyk == JAZYK_CZ_OP) {
-				_obd_invitat;
-			}
-			else {
-				_obd_invitat_viac(litobd, modlitba);
-			}
+			_obd_invitat;
 
 			// ranné chvály
 			modlitba = MODL_RANNE_CHVALY;
@@ -11297,6 +11261,9 @@ _struct_lang_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCSMRH_vMAGNIFIKAT", 2 },
 	{ JAZYK_CZ_OP, "15AUG_rBENEDIKTUS", 2 },
 	{ JAZYK_CZ_OP, "29JUL_rBENEDIKTUS", 2 },
+	{ JAZYK_CZ, "ADV1_iANT1", 2 },
+	{ JAZYK_CZ_OP, "POST1_iANT1", 0 }, // !!! override language-default (not use multiple antiphones); the order must be held: MUST BE BEFORE general rule (for JAZYK_UNDEF) -- see evaluation in pocet_multi() method
+	{ JAZYK_UNDEF, "POST1_iANT1", 2 },
 };
 
 _struct_lang_anchor_and_count pocet_maria_ant_multi_anchor_count[] = {

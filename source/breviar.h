@@ -385,9 +385,6 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 (_global_modlitba == MODL_VESPERY && ((_global_modl_vespery.alternativy & BIT_ALT_HYMNUS_VN) == BIT_ALT_HYMNUS_VN)) \
 )
 
-// are alternates for antiphony for invitatory? (SK, CZ, HU)
-#define je_alternativa_invitatorium_ant (_global_modlitba == MODL_INVITATORIUM && ((_global_modl_invitatorium.alternativy & BIT_ALT_ANT_INVITATORIUM) == BIT_ALT_ANT_INVITATORIUM))
-
 // are chosen alternative readings for 2nd readigns? (currently CZ only)
 #define je_alternativne_2citanie ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ALTERNATIVE_READINGS)))
 

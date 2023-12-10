@@ -548,8 +548,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 // vlastná antifóna pre invitatórium
 #define _vlastna_cast_antifona_inv {\
 	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
-	if (modlitba == MODL_POSV_CITANIE) {_set_antifona1(modlitba, _file_pc, _anchor);}\
-		else {_set_antifona1(modlitba, _file, _anchor);}\
+	_set_antifona1(modlitba, _file, _anchor);\
 	set_LOG_svsv;}
 
 #define _vlastna_cast_antifony_rovnake {\

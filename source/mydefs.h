@@ -1121,11 +1121,12 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON "of5zkd"
 #endif
 
+// not used
 #define FORCE_BIT_OPT_5_INVITATORIUM_ANT 125
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT "FORCE_BIT_OPT_5_INVITATORIUM_ANT"
 #else
-#define STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT "of5i"
+#define STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT "of5i(deprecated)"
 #endif
 
 #define FORCE_BIT_OPT_5_OCR_34_HYMNS 137
@@ -1416,7 +1417,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_CZ_HYMNY_VYBER            "BitOpt5CZhymnsAlt"
 #define XML_BIT_OPT_5_OFF_DEF_PSALM_146_150     "BitOpt5OffDefPsalm146or150"
 #define XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON         "BitOpt5ConclusionPriestDiacon"
-#define XML_BIT_OPT_5_INVITATORIUM_ANT          "BitOpt5InvitatoryAnt"
+#define XML_BIT_OPT_5_INVITATORIUM_ANT          "(BitOpt5InvitatoryAnt)deprecated"
 #define XML_BIT_OPT_5_OCR_34_HYMNS              "BitOpt5PerAnnum34Hymns"
 #define XML_BIT_OPT_5_KOMPLETORIUM_OKTAVA       "BitOpt5ComplOctaves"
 #define XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA  "BitOpt5MaundyThursPsalmody"
