@@ -12722,7 +12722,6 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			pocet = 2;
 
 			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			_global_svaty(2).prik = VOLNA_LUBOVOLNA_SPOMIENKA; // ľubovoľná spomienka uvedená kurzívou bez popisu
 			mystrcpy(_global_svaty(2).meno, text_MAJ_29_OCD[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 			_global_svaty(2).farba = LIT_FARBA_BIELA;
@@ -14378,7 +14377,6 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			_global_svaty(1).prik = VOLNA_LUBOVOLNA_SPOMIENKA; // ľubovoľná spomienka uvedená kurzívou bez popisu
 			mystrcpy(_global_svaty(1).meno, text_JUN_14_OCD[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
@@ -15307,7 +15305,6 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			_global_svaty(1).prik = VOLNA_LUBOVOLNA_SPOMIENKA; // ľubovoľná spomienka uvedená kurzívou bez popisu
 			mystrcpy(_global_svaty(1).meno, text_JUN_26_OCD[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
@@ -21982,7 +21979,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
 			mystrcpy(_global_svaty(1).meno, text_AUG_25_OCD[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// KALENDAR_SK_OCD a KALENDAR_CZ_OCD
@@ -30901,6 +30898,8 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				_vlastna_cast_2citanie;
 				_vlastna_cast_modlitba;
 
+				_vlastna_cast_mcd_modlitba;
+
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
@@ -34261,7 +34260,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
 			mystrcpy(_global_svaty(1).meno, text_DEC_11_OCD[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD a KALENDAR_CZ_OCD
@@ -34520,7 +34519,6 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
-			_global_svaty(1).prik = VOLNA_LUBOVOLNA_SPOMIENKA; // ľubovoľná spomienka uvedená kurzívou bez popisu
 			mystrcpy(_global_svaty(1).meno, text_DEC_16_OCD[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
