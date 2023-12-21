@@ -5077,7 +5077,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			t = set_tyzzal_1_2(tyzzal); // nema efekt pre tyzden == 4, lebo to uz je OBD_ADVENTNE_II
 
-			if (den == DEN_NEDELA) { // nedeľa: 1.-3. adventná nedeľa
+			if (den == DEN_NEDELA) { // nedeľa: 1.-3. adventná nedeľa (okrem prípadu, kedy 3. adventná nedeľa padne na 17. decembra, ako napr. v r. 2006 alebo 2023)
 				// predĺžené slávenie vigílií v rámci posvätných čítaní | modlitba = MODL_POSV_CITANIE;
 				_liturgicke_obdobie_set_vig_ant(modlitba);
 				_set_chvalospev_vig_adv(modlitba);
@@ -5463,7 +5463,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			_adv2_modlitba; // modlitba - rovnaka pre rano i vecer
 
-			// nedeľa: 3. adventná nedeľa (len 17. decembra, ako napr. v roku 2006), inak 4. adventná nedeľa
+			// nedeľa: 3. adventná nedeľa (len 17. decembra, ako napr. v roku 2006 alebo 2023), inak 4. adventná nedeľa
 
 			// ak tretia adventna nedela padne na 17. decembra, beru sa antifony na magnifikat, benediktus, prosby a hymny z tejto casti,
 			// avsak ostatne sa berie akoby z OBD_ADVENTNE_I, teda _file == nazov_obd_htm[OBD_ADVENTNE_I] |  _anchor == napr. ADV13NEr_ANT1 
@@ -5492,12 +5492,14 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					litobd = OBD_ADVENTNE_I;
 					file_name_litobd(litobd);
 					file_name_litobd_pc(litobd);
+					t = set_tyzzal_1_2(tyzzal); // nema efekt pre tyzden == 4, lebo to uz je OBD_ADVENTNE_II / kvôli prosbám je potrebné nastaviť parameter t
 
 					// prvé vešpery
 					modlitba = MODL_PRVE_VESPERY;
 					// hymnus pre obdobie OBD_ADVENTNE_II, teda tak, ako bol nastavený vyššie
 					_adv1_antifony; // antifóny - z tretej adventnej nedele, OBD_ADVENTNE_I
 					_adv1_kcitanie; // pozor, používame z adv. obdobia I.
+					_adv1_prosby; // prosby - z tretej adventnej nedele, OBD_ADVENTNE_I (rovnake pre prvu a tretiu, resp. druhu a stvrtu adventnu nedelu)
 					_adv1_modlitba; // modlitba
 					// krátke responzórium - z tretej adventnej nedele, OBD_ADVENTNE_I
 					sprintf(_anchor, "%s%s%c_%s",
@@ -5518,9 +5520,6 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 						_global_den.litrok);
 					_set_magnifikat(modlitba, _file, _anchor);
 					set_LOG_litobd;
-					// 2007-12-04: kvôli prosbám je potrebné nastaviť parameter t
-					t = set_tyzzal_1_2(tyzzal); // nema efekt pre tyzden == 4, lebo to uz je OBD_ADVENTNE_II
-					_adv1_prosby; // prosby - rovnake pre prvu a tretiu, resp. druhu a stvrtu adventnu nedelu
 
 					// posvätné čítanie
 					modlitba = MODL_POSV_CITANIE;
@@ -5540,6 +5539,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_adv1_antifony; // antifóny
 					// krátke čítanie - rovnaké pre všetky adventné nedele
 					_adv1_kcitanie; // pozor, používame z adv. obdobia I.
+					_adv1_prosby; // prosby - z tretej adventnej nedele, OBD_ADVENTNE_I (rovnake pre prvu a tretiu, resp. druhu a stvrtu adventnu nedelu)
 					_adv1_modlitba; // modlitba
 
 					// druhé vešpery
@@ -5547,6 +5547,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_adv1_antifony; // antifóny
 					// krátke čítanie - rovnake pre vsetky adventne nedele
 					_adv1_kcitanie; // pozor, používame z adv. obdobia I.
+					_adv1_prosby; // prosby - z tretej adventnej nedele, OBD_ADVENTNE_I (rovnake pre prvu a tretiu, resp. druhu a stvrtu adventnu nedelu)
 					_adv1_modlitba; // modlitba
 					// antifóna na magnifikat pre druhé vešpery nastavená vyššie, podľa dátumu, ako pre bežný deň
 
