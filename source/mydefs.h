@@ -613,11 +613,19 @@ extern short int query_type; // contains constants PRM_...
 #endif
 
 // transparent navigation arrows on the left
-#define FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT 148
+#define FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT 149
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT "FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT"
 #else
 #define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT "of0ltn" // of0tnl would be more logical but we want to avoid the same prefixes to be used
+#endif
+
+// side navigation (side menu)
+#define FORCE_BIT_OPT_0_SIDE_NAVIGATION 150
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION "FORCE_BIT_OPT_0_SIDE_NAVIGATION"
+#else
+#define STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION "of0sn"
 #endif
 
 // full text of psalms etc.
@@ -1358,6 +1366,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID        "BitOpt0TwoYearsCycleId"
 #define XML_BIT_OPT_0_ALTERNATIVE_READINGS      "BitOpt0AlternativeReadings"
 #define XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT      "BitOpt0TransparentNavLeft"
+#define XML_BIT_OPT_0_SIDE_NAVIGATION           "BitOpt0NavigationMenu"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"

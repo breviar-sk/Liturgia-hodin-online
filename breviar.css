@@ -29,45 +29,45 @@
 
 /* for HU/CZ first/second/third-ant is used; for SK ant-first/second/third is used */
 .antiphon.first-ant:before {
-    color: #ff0000;
-    content: '1. ant. ';
-    font-weight: bold;
+	color: #ff0000;
+	content: '1. ant. ';
+	font-weight: bold;
 }
 
 .antiphon.second-ant:before {
-    color: #ff0000;
-    content: '2. ant. ';
-    font-weight: bold;
+	color: #ff0000;
+	content: '2. ant. ';
+	font-weight: bold;
 }
 
 .antiphon.third-ant:before {
-    color: #ff0000;
-    content: '3. ant. ';
-    font-weight: bold;
+	color: #ff0000;
+	content: '3. ant. ';
+	font-weight: bold;
 }
 
 .antiphon.ant:before {
-    color: #ff0000;
-    content: 'Ant. ';
-    font-weight: bold;
+	color: #ff0000;
+	content: 'Ant. ';
+	font-weight: bold;
 }
 
 .antiphon.ant-first:before {
-    color: #ff0000;
-    content: 'Ant. 1 ';
-    font-weight: bold;
+	color: #ff0000;
+	content: 'Ant. 1 ';
+	font-weight: bold;
 }
 
 .antiphon.ant-second:before {
-    color: #ff0000;
-    content: 'Ant. 2 ';
-    font-weight: bold;
+	color: #ff0000;
+	content: 'Ant. 2 ';
+	font-weight: bold;
 }
 
 .antiphon.ant-third:before {
-    color: #ff0000;
-    content: 'Ant. 3 ';
-    font-weight: bold;
+	color: #ff0000;
+	content: 'Ant. 3 ';
+	font-weight: bold;
 }
 
 .respons p { 
@@ -507,12 +507,12 @@ p.bibleref {
 }
 
 #about h3 {
-    font-weight: bold;
-    font-size: 1.2em;
+	font-weight: bold;
+	font-size: 1.2em;
 }
 
 #about b {
-    font-weight: bold !important;
+	font-weight: bold !important;
 }
 
 .indent { 
@@ -1062,15 +1062,15 @@ sup {
 }
 
 .hidden {
-    display: none;
+	display: none;
 }
 
 .tts_section {
-    display: none;
+	display: none;
 }
 
 .tts_pause, .tts_pause_short {
-    display: inline;
+	display: inline;
 }
 
 .psalm-indent, .psalm-indent p.verse {
@@ -1083,7 +1083,6 @@ sup {
 .psalm-indent p.last:after {
 	content: none; 
 }
-
 
 /* always use bold font - no override by breviar-normal-font.css */
 .strong-always { 
@@ -1123,4 +1122,69 @@ p.strong-always, h3.strong-always {
 
 #contentRoot {
   z-index: 0;
+}
+
+/* side hamburger menu - sidebar, open and close buttons */
+.sidebar {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background: #5A1E14; /* background darkest */
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.sidebar a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 24px;
+	color: #dddddd;
+	display: block;
+	transition: 0.3s;
+	border-bottom: none; 
+}
+
+.sidebar a:hover {
+	/* color: orange; */
+}
+
+.sidebar .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+a:hover.closebtn {
+	background: #5A1E14; /* background darkest */
+}
+
+.openbtn {
+	font-size: 22px;
+	cursor: pointer;
+	background-color: white;
+	color: black;
+	padding: 10px 14px;
+	border: none;
+	position: fixed;
+}
+
+#main {
+	transition: margin-left .5s;
+	padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+	.sidebar {
+	padding-top: 14px;
+	}
+	.sidebar a {
+	font-size: 16px;
+	}
 }

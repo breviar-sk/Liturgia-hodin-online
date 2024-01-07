@@ -270,3 +270,24 @@ sup {
 #nav-arrow-up {
   background-image: url('sipkahore-night.png');
 }
+
+/* side hamburger menu - sidebar, open and close buttons */
+.sidebar {
+	background: #222222;
+}
+
+.sidebar a {
+	color: #999999;
+}
+
+.sidebar a:hover {
+	color: #000;
+}
+a:hover.closebtn {
+	background: #222222;
+}
+
+.openbtn {
+	background-color: #000;
+	color: #CCCCCC;
+}

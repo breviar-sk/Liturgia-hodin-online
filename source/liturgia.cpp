@@ -1858,6 +1858,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 16: mystrcpy(str, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, SMALL); break; // BIT_OPT_0_TWO_YEARS_CYCLE_ID
 			case 17: mystrcpy(str, STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS, SMALL); break; // BIT_OPT_0_ALTERNATIVE_READINGS
 			case 18: mystrcpy(str, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT, SMALL); break; // BIT_OPT_0_TRANSPARENT_NAV_LEFT
+			case 19: mystrcpy(str, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, SMALL); break; // BIT_OPT_0_SIDE_NAVIGATION
 			}
 		}
 		break;

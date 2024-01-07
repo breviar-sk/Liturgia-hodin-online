@@ -32,6 +32,23 @@
   "<div id=\"nav-arrow-down\" class=\"nav-arrow-left\" onclick=\"window.scrollBy(0, 0.95*window.innerHeight)\"></div>\n"
 #endif
 
+#define HTML_SIDE_NAVIGATION_SIDEBAR "<div id=\"mySidebar\" class=\"sidebar\">\n" \
+	"\t<a href=\"javascript:void(0)\" class=\"closebtn\" onclick=\"closeNav()\">×</a>"
+
+#define HTML_SIDE_NAVIGATION_MAIN "<div id=\"main\">\n" \
+	"\t<button class=\"openbtn\" onclick=\"openNav()\">☰</button>\n" \
+	"</div>"
+
+#define HTML_SIDE_NAVIGATION_SCRIPT "<script>" \
+"\nfunction openNav() {" \
+"\n\tdocument.getElementById(\"mySidebar\").style.width = \"240px\";" \
+"\n}" \
+"\n" \
+"\nfunction closeNav() {" \
+"\n\tdocument.getElementById(\"mySidebar\").style.width = \"0\";" \
+"\n}" \
+"\n</script>"
+
 #define HTML_BOTTOM "p-bottom"
 #define HTML_ANAME_BOTTOM "<a name=\"" HTML_BOTTOM "\"></a></div>"
 

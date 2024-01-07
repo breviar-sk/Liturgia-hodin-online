@@ -2918,7 +2918,38 @@ const char* html_text_opt_0_transparent_nav_left[POCET_JAZYKOV + 1] =
 };
 
 // for other languages use: ""
-const char* html_text_opt_0_transparent_nav_explain_left[POCET_JAZYKOV + 1] =
+const char* html_text_opt_0_transparent_nav_left_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_0_side_navigation[POCET_JAZYKOV + 1] =
+{
+	"navigačné menu vľavo",
+	"navigační menu nalevo",
+	"navigation menu on the left",
+	"pharetra sagittis a sinistris",
+	"",
+	"navigační menu nalevo",
+	"navigációs nyilak a bal oldalon",
+	"ru_text",
+	"паказваць стрэлкі навігацыі",
+	"leiðsöguörvar til vinstri",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+// for other languages use: ""
+const char* html_text_opt_0_side_navigation_explain[POCET_JAZYKOV + 1] =
 {
 	"",
 	"",

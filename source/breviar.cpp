@@ -7879,6 +7879,9 @@ void xml_export_options(void) {
 				case 18: // BIT_OPT_0_TRANSPARENT_NAV_LEFT
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT)"%ld" ELEM_END(XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT) "\n", BIT_OPT_0_TRANSPARENT_NAV_LEFT, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT, html_text_opt_0_transparent_nav_left[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_LEFT)));
 					break;
+				case 19: // BIT_OPT_0_SIDE_NAVIGATION
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_SIDE_NAVIGATION)"%ld" ELEM_END(XML_BIT_OPT_0_SIDE_NAVIGATION) "\n", BIT_OPT_0_SIDE_NAVIGATION, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, html_text_opt_0_side_navigation[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)));
+					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE) "\n");
@@ -11214,7 +11217,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT
 		Export(HTML_CRLF_LINE_BREAK);
 		Export(HTML_NONBREAKING_SPACE_LOOONG);
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_LEFT, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT, html_text_opt_0_transparent_nav_left[_global_jazyk], html_text_opt_0_transparent_nav_explain_left[_global_jazyk], NIE);
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_LEFT, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT, html_text_opt_0_transparent_nav_left[_global_jazyk], html_text_opt_0_transparent_nav_left_explain[_global_jazyk], NIE);
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, html_text_opt_0_zalmy_full_text[_global_jazyk], html_text_opt_0_zalmy_full_text_explain[_global_jazyk]);

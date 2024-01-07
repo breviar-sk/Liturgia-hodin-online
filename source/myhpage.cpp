@@ -354,6 +354,19 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	Export_to_file(expt, HTML_DIV_BEGIN "\n");
 #endif
 
+	// display side navigation (left menu)
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) {
+		Export_to_file(expt, HTML_SIDE_NAVIGATION_SIDEBAR "\n");
+		
+		// ToDo: menu items localized here
+
+		Export_to_file(expt, HTML_DIV_END"\n");
+
+		Export_to_file(expt, HTML_SIDE_NAVIGATION_MAIN "\n");
+
+		Export_to_file(expt, HTML_SIDE_NAVIGATION_SCRIPT "\n");
+	}
+
 	// predošlá a nasledovná modlitba
 	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE) {
 		_buttons_prev_up_next(expt);

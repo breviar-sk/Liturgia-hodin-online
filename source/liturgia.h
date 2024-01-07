@@ -1569,7 +1569,7 @@ extern unsigned long long _global_force_opt[POCET_GLOBAL_OPT];
 #define USE_STR_OPT           -2
 #define USE_STR_FORCE_OPT     -1
 
-#define POCET_OPT_0_SPECIALNE               19 // jednotlivé komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               20 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                      1 // export also verse numbers
@@ -1591,6 +1591,7 @@ extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_TWO_YEARS_CYCLE_ID     65536 // when use two-years' cycle for readings (BIT_OPT_0_TWO_YEARS_CYCLE is set), 0 = 1st year, 1 = 2nd year of two-years' cycle
 #define BIT_OPT_0_ALTERNATIVE_READINGS  131072 // use alternative second readings in prayer with readings (CZ only)
 #define BIT_OPT_0_TRANSPARENT_NAV_LEFT  262144 // transparent navigation arrow in text; override: on the left side of the screen (left-handed)
+#define BIT_OPT_0_SIDE_NAVIGATION       524288 // side navigation using JavaScript; for web usage (instead of frames)
 
 #define POCET_OPT_1_CASTI_MODLITBY          20 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern unsigned long long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
