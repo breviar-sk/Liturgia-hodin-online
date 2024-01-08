@@ -1,7 +1,7 @@
 /************************************************************************/
 /*                                                                      */
 /* myhpage.cpp                                                          */
-/* (c)1999-2023 | Juraj Vidéky | videky@breviar.sk                      */
+/* (c)1999-2024 | Juraj Vidéky | videky@breviar.sk                      */
 /*                                                                      */
 /* description | HTML document dynamically generated header and footer  */
 /*                                                                      */
@@ -15,15 +15,19 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+
+#include "mybuild.h"
 #include "myconf.h"
 #include "myhpage.h"
 #include "mydefs.h"
 #include "myexpt.h"
 #include "mystring.h"
 #include "mylog.h"
-#include "breviar.h"
-#include "liturgia.h"
 #include "mybuild.h"
+
+#include "breviar.h"
+// #include "hodin.h"
+#include "liturgia.h"
 
 short int bol_content_type_text_html = NIE;
 short int bol_content_type_text_xml = NIE;
@@ -60,6 +64,37 @@ const char* HTML_MAIL_LABEL_LONG = "Juraj Vidéky";
 const char* HTML_MAIL_LABEL_SHORT = "J. Vidéky";
 
 #define STR_YEAR_LENGTH 10
+
+// menu items
+const char* html_text_opt_2_nocny_rezim_menu_hide[POCET_JAZYKOV + 1] =
+{
+	"nočný režim",
+	"noční režim",
+	"night mode",
+	"modus nocturnus",
+	"",
+	"noční režim",
+	"éjszakai mód",
+	"ночной режим",
+	"начны рэжым",
+	"nátthamur",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1] =
+{
+	"denný režim",
+	"denní režim",
+	"day mode",
+	"modus nocturnus",
+	"",
+	"denní režim",
+	"éjszakai mód",
+	"ночной режим",
+	"начны рэжым",
+	"nátthamur",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 
 #endif // __MYHPAGE_CPP_HTML_CONST
 
@@ -354,19 +389,6 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	Export_to_file(expt, HTML_DIV_BEGIN "\n");
 #endif
 
-	// display side navigation (left menu)
-	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) {
-		Export_to_file(expt, HTML_SIDE_NAVIGATION_SIDEBAR "\n");
-		
-		// ToDo: menu items localized here
-
-		Export_to_file(expt, HTML_DIV_END"\n");
-
-		Export_to_file(expt, HTML_SIDE_NAVIGATION_MAIN "\n");
-
-		Export_to_file(expt, HTML_SIDE_NAVIGATION_SCRIPT "\n");
-	}
-
 	// predošlá a nasledovná modlitba
 	if (_global_opt_batch_monthly == ANO && query_type != PRM_BATCH_MODE) {
 		_buttons_prev_up_next(expt);
@@ -383,6 +405,31 @@ void hlavicka(char* title, short int level, short int spec) {
 void hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	_hlavicka(title, expt, level, spec);
 }// hlavicka()
+
+void _hlavicka_sidemenu(FILE* expt) {
+	// display side navigation (left menu)
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) {
+		Export_to_file(expt, HTML_SIDE_NAVIGATION_SIDEBAR "\n");
+
+		// ToDo: menu items localized here
+
+		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, (char*)html_text_opt_2_nocny_rezim_menu_show[_global_jazyk], (char*)html_text_opt_2_nocny_rezim_menu_hide[_global_jazyk], (char*)STR_EMPTY, (char*)STR_EMPTY, "\t", "\n", (char*)STR_EMPTY, (char*)STR_EMPTY, 0, 0);
+
+		Export_to_file(expt, HTML_DIV_END"\n");
+
+		Export_to_file(expt, HTML_SIDE_NAVIGATION_MAIN "\n");
+
+		Export_to_file(expt, HTML_SIDE_NAVIGATION_SCRIPT "\n");
+	}
+}// _hlavicka_sidemenu()
+
+void hlavicka_sidemenu() {
+	_hlavicka_sidemenu(NULL);
+}// hlavicka_sidemenu()
+
+void hlavicka_sidemenu(FILE* expt) {
+	_hlavicka_sidemenu(expt);
+}// hlavicka_sidemenu()
 
 // exportuje hlavicku XML dokumentu
 void _xml_hlavicka(FILE* expt) {

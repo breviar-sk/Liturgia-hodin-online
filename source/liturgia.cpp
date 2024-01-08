@@ -1,7 +1,7 @@
 /************************************************************/
 /*                                                          */
 /* liturgia.cpp                                             */
-/* (c)1999-2023 | Juraj Vidéky | videky@breviar.sk          */
+/* (c)1999-2024 | Juraj Vidéky | videky@breviar.sk          */
 /*                                                          */
 /* description | basic 'liturgical' methods for calendar,   */
 /*               working with dates and strings             */
@@ -26,6 +26,7 @@
 #include "mystring.h"
 #include "myconf.h"
 #include "utf8-utils.h"
+
 #include <ctype.h>
 #include <wctype.h>
 #include <string.h>

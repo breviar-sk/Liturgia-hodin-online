@@ -1,7 +1,7 @@
 /************************************************************************/
 /*                                                                      */
 /* myhpage.h                                                            */
-/* (c)1999-2023 | Juraj Vidéky | videky@breviar.sk                      */
+/* (c)1999-2024 | Juraj Vidéky | videky@breviar.sk                      */
 /*                                                                      */
 /* description | HTML document dynamically generated header and footer  */
 /*                                                                      */
@@ -57,6 +57,9 @@
 // header
 void hlavicka(char* title, short int level = 0, short int spec = 0);
 void hlavicka(char* title, FILE* expt, short int level = 0, short int spec = 0);
+
+void hlavicka_sidemenu();
+void hlavicka_sidemenu(FILE* expt);
 
 // XML header
 void xml_hlavicka(void);

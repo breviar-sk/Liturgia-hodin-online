@@ -1,7 +1,7 @@
 /***************************************************************************/
 /*                                                                         */
 /* breviar.cpp                                                             */
-/* (c)1999-2023 | Juraj Vidéky | videky@breviar.sk                         */
+/* (c)1999-2024 | Juraj Vidéky | videky@breviar.sk                         */
 /*                                                                         */
 /*                http://www.breviar.sk                                    */
 /*                                                                         */
@@ -65,12 +65,13 @@ Examples:
 #include "myconf.h"
 #include "mysystem.h"
 #include "mysysdef.h"
+
 #include "hodin.h"
-#include "liturgia.h"                  
+#include "liturgia.h"
 #include "cgiutils.h"
 #include "mygetopt.h"
 #include "utf8-utils.h"
-#include "dbzaltar.h"                  
+#include "dbzaltar.h"
 #include "mydefs.h"
 #include "mylog.h"
 #include "myexpt.h"
@@ -1345,6 +1346,24 @@ void _export_heading_center(short int typ, const char* string) {
 void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_STR], char popis[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')') {
 	Log("_export_link_helper(): začiatok...\n");
 
+	char pom_den[VERY_SMALL];
+	mystrcpy(pom_den, STR_EMPTY, VERY_SMALL);
+	if (_global_den.den == VSETKY_DNI) {
+		mystrcpy(pom_den, STR_VSETKY_DNI, VERY_SMALL);
+	}
+	else {
+		sprintf(pom_den, "%d", _global_den.den);
+	}
+
+	char pom_mesiac[VERY_SMALL];
+	mystrcpy(pom_mesiac, STR_EMPTY, VERY_SMALL);
+	if (_global_den.mesiac >= MES_JAN && _global_den.mesiac <= MES_DEC) {
+		sprintf(pom_mesiac, "%d", _global_den.mesiac);
+	}
+	else {
+		mystrcpy(pom_mesiac, STR_VSETKY_MESIACE, VERY_SMALL);
+	}
+
 	// prilepenie poradia svätca
 	if (_global_poradie_svaty > 0) {
 		sprintf(pom2, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, _global_poradie_svaty);
@@ -1377,11 +1396,11 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 			pom2);
 	}
 	else if (query_type == PRM_DATUM) {
-		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s",
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%s" HTML_AMPERSAND "%s=%s" HTML_AMPERSAND "%s=%d%s",
 			script_name,
 			STR_QUERY_TYPE, STR_PRM_DATUM,
-			STR_DEN, _global_den.den,
-			STR_MESIAC, _global_den.mesiac,
+			STR_DEN, pom_den /* _global_den.den */,
+			STR_MESIAC, pom_mesiac /* _global_den.mesiac */,
 			STR_ROK, _global_den.rok,
 			pom2);
 	}
@@ -1395,9 +1414,16 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 			STR_LIT_ROK, _global_den.litrok,
 			pom2);
 	}
+	else if (query_type == PRM_ANALYZA_ROKU) {
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_ANALYZA_ROKU,
+			STR_ANALYZA_ROKU, _global_den.rok,
+			pom2);
+	}
 
 	if (!equals(specific_string_before, STR_EMPTY) && (strlen(specific_string_before) > 0)) {
-		Export("%s\n", specific_string_before);
+		Export("%s", specific_string_before);
 	}
 
 	if (!equals(html_tag_begin, STR_EMPTY) && (strlen(html_tag_begin) > 0)) {
@@ -1424,7 +1450,7 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 	}
 
 	if (!equals(specific_string_after, STR_EMPTY) && (strlen(specific_string_after) > 0)) {
-		Export("%s\n", specific_string_after);
+		Export("%s", specific_string_after);
 	}
 
 	Log("_export_link_helper(): koniec.\n");
@@ -1432,7 +1458,7 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 
 // funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
 // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
-void _export_link_show_hide(short int opt, unsigned long long bit_opt, char popis_show[MAX_STR], char popis_hide[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')') {
+void _export_link_show_hide(short int opt, unsigned long long bit_opt, char popis_show[MAX_STR], char popis_hide[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis, char right_parenthesis) {
 	Log("_export_link_show_hide(): začiatok...\n");
 	char popis[MAX_STR];
 
@@ -5905,6 +5931,18 @@ short int atomodlitba(char *modlitba) {
 	return p;
 } // atomodlitba()
 
+void _rozbor_dna_base(_struct_den_mesiac datum, short int rok) {
+	Log("_rozbor_dna_base(): begin...\n");
+
+	_global_den.den = datum.den;
+	_global_den.mesiac = datum.mesiac;
+	_global_den.rok = rok;
+	_global_den.denvr = poradie(datum.den, datum.mesiac, rok);
+	_global_den.denvt = den_v_tyzdni(datum.den, datum.mesiac, rok);
+
+	Log("_rozbor_dna_base(): end.\n");
+}// _rozbor_dna_base()
+
 // predpokoladam, ze pred jeho volanim bolo pouzite analyzuj_rok(rok); ktore da vysledok do _global_r
 // dostane {den, mesiac} a rok
 // navratova hodnota je SUCCESS alebo FAILURE
@@ -5953,11 +5991,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 	// určenie "občianskych" (civilných) záležitostí dňa:
 	// den, mesiac, rok, denvr, denvt
 	Log("urcenie 'obcianskych' zalezitosti dna:\n");
-	_global_den.den = datum.den;
-	_global_den.mesiac = datum.mesiac;
-	_global_den.rok = rok;
-	_global_den.denvr = poradie(datum.den, datum.mesiac, rok);
-	_global_den.denvt = den_v_tyzdni(datum.den, datum.mesiac, rok);
+	_rozbor_dna_base(datum, rok);
 	_rozbor_dna_LOG("denvr == %d, denvt == %d...\n", _global_den.denvr, _global_den.denvt);
 
 	// určenie všeobecnych "liturgických" záležitostí dňa:
@@ -14621,7 +14655,7 @@ void _export_buttons_mesiac_rok_prev_next(short int m, short int r, char pom2[MA
 
 // dostane stringy (datum) + mozno dalsie striny (modlitba, dalsi_svaty), prekonvertuje ich a skontroluje ak je vsetko ok, 
 // vykona _main_rozbor_dna(int, int, int) resp. _main_rozbor_mesiaca(int) resp. cely rok, 12krat rozbor_mesiaca(int)
-#define ExportUDAJE	result = FAILURE; if (!heading_written) {_export_heading("Rozbor dňa"); heading_written = 1;} Log("error: Nevhodne udaje\n"); Export("Nevhodné údaje: "); Export
+#define ExportUDAJE	result = FAILURE; hlavicka_sidemenu(); if (!heading_written) {_export_heading("Rozbor dňa"); heading_written = 1;} Log("error: Nevhodne udaje\n"); Export("Nevhodné údaje: "); Export
 void _main_rozbor_dna(short int typ, short int d, short int m, short int r, short int p, char *poradie_svaty) {
 	short int heading_written = 0;
 	char pom[MAX_STR];
@@ -14696,6 +14730,14 @@ void _main_rozbor_dna(short int typ, short int d, short int m, short int r, shor
 		}
 		return;
 	}
+
+	_struct_den_mesiac datum;
+	datum.den = d;
+	datum.mesiac = m + 1; // note that m is between 0--11
+
+	_rozbor_dna_base(datum, r);
+
+	hlavicka_sidemenu(); // ToDo
 
 	Log("/* teraz result == SUCCESS */\n");
 
@@ -14799,10 +14841,6 @@ void _main_rozbor_dna(short int typ, short int d, short int m, short int r, shor
 		else {// d != VSETKY_DNI
 			if (!kontrola_den_mesiac_rok(d, m, r)) {
 				Log("/* teraz vypisujem heading 1, datum %d. %s %d */\n", d, nazov_mesiaca(m - 1), r);
-
-				_struct_den_mesiac datum;
-				datum.den = d;
-				datum.mesiac = m;
 
 				strcpy(pom, _vytvor_string_z_datumu(d, m, r, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 				_export_heading_center(typ, pom);
@@ -15097,6 +15135,10 @@ void _main_dnes(char *modlitba, char *poradie_svaty) {
 	datum.den = dnes.tm_mday;
 	datum.mesiac = dnes.tm_mon;
 	analyzuj_rok(dnes.tm_year); // výsledok dá do _global_r
+
+	_rozbor_dna_base(datum, dnes.tm_year);
+
+	hlavicka_sidemenu(); // ToDo
 
 	s = atoi(poradie_svaty); // ak je viac svatych, ktory z nich (1--MAX_POCET_SVATY)
 	// zmysel majú len vstupy 1--MAX_POCET_SVATY
@@ -15811,6 +15853,13 @@ void _main_analyza_roku(char *rok) {
 		return;
 	}
 
+	datum.den = VSETKY_DNI;
+	datum.mesiac = VSETKY_MESIACE;
+
+	_rozbor_dna_base(datum, year);
+
+	hlavicka_sidemenu(); // ToDo
+
 	prilep_request_options(pom2, pom3, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
 
 	sprintf(pom, (char *)html_text_Rok_x[_global_jazyk], year);
@@ -16114,6 +16163,8 @@ void _main_tabulka(char *rok_from, char *rok_to, char *tab_linky) {
 		}
 		return;
 	}
+
+	hlavicka_sidemenu(); // ToDo
 
 	_export_heading_center(query_type, (char *)html_text_datumy_pohyblivych_slaveni[_global_jazyk]);
 

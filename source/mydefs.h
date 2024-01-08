@@ -1,7 +1,7 @@
 /*********************************************************/
 /*                                                       */
 /* mydefs.h                                              */
-/* (c)1999-2023 | Juraj Vidéky | videky@breviar.sk       */
+/* (c)1999-2024 | Juraj Vidéky | videky@breviar.sk       */
 /*                                                       */
 /* description | core basic define's                     */
 /*                                                       */
@@ -1220,6 +1220,7 @@ extern short int query_type; // contains constants PRM_...
 	if (query_type != PRM_XML) {\
 		Log("ALERT\n");\
 		hlavicka((char *)html_title[_global_jazyk]);\
+		hlavicka_sidemenu();\
 		char pom2[MAX_STR];\
 		mystrcpy(pom2, STR_EMPTY, MAX_STR);\
 		char pom3[MAX_STR];\
@@ -1262,7 +1263,7 @@ extern short int query_type; // contains constants PRM_...
 
 #define HTML_ISO_FORMAT      "%04d-%02d-%02d"
 
-#define TEXT_COPYRIGHT       "(c) 1999-2023 Juraj Vidéky"
+#define TEXT_COPYRIGHT       "(c) 1999-2024 Juraj Vidéky"
 #define TEXT_EMAIL           "videky@breviar.sk"
 
 // main XML element
