@@ -68,31 +68,31 @@ const char* HTML_MAIL_LABEL_SHORT = "J. Vidéky";
 // menu items
 const char* html_text_opt_2_nocny_rezim_menu_hide[POCET_JAZYKOV + 1] =
 {
-	"nočný režim",
-	"noční režim",
-	"night mode",
-	"modus nocturnus",
+	"Téma ☾",
+	"Téma ☾",
+	"Theme ☾",
+	"Modus ☾",
 	"",
-	"noční režim",
-	"éjszakai mód",
-	"ночной режим",
-	"начны рэжым",
-	"nátthamur",
+	"Téma ☾",
+	"Mód ☾",
+	"режим ☾",
+	"рэжым ☾",
+	"Thamur ☾",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
 const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1] =
 {
-	"denný režim",
-	"denní režim",
-	"day mode",
-	"modus nocturnus",
+	"Téma ☼",
+	"Téma ☼",
+	"Theme ☼",
+	"Modus ☼",
 	"",
-	"denní režim",
-	"éjszakai mód",
-	"ночной режим",
-	"начны рэжым",
-	"nátthamur",
+	"Téma ☼",
+	"Mód ☼",
+	"режим ☼",
+	"рэжым ☼",
+	"Thamur ☼",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -413,7 +413,9 @@ void _hlavicka_sidemenu(FILE* expt) {
 
 		// ToDo: menu items localized here
 
-		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, (char*)html_text_opt_2_nocny_rezim_menu_show[_global_jazyk], (char*)html_text_opt_2_nocny_rezim_menu_hide[_global_jazyk], (char*)STR_EMPTY, (char*)STR_EMPTY, "\t", "\n", (char*)STR_EMPTY, (char*)STR_EMPTY, 0, 0);
+		_export_link_menu_dnes();
+
+		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, (char*)html_text_opt_2_nocny_rezim_menu_show[_global_jazyk], (char*)html_text_opt_2_nocny_rezim_menu_hide[_global_jazyk], (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)"\t", (char*)"\n", (char*)STR_EMPTY, (char*)STR_EMPTY, 0, 0);
 
 		Export_to_file(expt, HTML_DIV_END"\n");
 

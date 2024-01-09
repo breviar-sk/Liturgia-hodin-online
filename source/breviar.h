@@ -32,6 +32,8 @@ extern short int _global_vstup_den;
 extern short int _global_vstup_mesiac;
 extern short int _global_vstup_rok;
 extern short int _global_poradie_svaty;
+extern short int _global_rok_from;
+extern short int _global_rok_to;
 
 extern short int query_type; // premenna obsahujuca PRM_..., deklarovana v mydefs.h
 
@@ -61,6 +63,7 @@ extern void _export_rozbor_dna_kalendar_core(short int typ);
 extern void _export_rozbor_dna_kalendar(short int typ);
 
 extern void _export_link_show_hide(short int opt, unsigned long long bit_opt, char popis_show[MAX_STR], char popis_hide[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')');
+extern void _export_link_menu_dnes();
 
 extern short int _global_pocet_navigacia; // 2011-07-03: počet prejdených/spracovaných parametrov PARAM_NAVIGACIA | counter of processed PARAM_NAVIGACIA params
 

@@ -91,6 +91,9 @@
 
 #define CHAR_APOSTROPHE        L'\x2019' /*’*/ // single comma quotation mark | U+2019 | SK apostrophe // not to be excluded for voice output in method ExportChar()
 
+#define CHAR_MOON              L'\x263E' /*☾*/ // Last Quarter Moon
+#define CHAR_SUN               L'\x263C' /*☼*/ // White Sun with Rays
+
 // include parameters
 #define INCLUDE_BEGIN   "BEGIN" // zaciatok
 #define INCLUDE_END     "END"   // koniec

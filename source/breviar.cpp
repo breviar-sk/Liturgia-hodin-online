@@ -409,6 +409,9 @@ short int _global_vstup_mesiac = 0;
 short int _global_vstup_rok = 0;
 short int _global_poradie_svaty = 0;
 
+short int _global_rok_from = 0;
+short int _global_rok_to = 0;
+
 short int _global_pocet_navigacia = 0; // počet prejdených/spracovaných parametrov PARAM_NAVIGACIA
 
 short int _global_pocet_volani_interpretTemplate = 0; // počet volaní _global_pocet_volani_interpretTemplate()
@@ -1421,6 +1424,22 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 			STR_ANALYZA_ROKU, _global_den.rok,
 			pom2);
 	}
+	else if (query_type == PRM_TABULKA) {
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_TABULKA,
+			STR_ROK_FROM, _global_rok_from,
+			STR_ROK_TO, _global_rok_to,
+			STR_TABULKA_LINKY, _global_den.mesiac, /* whether to display dates as hyperlinks | hack: usage of _global_den.mesiac */
+			pom2);
+	}
+	else if (query_type == PRM_STATIC_TEXT) {
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%s%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_STATIC_TEXT,
+			STR_STATIC_TEXT, skratka_static_text[_global_den.mesiac], /* type of static texts | hack: usage of _global_den.mesiac */
+			pom2);
+	}
 
 	if (!equals(specific_string_before, STR_EMPTY) && (strlen(specific_string_before) > 0)) {
 		Export("%s", specific_string_before);
@@ -1455,6 +1474,46 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 
 	Log("_export_link_helper(): koniec.\n");
 } // _export_link_helper()
+
+void _export_link_menu_dnes() {
+	Log("_export_link_menu_dnes(): začiatok...\n");
+	char popis[MAX_STR];
+
+	char pom[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	char pom2[MAX_STR];
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+	// backup of some parameters
+	short int local_query_type = query_type;
+	short int local_modlitba = _global_modlitba;
+
+	query_type = PRM_DNES;
+	_global_modlitba = MODL_NEURCENA;
+
+	mystrcpy(popis, (char*)html_button_Dnes[_global_jazyk], MAX_STR);
+
+	prilep_request_options(pom2, pom3);
+
+	_export_link_helper(pom, pom2, pom3, popis, 
+		(char*)STR_EMPTY /* html_tag_begin */, 
+		(char*)STR_EMPTY /* html_class */, 
+		(char*)STR_EMPTY /* specific_string_before */,
+		(char*)STR_EMPTY /* specific_string_after */,
+		(char*)STR_EMPTY /* anchor */,
+		(char*)STR_EMPTY /* html_tag_end */,
+		CHAR_EMPTY /* left_parenthesis */,
+		CHAR_EMPTY /* right_parenthesis */
+	);
+
+	// restore of some parameters
+	query_type = local_query_type;
+	_global_modlitba = local_modlitba;
+
+	Log("_export_link_menu_dnes(): koniec.\n");
+} // _export_link_menu_dnes()
 
 // funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
 // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
@@ -1630,6 +1689,30 @@ void _export_link_communia(short int spol_cast, char html_tag_begin[SMALL], char
 			STR_TYZDEN, _global_den.tyzden,
 			STR_LIT_OBD, _global_den.litobd,
 			STR_LIT_ROK, _global_den.litrok,
+			pom2);
+	}
+	/* these following query types probably are not used; if used, please check setting of parameters used for sprintf() */
+	else if (query_type == PRM_ANALYZA_ROKU) {
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_ANALYZA_ROKU,
+			STR_ANALYZA_ROKU, _global_den.rok,
+			pom2);
+	}
+	else if (query_type == PRM_TABULKA) {
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_TABULKA,
+			STR_ROK_FROM, _global_rok_from,
+			STR_ROK_TO, _global_rok_to,
+			STR_TABULKA_LINKY, _global_den.mesiac, /* whether to display dates as hyperlinks | hack: usage of _global_den.mesiac */
+			pom2);
+	}
+	else if (query_type == PRM_STATIC_TEXT) {
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%s%s",
+			script_name,
+			STR_QUERY_TYPE, STR_PRM_STATIC_TEXT,
+			STR_STATIC_TEXT, skratka_static_text[_global_den.mesiac], /* type of static texts | hack: usage of _global_den.mesiac */
 			pom2);
 	}
 
@@ -10813,7 +10896,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 	_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1, (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY, (char *)STR_EMPTY);
 
-	Export("<" HTML_SPAN_BOLD_IT ">");
+	Export("<" HTML_SPAN_BOLD_IT ">\n");
 	Export((char *)html_text_dalsie_moznosti_1[_global_jazyk]);
 	Export(HTML_SPAN_END"\n");
 
@@ -11484,7 +11567,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 	_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2, (char *)html_text_option_zobrazit[_global_jazyk], (char *)html_text_option_skryt[_global_jazyk], (char *)STR_EMPTY, (char *)HTML_CLASS_QUIET, before, after, (char *)STR_EMPTY, (char *)STR_EMPTY);
 
-	Export("<" HTML_SPAN_BOLD_IT ">");
+	Export("<" HTML_SPAN_BOLD_IT ">\n");
 	Export((char *)html_text_dalsie_moznosti_2[_global_jazyk]);
 	Export(HTML_SPAN_END"\n");
 
@@ -14731,13 +14814,14 @@ void _main_rozbor_dna(short int typ, short int d, short int m, short int r, shor
 		return;
 	}
 
+	// settings for sidemenu
 	_struct_den_mesiac datum;
 	datum.den = d;
 	datum.mesiac = m + 1; // note that m is between 0--11
 
 	_rozbor_dna_base(datum, r);
 
-	hlavicka_sidemenu(); // ToDo
+	hlavicka_sidemenu();
 
 	Log("/* teraz result == SUCCESS */\n");
 
@@ -15130,6 +15214,7 @@ void _main_dnes(char *modlitba, char *poradie_svaty) {
 
 	// dnes.tm_wday == 0--6 (0==sunday, nedela)
 
+	// settings for sidemenu
 	// dalej rozoberiem den a vypisem vysledok
 	_struct_den_mesiac datum;
 	datum.den = dnes.tm_mday;
@@ -15138,7 +15223,7 @@ void _main_dnes(char *modlitba, char *poradie_svaty) {
 
 	_rozbor_dna_base(datum, dnes.tm_year);
 
-	hlavicka_sidemenu(); // ToDo
+	hlavicka_sidemenu();
 
 	s = atoi(poradie_svaty); // ak je viac svatych, ktory z nich (1--MAX_POCET_SVATY)
 	// zmysel majú len vstupy 1--MAX_POCET_SVATY
@@ -15604,6 +15689,9 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		}
 	}
 
+	// settings for sidemenu: above
+	hlavicka_sidemenu();
+
 	liturgicke_obdobie(lo, t, d, tz, poradie_svateho);
 
 	// usage of chosen common part (communia) | použitie zvolenej spoločnej časti
@@ -15718,6 +15806,11 @@ short int _main_static_text(short int st, short int p) {
 
 	_main_LOG_to_Export("\t_global_include_static_text: \n");
 	Log_filename_anchor(_global_include_static_text);
+
+	// settings for sidemenu
+	_global_den.mesiac = st; // hack: usage of _global_den.mesiac */
+
+	hlavicka_sidemenu();
 
 	LOG_ciara;
 	showPrayer(query_type, _global_modlitba, SHOW_TEMPLAT_STATIC_TEXT);
@@ -15853,12 +15946,13 @@ void _main_analyza_roku(char *rok) {
 		return;
 	}
 
+	// settings for sidemenu
 	datum.den = VSETKY_DNI;
 	datum.mesiac = VSETKY_MESIACE;
 
 	_rozbor_dna_base(datum, year);
 
-	hlavicka_sidemenu(); // ToDo
+	hlavicka_sidemenu();
 
 	prilep_request_options(pom2, pom3, 1 /* special_handling: remove BIT_OPT_1_OVERRIDE_STUP_SLAV */);
 
@@ -16164,7 +16258,12 @@ void _main_tabulka(char *rok_from, char *rok_to, char *tab_linky) {
 		return;
 	}
 
-	hlavicka_sidemenu(); // ToDo
+	// settings for sidemenu
+	_global_rok_from = rfrom;
+	_global_rok_to = rto;
+	_global_den.mesiac = linky; // hack: usage of _global_den.mesiac */
+
+	hlavicka_sidemenu();
 
 	_export_heading_center(query_type, (char *)html_text_datumy_pohyblivych_slaveni[_global_jazyk]);
 

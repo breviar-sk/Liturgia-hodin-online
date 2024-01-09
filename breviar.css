@@ -1135,13 +1135,13 @@ p.strong-always, h3.strong-always {
 	background: #5A1E14; /* background darkest */
 	overflow-x: hidden;
 	transition: 0.5s;
-	padding-top: 60px;
+	padding-top: 64px;
 }
 
 .sidebar a {
 	padding: 8px 8px 8px 32px;
 	text-decoration: none;
-	font-size: 24px;
+	font-size: 130%;
 	color: #dddddd;
 	display: block;
 	transition: 0.3s;
@@ -1149,15 +1149,15 @@ p.strong-always, h3.strong-always {
 }
 
 .sidebar a:hover {
-	/* color: orange; */
+	color: #eeeeee;
 }
 
 .sidebar .closebtn {
 	position: absolute;
 	top: 0;
 	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
+	font-size: 200%;
+	margin-left: 10px;
 }
 
 a:hover.closebtn {
@@ -1165,11 +1165,11 @@ a:hover.closebtn {
 }
 
 .openbtn {
-	font-size: 22px;
+	font-size: 130%;
 	cursor: pointer;
 	background-color: white;
 	color: black;
-	padding: 10px 14px;
+	/* padding: 4px 4px; */
 	border: none;
 	position: fixed;
 }

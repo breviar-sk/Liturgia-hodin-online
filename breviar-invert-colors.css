@@ -283,7 +283,9 @@ sup {
 .sidebar a:hover {
 	color: #000;
 }
+
 a:hover.closebtn {
+	color: #999999;
 	background: #222222;
 }
 
