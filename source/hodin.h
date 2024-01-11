@@ -4245,6 +4245,37 @@ const char* html_text_opt_2_background_override_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+// menu items
+const char* html_text_opt_2_nocny_rezim_menu_hide[POCET_JAZYKOV + 1] =
+{
+	"Téma ☾",
+	"Téma ☾",
+	"Theme ☾",
+	"Modus ☾",
+	"",
+	"Téma ☾",
+	"Mód ☾",
+	"режим ☾",
+	"рэжым ☾",
+	"Thamur ☾",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1] =
+{
+	"Téma ☼",
+	"Téma ☼",
+	"Theme ☼",
+	"Modus ☼",
+	"",
+	"Téma ☼",
+	"Mód ☼",
+	"режим ☼",
+	"рэжым ☼",
+	"Thamur ☼",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char* html_text_opt_5_KomplHymnusA[POCET_JAZYKOV + 1] =
 {
 	"hymnus A: Na sklonku dňa ťa úprimne",

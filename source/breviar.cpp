@@ -1515,6 +1515,13 @@ void _export_link_menu_dnes() {
 	Log("_export_link_menu_dnes(): koniec.\n");
 } // _export_link_menu_dnes()
 
+// produces hyperlink for sidemenu to static HTML content
+void _export_link_menu_linkitem(char ) {
+	Log("_export_link_menu_linkitem(): začiatok...\n");
+
+	Log("_export_link_menu_linkitem(): koniec.\n");
+} // _export_link_menu_linkitem()
+
 // funkcia vyexportuje link pre (skryť) / (zobraziť) podľa rozličných nastavení
 // kvôli nastaveniam, čo sú formulované "default = zobrazené"; treba vždy zvážiť správne nastavenie vstupných parametrov!
 void _export_link_show_hide(short int opt, unsigned long long bit_opt, char popis_show[MAX_STR], char popis_hide[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis, char right_parenthesis) {
@@ -6268,8 +6275,9 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				// keďže KRST je poradové číslo dňa v roku, ale je to vždy január, je to vlastne aj dátum
 				// opravené; podľa smerníc (č. 133) -- "prvý týždeň sa začína na Prvú adventnú nedeľu, v prvý týždeň v Cezročnom období, na Prvú pôstnu nedeľu a na Prvú veľkonočnú nedeľu."
 				if (KRST == 8) {
-					if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA))) {
+					if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)) || (_global_den.denvt == DEN_PONDELOK)) {
 						// v krajinách, kde sa Zjavenie Pána slávi v nedeľu: ak Krst Krista Pána padne na 8.1. (pondelok), potom pred nedeľou Zjavenia Pána 7.1. sú všedné dni 1. týždeň žaltára (8.1. ako Krst Krista Pána nemôže padnúť na nedeľu; 8.1. ak je nedeľa, je to Zjavenie Pána a Krst Krista Pána je v pondelok 9.1.)
+						// pre modlitbu cez deň: Keď sa sviatok Krstu Pána slávi v pondelok po nedeli pripadajúcej na 7. alebo 8. januára, žalmy sa berú z pondelka prvého týždňa s antifónou zo sviatku (SK LH, zv. I, str. 529)
 						_global_den.tyzden = 1;
 					}
 					else {

@@ -3725,11 +3725,16 @@ void _set_zalmy_sviatok_krstu(short int modlitba) {
 		set_zalm(3, modlitba, "z66.htm", "ZALM66_II");
 	}
 	// pre mcd žalmy z nedele 2. týždňa (7.1.) alebo z nedele 3. týždňa podľa roka
+	// Keď sa sviatok Krstu Pána slávi v pondelok po nedeli pripadajúcej na 7. alebo 8. januára, žalmy sa berú z pondelka prvého týždňa s antifónou zo sviatku (SK LH, zv. I, str. 529)
 	else if ((je_modlitba_cez_den(modlitba)) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA))) {
 		// na ostatné hodiny sa berie doplnková psalmódia
 		if (_global_den.denvr == 7) {
 			// ak je to 7.1.
 			_set_zalmy_2nedele_mcd();
+		}
+		else if (((_global_den.denvr == 8) || (_global_den.denvr == 9)) && (_global_den.denvt == DEN_PONDELOK)) {
+			// ak je to pondelok 8.1. resp. 9.1.
+			// nič, žalmy zo žaltára
 		}
 		else {
 			// inak: z nedele 3. týždňa - rovnaké ako z nedele 1. týždňa

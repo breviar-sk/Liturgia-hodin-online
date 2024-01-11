@@ -565,6 +565,9 @@ extern char pom_FONT[SMALL];
 (_local_den.denvr == SV_RODINY) \
 )
 
+extern const char* html_text_opt_2_nocny_rezim_menu_hide[POCET_JAZYKOV + 1];
+extern const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1];
+
 #ifndef OS_linux
 // kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 
 int main(int argc, const char** argv);

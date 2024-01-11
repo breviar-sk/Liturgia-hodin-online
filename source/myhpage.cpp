@@ -26,7 +26,6 @@
 #include "mybuild.h"
 
 #include "breviar.h"
-// #include "hodin.h"
 #include "liturgia.h"
 
 short int bol_content_type_text_html = NIE;
@@ -64,37 +63,6 @@ const char* HTML_MAIL_LABEL_LONG = "Juraj Vidéky";
 const char* HTML_MAIL_LABEL_SHORT = "J. Vidéky";
 
 #define STR_YEAR_LENGTH 10
-
-// menu items
-const char* html_text_opt_2_nocny_rezim_menu_hide[POCET_JAZYKOV + 1] =
-{
-	"Téma ☾",
-	"Téma ☾",
-	"Theme ☾",
-	"Modus ☾",
-	"",
-	"Téma ☾",
-	"Mód ☾",
-	"режим ☾",
-	"рэжым ☾",
-	"Thamur ☾",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-
-const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1] =
-{
-	"Téma ☼",
-	"Téma ☼",
-	"Theme ☼",
-	"Modus ☼",
-	"",
-	"Téma ☼",
-	"Mód ☼",
-	"режим ☼",
-	"рэжым ☼",
-	"Thamur ☼",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
 
 #endif // __MYHPAGE_CPP_HTML_CONST
 
