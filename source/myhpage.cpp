@@ -341,6 +341,11 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	}
 	Export_to_file(expt, ">\n");
 
+	// explicit override for hamburger icon
+	if (has_font_margin) {
+		Export_to_file(expt, "<style>\n\t.openbtn {\n\t\tmargin-left: -%dpx; \n\t}\n</style>\n", _global_style_margin);
+	}
+
 	// display transparent navigation (up/down arrows)
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)) {
 		if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_LEFT)) {
@@ -379,11 +384,24 @@ void _hlavicka_sidemenu(FILE* expt) {
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) {
 		Export_to_file(expt, HTML_SIDE_NAVIGATION_SIDEBAR "\n");
 
-		// ToDo: menu items localized here
-
+		// Dnes (Today's prayers)
 		_export_link_menu_dnes();
 
+		// Téma light/dark (Theme day/night)
 		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, (char*)html_text_opt_2_nocny_rezim_menu_show[_global_jazyk], (char*)html_text_opt_2_nocny_rezim_menu_hide[_global_jazyk], (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)"\t", (char*)"\n", (char*)STR_EMPTY, (char*)STR_EMPTY, 0, 0);
+
+		// ------ horizontal row ------ 
+		Export_to_file(expt, "\t" HTML_HR_SIDEMENU "\n");
+
+		// these should be similar to static HTML file sidemenu.htm
+		for (short int o = 0; o < POCET_SIDEMENU_ITEMS; o++) {
+			if ((!(equals(cfg_sidemenu_item_link[o][_global_jazyk], STR_EMPTY))) 
+				&& (!(equals(cfg_sidemenu_item_link[o][_global_jazyk], STR_SLASH))) // simple forward to webpage base
+				&& (!(equals(cfg_sidemenu_item[o][_global_jazyk], STR_EMPTY)))
+				) {
+				_export_link_menu_linkitem(o);
+			}
+		}// for o
 
 		Export_to_file(expt, HTML_DIV_END"\n");
 

@@ -76,6 +76,8 @@
 #define MAX_POCET_SVATY 5
 #define PORADIE_PM_SOBOTA  (MAX_POCET_SVATY + 1)
 
+#define POCET_SIDEMENU_ITEMS 5
+
 #define SCRIPT_NAME          "l.cgi"
 
 #if !defined(IO_ANDROID)

@@ -1349,6 +1349,11 @@ void _export_heading_center(short int typ, const char* string) {
 void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_STR], char popis[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')') {
 	Log("_export_link_helper(): začiatok...\n");
 
+	Log("pom == %s\n", pom);
+	Log("pom2 == %s\n", pom2);
+	Log("pom3 == %s\n", pom3);
+	Log("popis == %s\n", popis);
+
 	char pom_den[VERY_SMALL];
 	mystrcpy(pom_den, STR_EMPTY, VERY_SMALL);
 	if (_global_den.den == VSETKY_DNI) {
@@ -1367,22 +1372,25 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 		mystrcpy(pom_mesiac, STR_VSETKY_MESIACE, VERY_SMALL);
 	}
 
-	// prilepenie poradia svätca
-	if (_global_poradie_svaty > 0) {
-		sprintf(pom2, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, _global_poradie_svaty);
-	}// _global_poradie_svaty > 0
-	else {
-		mystrcpy(pom2, STR_EMPTY, MAX_STR);
-	}// !(_global_poradie_svaty > 0)
+	// do not manipulate with pom2 for special usage (hyperlinks only)
+	if (query_type != PRM_NONE) {
+		// prilepenie poradia svätca
+		if (_global_poradie_svaty > 0) {
+			sprintf(pom2, HTML_AMPERSAND"%s=%d", STR_DALSI_SVATY, _global_poradie_svaty);
+		}// _global_poradie_svaty > 0
+		else {
+			mystrcpy(pom2, STR_EMPTY, MAX_STR);
+		}// !(_global_poradie_svaty > 0)
 
-	// teraz vytvoríme reťazec s options
-	prilep_request_options(pom2, pom3);
+		// teraz vytvoríme reťazec s options
+		prilep_request_options(pom2, pom3);
 
-	// prilepíme modlitbu
-	if (_global_modlitba != MODL_NEURCENA) {
-		sprintf(pom3, HTML_LINK_CALL_PARAM, STR_MODLITBA, str_modlitby[_global_modlitba]);
-		strcat(pom2, pom3);
-		Log("_export_link_helper(): pom2 == %s...\n", pom2);
+		// prilepíme modlitbu
+		if (_global_modlitba != MODL_NEURCENA) {
+			sprintf(pom3, HTML_LINK_CALL_PARAM, STR_MODLITBA, str_modlitby[_global_modlitba]);
+			strcat(pom2, pom3);
+			Log("_export_link_helper(): pom2 == %s...\n", pom2);
+		}
 	}
 
 	// napokon prilepíme #anchor
@@ -1440,6 +1448,10 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 			STR_STATIC_TEXT, skratka_static_text[_global_den.mesiac], /* type of static texts | hack: usage of _global_den.mesiac */
 			pom2);
 	}
+	if (query_type == PRM_NONE) {
+		// used for hyperlinks only
+		sprintf(pom, "%s", pom2);
+	}
 
 	if (!equals(specific_string_before, STR_EMPTY) && (strlen(specific_string_before) > 0)) {
 		Export("%s", specific_string_before);
@@ -1477,6 +1489,7 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 
 void _export_link_menu_dnes() {
 	Log("_export_link_menu_dnes(): začiatok...\n");
+	
 	char popis[MAX_STR];
 
 	char pom[MAX_STR];
@@ -1500,8 +1513,8 @@ void _export_link_menu_dnes() {
 	_export_link_helper(pom, pom2, pom3, popis, 
 		(char*)STR_EMPTY /* html_tag_begin */, 
 		(char*)STR_EMPTY /* html_class */, 
-		(char*)STR_EMPTY /* specific_string_before */,
-		(char*)STR_EMPTY /* specific_string_after */,
+		(char*)"\t" /* specific_string_before */,
+		(char*)"\n" /* specific_string_after */,
 		(char*)STR_EMPTY /* anchor */,
 		(char*)STR_EMPTY /* html_tag_end */,
 		CHAR_EMPTY /* left_parenthesis */,
@@ -1516,8 +1529,37 @@ void _export_link_menu_dnes() {
 } // _export_link_menu_dnes()
 
 // produces hyperlink for sidemenu to static HTML content
-void _export_link_menu_linkitem(char ) {
+void _export_link_menu_linkitem(short int o) {
 	Log("_export_link_menu_linkitem(): začiatok...\n");
+
+	char popis[MAX_STR];
+	mystrcpy(popis, cfg_sidemenu_item[o][_global_jazyk], MAX_STR);
+
+	char pom[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	char pom2[MAX_STR];
+	mystrcpy(pom2, cfg_sidemenu_item_link[o][_global_jazyk], MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+	// backup of some parameters
+	short int local_query_type = query_type;
+
+	query_type = PRM_NONE; // used for hyperlinks only
+
+	_export_link_helper(pom, pom2, pom3, popis,
+		(char*)STR_EMPTY /* html_tag_begin */,
+		(char*)STR_EMPTY /* html_class */,
+		(char*)"\t" /* specific_string_before */,
+		(char*)"\n" /* specific_string_after */,
+		(char*)STR_EMPTY /* anchor */,
+		(char*)STR_EMPTY /* html_tag_end */,
+		CHAR_EMPTY /* left_parenthesis */,
+		CHAR_EMPTY /* right_parenthesis */
+	);
+
+	// restore of some parameters
+	query_type = local_query_type;
 
 	Log("_export_link_menu_linkitem(): koniec.\n");
 } // _export_link_menu_linkitem()

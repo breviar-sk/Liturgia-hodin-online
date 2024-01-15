@@ -200,6 +200,7 @@
 #define HTML_FORM_SELECT "<select "
 
 #define HTML_HR            "<hr/>"
+#define HTML_HR_SIDEMENU   "<hr class=\"sidemenu\"/>"
 
 #define HTML_EMPTY_TAG_END " />"
 

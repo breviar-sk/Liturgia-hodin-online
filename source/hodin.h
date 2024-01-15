@@ -4248,31 +4248,31 @@ const char* html_text_opt_2_background_override_explain[POCET_JAZYKOV + 1] =
 // menu items
 const char* html_text_opt_2_nocny_rezim_menu_hide[POCET_JAZYKOV + 1] =
 {
-	"Téma ☾",
-	"Téma ☾",
-	"Theme ☾",
-	"Modus ☾",
+	"Téma&nbsp;☾",
+	"Téma&nbsp;☾",
+	"Theme&nbsp;☾",
+	"Modus&nbsp;☾",
 	"",
-	"Téma ☾",
-	"Mód ☾",
-	"режим ☾",
-	"рэжым ☾",
-	"Thamur ☾",
+	"Téma&nbsp;☾",
+	"Mód&nbsp;☾",
+	"режим&nbsp;☾",
+	"рэжым&nbsp;☾",
+	"Thamur&nbsp;☾",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
 const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1] =
 {
-	"Téma ☼",
-	"Téma ☼",
-	"Theme ☼",
-	"Modus ☼",
+	"Téma&nbsp;☼",
+	"Téma&nbsp;☼",
+	"Theme&nbsp;☼",
+	"Modus&nbsp;☼",
 	"",
-	"Téma ☼",
-	"Mód ☼",
-	"режим ☼",
-	"рэжым ☼",
-	"Thamur ☼",
+	"Téma&nbsp;☼",
+	"Mód&nbsp;☼",
+	"режим&nbsp;☼",
+	"рэжым&nbsp;☼",
+	"Thamur&nbsp;☼",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 

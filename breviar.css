@@ -659,7 +659,7 @@ p.bibleref {
 /* apply to all elements */ 
 { 
 	font-family: inherit; 
-	font-size: 100%; 
+	font-size: 18pt; 
 	font-weight: normal; 
 }
 
@@ -667,6 +667,7 @@ body, html {
 	background-color: #FFFFFF;
 	color: #1a1a1a;
 	font-family: Cambria, Constantia, Georgia, Lido STF, "DejaVu Serif", Liberation, GentiumPlus, Gentium, Garamond, serif;
+	font-size: 18pt; 
 	font-weight: normal; 
 	line-height: 1.3;
 	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
@@ -1132,7 +1133,7 @@ p.strong-always, h3.strong-always {
 	z-index: 1;
 	top: 0;
 	left: 0;
-	background: #5A1E14; /* background darkest */
+	background-color: #6F3028; /* logo background darker */
 	overflow-x: hidden;
 	transition: 0.5s;
 	padding-top: 64px;
@@ -1161,7 +1162,7 @@ p.strong-always, h3.strong-always {
 }
 
 a:hover.closebtn {
-	background: #5A1E14; /* background darkest */
+	background-color: #6F3028; /* logo background darker */
 }
 
 .openbtn {
@@ -1187,4 +1188,9 @@ a:hover.closebtn {
 	.sidebar a {
 	font-size: 16px;
 	}
+}
+
+hr.sidemenu {
+	margin-top: 24px;
+	margin-bottom: 24px;
 }

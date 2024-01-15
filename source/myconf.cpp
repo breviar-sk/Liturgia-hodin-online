@@ -33,6 +33,8 @@
 #define LogConfig emptyLog
 #endif
 
+short int local_run_once = 0; // avoid update sidemenu items mre than once
+
 char cfg_HTTP_ADDRESS_default[MAX_HTTP_STR] = "/";
 char cfg_HTTP_DISPLAY_ADDRESS_default[MAX_HTTP_STR] = "breviar.sk";
 char cfg_MAIL_ADDRESS_default[MAX_MAIL_STR] = "videky@breviar.sk";
@@ -55,9 +57,19 @@ char cfg_http_bible_references_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_http_bible_com_references_default[POCET_JAZYKOV + 1][MAX_HTTP_STR];
 char cfg_bible_com_version_id_default[POCET_JAZYKOV + 1][MAX_SMALL_STR];
 
+char cfg_sidemenu_item[POCET_SIDEMENU_ITEMS][POCET_JAZYKOV + 1][MAX_VALUE_LENGTH];
+char cfg_sidemenu_item_link[POCET_SIDEMENU_ITEMS][POCET_JAZYKOV + 1][MAX_VALUE_LENGTH];
+
 const char* cfg_option_prefix[POCET_GLOBAL_OPT + POCET_DALSICH_CONF] =
-{ "specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "alternatives_multi", "http_adresa", "http_zobraz_adr", "mail_adresa", "http_bible_references", "http_bible_com_references", "bible_com_version_id" };
+{ "specialne", "casti_modlitby", "html_export", "", "offline_export", "alternatives", "alternatives_multi", 
+  "http_adresa", "http_zobraz_adr", "mail_adresa", "http_bible_references", "http_bible_com_references", "bible_com_version_id" };
 #define ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX "_"
+
+const char* cfg_sidemenu_items_prefix[POCET_SIDEMENU_ITEMS] =
+{ "sidemenu_item_top", "sidemenu_item_docs", "sidemenu_item_info", "sidemenu_item_download", "sidemenu_item_about" };
+
+const char* cfg_sidemenu_items_link_prefix[POCET_SIDEMENU_ITEMS] =
+{ "sidemenu_item_link_top", "sidemenu_item_link_docs", "sidemenu_item_link_info", "sidemenu_item_link_download", "sidemenu_item_link_about" };
 
 const char* cfg_option_postfix[POCET_JAZYKOV + 1] =
 { "def", "cz", "en", "la", "", "czop", "hu", "ru", "by", "is", /* STRING_1_FOR_NEW_LANGUAGE */ };
@@ -81,6 +93,11 @@ void printConfigOptions(void) {
 					case 5: LogConfig("bible.com version id: %s\n", cfg_bible_com_version_id_default[j]); break;
 				} // switch()
 			}
+		}// for o
+		// config for sidemenu items
+		for (o = 0; o < POCET_SIDEMENU_ITEMS; o++) {
+			LogConfig("cfg_sidemenu_item[%d][%d] == `%s'\n", o, j, cfg_sidemenu_item[o][j]);
+			LogConfig("cfg_sidemenu_item_link[%d][%d] == `%s'\n", o, j, cfg_sidemenu_item_link[o][j]);
 		}// for o
 	}// for j
 #endif
@@ -133,6 +150,59 @@ void setConfigDefaultsOther(short int j) {
 
 	Log("setConfigDefaultsOther(%d): end.", j);
 }// setConfigDefaultsOther()
+
+void setConfigDefaultsSideMenu(short int j) {
+	Log("setConfigDefaultsSideMenu(%d): begin...", j);
+
+	char pom[MAX_VALUE_LENGTH];
+
+	if (j > POCET_JAZYKOV) {
+		return;
+	}
+
+	LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka(j));
+
+	// no need for defaults for sidemenu items -- they MUST BE defined without defaults
+
+	Log("local_run_once == %d...\n", local_run_once);
+
+	if (local_run_once <= 1) {
+		// config for sidemenu items links: if empty, take from default language (due to slashes, skipping for SK)
+		if (j != JAZYK_SK) {
+			for (short int o = 0; o < POCET_SIDEMENU_ITEMS; o++) {
+				mystrcpy(pom, cfg_sidemenu_item_link[o][j], MAX_VALUE_LENGTH);
+				LogConfig("cfg_sidemenu_item_link[%d][%d] == `%s'\n", o, j, cfg_sidemenu_item_link[o][j]);
+				if (equals(cfg_sidemenu_item_link[o][j], STR_EMPTY)) {
+					strcpy(pom, cfg_sidemenu_item_link[o][JAZYK_SK]);
+					LogConfig("value CHANGED: %s\n", cfg_sidemenu_item_link[o][j]);
+
+					sprintf(cfg_sidemenu_item_link[o][j], "%s%s", cfg_http_address_default[j], pom);
+					LogConfig("value UPDATED: %s\n", cfg_sidemenu_item_link[o][j]);
+				}
+			}// for o
+		}// not for SK; will be fixed later in updateConfigDefaultsMenuDefault()
+	}
+
+	Log("setConfigDefaultsSideMenu(%d): end.", j);
+}// setConfigDefaultsSideMenu()
+
+void updateConfigDefaultsMenuDefault() {
+	Log("updateConfigDefaultsMenuDefault(): begin...");
+
+	char pom[MAX_VALUE_LENGTH];
+
+	Log("local_run_once == %d...\n", local_run_once);
+
+	// adding cfg_http_address_default for SK sidemenu items links
+
+	for (short int o = 0; o < POCET_SIDEMENU_ITEMS; o++) {
+		mystrcpy(pom, cfg_sidemenu_item_link[o][JAZYK_SK], MAX_VALUE_LENGTH);
+		sprintf(cfg_sidemenu_item_link[o][JAZYK_SK], "%s%s", cfg_http_address_default[JAZYK_SK], pom);
+		LogConfig("value UPDATED: %s\n", cfg_sidemenu_item_link[o][JAZYK_SK]);
+	}// for o
+
+	Log("updateConfigDefaultsMenuDefault(): end.");
+}// updateConfigDefaultsMenuDefault()
 
 void readConfig(void)
 {
@@ -260,6 +330,7 @@ void readConfig(void)
 			strcpy(cfg_INCLUDE_DIR_default, hodnota);
 		}
 		else {
+			// global options + config options
 			for(o = 0; o < POCET_GLOBAL_OPT + POCET_DALSICH_CONF; o++) {
 				for(j = 0; j <= POCET_JAZYKOV; j++) {
 					if (!equals(cfg_option_prefix[o], STR_EMPTY) && !equals(cfg_option_postfix[j], STR_EMPTY)) {
@@ -289,6 +360,31 @@ void readConfig(void)
 					}// if
 				}// for j
 			}// for o
+			// config for sidemenu items + links
+			for (o = 0; o < POCET_SIDEMENU_ITEMS; o++) {
+				for (j = 0; j <= POCET_JAZYKOV; j++) {
+					if (!equals(cfg_sidemenu_items_prefix[o], STR_EMPTY) && !equals(cfg_option_postfix[j], STR_EMPTY)) {
+						// vyskladaj názov sidemenu item pre jazyk j a item o (natvrdo definované možnosti)
+						mystrcpy(nazov_option, cfg_sidemenu_items_prefix[o], MAX_STR);
+						strcat(nazov_option, ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX);
+						strcat(nazov_option, cfg_option_postfix[j]);
+						if (!strcmp(option, nazov_option)) {
+							mystrcpy(cfg_sidemenu_item[o][j], hodnota, MAX_VALUE_LENGTH);
+							LogConfig("sidemenu item: %d == `%s`...\n", o, cfg_sidemenu_item[o][j]);
+						}// if (!strcmp(option, nazov_option))
+					}// if
+					if (!equals(cfg_sidemenu_items_link_prefix[o], STR_EMPTY) && !equals(cfg_option_postfix[j], STR_EMPTY)) {
+						// vyskladaj názov sidemenu item pre jazyk j a item o (natvrdo definované možnosti)
+						mystrcpy(nazov_option, cfg_sidemenu_items_link_prefix[o], MAX_STR);
+						strcat(nazov_option, ODDELOVAC_CFG_OPTION_PREFIX_POSTFIX);
+						strcat(nazov_option, cfg_option_postfix[j]);
+						if (!strcmp(option, nazov_option)) {
+							mystrcpy(cfg_sidemenu_item_link[o][j], hodnota, MAX_VALUE_LENGTH);
+							LogConfig("sidemenu item: %d == `%s`...\n", o, cfg_sidemenu_item_link[o][j]);
+						}// if (!strcmp(option, nazov_option))
+					}// if
+				}// for j
+			}// for o
 		}
 		for(; (znak != EOF) && (znak != '\n'); znak = fgetc(subor) );
 
@@ -306,8 +402,17 @@ void readConfig(void)
 	}
 	LogConfig("cfg_MAIL_ADDRESS_default == %s\n", cfg_MAIL_ADDRESS_default);
 
+	local_run_once++;
+
+	Log("local_run_once == %d...\n", local_run_once);
+
 	for (j = 0; j <= POCET_JAZYKOV; j++) {
 		setConfigDefaultsOther(j);
+		setConfigDefaultsSideMenu(j);
+	}
+
+	if (local_run_once <= 1) {
+		updateConfigDefaultsMenuDefault();
 	}
 
 	// pôvodne pre Ruby || Android, teraz pre všetky platformy, upravené defaulty pre zobrazovanie
