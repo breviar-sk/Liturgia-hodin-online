@@ -566,11 +566,11 @@ p.bibleref {
 }
 
 .blue { 
-	color: #0066ff; 
+	color: #2277dd; 
 }
 
 .bluebold { 
-	color: #0066ff; 
+	color: #2277dd; 
 	font-weight: bold; 
 }
 
@@ -1151,6 +1151,15 @@ p.strong-always, h3.strong-always {
 
 .sidebar a:hover {
 	color: #eeeeee;
+}
+
+.sidebar p {
+	padding: 0 8px 0 32px;
+	color: #dddddd;
+}
+
+.sidebar p.small {
+	font-size: 70%; 
 }
 
 .sidebar .closebtn {

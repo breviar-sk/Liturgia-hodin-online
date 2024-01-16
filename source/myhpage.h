@@ -35,9 +35,14 @@
 #define HTML_SIDE_NAVIGATION_SIDEBAR "<div id=\"mySidebar\" class=\"sidebar\">\n" \
 	"\t<a href=\"javascript:void(0)\" class=\"closebtn\" onclick=\"closeNav()\">×</a>"
 
+#define HTML_SIDE_NAVIGATION_COPYRIGHT "<p class=\"small\">©&nbsp;Juraj&nbsp;Vidéky</p>"
+
 #define HTML_SIDE_NAVIGATION_MAIN "<div id=\"main\">\n" \
 	"\t<button class=\"openbtn\" onclick=\"openNav()\">☰</button>\n" \
 	"</div>"
+
+#define HTML_SIDE_NAVIGATION_WEB_THEME "<a href=\"javascript:void(0)\" onclick=\"switchNightMode()\">"
+#define HTML_SIDE_NAVIGATION_WEB_THEME_SPAN "<span id=\"themesign\"></span>"
 
 #define HTML_SIDE_NAVIGATION_SCRIPT "<script>" \
 "\nfunction openNav() {" \

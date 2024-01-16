@@ -153,6 +153,14 @@ p.bibleref {
 	color: #FF3333;
 }
 
+.blue { 
+	color: #44aadd; 
+}
+
+.bluebold { 
+	color: #44aadd; 
+}
+
 .normal { 
 	color: #CCCCCC; 
 }
@@ -282,6 +290,10 @@ sup {
 
 .sidebar a:hover {
 	color: #000;
+}
+
+.sidebar p {
+	color: #999999;
 }
 
 a:hover.closebtn {

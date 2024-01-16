@@ -566,6 +566,7 @@ extern char pom_FONT[SMALL];
 (_local_den.denvr == SV_RODINY) \
 )
 
+extern const char* html_text_opt_2_nocny_rezim_menu_base[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_2_nocny_rezim_menu_hide[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1];
 
