@@ -533,6 +533,14 @@ p.bibleref {
 	text-align: center;
 }
 
+.left { 
+	text-align: left;
+}
+
+.right { 
+	text-align: right;
+}
+
 .red, .redtitle { 
 	color: #ff0000; 
 }
