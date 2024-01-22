@@ -1103,34 +1103,34 @@ p.strong-always, h3.strong-always {
 }
 
 .nav-arrow-right, .nav-arrow-left {
-  background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 1;
-  width: 4em;
-  height: 2.4em;
-  position: fixed;
+	background-size: contain;
+	background-repeat: no-repeat;
+	z-index: 1;
+	width: 4em;
+	height: 2.4em;
+	position: fixed;
 }
 
 .nav-arrow-right {
-  right: 0.3em;
+	right: 0.3em;
 }
 
 .nav-arrow-left {
-  left: 0.3em;
+	left: 0.3em;
 }
 
 #nav-arrow-down {
-  background-image: url('sipkadole.png');
-  bottom: 0.3em;
+	background-image: url('sipkadole.png');
+	bottom: 0.3em;
 }
 
 #nav-arrow-up {
-  background-image: url('sipkahore.png');
-  top: 0.3em;
+	background-image: url('sipkahore.png');
+	top: 0.3em;
 }
 
 #contentRoot {
-  z-index: 0;
+	z-index: 0;
 }
 
 /* side hamburger menu - sidebar, open and close buttons */
@@ -1148,9 +1148,9 @@ p.strong-always, h3.strong-always {
 }
 
 .sidebar a {
-	padding: 8px 8px 8px 32px;
+	padding: 8px 8px 8px 24px;
 	text-decoration: none;
-	font-size: 130%;
+	font-size: 120%;
 	color: #dddddd;
 	display: block;
 	transition: 0.3s;
@@ -1162,7 +1162,7 @@ p.strong-always, h3.strong-always {
 }
 
 .sidebar p {
-	padding: 0 8px 0 32px;
+	padding: 0 8px 0 24px;
 	color: #dddddd;
 }
 
@@ -1171,11 +1171,11 @@ p.strong-always, h3.strong-always {
 }
 
 .sidebar .closebtn {
+	font-size: 180%;
+	padding: 0px 8px 0px 8px;
 	position: absolute;
 	top: 0;
 	right: 25px;
-	font-size: 200%;
-	margin-left: 10px;
 }
 
 a:hover.closebtn {
@@ -1183,27 +1183,31 @@ a:hover.closebtn {
 }
 
 .openbtn {
-	font-size: 130%;
+	font-size: 100%;
 	cursor: pointer;
-	background-color: white;
+	background-color:  rgba(255,255,255,0.3);
 	color: black;
-	/* padding: 4px 4px; */
 	border: none;
+	padding: 0px;
 	position: fixed;
+}
+
+.openbtn:hover {
+	background-color:  rgba(255,255,255,0.9);
 }
 
 #main {
 	transition: margin-left .5s;
-	padding: 16px;
+	padding-left: 16px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
 	.sidebar {
-	padding-top: 14px;
+	padding-top: 4px;
 	}
 	.sidebar a {
-	font-size: 16px;
+	font-size: 14px;
 	}
 }
 

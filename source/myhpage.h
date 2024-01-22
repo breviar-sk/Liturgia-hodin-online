@@ -38,7 +38,7 @@
 #define HTML_SIDE_NAVIGATION_COPYRIGHT "<p class=\"small\">©&nbsp;Juraj&nbsp;Vidéky</p>"
 
 #define HTML_SIDE_NAVIGATION_MAIN "<div id=\"main\">\n" \
-	"\t<button class=\"openbtn\" onclick=\"openNav()\">☰</button>\n" \
+	"\t<div class=\"openbtn\" onclick=\"openNav()\">☰</div>\n" \
 	"</div>"
 
 #define HTML_SIDE_NAVIGATION_WEB_THEME "<a href=\"javascript:void(0)\" onclick=\"switchNightMode()\">"

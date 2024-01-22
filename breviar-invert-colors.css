@@ -302,6 +302,11 @@ a:hover.closebtn {
 }
 
 .openbtn {
-	background-color: #000;
+	background-color: rgba(0,0,0,0.3);
 	color: #CCCCCC;
 }
+
+.openbtn:hover {
+	background-color:  rgba(0,0,0,0.7);
+}
+
