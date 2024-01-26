@@ -1078,7 +1078,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SVIATOK_OFMCAP					46
 #define LOKAL_SLAV_SPOMIENKA_FMA					47
 #define LOKAL_SLAV_SLAVNOST_FMA						48
-#define LOKAL_SLAV_SLAVNOST_SDB						49
+#define LOKAL_SLAV_SLAVNOST_SDB						49 // not used
 #define LOKAL_SLAV_SVIATOK_VDB						50
 #define LOKAL_SLAV_SVIATOK_SCSC						51
 #define LOKAL_SLAV_SPOMIENKA_OFM_SLAVNOST_CONCEPT	52

@@ -1857,9 +1857,6 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
-			if (_global_jazyk == JAZYK_SK) {
-				_global_svaty(1).typslav_lokal = LOKAL_SLAV_SLAVNOST_SDB;
-			}
 			mystrcpy(_global_svaty(1).meno, text_JAN_24_SDB[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP, MODL_SPOL_CAST_UCITEL_CIRKVI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
