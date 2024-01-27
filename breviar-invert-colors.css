@@ -284,12 +284,13 @@ sup {
 	background: #222222;
 }
 
-.sidebar a {
+.sidebar a, .dropdown-btn {
 	color: #999999;
 }
 
-.sidebar a:hover {
-	color: #000;
+.sidebar a:hover, .dropdown-btn:hover {
+	background-color: #C39482; /* button middle-dark */
+	color: #000000;
 }
 
 .sidebar p {
@@ -308,5 +309,9 @@ a:hover.closebtn {
 
 .openbtn:hover {
 	background-color:  rgba(0,0,0,0.7);
+}
+
+.active {
+	background-color: #444444;
 }
 

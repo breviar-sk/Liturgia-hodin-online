@@ -63,7 +63,7 @@ extern void _export_rozbor_dna_kalendar_core(short int typ);
 extern void _export_rozbor_dna_kalendar(short int typ);
 
 extern void _export_link_show_hide(short int opt, unsigned long long bit_opt, char popis_show[MAX_STR], char popis_hide[MAX_STR], char html_tag_begin[SMALL], char html_class[SMALL], char specific_string_before[SMALL], char specific_string_after[SMALL], char anchor[SMALL], char html_tag_end[SMALL], char left_parenthesis = '(', char right_parenthesis = ')');
-extern void _export_link_menu_dnes();
+extern void _export_link_menu_dnes(short int j);
 extern void _export_link_menu_linkitem(short int o);
 
 extern short int _global_pocet_navigacia; // 2011-07-03: počet prejdených/spracovaných parametrov PARAM_NAVIGACIA | counter of processed PARAM_NAVIGACIA params
@@ -161,7 +161,7 @@ extern short int _global_jazyk;
 extern short int _global_kalendar; // kalendáre (napr. rehoľné), súvisí s jazykovými mutáciami
 extern short int _global_ritus;
 
-extern short int _global_css;
+extern short int _global_theme;
 
 extern short int _global_font;
 extern short int _global_font_size;
@@ -492,7 +492,7 @@ extern char pom_FONT[SMALL];
 
 #define PODMIENKA_EXPORTOVAT_STATIC_FONT ((_global_font != FONT_CUSTOM) && (_global_font != FONT_CSS) && (_global_font != FONT_CHECKBOX))
 
-#define PODMIENKA_EXPORTOVAT_CSS ((_global_css != CSS_UNDEF) && (_global_css != CSS_breviar_sk))
+#define PODMIENKA_EXPORTOVAT_THEME ((_global_theme != THEME_UNDEF) && (_global_theme != THEME_LIGHT))
 
 #define PODMIENKA_EXPORTOVAT_STYLE_MARGIN ( (_global_style_margin > MIN_STYLE_MARGIN) && (_global_style_margin < MAX_STYLE_MARGIN)  && (_global_style_margin != DEF_STYLE_MARGIN) )
 
@@ -569,6 +569,7 @@ extern char pom_FONT[SMALL];
 extern const char* html_text_opt_2_nocny_rezim_menu_base[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_2_nocny_rezim_menu_hide[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1];
+extern const char* html_text_Jazyk[POCET_JAZYKOV + 1];
 
 #ifndef OS_linux
 // kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 

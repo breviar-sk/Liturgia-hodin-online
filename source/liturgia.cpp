@@ -392,10 +392,10 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int sp
 		Log("\tNetreba prilepiť kalendár (jazyk == %s, kalendár == %s)\n", skratka_jazyka[_global_jazyk], skratka_kalendara[_global_kalendar]);
 	}
 
-	if ((_global_css != CSS_breviar_sk) && (_global_css != CSS_UNDEF)) {
-		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_CSS, skratka_css[_global_css]);
+	if (_global_theme != THEME_UNDEF) {
+		sprintf(pom3, HTML_AMPERSAND"%s=%d", STR_THEME, _global_theme);
 		strcat(pom2, pom3);
-		Log("\tPrilepil som aj css: `%s'\n", pom3);
+		Log("\tPrilepil som aj tému: `%s'\n", pom3);
 	}
 
 	if (PODMIENKA_EXPORTOVAT_CUSTOM_FONT) {
@@ -717,7 +717,7 @@ void _vytvor_global_link(short int den, short int mesiac, short int rok, short i
 			sprintf(_global_link, "<" HTML_LINK_CLASS_B "%s" HTML_LINK_CLASS_E " href=\"", html_class);
 		}
 		else {
-			mystrcpy(_global_link, "<" HTML_LINK_NORMAL " href=\"", MAX_GLOBAL_LINK);
+			mystrcpy(_global_link, HTML_A_HREF_BEGIN "\"", MAX_GLOBAL_LINK);
 		}
 	}
 

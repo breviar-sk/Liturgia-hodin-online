@@ -201,19 +201,6 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	}
 	_global_hlavicka_Export++;
 
-	// iné CSS sú len "doplnky" (overrides) k hlavnému CSS
-	if (_global_css != CSS_breviar_sk) {
-		Log("first, export CSS filename: nazov_css_suboru == %s...\n", nazov_css[CSS_breviar_sk]);
-	}
-	const char* nazov_css_suboru;
-	if (_global_css == CSS_UNDEF) {
-		nazov_css_suboru = nazov_css[CSS_breviar_sk];
-	}// _global_css == CSS_UNDEF
-	else {
-		nazov_css_suboru = nazov_css[_global_css];
-	}// else
-	Log("nazov_css_suboru == %s...\n", nazov_css_suboru);
-
 	// nastavenie font-family
 	// najprv sa testuje nastavenie _global_font; následne sa prípadne nastavia defaulty
 	if (_global_font == FONT_CHECKBOX) {
@@ -265,16 +252,14 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	Export_to_file(expt, (char*)html_header_1, nazov_charset[charset_jazyka[_global_jazyk]]);
 
 	// CSS (one or more)
-	if (_global_css != CSS_breviar_sk) {
-		_header_css(expt, level, nazov_css[CSS_breviar_sk]);
-	}
-	_header_css(expt, level, nazov_css_suboru);
+	_header_css(expt, level, nazov_css_default);
+
 	// CSS override rounded corners
 	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROUNDED_CORNERS)) {
 		_header_css(expt, level, nazov_css_rounded_corners);
 	}
 	// CSS override night mode
-	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)) {
+	if ((_global_theme == THEME_DARK) || (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM))) {
 		_header_css(expt, level, nazov_css_invert_colors);
 	}
 	// CSS override normal font (no bold)
@@ -352,7 +337,7 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 
 #if defined(BEHAVIOUR_WEB) && !(defined(__APPLE__)) && !(defined(IO_ANDROID))
 	// ...so it is save for web behaviour (and not for mobile OSs) to add onLoad method again
-	Export_to_file(expt, " onload=\"updateNightMode()\"");
+	Export_to_file(expt, " onload=\"finishLoad()\"");
 #endif
 
 	// closing <body> element
@@ -402,7 +387,7 @@ void _hlavicka_sidemenu(FILE* expt) {
 		Export_to_file(expt, HTML_SIDE_NAVIGATION_SIDEBAR "\n");
 
 		// Dnes (Today's prayers)
-		_export_link_menu_dnes();
+		_export_link_menu_dnes(_global_jazyk);
 
 		// Téma light/dark (Theme day/night)
 #if defined(BEHAVIOUR_WEB)
@@ -427,11 +412,25 @@ void _hlavicka_sidemenu(FILE* expt) {
 			}
 		}// for o
 
+		// ------ dropdown for languages ------ 
+		Export_to_file(expt, "\t" HTML_NAVIGATION_DROPDOWN_BTN "%s" HTML_NONBREAKING_SPACE "" HTML_NAVIGATION_DROPDOWN_BTN_2 "" HTML_DIV_END "\n", html_text_Jazyk[_global_jazyk]);
+		Export_to_file(expt, "\t" HTML_NAVIGATION_DROPDOWN_CONTAINER "\n");
+
+		for (int i = 0; i <= POCET_JAZYKOV; i++) {
+			// supported languages explicitly defined
+			if ((supported_languages[i]) && (i != _global_jazyk)) {
+				_export_link_menu_dnes(i);
+				// Export_to_file(expt, "\t\t" HTML_A_HREF_BEGIN "%s>%s" HTML_A_END "\n", cfg_http_address_default[i], nazov_jazyka_native_jazyk(i)); // navigate to page root
+			}
+		}
+
+		Export_to_file(expt, "\t" HTML_DIV_END"\n");
+
 		// ------ horizontal row ------ 
 		Export_to_file(expt, "\t" HTML_HR_SIDEMENU "\n");
 
 		// copyright at the bottom of sidemenu
-		Export_to_file(expt, HTML_SIDE_NAVIGATION_COPYRIGHT "\n");
+		Export_to_file(expt, "\t" HTML_SIDE_NAVIGATION_COPYRIGHT "\n");
 
 		Export_to_file(expt, HTML_DIV_END"\n");
 
@@ -578,7 +577,7 @@ void _patka(FILE* expt) {
 
 #ifndef BEHAVIOUR_CMDLINE
 	// navigation to main page (URL breviar.sk) before (c) info
-	Export_to_file(expt, "<" HTML_LINK_NORMAL " href=\"%s\" " HTML_TARGET_TOP ">%s" HTML_A_END "\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
+	Export_to_file(expt, HTML_A_HREF_BEGIN "\"%s\" " HTML_TARGET_TOP ">%s" HTML_A_END "\n", cfg_http_address_default[_global_jazyk], cfg_http_display_address_default[_global_jazyk]);
 #endif
 
 	Log("cfg_mail_address_default[%d] (language: %s) == %s\n", _global_jazyk, skratka_jazyka[_global_jazyk], cfg_mail_address_default[_global_jazyk]);
@@ -590,7 +589,7 @@ void _patka(FILE* expt) {
 	}
 
 	Log("mail_addr == %s\n", mail_addr);
-	Export_to_file(expt, "&#169; %d%s <" HTML_LINK_NORMAL " href=\"mailto:%s\">%s" HTML_A_END "\n", baserok, rok, mail_addr, html_mail_label);
+	Export_to_file(expt, "&#169; %d%s " HTML_A_HREF_BEGIN "\"mailto:%s\">%s" HTML_A_END "\n", baserok, rok, mail_addr, html_mail_label);
 
 	Export_to_file(expt, HTML_P_END "\n");
 

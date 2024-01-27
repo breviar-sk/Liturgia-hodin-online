@@ -94,14 +94,10 @@ extern const short int format_datumu[POCET_JAZYKOV + 1];
 
 extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 
-// number of CSSs
-#define POCET_CSS	3
-
-// CSSs
-#define CSS_UNDEF				0
-#define CSS_breviar_sk			1
-#define CSS_breviar_sk_invert	2
-#define CSS_kbd_sk				3
+// themes
+#define THEME_UNDEF	 -1
+#define THEME_LIGHT  0
+#define THEME_DARK   1
 
 // static texts
 #define POCET_STATIC_TEXTOV               3
@@ -1716,7 +1712,7 @@ extern short int _global_jazyk;
 
 extern short int _global_kalendar;
 
-extern short int _global_css;
+extern short int _global_theme;
 
 extern short int _global_font;
 extern short int _global_font_size;
@@ -1736,8 +1732,7 @@ extern const char* skratka_kalendara[POCET_KALENDAROV + 1];
 extern const char* nazov_kalendara_propria_only[POCET_KALENDAROV + 1];
 extern const char* nazov_kalendara_long[POCET_KALENDAROV + 1];
 
-extern const char* nazov_css[POCET_CSS + 1];
-extern const char* skratka_css[POCET_CSS + 1];
+extern const char* nazov_css_default;
 extern const char* nazov_css_invert_colors;
 extern const char* nazov_css_normal_font_weight;
 extern const char* nazov_css_voice_output;

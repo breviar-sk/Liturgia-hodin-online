@@ -508,7 +508,7 @@ p.bibleref {
 
 #about h3 {
 	font-weight: bold;
-	font-size: 1.2em;
+	font-size: 100%; 
 }
 
 #about b {
@@ -667,7 +667,7 @@ p.bibleref {
 /* apply to all elements */ 
 { 
 	font-family: inherit; 
-	font-size: 18pt; 
+	font-size: 16pt; 
 	font-weight: normal; 
 }
 
@@ -675,7 +675,7 @@ body, html {
 	background-color: #FFFFFF;
 	color: #1a1a1a;
 	font-family: Cambria, Constantia, Georgia, Lido STF, "DejaVu Serif", Liberation, GentiumPlus, Gentium, Garamond, serif;
-	font-size: 18pt; 
+	font-size: 16pt; 
 	font-weight: normal; 
 	line-height: 1.3;
 	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
@@ -1147,7 +1147,7 @@ p.strong-always, h3.strong-always {
 	padding-top: 64px;
 }
 
-.sidebar a {
+.sidebar a, .dropdown-btn {
 	padding: 8px 8px 8px 24px;
 	text-decoration: none;
 	font-size: 120%;
@@ -1157,8 +1157,12 @@ p.strong-always, h3.strong-always {
 	border-bottom: none; 
 }
 
-.sidebar a:hover {
+/* according to a:hover */
+.sidebar a:hover, .dropdown-btn:hover {
+	background-color: #C39482; /* button middle-dark */
+	border: none; 
 	color: #eeeeee;
+	text-decoration: none; 
 }
 
 .sidebar p {
@@ -1201,13 +1205,23 @@ a:hover.closebtn {
 	padding-left: 16px;
 }
 
+.active {
+	background-color: #7A3E3B; /* button dark */
+}
+
+.dropdown-container {
+	display: none;
+	font-size: 80%;
+	padding-left: 10px;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
 	.sidebar {
-	padding-top: 4px;
+		padding-top: 4px;
 	}
 	.sidebar a {
-	font-size: 14px;
+		font-size: 14px;
 	}
 }
 

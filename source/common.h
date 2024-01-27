@@ -208,7 +208,6 @@
 #define HTML_FORM_METHOD_POST    "<form action=\"%s\" method=\"post\">\n"
 
 #define HTML_LINK_RED    "a class=\"red\""
-#define HTML_LINK_NORMAL "a"
 #define HTML_LINK_CLASS_B "a class=\""
 #define HTML_LINK_CLASS_E "\""
 

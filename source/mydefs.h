@@ -1153,11 +1153,11 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA "of5ko"
 #endif
 
-#define CSS 40
+#define THEME 40
 #ifdef LONG_PARAM_NAMES
-	#define STR_CSS "CSS"
+	#define STR_THEME "THEME"
 #else
-	#define STR_CSS "c"
+	#define STR_THEME "c"
 #endif
 
 #define OPT_DATE_FORMAT 41

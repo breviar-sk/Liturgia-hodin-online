@@ -1153,17 +1153,8 @@ const short int use_dot_for_ordinals[POCET_JAZYKOV + 1] = {
 	/* ADD_VALUE_FOR_NEW_LANGUAGE */
 };
 
-// Filename of CSS file; the number of CSS does not directly correspond to the number of languages
-// Always use "breviar.css" plus override eventually
-const char* nazov_css[POCET_CSS + 1] =
-{ "(css neurčené)", "breviar.css", "breviar-invert-colors.css", "breviar-kbd.css" };
-
-const char* skratka_css[POCET_CSS + 1] =
-{ "__", "def", "invert", "kbd" };
-
-// Language mutations
-const short int default_css_jazyk[POCET_JAZYKOV + 1] =
-{ CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, CSS_breviar_sk, /* ADD_VALUE_FOR_NEW_LANGUAGE */ };
+// default CSS
+const char* nazov_css_default = "breviar.css";
 
 // CSS obsahujuci invertovane farby | CSS for "night mode" (inverted colors) - includes ONLY ammendment to base css (breviar.css)
 const char* nazov_css_invert_colors = "breviar-invert-colors.css";

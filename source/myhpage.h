@@ -54,6 +54,14 @@
 "\n}" \
 "\n</script>"
 
+#define HTML_NAVIGATION_DROPDOWN_BTN "<div class=\"dropdown-btn\">"
+
+#define HTML_NAVIGATION_DROPDOWN_BTN_2 "<span id=\"trianglesign\" style=\"font-size: 50%%;\">&#9660;</span>"
+
+#define HTML_NAVIGATION_DROPDOWN_CONTAINER "<div class=\"dropdown-container\">"
+
+#define HTML_NAVIGATION_DROPDOWN_ITEM ""
+
 #define HTML_BOTTOM "p-bottom"
 #define HTML_ANAME_BOTTOM "<a name=\"" HTML_BOTTOM "\"></a></div>"
 

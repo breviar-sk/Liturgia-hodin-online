@@ -382,7 +382,7 @@ short int _global_jazyk;
 short int _global_kalendar;
 short int _global_ritus;
 
-short int _global_css;
+short int _global_theme;
 
 short int _global_font; // for value FONT_CUSTOM, we use pom_FONT as global variable unless empty
 short int _global_font_size;
@@ -470,7 +470,7 @@ char pom_LINKY[SMALL] = STR_EMPTY;
 char pom_JAZYK[SMALL] = STR_EMPTY;
 char pom_KALENDAR[SMALL] = STR_EMPTY;
 
-char pom_CSS[SMALL] = STR_EMPTY;
+char pom_THEME[SMALL] = STR_EMPTY;
 
 char pom_FONT[SMALL] = STR_EMPTY;
 char pom_FONT_SIZE[VERY_SMALL] = STR_EMPTY;
@@ -1146,10 +1146,10 @@ short int setForm(void) {
 	}
 
 	mystrcpy(local_str, STR_EMPTY, SMALL);
-	if (!equals(pom_CSS, STR_EMPTY)) {
-		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_CSS), SMALL);
+	if (!equals(pom_THEME, STR_EMPTY)) {
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_THEME), SMALL);
 		strcat(local_str, "=");
-		strcat(local_str, pom_CSS);
+		strcat(local_str, pom_THEME);
 		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
 		LogParams("--- setForm: putenv returned %d.\n", ret);
@@ -1487,7 +1487,7 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 	Log("_export_link_helper(): koniec.\n");
 } // _export_link_helper()
 
-void _export_link_menu_dnes() {
+void _export_link_menu_dnes(short int j) {
 	Log("_export_link_menu_dnes(): začiatok...\n");
 	
 	char popis[MAX_STR];
@@ -1502,11 +1502,22 @@ void _export_link_menu_dnes() {
 	// backup of some parameters
 	short int local_query_type = query_type;
 	short int local_modlitba = _global_modlitba;
+	short int local_jazyk = _global_jazyk;
+	short int local_kalendar = _global_kalendar;
 
 	query_type = PRM_DNES;
 	_global_modlitba = MODL_NEURCENA;
+	_global_jazyk = j;
+	_global_kalendar = default_kalendar[j];
 
-	mystrcpy(popis, (char*)html_button_Dnes[_global_jazyk], MAX_STR);
+	if (local_jazyk != j) {
+		// text containing name of language
+		mystrcpy(popis, (char*)nazov_jazyka_native_jazyk[_global_jazyk][local_jazyk], MAX_STR);
+	}
+	else {
+		// real "Today" text
+		mystrcpy(popis, (char*)html_button_Dnes[_global_jazyk], MAX_STR);
+	}
 
 	prilep_request_options(pom2, pom3);
 
@@ -1524,6 +1535,8 @@ void _export_link_menu_dnes() {
 	// restore of some parameters
 	query_type = local_query_type;
 	_global_modlitba = local_modlitba;
+	_global_jazyk = local_jazyk;
+	_global_kalendar = local_kalendar;
 
 	Log("_export_link_menu_dnes(): koniec.\n");
 } // _export_link_menu_dnes()
@@ -5938,19 +5951,6 @@ short int atokalendar(char *kalendar) {
 	return KALENDAR_NEURCENY;
 } // atokalendar()
 
-// popis: vráti číslo css-ka
-//        inak vráti CSS_UNDEF
-short int atocss(char *css) {
-	short int i = 0;
-	do {
-		if (equalsi(css, skratka_css[i]) || equalsi(css, nazov_css[i])) {
-			return i;
-		}
-		i++;
-	} while (i <= POCET_CSS);
-	return CSS_UNDEF;
-} // atocss()
-
 // popis: vráti číslo fontu
 //        inak vráti FONT_CUSTOM
 short int atofont(char *font) {
@@ -5988,10 +5988,10 @@ short int atofontsize(char *font) {
 
 // popis: vráti číslo statického textu
 //        inak vráti STATIC_TEXT_UNDEF
-short int atoStaticText(char *css) {
+short int atoStaticText(char *st) {
 	short int i = 0;
 	do {
-		if (equalsi(css, skratka_static_text[i])) {
+		if (equalsi(st, skratka_static_text[i])) {
 			return i;
 		}
 		i++;
@@ -12202,12 +12202,12 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem line height: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
-	// 2013-12-12: exportovanie parametra c (_global_css)
-	if (PODMIENKA_EXPORTOVAT_CSS) {
-		sprintf(pom, " -c%s", skratka_css[_global_css]); // nazov_css[_global_css]
+	// exportovanie parametra c (_global_theme)
+	if (PODMIENKA_EXPORTOVAT_THEME) {
+		sprintf(pom, " -c%d", _global_theme);
 	}
 	else {
-		Log("\tNetreba prilepiť css (css == %s/%s)\n", skratka_css[_global_css], nazov_css[_global_css]);
+		Log("\tNetreba prilepiť tému (theme == %d)\n", _global_theme);
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
@@ -13129,16 +13129,16 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r) {
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem line height: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
-	// 2013-12-12: exportovanie parametra c (_global_css)
-	if (PODMIENKA_EXPORTOVAT_CSS) {
-		sprintf(pom, " -c%s", skratka_css[_global_css]); // nazov_css[_global_css]
+	// exportovanie parametra c (_global_theme)
+	if (PODMIENKA_EXPORTOVAT_THEME) {
+		sprintf(pom, " -c%d", _global_theme);
 	}
 	else {
-		Log("\tNetreba prilepiť css (css == %s/%s)\n", skratka_css[_global_css], nazov_css[_global_css]);
+		Log("\tNetreba prilepiť tému (theme == %d)\n", _global_theme);
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
-	Log("Exportujem css: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+	Log("Exportujem tému: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// reťazec pre deň a pre názov súboru
 	if (d != VSETKY_DNI) {
@@ -17481,7 +17481,7 @@ short int getArgv(int argc, const char** argv) {
 			switch (c) {
 			case 'c':
 				if (optarg != NULL) {
-					mystrcpy(pom_CSS, optarg, SMALL);
+					mystrcpy(pom_THEME, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- `%s' used for css\n", c, optarg, optarg); break;
 
@@ -17835,10 +17835,10 @@ short int getForm(void) {
 		}
 	}
 
-	ptr = getenv(ADD_WWW_PREFIX_(STR_CSS));
+	ptr = getenv(ADD_WWW_PREFIX_(STR_THEME));
 	if (ptr != NULL) {
 		if (strcmp(ptr, STR_EMPTY) != 0) {
-			mystrcpy(pom_CSS, ptr, SMALL);
+			mystrcpy(pom_THEME, ptr, SMALL);
 		}
 	}
 
@@ -18557,19 +18557,19 @@ short int parseQueryString(void) {
 	}
 
 	i = 0; // param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme od 0
-	LogParams("pokúšam sa zistiť css...\n");
-	while ((equalsi(pom_CSS, STR_EMPTY)) && (i < pocet)) {
+	LogParams("pokúšam sa zistiť tému...\n");
+	while ((equalsi(pom_THEME, STR_EMPTY)) && (i < pocet)) {
 		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
-		if (equals(param[i].name, STR_CSS)) {
-			// ide o parameter STR_CSS
-			mystrcpy(pom_CSS, param[i].val, SMALL);
-			LogParams("css zistené (%s).\n", pom_CSS);
+		if (equals(param[i].name, STR_THEME)) {
+			// ide o parameter STR_THEME
+			mystrcpy(pom_THEME, param[i].val, SMALL);
+			LogParams("téma zistená (%s).\n", pom_THEME);
 		}
 		i++;
 	}
-	if ((i >= pocet) && (equalsi(pom_CSS, STR_EMPTY))) {
-		mystrcpy(pom_CSS, nazov_css[CSS_breviar_sk], SMALL);
-		LogParams("css zistené (%s) (i >= pocet).\n", pom_CSS);
+	if ((i >= pocet) && (equalsi(pom_THEME, STR_EMPTY))) {
+		sprintf(pom_THEME, "%d", THEME_LIGHT);
+		LogParams("téma nastavená (%s) (i >= pocet).\n", pom_THEME);
 	}
 
 	// Pre POST query sa tam font priliepa aj na začiatok (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
@@ -19476,7 +19476,7 @@ END_parseQueryString:
 	_main_LOG_to_Export("\tparam11== %s (pom_OPT_APPEND)\n", pom_OPT_APPEND);\
 	_main_LOG_to_Export("\tparam12== %s (pom_JAZYK)\n", pom_JAZYK);\
 	_main_LOG_to_Export("\tparam  == %s (pom_KALENDAR)\n", pom_KALENDAR);\
-	_main_LOG_to_Export("\tparam  == %s (pom_CSS)\n", pom_CSS);\
+	_main_LOG_to_Export("\tparam  == %s (pom_CSS)\n", pom_THEME);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT)\n", pom_FONT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE)\n", pom_FONT_SIZE);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE_PT)\n", pom_FONT_SIZE_PT);\
@@ -19717,7 +19717,7 @@ int breviar_main(int argc, const char** argv) {
 	strcpy(pom_ROK_TO, STR_EMPTY);
 	strcpy(pom_LINKY, STR_EMPTY);
 	strcpy(pom_JAZYK, STR_EMPTY);
-	strcpy(pom_CSS, STR_EMPTY);
+	strcpy(pom_THEME, STR_EMPTY);
 	strcpy(pom_FONT, STR_EMPTY);
 	strcpy(pom_FONT_SIZE, STR_EMPTY);
 	strcpy(pom_FONT_SIZE_PT, STR_EMPTY);
@@ -19739,7 +19739,7 @@ int breviar_main(int argc, const char** argv) {
 	_global_jazyk = 0;
 	_global_kalendar = 0;
 	_global_ritus = 0;
-	_global_css = 0;
+	_global_theme = 0;
 	_global_font = 0;
 	_global_font_size = 0;
 	_global_style_margin = DEF_STYLE_MARGIN;
@@ -20018,21 +20018,15 @@ int breviar_main(int argc, const char** argv) {
 			}
 			_main_LOG_to_Export("...line height (%s) = %d (interpreted in HTML/CSS as percent)\n", pom_LINE_HEIGHT_PERC, _global_line_height_perc);
 
-			// načítanie css
-			_main_LOG_to_Export("zisťujem css...\n");
-			_global_css = atocss(pom_CSS);
-			if (_global_css == CSS_UNDEF) {
-				// default CSS pre daný jazyk
-				_global_css = default_css_jazyk[_global_jazyk];
-				if (_global_css == CSS_UNDEF) {
-					_global_css = CSS_breviar_sk;
-					_main_LOG_to_Export("\t(vzhľadom k neurčenému CSS používam default)\n");
-				}
-				else {
-					_main_LOG_to_Export("\t(vzhľadom k neurčenému CSS používam default pre daný jazyk)\n");
-				}
+			// načítanie témy
+			_main_LOG_to_Export("zisťujem tému...\n");
+			_global_theme = atoi(pom_THEME);
+			if (_global_theme == THEME_UNDEF) {
+				// default téma
+				_global_theme = THEME_LIGHT;
+				_main_LOG_to_Export("\t(vzhľadom k neurčenej téme používam default)\n");
 			}
-			_main_LOG_to_Export("...css (%s) = %d, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
+			_main_LOG_to_Export("...theme (%s) = %d\n", pom_THEME, _global_theme);
 
 			Log("file_export == `%s'...\n", file_export);
 			if (equals(file_export, STR_EMPTY) || equals(file_export, "+")) {
@@ -20226,21 +20220,15 @@ int breviar_main(int argc, const char** argv) {
 	}
 	_main_LOG_to_Export("...line height (%s) = %d (interpreted in HTML/CSS as percents)\n", pom_LINE_HEIGHT_PERC, _global_line_height_perc);
 
-	// načítanie css kvôli rôznym css
-	_main_LOG_to_Export("zisťujem css...\n");
-	_global_css = atocss(pom_CSS);
-	if (_global_css == CSS_UNDEF) {
-		// default CSS pre daný jazyk
-		_global_css = default_css_jazyk[_global_jazyk];
-		if (_global_css == CSS_UNDEF) {
-			_global_css = CSS_breviar_sk;
-			_main_LOG_to_Export("\t(vzhľadom k neurčenému CSS používam default)\n");
-		}
-		else {
-			_main_LOG_to_Export("\t(vzhľadom k neurčenému CSS používam default pre daný jazyk)\n");
-		}
+	// načítanie témy
+	_main_LOG_to_Export("zisťujem tému...\n");
+	_global_theme = atoi(pom_THEME);
+	if (_global_theme == THEME_UNDEF) {
+		// default téma
+		_global_theme = THEME_LIGHT;
+		_main_LOG_to_Export("\t(vzhľadom k neurčenej téme používam default)\n");
 	}
-	_main_LOG_to_Export("...css (%s) = %d, teda %s (%s)\n", pom_CSS, _global_css, nazov_css[_global_css], skratka_css[_global_css]);
+	_main_LOG_to_Export("...téma = %d\n", pom_THEME, _global_theme);
 
 	LOG_ciara;
 
