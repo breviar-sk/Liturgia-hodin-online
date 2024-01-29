@@ -11497,8 +11497,10 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE, STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE, html_text_opt_2_buttons_usporne[_global_jazyk], html_text_opt_2_buttons_usporne_explain[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NOCNY_REZIM
+#ifdef DEBUG
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NOCNY_REZIM; not necessary after new URL parameter 'c' was introduced & JavaScript for light/dark theme is used
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, STR_FORCE_BIT_OPT_2_NOCNY_REZIM, html_text_opt_2_nocny_rezim[_global_jazyk], html_text_opt_2_nocny_rezim_explain[_global_jazyk]);
+#endif
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_FONT_NORMAL
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL, STR_FORCE_BIT_OPT_0_FONT_NORMAL, html_text_opt_0_font_normal[_global_jazyk], html_text_opt_0_font_normal_explain[_global_jazyk]);
@@ -18568,7 +18570,7 @@ short int parseQueryString(void) {
 		i++;
 	}
 	if ((i >= pocet) && (equalsi(pom_THEME, STR_EMPTY))) {
-		sprintf(pom_THEME, "%d", THEME_LIGHT);
+		sprintf(pom_THEME, "%d", THEME_UNDEF);
 		LogParams("téma nastavená (%s) (i >= pocet).\n", pom_THEME);
 	}
 
@@ -19476,7 +19478,7 @@ END_parseQueryString:
 	_main_LOG_to_Export("\tparam11== %s (pom_OPT_APPEND)\n", pom_OPT_APPEND);\
 	_main_LOG_to_Export("\tparam12== %s (pom_JAZYK)\n", pom_JAZYK);\
 	_main_LOG_to_Export("\tparam  == %s (pom_KALENDAR)\n", pom_KALENDAR);\
-	_main_LOG_to_Export("\tparam  == %s (pom_CSS)\n", pom_THEME);\
+	_main_LOG_to_Export("\tparam  == %s (pom_THEME)\n", pom_THEME);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT)\n", pom_FONT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE)\n", pom_FONT_SIZE);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE_PT)\n", pom_FONT_SIZE_PT);\
@@ -19739,7 +19741,7 @@ int breviar_main(int argc, const char** argv) {
 	_global_jazyk = 0;
 	_global_kalendar = 0;
 	_global_ritus = 0;
-	_global_theme = 0;
+	_global_theme = THEME_UNDEF;
 	_global_font = 0;
 	_global_font_size = 0;
 	_global_style_margin = DEF_STYLE_MARGIN;
@@ -20021,12 +20023,12 @@ int breviar_main(int argc, const char** argv) {
 			// načítanie témy
 			_main_LOG_to_Export("zisťujem tému...\n");
 			_global_theme = atoi(pom_THEME);
-			if (_global_theme == THEME_UNDEF) {
-				// default téma
-				_global_theme = THEME_LIGHT;
-				_main_LOG_to_Export("\t(vzhľadom k neurčenej téme používam default)\n");
+			if (!PODMIENKA_EXPORTOVAT_THEME) {
+				// undef téma
+				_global_theme = THEME_UNDEF;
+				_main_LOG_to_Export("\t(vzhľadom k neurčenej téme používam THEME_UNDEF)\n");
 			}
-			_main_LOG_to_Export("...theme (%s) = %d\n", pom_THEME, _global_theme);
+			_main_LOG_to_Export("...téma (%s) = %d\n", pom_THEME, _global_theme);
 
 			Log("file_export == `%s'...\n", file_export);
 			if (equals(file_export, STR_EMPTY) || equals(file_export, "+")) {
@@ -20223,12 +20225,12 @@ int breviar_main(int argc, const char** argv) {
 	// načítanie témy
 	_main_LOG_to_Export("zisťujem tému...\n");
 	_global_theme = atoi(pom_THEME);
-	if (_global_theme == THEME_UNDEF) {
-		// default téma
-		_global_theme = THEME_LIGHT;
-		_main_LOG_to_Export("\t(vzhľadom k neurčenej téme používam default)\n");
+	if (!PODMIENKA_EXPORTOVAT_THEME) {
+		// undef téma
+		_global_theme = THEME_UNDEF;
+		_main_LOG_to_Export("\t(vzhľadom k neurčenej téme používam THEME_UNDEF)\n");
 	}
-	_main_LOG_to_Export("...téma = %d\n", pom_THEME, _global_theme);
+	_main_LOG_to_Export("...téma (%s) = %d\n", pom_THEME, _global_theme);
 
 	LOG_ciara;
 

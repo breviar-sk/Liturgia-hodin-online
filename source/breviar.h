@@ -492,7 +492,7 @@ extern char pom_FONT[SMALL];
 
 #define PODMIENKA_EXPORTOVAT_STATIC_FONT ((_global_font != FONT_CUSTOM) && (_global_font != FONT_CSS) && (_global_font != FONT_CHECKBOX))
 
-#define PODMIENKA_EXPORTOVAT_THEME ((_global_theme != THEME_UNDEF) && (_global_theme != THEME_LIGHT))
+#define PODMIENKA_EXPORTOVAT_THEME ((_global_theme == THEME_LIGHT) || (_global_theme == THEME_DARK))
 
 #define PODMIENKA_EXPORTOVAT_STYLE_MARGIN ( (_global_style_margin > MIN_STYLE_MARGIN) && (_global_style_margin < MAX_STYLE_MARGIN)  && (_global_style_margin != DEF_STYLE_MARGIN) )
 

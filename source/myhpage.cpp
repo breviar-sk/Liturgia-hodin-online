@@ -258,8 +258,8 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROUNDED_CORNERS)) {
 		_header_css(expt, level, nazov_css_rounded_corners);
 	}
-	// CSS override night mode
-	if ((_global_theme == THEME_DARK) || (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM))) {
+	// CSS override night mode: priority has _global_theme (if defined) over older BIT_OPT_2_NOCNY_REZIM
+	if ((_global_theme == THEME_DARK) || ((_global_theme == THEME_UNDEF) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)))) {
 		_header_css(expt, level, nazov_css_invert_colors);
 	}
 	// CSS override normal font (no bold)

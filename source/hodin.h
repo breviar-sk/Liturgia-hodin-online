@@ -4086,6 +4086,7 @@ const char* html_text_opt_2_buttons_usporne_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+// BIT_OPT_2_NOCNY_REZIM is obsolete; use param _global_theme (URL: c=0 or c=1) instead
 const char* html_text_opt_2_nocny_rezim[POCET_JAZYKOV + 1] =
 {
 	"nočný režim",
