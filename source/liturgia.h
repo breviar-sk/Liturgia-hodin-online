@@ -1738,8 +1738,7 @@ extern const char* nazov_css_normal_font_weight;
 extern const char* nazov_css_voice_output;
 extern const char* nazov_css_rounded_corners;
 
-extern const short int charset_jazyka[POCET_JAZYKOV + 1];
-extern const char* nazov_charset[POCET_CHARSET + 1];
+extern const char* html_lang_jazyka[POCET_JAZYKOV + 1];
 
 extern const char* nazov_fontu[POCET_FONTOV + 1];
 extern const char* nazov_fontu_CHECKBOX[POCET_JAZYKOV + 1];

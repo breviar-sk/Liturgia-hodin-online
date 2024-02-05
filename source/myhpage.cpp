@@ -38,15 +38,15 @@ short int bol_content_type_text_xml = NIE;
 const char* html_header_1 =
 // Android KitKat nevie javascriptom zalamovat text, ak je specifikovany tento doctype.
 #ifndef MODEL_android
-//    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n"
-//    "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n\t\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
-    "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n\t\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
+//	"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n\t\"http://www.w3.org/TR/html4/loose.dtd\">\n"
+//	"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n\t\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
+//	"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n\t\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
+	"<!DOCTYPE html>\n"
 #endif
-//    "<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\">\n\t<meta name=\"Author\" content=\"Juraj Videky\">\n";
-    "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=%s\" />\n\t<meta name=\"Author\" content=\"Juraj Videky\" />\n";
+    "<html lang=\"%s\" xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n\t<meta name=\"Author\" content=\"Juraj Vidéky\" />\n";
 const char* html_header_css = "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
 
-const char* xml_header = "<?xml version=\"1.0\" encoding=\"%s\"?>\n\n";
+const char* xml_header = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n";
 
 const char* generated[POCET_JAZYKOV + 1] = { "Generované: ", "Generováno: ", "Generated: ", "Generated: ", "Generated: ", "Generováno: ", "Generálva: ", "ru_text", "by_text", "Myndast: ", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
@@ -249,7 +249,7 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	Log("creating header...\n");
 
 	Log("element <head>...\n");
-	Export_to_file(expt, (char*)html_header_1, nazov_charset[charset_jazyka[_global_jazyk]]);
+	Export_to_file(expt, (char*)html_header_1, html_lang_jazyka[_global_jazyk]);
 
 	// CSS (one or more)
 	_header_css(expt, level, nazov_css_default);
@@ -465,7 +465,7 @@ void _xml_hlavicka(FILE* expt) {
 		bol_content_type_text_xml = ANO;
 	}
 
-	Export_to_file(expt, (char*)xml_header, nazov_charset[charset_jazyka[_global_jazyk]]);
+	Export_to_file(expt, (char*)xml_header);
 	Export_to_file(expt, ELEM_BEGIN(XML_MAIN) "\n");
 
 	Log("_xml_hlavicka() -- end.\n");

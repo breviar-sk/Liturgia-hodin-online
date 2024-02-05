@@ -3,10 +3,12 @@
 /* WebKit/Blink Browsers */
 ::selection {
 	background: #E5A6A4;
+	color: #000;
 }
 /* Gecko Browsers */
 ::-moz-selection {
 	background: #E5A6A4;
+	color: #000;
 }
 
 .antiphon.first-ant:before {

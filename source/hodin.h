@@ -1168,12 +1168,9 @@ const char* nazov_css_voice_output = "breviar-voice-output.css";
 // CSS for rounded corners of buttons | includes ONLY ammendment to base css (breviar.css)
 const char* nazov_css_rounded_corners = "breviar-rounded-corners.css";
 
-// language charset (encoding); used for HTML heading | use CHARSET_UTF_8
-const short int charset_jazyka[POCET_JAZYKOV + 1] =
-{ CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, CHARSET_UTF_8, /* ADD_VALUE_FOR_NEW_LANGUAGE */ };
-
-const char* nazov_charset[POCET_CHARSET + 1] =
-{ "utf-8", "windows-1250" };
+// HTML lang values
+const char* html_lang_jazyka[POCET_JAZYKOV + 1] =
+{ "sk", "cs", "en", "la", "??", "cs", "hu", "ru", "by", "is", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* skratka_static_text[POCET_STATIC_TEXTOV + 1] =
 { "", "ma", "ord", "i" };

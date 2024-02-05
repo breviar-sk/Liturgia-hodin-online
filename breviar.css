@@ -181,8 +181,8 @@ div.navm p {
 	text-align: right;
 	text-decoration: none; 
 	transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-	user-select: none;
 	-webkit-user-select: none;
+	user-select: none;
 	touch-action: manipulation;
 	width: auto;
 	will-change: transform;
@@ -664,7 +664,7 @@ p.bibleref {
 	font-size: 70%; 
 }
 
-/* apply to all elements */ 
+/* apply to all elements */
 { 
 	font-family: inherit; 
 	font-size: 16pt; 
@@ -674,11 +674,12 @@ p.bibleref {
 body, html { 
 	background-color: #FFFFFF;
 	color: #1a1a1a;
-	font-family: Cambria, Constantia, Georgia, Lido STF, "DejaVu Serif", Liberation, GentiumPlus, Gentium, Garamond, serif;
+	font-family: serif;
 	font-size: 16pt; 
 	font-weight: normal; 
 	line-height: 1.3;
 	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+	text-size-adjust: 100%;
 }
 
 p { 
@@ -817,6 +818,8 @@ input.button, input.reset, .button, a.button, .button-prayer, input.button-praye
 	background-color: transparent;
 	border: solid 2px #1a1a1a; 
 	/* border-radius: 10px; */
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	cursor: pointer;
 	font-family: inherit; 
@@ -830,8 +833,8 @@ input.button, input.reset, .button, a.button, .button-prayer, input.button-praye
 	text-align: center;
 	text-decoration: none; 
 	transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-	user-select: none;
 	-webkit-user-select: none;
+	user-select: none;
 	touch-action: manipulation;
 	width: 100%;
 	will-change: transform;
@@ -1061,9 +1064,9 @@ sup {
 	display: table-cell;
 	border: 1px solid black;
 	padding: 4px; /* all four paddings */
-	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .inline {
