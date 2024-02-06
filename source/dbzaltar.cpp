@@ -11287,6 +11287,8 @@ _struct_lang_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
 	{ JAZYK_SK, "NAN_MODLITBA", 2 },
 	{ JAZYK_SK, "ZDS_1MODLITBA", 2 },
 	{ JAZYK_SK, "23APR_MODLITBA", 2 },
+	{ JAZYK_CZ, "VN1_MODLITBA5NE", 2 },
+	{ JAZYK_CZ_OP, "VN1_MODLITBA5NE", 2 },
 };
 
 _struct_lang_anchor_and_count pocet_otcenas_uvod_multi_anchor_count[] = {

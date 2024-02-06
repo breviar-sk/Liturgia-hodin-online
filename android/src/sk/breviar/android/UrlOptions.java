@@ -252,11 +252,11 @@ public class UrlOptions {
 
   // of2nr
   public boolean isNightmode() {
-    return hasBit("o2", 8);
+    return hasBit("c", 0);
   }
 
   public void setNightmode(boolean value) {
-    setBit("o2", 8, value);
+    setBit("c", 0, value);
   }
 
   // of2rm
