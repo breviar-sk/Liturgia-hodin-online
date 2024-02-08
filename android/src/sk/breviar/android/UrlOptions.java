@@ -252,6 +252,9 @@ public class UrlOptions {
 
   // of2nr
   public boolean isNightmode() {
+    if (params.get("c") == null) {
+      return hasBit("o2", 8);
+    }
     return hasBit("c", 0);
   }
 
