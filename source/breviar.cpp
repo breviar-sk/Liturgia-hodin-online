@@ -7677,7 +7677,10 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				sprintf(pom, "http://www.katolik.cz/kalendar/kalendar.asp?d=%d&m=%d&r=%d", _local_den.den, _local_den.mesiac, _local_den.rok);
 			}
 			else if (_global_jazyk == JAZYK_HU) {
-				sprintf(pom, "http://www.katolikus.hu/igenaptar/%04d%02d%02d.html", _local_den.rok, _local_den.mesiac, _local_den.den);
+				// 2024-02-15:
+				// Nem ilyen egyszerű https://www.katolikus.hu/igenaptar/20240214.html | OLD: "http://www.katolikus.hu/igenaptar/%04d%02d%02d.html"
+				// hanem https://igenaptar.katolikus.hu/nap/index.php?holnap=2024-02-14 | NEW: "https://igenaptar.katolikus.hu/nap/index.php?holnap=%04d-%02d-%02d"
+				sprintf(pom, "https://igenaptar.katolikus.hu/nap/index.php?holnap=%04d-%02d-%02d", _local_den.rok, _local_den.mesiac, _local_den.den);
 			}
 			else {
 				sprintf(pom, "%04d-%02d-%02d", _local_den.rok, _local_den.mesiac, _local_den.den);
