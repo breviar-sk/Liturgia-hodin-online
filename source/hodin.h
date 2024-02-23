@@ -5788,6 +5788,20 @@ const char* text_JAN_11_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_JAN_11_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Cori Szent Tamás áldozópap",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_JAN_KRST[POCET_JAZYKOV + 1] = // v nedeľu po 6. januári | (v nedeľu po Zjavení Pána) alebo: ak však táto nedeľa (zrejme Zjavenia Pána) padne na deň 7. alebo 8. januára, ofícium sa slávi v nasledujúci deň
 {
 	"Krst Pána", // bolo: "Krst Krista Pána"; podľa 3RM opravené bez 'Krista'
@@ -7169,6 +7183,20 @@ const char* text_MAR_04_HU[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_MAR_05_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Szent János József áldozópap ",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_MAR_07[POCET_JAZYKOV + 1] =
 {
 	"Sv. Perpetuy a Felicity, mučeníc",
@@ -7325,13 +7353,13 @@ const char* text_MAR_18[POCET_JAZYKOV + 1] =
 };
 const char* text_MAR_18_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Salvatora z Horty, kňaza, člena 1. rádu",
+	"Sv. Salvatora z Horty, rehoľníka, člena 1. rádu",
 	"",
 	"",
 	"",
 	"",
 	"",
-	"",
+	"Hortai Szent Szalvátor szerzetes",
 	"",
 	"",
 	"",
@@ -7376,6 +7404,20 @@ const char* text_MAR_19_SJ[POCET_JAZYKOV + 1] =
 	"Szent József, a Boldogságos Szűz Mária jegyese, " HTML_LINE_BREAK "Jézus Társaságának védőszentje",
 	"",
 	"Св. Юзафа, абранніка Найсвяцейшай Панны Марыі",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAR_22_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Szent Benvenútusz püspök",
+	"",
+	"",
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -8141,6 +8183,20 @@ const char* text_MAJ_04_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_MAJ_04_2_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Tamás, Henrik, Artúr, János és Károly, angol vértanúk",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_MAJ_04_OP[POCET_JAZYKOV + 1] =
 {
 	"Bl. Emílie Bicchieriovej, panny",
@@ -8289,7 +8345,7 @@ const char* text_MAJ_08_CZ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Panny Marie, Prostřednice všech milostí",
-	"",
+	"A Boldogságos Szűz Mária, minden kegyelmek közvetítője",
 	"",
 	"",
 	"María mey, móðir guðlegrar náðar",
@@ -8303,7 +8359,7 @@ const char* text_MAJ_08_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Panny Marie, Prostřednice všech milostí",
-	"",
+	"A Boldogságos Szűz Mária, minden kegyelmek közvetítője",
 	"",
 	"",
 	"María mey, móðir guðlegrar náðar",
@@ -8569,7 +8625,7 @@ const char* text_MAJ_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Regalát Szent Péter áldozópap",
 	"",
 	"",
 	"",
@@ -10182,6 +10238,34 @@ const char* text_JUN_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_JUN_13_1_OFM_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Esztergom: a templom felszentelésének évfordulója",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_JUN_13_2_OFM_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Pasarét: a templom búcsúünnepe (Páduaui Szent Antal)",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_JUN_14_HU[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -10415,6 +10499,20 @@ const char* text_JUN_20_OP[POCET_JAZYKOV + 1] =
 	"",
 	"Bl. Markéty Ebnerové, panny, mnišky",
 	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_JUN_20_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Patrik, Conn, Conor és János, ír vértanúk",
 	"",
 	"",
 	"",
@@ -11095,6 +11193,20 @@ const char* text_JUL_10_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_JUL_10_OFM_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Rózsadomb: a templom felszentelésének évfordulója",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_JUL_11[POCET_JAZYKOV + 1] =
 {
 	"Sv. Benedikta, opáta, " HTML_LINE_BREAK "patróna Európy",
@@ -11453,7 +11565,7 @@ const char* text_JUL_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Duklai Szent János áldozópap",
 	"",
 	"",
 	"",
@@ -12082,6 +12194,34 @@ const char* text_AUG_05_BY[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_AUG_05_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Frederik (Frigyes) Jansoone áldozópap",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_AUG_05_OFM_HU[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Szeged: Havas Boldogasszony, a templom búcsúünnepe",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_AUG_06[POCET_JAZYKOV + 1] =
 {
 	"Premenenie Pána",
@@ -12476,13 +12616,13 @@ const char* text_AUG_17_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_17_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Beatrix de Silva, panny, zakladateľky " HTML_LINE_BREAK "koncepcionistiek, členky 2. rádu",
+	"Sv. Beatrix de Silva, panny, " HTML_LINE_BREAK "zakladateľky koncepcionistiek, členky 2. rádu",
 	"Sv. Beatrice de Silva, panny",
 	"",
 	"",
 	"",
 	"",
-	"",
+	"Szent Beatrix szűz de Silva, a Szeplőtelen Fogantatás rendjének (koncepcionisták) alapítója",
 	"",
 	"",
 	"",
@@ -12917,6 +13057,20 @@ const char* text_AUG_26_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Boldog Namuncurá Ceferino ifjú",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_AUG_26_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Juniper Serra áldozópap és misszionárius ",
 	"",
 	"",
 	"",
@@ -14109,7 +14263,7 @@ const char* text_SEP_26_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Sabrani Szent Elzeár és Boldog Delphina, házastársak a III. Rendből", // HU: different saints!
+	"Sabrani Szent Elzeár és Boldog Delphina, házastársak a III. Rendből", // HU: different saints! -- HU: removed 2024-02-22
 	"",
 	"",
 	"",
@@ -15532,20 +15686,6 @@ const char* text_OKT_30_CZ[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_OKT_30_HU_OFM[POCET_JAZYKOV + 1] =
-{
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"A saját templom fölszentelesenek évfordulója",
-	"",
-	"",
-	"",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
 const char* text_OKT_31_SJ[POCET_JAZYKOV + 1] =
 {
 	"Sv. Alfonza Rodrígueza, rehoľníka",
@@ -15893,7 +16033,7 @@ const char* text_NOV_08_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Boldog Duns Scotus János áldozópap",
 	"",
 	"",
 	"",
