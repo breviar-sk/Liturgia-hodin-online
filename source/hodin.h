@@ -13667,6 +13667,20 @@ const char* text_SEP_11_OCD[POCET_JAZYKOV + 1] =
 	"Bl. Maríu af Jesú, meyjar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_SEP_11_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Barcelonai Bonaventura szerzetes",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_SEP_12[POCET_JAZYKOV + 1] =
 {
 	"Najsv. mena Mária", // podľa Direktória 2012, str. 192; pôvodne bolo: 'Mena prebl. Panny Márie'; 3RM: NAJSVÄTEJŠIEHO MENA MÁRIA
@@ -14137,7 +14151,7 @@ const char* text_SEP_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Sv. Pia z Pietrelciny, kněze",
-	"Pietrelcinai Szent Pió szerzetes és áldozópap az I. rendből",
+	"Pietrelcinai Szent Pió szerzetes és áldozópap az I. Rendből",
 	"",
 	"",
 	"",
@@ -15420,6 +15434,20 @@ const char* text_OKT_24_HU[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_OKT_24_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Szent Annáról nevezett Szent Galvão Antal áldozópap",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_OKT_25_SK[POCET_JAZYKOV + 1] =
 {
 	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Martina z Tours",
@@ -16543,6 +16571,20 @@ const char* text_NOV_20_BY[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_NOV_20_OFM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Paszkál Fortuño Almela és társai, spanyol vértanúk",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_NOV_21[POCET_JAZYKOV + 1] =
 {
 	"Obetovanie prebl. Panny Márie", // podľa Direktória 2012, str. 226, nie je 'prebl.'; 3RM má: PREBLAHOSLAVENEJ
@@ -16719,7 +16761,7 @@ const char* text_NOV_27_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Fasani Szent Ferenc Antal áldozópap az I. rendből",
+	"Fasani Szent Ferenc Antal áldozópap az I. Rendből",
 	"",
 	"",
 	"",
