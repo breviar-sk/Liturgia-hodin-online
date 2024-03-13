@@ -530,6 +530,13 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_set_hymnus(modlitba, _file, _anchor); \
 	set_LOG_svsv;}
 
+// hymnus (napr. pre vešpery) ako na posv. čítanie
+#define _vlastna_cast_hymnus_ako_na_posv_citanie(modlitba, litobd) {\
+	_set_hymnus_alternativy_NO(modlitba, litobd);\
+	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_POSV_CITANIE), ANCHOR_HYMNUS); \
+	_set_hymnus(modlitba, _file_pc, _anchor); \
+	set_LOG_svsv;}
+
 // antifóny
 #define _vlastna_cast_antifony {\
 	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
