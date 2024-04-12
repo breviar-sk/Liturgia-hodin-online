@@ -15837,7 +15837,7 @@ const char* text_NOV_03_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Megemlékezés a Szeráfi Rend elhunytjairól", // HU: 24NOV
+	"Megemlékezés a három ferences rend elhunytjairól", // was: "Megemlékezés a Szeráfi Rend elhunytjairól", // HU: 06NOV
 	"",
 	"",
 	"",
