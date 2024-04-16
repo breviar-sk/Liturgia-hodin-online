@@ -35,10 +35,17 @@
 #define HTML_SIDE_NAVIGATION_SIDEBAR "<div id=\"mySidebar\" class=\"sidebar\">\n" \
 	"\t<a href=\"javascript:void(0)\" class=\"closebtn\" onclick=\"closeNav()\">×</a>"
 
+#define HTML_SIDE_NAVIGATION_SIDEBAR_RIGHT "<div id=\"mySidebarR\" class=\"sidebarR\">\n" \
+	"\t<a href=\"javascript:void(0)\" class=\"closebtnR\" onclick=\"closeNavR()\">×</a>"
+
 #define HTML_SIDE_NAVIGATION_COPYRIGHT "<p class=\"small\">©&nbsp;Juraj&nbsp;Vidéky</p>"
 
 #define HTML_SIDE_NAVIGATION_MAIN "<div id=\"main\">\n" \
 	"\t<div class=\"openbtn\" onclick=\"openNav()\">☰</div>\n" \
+	"</div>"
+
+#define HTML_SIDE_NAVIGATION_MAIN_RIGHT "<div id=\"main\">\n" \
+	"\t<div class=\"openbtnR\" onclick=\"openNavR()\">☰</div>\n" \
 	"</div>"
 
 #define HTML_SIDE_NAVIGATION_WEB_THEME "<a href=\"javascript:void(0)\" onclick=\"switchNightMode()\">"
@@ -46,11 +53,19 @@
 
 #define HTML_SIDE_NAVIGATION_SCRIPT "<script>" \
 "\nfunction openNav() {" \
-"\n\tdocument.getElementById(\"mySidebar\").style.width = \"240px\";" \
+"\n\tdocument.getElementById(\"mySidebar\").style.width = \"220px\";" \
 "\n}" \
 "\n" \
 "\nfunction closeNav() {" \
 "\n\tdocument.getElementById(\"mySidebar\").style.width = \"0\";" \
+"\n}" \
+"\n" \
+"\nfunction openNavR() {" \
+"\n\tdocument.getElementById(\"mySidebarR\").style.width = \"220px\";" \
+"\n}" \
+"\n" \
+"\nfunction closeNavR() {" \
+"\n\tdocument.getElementById(\"mySidebarR\").style.width = \"0\";" \
 "\n}" \
 "\n</script>"
 

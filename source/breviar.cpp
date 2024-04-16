@@ -8052,6 +8052,9 @@ void xml_export_options(void) {
 				case 19: // BIT_OPT_0_SIDE_NAVIGATION
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_SIDE_NAVIGATION)"%ld" ELEM_END(XML_BIT_OPT_0_SIDE_NAVIGATION) "\n", BIT_OPT_0_SIDE_NAVIGATION, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, html_text_opt_0_side_navigation[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)));
 					break;
+				case 20: // BIT_OPT_0_SIDE_NAVIGATION_RIGHT
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_SIDE_NAVIGATION_RIGHT)"%ld" ELEM_END(XML_BIT_OPT_0_SIDE_NAVIGATION_RIGHT) "\n", BIT_OPT_0_SIDE_NAVIGATION_RIGHT, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT, html_text_opt_0_side_navigation_right[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION_RIGHT)));
+					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE) "\n");
@@ -10779,6 +10782,50 @@ void _export_main_formular_checkbox(short int opt, unsigned long long bit_opt, c
 	Log("_export_main_formular_checkbox(%d, %llu, %s, %s, %s) -- end.\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description, html_text_opt_description_explain);
 } // _export_main_formular_checkbox()
 
+void _export_main_formular_checkbox_dark_mode(const char* html_text_opt_description, const char* html_text_opt_description_explain, short int line_break_before = ANO) {
+	Log("_export_main_formular_checkbox_dark_mode(%s, %s) -- begin...\n", html_text_opt_description, html_text_opt_description_explain);
+	char html_label[MAX_STR];
+	mystrcpy(html_label, html_text_opt_description, MAX_STR);
+
+	char pom[MAX_STR];
+	mystrcpy(pom, STR_EMPTY, MAX_STR);
+	char pom2[MAX_STR];
+	mystrcpy(pom2, STR_EMPTY, MAX_STR);
+	char pom3[MAX_STR];
+	mystrcpy(pom3, STR_EMPTY, MAX_STR);
+
+	// save original value
+	short int _local_theme = _global_theme;
+
+	// set local value to safe value
+	if (!((_local_theme == THEME_LIGHT) || (_local_theme == THEME_DARK))) {
+		_local_theme = THEME_LIGHT;
+	}
+
+	// invert original value
+	_global_theme = 1 - _local_theme; // should be 0 or 1
+
+	if (line_break_before == ANO) {
+		Export(HTML_CRLF_LINE_BREAK);
+	}
+
+	// ToDo: POST form does not work
+	Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_THEME, _local_theme);
+
+	Export(HTML_FORM_INPUT_CHECKBOX " name=\"%s\" value=\"%d\" title=\"%s\"%s" HTML_FORM_INPUT_END "\n", STR_THEME, _local_theme, html_text_opt_description_explain, (_local_theme == THEME_DARK) ? html_option_checked : STR_EMPTY);
+
+	Export("<" HTML_SPAN_TOOLTIP ">", html_text_opt_description_explain);
+
+	_export_link_helper(pom, pom2, pom3, (char*)html_label, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)STR_EMPTY, 0, 0);
+
+	Export(HTML_SPAN_END);
+
+	// restore original value
+	_global_theme = _local_theme;
+
+	Log("_export_main_formular_checkbox_dark_mode(%s, %s) -- end.\n", html_text_opt_description, html_text_opt_description_explain);
+} // _export_main_formular_checkbox()
+
 void _export_main_formular_checkbox_slash(short int opt, long bit_opt, const char* str_modl_force_opt, const char* html_text_opt_description1, const char* html_text_opt_description2, short int line_break_before = ANO) {
 	Log("_export_main_formular_checkbox(%d, %ld, %s, %s / %s) -- begin...\n", opt, bit_opt, str_modl_force_opt, html_text_opt_description1, html_text_opt_description2);
 	char html_label[MAX_STR];
@@ -11392,6 +11439,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, html_text_opt_0_side_navigation[_global_jazyk], html_text_opt_0_side_navigation[_global_jazyk]);
 
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT
+		Export(HTML_CRLF_LINE_BREAK);
+		Export(HTML_NONBREAKING_SPACE_LOOONG);
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION_RIGHT, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT, html_text_opt_0_side_navigation_right[_global_jazyk], html_text_opt_0_side_navigation_right[_global_jazyk], NIE);
+
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, html_text_opt_0_zalmy_full_text[_global_jazyk], html_text_opt_0_zalmy_full_text_explain[_global_jazyk]);
 
@@ -11500,10 +11552,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE
 		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE, STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE, html_text_opt_2_buttons_usporne[_global_jazyk], html_text_opt_2_buttons_usporne_explain[_global_jazyk]);
 
-#ifdef DEBUG
-		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NOCNY_REZIM; not necessary after new URL parameter 'c' was introduced & JavaScript for light/dark theme is used
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, STR_FORCE_BIT_OPT_2_NOCNY_REZIM, html_text_opt_2_nocny_rezim[_global_jazyk], html_text_opt_2_nocny_rezim_explain[_global_jazyk]);
-#endif
+		if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION))) {
+			// before: pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NOCNY_REZIM; replaced by new URL parameter 'c' & JavaScript for light/dark theme is used; export retained for web when sidemenu is OFF
+			// instead of deprecated OPT_2_HTML_EXPORT::BIT_OPT_2_NOCNY_REZIM parameter 'c' is used
+			_export_main_formular_checkbox_dark_mode(html_text_opt_2_nocny_rezim[_global_jazyk], html_text_opt_2_nocny_rezim_explain[_global_jazyk]);
+		}
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_FONT_NORMAL
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_FONT_NORMAL, STR_FORCE_BIT_OPT_0_FONT_NORMAL, html_text_opt_0_font_normal[_global_jazyk], html_text_opt_0_font_normal_explain[_global_jazyk]);

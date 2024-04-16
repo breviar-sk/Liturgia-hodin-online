@@ -280,11 +280,13 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 #endif
 
 #if defined(BEHAVIOUR_WEB) && !(defined(__APPLE__)) && !(defined(IO_ANDROID))
-	// JavaScript files for sidemenu; not for Android & iOS app
-	Log("elements <style> + <script>...\n");
-	Export_to_file(expt, "\t<style id=\"css_override\"></style>\n");
-	Export_to_file(expt, "\t<script type=\"text/javascript\" src=\"/jquery-3.7.1.min.js\"></script>\n");
-	Export_to_file(expt, "\t<script type=\"text/javascript\" src=\"/sidemenu.js\"></script>\n");
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) {
+		// JavaScript files for sidemenu; not for Android & iOS app
+		Log("elements <style> + <script>...\n");
+		Export_to_file(expt, "\t<style id=\"css_override\"></style>\n");
+		Export_to_file(expt, "\t<script type=\"text/javascript\" src=\"/jquery-3.7.1.min.js\"></script>\n");
+		Export_to_file(expt, "\t<script type=\"text/javascript\" src=\"/sidemenu.js\"></script>\n");
+	}
 #endif
 
 	Log("element <title>...</title>...\n");
@@ -384,7 +386,14 @@ void hlavicka(char* title, FILE* expt, short int level, short int spec) {
 void _hlavicka_sidemenu(FILE* expt) {
 	// display side navigation (left menu)
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) {
-		Export_to_file(expt, HTML_SIDE_NAVIGATION_SIDEBAR "\n");
+		if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION_RIGHT))) {
+			// sidemenu on the left
+			Export_to_file(expt, HTML_SIDE_NAVIGATION_SIDEBAR "\n");
+		}
+		else {
+			// sidemenu on the right
+			Export_to_file(expt, HTML_SIDE_NAVIGATION_SIDEBAR_RIGHT "\n");
+		}
 
 		// Dnes (Today's prayers)
 		_export_link_menu_dnes(_global_jazyk);
@@ -395,6 +404,7 @@ void _hlavicka_sidemenu(FILE* expt) {
 		// JavaScript files for sidemenu; not for Android & iOS app
 		Export_to_file(expt, "\t" HTML_SIDE_NAVIGATION_WEB_THEME "%s" HTML_SIDE_NAVIGATION_WEB_THEME_SPAN "" HTML_A_END "\n", html_text_opt_2_nocny_rezim_menu_base[_global_jazyk]);
 #else
+		// ToDo: instead of deprecated OPT_2_HTML_EXPORT::BIT_OPT_2_NOCNY_REZIM use parameter 'c'
 		_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM, (char*)html_text_opt_2_nocny_rezim_menu_show[_global_jazyk], (char*)html_text_opt_2_nocny_rezim_menu_hide[_global_jazyk], (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)"\t", (char*)"\n", (char*)STR_EMPTY, (char*)STR_EMPTY, 0, 0);
 #endif
 #endif // BEHAVIOUR_WEB
@@ -434,12 +444,20 @@ void _hlavicka_sidemenu(FILE* expt) {
 
 		Export_to_file(expt, HTML_DIV_END"\n");
 
-		Export_to_file(expt, HTML_SIDE_NAVIGATION_MAIN "\n");
+		if (!(isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION_RIGHT))) {
+			// sidemenu on the left
+			Export_to_file(expt, HTML_SIDE_NAVIGATION_MAIN "\n");
+		}
+		else {
+			// sidemenu on the right
+			Export_to_file(expt, HTML_SIDE_NAVIGATION_MAIN_RIGHT "\n");
+		}
 
 #if !defined(BEHAVIOUR_WEB) || (defined(__APPLE__)) || (defined(IO_ANDROID))
-		Export_to_file(expt, HTML_SIDE_NAVIGATION_SCRIPT "\n"); // for reverse cases (web behaviour; not mobile OSs), already done by script sidemenu.js included in _hlavicka() method above
+		// for reverse cases (web behaviour; not mobile OSs), already done by script sidemenu.js included in _hlavicka() method above
+		Export_to_file(expt, HTML_SIDE_NAVIGATION_SCRIPT "\n");
 #endif
-	}
+	}// if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION))
 }// _hlavicka_sidemenu()
 
 void hlavicka_sidemenu() {

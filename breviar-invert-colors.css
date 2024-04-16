@@ -282,34 +282,34 @@ sup {
 }
 
 /* side hamburger menu - sidebar, open and close buttons */
-.sidebar {
+.sidebar, .sidebarR {
 	background: #222222;
 }
 
-.sidebar a, .dropdown-btn {
+.sidebar a, .sidebarR a, .dropdown-btn {
 	color: #999999;
 }
 
-.sidebar a:hover, .dropdown-btn:hover {
+.sidebar a:hover, .sidebarR a:hover, .dropdown-btn:hover {
 	background-color: #C39482; /* button middle-dark */
 	color: #000000;
 }
 
-.sidebar p {
+.sidebar p, .sidebarR p {
 	color: #999999;
 }
 
-a:hover.closebtn {
+a:hover.closebtn, a:hover.closebtnR {
 	color: #999999;
 	background: #222222;
 }
 
-.openbtn {
+.openbtn, .openbtnR {
 	background-color: rgba(0,0,0,0.3);
 	color: #CCCCCC;
 }
 
-.openbtn:hover {
+.openbtn:hover, .openbtnR:hover {
 	background-color:  rgba(0,0,0,0.7);
 }
 

@@ -1565,29 +1565,30 @@ extern unsigned long long _global_force_opt[POCET_GLOBAL_OPT];
 #define USE_STR_OPT           -2
 #define USE_STR_FORCE_OPT     -1
 
-#define POCET_OPT_0_SPECIALNE               20 // jednotlivé komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               21 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
-#define BIT_OPT_0_VERSE                      1 // export also verse numbers
-#define BIT_OPT_0_REFERENCIE                 2 // export Bible references as live URLs (default: proper webpage for given language; override: BIT_OPT_0_REF_BIBLE_COM, use bible.com)
-#define BIT_OPT_0_CITANIA                    4 // export also scripture readings for mass
-#define BIT_OPT_0_ZJAVENIE_PANA_NEDELA       8 // či sa Zjavenie Pána slávi v nedeľu (1) alebo nie (teda 6. januára; hodnota 0 == default)
-#define BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA   16 // či sa Nanebovstúpenie Pána slávi v nedeľu (1) alebo nie (teda vo štvrtok, na 40.-ty deň po Veľkonočnej nedeli; hodnota 0 == default)
-#define BIT_OPT_0_TELAKRVI_NEDELA           32 // či sa Najsv. Kristovho tela a krvi slávi v nedeľu (1) alebo nie (teda vo štvrtok, 11.-ty deň po Zoslaní Ducha Sv.; hodnota 0 == default)
-#define BIT_OPT_0_FONT_NORMAL               64 // force font-weight: normal; // should be logically among OPT_2_HTML_EXPORT bit-options
-#define BIT_OPT_0_BUTTONS_ORDER            128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
-#define BIT_OPT_0_VOICE_OUTPUT             256 // voice-output: 1 = use special CSS override to hide all red texts (rubrics) + display text for speech synthesis + do not display text which should not be heard
-#define BIT_OPT_0_FOOTNOTES                512 // display footnotes and footnote references
-#define BIT_OPT_0_TRANSPARENT_NAV         1024 // transparent navigation arrow in text; default: on the right side of the screen (right-handed)
-#define BIT_OPT_0_ZALMY_FULL_TEXT         2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
-#define BIT_OPT_0_REF_BIBLE_COM           4096 // precondition: BIT_OPT_0_REFERENCIE must be true; instead of standard URL, generates link to bible.com
-#define BIT_OPT_0_ITALICS_CONDITIONAL     8192 // display text in italics (conditional), e. g. elisions
-#define BIT_OPT_0_PRINTED_EDITION        16384 // prefer printed edition (instead of corrections in our electronical version) = force usage of printed text
-#define BIT_OPT_0_USE_TWO_YEARS_CYCLE    32768 // use two-years' cycle for readings (Biblical, first readings in prayer with readings)
-#define BIT_OPT_0_TWO_YEARS_CYCLE_ID     65536 // when use two-years' cycle for readings (BIT_OPT_0_TWO_YEARS_CYCLE is set), 0 = 1st year, 1 = 2nd year of two-years' cycle
-#define BIT_OPT_0_ALTERNATIVE_READINGS  131072 // use alternative second readings in prayer with readings (CZ only)
-#define BIT_OPT_0_TRANSPARENT_NAV_LEFT  262144 // transparent navigation arrow in text; override: on the left side of the screen (left-handed)
-#define BIT_OPT_0_SIDE_NAVIGATION       524288 // side navigation using JavaScript; for web usage (instead of frames)
+#define BIT_OPT_0_VERSE                       1 // export also verse numbers
+#define BIT_OPT_0_REFERENCIE                  2 // export Bible references as live URLs (default: proper webpage for given language; override: BIT_OPT_0_REF_BIBLE_COM, use bible.com)
+#define BIT_OPT_0_CITANIA                     4 // export also scripture readings for mass
+#define BIT_OPT_0_ZJAVENIE_PANA_NEDELA        8 // či sa Zjavenie Pána slávi v nedeľu (1) alebo nie (teda 6. januára; hodnota 0 == default)
+#define BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA    16 // či sa Nanebovstúpenie Pána slávi v nedeľu (1) alebo nie (teda vo štvrtok, na 40.-ty deň po Veľkonočnej nedeli; hodnota 0 == default)
+#define BIT_OPT_0_TELAKRVI_NEDELA            32 // či sa Najsv. Kristovho tela a krvi slávi v nedeľu (1) alebo nie (teda vo štvrtok, 11.-ty deň po Zoslaní Ducha Sv.; hodnota 0 == default)
+#define BIT_OPT_0_FONT_NORMAL                64 // force font-weight: normal; // should be logically among OPT_2_HTML_EXPORT bit-options
+#define BIT_OPT_0_BUTTONS_ORDER             128 // buttons order: 0 = date navigation BEFORE info on day (default for web); 1 = day details first (with prayer buttons) (default for mobile apps)
+#define BIT_OPT_0_VOICE_OUTPUT              256 // voice-output: 1 = use special CSS override to hide all red texts (rubrics) + display text for speech synthesis + do not display text which should not be heard
+#define BIT_OPT_0_FOOTNOTES                 512 // display footnotes and footnote references
+#define BIT_OPT_0_TRANSPARENT_NAV          1024 // transparent navigation arrow in text; default: on the right side of the screen (right-handed)
+#define BIT_OPT_0_ZALMY_FULL_TEXT          2048 // display full text of psalms (also with carets from official LH edition, e. g. verse 6 in psalm 110)
+#define BIT_OPT_0_REF_BIBLE_COM            4096 // precondition: BIT_OPT_0_REFERENCIE must be true; instead of standard URL, generates link to bible.com
+#define BIT_OPT_0_ITALICS_CONDITIONAL      8192 // display text in italics (conditional), e. g. elisions
+#define BIT_OPT_0_PRINTED_EDITION         16384 // prefer printed edition (instead of corrections in our electronical version) = force usage of printed text
+#define BIT_OPT_0_USE_TWO_YEARS_CYCLE     32768 // use two-years' cycle for readings (Biblical, first readings in prayer with readings)
+#define BIT_OPT_0_TWO_YEARS_CYCLE_ID      65536 // when use two-years' cycle for readings (BIT_OPT_0_TWO_YEARS_CYCLE is set), 0 = 1st year, 1 = 2nd year of two-years' cycle
+#define BIT_OPT_0_ALTERNATIVE_READINGS   131072 // use alternative second readings in prayer with readings (CZ only)
+#define BIT_OPT_0_TRANSPARENT_NAV_LEFT   262144 // transparent navigation arrow in text; override: on the left side of the screen (left-handed)
+#define BIT_OPT_0_SIDE_NAVIGATION        524288 // side navigation using JavaScript; for web usage (instead of frames)
+#define BIT_OPT_0_SIDE_NAVIGATION_RIGHT 1048576 // side navigation using JavaScript; for web usage (instead of frames) on the right side (does not have an effect unless BIT_OPT_0_SIDE_NAVIGATION is set)
 
 #define POCET_OPT_1_CASTI_MODLITBY          20 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern unsigned long long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
@@ -1694,7 +1695,7 @@ extern unsigned long long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATI
 #define BASE_OPT_6_KCIT_RESP_MULTI      1000000000 // when data type was only "long", this note made sense: 'must not contain more than 3 possibilities at position 10 because long is limited to 2147483647'
 #define BASE_OPT_6_OTCENAS_UVOD_MULTI  10000000000
 
-#define MAX_POCET_OPT                           20 // must be at least maximum from POCET_OPT_0_... to POCET_OPT_6_...
+#define MAX_POCET_OPT                           21 // must be at least maximum from POCET_OPT_0_... to POCET_OPT_6_...
 
 const short int pocet_opt[POCET_GLOBAL_OPT] = { POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nemá bitové komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES, POCET_OPT_6_ALTERNATIVES_MULTI /* decimal-places */ };
 

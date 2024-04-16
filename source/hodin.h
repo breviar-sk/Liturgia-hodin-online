@@ -2905,7 +2905,6 @@ const char* html_text_opt_0_transparent_nav_left[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-// for other languages use: ""
 const char* html_text_opt_0_transparent_nav_left_explain[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -2923,21 +2922,50 @@ const char* html_text_opt_0_transparent_nav_left_explain[POCET_JAZYKOV + 1] =
 
 const char* html_text_opt_0_side_navigation[POCET_JAZYKOV + 1] =
 {
-	"navigačné menu vľavo",
-	"navigační menu nalevo",
-	"navigation menu on the left",
-	"pharetra sagittis a sinistris",
+	"navigačné menu (vľavo)",
+	"navigační menu (nalevo)",
+	"navigation sidemenu (on the left)",
+	"pharetra sagittis (ad sinistram)",
 	"",
-	"navigační menu nalevo",
-	"navigációs nyilak a bal oldalon",
+	"navigační menu (nalevo)",
+	"navigációs nyilak (bal oldalon)",
 	"ru_text",
-	"паказваць стрэлкі навігацыі",
-	"leiðsöguörvar til vinstri",
+	"навігаційне меню (зліва)",
+	"leiðsöguörvar (til vinstri)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-// for other languages use: ""
 const char* html_text_opt_0_side_navigation_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_0_side_navigation_right[POCET_JAZYKOV + 1] =
+{
+	"navigačné menu vpravo",
+	"navigační menu napravo",
+	"navigation sidemenu on the right",
+	"pharetra sagittis ad dextram",
+	"",
+	"navigační menu napravo",
+	"navigációs nyilak jobbra",
+	"ru_text",
+	"навігаційне меню праворуч",
+	"leiðsöguörvar til á hægri hönd",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_0_side_navigation_right_explain[POCET_JAZYKOV + 1] =
 {
 	"",
 	"",
@@ -2967,7 +2995,6 @@ const char* html_text_opt_0_zalmy_full_text[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-// for other languages use: ""
 const char* html_text_opt_0_zalmy_full_text_explain[POCET_JAZYKOV + 1] =
 {
 	"Liturgia hodín vynecháva niektoré pasáže zo žalmov a chválospevov (napr. verš 6 v žalme 110). Je možné tieto vynechané pasáže zobraziť.",

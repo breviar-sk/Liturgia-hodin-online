@@ -630,6 +630,14 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION "of0sn"
 #endif
 
+// side navigation (side menu) on the right side; does not have an effect unless FORCE_BIT_OPT_0_SIDE_NAVIGATION is set
+#define FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT 151
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT "FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT"
+#else
+#define STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT "of0srn"
+#endif
+
 // full text of psalms etc.
 #define FORCE_BIT_OPT_0_ZALMY_FULL_TEXT 121
 #ifdef LONG_PARAM_NAMES
@@ -866,7 +874,7 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE "of2btnu"
 #endif
 
-// nocny rezim - svetly text na tmavom pozadi
+// nocny rezim (dark mode) - svetly text na tmavom pozadi (light text on dark background) / force bit option component now deprecated
 #define FORCE_BIT_OPT_2_NOCNY_REZIM 89
 #ifdef LONG_PARAM_NAMES
 	#define STR_FORCE_BIT_OPT_2_NOCNY_REZIM "FORCE_BIT_OPT_2_NOCNY_REZIM"
@@ -1370,6 +1378,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_ALTERNATIVE_READINGS      "BitOpt0AlternativeReadings"
 #define XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT      "BitOpt0TransparentNavLeft"
 #define XML_BIT_OPT_0_SIDE_NAVIGATION           "BitOpt0NavigationMenu"
+#define XML_BIT_OPT_0_SIDE_NAVIGATION_RIGHT     "BitOpt0NavigationMenuRight"
 
 // POCET_OPT_1_CASTI_MODLITBY
 #define XML_BIT_OPT_1_TEDEUM                    "BitOpt1TeDeum"

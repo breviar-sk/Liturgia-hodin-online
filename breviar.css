@@ -1150,7 +1150,20 @@ p.strong-always, h3.strong-always {
 	padding-top: 64px;
 }
 
-.sidebar a, .dropdown-btn {
+.sidebarR {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	background-color: #6F3028; /* logo background darker */
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 64px;
+}
+
+.sidebar a, .sidebarR a, .dropdown-btn {
 	padding: 8px 8px 8px 24px;
 	text-decoration: none;
 	font-size: 120%;
@@ -1161,19 +1174,19 @@ p.strong-always, h3.strong-always {
 }
 
 /* according to a:hover */
-.sidebar a:hover, .dropdown-btn:hover {
+.sidebar a:hover, .sidebarR a:hover, .dropdown-btn:hover {
 	background-color: #C39482; /* button middle-dark */
 	border: none; 
 	color: #eeeeee;
 	text-decoration: none; 
 }
 
-.sidebar p {
+.sidebar p, .sidebarR p {
 	padding: 0 8px 0 24px;
 	color: #dddddd;
 }
 
-.sidebar p.small {
+.sidebar p.small, .sidebarR p.small {
 	font-size: 70%; 
 }
 
@@ -1181,11 +1194,19 @@ p.strong-always, h3.strong-always {
 	font-size: 180%;
 	padding: 0px 8px 0px 8px;
 	position: absolute;
-	top: 0;
-	right: 25px;
+	top: 12px;
+	left: 18px;
 }
 
-a:hover.closebtn {
+.sidebarR .closebtnR {
+	font-size: 180%;
+	padding: 0px 8px 0px 8px;
+	position: absolute;
+	top: 12px;
+	right: 18px;
+}
+
+a:hover.closebtn, a:hover.closebtnR {
 	background-color: #6F3028; /* logo background darker */
 }
 
@@ -1199,7 +1220,18 @@ a:hover.closebtn {
 	position: fixed;
 }
 
-.openbtn:hover {
+.openbtnR {
+	font-size: 100%;
+	cursor: pointer;
+	background-color:  rgba(255,255,255,0.3);
+	color: black;
+	border: none;
+	padding: 0px;
+	right: 16px;
+	position: fixed;
+}
+
+.openbtn:hover, .openbtnR:hover {
 	background-color:  rgba(255,255,255,0.9);
 }
 
@@ -1220,10 +1252,10 @@ a:hover.closebtn {
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-	.sidebar {
+	.sidebar, .sidebarR {
 		padding-top: 4px;
 	}
-	.sidebar a {
+	.sidebar a, .sidebarR a {
 		font-size: 14px;
 	}
 }
