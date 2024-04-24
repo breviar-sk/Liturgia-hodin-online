@@ -398,6 +398,12 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int sp
 		Log("\tPrilepil som aj tému: `%s'\n", pom3);
 	}
 
+	if (PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION) {
+		sprintf(pom3, HTML_AMPERSAND"%s=%d", STR_SIDEMENU_LOCATION, _global_sidemenu_location);
+		strcat(pom2, pom3);
+		Log("\tPrilepil som aj sidemenu location: `%s'\n", pom3);
+	}
+
 	if (PODMIENKA_EXPORTOVAT_CUSTOM_FONT) {
 		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_FONT_NAME, pom_FONT);
 		strcat(pom2, pom3);
@@ -1860,7 +1866,6 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 17: mystrcpy(str, STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS, SMALL); break; // BIT_OPT_0_ALTERNATIVE_READINGS
 			case 18: mystrcpy(str, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT, SMALL); break; // BIT_OPT_0_TRANSPARENT_NAV_LEFT
 			case 19: mystrcpy(str, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, SMALL); break; // BIT_OPT_0_SIDE_NAVIGATION
-			case 20: mystrcpy(str, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT, SMALL); break; // BIT_OPT_0_SIDE_NAVIGATION_RIGHT
 			}
 		}
 		break;

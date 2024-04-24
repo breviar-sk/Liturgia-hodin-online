@@ -383,6 +383,7 @@ short int _global_kalendar;
 short int _global_ritus;
 
 short int _global_theme;
+short int _global_sidemenu_location;
 
 short int _global_font; // for value FONT_CUSTOM, we use pom_FONT as global variable unless empty
 short int _global_font_size;
@@ -471,6 +472,7 @@ char pom_JAZYK[SMALL] = STR_EMPTY;
 char pom_KALENDAR[SMALL] = STR_EMPTY;
 
 char pom_THEME[SMALL] = STR_EMPTY;
+char pom_SIDEMENU_LOCATION[SMALL] = STR_EMPTY;
 
 char pom_FONT[SMALL] = STR_EMPTY;
 char pom_FONT_SIZE[VERY_SMALL] = STR_EMPTY;
@@ -1150,6 +1152,16 @@ short int setForm(void) {
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_THEME), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_THEME);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
+		ret = putenv(local_str);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
+	}
+
+	mystrcpy(local_str, STR_EMPTY, SMALL);
+	if (!equals(pom_SIDEMENU_LOCATION, STR_EMPTY)) {
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_SIDEMENU_LOCATION), SMALL);
+		strcat(local_str, "=");
+		strcat(local_str, pom_SIDEMENU_LOCATION);
 		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
 		LogParams("--- setForm: putenv returned %d.\n", ret);
@@ -8052,9 +8064,6 @@ void xml_export_options(void) {
 				case 19: // BIT_OPT_0_SIDE_NAVIGATION
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_SIDE_NAVIGATION)"%ld" ELEM_END(XML_BIT_OPT_0_SIDE_NAVIGATION) "\n", BIT_OPT_0_SIDE_NAVIGATION, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, html_text_opt_0_side_navigation[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)));
 					break;
-				case 20: // BIT_OPT_0_SIDE_NAVIGATION_RIGHT
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_SIDE_NAVIGATION_RIGHT)"%ld" ELEM_END(XML_BIT_OPT_0_SIDE_NAVIGATION_RIGHT) "\n", BIT_OPT_0_SIDE_NAVIGATION_RIGHT, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT, html_text_opt_0_side_navigation_right[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION_RIGHT)));
-					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE) "\n");
@@ -11439,11 +11448,6 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, html_text_opt_0_side_navigation[_global_jazyk], html_text_opt_0_side_navigation[_global_jazyk]);
 
-		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT
-		Export(HTML_CRLF_LINE_BREAK);
-		Export(HTML_NONBREAKING_SPACE_LOOONG);
-		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION_RIGHT, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION_RIGHT, html_text_opt_0_side_navigation_right[_global_jazyk], html_text_opt_0_side_navigation_right[_global_jazyk], NIE);
-
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ZALMY_FULL_TEXT, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, html_text_opt_0_zalmy_full_text[_global_jazyk], html_text_opt_0_zalmy_full_text_explain[_global_jazyk]);
 
@@ -12269,7 +12273,18 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
-	Log("Exportujem css: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+	Log("Exportujem css/theme: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
+	// exportovanie parametra v (_global_sidemenu_location)
+	if (PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION) {
+		sprintf(pom, " -v%d", _global_sidemenu_location);
+	}
+	else {
+		Log("\tNetreba prilepiť tému (sidemenu location == %d)\n", _global_sidemenu_location);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem sidemenu location: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// 2009-08-03: exportovanie do adresárov po mesiacoch
 	if (_global_opt_batch_monthly == ANO) {
@@ -13196,7 +13211,18 @@ void _export_rozbor_dna_mesiaca_batch(short int d, short int m, short int r) {
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
-	Log("Exportujem tému: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+	Log("Exportujem css/theme: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
+	// exportovanie parametra v (_global_sidemenu_location)
+	if (PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION) {
+		sprintf(pom, " -v%d", _global_sidemenu_location);
+	}
+	else {
+		Log("\tNetreba prilepiť tému (sidemenu location == %d)\n", _global_sidemenu_location);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem sidemenu location: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
 	// reťazec pre deň a pre názov súboru
 	if (d != VSETKY_DNI) {
@@ -17508,7 +17534,7 @@ short int getArgv(int argc, const char** argv) {
 	// 2021-07-13: 'T' (font size pT) force font size in pt
 
 	// 2021-07-13: 'y', 'v' and 'w' are still available :)
-	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::5::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::T::G::L", MAX_STR);
+	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::5::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::T::G::L::v", MAX_STR);
 	// tie options, ktore maju za sebou : maju povinny argument; ak maju :: tak maju volitelny
 
 	Log("-- getArgv(): begin\n");
@@ -17541,8 +17567,12 @@ short int getArgv(int argc, const char** argv) {
 				if (optarg != NULL) {
 					mystrcpy(pom_THEME, optarg, SMALL);
 				}
-				Log("option %c with value `%s' -- `%s' used for css\n", c, optarg, optarg); break;
-
+				Log("option %c with value `%s' -- `%s' used for theme/css\n", c, optarg, optarg); break;
+			case 'v':
+				if (optarg != NULL) {
+					mystrcpy(pom_SIDEMENU_LOCATION, optarg, SMALL);
+				}
+				Log("option %v with value `%s' -- `%s' used for sidemenu location\n", c, optarg, optarg); break;
 			case 'j':
 				if (optarg != NULL) {
 					mystrcpy(pom_JAZYK, optarg, SMALL);
@@ -17897,6 +17927,13 @@ short int getForm(void) {
 	if (ptr != NULL) {
 		if (strcmp(ptr, STR_EMPTY) != 0) {
 			mystrcpy(pom_THEME, ptr, SMALL);
+		}
+	}
+
+	ptr = getenv(ADD_WWW_PREFIX_(STR_SIDEMENU_LOCATION));
+	if (ptr != NULL) {
+		if (strcmp(ptr, STR_EMPTY) != 0) {
+			mystrcpy(pom_SIDEMENU_LOCATION, ptr, SMALL);
 		}
 	}
 
@@ -18628,6 +18665,18 @@ short int parseQueryString(void) {
 	if ((i >= pocet) && (equalsi(pom_THEME, STR_EMPTY))) {
 		sprintf(pom_THEME, "%d", THEME_UNDEF);
 		LogParams("téma nastavená (%s) (i >= pocet).\n", pom_THEME);
+	}
+
+	i = pocet;
+	LogParams("pokúšam sa zistiť sidemenu location (od posledného parametra k prvému, t. j. odzadu)...\n");
+	while ((equalsi(pom_SIDEMENU_LOCATION, STR_EMPTY)) && (i > 0)) {
+		--i;
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		if (equals(param[i].name, STR_SIDEMENU_LOCATION)) {
+			// ide o parameter STR_SIDEMENU_LOCATION
+			mystrcpy(pom_SIDEMENU_LOCATION, param[i].val, SMALL);
+			LogParams("sidemenu location zistená (%s).\n", pom_SIDEMENU_LOCATION);
+		}
 	}
 
 	// Pre POST query sa tam font priliepa aj na začiatok (rovnako ako kalendár), aj sa číta z form-ulára (t. j. pri výbere z qt=pdnes), 
@@ -19535,6 +19584,7 @@ END_parseQueryString:
 	_main_LOG_to_Export("\tparam12== %s (pom_JAZYK)\n", pom_JAZYK);\
 	_main_LOG_to_Export("\tparam  == %s (pom_KALENDAR)\n", pom_KALENDAR);\
 	_main_LOG_to_Export("\tparam  == %s (pom_THEME)\n", pom_THEME);\
+	_main_LOG_to_Export("\tparam  == %s (pom_SIDEMENU_LOCATION)\n", pom_SIDEMENU_LOCATION);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT)\n", pom_FONT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE)\n", pom_FONT_SIZE);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE_PT)\n", pom_FONT_SIZE_PT);\
@@ -19776,6 +19826,7 @@ int breviar_main(int argc, const char** argv) {
 	strcpy(pom_LINKY, STR_EMPTY);
 	strcpy(pom_JAZYK, STR_EMPTY);
 	strcpy(pom_THEME, STR_EMPTY);
+	strcpy(pom_SIDEMENU_LOCATION, STR_EMPTY);
 	strcpy(pom_FONT, STR_EMPTY);
 	strcpy(pom_FONT_SIZE, STR_EMPTY);
 	strcpy(pom_FONT_SIZE_PT, STR_EMPTY);
@@ -19798,6 +19849,7 @@ int breviar_main(int argc, const char** argv) {
 	_global_kalendar = 0;
 	_global_ritus = 0;
 	_global_theme = THEME_UNDEF;
+	_global_sidemenu_location = SIDEMENU_LOCATION_UNDEF;
 	_global_font = 0;
 	_global_font_size = 0;
 	_global_style_margin = DEF_STYLE_MARGIN;
@@ -20086,6 +20138,16 @@ int breviar_main(int argc, const char** argv) {
 			}
 			_main_LOG_to_Export("...téma (%s) = %d\n", pom_THEME, _global_theme);
 
+			// reading sidemenu location
+			_main_LOG_to_Export("reading sidemenu location...\n");
+			_global_sidemenu_location = atoi(pom_SIDEMENU_LOCATION);
+			if (!PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION) {
+				// undef sidemenu location
+				_global_sidemenu_location = SIDEMENU_LOCATION_UNDEF;
+				_main_LOG_to_Export("\t(vzhľadom k neurčenej sidemenu location používam SIDEMENU_LOCATION_UNDEF)\n");
+			}
+			_main_LOG_to_Export("...sidemenu location (%s) = %d\n", pom_SIDEMENU_LOCATION, _global_sidemenu_location);
+
 			Log("file_export == `%s'...\n", file_export);
 			if (equals(file_export, STR_EMPTY) || equals(file_export, "+")) {
 				// "+" -- error, chce pridavat do nicoho
@@ -20287,6 +20349,16 @@ int breviar_main(int argc, const char** argv) {
 		_main_LOG_to_Export("\t(vzhľadom k neurčenej téme používam THEME_UNDEF)\n");
 	}
 	_main_LOG_to_Export("...téma (%s) = %d\n", pom_THEME, _global_theme);
+
+	// reading sidemenu location
+	_main_LOG_to_Export("reading sidemenu location...\n");
+	_global_sidemenu_location = atoi(pom_SIDEMENU_LOCATION);
+	if (!PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION) {
+		// undef sidemenu location
+		_global_sidemenu_location = SIDEMENU_LOCATION_UNDEF;
+		_main_LOG_to_Export("\t(vzhľadom k neurčenej sidemenu location používam SIDEMENU_LOCATION_UNDEF)\n");
+	}
+	_main_LOG_to_Export("...téma (%s) = %d\n", pom_SIDEMENU_LOCATION, _global_sidemenu_location);
 
 	LOG_ciara;
 

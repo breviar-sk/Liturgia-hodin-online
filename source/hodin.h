@@ -2922,50 +2922,20 @@ const char* html_text_opt_0_transparent_nav_left_explain[POCET_JAZYKOV + 1] =
 
 const char* html_text_opt_0_side_navigation[POCET_JAZYKOV + 1] =
 {
-	"navigačné menu (vľavo)",
-	"navigační menu (nalevo)",
-	"navigation sidemenu (on the left)",
-	"pharetra sagittis (ad sinistram)",
+	"navigačné menu",
+	"navigační menu",
+	"navigation sidemenu",
+	"pharetra sagittis",
 	"",
-	"navigační menu (nalevo)",
-	"navigációs nyilak (bal oldalon)",
+	"navigační menu",
+	"navigációs nyilak",
 	"ru_text",
-	"навігаційне меню (зліва)",
-	"leiðsöguörvar (til vinstri)",
+	"навігаційне меню",
+	"leiðsöguörvar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
 const char* html_text_opt_0_side_navigation_explain[POCET_JAZYKOV + 1] =
-{
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-
-const char* html_text_opt_0_side_navigation_right[POCET_JAZYKOV + 1] =
-{
-	"navigačné menu vpravo",
-	"navigační menu napravo",
-	"navigation sidemenu on the right",
-	"pharetra sagittis ad dextram",
-	"",
-	"navigační menu napravo",
-	"navigációs nyilak jobbra",
-	"ru_text",
-	"навігаційне меню праворуч",
-	"leiðsöguörvar til á hægri hönd",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-
-const char* html_text_opt_0_side_navigation_right_explain[POCET_JAZYKOV + 1] =
 {
 	"",
 	"",
@@ -4304,6 +4274,36 @@ const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1] =
 	"режим&nbsp;☼",
 	"рэжым&nbsp;☼",
 	"Thamur&nbsp;☼",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_0_sidemenu_left[POCET_JAZYKOV + 1] =
+{
+	"vľavo",
+	"doleva",
+	"left",
+	"ad&nbsp;sinistram",
+	"",
+	"doleva",
+	"balra",
+	"слева",
+	"налева",
+	"til&nbsp;vinstri",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_0_sidemenu_right[POCET_JAZYKOV + 1] =
+{
+	"vpravo",
+	"doprava",
+	"right",
+	"ad&nbsp;dextram",
+	"",
+	"doprava",
+	"jobbra",
+	"справа",
+	"справа",
+	"á&nbsp;hægri&nbsp;hönd",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 

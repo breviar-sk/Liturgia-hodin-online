@@ -162,6 +162,7 @@ extern short int _global_kalendar; // kalendáre (napr. rehoľné), súvisí s j
 extern short int _global_ritus;
 
 extern short int _global_theme;
+extern short int _global_sidemenu_location;
 
 extern short int _global_font;
 extern short int _global_font_size;
@@ -492,7 +493,11 @@ extern char pom_FONT[SMALL];
 
 #define PODMIENKA_EXPORTOVAT_STATIC_FONT ((_global_font != FONT_CUSTOM) && (_global_font != FONT_CSS) && (_global_font != FONT_CHECKBOX))
 
-#define PODMIENKA_EXPORTOVAT_THEME ((_global_theme == THEME_LIGHT) || (_global_theme == THEME_DARK))
+// export theme into URL only when sidemenu is NOT displayed
+#define PODMIENKA_EXPORTOVAT_THEME ((!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) && ((_global_theme == THEME_LIGHT) || (_global_theme == THEME_DARK)))
+
+// export sidemenu location into URL only when sidemenu is NOT displayed
+#define PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION ((!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) && ((_global_sidemenu_location == SIDEMENU_LOCATION_LEFT) || (_global_sidemenu_location == SIDEMENU_LOCATION_RIGHT)))
 
 #define PODMIENKA_EXPORTOVAT_STYLE_MARGIN ( (_global_style_margin > MIN_STYLE_MARGIN) && (_global_style_margin < MAX_STYLE_MARGIN)  && (_global_style_margin != DEF_STYLE_MARGIN) )
 
@@ -570,6 +575,8 @@ extern const char* html_text_opt_2_nocny_rezim_menu_base[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_2_nocny_rezim_menu_hide[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_2_nocny_rezim_menu_show[POCET_JAZYKOV + 1];
 extern const char* html_text_Jazyk[POCET_JAZYKOV + 1];
+extern const char* html_text_opt_0_sidemenu_left[POCET_JAZYKOV + 1];
+extern const char* html_text_opt_0_sidemenu_right[POCET_JAZYKOV + 1];
 
 #ifndef OS_linux
 // kedysi bolo void main; 2003-07-14, kvoli gcc version 3.2.2 20030222 (Red Hat Linux 3.2.2-5) christ-net.sk 

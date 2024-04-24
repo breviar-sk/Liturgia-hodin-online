@@ -1190,6 +1190,10 @@ p.strong-always, h3.strong-always {
 	font-size: 70%; 
 }
 
+.sidebar a.small, .sidebarR a.small {
+	font-size: 100%; 
+}
+
 .sidebar .closebtn {
 	font-size: 180%;
 	padding: 0px 8px 0px 8px;

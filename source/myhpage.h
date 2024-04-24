@@ -32,25 +32,30 @@
   "<div id=\"nav-arrow-down\" class=\"nav-arrow-left\" onclick=\"window.scrollBy(0, 0.95*window.innerHeight)\"></div>\n"
 #endif
 
-#define HTML_SIDE_NAVIGATION_SIDEBAR "<div id=\"mySidebar\" class=\"sidebar\">\n" \
+#define HTML_SIDE_NAVIGATION_SIDEBAR "<div id=\"mySidebar\" class=\"sidebar\" onload=\"removeSessionStorageSidemenuRight()\">\n" \
 	"\t<a href=\"javascript:void(0)\" class=\"closebtn\" onclick=\"closeNav()\">×</a>"
 
-#define HTML_SIDE_NAVIGATION_SIDEBAR_RIGHT "<div id=\"mySidebarR\" class=\"sidebarR\">\n" \
+#define HTML_SIDE_NAVIGATION_SIDEBAR_RIGHT "<div id=\"mySidebarR\" class=\"sidebarR\" onload=\"setSessionStorageSidemenuRight()\">\n" \
 	"\t<a href=\"javascript:void(0)\" class=\"closebtnR\" onclick=\"closeNavR()\">×</a>"
 
 #define HTML_SIDE_NAVIGATION_COPYRIGHT "<p class=\"small\">©&nbsp;Juraj&nbsp;Vidéky</p>"
 
 #define HTML_SIDE_NAVIGATION_MAIN "<div id=\"main\">\n" \
-	"\t<div class=\"openbtn\" onclick=\"openNav()\">☰</div>\n" \
+	"\t<div id=\"myOpenbtnL\" class=\"openbtn\" onclick=\"openNav()\">☰</div>\n" \
 	"</div>"
 
 #define HTML_SIDE_NAVIGATION_MAIN_RIGHT "<div id=\"main\">\n" \
-	"\t<div class=\"openbtnR\" onclick=\"openNavR()\">☰</div>\n" \
+	"\t<div id=\"myOpenbtnR\" class=\"openbtnR\" onclick=\"openNavR()\">☰</div>\n" \
 	"</div>"
+
+#define HTML_SIDE_NAVIGATION_TO_LEFT "<a href=\"javascript:void(0)\" class=\"small\" onclick=\"switchMenuLocation()\">⚟&nbsp;%s</span></a>"
+#define HTML_SIDE_NAVIGATION_TO_RIGHT "<a href=\"javascript:void(0)\" class=\"small\" onclick=\"switchMenuLocation()\">%s&nbsp;⚞</span></a>"
 
 #define HTML_SIDE_NAVIGATION_WEB_THEME "<a href=\"javascript:void(0)\" onclick=\"switchNightMode()\">"
 #define HTML_SIDE_NAVIGATION_WEB_THEME_SPAN "<span id=\"themesign\"></span>"
+#define HTML_SIDE_NAVIGATION_WEB_THEME_SPAN_RIGHT "<span id=\"themesignR\"></span>"
 
+// ToDo: maybe add another JS methods from sidemenu.js
 #define HTML_SIDE_NAVIGATION_SCRIPT "<script>" \
 "\nfunction openNav() {" \
 "\n\tdocument.getElementById(\"mySidebar\").style.width = \"220px\";" \
