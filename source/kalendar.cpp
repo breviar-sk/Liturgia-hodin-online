@@ -7558,7 +7558,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				}
 
 				if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_CZ))) {
-					_vlastna_cast_mcd_kcitresp_modl;
+					_vlastna_cast_mcd_modlitba;
 				}
 
 				modlitba = MODL_VESPERY;
