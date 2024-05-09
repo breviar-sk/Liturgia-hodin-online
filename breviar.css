@@ -1108,6 +1108,7 @@ p.strong-always, h3.strong-always {
 .nav-arrow-right, .nav-arrow-left {
 	background-size: contain;
 	background-repeat: no-repeat;
+	opacity: 0.5;
 	z-index: 1;
 	width: 4em;
 	height: 2.4em;

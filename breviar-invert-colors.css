@@ -273,6 +273,10 @@ sup {
 	color: #FF3333;
 }
 
+.nav-arrow-right, .nav-arrow-left {
+	opacity: 0.8;
+}
+
 #nav-arrow-down {
   background-image: url('sipkadole-night.png');
 }
