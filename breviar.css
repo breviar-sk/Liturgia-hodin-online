@@ -1269,3 +1269,20 @@ hr.sidemenu {
 	margin-top: 24px;
 	margin-bottom: 24px;
 }
+
+/* Avoid printing sidemenu, buttons etc. when using Ctrl+P in browser */
+@media print {
+	#main, #mySidebar, #mySidebarR {
+		display: none;
+		visibility: hidden;
+	}
+	input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer /* prayer buttons */
+	, input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 /* << button0 >> + button1 for today */
+	, input.button2, input.reset2, .button2 { 
+		display: none;
+		visibility: hidden;
+	}
+	.strophe {
+		break-inside: avoid;
+	}
+}
