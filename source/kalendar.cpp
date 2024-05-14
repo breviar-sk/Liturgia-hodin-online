@@ -8568,7 +8568,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
 			mystrcpy(_global_svaty(1).meno, text_APR_30_OSU[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
