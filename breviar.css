@@ -1215,10 +1215,11 @@ a:hover.closebtn, a:hover.closebtnR {
 	background-color: #6F3028; /* logo background darker */
 }
 
-.openbtn {
+.openbtn, .openbtnR {
 	font-size: 100%;
 	cursor: pointer;
 	background-color:  rgba(255,255,255,0.3);
+	opacity: 0.3;
 	color: black;
 	border: none;
 	padding: 0px;
@@ -1226,18 +1227,12 @@ a:hover.closebtn, a:hover.closebtnR {
 }
 
 .openbtnR {
-	font-size: 100%;
-	cursor: pointer;
-	background-color:  rgba(255,255,255,0.3);
-	color: black;
-	border: none;
-	padding: 0px;
 	right: 16px;
-	position: fixed;
 }
 
 .openbtn:hover, .openbtnR:hover {
 	background-color:  rgba(255,255,255,0.9);
+	opacity: 0.9;
 }
 
 #main {

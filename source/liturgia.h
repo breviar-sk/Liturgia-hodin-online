@@ -99,6 +99,9 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define THEME_LIGHT  0
 #define THEME_DARK   1
 
+// background color
+#define THEME_BACKGROUND_COLOR_UNDEF ""
+
 // sidemenu locations
 #define SIDEMENU_LOCATION_UNDEF	-1
 #define SIDEMENU_LOCATION_LEFT	0
@@ -1718,6 +1721,8 @@ extern short int _global_jazyk;
 extern short int _global_kalendar;
 
 extern short int _global_theme;
+extern char _global_theme_light_background_color[SMALL]; // used for background color override for light theme
+extern char _global_theme_dark_background_color[SMALL]; // used for background color override for dark theme
 extern short int _global_sidemenu_location;
 
 extern short int _global_font;

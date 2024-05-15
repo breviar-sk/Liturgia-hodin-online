@@ -61,6 +61,9 @@ short int startsWith(char* base, char* str);
 // detecting whether base is ends with str
 short int endsWith(char* base, char* str);
 
+// validate the HTML hexadecimal color code (without starting # character)
+bool isValidHexaCode(char* str);
+
 unsigned long long atoui64(const char* szUnsignedInt);
 
 #endif // __MYSTRING_H_

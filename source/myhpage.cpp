@@ -43,8 +43,10 @@ const char* html_header_1 =
 //	"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n\t\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
 	"<!DOCTYPE html>\n"
 #endif
-    "<html lang=\"%s\" xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n\t<meta name=\"Author\" content=\"Juraj Vidéky\" />\n";
+    "<html lang=\"%s\" xmlns=\"http://www.w3.org/1999/xhtml\"%s>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n\t<meta name=\"Author\" content=\"Juraj Vidéky\" />\n";
 const char* html_header_css = "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
+
+const char* html_style_background_color_overrides = "\tselect, input.text, .openbtn, .openbtnR, .openbtn:hover, .openbtnR:hover {\n\t\tbackground-color: #%s;\n\t}\n\t.openbtn, .openbtnR {\n\t\topacity: 0.3;\n\t}\n\t.openbtn:hover, .openbtnR:hover {\n\t\topacity: 0.8;\n\t}\n";
 
 const char* xml_header = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n";
 
@@ -68,6 +70,7 @@ const char* HTML_MAIL_LABEL_SHORT = "J. Vidéky";
 
 #define MAX_MAIL_LABEL 20
 #define MAX_EXT 5
+char html_background_color[SMALL];
 char html_mail_label[MAX_MAIL_LABEL];
 char pismeno_modlitby;
 char pismeno_prev[8];
@@ -76,6 +79,7 @@ char ext[MAX_EXT];
 char file_name_pom[MAX_STR];
 char *ptr;
 short int _local_modlitba;
+char _local_background_color[SMALL];
 
 void myhpage_init_globals(void) {
 	bol_content_type_text_html = NIE;
@@ -246,10 +250,32 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 #endif
 		bol_content_type_text_html = ANO;
 	}
-	Log("creating header...\n");
+	Log("creating html + header...\n");
 
-	Log("element <head>...\n");
-	Export_to_file(expt, (char*)html_header_1, html_lang_jazyka[_global_jazyk]);
+	Log("_global_theme_light_background_color == %s...\n", _global_theme_light_background_color);
+	Log("_global_theme_dark_background_color == %s...\n", _global_theme_dark_background_color);
+
+	mystrcpy(_local_background_color, STR_EMPTY, SMALL);
+
+	bool has_background_color_override_light = (PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR && isValidHexaCode(_global_theme_light_background_color));
+	bool has_background_color_override_dark = (PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR && isValidHexaCode(_global_theme_dark_background_color));
+
+	if (has_background_color_override_light || has_background_color_override_dark) {
+		if (_local_background_color) {
+			mystrcpy(_local_background_color, _global_theme_light_background_color, SMALL);
+		}
+		if (has_background_color_override_dark) {
+			mystrcpy(_local_background_color, _global_theme_dark_background_color, SMALL);
+		}
+	}
+
+	mystrcpy(html_background_color, STR_EMPTY, SMALL);
+
+	if (has_background_color_override_light || has_background_color_override_dark) {
+		sprintf(html_background_color, " style=\"background-color: #%s;\"", _local_background_color);
+	}
+	Log("element <html> followed by <head>...\n");
+	Export_to_file(expt, (char*)html_header_1, html_lang_jazyka[_global_jazyk], html_background_color);
 
 	// CSS (one or more)
 	_header_css(expt, level, nazov_css_default);
@@ -259,7 +285,7 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 		_header_css(expt, level, nazov_css_rounded_corners);
 	}
 	// CSS override night mode: priority has _global_theme (if defined) over older BIT_OPT_2_NOCNY_REZIM
-	if ((_global_theme == THEME_DARK) || ((_global_theme == THEME_UNDEF) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)))) {
+	if (PODMIENKA_IS_DARK_THEME) {
 		_header_css(expt, level, nazov_css_invert_colors);
 	}
 	// CSS override normal font (no bold)
@@ -295,6 +321,8 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	Log("element </head>...\n");
 	Export_to_file(expt, "</head>\n\n");
 
+	Log("header created.\ncreating body...\n");
+
 	Log("element <body>...\n");
 	Export_to_file(expt, "<body");
 
@@ -304,7 +332,7 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	bool has_font_margin = _global_style_margin != 0;
 	bool has_line_height = _global_line_height_perc != 0;
 
-	if (has_font_family || has_font_size || has_font_size_global || has_font_margin || has_line_height) {
+	if (has_font_family || has_font_size || has_font_size_global || has_font_margin || has_line_height || has_background_color_override_light || has_background_color_override_dark) {
 		Export_to_file(expt, " style=\"");
 		if (has_font_family) {
 			Export_to_file(expt, "font-family: %s; ", _global_css_font_family);
@@ -320,6 +348,9 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 		}
 		if (has_line_height) {
 			Export_to_file(expt, "line-height: %d%%; ", _global_line_height_perc);
+		}
+		if (has_background_color_override_light || has_background_color_override_dark) {
+			Export_to_file(expt, "background-color: #%s; ", _local_background_color);
 		}
 		Export_to_file(expt, "\"");
 	}
@@ -347,9 +378,18 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	// closing <body> element
 	Export_to_file(expt, ">\n");
 
+	Log("body-opening element created.\ncreating style...\n");
+
 	// explicit override for hamburger icon
-	if (has_font_margin) {
-		Export_to_file(expt, "<style>\n\t.openbtn {\n\t\tmargin-left: -%dpx; \n\t}\n</style>\n", _global_style_margin);
+	if (has_font_margin || has_background_color_override_light || has_background_color_override_dark) {
+		Export_to_file(expt, "<style>\n");
+		if (has_font_margin) {
+			Export_to_file(expt, "\t.openbtn {\n\t\tmargin-left: -%dpx; \n\t}\n", _global_style_margin);
+		}
+		if (has_background_color_override_light || has_background_color_override_dark) {
+			Export_to_file(expt, html_style_background_color_overrides, _local_background_color);
+		}
+		Export_to_file(expt, "</style>\n");
 	}
 
 	// display transparent navigation (up/down arrows)

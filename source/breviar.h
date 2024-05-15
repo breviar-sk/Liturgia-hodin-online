@@ -162,6 +162,8 @@ extern short int _global_kalendar; // kalendáre (napr. rehoľné), súvisí s j
 extern short int _global_ritus;
 
 extern short int _global_theme;
+extern char _global_theme_light_background_color[SMALL]; // used for background color override for light theme
+extern char _global_theme_dark_background_color[SMALL]; // used for background color override for dark theme
 extern short int _global_sidemenu_location;
 
 extern short int _global_font;
@@ -495,6 +497,12 @@ extern char pom_FONT[SMALL];
 
 // export theme into URL only when sidemenu is NOT displayed
 #define PODMIENKA_EXPORTOVAT_THEME ((!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) && ((_global_theme == THEME_LIGHT) || (_global_theme == THEME_DARK)))
+
+#define PODMIENKA_IS_LIGHT_THEME ((_global_theme == THEME_LIGHT) || ((_global_theme == THEME_UNDEF) && (!(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)))))
+#define PODMIENKA_IS_DARK_THEME ((_global_theme == THEME_DARK) || ((_global_theme == THEME_UNDEF) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM))))
+
+#define PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR (PODMIENKA_IS_LIGHT_THEME) 
+#define PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR (PODMIENKA_IS_DARK_THEME)
 
 // export sidemenu location into URL only when sidemenu is NOT displayed
 #define PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION ((!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) && ((_global_sidemenu_location == SIDEMENU_LOCATION_LEFT) || (_global_sidemenu_location == SIDEMENU_LOCATION_RIGHT)))

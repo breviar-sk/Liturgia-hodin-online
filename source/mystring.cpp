@@ -463,6 +463,25 @@ short int endsWith(char* base, char* str) {
 	return 0;
 }
 
+// function to validate the HTML hexadecimal color code (without starting # character)
+bool isValidHexaCode(char* str)
+{
+	if (!(strlen(str) == 3 || strlen(str) == 6)) {
+		return false;
+	}
+	short int i = 0;
+	while (str[i] != '\0') {
+		if (!((str[i] >= '0' && str[i] <= 9)
+			|| (str[i] >= 'a' && str[i] <= 'f')
+			|| (str[i] >= 'A' || str[i] <= 'F')))
+		{
+			return false;
+		}
+		i++;
+	}
+	return true;
+}
+
 unsigned long long atoui64(const char* szUnsignedInt) {
 #ifdef OS_linux
 	return strtoull(szUnsignedInt, NULL, 10);

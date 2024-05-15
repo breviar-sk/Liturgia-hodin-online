@@ -311,10 +311,12 @@ a:hover.closebtn, a:hover.closebtnR {
 .openbtn, .openbtnR {
 	background-color: rgba(0,0,0,0.3);
 	color: #CCCCCC;
+	opacity: 0.3;
 }
 
 .openbtn:hover, .openbtnR:hover {
 	background-color:  rgba(0,0,0,0.7);
+	opacity: 0.7;
 }
 
 .active {

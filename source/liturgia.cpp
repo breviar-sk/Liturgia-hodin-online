@@ -398,6 +398,18 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int sp
 		Log("\tPrilepil som aj tému: `%s'\n", pom3);
 	}
 
+	if (PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR) {
+		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_THEME_LIGHT_BACKGROUND_COLOR, _global_theme_light_background_color);
+		strcat(pom2, pom3);
+		Log("\tPrilepil som aj BG color pre light tému: `%s'\n", pom3);
+	}
+
+	if (PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR) {
+		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_THEME_DARK_BACKGROUND_COLOR, _global_theme_dark_background_color);
+		strcat(pom2, pom3);
+		Log("\tPrilepil som aj BG color pre dark tému: `%s'\n", pom3);
+	}
+
 	if (PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION) {
 		sprintf(pom3, HTML_AMPERSAND"%s=%d", STR_SIDEMENU_LOCATION, _global_sidemenu_location);
 		strcat(pom2, pom3);

@@ -383,6 +383,8 @@ short int _global_kalendar;
 short int _global_ritus;
 
 short int _global_theme;
+char _global_theme_light_background_color[SMALL]; // used for background color override for light theme
+char _global_theme_dark_background_color[SMALL]; // used for background color override for dark theme
 short int _global_sidemenu_location;
 
 short int _global_font; // for value FONT_CUSTOM, we use pom_FONT as global variable unless empty
@@ -472,6 +474,8 @@ char pom_JAZYK[SMALL] = STR_EMPTY;
 char pom_KALENDAR[SMALL] = STR_EMPTY;
 
 char pom_THEME[SMALL] = STR_EMPTY;
+char pom_THEME_LIGHT_BACKGROUND_COLOR[SMALL] = STR_EMPTY;
+char pom_THEME_DARK_BACKGROUND_COLOR[SMALL] = STR_EMPTY;
 char pom_SIDEMENU_LOCATION[SMALL] = STR_EMPTY;
 
 char pom_FONT[SMALL] = STR_EMPTY;
@@ -1152,6 +1156,26 @@ short int setForm(void) {
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_THEME), SMALL);
 		strcat(local_str, "=");
 		strcat(local_str, pom_THEME);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
+		ret = putenv(local_str);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
+	}
+
+	mystrcpy(local_str, STR_EMPTY, SMALL);
+	if (!equals(pom_THEME_LIGHT_BACKGROUND_COLOR, STR_EMPTY)) {
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_THEME_LIGHT_BACKGROUND_COLOR), SMALL);
+		strcat(local_str, "=");
+		strcat(local_str, pom_THEME_LIGHT_BACKGROUND_COLOR);
+		LogParams("--- setForm: putenv(%s); ...\n", local_str);
+		ret = putenv(local_str);
+		LogParams("--- setForm: putenv returned %d.\n", ret);
+	}
+
+	mystrcpy(local_str, STR_EMPTY, SMALL);
+	if (!equals(pom_THEME_DARK_BACKGROUND_COLOR, STR_EMPTY)) {
+		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_THEME_DARK_BACKGROUND_COLOR), SMALL);
+		strcat(local_str, "=");
+		strcat(local_str, pom_THEME_DARK_BACKGROUND_COLOR);
 		LogParams("--- setForm: putenv(%s); ...\n", local_str);
 		ret = putenv(local_str);
 		LogParams("--- setForm: putenv returned %d.\n", ret);
@@ -12275,6 +12299,28 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem css/theme: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
+	// exportovanie parametra D (c0) (_global_theme_light_background_color)
+	if (PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR) {
+		sprintf(pom, " -D%s", _global_theme_light_background_color);
+	}
+	else {
+		Log("\tNetreba prilepiť background color for light theme (== %s)\n", _global_theme_light_background_color);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem css/theme: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
+	// exportovanie parametra N (c1) (_global_theme_dark_background_color)
+	if (PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR) {
+		sprintf(pom, " -N%s", _global_theme_dark_background_color);
+	}
+	else {
+		Log("\tNetreba prilepiť background color for dark theme (== %s)\n", _global_theme_dark_background_color);
+		strcpy(pom, STR_EMPTY);
+	}
+	strcat(export_dalsie_parametre, pom);
+	Log("Exportujem css/theme: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
+
 	// exportovanie parametra v (_global_sidemenu_location)
 	if (PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION) {
 		sprintf(pom, " -v%d", _global_sidemenu_location);
@@ -17534,7 +17580,7 @@ short int getArgv(int argc, const char** argv) {
 	// 2021-07-13: 'T' (font size pT) force font size in pt
 
 	// 2021-07-13: 'y', 'v' and 'w' are still available :)
-	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::5::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::T::G::L::v", MAX_STR);
+	mystrcpy(option_string, "?q::d::m::r::p::x::s::t::0::1::2::3::4::5::a::h::e::f::g::l::i::\?::b::n::o::k::j::c::u::M::I::H::F::S::T::G::L::v::D::N", MAX_STR);
 	// tie options, ktore maju za sebou : maju povinny argument; ak maju :: tak maju volitelny
 
 	Log("-- getArgv(): begin\n");
@@ -17568,6 +17614,16 @@ short int getArgv(int argc, const char** argv) {
 					mystrcpy(pom_THEME, optarg, SMALL);
 				}
 				Log("option %c with value `%s' -- `%s' used for theme/css\n", c, optarg, optarg); break;
+			case 'D':
+				if (optarg != NULL) {
+					mystrcpy(pom_THEME_LIGHT_BACKGROUND_COLOR, optarg, SMALL);
+				}
+				Log("option %c with value `%s' -- `%s' used for light theme/background color override\n", c, optarg, optarg); break;
+			case 'N':
+				if (optarg != NULL) {
+					mystrcpy(pom_THEME_DARK_BACKGROUND_COLOR, optarg, SMALL);
+				}
+				Log("option %c with value `%s' -- `%s' used for dark theme/background color override\n", c, optarg, optarg); break;
 			case 'v':
 				if (optarg != NULL) {
 					mystrcpy(pom_SIDEMENU_LOCATION, optarg, SMALL);
@@ -17809,7 +17865,9 @@ short int getArgv(int argc, const char** argv) {
 				printf("\ta  (append) pri exportovani do suboru (-e) neprepisuje subor\n");
 				printf("\tj  jazyk (jazykova mutacia), zatial: sk, cz\n");
 				printf("\tk  kalendar (napr. reholny)\n");
-				printf("\tc  css filename (pouzite CSS)\n");
+				printf("\tc  theme (light = 0, dark = 1)\n");
+				printf("\tD  light theme HEX code for background color override without # character\n");
+				printf("\tN  light theme HEX code for background color override without # character\n");
 				printf("\tu  batch mode dates in file name format (0 = simple, 1 = full)\n");
 				printf("\tM  pre batch mode: jednotlive mesiace su v samostatnych suboroch\n");
 				printf("\t   M0 = v mesiaci dni pod sebou, modlitby pre kazdy den v riadku\n");
@@ -17927,6 +17985,20 @@ short int getForm(void) {
 	if (ptr != NULL) {
 		if (strcmp(ptr, STR_EMPTY) != 0) {
 			mystrcpy(pom_THEME, ptr, SMALL);
+		}
+	}
+
+	ptr = getenv(ADD_WWW_PREFIX_(STR_THEME_LIGHT_BACKGROUND_COLOR));
+	if (ptr != NULL) {
+		if (strcmp(ptr, STR_EMPTY) != 0) {
+			mystrcpy(pom_THEME_LIGHT_BACKGROUND_COLOR, ptr, SMALL);
+		}
+	}
+
+	ptr = getenv(ADD_WWW_PREFIX_(STR_THEME_DARK_BACKGROUND_COLOR));
+	if (ptr != NULL) {
+		if (strcmp(ptr, STR_EMPTY) != 0) {
+			mystrcpy(pom_THEME_DARK_BACKGROUND_COLOR, ptr, SMALL);
 		}
 	}
 
@@ -18665,6 +18737,38 @@ short int parseQueryString(void) {
 	if ((i >= pocet) && (equalsi(pom_THEME, STR_EMPTY))) {
 		sprintf(pom_THEME, "%d", THEME_UNDEF);
 		LogParams("téma nastavená (%s) (i >= pocet).\n", pom_THEME);
+	}
+
+	i = 0; // param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme od 0
+	LogParams("pokúšam sa zistiť BG color pre light tému...\n");
+	while ((equalsi(pom_THEME_LIGHT_BACKGROUND_COLOR, STR_EMPTY)) && (i < pocet)) {
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		if (equals(param[i].name, STR_THEME_LIGHT_BACKGROUND_COLOR)) {
+			// ide o parameter STR_THEME_LIGHT_BACKGROUND_COLOR
+			mystrcpy(pom_THEME_LIGHT_BACKGROUND_COLOR, param[i].val, SMALL);
+			LogParams("BG color pre light tému zistená (%s).\n", pom_THEME_LIGHT_BACKGROUND_COLOR);
+		}
+		i++;
+	}
+	if ((i >= pocet) && (equalsi(pom_THEME_LIGHT_BACKGROUND_COLOR, STR_EMPTY))) {
+		sprintf(pom_THEME_LIGHT_BACKGROUND_COLOR, "%s", THEME_BACKGROUND_COLOR_UNDEF);
+		LogParams("BG color pre light tému nastavená (%s) (i >= pocet).\n", pom_THEME_LIGHT_BACKGROUND_COLOR);
+	}
+
+	i = 0; // param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme od 0
+	LogParams("pokúšam sa zistiť BG color pre dark tému...\n");
+	while ((equalsi(pom_THEME_DARK_BACKGROUND_COLOR, STR_EMPTY)) && (i < pocet)) {
+		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
+		if (equals(param[i].name, STR_THEME_DARK_BACKGROUND_COLOR)) {
+			// ide o parameter STR_THEME_DARK_BACKGROUND_COLOR
+			mystrcpy(pom_THEME_DARK_BACKGROUND_COLOR, param[i].val, SMALL);
+			LogParams("BG color pre dark tému zistená (%s).\n", pom_THEME_DARK_BACKGROUND_COLOR);
+		}
+		i++;
+	}
+	if ((i >= pocet) && (equalsi(pom_THEME_DARK_BACKGROUND_COLOR, STR_EMPTY))) {
+		sprintf(pom_THEME_DARK_BACKGROUND_COLOR, "%s", THEME_BACKGROUND_COLOR_UNDEF);
+		LogParams("BG color pre dark tému nastavená (%s) (i >= pocet).\n", pom_THEME_DARK_BACKGROUND_COLOR);
 	}
 
 	i = pocet;
@@ -19584,6 +19688,8 @@ END_parseQueryString:
 	_main_LOG_to_Export("\tparam12== %s (pom_JAZYK)\n", pom_JAZYK);\
 	_main_LOG_to_Export("\tparam  == %s (pom_KALENDAR)\n", pom_KALENDAR);\
 	_main_LOG_to_Export("\tparam  == %s (pom_THEME)\n", pom_THEME);\
+	_main_LOG_to_Export("\tparam  == %s (pom_THEME_LIGHT_BACKGROUND_COLOR)\n", pom_THEME_LIGHT_BACKGROUND_COLOR);\
+	_main_LOG_to_Export("\tparam  == %s (pom_THEME_DARK_BACKGROUND_COLOR)\n", pom_THEME_DARK_BACKGROUND_COLOR);\
 	_main_LOG_to_Export("\tparam  == %s (pom_SIDEMENU_LOCATION)\n", pom_SIDEMENU_LOCATION);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT)\n", pom_FONT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE)\n", pom_FONT_SIZE);\
@@ -19826,6 +19932,8 @@ int breviar_main(int argc, const char** argv) {
 	strcpy(pom_LINKY, STR_EMPTY);
 	strcpy(pom_JAZYK, STR_EMPTY);
 	strcpy(pom_THEME, STR_EMPTY);
+	strcpy(pom_THEME_LIGHT_BACKGROUND_COLOR, STR_EMPTY);
+	strcpy(pom_THEME_DARK_BACKGROUND_COLOR, STR_EMPTY);
 	strcpy(pom_SIDEMENU_LOCATION, STR_EMPTY);
 	strcpy(pom_FONT, STR_EMPTY);
 	strcpy(pom_FONT_SIZE, STR_EMPTY);
@@ -20134,9 +20242,40 @@ int breviar_main(int argc, const char** argv) {
 			if (!PODMIENKA_EXPORTOVAT_THEME) {
 				// undef téma
 				_global_theme = THEME_UNDEF;
-				_main_LOG_to_Export("\t(vzhľadom k neurčenej téme používam THEME_UNDEF)\n");
+				_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_UNDEF)\n");
 			}
 			_main_LOG_to_Export("...téma (%s) = %d\n", pom_THEME, _global_theme);
+
+			// načítanie background color pre light tému
+			_main_LOG_to_Export("zisťujem background color pre light tému...\n");
+			if (isValidHexaCode(pom_THEME_LIGHT_BACKGROUND_COLOR)) {
+				mystrcpy(_global_theme_light_background_color, pom_THEME_LIGHT_BACKGROUND_COLOR, SMALL);
+			}
+			else {
+				mystrcpy(_global_theme_light_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
+			}
+			if (!PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR) {
+				// undef BG color pre light tému
+				mystrcpy(_global_theme_light_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
+				_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_BACKGROUND_COLOR_UNDEF)\n");
+			}
+			_main_LOG_to_Export("...background color pre light tému (%s) = %s\n", pom_THEME_LIGHT_BACKGROUND_COLOR, _global_theme_light_background_color);
+
+			// načítanie background color pre dark tému
+			_main_LOG_to_Export("zisťujem background color pre dark tému...\n");
+			if (isValidHexaCode(pom_THEME_DARK_BACKGROUND_COLOR)) {
+				mystrcpy(_global_theme_dark_background_color, pom_THEME_DARK_BACKGROUND_COLOR, SMALL);
+			}
+			else {
+				mystrcpy(_global_theme_dark_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
+			}
+			Log("_global_theme_dark_background_color == %s...\n", _global_theme_dark_background_color);
+			if (!PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR) {
+				// undef BG color pre dark tému
+				mystrcpy(_global_theme_dark_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
+				_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_BACKGROUND_COLOR_UNDEF)\n");
+			}
+			_main_LOG_to_Export("...background color pre dark tému (%s) = %s\n", pom_THEME_DARK_BACKGROUND_COLOR, _global_theme_dark_background_color);
 
 			// reading sidemenu location
 			_main_LOG_to_Export("reading sidemenu location...\n");
@@ -20346,9 +20485,40 @@ int breviar_main(int argc, const char** argv) {
 	if (!PODMIENKA_EXPORTOVAT_THEME) {
 		// undef téma
 		_global_theme = THEME_UNDEF;
-		_main_LOG_to_Export("\t(vzhľadom k neurčenej téme používam THEME_UNDEF)\n");
+		_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_UNDEF)\n");
 	}
 	_main_LOG_to_Export("...téma (%s) = %d\n", pom_THEME, _global_theme);
+
+	// načítanie background color pre light tému
+	_main_LOG_to_Export("zisťujem background color pre light tému...\n");
+	if (isValidHexaCode(pom_THEME_LIGHT_BACKGROUND_COLOR)) {
+		mystrcpy(_global_theme_light_background_color, pom_THEME_LIGHT_BACKGROUND_COLOR, SMALL);
+	}
+	else {
+		mystrcpy(_global_theme_light_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
+	}
+	if (!PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR) {
+		// undef BG color pre light tému
+		mystrcpy(_global_theme_light_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
+		_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_BACKGROUND_COLOR_UNDEF)\n");
+	}
+	_main_LOG_to_Export("...background color pre light tému (%s) = %s\n", pom_THEME_LIGHT_BACKGROUND_COLOR, _global_theme_light_background_color);
+
+	// načítanie background color pre dark tému
+	_main_LOG_to_Export("zisťujem background color pre dark tému...\n");
+	if (isValidHexaCode(pom_THEME_DARK_BACKGROUND_COLOR)) {
+		mystrcpy(_global_theme_dark_background_color, pom_THEME_DARK_BACKGROUND_COLOR, SMALL);
+	}
+	else {
+		mystrcpy(_global_theme_dark_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
+	}
+	Log("_global_theme_dark_background_color == %s...\n", _global_theme_dark_background_color);
+	if (!PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR) {
+		// undef BG color pre dark tému
+		mystrcpy(_global_theme_dark_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
+		_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_BACKGROUND_COLOR_UNDEF)\n");
+	}
+	_main_LOG_to_Export("...background color pre dark tému (%s) = %s\n", pom_THEME_DARK_BACKGROUND_COLOR, _global_theme_dark_background_color);
 
 	// reading sidemenu location
 	_main_LOG_to_Export("reading sidemenu location...\n");
