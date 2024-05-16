@@ -47,13 +47,15 @@
     <string name="navigation">Leiðsöguhnappar í bænatextum</string>
     <string name="smart_buttons">Þrengri birting fyrir bænir</string>
     <string name="night_mode">Nátthamur</string>
-    <string name="background_override">Annars konar bakgrunnslitur (gulur)</string>
+    <string name="background_day_mode">Bakgrunns litur (dagshamur)</string>
+    <string name="background_night_mode">Bakgrunns litur (nátthamur)</string>
     <string name="normal_font">Venjulegt letur (ekki feitletrað)</string>
     <string name="buttons_rounded_corners">Ávöl horn á hnöppum</string>
     <string name="buttons_order">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
     <string name="transparent_nav">Sýna leiðsöguörvar (hægra megin)</string>
     <string name="transparent_nav_left">Leiðsöguörvar til vinstri</string>
     <string name="font_select">Veldu leturgerð</string>
+    <string name="default_color">(sjálfgefið)</string>
     <string name="default_font">(sjálfgefið)</string>
     <string name="default_serif_font">(serif)</string>
     <string name="default_sans_serif_font">(sans serif)</string>
@@ -63,6 +65,10 @@
     <string name="int_dialog_ok">OK</string>
     <string name="int_dialog_cancel">Hætta við</string>
     <string name="int_dialog_default">Sjálfgefið</string>
+    <string name="color_dialog_ok">OK</string>
+    <string name="color_dialog_cancel">Hætta við</string>
+    <string name="color_dialog_default">Sjálfgefið</string>
+    <string name="color_dialog_color">Lit (RRGGBB): </string>
 
     <string name="calendar_settings_title">Helgisiðadagatal</string>
     <string name="epiphany_sunday">Birting Drottins haldin á sunnudegi á milli 2. og 8. janúar</string>

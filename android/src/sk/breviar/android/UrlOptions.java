@@ -298,6 +298,24 @@ public class UrlOptions {
     setBit("o2", 15, value);
   }
 
+  // c0
+  public String getBackgroundDayMode() {
+    return getColor("c0", "");
+  }
+
+  public void setBackgroundDayMode(String value) {
+    setColor("c0", value, "");
+  }
+
+  // c1
+  public String getBackgroundNightMode() {
+    return getColor("c1", "");
+  }
+
+  public void setBackgroundNightMode(String value) {
+    setColor("c1", value, "");
+  }
+
   // mm
   static int kDefaultMm = 5;
   public int getMm() {
@@ -378,6 +396,34 @@ public class UrlOptions {
     params.remove(key);
     if (value != dflt) {
       params.put(key, Integer.toString(value));
+    } else {
+      params.put(key, "");
+    }
+  }
+
+  String maybeGetText(String key) {
+    try {
+      return params.get(key);
+    } catch (java.lang.Exception e) {
+      return null;
+    }
+  }
+
+  private Pattern color_pattern =
+    Pattern.compile("^([0-9a-z]{3}){1,2}$", Pattern.CASE_INSENSITIVE);
+
+  String getColor(String key, String dflt) {
+    String c = maybeGetText(key);
+    if (c != null && color_pattern.matcher(c).find()) {
+      return c;
+    }
+    return dflt;
+  }
+
+  void setColor(String key, String value, String dflt) {
+    params.remove(key);
+    if (!value.equals(dflt) && color_pattern.matcher(value).find()) {
+      params.put(key, value);
     } else {
       params.put(key, "");
     }

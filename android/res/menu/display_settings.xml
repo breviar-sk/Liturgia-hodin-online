@@ -23,9 +23,14 @@
         app:actionLayout="@layout/widget_switch"
   />
 
-  <item android:id="@+id/background_override"
-        android:title="@string/background_override"
-        app:actionLayout="@layout/widget_switch"
+  <item android:id="@+id/background_day_mode"
+        android:title="@string/background_day_mode"
+        app:actionLayout="@layout/widget_color"
+  />
+
+  <item android:id="@+id/background_night_mode"
+        android:title="@string/background_night_mode"
+        app:actionLayout="@layout/widget_color"
   />
 
   <item android:id="@+id/normal_font"

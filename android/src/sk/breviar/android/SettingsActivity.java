@@ -5,6 +5,7 @@ import java.lang.Runnable;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.DialogFragment;
@@ -14,7 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -39,12 +45,23 @@ public class SettingsActivity extends AppCompatActivity
     public int min;
     public int max;
   };
-  
+
+  static class ColorOptionInfo {
+    ColorOptionInfo(ColorOption color_option_, String[] predefined_colors_) {
+      color_option = color_option_;
+      predefined_colors = predefined_colors_;
+    }
+
+    public ColorOption color_option;
+    String[] predefined_colors;
+  };
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     switch_handlers = new java.util.LinkedHashMap<Integer, BooleanOption>();
     click_handlers = new java.util.LinkedHashMap<Integer, Runnable>();
     int_handlers = new java.util.LinkedHashMap<Integer, IntOptionInfo>();
+    color_options = new java.util.LinkedHashMap<Integer, ColorOptionInfo>();
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.settings_activity);
@@ -90,6 +107,30 @@ public class SettingsActivity extends AppCompatActivity
     public abstract boolean getOpt(UrlOptions opts);
   }
 
+  public interface ColorOption {
+    abstract public void set(String value);
+    abstract public String get();
+  }
+
+  public abstract class ColorUrlOption implements ColorOption {
+    public void set(String value) {
+      UrlOptions opts = initOpts();
+      setOpt(opts, value);
+      BreviarApp.setUrlOptions(getApplicationContext(), opts.build(true));
+    }
+
+    public String get() {
+      return getOpt(initOpts());
+    }
+
+    private UrlOptions initOpts() {
+      return new UrlOptions(BreviarApp.getUrlOptions(getApplicationContext()));
+    }
+
+    public abstract void setOpt(UrlOptions opts, String value);
+    public abstract String getOpt(UrlOptions opts);
+  }
+
   public interface IntOption {
     abstract public void set(int value);
     abstract public void reset();
@@ -126,6 +167,7 @@ public class SettingsActivity extends AppCompatActivity
   java.util.LinkedHashMap<Integer, BooleanOption> switch_handlers;
   java.util.LinkedHashMap<Integer, Runnable> click_handlers;
   java.util.LinkedHashMap<Integer, IntOptionInfo> int_handlers;
+  java.util.LinkedHashMap<Integer, ColorOptionInfo> color_options;
 
   public void handleClick(int menu_resource, Runnable handler) {
     click_handlers.put(menu_resource, handler);
@@ -152,6 +194,11 @@ public class SettingsActivity extends AppCompatActivity
       Log.v("breviar", "Cannot setup navigation view!");
     }
   }
+
+  public void handleColor(int menu_resource, String[] predefined_colors, ColorOption handler) {
+    color_options.put(menu_resource, new ColorOptionInfo(handler, predefined_colors));
+  }
+
 
   public void handleInt(int menu_resource, int min, int max, IntOption handler) {
     int_handlers.put(menu_resource, new IntOptionInfo(handler, min, max));
@@ -193,7 +240,7 @@ public class SettingsActivity extends AppCompatActivity
     void Cancel() {
       // nothing to do
     }
-    
+
     void Default() {
       info.int_option.reset();
       ctx.updateMenu();
@@ -218,7 +265,73 @@ public class SettingsActivity extends AppCompatActivity
               .setView(picker)
               .create();
     }
-}
+  }
+
+  public static class ColorDialogFragment extends DialogFragment {
+    SettingsActivity ctx;
+    ColorOptionInfo info;
+
+    public ColorDialogFragment(SettingsActivity ctx_, ColorOptionInfo info_) {
+      ctx = ctx_;
+      info = info_;
+    }
+
+    void Ok() {
+      Dialog d = getDialog();
+      String v = ((EditText)(d.findViewById(R.id.color_picker_edittext))).getText().toString();
+      info.color_option.set(v);
+      ctx.updateMenu();
+    }
+
+    void Cancel() {
+      // nothing to do
+    }
+
+    void Default() {
+      info.color_option.set("");
+      ctx.updateMenu();
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+      Dialog d = new AlertDialog.Builder(getActivity())
+//              .setIcon(R.drawable.alert_dialog_icon)
+//              .setTitle(title)
+              .setPositiveButton(R.string.color_dialog_ok,
+                      (dialogInterface, i) -> Ok())
+              .setNegativeButton(R.string.color_dialog_cancel,
+                      (dialogInterface, i) -> Cancel())
+              .setNeutralButton(R.string.color_dialog_default,
+                      (dialogInterface, i) -> Default())
+              .setView(R.layout.dialog_color_picker)
+              .create();
+      d.create();
+      final EditText input = (EditText)(d.findViewById(R.id.color_picker_edittext));
+      input.setText(info.color_option.get());
+
+      LinearLayout root = (LinearLayout)(d.findViewById(R.id.color_picker_root));
+      for (int i = 0; i < info.predefined_colors.length; ++i) {
+        final String textc = info.predefined_colors[i];
+        int c = Color.parseColor("#" + textc);
+        Button v = new Button(ctx);
+        // v.setText(textc);
+        // v.setTextColor(Color.BLACK);
+        v.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        v.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        v.setBackgroundColor(c);
+        v.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+              input.setText(textc);
+            }
+        });
+
+        root.addView(v);
+        Log.v("breviar", "Added predefined color " + info.predefined_colors[i]);
+      }
+      return d;
+    }
+
+  }
 
   @Override
   public boolean onNavigationItemSelected(MenuItem item) {
@@ -238,10 +351,14 @@ public class SettingsActivity extends AppCompatActivity
     {
       IntOptionInfo info = int_handlers.get(item.getItemId());
       if (info != null) {
-        final TextView view =
-            (TextView)MenuItemCompat.getActionView(item).findViewById(R.id.int_widget_textview);
-
         DialogFragment dialog = new IntAlertDialogFragment(this, info);
+        dialog.show(getSupportFragmentManager(), "dialog");
+      }
+    }
+    {
+      ColorOptionInfo info = color_options.get(item.getItemId());
+      if (info != null) {
+        DialogFragment dialog = new ColorDialogFragment(this, info);
         dialog.show(getSupportFragmentManager(), "dialog");
       }
     }
@@ -266,6 +383,21 @@ public class SettingsActivity extends AppCompatActivity
         TextView view = (TextView)MenuItemCompat.getActionView(
             menu.findItem(entry.getKey().intValue())).findViewById(R.id.int_widget_textview);
         view.setText(Integer.toString(value));
+      }
+      for (java.util.Map.Entry<Integer, ColorOptionInfo> entry :
+           color_options.entrySet()) {
+        ColorOptionInfo info = entry.getValue();
+        String value = info.color_option.get();
+        TextView view = (TextView)MenuItemCompat.getActionView(
+            menu.findItem(entry.getKey().intValue())).findViewById(R.id.color_widget_textview);
+        Log.v("breviar", "Color '" + value + "' for " + entry.getKey());
+        if (value.isEmpty()) {
+          view.setText(getString(R.string.default_color));
+          view.setBackgroundColor(Color.TRANSPARENT);
+        } else {
+          view.setText("    ");
+          view.setBackgroundColor(Color.parseColor("#" + value));
+        }
       }
     } catch (java.lang.NullPointerException e) {
       Log.v("breviar", "Cannot update menu!");

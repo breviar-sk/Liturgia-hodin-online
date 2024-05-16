@@ -135,7 +135,6 @@ public class Breviar extends AppCompatActivity
         finish();
         return;
       }
-      S.setBackgroundOverride(BreviarApp.getBackgroundOverride(this));
       S.start();
     }
 
@@ -595,7 +594,6 @@ public class Breviar extends AppCompatActivity
       opts.override(new UrlOptions(BreviarApp.getUrlOptions(
             getApplicationContext()).replaceAll("&amp;", "&")));
       S.setOpts(opts.build(true));
-      S.setBackgroundOverride(BreviarApp.getBackgroundOverride(this));
       return opts.build();
     }
 

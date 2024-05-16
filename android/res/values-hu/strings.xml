@@ -47,13 +47,15 @@
     <string name="navigation">Navigáció mutatása az imaszövegben</string>
     <string name="smart_buttons">Az imaórák gombjainak gazdaságos elhelyezése</string>
     <string name="night_mode">Éjszakai mód</string>
-    <string name="background_override">Választható háttérszín (sárga)</string>
+    <string name="background_day_mode">Háttérszín (nappali mód)</string>
+    <string name="background_night_mode">Háttérszín (éjszakai mód)</string>
     <string name="normal_font">Normál betűtípus használata (félkövér tiltása)</string>
     <string name="buttons_rounded_corners">Gombok lekerekített sarkai</string>
     <string name="buttons_order">Dátumválasztó gombok megjelenítése az imaóraválasztó gombok után</string>
     <string name="transparent_nav">Navigációs nyilak mutatása (jobb oldalon)</string>
     <string name="transparent_nav_left">Navigációs nyilak a bal oldalon</string>
     <string name="font_select">Válassza ki a betűtípust</string>
+    <string name="default_color">(alapértelmezett)</string>
     <string name="default_font">(alapértelmezett)</string>
     <string name="default_serif_font">(serif)</string>
     <string name="default_sans_serif_font">(sans serif)</string>
@@ -63,6 +65,10 @@
     <string name="int_dialog_ok">OK</string>
     <string name="int_dialog_cancel">Megszünteti</string>
     <string name="int_dialog_default">Alapértelmezett</string>
+    <string name="color_dialog_ok">OK</string>
+    <string name="color_dialog_cancel">Megszünteti</string>
+    <string name="color_dialog_default">Alapértelmezett</string>
+    <string name="color_dialog_color">Szín (RRGGBB): </string>
 
     <string name="calendar_settings_title">Liturgikus naptár</string>
     <string name="epiphany_sunday">Urunk megjelenését (Vízkeresztet) vasárnap ünnepelni, január 2. és 8. között</string>

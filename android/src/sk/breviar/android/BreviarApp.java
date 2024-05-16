@@ -121,7 +121,6 @@ public class BreviarApp extends Application {
   static final String booleanVolButtons = "vol_buttons";
   static final String booleanDimLock = "dim_lock";
   static final String booleanMute = "mute";
-  static final String booleanBackgroundOverride = "background_override";
   static final String booleanTtsUsePauseInPsalms = "tts_use_pause_in_psalms";
   static final String booleanNoZoom = "no_zoom";
   static final String stringUrlOptions = "params";
@@ -149,14 +148,6 @@ public class BreviarApp extends Application {
 
   static public void setMute(Context ctx, boolean mute) {
     setBoolean(ctx, booleanMute, mute);
-  }
-
-  static public boolean getBackgroundOverride(Context ctx) {
-    return getBoolean(ctx, booleanBackgroundOverride, false);
-  }
-
-  static public void setBackgroundOverride(Context ctx, boolean mute) {
-    setBoolean(ctx, booleanBackgroundOverride, mute);
   }
 
   static public boolean getTtsUsePauseInPsalms(Context ctx) {

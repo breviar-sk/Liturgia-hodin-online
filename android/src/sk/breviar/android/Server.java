@@ -30,7 +30,6 @@ public class Server extends Thread {
     static String scriptname;
     String language;
     String persistentOpts;
-    boolean backgroundOverride = false;
 
     public Server(Context _ctx, String sn, String lang, String opts) throws IOException {
       int i;
@@ -101,10 +100,6 @@ public class Server extends Thread {
 
     public String getOpts() {
       return persistentOpts;
-    }
-
-    public synchronized void setBackgroundOverride(boolean value) {
-      backgroundOverride = value;
     }
 
     // Force using current persistent options for the next request.
@@ -253,10 +248,6 @@ public class Server extends Thread {
 
     synchronized void handleFile(Socket client, String dokument, boolean persistent) throws IOException {
       boolean is_css = dokument.equals("breviar.css");
-      if (backgroundOverride && is_css) {
-        Log.v("breviar", "Overriding url due to background override");
-        dokument = "breviar-background-override.css";
-      }
       try {
         InputStream infile;
         if (dokument.startsWith("file/")) {

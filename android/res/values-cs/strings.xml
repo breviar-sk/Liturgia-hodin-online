@@ -47,13 +47,15 @@
     <string name="navigation">Navigace v textech modliteb</string>
     <string name="smart_buttons">Úsporné zobrazení tlačítek pro modlitby</string>
     <string name="night_mode">Noční režim</string>
-    <string name="background_override">Alternativní barva pozadí (žlutá)</string>
+    <string name="background_day_mode">Barva pozadí (denní režim)</string>
+    <string name="background_night_mode">Barva pozadí (noční režim)</string>
     <string name="normal_font">Obyčejné písmo (ne tučné)</string>
     <string name="buttons_rounded_corners">Zaoblené rohy pro tlačítka</string>
     <string name="buttons_order">Navigační tlačítka pro datum pod tlačítky pro modlitby</string>
     <string name="transparent_nav">Navigační šipky v textu (pravý okraj)</string>
     <string name="transparent_nav_left">Navigační šipky u levého okraje</string>
     <string name="font_select">Výběr písma</string>
+    <string name="default_color">(výchozí)</string>
     <string name="default_font">(výchozí)</string>
     <string name="default_serif_font">(patkové)</string>
     <string name="default_sans_serif_font">(bezpatkové)</string>
@@ -63,6 +65,10 @@
     <string name="int_dialog_ok">OK</string>
     <string name="int_dialog_cancel">Zrušit</string>
     <string name="int_dialog_default">Výchozí</string>
+    <string name="color_dialog_ok">OK</string>
+    <string name="color_dialog_cancel">Zrušit</string>
+    <string name="color_dialog_default">Výchozí</string>
+    <string name="color_dialog_color">Farba (RRGGBB): </string>
 
     <string name="calendar_settings_title">Liturgický kalendář</string>
     <string name="epiphany_sunday">Zjevení Páně slavit v neděli mezi 2. a 8. lednem</string>

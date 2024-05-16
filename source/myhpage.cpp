@@ -257,11 +257,18 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 
 	mystrcpy(_local_background_color, STR_EMPTY, SMALL);
 
-	bool has_background_color_override_light = (PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR && isValidHexaCode(_global_theme_light_background_color));
-	bool has_background_color_override_dark = (PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR && isValidHexaCode(_global_theme_dark_background_color));
+	bool has_background_color_override_light = (
+            PODMIENKA_IS_LIGHT_THEME &&
+            PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR &&
+            isValidHexaCode(_global_theme_light_background_color));
+
+	bool has_background_color_override_dark = (
+            PODMIENKA_IS_DARK_THEME &&
+            PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR &&
+            isValidHexaCode(_global_theme_dark_background_color));
 
 	if (has_background_color_override_light || has_background_color_override_dark) {
-		if (_local_background_color) {
+		if (has_background_color_override_light) {
 			mystrcpy(_local_background_color, _global_theme_light_background_color, SMALL);
 		}
 		if (has_background_color_override_dark) {

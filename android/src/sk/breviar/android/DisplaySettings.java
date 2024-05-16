@@ -40,9 +40,13 @@ public class DisplaySettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setNightmode(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isNightmode(); }
     });
-    handleSwitch(R.id.background_override, new BooleanOption() {
-      public void set(boolean value) { BreviarApp.setBackgroundOverride(act, value); }
-      public boolean get() { return BreviarApp.getBackgroundOverride(act); }
+    handleColor(R.id.background_day_mode, new String[]{"ffffcc", "ffddbb", "ddeeff"}, new ColorUrlOption() {
+      public void setOpt(UrlOptions opts, String value) { opts.setBackgroundDayMode(value); }
+      public String getOpt(UrlOptions opts) { return opts.getBackgroundDayMode(); }
+    });
+    handleColor(R.id.background_night_mode, new String[]{"111111", "222222", "333333"}, new ColorUrlOption() {
+      public void setOpt(UrlOptions opts, String value) { opts.setBackgroundNightMode(value); }
+      public String getOpt(UrlOptions opts) { return opts.getBackgroundNightMode(); }
     });
     handleSwitch(R.id.normal_font, new BooleanUrlOption() {
       public void setOpt(UrlOptions opts, boolean value) { opts.setOnlyNonBoldFont(value); }

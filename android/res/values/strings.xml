@@ -49,13 +49,15 @@
     <string name="navigation">Navigation buttons in prayer</string>
     <string name="smart_buttons">Tight display of buttons for prayers</string>
     <string name="night_mode">Night mode</string>
-    <string name="background_override">Alternative background color (yellow)</string>
+    <string name="background_day_mode">Background color (day mode)</string>
+    <string name="background_night_mode">Background color (night mode)</string>
     <string name="normal_font">Force normal font weight (no bold)</string>
     <string name="buttons_rounded_corners">Rounded corners of buttons</string>
     <string name="buttons_order">Date buttons after buttons for prayers</string>
     <string name="transparent_nav">Navigation arrows in text (right side)</string>
     <string name="transparent_nav_left">Navigation arrows on the left side</string>
     <string name="font_select">Select font</string>
+    <string name="default_color">(default)</string>
     <string name="default_font">(default)</string>
     <string name="default_serif_font">(serif)</string>
     <string name="default_sans_serif_font">(sans serif)</string>
@@ -65,6 +67,10 @@
     <string name="int_dialog_ok">OK</string>
     <string name="int_dialog_cancel">Cancel</string>
     <string name="int_dialog_default">Default</string>
+    <string name="color_dialog_ok">OK</string>
+    <string name="color_dialog_cancel">Cancel</string>
+    <string name="color_dialog_default">Default</string>
+    <string name="color_dialog_color">Color (RRGGBB): </string>
 
     <string name="calendar_settings_title">Liturgical calendar</string>
     <string name="epiphany_sunday">Celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>

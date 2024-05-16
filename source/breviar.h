@@ -501,8 +501,11 @@ extern char pom_FONT[SMALL];
 #define PODMIENKA_IS_LIGHT_THEME ((_global_theme == THEME_LIGHT) || ((_global_theme == THEME_UNDEF) && (!(isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM)))))
 #define PODMIENKA_IS_DARK_THEME ((_global_theme == THEME_DARK) || ((_global_theme == THEME_UNDEF) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NOCNY_REZIM))))
 
-#define PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR (PODMIENKA_IS_LIGHT_THEME) 
-#define PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR (PODMIENKA_IS_DARK_THEME)
+// We need to export both background colors whenever they are available, in
+// order to keep the settings correctly. It is important e.g. for android
+// display settings, which read these values.
+#define PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR (isValidHexaCode(_global_theme_light_background_color))
+#define PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR (isValidHexaCode(_global_theme_dark_background_color))
 
 // export sidemenu location into URL only when sidemenu is NOT displayed
 #define PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION ((!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) && ((_global_sidemenu_location == SIDEMENU_LOCATION_LEFT) || (_global_sidemenu_location == SIDEMENU_LOCATION_RIGHT)))
