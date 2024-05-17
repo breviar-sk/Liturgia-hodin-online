@@ -410,12 +410,24 @@ public class UrlOptions {
   }
 
   private Pattern color_pattern =
-    Pattern.compile("^([0-9a-z]{3}){1,2}$", Pattern.CASE_INSENSITIVE);
+      Pattern.compile("^([0-9a-z]{3}){1,2}$", Pattern.CASE_INSENSITIVE);
+
+  // precondition: rgb is valid according to color_pattern
+  String getColorRRGGBB(String rgb) {
+	  String rrggbb = rgb;
+	  if(rgb.length() == 3) {
+		  rrggbb = "";
+		  for (int i = 0; i < rgb.length(); i++) {
+			  rrggbb += (rgb.charAt(i) + "" + rgb.charAt(i));
+		  }
+	  }
+	  return rrggbb;
+  }
 
   String getColor(String key, String dflt) {
     String c = maybeGetText(key);
     if (c != null && color_pattern.matcher(c).find()) {
-      return c;
+      return getColorRRGGBB(c);
     }
     return dflt;
   }
@@ -423,7 +435,7 @@ public class UrlOptions {
   void setColor(String key, String value, String dflt) {
     params.remove(key);
     if (!value.equals(dflt) && color_pattern.matcher(value).find()) {
-      params.put(key, value);
+      params.put(key, getColorRRGGBB(value));
     } else {
       params.put(key, "");
     }
