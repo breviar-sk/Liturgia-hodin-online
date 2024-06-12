@@ -9768,10 +9768,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
-				if (_global_jazyk == JAZYK_CZ_OP)
-				{
-					_vlastna_cast_kresponz_ve_obd;
-				}
+				_vlastna_cast_kresponz_ve_obd;
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
@@ -9780,9 +9777,9 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
+				_vlastna_cast_kresponz_ve_obd;
 				if (_global_jazyk == JAZYK_CZ_OP)
 				{
-					_vlastna_cast_kresponz_ve_obd;
 					_vlastna_cast_modlitba_ina;
 				}
 
@@ -13438,6 +13435,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				}
 				else {
 					_vlastna_cast_full_okrem_prosieb(modlitba);
+					_vlastna_cast_kresponz_ve_obd;
 				}
 
 				modlitba = MODL_POSV_CITANIE;
@@ -13452,6 +13450,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				}
 				else {
 					_vlastna_cast_full_okrem_prosieb(modlitba);
+					_vlastna_cast_kresponz_ve_obd;
 				}
 
 				break;
@@ -13576,7 +13575,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_full(modlitba);
-				_vlastna_cast_kresponz_po_ve;
+				_vlastna_cast_kresponz_ve_obd;
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);

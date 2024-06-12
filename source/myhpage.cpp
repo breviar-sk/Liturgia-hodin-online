@@ -334,7 +334,7 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	Export_to_file(expt, "<body");
 
 	bool has_font_family = _global_font != FONT_CSS && strlen(_global_css_font_family) > 0;
-	bool has_font_size = (_global_font_size_pt > 0) && (_global_font_size_pt != FONT_SIZE_PT_DEFAULT);
+	bool has_font_size = PODMIENKA_EXPORTOVAT_FONTSIZE_PT;
 	bool has_font_size_global = _global_font_size != FONT_SIZE_CSS;
 	bool has_font_margin = _global_style_margin != 0;
 	bool has_line_height = _global_line_height_perc != 0;

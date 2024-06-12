@@ -20204,10 +20204,12 @@ int breviar_main(int argc, const char** argv) {
 			// načítanie veľkosti fontu v pt (override)
 			_main_LOG_to_Export("zisťujem font size pt...\n");
 			_global_font_size_pt = atoi(pom_FONT_SIZE_PT);
+			/*
 			if (_global_font_size_pt == FONT_SIZE_UNDEF) {
 				_global_font_size_pt = FONT_SIZE_PT_DEFAULT;
 				_main_LOG_to_Export("\t(vzhľadom k neurčenej font size používam default)\n");
 			}
+			*/
 			_main_LOG_to_Export("...font size pt (%s) = %d\n", pom_FONT_SIZE_PT, _global_font_size_pt);
 
 			// reading of style margin
@@ -20447,10 +20449,12 @@ int breviar_main(int argc, const char** argv) {
 	// reading of font size in pt (override)
 	_main_LOG_to_Export("zisťujem font size pt...\n");
 	_global_font_size_pt = atoi(pom_FONT_SIZE_PT);
+	/*
 	if (_global_font_size_pt == FONT_SIZE_UNDEF) {
 		_global_font_size_pt = FONT_SIZE_PT_DEFAULT;
 		_main_LOG_to_Export("\t(vzhľadom k neurčenej font size pt používam default)\n");
 	}
+	*/
 	_main_LOG_to_Export("...font size pt (%s) = %d\n", pom_FONT_SIZE_PT, _global_font_size_pt);
 
 	// reading of style margin

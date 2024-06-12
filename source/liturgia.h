@@ -152,7 +152,7 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define FONT_SIZE_XX_LARGE	8
 
 // font size in pt, default
-#define FONT_SIZE_PT_DEFAULT  12
+// #define FONT_SIZE_PT_DEFAULT  12
 
 // style margin, in pixels (px)
 #define MIN_STYLE_MARGIN      0
