@@ -14293,7 +14293,11 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OCD))
 			) {
-			if (poradie_svaty == 1) {
+
+			// CZ má ako poradie == 1 text_JUN_12_CZ
+			pom_poradie = (_global_jazyk == JAZYK_CZ) ? 2 : 1;
+
+			if (poradie_svaty == pom_poradie) {
 
 				file_name_vlastny_kalendar(_global_kalendar);
 
@@ -14301,29 +14305,32 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
-				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_2citanie;
-				_vlastna_cast_modlitba;
+				if (_global_jazyk != JAZYK_CZ) { // CZ nemá vlastné texty
+					modlitba = MODL_POSV_CITANIE;
+					_vlastna_cast_2citanie;
+					_vlastna_cast_modlitba;
 
-				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_benediktus;
-				_vlastna_cast_modlitba;
+					modlitba = MODL_RANNE_CHVALY;
+					_vlastna_cast_benediktus;
+					_vlastna_cast_modlitba;
 
-				modlitba = MODL_VESPERY;
-				_vlastna_cast_magnifikat;
-				_vlastna_cast_modlitba;
-
+					modlitba = MODL_VESPERY;
+					_vlastna_cast_magnifikat;
+					_vlastna_cast_modlitba;
+				}
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+			pocet = pom_poradie;
+
+			_set_slavenie_typslav_smer(pom_poradie, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
 			if (_global_jazyk == JAZYK_CZ) {
-				_global_svaty(1).prik = VOLNA_LUBOVOLNA_SPOMIENKA; // ľubovoľná spomienka uvedená kurzívou bez popisu
+				_global_svaty(pom_poradie).prik = VOLNA_LUBOVOLNA_SPOMIENKA; // ľubovoľná spomienka uvedená kurzívou bez popisu
 			}
-			mystrcpy(_global_svaty(1).meno, text_JUN_12_OCD[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
-			_global_svaty(1).farba = LIT_FARBA_CERVENA;
-			_global_svaty(1).kalendar = _global_kalendar;
+			mystrcpy(_global_svaty(pom_poradie).meno, text_JUN_12_OCD[_global_jazyk], MENO_SVIATKU);
+			_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
+			_global_svaty(pom_poradie).farba = LIT_FARBA_CERVENA;
+			_global_svaty(pom_poradie).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD a KALENDAR_CZ_OCD
 
 		if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OSU)) {
