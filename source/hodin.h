@@ -8999,7 +8999,7 @@ const char* text_MAJ_21[POCET_JAZYKOV + 1] =
 	"Sv. Krištofa Magallanesa, kňaza, a spoločníkov, mučeníkov",
 	"Sv. Kryštofa Magallanese, kněze, a druhů, mučedníků",
 	"",
-	"",
+	"Ss. Christophori Magallanes, presbyteri, et sociorum, martyrum",
 	"",
 	"Sv. Kryštofa Magallanese, kněze, a druhů, mučedníků",
 	"Magallán Szent Kristóf áldozópap és társai, mexikói vértanúk",
