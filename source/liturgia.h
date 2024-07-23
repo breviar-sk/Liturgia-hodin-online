@@ -935,7 +935,7 @@ struct dm{
 	short int denvt;      // cislo dna v tyzdni (0--6) DEN_...
 	short int denvr;      // cislo dna v roku (1--365/366) -- deň v roku
 	// toto boli "obcianske" zalezitosti
-	char litrok;          // liturgicky rok ('A'--'C')
+	char litrok;          // liturgicky rok ('A'--'C') -- nedeľný cyklus (Sunday's cycle for breviary & lectionaries)
 	short int tyzden;     // tyzden v danom liturgickom obdobi
 	short int tyzzal;     // tyzden v zaltari (vacsinou ((tyzden - 1) % 4) + 1)
 	short int litobd;     // liturgicke obdobie, OBD_...
@@ -1592,7 +1592,7 @@ extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_ITALICS_CONDITIONAL      8192 // display text in italics (conditional), e. g. elisions
 #define BIT_OPT_0_PRINTED_EDITION         16384 // prefer printed edition (instead of corrections in our electronical version) = force usage of printed text
 #define BIT_OPT_0_USE_TWO_YEARS_CYCLE     32768 // use two-years' cycle for readings (Biblical, first readings in prayer with readings)
-#define BIT_OPT_0_TWO_YEARS_CYCLE_ID      65536 // when use two-years' cycle for readings (BIT_OPT_0_TWO_YEARS_CYCLE is set), 0 = 1st year, 1 = 2nd year of two-years' cycle
+#define BIT_OPT_0_TWO_YEARS_CYCLE_INVERT  65536 // when use two-years' cycle for readings (BIT_OPT_0_TWO_YEARS_CYCLE is set), reverse the usage of 1st/2nd year (default: according to ferial lectionary)
 #define BIT_OPT_0_ALTERNATIVE_READINGS   131072 // use alternative second readings in prayer with readings (CZ only)
 #define BIT_OPT_0_TRANSPARENT_NAV_LEFT   262144 // transparent navigation arrow in text; override: on the left side of the screen (left-handed)
 #define BIT_OPT_0_SIDE_NAVIGATION        524288 // side navigation using JavaScript; for web usage (instead of frames); default location on the left, can be changed via JavaScript

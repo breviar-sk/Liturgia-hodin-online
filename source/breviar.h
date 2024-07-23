@@ -174,9 +174,10 @@ extern short int _global_line_height_perc;
 
 extern short int _global_pocet_zalmov_kompletorium; // kompletórium niekedy obsahuje až dva žalmy
 
-extern char _special_anchor_prefix[SMALL]; // used for CZ hymns
-extern char _special_anchor_postfix[SMALL]; // used for CZ hymns in Per Annum
-extern char _special_anchor_prefix2[SMALL]; // used for CZ 2nd readings
+extern char _special_anchor_prefix_CZ_hymnus[SMALL]; // used for CZ hymns
+extern char _special_anchor_postfix_CZ_hymnus_cezrok[SMALL]; // used for CZ hymns in Per Annum
+extern char _special_anchor_prefix_CZ_hymnus_CZ_2cit[SMALL]; // used for CZ 2nd readings
+extern char _special_anchor_postfix_two_years_cycle[SMALL]; // used for 1st readings (two-years cycle)
 
 extern short int _global_opt_batch_monthly;
 
@@ -193,6 +194,9 @@ extern short int _global_opt_export_date_format;
 
 #define set_tyzzal_1_2(tyzzal) ((tyzzal > 2)? (tyzzal - 2) : tyzzal)
 
+// odd year == 1st year in two-years cycle of per-annum ferial lectionary (result 1); even year == 2nd year (in C language result == index will be 0); Advent & Nativity Octave count to next year
+#define ferialReadingsCycle() (((_global_den.litobd == OBD_ADVENTNE_I) || (_global_den.litobd == OBD_ADVENTNE_II) || (_global_den.litobd == OBD_OKTAVA_NARODENIA)) ? (1 - (_global_den.rok % 2)) : (_global_den.rok % 2))
+
 // placeholder for checking whether option 'i' has set 'j'-th bit-component to TRUE | used result ANO/NIE to prevent long datatype; OPT 6 uses decimal-place logic
 #define isGlobalOption(opt_i, bit_opt_i_component_j) ((opt_i == OPT_6_ALTERNATIVES_MULTI) ? ((_global_opt[opt_i] DIV bit_opt_i_component_j) MOD 10) : (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
 #define isGlobalOptionForce(opt_i, bit_opt_i_component_j) ((opt_i == OPT_6_ALTERNATIVES_MULTI) ? ((_global_force_opt[opt_i] DIV bit_opt_i_component_j) MOD 10) : (((_global_force_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
@@ -202,6 +206,12 @@ extern short int useWhenGlobalOption(short opt_i, unsigned long long bit_opt_i_c
 
 // for setting option's 'i' 'j'-th bit-component to value (TRUE/FALSE); OPT 6 uses decimal-place logic
 extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_j, short value);
+
+// ID of two-years cycle for 1st readings (by default, respect 'ferialReadingsCycle'; reverse the value otherwise); result is 1 (1st year) or 0 (2nd year); used only when isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_USE_TWO_YEARS_CYCLE) holds
+#define TWO_YEARS_CYCLE_ID (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_INVERT) ? 1 - ferialReadingsCycle(): ferialReadingsCycle())
+
+// two-years cycle currently only for SK (experimental, incomplete)
+#define je_two_years_cycle_readings (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_USE_TWO_YEARS_CYCLE) && (_global_jazyk == JAZYK_SK))
 
 #define odfiltrujSpolCast(modlitba, opt3) ((short int)(((modlitba == MODL_DETAILY) || (modlitba == MODL_NEURCENA)) ? MODL_SPOL_CAST_NULL : opt3))
 
@@ -401,7 +411,7 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 #define je_CZ_hymny_k_volnemu_vyberu ((_global_jazyk == JAZYK_CZ) && (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))
 #define je_CZ_nie_hymny_k_volnemu_vyberu ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))
 
-// ToDo: before replacing anchor from file with HTML scratch, try to remove _special_anchor_prefix/postfix!!!
+// ToDo: before replacing anchor from file with HTML scratch, try to remove _special_anchor_prefix_CZ_hymnus/postfix!!!
 #define specialne_dni_bez_hymnov_k_volnemu_vyberu_CZ ((_global_den.denvr == VELKONOCNA_NEDELA) || (_global_den.denvr == SV_RODINY))
 
 // Veľká noc padne na 22.-26. marca; vtedy je 19. marca vo Svätom týždni, a preto sa prekladá na sobotu pred Kvetnou nedeľou

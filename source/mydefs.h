@@ -527,11 +527,11 @@ extern short int query_type; // contains constants PRM_...
 #endif
 
 // ktorý rok použiť pre dvojročný cyklus pre posvätné čítanie (prvé, biblické čítanie)?
-#define FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID 147
+#define FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT 147
 #ifdef LONG_PARAM_NAMES
-#define STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID "FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID"
+#define STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT "FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT"
 #else
-#define STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID "of02rcid"
+#define STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT "of02rcinv"
 #endif
 
 // použiť alternatívne čítania pre posvätné čítanie (druhé čítanie)
@@ -1389,7 +1389,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_ITALICS_CONDITIONAL       "BitOpt0ItalicsConditional"
 #define XML_BIT_OPT_0_PRINTED_EDITION           "BitOpt0PrintedEdition"
 #define XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE       "BitOpt0UseTwoYearsCycle"
-#define XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID        "BitOpt0TwoYearsCycleId"
+#define XML_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT    "BitOpt0TwoYearsCycleInvert"
 #define XML_BIT_OPT_0_ALTERNATIVE_READINGS      "BitOpt0AlternativeReadings"
 #define XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT      "BitOpt0TransparentNavLeft"
 #define XML_BIT_OPT_0_SIDE_NAVIGATION           "BitOpt0NavigationMenu"

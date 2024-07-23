@@ -395,9 +395,10 @@ short int _global_line_height_perc;
 
 short int _global_pocet_zalmov_kompletorium;
 
-char _special_anchor_prefix[SMALL]; // used for CZ hymns
-char _special_anchor_postfix[SMALL]; // used for CZ hymns in Per Annum
-char _special_anchor_prefix2[SMALL]; // used for CZ 2nd readings
+char _special_anchor_prefix_CZ_hymnus[SMALL]; // used for CZ hymns
+char _special_anchor_postfix_CZ_hymnus_cezrok[SMALL]; // used for CZ hymns in Per Annum
+char _special_anchor_prefix_CZ_hymnus_CZ_2cit[SMALL]; // used for CZ 2nd readings
+char _special_anchor_postfix_two_years_cycle[SMALL]; // used for 1st & 2nd readings (two-years cycle)
 
 char _global_export_navig_hore[SMALL] = DEFAULT_MONTH_EXPORT;
 char _global_export_navig_hore_month[SMALL] = DEFAULT_MONTH_EXPORT;
@@ -4588,10 +4589,10 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 					_set_hymnus(modlitba, NULL, new_anchor);
 				}
 				else if (bit == BASE_OPT_6_CITANIE2_MULTI) {
-					_set_citanie2(modlitba, NULL, new_anchor);
+					set_citanie2(modlitba, NULL, new_anchor);
 				}
 				else if (bit == BASE_OPT_6_CITANIE1_MULTI) {
-					_set_citanie1(modlitba, NULL, new_anchor);
+					set_citanie1(modlitba, NULL, new_anchor);
 				}
 				else if (bit == BASE_OPT_6_ANTIFONA_MULTI) {
 					if (_global_modlitba == MODL_RANNE_CHVALY) {
@@ -8076,11 +8077,11 @@ void xml_export_options(void) {
 				case 15: // BIT_OPT_0_USE_TWO_YEARS_CYCLE
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE)"%ld" ELEM_END(XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE) "\n", BIT_OPT_0_USE_TWO_YEARS_CYCLE, STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE, html_text_opt_0_use_two_years_cycle[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_USE_TWO_YEARS_CYCLE)));
 					break;
-				case 16: // BIT_OPT_0_TWO_YEARS_CYCLE_ID
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID)"%ld" ELEM_END(XML_BIT_OPT_0_TWO_YEARS_CYCLE_ID) "\n", BIT_OPT_0_TWO_YEARS_CYCLE_ID, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, html_text_opt_0_two_years_cycle_id[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_ID)));
+				case 16: // BIT_OPT_0_TWO_YEARS_CYCLE_INVERT
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT)"%ld" ELEM_END(XML_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT) "\n", BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, html_text_opt_0_two_years_cycle_invert[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_INVERT)));
 					break;
 				case 17: // BIT_OPT_0_ALTERNATIVE_READINGS
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_ALTERNATIVE_READINGS)"%ld" ELEM_END(XML_BIT_OPT_0_ALTERNATIVE_READINGS) "\n", BIT_OPT_0_ALTERNATIVE_READINGS, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, html_text_opt_0_alternative_readings[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ALTERNATIVE_READINGS)));
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_ALTERNATIVE_READINGS)"%ld" ELEM_END(XML_BIT_OPT_0_ALTERNATIVE_READINGS) "\n", BIT_OPT_0_ALTERNATIVE_READINGS, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, html_text_opt_0_alternative_readings[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ALTERNATIVE_READINGS)));
 					break;
 				case 18: // BIT_OPT_0_TRANSPARENT_NAV_LEFT
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT)"%ld" ELEM_END(XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT) "\n", BIT_OPT_0_TRANSPARENT_NAV_LEFT, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT, html_text_opt_0_transparent_nav_left[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_LEFT)));
@@ -11262,10 +11263,10 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE
 			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_USE_TWO_YEARS_CYCLE, STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE, html_text_opt_0_use_two_years_cycle[_global_jazyk], html_text_opt_0_use_two_years_cycle_explain[_global_jazyk]);
 
-			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID
+			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT
 			Export(HTML_CRLF_LINE_BREAK);
 			Export(HTML_NONBREAKING_SPACE_LOOONG);
-			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_ID, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_ID, html_text_opt_0_two_years_cycle_id[_global_jazyk], html_text_opt_0_two_years_cycle_id_explain[_global_jazyk], NIE);
+			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, html_text_opt_0_two_years_cycle_invert[_global_jazyk], html_text_opt_0_two_years_cycle_invert_explain[_global_jazyk], NIE);
 
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS
 			_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_ALTERNATIVE_READINGS, STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS, html_text_opt_0_alternative_readings[_global_jazyk], html_text_opt_0_alternative_readings_explain[_global_jazyk]);
@@ -13554,7 +13555,7 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 
 	short int label_zmena_vynimky = NIE; // špeciálne výnimky, kedy sa tiež berie pre vešpery modlitba z nasledujúceho dňa; pozri časť VYNIMKY
 
-	Log("Allocating memory...\n");
+	Log("rozbor_dna_s_modlitbou(): Allocating memory...\n");
 	// _local_modl_prve_vespery_ptr
 	if ((_local_modl_prve_vespery_ptr = (_type_1vespery*)malloc(sizeof(_type_1vespery))) == NULL) {
 		Log("  Not enough memory to allocate buffer for `_local_modl_prve_vespery_ptr'\n");
@@ -14052,17 +14053,17 @@ LABEL_NIE_INE_VESPERY:
 		LOG_ciara;
 		showPrayer(typ, modlitba, SHOW_TEMPLAT_MODLITBA, aj_navigacia);
 		LOG_ciara;
-		Log("...po návrate zo showPrayer(_global_modlitba == %s) vo funkcii rozbor_dna_s_modlitbou().\n", nazov_modlitby(_global_modlitba));
+		Log("rozbor_dna_s_modlitbou(): ...po návrate zo showPrayer(_global_modlitba == %s).\n", nazov_modlitby(_global_modlitba));
 	}// pre konkrétnu modlitbu
 
 LABEL_s_modlitbou_DEALLOCATE:
-	Log("Deallocating memory...\n");
+	Log("rozbor_dna_s_modlitbou(): Deallocating memory...\n");
 	Log("_local_modl_prve_vespery_ptr\n"); free(_local_modl_prve_vespery_ptr);
 	Log("_local_modl_1kompletorium_ptr\n"); free(_local_modl_1kompletorium_ptr);
 	Log("_local_modl_vespery_ptr\n"); free(_local_modl_vespery_ptr);
 	Log("_local_modl_kompletorium_ptr\n"); free(_local_modl_kompletorium_ptr);
 	Log("...done.\n");
-	Log("-- rozbor_dna_s_modlitbou(int, int, int, int): ret == %d\n", ret);
+	Log("rozbor_dna_s_modlitbou(int, int, int, int): ret == %d; end.\n", ret);
 } // rozbor_dna_s_modlitbou()
 
 void showAllPrayers(short int typ, short int den, short int mesiac, short int rok, short int poradie_svaty) {
@@ -20684,26 +20685,28 @@ int breviar_main(int argc, const char** argv) {
 
 			// setting global variable used for CZ hymns
 			if (je_CZ_hymny_k_volnemu_vyberu) {
-				sprintf(_special_anchor_prefix, "%s", CZ_HYMNUS_PREFIX);
-				sprintf(_special_anchor_postfix, "%s", CZ_HYMNUS_POSTFIX);
+				sprintf(_special_anchor_prefix_CZ_hymnus, "%s", CZ_HYMNUS_PREFIX);
+				sprintf(_special_anchor_postfix_CZ_hymnus_cezrok, "%s", CZ_HYMNUS_POSTFIX);
 			}
 			else {
-				mystrcpy(_special_anchor_prefix, STR_EMPTY, SMALL);
-				mystrcpy(_special_anchor_postfix, STR_EMPTY, SMALL);
+				mystrcpy(_special_anchor_prefix_CZ_hymnus, STR_EMPTY, SMALL);
+				mystrcpy(_special_anchor_postfix_CZ_hymnus_cezrok, STR_EMPTY, SMALL);
 			}
-			Log("_special_anchor_prefix == %s\n", _special_anchor_prefix);
-			Log("_special_anchor_postfix == %s\n", _special_anchor_postfix);
+			Log("_special_anchor_prefix_CZ_hymnus == %s\n", _special_anchor_prefix_CZ_hymnus);
+			Log("_special_anchor_postfix_CZ_hymnus_cezrok == %s\n", _special_anchor_postfix_CZ_hymnus_cezrok);
 
 			// setting gloval variable used for CZ alternative 2nd readings
 			if (je_alternativne_2citanie) {
-				sprintf(_special_anchor_prefix2, "%s", ALT_TEXT_PREFIX);
+				sprintf(_special_anchor_prefix_CZ_hymnus_CZ_2cit, "%s", ALT_TEXT_PREFIX);
 			}
 			else {
-				mystrcpy(_special_anchor_prefix2, STR_EMPTY, SMALL);
+				mystrcpy(_special_anchor_prefix_CZ_hymnus_CZ_2cit, STR_EMPTY, SMALL);
 			}
-			Log("_special_anchor_prefix2 == %s\n", _special_anchor_prefix2);
+			Log("_special_anchor_prefix_CZ_hymnus_CZ_2cit == %s\n", _special_anchor_prefix_CZ_hymnus_CZ_2cit);
 
 			Log("export_monthly_druh == %d\n", export_monthly_druh);
+
+			// setting global variable used for 1st & 2nd reading -- must be set AFTER the analysis of the year/day; currently multiple-times called in _add_special_anchor_postfix_two_years_cycle()
 
 			// rozparsovanie parametrov kvôli hlavičke
 			_main_LOG_to_Export("volám _rozparsuj_parametre_DEN_MESIAC_ROK(); ...\n");

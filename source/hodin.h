@@ -2540,14 +2540,14 @@ const char* html_text_opt_0_use_two_years_cycle_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char* html_text_opt_0_two_years_cycle_id[POCET_JAZYKOV + 1] =
+const char* html_text_opt_0_two_years_cycle_invert[POCET_JAZYKOV + 1] =
 {
-	"pre dvojročný cyklus vziať prvý resp. druhý rok",
-	"pro dvouroční cyklus vzít první nebo druhý rok",
-	"for two years cycle use first or second year",
+	"pre dvojročný cyklus vziať prvý resp. druhý rok inverzne",
+	"pro dvouroční cyklus vzít první nebo druhý rok inverzně",
+	"for two years cycle use first or second year inversely",
 	"",
 	"",
-	"pro dvouroční cyklus vzít první nebo druhý rok",
+	"pro dvouroční cyklus vzít první nebo druhý rok inverzně",
 	"",
 	"",
 	"",
@@ -2555,9 +2555,9 @@ const char* html_text_opt_0_two_years_cycle_id[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char* html_text_opt_0_two_years_cycle_id_explain[POCET_JAZYKOV + 1] =
+const char* html_text_opt_0_two_years_cycle_invert_explain[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Pre dvojročný cyklus prvých čítaní sa štandardne rešpektuje cyklus feriálneho lekcionára; tento prepínač to vymení.",
 	"",
 	"",
 	"",
