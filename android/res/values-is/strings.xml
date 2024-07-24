@@ -46,14 +46,14 @@
     <string name="first_vespers_buttons">Hnappur fyrir fyrsta aftansöng á sunnudögum og stórhátíðum á hátíðardegi</string>
     <string name="navigation">Leiðsöguhnappar í bænatextum</string>
     <string name="smart_buttons">Þrengri birting fyrir bænir</string>
-    <string name="night_mode">Nátthamur</string>
+    <string name="night_mode">Næturstilling</string>
     <string name="background_day_mode">Bakgrunns litur (dagshamur)</string>
-    <string name="background_night_mode">Bakgrunns litur (nátthamur)</string>
+    <string name="background_night_mode">Bakgrunns litur (næturstilling)</string>
     <string name="normal_font">Venjulegt letur (ekki feitletrað)</string>
     <string name="buttons_rounded_corners">Ávöl horn á hnöppum</string>
     <string name="buttons_order">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
     <string name="transparent_nav">Sýna leiðsöguörvar (hægra megin)</string>
-    <string name="transparent_nav_left">Leiðsöguörvar til vinstri</string>
+    <string name="transparent_nav_left">Leiðsöguörvar vinstra megin</string>
     <string name="font_select">Veldu leturgerð</string>
     <string name="default_color">(sjálfgefið)</string>
     <string name="default_font">(sjálfgefið)</string>
@@ -81,7 +81,7 @@
 
     <string name="fullscreenOn">Allur skjár</string>
 
-    <string name="nightmodeOn">Nátthamur</string>
+    <string name="nightmodeOn">Næturstilling</string>
     <string name="nightmodeOff">Dagshamur</string>
 
     <string name="onlyNonBoldFontOff">Leyfa feitletrun</string>

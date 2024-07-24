@@ -43,10 +43,15 @@ extern char _file[MAX_STR_AF_FILE]; // nazov súboru, napr. _1ne.htm
 extern char _file_pc[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania
 extern char _file_pc_tyzden[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania v zavislosti od tyzdna (obdobie cez rok)
 extern char _file_orig[MAX_STR_AF_FILE]; // nazov súboru, do ktorého sa v prípade kompletória dočasne odloží pôvodný súbor
+extern char _file_pc_two_years_cycle[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; tmp
 
-// "funkcie" na store/restore pôvodného filename
+// store/restore original filename (_file)
 #define file_name_zapamataj()	strcpy(_file_orig, _file);
 #define file_name_obnov()		strcpy(_file, _file_orig);
+
+// store/restore original filename for readings (_file_pc)
+#define file_pc_name_zapamataj()	strcpy(_file_orig, _file_pc);
+#define file_pc_name_obnov()		strcpy(_file_pc, _file_orig);
 
 extern void file_name_zaltar(short int den, short int tyzzal);
 extern void file_name_litobd(short int litobd);
@@ -199,7 +204,7 @@ extern void _set_zalm3(short int modlitba, const char* file, const char* anchor)
 
 extern void set_zalm(short int ktory, short int modlitba, const char* file, const char* anchor);
 
-extern void _add_special_anchor_postfix_two_years_cycle(); // uses global variable _anchor
+extern void _apply_anchor_filename_changes_for_two_years_cycle(); // uses global variable _anchor
 
 // pre posvätné čítanie: 1. čítanie; kedysi bolo: #define set_citanie1 _set_kcitanie
 extern void set_citanie1(short int modlitba, const char* file, const char* anchor);
@@ -1507,7 +1512,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 // postfixes for special cases (anchors)
 #define CZ_HYMNUS_POSTFIX       "_CZ"
-#define TWO_YEARS_CYCLE_POSTFIX "_D" // followed by 0 or 1
+#define TWO_YEARS_CYCLE_POSTFIX "_D" // followed by 1 or 2
 #define VELKONOCNA_PRIPONA      "VE"
 #define POSTNA_PRIPONA          "PO"
 #define CEZROCNA_PRIPONA        "CR"
@@ -1535,6 +1540,9 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define ANCHOR_ANTIFONA_VIG  "ANTVG"
 #define ANCHOR_EVANJELIUM    "EV"
 #define ANCHOR_UKON_KAJ      "UKONKAJ" // úkon kajúcnosti -- act of repentance
+
+// prefixes for special cases (filenames)
+#define TWO_YEARS_CYCLE_PREFIX "d" // followed by 1 or 2 and STR_UNDERSCORE
 
 // special identifiers + filename indentifiers (tuples)
 #define SPOM_PM_SOBOTA "SPMVS"

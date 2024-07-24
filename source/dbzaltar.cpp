@@ -825,12 +825,16 @@ void set_zalm(short int ktory, short int modlitba, const char* file, const char*
 
 void set_citanie1(short int modlitba, const char* file, const char* anchor) {
 	Log("set_citanie1(): begin...\n");
+
 	sprintf(_anchor, anchor);
-	// for ferial days, add postfix for two-years cycle of 1st readings (the condition will need refinement: e. g. free memories taking 1st reading from communia)
+	sprintf(_file_pc_two_years_cycle, file);
+
+	// for ferial days, add filename prefix & anchor postfix for two-years cycle of 1st readings (the condition will need refinement: e. g. free memories taking 1st reading from communia)
 	if (!(_je_global_den_slavnost || _je_global_den_sviatok)) {
-		_add_special_anchor_postfix_two_years_cycle();
+		_apply_anchor_filename_changes_for_two_years_cycle();
 	}
-	_set_kcitanie(modlitba, file, _anchor);
+	_set_kcitanie(modlitba, _file_pc_two_years_cycle, _anchor);
+
 	Log("set_citanie1(): end.\n");
 }// set_citanie1()
 
@@ -919,12 +923,16 @@ void _set_kresponz(short int modlitba, const char* file, const char* anchor) {
 
 void set_citanie2(short int modlitba, const char* file, const char* anchor) {
 	Log("set_citanie2(): begin...\n");
+
 	sprintf(_anchor, anchor);
-	// for ferial days, add postfix for two-years cycle of 2nd readings (the condition will need refinement)
+	sprintf(_file_pc_two_years_cycle, file);
+
+	// for ferial days, add filename prefix & anchor postfix for two-years cycle of 2nd readings (the condition will need refinement)
 	if (_global_poradie_svaty == 0) {
-		_add_special_anchor_postfix_two_years_cycle();
+		_apply_anchor_filename_changes_for_two_years_cycle();
 	}
-	_set_benediktus(modlitba, file, _anchor);
+	_set_benediktus(modlitba, _file_pc_two_years_cycle, _anchor);
+
 	Log("set_citanie2(): end.\n");
 }// set_citanie2()
 
@@ -1256,12 +1264,6 @@ void _set_chvalospev_vig_terezka_ocd(short int modlitba) {
 } // _set_chvalospev_vig_terezka_ocd()
 
 
-// files - nazvy suborov pre zaltar styroch tyzdnov
-char _file[MAX_STR_AF_FILE]; // nazov súboru, napr. _1ne.htm
-char _file_pc[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania
-char _file_pc_tyzden[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania v zavislosti od tyzdna (obdobie cez rok)
-char _file_orig[MAX_STR_AF_FILE]; // nazov súboru, do ktorého sa v prípade kompletória dočasne odloží pôvodný súbor
-
 // tyzzal == 1 .. 4, den == 0 (DEN_NEDELA) .. 6 (DEN_SOBOTA)
 void file_name_zaltar(short int den, short int tyzzal) {
 	sprintf(_file, "_%d%s.htm", tyzzal, nazov_dn_asci[den]);
@@ -1299,6 +1301,13 @@ void file_name_litobd_pc_tyzden(short int litobd, short int tyzden) {
 
 // anchors - nazvy kotiev pre zaltar styroch tyzdnov
 char _anchor[MAX_STR_AF_ANCHOR];
+
+// files - nazvy suborov pre zaltar styroch tyzdnov
+char _file[MAX_STR_AF_FILE]; // nazov súboru, napr. _1ne.htm
+char _file_pc[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania
+char _file_pc_tyzden[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania v zavislosti od tyzdna (obdobie cez rok)
+char _file_orig[MAX_STR_AF_FILE]; // nazov súboru, do ktorého sa v prípade kompletória dočasne odloží pôvodný súbor
+char _file_pc_two_years_cycle[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; two years cycle
 
 // tyzzal == 1 .. 4, den == 0 (DEN_NEDELA) .. 6 (DEN_SOBOTA), modlitba == MODL_..., anchor == ANCHOR_...
 char pismenko_modlitby(short int modlitba) {
@@ -1729,21 +1738,31 @@ void set_antifony(short int den, short int tyzzal, short int zvazok, short int m
 	Log("set_antifony(): koniec.\n");
 } // set_antifony()
 
-void _add_special_anchor_postfix_two_years_cycle() {
-	// setting global variable used for 1st & 2nd reading (the safest way to set up this variable [for postfix] here)
-	Log("je_two_years_cycle_readings == %d...\n", je_two_years_cycle_readings);
+void _apply_anchor_filename_changes_for_two_years_cycle() {
+	char _file_pc_tmp[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; local copy
+
+	// setting global variable used for 1st & 2nd reading (the safest way to set up this variables [both for filename prefix and anchor postfix] here)
+	Log("_apply_anchor_filename_changes_for_two_years_cycle(): begin; je_two_years_cycle_readings == %d...\n", je_two_years_cycle_readings);
 	if (je_two_years_cycle_readings) {
 		sprintf(_special_anchor_postfix_two_years_cycle, "%s%d", TWO_YEARS_CYCLE_POSTFIX, TWO_YEARS_CYCLE_ID);
+		sprintf(_special_file_prefix_two_years_cycle, "%s%d%s", TWO_YEARS_CYCLE_PREFIX, TWO_YEARS_CYCLE_ID, STR_UNDERSCORE);
 	}
 	else {
 		mystrcpy(_special_anchor_postfix_two_years_cycle, STR_EMPTY, SMALL);
+		mystrcpy(_special_file_prefix_two_years_cycle, STR_EMPTY, SMALL);
 	}
 	Log("_special_anchor_postfix_two_years_cycle == %s\n", _special_anchor_postfix_two_years_cycle);
+	Log("_special_file_prefix_two_years_cycle == %s\n", _special_file_prefix_two_years_cycle);
 
-	// using variable for postfix
-	Log("_add_special_anchor_postfix_two_years_cycle(): adding postfix %s...\n", _special_anchor_postfix_two_years_cycle);
+	// using variable for postfix (anchor)
 	strcat(_anchor, _special_anchor_postfix_two_years_cycle);
-}// _add_special_anchor_postfix_two_years_cycle()
+
+	// using variable for prefix (filename)
+	sprintf(_file_pc_tmp, "%s%s", _special_file_prefix_two_years_cycle, _file_pc_two_years_cycle);
+	strcpy(_file_pc_two_years_cycle, _file_pc_tmp);
+
+	Log("_apply_anchor_filename_changes_for_two_years_cycle(): added filename prefix %s and anchor postfix %s.\n", _special_file_prefix_two_years_cycle, _special_anchor_postfix_two_years_cycle);
+}// _apply_anchor_filename_changes_for_two_years_cycle()
 
 void set_kcitanie(short int den, short int tyzzal, short int modlitba, short int ktore /* default ktore = 2 */) {
 	// doplnené pre veľkonočnú oktávu (parameter "ktore")

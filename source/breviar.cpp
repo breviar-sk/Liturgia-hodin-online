@@ -399,6 +399,7 @@ char _special_anchor_prefix_CZ_hymnus[SMALL]; // used for CZ hymns
 char _special_anchor_postfix_CZ_hymnus_cezrok[SMALL]; // used for CZ hymns in Per Annum
 char _special_anchor_prefix_CZ_hymnus_CZ_2cit[SMALL]; // used for CZ 2nd readings
 char _special_anchor_postfix_two_years_cycle[SMALL]; // used for 1st & 2nd readings (two-years cycle)
+char _special_file_prefix_two_years_cycle[SMALL]; // used for 1st & 2nd readings (two-years cycle)
 
 char _global_export_navig_hore[SMALL] = DEFAULT_MONTH_EXPORT;
 char _global_export_navig_hore_month[SMALL] = DEFAULT_MONTH_EXPORT;
@@ -8283,8 +8284,8 @@ void xml_export_options(void) {
 				case 15: // BIT_OPT_5_OFF_DEF_PSALM_146_150
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON)"%ld" ELEM_END(XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON) "\n", BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, html_text_opt_5_zaver_knaz_diakon[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)));
 					break;
-				case 16: // BIT_OPT_5_INVITATORIUM_ANT
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_5_INVITATORIUM_ANT)"%ld" ELEM_END(XML_BIT_OPT_5_INVITATORIUM_ANT) "\n", BIT_OPT_5_INVITATORIUM_ANT, STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, /* ToDo: nazov_modlitby(MODL_INVITATORIUM) + ": " */ html_text_opt_6_alternatives_multi_antifona[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)));
+				case 16: // BIT_OPT_5_INVITAT_ANT_WRAP_ONLY
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY)"%ld" ELEM_END(XML_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY) "\n", BIT_OPT_5_INVITAT_ANT_WRAP_ONLY, STR_FORCE_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY, html_text_opt_5_invitat_ant_wrap_only[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITAT_ANT_WRAP_ONLY)));
 					break;
 				case 17: // BIT_OPT_5_OCR_34_HYMNS
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_5_OCR_34_HYMNS)"%ld" ELEM_END(XML_BIT_OPT_5_OCR_34_HYMNS) "\n", BIT_OPT_5_OCR_34_HYMNS, STR_FORCE_BIT_OPT_5_OCR_34_HYMNS, html_text_opt_5_OCR34Hymns[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS)));
@@ -11409,7 +11410,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_OFF_DEF_PSALM_146_150)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZAVER_KNAZ_DIAKON)) ? ANO : NIE);
-			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_INVITATORIUM_ANT, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITATORIUM_ANT)) ? ANO : NIE); // not used
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_INVITAT_ANT_WRAP_ONLY)) ? ANO : NIE); // not used
 		} // else: treba nastaviť hidden pre všetky options pre _global_force_opt
 
 		Export(HTML_TABLE_CELL_END "\n");
@@ -20706,7 +20707,7 @@ int breviar_main(int argc, const char** argv) {
 
 			Log("export_monthly_druh == %d\n", export_monthly_druh);
 
-			// setting global variable used for 1st & 2nd reading -- must be set AFTER the analysis of the year/day; currently multiple-times called in _add_special_anchor_postfix_two_years_cycle()
+			// setting global variable used for 1st & 2nd reading -- must be set AFTER the analysis of the year/day; currently multiple-times called in _apply_anchor_filename_changes_for_two_years_cycle()
 
 			// rozparsovanie parametrov kvôli hlavičke
 			_main_LOG_to_Export("volám _rozparsuj_parametre_DEN_MESIAC_ROK(); ...\n");
