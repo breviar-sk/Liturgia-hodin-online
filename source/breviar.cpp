@@ -1403,7 +1403,8 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 
 	char pom_mesiac[VERY_SMALL];
 	mystrcpy(pom_mesiac, STR_EMPTY, VERY_SMALL);
-	if (_global_den.mesiac >= MES_JAN && _global_den.mesiac <= MES_DEC) {
+	// _global_den.mesiac: 1--12; constants MES_JAN..MES_DEC: 0--11
+	if ((_global_den.mesiac - 1) >= MES_JAN && (_global_den.mesiac - 1) <= MES_DEC) {
 		sprintf(pom_mesiac, "%d", _global_den.mesiac);
 	}
 	else {
@@ -5921,12 +5922,14 @@ short int atoden(char *den) {
 //        inak vráti UNKNOWN_MESIAC
 short int atomes(char *mesiac) {
 	// sprintf(pom_MESIAC, "%d", cislo_mesiaca(pom_MESIAC));
-	if (equals(mesiac, STR_VSETKY_MESIACE))
+	if (equals(mesiac, STR_VSETKY_MESIACE)) {
 		return VSETKY_MESIACE;
+	}
 	// mesiac moze byt string "1" -- "12" alebo nazov_mesiaca(0 -- 11)
 	short int i = atoi(mesiac) - 1;
-	if ((i >= MES_JAN) && (i <= MES_DEC))
+	if ((i >= MES_JAN) && (i <= MES_DEC)) {
 		return i;
+	}
 	i = 0;
 	do {
 		if (equals(mesiac, nazov_mesiaca(i)) || equals(mesiac, nazov_mesiaca_asci(i))) {
@@ -8308,32 +8311,35 @@ void xml_export_options(void) {
 				case 1: // BASE_OPT_6_HYMNUS_MULTI
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_HYMNUS_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_HYMNUS_MULTI) "\n", BASE_OPT_6_HYMNUS_MULTI, STR_FORCE_PLACE_OPT_6_HYMNUS_MULTI, html_text_opt_6_alternatives_multi_hymnus[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_HYMNUS_MULTI)));
 					break;
-				case 2: // BASE_OPT_6_CITANIE2_MULTI
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_CITANIE2_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_CITANIE2_MULTI) "\n", BASE_OPT_6_CITANIE2_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI, html_text_opt_6_alternatives_multi_citanie[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_CITANIE2_MULTI)));
-					break;
-				case 3: // BASE_OPT_6_CITANIE1_MULTI
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_CITANIE1_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_CITANIE1_MULTI) "\n", BASE_OPT_6_CITANIE1_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE1_MULTI, html_text_opt_6_alternatives_multi_citanie[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_CITANIE1_MULTI)));
-					break;
-				case 4: // BASE_OPT_6_ANTIFONA_MULTI
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_ANTIFONA_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_ANTIFONA_MULTI) "\n", BASE_OPT_6_ANTIFONA_MULTI, STR_FORCE_PLACE_OPT_6_ANTIFONA_MULTI, html_text_opt_6_alternatives_multi_antifona[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_ANTIFONA_MULTI)));
-					break;
-				case 5: // BASE_OPT_6_MODLITBA_MULTI
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_MODLITBA_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_MODLITBA_MULTI) "\n", BASE_OPT_6_MODLITBA_MULTI, STR_FORCE_PLACE_OPT_6_MODLITBA_MULTI, html_text_opt_6_alternatives_multi_modlitba[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_MODLITBA_MULTI)));
-					break;
-				case 6: // BASE_OPT_6_PROSBY_MULTI
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_PROSBY_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_PROSBY_MULTI) "\n", BASE_OPT_6_PROSBY_MULTI, STR_FORCE_PLACE_OPT_6_PROSBY_MULTI, html_text_opt_6_alternatives_multi_prosby[_global_jazyk] /* ToDo: prekompletórium: html_text_opt_6_alternatives_multi_ukonkaj[_global_jazyk] */, (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PROSBY_MULTI)));
-					break;
-				case 7: // BASE_OPT_6_KCIT_RESP_MULTI
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_KCIT_RESP_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_KCIT_RESP_MULTI) "\n", BASE_OPT_6_KCIT_RESP_MULTI, STR_FORCE_PLACE_OPT_6_KCIT_RESP_MULTI, html_text_opt_6_alternatives_multi_kcit_resp[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_KCIT_RESP_MULTI)));
-					break;
-				case 8: // BASE_OPT_6_KRESP_MULTI
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_KRESP_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_KRESP_MULTI) "\n", BASE_OPT_6_KRESP_MULTI, STR_FORCE_PLACE_OPT_6_KRESP_MULTI, html_text_opt_6_alternatives_multi_kresp[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_KRESP_MULTI)));
-					break;
-				case 9: // BASE_OPT_6_PSALM_MULTI
+				case 2: // BASE_OPT_6_PSALM_MULTI
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_PSALM_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_PSALM_MULTI) "\n", BASE_OPT_6_PSALM_MULTI, STR_FORCE_PLACE_OPT_6_PSALM_MULTI, html_text_opt_6_alternatives_multi_psalm[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI)));
 					break;
-				case 10: // BASE_OPT_6_MARIA_ANT_MULTI
+				case 3: // BASE_OPT_6_CITANIE2_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_CITANIE2_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_CITANIE2_MULTI) "\n", BASE_OPT_6_CITANIE2_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE2_MULTI, html_text_opt_6_alternatives_multi_citanie[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_CITANIE2_MULTI)));
+					break;
+				case 4: // BASE_OPT_6_CITANIE1_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_CITANIE1_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_CITANIE1_MULTI) "\n", BASE_OPT_6_CITANIE1_MULTI, STR_FORCE_PLACE_OPT_6_CITANIE1_MULTI, html_text_opt_6_alternatives_multi_citanie[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_CITANIE1_MULTI)));
+					break;
+				case 5: // BASE_OPT_6_ANTIFONA_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_ANTIFONA_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_ANTIFONA_MULTI) "\n", BASE_OPT_6_ANTIFONA_MULTI, STR_FORCE_PLACE_OPT_6_ANTIFONA_MULTI, html_text_opt_6_alternatives_multi_antifona[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_ANTIFONA_MULTI)));
+					break;
+				case 6: // BASE_OPT_6_MODLITBA_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_MODLITBA_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_MODLITBA_MULTI) "\n", BASE_OPT_6_MODLITBA_MULTI, STR_FORCE_PLACE_OPT_6_MODLITBA_MULTI, html_text_opt_6_alternatives_multi_modlitba[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_MODLITBA_MULTI)));
+					break;
+				case 7: // BASE_OPT_6_PROSBY_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_PROSBY_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_PROSBY_MULTI) "\n", BASE_OPT_6_PROSBY_MULTI, STR_FORCE_PLACE_OPT_6_PROSBY_MULTI, html_text_opt_6_alternatives_multi_prosby[_global_jazyk] /* ToDo: pre kompletórium: html_text_opt_6_alternatives_multi_ukonkaj[_global_jazyk] */, (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PROSBY_MULTI)));
+					break;
+				case 8: // BASE_OPT_6_MARIA_ANT_MULTI
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_MARIA_ANT_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_MARIA_ANT_MULTI) "\n", BASE_OPT_6_MARIA_ANT_MULTI, STR_FORCE_PLACE_OPT_6_MARIA_ANT_MULTI, html_text_opt_6_alternatives_multi_maria_ant[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_MARIA_ANT_MULTI)));
+					break;
+				case 9: // BASE_OPT_6_KRESP_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_KRESP_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_KRESP_MULTI) "\n", BASE_OPT_6_KRESP_MULTI, STR_FORCE_PLACE_OPT_6_KRESP_MULTI, html_text_opt_6_alternatives_multi_kresp[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_KRESP_MULTI)));
+					break;
+				case 10: // BASE_OPT_6_KCIT_RESP_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_KCIT_RESP_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_KCIT_RESP_MULTI) "\n", BASE_OPT_6_KCIT_RESP_MULTI, STR_FORCE_PLACE_OPT_6_KCIT_RESP_MULTI, html_text_opt_6_alternatives_multi_kcit_resp[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_KCIT_RESP_MULTI)));
+					break;
+				case 11: // BASE_OPT_6_OTCENAS_UVOD_MULTI
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_PLACE_OPT_6_OTCENAS_UVOD_MULTI)"%ld" ELEM_END(XML_PLACE_OPT_6_OTCENAS_UVOD_MULTI) "\n", BASE_OPT_6_OTCENAS_UVOD_MULTI, STR_FORCE_PLACE_OPT_6_OTCENAS_UVOD_MULTI, html_text_opt_6_alternatives_multi_maria_ant[_global_jazyk], (isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_OTCENAS_UVOD_MULTI)));
 					break;
 				} // switch(j)
 			}// for j
@@ -9591,14 +9597,12 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 		}
 
 		// show-hide navigation
-		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROZNE_MOZNOSTI)) {
-			if (zobraz_odkaz_na_skrytie == ANO) {
-				char show[MAX_STR] = STR_EMPTY;
-				char hide[MAX_STR] = STR_EMPTY;
-				sprintf(show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
-				sprintf(hide, "%s %s", html_text_option_skryt[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
-				_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, (char *)HTML_DIV_SMALL_INLINE, (char *)HTML_CLASS_QUIET, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)STR_EMPTY, (char *)HTML_DIV_END);
-			}
+		if (zobraz_odkaz_na_skrytie == ANO) {
+			char show[MAX_STR] = STR_EMPTY;
+			char hide[MAX_STR] = STR_EMPTY;
+			sprintf(show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
+			sprintf(hide, "%s %s", html_text_option_skryt[_global_jazyk], html_text_navig_buttons[_global_jazyk]);
+			_export_link_show_hide(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS, show, hide, (char*)HTML_DIV_SMALL_INLINE, (char*)HTML_CLASS_QUIET, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)STR_EMPTY, (char*)HTML_DIV_END);
 		}
 		Export("</form>\n");
 
@@ -9686,7 +9690,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes, short in
 		*/
 		prilep_request_options(pom2, pom3);
 
-		_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_NULL, NIE, pom2, ANO);
+		_export_rozbor_dna_buttons_dni_dnes(EXPORT_DNES_DNES_NULL, NIE, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 	}
 	break;
 	case 1:
@@ -9699,7 +9703,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes, short in
 		// pre voice output zobrazujeme len "hore" pre daný deň
 		prilep_request_options(pom2, pom3);
 
-		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, NIE, pom2, ANO);
+		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, NIE /* som_v_tabulke */, pom2, ANO /* zobraz_odkaz_na_skrytie */);
 	}
 	break;
 	default:
@@ -9947,7 +9951,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes) {
 		}
 
 		// tlačidlo pre dnešok
-		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, som_v_tabulke, pom2, NIE);
+		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, som_v_tabulke, pom2, NIE /* zobraz_odkaz_na_skrytie */);
 
 		// vypočítanie nasledujúceho dňa
 		zmena_mesiaca = NIE;
@@ -10276,7 +10280,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes) 
 		// ---------------------------------------------------
 
 		// tlačidlo pre dnešok
-		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, som_v_tabulke, pom2, NIE);
+		_export_rozbor_dna_buttons_dni_dnes(dnes_dnes, som_v_tabulke, pom2, NIE /* zobraz_odkaz_na_skrytie */);
 
 		// ---------------------------------------------------
 
@@ -10626,6 +10630,7 @@ void _export_rozbor_dna_kalendar_core(short int typ) {
 
 	if ((typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE) && (typ != EXPORT_DNA_VIAC_DNI_TXT)) {
 		Log("--- _export_rozbor_dna_kalendar_core(): idem tlacit kalendar...\n");
+		Log("_global_den: den == %d, mesiac == %d, rok == %d...\n", _global_den.den, _global_den.mesiac, _global_den.rok);
 		short int i, j, k;
 
 		// hypertextový odkaz "(skryť)" sa neexportuje pre batch mód; nestačí porovnanie query_type != PRM_BATCH_MODE, pretože sa volá napr. "..\breviar.exe -i..\..\..\breviar.sk\include\ -qpdt -d6 -m1 -r2013 -u0 -e130106.htm -00 -15184 -2224 -30 -40 -jsk -M2 -I1301.htm"

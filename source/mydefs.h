@@ -1010,6 +1010,13 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_PLACE_OPT_6_MARIA_ANT_MULTI "of6cma"
 #endif
 
+#define FORCE_PLACE_OPT_6_OTCENAS_UVOD_MULTI 151
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_PLACE_OPT_6_OTCENAS_UVOD_MULTI "FORCE_PLACE_OPT_6_OTCENAS_UVOD_MULTI"
+#else
+#define STR_FORCE_PLACE_OPT_6_OTCENAS_UVOD_MULTI "of6pn"
+#endif
+
 // pre force option 5 jednotlivé bit-komponenty (parciálne voľby)
 
 #define FORCE_BIT_OPT_5_HYMNUS_KOMPL 101
@@ -1459,15 +1466,16 @@ extern short int query_type; // contains constants PRM_...
 
 // POCET_OPT_6_ALTERNATIVES_MULTI
 #define XML_PLACE_OPT_6_HYMNUS_MULTI            "PlaceOpt6HymnusMulti"
+#define XML_PLACE_OPT_6_PSALM_MULTI             "PlaceOpt6PsalmMulti"
 #define XML_PLACE_OPT_6_CITANIE2_MULTI          "PlaceOpt6Reading2Multi"
 #define XML_PLACE_OPT_6_CITANIE1_MULTI          "PlaceOpt6Reading1Multi"
 #define XML_PLACE_OPT_6_ANTIFONA_MULTI          "PlaceOpt6AntiphoneMulti"
 #define XML_PLACE_OPT_6_MODLITBA_MULTI          "PlaceOpt6CollectaMulti"
 #define XML_PLACE_OPT_6_PROSBY_MULTI            "PlaceOpt6PrecesMulti"
-#define XML_PLACE_OPT_6_KCIT_RESP_MULTI         "PlaceOpt6ShortReadingRespMulti"
-#define XML_PLACE_OPT_6_KRESP_MULTI             "PlaceOpt6ShortRespMulti"
-#define XML_PLACE_OPT_6_PSALM_MULTI             "PlaceOpt6PsalmMulti"
 #define XML_PLACE_OPT_6_MARIA_ANT_MULTI         "PlaceOpt6ComplMariaAntMulti"
+#define XML_PLACE_OPT_6_KRESP_MULTI             "PlaceOpt6ShortRespMulti"
+#define XML_PLACE_OPT_6_KCIT_RESP_MULTI         "PlaceOpt6ShortReadingRespMulti"
+#define XML_PLACE_OPT_6_OTCENAS_UVOD_MULTI      "PlaceOpt6OurLordIntroMulti"
 
 // element XML_MENU with sub-elements
 #define XML_MENU				"Menu"

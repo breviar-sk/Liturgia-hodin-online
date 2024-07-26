@@ -826,8 +826,8 @@ void set_zalm(short int ktory, short int modlitba, const char* file, const char*
 void set_citanie1(short int modlitba, const char* file, const char* anchor) {
 	Log("set_citanie1(): begin...\n");
 
-	sprintf(_anchor, anchor);
-	sprintf(_file_pc_two_years_cycle, file);
+	mystrcpy(_anchor, anchor, MAX_STR_AF_ANCHOR);
+	mystrcpy(_file_pc_two_years_cycle, file, MAX_STR_AF_FILE);
 
 	// for ferial days, add filename prefix & anchor postfix for two-years cycle of 1st readings (the condition will need refinement: e. g. free memories taking 1st reading from communia)
 	if (!(_je_global_den_slavnost || _je_global_den_sviatok)) {
@@ -924,8 +924,8 @@ void _set_kresponz(short int modlitba, const char* file, const char* anchor) {
 void set_citanie2(short int modlitba, const char* file, const char* anchor) {
 	Log("set_citanie2(): begin...\n");
 
-	sprintf(_anchor, anchor);
-	sprintf(_file_pc_two_years_cycle, file);
+	mystrcpy(_anchor, anchor, MAX_STR_AF_ANCHOR);
+	mystrcpy(_file_pc_two_years_cycle, file, MAX_STR_AF_FILE);
 
 	// for ferial days, add filename prefix & anchor postfix for two-years cycle of 2nd readings (the condition will need refinement)
 	if (_global_poradie_svaty == 0) {
