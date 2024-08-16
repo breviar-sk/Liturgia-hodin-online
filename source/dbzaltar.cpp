@@ -1761,6 +1761,30 @@ void _apply_anchor_filename_changes_for_two_years_cycle() {
 	sprintf(_file_pc_tmp, "%s%s", _special_file_prefix_two_years_cycle, _file_pc_two_years_cycle);
 	strcpy(_file_pc_two_years_cycle, _file_pc_tmp);
 
+	// in special case, map to one-year cycle (apply transformation mapping)
+	_struct_anchor_and_file orig;
+	strcpy(orig.file, _file_pc_two_years_cycle);
+	strcpy(orig.anchor, _anchor);
+
+	_struct_anchor_and_file dest = map_reading(orig);
+
+	if (equals(_file_pc_two_years_cycle, dest.file) && equals(_anchor, dest.anchor)) {
+		// no need to update
+		Log("no need to update file and anchor (no special mapping found)...\n");
+	}
+	else {
+		Log("updating file and anchor (special mapping found)...\n");
+#if defined(EXPORT_HTML_FILENAME_ANCHOR)
+		Export(HTML_COMMENT_BEGIN "(orig file `%s', anchor `%s')" HTML_COMMENT_END "\n", _file_pc_two_years_cycle, _anchor);
+#elif defined(EXPORT_HTML_FILENAME)
+		Export(HTML_COMMENT_BEGIN "(orig file `%s')" HTML_COMMENT_END "\n", _file_pc_two_years_cycle);
+#elif defined(EXPORT_HTML_ANCHOR)
+		Export(HTML_COMMENT_BEGIN "(orig anchor `%s')" HTML_COMMENT_END "\n", _anchor);
+#endif
+		strcpy(_file_pc_two_years_cycle, dest.file);
+		strcpy(_anchor, dest.anchor);
+	}
+
 	Log("_apply_anchor_filename_changes_for_two_years_cycle(): added filename prefix %s and anchor postfix %s.\n", _special_file_prefix_two_years_cycle, _special_anchor_postfix_two_years_cycle);
 }// _apply_anchor_filename_changes_for_two_years_cycle()
 
@@ -10944,6 +10968,79 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	Log("set_spolocna_cast(_global_opt[OPT_3_SPOLOCNA_CAST] == %s) -- end\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]));
 }// set_spolocna_cast();
 
+_struct_anchor_and_file_mapping mapping_two_years_cycle_readings[] = {
+	{ { "d2_adv1_pc.htm", "ADV11NEc_CIT1_D2" }, { "adv1_pc.htm", "ADV11NEc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV11NEc_CIT2_D2" }, { "adv1_pc.htm", "ADV11NEc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV11POc_CIT1_D2" }, { "adv1_pc.htm", "ADV11POc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV11POc_CIT2_D2" }, { "adv1_pc.htm", "ADV11POc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV11UTc_CIT1_D2" }, { "adv1_pc.htm", "ADV11UTc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV11UTc_CIT2_D2" }, { "adv1_pc.htm", "ADV11UTc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV11STRc_CIT1_D2" }, { "adv1_pc.htm", "ADV11STRc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV11STRc_CIT2_D2" }, { "adv1_pc.htm", "ADV11STRc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV11STVc_CIT1_D2" }, { "adv1_pc.htm", "ADV11STVc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV11STVc_CIT2_D2" }, { "adv1_pc.htm", "ADV11STVc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV11PIc_CIT1_D2" }, { "adv1_pc.htm", "ADV11PIc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV11PIc_CIT2_D2" }, { "adv1_pc.htm", "ADV11PIc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV11SOc_CIT1_D2" }, { "adv1_pc.htm", "ADV11SOc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV11SOc_CIT2_D2" }, { "adv1_pc.htm", "ADV11SOc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV12NEc_CIT1_D2" }, { "adv1_pc.htm", "ADV12NEc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV12NEc_CIT2_D2" }, { "adv1_pc.htm", "ADV12NEc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV12POc_CIT1_D2" }, { "adv1_pc.htm", "ADV12POc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV12POc_CIT2_D2" }, { "adv1_pc.htm", "ADV12POc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV12UTc_CIT1_D2" }, { "adv1_pc.htm", "ADV12UTc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV12UTc_CIT2_D2" }, { "adv1_pc.htm", "ADV12UTc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV12STRc_CIT1_D2" }, { "adv1_pc.htm", "ADV12STRc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV12STRc_CIT2_D2" }, { "adv1_pc.htm", "ADV12STRc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV12STVc_CIT1_D2" }, { "adv1_pc.htm", "ADV12STVc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV12STVc_CIT2_D2" }, { "adv1_pc.htm", "ADV12STVc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV12PIc_CIT1_D2" }, { "adv1_pc.htm", "ADV12PIc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV12PIc_CIT2_D2" }, { "adv1_pc.htm", "ADV12PIc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV12SOc_CIT1_D2" }, { "adv1_pc.htm", "ADV12SOc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV12SOc_CIT2_D2" }, { "adv1_pc.htm", "ADV12SOc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV13NEc_CIT1_D2" }, { "adv1_pc.htm", "ADV13NEc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV13NEc_CIT2_D2" }, { "adv1_pc.htm", "ADV13NEc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV13POc_CIT1_D2" }, { "adv1_pc.htm", "ADV13POc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV13POc_CIT2_D2" }, { "adv1_pc.htm", "ADV13POc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV13UTc_CIT1_D2" }, { "adv1_pc.htm", "ADV13UTc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV13UTc_CIT2_D2" }, { "adv1_pc.htm", "ADV13UTc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV13STRc_CIT1_D2" }, { "adv1_pc.htm", "ADV13STRc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV13STRc_CIT2_D2" }, { "adv1_pc.htm", "ADV13STRc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV13STVc_CIT1_D2" }, { "adv1_pc.htm", "ADV13STVc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV13STVc_CIT2_D2" }, { "adv1_pc.htm", "ADV13STVc_CIT2" } },
+	{ { "d2_adv1_pc.htm", "ADV13PIc_CIT1_D2" }, { "adv1_pc.htm", "ADV13PIc_CIT1" } },
+	{ { "d2_adv1_pc.htm", "ADV13PIc_CIT2_D2" }, { "adv1_pc.htm", "ADV13PIc_CIT2" } },
+};
+
+_struct_anchor_and_file map_reading(_struct_anchor_and_file orig) {
+	_struct_anchor_and_file dest = orig;
+	short int i = 0;
+	short dest_i = -1;
+	short int size = sizeof(mapping_two_years_cycle_readings) / sizeof(mapping_two_years_cycle_readings[0]); // https://stackoverflow.com/questions/4275921/getting-the-number-of-elements-in-a-struct
+
+	Log("map_reading(): begin (size == %d)...\n", size);
+
+	Log_filename_anchor(orig);
+
+	while (i < size) {
+		Log("i == %d...\n", i);
+		if (equals(mapping_two_years_cycle_readings[i].source.file, orig.file) && equals(mapping_two_years_cycle_readings[i].source.anchor, orig.anchor)) {
+			dest_i = i;
+			break;
+		}
+		i++;
+	}
+
+	if (dest_i > -1) {
+		dest = mapping_two_years_cycle_readings[i].dest;
+	}
+
+	Log_filename_anchor(dest);
+
+	Log("map_reading(): end.\n");
+
+	return dest;
+}; // map_reading()
+
 // NOTE: each item in the following arrays must not have 'count' more than 10 (values 0--9) because only one decimal place within option 6 value is dedicated
 
 _struct_lang_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
@@ -11501,6 +11598,8 @@ short int pocet_multi(char* _anchor, unsigned long long type) {
 	_struct_lang_cal_type_anchor_and_count* orig_propria = pocet_multi_lang_cal_type_anchor_count;
 	size = sizeof(pocet_multi_lang_cal_type_anchor_count);
 
+	Log("pocet_multi(): begin...\n");
+
 	_struct_lang_cal_type_anchor_and_count* endPtr_propria = ptr_propria + size / sizeof(orig_propria[0]);
 
 	i = 0;
@@ -11576,8 +11675,10 @@ short int pocet_multi(char* _anchor, unsigned long long type) {
 		i++;
 	}
 
+	Log("pocet_multi(): end.\n");
+
 	return count;
-}
+}// pocet_multi()
 
 // explicitly listed anchors which may have "printed edition text" equivalent
 _struct_lang_param_and_anchor printed_edition_lang_text_anchor[] = {
@@ -11652,7 +11753,7 @@ short int is_printed_edition_text(char* _anchor, char* _paramname) {
 	}
 
 	return FALSE;
-}
+}// is_printed_edition_text()
 
 #endif // __DBZALTAR_CPP_
 

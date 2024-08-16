@@ -2499,5 +2499,6 @@ extern const char* text_NOV_18_SCHP[POCET_JAZYKOV + 1];
 
 extern short int pocet_multi(char *_anchor, unsigned long long type);
 extern short int is_printed_edition_text(char* _anchor, char* _paramname);
+extern _struct_anchor_and_file map_reading(_struct_anchor_and_file orig);
 
 #endif // __DBZALTAR_H_

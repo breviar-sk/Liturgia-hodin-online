@@ -177,11 +177,18 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 
 #define MAX_STR_AF_FILE   64
 #define MAX_STR_AF_ANCHOR 32
-struct _anchor_and_file{
+
+struct _anchor_and_file {
 	char file[MAX_STR_AF_FILE];
 	char anchor[MAX_STR_AF_ANCHOR];
 };
 typedef struct _anchor_and_file _struct_anchor_and_file;
+
+struct _anchor_and_file_mapping {
+	_struct_anchor_and_file source;
+	_struct_anchor_and_file dest;
+};
+typedef struct _anchor_and_file_mapping _struct_anchor_and_file_mapping;
 
 #define rchvalospev  zalm2
 #define vchvalospev  zalm3
