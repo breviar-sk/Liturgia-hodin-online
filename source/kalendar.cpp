@@ -21836,8 +21836,10 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
-				if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)) // v slovenskom breviári má vlastný hymnus, v českom nie; 2008-09-09; v dominikánskom áno; 2009-07-09
+				// v českom nemá vlastný hymnus
+				if (_global_jazyk != JAZYK_CZ) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
@@ -21846,8 +21848,10 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
-				if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ_OP)) // v slovenskom breviári má vlastný hymnus, v českom nie; 2008-09-09; v dominikánskom áno; 2009-07-09
+				// v českom nemá vlastný hymnus
+				if (_global_jazyk != JAZYK_CZ) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
 

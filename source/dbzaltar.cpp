@@ -10969,6 +10969,7 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 }// set_spolocna_cast();
 
 _struct_anchor_and_file_mapping mapping_two_years_cycle_readings[] = {
+	{ { "d1_adv1_pc.htm", "ADV13UTc_CIT1_D1" }, { "19cezrok_pc.htm", "OCR19STRc_CIT1" } },
 	{ { "d2_adv1_pc.htm", "ADV11NEc_CIT1_D2" }, { "adv1_pc.htm", "ADV11NEc_CIT1" } },
 	{ { "d2_adv1_pc.htm", "ADV11NEc_CIT2_D2" }, { "adv1_pc.htm", "ADV11NEc_CIT2" } },
 	{ { "d2_adv1_pc.htm", "ADV11POc_CIT1_D2" }, { "adv1_pc.htm", "ADV11POc_CIT1" } },
