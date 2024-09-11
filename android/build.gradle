@@ -4,7 +4,7 @@ buildscript {
     google()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:8.1.0'
+    classpath 'com.android.tools.build:gradle:8.4.0'
   }
 }
 
@@ -41,12 +41,12 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
   namespace 'sk.breviar.android'
 
-  compileSdkVersion 33
+  compileSdkVersion 34
   
   defaultConfig {
-    targetSdkVersion 33
+    targetSdkVersion 34
       // TODO: api 33 has changes in notifications: POST_NOTIFICATIONS permission
-    minSdkVersion 14
+    minSdkVersion 21
     ndk {
       // Tells Gradle to build outputs for the following ABIs and package
       // them into your APK.

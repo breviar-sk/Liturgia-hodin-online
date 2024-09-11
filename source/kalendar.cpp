@@ -18932,7 +18932,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 
 		_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
 		mystrcpy(_global_svaty(1).meno, text_JUL_26[_global_jazyk], MENO_SVIATKU);
-		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_MANZ, MODL_SPOL_CAST_SV_ZENA_MANZ, MODL_SPOL_CAST_SV_MUZ_VIACERI);
+		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_MANZ);
 		_global_svaty(1).farba = LIT_FARBA_BIELA;
 		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 		if (_global_jazyk == JAZYK_HU) {
