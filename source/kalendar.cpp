@@ -23833,7 +23833,14 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			else {
 				mystrcpy(_global_svaty(1).meno, text_SEP_07[_global_jazyk], MENO_SVIATKU);
 			}
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
+
+			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
+				// oslavuje sa len jeden zo svätcov
+				_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
+			}
+			else {
+				_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
+			}
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
 		}// SK, CZ, CZOP, HU only
 
