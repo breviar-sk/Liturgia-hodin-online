@@ -19008,8 +19008,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_VIACERI);
 			}
 			else {
-				// český breviář má: spol. texty o duchovních pastýřech; český breviár nemá možnosť pre duch. pastierov "pre viacerých" -- MODL_SPOL_CAST_DUCH_PAST_VIACERI
-				_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+				_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_VIACERI);
 			}
 			_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
 		}// SK, CZ, HU only
