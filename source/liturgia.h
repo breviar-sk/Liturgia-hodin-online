@@ -1298,11 +1298,7 @@ const short int supported_calendars_count[POCET_JAZYKOV + 1] =
 	/* ToDo */ 1, // JAZYK_LA
 	/* ToDo */ 1, // JAZYK_UNDEF
 	1, // JAZYK_CZ_OP
-#if defined(DEBUG) || defined(OS_Windows_Ruby)
 	6, // JAZYK_HU
-#else
-	5, // JAZYK_HU
-#endif
 	1, // JAZYK_RU
 	1, // JAZYK_BY
 	1, // JAZYK_IS
