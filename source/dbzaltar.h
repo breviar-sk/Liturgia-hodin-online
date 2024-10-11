@@ -1380,6 +1380,15 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	_vlastna_cast_modlitba;\
 }
 
+#define _vlastna_cast_mcd_ant {\
+	modlitba = MODL_PREDPOLUDNIM;\
+	_vlastna_cast_antifony_rovnake;\
+	modlitba = MODL_NAPOLUDNIE;\
+	_vlastna_cast_antifony_rovnake;\
+	modlitba = MODL_POPOLUDNI;\
+	_vlastna_cast_antifony_rovnake;\
+}
+
 #define _vlastna_cast_mcd_full {\
 	modlitba = MODL_PREDPOLUDNIM;\
 	_vlastna_cast_hymnus(modlitba, _global_den.litobd);\

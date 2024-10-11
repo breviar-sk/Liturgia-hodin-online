@@ -20664,6 +20664,12 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				if (query_type != PRM_DETAILY)
 					set_spolocna_cast(sc, poradie_svaty);
 
+				// CZ: pre slávenie s vyšším stupňom nastavíme niektoré časti modlitby
+				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM) && (_je_global_den_slavnost)) {
+					modlitba = MODL_PRVE_VESPERY;
+					_vlastna_cast_full(modlitba);
+				}
+
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
 
@@ -20687,6 +20693,11 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				_vlastna_cast_full(modlitba);
 
 				_vlastna_cast_mcd_kcitresp_modl; // Antifóny a žalmy sú z bežného dňa. Krátke čítanie je zo spoločnej časti na sviatky panien. Modlitba ako na ranné chvály.
+
+				// CZ: pre slávenie s vyšším stupňom nastavíme niektoré časti modlitby
+				if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM) && (_je_global_den_slavnost)) {
+					_vlastna_cast_mcd_ant;
+				}
 
 				break;
 			}
@@ -31732,13 +31743,18 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 					}
 				}
 
+				if ((_global_jazyk == JAZYK_CZ) && (_je_global_den_slavnost)) {
+					modlitba = MODL_PRVE_VESPERY;
+					_vlastna_cast_full_okrem_kcit_kresp_a_prosieb(modlitba);
+				}
+
 				if (_global_jazyk == JAZYK_CZ) {
 					modlitba = MODL_INVITATORIUM;
 					_vlastna_cast_antifona_inv;
 				}
 
 				modlitba = MODL_POSV_CITANIE;
-				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV))) {
+				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV) || ((_global_kalendar == KALENDAR_CZ_OFM) && (_je_global_den_slavnost || _je_global_den_sviatok)))) {
 					_vlastna_cast_full(modlitba);
 				}
 				else {
@@ -31747,7 +31763,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				}
 
 				modlitba = MODL_RANNE_CHVALY;
-				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV))) {
+				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV) || ((_global_kalendar == KALENDAR_CZ_OFM) && (_je_global_den_slavnost || _je_global_den_sviatok)))) {
 					_vlastna_cast_full(modlitba);
 				}
 				else if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM)) {
@@ -31759,7 +31775,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				}
 
 				modlitba = MODL_VESPERY;
-				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV))) {
+				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV) || ((_global_kalendar == KALENDAR_CZ_OFM) && (_je_global_den_slavnost || _je_global_den_sviatok)))) {
 					_vlastna_cast_full(modlitba);
 				}
 				else if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OFM)) {
@@ -31770,8 +31786,11 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 					_vlastna_cast_modlitba;
 				}
 
-				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV))) {
+				if ((_global_jazyk == JAZYK_CZ) && ((_global_kalendar == KALENDAR_CZ_OFMCAP) || (_global_kalendar == KALENDAR_CZ_OFMCONV) || ((_global_kalendar == KALENDAR_CZ_OFM) && (_je_global_den_slavnost || _je_global_den_sviatok)))) {
 					_vlastna_cast_mcd_full_okrem_ant;
+					if (_je_global_den_slavnost) {
+						_vlastna_cast_mcd_ant;
+					}
 				}
 
 				break;
