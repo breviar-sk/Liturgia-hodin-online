@@ -750,12 +750,25 @@ public class Breviar extends AppCompatActivity
       syncPreferences();
     }
 
+    void registerTtsReceiverOld() {
+      registerReceiver(tts_receiver, new IntentFilter(TtsService.TTS_UPDATE_ACTION));
+    }
+
+    void registerTtsReceiverNew() {
+      registerReceiver(tts_receiver, new
+          IntentFilter(TtsService.TTS_UPDATE_ACTION), RECEIVER_NOT_EXPORTED);
+    }
+
     @Override
     synchronized protected void onStart(){
       if (stopped) {
         stopped = false;
         Log.v("breviar", "Registering receiver");
-        registerReceiver(tts_receiver, new IntentFilter(TtsService.TTS_UPDATE_ACTION));
+        if (Build.VERSION.SDK_INT < 26) {
+          registerTtsReceiverOld();
+        } else {
+          registerTtsReceiverNew();
+        }
         startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_REQUEST_UPDATE));
       }
       Log.v("breviar", "onStart");
@@ -1026,7 +1039,8 @@ public class Breviar extends AppCompatActivity
 
         case R.id.menu_alarms:
           if (!checkNotificationPermission(item_id)) break;
-          startActivity(new Intent("sk.breviar.android.ALARMS"));
+          startActivity(new Intent("sk.breviar.android.ALARMS")
+              .setPackage(getPackageName()));
           break;
 
         case R.id.speak_toggle:

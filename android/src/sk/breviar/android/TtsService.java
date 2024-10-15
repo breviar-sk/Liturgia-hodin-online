@@ -228,9 +228,11 @@ public class TtsService extends Service
                  .setVibrate(new long[]{0l, 0l});
 
           if (old_public_state == TtsState.READY) {
-            startForeground(
-                BreviarApp.NOTIFY_TTS_ID,
-                builder.build());
+            if (Build.VERSION.SDK_INT < 29) {
+              startForegroundOld(builder.build());
+            } else {
+              startForegroundNew(builder.build());
+            }
           } else {
             ((NotificationManager)getSystemService(NOTIFICATION_SERVICE)).notify(
                 BreviarApp.NOTIFY_TTS_ID, builder.build());
@@ -240,8 +242,20 @@ public class TtsService extends Service
     }
   }
 
+  void startForegroundOld(Notification n) {
+    startForeground(BreviarApp.NOTIFY_TTS_ID, n);
+  }
+
+  void startForegroundNew(Notification n) {
+    startForeground(BreviarApp.NOTIFY_TTS_ID, n,
+        android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
+  }
+
   void broadcastUpdate() {
-    sendBroadcast(new Intent(TTS_UPDATE_ACTION).putExtra("state", publicState()));
+    Log.v("breviar", "TtsService: sending broadcast");
+    sendBroadcast(new Intent(TTS_UPDATE_ACTION)
+        .setPackage(getPackageName())
+        .putExtra("state", publicState()));
   }
 
   // Bridge from provided interfaces.
