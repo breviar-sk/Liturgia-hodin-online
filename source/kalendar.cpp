@@ -26985,7 +26985,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					_set_zalmy_ofm_frantisek(modlitba);
 
 					modlitba = MODL_POSV_CITANIE;
-					_vlastna_cast_full_okrem_antifon(modlitba);
+					_vlastna_cast_full(modlitba);
 					_set_zalmy_ofm_frantisek(modlitba);
 
 					modlitba = MODL_VESPERY;

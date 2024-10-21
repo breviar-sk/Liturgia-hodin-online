@@ -4542,10 +4542,10 @@ void _set_zalmy_ofm_frantisek(short int modlitba) {
 	}
 	else if (modlitba == MODL_POSV_CITANIE) {
 		if (_global_jazyk == JAZYK_CZ) {
-			_set_zalmy_pc_1_8_15(modlitba); // Žl 15 (14) (CZ)
+			_set_zalmy_pc_1_8_15(modlitba); // Žl 15 (14) (CZ OFM)
 		}
 		else {
-			_set_zalmy_pc_1_8_16(modlitba); // Ž 16 (SK, HU)
+			_set_zalmy_pc_1_8_16(modlitba); // Ž 16 (SK, HU, také CZ OP pro 04OKT)
 		}
 	}
 	Log("_set_zalmy_ofm_frantisek(%s) -- end\n", nazov_modlitby(modlitba));
