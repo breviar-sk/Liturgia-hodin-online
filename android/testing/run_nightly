@@ -43,7 +43,9 @@ LOCK=/tmp/breviar-nightlies.lck
   mkdir -p $ROOT/$DATE
   LOG=$ROOT/$DATE/log.txt
 
-  echo "Git fetch and merge."
+  ## Regular build
+  echo "Regular build: Git fetch and merge."
+  git checkout master
   if ( git fetch --all && git merge juraj/master ) >>$LOG 2>&1; then
     echo "Git merge successful."
   else
@@ -52,6 +54,7 @@ LOCK=/tmp/breviar-nightlies.lck
     cat $LOG
     exit 0
   fi
+  git push
 
   COMMIT=`git branch -v --no-abbrev | egrep "^. master" | sed "s/. master *//;s/ .*//"`
   echo $COMMIT >$ROOT/$DATE/commit.txt
@@ -76,6 +79,44 @@ LOCK=/tmp/breviar-nightlies.lck
   echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar.aab"
   echo "Nightly debug package is at: breviar.kralovic.org:$ROOT/$DATE/breviar-debug.apk"
   echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar-debug.apk"
+
+  ## Oldies build
+  echo "Oldies build: Git fetch and merge."
+  git checkout old_devices
+  if ( git merge master ) >>$LOG 2>&1; then
+    echo "Git merge successful."
+  else
+    echo "Git merge failed! Log follows:"
+    echo
+    cat $LOG
+    exit 0
+  fi
+  git push
+
+  COMMIT=`git branch -v --no-abbrev | egrep "^. master" | sed "s/. master *//;s/ .*//"`
+  echo $COMMIT >$ROOT/$DATE/commit_oldies.txt
+
+  if (./build-assets && $GRADLE clean && $GRADLE assembleDebug && \
+      $GRADLE assembleRelease && $GRADLE bundleRelease ) >>$LOG 2>&1; then
+    echo "Build finished successfully."
+  else
+    echo "Build failed! Log follows:"
+    echo
+    cat $LOG
+    exit 0
+  fi
+
+  cp build/outputs/apk/release/android-release.apk $ROOT/$DATE/breviar_oldies.apk
+  cp build/outputs/bundle/release/android-release.aab $ROOT/$DATE/breviar_oldies.aab
+  cp build/outputs/apk/debug/android-debug.apk $ROOT/$DATE/breviar-debug_oldies.apk
+  echo "Nightly oldies package is at: breviar.kralovic.org:$ROOT/$DATE/breviar_oldies.apk"
+  echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar_oldies.apk"
+  echo "Nightly bundle is at: breviar.kralovic.org:$ROOT/$DATE/breviar_oldies.aab"
+  echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar_oldies.aab"
+  echo "Nightly debug package is at: breviar.kralovic.org:$ROOT/$DATE/breviar-debug_oldies.apk"
+  echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar-debug_oldies.apk"
+
+  git checkout master
 
   ### Emulator is not that easy on FreeBSD, it has rather heavyweight linux dependencies (e.g. libsystemd, Qt5...)
   #start_emulator android_24

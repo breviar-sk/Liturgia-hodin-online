@@ -1,15 +1,10 @@
-diff -ur katechezy.htm katechezy.htm
---- katechezy.htm	2012-01-04 13:32:59.859458543 +0100
-+++ katechezy.htm	2011-10-20 00:29:57.885779640 +0200
-@@ -11,10 +11,9 @@
- <body>
+--- katechezy.htm     	2024-09-15 01:44:02.582470021 +0200
++++ katechezy.htm	2024-10-20 23:33:08.260246478 +0200
+@@ -13,7 +13,6 @@
+ <div id="sidemenuContent"></div>
  <center>
  <h2>Katechézy k žalmom a chválospevom</h2>
 -^ <a href="main.htm">Hlavná stránka</a>
  </center>
- <p>&nbsp;
--<table width="66%" align="center">
-+<table width="100%" align="center">
- <tr><td>
+ 
  <p>Táto stránka obsahuje katechézy pápežov Jána Pavla II. a Benedikta XVI., ktoré boli prednesené
- na všeobecných audienciách pre veriacich (na Námestí svätého Petra, v aule Pavla VI. resp. na iných miestach)
