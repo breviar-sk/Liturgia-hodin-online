@@ -824,16 +824,25 @@ void set_zalm(short int ktory, short int modlitba, const char* file, const char*
 } // set_zalm()
 
 void set_citanie1(short int modlitba, const char* file, const char* anchor) {
-	Log("set_citanie1(): begin...\n");
+	Log("set_citanie1(): begin [file == '%s', _file_pc_two_years_cycle_cit1 == '%s']...\n", file, _file_pc_two_years_cycle_cit1);
+
+	// Log("_global_modl_posv_citanie.citanie1.file == %s...\n", _global_modl_posv_citanie.citanie1.file);
 
 	mystrcpy(_anchor, anchor, MAX_STR_AF_ANCHOR);
-	mystrcpy(_file_pc_two_years_cycle, file, MAX_STR_AF_FILE);
+	mystrcpy(_file_pc_two_years_cycle_cit1, file, MAX_STR_AF_FILE);
+
+	// Log("set_citanie1(): after mystrcpy [_file_pc_two_years_cycle_cit1 == '%s']...\n", _file_pc_two_years_cycle_cit1);
 
 	// for ferial days, add filename prefix & anchor postfix for two-years cycle of 1st readings (the condition will need refinement: e. g. free memories taking 1st reading from communia)
 	if (!(_je_global_den_slavnost || _je_global_den_sviatok)) {
-		_apply_anchor_filename_changes_for_two_years_cycle();
+		_apply_anchor_filename_changes_for_two_years_cycle(1);
 	}
-	_set_kcitanie(modlitba, _file_pc_two_years_cycle, _anchor);
+	// Log("set_citanie1(): before _set_kcitanie [file == '%s'; _file_pc_two_years_cycle_cit1 == '%s']...\n", file, _file_pc_two_years_cycle_cit1);
+	// Log("_global_modl_posv_citanie.citanie1.file == %s...\n", _global_modl_posv_citanie.citanie1.file);
+
+	_set_kcitanie(modlitba, _file_pc_two_years_cycle_cit1, _anchor);
+
+	// Log("_global_modl_posv_citanie.citanie1.file == %s...\n", _global_modl_posv_citanie.citanie1.file);
 
 	Log("set_citanie1(): end.\n");
 }// set_citanie1()
@@ -925,13 +934,13 @@ void set_citanie2(short int modlitba, const char* file, const char* anchor) {
 	Log("set_citanie2(): begin...\n");
 
 	mystrcpy(_anchor, anchor, MAX_STR_AF_ANCHOR);
-	mystrcpy(_file_pc_two_years_cycle, file, MAX_STR_AF_FILE);
+	mystrcpy(_file_pc_two_years_cycle_cit2, file, MAX_STR_AF_FILE);
 
 	// for ferial days, add filename prefix & anchor postfix for two-years cycle of 2nd readings (the condition will need refinement)
 	if (_global_poradie_svaty == 0) {
-		_apply_anchor_filename_changes_for_two_years_cycle();
+		_apply_anchor_filename_changes_for_two_years_cycle(2);
 	}
-	_set_benediktus(modlitba, _file_pc_two_years_cycle, _anchor);
+	_set_benediktus(modlitba, _file_pc_two_years_cycle_cit2, _anchor);
 
 	Log("set_citanie2(): end.\n");
 }// set_citanie2()
@@ -1307,7 +1316,8 @@ char _file[MAX_STR_AF_FILE]; // nazov súboru, napr. _1ne.htm
 char _file_pc[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania
 char _file_pc_tyzden[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania v zavislosti od tyzdna (obdobie cez rok)
 char _file_orig[MAX_STR_AF_FILE]; // nazov súboru, do ktorého sa v prípade kompletória dočasne odloží pôvodný súbor
-char _file_pc_two_years_cycle[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; two years cycle
+char _file_pc_two_years_cycle_cit1[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; two years cycle; citanie1
+char _file_pc_two_years_cycle_cit2[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; two years cycle; citanie2
 
 // tyzzal == 1 .. 4, den == 0 (DEN_NEDELA) .. 6 (DEN_SOBOTA), modlitba == MODL_..., anchor == ANCHOR_...
 char pismenko_modlitby(short int modlitba) {
@@ -1738,54 +1748,72 @@ void set_antifony(short int den, short int tyzzal, short int zvazok, short int m
 	Log("set_antifony(): koniec.\n");
 } // set_antifony()
 
-void _apply_anchor_filename_changes_for_two_years_cycle() {
+void _apply_anchor_filename_changes_for_two_years_cycle(short int ktore) {
 	char _file_pc_tmp[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; local copy
 
-	// setting global variable used for 1st & 2nd reading (the safest way to set up this variables [both for filename prefix and anchor postfix] here)
-	Log("_apply_anchor_filename_changes_for_two_years_cycle(): begin; je_two_years_cycle_readings == %d...\n", je_two_years_cycle_readings);
+	if (ktore < 1 || ktore > 2) {
+		Log("_apply_anchor_filename_changes_for_two_years_cycle(): wrong input; error...\n");
+		return;
+	}
+
 	if (je_two_years_cycle_readings) {
+
+		// setting global variable used for 1st & 2nd reading (the safest way to set up this variables [both for filename prefix and anchor postfix] here)
+		Log("_apply_anchor_filename_changes_for_two_years_cycle(ktore == %d): begin; je_two_years_cycle_readings == %d...\n", ktore, je_two_years_cycle_readings);
 		sprintf(_special_anchor_postfix_two_years_cycle, "%s%d", TWO_YEARS_CYCLE_POSTFIX, TWO_YEARS_CYCLE_ID);
 		sprintf(_special_file_prefix_two_years_cycle, "%s%d%s", TWO_YEARS_CYCLE_PREFIX, TWO_YEARS_CYCLE_ID, STR_UNDERSCORE);
-	}
-	else {
-		mystrcpy(_special_anchor_postfix_two_years_cycle, STR_EMPTY, SMALL);
-		mystrcpy(_special_file_prefix_two_years_cycle, STR_EMPTY, SMALL);
-	}
-	Log("_special_anchor_postfix_two_years_cycle == %s\n", _special_anchor_postfix_two_years_cycle);
-	Log("_special_file_prefix_two_years_cycle == %s\n", _special_file_prefix_two_years_cycle);
 
-	// using variable for postfix (anchor)
-	strcat(_anchor, _special_anchor_postfix_two_years_cycle);
+		Log("_special_anchor_postfix_two_years_cycle == %s\n", _special_anchor_postfix_two_years_cycle);
+		Log("_special_file_prefix_two_years_cycle == %s\n", _special_file_prefix_two_years_cycle);
 
-	// using variable for prefix (filename)
-	sprintf(_file_pc_tmp, "%s%s", _special_file_prefix_two_years_cycle, _file_pc_two_years_cycle);
-	strcpy(_file_pc_two_years_cycle, _file_pc_tmp);
+		// using variable for postfix (anchor)
+		strcat(_anchor, _special_anchor_postfix_two_years_cycle);
 
-	// in special case, map to one-year cycle (apply transformation mapping)
-	_struct_anchor_and_file orig;
-	strcpy(orig.file, _file_pc_two_years_cycle);
-	strcpy(orig.anchor, _anchor);
+		// using variable for prefix (filename)
+		sprintf(_file_pc_tmp, "%s%s", _special_file_prefix_two_years_cycle, (ktore == 1) ? _file_pc_two_years_cycle_cit1 : _file_pc_two_years_cycle_cit2);
+		if (ktore == 1) {
+			strcpy(_file_pc_two_years_cycle_cit1, _file_pc_tmp);
+		}
+		else {
+			strcpy(_file_pc_two_years_cycle_cit2, _file_pc_tmp);
+		}
 
-	_struct_anchor_and_file dest = map_reading(orig);
+		// in special case, map to one-year cycle (apply transformation mapping)
+		_struct_anchor_and_file orig;
+		strcpy(orig.file, (ktore == 1) ? _file_pc_two_years_cycle_cit1 : _file_pc_two_years_cycle_cit2);
+		strcpy(orig.anchor, _anchor);
 
-	if (equals(_file_pc_two_years_cycle, dest.file) && equals(_anchor, dest.anchor)) {
-		// no need to update
-		Log("no need to update file and anchor (no special mapping found)...\n");
-	}
-	else {
-		Log("updating file and anchor (special mapping found)...\n");
+		_struct_anchor_and_file dest = map_reading(orig);
+
+		if ((((ktore == 1) && equals(_file_pc_two_years_cycle_cit1, dest.file))
+			|| ((ktore == 2) && equals(_file_pc_two_years_cycle_cit2, dest.file)))
+			&& equals(_anchor, dest.anchor)) {
+			// no need to update
+			Log("no need to update file and anchor (no special mapping found)...\n");
+		}
+		else {
+			Log("updating file and anchor (special mapping found)...\n");
 #if defined(EXPORT_HTML_FILENAME_ANCHOR)
-		Export(HTML_COMMENT_BEGIN "(orig file `%s', anchor `%s')" HTML_COMMENT_END "\n", _file_pc_two_years_cycle, _anchor);
+			Export(HTML_COMMENT_BEGIN "(orig file `%s', anchor `%s')" HTML_COMMENT_END "\n", ((ktore == 1) && equals(_file_pc_two_years_cycle_cit1, dest.file)), _anchor);
 #elif defined(EXPORT_HTML_FILENAME)
-		Export(HTML_COMMENT_BEGIN "(orig file `%s')" HTML_COMMENT_END "\n", _file_pc_two_years_cycle);
+			Export(HTML_COMMENT_BEGIN "(orig file `%s')" HTML_COMMENT_END "\n", ((ktore == 1) && equals(_file_pc_two_years_cycle_cit1, dest.file)));
 #elif defined(EXPORT_HTML_ANCHOR)
-		Export(HTML_COMMENT_BEGIN "(orig anchor `%s')" HTML_COMMENT_END "\n", _anchor);
+			Export(HTML_COMMENT_BEGIN "(orig anchor `%s')" HTML_COMMENT_END "\n", _anchor);
 #endif
-		strcpy(_file_pc_two_years_cycle, dest.file);
-		strcpy(_anchor, dest.anchor);
-	}
+			if (ktore == 1) {
+				strcpy(_file_pc_two_years_cycle_cit1, dest.file);
+			}
+			else {
+				strcpy(_file_pc_two_years_cycle_cit2, dest.file);
+			}
+			strcpy(_anchor, dest.anchor);
+		}
 
-	Log("_apply_anchor_filename_changes_for_two_years_cycle(): added filename prefix %s and anchor postfix %s.\n", _special_file_prefix_two_years_cycle, _special_anchor_postfix_two_years_cycle);
+		Log("_apply_anchor_filename_changes_for_two_years_cycle(): added filename prefix %s and anchor postfix %s.\n", _special_file_prefix_two_years_cycle, _special_anchor_postfix_two_years_cycle);
+	}
+	else {
+		Log("_apply_anchor_filename_changes_for_two_years_cycle(ktore == %d): skipped.\n", ktore);
+	}
 }// _apply_anchor_filename_changes_for_two_years_cycle()
 
 void set_kcitanie(short int den, short int tyzzal, short int modlitba, short int ktore /* default ktore = 2 */) {

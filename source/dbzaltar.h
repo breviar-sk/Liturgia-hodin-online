@@ -43,7 +43,8 @@ extern char _file[MAX_STR_AF_FILE]; // nazov súboru, napr. _1ne.htm
 extern char _file_pc[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania
 extern char _file_pc_tyzden[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania v zavislosti od tyzdna (obdobie cez rok)
 extern char _file_orig[MAX_STR_AF_FILE]; // nazov súboru, do ktorého sa v prípade kompletória dočasne odloží pôvodný súbor
-extern char _file_pc_two_years_cycle[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; tmp
+extern char _file_pc_two_years_cycle_cit1[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; two years cycle; citanie1
+extern char _file_pc_two_years_cycle_cit2[MAX_STR_AF_FILE]; // nazov fajlu pre posvatne citania; two years cycle; citanie2
 
 // store/restore original filename (_file)
 #define file_name_zapamataj()	strcpy(_file_orig, _file);
@@ -204,7 +205,7 @@ extern void _set_zalm3(short int modlitba, const char* file, const char* anchor)
 
 extern void set_zalm(short int ktory, short int modlitba, const char* file, const char* anchor);
 
-extern void _apply_anchor_filename_changes_for_two_years_cycle(); // uses global variable _anchor
+extern void _apply_anchor_filename_changes_for_two_years_cycle(short int ktore); // uses global variable _anchor
 
 // pre posvätné čítanie: 1. čítanie; kedysi bolo: #define set_citanie1 _set_kcitanie
 extern void set_citanie1(short int modlitba, const char* file, const char* anchor);

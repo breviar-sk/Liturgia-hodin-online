@@ -4243,6 +4243,8 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			multi_count = pocet_multi(new_anchor, bit);
 			Log("podmienka == %d pred kontrolou počtu multi_count == %d [anchor '%s']...\n", podmienka, multi_count, new_anchor);
 
+			// Log("_global_modl_posv_citanie.citanie1.file == %s...\n", _global_modl_posv_citanie.citanie1.file);
+
 			podmienka = podmienka && (multi_count > 0);
 
 			sprintf(popis_show, "%s", html_text_opt_6_alternatives_multi_citanie[_global_jazyk]);
@@ -4632,6 +4634,9 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 				// use popis_hide as temp variable
 				sprintf(popis_hide, " (%d/%d) %s", ((current_value + 1) MOD multi_count) + 1, multi_count, (char *)HTML_RIGHT_ARROW);
 				strcat(popis_show, popis_hide);
+
+				// Log("_global_modl_posv_citanie.citanie1.file == %s...\n", _global_modl_posv_citanie.citanie1.file);
+				// Log("before _export_link_multi(): new_anchor == %s, popis_hide == %s, popis_show == %s.\n", new_anchor, popis_hide, popis_show);
 
 				_export_link_multi(opt, bit, multi_count, popis_show, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
 			}
@@ -5279,6 +5284,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 	else if (equals(paramname, PARAM_CITANIE1)) {
 		if (modlitba == MODL_POSV_CITANIE) {
 			Log("interpretParameter(): equals(paramname, PARAM_CITANIE1). idem spustiť includeFile()...\n");
+			Log("_global_modl_posv_citanie.citanie1.file == %s...\n", _global_modl_posv_citanie.citanie1.file);
 			ExportFileAnchor(typ, modlitba, paramname, _global_modl_posv_citanie.citanie1);
 			Log("interpretParameter(): equals(paramname, PARAM_CITANIE1), po spustení includeFile().\n");
 		}
@@ -5774,29 +5780,29 @@ void showPrayer(short int typ, short int modlitba, short int ktore_templaty = SH
 	// nezobrazovanie rovnakej antifóny v modlitbe cez deň; keďže je daný jediný typ modlitby, nie je potrebné pole pre jednotlivé modlitby (aj pre kompletórium vo veľkonočnej oktáve a celom veľkonočnom období)
 	if (
 		(
-		(modlitba == MODL_CEZ_DEN_9)
+			(modlitba == MODL_CEZ_DEN_9)
 			&& (equals(_global_modl_cez_den_9.antifona1.file, _global_modl_cez_den_9.antifona2.file) && equals(_global_modl_cez_den_9.antifona1.file, _global_modl_cez_den_9.antifona3.file))
 			&& (equals(_global_modl_cez_den_9.antifona1.anchor, _global_modl_cez_den_9.antifona2.anchor) && equals(_global_modl_cez_den_9.antifona1.anchor, _global_modl_cez_den_9.antifona3.anchor))
 			) ||
-			(
-		(modlitba == MODL_CEZ_DEN_12)
-				&& (equals(_global_modl_cez_den_12.antifona1.file, _global_modl_cez_den_12.antifona2.file) && equals(_global_modl_cez_den_12.antifona1.file, _global_modl_cez_den_12.antifona3.file))
-				&& (equals(_global_modl_cez_den_12.antifona1.anchor, _global_modl_cez_den_12.antifona2.anchor) && equals(_global_modl_cez_den_12.antifona1.anchor, _global_modl_cez_den_12.antifona3.anchor))
-				) ||
-				(
-		(modlitba == MODL_CEZ_DEN_3)
-					&& (equals(_global_modl_cez_den_3.antifona1.file, _global_modl_cez_den_3.antifona2.file) && equals(_global_modl_cez_den_3.antifona1.file, _global_modl_cez_den_3.antifona3.file))
-					&& (equals(_global_modl_cez_den_3.antifona1.anchor, _global_modl_cez_den_3.antifona2.anchor) && equals(_global_modl_cez_den_3.antifona1.anchor, _global_modl_cez_den_3.antifona3.anchor))
-					)
+		(
+			(modlitba == MODL_CEZ_DEN_12)
+			&& (equals(_global_modl_cez_den_12.antifona1.file, _global_modl_cez_den_12.antifona2.file) && equals(_global_modl_cez_den_12.antifona1.file, _global_modl_cez_den_12.antifona3.file))
+			&& (equals(_global_modl_cez_den_12.antifona1.anchor, _global_modl_cez_den_12.antifona2.anchor) && equals(_global_modl_cez_den_12.antifona1.anchor, _global_modl_cez_den_12.antifona3.anchor))
+			) ||
+		(
+			(modlitba == MODL_CEZ_DEN_3)
+			&& (equals(_global_modl_cez_den_3.antifona1.file, _global_modl_cez_den_3.antifona2.file) && equals(_global_modl_cez_den_3.antifona1.file, _global_modl_cez_den_3.antifona3.file))
+			&& (equals(_global_modl_cez_den_3.antifona1.anchor, _global_modl_cez_den_3.antifona2.anchor) && equals(_global_modl_cez_den_3.antifona1.anchor, _global_modl_cez_den_3.antifona3.anchor))
+			)
 		||
 		(
-		(modlitba == MODL_KOMPLETORIUM) && (_global_modl_kompletorium.pocet_zalmov == 2)
+			(modlitba == MODL_KOMPLETORIUM) && (_global_modl_kompletorium.pocet_zalmov == 2)
 			&& (equals(_global_modl_kompletorium.antifona1.file, _global_modl_kompletorium.antifona2.file))
 			&& (equals(_global_modl_kompletorium.antifona1.anchor, _global_modl_kompletorium.antifona2.anchor))
 			)
 		||
 		(
-		(modlitba == MODL_PRVE_KOMPLETORIUM) && (_global_modl_prve_kompletorium.pocet_zalmov == 2)
+			(modlitba == MODL_PRVE_KOMPLETORIUM) && (_global_modl_prve_kompletorium.pocet_zalmov == 2)
 			&& (equals(_global_modl_prve_kompletorium.antifona1.file, _global_modl_prve_kompletorium.antifona2.file))
 			&& (equals(_global_modl_prve_kompletorium.antifona1.anchor, _global_modl_prve_kompletorium.antifona2.anchor))
 			)
