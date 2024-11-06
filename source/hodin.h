@@ -637,7 +637,7 @@ const char* nazov_slavenia_lokal[] =
 , "len v konsekrovaných kostoloch"                                                                               // LOKAL_SLAV_KONSEKR_KOSTOLY
 , "Druhá veľkonočná nedeľa — Božieho milosrdenstva"                                                              // LOKAL_SLAV_DRUHA_VELK_NEDELA
 , "koniec Oktávy narodenia Pána"                                                                                 // LOKAL_SLAV_KONIEC_OKTAVY_NAR | string here: text_KONIEC_OKTAVY_NARODENIA_PANA[]
-, ""						                                                                                     // LOKAL_SLAV_OCD_IT
+, "pre FMA: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_FMA
 , "hlavního patrona pražské arcidiecéze"                                                                         // LOKAL_SLAV_PRAHA_PATRON
 , "v pražské arcidiecézi"                                                                                        // LOKAL_SLAV_PRAHA
 , "v brněnské diecézi"                                                                                           // LOKAL_SLAV_BRNO
@@ -665,14 +665,14 @@ const char* nazov_slavenia_lokal[] =
 , "pre OFMCap.: sviatok"                                                                                         // LOKAL_SLAV_SVIATOK_OFMCAP
 , "pre FMA: spomienka"                                                                                           // LOKAL_SLAV_SPOMIENKA_FMA
 , "pre FMA: slávnosť"                                                                                            // LOKAL_SLAV_SLAVNOST_FMA
-, "pre SDB: slávnosť"                                                                                            // LOKAL_SLAV_SLAVNOST_SDB
+, "pro FMA svátek"                                                                                               // LOKAL_SLAV_SVIATOK_FMA_CZ
 , "pre VDB: sviatok"                                                                                             // LOKAL_SLAV_SVIATOK_VDB
 , "pre SCSC: sviatok"                                                                                            // LOKAL_SLAV_SVIATOK_SCSC
 , "pre OFM: spomienka; pre koncepcionistky: slávnosť"                                                            // LOKAL_SLAV_SPOMIENKA_OFM_SLAVNOST_CONCEPT
 , "A Szombathelyi Egyházmegyében"                                                                                // LOKAL_SLAV_SZOMBATHELYI_EGYH
 , "A Nagyszombati Főegyházmegyében: a főegyházmegye fővédőszentje; főünnep"                                      // LOKAL_SLAV_NAGYSZ_PATRON
 , "A Nyitrai Egyházmegyében"                                                                                     // LOKAL_SLAV_NITRA_HU
-, "A szlovákiai egyházmegyékben: főünnep"                                                                        // LOKAL_SLAV_SZLOVAKIA_FOUNNEP
+, "az FMA számára: Ünnep"                                                                                        // LOKAL_SLAV_SVIATOK_FMA_HU
 , "A Pécsi Egyházmegyében: az egyházmegye védőszentje; főünnep"                                                  // LOKAL_SLAV_PECSI_EGYH_PATRON
 , "A Nagyváradi Egyházmegyében"                                                                                  // LOKAL_SLAV_NAGYVARADI_EGYH
 , "A Veszprémi Főegyházmegyében: Szent Anna, a főegyházmegye védőszentje; főünnep"                               // LOKAL_SLAV_VESZPREMI_EGYH_PATRON
@@ -17771,6 +17771,21 @@ short int lokal_slav_slavnost_fma[POCET_JAZYKOV + 1] =
 	LOKAL_SLAV_NEURCENE,
 	LOKAL_SLAV_SLAVNOST_FMA_CZ,
 	LOKAL_SLAV_SLAVNOST_FMA_HU,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	/* ADD_VALUE_FOR_NEW_LANGUAGE */
+};
+
+short int lokal_slav_sviatok_fma[POCET_JAZYKOV + 1] =
+{
+	LOKAL_SLAV_SVIATOK_FMA,
+	LOKAL_SLAV_SVIATOK_FMA_CZ,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_NEURCENE,
+	LOKAL_SLAV_SVIATOK_FMA_CZ,
+	LOKAL_SLAV_SVIATOK_FMA_HU,
 	LOKAL_SLAV_NEURCENE,
 	LOKAL_SLAV_NEURCENE,
 	LOKAL_SLAV_NEURCENE,

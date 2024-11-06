@@ -1061,7 +1061,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_KONSEKR_KOSTOLY					18
 #define LOKAL_SLAV_DRUHA_VELK_NEDELA				19
 #define LOKAL_SLAV_KONIEC_OKTAVY_NAR				20
-#define LOKAL_SLAV_OCD_IT							21 // not used
+#define LOKAL_SLAV_SVIATOK_FMA						21
 #define LOKAL_SLAV_PRAHA_PATRON						22
 #define LOKAL_SLAV_PRAHA							23
 #define LOKAL_SLAV_BRNO								24
@@ -1089,14 +1089,14 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SVIATOK_OFMCAP					46
 #define LOKAL_SLAV_SPOMIENKA_FMA					47
 #define LOKAL_SLAV_SLAVNOST_FMA						48
-#define LOKAL_SLAV_SLAVNOST_SDB						49 // not used
+#define LOKAL_SLAV_SVIATOK_FMA_CZ					49
 #define LOKAL_SLAV_SVIATOK_VDB						50
 #define LOKAL_SLAV_SVIATOK_SCSC						51
 #define LOKAL_SLAV_SPOMIENKA_OFM_SLAVNOST_CONCEPT	52
 #define LOKAL_SLAV_SZOMBATHELYI_EGYH				53
 #define LOKAL_SLAV_NAGYSZ_PATRON					54
 #define LOKAL_SLAV_NITRA_HU							55
-#define LOKAL_SLAV_SZLOVAKIA_FOUNNEP				56 // not used
+#define LOKAL_SLAV_SVIATOK_FMA_HU					56
 #define LOKAL_SLAV_PECSI_EGYH_PATRON				57
 #define LOKAL_SLAV_NAGYVARADI_EGYH					58
 #define LOKAL_SLAV_VESZPREMI_EGYH_PATRON			59
@@ -2016,6 +2016,7 @@ extern const char* text_AUG_15[POCET_JAZYKOV + 1];
 extern const char* text_NOV_01[POCET_JAZYKOV + 1];
 
 extern short int lokal_slav_slavnost_fma[POCET_JAZYKOV + 1];
+extern short int lokal_slav_sviatok_fma[POCET_JAZYKOV + 1];
 extern short int lokal_slav_spomienka_fma[POCET_JAZYKOV + 1];
 extern short int lokal_slav_lub_spomienka_fma_vdb[POCET_JAZYKOV + 1];
 extern short int lokal_slav_sviatok_vdb[POCET_JAZYKOV + 1];
