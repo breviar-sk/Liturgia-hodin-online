@@ -600,10 +600,15 @@ public class Breviar extends AppCompatActivity
     void disableRingOverride() {
       if (ringMode != -1) {
         AudioManager manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-        try {
-          manager.setRingerMode(ringMode);
-        } catch (java.lang.SecurityException e) {
-          Log.v("breviar", "Switching to silent mode is not allowed");
+        int currentRingMode = manager.getRingerMode();
+        if (currentRingMode < ringMode) {
+          // Only go back to the original ring mode if the current one is more
+          // silent. I.e., do not switch to silent mode if it is already off.
+          try {
+            manager.setRingerMode(ringMode);
+          } catch (java.lang.SecurityException e) {
+            Log.v("breviar", "Switching to silent mode is not allowed");
+          }
         }
         ringMode = -1;
       }
