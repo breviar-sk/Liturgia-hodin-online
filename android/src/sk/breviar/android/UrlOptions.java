@@ -336,7 +336,7 @@ public class UrlOptions {
   static int kDefaultLh = 130;
   public int getLh() {
     // Default value, must be consistent with liturgia.h.
-    // Alternatively, native code should always export mm parameter.
+    // Alternatively, native code should always export lh parameter.
     return getInt("lh", kDefaultLh);
   }
 
@@ -352,7 +352,7 @@ public class UrlOptions {
   static int kDefaultFf = 12;
   public int getFf() {
     // Default value, must be consistent with liturgia.h.
-    // Alternatively, native code should always export mm parameter.
+    // Alternatively, native code should always export ff parameter.
     return getInt("ff", kDefaultFf);
   }
 
@@ -361,7 +361,7 @@ public class UrlOptions {
   }
 
   public void setFf(int value) {
-    setInt("ff", value, kDefaultFf);
+    setInt("ff", value, 0); // ToDo: always export value (of course, after it was validated); assumption: 0 is not allowed
   }
 
   public String getFont() {
