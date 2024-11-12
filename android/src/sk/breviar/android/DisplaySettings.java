@@ -79,8 +79,8 @@ public class DisplaySettings extends SettingsActivity {
       public int getOpt(UrlOptions opts) { return opts.getLh(); }
     });
     handleInt(R.id.option_ff, 4, 60, new IntUrlOption() {
-      public void setOpt(UrlOptions opts, int value) { opts.setFf(value); }
-      public void resetOpt(UrlOptions opts) { opts.resetFf(); }
+      public void setOpt(UrlOptions opts, int value) { BreviarApp.resetScale(act); opts.setFf(value); }
+      public void resetOpt(UrlOptions opts) { BreviarApp.resetScale(act); opts.resetFf(); }
       public int getOpt(UrlOptions opts) { return opts.getFf(); }
     });
 

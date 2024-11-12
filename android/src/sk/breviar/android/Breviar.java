@@ -78,6 +78,7 @@ public class Breviar extends AppCompatActivity
     boolean initialized, clearHistory;
     boolean fullscreen = false;
     boolean need_to_reload_preferences = true;
+    boolean need_to_reload_scale = false;
     boolean save_instance_enabled = true;
     float scroll_to = -1;
     NavigationView navigationView = null;
@@ -646,6 +647,13 @@ public class Breviar extends AppCompatActivity
         need_to_update_menu = true;
         wv.loadUrl(new_url);
       }
+      if (need_to_reload_scale) {
+        need_to_reload_scale = false;
+        SharedPreferences settings = getSharedPreferences(Util.prefname, 0);
+        scale = settings.getInt("scale", 100);
+        Log.v("breviar", "reloading scale, " + scale);
+        syncScale();
+      }
       if (!resumed) {
         resumed = true;
         if (BreviarApp.getDimLock(getApplicationContext())) {
@@ -1019,6 +1027,7 @@ public class Breviar extends AppCompatActivity
         case R.id.settings:
           syncPreferences();
           need_to_reload_preferences = true;
+          need_to_reload_scale = true;
           startActivity(new Intent(this, MainSettings.class));
           break;
 

@@ -118,6 +118,13 @@ public class BreviarApp extends Application {
     return settings.getString(key, default_value);
   }
 
+  static public void resetScale(Context ctx) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    SharedPreferences.Editor editor = settings.edit();
+    editor.remove("scale");  // TODO: cleanup use in Breviar.java
+    editor.commit();
+  }
+
   static final String booleanVolButtons = "vol_buttons";
   static final String booleanDimLock = "dim_lock";
   static final String booleanMute = "mute";

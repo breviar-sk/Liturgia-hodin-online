@@ -357,11 +357,13 @@ public class UrlOptions {
   }
 
   public void resetFf() {
-    resetInt("ff");
+    // Resetting to default means kDefaultFf, which must be explicitly set, because
+    // browser might have different default.
+    setInt("ff", kDefaultFf);
   }
 
   public void setFf(int value) {
-    setInt("ff", value, 0); // ToDo: always export value (of course, after it was validated); assumption: 0 is not allowed
+    setInt("ff", value);
   }
 
   public String getFont() {
@@ -399,6 +401,10 @@ public class UrlOptions {
     } else {
       params.put(key, "");
     }
+  }
+
+  void setInt(String key, int value) {
+    params.put(key, Integer.toString(value));
   }
 
   String maybeGetText(String key) {
