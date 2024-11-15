@@ -31548,11 +31548,11 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 			modlitba = MODL_RANNE_CHVALY;
 			_set_zalmy_1nedele_rch();
-			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)) {
-				_vlastna_cast_full_okrem_prosieb(modlitba);
-			}// SK, HU
+			if (_global_jazyk == JAZYK_CZ) {
+				_vlastna_cast_full_okrem_hymnu_a_prosieb(modlitba); 
+			}// CZ only
 			else {
-				_vlastna_cast_full_okrem_hymnu_a_prosieb(modlitba);
+			_vlastna_cast_full_okrem_prosieb(modlitba);
 			}
 
 			modlitba = MODL_POSV_CITANIE;
@@ -31564,11 +31564,11 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 			modlitba = MODL_VESPERY;
 			_set_zalmy_sviatok_duch_past(modlitba);
-			if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_HU)) {
-				_vlastna_cast_full_okrem_prosieb(modlitba);
-			}// SK, HU
-			else {
+			if (_global_jazyk == JAZYK_CZ) {
 				_vlastna_cast_full_okrem_hymnu_a_prosieb(modlitba);
+			}// CZ only
+			else {
+				_vlastna_cast_full_okrem_prosieb(modlitba);
 			}
 
 			break;
