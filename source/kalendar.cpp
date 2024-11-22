@@ -20962,7 +20962,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				if (_global_jazyk != JAZYK_HU) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				if (_global_jazyk != JAZYK_SK) {
 					_vlastna_cast_benediktus;
 				}
@@ -20977,7 +20979,9 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				// štandardne nemá vešpery (ak sa len neslávi ako slávnosť), lebo sú prvé vešpery Nanebovzatia P. Márie
 				modlitba = MODL_VESPERY;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				if (_global_jazyk != JAZYK_HU) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				if (_global_jazyk != JAZYK_SK) {
 					_vlastna_cast_magnifikat;
 				}
