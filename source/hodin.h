@@ -6802,7 +6802,7 @@ const char* text_FEB_09_SDB[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_09_OFMCAP[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Leopolda z Alpandeire, rehoľníka",
 	"Bl. Leopolda z Alpandeire, řeholníka", // (Marquez-Sánchez)
 	"",
 	"",
@@ -8228,7 +8228,7 @@ const char* text_MAJ_04_SJ[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_04_OFM[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Tomáša z Olery, rehoľníka",
 	"Bl. Tomáše z Olery, řeholníka",
 	"",
 	"",
@@ -9334,8 +9334,8 @@ const char* text_MAJ_28_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_28_OFM[POCET_JAZYKOV + 1] =
 {
-	"",
-	"",
+	"Bl. Márie Costanza Panasovej, rehoľníčky",
+	"Bl. Marie Costanza Panasové, řeholnice",
 	"",
 	"",
 	"",
