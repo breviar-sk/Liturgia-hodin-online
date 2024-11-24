@@ -15972,7 +15972,7 @@ const char* text_NOV_05_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_06_OFM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Alfonza Lopeza a spoločníkov, mučeníkov, členov 1. rádu",
+	"Bl. Alfonza Lopeza, Aurélia z Vinalesy, Fridricha z Bergy " HTML_LINE_BREAK "a spoločníkov, mučeníkov, členov 1. rádu",
 	"",
 	"",
 	"",
