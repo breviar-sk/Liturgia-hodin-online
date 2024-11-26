@@ -719,7 +719,7 @@ const char* nazov_slavenia_lokal[] =
 , "jen kanonie Doksany"                                                                                          // LOKAL_SLAV_OPRAEM_DOKSANY
 , "jen kanonie Doksany a Želiv"                                                                                  // LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV
 , "jen kanonie Teplá"                                                                                            // LOKAL_SLAV_OPRAEM_TEPLA
-, "len pre len pre Kongregáciu sestier Matky Božieho Milosrdenstva"                                              // LOKAL_SLAV_KONGREGACIA_SMBM
+, "len pre Kongregáciu sestier Matky Božieho Milosrdenstva"                                                      // LOKAL_SLAV_KONGREGACIA_SMBM
 , "pro FMA památka"                                                                                              // LOKAL_SLAV_SPOMIENKA_FMA_CZ
 , "pro FMA a VDB nezávazná památka"                                                                              // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_CZ
 , "pro VDB svátek"                                                                                               // LOKAL_SLAV_SVIATOK_VDB_CZ
@@ -5882,6 +5882,20 @@ const char* text_JAN_12_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_JAN_12_SCHP[POCET_JAZYKOV + 1] =
+{
+	"Bl. Viktórie Valverde, panny a mučenice",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"Boldog Jézus Viktória Valverde González szűz és vértanú",
 	"",
 	"",
 	"",
@@ -13502,7 +13516,7 @@ const char* text_SEP_05[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_05_1_OP[POCET_JAZYKOV + 1] =
 {
-	"Spomienka na zosnulých príbuzných a dobrodincov našej rehole",
+	"Spomienka na zosnulých príbuzných " HTML_LINE_BREAK "a dobrodincov našej rehole",
 	"Vzpomínka zemřelých příbuzných a dobrodinců řádu",
 	"",
 	"",
@@ -13768,7 +13782,7 @@ const char* text_SEP_12_OPRAEM[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_12_SCHP[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Najsv. mena Mária, titulu rehole piaristov",
 	"",
 	"",
 	"",
@@ -13950,7 +13964,7 @@ const char* text_SEP_17_OCD[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_17_SCHP[POCET_JAZYKOV + 1] =
 {
-	"",
+	"Bl. Antona Máriu Schwartza, kňaza",
 	"",
 	"",
 	"",
@@ -14174,7 +14188,7 @@ const char* text_SEP_22_SDB[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_22_SCHP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Dionýza Pamplonu a spoločníkov, mučeníkov",
+	"Bl. Dionýza Pamplonu, kňaza, a spoločníkov, mučeníkov",
 	"",
 	"",
 	"",
@@ -15900,6 +15914,20 @@ const char* text_NOV_03_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_NOV_03_SCHP[POCET_JAZYKOV + 1] =
+{
+	"Spomienka na zosnulých bratov, " HTML_LINE_BREAK "príbuzných a dobrodincov našej rehole",
+	"Vzpomínka zemřelých bratří, " HTML_LINE_BREAK "příbuzných a dobrodinců řádu",
+	"",
+	"",
+	"",
+	"Vzpomínka zemřelých bratří, " HTML_LINE_BREAK "příbuzných a dobrodinců řádu",
+	"Megemlékezés rend testvérek, " HTML_LINE_BREAK "rokonok és jótevők elhunytjairól",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_NOV_04[POCET_JAZYKOV + 1] =
 {
 	"Sv. Karola Boromejského, biskupa", // kedysi: "Sv. Karola Borromea, biskupa"
@@ -16524,7 +16552,7 @@ const char* text_NOV_18_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"A Piaristák Rendjének összes szentjei",
 	"",
 	"",
 	"",
