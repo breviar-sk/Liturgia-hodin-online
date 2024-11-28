@@ -214,6 +214,15 @@ public class UrlOptions {
     setBit("o0", 18, value);
   }
 
+  // of0dotn
+  public boolean isTransparentNavDownOnly() {
+    return hasBit("o0", 20);
+  }
+
+  public void setTransparentNavDownOnly(boolean value) {
+    setBit("o0", 20, value);
+  }
+
   // of1zspc
   public boolean isDisplayCommuniaInfo() {
     return hasBit("o1", 12);

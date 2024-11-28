@@ -68,6 +68,10 @@ public class DisplaySettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setTransparentNavLeft(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isTransparentNavLeft(); }
     });
+    handleSwitch(R.id.transparent_nav_down_only, new BooleanUrlOption() {
+      public void setOpt(UrlOptions opts, boolean value) { opts.setTransparentNavDownOnly(value); }
+      public boolean getOpt(UrlOptions opts) { return opts.isTransparentNavDownOnly(); }
+    });
     handleInt(R.id.option_mm, 1, 200, new IntUrlOption() {
       public void setOpt(UrlOptions opts, int value) { opts.setMm(value); }
       public void resetOpt(UrlOptions opts) { opts.resetMm(); }

@@ -402,10 +402,20 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	// display transparent navigation (up/down arrows)
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV)) {
 		if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_LEFT)) {
-			Export_to_file(expt, HTML_TRANSPARENT_NAV_LEFT "\n");
+			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY)) {
+				Export_to_file(expt, HTML_TRANSPARENT_NAV_DOWN_LEFT "\n");
+			}
+			else {
+				Export_to_file(expt, HTML_TRANSPARENT_NAV_LEFT "\n");
+			}
 		}
 		else {
-			Export_to_file(expt, HTML_TRANSPARENT_NAV_RIGHT "\n");
+			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY)) {
+				Export_to_file(expt, HTML_TRANSPARENT_NAV_DOWN_RIGHT "\n");
+			}
+			else {
+				Export_to_file(expt, HTML_TRANSPARENT_NAV_RIGHT "\n");
+			}
 		}
 	}
 

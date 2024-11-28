@@ -54,6 +54,7 @@
     <string name="buttons_order">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
     <string name="transparent_nav">Sýna leiðsöguörvar (hægra megin)</string>
     <string name="transparent_nav_left">Leiðsöguörvar vinstra megin</string>
+    <string name="transparent_nav_down_only">Sýndu aðeins niðurleiðarörina</string>
     <string name="font_select">Veldu leturgerð</string>
     <string name="default_color">(sjálfgefið)</string>
     <string name="default_font">(sjálfgefið)</string>

@@ -54,6 +54,7 @@
     <string name="buttons_order">Navigační tlačítka pro datum pod tlačítky pro modlitby</string>
     <string name="transparent_nav">Navigační šipky v textu (pravý okraj)</string>
     <string name="transparent_nav_left">Navigační šipky u levého okraje</string>
+    <string name="transparent_nav_down_only">Zobraz jen navigační šipku dolů</string>
     <string name="font_select">Výběr písma</string>
     <string name="default_color">(výchozí)</string>
     <string name="default_font">(výchozí)</string>

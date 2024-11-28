@@ -622,6 +622,14 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT "of0ltn" // of0tnl would be more logical but we want to avoid the same prefixes to be used
 #endif
 
+// transparent navigation: down arrow only
+#define FORCE_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY 153
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY "FORCE_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY"
+#else
+#define STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY "of0dotn" // of0tndo would be more logical but we want to avoid the same prefixes to be used
+#endif
+
 // side navigation (side menu)
 #define FORCE_BIT_OPT_0_SIDE_NAVIGATION 150
 #ifdef LONG_PARAM_NAMES
@@ -1398,6 +1406,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT    "BitOpt0TwoYearsCycleInvert"
 #define XML_BIT_OPT_0_ALTERNATIVE_READINGS      "BitOpt0AlternativeReadings"
 #define XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT      "BitOpt0TransparentNavLeft"
+#define XML_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY "BitOpt0TransparentNavDownOnly"
 #define XML_BIT_OPT_0_SIDE_NAVIGATION           "BitOpt0NavigationMenu"
 #define XML_BIT_OPT_0_SIDE_NAVIGATION_RIGHT     "BitOpt0NavigationMenuRight"
 

@@ -8099,6 +8099,9 @@ void xml_export_options(void) {
 				case 19: // BIT_OPT_0_SIDE_NAVIGATION
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_SIDE_NAVIGATION)"%ld" ELEM_END(XML_BIT_OPT_0_SIDE_NAVIGATION) "\n", BIT_OPT_0_SIDE_NAVIGATION, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, html_text_opt_0_side_navigation[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)));
 					break;
+				case 20: // BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY)"%ld" ELEM_END(XML_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY) "\n", BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY, html_text_opt_0_transparent_nav_down_only[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY)));
+					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_0_SPECIALNE) "\n");
@@ -8559,6 +8562,12 @@ menu_item_option_str_name get_data_for_menu_item_option(short int menu_group, sh
 			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT, SMALL);
 			mystrcpy(output.option_xml, XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT, SMALL);
 			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_0_transparent_nav_left[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_2_ITEM_NAVIGATION_ARROW_DOWN_ONLY:
+			mystrcpy(output.option_str, STR_OPT_0, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_0_transparent_nav_down_only[_global_jazyk]).c_str(), SMALL);
 			break;
 		case MENU_2_ITEM_BUTTONS_CONDENSED:
 			mystrcpy(output.option_str, STR_OPT_2, SMALL);
@@ -11488,6 +11497,11 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(HTML_CRLF_LINE_BREAK);
 		Export(HTML_NONBREAKING_SPACE_LOOONG);
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_LEFT, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT, html_text_opt_0_transparent_nav_left[_global_jazyk], html_text_opt_0_transparent_nav_left_explain[_global_jazyk], NIE);
+
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY
+		Export(HTML_CRLF_LINE_BREAK);
+		Export(HTML_NONBREAKING_SPACE_LOOONG);
+		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY, html_text_opt_0_transparent_nav_down_only[_global_jazyk], html_text_opt_0_transparent_nav_down_only_explain[_global_jazyk], NIE);
 
 		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION
 		_export_main_formular_checkbox(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, html_text_opt_0_side_navigation[_global_jazyk], html_text_opt_0_side_navigation[_global_jazyk]);
@@ -20082,8 +20096,14 @@ int breviar_main(int argc, const char** argv) {
 	_main_LOG("spúšťam initExport();...\n");
 	initExport();
 
-	// basic check for MAX_POCET_OPT contant
-	if ((MAX_POCET_OPT < POCET_OPT_0_SPECIALNE) || (MAX_POCET_OPT < POCET_OPT_1_CASTI_MODLITBY) || (MAX_POCET_OPT < POCET_OPT_2_HTML_EXPORT) || (MAX_POCET_OPT < POCET_OPT_4_OFFLINE_EXPORT) || (MAX_POCET_OPT < POCET_OPT_5_ALTERNATIVES) || (MAX_POCET_OPT < POCET_OPT_6_ALTERNATIVES_MULTI)) {
+	// basic check for MAX_POCET_OPT constant
+	if ((MAX_POCET_OPT <= POCET_OPT_0_SPECIALNE)
+		|| (MAX_POCET_OPT <= POCET_OPT_1_CASTI_MODLITBY)
+		|| (MAX_POCET_OPT <= POCET_OPT_2_HTML_EXPORT)
+		|| (MAX_POCET_OPT <= POCET_OPT_4_OFFLINE_EXPORT)
+		|| (MAX_POCET_OPT <= POCET_OPT_5_ALTERNATIVES)
+		|| (MAX_POCET_OPT <= POCET_OPT_6_ALTERNATIVES_MULTI)
+		) {
 		_main_LOG("Incorrect setting of value for `MAX_POCET_OPT'.\n");
 		goto _main_end;
 	}

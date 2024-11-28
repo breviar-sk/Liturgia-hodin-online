@@ -17,20 +17,19 @@
 #define HTML_ANAME_TOP "<div id=\"contentRoot\"><a name=\"" HTML_TOP "\"></a>"
 
 #ifdef IO_ANDROID
-#define HTML_TRANSPARENT_NAV_RIGHT "<div id=\"nav-arrow-up\" class=\"nav-arrow-right\" onclick=\"bridge.pageUp()\"></div>\n" \
-  "<div id=\"nav-arrow-down\" class=\"nav-arrow-right\" onclick=\"bridge.pageDown()\"></div>\n"
+#define HTML_TRANSPARENT_NAV_UP_RIGHT "<div id=\"nav-arrow-up\" class=\"nav-arrow-right\" onclick=\"bridge.pageUp()\"></div>\n"
+#define HTML_TRANSPARENT_NAV_DOWN_RIGHT "<div id=\"nav-arrow-down\" class=\"nav-arrow-right\" onclick=\"bridge.pageDown()\"></div>\n"
+#define HTML_TRANSPARENT_NAV_UP_LEFT "<div id=\"nav-arrow-up\" class=\"nav-arrow-left\" onclick=\"bridge.pageUp()\"></div>\n"
+#define HTML_TRANSPARENT_NAV_DOWN_LEFT "<div id=\"nav-arrow-down\" class=\"nav-arrow-left\" onclick=\"bridge.pageDown()\"></div>\n"
 #else
-#define HTML_TRANSPARENT_NAV_RIGHT "<div id=\"nav-arrow-up\" class=\"nav-arrow-right\" onclick=\"window.scrollBy(0, -0.95*window.innerHeight)\"></div>\n" \
-  "<div id=\"nav-arrow-down\" class=\"nav-arrow-right\" onclick=\"window.scrollBy(0, 0.95*window.innerHeight)\"></div>\n"
+#define HTML_TRANSPARENT_NAV_UP_RIGHT "<div id=\"nav-arrow-up\" class=\"nav-arrow-right\" onclick=\"window.scrollBy(0, -0.95*window.innerHeight)\"></div>\n"
+#define HTML_TRANSPARENT_NAV_DOWN_RIGHT "<div id=\"nav-arrow-down\" class=\"nav-arrow-right\" onclick=\"window.scrollBy(0, 0.95*window.innerHeight)\"></div>\n"
+#define HTML_TRANSPARENT_NAV_UP_LEFT "<div id=\"nav-arrow-up\" class=\"nav-arrow-left\" onclick=\"window.scrollBy(0, -0.95*window.innerHeight)\"></div>\n"
+#define HTML_TRANSPARENT_NAV_DOWN_LEFT "<div id=\"nav-arrow-down\" class=\"nav-arrow-left\" onclick=\"window.scrollBy(0, 0.95*window.innerHeight)\"></div>\n"
 #endif
 
-#ifdef IO_ANDROID
-#define HTML_TRANSPARENT_NAV_LEFT "<div id=\"nav-arrow-up\" class=\"nav-arrow-left\" onclick=\"bridge.pageUp()\"></div>\n" \
-  "<div id=\"nav-arrow-down\" class=\"nav-arrow-left\" onclick=\"bridge.pageDown()\"></div>\n"
-#else
-#define HTML_TRANSPARENT_NAV_LEFT "<div id=\"nav-arrow-up\" class=\"nav-arrow-left\" onclick=\"window.scrollBy(0, -0.95*window.innerHeight)\"></div>\n" \
-  "<div id=\"nav-arrow-down\" class=\"nav-arrow-left\" onclick=\"window.scrollBy(0, 0.95*window.innerHeight)\"></div>\n"
-#endif
+#define HTML_TRANSPARENT_NAV_RIGHT HTML_TRANSPARENT_NAV_UP_RIGHT HTML_TRANSPARENT_NAV_DOWN_RIGHT
+#define HTML_TRANSPARENT_NAV_LEFT HTML_TRANSPARENT_NAV_UP_LEFT HTML_TRANSPARENT_NAV_DOWN_LEFT
 
 #define HTML_SIDE_NAVIGATION_SIDEBAR "<div id=\"mySidebar\" class=\"sidebar\" onload=\"removeSessionStorageSidemenuRight()\">\n" \
 	"\t<a href=\"javascript:void(0)\" class=\"closebtn\" onclick=\"closeNav()\">×</a>"

@@ -2920,6 +2920,36 @@ const char* html_text_opt_0_transparent_nav_left_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char* html_text_opt_0_transparent_nav_down_only[POCET_JAZYKOV + 1] =
+{
+	"zobraz iba navigačnú šípku dolu",
+	"zobraz jen navigační šipku dolů",
+	"display only down navigation arrow",
+	"navigationis sagittam tantum ostendere",
+	"",
+	"zobraz jen navigační šipku dolů",
+	"csak a lefelé mutató navigációs nyíl megjelenítése",
+	"ru_text",
+	"паказаць толькі стрэлку навігацыі ўніз",
+	"sýndu aðeins niðurleiðarörina",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_0_transparent_nav_down_only_explain[POCET_JAZYKOV + 1] =
+{
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char* html_text_opt_0_side_navigation[POCET_JAZYKOV + 1] =
 {
 	"navigačné menu",

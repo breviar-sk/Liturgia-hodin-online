@@ -1576,7 +1576,7 @@ extern unsigned long long _global_force_opt[POCET_GLOBAL_OPT];
 #define USE_STR_OPT           -2
 #define USE_STR_FORCE_OPT     -1
 
-#define POCET_OPT_0_SPECIALNE               20 // jednotlivé komponenty option 0 -- bity pre force option 0
+#define POCET_OPT_0_SPECIALNE               21 // jednotlivé komponenty option 0 -- bity pre force option 0
 extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 // 2011-04-08: úprava významu (a interpretácie) option 0 ==  OPT_0_SPECIALNE (zobraziť/nezobraziť "pridanú hodnotu" oproti papierovej LH)
 #define BIT_OPT_0_VERSE                       1 // export also verse numbers
@@ -1599,6 +1599,7 @@ extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_ALTERNATIVE_READINGS   131072 // use alternative second readings in prayer with readings (CZ only)
 #define BIT_OPT_0_TRANSPARENT_NAV_LEFT   262144 // transparent navigation arrow in text; override: on the left side of the screen (left-handed)
 #define BIT_OPT_0_SIDE_NAVIGATION        524288 // side navigation using JavaScript; for web usage (instead of frames); default location on the left, can be changed via JavaScript
+#define BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY 1048576 // transparent navigation arrow in text: down arrow only (no up arrow)
 
 #define POCET_OPT_1_CASTI_MODLITBY          20 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern unsigned long long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
@@ -1704,7 +1705,7 @@ extern unsigned long long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATI
 #define BASE_OPT_6_KCIT_RESP_MULTI      1000000000 // when data type was only "long", this note made sense: 'must not contain more than 3 possibilities at position 10 because long is limited to 2147483647'
 #define BASE_OPT_6_OTCENAS_UVOD_MULTI  10000000000
 
-#define MAX_POCET_OPT                           21 // must be at least maximum from POCET_OPT_0_... to POCET_OPT_6_...
+#define MAX_POCET_OPT                           22 // must be at least maximum +1 from POCET_OPT_0_... to POCET_OPT_6_...
 
 const short int pocet_opt[POCET_GLOBAL_OPT] = { POCET_OPT_0_SPECIALNE, POCET_OPT_1_CASTI_MODLITBY, POCET_OPT_2_HTML_EXPORT, 0 /* option 3 nemá bitové komponenty */, POCET_OPT_4_OFFLINE_EXPORT, POCET_OPT_5_ALTERNATIVES, POCET_OPT_6_ALTERNATIVES_MULTI /* decimal-places */ };
 
@@ -2084,16 +2085,17 @@ extern const char* bible_version_id_default[POCET_JAZYKOV + 1];
 
 #define POCET_MENU_2_ITEMS	9
 
-#define MENU_2_ITEM_FONT					0
-#define MENU_2_ITEM_COLOR_SCHEMA			1 // Android: night mode
-#define MENU_2_ITEM_NORMAL_FONT				2 // do not allow bold font
-#define MENU_2_ITEM_ROUNDED_CORNERS			3 // for buttons
-#define MENU_2_ITEM_ALT_BACKGROUND			4 // Android only
-#define MENU_2_ITEM_NAVIGATION_ARROWS		5 // navigation arrows (default: on the right side); used especially for e-book readers
-#define MENU_2_ITEM_NAVIGATION_ARROWS_LEFT  6 // navigation arrows on the left side; used especially for e-book readers
-#define MENU_2_ITEM_BUTTONS_CONDENSED		7 // default (Android, web): ON; historically all buttons for prayers could be displayed in single line (table row)
-#define MENU_2_ITEM_BUTTONS_ORDERING		8 // ordering of buttons for prayers and buttons for date-navigation
-#define MENU_2_ITEM_NAVIGATION_IN_PRAYER	9 // navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
+#define MENU_2_ITEM_FONT						0
+#define MENU_2_ITEM_COLOR_SCHEMA				1 // Android: night mode
+#define MENU_2_ITEM_NORMAL_FONT					2 // do not allow bold font
+#define MENU_2_ITEM_ROUNDED_CORNERS				3 // for buttons
+#define MENU_2_ITEM_ALT_BACKGROUND				4 // Android only
+#define MENU_2_ITEM_NAVIGATION_ARROWS			5 // navigation arrows (default: on the right side); used especially for e-book readers
+#define MENU_2_ITEM_NAVIGATION_ARROWS_LEFT		6 // navigation arrows on the left side; used especially for e-book readers
+#define MENU_2_ITEM_NAVIGATION_ARROW_DOWN_ONLY  7 // show only left navigation arrow; used especially for presenting
+#define MENU_2_ITEM_BUTTONS_CONDENSED			8 // default (Android, web): ON; historically all buttons for prayers could be displayed in single line (table row)
+#define MENU_2_ITEM_BUTTONS_ORDERING			9 // ordering of buttons for prayers and buttons for date-navigation
+#define MENU_2_ITEM_NAVIGATION_IN_PRAYER		10 // navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
 
 #define POCET_MENU_3_ITEMS	33
 

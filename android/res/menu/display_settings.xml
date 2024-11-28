@@ -58,6 +58,11 @@
         app:actionLayout="@layout/widget_switch"
   />
 
+  <item android:id="@+id/transparent_nav_down_only"
+        android:title="@string/transparent_nav_down_only"
+        app:actionLayout="@layout/widget_switch"
+  />
+
   <item android:id="@+id/font_select"
         android:title="@string/font_select"
         app:actionLayout="@layout/widget_spinner"

@@ -56,6 +56,7 @@
     <string name="buttons_order">Date buttons after buttons for prayers</string>
     <string name="transparent_nav">Navigation arrows in text (right side)</string>
     <string name="transparent_nav_left">Navigation arrows on the left side</string>
+    <string name="transparent_nav_down_only">Show only down navigation arrow</string>
     <string name="font_select">Select font</string>
     <string name="default_color">(default)</string>
     <string name="default_font">(default)</string>
