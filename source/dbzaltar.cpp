@@ -1288,12 +1288,17 @@ void file_name_litobd_pc(short int litobd) {
 
 // note: use function file_name_vlastny_kalendar() carefully [not in mixed cases: when only language is queried and another language with calendar is queried] because it will destroy celebrations from national calendar when propria are chosen
 void file_name_vlastny_kalendar(short int kalendar) {
+	Log("file_name_vlastny_kalendar (): begin...\n");
 	// do not use for JAZYK_CZ_OP even if called; do not use for general calendars even if called
 	if ((_global_jazyk != JAZYK_CZ_OP) && (_global_kalendar != default_kalendar[_global_jazyk])) {
 		sprintf(_file, "%s", nazov_htm_kalendar[kalendar]);
+		Log("  _file == %s\n", _file);
+
 		sprintf(_file_pc, "%s", nazov_htm_kalendar[kalendar]);
+		Log("  _file_pc == %s\n", _file_pc);
 	}
-}
+	Log("file_name_vlastny_kalendar (): end.\n");
+}// file_name_vlastny_kalendar()
 
 void file_name_kompletorium(short int litobd) {
 	if (litobd == OBD_CEZ_ROK) {
@@ -1304,6 +1309,7 @@ void file_name_kompletorium(short int litobd) {
 	}
 }
 
+// filename for per annum week
 void file_name_litobd_pc_tyzden(short int litobd, short int tyzden) {
 	sprintf(_file_pc_tyzden, "%02d%s", tyzden, nazov_obd_htm_pc[litobd]);
 }

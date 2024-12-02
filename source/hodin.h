@@ -8469,7 +8469,7 @@ const char* text_MAJ_08_OFM[POCET_JAZYKOV + 1] =
 const char* text_MAJ_08_2_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Ulriky Nischovej, panny, rehoľníčky, členky 3. rádu",
-	"",
+	"Bl. Ulriky Nischové, panny a řeholnice",
 	"",
 	"",
 	"",
@@ -10468,7 +10468,7 @@ const char* text_JUN_16_SK[POCET_JAZYKOV + 1] =
 const char* text_JUN_16_1_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Terézie Schererovej, panny, rehoľníčky, členky 3. rádu",
-	"",
+	"Bl. Marie Terezie Schererové, panny a řeholnice",
 	"",
 	"",
 	"",
@@ -12011,11 +12011,11 @@ const char* text_JUL_30[POCET_JAZYKOV + 1] =
 const char* text_JUL_30_SK[POCET_JAZYKOV + 1] =
 {
 	"Bl. Zdenky Cecílie Schelingovej, panny a mučenice", // Direktórium 2012, str. 173, neuvádza priezvisko ('Schelingovej'); dekrét https://www.kbs.sk/obsah/sekcia/h/dokumenty-a-vyhlasenia/p/dokumenty-kbs/c/dekret-o-doplneni-partikularneho-kalendara-2016 uvádza plné meno (aj 3RM, 2021)
-	"",
+	"Bl. Zdenky Schelingové, panny a mučednice",
 	"",
 	"B. Sidoniæ Schelling, virginis et martyris",
 	"",
-	"",
+	"Bl. Zdenky Schelingové, panny a mučednice",
 	"Boldog Scheling Szidónia Cecília szűz és vértanú",
 	"",
 	"",
@@ -12025,7 +12025,7 @@ const char* text_JUL_30_SK[POCET_JAZYKOV + 1] =
 const char* text_JUL_30_SK_OFM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Zdenky Cecílie Schelingovej, panny a mučenice, " HTML_LINE_BREAK "rehoľníčky, členky 3. rádu",
-	"",
+	"Bl. Zdenky Schelingové, panny a mučednice",
 	"",
 	"",
 	"",
