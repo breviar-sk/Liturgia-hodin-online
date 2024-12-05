@@ -34837,7 +34837,9 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty(2).meno, text_DEC_04_2[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(2).typslav_lokal = LOKAL_SLAV_SZLOVAKIA_HU;
+			if (_global_jazyk == JAZYK_HU) {
+				_global_svaty(2).typslav_lokal = LOKAL_SLAV_SZLOVAKIA_HU;
+			}
 			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENICA, MODL_SPOL_CAST_PANNA);
 			_global_svaty(2).farba = LIT_FARBA_CERVENA;
 			_global_svaty(2).kalendar = default_kalendar[_global_jazyk]; // všeobecný kalendár pre daný jazyk
