@@ -685,7 +685,7 @@ const char* nazov_slavenia_lokal[] =
 , "Besztercebánya: az egyházmegye védőszentje; főünnep"                                                          // LOKAL_SLAV_BESZTERCEBANYA_EGYH
 , "Vác és Gyulafehérvár: Szent Mihály főangyal, az egyházmegye védőszentje; főünnep"                             // LOKAL_SLAV_VACI_PATRON
 , "Szeged-Csanád, Temesvár és Nagybecskerek: az egyházmegye védőszentje; főünnep"                                // LOKAL_SLAV_SZEGED_CSAN_PATRON2
-, "A Veszprémi Főegyházmegyében: a főszékesegyházban; főünnep"													 // LOKAL_SLAV_VESZPREM_FOEGYH
+, "jen pro SCSC"																								 // LOKAL_SLAV_CZ_SCSC
 , "pre Rehoľu najsvätejšieho Vykupiteľa – redemptoristky: sviatok"                                               // LOKAL_SLAV_CSSR_SVIATOK
 , "A Szeged-Csanádi Egyházmegyében: a székesegyházban; főünnep"                                                  // LOKAL_SLAV_SZEGED_CSAN_EGYH2
 , "A Pécsi Egyházmegyében: az egyházmegye társvédőszentje; főünnep." HTML_LINE_BREAK "A szlovákiai egyházmegyékben: tetszés szerinti emléknap" // LOKAL_SLAV_PECS_PATRON
@@ -8494,6 +8494,20 @@ const char* text_MAJ_08_3_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_MAJ_08_SCSC[POCET_JAZYKOV + 1] =
+{
+	"Bl. Ulriky Nischovej, panny",
+	"Bl. Ulriky Nischové, panny",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_MAJ_08_SJ[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jána Sullivana, kňaza",
@@ -10465,10 +10479,10 @@ const char* text_JUN_16_SK[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUN_16_1_OFM[POCET_JAZYKOV + 1] =
+const char* text_JUN_16_SCSC[POCET_JAZYKOV + 1] =
 {
 	"Bl. Márie Terézie Schererovej, panny, rehoľníčky, členky 3. rádu",
-	"Bl. Marie Terezie Schererové, panny a řeholnice",
+	"Bl. Marie Terezie Schererové, panny a spoluzakladatelky",
 	"",
 	"",
 	"",
@@ -12022,7 +12036,7 @@ const char* text_JUL_30_SK[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUL_30_SK_OFM[POCET_JAZYKOV + 1] =
+const char* text_JUL_30_SCSC[POCET_JAZYKOV + 1] =
 {
 	"Bl. Zdenky Cecílie Schelingovej, panny a mučenice, " HTML_LINE_BREAK "rehoľníčky, členky 3. rádu",
 	"Bl. Zdenky Schelingové, panny a mučednice",

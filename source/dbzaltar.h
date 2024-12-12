@@ -2163,7 +2163,7 @@ extern const char* text_JUN_13_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUN_13_1_OFM_HU[POCET_JAZYKOV + 1];
 extern const char* text_JUN_13_2_OFM_HU[POCET_JAZYKOV + 1];
 extern const char* text_JUN_15_OFM_HU[POCET_JAZYKOV + 1];
-extern const char* text_JUN_16_1_OFM[POCET_JAZYKOV + 1];
+extern const char* text_JUN_16_SCSC[POCET_JAZYKOV + 1];
 extern const char* text_JUN_16_2_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUN_17_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUN_20_OFM[POCET_JAZYKOV + 1];
@@ -2185,7 +2185,6 @@ extern const char* text_JUL_21_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUL_24_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUL_28_1_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUL_28_2_OFM[POCET_JAZYKOV + 1];
-extern const char* text_JUL_30_SK_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUL_30_OFMCAP[POCET_JAZYKOV + 1];
 extern const char* text_AUG_02_OFM[POCET_JAZYKOV + 1];
 extern const char* text_AUG_05_OFM[POCET_JAZYKOV + 1];
@@ -2250,6 +2249,10 @@ extern const char* text_NOV_29_OFM[POCET_JAZYKOV + 1];
 extern const char* text_DEC_02_1_OFM[POCET_JAZYKOV + 1];
 extern const char* text_DEC_02_2_OFM[POCET_JAZYKOV + 1];
 extern const char* text_DEC_10_OFMCAP[POCET_JAZYKOV + 1];
+
+// --------------- SCSC propriá ---------------
+extern const char* text_MAJ_08_SCSC[POCET_JAZYKOV + 1];
+extern const char* text_JUL_30_SCSC[POCET_JAZYKOV + 1];
 
 // --------------- OP propriá ---------------
 extern const char* text_JAN_03_OP[POCET_JAZYKOV + 1];
