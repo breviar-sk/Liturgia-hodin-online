@@ -2130,35 +2130,153 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 #if defined(EXPORT_HTML_SPECIALS)
 					Export("[%s:%s|rest_krizik=%s]", strbuff, modlparam, (rest_krizik == NULL) ? STR_EMPTY : rest_krizik);
 #endif
+					Log("_global_modlitba == %d (%s)...\n", _global_modlitba, nazov_modlitby(_global_modlitba));
+					Log("paramname == %s...\n", paramname);
+					Log("modlparam == %s...\n", modlparam);
+					Log("rest_krizik == %s...\n", (rest_krizik == NULL) ? STR_EMPTY : rest_krizik);
 
 					// krížik v texte includovaného žalmu/chválospevu
 					if ((je_antifona == ANO) || (equals(paramname, PARAM_ZALM1) || equals(paramname, PARAM_ZALM2) || equals(paramname, PARAM_ZALM3) || equals(paramname, PARAM_RCHVALOSPEV) || equals(paramname, PARAM_VCHVALOSPEV))) {
+
+						Log("krížik v texte includovaného žalmu/chválospevu...\n");
 						write_krizik = ANO;
 						if ((je_antifona == ANO) && ((antifona_pocet MOD 2) == 0)) {
 							// krížik sa vypisuje len v počiatočných (nepárnych) antifónach (pre modlitbu cez deň sa nevyskytuje, ani v silných obdobiach)
-							Log("-párna antifóna-");
+							Log("-párna antifóna-\n");
 							write_krizik = NIE;
 						}
 						if ((je_antifona == ANO) && (antifona_pocet > 1) && (_global_modlitba == MODL_INVITATORIUM)) {
 							// pre invitatórium sa antifóna opakuje... krížik sa vypisuje len na začiatku
-							Log("-párna antifóna-");
+							Log("-párna antifóna-\n");
 							write_krizik = NIE;
 						}
 						/*
 						 * môže nastať situácia, že antifóna má v sebe krížik, ale nasleduje taký žalm/chválospev, ktorý tam ten verš nemá?
 						 * pre žaltár sa to asi nemôže stať, ale pre voliteľné napr. spomienky (keď si vezme iné žalmy), by sa to teoreticky stať mohlo...
-						 * potom treba vyšpecifikovať podmienku, ktorá bude kontrolovať: ak je to antifóna 1, treba porovnať, či equals(rest_krizik, "_global_modl_...".zalm1.anchor) a pod.
+						 * príklad, kedy to môže nastať: pondelok v Adventnom období II. (po 16. decembri), kedy sú antifóny rovnaké pre ranné chvály a vešpery; pondelok má ant. 2 zhodnú so začiatkom chválospevu Iz 42 (takže krížik je len pre ranné chvály, nie pre vešpery)
+						 * podmienka kontroluje: ak je to antifóna 1, treba porovnať, či equals(rest_krizik, "_global_modl_...".zalm1.anchor) a pod.
 						 * case pre danú modlitbu: pre MODL_RANNE_CHVALY: _global_modl_ranne_chvaly.zalm1.anchor; pre iné modlitby iný "_global_modl_..."
-
-						 if ((je_antifona == ANO) && ((antifona_pocet MOD 2) == 1) && (-- zložitá podmienka --)) {
-							 // krížik sa vypisuje v počiatočných (nepárnych) antifónach len vtedy, ak nasledujúci žalm/chválospev je ten zodpovedajúci
-							 Log("-nepárna antifóna/iný žalm-");
-							 write_krizik = NIE;
-						 }
 						 */
-						if ((je_antifona == NIE) && !equals(modlparam, rest_krizik)) {
+						if ((je_antifona == ANO) && ((antifona_pocet MOD 2) == 1)) {
+
+							// krížik sa vypisuje v počiatočných (nepárnych) antifónach len vtedy, ak nasledujúci žalm/chválospev je ten zodpovedajúci
+
+							switch (_global_modlitba) {
+								/*
+								 * invitatórium obsahuje žalmy uvedené priamo v šablóne
+							case MODL_INVITATORIUM:
+								if (equals(paramname, PARAM_ANTIFONA1) && !equals(rest_krizik, _global_modl_invitatorium.zalm1.anchor)) {
+									Log("_global_modl_invitatorium.zalm1.anchor == %s...\n", _global_modl_invitatorium.zalm1.anchor); // undef
+									write_krizik = NIE;
+								}
+								break;
+								*/
+							case MODL_RANNE_CHVALY:
+								if (equals(paramname, PARAM_ANTIFONA1) && !equals(rest_krizik, _global_modl_ranne_chvaly.zalm1.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTRCHVAL) && !equals(rest_krizik, _global_modl_ranne_chvaly.zalm2.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA3) && !equals(rest_krizik, _global_modl_ranne_chvaly.zalm3.anchor)) {
+									write_krizik = NIE;
+								}
+								break;
+							case MODL_CEZ_DEN_9:
+								if (equals(paramname, PARAM_ANTIFONA1) && !equals(rest_krizik, _global_modl_cez_den_9.zalm1.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA2) && !equals(rest_krizik, _global_modl_cez_den_9.zalm2.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA3) && !equals(rest_krizik, _global_modl_cez_den_9.zalm3.anchor)) {
+									write_krizik = NIE;
+								}
+								break;
+							case MODL_CEZ_DEN_12:
+								if (equals(paramname, PARAM_ANTIFONA1) && !equals(rest_krizik, _global_modl_cez_den_12.zalm1.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA2) && !equals(rest_krizik, _global_modl_cez_den_12.zalm2.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA3) && !equals(rest_krizik, _global_modl_cez_den_12.zalm3.anchor)) {
+									write_krizik = NIE;
+								}
+								break;
+							case MODL_CEZ_DEN_3:
+								if (equals(paramname, PARAM_ANTIFONA1) && !equals(rest_krizik, _global_modl_cez_den_3.zalm1.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA2) && !equals(rest_krizik, _global_modl_cez_den_3.zalm2.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA3) && !equals(rest_krizik, _global_modl_cez_den_3.zalm3.anchor)) {
+									write_krizik = NIE;
+								}
+								break;
+							case MODL_VESPERY:
+								if (equals(paramname, PARAM_ANTIFONA1) && !equals(rest_krizik, _global_modl_vespery.zalm1.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA2) && !equals(rest_krizik, _global_modl_vespery.zalm2.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTVCHVAL) && !equals(rest_krizik, _global_modl_vespery.zalm3.anchor)) {
+									write_krizik = NIE;
+								}
+								break;
+							case MODL_KOMPLETORIUM:
+								if (equals(paramname, PARAM_ANTIFONA1k) && !equals(rest_krizik, _global_modl_kompletorium.zalm1.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA2k) && !equals(rest_krizik, _global_modl_kompletorium.zalm2.anchor)) {
+									write_krizik = NIE;
+								}
+								break;
+							case MODL_POSV_CITANIE:
+								if (equals(paramname, PARAM_ANTIFONA1) && !equals(rest_krizik, _global_modl_posv_citanie.zalm1.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA2) && !equals(rest_krizik, _global_modl_posv_citanie.zalm2.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA3) && !equals(rest_krizik, _global_modl_posv_citanie.zalm3.anchor)) {
+									write_krizik = NIE;
+								}
+								break;
+							case MODL_PRVE_VESPERY:
+								if (equals(paramname, PARAM_ANTIFONA1) && !equals(rest_krizik, _global_modl_prve_vespery.zalm1.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA2) && !equals(rest_krizik, _global_modl_prve_vespery.zalm2.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTVCHVAL) && !equals(rest_krizik, _global_modl_prve_vespery.zalm3.anchor)) {
+									write_krizik = NIE;
+								}
+								break;
+								break;
+							case MODL_PRVE_KOMPLETORIUM:
+								if (equals(paramname, PARAM_ANTIFONA1k) && !equals(rest_krizik, _global_modl_prve_kompletorium.zalm1.anchor)) {
+									write_krizik = NIE;
+								}
+								if (equals(paramname, PARAM_ANTIFONA2k) && !equals(rest_krizik, _global_modl_prve_kompletorium.zalm2.anchor)) {
+									write_krizik = NIE;
+								}
+								break;
+							default:
+								break;
+							} // switch
+
+							if (write_krizik == NIE) {
+								Log("-nepárna antifóna/iný žalm-\n");
+							}
+						}
+
+						 if ((je_antifona == NIE) && !equals(modlparam, rest_krizik)) {
 							// krížik sa v žalmoch/chválospevoch vypisuje len v prípade, že predtým (v načítanej antifóne) bolo správne uvedené, ku ktorému žalmu sa to vzťahuje
-							Log("-iný žalm-");
+							Log("-iný žalm-\n");
 							write_krizik = NIE;
 						}
 						if (write_krizik == ANO) {

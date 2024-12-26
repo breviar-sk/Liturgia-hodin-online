@@ -619,19 +619,9 @@ p.bibleref {
 }
 
 .value { 
-	color: brown; 
 	font-family: Monospace; 
 	font-style: normal; 
 	font-weight: bold; 
-}
-
-.brown { 
-	color: brown; 
-}
-
-.brownsmall { 
-	color: brown; 
-	font-size: 85%; 
 }
 
 .explain { 
