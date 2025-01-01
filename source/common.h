@@ -1,7 +1,7 @@
 /*********************************************************/
 /*                                                       */
 /* common.h                                              */
-/* (c)1999-2024 | Juraj Vidéky | videky@breviar.sk       */
+/* (c)1999-2025 | Juraj Vidéky | videky@breviar.sk       */
 /*                                                       */
 /* description | new core basic define's                 */
 /*                                                       */
