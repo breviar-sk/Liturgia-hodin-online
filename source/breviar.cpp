@@ -15834,6 +15834,11 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		return FAILURE;
 	}
 
+	// getting current year
+	struct tm dnes;
+
+	dnes = _get_dnes();
+
 	// setting up some basic data about liturgical year
 	_global_den.rok = NULL_YEAR;
 	analyzuj_rok(_global_den.rok);
@@ -15951,6 +15956,12 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		}
 		else {
 			_global_den.smer = 13; // všedné dni vianočné
+			// všedné dni: interpretujeme deň v týždni ako dátum v januári (pondelok == 2. januára atď.)
+			// NOTE: the only real reason for these changes is to enable ferial day for 02JAN (where obligatory memory is in calendar)
+			_global_den.den = _global_den.denvt + 1;
+			_global_den.mesiac = MES_JAN;
+			_global_den.rok = dnes.tm_year;
+			d = _global_den.denvt = den_v_tyzdni(_global_den.den, _global_den.rok); // deň v januári == deň v roku
 		}
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
@@ -15966,6 +15977,14 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 			_global_den.smer = 13; // všedné dni vianočné
 			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA) && (_global_den.denvt == DEN_PONDELOK)) {
 				_global_den.denvr = NULL_KRST_KRISTA_PANA;
+			}
+			else {
+				// všedné dni: interpretujeme deň v týždni ako dátum v januári (utorok == 7. januára atď.); customized for celerating ZJAV on 06JAN only
+				// ToDo: not possible to involve 12JAN and 13JAN
+				_global_den.den = _global_den.denvt + 5;
+				_global_den.mesiac = MES_JAN;
+				_global_den.rok = dnes.tm_year;
+				d = _global_den.denvt = den_v_tyzdni(_global_den.den, _global_den.rok); // deň v januári == deň v roku
 			}
 		}
 		_global_den.farba = LIT_FARBA_BIELA;
