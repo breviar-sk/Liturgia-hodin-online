@@ -6228,6 +6228,34 @@ short int atomodlitba(char *modlitba) {
 	return p;
 } // atomodlitba()
 
+struct tm _get_dnes(void) {
+	time_t timer;
+	struct tm dnes;
+
+	// get current timestamp (date + time)
+	// 2009-05-22: originaly here was: timer = time(NULL); 
+	// some people use breviary also after midnight for the "previous" day (they want to complete the day prayers even after the midnight) => we are shifting the "real" date approx. 2 hours later
+	// Pavel Kučera <teni@volny.cz> však poprosil, aby aj po polnoci ešte chvíľu bolo možné modliť sa kompletórium
+	// posunuté na pol tretiu: má to hlbokú logiku: pravdepodobne nik sa -- hoci aj po polnoci -- nemodlí ofícium z nasledovného dňa => predsa opravené na 2.01
+	// invitatórium by malo byť prvou rannou modlitbou po zobudení. 
+	// myslím, že sú výnimočné prípady, že ľuda regulérne modliaci sa breviár vstávajú o jednej, o druhej v noci (čím začne ich nový deň).
+	timer = time(NULL) - (time_t)(2.01 * 60 * 60);
+
+	// converts date/time to structure
+	dnes = *localtime(&timer);
+
+	// modifiyng time_check structure with the data
+	dnes.tm_mon = dnes.tm_mon + 1;
+	dnes.tm_year = dnes.tm_year + 1900;
+	dnes.tm_yday = dnes.tm_yday + 1;
+
+	// !!! tmp if you want to simulate that TODAY is another date (from the past or future), simply modify this method
+	// dnes.tm_mon = 5;
+	// dnes.tm_mday = 13;
+
+	return dnes;
+} // _get_dnes()
+
 void _rozbor_dna_base(_struct_den_mesiac datum, short int rok) {
 	Log("_rozbor_dna_base(): begin...\n");
 
@@ -8895,6 +8923,8 @@ void Export_HtmlFormPOST(char* action) {
 #endif
 
 void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho, short int modl, char pom[MAX_STR], short int doplnkova_psalmodia, short int som_v_tabulke, short int modl_visible = MODL_NEURCENA) {
+	Log("_export_rozbor_dna_button_modlitba()...\n");
+
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 	short int orig_doplnkova_psalmodia = doplnkova_psalmodia;
@@ -8902,6 +8932,13 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 		doplnkova_psalmodia = MODL_CEZ_DEN_ZALMY_ZO_DNA;
 	}
 	char export_fname_modl_str[SMALL] = STR_EMPTY; // reťazec pre identifikáciu modlitby v názve súboru (ID modlitby alebo char_modlitby[i])
+
+	short int tmp_denvt = _global_den.denvt;
+
+	// getting current year
+	struct tm dnes;
+
+	dnes = _get_dnes();
 
 	// generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
 	if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)) {
@@ -8922,11 +8959,25 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 
 	if (query_type == PRM_LIT_OBD) {
 		Log("pre query_type == PRM_LIT_OBD sa buttony pre modlitby tlačia ináč (nemám nastavený dátum)...\n");
+
+		// special change for OBD_VIANOCNE_I and OBD_VIANOCNE_II
+		if ((_global_den.litobd == OBD_VIANOCNE_I) || (_global_den.litobd == OBD_VIANOCNE_II)) {
+			Log("-- special change for OBD_VIANOCNE_I and OBD_VIANOCNE_II...\n");
+
+			short int denvt_01_JAN = den_v_tyzdni(1, dnes.tm_year);
+
+			tmp_denvt = _global_den.denvt - denvt_01_JAN + (_global_den.litobd - OBD_VIANOCNE_I);
+
+			if (tmp_denvt < DEN_NEDELA) {
+				tmp_denvt += 7;
+			}
+		}
+
 		// predpokladáme, že máme _global_linky == ANO
 		sprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c" HTML_AMPERSAND "%s=%s%s",
 			script_name,
 			STR_QUERY_TYPE, STR_PRM_LIT_OBD,
-			STR_DEN_V_TYZDNI, _global_den.denvt,
+			STR_DEN_V_TYZDNI, tmp_denvt,
 			STR_TYZDEN, _global_den.tyzden,
 			STR_LIT_OBD, _global_den.litobd,
 			STR_LIT_ROK, _global_den.litrok,
@@ -9032,6 +9083,8 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 } // _export_rozbor_dna_button_modlitba();
 
 void _export_rozbor_dna_button_modlitba2(short int modl, char pom[MAX_STR]) {
+	Log("_export_rozbor_dna_button_modlitba2()...\n");
+
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 	if ((query_type == PRM_LIT_OBD) && (modl == MODL_VSETKY)) {
@@ -12290,6 +12343,9 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		}
 		Export("</select>\n");
 
+		Export(HTML_CRLF_LINE_BREAK);
+		Export("<" HTML_SPAN_SMALL ">(%s)" HTML_SPAN_END, html_text_vianocne_obd_note[_global_jazyk]);
+
 		Export(HTML_TABLE_CELL_END "\n");
 		Export(HTML_TABLE_ROW_END "\n");
 
@@ -15503,34 +15559,6 @@ void _main_rozbor_dna_txt_xml(short int typ, short int d, short int m, short int
 	Log("-- _main_rozbor_dna_txt_xml(short int, short int, short int, short int, char *): end\n");
 }// _main_rozbor_dna_txt_xml()
 
-struct tm _get_dnes(void) {
-	time_t timer;
-	struct tm dnes;
-
-	// get current timestamp (date + time)
-	// 2009-05-22: originaly here was: timer = time(NULL); 
-	// some people use breviary also after midnight for the "previous" day (they want to complete the day prayers even after the midnight) => we are shifting the "real" date approx. 2 hours later
-	// Pavel Kučera <teni@volny.cz> však poprosil, aby aj po polnoci ešte chvíľu bolo možné modliť sa kompletórium
-	// posunuté na pol tretiu: má to hlbokú logiku: pravdepodobne nik sa -- hoci aj po polnoci -- nemodlí ofícium z nasledovného dňa => predsa opravené na 2.01
-	// invitatórium by malo byť prvou rannou modlitbou po zobudení. 
-	// myslím, že sú výnimočné prípady, že ľuda regulérne modliaci sa breviár vstávajú o jednej, o druhej v noci (čím začne ich nový deň).
-	timer = time(NULL) - (time_t)(2.01 * 60 * 60);
-
-	// converts date/time to structure
-	dnes = *localtime(&timer);
-
-	// modifiyng time_check structure with the data
-	dnes.tm_mon = dnes.tm_mon + 1;
-	dnes.tm_year = dnes.tm_year + 1900;
-	dnes.tm_yday = dnes.tm_yday + 1;
-
-	// !!! tmp if you want to simulate that TODAY is another date (from the past or future), simply modify this method
-	// dnes.tm_mon = 5;
-	// dnes.tm_mday = 13;
-
-	return dnes;
-} // _get_dnes()
-
 // vypluje cely objednavaci formular, ktory obsahuje dnesny den, udaje o nom, linku nan, okienka pre den, mesiac, rok; okienko pre (analyzu) rok; okienko pre sviatok, ... a tak.
 // pridaná možnosť priamo generovať modlitbu, preto sú vstupom aj dve premenné podobne ako je to v _main_rozbor_dna
 void _main_dnes(char *modlitba, char *poradie_svaty) {
@@ -15706,6 +15734,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	char lr;
 	short int jeSpolocnaCast = NIE;
 	_struct_sc sc;
+	char pom[MAX_STR] = STR_EMPTY;
 
 	Log("_main_liturgicke_obdobie(): začiatok...\n");
 
@@ -15839,6 +15868,8 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 
 	dnes = _get_dnes();
 
+	short int denvt_01_JAN = den_v_tyzdni(1, dnes.tm_year);
+
 	// setting up some basic data about liturgical year
 	_global_den.rok = NULL_YEAR;
 	analyzuj_rok(_global_den.rok);
@@ -15951,22 +15982,32 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		break;
 
 	case OBD_VIANOCNE_I:
+		/*
+		 * original code: worked only for Sunday and 06JAN
 		if (d == DEN_NEDELA) {
 			_global_den.smer = 6; // nedele vianočné (a cezročné)
 		}
 		else {
 			_global_den.smer = 13; // všedné dni vianočné
-			// všedné dni: interpretujeme deň v týždni ako dátum v januári (pondelok == 2. januára atď.)
-			// NOTE: the only real reason for these changes is to enable ferial day for 02JAN (where obligatory memory is in calendar)
-			_global_den.den = _global_den.denvt + 1;
-			_global_den.mesiac = MES_JAN;
-			_global_den.rok = dnes.tm_year;
-			d = _global_den.denvt = den_v_tyzdni(_global_den.den, _global_den.rok); // deň v januári == deň v roku
+		}
+		 */
+		_global_den.smer = 13; // všedné dni vianočné
+		// všedné dni: interpretujeme deň v týždni ako dátum v januári (pondelok == 2. januára atď.)
+		// NOTE: the only real reason for these changes is to enable ferial day for 02JAN (where obligatory memory is in calendar)
+		_global_den.den = _global_den.denvt + 1;
+		_global_den.mesiac = MES_JAN;
+		_global_den.rok = dnes.tm_year;
+		d = _global_den.denvt = den_v_tyzdni(_global_den.den, _global_den.rok); // deň v januári == deň v roku
+		if (_global_den.den + denvt_01_JAN > DEN_SOBOTA) {
+			t = _global_den.tyzden = 2;
+			tz = _global_den.tyzzal = 2;
 		}
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
 
 	case OBD_VIANOCNE_II:
+		/*
+		 * original code: worked only for Sunday (06JAN) and KRST
 		if (d == DEN_NEDELA) {
 			_global_den.smer = 6; // nedele vianočné (a cezročné)
 			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA)) {
@@ -15978,15 +16019,14 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA) && (_global_den.denvt == DEN_PONDELOK)) {
 				_global_den.denvr = NULL_KRST_KRISTA_PANA;
 			}
-			else {
-				// všedné dni: interpretujeme deň v týždni ako dátum v januári (utorok == 7. januára atď.); customized for celerating ZJAV on 06JAN only
-				// ToDo: not possible to involve 12JAN and 13JAN
-				_global_den.den = _global_den.denvt + 5;
-				_global_den.mesiac = MES_JAN;
-				_global_den.rok = dnes.tm_year;
-				d = _global_den.denvt = den_v_tyzdni(_global_den.den, _global_den.rok); // deň v januári == deň v roku
-			}
 		}
+		 */
+		_global_den.smer = 13; // všedné dni vianočné
+		// všedné dni: interpretujeme deň v týždni ako dátum v januári (nedeľa == 7. januára atď.); customized for celerating ZJAV on 06JAN only
+		_global_den.den = _global_den.denvt + 7;
+		_global_den.mesiac = MES_JAN;
+		_global_den.rok = dnes.tm_year;
+		d = _global_den.denvt = den_v_tyzdni(_global_den.den, _global_den.rok); // deň v januári == deň v roku
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
 
@@ -16045,6 +16085,15 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 
 	// settings for sidemenu: above
 	hlavicka_sidemenu();
+	
+	// special behavior for OBD_VIANOCNE_I and OBD_VIANOCNE_II
+	if ((_global_den.litobd == OBD_VIANOCNE_I) || (_global_den.litobd == OBD_VIANOCNE_II)) {
+		Log("-- special behavior for OBD_VIANOCNE_I and OBD_VIANOCNE_II...\n");
+		Log("/* teraz vypisujem heading 1, datum %d. %s %d */\n", _global_den.den, nazov_mesiaca(_global_den.mesiac), _global_den.rok);
+
+		strcpy(pom, _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac + 1, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+		_export_heading_center(query_type, pom);
+	}
 
 	liturgicke_obdobie(lo, t, d, tz, poradie_svateho);
 

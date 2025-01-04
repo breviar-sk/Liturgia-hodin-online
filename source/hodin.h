@@ -2329,6 +2329,21 @@ const char* html_text_spol_casti_vziat_zo_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
+const char* html_text_vianocne_obd_note[POCET_JAZYKOV + 1] =
+{
+	"pre vianočné obdobie sa dni v týždni interpretujú ako dátum v januári",
+	"pro dobu vánoční se dny v týdnu interpretují jako datum v lednu",
+	"for Christmas season weekdays are interpreted as dates in January",
+	"pro feriis nataliciis temporum mense Ianuario interpretantur",
+	"",
+	"pro dobu vánoční se dny v týdnu interpretují jako datum v lednu",
+	"karácsonyi szezonban a hétköznapokat januári dátumként értelmezzük",
+	"ru_text",
+	"by_text",
+	"fyrir jólin eru virkir dagar túlkaðir sem dagsetningar í janúar",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
 const char* html_text_opt_0_specialne[POCET_JAZYKOV + 1] =
 {
 	"v texte modlitieb zobraziť",

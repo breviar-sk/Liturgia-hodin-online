@@ -340,7 +340,6 @@
 #define HTML_SPAN_TEXTNOTE        HTML_SPAN_CLASS "\"" HTML_CLASS_NAME_TEXTNOTE "\""
 
 #define HTML_CLASS_CALENDAR       "class=\"calendar\""
-#define HTML_CLASS_SMALL          "class=\"small\""
 
 #define HTML_CALENDAR_HEADING       "span class=\"calendar heading\""
 #define HTML_CALENDAR_DAYS          "span class=\"calendar day_name\""
