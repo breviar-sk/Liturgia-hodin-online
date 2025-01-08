@@ -6187,11 +6187,11 @@ const char* text_JAN_20_HU[POCET_JAZYKOV + 1] =
 const char* text_JAN_21[POCET_JAZYKOV + 1] =
 {
 	"Sv. Agnesy, panny a mučenice",
-	"Sv. Anežky, panny a mučednice",
+	"Sv. Anežky (Římské), panny a mučednice",
 	"",
 	"S. Agnetis, virginis et martyris",
 	"",
-	"Sv. Anežky, panny a mučednice",
+	"Sv. Anežky (Římské), panny a mučednice",
 	"Szent Ágnes szűz és vértanú",
 	"ru_text",
 	"Св. Агнешкі, панны і мучаніцы",
