@@ -4999,7 +4999,7 @@ const char* html_text_opt_5_OffDefZ146_150[POCET_JAZYKOV + 1] =
 	"a 145. helyett vehető a 150. zsoltár",
 	"ru_text",
 	"выкарыстоўваць псальм 150 замест 146 (145)",
-	"í stað sálms 146 er tekinn sálmur 150    ",
+	"í stað sálms 146 er tekinn sálmur 150",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 

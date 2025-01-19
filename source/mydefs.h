@@ -1150,7 +1150,7 @@ extern short int query_type; // contains constants PRM_...
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY "FORCE_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY"
 #else
-#define STR_FORCE_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY "of5i(deprecated)"
+#define STR_FORCE_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY "of5i" // deprecated
 #endif
 
 #define FORCE_BIT_OPT_5_OCR_34_HYMNS 137
@@ -1497,18 +1497,19 @@ extern short int query_type; // contains constants PRM_...
 #define ELEM_BEGIN(elem)     "<" elem ">"
 #define ELEM_END(elem)       "</" elem ">"
 
-#define ELEM_BEGIN_ID(elem)   "<" elem " Id=\"%d\">"
+#define ELEM_BEGIN_ID(elem)   "<" elem " Id=\"%ld\">"
 #define ELEM_BEGIN_VALUE(elem)   "<" elem " Value=\"%s\">"
-#define ELEM_BEGIN_ID_VALUE(elem)   "<" elem " Id=\"%d\" Value=\"%s\">"
-#define ELEM_BEGIN_ID_CHARVALUE(elem)   "<" elem " Id=\"%d\" Value=\"%c\">"
+#define ELEM_BEGIN_ID_VALUE(elem)   "<" elem " Id=\"%ld\" Value=\"%s\">"
+#define ELEM_BEGIN_ID_CHARVALUE(elem)   "<" elem " Id=\"%ld\" Value=\"%c\">"
 #define ELEM_BEGIN_NAME(elem)   "<" elem " Name=\"%s\">"
-#define ELEM_BEGIN_VALUE_NAME_FORCENAME_TEXT(elem)  "<" elem " Value=\"%d\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
-#define ELEM_BEGIN_ID_FORCENAME_TEXT(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_FORCE_BIT_OPT_0_VERSE
-#define ELEM_BEGIN_ID_FORCENAME_TEXT_SLASH(elem)  "<" elem " Id=\"%d\" ForceName=\"%s\" Text=\"%s/%s\">"
-#define ELEM_BEGIN_ID_TYPE(elem)   "<" elem " Id=\"%d\" Type=\"%s\">"
-#define ELEM_BEGIN_ID_TYPE_VALUE(elem)   "<" elem " Id=\"%d\" Type=\"%s\" Value=\"%s\">"
-#define ELEM_BEGIN_ID_TYPE_VALUE_ELEMENT(elem)   "<" elem " Id=\"%d\" Type=\"%s\" Value=\"%s\" XmlElement=\"%s\">"
-#define ELEM_BEGIN_ID_TYPE_OPTION_VALUE_ELEMENT(elem)   "<" elem " Id=\"%d\" Type=\"%s\" Option=\"%s\" Value=\"%s\" XmlElement=\"%s\">"
+#define ELEM_BEGIN_VALUE_NAME_FORCENAME_TEXT(elem)  "<" elem " Value=\"%ld\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
+#define ELEM_BEGIN_ID_FORCENAME_TEXT(elem)  "<" elem " Id=\"%ld\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_FORCE_BIT_OPT_0_VERSE
+#define ELEM_BEGIN_ID_FORCENAME_TEXT_LONG_LONG(elem)  "<" elem " Id=\"%llu\" ForceName=\"%s\" Text=\"%s\">" // due to BASE_OPT_6_OTCENAS_UVOD_MULTI and higher
+#define ELEM_BEGIN_ID_FORCENAME_TEXT_SLASH(elem)  "<" elem " Id=\"%ld\" ForceName=\"%s\" Text=\"%s/%s\">"
+#define ELEM_BEGIN_ID_TYPE(elem)   "<" elem " Id=\"%ld\" Type=\"%s\">"
+#define ELEM_BEGIN_ID_TYPE_VALUE(elem)   "<" elem " Id=\"%ld\" Type=\"%s\" Value=\"%s\">"
+#define ELEM_BEGIN_ID_TYPE_VALUE_ELEMENT(elem)   "<" elem " Id=\"%ld\" Type=\"%s\" Value=\"%s\" XmlElement=\"%s\">"
+#define ELEM_BEGIN_ID_TYPE_OPTION_VALUE_ELEMENT(elem)   "<" elem " Id=\"%ld\" Type=\"%s\" Option=\"%s\" Value=\"%s\" XmlElement=\"%s\">"
 
 #endif // __MYDEFS_H_
 
