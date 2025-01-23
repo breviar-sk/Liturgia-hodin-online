@@ -6861,7 +6861,7 @@ const char* text_FEB_09_SDB[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_09_OFMCAP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Leopolda z Alpandeire, rehoľníka",
+	"Bl. Leopolda z Alpandeiry, rehoľníka, člena 1. rádu",
 	"Bl. Leopolda z Alpandeire, řeholníka", // (Marquez-Sánchez)
 	"",
 	"",
