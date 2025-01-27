@@ -2383,7 +2383,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 					// má zmysel len ak platí daná podmienka
 					if (podmienka) {
 						Log("includeFile: including %s\n", paramname);
-						Export("%s:begin-->", paramname);
+						Export("%s:begin" HTML_COMMENT_END, paramname);
 
 						char before[SMALL] = STR_EMPTY;
 						sprintf(before, HTML_P_CENTER_SMALL);
@@ -2391,7 +2391,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						mystrcpy(after, HTML_P_END, SMALL);
 						_export_link_show_hide(opt, bit, popis_show, popis_hide, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, specific_string, (char *)STR_EMPTY, anchor, (char *)HTML_SPAN_END);
 
-						Export("<!--%s:end", paramname);
+						Export(HTML_COMMENT_BEGIN "%s:end", paramname);
 					}
 					else {
 						ExportHtmlOnlyFormat("[skipping %s]", paramname);
@@ -2484,7 +2484,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						}
 						// nezlomiteľné medzery
 						Export("%s", convert_nonbreaking_spaces(zakoncenie));
-						Export("<!--%s", /* (rest_zakoncenie == NULL) ? STR_EMPTY : */ rest_zakoncenie);
+						Export(HTML_COMMENT_BEGIN "%s", /* (rest_zakoncenie == NULL) ? STR_EMPTY : */ rest_zakoncenie);
 						je_modlitba = NIE;
 					}
 				}// vypísať zakončenie
@@ -2586,7 +2586,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						}
 						if (EXPORT_FOOTNOTES) {
 							Export("%s\" " HTML_CLASS_WITHOUT_BORDER ">", fnrefbuff);
-							Export("<sup>%s</sup>", fnrefbuff);
+							Export(HTML_SUP_BEGIN "%s" HTML_SUP_END, fnrefbuff);
 							Export(HTML_A_END);
 						}
 					}
@@ -2624,7 +2624,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 							if (EXPORT_FOOTNOTES) {
 								Export(HTML_A_NAME_BEGIN"\"fn%s\">", fnrest);
 								Export(HTML_A_END);
-								Export("<sup>%s</sup>", fnrest);
+								Export(HTML_SUP_BEGIN "%s" HTML_SUP_END, fnrest);
 								ExportNonbreakingSpace();
 							}
 						}
@@ -2754,7 +2754,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 							if (vnutri_footnote == ANO) {
 								Export(HTML_A_NAME_BEGIN "\"fn%s\">", fnrest);
 								Export(HTML_A_END);
-								Export("<sup>%s</sup>", fnrest);
+								Export(HTML_SUP_BEGIN "%s" HTML_SUP_END, fnrest);
 								ExportNonbreakingSpace();
 							}
 							else if (vnutri_note == ANO) {
@@ -3016,7 +3016,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 #if defined(EXPORT_HTML_SPECIALS)
 					if (!write) {
 						// kvôli vnutri_full_text == ANO
-						Export("<!--");
+						Export(HTML_COMMENT_BEGIN);
 					}
 
 					Export("[%s:%s|rest=%s]", strbuff, modlparam, (rest == NULL) ? STR_EMPTY : rest);
@@ -3031,7 +3031,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 
 						if (!write) {
 							// kvôli vnutri_full_text == ANO
-							Export("-->");
+							Export(HTML_COMMENT_END);
 						}
 #endif
 					}
@@ -3040,24 +3040,24 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 				// zobraziť/nezobraziť číslovanie veršov
 				if (equals(strbuff, PARAM_CISLO_VERSA_BEGIN) && (vnutri_inkludovaneho == 1)) {
 					if (EXPORT_VERSE_NUMBER) {
-						Export("<sup>");
+						Export(HTML_SUP_BEGIN);
 					}
 					else {
 						write = NIE;
 #if defined(EXPORT_HTML_SPECIALS)
-						Export("<!--č.verša:zač.");
+						Export(HTML_COMMENT_BEGIN "č.verša:zač.");
 #endif
 						Log("  ruším writing to export file, kvôli PARAM_CISLO_VERSA_BEGIN...\n");
 					}
 				}// zobraziť/nezobraziť číslovanie veršov
 				if (equals(strbuff, PARAM_CISLO_VERSA_END) && (vnutri_inkludovaneho == 1)) {
 					if (EXPORT_VERSE_NUMBER) {
-						Export("</sup>");
+						Export(HTML_SUP_END);
 					}
 					else {
 						write = EXPORT_FULL_TEXT;
 #if defined(EXPORT_HTML_SPECIALS)
-						Export("č.verša:end-->");
+						Export("č.verša:end" HTML_COMMENT_END);
 #endif
 						Log("  opäť writing to export file, PARAM_CISLO_VERSA_END...\n");
 					}
@@ -3601,7 +3601,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 	if (equals(paramname, PARAM_CISLO_VERSA_BEGIN)) {
 		if (_global_skip_in_prayer == NIE) {
 			if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE)) {
-				Export("<sup>");
+				Export(HTML_SUP_BEGIN);
 			}
 			else {
 				// Log("  ruším writing to export file, kvôli PARAM_CISLO_VERSA_BEGIN...\n");
@@ -3612,7 +3612,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 	else if (equals(paramname, PARAM_CISLO_VERSA_END)) {
 		if (_global_skip_in_prayer == NIE) {
 			if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VERSE)) {
-				Export("</sup>");
+				Export(HTML_SUP_END);
 			}
 			else {
 				// Log("  opäť writing to export file, PARAM_CISLO_VERSA_END...\n");
@@ -4013,15 +4013,15 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 	}
 
 	else if (equals(paramname, PARAM_NADPIS)) {
-		ExportHtmlOnly("nadpis:begin-->");
+		ExportHtmlOnly("nadpis:begin" HTML_COMMENT_END);
 		Export(_global_string_modlitba);
-		ExportHtmlOnly("<!--nadpis:end");
+		ExportHtmlOnly(HTML_COMMENT_BEGIN "nadpis:end");
 	} // PARAM_NADPIS
 
 	else if (equals(paramname, PARAM_PODNADPIS)) {
-		ExportHtmlOnly("podnadpis:begin-->");
+		ExportHtmlOnly("podnadpis:begin" HTML_COMMENT_END);
 		Export(_global_string_podnadpis);
-		ExportHtmlOnly("<!--podnadpis:end");
+		ExportHtmlOnly(HTML_COMMENT_BEGIN "podnadpis:end");
 	} // PARAM_PODNADPIS
 
 	else if (equals(paramname, PARAM_SPOL_CAST)) {
@@ -4070,7 +4070,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		if (zobrazit == ANO) {
 			Log("including SPOL_CAST\n");
 
-			Export("spol_cast:begin-->");
+			Export("spol_cast:begin" HTML_COMMENT_END);
 
 			_export_global_string_spol_cast(ANO);
 
@@ -4088,7 +4088,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 				}
 			}
 
-			ExportHtmlOnly("<!--spol_cast:end");
+			ExportHtmlOnly(HTML_COMMENT_BEGIN "spol_cast:end");
 		}
 		else {
 			ExportHtmlOnly("[skipping SPOL_CAST]");
@@ -4673,7 +4673,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		// má zmysel, len ak platí daná podmienka
 		if (podmienka) {
 			Log("interpretParameter: including %s\n", paramname);
-			Export("%s:begin-->", paramname);
+			Export("%s:begin" HTML_COMMENT_END, paramname);
 
 			mystrcpy(before, STR_EMPTY, SMALL);
 			mystrcpy(after, STR_EMPTY, SMALL);
@@ -4759,7 +4759,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 				_export_link_multi(opt, bit, multi_count, popis_show, (char *)HTML_SPAN_RED_SMALL, (char *)HTML_CLASS_QUIET, before, after, anchor, (char *)HTML_SPAN_END);
 			}
 
-			ExportHtmlOnlyFormat("<!--%s:end", paramname);
+			ExportHtmlOnlyFormat(HTML_COMMENT_BEGIN "%s:end", paramname);
 		}
 		else {
 			ExportHtmlOnlyFormat("[skipping %s]", paramname);
@@ -4770,7 +4770,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 	else if (equals(paramname, PARAM_TTS_SECTION)) {
 		// export for voice output, never show; CSS defines display: none;
 		if (EXPORT_TTS_SECTIONS) {
-			ExportHtmlOnly("tts:section:begin-->\n");
+			ExportHtmlOnly("tts:section:begin" HTML_COMMENT_END);
 
 			if (EXPORT_TTS_PAUSES) {
 				Export("<" HTML_SPAN_TTS_PAUSE ">");
@@ -4782,7 +4782,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			Export(HTML_DIV_END "\n");
 
-			ExportHtmlOnly("<!--tts:section:end");
+			ExportHtmlOnly(HTML_COMMENT_BEGIN "tts:section:end");
 		}
 		else {
 			ExportHtmlOnly("[skipping TTS_SECTION]");
@@ -4794,7 +4794,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		if ((aj_navigacia == ANO) && (!(_global_skip_in_prayer >= ANO))) {
 #ifdef BEHAVIOUR_WEB
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
-				ExportHtmlOnly("navigácia:begin-->\n");
+				ExportHtmlOnly("navigácia:begin" HTML_COMMENT_END);
 
 				Export(HTML_P_CENTER_SMALL);
 				_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_TOP, html_text_top[_global_jazyk], HTML_UP_ARROW_CLASSIC);
@@ -4804,7 +4804,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 				_export_rozbor_dna_navig_top_bottom_simple((char *)HTML_BOTTOM, html_text_bottom[_global_jazyk], HTML_DOWN_ARROW_CLASSIC);
 				Export(HTML_P_END "\n");
 
-				ExportHtmlOnly("<!--navigácia:end");
+				ExportHtmlOnly(HTML_COMMENT_BEGIN "navigácia:end");
 			}
 			else {
 				ExportHtmlOnly("[skipping NAVIGACIA]");
@@ -4820,7 +4820,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			// možnosť zobrazenia navigácie v texte modlitieb 
 			_global_pocet_navigacia++;
 			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
-				ExportHtmlOnly("navigácia:begin-->\n");
+				ExportHtmlOnly("navigácia:begin" HTML_COMMENT_END);
 				ExportHtmlComment("navigácia %d", _global_pocet_navigacia);
 				if ((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2)) {
 
@@ -4860,7 +4860,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 					_export_rozbor_dna_buttons_dni(EXPORT_DNA_JEDEN_DEN, NIE, aj_navigacia);
 
 				}// _global_pocet_navigacia > 1 || (_global_pocet_volani_interpretTemplate >= 2)
-				ExportHtmlOnly("<!--navigácia:end");
+				ExportHtmlOnly(HTML_COMMENT_BEGIN "navigácia:end");
 			}
 			else {
 				ExportHtmlOnly("[skipping NAVIGACIA]");
@@ -4869,9 +4869,9 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 #endif
 		} // if (aj_navigacia == ANO)
 		else if (aj_navigacia == CIASTOCNE) {
-			ExportHtmlOnly("navigácia:begin-->\n");
+			ExportHtmlOnly("navigácia:begin" HTML_COMMENT_END);
 			_export_rozbor_dna_buttons_dni(EXPORT_DNA_JEDEN_DEN, NIE, aj_navigacia);
-			ExportHtmlOnly("<!--navigácia:end");
+			ExportHtmlOnly(HTML_COMMENT_BEGIN "navigácia:end");
 		} // if (aj_navigacia == CIASTOCNE)
 	} // PARAM_NAVIGACIA
 
@@ -7826,12 +7826,12 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		if (typ != EXPORT_DNA_XML) {
 			// typ kalendára ako poznámka
 			if ((_local_den.kalendar >= KALENDAR_NEURCENY) && (_local_den.kalendar <= POCET_KALENDAROV)) {
-				sprintf(pom, "<!-- kalendár: %s -->", nazov_kalendara_short[_local_den.kalendar]);
+				sprintf(pom, HTML_COMMENT_BEGIN "kalendár: %s" HTML_COMMENT_END, nazov_kalendara_short[_local_den.kalendar]);
 				Log("pridávam ako poznámku typ kalendára: %s\n", pom);
 				strcat(_local_string, pom);
 			}
 			else {
-				sprintf(pom, "<!-- kalendár nie je určený správne -->");
+				sprintf(pom, HTML_COMMENT_BEGIN "kalendár nie je určený správne" HTML_COMMENT_END);
 				strcat(_local_string, pom);
 			}
 		}
@@ -7950,7 +7950,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		if ((typ != EXPORT_DNA_VIAC_DNI) && (typ != EXPORT_DNA_VIAC_DNI_SIMPLE) && (typ != EXPORT_DNA_VIAC_DNI_TXT)) {
 			// farba sa neexportuje
 			export_farby = NIE;
-			sprintf(_global_string_farba, "<!-- %s %s -->", (char *)nazov_farby(liturgicka_farba), (liturgicka_farba_alt != LIT_FARBA_NEURCENA) ? (char *)nazov_farby(liturgicka_farba_alt) : STR_EMPTY);
+			sprintf(_global_string_farba, HTML_COMMENT_BEGIN "%s %s" HTML_COMMENT_END, (char *)nazov_farby(liturgicka_farba), (liturgicka_farba_alt != LIT_FARBA_NEURCENA) ? (char *)nazov_farby(liturgicka_farba_alt) : STR_EMPTY);
 		}
 		else {
 			// exportuje sa liturgická farba privilegovaných dní (VSLH, č. 238-239)
@@ -14365,9 +14365,9 @@ void showAllPrayers(short int typ, short int den, short int mesiac, short int ro
 		_global_opt[OPT_3_SPOLOCNA_CAST] = opt_3; // potrebné nastaviť pôvodnú hodnotu, lebo sa niekde v rozbor_dna_s_modlitbou() upravuje
 
 		if (je_modlitba_cez_den(modlitba)) {
-			Log("<!-- MCD (%d, %llu) -->", modlitba, opt_1);
+			Log(HTML_COMMENT_BEGIN "MCD (%d, %llu)" HTML_COMMENT_END, modlitba, opt_1);
 			if (((opt_1 & BIT_OPT_1_MCD_DOPLNKOVA) != BIT_OPT_1_MCD_DOPLNKOVA) && /* delenie trojkou so zvyškom */ (((_global_den.denvr + rok + modlitba) MOD 3) != 0)) {
-				Log("<!-- MCD (%d): doplnková psalmódia -->", modlitba);
+				Log(HTML_COMMENT_BEGIN "MCD (%d): doplnková psalmódia" HTML_COMMENT_END, modlitba);
 				Log("Pre option 1 nastavujem bit pre 'doplnkovú psalmódiu'\n");
 				_global_opt[OPT_1_CASTI_MODLITBY] += BIT_OPT_1_MCD_DOPLNKOVA;
 			}// zmena: použitie doplnkovej psalmódie
@@ -16976,7 +16976,7 @@ void _main_batch_mode(
 							fprintf(batch_html_file, HTML_P_END "\n");
 						}
 						fprintf(batch_html_file, "<h2>%s</h2>\n", (char *)html_text_Breviar_dnes[_global_jazyk]);
-						fprintf(batch_html_file, "<!-- SK: Odkazy na dnešný deň (Dnešné modlitby) a Prehľad mesiaca vyžadujú JavaScript. JavaScript funkcia (c) 2009 Peter Sahajda; upravil (c) 2010 Juraj Vidéky -->\n");
+						// fprintf(batch_html_file, "<!-- SK: Odkazy na dnešný deň (Dnešné modlitby) a Prehľad mesiaca vyžadujú JavaScript. JavaScript funkcia (c) 2009 Peter Sahajda; upravil (c) 2010 Juraj Vidéky -->\n");
 						fprintf(batch_html_file, "\n");
 						fprintf(batch_html_file, "<script language=\"javascript\" type=\"text/javascript\">\n");
 						fprintf(batch_html_file, "var dnes=new Date();\n");

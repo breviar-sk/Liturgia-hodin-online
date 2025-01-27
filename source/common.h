@@ -240,6 +240,9 @@
 #define HTML_A_NAME_BEGIN           "<a name="
 #define HTML_A_END                  "</a>"
 
+#define HTML_SUP_BEGIN              "<sup>"
+#define HTML_SUP_END                "</sup>"
+
 #define HTML_DIV_BEGIN              "<div>"
 #define HTML_DIV_END                "</div>"
 
