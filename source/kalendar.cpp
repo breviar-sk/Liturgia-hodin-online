@@ -1545,6 +1545,9 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 		pocet = 2;
 
 		_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
+		if (_global_jazyk == JAZYK_SK) {
+			_global_svaty(2).typslav_lokal = LOKAL_SLAV_ORDINARIAT_PATRON;
+		}
 		mystrcpy(_global_svaty(2).meno, text_JAN_20_2[_global_jazyk], MENO_SVIATKU);
 		_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_MUCENIK);
 		_global_svaty(2).farba = LIT_FARBA_CERVENA;

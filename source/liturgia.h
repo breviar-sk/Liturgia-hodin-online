@@ -1111,7 +1111,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_SZEGED_CSAN_PATRON2				68
 #define LOKAL_SLAV_CZ_SCSC							69
 #define LOKAL_SLAV_CSSR_SVIATOK						70
-#define LOKAL_SLAV_SZEGED_CSAN_EGYH2				71 // not used
+#define LOKAL_SLAV_ORDINARIAT_PATRON				71 
 #define LOKAL_SLAV_PECS_PATRON						72
 #define LOKAL_SLAV_SZOMBATHELYI_PATRON				73
 #define LOKAL_SLAV_SZEKESFEHERVAR_EGYH				74 // not used

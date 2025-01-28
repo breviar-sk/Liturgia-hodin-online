@@ -687,7 +687,7 @@ const char* nazov_slavenia_lokal[] =
 , "Szeged-Csanád, Temesvár és Nagybecskerek: az egyházmegye védőszentje; főünnep"                                // LOKAL_SLAV_SZEGED_CSAN_PATRON2
 , "jen pro SCSC"																								 // LOKAL_SLAV_CZ_SCSC
 , "pre Rehoľu najsvätejšieho Vykupiteľa – redemptoristky: sviatok"                                               // LOKAL_SLAV_CSSR_SVIATOK
-, "A Szeged-Csanádi Egyházmegyében: a székesegyházban; főünnep"                                                  // LOKAL_SLAV_SZEGED_CSAN_EGYH2
+, "pre Ordinariát ozbrojených síl a ozbrojených zborov SR sviatok hlavného patróna"                              // LOKAL_SLAV_ORDINARIAT_PATRON
 , "A Pécsi Egyházmegyében: az egyházmegye társvédőszentje; főünnep." HTML_LINE_BREAK "A szlovákiai egyházmegyékben: tetszés szerinti emléknap" // LOKAL_SLAV_PECS_PATRON
 , "Szombathely, Pannonhalma, Kismarton, Munkács és Pozsony: az egyházmegye/főapátság védőszentje; főünnep"       // LOKAL_SLAV_SZOMBATHELYI_PATRON
 , "Székesfehérvár: a székesegyházban; főünnep"                                                                   // LOKAL_SLAV_SZEKESFEHERVAR_EGYH
