@@ -1079,7 +1079,7 @@ sup {
 	display: block;
 	font-size: 95%; 
 	font-weight: normal; 
-	padding-left: 2.4em;
+	padding-left: 1.2em; /* printed CZ OP breviary: 2.4em; ideal for indent: 1.8em */
 }
 
 .psalm-indent p.last:after {
