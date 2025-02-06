@@ -11633,8 +11633,8 @@ const char* text_JUL_17_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_17_OCD[POCET_JAZYKOV + 1] =
 {
-	"Bl. Terézie od sv. Augustína a spoločníčok, panien a mučeníc", // SK: 18JUL
-	"Bl. Terezie od sv. Augustina a spolusester, panen a mučednic",
+	"Sv. Terézie od sv. Augustína a spoločníčok, panien a mučeníc", // SK: 18JUL
+	"Sv. Terezie od sv. Augustina a spolusester, panen a mučednic",
 	"",
 	"",
 	"",
@@ -11773,8 +11773,8 @@ const char* text_JUL_21_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_21_OCD[POCET_JAZYKOV + 1] =
 {
-	"Bl. Títa Brandsmu, kňaza a mučeníka",
-	"Bl. Tita Brandsmy, kněze a mučedníka", // 27JUL
+	"Sv. Títa Brandsmu, kňaza a mučeníka",
+	"Sv. Tita Brandsmy, kněze a mučedníka", // 27JUL
 	"",
 	"",
 	"",

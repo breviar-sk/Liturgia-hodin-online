@@ -2874,7 +2874,7 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					_vlastna_cast_mcd_full_okrem_hymnu;
 				}
 			}
-			else if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
+			else if (_global_jazyk == JAZYK_CZ) {
 				_vlastna_cast_mcd_hymnus_kcitresp_modl;
 			}
 			else {
@@ -17525,6 +17525,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 					_vlastna_cast_full_okrem_antifon(modlitba);
 				}
 				else {
+					_vlastna_cast_benediktus;
 					_vlastna_cast_modlitba;
 				}
 
@@ -17533,6 +17534,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 					_vlastna_cast_full_okrem_antifon(modlitba);
 				}
 				else {
+					_vlastna_cast_magnifikat;
 					_vlastna_cast_modlitba;
 				}
 
