@@ -4242,6 +4242,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 				podmienka = NIE;
 			}
 			else {
+				// KALENDAR_CZ_OCARM má vlastné alternatívne 2. čítanie
 				podmienka = podmienka && !((_global_den.den == 19) && (_global_den.mesiac == MES_MAR + 1) && (_global_den.typslav == SLAV_SLAVNOST));
 			}
 

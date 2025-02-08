@@ -7569,6 +7569,34 @@ const char* text_MAR_19_SJ[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_MAR_19_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Jozefa, ženícha prebl. Panny Márie, " HTML_LINE_BREAK "hlavného ochrancu nášho rádu",
+	"Sv. Josefa, Snoubence Panny Marie, " HTML_LINE_BREAK "hlavního ochránce našeho řádu",
+	"",
+	"S. Ioseph, Sponsi Beatæ Mariæ Virginis",
+	"",
+	"Sv. Josefa, Snoubence Panny Marie, " HTML_LINE_BREAK "hlavního ochránce našeho řádu",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAR_20_OCARM[POCET_JAZYKOV + 1] =
+{
+	"",
+	"Bl. Františka Palau y Quer, kněze",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_MAR_22_OFM[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -7796,10 +7824,10 @@ const char* text_APR_17_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_APR_17_OCD[POCET_JAZYKOV + 1] =
+const char* text_APR_17_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Baptistu Spagnoliho, kňaza",
-	"Bl. Baptisty Spagnoli, kněze",
+	"Bl. Baptisty Spagnoliho, kněze",
 	"",
 	"",
 	"",
@@ -8415,6 +8443,34 @@ const char* text_MAJ_04_OCD[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_MAJ_04_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Angela Máriu a spoločníkov, mučeníkov",
+	"Bl. Angela Marie a druhů, mučedníků",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_05_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Angela Sicílskeho, kňaza a mučeníka",
+	"Sv. Angela ze Sicílie, kněze a mučedníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_MAJ_06_CZ[POCET_JAZYKOV + 1] =
 {
 	"",
@@ -8451,6 +8507,20 @@ const char* text_MAJ_07_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Alberta z Bergama, terciáře",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_07_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Alojza Rabatu, kňaza",
+	"Bl. Aloise Rabaty, kněze",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"",
 	"",
@@ -8629,6 +8699,20 @@ const char* text_MAJ_09_CM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Lujzy de Marillac, rehoľníčky, " HTML_LINE_BREAK "spoluzakladateľky spoločnosti Dcér kresťanskej lásky",
 	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_MAJ_09_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Juraja Precu, kňaza",
+	"Sv. Jiřího Precy, kněze",
 	"",
 	"",
 	"",
@@ -8947,7 +9031,7 @@ const char* text_MAJ_16_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_MAJ_17_OCD[POCET_JAZYKOV + 1] =
+const char* text_MAJ_17_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Šimona Stocka, rehoľníka",
 	"Sv. Šimona Stocka, řeholníka", // CZ: 16MAJ
@@ -9227,7 +9311,7 @@ const char* text_MAJ_22_SJ[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_MAJ_22_OCD[POCET_JAZYKOV + 1] =
+const char* text_MAJ_22_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Joachimy de Vedrúna y Mas, rehoľníčky",
 	"Sv. Jáchymy de Vedruna de Mas, řeholnice",
@@ -9384,11 +9468,11 @@ const char* text_MAJ_25_2[POCET_JAZYKOV + 1] =
 const char* text_MAJ_25_3[POCET_JAZYKOV + 1] =
 {
 	"Sv. Márie Magdalény de’ Pazzi, panny",
-	"Sv. Marie Magdalény de’Pazzi, panny",
+	"Sv. Marie Magdalény de’ Pazzi, panny",
 	"",
 	"S. Mariæ Magdalenæ de’ Pazzi, virginis",
 	"",
-	"Sv. Marie Magdalény de’Pazzi, panny",
+	"Sv. Marie Magdalény de’ Pazzi, panny",
 	"Pazzi Szent Mária Magdolna szűz",
 	"ru_text",
 	"Св. Марыі Магдалены Паццы, панны",
