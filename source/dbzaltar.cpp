@@ -4476,6 +4476,17 @@ void _set_zalmy_pc_24_61_84(short int modlitba) {
 	Log("_set_zalmy_pc_24_61_84(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_pc_24_61_84()
 
+// CZ OCARM 16JUL
+void _set_zalmy_pc_24_46_98(short int modlitba) {
+	Log("_set_zalmy_pc_24_46_98(%s) -- begin\n", nazov_modlitby(modlitba));
+	if (modlitba == MODL_POSV_CITANIE) {
+		set_zalm(1, modlitba, "z24.htm", "ZALM24");
+		set_zalm(2, modlitba, "z46.htm", "ZALM46");
+		set_zalm(3, modlitba, "z98.htm", "ZALM98");
+	}
+	Log("_set_zalmy_pc_24_46_98(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_pc_24_46_98()
+
 // HU OFM (19NOV)
 void _set_zalmy_pc_45_87(short int modlitba) {
 	Log("_set_zalmy_pc_45_87(%s) -- begin\n", nazov_modlitby(modlitba));
@@ -11627,7 +11638,23 @@ _struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] 
 	{ JAZYK_CZ, KALENDAR_CZ_OCD, BASE_OPT_6_HYMNUS_MULTI, "14DEC_rHYMNUS", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCD, BASE_OPT_6_HYMNUS_MULTI, "14DEC_vHYMNUS", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE2_MULTI, "19MAR_cCIT2", 3 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "19MAR_MODLITBA", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "25MAJ_vHYMNUS", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "05JUL_MODLITBA", 2 }, // ToDo: does not work for mcd (prayer during the day)
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "12JUL_cHYMNUS", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE2_MULTI, "13JUL2_cCIT2", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "16JUL_1HYMNUS", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "16JUL_cHYMNUS", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "16JUL_rHYMNUS", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "16JUL_vHYMNUS", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE1_MULTI, "16JUL_cCIT1", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE2_MULTI, "16JUL_cCIT2", 3 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "16JUL_MODLITBA", 2 }, // ToDo: does not work for 1st vespers
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "26JUL_MODLITBA", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "07AUG_MODLITBA", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "09AUG_MODLITBA", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "05NOV_MODLITBA", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "06NOV_MODLITBA", 2 },
 	{ JAZYK_HU, KALENDAR_HU_SCHP, BASE_OPT_6_CITANIE2_MULTI, "22SEP_cCIT2", 2 },
 	{ JAZYK_HU, KALENDAR_HU_SCHP, BASE_OPT_6_CITANIE2_MULTI, "16OKT_cCIT2", 2 },
 };
