@@ -11831,7 +11831,7 @@ const char* text_JUL_17_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUL_17_OCD[POCET_JAZYKOV + 1] =
+const char* text_JUL_17_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Terézie od sv. Augustína a spoločníčok, panien a mučeníc", // SK: 18JUL
 	"Sv. Terezie od sv. Augustina a spolusester, panen a mučednic",
@@ -11929,10 +11929,10 @@ const char* text_JUL_20_IS[POCET_JAZYKOV + 1] =
 	"Hl. Þorláks, verndardýrlings Íslendinga",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUL_20_OCD[POCET_JAZYKOV + 1] =
+const char* text_JUL_20_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Eliáša, proroka a nášho Otca",
-	"Sv. Eliáše, proroka a našeho Otce", // CZ v PDF: nemá "a našeho Otce"
+	"Sv. Eliáše, proroka", // CZ v PDF: nemá "a našeho Otce"
 	"",
 	"",
 	"",
@@ -11971,10 +11971,10 @@ const char* text_JUL_21_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUL_21_OCD[POCET_JAZYKOV + 1] =
+const char* text_JUL_21_OCD_JUL_28_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Títa Brandsmu, kňaza a mučeníka",
-	"Sv. Tita Brandsmy, kněze a mučedníka", // 27JUL
+	"Sv. Tita Brandsmy, kněze a mučedníka", // CZ OCD 27JUL; CZ OCARM 28JUL
 	"",
 	"",
 	"",
@@ -12125,6 +12125,20 @@ const char* text_JUL_26[POCET_JAZYKOV + 1] =
 	"Hl. Jóakims og hl. Önnu, foreldra Maríu meyjar", // Anna?
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_JUL_26_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Sv. Joachima a Anny, rodičov prebl. Panny Márie",
+	"Sv. Jáchyma a Anny, rodičů Panny Marie, " HTML_LINE_BREAK "ochránců našeho řádu",
+	"",
+	"Ss. Ioachim et Annæ, parentum Beatæ Mariæ Virginis",
+	"",
+	"Sv. Jáchyma a Anny, rodičů Panny Marie",
+	"Szent Joakim és Szent Anna, a Boldogságos Szűz Mária szülei",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_JUL_27[POCET_JAZYKOV + 1] =
 {
 	"Sv. Gorazda a spoločníkov",
@@ -12181,7 +12195,7 @@ const char* text_JUL_28_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUL_28_OCD[POCET_JAZYKOV + 1] =
+const char* text_JUL_28_OCD_JUL_24_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Jána Soretha, kňaza",
 	"Bl. Jana Soretha, kněze",
@@ -12566,7 +12580,7 @@ const char* text_AUG_06[POCET_JAZYKOV + 1] =
 	"Ummyndun Drottins",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_AUG_07_OCD[POCET_JAZYKOV + 1] =
+const char* text_AUG_07_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Alberta z Trapani, kňaza",
 	"Sv. Alberta z Trapani, kněze",

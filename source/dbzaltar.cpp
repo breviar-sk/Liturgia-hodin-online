@@ -4149,13 +4149,21 @@ void _set_zalmy_sj_xaver(short int modlitba) {
 	Log("_set_zalmy_sj_xaver(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_sj_xaver()
 
- // SK OCD (20JUL)
-void _set_zalmy_ocd_elias(short int modlitba) {
-	Log("_set_zalmy_ocd_elias(%s) -- begin\n", nazov_modlitby(modlitba));
+ // OCD + OCARM (20JUL)
+void _set_zalmy_ocd_ocarm_elias(short int modlitba) {
+	Log("_set_zalmy_ocd_ocarm_elias(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY) {
-		set_zalm(1, modlitba, "z111.htm", "ZALM111");
-		set_zalm(2, modlitba, "z115.htm", "ZALM115");
-		set_zalm(3, modlitba, "ch_zjv11.htm", "CHVAL_ZJV11");
+		if ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OCARM)) {
+			// _set_zalmy_sviatok_duch_past();
+			set_zalm(1, modlitba, "z15.htm", "ZALM15");
+			set_zalm(2, modlitba, "z112.htm", "ZALM112");
+			set_zalm(3, modlitba, "ch_zjv15.htm", "CHVAL_ZJV15");
+		}
+		else {
+			set_zalm(1, modlitba, "z111.htm", "ZALM111");
+			set_zalm(2, modlitba, "z115.htm", "ZALM115");
+			set_zalm(3, modlitba, "ch_zjv11.htm", "CHVAL_ZJV11");
+		}
 	}
 	else if (modlitba == MODL_RANNE_CHVALY) {
 		_set_zalmy_1nedele_rch();
@@ -4165,8 +4173,14 @@ void _set_zalmy_ocd_elias(short int modlitba) {
 		set_zalm(2, modlitba, "z28.htm", "ZALM28,1-3.6-9");
 		set_zalm(3, modlitba, "z30.htm", "ZALM30");
 	}
-	Log("_set_zalmy_ocd_elias(%s) -- end\n", nazov_modlitby(modlitba));
-}// _set_zalmy_ocd_elias()
+	else if (modlitba == MODL_PRVE_VESPERY) {
+		// KALENDAR_CZ_OCARM only
+		set_zalm(1, modlitba, "z111.htm", "ZALM111");
+		set_zalm(2, modlitba, "z115.htm", "ZALM115");
+		set_zalm(3, modlitba, "ch_zjv11.htm", "CHVAL_ZJV11");
+	}
+	Log("_set_zalmy_ocd_ocarm_elias(%s) -- end\n", nazov_modlitby(modlitba));
+}// _set_zalmy_ocd_ocarm_elias()
 
 // CZ OP (08AUG)
 void _set_zalmy_op_dominik(short int modlitba) {
@@ -11640,7 +11654,7 @@ _struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] 
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE2_MULTI, "19MAR_cCIT2", 3 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "19MAR_MODLITBA", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "25MAJ_vHYMNUS", 2 },
-	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "05JUL_MODLITBA", 2 }, // ToDo: does not work for mcd (prayer during the day)
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "05JUL_MODLITBA", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "12JUL_cHYMNUS", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE2_MULTI, "13JUL2_cCIT2", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "16JUL_1HYMNUS", 2 },
@@ -11649,8 +11663,13 @@ _struct_lang_cal_type_anchor_and_count pocet_multi_lang_cal_type_anchor_count[] 
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "16JUL_vHYMNUS", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE1_MULTI, "16JUL_cCIT1", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE2_MULTI, "16JUL_cCIT2", 3 },
-	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "16JUL_MODLITBA", 2 }, // ToDo: does not work for 1st vespers
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "16JUL_MODLITBA", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "17JUL3_vHYMNUS", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE2_MULTI, "20JUL_cCIT2", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "26JUL_MODLITBA", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_CITANIE2_MULTI, "28JUL_cCIT2", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "07AUG_rHYMNUS", 2 },
+	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_HYMNUS_MULTI, "07AUG_vHYMNUS", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "07AUG_MODLITBA", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "09AUG_MODLITBA", 2 },
 	{ JAZYK_CZ, KALENDAR_CZ_OCARM, BASE_OPT_6_MODLITBA_MULTI, "05NOV_MODLITBA", 2 },
