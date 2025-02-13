@@ -12706,7 +12706,7 @@ const char* text_AUG_09_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_AUG_09_OCD[POCET_JAZYKOV + 1] =
+const char* text_AUG_09_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Terézie Benedikty od Kríža, panny a mučenice, patrónky Európy",
 	"Sv. Terezie Benedikty od Kříže (Edith Stein), " HTML_LINE_BREAK "panny a mučednice, patronky Evropy",
@@ -12784,6 +12784,20 @@ const char* text_AUG_12_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Jana Jiřího Rehma, kněze a mučedníka",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_AUG_12_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Izidora Bakanju, mučeníka",
+	"Bl. Izidora Bakanji, mučedníka",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"",
 	"",
@@ -12967,6 +12981,20 @@ const char* text_AUG_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Szent Beatrix szűz de Silva, a Szeplőtelen Fogantatás rendjének (koncepcionisták) alapítója",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_AUG_17_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Angela Augustína Mazzinghiho, kňaza",
+	"Bl. Angela Augustina Mazzinghiho, kněze",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"",
 	"",
@@ -13336,10 +13364,10 @@ const char* text_AUG_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_AUG_25_OCD[POCET_JAZYKOV + 1] =
+const char* text_AUG_25_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Márie od Ukrižovaného Ježiša, panny",
-	"Sv. Miriam od Ukřižovaného (Mariam Baouardy)",
+	"Sv. Miriam/Marie od Ukřižovaného (Mariam Baouardy), panny",
 	"",
 	"",
 	"",
@@ -13390,6 +13418,20 @@ const char* text_AUG_26_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Minning þess að engill laust kærleikseldi Guðs í hjarta hl.Teresu af Jesú",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_AUG_26_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Jakuba Retoureta, kňaza a mučeníka",
+	"Bl. Jakuba Retoureta, kněze a mučedníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_26_SDB[POCET_JAZYKOV + 1] =
@@ -13605,7 +13647,7 @@ const char* text_SEP_01_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_SEP_01_OCD[POCET_JAZYKOV + 1] =
+const char* text_SEP_01_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Terézie Margity Redi " HTML_LINE_BREAK "od Najsvätejšieho Srdca Ježišovho, panny",
 	"Sv. Terezie Markéty od Srdce Ježíšova" HTML_LINE_BREAK " (Anny Marie Redi), panny",
@@ -13781,7 +13823,7 @@ const char* text_SEP_05[POCET_JAZYKOV + 1] =
 	"S. Teresiæ de Calcutta, virginis",
 	"",
 	"Sv. Terezie z Kalkaty (Matky Terezy), panny a řeholnice",
-	"Kalkuttai Szent Teréz szűz", // Mother Theresa of Calcutta - removed from the hungarian roman general calendar (at the Vatican request)
+	"Kalkuttai Szent Teréz szűz",
 	"",
 	"",
 	"Hl. Móðir Teresa, stofnandi reglunnar",
@@ -14221,10 +14263,10 @@ const char* text_SEP_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_SEP_17_OCD[POCET_JAZYKOV + 1] =
+const char* text_SEP_17_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Alberta Jeruzalemského, " HTML_LINE_BREAK "biskupa a zákonodarcu nášho rádu",
-	"Sv. Alberta Jeruzalémského, biskupa",
+	"Sv. Alberta Jeruzalémského, biskupa, " HTML_LINE_BREAK "zákonodárce našeho řádu",
 	"",
 	"",
 	"",
@@ -14784,7 +14826,7 @@ const char* text_OKT_01[POCET_JAZYKOV + 1] =
 	"Hl. Teresu af Jesúbarninu, meyjar og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_OKT_01_OCD[POCET_JAZYKOV + 1] =
+const char* text_OKT_01_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Terézie od Dieťaťa Ježiša, " HTML_LINE_BREAK "panny a učiteľky Cirkvi",
 	"Sv. Terezie od Dítěte Ježíše a svaté Tváře, " HTML_LINE_BREAK "panny a učitelky církve",
