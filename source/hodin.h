@@ -16313,7 +16313,7 @@ const char* text_NOV_05_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_NOV_05_OCD[POCET_JAZYKOV + 1] =
+const char* text_NOV_05_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Františky d’Amboise, rehoľníčky",
 	"Bl. Františky d’Amboise, řeholnice",
@@ -16397,10 +16397,10 @@ const char* text_NOV_06_2_OFMCAP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_NOV_06_OCD[POCET_JAZYKOV + 1] =
+const char* text_NOV_06_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Nonia Alvareza Pereiru, rehoľníka",
-	"Sv. Nonia Alvarese Pereiry, řeholníka",
+	"Sv. Nonia (od svaté Marie) Alvarese Pereiry, řeholníka",
 	"",
 	"",
 	"",
@@ -16415,6 +16415,20 @@ const char* text_NOV_07_OCD[POCET_JAZYKOV + 1] =
 {
 	"Bl. Františka od Ježiša, Márie a Jozefa " HTML_LINE_BREAK "(Palau y Quer), kňaza",
 	"Bl. Františka od Ježíše, Marie a Josefa " HTML_LINE_BREAK "(Francisca Palau y Quer), kněze",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_NOV_07_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Márie Terézie od Ježiša " HTML_LINE_BREAK "(Márie Scrilli), panny",
+	"Bl. Marie Terezie od Ježíše " HTML_LINE_BREAK "(Marie Scrilli), panny",
 	"",
 	"",
 	"",
@@ -16453,10 +16467,10 @@ const char* text_NOV_07_SJ[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_NOV_08_OCD[POCET_JAZYKOV + 1] =
+const char* text_NOV_08_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Alžbety od Najsvätejšej Trojice, panny",
-	"Sv. Alžběty od Trojice, panny",
+	"Sv. Alžběty od Nejsvětější Trojice, panny",
 	"",
 	"",
 	"",
@@ -16635,7 +16649,7 @@ const char* text_NOV_13_HU[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_NOV_14_OCD[POCET_JAZYKOV + 1] =
+const char* text_NOV_14_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Všetkých svätých karmelitánskeho rádu",
 	"Všech svatých našeho řádu",
