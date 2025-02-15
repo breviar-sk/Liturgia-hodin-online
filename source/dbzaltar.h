@@ -2479,12 +2479,13 @@ extern const char* text_NOV_07_OCD[POCET_JAZYKOV + 1];
 extern const char* text_NOV_07_OCARM[POCET_JAZYKOV + 1];
 extern const char* text_NOV_08_OCD_OCARM[POCET_JAZYKOV + 1];
 extern const char* text_NOV_14_OCD_OCARM[POCET_JAZYKOV + 1];
-extern const char* text_NOV_15_OCD[POCET_JAZYKOV + 1];
-extern const char* text_NOV_19_OCD[POCET_JAZYKOV + 1];
+extern const char* text_NOV_15_OCD_OCARM[POCET_JAZYKOV + 1];
+extern const char* text_NOV_19_OCD_OCARM[POCET_JAZYKOV + 1];
 extern const char* text_NOV_25_OCD[POCET_JAZYKOV + 1];
-extern const char* text_NOV_29_OCD[POCET_JAZYKOV + 1];
+extern const char* text_NOV_29_OCD_OCARM[POCET_JAZYKOV + 1];
+extern const char* text_DEC_05_OCARM[POCET_JAZYKOV + 1];
 extern const char* text_DEC_11_OCD[POCET_JAZYKOV + 1];
-extern const char* text_DEC_14_OCD[POCET_JAZYKOV + 1];
+extern const char* text_DEC_14_OCD_OCARM[POCET_JAZYKOV + 1];
 extern const char* text_DEC_16_OCD[POCET_JAZYKOV + 1];
 
 // --------------- CM propriá ---------------

@@ -183,7 +183,7 @@ const char* nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
 	{ "svätých mužov: pre rehoľníkov", "o svatých mužích (o řeholnících)", "", "sanctorum virorum: pro religiosis", "", "O svatých mužích – o řeholnících", "szerzetes", "ru_text", "святых мужчын: пра законнікаў", "fyrir heilaga menn: klaustur- og reglufólk", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých mužov", "o svatých mužích", "", "sanctorum virorum", "", "O svatých mužích", "szent férfiak", "ru_text", "святых мужчын", "fyrir heilaga menn", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "panien", "o pannách", "", "virginum", "", "O pannách", "szüzek", "ru_text", "паннаў", "fyrir mey", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "svätých žien: pre rehoľnice", "o svatých ženách (o řeholnicích)", "", "sanctarum mulierum: pro religiosis", "", "O svatých ženách – o řeholnicích", "apáca", "ru_text", "святых жанчын: пра законніц", "fyrir heilagar konur: nunnur", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "svätých žien: pre rehoľníčky", "o svatých ženách (o řeholnicích)", "", "sanctarum mulierum: pro religiosis", "", "O svatých ženách – o řeholnicích", "apáca", "ru_text", "святых жанчын: пра законніц", "fyrir heilagar konur: nunnur", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých žien", "o svatých ženách", "", "sanctarum mulierum", "", "O svatých ženách", "szent asszonyok", "ru_text", "святых жанчын", "fyrir heilagar konur", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "duchovných pastierov: pre viacerých", "o více duchovních pastýřích", "", "plurium pastorum", "", "O více duchovních pastýřích", "több lelkipásztor", "ru_text", "некалькіх пастыраў", "fyrir hirða: fleiri en einn hirði", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "jednej mučenice", "o jedné mučednici", "", "unius martyris", "", "O mučednici", "vértanú nő", "ru_text", "мyчаніцy", "fyrir píslarvotta úr röðum heilagra kvenna", /* STRING_1_FOR_NEW_LANGUAGE */ },
@@ -16747,10 +16747,10 @@ const char* text_NOV_15[POCET_JAZYKOV + 1] =
 	"Hl. Alberts mikla, biskups og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_NOV_15_OCD[POCET_JAZYKOV + 1] =
+const char* text_NOV_15_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Spomienka na všetkých zosnulých " HTML_LINE_BREAK "karmelitánskeho rádu",
-	"Vzpomínka na všechny věrné zemřelé našeho řádu",
+	"Vzpomínka na všechny věrné zemřelé " HTML_LINE_BREAK "z karmelské rodiny", // našeho řádu
 	"",
 	"",
 	"",
@@ -16943,7 +16943,7 @@ const char* text_NOV_19_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_NOV_19_OCD[POCET_JAZYKOV + 1] =
+const char* text_NOV_19_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Rafaela Kalinowského, kňaza",
 	"Sv. Rafaela od sv. Josefa (Josefa Kalinowského), kněze",
@@ -17307,10 +17307,10 @@ const char* text_NOV_29_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_NOV_29_OCD[POCET_JAZYKOV + 1] =
+const char* text_NOV_29_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Bl. Dionýza, kňaza, a Redempta, rehoľníka, mučeníkov",
-	"Bl. Dionýsia od Narození a Redempta od Kříže, " HTML_LINE_BREAK "řeholníků, mučedníků",
+	"Bl. Dionýsia od Narození, kněze, " HTML_LINE_BREAK "a Redempta od Kříže, řeholníka, mučedníků",
 	"",
 	"",
 	"",
@@ -17487,6 +17487,20 @@ const char* text_DEC_05_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Boldog Rinaldi Fülöp áldozópap",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_DEC_05_OCARM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Bartolomeja Fantiho, kňaza",
+	"Bl. Bartoloměje Fantiho, kněze",
+	"",
+	"",
+	"",
+	"",
+	"",
 	"",
 	"",
 	"",
@@ -17674,7 +17688,7 @@ const char* text_DEC_14[POCET_JAZYKOV + 1] =
 	"Hl. Jóhannesar af krossi, prests og kirkjufræðara",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_DEC_14_OCD[POCET_JAZYKOV + 1] =
+const char* text_DEC_14_OCD_OCARM[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána od Kríža, " HTML_LINE_BREAK "kňaza a učiteľa Cirkvi, nášho Otca",
 	"Sv. Jana od Kříže, kněze a učitele církve",
