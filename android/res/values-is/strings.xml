@@ -116,6 +116,7 @@
     <string name="tts_forward">Lesa eftirfarandi hluta</string>
 
     <string name="notification_not_allowed">Appinu er enn ekki leyft að slökkva á hringingu</string>
+    <string name="need_notification_permission">Tilkynningar ekki leyfðar. Vinsamlegast veittu þessu forriti heimildir fyrir tilkynningar.</string>
 
     <string name="channel_name">Tíðabænabók</string>
     <string name="channel_description">Ábending fyrir bænatíma</string>

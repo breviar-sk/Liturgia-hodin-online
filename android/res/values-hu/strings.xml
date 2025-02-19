@@ -116,6 +116,7 @@
     <string name="tts_forward">Olvassa el a következő részt</string>
 
     <string name="notification_not_allowed">Még nem engedélyezte az alkalmazásnak a csengetés kikapcsolását.</string>
+    <string name="need_notification_permission">Az értesítések nem engedélyezettek. Kérjük, adja meg ennek az alkalmazásnak az értesítési engedélyeket.</string>
 
     <string name="channel_name">Zsolozsma</string>
     <string name="channel_description">Értesítések</string>

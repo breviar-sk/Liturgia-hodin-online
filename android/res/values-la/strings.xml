@@ -116,6 +116,7 @@
     <string name="tts_forward">Lege partem succedentem</string>
 
     <string name="notification_not_allowed">Programmaturæ applicativæ nondum permisistis tinnitum claudare.</string>
+    <string name="need_notification_permission">Notificationes non licet. Da quæso hoc app permissiones ad Notificationes.</string>
 
     <string name="channel_name">Breviarium</string>
     <string name="channel_description">Monitiones de tempore orationis</string>

@@ -526,12 +526,14 @@ public class Breviar extends AppCompatActivity
           return true;
 
         case R.id.speakBtn:
-          if (tts_state == TtsService.TtsState.READY) {
-            toggleSpeakState();
-          } else if (tts_state == TtsService.TtsState.SPEAKING) {
-            pauseSpeaking();
-          } else if (tts_state == TtsService.TtsState.PAUSED) {
-            resumeSpeaking();
+          if (checkNotificationPermission(item.getItemId())) {
+            if (tts_state == TtsService.TtsState.READY) {
+              toggleSpeakState();
+            } else if (tts_state == TtsService.TtsState.SPEAKING) {
+              pauseSpeaking();
+            } else if (tts_state == TtsService.TtsState.PAUSED) {
+              resumeSpeaking();
+            }
           }
           return true;
 
@@ -1001,6 +1003,11 @@ public class Breviar extends AppCompatActivity
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
       }
       requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, code);
+      if (checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED) {
+        return true;
+      }
+
+      new AlertDialog.Builder(this).setMessage(R.string.need_notification_permission).show();
       return false;
     }
 
