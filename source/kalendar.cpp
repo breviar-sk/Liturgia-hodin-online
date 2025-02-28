@@ -5190,14 +5190,14 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 					set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_HYMNUS);
 
 				modlitba = MODL_RANNE_CHVALY;
-				// hymnus je zo spoločnej časti
+				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				_vlastna_cast_modlitba;
 				_vlastna_cast_benediktus;
 
 				modlitba = MODL_POSV_CITANIE;
-				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				_vlastna_cast_modlitba;
 				_vlastna_cast_2citanie;
+				_vlastna_cast_hymnus_ako_na_rchvaly(modlitba, _global_den.litobd); // hymnus ako na ranné chvály -- musí byť posledný pre danú modlitbu
 
 				_vlastna_cast_mcd_modlitba;
 
