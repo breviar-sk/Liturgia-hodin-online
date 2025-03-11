@@ -11821,6 +11821,7 @@ _struct_lang_param_and_anchor printed_edition_lang_text_anchor[] = {
 	{ JAZYK_SK, PARAM_PROSBY, "SCAP_rPROSBY" },
 	{ JAZYK_SK, PARAM_HYMNUS, "p_HYMNUS_0" },
 	{ JAZYK_SK, PARAM_HYMNUS, "k_HYMNUS_0" },
+	{ JAZYK_SK, PARAM_ZALM1, "ZALM11" },
 };
 
 // override for propria
