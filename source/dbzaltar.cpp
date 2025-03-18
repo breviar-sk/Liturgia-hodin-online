@@ -11499,7 +11499,7 @@ _struct_lang_anchor_and_count pocet_antifona_multi_anchor_count[] = {
 	{ JAZYK_CZ_OP, "15AUG_rBENEDIKTUS", 2 },
 	{ JAZYK_CZ_OP, "29JUL_rBENEDIKTUS", 2 },
 	{ JAZYK_CZ, "ADV1_iANT1", 2 },
-	{ JAZYK_CZ_OP, "POST1_iANT1", 0 }, // !!! override language-default (not use multiple antiphones); the order must be held: MUST BE BEFORE general rule (for JAZYK_UNDEF) -- see evaluation in pocet_multi() method
+//	{ JAZYK_CZ_OP, "POST1_iANT1", 0 }, // !!! override language-default (not use multiple antiphones); the order must be held: MUST BE BEFORE general rule (for JAZYK_UNDEF) -- see evaluation in pocet_multi() method / 2025-03-17: also for CZ OP use two antiphones
 	{ JAZYK_UNDEF, "POST1_iANT1", 2 },
 };
 
