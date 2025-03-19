@@ -72,7 +72,7 @@ const char* cfg_sidemenu_items_link_prefix[POCET_SIDEMENU_ITEMS] =
 { "sidemenu_item_link_top", "sidemenu_item_link_docs", "sidemenu_item_link_info", "sidemenu_item_link_download", "sidemenu_item_link_about" };
 
 const char* cfg_option_postfix[POCET_JAZYKOV + 1] =
-{ "def", "cz", "en", "la", "", "czop", "hu", "ru", "by", "is", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "def", "cz", "en", "la", "", "czop", "hu", "ru", "by", "is", "es", "az", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 void printConfigOptions(void) {
 #ifdef LOG_CONFIG
