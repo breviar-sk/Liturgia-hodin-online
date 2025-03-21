@@ -4235,7 +4235,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		else if (equals(paramname, PARAM_VAR_CITANIE2)) {
 			opt = OPT_0_SPECIALNE;
 			bit = BIT_OPT_0_ALTERNATIVE_READINGS;
-			podmienka = podmienka && (_global_jazyk == JAZYK_CZ) && (je_post_I_a_II); // (isGlobalOption(opt, bit));
+			podmienka = podmienka && (_global_jazyk == JAZYK_CZ) && (je_post_I_a_II || je_velka_noc); // (isGlobalOption(opt, bit));
 
 			// slávnosť sv. Jozefa nemá vlastné alternatívne čítanie
 			if (je_slavnost_sv_Jozefa_prekladana_na_20MAR || je_slavnost_sv_Jozefa_prekladana_pred_Kvetnu_nedenu) {
@@ -4252,6 +4252,16 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			}
 			else {
 				podmienka = podmienka && !((_global_den.den == 25) && (_global_den.mesiac == MES_MAR + 1) && (_global_den.typslav == SLAV_SLAVNOST));
+			}
+
+			// Veľkonočná nedeľa nemá alternatívne 2. čítanie
+			if (_global_den.denvr == VELKONOCNA_NEDELA) {
+				podmienka = NIE;
+			}
+
+			// Nanebovstúpenie Pána nemá alternatívne 2. čítanie
+			if (_global_den.denvr == NANEBOVSTUPENIE) {
+				podmienka = NIE;
 			}
 
 			mystrcpy(popis_show, html_text_opt_0_alternative_readings_NORMAL[_global_jazyk], SMALL);

@@ -6048,7 +6048,7 @@ const char* text_ZAKONCENIE_SKRZE_dlhe[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"Fyrir Drottin vorn Jesúm Krist, Son þinn, sem með þér lifir og ríkir í einingu Heilags Anda, Guð, um aldir alda.",
-	"es_text",
+	"Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6065,7 +6065,7 @@ const char* text_ZAKONCENIE_SKRZE_kratke[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"Fyrir Krist, Drottin vorn.",
-	"es_text",
+	"Por Cristo nuestro Señor.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6082,7 +6082,7 @@ const char* text_ZAKONCENIE_LEBO_ON_dlhe[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"Því að hann er Guð, sem með þér lifir og ríkir í einingu Heilags Anda, um aldir alda.",
-	"es_text",
+	"Que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6099,7 +6099,7 @@ const char* text_ZAKONCENIE_LEBO_ON_kratke[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"Hann, sem lifir og ríkir um aldir alda.",
-	"es_text",
+	"Que vive y reina por los siglos de los siglos.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6116,7 +6116,7 @@ const char* text_ZAKONCENIE_LEBO_TY_dlhe[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"Því að þú ert Guð, sem lifir og ríkir með Guði Föður, í einingu Heilags Anda, um aldir alda.",
-	"es_text",
+	"Tú que vives y reinas con el Padre en la unidad del Espíritu Santo y eres Dios, por los siglos de los siglos.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -6133,7 +6133,7 @@ const char* text_ZAKONCENIE_LEBO_TY_kratke[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"Þú sem lifir og ríkir um aldir alda.",
-	"es_text",
+	"Tú que vives y reinas por los siglos de los siglos.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
