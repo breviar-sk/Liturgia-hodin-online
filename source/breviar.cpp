@@ -4603,9 +4603,14 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			}
 			// kontrola na prvé resp. druhé nedeľné kompletórium, aby hymnus bolo v Cezročnom období možné voliť aj pre nedele
 			else if ((_global_modlitba == MODL_KOMPLETORIUM) || (_global_modlitba == MODL_PRVE_KOMPLETORIUM) || (_global_modlitba == MODL_DRUHE_KOMPLETORIUM)) {
-				bit = BIT_OPT_5_HYMNUS_KOMPL;
-				sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_KomplHymnusA[_global_jazyk]);
-				sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_KomplHymnusB[_global_jazyk]);
+				if (_global_jazyk == JAZYK_ES) {
+					podmienka = NIE;
+				}
+				else {
+					bit = BIT_OPT_5_HYMNUS_KOMPL;
+					sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_KomplHymnusA[_global_jazyk]);
+					sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_KomplHymnusB[_global_jazyk]);
+				}
 			}
 			else if (_global_modlitba == MODL_POSV_CITANIE) {
 				bit = (je_alternativa_hymnus_ocr) ? BIT_OPT_5_HYMNUS_PC : BIT_OPT_5_HYMNUS_VN_PC;
@@ -7353,7 +7358,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	else if ((_je_local_den_sviatok) && (poradie_svateho != PORADIE_PM_SOBOTA)) {
 		// sviatky
 		Log("SLAV_SVIATOK");
-		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP) || (_global_jazyk == JAZYK_IS) || (_global_jazyk == JAZYK_SK)) {
+		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP) || (_global_jazyk == JAZYK_IS) || (_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_AZ) || (_global_jazyk == JAZYK_ES)) {
 			velkost = CASE_KAPITALKY; // use small caps
 		}
 		else if (_global_jazyk == JAZYK_BY) {
@@ -7408,7 +7413,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 					sprintf(pom, "%s %s %s", pom2, nazov_Obdobia_aka(_local_den.litobd), nazov_Dna(_local_den.denvt));
 				}
 			}// BY only
-			else if (_global_jazyk == JAZYK_LA) {
+			else if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_ES)) {
 				if (_local_den.litobd == OBD_CEZ_ROK) {
 					// Dominica II per annum (LA LH, vol. III, p. 60)
 					convertToRoman(_local_den.tyzden, pom2);
@@ -7418,7 +7423,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 					// Dominica quinta Quadragesimae
 					sprintf(pom, "%s %s %s", nazov_Dna(_local_den.denvt), poradie_Slovom(_local_den.tyzden - 1), nazov_Obdobia_aka(_local_den.litobd));
 				}
-			}// LA only
+			}// LA + ES only
 			else if (
 				(_local_den.litobd == OBD_ADVENTNE_I) || (_local_den.litobd == OBD_ADVENTNE_II)
 				|| (_local_den.litobd == OBD_POSTNE_I)
@@ -9273,9 +9278,7 @@ void _export_rozbor_dna_buttons(short int typ, short int poradie_svateho, short 
 		xml_export_spol_cast(poradie_svateho);
 		Export(ELEM_BEGIN(XML_LIT_NAME)"%s" ELEM_END(XML_LIT_NAME) "\n", _local_den.meno);
 		xml_export_liturgicka_farba();
-		if ((_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_CZ)) {
-			Export(ELEM_BEGIN(XML_LIT_CALENDAR)"%s" ELEM_END(XML_LIT_CALENDAR) "\n", nazov_kalendara_short[_local_den.kalendar]);
-		}
+		Export(ELEM_BEGIN(XML_LIT_CALENDAR)"%s" ELEM_END(XML_LIT_CALENDAR) "\n", nazov_kalendara_short[_local_den.kalendar]);
 		Export(ELEM_BEGIN(XML_LIT_READINGS)"%s" ELEM_END(XML_LIT_READINGS) "\n", _local_den.lc_str_id);
 	}
 
@@ -12310,8 +12313,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export(", " HTML_LINE_BREAK);
 
 		// pole WWW_TYZDEN
-		if (_global_jazyk == JAZYK_LA) {
-			Export((char *)html_text_tyzden[_global_jazyk]);
+		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_ES)) {
+			Export((char*)html_text_tyzden[_global_jazyk]);
 		}
 		Export(HTML_FORM_SELECT"name=\"%s\">\n", STR_TYZDEN);
 		for(day = 0; day <= POCET_NEDIEL_CEZ_ROK; day++) {
@@ -12320,7 +12323,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		Export("\n</select>");
 		ExportNonbreakingSpace();
 
-		if (_global_jazyk != JAZYK_LA) {
+		if (!((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_ES))) {
 			Export((char *)html_text_tyzden[_global_jazyk]);
 		}
 		Export(",\n");
@@ -15328,7 +15331,7 @@ void _main_rozbor_dna(short int typ, short int d, short int m, short int r, shor
 			if (!kontrola_den_mesiac_rok(d, m, r)) {
 				Log("/* teraz vypisujem heading 1, datum %d. %s %d */\n", d, nazov_mesiaca(m - 1), r);
 
-				strcpy(pom, _vytvor_string_z_datumu(d, m, r, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+				strcpy(pom, _vytvor_string_z_datumu(d, m, r, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 				_export_heading_center(typ, pom);
 
 				if (p == MODL_NEURCENA) {
@@ -15618,7 +15621,7 @@ void _main_dnes(char *modlitba, char *poradie_svaty) {
 
 	// vypis
 	Log("now printing heading 1, date %d. %s %d [note: struct tm has tm_mon 1..12 while our constants are 0..11]\n", dnes.tm_mday, nazov_mesiaca(dnes.tm_mon - 1), dnes.tm_year);
-	strcpy(pom, _vytvor_string_z_datumu(dnes.tm_mday, dnes.tm_mon, dnes.tm_year, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+	strcpy(pom, _vytvor_string_z_datumu(dnes.tm_mday, dnes.tm_mon, dnes.tm_year, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 	_export_heading_center(query_type, pom);
 
 	// výpis juliánskeho dátumu, len ak nie je určená modlitba 
@@ -16102,7 +16105,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		Log("-- special behavior for OBD_VIANOCNE_I and OBD_VIANOCNE_II...\n");
 		Log("/* teraz vypisujem heading 1, datum %d. %s %d */\n", _global_den.den, nazov_mesiaca(_global_den.mesiac), _global_den.rok);
 
-		strcpy(pom, _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac + 1, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+		strcpy(pom, _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac + 1, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 		_export_heading_center(query_type, pom);
 	}
 
@@ -20022,7 +20025,7 @@ void init_global_string_as_html_title(short int den, short int mesiac, short int
 		strcat(_global_string, html_title_static_text[rok][_global_jazyk]);
 	}
 	else if ((query_type == PRM_DATUM) || (query_type == PRM_TXT) || (query_type == PRM_ANALYZA_ROKU)) {
-		strcat(_global_string, _vytvor_string_z_datumu_ext(den, mesiac + 1, rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, NIE, use_numbers_instead_month_names));
+		strcat(_global_string, _vytvor_string_z_datumu_ext(den, mesiac + 1, rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, NIE, use_numbers_instead_month_names));
 	}
 
 	// no additional text for Mary's antiphones & incorrect info text numbers

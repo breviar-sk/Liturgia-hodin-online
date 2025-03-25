@@ -1390,8 +1390,8 @@ void set_hymnus_kompletorium_obd(short int den, short int tyzzal, short int modl
 		dva_hymny = 0;
 	}
 
-	if ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER))) {
-		Log("set_hymnus_kompletorium_obd(): CZ, hymnus nie HVV\n");
+	if ((_global_jazyk == JAZYK_ES) || ((_global_jazyk == JAZYK_CZ) && (!isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)))) {
+		Log("set_hymnus_kompletorium_obd(): ES + CZ (hymnus nie HVV)\n");
 		sprintf(_anchor, "%c_%s_%s", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, nazov_DN_asci[den]);
 	}
 	else {
@@ -11402,6 +11402,7 @@ _struct_lang_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	// ES hymns
 	{ JAZYK_ES, "_1NE_rHYMNUS", 2 },
 	{ JAZYK_ES, "_1NE_vHYMNUS", 2 },
+	{ JAZYK_ES, "k_HYMNUS_NE", 2 },
 };
 
 _struct_lang_anchor_and_count pocet_citanie1_multi_anchor_count[] = {

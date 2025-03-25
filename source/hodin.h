@@ -1627,7 +1627,7 @@ const char* html_text_tyzden_zaltara_cislo[POCET_JAZYKOV + 1] = {
 	"%d. ru_text",
 	"%d. by_text",
 	"%d. vika saltara",
-	"%d. semana del Salterio",
+	"semana %d del Salterio",
 	"%d. zəbur həftəsi",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -1643,7 +1643,7 @@ const char* html_text_tyzden_cislo[POCET_JAZYKOV + 1] = {
 	"%d ru_text",
 	"%d by_text",
 	"%d. vika",
-	"%d. semana",
+	"semana %d",
 	"%d. həftə",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -1659,8 +1659,8 @@ const char* html_text_tyzden[POCET_JAZYKOV + 1] = {
 	"ru_text",
 	"by_text",
 	". vika",
-	". semana",
-	". həftə",
+	"semana",
+	"həftə",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -1675,8 +1675,8 @@ const char* html_text_v_tyzdni_zaltara[POCET_JAZYKOV + 1] = {
 	"ru_text",
 	"by_text",
 	". vika saltara",
-	"%d. semana del Salterio",
-	"%d. zəbur həftəsi",
+	"semana del Salterio",
+	"zəbur həftəsi",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
