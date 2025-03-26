@@ -7414,8 +7414,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 				}
 			}// BY only
 			else if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_ES)) {
-				if (_local_den.litobd == OBD_CEZ_ROK) {
+				if ((_local_den.litobd == OBD_CEZ_ROK) || (_global_jazyk == JAZYK_ES)) {
 					// Dominica II per annum (LA LH, vol. III, p. 60)
+					// Domingo II de Cuaresma
 					convertToRoman(_local_den.tyzden, pom2);
 					sprintf(pom, "%s %s %s", nazov_Dna(_local_den.denvt), pom2, nazov_Obdobia_aka(_local_den.litobd));
 				}
@@ -7744,8 +7745,8 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			mystrcpy(pom, STR_EMPTY, MAX_STR);
 		}
 
-		if (_global_jazyk == JAZYK_CZ_OP) {
-			// for CZ OP, also the celebration's name is for "svátek" in small caps
+		if ((_global_jazyk == JAZYK_CZ_OP) || (_global_jazyk == JAZYK_ES)) {
+			// for CZ OP + ES, also the celebration's name is for "svátek" in small caps
 
 			// respect CASE_ of celebration proper name
 			if (velkost == CASE_VERZALKY) {
@@ -8112,13 +8113,19 @@ short int init_global_string_spol_cast(short int sc_jedna, short int poradie_sva
 			ret_sc = sc.a1;
 			strcat(_global_string_spol_cast, lowered_nazov_spolc(sc.a1));
 			if (je_spolocna_cast_urcena(sc.a2)) {
-				strcat(_global_string_spol_cast, ", ");
+				if (nazov_spolc_ciarka_pred_alebo_jazyk[_global_jazyk] == ANO) {
+					strcat(_global_string_spol_cast, ",");
+				}
+				strcat(_global_string_spol_cast, " ");
 				strcat(_global_string_spol_cast, HTML_LINE_BREAK);
 				strcat(_global_string_spol_cast, nazov_spolc_alebo_jazyk[_global_jazyk]);
 				strcat(_global_string_spol_cast, " ");
 				strcat(_global_string_spol_cast, lowered_nazov_spolc(sc.a2));
 				if (je_spolocna_cast_urcena(sc.a3)) {
-					strcat(_global_string_spol_cast, ", ");
+					if (nazov_spolc_ciarka_pred_alebo_jazyk[_global_jazyk] == ANO) {
+						strcat(_global_string_spol_cast, ",");
+					}
+					strcat(_global_string_spol_cast, " ");
 					strcat(_global_string_spol_cast, HTML_LINE_BREAK);
 					strcat(_global_string_spol_cast, nazov_spolc_alebo_jazyk[_global_jazyk]);
 					strcat(_global_string_spol_cast, " ");
