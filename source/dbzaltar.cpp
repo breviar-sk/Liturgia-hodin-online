@@ -11402,6 +11402,7 @@ _struct_lang_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	// ES hymns
 	{ JAZYK_ES, "_1NE_rHYMNUS", 2 },
 	{ JAZYK_ES, "_1NE_vHYMNUS", 2 },
+	{ JAZYK_ES, "_2NE_1HYMNUS", 2 },
 	{ JAZYK_ES, "k_HYMNUS_NE", 2 },
 };
 
