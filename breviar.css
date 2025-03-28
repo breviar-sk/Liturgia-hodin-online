@@ -12,7 +12,7 @@
 	font-weight: normal; 
 	padding-left: 1.2em !important;
 	padding-bottom: 1em; 
-	padding-top: 1em; 
+	padding-top: 0.3em; 
 }
 
 .hymn p.comment { 
@@ -324,9 +324,9 @@ div.navm p {
 }
 
 .reading p.heading { 
-	padding-bottom: 1em;
+	padding-bottom: 0.3em;
 	padding-left: 0em; 
-	padding-top: 1em;
+	padding-top: 0.3em;
 	text-indent: 0em; 
 }
 
@@ -356,7 +356,7 @@ div.navm p {
 	font-style: normal;
 	font-weight: normal;
 	padding-left: 0em; 
-	padding-top: 0.5em;
+	padding-top: 0.3em;
 	text-indent: 0em; 
 }
 
@@ -388,7 +388,7 @@ div.navm p {
 }
 
 .hymn p.first { 
-	padding-top: 1em; 
+	padding-top: 0.3em; 
 }
 
 .hymn p.rubric, .hymn p.rubric-always-display { 
@@ -401,7 +401,7 @@ div.navm p {
 .psalm .psalm-name { 
 	color: #ff0000; 
 	font-weight: bold; 
-	padding-top: 1em; 
+	padding-top: 0.3em; 
 	text-align: center; 
 }
 
@@ -676,6 +676,9 @@ p {
 	color: #1a1a1a; 
 	font-family: inherit; 
 	font-style: normal; 
+/*	margin: 16px 0 16px 0; */
+	padding-top: 0em;
+	padding-bottom: 0em;
 }
 
 .duoraz { 
