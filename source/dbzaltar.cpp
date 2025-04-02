@@ -8441,7 +8441,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 // use _special_anchor_prefix_CZ_hymnus_CZ_2cit prefix according to BIT_OPT_0_ALTERNATIVE_READINGS
 #define _velk1_citanie2 {\
 	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)) && ((_global_r._NANEBOVSTUPENIE_PANA.denvr - _global_den.denvr) < 4) && ((_global_r._NANEBOVSTUPENIE_PANA.denvr - _global_den.denvr) > 0)) {\
-		sprintf(_anchor, "%s_%c%s_%d%s", nazov_OBD[OBD_VELKONOCNE_II], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, tyzden, nazov_DN_asci[den + 1]);\
+		sprintf(_anchor, "%s%s_%c%s_%d%s", _special_anchor_prefix_CZ_hymnus_CZ_2cit, nazov_OBD[OBD_VELKONOCNE_II], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, tyzden, nazov_DN_asci[den + 1]);\
 		set_citanie2(modlitba, nazov_obd_htm_pc[OBD_VELKONOCNE_II], _anchor);\
 	}\
 	else {\

@@ -488,10 +488,20 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	set_LOG_litobd_pc;\
 }
 
+// use _special_anchor_prefix_CZ_hymnus_CZ_2cit prefix according to BIT_OPT_0_ALTERNATIVE_READINGS
 #define _vlastne_slavenie_ine_2citanie(vlastny_anchor) {\
-	sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
-	set_citanie2(modlitba, _file_pc, _anchor);\
-	set_LOG_litobd_pc;\
+	Log("_vlastne_slavenie_ine_2citanie()...\n"); \
+	if (_global_den.denvr == _global_r._NANEBOVSTUPENIE_PANA.denvr) { \
+		Log("_vlastne_slavenie_ine_2citanie(): NAN [_special_anchor_prefix_CZ_hymnus_CZ_2cit == `%s']...\n", _special_anchor_prefix_CZ_hymnus_CZ_2cit); \
+		sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix_CZ_hymnus_CZ_2cit, vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+		set_citanie2(modlitba, _file_pc, _anchor);\
+		set_LOG_litobd_pc;\
+	} \
+	else { \
+		sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+		set_citanie2(modlitba, _file_pc, _anchor);\
+		set_LOG_litobd_pc;\
+	} \
 }
 
 #define _vlastne_slavenie_magnifikat(vlastny_anchor) {\

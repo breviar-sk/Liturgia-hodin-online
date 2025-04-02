@@ -4259,8 +4259,8 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 				podmienka = NIE;
 			}
 
-			// Nanebovstúpenie Pána nemá alternatívne 2. čítanie
-			if (_global_den.denvr == NANEBOVSTUPENIE) {
+			// Zoslanie D. Sv. nemá alternatívne 2. čítanie
+			if (_global_den.denvr == ZOSLANIE_DUCHA_SV) {
 				podmienka = NIE;
 			}
 
