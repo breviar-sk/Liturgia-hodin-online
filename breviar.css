@@ -412,6 +412,13 @@ div.navm p {
 	text-align: left; 
 }
 
+.psalm .psalm-idea-small-right { 
+	font-size: 80%; 
+	margin: 0 0 0 auto;
+	width: 50%;
+	/* text-indent: 1.2em; */
+}
+
 .psalm .psalm-title { 
 	color: #ff0000; 
 	font-size: normal;

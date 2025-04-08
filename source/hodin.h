@@ -76,7 +76,7 @@ const char* nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 	, { "kompletórium po prvých vešperách", "kompletář po prvních nešporách", "1st Completary", "I completorium", "", "Kompletář po prvních večerních chválách", "befejező imaóra I. e. d. után", "ru_text", "камплета пасля I нешпараў", "náttsöngur eftir Fyrsta aftansöng", "I completas", "ərəfənin gecə mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "druhé vešpery", "druhé nešpory", "2nd Vesperæ", "II vesperæ", "", "Druhé večerní chvály", "II. esti dicséret", "ru_text", "II нешпары", "annar aftansöngur", "II vísperas", "axşam mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "kompletórium po druhých vešperách", "kompletář po druhých nešporách", "2nd Completary", "II completorium", "", "Kompletář po druhých večerních chválách", "befejező imaóra II. e. d. után", "ru_text", "камплета пасля II нешпараў", "náttsöngur eftir Annan aftansöng", "II completas", "axşam mədhindən sonra gecə mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "detaily", "detaily", "Details", "details", "", "detaily", "részletek", "ru_text", "дэталі", "smáatriði", "es_text", "detallar", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "detaily", "detaily", "Details", "details", "", "detaily", "részletek", "ru_text", "дэталі", "smáatriði", "detalles", "detallar", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "všetky", "všechny", "all", "omnia", "", "všechny", "összes", "ru_text", "усе", "allar", "todo", "hamısı", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
@@ -98,7 +98,7 @@ const char* nazov_modlitby_short_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 	, { "kompletórium po 1. vešp.", "kompletář po 1. nešp.", "1st Completary", "I completorium", "", "Kompletář po 1. v. ch.", "befejező imaóra I. e. d. ut.", "ru_text", "кампл. пасля І нешп.", "náttsöngur eftir Fyrsta aftansöng", "I completas", "ərəfənin gecə mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "(druhé) vešpery", "druhé nešpory", "2nd Vesperæ", "II vesperæ", "", "Druhé večerní chvály", "II. esti dicséret", "ru_text", "II нешпары", "annar aftansöngur", "II vísperas", "axşam mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "kompletórium (po 2. vešp.)", "kompletář po 2. nešp.", "2nd Completary", "II completorium", "", "Kompletář po 2. v. ch.", "befejező imaóra II. e. d. ut.", "ru_text", "кампл. пасля IІ нешп.", "náttsöngur eftir Annan aftansöng", "II completas", "axşam mədhindən sonra gecə mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "detaily", "detaily", "Details", "details", "", "detaily", "részletek", "ru_text", "дэталі", "smáatriði", "es_text", "detallar", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "detaily", "detaily", "Details", "details", "", "detaily", "részletek", "ru_text", "дэталі", "smáatriði", "detalles", "detallar", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "všetky", "všechny", "all", "omnia", "", "všechny", "összes", "ru_text", "усе", "allar", "todo", "hamısı", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
@@ -120,7 +120,7 @@ const char* nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 	, { "Kompletórium po prvých vešperách", "Kompletář po prvních nešporách", "1st Completary", "I Completorium", "", "Kompletář po prvních večerních chválách", "Befejező imaóra I. e. d. után", "ru_text", "Камплета пасля І Нешпараў", "Náttsöngur eftir Fyrsta aftansöng", "I Completas", "Ərəfənin gecə mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "Druhé vešpery", "Druhé nešpory", "2nd Vesperæ", "II Vesperæ", "", "Druhé večerní chvály", "II. Esti dicséret", "ru_text", "II Нешпары", "Annar aftansöngur", "II Vísperas", "Axşam mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "Kompletórium po druhých vešperách", "Kompletář po druhých nešporách", "2nd Completary", "II Completorium", "", "Kompletář po druhých večerních chválách", "Befejező imaóra II. e. d. után", "ru_text", "Камплета пасля IІ Нешпараў", "Náttsöngur eftir Annan aftansöng", "II Completas", "Axşam mədhindən sonra gecə mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "Detaily", "Detaily", "Details", "Details", "", "Detaily", "Részletek", "ru_text", "Дэталі", "Smáatriði", "es_text", "Detallar", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "Detaily", "Detaily", "Details", "Details", "", "Detaily", "Részletek", "ru_text", "Дэталі", "Smáatriði", "Detalles", "Detallar", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "všetky", "všechny", "all", "omnia", "", "všechny", "összes", "ru_text", "усе", "allar", "todo", "hamısı", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
@@ -143,7 +143,7 @@ const char* html_button_nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV 
 	, { "Druhé vešp.", "Druhé nešpory", "2nd Vesperæ", "II vesperæ", "", "2. večerní ch.", "II. esti dics.", "ru_text", "II Нешпары", "Annar aftans.", "II vísp.", "Axşam m.", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "Druhé kompl.", "Druhý kompl.", "2nd Completary", "II completorium", "", "2. kompl.", "Bef. i. II. e. d. után", "ru_text", "Кампл. пас. IІ Нешп.", "Nátts. eft. Annan aftans.", "II compl.", "Gecə m. (axşam m. sonra)", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	// JUV: temporarily disabled due to lack of colspan functionality in display: table etc. elements | , { "výber spoločnej časti...", "výběr společné části...", "common texts...", "optiónes...", "", "výběr společné části...", "közös rész kiválasztása...", "ru_text", "by_text", "is_text", "es_text", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "výber...", "výběr...", "common texts...", "optiones...", "", "výběr...", "közös...", "ru_text", "by_text", "val...", "es_text", "seçimlər", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "výber...", "výběr...", "common texts...", "optiones...", "", "výběr...", "közös...", "ru_text", "by_text", "val...", "selección...", "seçimlər...", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "všetky", "všechny", "all", "omnia", "", "všechny", "összes", "ru_text", "усе", "allar", "todo", "hamısı", /* STRING_1_FOR_NEW_LANGUAGE */ }
 };
 
@@ -441,7 +441,7 @@ const char* nazov_slavenia_jazyk[POCET_SLAVENI + 1][POCET_JAZYKOV + 1] =
 	{ "sviatok", "svátek", "", "festum", "", "Svátek", "ünnep", "ru_text", "свята", "hátíð", "fiesta", "bayram", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "spomienka", "památka", "", "memoria", "", "Památka", "emléknap", "ru_text", "успамін", "M minning", "memoria", "xatirə (mütləq)", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "ľubovoľná spomienka", "nezávazná památka", "", "memoria ad libitum", "", "nezávazná památka", "tetszés szerinti emléknap", "ru_text", "неабавязковы ўспамін", "* minning" /*"minningardagur að frjálsu vali"*/, "memoria libre", "xatirə (könüllü)", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "vlastné slávenie", "z vlastních textů", "", "textus proprius", "", "z vlastních textů", "saját szöveg", "ru_text", "by_text", "eigið hátíðarhald", "es_text", "xüsusi bayram", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "vlastné slávenie", "z vlastních textů", "", "textus proprius", "", "z vlastních textů", "saját szöveg", "ru_text", "by_text", "eigið hátíðarhald", "propias tías", "xüsusi bayram", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 
 #define		nazov_slavenia(a)	nazov_slavenia_jazyk[a][_global_jazyk]
@@ -780,13 +780,13 @@ const char* nazov_slavenia_lokal[] =
 // names of liturgical colors
 const char* nazov_farby_jazyk[POCET_FARIEB_REALNYCH + 1][POCET_JAZYKOV + 1] =
 {
-	{ "___", "___", "___", "___", "___", "___", "___", "___", "___", "___", "es_text", "___", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "červená", "červená", "red", "ruber", "", "červená", "piros", "ru_text", "чырвоны", "rauður", "es_text", "qırmızı", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "biela", "bílá", "white", "albus", "", "bílá", "fehér", "ru_text", "белы", "hvítur", "es_text", "ağ", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "zelená", "zelená", "green", "viridis", "", "zelená", "zöld", "ru_text", "зялёны", "grænn", "es_text", "yaşıl", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "fialová", "fialová", "purple", "violaceus", "", "fialová", "lila", "ru_text", "фіялетавы", "fjólublár", "es_text", "bənövşəyi", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "ružová", "růžová", "rose", "rosaceus", "", "růžová", "rózsaszín", "ru_text", "ружовы", "bleikur", "es_text", "çəhrayı", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "čierna", "černá", "black", "niger", "", "černá", "fekete", "ru_text", "чорны", "svartur", "es_text", "qara", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "___", "___", "___", "___", "___", "___", "___", "___", "___", "___", "___", "___", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "červená", "červená", "red", "ruber", "", "červená", "piros", "ru_text", "чырвоны", "rauður", "rojo", "qırmızı", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "biela", "bílá", "white", "albus", "", "bílá", "fehér", "ru_text", "белы", "hvítur", "blanco", "ağ", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "zelená", "zelená", "green", "viridis", "", "zelená", "zöld", "ru_text", "зялёны", "grænn", "verde", "yaşıl", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "fialová", "fialová", "purple", "violaceus", "", "fialová", "lila", "ru_text", "фіялетавы", "fjólublár", "púrpura", "bənövşəyi", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "ružová", "růžová", "rose", "rosaceus", "", "růžová", "rózsaszín", "ru_text", "ружовы", "bleikur", "rosa", "çəhrayı", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "čierna", "černá", "black", "niger", "", "černá", "fekete", "ru_text", "чорны", "svartur", "negro", "qara", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 
 #define		nazov_farby(a)	nazov_farby_jazyk[a][_global_jazyk]
@@ -923,8 +923,8 @@ const char* nazov_mesiaca_jazyk[POCET_MESIACOV + 1][POCET_JAZYKOV + 1] =
 	, { "marec", "březen", "March", "martius", "", "březen", "március", "март", "сакавік", "mars", "marzo", "mart", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "apríl", "duben", "April", "aprilis", "", "duben", "április", "апреля", "красавік", "apríl", "abril", "aprel", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "máj", "květen", "May", "maius", "", "květen", "május", "мая", "май", "maí", "mayo", "may", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "jún", "červen", "June", "iunius", "", "červen", "június", "июнь", "чэрвень", "júní", "es_text", "iyun", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "júl", "červenec", "July", "iulius", "", "červenec", "július", "июль", "ліпень", "júlí", "es_text", "iyul", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "jún", "červen", "June", "iunius", "", "červen", "június", "июнь", "чэрвень", "júní", "junio", "iyun", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "júl", "červenec", "July", "iulius", "", "červenec", "július", "июль", "ліпень", "júlí", "julio", "iyul", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "august", "srpen", "August", "augustus", "", "srpen", "augusztus", "август", "жнівень", "ágúst", "agosto", "avqust", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "september", "září", "September", "september", "", "září", "szeptember", "сентябрь", "верасень", "september", "septiembre", "sentyabr", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "október", "říjen", "October", "october", "", "říjen", "október", "октября", "кастрычнік", "október", "octubre", "oktyabr", /* STRING_1_FOR_NEW_LANGUAGE */ }
@@ -1029,16 +1029,16 @@ const char* nazov_mes[POCET_MESIACOV + 1] =
 // 2008-12-20: pridaný reťazec pre poradové číslo - používa sa v init_global_string() pre nedele niektorých období [zatiaľ iba v slovenčine]
 const char* poradie_Slovom_jazyk[POCET_TYZDNOV + 1][POCET_JAZYKOV + 1] =
 {
-	{ "Prvá", "První", "", "Prima", "", "První", "1.", "ru_text", "Першая", "Fyrsti", "es_text", "1-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Druhá", "Druhá", "", "Secunda", "", "Druhá", "2.", "ru_text", "Другая", "Annar", "es_text", "2-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Tretia", "Třetí", "", "Tertia", "", "Třetí", "3.", "ru_text", "Трэцяя", "Þriðji", "es_text", "3-cü", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Štvrtá", "Čtvrtá", "", "Quarta", "", "Čtvrtá", "4.", "ru_text", "Чацвёртая", "Fjórði", "es_text", "4-cü", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Piata", "Pátá", "", "Quinta", "", "Pátá", "5.", "ru_text", "Пятая", "Fimmti", "es_text", "5-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Šiesta", "Šestá", "", "Sexta", "", "Šestá", "6.", "ru_text", "Шостая", "Sjötti", "es_text", "6-cı", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Siedma", "Sedmá", "", "Septima", "", "Sedmá", "7.", "ru_text", "Сёмая", "Sjöundi", "es_text", "7-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Ôsma", "Osmá", "", "VIII", "", "Osmá", "8.", "ru_text", "Восьмая", "Áttundi", "es_text", "8-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Deviata", "Devátá", "IX", "", "", "Devátá", "9.", "ru_text", "Дзевятая", "Níundi", "es_text", "9-cü", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	,{ "Desiata", "Desátá", "X", "", "", "Desátá", "10.", "ru_text", "Дзясятая", "Tíundi", "es_text", "10-cu", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	{ "Prvá", "První", "", "Prima", "", "První", "1.", "ru_text", "Першая", "Fyrsti", "Primero", "1-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Druhá", "Druhá", "", "Secunda", "", "Druhá", "2.", "ru_text", "Другая", "Annar", "Segundo", "2-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Tretia", "Třetí", "", "Tertia", "", "Třetí", "3.", "ru_text", "Трэцяя", "Þriðji", "Tercero", "3-cü", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Štvrtá", "Čtvrtá", "", "Quarta", "", "Čtvrtá", "4.", "ru_text", "Чацвёртая", "Fjórði", "Cuatro", "4-cü", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Piata", "Pátá", "", "Quinta", "", "Pátá", "5.", "ru_text", "Пятая", "Fimmti", "Quinto", "5-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Šiesta", "Šestá", "", "Sexta", "", "Šestá", "6.", "ru_text", "Шостая", "Sjötti", "Sexto", "6-cı", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Siedma", "Sedmá", "", "Septima", "", "Sedmá", "7.", "ru_text", "Сёмая", "Sjöundi", "Séptimo", "7-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Ôsma", "Osmá", "", "VIII", "", "Osmá", "8.", "ru_text", "Восьмая", "Áttundi", "Octavo", "8-ci", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Deviata", "Devátá", "IX", "", "", "Devátá", "9.", "ru_text", "Дзевятая", "Níundi", "Noveno", "9-cü", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	,{ "Desiata", "Desátá", "X", "", "", "Desátá", "10.", "ru_text", "Дзясятая", "Tíundi", "Décimo", "10-cu", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	,{ "11. ", "11", "11", "XI", "11", "11", "11.", "11.", "11.", "Ellefti", "11.", "11", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	,{ "12. ", "12", "12", "XII", "12", "12", "12.", "12.", "12.", "Tólfti", "12.", "12", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	,{ "13. ", "13", "13", "XIII", "13", "13", "13.", "13.", "13.", "Þrettándi", "13.", "13", /* STRING_1_FOR_NEW_LANGUAGE */ }
@@ -1194,9 +1194,9 @@ const char* skratka_static_text[POCET_STATIC_TEXTOV + 1] =
 const char* html_title_static_text[POCET_STATIC_TEXTOV + 1][POCET_JAZYKOV + 1] =
 {
 	{ "", "", "", "", "", "", "", "", "", "", "", "", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Mariánske antifóny", "Mariánské zpěvy", "Mary antiphones", "Antiphonæ B. M. V.", "", "Mariánské antifóny", "Szűz Mária záró-antifónái", "ru_text", "by_text", "Andstef Maríu meyjar", "es_text", "Məryəm Anaya himnləri", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Ordinárium", "Uspořádání", "Ordinary", "Ordinarium", "", "Ordinárium", "Általános rész", "ru_text", "by_text", "Fastir liðir", "es_text", "Ordinarium", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Info", "Info", "Info", "Info", "", "Info", "Info", "ru_text", "by_text", "Info", "es_text", "Məlumat", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Mariánske antifóny", "Mariánské zpěvy", "Mary antiphones", "Antiphonæ B. M. V.", "", "Mariánské antifóny", "Szűz Mária záró-antifónái", "ru_text", "by_text", "Andstef Maríu meyjar", "Antífonas marianas", "Məryəm Anaya himnləri", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Ordinárium", "Uspořádání", "Ordinary", "Ordinarium", "", "Ordinárium", "Általános rész", "ru_text", "by_text", "Fastir liðir", "Ordinario", "Ordinarium", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Info", "Info", "Info", "Info", "", "Info", "Info", "ru_text", "by_text", "Info", "Info", "Məlumat", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 
 const char* html_subtitle_static_text_info[POCET_INFO_TEXTOV + 1][POCET_JAZYKOV + 1] =
@@ -1856,7 +1856,7 @@ const char* html_text_android_native_menu[POCET_JAZYKOV + 1] = {
 	"",
 	"",
 	"Notaðu forritavalmyndina fyrir stillingar. Þú kemst í valmyndina með því að smella á táknið með þremur láréttum línum sem staðsettar eru vinstra megin á efstu stikunni í forritinu (svokallað „hamborgara“ tákn ☰). Ef þú ert með „fullan skjá“ stillingu virkan, slökktu bara á henni með tvisvar snertibending - þetta mun birta efstu stikuna. Sjálfgefið er að einnig er hægt að stækka valmyndina með því að fletta frá vinstri brún skjásins að miðju (lárétt flun). Frá Android 10 þarftu að halda í augnablik á vinstri brún skjásins og hreyfa þig svo (annars er „til baka“ aðgerðin virkjuð, sem venjulega leiðir til þess að appinu er lokað og farið aftur á aðalskjá tækisins).",
-	"es_text",
+	"Para cambiar la configuración, utilice el menú de la aplicación. Puedes acceder al menú tocando el icono de tres líneas horizontales ubicado a la izquierda en la barra superior de la aplicación (el llamado icono de “hamburguesa” ☰). Si tiene activado el modo de pantalla completa, simplemente desactívelo con un gesto de doble toque: esto mostrará la barra superior. El menú también se puede visualizar deslizando el dedo desde el borde izquierdo de la pantalla hacia el centro (desplazamiento horizontal). Desde Android 10, es necesario mantener presionado el borde izquierdo de la pantalla por un momento y luego deslizarlo (de lo contrario, se activará la acción «atrás», que generalmente lleva a cerrar la aplicación y regresar a la pantalla principal del dispositivo).",
 	"Parametrləri dəyişmək üçün proqram menyusundan istifadə edin. Proqramın yuxarı sol tərəfində yerləşən üç üfüqi xətt işarəsinə („hamburger“ işarəsi ☰) toxunmaqla menyuya daxil ola bilərsiniz. Əgər tam ekran rejimi aktivləşdirilibsə, sadəcə iki dəfə toxunma jesti ilə onu söndürün - bu, yuxarı zolağı göstərəcək. Menyu ekranın sol kənarından mərkəzə sürüşdürməklə də göstərilə bilər (üfüqi sürüşmə). Android 10-dan bəri, ekranın sol kənarında bir anlıq basıb saxlayın və sonra onu sürüşdürməlisiniz (əks halda „geri“ hərəkəti aktivləşdiriləcək, bu, adətən proqramın bağlanmasına və cihazın əsas ekranına qayıtmasına səbəb olur).",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2197,7 +2197,7 @@ const char* html_text_Jednotlive_mesiace_roku[POCET_JAZYKOV + 1] = {
 };
 
 const char* str_doplnkova_psalmodia[POCET_JAZYKOV + 1] =
-{ "doplnková psalmódia", "žalmy z doplňovacího cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplňková psalmodie", "kiegészítő zsoltárok", "ru_text", "дадатковая псальмодыя", "aukasálmar", "es_text", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "doplnková psalmódia", "žalmy z doplňovacího cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplňková psalmodie", "kiegészítő zsoltárok", "ru_text", "дадатковая псальмодыя", "aukasálmar", "salmodia suplementaria", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* str_modl_cez_den_zalmy_zo_dna[POCET_JAZYKOV + 1] =
 { "bežnej psalmódie", "běžné psalmodie", "ordinary psalmody", "psalmodiæ ordinariæ", "", "běžné psalmodie", "soros zsoltárösszeállítást", "ru_text", "са звычайнай псальмодыі", "almennum sálmasöngvum", "es_text", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
@@ -2220,11 +2220,11 @@ const char* str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1] =
 #define STR_VALUE_ZERO  "0"
 
 const char* str_ano[POCET_JAZYKOV + 1] =
-{ "áno", "ano", "yes", "sic", "___", "ano", "igen", "ru_text", "так", "já", "es_text", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "áno", "ano", "yes", "sic", "___", "ano", "igen", "ru_text", "так", "já", "sí", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #define		STR_ANO		str_ano[_global_jazyk]
 
 const char* str_nie[POCET_JAZYKOV + 1] =
-{ "nie", "ne", "no", "non", "___", "ne", "nem", "ru_text", "не", "nei", "es_text", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "nie", "ne", "no", "non", "___", "ne", "nem", "ru_text", "не", "nei", "no", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #define		STR_NIE		str_nie[_global_jazyk]
 
 const char* html_text_Jazyk[POCET_JAZYKOV + 1] =
@@ -2457,11 +2457,11 @@ const char* html_text_spol_casti_vziat_zo[POCET_JAZYKOV + 1] =
 	"partes orationis de communæ",
 	"",
 	"části modlitby ze společné části ",
-	"a közös részből",
+	"a közös részből ",
 	"ru_text",
 	"часткі малітвы з агульнай часткі ",
-	"hluti bænanna frá almennum textum",
-	"es_text",
+	"hluti bænanna frá almennum textum ",
+	"partes de la oración de textos comunes ",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2495,7 +2495,7 @@ const char* html_text_vianocne_obd_note[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"fyrir jólin eru virkir dagar túlkaðir sem dagsetningar í janúar",
-	"es_text",
+	"para el período navideño, los días de la semana se interpretan como una fecha de enero.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2512,7 +2512,7 @@ const char* html_text_opt_0_specialne[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"паказваць у тэксце малітваў",
 	"birta í texta bænanna",
-	"es_text",
+	"en el texto de las oraciones se muestra",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2530,8 +2530,8 @@ const char* html_text_opt_0_specialne_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2581,7 +2581,7 @@ const char* html_text_opt_0_referencie[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"біблійныя спасылкі",
 	"Biblíutenglar",
-	"es_text",
+	"referencias bíblicas",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2615,7 +2615,7 @@ const char* html_text_opt_0_ref_bible_com[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"біблійныя спасылкі",
 	"Biblíutenglar á bible.com",
-	"es_text",
+	"referencias bíblicas en bible.com",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2649,7 +2649,7 @@ const char* html_text_opt_0_italics_cond[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"einhverjir textar (aukatextar) með skáletri",
-	"es_text",
+	"algunos textos (elisiones) en cursiva",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2683,7 +2683,7 @@ const char* html_text_opt_0_printed_edition[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"utilizar textos según la edición impresa",
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2717,7 +2717,7 @@ const char* html_text_opt_0_use_two_years_cycle[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
+	"utilizar un ciclo de dos años para las lecturas sagradas (lecturas bíblicas)",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2751,7 +2751,7 @@ const char* html_text_opt_0_two_years_cycle_invert[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
+	"para un ciclo de dos años, tome el primer o segundo año a la inversa",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2785,7 +2785,7 @@ const char* html_text_opt_0_alternative_readings_NORMAL[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
+	"utilizar lecturas estándar para la lectura sagrada",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2802,7 +2802,7 @@ const char* html_text_opt_0_alternative_readings[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
+	"utilizar lecturas alternativas para la lectura sagrada",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3077,7 +3077,7 @@ const char* html_text_opt_0_footnotes[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"паказваць зноскі",
 	"glósur (í texta, undirstrikað)",
-	"es_text",
+	"notas (en el texto, notas a pie de página)",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3181,7 +3181,7 @@ const char* html_text_opt_0_transparent_nav_down_only[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"паказаць толькі стрэлку навігацыі ўніз",
 	"sýndu aðeins niðurleiðarörina",
-	"es_text",
+	"mostrar solo la flecha de navegación hacia abajo",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3249,7 +3249,7 @@ const char* html_text_opt_0_zalmy_full_text[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"пропускі ў псальмах",
 	"undanteknir þættir frá sálmum og lofsöngvum",
-	"es_text",
+	"pasajes omitidos de salmos e himnos",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3266,7 +3266,7 @@ const char* html_text_opt_0_zalmy_full_text_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"La Liturgia de las Horas omite algunos pasajes de los Salmos y Cánticos (por ejemplo, el versículo 6 del Salmo 109 [110]). Es posible mostrar estos pasajes omitidos.",
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3385,7 +3385,7 @@ const char* html_text_opt_1_otcenas[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"малітва Панская (Ойча наш)",
 	"Drottinleg bæn (Faðirvorið)",
-	"es_text",
+	"oración Dominical (Padre nuestro)",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3402,7 +3402,7 @@ const char* html_text_opt_1_otcenas_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"La Liturgia de las Horas no incluye, por defecto, el oración Dominical (Padre nuestro) completo en las Laudes de la mañana y en las Vísperas.",
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3419,7 +3419,7 @@ const char* html_text_opt_1_tedeum[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"гімн Цябе, Бога, праслаўляем",
 	"hymni Drottinn Guð",
-	"es_text",
+	"himno del Te Deum",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3436,7 +3436,7 @@ const char* html_text_opt_1_tedeum_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"La Liturgia de las Horas no incluye el himno del Te Deum en su texto completo en la lectura sagrada.",
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3453,8 +3453,8 @@ const char* html_text_opt_1_plne_resp[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"поўная версія кароткіх рэспансорыяў",
 	"óstytt svarvers",
-	"es_text",
-	"az_text",
+	"texto completo de los responsorios",
+	"cavab verənlərin tam mətni",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3470,8 +3470,8 @@ const char* html_text_opt_1_plne_resp_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"La Liturgia de las Horas no incluye el texto completo del responsorio después de la lectura breve en las Alabanzas de la mañana, las Vísperas y después de las lecturas en la Sagrada Lectura.",
+	"Saatların Liturgiyası Səhər Həmd, Vespersdəki qısa oxunuşdan sonra və Müqəddəs Oxumadakı oxunuşdan sonra cavabın tam mətnini ehtiva etmir.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3542,7 +3542,7 @@ const char* html_text_opt_1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"псальмодыя з дня",
 	"nota sálmasöngva dagsins",
-	"es_text",
+	"utilizar la salmodia del día",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3559,7 +3559,7 @@ const char* html_text_opt_1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"fyrir miðdegisbæn skal nota sálma dagsins",
-	"es_text",
+	"utilizar la salmodia del día para la oración durante el día",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3576,7 +3576,7 @@ const char* html_text_opt_1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"дадатковая псальмодыя",
 	"nota viðbótarsálmasöngva",
-	"es_text",
+	"utilizar salmodia suplementaria",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3593,7 +3593,7 @@ const char* html_text_opt_1_mcd_zalmy_ine[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"fyrir miðdegisbæn skal nota aukasálma",
-	"es_text",
+	"utilice salmodia adicional para la oración durante el día.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3606,11 +3606,11 @@ const char* html_text_opt_1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] =
 	"Qui plures Horas dicit, in una Hora psalmodiam currentem sumat, in ceteris complementarem, quæ tenet tres series psalmorum gradualium.",
 	"",
 	"Doplňovací cyklus žalmů obsahuje 3 série tzv. graduálních žalmů (Ž 120 – 129), které je možno použít místo žalmů ze žaltáře.",
-	"Aki több Napközi imaórát mond, az egyik imaórában a soros zsoltárösszeállítást veszi, a többin a kiegészítőt. Ez az úgynevezett „zarándokzsoltárokból“ vett három-három zsoltárból áll (Zsolt 119 – 127).",
+	"Aki több Napközi imaórát mond, az egyik imaórában a soros zsoltárösszeállítást veszi, a többin a kiegészítőt. Ez az úgynevezett „zarándokzsoltárokból“ vett három-három zsoltárból áll (Zsolt 119 – 128).",
 	"",
 	"",
 	"",
-	"",
+	"Si alguien reza varias oraciones durante el día, tomará la salmodia habitual en la primera; En otros, se utilizará salmodia adicional. Incluye tres series de los llamados salmos graduales (Salmos 119 [120] - 128 [129]).",
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3627,7 +3627,7 @@ const char* html_text_opt_1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"nota skal sálma frá ákveðinni viku fyrir allar þrjár miðdegisbænir",
-	"es_text",
+	"utilice una salmodia del salterio de una semana determinada para las tres oraciones del día",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3644,7 +3644,7 @@ const char* html_text_opt_1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"fyrir miðdegisbæn skal nota sálma frá ákveðinni viku saltara fyrir allar þrjár miðdegisbænir",
-	"es_text",
+	"para la oración durante el día, utilice una salmodia de la semana dada del salterio para las tres oraciones durante el día",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3661,7 +3661,7 @@ const char* html_text_opt_1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"nota sálma úr þremur vikum saltara: núverandi, undanfarandi, eftirkomandi",
-	"es_text",
+	"utilizar la salmodia de las tres semanas del salterio: actual, anterior, siguiente",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3678,7 +3678,7 @@ const char* html_text_opt_1_mcd_zalmy_tri[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"by_text",
 	"fyrir miðdegisbæn skal nota sálma af þremur vikum saltara (núverandi, undanfarandi, eftirkomandi)",
-	"es_text",
+	"para la oración durante el día, utilice la salmodia de tres semanas del Salterio (actual, anterior, siguiente)",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3695,7 +3695,7 @@ const char* html_text_opt_1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
+	"Si alguien reza varias oraciones durante el día, se utiliza la salmodia de tres semanas del salterio (semana actual, anterior y siguiente del salterio).\nNo tiene efecto si se selecciona la opción de usar salmodia adicional.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3783,7 +3783,7 @@ const char* html_text_opt_1_otcenas_uvod[POCET_JAZYKOV + 1] =
 	"",
 	"by_text",
 	"inngangur að bæn Drottins",
-	"es_text",
+	"introducción al oración Dominical",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3800,7 +3800,7 @@ const char* html_text_opt_1_otcenas_uvod_explain[POCET_JAZYKOV + 1] =
 	"",
 	"by_text",
 	"inngangur að bæn Drottins",
-	"es_text",
+	"introducción al oración Dominical",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3817,7 +3817,7 @@ const char* html_text_opt_1_zalm95[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"псальм 95 (94)",
 	"í stað sálma 24, 67 eða 100 skal nota sálm 95",
-	"es_text",
+	"en lugar de los Salmos 23 (24), 66 (67) respectivamente 99 (100) usa el Salmo 94 (95)",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3834,7 +3834,7 @@ const char* html_text_opt_1_zalm95_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
+	"Si en las Laudes, Vísperas o Lecturas Sagradas aparecen los Salmos 23 (24), 66 (67), o 99 (100), que se utilizó para el invitatorio, será sustituido en la oración correspondiente por el Salmo (94) 95.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3947,7 +3947,7 @@ const char* html_text_opt_1_prosby_zvolanie_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
+	"En las oraciones de la mañana y de las vísperas, repetir la invocación en súplica después de cada súplica.",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -3998,7 +3998,7 @@ const char* html_text_opt_1_spolc_svaty[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"паказваць інфармацыю пра агульныя тэксты пра святых",
 	"almennir hlutir til bænar heilags manns",
-	"es_text",
+	"partes comunes de la oración del santo",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

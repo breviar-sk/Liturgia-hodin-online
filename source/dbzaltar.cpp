@@ -11537,6 +11537,7 @@ _struct_lang_anchor_and_count pocet_otcenas_uvod_multi_anchor_count[] = {
 	{ JAZYK_CZ, "_OTCENAS-UVOD", 7 },
 	{ JAZYK_HU, "_OTCENAS-UVOD", 10 }, // they have 12 intros (according to vol. I & II of first Latin editio) but technically we can support max. 10 options
 	{ JAZYK_IS, "_OTCENAS-UVOD", 10 },
+	{ JAZYK_ES, "_OTCENAS-UVOD", 10 },
 };
 
 _struct_lang_anchor_and_count pocet_prosby_multi_anchor_count[] = {
