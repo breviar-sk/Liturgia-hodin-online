@@ -6632,7 +6632,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 							sprintf(_global_den.meno, text_DEN_VO_VELKONOCNEJ_OKTAVE[_global_jazyk], nazov_Dna(_global_den.denvt));
 						}
-						else if ((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_IS)) {
+						else if ((_global_jazyk == JAZYK_HU) || (_global_jazyk == JAZYK_IS) || (_global_jazyk == JAZYK_ES)) {
 							if (_global_den.denvt == DEN_PONDELOK) {
 								// veľkonočný pondelok ináč
 								mystrcpy(_global_den.meno, text_VELKONOCNY_PONDELOK[_global_jazyk], MENO_SVIATKU);
@@ -7321,9 +7321,9 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			}
 		}
 
-		// override for BY: special naming of days in Great (Holy) Week (Mo, Tue, We)
-		if ((_global_jazyk == JAZYK_BY) && ((_local_den.denvt == DEN_PONDELOK) || (_local_den.denvt == DEN_UTOROK) || (_local_den.denvt == DEN_STREDA) || (_local_den.denvt == DEN_STVRTOK))) {
-			Log("special naming of days in Great (Holy) Week (Mo, Tue, We)\n");
+		// override for ES + BY: special naming of days in Great (Holy) Week (Mo, Tue, We)
+		if (((_global_jazyk == JAZYK_BY) || ((_global_jazyk == JAZYK_ES))) && ((_local_den.denvt == DEN_PONDELOK) || (_local_den.denvt == DEN_UTOROK) || (_local_den.denvt == DEN_STREDA) || (_local_den.denvt == DEN_STVRTOK))) {
+			Log("special naming of days in Great (Holy) Week (Mo, Tue, We, Thu)\n");
 
 			switch (_local_den.denvt)
 			{
@@ -7342,7 +7342,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			default:
 				break;
 			}
-		}// if ((_global_jazyk == JAZYK_BY) && ((_local_den.denvt == DEN_PONDELOK) || (_local_den.denvt == DEN_UTOROK) || (_local_den.denvt == DEN_STREDA) || (_local_den.denvt == DEN_STVRTOK)))
+		}
 	}// if (_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN)
 
 	Log("3:_local_den.meno == %s\n", _local_den.meno);
