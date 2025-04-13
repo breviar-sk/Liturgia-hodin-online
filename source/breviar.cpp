@@ -2128,12 +2128,12 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 					}
 
 #if defined(EXPORT_HTML_SPECIALS)
-					Export("[%s:%s|rest_krizik=%s]", strbuff, modlparam, (rest_krizik == NULL) ? STR_EMPTY : rest_krizik);
+					Export("[%s:%s|rest_krizik=%s]", strbuff, modlparam, rest_krizik);
 #endif
 					Log("_global_modlitba == %d (%s)...\n", _global_modlitba, nazov_modlitby(_global_modlitba));
 					Log("paramname == %s...\n", paramname);
 					Log("modlparam == %s...\n", modlparam);
-					Log("rest_krizik == %s...\n", (rest_krizik == NULL) ? STR_EMPTY : rest_krizik);
+					Log("rest_krizik == %s...\n", rest_krizik);
 
 					// krížik v texte includovaného žalmu/chválospevu
 					if ((je_antifona == ANO) || (equals(paramname, PARAM_ZALM1) || equals(paramname, PARAM_ZALM2) || equals(paramname, PARAM_ZALM3) || equals(paramname, PARAM_RCHVALOSPEV) || equals(paramname, PARAM_VCHVALOSPEV))) {
@@ -2422,10 +2422,10 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						}
 					}
 #if defined(EXPORT_HTML_SPECIALS)
-					Export("[%s:%s|rest_zakoncenie=%s]", strbuff, modlparam, (rest_zakoncenie == NULL) ? STR_EMPTY : rest_zakoncenie);
+					Export("[%s:%s|rest_zakoncenie=%s]", strbuff, modlparam, rest_zakoncenie);
 #endif
 					if ((je_modlitba == ANO) && ((equals(paramname, PARAM_MODLITBA)) || (equals(paramname, PARAM_MODL_SPOMPRIVILEG)) || (je_velkonocna_nedela_posv_cit))) {
-						Export("%s--> ", /* (rest_zakoncenie == NULL) ? STR_EMPTY : */ rest_zakoncenie);
+						Export("%s--> ", rest_zakoncenie);
 						if (equals(rest_zakoncenie, PARAM_ZAKONCENIE_SKRZE) || equals(rest_zakoncenie, PARAM_ZAKONCENIE_SKRZE_MALE)) {
 							if (je_modlitba_cez_den(_global_modlitba) || je_kompletorium12(_global_modlitba) || (je_velkonocna_nedela_posv_cit)) {
 								mystrcpy(zakoncenie, text_ZAKONCENIE_SKRZE_kratke[_global_jazyk], MAX_ZAKONCENIE);
@@ -2484,7 +2484,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						}
 						// nezlomiteľné medzery
 						Export("%s", convert_nonbreaking_spaces(zakoncenie));
-						Export(HTML_COMMENT_BEGIN "%s", /* (rest_zakoncenie == NULL) ? STR_EMPTY : */ rest_zakoncenie);
+						Export(HTML_COMMENT_BEGIN "%s", rest_zakoncenie);
 						je_modlitba = NIE;
 					}
 				}// vypísať zakončenie
@@ -3019,7 +3019,7 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						Export(HTML_COMMENT_BEGIN);
 					}
 
-					Export("[%s:%s|rest=%s]", strbuff, modlparam, (rest == NULL) ? STR_EMPTY : rest);
+					Export("[%s:%s|rest=%s]", strbuff, modlparam, rest);
 #endif
 					if (useWhenGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_TEXT_WRAP) && (isMobileOS == 0) && EXPORT_FULL_TEXT) {
 						// MAX_BUFFER bol zvýšený, lebo strbuff bol v tomto prípade veľmi dlhý
