@@ -7575,7 +7575,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 
 						// ...potom dátum + genitív mesiaca... | ale iba v takom prípade, že mesiac je december (pre použitie "liturgické obdobie" je dátum neinicializovaný, teda 1. januára)
 						if ((_local_den.mesiac == MES_DEC) && (_local_den.den >= 16) && (_local_den.den <= 24)) {
-							mystrcpy(pom2, _vytvor_string_z_datumu(_local_den.den, _local_den.mesiac, _local_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_HU)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_GEN, NIE), MAX_STR);
+							mystrcpy(pom2, _vytvor_string_z_datumu(_local_den.den, _local_den.mesiac, _local_den.rok, ((_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_HU)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_GEN, NIE), MAX_STR);
 							strcat(pom, pom2);
 							mystrcpy(pom2, ", ", MAX_STR);
 							strcat(pom, pom2);
@@ -9779,7 +9779,7 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 		else if (dnes_dnes > EXPORT_DNES_DNES_NULL) {
 			sprintf(action, HTML_LINK_CALL1, script_name, STR_QUERY_TYPE, STR_PRM_DATUM, STR_DEN, _global_den.den, STR_MESIAC, _global_den.mesiac, STR_ROK, _global_den.rok, pom2);
 			Export_HtmlForm(action);
-			Export(HTML_FORM_INPUT_SUBMIT1" title=\"%s\" value=\"", _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			Export(HTML_FORM_INPUT_SUBMIT1" title=\"%s\" value=\"", _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, (_global_jazyk == JAZYK_EN) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 		}
 
 		if (dnes_dnes == EXPORT_DNES_DNES_ANO_SPEC) {
@@ -9795,7 +9795,7 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 #if defined(OS_Windows_Ruby) || defined(IO_ANDROID)
 			Export((char *)html_button_tento_den[_global_jazyk]);
 #else
-			Export(_vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			Export(_vytvor_string_z_datumu(_global_den.den, _global_den.mesiac, _global_den.rok, (_global_jazyk == JAZYK_EN) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 #endif
 		}
 		
@@ -10141,7 +10141,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes) {
 				Export((char *)html_text_den[_global_jazyk]);
 			}
 			else {
-				Export(_vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+				Export(_vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, (_global_jazyk == JAZYK_EN) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 			}
 			Export(" \"" HTML_FORM_INPUT_END "\n");
 			Export("</form>\n");
@@ -10215,7 +10215,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes) {
 				Export((char *)html_text_den[_global_jazyk]);
 			}
 			else {
-				Export(_vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+				Export(_vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, (_global_jazyk == JAZYK_EN) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 			}
 			Export(" " HTML_RIGHT_ARROW_SINGLE "\"" HTML_FORM_INPUT_END "\n");
 			Export("</form>\n");
@@ -10226,7 +10226,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes) {
 				Export(HTML_A_HREF_BEGIN "\"%s\">%s %s " HTML_RIGHT_ARROW_SINGLE "" HTML_A_END "\n", pom, html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk]);
 			}
 			else {
-				Export(HTML_A_HREF_BEGIN "\"%s\">%s %s %s " HTML_RIGHT_ARROW_SINGLE "" HTML_A_END "\n", pom, html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+				Export(HTML_A_HREF_BEGIN "\"%s\">%s %s %s " HTML_RIGHT_ARROW_SINGLE "" HTML_A_END "\n", pom, html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, (_global_jazyk == JAZYK_EN) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 			}
 		}
 
@@ -10472,7 +10472,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes) 
 		if (som_v_tabulke == ANO) {
 			ExportTableCell(HTML_TABLE_CELL);
 			Export_HtmlForm(pom);
-			Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %s\" value=\"" HTML_LEFT_ARROW_SINGLE " ", html_button_predchadzajuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %s\" value=\"" HTML_LEFT_ARROW_SINGLE " ", html_button_predchadzajuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, (_global_jazyk == JAZYK_EN) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 			// použijeme vždy, nielen keď if (dnes_dnes == EXPORT_DNES_DNES_ANO)
 			Export((char *)html_text_den[_global_jazyk]);
 			Export(" \"" HTML_FORM_INPUT_END "\n");
@@ -10480,7 +10480,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes) 
 			Export(HTML_TABLE_CELL_END "\n");
 		}
 		else {
-			Export(HTML_A_HREF_BEGIN "\"%s\">" HTML_LEFT_ARROW_SINGLE " %s %s %s" HTML_A_END "\n", pom, html_button_predchadzajuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			Export(HTML_A_HREF_BEGIN "\"%s\">" HTML_LEFT_ARROW_SINGLE " %s %s %s" HTML_A_END "\n", pom, html_button_predchadzajuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, (_global_jazyk == JAZYK_EN) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 			ExportNonbreakingSpace(); Export(STR_VERTICAL_BAR); ExportNonbreakingSpace(); Export("\n");
 		}
 
@@ -10541,7 +10541,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes) 
 		if (som_v_tabulke == ANO) {
 			ExportTableCell(HTML_TABLE_CELL);
 			Export_HtmlForm(pom);
-			Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %s\" value=\"", html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			Export(HTML_FORM_INPUT_SUBMIT0 " title=\"%s %s %s\" value=\"", html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, (_global_jazyk == JAZYK_EN) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 
 			Export((char *)html_text_den[_global_jazyk]);
 			Export(" " HTML_RIGHT_ARROW_SINGLE "\"" HTML_FORM_INPUT_END "\n");
@@ -10550,7 +10550,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes) 
 			Export(HTML_TABLE_ROW_END "\n");
 		}
 		else {
-			Export(HTML_A_HREF_BEGIN "\"%s\">%s %s %s " HTML_RIGHT_ARROW_SINGLE "" HTML_A_END "\n", pom, html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+			Export(HTML_A_HREF_BEGIN "\"%s\">%s %s %s " HTML_RIGHT_ARROW_SINGLE "" HTML_A_END "\n", pom, html_button_nasledujuci_[_global_jazyk], html_text_den[_global_jazyk], _vytvor_string_z_datumu(datum.den, datum.mesiac, _local_rok, (_global_jazyk == JAZYK_EN) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 			ExportNonbreakingSpace(); Export(STR_VERTICAL_BAR); ExportNonbreakingSpace(); Export("\n");
 		}
 
@@ -15338,7 +15338,7 @@ void _main_rozbor_dna(short int typ, short int d, short int m, short int r, shor
 			if (!kontrola_den_mesiac_rok(d, m, r)) {
 				Log("/* teraz vypisujem heading 1, datum %d. %s %d */\n", d, nazov_mesiaca(m - 1), r);
 
-				strcpy(pom, _vytvor_string_z_datumu(d, m, r, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+				strcpy(pom, _vytvor_string_z_datumu(d, m, r, ((_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 				_export_heading_center(typ, pom);
 
 				if (p == MODL_NEURCENA) {
@@ -15628,7 +15628,7 @@ void _main_dnes(char *modlitba, char *poradie_svaty) {
 
 	// vypis
 	Log("now printing heading 1, date %d. %s %d [note: struct tm has tm_mon 1..12 while our constants are 0..11]\n", dnes.tm_mday, nazov_mesiaca(dnes.tm_mon - 1), dnes.tm_year);
-	strcpy(pom, _vytvor_string_z_datumu(dnes.tm_mday, dnes.tm_mon, dnes.tm_year, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+	strcpy(pom, _vytvor_string_z_datumu(dnes.tm_mday, dnes.tm_mon, dnes.tm_year, ((_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 	_export_heading_center(query_type, pom);
 
 	// výpis juliánskeho dátumu, len ak nie je určená modlitba 
@@ -16112,7 +16112,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		Log("-- special behavior for OBD_VIANOCNE_I and OBD_VIANOCNE_II...\n");
 		Log("/* teraz vypisujem heading 1, datum %d. %s %d */\n", _global_den.den, nazov_mesiaca(_global_den.mesiac), _global_den.rok);
 
-		strcpy(pom, _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac + 1, _global_den.rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
+		strcpy(pom, _vytvor_string_z_datumu(_global_den.den, _global_den.mesiac + 1, _global_den.rok, ((_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, LINK_DEN_MESIAC_ROK, NIE));
 		_export_heading_center(query_type, pom);
 	}
 
@@ -20032,7 +20032,7 @@ void init_global_string_as_html_title(short int den, short int mesiac, short int
 		strcat(_global_string, html_title_static_text[rok][_global_jazyk]);
 	}
 	else if ((query_type == PRM_DATUM) || (query_type == PRM_TXT) || (query_type == PRM_ANALYZA_ROKU)) {
-		strcat(_global_string, _vytvor_string_z_datumu_ext(den, mesiac + 1, rok, ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, NIE, use_numbers_instead_month_names));
+		strcat(_global_string, _vytvor_string_z_datumu_ext(den, mesiac + 1, rok, ((_global_jazyk == JAZYK_EN) || (_global_jazyk == JAZYK_ES)) ? CASE_Case : CASE_case, NIE, use_numbers_instead_month_names));
 	}
 
 	// no additional text for Mary's antiphones & incorrect info text numbers

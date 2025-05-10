@@ -609,7 +609,7 @@ char* _vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 		// use numbers as months' names
 		if (_global_jazyk == JAZYK_LA) {
 			convertToRoman(mesiac, str_mesiac);
-			strcat(str_mesiac, ".");
+			strcat(str_mesiac, STR_DOT);
 		}
 		else {
 			sprintf(str_mesiac, "%d.", mesiac);

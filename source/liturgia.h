@@ -1806,8 +1806,8 @@ char *_vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 
 // parameter align -- či zarovnať jednociferné dátumy (číslovka dňa) medzerou zľava
 void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align);
-void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char*  html_class);
-void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char*  html_class, const char*  nazov_dna);
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char* html_class);
+void _vytvor_global_link(short int den, short int mesiac, short int rok, short int _case, short int typ, short int align, const char* html_class, const char* nazov_dna);
 
 #define PRILEP_REQUEST_OPTIONS_DEFAULT   0
 #define PRILEP_REQUEST_OPTIONS_AJ_FORCE  1
