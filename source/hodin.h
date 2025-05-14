@@ -699,7 +699,7 @@ const char* nazov_slavenia_lokal[] =
 , "pre Ordinariát ozbrojených síl a ozbrojených zborov SR sviatok hlavného patróna"                              // LOKAL_SLAV_ORDINARIAT_PATRON
 , "A Pécsi Egyházmegyében: az egyházmegye társvédőszentje; főünnep." HTML_LINE_BREAK "A szlovákiai egyházmegyékben: tetszés szerinti emléknap" // LOKAL_SLAV_PECS_PATRON
 , "Szombathely, Pannonhalma, Kismarton, Munkács és Pozsony: az egyházmegye/főapátság védőszentje; főünnep"       // LOKAL_SLAV_SZOMBATHELYI_PATRON
-, "Székesfehérvár: a székesegyházban; főünnep"                                                                   // LOKAL_SLAV_SZEKESFEHERVAR_EGYH
+, "len pre OFMCap."                                                                                              // LOKAL_SLAV_OFMCAP
 , "Az Egri Főegyházmegyében: a főegyházmegye védőszentje; főünnep"                                               // LOKAL_SLAV_EGER_FOEGYH
 , "Az Esztergom-Budapesti Főegyházmegyében; emléknap"                                                            // LOKAL_SLAV_ESZTERGOM_EML
 , "A Győri Egyházmegyében"                                                                                       // LOKAL_SLAV_GYOR_EGYH
@@ -11654,8 +11654,8 @@ const char* text_JUN_09_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_10_OP[POCET_JAZYKOV + 1] =
@@ -11670,8 +11670,24 @@ const char* text_JUN_10_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_JUN_10_OFM[POCET_JAZYKOV + 1] =
+{
+	"Bl. Tomáša Salehu a Leonarda Melkiho, mučeníkov, kapucínov",
+	"Bl. Tomáše Salehu a Leonarda Melkiho, mučedníků",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_11[POCET_JAZYKOV + 1] =
@@ -11734,8 +11750,8 @@ const char* text_JUN_12_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_12_OP[POCET_JAZYKOV + 1] =
@@ -11750,8 +11766,8 @@ const char* text_JUN_12_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_12_OCD[POCET_JAZYKOV + 1] =
@@ -11766,8 +11782,8 @@ const char* text_JUN_12_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Alfons Maria Mazurek og félaga, píslarvotta",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_12_OCARM[POCET_JAZYKOV + 1] =
@@ -11782,8 +11798,8 @@ const char* text_JUN_12_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_12_OSU[POCET_JAZYKOV + 1] =
@@ -11798,8 +11814,8 @@ const char* text_JUN_12_OSU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_12_SVD[POCET_JAZYKOV + 1] =
@@ -11814,8 +11830,8 @@ const char* text_JUN_12_SVD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_12_OFM[POCET_JAZYKOV + 1] =
@@ -11830,8 +11846,8 @@ const char* text_JUN_12_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_12_2_OFM[POCET_JAZYKOV + 1] =
@@ -11846,8 +11862,8 @@ const char* text_JUN_12_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_12_3_OFM[POCET_JAZYKOV + 1] =
@@ -11862,8 +11878,8 @@ const char* text_JUN_12_3_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_13[POCET_JAZYKOV + 1] =
@@ -11910,8 +11926,8 @@ const char* text_JUN_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"Св. Антонія Падуанскага, прэзбітэра і доктара Касцёла",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_13_1_OFM_HU[POCET_JAZYKOV + 1] =
@@ -12086,8 +12102,8 @@ const char* text_JUN_16_SCSC[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_16_2_OFM[POCET_JAZYKOV + 1] =
@@ -12102,8 +12118,8 @@ const char* text_JUN_16_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_16_OPRAEM[POCET_JAZYKOV + 1] =
@@ -12118,8 +12134,8 @@ const char* text_JUN_16_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_16_HU[POCET_JAZYKOV + 1] =
@@ -12166,8 +12182,8 @@ const char* text_JUN_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_18_OP[POCET_JAZYKOV + 1] =
@@ -12182,8 +12198,8 @@ const char* text_JUN_18_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_19[POCET_JAZYKOV + 1] =
@@ -12390,13 +12406,13 @@ const char* text_JUN_26_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_26_2_OFM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Jakuba z Ghazíru, kňaza",
+	"Bl. Jakuba z Ghaziru, kňaza",
 	"Bl. Jakuba z Ghaziru (Al-Haddad), kněze",
 	"",
 	"",
@@ -12406,8 +12422,8 @@ const char* text_JUN_26_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_26_OCD[POCET_JAZYKOV + 1] =
@@ -12422,8 +12438,8 @@ const char* text_JUN_26_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_26_CM[POCET_JAZYKOV + 1] =
@@ -12438,8 +12454,8 @@ const char* text_JUN_26_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_26_ES[POCET_JAZYKOV + 1] =

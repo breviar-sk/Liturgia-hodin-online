@@ -2187,6 +2187,7 @@ extern const char* text_MAJ_30_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUN_02_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUN_07_OFMCONV[POCET_JAZYKOV + 1];
 extern const char* text_JUN_08_OFM[POCET_JAZYKOV + 1];
+extern const char* text_JUN_10_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUN_12_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUN_12_2_OFM[POCET_JAZYKOV + 1];
 extern const char* text_JUN_12_3_OFM[POCET_JAZYKOV + 1];
