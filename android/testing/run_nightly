@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GRADLE=gradle
+GRADLE=gradle8
 
 umask 002
 
