@@ -74,7 +74,7 @@ const char* nazov_modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1] =
 	, { "neurčená", "neurčena", "not-defined", "no data", "", "neurčena", "nem azonosított", "ru_text", "by_text", "án fyrirmæla", "no especificado", "mətn tapılmadı", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "prvé vešpery", "první nešpory", "1st Vesperæ", "I vesperæ", "", "První večerní chvály", "I. esti dicséret", "ru_text", "I нешпары", "fyrsti aftansöngur", "I vísperas", "ərəfə mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "kompletórium po prvých vešperách", "kompletář po prvních nešporách", "1st Completary", "I completorium", "", "Kompletář po prvních večerních chválách", "befejező imaóra I. e. d. után", "ru_text", "камплета пасля I нешпараў", "náttsöngur eftir Fyrsta aftansöng", "I completas", "ərəfənin gecə mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
-	, { "druhé vešpery", "druhé nešpory", "2nd Vesperæ", "II vesperæ", "", "Druhé večerní chvály", "II. esti dicséret", "ru_text", "II нешпары", "annar aftansöngur", "II vísperas", "axşam mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	, { "druhé vešpery", "druhé nešpory", "2nd Vesperæ", "II vesperæ", "", "Druhé večerní chvály", "II. esti dicséret", "ru_text", "II нешпары", "annar aftansöngur", "II vísperas", "Axşam mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "kompletórium po druhých vešperách", "kompletář po druhých nešporách", "2nd Completary", "II completorium", "", "Kompletář po druhých večerních chválách", "befejező imaóra II. e. d. után", "ru_text", "камплета пасля II нешпараў", "náttsöngur eftir Annan aftansöng", "II completas", "axşam mədhindən sonra gecə mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "detaily", "detaily", "Details", "details", "", "detaily", "részletek", "ru_text", "дэталі", "smáatriði", "detalles", "detallar", /* STRING_1_FOR_NEW_LANGUAGE */ }
 	, { "všetky", "všechny", "all", "omnia", "", "všechny", "összes", "ru_text", "усе", "allar", "todo", "hamısı", /* STRING_1_FOR_NEW_LANGUAGE */ }
@@ -2079,7 +2079,7 @@ const char* html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 	"Нядзеля" HTML_LINE_BREAK "Спаслання" HTML_LINE_BREAK "Святога" HTML_LINE_BREAK "Духа",
 	"Hvítasunna",
 	"El envío" HTML_LINE_BREAK "del Espíritu" HTML_LINE_BREAK "Santo",
-	"az_text",
+	"Pentekost Bayramı",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 },
 {
@@ -2109,7 +2109,7 @@ const char* html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 	"by_text",
 	"Fyrsti" HTML_LINE_BREAK "sunnudagur" HTML_LINE_BREAK "í aðventu",
 	"Domingo I" HTML_LINE_BREAK "de adviento",
-	"az_text",
+	"Birinci" HTML_LINE_BREAK "Advent dövründəki" HTML_LINE_BREAK "Rəbb günü",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 },
 {
@@ -2124,13 +2124,13 @@ const char* html_text_pohyblive[POCET_HTML_TEXT_POHYBLIVE + 1][POCET_JAZYKOV + 1
 	"Святой Сям'і:" HTML_LINE_BREAK "Езуса, Марыі і Юзафа",
 	"Hátíð" HTML_LINE_BREAK "hinnar heilögu" HTML_LINE_BREAK "fjölskyldu",
 	"Fiesta" HTML_LINE_BREAK "La Sagrada" HTML_LINE_BREAK "familia",
-	"az_text",
+	"Müqəddəs" HTML_LINE_BREAK "Ailənin" HTML_LINE_BREAK "Bayramı",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 }
 };
 
-const char* html_text_Nedelne_pismeno[POCET_JAZYKOV + 1] = { "Nedeľné písmeno", "Nedělní písmeno", "Sunday letter", "Littera dominicæ", "", "Nedělní písmeno", "A vasárnap betűje", "ru_text", "Нядзельны цыкл", "Sunnudagsstafur", "Carta del domingo", "Bazar günü məktubu", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char* html_text_Nedelne_pismena[POCET_JAZYKOV + 1] = { "Nedeľné písmená", "Nedělní písmena", "Sunday letters", "Litteræ dominicæ", "", "Nedělní písmena", "A vasárnap betűje", "ru_text", "Нядзельныя цыклы", "Sunnudagsstafir", "Cartas dominicales", "Bazar günü məktubları", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char* html_text_Nedelne_pismeno[POCET_JAZYKOV + 1] = { "Nedeľné písmeno", "Nedělní písmeno", "Sunday letter", "Littera dominicæ", "", "Nedělní písmeno", "A vasárnap betűje", "ru_text", "Нядзельны цыкл", "Sunnudagsstafur", "Carta del domingo", "Rəbb günü məktubu", /* STRING_1_FOR_NEW_LANGUAGE */ };
+const char* html_text_Nedelne_pismena[POCET_JAZYKOV + 1] = { "Nedeľné písmená", "Nedělní písmena", "Sunday letters", "Litteræ dominicæ", "", "Nedělní písmena", "A vasárnap betűje", "ru_text", "Нядзельныя цыклы", "Sunnudagsstafir", "Cartas dominicales", "Rəbb günü məktubları", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* html_text_Od_prvej_adv_atd[POCET_JAZYKOV + 1] = {
 	"Od Prvej adventnej nedele v roku %d (%s) pokračuje " HTML_A_HREF_BEGIN "\"%s%s\">liturgický rok" HTML_A_END " <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END ".",
@@ -2144,7 +2144,7 @@ const char* html_text_Od_prvej_adv_atd[POCET_JAZYKOV + 1] = {
 	"by_text | From the 1st Advent Sunday in the year %d (%s) continues " HTML_A_HREF_BEGIN "\"%s%s\">liturgical year" HTML_A_END " <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END ".",
 	"Frá fyrsta sunnudegi í aðventu í ári %d (%s) heldur áfram " HTML_A_HREF_BEGIN "\"%s%s\">litúrgískt ár" HTML_A_END " <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END ".",
 	"Continúa desde el Domingo I de adviento del año %d (%s) " HTML_A_HREF_BEGIN "\"%s%s\">año litúrgico" HTML_A_END " <" HTML_SPAN_BOLD ">%s" HTML_SPAN_END ".",
-	"az_text",
+	"Liturgiya ili",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2160,7 +2160,7 @@ const char* html_text_Po_Velkej_noci_atd[POCET_JAZYKOV + 1] = {
 	"by_text %d. %s",
 	"Eftir páska kemur %d. %s innan ársins.",
 	"La Pascua es seguida por %d. %s del tiempo ordinario.",
-	"az_text",
+	"Pasxadan sonra -  %d. %s adi dövrdə.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2176,7 +2176,7 @@ const char* html_text_Prikazane_sviatky_v_roku[POCET_JAZYKOV + 1] = {
 	"by_text %s",
 	"Fyrirskipaðar hátíðir ársins %s",
 	"Vacaciones obligatorias en el año %s",
-	"az_text",
+	"Mütləq bayramlar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2192,27 +2192,27 @@ const char* html_text_Jednotlive_mesiace_roku[POCET_JAZYKOV + 1] = {
 	"by_text %s",
 	"Einstakir mánuðir ársins %s",
 	"Meses individuales del año %s",
-	"az_text",
+	"İldəki aylar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
 const char* str_doplnkova_psalmodia[POCET_JAZYKOV + 1] =
-{ "doplnková psalmódia", "žalmy z doplňovacího cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplňková psalmodie", "kiegészítő zsoltárok", "ru_text", "дадатковая псальмодыя", "aukasálmar", "salmodia suplementaria", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "doplnková psalmódia", "žalmy z doplňovacího cyklu", "supplementary psalmody", "psalmodia complementaris", "", "doplňková psalmodie", "kiegészítő zsoltárok", "ru_text", "дадатковая псальмодыя", "aukasálmar", "salmodia suplementaria", "əlavə məzmurlar", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* str_modl_cez_den_zalmy_zo_dna[POCET_JAZYKOV + 1] =
-{ "bežnej psalmódie", "běžné psalmodie", "ordinary psalmody", "psalmodiæ ordinariæ", "", "běžné psalmodie", "soros zsoltárösszeállítást", "ru_text", "са звычайнай псальмодыі", "almennum sálmasöngvum", "salmodia común", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "bežnej psalmódie", "běžné psalmodie", "ordinary psalmody", "psalmodiæ ordinariæ", "", "běžné psalmodie", "soros zsoltárösszeállítást", "ru_text", "са звычайнай псальмодыі", "almennum sálmasöngvum", "salmodia común", "adi məzmurlar", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #define		STR_MODL_CEZ_DEN_ZALMY_ZO_DNA 	str_modl_cez_den_zalmy_zo_dna[_global_jazyk]
 
 const char* str_modl_cez_den_doplnkova_psalmodia[POCET_JAZYKOV + 1] =
-{ "doplnkovej psalmódie", "doplňovacího cyklu", "supplementary psalmody", "psalmodiæ complementaris", "", "doplňkové psalmodie", "kiegészítő zsoltárok", "ru_text", "з дадатковай псальмодыі", "viðbótarsálmasöngvum", "salmodia adicional", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "doplnkovej psalmódie", "doplňovacího cyklu", "supplementary psalmody", "psalmodiæ complementaris", "", "doplňkové psalmodie", "kiegészítő zsoltárok", "ru_text", "з дадатковай псальмодыі", "viðbótarsálmasöngvum", "salmodia adicional", "əlavə məzmurların", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #define		STR_MODL_CEZ_DEN_DOPLNKOVA_PSALMODIA 	str_modl_cez_den_doplnkova_psalmodia[_global_jazyk]
 
 const char* str_modl_zalmy_zo_dna[POCET_JAZYKOV + 1] =
-{ "dňa", "dne", "day", "die", "", "dne", "naptól", "ru_text", "з дня", "dagsins", "día", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "dňa", "dne", "day", "die", "", "dne", "naptól", "ru_text", "з дня", "dagsins", "día", "günün", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #define		STR_MODL_ZALMY_ZO_DNA 	str_modl_zalmy_zo_dna[_global_jazyk]
 
 const char* str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1] =
-{ "sviatku", "svátku", "celebration", "festi", "", "svátku", "ünneptől", "ru_text", "з цэлебрацыі", "hátíðar", "fiesta", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "sviatku", "svátku", "celebration", "festi", "", "svátku", "ünneptől", "ru_text", "з цэлебрацыі", "hátíðar", "fiesta", "bayramın", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #define		STR_MODL_ZALMY_ZO_SV 	str_modl_zalmy_zo_sv[_global_jazyk]
 
 #define STR_VALUE_TRUE  "1"
@@ -2220,11 +2220,11 @@ const char* str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1] =
 #define STR_VALUE_ZERO  "0"
 
 const char* str_ano[POCET_JAZYKOV + 1] =
-{ "áno", "ano", "yes", "sic", "___", "ano", "igen", "ru_text", "так", "já", "sí", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "áno", "ano", "yes", "sic", "___", "ano", "igen", "ru_text", "так", "já", "sí", "bəli", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #define		STR_ANO		str_ano[_global_jazyk]
 
 const char* str_nie[POCET_JAZYKOV + 1] =
-{ "nie", "ne", "no", "non", "___", "ne", "nem", "ru_text", "не", "nei", "no", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "nie", "ne", "no", "non", "___", "ne", "nem", "ru_text", "не", "nei", "no", "yox", /* STRING_1_FOR_NEW_LANGUAGE */ };
 #define		STR_NIE		str_nie[_global_jazyk]
 
 const char* html_text_Jazyk[POCET_JAZYKOV + 1] =
@@ -2257,7 +2257,7 @@ const char* html_text_jazyk_verzia[POCET_JAZYKOV + 1] =
 	"Мова/Версія літургіі гадзінаў",
 	"Tungumál",
 	"Idioma/versión del breviario",
-	"İxtisanın dili/versiya",
+	"Mədhlərin dili/versiyası",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2274,7 +2274,7 @@ const char* html_text_jazyk_long[POCET_JAZYKOV + 1] =
 	"by_text",
 	"Tíðabænabók í tungumáli:",
 	"Liturgia de las Horas en el idioma:",
-	"Dildə Saatların Liturgiyası:",
+	"Mədhlərin dili:",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2291,7 +2291,7 @@ const char* html_text_jazyk_explain[POCET_JAZYKOV + 1] =
 	"by_text",
 	"Tíðabænabók fyrir annað tungumál.",
 	"Liturgia de las Horas en otro idioma.",
-	"Başqa dil üçün Saatların Liturgiyası.",
+	"Başqa dildə Mədhlər.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2308,7 +2308,7 @@ const char* html_text_detaily_uvod[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bu parametrlər göstərilmiş duaları və onların görüntünü təsir edəcək.\nİstədiyiniz parametrlərini seçin.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2325,7 +2325,7 @@ const char* html_text_opt_0_kalendar[POCET_JAZYKOV + 1] =
 	"налады літургічнага календара",
 	"stillingar fyrir litúrgískt dagatal",
 	"ajustes para el calendario litúrgico",
-	"liturgik təqvim üçün parametrlər",
+	"liturgiya təqvimi üçün parametrlər",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2342,7 +2342,7 @@ const char* html_text_opt_0_kalendar_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Mədhlər yepiskopların konfransının qəranına əsasən, sözügedən ölkədən asılı olaraq bəzi bayramları iki şəkildə qeyd etmək imkanını təklif edir.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2359,7 +2359,7 @@ const char* html_text_opt_1_nemenne_sucasti[POCET_JAZYKOV + 1] =
 	"паказаць наступныя часткі малітвы?",
 	"sýna eftirfarandi hluta bænar?",
 	"¿muestra las siguientes partes de la oración?",
-	"namazın aşağıdakı hissələrini göstərin?",
+	"bu dualar göstərilsin?",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2376,7 +2376,7 @@ const char* html_text_opt_1_nemenne_sucasti_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Hər Səhər mədhində Benediktus duası var, hər Axşam mədhində Magnifikat duası var, hər ikisində həmçinin Atamız və Yekun duanın son hissələri var. Oxunuşların mədhində hərdənbir Te Deum duası var; proqramda bütün bu hissələri həm gizlətmək, həm də göstərmək olar.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2411,7 +2411,7 @@ const char* html_text_opt_1_dalsie_prepinace_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"nəticələnən duaların müxtəlif variantları",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2428,7 +2428,7 @@ const char* html_text_zalmy_brat_zo[POCET_JAZYKOV + 1] =
 	"узяць псальмодыю з ",
 	"nota sálma ",
 	"salmos usados ​​de",
-	"az_text",
+	"məzmurlar burdan olsun:",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2445,7 +2445,7 @@ const char* html_text_zalmy_brat_zo_okrem_mcd[POCET_JAZYKOV + 1] =
 	"by_text",
 	" (nema miðdegisbæn)\n",
 	" (excepto la hora intermedia)\n",
-	"az_text",
+	" (gündəki duadan başqa)\n",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2462,7 +2462,7 @@ const char* html_text_spol_casti_vziat_zo[POCET_JAZYKOV + 1] =
 	"часткі малітвы з агульнай часткі ",
 	"hluti bænanna frá almennum textum ",
 	"partes de la oración de textos comunes ",
-	"az_text",
+	"ümumi mətnlərdən olan hissələr ",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2479,7 +2479,7 @@ const char* html_text_spol_casti_vziat_zo_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"En la festividad de un santo, según las normas litúrgicas, las partes que no se encuentran en la parte propia del salterio se toman de la parte común de la fiesta; a veces es posible elegir entre varias partes comunes; además, es posible rezar estas partes de la vida cotidiana.",
-	"az_text",
+	"Bir müqəddəsin bayramı günündə liturgiya qaydalarına görə, mətnlər həmin bayramdan götürülür, yoxsa ümumi mətnlərdən, yoxsa gündəlik mətnlərdən. Bəzən bir neçə mövcud variantlar var.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2496,7 +2496,7 @@ const char* html_text_vianocne_obd_note[POCET_JAZYKOV + 1] =
 	"by_text",
 	"fyrir jólin eru virkir dagar túlkaðir sem dagsetningar í janúar",
 	"para el período navideño, los días de la semana se interpretan como una fecha de enero.",
-	"az_text",
+	"milad dövründə həftənin günləri yanvar ayındakı günlər kimi şərh edilir",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2513,7 +2513,7 @@ const char* html_text_opt_0_specialne[POCET_JAZYKOV + 1] =
 	"паказваць у тэксце малітваў",
 	"birta í texta bænanna",
 	"en el texto de las oraciones se muestra",
-	"az_text",
+	"duaların mətnində göstər",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2531,7 +2531,7 @@ const char* html_text_opt_0_specialne_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Digər tənzimlər (ayələrin nömrələnməsi göstərilsin, isnadlar göstərilsin və s.)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2565,7 +2565,7 @@ const char* html_text_opt_0_verse_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Saatların Liturgiyası / Breviar (Latın tipik nəşri) məzmur, himn və ya daha uzun bibliya oxunuşunda ayələrin nömrələnməsini göstərir; bəzi nəşrlərdə bu nömrələr göstərilmir.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2582,7 +2582,7 @@ const char* html_text_opt_0_referencie[POCET_JAZYKOV + 1] =
 	"біблійныя спасылкі",
 	"Biblíutenglar",
 	"referencias bíblicas",
-	"az_text",
+	"Bibliyadakı mətnlərin koordinatları",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2599,7 +2599,7 @@ const char* html_text_opt_0_referencie_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bütün Bibliyadakı mətnlərin nömrələri (məsələn Yəh 3, 16) dkc.kbs.sk internet səhifəsinə aparan aktiv link olacaq.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2616,7 +2616,7 @@ const char* html_text_opt_0_ref_bible_com[POCET_JAZYKOV + 1] =
 	"біблійныя спасылкі",
 	"Biblíutenglar á bible.com",
 	"referencias bíblicas en bible.com",
-	"az_text",
+	"www.bible.com səhifəsinə aparan Bibliya mətnlərinin linkləri",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2633,7 +2633,7 @@ const char* html_text_opt_0_ref_bible_com_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Bütün Bibliyadakı mətnlərin nömrələri (məsələn Yəh 3, 16) www.bible.com internet səhifəsinə aparan aktiv link olacaq.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2650,7 +2650,7 @@ const char* html_text_opt_0_italics_cond[POCET_JAZYKOV + 1] =
 	"by_text",
 	"einhverjir textar (aukatextar) með skáletri",
 	"algunos textos (elisiones) en cursiva",
-	"az_text",
+	"bəzi mətnlər kursivlə göstərilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2684,7 +2684,7 @@ const char* html_text_opt_0_printed_edition[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"utilizar textos según la edición impresa",
-	"",
+	"mətnlər çap olunmuş nəşr kitabında kimi olsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2718,7 +2718,7 @@ const char* html_text_opt_0_use_two_years_cycle[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"utilizar un ciclo de dos años para las lecturas sagradas (lecturas bíblicas)",
-	"az_text",
+	"oxunuşlar mədhi üçün iki illi təqvimi istifadə olunsun (Bibliya oxunuşları)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2752,7 +2752,7 @@ const char* html_text_opt_0_two_years_cycle_invert[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"para un ciclo de dos años, tome el primer o segundo año a la inversa",
-	"az_text",
+	"iki illi təqvimində həmin illər dəyişdirilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2769,7 +2769,7 @@ const char* html_text_opt_0_two_years_cycle_invert_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"iki illi təqvimində olan 1-ci oxunuşlar adətən standard Lekcionardan götürülür; bu tənzim bunu dəyişir.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2786,7 +2786,7 @@ const char* html_text_opt_0_alternative_readings_NORMAL[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"utilizar lecturas estándar para la lectura sagrada",
-	"az_text",
+	"oxunuşlar mədhi üçün standard oxunuşlar olsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2803,7 +2803,7 @@ const char* html_text_opt_0_alternative_readings[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"utilizar lecturas alternativas para la lectura sagrada",
-	"az_text",
+	"oxunuşlar mədhi üçün digər oxunuşlar olsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2837,7 +2837,7 @@ const char* html_text_opt_0_citania[POCET_JAZYKOV + 1] =
 	"літургічныя чытанні",
 	"messulestrar",
 	"lecturas en la misa",
-	"kütləvi oxunuşlar",
+	"Müqəddəs Messadakı oxunuşlar",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2854,7 +2854,7 @@ const char* html_text_opt_0_citania_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"səhifəsindəki oxunuşlar göstərilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2871,7 +2871,7 @@ const char* html_text_opt_0_zjv_ne[POCET_JAZYKOV + 1] =
 	"адзначаць Аб'яўленне Пана ў нядзелю паміж 2 і 8 студзеня",
 	"Hátíð Birtingar Drottins skal halda á sunnudegi á milli 2. og 8. janúar",
 	"La Epifanía del Señor se celebra el domingo entre el 2 y el 8 de enero",
-	"az_text",
+	"Epifaniya bayramı 2-8 yanvar arasındakı Rəbb günündə qeyd olunsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2888,7 +2888,7 @@ const char* html_text_opt_0_zjv_ne_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"La Epifanía se celebra el 6 de enero; en algunos países se celebra el domingo entre el 2 y el 8 de enero.",
-	"az_text",
+	"Epifaniya bayramı yanvarın 6-ı qeyd olunur; bəzi ölkələrdə isə 2-8 yanvar arasındakı Rəbb günündə qeyd olunur.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2905,7 +2905,7 @@ const char* html_text_opt_0_nan_ne[POCET_JAZYKOV + 1] =
 	"адзначаць Унебаўшэсце Пана ў нядзелю",
 	"Hátíð Uppstigningar Drottins skal halda á sunnudegi",
 	"Celebramos la Ascensión del Señor el domingo",
-	"az_text",
+	"Göyə qalxması bayramı Rəbb günündə qeyd olunsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2922,7 +2922,7 @@ const char* html_text_opt_0_nan_ne_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"La Ascensión del Señor se celebra el cuadragésimo día después de Pascua(es decir, el jueves); en algunos países la celebración se pospone al domingo siguiente (en sustitución del Domingo VII de Pascua).",
-	"",
+	"Göyə qalxması bayramı Pasxadan sonrakı 40-cı gündə qeyd olunur (Cümə axşamı); bəzi ölkələrdə isə ondan sonra gələn Rəbb günündə qeyd olunur (7-ci Rəbb günü Pasxa dövründə).",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2939,7 +2939,7 @@ const char* html_text_opt_0_tk_ne[POCET_JAZYKOV + 1] =
 	"адзначаць Божае Цела ў нядзелю",
 	"Dýradag, Stórhátíð Líkama og blóðs Krists skal halda á sunnudegi",
 	"Celebrad el Santísimo Cuerpo y Sangre de Cristo el domingo",
-	"az_text",
+	"Evxaristiya bayramı Rəbb günündə qeyd olunsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2956,7 +2956,7 @@ const char* html_text_opt_0_tk_ne_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"La Solemnidad del Cuerpo y la Sangre de Cristo se celebra el undécimo día después de Pentecostés (es decir, el jueves después del Domingo de la Trinidad); en algunos países la celebración se pospone al domingo siguiente.",
-	"",
+	"Evxaristiya bayramı Pentekost bayramından sonra 11-ci gündə qeyd olunur (Müqəddəs Üçlük bayramından sonrakı Cümə axşamında); bəzi ölkələrdə isə ən yaxın Rəbb günündə qeyd olunur.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2973,7 +2973,7 @@ const char* html_text_opt_0_font_normal[POCET_JAZYKOV + 1] =
 	"зрабіць шрыфт нармальным (не тоўстым)",
 	"allstaðar skal nota venjulegt letur (ekki feitt letur)",
 	"use fuente normal en todas partes (sin negrita)",
-	"az_text",
+	"hər yerdə adi şriftdən istifadə edin (qalın deyil)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2991,7 +2991,7 @@ const char* html_text_opt_0_font_normal_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Mədhlərdə birbaşa oxunan mətnlər, eləcə də bəzi alt başlıqlar üçün qalın şriftdən istifadə edir. Bu seçim qalın mətndən istifadəni dayandırır.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3008,7 +3008,7 @@ const char* html_text_opt_0_buttons_order[POCET_JAZYKOV + 1] =
 	"кнопкі з датай пасля кнопак з малітвамі",
 	"dagsetninga- og bendihnappa eru undir hnöppum fyrir bænir",
 	"botones de navegación de fecha debajo de los botones de oración",
-	"namaz düymələrinin altındakı tarix naviqasiya düymələri",
+	"aşağıda tarix naviqasiya düymələri olsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3026,7 +3026,7 @@ const char* html_text_opt_0_buttons_order_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Tarix naviqasiya düymələri (əvvəlki gün, sonrakı gün və s.) adətən dua düymələrin altında göstərilir. Bu tənzim onu dəyişir.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3043,7 +3043,7 @@ const char* html_text_opt_0_voice_output[POCET_JAZYKOV + 1] =
 	"тэкст для невідушчых(без рубрык), для пераводу ў аўдыё",
 	"bara bænatextar fyrir raddúttak",
 	"solo texto de oración para salida de voz",
-	"səs çıxışı üçün yalnız dua mətni",
+	"yalnız dua mətnləri səsli oxunulsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3061,7 +3061,7 @@ const char* html_text_opt_0_voice_output_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Yalnız oxunulmuş mətn göstəriləcək; qırmızı hərflərlə yazılmış izahatlar və başlıqlar göstərilməyəcək. Bu tənzim səsli oxunuş üçün uyğundur, məsələn oxuya bilməyən insanlar üçün.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3078,7 +3078,7 @@ const char* html_text_opt_0_footnotes[POCET_JAZYKOV + 1] =
 	"паказваць зноскі",
 	"glósur (í texta, undirstrikað)",
 	"notas (en el texto, notas a pie de página)",
-	"az_text",
+	"qeydlər (mətndə, xəttin altında)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3096,7 +3096,7 @@ const char* html_text_opt_0_footnotes_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Dua mətnində (əsasən oxunuşlar mədhində) əlavə qeydlər göstəriləcək (mətnlər və linklər).",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3113,7 +3113,7 @@ const char* html_text_opt_0_transparent_nav[POCET_JAZYKOV + 1] =
 	"паказваць стрэлкі навігацыі",
 	"sýna leiðsöguörvar (hægra megin)",
 	"mostrar flechas de navegación (derecha)",
-	"naviqasiya oxlarını göstər (sağda)",
+	"naviqasiya oxları sağ tərəfdə göstərilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3148,7 +3148,7 @@ const char* html_text_opt_0_transparent_nav_left[POCET_JAZYKOV + 1] =
 	"паказваць стрэлкі навігацыі",
 	"leiðsöguörvar vinstra megin",
 	"flechas de navegación hacia la izquierda",
-	"naviqasiya oxları sola",
+	"naviqasiya oxları sol tərəfdə göstərilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3182,7 +3182,7 @@ const char* html_text_opt_0_transparent_nav_down_only[POCET_JAZYKOV + 1] =
 	"паказаць толькі стрэлку навігацыі ўніз",
 	"sýndu aðeins niðurleiðarörina",
 	"mostrar solo la flecha de navegación hacia abajo",
-	"az_text",
+	"yalnız aşağıdakı naviqasiya oxu göstərilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3250,7 +3250,7 @@ const char* html_text_opt_0_zalmy_full_text[POCET_JAZYKOV + 1] =
 	"пропускі ў псальмах",
 	"undanteknir þættir frá sálmum og lofsöngvum",
 	"pasajes omitidos de salmos e himnos",
-	"az_text",
+	"məzmurların və ilahilərin istifadə olunmayan mətnləri",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3267,7 +3267,7 @@ const char* html_text_opt_0_zalmy_full_text_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"La Liturgia de las Horas omite algunos pasajes de los Salmos y Cánticos (por ejemplo, el versículo 6 del Salmo 109 [110]). Es posible mostrar estos pasajes omitidos.",
-	"",
+	"Mədhlərin təqvimində bəzi məzmurların və ilahilərin mətnləri istifadə olunmur (məsələn məzmur 110,6). Bu mətnləri də göstərmək mümkündür.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3284,7 +3284,7 @@ const char* html_text_opt_1_chvalospevy[POCET_JAZYKOV + 1] =
 	"евангельскія песні (Benedictus, Magnificat, Nunc dimittis)",
 	"guðspjalla lofsöngvar (Benedictus, Magnificat, Nunc dimittis)",
 	"Himnos evangélicos (Benedicto, Magnificat, Nunc dimittis)",
-	"İncil ilahiləri (Benedikt, Magnificat, Nunc dimittis)",
+	"İncildəki ilahilər (Benediktus, Magnifikat, Şimeonun ilahisi)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3301,7 +3301,7 @@ const char* html_text_opt_1_chvalospevy_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Mədhlərdə bu İncildəki ilahilərin mətnləri hər duada göstərilmir.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3318,7 +3318,7 @@ const char* html_text_opt_1_slava_otcu[POCET_JAZYKOV + 1] =
 	"Хвала Айцу",
 	"Lofgerðarbæn",
 	"Gloria al Padre",
-	"az_text",
+	"Ataya, Oğula və Müqəddəs Ruha",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3335,7 +3335,7 @@ const char* html_text_opt_1_slava_otcu_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Medhlərdə adətən hər məzmurun sonunda oxunulan - Ataya, Oğula və Müqəddəs Ruha - duasının mətni göstərilmir.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3352,7 +3352,7 @@ const char* html_text_opt_1_rubriky[POCET_JAZYKOV + 1] =
 	"рубрыкі",
 	"bænareglur",
 	"rúbricas",
-	"rubrikalar",
+	"qeydlər",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3369,7 +3369,7 @@ const char* html_text_opt_1_rubriky_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Mədhlərdə qırmızı rəngdə olan mətnlər adətən müxtəlif qeydlər, izahatlar və başlıqlar yazılır (Rəsmi Qaydalarına əsasən).",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3386,7 +3386,7 @@ const char* html_text_opt_1_otcenas[POCET_JAZYKOV + 1] =
 	"малітва Панская (Ойча наш)",
 	"Drottinleg bæn (Faðirvorið)",
 	"oración Dominical (Padre nuestro)",
-	"az_text",
+	"Rəbbin duası (Atamız)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3403,7 +3403,7 @@ const char* html_text_opt_1_otcenas_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"La Liturgia de las Horas no incluye, por defecto, el oración Dominical (Padre nuestro) completo en las Laudes de la mañana y en las Vísperas.",
-	"",
+	"Mədhlərdə - Ey Göylərdə Olan Atamız - duası hər dəfə tam adətən formada yazılmır.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3420,7 +3420,7 @@ const char* html_text_opt_1_tedeum[POCET_JAZYKOV + 1] =
 	"гімн Цябе, Бога, праслаўляем",
 	"hymni Drottinn Guð",
 	"himno del Te Deum",
-	"az_text",
+	"Te Deum himni",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3437,7 +3437,7 @@ const char* html_text_opt_1_tedeum_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"La Liturgia de las Horas no incluye el himno del Te Deum en su texto completo en la lectura sagrada.",
-	"",
+	"Mədhlərdə Te Deum himni hər dəfə tam formada adətən yazılmır.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3454,7 +3454,7 @@ const char* html_text_opt_1_plne_resp[POCET_JAZYKOV + 1] =
 	"поўная версія кароткіх рэспансорыяў",
 	"óstytt svarvers",
 	"texto completo de los responsorios",
-	"cavab verənlərin tam mətni",
+	"Nəqaratlı cavabın tam forması",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3471,7 +3471,7 @@ const char* html_text_opt_1_plne_resp_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"La Liturgia de las Horas no incluye el texto completo del responsorio después de la lectura breve en las Alabanzas de la mañana, las Vísperas y después de las lecturas en la Sagrada Lectura.",
-	"Saatların Liturgiyası Səhər Həmd, Vespersdəki qısa oxunuşdan sonra və Müqəddəs Oxumadakı oxunuşdan sonra cavabın tam mətnini ehtiva etmir.",
+	"Mədhlərdə Nəqaratlı cavab tam formada adətən yazılmır.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3488,7 +3488,7 @@ const char* html_text_option_zobrazit[POCET_JAZYKOV + 1] =
 	"паказаць",
 	"að sýna",
 	"espectáculo",
-	"göstərmək",
+	"göstər",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3507,7 +3507,7 @@ const char* html_text_option_skryt[POCET_JAZYKOV + 1] =
 	"схаваць",
 	"að fela",
 	"esconder",
-	"gizlətmək",
+	"gizlət",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3526,7 +3526,7 @@ const char* html_text_option_pouzit[POCET_JAZYKOV + 1] =
 	"выкарыстаць",
 	"að nota",
 	"utilizar",
-	"istifadə etmək",
+	"istifadə et",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3543,7 +3543,7 @@ const char* html_text_opt_1_mcd_zalmy_nie_ine_short[POCET_JAZYKOV + 1] =
 	"псальмодыя з дня",
 	"nota sálmasöngva dagsins",
 	"utilizar la salmodia del día",
-	"az_text",
+	"məzmurlar cari gündən götürülsün",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3560,7 +3560,7 @@ const char* html_text_opt_1_mcd_zalmy_nie_ine[POCET_JAZYKOV + 1] =
 	"by_text",
 	"fyrir miðdegisbæn skal nota sálma dagsins",
 	"utilizar la salmodia del día para la oración durante el día",
-	"az_text",
+	"Gün mədhi üçün məzmurlar cari gündən götürülsün",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3577,7 +3577,7 @@ const char* html_text_opt_1_mcd_zalmy_ine_short[POCET_JAZYKOV + 1] =
 	"дадатковая псальмодыя",
 	"nota viðbótarsálmasöngva",
 	"utilizar salmodia suplementaria",
-	"az_text",
+	"əlavə məzmurlar istifadə olunsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3594,24 +3594,24 @@ const char* html_text_opt_1_mcd_zalmy_ine[POCET_JAZYKOV + 1] =
 	"by_text",
 	"fyrir miðdegisbæn skal nota aukasálma",
 	"utilice salmodia adicional para la oración durante el día.",
-	"az_text",
+	"Gün mədhi üçün əlavə məzmurlar işlədilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
 const char* html_text_opt_1_mcd_zalmy_ine_explain[POCET_JAZYKOV + 1] =
 {
-	"Pokiaľ sa niekto modlí viac modlitieb cez deň, v prvej vezme bežnú psalmódiu; v ostatných sa použije doplnková psalmódia. Zahŕňa 3 série tzv. graduálnych žalmov (Ž 120 – 129).",
-	"Doplňovací cyklus žalmů obsahuje 3 série tzv. graduálních žalmů (Ž 120 – 129), které je možno použít místo žalmů ze žaltáře.",
+	"Pokiaľ sa niekto modlí viac modlitieb cez deň, v prvej vezme bežnú psalmódiu; v ostatných sa použije doplnková psalmódia. Zahŕňa 3 série tzv. graduálnych žalmov (Ž 120 – 128).",
+	"Doplňovací cyklus žalmů obsahuje 3 série tzv. graduálních žalmů (Ž 120 – 128), které je možno použít místo žalmů ze žaltáře.",
 	"en_text",
 	"Qui plures Horas dicit, in una Hora psalmodiam currentem sumat, in ceteris complementarem, quæ tenet tres series psalmorum gradualium.",
 	"",
-	"Doplňovací cyklus žalmů obsahuje 3 série tzv. graduálních žalmů (Ž 120 – 129), které je možno použít místo žalmů ze žaltáře.",
-	"Aki több Napközi imaórát mond, az egyik imaórában a soros zsoltárösszeállítást veszi, a többin a kiegészítőt. Ez az úgynevezett „zarándokzsoltárokból“ vett három-három zsoltárból áll (Zsolt 119 – 128).",
+	"Doplňovací cyklus žalmů obsahuje 3 série tzv. graduálních žalmů (Ž 120 – 128), které je možno použít místo žalmů ze žaltáře.",
+	"Aki több Napközi imaórát mond, az egyik imaórában a soros zsoltárösszeállítást veszi, a többin a kiegészítőt. Ez az úgynevezett „zarándokzsoltárokból“ vett három-három zsoltárból áll (Zsolt 119 – 127).",
 	"",
 	"",
 	"",
-	"Si alguien reza varias oraciones durante el día, tomará la salmodia habitual en la primera; En otros, se utilizará salmodia adicional. Incluye tres series de los llamados salmos graduales (Salmos 119 [120] - 128 [129]).",
-	"",
+	"Si alguien reza varias oraciones durante el día, tomará la salmodia habitual en la primera; En otros, se utilizará salmodia adicional. Incluye tres series de los llamados salmos graduales (Salmos 119 [120] - 127 [128]).",
+	"Əger daha çox Gün mədhləri oxunulursa, ilkin adi məzmurlar, sonrakılarda isə əlavə məzmurlar götürülsün. Üç seriya - gradual məzmurlar (Zəbur 120-128) oxunulur.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3628,7 +3628,7 @@ const char* html_text_opt_1_mcd_zalmy_nie_tri_short[POCET_JAZYKOV + 1] =
 	"by_text",
 	"nota skal sálma frá ákveðinni viku fyrir allar þrjár miðdegisbænir",
 	"utilice una salmodia del salterio de una semana determinada para las tres oraciones del día",
-	"az_text",
+	"Gün ərzində olan bütün üç dua üçün məzmurlar cari həftədən götürülsün",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3645,7 +3645,7 @@ const char* html_text_opt_1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] =
 	"by_text",
 	"fyrir miðdegisbæn skal nota sálma frá ákveðinni viku saltara fyrir allar þrjár miðdegisbænir",
 	"para la oración durante el día, utilice una salmodia de la semana dada del salterio para las tres oraciones durante el día",
-	"az_text",
+	"Bütün üç gün mədhi üçün məzmurlar cari həftədən götürülsün"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3662,7 +3662,7 @@ const char* html_text_opt_1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] =
 	"by_text",
 	"nota sálma úr þremur vikum saltara: núverandi, undanfarandi, eftirkomandi",
 	"utilizar la salmodia de las tres semanas del salterio: actual, anterior, siguiente",
-	"az_text",
+	"məzmurlar 3 həftədən götürülsün (cari, əvvəlki, sonrakı)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3679,7 +3679,7 @@ const char* html_text_opt_1_mcd_zalmy_tri[POCET_JAZYKOV + 1] =
 	"by_text",
 	"fyrir miðdegisbæn skal nota sálma af þremur vikum saltara (núverandi, undanfarandi, eftirkomandi)",
 	"para la oración durante el día, utilice la salmodia de tres semanas del Salterio (actual, anterior, siguiente)",
-	"az_text",
+	"gün mədhində məzmurlar 3 həftədən götürülsün (cari, əvvəlki, sonrakı)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3696,7 +3696,7 @@ const char* html_text_opt_1_mcd_zalmy_tri_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Si alguien reza varias oraciones durante el día, se utiliza la salmodia de tres semanas del salterio (semana actual, anterior y siguiente del salterio).\nNo tiene efecto si se selecciona la opción de usar salmodia adicional.",
-	"az_text",
+	"Əger daha çox Gün mədhləri oxunulursa, məzmurlar 3 həftədən götürülür (cari, əvvəlki, sonrakı).\nAmma əlavə məzmurlar seçilibsə, bu tənzim işlədilmir.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3716,7 +3716,7 @@ const char* html_text_opt_1_zaver[POCET_JAZYKOV + 1] =
 	"завяршэнне",
 	"bænalok",
 	"final",
-	"bitmə",
+	"son",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3750,7 +3750,7 @@ const char* html_text_opt_1_maria_ant[POCET_JAZYKOV + 1] =
 	"завяршэнне",
 	"Andstef Maríu meyjar",
 	"antífonas marianas",
-	"Marian antifonları",
+	"Məryəm Anaya aid antifonları",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3784,7 +3784,7 @@ const char* html_text_opt_1_otcenas_uvod[POCET_JAZYKOV + 1] =
 	"by_text",
 	"inngangur að bæn Drottins",
 	"introducción al oración Dominical",
-	"az_text",
+	"Atamız duasına giriş",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3801,7 +3801,7 @@ const char* html_text_opt_1_otcenas_uvod_explain[POCET_JAZYKOV + 1] =
 	"by_text",
 	"inngangur að bæn Drottins",
 	"introducción al oración Dominical",
-	"az_text",
+	"tamız duasına giriş",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3818,7 +3818,7 @@ const char* html_text_opt_1_zalm95[POCET_JAZYKOV + 1] =
 	"псальм 95 (94)",
 	"í stað sálma 24, 67 eða 100 skal nota sálm 95",
 	"en lugar de los Salmos 23 (24), 66 (67) respectivamente 99 (100) usa el Salmo 94 (95)",
-	"az_text",
+	"məzmur 24, 67 yerində 100 və ya 95 istifadə olunsun",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3835,7 +3835,7 @@ const char* html_text_opt_1_zalm95_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Si en las Laudes, Vísperas o Lecturas Sagradas aparecen los Salmos 23 (24), 66 (67), o 99 (100), que se utilizó para el invitatorio, será sustituido en la oración correspondiente por el Salmo (94) 95.",
-	"az_text",
+	"Səhər, Axşam və ya Oxunuşlar mədhlərində məzmur 24, 67 və ya 100 olsa və əvvəlcə artıq Dəvət mədhində artıq istifadə olunub, onun yerində məzmur 95 olacaq.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3863,7 +3863,7 @@ const char* html_text_option_zobrazit_zvolania[POCET_JAZYKOV + 1] =
 	"паўтараць заклік пасля кожнай просьбы",
 	"endurtaka svar eftir hverja fyrirbæn",
 	"repetir la invocación después de cada súplica",
-	"hər duadan sonra çağırışı təkrarlamaq",
+	"müraciət hər duadan sonra təkrarlansın",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3880,7 +3880,7 @@ const char* html_text_option_skryt_zvolania[POCET_JAZYKOV + 1] =
 	"схаваць заклік пасля кожнай просьбы",
 	"að fela svar eftir hverja fyrirbæn",
 	"ocultar la exclamación después de cada solicitud",
-	"hər sorğudan sonra nidanı gizlədin",
+	"müraciət hər duadan sonra gizlənilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3897,7 +3897,7 @@ const char* html_text_option_zobrazit_kratsie_prosby[POCET_JAZYKOV + 1] =
 	"выкарыстоўваць карацейшыя малітвы",
 	"nota styttri fyrirbænir úr viðaukahluta",
 	"utilice solicitudes más cortas del apéndice",
-	"əlavədən daha qısa dualardan istifadə edin",
+	"əlavə mətnlərdən daha qısa dualar götürülsün",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3914,7 +3914,7 @@ const char* html_text_option_skryt_kratsie_prosby[POCET_JAZYKOV + 1] =
 	"не выкарыстоўваць карацейшыя малітвы",
 	"ekki nota styttri bænir úr viðaukahluta",
 	"no utilice solicitudes más cortas del apéndice",
-	"əlavədən daha qısa sorğulardan istifadə etməyin",
+	"əlavə mətnlərdən daha qısa dualar götürülməsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3931,7 +3931,7 @@ const char* html_text_opt_1_prosby_zvolanie[POCET_JAZYKOV + 1] =
 	"паўтор закліка пасля кожнай просьбы",
 	"ákall í fyrirbænum endurtekið eftir hverja fyrirbæn",
 	"repetir la invocación en súplicas después de cada súplica",
-	"hər duadan sonra dualarda zikri təkrar etmək",
+	"müraciət hər duadan sonra təkrarlansın",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3948,7 +3948,7 @@ const char* html_text_opt_1_prosby_zvolanie_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"En las oraciones de la mañana y de las vísperas, repetir la invocación en súplica después de cada súplica.",
-	"az_text",
+	"Səhər və Axşam mədhlərində İmanlıların duasında müraciət hər duadan sonra təkrarlansın.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3965,7 +3965,7 @@ const char* html_text_opt_1_skryt_popis_svaty[POCET_JAZYKOV + 1] =
 	"не паказваць інфармацыю пра святых",
 	"ekki sýna lýsingu til bænar heilags manns",
 	"no mostrar la descripción de la oración del santo",
-	"müqəddəsin duası üçün təsviri göstərməyin",
+	"müqəddəsin duasında qeyd göstərilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3982,7 +3982,7 @@ const char* html_text_opt_1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Duaların əvvəlində adətən həmin müqəddəsin həyatı barədə, bayram barədə qısa məlumat verilir, bu tədbiqdə bu mətnlər qısaca qeyd adlanılır",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -3999,7 +3999,7 @@ const char* html_text_opt_1_spolc_svaty[POCET_JAZYKOV + 1] =
 	"паказваць інфармацыю пра агульныя тэксты пра святых",
 	"almennir hlutir til bænar heilags manns",
 	"partes comunes de la oración del santo",
-	"az_text",
+	"müqəddəsin duası üçün ümumi mətnlər",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4016,7 +4016,7 @@ const char* html_text_opt_1_spolc_svaty_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Una rúbrica que contiene información sobre de dónde se extraen las partes comunes para la oración del santo.",
-	"az_text",
+	"Müqəddəsin duası üçün ümumi hissələrin haradan götürüldüyü haqqında məlumat rəsmi qeydlərdə verilir. ",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4033,7 +4033,7 @@ const char* html_text_opt_1_vesp_kratsie_prosby[POCET_JAZYKOV + 1] =
 	"выкарыстоўваць карацейшыя малітвы ў Нешпарах",
 	"fyrir aftansöng eru notaðar styttri fyrirbænir úr viðauka",
 	"para las vísperas, utilice oraciones más cortas del apéndice",
-	"vesperlər üçün əlavədən daha qısa dualar istifadə edin",
+	"axşam mədhində əlavə mətnlərdən daha qısa dualar götürülsün",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4050,7 +4050,7 @@ const char* html_text_opt_1_vesp_kratsie_prosby_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Para las vísperas, utilice las oraciones más cortas del apéndice en lugar de las destinadas a las Vísperas del día en cuestión.",
-	"az_text",
+	"axşam mədhində cari gündəki mətnlərin əvəzinə əlavə mətnlərdən daha qısa dualar götürülsün",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4067,7 +4067,7 @@ const char* html_text_opt_1_vigilia[POCET_JAZYKOV + 1] =
 	"цэлебрацыя вігіліі для Гадзіны чытанняў",
 	"framlengt hátíðahald vigilíu fyrir Óttusöng hinn fyrri",
 	"celebración ampliada de la vigilia para las lecturas sagradas",
-	"müqəddəs oxunuşların geniş qeyd edilməsi",
+	"oxunuşlar mədhində bayramların ərəfəsi üçün daha geniş duaları işlədilsin", //(Rəbb günlərində, təntənəli bayramlarda)
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4084,7 +4084,7 @@ const char* html_text_opt_1_vigilia_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Ənənəyə görə və tövsiyə olunduğu kimi, Rəbb günlərində, adi və ya təntənəli bayramlarda daha uzun dualar işlədilir. İlk olaraq oxunuşlar mədhi oxunur və iki oxunuşlardan sonra, Te Deum himnindən əvvəlcə ilahilər və İncil oxunuşu əlavə edilir.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4101,7 +4101,7 @@ const char* html_text_opt_1_spomienka_spolcast[POCET_JAZYKOV + 1] =
 	"браць часткі з цэлебрацыі",
 	"fyrir minningardaga er hægt að nota hluti frá almennum textum",
 	"utilizar partes de piezas comunes para los recuerdos.",
-	"xatirələr üçün ümumi hissələrin hissələrini istifadə edin",
+	"xatirələr üçün mətnləri ümumi hissələrdən götürülsün",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -4118,7 +4118,7 @@ const char* html_text_opt_1_spomienka_spolcast_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"",
+	"Duaların xüsusi mətnləri (himn, nəqaratlar, qısa oxunuş və digər mətnlər həmin bayramdan olsun, bu mətnlər yoxdursa, ümumi hissələrdən götürülür. Əks halda cari gündən götürülsün; rəsmi qaydalar - 235 b).",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
