@@ -1629,7 +1629,7 @@ const char* html_text_tyzden_zaltara_cislo[POCET_JAZYKOV + 1] = {
 	"%d. zsoltáros hét",
 	"%d. ru_text",
 	"%d. by_text",
-	"%d. vika sálmasöngvar",
+	"%d. vika saltara",
 	"semana %d del Salterio",
 	"%d. zəbur həftəsi",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -1677,7 +1677,7 @@ const char* html_text_v_tyzdni_zaltara[POCET_JAZYKOV + 1] = {
 	". zsoltáros hét",
 	"ru_text",
 	"by_text",
-	". vika sálmasöngvar",
+	". vika saltara",
 	"semana del Salterio",
 	"zəbur həftəsi",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3643,7 +3643,7 @@ const char* html_text_opt_1_mcd_zalmy_nie_tri[POCET_JAZYKOV + 1] =
 	"a Napközi imaórában a soros köznap zsoltárainak használata mindhárom napközi imaórához",
 	"ru_text",
 	"by_text",
-	"fyrir miðdegisbæn skal nota sálma frá ákveðinni viku sálmasöngvar fyrir allar þrjár miðdegisbænir",
+	"fyrir miðdegisbæn skal nota sálma frá ákveðinni viku saltara fyrir allar þrjár miðdegisbænir",
 	"para la oración durante el día, utilice una salmodia de la semana dada del salterio para las tres oraciones durante el día",
 	"Bütün üç gün mədhi üçün məzmurlar cari həftədən götürülsün",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3660,7 +3660,7 @@ const char* html_text_opt_1_mcd_zalmy_tri_short[POCET_JAZYKOV + 1] =
 	"a három [aktuális, előző, következő] heti zsoltárok használata",
 	"ru_text",
 	"by_text",
-	"nota sálma úr þremur vikum sálmasöngvar: núverandi, undanfarandi, eftirkomandi",
+	"nota sálma úr þremur vikum saltara: núverandi, undanfarandi, eftirkomandi",
 	"utilizar la salmodia de las tres semanas del salterio: actual, anterior, siguiente",
 	"məzmurlar 3 həftədən götürülsün (cari, əvvəlki, sonrakı)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -3677,7 +3677,7 @@ const char* html_text_opt_1_mcd_zalmy_tri[POCET_JAZYKOV + 1] =
 	"a napközi imaórákban vegye az aktuális, az előző és a következő heti zsoltározást",
 	"ru_text",
 	"by_text",
-	"fyrir miðdegisbæn skal nota sálma af þremur vikum sálmasöngvar (núverandi, undanfarandi, eftirkomandi)",
+	"fyrir miðdegisbæn skal nota sálma af þremur vikum saltara (núverandi, undanfarandi, eftirkomandi)",
 	"para la oración durante el día, utilice la salmodia de tres semanas del Salterio (actual, anterior, siguiente)",
 	"gün mədhində məzmurlar 3 həftədən götürülsün (cari, əvvəlki, sonrakı)",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5123,7 +5123,7 @@ const char* html_text_opt_5_OCR34Hymns_ordinary[POCET_JAZYKOV + 1] =
 	"a zsoltáros rész himnusza",
 	"ru_text",
 	"by_text",
-	"hymnar úr sálmasöngvar",
+	"hymnar úr sálmabók",
 	"himnos del salterio",
 	"məzmurdan ilahilər",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5210,7 +5210,7 @@ const char* html_text_opt_5_PopolStrPsalm_4STR[POCET_JAZYKOV + 1] =
 	"Hamvazószerdán vegye a zsoltározást a 4. zsoltáros hét szerdájáról",
 	"ru_text",
 	"by_text",
-	"sálmar fyrir öskudag er teknir frá miðvikudegi 4. viku sálmasöngvar",
+	"sálmar fyrir öskudag er teknir frá miðvikudegi 4. viku saltara",
 	"salmodia para el Miércoles de Ceniza del miércoles de la IV semana del Salterio",
 	"məzmurun 4-cü həftəsinin çərşənbə günündən kül çərşənbəsi üçün məzmur",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5227,7 +5227,7 @@ const char* html_text_opt_5_PopolStrPsalm_3PI[POCET_JAZYKOV + 1] =
 	"Hamvazószerdán vegye a zsoltározást a 3. zsoltáros hét péntekjéről",
 	"ru_text",
 	"by_text",
-	"sálmar fyrir öskudag er teknir frá föstudegi 3. viku sálmasöngvar",
+	"sálmar fyrir öskudag er teknir frá föstudegi 3. viku saltara",
 	"salmodia para el Miércoles de Ceniza del viernes de la 3ª semana del Salterio",
 	"məzmurun 3-cü həftəsinin cümə günündən kül çərşənbəsi üçün məzmur",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5244,7 +5244,7 @@ const char* html_text_opt_5_ZelStvPsalm_2STV[POCET_JAZYKOV + 1] =
 	"Nagycsütörtök vegye a zsoltározást a 2. zsoltáros hét csütörtökjáról",
 	"ru_text",
 	"by_text",
-	"sálmar fyrir skírdag er teknir frá fimmtudegi 2. viku sálmasöngvar",
+	"sálmar fyrir skírdag er teknir frá fimmtudegi 2. viku saltara",
 	"salmodia del Jueves Santo (Jueves Santo) del Jueves de la 2ª semana del Salterio",
 	"məzmurun 2-ci həftəsinin cümə axşamından etibarən Müqəddəs Həftənin Cümə axşamı (Müqəddəs Cümə axşamı) üçün məzmur",
 	/* STRING_2_FOR_NEW_LANGUAGE */
@@ -5261,7 +5261,7 @@ const char* html_text_opt_5_ZelStvPsalm_3PI[POCET_JAZYKOV + 1] =
 	"Nagycsütörtök vegye a zsoltározást a 3. zsoltáros hét péntekjéről",
 	"ru_text",
 	"by_text",
-	"sálmar fyrir skírdag er teknir frá föstudegi 3. viku sálmasöngvar",
+	"sálmar fyrir skírdag er teknir frá föstudegi 3. viku saltara",
 	"salmodia del Jueves Santo (Jueves Santo) del viernes de la 3ª semana del Salterio",
 	"məzmurun 3-cü həftəsinin cümə günündən Müqəddəs Həftənin Cümə axşamı (Müqəddəs Cümə axşamı) üçün məzmur",
 	/* STRING_2_FOR_NEW_LANGUAGE */
