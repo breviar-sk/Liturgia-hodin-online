@@ -133,4 +133,4 @@ LOCK=/tmp/breviar-nightlies.lck
 ) 9>$LOCK
 
 rm -f $LOCK
-) 2>&1 | tee $GLOBALLOG | mail -s "Breviar nightly" android@breviar.sk videky@breviar.sk
+) 2>&1 | tee $GLOBALLOG | mail -s "Breviar nightly" ri.kralovic@gmail.com videky@breviar.sk
