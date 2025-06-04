@@ -268,7 +268,7 @@ const char* bible_references_default[POCET_JAZYKOV + 1] =
 	"http://www.vatican.va/archive/bible/nova_vulgata/documents/",
 	"",
 	"",
-	"http://www.szentiras.hu/SZIT/",
+	"https://www.szentiras.eu/SZIT/",
 	"",
 	"",
 	"",
