@@ -1,0 +1,15 @@
+-bash-3.00$ ./urob 
+Thu May 24 15:56:20 CEST 2007
+confuse.c: In function `char* strndup(const char*, size_t)':
+confuse.c:99: error: `char* strndup(const char*, size_t)' was declared `extern' and later `static'
+/usr/include/string.h:139: error: previous declaration of `char* strndup(const char*, size_t)'
+confuse.c: In function `int strcasecmp(const char*, const char*)':
+confuse.c:119: error: `int strcasecmp(const char*, const char*)' was declared `extern' and later `static'
+/usr/include/string.h:326: error: previous declaration of `int strcasecmp(const char*, const char*)'
+confuse.c: In function `void cfg_addlist_internal(cfg_opt_t*, unsigned int, char*)':
+confuse.c:1344: warning: `cfg_bool_t' is promoted to `int' when passed through `...'
+confuse.c:1344: warning: (so you should pass `int' not `cfg_bool_t' to `va_arg')
+confuse.c:1344: note: if this code is reached, the program will abort
+mv: cannot stat `a.out': No such file or directory
+l.cgi:   80.8%
+Thu May 24 15:56:34 CEST 2007

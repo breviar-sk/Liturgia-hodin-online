@@ -1,0 +1,19 @@
+2009-03-27a.D.: 
+
+pokus rieši to, aby keï sviatok "Vıroèie posviacky Lateránskej baziliky" padne na nede¾u,
+aby sa generovali správne prvé vešpery (v opaènom prípade tento sviatok nemá 1. vešpery).
+
+nepodarilo sa...
+
+dôvod: volanie pre nede¾u je s ds=1 (poradie svätého == 1),
+avšak tie prvé vešpery môu by volané s èímko¾vek (ds=0, ds=4)
+
+asi treba rieši komplexne a podobne ako iné slávnosti (lene... tie majú prvé vešpery defaultne).
+
+duurko
+
+testovanie:
+
+http://localhost:2000/cgi-bin/l.cgi?qt=pdt&d=8&m=11&r=2008&p=mv
+http://localhost:2000/cgi-bin/l.cgi?qt=pdt&d=8&m=11&r=2008&p=mv&ds=1
+http://localhost:2000/cgi-bin/l.cgi?qt=pdt&d=9&m=11&r=2008&p=mrch&ds=1

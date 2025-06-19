@@ -1,0 +1,50 @@
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\nan.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\nan.htm(94): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:NAN_iANT1}-->Pojďme, klaňme se Kristu, našemu Pánu; on vstoupil do nebe, aleluja.<!--{END:NAN_iANT1}--></b>
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\pmb.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\pmb.htm(81): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:PMB_iANT1}-->Oslavujme Matku Boží, Pannu Marii; klaňme se Kristu, jejímu Synu!<!--{END:PMB_iANT1}--></b>
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\sc_ap.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\sc_ap.htm(165): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:SCAP_iANT1}-->Pojďme, klaňme se Kristu; on je Pán a Král apoštolů.<!--{END:SCAP_iANT1}--></b>
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\sc_dp.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\sc_dp.htm(493): <p><b><font color="#ff0000">Ant.</font> <!--{BEGIN:SCDP_iANT1}-->Pojďme, klaňme se Kristu, našemu Pánu; on je nejvyšší Pastýř církve.<!--{BEGIN:V_O_ALELUJA}--> Aleluja.<!--{END:V_O_ALELUJA}--><!--{END:SCDP_iANT1}--></b>
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\sc_jm.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\sc_jm.htm(10): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:SCJM_iANT1}-->Pojďte, klaňme se Pánu, Králi mučedníků.<!--{BEGIN:V_O_ALELUJA}--> Aleluja.<!--{END:V_O_ALELUJA}--><!--{END:SCJM_iANT1}--></b>
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\sc_uc.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\sc_uc.htm(79): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:SCUC_iANT1}-->Pojďte, klaňme se Kristu, našemu Pánu; on je pramen moudrosti.<!--{BEGIN:V_O_ALELUJA}--> Aleluja.<!--{END:V_O_ALELUJA}--><!--{END:SCUC_iANT1}--></b>
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\srdca.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\srdca.htm(188): <p><b><font color="#FF0000">Ant. </font> <!--{BEGIN:SRDCA_iANT1}-->Pojďme, klaňme se Ježíšovu srdci, z lásky k nám zraněnému.<!--{END:SRDCA_iANT1}--></b>
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\sv_dec.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\sv_dec.htm(210): <p><b><font color="#FF0000">Ant.</font><!--{BEGIN:08DEC_iANT1}-->Oslavujme Pannu Marii, počatou bez poskvrny prvotního hříchu; klaňme se Kristu, jejímu Synu!<!--{END:08DEC_iANT1}--></b>
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\sv_feb.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\sv_feb.htm(63): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:02FEB_iANT1}-->Do svého chrámu přichází Pán, vládce mocný: pojďme, klanějme se!</b><!--{END:02FEB_iANT1}-->
+D:\personal\breviar\www.breviar.sk\include_cz\sv_feb.htm(405): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:22FEB_iANT1}-->Pojďme, klaňme se Kristu; on je Pán a Král apoštolů.<!--{END:22FEB_iANT1}--></b>
+Found '_iANT1}-->' 4 time(s).
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\sv_mar.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\sv_mar.htm(187): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:19MAR_iANT1}-->Chvalme Krista, našeho Pána, a oslavujme jeho pěstouna, svatého Josefa.<!--{BEGIN:V_O_ALELUJA}--> Aleluja.<!--{END:V_O_ALELUJA}--><!--{END:19MAR_iANT1}--></b>
+D:\personal\breviar\www.breviar.sk\include_cz\sv_mar.htm(482): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:25MAR_iANT1}-->Pojďme, klaňme se Kristu, Božímu Synu; on, věčné Slovo, se stal člověkem.<!--{BEGIN:V_O_ALELUJA}--> Aleluja.<!--{END:V_O_ALELUJA}--><!--{END:25MAR_iANT1}--></b>
+Found '_iANT1}-->' 4 time(s).
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\sv_sep.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\sv_sep.htm(72): <p><b><font color="#FF0000">Ant.</font><!--{BEGIN:08SEP_iANT1}-->Oslavujme narození Panny Marie; klaňme se Kristu, jejímu Synu!<!--{END:08SEP_iANT1}--></b>
+D:\personal\breviar\www.breviar.sk\include_cz\sv_sep.htm(518): <p><b><font color="#FF0000">Ant.</font><!--{BEGIN:15SEP_iANT1}-->Pojďme, klaňme se Kristu, Spasiteli světa; pod jeho křížem spolu s ním trpěla jeho Matka.<!--{END:15SEP_iANT1}--></b>
+D:\personal\breviar\www.breviar.sk\include_cz\sv_sep.htm(1030): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:28SEP_iANT1}-->Pojďme, klaňme se Kristu, Králi králů; on ověnčil svatého Václava věncem slávy.<!--{END:28SEP_iANT1}--></b>
+D:\personal\breviar\www.breviar.sk\include_cz\sv_sep.htm(1172): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:29SEP_iANT1}-->Pojďme, klaňme se Kristu, našemu Pánu; jemu slouží zástupy andělů.<!--{END:29SEP_iANT1}--></b>
+Found '_iANT1}-->' 8 time(s).
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\tk.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\tk.htm(201): <p><b><font color="#FF0000">Ant. </font> <!--{BEGIN:TK_iANT1}-->Pojďme, klaňme se Kristu, našemu Pánu; on je Chléb života.<!--{END:TK_iANT1}--></b>
+Find '_iANT1}-->' in 'D:\personal\breviar\www.breviar.sk\include_cz\zds.htm' :
+D:\personal\breviar\www.breviar.sk\include_cz\zds.htm(84): <p><b><font color="#FF0000">Ant.</font> <!--{BEGIN:ZDS_iANT1}-->Duch Páně naplňuje celý svět; pojďme, klanějme se, aleluja!<!--{END:ZDS_iANT1}--></b>
+
+-- krkrala ch�ba!
+-- krst ch�ba!
+-- ozz ch�ba!
+-- sc_vm
+-- svrod ch�ba!
+-- sv_apr (sv. marka)
+-- sv_aug (4x)
+-- sv_dec (3x)
+-- sv_jan (obr�tenie sv. pavla)
+-- sv_jul (2x)
+-- sv_jun (3x)
+-- sv_maj (1 + 1)
+-- sv_okt (2x)
+-- sv_sep (sv. k��)
+-- troj

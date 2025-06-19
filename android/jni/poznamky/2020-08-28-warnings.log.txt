@@ -1,0 +1,80 @@
+-bash-4.1$ ./urob
+Fri Aug 28 17:38:17 CEST 2020
+breviar.cpp: In function ‘void _export_link_communia(short int, char*, char*, char*, char*, char*, char*)’:
+breviar.cpp:1520:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  if (_global_opt[opt] != spol_cast) {
+      ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+breviar.cpp: In function ‘void interpretParameter(short int, short int, char*, short int)’:
+breviar.cpp:4522:133: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+ && isGlobalOption(OPT_6_ALTERNATIVES_MULTI, BASE_OPT_6_PSALM_MULTI) != current_value) {
+breviar.cpp: In function ‘short int _rozbor_dna(_struct_den_mesiac, short int, short int)’:
+breviar.cpp:6586:44: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+      if ((_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+breviar.cpp:6587:44: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       && (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a2)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+breviar.cpp:6588:44: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       && (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a3)) {
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+breviar.cpp:6593:44: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+      if ((_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+breviar.cpp:6594:44: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       && (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a2)) {
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+breviar.cpp:6600:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     if (_global_opt[OPT_3_SPOLOCNA_CAST] != sc.a1) {
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+breviar.cpp: In function ‘void _export_main_formular(short int, short int, short int, short int)’:
+breviar.cpp:11319:60: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    Export("<option%s>%s</option>\n", (poradie_spol_cast[i] != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(poradie_spol_cast[i]));
+                                       ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+breviar.cpp: In function ‘void showDetails(short int, short int, short int, short int)’:
+breviar.cpp:12555:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     Export("<option%s>%s</option>\n", (sc.a2 != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(sc.a2));
+                                        ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+breviar.cpp:12557:47: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+      Export("<option%s>%s</option>\n", (sc.a3 != _global_opt[OPT_3_SPOLOCNA_CAST]) ? STR_EMPTY : html_option_selected, nazov_spolc(sc.a3));
+                                         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+breviar.cpp: In function ‘void _rozparsuj_parametre_OPT_force(int, char (*)[160], long long unsigned int*)’:
+breviar.cpp:13426:30: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    if (_global_option_opt[i] != GLOBAL_OPTION_NULL) {
+breviar.cpp: In function ‘void _rozparsuj_parametre_OPT()’:
+breviar.cpp:13598:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   if (_global_opt[i] == GLOBAL_OPTION_NULL) {
+breviar.cpp:13607:28: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   if (_global_force_opt[i] == GLOBAL_OPTION_NULL) {
+breviar.cpp: In function ‘void setConfigDefaults(short int)’:
+breviar.cpp:18516:36: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   if (cfg_option_default[i][jazyk] == GLOBAL_OPTION_NULL) {
+breviar.cpp:18517:47: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    cfg_option_default[i][jazyk] = (sk_default == GLOBAL_OPTION_NULL) ? cfg_option_default_PROG[i] : sk_default;
+In file included from dbzaltar.cpp:21:0:
+dbzaltar.cpp: In function ‘void set_hymnus(short int, short int, short int)’:
+breviar.h:187:198: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+ mponent_j) MOD 10) : (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
+dbzaltar.cpp:1450:14: note: in expansion of macro ‘isGlobalOption’
+     ktory = (isGlobalOption(OPT_5_ALTERNATIVES, bit)) ? 1 : 0;
+              ^~~~~~~~~~~~~~
+dbzaltar.cpp: In function ‘void _velk1_hymnus(short int, short int, short int)’:
+breviar.h:187:198: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+ mponent_j) MOD 10) : (((_global_opt[opt_i] & bit_opt_i_component_j) == bit_opt_i_component_j) ? ANO : NIE))
+dbzaltar.cpp:4615:12: note: in expansion of macro ‘isGlobalOption’
+   ktory = (isGlobalOption(OPT_5_ALTERNATIVES, bit)) ? 1 : 0;
+            ^~~~~~~~~~~~~~
+dbzaltar.cpp: In function ‘void set_spolocna_cast(_struct_sc, short int, int)’:
+dbzaltar.cpp:10768:40: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a1) {
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+dbzaltar.cpp:10775:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a2) {
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+dbzaltar.cpp:10781:44: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+       if (_global_opt[OPT_3_SPOLOCNA_CAST] == sc.a3) {
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+myconf.cpp: In function ‘void readConfig()’:
+myconf.cpp:316:47: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   if(cfg_option_default[OPT_2_HTML_EXPORT][j] != GLOBAL_OPTION_NULL){
+l.cgi:   75.3%
+Fri Aug 28 17:38:31 CEST 2020

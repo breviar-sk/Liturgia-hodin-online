@@ -1,0 +1,78 @@
+ultraedit replace in files, preserve case, regular expressions
+
+vylúèi súbory "kat_..." (katechézy) resp. vdy spravi revert
+
+search:
+^([ _>]^)k^([ ^p_]^)
+
+(nerieši konce riadkov; zaèiatky = %)
+
+pokus:
+^([ _>]^)k[ _]
+^1k_
+
+
+spustené naostro (pozor, na konci 1. riadka, string to find, je medzera!):
+^([% _>]^)^([aiouksvz]^) 
+^1^2_
+
+SK: replace in files, nezlomite¾né medzery (1)
+SK: replace in files, nezlomite¾né medzery (2) = spustené druhıkrát (opraví aj "a_v tebe" -> "a_v_tebe")
+
+nezafungovalo % v [] take:
+%^([aiouksvz]^) 
+^1_
+
+SK: replace in files, nezlomite¾né medzery (3) == vyššie uvedené replace na zaèiatku riadkov
+
+SK: ruène upravené jednopísmenkové predloky na konci riadkov
+
+find in files:
+ [aiouksvz]$
+
+akceptované/upravené:
+-- keï je "I" ako èíslo èasti almu (rímska 1) -- radšej som odstránil medzeru
+-- v hymnuse _2NEr_HYMNUS: "Odprosujeme nekoneènú moc a" na konci riadka (dal som tam radšej "_", nech to nemıli)
+-- v èítaní OCR20NEc_CIT1 verš 9 zalomenı takto: "„H¾a tu som, mòa pošli.“ <br>On vravel: „Choï a_povedz tomuto ¾udu:"; v LA (IV, 93) nie je ako poetickı text
+
+SK: opravené jednopísmenkové predloky (s podtrhovníkom) na konci riadkov
+
+replace:
+^([aiouksvz]^)_^p
+^p^1_
+
+__________________________________
+
+
+CZ: replace in files, nezlomite¾né medzery (1)
+spustené naostro (pozor, na konci 1. riadka, string to find, je medzera!):
+^([% _>]^)^([aiouksvz]^) 
+^1^2_
+
+CZ: replace in files, nezlomite¾né medzery (2) = spustené druhıkrát (opraví aj "a_v tebe" -> "a_v_tebe")
+
+CZ: replace in files, nezlomite¾né medzery (3) == nišie uvedené replace na zaèiatku riadkov
+%^([aiouksvz]^) 
+^1_
+
+CZ: opravené jednopísmenkové predloky na konci riadkov
+
+find in files:
+ [aiouksvz]$
+
+replace in files:
+ ^([aiouksvz]^)$
+^p^1_
+(lene ruène som musel odstraòova ten ^p za tım celım...)
+
+replace:
+^([aiouksvz]^)_^p
+^1_
+
+__________________________________
+
+2011-05-20, update:
+
+je potrebné vyh¾ada aj jednopísmenkové predloky/spojky, ktoré nasledujú po jednoduchej (‚) alebo obyèajnej („) úvodzovke [zaèiatoènej]
+__________________________________
+
