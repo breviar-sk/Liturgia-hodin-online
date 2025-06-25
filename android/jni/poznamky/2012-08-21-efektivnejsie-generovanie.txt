@@ -1,6 +1,0 @@
-2012-08-21: implementované nezobrazovanie buttonov pre MCD + kompletórium pre ¾ubovo¾né spomienky
-
-ToDo: analogicky dorobi pre offline export
-
-tak, ako bola rozšírená _export_rozbor_dna_buttons() o 4. parameter, treba rozšíri aj execute_batch_command()
-h¾adaj kus kódu: "|| ((_global_den.smer > _global_svaty2.smer) && !MIESTNE_SLAVENIE_LOKAL_SVATY2)"

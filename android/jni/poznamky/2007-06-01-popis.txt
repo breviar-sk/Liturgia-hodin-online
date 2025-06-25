@@ -1,7 +1,0 @@
-2007-06-01, JUV
-
-- doplnené opt6 a opt7, aby sa pre vıpis mesiaca nepouívali opt1 a opt2
-- pokusy rozbeha confuse
-- na windows: celkom fajn
-- na linuxe: Segmentation fault, asi to bude nieèo s alokovaním stringov (bez free?)
-
