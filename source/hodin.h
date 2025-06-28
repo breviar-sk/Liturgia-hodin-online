@@ -15762,7 +15762,7 @@ const char* text_SEP_05[POCET_JAZYKOV + 1] =
 	"Kalkuttai Szent Teréz szűz",
 	"",
 	"",
-	"Hl. Móðir Teresa, stofnandi reglunnar",
+	"Hl. Teresa frá Kalkútta, mey",
 	"Santa Teresa de Calcuta (Madre Teresa), virgen y religiosa",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */

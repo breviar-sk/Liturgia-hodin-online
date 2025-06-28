@@ -21372,7 +21372,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 				_set_slavenie_typslav_smer(3, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 				mystrcpy(_global_svaty(3).meno, text_AUG_02_OP[_global_jazyk], MENO_SVIATKU);
-				_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA);
+				_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL);
 				_global_svaty(3).farba = LIT_FARBA_BIELA;
 				_global_svaty(3).kalendar = _global_kalendar;
 			}// CZOP only, kalendár pre KALENDAR_SK_OP
@@ -26970,7 +26970,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty(1).meno, text_SEP_18_OP[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// CZOP only, kalendár pre KALENDAR_SK_OP
@@ -29660,7 +29660,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty(1).meno, text_OKT_09_OP[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OP
@@ -29742,7 +29742,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 				_set_slavenie_typslav_smer(3, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 				mystrcpy(_global_svaty(3).meno, text_OKT_09_OP[_global_jazyk], MENO_SVIATKU);
-				_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+				_global_svaty(3).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 				_global_svaty(3).farba = LIT_FARBA_BIELA;
 				_global_svaty(3).kalendar = _global_kalendar;
 			}// CZOP only
