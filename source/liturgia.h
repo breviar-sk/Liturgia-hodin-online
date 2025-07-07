@@ -963,6 +963,7 @@ struct dm{
 	short int farba;      // liturgická farba pre slávenie
 	short int kalendar;   // špecifikácia, o aký kalendár ide: všeobecný danej cirkevnej provincie alebo nejaký rehoľný a pod.
 	char lc_str_id[MAX_LC_STR_ID]; // liturgické čítania: identifikátor podľa lc.kbs.sk
+	short int flags;      // special flags, e. g. indication that celebration has different collecta for some prayer etc.
 };
 typedef struct dm _struct_dm;
 
@@ -1342,6 +1343,10 @@ const short int supported_calendars_language[POCET_JAZYKOV + 1][SUPPORTED_CALEND
 
 #define supported_calendars(a)	supported_calendars_language[_global_jazyk][a]
 
+// flags
+#define FLAG_NONE							0
+#define FLAG_COLLECTA_1ST_VESP_DIFFERENT	1 // collecta for 1st vespers is different (from the collecta of the day, e. g. vespers, morning prayer etc.)
+#define FLAG_COLLECTA_VESP_DIFFERENT		2 // collecta for vespers is different (from the collecta of the day, e. g. morning prayer or prayer with readings etc.); used for CZ OP
 
 // prikazany / neprikazany sviatok / ľubovoľná spomienka bez záväznosti (blahoslavení napr. pre SK_OP)
 #define PRIKAZANY_SVIATOK           0
@@ -1889,6 +1894,7 @@ void analyzuj_rok(short int year);
 	a.farba = LIT_FARBA_NEURCENA; \
 	a.kalendar = KALENDAR_NEURCENY; \
 	mystrcpy(a.lc_str_id, STR_EMPTY, MAX_LC_STR_ID); \
+	a.flags = FLAG_NONE; \
 }
 
 #define _INIT_ANCHOR_AND_FILE(a) {\

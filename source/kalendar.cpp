@@ -269,6 +269,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 
 			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			_global_svaty(2).farba = LIT_FARBA_BIELA;
+			_global_svaty(2).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 
 			if (_global_jazyk == JAZYK_CZ_OP) {
 				mystrcpy(_global_svaty(2).meno, text_JAN_03[_global_jazyk], MENO_SVIATKU);
@@ -594,6 +595,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			mystrcpy(_global_svaty(1).meno, text_JAN_07[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OP
 
@@ -649,6 +651,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 				mystrcpy(_global_svaty(2).meno, text_JAN_07[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
+				_global_svaty(2).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 				_global_svaty(2).kalendar = _global_kalendar;
 			}// CZOP only
 		}// všeobecný kalendár
@@ -1571,6 +1574,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			mystrcpy(_global_svaty(1).meno, text_JAN_18[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// CZOP only
 
@@ -2654,6 +2658,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 				mystrcpy(_global_svaty(2).meno, text_JAN_28[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_UCITEL_CIRKVI, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
+				_global_svaty(2).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 				_global_svaty(2).kalendar = _global_kalendar;
 			}// CZOP only
 		}// všeobecný kalendár
@@ -4901,6 +4906,9 @@ short int sviatky_svatych_02_februar(short int den, short int poradie_svaty, _st
 			_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
+				_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
+			}
 			mystrcpy(_global_svaty(1).meno, text_FEB_18_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// CZOP only, kalendár pre KALENDAR_SK_OP
@@ -9004,6 +9012,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 			mystrcpy(_global_svaty(1).meno, text_APR_29[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OP
 
@@ -9889,6 +9898,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			mystrcpy(_global_svaty(1).meno, text_MAJ_04_2_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
 			_global_svaty(1).farba = LIT_FARBA_CERVENA;
+			_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// CZOP only
 
@@ -10029,6 +10039,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			mystrcpy(_global_svaty(1).meno, text_APR_05[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// CZOP only
 
@@ -10535,8 +10546,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 				// definovanie parametrov pre modlitbu
 				if (query_type != PRM_DETAILY) {
-					if (_global_jazyk == JAZYK_CZ_OP)
-					{
+					if (_global_jazyk == JAZYK_CZ_OP) {
 						set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_PROSBY);
 					}
 					else {
@@ -10559,8 +10569,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full_okrem_antifon_a_prosieb(modlitba);
 				_vlastna_cast_kresponz_ve_obd;
-				if (_global_jazyk == JAZYK_CZ_OP)
-				{
+				if (_global_jazyk == JAZYK_CZ_OP) {
 					_vlastna_cast_modlitba_ina;
 				}
 
@@ -10593,6 +10602,9 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			mystrcpy(_global_svaty(1).meno, text_MAJ_08_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			if (_global_jazyk == JAZYK_CZ_OP) {
+				_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
+			}
 			_global_svaty(1).kalendar = _global_kalendar;
 
 			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
@@ -10857,6 +10869,9 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			mystrcpy(_global_svaty(1).meno, text_MAJ_10_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			if (_global_jazyk == JAZYK_CZ_OP) {
+				_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
+			}
 			_global_svaty(1).kalendar = _global_kalendar;
 
 			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
@@ -13001,6 +13016,7 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 			if (_global_jazyk == JAZYK_CZ_OP) {
 				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
+				_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			}
 			else {
 				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
@@ -14404,6 +14420,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 			if (_global_jazyk == JAZYK_CZ_OP) {
 				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
+				_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			}
 			else {
 				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
@@ -16581,6 +16598,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 		mystrcpy(_global_svaty(1).meno, text_JUN_24[_global_jazyk], MENO_SVIATKU);
 		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
 		_global_svaty(1).farba = LIT_FARBA_BIELA;
+		_global_svaty(1).flags = FLAG_COLLECTA_1ST_VESP_DIFFERENT;
 		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 
 		break;
@@ -17029,6 +17047,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 		mystrcpy(_global_svaty(1).meno, text_JUN_29[_global_jazyk], MENO_SVIATKU);
 		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
 		_global_svaty(1).farba = LIT_FARBA_CERVENA;
+		_global_svaty(1).flags = FLAG_COLLECTA_1ST_VESP_DIFFERENT;
 		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 		if (_global_jazyk == JAZYK_HU) {
 			_global_svaty(1).typslav_lokal = LOKAL_SLAV_PECSI_EGYH_PATRON;
@@ -22108,6 +22127,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				mystrcpy(_global_svaty(2).meno, text_AUG_08[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_KNAZ, MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
+				_global_svaty(2).flags = FLAG_COLLECTA_1ST_VESP_DIFFERENT;
 				_global_svaty(2).kalendar = _global_kalendar;
 			}// CZOP only
 		}// všeobecný kalendár
@@ -22810,6 +22830,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 		mystrcpy(_global_svaty(1).meno, text_AUG_15[_global_jazyk], MENO_SVIATKU);
 		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
 		_global_svaty(1).farba = LIT_FARBA_BIELA;
+		_global_svaty(1).flags = FLAG_COLLECTA_1ST_VESP_DIFFERENT;
 		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 
 		break;
@@ -22946,6 +22967,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 
 			if (_global_jazyk == JAZYK_CZ_OP) {
 				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
+				_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			}
 			else {
 				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
@@ -23788,6 +23810,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 			mystrcpy(_global_svaty(1).meno, text_AUG_23[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			_global_svaty(1).kalendar = KALENDAR_SK_OP;
 		}// kalendár pre KALENDAR_SK_OP
 
@@ -23890,6 +23913,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				mystrcpy(_global_svaty(2).meno, text_AUG_23[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
+				_global_svaty(2).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 				_global_svaty(2).kalendar = _global_kalendar;
 			}// CZOP only
 		}// všeobecný kalendár a špeciality
@@ -24839,6 +24863,7 @@ short int sviatky_svatych_08_august(short int den, short int poradie_svaty, _str
 				mystrcpy(_global_svaty(2).meno, text_AUG_28[_global_jazyk], MENO_SVIATKU);
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_DUCH_PAST_BISKUP, MODL_SPOL_CAST_UCITEL_CIRKVI);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
+				_global_svaty(2).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 				_global_svaty(2).kalendar = _global_kalendar;
 			}// CZOP only
 
@@ -25559,7 +25584,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 		_set_slavenie_typslav_smer(1, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 		mystrcpy(_global_svaty(1).meno, text_SEP_05[_global_jazyk], MENO_SVIATKU);
-		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_REHOLNIK);
+		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_SV_ZENA_SKUTKYMIL);
 		_global_svaty(1).farba = LIT_FARBA_BIELA;
 		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 
@@ -26972,6 +26997,9 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			mystrcpy(_global_svaty(1).meno, text_SEP_18_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP)) {
+				_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
+			}
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// CZOP only, kalendár pre KALENDAR_SK_OP
 
@@ -28454,6 +28482,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 				_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
 				_global_svaty(2).farba = LIT_FARBA_CERVENA;
+				_global_svaty(2).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 				mystrcpy(_global_svaty(2).meno, text_SEP_28_OP[_global_jazyk], MENO_SVIATKU); // pre dominikánov czop sa slávi 26.9.
 				_global_svaty(2).kalendar = KALENDAR_SK_OP;
 
@@ -28948,6 +28977,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			mystrcpy(_global_svaty(1).meno, text_OKT_04_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ_REHOLNIK);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OP
 
@@ -29386,6 +29416,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 			mystrcpy(_global_svaty(1).meno, text_OKT_07[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
+			_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT; // ToDo: also flag for different collecta for prayer with readings
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OP
 
@@ -35761,6 +35792,7 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 			mystrcpy(_global_svaty(2).meno, text_NOV_24_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_VIAC_MUCENIKOV);
 			_global_svaty(2).farba = LIT_FARBA_CERVENA;
+			_global_svaty(2).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			_global_svaty(2).kalendar = _global_kalendar;
 		}// CZOP only
 
@@ -38105,7 +38137,7 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 		}
 
 		Log("_je_global_svaty_i_slavnost(poradie_svaty) == %d...\n", _je_global_svaty_i_slavnost(poradie_svaty));
-		Log("_global_svaty(poradie_svaty).typslav == %d...\n", _global_svaty(poradie_svaty).typslav); // pôvodne sa kontorlovalo aj toto, lenže pre lokálne slávnosti bolo nastavené (nemuselo nutne znamenať override)
+		Log("_global_svaty(poradie_svaty).typslav == %d...\n", _global_svaty(poradie_svaty).typslav); // pôvodne sa kontrolovalo aj toto, lenže pre lokálne slávnosti bolo nastavené (nemuselo nutne znamenať override)
 
 		if (_je_global_svaty_i_slavnost(poradie_svaty)) {
 
@@ -38115,7 +38147,12 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 			if (je_modlitba_vlastna == ANO) {
 				modlitba = MODL_PRVE_VESPERY;
-				_vlastna_cast_modlitba;
+				if ((_global_svaty(poradie_svaty).flags & FLAG_COLLECTA_1ST_VESP_DIFFERENT) == FLAG_COLLECTA_1ST_VESP_DIFFERENT) {
+					_vlastna_cast_modlitba_ina;
+				}
+				else {
+					_vlastna_cast_modlitba;
+				}
 			}
 
 			Log("(zatiaľ sa používa len pre kompletórium) svaty_force == %d...\n", svaty_force);

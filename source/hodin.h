@@ -15753,17 +15753,17 @@ const char* text_SEP_04_OSU[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_05[POCET_JAZYKOV + 1] =
 {
-	"Sv. Terézie z Kalkaty (Matky Terezy), panny a rehoľníčky",
-	"Sv. Terezie z Kalkaty (Matky Terezy), panny, řeholnice",
-	"St. Teresa of Calcutta, virgin, nun",
+	"Sv. Terézie z Kalkaty, panny",
+	"Sv. Terezie z Kalkaty, panny",
+	"St. Teresa of Calcutta, virgin",
 	"S. Teresiæ de Calcutta, virginis",
 	"",
-	"Sv. Terezie z Kalkaty (Matky Terezy), panny a řeholnice",
+	"Sv. Terezie z Kalkaty, panny",
 	"Kalkuttai Szent Teréz szűz",
 	"",
 	"",
 	"Hl. Teresa frá Kalkútta, mey",
-	"Santa Teresa de Calcuta (Madre Teresa), virgen y religiosa",
+	"Santa Teresa de Calcuta, virgen",
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };

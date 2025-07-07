@@ -8927,6 +8927,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					_vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
 					_vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
 					_zds_modlitba;
+					_global_den.flags = FLAG_COLLECTA_1ST_VESP_DIFFERENT; // ToDo: also flag for different collecta for prayer during the day
 					_vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
 
 					// invitatórium
