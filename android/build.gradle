@@ -41,10 +41,10 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
   namespace 'sk.breviar.android'
 
-  compileSdkVersion 34
+  compileSdkVersion 35
   
   defaultConfig {
-    targetSdkVersion 34
+    targetSdkVersion 35
       // TODO: api 33 has changes in notifications: POST_NOTIFICATIONS permission
     minSdkVersion 21
     ndk {
