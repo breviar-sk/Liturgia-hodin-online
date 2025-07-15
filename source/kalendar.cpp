@@ -38017,6 +38017,8 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	// toto priradujeme preto, aby sme nemuseli pri kazdom svatom priradovat pocet = 1;
 	short int pocet = 1;
 
+	short int special_cases = 0; // used for special cases of celebrations with fluent date
+
 	char _anchor_vlastne_slavenie[SMALL];
 
 	Log("-- sviatky_svatych(%d, %d) -- zaciatok\n", den, mesiac);
@@ -38063,6 +38065,8 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 			_global_svaty(p).kalendar = KALENDAR_NEURCENY;
 			// nastavenie lc_str_id
 			mystrcpy(_global_svaty(p).lc_str_id, STR_EMPTY, MAX_LC_STR_ID);
+			// flags
+			_global_svaty(p).flags = FLAG_NONE;
 		}
 	}
 
@@ -38122,61 +38126,30 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 	Log("slávenie predbežne určené, počet == %d\n", pocet);
 	Log("KAL:Koniec veľkého switch()-u podľa mesiacov a dní.\n");
-	LOG_ciara_sv;
 
-	Log("poradie_svaty == %d...\n", poradie_svaty);
-	Log("_je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty) == %d...\n", _je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty));
-
-	if ((poradie_svaty > 0) && (_je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty))) {
-
-		// spolieham sa na to, že _file, _anchor, _anchor_head ostali správne nastavené...
-		Log("override stupňa slávenia => sviatok alebo slávnosť, nastavujem mcd (ak je vlastná)...\n");
-
-		if (je_modlitba_vlastna == ANO) {
-			_vlastna_cast_mcd_modlitba;
-		}
-
-		Log("_je_global_svaty_i_slavnost(poradie_svaty) == %d...\n", _je_global_svaty_i_slavnost(poradie_svaty));
-		Log("_global_svaty(poradie_svaty).typslav == %d...\n", _global_svaty(poradie_svaty).typslav); // pôvodne sa kontrolovalo aj toto, lenže pre lokálne slávnosti bolo nastavené (nemuselo nutne znamenať override)
-
-		if (_je_global_svaty_i_slavnost(poradie_svaty)) {
-
-			Log("override stupňa slávenia => slávnosť, nastavujem veci pre slávnosť (mcd: psalmódia; prvé vešpery: modlitba; komplet 1. aj 2. kompletórium (hoci možno už boli nastavené)...\n");
-
-			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
-
-			if (je_modlitba_vlastna == ANO) {
-				modlitba = MODL_PRVE_VESPERY;
-				if ((_global_svaty(poradie_svaty).flags & FLAG_COLLECTA_1ST_VESP_DIFFERENT) == FLAG_COLLECTA_1ST_VESP_DIFFERENT) {
-					_vlastna_cast_modlitba_ina;
-				}
-				else {
-					_vlastna_cast_modlitba;
-				}
-			}
-
-			Log("(zatiaľ sa používa len pre kompletórium) svaty_force == %d...\n", svaty_force);
-
-			modlitba = MODL_PRVE_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba, svaty_force);
-
-			modlitba = MODL_KOMPLETORIUM;
-			_set_kompletorium_slavnost(modlitba, svaty_force);
-		}
-	}
+	Log("KAL:_global_den.smer == %d...\n", _global_den.smer);
+	Log("KAL:_global_svaty(1).smer == %d...\n", _global_svaty(1).smer);
 
 	// spomienka neposkvrneneho srdca panny marie
-	if ((_global_den.denvr == SRDPM) && (_global_svaty(1).smer >= 10)) {
+	if ((_global_den.denvr == SRDPM) && ((_global_svaty(1).smer >= 10) 
+		// special case for SK OFM
+		|| ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM) && (_global_svaty(1).smer == 7)))) {
+
+		LOG_ciara_sv;
+
 		// neposkvrneneho srdca panny marie | "berie sa v takom pripade, ked nie je slavenie s vyssou prioritou, teda smer < 10"
 		Log(" neposkvrneneho srdca panny marie: \n");
-		Log(" ...berie sa len v takom pripade, ked to nekoliduje\n");
-		Log(" ...so slavenim, co ma vyssiu prioritu (smer < 10)\n");
+		Log(" ...berie sa len v takom pripade, ked to nekoliduje so slavenim, co ma vyssiu prioritu (smer < 10) alebo pre SK OFM, ak je smer == 7...\n");
 
+		special_cases = 1;
+		Log("špeciálne nastavenie: _global_poradie_svaty = 1;\n");
+		_global_poradie_svaty = 1;
 		poradie_svaty = 1;
+
 		if (poradie_svaty == 1) {
 			// definovanie parametrov pre modlitbu
 			if (query_type != PRM_DETAILY) {
-				set_spolocna_cast(sc, poradie_svaty);
+				set_spolocna_cast(sc, poradie_svaty, 0, special_cases);
 			}
 			// ZNOVUNASTAVENIE_POPISU_NA_DUMMY, 2003-06-30; 2009-06-10: zapoznámkované | 2012-06-18: opätovne odpoznámkované, lebo 16.06.2012 tam dalo pre MCD popis (sk) 16JUN_POPIS
 			Log("vo funkcii sviatky_svatych() spustam set_popis_dummy(); - kvoli spomienke neposkvrneneho srdca panny marie...\n");
@@ -38201,6 +38174,8 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 			if ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP)) {
 				_vlastne_slavenie_popis(_anchor_vlastne_slavenie);
 			}
+
+			_set_slavenie_typslav_smer(poradie_svaty, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
 
 			if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) {
 				// najprv z vlastnej časti (všeobecnej) nastavíme aj modlitbu pre mcd
@@ -38241,35 +38216,41 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 				_vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
 				_vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
 
-				_global_svaty(1).kalendar = _global_kalendar;
-				_global_svaty(1).typslav_lokal = LOKAL_SLAV_SVIATOK_OFMCAP;
-				mystrcpy(_global_svaty(1).meno, text_NEPOSKVRNENEHO_SRDCA_PM_OFM[_global_jazyk], MENO_SVIATKU);
+				_global_svaty(poradie_svaty).kalendar = _global_kalendar;
+				_global_svaty(poradie_svaty).typslav_lokal = LOKAL_SLAV_SVIATOK_OFMCAP;
+				mystrcpy(_global_svaty(poradie_svaty).meno, text_NEPOSKVRNENEHO_SRDCA_PM_OFM[_global_jazyk], MENO_SVIATKU);
+
+				_set_slavenie_typslav_smer(poradie_svaty, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
 			}// kalendár pre KALENDAR_SK_OFM
 		}
 
-		_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
-
 		if (!((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM))) {
-			mystrcpy(_global_svaty(1).meno, text_NEPOSKVRNENEHO_SRDCA_PM[_global_jazyk], MENO_SVIATKU);
+			mystrcpy(_global_svaty(poradie_svaty).meno, text_NEPOSKVRNENEHO_SRDCA_PM[_global_jazyk], MENO_SVIATKU);
 		}
-		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
-		_global_svaty(1).farba = LIT_FARBA_BIELA;
+		_global_svaty(poradie_svaty).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+		_global_svaty(poradie_svaty).farba = LIT_FARBA_BIELA;
 		// nastavenie lc_str_id pre spomienku Nepoškvrneného Srdca Panny Márie
-		mystrcpy(_global_svaty(1).lc_str_id, "10V6", MAX_LC_STR_ID);
+		mystrcpy(_global_svaty(poradie_svaty).lc_str_id, "10V6", MAX_LC_STR_ID);
 	}// srdca panny marie
 
-	 // spomienka panny marie matky cirkvi
+	// spomienka panny marie matky cirkvi
 	if ((_global_den.denvr == MARIE_MATKY_CIRKVI) && ((_global_pocet_svatych == 0) || (poradie_svaty == 0) || ((_global_svaty(1).smer >= 10) && !MIESTNE_SLAVENIE_LOKAL_SVATY(1)))) {
+
+		LOG_ciara_sv;
+
 		// spomienka panny marie matky cirkvi | "berie sa v takom pripade, ked nie je slavenie s vyssou prioritou, teda smer < 10"
 		Log(" panny marie matky cirkvi: \n");
-		Log(" ...berie sa len v takom pripade, ked to nekoliduje\n");
-		Log(" ...so slavenim, co ma vyssiu prioritu (smer < 10)\n");
+		Log(" ...berie sa len v takom pripade, ked to nekoliduje so slavenim, co ma vyssiu prioritu (smer < 10)...\n");
 
-		poradie_svaty = 0;
-		if (poradie_svaty == 0) {
+		special_cases = 1;
+		Log("špeciálne nastavenie: _global_poradie_svaty = 1;\n");
+		_global_poradie_svaty = 1;
+		poradie_svaty = 1;
+
+		if (poradie_svaty == 1) {
 			// definovanie parametrov pre modlitbu
 			if (query_type != PRM_DETAILY) {
-				set_spolocna_cast(sc, poradie_svaty);
+				set_spolocna_cast(sc, poradie_svaty, 0, special_cases);
 			}
 
 			mystrcpy(_file, FILE_MARIE_MATKY_CIRKVI, MAX_STR_AF_FILE);
@@ -38307,12 +38288,59 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 		_set_slavenie_typslav_smer(poradie_svaty, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
 
-		mystrcpy(_global_den.meno, text_MARIE_MATKY_CIRKVI[_global_jazyk], MENO_SVIATKU); // MUST NOT use _global_svaty(poradie_svaty) because poradie_svaty == 0 => this caused memory violation!
-		_global_den.spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
-		_global_den.farba = LIT_FARBA_BIELA;
+		mystrcpy(_global_svaty(poradie_svaty).meno, text_MARIE_MATKY_CIRKVI[_global_jazyk], MENO_SVIATKU); // MUST NOT use _global_svaty(poradie_svaty) because poradie_svaty == 0 => this caused memory violation!
+		_global_svaty(poradie_svaty).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
+		_global_svaty(poradie_svaty).farba = LIT_FARBA_BIELA;
 		// nastavenie lc_str_id
-		// mystrcpy(_global_svaty(1).lc_str_id, "10V6", MAX_LC_STR_ID); ToDo
+		// mystrcpy(_global_svaty(poradie_svaty).lc_str_id, "10V6", MAX_LC_STR_ID); ToDo
 	}// marie matky cirkvi
+
+	LOG_ciara_sv;
+
+	Log("poradie_svaty == %d...\n", poradie_svaty);
+	Log("_je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty) == %d...\n", _je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty));
+
+	if ((poradie_svaty > 0) && (_je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty))) {
+
+		Log("override stupňa slávenia => sviatok alebo slávnosť, zmeny...\n");
+		// spolieham sa na to, že _file, _anchor, _anchor_head ostali správne nastavené...
+
+		if (special_cases == 0) {
+			Log("override stupňa slávenia => sviatok alebo slávnosť, nastavujem mcd (ak je vlastná)...\n");
+
+			if (je_modlitba_vlastna == ANO) {
+				_vlastna_cast_mcd_modlitba;
+			}
+		}
+
+		Log("_je_global_svaty_i_slavnost(poradie_svaty) == %d...\n", _je_global_svaty_i_slavnost(poradie_svaty));
+		Log("_global_svaty(poradie_svaty).typslav == %d...\n", _global_svaty(poradie_svaty).typslav); // pôvodne sa kontrolovalo aj toto, lenže pre lokálne slávnosti bolo nastavené (nemuselo nutne znamenať override)
+
+		if (_je_global_svaty_i_slavnost(poradie_svaty)) {
+
+			Log("override stupňa slávenia => slávnosť, nastavujem veci pre slávnosť (mcd: psalmódia; prvé vešpery: modlitba; komplet 1. aj 2. kompletórium (hoci možno už boli nastavené)...\n");
+
+			_set_zalmy_mcd_1nedela_or_doplnkova_psalmodia();
+
+			if (je_modlitba_vlastna == ANO) {
+				modlitba = MODL_PRVE_VESPERY;
+				if ((_global_svaty(poradie_svaty).flags & FLAG_COLLECTA_1ST_VESP_DIFFERENT) == FLAG_COLLECTA_1ST_VESP_DIFFERENT) {
+					_vlastna_cast_modlitba_ina;
+				}
+				else {
+					_vlastna_cast_modlitba;
+				}
+			}
+
+			Log("(zatiaľ sa používa len pre kompletórium) svaty_force == %d...\n", svaty_force);
+
+			modlitba = MODL_PRVE_KOMPLETORIUM;
+			_set_kompletorium_slavnost(modlitba, svaty_force);
+
+			modlitba = MODL_KOMPLETORIUM;
+			_set_kompletorium_slavnost(modlitba, svaty_force);
+		}
+	}
 
 	if (_global_svaty(1).typslav == SLAV_NEURCENE) {
 		Log("neurcene slavenie, t.j. pocet = 0\n");
@@ -38339,10 +38367,10 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 short int sviatky_svatych(short int den, short int mesiac) {
 	short int ret;
-	Log("-- sviatky_svatych(%d, %d) -- spustam bez tretieho parametra\n", den, mesiac);
+	Log("-- sviatky_svatych(%d, %d) -- spúšťam bez tretieho parametra\n", den, mesiac);
 	Log("   (poradie_svaty == UNKNOWN_PORADIE_SVATEHO [%d])\n", UNKNOWN_PORADIE_SVATEHO);
 	ret = sviatky_svatych(den, mesiac, UNKNOWN_PORADIE_SVATEHO);
-	Log("-- sviatky_svatych(%d, %d) -- spustene bez tretieho parametra, vysledok (pocet svatych) == %d\n", den, mesiac, ret);
+	Log("-- sviatky_svatych(%d, %d) -- spustené bez tretieho parametra, výsledok (počet svätých) == %d\n", den, mesiac, ret);
 	return ret;
 } // sviatky_svatych(); -- 2 vstupy
 

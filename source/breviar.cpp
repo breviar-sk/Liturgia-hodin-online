@@ -5806,7 +5806,13 @@ void showPrayer(short int typ, short int modlitba, short int ktore_templaty = SH
 	Log("showPrayer(): begin\n");
 	Log("showPrayer(), modlitba == %d, _global_modlitba == %d...\n", modlitba, _global_modlitba);
 
-	Log("2006-10-18: _global_pocet_zalmov_kompletorium == %d\n", _global_pocet_zalmov_kompletorium);
+	Log("_global_pocet_zalmov_kompletorium == %d\n", _global_pocet_zalmov_kompletorium);
+
+	Log("_global_den.smer == %d...\n", _global_den.smer);
+	Log("_global_modlitba == % d; _je_global_den_slavnost == % d; _je_global_den_sviatok == % d...\n", _global_modlitba, _je_global_den_slavnost, _je_global_den_sviatok);
+	Log("_global_den.typslav == %d, _global_poradie_svaty == %d...\n", _global_den.typslav, _global_poradie_svaty);
+	Log("isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) == %d...\n", isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV));
+	// Log("_je_global_svaty_i_sviatok_alebo_slavnost(0) == %d...\n", _je_global_svaty_i_sviatok_alebo_slavnost(0));
 
 	// ak je potrebné vytlačiť Te Deum, tak zmeníme atribút
 	if (je_tedeum) {
@@ -6746,7 +6752,8 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						_global_den.farba = LIT_FARBA_BIELA;
 						_rozbor_dna_LOG("/* P. Márie Matky Cirkvi */\n");
 
-						_set_slavenie_typslav_smer(0, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
+						_global_pocet_svatych = 1;
+						_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára; nastavujeme pre poradie_svateho == 1
 						
 						mystrcpy(_global_den.meno, text_MARIE_MATKY_CIRKVI[_global_jazyk], MENO_SVIATKU);
 
@@ -6781,7 +6788,8 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 						_global_den.farba = LIT_FARBA_BIELA;
 						_rozbor_dna_LOG("/* srdca prebl. panny marie */\n");
 
-						_set_slavenie_typslav_smer(0, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
+						_global_pocet_svatych = 1;
+						_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára; nastavujeme pre poradie_svateho == 1
 
 						if ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OFM)) {
 							_global_den.kalendar = KALENDAR_SK_OFM;
@@ -6978,7 +6986,7 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 
 		short int podmienka_svaty_vedie = NIE;
 		short int podmienka_svaty_vedie_pom = NIE;
-		short int smer_override = 14; // undefined
+		short int smer_override = 14; // undefined; smernice uvádzajú len 13 hodnôt
 		Log("_global_den.smer == %d...\n", _global_den.smer);
 
 		for (short int i = 0; i < MAX_POCET_SVATY; i++) {
@@ -6997,15 +7005,16 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 		Log("podmienka_svaty_vedie == %d\n", podmienka_svaty_vedie);
 		Log("podmienka_svaty_vedie_pom == %d\n", podmienka_svaty_vedie_pom);
 
+		Log("_global_den.smer == %d, _global_svaty(1).smer == %d, _global_svaty(1).prik == %d\n", _global_den.smer, _global_svaty(1).smer, _global_svaty(1).prik);
+
 		// c. 12 v c. 59 vseob. smernic: "lubovolne spomienky, ktore sa mozu slavit aj v dnoch uvedenych pod c. 9 [...] tak isto v omsi a oficiu
 		// na sposob lubovolnych spomienok mozno slavit tie povinne spomienky, ktore obcas pripadnu na vsedne dni v poste." ...
 		// ... alebo c. 60: "ak na jeden den pripadnu viacere slavenia, uprednostni sa to, ktore ma v tabulke liturgickych dni vyssi stupen [t.j. .smer].
 		if (((_global_den.smer == 9) && (_global_svaty(1).typslav == SLAV_LUB_SPOMIENKA)) || (podmienka_svaty_vedie == ANO)) {
 
-			_rozbor_dna_LOG("svaty ma prednost pred dnom (SVATY_VEDIE)\n");
-			_rozbor_dna_LOG("_global_den.smer == %d, _global_svaty(1).smer == %d, _global_svaty(1).prik == %d\n", _global_den.smer, _global_svaty(1).smer, _global_svaty(1).prik);
+			Log("svaty ma prednost pred dnom (SVATY_VEDIE)\n");
 
-			_rozbor_dna_LOG("modlitba == %d (%s)...\n", _global_modlitba, nazov_modlitby(_global_modlitba));
+			Log("modlitba == %d (%s)...\n", _global_modlitba, nazov_modlitby(_global_modlitba));
 			if ((_global_modlitba != MODL_NEURCENA) &&
 				(
 				(poradie_svaty != UNKNOWN_PORADIE_SVATEHO) ||
@@ -7024,25 +7033,27 @@ short int _rozbor_dna(_struct_den_mesiac datum, short int rok, short int poradie
 				if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
 					poradie_svaty_pom = poradie_svaty;
 				}
-				_rozbor_dna_LOG("bola splnená podmienka...\n");
+				Log("bola splnená podmienka...\n");
 
-				_rozbor_dna_LOG("\tporadie_svaty == %d; poradie_svaty_pom == %d\n", poradie_svaty, poradie_svaty_pom);
-				_rozbor_dna_LOG("\t_global_den.denvt == %d (%s), _global_den.litobd == %d (%s)...\n", _global_den.denvt, nazov_dna(_global_den.denvt), _global_den.litobd, nazov_obdobia_ext(_global_den.litobd));
+				Log("\tporadie_svaty == %d; poradie_svaty_pom == %d\n", poradie_svaty, poradie_svaty_pom);
+				Log("\t_global_den.denvt == %d (%s), _global_den.litobd == %d (%s)...\n", _global_den.denvt, nazov_dna(_global_den.denvt), _global_den.litobd, nazov_obdobia_ext(_global_den.litobd));
 				// menim, lebo svaty ma prednost
-				_rozbor_dna_LOG("mením, lebo svätý `%d'/`%d' má prednosť...\n", poradie_svaty, poradie_svaty_pom);
+				Log("mením, lebo svätý `%d'/`%d' má prednosť...\n", poradie_svaty, poradie_svaty_pom);
 
 				if (poradie_svaty_pom != PORADIE_PM_SOBOTA) {
-					_rozbor_dna_LOG("\t_global_svaty(%d).smer == %d...\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).smer);
+					Log("\t_global_svaty(%d).smer == %d...\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).smer);
 
 					Log("do _global_den priraďujem _global_svaty(%d)... (`%s')\n", poradie_svaty_pom, _global_svaty(poradie_svaty_pom).meno);
 
 					_global_den = _global_svaty(poradie_svaty_pom);
-
 				}
 				else {
 					Log("do _global_den by som mal priradiť _global_pm_sobota (%d)... (`%s') -- PRESKAKUJEM, ANI DOTERAZ SA TO NEROBILO!\n", poradie_svaty_pom, _global_pm_sobota.meno);
 				}
 			}// koniec menenia pre _global_modlitba != MODL_NEURCENA a svaty > 0 resp. slavnost
+			else {
+				Log("NEbola splnená podmienka...\n");
+			}
 		}
 		else {
 			// neuprednostnujeme svatych pred dnom
@@ -8856,6 +8867,9 @@ short int _rozbor_dna_s_modlitbou(_struct_den_mesiac datum, short int rok, short
 		return FAILURE;
 	}
 	Log("_rozbor_dna() skoncila.\n");
+
+	Log("_global_pocet_svatych == %d...\n", _global_pocet_svatych);
+	Log("poradie_svateho == %d...\n", poradie_svateho);
 
 	if ((poradie_svateho == PORADIE_PM_SOBOTA) && (_global_den.denvt != DEN_SOBOTA)) {
 		Log("(poradie_svateho == %d) && (_global_den.denvt != DEN_SOBOTA), so returning FAILURE...\n", PORADIE_PM_SOBOTA);
@@ -14117,6 +14131,7 @@ void rozbor_dna_s_modlitbou(short int typ, short int den, short int mesiac, shor
 				}
 
 				// 2012-11-20: doplnené priradenie, lebo sa zmenila premenná _global_den
+				Log("idem urobiť: _global_poradie_svaty = svaty_dalsi_den; \n");
 				_global_poradie_svaty = svaty_dalsi_den;
 
 				// 2012-11-08: pretože slávnosť alebo nedeľa má pre prvé vešpery nastvené vlastné prosby, je potrebné opätovne nastaviť pre vešpery, ak je zvolená táto možnosť, kratšie prosby z dodatku (možno ich použiť v ktorýkoľvek deň v roku)
@@ -15670,7 +15685,7 @@ void _main_dnes(char *modlitba, char *poradie_svaty) {
 		_global_vstup_mesiac = datum.mesiac;
 		_global_vstup_rok = dnes.tm_year;
 		_global_poradie_svaty = s;
-		Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);
+		Log("_global_poradie_svaty == %d\n", _global_poradie_svaty);
 
 		showAllPrayers(query_type, datum.den, datum.mesiac, dnes.tm_year, s);
 	}
@@ -15680,7 +15695,7 @@ void _main_dnes(char *modlitba, char *poradie_svaty) {
 		_global_vstup_mesiac = datum.mesiac;
 		_global_vstup_rok = dnes.tm_year;
 		_global_poradie_svaty = s;
-		Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);
+		Log("_global_poradie_svaty == %d\n", _global_poradie_svaty);
 
 		rozbor_dna_s_modlitbou(query_type, datum.den, datum.mesiac, dnes.tm_year, p, s);
 	}

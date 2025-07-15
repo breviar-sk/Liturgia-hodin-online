@@ -9618,8 +9618,8 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 	Log("__set_spolocna_cast(%s) -- begin\n", nazov_spolc(a));
 
-	Log("poradie_svaty = %d\n", poradie_svaty);
-	Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);
+	Log("poradie_svaty == %d\n", poradie_svaty);
+	Log("_global_poradie_svaty == %d\n", _global_poradie_svaty);
 
 	Log("ak je slávnosť alebo sviatok, žalmy z nedele 1. týždňa pre ranné chvály...\n");
 	// ranné chvály
@@ -10926,7 +10926,7 @@ void set_popis_svaty_modlitba(short int poradie_svaty, short int modlitba) {
 	Log("set_popis_svaty_modlitba() -- koniec.\n");
 }// set_popis_svaty_modlitba()
 
-void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 */) {
+void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 */, short int special_cases /* = 0 */) {
 	// poradie_svaty je vstupom iba kvoli tomu, ze ak je 0 -> UNKNOWN_PORADIE_SVATEHO, potom nas neznepokojuju vypisy typu Error: not assigned...
 	// ked nastavi vo formulari (detaily) zalmy zo `sviatku' a spolocnu cast `nebrat', predsa sa nevyvolaju zalmy zo sviatku, lebo sa nespusti _set_spolocna_cast(); 
 	// [ToDo] -- mozno by bolo dobre oddelit nastavenie pre spolocnu cast a potom inde dat samotne zalmy...
@@ -10934,11 +10934,13 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	Log("set_spolocna_cast({%s, %s, %s}) -- begin\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
 	Log("_global_opt[OPT_3_SPOLOCNA_CAST] == %s (%ld)\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]), _global_opt[OPT_3_SPOLOCNA_CAST]);
 
-	Log("teraz nastavujem POPIS (pre daného svätého) -- volám set_popis_svaty_rch_mcd_pc_vesp()...\n");
-	set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
+	if (special_cases == 0) {
+		Log("teraz nastavujem POPIS (pre daného svätého) -- volám set_popis_svaty_rch_mcd_pc_vesp()...\n");
+		set_popis_svaty_rch_mcd_pc_vesp(poradie_svaty);
 
-	// tento POPIS nie je dobre nastaveny pre spomienku
-	// "Nepoškvrneného Srdca prebl. Panny Márie" -> "Nepoškvrneného Srdca Panny Márie", preto je tam nastaveny este raz na dummy, vid ZNOVUNASTAVENIE_POPISU_NA_DUMMY
+		// tento POPIS nie je dobre nastaveny pre spomienku
+		// "Nepoškvrneného Srdca prebl. Panny Márie" -> "Nepoškvrneného Srdca Panny Márie", preto je tam nastaveny este raz na dummy, vid ZNOVUNASTAVENIE_POPISU_NA_DUMMY
+	}
 
 	// pokusne aj _global_svaty(1).typslav
 	if (_je_global_den_slavnost || (_je_global_svaty_i_slavnost(1))) {

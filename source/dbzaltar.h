@@ -308,7 +308,7 @@ extern void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc
 extern void set_popis_svaty_rch_mcd_pc_vesp(short int poradie_svaty);
 extern void set_popis_svaty_rch_mcd_pc_vesp_den_mesiac(short int den, short int mesiac);
 extern void set_popis_svaty_modlitba(short int poradie_svaty, short int modlitba);
-extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force = 0);
+extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force = 0, short int special_cases = 0);
 
 /* #define BEGIN -------------------------------------------------------------------------------------------------------------------- */
 
@@ -992,7 +992,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 // pre doplnkovú psalmódiu treba prípadne ponastavovať odlišné žalmy (Ž 129 resp. Ž 131 namiesto Ž 122, 126 resp. 127), pretože žalmy sa pre slávenia s nižšou prioritou nastavujú zo žaltára; doplnková psalmódia sa preto nastavuje prv, ako sa nastavilo je_alternativa_doplnkova_psalmodia_z...()
 #define _spolocna_cast_full(modl) {\
 	Log("_spolocna_cast_full(%s): začiatok...\n", nazov_modlitby(modl));\
-	Log("_global_poradie_svaty = %d\n", _global_poradie_svaty);\
+	Log("_global_poradie_svaty == %d\n", _global_poradie_svaty);\
 	Log("force = %d\n", force);\
 	Log("_global_den.typslav = %d\n", _global_den.typslav);\
 	for(short int i = 0; i < MAX_POCET_SVATY; i++) {\
@@ -1517,6 +1517,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 // vlastné druhé čítanie na posvätné čítanie pre srdca PM
 #define _srdca_pm_2cit {\
+	Log("_srdca_pm_2cit...\n");\
 	sprintf(_anchor, "%s_%c%s", ANCHOR_SRDCA_PM, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
 	set_citanie2(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
