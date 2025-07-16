@@ -27,6 +27,10 @@
 #undef MODEL_DEBUG_Windows_RUBY
 #undef MODEL_DEBUG_Windows_commandline
 
+#undef INCLUDE_FOLDERS_NESTED
+// if you want to use nested include folders (as follows: include/sk, include/czop, include/la etc.), git-move files and uncomment the following define
+//#define INCLUDE_FOLDERS_NESTED
+
 #undef MODEL_LH_commandline
 // if you want to build command-line version on your system, uncomment the following define
 //#define MODEL_LH_commandline

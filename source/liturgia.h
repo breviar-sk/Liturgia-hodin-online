@@ -402,7 +402,11 @@ extern const char* nazov_Modlitby_jazyk[POCET_MODLITIEB + 1][POCET_JAZYKOV + 1];
 #define		nazov_Modlitby(a)	nazov_Modlitby_jazyk[a][_global_jazyk]
 
 #define TEMPLATE_PREFIX_HTML	"m"
+#ifdef INCLUDE_FOLDERS_NESTED
+#define TEMPLATE_PREFIX_XML		"../../m"
+#else
 #define TEMPLATE_PREFIX_XML		"../m"
+#endif
 
 #define TEMPLATE_POSTFIX_HTML	"htm"
 #define TEMPLATE_POSTFIX_XML	"xml"

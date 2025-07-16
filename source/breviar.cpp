@@ -2888,6 +2888,10 @@ void includeFile(short int typ, short int modlitba, const char* paramname, const
 						// ToDo: časom dynamicky
 						if (EXPORT_REFERENCIA) {
 							Export(HTML_A_HREF_BEGIN "\"/include/");
+#ifdef INCLUDE_FOLDERS_NESTED
+							Export(postfix_jazyka[_global_jazyk]);
+							Export((char *)STR_PATH_SEPARATOR);
+#endif
 						}
 						DetailLog("\trest     == %s\n", rest);
 						DetailLog("\tkatrest  == %s\n", katrest);
@@ -20901,7 +20905,11 @@ int breviar_main(int argc, const char** argv) {
 				// dokončenie úpravy include adresára podľa jazyka
 				if (strlen(postfix_jazyka[_global_jazyk]) > 0) {
 					// pôvodne sme uvažovali, že include_dir bude napr. include/cz, incluce/en; teraz bude radšej include_cz, include_en t.j. nahraď backslash resp. slash znakom underscore
+#ifdef INCLUDE_FOLDERS_NESTED
+					include_dir[len] = PATH_SEPARATOR;
+#else
 					include_dir[len] = UNDERSCORE;
+#endif
 					strcat(include_dir, postfix_jazyka[_global_jazyk]);
 					_main_LOG_to_Export("\tupravené (pridané na koniec reťazca): %s\n", include_dir);
 				}

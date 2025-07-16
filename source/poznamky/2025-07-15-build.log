@@ -1,0 +1,1562 @@
+2025-07-15, JUV, uncomplete; new server cn16v4.q7.sk (more strict warnings); gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-26)
+
+dbzaltar.h:691:2: note: in expansion of macro ‘_vlastna_cast_hymnus’
+  _vlastna_cast_hymnus(modl, _global_den.litobd);\
+  ^~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:562:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
+                   ^~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:562:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:566:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA2);\
+                   ^~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:566:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:570:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3);\
+                   ^~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:570:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:19: warning: ‘%s’ directive writing 3 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+                   ^~~~~~~~
+dbzaltar.h:694:8: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  else {_vlastna_cast_kcitanie;}\
+        ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:9: note: ‘sprintf’ output between 5 and 36 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:694:8: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  else {_vlastna_cast_kcitanie;}\
+        ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:676:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
+                   ^~~~~~~~
+dbzaltar.h:693:34: note: in expansion of macro ‘_vlastna_cast_1citanie’
+  if (modl == MODL_POSV_CITANIE) {_vlastna_cast_1citanie;}\
+                                  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:676:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:693:34: note: in expansion of macro ‘_vlastna_cast_1citanie’
+  if (modl == MODL_POSV_CITANIE) {_vlastna_cast_1citanie;}\
+                                  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+                   ^~~~~~~~
+dbzaltar.h:695:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:695:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+                   ^~~~~~~~
+dbzaltar.h:698:39: note: in expansion of macro ‘_vlastna_cast_2citanie’
+  else if (modl == MODL_POSV_CITANIE) {_vlastna_cast_2citanie;}\
+                                       ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:698:39: note: in expansion of macro ‘_vlastna_cast_2citanie’
+  else if (modl == MODL_POSV_CITANIE) {_vlastna_cast_2citanie;}\
+                                       ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:616:19: warning: ‘%s’ directive writing 10 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT);\
+                   ^~~~~~~~
+dbzaltar.h:697:67: note: in expansion of macro ‘_vlastna_cast_magnifikat’
+  else if ((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)) {_vlastna_cast_magnifikat;}\
+                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:616:9: note: ‘sprintf’ output between 12 and 43 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:697:67: note: in expansion of macro ‘_vlastna_cast_magnifikat’
+  else if ((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)) {_vlastna_cast_magnifikat;}\
+                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:610:19: warning: ‘%s’ directive writing 10 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+                   ^~~~~~~~
+dbzaltar.h:696:34: note: in expansion of macro ‘_vlastna_cast_benediktus’
+  if (modl == MODL_RANNE_CHVALY) {_vlastna_cast_benediktus;}\
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:610:9: note: ‘sprintf’ output between 12 and 43 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:696:34: note: in expansion of macro ‘_vlastna_cast_benediktus’
+  if (modl == MODL_RANNE_CHVALY) {_vlastna_cast_benediktus;}\
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:628:19: warning: ‘%s’ directive writing 6 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_PROSBY);\
+                   ^~~~~~~~
+dbzaltar.h:699:2: note: in expansion of macro ‘_vlastna_cast_prosby’
+  _vlastna_cast_prosby;\
+  ^~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:628:9: note: ‘sprintf’ output between 8 and 39 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_PROSBY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:699:2: note: in expansion of macro ‘_vlastna_cast_prosby’
+  _vlastna_cast_prosby;\
+  ^~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+dbzaltar.h:700:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:700:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36689:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:530:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s%c%s", _special_anchor_prefix_CZ_hymnus, _anchor_head, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
+                   ^~~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:691:2: note: in expansion of macro ‘_vlastna_cast_hymnus’
+  _vlastna_cast_hymnus(modl, _global_den.litobd);\
+  ^~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:530:9: note: ‘sprintf’ output between 8 and 198 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s%c%s", _special_anchor_prefix_CZ_hymnus, _anchor_head, pismenko_modlitby(modlitba), ANCHOR_HYMNUS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:691:2: note: in expansion of macro ‘_vlastna_cast_hymnus’
+  _vlastna_cast_hymnus(modl, _global_den.litobd);\
+  ^~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:562:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
+                   ^~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:562:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:566:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA2);\
+                   ^~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:566:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:570:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3);\
+                   ^~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:570:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA3);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:692:2: note: in expansion of macro ‘_vlastna_cast_antifony’
+  _vlastna_cast_antifony;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:19: warning: ‘%s’ directive writing 3 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+                   ^~~~~~~~
+dbzaltar.h:694:8: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  else {_vlastna_cast_kcitanie;}\
+        ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:9: note: ‘sprintf’ output between 5 and 36 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:694:8: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  else {_vlastna_cast_kcitanie;}\
+        ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:676:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
+                   ^~~~~~~~
+dbzaltar.h:693:34: note: in expansion of macro ‘_vlastna_cast_1citanie’
+  if (modl == MODL_POSV_CITANIE) {_vlastna_cast_1citanie;}\
+                                  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:676:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:693:34: note: in expansion of macro ‘_vlastna_cast_1citanie’
+  if (modl == MODL_POSV_CITANIE) {_vlastna_cast_1citanie;}\
+                                  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+                   ^~~~~~~~
+dbzaltar.h:695:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:695:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+                   ^~~~~~~~
+dbzaltar.h:698:39: note: in expansion of macro ‘_vlastna_cast_2citanie’
+  else if (modl == MODL_POSV_CITANIE) {_vlastna_cast_2citanie;}\
+                                       ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:698:39: note: in expansion of macro ‘_vlastna_cast_2citanie’
+  else if (modl == MODL_POSV_CITANIE) {_vlastna_cast_2citanie;}\
+                                       ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:616:19: warning: ‘%s’ directive writing 10 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT);\
+                   ^~~~~~~~
+dbzaltar.h:697:67: note: in expansion of macro ‘_vlastna_cast_magnifikat’
+  else if ((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)) {_vlastna_cast_magnifikat;}\
+                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:616:9: note: ‘sprintf’ output between 12 and 43 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:697:67: note: in expansion of macro ‘_vlastna_cast_magnifikat’
+  else if ((modl == MODL_VESPERY) || (modl == MODL_PRVE_VESPERY)) {_vlastna_cast_magnifikat;}\
+                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:610:19: warning: ‘%s’ directive writing 10 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+                   ^~~~~~~~
+dbzaltar.h:696:34: note: in expansion of macro ‘_vlastna_cast_benediktus’
+  if (modl == MODL_RANNE_CHVALY) {_vlastna_cast_benediktus;}\
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:610:9: note: ‘sprintf’ output between 12 and 43 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:696:34: note: in expansion of macro ‘_vlastna_cast_benediktus’
+  if (modl == MODL_RANNE_CHVALY) {_vlastna_cast_benediktus;}\
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:628:19: warning: ‘%s’ directive writing 6 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_PROSBY);\
+                   ^~~~~~~~
+dbzaltar.h:699:2: note: in expansion of macro ‘_vlastna_cast_prosby’
+  _vlastna_cast_prosby;\
+  ^~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:628:9: note: ‘sprintf’ output between 8 and 39 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_PROSBY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:699:2: note: in expansion of macro ‘_vlastna_cast_prosby’
+  _vlastna_cast_prosby;\
+  ^~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+dbzaltar.h:700:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:700:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36693:5: note: in expansion of macro ‘_vlastna_cast_full’
+     _vlastna_cast_full(modlitba);
+     ^~~~~~~~~~~~~~~~~~
+dbzaltar.h:582:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+                   ^~~~~~~~
+dbzaltar.h:1368:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:582:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1368:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:586:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+                   ^~~~~~~~
+dbzaltar.h:1368:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:586:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1368:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:590:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+                   ^~~~~~~~
+dbzaltar.h:1368:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:590:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1368:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:19: warning: ‘%s’ directive writing 3 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+                   ^~~~~~~~
+dbzaltar.h:1369:2: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  _vlastna_cast_kcitanie;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:9: note: ‘sprintf’ output between 5 and 36 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1369:2: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  _vlastna_cast_kcitanie;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+                   ^~~~~~~~
+dbzaltar.h:1370:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1370:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+dbzaltar.h:1371:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1371:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:582:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+                   ^~~~~~~~
+dbzaltar.h:1373:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:582:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1373:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:586:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+                   ^~~~~~~~
+dbzaltar.h:1373:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:586:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1373:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:590:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+                   ^~~~~~~~
+dbzaltar.h:1373:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:590:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1373:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:19: warning: ‘%s’ directive writing 3 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+                   ^~~~~~~~
+dbzaltar.h:1374:2: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  _vlastna_cast_kcitanie;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:9: note: ‘sprintf’ output between 5 and 36 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1374:2: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  _vlastna_cast_kcitanie;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+                   ^~~~~~~~
+dbzaltar.h:1375:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1375:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+dbzaltar.h:1376:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1376:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:582:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+                   ^~~~~~~~
+dbzaltar.h:1378:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:582:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1378:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:586:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+                   ^~~~~~~~
+dbzaltar.h:1378:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:586:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1378:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:590:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+                   ^~~~~~~~
+dbzaltar.h:1378:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:590:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_ANTIFONY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1378:2: note: in expansion of macro ‘_vlastna_cast_antifony_rovnake’
+  _vlastna_cast_antifony_rovnake;\
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:19: warning: ‘%s’ directive writing 3 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+                   ^~~~~~~~
+dbzaltar.h:1379:2: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  _vlastna_cast_kcitanie;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:597:9: note: ‘sprintf’ output between 5 and 36 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1379:2: note: in expansion of macro ‘_vlastna_cast_kcitanie’
+  _vlastna_cast_kcitanie;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+                   ^~~~~~~~
+dbzaltar.h:1380:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:603:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1380:2: note: in expansion of macro ‘_vlastna_cast_kresponz’
+  _vlastna_cast_kresponz;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+dbzaltar.h:1381:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1381:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36696:5: note: in expansion of macro ‘_vlastna_cast_mcd_ant_kcitresp_modl’
+     _vlastna_cast_mcd_ant_kcitresp_modl;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36580:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36580:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+                   ^~~~~~~~
+kalendar.cpp:36583:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36583:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36584:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36584:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36587:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36587:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36560:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36560:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+                   ^~~~~~~~
+kalendar.cpp:36563:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36563:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36564:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36564:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36567:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36567:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36620:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36620:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36623:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36623:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+                   ^~~~~~~~
+kalendar.cpp:36624:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36624:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36627:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36627:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36649:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36649:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+                   ^~~~~~~~
+kalendar.cpp:36652:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36652:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36653:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36653:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36656:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36656:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36466:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36466:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36469:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36469:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36472:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36472:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:610:19: warning: ‘%s’ directive writing 10 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+                   ^~~~~~~~
+kalendar.cpp:36525:5: note: in expansion of macro ‘_vlastna_cast_benediktus’
+     _vlastna_cast_benediktus;
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:610:9: note: ‘sprintf’ output between 12 and 43 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36525:5: note: in expansion of macro ‘_vlastna_cast_benediktus’
+     _vlastna_cast_benediktus;
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36526:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36526:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36529:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36529:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+                   ^~~~~~~~
+kalendar.cpp:36530:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36530:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:616:19: warning: ‘%s’ directive writing 10 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT);\
+                   ^~~~~~~~
+kalendar.cpp:36533:5: note: in expansion of macro ‘_vlastna_cast_magnifikat’
+     _vlastna_cast_magnifikat;
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:616:9: note: ‘sprintf’ output between 12 and 43 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36533:5: note: in expansion of macro ‘_vlastna_cast_magnifikat’
+     _vlastna_cast_magnifikat;
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36534:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36534:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:19: warning: ‘%s’ directive writing 4 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+                   ^~~~~~~~
+kalendar.cpp:36499:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:683:9: note: ‘sprintf’ output between 6 and 37 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36499:5: note: in expansion of macro ‘_vlastna_cast_2citanie’
+     _vlastna_cast_2citanie;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36500:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36500:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36503:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36503:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:36506:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:36506:5: note: in expansion of macro ‘_vlastna_cast_modlitba’
+     _vlastna_cast_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp: In function ‘short int sviatky_svatych(short int, short int, short int)’:
+dbzaltar.h:520:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+                   ^~~~~~~~~
+kalendar.cpp:38165:4: note: in expansion of macro ‘_vlastne_slavenie_benediktus’
+    _vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:520:9: note: ‘sprintf’ output between 13 and 172 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38165:4: note: in expansion of macro ‘_vlastne_slavenie_benediktus’
+    _vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+                   ^~~~~~~
+kalendar.cpp:38166:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:9: note: ‘sprintf’ output between 10 and 169 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38166:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:406:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+                   ^~~~~~~
+kalendar.cpp:38168:5: note: in expansion of macro ‘_vlastne_slavenie_popis’
+     _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:406:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38168:5: note: in expansion of macro ‘_vlastne_slavenie_popis’
+     _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+                   ^~~~~~~
+kalendar.cpp:38173:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:9: note: ‘sprintf’ output between 10 and 169 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38173:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:406:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+                   ^~~~~~~
+kalendar.cpp:38175:5: note: in expansion of macro ‘_vlastne_slavenie_popis’
+     _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:406:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38175:5: note: in expansion of macro ‘_vlastne_slavenie_popis’
+     _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:456:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+                   ^~~~~~~
+kalendar.cpp:38182:5: note: in expansion of macro ‘_vlastne_slavenie_modlitba_mcd’
+     _vlastne_slavenie_modlitba_mcd(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:456:9: note: ‘sprintf’ output between 10 and 169 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38182:5: note: in expansion of macro ‘_vlastne_slavenie_modlitba_mcd’
+     _vlastne_slavenie_modlitba_mcd(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:459:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+                   ^~~~~~~
+kalendar.cpp:38182:5: note: in expansion of macro ‘_vlastne_slavenie_modlitba_mcd’
+     _vlastne_slavenie_modlitba_mcd(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:459:9: note: ‘sprintf’ output between 10 and 169 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38182:5: note: in expansion of macro ‘_vlastne_slavenie_modlitba_mcd’
+     _vlastne_slavenie_modlitba_mcd(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:462:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+                   ^~~~~~~
+kalendar.cpp:38182:5: note: in expansion of macro ‘_vlastne_slavenie_modlitba_mcd’
+     _vlastne_slavenie_modlitba_mcd(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:462:9: note: ‘sprintf’ output between 10 and 169 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38182:5: note: in expansion of macro ‘_vlastne_slavenie_modlitba_mcd’
+     _vlastne_slavenie_modlitba_mcd(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:425:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", anchor, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
+                   ^~~~~~~~~
+kalendar.cpp:38188:5: note: in expansion of macro ‘_vlastne_slavenie_invitat’
+     _vlastne_slavenie_invitat(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:425:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", anchor, pismenko_modlitby(modlitba), ANCHOR_ANTIFONA1);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38188:5: note: in expansion of macro ‘_vlastne_slavenie_invitat’
+     _vlastne_slavenie_invitat(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:406:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+                   ^~~~~~~
+kalendar.cpp:38191:5: note: in expansion of macro ‘_vlastne_slavenie_popis’
+     _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:406:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38191:5: note: in expansion of macro ‘_vlastne_slavenie_popis’
+     _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:474:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
+                   ^~~~~~~~~
+kalendar.cpp:38193:5: note: in expansion of macro ‘_vlastne_slavenie_1citanie’
+     _vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:474:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38193:5: note: in expansion of macro ‘_vlastne_slavenie_1citanie’
+     _vlastne_slavenie_1citanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:406:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+                   ^~~~~~~
+kalendar.cpp:38198:5: note: in expansion of macro ‘_vlastne_slavenie_popis’
+     _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:406:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38198:5: note: in expansion of macro ‘_vlastne_slavenie_popis’
+     _vlastne_slavenie_popis(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:438:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA1);\
+                   ^~~~~~~~~
+kalendar.cpp:38200:5: note: in expansion of macro ‘_vlastne_slavenie_antifony’
+     _vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:438:9: note: ‘sprintf’ output between 3 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA1);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38200:5: note: in expansion of macro ‘_vlastne_slavenie_antifony’
+     _vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:441:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA2);\
+                   ^~~~~~~~~
+kalendar.cpp:38200:5: note: in expansion of macro ‘_vlastne_slavenie_antifony’
+     _vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:441:9: note: ‘sprintf’ output between 3 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38200:5: note: in expansion of macro ‘_vlastne_slavenie_antifony’
+     _vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:444:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA3);\
+                   ^~~~~~~~~
+kalendar.cpp:38200:5: note: in expansion of macro ‘_vlastne_slavenie_antifony’
+     _vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:444:9: note: ‘sprintf’ output between 3 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), (je_modlitba_cez_den(modlitba))? ANCHOR_ANTIFONY : ANCHOR_ANTIFONA3);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38200:5: note: in expansion of macro ‘_vlastne_slavenie_antifony’
+     _vlastne_slavenie_antifony(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:468:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+                   ^~~~~~~~~
+kalendar.cpp:38202:5: note: in expansion of macro ‘_vlastne_slavenie_kcitanie’
+     _vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:468:9: note: ‘sprintf’ output between 6 and 165 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38202:5: note: in expansion of macro ‘_vlastne_slavenie_kcitanie’
+     _vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:431:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+                   ^~~~~~~~~
+kalendar.cpp:38203:5: note: in expansion of macro ‘_vlastne_slavenie_kresponz’
+     _vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:431:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38203:5: note: in expansion of macro ‘_vlastne_slavenie_kresponz’
+     _vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:520:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+                   ^~~~~~~~~
+kalendar.cpp:38204:5: note: in expansion of macro ‘_vlastne_slavenie_benediktus’
+     _vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:520:9: note: ‘sprintf’ output between 13 and 172 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38204:5: note: in expansion of macro ‘_vlastne_slavenie_benediktus’
+     _vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:514:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_PROSBY);\
+                   ^~~~~~~~~
+kalendar.cpp:38205:5: note: in expansion of macro ‘_vlastne_slavenie_prosby’
+     _vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:514:9: note: ‘sprintf’ output between 9 and 168 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_PROSBY);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38205:5: note: in expansion of macro ‘_vlastne_slavenie_prosby’
+     _vlastne_slavenie_prosby(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:468:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+                   ^~~~~~~~~
+kalendar.cpp:38208:5: note: in expansion of macro ‘_vlastne_slavenie_kcitanie’
+     _vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:468:9: note: ‘sprintf’ output between 6 and 165 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38208:5: note: in expansion of macro ‘_vlastne_slavenie_kcitanie’
+     _vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:431:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+                   ^~~~~~~~~
+kalendar.cpp:38209:5: note: in expansion of macro ‘_vlastne_slavenie_kresponz’
+     _vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:431:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38209:5: note: in expansion of macro ‘_vlastne_slavenie_kresponz’
+     _vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:468:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+                   ^~~~~~~~~
+kalendar.cpp:38212:5: note: in expansion of macro ‘_vlastne_slavenie_kcitanie’
+     _vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:468:9: note: ‘sprintf’ output between 6 and 165 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38212:5: note: in expansion of macro ‘_vlastne_slavenie_kcitanie’
+     _vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:431:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+                   ^~~~~~~~~
+kalendar.cpp:38213:5: note: in expansion of macro ‘_vlastne_slavenie_kresponz’
+     _vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:431:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38213:5: note: in expansion of macro ‘_vlastne_slavenie_kresponz’
+     _vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:468:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+                   ^~~~~~~~~
+kalendar.cpp:38216:5: note: in expansion of macro ‘_vlastne_slavenie_kcitanie’
+     _vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:468:9: note: ‘sprintf’ output between 6 and 165 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KCITANIE);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38216:5: note: in expansion of macro ‘_vlastne_slavenie_kcitanie’
+     _vlastne_slavenie_kcitanie(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:431:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+                   ^~~~~~~~~
+kalendar.cpp:38217:5: note: in expansion of macro ‘_vlastne_slavenie_kresponz’
+     _vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:431:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38217:5: note: in expansion of macro ‘_vlastne_slavenie_kresponz’
+     _vlastne_slavenie_kresponz(_anchor_vlastne_slavenie);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:520:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+                   ^~~~~~~~~
+kalendar.cpp:38275:4: note: in expansion of macro ‘_vlastne_slavenie_benediktus’
+    _vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:520:9: note: ‘sprintf’ output between 13 and 172 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_BENEDIKTUS);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38275:4: note: in expansion of macro ‘_vlastne_slavenie_benediktus’
+    _vlastne_slavenie_benediktus(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+                   ^~~~~~~
+kalendar.cpp:38276:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:9: note: ‘sprintf’ output between 10 and 169 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38276:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:480:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+                   ^~~~~~~~~
+kalendar.cpp:38280:4: note: in expansion of macro ‘_vlastne_slavenie_2citanie’
+    _vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:480:9: note: ‘sprintf’ output between 7 and 166 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38280:4: note: in expansion of macro ‘_vlastne_slavenie_2citanie’
+    _vlastne_slavenie_2citanie(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+                   ^~~~~~~
+kalendar.cpp:38281:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:9: note: ‘sprintf’ output between 10 and 169 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38281:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:508:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT);\
+                   ^~~~~~~~~
+kalendar.cpp:38285:4: note: in expansion of macro ‘_vlastne_slavenie_magnifikat’
+    _vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:508:9: note: ‘sprintf’ output between 13 and 172 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_MAGNIFIKAT);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38285:4: note: in expansion of macro ‘_vlastne_slavenie_magnifikat’
+    _vlastne_slavenie_magnifikat(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:19: warning: ‘%s’ directive writing up to 159 bytes into a region of size 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+                   ^~~~~~~
+kalendar.cpp:38286:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:450:9: note: ‘sprintf’ output between 10 and 169 bytes into a destination of size 32
+  sprintf(_anchor, "%s_%s", vlastny_anchor, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38286:4: note: in expansion of macro ‘_vlastne_slavenie_modlitba’
+    _vlastne_slavenie_modlitba(_anchor_vlastne_slavenie);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+dbzaltar.h:1486:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38312:5: note: in expansion of macro ‘_vlastna_cast_mcd_modlitba’
+     _vlastna_cast_mcd_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1486:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38312:5: note: in expansion of macro ‘_vlastna_cast_mcd_modlitba’
+     _vlastna_cast_mcd_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+dbzaltar.h:1488:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38312:5: note: in expansion of macro ‘_vlastna_cast_mcd_modlitba’
+     _vlastna_cast_mcd_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1488:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38312:5: note: in expansion of macro ‘_vlastna_cast_mcd_modlitba’
+     _vlastna_cast_mcd_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+dbzaltar.h:1490:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38312:5: note: in expansion of macro ‘_vlastna_cast_mcd_modlitba’
+     _vlastna_cast_mcd_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:1490:2: note: in expansion of macro ‘_vlastna_cast_modlitba’
+  _vlastna_cast_modlitba;\
+  ^~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38312:5: note: in expansion of macro ‘_vlastna_cast_mcd_modlitba’
+     _vlastna_cast_mcd_modlitba;
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 1 and 32 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+                   ^~~~~~
+kalendar.cpp:38331:6: note: in expansion of macro ‘_vlastna_cast_modlitba’
+      _vlastna_cast_modlitba;
+      ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:634:9: note: ‘sprintf’ output between 9 and 40 bytes into a destination of size 32
+  sprintf(_anchor, "%s%s", _anchor_head, ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38331:6: note: in expansion of macro ‘_vlastna_cast_modlitba’
+      _vlastna_cast_modlitba;
+      ^~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:640:19: warning: ‘%s’ directive writing 8 bytes into a region of size between 0 and 31 [-Wformat-overflow=]
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MODLITBA);\
+                   ^~~~~~~~
+kalendar.cpp:38328:6: note: in expansion of macro ‘_vlastna_cast_modlitba_ina’
+      _vlastna_cast_modlitba_ina;
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+dbzaltar.h:640:9: note: ‘sprintf’ output between 10 and 41 bytes into a destination of size 32
+  sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_MODLITBA);\
+  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kalendar.cpp:38328:6: note: in expansion of macro ‘_vlastna_cast_modlitba_ina’
+      _vlastna_cast_modlitba_ina;
+      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+liturgia.cpp: In function ‘char* _vytvor_string_z_datumu(short int, short int, short int, short int, short int, short int, short int)’:
+liturgia.cpp:598:20: warning: ‘sprintf’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+   sprintf(str_den, "%s%d", vypln, den);
+                    ^~~~~~
+liturgia.cpp:598:10: note: ‘sprintf’ output between 2 and 166 bytes into a destination of size 160
+   sprintf(str_den, "%s%d", vypln, den);
+   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+myhpage.cpp: In function ‘void _hlavicka(char*, FILE*, short int, short int)’:
+myhpage.cpp:282:34: warning: ‘%s’ directive writing up to 159 bytes into a region of size 133 [-Wformat-overflow=]
+   sprintf(html_background_color, " style=\"background-color: #%s;\"", _local_background_color);
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~~~~~~~~~~~~
+myhpage.cpp:282:10: note: ‘sprintf’ output between 30 and 189 bytes into a destination of size 160
+   sprintf(html_background_color, " style=\"background-color: #%s;\"", _local_background_color);
+   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+l.cgi:   75.2%
+Tue Jul 15 19:23:07 CEST 2025
+[wbreviar@cn16v4 ~]$

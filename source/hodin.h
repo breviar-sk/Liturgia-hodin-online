@@ -1130,7 +1130,13 @@ const char* skratka_jazyka[POCET_JAZYKOV + 1] =
 
 // language codes; internal usage for include directories (postfix of directory/folder name); postfix MUST NOT contain slash/backslash
 const char* postfix_jazyka[POCET_JAZYKOV + 1] =
-{ "", "cz", "en", "la", "", "czop", "hu", "ru", "by", "is", "es", "az", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{
+#ifdef INCLUDE_FOLDERS_NESTED
+	"sk", 
+#else
+	"",
+#endif
+	"cz", "en", "la", "", "czop", "hu", "ru", "by", "is", "es", "az", /* STRING_1_FOR_NEW_LANGUAGE */ };
 // Poznámka: Postfix nesmie obsahovať na začiatku oddeľovač (slash resp. backslash); musí sa jednať o podadresár pod include
 
 // language codes; internal usage for HTML page title
