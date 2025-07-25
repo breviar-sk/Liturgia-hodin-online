@@ -5,7 +5,7 @@ import java.util.Map;
 
 import android.content.Context;
 import android.graphics.Typeface; import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
+import androidx.core.view.MenuItemCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;

@@ -7,11 +7,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.fragment.app.DialogFragment;
+import androidx.core.view.MenuItemCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -71,6 +71,7 @@ public class SettingsActivity extends AppCompatActivity
 
     navigationView = (NavigationView)findViewById(R.id.settings_activity_content);
     navigationView.setNavigationItemSelectedListener(this);
+    navigationView.setItemMaxLines(2);
   }
 
   public void inflateMenu(int menu_resource) {

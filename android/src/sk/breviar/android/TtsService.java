@@ -1,7 +1,7 @@
 package sk.breviar.android;
 
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.media.app.NotificationCompat.MediaStyle;
+import androidx.core.app.NotificationCompat;
+import androidx.media.app.NotificationCompat.MediaStyle;
 
 import android.app.Notification;
 import android.app.NotificationManager;

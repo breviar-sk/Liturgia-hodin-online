@@ -17,13 +17,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -44,6 +37,19 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
 import java.lang.Character;
@@ -275,9 +281,17 @@ public class Breviar extends AppCompatActivity
       initServer(opts);
 
       super.onCreate(savedInstanceState);
+      WindowCompat.enableEdgeToEdge(getWindow());
       requestWindowFeature(Window.FEATURE_NO_TITLE);
 
       setContentView(R.layout.breviar);
+
+      ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content), (v, insets) -> {
+        Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+        /* We probably do not need | WindowInsetsCompat.Type.displayCutout()); */
+        v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
+        return WindowInsetsCompat.CONSUMED;
+      });
 
       toolbar = (Toolbar) findViewById(R.id.breviar_toolbar);
       setSupportActionBar(toolbar);
@@ -286,6 +300,8 @@ public class Breviar extends AppCompatActivity
 
       navigationView = (NavigationView) findViewById(R.id.navigation);
       navigationView.setNavigationItemSelectedListener(this);
+      navigationView.setItemMaxLines(2);
+      navigationView.inflateHeaderView(R.layout.navigation_header);
 
       Menu menu = navigationView.getMenu();
       menu.findItem(R.id.speak_pause_toggle).setVisible(false);

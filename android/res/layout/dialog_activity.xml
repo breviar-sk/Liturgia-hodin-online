@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-<android.support.v7.widget.Toolbar
+<androidx.appcompat.widget.Toolbar
   android:id="@+id/dialog_activity_toolbar"
   android:layout_width="match_parent"
   android:layout_height="?attr/actionBarSize"
@@ -15,7 +15,7 @@
   android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
   app:popupTheme="@style/ThemeOverlay.AppCompat"
   android:background="?attr/colorPrimary">
-</android.support.v7.widget.Toolbar>
+</androidx.appcompat.widget.Toolbar>
 
 <WebView
   android:id="@+id/dialog_webview"
@@ -23,7 +23,7 @@
   android:paddingLeft="4dip" android_paddingRight="4dip" android:layout_weight="1"
 />
 
-  <android.support.v7.widget.AppCompatButton
+  <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/dialog_ok" android:text="OK"
     style="?android:attr/buttonStyleSmall" 
     app:backgroundTint="@color/colorPrimary"
