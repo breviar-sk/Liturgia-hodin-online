@@ -1357,15 +1357,15 @@ void ExportEmptyCell(short begin = ANO, short end = ANO) {
 // exportuje heading velkosti size;
 // jednotne exportovanie. <h2> pre Liturgiu hodin, <h3> pre detailnejsi vypis
 void _export_heading(/* int size, */const char* string) {
-	short int size = 2;
+	short int size = 2; // <h2>...</h2>
 	Export("\n<h%d>Kontrola údajov</h%d>\n\n", size, size);
 
-	size = 4;
+	size = 4; // <h4>...</h4>
 	Export("\n<h%d " HTML_CLASS_BLUE ">%s</h%d>\n\n", size, string, size);
 } // _export_heading()
 
 void _export_heading_center(short int typ, const char* string) {
-	short int size = 2;
+	short int size = 2; // <h2>...</h2>
 	if (typ == PRM_XML) {
 		Export("\n" ELEM_BEGIN(XML_TITLE) "\n");
 	}

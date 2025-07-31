@@ -728,7 +728,7 @@ const char* nazov_slavenia_lokal[] =
 , "jen kanonie Doksany"                                                                                          // LOKAL_SLAV_OPRAEM_DOKSANY
 , "jen kanonie Doksany a Želiv"                                                                                  // LOKAL_SLAV_OPRAEM_DOKSANY_ZELIV
 , "jen kanonie Teplá"                                                                                            // LOKAL_SLAV_OPRAEM_TEPLA
-, "len pre Kongregáciu sestier Matky Božieho Milosrdenstva"                                                      // LOKAL_SLAV_KONGREGACIA_SMBM
+, "pre OFMCap.: slávnosť"                                                                                        // LOKAL_SLAV_SLAVNOST_OFMCAP
 , "pro FMA památka"                                                                                              // LOKAL_SLAV_SPOMIENKA_FMA_CZ
 , "pro FMA a VDB nezávazná památka"                                                                              // LOKAL_SLAV_LUB_SPOMIENKA_FMA_VDB_CZ
 , "pro VDB svátek"                                                                                               // LOKAL_SLAV_SVIATOK_VDB_CZ
@@ -6226,8 +6226,8 @@ const char* text_JAN_01_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_02[POCET_JAZYKOV + 1] =
@@ -6290,8 +6290,8 @@ const char* text_JAN_03_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_04_OCD_JAN_03_OCARM[POCET_JAZYKOV + 1] =
@@ -6306,8 +6306,8 @@ const char* text_JAN_04_OCD_JAN_03_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_04_OFM[POCET_JAZYKOV + 1] =
@@ -6322,8 +6322,8 @@ const char* text_JAN_04_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_04_CM[POCET_JAZYKOV + 1] =
@@ -6338,8 +6338,8 @@ const char* text_JAN_04_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_05_CSSR[POCET_JAZYKOV + 1] =
@@ -6370,8 +6370,8 @@ const char* text_JAN_05_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_06[POCET_JAZYKOV + 1] = // 6. januára | alebo nedeľu medzi 2. a 8. januárom
@@ -6418,8 +6418,8 @@ const char* text_JAN_08_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Péturs Tómasar, biskups",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_08_SDB[POCET_JAZYKOV + 1] =
@@ -6434,8 +6434,8 @@ const char* text_JAN_08_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_09_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -6450,8 +6450,8 @@ const char* text_JAN_09_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Andrésar Corsini, biskups",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_09_CSA[POCET_JAZYKOV + 1] =
@@ -6498,8 +6498,8 @@ const char* text_JAN_10_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_10_ES_OP[POCET_JAZYKOV + 1] =
@@ -6530,8 +6530,8 @@ const char* text_JAN_11_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_11_OFM[POCET_JAZYKOV + 1] =
@@ -6546,8 +6546,8 @@ const char* text_JAN_11_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_KRST[POCET_JAZYKOV + 1] = // v nedeľu po 6. januári | (v nedeľu po Zjavení Pána) alebo: ak však táto nedeľa (zrejme Zjavenia Pána) padne na deň 7. alebo 8. januára, ofícium sa slávi v nasledujúci deň
@@ -6578,8 +6578,8 @@ const char* text_JAN_12_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_12_SCHP[POCET_JAZYKOV + 1] =
@@ -6594,8 +6594,8 @@ const char* text_JAN_12_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_13[POCET_JAZYKOV + 1] =
@@ -6626,8 +6626,8 @@ const char* text_JAN_14_CSSR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_14_OFM[POCET_JAZYKOV + 1] =
@@ -6642,8 +6642,8 @@ const char* text_JAN_14_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_14_OPRAEM[POCET_JAZYKOV + 1] =
@@ -6658,8 +6658,8 @@ const char* text_JAN_14_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_15_HU[POCET_JAZYKOV + 1] =
@@ -6690,8 +6690,8 @@ const char* text_JAN_15_SVD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_15_SDB[POCET_JAZYKOV + 1] =
@@ -6706,13 +6706,13 @@ const char* text_JAN_15_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_16_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Berarda, kňaza, a spoločníkov, prvých františkánskych mučeníkov",
+	"Sv. Berarda, kňaza, a spoločníkov, " HTML_LINE_BREAK "prvých františkánskych mučeníkov",
 	"Sv. Berarda, kněze, a druhů, mučedníků",
 	"",
 	"",
@@ -6722,8 +6722,8 @@ const char* text_JAN_16_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_17[POCET_JAZYKOV + 1] =
@@ -6770,8 +6770,8 @@ const char* text_JAN_18[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_19_OP[POCET_JAZYKOV + 1] =
@@ -6786,8 +6786,8 @@ const char* text_JAN_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_19_SJ[POCET_JAZYKOV + 1] =
@@ -6802,8 +6802,8 @@ const char* text_JAN_19_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_20_ES[POCET_JAZYKOV + 1] =
@@ -6866,8 +6866,8 @@ const char* text_JAN_20_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_20_OCARM[POCET_JAZYKOV + 1] =
@@ -6882,8 +6882,8 @@ const char* text_JAN_20_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_20_HU[POCET_JAZYKOV + 1] =
@@ -6946,8 +6946,8 @@ const char* text_JAN_22_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_22_OFM_HU[POCET_JAZYKOV + 1] =
@@ -6978,8 +6978,8 @@ const char* text_JAN_22_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_23_SK[POCET_JAZYKOV + 1] =
@@ -7026,8 +7026,8 @@ const char* text_JAN_23_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_24[POCET_JAZYKOV + 1] =
@@ -7058,8 +7058,8 @@ const char* text_JAN_24_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_25[POCET_JAZYKOV + 1] =
@@ -7106,8 +7106,8 @@ const char* text_JAN_25_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_26[POCET_JAZYKOV + 1] =
@@ -7186,8 +7186,8 @@ const char* text_JAN_27_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_27_OCD[POCET_JAZYKOV + 1] =
@@ -7202,8 +7202,8 @@ const char* text_JAN_27_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Henriks de Ossó y Cervello, prests",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_28[POCET_JAZYKOV + 1] =
@@ -7250,8 +7250,8 @@ const char* text_JAN_29_SVD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_29_OP[POCET_JAZYKOV + 1] =
@@ -7266,8 +7266,8 @@ const char* text_JAN_29_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_29_OFMCONV[POCET_JAZYKOV + 1] =
@@ -7282,8 +7282,8 @@ const char* text_JAN_29_OFMCONV[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_29_OCARM[POCET_JAZYKOV + 1] =
@@ -7298,8 +7298,8 @@ const char* text_JAN_29_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_30_SDB[POCET_JAZYKOV + 1] =
@@ -7314,8 +7314,8 @@ const char* text_JAN_30_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_30_OFM[POCET_JAZYKOV + 1] =
@@ -7330,8 +7330,8 @@ const char* text_JAN_30_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JAN_31[POCET_JAZYKOV + 1] =
@@ -7362,8 +7362,8 @@ const char* text_JAN_31_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -7381,8 +7381,8 @@ const char* text_FEB_01_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_01_CM[POCET_JAZYKOV + 1] =
@@ -7397,8 +7397,8 @@ const char* text_FEB_01_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_01_OCARM[POCET_JAZYKOV + 1] =
@@ -7413,8 +7413,8 @@ const char* text_FEB_01_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_02[POCET_JAZYKOV + 1] =
@@ -7477,8 +7477,8 @@ const char* text_FEB_03_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_04_OP[POCET_JAZYKOV + 1] =
@@ -7493,8 +7493,8 @@ const char* text_FEB_04_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_04_SJ[POCET_JAZYKOV + 1] =
@@ -7509,13 +7509,13 @@ const char* text_FEB_04_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_04_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jozefa z Leonissy, kňaza, člena 1. rádu",
+	"Sv. Jozefa z Leonessy, kňaza, člena 1. rádu",
 	"Sv. Josefa z Leonessy, kněze",
 	"",
 	"",
@@ -7525,8 +7525,8 @@ const char* text_FEB_04_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_04_OPRAEM[POCET_JAZYKOV + 1] =
@@ -7541,8 +7541,8 @@ const char* text_FEB_04_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_04_OCD[POCET_JAZYKOV + 1] =
@@ -7557,8 +7557,8 @@ const char* text_FEB_04_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_05[POCET_JAZYKOV + 1] =
@@ -7605,13 +7605,13 @@ const char* text_FEB_06_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_06_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Petra Baptistu, kňaza, a spoločníkov, františkánskych mučeníkov",
+	"Sv. Petra Baptistu, kňaza, a spoločníkov, " HTML_LINE_BREAK "františkánskych mučeníkov",
 	"Sv. Petra Křtitele, Pavla Mikiho a druhů, mučedníků",
 	"",
 	"",
@@ -7621,8 +7621,8 @@ const char* text_FEB_06_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_07_OP[POCET_JAZYKOV + 1] =
@@ -7637,8 +7637,8 @@ const char* text_FEB_07_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_07_SDB[POCET_JAZYKOV + 1] =
@@ -7653,8 +7653,8 @@ const char* text_FEB_07_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_07_OFM[POCET_JAZYKOV + 1] =
@@ -7669,8 +7669,8 @@ const char* text_FEB_07_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_08_1[POCET_JAZYKOV + 1] =
@@ -7717,8 +7717,8 @@ const char* text_FEB_09_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_09_OFMCAP[POCET_JAZYKOV + 1] =
@@ -7733,8 +7733,8 @@ const char* text_FEB_09_OFMCAP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_10[POCET_JAZYKOV + 1] =
@@ -7765,8 +7765,8 @@ const char* text_FEB_10_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_11[POCET_JAZYKOV + 1] =
@@ -7797,8 +7797,8 @@ const char* text_FEB_12_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_13_OP[POCET_JAZYKOV + 1] =
@@ -7813,8 +7813,8 @@ const char* text_FEB_13_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_14[POCET_JAZYKOV + 1] =
@@ -7845,8 +7845,8 @@ const char* text_FEB_15_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_15_CZ[POCET_JAZYKOV + 1] =
@@ -7877,8 +7877,8 @@ const char* text_FEB_16_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_17[POCET_JAZYKOV + 1] =
@@ -7909,8 +7909,8 @@ const char* text_FEB_17_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_18_OPRAEM[POCET_JAZYKOV + 1] =
@@ -7925,8 +7925,8 @@ const char* text_FEB_18_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_18_CM[POCET_JAZYKOV + 1] =
@@ -7941,8 +7941,8 @@ const char* text_FEB_18_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_18_OP[POCET_JAZYKOV + 1] =
@@ -7957,8 +7957,8 @@ const char* text_FEB_18_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_19_OP[POCET_JAZYKOV + 1] =
@@ -7973,8 +7973,8 @@ const char* text_FEB_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_19_OFM[POCET_JAZYKOV + 1] =
@@ -7989,8 +7989,8 @@ const char* text_FEB_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_20_OP[POCET_JAZYKOV + 1] =
@@ -8005,8 +8005,8 @@ const char* text_FEB_20_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_21[POCET_JAZYKOV + 1] =
@@ -8069,8 +8069,8 @@ const char* text_FEB_24_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_24_OP_2[POCET_JAZYKOV + 1] =
@@ -8085,8 +8085,8 @@ const char* text_FEB_24_OP_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_24_OCD[POCET_JAZYKOV + 1] =
@@ -8101,8 +8101,8 @@ const char* text_FEB_24_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Jósefu Naval Girbés", // 07NOV?
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_25_SDB[POCET_JAZYKOV + 1] =
@@ -8117,8 +8117,8 @@ const char* text_FEB_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_26_SCHP[POCET_JAZYKOV + 1] =
@@ -8133,8 +8133,8 @@ const char* text_FEB_26_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_FEB_27[POCET_JAZYKOV + 1] =
@@ -8187,8 +8187,8 @@ const char* text_MAR_02_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_04[POCET_JAZYKOV + 1] =
@@ -8235,8 +8235,8 @@ const char* text_MAR_05_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_07[POCET_JAZYKOV + 1] =
@@ -8283,8 +8283,8 @@ const char* text_MAR_08_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_09[POCET_JAZYKOV + 1] =
@@ -8347,8 +8347,8 @@ const char* text_MAR_12_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_15_CSSR[POCET_JAZYKOV + 1] =
@@ -8363,8 +8363,8 @@ const char* text_MAR_15_CSSR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_17[POCET_JAZYKOV + 1] =
@@ -8427,8 +8427,8 @@ const char* text_MAR_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_18_SCHP[POCET_JAZYKOV + 1] =
@@ -8443,8 +8443,8 @@ const char* text_MAR_18_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_19[POCET_JAZYKOV + 1] =
@@ -8475,8 +8475,8 @@ const char* text_MAR_19_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"Св. Юзафа, абранніка Найсвяцейшай Панны Марыі",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_19_OCARM[POCET_JAZYKOV + 1] =
@@ -8491,8 +8491,8 @@ const char* text_MAR_19_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_20_OCARM[POCET_JAZYKOV + 1] =
@@ -8507,8 +8507,8 @@ const char* text_MAR_20_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_22_OFM[POCET_JAZYKOV + 1] =
@@ -8523,8 +8523,8 @@ const char* text_MAR_22_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAR_23[POCET_JAZYKOV + 1] =
@@ -8574,8 +8574,8 @@ const char* text_APR_01_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_02[POCET_JAZYKOV + 1] =
@@ -8654,8 +8654,8 @@ const char* text_APR_10_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_11[POCET_JAZYKOV + 1] =
@@ -8718,8 +8718,8 @@ const char* text_APR_13_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_14_OP[POCET_JAZYKOV + 1] =
@@ -8734,8 +8734,8 @@ const char* text_APR_14_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_16[POCET_JAZYKOV + 1] =
@@ -8782,8 +8782,8 @@ const char* text_APR_17_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_17_2_OP[POCET_JAZYKOV + 1] =
@@ -8798,8 +8798,8 @@ const char* text_APR_17_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_17_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -8814,8 +8814,8 @@ const char* text_APR_17_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_18_OCD[POCET_JAZYKOV + 1] =
@@ -8830,8 +8830,8 @@ const char* text_APR_18_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Maríu af holdtekjunni, karmelnunnu", // IS
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_19_1_OP[POCET_JAZYKOV + 1] =
@@ -8846,8 +8846,8 @@ const char* text_APR_19_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_19_2_OP[POCET_JAZYKOV + 1] =
@@ -8862,8 +8862,8 @@ const char* text_APR_19_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_20_OP[POCET_JAZYKOV + 1] =
@@ -8878,8 +8878,8 @@ const char* text_APR_20_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_21[POCET_JAZYKOV + 1] =
@@ -8910,8 +8910,8 @@ const char* text_APR_21_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_22_OFM[POCET_JAZYKOV + 1] =
@@ -8926,8 +8926,8 @@ const char* text_APR_22_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_22_SJ[POCET_JAZYKOV + 1] =
@@ -8942,8 +8942,8 @@ const char* text_APR_22_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_23[POCET_JAZYKOV + 1] =
@@ -8974,8 +8974,8 @@ const char* text_APR_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_24_1[POCET_JAZYKOV + 1] =
@@ -9038,8 +9038,8 @@ const char* text_APR_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_24_OCD[POCET_JAZYKOV + 1] =
@@ -9054,8 +9054,8 @@ const char* text_APR_24_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Teresu Maríu af krossi, meyjar", // IS
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_24_AUG[POCET_JAZYKOV + 1] =
@@ -9070,8 +9070,8 @@ const char* text_APR_24_AUG[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_25[POCET_JAZYKOV + 1] =
@@ -9102,8 +9102,8 @@ const char* text_APR_26_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_26_CM[POCET_JAZYKOV + 1] =
@@ -9118,8 +9118,8 @@ const char* text_APR_26_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_26_OSU[POCET_JAZYKOV + 1] =
@@ -9134,8 +9134,8 @@ const char* text_APR_26_OSU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_27_SJ[POCET_JAZYKOV + 1] =
@@ -9150,8 +9150,8 @@ const char* text_APR_27_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_27_OP[POCET_JAZYKOV + 1] =
@@ -9166,8 +9166,8 @@ const char* text_APR_27_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_28_1[POCET_JAZYKOV + 1] =
@@ -9214,8 +9214,8 @@ const char* text_APR_28_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_28_OCD[POCET_JAZYKOV + 1] =
@@ -9230,8 +9230,8 @@ const char* text_APR_28_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_29[POCET_JAZYKOV + 1] =
@@ -9294,8 +9294,8 @@ const char* text_APR_30_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_APR_30_OSU[POCET_JAZYKOV + 1] =
@@ -9310,8 +9310,8 @@ const char* text_APR_30_OSU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -9361,8 +9361,8 @@ const char* text_MAJ_02_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_03[POCET_JAZYKOV + 1] =
@@ -9426,7 +9426,7 @@ const char* text_MAJ_04_ES[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"San Jose María Rubio, presbítero",
-	"az_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_04_OFM[POCET_JAZYKOV + 1] =
@@ -9441,8 +9441,8 @@ const char* text_MAJ_04_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_04_2_OFM[POCET_JAZYKOV + 1] =
@@ -9457,8 +9457,8 @@ const char* text_MAJ_04_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_04_OP[POCET_JAZYKOV + 1] =
@@ -9473,8 +9473,8 @@ const char* text_MAJ_04_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_04_2_OP[POCET_JAZYKOV + 1] =
@@ -9489,8 +9489,8 @@ const char* text_MAJ_04_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_04_OCD[POCET_JAZYKOV + 1] =
@@ -9505,8 +9505,8 @@ const char* text_MAJ_04_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_04_OCARM[POCET_JAZYKOV + 1] =
@@ -9521,8 +9521,8 @@ const char* text_MAJ_04_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_05_OCARM[POCET_JAZYKOV + 1] =
@@ -9537,8 +9537,8 @@ const char* text_MAJ_05_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_06_CZ[POCET_JAZYKOV + 1] =
@@ -9569,8 +9569,8 @@ const char* text_MAJ_06_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_07_OP[POCET_JAZYKOV + 1] =
@@ -9585,8 +9585,8 @@ const char* text_MAJ_07_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_07_OCARM[POCET_JAZYKOV + 1] =
@@ -9601,8 +9601,8 @@ const char* text_MAJ_07_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_07_HU_1[POCET_JAZYKOV + 1] =
@@ -9617,8 +9617,8 @@ const char* text_MAJ_07_HU_1[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_07_HU_2[POCET_JAZYKOV + 1] =
@@ -9633,8 +9633,8 @@ const char* text_MAJ_07_HU_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_08_OP[POCET_JAZYKOV + 1] =
@@ -9649,8 +9649,8 @@ const char* text_MAJ_08_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_08_2_OP[POCET_JAZYKOV + 1] =
@@ -9665,8 +9665,8 @@ const char* text_MAJ_08_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_08_CZ[POCET_JAZYKOV + 1] =
@@ -9697,8 +9697,8 @@ const char* text_MAJ_08_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"María mey, móðir guðlegrar náðar",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_08_2_OFM[POCET_JAZYKOV + 1] =
@@ -9713,8 +9713,8 @@ const char* text_MAJ_08_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_08_3_OFM[POCET_JAZYKOV + 1] =
@@ -9729,8 +9729,8 @@ const char* text_MAJ_08_3_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_08_SCSC[POCET_JAZYKOV + 1] =
@@ -9745,8 +9745,8 @@ const char* text_MAJ_08_SCSC[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_08_SJ[POCET_JAZYKOV + 1] =
@@ -9761,8 +9761,8 @@ const char* text_MAJ_08_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_08_SCHP[POCET_JAZYKOV + 1] =
@@ -9777,8 +9777,8 @@ const char* text_MAJ_08_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_09_OFM[POCET_JAZYKOV + 1] =
@@ -9793,8 +9793,8 @@ const char* text_MAJ_09_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_09_CM[POCET_JAZYKOV + 1] =
@@ -9809,8 +9809,8 @@ const char* text_MAJ_09_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_09_OCARM[POCET_JAZYKOV + 1] =
@@ -9825,8 +9825,8 @@ const char* text_MAJ_09_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_10_OP[POCET_JAZYKOV + 1] =
@@ -9841,8 +9841,8 @@ const char* text_MAJ_10_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_10[POCET_JAZYKOV + 1] =
@@ -9879,7 +9879,7 @@ const char* text_MAJ_11_SK[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_11_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Ignáca z Laconie, rehoľníka, člena 1. rádu",
+	"Sv. Ignáca z Lakoni, rehoľníka, člena 1. rádu",
 	"Sv. Ignáce z Laconi, řeholníka",
 	"",
 	"",
@@ -9889,8 +9889,8 @@ const char* text_MAJ_11_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_12_1[POCET_JAZYKOV + 1] =
@@ -9943,7 +9943,7 @@ const char* text_MAJ_12_CZ[POCET_JAZYKOV + 1] =
 };
 const char* text_MAJ_12_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Leopolda Mandića, kňaza, člena 1. rádu",
+	"Sv. Leopolda Mandiča, kňaza, člena 1. rádu",
 	"Sv. Leopolda Mandiče, kněze",
 	"",
 	"",
@@ -9953,8 +9953,8 @@ const char* text_MAJ_12_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_12_OP[POCET_JAZYKOV + 1] =
@@ -9969,8 +9969,8 @@ const char* text_MAJ_12_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_13[POCET_JAZYKOV + 1] =
@@ -10001,8 +10001,8 @@ const char* text_MAJ_13_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_13_SDB[POCET_JAZYKOV + 1] =
@@ -10017,8 +10017,8 @@ const char* text_MAJ_13_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_13_OFM[POCET_JAZYKOV + 1] =
@@ -10033,8 +10033,8 @@ const char* text_MAJ_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_14[POCET_JAZYKOV + 1] =
@@ -10081,8 +10081,8 @@ const char* text_MAJ_15_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_15_1_OP[POCET_JAZYKOV + 1] =
@@ -10097,8 +10097,8 @@ const char* text_MAJ_15_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_15_2_OP[POCET_JAZYKOV + 1] =
@@ -10113,8 +10113,8 @@ const char* text_MAJ_15_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_16_SJ[POCET_JAZYKOV + 1] =
@@ -10129,8 +10129,8 @@ const char* text_MAJ_16_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"Св. Андрэя Баболі, прэзбітэра і мучаніка",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_16_CZ_SJ[POCET_JAZYKOV + 1] =
@@ -10145,8 +10145,8 @@ const char* text_MAJ_16_CZ_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_16[POCET_JAZYKOV + 1] =
@@ -10177,8 +10177,8 @@ const char* text_MAJ_16_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_16_OP[POCET_JAZYKOV + 1] =
@@ -10193,8 +10193,8 @@ const char* text_MAJ_16_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_17_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -10209,8 +10209,8 @@ const char* text_MAJ_17_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Símonar Stock, prests", // IS: 15MAJ
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_17_ES_OFM[POCET_JAZYKOV + 1] =
@@ -10226,7 +10226,7 @@ const char* text_MAJ_17_ES_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"San Pascual Bailón, religioso",
-	"az_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_17_HU[POCET_JAZYKOV + 1] =
@@ -10289,13 +10289,13 @@ const char* text_MAJ_18_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_18_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Felixa z Cantalicie, rehoľníka, člena 1. rádu",
+	"Sv. Felixa z Cantalice, rehoľníka, člena 1. rádu",
 	"Sv. Felixe z Cantalice, řeholníka",
 	"",
 	"",
@@ -10305,8 +10305,8 @@ const char* text_MAJ_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_18_OSU[POCET_JAZYKOV + 1] =
@@ -10321,8 +10321,8 @@ const char* text_MAJ_18_OSU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_19_OFM[POCET_JAZYKOV + 1] =
@@ -10337,8 +10337,8 @@ const char* text_MAJ_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_19_OP[POCET_JAZYKOV + 1] =
@@ -10353,8 +10353,8 @@ const char* text_MAJ_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_20_CZ[POCET_JAZYKOV + 1] =
@@ -10401,8 +10401,8 @@ const char* text_MAJ_20_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_21_2_OP[POCET_JAZYKOV + 1] =
@@ -10417,8 +10417,8 @@ const char* text_MAJ_21_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_21_CZ[POCET_JAZYKOV + 1] =
@@ -10465,8 +10465,8 @@ const char* text_MAJ_21_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_21_OFM[POCET_JAZYKOV + 1] =
@@ -10481,8 +10481,8 @@ const char* text_MAJ_21_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_22[POCET_JAZYKOV + 1] =
@@ -10513,8 +10513,8 @@ const char* text_MAJ_22_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_22_ES_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -10530,7 +10530,7 @@ const char* text_MAJ_22_ES_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"Hl. Jóakimu de Vedruna de Mas, ekkju",
 	"Santa Joaquina Vedruna, religiosa",
-	"az_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_23_CM[POCET_JAZYKOV + 1] =
@@ -10545,8 +10545,8 @@ const char* text_MAJ_23_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_23_HU[POCET_JAZYKOV + 1] =
@@ -10577,8 +10577,8 @@ const char* text_MAJ_24_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1] =
@@ -10593,8 +10593,8 @@ const char* text_MAJ_24_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_24_SJ[POCET_JAZYKOV + 1] =
@@ -10609,8 +10609,8 @@ const char* text_MAJ_24_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_24_OFM[POCET_JAZYKOV + 1] =
@@ -10625,8 +10625,8 @@ const char* text_MAJ_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_24[POCET_JAZYKOV + 1] =
@@ -10657,8 +10657,8 @@ const char* text_MAJ_24_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Maríu meyjar, hjálpar kristinna manna",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_25_1[POCET_JAZYKOV + 1] =
@@ -10753,8 +10753,8 @@ const char* text_MAJ_27_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_27_OFM[POCET_JAZYKOV + 1] =
@@ -10769,8 +10769,8 @@ const char* text_MAJ_27_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_28_OP[POCET_JAZYKOV + 1] =
@@ -10785,13 +10785,13 @@ const char* text_MAJ_28_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_28_OFM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Márie Costanza Panasovej, rehoľníčky",
+	"Bl. Márie Konštancie Panas, rehoľníčky",
 	"Bl. Marie Costanza Panasové, řeholnice",
 	"",
 	"",
@@ -10801,8 +10801,8 @@ const char* text_MAJ_28_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_29[POCET_JAZYKOV + 1] =
@@ -10833,8 +10833,8 @@ const char* text_MAJ_29_OSU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_29_OP[POCET_JAZYKOV + 1] =
@@ -10849,8 +10849,8 @@ const char* text_MAJ_29_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_29_SDB[POCET_JAZYKOV + 1] =
@@ -10865,8 +10865,8 @@ const char* text_MAJ_29_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_29_OCD[POCET_JAZYKOV + 1] =
@@ -10881,8 +10881,8 @@ const char* text_MAJ_29_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_30_OP[POCET_JAZYKOV + 1] =
@@ -10897,8 +10897,8 @@ const char* text_MAJ_30_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_30_CZ[POCET_JAZYKOV + 1] =
@@ -10961,8 +10961,8 @@ const char* text_MAJ_30_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_MAJ_31[POCET_JAZYKOV + 1] =
@@ -11356,8 +11356,8 @@ const char* text_JUN_02_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_02_OP[POCET_JAZYKOV + 1] =
@@ -11372,8 +11372,8 @@ const char* text_JUN_02_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_03[POCET_JAZYKOV + 1] =
@@ -11404,8 +11404,8 @@ const char* text_JUN_04_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_04_HU[POCET_JAZYKOV + 1] =
@@ -11468,8 +11468,8 @@ const char* text_JUN_05_2_HU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_06[POCET_JAZYKOV + 1] =
@@ -11500,8 +11500,8 @@ const char* text_JUN_06_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_07_OCD[POCET_JAZYKOV + 1] =
@@ -11516,8 +11516,8 @@ const char* text_JUN_07_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Önnu af hl. Bartolómeusi, meyjar",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_07_OFMCONV[POCET_JAZYKOV + 1] =
@@ -11532,8 +11532,8 @@ const char* text_JUN_07_OFMCONV[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_08_1_HU[POCET_JAZYKOV + 1] =
@@ -11580,8 +11580,8 @@ const char* text_JUN_08_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_08_SDB[POCET_JAZYKOV + 1] =
@@ -11596,8 +11596,8 @@ const char* text_JUN_08_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_08_OP[POCET_JAZYKOV + 1] =
@@ -11612,8 +11612,8 @@ const char* text_JUN_08_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_08_SJ[POCET_JAZYKOV + 1] =
@@ -11628,8 +11628,8 @@ const char* text_JUN_08_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_09[POCET_JAZYKOV + 1] =
@@ -11996,8 +11996,8 @@ const char* text_JUN_14_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_14_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -12012,8 +12012,8 @@ const char* text_JUN_14_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_15_CZ[POCET_JAZYKOV + 1] =
@@ -12252,8 +12252,8 @@ const char* text_JUN_20_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_20_OFM[POCET_JAZYKOV + 1] =
@@ -12268,8 +12268,8 @@ const char* text_JUN_20_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_21[POCET_JAZYKOV + 1] =
@@ -12300,8 +12300,8 @@ const char* text_JUN_21_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_22_2[POCET_JAZYKOV + 1] =
@@ -12364,8 +12364,8 @@ const char* text_JUN_23_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_23_OP[POCET_JAZYKOV + 1] =
@@ -12380,8 +12380,8 @@ const char* text_JUN_23_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_24[POCET_JAZYKOV + 1] =
@@ -12524,8 +12524,8 @@ const char* text_JUN_27_CSSR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_28[POCET_JAZYKOV + 1] =
@@ -12588,8 +12588,8 @@ const char* text_JUN_29_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_30[POCET_JAZYKOV + 1] =
@@ -12636,8 +12636,8 @@ const char* text_JUN_30_CSSR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUN_30_OFM[POCET_JAZYKOV + 1] =
@@ -12652,8 +12652,8 @@ const char* text_JUN_30_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -12671,8 +12671,8 @@ const char* text_JUL_02_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_02_OCARM[POCET_JAZYKOV + 1] =
@@ -12687,8 +12687,8 @@ const char* text_JUL_02_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_02_BY[POCET_JAZYKOV + 1] =
@@ -12767,8 +12767,8 @@ const char* text_JUL_04_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_04_2_OP[POCET_JAZYKOV + 1] =
@@ -12783,8 +12783,8 @@ const char* text_JUL_04_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_05_LA[POCET_JAZYKOV + 1] =
@@ -12831,8 +12831,8 @@ const char* text_JUL_05_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_05_BY[POCET_JAZYKOV + 1] =
@@ -12879,8 +12879,8 @@ const char* text_JUL_07_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_07_OP[POCET_JAZYKOV + 1] =
@@ -12895,8 +12895,8 @@ const char* text_JUL_07_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_07_OCD[POCET_JAZYKOV + 1] =
@@ -12911,8 +12911,8 @@ const char* text_JUL_07_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_08_IS[POCET_JAZYKOV + 1] =
@@ -12943,8 +12943,8 @@ const char* text_JUL_08_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_08_OFM[POCET_JAZYKOV + 1] =
@@ -12959,8 +12959,8 @@ const char* text_JUL_08_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_09[POCET_JAZYKOV + 1] =
@@ -12991,8 +12991,8 @@ const char* text_JUL_09_OSU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_09_1_OP[POCET_JAZYKOV + 1] =
@@ -13007,8 +13007,8 @@ const char* text_JUL_09_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_09_2_OP[POCET_JAZYKOV + 1] =
@@ -13023,8 +13023,8 @@ const char* text_JUL_09_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_09_OFM[POCET_JAZYKOV + 1] =
@@ -13039,8 +13039,8 @@ const char* text_JUL_09_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_09_SJ[POCET_JAZYKOV + 1] =
@@ -13055,8 +13055,8 @@ const char* text_JUL_09_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_09_OPRAEM[POCET_JAZYKOV + 1] =
@@ -13071,8 +13071,8 @@ const char* text_JUL_09_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_09_OCARM[POCET_JAZYKOV + 1] =
@@ -13087,8 +13087,8 @@ const char* text_JUL_09_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_10_OFM[POCET_JAZYKOV + 1] =
@@ -13103,8 +13103,8 @@ const char* text_JUL_10_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_10_OFM_HU[POCET_JAZYKOV + 1] =
@@ -13151,8 +13151,8 @@ const char* text_JUL_12_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_12_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -13167,8 +13167,8 @@ const char* text_JUL_12_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_13[POCET_JAZYKOV + 1] =
@@ -13215,8 +13215,8 @@ const char* text_JUL_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_13_OP[POCET_JAZYKOV + 1] =
@@ -13231,8 +13231,8 @@ const char* text_JUL_13_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_13_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -13247,8 +13247,8 @@ const char* text_JUL_13_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Teresu af Jesú de Los Andes, meyjar",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_14[POCET_JAZYKOV + 1] =
@@ -13311,8 +13311,8 @@ const char* text_JUL_14_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_15[POCET_JAZYKOV + 1] =
@@ -13343,8 +13343,8 @@ const char* text_JUL_15_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_15_SCHP[POCET_JAZYKOV + 1] =
@@ -13359,8 +13359,8 @@ const char* text_JUL_15_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_16[POCET_JAZYKOV + 1] =
@@ -13471,8 +13471,8 @@ const char* text_JUL_17_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Teresu af hl. Ágústínusi og félaga, meyja og píslarvotta",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_18_HU[POCET_JAZYKOV + 1] =
@@ -13503,8 +13503,8 @@ const char* text_JUL_18_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_18_OFM[POCET_JAZYKOV + 1] =
@@ -13519,8 +13519,8 @@ const char* text_JUL_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_19_OFM[POCET_JAZYKOV + 1] =
@@ -13535,8 +13535,8 @@ const char* text_JUL_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_20[POCET_JAZYKOV + 1] =
@@ -13583,8 +13583,8 @@ const char* text_JUL_20_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_21[POCET_JAZYKOV + 1] =
@@ -13615,8 +13615,8 @@ const char* text_JUL_21_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_21_OCD_JUL_28_OCARM[POCET_JAZYKOV + 1] =
@@ -13631,8 +13631,8 @@ const char* text_JUL_21_OCD_JUL_28_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_22[POCET_JAZYKOV + 1] =
@@ -13711,8 +13711,8 @@ const char* text_JUL_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_24_1_OP[POCET_JAZYKOV + 1] =
@@ -13727,8 +13727,8 @@ const char* text_JUL_24_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_24_2_OP[POCET_JAZYKOV + 1] =
@@ -13743,8 +13743,8 @@ const char* text_JUL_24_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_24_OCD[POCET_JAZYKOV + 1] =
@@ -13759,8 +13759,8 @@ const char* text_JUL_24_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Maríu Pilar og bl. Maríu Angeles, meyja og píslarvotta",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_25[POCET_JAZYKOV + 1] =
@@ -13807,8 +13807,8 @@ const char* text_JUL_26_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_27[POCET_JAZYKOV + 1] =
@@ -13823,8 +13823,8 @@ const char* text_JUL_27[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_27_OP[POCET_JAZYKOV + 1] =
@@ -13839,8 +13839,8 @@ const char* text_JUL_27_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_28_1_OFM[POCET_JAZYKOV + 1] =
@@ -13855,8 +13855,8 @@ const char* text_JUL_28_1_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_28_2_OFM[POCET_JAZYKOV + 1] =
@@ -13871,8 +13871,8 @@ const char* text_JUL_28_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_28_OCD_JUL_24_OCARM[POCET_JAZYKOV + 1] =
@@ -13887,8 +13887,8 @@ const char* text_JUL_28_OCD_JUL_24_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_29[POCET_JAZYKOV + 1] =
@@ -13983,13 +13983,13 @@ const char* text_JUL_30_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_30_OFMCAP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Františka Solana Caseyho, kňaza",
+	"Bl. Františka Solanusa Caseyho, kňaza",
 	"Bl. Františka Solana Caseyho, kněze",
 	"",
 	"",
@@ -13999,8 +13999,8 @@ const char* text_JUL_30_OFMCAP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_JUL_31[POCET_JAZYKOV + 1] =
@@ -14031,8 +14031,8 @@ const char* text_JUL_31_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -14067,8 +14067,8 @@ const char* text_CSSR_TITUL_KONGREGACIE[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -14102,8 +14102,8 @@ const char* text_AUG_01_CSSR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_02_1[POCET_JAZYKOV + 1] =
@@ -14150,8 +14150,8 @@ const char* text_AUG_02_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_02_OP[POCET_JAZYKOV + 1] =
@@ -14166,8 +14166,8 @@ const char* text_AUG_02_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_03_OP[POCET_JAZYKOV + 1] =
@@ -14182,8 +14182,8 @@ const char* text_AUG_03_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_02_SDB[POCET_JAZYKOV + 1] =
@@ -14198,8 +14198,8 @@ const char* text_AUG_02_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_02_SJ[POCET_JAZYKOV + 1] =
@@ -14214,8 +14214,8 @@ const char* text_AUG_02_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_04[POCET_JAZYKOV + 1] =
@@ -14278,8 +14278,8 @@ const char* text_AUG_05_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_05_OFM_HU[POCET_JAZYKOV + 1] =
@@ -14326,8 +14326,8 @@ const char* text_AUG_07_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Alberts frá Trapani, prests",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_07_1[POCET_JAZYKOV + 1] =
@@ -14364,7 +14364,7 @@ const char* text_AUG_07_2[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_07_OFM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Agatangela a Kasiána, kňazov a mučeníkov, " HTML_LINE_BREAK "členov 1. rádu",
+	"Bl. Agatangela a Kassiána, kňazov a mučeníkov, " HTML_LINE_BREAK "členov 1. rádu",
 	"Bl. Agathangela a Kassiána, kněží a mučedníků",
 	"",
 	"",
@@ -14374,8 +14374,8 @@ const char* text_AUG_07_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_08[POCET_JAZYKOV + 1] =
@@ -14406,8 +14406,8 @@ const char* text_AUG_08_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_08_OFM[POCET_JAZYKOV + 1] =
@@ -14422,8 +14422,8 @@ const char* text_AUG_08_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_09[POCET_JAZYKOV + 1] =
@@ -14454,8 +14454,8 @@ const char* text_AUG_09_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_09_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -14470,8 +14470,8 @@ const char* text_AUG_09_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Teresu Benediktu af krossinum, píslarvotts, " HTML_LINE_BREAK "verndardýrlings Evrópu",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_10[POCET_JAZYKOV + 1] =
@@ -14518,8 +14518,8 @@ const char* text_AUG_11_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_12[POCET_JAZYKOV + 1] =
@@ -14550,8 +14550,8 @@ const char* text_AUG_12_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_12_OCARM[POCET_JAZYKOV + 1] =
@@ -14566,8 +14566,8 @@ const char* text_AUG_12_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_13[POCET_JAZYKOV + 1] =
@@ -14614,8 +14614,8 @@ const char* text_AUG_13_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_13_OFM[POCET_JAZYKOV + 1] =
@@ -14630,8 +14630,8 @@ const char* text_AUG_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_13_OP[POCET_JAZYKOV + 1] =
@@ -14646,8 +14646,8 @@ const char* text_AUG_13_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_14[POCET_JAZYKOV + 1] =
@@ -14678,8 +14678,8 @@ const char* text_AUG_14_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_14_OFM[POCET_JAZYKOV + 1] =
@@ -14694,8 +14694,8 @@ const char* text_AUG_14_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_15[POCET_JAZYKOV + 1] =
@@ -14743,7 +14743,7 @@ const char* text_AUG_16_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"San Roque", // ES: 18AUG
-	"az_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_17_OP[POCET_JAZYKOV + 1] =
@@ -14758,8 +14758,8 @@ const char* text_AUG_17_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_17_OFM[POCET_JAZYKOV + 1] =
@@ -14774,8 +14774,8 @@ const char* text_AUG_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_17_OCARM[POCET_JAZYKOV + 1] =
@@ -14790,8 +14790,8 @@ const char* text_AUG_17_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_17_HU[POCET_JAZYKOV + 1] =
@@ -14822,8 +14822,8 @@ const char* text_AUG_18[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_18_HU[POCET_JAZYKOV + 1] =
@@ -14854,8 +14854,8 @@ const char* text_AUG_18_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_18_OP[POCET_JAZYKOV + 1] =
@@ -14870,8 +14870,8 @@ const char* text_AUG_18_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_18_OCD[POCET_JAZYKOV + 1] =
@@ -14886,8 +14886,8 @@ const char* text_AUG_18_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Jóhannesar skírara, Mikaels Aloisius og Jakobs, píslarvotta",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_18_1_OFM[POCET_JAZYKOV + 1] =
@@ -14902,8 +14902,8 @@ const char* text_AUG_18_1_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_18_2_OFM[POCET_JAZYKOV + 1] =
@@ -14918,8 +14918,8 @@ const char* text_AUG_18_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_19[POCET_JAZYKOV + 1] =
@@ -14966,8 +14966,8 @@ const char* text_AUG_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_19_OFM[POCET_JAZYKOV + 1] =
@@ -14982,8 +14982,8 @@ const char* text_AUG_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_20[POCET_JAZYKOV + 1] =
@@ -15046,8 +15046,8 @@ const char* text_OPATSKY_KOSTOL_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_22[POCET_JAZYKOV + 1] =
@@ -15094,8 +15094,8 @@ const char* text_AUG_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_24[POCET_JAZYKOV + 1] =
@@ -15158,8 +15158,8 @@ const char* text_AUG_25_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_25_CZ[POCET_JAZYKOV + 1] =
@@ -15222,8 +15222,8 @@ const char* text_AUG_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_25_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -15238,8 +15238,8 @@ const char* text_AUG_25_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Maríu af hinum krossfesta Jesú, meyjar",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_25_SCHP[POCET_JAZYKOV + 1] =
@@ -15254,8 +15254,8 @@ const char* text_AUG_25_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_26_ES[POCET_JAZYKOV + 1] =
@@ -15302,8 +15302,8 @@ const char* text_AUG_26_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Minning þess að engill laust kærleikseldi Guðs í hjarta hl.Teresu af Jesú",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_26_OCARM[POCET_JAZYKOV + 1] =
@@ -15318,8 +15318,8 @@ const char* text_AUG_26_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_26_SDB[POCET_JAZYKOV + 1] =
@@ -15334,8 +15334,8 @@ const char* text_AUG_26_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_26_OFM[POCET_JAZYKOV + 1] =
@@ -15350,8 +15350,8 @@ const char* text_AUG_26_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_26_OP[POCET_JAZYKOV + 1] =
@@ -15366,8 +15366,8 @@ const char* text_AUG_26_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_27[POCET_JAZYKOV + 1] =
@@ -15398,8 +15398,8 @@ const char* text_AUG_27_AUG[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_27_HU[POCET_JAZYKOV + 1] =
@@ -15446,8 +15446,8 @@ const char* text_AUG_28_AUG[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_29[POCET_JAZYKOV + 1] =
@@ -15510,8 +15510,8 @@ const char* text_AUG_30_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_30_OPRAEM[POCET_JAZYKOV + 1] =
@@ -15526,8 +15526,8 @@ const char* text_AUG_30_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_AUG_31_HU[POCET_JAZYKOV + 1] =
@@ -15561,8 +15561,8 @@ const char* text_SEP_01_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_01_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -15577,8 +15577,8 @@ const char* text_SEP_01_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Margrétar af hinu alhelga hjarta Jesú, meyjar",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_02_CM[POCET_JAZYKOV + 1] =
@@ -15593,8 +15593,8 @@ const char* text_SEP_02_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_02_SJ[POCET_JAZYKOV + 1] =
@@ -15609,8 +15609,8 @@ const char* text_SEP_02_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_02_1_OP[POCET_JAZYKOV + 1] =
@@ -15625,8 +15625,8 @@ const char* text_SEP_02_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_02_2_OP[POCET_JAZYKOV + 1] =
@@ -15641,8 +15641,8 @@ const char* text_SEP_02_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_02_1_OFM[POCET_JAZYKOV + 1] =
@@ -15657,13 +15657,13 @@ const char* text_SEP_02_1_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_02_2_OFM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Apolinára z Posatu, kňaza, člena 1. rádu, " HTML_LINE_BREAK "a spoločníkov, mučeníkov",
+	"Bl. Apolinára z Posat, kňaza, člena 1. rádu, " HTML_LINE_BREAK "a spoločníkov, mučeníkov",
 	"Bl. Apolináře z Posatu, kněze, a druhů, mučedníků",
 	"",
 	"",
@@ -15673,8 +15673,8 @@ const char* text_SEP_02_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_03[POCET_JAZYKOV + 1] =
@@ -15721,8 +15721,8 @@ const char* text_SEP_04_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_04_OFM[POCET_JAZYKOV + 1] =
@@ -15737,8 +15737,8 @@ const char* text_SEP_04_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_04_OSU[POCET_JAZYKOV + 1] =
@@ -15753,8 +15753,8 @@ const char* text_SEP_04_OSU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_05[POCET_JAZYKOV + 1] =
@@ -15785,8 +15785,8 @@ const char* text_SEP_05_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_06_SK[POCET_JAZYKOV + 1] =
@@ -15817,8 +15817,8 @@ const char* text_SEP_06_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_06_2_OP[POCET_JAZYKOV + 1] =
@@ -15833,8 +15833,8 @@ const char* text_SEP_06_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_07[POCET_JAZYKOV + 1] =
@@ -15849,8 +15849,8 @@ const char* text_SEP_07[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_07_OP[POCET_JAZYKOV + 1] =
@@ -15865,8 +15865,8 @@ const char* text_SEP_07_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_07_SJ[POCET_JAZYKOV + 1] =
@@ -15881,8 +15881,8 @@ const char* text_SEP_07_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_08[POCET_JAZYKOV + 1] =
@@ -15945,8 +15945,8 @@ const char* text_SEP_09_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_10_SJ[POCET_JAZYKOV + 1] =
@@ -15961,8 +15961,8 @@ const char* text_SEP_10_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_10_CZ[POCET_JAZYKOV + 1] =
@@ -15993,8 +15993,8 @@ const char* text_SEP_11_CSSR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_11_CM[POCET_JAZYKOV + 1] =
@@ -16009,8 +16009,8 @@ const char* text_SEP_11_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_11_OCD[POCET_JAZYKOV + 1] =
@@ -16025,8 +16025,8 @@ const char* text_SEP_11_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Maríu af Jesú, meyjar",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_11_OFM[POCET_JAZYKOV + 1] =
@@ -16041,8 +16041,8 @@ const char* text_SEP_11_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_12[POCET_JAZYKOV + 1] =
@@ -16073,8 +16073,8 @@ const char* text_SEP_12_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_12_SCHP[POCET_JAZYKOV + 1] =
@@ -16089,8 +16089,8 @@ const char* text_SEP_12_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_13[POCET_JAZYKOV + 1] =
@@ -16249,8 +16249,8 @@ const char* text_SEP_17_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_17_OFM[POCET_JAZYKOV + 1] =
@@ -16265,8 +16265,8 @@ const char* text_SEP_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_17_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -16281,8 +16281,8 @@ const char* text_SEP_17_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Alberts frá Jerúsalem, biskups",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_17_SCHP[POCET_JAZYKOV + 1] =
@@ -16297,8 +16297,8 @@ const char* text_SEP_17_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_18_OFM[POCET_JAZYKOV + 1] =
@@ -16313,8 +16313,8 @@ const char* text_SEP_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_18_OP[POCET_JAZYKOV + 1] =
@@ -16330,7 +16330,7 @@ const char* text_SEP_18_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"San Juan Macías, religioso",
-	"az_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_18_OPRAEM[POCET_JAZYKOV + 1] =
@@ -16345,8 +16345,8 @@ const char* text_SEP_18_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_19[POCET_JAZYKOV + 1] =
@@ -16377,8 +16377,8 @@ const char* text_SEP_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_19_OP[POCET_JAZYKOV + 1] =
@@ -16393,8 +16393,8 @@ const char* text_SEP_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_19_SCHP[POCET_JAZYKOV + 1] =
@@ -16409,8 +16409,8 @@ const char* text_SEP_19_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_20[POCET_JAZYKOV + 1] =
@@ -16457,8 +16457,8 @@ const char* text_SEP_20_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_20_2_OP[POCET_JAZYKOV + 1] =
@@ -16473,8 +16473,8 @@ const char* text_SEP_20_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_21[POCET_JAZYKOV + 1] =
@@ -16511,7 +16511,7 @@ const char* text_SEP_22_SK[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_22_OFM[POCET_JAZYKOV + 1] =
 {
-	"Sv. Ignáca zo Santhie, kňaza, člena 1. rádu",
+	"Sv. Ignáca zo Santhia, kňaza, člena 1. rádu",
 	"Sv. Ignáce ze Santhi&#224;, kněze", // &agrave;
 	"",
 	"",
@@ -16521,8 +16521,8 @@ const char* text_SEP_22_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_22_SDB[POCET_JAZYKOV + 1] =
@@ -16537,8 +16537,8 @@ const char* text_SEP_22_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_22_SCHP[POCET_JAZYKOV + 1] =
@@ -16553,8 +16553,8 @@ const char* text_SEP_22_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_23[POCET_JAZYKOV + 1] =
@@ -16585,8 +16585,8 @@ const char* text_SEP_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_24_SK[POCET_JAZYKOV + 1] =
@@ -16633,8 +16633,8 @@ const char* text_SEP_24_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_24_OFM[POCET_JAZYKOV + 1] =
@@ -16649,8 +16649,8 @@ const char* text_SEP_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_24_1_HU[POCET_JAZYKOV + 1] =
@@ -16697,8 +16697,8 @@ const char* text_SEP_25_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_26[POCET_JAZYKOV + 1] =
@@ -16729,24 +16729,24 @@ const char* text_SEP_26_CSSR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_26_OFM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Aurélia z Vinalesy, kňaza, a spoločníkov, " HTML_LINE_BREAK "mučeníkov, členov 1. rádu",
+	"Bl. Aurélia z Vinalesy, kňaza, a spoločníkov, " HTML_LINE_BREAK "mučeníkov, členov 1. rádu", // SK: text_NOV_06_OFM
 	"Bl. Aurelia z Vinalesy (Ample-Alcaide), kněze, a druhů, mučedníků",
 	"",
 	"",
 	"",
 	"",
-	"Sabrani Szent Elzeár és Boldog Delphina, házastársak a III. Rendből", // HU: different saints! -- HU: removed 2024-02-22
+	"", // HU: different saints; was: "Sabrani Szent Elzeár és Boldog Delphina, házastársak a III. Rendből"; removed 2024-02-22
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_27[POCET_JAZYKOV + 1] =
@@ -16777,8 +16777,8 @@ const char* text_SEP_27_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_28[POCET_JAZYKOV + 1] =
@@ -16841,8 +16841,8 @@ const char* text_SEP_28_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_28_2_OP[POCET_JAZYKOV + 1] =
@@ -16857,8 +16857,8 @@ const char* text_SEP_28_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_28_OFM[POCET_JAZYKOV + 1] =
@@ -16873,8 +16873,8 @@ const char* text_SEP_28_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_SEP_29[POCET_JAZYKOV + 1] =
@@ -16940,8 +16940,8 @@ const char* text_OKT_01_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_02[POCET_JAZYKOV + 1] =
@@ -16989,7 +16989,7 @@ const char* text_OKT_03_ES_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"San Francisco de Borja, presbítero",
-	"az_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_03_OP[POCET_JAZYKOV + 1] =
@@ -17004,8 +17004,8 @@ const char* text_OKT_03_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_04[POCET_JAZYKOV + 1] =
@@ -17036,8 +17036,8 @@ const char* text_OKT_04_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_04_OP[POCET_JAZYKOV + 1] =
@@ -17052,8 +17052,8 @@ const char* text_OKT_04_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_05[POCET_JAZYKOV + 1] =
@@ -17116,8 +17116,8 @@ const char* text_OKT_05_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_05_OFM[POCET_JAZYKOV + 1] =
@@ -17132,8 +17132,8 @@ const char* text_OKT_05_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_05_SDB[POCET_JAZYKOV + 1] =
@@ -17148,8 +17148,8 @@ const char* text_OKT_05_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_05_CSSR[POCET_JAZYKOV + 1] =
@@ -17164,8 +17164,8 @@ const char* text_OKT_05_CSSR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_06[POCET_JAZYKOV + 1] =
@@ -17196,8 +17196,8 @@ const char* text_OKT_06_HU_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_06_OP[POCET_JAZYKOV + 1] =
@@ -17212,8 +17212,8 @@ const char* text_OKT_06_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_07[POCET_JAZYKOV + 1] =
@@ -17260,8 +17260,8 @@ const char* text_OKT_08_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_08_2_OP[POCET_JAZYKOV + 1] =
@@ -17276,8 +17276,8 @@ const char* text_OKT_08_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_09_1[POCET_JAZYKOV + 1] =
@@ -17325,7 +17325,7 @@ const char* text_OKT_09_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"San Luis Bertrán, presbítero", // ES: 08OKT + 10OKT
-	"az_text",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_10_SK[POCET_JAZYKOV + 1] =
@@ -17356,8 +17356,8 @@ const char* text_OKT_10_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_10_HU_OFM[POCET_JAZYKOV + 1] =
@@ -17372,8 +17372,8 @@ const char* text_OKT_10_HU_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_11[POCET_JAZYKOV + 1] =
@@ -17436,8 +17436,8 @@ const char* text_OKT_11_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_12_CZ[POCET_JAZYKOV + 1] =
@@ -17484,8 +17484,8 @@ const char* text_OKT_12_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_12_SJ[POCET_JAZYKOV + 1] =
@@ -17500,8 +17500,8 @@ const char* text_OKT_12_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_13_ES[POCET_JAZYKOV + 1] =
@@ -17522,7 +17522,7 @@ const char* text_OKT_13_ES[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_13_OFM[POCET_JAZYKOV + 1] =
 {
-	"Bl. Honoráta Kożmińského, kňaza, člena 1. rádu",
+	"Bl. Honoráta Kožmiňského, kňaza, člena 1. rádu", // Kożmińského
 	"Bl. Honoráta Kožmiňského, kněze",
 	"",
 	"",
@@ -17532,8 +17532,8 @@ const char* text_OKT_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_13_OP[POCET_JAZYKOV + 1] =
@@ -17548,8 +17548,8 @@ const char* text_OKT_13_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_13_SDB[POCET_JAZYKOV + 1] =
@@ -17564,8 +17564,8 @@ const char* text_OKT_13_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_13_OPRAEM[POCET_JAZYKOV + 1] =
@@ -17580,8 +17580,8 @@ const char* text_OKT_13_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_14[POCET_JAZYKOV + 1] =
@@ -17628,8 +17628,8 @@ const char* text_OKT_14_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_14_OP[POCET_JAZYKOV + 1] =
@@ -17644,8 +17644,8 @@ const char* text_OKT_14_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_15[POCET_JAZYKOV + 1] =
@@ -17676,8 +17676,8 @@ const char* text_OKT_15_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Teresu af Jesú, meyjar og kirkjufræðara",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_16_1[POCET_JAZYKOV + 1] =
@@ -17724,8 +17724,8 @@ const char* text_OKT_16_3[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_16_CSSR[POCET_JAZYKOV + 1] =
@@ -17740,8 +17740,8 @@ const char* text_OKT_16_CSSR[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_16_SCHP[POCET_JAZYKOV + 1] =
@@ -17756,8 +17756,8 @@ const char* text_OKT_16_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_17[POCET_JAZYKOV + 1] =
@@ -17836,8 +17836,8 @@ const char* text_OKT_19_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_19_OP[POCET_JAZYKOV + 1] =
@@ -17852,8 +17852,8 @@ const char* text_OKT_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_19_ES_OFM[POCET_JAZYKOV + 1] =
@@ -17884,8 +17884,8 @@ const char* text_OKT_20_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] =
@@ -17900,8 +17900,8 @@ const char* text_OKT_20_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_21_CZ_HU[POCET_JAZYKOV + 1] =
@@ -17932,8 +17932,8 @@ const char* text_OKT_21_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_21_OP[POCET_JAZYKOV + 1] =
@@ -17948,13 +17948,13 @@ const char* text_OKT_21_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_21_OFMCAP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Márie Laurencie Longo, rehoľníčky",
+	"Bl. Márie Laurencie Longo, rehoľníčky", // Bl. Lorenzy Longo, klarisky kapucínky
 	"Bl. Marie Laurencie Longo, řeholnice a zakladatelky", // br. Petr, doplněno dle italské předlohy
 	"",
 	"",
@@ -17964,8 +17964,8 @@ const char* text_OKT_21_OFMCAP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_21_OSU[POCET_JAZYKOV + 1] =
@@ -17980,8 +17980,8 @@ const char* text_OKT_21_OSU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_22[POCET_JAZYKOV + 1] =
@@ -18012,8 +18012,8 @@ const char* text_OKT_22_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_22_HU_OFM[POCET_JAZYKOV + 1] =
@@ -18028,8 +18028,8 @@ const char* text_OKT_22_HU_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_23[POCET_JAZYKOV + 1] =
@@ -18060,8 +18060,8 @@ const char* text_OKT_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_23_OSU[POCET_JAZYKOV + 1] =
@@ -18076,8 +18076,8 @@ const char* text_OKT_23_OSU[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_24[POCET_JAZYKOV + 1] =
@@ -18108,8 +18108,8 @@ const char* text_OKT_24_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_24_HU[POCET_JAZYKOV + 1] =
@@ -18140,8 +18140,8 @@ const char* text_OKT_24_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_25_SK[POCET_JAZYKOV + 1] =
@@ -18172,8 +18172,8 @@ const char* text_OKT_25[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_25_CONS[POCET_JAZYKOV + 1] =
@@ -18188,8 +18188,8 @@ const char* text_OKT_25_CONS[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_25_OP[POCET_JAZYKOV + 1] =
@@ -18204,8 +18204,8 @@ const char* text_OKT_25_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_25_OFM[POCET_JAZYKOV + 1] =
@@ -18220,8 +18220,8 @@ const char* text_OKT_25_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_26[POCET_JAZYKOV + 1] =
@@ -18236,8 +18236,8 @@ const char* text_OKT_26[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_26_OP[POCET_JAZYKOV + 1] =
@@ -18252,8 +18252,8 @@ const char* text_OKT_26_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_26_OPRAEM[POCET_JAZYKOV + 1] =
@@ -18268,8 +18268,8 @@ const char* text_OKT_26_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_26_OFM[POCET_JAZYKOV + 1] =
@@ -18284,8 +18284,8 @@ const char* text_OKT_26_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_27_SK[POCET_JAZYKOV + 1] =
@@ -18316,8 +18316,8 @@ const char* text_OKT_27_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_28[POCET_JAZYKOV + 1] =
@@ -18348,8 +18348,8 @@ const char* text_OKT_29_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_29_CZ[POCET_JAZYKOV + 1] =
@@ -18380,8 +18380,8 @@ const char* text_OKT_30_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_30_OCD[POCET_JAZYKOV + 1] =
@@ -18396,8 +18396,8 @@ const char* text_OKT_30_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. María Teresa, stofnandi reglunnar",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_30_1_OP[POCET_JAZYKOV + 1] =
@@ -18412,8 +18412,8 @@ const char* text_OKT_30_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_30_2_OP[POCET_JAZYKOV + 1] =
@@ -18428,8 +18428,8 @@ const char* text_OKT_30_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_30_CZ[POCET_JAZYKOV + 1] =
@@ -18460,8 +18460,8 @@ const char* text_OKT_31_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_31_OFMCAP[POCET_JAZYKOV + 1] =
@@ -18476,8 +18476,8 @@ const char* text_OKT_31_OFMCAP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_OKT_31_CZ[POCET_JAZYKOV + 1] =
@@ -18575,8 +18575,8 @@ const char* text_NOV_03_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_03_OFM[POCET_JAZYKOV + 1] =
@@ -18591,8 +18591,8 @@ const char* text_NOV_03_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_03_SCHP[POCET_JAZYKOV + 1] =
@@ -18607,8 +18607,8 @@ const char* text_NOV_03_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_04[POCET_JAZYKOV + 1] =
@@ -18655,8 +18655,8 @@ const char* text_NOV_05_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_05_SDB[POCET_JAZYKOV + 1] =
@@ -18671,8 +18671,8 @@ const char* text_NOV_05_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_05_OP[POCET_JAZYKOV + 1] =
@@ -18687,8 +18687,8 @@ const char* text_NOV_05_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_05_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -18703,8 +18703,8 @@ const char* text_NOV_05_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_06_ES[POCET_JAZYKOV + 1] =
@@ -18735,8 +18735,8 @@ const char* text_NOV_06_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_06_OP[POCET_JAZYKOV + 1] =
@@ -18751,8 +18751,8 @@ const char* text_NOV_06_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_06_SJ[POCET_JAZYKOV + 1] =
@@ -18767,8 +18767,8 @@ const char* text_NOV_06_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_06_1_OFMCAP[POCET_JAZYKOV + 1] =
@@ -18783,8 +18783,8 @@ const char* text_NOV_06_1_OFMCAP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_06_2_OFMCAP[POCET_JAZYKOV + 1] =
@@ -18799,8 +18799,8 @@ const char* text_NOV_06_2_OFMCAP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_06_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -18815,8 +18815,8 @@ const char* text_NOV_06_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_07_OCD[POCET_JAZYKOV + 1] =
@@ -18831,8 +18831,8 @@ const char* text_NOV_07_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_07_OCARM[POCET_JAZYKOV + 1] =
@@ -18847,8 +18847,8 @@ const char* text_NOV_07_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_07_OP[POCET_JAZYKOV + 1] =
@@ -18863,8 +18863,8 @@ const char* text_NOV_07_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_07_SJ[POCET_JAZYKOV + 1] =
@@ -18879,8 +18879,8 @@ const char* text_NOV_07_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_08_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -18895,8 +18895,8 @@ const char* text_NOV_08_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Elísabetar af Þrenningunni, meyjar",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_08_OFM[POCET_JAZYKOV + 1] =
@@ -18911,8 +18911,8 @@ const char* text_NOV_08_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_08_OP[POCET_JAZYKOV + 1] =
@@ -18927,8 +18927,8 @@ const char* text_NOV_08_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_09[POCET_JAZYKOV + 1] =
@@ -19007,8 +19007,8 @@ const char* text_NOV_13_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_13_SJ[POCET_JAZYKOV + 1] =
@@ -19023,8 +19023,8 @@ const char* text_NOV_13_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"Св. Станіслава Косткі, законніка", // BY: 18SEP
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_13_OFM[POCET_JAZYKOV + 1] =
@@ -19039,8 +19039,8 @@ const char* text_NOV_13_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_13_CZ[POCET_JAZYKOV + 1] =
@@ -19103,8 +19103,8 @@ const char* text_NOV_13_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_14_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -19119,8 +19119,8 @@ const char* text_NOV_14_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Allrasálnamessa Karmelreglunnar",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_14_SJ[POCET_JAZYKOV + 1] =
@@ -19135,8 +19135,8 @@ const char* text_NOV_14_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_14_OPRAEM[POCET_JAZYKOV + 1] =
@@ -19151,8 +19151,8 @@ const char* text_NOV_14_OPRAEM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_14_1_OP[POCET_JAZYKOV + 1] =
@@ -19167,8 +19167,8 @@ const char* text_NOV_14_1_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_14_2_OP[POCET_JAZYKOV + 1] =
@@ -19183,8 +19183,8 @@ const char* text_NOV_14_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_14_OFM[POCET_JAZYKOV + 1] =
@@ -19199,8 +19199,8 @@ const char* text_NOV_14_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_15[POCET_JAZYKOV + 1] =
@@ -19231,8 +19231,8 @@ const char* text_NOV_15_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_15_SDB[POCET_JAZYKOV + 1] =
@@ -19247,8 +19247,8 @@ const char* text_NOV_15_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_16_1[POCET_JAZYKOV + 1] =
@@ -19311,8 +19311,8 @@ const char* text_NOV_16_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_17[POCET_JAZYKOV + 1] =
@@ -19343,8 +19343,8 @@ const char* text_NOV_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_18[POCET_JAZYKOV + 1] =
@@ -19375,8 +19375,8 @@ const char* text_NOV_18_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_18_SCHP[POCET_JAZYKOV + 1] =
@@ -19391,8 +19391,8 @@ const char* text_NOV_18_SCHP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_19_OFM[POCET_JAZYKOV + 1] =
@@ -19407,8 +19407,8 @@ const char* text_NOV_19_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_19_OP[POCET_JAZYKOV + 1] =
@@ -19423,8 +19423,8 @@ const char* text_NOV_19_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_19_2_OP[POCET_JAZYKOV + 1] =
@@ -19439,8 +19439,8 @@ const char* text_NOV_19_2_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_19_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -19455,8 +19455,8 @@ const char* text_NOV_19_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Rafaels Kalinowski, prests",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_20_SK[POCET_JAZYKOV + 1] =
@@ -19487,8 +19487,8 @@ const char* text_NOV_20_SK_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_20_BY[POCET_JAZYKOV + 1] =
@@ -19519,8 +19519,8 @@ const char* text_NOV_20_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_21[POCET_JAZYKOV + 1] =
@@ -19599,8 +19599,8 @@ const char* text_NOV_23_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_24[POCET_JAZYKOV + 1] =
@@ -19631,8 +19631,8 @@ const char* text_NOV_24_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_25[POCET_JAZYKOV + 1] =
@@ -19679,8 +19679,8 @@ const char* text_NOV_25_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_25_OCD[POCET_JAZYKOV + 1] =
@@ -19695,8 +19695,8 @@ const char* text_NOV_25_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_26_SJ[POCET_JAZYKOV + 1] =
@@ -19711,8 +19711,8 @@ const char* text_NOV_26_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_26_OFM[POCET_JAZYKOV + 1] =
@@ -19727,8 +19727,8 @@ const char* text_NOV_26_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_27_OFM[POCET_JAZYKOV + 1] =
@@ -19743,8 +19743,8 @@ const char* text_NOV_27_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_27_OP[POCET_JAZYKOV + 1] =
@@ -19759,8 +19759,8 @@ const char* text_NOV_27_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_27_CM[POCET_JAZYKOV + 1] =
@@ -19775,8 +19775,8 @@ const char* text_NOV_27_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_28_CM[POCET_JAZYKOV + 1] =
@@ -19791,8 +19791,8 @@ const char* text_NOV_28_CM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_28_OFM[POCET_JAZYKOV + 1] =
@@ -19807,8 +19807,8 @@ const char* text_NOV_28_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_28_HU[POCET_JAZYKOV + 1] =
@@ -19839,8 +19839,8 @@ const char* text_NOV_29_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_29_OFM[POCET_JAZYKOV + 1] =
@@ -19855,8 +19855,8 @@ const char* text_NOV_29_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_29_OCD_OCARM[POCET_JAZYKOV + 1] =
@@ -19871,8 +19871,8 @@ const char* text_NOV_29_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_NOV_30[POCET_JAZYKOV + 1] =
@@ -19894,6 +19894,22 @@ const char* text_NOV_30[POCET_JAZYKOV + 1] =
 
 // --------------- 12 december ---------------
 
+const char* text_DEC_01_CZ[POCET_JAZYKOV + 1] =
+{
+	"Sv. Edmunda Campiona, kňaza a mučeníka",
+	"Sv. Edmunda Kampiána, kněze a mučedníka",
+	"",
+	"",
+	"",
+	"Sv. Edmunda Kampiána, kněze a mučedníka",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_DEC_01_SJ[POCET_JAZYKOV + 1] =
 {
 	"Sv. Edmunda Campiona, Róberta Southwella a ich spoločníkov, mučeníkov",
@@ -19906,8 +19922,8 @@ const char* text_DEC_01_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_01_OP[POCET_JAZYKOV + 1] =
@@ -19918,22 +19934,6 @@ const char* text_DEC_01_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Bl. Jana z Vercelli, kněze",
-	"",
-	"",
-	"",
-	"",
-	"es_text",
-	"az_text",
-	/* STRING_2_FOR_NEW_LANGUAGE */
-};
-const char* text_DEC_01_CZ[POCET_JAZYKOV + 1] =
-{
-	"Sv. Edmunda Campiona, kňaza a mučeníka",
-	"Sv. Edmunda Kampiána, kněze a mučedníka",
-	"",
-	"",
-	"",
-	"Sv. Edmunda Kampiána, kněze a mučedníka",
 	"",
 	"",
 	"",
@@ -19970,8 +19970,8 @@ const char* text_DEC_02_1_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_02_2_OFM[POCET_JAZYKOV + 1] =
@@ -19986,8 +19986,8 @@ const char* text_DEC_02_2_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_03[POCET_JAZYKOV + 1] =
@@ -20018,8 +20018,8 @@ const char* text_DEC_03_SJ[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_04[POCET_JAZYKOV + 1] =
@@ -20050,8 +20050,8 @@ const char* text_DEC_04_2[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Hl. Barböru, meyjar og píslarvotts",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_05_SDB[POCET_JAZYKOV + 1] =
@@ -20066,8 +20066,8 @@ const char* text_DEC_05_SDB[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_05_OCARM[POCET_JAZYKOV + 1] =
@@ -20082,8 +20082,8 @@ const char* text_DEC_05_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_06[POCET_JAZYKOV + 1] =
@@ -20162,8 +20162,8 @@ const char* text_DEC_09_CSA[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_09_OP[POCET_JAZYKOV + 1] =
@@ -20178,8 +20178,8 @@ const char* text_DEC_09_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_10[POCET_JAZYKOV + 1] =
@@ -20226,8 +20226,8 @@ const char* text_DEC_10_OFMCAP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_11[POCET_JAZYKOV + 1] =
@@ -20258,8 +20258,8 @@ const char* text_DEC_11_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_12[POCET_JAZYKOV + 1] =
@@ -20322,8 +20322,8 @@ const char* text_DEC_14_OCD_OCARM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_15_HU[POCET_JAZYKOV + 1] =
@@ -20354,8 +20354,8 @@ const char* text_DEC_16_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_16_OCD[POCET_JAZYKOV + 1] =
@@ -20370,8 +20370,8 @@ const char* text_DEC_16_OCD[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_21[POCET_JAZYKOV + 1] =
@@ -20418,8 +20418,8 @@ const char* text_DEC_22_OP[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"es_text",
-	"az_text",
+	"",
+	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 const char* text_DEC_23[POCET_JAZYKOV + 1] =
