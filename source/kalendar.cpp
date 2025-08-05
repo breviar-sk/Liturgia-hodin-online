@@ -38069,6 +38069,13 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 		_global_poradie_svaty = 1;
 		poradie_svaty = 1;
 
+		if ((pocet > 1) && (_je_global_svaty_i_sviatok_alebo_slavnost(2))) {
+			pocet = 2; // e. g. SK, June 13th, 2026 | ToDo: consider another celebration of higher level for poradie_svaty >= 3
+		}
+		else {
+			pocet = 1; // override | if there were local celebration with higher level as poradie_svaty == 2, pocet should be 2...
+		}
+
 		if (poradie_svaty == 1) {
 			// definovanie parametrov pre modlitbu
 			if (query_type != PRM_DETAILY) {
@@ -38169,6 +38176,13 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 		Log("špeciálne nastavenie: _global_poradie_svaty = 1;\n");
 		_global_poradie_svaty = 1;
 		poradie_svaty = 1;
+
+		if ((pocet > 1) && (_je_global_svaty_i_sviatok_alebo_slavnost(2))) {
+			pocet = 2; // ToDo: consider another celebration of higher level for poradie_svaty >= 3
+		}
+		else {
+			pocet = 1; // override (e. g. May 25th, 2026, with 3 free memories) | if there were local celebration with higher level as poradie_svaty == 2, pocet should be 2...
+		}
 
 		if (poradie_svaty == 1) {
 			// definovanie parametrov pre modlitbu
