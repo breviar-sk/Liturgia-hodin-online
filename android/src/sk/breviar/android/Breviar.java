@@ -280,9 +280,9 @@ public class Breviar extends AppCompatActivity
       // Initialize server very early, to avoid races
       initServer(opts);
 
+      requestWindowFeature(Window.FEATURE_NO_TITLE);
       super.onCreate(savedInstanceState);
       WindowCompat.enableEdgeToEdge(getWindow());
-      requestWindowFeature(Window.FEATURE_NO_TITLE);
 
       setContentView(R.layout.breviar);
 
