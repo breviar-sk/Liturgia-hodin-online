@@ -636,7 +636,7 @@ const char* nazov_slavenia_lokal[] =
 , "len v Spišskej diecéze"                                                                                       // LOKAL_SLAV_SPIS
 , "len v Rožňavskej diecéze"                                                                                     // LOKAL_SLAV_ROZNAVA
 , "len v Trnavskej arcidiecéze"                                                                                  // LOKAL_SLAV_TRNAVA
-, "len v Dóme sv. Martina v Bratislave"                                                                          // LOKAL_SLAV_DOM_SV_MARTINA
+, "len v Katedrále sv. Martina v Bratislave"                                                                     // LOKAL_SLAV_DOM_SV_MARTINA | bolo: "len v Dóme sv. Martina v Bratislave"
 , "A szlovákiai egyházmegyékben: emléknap"                                                                       // LOKAL_SLAV_SZLOVAKIA_EMLEKNAP_HU
 , "v Banskobystrickej diecéze sviatok hlavného patróna"                                                          // LOKAL_SLAV_BYSTRICA_PATRON
 , "v Trnavskej arcidiecéze a v Banskobystrickej, " HTML_LINE_BREAK "Nitrianskej a Rožňavskej diecéze"            // LOKAL_SLAV_TT_BB_NR_RO
@@ -7336,7 +7336,7 @@ const char* text_JAN_30_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_JAN_31[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána Boska, kňaza", // Direktórium 2012, str. 72, má: 'Bosca'
+	"Sv. Jána Bosca, kňaza", // Direktórium 2012, str. 72, má: 'Bosca'; chvíľu bolo: 'Boska'; Direktórium 2026 má 'Bosca'
 	"Sv. Jana Boska, kněze",
 	"",
 	"S. Ioannis Bosco, presbyteri",
@@ -7819,7 +7819,7 @@ const char* text_FEB_13_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_FEB_14[POCET_JAZYKOV + 1] =
 {
-	"Sv. Cyrila, mnícha, a Metoda, biskupa", // (na Slovensku sa slávi 5. júla) | odstránený popis "patrónov Európy"
+	"Sv. Cyrila, mnícha, a sv. Metoda, biskupa", // (na Slovensku sa slávi 5. júla) | odstránený popis "patrónov Európy" pre sviatok hlavných patrónov ZA diecézy
 	"(slaví se 5. června)",
 	"",
 	"Ss. Cyrilli, monachi, et Methodii, episcoporum",
@@ -11295,7 +11295,7 @@ const char* text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1] =
 };
 const char* text_SPOMIENKA_PM_V_SOBOTU[POCET_JAZYKOV + 1] =
 {
-	"Spomienka Panny Márie v sobotu",
+	"Spomienka Prebl. Panny Márie v sobotu", // Direktórium 2026: 'Prebl. Panny Márie v sobotu'
 	"Sobotní památka Panny Marie",
 	"",
 	"Memoria S. Mariæ in sabbato",
