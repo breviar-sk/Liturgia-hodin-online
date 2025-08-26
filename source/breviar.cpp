@@ -4122,6 +4122,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		|| (equals(paramname, PARAM_VIGILIA))
 		|| (equals(paramname, PARAM_ALT_HYMNUS))
 		|| (equals(paramname, PARAM_ALT_HYMNUS_OCR_34))
+		|| (equals(paramname, PARAM_ALT_HYMNUS_POST_5))
 		|| (equals(paramname, PARAM_ALT_HYMNUS_MULTI))
 		|| (equals(paramname, PARAM_ALT_CITANIE2_MULTI))
 		|| (equals(paramname, PARAM_ALT_CITANIE1_MULTI))
@@ -4576,8 +4577,30 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 			podmienka = podmienka && !su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(_global_modlitba);
 
-			sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_OCR34Hymns_ordinary[_global_jazyk]);
+			sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_Hymns_ordinary[_global_jazyk]);
 			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_OCR34Hymns[_global_jazyk]);
+		}
+		else if (equals(paramname, PARAM_ALT_HYMNUS_POST_5)) {
+			opt = OPT_5_ALTERNATIVES;
+			bit = BIT_OPT_5_POST_5_HYMNS;
+
+			podmienka = podmienka && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES));
+
+			Log("podmienka == %d pred kontrolou je_5_post [_global_modlitba == %d]...\n", podmienka, _global_modlitba);
+
+			podmienka = podmienka && je_5_post;
+
+			Log("podmienka == %d pred kontrolou _global_modlitba == %s... [PARAM_ALT_HYMNUS_POST_5]\n", podmienka, nazov_modlitby(_global_modlitba));
+
+			Log("special hymn only for mpc, mrch, mv...\n");
+			podmienka = podmienka && ((_global_modlitba == MODL_POSV_CITANIE) || (_global_modlitba == MODL_RANNE_CHVALY) || (_global_modlitba == MODL_VESPERY));
+
+			Log("podmienka == %d po kontrole _global_modlitba == %s v závislosti od jazyka... [PARAM_ALT_HYMNUS_POST_5]\n", podmienka, nazov_modlitby(_global_modlitba));
+
+			podmienka = podmienka && !su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(_global_modlitba);
+
+			sprintf(popis_show, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_Hymns_ordinary[_global_jazyk]);
+			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_5_Lent5Hymns[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_ALT_HYMNUS)) {
 			opt = OPT_5_ALTERNATIVES;
@@ -4623,6 +4646,11 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 
 				if (je_34_ocr && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS)) {
 					// do not display this switch for 34. week per annum (when BIT_OPT_5_OCR_34_HYMNS is switched ON)
+					podmienka = NIE;
+				}
+
+				if (je_5_post && isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POST_5_HYMNS)) {
+					// do not display this switch for 5. week of Lent (when BIT_OPT_5_POST_5_HYMNS is switched ON)
 					podmienka = NIE;
 				}
 			}
@@ -8492,6 +8520,9 @@ void xml_export_options(void) {
 				case 19: // BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT_SLASH(XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA)"%ld" ELEM_END(XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA) "\n", BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, html_text_opt_5_ZelStvPsalm_2STV[_global_jazyk], html_text_opt_5_ZelStvPsalm_3PI[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA)));
 					break;
+				case 20: // BIT_OPT_5_POST_5_HYMNS
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_5_LENT_5_HYMNS)"%ld" ELEM_END(XML_BIT_OPT_5_LENT_5_HYMNS) "\n", BIT_OPT_5_POST_5_HYMNS, STR_FORCE_BIT_OPT_5_POST_5_HYMNS, html_text_opt_5_Lent5Hymns[_global_jazyk], (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POST_5_HYMNS)));
+					break;
 				} // switch(j)
 			}// for j
 			Export(ELEM_END(XML_OPT_5_ALTERNATIVES) "\n");
@@ -11583,6 +11614,14 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 
 				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_OCR_34_HYMNS
 				_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS, STR_FORCE_BIT_OPT_5_OCR_34_HYMNS, html_text_opt_5_OCR34Hymns[_global_jazyk], html_text_opt_5_OCR34Hymns_explain[_global_jazyk]);
+
+				// Pôstne obdobie, 5. týždeň
+				Export(HTML_CRLF_LINE_BREAK);
+				sprintf(pom3, html_text_tyzden_cislo[_global_jazyk], 5); // pom2 bolo nastavené funkciou prilep_request_options() a používa sa v ďalšom; použiť môžeme pom3
+				Export("<" HTML_SPAN_BOLD_TOOLTIP ">%s, %s" HTML_SPAN_END, nazov_obdobia(OBD_POSTNE_I), nazov_obdobia(OBD_POSTNE_I), pom3);
+
+				// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_5_POST_5_HYMNS
+				_export_main_formular_checkbox(OPT_5_ALTERNATIVES, BIT_OPT_5_POST_5_HYMNS, STR_FORCE_BIT_OPT_5_POST_5_HYMNS, html_text_opt_5_Lent5Hymns[_global_jazyk], html_text_opt_5_Lent5Hymns_explain[_global_jazyk]);
 			}
 			else
 			{
@@ -11642,6 +11681,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_RCH)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_HYMNUS_VN_VESP)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_OCR_34_HYMNS, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_POST_5_HYMNS, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_POST_5_HYMNS)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_CZ_HYMNY_VYBER)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_POPOL_STREDA_PSALMODIA)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, (isGlobalOptionForce(OPT_5_ALTERNATIVES, BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA)) ? ANO : NIE);

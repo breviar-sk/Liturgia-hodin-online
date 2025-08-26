@@ -574,6 +574,7 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define KEYWORD_END     "END"
 #define KEYWORD_MULTI   "MULTI"
 #define KEYWORD_OCR_34  "OCR-34"
+#define KEYWORD_POST_5  "POST-5"
 #define KEYWORD_INVITAT_COMMON          "INVITAT-COMMON"
 #define KEYWORD_INVITAT_PSALM_SIMPLE    "INVITAT-PSALM"
 #define KEYWORD_INVITAT_PSALM(i)        KEYWORD_INVITAT_PSALM_SIMPLE i
@@ -688,6 +689,7 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_RUBRIKA                       "RUBRIKA"
 
 #define PARAM_ALT_HYMNUS_OCR_34             PARAM_ALT_HYMNUS "-" KEYWORD_OCR_34
+#define PARAM_ALT_HYMNUS_POST_5             PARAM_ALT_HYMNUS "-" KEYWORD_POST_5
 
 // multiple alternatives
 #define PARAM_ALT_HYMNUS_MULTI              PARAM_ALT_HYMNUS "-" KEYWORD_MULTI
@@ -1684,7 +1686,7 @@ extern unsigned long long _global_opt_4_offline_export[POCET_OPT_4_OFFLINE_EXPOR
 #define BIT_OPT_4_EXCLUDE_MCD_KOMPLET        4 // či sa pri generovaní tlačidla pre predchádzajúcu/nasledujúcu modlitbu majú preskočiť odkazy na MCD a kompletórium v metóde _buttons_prev_up_next() [default: 0 = nie; treba nastavovať kvôli ľubovoľným spomienkam do batch módu]
 #define BIT_OPT_4_DO_NOT_USE_BUTTON          8 // whether do not use HTML_BUTTON_BEGIN..HTML_BUTTON_END for offline HTML export
 
-#define POCET_OPT_5_ALTERNATIVES            20 // jednotlivé komponenty option 5 -- bity pre force option 5
+#define POCET_OPT_5_ALTERNATIVES            21 // jednotlivé komponenty option 5 -- bity pre force option 5
 extern unsigned long long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_HYMNUS_KOMPL               1 // hymnus na kompletórium (Cezročné obdobie, A/B)
 #define BIT_OPT_5_HYMNUS_PC                  2 // hymnus pre posvätné čítanie (Cezročné obdobie, I./II.)
@@ -1706,6 +1708,7 @@ extern unsigned long long _global_opt_5_alternatives[POCET_OPT_5_ALTERNATIVES];
 #define BIT_OPT_5_OCR_34_HYMNS          131072 // different (special) hymns for 34th week per annum
 #define BIT_OPT_5_KOMPLETORIUM_OKTAVA   262144 // prvé alebo druhé nedeľné kompletórium (pre Veľkonočnú oktávu a Oktávu Narodenia Pána)
 #define BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA  524288 // psalmódia pre posvätné čítanie štvrtka vo Svätom týždni (default: štvrtok 2. týždňa žaltára; možnosť zvoliť z piatka 3. týždňa žaltára)
+#define BIT_OPT_5_POST_5_HYMNS         1048576 // different hymns for 5th week of Lent (taken from Holy Week)
 
 #define POCET_OPT_6_ALTERNATIVES_MULTI       11 // count equals to the highest PLACE_OPT_6_... used
 extern unsigned long long _global_opt_6_alternatives_multi[POCET_OPT_6_ALTERNATIVES_MULTI]; // this is not bitwise long, but simply decimal number; each decimal place representing one value (max. possibly 0--9)

@@ -5061,12 +5061,11 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 		Log("teraz spustíme zaltar_zvazok(); - pôvodne sa púšťala s dvoma parametrami, pridaný parameter pre zväzok breviára (voláme s hodnotou ZALTAR_VSETKO)\n");
 		zaltar_zvazok(den, tyzzal, _global_den.litobd, ZALTAR_VSETKO);
 
-		Log("následne odlišný súbor pre posvätné čítania...\n");
 		file_name_litobd(litobd);
 		Log("  _file == %s\n", _file);
 
 		// Log(_global_modl_posv_citanie);
-
+		Log("následne odlišný súbor pre posvätné čítania...\n");
 		file_name_litobd_pc(litobd);
 		Log("  _file_pc == %s\n", _file_pc);
 
@@ -7448,6 +7447,8 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					// 34. týždeň Cezročného obdobia; využijeme nastavenie _file_pc_tyzden
 					if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_OCR_34_HYMNS)) {
 
+						Log("Cezročné obdobie, 34. týždeň, BIT_OPT_5_OCR_34_HYMNS...\n");
+
 						// nastavenie hymnov
 
 						modlitba = MODL_RANNE_CHVALY;
@@ -7810,6 +7811,42 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 						else {
 							set_zalm(3, MODL_RANNE_CHVALY, "z100.htm", "ZALM100");
 						}
+					}
+				}
+
+				if (tyzden == 5) {
+					// 5. týždeň Pôstneho obdobia; zmeníme _file aj _file_pc; musí byť posledné v tomto case!!!
+					if (isGlobalOption(OPT_5_ALTERNATIVES, BIT_OPT_5_POST_5_HYMNS)) {
+
+						Log("Pôstne obdobie, 5. týždeň, BIT_OPT_5_POST_5_HYMNS...\n");
+
+						// nastavenie súborov
+
+						file_name_litobd(OBD_POSTNE_II_VELKY_TYZDEN);
+						Log("  _file == %s\n", _file);
+
+						file_name_litobd_pc(OBD_POSTNE_II_VELKY_TYZDEN);
+						Log("  _file_pc == %s\n", _file_pc);
+
+						// nastavenie hymnov
+
+						modlitba = MODL_RANNE_CHVALY;
+
+						sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix_CZ_hymnus, nazov_OBD[OBD_POSTNE_II_VELKY_TYZDEN], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+						_set_hymnus(modlitba, _file, _anchor);
+						set_LOG_litobd;
+
+						modlitba = MODL_VESPERY;
+
+						sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix_CZ_hymnus, nazov_OBD[OBD_POSTNE_II_VELKY_TYZDEN], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+						_set_hymnus(modlitba, _file, _anchor);
+						set_LOG_litobd;
+
+						modlitba = MODL_POSV_CITANIE;
+
+						sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix_CZ_hymnus, nazov_OBD[OBD_POSTNE_II_VELKY_TYZDEN], pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
+						_set_hymnus(modlitba, _file_pc, _anchor);
+						set_LOG_litobd;
 					}
 				}
 			}// nie nedeľa

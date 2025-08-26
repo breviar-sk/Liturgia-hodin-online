@@ -1157,6 +1157,13 @@ extern short int query_type; // contains constants PRM_...
 #define STR_FORCE_BIT_OPT_5_OCR_34_HYMNS "of5pa34h"
 #endif
 
+#define FORCE_BIT_OPT_5_POST_5_HYMNS 154
+#ifdef LONG_PARAM_NAMES
+#define STR_FORCE_BIT_OPT_5_POST_5_HYMNS "FORCE_BIT_OPT_5_POST_5_HYMNS"
+#else
+#define STR_FORCE_BIT_OPT_5_POST_5_HYMNS "of5l5h"
+#endif
+
 #define FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA 141
 #ifdef LONG_PARAM_NAMES
 #define STR_FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA "FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA"
@@ -1469,6 +1476,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_5_OCR_34_HYMNS              "BitOpt5PerAnnum34Hymns"
 #define XML_BIT_OPT_5_KOMPLETORIUM_OKTAVA       "BitOpt5ComplOctaves"
 #define XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA  "BitOpt5MaundyThursPsalmody"
+#define XML_BIT_OPT_5_LENT_5_HYMNS              "BitOpt5Len5Hymns"
 
 // POCET_OPT_6_ALTERNATIVES_MULTI
 #define XML_PLACE_OPT_6_HYMNUS_MULTI            "PlaceOpt6HymnusMulti"

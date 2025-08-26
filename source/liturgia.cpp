@@ -1979,6 +1979,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 17: mystrcpy(str, STR_FORCE_BIT_OPT_5_OCR_34_HYMNS, SMALL); break; // BIT_OPT_5_OCR_34_HYMNS
 			case 18: mystrcpy(str, STR_FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA, SMALL); break; // BIT_OPT_5_KOMPLETORIUM_OKTAVA
 			case 19: mystrcpy(str, STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, SMALL); break; // BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA
+			case 20: mystrcpy(str, STR_FORCE_BIT_OPT_5_POST_5_HYMNS, SMALL); break; // BIT_OPT_5_POST_5_HYMNS
 			}
 		}
 		break;

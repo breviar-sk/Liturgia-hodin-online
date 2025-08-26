@@ -5118,12 +5118,12 @@ const char* html_text_opt_5_1VHymnusPC[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char* html_text_opt_5_OCR34Hymns_ordinary[POCET_JAZYKOV + 1] =
+const char* html_text_opt_5_Hymns_ordinary[POCET_JAZYKOV + 1] =
 {
 	"hymny zo žaltára",
 	"hymny ze žaltáře",
 	"",
-	"hymnos de psalterio",
+	"hymni de psalterio",
 	"",
 	"hymny ze žaltáře",
 	"a zsoltáros rész himnusza",
@@ -5140,7 +5140,7 @@ const char* html_text_opt_5_OCR34Hymns[POCET_JAZYKOV + 1] =
 	"hymny pre 34. týždeň Cezročného obdobia",
 	"hymny pro 34. týden mezidobí",
 	"",
-	"hymnos pro Hebdomada XXXIV per annum",
+	"hymni pro Hebdomada XXXIV per annum",
 	"",
 	"hymny pro 34. týden mezidobí",
 	"az évközi idő 34. hetében vehető himnusz",
@@ -5158,6 +5158,40 @@ const char* html_text_opt_5_OCR34Hymns_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"In feriis hebdomadæ XXXIV per annum sumi possunt hymni proprii.",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_5_Lent5Hymns[POCET_JAZYKOV + 1] =
+{
+	"hymny pre 5. týždeň Pôstneho obdobia zo Svätého týždňa",
+	"hymny pro 5. týden postní ze Svatého týdne",
+	"",
+	"hymni Hebdomadæ sanctæ",
+	"",
+	"hymny pro 5. týden postní ze Svatého týdne",
+	"himnuszok a nagyböjt 5. hetére a nagyhétről",
+	"ru_text",
+	"by_text",
+	"Sálmar fyrir 5. viku lönguföstu frá dymbilviku",
+	"es_text",
+	"az_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_5_Lent5Hymns_explain[POCET_JAZYKOV + 1] =
+{
+	"Vo férie 5. týždňa Pôstneho obdobia možno brať hymny zo Svätého týždňa.",
+	"",
+	"",
+	"",
 	"",
 	"",
 	"",
@@ -8305,7 +8339,7 @@ const char* text_MAR_09[POCET_JAZYKOV + 1] =
 };
 const char* text_MAR_10_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Martina z Tours",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Martina z Tours v Bratislave",
 	"",
 	"",
 	"",
@@ -11906,7 +11940,7 @@ const char* text_JUN_13[POCET_JAZYKOV + 1] =
 };
 const char* text_JUN_13_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Šebastiána",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Šebastiána v Bratislave-Krasňanoch",
 	"",
 	"",
 	"",
@@ -15468,7 +15502,7 @@ const char* text_AUG_29[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_30_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Jána Krstiteľa",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Jána Krstiteľa v Trnave",
 	"",
 	"",
 	"",
@@ -15791,7 +15825,7 @@ const char* text_SEP_05_1_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_06_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Alžbety",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Alžbety Uhorskej v Košiciach",
 	"",
 	"",
 	"",
@@ -16559,7 +16593,7 @@ const char* text_SEP_22_SCHP[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_23[POCET_JAZYKOV + 1] =
 {
-	"Sv. Pia z Pietrelčiny, kňaza",
+	"Sv. Pia z Pietrelciny, kňaza",
 	"Sv. Pia z Pietrelciny, kněze",
 	"",
 	"S. Pii de Pietrelcina, presbyteri",
@@ -16591,7 +16625,7 @@ const char* text_SEP_23_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_SEP_24_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Františka Xaverského",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Františka Xaverského v Banskej Bystrici",
 	"",
 	"",
 	"",
@@ -17330,7 +17364,7 @@ const char* text_OKT_09_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_10_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "Najsvätejšej Trojice",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "Najsvätejšej Trojice v Žiline",
 	"",
 	"",
 	"",
@@ -17794,7 +17828,7 @@ const char* text_OKT_18[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_19_1[POCET_JAZYKOV + 1] =
 {
-	"Sv. Jána de Brébeuf a Izáka Jogues, kňazov, " HTML_LINE_BREAK "a spoločníkov, mučeníkov", //  // 'sv. Izáka', podľa Direktória 2012, str. 210 nie je 'sv.'
+	"Sv. Jána de Brébeuf a Izáka Jogues, kňazov, " HTML_LINE_BREAK "a ich spoločníkov, mučeníkov", //  // 'sv. Izáka', podľa Direktória 2012, str. 210 nie je 'sv.'; Direktórium 2026 dopĺňa: 'ich' spoločníkov
 	"Sv. Jana de Brébeuf a Izáka Joguese, kněží, " HTML_LINE_BREAK "a druhů, mučedníků",
 	"",
 	"Ss. Ioannis de Brebeuf et Isaac Jogues, presbyterorum, " HTML_LINE_BREAK "et sociorum, martyrum",
@@ -18146,7 +18180,7 @@ const char* text_OKT_24_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_25_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Martina z Tours",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Martina z Tours v Spišskej Kapitule",
 	"",
 	"",
 	"",
@@ -18290,7 +18324,7 @@ const char* text_OKT_26_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_27_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "Nanebovzatia Panny Márie",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "Nanebovzatia Panny Márie v Rožňave",
 	"",
 	"",
 	"",
@@ -19461,7 +19495,7 @@ const char* text_NOV_19_OCD_OCARM[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_20_SK[POCET_JAZYKOV + 1] =
 {
-	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Emeráma",
+	"Výročie posviacky katedrálneho chrámu " HTML_LINE_BREAK "sv. Emeráma v Nitre",
 	"",
 	"",
 	"",
