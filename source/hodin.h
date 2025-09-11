@@ -604,7 +604,7 @@ const char* nazov_kalendara_smart[POCET_KALENDAROV + 1] =
 	, "general [Russia]"
 	, "ferences zsolozsmája"
 	, "pre bosých karmelitánov (OCD)"
-	, "verbiták zsolozsmája"
+	, "verbiták zsolozsmája (SVD)"
 	, "агульны [Belarus]"
 	, "pro františkány (OFM)"
 	, "pre kanonisky Notre Dame (CSA)"
