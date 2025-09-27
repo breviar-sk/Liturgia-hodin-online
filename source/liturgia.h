@@ -1167,7 +1167,7 @@ extern const char* nazov_slavenia_lokal[];
 #define LOKAL_SLAV_LEN_CECHY						113
 #define LOKAL_SLAV_HU_CONCEPTIONISTAK_UN			114
 #define LOKAL_SLAV_OCD_BOSE_KARMEL_SPOM				115 // not used
-#define LOKAL_SLAV_SLAVNOST_SDB_CZ					116
+#define LOKAL_SLAV_SLAVNOST_SDB_CZ					116 // not used
 #define LOKAL_SLAV_SPOMIENKA_CM_PARIZ				117
 #define LOKAL_SLAV_VICEB_SPOMIENKA					118
 #define LOKAL_SLAV_POSV_K_CH_MINSK					119

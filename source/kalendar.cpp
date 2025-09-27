@@ -10150,9 +10150,6 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			}
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
-			if (_global_jazyk == JAZYK_CZ) {
-				_global_svaty(1).typslav_lokal = LOKAL_SLAV_SLAVNOST_SDB_CZ;
-			}
 			mystrcpy(_global_svaty(1).meno, text_MAJ_06_SDB[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_SV_MUZ);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
