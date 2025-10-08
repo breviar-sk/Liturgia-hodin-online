@@ -28978,7 +28978,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 					_vlastna_cast_full(modlitba);
 					_set_zalmy_ofm_frantisek(modlitba);
 
-					_vlastna_cast_mcd_kcitresp_modl;
+					_vlastna_cast_mcd_ant_kcitresp_modl;
 
 					break;
 				}
