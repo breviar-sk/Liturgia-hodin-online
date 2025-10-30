@@ -1486,6 +1486,12 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba) {
 				sprintf(_anchor, "%c_%s", pismenko_modlitby(modlitba), ANCHOR_HYMNUS);
 			}
 		}
+		else if (_global_jazyk == JAZYK_ES) {
+			Log("set_hymnus(): modlitba cez deň: ES...\n");
+
+			// hymny zo žaltára (párny, nepárny)
+			sprintf(_anchor, "%c_%s_%s_%s", pismenko_modlitby(modlitba), ANCHOR_HYMNUS, ((tyzzal % 2) == 0) ? EN_WEEK_EVEN : EN_WEEK_ODD, nazov_DN_asci[den]);
+		}
 		else {
 			Log("set_hymnus(): modlitba cez deň...\n");
 
@@ -1504,8 +1510,11 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba) {
 		set_LOG_zaltar;
 	}// mcd
 	else { // nie modlitba cez deň ani kompletórium
-		// prvý a tretí, resp. druhý a štvrtý týždeň majú rovnaké hymny | pre tyzzal == 3 dá tyzzal = 1; pre tyzzal == 4 dá tyzzal = 2
-		tyzzal = set_tyzzal_1_2(tyzzal);
+		// Spanish has different set of hymns for each week of Psaltery
+		if (_global_jazyk != JAZYK_ES) {
+			// prvý a tretí, resp. druhý a štvrtý týždeň majú rovnaké hymny | pre tyzzal == 3 dá tyzzal = 1; pre tyzzal == 4 dá tyzzal = 2
+			tyzzal = set_tyzzal_1_2(tyzzal);
+		}
 
 		// odvetvenie pre posvatne citania
 		if (modlitba == MODL_POSV_CITANIE) {
@@ -1529,6 +1538,7 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba) {
 		// odvetvenie pre prvé vešpery
 		else if (modlitba == MODL_PRVE_VESPERY) {
 			Log("set_hymnus(): prvé vešpery...\n");
+			file_name_zaltar(den, tyzzal);
 			file_name_litobd_pc(OBD_CEZ_ROK);
 			// pre českú LH nie sú štandardné hymny
 			if ((_global_jazyk != JAZYK_CZ) && (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ALTERNATIVES))) {
@@ -1540,12 +1550,14 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba) {
 					anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_HYMNUS);
 					_add_special_anchor_postfix_CZ_hymnus_cezrok();
 					_set_hymnus(modlitba, _file, _anchor);
+					set_LOG_zaltar;
 				}
 				else {
 					// hymnus pre prvé vešpery ako pre posv. čítanie (cez deň)
 					anchor_name_zaltar_alt(DEN_NEDELA, tyzzal, MODL_POSV_CITANIE, ANCHOR_HYMNUS, 1);
 					_add_special_anchor_postfix_CZ_hymnus_cezrok();
 					_set_hymnus(modlitba, _file_pc, _anchor);
+					set_LOG_litobd_pc;
 				}
 				anchor_name_zaltar_alt(den, tyzzal, modlitba, ANCHOR_HYMNUS, ktory);
 			}
@@ -1554,8 +1566,8 @@ void set_hymnus(short int den, short int tyzzal, short int modlitba) {
 				anchor_name_zaltar(den, tyzzal, modlitba, ANCHOR_HYMNUS);
 				_add_special_anchor_postfix_CZ_hymnus_cezrok();
 				_set_hymnus(modlitba, _file, _anchor);
+				set_LOG_zaltar;
 			}
-			set_LOG_litobd_pc;
 		}
 		else {
 			file_name_zaltar(den, tyzzal);
@@ -11443,11 +11455,44 @@ _struct_lang_anchor_and_count pocet_hymnus_multi_anchor_count[] = {
 	{ JAZYK_SK, "OCR34r_HYMNUS", 2 },
 	{ JAZYK_SK, "OCR34v_HYMNUS", 2 },
 	// ES hymns
+		// 1st week
 	{ JAZYK_ES, "_1NE_rHYMNUS", 2 },
 	{ JAZYK_ES, "_1NE_vHYMNUS", 2 },
+		// 2nd week
 	{ JAZYK_ES, "_2NE_1HYMNUS", 2 },
 	{ JAZYK_ES, "_2NE_rHYMNUS", 2 },
 	{ JAZYK_ES, "_2NE_vHYMNUS", 2 },
+	// 3rd week
+	{ JAZYK_ES, "_3NE_1HYMNUS", 2 },
+	{ JAZYK_ES, "_3NE_rHYMNUS", 2 },
+	{ JAZYK_ES, "_3NE_vHYMNUS", 2 },
+	{ JAZYK_ES, "_3PO_rHYMNUS", 2 },
+	{ JAZYK_ES, "_3PO_vHYMNUS", 2 },
+	{ JAZYK_ES, "_3UT_rHYMNUS", 2 },
+	{ JAZYK_ES, "_3UT_vHYMNUS", 2 },
+	{ JAZYK_ES, "_3STR_rHYMNUS", 2 },
+	{ JAZYK_ES, "_3STR_vHYMNUS", 2 },
+	{ JAZYK_ES, "_3STV_rHYMNUS", 2 },
+	{ JAZYK_ES, "_3STV_vHYMNUS", 2 },
+	{ JAZYK_ES, "_3PI_rHYMNUS", 2 },
+	{ JAZYK_ES, "_3PI_vHYMNUS", 2 },
+	{ JAZYK_ES, "_3SO_rHYMNUS", 2 },
+	// 4th week
+	{ JAZYK_ES, "_4NE_1HYMNUS", 2 },
+	{ JAZYK_ES, "_4NE_rHYMNUS", 2 },
+	{ JAZYK_ES, "_4NE_vHYMNUS", 2 },
+	{ JAZYK_ES, "_4PO_rHYMNUS", 2 },
+	{ JAZYK_ES, "_4PO_vHYMNUS", 2 },
+	{ JAZYK_ES, "_4UT_rHYMNUS", 2 },
+	{ JAZYK_ES, "_4UT_vHYMNUS", 2 },
+	{ JAZYK_ES, "_4STR_rHYMNUS", 2 },
+	{ JAZYK_ES, "_4STR_vHYMNUS", 2 },
+	{ JAZYK_ES, "_4STV_rHYMNUS", 2 },
+	{ JAZYK_ES, "_4STV_vHYMNUS", 2 },
+	{ JAZYK_ES, "_4PI_rHYMNUS", 2 },
+	{ JAZYK_ES, "_4PI_vHYMNUS", 2 },
+	{ JAZYK_ES, "_4SO_rHYMNUS", 2 },
+	// compline
 	{ JAZYK_ES, "k_HYMNUS_NE", 2 },
 };
 
