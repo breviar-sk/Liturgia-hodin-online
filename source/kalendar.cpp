@@ -33720,17 +33720,27 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 	case 9: // MES_NOV -- 09NOV
 
-		if (poradie_svaty == 1) {
+		if (poradie_svaty == UNKNOWN_PORADIE_SVATEHO && _global_den.denvt == DEN_NEDELA) {
+			Log("09NOV: padlo na nedeľu; nedeľné prvé vešpery sa berú zo sviatku; špeciálne nastavenie aj pre _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
+			_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1 = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
+			// 20. storočie: 1902, 1913, 1919, 1924, 1930, 1941, 1947, 1952, 1958, 1969, 1975, 1980, 1986, 1997
+			// 21. storočie: 2003, 2008, 2014, 2025, 2031, 2036, 2042, 2053, 2059, 2064, 2070, 2081, 2087, 2092, 2098
+		}
+
+		if ((poradie_svaty == UNKNOWN_PORADIE_SVATEHO && _global_den.denvt == DEN_NEDELA) || (poradie_svaty == 1)) {
+			Log("09NOV: definovanie parametrov pre modlitbu...\n");
 			// definovanie parametrov pre modlitbu
 			if (query_type != PRM_DETAILY) {
-				set_spolocna_cast(sc, poradie_svaty);
+				set_spolocna_cast(sc, poradie_svaty, FORCE_BRAT_VSETKO);
 			}
 			je_modlitba_vlastna = NIE; // všetko je zo spoločnej časti na výročie posviacky chrámu
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_2citanie;
 
-			break;
+			if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
+				break;
+			}
 		}
 
 		_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 5); // sviatky Pána uvedené vo všeobecnom kalendári | povodne: 7; sviatky preblahoslavenej Panny Marie a svatych, uvedene vo vseobecnom kalendari; lenze 9. NOV 1997 mal tento sviatok prednost pred 32. nedelou v ocr, takze smer == 5
@@ -38002,10 +38012,11 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	// az teraz, ked je v _global_den (pri druhom volani fcie) spravna hodnota z _global_svaty[1,2,3], mozem urobit toto priradenie do sc
 	_struct_sc sc = _decode_spol_cast(_global_den.spolcast);
 
-	Log("\tDeklarujem štruktúru sc == ({%s, %s, %s}) -- begin\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
+	Log("Deklarujem štruktúru sc == ({%s, %s, %s}) -- begin\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
 
 	LOG_ciara_sv;
-	Log("Začiatok veľkého switch()-u podľa mesiacov a dní\nTeraz nasleduje veľký switch() podľa mesiacov a dní...\n");
+	Log("Začiatok veľkého switch()-u podľa mesiacov a dní (den == %d, mesiac == %d)...\n", den, mesiac);
+	Log("Teraz nasleduje veľký switch () podľa mesiacov a dní...\n");
 	// a teraz velky switch()... 'Velky inkvizitor'... ;-)
 	switch (mesiac - 1) {
 	case MES_JAN:
@@ -38049,6 +38060,9 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 
 	Log("KAL:_global_den.smer == %d...\n", _global_den.smer);
 	Log("KAL:_global_svaty(1).smer == %d...\n", _global_svaty(1).smer);
+
+	Log("KAL:poradie_svaty == %d...\n", poradie_svaty);
+	Log("KAL:_je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty) == %d...\n", _je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty));
 
 	// spomienka neposkvrneneho srdca panny marie
 	if ((_global_den.denvr == SRDPM) && ((_global_svaty(1).smer >= 10) 

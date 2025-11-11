@@ -573,6 +573,7 @@ extern char pom_FONT[SMALL];
 // 2012-10-22: odpoznámkované 14SEP -- napr. pre rok 2014 potom nedávalo prvé vešpery, ak padne na nedeľu!
 // 2014-01-10: doplnené 02FEB (ak padne na nedeľu, má prvé vešpery)
 // 2014-04-08: 14SEP platí aj pre CZ (ak padne na nedeľu, má prvé vešpery)
+// 2025-11-10: doplnené aj 09NOV
 #define PODMIENKA_SVIATKY_PANA_SVATYCH_PREDNOST_PRED_NEDELOU_OCR (\
 ((_global_den.den == 2) && (_global_den.mesiac - 1 == MES_FEB)) || \
 ((_global_den.den == 29) && (_global_den.mesiac - 1 == MES_JUN)) || \
@@ -582,7 +583,8 @@ extern char pom_FONT[SMALL];
 ((_global_den.den == 20) && (_global_den.mesiac - 1 == MES_AUG) && (_global_jazyk == JAZYK_HU)) || \
 ((_global_den.den == 14) && (_global_den.mesiac - 1 == MES_SEP)) || \
 ((_global_den.den == 28) && (_global_den.mesiac - 1 == MES_SEP) && ((_global_jazyk == JAZYK_CZ) || (_global_jazyk == JAZYK_CZ_OP))) || \
-((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV)) \
+((_global_den.den == 1) && (_global_den.mesiac - 1 == MES_NOV)) || \
+((_global_den.den == 9) && (_global_den.mesiac - 1 == MES_NOV)) \
 )
 
 #define _je_local_den_vlastne_slavenie_pismV (\

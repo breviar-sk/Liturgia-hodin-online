@@ -7318,7 +7318,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 	}// if (!cit)
 #endif // LITURGICKE_CITANIA_ANDROID
 
-	Log("1:_local_den.meno == %s\n", _local_den.meno);
+	Log("1: _local_den.meno == %s\n", _local_den.meno);
 
 	// spomienka panny márie v sobotu
 	// este spomienka panny marie v sobotu, cl. 15
@@ -7333,10 +7333,10 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 			(poradie_svateho == PORADIE_PM_SOBOTA)) {
 		// teraz do _global_den priradim dane slavenie
 		_local_den = _global_pm_sobota;
-		Log("priradujem _local_den = _global_pm_sobota;\n");
+		Log("1: priradujem _local_den = _global_pm_sobota;\n");
 	}
 
-	Log("2:_local_den.meno == %s\n", _local_den.meno);
+	Log("2: _local_den.meno == %s\n", _local_den.meno);
 
 	// skontrolujeme ešte pondelok -- štvrtok svätého týždňa (nastavenie názvu aj pre export na viac dní)
 	if (_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN) {
@@ -7388,17 +7388,19 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		}
 	}// if (_local_den.litobd == OBD_POSTNE_II_VELKY_TYZDEN)
 
-	Log("3:_local_den.meno == %s\n", _local_den.meno);
+	Log("3: _local_den.meno == %s\n", _local_den.meno);
 	// --------------------------------------------------------------------
 	// teraz podla toho, co je v _local_den, vytvorime _local_string
 
 	// capitalization?
 	if ((_local_den.smer < 5) || ((_je_local_den_slavnost) && (poradie_svateho != PORADIE_PM_SOBOTA))) {
+		Log("3: slávnosti...\n");
 		// slávnosti
 		Log("_local_den.smer < 5 or SLAV_SLAVNOST");
 		velkost = CASE_VERZALKY;
 	}
 	else if ((_je_local_den_sviatok) && (poradie_svateho != PORADIE_PM_SOBOTA)) {
+		Log("3: sviatky...\n");
 		// sviatky
 		Log("SLAV_SVIATOK");
 		if ((_global_jazyk == JAZYK_LA) || (_global_jazyk == JAZYK_CZ_OP) || (_global_jazyk == JAZYK_IS) || (_global_jazyk == JAZYK_SK) || (_global_jazyk == JAZYK_AZ) || (_global_jazyk == JAZYK_ES)) {
@@ -7409,10 +7411,11 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 		}
 	}
 	else {
+		Log("3: ani slávnosti, ani sviatky...\n");
 		velkost = CASE_NORMALNE;
 	}
 
-	// Log("3:velkost == %d", velkost);
+	// Log("3: velkost == %d", velkost);
 
 	// red color?
 	Log("_local_den.denvt == DEN_NEDELA || _local_den.prik == PRIKAZANY_SVIATOK -- ");
@@ -8920,8 +8923,8 @@ short int _rozbor_dna_s_modlitbou(_struct_den_mesiac datum, short int rok, short
 	else if ((poradie_svateho == PORADIE_PM_SOBOTA) && (_global_den.denvt == DEN_SOBOTA) && ((modlitba == MODL_VESPERY) || (modlitba == MODL_KOMPLETORIUM))) {
 		// experimentally set poradie_svateho to 0
 		// formerly returned FAILURE
+		Log("(poradie_svateho == %d) && (_global_den.denvt != DEN_SOBOTA)...\n", PORADIE_PM_SOBOTA);
 		/*
-		Log("(poradie_svateho == %d) && (_global_den.denvt != DEN_SOBOTA), so returning FAILURE...\n", PORADIE_PM_SOBOTA);
 		ALERT;
 		Export("Nemôžete požadovať túto modlitbu, pretože `Spomienka Panny Márie v sobotu' nemá vešpery ani kompletórium.\n");
 		return FAILURE;

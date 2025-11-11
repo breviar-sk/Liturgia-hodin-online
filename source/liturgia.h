@@ -1881,7 +1881,7 @@ void analyzuj_rok(short int year);
 
 #define UNKNOWN_PORADIE_SVATEHO 0
 
-// based on method _init_dm() 
+// based on method _init_dm(); do not log in _encode_spol_cast() before logging is initialized
 #define _INIT_DM(a) {\
 	a.den = 1;    \
 	a.mesiac = 1; \
@@ -1896,7 +1896,7 @@ void analyzuj_rok(short int year);
 	a.typslav_lokal = LOKAL_SLAV_NEURCENE; \
 	a.smer = 14; \
 	a.prik = NIE_JE_PRIKAZANY_SVIATOK; \
-	a.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA); \
+	a.spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA, NIE); \
 	mystrcpy(a.meno, STR_UNDEF, MENO_SVIATKU); \
 	a.farba = LIT_FARBA_NEURCENA; \
 	a.kalendar = KALENDAR_NEURCENY; \
@@ -2009,6 +2009,7 @@ extern void Log_filename_anchor(_struct_anchor_and_file af);
 
 void _set_slavenie_typslav_smer(short int poradie, short int typslav, short int smer);
 
+int _encode_spol_cast(short int, short int, short int, short int);
 int _encode_spol_cast(short int, short int, short int);
 int _encode_spol_cast(short int, short int);
 int _encode_spol_cast(short int);

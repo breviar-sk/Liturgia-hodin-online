@@ -1829,16 +1829,38 @@ void _set_slavenie_typslav_smer(short int poradie, short int typslav, short int 
  * _encode_..., _decode_spol_cast(); robia tuto konverziu
  *
  */
-int _encode_spol_cast(short int a1, short int a2, short int a3) {
+int _encode_spol_cast(short int a1, short int a2, short int a3, short int do_logging) {
+	// do_logging == NIE must be used during initialization
+	if (do_logging != NIE) {
+		Log("_encode_spol_cast(3)...\n");
+		Log("_encode_spol_cast(3): a1 == %ld, a2 == %ld, a3 == %ld...\n", a1, a2, a3);
+		if (je_spolocna_cast_urcena(a1)) {
+			Log("_encode_spol_cast(3): a1 == %d...\n", a1);
+		}
+		if (je_spolocna_cast_urcena(a2)) {
+			Log("_encode_spol_cast(3): a2 == %d...\n", a2);
+		}
+		if (je_spolocna_cast_urcena(a3)) {
+			Log("_encode_spol_cast(3): a3 == %d...\n", a3);
+		}
+	}
 	return(a1 + a2 * MAX_MODL_SPOL_CAST + a3 * MAX_MODL_SPOL_CAST * MAX_MODL_SPOL_CAST);
-}// _encode_spol_cast()
+}// _encode_spol_cast() -- 4 params
+
+int _encode_spol_cast(short int a1, short int a2, short int a3) {
+	return _encode_spol_cast(a1, a2, a3, ANO);
+}// _encode_spol_cast() -- 3 params
+
 int _encode_spol_cast(short int a1, short int a2) {
 	return _encode_spol_cast(a1, a2, MODL_SPOL_CAST_NEURCENA);
-}// _encode_spol_cast()
+}// _encode_spol_cast() -- 2 params
+
 int _encode_spol_cast(short int a1) {
 	return _encode_spol_cast(a1, MODL_SPOL_CAST_NEURCENA, MODL_SPOL_CAST_NEURCENA);
-}// _encode_spol_cast()
+}// _encode_spol_cast() -- 1 param
+
 _struct_sc _decode_spol_cast(int spolc) {
+	Log("_decode_spol_cast()...\n");
 	_struct_sc ret;
 	ret.a3 = spolc DIV(MAX_MODL_SPOL_CAST * MAX_MODL_SPOL_CAST);
 	ret.a2 = (spolc MOD(MAX_MODL_SPOL_CAST * MAX_MODL_SPOL_CAST)) DIV MAX_MODL_SPOL_CAST;

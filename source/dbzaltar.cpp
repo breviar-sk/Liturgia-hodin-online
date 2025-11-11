@@ -10980,7 +10980,8 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 	// ked nastavi vo formulari (detaily) zalmy zo `sviatku' a spolocnu cast `nebrat', predsa sa nevyvolaju zalmy zo sviatku, lebo sa nespusti _set_spolocna_cast(); 
 	// [ToDo] -- mozno by bolo dobre oddelit nastavenie pre spolocnu cast a potom inde dat samotne zalmy...
 	// doplnený nepovinný tretí parameter, ktorým sa dajú vynútiť antifóny zo spoločnej časti, aj ak je to len spomienka alebo ľubovoľná spomienka
-	Log("set_spolocna_cast({%s, %s, %s}) -- begin\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
+	Log("set_spolocna_cast({%d, %d, %d}) -- begin\n", sc.a1, sc.a2, sc.a3);
+	Log("set_spolocna_cast({%s, %s, %s}) -- strings\n", nazov_spolc(sc.a1), nazov_spolc(sc.a2), nazov_spolc(sc.a3));
 	Log("_global_opt[OPT_3_SPOLOCNA_CAST] == %s (%ld)\n", nazov_spolc(_global_opt[OPT_3_SPOLOCNA_CAST]), _global_opt[OPT_3_SPOLOCNA_CAST]);
 
 	if (special_cases == 0) {
