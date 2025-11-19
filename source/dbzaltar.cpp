@@ -4530,18 +4530,7 @@ void _set_zalmy_pc_45_87(short int modlitba) {
 	Log("_set_zalmy_pc_45_87(%s) -- end\n", nazov_modlitby(modlitba));
 }// _set_zalmy_pc_45_87()
 
-// CZOP (07NOV)
-void _set_zalmy_vesp_110_116_ef(short int modlitba) {
-	Log("_set_zalmy_vesp_110_116_ef(%s) -- begin\n", nazov_modlitby(modlitba));
-	if (modlitba == MODL_VESPERY) {
-		set_zalm(1, modlitba, "z110.htm", "ZALM110");
-		set_zalm(2, modlitba, "z116.htm", "ZALM116,10-19");
-		set_zalm(3, modlitba, "ch_ef1.htm", "CHVAL_EF1");
-	}
-	Log("_set_zalmy_vesp_110_116_ef(%s) -- end\n", nazov_modlitby(modlitba));
-}// _set_zalmy_vesp_110_116_ef()
-
- // SK OFM (21JUL)
+// SK OFM (21JUL)
 void _set_zalmy_vesp_110_122_zjv15(short int modlitba) {
 	Log("_set_zalmy_vesp_110_122_zjv15(%s) -- begin\n", nazov_modlitby(modlitba));
 	if (modlitba == MODL_VESPERY) {

@@ -33464,25 +33464,13 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_full(modlitba);
-				if (_global_jazyk == JAZYK_CZ_OP) {
-					// žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
-					_set_zalmy_pc_1_8_16(modlitba);
-				}// CZOP
-				else {
-					// žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
-					_set_zalmy_pc_15_66(modlitba);
-				}// KALENDAR_SK_OP
+				// žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
+				_set_zalmy_pc_15_66(modlitba);
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
-				if (_global_jazyk == JAZYK_CZ_OP) {
-					// žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
-					_set_zalmy_vesp_110_116_ef(modlitba);
-				}
-				else {// KALENDAR_SK_OP
-					// žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
-					_set_zalmy_vesp_89_98_kol(modlitba);
-				}
+				// žalmy, ktoré zatiaľ nikde inde nie sú v tomto radení použité
+				_set_zalmy_vesp_89_98_kol(modlitba);
 
 				if (_global_jazyk == JAZYK_CZ_OP) {
 					_vlastna_cast_mcd_ant_kcitresp_modl;
@@ -33494,7 +33482,12 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
+			if (_global_jazyk == JAZYK_CZ_OP) {
+				_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 8); // miestne sviatky
+			}
+			else {
+				_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
+			}
 			mystrcpy(_global_svaty(1).meno, text_NOV_07_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
@@ -33564,7 +33557,12 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 				break;
 			}
 
-			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+			if (_global_jazyk == JAZYK_CZ_OP) {
+				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 11); // miestne povinné spomienky
+			}
+			else {
+				_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // miestne povinné spomienky podľa miestneho kalendára; technicky 10, hoci podľa smerníc 11
+			}
 			mystrcpy(_global_svaty(1).meno, text_NOV_08_OP[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_ZA_ZOSNULYCH);
 			_global_svaty(1).farba = LIT_FARBA_FIALOVA_CIERNA;
