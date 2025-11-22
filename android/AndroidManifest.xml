@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      android:versionCode="136"
-      android:versionName="25.08"
+      android:versionCode="137"
+      android:versionName="25.11"
       android:installLocation="auto">
     <supports-screens android:xlargeScreens="true"/>
     <queries>
