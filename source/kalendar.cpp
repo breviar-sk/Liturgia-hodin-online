@@ -35485,20 +35485,23 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 			modlitba = MODL_RANNE_CHVALY;
 			if (_global_jazyk != JAZYK_CZ) {
+				// CZ nemá vlastní hymnus
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			_vlastna_cast_benediktus;
 			_vlastna_cast_modlitba;
 
 			modlitba = MODL_POSV_CITANIE;
-			if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
+			if (_global_jazyk != JAZYK_CZ) {
+				// CZ nemá vlastní hymnus
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			_vlastna_cast_modlitba;
 			_vlastna_cast_2citanie;
 
 			modlitba = MODL_VESPERY;
-			if (_global_jazyk != JAZYK_CZ_OP) {
+			if (_global_jazyk == JAZYK_CZ) {
+				// CZ předepisuje hymnus ze společných textů
 				_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 			}
 			_vlastna_cast_magnifikat;
