@@ -15246,13 +15246,13 @@ const char* text_AUG_25_HU[POCET_JAZYKOV + 1] =
 };
 const char* text_AUG_25_SDB[POCET_JAZYKOV + 1] =
 {
-	"Bl. Márie Troncattiovej, panny",
-	"Bl. Marie Troncattiové, panny",
+	"Sv. Márie Troncattiovej, panny",
+	"Sv. Marie Troncattiové, panny",
 	"",
 	"",
 	"",
 	"",
-	"Boldog Troncatti Mária szűz",
+	"Troncatti Szent Mária szűz",
 	"",
 	"",
 	"",
