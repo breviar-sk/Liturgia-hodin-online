@@ -1,0 +1,26 @@
+<en-US>
+– Lent, 5th week, ferial days: possibility to take hymns from Holy Week.
+– Correction: First Vespers for November 9th if the feast falls on a Sunday.
+– Fixes in texts.
+</en-US>
+<cs-CZ>
+– Možnost použití hymnů ze Svatého týdne pro férie 5. týdne postní doby.
+– Oprava: První nešpory pro 9. listopadu, pokud padne svátek na neděli.
+– Opravy textů.
+</cs-CZ>
+<hu-HU>
+– Lehetőség a nagyböjt ötödik hetének himnuszainak felhasználására a nagyböjtből.
+– Javítás: November 9-én az első vecsernye, ha az ünnep vasárnapra esik.
+– Javítások a szövegekben.
+</hu-HU>
+<sk>
+– Úpravy a doplnenia podľa Direktória 2026.
+– Možnosť použitia hymnov zo Svätého týždňa pre férie Piateho pôstneho týždňa.
+– Oprava: Prvé vešpery pre 9. novembra, ak padne sviatok na nedeľu.
+– Opravy v textoch.
+</sk>
+<is-IS>
+– Möguleiki á að nota sálma úr dymbilvikunni fyrir hátíðir fimmtu viku lönguföstu.
+– Leiðrétting: Fyrsta kvöldmáltíð 9. nóvember ef hátíðin ber upp á sunnudag.
+– Leiðréttingar í textum.
+</is-IS>
