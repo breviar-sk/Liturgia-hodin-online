@@ -17,6 +17,10 @@ endif
 LOCAL_LDLIBS    := -llog
 LOCAL_CFLAGS    := -DMODEL_SELECTED_IN_MAKEFILE $(MODEL)
 
+# Should not be needed, but APP_SUPPORT_FLEXIBLE_PAGE_SIZES in Application.mk
+# seems to be not working.
+LOCAL_CFLAGS    += "-Wl,-z,max-page-size=16384"
+
 #LOCAL_STATIC_LIBRARIES := android_native_app_glue
 
 include $(BUILD_SHARED_LIBRARY)
