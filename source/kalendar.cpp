@@ -13124,7 +13124,8 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 			|| ((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_OFM))
 			) {
 
-			pom_poradie = 1; // pom_poradie = (_global_jazyk == JAZYK_HU) ? 2 : 1;
+			// pom_poradie = 1;
+			pom_poradie = (_global_jazyk == JAZYK_HU) ? 2 : 1;
 
 			if (poradie_svaty == pom_poradie) {
 
@@ -13154,7 +13155,12 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 			pocet = pom_poradie;
 
-			_set_slavenie_typslav_smer(pom_poradie, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
+			if (_global_jazyk == JAZYK_HU) {
+				_set_slavenie_typslav_smer(pom_poradie, SLAV_SVIATOK, 8); // miestne sviatky
+			}
+			else {
+				_set_slavenie_typslav_smer(pom_poradie, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
+			}
 			mystrcpy(_global_svaty(pom_poradie).meno, text_MAJ_24_OFM[_global_jazyk], MENO_SVIATKU);
 			_global_svaty(pom_poradie).spolcast = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);
 			_global_svaty(pom_poradie).farba = LIT_FARBA_BIELA;
