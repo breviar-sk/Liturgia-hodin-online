@@ -3,7 +3,7 @@ Všeobecné pokyny:
 -- spusti "cleanup-po-builde.bat"
 -- spusti "cleanup-pred-spustenim-batchmode.bat"
 -- pre kadı typ exportu opakova:
---	-- spusti konkrétny príkaz na vytvorenie prázdnych adresárov + vygenerovanie batch súboru (napr. ".\breviar.exe -qpbm -d1 -m1 -r2025 -f31 -g12 -p2025 -b"robSK.bat" -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -132 -2128")
+--	-- spusti konkrétny príkaz na vytvorenie prázdnych adresárov + vygenerovanie batch súboru (napr. ".\breviar.exe -qpbm -d1 -m1 -r2025 -f31 -g12 -p2025 -b"robSK.bat" -jsk -nbreviar.exe -i"..\..\..\include\" -usimple -M2 -00 -132 -2128")
 --	-- spusti príslušnı vygenerovanı batch súbor (napr. "robSK.bat")
 --	-- spusti príslušnı dokonèovací skript pre danı jazyk (napr. "_offline-dokonci-SK.bat")
 --	-- zbali adresáre + adresár "docs" + súbory "breviar.css", "index.htm" a "zoznam.htm" do príslušného súboru (napr. "2026-sk-short") .zip aj .7z
@@ -11,63 +11,63 @@ Všeobecné pokyny:
 
 __________________________________________________________________________________________________________________________________________
 
-2025-12-29: generovanie modlitieb pre rok 2025, iba jedno HTML + plain
+2026-01-01: generovanie modlitieb pre rok 2026, iba jedno HTML + plain
 
 	SK predgenerovanie
 
 	-- iadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2025 -f31 -g12 -p2025 -b"robSK.bat" -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -132 -2128
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robSK.bat" -jsk -nbreviar.exe -i"..\..\..\include\" -usimple -M2 -00 -132 -2128
 		-- 2026-sk-short
 
 	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robSK.bat" -jsk -nbreviar.exe -i..\..\..\include\ -usimple -M3 -00 -134239 -2128 -48
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robSK.bat" -jsk -nbreviar.exe -i"..\..\..\include\" -usimple -M3 -00 -134239 -2128 -48
 		-- 2026-sk-plain
 
 	LA predgenerovanie
 
 	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robLA.bat" -jla -nbreviar.exe -i..\..\..\include\ -usimple -M3 -00 -134239 -2128 -48
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robLA.bat" -jla -nbreviar.exe -i"..\..\..\include\" -usimple -M3 -00 -134239 -2128 -48
 		-- 2026-la-plain
 
 	-- niektoré pevné súèasti modlitieb (chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo); neberú sa èasti zo spol. èastí na spomienky
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robLA.bat" -jla -nbreviar.exe -i..\..\..\include\ -usimple -M2 -00 -15191 -2224
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robLA.bat" -jla -nbreviar.exe -i"..\..\..\include\" -usimple -M2 -00 -15191 -2224
 		-- 2026-la-handy
 
 	HU predgenerovanie
 	-- iadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robHU.bat" -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M2 -00 -132 -2128
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robHU.bat" -jhu -nbreviar.exe -i"..\..\..\include_hu\" -usimple -M2 -00 -132 -2128
 		-- 2026-hu-short
 
 	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robHU.bat" -jhu -nbreviar.exe -i..\..\..\include_hu\ -usimple -M3 -00 -134239 -2128 -48
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robHU.bat" -jhu -nbreviar.exe -i"..\..\..\include_hu\" -usimple -M3 -00 -134239 -2128 -48
 		-- 2026-hu-plain
 
 	CZ predgenerovanie
 
 	-- iadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZ.bat" -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -132 -2128
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZ.bat" -jcz -nbreviar.exe -i"..\..\..\include_cz\" -usimple -M2 -00 -132 -2128
 		-- 2026-cz-short
 
 	-- hymny k volnému vıbìru, iadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZ.bat" -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M2 -00 -132 -2128 -58192
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZ.bat" -jcz -nbreviar.exe -i"..\..\..\include_cz\" -usimple -M2 -00 -132 -2128 -58192
 		-- 2026-cz-hvv-short
 
 	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZ.bat" -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M3 -00 -134239 -2128 -48
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZ.bat" -jcz -nbreviar.exe -i"..\..\..\include_cz\" -usimple -M3 -00 -134239 -2128 -48
 		-- 2026-cz-plain
 
 	-- hymny k volnému vıbìru, bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZ.bat" -jcz -nbreviar.exe -i..\..\..\include_cz\ -usimple -M3 -00 -134239 -2128 -58192 -48
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZ.bat" -jcz -nbreviar.exe -i"..\..\..\include_cz\" -usimple -M3 -00 -134239 -2128 -58192 -48
 		-- 2026-cz-hvv-plain
 
 	CZOP predgenerovanie
 
 	-- iadne pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZop.bat" -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M2 -00 -132 -2128
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZop.bat" -jc2 -nbreviar.exe -i"..\..\..\include_czop\" -usimple -M2 -00 -132 -2128
 		-- 2026-czop-short
 
 	-- bez buttonov + všetky pevné súèasti modlitieb (Sláva Otcu; chválospevy Benediktus, Magnifikat, Nunk dimittis, Te Deum; rubriky; zakonèenia modlitieb; dlhé responzóriá v posv. èítaniach; opakovanie zvolaní v prosbách), doplnková psalmódia ("(alt)" tlaèidlo)
-		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZop.bat" -jc2 -nbreviar.exe -i..\..\..\include_czop\ -usimple -M3 -00 -134239 -2128 -48
+		.\breviar.exe -qpbm -d1 -m1 -r2026 -f31 -g12 -p2026 -b"robCZop.bat" -jc2 -nbreviar.exe -i"..\..\..\include_czop\" -usimple -M3 -00 -134239 -2128 -48
 		-- 2026-czop-plain
 
 __________________________________________________________________________________________________________________________________________

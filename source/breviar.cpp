@@ -1,7 +1,7 @@
 /***************************************************************************/
 /*                                                                         */
 /* breviar.cpp                                                             */
-/* (c)1999-2025 | Juraj Vidéky | videky@breviar.sk                         */
+/* (c)1999-2026 | Juraj Vidéky | videky@breviar.sk                         */
 /*                                                                         */
 /*                http://www.breviar.sk                                    */
 /*                                                                         */

@@ -1,7 +1,7 @@
 /******************************************************************/
 /*                                                                */
 /* bible.h                                                        */
-/* (c)2017-2025 | Juraj Vidéky                                    */
+/* (c)2017-2026 | Juraj Vidéky                                    */
 /*                                                                */
 /* description | utilities for biblical readings                  */
 /*                                                                */
