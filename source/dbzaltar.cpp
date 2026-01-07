@@ -3638,7 +3638,14 @@ void _set_zalmy_zjv(short int modlitba) {
 	else if ((je_modlitba_cez_den(modlitba)) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_MCD_DOPLNKOVA))) {
 		// na ostatné hodiny sa berie doplnková psalmódia
 		set_zalm(1, modlitba, "z47.htm", "ZALM47");
-		set_zalm(2, modlitba, "z86.htm", "ZALM86,1-10");
+		if (_global_jazyk == JAZYK_CZ_OP) {
+			// CZ OP LH, sv. I, str. 526, uvádí celý žalm 85 (86)
+			set_zalm(2, modlitba, "z86.htm", "ZALM86");
+		}
+		else {
+			// LA LH, vol. I, p. 487: Psalmus 85 (86), 1-10
+			set_zalm(2, modlitba, "z86.htm", "ZALM86,1-10");
+		}
 		set_zalm(3, modlitba, "z98.htm", "ZALM98");
 	}
 	else if (modlitba == MODL_RANNE_CHVALY) {
