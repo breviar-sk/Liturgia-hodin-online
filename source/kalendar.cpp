@@ -37380,6 +37380,8 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 	case 14: // MES_DEC -- 14DEC
 
+	label_14_DEC:
+
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OCD))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OCARM))
@@ -37467,6 +37469,19 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 		break;
 
 	case 15: // MES_DEC -- 15DEC
+
+		if (_global_den.denvt == DEN_PONDELOK) {
+			if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD))
+				|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OCD))
+				|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OCARM))
+				) {
+				// t.j. slávnosť padla na nedeľu
+				sprintf(_anchor_head, "%02d%s_", den - 1, nazov_MES[mesiac]); // MES_DEC
+				Log("  _anchor_head == %s\n", _anchor_head);
+				Log("OCD: jumping to label_14_DEC...\n");
+				goto label_14_DEC;
+			}
+		}
 
 		if (_global_jazyk == JAZYK_HU) {
 
