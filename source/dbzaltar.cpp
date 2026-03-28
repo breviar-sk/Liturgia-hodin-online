@@ -11609,6 +11609,7 @@ _struct_lang_anchor_and_count pocet_modlitba_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SPMVSr_MODLITBA", 6 },
 	{ JAZYK_SK, "SRDCA_MODLITBA", 2 },
 	{ JAZYK_SK, "NAN_MODLITBA", 2 },
+	{ JAZYK_SK, "POST1_MODLITBA5PI", 2 },
 	{ JAZYK_SK, "ZDS_1MODLITBA", 2 },
 	{ JAZYK_SK, "23APR_MODLITBA", 2 },
 	{ JAZYK_CZ, "VN1_MODLITBA5NE", 2 },
