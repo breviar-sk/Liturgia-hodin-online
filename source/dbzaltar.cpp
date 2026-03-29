@@ -11506,6 +11506,7 @@ _struct_lang_anchor_and_count pocet_citanie1_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCSZ_OCR_cCIT1", 2 },
 	{ JAZYK_UNDEF, "SCSZM_OCR_cCIT1", 2 },
 	{ JAZYK_CZ_OP, "04MAJ_cCIT1", 2 },
+	{ JAZYK_CZ, "SCAP_OCR_cCIT1", 2 },
 };
 
 _struct_lang_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
