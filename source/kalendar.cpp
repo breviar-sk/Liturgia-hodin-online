@@ -8172,12 +8172,15 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_RANNE_CHVALY;
+				_vlastna_cast_benediktus;
+				_vlastna_cast_modlitba;
 				if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_CZ))) {
-					_vlastna_cast_full(modlitba);
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+					_vlastna_cast_kcitanie;
+					_vlastna_cast_kresponz;
 				}
-				else {
-					_vlastna_cast_benediktus;
-					_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_CZ) {
+					_vlastna_cast_prosby; // je to divné, ale CZ breviář má předepsány prosby z duchovních pastýřů
 				}
 
 				modlitba = MODL_POSV_CITANIE;
