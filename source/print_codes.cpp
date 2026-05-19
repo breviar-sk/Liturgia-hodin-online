@@ -1,6 +1,7 @@
 #include <string>
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "breviar.h"
 #include "citania.h"
@@ -15,6 +16,9 @@ std::string Escape(const char* s) {
         break;
       case '\n':
         out.append("\\n");
+        break;
+      case '\r':
+        out.append("\\r");
         break;
       case '"':
         out.append("\\\"");
@@ -43,16 +47,30 @@ void PrintDay(int r, int m, int d, _struct_dm* dm) {
          Escape(aleluja).c_str(), r, m, d, Escape(dm->meno).c_str());
 }
 
-int main() {
+static int IsLeapYear(int r) {
+  return (r % 4 == 0 && r % 100 != 0) || (r % 400 == 0);
+}
+
+int main(int argc, const char** argv) {
   char ds[10], ms[10], ys[10];
   const char *v[] = { "breviar", "-qpdt", ds, ms, ys, NULL };
   int D[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
   int d,m,r;
+  int r1 = 2021;
+  int r2 = 2021;
+
+  if (argc > 1) {
+    r1 = atoi(argv[1]);
+    r2 = r1;
+  }
+  if (argc > 2) {
+    r2 = atoi(argv[2]);
+  }
 
   checkCitania();
-  for (r = 2021; r <= 2021; r++) {
+  for (r = r1; r <= r2; r++) {
     for (m = 1; m <= 12; m++) {
-      for (d=1; d<=D[m-1] + (m==2 && r%4==0); d++) {
+      for (d=1; d<=D[m-1] + (m==2 && IsLeapYear(r)); d++) {
         sprintf(ds, "-d%02d", d);
         sprintf(ms, "-m%02d", m);
         sprintf(ys, "-r%04d", r);
