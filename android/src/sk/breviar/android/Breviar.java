@@ -38,6 +38,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -501,6 +502,20 @@ public class Breviar extends AppCompatActivity
       tap_gesture_detector = new GestureDetector(this,
                                      new GestureDetector.SimpleOnGestureListener());
       tap_gesture_detector.setOnDoubleTapListener(this);
+
+      getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+        @Override
+        public void handleOnBackPressed() {
+          if (!handleBackPressed()) {
+            setEnabled(false);
+            try {
+              Breviar.this.getOnBackPressedDispatcher().onBackPressed();
+            } finally {
+              setEnabled(true);
+            }
+          }
+        }
+      });
 
       if (!getResources().getString(R.string.version).equals(settings.getString("version", ""))) {
         showChangelog(true);
@@ -1117,18 +1132,8 @@ public class Breviar extends AppCompatActivity
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
       if (keyCode == KeyEvent.KEYCODE_BACK) {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-          drawer.closeDrawer(GravityCompat.START, true);
-          return true;
-        } else if (wv.canGoBack()) {
-          if (S != null) {
-            S.forceOptsForNextRequest();
-          }
-          wv.goBack();
-          return true;
-        } else {
-          return super.onKeyDown(keyCode, event);
-        }
+        if (handleBackPressed()) return true;
+        return super.onKeyDown(keyCode, event);
       }
       if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP) && BreviarApp.getVolButtons(this)) {
         wv.pageUp(false);
@@ -1147,6 +1152,20 @@ public class Breviar extends AppCompatActivity
         return true;
       }
       return super.onKeyDown(keyCode, event);
+    }
+
+    private boolean handleBackPressed() {
+      if (drawer.isDrawerOpen(GravityCompat.START)) {
+        drawer.closeDrawer(GravityCompat.START, true);
+        return true;
+      } else if (wv.canGoBack()) {
+        if (S != null) {
+          S.forceOptsForNextRequest();
+        }
+        wv.goBack();
+        return true;
+      }
+      return false;
     }
 
     @Override

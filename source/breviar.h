@@ -472,6 +472,8 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 #define JE_PORADIE_SVATY_OK(i) ((i > 0 && i < PORADIE_PM_SOBOTA))
 
 #define MIESTNE_SLAVENIE_LOKAL_SVATY(i) (JE_PORADIE_SVATY_OK(i) && ((_global_svaty_i_smer_override(i) == 4) || (_global_svaty_i_smer_override(i) == 8) || (_global_svaty_i_smer_override(i) == 11)))
+// extended: incuding standard solemnity (3) and feast (7), excluding memory (10, 11); for MARIE_MATKY_CIRKVI colision with local (religious order) solemnities (SDB 24MAJ in 2026 on 2026-05-25 when transferring from Lent Sunday)
+#define MIESTNE_SLAVENIE_LOKAL_SVATY_EXTENDED(i) (JE_PORADIE_SVATY_OK(i) && ((_global_svaty_i_smer_override(i) == 3) || (_global_svaty_i_smer_override(i) == 4) || (_global_svaty_i_smer_override(i) == 7) || (_global_svaty_i_smer_override(i) == 8)))
 
 #define _je_global_svaty_i_sviatok_alebo_slavnost(i) (JE_PORADIE_SVATY_OK(i) && ((_global_svaty(i).typslav == SLAV_SVIATOK) || (_global_svaty(i).typslav == SLAV_SLAVNOST) || ((i != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV)))))
 

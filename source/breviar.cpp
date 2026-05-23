@@ -7297,7 +7297,7 @@ short int init_global_string(short int typ, short int poradie_svateho, short int
 #ifdef LITURGICKE_CITANIA_ANDROID
 			cit = najdiCitanie(getCode(&_global_svaty(1)));
 #endif // LITURGICKE_CITANIA_ANDROID
-			Log("priradujem _local_den = _global_svaty(1);\n");
+			Log("priradujem _local_den = _global_svaty(1); [fixed 1]\n");
 		}
 		else {
 			// bezny den

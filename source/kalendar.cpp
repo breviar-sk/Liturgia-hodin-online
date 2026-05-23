@@ -9364,7 +9364,8 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 	short int pom_den = den;
 	short int pom_mesiac = mesiac;
 
-	Log("mesiac máj\n");
+	Log("mesiac máj | sviatky_svatych_05_maj() | den == %d, poradie_svaty == %d...\n", den, poradie_svaty);
+
 	switch (den) {
 
 	case 1: // MES_MAY -- 01MAJ
@@ -12969,6 +12970,8 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 
 	case 24: // MES_MAY -- 24MAJ
 
+	label_24_MAJ:
+
 		if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OP))) {
 			if (poradie_svaty == 1) {
 
@@ -13256,6 +13259,20 @@ short int sviatky_svatych_05_maj(short int den, short int poradie_svaty, _struct
 		break;
 
 	case 25: // MES_MAY -- 25MAJ
+
+		if (_global_den.denvr == MARIE_MATKY_CIRKVI) {
+			if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_SDB))
+				|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_SDB))
+				|| ((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_SDB))
+				) {
+				// t.j. slávnosť padla na pondelok po nedeli ZDS
+				sprintf(_anchor_head, "%02d%s_", den - 1, nazov_MES[mesiac]); // MES_MAY
+				Log("  _anchor_head == %s\n", _anchor_head);
+				Log("SDB: jumping to label_24_MAJ (due to Monday after ZDS)...\n");
+
+				goto label_24_MAJ;
+			}
+		}
 
 		if (((_global_jazyk == JAZYK_SK) && (_global_kalendar == KALENDAR_SK_OCD))
 			|| ((_global_jazyk == JAZYK_CZ) && (_global_kalendar == KALENDAR_CZ_OCD))
@@ -14181,7 +14198,18 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 	short int presunutie_slavnosti = NIE; // kvôli presúvaniam slávností 24.6. a 29.6. o deň prv; vtedy nemajú svoje druhé vešpery
 
-	Log("mesiac jún\n");
+	// this section was copied from breviar.cpp::short int _rozbor_dna() | ToDo: make global...
+	short int TELAKRVI; // štvrtok po Trojici: Kristovho tela a krvi (alebo: v krajinách, kde sa presúva na nedeľu)
+	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TELAKRVI_NEDELA)) {
+		Log("Najsv. Kristovho tela a krvi sa slávi v nedeľu\n");
+		TELAKRVI = (ZOSLANIE_DUCHA_SV + 14);
+	}
+	else {
+		TELAKRVI = (ZOSLANIE_DUCHA_SV + 11);
+	}
+
+	Log("mesiac jún | sviatky_svatych_06_jun() | den == %d, poradie_svaty == %d...\n", den, poradie_svaty);
+
 	switch (den) {
 
 	case 1: // MES_JUN -- 01JUN
@@ -16589,6 +16617,20 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 		_global_svaty(1).flags = FLAG_COLLECTA_1ST_VESP_DIFFERENT;
 		_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 
+		break;
+
+	case 25: // MES_JUN -- 25JUN
+
+		if (_global_den.denvr == TELAKRVI + 1) {
+			// t.j. slávnosť sv. Jána Krstiteľa padla na slávnosť Najsv. Tela a Krvi -- preto sa prekladá na nasledujúci deň (t. j. piatok 25.6.)
+			sprintf(_anchor_head, "%02d%s_", den - 1, nazov_MES[MES_JUN]);
+			Log("  _anchor_head == %s\n", _anchor_head);
+			Log("jumping to label_24_JUN...\n");
+			presunutie_slavnosti = ANO;
+			goto label_24_JUN;
+		}
+
+		// nothing yet; just for 25.06.2038 when St John Baptist from 24JUN is transferred
 		break;
 
 	case 26: // MES_JUN -- 26JUN
@@ -38115,6 +38157,8 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	Log("KAL:poradie_svaty == %d...\n", poradie_svaty);
 	Log("KAL:_je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty) == %d...\n", _je_global_svaty_i_sviatok_alebo_slavnost(poradie_svaty));
 
+	Log("KAL:_global_pocet_svatych == %d...\n", _global_pocet_svatych);
+
 	// spomienka neposkvrneneho srdca panny marie
 	if ((_global_den.denvr == SRDPM) && ((_global_svaty(1).smer >= 10) 
 		// special case for SK OFM
@@ -38226,11 +38270,15 @@ short int sviatky_svatych(short int den, short int mesiac, short int poradie_sva
 	}// srdca panny marie
 
 	// spomienka panny marie matky cirkvi
-	if ((_global_den.denvr == MARIE_MATKY_CIRKVI) && ((_global_pocet_svatych == 0) || (poradie_svaty == 0) || ((_global_svaty(1).smer >= 10) && !MIESTNE_SLAVENIE_LOKAL_SVATY(1)))) {
+	if ((_global_den.denvr == MARIE_MATKY_CIRKVI) 
+		&& (
+			(_global_pocet_svatych == 0) 
+			|| (((poradie_svaty == 0) || (_global_svaty(1).smer >= 10)) && !MIESTNE_SLAVENIE_LOKAL_SVATY_EXTENDED(1)) // _global_pocet_svatych > 0 => in such case must not be local solemnity or feast
+	)) {
 
 		LOG_ciara_sv;
 
-		// spomienka panny marie matky cirkvi | "berie sa v takom pripade, ked nie je slavenie s vyssou prioritou, teda smer < 10"
+		// spomienka panny marie matky cirkvi | "berie sa v takom pripade, ked nie je slavenie s vyssou prioritou, teda smer < 10" a to ani miestne slávenie (rehoľnej rodiny)
 		Log(" panny marie matky cirkvi: \n");
 		Log(" ...berie sa len v takom pripade, ked to nekoliduje so slavenim, co ma vyssiu prioritu (smer < 10)...\n");
 

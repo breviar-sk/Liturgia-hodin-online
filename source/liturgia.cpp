@@ -1799,14 +1799,20 @@ void _set_slavenie_typslav_smer(short int poradie, short int typslav, short int 
 	if (poradie == 0) {
 		_global_den.typslav = typslav;
 		_global_den.smer = smer;
+
+		Log("...nastavené do _global_den...\n");
 	}
 	else if (poradie >= 1 && poradie <= MAX_POCET_SVATY) {
 		_global_svaty(poradie).typslav = typslav;
 		_global_svaty(poradie).smer = smer;
+
+		Log("...nastavené do _global_svaty(%d)...\n", poradie);
 	}
 	else if (poradie == -1) {
 		_global_result.typslav = typslav;
 		_global_result.smer = smer;
+
+		Log("...nastavené do _global_result...\n");
 	}
 
 	Log("_set_slavenie_typslav_smer() pre poradie: koniec.\n");
