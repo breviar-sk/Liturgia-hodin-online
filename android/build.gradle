@@ -48,7 +48,7 @@ android {
   defaultConfig {
     targetSdkVersion 36
       // TODO: api 33 has changes in notifications: POST_NOTIFICATIONS permission
-    minSdkVersion 21
+    minSdkVersion 23
     ndk {
       // Tells Gradle to build outputs for the following ABIs and package
       // them into your APK.
