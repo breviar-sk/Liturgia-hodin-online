@@ -792,7 +792,7 @@ tr.paragraph {
 td { 
 	color: #1a1a1a;
 	font-family: inherit; 
-	font-size: 95%; 
+	/* font-size: 95%; */
 }
 
 hr { 
