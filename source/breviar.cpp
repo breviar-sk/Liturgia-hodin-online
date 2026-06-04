@@ -16622,8 +16622,11 @@ void _main_analyza_roku(char *rok) {
 	ExportAnalyzaRokuRow(_global_link, text_NOV_01[_global_jazyk]);
 
 	// 8. decembra
-	vytvor_global_link(8, 12, year, LINK_DEN_MESIAC, NIE);
-	ExportAnalyzaRokuRow(_global_link, text_DEC_08[_global_jazyk]);
+	// tento sviatok je prikázaný, iba ak nepadne na adventnú nedeľu (kedy sa presúva na pondelok, ale vtedy NIE JE prikázaný)
+	if (den_v_tyzdni(8, 12, year) != DEN_NEDELA) {
+		vytvor_global_link(8, 12, year, LINK_DEN_MESIAC, NIE);
+		ExportAnalyzaRokuRow(_global_link, text_DEC_08[_global_jazyk]);
+	}
 
 	// 25. decembra
 	vytvor_global_link(25, 12, year, LINK_DEN_MESIAC, NIE);

@@ -37091,7 +37091,10 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 		}
 
 		_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // slávnosti Pána, preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
-		_global_svaty(1).prik = PRIKAZANY_SVIATOK;
+		if (den_v_tyzdni(8, 12, _global_den.rok) != DEN_NEDELA) {
+			// ak dátum 08DEC padne na nedeľu, slávnosť Nepoškvrneného počatia Panny Márie sa vtedy slávi ako preložený neprikázaný sviatok (https://www.tkkbs.sk/view.php?cisloclanku=20231227039)
+			_global_svaty(1).prik = PRIKAZANY_SVIATOK;
+		}
 		mystrcpy(_global_svaty(1).meno, text_DEC_08[_global_jazyk], MENO_SVIATKU);
 		_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA_MARIA);
 		_global_svaty(1).farba = LIT_FARBA_BIELA;
