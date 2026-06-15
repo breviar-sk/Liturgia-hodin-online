@@ -15041,6 +15041,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 			modlitba = MODL_RANNE_CHVALY;
 			_vlastna_cast_full_okrem_antifon(modlitba);
+			_vlastna_cast_kresponz_ve_obd;
 
 			modlitba = MODL_POSV_CITANIE;
 			_vlastna_cast_modlitba;
@@ -15051,6 +15052,7 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 
 			modlitba = MODL_VESPERY;
 			_vlastna_cast_full_okrem_antifon(modlitba);
+			_vlastna_cast_kresponz_ve_obd;
 
 			break;
 		}
