@@ -15712,16 +15712,25 @@ short int sviatky_svatych_06_jun(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				modlitba = MODL_POSV_CITANIE;
+				if (_global_jazyk == JAZYK_CZ_OP) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_modlitba;
 				_vlastna_cast_2citanie;
 
 				modlitba = MODL_RANNE_CHVALY;
+				if (_global_jazyk == JAZYK_CZ_OP) {
+					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
+				}
 				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
+				if (_global_jazyk == JAZYK_CZ_OP) {
+					_vlastna_cast_hymnus_ako_na_posv_citanie(modlitba, _global_den.litobd);
+				}
 
 				break;
 			}
