@@ -12807,12 +12807,12 @@ const char* text_JUL_04_1_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_04_2_OP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Petra Juraja Frassatiho, laika",
-	"Bl. Petra Jiřího Frassatiho, terciáře",
+	"Sv. Petra Juraja Frassatiho, laika",
+	"Sv. Petra Jiřího Frassatiho, terciáře",
 	"",
 	"",
 	"",
-	"Bl. Petra Jiřího Frassatiho, terciáře",
+	"Sv. Petra Jiřího Frassatiho, terciáře",
 	"",
 	"",
 	"",
