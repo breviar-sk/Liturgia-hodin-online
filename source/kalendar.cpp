@@ -17304,9 +17304,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 					set_spolocna_cast(sc, poradie_svaty);
 
 				// nemá popis; 2013-02-04: doplnené
-				if ((_global_jazyk != JAZYK_CZ) && (_global_jazyk != JAZYK_CZ_OP)) {
-					set_popis_dummy();
-				}
+				set_popis_dummy();
 
 				modlitba = MODL_INVITATORIUM;
 				_vlastna_cast_antifona_inv;
@@ -17323,12 +17321,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_full(modlitba);
 
-				if (_global_jazyk == JAZYK_HU) {
-					_vlastna_cast_mcd_kcitresp_modl;
-				}
-				else {
-					_vlastna_cast_mcd_modlitba;
-				}
+				_vlastna_cast_mcd_kcitresp_modl;
 
 				break;
 			}
