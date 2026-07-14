@@ -12789,14 +12789,14 @@ const char* text_JUL_04_CZ[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUL_04_1_OP[POCET_JAZYKOV + 1] =
+const char* text_JUL_04_OP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Kataríny Jarrigeovej, panny",
-	"Bl. Kateřiny Jarrige, panny, terciářky",
+	"Sv. Petra Juraja Frassatiho, laika",
+	"Sv. Petra Jiřího Frassatiho, terciáře",
 	"",
+	"S. Petri Georgi Frassati",
 	"",
-	"",
-	"Bl. Kateřiny Jarrige, panny, terciářky",
+	"Sv. Petra Jiřího Frassatiho, terciáře", // CZ OP: 07JUL
 	"",
 	"",
 	"",
@@ -12807,12 +12807,12 @@ const char* text_JUL_04_1_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_JUL_04_2_OP[POCET_JAZYKOV + 1] =
 {
-	"Sv. Petra Juraja Frassatiho, laika",
-	"Sv. Petra Jiřího Frassatiho, terciáře",
+	"Bl. Kataríny Jarrigeovej, panny",
+	"Bl. Kateřiny Jarrige, panny, terciářky",
 	"",
 	"",
 	"",
-	"Sv. Petra Jiřího Frassatiho, terciáře",
+	"Bl. Kateřiny Jarrige, panny, terciářky",
 	"",
 	"",
 	"",

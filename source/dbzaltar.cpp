@@ -11540,7 +11540,7 @@ _struct_lang_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_CZ_OP, "10MAJ_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "30MAJ2_cCIT2", 4 },
 	{ JAZYK_CZ_OP, "04JUN_cCIT2", 2 },
-	{ JAZYK_CZ_OP, "04JUL3_cCIT2", 2 },
+	{ JAZYK_CZ_OP, "07JUL_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "09JUL_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "09JUL2_cCIT2", 2 },
 	{ JAZYK_CZ_OP, "17JUL2_cCIT2", 2 },
