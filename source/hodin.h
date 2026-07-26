@@ -7856,7 +7856,7 @@ const char* text_FEB_14[POCET_JAZYKOV + 1] =
 	"Sv. Cyrila, mnícha, a sv. Metoda, biskupa", // (na Slovensku sa slávi 5. júla) | odstránený popis "patrónov Európy" pre sviatok hlavných patrónov ZA diecézy
 	"(slaví se 5. června)",
 	"",
-	"Ss. Cyrilli, monachi, et Methodii, episcoporum",
+	"Ss. Cyrilli, monachi, et Methodii, episcopi",
 	"",
 	"",
 	"Szent Cirill szerzetes és Szent Metód püspök, " HTML_LINE_BREAK "Európa társvédőszentjei",
