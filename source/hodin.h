@@ -14511,11 +14511,11 @@ const char* text_AUG_09_OCD_OCARM[POCET_JAZYKOV + 1] =
 const char* text_AUG_10[POCET_JAZYKOV + 1] =
 {
 	"Sv. Vavrinca, diakona a mučeníka",
-	"Sv. Vavřince, mučedníka",
+	"Sv. Vavřince, jáhna a mučedníka",
 	"",
 	"S. Laurentii, diaconi et martyris",
 	"",
-	"Sv. Vavřince, mučedníka",
+	"Sv. Vavřince, jáhna a mučedníka",
 	"Szent Lőrinc diakónus és vértanú",
 	"ru_text",
 	"Св. Лаўрэнція, дыякана і мучаніка",
