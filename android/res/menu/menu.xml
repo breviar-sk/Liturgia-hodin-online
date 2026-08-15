@@ -66,6 +66,13 @@
     />
   </group>
 
+  <group android:id="@+id/search_menu_info">
+    <item android:id="@+id/search"
+          android:title="@string/search"
+          android:icon="@android:drawable/ic_menu_search"
+    />
+  </group>
+
   <group android:id="@+id/group_menu_info">
     <item android:id="@+id/menu_about"
           android:title="@string/about_title"

@@ -22,9 +22,45 @@
     </androidx.appcompat.widget.Toolbar>
 
     <WebView android:id="@+id/wv"
-             android:layout_width="match_parent" android:layout_height="match_parent"
+             android:layout_width="match_parent" android:layout_height="0dp"
+             android:layout_weight="1"
              android:scrollbarThumbVertical="@drawable/scrollbar"
-             android:paddingLeft="4dip" android_paddingRight="4dip" android:layout_weight="1"/>
+             android:paddingLeft="4dip" android_paddingRight="4dip"/>
+    <LinearLayout
+      android:id="@+id/search_container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:visibility="gone">
+      <EditText
+        android:id="@+id/search_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/search"
+        android:padding="8dp"/>
+      <ImageButton
+        android:id="@+id/search_prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_media_previous"
+        android:tint="@android:color/white"/>
+      <ImageButton
+        android:id="@+id/search_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_media_next"
+        android:tint="@android:color/white"/>
+      <ImageButton
+        android:id="@+id/search_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:tint="@android:color/white"/>
+    </LinearLayout>
   </LinearLayout>
 
   <com.google.android.material.navigation.NavigationView

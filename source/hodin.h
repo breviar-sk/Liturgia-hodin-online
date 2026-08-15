@@ -8980,7 +8980,7 @@ const char* text_APR_22_SJ[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_APR_23[POCET_JAZYKOV + 1] =
+const char* text_APR_23_2[POCET_JAZYKOV + 1] =
 {
 	"Sv. Vojtecha, biskupa a mučeníka",
 	"Sv. Vojtěcha, biskupa a mučedníka, " HTML_LINE_BREAK "hlavního patrona pražské arcidiecéze",
@@ -9012,7 +9012,7 @@ const char* text_APR_23_OFM[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_APR_24_1[POCET_JAZYKOV + 1] =
+const char* text_APR_23_1[POCET_JAZYKOV + 1] =
 {
 	"Sv. Juraja, mučeníka", // SK, CZ: 24APR; general calendar: 23APR
 	"Sv. Jiří, mučedníka",
@@ -9028,7 +9028,7 @@ const char* text_APR_24_1[POCET_JAZYKOV + 1] =
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_APR_24_2[POCET_JAZYKOV + 1] =
+const char* text_APR_24[POCET_JAZYKOV + 1] =
 {
 	"Sv. Fidéla zo Sigmaringenu, kňaza a mučeníka",
 	"Sv. Fidela ze Sigmaringy, kněze a mučedníka",
@@ -12338,7 +12338,7 @@ const char* text_JUN_21_SJ[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUN_22_2[POCET_JAZYKOV + 1] =
+const char* text_JUN_22_1[POCET_JAZYKOV + 1] =
 {
 	"Sv. Pavlína z Noly, biskupa",
 	"Sv. Paulina Nolánského, biskupa",
@@ -12354,7 +12354,7 @@ const char* text_JUN_22_2[POCET_JAZYKOV + 1] =
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_JUN_22_1[POCET_JAZYKOV + 1] =
+const char* text_JUN_22_2[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána Fishera, biskupa, " HTML_LINE_BREAK "a Tomáša Morusa, mučeníkov", // kedysi: Mórusa; Direktórium 2012, str. 156, uvádza už iba s krátkym "o"; 3RM uvádza bez druhého "sv." (prvé "Sv." sa myslí ako plurál)
 	"Sv. Jana Fishera, biskupa, " HTML_LINE_BREAK "a Tomáše Mora, mučedníků",

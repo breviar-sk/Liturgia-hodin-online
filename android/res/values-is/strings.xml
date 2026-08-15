@@ -163,4 +163,5 @@ body { background-color: #303030; color: #dddddd; }
 
     <string name="tts_language_not_available">Yfirfærsla texta í tal er ekki til í þessu tungumáli</string>
 
+    <string name="search">Leita</string>
 </resources>

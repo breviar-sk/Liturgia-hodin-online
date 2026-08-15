@@ -20,5 +20,4 @@
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_brightness_3_white_24dp"
   />
-
 </menu>

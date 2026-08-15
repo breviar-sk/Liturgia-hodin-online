@@ -17,7 +17,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.KeyEvent;
@@ -35,6 +37,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +81,11 @@ public class Breviar extends AppCompatActivity
 
     DrawerLayout drawer;
     WebView wv;
+    EditText searchEdit;
+    android.view.View searchContainer;
+    android.widget.ImageButton searchClear;
+    android.widget.ImageButton searchPrev;
+    android.widget.ImageButton searchNext;
     String wv_title = null;
     String wv_subtitle = "";
     int scale;
@@ -90,6 +98,7 @@ public class Breviar extends AppCompatActivity
     float scroll_to = -1;
     NavigationView navigationView = null;
     Toolbar toolbar = null;
+    boolean searchVisible = false;
 
     int appEventId = -1;
     PowerManager.WakeLock lock;
@@ -284,13 +293,18 @@ public class Breviar extends AppCompatActivity
       requestWindowFeature(Window.FEATURE_NO_TITLE);
       super.onCreate(savedInstanceState);
       WindowCompat.enableEdgeToEdge(getWindow());
+      Log.d("Breviar", "softInputMode = " + getWindow().getAttributes().softInputMode);
 
       setContentView(R.layout.breviar);
 
       ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content), (v, insets) -> {
         Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+        Insets ime = insets.getInsets(WindowInsetsCompat.Type.ime());
+        Log.d("BreviarInsets", "systemBars=" + bars + " ime=" + ime + " visible=" + (ime.bottom > 0));
         /* We probably do not need | WindowInsetsCompat.Type.displayCutout()); */
-        v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
+        int bottom = Math.max(bars.bottom, ime.bottom);
+        v.setPadding(bars.left, bars.top, bars.right, bottom);
+        // Consume all insets manually
         return WindowInsetsCompat.CONSUMED;
       });
 
@@ -376,6 +390,37 @@ public class Breviar extends AppCompatActivity
       wv.getSettings().setUseWideViewPort(false);
       initialized = false;
       Log.v("breviar", "setting scale = " + scale);
+
+      searchContainer = findViewById(R.id.search_container);
+      searchEdit = (EditText) findViewById(R.id.search_edit);
+      searchPrev = (android.widget.ImageButton) findViewById(R.id.search_prev);
+      searchNext = (android.widget.ImageButton) findViewById(R.id.search_next);
+      searchClear = (android.widget.ImageButton) findViewById(R.id.search_clear);
+      searchContainer.setVisibility(View.GONE);
+      searchClear.setOnClickListener(v -> toggleSearch());
+      searchPrev.setOnClickListener(v -> {
+          if (wv != null) wv.findNext(false);
+      });
+      searchNext.setOnClickListener(v -> {
+          if (wv != null) wv.findNext(true);
+      });
+      updateSearchBarTheme();
+      searchEdit.addTextChangedListener(new TextWatcher() {
+          @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+          @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+          @Override public void afterTextChanged(Editable s) {
+              String query = s.toString();
+              if (query.isEmpty()) {
+                  wv.clearMatches();
+              } else {
+                  wv.findAllAsync(query);
+              }
+          }
+      });
+      searchEdit.setOnEditorActionListener((v, actionId, event) -> {
+          // hide keyboard on done
+          return false;
+      });
 
       final Breviar parent = this;
       wv.setWebChromeClient(new WebChromeClient() {
@@ -696,6 +741,7 @@ public class Breviar extends AppCompatActivity
         if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
       }
       super.onResume();
+      updateSearchBarTheme();
     }
 
     @Override
@@ -1000,6 +1046,27 @@ public class Breviar extends AppCompatActivity
       scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
       S.setOpts(opts.build(true));
       wv.loadUrl(opts.build());
+      updateSearchBarTheme();
+    }
+
+    void updateSearchBarTheme() {
+      if (searchEdit == null || searchClear == null || searchContainer == null) return;
+      if (S == null) return;
+      boolean night = new UrlOptions(S.getOpts()).isNightmode();
+      int bgColor = night ? 0xFF2D2D2D : 0xFFFFFFFF;
+      int textColor = night ? 0xFFFFFFFF : 0xFF000000;
+      int hintColor = night ? 0xFFAAAAAA : 0xFF777777;
+      int iconTint = night ? 0xFFFFFFFF : 0xFF000000;
+      searchContainer.setBackgroundColor(bgColor);
+      searchEdit.setBackgroundColor(android.graphics.Color.TRANSPARENT);
+      searchEdit.setTextColor(textColor);
+      searchEdit.setHintTextColor(hintColor);
+      searchClear.setBackgroundColor(android.graphics.Color.TRANSPARENT);
+      searchPrev.setBackgroundColor(android.graphics.Color.TRANSPARENT);
+      searchNext.setBackgroundColor(android.graphics.Color.TRANSPARENT);
+      searchClear.setColorFilter(iconTint, android.graphics.PorterDuff.Mode.SRC_IN);
+      if (searchPrev != null) searchPrev.setColorFilter(iconTint, android.graphics.PorterDuff.Mode.SRC_IN);
+      if (searchNext != null) searchNext.setColorFilter(iconTint, android.graphics.PorterDuff.Mode.SRC_IN);
     }
 
     void toggleOnlyNonBoldFont() {
@@ -1010,6 +1077,25 @@ public class Breviar extends AppCompatActivity
       scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
       S.setOpts(opts.build(true));
       wv.loadUrl(opts.build());
+    }
+
+    void toggleSearch() {
+      searchVisible = !searchVisible;
+      if (searchVisible) {
+          searchContainer.setVisibility(View.VISIBLE);
+          searchEdit.requestFocus();
+          // show soft keyboard
+          searchEdit.post(() -> {
+              android.view.inputmethod.InputMethodManager imm = (android.view.inputmethod.InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+              if (imm != null) imm.showSoftInput(searchEdit, android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT);
+          });
+      } else {
+          searchEdit.setText("");
+          wv.clearMatches();
+          searchContainer.setVisibility(View.GONE);
+          android.view.inputmethod.InputMethodManager imm = (android.view.inputmethod.InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+          if (imm != null) imm.hideSoftInputFromWindow(searchEdit.getWindowToken(), 0);
+      }
     }
 
     void toggleFullscreen() {
@@ -1087,6 +1173,10 @@ public class Breviar extends AppCompatActivity
 
         case R.id.menu_news:
           showChangelog(false);
+          break;
+
+        case R.id.search:
+          toggleSearch();
           break;
 
         case R.id.menu_alarms:
@@ -1181,6 +1271,20 @@ public class Breviar extends AppCompatActivity
 
     @Override
     public boolean onDoubleTap(android.view.MotionEvent e) {
+      // Ignore double tap when it occurs inside the search bar
+      if (searchContainer != null && searchContainer.getVisibility() == View.VISIBLE) {
+          int[] loc = new int[2];
+          searchContainer.getLocationOnScreen(loc);
+          android.graphics.Rect bar = new android.graphics.Rect(
+              loc[0],
+              loc[1],
+              loc[0] + searchContainer.getWidth(),
+              loc[1] + searchContainer.getHeight()
+          );
+          if (bar.contains((int) e.getRawX(), (int) e.getRawY())) {
+              return false;
+          }
+      }
       toggleFullscreen();
       updateMenu();
       return true;

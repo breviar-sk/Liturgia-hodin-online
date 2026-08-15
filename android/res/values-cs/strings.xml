@@ -162,4 +162,6 @@ body { background-color: #303030; color: #dddddd; }
     ]]></string>
 
     <string name="tts_language_not_available">Převod textu na řeč není k dispozici pro aktuální jazyk.</string>
+
+    <string name="search">Hledat</string>
 </resources>

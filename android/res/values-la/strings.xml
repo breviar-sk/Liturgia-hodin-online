@@ -164,4 +164,6 @@ body { background-color: #303030; color: #dddddd; }
     ]]></string>
 
     <string name="tts_language_not_available">Traductio textus ad sermonem non est parabilis pro hanc linguam.</string>
+
+    <string name="search">Quaerere</string>
 </resources>

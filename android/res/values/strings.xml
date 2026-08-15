@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version" translatable="false">26.05</string>
+    <string name="version" translatable="false">26.08</string>
 
     <string name="app_name">Breviary</string>
     <string name="back">Back</string>
@@ -109,6 +109,8 @@
     <string name="h9_notify">Time for Terce!</string>
     <string name="h12_notify">Time for Sext!</string>
     <string name="h15_notify">Time for None!</string>
+
+    <string name="search">Search</string>
 
     <string name="tts_ready">Speak prayers</string>
     <string name="tts_speaking">Stop speaking</string>
