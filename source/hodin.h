@@ -17316,6 +17316,22 @@ const char* text_OKT_08_2_OP[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_09_1[POCET_JAZYKOV + 1] =
 {
+	"Sv. Jána Heinricha Newmana, kňaza a učiteľa Cirkvi",
+	"Sv. Jana Heinricha Newmana, kněze a učitele církve",
+	"",
+	"S. Ioannis Henrici Newman, presbyteri et Ecclesiæ doctoris",
+	"",
+	"Sv. Jana Heinricha Newmana, kněze a učitele církve",
+	"Newman Szent János Henrik áldozópap és egyháztanító",
+	"ru_text",
+	"by_text",
+	"Hl. Jóhannesar Henriks Newman, prests og kirkjufræðara",
+	"San Juan Enrique Newman, presbítero y doctor de la Iglesia",
+	"az_text",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+const char* text_OKT_09_2[POCET_JAZYKOV + 1] =
+{
 	"Sv. Dionýza, biskupa, a spoločníkov, mučeníkov",
 	"Sv. Dionýsia, biskupa, a druhů, mučedníků",
 	"",
@@ -17330,7 +17346,7 @@ const char* text_OKT_09_1[POCET_JAZYKOV + 1] =
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
-const char* text_OKT_09_2[POCET_JAZYKOV + 1] =
+const char* text_OKT_09_3[POCET_JAZYKOV + 1] =
 {
 	"Sv. Jána Leonardiho, kňaza",
 	"Sv. Jana Leonardiho, kněze",
