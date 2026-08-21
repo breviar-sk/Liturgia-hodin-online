@@ -18631,6 +18631,7 @@ const char* text_NOV_03_SJ[POCET_JAZYKOV + 1] =
 };
 const char* text_NOV_03_OFM[POCET_JAZYKOV + 1] =
 {
+	// ToDo: nie fix dátum, ale prvý voľný deň po spomienke na všetkých zosnulých veriacich
 	"Spomienka na všetkých zosnulých " HTML_LINE_BREAK "troch františkánskych rádov",
 	"Vzpomínka na všechny zemřelé serafínského řádu",
 	"",
@@ -19389,7 +19390,7 @@ const char* text_NOV_17_OFM[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"",
-	"Árpádházi Szent Erzsébet a III. Rend Pátrónája", // HU: 19NOV
+	"Árpád-házi Szent Erzsébet, a ferences világi rend védőszentje", // HU: 19NOV
 	"",
 	"",
 	"",
