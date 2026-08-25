@@ -2631,8 +2631,7 @@ short int sviatky_svatych_01_januar(short int den, short int poradie_svaty, _str
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
 			mystrcpy(_global_svaty(1).meno, text_JAN_28[_global_jazyk], MENO_SVIATKU);
 
-			// ...KNAZ nie je vo vlastnej casti, avsak aby sme vedeli, co mame dat v tych castiach, ktore nie su v uciteloch cirkvi, kde sa odvolava na duchovnych pastierov; 23/02/2000A.D.
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_UCITEL_CIRKVI, MODL_SPOL_CAST_DUCH_PAST_KNAZ);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_UCITEL_CIRKVI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 
@@ -37601,7 +37600,7 @@ short int sviatky_svatych_12_december(short int den, short int poradie_svaty, _s
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
 			mystrcpy(_global_svaty(1).meno, text_DEC_14[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_UCITEL_CIRKVI); // 2010-12-16: zapoznámkované MODL_SPOL_CAST_DUCH_PAST_KNAZ; podľa breviára len spol. časť učiteľov Cirkvi
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_UCITEL_CIRKVI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 		}// všeobecný kalendár

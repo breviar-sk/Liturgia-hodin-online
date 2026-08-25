@@ -6288,7 +6288,7 @@ const char* text_JAN_03[POCET_JAZYKOV + 1] =
 	"Sanctissimi Nominis Iesu",
 	"",
 	"Nejsvětějšího jména Ježíš",
-	"Jézus Szentséges Neve", // "Jézus Szent Neve" or "Jézus Szentséges Nevének"
+	"Jézus Szent Neve", // <- Hungarian Roman Missal | "Jézus Szentséges Neve" or "Jézus Szentséges Nevének"
 	"ru_text",
 	"Найсвяцейшага Імя Езуса",
 	"Alheilagt nafn Jesú",

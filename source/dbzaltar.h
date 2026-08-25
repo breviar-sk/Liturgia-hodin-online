@@ -377,13 +377,13 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define set_LOG_svsv Log("   set(svsv): %s: súbor `%s', kotva `%s'\n", nazov_modlitby(modlitba), _file, _anchor)
 
 /* ked dostane strukturu sc, vrati
-* MODL_SPOL_CAST_DUCH_PAST_... resp.
-* MODL_SPOL_CAST_PANNA
-* alebo MODL_SPOL_CAST_REHOLNIK -- vtedy priradim MODL_SPOL_CAST_SV_MUZ; 03/03/2000A.D.
-* mozno je to diskriminujuce, ale napr. kvoli sv. Efremovi (9. juna),
-* ak nematchuje, vrati MODL_SPOL_CAST_SV_MUZ; 03/03/2000A.D.
-* (predtym som vracal MODL_SPOL_CAST_NEURCENA)
-*/
+ * -- MODL_SPOL_CAST_DUCH_PAST_... resp.
+ * -- MODL_SPOL_CAST_PANNA
+ * -- alebo MODL_SPOL_CAST_REHOLNIK -- vtedy priradim MODL_SPOL_CAST_SV_MUZ; 03/03/2000A.D. => fixed 2026-08-24
+ * mozno je to diskriminujuce, ale napr. kvoli sv. Efremovi (9. juna), ak nematchuje, vrati MODL_SPOL_CAST_SV_MUZ; 03/03/2000A.D.
+ * (predtym som vracal MODL_SPOL_CAST_NEURCENA)
+ * communia speak clearly: De Communi pastorum, praeter sequentia => vrátime MODL_SPOL_CAST_DUCH_PAST_KNAZ (nie MODL_SPOL_CAST_SV_MUZ ako predtým)
+ */
 #define ucitel_cirkvi__sc_duch_pastier_panna {\
 	if ((a == MODL_SPOL_CAST_DUCH_PAST_KNAZ) || (a == MODL_SPOL_CAST_DUCH_PAST_BISKUP) || (a == MODL_SPOL_CAST_DUCH_PAST_PAPEZ) || (a == MODL_SPOL_CAST_PANNA)) {\
 		Log("matches (duchovny pastier || panna). returning %s (%d)\n", nazov_spolc(a), a);\
@@ -391,7 +391,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 		}\
 		else if ((a == MODL_SPOL_CAST_SV_MUZ_REHOLNIK) || (a == MODL_SPOL_CAST_SV_MUZ)) {\
 		Log("matches (reholnik || muz). returning %s (%d)\n", nazov_spolc(MODL_SPOL_CAST_SV_MUZ), MODL_SPOL_CAST_SV_MUZ);\
-		return MODL_SPOL_CAST_SV_MUZ;\
+		return MODL_SPOL_CAST_DUCH_PAST_KNAZ;\
 	}\
 }
 
