@@ -11329,7 +11329,7 @@ const char* text_NEDELA_SV_RODINY[POCET_JAZYKOV + 1] =
 };
 const char* text_SPOMIENKA_PM_V_SOBOTU[POCET_JAZYKOV + 1] =
 {
-	"Spomienka Prebl. Panny Márie v sobotu", // Direktórium 2026: 'Prebl. Panny Márie v sobotu'
+	"Prebl. Panny Márie v sobotu", // Direktórium 2026+2027: 'Prebl. Panny Márie v sobotu'; kedysi bolo: 'Spomienka Prebl. Panny Márie v sobotu'
 	"Sobotní památka Panny Marie",
 	"",
 	"Memoria S. Mariæ in sabbato",
