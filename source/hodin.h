@@ -17322,7 +17322,7 @@ const char* text_OKT_09_1[POCET_JAZYKOV + 1] =
 	"S. Ioannis Henrici Newman, presbyteri et Ecclesiæ doctoris",
 	"",
 	"Sv. Jana Henricha Newmana, kněze a učitele církve",
-	"Newman Szent János Henrik áldozópap és egyháztanító",
+	"Szent John Henry Newman áldozópap és egyháztanító", // should be: "Newman Szent János Henrik áldozópap és egyháztanító"
 	"ru_text",
 	"by_text",
 	"Hl. Jóhannesar Henriks Newman, prests og kirkjufræðara",
