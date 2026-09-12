@@ -583,15 +583,18 @@ short int _typslav_override(short int typslav) {
 } // _typslav_override()
 
 short int useWhenGlobalOption(short opt_i, unsigned long long bit_opt_i_component_j) {
+	// special handling of options for TTS (voice output)
 	if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
+
 		// behave as if these were switched OFF for voice output
+
 		if ((opt_i == OPT_0_SPECIALNE) && (
 			(bit_opt_i_component_j == BIT_OPT_0_VERSE)
 			|| (bit_opt_i_component_j == BIT_OPT_0_REFERENCIE)
 			|| (bit_opt_i_component_j == BIT_OPT_0_CITANIA)
 			|| (bit_opt_i_component_j == BIT_OPT_0_FOOTNOTES)
 			|| (bit_opt_i_component_j == BIT_OPT_0_TRANSPARENT_NAV)
-			// || (bit_opt_i_component_j == BIT_OPT_0_ZALMY_FULL_TEXT) // read also psalm omissions (for TTS)
+			// || (bit_opt_i_component_j == BIT_OPT_0_ZALMY_FULL_TEXT) // read also psalm omissions for TTS
 			)) {
 			return NIE;
 		}
@@ -611,7 +614,9 @@ short int useWhenGlobalOption(short opt_i, unsigned long long bit_opt_i_componen
 			)) {
 			return NIE;
 		}
+
 		// behave as if these were switched ON for voice output
+
 		else if ((opt_i == OPT_0_SPECIALNE) && (
 			(bit_opt_i_component_j == BIT_OPT_0_FONT_NORMAL)
 			)) {
@@ -625,7 +630,7 @@ short int useWhenGlobalOption(short opt_i, unsigned long long bit_opt_i_componen
 			|| (bit_opt_i_component_j == BIT_OPT_1_PLNE_RESP)
 			|| (bit_opt_i_component_j == BIT_OPT_1_PROSBY_ZVOLANIE)
 			|| (bit_opt_i_component_j == BIT_OPT_1_ZAVER)
-			|| (bit_opt_i_component_j == BIT_OPT_1_SKRY_POPIS)
+			// || (bit_opt_i_component_j == BIT_OPT_1_SKRY_POPIS) // do not hide POPIS automatically for TTS
 			|| (bit_opt_i_component_j == BIT_OPT_1_KOMPL_MARIA_ANT)
 			)) {
 			return ANO;
@@ -635,6 +640,9 @@ short int useWhenGlobalOption(short opt_i, unsigned long long bit_opt_i_componen
 			)) {
 			return ANO;
 		}
+
+		// untouched options behave as usual depending on their status
+
 		return isGlobalOption(opt_i, bit_opt_i_component_j);
 	}
 	return isGlobalOption(opt_i, bit_opt_i_component_j);
@@ -9805,7 +9813,7 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 	char action[MAX_STR];
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 
-	// for TTS, mute whole table
+	// for TTS, mute whole table -- begin
 	Export("<" HTML_DIV_TTS_MUTE ">\n");
 
 #ifdef BEHAVIOUR_WEB
@@ -9878,7 +9886,8 @@ void _export_rozbor_dna_buttons_dni_dnes(short int dnes_dnes, short int som_v_ta
 	}
 #endif
 
-	Export(HTML_DIV_END);
+	// for TTS, mute whole table -- end
+	Export(HTML_DIV_TTS_MUTE_END "\n");
 
 #ifdef OS_Windows_Ruby
 	ExportHtmlComment("buttons/dni/dnes:end");

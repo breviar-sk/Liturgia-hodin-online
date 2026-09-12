@@ -12194,6 +12194,22 @@ const char* text_JUN_16_HU[POCET_JAZYKOV + 1] =
 	"",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+const char* text_JUN_17_CZ[POCET_JAZYKOV + 1] =
+{
+	"",
+	"Bl. Václava Drboly a Jana Buly, kněží a mučedníků",
+	"",
+	"",
+	"",
+	"Bl. Václava Drboly a Jana Buly, kněží a mučedníků",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
 const char* text_JUN_17_IS[POCET_JAZYKOV + 1] =
 {
 	"",

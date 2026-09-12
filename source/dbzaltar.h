@@ -1804,6 +1804,7 @@ extern const char* text_JUN_15_HU[POCET_JAZYKOV + 1];
 extern const char* text_JUN_15_ES[POCET_JAZYKOV + 1];
 extern const char* text_JUN_16_SK[POCET_JAZYKOV + 1];
 extern const char* text_JUN_16_HU[POCET_JAZYKOV + 1];
+extern const char* text_JUN_17_CZ[POCET_JAZYKOV + 1];
 extern const char* text_JUN_17_IS[POCET_JAZYKOV + 1];
 extern const char* text_JUN_19[POCET_JAZYKOV + 1];
 extern const char* text_JUN_19_CZ[POCET_JAZYKOV + 1];
