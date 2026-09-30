@@ -17252,12 +17252,12 @@ const char* text_OKT_06_HU_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_OKT_06_OP[POCET_JAZYKOV + 1] =
 {
-	"Bl. Bartolomeja Longu",
+	"Sv. Bartolomeja Longu",
 	"",
 	"",
 	"",
 	"",
-	"Bl. Bartoloměje Longa, terciáře",
+	"Sv. Bartoloměje Longa, terciáře",
 	"",
 	"",
 	"",
