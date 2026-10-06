@@ -4767,10 +4767,10 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 					_set_hymnus(modlitba, NULL, new_anchor);
 				}
 				else if (bit == BASE_OPT_6_CITANIE2_MULTI) {
-					set_citanie2(modlitba, NULL, new_anchor);
+					_set_citanie2(modlitba, NULL, new_anchor);
 				}
 				else if (bit == BASE_OPT_6_CITANIE1_MULTI) {
-					set_citanie1(modlitba, NULL, new_anchor);
+					_set_citanie1(modlitba, NULL, new_anchor);
 				}
 				else if (bit == BASE_OPT_6_ANTIFONA_MULTI) {
 					if (_global_modlitba == MODL_RANNE_CHVALY) {

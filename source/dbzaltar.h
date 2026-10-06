@@ -209,13 +209,13 @@ extern void set_zalm(short int ktory, short int modlitba, const char* file, cons
 extern void _apply_anchor_filename_changes_for_two_years_cycle(short int ktore); // uses global variable _anchor
 
 // pre posvätné čítanie: 1. čítanie; kedysi bolo: #define set_citanie1 _set_kcitanie
-extern void set_citanie1(short int modlitba, const char* file, const char* anchor);
+extern void _set_citanie1(short int modlitba, const char* file, const char* anchor);
 
 extern void _set_kcitanie(short int modlitba, const char* file, const char* anchor);
 extern void _set_kresponz(short int modlitba, const char* file, const char* anchor);
 
 // pre posvätné čítanie: 2. čítanie; kedysi bolo: #define _set_citanie2 _set_benediktus
-extern void set_citanie2(short int modlitba, const char* file, const char* anchor);
+extern void _set_citanie2(short int modlitba, const char* file, const char* anchor);
 
 #define _set_magnifikat _set_benediktus
 
@@ -399,7 +399,9 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 #define panna__sc_mucenica { if (a == MODL_SPOL_CAST_MUCENICA) { Log("matches. returning ANO\n"); return ANO; } }
 
-/* ------------------------------------------------------------------------------------------- */
+#define sc_ucitelka_Cirkvi { if (a == MODL_SPOL_CAST_UCITELKA_CIRKVI) { Log("matches. returning ANO\n"); return ANO; } }
+
+ /* ------------------------------------------------------------------------------------------- */
 
 #define _vlastne_slavenie_popis(anchor) {\
 	sprintf(_anchor, "%s_%s", anchor, ANCHOR_POPIS);\
@@ -471,19 +473,19 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 #define _vlastne_slavenie_1citanie(vlastny_anchor) {\
 	sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
-	set_citanie1(modlitba, _file, _anchor);\
+	_set_citanie1(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
 
 #define _vlastne_slavenie_2citanie(vlastny_anchor) {\
 	sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
-	set_citanie2(modlitba, _file, _anchor);\
+	_set_citanie2(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
 
 #define _vlastne_slavenie_ine_1citanie(vlastny_anchor) {\
 	sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
-	set_citanie1(modlitba, _file_pc, _anchor);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 
@@ -493,12 +495,12 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	if (_global_den.denvr == _global_r._NANEBOVSTUPENIE_PANA.denvr) { \
 		Log("_vlastne_slavenie_ine_2citanie(): NAN [_special_anchor_prefix_CZ_hymnus_CZ_2cit == `%s']...\n", _special_anchor_prefix_CZ_hymnus_CZ_2cit); \
 		sprintf(_anchor, "%s%s_%c%s", _special_anchor_prefix_CZ_hymnus_CZ_2cit, vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
-		set_citanie2(modlitba, _file_pc, _anchor);\
+		_set_citanie2(modlitba, _file_pc, _anchor);\
 		set_LOG_litobd_pc;\
 	} \
 	else { \
 		sprintf(_anchor, "%s_%c%s", vlastny_anchor, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
-		set_citanie2(modlitba, _file_pc, _anchor);\
+		_set_citanie2(modlitba, _file_pc, _anchor);\
 		set_LOG_litobd_pc;\
 	} \
 }
@@ -673,14 +675,14 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 // 1. čítanie
 #define _vlastna_cast_1citanie {\
 	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
-	set_citanie1(modlitba, _file_pc, _anchor);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
 	set_LOG_svsv;\
 }
 
 // 2. čítanie
 #define _vlastna_cast_2citanie {\
 	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
-	set_citanie2(modlitba, _file_pc, _anchor);\
+	_set_citanie2(modlitba, _file_pc, _anchor);\
 	set_LOG_svsv;\
 }
 
@@ -963,7 +965,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 // 1. čítanie
 #define _spolocna_cast_1citanie {\
 	sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);\
-	set_citanie1(modlitba, _file, _anchor);\
+	_set_citanie1(modlitba, _file, _anchor);\
 	set_LOG_svsv;\
 }
 
@@ -972,7 +974,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(MODL_POSV_CITANIE) || ((force & FORCE_BRAT_2CITANIE) == FORCE_BRAT_2CITANIE)) {\
 		Log("_spolocna_cast_2citanie(%s)...\n", nazov_modlitby(MODL_POSV_CITANIE));\
 		sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby(MODL_POSV_CITANIE), ANCHOR_CITANIE2);\
-		set_citanie2(modlitba, _file, _anchor);\
+		_set_citanie2(modlitba, _file, _anchor);\
 		set_LOG_svsv;\
 	}\
 }
@@ -1348,7 +1350,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 
 #define _vlastna_cast_1citanie_ve {\
 	sprintf(_anchor, "%s%c%s%s", _anchor_head, pismenko_modlitby(modlitba), ANCHOR_CITANIE1, VELKONOCNA_PRIPONA);\
-	set_citanie1(modlitba, _file_pc, _anchor);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
 	set_LOG_svsv;\
 }
 
@@ -1518,7 +1520,7 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 #define _srdca_pm_2cit {\
 	Log("_srdca_pm_2cit...\n");\
 	sprintf(_anchor, "%s_%c%s", ANCHOR_SRDCA_PM, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);\
-	set_citanie2(modlitba, _file, _anchor);\
+	_set_citanie2(modlitba, _file, _anchor);\
 	set_LOG_litobd;\
 }
 

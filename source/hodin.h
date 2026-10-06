@@ -201,7 +201,8 @@ const char* nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1] =
 	{ "zosnulých", "za zemřelé", "", "defunctorum", "", "Za zemřelé", "halottakért", "ru_text", "за памерлых", "fyrir framliðna", "de difuntos", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých žien: pre tie, čo žili v manželstve", "o svatých ženách (které žily v manželství)", "", "sanctarum mulierum: pro iis quæ in matrimonio vixit", "", "O svatých ženách – o ženě, která žila v manželství", "házas szent asszonyok", "ru_text", "святых жанчын: ", "fyrir heilagar konur: sem lifðu í hjónabandi", "de santas mujeres: para los santos que vivían en matrimonio", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "svätých mužov: pre tých, čo žili v manželstve", "o svatých mužích (kterí žili v manželství)", "", "sanctorum virorum: pro iis qui in matrimonio vixit", "", "O svatých mužích – o muži, který žil v manželství", "házas szent férfiak", "ru_text", "святых мужчын: ", "fyrir heilaga karla: sem lifðu í hjónabandi", "de santos varones: para los santos que vivían en matrimonio", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "nebrať", "nepoužít", "do not use", "non sumere", "", "nepoužít", "mindent sajátból", "ru_text", "by_text", "taka ekki", "no usar", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
+	{ "učiteliek Cirkvi", "o učitelkách církve", "", "doctorum Ecclesiæ – pro muliere", "", "O učitelkách církve", "egyháztanítók nő", "ru_text", "доктараў Касцёла", "fyrir kirkjufræðara", "de doctores de la Iglesia", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "nebrať", "nepoužít", "do not use", "non sumere", "", "nepoužít", "mindent sajátból", "ru_text", "by_text", "taka ekki", "no usar", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 
 #define		nazov_spolc(a)	nazov_spolc_jazyk[a][_global_jazyk]
@@ -253,7 +254,8 @@ const char* nazov_spolc_htm[POCET_SPOL_CASTI + 1] =
 	"ozz.htm",
 	"sc_sz.htm",
 	"sc_sm.htm",
-	"000"
+	"sc_uc.htm",
+	"000",
 };
 
 // anchor names in files - same for all languages (based on Slovak)
@@ -286,7 +288,8 @@ const char* nazov_spolc_ANCHOR[POCET_SPOL_CASTI + 1] =
 	"OZZ",
 	"SCSZM",
 	"SCSMM",
-	"000"
+	"SCUCZ",
+	"000",
 };
 
 // the names of liturgical periods (usually lowecase) / nazov_obdobia: string pre nazov liturgickeho obdobia

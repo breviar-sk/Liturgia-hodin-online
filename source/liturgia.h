@@ -846,7 +846,7 @@ extern const char* str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #define je_spolocna_cast_urcena(spolcast) ((spolcast > MODL_SPOL_CAST_NEURCENA) && (spolcast < MODL_SPOL_CAST_NEBRAT))
 
 // option 3 -- tieto nasledujuce definicie definuju to, co je sucastou _struct_dm::spolcast
-#define MAX_MODL_SPOL_CAST  28
+#define MAX_MODL_SPOL_CAST  29
 // najviac MAX_MODL_SPOL_CAST "spolocnych casti", t.j. identifikatorov MODL_SPOL_CAST_...; musi byt o jedno vacsia ako poslena, t.j. MODL_SPOL_CAST_NEBRAT
 
 #define MODL_SPOL_CAST_NULL              -1
@@ -854,7 +854,7 @@ extern const char* str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #define MODL_SPOL_CAST_DUCH_PAST_KNAZ     1
 #define MODL_SPOL_CAST_DUCH_PAST_BISKUP   2
 #define MODL_SPOL_CAST_DUCH_PAST_PAPEZ    3
-#define MODL_SPOL_CAST_UCITEL_CIRKVI      4
+#define MODL_SPOL_CAST_UCITEL_CIRKVI      4 // muz
 #define MODL_SPOL_CAST_APOSTOL            5
 #define MODL_SPOL_CAST_MUCENIK            6 // muz
 #define MODL_SPOL_CAST_VIAC_MUCENIKOV     7
@@ -877,7 +877,8 @@ extern const char* str_modl_zalmy_zo_sv[POCET_JAZYKOV + 1];
 #define MODL_SPOL_CAST_ZA_ZOSNULYCH      24
 #define MODL_SPOL_CAST_SV_ZENA_MANZ      25 // pre tých, čo žili v manželstve
 #define MODL_SPOL_CAST_SV_MUZ_MANZ       26 // pre tých, čo žili v manželstve
-#define MODL_SPOL_CAST_NEBRAT            27 // nechce zo spol. casti // MUST BE THE LAST VALUE
+#define MODL_SPOL_CAST_UCITELKA_CIRKVI   27 // zena
+#define MODL_SPOL_CAST_NEBRAT            28 // nechce zo spol. casti // MUST BE THE LAST VALUE
 #define POCET_SPOL_CASTI	MAX_MODL_SPOL_CAST - 1
 
 const short int poradie_spol_cast[POCET_SPOL_CASTI + 1] = {
@@ -894,6 +895,7 @@ const short int poradie_spol_cast[POCET_SPOL_CASTI + 1] = {
 	MODL_SPOL_CAST_DUCH_PAST_KNAZ,
 	MODL_SPOL_CAST_DUCH_PAST_VIACERI,
 	MODL_SPOL_CAST_UCITEL_CIRKVI,
+	MODL_SPOL_CAST_UCITELKA_CIRKVI,
 	MODL_SPOL_CAST_PANNA,
 	MODL_SPOL_CAST_PANNY_VIACERE,
 	MODL_SPOL_CAST_SV_MUZ,
@@ -928,8 +930,8 @@ extern const char* nazov_spolc_jazyk[POCET_SPOL_CASTI + 1][POCET_JAZYKOV + 1];
 #define		nazov_spolc(a)	nazov_spolc_jazyk[a][_global_jazyk]
 #endif
 
-extern const char* nazov_spolc_htm[MODL_SPOL_CAST_NEBRAT + 1];
-extern const char* nazov_spolc_ANCHOR[MODL_SPOL_CAST_NEBRAT + 1];
+extern const char* nazov_spolc_htm[POCET_SPOL_CASTI + 1];
+extern const char* nazov_spolc_ANCHOR[POCET_SPOL_CASTI + 1];
 
 #define ANCHOR_SPOL_CAST_DUCH_PAST "SCDP"
 

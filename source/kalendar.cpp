@@ -9012,7 +9012,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
 			mystrcpy(_global_svaty(1).meno, text_APR_29[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITELKA_CIRKVI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).flags = FLAG_COLLECTA_VESP_DIFFERENT;
 			_global_svaty(1).kalendar = _global_kalendar;
@@ -9053,7 +9053,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
 			mystrcpy(_global_svaty(1).meno, text_APR_29[(_global_jazyk == JAZYK_CZ_OP) ? JAZYK_CZ : _global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITELKA_CIRKVI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 
@@ -9084,7 +9084,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 
 				_set_slavenie_typslav_smer(2, SLAV_SVIATOK, 7); // sviatky preblahoslavenej Panny Márie a svätých, uvedené vo všeobecnom kalendári
 				mystrcpy(_global_svaty(2).meno, text_APR_29[_global_jazyk], MENO_SVIATKU);
-				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA);
+				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITELKA_CIRKVI);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
 				_global_svaty(2).kalendar = _global_kalendar;
 			}// CZOP only
@@ -26972,7 +26972,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_modlitba;
-				_vlastna_cast_2citanie;
+				// _vlastna_cast_2citanie;
 
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_modlitba;
@@ -27000,7 +27000,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 			if (pocet > 1) {
 				_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 				mystrcpy(_global_svaty(2).meno, text_SEP_17_2[_global_jazyk], MENO_SVIATKU);
-				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITEL_CIRKVI);
+				_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITELKA_CIRKVI);
 				_global_svaty(2).farba = LIT_FARBA_BIELA;
 				_global_svaty(2).kalendar = KALENDAR_VSEOBECNY;
 			}
@@ -27345,7 +27345,7 @@ short int sviatky_svatych_09_september(short int den, short int poradie_svaty, _
 
 			_set_slavenie_typslav_smer(2, SLAV_LUB_SPOMIENKA, 12); // ľubovoľné spomienky
 			mystrcpy(_global_svaty(2).meno, text_SEP_17_2[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITEL_CIRKVI);
+			_global_svaty(2).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITELKA_CIRKVI);
 			_global_svaty(2).farba = LIT_FARBA_BIELA;
 			_global_svaty(2).kalendar = _global_kalendar;
 
@@ -28794,7 +28794,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 			_set_slavenie_typslav_smer(1, SLAV_SVIATOK, 7); // miestne sviatky preblahoslavenej Panny Márie a svätých; technicky 7, hoci podľa smerníc 8
 			mystrcpy(_global_svaty(1).meno, text_OKT_01_OCD_OCARM[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT); // MODL_SPOL_CAST_UCITELKA_CIRKVI
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD a KALENDAR_CZ_OCD + KALENDAR_CZ_OCARM
@@ -28822,7 +28822,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
 			mystrcpy(_global_svaty(1).meno, text_OKT_01[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITEL_CIRKVI);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITELKA_CIRKVI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 		}// všeobecný kalendár
@@ -30632,7 +30632,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 				_set_slavenie_typslav_smer(1, SLAV_SLAVNOST, 3); // miestne slávnosti Pána, preblahoslavenej Panny Márie a svätých; technicky 3, hoci podľa smerníc 4
 			}
 			mystrcpy(_global_svaty(1).meno, text_OKT_15_OCD[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_NEBRAT); // MODL_SPOL_CAST_UCITELKA_CIRKVI
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = _global_kalendar;
 		}// kalendár pre KALENDAR_SK_OCD a KALENDAR_CZ_OCD + KALENDAR_CZ_OCARM
@@ -30667,7 +30667,7 @@ short int sviatky_svatych_10_oktober(short int den, short int poradie_svaty, _st
 
 			_set_slavenie_typslav_smer(1, SLAV_SPOMIENKA, 10); // povinné spomienky podľa všeobecného kalendára
 			mystrcpy(_global_svaty(1).meno, text_OKT_15[_global_jazyk], MENO_SVIATKU);
-			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITEL_CIRKVI);
+			_global_svaty(1).spolcast = _encode_spol_cast(MODL_SPOL_CAST_PANNA, MODL_SPOL_CAST_UCITELKA_CIRKVI);
 			_global_svaty(1).farba = LIT_FARBA_BIELA;
 			_global_svaty(1).kalendar = KALENDAR_VSEOBECNY;
 

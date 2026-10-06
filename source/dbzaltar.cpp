@@ -823,7 +823,7 @@ void set_zalm(short int ktory, short int modlitba, const char* file, const char*
 	Log("_set_zalm%d: %s: súbor `%s', kotva `%s' [volanie set_zalm()]\n", ktory, (modlitba == MODL_CEZ_DEN_VSETKY) ? "MCD-all" : ((modlitba <= POCET_MODLITIEB) ? nazov_modlitby(modlitba) : STR_EMPTY), file, anchor);
 } // set_zalm()
 
-void set_citanie1(short int modlitba, const char* file, const char* anchor) {
+void _set_citanie1(short int modlitba, const char* file, const char* anchor) {
 	Log("set_citanie1(): begin [file == '%s', _file_pc_two_years_cycle_cit1 == '%s']...\n", file, _file_pc_two_years_cycle_cit1);
 
 	// Log("_global_modl_posv_citanie.citanie1.file == %s...\n", _global_modl_posv_citanie.citanie1.file);
@@ -930,7 +930,7 @@ void _set_kresponz(short int modlitba, const char* file, const char* anchor) {
 	} // switch(modlitba)
 } // _set_kresponz()
 
-void set_citanie2(short int modlitba, const char* file, const char* anchor) {
+void _set_citanie2(short int modlitba, const char* file, const char* anchor) {
 	Log("set_citanie2(): begin...\n");
 
 	mystrcpy(_anchor, anchor, MAX_STR_AF_ANCHOR);
@@ -5236,12 +5236,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 			// 1. čítanie
 			sprintf(_anchor, "%s%d%s%c_%s", nazov_OBD[litobd], tyzden, nazov_DN_asci[den], pismenko_modlitby(modlitba), ANCHOR_CITANIE1);
-			set_citanie1(modlitba, _file_pc, _anchor);
+			_set_citanie1(modlitba, _file_pc, _anchor);
 			set_LOG_litobd_pc;
 
 			// 2. čítanie
 			sprintf(_anchor, "%s%d%s%c_%s", nazov_OBD[litobd], tyzden, nazov_DN_asci[den], pismenko_modlitby(modlitba), ANCHOR_CITANIE2);
-			set_citanie2(modlitba, _file_pc, _anchor);
+			_set_citanie2(modlitba, _file_pc, _anchor);
 			set_LOG_litobd_pc;
 
 			t = set_tyzzal_1_2(tyzzal); // nema efekt pre tyzden == 4, lebo to uz je OBD_ADVENTNE_II
@@ -5609,7 +5609,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_global_den.den,
 				pismenko_modlitby(modlitba),
 				ANCHOR_CITANIE1);
-			set_citanie1(modlitba, _file_pc, _anchor);
+			_set_citanie1(modlitba, _file_pc, _anchor);
 			set_LOG_litobd;
 
 			// 2. čítanie
@@ -5618,7 +5618,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 				_global_den.den,
 				pismenko_modlitby(modlitba),
 				ANCHOR_CITANIE2);
-			set_citanie2(modlitba, _file_pc, _anchor);
+			_set_citanie2(modlitba, _file_pc, _anchor);
 			set_LOG_litobd;
 
 			// krátke responzórium
@@ -6154,12 +6154,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 }
 #define _vian1_citanie1 {\
 	sprintf(_anchor, "%s_%c%s_%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE1, _global_den.den);\
-	set_citanie1(modlitba, _file_pc, _anchor);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 #define _vian1_citanie2 {\
 	sprintf(_anchor, "%s_%c%s_%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, _global_den.den);\
-	set_citanie2(modlitba, _file_pc, _anchor);\
+	_set_citanie2(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 #define _vian_okt_antifony_pc {\
@@ -6684,12 +6684,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 }
 #define _vian2_citanie1 {\
 	sprintf(_anchor, "%s_%c%s_%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE1, (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA))? (_global_den.denvr - zjavenie_pana(_global_den.rok) + 6): _global_den.den);\
-	set_citanie1(modlitba, _file_pc, _anchor);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 #define _vian2_citanie2 {\
 	sprintf(_anchor, "%s_%c%s_%d", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ZJAVENIE_PANA_NEDELA))? (_global_den.denvr - zjavenie_pana(_global_den.rok) + 6): _global_den.den);\
-	set_citanie2(modlitba, _file_pc, _anchor);\
+	_set_citanie2(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 
@@ -7151,7 +7151,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					nazov_DN_asci[den],
 					pismenko_modlitby(modlitba),
 					ANCHOR_CITANIE1);
-				set_citanie1(modlitba, _file_pc_tyzden, _anchor);
+				_set_citanie1(modlitba, _file_pc_tyzden, _anchor);
 				set_LOG_litobd_pc_tyzden;
 				// Log(_global_modl_posv_citanie);
 
@@ -7164,7 +7164,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					ANCHOR_CITANIE2);
 				// Log("docasne - %s\n", _file_pc_tyzden);
 				// Log("docasne - %s\n", _anchor);
-				set_citanie2(modlitba, _file_pc_tyzden, _anchor);
+				_set_citanie2(modlitba, _file_pc_tyzden, _anchor);
 				set_LOG_litobd_pc_tyzden;
 				// Log(_global_modl_posv_citanie);
 
@@ -7434,7 +7434,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					nazov_DN_asci[den],
 					pismenko_modlitby(modlitba),
 					ANCHOR_CITANIE1);
-				set_citanie1(modlitba, _file_pc_tyzden, _anchor);
+				_set_citanie1(modlitba, _file_pc_tyzden, _anchor);
 				set_LOG_litobd_pc_tyzden;
 				// Log(_global_modl_posv_citanie);
 
@@ -7447,7 +7447,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 					ANCHOR_CITANIE2);
 				// Log("docasne - %s\n", _file_pc_tyzden);
 				// Log("docasne - %s\n", _anchor);
-				set_citanie2(modlitba, _file_pc_tyzden, _anchor);
+				_set_citanie2(modlitba, _file_pc_tyzden, _anchor);
 				set_LOG_litobd_pc_tyzden;
 				// Log(_global_modl_posv_citanie);
 
@@ -7618,13 +7618,13 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 // posvätné čítanie
 #define _post1_citanie1 {\
 	sprintf(_anchor, "%s_%c%s_%d%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE1, tyzden, nazov_DN_asci[den]);\
-	set_citanie1(modlitba, _file_pc, _anchor);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 // use _special_anchor_prefix_CZ_hymnus_CZ_2cit prefix according to BIT_OPT_0_ALTERNATIVE_READINGS
 #define _post1_citanie2 {\
 	sprintf(_anchor, "%s%s_%c%s_%d%s", _special_anchor_prefix_CZ_hymnus_CZ_2cit, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, tyzden, nazov_DN_asci[den]);\
-	set_citanie2(modlitba, _file_pc, _anchor);\
+	_set_citanie2(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 #define _post1_kcitanie {\
@@ -7990,13 +7990,13 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 // posvätné čítanie
 #define _post2_citanie1 {\
 	sprintf(_anchor, "%s_%c%s_%d%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE1, tyzden, nazov_DN_asci[den]);\
-	set_citanie1(modlitba, _file_pc, _anchor);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 // use _special_anchor_prefix_CZ_hymnus_CZ_2cit prefix according to BIT_OPT_0_ALTERNATIVE_READINGS
 #define _post2_citanie2 {\
 	sprintf(_anchor, "%s%s_%c%s_%d%s", _special_anchor_prefix_CZ_hymnus_CZ_2cit, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, tyzden, nazov_DN_asci[den]);\
-	set_citanie2(modlitba, _file_pc, _anchor);\
+	_set_citanie2(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 
@@ -8267,12 +8267,12 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 
 #define _vtroj_citanie1 {\
 	sprintf(_anchor, "%s_%c%s_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE1, nazov_DN_asci[den]);\
-	set_citanie1(modlitba, _file_pc, _anchor);\
+	_set_citanie1(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 #define _vtroj_citanie2 {\
 	sprintf(_anchor, "%s_%c%s_%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, nazov_DN_asci[den]);\
-	set_citanie2(modlitba, _file_pc, _anchor);\
+	_set_citanie2(modlitba, _file_pc, _anchor);\
 	set_LOG_litobd_pc;\
 }
 			// OBD_VELKONOCNE_TROJDNIE
@@ -8475,11 +8475,11 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 #define _velk1_citanie1 {\
 	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)) && ((_global_r._NANEBOVSTUPENIE_PANA.denvr - _global_den.denvr) < 4) && ((_global_r._NANEBOVSTUPENIE_PANA.denvr - _global_den.denvr) > 0)) {\
 		sprintf(_anchor, "%s_%c%s_%d%s", nazov_OBD[OBD_VELKONOCNE_II], pismenko_modlitby(modlitba), ANCHOR_CITANIE1, tyzden, nazov_DN_asci[den + 1]);\
-		set_citanie1(modlitba, nazov_obd_htm_pc[OBD_VELKONOCNE_II], _anchor);\
+		_set_citanie1(modlitba, nazov_obd_htm_pc[OBD_VELKONOCNE_II], _anchor);\
 	}\
 	else {\
 		sprintf(_anchor, "%s_%c%s_%d%s", nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE1, tyzden, nazov_DN_asci[den]);\
-		set_citanie1(modlitba, _file_pc, _anchor);\
+		_set_citanie1(modlitba, _file_pc, _anchor);\
 	}\
 	set_LOG_litobd_pc;\
 }
@@ -8487,11 +8487,11 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 #define _velk1_citanie2 {\
 	if ((isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA)) && ((_global_r._NANEBOVSTUPENIE_PANA.denvr - _global_den.denvr) < 4) && ((_global_r._NANEBOVSTUPENIE_PANA.denvr - _global_den.denvr) > 0)) {\
 		sprintf(_anchor, "%s%s_%c%s_%d%s", _special_anchor_prefix_CZ_hymnus_CZ_2cit, nazov_OBD[OBD_VELKONOCNE_II], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, tyzden, nazov_DN_asci[den + 1]);\
-		set_citanie2(modlitba, nazov_obd_htm_pc[OBD_VELKONOCNE_II], _anchor);\
+		_set_citanie2(modlitba, nazov_obd_htm_pc[OBD_VELKONOCNE_II], _anchor);\
 	}\
 	else {\
 		sprintf(_anchor, "%s%s_%c%s_%d%s", _special_anchor_prefix_CZ_hymnus_CZ_2cit, nazov_OBD[litobd], pismenko_modlitby(modlitba), ANCHOR_CITANIE2, tyzden, nazov_DN_asci[den]);\
-		set_citanie2(modlitba, _file_pc, _anchor);\
+		_set_citanie2(modlitba, _file_pc, _anchor);\
 	}\
 	set_LOG_litobd_pc;\
 }
@@ -9409,7 +9409,7 @@ void liturgicke_obdobie(short int litobd, short int tyzden, short int den, short
 		_set_hymnus_alternativy_NO(modlitba, _global_den.litobd);
 		// druhé čítanie
 		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);
-		set_citanie2(modlitba, _file, _anchor);
+		_set_citanie2(modlitba, _file, _anchor);
 		set_LOG_litobd;
 		// modlitba -- ako na ranné chvály
 		sprintf(_anchor, "%s%c_%s", SPOM_PM_SOBOTA, pismenko_modlitby(MODL_RANNE_CHVALY), ANCHOR_MODLITBA);
@@ -9505,7 +9505,23 @@ short int _spol_cast_je_mucenica(_struct_sc sc) {
 	return NIE;
 }// _spol_cast_je_mucenica();
 
- // specialne veci pre sviatky duchovnych pastierov, jedneho mucenika...
+short int _spol_cast_je_ucitelka_Cirkvi(_struct_sc sc) {
+	Log("_spol_cast_je_ucitelka_Cirkvi() -- skúšam, či v sc je učiteľka Cirkvi...\n");
+	short int a;
+	a = sc.a1;
+	Log("  sc.a1 == %s (%d)\n", nazov_spolc(sc.a1), sc.a1);
+	sc_ucitelka_Cirkvi;
+	a = sc.a2;
+	Log("  sc.a2 == %s (%d)\n", nazov_spolc(sc.a2), sc.a2);
+	sc_ucitelka_Cirkvi;
+	a = sc.a3;
+	Log("  sc.a3 == %s (%d)\n", nazov_spolc(sc.a3), sc.a3);
+	sc_ucitelka_Cirkvi;
+	Log("  returning NIE\n");
+	return NIE;
+}// _spol_cast_je_ucitelka_Cirkvi();
+
+// špeciálne veci pre sviatky duchovných pastierov, jedného mučeníka, učiteľov Cirkvi...
 // funguje to aj pre svatych muzov (jeden resp. viaceri -- podla toho, co je v _anchor_pom)
 void _spolocna_cast_hymnus_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file, int force) {
 	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_HYMNUS) == FORCE_BRAT_HYMNUS)) {
@@ -9531,7 +9547,7 @@ void _spolocna_cast_magnifikat_rozne(short int modlitba, char *_anchor_pom, char
 	}
 }
 
-void _spolocna_cast_kresponz_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file, int force) {
+void _spolocna_cast_kresponz_rozne(short int modlitba, char* _anchor_pom, char* _anchor, char* _file, int force) {
 	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)) {
 		sprintf(_anchor, "%s%c%s", _anchor_pom, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ);
 		_set_kresponz(modlitba, _file, _anchor);
@@ -9539,10 +9555,36 @@ void _spolocna_cast_kresponz_rozne(short int modlitba, char *_anchor_pom, char *
 	}
 }
 
+void _spolocna_cast_kresp_ve_rozne(short int modlitba, char* _anchor_pom, char* _anchor, char* _file, int force) {
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_KRESP) == FORCE_BRAT_KRESP)) {
+		sprintf(_anchor, "%s%c%s%s", _anchor_pom, pismenko_modlitby(modlitba), ANCHOR_KRESPONZ, VELKONOCNA_PRIPONA);
+		_set_kresponz(modlitba, _file, _anchor);
+		set_LOG_svsv;
+	}
+}
+
+void _spolocna_cast_2citanie_rozne(short int modlitba, char* _anchor_pom, char* _anchor, char* _file, int force) {
+	Log("_spolocna_cast_2citanie_rozne()...\n");
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_2CITANIE) == FORCE_BRAT_2CITANIE)) {
+		sprintf(_anchor, "%s%c%s", _anchor_pom, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);
+		_set_citanie2(modlitba, _file, _anchor);
+		set_LOG_svsv;
+	}
+}
+
+void _spolocna_cast_modlitba_rozne(short int modlitba, char* _anchor_pom, char* _anchor, char* _file, int force) {
+	Log("_spolocna_cast_modlitba_rozne()...\n");
+	if (su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(modlitba) || ((force & FORCE_BRAT_MODLITBA) == FORCE_BRAT_MODLITBA)) {
+		sprintf(_anchor, "%s%s", _anchor_pom, ANCHOR_MODLITBA);
+		_set_modlitba(modlitba, _file, _anchor);
+		set_LOG_svsv;
+	}
+}
+
 // kvôli 2. čítaniu pre duchovných pastierov; používame aj pre odlišné čítanie pre sväté ženy - čo žili v manželstve
 void _spolocna_cast_2cit_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file) {
 	sprintf(_anchor, "%s%c%s", _anchor_pom, pismenko_modlitby(modlitba), ANCHOR_CITANIE2);
-	set_citanie2(modlitba, _file, _anchor);
+	_set_citanie2(modlitba, _file, _anchor);
 	set_LOG_svsv;
 }
 
@@ -9580,7 +9622,7 @@ void _spolocna_cast_1cit_zvazok(short int modlitba, const char* _anchor_pom, con
 		else {
 			sprintf(_anchor_lokal, "%s%s%c%s", _anchor, _anchor_zvazok, pismenko_modlitby(modlitba), ANCHOR_CITANIE1);
 		}
-		set_citanie1(modlitba, _file, _anchor_lokal);
+		_set_citanie1(modlitba, _file, _anchor_lokal);
 
 		Log("   set(svsv): %s: `%s', kotva `%s'\n", nazov_modlitby(modlitba), _file, _anchor_lokal);
 	}
@@ -9867,10 +9909,11 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 	}// MODL_SPOL_CAST_DUCH_PAST_...
 
 	// spolocna cast na sviatky ucitelov cirkvi
-	else if (a == MODL_SPOL_CAST_UCITEL_CIRKVI) {
+	else if ((a == MODL_SPOL_CAST_UCITEL_CIRKVI) || (a == MODL_SPOL_CAST_UCITELKA_CIRKVI)) {
 		// najprv nastavime podla spol. casti duchovnych pastierov resp. panien...
 
 		Log("/* spolocna cast na sviatky ucitelov cirkvi */\n");
+		// doplnená možnosť brať modlitbu pre ženu-učiteľku Cirkvi
 
 		b = _spol_cast_vyber_dp_pn(sc);
 		if (b != MODL_SPOL_CAST_NEURCENA) {
@@ -9881,16 +9924,38 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		}
 		// ...a teraz vlastnu cast ucitelov cirkvi
 
+		sprintf(_anchor_head, "%s_", nazov_spolc_ANCHOR[MODL_SPOL_CAST_UCITEL_CIRKVI]);
+		Log("  _anchor_head == %s\n", _anchor_head);
+		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[MODL_SPOL_CAST_UCITEL_CIRKVI]);
+		// currently, for LA and SK only
+		if (_global_jazyk == JAZYK_LA || _global_jazyk == JAZYK_SK) {
+			if (_spol_cast_je_ucitelka_Cirkvi(sc) == ANO) {
+				sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[MODL_SPOL_CAST_UCITELKA_CIRKVI]);
+				podmienka = ANO;
+			}
+		}
+		Log("  _anchor_pom == %s\n", _anchor_pom);
+
 		// prvé vešpery
 		modlitba = MODL_PRVE_VESPERY;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+		if (podmienka == ANO) {
+			// MODL_SPOL_CAST_UCITELKA_CIRKVI
+			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_magnifikat_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		}
+		else {
+			_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+			_spolocna_cast_magnifikat(modlitba);
+			_spolocna_cast_modlitba;
+		}
 		_spolocna_cast_kcitanie(modlitba);
-		_spolocna_cast_kresponz;
-		_spolocna_cast_magnifikat(modlitba);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kresp_ve;
 		}
-		_spolocna_cast_modlitba;
+		else {
+			_spolocna_cast_kresponz;
+		}
 
 		// invitatórium
 		modlitba = MODL_INVITATORIUM;
@@ -9898,10 +9963,18 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// posvätné čítanie
 		modlitba = MODL_POSV_CITANIE;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+		if (podmienka == ANO) {
+			// MODL_SPOL_CAST_UCITELKA_CIRKVI
+			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_2citanie_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		}
+		else {
+			_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+			_spolocna_cast_2citanie;
+			_spolocna_cast_modlitba;
+		}
 
-		sprintf(_anchor_pom, "%s_", nazov_spolc_ANCHOR[a]);
-		Log("  _anchor_pom == %s\n", _anchor_pom);
 		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
@@ -9909,9 +9982,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		}
 		Log("  _anchor_zvazok == %s\n", _anchor_zvazok);
 
-		_spolocna_cast_1cit_zvazok(modlitba, _anchor_pom, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
-		_spolocna_cast_2citanie;
-		_spolocna_cast_modlitba;
+		_spolocna_cast_1cit_zvazok(modlitba, _anchor_head, _anchor_zvazok, STR_EMPTY /* 2005-08-08: _anchor netreba*/, _file, force);
 
 		// predĺžené slávenie vigílií
 		if (_global_jazyk == JAZYK_CZ) {
@@ -9920,31 +9991,74 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 
 		// ranné chvály
 		modlitba = MODL_RANNE_CHVALY;
-		_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+		if (podmienka == ANO) {
+			// MODL_SPOL_CAST_UCITELKA_CIRKVI
+			_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_benediktus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+			_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+		}
+		else {
+			_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+			_spolocna_cast_benediktus(modlitba);
+			_spolocna_cast_modlitba;
+		}
 		_spolocna_cast_kcitanie(modlitba);
-		_spolocna_cast_kresponz;
-		_spolocna_cast_benediktus(modlitba);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
 			_spolocna_cast_kresp_ve;
 		}
-		_spolocna_cast_modlitba;
+		else {
+			_spolocna_cast_kresponz;
+		}
+		// ToDo: SK
+		if (_global_jazyk == JAZYK_LA)
+		{
+			_spolocna_cast_prosby(modlitba);
+		}
 
 		// modlitba cez deň
 
 		// vešpery
 		if ((_global_den.litobd != OBD_OKTAVA_NARODENIA) || (_global_svaty_i_smer_override(1) <= 4)) {
 			modlitba = MODL_VESPERY;
-			_spolocna_cast_hymnus(modlitba, _global_den.litobd);
-			_spolocna_cast_kcitanie(modlitba);
-			_spolocna_cast_kresponz;
-			_spolocna_cast_magnifikat(modlitba);
-			if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
-				_spolocna_cast_kresp_ve;
+			if (podmienka == ANO) {
+				// MODL_SPOL_CAST_UCITELKA_CIRKVI
+				_spolocna_cast_hymnus_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+				_spolocna_cast_magnifikat_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+				_spolocna_cast_modlitba_rozne(modlitba, _anchor_pom, _anchor, _file, force);
 			}
-			_spolocna_cast_modlitba;
+			else {
+				_spolocna_cast_hymnus(modlitba, _global_den.litobd);
+				_spolocna_cast_magnifikat(modlitba);
+				_spolocna_cast_modlitba;
+			}
+			_spolocna_cast_kcitanie(modlitba);
+			// _spolocna_cast_kresponz;
+			// _spolocna_cast_magnifikat(modlitba);
+			if (podmienka == ANO) {
+				// MODL_SPOL_CAST_UCITELKA_CIRKVI
+				if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
+					_spolocna_cast_kresp_ve_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+				}
+				else {
+					_spolocna_cast_kresponz_rozne(modlitba, _anchor_pom, _anchor, _file, force);
+				}
+			}
+			else {
+				if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
+					_spolocna_cast_kresp_ve;
+				}
+				else {
+					_spolocna_cast_kresponz;
+				}
+			}
+			// ToDo: SK
+			if (_global_jazyk == JAZYK_LA)
+			{
+				_spolocna_cast_prosby(modlitba);
+			}
 		}// v OBD_OKTAVA_NARODENIA -- vešpery sú zo dňa, pokiaľ sa neslávi ako slávnosť
 
-	}// MODL_SPOL_CAST_UCITEL_CIRKVI
+	}// MODL_SPOL_CAST_UCITEL_CIRKVI / MODL_SPOL_CAST_UCITELKA_CIRKVI
 
 	// spolocna cast na sviatky jedneho mucenika
 	else if ((a == MODL_SPOL_CAST_MUCENIK) || (a == MODL_SPOL_CAST_MUCENICA)) {
@@ -9960,6 +10074,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 			podmienka = ANO;
 		}
 		Log("  _anchor_pom == %s\n", _anchor_pom);
+
 		// ďalší pomocný anchor, ktorý pojednáva o zväzku breviára kvôli posv. čítaniam
 		sprintf(_anchor_zvazok, "%s_", zvazok_OBD[_global_den.litobd]);
 		if ((_global_den.litobd == OBD_VELKONOCNE_I) || (_global_den.litobd == OBD_VELKONOCNE_II)) {
@@ -10058,7 +10173,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 			}
 		}// v OBD_OKTAVA_NARODENIA -- vešpery sú zo dňa, pokiaľ sa neslávi ako slávnosť
 
-	}// MODL_SPOL_CAST_MUCENIK/MUCENICA
+	}// MODL_SPOL_CAST_MUCENIK / MODL_SPOL_CAST_MUCENICA
 
 	// spolocna cast na sviatky viacerych mucenikov
 	else if (a == MODL_SPOL_CAST_VIAC_MUCENIKOV) {
@@ -11522,6 +11637,7 @@ _struct_lang_anchor_and_count pocet_citanie2_multi_anchor_count[] = {
 	{ JAZYK_UNDEF, "SCSZ_cCIT2", 2 },
 	{ JAZYK_UNDEF, "SCSZV_cCIT2", 2 },
 	{ JAZYK_UNDEF, "SCUC_cCIT2", 2 },
+	{ JAZYK_UNDEF, "SCUCZ_cCIT2", 2 },
 	{ JAZYK_SK, "05OKT_cCIT2", 2 },
 	{ JAZYK_SK, "15SEP_cCIT2", 2 },
 	{ JAZYK_UNDEF, "VPCHR_cCIT2", 2 },
