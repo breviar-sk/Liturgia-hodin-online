@@ -292,7 +292,7 @@ extern void liturgicke_obdobie(short int litobd, short int tyzden, short int den
 
 extern short int su_inv_hymnus_kcit_kresp_benmagn_prosby_vlastne(short int m);
 
-extern short int _spol_cast_vyber_dp_pn(_struct_sc sc);
+extern short int _spol_cast_vyber_dp_pn(_struct_sc sc, short int spol_cast);
 extern short int _spol_cast_je_panna(_struct_sc sc);
 extern void _spolocna_cast_hymnus_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file, int force);
 extern void _spolocna_cast_benediktus_rozne(short int modlitba, char *_anchor_pom, char *_anchor, char *_file, int force);
@@ -388,8 +388,8 @@ extern void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force 
 	if ((a == MODL_SPOL_CAST_DUCH_PAST_KNAZ) || (a == MODL_SPOL_CAST_DUCH_PAST_BISKUP) || (a == MODL_SPOL_CAST_DUCH_PAST_PAPEZ) || (a == MODL_SPOL_CAST_PANNA)) {\
 		Log("matches (duchovny pastier || panna). returning %s (%d)\n", nazov_spolc(a), a);\
 		return a;\
-		}\
-		else if ((a == MODL_SPOL_CAST_SV_MUZ_REHOLNIK) || (a == MODL_SPOL_CAST_SV_MUZ)) {\
+	}\
+	else if ((a == MODL_SPOL_CAST_SV_MUZ_REHOLNIK) || (a == MODL_SPOL_CAST_SV_MUZ)) {\
 		Log("matches (reholnik || muz). returning %s (%d)\n", nazov_spolc(MODL_SPOL_CAST_SV_MUZ), MODL_SPOL_CAST_SV_MUZ);\
 		return MODL_SPOL_CAST_DUCH_PAST_KNAZ;\
 	}\

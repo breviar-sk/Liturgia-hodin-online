@@ -11,7 +11,7 @@
 #include "utf8-utils.h"
 
 #include <stdlib.h>
-#include <string.h>
+#include "mystring.h" // #include <string.h> // mystrcpy() <- strncpy()
 
 int WcharToUppercase(int w) {
 	if (w >= 'a' && w <= 'z') {
@@ -2223,9 +2223,9 @@ void FirstToLower(char* s, int len) {
 	char* s2 = s;
 	char* t2 = t;
 	EncodeWchar(WcharToLowercase(DecodeWchar((const char**)(&s2))), &t2);
-	strncpy(t2, s2, len + 16 - (t2 - t));
+	mystrcpy(t2, s2, len + 16 - (t2 - t));
 	if (t != 0) {
-		strncpy(s, t, len);
+		mystrcpy(s, t, len);
 	}
 	s[len - 1] = 0;
 	free(t);

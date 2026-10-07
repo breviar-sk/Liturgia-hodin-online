@@ -4339,7 +4339,8 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 		}
 		else if (equals(paramname, PARAM_OVERRIDE_STUPEN_SLAVENIA)) {
 			bit = BIT_OPT_1_OVERRIDE_STUP_SLAV;
-			podmienka = podmienka && ((_global_den.typslav == SLAV_SVIATOK) || (_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA));
+			// Log("PARAM_OVERRIDE_STUPEN_SLAVENIA: _global_den.typslav == %s\n", _global_den.typslav);
+			podmienka = podmienka && (((query_type == PRM_LIT_OBD) && (_global_opt[OPT_3_SPOLOCNA_CAST] != MODL_SPOL_CAST_NEBRAT)) || ((_global_den.typslav == SLAV_SVIATOK) || (_global_den.typslav == SLAV_SPOMIENKA) || (_global_den.typslav == SLAV_LUB_SPOMIENKA)));
 			Log("podmienka == %d [_global_den.typslav == %d, override == %d]\n", podmienka, _global_den.typslav, _typslav_override(_global_den.typslav));
 			podmienka = podmienka && (_global_poradie_svaty != PORADIE_PM_SOBOTA);
 			Log("podmienka == %d [_global_poradie_svaty == %d, PORADIE_PM_SOBOTA == %d]\n", podmienka, _global_poradie_svaty, PORADIE_PM_SOBOTA);
@@ -15974,7 +15975,9 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 	_global_den.tyzden = t;
 	_global_den.litrok = lr; // default: litrok  = (char)('A' + nedelny_cyklus(den, mesiac, rok));
 
-	// Log("_global_den.denvt == %d\n", _global_den.denvt);
+	Log("_global_den.denvt == %d\n", _global_den.denvt);
+	Log("_global_den.smer == %d\n", _global_den.smer);
+	Log("_global_den.typslav == %d\n", _global_den.typslav);
 
 	mystrcpy(_global_den.meno, STR_EMPTY, MENO_SVIATKU);
 	// špeciálne nastavenie hodnoty smer
@@ -16143,6 +16146,34 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		break;
 	} // switch(lo)
 
+	Log("_global_den.smer == %d\n", _global_den.smer);
+
+	// setting default level of celebration if communia were chosen
+	if (jeSpolocnaCast == ANO) {
+		_global_den.typslav = SLAV_SPOMIENKA;
+		Log("CHANGE: _global_den.typslav == %d\n", _global_den.typslav);
+	}
+
+	// consideration of possibility to celebrate with higer level (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV))
+	short int smer_override = 14; // undefined; smernice uvádzajú len 13 hodnôt
+	smer_override = _global_den_smer_override;
+	Log("_global_den.smer override == %d...\n", smer_override);
+
+	if (_global_den.smer > smer_override) {
+		_global_den.smer = smer_override;
+		Log("CHANGE: _global_den.smer == %d\n", _global_den.smer);
+	}
+
+	short int typslav_override = SLAV_NEURCENE; // undefined
+	typslav_override = _typslav_override(_global_den.typslav);
+	Log("_global_den.typslav override == %d...\n", typslav_override);
+
+	if ((typslav_override != SLAV_NEURCENE) && (_global_den.typslav > typslav_override)) {
+		_global_den.typslav = typslav_override;
+		Log("CHANGE: _global_den.typslav == %d\n", _global_den.typslav);
+	}
+
+	// special cases (special days in liturgical year)
 	if (_global_den.denvr < 0) {
 		switch (_global_den.denvr) {
 		case NULL_KRST_KRISTA_PANA:

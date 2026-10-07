@@ -440,9 +440,9 @@ const char* zvazok_OBD[POCET_OBDOBI + 1] =
 const char* nazov_slavenia_jazyk[POCET_SLAVENI + 1][POCET_JAZYKOV + 1] =
 {
 	{ "féria", "férie", "feria", "feria", "férie", "féria", "féria", "ru_text", "будзень", "almennur tími", "feria", "adi gün", /* STRING_1_FOR_NEW_LANGUAGE */ }, // zmenené z "___", 2012-10-12
-	{ "slávnosť", "slavnost", "celebration", "sollemnitas", "", "Slavnost", "főünnep", "ru_text", "урачыстасць", "stórhátíð", "solemnidad", "təntənəli bayram", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "sviatok", "svátek", "", "festum", "", "Svátek", "ünnep", "ru_text", "свята", "hátíð", "fiesta", "bayram", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "spomienka", "památka", "", "memoria", "", "Památka", "emléknap", "ru_text", "успамін", "M minning", "memoria", "xatirə (mütləq)", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "slávnosť", "slavnost", "solemnity", "sollemnitas", "", "Slavnost", "főünnep", "ru_text", "урачыстасць", "stórhátíð", "solemnidad", "təntənəli bayram", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "sviatok", "svátek", "feast", "festum", "", "Svátek", "ünnep", "ru_text", "свята", "hátíð", "fiesta", "bayram", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "spomienka", "památka", "memorial", "memoria", "", "Památka", "emléknap", "ru_text", "успамін", "M minning", "memoria", "xatirə (mütləq)", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "ľubovoľná spomienka", "nezávazná památka", "", "memoria ad libitum", "", "nezávazná památka", "tetszés szerinti emléknap", "ru_text", "неабавязковы ўспамін", "* minning" /*"minningardagur að frjálsu vali"*/, "memoria libre", "xatirə (könüllü)", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "vlastné slávenie", "z vlastních textů", "", "textus proprius", "", "z vlastních textů", "saját szöveg", "ru_text", "by_text", "eigið hátíðarhald", "propias tías", "xüsusi bayram", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };

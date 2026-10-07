@@ -9457,7 +9457,10 @@ short int modlitba;
 // v spoločnej časti na sviatky učiteľov cirkvi je uvedené: "zo spoločnej časti na sviatky duchovných pastierov okrem toho, čo nasleduje"
 // preto opravené (nevrátim default MODL_SPOL_CAST_SV_MUZ, ale MODL_SPOL_CAST_DUCH_PAST_KNAZ)
 // skontrolované: len 3 slávenia majú uvedené MODL_SPOL_CAST_UCITEL_CIRKVI bez doplnenia, či to bol (diakon,) kňaz, biskup, pápež, panna: sv. Efrém, sv. Hieronym, sv. Ján z Kríža
-short int _spol_cast_vyber_dp_pn(_struct_sc sc) {
+// due to new communia (MODL_SPOL_CAST_UCITELKA_CIRKVI) if no matches found we return corresponding base:
+// -- man MODL_SPOL_CAST_UCITEL_CIRKVI => MODL_SPOL_CAST_DUCH_PAST_KNAZ
+// -- woman MODL_SPOL_CAST_UCITELKA_CIRKVI => MODL_SPOL_CAST_PANNA
+short int _spol_cast_vyber_dp_pn(_struct_sc sc, short int spol_cast) {
 	Log("_spol_cast_vyber_dp_pn() -- skúšam, čo sa zhoduje...\n");
 	short int a;
 	a = sc.a1;
@@ -9469,8 +9472,19 @@ short int _spol_cast_vyber_dp_pn(_struct_sc sc) {
 	a = sc.a3;
 	Log("  sc.a3 == %s (%d)\n", nazov_spolc(sc.a3), sc.a3);
 	ucitel_cirkvi__sc_duch_pastier_panna;
-	Log("not matches. returning %s (%d)\n", nazov_spolc(MODL_SPOL_CAST_DUCH_PAST_KNAZ), MODL_SPOL_CAST_DUCH_PAST_KNAZ);
-	return MODL_SPOL_CAST_DUCH_PAST_KNAZ;
+
+	if (spol_cast == MODL_SPOL_CAST_UCITEL_CIRKVI) {
+		a = MODL_SPOL_CAST_DUCH_PAST_KNAZ;
+	}
+	else if(spol_cast == MODL_SPOL_CAST_UCITELKA_CIRKVI) {
+		a = MODL_SPOL_CAST_PANNA;
+	}
+	else {
+		// this should not happen!
+		a = MODL_SPOL_CAST_NEURCENA;
+	}
+	Log("no matches. returning %s (%d)\n", nazov_spolc(a), a);
+	return a;
 }// _spol_cast_vyber_dp_pn();
 
 short int _spol_cast_je_panna(_struct_sc sc) {
@@ -9915,7 +9929,7 @@ void __set_spolocna_cast(short int a, short int poradie_svaty, _struct_sc sc, in
 		Log("/* spolocna cast na sviatky ucitelov cirkvi */\n");
 		// doplnená možnosť brať modlitbu pre ženu-učiteľku Cirkvi
 
-		b = _spol_cast_vyber_dp_pn(sc);
+		b = _spol_cast_vyber_dp_pn(sc, a);
 		if (b != MODL_SPOL_CAST_NEURCENA) {
 			Log("spustam _set_spolocna_cast(%s) druhy raz (vnorene) -- kvoli castiam, ktore pre ucitelov cirkvi nie su\n", nazov_spolc(b));
 			__set_spolocna_cast(b, poradie_svaty, sc, force);
