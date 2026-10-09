@@ -11162,10 +11162,10 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 							}
 							else {
 								// sem by to nemalo prísť
-								set_LOG_sc("-- Error: sc (a1, a2, a3) su sice urcene, ale _global_opt[OPT_3_SPOLOCNA_CAST] sa nerovna ani jednej z nich!\n");
+								set_LOG_sc("-- Error: sc (a1, a2, a3) su sice urcene (%d, %d, %d), ale _global_opt[OPT_3_SPOLOCNA_CAST] == %d sa nerovna ani jednej z nich!\n", sc.a1, sc.a2, sc.a3, _global_opt[OPT_3_SPOLOCNA_CAST]);
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 								ALERT;
-								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1, a2, a3 -- ok)\n");
+								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly: %d (a1: %d, a2: %d, a3: %d -- ok)\n", _global_opt[OPT_3_SPOLOCNA_CAST], sc.a1, sc.a2, sc.a3);
 #endif
 								return;
 							}
@@ -11179,10 +11179,10 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 						else {
 							// sem by to nemalo prísť
 							if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
-								set_LOG_sc("-- Error: sc (a1, a2) su sice urcene, ale _global_opt[OPT_3_SPOLOCNA_CAST] sa nerovna ani jednej z nich!\n");
+								set_LOG_sc("-- Error: sc (a1, a2) su sice urcene (%d, %d), ale _global_opt[OPT_3_SPOLOCNA_CAST] == %d sa nerovna ani jednej z nich!\n", sc.a1, sc.a2, _global_opt[OPT_3_SPOLOCNA_CAST]);
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 								ALERT;
-								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1, a2 -- ok)\n");
+								Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly: %d (a1: %d, a2: %d -- ok)\n", _global_opt[OPT_3_SPOLOCNA_CAST], sc.a1, sc.a2);
 #endif
 								return;
 							}
@@ -11198,10 +11198,10 @@ void set_spolocna_cast(_struct_sc sc, short int poradie_svaty, int force /* = 0 
 				else {
 					// sem by to nemalo prísť
 					if (poradie_svaty != UNKNOWN_PORADIE_SVATEHO) {
-						set_LOG_sc("-- Error: sc (a1) je sice urcena, ale _global_opt[OPT_3_SPOLOCNA_CAST] sa jej nerovna!\n");
+						set_LOG_sc("-- Error: sc (a1) je sice urcena (%d), ale _global_opt[OPT_3_SPOLOCNA_CAST] == %d sa jej nerovna!\n", sc.a1, _global_opt[OPT_3_SPOLOCNA_CAST]);
 #if defined(DEBUG) || defined(OS_Windows_Ruby)
 						ALERT;
-						Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly (a1 -- ok)\n");
+						Export("Error: _global_opt[OPT_3_SPOLOCNA_CAST] assigned incorectly: %d (a1: %d -- ok)\n", _global_opt[OPT_3_SPOLOCNA_CAST], sc.a1);
 #endif
 						return;
 					}
