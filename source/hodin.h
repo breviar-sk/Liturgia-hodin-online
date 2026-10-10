@@ -9017,7 +9017,7 @@ const char* text_APR_23_OFM[POCET_JAZYKOV + 1] =
 };
 const char* text_APR_23_1[POCET_JAZYKOV + 1] =
 {
-	"Sv. Juraja, mučeníka", // SK, CZ: 24APR; general calendar: 23APR
+	"Sv. Juraja, mučeníka", // SK, CZ, HU: 24APR; general calendar: 23APR
 	"Sv. Jiří, mučedníka",
 	"",
 	"S. Georgii, martyris",

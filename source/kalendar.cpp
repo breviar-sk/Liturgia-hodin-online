@@ -8173,7 +8173,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_RANNE_CHVALY;
 				_vlastna_cast_benediktus;
 				_vlastna_cast_modlitba;
-				if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_CZ))) {
+				if (_global_jazyk != JAZYK_SK) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 					_vlastna_cast_kcitanie;
 					_vlastna_cast_kresponz;
@@ -8185,7 +8185,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_POSV_CITANIE;
 				_vlastna_cast_modlitba;
 				_vlastna_cast_2citanie;
-				if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_CZ))) {
+				if (_global_jazyk != JAZYK_SK) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 				}
 
@@ -8196,7 +8196,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				modlitba = MODL_VESPERY;
 				_vlastna_cast_magnifikat;
 				_vlastna_cast_modlitba;
-				if ((_global_jazyk == JAZYK_CZ_OP) || ((_global_jazyk == JAZYK_CZ))) {
+				if (_global_jazyk != JAZYK_SK) {
 					_vlastna_cast_hymnus(modlitba, _global_den.litobd);
 					_vlastna_cast_kcitanie;
 					_vlastna_cast_kresponz;
@@ -8224,7 +8224,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 				|| ((_global_jazyk == JAZYK_HU) && (_global_kalendar == KALENDAR_HU_OFM))
 				) {
 
-				pom_poradie = (_global_jazyk == JAZYK_HU) ? 3 : 2;
+				pom_poradie = 2;
 
 				if (poradie_svaty == pom_poradie) {
 
