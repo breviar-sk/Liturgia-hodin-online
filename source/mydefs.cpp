@@ -7,8 +7,6 @@
 /*                                                       */
 /*********************************************************/
 
-#include "vstudio.h"
-
 #ifndef __MYDEFS_CPP_
 #define __MYDEFS_CPP_
 

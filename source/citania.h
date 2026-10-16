@@ -11,13 +11,12 @@
 #ifndef __CITANIA_H_
 #define __CITANIA_H_
 
-#include "breviar.h"
-#include "mysystem.h"
+// Load the selected model before testing its feature flags.
 #include "mysysdef.h"
-#include "mydefs.h"
-#include "common.h"
 
 #ifdef LITURGICKE_CITANIA_ANDROID
+
+#include "liturgia.h"
 
 struct citanie {
 	const char* kod, * citania, * zalm, * aleluja;

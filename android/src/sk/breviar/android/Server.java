@@ -21,6 +21,47 @@ import sk.breviar.android.FdInputStream;
 import sk.breviar.android.FdOutputStream;
 
 public class Server extends Thread {
+    // The JNI bridge and renderer use process-global request state.
+    private static final Object NATIVE_LOCK = new Object();
+    // UI settings updates must never wait for rendering, socket writes or Copy.join().
+    private final Object settingsLock = new Object();
+    private long settingsRevision;
+
+    private Server(Context context) {
+      ctx = context.getApplicationContext();
+    }
+
+    private String render(FileDescriptor out, FileDescriptor in, String environment) {
+      synchronized (NATIVE_LOCK) {
+        return main(out, in, environment);
+      }
+    }
+
+    /** Render the iOS settings export without sockets or changes to reader options.
+     * Call on a worker thread; HTTP requests use the same native lock.
+     */
+    public static String getSettingsXml(Context context, String options, String language)
+        throws IOException, InterruptedException {
+      Server renderer = new Server(context);
+      UrlOptions query = new UrlOptions(options);
+      for (String key : new String[]{"d", "m", "r", "p", "ds"}) query.params.remove(key);
+      query.params.put("qt", "pxml");
+      query.params.put("j", language);
+      FileDescriptor[] output = renderer.createPipe();
+      FileDescriptor[] input = renderer.createPipe();
+      new FdOutputStream(input[1]).close();
+      ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+      Copy copy = new Copy(new FdInputStream(output[0]), bytes);
+      copy.start(); // Drain concurrently: exports can exceed pipe capacity.
+      renderer.render(output[1], input[0], "REQUEST_METHOD=GET\001QUERY_STRING=" +
+          query.getBuilder().build().getEncodedQuery() + "\001WWW_j=" + language + "\001");
+      copy.join();
+      String response = bytes.toString("UTF-8");
+      int start = response.indexOf("<?xml");
+      if (start < 0) throw new IOException("Missing settings XML");
+      return response.substring(start);
+    }
+
     public int port;
     public int port_nonpersistent;
     ServerSocketChannel listener;
@@ -28,8 +69,8 @@ public class Server extends Thread {
     Context ctx;
     boolean running;
     static String scriptname;
-    String language;
-    String persistentOpts;
+    private String language;
+    private String persistentOpts;
 
     public Server(Context _ctx, String sn, String lang, String opts) throws IOException {
       int i;
@@ -90,25 +131,35 @@ public class Server extends Thread {
       // setDaemon(true);
     }
 
-    public synchronized void setLanguage(String lang) {
-      language = lang;
+    public void setLanguage(String lang) {
+      synchronized (settingsLock) {
+        language = lang;
+        ++settingsRevision;
+      }
     }
 
-    public synchronized void setOpts(String s) {
-      persistentOpts = s;
+    public void setOpts(String s) {
+      synchronized (settingsLock) {
+        persistentOpts = s;
+        ++settingsRevision;
+      }
     }
 
     public String getOpts() {
-      return persistentOpts;
+      synchronized (settingsLock) {
+        return persistentOpts;
+      }
     }
 
     // Force using current persistent options for the next request.
     // This is rather hacky (since it would not work well if there were multiple clients
     // talking to the server), but it is needed to avoid resetting options when using goBack()
     // in the WebView.
-    boolean force_opts_for_next_request = false;
-    synchronized public void forceOptsForNextRequest() {
-      force_opts_for_next_request = true;
+    private boolean force_opts_for_next_request = false;
+    public void forceOptsForNextRequest() {
+      synchronized (settingsLock) {
+        force_opts_for_next_request = true;
+      }
     }
 
     public void run() {
@@ -196,6 +247,16 @@ public class Server extends Thread {
     }
 
     synchronized void handleCgi(Socket client, String dokument, boolean postmethod, int cntlen, byte[] buf, boolean persistent) throws IOException {
+      String requestOpts, requestLanguage;
+      long requestRevision;
+      boolean forceOpts;
+      synchronized (settingsLock) {
+        requestOpts = persistentOpts;
+        requestLanguage = language;
+        requestRevision = settingsRevision;
+        forceOpts = force_opts_for_next_request;
+        force_opts_for_next_request = false;
+      }
       // Log.v("breviar", "handling cgi request");
       client.getOutputStream().write(
           (
@@ -212,26 +273,30 @@ public class Server extends Thread {
       FileDescriptor[] pipein = createPipe();
       Copy cpin = new Copy( new ByteArrayInputStream(buf, 0, cntlen), new FdOutputStream(pipein[1]) );
       cpin.start();
-      String localOpts = persistentOpts;
+      String localOpts;
 
-      if (force_opts_for_next_request) {
-        force_opts_for_next_request = false;
-        if (persistentOpts.startsWith("&") && !qs.isEmpty()) {
-          qs = persistentOpts.substring(1) + "&" + qs;
+      if (forceOpts) {
+        if (requestOpts.startsWith("&") && !qs.isEmpty()) {
+          qs = requestOpts.substring(1) + "&" + qs;
           Log.v("breviar", "Forcing persistent options: " + qs);
         }
       }
 
       if (!postmethod) {
-        localOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=GET\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
+        localOpts = render(pipe[1], pipein[0], "REQUEST_METHOD=GET\001QUERY_STRING=" + qs + "\001WWW_j=" + requestLanguage + "\001");
       } else {
-        localOpts = main(pipe[1], pipein[0], "REQUEST_METHOD=POST\001CONTENT_TYPE=application/x-www-form-urlencoded\001CONTENT_LENGTH=" +
-            cntlen + "\001QUERY_STRING=" + qs + "\001WWW_j=" + language + "\001");
+        localOpts = render(pipe[1], pipein[0], "REQUEST_METHOD=POST\001CONTENT_TYPE=application/x-www-form-urlencoded\001CONTENT_LENGTH=" +
+            cntlen + "\001QUERY_STRING=" + qs + "\001WWW_j=" + requestLanguage + "\001");
       }
 
       if (persistent) {
-        persistentOpts = localOpts;
-        Log.v("breviar", "persistentOpts = " + persistentOpts);
+        synchronized (settingsLock) {
+          // An older page may finish after the UI has already changed settings.
+          if (requestRevision == settingsRevision) {
+            persistentOpts = localOpts;
+          }
+        }
+        Log.v("breviar", "persistentOpts = " + getOpts());
       } else {
         Log.v("breviar", "localOpts = " + localOpts);
       }
@@ -284,7 +349,7 @@ public class Server extends Thread {
         Log.v("breviar", "file not found: " + dokument);
         // last effort - default page
         try {
-          handleCgi(client, scriptname + "?qt=pdnes&" + persistentOpts , false, 0, new byte[0], persistent);
+          handleCgi(client, scriptname + "?qt=pdnes&" + getOpts() , false, 0, new byte[0], persistent);
         } catch (IOException e2) {
           client.getOutputStream().write(
               (

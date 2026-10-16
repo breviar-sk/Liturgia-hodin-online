@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="eink_mode">Režim E-ink (černobílý, bez animací)</string>
+    <string name="appearance_title">Režim zobrazení</string>
+    <string name="appearance_message">Toto nastavení můžete později změnit v %1$s > %2$s.</string>
+    <string name="appearance_normal">Běžný displej</string>
+    <string name="appearance_eink">Displej E-ink</string>
     <string name="app_name">Breviář</string>
     <string name="back">Zpátky</string>
     <string name="forward">Vpřed</string>
@@ -10,6 +15,8 @@
 
     <string name="lang_select">Jazyk</string>
     <string name="settings">Nastavení</string>
+    <string name="settings_loading">Načítají se nastavení…</string>
+    <string name="settings_load_failed">Nastavení se nepodařilo načíst. Klepnutím zkuste znovu.</string>
 
     <string name="lang_cz">Čeština</string>
     <string name="lang_c2">Čeština – dominikánský</string>
@@ -52,7 +59,12 @@
     <string name="normal_font">Obyčejné písmo (ne tučné)</string>
     <string name="buttons_rounded_corners">Zaoblené rohy pro tlačítka</string>
     <string name="buttons_order">Navigační tlačítka pro datum pod tlačítky pro modlitby</string>
-    <string name="transparent_nav">Navigační šipky v textu (pravý okraj)</string>
+    <string name="reading_navigation">Navigace při čtení</string>
+    <string name="navigation_scroll">Pouze posouvání</string>
+    <string name="navigation_arrows">Navigační šipky</string>
+    <string name="navigation_buttons">Dolní tlačítka nahoru/dolů</string>
+    <string name="navigation_taps">Klepnutí na horní/dolní třetinu</string>
+    <string name="navigation_taps_horizontal">Klepnutí na levou/pravou třetinu</string>
     <string name="transparent_nav_left">Navigační šipky u levého okraje</string>
     <string name="transparent_nav_down_only">Zobraz jen navigační šipku dolů</string>
     <string name="font_select">Výběr písma</string>

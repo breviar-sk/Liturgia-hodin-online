@@ -85,10 +85,23 @@ android {
     release {
       res.srcDirs = ['res.release']
     }
+    test {
+      java.srcDirs = ['testing/unit']
+    }
+  }
+
+  testOptions {
+    unitTests.includeAndroidResources = true
   }
 
   signingConfigs {
     release {
+      keyAlias keystoreProperties['keyAlias']
+      keyPassword keystoreProperties['keyPassword']
+      storeFile file(keystoreProperties['storeFile'])
+      storePassword keystoreProperties['storePassword']
+    }
+    debug {
       keyAlias keystoreProperties['keyAlias']
       keyPassword keystoreProperties['keyPassword']
       storeFile file(keystoreProperties['storeFile'])
@@ -115,4 +128,6 @@ dependencies {
   implementation 'androidx.appcompat:appcompat-resources:1.7.1'
   implementation 'androidx.media:media:1.7.0'
   implementation 'com.google.android.material:material:1.14.0'
+  testImplementation 'junit:junit:4.13.2'
+  testImplementation 'org.robolectric:robolectric:4.17'
 }

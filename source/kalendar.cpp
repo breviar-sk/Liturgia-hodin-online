@@ -7,8 +7,6 @@
 /*                                                            */
 /**************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __KALENDAR_CPP_
 #define __KALENDAR_CPP_
 

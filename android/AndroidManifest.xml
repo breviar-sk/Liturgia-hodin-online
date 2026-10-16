@@ -70,7 +70,8 @@
                       android:name="android.support.PARENT_ACTIVITY"
                       android:value="sk.breviar.android.MainSettings" />
         </activity>
-        <activity android:name="PrayerSettings"
+        <activity android:name="XmlSettingsActivity"
+                  android:exported="false"
                   android:configChanges="orientation|screenSize"
                   android:parentActivityName="sk.breviar.android.MainSettings"
                   android:launchMode="singleTop">
@@ -79,14 +80,6 @@
                       android:value="sk.breviar.android.MainSettings" />
         </activity>
         <activity android:name="DisplaySettings"
-                  android:configChanges="orientation|screenSize"
-                  android:parentActivityName="sk.breviar.android.MainSettings"
-                  android:launchMode="singleTop">
-                  <meta-data
-                      android:name="android.support.PARENT_ACTIVITY"
-                      android:value="sk.breviar.android.MainSettings" />
-        </activity>
-        <activity android:name="CalendarSettings"
                   android:configChanges="orientation|screenSize"
                   android:parentActivityName="sk.breviar.android.MainSettings"
                   android:launchMode="singleTop">

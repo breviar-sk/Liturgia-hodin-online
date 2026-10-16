@@ -7,7 +7,6 @@
 /* http://sourceforge.net/p/predef/wiki/OperatingSystems/      */
 /*                                                             */
 /***************************************************************/
-#include "vstudio.h"
 
 #ifndef __MYSYSTEM_H_
 #define __MYSYSTEM_H_

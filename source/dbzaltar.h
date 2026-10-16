@@ -8,8 +8,6 @@
 /*                                                          */
 /************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __DBZALTAR_H_
 #define __DBZALTAR_H_
 
@@ -17,8 +15,6 @@
 #include "mydefs.h"
 #include "common.h"
 
-#include "myexpt.h" // export do suboru alebo na konzolu printf
-#include "mylog.h"
 #include <string.h>
 #include "myhpage.h" // kvôli hlavicka()
 

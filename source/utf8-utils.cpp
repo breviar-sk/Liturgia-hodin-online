@@ -10,8 +10,7 @@
 
 #include "utf8-utils.h"
 
-#include <stdlib.h>
-#include "mystring.h" // #include <string.h> // mystrcpy() <- strncpy()
+#include "mystring.h"
 
 int WcharToUppercase(int w) {
 	if (w >= 'a' && w <= 'z') {

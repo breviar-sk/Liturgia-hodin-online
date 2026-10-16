@@ -8,28 +8,27 @@
 /*                                                          */
 /************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __LITURGIA_CPP_
 #define __LITURGIA_CPP_
+
+#include <string.h>
 
 #include "liturgia.h"
 #include "breviar.h"
 #include "bible.h"
 
-#include "mylog.h"
-#include "myexpt.h"
 #include "mydefs.h"
-#include "mysystem.h"
 #include "mysysdef.h"
 #include "common.h"
 #include "mystring.h"
 #include "myconf.h"
-#include "utf8-utils.h"
 
-#include <ctype.h>
-#include <wctype.h>
-#include <string.h>
+#ifdef _WIN32
+	// Windows už má _strdup, netreba robiť nič
+#else
+	// Na Linuxe/macOS premenujeme _strdup na štandardný strdup
+#define _strdup strdup
+#endif
 
 //---------------------------------------------------------------------
 short int _allocate_global_var(void) {

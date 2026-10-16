@@ -7,14 +7,10 @@
 /*                                                             */
 /***************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __BREVIAR_H_
 #define __BREVIAR_H_
 
 #include "liturgia.h"
-#include "mysystem.h"
-#include "mysysdef.h"
 
 // week of psaltery
 #define TYZZAL(t)					(((t + 3) MOD 4) + 1)

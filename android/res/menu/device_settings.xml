@@ -3,6 +3,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
+  <item android:id="@+id/eink_mode"
+        android:title="@string/eink_mode"
+        app:actionLayout="@layout/widget_switch"
+  />
+
   <item android:id="@+id/vol_buttons"
         android:title="@string/vol_buttons"
         app:actionLayout="@layout/widget_switch"

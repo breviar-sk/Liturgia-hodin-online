@@ -60,10 +60,7 @@ public class DisplaySettings extends SettingsActivity {
       public void setOpt(UrlOptions opts, boolean value) { opts.setButtonsOrder(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isButtonsOrder(); }
     });
-    handleSwitch(R.id.transparent_nav, new BooleanUrlOption() {
-      public void setOpt(UrlOptions opts, boolean value) { opts.setTransparentNav(value); }
-      public boolean getOpt(UrlOptions opts) { return opts.isTransparentNav(); }
-    });
+    handleClick(R.id.reading_navigation, this::chooseNavigation);
     handleSwitch(R.id.transparent_nav_left, new BooleanUrlOption() {
       public void setOpt(UrlOptions opts, boolean value) { opts.setTransparentNavLeft(value); }
       public boolean getOpt(UrlOptions opts) { return opts.isTransparentNavLeft(); }
@@ -111,6 +108,34 @@ public class DisplaySettings extends SettingsActivity {
       } catch (java.lang.NullPointerException e) {
         Log.v("breviar", "Cannot setup navigation view!");
       }
+    }
+  }
+
+  private void chooseNavigation() {
+    ReadingNavigation.Mode[] modes = ReadingNavigation.Mode.values();
+    String[] labels = new String[modes.length];
+    for (int i = 0; i < modes.length; ++i) labels[i] = getString(modes[i].label);
+    new androidx.appcompat.app.AlertDialog.Builder(this)
+        .setTitle(R.string.reading_navigation)
+        .setSingleChoiceItems(labels, ReadingNavigation.get(this).ordinal(), (dialog, index) -> {
+          ReadingNavigation.set(this, modes[index]);
+          updateMenu();
+          dialog.dismiss();
+        })
+        .setNegativeButton(android.R.string.cancel, null)
+        .show();
+  }
+
+  @Override
+  public void updateMenu() {
+    super.updateMenu();
+    ReadingNavigation.Mode mode = ReadingNavigation.get(this);
+    navigationView.getMenu().findItem(R.id.reading_navigation)
+        .setTitle(getString(R.string.reading_navigation) + "\n" + getString(mode.label));
+    for (int id : new int[]{R.id.transparent_nav_left, R.id.transparent_nav_down_only}) {
+      android.view.MenuItem item = navigationView.getMenu().findItem(id);
+      item.setEnabled(mode == ReadingNavigation.Mode.ARROWS);
+      item.getActionView().setEnabled(item.isEnabled());
     }
   }
 

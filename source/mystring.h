@@ -7,8 +7,6 @@
 /*                                                             */
 /***************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __MYSTRING_H_
 #define __MYSTRING_H_
 

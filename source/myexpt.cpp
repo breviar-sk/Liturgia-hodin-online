@@ -8,8 +8,6 @@
 /*                                                            */
 /**************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __MYEXPT_CPP_
 #define __MYEXPT_CPP_
 

@@ -13,6 +13,7 @@ import sk.breviar.android.CompatibilityHelper17;
 import sk.breviar.android.Util;
 
 public class BreviarApp extends Application {
+  final AppearanceChanges appearanceChanges = new AppearanceChanges();
   public static final int NOTIFY_ALARM_ID = 1;
   public static final int NOTIFY_TTS_ID = 2;
 
@@ -130,6 +131,7 @@ public class BreviarApp extends Application {
   static final String booleanMute = "mute";
   static final String booleanTtsUsePauseInPsalms = "tts_use_pause_in_psalms";
   static final String booleanNoZoom = "no_zoom";
+  static final String booleanEinkMode = "eink_mode";
   static final String stringUrlOptions = "params";
   static final String stringFontsCss = "fonts_css";
 
@@ -167,6 +169,20 @@ public class BreviarApp extends Application {
 
   static public boolean getNoZoom(Context ctx) {
     return getBoolean(ctx, booleanNoZoom, false);
+  }
+
+  static public boolean getEinkMode(Context ctx) {
+    return getBoolean(ctx, booleanEinkMode, false);
+  }
+
+  static public boolean hasAppearanceChoice(Context ctx) {
+    // An explicit false is a choice too. Older installations that only used
+    // the default have no key and should see the chooser once on upgrade.
+    return ctx.getSharedPreferences(Util.prefname, 0).contains(booleanEinkMode);
+  }
+
+  static public void setEinkMode(Context ctx, boolean eink) {
+    setBoolean(ctx, booleanEinkMode, eink);
   }
 
   static public void setNoZoom(Context ctx, boolean no_zoom) {

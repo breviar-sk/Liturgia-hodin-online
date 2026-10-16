@@ -7,21 +7,26 @@
 /*                                                       */
 /*********************************************************/
 
-#include "vstudio.h"
-
 #ifndef __MYCONF_CPP_
 #define __MYCONF_CPP_
+
+#ifdef _MSC_VER 
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+// avoid Visual Studio warnings: 
+// warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead.
+// the same for 'sprintf', 'fopen', 'strcpy'
+#endif
 
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-#include <stdlib.h>
 
 #include "myconf.h"
 #include "mystring.h"
 #include "mylog.h"
 #include "mydefs.h"
-#include "mystring.h"
 #include "liturgia.h"
 
 #undef LOG_READCONFIG

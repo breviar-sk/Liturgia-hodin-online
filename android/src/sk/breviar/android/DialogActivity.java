@@ -4,14 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Button;
 
-public class DialogActivity extends AppCompatActivity {
+public class DialogActivity extends AppearanceActivity {
   @Override
   protected void attachBaseContext(Context newBase) {
     super.attachBaseContext(newBase);
@@ -19,6 +18,7 @@ public class DialogActivity extends AppCompatActivity {
   }
   
   WebView wv;
+  TapNavigation tapNavigation;
 
   class Bridge {
     DialogActivity parent;
@@ -31,7 +31,7 @@ public class DialogActivity extends AppCompatActivity {
     public void pageUp() {
       parent.runOnUiThread(new Runnable() {
         public void run() {
-          parent.wv.pageUp(false);
+          EinkUi.page(parent.wv, false);
         }
       });
     }
@@ -40,7 +40,7 @@ public class DialogActivity extends AppCompatActivity {
     public void pageDown() {
       parent.runOnUiThread(new Runnable() {
         public void run() {
-          parent.wv.pageDown(false);
+          EinkUi.page(parent.wv, true);
         }
       });
     }
@@ -76,7 +76,10 @@ public class DialogActivity extends AppCompatActivity {
 
     setContentView(R.layout.dialog_activity);
     wv = (WebView)findViewById(R.id.dialog_webview);
+    findViewById(R.id.navigation_page_up).setOnClickListener(v -> EinkUi.page(wv, false));
+    findViewById(R.id.navigation_page_down).setOnClickListener(v -> EinkUi.page(wv, true));
     wv.getSettings().setJavaScriptEnabled(true);
+    wv.getSettings().setCacheMode(android.webkit.WebSettings.LOAD_NO_CACHE);
     wv.addJavascriptInterface(new Bridge(this), "bridge");
 
     Intent intent = getIntent();
@@ -86,15 +89,36 @@ public class DialogActivity extends AppCompatActivity {
     }
     int title = intent.getIntExtra("title", -1);
     String url = intent.getStringExtra("url");
+    tapNavigation = new TapNavigation(wv, Breviar.S == null ? -1 : Breviar.S.port_nonpersistent,
+        url == null, null);
+    wv.setWebViewClient(new android.webkit.WebViewClient() {
+      @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        // Preserve the default external-link behavior from before a client was installed.
+        try {
+          startActivity(new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url)));
+          return true;
+        } catch (android.content.ActivityNotFoundException error) {
+          return false;
+        }
+      }
+      @Override public void onPageStarted(WebView view, String url, android.graphics.Bitmap icon) {
+        tapNavigation.pageStarted(url);
+      }
+      @Override public void onPageFinished(WebView view, String url) {
+        tapNavigation.pageFinished();
+      }
+    });
     if (url == null) {
       String content = intent.getStringExtra("content");
 
       try {
+        content = TapNavigation.withScript(this, content);
         wv.loadData(android.util.Base64.encodeToString(
                         content.getBytes("UTF-8"), android.util.Base64.DEFAULT),
                     "text/html; charset=utf-8", "base64");
-      } catch (java.io.UnsupportedEncodingException e) {
-        wv.loadData("unsupported encoding utf-8", "text/html", null);
+      } catch (java.io.IOException e) {
+        // Help remains usable if the optional gesture script cannot be read.
+        wv.loadData(content, "text/html; charset=utf-8", null);
       }
     } else {
       android.util.Log.v("breviar", "DialogActivity loading url: " + url);
@@ -120,6 +144,48 @@ public class DialogActivity extends AppCompatActivity {
         parent.finish();
       }
     });
+  }
+
+  @Override
+  public boolean dispatchTouchEvent(android.view.MotionEvent event) {
+    if (event.getActionMasked() == android.view.MotionEvent.ACTION_DOWN &&
+        tapNavigation != null && tapNavigation.ownsGestures() &&
+        !tapNavigation.contains(event.getRawX(), event.getRawY())) {
+      tapNavigation.cancelPendingGesture();
+    }
+    return super.dispatchTouchEvent(event);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    if (tapNavigation != null) {
+      tapNavigation.setMode(ReadingNavigation.get(this));
+      tapNavigation.setActive(true);
+    }
+    findViewById(R.id.navigation_paging).setVisibility(
+        ReadingNavigation.get(this) == ReadingNavigation.Mode.BUTTONS ? View.VISIBLE : View.GONE);
+  }
+
+  @Override
+  protected void onPause() {
+    if (tapNavigation != null) tapNavigation.setActive(false);
+    super.onPause();
+  }
+
+  @Override protected void onDestroy() {
+    if (tapNavigation != null) tapNavigation.close();
+    super.onDestroy();
+  }
+
+  @Override public void onActionModeStarted(android.view.ActionMode mode) {
+    super.onActionModeStarted(mode);
+    if (tapNavigation != null) tapNavigation.setSelecting(true);
+  }
+
+  @Override public void onActionModeFinished(android.view.ActionMode mode) {
+    super.onActionModeFinished(mode);
+    if (tapNavigation != null) tapNavigation.setSelecting(false);
   }
 
   @Override

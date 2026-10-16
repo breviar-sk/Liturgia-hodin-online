@@ -7,12 +7,9 @@
 /*                                                       */
 /*********************************************************/
 
-#include "vstudio.h"
-
 #ifndef __MYDEFS_H_
 #define __MYDEFS_H_
 
-#include "mysystem.h"
 #include "mysysdef.h"
 
 #if defined(OS_linux)
@@ -22,9 +19,7 @@
 	#error Unsupported operating system (not defined in mysystem.h)
 #endif
 
-#include <stdio.h>
 #include "common.h"
-
 
 // number of supported rites (roman catholic, greek catholic, etc.)
 #define	POCET_RITOV	         1
@@ -1510,7 +1505,7 @@ extern short int query_type; // contains constants PRM_...
 #define ELEM_BEGIN_VALUE_NAME_FORCENAME_TEXT(elem)  "<" elem " Value=\"%ld\" Name=\"%s\" ForceName=\"%s\" Text=\"%s\">"
 #define ELEM_BEGIN_ID_FORCENAME_TEXT(elem)  "<" elem " Id=\"%ld\" ForceName=\"%s\" Text=\"%s\">" // Id napr. BIT_OPT_0_VERSE; Name napr. STR_FORCE_BIT_OPT_0_VERSE
 #define ELEM_BEGIN_ID_FORCENAME_TEXT_LONG_LONG(elem)  "<" elem " Id=\"%llu\" ForceName=\"%s\" Text=\"%s\">" // due to BASE_OPT_6_OTCENAS_UVOD_MULTI and higher
-#define ELEM_BEGIN_ID_FORCENAME_TEXT_SLASH(elem)  "<" elem " Id=\"%ld\" ForceName=\"%s\" Text=\"%s/%s\">"
+#define ELEM_BEGIN_ID_FORCENAME_TEXT_SLASH(elem)  "<" elem " Id=\"%ld\" ForceName=\"%s\" Text=\"%s / %s\">"
 #define ELEM_BEGIN_ID_TYPE(elem)   "<" elem " Id=\"%ld\" Type=\"%s\">"
 #define ELEM_BEGIN_ID_TYPE_VALUE(elem)   "<" elem " Id=\"%ld\" Type=\"%s\" Value=\"%s\">"
 #define ELEM_BEGIN_ID_TYPE_VALUE_ELEMENT(elem)   "<" elem " Id=\"%ld\" Type=\"%s\" Value=\"%s\" XmlElement=\"%s\">"

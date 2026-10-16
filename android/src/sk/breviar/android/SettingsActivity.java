@@ -10,7 +10,6 @@ import android.os.Bundle;
 import com.google.android.material.navigation.NavigationView;
 import androidx.fragment.app.DialogFragment;
 import androidx.core.view.MenuItemCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -24,7 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-public class SettingsActivity extends AppCompatActivity
+public class SettingsActivity extends AppearanceActivity
                               implements NavigationView.OnNavigationItemSelectedListener {
   @Override
   protected void attachBaseContext(Context newBase) {
@@ -76,6 +75,29 @@ public class SettingsActivity extends AppCompatActivity
 
   public void inflateMenu(int menu_resource) {
     navigationView.inflateMenu(menu_resource);
+  }
+
+  /** Populate a detached menu before replacing the displayed one. */
+  protected void replaceMenu(Runnable populate) {
+    NavigationView previous = navigationView;
+    ViewGroup parent = (ViewGroup)previous.getParent();
+    int index = parent.indexOfChild(previous);
+    navigationView = (NavigationView)getLayoutInflater().inflate(R.layout.settings_menu, parent, false);
+    navigationView.setNavigationItemSelectedListener(this);
+    navigationView.setItemMaxLines(previous.getItemMaxLines());
+    switch_handlers.clear();
+    click_handlers.clear();
+    int_handlers.clear();
+    color_options.clear();
+    populate.run();
+    EinkUi.apply(navigationView);
+
+    // Material's accessibility delegates retain their bound row positions.
+    // Content capture can still query old rows after a replacement: leave the
+    // old menu/adapter intact so those positions remain valid.
+    previous.setNavigationItemSelectedListener(null);
+    parent.removeViewAt(index);
+    parent.addView(navigationView, index);
   }
 
   @Override
@@ -320,6 +342,11 @@ public class SettingsActivity extends AppCompatActivity
         v.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         v.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         v.setBackgroundColor(c);
+        if (BreviarApp.getEinkMode(ctx)) {
+          v.setText("#" + textc);
+          v.setBackgroundResource(R.drawable.eink_button);
+          EinkUi.apply(v);
+        }
         v.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
               input.setText(textc);
@@ -392,7 +419,10 @@ public class SettingsActivity extends AppCompatActivity
         TextView view = (TextView)MenuItemCompat.getActionView(
             menu.findItem(entry.getKey().intValue())).findViewById(R.id.color_widget_textview);
         Log.v("breviar", "Color '" + value + "' for " + entry.getKey());
-        if (value.isEmpty()) {
+        if (BreviarApp.getEinkMode(this)) {
+          view.setText(value.isEmpty() ? getString(R.string.default_color) : "#" + value);
+          view.setBackgroundColor(Color.WHITE);
+        } else if (value.isEmpty()) {
           view.setText(getString(R.string.default_color));
           view.setBackgroundColor(Color.TRANSPARENT);
         } else {
@@ -403,5 +433,6 @@ public class SettingsActivity extends AppCompatActivity
     } catch (java.lang.NullPointerException e) {
       Log.v("breviar", "Cannot update menu!");
     }
+    EinkUi.apply(navigationView);
   }
 }

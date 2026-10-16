@@ -12,13 +12,12 @@
 /*                                                             */
 /***************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __MYLOG_CPP_
 #define __MYLOG_CPP_
 
-#include <stdio.h>
-#include <stdarg.h>
+#include <cstdio>
+#include <cstdarg>
+
 #include "mydefs.h"
 #include "mylog.h"
 

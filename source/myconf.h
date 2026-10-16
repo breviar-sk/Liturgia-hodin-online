@@ -7,15 +7,11 @@
 /*                                                       */
 /*********************************************************/
 
-#include "vstudio.h"
-
 #ifndef __MYCONF_H_
 #define __MYCONF_H_
 
-#include "mysystem.h"
 #include "mysysdef.h"
 #include "mydefs.h"
-#include "common.h"
 
 #define MAIL_ADDRESS_DEFAULT "videky@breviar.sk"
 

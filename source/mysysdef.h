@@ -6,7 +6,6 @@
 /* description | contains #defines for various systems         */
 /*                                                             */
 /***************************************************************/
-#include "vstudio.h"
 
 #ifndef __MYSYSDEF_H_
 #define __MYSYSDEF_H_

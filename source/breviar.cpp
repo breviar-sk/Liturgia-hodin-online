@@ -49,8 +49,6 @@ Examples:
 -s"qt=pdt&d=15&m=7&r=2016&p=mrch&ds=1&o0=2691&o1=202048&o2=25274&o3=5&o4=0&o5=2" -i"D:\personal\breviar\breviar.sk\include"
 */
 
-#include "vstudio.h"
-
 #ifndef __BREVIAR_CPP_
 #define __BREVIAR_CPP_
 
@@ -63,9 +61,8 @@ Examples:
 
 #include "mystring.h"
 #include "myconf.h"
-#include "mysystem.h"
 #include "mysysdef.h"
-
+#include "common.h"
 #include "hodin.h"
 #include "liturgia.h"
 #include "cgiutils.h"
@@ -77,6 +74,13 @@ Examples:
 #include "myexpt.h"
 #include "myhpage.h"
 #include "mybuild.h"
+
+#ifdef _WIN32
+// Windows už má _strdup, netreba robiť nič
+#else
+// Na Linuxe/macOS premenujeme _strdup na štandardný strdup
+#define _strdup strdup
+#endif
 
 short int isAndroid = NIE;
 
@@ -8315,7 +8319,7 @@ void xml_export_options(void) {
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT)"%ld" ELEM_END(XML_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT) "\n", BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, html_text_opt_0_two_years_cycle_invert[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TWO_YEARS_CYCLE_INVERT)));
 					break;
 				case 17: // BIT_OPT_0_ALTERNATIVE_READINGS
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_ALTERNATIVE_READINGS)"%ld" ELEM_END(XML_BIT_OPT_0_ALTERNATIVE_READINGS) "\n", BIT_OPT_0_ALTERNATIVE_READINGS, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, html_text_opt_0_alternative_readings[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ALTERNATIVE_READINGS)));
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_ALTERNATIVE_READINGS)"%ld" ELEM_END(XML_BIT_OPT_0_ALTERNATIVE_READINGS) "\n", BIT_OPT_0_ALTERNATIVE_READINGS, STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS, html_text_opt_0_alternative_readings[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_ALTERNATIVE_READINGS)));
 					break;
 				case 18: // BIT_OPT_0_TRANSPARENT_NAV_LEFT
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT)"%ld" ELEM_END(XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT) "\n", BIT_OPT_0_TRANSPARENT_NAV_LEFT, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_LEFT, html_text_opt_0_transparent_nav_left[_global_jazyk], (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_TRANSPARENT_NAV_LEFT)));
@@ -8453,7 +8457,7 @@ void xml_export_options(void) {
 					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR)"%ld" ELEM_END(XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR) "\n", BIT_OPT_2_SHOW_DEFAULT_CALENDAR, STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR, html_text_opt_2_show_defalut_calendar[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_SHOW_DEFAULT_CALENDAR)));
 					break;
 				case 16: // BIT_OPT_2_ROUNDED_CORNERS
-					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_2_ROUNDED_CORNERS)"%ld" ELEM_END(XML_BIT_OPT_2_ROUNDED_CORNERS) "\n", BIT_OPT_2_ROUNDED_CORNERS, STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR, html_text_opt_2_rounded_corners[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROUNDED_CORNERS)));
+					Export(ELEM_BEGIN_ID_FORCENAME_TEXT(XML_BIT_OPT_2_ROUNDED_CORNERS)"%ld" ELEM_END(XML_BIT_OPT_2_ROUNDED_CORNERS) "\n", BIT_OPT_2_ROUNDED_CORNERS, STR_FORCE_BIT_OPT_2_ROUNDED_CORNERS, html_text_opt_2_rounded_corners[_global_jazyk], (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_ROUNDED_CORNERS)));
 					break;
 				} // switch(j)
 			}// for j
@@ -8814,6 +8818,12 @@ menu_item_option_str_name get_data_for_menu_item_option(short int menu_group, sh
 			mystrcpy(output.option_xml, XML_BIT_OPT_2_NAVIGATION, SMALL);
 			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_2_navigation[_global_jazyk]).c_str(), SMALL);
 			break;
+		case MENU_2_ITEM_LINE_BREAKS_PRINTED:
+			mystrcpy(output.option_str, STR_OPT_2, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_2_TEXT_WRAP, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_2_TEXT_WRAP, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_2_textwrap[_global_jazyk]).c_str(), SMALL);
+			break;
 		case GLOBAL_NULL:
 		default:
 			break;
@@ -8821,6 +8831,216 @@ menu_item_option_str_name get_data_for_menu_item_option(short int menu_group, sh
 		break;
 	case MENU_3_TEXT_CONTENT:
 		switch (menu_item) {
+		case MENU_3_ITEM_SWITCHES_IN_TEXT:
+			mystrcpy(output.option_str, STR_OPT_2, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_2_ROZNE_MOZNOSTI, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_2_moznosti[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALTERNATIVES:
+			mystrcpy(output.option_str, STR_OPT_2, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_2_ALTERNATIVES, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_2_ALTERNATIVES, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_2_alternatives[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_COMMUNIA_INFO:
+			mystrcpy(output.option_str, STR_OPT_1, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_1_spolc_svaty[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_COMMUNIA_FORCE:
+			mystrcpy(output.option_str, STR_OPT_1, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_1_SPOMIENKA_SPOL_CAST, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_1_spomienka_spolcast[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_VERSE_NUMBERING:
+			mystrcpy(output.option_str, STR_OPT_0, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_0_VERSE, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_0_VERSE, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_0_verse[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_PSALM_OMMISIONS:
+			mystrcpy(output.option_str, STR_OPT_0, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_0_ZALMY_FULL_TEXT, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_0_zalmy_full_text[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ELISIONS_ITALICS:
+			mystrcpy(output.option_str, STR_OPT_0, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_0_ITALICS_CONDITIONAL, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_0_italics_cond[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_TEXT_NOTES:
+			mystrcpy(output.option_str, STR_OPT_0, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_0_FOOTNOTES, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_0_FOOTNOTES, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_0_footnotes[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_SAINT_DETAILS_HIDE:
+			mystrcpy(output.option_str, STR_OPT_1, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_1_SKRY_POPIS, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_1_SKRY_POPIS, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_1_skryt_popis_svaty[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_MCD_SUPPL_PSALMS:
+			mystrcpy(output.option_str, STR_OPT_1, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_1_MCD_DOPLNKOVA, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_1_MCD_DOPLNKOVA, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_1_mcd_zalmy_ine[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_MCD_SPECIAL_PS:
+			mystrcpy(output.option_str, STR_OPT_1, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_1_MCD_ZALTAR_TRI, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_1_MCD_ZALTAR_TRI, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_1_mcd_zalmy_tri[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_INV_PSALM_95:
+			mystrcpy(output.option_str, STR_OPT_1, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_1_ZALM95, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_1_ZALM95, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_1_zalm95[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_PRECES_REPEAT:
+			mystrcpy(output.option_str, STR_OPT_1, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_1_PROSBY_ZVOLANIE, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_1_PROSBY_ZVOLANIE, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_1_prosby_zvolanie[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_VESPERS_SPEC_PREC:
+			mystrcpy(output.option_str, STR_OPT_1, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_1_VESP_KRATSIE_PROSBY, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_1_VESP_KRATSIE_PROSBY, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_1_vesp_kratsie_prosby[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_VIGILIES:
+			mystrcpy(output.option_str, STR_OPT_1, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_1_VIGILIA, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_1_PC_VIGILIA, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_1_vigilia[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALT_CONCLUSION:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_zaver_knaz_diakon[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALT_PS_122_129:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_DOPLNK_PSALM_122_129, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_DPsalmZ122_129[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALT_PS_126_129:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_DOPLNK_PSALM_126_129, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_DPsalmZ126_129[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALT_PS_127_131:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_DOPLNK_PSALM_127_131, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_DPsalmZ127_131[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALT_PA_34_HYMNS:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_OCR_34_HYMNS, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_OCR_34_HYMNS, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_OCR34Hymns[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALT_ASH_WED_PS:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_PopolStrPsalm_4STR[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALT_GREEN_TH_PS:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_ZelStvPsalm_2STV[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALT_DEF_PS_146_150:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_OFF_DEF_PSALM_146_150, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_OffDefZ146_150[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_3_ITEM_ALT_READ_PA_HYMNS:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_HYMNUS_PC, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_HYMNUS_PC, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_PCHymnusI[_global_jazyk]).c_str(), SMALL);
+			strcat(output.option_name, STR_SLASH_SPACED);
+			strcat(output.option_name, mystr_first_upper(html_text_opt_5_PCHymnusII[_global_jazyk]).c_str());
+			break;
+		case MENU_3_ITEM_ALT_MCD_9_HYMN:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_MCDPredHymnus1[_global_jazyk]).c_str(), SMALL);
+			strcat(output.option_name, STR_SLASH_SPACED);
+			strcat(output.option_name, mystr_first_upper(html_text_opt_5_MCDPredHymnus2[_global_jazyk]).c_str());
+			break;
+		case MENU_3_ITEM_ALT_MCD_12_HYMN:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_HYMNUS_MCD_NAPOL, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_MCDNaHymnus1[_global_jazyk]).c_str(), SMALL);
+			strcat(output.option_name, STR_SLASH_SPACED);
+			strcat(output.option_name, mystr_first_upper(html_text_opt_5_MCDNaHymnus2[_global_jazyk]).c_str());
+			break;
+		case MENU_3_ITEM_ALT_MCD_15_HYMN:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_HYMNUS_MCD_POPOL, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_MCDPoHymnus1[_global_jazyk]).c_str(), SMALL);
+			strcat(output.option_name, STR_SLASH_SPACED);
+			strcat(output.option_name, mystr_first_upper(html_text_opt_5_MCDPoHymnus2[_global_jazyk]).c_str());
+			break;
+		case MENU_3_ITEM_ALT_PA_HYMN_SUN:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_HYMNUS_1VESP, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_HYMNUS_1VESP, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_1VHymnusNe[_global_jazyk]).c_str(), SMALL);
+			strcat(output.option_name, STR_SLASH_SPACED);
+			strcat(output.option_name, mystr_first_upper(html_text_opt_5_1VHymnusPC[_global_jazyk]).c_str());
+			break;
+		case MENU_3_ITEM_ALT_COMPL_HYMN:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_HYMNUS_KOMPL, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_HYMNUS_KOMPL, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_KomplHymnusA[_global_jazyk]).c_str(), SMALL);
+			strcat(output.option_name, STR_SLASH_SPACED);
+			strcat(output.option_name, mystr_first_upper(html_text_opt_5_KomplHymnusB[_global_jazyk]).c_str());
+			break;
+		case MENU_3_ITEM_ALT_READ_EAST_HYMN:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_HYMNUS_VN_PC, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_HYMNUS_VN_PC, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_PCHymnusVNnedela[_global_jazyk]).c_str(), SMALL);
+			strcat(output.option_name, STR_SLASH_SPACED);
+			strcat(output.option_name, mystr_first_upper(html_text_opt_5_PCHymnusVNferia[_global_jazyk]).c_str());
+			break;
+		case MENU_3_ITEM_ALT_LAUD_EAST_HYMN:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_HYMNUS_VN_RCH, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_RChHymnusVNnedela[_global_jazyk]).c_str(), SMALL);
+			strcat(output.option_name, STR_SLASH_SPACED);
+			strcat(output.option_name, mystr_first_upper(html_text_opt_5_RChHymnusVNferia[_global_jazyk]).c_str());
+			break;
+		case MENU_3_ITEM_ALT_VESP_EAST_HYMN:
+			mystrcpy(output.option_str, STR_OPT_5, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_5_HYMNUS_VN_VESP, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_5_VespHymnusVNnedela[_global_jazyk]).c_str(), SMALL);
+			strcat(output.option_name, STR_SLASH_SPACED);
+			strcat(output.option_name, mystr_first_upper(html_text_opt_5_VespHymnusVNferia[_global_jazyk]).c_str());
+			break;
 		case GLOBAL_NULL:
 		default:
 			break;
@@ -8828,6 +9048,30 @@ menu_item_option_str_name get_data_for_menu_item_option(short int menu_group, sh
 		break;
 	case MENU_4_CALENDAR:
 		switch (menu_item) {
+		case MENU_4_ITEM_EPIPHANY:
+			mystrcpy(output.option_str, STR_OPT_0, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_0_ZJAV_NED, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_0_ZJAVENIE_PANA_NEDELA, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_0_zjv_ne[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_4_ITEM_ASSUMPT:
+			mystrcpy(output.option_str, STR_OPT_0, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_0_NAN_NED, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_0_nan_ne[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_4_ITEM_BODY_BLOOD:
+			mystrcpy(output.option_str, STR_OPT_0, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_0_TK_NED, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_0_TELAKRVI_NEDELA, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_0_tk_ne[_global_jazyk]).c_str(), SMALL);
+			break;
+		case MENU_4_ITEM_LOCAL_CAL_EMPH:
+			mystrcpy(output.option_str, STR_OPT_2, SMALL);
+			mystrcpy(output.option_force, STR_FORCE_BIT_OPT_2_SHOW_DEFAULT_CALENDAR, SMALL);
+			mystrcpy(output.option_xml, XML_BIT_OPT_2_SHOW_DEFAULT_CALENDAR, SMALL);
+			mystrcpy(output.option_name, mystr_first_upper(html_text_opt_2_show_defalut_calendar[_global_jazyk]).c_str(), SMALL);
+			break;
 		case GLOBAL_NULL:
 		default:
 			break;
@@ -8890,10 +9134,7 @@ void xml_export_menu(void) {
 }// xml_export_menu()
 
 void xml_export_options_and_menu(void) {
-#ifdef OS_Windows_Ruby
-	// ToDo: not yet finished
 	xml_export_menu();
-#endif
 	xml_export_options();
 }// xml_export_options_and_menu()
 
@@ -11155,7 +11396,6 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	struct tm dnes;
 	short int month, day;
 	short int lo; // liturgické obdobie
-	short int font;
 
 	dnes.tm_mday = den;
 	dnes.tm_mon  = mesiac;
@@ -11178,9 +11418,13 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	char after[SMALL] = STR_EMPTY;
 	sprintf(after, HTML_SPAN_END);
 
-	short int zobrazit_moznosti1 = (!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1));
 	short int zobrazit_moznosti2 = (!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS2));
 
+#if !defined(IO_ANDROID)
+	// Android builds the settings controls from the XML Options export.
+	// The calendar widget and the query forms below remain in the HTML reader.
+	short int font;
+	short int zobrazit_moznosti1 = (!isGlobalOptionForce(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_OPTIONS1));
 #if defined(OS_Windows_Ruby)
 	// ---------------- language selection begin
 	Export("<" HTML_TABLE ">\n");
@@ -11983,6 +12227,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 	ExportHtmlComment("TABLE:END(options)");
 
 	Export(HTML_TABLE_END "\n");
+#endif // !IO_ANDROID: settings are native
 
 	// -------------------------------------------
 

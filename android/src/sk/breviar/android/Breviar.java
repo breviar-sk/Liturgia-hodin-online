@@ -43,7 +43,6 @@ import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
@@ -70,7 +69,7 @@ import sk.breviar.android.UrlOptions;
 import sk.breviar.android.Util;
 
 
-public class Breviar extends AppCompatActivity
+public class Breviar extends AppearanceActivity
                      implements GestureDetector.OnDoubleTapListener,
                                 ScaleGestureDetector.OnScaleGestureListener,
                                 NavigationView.OnNavigationItemSelectedListener {
@@ -80,7 +79,10 @@ public class Breviar extends AppCompatActivity
     static Server S = null;
 
     DrawerLayout drawer;
+    private ActionBarDrawerToggle drawerToggle;
     WebView wv;
+    TapNavigation tapNavigation;
+    boolean htmlTapSequence;
     EditText searchEdit;
     android.view.View searchContainer;
     android.widget.ImageButton searchClear;
@@ -248,7 +250,7 @@ public class Breviar extends AppCompatActivity
       public void pageUp() {
         parent.runOnUiThread(new Runnable() {
           public void run() {
-            parent.wv.pageUp(false);
+            EinkUi.page(parent.wv, false);
           }
         });
       }
@@ -257,7 +259,7 @@ public class Breviar extends AppCompatActivity
       public void pageDown() {
         parent.runOnUiThread(new Runnable() {
           public void run() {
-            parent.wv.pageDown(false);
+            EinkUi.page(parent.wv, true);
           }
         });
       }
@@ -364,16 +366,43 @@ public class Breviar extends AppCompatActivity
       }
 
       drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-      ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
+      drawerToggle = new ActionBarDrawerToggle(
           this,  drawer, toolbar,
           R.string.navigation_drawer_open, R.string.navigation_drawer_close
       );
       drawer.setDrawerListener(drawerToggle);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       getSupportActionBar().setHomeButtonEnabled(true);
-      drawerToggle.syncState();
+      if (BreviarApp.getEinkMode(this)) {
+        drawer.setScrimColor(android.graphics.Color.TRANSPARENT);
+        drawer.setDrawerElevation(0);
+        drawerToggle.setDrawerSlideAnimationEnabled(false);
+        drawerToggle.getDrawerArrowDrawable().setColor(android.graphics.Color.BLACK);
+        // Programmatic opening still works when swipe gestures are locked.
+        toolbar.setNavigationOnClickListener(v -> {
+          if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START, false);
+          else drawer.openDrawer(GravityCompat.START, false);
+        });
+        // DrawerLayout otherwise animates its own close when tapping outside the menu.
+        drawer.setOnTouchListener((v, event) -> {
+          if (!drawer.isDrawerOpen(GravityCompat.START)) return false;
+          if (event.getActionMasked() == android.view.MotionEvent.ACTION_UP) {
+            drawer.closeDrawer(GravityCompat.START, false);
+            v.performClick();
+          }
+          return true;
+        });
+        navigationView.getHeaderView(0).findViewById(R.id.navigation_header_icon).setVisibility(View.GONE);
+      }
 
       wv = (WebView)findViewById(R.id.wv);
+      tapNavigation = new TapNavigation(wv, S.port, false, () -> {
+        toggleFullscreen();
+        updateMenu();
+      });
+      findViewById(R.id.navigation_page_up).setOnClickListener(v -> EinkUi.page(wv, false));
+      findViewById(R.id.navigation_page_down).setOnClickListener(v -> EinkUi.page(wv, true));
+      updatePagingControls();
       ClearProxy.clearProxy(wv);
       wv.clearCache(true);
       wv.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
@@ -480,6 +509,7 @@ public class Breviar extends AppCompatActivity
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
+          tapNavigation.pageStarted(url);
           Log.v("breviar", "onPageStarted " + url);
           parent.syncScale();
           parent.initialized = true;
@@ -498,6 +528,8 @@ public class Breviar extends AppCompatActivity
           if (parent.clearHistory) view.clearHistory();
           parent.clearHistory = false;
           super.onPageFinished(view, url);
+          parent.updatePagingControls();
+          tapNavigation.pageFinished();
 
           wv_title = null;
           wv_subtitle = "";
@@ -562,11 +594,6 @@ public class Breviar extends AppCompatActivity
         }
       });
 
-      if (!getResources().getString(R.string.version).equals(settings.getString("version", ""))) {
-        showChangelog(true);
-        markVersion();
-      }
-
       if (!handleIntent(getIntent())) {
         if (savedInstanceState == null) {
           goHome();
@@ -591,6 +618,33 @@ public class Breviar extends AppCompatActivity
       Log.v("breviar", "onCreate: Updating fullscreen and menu");
       updateFullscreen();
       Log.v("breviar", "onCreate: done");
+    }
+
+    @Override
+    protected void onResumeFragments() {
+      super.onResumeFragments();
+      showStartupDialogs();
+    }
+
+    private void showStartupDialogs() {
+      if (isFinishing() || appearanceChanged() || getSupportFragmentManager().isStateSaved()) return;
+      if (!BreviarApp.hasAppearanceChoice(this)) {
+        if (getSupportFragmentManager().findFragmentByTag(AppearanceChooser.TAG) == null) {
+          new AppearanceChooser().showNow(getSupportFragmentManager(), AppearanceChooser.TAG);
+        }
+        return;
+      }
+      if (!getString(R.string.version).equals(BreviarApp.getString(this, "version", ""))) {
+        showChangelog(true);
+        markVersion();
+      }
+    }
+
+    void onAppearanceChosen(boolean eink) {
+      changeAppearance(eink);
+      // If the theme changed, the replacement activity will show the changelog.
+      // Choosing the current mode needs no recreation or extra resume callback.
+      showStartupDialogs();
     }
 
     @Override
@@ -658,7 +712,15 @@ public class Breviar extends AppCompatActivity
     @Override
     public boolean dispatchTouchEvent(android.view.MotionEvent e) {
       scale_gesture_detector.onTouchEvent(e);
-      tap_gesture_detector.onTouchEvent(e);
+      if (e.getActionMasked() == android.view.MotionEvent.ACTION_DOWN) {
+        htmlTapSequence = tapNavigation != null && tapNavigation.ownsGestures()
+            && !drawer.isDrawerOpen(GravityCompat.START)
+            && tapNavigation.contains(e.getRawX(), e.getRawY());
+        if (!htmlTapSequence && tapNavigation != null && tapNavigation.ownsGestures()) {
+          tapNavigation.cancelPendingGesture();
+        }
+      }
+      if (!htmlTapSequence) tap_gesture_detector.onTouchEvent(e);
       return super.dispatchTouchEvent(e);
     }
 
@@ -670,8 +732,8 @@ public class Breviar extends AppCompatActivity
 
     synchronized String updatePreferencesInUrl(String url) {
       UrlOptions opts = new UrlOptions(url, true);
-      opts.override(new UrlOptions(BreviarApp.getUrlOptions(
-            getApplicationContext()).replaceAll("&amp;", "&")));
+      UrlOptions saved = new UrlOptions(BreviarApp.getUrlOptions(getApplicationContext()));
+      SettingsXml.applySavedOptions(opts.params, saved.params);
       S.setOpts(opts.build(true));
       return opts.build();
     }
@@ -714,6 +776,11 @@ public class Breviar extends AppCompatActivity
     boolean need_to_update_menu = false;
     @Override
     synchronized protected void onResume() {
+      if (appearanceChanged()) {
+        // Recreate through the normal saved-state path to retain prayer and position.
+        super.onResume();
+        return;
+      }
       String url = wv.getUrl();
       if (url != null && need_to_reload_preferences) {
         need_to_reload_preferences = false;
@@ -741,11 +808,14 @@ public class Breviar extends AppCompatActivity
         if (appEventId < BreviarApp.getEventId()) recreateIfNeeded();
       }
       super.onResume();
+      tapNavigation.setActive(true);
       updateSearchBarTheme();
+      updatePagingControls();
     }
 
     @Override
     synchronized protected void onPause() {
+      if (tapNavigation != null) tapNavigation.setActive(false);
       super.onPause();
       if (resumed) {
         resumed = false;
@@ -785,7 +855,8 @@ public class Breviar extends AppCompatActivity
         syncScale();
         //wv.saveState(outState);
         String url = wv.getUrl();
-        float current_scroll = wv.getScrollY() / (float)wv.getContentHeight();
+        float current_scroll = scroll_to >= 0 ? scroll_to :
+            (wv.getContentHeight() > 0 ? wv.getScrollY() / (float)wv.getContentHeight() : 0);
         if (url != null) {
           outState.putString("wv-url", url);
           outState.putFloat("wv-scroll-to", current_scroll);
@@ -869,6 +940,7 @@ public class Breviar extends AppCompatActivity
 
     @Override
     public void onDestroy() {
+      if (tapNavigation != null) tapNavigation.close();
       Log.v("breviar", "onDestroy");
       stopServer();
       super.onDestroy();
@@ -902,15 +974,25 @@ public class Breviar extends AppCompatActivity
       s.setChecked(value);
     }
 
+    void updatePagingControls() {
+      if (S == null) return;
+      ReadingNavigation.Mode mode = ReadingNavigation.get(this, new UrlOptions(S.getOpts()));
+      tapNavigation.setMode(mode);
+      findViewById(R.id.navigation_paging).setVisibility(
+          mode == ReadingNavigation.Mode.BUTTONS ? View.VISIBLE : View.GONE);
+    }
+
     public void updateMenu() {
       if (navigationView == null) return;
       if (S == null) return;
+      updatePagingControls();
       Menu menu = navigationView.getMenu();
       if (menu == null) return;
 
       UrlOptions opts = new UrlOptions(S.getOpts());
       MenuItem drawer_item = menu.findItem(R.id.nightmode_toggle);
       MenuItem action_item = toolbar.getMenu().findItem(R.id.nightmodeBtn);
+      boolean eink = BreviarApp.getEinkMode(this);
 
       if (opts.isNightmode()) {
         updateMenuItemSwitch(drawer_item, true);
@@ -935,6 +1017,8 @@ public class Breviar extends AppCompatActivity
       if (drawer_item != null) {
         updateMenuItemSwitch(drawer_item, fullscreen);
       }
+      if (eink) EinkUi.tintMenu(toolbar.getMenu());
+      EinkUi.apply(navigationView);
     }
 
     void updateTtsState() {
@@ -995,6 +1079,7 @@ public class Breviar extends AppCompatActivity
           enableRingOverride();
           break;
       }
+      if (BreviarApp.getEinkMode(this)) EinkUi.tintMenu(toolbar.getMenu());
     }
 
     void startSpeaking() {
@@ -1049,13 +1134,27 @@ public class Breviar extends AppCompatActivity
       updateSearchBarTheme();
     }
 
+    @Override
+    protected void onPostCreate(Bundle state) {
+      super.onPostCreate(state);
+      // DrawerLayout restores its old lock mode after onCreate. Appearance
+      // determines whether swipes are enabled, not the saved view hierarchy.
+      drawer.setDrawerLockMode(BreviarApp.getEinkMode(this)
+          ? DrawerLayout.LOCK_MODE_LOCKED_CLOSED : DrawerLayout.LOCK_MODE_UNLOCKED,
+          GravityCompat.START);
+      drawerToggle.syncState();
+      // The native e-ink styling walks all views; search follows the prayer's colors.
+      updateSearchBarTheme();
+    }
+
     void updateSearchBarTheme() {
       if (searchEdit == null || searchClear == null || searchContainer == null) return;
       if (S == null) return;
+      boolean eink = BreviarApp.getEinkMode(this);
       boolean night = new UrlOptions(S.getOpts()).isNightmode();
       int bgColor = night ? 0xFF2D2D2D : 0xFFFFFFFF;
       int textColor = night ? 0xFFFFFFFF : 0xFF000000;
-      int hintColor = night ? 0xFFAAAAAA : 0xFF777777;
+      int hintColor = eink ? textColor : (night ? 0xFFAAAAAA : 0xFF777777);
       int iconTint = night ? 0xFFFFFFFF : 0xFF000000;
       searchContainer.setBackgroundColor(bgColor);
       searchEdit.setBackgroundColor(android.graphics.Color.TRANSPARENT);
@@ -1210,7 +1309,7 @@ public class Breviar extends AppCompatActivity
           break;
       }
       updateMenu();
-      drawer.closeDrawer(GravityCompat.START);
+      drawer.closeDrawer(GravityCompat.START, !BreviarApp.getEinkMode(this));
       return true;
     }
 
@@ -1225,19 +1324,21 @@ public class Breviar extends AppCompatActivity
         if (handleBackPressed()) return true;
         return super.onKeyDown(keyCode, event);
       }
-      if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP) && BreviarApp.getVolButtons(this)) {
-        wv.pageUp(false);
+      if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP && BreviarApp.getVolButtons(this)) ||
+          (keyCode == KeyEvent.KEYCODE_PAGE_UP && BreviarApp.getEinkMode(this))) {
+        EinkUi.page(wv, false);
         return true;
       }
-      if ((keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) && BreviarApp.getVolButtons(this)) {
-        wv.pageDown(false);
+      if ((keyCode == KeyEvent.KEYCODE_VOLUME_DOWN && BreviarApp.getVolButtons(this)) ||
+          (keyCode == KeyEvent.KEYCODE_PAGE_DOWN && BreviarApp.getEinkMode(this))) {
+        EinkUi.page(wv, true);
         return true;
       }
       if (keyCode == KeyEvent.KEYCODE_MENU) {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
-          drawer.closeDrawer(GravityCompat.START, true);
+          drawer.closeDrawer(GravityCompat.START, !BreviarApp.getEinkMode(this));
         } else {
-          drawer.openDrawer(GravityCompat.START, true);
+          drawer.openDrawer(GravityCompat.START, !BreviarApp.getEinkMode(this));
         }
         return true;
       }
@@ -1246,7 +1347,7 @@ public class Breviar extends AppCompatActivity
 
     private boolean handleBackPressed() {
       if (drawer.isDrawerOpen(GravityCompat.START)) {
-        drawer.closeDrawer(GravityCompat.START, true);
+        drawer.closeDrawer(GravityCompat.START, !BreviarApp.getEinkMode(this));
         return true;
       } else if (wv.canGoBack()) {
         if (S != null) {
@@ -1260,6 +1361,8 @@ public class Breviar extends AppCompatActivity
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
+      if (BreviarApp.getEinkMode(this) &&
+          (keyCode == KeyEvent.KEYCODE_PAGE_UP || keyCode == KeyEvent.KEYCODE_PAGE_DOWN)) return true;
       if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP) && BreviarApp.getVolButtons(this)) {
         return true;
       }
@@ -1298,5 +1401,15 @@ public class Breviar extends AppCompatActivity
     @Override
     public boolean onSingleTapConfirmed(android.view.MotionEvent e) {
       return false;
+    }
+
+    @Override public void onActionModeStarted(android.view.ActionMode mode) {
+      super.onActionModeStarted(mode);
+      if (tapNavigation != null) tapNavigation.setSelecting(true);
+    }
+
+    @Override public void onActionModeFinished(android.view.ActionMode mode) {
+      super.onActionModeFinished(mode);
+      if (tapNavigation != null) tapNavigation.setSelecting(false);
     }
 }

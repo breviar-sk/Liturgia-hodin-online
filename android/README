@@ -10,3 +10,95 @@ To build:
 
 $ download-and-build-assets
 $ gradle assembleRelease
+
+E-ink interface:
+
+On first launch, choose Normal display or E-ink display in the black-on-white
+chooser, before the changelog. Upgrades also show it once if no explicit mode
+was previously saved; existing choices (including Normal display) are retained.
+Later upgrades do not ask again. Change the choice in Settings > Device >
+E-ink mode. This device-local preference survives restarts and applies to the
+reader, native settings, language selection, notifications settings and help.
+Switching modes retains the current prayer, reading position and saved prayer
+options. Prayer pages retain the normal CSS, including night mode and custom
+colors. The calendar remains in the prayer page.
+
+An appearance change rebuilds covered screens before rebuilding Device Settings,
+so returning through the settings hierarchy does not reveal the old toolbar
+colors. An immediate toolbar Up or system Back waits for that handoff and is
+then applied to the replacement screen. Return transitions are suppressed for
+the affected screens in both directions; ordinary navigation keeps its behavior.
+
+E-ink mode uses black text on white and outlined controls in native menus, with
+no activity/drawer transitions. When enabled, the bottom page buttons,
+existing in-text page actions, volume keys (when enabled) and hardware Page Up /
+Page Down keys jump without animated scrolling, with overlap between pages.
+The drawer opens with the toolbar menu button instead of an animated edge swipe.
+Text selection, links, zoom and touch scrolling remain available.
+
+Reading navigation:
+
+Settings > Display > Reading navigation offers scrolling only, navigation
+arrows in the text, up/down buttons below the page, tapping the top/bottom
+thirds, or tapping the left/right thirds of the reading area.
+Scrolling works in all five modes.
+The choice applies to both standard and e-ink interfaces; changing
+appearance does not change navigation. Arrow position and down-only preferences
+remain available when arrows are selected. Bottom buttons also appear in help
+and other HTML dialogs.
+
+Existing arrow settings are retained. On upgrade, e-ink users without arrows
+keep their bottom buttons; other users keep ordinary scrolling. Arrow mode uses
+the existing URL option, so links and web settings can still enable or disable
+arrows. Disabling arrows returns to scrolling or the saved button/tap choice.
+
+Tap navigation applies to generated prayer/calendar pages and HTML help dialogs.
+Tap the top third of the visible WebView to page up or the bottom third to page
+down; in left/right mode, tap the left third to page up or the right third to
+page down. Both modes page immediately after HTML handlers have run, without
+waiting for a second tap.
+A single tap in the middle third does nothing; two unused taps there toggle
+reader fullscreen. Both taps must start and end in that middle third (a horizontal
+band in top/bottom mode, a vertical band in left/right mode).
+HTML controls keep their actions,
+including links, footnotes, calendar fields and help buttons. Selection, long
+press, drag, pinch, keyboard and accessibility activation do not turn pages.
+External pages and unaudited static HTML retain ordinary browsing behavior.
+
+HTML interaction contract (android/assets/tap-navigation.js): standard controls
+and their descendants are reserved automatically, as are inline click handlers.
+Custom interactive elements should have data-breviar-interactive, or their
+handler must call BreviarTaps.claim(event) synchronously before taking action,
+including before scheduling asynchronous work. This does not preventDefault or
+stopPropagation, so existing browser behavior is preserved. Delegated handlers
+must claim the actual event; simply having a listener does not reserve a tap.
+New custom controls must follow this convention. The Android-only wrapper loads
+the shared script; inline help embeds that same asset. Missing/uncertain reports
+never page. Document tokens and gesture IDs reject late/duplicate reports, and
+native touch, scroll, selection, lifecycle and menu changes cancel pending work.
+
+Prayer rendering, CSS, XML option encoding and the web/iOS interfaces retain
+their existing behavior. No manufacturer SDK is required; waveform selection,
+full-screen refresh and ghosting mitigation remain device/system features.
+
+Verification:
+
+$ make -C testing settings  # CGI settings integration checks
+$ make -C testing taps  # Real Chromium mouse/touch events (requires websocket-client)
+$ gradle testDebugUnitTest assembleDebug  # Android lifecycle and navigation tests
+
+On an e-reader, check settings > device > e-ink, Back through XML submenus,
+page buttons/volume keys, tap thirds, calendar links/fields, selection and pinch,
+double-tap fullscreen, night mode, search, TTS controls,
+and switching back. Also switch modes and immediately press toolbar Up or system
+Back: no old-color toolbar should flash on either the parent settings or reader.
+Check a cold launch in each mode and confirm the device's
+chosen refresh settings are comfortable. Automated checks cannot assess panel
+ghosting or device-specific refresh behavior.
+
+Check the startup chooser on a clean install and an upgrade without a saved
+appearance. Both choices must be readable, precede the changelog, and persist
+after restarting. An existing explicit mode must skip the chooser. On a BOOX
+reader, also check the normal drawer with the device's app optimization enabled;
+its explicit colors match the original phone palette, but vendor display
+processing is outside the scope of the automated tests.

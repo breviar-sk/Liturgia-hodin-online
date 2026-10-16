@@ -7,8 +7,6 @@
 /*                                                            */
 /**************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __DBZALTAR_CPP_
 #define __DBZALTAR_CPP_
 

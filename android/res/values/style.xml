@@ -2,8 +2,108 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
   <style name="BreviarTheme" parent="@style/Theme.AppCompat.NoActionBar">
     <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="navigationViewStyle">@style/StandardNavigationView</item>
+    <item name="toolbarStyle">@style/StandardToolbar</item>
   </style>
-  <style name="ListEntry" parent="BreviarTheme">
+  <!-- Keep the phone title/subtitle palette even when reader firmware changes
+       the inherited textColorPrimary/textColorSecondary. E-ink uses its own theme. -->
+  <style name="StandardToolbar" parent="Widget.AppCompat.Toolbar">
+    <item name="titleTextColor">#FFFFFFFF</item>
+    <item name="subtitleTextColor">#B3FFFFFF</item>
+  </style>
+  <!-- Match AppCompat's dark palette explicitly, including disabled/checked
+       states. Reader firmware can override the inherited text colors. -->
+  <style name="StandardNavigationView" parent="Widget.Design.NavigationView">
+    <item name="itemTextColor">@color/navigation_text</item>
+    <item name="subheaderColor">@color/navigation_secondary</item>
+    <item name="itemIconTint">@color/navigation_secondary</item>
+  </style>
+  <style name="BreviarEinkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">@android:color/white</item>
+    <item name="colorPrimaryDark">@android:color/white</item>
+    <item name="colorAccent">@android:color/black</item>
+    <item name="colorControlNormal">@android:color/black</item>
+    <item name="colorControlActivated">@android:color/black</item>
+    <item name="colorControlHighlight">@android:color/transparent</item>
+    <item name="android:colorControlHighlight">@android:color/transparent</item>
+    <item name="android:colorAccent">@android:color/black</item>
+    <item name="android:windowBackground">@android:color/white</item>
+    <item name="android:colorBackground">@android:color/white</item>
+    <item name="android:statusBarColor">@android:color/white</item>
+    <item name="android:navigationBarColor">@android:color/white</item>
+    <item name="android:windowLightStatusBar">true</item>
+    <item name="android:windowLightNavigationBar">true</item>
+    <item name="android:textColorPrimary">@android:color/black</item>
+    <item name="android:textColorSecondary">@android:color/black</item>
+    <item name="android:textColorHint">@android:color/black</item>
+    <item name="android:textColorLink">@android:color/black</item>
+    <item name="android:windowAnimationStyle">@style/EinkWindowAnimation</item>
+    <item name="android:windowContentTransitions">false</item>
+    <item name="android:windowActivityTransitions">false</item>
+    <item name="android:forceDarkAllowed">false</item>
+    <item name="android:enforceNavigationBarContrast">false</item>
+    <item name="android:enforceStatusBarContrast">false</item>
+    <item name="selectableItemBackground">@drawable/eink_selection</item>
+    <item name="selectableItemBackgroundBorderless">@drawable/eink_selection</item>
+    <item name="android:selectableItemBackground">@drawable/eink_selection</item>
+    <item name="buttonStyle">@style/EinkButton</item>
+    <item name="android:buttonStyle">@style/EinkButton</item>
+    <item name="android:alertDialogTheme">@style/EinkDialog</item>
+    <item name="alertDialogTheme">@style/EinkDialog</item>
+    <item name="navigationViewStyle">@style/EinkNavigationView</item>
+  </style>
+  <!-- Material's default checked text/icon color follows colorPrimary (white).
+       Set every state at inflation time, including rows created after a refresh. -->
+  <style name="EinkNavigationView" parent="Widget.Design.NavigationView">
+    <item name="android:background">@android:color/white</item>
+    <item name="itemTextColor">@android:color/black</item>
+    <item name="itemIconTint">@android:color/black</item>
+    <item name="subheaderColor">@android:color/black</item>
+    <item name="itemTextAppearance">@style/EinkNavigationText</item>
+    <item name="subheaderTextAppearance">@style/EinkNavigationText</item>
+    <item name="itemBackground">@drawable/eink_selection</item>
+    <item name="elevation">0dp</item>
+    <item name="insetForeground">@android:color/transparent</item>
+  </style>
+  <style name="EinkNavigationText" parent="TextAppearance.AppCompat.Body2">
+    <item name="android:textColor">@android:color/black</item>
+  </style>
+  <style name="EinkDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <item name="colorAccent">@android:color/black</item>
+    <item name="android:colorAccent">@android:color/black</item>
+    <item name="android:windowBackground">@android:color/white</item>
+    <item name="android:textColorPrimary">@android:color/black</item>
+    <item name="android:textColorSecondary">@android:color/black</item>
+    <item name="textColorAlertDialogListItem">@android:color/black</item>
+    <item name="android:textColorAlertDialogListItem">@android:color/black</item>
+    <item name="android:windowAnimationStyle">@style/EinkWindowAnimation</item>
+    <item name="android:backgroundDimEnabled">false</item>
+    <item name="colorControlHighlight">@android:color/transparent</item>
+    <item name="android:colorControlHighlight">@android:color/transparent</item>
+    <item name="android:listSelector">@drawable/eink_selection</item>
+  </style>
+  <style name="EinkWindowAnimation" parent="@android:style/Animation.Activity">
+    <item name="android:activityOpenEnterAnimation">@null</item>
+    <item name="android:activityOpenExitAnimation">@null</item>
+    <item name="android:activityCloseEnterAnimation">@null</item>
+    <item name="android:activityCloseExitAnimation">@null</item>
+    <item name="android:windowEnterAnimation">@null</item>
+    <item name="android:windowExitAnimation">@null</item>
+  </style>
+  <!-- Readable before an appearance has been selected, in either app theme. -->
+  <style name="AppearanceChooserTheme" parent="EinkDialog">
+    <item name="android:colorBackground">@android:color/white</item>
+    <item name="android:forceDarkAllowed">false</item>
+  </style>
+  <style name="EinkButton" parent="Widget.AppCompat.Button">
+    <item name="android:background">@drawable/eink_button</item>
+    <item name="backgroundTint">@null</item>
+    <item name="android:backgroundTint">@null</item>
+    <item name="android:textColor">@android:color/black</item>
+    <item name="android:stateListAnimator">@null</item>
+    <item name="android:minHeight">48dp</item>
+  </style>
+  <style name="ListEntry" parent="">
     <item name="android:paddingLeft">?android:attr/listPreferredItemPaddingLeft</item>
     <item name="android:paddingRight">?android:attr/listPreferredItemPaddingRight</item>
     <item name="android:paddingTop">0dp</item>

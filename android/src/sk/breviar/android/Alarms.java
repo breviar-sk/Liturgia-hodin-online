@@ -2,14 +2,13 @@ package sk.breviar.android;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.widget.CompoundButton;
 
 import sk.breviar.android.BreviarApp;
 import sk.breviar.android.Util;
 
-public class Alarms extends AppCompatActivity {
+public class Alarms extends AppearanceActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
       super.attachBaseContext(newBase);
@@ -44,6 +43,7 @@ public class Alarms extends AppCompatActivity {
               Util.events[j].disable(box.getContext());
               Util.events[j].updateBox(box, new Util.AlarmTime(0, 0, false));
             }
+            EinkUi.apply(box);
           }
         });
       }

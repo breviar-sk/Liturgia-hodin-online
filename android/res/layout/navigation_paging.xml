@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_paging"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:visibility="gone">
+  <Button android:id="@+id/navigation_page_up"
+      android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+      android:text="@string/pgup" />
+  <Button android:id="@+id/navigation_page_down"
+      android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+      android:text="@string/pgdn" />
+</LinearLayout>

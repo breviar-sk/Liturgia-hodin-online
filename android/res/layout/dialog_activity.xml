@@ -23,10 +23,12 @@
   android:paddingLeft="4dip" android_paddingRight="4dip" android:layout_weight="1"
 />
 
+  <include layout="@layout/navigation_paging" />
+
   <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/dialog_ok" android:text="OK"
     style="?android:attr/buttonStyleSmall" 
-    app:backgroundTint="@color/colorPrimary"
+    app:backgroundTint="?attr/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"

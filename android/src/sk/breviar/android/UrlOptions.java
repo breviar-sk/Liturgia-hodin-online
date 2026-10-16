@@ -198,11 +198,17 @@ public class UrlOptions {
 
   // of0tn
   public boolean isTransparentNav() {
-    return hasBit("o0", 10);
+    return getInt("of0tn", hasBit("o0", 10) ? 1 : 0) == 1;
   }
 
   public void setTransparentNav(boolean value) {
-    setBit("o0", 10, value);
+    if (params.containsKey("o0") && !params.get("o0").isEmpty()) {
+      setBit("o0", 10, value);
+      params.remove("of0tn");
+    } else {
+      // Before the first render, preserve unspecified C++ defaults for other bits.
+      params.put("of0tn", value ? "1" : "0");
+    }
   }
 
   // of0ltn

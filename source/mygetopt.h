@@ -8,12 +8,8 @@
 /*                                                             */
 /***************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __GETOPT_H_
 #define __GETOPT_H_
-
-#include <stdio.h>
 
 /* Declarations for getopt.
 	Copyright (C) 1989,90,91,92,93,94,96,97 Free Software Foundation, Inc.

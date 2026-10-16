@@ -7,7 +7,6 @@
 /*                                                                      */
 /************************************************************************/
 
-#include "vstudio.h"
 #include "myexpt.h"
 
 #ifndef __MYHPAGE_H_
@@ -17,10 +16,10 @@
 #define HTML_ANAME_TOP "<div id=\"contentRoot\"><a name=\"" HTML_TOP "\"></a>"
 
 #ifdef IO_ANDROID
-#define HTML_TRANSPARENT_NAV_UP_RIGHT "<div id=\"nav-arrow-up\" class=\"nav-arrow-right\" onclick=\"bridge.pageUp()\"></div>\n"
-#define HTML_TRANSPARENT_NAV_DOWN_RIGHT "<div id=\"nav-arrow-down\" class=\"nav-arrow-right\" onclick=\"bridge.pageDown()\"></div>\n"
-#define HTML_TRANSPARENT_NAV_UP_LEFT "<div id=\"nav-arrow-up\" class=\"nav-arrow-left\" onclick=\"bridge.pageUp()\"></div>\n"
-#define HTML_TRANSPARENT_NAV_DOWN_LEFT "<div id=\"nav-arrow-down\" class=\"nav-arrow-left\" onclick=\"bridge.pageDown()\"></div>\n"
+#define HTML_TRANSPARENT_NAV_UP_RIGHT "<div data-breviar-interactive id=\"nav-arrow-up\" class=\"nav-arrow-right\" onclick=\"bridge.pageUp()\"></div>\n"
+#define HTML_TRANSPARENT_NAV_DOWN_RIGHT "<div data-breviar-interactive id=\"nav-arrow-down\" class=\"nav-arrow-right\" onclick=\"bridge.pageDown()\"></div>\n"
+#define HTML_TRANSPARENT_NAV_UP_LEFT "<div data-breviar-interactive id=\"nav-arrow-up\" class=\"nav-arrow-left\" onclick=\"bridge.pageUp()\"></div>\n"
+#define HTML_TRANSPARENT_NAV_DOWN_LEFT "<div data-breviar-interactive id=\"nav-arrow-down\" class=\"nav-arrow-left\" onclick=\"bridge.pageDown()\"></div>\n"
 #else
 #define HTML_TRANSPARENT_NAV_UP_RIGHT "<div id=\"nav-arrow-up\" class=\"nav-arrow-right\" onclick=\"window.scrollBy(0, -0.95*window.innerHeight)\"></div>\n"
 #define HTML_TRANSPARENT_NAV_DOWN_RIGHT "<div id=\"nav-arrow-down\" class=\"nav-arrow-right\" onclick=\"window.scrollBy(0, 0.95*window.innerHeight)\"></div>\n"

@@ -36,10 +36,16 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 USA.  */
 
-#include "vstudio.h"
-
 #ifndef _GETOPT_CPP_
 #define _GETOPT_CPP_
+
+#ifdef _MSC_VER
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+// avoid Visual Studio warnings: 
+// warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead.
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>

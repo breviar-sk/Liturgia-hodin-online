@@ -13,21 +13,15 @@
 /*                                                          */
 /************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __LITURGIA_H_
 #define __LITURGIA_H_
 
-#include "mysystem.h"
 #include "mysysdef.h"
 #include "mydefs.h"
 #include "common.h"
 #include "mylog.h"
 #include "myconf.h"
 #include <time.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
 
 #define MENO_SVIATKU 260
 #define MAX_LC_STR_ID 50
@@ -2096,7 +2090,7 @@ extern const char* bible_version_id_default[POCET_JAZYKOV + 1];
 
 #define POCET_MENU_GROUPS	6
 
-#define MAX_POCET_MENU_ITEMS	33
+#define MAX_POCET_MENU_ITEMS	33 // note: POCET_MENU_3_ITEMS has only 32 items yet
 
 #define MENU_0_GENERAL			0
 #define MENU_1_DEVICE			1
@@ -2118,7 +2112,7 @@ extern const char* bible_version_id_default[POCET_JAZYKOV + 1];
 #define MENU_1_ITEM_DO_NOT_DISTURB	2
 #define MENU_1_ITEM_LOCK_FONT_SIZE	3 // do not allow font size change by standard gestures
 
-#define POCET_MENU_2_ITEMS	9
+#define POCET_MENU_2_ITEMS	12
 
 #define MENU_2_ITEM_FONT						0
 #define MENU_2_ITEM_COLOR_SCHEMA				1 // Android: night mode
@@ -2131,8 +2125,9 @@ extern const char* bible_version_id_default[POCET_JAZYKOV + 1];
 #define MENU_2_ITEM_BUTTONS_CONDENSED			8 // default (Android, web): ON; historically all buttons for prayers could be displayed in single line (table row)
 #define MENU_2_ITEM_BUTTONS_ORDERING			9 // ordering of buttons for prayers and buttons for date-navigation
 #define MENU_2_ITEM_NAVIGATION_IN_PRAYER		10 // navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
+#define MENU_2_ITEM_LINE_BREAKS_PRINTED			11 // line breaks as in printed edition
 
-#define POCET_MENU_3_ITEMS	33
+#define POCET_MENU_3_ITEMS	32
 
 #define MENU_3_ITEM_SWITCHES_IN_TEXT	0 // switches as clickable hyperlinks directly in prayer texts; default: ON
 
@@ -2163,12 +2158,11 @@ extern const char* bible_version_id_default[POCET_JAZYKOV + 1];
 #define MENU_3_ITEM_ALT_MCD_9_HYMN		24
 #define MENU_3_ITEM_ALT_MCD_12_HYMN		25
 #define MENU_3_ITEM_ALT_MCD_15_HYMN		26
-#define MENU_3_ITEM_LINE_BREAKS_PRINTED	27
-#define MENU_3_ITEM_ALT_PA_HYMN_SUN		28
-#define MENU_3_ITEM_ALT_COMPL_HYMN		29
-#define MENU_3_ITEM_ALT_READ_EAST_HYMN	30
-#define MENU_3_ITEM_ALT_LAUD_EAST_HYMN	31
-#define MENU_3_ITEM_ALT_VESP_EAST_HYMN	32
+#define MENU_3_ITEM_ALT_PA_HYMN_SUN		27
+#define MENU_3_ITEM_ALT_COMPL_HYMN		28
+#define MENU_3_ITEM_ALT_READ_EAST_HYMN	29
+#define MENU_3_ITEM_ALT_LAUD_EAST_HYMN	30
+#define MENU_3_ITEM_ALT_VESP_EAST_HYMN	31
 
 #define POCET_MENU_4_ITEMS	4
 
@@ -2197,8 +2191,8 @@ extern const char* menu_item_type_name[POCET_MENU_ITEM_TYPE + 1];
 const short int menu_item_type[POCET_MENU_GROUPS][MAX_POCET_MENU_ITEMS] = {
 	/*MENU_0_GENERAL*/		{ MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_APP_SPECIFIC, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	/*MENU_1_DEVICE*/		{ MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	/*MENU_2_LOOK*/			{ MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	/*MENU_3_TEXT_CONTENT*/	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	/*MENU_2_LOOK*/			{ MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	/*MENU_3_TEXT_CONTENT*/	{ MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, 0 },
 	/*MENU_4_CALENDAR*/		{ MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	/*MENU_5_TTS*/			{ MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 };

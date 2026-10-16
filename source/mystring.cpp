@@ -7,21 +7,36 @@
 /*                                                             */
 /***************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __MYSTRING_CPP_
 #define __MYSTRING_CPP_
 
+#ifdef _MSC_VER
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+// avoid Visual Studio warnings: 
+// warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead.
+// warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead.
+#endif
+
 #include <ctype.h>
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <wctype.h>
+#include <string>
+#include <locale>
+#include <codecvt>
 #include "utf8-utils.h"
 #include "mystring.h"
-#include "mysystem.h"
-#include "mysysdef.h"
+
+#ifdef _WIN32
+	// Windows už má _strdup, netreba robiť nič
+	// Windows už _strtoui64 pozná
+#else
+	// Na Linuxe/macOS premenujeme _strdup na štandardný strdup
+	#define _strdup strdup
+	// Na Linuxe premapujeme Windows názov na štandardný strtoull
+	#define _strtoui64 strtoull
+#endif
 
 // funkcia mystrcpy()
 // 1. zisti velkost dest -- sizeof(dest)
@@ -214,7 +229,7 @@ std::string mystr_replace(const char* string, const char* substr, const char* re
 	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
 	if (substr == NULL || replacement == NULL) return std::string(string);
 
-	newstr = strdup(string);
+	newstr = _strdup(string);
 	head = newstr;
 	while ((tok = strstr(head, substr))) {
 		oldstr = newstr;
@@ -240,9 +255,9 @@ std::string mystr_replace(const char* string, const char* substr, const char* re
 
 std::string mystr_replace_char(const char* string, const char orig_char, const char replacement) {
 	/* if either substr or replacement is NULL, duplicate string a let caller handle it */
-	if (orig_char == 0 || replacement == 0) return strdup(string);
+	if (orig_char == 0 || replacement == 0) return _strdup(string);
 
-	char *newstr = strdup(string);
+	char *newstr = _strdup(string);
 
 	int i = 0;
 	while (string[i] != '\0')
@@ -263,7 +278,7 @@ std::string mystr_remove_char(const char* string, const char char_to_remove) {
 	if (char_to_remove == 0) return std::string(string);
 
 	char *newstr = NULL;
-	newstr = strdup(string);
+	newstr = _strdup(string);
 
 	int i = 0, j = 0;
 
@@ -287,7 +302,7 @@ std::string mystr_remove_letters_and_parentheses(const char* string) {
 	/* if substr is NULL, duplicate string a let caller handle it */
 
 	char *newstr = NULL;
-	newstr = strdup(string);
+	newstr = _strdup(string);
 
 	short int i = 0, j = 0;
 	short int skip = NIE;
@@ -396,31 +411,48 @@ char* convert_nonbreaking_spaces(const char* input) {
 }// convert_nonbreaking_spaces()
 
 std::string mystr_first_lower(const char* string) {
-	char *newstr = NULL;
-	char c;
-	newstr = strdup(string);
-	c = newstr[0];
-	if (isupper(c)) {
-		c = tolower(c);
-		newstr[0] = c;
+	if (!string || string[0] == '\0') {
+		return std::string("");
 	}
-	std::string val(newstr);
-	free(newstr);
-	return val;
+
+	// 1. Konverzia vstupného UTF-8 textu na std::wstring (široké znaky)
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+	std::wstring wstr = converter.from_bytes(string);
+
+	// 2. Nastavenie lokalizácie (automaticky prevezme nastavenie systému)
+	// Na Windows/Linux/macOS zabezpečí správne rozpoznanie slovenskej diakritiky
+	std::locale loc("");
+
+	// 3. Kontrola a zmena prvého širokého znaku (napr. 'Ú' -> 'ú')
+	if (std::islower(wstr[0], loc)) {
+		wstr[0] = std::tolower(wstr[0], loc);
+	}
+
+	// 4. Konverzia wstringu späť na štandardný UTF-8 std::string
+	return converter.to_bytes(wstr);
+
 }// mystr_first_lower()
 
 std::string mystr_first_upper(const char* string) {
-	char *newstr = NULL;
-	char c;
-	newstr = strdup(string);
-	c = newstr[0];
-	if (islower(c)) {
-		c = toupper(c);
-		newstr[0] = c;
+	if (!string || string[0] == '\0') {
+		return std::string("");
 	}
-	std::string val(newstr);
-	free(newstr);
-	return val;
+
+	// 1. Konverzia vstupného UTF-8 textu na std::wstring (široké znaky)
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+	std::wstring wstr = converter.from_bytes(string);
+
+	// 2. Nastavenie lokalizácie (automaticky prevezme nastavenie systému)
+	// Na Windows/Linux/macOS zabezpečí správne rozpoznanie slovenskej diakritiky
+	std::locale loc("");
+
+	// 3. Kontrola a zmena prvého širokého znaku (napr. 'ú' -> 'Ú')
+	if (std::islower(wstr[0], loc)) {
+		wstr[0] = std::toupper(wstr[0], loc);
+	}
+
+	// 4. Konverzia wstringu späť na štandardný UTF-8 std::string
+	return converter.to_bytes(wstr);
 }// mystr_first_upper()
 
 // convert integer value to Roman numeral string; caller is responsible for buffer size

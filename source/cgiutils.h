@@ -3,8 +3,6 @@
  * (c) 1995-1996 William E. Weinman
  *
  */
-#include "vstudio.h"
-
 #ifndef __CGIUTILS_H_
 #define __CGIUTILS_H_
 

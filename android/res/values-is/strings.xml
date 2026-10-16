@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="eink_mode">E-ink hamur (svarthvítur, án hreyfinga)</string>
+    <string name="appearance_title">Skjástilling</string>
+    <string name="appearance_message">Þú getur breytt þessu síðar í %1$s > %2$s.</string>
+    <string name="appearance_normal">Venjulegur skjár</string>
+    <string name="appearance_eink">E-ink skjár</string>
     <string name="app_name">Tíðabænabók</string>
     <string name="back">Til baka</string>
     <string name="forward">Áfram</string>
@@ -10,6 +15,8 @@
 
     <string name="lang_select">Tungumál</string>
     <string name="settings">Stillingar</string>
+    <string name="settings_loading">Hleð stillingum…</string>
+    <string name="settings_load_failed">Ekki tókst að hlaða stillingum. Pikkaðu til að reyna aftur.</string>
 
     <string name="lang_cz">Tékkneska</string>
     <string name="lang_c2">Tékkneska – dóminíkönsk tíðabænabók</string>
@@ -52,7 +59,12 @@
     <string name="normal_font">Venjulegt letur (ekki feitletrað)</string>
     <string name="buttons_rounded_corners">Ávöl horn á hnöppum</string>
     <string name="buttons_order">Dagsetninga leiðsagnahnappar undir hnöppum fyrir bænir</string>
-    <string name="transparent_nav">Sýna leiðsöguörvar (hægra megin)</string>
+    <string name="reading_navigation">Leiðsögn við lestur</string>
+    <string name="navigation_scroll">Aðeins skruna</string>
+    <string name="navigation_arrows">Leiðsöguörvar</string>
+    <string name="navigation_buttons">Upp/niður hnappar neðst</string>
+    <string name="navigation_taps">Pikka efst/neðst á skjáinn</string>
+    <string name="navigation_taps_horizontal">Pikka á vinstri/hægri þriðjung skjásins</string>
     <string name="transparent_nav_left">Leiðsöguörvar vinstra megin</string>
     <string name="transparent_nav_down_only">Sýndu aðeins niðurleiðarörina</string>
     <string name="font_select">Veldu leturgerð</string>

@@ -8,18 +8,8 @@
         app:actionLayout="@layout/widget_submenu"
   />
 
-  <item android:id="@+id/prayer_settings"
-        android:title="@string/prayer_settings_title"
-        app:actionLayout="@layout/widget_submenu"
-  />
-
   <item android:id="@+id/display_settings"
         android:title="@string/display_settings_title"
-        app:actionLayout="@layout/widget_submenu"
-  />
-
-  <item android:id="@+id/calendar_settings"
-        android:title="@string/calendar_settings_title"
         app:actionLayout="@layout/widget_submenu"
   />
 

@@ -11,11 +11,12 @@
 #define __CITANIA_CPP_
 
 #include "citania.h"
-#include "liturgia.h"
-#include <string.h>
-#include <stdlib.h>
 
 #ifdef LITURGICKE_CITANIA_ANDROID
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 static struct citanie Citania[] = {
 #include "citania-merged.cpp"

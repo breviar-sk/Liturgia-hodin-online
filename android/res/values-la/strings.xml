@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="eink_mode">Modus E-ink (niger et albus, sine animationibus)</string>
+    <string name="appearance_title">Modus ostensionis</string>
+    <string name="appearance_message">Hoc postea mutare potes in %1$s > %2$s.</string>
+    <string name="appearance_normal">Ostentio ordinaria</string>
+    <string name="appearance_eink">Ostentio E-ink</string>
     <string name="app_name">Breviarium</string>
     <string name="back">Retro</string>
     <string name="forward">Porro</string>
@@ -10,6 +15,8 @@
 
     <string name="lang_select">Lingua</string>
     <string name="settings">Occasiones</string>
+    <string name="settings_loading">Occasiones leguntur…</string>
+    <string name="settings_load_failed">Occasiones legi non potuerunt. Tange ut iterum coneris.</string>
 
     <string name="lang_cz">Bohemica</string>
     <string name="lang_c2">Bohemica – dominicanes</string>
@@ -52,7 +59,12 @@
     <string name="normal_font">Ostende ubique litteras formæ normalis (non crassas)</string>
     <string name="buttons_rounded_corners">Angulis rotundatis bullarum</string>
     <string name="buttons_order">Ostende pulsabulas navigatorias sub pulsabulis pro Horas</string>
-    <string name="transparent_nav">Ostende sagittas navigationis (in dextro)</string>
+    <string name="reading_navigation">Navigatio in lectione</string>
+    <string name="navigation_scroll">Volutatio tantum</string>
+    <string name="navigation_arrows">Sagittae navigationis</string>
+    <string name="navigation_buttons">Bullae inferiores sursum/deorsum</string>
+    <string name="navigation_taps">Tactus in tertia parte superiore/inferiore</string>
+    <string name="navigation_taps_horizontal">Tactus in tertia parte sinistra/dextra</string>
     <string name="transparent_nav_left">Pharetra sagittis a sinistris</string>
     <string name="transparent_nav_down_only">Navigationis sagittam tantum ostendere</string>
     <string name="font_select">Lego font</string>

@@ -26,6 +26,7 @@
              android:layout_weight="1"
              android:scrollbarThumbVertical="@drawable/scrollbar"
              android:paddingLeft="4dip" android_paddingRight="4dip"/>
+    <include layout="@layout/navigation_paging" />
     <LinearLayout
       android:id="@+id/search_container"
       android:layout_width="match_parent"

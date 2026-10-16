@@ -7,8 +7,6 @@
 /*                                                                      */
 /************************************************************************/
 
-#include "vstudio.h"
-
 #ifndef __MYHPAGE_CPP_
 #define __MYHPAGE_CPP_
 
@@ -22,8 +20,6 @@
 #include "mydefs.h"
 #include "myexpt.h"
 #include "mystring.h"
-#include "mylog.h"
-#include "mybuild.h"
 
 #include "breviar.h"
 #include "liturgia.h"
@@ -306,6 +302,7 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 
 #if defined(IO_ANDROID)
 	// Android app only
+	Export_to_file(expt, "\t<script src='/tap-navigation.js'></script>\n");
 	Export_to_file(expt, "\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0\" />\n");
 #else
 	// not for Android app
@@ -777,10 +774,12 @@ void _xml_patka(FILE* expt) {
 	Export_to_file(expt, ELEM_BEGIN(XML_SUPPORTED_VALUES) "\n");
 
 	// sub-element XML_LIT_CALENDAR_VALUES
-	Export_to_file(expt, ELEM_BEGIN_NAME(XML_LIT_CALENDAR_VALUES) "\n", STR_KALENDAR);
+	// Value is additive metadata for native selectors; older XML clients ignore it.
+	Export_to_file(expt, "<" XML_LIT_CALENDAR_VALUES " Name=\"%s\" Value=\"%s\">\n", STR_KALENDAR,
+		(_global_kalendar == default_kalendar[_global_jazyk]) ? STR_EMPTY : skratka_kalendara[_global_kalendar]);
 
 	for (c = 0; c < supported_calendars_count[_global_jazyk]; c++) {
-		if (equalsi(skratka_kalendara[c], STR_EMPTY)) {
+		if (supported_calendars(c) == default_kalendar[_global_jazyk]) {
 			Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_CALENDAR) "%s" ELEM_END(XML_LIT_CALENDAR) "\n", supported_calendars(c), nazov_kalendara_vyber[supported_calendars(c)]);
 		}
 		else {

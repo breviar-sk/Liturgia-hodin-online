@@ -7,8 +7,6 @@
 /*                                                       */
 /*********************************************************/
 
-#include "vstudio.h"
-
 #ifndef __COMMON_H_
 #define __COMMON_H_
 
@@ -158,6 +156,7 @@
 #define STR_ASTERISK "*"
 #define STR_CROSS "†"
 #define STR_SLASH "/"
+#define STR_SLASH_SPACED " / "
 #define STR_UNDERSCORE "_"
 #define STR_DOT "."
 #define STR_MIDDLE_DOT "·"

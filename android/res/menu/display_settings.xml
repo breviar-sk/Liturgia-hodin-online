@@ -48,9 +48,9 @@
         app:actionLayout="@layout/widget_switch"
   />
 
-  <item android:id="@+id/transparent_nav"
-        android:title="@string/transparent_nav"
-        app:actionLayout="@layout/widget_switch"
+  <item android:id="@+id/reading_navigation"
+        android:title="@string/reading_navigation"
+        app:actionLayout="@layout/widget_submenu"
   />
 
   <item android:id="@+id/transparent_nav_left"

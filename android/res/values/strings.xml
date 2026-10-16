@@ -12,6 +12,8 @@
 
     <string name="lang_select">Language</string>
     <string name="settings">Settings</string>
+    <string name="settings_loading">Loading settings…</string>
+    <string name="settings_load_failed">Could not load settings. Tap to retry.</string>
 
     <string name="lang_cz">Czech</string>
     <string name="lang_c2">Czech Dominicans</string>
@@ -22,6 +24,11 @@
     <string name="override_locale">Override system-wide language settings</string>
 
     <string name="settings_title">Device</string>
+    <string name="eink_mode">E-ink mode (black and white, no animations)</string>
+    <string name="appearance_title">Display mode</string>
+    <string name="appearance_message">You can change this later in %1$s > %2$s.</string>
+    <string name="appearance_normal">Normal display</string>
+    <string name="appearance_eink">E-ink display</string>
     <string name="vol_buttons">Volume buttons for scrolling</string>
     <string name="dimlock">Do not dim screen</string>
     <string name="mute">Do Not Disturb mode</string>
@@ -54,7 +61,12 @@
     <string name="normal_font">Force normal font weight (no bold)</string>
     <string name="buttons_rounded_corners">Rounded corners of buttons</string>
     <string name="buttons_order">Date buttons after buttons for prayers</string>
-    <string name="transparent_nav">Navigation arrows in text (right side)</string>
+    <string name="reading_navigation">Reading navigation</string>
+    <string name="navigation_scroll">Scrolling only</string>
+    <string name="navigation_arrows">Navigation arrows</string>
+    <string name="navigation_buttons">Bottom up/down buttons</string>
+    <string name="navigation_taps">Tap top/bottom thirds</string>
+    <string name="navigation_taps_horizontal">Tap left/right thirds</string>
     <string name="transparent_nav_left">Navigation arrows on the left side</string>
     <string name="transparent_nav_down_only">Show only down navigation arrow</string>
     <string name="font_select">Select font</string>

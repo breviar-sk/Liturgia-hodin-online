@@ -16,6 +16,12 @@ public class DeviceSettings extends SettingsActivity {
     getSupportActionBar().setTitle(getString(R.string.settings_title));
 
     final SettingsActivity act = this;
+    handleSwitch(R.id.eink_mode, new BooleanOption() {
+      public void set(boolean value) {
+        act.changeAppearance(value);
+      }
+      public boolean get() { return BreviarApp.getEinkMode(act); }
+    });
     handleSwitch(R.id.vol_buttons, new BooleanOption() {
       public void set(boolean value) { BreviarApp.setVolButtons(act, value); }
       public boolean get() { return BreviarApp.getVolButtons(act); }
