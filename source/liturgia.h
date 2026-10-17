@@ -2090,125 +2090,13 @@ extern const char* bible_version_id_default[POCET_JAZYKOV + 1];
 
 #define POCET_MENU_GROUPS	6
 
-#define MAX_POCET_MENU_ITEMS	33 // note: POCET_MENU_3_ITEMS has only 32 items yet
-
-#define MENU_0_GENERAL			0
-#define MENU_1_DEVICE			1
-#define MENU_2_LOOK				2
-#define MENU_3_TEXT_CONTENT 	3
-#define MENU_4_CALENDAR			4
-#define	MENU_5_TTS				5 // not supported for web
-
-#define POCET_MENU_0_ITEMS	3
-
-#define MENU_0_ITEM_LANGUAGE	0
-#define MENU_0_ITEM_CALENDAR	1
-#define MENU_0_ITEM_WHEN_ONLINE	2
-
-#define POCET_MENU_1_ITEMS	4
-
-#define MENU_1_ITEM_VOLUME_BUTTONS	0 // Android only
-#define MENU_1_ITEM_SCREEN_ALWAYS	1
-#define MENU_1_ITEM_DO_NOT_DISTURB	2
-#define MENU_1_ITEM_LOCK_FONT_SIZE	3 // do not allow font size change by standard gestures
-
-#define POCET_MENU_2_ITEMS	12
-
-#define MENU_2_ITEM_FONT						0
-#define MENU_2_ITEM_COLOR_SCHEMA				1 // Android: night mode
-#define MENU_2_ITEM_NORMAL_FONT					2 // do not allow bold font
-#define MENU_2_ITEM_ROUNDED_CORNERS				3 // for buttons
-#define MENU_2_ITEM_ALT_BACKGROUND				4 // Android only
-#define MENU_2_ITEM_NAVIGATION_ARROWS			5 // navigation arrows (default: on the right side); used especially for e-book readers
-#define MENU_2_ITEM_NAVIGATION_ARROWS_LEFT		6 // navigation arrows on the left side; used especially for e-book readers
-#define MENU_2_ITEM_NAVIGATION_ARROW_DOWN_ONLY  7 // show only left navigation arrow; used especially for presenting
-#define MENU_2_ITEM_BUTTONS_CONDENSED			8 // default (Android, web): ON; historically all buttons for prayers could be displayed in single line (table row)
-#define MENU_2_ITEM_BUTTONS_ORDERING			9 // ordering of buttons for prayers and buttons for date-navigation
-#define MENU_2_ITEM_NAVIGATION_IN_PRAYER		10 // navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
-#define MENU_2_ITEM_LINE_BREAKS_PRINTED			11 // line breaks as in printed edition
-
-#define POCET_MENU_3_ITEMS	32
-
-#define MENU_3_ITEM_SWITCHES_IN_TEXT	0 // switches as clickable hyperlinks directly in prayer texts; default: ON
-
-#define MENU_3_ITEM_ALTERNATIVES		1
-
-#define MENU_3_ITEM_COMMUNIA_INFO		2
-#define MENU_3_ITEM_COMMUNIA_FORCE		3
-#define MENU_3_ITEM_VERSE_NUMBERING		4
-#define MENU_3_ITEM_PSALM_OMMISIONS		5
-#define MENU_3_ITEM_ELISIONS_ITALICS	6
-#define MENU_3_ITEM_TEXT_NOTES			7 // footnotes & endnotes
-#define MENU_3_ITEM_SAINT_DETAILS_HIDE	8
-#define MENU_3_ITEM_MCD_SUPPL_PSALMS	9
-#define MENU_3_ITEM_MCD_SPECIAL_PS		10
-#define MENU_3_ITEM_INV_PSALM_95		11
-#define MENU_3_ITEM_PRECES_REPEAT		12
-#define MENU_3_ITEM_VESPERS_SPEC_PREC	13
-#define MENU_3_ITEM_VIGILIES			14
-#define MENU_3_ITEM_ALT_CONCLUSION		15
-#define MENU_3_ITEM_ALT_PS_122_129		16
-#define MENU_3_ITEM_ALT_PS_126_129		17
-#define MENU_3_ITEM_ALT_PS_127_131		18
-#define MENU_3_ITEM_ALT_PA_34_HYMNS		19
-#define MENU_3_ITEM_ALT_ASH_WED_PS		20
-#define MENU_3_ITEM_ALT_GREEN_TH_PS		21
-#define MENU_3_ITEM_ALT_DEF_PS_146_150 	22
-#define MENU_3_ITEM_ALT_READ_PA_HYMNS	23
-#define MENU_3_ITEM_ALT_MCD_9_HYMN		24
-#define MENU_3_ITEM_ALT_MCD_12_HYMN		25
-#define MENU_3_ITEM_ALT_MCD_15_HYMN		26
-#define MENU_3_ITEM_ALT_PA_HYMN_SUN		27
-#define MENU_3_ITEM_ALT_COMPL_HYMN		28
-#define MENU_3_ITEM_ALT_READ_EAST_HYMN	29
-#define MENU_3_ITEM_ALT_LAUD_EAST_HYMN	30
-#define MENU_3_ITEM_ALT_VESP_EAST_HYMN	31
-
-#define POCET_MENU_4_ITEMS	4
-
-#define MENU_4_ITEM_EPIPHANY 		0
-#define MENU_4_ITEM_ASSUMPT			1
-#define	MENU_4_ITEM_BODY_BLOOD 		2
-#define	MENU_4_ITEM_LOCAL_CAL_EMPH 	3
-
-#define POCET_MENU_5_ITEMS	3
-
-#define MENU_5_ITEM_SPEED	0 // iOS only
-#define MENU_5_ITEM_PAUSES	1 // special pauses for asterisks and crosses in psalmody
-#define	MENU_5_ITEM_HELP	2 // Android only
-
-const short int pocet_menu_items[POCET_MENU_GROUPS] = { POCET_MENU_0_ITEMS, POCET_MENU_1_ITEMS, POCET_MENU_2_ITEMS, POCET_MENU_3_ITEMS, POCET_MENU_4_ITEMS, POCET_MENU_5_ITEMS };
-
-#define POCET_MENU_ITEM_TYPE	3
-
-#define MENU_ITEM_TYPE_UNDEFINED		0 // this menu item is not defined/not used yet; similar to 0 in supported_calendars_language[][]
-#define MENU_ITEM_TYPE_MAIN_SWITCH		1 // switch, like 'j' (language) or 'c' (calendar)
-#define MENU_ITEM_TYPE_BIT_OPTION		2 // bit option given by option and bit-component, like OPT_2_HTML_EXPORT and BIT_OPT_2_NOCNY_REZIM
-#define MENU_ITEM_TYPE_APP_SPECIFIC		3 // these are not supported by this core CGI module; apps handle them on their own
-
-extern const char* menu_item_type_name[POCET_MENU_ITEM_TYPE + 1];
-
-const short int menu_item_type[POCET_MENU_GROUPS][MAX_POCET_MENU_ITEMS] = {
-	/*MENU_0_GENERAL*/		{ MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_APP_SPECIFIC, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	/*MENU_1_DEVICE*/		{ MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	/*MENU_2_LOOK*/			{ MENU_ITEM_TYPE_MAIN_SWITCH, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	/*MENU_3_TEXT_CONTENT*/	{ MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, 0 },
-	/*MENU_4_CALENDAR*/		{ MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, MENU_ITEM_TYPE_BIT_OPTION, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	/*MENU_5_TTS*/			{ MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, MENU_ITEM_TYPE_APP_SPECIFIC, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-};
-
-struct menu_item_switch_str_name {
-	char switch_str[SMALL];
-	char switch_xml[SMALL]; // XML element name
-	char switch_name[SMALL];
-};
-
-struct menu_item_option_str_name {
-	char option_str[SMALL]; // option group
-	char option_force[SMALL]; // bit opt force
-	char option_xml[SMALL]; // XML element name
-	char option_name[SMALL];
-};
+// Indexes of the localized root-group labels; menu identity uses semantic keys.
+#define MENU_0_GENERAL       0
+#define MENU_1_DEVICE        1
+#define MENU_2_LOOK          2
+#define MENU_3_TEXT_CONTENT  3
+#define MENU_4_CALENDAR      4
+#define MENU_5_TTS           5
 
 #endif // __LITURGIA_H_
 

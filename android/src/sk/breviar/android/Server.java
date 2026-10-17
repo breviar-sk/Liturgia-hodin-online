@@ -32,8 +32,16 @@ public class Server extends Thread {
     }
 
     private String render(FileDescriptor out, FileDescriptor in, String environment) {
+      return render(out, in, environment, null);
+    }
+
+    private String render(FileDescriptor out, FileDescriptor in, String environment, LoadTiming timing) {
+      if (timing != null) timing.mark("waiting for native renderer");
       synchronized (NATIVE_LOCK) {
-        return main(out, in, environment);
+        if (timing != null) timing.mark("native render started");
+        String result = main(out, in, environment);
+        if (timing != null) timing.mark("native render finished");
+        return result;
       }
     }
 
@@ -43,6 +51,7 @@ public class Server extends Thread {
     public static String getSettingsXml(Context context, String options, String language)
         throws IOException, InterruptedException {
       Server renderer = new Server(context);
+      LoadTiming timing = new LoadTiming("Settings export");
       UrlOptions query = new UrlOptions(options);
       for (String key : new String[]{"d", "m", "r", "p", "ds"}) query.params.remove(key);
       query.params.put("qt", "pxml");
@@ -54,11 +63,14 @@ public class Server extends Thread {
       Copy copy = new Copy(new FdInputStream(output[0]), bytes);
       copy.start(); // Drain concurrently: exports can exceed pipe capacity.
       renderer.render(output[1], input[0], "REQUEST_METHOD=GET\001QUERY_STRING=" +
-          query.getBuilder().build().getEncodedQuery() + "\001WWW_j=" + language + "\001");
+          query.getBuilder().build().getEncodedQuery() + "\001WWW_j=" + language + "\001", timing);
+      timing.mark("waiting for XML pipe");
       copy.join();
+      timing.mark("XML pipe drained (" + bytes.size() + " bytes)");
       String response = bytes.toString("UTF-8");
       int start = response.indexOf("<?xml");
       if (start < 0) throw new IOException("Missing settings XML");
+      timing.mark("XML ready");
       return response.substring(start);
     }
 

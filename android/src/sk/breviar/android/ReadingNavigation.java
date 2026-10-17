@@ -44,7 +44,10 @@ final class ReadingNavigation {
   }
 
   static void set(Context context, Mode mode) {
-    UrlOptions options = new UrlOptions(BreviarApp.getUrlOptions(context));
+    set(context, mode, new UrlOptions(BreviarApp.getUrlOptions(context)));
+  }
+
+  static void set(Context context, Mode mode, UrlOptions options) {
     options.setTransparentNav(mode == Mode.ARROWS);
     SharedPreferences.Editor editor = context.getSharedPreferences(Util.prefname, 0).edit();
     editor.putString(PREFERENCE, mode.value);

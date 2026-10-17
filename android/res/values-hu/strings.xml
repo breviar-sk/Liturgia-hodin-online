@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="eink_mode">E-ink mód (fekete-fehér, animációk nélkül)</string>
+    <string name="eink_mode">E-ink mód (animációk nélkül)</string>
     <string name="appearance_title">Megjelenítési mód</string>
     <string name="appearance_message">Ez később módosítható itt: %1$s > %2$s.</string>
     <string name="appearance_normal">Normál kijelző</string>
@@ -84,6 +84,7 @@
     <string name="color_dialog_color">Szín (RRGGBB): </string>
 
     <string name="calendar_settings_title">Liturgikus naptár</string>
+    <string name="default_calendar">Alapértelmezett naptár</string>
     <string name="epiphany_sunday">Urunk megjelenését (Vízkeresztet) vasárnap ünnepelni, január 2. és 8. között</string>
     <string name="ascension_sunday">Urunk mennybemenetelét vasárnap ünnepelni</string>
     <string name="body_blood_sunday">Krisztus Szent Teste és Vére ünnepét vasárnap ünnepelni</string>

@@ -4,6 +4,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,8 +16,21 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-/** The same Options/SupportedValues export consumed by the iOS app. */
+/** The same settings export consumed by the iOS app. */
 public final class SettingsXml {
+  public static final class Language {
+    public final String value, locale, label;
+
+    Language(Element element) {
+      value = element.getAttribute("Value");
+      locale = element.getAttribute("Locale");
+      label = label(element.getTextContent());
+      if (value.isEmpty() || locale.isEmpty() || label.isEmpty()) {
+        throw new IllegalArgumentException("Incomplete language metadata");
+      }
+    }
+  }
+
   public static final class Option {
     public final String element, label;
     public final long mask;
@@ -85,7 +99,7 @@ public final class SettingsXml {
       throw new IllegalArgumentException("Unknown choice for " + name);
     }
 
-    private void save(Map<String, String> params) {
+    void save(Map<String, String> params) {
       // value is the effective word returned by C++, including unlisted bits.
       // Old per-bit overrides must not undo the newly selected value.
       for (String forceName : forceNames) params.remove(forceName);
@@ -98,16 +112,72 @@ public final class SettingsXml {
   public String calendarParameter;
   public String selectedCalendar;
 
-  // These controls already have Android-specific behavior in DisplaySettings
-  // or the reader toolbar. Keep them there, without duplicate menu entries.
-  private static final Set<String> NATIVE_OPTIONS = new HashSet<>(Arrays.asList(
-      "BitOpt0ForceNormalFontWeight", "BitOpt0ButtonsOrder", "BitOpt0VoiceOutput",
-      "BitOpt0TransparentNav", "BitOpt0TransparentNavLeft", "BitOpt0TransparentNavDownOnly",
-      "BitOpt0NavigationMenu", "BitOpt2FirstVespersButton", "BitOpt2FontFamily",
-      "BitOpt2FontNameChooser", "BitOpt2FontSizeChooser", "BitOpt2Navigation",
-      "BitOpt2ButtonsCondensed", "BitOpt2NightMode", "BitOpt2RoundedCorners"));
+  /** Presentation metadata; option words remain the single source of renderer state. */
+  public static final class MenuEntry {
+    public final String key, label, control, parameter, handler;
+    public final boolean isGroup;
+    public final String defaultValue, resetValue;
+    public final Integer min, max;
+    public final List<MenuEntry> children = new ArrayList<>();
+    public final List<Choice> choices = new ArrayList<>();
+    public Group optionGroup;
+    public Option option;
+    private String selectedValue;
 
-  public static SettingsXml parse(String xml) throws Exception {
+    MenuEntry(Element element) {
+      key = element.getAttribute("Key");
+      label = label(element.getAttribute("Label"));
+      isGroup = element.getTagName().equals("MenuGroup");
+      control = element.getAttribute("Control");
+      parameter = element.getAttribute("Parameter");
+      handler = element.getAttribute("Handler");
+      defaultValue = attribute(element, "Default");
+      resetValue = attribute(element, "ResetValue");
+      min = element.hasAttribute("Min") ? Integer.valueOf(element.getAttribute("Min")) : null;
+      max = element.hasAttribute("Max") ? Integer.valueOf(element.getAttribute("Max")) : null;
+      if (key.isEmpty()) throw new IllegalArgumentException("Missing menu key");
+    }
+
+    public String value(Map<String, String> params) {
+      if (option != null) return optionGroup.isChecked(option) ? "1" : "0";
+      if (optionGroup != null) return Long.toString(optionGroup.value);
+      if (selectedValue != null) return selectedValue;
+      String value = params.get(parameter);
+      return value == null || value.isEmpty() ? (defaultValue == null ? "" : defaultValue) : value;
+    }
+
+    public void setValue(Map<String, String> params, String value) {
+      if (control.equals("choice") && !choices.isEmpty()) {
+        boolean found = false;
+        for (Choice choice : choices) if (choice.value.equals(value)) found = true;
+        if (!found) throw new IllegalArgumentException("Unknown choice for " + key);
+      }
+      if (option != null) {
+        optionGroup.setChecked(params, option, value.equals("1"));
+      } else if (optionGroup != null) {
+        optionGroup.value = Long.parseLong(value);
+        optionGroup.save(params);
+      } else if (!parameter.isEmpty()) {
+        // Empty ResetValue is an explicit assignment, never a deletion.
+        params.put(parameter, value);
+        if (selectedValue != null) selectedValue = value;
+      } else {
+        throw new IllegalStateException("Native handler owns " + key);
+      }
+    }
+  }
+
+  public final List<MenuEntry> menu = new ArrayList<>();
+  public final List<Language> languages = new ArrayList<>();
+  private final Map<String, MenuEntry> entries = new LinkedHashMap<>();
+
+  public MenuEntry findEntry(String key) { return entries.get(key); }
+
+  private static String attribute(Element element, String name) {
+    return element.hasAttribute(name) ? element.getAttribute(name) : null;
+  }
+
+  private static Element parseDocument(String xml) throws Exception {
     // Android's DOM factory does not support Xerces' disallow-doctype feature.
     // This export has no DTD; reject one before parsing on either platform.
     if (xml.contains("<!DOCTYPE")) throw new IllegalArgumentException("Unexpected DTD");
@@ -121,8 +191,32 @@ public final class SettingsXml {
     if (!document.getDocumentElement().getTagName().equals("LHData")) {
       throw new IllegalArgumentException("Expected LHData settings export");
     }
+    return document.getDocumentElement();
+  }
+
+  public static List<Language> parseLanguages(String xml) throws Exception {
+    return parseLanguages(parseDocument(xml));
+  }
+
+  private static List<Language> parseLanguages(Element root) {
+    Element supported = child(root, "SupportedLanguages");
+    if (supported == null) throw new IllegalArgumentException("Missing supported languages");
+    List<Language> languages = new ArrayList<>();
+    Set<String> values = new HashSet<>();
+    for (Element element : children(supported)) {
+      if (!element.getTagName().equals("Language")) continue;
+      Language language = new Language(element);
+      if (!values.add(language.value)) throw new IllegalArgumentException("Duplicate language");
+      languages.add(language);
+    }
+    if (languages.isEmpty()) throw new IllegalArgumentException("No supported languages");
+    return languages;
+  }
+
+  public static SettingsXml parse(String xml) throws Exception {
+    Element root = parseDocument(xml);
     SettingsXml result = new SettingsXml();
-    Element options = child(document.getDocumentElement(), "Options");
+    Element options = child(root, "Options");
     if (options == null) throw new IllegalArgumentException("Missing settings options");
     for (Element element : children(options)) {
       String name = element.getAttribute("Name");
@@ -132,17 +226,16 @@ public final class SettingsXml {
       Group group = new Group(element);
       for (Element bit : children(element)) {
         group.forceNames.add(bit.getAttribute("ForceName"));
-        if (NATIVE_OPTIONS.contains(bit.getTagName()) || !usableLabel(bit.getAttribute("Text"))) continue;
         Option option = new Option(bit);
         if (option.mask <= 0 || (option.mask & (option.mask - 1)) != 0) {
           throw new IllegalArgumentException("Invalid option mask");
         }
         group.options.add(option);
       }
-      if (name.equals("o3") || !group.options.isEmpty()) result.groups.add(group);
+      result.groups.add(group);
     }
 
-    Element supported = child(document.getDocumentElement(), "SupportedValues");
+    Element supported = child(root, "SupportedValues");
     if (supported == null) throw new IllegalArgumentException("Missing supported values");
     Element calendars = child(supported, "LiturgicalCalendarValues");
     if (calendars == null) throw new IllegalArgumentException("Missing calendars");
@@ -165,7 +258,57 @@ public final class SettingsXml {
     if (result.groups.isEmpty() || result.calendars.isEmpty() || result.calendarParameter.isEmpty()) {
       throw new IllegalArgumentException("Incomplete settings export");
     }
+    result.languages.addAll(parseLanguages(root));
+    Element menu = child(root, "Menu");
+    if (menu == null || !menu.getAttribute("Version").equals("1")) {
+      throw new IllegalArgumentException("Expected Menu version 1");
+    }
+    for (Element element : children(menu)) {
+      if (element.getTagName().equals("MenuGroup")) result.menu.add(result.parseEntry(element, root));
+    }
+    if (result.menu.isEmpty()) throw new IllegalArgumentException("Missing menu groups");
     return result;
+  }
+
+  private MenuEntry parseEntry(Element element, Element root) {
+    MenuEntry entry = new MenuEntry(element);
+    if (entries.put(entry.key, entry) != null) throw new IllegalArgumentException("Duplicate menu key");
+    String reference = element.getAttribute("OptionRef");
+    if (!reference.isEmpty()) {
+      if (!entry.parameter.isEmpty()) throw new IllegalArgumentException("Conflicting menu bindings");
+      Element options = child(root, "Options");
+      for (Element word : children(options)) {
+        Group group = findGroup(word.getAttribute("Name"));
+        if (group == null) continue;
+        if (word.getTagName().equals(reference)) entry.optionGroup = group;
+        for (Option bit : group.options) {
+          if (bit.element.equals(reference)) {
+            entry.optionGroup = group;
+            entry.option = bit;
+          }
+        }
+      }
+      if (entry.optionGroup == null) throw new IllegalArgumentException("Unknown OptionRef: " + reference);
+    }
+    String valuesRef = element.getAttribute("ValuesRef");
+    if (!valuesRef.isEmpty()) {
+      Element values = child(root, valuesRef);
+      if (values == null) values = child(child(root, "SupportedValues"), valuesRef);
+      if (values == null) throw new IllegalArgumentException("Unknown ValuesRef: " + valuesRef);
+      entry.selectedValue = attribute(values, "Value");
+      String valueAttribute = element.hasAttribute("ValueAttribute") ? element.getAttribute("ValueAttribute") : "Value";
+      for (Element choice : children(values)) {
+        // A missing calendar Value denotes the default; its label can be empty.
+        if (valuesRef.equals("LiturgicalCelebrationCommuniaValues") && !usableLabel(choice.getTextContent())) continue;
+        entry.choices.add(new Choice(choice.getAttribute(valueAttribute), choice.getTextContent()));
+      }
+    }
+    for (Element child : children(element)) {
+      if (child.getTagName().equals("MenuGroup") || (entry.isGroup && child.getTagName().equals("MenuItem"))) {
+        entry.children.add(parseEntry(child, root));
+      }
+    }
+    return entry;
   }
 
   public Group findGroup(String name) {

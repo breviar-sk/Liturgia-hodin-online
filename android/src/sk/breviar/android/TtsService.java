@@ -489,7 +489,7 @@ public class TtsService extends Service
   }
 
   boolean requestText() {
-    int ret = tts.setLanguage(BreviarApp.appLanguageToLocale(language));
+    int ret = tts.setLanguage(BreviarApp.appLanguageToLocale(this, language));
     Log.v("breviar", "setTTSLanguage: " + ret);
     if (ret == TextToSpeech.LANG_NOT_SUPPORTED ||
         ret == TextToSpeech.LANG_MISSING_DATA) {

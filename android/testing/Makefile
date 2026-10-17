@@ -3,6 +3,7 @@ CLASSES := $(ROOT)/android/build/settings-test
 JAVA ?= java
 JAVAC ?= javac
 PYTHON ?= python3
+NODE ?= node
 
 .PHONY: settings
 settings:
@@ -14,3 +15,7 @@ settings:
 .PHONY: taps
 taps:
 	$(PYTHON) check_tap_navigation.py
+
+.PHONY: zoom
+zoom:
+	$(NODE) check_zoom.js

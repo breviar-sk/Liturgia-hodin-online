@@ -18,6 +18,7 @@ SRCS = \
 	dbzaltar.cpp \
 	kalendar.cpp \
 	utf8-utils.cpp \
+	xml-settings.cpp \
 
 OBJS = $(subst cpp,o,$(SRCS))
 
@@ -39,12 +40,31 @@ breviar-no-main.o: breviar.o
 
 print_codes: print_codes.o breviar-no-main.o citania.o dbzaltar.o kalendar.o liturgia.o \
              mygetopt.o mylog.o myhpage.o myexpt.o cgiutils.o myconf.o utf8-utils.o \
-             mydefs.o mystring.o 
+             mydefs.o mystring.o xml-settings.o
 	g++ -o $@ $^
 
 clean:
 	rm -f $(TARGET) *.o .depend
 
-.PHONY: clean depend
+TEST_DIR ?= .test-build
+
+$(TEST_DIR)/string-utils-test: tests/string-utils-test.cpp mystring.cpp mystring.h utf8-utils.cpp utf8-utils.h common.h
+	mkdir -p $(TEST_DIR)
+	$(CXX) $(CXXFLAGS) -I. tests/string-utils-test.cpp mystring.cpp utf8-utils.cpp -o $@ $(LDFLAGS)
+
+test: $(TEST_DIR)/string-utils-test test-settings
+	$(TEST_DIR)/string-utils-test
+
+.PHONY: clean depend test test-settings
+
+SETTINGS_TEST_OBJS = $(filter-out breviar.o myexpt.o,$(OBJS)) breviar-no-main.o
+
+$(TEST_DIR)/settings-xml-memory-test: tests/settings-xml-memory-test.cpp myexpt.cpp Makefile $(SETTINGS_TEST_OBJS)
+	mkdir -p $(TEST_DIR)
+	$(CXX) $(CXXFLAGS) -DEXPORT_TO_STRING= -I. tests/settings-xml-memory-test.cpp myexpt.cpp $(SETTINGS_TEST_OBJS) -o $@ $(LDFLAGS)
+
+test-settings: $(TARGET) $(TEST_DIR)/settings-xml-memory-test
+	$(TEST_DIR)/settings-xml-memory-test
+	python3 tests/settings-xml-test.py $(abspath $(TARGET))
 
 -include .depend

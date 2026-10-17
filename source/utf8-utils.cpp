@@ -2218,14 +2218,10 @@ int RemoveDiacriticsFromWchar(int w) {
 }
 
 void FirstToLower(char* s, int len) {
-	char* t = (char*)malloc(len + 16);
-	char* s2 = s;
-	char* t2 = t;
-	EncodeWchar(WcharToLowercase(DecodeWchar((const char**)(&s2))), &t2);
-	mystrcpy(t2, s2, len + 16 - (t2 - t));
-	if (t != 0) {
-		mystrcpy(s, t, len);
-	}
-	s[len - 1] = 0;
-	free(t);
+	if (s == NULL || len <= 0) return;
+	const std::string converted = mystr_first_lower(s);
+	const size_t capacity = static_cast<size_t>(len) - 1;
+	const size_t count = converted.size() < capacity ? converted.size() : capacity;
+	memcpy(s, converted.data(), count);
+	s[count] = '\0';
 }

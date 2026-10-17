@@ -11,12 +11,30 @@
 #define __MYSTRING_H_
 
 #include <string>
+#include <stdio.h>
+#include <stdarg.h>
 
 #include "common.h"
 #include <string.h>
 
 #define STR_EMPTY ""
 #define STR_UNDEF "(undef)"
+
+// Bounded formatting for fixed-size buffers. Array references prevent accidentally
+// using sizeof(pointer) as the capacity. Like snprintf, return the required length;
+// overlong output is truncated and NUL-terminated. Source and destination must not overlap.
+template <size_t N>
+#if defined(__GNUC__) || defined(__clang__)
+__attribute__((format(printf, 2, 3)))
+#endif
+int mysnprintf(char (&dest)[N], const char* format, ...) {
+	va_list args;
+	va_start(args, format);
+	int result = vsnprintf(dest, N, format, args);
+	va_end(args);
+	dest[N - 1] = '\0';
+	return result;
+}
 
 // funkcia mystrcpy()
 // 1. zisti velkost dest -- sizeof(dest)

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 
 import java.util.Locale;
+import java.util.List;
 
 import sk.breviar.android.CompatibilityHelper17;
 import sk.breviar.android.Util;
@@ -43,15 +44,30 @@ public class BreviarApp extends Application {
     initLocale(ctx);
   }
 
-  static Locale appLanguageToLocale(String lang) {
-    if (lang.equals("cz") || lang.equals("c2")) lang = "cs";
-    return new Locale(lang);
+  static void cacheLanguageLocales(Context ctx, List<SettingsXml.Language> languages) {
+    // Keep this separate from reader preferences so replacing the catalog cannot
+    // reset the selected language or any prayer settings. apply() makes the whole
+    // mapping visible immediately, before a language selection can finish.
+    SharedPreferences.Editor editor = ctx.getSharedPreferences("language_locales", 0).edit().clear();
+    for (SettingsXml.Language language : languages) editor.putString(language.value, language.locale);
+    editor.apply();
+  }
+
+  static Locale appLanguageToLocale(Context ctx, String lang) {
+    String locale = ctx.getSharedPreferences("language_locales", 0).getString(lang, "");
+    if (locale.isEmpty()) {
+      // Upgrades have only the old language preference. Preserve its exact
+      // behavior on the first launch, before any XML has been loaded, including
+      // TTS and activity context creation. New selections use the cached XML.
+      locale = (lang.equals("cz") || lang.equals("c2")) ? "cs" : lang;
+    }
+    return Locale.forLanguageTag(locale);
   }
 
   static Locale currentLocale(Context ctx) {
     if (getOverrideLocale(ctx)) {
       SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
-      return appLanguageToLocale(settings.getString("language", "sk"));
+      return appLanguageToLocale(ctx, settings.getString("language", "sk"));
     } else {
       return Locale.getDefault();
     }
@@ -203,6 +219,18 @@ public class BreviarApp extends Application {
 
   static public void setFontsCss(Context ctx, String css) {
     setString(ctx, stringFontsCss, css);
+  }
+
+  /** Publish the font and its CSS together before the reader resumes. */
+  static void setFont(Context ctx, String font, String css) {
+    SharedPreferences settings = ctx.getSharedPreferences(Util.prefname, 0);
+    UrlOptions options = new UrlOptions(settings.getString(stringUrlOptions, ""));
+    String current = options.getFont();
+    if (font.equals(current == null ? "" : current)) return;
+    options.setFont(font);
+    // apply() updates memory immediately and performs disk I/O asynchronously.
+    settings.edit().putString(stringUrlOptions, options.build(true))
+        .putString(stringFontsCss, css).apply();
   }
 
 }

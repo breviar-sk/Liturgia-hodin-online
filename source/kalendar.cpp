@@ -17750,7 +17750,7 @@ short int sviatky_svatych_07_jul(short int den, short int poradie_svaty, _struct
 				_set_hymnus_alternativy_NO(modlitba, _global_den.litobd); // 2013-07-31: doplnené, nakoľko bolo doplnené do _vlastna_cast_hymnus_ako_na_vespery() a _vlastna_cast_hymnus()
 				// kedysi: pre CZ a CZOP hymnus ako na 1. vešpery | teraz použitý hymnus z 1. vešpier len pre CZOP; pre CZ použitý hymnus zo sv. III, str. 1462
 				if (_global_jazyk != JAZYK_CZ) {
-					sprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby((_global_jazyk == JAZYK_SK) ? MODL_VESPERY : /* _global_jazyk == JAZYK_CZ_OP */ MODL_PRVE_VESPERY), ANCHOR_HYMNUS);
+					mysnprintf(_anchor, "%s%c%s", _anchor_head, pismenko_modlitby((_global_jazyk == JAZYK_SK) ? MODL_VESPERY : /* _global_jazyk == JAZYK_CZ_OP */ MODL_PRVE_VESPERY), ANCHOR_HYMNUS);
 					_set_hymnus(modlitba, _file, _anchor);
 					set_LOG_svsv;
 				}

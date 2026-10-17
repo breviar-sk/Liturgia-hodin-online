@@ -45,10 +45,11 @@ LOCK=/tmp/breviar-nightlies.lck
 
   ## Regular build
   echo "Regular build: Git fetch and merge."
-  git checkout master
+  git checkout master || exit 1
   if ( git fetch --all && git merge juraj/master ) >>$LOG 2>&1; then
     echo "Git merge successful."
   else
+    git merge --abort >>$LOG 2>&1
     echo "Git merge failed! Log follows:"
     echo
     cat $LOG
@@ -80,20 +81,22 @@ LOCK=/tmp/breviar-nightlies.lck
   echo "Nightly debug package is at: breviar.kralovic.org:$ROOT/$DATE/breviar-debug.apk"
   echo "Or: https://breviar.kralovic.org/nightlies/$DATE/breviar-debug.apk"
 
-  ## Oldies build
+  ### Oldies build
   echo "Oldies build: Git fetch and merge."
-  git checkout old_devices
+  git checkout old_devices || exit 1
   if ( git merge master ) >>$LOG 2>&1; then
     echo "Git merge successful."
   else
-    echo "Git merge failed! Log follows:"
+    git merge --abort >>$LOG 2>&1
+    git checkout master
+    echo "Git merge failed! Skipping Oldies build. Log follows:"
     echo
     cat $LOG
     exit 0
   fi
   git push
 
-  COMMIT=`git branch -v --no-abbrev | egrep "^. master" | sed "s/. master *//;s/ .*//"`
+  COMMIT=`git rev-parse HEAD`
   echo $COMMIT >$ROOT/$DATE/commit_oldies.txt
 
   if (./build-assets && $GRADLE clean && $GRADLE assembleDebug && \

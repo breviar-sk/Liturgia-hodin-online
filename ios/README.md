@@ -4,6 +4,11 @@ ____________________________
 
 Repository available at: https://github.com/gyim/breviar-ios
 
+The shared renderer target must include `source/xml-settings.cpp` (with
+`xml-settings.h` and `settings-text.h` available on its include path). The Menu v1
+export is implemented there; the existing Options and supported-values sections
+retain their schema. Add this source to the Xcode target when updating the CGI
+submodule in an existing checkout.
 
 
 That repository contains only the iOS sources, so in order to get started you have to fetch the rest of the files from various places.

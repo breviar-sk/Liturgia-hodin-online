@@ -11,6 +11,48 @@ To build:
 $ download-and-build-assets
 $ gradle assembleRelease
 
+Language selection:
+
+The Language menu follows SupportedLanguages in Server's XML settings export.
+Value is the renderer's language code; Locale supplies the UI and TTS language
+tag (both cz and c2 use cs). Existing Android lang_<Value> strings provide menu
+labels, with the XML text used for languages without an Android translation.
+Locale metadata is cached separately from reader preferences. Before the first
+XML load after upgrading, the previous locale mapping remains the fallback,
+preserving saved language choices without requiring a visit to this menu.
+
+Language and Liturgical calendar are available directly in the main drawer.
+Both lists mark the current choice with a check mark to the left of its label.
+Calendar choices and the effective selection come from the XML export; choosing
+a calendar retains the current prayer/date and other settings. Calendar options
+are shown beneath the choices, so this screen stays open after a selection.
+The calendar selector is not duplicated in Settings.
+
+Native settings menu:
+
+Settings follows Menu Version="1" in Server's XML export. Root MenuGroups open
+screens; nested groups form sections. Language and calendar are promoted to the
+drawer together with their nested controls. Choice screens use the same leading
+check mark for language, calendar, common parts and reading navigation.
+
+SettingsXml resolves OptionRef against Options and ValuesRef against the exported
+choice lists. XmlSettingsActivity renders generic toggles, choices, numbers and
+colors, using the XML labels, order, bounds, defaults and ResetValue. Bindings
+to the same option word share its effective state, preserve unrelated bits and
+remove superseded URL overrides before saving through the existing preferences.
+An empty ResetValue is saved explicitly. No new preference format is required.
+
+NativeSettings implements semantic Handler keys for device preferences, language
+changes, font selection, font-size zoom reset, reading navigation and speech
+preferences/help. FontPicker retains asynchronous font discovery and atomic
+font/CSS updates. Android hides unsupported handlers (currently online/offline
+mode and speech rate), unknown controls, and groups left empty. To add a renderer
+setting, edit the C++ catalog; new native behavior needs a corresponding adapter.
+
+XML rendering/parsing and font discovery stay off the UI thread. Old requests
+cannot overwrite newer edits. Refreshes preserve scroll position and replace
+the menu without invalidating accessibility delegates on outgoing rows.
+
 E-ink interface:
 
 On first launch, choose Normal display or E-ink display in the black-on-white

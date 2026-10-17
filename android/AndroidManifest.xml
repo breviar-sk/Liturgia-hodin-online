@@ -73,8 +73,7 @@
         <activity android:name="XmlSettingsActivity"
                   android:exported="false"
                   android:configChanges="orientation|screenSize"
-                  android:parentActivityName="sk.breviar.android.MainSettings"
-                  android:launchMode="singleTop">
+                  android:parentActivityName="sk.breviar.android.MainSettings">
                   <meta-data
                       android:name="android.support.PARENT_ACTIVITY"
                       android:value="sk.breviar.android.MainSettings" />

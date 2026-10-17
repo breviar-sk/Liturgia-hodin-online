@@ -23,8 +23,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <string>
-#include <locale>
-#include <codecvt>
 #include "utf8-utils.h"
 #include "mystring.h"
 
@@ -43,21 +41,12 @@
 // 2. kopiruje nanajvys count - 1 znakov z src do dest (pomocou strncpy)
 // 3. v kazdom pripade prida na koniec v dest '\0' (terminating null)
 char *mystrcpy(char *dest, char *src, short int count) {
-	// do nothing is src is NULL
-	if (src == NULL) {
-		return dest;
-	}
-
-	char *ret;
-	/* sizeof(dest) nefunguje pre char *dest */
-	ret = strncpy(dest, src, count - 1);
-	dest[count - 1] = '\0';
-	return ret;
+	return mystrcpy(dest, static_cast<const char*>(src), count);
 }
 
 char *mystrcpy(char *dest, const char* src, short int count) {
-	// do nothing is src is NULL
-	if (src == NULL) {
+	// Nothing to copy without input or writable capacity.
+	if (dest == NULL || src == NULL || count <= 0) {
 		return dest;
 	}
 
@@ -410,50 +399,39 @@ char* convert_nonbreaking_spaces(const char* input) {
 	return (_global_pom_str);
 }// convert_nonbreaking_spaces()
 
+// Convert only the first UTF-8 code point using the same locale-independent
+// tables as the rest of the renderer. This also avoids wchar_t width differences.
+static std::string first_character_case(const char* string, bool uppercase) {
+	if (!string || string[0] == '\0') return std::string();
+
+	const unsigned char lead = static_cast<unsigned char>(string[0]);
+	const int length = lead < 0x80 ? 1 : (lead >= 0xC2 && lead <= 0xDF) ? 2 :
+		(lead >= 0xE0 && lead <= 0xEF) ? 3 : (lead >= 0xF0 && lead <= 0xF4) ? 4 : 0;
+	// Preserve malformed input rather than throwing or reading past its terminator.
+	if (length == 0) return string;
+	for (int i = 1; i < length; ++i) {
+		if ((static_cast<unsigned char>(string[i]) & 0xC0) != 0x80) return string;
+	}
+	const char* rest = string;
+	int codepoint = DecodeWchar(&rest);
+	if ((length == 3 && codepoint < 0x800) || (length == 4 && codepoint < 0x10000) ||
+		(codepoint >= 0xD800 && codepoint <= 0xDFFF) || codepoint > 0x10FFFF) {
+		return string;
+	}
+	codepoint = uppercase ? WcharToUppercase(codepoint) : WcharToLowercase(codepoint);
+	char first[4];
+	char* end = first;
+	EncodeWchar(codepoint, &end);
+	return std::string(first, end) + rest;
+}
+
 std::string mystr_first_lower(const char* string) {
-	if (!string || string[0] == '\0') {
-		return std::string("");
-	}
-
-	// 1. Konverzia vstupného UTF-8 textu na std::wstring (široké znaky)
-	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-	std::wstring wstr = converter.from_bytes(string);
-
-	// 2. Nastavenie lokalizácie (automaticky prevezme nastavenie systému)
-	// Na Windows/Linux/macOS zabezpečí správne rozpoznanie slovenskej diakritiky
-	std::locale loc("");
-
-	// 3. Kontrola a zmena prvého širokého znaku (napr. 'Ú' -> 'ú')
-	if (std::islower(wstr[0], loc)) {
-		wstr[0] = std::tolower(wstr[0], loc);
-	}
-
-	// 4. Konverzia wstringu späť na štandardný UTF-8 std::string
-	return converter.to_bytes(wstr);
-
-}// mystr_first_lower()
+	return first_character_case(string, false);
+}
 
 std::string mystr_first_upper(const char* string) {
-	if (!string || string[0] == '\0') {
-		return std::string("");
-	}
-
-	// 1. Konverzia vstupného UTF-8 textu na std::wstring (široké znaky)
-	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-	std::wstring wstr = converter.from_bytes(string);
-
-	// 2. Nastavenie lokalizácie (automaticky prevezme nastavenie systému)
-	// Na Windows/Linux/macOS zabezpečí správne rozpoznanie slovenskej diakritiky
-	std::locale loc("");
-
-	// 3. Kontrola a zmena prvého širokého znaku (napr. 'ú' -> 'Ú')
-	if (std::islower(wstr[0], loc)) {
-		wstr[0] = std::toupper(wstr[0], loc);
-	}
-
-	// 4. Konverzia wstringu späť na štandardný UTF-8 std::string
-	return converter.to_bytes(wstr);
-}// mystr_first_upper()
+	return first_character_case(string, true);
+}
 
 // convert integer value to Roman numeral string; caller is responsible for buffer size
 // http://stackoverflow.com/questions/4986521/how-to-convert-integer-value-to-roman-numeral-string | 2016-08-16
@@ -481,7 +459,7 @@ void convertToRoman(int val, char *res) {
 
 // Custom function for detecting whether base is starts with str
 short int startsWith(char* base, char* str) {
-	return (0 == (strstr(base, str) - base));
+	return strncmp(base, str, strlen(str)) == 0;
 }
 
 // Custom function for detecting whether base is ends with str
@@ -498,14 +476,14 @@ short int endsWith(char* base, char* str) {
 // function to validate the HTML hexadecimal color code (without starting # character)
 bool isValidHexaCode(char* str)
 {
-	if (!(strlen(str) == 3 || strlen(str) == 6)) {
+	if (str == NULL || !(strlen(str) == 3 || strlen(str) == 6)) {
 		return false;
 	}
 	short int i = 0;
 	while (str[i] != '\0') {
-		if (!((str[i] >= '0' && str[i] <= 9)
+		if (!((str[i] >= '0' && str[i] <= '9')
 			|| (str[i] >= 'a' && str[i] <= 'f')
-			|| (str[i] >= 'A' || str[i] <= 'F')))
+			|| (str[i] >= 'A' && str[i] <= 'F')))
 		{
 			return false;
 		}

@@ -28,6 +28,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
@@ -96,8 +97,14 @@ public class Breviar extends AppearanceActivity
     boolean fullscreen = false;
     boolean need_to_reload_preferences = true;
     boolean need_to_reload_scale = false;
+    private UrlOptions optionsBeforeSettings;
+    private String fontsBeforeSettings;
     boolean save_instance_enabled = true;
     float scroll_to = -1;
+    private long scrollRestoreGeneration;
+    private String scrollRestoreUrl;
+    private boolean scrollRestoreStarted, scrollRestoreRequested;
+    private ViewTreeObserver.OnPreDrawListener scrollRestoreLayout;
     NavigationView navigationView = null;
     Toolbar toolbar = null;
     boolean searchVisible = false;
@@ -138,6 +145,7 @@ public class Breviar extends AppearanceActivity
       Log.v("breviar", "goHome");
       if (wv == null) return;
       if (S == null) return;
+      cancelScrollRestore();
       wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname +
                  "?qt=pdnes" + Html.fromHtml(S.getOpts()));
     }
@@ -201,6 +209,7 @@ public class Breviar extends AppearanceActivity
 
       Log.v("breviar", "resetLanguage: " + language + " new_url: " + new_url);
 
+      cancelScrollRestore();
       wv.loadUrl(new_url);
 
       need_to_reload_preferences = false;
@@ -250,7 +259,7 @@ public class Breviar extends AppearanceActivity
       public void pageUp() {
         parent.runOnUiThread(new Runnable() {
           public void run() {
-            EinkUi.page(parent.wv, false);
+            parent.page(false);
           }
         });
       }
@@ -259,9 +268,14 @@ public class Breviar extends AppearanceActivity
       public void pageDown() {
         parent.runOnUiThread(new Runnable() {
           public void run() {
-            EinkUi.page(parent.wv, true);
+            parent.page(true);
           }
         });
+      }
+
+      @JavascriptInterface
+      public void scrollReady(long request) {
+        parent.runOnUiThread(() -> parent.restoreScrollAfterRendering(request));
       }
     }
 
@@ -400,8 +414,8 @@ public class Breviar extends AppearanceActivity
         toggleFullscreen();
         updateMenu();
       });
-      findViewById(R.id.navigation_page_up).setOnClickListener(v -> EinkUi.page(wv, false));
-      findViewById(R.id.navigation_page_down).setOnClickListener(v -> EinkUi.page(wv, true));
+      findViewById(R.id.navigation_page_up).setOnClickListener(v -> page(false));
+      findViewById(R.id.navigation_page_down).setOnClickListener(v -> page(true));
       updatePagingControls();
       ClearProxy.clearProxy(wv);
       wv.clearCache(true);
@@ -499,6 +513,7 @@ public class Breviar extends AppearanceActivity
           }
 
           Log.v("breviar", "sync in overrideurlloading");
+          parent.cancelScrollRestore();
           parent.syncScale();
           /*
           view.loadUrl(url);
@@ -509,6 +524,11 @@ public class Breviar extends AppearanceActivity
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
+          if (!url.equals(scrollRestoreUrl)) cancelScrollRestore();
+          ++scrollRestoreGeneration;
+          removeScrollRestoreLayout();
+          scrollRestoreStarted = true;
+          scrollRestoreRequested = false;
           tapNavigation.pageStarted(url);
           Log.v("breviar", "onPageStarted " + url);
           parent.syncScale();
@@ -556,19 +576,7 @@ public class Breviar extends AppearanceActivity
             updateMenu();
           }
 
-          // Ugly hack. But we have no reliable notification when is webview scrollable.
-          Log.v("breviar", "onPageFinished: scroll_to = " + parent.scroll_to);
-          if (parent.scroll_to < 0) return;
-          final WebView wv = view;
-          view.postDelayed(new Runnable() {
-            public void run() {
-              if (parent.scroll_to >= 0) {
-                int Y = (int)(parent.scroll_to*wv.getContentHeight());
-                wv.scrollTo(0, Y);
-              }
-              parent.scroll_to = -1;
-            }
-          }, 400);
+          if (url.equals(scrollRestoreUrl)) requestScrollRestore();
         }
       });
 
@@ -609,7 +617,7 @@ public class Breviar extends AppearanceActivity
             need_to_reload_preferences = false;
             url = updatePreferencesInUrl(url);
             Log.v("breviar", "onCreate: loading url: " + url + ", scroll_to = " + scroll_to);
-            wv.loadUrl(url);
+            loadRestoringScroll(url, scroll_to);
           }
         }
       }
@@ -713,6 +721,8 @@ public class Breviar extends AppearanceActivity
     public boolean dispatchTouchEvent(android.view.MotionEvent e) {
       scale_gesture_detector.onTouchEvent(e);
       if (e.getActionMasked() == android.view.MotionEvent.ACTION_DOWN) {
+        if (!drawer.isDrawerOpen(GravityCompat.START) && tapNavigation != null
+            && tapNavigation.contains(e.getRawX(), e.getRawY())) cancelScrollRestore();
         htmlTapSequence = tapNavigation != null && tapNavigation.ownsGestures()
             && !drawer.isDrawerOpen(GravityCompat.START)
             && tapNavigation.contains(e.getRawX(), e.getRawY());
@@ -722,6 +732,27 @@ public class Breviar extends AppearanceActivity
       }
       if (!htmlTapSequence) tap_gesture_detector.onTouchEvent(e);
       return super.dispatchTouchEvent(e);
+    }
+
+    @Override
+    public boolean dispatchGenericMotionEvent(android.view.MotionEvent e) {
+      if (e.getActionMasked() == android.view.MotionEvent.ACTION_SCROLL && tapNavigation != null
+          && tapNavigation.contains(e.getRawX(), e.getRawY())) cancelScrollRestore();
+      return super.dispatchGenericMotionEvent(e);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+      if (event.getAction() == KeyEvent.ACTION_DOWN) {
+        switch (event.getKeyCode()) {
+          case KeyEvent.KEYCODE_DPAD_UP: case KeyEvent.KEYCODE_DPAD_DOWN:
+          case KeyEvent.KEYCODE_PAGE_UP: case KeyEvent.KEYCODE_PAGE_DOWN:
+          case KeyEvent.KEYCODE_MOVE_HOME: case KeyEvent.KEYCODE_MOVE_END:
+          case KeyEvent.KEYCODE_SPACE:
+            cancelScrollRestore();
+        }
+      }
+      return super.dispatchKeyEvent(event);
     }
 
     void recreateIfNeeded() {
@@ -736,6 +767,88 @@ public class Breviar extends AppearanceActivity
       SettingsXml.applySavedOptions(opts.params, saved.params);
       S.setOpts(opts.build(true));
       return opts.build();
+    }
+
+    private float readingPosition() {
+      return scroll_to >= 0 ? scroll_to
+          : wv.getContentHeight() > 0 ? wv.getScrollY() / (float)wv.getContentHeight() : 0;
+    }
+
+    private void loadRestoringScroll(String url, float position) {
+      cancelScrollRestore();
+      scroll_to = Float.isNaN(position) || Float.isInfinite(position) ? 0 : position;
+      scrollRestoreUrl = url;
+      wv.loadUrl(url);
+    }
+
+    private void removeScrollRestoreLayout() {
+      if (scrollRestoreLayout == null) return;
+      wv.getViewTreeObserver().removeOnPreDrawListener(scrollRestoreLayout);
+      scrollRestoreLayout = null;
+    }
+
+    private void cancelScrollRestore() {
+      ++scrollRestoreGeneration;
+      scroll_to = -1;
+      scrollRestoreUrl = null;
+      scrollRestoreStarted = scrollRestoreRequested = false;
+      removeScrollRestoreLayout();
+    }
+
+    private boolean canRestoreScroll(long request) {
+      return request == scrollRestoreGeneration && scroll_to >= 0 && scrollRestoreStarted
+          && !isFinishing() && !isDestroyed() && scrollRestoreUrl != null
+          && scrollRestoreUrl.equals(wv.getUrl());
+    }
+
+    private void requestScrollRestore() {
+      if (scrollRestoreRequested || !canRestoreScroll(scrollRestoreGeneration)) return;
+      scrollRestoreRequested = true;
+      // zoom.js waits for font layout too. Error pages without that script can
+      // still use the native rendering callback, without a guessed delay.
+      wv.evaluateJavascript("if (typeof prepareScrollRestore === 'function') { prepareScrollRestore("
+          + scrollRestoreGeneration + "," + scale + "); } else { bridge.scrollReady("
+          + scrollRestoreGeneration + "); }", null);
+    }
+
+    private void restoreScrollAfterRendering(long request) {
+      if (!canRestoreScroll(request)) return;
+      wv.postVisualStateCallback(request, new WebView.VisualStateCallback() {
+        @Override public void onComplete(long requestId) {
+          if (restoreScrollWhenSized(requestId) || scrollRestoreLayout != null) return;
+          // A restored/background activity may not have a viewport yet. Wait
+          // for layout without blocking drawing or repeatedly posting timers.
+          scrollRestoreLayout = () -> {
+            restoreScrollWhenSized(requestId);
+            return true;
+          };
+          wv.getViewTreeObserver().addOnPreDrawListener(scrollRestoreLayout);
+        }
+      });
+    }
+
+    private boolean restoreScrollWhenSized(long request) {
+      if (!canRestoreScroll(request)) return true;
+      int height = wv.getContentHeight();
+      if (height <= 0 || wv.getHeight() <= 0) return false;
+      int y = (int)(scroll_to * height);
+      cancelScrollRestore();
+      wv.scrollTo(0, y);
+      return true;
+    }
+
+    private void page(boolean down) {
+      cancelScrollRestore();
+      EinkUi.page(wv, down);
+    }
+
+    private void prepareSettings() {
+      syncPreferences();
+      // Compare saved settings with their entry snapshot, not the page URL:
+      // the backend may have filled in defaults absent from that URL.
+      optionsBeforeSettings = new UrlOptions(BreviarApp.getUrlOptions(this));
+      fontsBeforeSettings = BreviarApp.getFontsCss(this);
+      need_to_reload_preferences = true;
     }
 
     void disableRingOverride() {
@@ -784,20 +897,28 @@ public class Breviar extends AppearanceActivity
       String url = wv.getUrl();
       if (url != null && need_to_reload_preferences) {
         need_to_reload_preferences = false;
-        if (scroll_to < 0) {
-          scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
+        boolean changed = optionsBeforeSettings == null
+            || !optionsBeforeSettings.params.equals(new UrlOptions(BreviarApp.getUrlOptions(this)).params)
+            || !fontsBeforeSettings.equals(BreviarApp.getFontsCss(this));
+        optionsBeforeSettings = null;
+        fontsBeforeSettings = null;
+        if (changed) {
+          float position = readingPosition();
+          String new_url = updatePreferencesInUrl(url);
+          Log.v("breviar", "Reloading preferences; new url = " + new_url);
+          need_to_update_menu = true;
+          loadRestoringScroll(new_url, position);
         }
-        String new_url = updatePreferencesInUrl(url);
-        Log.v("breviar", "Reloading preferences; new url = " + new_url);
-        need_to_update_menu = true;
-        wv.loadUrl(new_url);
       }
       if (need_to_reload_scale) {
         need_to_reload_scale = false;
         SharedPreferences settings = getSharedPreferences(Util.prefname, 0);
-        scale = settings.getInt("scale", 100);
-        Log.v("breviar", "reloading scale, " + scale);
-        syncScale();
+        int savedScale = settings.getInt("scale", 100);
+        if (scale != savedScale) {
+          scale = savedScale;
+          Log.v("breviar", "reloading scale, " + scale);
+          syncScale();
+        }
       }
       if (!resumed) {
         resumed = true;
@@ -833,6 +954,7 @@ public class Breviar extends AppearanceActivity
           if (intent.getAction().equals("sk.breviar.android.action.SHOW")) {
             int id = intent.getIntExtra("id", -1);
             if (id >=0 && id < Util.events.length) {
+              cancelScrollRestore();
               wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname +
                          "?qt=pdnes&p=" + Util.events[id].p + Html.fromHtml(S.getOpts()));
               return true;
@@ -855,8 +977,7 @@ public class Breviar extends AppearanceActivity
         syncScale();
         //wv.saveState(outState);
         String url = wv.getUrl();
-        float current_scroll = scroll_to >= 0 ? scroll_to :
-            (wv.getContentHeight() > 0 ? wv.getScrollY() / (float)wv.getContentHeight() : 0);
+        float current_scroll = readingPosition();
         if (url != null) {
           outState.putString("wv-url", url);
           outState.putFloat("wv-scroll-to", current_scroll);
@@ -940,6 +1061,7 @@ public class Breviar extends AppearanceActivity
 
     @Override
     public void onDestroy() {
+      cancelScrollRestore();
       if (tapNavigation != null) tapNavigation.close();
       Log.v("breviar", "onDestroy");
       stopServer();
@@ -1128,9 +1250,8 @@ public class Breviar extends AppearanceActivity
       opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
       opts.setNightmode(!opts.isNightmode());
 
-      scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
       S.setOpts(opts.build(true));
-      wv.loadUrl(opts.build());
+      loadRestoringScroll(opts.build(), readingPosition());
       updateSearchBarTheme();
     }
 
@@ -1173,9 +1294,8 @@ public class Breviar extends AppearanceActivity
       opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
       opts.setOnlyNonBoldFont(!opts.isOnlyNonBoldFont());
 
-      scroll_to = wv.getScrollY() / (float)wv.getContentHeight();
       S.setOpts(opts.build(true));
-      wv.loadUrl(opts.build());
+      loadRestoringScroll(opts.build(), readingPosition());
     }
 
     void toggleSearch() {
@@ -1241,17 +1361,20 @@ public class Breviar extends AppearanceActivity
           break;
 
         case R.id.lang_select:
-          syncPreferences();
-          need_to_reload_preferences = true;
+          prepareSettings();
           Intent selectLang = new Intent(this, LangSelect.class);
           startActivityForResult(selectLang, 0);
           break;
 
         case R.id.settings:
-          syncPreferences();
-          need_to_reload_preferences = true;
+          prepareSettings();
           need_to_reload_scale = true;
           startActivity(new Intent(this, MainSettings.class));
+          break;
+
+        case R.id.calendar_select:
+          prepareSettings();
+          startActivity(XmlSettingsActivity.calendarIntent(this));
           break;
 
         case R.id.fullscreen_toggle:
@@ -1326,12 +1449,12 @@ public class Breviar extends AppearanceActivity
       }
       if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP && BreviarApp.getVolButtons(this)) ||
           (keyCode == KeyEvent.KEYCODE_PAGE_UP && BreviarApp.getEinkMode(this))) {
-        EinkUi.page(wv, false);
+        page(false);
         return true;
       }
       if ((keyCode == KeyEvent.KEYCODE_VOLUME_DOWN && BreviarApp.getVolButtons(this)) ||
           (keyCode == KeyEvent.KEYCODE_PAGE_DOWN && BreviarApp.getEinkMode(this))) {
-        EinkUi.page(wv, true);
+        page(true);
         return true;
       }
       if (keyCode == KeyEvent.KEYCODE_MENU) {
@@ -1350,6 +1473,7 @@ public class Breviar extends AppearanceActivity
         drawer.closeDrawer(GravityCompat.START, !BreviarApp.getEinkMode(this));
         return true;
       } else if (wv.canGoBack()) {
+        cancelScrollRestore();
         if (S != null) {
           S.forceOptsForNextRequest();
         }

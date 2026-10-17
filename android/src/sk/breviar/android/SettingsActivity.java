@@ -5,12 +5,15 @@ import java.lang.Runnable;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import com.google.android.material.navigation.NavigationView;
 import androidx.fragment.app.DialogFragment;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -73,13 +76,26 @@ public class SettingsActivity extends AppearanceActivity
     navigationView.setItemMaxLines(2);
   }
 
-  public void inflateMenu(int menu_resource) {
-    navigationView.inflateMenu(menu_resource);
+  /** A single-choice row with an accessible checked state and a leading check mark. */
+  protected void addCheckedChoice(int group, CharSequence label, boolean checked, Runnable select) {
+    // Checked rows must retain the readable foreground of the current appearance,
+    // rather than Material's colorPrimary (dark brown in the normal theme).
+    ColorStateList foreground = ColorStateList.valueOf(navigationView.getItemTextColor().getDefaultColor());
+    navigationView.setItemTextColor(foreground);
+    navigationView.setItemIconTintList(foreground);
+    MenuItem item = navigationView.getMenu().add(group, View.generateViewId(), Menu.NONE, label);
+    item.setIcon(R.drawable.choice_check).setCheckable(true).setChecked(checked);
+    handleClick(item.getItemId(), () -> {
+      navigationView.setCheckedItem(item.getItemId());
+      select.run();
+    });
   }
 
   /** Populate a detached menu before replacing the displayed one. */
   protected void replaceMenu(Runnable populate) {
     NavigationView previous = navigationView;
+    RecyclerView previousList = menuList(previous);
+    Parcelable scroll = previousList == null ? null : previousList.getLayoutManager().onSaveInstanceState();
     ViewGroup parent = (ViewGroup)previous.getParent();
     int index = parent.indexOfChild(previous);
     navigationView = (NavigationView)getLayoutInflater().inflate(R.layout.settings_menu, parent, false);
@@ -98,6 +114,20 @@ public class SettingsActivity extends AppearanceActivity
     previous.setNavigationItemSelectedListener(null);
     parent.removeViewAt(index);
     parent.addView(navigationView, index);
+    RecyclerView list = menuList(navigationView);
+    if (scroll != null && list != null) list.getLayoutManager().onRestoreInstanceState(scroll);
+  }
+
+  private static RecyclerView menuList(View view) {
+    if (view instanceof RecyclerView) return (RecyclerView)view;
+    if (view instanceof ViewGroup) {
+      ViewGroup group = (ViewGroup)view;
+      for (int i = 0; i < group.getChildCount(); ++i) {
+        RecyclerView list = menuList(group.getChildAt(i));
+        if (list != null) return list;
+      }
+    }
+    return null;
   }
 
   @Override
@@ -111,47 +141,10 @@ public class SettingsActivity extends AppearanceActivity
     abstract public boolean get();
   }
 
-  public abstract class BooleanUrlOption implements BooleanOption {
-    public void set(boolean value) {
-      UrlOptions opts = initOpts();
-      setOpt(opts, value);
-      BreviarApp.setUrlOptions(getApplicationContext(), opts.build(true));
-    }
-
-    public boolean get() {
-      return getOpt(initOpts());
-    }
-
-    private UrlOptions initOpts() {
-      return new UrlOptions(BreviarApp.getUrlOptions(getApplicationContext()));
-    }
-
-    public abstract void setOpt(UrlOptions opts, boolean value);
-    public abstract boolean getOpt(UrlOptions opts);
-  }
-
   public interface ColorOption {
     abstract public void set(String value);
     abstract public String get();
-  }
-
-  public abstract class ColorUrlOption implements ColorOption {
-    public void set(String value) {
-      UrlOptions opts = initOpts();
-      setOpt(opts, value);
-      BreviarApp.setUrlOptions(getApplicationContext(), opts.build(true));
-    }
-
-    public String get() {
-      return getOpt(initOpts());
-    }
-
-    private UrlOptions initOpts() {
-      return new UrlOptions(BreviarApp.getUrlOptions(getApplicationContext()));
-    }
-
-    public abstract void setOpt(UrlOptions opts, String value);
-    public abstract String getOpt(UrlOptions opts);
+    default void reset() { set(""); }
   }
 
   public interface IntOption {
@@ -159,33 +152,6 @@ public class SettingsActivity extends AppearanceActivity
     abstract public void reset();
     abstract public int get();
   }
-
-  public abstract class IntUrlOption implements IntOption {
-    public void set(int value) {
-      UrlOptions opts = initOpts();
-      setOpt(opts, value);
-      BreviarApp.setUrlOptions(getApplicationContext(), opts.build(true));
-    }
-
-    public void reset() {
-      UrlOptions opts = initOpts();
-      resetOpt(opts);
-      BreviarApp.setUrlOptions(getApplicationContext(), opts.build(true));
-    }
-
-    public int get() {
-      return getOpt(initOpts());
-    }
-
-    private UrlOptions initOpts() {
-      return new UrlOptions(BreviarApp.getUrlOptions(getApplicationContext()));
-    }
-
-    public abstract void setOpt(UrlOptions opts, int value);
-    public abstract void resetOpt(UrlOptions opts);
-    public abstract int getOpt(UrlOptions opts);
-  }
-
 
   java.util.LinkedHashMap<Integer, BooleanOption> switch_handlers;
   java.util.LinkedHashMap<Integer, Runnable> click_handlers;
@@ -311,7 +277,7 @@ public class SettingsActivity extends AppearanceActivity
     }
 
     void Default() {
-      info.color_option.set("");
+      info.color_option.reset();
       ctx.updateMenu();
     }
 
@@ -363,6 +329,7 @@ public class SettingsActivity extends AppearanceActivity
 
   @Override
   public boolean onNavigationItemSelected(MenuItem item) {
+    if (!item.isEnabled()) return false;
     {
       BooleanOption handler = switch_handlers.get(item.getItemId());
       if (handler != null) {

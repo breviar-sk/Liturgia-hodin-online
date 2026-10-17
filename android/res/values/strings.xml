@@ -24,7 +24,7 @@
     <string name="override_locale">Override system-wide language settings</string>
 
     <string name="settings_title">Device</string>
-    <string name="eink_mode">E-ink mode (black and white, no animations)</string>
+    <string name="eink_mode">E-ink mode (no animations)</string>
     <string name="appearance_title">Display mode</string>
     <string name="appearance_message">You can change this later in %1$s > %2$s.</string>
     <string name="appearance_normal">Normal display</string>
@@ -86,6 +86,7 @@
     <string name="color_dialog_color">Color (RRGGBB): </string>
 
     <string name="calendar_settings_title">Liturgical calendar</string>
+    <string name="default_calendar">Default calendar</string>
     <string name="epiphany_sunday">Celebrate Epiphany on Sunday between Jan 2nd &amp; 8th</string>
     <string name="ascension_sunday">Celebrate Ascension of the Lord on Sunday</string>
     <string name="body_blood_sunday">Celebrate The Most Holy Body and Blood of Christ on Sunday</string>

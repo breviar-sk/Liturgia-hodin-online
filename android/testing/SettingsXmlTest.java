@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /** Integration checks against real CGI exports; no Android SDK or device needed. */
@@ -47,6 +48,15 @@ public final class SettingsXmlTest {
     check(!label.matches("(?i)[a-z0-9]+_text"), "Placeholder shown as a native label: " + label);
   }
 
+  private static void checkMenu(List<SettingsXml.MenuEntry> entries, Map<String, SettingsXml.MenuEntry> visibleOptions) {
+    for (SettingsXml.MenuEntry entry : entries) {
+      if (!entry.label.isEmpty()) checkLabel(entry.label);
+      check(!entry.label.contains("<"), "HTML in menu label");
+      if (entry.option != null) visibleOptions.put(entry.option.element, entry);
+      checkMenu(entry.children, visibleOptions);
+    }
+  }
+
   public static void main(String[] args) throws Exception {
     root = new File(args[0]).getCanonicalFile();
     for (String language : new String[]{"sk", "cz", "c2", "hu", "la", "is"}) {
@@ -55,18 +65,31 @@ public final class SettingsXmlTest {
       params.put("css", "custom.css");
       params.put("o6", "100");
       String xml = export(params);
+      List<SettingsXml.Language> languages = SettingsXml.parseLanguages(xml);
+      Map<String, String> locales = new HashMap<>();
+      for (SettingsXml.Language entry : languages) {
+        checkLabel(entry.label);
+        locales.put(entry.value, entry.locale);
+      }
+      for (String code : new String[]{"sk", "cz", "c2", "hu", "la", "is"}) {
+        String expected = code.equals("cz") || code.equals("c2") ? "cs" : code;
+        check(expected.equals(locales.get(code)), "Missing or incorrect locale for " + code);
+      }
       SettingsXml settings = SettingsXml.parse(xml);
+      Map<String, SettingsXml.MenuEntry> visibleOptions = new HashMap<>();
+      checkMenu(settings.menu, visibleOptions);
+      check(settings.findEntry("calendar").children.size() == 1, "Missing nested calendar settings");
+      check(settings.findEntry("language").choices.size() == languages.size(), "Language choices differ");
       check(settings.findGroup("o6") == null, "Contextual alternatives must stay in prayers");
       check(settings.groups.size() >= 4, "Missing groups for " + language);
       for (SettingsXml.Group group : settings.groups) {
         checkLabel(group.label);
         long initial = group.value;
         for (SettingsXml.Option option : group.options) {
-          checkLabel(option.label);
-          check(!option.label.contains("<"), "HTML in native label");
-          check(!option.element.equals("BitOpt2FontNameChooser"), "Duplicate native font setting");
+          // Only Menu entries are editable; raw metadata also contains internal renderer flags.
+          if (!visibleOptions.containsKey(option.element)) continue;
           Map<String, String> edited = new HashMap<>(params);
-          group.setChecked(edited, option, !group.isChecked(option));
+          visibleOptions.get(option.element).setValue(edited, group.isChecked(option) ? "0" : "1");
           SettingsXml reloaded = SettingsXml.parse(export(edited));
           check(reloaded.findGroup(group.name).value == group.value,
               language + ": round trip failed for " + option.element);
@@ -79,7 +102,7 @@ public final class SettingsXmlTest {
           checkLabel(choice.label);
           Map<String, String> edited = new HashMap<>(params);
           edited.put("of3", "0");
-          group.select(edited, choice.value);
+          settings.findEntry("prayers.common").setValue(edited, choice.value);
           check(!edited.containsKey("of3"), "Stale communia override retained");
           SettingsXml.Group reloaded = SettingsXml.parse(export(edited)).findGroup(group.name);
           // The renderer canonicalizes translated aliases (e.g. Icelandic 27 -> 4).
@@ -98,7 +121,7 @@ public final class SettingsXmlTest {
         if (settings.calendars.size() > 1 || !calendar.label.isEmpty()) checkLabel(calendar.label);
         if (calendar.value.equals(settings.selectedCalendar)) selectedFound = true;
         Map<String, String> edited = new HashMap<>(params);
-        edited.put(settings.calendarParameter, calendar.value);
+        settings.findEntry("calendar").setValue(edited, calendar.value);
         check(SettingsXml.parse(export(edited)).selectedCalendar.equals(calendar.value),
             "Calendar selection lost for " + language + ": " + calendar.value);
         ++roundTrips;
@@ -152,24 +175,54 @@ public final class SettingsXmlTest {
     group.setChecked(overrides, references, false);
     check(!group.isChecked(bibleCom), "Disabling references must disable bible.com");
 
-    String labelsXml = "<LHData><Options><Opt Name='o0' Value='0' Text='  žalm ABC:  '>"
+    String labelsXml = "<LHData><Menu Version='1'><MenuGroup Key='test' Label='žalm ABC:'>"
+        + "<MenuItem Key='flag' Label='&lt;b&gt;číslovanie veršov&lt;/b&gt;' Control='toggle' OptionRef='Flag'/>"
+        + "</MenuGroup></Menu><SupportedLanguages><Language Value='sk' Locale='sk'>slovenčina</Language>"
+        + "</SupportedLanguages><Options><Opt Name='o0' Value='0' Text='  žalm ABC:  '>"
         + "<Flag Id='1' Text='&lt;b&gt;číslovanie veršov&lt;/b&gt;'/>"
         + "<Unused Id='2' Text='hu_text'/><Empty Id='4' Text='  '/>"
         + "</Opt></Options><SupportedValues><LiturgicalCalendarValues Name='k' Value=''>"
         + "<Calendar>íslenska</Calendar></LiturgicalCalendarValues></SupportedValues></LHData>";
     SettingsXml labels = SettingsXml.parse(labelsXml);
     check(labels.groups.get(0).label.equals("Žalm ABC"), "Title casing changed the rest of the label");
-    check(labels.groups.get(0).options.size() == 1, "Capitalization exposed a placeholder");
+    check(labels.groups.get(0).options.size() == 3, "Hidden option state lost");
+    check(labels.menu.get(0).children.size() == 1, "Non-menu options leaked into presentation");
     check(labels.groups.get(0).options.get(0).label.equals("Číslovanie veršov"), "Accented label not capitalized");
     check(labels.calendars.get(0).label.equals("Íslenska"), "Calendar label not capitalized");
 
-    for (String invalid : new String[]{"<html/>", "<LHData/>",
+    for (String invalid : new String[]{labelsXml.replace("Version='1'", "Version='2'"),
+        labelsXml.replace("OptionRef='Flag'", "OptionRef='Missing'"),
+        labelsXml.replace("OptionRef='Flag'", "OptionRef='Flag' Parameter='o0'"),
+        labelsXml.replace("Key='flag'", "Key='test'"),
+        labelsXml.replace("OptionRef='Flag'", "ValuesRef='Missing'"),
+        "<html/>", "<LHData/>",
         "<!DOCTYPE LHData [<!ENTITY x SYSTEM 'file:///no-such-file'>]><LHData>&x;</LHData>"}) {
       try {
         SettingsXml.parse(invalid);
         throw new AssertionError("Invalid export accepted");
       } catch (IllegalArgumentException expected) {
         // The activity turns invalid exports into a retry row.
+      }
+    }
+    // Language discovery is independent of calendars/options and enum indices.
+    List<SettingsXml.Language> languages = SettingsXml.parseLanguages(
+        "<LHData><SupportedLanguages Name='j'>"
+        + "<Language Id='987' Value='custom' Locale='pt-BR'>português</Language>"
+        + "</SupportedLanguages></LHData>");
+    check(languages.size() == 1 && languages.get(0).value.equals("custom")
+        && languages.get(0).locale.equals("pt-BR") && languages.get(0).label.equals("Português"),
+        "Language metadata lost");
+    for (String invalid : new String[]{"<html/>", "<LHData/>",
+        "<LHData><SupportedLanguages/></LHData>",
+        "<LHData><SupportedLanguages><Language Value='cz'>Czech</Language></SupportedLanguages></LHData>",
+        "<LHData><SupportedLanguages><Language Value='cz' Locale='cs'>Czech</Language>"
+            + "<Language Value='cz' Locale='cs'>Duplicate</Language></SupportedLanguages></LHData>",
+        "<!DOCTYPE LHData [<!ENTITY x SYSTEM 'file:///no-such-file'>]><LHData>&x;</LHData>"}) {
+      try {
+        SettingsXml.parseLanguages(invalid);
+        throw new AssertionError("Invalid language export accepted");
+      } catch (IllegalArgumentException expected) {
+        // Keep existing locale preferences if an export cannot be loaded.
       }
     }
     System.out.println("Passed " + roundTrips + " CGI round trips, legacy overrides and parser checks");

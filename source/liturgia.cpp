@@ -594,7 +594,7 @@ char* _vytvor_string_z_datumu(short int den, short int mesiac, short int rok, sh
 	}
 
 	if (den != VSETKY_DNI) {
-		sprintf(str_den, "%s%d", vypln, den);
+		mysnprintf(str_den, "%s%d", vypln, den);
 
 		if (use_dot_for_ordinals[_global_jazyk] == FORMAT_DATE_USE_DOT_FOR_ORDINALS) {
 			// add dot for ordinal number

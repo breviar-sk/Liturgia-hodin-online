@@ -4,13 +4,9 @@ import static org.junit.Assert.*;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.ListView;
-import android.widget.TextView;
-import androidx.appcompat.app.AlertDialog;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +17,6 @@ import org.robolectric.Shadows;
 import org.robolectric.android.controller.ActivityController;
 import org.robolectric.annotation.Config;
 import org.robolectric.annotation.LooperMode;
-import org.robolectric.shadows.ShadowDialog;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = 35, shadows = XmlSettingsActivityTest.SettingsServer.class)
@@ -96,21 +91,20 @@ public class ReadingNavigationTest {
     for (boolean eink : new boolean[]{false, true}) {
       BreviarApp.setEinkMode(context, eink);
       BreviarApp.setUrlOptions(context, "&amp;o0=" + ((1 << 18) | (1 << 20)));
-      try (ActivityController<DisplaySettings> controller = Robolectric.buildActivity(DisplaySettings.class).setup()) {
-        DisplaySettings activity = controller.get();
+      try (ActivityController<XmlSettingsActivity> controller = Robolectric.buildActivity(
+          XmlSettingsActivity.class, XmlSettingsActivity.entryIntent(context, "reading.navigation")).setup()) {
+        XmlSettingsActivity activity = controller.get();
+        XmlSettingsActivityTest.awaitSettings(activity);
         for (ReadingNavigation.Mode mode : ReadingNavigation.Mode.values()) {
-          activity.navigationView.getMenu().performIdentifierAction(R.id.reading_navigation, 0);
-          AlertDialog dialog = (AlertDialog)ShadowDialog.getLatestDialog();
-          ListView list = dialog.getListView();
-          assertEquals(5, list.getCount());
-          TextView row = (TextView)list.getAdapter().getView(mode.ordinal(), null, list);
-          if (eink) assertEquals(Color.BLACK, row.getCurrentTextColor());
-          list.performItemClick(row, mode.ordinal(), mode.ordinal());
-          assertFalse(dialog.isShowing());
+          android.view.Menu menu = activity.navigationView.getMenu();
+          assertEquals(6, menu.size()); // Five modes and the arrow options section.
+          MenuItem choice = menu.getItem(mode.ordinal());
+          assertEquals(activity.getString(mode.label), choice.getTitle());
+          menu.performIdentifierAction(choice.getItemId(), 0);
+          XmlSettingsActivityTest.awaitSettings(activity);
           assertEquals(mode, ReadingNavigation.get(context));
-          assertTrue(activity.navigationView.getMenu().findItem(R.id.reading_navigation)
-              .getTitle().toString().contains(activity.getString(mode.label)));
-          MenuItem left = activity.navigationView.getMenu().findItem(R.id.transparent_nav_left);
+          assertTrue(activity.navigationView.getMenu().getItem(mode.ordinal()).isChecked());
+          MenuItem left = activity.menuItem("reading.arrows-left");
           assertEquals(mode == ReadingNavigation.Mode.ARROWS, left.isEnabled());
           assertEquals(left.isEnabled(), left.getActionView().isEnabled());
           UrlOptions options = new UrlOptions(BreviarApp.getUrlOptions(context));

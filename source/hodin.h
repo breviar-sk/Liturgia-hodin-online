@@ -16,6 +16,7 @@
 #define __HODIN_H_
 
 #include "liturgia.h"
+#include "settings-text.h"
 #include "mydefs.h"
 #include "common.h"
 
@@ -6075,7 +6076,7 @@ const char* html_text_bottom[POCET_JAZYKOV + 1] = { "naspodok", "dolů", "bottom
 // titles & navigation for batch mode
 const char* html_text_batch_Zoznam1[POCET_JAZYKOV + 1] = { "Zoznam modlitieb", "Seznam modliteb", "List of prayers", "", "", "Seznam modliteb", "Az imák jegyzéke", "ru_text", "by_text", "Listi yfir bænir", "Lista de oración", "Namaz siyahısı", /* STRING_1_FOR_NEW_LANGUAGE */ };
 const char* html_text_batch_Zoznam1m[POCET_JAZYKOV + 1] = { "Zoznam modlitieb po mesiacoch", "Seznam modliteb dle měsíců", "List of prayers by months", "", "", "Seznam modliteb dle měsíců", "Az imák jegyzéke hónapok szerint", "ru_text", "by_text", "Listi yfir bænir eftir mánuði", "Lista de oraciones por mes", "Aylara görə duaların siyahısı", /* STRING_1_FOR_NEW_LANGUAGE */ };
-const char* html_text_batch_obdobie1m[POCET_JAZYKOV + 1] = { "("/*obdobie */"od %d. %s %d do %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", /* STRING_3_FOR_NEW_LANGUAGE */ };
+const char* html_text_batch_obdobie1m[POCET_JAZYKOV + 1] = { ("(" /*obdobie */ "od %d. %s %d do %d. %s %d)"), "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(pro období od %d. %s %d do %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", "(%d. %s %d — %d. %s %d)", /* STRING_3_FOR_NEW_LANGUAGE */ };
 const char* html_text_batch_Zoznam2[POCET_JAZYKOV + 1] = {/* Zoznam modlitieb pre */"%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", "%s %d", /* STRING_3_FOR_NEW_LANGUAGE */ };
 const char* html_text_batch_Back[POCET_JAZYKOV + 1] = { "hore", "nahoru", "up", "", "", "nahoru", "felfelé", "ru_text", "by_text", "upp", "arriba", "yuxarı", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
@@ -20798,9 +20799,6 @@ const char* text_LEN_V_KONSEKROVANYCH_KOSTOLOCH[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char* menu_item_type_name[POCET_MENU_ITEM_TYPE + 1] =
-{ "undefined", "switch", "bitopt", "application" };
-
 const char* text_menu_group_jazyk[POCET_MENU_GROUPS + 1][POCET_JAZYKOV + 1] =
 {
 	{ "Všeobecné nastavenia", "Obecné nastavení", "General settings", "General settings", "", "Obecné nastavení", "General settings", "General settings", "General settings", "General settings", "Configuración general", "az_text", /* STRING_1_FOR_NEW_LANGUAGE */ }
@@ -20914,6 +20912,46 @@ const char* menu_text_alt_background[POCET_JAZYKOV + 1] =
 	"az_text",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
+
+// Labels for native settings without an existing web-form equivalent.
+const char* menu_text_language_use_for_interface[POCET_JAZYKOV + 1] =
+{ "Použiť tento jazyk aj v ovládacích prvkoch", "Použít tento jazyk také v ovládacích prvcích", "Override system-wide language settings", "Linguam hanc in menu uti", "", "Použít tento jazyk také v ovládacích prvcích", "Rendszerszintű nyelvi beállítások felülírása", "Override system-wide language settings", "Override system-wide language settings", "Notið tungumálið líka í stillingum", "Override system-wide language settings", "Override system-wide language settings", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_device_eink[POCET_JAZYKOV + 1] =
+{ "Režim E-ink (bez animácií)", "Režim E-ink (bez animací)", "E-ink mode (no animations)", "Modus E-ink (sine animationibus)", "", "Režim E-ink (bez animací)", "E-ink mód (animációk nélkül)", "E-ink mode (no animations)", "E-ink mode (no animations)", "E-ink hamur (án hreyfinga)", "E-ink mode (no animations)", "E-ink mode (no animations)", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_appearance_margin[POCET_JAZYKOV + 1] =
+{ "Okraje (pixely)", "Okraje (pixely)", "Margin size (px)", "Marginibus (px)", "", "Okraje (pixely)", "Margók (px)", "Margin size (px)", "Margin size (px)", "Framlegð (pixely)", "Margin size (px)", "Margin size (px)", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_appearance_line_height[POCET_JAZYKOV + 1] =
+{ "Výška riadkov (%)", "Výška řádků (%)", "Line height (%)", "Linea spatio (%)", "", "Výška řádků (%)", "Sorköz (%)", "Line height (%)", "Line height (%)", "Línubil (%)", "Line height (%)", "Line height (%)", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_appearance_background_day[POCET_JAZYKOV + 1] =
+{ "Farba pozadia (denný režim)", "Barva pozadí (denní režim)", "Background color (day mode)", "Background color (modus diurnalis)", "", "Barva pozadí (denní režim)", "Háttérszín (nappali mód)", "Background color (day mode)", "Background color (day mode)", "Bakgrunns litur (dagshamur)", "Background color (day mode)", "Background color (day mode)", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_appearance_background_night[POCET_JAZYKOV + 1] =
+{ "Farba pozadia (nočný režim)", "Barva pozadí (noční režim)", "Background color (night mode)", "Background color (modus nocturnus)", "", "Barva pozadí (noční režim)", "Háttérszín (éjszakai mód)", "Background color (night mode)", "Background color (night mode)", "Bakgrunns litur (næturstilling)", "Background color (night mode)", "Background color (night mode)", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_reading_navigation[POCET_JAZYKOV + 1] =
+{ "Navigácia pri čítaní", "Navigace při čtení", "Reading navigation", "Navigatio in lectione", "", "Navigace při čtení", "Navigáció olvasás közben", "Reading navigation", "Reading navigation", "Leiðsögn við lestur", "Reading navigation", "Reading navigation", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_prayers_presentation[POCET_JAZYKOV + 1] =
+{ "V texte modlitieb zobraziť", "V textu modliteb zobrazit", "What to display in prayers", "In textu orationis ostende", "", "V textu modliteb zobrazit", "Az imaóra szövegében jelenjenek meg", "What to display in prayers", "What to display in prayers", "Það sem birtist í texta bænanna", "What to display in prayers", "What to display in prayers", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_prayers_readings[POCET_JAZYKOV + 1] =
+{ "Čítania", "Čtení", "Readings", "Lectiones", "", "Čtení", "Olvasmányok", "Readings", "Readings", "Lestrar", "Lecturas", "Readings", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_prayers_celebration[POCET_JAZYKOV + 1] =
+{ "Slávenie a spoločné časti", "Slavení a společné části", "Celebration and common texts", "Celebration and common texts", "", "Slavení a společné části", "Celebration and common texts", "Celebration and common texts", "Celebration and common texts", "Celebration and common texts", "Celebration and common texts", "Celebration and common texts", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_speech_rate[POCET_JAZYKOV + 1] =
+{ "Rýchlosť čítania", "Rychlost čtení", "Speech rate", "Speech rate", "", "Rychlost čtení", "Speech rate", "Speech rate", "Speech rate", "Speech rate", "Speech rate", "Speech rate", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_speech_psalm_pauses[POCET_JAZYKOV + 1] =
+{ "V psalmódii použiť pauzu (hviezdičky, krížiky)", "Pro žalmy a kantika použít pauzu (hvězdičky, křížky)", "Make pauses when reading psalms & canticles", "In psalmodia divisum uti (asterisci, obelisci)", "", "Pro žalmy a kantika použít pauzu (hvězdičky, křížky)", "A zsoltározás és kantikumok olvasásánál szüneteket tartani (csillagok, keresztek)", "Make pauses when reading psalms & canticles", "Make pauses when reading psalms & canticles", "Gera hlé við lestur Saltara (stjörnur, krossar)", "Make pauses when reading psalms & canticles", "Make pauses when reading psalms & canticles", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_speech_help[POCET_JAZYKOV + 1] =
+{ "Návod pre hlasový výstup", "Návod pro hlasový výstup", "Voice output help", "Præceptum ad output vocalem", "", "Návod pro hlasový výstup", "Hang kimenet", "Voice output help", "Voice output help", "Leiðbeiningar fyrir raddúttak", "Voice output help", "Voice output help", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 short int lokal_slav_slavnost_fma[POCET_JAZYKOV + 1] =
 {

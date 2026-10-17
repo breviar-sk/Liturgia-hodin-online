@@ -16,6 +16,11 @@
           android:icon="@drawable/ic_language_white_24dp"
     />
 
+    <item android:id="@+id/calendar_select"
+          android:title="@string/calendar_settings_title"
+          android:icon="@drawable/ic_calendar_24dp"
+    />
+
     <item android:id="@+id/settings"
           android:title="@string/settings"
           android:icon="@drawable/ic_settings_white_24dp"

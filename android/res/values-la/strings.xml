@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="eink_mode">Modus E-ink (niger et albus, sine animationibus)</string>
+    <string name="eink_mode">Modus E-ink (sine animationibus)</string>
     <string name="appearance_title">Modus ostensionis</string>
     <string name="appearance_message">Hoc postea mutare potes in %1$s > %2$s.</string>
     <string name="appearance_normal">Ostentio ordinaria</string>
@@ -84,6 +84,7 @@
     <string name="color_dialog_color">Color (RRGGBB): </string>
 
     <string name="calendar_settings_title">Calendarium liturgicum</string>
+    <string name="default_calendar">Calendarium praedefinitum</string>
     <string name="epiphany_sunday">Epiphaniam ad dominicam transferre</string>
     <string name="ascension_sunday">Ascensionem Domini ad dominicam transferre</string>
     <string name="body_blood_sunday">Sollemnitatem SS.mi Corp. et Sanguinis Chr. ad dominicam transferre</string>

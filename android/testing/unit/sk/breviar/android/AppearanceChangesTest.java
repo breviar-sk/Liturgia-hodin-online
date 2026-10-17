@@ -28,7 +28,8 @@ public class AppearanceChangesTest {
   private static void idle() { Shadows.shadowOf(Looper.getMainLooper()).idle(); }
 
   private static void toggle(DeviceSettings activity) {
-    ((CompoundButton)activity.navigationView.getMenu().findItem(R.id.eink_mode).getActionView()).performClick();
+    if (activity.menuItem("device.eink") == null) XmlSettingsActivityTest.awaitSettings(activity);
+    ((CompoundButton)activity.menuItem("device.eink").getActionView()).performClick();
   }
 
   @Test public void rebuildsCoveredScreensBeforeBackAndPreservesReaderStateInBothDirections() {

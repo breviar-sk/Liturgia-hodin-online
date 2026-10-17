@@ -7,165 +7,277 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import androidx.appcompat.app.AlertDialog;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
-/** Native controls populated by Server's localized XML settings export. */
+/** Menu v1 renderer. C++ owns the catalog; NativeSettings supplies Android behavior. */
 public class XmlSettingsActivity extends SettingsActivity {
   private static final String GROUP = "settings_group";
   private final ExecutorService worker = Executors.newSingleThreadExecutor();
+  private final Map<String, MenuItem> rows = new LinkedHashMap<>();
+  private Future<?> pending;
   private int generation;
   private String groupName;
+  private NativeSettings nativeSettings;
+  SettingsXml settings;
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    groupName = getIntent().getStringExtra(GROUP);
-    getSupportActionBar().setTitle(R.string.settings);
+  public static Intent calendarIntent(Context context) { return entryIntent(context, "calendar"); }
+
+  static Intent entryIntent(Context context, String key) {
+    return new Intent(context, XmlSettingsActivity.class).putExtra(GROUP, key);
+  }
+
+  protected String initialKey() { return getIntent().getStringExtra(GROUP); }
+
+  @Override public void onCreate(Bundle state) {
+    super.onCreate(state);
+    groupName = initialKey();
+    // Preserve restored activity intents from versions that navigated by option word.
+    if (groupName != null) {
+      switch (groupName) {
+        case "o0": case "o1": case "o5": groupName = "prayers"; break;
+        case "o2": groupName = "appearance"; break;
+        case "o3": groupName = "prayers.common"; break;
+      }
+    }
+    getSupportActionBar().setTitle("language".equals(groupName) ? R.string.lang_select
+        : "calendar".equals(groupName) ? R.string.calendar_settings_title : R.string.settings);
+    nativeSettings = new NativeSettings(this);
     navigationView.setItemMaxLines(5);
   }
 
-  @Override
-  protected void onResume() {
+  @Override protected void onResume() {
     super.onResume();
     if (!appearanceChanged()) loadSettings();
   }
 
-  @Override
-  protected void onStop() {
-    ++generation;
+  @Override protected void onStop() {
+    editStarted();
     super.onStop();
   }
 
-  @Override
-  protected void onDestroy() {
+  @Override protected void onDestroy() {
+    nativeSettings.clear();
     worker.shutdownNow();
     super.onDestroy();
   }
 
-  private void addDeviceSettings() {
-    inflateMenu(R.menu.main_settings);
-    handleClick(R.id.device_settings, () -> startActivity(new Intent(this, DeviceSettings.class)));
-    handleClick(R.id.display_settings, () -> startActivity(new Intent(this, DisplaySettings.class)));
-    handleClick(R.id.tts_settings, () -> startActivity(new Intent(this, TtsSettings.class)));
+  void editStarted() {
+    ++generation;
+    if (pending != null) pending.cancel(false);
   }
 
+  void refresh() {
+    updateMenu();
+    loadSettings();
+  }
+
+  UrlOptions options() { return new UrlOptions(BreviarApp.getUrlOptions(this)); }
+
+  MenuItem menuItem(String key) { return rows.get(key); }
+
   private void loadSettings() {
-    final int request = ++generation;
+    editStarted();
+    final int request = generation;
+    final LoadTiming timing = new LoadTiming("Settings menu " + (groupName == null ? "root" : groupName));
     final Context context = getApplicationContext();
     final String options = BreviarApp.getUrlOptions(context);
     final String language = BreviarApp.getString(context, "language", "sk");
-    // Keep the existing menu usable while refreshing after Back or a choice.
     if (navigationView.getMenu().size() == 0) {
-      replaceMenu(() -> {
-        if (groupName == null) addDeviceSettings();
-        navigationView.getMenu().add(R.string.settings_loading).setEnabled(false);
-      });
+      replaceMenu(() -> navigationView.getMenu().add(R.string.settings_loading).setEnabled(false));
     }
-    worker.execute(() -> {
+    pending = worker.submit(() -> {
+      timing.mark("worker started");
       try {
-        SettingsXml settings = SettingsXml.parse(Server.getSettingsXml(context, options, language));
+        String xml = Server.getSettingsXml(context, options, language);
+        timing.mark("XML received");
+        SettingsXml result = SettingsXml.parse(xml);
+        timing.mark("parsed; posting to UI");
         runOnUiThread(() -> {
-          if (request == generation && !isFinishing() && !isDestroyed()) showSettings(settings);
+          if (request != generation || isFinishing() || isDestroyed()) return;
+          BreviarApp.cacheLanguageLocales(context, result.languages);
+          showSettings(result);
+          timing.mark("displayed");
         });
       } catch (Exception error) {
+        timing.mark("failed");
         Log.e("breviar", "Loading native settings failed", error);
         runOnUiThread(() -> {
           if (request != generation || isFinishing() || isDestroyed()) return;
           replaceMenu(() -> {
-            if (groupName == null) addDeviceSettings();
+            // Retain working controls if only a refresh failed.
+            if (settings != null) populateSettings();
             MenuItem retry = navigationView.getMenu().add(Menu.NONE, View.generateViewId(),
                 Menu.NONE, R.string.settings_load_failed);
             handleClick(retry.getItemId(), this::loadSettings);
           });
+          updateMenu();
         });
       }
     });
   }
 
-  private void showSettings(SettingsXml settings) {
-    replaceMenu(() -> populateSettings(settings));
+  private void showSettings(SettingsXml result) {
+    settings = result;
+    replaceMenu(this::populateSettings);
+    updateMenu();
   }
 
-  private void populateSettings(SettingsXml settings) {
+  private boolean visible(SettingsXml.MenuEntry entry, boolean settingsPage) {
+    // Android promotes these items with their children into the main drawer.
+    if (settingsPage && (entry.key.equals("language") || entry.key.equals("calendar"))) return false;
+    if (!entry.isGroup) return NativeSettings.supports(entry);
+    for (SettingsXml.MenuEntry child : entry.children) if (visible(child, settingsPage)) return true;
+    return false;
+  }
+
+  private void populateSettings() {
+    nativeSettings.clear();
+    rows.clear();
+    Menu menu = navigationView.getMenu();
     if (groupName == null) {
-      addDeviceSettings();
-      if (settings.calendars.size() > 1) {
-        String title = getString(R.string.calendar_settings_title);
-        addChoice(title, settings.calendars, settings.selectedCalendar, selected -> {
-          UrlOptions options = new UrlOptions(BreviarApp.getUrlOptions(this));
-          options.params.put(settings.calendarParameter, selected);
-          save(options);
-          loadSettings();
+      for (SettingsXml.MenuEntry group : settings.menu) {
+        if (visible(group, true)) addSubmenu(menu, group);
+      }
+      return;
+    }
+    SettingsXml.MenuEntry entry = settings.findEntry(groupName);
+    if (entry == null || !visible(entry, false)) {
+      finish();
+      return;
+    }
+    getSupportActionBar().setTitle(entry.key.equals("language") ? getString(R.string.lang_select)
+        : entry.key.equals("calendar") ? getString(R.string.calendar_settings_title) : entry.label);
+    if (entry.isGroup) {
+      renderChildren(menu, entry, true);
+    } else if (entry.control.equals("choice")) {
+      // Android keeps calendar options reachable above a potentially long list.
+      boolean childrenFirst = entry.key.equals("calendar");
+      if (childrenFirst) renderChildren(menu, entry, false);
+      // A distinct group makes Material separate choices from nested controls,
+      // including the untitled interface-language section.
+      int choicesGroup = View.generateViewId();
+      for (SettingsXml.Choice choice : nativeSettings.choices(entry)) {
+        addCheckedChoice(choicesGroup, nativeSettings.choiceLabel(entry, choice),
+            choice.value.equals(nativeSettings.value(entry)), () -> {
+          if (nativeSettings.select(entry, choice.value)) return;
+          write(entry, choice.value);
+          // Keep screens with nested settings open after choosing a value.
+          if (entry.children.isEmpty()) finish();
         });
       }
-      for (SettingsXml.Group group : settings.groups) {
-        if (!group.choices.isEmpty()) {
-          addChoice(group.label, group.choices, Long.toString(group.value), selected -> {
-            UrlOptions options = new UrlOptions(BreviarApp.getUrlOptions(this));
-            group.select(options.params, selected);
-            save(options);
-            loadSettings();
-          });
-        } else if (!group.options.isEmpty()) {
-          MenuItem item = navigationView.getMenu().add(Menu.NONE, View.generateViewId(), Menu.NONE, group.label);
-          item.setActionView(R.layout.widget_submenu);
-          handleClick(item.getItemId(), () -> startActivity(new Intent(this, XmlSettingsActivity.class)
-              .putExtra(GROUP, group.name)));
+      if (!childrenFirst) renderChildren(menu, entry, false);
+    }
+  }
+
+  private void renderChildren(Menu menu, SettingsXml.MenuEntry parent, boolean settingsPage) {
+    for (SettingsXml.MenuEntry entry : parent.children) {
+      if (!visible(entry, settingsPage)) continue;
+      if (entry.isGroup) {
+        Menu section = entry.label.isEmpty() ? menu
+            : menu.addSubMenu(Menu.NONE, View.generateViewId(), Menu.NONE, entry.label);
+        renderChildren(section, entry, settingsPage);
+      } else if (entry.control.equals("choice")) {
+        addSubmenu(menu, entry);
+      } else {
+        MenuItem row = addRow(menu, entry);
+        if (!nativeSettings.bind(row, entry)) bind(row, entry);
+        renderChildren(menu, entry, settingsPage);
+      }
+    }
+  }
+
+  private MenuItem addRow(Menu menu, SettingsXml.MenuEntry entry) {
+    MenuItem row = menu.add(Menu.NONE, View.generateViewId(), Menu.NONE, entry.label);
+    rows.put(entry.key, row);
+    return row;
+  }
+
+  private void addSubmenu(Menu menu, SettingsXml.MenuEntry entry) {
+    MenuItem row = addRow(menu, entry);
+    row.setActionView(R.layout.widget_submenu);
+    handleClick(row.getItemId(), () -> startActivity(entryIntent(this, entry.key)));
+  }
+
+  private void bind(MenuItem row, SettingsXml.MenuEntry entry) {
+    switch (entry.control) {
+      case "toggle":
+        row.setActionView(R.layout.widget_switch);
+        handleSwitch(row.getItemId(), new BooleanOption() {
+          public boolean get() { return entry.value(options().params).equals("1"); }
+          public void set(boolean checked) { write(entry, checked ? "1" : "0"); }
+        });
+        break;
+      case "number":
+        row.setActionView(R.layout.widget_int);
+        handleInt(row.getItemId(), entry.min, entry.max, new IntOption() {
+          public int get() {
+            try { return Integer.parseInt(entry.value(options().params)); }
+            catch (NumberFormatException error) { return Integer.parseInt(entry.defaultValue); }
+          }
+          public void set(int value) { write(entry, Integer.toString(value)); }
+          public void reset() { write(entry, entry.resetValue); }
+        });
+        break;
+      case "color":
+        row.setActionView(R.layout.widget_color);
+        handleColor(row.getItemId(), new String[]{"ffffcc", "ffddbb", "ddeeff", "111111", "222222", "333333"}, new ColorOption() {
+          public String get() {
+            String value = entry.value(options().params);
+            return value.matches("[a-fA-F0-9]{6}") ? value : "";
+          }
+          public void set(String value) { write(entry, value); }
+          public void reset() { write(entry, entry.resetValue); }
+        });
+        break;
+    }
+    if (row.getActionView() != null) {
+      row.getActionView().setContentDescription(entry.label);
+      row.getActionView().setSaveEnabled(false);
+    }
+  }
+
+  private void write(SettingsXml.MenuEntry entry, String value) {
+    editStarted();
+    UrlOptions options = options();
+    nativeSettings.beforeSave(entry);
+    entry.setValue(options.params, value);
+    BreviarApp.setUrlOptions(getApplicationContext(), options.build(true));
+    refresh();
+  }
+
+  private void enableChildren(SettingsXml.MenuEntry parent, boolean enabled) {
+    for (SettingsXml.MenuEntry child : parent.children) {
+      MenuItem row = rows.get(child.key);
+      if (row != null) {
+        row.setEnabled(enabled);
+        if (row.getActionView() != null) row.getActionView().setEnabled(enabled);
+      }
+      enableChildren(child, enabled);
+    }
+  }
+
+  @Override public void updateMenu() {
+    super.updateMenu();
+    if (settings == null || nativeSettings == null) return;
+    for (Map.Entry<String, MenuItem> row : rows.entrySet()) {
+      SettingsXml.MenuEntry entry = settings.findEntry(row.getKey());
+      if (entry == null || !entry.control.equals("choice")) continue;
+      String caption = entry.label;
+      for (SettingsXml.Choice choice : nativeSettings.choices(entry)) {
+        if (choice.value.equals(nativeSettings.value(entry))) {
+          caption += "\n" + nativeSettings.choiceLabel(entry, choice);
+          break;
         }
       }
-    } else {
-      SettingsXml.Group group = settings.findGroup(groupName);
-      if (group == null) {
-        finish();
-        return;
-      }
-      getSupportActionBar().setTitle(group.label);
-      for (SettingsXml.Option option : group.options) {
-        MenuItem item = navigationView.getMenu().add(Menu.NONE, View.generateViewId(), Menu.NONE, option.label);
-        item.setActionView(R.layout.widget_switch);
-        item.getActionView().setContentDescription(option.label);
-        handleSwitch(item.getItemId(), new BooleanOption() {
-          public boolean get() { return group.isChecked(option); }
-          public void set(boolean checked) {
-            UrlOptions options = new UrlOptions(BreviarApp.getUrlOptions(XmlSettingsActivity.this));
-            group.setChecked(options.params, option, checked);
-            save(options);
-          }
-        });
-      }
-      updateMenu();
+      row.getValue().setTitle(caption);
     }
-  }
-
-  private interface Selection { void select(String value); }
-
-  private void addChoice(String title, List<SettingsXml.Choice> choices, String value, Selection selection) {
-    String[] labels = new String[choices.size()];
-    int selected = -1;
-    for (int i = 0; i < choices.size(); ++i) {
-      labels[i] = choices.get(i).label;
-      if (choices.get(i).value.equals(value)) selected = i;
+    SettingsXml.MenuEntry entry = settings.findEntry(groupName);
+    if (entry != null && entry.handler.equals("reading.navigation")) {
+      enableChildren(entry, nativeSettings.navigationMode() == ReadingNavigation.Mode.ARROWS);
     }
-    final int checked = selected;
-    String caption = selected >= 0 ? title + "\n" + labels[selected] : title;
-    MenuItem item = navigationView.getMenu().add(Menu.NONE, View.generateViewId(), Menu.NONE, caption);
-    item.setActionView(R.layout.widget_submenu);
-    handleClick(item.getItemId(), () -> new AlertDialog.Builder(this)
-        .setTitle(title)
-        .setSingleChoiceItems(labels, checked, (dialog, index) -> {
-          selection.select(choices.get(index).value);
-          dialog.dismiss();
-        })
-        .setNegativeButton(android.R.string.cancel, null)
-        .show());
-  }
-
-  private void save(UrlOptions options) {
-    // A refresh started before this edit must not restore its older snapshot.
-    ++generation;
-    BreviarApp.setUrlOptions(getApplicationContext(), options.build(true));
   }
 }

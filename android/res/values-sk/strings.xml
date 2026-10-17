@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="eink_mode">Režim E-ink (čiernobiely, bez animácií)</string>
+    <string name="eink_mode">Režim E-ink (bez animácií)</string>
     <string name="appearance_title">Režim zobrazenia</string>
     <string name="appearance_message">Toto nastavenie môžete neskôr zmeniť v %1$s > %2$s.</string>
     <string name="appearance_normal">Bežný displej</string>
@@ -84,6 +84,7 @@
     <string name="color_dialog_color">Farba (RRGGBB): </string>
 
     <string name="calendar_settings_title">Liturgický kalendár</string>
+    <string name="default_calendar">Predvolený kalendár</string>
     <string name="epiphany_sunday">Zjavenie Pána sláviť v nedeľu medzi 2. a 8. januárom</string>
     <string name="ascension_sunday">Nanebovstúpenie Pána sláviť v nedeľu</string>
     <string name="body_blood_sunday">Najsv. Kristovho tela a krvi sláviť v nedeľu</string>

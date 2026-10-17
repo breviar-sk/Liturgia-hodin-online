@@ -275,7 +275,7 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	mystrcpy(html_background_color, STR_EMPTY, SMALL);
 
 	if (has_background_color_override_light || has_background_color_override_dark) {
-		sprintf(html_background_color, " style=\"background-color: #%s;\"", _local_background_color);
+		mysnprintf(html_background_color, " style=\"background-color: #%s;\"", _local_background_color);
 	}
 	Log("element <html> followed by <head>...\n");
 	Export_to_file(expt, (char*)html_header_1, html_lang_jazyka[_global_jazyk], html_background_color);
@@ -763,7 +763,9 @@ void _xml_patka(FILE* expt) {
 
 	for (c = 0; c <= POCET_JAZYKOV; c++) {
 		if (supported_languages[c]) {
-			Export_to_file(expt, ELEM_BEGIN_ID_VALUE(XML_LANGUAGE) "%s" ELEM_END(XML_LANGUAGE) "\n", c, skratka_jazyka[c], nazov_jazyka_native_jazyk(c));
+			// Locale is shared by native UI and speech consumers; Value remains the CGI code.
+			Export_to_file(expt, "<" XML_LANGUAGE " Id=\"%d\" Value=\"%s\" Locale=\"%s\">%s" ELEM_END(XML_LANGUAGE) "\n",
+				c, skratka_jazyka[c], html_lang_jazyka[c], nazov_jazyka_native_jazyk(c));
 		}
 	}
 
@@ -811,7 +813,10 @@ void _xml_patka(FILE* expt) {
 	Export_to_file(expt, ELEM_BEGIN_NAME(XML_LIT_COMMUNIA_VALUES) "\n", STR_FORCE_OPT_3);
 
 	for (c = 0; c <= POCET_SPOL_CASTI; c++) {
-		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_COMMUNIA) "%s" ELEM_END(XML_LIT_COMMUNIA) "\n", c, nazov_spolc(c));
+		if (poradie_spol_cast[c] == MODL_SPOL_CAST_NEURCENA) {
+			continue;
+		}
+		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_COMMUNIA) "%s" ELEM_END(XML_LIT_COMMUNIA) "\n", poradie_spol_cast[c], nazov_spolc(poradie_spol_cast[c]));
 	}
 
 	Export_to_file(expt, ELEM_END(XML_LIT_COMMUNIA_VALUES) "\n\n");

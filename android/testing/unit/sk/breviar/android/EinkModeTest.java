@@ -68,8 +68,8 @@ public class EinkModeTest {
     assertFalse(BreviarApp.getEinkMode(context));
     try (ActivityController<DeviceSettings> controller = Robolectric.buildActivity(DeviceSettings.class).setup()) {
       DeviceSettings activity = controller.get();
-      CompoundButton toggle = (CompoundButton)activity.navigationView.getMenu()
-          .findItem(R.id.eink_mode).getActionView();
+      XmlSettingsActivityTest.awaitSettings(activity);
+      CompoundButton toggle = (CompoundButton)activity.menuItem("device.eink").getActionView();
       toggle.performClick();
       assertTrue(BreviarApp.getEinkMode(context));
       Shadows.shadowOf(Looper.getMainLooper()).idle();
@@ -80,8 +80,8 @@ public class EinkModeTest {
       DeviceSettings activity = controller.get();
       assertEquals(Color.WHITE, ((ColorDrawable)activity.navigationView.getBackground()).getColor());
       assertEquals(Color.BLACK, activity.navigationView.getItemTextColor().getDefaultColor());
-      CompoundButton toggle = (CompoundButton)activity.navigationView.getMenu()
-          .findItem(R.id.eink_mode).getActionView();
+      XmlSettingsActivityTest.awaitSettings(activity);
+      CompoundButton toggle = (CompoundButton)activity.menuItem("device.eink").getActionView();
       assertTrue(toggle.isChecked());
       toggle.performClick();
       assertFalse(BreviarApp.getEinkMode(context));
@@ -333,7 +333,7 @@ public class EinkModeTest {
   }
 
   @Test
-  public void refreshedXmlSettingsAndCalendarDialogUseEinkAppearance() throws Exception {
+  public void refreshedXmlSettingsAndCalendarChoicesUseEinkAppearance() throws Exception {
     BreviarApp.setEinkMode(context, true);
     try (ActivityController<MainSettings> controller = Robolectric.buildActivity(MainSettings.class).setup()) {
       MainSettings activity = controller.get();
@@ -342,20 +342,18 @@ public class EinkModeTest {
       Shadows.shadowOf(Looper.getMainLooper()).idle();
       assertEquals(Color.WHITE, ((ColorDrawable)activity.navigationView.getBackground()).getColor());
       assertEquals(Color.BLACK, activity.navigationView.getItemTextColor().getDefaultColor());
-      android.view.Menu menu = activity.navigationView.getMenu();
-      for (int i = 0; i < menu.size(); ++i) {
-        if (menu.getItem(i).getTitle().toString().startsWith(context.getString(R.string.calendar_settings_title))) {
-          menu.performIdentifierAction(menu.getItem(i).getItemId(), 0);
-        }
-      }
-      androidx.appcompat.app.AlertDialog dialog = (androidx.appcompat.app.AlertDialog)
-          org.robolectric.shadows.ShadowDialog.getLatestDialog();
-      assertNotNull(dialog);
-      android.widget.ListView list = dialog.getListView();
-      android.widget.TextView row = (android.widget.TextView)list.getAdapter().getView(0, null, list);
-      assertEquals(Color.BLACK, row.getCurrentTextColor());
-      assertEquals(0, dialog.getWindow().getAttributes().flags & android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-      dialog.dismiss();
+      assertBoundMenuTextBlack(activity.navigationView);
+    }
+    try (ActivityController<XmlSettingsActivity> controller = Robolectric.buildActivity(
+        XmlSettingsActivity.class, XmlSettingsActivity.calendarIntent(context)).setup()) {
+      XmlSettingsActivity activity = controller.get();
+      java.util.concurrent.ExecutorService worker = ReflectionHelpers.getField(activity, "worker");
+      worker.submit(() -> {}).get(10, java.util.concurrent.TimeUnit.SECONDS);
+      Shadows.shadowOf(Looper.getMainLooper()).idle();
+      assertEquals(Color.WHITE, ((ColorDrawable)activity.navigationView.getBackground()).getColor());
+      assertEquals(Color.BLACK, activity.navigationView.getItemTextColor().getDefaultColor());
+      assertTrue(activity.navigationView.getMenu().getItem(1).isChecked());
+      assertBoundMenuTextBlack(activity.navigationView);
     }
   }
 
@@ -416,11 +414,12 @@ public class EinkModeTest {
 
   @Test
   @Config(sdk = {24, 35})
-  public void nativeSettingsRowsStayBlackWhenBoundAndRecycled() {
+  public void nativeSettingsRowsStayBlackWhenBoundAndRecycled() throws Exception {
     BreviarApp.setEinkMode(context, true);
     for (Class<? extends SettingsActivity> screen : java.util.Arrays.<Class<? extends SettingsActivity>>asList(
         DeviceSettings.class, DisplaySettings.class, TtsSettings.class, LangSelect.class)) {
       try (ActivityController<? extends SettingsActivity> controller = Robolectric.buildActivity(screen).setup()) {
+        if (controller.get() instanceof XmlSettingsActivity) XmlSettingsActivityTest.awaitSettings((XmlSettingsActivity)controller.get());
         assertBoundMenuTextBlack(controller.get().navigationView);
       }
     }
@@ -440,6 +439,32 @@ public class EinkModeTest {
     }
   }
 
+  @Test public void drawerOpensCalendarAndReaderImportsItsSelectionOnReturn() {
+    BreviarApp.setEinkMode(context, true);
+    BreviarApp.setString(context, "version", context.getString(R.string.version));
+    try (ActivityController<Reader> controller = Robolectric.buildActivity(Reader.class).setup()) {
+      Reader reader = controller.get();
+      reader.S.setOpts("&amp;o0=123&amp;k=sj");
+      reader.wv.loadUrl("http://127.0.0.1:50000/breviar.cgi?qt=pdt&d=16&m=10&r=2026&k=sj&p=mc");
+      assertNotNull(reader.navigationView.getMenu().findItem(R.id.calendar_select));
+      reader.onNavigationItemSelected(R.id.calendar_select);
+      Intent intent = Shadows.shadowOf(reader).getNextStartedActivity();
+      assertEquals(XmlSettingsActivity.class.getName(), intent.getComponent().getClassName());
+      assertEquals("calendar", intent.getStringExtra("settings_group"));
+      assertTrue(reader.need_to_reload_preferences);
+      controller.pause().stop();
+      // The calendar screen saves the default without changing the prayer/date.
+      BreviarApp.setUrlOptions(context, "&amp;o0=123&amp;k=");
+      controller.restart().start().resume();
+      UrlOptions url = new UrlOptions(reader.wv.getUrl(), true);
+      assertEquals("", url.params.get("k"));
+      assertEquals("123", url.params.get("o0"));
+      assertEquals("16", url.params.get("d"));
+      assertEquals("mc", url.params.get("p"));
+      assertEquals("", new UrlOptions(reader.S.getOpts()).params.get("k"));
+    }
+  }
+
   @Test
   @Config(sdk = {24, 35})
   public void menuThemeIsReadableBeforeLateStylingAndForCheckedItems() {
@@ -447,9 +472,9 @@ public class EinkModeTest {
     try (ActivityController<SettingsActivity> controller = Robolectric.buildActivity(SettingsActivity.class).create()) {
       // A newly inflated menu must already be readable, without a walk of existing views.
       NavigationView menu = controller.get().navigationView;
-      menu.inflateMenu(R.menu.lang_select);
-      menu.getMenu().findItem(R.id.lang_sk).setCheckable(true).setChecked(true);
-      menu.getMenu().findItem(R.id.lang_cz).setEnabled(false);
+      menu.getMenu().add("Interface language").setActionView(R.layout.widget_switch);
+      menu.getMenu().add(R.string.lang_sk).setCheckable(true).setChecked(true);
+      menu.getMenu().add(R.string.lang_cz).setEnabled(false);
       menu.getMenu().addSubMenu("More settings").add("Nested option");
       assertBoundMenuTextBlack(menu);
       assertEquals(Color.BLACK, menu.getItemIconTintList().getColorForState(
@@ -491,9 +516,10 @@ public class EinkModeTest {
   @Test
   @GraphicsMode(GraphicsMode.Mode.NATIVE)
   @SuppressWarnings({"rawtypes", "unchecked"})
-  public void menuForegroundDoesNotPaintOverLabelsOrIcons() {
+  public void menuForegroundDoesNotPaintOverLabelsOrIcons() throws Exception {
     BreviarApp.setEinkMode(context, true);
     try (ActivityController<LangSelect> controller = Robolectric.buildActivity(LangSelect.class).setup()) {
+      LangSelectTest.awaitLanguages(controller.get());
       RecyclerView list = recycler(controller.get().navigationView);
       RecyclerView.Adapter adapter = list.getAdapter();
       RecyclerView.ViewHolder holder = adapter.createViewHolder(list, adapter.getItemViewType(1));

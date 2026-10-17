@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="eink_mode">E-ink hamur (svarthvítur, án hreyfinga)</string>
+    <string name="eink_mode">E-ink hamur (án hreyfinga)</string>
     <string name="appearance_title">Skjástilling</string>
     <string name="appearance_message">Þú getur breytt þessu síðar í %1$s > %2$s.</string>
     <string name="appearance_normal">Venjulegur skjár</string>
@@ -84,6 +84,7 @@
     <string name="color_dialog_color">Lit (RRGGBB): </string>
 
     <string name="calendar_settings_title">Helgisiðadagatal</string>
+    <string name="default_calendar">Sjálfgefið dagatal</string>
     <string name="epiphany_sunday">Birting Drottins haldin á sunnudegi á milli 2. og 8. janúar</string>
     <string name="ascension_sunday">Uppstigning Drottins haldin á sunnudegi</string>
     <string name="body_blood_sunday">Stórhátíð Líkama og Blóðs Krists haldin á sunnudegi</string>
