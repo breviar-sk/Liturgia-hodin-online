@@ -1205,6 +1205,16 @@ public class Breviar extends AppearanceActivity
     }
 
     void startSpeaking() {
+      if (!TtsBackgroundUsageWarning.showIfRestricted(this, false)) {
+        speakAfterBackgroundCheck(false);
+      }
+    }
+
+    void speakAfterBackgroundCheck(boolean resume) {
+      if (resume) {
+        startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_RESUME));
+        return;
+      }
       UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
       opts.setVoiceOutput(true);
       String url = opts.getBuilder().encodedAuthority("127.0.0.1:" + S.port_nonpersistent)
@@ -1226,7 +1236,9 @@ public class Breviar extends AppearanceActivity
     }
 
     void resumeSpeaking() {
-      startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_RESUME));
+      if (!TtsBackgroundUsageWarning.showIfRestricted(this, true)) {
+        speakAfterBackgroundCheck(true);
+      }
     }
 
     void speakForward() {

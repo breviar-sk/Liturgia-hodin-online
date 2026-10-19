@@ -17,6 +17,15 @@
     <item name="itemTextColor">@color/navigation_text</item>
     <item name="subheaderColor">@color/navigation_secondary</item>
     <item name="itemIconTint">@color/navigation_secondary</item>
+    <item name="itemTextAppearance">@style/NavigationText</item>
+    <item name="subheaderTextAppearance">@style/NavigationText</item>
+  </style>
+  <!-- Keep the menu size while using the regular system font, like the header.
+       Specify both attributes for framework and AppCompat text views. -->
+  <style name="NavigationText" parent="TextAppearance.AppCompat.Body2">
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="fontFamily">sans-serif</item>
+    <item name="android:textStyle">normal</item>
   </style>
   <style name="BreviarEinkTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@android:color/white</item>
@@ -65,7 +74,7 @@
     <item name="elevation">0dp</item>
     <item name="insetForeground">@android:color/transparent</item>
   </style>
-  <style name="EinkNavigationText" parent="TextAppearance.AppCompat.Body2">
+  <style name="EinkNavigationText" parent="NavigationText">
     <item name="android:textColor">@android:color/black</item>
   </style>
   <style name="EinkDialog" parent="Theme.AppCompat.Light.Dialog.Alert">

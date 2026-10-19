@@ -127,6 +127,11 @@
     <string name="tts_resume">Intermitte legere</string>
     <string name="tts_back">Lege partem præcedentem</string>
     <string name="tts_forward">Lege partem succedentem</string>
+    <string name="tts_background_title">Permitte usum in recessu</string>
+    <string name="tts_background_message">Android usum applicationis Breviár in recessu restringit. Lectio vocalis interrumpi vel sisti potest dum velum exstinctum est.\n\nIn informationibus applicationis aperi optiones pilæ electricæ et permitte usum in recessu. Deinde redi ad Breviár et incipe vel continua lectionem.</string>
+    <string name="tts_background_settings">Informationes applicationis</string>
+    <string name="tts_background_continue">Lege nihilominus</string>
+    <string name="tts_background_settings_unavailable">Informationes applicationis aperiri non potuerunt. In optionibus Android quære Breviár inter applicationes et in optionibus pilæ electricæ permitte usum in recessu.</string>
 
     <string name="notification_not_allowed">Programmaturæ applicativæ nondum permisistis tinnitum claudare.</string>
     <string name="need_notification_permission">Notificationes non licet. Da quæso hoc app permissiones ad Notificationes.</string>

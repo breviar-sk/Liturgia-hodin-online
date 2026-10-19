@@ -127,6 +127,11 @@
     <string name="tts_resume">Folytassa az olvasást</string>
     <string name="tts_back">Olvasd el az előző részt</string>
     <string name="tts_forward">Olvassa el a következő részt</string>
+    <string name="tts_background_title">Háttérhasználat engedélyezése</string>
+    <string name="tts_background_message">Az Android korlátozza a Breviár háttérhasználatát. Kikapcsolt képernyőnél a felolvasás szünetelhet vagy leállhat.\n\nAz alkalmazás adatlapján nyissa meg az Alkalmazás akkumulátorhasználata (vagy Akkumulátor) menüt, és engedélyezze a háttérhasználatot. Ezután térjen vissza a Breviárhoz, és indítsa el vagy folytassa a felolvasást.</string>
+    <string name="tts_background_settings">Alkalmazás adatai</string>
+    <string name="tts_background_continue">Felolvasás mégis</string>
+    <string name="tts_background_settings_unavailable">Nem sikerült megnyitni az alkalmazás adatlapját. Az Android beállításaiban keresse meg a Breviárt az alkalmazások között, és az akkumulátor beállításainál engedélyezze a háttérhasználatot.</string>
 
     <string name="notification_not_allowed">Még nem engedélyezte az alkalmazásnak a csengetés kikapcsolását.</string>
     <string name="need_notification_permission">Az értesítések nem engedélyezettek. Kérjük, adja meg ennek az alkalmazásnak az értesítési engedélyeket.</string>

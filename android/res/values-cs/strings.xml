@@ -127,6 +127,11 @@
     <string name="tts_resume">Pokračovat v čtení</string>
     <string name="tts_back">Pročti předchozí část</string>
     <string name="tts_forward">Pročti následující část</string>
+    <string name="tts_background_title">Povolit používání na pozadí</string>
+    <string name="tts_background_message">Android omezuje používání aplikace Breviář na pozadí. Při vypnuté obrazovce může docházet k přestávkám nebo zastavení čtení.\n\nV informacích o aplikaci otevřete Využití baterie aplikací (nebo Baterie) a povolte používání na pozadí. Potom se vraťte do Breviáře a spusťte čtení nebo v něm pokračujte.</string>
+    <string name="tts_background_settings">Informace o aplikaci</string>
+    <string name="tts_background_continue">Přesto číst</string>
+    <string name="tts_background_settings_unavailable">Informace o aplikaci se nepodařilo otevřít. V nastavení Androidu vyhledejte Breviář mezi aplikacemi a v nastavení baterie povolte používání na pozadí.</string>
 
     <string name="notification_not_allowed">Aplikaci jste dosud nepovolili vypnout zvonění.</string>
     <string name="need_notification_permission">Oznámení nejsou povolena. Prosím, povolte aplikaci oprávnění pro Oznámení.</string>

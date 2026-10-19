@@ -127,6 +127,11 @@
     <string name="tts_resume">HHalda áfram lestri</string>
     <string name="tts_back">Lesa undanfarandi hluta</string>
     <string name="tts_forward">Lesa eftirfarandi hluta</string>
+    <string name="tts_background_title">Leyfa notkun í bakgrunni</string>
+    <string name="tts_background_message">Android takmarkar notkun Breviár í bakgrunni. Upplestur getur gert hlé eða stöðvast þegar slökkt er á skjánum.\n\nÍ upplýsingum um forritið skaltu opna Rafhlöðunotkun forrits (eða Rafhlaða) og leyfa notkun í bakgrunni. Farðu síðan aftur í Breviár og ræstu eða haltu áfram upplestri.</string>
+    <string name="tts_background_settings">Upplýsingar um forrit</string>
+    <string name="tts_background_continue">Lesa samt</string>
+    <string name="tts_background_settings_unavailable">Ekki tókst að opna upplýsingar um forritið. Opnaðu stillingar Android, finndu Breviár undir Forrit og leyfðu notkun í bakgrunni í rafhlöðustillingum þess.</string>
 
     <string name="notification_not_allowed">Appinu er enn ekki leyft að slökkva á hringingu</string>
     <string name="need_notification_permission">Tilkynningar ekki leyfðar. Vinsamlegast veittu þessu forriti heimildir fyrir tilkynningar.</string>

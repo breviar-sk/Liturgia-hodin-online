@@ -131,6 +131,11 @@
     <string name="tts_resume">Resume speaking</string>
     <string name="tts_back">Speak previous part</string>
     <string name="tts_forward">Speak next part</string>
+    <string name="tts_background_title">Allow background usage</string>
+    <string name="tts_background_message">Android is restricting background usage for Breviár. Reading aloud may pause or stop when the screen is off.\n\nIn App info, open App battery usage (or Battery) and allow background usage. Then return to Breviár and start or resume reading.</string>
+    <string name="tts_background_settings">Open App info</string>
+    <string name="tts_background_continue">Read anyway</string>
+    <string name="tts_background_settings_unavailable">Could not open App info. Open Android Settings, find Breviár under Apps, and allow background usage in its battery settings.</string>
 
     <string name="notification_not_allowed">You have not allowed the app to change ring mode yet.</string>
     <string name="need_notification_permission">Notifications not allowed. Please grant this app the permissions for Notifications.</string>
