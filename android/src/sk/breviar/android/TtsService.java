@@ -13,6 +13,7 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
@@ -85,6 +86,8 @@ public class TtsService extends Service
     REJECT
   }
   State state = State.IDLE;
+  private PowerManager.WakeLock playbackWakeLock;
+  private boolean destroyed;
 
   TtsState publicState() {
     if (state == State.IDLE) return TtsState.READY;
@@ -105,6 +108,17 @@ public class TtsService extends Service
   }
 
   synchronized void processAction(Intent immediate_action) {
+    if (destroyed) return;
+    boolean completed = false;
+    try {
+      processActionInternal(immediate_action);
+      completed = true;
+    } finally {
+      if (!completed || state != State.PLAYING) releasePlaybackWakeLock();
+    }
+  }
+
+  private void processActionInternal(Intent immediate_action) {
     TtsState old_public_state = publicState();
 
     while (true) {
@@ -368,12 +382,7 @@ public class TtsService extends Service
       case START_SECTION:
         switch (action.getAction()) {
           case TTS_STOP:
-            sections = null;
-            shutdownTts();
-            language = null;
-            url = null;
-            url_title = null;
-            return State.IDLE;
+            return finishSpeech();
 
           case TTS_FORWARD:
             if (section < sections.length - 1) {
@@ -393,12 +402,7 @@ public class TtsService extends Service
               ++section;
             }
             if (section >= sections.length) {
-              sections = null;
-              shutdownTts();
-              url = null;
-              url_title = null;
-              language = null;
-              return State.IDLE;
+              return finishSpeech();
             }
             initializeChunks();
             return startSynthesis(IDLE_PROCESSING);
@@ -415,7 +419,9 @@ public class TtsService extends Service
             return state;
 
           case IDLE_PROCESSING:
-            if (chunk >= chunks.size()) {
+            // A final completion callback can arrive after pause. Wait for
+            // resume before starting another section (and acquiring its lock).
+            if (state == State.PLAYING && chunk >= chunks.size()) {
               chunks = null;
               ++section;
               return State.START_SECTION;
@@ -427,13 +433,7 @@ public class TtsService extends Service
             displayError();
           case TTS_STOP:
             if (state == State.PLAYING) stopSynthesis(TTS_STOP);
-            chunks = null;
-            sections = null;
-            shutdownTts();
-            language = null;
-            url = null;
-            url_title = null;
-            return State.IDLE;
+            return finishSpeech();
 
           case TTS_PAUSE:
           case TTS_AUDIOFOCUS_LOSS:
@@ -479,6 +479,16 @@ public class TtsService extends Service
     }
   }
 
+  private State finishSpeech() {
+    chunks = null;
+    sections = null;
+    shutdownTts();
+    language = null;
+    url = null;
+    url_title = null;
+    return State.IDLE;
+  }
+
   void shutdownTts() {
     try {
       tts.shutdown();
@@ -486,6 +496,36 @@ public class TtsService extends Service
       Log.v("breviar", "TTS shutdow failed, ignoring.");
     }
     tts = null;
+  }
+
+  private void acquirePlaybackWakeLock() {
+    if (playbackWakeLock == null) {
+      PowerManager power = (PowerManager)getSystemService(POWER_SERVICE);
+      playbackWakeLock = power.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "breviar:tts");
+      playbackWakeLock.setReferenceCounted(false);
+    }
+    // playSilence() waits without playing audio. Keep the CPU awake across
+    // those waits and section boundaries, until playback ends or is paused.
+    if (!playbackWakeLock.isHeld()) playbackWakeLock.acquire();
+  }
+
+  private void releasePlaybackWakeLock() {
+    if (playbackWakeLock != null && playbackWakeLock.isHeld()) playbackWakeLock.release();
+  }
+
+  @Override public synchronized void onDestroy() {
+    destroyed = true;
+    try {
+      if (tts != null) {
+        stopSynthesis(TTS_STOP);
+        finishSpeech();
+      }
+      state = State.IDLE;
+      pending_action = null;
+    } finally {
+      releasePlaybackWakeLock();
+      super.onDestroy();
+    }
   }
 
   boolean requestText() {
@@ -617,6 +657,7 @@ public class TtsService extends Service
       }
     }
 
+    acquirePlaybackWakeLock();
     boolean use_pauses = BreviarApp.getTtsUsePauseInPsalms(this);
     for (int i = chunk; i < chunks.size(); ++i) {
       HashMap<String, String> params = new HashMap<String, String>();
@@ -625,22 +666,31 @@ public class TtsService extends Service
 
       String chunk_text = chunks.elementAt(i);
       Log.v("breviar", "TTS chunk: " + chunk_text);
+      int result;
       if (chunk_text.equals("#TTS_PAUSE_DIV")) {
-        tts.playSilence(200, TextToSpeech.QUEUE_ADD, params);
+        result = tts.playSilence(200, TextToSpeech.QUEUE_ADD, params);
       } else if (chunk_text.equals("#TTS_PAUSE_SHORT")) {
         int pause = 0;
         if (use_pauses) {
           pause = 200;
         }
-        tts.playSilence(pause, TextToSpeech.QUEUE_ADD, params);
+        result = tts.playSilence(pause, TextToSpeech.QUEUE_ADD, params);
       } else if (chunk_text.equals("#TTS_PAUSE_LONG")) {
         int pause = 0;
         if (use_pauses) {
           pause = 1000;
         }
-        tts.playSilence(pause, TextToSpeech.QUEUE_ADD, params);
+        result = tts.playSilence(pause, TextToSpeech.QUEUE_ADD, params);
       } else {
-        tts.speak(chunks.elementAt(i), TextToSpeech.QUEUE_ADD, params);
+        result = tts.speak(chunks.elementAt(i), TextToSpeech.QUEUE_ADD, params);
+      }
+      if (result != TextToSpeech.SUCCESS) {
+        // A rejected queue entry may never send onError/onDone. Do not leave
+        // playback (and its wake lock) waiting for a callback that cannot arrive.
+        Log.e("breviar", "TTS: could not queue chunk " + i);
+        stopSynthesis(TTS_STOP);
+        displayError();
+        return finishSpeech();
       }
     }
     return State.PLAYING;
