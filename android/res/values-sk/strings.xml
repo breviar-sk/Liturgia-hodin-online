@@ -133,7 +133,7 @@
     <string name="tts_background_continue">Aj tak čítať</string>
     <string name="tts_background_settings_unavailable">Informácie o aplikácii sa nepodarilo otvoriť. V nastaveniach Androidu vyhľadajte Breviár medzi aplikáciami a v nastaveniach batérie povoľte používanie na pozadí.</string>
 
-    <string name="notification_not_allowed">Zatiaľ ste aplikácii nepovolili vypnúť zvonenie.</string>
+    <string name="notification_not_allowed">V nastaveniach Androidu povoľte Breviáru prístup k režimu Nerušiť a potom túto voľbu znova zapnite.</string>
     <string name="need_notification_permission">Oznámenia nie sú povolené. Prosím, udeľte aplikácii oprávnenia pre Oznámenia.</string>
 
     <string name="channel_name">Breviár</string>

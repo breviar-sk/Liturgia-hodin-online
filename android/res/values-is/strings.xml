@@ -133,7 +133,7 @@
     <string name="tts_background_continue">Lesa samt</string>
     <string name="tts_background_settings_unavailable">Ekki tókst að opna upplýsingar um forritið. Opnaðu stillingar Android, finndu Breviár undir Forrit og leyfðu notkun í bakgrunni í rafhlöðustillingum þess.</string>
 
-    <string name="notification_not_allowed">Appinu er enn ekki leyft að slökkva á hringingu</string>
+    <string name="notification_not_allowed">Leyfðu Breviár aðgang að Ekki trufla í stillingum Android og kveiktu síðan aftur á þessum valkosti.</string>
     <string name="need_notification_permission">Tilkynningar ekki leyfðar. Vinsamlegast veittu þessu forriti heimildir fyrir tilkynningar.</string>
 
     <string name="channel_name">Tíðabænabók</string>

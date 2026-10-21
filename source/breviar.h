@@ -476,8 +476,16 @@ extern void setGlobalOption(short opt_i, unsigned long long bit_opt_i_component_
 #define _je_global_svaty_i_sviatok(i) (JE_PORADIE_SVATY_OK(i) && ((_global_svaty(i).typslav == SLAV_SVIATOK) || ((i != PORADIE_PM_SOBOTA) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST))))))
 #define _je_global_svaty_i_slavnost(i) (JE_PORADIE_SVATY_OK(i) && ((_global_svaty(i).typslav == SLAV_SLAVNOST) || ((i != PORADIE_PM_SOBOTA) && isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST) || (_global_svaty(i).typslav == SLAV_SVIATOK)))))
 
-#define _je_global_den_sviatok ((_global_den.typslav == SLAV_SVIATOK) || ((_global_poradie_svaty > 0) && (_global_poradie_svaty < PORADIE_PM_SOBOTA) && isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST))))
-#define _je_global_den_slavnost ((_global_den.typslav == SLAV_SLAVNOST) || ((_global_poradie_svaty > 0) && (_global_poradie_svaty < PORADIE_PM_SOBOTA) && isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK))))
+// Commons selected by liturgical season have no calendar saint (index 0), but
+// their default memorial rank can still be raised to a feast or solemnity.
+#define _je_global_den_override (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && \
+	(JE_PORADIE_SVATY_OK(_global_poradie_svaty) || \
+	 ((query_type == PRM_LIT_OBD) && (_global_den.typslav == SLAV_SPOMIENKA))))
+
+#define _je_global_den_sviatok ((_global_den.typslav == SLAV_SVIATOK) || \
+	(_je_global_den_override && !isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST)))
+#define _je_global_den_slavnost ((_global_den.typslav == SLAV_SLAVNOST) || \
+	(_je_global_den_override && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST) || (_global_den.typslav == SLAV_SVIATOK))))
 
 #define _je_local_den_sviatok ((_local_den.typslav == SLAV_SVIATOK) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (!isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST))))
 #define _je_local_den_slavnost ((_local_den.typslav == SLAV_SLAVNOST) || (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OVERRIDE_STUP_SLAV) && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_STUP_SVIATOK_SLAVNOST) || (_local_den.typslav == SLAV_SVIATOK))))

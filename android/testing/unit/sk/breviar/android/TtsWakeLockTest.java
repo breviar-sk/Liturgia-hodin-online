@@ -2,10 +2,15 @@ package sk.breviar.android;
 
 import static org.junit.Assert.*;
 
+import android.app.Activity;
+import android.app.AutomaticZenRule;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.PowerManager;
+import android.os.Build;
+import android.service.notification.ZenPolicy;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import java.util.ArrayList;
@@ -17,8 +22,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
 import org.robolectric.android.controller.ServiceController;
+import org.robolectric.android.controller.ActivityController;
 import org.robolectric.annotation.Config;
 import org.robolectric.annotation.Implementation;
 import org.robolectric.annotation.Implements;
@@ -53,6 +60,7 @@ public class TtsWakeLockTest {
       PowerManager.WakeLock lock = ShadowPowerManager.getLatestWakeLock();
       assertNotNull("Acquire before handing work to the engine", lock);
       assertTrue(lock.isHeld());
+      if (BreviarApp.getMute(RuntimeEnvironment.getApplication())) assertMediaAllowed(true);
       if (throwOnQueue) throw new IllegalStateException("Engine unavailable");
       if (silence ? rejectSilence : rejectSpeech) return TextToSpeech.ERROR;
       queued.add(params.get(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID));
@@ -115,6 +123,50 @@ public class TtsWakeLockTest {
   private void assertReleased() {
     PowerManager.WakeLock lock = ShadowPowerManager.getLatestWakeLock();
     assertTrue(lock == null || !lock.isHeld());
+  }
+
+  private static void assertMediaAllowed(boolean allowed) {
+    NotificationManager notifications = (NotificationManager)RuntimeEnvironment.getApplication()
+        .getSystemService(Context.NOTIFICATION_SERVICE);
+    assertEquals(1, notifications.getAutomaticZenRules().size());
+    AutomaticZenRule rule = notifications.getAutomaticZenRules().values().iterator().next();
+    assertTrue(rule.isEnabled());
+    if (Build.VERSION.SDK_INT >= 29) {
+      assertEquals(allowed ? ZenPolicy.STATE_ALLOW : ZenPolicy.STATE_DISALLOW,
+          rule.getZenPolicy().getPriorityCategoryMedia());
+      assertEquals(ZenPolicy.STATE_DISALLOW, rule.getZenPolicy().getVisualEffectPeek());
+    } else {
+      assertEquals(allowed ? NotificationManager.INTERRUPTION_FILTER_PRIORITY
+          : NotificationManager.INTERRUPTION_FILTER_NONE, rule.getInterruptionFilter());
+    }
+  }
+
+  @Test public void dndAllowsQueuedSpeechAndMutesMediaOnPauseStopAndError() {
+    NotificationManager notifications = (NotificationManager)service.getSystemService(Context.NOTIFICATION_SERVICE);
+    Shadows.shadowOf(notifications).setNotificationPolicyAccessGranted(true);
+    notifications.setNotificationPolicy(new NotificationManager.Policy(0, 0, 0, 0));
+    BreviarApp.setMute(service, true);
+    try (ActivityController<Activity> reader = Robolectric.buildActivity(Activity.class).setup()) {
+      assertMediaAllowed(false);
+      initialize();
+      load("First#TTS_PAUSE_LONGSecond");
+      assertMediaAllowed(true);
+      action(TtsService.TTS_PAUSE);
+      assertMediaAllowed(false);
+      action(TtsService.TTS_RESUME);
+      assertMediaAllowed(true);
+      speech.getUtteranceProgressListener().onError(speech.queued.get(0));
+      assertMediaAllowed(false);
+      initialize();
+      load("Again");
+      action(TtsService.TTS_STOP);
+      assertMediaAllowed(false);
+      initialize();
+      load("Last");
+      controller.destroy();
+      controller = null;
+      assertMediaAllowed(false);
+    }
   }
 
   @Test public void holdsPartialLockAcrossSilencesAndSectionsUntilCompletion() {

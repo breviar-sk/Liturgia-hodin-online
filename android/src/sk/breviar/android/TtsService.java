@@ -88,6 +88,7 @@ public class TtsService extends Service
   State state = State.IDLE;
   private PowerManager.WakeLock playbackWakeLock;
   private boolean destroyed;
+  private Boolean reportedDndSpeech;
 
   TtsState publicState() {
     if (state == State.IDLE) return TtsState.READY;
@@ -115,6 +116,7 @@ public class TtsService extends Service
       completed = true;
     } finally {
       if (!completed || state != State.PLAYING) releasePlaybackWakeLock();
+      reportDndSpeech(completed && publicState() == TtsState.SPEAKING);
     }
   }
 
@@ -266,10 +268,18 @@ public class TtsService extends Service
   }
 
   void broadcastUpdate() {
+    // Also resynchronize after the UI process restarts while this service survives.
+    reportedDndSpeech = null;
+    reportDndSpeech(publicState() == TtsState.SPEAKING);
     Log.v("breviar", "TtsService: sending broadcast");
     sendBroadcast(new Intent(TTS_UPDATE_ACTION)
         .setPackage(getPackageName())
         .putExtra("state", publicState()));
+  }
+
+  private void reportDndSpeech(boolean speaking) {
+    if (reportedDndSpeech != null && reportedDndSpeech == speaking) return;
+    if (DoNotDisturbProvider.reportSpeech(this, speaking)) reportedDndSpeech = speaking;
   }
 
   // Bridge from provided interfaces.
@@ -524,6 +534,7 @@ public class TtsService extends Service
       pending_action = null;
     } finally {
       releasePlaybackWakeLock();
+      reportDndSpeech(false);
       super.onDestroy();
     }
   }
@@ -658,6 +669,9 @@ public class TtsService extends Service
     }
 
     acquirePlaybackWakeLock();
+    // The service runs in a separate process. Synchronous IPC avoids losing the
+    // first words while an asynchronous UI/broadcast callback unmutes media.
+    reportDndSpeech(true);
     boolean use_pauses = BreviarApp.getTtsUsePauseInPsalms(this);
     for (int i = chunk; i < chunks.size(); ++i) {
       HashMap<String, String> params = new HashMap<String, String>();

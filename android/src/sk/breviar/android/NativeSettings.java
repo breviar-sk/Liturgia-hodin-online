@@ -1,6 +1,6 @@
 package sk.breviar.android;
 
-import android.app.NotificationManager;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Build;
 import android.view.MenuItem;
@@ -27,9 +27,9 @@ final class NativeSettings {
         case "device.eink":
         case "device.volume-paging":
         case "device.keep-awake":
-        case "device.do-not-disturb":
         case "device.lock-zoom":
         case "speech.psalm-pauses": return entry.control.equals("toggle");
+        case "device.do-not-disturb": return Build.VERSION.SDK_INT >= 24 && entry.control.equals("toggle");
         case "appearance.font": return entry.control.equals("font");
         case "appearance.font-size":
           if (!entry.control.equals("number")) return false;
@@ -98,14 +98,15 @@ final class NativeSettings {
         public void set(boolean value) { BreviarApp.setDimLock(activity, value); }
       };
       case "device.do-not-disturb": return new SettingsActivity.BooleanOption() {
-        public boolean get() { return BreviarApp.getMute(activity); }
+        public boolean get() { return BreviarApp.getMute(activity) && DoNotDisturb.get(activity).hasAccess(); }
         public void set(boolean value) {
-          if (value && Build.VERSION.SDK_INT >= 23) {
-            NotificationManager manager = (NotificationManager)activity.getSystemService(activity.NOTIFICATION_SERVICE);
-            if (!manager.isNotificationPolicyAccessGranted()) {
-              value = false;
-              Toast.makeText(activity, R.string.notification_not_allowed, Toast.LENGTH_SHORT).show();
+          if (value && !DoNotDisturb.get(activity).hasAccess()) {
+            value = false;
+            Toast.makeText(activity, R.string.notification_not_allowed, Toast.LENGTH_LONG).show();
+            try {
               activity.startActivity(new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS));
+            } catch (ActivityNotFoundException error) {
+              // Some OEM builds do not provide this settings screen.
             }
           }
           BreviarApp.setMute(activity, value);

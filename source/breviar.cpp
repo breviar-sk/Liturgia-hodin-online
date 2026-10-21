@@ -4053,6 +4053,8 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 			// pre ľubovoľné aj záväzné spomienky nemá význam | č. 236 VSLH: V modlitbe cez deň, čiže predpoludním, napoludnie a popoludní, a v kompletóriu sa neberie nič z ofícia o svätom, všetko je zo všedného dňa.
 			if (_global_poradie_svaty == 0) {
 				zobrazit = (((_global_den.typslav != SLAV_LUB_SPOMIENKA) && (_global_den.typslav != SLAV_SPOMIENKA)) || ((_global_modlitba != MODL_PREDPOLUDNIM) && (_global_modlitba != MODL_NAPOLUDNIE) && (_global_modlitba != MODL_POPOLUDNI) && (_global_modlitba != MODL_KOMPLETORIUM) && (_global_modlitba != MODL_PRVE_KOMPLETORIUM) && (_global_modlitba != MODL_DRUHE_KOMPLETORIUM)));
+				// A promoted memorial uses the Commons description at its selected rank.
+				zobrazit = zobrazit || _je_global_den_sviatok || _je_global_den_slavnost;
 				Log("_global_den.spolcast == %d\n", _global_den.spolcast);
 				Log("zobrazit == %d...\n", zobrazit);
 				// napokon rozkódujeme, čo je v _global_den.spolcast
@@ -15531,14 +15533,10 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		Log("CHANGE: _global_den.smer == %d\n", _global_den.smer);
 	}
 
-	short int typslav_override = SLAV_NEURCENE; // undefined
-	typslav_override = _typslav_override(_global_den.typslav);
-	Log("_global_den.typslav override == %d...\n", typslav_override);
-
-	if ((typslav_override != SLAV_NEURCENE) && (_global_den.typslav > typslav_override)) {
-		_global_den.typslav = typslav_override;
-		Log("CHANGE: _global_den.typslav == %d\n", _global_den.typslav);
-	}
+	// Keep the prescribed rank, as for calendar celebrations. Prayer selection
+	// applies the override through _je_global_den_sviatok/_je_global_den_slavnost;
+	// the heading and rank-switch links also need the original rank. Replacing
+	// a memorial with a feast here would make the heading promote it a second time.
 
 	// special cases (special days in liturgical year)
 	if (_global_den.denvr < 0) {

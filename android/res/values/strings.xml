@@ -137,7 +137,7 @@
     <string name="tts_background_continue">Read anyway</string>
     <string name="tts_background_settings_unavailable">Could not open App info. Open Android Settings, find Breviár under Apps, and allow background usage in its battery settings.</string>
 
-    <string name="notification_not_allowed">You have not allowed the app to change ring mode yet.</string>
+    <string name="notification_not_allowed">Allow Breviár to access Do Not Disturb in Android settings, then turn this option on again.</string>
     <string name="need_notification_permission">Notifications not allowed. Please grant this app the permissions for Notifications.</string>
 
     <string name="channel_name">Breviary</string>

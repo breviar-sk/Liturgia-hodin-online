@@ -15,6 +15,7 @@ import sk.breviar.android.Util;
 
 public class BreviarApp extends Application {
   final AppearanceChanges appearanceChanges = new AppearanceChanges();
+  DoNotDisturb doNotDisturb;
   public static final int NOTIFY_ALARM_ID = 1;
   public static final int NOTIFY_TTS_ID = 2;
 
@@ -28,6 +29,16 @@ public class BreviarApp extends Application {
   public void onCreate() {
     initLocale(this);
     super.onCreate();
+    if (Build.VERSION.SDK_INT >= 24) getDoNotDisturb();
+  }
+
+  synchronized DoNotDisturb getDoNotDisturb() {
+    // Providers can receive IPC before Application.onCreate has finished.
+    if (doNotDisturb == null) {
+      doNotDisturb = new DoNotDisturb(this);
+      registerActivityLifecycleCallbacks(doNotDisturb);
+    }
+    return doNotDisturb;
   }
 
   static public boolean getOverrideLocale(Context ctx) {
@@ -173,6 +184,7 @@ public class BreviarApp extends Application {
 
   static public void setMute(Context ctx, boolean mute) {
     setBoolean(ctx, booleanMute, mute);
+    if (Build.VERSION.SDK_INT >= 24) DoNotDisturb.get(ctx).refresh();
   }
 
   static public boolean getTtsUsePauseInPsalms(Context ctx) {

@@ -115,6 +115,19 @@
         </receiver>
         <service android:name="TtsService" android:process=":WorkaroundDozeBug"
                  android:foregroundServiceType="mediaPlayback"/>
+        <service android:name="DoNotDisturbService"
+                 android:label="@string/app_name"
+                 android:enabled="@bool/supports_dnd"
+                 android:exported="true"
+                 android:permission="android.permission.BIND_CONDITION_PROVIDER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.ConditionProviderService" />
+            </intent-filter>
+        </service>
+        <provider android:name="DoNotDisturbProvider"
+                  android:authorities="${applicationId}.dnd"
+                  android:enabled="@bool/supports_dnd"
+                  android:exported="false" />
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>

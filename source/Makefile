@@ -52,10 +52,10 @@ $(TEST_DIR)/string-utils-test: tests/string-utils-test.cpp mystring.cpp mystring
 	mkdir -p $(TEST_DIR)
 	$(CXX) $(CXXFLAGS) -I. tests/string-utils-test.cpp mystring.cpp utf8-utils.cpp -o $@ $(LDFLAGS)
 
-test: $(TEST_DIR)/string-utils-test test-settings
+test: $(TEST_DIR)/string-utils-test test-settings test-common-celebration
 	$(TEST_DIR)/string-utils-test
 
-.PHONY: clean depend test test-settings
+.PHONY: clean depend test test-settings test-common-celebration
 
 SETTINGS_TEST_OBJS = $(filter-out breviar.o myexpt.o,$(OBJS)) breviar-no-main.o
 
@@ -66,5 +66,8 @@ $(TEST_DIR)/settings-xml-memory-test: tests/settings-xml-memory-test.cpp myexpt.
 test-settings: $(TARGET) $(TEST_DIR)/settings-xml-memory-test
 	$(TEST_DIR)/settings-xml-memory-test
 	python3 tests/settings-xml-test.py $(abspath $(TARGET))
+
+test-common-celebration: $(TARGET)
+	python3 tests/common-celebration-test.py $(abspath $(TARGET))
 
 -include .depend
