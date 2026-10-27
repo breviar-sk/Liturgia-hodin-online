@@ -7,9 +7,25 @@
   </style>
   <!-- Keep the phone title/subtitle palette even when reader firmware changes
        the inherited textColorPrimary/textColorSecondary. E-ink uses its own theme. -->
-  <style name="StandardToolbar" parent="Widget.AppCompat.Toolbar">
+  <style name="StandardToolbar" parent="BreviarToolbar">
     <item name="titleTextColor">#FFFFFFFF</item>
     <item name="subtitleTextColor">#B3FFFFFF</item>
+  </style>
+  <style name="BreviarToolbar" parent="Widget.AppCompat.Toolbar">
+    <item name="titleTextAppearance">@style/ToolbarTitleText</item>
+    <item name="subtitleTextAppearance">@style/ToolbarSubtitleText</item>
+  </style>
+  <!-- Use the same regular system font as menu rows, instead of the inherited
+       title font (often sans-serif-medium), while preserving toolbar text sizes. -->
+  <style name="ToolbarTitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="fontFamily">sans-serif</item>
+    <item name="android:textStyle">normal</item>
+  </style>
+  <style name="ToolbarSubtitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="fontFamily">sans-serif</item>
+    <item name="android:textStyle">normal</item>
   </style>
   <!-- Match AppCompat's dark palette explicitly, including disabled/checked
        states. Reader firmware can override the inherited text colors. -->
@@ -60,6 +76,7 @@
     <item name="android:alertDialogTheme">@style/EinkDialog</item>
     <item name="alertDialogTheme">@style/EinkDialog</item>
     <item name="navigationViewStyle">@style/EinkNavigationView</item>
+    <item name="toolbarStyle">@style/BreviarToolbar</item>
   </style>
   <!-- Material's default checked text/icon color follows colorPrimary (white).
        Set every state at inflation time, including rows created after a refresh. -->
