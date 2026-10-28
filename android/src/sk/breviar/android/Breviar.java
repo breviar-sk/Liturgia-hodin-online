@@ -654,33 +654,30 @@ public class Breviar extends AppearanceActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-      switch (item.getItemId()) {
-        case R.id.todayBtn:
-          syncScale();
-          goHome();
-          return true;
-
-        case R.id.speakBtn:
-          if (checkNotificationPermission(item.getItemId())) {
-            if (tts_state == TtsService.TtsState.READY) {
-              toggleSpeakState();
-            } else if (tts_state == TtsService.TtsState.SPEAKING) {
-              pauseSpeaking();
-            } else if (tts_state == TtsService.TtsState.PAUSED) {
-              resumeSpeaking();
-            }
+      int id = item.getItemId();
+      if (id == R.id.todayBtn) {
+        syncScale();
+        goHome();
+        return true;
+      } else if (id == R.id.speakBtn) {
+        if (checkNotificationPermission(item.getItemId())) {
+          if (tts_state == TtsService.TtsState.READY) {
+            toggleSpeakState();
+          } else if (tts_state == TtsService.TtsState.SPEAKING) {
+            pauseSpeaking();
+          } else if (tts_state == TtsService.TtsState.PAUSED) {
+            resumeSpeaking();
           }
-          return true;
-
-        case R.id.nightmodeBtn:
-          toggleNightMode();
-          updateMenu();
-          return true;
-
-        default:
-          // If we got here, the user's action was not recognized.
-          // Invoke the superclass to handle it.
-          return super.onOptionsItemSelected(item);
+        }
+        return true;
+      } else if (id == R.id.nightmodeBtn) {
+        toggleNightMode();
+        updateMenu();
+        return true;
+      } else {
+        // If we got here, the user's action was not recognized.
+        // Invoke the superclass to handle it.
+        return super.onOptionsItemSelected(item);
       }
     }
 
@@ -1325,82 +1322,58 @@ public class Breviar extends AppearanceActivity
 
     boolean onNavigationItemSelected(int item_id) {
       UrlOptions opts;
-      switch (item_id) {
-        case R.id.today:
-          syncScale();
-          goHome();
-          break;
-
-        case R.id.lang_select:
-          prepareSettings();
-          Intent selectLang = new Intent(this, LangSelect.class);
-          startActivityForResult(selectLang, 0);
-          break;
-
-        case R.id.settings:
-          prepareSettings();
-          need_to_reload_scale = true;
-          startActivity(new Intent(this, MainSettings.class));
-          break;
-
-        case R.id.calendar_select:
-          prepareSettings();
-          startActivity(XmlSettingsActivity.calendarIntent(this));
-          break;
-
-        case R.id.fullscreen_toggle:
-          toggleFullscreen();
-          break;
-
-        case R.id.nightmode_toggle:
-          toggleNightMode();
-          break;
-
-        case R.id.only_non_bold_font_toggle:
-          toggleOnlyNonBoldFont();
-          break;
-
-        case R.id.menu_about:
-          showAbout();
-          break;
-
-        case R.id.menu_news:
-          showChangelog(false);
-          break;
-
-        case R.id.search:
-          toggleSearch();
-          break;
-
-        case R.id.menu_alarms:
-          if (!checkNotificationPermission(item_id)) break;
+      int id = item_id;
+      if (id == R.id.today) {
+        syncScale();
+        goHome();
+      } else if (id == R.id.lang_select) {
+        prepareSettings();
+        Intent selectLang = new Intent(this, LangSelect.class);
+        startActivityForResult(selectLang, 0);
+      } else if (id == R.id.settings) {
+        prepareSettings();
+        need_to_reload_scale = true;
+        startActivity(new Intent(this, MainSettings.class));
+      } else if (id == R.id.calendar_select) {
+        prepareSettings();
+        startActivity(XmlSettingsActivity.calendarIntent(this));
+      } else if (id == R.id.fullscreen_toggle) {
+        toggleFullscreen();
+      } else if (id == R.id.nightmode_toggle) {
+        toggleNightMode();
+      } else if (id == R.id.only_non_bold_font_toggle) {
+        toggleOnlyNonBoldFont();
+      } else if (id == R.id.menu_about) {
+        showAbout();
+      } else if (id == R.id.menu_news) {
+        showChangelog(false);
+      } else if (id == R.id.search) {
+        toggleSearch();
+      } else if (id == R.id.menu_alarms) {
+        if (checkNotificationPermission(item_id)) {
           startActivity(new Intent("sk.breviar.android.ALARMS")
               .setPackage(getPackageName()));
-          break;
-
-        case R.id.speak_toggle:
-          if (!checkNotificationPermission(item_id)) break;
+        }
+      } else if (id == R.id.speak_toggle) {
+        if (checkNotificationPermission(item_id)) {
           toggleSpeakState();
-          break;
-
-        case R.id.speak_pause_toggle:
-          if (!checkNotificationPermission(item_id)) break;
+        }
+      } else if (id == R.id.speak_pause_toggle) {
+        if (checkNotificationPermission(item_id)) {
           if (tts_state == TtsService.TtsState.SPEAKING) {
             pauseSpeaking();
           } else if (tts_state == TtsService.TtsState.PAUSED) {
             resumeSpeaking();
           }
-          break;
-
-        case R.id.speak_back:
-          if (!checkNotificationPermission(item_id)) break;
+        }
+      } else if (id == R.id.speak_back) {
+        if (checkNotificationPermission(item_id)) {
           speakBack();
-          break;
-
-        case R.id.speak_forward:
-          if (!checkNotificationPermission(item_id)) break;
+        }
+      } else if (id == R.id.speak_forward) {
+        if (checkNotificationPermission(item_id)) {
           speakForward();
-          break;
+        }
       }
       updateMenu();
       drawer.closeDrawer(GravityCompat.START, !BreviarApp.getEinkMode(this));
