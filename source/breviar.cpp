@@ -4857,7 +4857,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 	else if (equals(paramname, PARAM_NAVIGACIA_SIMPLE)) {
 		if ((aj_navigacia == ANO) && (!(_global_skip_in_prayer >= ANO))) {
 #ifdef BEHAVIOUR_WEB
-			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
+			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_PRAYER_BUTTONS)) {
 				ExportHtmlOnly("navigácia:begin" HTML_COMMENT_END);
 
 				Export(HTML_P_CENTER_SMALL);
@@ -4883,7 +4883,7 @@ void interpretParameter(short int typ, short int modlitba, char paramname[MAX_BU
 #ifdef BEHAVIOUR_WEB
 			// možnosť zobrazenia navigácie v texte modlitieb 
 			_global_pocet_navigacia++;
-			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
+			if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_PRAYER_BUTTONS)) {
 				ExportHtmlOnly("navigácia:begin" HTML_COMMENT_END);
 				ExportHtmlComment("navigácia %d", _global_pocet_navigacia);
 				if ((_global_pocet_navigacia <= 1) && (_global_pocet_volani_interpretTemplate < 2)) {
@@ -9285,7 +9285,7 @@ void _export_rozbor_dna_buttons_dni(short int typ, short int dnes_dnes, short in
 		}
 	}
 	else {
-		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
+		if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_PRAYER_BUTTONS)) {
 
 			if ((!isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_HIDE_NAVIG_BUTTONS)) && ((aj_navigacia == ANO) || (aj_navigacia == CIASTOCNE))) {
 				podmienka = 2; // zobraziť pre voice output
@@ -11231,8 +11231,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		}// if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_FONT_SIZE_CHOOSER))
 
 		// for Android it is not necessary since 1.11 or 1.11.2 (settings moved to native menu)
-		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_NAVIGATION
-		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION, STR_FORCE_BIT_OPT_2_NAVIGATION, html_text_opt_2_navigation[_global_jazyk], html_text_opt_2_navigation_explain[_global_jazyk]);
+		// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_PRAYER_BUTTONS
+		_export_main_formular_checkbox(OPT_2_HTML_EXPORT, BIT_OPT_2_PRAYER_BUTTONS, STR_FORCE_BIT_OPT_2_PRAYER_BUTTONS, html_text_opt_2_prayer_buttons[_global_jazyk], html_text_opt_2_prayer_buttons_explain[_global_jazyk]);
 
 		if ((_global_system == SYSTEM_RUBY) || (_global_jazyk == JAZYK_SK)) {
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_2_TEXT_WRAP
@@ -13054,7 +13054,7 @@ void showDetails(short int den, short int mesiac, short int rok, short int porad
 	mystrcpy(action, STR_EMPTY, MAX_STR);
 
 	// úvodná navigácia
-	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
+	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_PRAYER_BUTTONS)) {
 		ExportHtmlComment("navigácia začiatok");
 
 		_export_rozbor_dna_buttons_dni(EXPORT_DNA_JEDEN_DEN, NIE);
@@ -13750,7 +13750,7 @@ void showAllPrayers(short int typ, short int den, short int mesiac, short int ro
 	Export("\n" HTML_A_NAME_BEGIN "\"top\">" HTML_A_END);
 
 	// úvodná navigácia
-	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
+	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_PRAYER_BUTTONS)) {
 		ExportHtmlComment("navigácia začiatok");
 
 		_export_rozbor_dna_buttons_dni(EXPORT_DNA_JEDEN_DEN_LOCAL, NIE);
@@ -13865,7 +13865,7 @@ void showAllPrayers(short int typ, short int den, short int mesiac, short int ro
 	}// for(modlitba)
 
 	// záverečná navigácia
-	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION)) {
+	if (isGlobalOption(OPT_2_HTML_EXPORT, BIT_OPT_2_PRAYER_BUTTONS)) {
 		ExportHtmlComment("navigácia koniec");
 
 		Export("<" HTML_TABLE ">\n");

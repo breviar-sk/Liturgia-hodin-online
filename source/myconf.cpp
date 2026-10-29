@@ -427,9 +427,9 @@ void readConfig(void)
 			LogConfig("=== Jazyk `%s' (%s):\n", skratka_jazyka[j], nazov_jazyka(j));
 
 			// nastavenie parametrov OPT_2_HTML_EXPORT: pridáme bity pre nastavenie
-			if ((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_NAVIGATION) != BIT_OPT_2_NAVIGATION) {
-				LogConfig("Pre option %d nastavujem bit pre '%llu'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_NAVIGATION);
-				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_NAVIGATION;
+			if ((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_PRAYER_BUTTONS) != BIT_OPT_2_PRAYER_BUTTONS) {
+				LogConfig("Pre option %d nastavujem bit pre '%llu'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_PRAYER_BUTTONS);
+				cfg_option_default[OPT_2_HTML_EXPORT][j] += BIT_OPT_2_PRAYER_BUTTONS;
 			}
 			if ((cfg_option_default[OPT_2_HTML_EXPORT][j] & BIT_OPT_2_BUTTONY_USPORNE) != BIT_OPT_2_BUTTONY_USPORNE) {
 				LogConfig("Pre option %d nastavujem bit pre '%llu'\n", OPT_2_HTML_EXPORT, BIT_OPT_2_BUTTONY_USPORNE);

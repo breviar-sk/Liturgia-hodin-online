@@ -1949,7 +1949,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 2: mystrcpy(str, STR_FORCE_BIT_OPT_2_FONT_FAMILY, SMALL); break; // BIT_OPT_2_FONT_FAMILY
 			case 3: mystrcpy(str, STR_FORCE_BIT_OPT_2_FONT_NAME_CHOOSER, SMALL); break; // BIT_OPT_2_FONT_NAME_CHOOSER
 			case 4: mystrcpy(str, STR_FORCE_BIT_OPT_2_FONT_SIZE, SMALL); break; // BIT_OPT_2_FONT_SIZE_CHOOSER
-			case 5: mystrcpy(str, STR_FORCE_BIT_OPT_2_NAVIGATION, SMALL); break; // BIT_OPT_2_NAVIGATION
+			case 5: mystrcpy(str, STR_FORCE_BIT_OPT_2_PRAYER_BUTTONS, SMALL); break; // BIT_OPT_2_PRAYER_BUTTONS
 			case 6: mystrcpy(str, STR_FORCE_BIT_OPT_2_TEXT_WRAP, SMALL); break; // BIT_OPT_2_TEXT_WRAP
 			case 7: mystrcpy(str, STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE, SMALL); break; // BIT_OPT_2_BUTTONY_USPORNE
 			case 8: mystrcpy(str, STR_FORCE_BIT_OPT_2_NOCNY_REZIM, SMALL); break; // BIT_OPT_2_NOCNY_REZIM

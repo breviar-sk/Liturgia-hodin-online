@@ -119,7 +119,7 @@ const OptionGroup optionGroups[] = {
 		{XML_BIT_OPT_0_SIDE_NAVIGATION, BIT_OPT_0_SIDE_NAVIGATION, STR_FORCE_BIT_OPT_0_SIDE_NAVIGATION, html_text_opt_0_side_navigation},
 		{XML_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY, BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY, STR_FORCE_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY, html_text_opt_0_transparent_nav_down_only},
 	}},
-	{OPT_1_CASTI_MODLITBY, XML_OPT_1_CASTI_MODLITBY, STR_OPT_1, STR_FORCE_OPT_1, html_text_opt_1_dalsie_prepinace, {
+	{OPT_1_CASTI_MODLITBY, XML_OPT_1_CASTI_MODLITBY, STR_OPT_1, STR_FORCE_OPT_1, html_text_opt_1_nemenne_sucasti, {
 		{XML_BIT_OPT_1_TEDEUM, BIT_OPT_1_TEDEUM, STR_FORCE_BIT_OPT_1_TD, html_text_opt_1_tedeum},
 		{XML_BIT_OPT_1_RUBRIKY, BIT_OPT_1_RUBRIKY, STR_FORCE_BIT_OPT_1_RUB, html_text_opt_1_rubriky},
 		{XML_BIT_OPT_1_CHVALOSPEVY, BIT_OPT_1_CHVALOSPEVY, STR_FORCE_BIT_OPT_1_CHV, html_text_opt_1_chvalospevy},
@@ -147,12 +147,12 @@ const OptionGroup optionGroups[] = {
 		{XML_BIT_OPT_2_FONT_FAMILY, BIT_OPT_2_FONT_FAMILY, STR_FORCE_BIT_OPT_2_FONT_FAMILY, html_text_opt_2_font_family},
 		{XML_BIT_OPT_2_FONT_NAME_CHOOSER, BIT_OPT_2_FONT_NAME_CHOOSER, STR_FORCE_BIT_OPT_2_FONT_NAME_CHOOSER, html_text_font_name_simple},
 		{XML_BIT_OPT_2_FONT_SIZE_CHOOSER, BIT_OPT_2_FONT_SIZE_CHOOSER, STR_FORCE_BIT_OPT_2_FONT_SIZE, html_text_font_size},
-		{XML_BIT_OPT_2_NAVIGATION, BIT_OPT_2_NAVIGATION, STR_FORCE_BIT_OPT_2_NAVIGATION, html_text_opt_2_navigation},
+		{XML_BIT_OPT_2_PRAYER_BUTTONS, BIT_OPT_2_PRAYER_BUTTONS, STR_FORCE_BIT_OPT_2_PRAYER_BUTTONS, html_text_opt_2_prayer_buttons},
+		{XML_BIT_OPT_2_HIDE_NAVIG_BUTTONS, BIT_OPT_2_HIDE_NAVIG_BUTTONS, STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS, nullptr },
 		{XML_BIT_OPT_2_TEXT_WRAP, BIT_OPT_2_TEXT_WRAP, STR_FORCE_BIT_OPT_2_TEXT_WRAP, html_text_opt_2_textwrap},
 		{XML_BIT_OPT_2_BUTTONY_USPORNE, BIT_OPT_2_BUTTONY_USPORNE, STR_FORCE_BIT_OPT_2_BUTTONY_USPORNE, html_text_opt_2_buttons_usporne},
 		{XML_BIT_OPT_2_NOCNY_REZIM, BIT_OPT_2_NOCNY_REZIM, STR_FORCE_BIT_OPT_2_NOCNY_REZIM, html_text_opt_2_nocny_rezim},
 		{XML_BIT_OPT_2_ROZNE_MOZNOSTI, BIT_OPT_2_ROZNE_MOZNOSTI, STR_FORCE_BIT_OPT_2_ROZNE_MOZNOSTI, html_text_opt_2_moznosti},
-		{XML_BIT_OPT_2_HIDE_NAVIG_BUTTONS, BIT_OPT_2_HIDE_NAVIG_BUTTONS, STR_FORCE_BIT_OPT_2_HIDE_NAVIG_BUTTONS, nullptr},
 		{XML_BIT_OPT_2_HIDE_KALENDAR, BIT_OPT_2_HIDE_KALENDAR, STR_FORCE_BIT_OPT_2_HIDE_KALENDAR, nullptr},
 		{XML_BIT_OPT_2_HIDE_OPTIONS1, BIT_OPT_2_HIDE_OPTIONS1, STR_FORCE_BIT_OPT_2_HIDE_OPTIONS1, nullptr},
 		{XML_BIT_OPT_2_HIDE_OPTIONS2, BIT_OPT_2_HIDE_OPTIONS2, STR_FORCE_BIT_OPT_2_HIDE_OPTIONS2, nullptr},
@@ -239,7 +239,8 @@ std::string menuLabel(const std::string& label) {
 	return mystr_first_upper(label.substr(begin, end - begin + 1).c_str());
 }
 
-Element group(const char* key, const std::string& label, std::initializer_list<Element> children) {
+Element group(const char* key, const std::string& label, std::initializer_list<Element> children, bool applicable = true) {
+	if (!applicable) return {};
 	Element result{"MenuGroup", {{"Key", key}}, {}, ""};
 	if (hasLabel(label)) result.attributes.emplace_back("Label", menuLabel(label));
 	for (const auto& child : children) {
@@ -281,8 +282,7 @@ std::string menuText(const char* const* labels) {
 }
 
 Element menuXml() {
-	// The Czech edition uses its own hymn selection. Two-year readings are
-	// implemented for Slovak; alternative readings are specific to Czech.
+	// The Czech edition uses its own hymn selection. Two-year readings are (intended to be) implemented for Slovak only; alternative readings are specific to Czech only (not even for CZ OP).
 	const bool czechHymns = _global_jazyk == JAZYK_CZ;
 	return {"Menu", {{"Version", "1"}}, {
 		group("general", menuText(text_menu_group_jazyk[MENU_0_GENERAL]), {
@@ -309,64 +309,73 @@ Element menuXml() {
 			item("device.lock-zoom", menuText(menu_text_lock_font_size), "toggle", {{"Handler", "device.lock-zoom"}}),
 		}),
 		group("appearance", menuText(text_menu_group_jazyk[MENU_2_LOOK]), {
-			item("appearance.font", menuText(html_text_font_name), "font", {
-				{"Parameter", STR_FONT_NAME},
-				{"Default", ""},
-				{"ResetValue", ""},
-				{"Handler", "appearance.font"},
-			}),
-			item("appearance.font-size", menuText(html_text_font_size), "number", {
-				{"Parameter", STR_FONT_SIZE_PT},
-				{"Default", "12"},
-				{"ResetValue", "12"},
-				{"Min", "4"},
-				{"Max", "60"},
-				{"Handler", "appearance.font-size"},
-			}),
-			item("appearance.margin", menuText(menu_text_appearance_margin), "number", {
-				{"Parameter", STR_STYLE_MARGIN},
-				{"Default", std::to_string(DEF_STYLE_MARGIN)},
-				{"ResetValue", ""},
-				{"Min", "1"},
-				{"Max", "200"},
-			}),
-			item("appearance.line-height", menuText(menu_text_appearance_line_height), "number", {
-				{"Parameter", STR_LINE_HEIGHT_PERC},
-				{"Default", std::to_string(DEF_LINE_HEIGHT_PERC)},
-				{"ResetValue", ""},
-				{"Min", "1"},
-				{"Max", "500"},
-			}),
-			toggle("appearance.night-mode", XML_BIT_OPT_2_NOCNY_REZIM),
-			item("appearance.background-day", menuText(menu_text_appearance_background_day), "color", {
-				{"Parameter", STR_THEME_LIGHT_BACKGROUND_COLOR},
-				{"Default", ""},
-				{"ResetValue", ""},
-			}),
-			item("appearance.background-night", menuText(menu_text_appearance_background_night), "color", {
-				{"Parameter", STR_THEME_DARK_BACKGROUND_COLOR},
-				{"Default", ""},
-				{"ResetValue", ""},
-			}),
-			toggle("appearance.normal-weight", XML_BIT_OPT_0_FONT_NORMAL),
-			toggle("appearance.rounded-buttons", XML_BIT_OPT_2_ROUNDED_CORNERS),
-			toggle("appearance.compact-buttons", XML_BIT_OPT_2_BUTTONY_USPORNE),
-			toggle("appearance.date-buttons-below", XML_BIT_OPT_0_BUTTONS_ORDER),
-			toggle("appearance.first-vespers", XML_BIT_OPT_2_BUTTON_PRVE_VESPERY),
-			toggle("appearance.prayer-navigation", XML_BIT_OPT_2_NAVIGATION),
-			toggle("appearance.printed-line-breaks", XML_BIT_OPT_2_TEXT_WRAP),
-			toggle("appearance.iso-dates", XML_BIT_OPT_2_ISO_DATUM),
-			item("reading.navigation", menuText(menu_text_reading_navigation), "choice", {{"Handler", "reading.navigation"}}, {
-				group("reading.arrow-options", menuText(html_text_opt_0_transparent_nav), {
-					toggle("reading.arrows-left", XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT),
-					toggle("reading.down-arrow-only", XML_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY),
+			group("appearance.font-margins", menuText(menu_text_font_and_margins),{
+				item("appearance.font", menuText(html_text_font_name), "font", {
+					{"Parameter", STR_FONT_NAME},
+					{"Default", ""},
+					{"ResetValue", ""},
+					{"Handler", "appearance.font"},
 				}),
+				item("appearance.font-size", menuText(html_text_font_size), "number", {
+					{"Parameter", STR_FONT_SIZE_PT},
+					{"Default", "12"},
+					{"ResetValue", "12"},
+					{"Min", "4"},
+					{"Max", "60"},
+					{"Handler", "appearance.font-size"},
+				}),
+				toggle("appearance.normal-weight", XML_BIT_OPT_0_FONT_NORMAL),
+				item("appearance.margin", menuText(menu_text_appearance_margin), "number", {
+					{"Parameter", STR_STYLE_MARGIN},
+					{"Default", std::to_string(DEF_STYLE_MARGIN)},
+					{"ResetValue", ""},
+					{"Min", "1"},
+					{"Max", "200"},
+				}),
+				item("appearance.line-height", menuText(menu_text_appearance_line_height), "number", {
+					{"Parameter", STR_LINE_HEIGHT_PERC},
+					{"Default", std::to_string(DEF_LINE_HEIGHT_PERC)},
+					{"ResetValue", ""},
+					{"Min", "1"},
+					{"Max", "500"},
+				}),
+			}),
+			group("appearance.colors", menuText(menu_text_colors),{
+				toggle("appearance.night-mode", XML_BIT_OPT_2_NOCNY_REZIM),
+				item("appearance.background-day", menuText(menu_text_appearance_background_day), "color", {
+					{"Parameter", STR_THEME_LIGHT_BACKGROUND_COLOR},
+					{"Default", ""},
+					{"ResetValue", ""},
+				}),
+				item("appearance.background-night", menuText(menu_text_appearance_background_night), "color", {
+					{"Parameter", STR_THEME_DARK_BACKGROUND_COLOR},
+					{"Default", ""},
+					{"ResetValue", ""},
+				}),
+			}),
+			group("appearance.navigation", menuText(menu_text_navigation),{
+				item("reading.navigation", menuText(menu_text_reading_navigation), "choice",{ { "Handler", "reading.navigation" } },{
+					group("reading.arrow-options", menuText(html_text_opt_0_transparent_nav),{
+						toggle("reading.arrows-left", XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT),
+						toggle("reading.down-arrow-only", XML_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY),
+					}),
+				}),
+			}),
+			group("appearance.buttons", menuText(menu_text_buttons),{
+				toggle("appearance.prayer-buttons", XML_BIT_OPT_2_PRAYER_BUTTONS),
+				toggle("appearance.date-buttons-below", XML_BIT_OPT_0_BUTTONS_ORDER),
+				toggle("appearance.rounded-buttons", XML_BIT_OPT_2_ROUNDED_CORNERS),
+				toggle("appearance.first-vespers", XML_BIT_OPT_2_BUTTON_PRVE_VESPERY),
+				toggle("appearance.compact-buttons", XML_BIT_OPT_2_BUTTONY_USPORNE),
+			}),
+			group("appearance.other", menuText(menu_text_appearance_other),{
+				toggle("appearance.printed-line-breaks", XML_BIT_OPT_2_TEXT_WRAP),
+				toggle("appearance.iso-dates", XML_BIT_OPT_2_ISO_DATUM),
 			}),
 		}),
 		group("prayers", menuText(text_menu_group_jazyk[MENU_3_TEXT_CONTENT]), {
+			toggle("prayers.inline-options", XML_BIT_OPT_2_ROZNE_MOZNOSTI),
 			group("prayers.presentation", menuText(menu_text_prayers_presentation), {
-				toggle("prayers.inline-options", XML_BIT_OPT_2_ROZNE_MOZNOSTI),
-				toggle("prayers.alternatives", XML_BIT_OPT_2_ALTERNATIVES),
 				toggle("prayers.verse-numbers", XML_BIT_OPT_0_VERSE),
 				toggle("prayers.references", XML_BIT_OPT_0_REFERENCIE),
 				toggle("prayers.references-bible-com", XML_BIT_OPT_0_REF_BIBLE_COM),
@@ -376,62 +385,71 @@ Element menuXml() {
 				toggle("prayers.printed-edition", XML_BIT_OPT_0_PRINTED_EDITION),
 				toggle("prayers.hide-saint-description", XML_BIT_OPT_1_SKRY_POPIS),
 				toggle("prayers.common-description", XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST),
+				toggle("prayers.mass-readings", XML_BIT_OPT_0_CITANIA),
 			}),
-			group("prayers.parts", menuText(html_text_opt_1_dalsie_prepinace), {
-				toggle("prayers.te-deum", XML_BIT_OPT_1_TEDEUM),
+			group("prayers.parts", menuText(html_text_opt_1_nemenne_sucasti), {
 				toggle("prayers.rubrics", XML_BIT_OPT_1_RUBRIKY),
 				toggle("prayers.gospel-canticles", XML_BIT_OPT_1_CHVALOSPEVY),
 				toggle("prayers.glory", XML_BIT_OPT_1_SLAVA_OTCU),
 				toggle("prayers.our-father", XML_BIT_OPT_1_OTCENAS),
 				toggle("prayers.our-father-introduction", XML_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD),
 				toggle("prayers.full-responses", XML_BIT_OPT_1_PLNE_RESP),
+				toggle("prayers.te-deum", XML_BIT_OPT_1_TEDEUM),
 				toggle("prayers.conclusions", XML_BIT_OPT_1_ZAVER),
 				toggle("prayers.marian-antiphons", XML_BIT_OPT_1_KOMPL_MARIA_ANT),
 			}),
-			group("prayers.readings", menuText(menu_text_prayers_readings), {
-				toggle("readings.mass", XML_BIT_OPT_0_CITANIA),
-				toggle("readings.two-year-cycle", XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE, _global_jazyk == JAZYK_SK),
-				toggle("readings.invert-cycle", XML_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, _global_jazyk == JAZYK_SK),
-				toggle("readings.alternatives", XML_BIT_OPT_0_ALTERNATIVE_READINGS, _global_jazyk == JAZYK_CZ),
-			}),
-			group("prayers.celebration", menuText(menu_text_prayers_celebration), {
-				item("prayers.common", menuText(html_text_spol_casti_vziat_zo), "choice", {
-					{"OptionRef", XML_OPT_3_SPOLOCNA_CAST},
-					{"ValuesRef", XML_LIT_COMMUNIA_VALUES},
-					{"ValueAttribute", "Id"},
-				}),
+			group("prayers.celebration", menuText(menu_text_prayers_celebration),{ 
 				toggle("prayers.memorial-common", XML_BIT_OPT_1_SPOMIENKA_SPOL_CAST),
 				toggle("prayers.raise-rank", XML_BIT_OPT_1_OVERRIDE_STUP_SLAV),
 				toggle("prayers.as-solemnity", XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST),
-				toggle("prayers.daytime-supplementary", XML_BIT_OPT_1_MCD_DOPLNKOVA),
-				toggle("prayers.daytime-three-weeks", XML_BIT_OPT_1_MCD_ZALTAR_TRI),
-				toggle("prayers.invitatory-psalm-95", XML_BIT_OPT_1_ZALM95),
+				item("prayers.common", menuText(html_text_spol_casti_vziat_zo), "choice",{
+					{ "OptionRef", XML_OPT_3_SPOLOCNA_CAST },
+					{ "ValuesRef", XML_LIT_COMMUNIA_VALUES },
+					{ "ValueAttribute", "Id" },
+				}),
+			}),
+			group("prayers.other", menuText(html_text_opt_1_dalsie_prepinace),{
 				toggle("prayers.repeat-response", XML_BIT_OPT_1_PROSBY_ZVOLANIE),
 				toggle("prayers.short-evening-intercessions", XML_BIT_OPT_1_VESP_KRATSIE_PROSBY),
 				toggle("prayers.vigil", XML_BIT_OPT_1_PC_VIGILIA),
 				toggle("prayers.ordained-conclusion", XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON),
 			}),
-			group("prayers.alternative-texts", menuText(html_text_opt_2_alternatives), {
-				toggle("alternatives.psalm-122", XML_BIT_OPT_5_DOPLNK_PSALM_122_129),
-				toggle("alternatives.psalm-126", XML_BIT_OPT_5_DOPLNK_PSALM_126_129),
-				toggle("alternatives.psalm-127", XML_BIT_OPT_5_DOPLNK_PSALM_127_131),
-				toggle("alternatives.week-34-hymns", XML_BIT_OPT_5_OCR_34_HYMNS, !czechHymns),
-				toggle("alternatives.ash-wednesday", XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA),
-				toggle("alternatives.holy-thursday", XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA),
-				toggle("alternatives.office-dead-psalm", XML_BIT_OPT_5_OFF_DEF_PSALM_146_150),
-				toggle("alternatives.readings-hymn", XML_BIT_OPT_5_HYMNUS_PC, !czechHymns),
-				toggle("alternatives.midmorning-hymn", XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL, !czechHymns),
-				toggle("alternatives.midday-hymn", XML_BIT_OPT_5_HYMNUS_MCD_NAPOL, !czechHymns),
-				toggle("alternatives.midafternoon-hymn", XML_BIT_OPT_5_HYMNUS_MCD_POPOL, !czechHymns),
-				toggle("alternatives.first-vespers-hymn", XML_BIT_OPT_5_HYMNUS_1VESP, !czechHymns),
-				toggle("alternatives.compline-hymn", XML_BIT_OPT_5_HYMNUS_KOMPL, !czechHymns),
-				toggle("alternatives.easter-readings-hymn", XML_BIT_OPT_5_HYMNUS_VN_PC, !czechHymns),
-				toggle("alternatives.easter-morning-hymn", XML_BIT_OPT_5_HYMNUS_VN_RCH, !czechHymns),
-				toggle("alternatives.easter-evening-hymn", XML_BIT_OPT_5_HYMNUS_VN_VESP, !czechHymns),
-				toggle("alternatives.hymn-selection", XML_BIT_OPT_5_CZ_HYMNY_VYBER, _global_jazyk == JAZYK_CZ),
-				toggle("alternatives.invitatory-antiphon", XML_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY),
-				toggle("alternatives.octave-compline", XML_BIT_OPT_5_KOMPLETORIUM_OKTAVA, !czechHymns),
-				toggle("alternatives.lent-week-five", XML_BIT_OPT_5_LENT_5_HYMNS, !czechHymns),
+			toggle("prayers.alternatives-inline", XML_BIT_OPT_2_ALTERNATIVES),
+			group("prayers.alternatives", menuText(html_text_opt_2_alternatives), {
+				toggle("prayers.alternatives.cz-hymn-selection", XML_BIT_OPT_5_CZ_HYMNY_VYBER, czechHymns),
+				toggle("prayers.alternatives.week-34-hymns", XML_BIT_OPT_5_OCR_34_HYMNS),
+				group("prayers.alternatives.invitatory", menuText(nazov_Modlitby_jazyk[MODL_INVITATORIUM]),{
+					toggle("prayers.alternatives.invitatory.psalm-95", XML_BIT_OPT_1_ZALM95),
+					toggle("prayers.alternatives.invitatory.antiphon", XML_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY),
+				}),
+				group("prayers.alternatives.readings", menuText(nazov_Modlitby_jazyk[MODL_POSV_CITANIE]),{
+					toggle("prayers.alternatives.readings.two-year-cycle", XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE, _global_jazyk == JAZYK_SK), // ToDo also for other languages
+					toggle("prayers.alternatives.readings.invert-cycle", XML_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, _global_jazyk == JAZYK_SK), // ToDo also for other languages
+					toggle("prayers.alternatives.readings.cz-alternatives", XML_BIT_OPT_0_ALTERNATIVE_READINGS, _global_jazyk == JAZYK_CZ),
+					toggle("prayers.alternatives.readings.hymn-alternatives", XML_BIT_OPT_5_HYMNUS_PC, !czechHymns),
+				}),
+				group("prayers.alternatives.daytime", menuText(html_text_modlitba_cez_den),{
+					toggle("prayers.alternatives.daytime.supplementary", XML_BIT_OPT_1_MCD_DOPLNKOVA),
+					toggle("prayers.alternatives.daytime.three-weeks", XML_BIT_OPT_1_MCD_ZALTAR_TRI),
+					toggle("prayers.alternatives.daytime.psalm-122", XML_BIT_OPT_5_DOPLNK_PSALM_122_129),
+					toggle("prayers.alternatives.daytime.psalm-126", XML_BIT_OPT_5_DOPLNK_PSALM_126_129),
+					toggle("prayers.alternatives.daytime.psalm-127", XML_BIT_OPT_5_DOPLNK_PSALM_127_131),
+					toggle("prayers.alternatives.daytime.midmorning-hymn", XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL, !czechHymns),
+					toggle("prayers.alternatives.daytime.midday-hymn", XML_BIT_OPT_5_HYMNUS_MCD_NAPOL, !czechHymns),
+					toggle("prayers.alternatives.daytime.midafternoon-hymn", XML_BIT_OPT_5_HYMNUS_MCD_POPOL, !czechHymns),
+				}),
+				group("prayers.alternatives.invitatory", menuText(nazov_Modlitby_jazyk[MODL_PRVE_VESPERY]),{
+					toggle("alternatives.first-vespers-hymn", XML_BIT_OPT_5_HYMNUS_1VESP, !czechHymns),
+				}, !czechHymns),
+				toggle("prayers.alternatives.ash-wednesday", XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA),
+				toggle("prayers.alternatives.holy-thursday", XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA),
+				toggle("prayers.alternatives.office-dead-psalm", XML_BIT_OPT_5_OFF_DEF_PSALM_146_150),
+				toggle("prayers.alternatives.compline-hymn", XML_BIT_OPT_5_HYMNUS_KOMPL, !czechHymns),
+				toggle("prayers.alternatives.easter-readings-hymn", XML_BIT_OPT_5_HYMNUS_VN_PC, !czechHymns),
+				toggle("prayers.alternatives.easter-morning-hymn", XML_BIT_OPT_5_HYMNUS_VN_RCH, !czechHymns),
+				toggle("prayers.alternatives.easter-evening-hymn", XML_BIT_OPT_5_HYMNUS_VN_VESP, !czechHymns),
+				toggle("prayers.alternatives.octave-compline", XML_BIT_OPT_5_KOMPLETORIUM_OKTAVA, !czechHymns),
+				toggle("prayers.alternatives.lent-fifth-week", XML_BIT_OPT_5_LENT_5_HYMNS, !czechHymns),
 			}),
 		}),
 		group("speech", menuText(text_menu_group_jazyk[MENU_5_TTS]), {

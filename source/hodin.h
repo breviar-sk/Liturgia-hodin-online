@@ -2356,18 +2356,18 @@ const char* html_text_opt_0_kalendar_explain[POCET_JAZYKOV + 1] =
 
 const char* html_text_opt_1_nemenne_sucasti[POCET_JAZYKOV + 1] =
 {
-	"zobraziť nasledovné súčasti modlitby?",
-	"zobrazit tyto součásti modlitby?",
-	"display these parts of prayer?",
-	"partes Officii sequentes ostende?",
+	"zobraziť nasledovné súčasti modlitby",
+	"zobrazit tyto součásti modlitby",
+	"display these parts of prayer",
+	"partes Officii sequentes ostende",
 	"",
-	"zobrazit tyto součásti modlitby?",
-	"jelenjenek meg az imaóra következő elemei:",
+	"zobrazit tyto součásti modlitby",
+	"jelenjenek meg az imaóra következő elemei",
 	"ru_text",
-	"паказаць наступныя часткі малітвы?",
-	"sýna eftirfarandi hluta bænar?",
-	"¿muestra las siguientes partes de la oración?",
-	"bu dualar göstərilsin?",
+	"паказаць наступныя часткі малітвы",
+	"sýna eftirfarandi hluta bænar",
+	"¿muestra las siguientes partes de la oración",
+	"bu dualar göstərilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -2391,11 +2391,11 @@ const char* html_text_opt_1_nemenne_sucasti_explain[POCET_JAZYKOV + 1] =
 const char* html_text_opt_1_dalsie_prepinace[POCET_JAZYKOV + 1] =
 {
 	"možnosti pre výsledné modlitby",
-	"možnosti pro výsledné modlitby",
+	"možnosti pro výslední modlitby",
 	"options for generated prayers",
 	"possibilitates pro Officium finale",
 	"",
-	"možnosti pro výsledné modlitby",
+	"možnosti pro výslední modlitby",
 	"egyéb választási lehetőségek:",
 	"ru_text",
 	"опцыі для генераваных малітваў",
@@ -3962,12 +3962,12 @@ const char* html_text_opt_1_prosby_zvolanie_explain[POCET_JAZYKOV + 1] =
 
 const char* html_text_opt_1_skryt_popis_svaty[POCET_JAZYKOV + 1] =
 {
-	"nezobraziť popis k modlitbe svätého",
-	"nezobrazit popis při modlitbě ke cti světce",
-	"do not display description for prayer for the saints",
+	"skryť popis k modlitbe svätého",
+	"skrýt popis při modlitbě ke cti světce",
+	"hide description for prayer for the saints",
 	"non ostendere commentarium historicum",
 	"",
-	"nezobrazit popis při modlitbě ke cti světce",
+	"skrýt popis při modlitbě ke cti světce",
 	"ne mutassa a leírást a szentről az imaórában",
 	"ru_text",
 	"не паказваць інфармацыю пра святых",
@@ -3996,12 +3996,12 @@ const char* html_text_opt_1_skryt_popis_svaty_explain[POCET_JAZYKOV + 1] =
 
 const char* html_text_opt_1_spolc_svaty[POCET_JAZYKOV + 1] =
 {
-	"spoločné časti k modlitbe svätého",
-	"společné texty pro světce",
+	"rubrika pre spoločné časti pre svätcov",
+	"rubrika pro společné texty pro světce",
 	"display communia info",
 	"communia pro Officium sanctorum",
 	"",
-	"společné texty pro světce",
+	"rubrika pro společné texty pro světce",
 	"mutassa meg, hogy a közös részek honnan lettek véve a szentek zsolozsmájához",
 	"ru_text",
 	"паказваць інфармацыю пра агульныя тэксты пра святых",
@@ -4372,7 +4372,7 @@ const char* html_text_opt_2_font_family_explain[POCET_JAZYKOV + 1] =
 // accusative form or word 'navigation'
 const char* html_text_navig_buttons[POCET_JAZYKOV + 1] =
 {
-	"navigáciu",
+	"tlačidlá",
 	"navigaci",
 	"navigation buttons",
 	"tabellam nexuum",
@@ -4387,9 +4387,9 @@ const char* html_text_navig_buttons[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char* html_text_opt_2_navigation[POCET_JAZYKOV + 1] =
+const char* html_text_opt_2_prayer_buttons[POCET_JAZYKOV + 1] =
 {
-	"zobraziť navigáciu v textoch modlitieb",
+	"zobraziť tlačidlá v textoch modlitieb",
 	"zobrazit navigaci v textech modliteb",
 	"display navigation buttons in prayer",
 	"ostende navigationem in textibus orationum",
@@ -4404,9 +4404,9 @@ const char* html_text_opt_2_navigation[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-const char* html_text_opt_2_navigation_explain[POCET_JAZYKOV + 1] =
+const char* html_text_opt_2_prayer_buttons_explain[POCET_JAZYKOV + 1] =
 {
-	"Či sa majú zobrazovať hypertextové odkazy na ostatné modlitby daného dňa, príp. predošlý/nasledovný deň priamo v texte modlitby.",
+	"Či sa majú zobrazovať hypertextové odkazy (ako tlačidlá) na ostatné modlitby daného dňa, príp. predošlý/nasledovný deň priamo v texte modlitby.",
 	"Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. předešlý/následující den přímo v textu modlitby.",
 	"Whether hypertext links (as buttons) to other prayers of the selected celebration should be displayed.",
 	"Ostendendine sunt nexus hypertextuales ad ceteras horas diei, vel ad præcedentem/sequentem diem directe in textu Officii.",
@@ -20920,6 +20920,12 @@ const char* menu_text_language_use_for_interface[POCET_JAZYKOV + 1] =
 const char* menu_text_device_eink[POCET_JAZYKOV + 1] =
 { "Režim E-ink (bez animácií)", "Režim E-ink (bez animací)", "E-ink mode (no animations)", "Modus E-ink (sine animationibus)", "", "Režim E-ink (bez animací)", "E-ink mód (animációk nélkül)", "E-ink mode (no animations)", "E-ink mode (no animations)", "E-ink hamur (án hreyfinga)", "E-ink mode (no animations)", "E-ink mode (no animations)", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
+const char* menu_text_font_and_margins[POCET_JAZYKOV + 1] =
+{ "Písmo a okraje", "Písmo a okraje", "Fonts and margins", "Fontes et margines", "", "Písmo a okraje", "Betűtípusok és margók", "Fonts and margins", "Fonts and margins", "Leturgerðir og spássíur", "Fonts and margins", "Fonts and margins", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_colors[POCET_JAZYKOV + 1] =
+{ "Farby", "Barvy", "Colors", "Colores", "", "Barvy", "Színek", "Colors", "Colors", "Litir", "Colors", "Colors", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
 const char* menu_text_appearance_margin[POCET_JAZYKOV + 1] =
 { "Okraje (pixely)", "Okraje (pixely)", "Margin size (px)", "Marginibus (px)", "", "Okraje (pixely)", "Margók (px)", "Margin size (px)", "Margin size (px)", "Framlegð (pixely)", "Margin size (px)", "Margin size (px)", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
@@ -20932,11 +20938,23 @@ const char* menu_text_appearance_background_day[POCET_JAZYKOV + 1] =
 const char* menu_text_appearance_background_night[POCET_JAZYKOV + 1] =
 { "Farba pozadia (nočný režim)", "Barva pozadí (noční režim)", "Background color (night mode)", "Background color (modus nocturnus)", "", "Barva pozadí (noční režim)", "Háttérszín (éjszakai mód)", "Background color (night mode)", "Background color (night mode)", "Bakgrunns litur (næturstilling)", "Background color (night mode)", "Background color (night mode)", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
+const char* menu_text_navigation[POCET_JAZYKOV + 1] =
+{ "Navigácia", "Navigace", "Navigation", "Navigatio", "", "Navigace", "Navigáció", "Navigation", "Navigation", "Leiðsögn", "Navigation", "Navigation", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_buttons[POCET_JAZYKOV + 1] =
+{ "Tlačidlá", "Tlačítka", "Buttons", "Bullae", "", "Tlačítka", "Gombok", "Buttons", "Buttons", "Hnappar", "Buttons", "Buttons", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
 const char* menu_text_reading_navigation[POCET_JAZYKOV + 1] =
 { "Navigácia pri čítaní", "Navigace při čtení", "Reading navigation", "Navigatio in lectione", "", "Navigace při čtení", "Navigáció olvasás közben", "Reading navigation", "Reading navigation", "Leiðsögn við lestur", "Reading navigation", "Reading navigation", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
+const char* menu_text_appearance_other[POCET_JAZYKOV + 1] =
+{ "Ostatné", "Ostatní", "Other", "Alia", "", "Tlačítka", "Más", "Other", "Other", "Annað", "Other", "Other", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
 const char* menu_text_prayers_presentation[POCET_JAZYKOV + 1] =
 { "V texte modlitieb zobraziť", "V textu modliteb zobrazit", "What to display in prayers", "In textu orationis ostende", "", "V textu modliteb zobrazit", "Az imaóra szövegében jelenjenek meg", "What to display in prayers", "What to display in prayers", "Það sem birtist í texta bænanna", "What to display in prayers", "What to display in prayers", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* html_text_modlitba_cez_den[POCET_JAZYKOV + 1] =
+{ "Modlitba cez deň", "Modlitba uprostřed dne", "Prayer during the day", "Horam mediam", "", "Modlitba během dne", "Napközi imaóra", "During the day", "During the day", "Miðdegisbæn skal", "Lecturas", "During the day", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_prayers_readings[POCET_JAZYKOV + 1] =
 { "Čítania", "Čtení", "Readings", "Lectiones", "", "Čtení", "Olvasmányok", "Readings", "Readings", "Lestrar", "Lecturas", "Readings", /* STRING_1_FOR_NEW_LANGUAGE */ };

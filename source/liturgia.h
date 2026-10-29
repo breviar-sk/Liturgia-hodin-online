@@ -1661,12 +1661,12 @@ extern unsigned long long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];
 #define BIT_OPT_2_FONT_FAMILY                4 // 0 = Serif, 1 = Sans Serif
 #define BIT_OPT_2_FONT_NAME_CHOOSER          8 // zobraziť drop-down list s možnosťou voľby font (family) name
 #define BIT_OPT_2_FONT_SIZE_CHOOSER         16 // zobraziť drop-down list s možnosťou voľby veľkosti fontu
-#define BIT_OPT_2_NAVIGATION                32 // zobraziť navigáciu v modlitbe (tlačidlá pre ranné chvály, vešpery a pod.) | navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
+#define BIT_OPT_2_PRAYER_BUTTONS            32 // zobraziť tlačidlá v modlitbe (tlačidlá pre ranné chvály, vešpery a pod.) | navigation buttons in prayer text (iOS: never display; OFF); contains prayer buttons (laudes, vespers, etc.) + date/month/year navigation (in prayer text, prev/next/this day + today only)
 #define BIT_OPT_2_TEXT_WRAP                 64 // zobraziť zalomenie v textoch modlitby podľa tlačenej LH
 #define BIT_OPT_2_BUTTONY_USPORNE          128 // zobraziť buttony pre modlitby v úspornej podobe (tabuľka) kvôli mobilným zariadeniam
 #define BIT_OPT_2_NOCNY_REZIM              256 // zobraziť invertovane farby (biele na ciernom)
 #define BIT_OPT_2_ROZNE_MOZNOSTI           512 // zobraziť rozličné "hypertextové odkazy" v modlitbe (napr. pre modlitbu cez deň možnosť doplnkovej psalmódie)
-#define BIT_OPT_2_HIDE_NAVIG_BUTTONS      1024 // možnosť zobraziť/skryť navigáciu (tlačidlá pre deň, mesiac, rok, dnes) v modlitbe a pre "dnes", ak je zvolený 6. bit (BIT_OPT_2_NAVIGATION)
+#define BIT_OPT_2_HIDE_NAVIG_BUTTONS      1024 // možnosť zobraziť/skryť navigačné tlačidá (tlačidlá pre deň, mesiac, rok, dnes) v modlitbe a pre "dnes", ak je zvolený 6. bit (BIT_OPT_2_PRAYER_BUTTONS)
 #define BIT_OPT_2_HIDE_KALENDAR           2048 // skryť kalendárik pre "dnes" (0 = zobraziť)
 #define BIT_OPT_2_HIDE_OPTIONS1           4096 // skryť html_text_dalsie_moznosti_1[] pre "dnes" (0 = zobraziť)
 #define BIT_OPT_2_HIDE_OPTIONS2           8192 // skryť html_text_dalsie_moznosti_2[] pre "dnes" (0 = zobraziť)

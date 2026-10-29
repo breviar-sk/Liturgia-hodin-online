@@ -843,11 +843,11 @@ extern short int query_type; // contains constants PRM_...
 #endif
 
 // zobrazovať navigáciu v textoch modlitieb
-#define FORCE_BIT_OPT_2_NAVIGATION 86
+#define FORCE_BIT_OPT_2_PRAYER_BUTTONS 86
 #ifdef LONG_PARAM_NAMES
-	#define STR_FORCE_BIT_OPT_2_NAVIGATION "FORCE_BIT_OPT_2_NAVIGATION"
+	#define STR_FORCE_BIT_OPT_2_PRAYER_BUTTONS "FORCE_BIT_OPT_2_PRAYER_BUTTONS"
 #else
-	#define STR_FORCE_BIT_OPT_2_NAVIGATION "of2nav"
+	#define STR_FORCE_BIT_OPT_2_PRAYER_BUTTONS "of2nav" // preserved constant; previous name was 'BIT_OPT_2_NAVIGATION'
 #endif
 
 // zobrazovať zalomenie v textoch modlitieb podľa tlačenej LH
@@ -1437,7 +1437,7 @@ extern short int query_type; // contains constants PRM_...
 #define XML_BIT_OPT_2_FONT_FAMILY               "BitOpt2FontFamily"
 #define XML_BIT_OPT_2_FONT_NAME_CHOOSER         "BitOpt2FontNameChooser"
 #define XML_BIT_OPT_2_FONT_SIZE_CHOOSER         "BitOpt2FontSizeChooser"
-#define XML_BIT_OPT_2_NAVIGATION                "BitOpt2Navigation"
+#define XML_BIT_OPT_2_PRAYER_BUTTONS            "BitOpt2PrayerButtons"
 #define XML_BIT_OPT_2_TEXT_WRAP                 "BitOpt2TextWrap"
 #define XML_BIT_OPT_2_BUTTONY_USPORNE           "BitOpt2ButtonsCondensed"
 #define XML_BIT_OPT_2_NOCNY_REZIM               "BitOpt2NightMode"
