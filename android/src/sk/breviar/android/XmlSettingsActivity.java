@@ -174,18 +174,36 @@ public class XmlSettingsActivity extends SettingsActivity {
   }
 
   private void renderChildren(Menu menu, SettingsXml.MenuEntry parent, boolean settingsPage) {
+    renderChildren(menu, parent, settingsPage, "");
+  }
+
+  private void renderChildren(Menu menu, SettingsXml.MenuEntry parent, boolean settingsPage, String heading) {
+    // NavigationView only displays one submenu level. Flatten deeper XML groups
+    // into sections, retaining their context and the order of every control.
+    Menu section = null;
     for (SettingsXml.MenuEntry entry : parent.children) {
       if (!visible(entry, settingsPage)) continue;
       if (entry.isGroup) {
-        Menu section = entry.label.isEmpty() ? menu
-            : menu.addSubMenu(Menu.NONE, View.generateViewId(), Menu.NONE, entry.label);
-        renderChildren(section, entry, settingsPage);
-      } else if (entry.control.equals("choice")) {
-        addSubmenu(menu, entry);
+        String title = entry.label.isEmpty() ? heading
+            : heading.isEmpty() ? entry.label : heading + " / " + entry.label;
+        renderChildren(menu, entry, settingsPage, title);
+        // Controls after a nested group need a new section at this position.
+        section = null;
       } else {
-        MenuItem row = addRow(menu, entry);
-        if (!nativeSettings.bind(row, entry)) bind(row, entry);
-        renderChildren(menu, entry, settingsPage);
+        if (section == null) {
+          section = heading.isEmpty() ? menu
+              : menu.addSubMenu(Menu.NONE, View.generateViewId(), Menu.NONE, heading);
+        }
+        if (entry.control.equals("choice")) {
+          addSubmenu(section, entry);
+        } else {
+          MenuItem row = addRow(section, entry);
+          if (!nativeSettings.bind(row, entry)) bind(row, entry);
+          if (!entry.children.isEmpty()) {
+            renderChildren(menu, entry, settingsPage, heading);
+            section = null;
+          }
+        }
       }
     }
   }

@@ -2366,7 +2366,7 @@ const char* html_text_opt_1_nemenne_sucasti[POCET_JAZYKOV + 1] =
 	"ru_text",
 	"паказаць наступныя часткі малітвы",
 	"sýna eftirfarandi hluta bænar",
-	"¿muestra las siguientes partes de la oración",
+	"mostrar las siguientes partes de la oración",
 	"bu dualar göstərilsin",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
@@ -2391,11 +2391,11 @@ const char* html_text_opt_1_nemenne_sucasti_explain[POCET_JAZYKOV + 1] =
 const char* html_text_opt_1_dalsie_prepinace[POCET_JAZYKOV + 1] =
 {
 	"možnosti pre výsledné modlitby",
-	"možnosti pro výslední modlitby",
+	"možnosti pro výsledné modlitby",
 	"options for generated prayers",
 	"possibilitates pro Officium finale",
 	"",
-	"možnosti pro výslední modlitby",
+	"možnosti pro výsledné modlitby",
 	"egyéb választási lehetőségek:",
 	"ru_text",
 	"опцыі для генераваных малітваў",
@@ -4369,55 +4369,55 @@ const char* html_text_opt_2_font_family_explain[POCET_JAZYKOV + 1] =
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
-// accusative form or word 'navigation'
+// Accusative form of 'buttons', following 'show' or 'hide'.
 const char* html_text_navig_buttons[POCET_JAZYKOV + 1] =
 {
 	"tlačidlá",
-	"navigaci",
-	"navigation buttons",
-	"tabellam nexuum",
+	"tlačítka",
+	"buttons",
+	"bullas",
 	"",
-	"navigaci",
-	"navigáció",
-	"ru_text",
-	"кнопкі навігацыі",
-	"leiðsögn",
-	"navegación",
-	"naviqasiya",
+	"tlačítka",
+	"gombokat",
+	"кнопки",
+	"кнопкі",
+	"hnappa",
+	"botones",
+	"düymələri",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
 const char* html_text_opt_2_prayer_buttons[POCET_JAZYKOV + 1] =
 {
 	"zobraziť tlačidlá v textoch modlitieb",
-	"zobrazit navigaci v textech modliteb",
-	"display navigation buttons in prayer",
-	"ostende navigationem in textibus orationum",
+	"zobrazit tlačítka v textech modliteb",
+	"display buttons in prayer texts",
+	"ostende bullas in textibus orationum",
 	"",
-	"zobrazit navigaci v textech modliteb",
-	"a navigáció mutatása az imaszövegben",
-	"ru_text",
-	"паказваць кнопкі навігацыі ў малітве",
-	"að sýna leiðbeiningar í bænatextum",
-	"mostrar navegación en los textos de oración",
-	"dua mətnlərində naviqasiya göstərin",
+	"zobrazit tlačítka v textech modliteb",
+	"a gombok megjelenítése az imaszövegben",
+	"показывать кнопки в тексте молитвы",
+	"паказваць кнопкі ў тэксце малітвы",
+	"sýna hnappa í bænatextum",
+	"mostrar botones en los textos de oración",
+	"dua mətnlərində düymələri göstər",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
 const char* html_text_opt_2_prayer_buttons_explain[POCET_JAZYKOV + 1] =
 {
 	"Či sa majú zobrazovať hypertextové odkazy (ako tlačidlá) na ostatné modlitby daného dňa, príp. predošlý/nasledovný deň priamo v texte modlitby.",
-	"Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. předešlý/následující den přímo v textu modlitby.",
+	"Zda zobrazit hypertextové odkazy (jako tlačítka) na ostatní modlitby daného dne, resp. předešlý/následující den přímo v textu modlitby.",
 	"Whether hypertext links (as buttons) to other prayers of the selected celebration should be displayed.",
-	"Ostendendine sunt nexus hypertextuales ad ceteras horas diei, vel ad præcedentem/sequentem diem directe in textu Officii.",
+	"Ostendendine sunt nexus hypertextuales (bullarum forma) ad ceteras horas diei, vel ad præcedentem/sequentem diem directe in textu Officii.",
 	"",
-	"Zda zobrazit hypertextové odkazy na ostatní modlitby daného dne, resp. předešlý/následující den přímo v textu modlitby.",
-	"Legyen-e hiperhivatkozás a nap többi imaórájára is,  illetve mutassa-e az előző és következő nap imaóráit is közvetlenül a szövegben.",
-	"",
-	"",
-	"",
-	"Si los hipervínculos a otras oraciones del día en cuestión, o del día anterior o siguiente, deben mostrarse directamente en el texto de la oración.",
-	"az_text",
+	"Zda zobrazit hypertextové odkazy (jako tlačítka) na ostatní modlitby daného dne, resp. předešlý/následující den přímo v textu modlitby.",
+	"Jelenjenek-e meg gombként hiperhivatkozások a nap többi imaórájára, illetve az előző és következő napra közvetlenül az imaszövegben.",
+	"Показывать ли непосредственно в тексте молитвы ссылки (в виде кнопок) на другие молитвы этого дня, а также на предыдущий и следующий день.",
+	"Ці паказваць непасрэдна ў тэксце малітвы спасылкі (у выглядзе кнопак) на іншыя малітвы гэтага дня, а таксама на папярэдні і наступны дзень.",
+	"Hvort birta eigi tengla (sem hnappa) á aðrar bænir dagsins og á fyrri eða næsta dag beint í bænatextanum.",
+	"Si los hipervínculos (como botones) a otras oraciones del día en cuestión, o al día anterior o siguiente, deben mostrarse directamente en el texto de la oración.",
+	"Həmin günün digər dualarına, həmçinin əvvəlki və sonrakı günə keçidlərin (düymələr şəklində) birbaşa dua mətnində göstərilib-göstərilməməsi.",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 
@@ -20921,10 +20921,10 @@ const char* menu_text_device_eink[POCET_JAZYKOV + 1] =
 { "Režim E-ink (bez animácií)", "Režim E-ink (bez animací)", "E-ink mode (no animations)", "Modus E-ink (sine animationibus)", "", "Režim E-ink (bez animací)", "E-ink mód (animációk nélkül)", "E-ink mode (no animations)", "E-ink mode (no animations)", "E-ink hamur (án hreyfinga)", "E-ink mode (no animations)", "E-ink mode (no animations)", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_font_and_margins[POCET_JAZYKOV + 1] =
-{ "Písmo a okraje", "Písmo a okraje", "Fonts and margins", "Fontes et margines", "", "Písmo a okraje", "Betűtípusok és margók", "Fonts and margins", "Fonts and margins", "Leturgerðir og spássíur", "Fonts and margins", "Fonts and margins", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Písmo a okraje", "Písmo a okraje", "Fonts and margins", "Formae litterarum et margines", "", "Písmo a okraje", "Betűtípusok és margók", "Шрифты и поля", "Шрыфты і палі", "Leturgerðir og spássíur", "Fuentes y márgenes", "Şriftlər və kənar boşluqlar", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_colors[POCET_JAZYKOV + 1] =
-{ "Farby", "Barvy", "Colors", "Colores", "", "Barvy", "Színek", "Colors", "Colors", "Litir", "Colors", "Colors", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Farby", "Barvy", "Colors", "Colores", "", "Barvy", "Színek", "Цвета", "Колеры", "Litir", "Colores", "Rənglər", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_appearance_margin[POCET_JAZYKOV + 1] =
 { "Okraje (pixely)", "Okraje (pixely)", "Margin size (px)", "Marginibus (px)", "", "Okraje (pixely)", "Margók (px)", "Margin size (px)", "Margin size (px)", "Framlegð (pixely)", "Margin size (px)", "Margin size (px)", /* STRING_1_FOR_NEW_LANGUAGE */ };
@@ -20939,22 +20939,22 @@ const char* menu_text_appearance_background_night[POCET_JAZYKOV + 1] =
 { "Farba pozadia (nočný režim)", "Barva pozadí (noční režim)", "Background color (night mode)", "Background color (modus nocturnus)", "", "Barva pozadí (noční režim)", "Háttérszín (éjszakai mód)", "Background color (night mode)", "Background color (night mode)", "Bakgrunns litur (næturstilling)", "Background color (night mode)", "Background color (night mode)", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_navigation[POCET_JAZYKOV + 1] =
-{ "Navigácia", "Navigace", "Navigation", "Navigatio", "", "Navigace", "Navigáció", "Navigation", "Navigation", "Leiðsögn", "Navigation", "Navigation", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Navigácia", "Navigace", "Navigation", "Navigatio", "", "Navigace", "Navigáció", "Навигация", "Навігацыя", "Leiðsögn", "Navegación", "Naviqasiya", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_buttons[POCET_JAZYKOV + 1] =
-{ "Tlačidlá", "Tlačítka", "Buttons", "Bullae", "", "Tlačítka", "Gombok", "Buttons", "Buttons", "Hnappar", "Buttons", "Buttons", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Tlačidlá", "Tlačítka", "Buttons", "Bullae", "", "Tlačítka", "Gombok", "Кнопки", "Кнопкі", "Hnappar", "Botones", "Düymələr", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_reading_navigation[POCET_JAZYKOV + 1] =
 { "Navigácia pri čítaní", "Navigace při čtení", "Reading navigation", "Navigatio in lectione", "", "Navigace při čtení", "Navigáció olvasás közben", "Reading navigation", "Reading navigation", "Leiðsögn við lestur", "Reading navigation", "Reading navigation", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_appearance_other[POCET_JAZYKOV + 1] =
-{ "Ostatné", "Ostatní", "Other", "Alia", "", "Tlačítka", "Más", "Other", "Other", "Annað", "Other", "Other", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Ostatné", "Ostatní", "Other", "Alia", "", "Ostatní", "Egyéb", "Прочее", "Іншае", "Annað", "Otros", "Digər", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_prayers_presentation[POCET_JAZYKOV + 1] =
 { "V texte modlitieb zobraziť", "V textu modliteb zobrazit", "What to display in prayers", "In textu orationis ostende", "", "V textu modliteb zobrazit", "Az imaóra szövegében jelenjenek meg", "What to display in prayers", "What to display in prayers", "Það sem birtist í texta bænanna", "What to display in prayers", "What to display in prayers", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* html_text_modlitba_cez_den[POCET_JAZYKOV + 1] =
-{ "Modlitba cez deň", "Modlitba uprostřed dne", "Prayer during the day", "Horam mediam", "", "Modlitba během dne", "Napközi imaóra", "During the day", "During the day", "Miðdegisbæn skal", "Lecturas", "During the day", /* STRING_1_FOR_NEW_LANGUAGE */ };
+{ "Modlitba cez deň", "Modlitba uprostřed dne", "Prayer during the day", "Hora media", "", "Modlitba během dne", "Napközi imaóra", "Дневная молитва", "Малітва на працягу дня", "Miðdegisbæn", "Hora intermedia", "Günorta mədhi", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* menu_text_prayers_readings[POCET_JAZYKOV + 1] =
 { "Čítania", "Čtení", "Readings", "Lectiones", "", "Čtení", "Olvasmányok", "Readings", "Readings", "Lestrar", "Lecturas", "Readings", /* STRING_1_FOR_NEW_LANGUAGE */ };

@@ -34,7 +34,7 @@ int main() {
 	const std::string next = getExportedString();
 	closeExport();
 	assert(next.find("Long label ") == std::string::npos);
-	assert(next.find("Key=\"alternatives.hymn-selection\"") != std::string::npos);
+	assert(next.find("Key=\"prayers.alternatives.cz-hymn-selection\"") != std::string::npos);
 	assert(next.find(">1</BitOpt0VerseNumbers>") != std::string::npos);
 	std::cout << "Settings XML in-memory export tests passed\n";
 }

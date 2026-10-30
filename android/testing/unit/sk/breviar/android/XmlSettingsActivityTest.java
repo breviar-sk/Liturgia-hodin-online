@@ -158,6 +158,35 @@ public class XmlSettingsActivityTest {
   }
 
   @Test
+  @SuppressWarnings({"rawtypes", "unchecked"})
+  public void nestedGroupsDisplayAllControlsInXmlOrder() throws Exception {
+    String verse = "<MenuItem Key='prayers.verses' Label='číslovanie veršov' Control='toggle' OptionRef='Verse'/>";
+    String xml = settingsXml(true).replace(verse,
+        "<MenuItem Key='prayers.before' Label='Pred skupinou' Control='toggle' OptionRef='References'/>"
+        + "<MenuGroup Key='prayers.nested' Label='Vnorená skupina'>" + verse + "</MenuGroup>");
+    Intent intent = XmlSettingsActivity.entryIntent(RuntimeEnvironment.getApplication(), "prayers");
+    try (ActivityController<XmlSettingsActivity> controller = Robolectric.buildActivity(
+        XmlSettingsActivity.class, intent).create()) {
+      XmlSettingsActivity activity = controller.get();
+      show(activity, SettingsXml.parse(xml));
+      RecyclerView recycler = recycler(activity.navigationView);
+      RecyclerView.Adapter adapter = recycler.getAdapter();
+      java.util.List<Integer> displayed = new java.util.ArrayList<>();
+      for (int position = 0; position < adapter.getItemCount(); ++position) {
+        RecyclerView.ViewHolder holder = adapter.createViewHolder(recycler, adapter.getItemViewType(position));
+        adapter.bindViewHolder(holder, position);
+        displayed.add(holder.itemView.getId());
+      }
+      int previous = -1;
+      for (String key : new String[]{"prayers.before", "prayers.verses", "prayers.references", "prayers.common"}) {
+        int position = displayed.indexOf(activity.menuItem(key).getItemId());
+        assertTrue("Control missing or out of order: " + key, position > previous);
+        previous = position;
+      }
+    }
+  }
+
+  @Test
   public void backToParentKeepsOldRowsAccessibleDuringRefresh() throws Exception {
     try (ActivityController<MainSettings> controller = Robolectric.buildActivity(MainSettings.class).setup()) {
       MainSettings activity = controller.get();

@@ -55,10 +55,16 @@ class SettingsXmlTest(unittest.TestCase):
                     'calendar': ['calendar.options'],
                     'calendar.options': ['calendar.epiphany-sunday', 'calendar.ascension-sunday',
                                          'calendar.corpus-christi-sunday', 'calendar.highlight-national'],
+                    'appearance': ['appearance.font-margins', 'appearance.colors',
+                                   'appearance.navigation', 'appearance.buttons', 'appearance.other'],
+                    'appearance.navigation': ['reading.navigation'],
                     'reading.navigation': ['reading.arrow-options'],
                     'reading.arrow-options': ['reading.arrows-left', 'reading.down-arrow-only'],
-                    'prayers': ['prayers.presentation', 'prayers.parts', 'prayers.readings',
-                                'prayers.celebration', 'prayers.alternative-texts'],
+                    'prayers': ['prayers.inline-options', 'prayers.presentation', 'prayers.parts',
+                                'prayers.celebration', 'prayers.other',
+                                'prayers.alternatives-inline', 'prayers.alternatives'],
+                    'prayers.alternatives.invitatory': ['prayers.alternatives.invitatory.psalm-95',
+                                                      'prayers.alternatives.invitatory.antiphon'],
                 }.items():
                     self.assertEqual([n.get('Key') for n in actual[parent]], children, parent)
                 for key, node in actual.items():
@@ -101,19 +107,24 @@ class SettingsXmlTest(unittest.TestCase):
                 self.assertEqual(actual['prayers.common'].attrib['OptionRef'], 'Opt3Communia')
                 self.assertEqual(actual['prayers.common'].attrib['ValueAttribute'], 'Id')
                 seen.update({key: node.tag for key, node in actual.items()})
-        self.assertEqual(list(seen.values()).count('MenuGroup'), 13)
+        self.assertEqual(list(seen.values()).count('MenuGroup'), 22)
         self.assertEqual(list(seen.values()).count('MenuItem'), 89)
 
     def test_language_specific_items(self):
         for language, root in self.exports.items():
             with self.subTest(language=language):
                 menu = by_key(root.find('Menu'))
-                self.assertEqual('readings.two-year-cycle' in menu, language == 'sk')
-                self.assertEqual('readings.invert-cycle' in menu, language == 'sk')
-                self.assertEqual('readings.alternatives' in menu, language == 'cz')
-                self.assertEqual('alternatives.hymn-selection' in menu, language == 'cz')
+                readings = 'prayers.alternatives.readings.'
+                self.assertEqual(readings + 'two-year-cycle' in menu, language == 'sk')
+                self.assertEqual(readings + 'invert-cycle' in menu, language == 'sk')
+                self.assertEqual(readings + 'cz-alternatives' in menu, language == 'cz')
+                self.assertEqual('prayers.alternatives.cz-hymn-selection' in menu, language == 'cz')
+                self.assertEqual('prayers.alternatives.first-vespers' in menu, language != 'cz')
+                if language != 'cz':
+                    self.assertEqual([n.get('Key') for n in menu['prayers.alternatives.first-vespers']],
+                                     ['alternatives.first-vespers-hymn'])
                 if language == 'cz':
-                    self.assertNotIn('alternatives.readings-hymn', menu)
+                    self.assertNotIn(readings + 'hymn-alternatives', menu)
                 if language == 'hu':
                     # An empty translated label suppresses only its menu entry.
                     self.assertNotIn('prayers.printed-edition', menu)
@@ -143,6 +154,20 @@ class SettingsXmlTest(unittest.TestCase):
                 self.assertEqual(decimal.attrib['Id'], '10000000000')
         overridden = export(o0='0', of0v='1').find('Options/*/BitOpt0VerseNumbers')
         self.assertEqual(overridden.text, '1')
+
+    def test_prayer_buttons_preserve_saved_url_options(self):
+        # The renamed XML option must still use the same bit and short URL
+        # parameter, so existing reader settings and links retain their effect.
+        for value in ('0', '1'):
+            with self.subTest(value=value):
+                root = export(o2='0', of2nav=value)
+                option = root.find("Options/*[@Name='o2']/BitOpt2PrayerButtons")
+                self.assertIsNotNone(option)
+                self.assertEqual(option.attrib['Id'], '32')
+                self.assertEqual(option.attrib['ForceName'], 'of2nav')
+                self.assertEqual(option.text, value)
+                menu = by_key(root.find('Menu'))
+                self.assertEqual(menu['appearance.prayer-buttons'].attrib['OptionRef'], option.tag)
 
     def test_xml_escaping_and_empty_reset_values(self):
         menu = by_key(self.exports['en'].find('Menu'))

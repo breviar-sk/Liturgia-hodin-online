@@ -438,7 +438,7 @@ Element menuXml() {
 					toggle("prayers.alternatives.daytime.midday-hymn", XML_BIT_OPT_5_HYMNUS_MCD_NAPOL, !czechHymns),
 					toggle("prayers.alternatives.daytime.midafternoon-hymn", XML_BIT_OPT_5_HYMNUS_MCD_POPOL, !czechHymns),
 				}),
-				group("prayers.alternatives.invitatory", menuText(nazov_Modlitby_jazyk[MODL_PRVE_VESPERY]),{
+				group("prayers.alternatives.first-vespers", menuText(nazov_Modlitby_jazyk[MODL_PRVE_VESPERY]),{
 					toggle("alternatives.first-vespers-hymn", XML_BIT_OPT_5_HYMNUS_1VESP, !czechHymns),
 				}, !czechHymns),
 				toggle("prayers.alternatives.ash-wednesday", XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA),
