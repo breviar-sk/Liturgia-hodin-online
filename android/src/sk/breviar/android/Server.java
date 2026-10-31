@@ -230,11 +230,14 @@ public class Server extends Thread {
     native String main(FileDescriptor outfd, FileDescriptor infd, String environ);
     native FileDescriptor[] createPipe();
 
+    InputStream openAsset(String filename) throws IOException {
+      return ctx.getAssets().open(filename.replace("/_", "/x"));
+    }
+
     int checkfile(String fn) {
       int ret;
-      fn = fn.replace("/_", "/x");
       try {
-        InputStream tst = ctx.getAssets().open(fn);
+        InputStream tst = openAsset(fn);
         tst.close();
         ret = 1;
       } catch (IOException e) {
@@ -245,9 +248,8 @@ public class Server extends Thread {
 
     void reader(String fn, FileDescriptor fd) {
       //Log.v("Breviar: Server:", "reader(" + fn + ") called");
-      fn = fn.replace("/_", "/x");
       try {
-        new Copy( ctx.getAssets().open(fn), new FdOutputStream(fd) ).start();
+        new Copy(openAsset(fn), new FdOutputStream(fd)).start();
       } catch (IOException e) {
         // Log.v("Breviar: Server:", "reader(" + fn + ") failed: " + e.getMessage());
         try {

@@ -165,8 +165,7 @@ public class Breviar extends AppearanceActivity
     void startDialogActivity(int title_id, String query, boolean show_ok) {
       startActivity(new Intent(this, DialogActivity.class)
           .putExtra("title", title_id)
-          .putExtra("url", "http://127.0.0.1:" + S.port_nonpersistent + "/" +
-                           scriptname + "?" + query + Html.fromHtml(S.getOpts()))
+          .putExtra("static_text", query)
           .putExtra("show_ok", show_ok));
     }
 

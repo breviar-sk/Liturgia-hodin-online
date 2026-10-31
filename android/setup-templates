@@ -7,15 +7,17 @@ else
 fi
 
 doLang() {
-  xml=res/values-$1/strings.xml
+  qualifier=${1:+-$1}
+  xml=res/values$qualifier/strings.xml
   if [ ! -f "$xml" ]; then
-    xml=res.release/values-$1/strings.xml
+    xml=res.release/values$qualifier/strings.xml
   fi
   if [ ! -f "$xml" ]; then
-    xml=res.debug/values-$1/strings.xml
+    xml=res.debug/values$qualifier/strings.xml
   fi
   dir=assets/$2
-  basedir=../$2
+  basedir=${3:-../$2}
+  mkdir -p "$dir"
 
   version=`cat res/values/strings.xml | egrep 'name="version"' | $SED "s/^.*\">//;s/<.string>.*$//"`
   sha=`git rev-parse --short HEAD`
@@ -43,3 +45,5 @@ doLang cs include_czop
 doLang hu include_hu
 doLang la include_la
 doLang is include_is
+# English templates live at the repository root.
+doLang "" include_en ..

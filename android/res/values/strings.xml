@@ -159,29 +159,6 @@
     <string name="tts_use_pause_in_psalms">Make pauses when reading psalms &amp; canticles</string>
     <string name="tts_settings_help">Voice output help</string>
     <string name="tts_settings_help_title">Voice output help</string>
-    <string name="tts_settings_help_content"><![CDATA[
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<style type="text/css">
-body { background-color: #303030; color: #dddddd; }
-</style>
-</head>
-<body>
-
-<h3>How to set up voice output</h3>
-
-<p>If you have not used voice output yet, you need to install an application for speech synthesis (TTS, text-to-speech) and set it as preferred in your system settings.</p>
-
-<p>Some languages (e.g. Czech, English, and Hungarian) are well supported by native Android speech synthesis (at least on recent versions of Android). If you want to use those, we recommend you to download the languages you plan to use for offline usage.</p>
-
-<p><button onclick="bridge.openTTSSettings()">Open TTS settings</button></p>
-
-<p>After configuring the speech synthesis, you may start voice output for the currently displayed prayers from the menu (left) or the action bar (top) in the application.</p>
-
-</body>
-</html>
-    ]]></string>
 
     <string name="tts_language_not_available">TTS is not available for current language.</string>
 

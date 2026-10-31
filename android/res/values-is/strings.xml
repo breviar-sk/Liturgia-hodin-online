@@ -155,29 +155,6 @@
     <string name="tts_use_pause_in_psalms">Gera hlé við lestur Saltara (stjörnur, krossar)</string>
     <string name="tts_settings_help">Leiðbeiningar fyrir raddúttak</string>
     <string name="tts_settings_help_title">Leiðbeiningar fyrir raddúttak</string>
-    <string name="tts_settings_help_content"><![CDATA[
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<style type="text/css">
-body { background-color: #303030; color: #dddddd; }
-</style>
-</head>
-<body>
-
-<h3>Hvernig setja á upp talgervil</h3>
-
-<p>Ef þú hefur enn ekki notað talgervil þarft þú að hlaða niður appi fyrir vélrænt tal (TTS, texti-í-tal) og setja það upp á þann hátt sem gert er ráð fyrir í kerfisstillingum þínum.</p>
-
-<p>Sum tungumál (svo sem tékkneska, enska og ungverska) eru vel stödd hvað snertir texta í tal (a.m.k. ein nýleg gerð í Android). Ef þú vilt nota þau mælum við með að þú hlaðir niður þeim tungumálum sem þú hyggst nota utan nets.</p>
-
-<p><button onclick="bridge.openTTSSettings()">nappur til að opna fyrir TTS stillingar</button></p>
-
-<p>Eftir að tal-í-texta hefur verið sett upp getur þú byrjað að láta lesa þann texta sem sýndur er í bænunum frá valmyndinni (til vinstri) eða frá aðgerðastiklunni (efst) í appinu.</p>
-
-</body>
-</html>
-    ]]></string>
 
     <string name="tts_language_not_available">Yfirfærsla texta í tal er ekki til í þessu tungumáli</string>
 

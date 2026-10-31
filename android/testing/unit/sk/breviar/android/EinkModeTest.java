@@ -316,7 +316,7 @@ public class EinkModeTest {
   @Test
   public void helpContentAndAlarmsUseEinkAppearance() {
     BreviarApp.setEinkMode(context, true);
-    Intent intent = new Intent().putExtra("content", context.getString(R.string.tts_settings_help_content));
+    Intent intent = new Intent().putExtra("content", "<html><body>Help</body></html>");
     try (ActivityController<DialogActivity> controller = Robolectric.buildActivity(DialogActivity.class, intent).setup()) {
       String encoded = Shadows.shadowOf(controller.get().wv).getLastLoadData().data;
       String html = new String(android.util.Base64.decode(encoded, android.util.Base64.DEFAULT),

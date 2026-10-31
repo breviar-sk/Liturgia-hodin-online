@@ -19,6 +19,7 @@ public class DialogActivity extends AppearanceActivity {
   
   WebView wv;
   TapNavigation tapNavigation;
+  private Server ownedServer;
 
   class Bridge {
     DialogActivity parent;
@@ -70,6 +71,25 @@ public class DialogActivity extends AppearanceActivity {
     }
   }
 
+  private String staticTextLanguage() {
+    if (BreviarApp.getOverrideLocale(this)) {
+      // Preserve prayer-language variants such as Czech Dominican (c2).
+      return BreviarApp.getString(this, "language", "sk");
+    }
+    String language = BreviarApp.currentLocale(this).getLanguage();
+    if (language.equals("cs")) language = "cz";
+    String directory = language.equals("sk") ? "include" : "include_" + language;
+    try {
+      // Use the bundled translations, including English even though it is not
+      // offered in the prayer-language menu.
+      String[] files = getAssets().list(directory);
+      if (files != null && files.length > 0) return language;
+    } catch (java.io.IOException missingTranslation) {
+      // Unsupported UI languages use the bundled English information pages.
+    }
+    return "en";
+  }
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -89,8 +109,34 @@ public class DialogActivity extends AppearanceActivity {
     }
     int title = intent.getIntExtra("title", -1);
     String url = intent.getStringExtra("url");
-    tapNavigation = new TapNavigation(wv, Breviar.S == null ? -1 : Breviar.S.port_nonpersistent,
-        url == null, null);
+    Server server = Breviar.S;
+    if (intent.hasExtra("static_text")) {
+      // Settings can change before the reader resumes and updates its server.
+      // Read the current preferences, and never persist this dialog's options.
+      String options = BreviarApp.getUrlOptions(this);
+      String language = staticTextLanguage();
+      if (server == null) {
+        // Android may restore settings/help after the reader process was killed.
+        try {
+          ownedServer = new Server(getApplicationContext(), Breviar.scriptname, language, options);
+          ownedServer.start();
+          server = ownedServer;
+        } catch (java.io.IOException error) {
+          android.util.Log.e("breviar", "Cannot start information-page server", error);
+          finish();
+          return;
+        }
+      }
+      UrlOptions query = new UrlOptions(options);
+      query.override(new UrlOptions(intent.getStringExtra("static_text")));
+      query.params.put("j", language);
+      // Information pages have no calendar. An inherited calendar could change
+      // the requested language (notably cz to c2 in debug builds).
+      query.params.put("k", "");
+      url = "http://127.0.0.1:" + server.port_nonpersistent + "/" + Breviar.scriptname
+          + "?" + query.getBuilder().build().getEncodedQuery();
+    }
+    tapNavigation = new TapNavigation(wv, server == null ? -1 : server.port_nonpersistent, url == null, null);
     wv.setWebViewClient(new android.webkit.WebViewClient() {
       @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
         // Preserve the default external-link behavior from before a client was installed.
@@ -175,6 +221,8 @@ public class DialogActivity extends AppearanceActivity {
 
   @Override protected void onDestroy() {
     if (tapNavigation != null) tapNavigation.close();
+    // Closing a server can wait for rendering; never block the UI on that work.
+    if (ownedServer != null) new Thread(ownedServer::stopServer, "Close help server").start();
     super.onDestroy();
   }
 

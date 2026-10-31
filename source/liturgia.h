@@ -114,10 +114,14 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define STATIC_TEXT_INFO                  3
 
 // info files (used for mobile applications: about, version history...)
-#define POCET_INFO_TEXTOV       1
-
 #define INFO_ABOUT              0
 #define INFO_VERSION_HISTORY    1
+#ifdef IO_ANDROID
+#define INFO_TTS_HELP           2
+#define POCET_INFO_TEXTOV       INFO_TTS_HELP
+#else
+#define POCET_INFO_TEXTOV       INFO_VERSION_HISTORY
+#endif
 
 // number of fonts
 #define	POCET_FONTOV    10
@@ -464,6 +468,7 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define FILE_INFO_ABOUT            "about.htm"
 #if defined(IO_ANDROID)
 #define FILE_VERSION_HISTORY       "version-android.htm"
+#define FILE_TTS_HELP              "tts-android.htm"
 #elif defined (__APPLE__)
 #define FILE_VERSION_HISTORY       "version-ios.htm"
 #else

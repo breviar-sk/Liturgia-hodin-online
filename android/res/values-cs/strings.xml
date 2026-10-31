@@ -155,29 +155,6 @@
     <string name="tts_use_pause_in_psalms">Pro žalmy a kantika použít pauzu (hvězdičky, křížky)</string>
     <string name="tts_settings_help">Návod pro hlasový výstup</string>
     <string name="tts_settings_help_title">Návod pro hlasový výstup</string>
-    <string name="tts_settings_help_content"><![CDATA[
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<style type="text/css">
-body { background-color: #303030; color: #dddddd; }
-</style>
-</head>
-<body>
-
-<h3>Jak nastavit hlasový výstup</h3>
-
-<p>Pokud jste dosud nepoužívali hlasový výstup, je třeba si nainstalovat aplikaci pro syntézu řeči (TTS, text-to-speech) a nastavit ji jako předvolenou v systémových nastaveních.</p>
-
-<p>Čeština má dobrou podporu ve vestavěné androidové syntéze řeči, v aplikaci Google TTS (určitě to platí pro novější verze Androidu). Pokud ji chcete použít, doporučujeme stáhnout si podporu pro jazyk, který plánujete používat, do Vašeho zařízení.</p>
-
-<p><button onclick="bridge.openTTSSettings()">Nastavit předvolenou aplikaci pro TTS</button></p>
-
-<p>Po nastavení hlasového výstupu můzete v aplikaci spustit předčítání aktuálních modliteb z menu (vysouvací zleva) nebo z aplikační lišty (nahoru).</p>
-
-</body>
-</html>
-    ]]></string>
 
     <string name="tts_language_not_available">Převod textu na řeč není k dispozici pro aktuální jazyk.</string>
 

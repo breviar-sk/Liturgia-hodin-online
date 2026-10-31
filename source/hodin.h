@@ -42,7 +42,11 @@ ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM,
 ORDINARIUM_VESPERY, ORDINARIUM_KOMPLETORIUM, ORDINARIUM_EMPTY, ORDINARIUM_EMPTY };
 
 const char* FILE_INFO[POCET_INFO_TEXTOV + 1] =
-{ FILE_INFO_ABOUT, FILE_VERSION_HISTORY };
+{ FILE_INFO_ABOUT, FILE_VERSION_HISTORY,
+#ifdef IO_ANDROID
+FILE_TTS_HELP,
+#endif
+};
 
 // 2008-04-09: doplnené pre batch generovanie modlitieb
 const char char_modlitby[POCET_MODLITIEB + 1] =
@@ -1211,6 +1215,9 @@ const char* html_subtitle_static_text_info[POCET_INFO_TEXTOV + 1][POCET_JAZYKOV 
 {
 	{ "O aplikácii", "O aplikaci", "", "De applicationem progressione", "", "O aplikaci", "Névjegy...", "ru_text", "by_text", "Um forrit", "Acerca de la aplicación", "Tətbiq haqqında", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "Zmeny vo verziách", "Změny ve verzích", "Changelog", "Commutationes in versionibus", "", "Změny ve verzích", "Újdonságok", "ru_text", "by_text", "Breytingar í útgáfum", "Cambios de versión", "Versiya dəyişiklikləri", /* STRING_1_FOR_NEW_LANGUAGE */ },
+#ifdef IO_ANDROID
+	{ "Návod pre hlasový výstup", "Návod pro hlasový výstup", "Voice output help", "Præceptum ad output vocalem", "", "Návod pro hlasový výstup", "Hang kimenet", "Voice output help", "Voice output help", "Leiðbeiningar fyrir raddúttak", "Voice output help", "Voice output help", /* STRING_1_FOR_NEW_LANGUAGE */ },
+#endif
 };
 
 const char* nazov_fontu[POCET_FONTOV + 1] =

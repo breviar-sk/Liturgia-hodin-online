@@ -155,31 +155,6 @@
     <string name="tts_use_pause_in_psalms">In psalmodia divisum uti (asterisci, obelisci)</string>
     <string name="tts_settings_help">Præceptum ad output vocalem</string>
     <string name="tts_settings_help_title">Præceptum ad output vocalem</string>
-    <string name="tts_settings_help_content"><![CDATA[
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<style type="text/css">
-body { background-color: #303030; color: #dddddd; }
-</style>
-</head>
-<body>
-
-<h3>Præceptum ad output vocalem (in lingua Slovaca)</h3>
-
-<p>Ak ste ešte nepoužívali hlasový výstup, je potrebné nainštalovať si aplikáciu pre syntézu reči (TTS, text-to-speech) a nastaviť ju ako predvolenú v systémových nastaveniach. Štandardná Google TTS aplikácia podporuje od januára 2018 aj slovenčinu, ale len pre novšie verzie systému Android.</p>
-
-<p>Pre staršie verzie OS Android, na ktorých nie je možnosť doinštalovania slovenčiny pre Google TTS, existuje napr. aplikácia eSpeak, ktorá je k dispozícii zdarma. Existujú aj platené aplikácie s lepšou kvalitou hlasového výstupu resp. hlasové výstupy niektorých výrobcov, podporujúce slovenčinu (napr. Samsung). V aplikácii je ešte potrebné stiahnuť si podporu pre slovenčinu.</p>
-
-<p><button onclick="bridge.openIntent('https://play.google.com/store/apps/details?id=com.redzoc.ramees.tts.espeak')">Nainštalovať eSpeak z Google Play</button></p>
-
-<p><button onclick="bridge.openTTSSettings()">Nastaviť predvolenú aplikáciu pre TTS</button></p>
-
-<p>Po nastavení hlasového výstupu môzete v aplikácii spustiť čítanie aktuálnych modlitieb z menu (vysúvacie zľava) alebo z aplikačnej lišty (hore).</p>
-
-</body>
-</html>
-    ]]></string>
 
     <string name="tts_language_not_available">Traductio textus ad sermonem non est parabilis pro hanc linguam.</string>
 

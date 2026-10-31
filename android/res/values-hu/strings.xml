@@ -155,29 +155,6 @@
     <string name="tts_use_pause_in_psalms">A zsoltározás és kantikumok olvasásánál szüneteket tartani (csillagok, keresztek)</string>
     <string name="tts_settings_help">Hang kimenet</string>
     <string name="tts_settings_help_title">Hang kimenet</string>
-    <string name="tts_settings_help_content"><![CDATA[
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<style type="text/css">
-body { background-color: #303030; color: #dddddd; }
-</style>
-</head>
-<body>
-
-<h3>A hangkimenet beállítása</h3>
-
-<p>Ha még nem használta a hangkimeneteket, akkor telepítenie kell egy beszédszintézis (TTS, text-to-speech) alkalmazást, és a rendszer beállításaiban preferáltatnia kell.</p>
-
-<p>Néhány nyelvet (például a cseh, az angol és a magyar nyelvet) a natív Android beszédszintézis támogatja (legalábbis az Android legújabb verzióiban). Ha használni szeretné ezeket, javasoljuk, hogy töltse le azokat a nyelveket, amelyeket használni szeretne offline használatra.</p>
-
-<p><button onclick="bridge.openTTSSettings()">A TTS beállításainak megnyitása</button></p>
-
-<p>A beszédszintézis konfigurálása után elindíthatja a megjelenített imákat a menüben (baloldalt) vagy az alkalmazásban lévő cselekvéssávon (fent).</p>
-
-</body>
-</html>
-    ]]></string>
 
     <string name="tts_language_not_available">A szövegfelolvasás nem érhető el az aktuális nyelvnél.</string>
 

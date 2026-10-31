@@ -72,7 +72,7 @@ final class NativeSettings {
       row.setActionView(R.layout.widget_submenu);
       activity.handleClick(row.getItemId(), () -> activity.startActivity(new Intent(activity, DialogActivity.class)
           .putExtra("title", R.string.tts_settings_help_title)
-          .putExtra("content", activity.getString(R.string.tts_settings_help_content))
+          .putExtra("static_text", "qt=pst&st=i&p=2") // INFO_TTS_HELP in liturgia.h
           .putExtra("show_ok", false)));
       return true;
     }
