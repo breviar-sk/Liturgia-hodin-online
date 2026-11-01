@@ -90,7 +90,9 @@ public class LangSelectTest {
       assertTrue(menu.getItem(0).isChecked());
       assertFalse(menu.getItem(1).isChecked());
       assertEquals("c2", LanguageServer.language);
-      assertEquals(BreviarApp.getUrlOptions(context), LanguageServer.options);
+      UrlOptions request = new UrlOptions(LanguageServer.options);
+      assertEquals(activity.getString(R.string.xml_menu_language), request.params.remove("dl"));
+      assertEquals(new UrlOptions(BreviarApp.getUrlOptions(context)).params, request.params);
       menu.performIdentifierAction(menu.getItem(1).getItemId(), 0);
       assertEquals(Activity.RESULT_OK, Shadows.shadowOf(activity).getResultCode());
       assertEquals("custom", Shadows.shadowOf(activity).getResultIntent().getStringExtra("lang"));

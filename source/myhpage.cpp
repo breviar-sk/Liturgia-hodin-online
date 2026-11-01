@@ -20,6 +20,7 @@
 #include "mydefs.h"
 #include "myexpt.h"
 #include "mystring.h"
+#include "xml-settings.h"
 
 #include "breviar.h"
 #include "liturgia.h"
@@ -804,7 +805,7 @@ void _xml_patka(FILE* expt) {
 	Export_to_file(expt, ELEM_BEGIN_NAME(XML_LIT_SEASON_VALUES) "\n", STR_LIT_OBD);
 
 	for (c = 0; c <= POCET_OBDOBI; c++) {
-		Export_to_file(expt, ELEM_BEGIN_ID_VALUE(XML_LIT_SEASON) "%s" ELEM_END(XML_LIT_SEASON) "\n", c, nazov_obdobia_ext(c), nazov_obdobia(c));
+		Export_to_file(expt, ELEM_BEGIN_ID_VALUE(XML_LIT_SEASON) "%s" ELEM_END(XML_LIT_SEASON) "\n", c, nazov_obdobia_ext(c), xml_settings_choice_label(nazov_obdobia_jazyk[c]));
 	}
 
 	Export_to_file(expt, ELEM_END(XML_LIT_SEASON_VALUES) "\n\n");
@@ -816,7 +817,7 @@ void _xml_patka(FILE* expt) {
 		if (poradie_spol_cast[c] == MODL_SPOL_CAST_NEURCENA) {
 			continue;
 		}
-		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_COMMUNIA) "%s" ELEM_END(XML_LIT_COMMUNIA) "\n", poradie_spol_cast[c], nazov_spolc(poradie_spol_cast[c]));
+		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_COMMUNIA) "%s" ELEM_END(XML_LIT_COMMUNIA) "\n", poradie_spol_cast[c], xml_settings_choice_label(nazov_spolc_jazyk[poradie_spol_cast[c]]));
 	}
 
 	Export_to_file(expt, ELEM_END(XML_LIT_COMMUNIA_VALUES) "\n\n");
@@ -825,7 +826,7 @@ void _xml_patka(FILE* expt) {
 	Export_to_file(expt, ELEM_BEGIN(XML_LIT_TYPE_VALUES) "\n");
 
 	for (c = 0; c <= POCET_SLAVENI; c++) {
-		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_TYPE) "%s" ELEM_END(XML_LIT_TYPE) "\n", c, nazov_slavenia(c));
+		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_TYPE) "%s" ELEM_END(XML_LIT_TYPE) "\n", c, xml_settings_choice_label(nazov_slavenia_jazyk[c]));
 	}
 
 	Export_to_file(expt, ELEM_END(XML_LIT_TYPE_VALUES) "\n\n");
@@ -835,7 +836,7 @@ void _xml_patka(FILE* expt) {
 
 	for (c = 1; c <= POCET_FARIEB_REALNYCH; c++) {
 		// do not export color "0" = N/A
-		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_COLOR) "%s" ELEM_END(XML_LIT_COLOR) "\n", c, nazov_farby(c));
+		Export_to_file(expt, ELEM_BEGIN_ID(XML_LIT_COLOR) "%s" ELEM_END(XML_LIT_COLOR) "\n", c, xml_settings_choice_label(nazov_farby_jazyk[c]));
 	}
 
 	Export_to_file(expt, ELEM_END(XML_LIT_COLOR_VALUES) "\n\n");

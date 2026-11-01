@@ -1,7 +1,5 @@
 package sk.breviar.android;
 
-import androidx.fragment.app.DialogFragment;
-
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
@@ -13,7 +11,7 @@ import android.widget.TimePicker;
 
 import sk.breviar.android.Util;
 
-public class AlarmTimePickerFragment extends DialogFragment 
+public class AlarmTimePickerFragment extends SystemFontDialogFragment
     implements TimePickerDialog.OnTimeSetListener{
 
   int eventId() {

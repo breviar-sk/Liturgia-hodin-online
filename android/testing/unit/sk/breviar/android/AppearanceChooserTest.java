@@ -56,6 +56,52 @@ public class AppearanceChooserTest {
     idle();
   }
 
+  private void assertSettingsPath(String settingsLabel, String deviceLabel) {
+    try (ActivityController<Reader> controller = Robolectric.buildActivity(Reader.class).setup()) {
+      TextView message = dialog(controller.get()).findViewById(android.R.id.message);
+      assertTrue(message.getText().toString().contains(settingsLabel + " > " + deviceLabel));
+    }
+    try (ActivityController<MainSettings> controller = Robolectric.buildActivity(MainSettings.class).setup()) {
+      MainSettings settings = controller.get();
+      XmlSettingsActivityTest.awaitSettings(settings);
+      assertEquals(settingsLabel, settings.getSupportActionBar().getTitle());
+      assertEquals(deviceLabel, settings.menuItem("device").getTitle());
+      settings.navigationView.getMenu().performIdentifierAction(settings.menuItem("device").getItemId(), 0);
+      try (ActivityController<XmlSettingsActivity> device = Robolectric.buildActivity(XmlSettingsActivity.class,
+          Shadows.shadowOf(settings).getNextStartedActivity()).setup()) {
+        XmlSettingsActivityTest.awaitSettings(device.get());
+        assertEquals(deviceLabel, device.get().getSupportActionBar().getTitle());
+        assertNotNull(device.get().menuItem("device.eink"));
+      }
+    }
+  }
+
+  @Test public void chooserNamesTheCurrentSettingsPathInEveryTranslation() {
+    for (String[] labels : new String[][]{
+        {"sk", "Nastavenia", "Zariadenie"}, {"cz", "Nastavení", "Zařízení"},
+        {"c2", "Nastavení", "Zařízení"}, {"en", "Settings", "Device"},
+        {"hu", "Beállítások", "Eszköz"}, {"la", "Occasiones", "Apparatus"},
+        {"is", "Stillingar", "Tæki"}}) {
+      BreviarApp.setString(context, "language", labels[0]);
+      BreviarApp.setOverrideLocale(context, true);
+      assertSettingsPath(labels[1], labels[2]);
+    }
+  }
+
+  @Test @Config(qualifiers = "hu")
+  public void chooserPathMatchesWhenUiAndPrayerLanguagesDiffer() {
+    BreviarApp.setString(context, "language", "sk");
+    BreviarApp.setOverrideLocale(context, false);
+    assertSettingsPath("Beállítások", "Eszköz");
+  }
+
+  @Test @Config(qualifiers = "fr")
+  public void chooserPathMatchesWithEnglishUiFallback() {
+    BreviarApp.setString(context, "language", "sk");
+    BreviarApp.setOverrideLocale(context, false);
+    assertSettingsPath("Settings", "Device");
+  }
+
   @Test public void freshInstallAsksBeforeChangelogAndNormalChoicePersistsAcrossUpgrades() {
     try (ActivityController<Reader> controller = Robolectric.buildActivity(Reader.class).setup()) {
       Reader original = controller.get();

@@ -30,8 +30,8 @@ class SettingsXmlTest(unittest.TestCase):
     def setUpClass(cls):
         initial = export()
         languages = [node.attrib['Value'] for node in initial.find('SupportedLanguages')]
-        # English labels exercise XML metacharacters even when English is not
-        # enabled as a selectable prayer language in this build.
+        # English UI labels are available even when English is not enabled as
+        # a selectable prayer language in this build.
         cls.exports = {language: export(language) for language in set(languages + ['en'])}
 
     def test_structure_bindings_and_order(self):
@@ -169,10 +169,10 @@ class SettingsXmlTest(unittest.TestCase):
                 menu = by_key(root.find('Menu'))
                 self.assertEqual(menu['appearance.prayer-buttons'].attrib['OptionRef'], option.tag)
 
-    def test_xml_escaping_and_empty_reset_values(self):
+    def test_english_labels_and_empty_reset_values(self):
         menu = by_key(self.exports['en'].find('Menu'))
-        self.assertIn('2nd & 8th', menu['calendar.epiphany-sunday'].attrib['Label'])
-        self.assertIn('psalms & canticles', menu['speech.psalm-pauses'].attrib['Label'])
+        self.assertIn('Jan 2nd and 8th', menu['calendar.epiphany-sunday'].attrib['Label'])
+        self.assertIn('psalms and canticles', menu['speech.psalm-pauses'].attrib['Label'])
         for key in ('appearance.font', 'appearance.margin', 'appearance.line-height',
                     'appearance.background-day', 'appearance.background-night'):
             self.assertEqual(menu[key].attrib['ResetValue'], '')
@@ -190,6 +190,56 @@ class SettingsXmlTest(unittest.TestCase):
         self.assertIsNotNone(root.find('Menu/MenuGroup/MenuItem'))
         self.assertIsNotNone(root.find('Options'))
         self.assertIsNotNone(root.find('.//LiturgicalCalendarValues'))
+
+    def test_display_language_never_changes_structure_or_state(self):
+        # Include editions with different calendars, empty labels and options.
+        for prayer in ('sk', 'cz', 'c2', 'la', 'hu', 'is', 'en'):
+            baseline = export(prayer, o0='12345', o3='1', o5='17')
+            for display in ('sk', 'cz', 'la', 'hu', 'is', 'en', 'ru', 'by', 'az', ''):
+                with self.subTest(prayer=prayer, display=display):
+                    translated = export(prayer, dl=display, o0='12345', o3='1', o5='17')
+                    original_nodes = list(baseline.iter())
+                    new_nodes = list(translated.iter())
+                    self.assertEqual(len(original_nodes), len(new_nodes))
+                    for before, after in zip(original_nodes, new_nodes):
+                        self.assertEqual(before.tag, after.tag)
+                        self.assertEqual({k: v for k, v in before.attrib.items() if k not in ('Label', 'Text')},
+                                         {k: v for k, v in after.attrib.items() if k not in ('Label', 'Text')})
+                        # Only text in these settings catalogs may change.
+                        if before.tag not in ('LiturgicalCelebrationCommunia', 'Opt3Communia',
+                                              'LiturgicalSeason', 'LiturgicalCelebrationType', 'LiturgicalCelebrationColor'):
+                            self.assertEqual(before.text, after.text, before.tag)
+                    for path in ('SupportedLanguages', './/LiturgicalCalendarValues', './/LiturgicalYearLetterValues'):
+                        self.assertEqual(ET.tostring(baseline.find(path)), ET.tostring(translated.find(path)))
+                    self.assertEqual([bool((n.text or '').strip()) for n in baseline.find('.//LiturgicalCelebrationCommuniaValues')],
+                                     [bool((n.text or '').strip()) for n in translated.find('.//LiturgicalCelebrationCommuniaValues')])
+                    for node in translated.find('Menu').iter():
+                        self.assertNotIn('_text', node.get('Label', ''))
+
+    def test_display_labels_and_prayer_specific_captions(self):
+        base = export('sk')
+        translated = export('sk', dl='en')
+        menu = by_key(translated.find('Menu'))
+        self.assertEqual(menu['language'].get('Label'), 'Language')
+        self.assertEqual(menu['prayers.verse-numbers'].get('Label'), 'Verse numbering')
+        for key in ('prayers.references', 'prayers.alternatives.compline-hymn',
+                    'prayers.alternatives.invitatory.psalm-95',
+                    'prayers.alternatives.daytime.psalm-122', 'prayers.alternatives.easter-morning-hymn'):
+            self.assertEqual(menu[key].get('Label'), by_key(base.find('Menu'))[key].get('Label'))
+        self.assertEqual(translated.find('Options/*/BitOpt0VerseNumbers').get('Text'), 'verse numbering')
+        self.assertEqual(translated.find(".//LiturgicalCelebrationCommunia[@Id='1']").text, 'pastors: priests')
+        self.assertEqual(by_key(export('sk', dl='unknown').find('Menu'))['language'].get('Label'), 'Language')
+        self.assertEqual(ET.tostring(export('sk', dl='').find('Menu')), ET.tostring(base.find('Menu')))
+
+    def test_completed_ui_translations_do_not_enable_prayer_options(self):
+        for prayer, key, tag in (
+                ('la', 'prayers.printed-edition', 'BitOpt0PrintedEdition'),
+                ('hu', 'prayers.marian-antiphons', 'BitOpt1ComplineMaryAnt')):
+            for display in ('', 'sk', 'en'):
+                with self.subTest(prayer=prayer, display=display):
+                    root = export(prayer, dl=display)
+                    self.assertNotIn(key, by_key(root.find('Menu')))
+                    self.assertEqual(root.find('Options/*/' + tag).get('Text'), '')
 
 
 if __name__ == '__main__':

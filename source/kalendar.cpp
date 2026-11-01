@@ -5531,7 +5531,7 @@ short int sviatky_svatych_03_marec_04_april(short int den, short int mesiac, sho
 	// premenná pom_den na uchovanie pôvodného dňa
 	short int pom_den = den;
 
-	Log("mesiac marec & apríl\n");
+	Log("mesiac marec + apríl\n");
 
 	// toto priradujeme preto, aby sme nemuseli pri kazdom svatom priradovat pocet = 1;
 	short int pocet = 1;

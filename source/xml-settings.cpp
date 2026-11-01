@@ -13,6 +13,22 @@
 #include <utility>
 #include <vector>
 
+const char* xml_settings_label(const char* const* labels) {
+	if (!labels) return "";
+	const char* prayer = labels[_global_jazyk] ? labels[_global_jazyk] : "";
+	if (_device_language == JAZYK_UNDEF) return prayer;
+	const char* display = labels[_device_language];
+	if (display && display[0] != '\0') return display;
+	const char* english = labels[JAZYK_EN];
+	return english && english[0] != '\0' ? english : prayer;
+}
+
+const char* xml_settings_choice_label(const char* const* labels) {
+	if (!labels) return "";
+	const char* prayer = labels[_global_jazyk];
+	return prayer && prayer[0] != '\0' ? xml_settings_label(labels) : "";
+}
+
 namespace {
 
 using Attributes = std::vector<std::pair<std::string, std::string>>;
@@ -72,14 +88,27 @@ struct Option {
 	const char* forceName;
 	const char* const* labels;
 	const char* const* alternativeLabels;
+	bool prayerSpecific;
+	short captionOnlyLanguage;
 
 	Option(const char* element, unsigned long long mask, const char* forceName,
-		const char* const* labels, const char* const* alternativeLabels = nullptr)
+		const char* const* labels, const char* const* alternativeLabels = nullptr,
+		bool prayerSpecific = false, short captionOnlyLanguage = JAZYK_UNDEF)
 		: element(element), mask(mask), forceName(forceName), labels(labels),
-		  alternativeLabels(alternativeLabels) {}
+		  alternativeLabels(alternativeLabels), prayerSpecific(prayerSpecific),
+		  captionOnlyLanguage(captionOnlyLanguage) {}
 
 	std::string label() const {
+		// Completing a UI translation must not enable an unavailable prayer
+		// option, including for legacy clients that use Options.Text to hide it.
+		if (_global_jazyk == captionOnlyLanguage) return "";
 		return localized(labels) + (alternativeLabels ? " / " + localized(alternativeLabels) : "");
+	}
+
+	std::string displayLabel() const {
+		if (prayerSpecific) return label();
+		return std::string(xml_settings_label(labels))
+			+ (alternativeLabels ? " / " + std::string(xml_settings_label(alternativeLabels)) : "");
 	}
 };
 
@@ -95,10 +124,12 @@ struct OptionGroup {
 // One source of truth for legacy option metadata and the labels of Menu toggles.
 // Keep even unnamed/inapplicable bits here: clients use Options for state and
 // round trips. Only the presentation catalog filters out unavailable labels.
+// prayerSpecific captions retain edition-specific wording (including psalm
+// numbering and external Bible sources); never substitute another edition.
 const OptionGroup optionGroups[] = {
 	{OPT_0_SPECIALNE, XML_OPT_0_SPECIALNE, STR_OPT_0, STR_FORCE_OPT_0, html_text_opt_0_kalendar, {
 		{XML_BIT_OPT_0_VERSE, BIT_OPT_0_VERSE, STR_FORCE_BIT_OPT_0_VERSE, html_text_opt_0_verse},
-		{XML_BIT_OPT_0_REFERENCIE, BIT_OPT_0_REFERENCIE, STR_FORCE_BIT_OPT_0_REF, html_text_opt_0_referencie},
+		{XML_BIT_OPT_0_REFERENCIE, BIT_OPT_0_REFERENCIE, STR_FORCE_BIT_OPT_0_REF, html_text_opt_0_referencie, nullptr, true},
 		{XML_BIT_OPT_0_CITANIA, BIT_OPT_0_CITANIA, STR_FORCE_BIT_OPT_0_CIT, html_text_opt_0_citania},
 		{XML_BIT_OPT_0_ZJAVENIE_PANA_NEDELA, BIT_OPT_0_ZJAVENIE_PANA_NEDELA, STR_FORCE_BIT_OPT_0_ZJAV_NED, html_text_opt_0_zjv_ne},
 		{XML_BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA, BIT_OPT_0_NANEBOVSTUPNENIE_NEDELA, STR_FORCE_BIT_OPT_0_NAN_NED, html_text_opt_0_nan_ne},
@@ -111,7 +142,7 @@ const OptionGroup optionGroups[] = {
 		{XML_BIT_OPT_0_ZALMY_FULL_TEXT, BIT_OPT_0_ZALMY_FULL_TEXT, STR_FORCE_BIT_OPT_0_ZALMY_FULL_TEXT, html_text_opt_0_zalmy_full_text},
 		{XML_BIT_OPT_0_REF_BIBLE_COM, BIT_OPT_0_REF_BIBLE_COM, STR_FORCE_BIT_OPT_0_REF_BIBLE_COM, html_text_opt_0_ref_bible_com},
 		{XML_BIT_OPT_0_ITALICS_CONDITIONAL, BIT_OPT_0_ITALICS_CONDITIONAL, STR_FORCE_BIT_OPT_0_ITALICS_CONDITIONAL, html_text_opt_0_italics_cond},
-		{XML_BIT_OPT_0_PRINTED_EDITION, BIT_OPT_0_PRINTED_EDITION, STR_FORCE_BIT_OPT_0_PRINTED_EDITION, html_text_opt_0_printed_edition},
+		{XML_BIT_OPT_0_PRINTED_EDITION, BIT_OPT_0_PRINTED_EDITION, STR_FORCE_BIT_OPT_0_PRINTED_EDITION, html_text_opt_0_printed_edition, nullptr, false, JAZYK_LA},
 		{XML_BIT_OPT_0_USE_TWO_YEARS_CYCLE, BIT_OPT_0_USE_TWO_YEARS_CYCLE, STR_FORCE_BIT_OPT_0_USE_TWO_YEARS_CYCLE, html_text_opt_0_use_two_years_cycle},
 		{XML_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, STR_FORCE_BIT_OPT_0_TWO_YEARS_CYCLE_INVERT, html_text_opt_0_two_years_cycle_invert},
 		{XML_BIT_OPT_0_ALTERNATIVE_READINGS, BIT_OPT_0_ALTERNATIVE_READINGS, STR_FORCE_BIT_OPT_0_ALTERNATIVE_READINGS, html_text_opt_0_alternative_readings},
@@ -129,7 +160,7 @@ const OptionGroup optionGroups[] = {
 		{XML_BIT_OPT_1_PC_VIGILIA, BIT_OPT_1_PC_VIGILIA, STR_FORCE_BIT_OPT_1_VIGILIA, html_text_opt_1_vigilia},
 		{XML_BIT_OPT_1_SPOMIENKA_SPOL_CAST, BIT_OPT_1_SPOMIENKA_SPOL_CAST, STR_FORCE_BIT_OPT_1_SPOMIENKA_SPOL_CAST, html_text_opt_1_spomienka_spolcast},
 		{XML_BIT_OPT_1_PLNE_RESP, BIT_OPT_1_PLNE_RESP, STR_FORCE_BIT_OPT_1_PLNE_RESP, html_text_opt_1_plne_resp},
-		{XML_BIT_OPT_1_ZALM95, BIT_OPT_1_ZALM95, STR_FORCE_BIT_OPT_1_ZALM95, html_text_opt_1_zalm95},
+		{XML_BIT_OPT_1_ZALM95, BIT_OPT_1_ZALM95, STR_FORCE_BIT_OPT_1_ZALM95, html_text_opt_1_zalm95, nullptr, true},
 		{XML_BIT_OPT_1_PROSBY_ZVOLANIE, BIT_OPT_1_PROSBY_ZVOLANIE, STR_FORCE_BIT_OPT_1_PROSBY_ZVOLANIE, html_text_opt_1_prosby_zvolanie},
 		{XML_BIT_OPT_1_SKRY_POPIS, BIT_OPT_1_SKRY_POPIS, STR_FORCE_BIT_OPT_1_SKRY_POPIS, html_text_opt_1_skryt_popis_svaty},
 		{XML_BIT_OPT_1_ZOBRAZ_SPOL_CAST, BIT_OPT_1_ZOBRAZ_SPOL_CAST, STR_FORCE_BIT_OPT_1_ZOBRAZ_SPOL_CAST, html_text_opt_1_spolc_svaty},
@@ -138,7 +169,7 @@ const OptionGroup optionGroups[] = {
 		{XML_BIT_OPT_1_ZAVER, BIT_OPT_1_ZAVER, STR_FORCE_BIT_OPT_1_ZAVER, html_text_opt_1_zaver},
 		{XML_BIT_OPT_1_OVERRIDE_STUP_SLAV, BIT_OPT_1_OVERRIDE_STUP_SLAV, STR_FORCE_BIT_OPT_1_OVERRIDE_STUP_SLAV, html_text_opt_1_override_stupen_slavenia},
 		{XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, BIT_OPT_1_STUP_SVIATOK_SLAVNOST, STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, html_text_opt_1_slavit_ako_slavnost},
-		{XML_BIT_OPT_1_KOMPL_MARIA_ANT, BIT_OPT_1_KOMPL_MARIA_ANT, STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT, html_text_opt_1_maria_ant},
+		{XML_BIT_OPT_1_KOMPL_MARIA_ANT, BIT_OPT_1_KOMPL_MARIA_ANT, STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT, html_text_opt_1_maria_ant, nullptr, false, JAZYK_HU},
 		{XML_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD, BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD, STR_FORCE_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD, html_text_opt_1_otcenas_uvod},
 	}},
 	{OPT_2_HTML_EXPORT, XML_OPT_2_HTML_EXPORT, STR_OPT_2, STR_FORCE_OPT_2, html_text_opt_2_html_export, {
@@ -164,27 +195,27 @@ const OptionGroup optionGroups[] = {
 
 	}},
 	{OPT_5_ALTERNATIVES, XML_OPT_5_ALTERNATIVES, STR_OPT_5, STR_FORCE_OPT_5, html_text_opt_2_alternatives, {
-		{XML_BIT_OPT_5_HYMNUS_KOMPL, BIT_OPT_5_HYMNUS_KOMPL, STR_FORCE_BIT_OPT_5_HYMNUS_KOMPL, html_text_opt_5_KomplHymnusA, html_text_opt_5_KomplHymnusB},
-		{XML_BIT_OPT_5_HYMNUS_PC, BIT_OPT_5_HYMNUS_PC, STR_FORCE_BIT_OPT_5_HYMNUS_PC, html_text_opt_5_PCHymnusI, html_text_opt_5_PCHymnusII},
-		{XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL, BIT_OPT_5_HYMNUS_MCD_PREDPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL, html_text_opt_5_MCDPredHymnus1, html_text_opt_5_MCDPredHymnus2},
-		{XML_BIT_OPT_5_HYMNUS_MCD_NAPOL, BIT_OPT_5_HYMNUS_MCD_NAPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL, html_text_opt_5_MCDNaHymnus1, html_text_opt_5_MCDNaHymnus2},
-		{XML_BIT_OPT_5_HYMNUS_MCD_POPOL, BIT_OPT_5_HYMNUS_MCD_POPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL, html_text_opt_5_MCDPoHymnus1, html_text_opt_5_MCDPoHymnus2},
-		{XML_BIT_OPT_5_DOPLNK_PSALM_122_129, BIT_OPT_5_DOPLNK_PSALM_122_129, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, html_text_opt_5_DPsalmZ122_129},
-		{XML_BIT_OPT_5_DOPLNK_PSALM_127_131, BIT_OPT_5_DOPLNK_PSALM_127_131, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131, html_text_opt_5_DPsalmZ127_131},
-		{XML_BIT_OPT_5_DOPLNK_PSALM_126_129, BIT_OPT_5_DOPLNK_PSALM_126_129, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129, html_text_opt_5_DPsalmZ126_129},
-		{XML_BIT_OPT_5_HYMNUS_VN_PC, BIT_OPT_5_HYMNUS_VN_PC, STR_FORCE_BIT_OPT_5_HYMNUS_VN_PC, html_text_opt_5_PCHymnusVNnedela, html_text_opt_5_PCHymnusVNferia},
-		{XML_BIT_OPT_5_HYMNUS_VN_RCH, BIT_OPT_5_HYMNUS_VN_RCH, STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH, html_text_opt_5_RChHymnusVNnedela, html_text_opt_5_RChHymnusVNferia},
-		{XML_BIT_OPT_5_HYMNUS_VN_VESP, BIT_OPT_5_HYMNUS_VN_VESP, STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP, html_text_opt_5_VespHymnusVNnedela, html_text_opt_5_VespHymnusVNferia},
-		{XML_BIT_OPT_5_HYMNUS_1VESP, BIT_OPT_5_HYMNUS_1VESP, STR_FORCE_BIT_OPT_5_HYMNUS_1VESP, html_text_opt_5_1VHymnusNe, html_text_opt_5_1VHymnusPC},
-		{XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA, BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA, html_text_opt_5_PopolStrPsalm_4STR, html_text_opt_5_PopolStrPsalm_3PI},
-		{XML_BIT_OPT_5_CZ_HYMNY_VYBER, BIT_OPT_5_CZ_HYMNY_VYBER, STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, html_text_opt_5_CZhymnyNORMAL, html_text_opt_5_CZhymnyRENC},
-		{XML_BIT_OPT_5_OFF_DEF_PSALM_146_150, BIT_OPT_5_OFF_DEF_PSALM_146_150, STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, html_text_opt_5_OffDefZ146_150},
+		{XML_BIT_OPT_5_HYMNUS_KOMPL, BIT_OPT_5_HYMNUS_KOMPL, STR_FORCE_BIT_OPT_5_HYMNUS_KOMPL, html_text_opt_5_KomplHymnusA, html_text_opt_5_KomplHymnusB, true},
+		{XML_BIT_OPT_5_HYMNUS_PC, BIT_OPT_5_HYMNUS_PC, STR_FORCE_BIT_OPT_5_HYMNUS_PC, html_text_opt_5_PCHymnusI, html_text_opt_5_PCHymnusII, true},
+		{XML_BIT_OPT_5_HYMNUS_MCD_PREDPOL, BIT_OPT_5_HYMNUS_MCD_PREDPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_PREDPOL, html_text_opt_5_MCDPredHymnus1, html_text_opt_5_MCDPredHymnus2, true},
+		{XML_BIT_OPT_5_HYMNUS_MCD_NAPOL, BIT_OPT_5_HYMNUS_MCD_NAPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_NAPOL, html_text_opt_5_MCDNaHymnus1, html_text_opt_5_MCDNaHymnus2, true},
+		{XML_BIT_OPT_5_HYMNUS_MCD_POPOL, BIT_OPT_5_HYMNUS_MCD_POPOL, STR_FORCE_BIT_OPT_5_HYMNUS_MCD_POPOL, html_text_opt_5_MCDPoHymnus1, html_text_opt_5_MCDPoHymnus2, true},
+		{XML_BIT_OPT_5_DOPLNK_PSALM_122_129, BIT_OPT_5_DOPLNK_PSALM_122_129, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_122_129, html_text_opt_5_DPsalmZ122_129, nullptr, true},
+		{XML_BIT_OPT_5_DOPLNK_PSALM_127_131, BIT_OPT_5_DOPLNK_PSALM_127_131, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_127_131, html_text_opt_5_DPsalmZ127_131, nullptr, true},
+		{XML_BIT_OPT_5_DOPLNK_PSALM_126_129, BIT_OPT_5_DOPLNK_PSALM_126_129, STR_FORCE_BIT_OPT_5_DOPLNK_PSALM_126_129, html_text_opt_5_DPsalmZ126_129, nullptr, true},
+		{XML_BIT_OPT_5_HYMNUS_VN_PC, BIT_OPT_5_HYMNUS_VN_PC, STR_FORCE_BIT_OPT_5_HYMNUS_VN_PC, html_text_opt_5_PCHymnusVNnedela, html_text_opt_5_PCHymnusVNferia, true},
+		{XML_BIT_OPT_5_HYMNUS_VN_RCH, BIT_OPT_5_HYMNUS_VN_RCH, STR_FORCE_BIT_OPT_5_HYMNUS_VN_RCH, html_text_opt_5_RChHymnusVNnedela, html_text_opt_5_RChHymnusVNferia, true},
+		{XML_BIT_OPT_5_HYMNUS_VN_VESP, BIT_OPT_5_HYMNUS_VN_VESP, STR_FORCE_BIT_OPT_5_HYMNUS_VN_VESP, html_text_opt_5_VespHymnusVNnedela, html_text_opt_5_VespHymnusVNferia, true},
+		{XML_BIT_OPT_5_HYMNUS_1VESP, BIT_OPT_5_HYMNUS_1VESP, STR_FORCE_BIT_OPT_5_HYMNUS_1VESP, html_text_opt_5_1VHymnusNe, html_text_opt_5_1VHymnusPC, true},
+		{XML_BIT_OPT_5_POPOL_STREDA_PSALMODIA, BIT_OPT_5_POPOL_STREDA_PSALMODIA, STR_FORCE_BIT_OPT_5_POPOL_STREDA_PSALMODIA, html_text_opt_5_PopolStrPsalm_4STR, html_text_opt_5_PopolStrPsalm_3PI, true},
+		{XML_BIT_OPT_5_CZ_HYMNY_VYBER, BIT_OPT_5_CZ_HYMNY_VYBER, STR_FORCE_BIT_OPT_5_CZ_HYMNY_VYBER, html_text_opt_5_CZhymnyNORMAL, html_text_opt_5_CZhymnyRENC, true},
+		{XML_BIT_OPT_5_OFF_DEF_PSALM_146_150, BIT_OPT_5_OFF_DEF_PSALM_146_150, STR_FORCE_BIT_OPT_5_OFF_DEF_PSALM_146_150, html_text_opt_5_OffDefZ146_150, nullptr, true},
 		{XML_BIT_OPT_5_ZAVER_KNAZ_DIAKON, BIT_OPT_5_ZAVER_KNAZ_DIAKON, STR_FORCE_BIT_OPT_5_ZAVER_KNAZ_DIAKON, html_text_opt_5_zaver_knaz_diakon},
 		{XML_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY, BIT_OPT_5_INVITAT_ANT_WRAP_ONLY, STR_FORCE_BIT_OPT_5_INVITAT_ANT_WRAP_ONLY, html_text_opt_5_invitat_ant_wrap_only},
-		{XML_BIT_OPT_5_OCR_34_HYMNS, BIT_OPT_5_OCR_34_HYMNS, STR_FORCE_BIT_OPT_5_OCR_34_HYMNS, html_text_opt_5_OCR34Hymns},
-		{XML_BIT_OPT_5_KOMPLETORIUM_OKTAVA, BIT_OPT_5_KOMPLETORIUM_OKTAVA, STR_FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA, html_text_opt_5_KomplOkt1, html_text_opt_5_KomplOkt2},
-		{XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, html_text_opt_5_ZelStvPsalm_2STV, html_text_opt_5_ZelStvPsalm_3PI},
-		{XML_BIT_OPT_5_LENT_5_HYMNS, BIT_OPT_5_POST_5_HYMNS, STR_FORCE_BIT_OPT_5_POST_5_HYMNS, html_text_opt_5_Lent5Hymns},
+		{XML_BIT_OPT_5_OCR_34_HYMNS, BIT_OPT_5_OCR_34_HYMNS, STR_FORCE_BIT_OPT_5_OCR_34_HYMNS, html_text_opt_5_OCR34Hymns, nullptr, true},
+		{XML_BIT_OPT_5_KOMPLETORIUM_OKTAVA, BIT_OPT_5_KOMPLETORIUM_OKTAVA, STR_FORCE_BIT_OPT_5_KOMPLETORIUM_OKTAVA, html_text_opt_5_KomplOkt1, html_text_opt_5_KomplOkt2, true},
+		{XML_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, STR_FORCE_BIT_OPT_5_ZELENY_STVRTOK_PSALMODIA, html_text_opt_5_ZelStvPsalm_2STV, html_text_opt_5_ZelStvPsalm_3PI, true},
+		{XML_BIT_OPT_5_LENT_5_HYMNS, BIT_OPT_5_POST_5_HYMNS, STR_FORCE_BIT_OPT_5_POST_5_HYMNS, html_text_opt_5_Lent5Hymns, nullptr, true},
 	}},
 	{OPT_6_ALTERNATIVES_MULTI, XML_OPT_6_ALTERNATIVES_MULTI, STR_OPT_6, STR_FORCE_OPT_6, html_text_opt_6_alternatives_multi, {
 		{XML_PLACE_OPT_6_HYMNUS_MULTI, BASE_OPT_6_HYMNUS_MULTI, STR_FORCE_PLACE_OPT_6_HYMNUS_MULTI, html_text_opt_6_alternatives_multi_hymnus},
@@ -201,22 +232,24 @@ const OptionGroup optionGroups[] = {
 	}},
 };
 
+bool hasLabel(const std::string& label);
+
 Element optionsXml() {
 	Element result{XML_OPTIONS, {}, {}, ""};
 	for (const auto& group : optionGroups) {
 		Element element{group.element, {
 			{"Value", std::to_string(_global_opt[group.index])},
 			{"Name", group.parameter}, {"ForceName", group.forceName},
-			{"Text", localized(group.labels)},
+			{"Text", xml_settings_choice_label(group.labels)},
 		}, {}, ""};
 		for (const auto& option : group.options) {
 			element.children.push_back({option.element, {
 				{"Id", std::to_string(option.mask)}, {"ForceName", option.forceName},
-				{"Text", option.label()},
+				{"Text", hasLabel(option.label()) ? option.displayLabel() : option.label()},
 			}, {}, std::to_string(isGlobalOption(group.index, option.mask))});
 		}
 		if (group.index == OPT_3_SPOLOCNA_CAST && _global_opt[group.index] <= MODL_SPOL_CAST_NEBRAT) {
-			element.text = nazov_spolc(_global_opt[group.index]);
+			element.text = xml_settings_choice_label(nazov_spolc_jazyk[_global_opt[group.index]]);
 		}
 		result.children.push_back(std::move(element));
 	}
@@ -239,21 +272,31 @@ std::string menuLabel(const std::string& label) {
 	return mystr_first_upper(label.substr(begin, end - begin + 1).c_str());
 }
 
-Element group(const char* key, const std::string& label, std::initializer_list<Element> children, bool applicable = true) {
+// Retain the original caption for all eligibility decisions. Translation is
+// presentation only, even when a missing caption was used to hide an option.
+struct MenuLabel {
+	std::string prayer;
+	std::string display;
+	MenuLabel(const char* text) : prayer(text), display(text) {}
+	MenuLabel(std::string prayer, std::string display)
+		: prayer(std::move(prayer)), display(std::move(display)) {}
+};
+
+Element group(const char* key, const MenuLabel& label, std::initializer_list<Element> children, bool applicable = true) {
 	if (!applicable) return {};
 	Element result{"MenuGroup", {{"Key", key}}, {}, ""};
-	if (hasLabel(label)) result.attributes.emplace_back("Label", menuLabel(label));
+	if (hasLabel(label.prayer)) result.attributes.emplace_back("Label", menuLabel(label.display));
 	for (const auto& child : children) {
 		if (!child.name.empty()) result.children.push_back(child);
 	}
 	return result.children.empty() ? Element{} : result;
 }
 
-Element item(const char* key, const std::string& label, const char* control,
+Element item(const char* key, const MenuLabel& label, const char* control,
 	Attributes attributes, std::initializer_list<Element> children = {}) {
-	if (!hasLabel(label)) return {};
+	if (!hasLabel(label.prayer)) return {};
 	Element result{"MenuItem", {
-		{"Key", key}, {"Label", menuLabel(label)}, {"Control", control},
+		{"Key", key}, {"Label", menuLabel(label.display)}, {"Control", control},
 	}, {}, ""};
 	result.attributes.insert(result.attributes.end(), attributes.begin(), attributes.end());
 	for (const auto& child : children) {
@@ -267,18 +310,19 @@ Element toggle(const char* key, const char* optionRef, bool applicable = true) {
 	for (const auto& group : optionGroups) {
 		for (const auto& option : group.options) {
 			if (std::string(option.element) == optionRef) {
-				return item(key, option.label(), "toggle", {{"OptionRef", optionRef}});
+				return item(key, {option.label(), option.displayLabel()}, "toggle", {{"OptionRef", optionRef}});
 			}
 		}
 	}
 	return {}; // A catalog reference must resolve; checked by the XML contract test.
 }
 
-// Native/group labels can fall back to English. Option labels deliberately do
-// not: an empty translation often identifies a language-specific option.
-std::string menuText(const char* const* labels) {
+// Preserve the original eligibility rules: native/group captions may fall back
+// to English, whereas missing prayer-language option captions hide the option.
+MenuLabel menuText(const char* const* labels) {
 	const std::string label = localized(labels);
-	return hasLabel(label) ? label : labels[JAZYK_EN];
+	const std::string prayer = hasLabel(label) ? label : labels[JAZYK_EN];
+	return {prayer, _device_language == JAZYK_UNDEF ? prayer : xml_settings_label(labels)};
 }
 
 Element menuXml() {

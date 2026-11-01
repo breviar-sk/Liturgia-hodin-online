@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Backend language code for this UI translation; English is the default. -->
+    <string name="xml_menu_language">en</string>
     <string name="version" translatable="false">26.11</string>
 
     <string name="app_name">Breviary</string>

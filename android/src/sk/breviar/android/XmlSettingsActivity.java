@@ -84,7 +84,15 @@ public class XmlSettingsActivity extends SettingsActivity {
     final int request = generation;
     final LoadTiming timing = new LoadTiming("Settings menu " + (groupName == null ? "root" : groupName));
     final Context context = getApplicationContext();
-    final String options = BreviarApp.getUrlOptions(context);
+    UrlOptions requestOptions = options();
+    requestOptions.params.remove("dl");
+    if (!BreviarApp.getOverrideLocale(this)) {
+      // Resolve through Android resources, including its English fallback and
+      // the cs -> cz mapping. This snapshot never enters saved reader options.
+      requestOptions.params.put("dl", BreviarApp.getContextForCustomLocale(this)
+          .getString(R.string.xml_menu_language));
+    }
+    final String options = requestOptions.params.isEmpty() ? "" : requestOptions.build(true);
     final String language = BreviarApp.getString(context, "language", "sk");
     if (navigationView.getMenu().size() == 0) {
       replaceMenu(() -> navigationView.getMenu().add(R.string.settings_loading).setEnabled(false));
@@ -150,7 +158,7 @@ public class XmlSettingsActivity extends SettingsActivity {
       return;
     }
     getSupportActionBar().setTitle(entry.key.equals("language") ? getString(R.string.lang_select)
-        : entry.key.equals("calendar") ? getString(R.string.calendar_settings_title) : entry.label);
+        : entry.key.equals("calendar") ? getString(R.string.calendar_settings_title) : menuLabel(entry));
     if (entry.isGroup) {
       renderChildren(menu, entry, true);
     } else if (entry.control.equals("choice")) {
@@ -208,8 +216,13 @@ public class XmlSettingsActivity extends SettingsActivity {
     }
   }
 
+  private String menuLabel(SettingsXml.MenuEntry entry) {
+    // Keep this entry point identical to the path named by AppearanceChooser.
+    return entry.key.equals("device") ? getString(R.string.settings_title) : entry.label;
+  }
+
   private MenuItem addRow(Menu menu, SettingsXml.MenuEntry entry) {
-    MenuItem row = menu.add(Menu.NONE, View.generateViewId(), Menu.NONE, entry.label);
+    MenuItem row = menu.add(Menu.NONE, View.generateViewId(), Menu.NONE, menuLabel(entry));
     rows.put(entry.key, row);
     return row;
   }

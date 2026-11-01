@@ -3,10 +3,9 @@ package sk.breviar.android;
 import android.app.Dialog;
 import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
 
 /** A readable entry point to e-ink mode, even when the normal menu is unreadable. */
-public class AppearanceChooser extends DialogFragment {
+public class AppearanceChooser extends SystemFontDialogFragment {
   static final String TAG = "appearance-chooser";
 
   @Override public void onCreate(Bundle state) {

@@ -418,6 +418,9 @@ extern short int query_type; // contains constants PRM_...
 	#define STR_JAZYK "j"
 #endif
 
+// Optional display language for XML settings, independent of prayer language.
+#define STR_DEVICE_LANGUAGE "dl"
+
 // --- force verzie pre option 0 až 4 ---
 #define FORCE_OPT_0 50
 #ifdef LONG_PARAM_NAMES

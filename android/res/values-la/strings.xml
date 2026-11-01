@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Backend language code for this UI translation; English is the default. -->
+    <string name="xml_menu_language">la</string>
     <string name="eink_mode">Modus E-ink (sine animationibus)</string>
     <string name="appearance_title">Modus ostensionis</string>
     <string name="appearance_message">Hoc postea mutare potes in %1$s > %2$s.</string>
@@ -26,7 +28,7 @@
     <string name="lang_is">Icelandic</string>
     <string name="override_locale">Linguam hanc in menu uti</string>
 
-    <string name="settings_title">Machina</string>
+    <string name="settings_title">Apparatus</string>
     <string name="vol_buttons">Pulsabulæ ad mutandum gradus claritatis ad promovendum</string>
     <string name="dimlock">Scrinium non claudere</string>
     <string name="mute">Modus «Non perturbare»</string>

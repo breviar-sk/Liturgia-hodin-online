@@ -384,6 +384,7 @@ short int ret_sc = MODL_SPOL_CAST_NULL;
 short int _global_linky;
 
 short int _global_jazyk;
+short int _device_language = JAZYK_UNDEF;
 short int _global_kalendar;
 short int _global_ritus;
 
@@ -6168,6 +6169,13 @@ short int atojazyk(char *jazyk) {
 	} while (i <= POCET_JAZYKOV);
 	return JAZYK_UNDEF;
 } // atojazyk()
+
+// Unlike the prayer language, an unknown display language falls back to English.
+static short int device_language(char* language) {
+	if (language == nullptr || language[0] == '\0') return JAZYK_UNDEF;
+	const short int parsed = atojazyk(language);
+	return parsed == JAZYK_UNDEF ? JAZYK_EN : parsed;
+}
 
 // popis: vráti číslo kalendára, napr. rehoľný
 //        inak vráti KALENDAR_NEURCENY
@@ -17677,6 +17685,8 @@ short int getForm(void) {
 	char errmsg[SMALL] = STR_EMPTY;
 
 	Log("getForm(): begin\n");
+	ptr = getenv(ADD_WWW_PREFIX_(STR_DEVICE_LANGUAGE));
+	if (ptr != nullptr) _device_language = device_language(ptr);
 
 	ptr = getenv(ADD_WWW_PREFIX_(STR_JAZYK));
 	if (ptr != NULL) {
@@ -18395,6 +18405,15 @@ short int parseQueryString(void) {
 	}
 	pocet = i; // od 0 po i - 1
 	LogParams("pocet == %d\n", pocet);
+
+	// Request-local presentation only: never append dl to saved prayer options.
+	for (i = pocet; i > 0; ) {
+		--i;
+		if (equals(param[i].name, STR_DEVICE_LANGUAGE)) {
+			_device_language = device_language(param[i].val);
+			break;
+		}
+	}
 
 	// 2006-08-01: doplnená podmienka, aby nepretieklo napĺňanie premenných, ak je ich viac
 	if ((strlen(query_string) > 0) && (pocet >= MAX_VARIABLES)) {
@@ -19665,6 +19684,7 @@ int breviar_main(int argc, const char** argv) {
 	memset(_global_opt_6_alternatives_multi, 0, sizeof(_global_opt_6_alternatives_multi));
 
 	_global_jazyk = 0;
+	_device_language = JAZYK_UNDEF;
 	_global_kalendar = 0;
 	_global_ritus = 0;
 	_global_theme = THEME_UNDEF;

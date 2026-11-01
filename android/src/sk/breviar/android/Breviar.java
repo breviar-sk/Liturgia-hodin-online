@@ -1310,7 +1310,8 @@ public class Breviar extends AppearanceActivity
         return true;
       }
 
-      new AlertDialog.Builder(this).setMessage(R.string.need_notification_permission).show();
+      AlertDialog dialog = new AlertDialog.Builder(this).setMessage(R.string.need_notification_permission).show();
+      SystemFontDialogFragment.applySystemFont(dialog);
       return false;
     }
 

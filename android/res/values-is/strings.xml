@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Backend language code for this UI translation; English is the default. -->
+    <string name="xml_menu_language">is</string>
     <string name="eink_mode">E-ink hamur (án hreyfinga)</string>
     <string name="appearance_title">Skjástilling</string>
     <string name="appearance_message">Þú getur breytt þessu síðar í %1$s > %2$s.</string>

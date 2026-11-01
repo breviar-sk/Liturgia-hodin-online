@@ -200,7 +200,7 @@ public class SettingsActivity extends AppearanceActivity
   }
 
 
-  public static class IntAlertDialogFragment extends DialogFragment {
+  public static class IntAlertDialogFragment extends SystemFontDialogFragment {
     SettingsActivity ctx;
     IntOptionInfo info;
     NumberPicker picker = null;
@@ -256,7 +256,7 @@ public class SettingsActivity extends AppearanceActivity
     }
   }
 
-  public static class ColorDialogFragment extends DialogFragment {
+  public static class ColorDialogFragment extends SystemFontDialogFragment {
     SettingsActivity ctx;
     ColorOptionInfo info;
 

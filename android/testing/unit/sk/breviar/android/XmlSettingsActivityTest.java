@@ -37,9 +37,12 @@ import java.util.concurrent.CountDownLatch;
 public class XmlSettingsActivityTest {
   @Implements(value = Server.class, isInAndroidSdk = false)
   public static class SettingsServer {
+    static volatile String lastOptions, lastLanguage;
     // Exercise real activities, XML parsing and Material widgets without JNI.
     @Implementation protected static void __staticInitializer__() {}
     @Implementation protected static String getSettingsXml(Context context, String options, String language) {
+      lastOptions = options;
+      lastLanguage = language;
       UrlOptions params = new UrlOptions(options);
       String selected = params.params.get("k");
       String result = settingsXml(true).replace("Name='k' Value=''",
@@ -127,6 +130,69 @@ public class XmlSettingsActivityTest {
       worker.submit(() -> {}).get(10, TimeUnit.SECONDS);
       Shadows.shadowOf(Looper.getMainLooper()).idle();
     } catch (Exception error) { throw new AssertionError(error); }
+  }
+
+  @Test @Config(qualifiers = "cs-rCZ")
+  public void xmlUsesUiLanguageWithoutChangingPrayerLanguageOrSavedOptions() {
+    Context context = RuntimeEnvironment.getApplication();
+    BreviarApp.setString(context, "language", "c2");
+    BreviarApp.setOverrideLocale(context, false);
+    String saved = "&amp;o0=1&amp;k=czop";
+    BreviarApp.setUrlOptions(context, saved);
+    try (ActivityController<MainSettings> controller = Robolectric.buildActivity(MainSettings.class).setup()) {
+      MainSettings activity = controller.get();
+      awaitSettings(activity);
+      assertEquals("cz", new UrlOptions(SettingsServer.lastOptions).params.get("dl"));
+      assertEquals("c2", SettingsServer.lastLanguage);
+      assertEquals(saved, BreviarApp.getUrlOptions(context));
+      BreviarApp.setOverrideLocale(context, true);
+      activity.refresh();
+      awaitSettings(activity);
+      assertFalse(new UrlOptions(SettingsServer.lastOptions).params.containsKey("dl"));
+      assertEquals("c2", SettingsServer.lastLanguage);
+      assertEquals(saved, BreviarApp.getUrlOptions(context));
+    }
+  }
+
+  @Test @Config(qualifiers = "fr-rFR")
+  public void untranslatedAndroidUiUsesEnglishXml() {
+    Context context = RuntimeEnvironment.getApplication();
+    BreviarApp.setString(context, "language", "sk");
+    BreviarApp.setOverrideLocale(context, false);
+    try (ActivityController<MainSettings> controller = Robolectric.buildActivity(MainSettings.class).setup()) {
+      awaitSettings(controller.get());
+      assertEquals("en", new UrlOptions(SettingsServer.lastOptions).params.get("dl"));
+      assertEquals("sk", SettingsServer.lastLanguage);
+    }
+  }
+
+  @Test @Config(qualifiers = "cs-rCZ")
+  public void disablingOverrideUsesSystemLanguageEvenInAnExistingPrayerLanguageActivity() {
+    Context context = RuntimeEnvironment.getApplication();
+    BreviarApp.setString(context, "language", "sk");
+    BreviarApp.setOverrideLocale(context, true);
+    try (ActivityController<MainSettings> controller = Robolectric.buildActivity(MainSettings.class).setup()) {
+      MainSettings activity = controller.get();
+      awaitSettings(activity);
+      assertFalse(new UrlOptions(SettingsServer.lastOptions).params.containsKey("dl"));
+      BreviarApp.setOverrideLocale(context, false);
+      activity.refresh();
+      awaitSettings(activity);
+      assertEquals("cz", new UrlOptions(SettingsServer.lastOptions).params.get("dl"));
+      assertEquals("sk", SettingsServer.lastLanguage);
+    }
+  }
+
+  @Test public void uiOverrideDiscardsStaleDisplayLanguageFromRequest() {
+    Context context = RuntimeEnvironment.getApplication();
+    BreviarApp.setString(context, "language", "sk");
+    BreviarApp.setOverrideLocale(context, true);
+    BreviarApp.setUrlOptions(context, "&amp;dl=hu&amp;o0=1");
+    try (ActivityController<MainSettings> controller = Robolectric.buildActivity(MainSettings.class).setup()) {
+      awaitSettings(controller.get());
+      assertFalse(new UrlOptions(SettingsServer.lastOptions).params.containsKey("dl"));
+      assertEquals("sk", SettingsServer.lastLanguage);
+    }
   }
 
   private static void show(XmlSettingsActivity activity, SettingsXml settings) {

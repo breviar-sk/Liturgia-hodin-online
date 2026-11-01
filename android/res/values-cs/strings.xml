@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Backend language code for this UI translation; English is the default. -->
+    <string name="xml_menu_language">cz</string>
     <string name="eink_mode">Režim E-ink (bez animací)</string>
     <string name="appearance_title">Režim zobrazení</string>
     <string name="appearance_message">Toto nastavení můžete později změnit v %1$s > %2$s.</string>

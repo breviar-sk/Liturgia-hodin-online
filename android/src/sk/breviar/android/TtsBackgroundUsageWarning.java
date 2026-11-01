@@ -11,11 +11,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 /** Explain explicit background restrictions before the reader starts speech. */
-public class TtsBackgroundUsageWarning extends DialogFragment {
+public class TtsBackgroundUsageWarning extends SystemFontDialogFragment {
   static final String TAG = "tts-background-usage";
   private static final String RESUME = "resume";
 
