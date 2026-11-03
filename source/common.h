@@ -258,18 +258,18 @@
 #define HTML_DIV_PSALM_INDENT       "div class=\"psalm-indent\""
 
 // TTS mute -- do not read for voice output
-#define HTML_DIV_TTS_MUTE           "div class=\"tts_mute\""
+#define HTML_DIV_TTS_MUTE           "div class=\"tts-mute\""
 
 // TTS navigation
-#define HTML_DIV_TTS_HEADING        "div class=\"tts_heading\""
-#define HTML_DIV_TTS_SECTION        "div class=\"tts_section\""
+#define HTML_DIV_TTS_HEADING        "div class=\"tts-heading\""
+#define HTML_DIV_TTS_SECTION        "div class=\"tts-section\""
 
 // TTS special - pause (for special characters); see constants TTS_PAUSE above
-#define HTML_SPAN_TTS_PAUSE_RED     "span class=\"tts_pause red\""
+#define HTML_SPAN_TTS_PAUSE_RED     "span class=\"tts-pause red\""
 
-#define HTML_SPAN_TTS_PAUSE         "span class=\"tts_pause\""
-#define HTML_SPAN_TTS_PAUSE_SHORT   "span class=\"tts_pause_short\""
-#define HTML_SPAN_TTS_PAUSE_LONG    "span class=\"tts_pause_long\""
+#define HTML_SPAN_TTS_PAUSE         "span class=\"tts-pause\""
+#define HTML_SPAN_TTS_PAUSE_SHORT   "span class=\"tts-pause-short\""
+#define HTML_SPAN_TTS_PAUSE_LONG    "span class=\"tts-pause-long\""
 
 // HTML tables defined using DIVs
 #define HTML_TABLE			        "div class=\"table\"" // "table"
@@ -288,7 +288,7 @@
 #define HTML_TABLE_CAPTION_END	    HTML_DIV_END "" HTML_COMMENT_BEGIN "caption" HTML_COMMENT_END // "</th>"
 #define HTML_TABLE_ROW_END	        HTML_DIV_END "" HTML_COMMENT_BEGIN "row" HTML_COMMENT_END // "</tr>"
 #define HTML_TABLE_CELL_END	        HTML_DIV_END "" HTML_COMMENT_BEGIN "cell" HTML_COMMENT_END // "</td>"
-#define HTML_DIV_TTS_MUTE_END       HTML_DIV_END "" HTML_COMMENT_BEGIN "tts_mute" HTML_COMMENT_END // "</div>" for HTML_DIV_TTS_MUTE
+#define HTML_DIV_TTS_MUTE_END       HTML_DIV_END "" HTML_COMMENT_BEGIN "tts-mute" HTML_COMMENT_END // "</div>" for HTML_DIV_TTS_MUTE
 
 #define HTML_TABLE_CELL_BORDER_END	HTML_TABLE_CELL_END
 
@@ -345,7 +345,7 @@
 #define HTML_CLASS_CALENDAR       "class=\"calendar\""
 
 #define HTML_CALENDAR_HEADING       "span class=\"calendar heading\""
-#define HTML_CALENDAR_DAYS          "span class=\"calendar day_name\""
+#define HTML_CALENDAR_DAYS          "span class=\"calendar day-name\""
 #define HTML_CALENDAR_TODAY_SUNDAY  "span class=\"calendar today bold\""
 #define HTML_CALENDAR_TODAY         "span class=\"calendar today\""
 

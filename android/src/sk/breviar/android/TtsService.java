@@ -571,15 +571,15 @@ public class TtsService extends Service
         "  if (node.nodeType != Node.ELEMENT_NODE) {" +
         "    return false;" +
         "  }" +
-        "  if (node.className == 'tts_pause') {" +
+        "  if (node.className == 'tts-pause') {" +
         "    sections[sections.length - 1] += '#TTS_PAUSE_LONG';" +
         "    return false;" +
         "  }" +
-        "  if (node.className == 'tts_pause_short') {" +
+        "  if (node.className == 'tts-pause-short') {" +
         "    sections[sections.length - 1] += '#TTS_PAUSE_SHORT';" +
         "    return false;" +
         "  }" +
-        "  if (node.className == 'tts_section') {" +
+        "  if (node.className == 'tts-section') {" +
         "    sections.push(\"\");" +
         "  }" +
         "  if (window.getComputedStyle(node).display == 'none') {" +

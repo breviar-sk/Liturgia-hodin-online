@@ -298,18 +298,18 @@ const char* nazov_spolc_ANCHOR[POCET_SPOL_CASTI + 1] =
 // the names of liturgical periods (usually lowecase) / nazov_obdobia: string pre nazov liturgickeho obdobia
 const char* nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
-	{ "Adventné obdobie", "doba adventní", "", "Tempus Adventus", "", "doba adventní", "adventi idő", "" /* ru_text */, "перыяд Адвэнту", "Aðventutíð", "tiempo de adviento", "Advent dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Adventné obdobie", "doba adventní", "", "Tempus Adventus", "", "doba adventní", "adventi idő", "" /* ru_text */, "перыяд Адвэнту", "Aðventutíð", "tiempo de adviento", "Advent dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Oktáva Narodenia Pána", "oktáv Narození Páně", "", "Octava Nativitatis", "", "oktáv Narození Páně", "karácsony nyolcada", "" /* ru_text */, "актава Божага Нараджэння", "Áttund Fæðingar Drottins", "octava de Navidad", "Milad Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vianočné obdobie", "doba vánoční", "", "Tempus Nativitatis", "", "doba vánoční", "karácsonyi idő", "" /* ru_text */, "перыяд Божага Нараджэння", "Jólatíð", "tiempo de navidad", "Milad dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vianočné obdobie", "doba vánoční", "", "Tempus Nativitatis", "", "doba vánoční", "karácsonyi idő", "" /* ru_text */, "перыяд Божага Нараджэння", "Jólatíð", "tiempo de navidad", "Milad dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Cezročné obdobie", "mezidobí", "", "Tempus per annum", "", "mezidobí", "évközi idő", "" /* ru_text */, "звычайны перыяд", "Innan ársins", "tiempo ordinario", "Adi dövr", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Pôstne obdobie", "doba postní", "", "Tempus Quadragesimæ", "", "doba postní", "nagyböjti idő", "" /* ru_text */, "перыяд Вялікага посту", "Föstutíð", "tiempo de cuaresma", "Oruc dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Svätý týždeň", "Svatý týden", "", "Hebdomada sancta", "", "Svatý týden", "nagyhét", "" /* ru_text */, "Вялікі тыдзень", "Dymbilvika", "semana santa", "Müqəddəs Həftə", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočné trojdnie", "Velikonoční triduum", "", "Sacrum Triduum paschale", "", "Velikonoční triduum", "szent három nap", "" /* ru_text */, "Святы Пасхальны Трыдуум", "Heilagir bænadagar", "santo triduo pascual", "Pasxanın Müqəddəs Üç günü", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočná oktáva", "velikonoční oktáv", "", "Octava Paschæ", "", "velikonoční oktáv", "húsvét nyolcada", "" /* ru_text */, "актава Пасхі", "Páskaáttund", "octava de Pascua", "Pasxanın Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočné obdobie", "doba velikonoční", "", "Tempus paschale", "", "doba velikonoční", "húsvéti idő", "" /* ru_text */, "Велікодны перыяд", "Páskatíð", "tiempo pascual", "Pasxa dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočné obdobie", "doba velikonoční", "", "Tempus paschale", "", "doba velikonoční", "húsvéti idő", "" /* ru_text */, "Велікодны перыяд", "Páskatíð", "tiempo pascual", "Pasxa dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Adventné obdobie", "doba adventní", "Advent", "Tempus Adventus", "", "doba adventní", "adventi idő", "" /* ru_text */, "перыяд Адвэнту", "Aðventutíð", "tiempo de adviento", "Advent dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Adventné obdobie", "doba adventní", "Advent", "Tempus Adventus", "", "doba adventní", "adventi idő", "" /* ru_text */, "перыяд Адвэнту", "Aðventutíð", "tiempo de adviento", "Advent dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Oktáva Narodenia Pána", "oktáv Narození Páně", "Nativity Octave", "Octava Nativitatis", "", "oktáv Narození Páně", "karácsony nyolcada", "" /* ru_text */, "актава Божага Нараджэння", "Áttund Fæðingar Drottins", "octava de Navidad", "Milad Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Vianočné obdobie", "doba vánoční", "Christmas", "Tempus Nativitatis", "", "doba vánoční", "karácsonyi idő", "" /* ru_text */, "перыяд Божага Нараджэння", "Jólatíð", "tiempo de navidad", "Milad dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Vianočné obdobie", "doba vánoční", "Christmas", "Tempus Nativitatis", "", "doba vánoční", "karácsonyi idő", "" /* ru_text */, "перыяд Божага Нараджэння", "Jólatíð", "tiempo de navidad", "Milad dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Cezročné obdobie", "mezidobí", "Per year", "Tempus per annum", "", "mezidobí", "évközi idő", "" /* ru_text */, "звычайны перыяд", "Innan ársins", "tiempo ordinario", "Adi dövr", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Pôstne obdobie", "doba postní", "Lent", "Tempus Quadragesimæ", "", "doba postní", "nagyböjti idő", "" /* ru_text */, "перыяд Вялікага посту", "Föstutíð", "tiempo de cuaresma", "Oruc dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Svätý týždeň", "Svatý týden", "Holy Week", "Hebdomada sancta", "", "Svatý týden", "nagyhét", "" /* ru_text */, "Вялікі тыдзень", "Dymbilvika", "semana santa", "Müqəddəs Həftə", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočné trojdnie", "Velikonoční triduum", "Easter Triduum", "Sacrum Triduum paschale", "", "Velikonoční triduum", "szent három nap", "" /* ru_text */, "Святы Пасхальны Трыдуум", "Heilagir bænadagar", "santo triduo pascual", "Pasxanın Müqəddəs Üç günü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočná oktáva", "velikonoční oktáv", "Easter Octave", "Octava Paschæ", "", "velikonoční oktáv", "húsvét nyolcada", "" /* ru_text */, "актава Пасхі", "Páskaáttund", "octava de Pascua", "Pasxanın Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočné obdobie", "doba velikonoční", "Easter season", "Tempus paschale", "", "doba velikonoční", "húsvéti idő", "" /* ru_text */, "Велікодны перыяд", "Páskatíð", "tiempo pascual", "Pasxa dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočné obdobie", "doba velikonoční", "Easter season", "Tempus paschale", "", "doba velikonoční", "húsvéti idő", "" /* ru_text */, "Велікодны перыяд", "Páskatíð", "tiempo pascual", "Pasxa dövrü", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 
 #define		nazov_obdobia(a)	nazov_obdobia_jazyk[a][_global_jazyk]
@@ -317,18 +317,18 @@ const char* nazov_obdobia_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 // the names of liturgical periods (usually lowecase) / nazov_obdobia: string pre názov liturgického obdobia, rozšírený
 const char* nazov_obdobia_ext_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
-	{ "Adventné obdobie I (do 16. decembra)", "doba adventní I", "", "Tempus Adventus I", "", "doba adventní I", "adventi idő I (dec. 16-ig)", "ru_text", "перыяд Адвэнту I", "Aðventutíð I (til 16. desember)", "tiempo de adviento hasta el día 16 de diciembre", "Advent dövrü I (dekabrın 16-dək)", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Adventné obdobie II (po 16. decembri)", "doba adventní II", "", "Tempus Adventus II", "", "doba adventní II", "adventi idő II (dec. 16 után)", "ru_text", "перыяд Адвэнту II", "Aðventutíð II (eftir 16. desember)", "tiempo de adviento desde el día 17 de diciembre", "Advent dövrü II (dekabrın 16-dan sonra)", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Oktáva Narodenia Pána", "oktáv Narození Páně", "", "Octava Nativitatis", "", "oktáv Narození Páně", "karácsony nyolcada", "ru_text", "актава Божага Нараджэння", "Áttund Fæðingar Drottins", "octava de Navidad", "Milad Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vianočné obdobie I (do Zjavenia Pána)", "doba vánoční I", "", "Tempus Nativitatis I", "", "doba vánoční II", "karácsonyi idő I (Urunk megjelenéséig)", "ru_text", "перыяд Божага Нараджэння I", "Jólatíð I (til Birtingar Drottins)", "tiempo de navidad hasta la Epifanía", "Milad dövrü (Epifaniyaya qədər)", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vianočné obdobie II (po Zjavení Pána)", "doba vánoční II", "", "Tempus Nativitatis II", "", "doba vánoční II", "karácsonyi idő II (Urunk megjelenése után)", "ru_text", "перыяд Божага Нараджэння II", "Jólatíð II (eftir Birtingu Drottins)", "tiempo de navidad posteriores a la Epifanía", "Milad dövrü (Epifaniyadan sonra)", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Cezročné obdobie", "mezidobí", "", "Tempus per annum", "", "mezidobí", "évközi idő", "ru_text", "звычайны перыяд", "Innan ársins", "tiempo ordinario", "Adi dövr", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Pôstne obdobie I (do Kvetnej nedele)", "doba postní I", "", "Tempus Quadragesimæ I", "", "doba postní I", "nagyböjti idő I (Virágvasárnapig)", "ru_text", "перыяд Вялікага посту", "Föstutíð I (til Pálmasunnudags)", "tiempo de cuaresma", "Oruc dövrü I (Müqəddəs həftəyə qədər)", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Pôstne obdobie II (Svätý týždeň)", "Svatý týden", "", "Hebdomada sancta", "", "Svatý týden", "nagyböjti idő II (Nagyhét)", "ru_text", "Вялікі тыдзень", "Föstutíð II (Dymbilvika)", "semana santa", "Oruc dövrü II (Müqəddəs Həftə)", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočné trojdnie", "Velikonoční triduum", "", "Sacrum Triduum paschale", "", "Velikonoční triduum", "szent három nap", "ru_text", "Святы Пасхальны Трыдуум", "Heilagir bænadagar", "santo triduo pascual de la pasión y resurrección del Señor", "Pasxanın Müqəddəs Üç günü", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočná oktáva", "velikonoční oktáv", "", "Octava Paschæ", "", "velikonoční oktáv", "húsvét nyolcada", "ru_text", "актава Пасхі", "Páskaáttund", "octava de Pascua", "Pasxanın Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočné obdobie I (do Nanebovstúpenia Pána)", "doba velikonoční I", "", "Tempus paschale I", "", "doba velikonoční I", "húsvéti idő I (Urunk mennybemeneteléig)", "ru_text", "Велікодны перыяд I", "Páskatíð I (til Uppstigningar Drottins)", "tiempo pascual hasta la Ascensión del Señor", "Pasxa dövrü I (İsanın Göyə qalxmasına qədər)", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočné obdobie II (po Nanebovstúpení Pána)", "doba velikonoční II", "", "Tempus paschale II", "", "doba velikonoční II", "húsvéti idő II (Urunk mennybemenetele után)", "ru_text", "Велікодны перыяд II", "Páskatíð II (eftir Uppstigningu Drottins)", "tiempo pascual después de la Ascensión del Señor", "Pasxa dövrü I (İsanın Göyə qalxmasından sonra", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Adventné obdobie I (do 16. decembra)", "doba adventní I", "Advent season I", "Tempus Adventus I", "", "doba adventní I", "adventi idő I (dec. 16-ig)", "ru_text", "перыяд Адвэнту I", "Aðventutíð I (til 16. desember)", "tiempo de adviento hasta el día 16 de diciembre", "Advent dövrü I (dekabrın 16-dək)", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Adventné obdobie II (po 16. decembri)", "doba adventní II", "Advent season II", "Tempus Adventus II", "", "doba adventní II", "adventi idő II (dec. 16 után)", "ru_text", "перыяд Адвэнту II", "Aðventutíð II (eftir 16. desember)", "tiempo de adviento desde el día 17 de diciembre", "Advent dövrü II (dekabrın 16-dan sonra)", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Oktáva Narodenia Pána", "oktáv Narození Páně", "Octave of the Nativity", "Octava Nativitatis", "", "oktáv Narození Páně", "karácsony nyolcada", "ru_text", "актава Божага Нараджэння", "Áttund Fæðingar Drottins", "octava de Navidad", "Milad Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Vianočné obdobie I (do Zjavenia Pána)", "doba vánoční I", "Christmas season I", "Tempus Nativitatis I", "", "doba vánoční II", "karácsonyi idő I (Urunk megjelenéséig)", "ru_text", "перыяд Божага Нараджэння I", "Jólatíð I (til Birtingar Drottins)", "tiempo de navidad hasta la Epifanía", "Milad dövrü (Epifaniyaya qədər)", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Vianočné obdobie II (po Zjavení Pána)", "doba vánoční II", "Christmas season II", "Tempus Nativitatis II", "", "doba vánoční II", "karácsonyi idő II (Urunk megjelenése után)", "ru_text", "перыяд Божага Нараджэння II", "Jólatíð II (eftir Birtingu Drottins)", "tiempo de navidad posteriores a la Epifanía", "Milad dövrü (Epifaniyadan sonra)", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Cezročné obdobie", "mezidobí", "Time per year", "Tempus per annum", "", "mezidobí", "évközi idő", "ru_text", "звычайны перыяд", "Innan ársins", "tiempo ordinario", "Adi dövr", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Pôstne obdobie I (do Kvetnej nedele)", "doba postní I", "Lent I", "Tempus Quadragesimæ I", "", "doba postní I", "nagyböjti idő I (Virágvasárnapig)", "ru_text", "перыяд Вялікага посту", "Föstutíð I (til Pálmasunnudags)", "tiempo de cuaresma", "Oruc dövrü I (Müqəddəs həftəyə qədər)", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Pôstne obdobie II (Svätý týždeň)", "Svatý týden", "Lent II (Holy Week)", "Hebdomada sancta", "", "Svatý týden", "nagyböjti idő II (Nagyhét)", "ru_text", "Вялікі тыдзень", "Föstutíð II (Dymbilvika)", "semana santa", "Oruc dövrü II (Müqəddəs Həftə)", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočné trojdnie", "Velikonoční triduum", "Easter Triduum", "Sacrum Triduum paschale", "", "Velikonoční triduum", "szent három nap", "ru_text", "Святы Пасхальны Трыдуум", "Heilagir bænadagar", "santo triduo pascual de la pasión y resurrección del Señor", "Pasxanın Müqəddəs Üç günü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočná oktáva", "velikonoční oktáv", "Easter Octave", "Octava Paschæ", "", "velikonoční oktáv", "húsvét nyolcada", "ru_text", "актава Пасхі", "Páskaáttund", "octava de Pascua", "Pasxanın Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočné obdobie I (do Nanebovstúpenia Pána)", "doba velikonoční I", "Easter season I", "Tempus paschale I", "", "doba velikonoční I", "húsvéti idő I (Urunk mennybemeneteléig)", "ru_text", "Велікодны перыяд I", "Páskatíð I (til Uppstigningar Drottins)", "tiempo pascual hasta la Ascensión del Señor", "Pasxa dövrü I (İsanın Göyə qalxmasına qədər)", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočné obdobie II (po Nanebovstúpení Pána)", "doba velikonoční II", "Easter season II", "Tempus paschale II", "", "doba velikonoční II", "húsvéti idő II (Urunk mennybemenetele után)", "ru_text", "Велікодны перыяд II", "Páskatíð II (eftir Uppstigningu Drottins)", "tiempo pascual después de la Ascensión del Señor", "Pasxa dövrü I (İsanın Göyə qalxmasından sonra", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 
 #define		nazov_obdobia_ext(a)	nazov_obdobia_ext_jazyk[a][_global_jazyk]
@@ -336,18 +336,18 @@ const char* nazov_obdobia_ext_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 // the names of liturgical periods (usually lowecase) full-shortened / nazov_obdobia: string pre názov liturgického obdobia, stručný ale plný
 const char* nazov_obdobia_short_jazyk[POCET_OBDOBI + 1][POCET_JAZYKOV + 1] =
 {
-	{ "Adventné obd. I", "doba adventní I", "", "Tempus Adventus I", "", "doba adventní I", "adventi idő I", "ru_text", "перыяд Адвэнту I", "Aðventutíð I", "tiempo de adviento I", "Advent dövrü I", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Adventné obd. II", "doba adventní II", "", "Tempus Adventus II", "", "doba adventní II", "adventi idő II", "ru_text", "перыяд Адвэнту II", "Aðventutíð II", "tiempo de adviento II", "Advent dövrü II", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Oktáva Narodenia Pána", "oktáv Narození Páně", "", "Octava Nativitatis", "", "oktáv Narození Páně", "karácsony nyolcada", "ru_text", "актава Божага Нараджэння", "Áttund Fæðingar Drottins", "octava de Navidad", "Milad Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vianočné obd. I", "doba vánoční I", "", "Tempus Nativitatis I", "", "doba vánoční II", "karácsonyi idő I", "ru_text", "перыяд Божага Нараджэння I", "Jólatíð I", "tiempo de navidad I", "Milad dövrü I", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Vianočné obd. II", "doba vánoční II", "", "Tempus Nativitatis II", "", "doba vánoční II", "karácsonyi idő II", "ru_text", "перыяд Божага Нараджэння II", "Jólatíð II", "tiempo de navidad II", "Milad dövrü II", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Cezročné obd.", "mezidobí", "", "Tempus per annum", "", "mezidobí", "évközi idő", "ru_text", "звычайны перыяд", "Innan ársins", "tiempo ordinario", "Adi dövr", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Pôstne obd. I", "doba postní I", "", "Tempus Quadragesimæ I", "", "doba postní I", "nagyböjti idő I", "ru_text", "перыяд Вялікага посту", "Föstutíð I", "tiempo de cuaresma", "Oruc dövrü I", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Svätý týždeň", "Svatý týden", "", "Hebdomada sancta", "", "Svatý týden", "Nagyhét", "ru_text", "Вялікі тыдзень", "Dymbilvikaext", "semana santa", "Müqəddəs Həftə", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočné trojdnie", "Velikonoční triduum", "", "Sacrum Triduum paschale", "", "Velikonoční triduum", "szent három nap", "ru_text", "Святы Пасхальны Трыдуум", "Heilagir bænadagar", "santo triduo pascual", "Pasxanın Müq. Üç günü", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočná oktáva", "velikonoční oktáv", "", "Octava Paschæ", "", "velikonoční oktáv", "húsvét nyolcada", "ru_text", "актава Пасхі", "Páskaáttund", "octava de Pascua", "Pasxanın Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočné obd. I", "doba velikonoční I", "", "Tempus paschale I", "", "doba velikonoční I", "húsvéti idő I", "ru_text", "Велікодны перыяд I", "Páskatíð I", "tiempo pascual I", "Pasxa dövrü I", /* STRING_1_FOR_NEW_LANGUAGE */ },
-	{ "Veľkonočné obd. II", "doba velikonoční II", "", "Tempus paschale II", "", "doba velikonoční II", "húsvéti idő II", "ru_text", "Велікодны перыяд II", "Páskatíð II", "tiempo pascual II", "Pasxa dövrü II", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Adventné obd. I", "doba adventní I", "Advent season I", "Tempus Adventus I", "", "doba adventní I", "adventi idő I", "ru_text", "перыяд Адвэнту I", "Aðventutíð I", "tiempo de adviento I", "Advent dövrü I", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Adventné obd. II", "doba adventní II", "Advent season II", "Tempus Adventus II", "", "doba adventní II", "adventi idő II", "ru_text", "перыяд Адвэнту II", "Aðventutíð II", "tiempo de adviento II", "Advent dövrü II", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Oktáva Narodenia Pána", "oktáv Narození Páně", "Octave of the Nativity", "Octava Nativitatis", "", "oktáv Narození Páně", "karácsony nyolcada", "ru_text", "актава Божага Нараджэння", "Áttund Fæðingar Drottins", "octava de Navidad", "Milad Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Vianočné obd. I", "doba vánoční I", "Christmas season I", "Tempus Nativitatis I", "", "doba vánoční II", "karácsonyi idő I", "ru_text", "перыяд Божага Нараджэння I", "Jólatíð I", "tiempo de navidad I", "Milad dövrü I", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Vianočné obd. II", "doba vánoční II", "Christmas season II", "Tempus Nativitatis II", "", "doba vánoční II", "karácsonyi idő II", "ru_text", "перыяд Божага Нараджэння II", "Jólatíð II", "tiempo de navidad II", "Milad dövrü II", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Cezročné obd.", "mezidobí", "Per year", "Tempus per annum", "Time per year", "mezidobí", "évközi idő", "ru_text", "звычайны перыяд", "Innan ársins", "tiempo ordinario", "Adi dövr", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Pôstne obd. I", "doba postní I", "Lent I", "Tempus Quadragesimæ I", "", "doba postní I", "nagyböjti idő I", "ru_text", "перыяд Вялікага посту", "Föstutíð I", "tiempo de cuaresma", "Oruc dövrü I", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Svätý týždeň", "Svatý týden", "Holy Week", "Hebdomada sancta", "", "Svatý týden", "Nagyhét", "ru_text", "Вялікі тыдзень", "Dymbilvikaext", "semana santa", "Müqəddəs Həftə", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočné trojdnie", "Velikonoční triduum", "Easter Triduum", "Sacrum Triduum paschale", "", "Velikonoční triduum", "szent három nap", "ru_text", "Святы Пасхальны Трыдуум", "Heilagir bænadagar", "santo triduo pascual", "Pasxanın Müq. Üç günü", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočná oktáva", "velikonoční oktáv", "Easter Octave", "Octava Paschæ", "", "velikonoční oktáv", "húsvét nyolcada", "ru_text", "актава Пасхі", "Páskaáttund", "octava de Pascua", "Pasxanın Oktavası", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočné obd. I", "doba velikonoční I", "Easter season I", "Tempus paschale I", "", "doba velikonoční I", "húsvéti idő I", "ru_text", "Велікодны перыяд I", "Páskatíð I", "tiempo pascual I", "Pasxa dövrü I", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Veľkonočné obd. II", "doba velikonoční II", "Easter season II", "Tempus paschale II", "", "doba velikonoční II", "húsvéti idő II", "ru_text", "Велікодны перыяд II", "Páskatíð II", "tiempo pascual II", "Pasxa dövrü II", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 
 #define		nazov_obdobia_short(a)	nazov_obdobia_short_jazyk[a][_global_jazyk]
@@ -3824,7 +3824,7 @@ const char* html_text_opt_1_zalm95[POCET_JAZYKOV + 1] =
 {
 	"namiesto žalmov 24, 67 resp. 100 použiť žalm 95",
 	"místo žalmů 24, 67 resp. 100 použít žalm 95",
-	"psalm 95",
+	"instead of Psalms 24, 67 or 100, use Psalm 95",
 	"psalmos 100, 67, et 24 psalmo 95 substituere",
 	"",
 	"místo žalmů 24, 67 resp. 100 použít žalm 95",
@@ -4823,12 +4823,12 @@ const char* html_text_opt_5_KomplHymnusB[POCET_JAZYKOV + 1] =
 
 const char* html_text_opt_5_KomplOkt1[POCET_JAZYKOV + 1] =
 {
-	"prvé nedeľné kompletórium",
-	"první nedělní kompletář",
-	"1st Sunday Compline",
-	"I Completorium Dominicæ",
+	"Veľkonočná oktáva: prvé nedeľné kompletórium",
+	"velikonoční oktáv: první nedělní kompletář",
+	"Easter Octave: 1st Sunday Compline",
+	"Octava Paschæ: I Completorium Dominicæ",
 	"",
-	"první nedělní kompletář",
+	"velikonoční oktáv: první nedělní kompletář",
 	"befejező imaóra I. e. d. után",
 	"" /* ru_text */,
 	"" /* by_text */,
@@ -4840,12 +4840,12 @@ const char* html_text_opt_5_KomplOkt1[POCET_JAZYKOV + 1] =
 
 const char* html_text_opt_5_KomplOkt2[POCET_JAZYKOV + 1] =
 {
-	"druhé nedeľné kompletórium",
-	"druhý nedělní kompletář",
-	"2nd Sunday Compline",
-	"II Completorium Dominicæ",
+	"Veľkonočná oktáva: druhé nedeľné kompletórium",
+	"velikonoční oktáv: druhý nedělní kompletář",
+	"Easter Octave: 2nd Sunday Compline",
+	"Octava Paschæ: II Completorium Dominicæ",
 	"",
-	"druhý nedělní kompletář",
+	"velikonoční oktáv: druhý nedělní kompletář",
 	"befejező imaóra II. e. d. után",
 	"" /* ru_text */,
 	"" /* by_text */,
@@ -4859,7 +4859,7 @@ const char* html_text_opt_5_PCHymnusI[POCET_JAZYKOV + 1] =
 {
 	"hymnus I. [Ak je posvätné čítanie v noci alebo včasráno]",
 	"hymnus I. [V noci a časně ráno]",
-	"hymn I. [during the night and early in the morning]",
+	"Reading: hymn I. [during the night and early in the morning]",
 	"hymnum I. [Quando Officium lectionis dicitur noctu vel summo mane]",
 	"",
 	"hymnus I. [V noci a časně ráno]",
@@ -4876,7 +4876,7 @@ const char* html_text_opt_5_PCHymnusII[POCET_JAZYKOV + 1] =
 {
 	"hymnus II. [Ak je posvätné čítanie cez deň]",
 	"hymnus II. [uprostřed dne]",
-	"hymn II. [during the day]",
+	"Reading: hymn II. [during the day]",
 	"hymnum II. [Quando Officium lectionis dicitur diurno tempore]",
 	"",
 	"hymnus II. [Během dne]",
@@ -4892,8 +4892,8 @@ const char* html_text_opt_5_PCHymnusII[POCET_JAZYKOV + 1] =
 const char* html_text_opt_5_PCHymnusVNnedela[POCET_JAZYKOV + 1] =
 {
 	"hymnus Toto je pravý Boží deň",
-	"hymnus nedělní",
-	"Sunday's hymn",
+	"doba velikonoční, čtení: hymnus nedělní",
+	"Easter Time, Readings: Sunday's hymn",
 	"hymnum dominicalem",
 	"",
 	"hymnus nedělní",
@@ -4909,11 +4909,11 @@ const char* html_text_opt_5_PCHymnusVNnedela[POCET_JAZYKOV + 1] =
 const char* html_text_opt_5_PCHymnusVNferia[POCET_JAZYKOV + 1] =
 {
 	"hymnus Nech z výšin neba radosť znie",
-	"hymnus z férie",
-	"ferial hymn",
+	"doba velikonoční, čtení: hymnus z férie",
+	"Easter Time, Readings: ferial hymn",
 	"hymnum ferialem",
 	"",
-	"hymnus z férie",
+	"doba velikonoční, ranní chvály: hymnus z férie",
 	"Örvendj, ég, messzi csillagok",
 	"" /* ru_text */,
 	"гімн ...",
@@ -4926,11 +4926,11 @@ const char* html_text_opt_5_PCHymnusVNferia[POCET_JAZYKOV + 1] =
 const char* html_text_opt_5_RChHymnusVNnedela[POCET_JAZYKOV + 1] =
 {
 	"hymnus Bronie sa zora na nebi",
-	"hymnus nedělní",
-	"Sunday's hymn",
+	"doba velikonoční, ranní chvály: hymnus nedělní",
+	"Easter Time, Morning prayer: Sunday's hymn",
 	"hymnum dominicalem",
 	"",
-	"hymnus nedělní",
+	"doba velikonoční, ranní chvály: hymnus nedělní",
 	"Rózsálló hajnalfény ragyog",
 	"" /* ru_text */,
 	"гімн ...",
@@ -4943,11 +4943,11 @@ const char* html_text_opt_5_RChHymnusVNnedela[POCET_JAZYKOV + 1] =
 const char* html_text_opt_5_RChHymnusVNferia[POCET_JAZYKOV + 1] =
 {
 	"hymnus Nech novým Jeruzalemom",
-	"hymnus z férie",
-	"hymnus férie",
+	"doba velikonoční, ranní chvály: hymnus z férie",
+	"Easter Time, Morning prayer: ferial hymn",
 	"hymnum ferialem",
 	"",
-	"hymnus z férie",
+	"doba velikonoční, ranní chvály: hymnus z férie",
 	"Az új Sionnak kórusa",
 	"" /* ru_text */,
 	"гімн ...",
@@ -4960,11 +4960,11 @@ const char* html_text_opt_5_RChHymnusVNferia[POCET_JAZYKOV + 1] =
 const char* html_text_opt_5_VespHymnusVNnedela[POCET_JAZYKOV + 1] =
 {
 	"hymnus Pri Baránkovej večeri",
-	"hymnus nedělní",
-	"hymnus NE",
+	"doba velikonoční, nešpory: hymnus nedělní",
+	"Easter Time, Evening prayer: Sunday's hymn",
 	"hymnum dominicalem",
 	"",
-	"hymnus nedělní",
+	"doba velikonoční, večerní chvály: hymnus nedělní",
 	"Ím, vár a Bárány asztala",
 	"" /* ru_text */,
 	"гімн ...",
@@ -4977,11 +4977,11 @@ const char* html_text_opt_5_VespHymnusVNnedela[POCET_JAZYKOV + 1] =
 const char* html_text_opt_5_VespHymnusVNferia[POCET_JAZYKOV + 1] =
 {
 	"hymnus Kráľ vekov, Pane, Boží Syn",
-	"hymnus z férie",
-	"hymnus férie",
+	"doba velikonoční, nešpory: hymnus z férie",
+	"Easter Time, Evening prayer: ferial hymn",
 	"hymnum ferialem",
 	"",
-	"hymnus z férie",
+	"doba velikonoční, večerní chvály: hymnus z férie",
 	"Örök Királyunk, szent Urunk",
 	"" /* ru_text */,
 	"гімн ...",
@@ -4995,7 +4995,7 @@ const char* html_text_opt_5_MCDPredHymnus1[POCET_JAZYKOV + 1] =
 {
 	"hymnus Príď, Duchu Svätý",
 	"hymnus K nám, Duchu Svatý, nyní spěj",
-	"hymn 1",
+	"hymn A",
 	"hymnum Nunc, Sancte, nobis, Spíritus",
 	"",
 	"hymnus K nám, Duchu Svatý, nyní spěj",
@@ -5012,7 +5012,7 @@ const char* html_text_opt_5_MCDPredHymnus2[POCET_JAZYKOV + 1] =
 {
 	"hymnus Deviata je už hodina",
 	"hymnus Je třetí denní hodina",
-	"hymn 2",
+	"hymn B",
 	"hymnum Certum tenéntes órdinem",
 	"",
 	"hymnus Je třetí denní hodina",
@@ -5029,7 +5029,7 @@ const char* html_text_opt_5_MCDNaHymnus1[POCET_JAZYKOV + 1] =
 {
 	"hymnus Mocný Vládca, verný Bože",
 	"hymnus Jsi mocný Vládce, věrný Bůh",
-	"hymn 1",
+	"hymn A",
 	"hymnum Rector potens, verax Deus",
 	"",
 	"hymnus Jsi mocný Vládce, věrný Bůh",
@@ -5046,7 +5046,7 @@ const char* html_text_opt_5_MCDNaHymnus2[POCET_JAZYKOV + 1] =
 {
 	"hymnus Na nebi slnko vrcholí",
 	"hymnus Teď Pánu chvály zpívejme",
-	"hymn 2",
+	"hymn B",
 	"hymnum Dicámus laudes Dómino",
 	"",
 	"hymnus Teď Pánu chvály zpívejme",
@@ -5063,7 +5063,7 @@ const char* html_text_opt_5_MCDPoHymnus1[POCET_JAZYKOV + 1] =
 {
 	"hymnus Celý svet v pohyb uvádzaš",
 	"hymnus Svět celý v pohyb uvádíš",
-	"hymn 1",
+	"hymn A",
 	"hymnum Rerum, Deus, tenax vigor",
 	"",
 	"hymnus Svět celý v pohyb uvádíš",
@@ -5080,7 +5080,7 @@ const char* html_text_opt_5_MCDPoHymnus2[POCET_JAZYKOV + 1] =
 {
 	"hymnus Z Božej milosti tretí raz",
 	"hymnus Hodina třetí z poledne",
-	"hymn 2",
+	"hymn B",
 	"hymnum Ternis horárum términis",
 	"",
 	"hymnus Hodina třetí z poledne",
@@ -5131,7 +5131,7 @@ const char* html_text_opt_5_Hymns_ordinary[POCET_JAZYKOV + 1] =
 {
 	"hymny zo žaltára",
 	"hymny ze žaltáře",
-	"",
+	"hymns from Psaltery",
 	"hymni de psalterio",
 	"",
 	"hymny ze žaltáře",
@@ -5148,7 +5148,7 @@ const char* html_text_opt_5_OCR34Hymns[POCET_JAZYKOV + 1] =
 {
 	"hymny pre 34. týždeň Cezročného obdobia",
 	"hymny pro 34. týden mezidobí",
-	"",
+	"hymns for the 34th week of Ordinary Time",
 	"hymni pro Hebdomada XXXIV per annum",
 	"",
 	"hymny pro 34. týden mezidobí",
@@ -5182,7 +5182,7 @@ const char* html_text_opt_5_Lent5Hymns[POCET_JAZYKOV + 1] =
 {
 	"hymny pre 5. týždeň Pôstneho obdobia zo Svätého týždňa",
 	"hymny pro 5. týden postní ze Svatého týdne",
-	"",
+	"hymns for the 5th week of Lent from Holy Week",
 	"hymni Hebdomadæ sanctæ",
 	"",
 	"hymny pro 5. týden postní ze Svatého týdne",
@@ -5217,7 +5217,7 @@ const char* html_text_opt_5_CZHymnus_ordinary[POCET_JAZYKOV + 1] =
 {
 	"štandardné hymny",
 	"standardní hymny",
-	"",
+	"standard hymns",
 	"vexillum hymni",
 	"",
 	"standardní hymny",
@@ -5235,7 +5235,7 @@ const char* html_text_opt_5_CZHymnus_extra[POCET_JAZYKOV + 1] =
 {
 	"hymny z voľného výberu",
 	"hymny k volnému výběru",
-	"",
+	"hymns ad libitum",
 	"hymnos ad libitum adhibendos",
 	"",
 	"hymny k volnému výběru",
@@ -5357,7 +5357,7 @@ const char* html_text_opt_5_CZhymnyNORMAL[POCET_JAZYKOV + 1] =
 {
 	"štandardné hymny",
 	"standardní hymny",
-	"",
+	"standard hymns",
 	"",
 	"",
 	"",
@@ -5375,7 +5375,7 @@ const char* html_text_opt_5_CZhymnyRENC[POCET_JAZYKOV + 1] =
 {
 	"hymny z voľného výberu",
 	"hymny k volnému výběru (Renč)",
-	"",
+	"hymns for free choice (Renč)",
 	"",
 	"",
 	"",

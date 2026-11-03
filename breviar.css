@@ -169,7 +169,7 @@ div.navm p {
 	text-align: right;
 }
 
-.calendar.day_name { 
+.calendar.day-name { 
 	display: block; 
 	font-style: italic; 
 	min-width: 22px; 
@@ -1089,11 +1089,11 @@ sup {
 	display: none;
 }
 
-.tts_section {
+.tts-section {
 	display: none;
 }
 
-.tts_pause, .tts_pause_short {
+.tts-pause, .tts-pause-short {
 	display: inline;
 }
 
