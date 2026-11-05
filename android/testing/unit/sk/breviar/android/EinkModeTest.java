@@ -299,11 +299,12 @@ public class EinkModeTest {
   @Test
   public void pageTurnsJumpWithOverlapWhileStandardModeUsesWebViewPaging() {
     PagingView view = new PagingView(context);
-    view.layout(0, 0, 600, 800);
+    // WebView.layout delegates its bounds to Chromium, which Robolectric does not run.
+    view.setBottom(800);
     BreviarApp.setEinkMode(context, true);
     EinkUi.page(view, true);
     int step = view.delta;
-    assertTrue(step > 0 && step < 800);
+    assertEquals(720, step);
     assertFalse(view.animatedPage);
     EinkUi.page(view, false);
     assertEquals(-step, view.delta);

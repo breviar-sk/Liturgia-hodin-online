@@ -76,11 +76,10 @@ final class EinkUi {
     }
   }
 
-  /** WebView.pageUp/pageDown animate. E-ink needs a single jump with some overlap. */
+  /** WebView.pageUp/pageDown animate. E-ink needs a single jump with 10% overlap. */
   static void page(WebView view, boolean down) {
     if (BreviarApp.getEinkMode(view.getContext())) {
-      int overlap = Math.round(48 * view.getResources().getDisplayMetrics().density);
-      int step = Math.max(1, view.getHeight() - overlap);
+      int step = Math.max(1, Math.round(0.9f * view.getHeight()));
       view.scrollBy(0, down ? step : -step);
     } else if (down) {
       view.pageDown(false);
