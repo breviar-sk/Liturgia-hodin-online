@@ -1903,7 +1903,7 @@ void export_tts_pause(short int tts_pause_type = TTS_PAUSE) {
 #define EXPORT_TTS_PAUSES (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT) && (write == ANO))
 #define EXPORT_TTS_SECTIONS (_global_skip_in_prayer == NIE)
 
-#define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr = VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
+#define je_velkonocna_nedela_posv_cit (((equals(paramname, PARAM_CITANIE1)) || (equals(paramname, PARAM_CITANIE2))) && (_global_den.denvr == VELKONOCNA_NEDELA) && (_global_modlitba == MODL_POSV_CITANIE))
 
 short int antifona_pocet = 0; // počet antifón (ant1, ant2, ant3 pre psalmódiu a ant. na benediktus/magnifikat kvôli krížikom)
 char rest_krizik[MAX_BUFFER] = STR_EMPTY; // pre to, čo je za krížikom v antifóne
