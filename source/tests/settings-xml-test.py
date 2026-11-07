@@ -222,9 +222,13 @@ class SettingsXmlTest(unittest.TestCase):
         menu = by_key(translated.find('Menu'))
         self.assertEqual(menu['language'].get('Label'), 'Language')
         self.assertEqual(menu['prayers.verse-numbers'].get('Label'), 'Verse numbering')
-        for key in ('prayers.references', 'prayers.alternatives.compline-hymn',
-                    'prayers.alternatives.invitatory.psalm-95',
-                    'prayers.alternatives.daytime.psalm-122', 'prayers.alternatives.easter-morning-hymn'):
+        # Generic captions were made translatable upstream; edition-specific
+        # hymn titles must still come from the prayer language.
+        english = by_key(self.exports['en'].find('Menu'))
+        for key in ('prayers.references', 'prayers.alternatives.invitatory.psalm-95',
+                    'prayers.alternatives.daytime.psalm-122'):
+            self.assertEqual(menu[key].get('Label'), english[key].get('Label'))
+        for key in ('prayers.alternatives.compline-hymn', 'prayers.alternatives.easter-morning-hymn'):
             self.assertEqual(menu[key].get('Label'), by_key(base.find('Menu'))[key].get('Label'))
         self.assertEqual(translated.find('Options/*/BitOpt0VerseNumbers').get('Text'), 'verse numbering')
         self.assertEqual(translated.find(".//LiturgicalCelebrationCommunia[@Id='1']").text, 'pastors: priests')

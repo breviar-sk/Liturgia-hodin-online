@@ -17,6 +17,7 @@
 
 #include "liturgia.h"
 #include "settings-text.h"
+#include "prayer-text.h"
 #include "mydefs.h"
 #include "common.h"
 

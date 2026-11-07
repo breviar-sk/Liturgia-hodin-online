@@ -19,6 +19,9 @@ SRCS = \
 	kalendar.cpp \
 	utf8-utils.cpp \
 	xml-settings.cpp \
+	template-reader.cpp \
+	prayer-renderer.cpp \
+	prayer-markup.cpp
 
 OBJS = $(subst cpp,o,$(SRCS))
 
@@ -40,7 +43,7 @@ breviar-no-main.o: breviar.o
 
 print_codes: print_codes.o breviar-no-main.o citania.o dbzaltar.o kalendar.o liturgia.o \
              mygetopt.o mylog.o myhpage.o myexpt.o cgiutils.o myconf.o utf8-utils.o \
-             mydefs.o mystring.o xml-settings.o
+             mydefs.o mystring.o xml-settings.o template-reader.o prayer-renderer.o prayer-markup.o
 	g++ -o $@ $^
 
 clean:
@@ -52,7 +55,7 @@ $(TEST_DIR)/string-utils-test: tests/string-utils-test.cpp mystring.cpp mystring
 	mkdir -p $(TEST_DIR)
 	$(CXX) $(CXXFLAGS) -I. tests/string-utils-test.cpp mystring.cpp utf8-utils.cpp -o $@ $(LDFLAGS)
 
-test: $(TEST_DIR)/string-utils-test test-settings test-common-celebration
+test: $(TEST_DIR)/string-utils-test test-settings test-common-celebration test-rendering test-template-reader
 	$(TEST_DIR)/string-utils-test
 
 .PHONY: clean depend test test-settings test-common-celebration
@@ -69,5 +72,22 @@ test-settings: $(TARGET) $(TEST_DIR)/settings-xml-memory-test
 
 test-common-celebration: $(TARGET)
 	python3 tests/common-celebration-test.py $(abspath $(TARGET))
+
+$(TEST_DIR)/prayer-renderer-test: tests/prayer-renderer-test.cpp myexpt.cpp Makefile $(SETTINGS_TEST_OBJS)
+	mkdir -p $(TEST_DIR)
+	$(CXX) $(CXXFLAGS) -DEXPORT_TO_STRING= -I. tests/prayer-renderer-test.cpp myexpt.cpp $(SETTINGS_TEST_OBJS) -o $@ $(LDFLAGS)
+
+.PHONY: test-rendering
+test-rendering: $(TARGET) $(TEST_DIR)/prayer-renderer-test
+	$(TEST_DIR)/prayer-renderer-test
+	python3 tests/prayer-references-test.py $(abspath $(TARGET))
+
+$(TEST_DIR)/template-reader-test: tests/template-reader-test.cpp template-reader.cpp template-reader.h utf8-utils.cpp mystring.cpp
+	mkdir -p $(TEST_DIR)
+	$(CXX) $(CXXFLAGS) -I. tests/template-reader-test.cpp template-reader.cpp utf8-utils.cpp mystring.cpp -o $@ $(LDFLAGS)
+
+.PHONY: test-template-reader
+test-template-reader: $(TEST_DIR)/template-reader-test
+	$(TEST_DIR)/template-reader-test
 
 -include .depend
