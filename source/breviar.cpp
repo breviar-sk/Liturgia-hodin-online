@@ -2079,7 +2079,7 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 	if (equals(paramname, PARAM_KRIZIK)) {
 		if (state.skipDepth == NIE) {
 			// only when antiphone contained red cross
-			if (state.invitatoryCross > 0) {
+			if (state.invitatoryCross) {
 				if (useWhenGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
 
 					Export(HTML_COMMENT_END);

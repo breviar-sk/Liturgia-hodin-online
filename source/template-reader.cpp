@@ -1,3 +1,8 @@
+// Keep portable C file I/O; opt out of MSVC's CRT deprecation before any headers.
+#if defined(_MSC_VER) && !defined(_CRT_SECURE_NO_WARNINGS)
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include "template-reader.h"
 #include "common.h"
 #include <cerrno>
