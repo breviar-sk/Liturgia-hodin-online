@@ -61,7 +61,6 @@ short int equalsi(char *, const char* );
 std::string mystr_replace(const char* string, const char* substr, const char* replacement);
 std::string mystr_replace_char(const char* string, const char orig_char, const char replacement);
 std::string mystr_remove_char(const char* string, const char char_to_remove);
-std::string mystr_remove_letters_and_parentheses(const char* string);
 
 char* mystr_UPPERCASE(const char* input);
 char* mystr_remove_diacritics(const char* input);

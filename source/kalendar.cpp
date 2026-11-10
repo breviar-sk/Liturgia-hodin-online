@@ -33882,6 +33882,16 @@ short int sviatky_svatych_11_november(short int den, short int poradie_svaty, _s
 
 	case 9: // MES_NOV -- 09NOV
 
+		// Ordinary psalter setup is skipped for this feast. Initialize Compline
+		// even for the default day's link, before the Common can override it for a solemnity.
+		if (query_type != PRM_DETAILY) {
+			const short int den_kompletoria = _global_den.denvt == DEN_SOBOTA ? DEN_NEDELA : _global_den.denvt;
+			zaltar_kompletorium(den_kompletoria, _global_den.litobd, ZALTAR_VSETKO, _global_den.tyzzal);
+			if (_global_den.denvt == DEN_SOBOTA) {
+				_global_modl_kompletorium = _global_modl_prve_kompletorium;
+			}
+		}
+
 		if (poradie_svaty == UNKNOWN_PORADIE_SVATEHO && _global_den.denvt == DEN_NEDELA) {
 			Log("09NOV: padlo na nedeľu; nedeľné prvé vešpery sa berú zo sviatku; špeciálne nastavenie aj pre _global_opt[OPT_3_SPOLOCNA_CAST]...\n");
 			_global_opt[OPT_3_SPOLOCNA_CAST] = sc.a1 = _encode_spol_cast(MODL_SPOL_CAST_POSVIACKA_CHRAMU);

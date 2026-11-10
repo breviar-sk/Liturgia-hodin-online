@@ -11,7 +11,7 @@ from urllib.parse import urlencode
 
 ROOT = Path(__file__).resolve().parents[2]
 CGI = Path(sys.argv.pop(1)).resolve() if len(sys.argv) > 1 else ROOT / 'l.cgi'
-LANGUAGES = ('sk', 'cz', 'czop', 'hu', 'la', 'is', 'es', 'az')
+LANGUAGES = ('sk', 'cz', 'c2', 'hu', 'la', 'is', 'es', 'az')
 
 
 def render(language, prayer, links):
@@ -73,9 +73,23 @@ class PrayerReferencesTest(unittest.TestCase):
                                    if re.search(r'\b95\b', text(caption))]
                     self.assertTrue(matches, 'Expected canticle/psalm citation is missing')
                     for caption in matches:
-                        self.assertIn('<a href="', caption)
+                        # Empty configured providers formerly produced broken relative URLs.
+                        if language in ('cz', 'c2', 'is', 'es', 'az'):
+                            self.assertNotIn('<a href="', caption)
+                        else:
+                            self.assertIn('<a href="', caption)
                         self.assertNotIn('{r', caption)
                         self.assertNotIn('{/r}', caption)
+
+    def test_latin_canticle_and_psalm_destinations(self):
+        base = 'https://www.vatican.va/archive/bible/nova_vulgata/documents/'
+        for prayer, destination in (
+                ('mv', 'nova-vulgata_nt_evang-lucam_lt.html#1'),
+                ('mrch', 'nova-vulgata_nt_evang-lucam_lt.html#1'),
+                ('mk', 'nova-vulgata_nt_evang-lucam_lt.html#2'),
+                ('mi', 'nova-vulgata_vt_psalmorum_lt.html#PSALMUS%2095')):
+            with self.subTest(prayer=prayer):
+                self.assertIn('href="' + base + destination + '"', render('la', prayer, True))
 
 
 if __name__ == '__main__':

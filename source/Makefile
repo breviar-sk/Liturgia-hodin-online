@@ -21,7 +21,9 @@ SRCS = \
 	xml-settings.cpp \
 	template-reader.cpp \
 	prayer-renderer.cpp \
-	prayer-markup.cpp
+	prayer-markup.cpp \
+	bible-reference.cpp \
+	bible-links.cpp
 
 OBJS = $(subst cpp,o,$(SRCS))
 
@@ -43,7 +45,7 @@ breviar-no-main.o: breviar.o
 
 print_codes: print_codes.o breviar-no-main.o citania.o dbzaltar.o kalendar.o liturgia.o \
              mygetopt.o mylog.o myhpage.o myexpt.o cgiutils.o myconf.o utf8-utils.o \
-             mydefs.o mystring.o xml-settings.o template-reader.o prayer-renderer.o prayer-markup.o
+             mydefs.o mystring.o xml-settings.o template-reader.o prayer-renderer.o prayer-markup.o bible-reference.o bible-links.o
 	g++ -o $@ $^
 
 clean:
@@ -55,7 +57,7 @@ $(TEST_DIR)/string-utils-test: tests/string-utils-test.cpp mystring.cpp mystring
 	mkdir -p $(TEST_DIR)
 	$(CXX) $(CXXFLAGS) -I. tests/string-utils-test.cpp mystring.cpp utf8-utils.cpp -o $@ $(LDFLAGS)
 
-test: $(TEST_DIR)/string-utils-test test-settings test-common-celebration test-rendering test-template-reader
+test: $(TEST_DIR)/string-utils-test test-settings test-common-celebration test-rendering test-template-reader test-bible-reference
 	$(TEST_DIR)/string-utils-test
 
 .PHONY: clean depend test test-settings test-common-celebration
@@ -89,5 +91,20 @@ $(TEST_DIR)/template-reader-test: tests/template-reader-test.cpp template-reader
 .PHONY: test-template-reader
 test-template-reader: $(TEST_DIR)/template-reader-test
 	$(TEST_DIR)/template-reader-test
+
+
+$(TEST_DIR)/bible-reference-test: tests/bible-reference-test.cpp bible-reference.h $(SETTINGS_TEST_OBJS) myexpt.o
+	mkdir -p $(TEST_DIR)
+	$(CXX) $(CXXFLAGS) -I. $< $(SETTINGS_TEST_OBJS) myexpt.o -o $@ $(LDFLAGS)
+
+.PHONY: test-bible-reference
+test-bible-reference: $(TEST_DIR)/bible-reference-test
+	$(TEST_DIR)/bible-reference-test
+	python3 tests/vatican-links-test.py $(TEST_DIR)/bible-reference-test
+	python3 tests/bible-corpus-test.py $(TEST_DIR)/bible-reference-test
+
+bible-reference.o: bible-reference.h
+
+bible-links.o prayer-markup.o: bible-links.h bible-reference.h
 
 -include .depend

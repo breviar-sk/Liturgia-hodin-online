@@ -1801,7 +1801,6 @@ short int _deallocate_global_var(void);
 short int cislo_mesiaca(char *mesiac);
 extern char *mystr_UPPERCASE(const char* input);
 extern char *mystr_remove_diacritics(const char* input);
-char *mystr_bible_com(const char* input);
 extern char *convert_nonbreaking_spaces(const char* input);
 
 char *_vytvor_string_z_datumu_ext(short int den, short int mesiac, short int rok, short int _case, short int align);

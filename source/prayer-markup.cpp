@@ -1,5 +1,6 @@
 // Inline markup shared by prayer templates and selected include sections.
 #include "prayer-markup.h"
+#include "bible-links.h"
 #include "breviar.h"
 #include "myconf.h"
 #include "myexpt.h"
@@ -26,22 +27,29 @@ std::string spaces(const std::string& text) {
 
 std::string reference(const std::string& prefix, const std::string& label) {
     if (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)) return spaces(label);
-    const std::string target = mystr_replace((prefix.empty() ? label : prefix + " " + label).c_str(),
-                                            STR_EM_DASH, STR_EN_DASH);
-    std::string url;
-    if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM)) {
-        url = std::string(cfg_http_bible_com_references_default[_global_jazyk])
-            + cfg_bible_com_version_id_default[_global_jazyk] + "/"
-            + mystr_bible_com(target.c_str());
-    } else {
-        url = cfg_http_bible_references_default[_global_jazyk];
+    bible::LinkSettings settings;
+    settings.useBibleCom = isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM);
+    settings.referenceBase = cfg_http_bible_references_default[_global_jazyk];
+    settings.bibleComBase = cfg_http_bible_com_references_default[_global_jazyk];
+    settings.bibleComEdition = cfg_bible_com_version_id_default[_global_jazyk];
 #ifdef IO_ANDROID
-        url += mystr_remove_diacritics(target.c_str());
-#else
-        url += target;
+    settings.removeDiacritics = true;
 #endif
+    const bible::BibleLinks links(bible::languageFromCode(skratka_jazyka[_global_jazyk]), settings);
+    const auto result = links.link(prefix, label);
+    if (result.url.empty()) return spaces(label);
+    // URL component encoding belongs to providers; HTML escaping belongs here.
+    std::string href;
+    for (char c : result.url) {
+        switch (c) {
+        case '&': href += "&amp;"; break;
+        case '"': href += "&quot;"; break;
+        case '<': href += "&lt;"; break;
+        case '>': href += "&gt;"; break;
+        default: href += c;
+        }
     }
-    return HTML_A_HREF_BEGIN "\"" + url + "\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">"
+    return HTML_A_HREF_BEGIN "\"" + href + "\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">"
         + spaces(label) + HTML_A_END;
 }
 

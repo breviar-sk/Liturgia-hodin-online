@@ -4,7 +4,9 @@
 #include "myexpt.h"
 #include "prayer-renderer.h"
 #include "prayer-markup.h"
+#include "bible-links.h"
 #include "mystring.h"
+#include "myconf.h"
 #include <cstdlib>
 #include <cstring>
 #include <fstream>
@@ -140,7 +142,7 @@ static void checkTemplateReferences() {
     _global_opt[0] = BIT_OPT_0_REFERENCIE | BIT_OPT_0_FOOTNOTES;
     _global_opt[1] = BIT_OPT_1_CHVALOSPEVY;
     auto output = referenceTemplate();
-    expect(output.find("dkc.php?in=Lk 1, 46-55") != std::string::npos,
+    expect(output.find("dkc.php?in=Lk%201%2C%2046-55") != std::string::npos,
            "Magnificat reference was not rendered as a Bible link");
     expect(output.find("Note before <a") != std::string::npos && output.find("</a> and after.") != std::string::npos,
            "Template footnote lost its nested reference");
@@ -161,6 +163,32 @@ static void checkTemplateReferences() {
     output = referenceTemplate();
     expect(output.find("1, 46-55") != std::string::npos && output.find("Note before") == std::string::npos,
            "Template references changed TTS canticle or footnote visibility");
+}
+
+// Successful legacy conversions to preserve when moving links into providers.
+static void checkBibleLinks() {
+    _global_jazyk = JAZYK_SK;
+    for (const auto& example : {std::make_pair("Lk 1, 46-55", "LUK.1.46-55"),
+                               std::make_pair("1 Kor 13, 1-3. 8", "1CO.13.1-3,8"),
+                               std::make_pair("Ž 95", "PSA.95"),
+                               std::make_pair("Jn 3, 16", "JHN.3.16")}) {
+        expect(bible::BibleComProvider("https://www.bible.com/bible/", "163")
+                   .link(bible::parseReference(example.first, bible::Language::Slovak)).url ==
+                   std::string("https://www.bible.com/bible/163/") + example.second,
+               "Bible.com conversion changed");
+    }
+    _global_opt[0] = BIT_OPT_0_REFERENCIE | BIT_OPT_0_REF_BIBLE_COM;
+    expect(inlineText("{r:Ž 102,}18{/r}").find("/PSA.102.18") != std::string::npos,
+           "Hidden book/chapter prefix was lost");
+    _global_opt[0] = BIT_OPT_0_REFERENCIE;
+    const std::string savedBase = cfg_http_bible_references_default[JAZYK_SK];
+    mystrcpy(cfg_http_bible_references_default[JAZYK_SK], "https://example.org/?x=1&in=", MAX_HTTP_STR);
+    expect(inlineText("{r:Lk}1, 46-55{/r}").find("?x=1&amp;in=Lk%201%2C%2046-55") != std::string::npos,
+           "Custom URL was not escaped for an HTML attribute");
+    mystrcpy(cfg_http_bible_references_default[JAZYK_SK], savedBase.c_str(), MAX_HTTP_STR);
+    _global_opt[0] = 0;
+    expect(inlineText("{r:Lk}1, 46-55{/r}") == "1, 46-55",
+           "Disabling links exposed the hidden prefix");
 }
 
 int main(int argc, char** argv) {
@@ -200,6 +228,7 @@ int main(int argc, char** argv) {
     checkInlineState();
     checkLiturgicalMarkers();
     checkTemplateReferences();
+    checkBibleLinks();
     if (failures) return 1;
     std::cout << "Prayer rendering fixtures passed\n";
 }

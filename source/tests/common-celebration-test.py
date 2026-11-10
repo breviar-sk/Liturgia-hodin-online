@@ -114,5 +114,63 @@ class CommonCelebrationTest(unittest.TestCase):
                 self.assertNotIn('Te Deum laudámus', page.html)
 
 
+class LateranComplineTest(unittest.TestCase):
+    def page(self, **parameters):
+        query = dict(qt='pdt', d=9, m=11, r=2026, j='sk', p='mk',
+                     o0=0, o1=127, o2=512)
+        query.update(parameters)
+        return Page(query)
+
+    def assert_complete(self, page):
+        self.assertEqual(re.findall(r'<!--[^>]*not found[^>]*-->', page.html), [])
+        self.assertTrue(page.psalms, 'Prayer text is missing')
+
+    def test_compline_on_every_weekday(self):
+        # November 9 skips ordinary psalter initialization. It must still have
+        # weekday Compline, or Sunday Compline after first/second Vespers.
+        for year, expected in (
+            (2026, (['Žalm 86'], ['Žalm 86 (85)'], ['Psalmus 85 (86)'])),
+            (2027, (['Žalm 143, 1-11'], ['Žalm 143 (142), 1-11'],
+                    ['Psalmus 142 (143), 1-11'])),
+            (2022, (['Žalm 31, 2-6', 'Žalm 130'],
+                    ['Žalm 31 (30), 2-6', 'Žalm 130 (129)'],
+                    ['Psalmus 30 (31), 2-6', 'Psalmus 129 (130)'])),
+            (2023, (['Žalm 16'], ['Žalm 16 (15)'], ['Psalmus 15 (16)'])),
+            (2029, (['Žalm 88'], ['Žalm 88 (87)'], ['Psalmus 87 (88)'])),
+            (2024, (['Žalm 4', 'Žalm 134'], ['Žalm 4', 'Žalm 134 (133)'],
+                    ['Psalmus 4', 'Psalmus 133 (134)'])),
+            (2025, (['Žalm 91'], ['Žalm 91 (90)'], ['Psalmus 90 (91)'])),
+        ):
+            for language, psalms in zip(('sk', 'cz', 'la'), expected):
+                # Both the day's default Compline and the feast's own link.
+                for selection in ({}, dict(ds=1)):
+                    with self.subTest(year=year, language=language, **selection):
+                        page = self.page(r=year, j=language, **selection)
+                        self.assertEqual(page.psalms, psalms)
+                        self.assert_complete(page)
+
+    def test_first_vespers_and_compline_on_eve_of_sunday_feast(self):
+        for evening_prayer, first_prayer, psalms in (
+            ('mv', 'mpv', ['Žalm 147, 1-11', 'Žalm 147, 12-20', 'Chválospev']),
+            ('mk', 'mpk', ['Žalm 4', 'Žalm 134']),
+        ):
+            for day, prayer in ((8, evening_prayer), (9, first_prayer)):
+                with self.subTest(day=day, prayer=prayer):
+                    page = self.page(r=2025, d=day, p=prayer)
+                    self.assertEqual(page.psalms, psalms)
+                    self.assertIn('výročie posviacky lateránskej baziliky',
+                                  plain_text(page.html).casefold())
+                    if evening_prayer == 'mk':
+                        self.assert_complete(page)
+
+    def test_promotion_to_solemnity_keeps_sunday_compline(self):
+        for language, psalm in (('sk', 'Žalm 91'), ('cz', 'Žalm 91 (90)'),
+                                ('la', 'Psalmus 90 (91)')):
+            with self.subTest(language=language):
+                page = self.page(j=language, ds=1).follow(PROMOTE)
+                self.assertEqual(page.psalms, [psalm])
+                self.assert_complete(page)
+
+
 if __name__ == '__main__':
     unittest.main()

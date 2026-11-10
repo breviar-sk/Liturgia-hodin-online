@@ -287,41 +287,6 @@ std::string mystr_remove_char(const char* string, const char char_to_remove) {
 	return val;
 }// mystr_remove_char()
 
-std::string mystr_remove_letters_and_parentheses(const char* string) {
-	/* if substr is NULL, duplicate string a let caller handle it */
-
-	char *newstr = NULL;
-	newstr = _strdup(string);
-
-	short int i = 0, j = 0;
-	short int skip = NIE;
-
-	while (string[i] != '\0')
-	{
-		// remove everything in parentheses [CZ: alternative numbering of Psalms]
-		if (string[i] == '(') {
-			skip = ANO;
-		}
-		else if (string[i] == ')') {
-			skip = NIE;
-		}
-		else if (skip != ANO) {
-			// test character
-			if ((string[i] < 'a' && string[i] > 'Z') || (string[i] < 'A') || (string[i] > 'z'))
-			{
-				newstr[j] = string[i];
-				j++;
-			}
-		}
-		i++;
-	}
-	newstr[j] = '\0';
-
-	std::string val(newstr);
-	free(newstr);
-	return val;
-}// mystr_remove_letters()
-
 //---------------------------------------------------------------------
 // converts UTF-8 string to UPPERCASE
 // nesmie pritom v HTML stringoch upravovať kódové mená, napr. &mdash; na veľké písmená

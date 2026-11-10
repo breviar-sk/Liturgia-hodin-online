@@ -6,7 +6,7 @@ LOCAL_MODULE    := libbreviar
 LOCAL_SRC_FILES := android.cpp breviar.cpp cgiutils.cpp dbzaltar.cpp kalendar.cpp \
                    liturgia.cpp myconf.cpp mydefs.cpp myexpt.cpp \
 		   mygetopt.cpp myhpage.cpp mylog.cpp mystring.cpp \
-                   citania.cpp utf8-utils.cpp xml-settings.cpp template-reader.cpp prayer-renderer.cpp prayer-markup.cpp
+                   citania.cpp utf8-utils.cpp xml-settings.cpp template-reader.cpp prayer-renderer.cpp prayer-markup.cpp bible-reference.cpp bible-links.cpp
 
 ifeq ($(DEBUG_BUILD),yes)
   MODEL := -DMODEL_android_debug
