@@ -42,6 +42,7 @@ extern const char* html_text_opt_1_otcenas_uvod[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_1_override_stupen_slavenia[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_1_plne_resp[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_1_prosby_zvolanie[POCET_JAZYKOV + 1];
+extern const char* html_text_opt_1_ukon_kaj[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_1_rubriky[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_1_skryt_popis_svaty[POCET_JAZYKOV + 1];
 extern const char* html_text_opt_1_slava_otcu[POCET_JAZYKOV + 1];

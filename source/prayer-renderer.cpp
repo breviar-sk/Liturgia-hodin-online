@@ -237,31 +237,36 @@ private:
 } // namespace
 
 
-void prayer::renderSection(RenderState& state, short type, short prayer, const char* part,
-                           const char* path, const char* anchor) {
+prayer::SectionResult prayer::renderSection(RenderState& state, short type, short prayer, const char* part,
+                                           const char* path, const char* anchor, bool reportErrors) {
     Log("renderSection(%d, %d, %s, %s, %s)\n", type, prayer, part, path, anchor);
-    if (state.skipDepth > 0 || state.skipEasterReading) return;
+    if (state.skipDepth > 0 || state.skipEasterReading) return SectionResult::Skipped;
     state.invitatoryCross = false;
     TemplateReader reader(path, "r");
     if (!reader.isOpen()) {
+        if (reportErrors) {
 #if defined(EXPORT_HTML_FILENAME_ANCHOR)
-        Export("file `%s' not found (anchor `%s')", path, anchor);
+            Export("file `%s' not found (anchor `%s')", path, anchor);
 #elif defined(EXPORT_HTML_FILENAME)
-        Export("file `%s' not found", path);
+            Export("file `%s' not found", path);
 #else
-        Export("file not found");
+            Export("file not found");
 #endif
-        return;
+        }
+        return SectionResult::FileNotFound;
     }
+    if (reportErrors) {
 #if defined(EXPORT_HTML_FILENAME_ANCHOR)
-    Export("(file `%s', anchor `%s')", path, anchor);
+        Export("(file `%s', anchor `%s')", path, anchor);
 #elif defined(EXPORT_HTML_FILENAME)
-    Export("(file `%s')", path);
+        Export("(file `%s')", path);
 #elif defined(EXPORT_HTML_ANCHOR)
-    Export("(anchor `%s')", anchor);
+        Export("(anchor `%s')", anchor);
 #endif
+    }
 
     bool selected = false;
+    bool found = false;
     SectionVisibility visibility;
     InlineMarkup markup(MarkupStyle::Section);
     Token token;
@@ -274,7 +279,7 @@ void prayer::renderSection(RenderState& state, short type, short prayer, const c
         } else {
             const Marker marker(token.text);
             if (equalsi(marker.argument.c_str(), anchor)) {
-                if (marker.name == INCLUDE_BEGIN) selected = true;
+                if (marker.name == INCLUDE_BEGIN) selected = found = true;
                 else if (marker.name == INCLUDE_END) {
                     selected = false;
                     // Close the selected text and reopen the template's comment.
@@ -303,6 +308,8 @@ void prayer::renderSection(RenderState& state, short type, short prayer, const c
             }
         }
     }
+    if (reader.failed()) return SectionResult::ReadError;
+    return found ? SectionResult::Rendered : SectionResult::SectionNotFound;
 }
 
 void includeFile(short type, short prayer, const char* part, const char* path, const char* anchor) {

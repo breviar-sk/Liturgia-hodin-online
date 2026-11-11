@@ -24,6 +24,7 @@ bool TemplateReader::readCharacter(int& character) {
                     std::clearerr(file_.get());
                     continue;
                 }
+                failed_ = std::ferror(file_.get()) != 0;
                 return false;
             }
         }

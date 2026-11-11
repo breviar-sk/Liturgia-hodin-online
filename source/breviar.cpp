@@ -78,6 +78,7 @@ Examples:
 #include "template-reader.h"
 #include "prayer-renderer.h"
 #include "prayer-markup.h"
+#include "static-text.h"
 
 #ifdef _WIN32
 // Windows už má _strdup, netreba robiť nič
@@ -1897,9 +1898,7 @@ void init_marianske_anfifony_file(_struct_anchor_and_file &af) {
 void init_ordinarium_file(_struct_anchor_and_file &af, short int modlitba) {
 	mystrcpy(af.anchor, ANCHOR_ORDINARIUM, MAX_STR_AF_ANCHOR);
 
-	if ((modlitba < MODL_INVITATORIUM) || (modlitba > MODL_DRUHE_KOMPLETORIUM)) {
-		modlitba = MODL_RANNE_CHVALY;
-	}
+	modlitba = prayer::ordinariumPrayer(modlitba);
 	mystrcpy(af.file, FILE_ORDINARIUM[modlitba], MAX_STR_AF_FILE);
 
 	Log_filename_anchor(af);
@@ -2028,7 +2027,10 @@ void ExportFileAnchor(prayer::RenderState& state, short int typ, short int modli
 		mystrcpy(path, include_dir, MAX_STR);
 		strcat(path, anchor_and_file.file);
 
-		prayer::renderSection(state, typ, modlitba, paramname, path, anchor_and_file.anchor);
+		if (query_type == PRM_STATIC_TEXT && _global_pocet_svatych == STATIC_TEXT_SECTION)
+			prayer::renderStaticPage(state, typ, modlitba, paramname, path, anchor_and_file.anchor);
+		else
+			prayer::renderSection(state, typ, modlitba, paramname, path, anchor_and_file.anchor);
 	}
 }// ExportFileAnchor()
 
@@ -2114,6 +2116,7 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 		|| (equals(paramname, PARAM_ALELUJA_NIE_V_POSTE_BEGIN)) || (equals(paramname, PARAM_ALELUJA_NIE_V_POSTE_END))
 		|| (equals(paramname, PARAM_JE_VIGILIA_BEGIN)) || (equals(paramname, PARAM_JE_VIGILIA_END))
 		|| (equals(paramname, PARAM_KOMPLETORIUM_DVA_ZALMY_BEGIN)) || (equals(paramname, PARAM_KOMPLETORIUM_DVA_ZALMY_END))
+		|| (equals(paramname, PARAM_UKON_KAJ_BEGIN)) || (equals(paramname, PARAM_UKON_KAJ_END))
 		|| (equals(paramname, PARAM_RUBRIKA_BEGIN)) || (equals(paramname, PARAM_RUBRIKA_END))
 		|| (equals(paramname, PARAM_VN_VYNECHAJ_BEGIN)) || (equals(paramname, PARAM_VN_VYNECHAJ_END))
 		|| (equals(paramname, PARAM_COPYRIGHT_BEGIN)) || (equals(paramname, PARAM_COPYRIGHT_END))
@@ -2211,6 +2214,10 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 			Log("interpretParameter(): _global_modl_prve_kompletorium.pocet_zalmov == %d...\n", _global_modl_prve_kompletorium.pocet_zalmov);
 			Log("_global_modl_kompletorium.alternativy == %d; _global_modl_prve_kompletorium.alternativy == %d...\n", _global_modl_kompletorium.alternativy, _global_modl_prve_kompletorium.alternativy);
 			podmienka = podmienka && (_global_pocet_zalmov_kompletorium > 1);
+		}
+		else if (equals(paramname, PARAM_UKON_KAJ_BEGIN) || equals(paramname, PARAM_UKON_KAJ_END)) {
+			podmienka = podmienka && useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_UKON_KAJ);
+			exportovat_html_note = ANO;
 		}
 		else if (startsWith(paramname, (char *)KEYWORD_RUBRIKA)) {
 			podmienka = podmienka && (isGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY) && !isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT));
@@ -2459,6 +2466,7 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 		|| (equals(paramname, PARAM_POPIS))
 		|| (equals(paramname, PARAM_SLAVAOTCU))
 		|| (equals(paramname, PARAM_RESPONZ))
+		|| (equals(paramname, PARAM_ZOBRAZ_UKON_KAJ))
 		|| (equals(paramname, PARAM_NADPIS))
 		|| (equals(paramname, PARAM_KRATSIE_PROSBY))
 		|| (equals(paramname, PARAM_VAR_CITANIE2))
@@ -2653,6 +2661,11 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 			}
 			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_plne_resp[_global_jazyk]);
 			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_plne_resp[_global_jazyk]);
+		}
+		else if (equals(paramname, PARAM_ZOBRAZ_UKON_KAJ)) {
+			bit = BIT_OPT_1_UKON_KAJ;
+			sprintf(popis_show, "%s %s", html_text_option_skryt[_global_jazyk], html_text_opt_1_ukon_kaj[_global_jazyk]);
+			sprintf(popis_hide, "%s %s", html_text_option_zobrazit[_global_jazyk], html_text_opt_1_ukon_kaj[_global_jazyk]);
 		}
 		else if (equals(paramname, PARAM_NADPIS)) {
 			bit = BIT_OPT_1_RUBRIKY;
@@ -4548,7 +4561,12 @@ short int atoStaticText(char *st) {
 		}
 		i++;
 	} while (i <= POCET_STATIC_TEXTOV);
-	return STATIC_TEXT_UNDEF;
+
+	// ak sa nenašlo porovnaním s reťazcom, skúsim prekonvertovať na číslo
+	i = atoi(st);
+	i = ((i < STATIC_TEXT_MARIANSKE_ANTIFONY) || (i > POCET_STATIC_TEXTOV)) ? STATIC_TEXT_UNDEF : i;
+	Log("atoStaticText: returning %d\n", i);
+	return i;
 } // atoStaticText()
 
 // popis: vráti číslo modlitby
@@ -9080,6 +9098,8 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_SL
 			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU, STR_FORCE_BIT_OPT_1_SL, html_text_opt_1_slava_otcu[_global_jazyk], html_text_opt_1_slava_otcu_explain[_global_jazyk]);
 
+			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_UKON_KAJ, STR_FORCE_BIT_OPT_1_UKON_KAJ, html_text_opt_1_ukon_kaj[_global_jazyk], STR_EMPTY);
+
 			// pole (checkbox) WWW_/STR_FORCE_BIT_OPT_1_RUB
 			_export_main_formular_checkbox(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY, STR_FORCE_BIT_OPT_1_RUB, html_text_opt_1_rubriky[_global_jazyk], html_text_opt_1_rubriky_explain[_global_jazyk]);
 
@@ -9112,6 +9132,7 @@ void _export_main_formular(short int den, short int mesiac, short int rok, short
 		else {
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_CHV, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_SL, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_SLAVA_OTCU)) ? ANO : NIE);
+			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_UKON_KAJ, isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_UKON_KAJ) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_RUB, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_RUBRIKY)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_OT, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_OTCENAS)) ? ANO : NIE);
 			Export(HTML_FORM_INPUT_HIDDEN " name=\"%s\" value=\"%d\"" HTML_FORM_INPUT_END "\n", STR_FORCE_BIT_OPT_1_TD, (isGlobalOptionForce(OPT_1_CASTI_MODLITBY, BIT_OPT_1_TEDEUM)) ? ANO : NIE);
@@ -12644,6 +12665,8 @@ void _rozparsuj_parametre_DEN_MESIAC_ROK(char *den, char *mesiac, char *rok, cha
 	// rozparsovanie parametra modlitba
 	Log("volanie atomodlitba() z _main_rozbor_dna()...\n");
 	local_modlitba = atomodlitba(modlitba);
+	if (query_type == PRM_STATIC_TEXT && local_rok == STATIC_TEXT_ORDINARIUM)
+		local_modlitba = prayer::ordinariumPrayer(local_modlitba);
 
 	_global_modlitba = local_modlitba;
 	Log("modl == %s (%d, %s) -- priradene do _global_modlitba\n", modlitba, local_modlitba, nazov_modlitby(local_modlitba));
@@ -14010,6 +14033,16 @@ short int _main_static_text(short int st, short int p) {
 	else if (st == STATIC_TEXT_INFO) {
 		_main_LOG_to_Export("STATIC_TEXT_INFO...\n");
 		init_info_file(_global_include_static_text, p);
+	}
+	else if (st == STATIC_TEXT_SECTION) {
+		const auto page = prayer::staticPage(pom_MODLITBA);
+		if (!*page.file) {
+			Export("%s", html_error_unknown_prayer[_global_jazyk]);
+			return FAILURE;
+		}
+		mystrcpy(_global_include_static_text.file, page.file, MAX_STR_AF_FILE);
+		mystrcpy(_global_include_static_text.anchor, page.anchor, MAX_STR_AF_ANCHOR);
+		_global_modlitba = p = MODL_NEURCENA;
 	}
 
 	_main_LOG_to_Export("\t_global_include_static_text: \n");
@@ -17835,6 +17868,7 @@ void init_global_string_as_html_title(short int den, short int mesiac, short int
 
 	// no additional text for Mary's antiphones & incorrect info text numbers
 	if (query_type == PRM_STATIC_TEXT) {
+		if (rok == STATIC_TEXT_SECTION) modlitba = MODL_NEURCENA;
 		if (rok == STATIC_TEXT_MARIANSKE_ANTIFONY) {
 			modlitba = MODL_NEURCENA;
 		}
@@ -18757,6 +18791,11 @@ int breviar_main(int argc, const char** argv) {
 			_main_LOG_to_Export("volám _rozparsuj_parametre_DEN_MESIAC_ROK(); ...\n");
 			local_den = local_mesiac = local_rok = local_modlitba = 0;
 			_rozparsuj_parametre_DEN_MESIAC_ROK(pom_DEN, pom_MESIAC, pom_ROK, pom_MODLITBA, local_den, local_mesiac, local_rok, local_modlitba);
+
+			Log("local_den == %d\n", local_den);
+			Log("local_mesiac == %d\n", local_mesiac);
+			Log("local_rok == %d\n", local_rok);
+			Log("local_modlitba == %d\n", local_modlitba);
 
 			LOG_ciara;
 

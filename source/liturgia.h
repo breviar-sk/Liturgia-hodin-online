@@ -106,12 +106,13 @@ extern const short int use_dot_for_ordinals[POCET_JAZYKOV + 1];
 #define SIDEMENU_LOCATION_RIGHT	1
 
 // static texts
-#define POCET_STATIC_TEXTOV               3
+#define POCET_STATIC_TEXTOV               4
 
 #define STATIC_TEXT_UNDEF                 0
 #define STATIC_TEXT_MARIANSKE_ANTIFONY    1
 #define STATIC_TEXT_ORDINARIUM            2
 #define STATIC_TEXT_INFO                  3
+#define STATIC_TEXT_SECTION               4
 
 // info files (used for mobile applications: about, version history...)
 #define INFO_ABOUT              0
@@ -593,6 +594,7 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define KEYWORD_ZOBRAZ_ANTIFONU         "ZOBRAZ_ANTIFONU"
 #define KEYWORD_JE_VIGILIA              "JE_VIGILIA"
 #define KEYWORD_SPOMIENKA_PRIVILEG      "SPOMIENKA_PRIVILEG"
+#define KEYWORD_UKON_KAJ                "UKONKAJ"
 #define KEYWORD_RUBRIKA                 "RUBRIKA"
 #define KEYWORD_VN_VYNECHAJ             "VELK_NEDELA_VYNECHAJ"
 #define KEYWORD_ZAVER                   "ZAVER"
@@ -651,6 +653,9 @@ extern const char* FILE_INFO[POCET_INFO_TEXTOV + 1];
 #define PARAM_TEDEUM_END                    KEYWORD_TEDEUM "" STR_UNDERSCORE "" KEYWORD_END
 #define PARAM_JE_TEDEUM_BEGIN               KEYWORD_JE_TEDEUM "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_JE_TEDEUM_END                 KEYWORD_JE_TEDEUM "" STR_UNDERSCORE "" KEYWORD_END
+#define PARAM_UKON_KAJ_BEGIN                KEYWORD_UKON_KAJ "_" KEYWORD_BEGIN
+#define PARAM_UKON_KAJ_END                  KEYWORD_UKON_KAJ "_" KEYWORD_END
+#define PARAM_ZOBRAZ_UKON_KAJ               "ZOBRAZ-UKONKAJ"
 #define PARAM_RUBRIKA_BEGIN                 KEYWORD_RUBRIKA "" STR_UNDERSCORE "" KEYWORD_BEGIN
 #define PARAM_RUBRIKA_END                   KEYWORD_RUBRIKA "" STR_UNDERSCORE "" KEYWORD_END
 // posvätné čítanie na veľkonočnú nedeľu
@@ -1632,7 +1637,7 @@ extern unsigned long long _global_opt_0_specialne[POCET_OPT_0_SPECIALNE];
 #define BIT_OPT_0_SIDE_NAVIGATION        524288 // side navigation using JavaScript; for web usage (instead of frames); default location on the left, can be changed via JavaScript
 #define BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY 1048576 // transparent navigation arrow in text: down arrow only (no up arrow)
 
-#define POCET_OPT_1_CASTI_MODLITBY          20 // jednotlivé komponenty option 1 -- bity pre force option 1
+#define POCET_OPT_1_CASTI_MODLITBY          21 // jednotlivé komponenty option 1 -- bity pre force option 1
 extern unsigned long long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITBY];
 // 2011-04-11: úprava významu (a interpretácie) option 1 == OPT_1_CASTI_MODLITBY (zobraziť/nezobraziť najmä pevné/nemenné súčasti modlitieb, ale aj iné, čo sú/nie sú v LH)
 // 2011-10-10: úprava niektorých bitov, posunutie popisu na koniec
@@ -1656,6 +1661,7 @@ extern unsigned long long _global_opt_1_casti_modlitby[POCET_OPT_1_CASTI_MODLITB
 #define BIT_OPT_1_STUP_SVIATOK_SLAVNOST 131072 // vyšší stupeň slávenia (0 = sviatok, 1 = slávnosť); aplikuje sa iba ak BIT_OPT_1_OVERRIDE_STUP_SLAV je true
 #define BIT_OPT_1_KOMPL_MARIA_ANT       262144 // pre kompletórium: či zobraziť mariánsku antifónu (jednu, ak BIT_OPT_2_ALTERNATIVES == 1)/mariánske antifóny na konci kompletória
 #define BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD   524288 // pre ranné chvály a vešpery: či zobraziť úvod k modlitbe Pána (Otčenás)
+#define BIT_OPT_1_UKON_KAJ             1048576 // display the penitential act in Compline independently of rubrics
 
 #define POCET_OPT_2_HTML_EXPORT             17 // jednotlivé komponenty option 2 -- bity pre force option 2
 extern unsigned long long _global_opt_2_html_export[POCET_OPT_2_HTML_EXPORT];

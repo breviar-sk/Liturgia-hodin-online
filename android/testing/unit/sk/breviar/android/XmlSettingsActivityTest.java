@@ -86,17 +86,18 @@ public class XmlSettingsActivityTest {
       for (String handler : new String[]{"eink", "volume-paging", "keep-awake", "do-not-disturb", "lock-zoom"}) {
         menu += "<MenuItem Key='device." + handler + "' Label='" + handler + "' Control='toggle' Handler='device." + handler + "'/>";
       }
+      menu += "<MenuItem Key='device.reading-navigation' Label='Navigácia pri čítaní' Control='choice' Handler='device.reading-navigation'>"
+          + "<MenuGroup Key='device.arrow-options' Label='Šípky'>"
+          + "<MenuItem Key='device.arrows-left' Label='Šípky vľavo' Control='toggle' OptionRef='Left'/>"
+          + "<MenuItem Key='device.down-arrow-only' Label='Len nadol' Control='toggle' OptionRef='Down'/>"
+          + "</MenuGroup></MenuItem>";
       menu += "</MenuGroup><MenuGroup Key='appearance' Label='zobrazenie'>"
           + "<MenuItem Key='appearance.font' Label='Písmo' Control='font' Parameter='f' Default='' ResetValue='' Handler='appearance.font'/>"
           + "<MenuItem Key='appearance.night-mode' Label='nočný režim' Control='toggle' OptionRef='Night'/>"
           + "<MenuItem Key='appearance.font-size' Label='Veľkosť' Control='number' Parameter='ff' Default='12' ResetValue='12' Min='4' Max='60' Handler='appearance.font-size'/>"
           + "<MenuItem Key='appearance.margin' Label='Okraje' Control='number' Parameter='mm' Default='5' ResetValue='' Min='1' Max='200'/>"
           + "<MenuItem Key='appearance.background-day' Label='Pozadie' Control='color' Parameter='c0' Default='' ResetValue=''/>"
-          + "<MenuItem Key='reading.navigation' Label='Navigácia pri čítaní' Control='choice' Handler='reading.navigation'>"
-          + "<MenuGroup Key='reading.arrow-options' Label='Šípky'>"
-          + "<MenuItem Key='reading.arrows-left' Label='Šípky vľavo' Control='toggle' OptionRef='Left'/>"
-          + "<MenuItem Key='reading.down-arrow-only' Label='Len nadol' Control='toggle' OptionRef='Down'/>"
-          + "</MenuGroup></MenuItem></MenuGroup>";
+          + "</MenuGroup>";
     }
     menu += "<MenuGroup Key='prayers' Label='Texty modlitieb'>"
         + "<MenuGroup Key='prayers.presentation' Label='Zobrazenie'>"
@@ -331,7 +332,7 @@ public class XmlSettingsActivityTest {
   public void nestedChoicesOpenAsSeparateActivities() throws Exception {
     Context context = RuntimeEnvironment.getApplication();
     for (String[] path : new String[][]{
-        {"appearance", "reading.navigation"}, {"prayers", "prayers.common"}}) {
+        {"device", "device.reading-navigation"}, {"prayers", "prayers.common"}}) {
       try (ActivityController<XmlSettingsActivity> parent = Robolectric.buildActivity(
           XmlSettingsActivity.class, XmlSettingsActivity.entryIntent(context, path[0])).setup()) {
         XmlSettingsActivity activity = parent.get();
@@ -539,8 +540,9 @@ public class XmlSettingsActivityTest {
     try (ActivityController<XmlSettingsActivity> controller = Robolectric.buildActivity(XmlSettingsActivity.class,
         XmlSettingsActivity.entryIntent(RuntimeEnvironment.getApplication(), "custom")).create()) {
       show(controller.get(), SettingsXml.parse(xml));
-      assertEquals(5, controller.get().navigationView.getMenu().size());
+      assertEquals(6, controller.get().navigationView.getMenu().size());
       assertNotNull(controller.get().menuItem("device.eink"));
+      assertNotNull(controller.get().menuItem("device.reading-navigation"));
     }
   }
 

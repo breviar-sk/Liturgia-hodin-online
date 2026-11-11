@@ -107,6 +107,8 @@
     <string name="navigation_drawer_open">Open menu</string>
     <string name="navigation_drawer_close">Close menu</string>
 
+    <string name="ordinarium">Ordinarium</string>
+
     <string name="inv">Invitatory</string>
     <string name="rch">Lauds</string>
     <string name="vesp">Vespers</string>

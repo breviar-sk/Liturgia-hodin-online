@@ -19,8 +19,10 @@ struct RenderState {
     std::string ending;
 };
 
-void renderSection(RenderState& state, short type, short prayer, const char* part,
-                   const char* path, const char* anchor);
+enum class SectionResult { Rendered, Skipped, FileNotFound, SectionNotFound, ReadError };
+
+SectionResult renderSection(RenderState& state, short type, short prayer, const char* part,
+                            const char* path, const char* anchor, bool reportErrors = true);
 
 } // namespace prayer
 

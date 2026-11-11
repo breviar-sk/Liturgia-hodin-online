@@ -1,6 +1,7 @@
 // Inline markup shared by prayer templates and selected include sections.
 #include "prayer-markup.h"
 #include "bible-links.h"
+#include "static-text.h"
 #include "breviar.h"
 #include "myconf.h"
 #include "myexpt.h"
@@ -39,17 +40,7 @@ std::string reference(const std::string& prefix, const std::string& label) {
     const auto result = links.link(prefix, label);
     if (result.url.empty()) return spaces(label);
     // URL component encoding belongs to providers; HTML escaping belongs here.
-    std::string href;
-    for (char c : result.url) {
-        switch (c) {
-        case '&': href += "&amp;"; break;
-        case '"': href += "&quot;"; break;
-        case '<': href += "&lt;"; break;
-        case '>': href += "&gt;"; break;
-        default: href += c;
-        }
-    }
-    return HTML_A_HREF_BEGIN "\"" + href + "\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">"
+    return HTML_A_HREF_BEGIN "\"" + escapeHtmlAttribute(result.url) + "\" " HTML_TARGET_BLANK " " HTML_CLASS_QUIET ">"
         + spaces(label) + HTML_A_END;
 }
 
@@ -98,6 +89,8 @@ std::string psalm95(const std::string& label) {
         result = HTML_P_BEGIN "\n<" HTML_SPAN_RED_SMALL ">\n" HTML_A_HREF_BEGIN "\""
             + std::string(query) + parameters + "#" PARAM_ZALM95 "\"";
     }
+    // Standalone psalms have no day's psalmody to switch back to.
+    if (result.empty()) return "";
     return result + " " HTML_CLASS_QUIET ">" + spaces(label) + HTML_A_END HTML_SPAN_END "\n";
 #endif
 }
@@ -113,7 +106,7 @@ void InlineMarkup::emit(const std::string& html) {
         auto& frame = frames_.back();
         switch (frame.kind) {
         case Kind::Reference: case Kind::FootnoteReference:
-        case Kind::Catechesis: case Kind::Psalm95:
+        case Kind::Catechesis: case Kind::Psalm95: case Kind::Link:
             frame.text += html;
             return;
         default: break;
@@ -143,24 +136,35 @@ void InlineMarkup::close(Kind kind, bool parentVisible) {
         break;
     case Kind::Catechesis: emit(catechesis(frame.argument, frame.text)); break;
     case Kind::Psalm95: emit(psalm95(frame.text)); break;
+    case Kind::Link: {
+        const auto url = contentLink(frame.argument);
+        emit(url.empty() ? frame.text : "<a href=\"" + escapeHtmlAttribute(url) + "\">" + frame.text + "</a>");
+        break;
+    }
     default: emit(frame.closing); break;
     }
 }
 
 void InlineMarkup::character(int character, bool parentVisible) {
     if (!visible(parentVisible)) return;
+    const bool literal = html_.consume(character);
     if (!frames_.empty()) {
         const auto kind = frames_.back().kind;
         if (kind == Kind::Reference || kind == Kind::FootnoteReference
-            || kind == Kind::Catechesis || kind == Kind::Psalm95) {
+            || kind == Kind::Catechesis || kind == Kind::Psalm95 || kind == Kind::Link) {
             char bytes[8] = {};
             int length = 0;
+            if (kind == Kind::Link && !literal && (character == CHAR_NONBREAKING_SPACE || character == CHAR_NONBREAKING_THIN_SPACE)) {
+                frames_.back().text += spaces(std::string(1, static_cast<char>(character)));
+                return;
+            }
             AppendWchar(character, sizeof(bytes), bytes, &length);
             frames_.back().text.append(bytes, length);
             return;
         }
     }
-    ExportChar(character, voice());
+    if (literal) ExportRawWchar(character);
+    else ExportChar(character, voice());
 }
 
 void InlineMarkup::recovery(const std::string& text, bool parentVisible) {
@@ -203,6 +207,7 @@ bool InlineMarkup::marker(const Marker& marker, bool parentVisible) {
 
     struct Pair { const char* begin; const char* end; Kind kind; };
     static const Pair pairs[] = {
+        {"link", "/link", Kind::Link},
         {PARAM_REFERENCIA_BEGIN, PARAM_REFERENCIA_END, Kind::Reference},
         {PARAM_FOOTNOTE_REF_BEGIN, PARAM_FOOTNOTE_REF_END, Kind::FootnoteReference},
         {PARAM_FOOTNOTE_BEGIN, PARAM_FOOTNOTE_END, Kind::Footnote},

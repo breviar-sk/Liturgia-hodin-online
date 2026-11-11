@@ -1202,7 +1202,7 @@ const char* html_lang_jazyka[POCET_JAZYKOV + 1] =
 { "sk", "cs", "en", "la", "??", "cs", "hu", "ru", "by", "is", "es", "az", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
 const char* skratka_static_text[POCET_STATIC_TEXTOV + 1] =
-{ "", "ma", "ord", "i" };
+{ "", "ma", "ord", "i", "text" };
 
 const char* html_title_static_text[POCET_STATIC_TEXTOV + 1][POCET_JAZYKOV + 1] =
 {
@@ -1210,6 +1210,7 @@ const char* html_title_static_text[POCET_STATIC_TEXTOV + 1][POCET_JAZYKOV + 1] =
 	{ "Mariánske antifóny", "Mariánské zpěvy", "Mary antiphones", "Antiphonæ B. M. V.", "", "Mariánské antifóny", "Szűz Mária záró-antifónái", "ru_text", "by_text", "Andstef Maríu meyjar", "Antífonas marianas", "Məryəm Anaya himnləri", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "Ordinárium", "Uspořádání", "Ordinary", "Ordinarium", "", "Ordinárium", "Általános rész", "ru_text", "by_text", "Fastir liðir", "Ordinario", "Ordinarium", /* STRING_1_FOR_NEW_LANGUAGE */ },
 	{ "Info", "Info", "Info", "Info", "", "Info", "Info", "ru_text", "by_text", "Info", "Info", "Məlumat", /* STRING_1_FOR_NEW_LANGUAGE */ },
+	{ "Texty", "Texty", "Texts", "Textus", "", "Texty", "Szövegek", "Тексты", "Тэксты", "Textar", "Textos", "Mətnlər", /* STRING_1_FOR_NEW_LANGUAGE */ },
 };
 
 const char* html_subtitle_static_text_info[POCET_INFO_TEXTOV + 1][POCET_JAZYKOV + 1] =
@@ -3352,6 +3353,23 @@ const char* html_text_opt_1_slava_otcu_explain[POCET_JAZYKOV + 1] =
 	"",
 	"",
 	"Medhlərdə adətən hər məzmurun sonunda oxunulan - Ataya, Oğula və Müqəddəs Ruha - duasının mətni göstərilmir.",
+	/* STRING_2_FOR_NEW_LANGUAGE */
+};
+
+const char* html_text_opt_1_ukon_kaj[POCET_JAZYKOV + 1] =
+{
+	"úkon kajúcnosti v kompletóriu",
+	"úkon kajícnosti v kompletáři",
+	"penitential act in Compline",
+	"actus pænitentialis in Completorio",
+	"",
+	"úkon kajícnosti v kompletáři",
+	"" /* hu_text: no penitential act in the Hungarian Compline template */,
+	"" /* ru_text */,
+	"" /* by_text */,
+	"iðrunarathöfn í náttsöng",
+	"acto penitencial en Completas",
+	"gecə duasında tövbə mərasimi",
 	/* STRING_2_FOR_NEW_LANGUAGE */
 };
 

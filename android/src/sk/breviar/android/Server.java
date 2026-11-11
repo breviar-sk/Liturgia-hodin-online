@@ -231,6 +231,15 @@ public class Server extends Thread {
     native FileDescriptor[] createPipe();
 
     InputStream openAsset(String filename) throws IOException {
+      // Standalone language sites use ../include links; Android stores these
+      // translations in include_<language> rather than duplicating the assets.
+      for (String language : new String[]{"cz", "czop", "hu", "la"}) {
+        String prefix = language + "/include/";
+        if (filename.startsWith(prefix)) {
+          filename = "include_" + language + "/" + filename.substring(prefix.length());
+          break;
+        }
+      }
       return ctx.getAssets().open(filename.replace("/_", "/x"));
     }
 
@@ -326,7 +335,11 @@ public class Server extends Thread {
     }
 
     synchronized void handleFile(Socket client, String dokument, boolean persistent) throws IOException {
+      // Cache-busting query strings are not part of an asset's filename.
+      dokument = dokument.split("\\?", 2)[0];
       boolean is_css = dokument.equals("breviar.css");
+      boolean is_html = !dokument.startsWith("file/") &&
+          (dokument.endsWith(".htm") || dokument.endsWith(".html"));
       try {
         InputStream infile;
         if (dokument.startsWith("file/")) {
@@ -338,13 +351,17 @@ public class Server extends Thread {
             infile = new java.io.ByteArrayInputStream(new byte[0]);
           }
         } else {
-          infile = ctx.getAssets().open(dokument, AssetManager.ACCESS_STREAMING);
+          infile = openAsset(dokument);
+        }
+        if (is_html) {
+          infile = new ByteArrayInputStream(StaticHtml.style(infile, getOpts()));
         }
         client.getOutputStream().write(
             (
             "HTTP/1.1 200 OK\n" +
             "Server: Breviar\n" +
-            "Connection: close\n\n"
+            "Connection: close\n" +
+            (is_html ? "Content-Type: text/html; charset=utf-8\nCache-Control: no-store\n" : "") + "\n"
             ).getBytes("UTF-8")
         );
 

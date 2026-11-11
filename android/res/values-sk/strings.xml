@@ -105,6 +105,8 @@
     <string name="navigation_drawer_open">Otvor menu</string>
     <string name="navigation_drawer_close">Zatvor menu</string>
 
+    <string name="ordinarium">Ordinárium</string>
+
     <string name="inv">Invitatórium</string>
     <string name="rch">Ranné chvály</string>
     <string name="vesp">Vešpery</string>

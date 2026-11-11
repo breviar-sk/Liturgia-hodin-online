@@ -92,7 +92,7 @@ public class ReadingNavigationTest {
       BreviarApp.setEinkMode(context, eink);
       BreviarApp.setUrlOptions(context, "&amp;o0=" + ((1 << 18) | (1 << 20)));
       try (ActivityController<XmlSettingsActivity> controller = Robolectric.buildActivity(
-          XmlSettingsActivity.class, XmlSettingsActivity.entryIntent(context, "reading.navigation")).setup()) {
+          XmlSettingsActivity.class, XmlSettingsActivity.entryIntent(context, "device.reading-navigation")).setup()) {
         XmlSettingsActivity activity = controller.get();
         XmlSettingsActivityTest.awaitSettings(activity);
         for (ReadingNavigation.Mode mode : ReadingNavigation.Mode.values()) {
@@ -104,7 +104,7 @@ public class ReadingNavigationTest {
           XmlSettingsActivityTest.awaitSettings(activity);
           assertEquals(mode, ReadingNavigation.get(context));
           assertTrue(activity.navigationView.getMenu().getItem(mode.ordinal()).isChecked());
-          MenuItem left = activity.menuItem("reading.arrows-left");
+          MenuItem left = activity.menuItem("device.arrows-left");
           assertEquals(mode == ReadingNavigation.Mode.ARROWS, left.isEnabled());
           assertEquals(left.isEnabled(), left.getActionView().isEnabled());
           UrlOptions options = new UrlOptions(BreviarApp.getUrlOptions(context));

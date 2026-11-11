@@ -56,10 +56,12 @@ class SettingsXmlTest(unittest.TestCase):
                     'calendar.options': ['calendar.epiphany-sunday', 'calendar.ascension-sunday',
                                          'calendar.corpus-christi-sunday', 'calendar.highlight-national'],
                     'appearance': ['appearance.font-margins', 'appearance.colors',
-                                   'appearance.navigation', 'appearance.buttons', 'appearance.other'],
-                    'appearance.navigation': ['reading.navigation'],
-                    'reading.navigation': ['reading.arrow-options'],
-                    'reading.arrow-options': ['reading.arrows-left', 'reading.down-arrow-only'],
+                                   'appearance.buttons', 'appearance.other'],
+                    'device': ['device.navigation', 'device.eink', 'device.volume-paging',
+                               'device.keep-awake', 'device.do-not-disturb', 'device.lock-zoom'],
+                    'device.navigation': ['device.reading-navigation'],
+                    'device.reading-navigation': ['device.arrow-options'],
+                    'device.arrow-options': ['device.arrows-left', 'device.down-arrow-only'],
                     'prayers': ['prayers.inline-options', 'prayers.presentation', 'prayers.parts',
                                 'prayers.celebration', 'prayers.other',
                                 'prayers.alternatives-inline', 'prayers.alternatives'],
@@ -97,7 +99,7 @@ class SettingsXmlTest(unittest.TestCase):
                 for key in ('language.use-for-interface', 'general.online-mode', 'device.eink',
                             'device.volume-paging', 'device.keep-awake', 'device.do-not-disturb',
                             'device.lock-zoom', 'appearance.font', 'appearance.font-size',
-                            'reading.navigation', 'speech.rate', 'speech.psalm-pauses', 'speech.help'):
+                            'device.reading-navigation', 'speech.rate', 'speech.psalm-pauses', 'speech.help'):
                     self.assertEqual(actual[key].attrib['Handler'], key)
                 self.assertEqual(actual['language'].attrib['Parameter'], 'j')
                 self.assertEqual(actual['language'].attrib['ValuesRef'], 'SupportedLanguages')
@@ -108,7 +110,7 @@ class SettingsXmlTest(unittest.TestCase):
                 self.assertEqual(actual['prayers.common'].attrib['ValueAttribute'], 'Id')
                 seen.update({key: node.tag for key, node in actual.items()})
         self.assertEqual(list(seen.values()).count('MenuGroup'), 22)
-        self.assertEqual(list(seen.values()).count('MenuItem'), 89)
+        self.assertEqual(list(seen.values()).count('MenuItem'), 90)
 
     def test_language_specific_items(self):
         for language, root in self.exports.items():
@@ -132,14 +134,14 @@ class SettingsXmlTest(unittest.TestCase):
 
     def test_option_words_masks_overrides_and_decimal_places(self):
         variants = [{}, {'o0': '0', 'of0v': '1', 'o3': '1'},
-                    {'o0': '2097151', 'o1': '1048575', 'o2': '131071',
+                    {'o0': '2097151', 'o1': '2097151', 'o2': '131071',
                      'o5': '2097151', 'o6': '12345678901'}]
         for params in variants:
             with self.subTest(params=params):
                 options = export(**params).find('Options')
                 self.assertEqual([g.get('Name') for g in options],
                                  ['o0', 'o1', 'o2', 'o3', 'o5', 'o6'])
-                self.assertEqual([len(g) for g in options], [21, 20, 17, 0, 21, 11])
+                self.assertEqual([len(g) for g in options], [21, 21, 17, 0, 21, 11])
                 for group in options:
                     self.assertEqual(set(group.attrib), {'Name', 'Value', 'ForceName', 'Text'})
                     word = int(group.attrib['Value'])
@@ -168,6 +170,20 @@ class SettingsXmlTest(unittest.TestCase):
                 self.assertEqual(option.text, value)
                 menu = by_key(root.find('Menu'))
                 self.assertEqual(menu['appearance.prayer-buttons'].attrib['OptionRef'], option.tag)
+
+    def test_penitential_act_has_an_independent_bit_and_override(self):
+        for rubrics in (0, 2):
+            for value in (0, 1):
+                with self.subTest(rubrics=rubrics, value=value):
+                    root = export(o1=rubrics | ((1 - value) * 1048576), of1uk=value)
+                    option = root.find('Options/*/BitOpt1ComplinePenitentialAct')
+                    self.assertEqual(option.attrib['Id'], '1048576')
+                    self.assertEqual(option.attrib['ForceName'], 'of1uk')
+                    self.assertEqual(option.text, str(value))
+                    self.assertEqual(root.find('Options/*/BitOpt1Rubrics').text, str(rubrics // 2))
+                    menu = by_key(root.find('Menu'))
+                    self.assertEqual(menu['prayers.penitential-act'].attrib['OptionRef'], option.tag)
+        self.assertNotIn('prayers.penitential-act', by_key(export('hu', dl='sk').find('Menu')))
 
     def test_english_labels_and_empty_reset_values(self):
         menu = by_key(self.exports['en'].find('Menu'))

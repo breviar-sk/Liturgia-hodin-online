@@ -307,7 +307,7 @@ public class XmlSettingsActivity extends SettingsActivity {
       row.getValue().setTitle(caption);
     }
     SettingsXml.MenuEntry entry = settings.findEntry(groupName);
-    if (entry != null && entry.handler.equals("reading.navigation")) {
+    if (entry != null && entry.handler.equals("device.reading-navigation")) {
       enableChildren(entry, nativeSettings.navigationMode() == ReadingNavigation.Mode.ARROWS);
     }
   }

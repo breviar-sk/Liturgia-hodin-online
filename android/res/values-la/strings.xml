@@ -105,6 +105,8 @@
     <string name="navigation_drawer_open">Menu aperire</string>
     <string name="navigation_drawer_close">Menu operire</string>
 
+    <string name="ordinarium">Ordinarium</string>
+
     <string name="inv">Invitatorium</string>
     <string name="rch">Laudes</string>
     <string name="vesp">Vesperæ</string>

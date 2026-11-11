@@ -30,6 +30,7 @@ int main() {
         }
     }
     assert(roundTrip == text);
+    assert(!reader.failed());
     const prayer::Marker marker("  r:  Ž 102, ");
     assert(marker.name == "r" && marker.argument == "Ž 102, ");
     const prayer::Marker url("k:https://example.org/text");
@@ -46,5 +47,11 @@ int main() {
     assert(!broken.next(token)); // Legacy behavior: discard an unfinished marker at EOF.
     prayer::TemplateReader missing(".test-build/no-such-template.htm", "rb");
     assert(!missing.isOpen() && !missing.next(token));
+#if !defined(_WIN32)
+    // POSIX permits opening a directory; reading it must not look like clean EOF.
+    prayer::TemplateReader directory(".", "rb");
+    assert(directory.isOpen());
+    assert(!directory.next(token) && directory.failed());
+#endif
     std::cout << "Template reader tests passed\n";
 }

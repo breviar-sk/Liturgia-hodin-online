@@ -2,6 +2,7 @@
 #define BREVIAR_PRAYER_MARKUP_H
 
 #include "template-reader.h"
+#include "html-markup.h"
 #include <string>
 #include <vector>
 
@@ -21,7 +22,7 @@ public:
     bool visible(bool parentVisible) const;
 
 private:
-    enum class Kind { Reference, FootnoteReference, Catechesis, Psalm95,
+    enum class Kind { Reference, FootnoteReference, Catechesis, Psalm95, Link,
                       Footnote, Note, Verse, Italics, FullText };
     struct Frame {
         Kind kind;
@@ -37,6 +38,7 @@ private:
     bool symbol(const std::string& name, bool enabled);
     MarkupStyle style_;
     std::vector<Frame> frames_;
+    HtmlMarkup html_;
 };
 
 } // namespace prayer

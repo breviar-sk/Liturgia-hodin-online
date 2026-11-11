@@ -74,6 +74,7 @@ public class Breviar extends AppearanceActivity
                                 ScaleGestureDetector.OnScaleGestureListener,
                                 NavigationView.OnNavigationItemSelectedListener {
     static String scriptname = "l.cgi";
+    static final int ORDINARIUM_REQUEST = 1;
 
     // Server singleton
     static Server S = null;
@@ -1028,11 +1029,30 @@ public class Breviar extends AppearanceActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+      if (requestCode == ORDINARIUM_REQUEST) {
+        if (resultCode == RESULT_OK && data != null) openOrdinarium(data.getStringExtra("ordinarium_prayer"));
+        return;
+      }
       if (resultCode == RESULT_OK) {
         language = data.getStringExtra("lang");
         if (language == null) language = "sk";
         resetLanguage();
       }
+    }
+
+    void openOrdinarium(String prayer) {
+      if (!java.util.Arrays.asList(OrdinariumActivity.PRAYERS).contains(prayer)) return;
+      UrlOptions query = new UrlOptions(BreviarApp.getUrlOptions(this));
+      for (String key : new String[]{"d", "m", "r", "ds"}) query.params.remove(key);
+      query.params.put("qt", "pst");
+      query.params.put("st", "2");
+      query.params.put("p", prayer);
+      query.params.put("j", BreviarApp.getString(this, "language", "sk"));
+      // The selection returns to the reader with the current saved appearance.
+      need_to_reload_preferences = false;
+      cancelScrollRestore();
+      wv.loadUrl("http://127.0.0.1:" + S.port + "/" + scriptname + "?"
+          + query.getBuilder().build().getEncodedQuery());
     }
 
     void updateFullscreen() {
@@ -1345,6 +1365,9 @@ public class Breviar extends AppearanceActivity
         toggleOnlyNonBoldFont();
       } else if (id == R.id.menu_about) {
         showAbout();
+      } else if (id == R.id.menu_ordinarium) {
+        prepareSettings();
+        startActivityForResult(new Intent(this, OrdinariumActivity.class), ORDINARIUM_REQUEST);
       } else if (id == R.id.menu_news) {
         showChangelog(false);
       } else if (id == R.id.search) {

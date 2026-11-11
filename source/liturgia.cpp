@@ -1855,6 +1855,7 @@ void strcat_str_opt_bit_order(char str_to_append[SMALL], short opt, short bit_or
 			case 17: mystrcpy(str, STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, SMALL); break; // BIT_OPT_1_STUP_SVIATOK_SLAVNOST
 			case 18: mystrcpy(str, STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT, SMALL); break; // BIT_OPT_1_KOMPL_MARIA_ANT
 			case 19: mystrcpy(str, STR_FORCE_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD, SMALL); break; // BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD
+			case 20: mystrcpy(str, STR_FORCE_BIT_OPT_1_UKON_KAJ, SMALL); break; // BIT_OPT_1_UKON_KAJ
 			}
 		}
 		break;

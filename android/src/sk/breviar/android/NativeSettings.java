@@ -22,7 +22,7 @@ final class NativeSettings {
     if (!entry.handler.isEmpty()) {
       switch (entry.handler) {
         case "language.select":
-        case "reading.navigation": return entry.control.equals("choice");
+        case "device.reading-navigation": return entry.control.equals("choice");
         case "language.use-for-interface":
         case "device.eink":
         case "device.volume-paging":
@@ -125,7 +125,7 @@ final class NativeSettings {
   }
 
   List<SettingsXml.Choice> choices(SettingsXml.MenuEntry entry) {
-    if (entry.handler.equals("reading.navigation")) {
+    if (entry.handler.equals("device.reading-navigation")) {
       List<SettingsXml.Choice> result = new ArrayList<>();
       for (ReadingNavigation.Mode mode : ReadingNavigation.Mode.values()) {
         result.add(new SettingsXml.Choice(mode.value, activity.getString(mode.label)));
@@ -145,7 +145,7 @@ final class NativeSettings {
 
   String value(SettingsXml.MenuEntry entry) {
     if (entry.handler.equals("language.select")) return BreviarApp.getString(activity, "language", "sk");
-    if (entry.handler.equals("reading.navigation")) return navigationMode().value;
+    if (entry.handler.equals("device.reading-navigation")) return navigationMode().value;
     return entry.value(activity.options().params);
   }
 
@@ -168,7 +168,7 @@ final class NativeSettings {
       activity.finish();
       return true;
     }
-    if (entry.handler.equals("reading.navigation")) {
+    if (entry.handler.equals("device.reading-navigation")) {
       activity.editStarted();
       for (ReadingNavigation.Mode mode : ReadingNavigation.Mode.values()) {
         if (mode.value.equals(value)) {

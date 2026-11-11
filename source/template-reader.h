@@ -23,6 +23,7 @@ public:
     TemplateReader(const char* path, const char* mode);
     bool isOpen() const { return file_ != nullptr; }
     bool next(Token& token);
+    bool failed() const { return failed_; }
 
 private:
     bool readCharacter(int& character);
@@ -32,6 +33,7 @@ private:
     std::size_t size_ = 0;
     Utf8DecoderState decoder_;
     bool inMarker_ = false;
+    bool failed_ = false;
     std::string marker_;
 };
 

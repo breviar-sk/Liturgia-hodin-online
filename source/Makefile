@@ -22,6 +22,8 @@ SRCS = \
 	template-reader.cpp \
 	prayer-renderer.cpp \
 	prayer-markup.cpp \
+	html-markup.cpp \
+	static-text.cpp \
 	bible-reference.cpp \
 	bible-links.cpp
 
@@ -45,7 +47,7 @@ breviar-no-main.o: breviar.o
 
 print_codes: print_codes.o breviar-no-main.o citania.o dbzaltar.o kalendar.o liturgia.o \
              mygetopt.o mylog.o myhpage.o myexpt.o cgiutils.o myconf.o utf8-utils.o \
-             mydefs.o mystring.o xml-settings.o template-reader.o prayer-renderer.o prayer-markup.o bible-reference.o bible-links.o
+             mydefs.o mystring.o xml-settings.o template-reader.o prayer-renderer.o prayer-markup.o html-markup.o static-text.o bible-reference.o bible-links.o
 	g++ -o $@ $^
 
 clean:
@@ -83,6 +85,8 @@ $(TEST_DIR)/prayer-renderer-test: tests/prayer-renderer-test.cpp myexpt.cpp Make
 test-rendering: $(TARGET) $(TEST_DIR)/prayer-renderer-test
 	$(TEST_DIR)/prayer-renderer-test
 	python3 tests/prayer-references-test.py $(abspath $(TARGET))
+	python3 tests/compline-options-test.py $(abspath $(TARGET))
+	python3 tests/static-text-test.py $(abspath $(TARGET))
 
 $(TEST_DIR)/template-reader-test: tests/template-reader-test.cpp template-reader.cpp template-reader.h utf8-utils.cpp mystring.cpp
 	mkdir -p $(TEST_DIR)
@@ -108,3 +112,9 @@ bible-reference.o: bible-reference.h
 bible-links.o prayer-markup.o: bible-links.h bible-reference.h
 
 -include .depend
+
+breviar.o prayer-renderer.o prayer-markup.o: prayer-markup.h html-markup.h
+html-markup.o: html-markup.h
+breviar.o static-text.o prayer-markup.o: static-text.h
+breviar.o static-text.o prayer-renderer.o: prayer-renderer.h
+breviar.o prayer-renderer.o prayer-markup.o: template-reader.h

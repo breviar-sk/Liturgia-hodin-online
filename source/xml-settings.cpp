@@ -171,6 +171,7 @@ const OptionGroup optionGroups[] = {
 		{XML_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, BIT_OPT_1_STUP_SVIATOK_SLAVNOST, STR_FORCE_BIT_OPT_1_STUP_SVIATOK_SLAVNOST, html_text_opt_1_slavit_ako_slavnost},
 		{XML_BIT_OPT_1_KOMPL_MARIA_ANT, BIT_OPT_1_KOMPL_MARIA_ANT, STR_FORCE_BIT_OPT_1_KOMPL_MARIA_ANT, html_text_opt_1_maria_ant, nullptr, false, JAZYK_HU},
 		{XML_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD, BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD, STR_FORCE_BIT_OPT_1_ZOBRAZ_OTCENAS_UVOD, html_text_opt_1_otcenas_uvod},
+		{XML_BIT_OPT_1_UKON_KAJ, BIT_OPT_1_UKON_KAJ, STR_FORCE_BIT_OPT_1_UKON_KAJ, html_text_opt_1_ukon_kaj},
 	}},
 	{OPT_2_HTML_EXPORT, XML_OPT_2_HTML_EXPORT, STR_OPT_2, STR_FORCE_OPT_2, html_text_opt_2_html_export, {
 		{XML_BIT_OPT_2_ISO_DATUM, BIT_OPT_2_ISO_DATUM, STR_FORCE_BIT_OPT_2_ISO_DATUM, html_text_opt_2_iso_datum},
@@ -346,6 +347,14 @@ Element menuXml() {
 			item("general.online-mode", menuText(menu_text_mode), "choice", {{"Handler", "general.online-mode"}}),
 		}),
 		group("device", menuText(text_menu_group_jazyk[MENU_1_DEVICE]), {
+			group("device.navigation", menuText(menu_text_navigation),{
+				item("device.reading-navigation", menuText(menu_text_reading_navigation), "choice",{ { "Handler", "device.reading-navigation" } },{
+					group("device.arrow-options", menuText(html_text_opt_0_transparent_nav),{
+						toggle("device.arrows-left", XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT),
+						toggle("device.down-arrow-only", XML_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY),
+					}),
+				}),
+			}),
 			item("device.eink", menuText(menu_text_device_eink), "toggle", {{"Handler", "device.eink"}}),
 			item("device.volume-paging", menuText(menu_text_volume_buttons), "toggle", {{"Handler", "device.volume-paging"}}),
 			item("device.keep-awake", menuText(menu_text_do_not_dim_screen), "toggle", {{"Handler", "device.keep-awake"}}),
@@ -397,14 +406,6 @@ Element menuXml() {
 					{"ResetValue", ""},
 				}),
 			}),
-			group("appearance.navigation", menuText(menu_text_navigation),{
-				item("reading.navigation", menuText(menu_text_reading_navigation), "choice",{ { "Handler", "reading.navigation" } },{
-					group("reading.arrow-options", menuText(html_text_opt_0_transparent_nav),{
-						toggle("reading.arrows-left", XML_BIT_OPT_0_TRANSPARENT_NAV_LEFT),
-						toggle("reading.down-arrow-only", XML_BIT_OPT_0_TRANSPARENT_NAV_DOWN_ONLY),
-					}),
-				}),
-			}),
 			group("appearance.buttons", menuText(menu_text_buttons),{
 				toggle("appearance.prayer-buttons", XML_BIT_OPT_2_PRAYER_BUTTONS),
 				toggle("appearance.date-buttons-below", XML_BIT_OPT_0_BUTTONS_ORDER),
@@ -433,6 +434,7 @@ Element menuXml() {
 			}),
 			group("prayers.parts", menuText(html_text_opt_1_nemenne_sucasti), {
 				toggle("prayers.rubrics", XML_BIT_OPT_1_RUBRIKY),
+				toggle("prayers.penitential-act", XML_BIT_OPT_1_UKON_KAJ),
 				toggle("prayers.gospel-canticles", XML_BIT_OPT_1_CHVALOSPEVY),
 				toggle("prayers.glory", XML_BIT_OPT_1_SLAVA_OTCU),
 				toggle("prayers.our-father", XML_BIT_OPT_1_OTCENAS),

@@ -79,6 +79,11 @@
   </group>
 
   <group android:id="@+id/group_menu_info">
+    <item android:id="@+id/menu_ordinarium"
+          android:title="@string/ordinarium"
+          android:icon="@android:drawable/ic_menu_agenda"
+    />
+
     <item android:id="@+id/menu_about"
           android:title="@string/about_title"
           android:icon="@drawable/ic_info_white_24dp"

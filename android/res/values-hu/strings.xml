@@ -105,6 +105,8 @@
     <string name="navigation_drawer_open">Nyílt menü</string>
     <string name="navigation_drawer_close">Zárja be menü</string>
 
+    <string name="ordinarium">Ordinárium</string>
+
     <string name="inv">Imádságra hívás</string>
     <string name="rch">Reggeli dicséret</string>
     <string name="vesp">Esti dicséret</string>

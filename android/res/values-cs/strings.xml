@@ -105,6 +105,8 @@
     <string name="navigation_drawer_open">Otevři menu</string>
     <string name="navigation_drawer_close">Zavři menu</string>
 
+    <string name="ordinarium">Ordinárium</string>
+
     <string name="inv">Uvedení</string>
     <string name="rch">Ranní chvály</string>
     <string name="vesp">Nešpory</string>

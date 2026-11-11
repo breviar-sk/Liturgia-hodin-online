@@ -57,6 +57,25 @@ static std::string inlineText(const std::string& text) {
     return result;
 }
 
+static void checkHtmlAttributes() {
+    _global_opt[0] = 0;
+    const std::string tag = "<a href=\"../include_is/z95.htm?a_b=1&amp;c=2#verse_one\" class='a_b' title=\"a > b_c\">";
+    expect(inlineText(tag + "text_with_spaces</a>") == tag + "text&nbsp;with&nbsp;spaces</a>",
+           "Text formatting changed an HTML attribute or failed to format prose");
+    expect(inlineText("a < b_c") == "a < b&nbsp;c", "A prose comparison was treated as a tag");
+    _global_opt[0] = BIT_OPT_0_VOICE_OUTPUT;
+    expect(inlineText("<a href='a_b*c.htm'>a_b</a>") == "<a href='a_b*c.htm'>a b</a>",
+           "Speech cleanup changed literal HTML");
+    _global_opt[0] = 0;
+    expect(inlineText("{link:../secret}read_this{/link}") == "read&nbsp;this",
+           "Unknown link target became a filename or lost its label");
+    expect(inlineText("{full-text}{link:psalm-95}hidden{/link}{/full-text}visible") == "visible",
+           "Content link exposed hidden text");
+    expect(inlineText("{link:psalm-95}<span class='a_b'>text_label</span>{/link}").find(
+               "<span class='a_b'>text&nbsp;label</span>") != std::string::npos,
+           "Content link changed its nested markup");
+}
+
 static void checkInlineState() {
     _global_opt[0] = BIT_OPT_0_REFERENCIE | BIT_OPT_0_FOOTNOTES;
     _global_opt[1] = 0;
@@ -84,6 +103,12 @@ static void checkInlineState() {
     closeExport();
     expect(output.find("VISIBLE") != std::string::npos, "Selected section disappeared");
     expect(output.find("HIDDEN") == std::string::npos, "An alias or nested condition exposed hidden text");
+    initExport();
+    prayer::RenderState state;
+    const auto missing = prayer::renderSection(state, PRM_DATUM, MODL_VESPERY, PARAM_ZALM1,
+        "tests/fixtures/prayer-visibility.htm", "no-such-section", false);
+    expect(missing == prayer::SectionResult::SectionNotFound, "Missing section was reported as rendered");
+    closeExport();
 }
 
 static std::string section(prayer::RenderState& state, const char* part, const char* anchor) {
@@ -225,6 +250,7 @@ int main(int argc, char** argv) {
             "tests/fixtures/prayer-sections.htm", anchor);
         check(anchor);
     }
+    checkHtmlAttributes();
     checkInlineState();
     checkLiturgicalMarkers();
     checkTemplateReferences();
