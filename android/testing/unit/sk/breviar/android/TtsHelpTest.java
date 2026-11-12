@@ -127,6 +127,48 @@ public class TtsHelpTest {
     }
   }
 
+  @Test public void readerDialogsUseModeImmediatelyAfterToggleBeforeOnStop() {
+    Server previous = Breviar.S;
+    Breviar.S = server();
+    BreviarApp.setOverrideLocale(context, true);
+    BreviarApp.setString(context, "language", "sk");
+    Breviar reader = Robolectric.buildActivity(Breviar.class).get();
+    reader.language = "sk";
+    reader.need_to_reload_preferences = false;
+    reader.wv = new android.webkit.WebView(context);
+    try {
+      for (int page = 0; page < 2; ++page) {
+        for (boolean initiallyNight : new boolean[]{false, true}) {
+          String options = "&amp;c=" + (initiallyNight ? "1" : "0") + "&amp;f=serif&amp;ff=26";
+          BreviarApp.setUrlOptions(context, options);
+          Breviar.S.setOpts(options);
+          reader.wv.loadUrl("http://127.0.0.1:49999/l.cgi?qt=pdnes&c=" + (initiallyNight ? "1" : "0"));
+          reader.toggleNightMode();
+          String currentOptions = Breviar.S.getOpts();
+          // No onStop or HTTP response occurs before opening the information page.
+          if (page == 0) reader.showAbout();
+          else reader.showChangelog(false);
+          Intent intent = Shadows.shadowOf(reader).getNextStartedActivity();
+          try (ActivityController<DialogActivity> dialog =
+              Robolectric.buildActivity(DialogActivity.class, intent).setup()) {
+            String url = Shadows.shadowOf(dialog.get().wv).getLastLoadedUrl();
+            UrlOptions query = new UrlOptions(url, true);
+            assertEquals(!initiallyNight, query.isNightmode());
+            assertEquals(Integer.toString(page), query.params.get("p"));
+            assertEquals("26", query.params.get("ff"));
+            assertEquals("serif", query.params.get("f"));
+            assertEquals(49999, Uri.parse(url).getPort());
+            assertEquals(currentOptions, Breviar.S.getOpts());
+            assertEquals(options, BreviarApp.getUrlOptions(context));
+          }
+        }
+      }
+    } finally {
+      reader.wv.destroy();
+      Breviar.S = previous;
+    }
+  }
+
   @Test public void restoredHelpOwnsAndClosesItsServer() throws Exception {
     Breviar.S = null;
     for (int page = 0; page < 3; page++) {

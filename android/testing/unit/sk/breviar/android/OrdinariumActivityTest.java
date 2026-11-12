@@ -32,14 +32,15 @@ public class OrdinariumActivityTest {
     @Implementation protected static void __staticInitializer__() {}
   }
 
-  @Test public void drawerEntryAndAllFiveChoicesReturnToTheReader() {
+  @Test public void drawerEntryAndAllChoicesReturnToTheReader() {
     try (ActivityController<OrdinariumActivity> controller =
         Robolectric.buildActivity(OrdinariumActivity.class).setup()) {
       OrdinariumActivity activity = controller.get();
       Menu menu = activity.navigationView.getMenu();
-      String[] prayers = {"mi", "mrch", "mpc", "mv", "mk"};
-      int[] labels = {R.string.inv, R.string.rch, R.string.read, R.string.vesp, R.string.kompl};
-      assertEquals(5, menu.size());
+      String[] prayers = {"mi", "mrch", "mpc", "mna", "mv", "mk"};
+      int[] labels = {R.string.inv, R.string.rch, R.string.read,
+          R.string.daytime, R.string.vesp, R.string.kompl};
+      assertEquals(6, menu.size());
       for (int i = 0; i < prayers.length; ++i) {
         assertEquals(activity.getString(labels[i]), menu.getItem(i).getTitle().toString());
         menu.performIdentifierAction(menu.getItem(i).getItemId(), 0);
@@ -69,7 +70,7 @@ public class OrdinariumActivityTest {
     try {
       for (String language : new String[]{"sk", "cz", "c2", "hu", "la", "is"}) {
         BreviarApp.setString(context, "language", language);
-        for (String prayer : new String[]{"mi", "mrch", "mpc", "mv", "mk"}) {
+        for (String prayer : new String[]{"mi", "mrch", "mpc", "mna", "mv", "mk"}) {
           reader.onActivityResult(Breviar.ORDINARIUM_REQUEST, Activity.RESULT_OK,
               new Intent().putExtra("ordinarium_prayer", prayer));
           Uri url = Uri.parse(Shadows.shadowOf(reader.wv).getLastLoadedUrl());

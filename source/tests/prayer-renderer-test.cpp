@@ -76,6 +76,35 @@ static void checkHtmlAttributes() {
            "Content link changed its nested markup");
 }
 
+static unsigned occurrences(const std::string& text, const std::string& needle) {
+    unsigned count = 0;
+    for (std::size_t at = 0; (at = text.find(needle, at)) != std::string::npos; at += needle.size()) ++count;
+    return count;
+}
+
+static void checkTtsMarkers() {
+    for (bool voice : {false, true}) {
+        _global_opt[0] = voice ? BIT_OPT_0_VOICE_OUTPUT : 0;
+        initExport();
+        includeFile(PRM_STATIC_TEXT, MODL_NEURCENA, PARAM_TEXT,
+            "tests/fixtures/prayer-tts.htm", "chosen");
+        std::string output = getExportedString();
+        closeExport();
+        expect(occurrences(output, "class=\"tts-section\"") == 2, "Include lost a TTS boundary or exposed a hidden one");
+        expect(occurrences(output, "class=\"tts-heading\"") == 1, "Include lost its TTS heading");
+        expect(output.find("HIDDEN") == std::string::npos, "TTS marker exposed hidden text");
+        expect(output.find("class=\"tts-pause\"") == std::string::npos, "Include added pause-only navigation sections");
+
+        initExport();
+        char path[] = "tests/fixtures/prayer-tts.htm";
+        interpretTemplate(PRM_DATUM, MODL_VESPERY, path, NIE);
+        output = getExportedString();
+        closeExport();
+        expect(occurrences(output, "class=\"tts-section\"") == 2, "Template TTS boundaries changed");
+        expect(occurrences(output, "class=\"tts-pause\"") == (voice ? 2u : 0u), "Template TTS pauses changed");
+    }
+}
+
 static void checkInlineState() {
     _global_opt[0] = BIT_OPT_0_REFERENCIE | BIT_OPT_0_FOOTNOTES;
     _global_opt[1] = 0;
@@ -250,6 +279,7 @@ int main(int argc, char** argv) {
             "tests/fixtures/prayer-sections.htm", anchor);
         check(anchor);
     }
+    checkTtsMarkers();
     checkHtmlAttributes();
     checkInlineState();
     checkLiturgicalMarkers();

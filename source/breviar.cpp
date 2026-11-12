@@ -1859,7 +1859,6 @@ void _main_prazdny_formular(void) {
 } // _main_prazdny_formular()
 
 #define DetailLog emptyLog
-#define EXPORT_TTS_SECTIONS (state.skipDepth == NIE)
 #define ExportHtmlOnly(a) { if (typ != PRM_XML) { Export(a); } }
 #define ExportHtmlOnlyFormat(a, b) { if (typ != PRM_XML) { Export(a, b); } }
 
@@ -2060,7 +2059,6 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 	short int podmienka = NIE;
 	short int je_begin, je_end = NIE;
 	short int exportovat_html_note = NIE;
-	short int exportovat_html_tag = NIE;
 	short int current_value = 0;
 
 	char anchor[SMALL] = STR_EMPTY;
@@ -2068,8 +2066,6 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 	char before[SMALL] = STR_EMPTY;
 	char after[SMALL] = STR_EMPTY;
 
-	char tag_to_export_begin[SMALL] = STR_EMPTY;
-	char tag_to_export_end[SMALL] = STR_EMPTY;
 
 	char popis_show[SMALL];
 	char popis_hide[SMALL];
@@ -2127,7 +2123,6 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 		|| (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_BEGIN)) || (equals(paramname, PARAM_ZAVER_KNAZ_DIAKON_END))
 		|| (equals(paramname, PARAM_ZAVER_OSTATNI_BEGIN)) || (equals(paramname, PARAM_ZAVER_OSTATNI_END))
 		|| (equals(paramname, PARAM_MARIANSKE_ANTIFONY_BEGIN)) || (equals(paramname, PARAM_MARIANSKE_ANTIFONY_END))
-		|| (equals(paramname, PARAM_TTS_HEADING_BEGIN)) || (equals(paramname, PARAM_TTS_HEADING_END))
 		|| (equals(paramname, PARAM_INVITAT_COMMON_BEGIN)) || (equals(paramname, PARAM_INVITAT_COMMON_END))
 		|| (equals(paramname, PARAM_INVITAT_PSALM_BEGIN("0"))) || (equals(paramname, PARAM_INVITAT_PSALM_END("0")))
 		|| (equals(paramname, PARAM_INVITAT_PSALM_BEGIN("1"))) || (equals(paramname, PARAM_INVITAT_PSALM_END("1")))
@@ -2141,9 +2136,6 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 
 		podmienka = ANO;
 		exportovat_html_note = NIE;
-		exportovat_html_tag = NIE; // considered only when exportovat_html_note == ANO
-		mystrcpy(tag_to_export_begin, STR_EMPTY, SMALL);
-		mystrcpy(tag_to_export_end, STR_EMPTY, SMALL);
 
 		if (startsWith(paramname, (char *)KEYWORD_PARAM_CHVALOSPEV)) {
 			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_CHVALOSPEVY));
@@ -2260,12 +2252,6 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 			podmienka = podmienka && (useWhenGlobalOption(OPT_1_CASTI_MODLITBY, BIT_OPT_1_ZAVER));
 			exportovat_html_note = ANO;
 		}
-		else if (startsWith(paramname, (char *)KEYWORD_TTS_HEADING)) {
-			exportovat_html_note = ANO;
-			exportovat_html_tag = ANO;
-			mystrcpy(tag_to_export_begin, "<" HTML_DIV_TTS_HEADING ">", SMALL);
-			mystrcpy(tag_to_export_end, HTML_DIV_END, SMALL);
-		}
 
 		if (podmienka) {
 			// show
@@ -2275,18 +2261,8 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 					Export("show %s", paramname);
 #endif
 					Export(HTML_COMMENT_END);
-
-					if (exportovat_html_tag) {
-						Export(tag_to_export_begin);
-						Export(HTML_COMMENT_BEGIN);
-					}
 				}
 				else if (je_end) {
-					if (exportovat_html_tag) {
-						Export(HTML_COMMENT_END);
-						Export(tag_to_export_end);
-					}
-
 					Export(HTML_COMMENT_BEGIN);
 #if defined(EXPORT_HTML_SPECIALS)
 					Export("show %s", paramname);
@@ -3171,29 +3147,6 @@ void interpretParameter(prayer::RenderState& state, short int typ, short int mod
 			Log("skipping %s\n", paramname);
 		}
 	} // PARAM_CHVALOSPEV, PARAM_ZAVER, PARAM_OTCENAS, PARAM_TEDEUM, PARAM_DOPLNKOVA_PSALMODIA, PARAM_PSALMODIA, PARAM_POPIS, PARAM_SLAVAOTCU, PARAM_RESPONZ, PARAM_NADPIS, PARAM_KRATSIE_PROSBY, PARAM_VIGILIA, PARAM_ALT_HYMNUS, PARAM_SPOL_CAST_SPOM
-
-	else if (equals(paramname, PARAM_TTS_SECTION)) {
-		// export for voice output, never show; CSS defines display: none;
-		if (EXPORT_TTS_SECTIONS) {
-			ExportHtmlOnly("tts:section:begin" HTML_COMMENT_END);
-
-			if (isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_VOICE_OUTPUT)) {
-				Export("<" HTML_SPAN_TTS_PAUSE ">");
-
-				Export(HTML_SPAN_END "\n");
-			}
-
-			Export("<" HTML_DIV_TTS_SECTION ">");
-
-			Export(HTML_DIV_END "\n");
-
-			ExportHtmlOnly(HTML_COMMENT_BEGIN "tts:section:end");
-		}
-		else {
-			ExportHtmlOnly("[skipping TTS_SECTION]");
-			Log("skipping TTS_SECTION\n");
-		}
-	} // PARAM_TTS_SECTION
 
 	else if (equals(paramname, PARAM_NAVIGACIA_SIMPLE)) {
 		if ((aj_navigacia == ANO) && (!(state.skipDepth >= ANO))) {

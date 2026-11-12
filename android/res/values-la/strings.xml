@@ -109,6 +109,7 @@
 
     <string name="inv">Invitatorium</string>
     <string name="rch">Laudes</string>
+    <string name="daytime">Hora media</string>
     <string name="vesp">Vesperæ</string>
     <string name="kompl">Completorium</string>
     <string name="read">Officium lectionis</string>

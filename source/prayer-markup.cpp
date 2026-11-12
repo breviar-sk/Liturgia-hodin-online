@@ -200,9 +200,32 @@ bool InlineMarkup::symbol(const std::string& name, bool enabled) {
     return true;
 }
 
+bool InlineMarkup::tts(const Marker& marker, bool enabled) {
+    if (marker.name != "TTS") return false;
+    const auto& part = marker.argument;
+    if (part != "SECTION" && part != "HEADING_BEGIN" && part != "HEADING_END") return false;
+    if (!enabled) return true;
+    if (part == "SECTION") {
+        emit("tts:section:begin" HTML_COMMENT_END);
+        // Included parts can start with a boundary inside an existing section.
+        // Only outer templates add pauses; otherwise hidden/empty parts would
+        // turn into sections containing nothing but a long pause.
+        if (voice() && style_ == MarkupStyle::Template)
+            emit("<" HTML_SPAN_TTS_PAUSE ">" HTML_SPAN_END "\n");
+        emit("<" HTML_DIV_TTS_SECTION ">" HTML_DIV_END "\n");
+        emit(HTML_COMMENT_BEGIN "tts:section:end");
+    } else {
+        emit(HTML_COMMENT_END);
+        emit(part == "HEADING_BEGIN" ? "<" HTML_DIV_TTS_HEADING ">" : HTML_DIV_END);
+        emit(HTML_COMMENT_BEGIN);
+    }
+    return true;
+}
+
 bool InlineMarkup::marker(const Marker& marker, bool parentVisible) {
     const auto& name = marker.name;
     const bool enabled = visible(parentVisible);
+    if (tts(marker, enabled)) return true;
     if (symbol(name, enabled)) return true;
 
     struct Pair { const char* begin; const char* end; Kind kind; };

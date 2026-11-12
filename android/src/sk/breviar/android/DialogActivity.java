@@ -111,9 +111,10 @@ public class DialogActivity extends AppearanceActivity {
     String url = intent.getStringExtra("url");
     Server server = Breviar.S;
     if (intent.hasExtra("static_text")) {
-      // Settings can change before the reader resumes and updates its server.
-      // Read the current preferences, and never persist this dialog's options.
-      String options = BreviarApp.getUrlOptions(this);
+      // Reader dialogs carry a snapshot; settings help/restored dialogs use the
+      // latest saved preferences. Never persist this dialog's options.
+      String options = intent.getStringExtra("reader_options");
+      if (options == null) options = BreviarApp.getUrlOptions(this);
       String language = staticTextLanguage();
       if (server == null) {
         // Android may restore settings/help after the reader process was killed.

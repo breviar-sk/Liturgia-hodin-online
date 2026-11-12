@@ -164,9 +164,14 @@ public class Breviar extends AppearanceActivity
     }
 
     void startDialogActivity(int title_id, String query, boolean show_ok) {
+      // The dialog starts before onStop saves the reader's current options.
+      // Pending settings edits remain authoritative until the reader resumes.
+      String options = S != null && !need_to_reload_preferences
+          ? S.getOpts() : BreviarApp.getUrlOptions(this);
       startActivity(new Intent(this, DialogActivity.class)
           .putExtra("title", title_id)
           .putExtra("static_text", query)
+          .putExtra("reader_options", options)
           .putExtra("show_ok", show_ok));
     }
 

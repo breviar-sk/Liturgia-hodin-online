@@ -36,6 +36,7 @@ private:
     void close(Kind kind, bool parentVisible);
     void emit(const std::string& html);
     bool symbol(const std::string& name, bool enabled);
+    bool tts(const Marker& marker, bool enabled);
     MarkupStyle style_;
     std::vector<Frame> frames_;
     HtmlMarkup html_;

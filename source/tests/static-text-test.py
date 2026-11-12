@@ -108,6 +108,22 @@ class StaticTextTest(unittest.TestCase):
                     self.assertNotIn('not found', html)
                     self.assertGreater(len(re.sub('<[^>]*>', '', body(html)).strip()), 30)
 
+    def test_ordinarium_tts_sections_in_every_language(self):
+        for path in ROOT.glob('include*/ord_*.htm'):
+            source = path.read_text()
+            self.assertIn('{TTS:SECTION}', source, str(path))
+            self.assertEqual(source.count('{TTS:HEADING_BEGIN}'), source.count('{TTS:HEADING_END}'), str(path))
+        for language in LANGUAGES:
+            for st, prayers in (('1', ('',)), ('2', OFFICES)):
+                for prayer in prayers:
+                    with self.subTest(language=language, st=st, prayer=prayer):
+                        for voice in (0, 256):
+                            html = render(st=st, p=prayer, j=language, o0=voice)
+                            self.assertNotIn('{TTS:', html)
+                            self.assertGreater(body(html).count('class="tts-section"'), 0)
+                            # Include boundaries add navigation without creating pause-only sections.
+                            self.assertNotRegex(html, r'<span class="tts-pause"></span>\s*<div class="tts-section">')
+
     def test_static_sections_are_allowlisted(self):
         for target in ('../../cgi-bin/breviar-web.cfg', '/etc/passwd', 'z95.htm'):
             html = render(st='text', p=target)

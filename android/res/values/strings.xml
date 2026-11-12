@@ -111,6 +111,7 @@
 
     <string name="inv">Invitatory</string>
     <string name="rch">Lauds</string>
+    <string name="daytime">Daytime prayer</string>
     <string name="vesp">Vespers</string>
     <string name="kompl">Compline</string>
     <string name="read">Readings</string>

@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-/** The five sections of the Ordinary, using the selected prayer edition. */
+/** The sections of the Ordinary, using the selected prayer edition. */
 public class OrdinariumActivity extends SettingsActivity {
-  static final String[] PRAYERS = {"mi", "mrch", "mpc", "mv", "mk"};
-  static final int[] LABELS = {R.string.inv, R.string.rch, R.string.read, R.string.vesp, R.string.kompl};
+  static final String[] PRAYERS = {"mi", "mrch", "mpc", "mna", "mv", "mk"};
+  static final int[] LABELS = {R.string.inv, R.string.rch, R.string.read,
+      R.string.daytime, R.string.vesp, R.string.kompl};
 
   @Override public void onCreate(Bundle state) {
     super.onCreate(state);
