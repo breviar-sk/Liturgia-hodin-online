@@ -2,11 +2,18 @@ package sk.breviar.android;
 
 import android.net.Uri;
 import android.util.Log;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class UrlOptions {
+  static final Set<String> SELECTION = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
+      "qt", "p", "d", "m", "r", "ds", "lo", "t", "dvt", "lr", "sv", "mr", "rr", "st")));
+
   public UrlOptions(String opts, boolean is_full_url) {
     if (is_full_url) {
       base_uri = Uri.parse(opts);
@@ -38,6 +45,14 @@ public class UrlOptions {
 
   public void override(UrlOptions other) {
     params.putAll(other.params);
+  }
+
+  /** Update settings while retaining the target page's date/prayer selection. */
+  public void applySavedOptions(UrlOptions saved) {
+    Map<String, String> settings = new java.util.HashMap<>(saved.params);
+    // During a reader reload the server snapshot can still be a complete URL.
+    settings.keySet().removeAll(SELECTION);
+    SettingsXml.applySavedOptions(params, settings);
   }
 
   public Uri.Builder getBuilder() {
@@ -430,36 +445,25 @@ public class UrlOptions {
     }
   }
 
-  private Pattern color_pattern =
-      Pattern.compile("^([0-9a-z]{3}){1,2}$", Pattern.CASE_INSENSITIVE);
+  private static final Pattern COLOR = Pattern.compile("(?:[0-9a-fA-F]{3}){1,2}");
 
-  // precondition: rgb is valid according to color_pattern
-  String getColorRRGGBB(String rgb) {
-	  String rrggbb = rgb;
-	  if(rgb.length() == 3) {
-		  rrggbb = "";
-		  for (int i = 0; i < rgb.length(); i++) {
-			  rrggbb += (rgb.charAt(i) + "" + rgb.charAt(i));
-		  }
-	  }
-	  return rrggbb;
+  static String normalizeColor(String value) {
+    if (value == null || !COLOR.matcher(value).matches()) return "";
+    String rgb = value.toLowerCase(java.util.Locale.ROOT);
+    if (rgb.length() == 6) return rgb;
+    StringBuilder result = new StringBuilder(6);
+    for (int i = 0; i < rgb.length(); ++i) result.append(rgb.charAt(i)).append(rgb.charAt(i));
+    return result.toString();
   }
 
   String getColor(String key, String dflt) {
-    String c = maybeGetText(key);
-    if (c != null && color_pattern.matcher(c).find()) {
-      return getColorRRGGBB(c);
-    }
-    return dflt;
+    String color = normalizeColor(maybeGetText(key));
+    return color.isEmpty() ? dflt : color;
   }
 
   void setColor(String key, String value, String dflt) {
-    params.remove(key);
-    if (!value.equals(dflt) && color_pattern.matcher(value).find()) {
-      params.put(key, getColorRRGGBB(value));
-    } else {
-      params.put(key, "");
-    }
+    String color = normalizeColor(value);
+    params.put(key, color.equals(normalizeColor(dflt)) ? "" : color);
   }
 
   boolean hasBit(String key, int bit) {

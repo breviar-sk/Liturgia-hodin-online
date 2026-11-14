@@ -82,6 +82,26 @@ public final class SettingsXmlTest {
       check(settings.findEntry("language").choices.size() == languages.size(), "Language choices differ");
       check(settings.findGroup("o6") == null, "Contextual alternatives must stay in prayers");
       check(settings.groups.size() >= 4, "Missing groups for " + language);
+      check(settings.findEntry("appearance.colors.day").control.equals("submenu"), "Missing palette submenu");
+      Map<String, String> colors = new HashMap<>();
+      colors.put("ct0", "123456");
+      colors.put("cr0", "654321");
+      colors.put("c1", "112233");
+      colors.put("k", "sj");
+      SettingsXml.MenuEntry yellow = settings.findEntry("appearance.colors.day.yellow");
+      yellow.applyPreset(colors);
+      check(yellow.matchesPreset(colors), "Applied preset not selected");
+      check(colors.get("ct0").isEmpty() && colors.get("cr0").isEmpty(), "Preset did not reset text/rubrics");
+      check(colors.get("c0").equals("ffffcc"), "Wrong yellow background");
+      check(colors.get("c1").equals("112233") && colors.get("k").equals("sj"), "Preset changed unrelated settings");
+      SettingsXml.MenuEntry contrast = settings.findEntry("appearance.colors.day.high-contrast");
+      contrast.applyPreset(colors);
+      check(contrast.matchesPreset(colors), "Applied high-contrast preset not selected");
+      check(colors.get("ct0").equals("000000") && colors.get("cr0").equals("800000")
+          && colors.get("c0").equals("ffffff"), "Wrong day high-contrast colors");
+      check(colors.get("c1").equals("112233"), "Day high contrast changed night background");
+      settings.findEntry("appearance.colors.day.default").applyPreset(colors);
+      check(colors.containsKey("c0") && colors.get("c0").isEmpty(), "Default must explicitly clear background");
       for (SettingsXml.Group group : settings.groups) {
         checkLabel(group.label);
         long initial = group.value;
@@ -164,6 +184,24 @@ public final class SettingsXmlTest {
         && readerUrl.get("p").equals("mc"), "Unrelated reader parameters changed");
     check(SettingsXml.parse(export(readerUrl)).findGroup("o0").value == group.value,
         "Reader URL ignored saved options");
+
+    // Native rendering returns a compact snapshot: default colors are absent,
+    // even when an older URL still contains the colors that were reset.
+    Map<String, String> compactColors = new HashMap<>();
+    compactColors.put("ct1", "ffffcc");
+    compactColors.put("cr0", "800000");
+    for (String key : new String[]{"ct0", "cr0", "c0", "ct1", "cr1", "c1"}) {
+      readerUrl.put(key, "123456");
+    }
+    SettingsXml.applySavedOptions(readerUrl, compactColors);
+    check(readerUrl.get("ct1").equals("ffffcc") && readerUrl.get("cr0").equals("800000"),
+        "Current palette colors were lost");
+    for (String key : new String[]{"ct0", "c0", "cr1", "c1"}) {
+      check(readerUrl.containsKey(key) && readerUrl.get(key).isEmpty(),
+          "Compact snapshot revived a reset color: " + key);
+    }
+    check(readerUrl.get("d").equals("13") && readerUrl.get("p").equals("mc"),
+        "Applying palette defaults changed the prayer selection");
 
     group.value |= 1L << 40; // preserve bits unknown to this app version
     group.setChecked(overrides, verses, true);

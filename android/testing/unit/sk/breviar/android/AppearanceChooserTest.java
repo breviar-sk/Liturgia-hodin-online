@@ -142,6 +142,8 @@ public class AppearanceChooserTest {
       Reader reader = controller.get();
       assertNotSame(original, reader);
       assertEquals(0, original.changelogs);
+      assertEquals(0, reader.changelogs);
+      HighContrastPromptTest.decline(reader);
       assertEquals(1, reader.changelogs);
       assertTrue(BreviarApp.getEinkMode(context));
       assertNull(chooser(reader));
@@ -182,6 +184,7 @@ public class AppearanceChooserTest {
         assertNull(chooser(controller.get()));
         assertEquals(eink, BreviarApp.getEinkMode(context));
         assertFalse(controller.get().appearanceChanged());
+        if (eink) HighContrastPromptTest.decline(controller.get());
         assertEquals(1, controller.get().changelogs);
       }
     }

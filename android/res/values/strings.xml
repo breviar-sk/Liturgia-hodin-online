@@ -167,4 +167,21 @@
 
     <string name="tts_language_not_available">TTS is not available for current language.</string>
 
+    <string name="high_contrast_title">High-contrast colors</string>
+    <string name="high_contrast_message">You are using e-ink mode, and color schemes are now available. Would you like to apply high contrast for both day and night mode?</string>
+    <string name="high_contrast_load_failed">Could not load the color presets. Select Yes to try again, or No to keep your current colors.</string>
+    <string name="high_contrast_yes">Yes</string>
+    <string name="high_contrast_no">No</string>
+
+  <!-- Shared prayers -->
+  <string name="share_prayer">Share prayer</string>
+  <string name="restore_shared_settings">Restore my settings</string>
+  <string name="keep_shared_settings">Keep these settings</string>
+  <string name="shared_settings_active">Shared prayer settings are temporary. Use the menu to restore your settings or keep these settings.</string>
+  <string name="shared_link_invalid">This link cannot be opened as a prayer.</string>
+  <string name="share_prayer_message">Scan this QR code to open the page. Prayer links keep their selected date; daily overview links show the current day.</string>
+  <string name="share_link">Share link</string>
+  <string name="copy_link">Copy link</string>
+  <string name="link_copied">Link copied</string>
+  <string name="share_prayer_unavailable">This page cannot be shared.</string>
 </resources>

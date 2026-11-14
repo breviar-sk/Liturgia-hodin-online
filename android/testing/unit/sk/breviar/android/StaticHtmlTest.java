@@ -42,6 +42,23 @@ public class StaticHtmlTest {
     return new String(StaticHtml.style(new ByteArrayInputStream(html.getBytes("UTF-8")), options), "UTF-8");
   }
 
+  @Test public void allColorRolesFollowOnlyTheActivePalette() throws Exception {
+    String colors = "ct0=AbC&cr0=f00&c0=ffffcc&ct1=ffffff&cr1=ffff00&c1=000000";
+    String day = style("<html><head></head><body>Text</body></html>", "c=0&" + colors);
+    assertTrue(day.contains("--prayer-text: #aabbcc"));
+    assertTrue(day.contains("--prayer-rubric: #ff0000"));
+    assertTrue(day.contains("--prayer-background: #ffffcc"));
+    assertFalse(day.contains("--prayer-text: #ffffff"));
+    String night = style("<p>Text</p>", "c=1&" + colors);
+    assertTrue(night.contains("--prayer-text: #ffffff"));
+    assertTrue(night.contains("--prayer-rubric: #ffff00"));
+    assertTrue(night.contains("--prayer-background: #000000"));
+    String defaults = style("<p>Text</p>", "ct0=&cr0=gggggg&c0=ffffff;bad");
+    assertFalse(defaults.contains("--prayer-text:"));
+    assertFalse(defaults.contains("--prayer-rubric:"));
+    assertFalse(defaults.contains("--prayer-background:"));
+  }
+
   @Test public void catechesesAndTheirIndexUseLatestAppearanceWithoutChangingPreferences() throws Exception {
     Server server = server();
     String options = "&amp;c=1&amp;c0=abcdef&amp;c1=123456&amp;f=Custom Font&amp;ff=22&amp;lh=150&amp;mm=12";

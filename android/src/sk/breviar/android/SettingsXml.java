@@ -120,6 +120,7 @@ public final class SettingsXml {
     public final Integer min, max;
     public final List<MenuEntry> children = new ArrayList<>();
     public final List<Choice> choices = new ArrayList<>();
+    public final Map<String, String> assignments = new LinkedHashMap<>();
     public Group optionGroup;
     public Option option;
     private String selectedValue;
@@ -164,6 +165,23 @@ public final class SettingsXml {
       } else {
         throw new IllegalStateException("Native handler owns " + key);
       }
+    }
+
+    public void applyPreset(Map<String, String> params) {
+      if (!control.equals("preset") || assignments.isEmpty()) {
+        throw new IllegalStateException("Not a preset: " + key);
+      }
+      // Keep empty resets explicit: merging saved options into an older reader
+      // URL must not resurrect any of the colors that this preset cleared.
+      params.putAll(assignments);
+    }
+
+    public boolean matchesPreset(Map<String, String> params) {
+      if (assignments.isEmpty()) return false;
+      for (Map.Entry<String, String> assignment : assignments.entrySet()) {
+        if (!assignment.getValue().equals(params.getOrDefault(assignment.getKey(), ""))) return false;
+      }
+      return true;
     }
   }
 
@@ -304,6 +322,13 @@ public final class SettingsXml {
       }
     }
     for (Element child : children(element)) {
+      if (child.getTagName().equals("Set")) {
+        String parameter = child.getAttribute("Parameter");
+        if (!entry.control.equals("preset") || parameter.isEmpty() || !child.hasAttribute("Value")
+            || entry.assignments.put(parameter, child.getAttribute("Value")) != null) {
+          throw new IllegalArgumentException("Invalid preset assignment: " + entry.key);
+        }
+      }
       if (child.getTagName().equals("MenuGroup") || (entry.isGroup && child.getTagName().equals("MenuItem"))) {
         entry.children.add(parseEntry(child, root));
       }
@@ -316,11 +341,16 @@ public final class SettingsXml {
     return null;
   }
 
-  /** Apply canonical saved words without reviving an override in the reader URL. */
+  /** Apply an effective settings snapshot, including colors reset to CSS defaults. */
   public static void applySavedOptions(Map<String, String> current, Map<String, String> saved) {
     current.keySet().removeIf(key -> key.matches("of[0-6].*")
         && saved.containsKey("o" + key.charAt(2)));
     current.putAll(saved);
+    // The renderer omits default colors from its snapshot. Absence therefore
+    // means reset, rather than permission to retain a historical page's color.
+    for (String key : new String[]{"ct0", "cr0", "c0", "ct1", "cr1", "c1"}) {
+      current.put(key, saved.getOrDefault(key, ""));
+    }
   }
 
   private static boolean usableLabel(String text) {

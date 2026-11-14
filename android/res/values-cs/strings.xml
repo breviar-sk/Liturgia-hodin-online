@@ -164,4 +164,21 @@
     <string name="tts_language_not_available">Převod textu na řeč není k dispozici pro aktuální jazyk.</string>
 
     <string name="search">Hledat</string>
+    <string name="high_contrast_title">Barvy s vysokým kontrastem</string>
+    <string name="high_contrast_message">Používáte režim e-ink a přidali jsme možnost měnit barevná schémata. Chcete nastavit vysoký kontrast pro denní i noční režim?</string>
+    <string name="high_contrast_load_failed">Barevné předvolby se nepodařilo načíst. Vyberte Ano pro další pokus nebo Ne pro ponechání současných barev.</string>
+    <string name="high_contrast_yes">Ano</string>
+    <string name="high_contrast_no">Ne</string>
+
+  <!-- Shared prayers -->
+  <string name="share_prayer">Sdílet modlitbu</string>
+  <string name="restore_shared_settings">Obnovit moje nastavení</string>
+  <string name="keep_shared_settings">Ponechat toto nastavení</string>
+  <string name="shared_settings_active">Nastavení sdílené modlitby je dočasné. V menu můžete obnovit své nastavení nebo ponechat toto nastavení.</string>
+  <string name="shared_link_invalid">Tento odkaz nelze otevřít jako modlitbu.</string>
+  <string name="share_prayer_message">Naskenujte QR kód a otevřete stránku. Odkazy na modlitby zachovávají zvolené datum; odkazy na denní přehled zobrazují aktuální den.</string>
+  <string name="share_link">Sdílet odkaz</string>
+  <string name="copy_link">Kopírovat odkaz</string>
+  <string name="link_copied">Odkaz zkopírován</string>
+  <string name="share_prayer_unavailable">Tuto stránku nelze sdílet.</string>
 </resources>

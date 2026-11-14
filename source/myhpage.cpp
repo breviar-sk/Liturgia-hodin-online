@@ -21,6 +21,9 @@
 #include "myexpt.h"
 #include "mystring.h"
 #include "xml-settings.h"
+#include "static-text.h"
+#include "html-markup.h"
+#include "settings-text.h"
 
 #include "breviar.h"
 #include "liturgia.h"
@@ -67,7 +70,6 @@ const char* HTML_MAIL_LABEL_SHORT = "J. Vidéky";
 
 #define MAX_MAIL_LABEL 20
 #define MAX_EXT 5
-char html_background_color[SMALL];
 char html_mail_label[MAX_MAIL_LABEL];
 char pismeno_modlitby;
 char pismeno_prev[8];
@@ -249,37 +251,16 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	}
 	Log("creating html + header...\n");
 
-	Log("_global_theme_light_background_color == %s...\n", _global_theme_light_background_color);
-	Log("_global_theme_dark_background_color == %s...\n", _global_theme_dark_background_color);
+	const auto mode = PODMIENKA_IS_DARK_THEME ? appearance::Mode::Night : appearance::Mode::Day;
+	const auto& background = appearance::color(mode, appearance::Role::Background).value;
+	const bool has_background_color_override_light = !background.empty() && mode == appearance::Mode::Day;
+	const bool has_background_color_override_dark = !background.empty() && mode == appearance::Mode::Night;
+	mystrcpy(_local_background_color, background.c_str(), SMALL);
 
-	mystrcpy(_local_background_color, STR_EMPTY, SMALL);
-
-	bool has_background_color_override_light = (
-            PODMIENKA_IS_LIGHT_THEME &&
-            PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR &&
-            isValidHexaCode(_global_theme_light_background_color));
-
-	bool has_background_color_override_dark = (
-            PODMIENKA_IS_DARK_THEME &&
-            PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR &&
-            isValidHexaCode(_global_theme_dark_background_color));
-
-	if (has_background_color_override_light || has_background_color_override_dark) {
-		if (has_background_color_override_light) {
-			mystrcpy(_local_background_color, _global_theme_light_background_color, SMALL);
-		}
-		if (has_background_color_override_dark) {
-			mystrcpy(_local_background_color, _global_theme_dark_background_color, SMALL);
-		}
-	}
-
-	mystrcpy(html_background_color, STR_EMPTY, SMALL);
-
-	if (has_background_color_override_light || has_background_color_override_dark) {
-		mysnprintf(html_background_color, " style=\"background-color: #%s;\"", _local_background_color);
-	}
-	Log("element <html> followed by <head>...\n");
-	Export_to_file(expt, (char*)html_header_1, html_lang_jazyka[_global_jazyk], html_background_color);
+	std::string rootStyle = appearance::colorStyle(mode);
+	if (!background.empty()) rootStyle += "background-color: #" + background + ";";
+	if (!rootStyle.empty()) rootStyle = " style=\"" + rootStyle + "\"";
+	Export_to_file(expt, (char*)html_header_1, html_lang_jazyka[_global_jazyk], rootStyle.c_str());
 
 	// CSS (one or more)
 	_header_css(expt, level, nazov_css_default);
@@ -485,6 +466,19 @@ void _hlavicka_sidemenu_helper(FILE* expt, short int location_right = NIE) {
 			_export_link_menu_linkitem(o);
 		}
 	}// for o
+
+	// The same six Ordinary sections as in the native app. Daytime prayer
+	// shares one document, so link to its canonical midday selector.
+	Export_to_file(expt, "\t<div class=\"dropdown-btn\">%s&nbsp;<span style=\"font-size: 50%%;\">&#9660;</span></div>\n",
+		html_title_static_text[STATIC_TEXT_ORDINARIUM][_global_jazyk]);
+	Export_to_file(expt, "\t<div class=\"dropdown-container ordinarium-menu\">\n");
+	for (short office : {MODL_INVITATORIUM, MODL_RANNE_CHVALY, MODL_POSV_CITANIE,
+		MODL_NAPOLUDNIE, MODL_VESPERY, MODL_KOMPLETORIUM}) {
+		const auto url = prayer::contentLink(std::string("ordinarium-") + str_modlitby[office]);
+		const char* label = office == MODL_NAPOLUDNIE ? html_text_modlitba_cez_den[_global_jazyk] : nazov_Modlitby(office);
+		Export_to_file(expt, "\t\t<a href=\"%s\">%s</a>\n", prayer::escapeHtmlAttribute(url).c_str(), label);
+	}
+	Export_to_file(expt, "\t" HTML_DIV_END "\n");
 
 	// ------ dropdown for languages ------ 
 	Export_to_file(expt, "\t" HTML_NAVIGATION_DROPDOWN_BTN "%s" HTML_NONBREAKING_SPACE "" HTML_NAVIGATION_DROPDOWN_BTN_2 "" HTML_DIV_END "\n", html_text_Jazyk[_global_jazyk]);

@@ -75,10 +75,12 @@ Examples:
 #include "myhpage.h"
 #include "mybuild.h"
 #include "xml-settings.h"
+#include "appearance-colors.h"
 #include "template-reader.h"
 #include "prayer-renderer.h"
 #include "prayer-markup.h"
 #include "static-text.h"
+#include "html-markup.h"
 
 #ifdef _WIN32
 // Windows už má _strdup, netreba robiť nič
@@ -391,8 +393,6 @@ short int _global_kalendar;
 short int _global_ritus;
 
 short int _global_theme;
-char _global_theme_light_background_color[SMALL]; // used for background color override for light theme
-char _global_theme_dark_background_color[SMALL]; // used for background color override for dark theme
 short int _global_sidemenu_location;
 
 short int _global_font; // for value FONT_CUSTOM, we use pom_FONT as global variable unless empty
@@ -416,6 +416,62 @@ char _global_export_navig_hore_day[SMALL] = DEFAULT_MONTH_EXPORT;
 char _global_css_font_family[SMALL] = DEFAULT_FONT_FAMILY_SERIF;
 char _global_css_font_size[SMALL] = STR_EMPTY;
 short int _global_override_thin_nbsp = NIE; // whether to override ALL nbsp with thin nbsp
+
+static short int _global_liturgical_reference_year = 0;
+static std::string liturgical_reference_query;
+static std::string resolved_selection;
+static std::string resolved_query;
+
+const char* resolved_request_query() { return resolved_query.c_str(); }
+
+// Encode values at the URL boundary; the existing option builder uses HTML '&amp;'.
+static std::string encode_request_query(const std::string& query) {
+	std::string result;
+	const char* hex = "0123456789ABCDEF";
+	for (unsigned char c : query) {
+		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')
+			|| c == '-' || c == '.' || c == '_' || c == '~' || c == '&' || c == '=') result += c;
+		else { result += '%'; result += hex[c >> 4]; result += hex[c & 15]; }
+	}
+	return result;
+}
+
+static void export_resolved_request() {
+	if (resolved_selection.empty()) return;
+	char options[MAX_STR] = {}, scratch[MAX_STR] = {};
+	prilep_request_options(options, scratch);
+	resolved_query = encode_request_query(resolved_selection
+		+ mystr_replace((liturgical_reference_query + options).c_str(), HTML_AMPERSAND, "&"));
+	Export("<span id=\"breviar-request\" hidden data-query=\"%s\"></span>\n",
+		prayer::escapeHtmlAttribute(resolved_query).c_str());
+	// Android consumes the native identity without changing WebView URLs during
+	// layout/scroll restoration. Browsers adopt it directly for refresh/bookmarks.
+#ifndef IO_ANDROID
+	// Also fix refresh/bookmarks of a prayer entered through a relative URL.
+	// No navigation or reload occurs, and the current fragment/state are retained.
+	Export(R"JS(<script>
+(function () {
+  var node = document.getElementById('breviar-request');
+  if (node && window.history && history.replaceState) {
+    try {
+      history.replaceState(history.state, '', location.pathname + '?' + node.getAttribute('data-query') + location.hash);
+    } catch (error) {}
+  }
+})();
+</script>
+)JS");
+#endif
+}
+
+static short int liturgical_request_day = 0;
+
+short int request_liturgical_day() {
+	return _global_liturgical_reference_year > 0 ? liturgical_request_day : _global_den.denvt;
+}
+
+const char* request_liturgical_year_query() {
+	return liturgical_reference_query.c_str();
+}
 
 short int _global_vstup_den = 0;
 short int _global_vstup_mesiac = 0;
@@ -480,8 +536,6 @@ char pom_JAZYK[SMALL] = STR_EMPTY;
 char pom_KALENDAR[SMALL] = STR_EMPTY;
 
 char pom_THEME[SMALL] = STR_EMPTY;
-char pom_THEME_LIGHT_BACKGROUND_COLOR[SMALL] = STR_EMPTY;
-char pom_THEME_DARK_BACKGROUND_COLOR[SMALL] = STR_EMPTY;
 char pom_SIDEMENU_LOCATION[SMALL] = STR_EMPTY;
 
 char pom_FONT[SMALL] = STR_EMPTY;
@@ -1176,26 +1230,6 @@ short int setForm(void) {
 	}
 
 	mystrcpy(local_str, STR_EMPTY, SMALL);
-	if (!equals(pom_THEME_LIGHT_BACKGROUND_COLOR, STR_EMPTY)) {
-		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_THEME_LIGHT_BACKGROUND_COLOR), SMALL);
-		strcat(local_str, "=");
-		strcat(local_str, pom_THEME_LIGHT_BACKGROUND_COLOR);
-		LogParams("--- setForm: putenv(%s); ...\n", local_str);
-		ret = putenv(local_str);
-		LogParams("--- setForm: putenv returned %d.\n", ret);
-	}
-
-	mystrcpy(local_str, STR_EMPTY, SMALL);
-	if (!equals(pom_THEME_DARK_BACKGROUND_COLOR, STR_EMPTY)) {
-		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_THEME_DARK_BACKGROUND_COLOR), SMALL);
-		strcat(local_str, "=");
-		strcat(local_str, pom_THEME_DARK_BACKGROUND_COLOR);
-		LogParams("--- setForm: putenv(%s); ...\n", local_str);
-		ret = putenv(local_str);
-		LogParams("--- setForm: putenv returned %d.\n", ret);
-	}
-
-	mystrcpy(local_str, STR_EMPTY, SMALL);
 	if (!equals(pom_SIDEMENU_LOCATION, STR_EMPTY)) {
 		mystrcpy(local_str, ADD_WWW_PREFIX_(STR_SIDEMENU_LOCATION), SMALL);
 		strcat(local_str, "=");
@@ -1467,13 +1501,14 @@ void _export_link_helper(char pom[MAX_STR], char pom2[MAX_STR], char pom3[MAX_ST
 			pom2);
 	}
 	else if (query_type == PRM_LIT_OBD) {
-		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c%s",
+		sprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c%s%s",
 			script_name,
 			STR_QUERY_TYPE, STR_PRM_LIT_OBD,
-			STR_DEN_V_TYZDNI, _global_den.denvt,
+			STR_DEN_V_TYZDNI, request_liturgical_day(),
 			STR_TYZDEN, _global_den.tyzden,
 			STR_LIT_OBD, _global_den.litobd,
 			STR_LIT_ROK, _global_den.litrok,
+			liturgical_reference_query.c_str(),
 			pom2);
 	}
 	else if (query_type == PRM_ANALYZA_ROKU) {
@@ -1795,13 +1830,14 @@ void _export_link_communia(short int spol_cast, char html_tag_begin[SMALL], char
 			pom2);
 	}
 	else if (query_type == PRM_LIT_OBD) {
-		mysnprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c%s",
+		mysnprintf(pom, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c%s%s",
 			script_name,
 			STR_QUERY_TYPE, STR_PRM_LIT_OBD,
-			STR_DEN_V_TYZDNI, _global_den.denvt,
+			STR_DEN_V_TYZDNI, request_liturgical_day(),
 			STR_TYZDEN, _global_den.tyzden,
 			STR_LIT_OBD, _global_den.litobd,
 			STR_LIT_ROK, _global_den.litrok,
+			liturgical_reference_query.c_str(),
 			pom2);
 	}
 	/* these following query types probably are not used; if used, please check setting of parameters used for sprintf() */
@@ -6669,10 +6705,6 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 
 	short int tmp_denvt = _global_den.denvt;
 
-	// getting current year
-	struct tm dnes;
-
-	dnes = _get_dnes();
 
 	// generovanie názvu súboru s písmenkom modlitby (default) alebo s ID modlitby
 	if (!isGlobalOption(OPT_4_OFFLINE_EXPORT, BIT_OPT_4_FNAME_MODL_ID)) {
@@ -6694,21 +6726,10 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 	if (query_type == PRM_LIT_OBD) {
 		Log("pre query_type == PRM_LIT_OBD sa buttony pre modlitby tlačia ináč (nemám nastavený dátum)...\n");
 
-		// special change for OBD_VIANOCNE_I and OBD_VIANOCNE_II
-		if ((_global_den.litobd == OBD_VIANOCNE_I) || (_global_den.litobd == OBD_VIANOCNE_II)) {
-			Log("-- special change for OBD_VIANOCNE_I and OBD_VIANOCNE_II...\n");
-
-			short int denvt_01_JAN = den_v_tyzdni(1, dnes.tm_year);
-
-			tmp_denvt = _global_den.denvt - denvt_01_JAN + (_global_den.litobd - OBD_VIANOCNE_I);
-
-			if (tmp_denvt < DEN_NEDELA) {
-				tmp_denvt += 7;
-			}
-		}
+		tmp_denvt = request_liturgical_day();
 
 		// predpokladáme, že máme _global_linky == ANO
-		mysnprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c" HTML_AMPERSAND "%s=%s%s",
+		mysnprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c" HTML_AMPERSAND "%s=%s%s%s",
 			script_name,
 			STR_QUERY_TYPE, STR_PRM_LIT_OBD,
 			STR_DEN_V_TYZDNI, tmp_denvt,
@@ -6716,6 +6737,7 @@ void _export_rozbor_dna_button_modlitba(short int typ, short int poradie_svateho
 			STR_LIT_OBD, _global_den.litobd,
 			STR_LIT_ROK, _global_den.litrok,
 			STR_MODLITBA, str_modlitby[modl],
+			liturgical_reference_query.c_str(),
 			pom);
 		Export_HtmlForm(action);
 	}// query_type == PRM_LIT_OBD
@@ -6830,14 +6852,15 @@ void _export_rozbor_dna_button_modlitba2(short int modl, char pom[MAX_STR]) {
 	if (query_type == PRM_LIT_OBD) {
 		Log("pre query_type == PRM_LIT_OBD sa buttony pre modlitby tlačia ináč (nemám nastavený dátum)...\n");
 		// predpokladáme, že máme _global_linky == ANO
-		mysnprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c" HTML_AMPERSAND "%s=%s%s",
+		mysnprintf(action, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c" HTML_AMPERSAND "%s=%s%s%s",
 			script_name,
 			STR_QUERY_TYPE, STR_PRM_LIT_OBD,
-			STR_DEN_V_TYZDNI, _global_den.denvt,
+			STR_DEN_V_TYZDNI, request_liturgical_day(),
 			STR_TYZDEN, _global_den.tyzden,
 			STR_LIT_OBD, _global_den.litobd,
 			STR_LIT_ROK, _global_den.litrok,
 			STR_MODLITBA, str_modlitby[modl],
+			liturgical_reference_query.c_str(),
 			pom);
 	}// query_type == PRM_LIT_OBD
 	else {
@@ -10259,23 +10282,23 @@ void execute_batch_command(short int a, char batch_command[MAX_STR], short int z
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem css/theme: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
-	// exportovanie parametra D (c0) (_global_theme_light_background_color)
+	// Export the legacy -D / -N background switches in batch commands.
 	if (PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR) {
-		mysnprintf(pom, " -D%s", _global_theme_light_background_color);
+		mysnprintf(pom, " -D%s", appearance::color(appearance::Mode::Day, appearance::Role::Background).value.c_str());
 	}
 	else {
-		Log("\tNetreba prilepiť background color for light theme (== %s)\n", _global_theme_light_background_color);
+		Log("\tNetreba prilepiť background color for light theme (== %s)\n", appearance::color(appearance::Mode::Day, appearance::Role::Background).value.c_str());
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
 	Log("Exportujem css/theme: export_dalsie_parametre == `%s'\n", export_dalsie_parametre);
 
-	// exportovanie parametra N (c1) (_global_theme_dark_background_color)
+	// Night background.
 	if (PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR) {
-		mysnprintf(pom, " -N%s", _global_theme_dark_background_color);
+		mysnprintf(pom, " -N%s", appearance::color(appearance::Mode::Night, appearance::Role::Background).value.c_str());
 	}
 	else {
-		Log("\tNetreba prilepiť background color for dark theme (== %s)\n", _global_theme_dark_background_color);
+		Log("\tNetreba prilepiť background color for dark theme (== %s)\n", appearance::color(appearance::Mode::Night, appearance::Role::Background).value.c_str());
 		strcpy(pom, STR_EMPTY);
 	}
 	strcat(export_dalsie_parametre, pom);
@@ -13618,12 +13641,21 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		return FAILURE;
 	}
 
-	// getting current year
-	struct tm dnes;
-
-	dnes = _get_dnes();
-
-	short int denvt_01_JAN = den_v_tyzdni(1, dnes.tm_year);
+	// Christmas ferial dates depend on weekdays in a concrete reference year.
+	// Resolve it once, and include it in every link for this request.
+	short int reference_year = 0;
+	if (lo == OBD_VIANOCNE_I || lo == OBD_VIANOCNE_II) {
+		char* end = nullptr;
+		long year = pom_ROK[0] == '\0' ? _get_dnes().tm_year : strtol(pom_ROK, &end, 10);
+		if (year < 1 || year > 9999 || (end != nullptr && *end != '\0')) {
+			Export("Nevhodné údaje: rok.\n");
+			return FAILURE;
+		}
+		reference_year = _global_liturgical_reference_year = static_cast<short int>(year);
+		liturgical_request_day = atodenvt(den);
+		liturgical_reference_query = HTML_AMPERSAND STR_ROK "=" + std::to_string(year);
+	}
+	short int denvt_01_JAN = reference_year > 0 ? den_v_tyzdni(1, reference_year) : 0;
 
 	// setting up some basic data about liturgical year
 	_global_den.rok = NULL_YEAR;
@@ -13753,7 +13785,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		// NOTE: the only real reason for these changes is to enable ferial day for 02JAN (where obligatory memory is in calendar)
 		_global_den.den = _global_den.denvt + 1;
 		_global_den.mesiac = MES_JAN;
-		_global_den.rok = dnes.tm_year;
+		_global_den.rok = reference_year;
 		d = _global_den.denvt = den_v_tyzdni(_global_den.den, _global_den.rok); // deň v januári == deň v roku
 		if (_global_den.den + denvt_01_JAN > DEN_SOBOTA) {
 			t = _global_den.tyzden = 2;
@@ -13782,7 +13814,7 @@ short int _main_liturgicke_obdobie(char *den, char *tyzden, char *modlitba, char
 		// všedné dni: interpretujeme deň v týždni ako dátum v januári (nedeľa == 7. januára atď.); customized for celerating ZJAV on 06JAN only
 		_global_den.den = _global_den.denvt + 7;
 		_global_den.mesiac = MES_JAN;
-		_global_den.rok = dnes.tm_year;
+		_global_den.rok = reference_year;
 		d = _global_den.denvt = den_v_tyzdni(_global_den.den, _global_den.rok); // deň v januári == deň v roku
 		_global_den.farba = LIT_FARBA_BIELA;
 		break;
@@ -15630,12 +15662,12 @@ short int getArgv(int argc, const char** argv) {
 				Log("option %c with value `%s' -- `%s' used for theme/css\n", c, optarg, optarg); break;
 			case 'D':
 				if (optarg != NULL) {
-					mystrcpy(pom_THEME_LIGHT_BACKGROUND_COLOR, optarg, SMALL);
+					appearance::setColor(STR_THEME_LIGHT_BACKGROUND_COLOR, optarg);
 				}
 				Log("option %c with value `%s' -- `%s' used for light theme/background color override\n", c, optarg, optarg); break;
 			case 'N':
 				if (optarg != NULL) {
-					mystrcpy(pom_THEME_DARK_BACKGROUND_COLOR, optarg, SMALL);
+					appearance::setColor(STR_THEME_DARK_BACKGROUND_COLOR, optarg);
 				}
 				Log("option %c with value `%s' -- `%s' used for dark theme/background color override\n", c, optarg, optarg); break;
 			case 'v':
@@ -15980,6 +16012,9 @@ short int getForm(void) {
 	char errmsg[SMALL] = STR_EMPTY;
 
 	Log("getForm(): begin\n");
+	if (query_type == PRM_LIT_OBD && pom_ROK[0] == '\0') {
+		if (const char* year = getenv(ADD_WWW_PREFIX_(STR_ROK))) mystrcpy(pom_ROK, year, SMALL);
+	}
 	ptr = getenv(ADD_WWW_PREFIX_(STR_DEVICE_LANGUAGE));
 	if (ptr != nullptr) _device_language = device_language(ptr);
 
@@ -16004,18 +16039,9 @@ short int getForm(void) {
 		}
 	}
 
-	ptr = getenv(ADD_WWW_PREFIX_(STR_THEME_LIGHT_BACKGROUND_COLOR));
-	if (ptr != NULL) {
-		if (strcmp(ptr, STR_EMPTY) != 0) {
-			mystrcpy(pom_THEME_LIGHT_BACKGROUND_COLOR, ptr, SMALL);
-		}
-	}
-
-	ptr = getenv(ADD_WWW_PREFIX_(STR_THEME_DARK_BACKGROUND_COLOR));
-	if (ptr != NULL) {
-		if (strcmp(ptr, STR_EMPTY) != 0) {
-			mystrcpy(pom_THEME_DARK_BACKGROUND_COLOR, ptr, SMALL);
-		}
+	for (const auto& setting : appearance::colors()) {
+		const std::string name = std::string(WWW_PREFIX) + setting.parameter;
+		if (const char* value = getenv(name.c_str())) appearance::setColor(setting.parameter, value);
 	}
 
 	ptr = getenv(ADD_WWW_PREFIX_(STR_SIDEMENU_LOCATION));
@@ -16764,36 +16790,11 @@ short int parseQueryString(void) {
 		LogParams("téma nastavená (%s) (i >= pocet).\n", pom_THEME);
 	}
 
-	i = 0; // param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme od 0
-	LogParams("pokúšam sa zistiť BG color pre light tému...\n");
-	while ((equalsi(pom_THEME_LIGHT_BACKGROUND_COLOR, STR_EMPTY)) && (i < pocet)) {
-		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
-		if (equals(param[i].name, STR_THEME_LIGHT_BACKGROUND_COLOR)) {
-			// ide o parameter STR_THEME_LIGHT_BACKGROUND_COLOR
-			mystrcpy(pom_THEME_LIGHT_BACKGROUND_COLOR, param[i].val, SMALL);
-			LogParams("BG color pre light tému zistená (%s).\n", pom_THEME_LIGHT_BACKGROUND_COLOR);
-		}
-		i++;
-	}
-	if ((i >= pocet) && (equalsi(pom_THEME_LIGHT_BACKGROUND_COLOR, STR_EMPTY))) {
-		sprintf(pom_THEME_LIGHT_BACKGROUND_COLOR, "%s", THEME_BACKGROUND_COLOR_UNDEF);
-		LogParams("BG color pre light tému nastavená (%s) (i >= pocet).\n", pom_THEME_LIGHT_BACKGROUND_COLOR);
-	}
-
-	i = 0; // param[0] by mal síce obsahovať typ akcie, ale radšej kontrolujeme od 0
-	LogParams("pokúšam sa zistiť BG color pre dark tému...\n");
-	while ((equalsi(pom_THEME_DARK_BACKGROUND_COLOR, STR_EMPTY)) && (i < pocet)) {
-		LogParams("...parameter %d (meno: %s, hodnota: %s)\n", i, param[i].name, param[i].val);
-		if (equals(param[i].name, STR_THEME_DARK_BACKGROUND_COLOR)) {
-			// ide o parameter STR_THEME_DARK_BACKGROUND_COLOR
-			mystrcpy(pom_THEME_DARK_BACKGROUND_COLOR, param[i].val, SMALL);
-			LogParams("BG color pre dark tému zistená (%s).\n", pom_THEME_DARK_BACKGROUND_COLOR);
-		}
-		i++;
-	}
-	if ((i >= pocet) && (equalsi(pom_THEME_DARK_BACKGROUND_COLOR, STR_EMPTY))) {
-		sprintf(pom_THEME_DARK_BACKGROUND_COLOR, "%s", THEME_BACKGROUND_COLOR_UNDEF);
-		LogParams("BG color pre dark tému nastavená (%s) (i >= pocet).\n", pom_THEME_DARK_BACKGROUND_COLOR);
+	// Android prepends saved options when reopening an existing reader URL.
+	// The first occurrence, including an explicit empty reset, must win.
+	for (i = pocet; i > 0; ) {
+		--i;
+		appearance::setColor(param[i].name, param[i].val);
 	}
 
 	i = pocet;
@@ -17540,6 +17541,13 @@ short int parseQueryString(void) {
 			goto END_parseQueryString;
 		}
 
+		for (i = 0; i < pocet; ++i) {
+			if (equals(param[i].name, STR_ROK)) {
+				mystrcpy(pom_ROK, param[i].val, SMALL);
+				break;
+			}
+		}
+
 		break; // case
 	}// PRM_LIT_OBD
 
@@ -17713,8 +17721,6 @@ END_parseQueryString:
 	_main_LOG_to_Export("\tparam12== %s (pom_JAZYK)\n", pom_JAZYK);\
 	_main_LOG_to_Export("\tparam  == %s (pom_KALENDAR)\n", pom_KALENDAR);\
 	_main_LOG_to_Export("\tparam  == %s (pom_THEME)\n", pom_THEME);\
-	_main_LOG_to_Export("\tparam  == %s (pom_THEME_LIGHT_BACKGROUND_COLOR)\n", pom_THEME_LIGHT_BACKGROUND_COLOR);\
-	_main_LOG_to_Export("\tparam  == %s (pom_THEME_DARK_BACKGROUND_COLOR)\n", pom_THEME_DARK_BACKGROUND_COLOR);\
 	_main_LOG_to_Export("\tparam  == %s (pom_SIDEMENU_LOCATION)\n", pom_SIDEMENU_LOCATION);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT)\n", pom_FONT);\
 	_main_LOG_to_Export("\tparam  == %s (pom_FONT_SIZE)\n", pom_FONT_SIZE);\
@@ -17919,6 +17925,11 @@ int breviar_main(int argc, const char** argv) {
 	// je potrebne inicializovat globalne premenne pri kazdom pusteni jej behu
 	// prerobenie čítania jazyka (skopírované ešte na jedno vyššie miesto); už by sa <title> malo vypisovať pri generovaní inojazyčných modlitieb správne
 	myhpage_init_globals();
+	_global_liturgical_reference_year = 0;
+	liturgical_reference_query.clear();
+	resolved_selection.clear();
+	resolved_query.clear();
+	liturgical_request_day = 0;
 
 	// for _breviar_env, must be included within if-def
 #if defined(_BREVIAR_ENV)
@@ -17958,8 +17969,7 @@ int breviar_main(int argc, const char** argv) {
 	strcpy(pom_LINKY, STR_EMPTY);
 	strcpy(pom_JAZYK, STR_EMPTY);
 	strcpy(pom_THEME, STR_EMPTY);
-	strcpy(pom_THEME_LIGHT_BACKGROUND_COLOR, STR_EMPTY);
-	strcpy(pom_THEME_DARK_BACKGROUND_COLOR, STR_EMPTY);
+	appearance::resetColors();
 	strcpy(pom_SIDEMENU_LOCATION, STR_EMPTY);
 	strcpy(pom_FONT, STR_EMPTY);
 	strcpy(pom_FONT_SIZE, STR_EMPTY);
@@ -18277,37 +18287,6 @@ int breviar_main(int argc, const char** argv) {
 			}
 			_main_LOG_to_Export("...téma (%s) = %d\n", pom_THEME, _global_theme);
 
-			// načítanie background color pre light tému
-			_main_LOG_to_Export("zisťujem background color pre light tému...\n");
-			if (isValidHexaCode(pom_THEME_LIGHT_BACKGROUND_COLOR)) {
-				mystrcpy(_global_theme_light_background_color, pom_THEME_LIGHT_BACKGROUND_COLOR, SMALL);
-			}
-			else {
-				mystrcpy(_global_theme_light_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
-			}
-			if (!PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR) {
-				// undef BG color pre light tému
-				mystrcpy(_global_theme_light_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
-				_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_BACKGROUND_COLOR_UNDEF)\n");
-			}
-			_main_LOG_to_Export("...background color pre light tému (%s) = %s\n", pom_THEME_LIGHT_BACKGROUND_COLOR, _global_theme_light_background_color);
-
-			// načítanie background color pre dark tému
-			_main_LOG_to_Export("zisťujem background color pre dark tému...\n");
-			if (isValidHexaCode(pom_THEME_DARK_BACKGROUND_COLOR)) {
-				mystrcpy(_global_theme_dark_background_color, pom_THEME_DARK_BACKGROUND_COLOR, SMALL);
-			}
-			else {
-				mystrcpy(_global_theme_dark_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
-			}
-			Log("_global_theme_dark_background_color == %s...\n", _global_theme_dark_background_color);
-			if (!PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR) {
-				// undef BG color pre dark tému
-				mystrcpy(_global_theme_dark_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
-				_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_BACKGROUND_COLOR_UNDEF)\n");
-			}
-			_main_LOG_to_Export("...background color pre dark tému (%s) = %s\n", pom_THEME_DARK_BACKGROUND_COLOR, _global_theme_dark_background_color);
-
 			// reading sidemenu location
 			_main_LOG_to_Export("reading sidemenu location...\n");
 			_global_sidemenu_location = atoi(pom_SIDEMENU_LOCATION);
@@ -18522,37 +18501,6 @@ int breviar_main(int argc, const char** argv) {
 	}
 	_main_LOG_to_Export("...téma (%s) = %d\n", pom_THEME, _global_theme);
 
-	// načítanie background color pre light tému
-	_main_LOG_to_Export("zisťujem background color pre light tému...\n");
-	if (isValidHexaCode(pom_THEME_LIGHT_BACKGROUND_COLOR)) {
-		mystrcpy(_global_theme_light_background_color, pom_THEME_LIGHT_BACKGROUND_COLOR, SMALL);
-	}
-	else {
-		mystrcpy(_global_theme_light_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
-	}
-	if (!PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR) {
-		// undef BG color pre light tému
-		mystrcpy(_global_theme_light_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
-		_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_BACKGROUND_COLOR_UNDEF)\n");
-	}
-	_main_LOG_to_Export("...background color pre light tému (%s) = %s\n", pom_THEME_LIGHT_BACKGROUND_COLOR, _global_theme_light_background_color);
-
-	// načítanie background color pre dark tému
-	_main_LOG_to_Export("zisťujem background color pre dark tému...\n");
-	if (isValidHexaCode(pom_THEME_DARK_BACKGROUND_COLOR)) {
-		mystrcpy(_global_theme_dark_background_color, pom_THEME_DARK_BACKGROUND_COLOR, SMALL);
-	}
-	else {
-		mystrcpy(_global_theme_dark_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
-	}
-	Log("_global_theme_dark_background_color == %s...\n", _global_theme_dark_background_color);
-	if (!PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR) {
-		// undef BG color pre dark tému
-		mystrcpy(_global_theme_dark_background_color, THEME_BACKGROUND_COLOR_UNDEF, SMALL);
-		_main_LOG_to_Export("\t(vzhľadom k neexportovaniu (podmienka) používam THEME_BACKGROUND_COLOR_UNDEF)\n");
-	}
-	_main_LOG_to_Export("...background color pre dark tému (%s) = %s\n", pom_THEME_DARK_BACKGROUND_COLOR, _global_theme_dark_background_color);
-
 	// reading sidemenu location
 	_main_LOG_to_Export("reading sidemenu location...\n");
 	_global_sidemenu_location = atoi(pom_SIDEMENU_LOCATION);
@@ -18752,6 +18700,31 @@ int breviar_main(int argc, const char** argv) {
 
 			LOG_ciara;
 
+			// A daily overview stays relative; a selected prayer acquires one fixed date.
+			if (query_type == PRM_DNES && local_modlitba != MODL_NEURCENA) {
+				const auto today = _get_dnes();
+				local_den = today.tm_mday;
+				local_mesiac = today.tm_mon - 1;
+				local_rok = today.tm_year;
+				query_type = PRM_DATUM;
+			}
+			if (query_type == PRM_DATUM && local_modlitba != MODL_NEURCENA
+				&& local_den >= 1 && local_den <= 31 && local_mesiac >= 0 && local_mesiac < 12) {
+				resolved_selection = STR_QUERY_TYPE "=" STR_PRM_DATUM "&" STR_DEN "=" + std::to_string(local_den)
+					+ "&" STR_MESIAC "=" + std::to_string(local_mesiac + 1)
+					+ "&" STR_ROK "=" + std::to_string(local_rok)
+					+ "&" STR_MODLITBA "=" + str_modlitby[local_modlitba];
+				const int saint = atoi(pom_DALSI_SVATY);
+				if (saint > 0 && saint <= PORADIE_PM_SOBOTA)
+					resolved_selection += "&" STR_DALSI_SVATY "=" + std::to_string(saint);
+			}
+			else if (query_type == PRM_LIT_OBD) {
+				resolved_selection = STR_QUERY_TYPE "=" STR_PRM_LIT_OBD "&" STR_DEN_V_TYZDNI "="
+					+ std::to_string(atodenvt(pom_DEN_V_TYZDNI)) + "&" STR_TYZDEN "=" + std::to_string(atoi(pom_TYZDEN))
+					+ "&" STR_LIT_OBD "=" + std::to_string(atolitobd(pom_LIT_OBD))
+					+ "&" STR_LIT_ROK "=" + pom_LIT_ROK + "&" STR_MODLITBA "=" + str_modlitby[local_modlitba];
+			}
+
 			// nastavenie titulku pre hlavičku
 			if (query_type != PRM_XML) {
 				init_global_string_as_html_title(local_den, local_mesiac, local_rok, local_modlitba);
@@ -18871,6 +18844,7 @@ int breviar_main(int argc, const char** argv) {
 			}
 
 			else {
+				export_resolved_request();
 				patka(); // doplnené (ešte pred dealokovanie premenných)
 			}
 

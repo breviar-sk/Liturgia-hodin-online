@@ -19,3 +19,7 @@ taps:
 .PHONY: zoom
 zoom:
 	$(NODE) check_zoom.js
+
+.PHONY: colors
+colors:
+	$(PYTHON) check_colors.py

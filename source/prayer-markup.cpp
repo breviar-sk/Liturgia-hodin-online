@@ -80,14 +80,14 @@ std::string psalm95(const std::string& label) {
     } else if (query_type == PRM_LIT_OBD) {
         mysnprintf(query, "%s?%s=%s" HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%d"
             HTML_AMPERSAND "%s=%d" HTML_AMPERSAND "%s=%c" HTML_AMPERSAND "%s=%s", script_name,
-            STR_QUERY_TYPE, STR_PRM_LIT_OBD, STR_DEN_V_TYZDNI, _global_den.denvt,
+            STR_QUERY_TYPE, STR_PRM_LIT_OBD, STR_DEN_V_TYZDNI, request_liturgical_day(),
             STR_TYZDEN, _global_den.tyzden, STR_LIT_OBD, _global_den.litobd,
             STR_LIT_ROK, _global_den.litrok, STR_MODLITBA, str_modlitby[_global_modlitba]);
     }
     std::string result;
     if (query[0]) {
         result = HTML_P_BEGIN "\n<" HTML_SPAN_RED_SMALL ">\n" HTML_A_HREF_BEGIN "\""
-            + std::string(query) + parameters + "#" PARAM_ZALM95 "\"";
+            + std::string(query) + request_liturgical_year_query() + parameters + "#" PARAM_ZALM95 "\"";
     }
     // Standalone psalms have no day's psalmody to switch back to.
     if (result.empty()) return "";

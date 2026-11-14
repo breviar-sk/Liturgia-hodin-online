@@ -143,4 +143,37 @@ public class ReaderSettingsTest {
       assertEquals(loads, web.pageLoads);
     }
   }
+
+  @Test public void compactPaletteSnapshotsClearOldColorsWhenReturningFromSettings() {
+    for (String mode : new String[]{"0", "1"}) {
+      try (ActivityController<EinkModeTest.Reader> controller =
+          Robolectric.buildActivity(EinkModeTest.Reader.class).setup()) {
+        Breviar reader = controller.get();
+        openPrayer(reader);
+        String stalePage = PRAYER + "&cr" + mode + "=ffffcc&c" + mode + "=111111";
+        reader.wv.loadUrl(stalePage);
+        Breviar.S.setOpts(OPTIONS + "&amp;cr" + mode + "=ffffcc");
+        reader.onNavigationItemSelected(R.id.settings);
+        controller.pause().stop();
+        // The completed renderer snapshot omits all colors reset by Default.
+        String compact = "&amp;c=" + mode + "&amp;ct" + mode + "=ffffcc";
+        BreviarApp.setUrlOptions(context, compact);
+        controller.restart().start().resume();
+        UrlOptions page = new UrlOptions(reader.wv.getUrl(), true);
+        assertEquals("ffffcc", page.params.get("ct" + mode));
+        assertEquals("", page.params.get("cr" + mode));
+        assertEquals("", page.params.get("c" + mode));
+        assertEquals(mode, page.params.get("c"));
+        assertEquals("16", page.params.get("d"));
+        assertEquals("1", page.params.get("p"));
+        // A later recreation/restore must also use the compact saved palette.
+        Breviar.S.setOpts(compact);
+        reader.syncPreferences();
+        UrlOptions restored = new UrlOptions(reader.updatePreferencesInUrl(stalePage), true);
+        assertEquals("", restored.params.get("cr" + mode));
+        assertEquals("", restored.params.get("c" + mode));
+        assertEquals("ffffcc", restored.params.get("ct" + mode));
+      }
+    }
+  }
 }

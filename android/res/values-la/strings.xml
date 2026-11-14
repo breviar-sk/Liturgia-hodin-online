@@ -164,4 +164,21 @@
     <string name="tts_language_not_available">Traductio textus ad sermonem non est parabilis pro hanc linguam.</string>
 
     <string name="search">Quaerere</string>
+    <string name="high_contrast_title">Colores cum contrastatione alta</string>
+    <string name="high_contrast_message">Modo e-ink uteris, et nunc colores mutari possunt. Visne colores cum contrastatione alta in modo diurno et nocturno adhibere?</string>
+    <string name="high_contrast_load_failed">Colores praedefiniti legi non potuerunt. Elige Ita ut iterum coneris, vel Non ut colores praesentes serves.</string>
+    <string name="high_contrast_yes">Ita</string>
+    <string name="high_contrast_no">Non</string>
+
+  <!-- Shared prayers -->
+  <string name="share_prayer">Orationem communicare</string>
+  <string name="restore_shared_settings">Meas occasiones restituere</string>
+  <string name="keep_shared_settings">Has occasiones servare</string>
+  <string name="shared_settings_active">Occasiones orationis communicatae temporariae sunt. In indice potes tuas occasiones restituere vel has servare.</string>
+  <string name="shared_link_invalid">Haec adnotatio ut oratio aperiri non potest.</string>
+  <string name="share_prayer_message">Codicem QR lege ad paginam aperiendam. Adnotationes orationum diem electum servant; conspectus cotidianus diem praesentem ostendit.</string>
+  <string name="share_link">Adnotationem communicare</string>
+  <string name="copy_link">Adnotationem exscribere</string>
+  <string name="link_copied">Adnotatio exscripta</string>
+  <string name="share_prayer_unavailable">Haec pagina communicari non potest.</string>
 </resources>

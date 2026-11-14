@@ -7,7 +7,7 @@ Repository available at: https://github.com/gyim/breviar-ios
 The Xcode target must compile `source/template-reader.cpp`,
 `source/prayer-renderer.cpp`, `source/prayer-markup.cpp`,
 `source/html-markup.cpp`, `source/static-text.cpp`, and
-`source/xml-settings.cpp`, `source/bible-reference.cpp`, and `source/bible-links.cpp`, with their headers on the include path.
+`source/xml-settings.cpp`, `source/bible-reference.cpp`, `source/bible-links.cpp`, and `source/appearance-colors.cpp`, with their headers on the include path.
 Add these sources when updating the CGI submodule in an existing checkout.
 The settings XML retains the existing Options and supported-values schema.
 

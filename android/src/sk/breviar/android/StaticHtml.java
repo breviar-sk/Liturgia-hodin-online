@@ -43,6 +43,16 @@ final class StaticHtml {
     if (enabled(options, "o2", 16, "of2rc")) stylesheet(html, "breviar-rounded-corners");
     String background = night ? options.getBackgroundNightMode() : options.getBackgroundDayMode();
     html.append("<style id=\"static-page-appearance\">\n");
+    // The stylesheets own the role-to-selector mapping, shared with CGI pages.
+    html.append("html { ");
+    String suffix = night ? "1" : "0";
+    String[] parameters = {"ct" + suffix, "cr" + suffix, "c" + suffix};
+    String[] roles = {"text", "rubric", "background"};
+    for (int i = 0; i < parameters.length; ++i) {
+      String color = options.getColor(parameters[i], "");
+      if (!color.isEmpty()) html.append("--prayer-").append(roles[i]).append(": #").append(color).append("; ");
+    }
+    html.append("}\n");
     if (background.matches("[0-9a-fA-F]{6}")) {
       html.append("html, body { background-color: #").append(background).append("; }\n");
     }

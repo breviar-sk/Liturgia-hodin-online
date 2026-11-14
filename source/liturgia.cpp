@@ -317,16 +317,12 @@ void prilep_request_options(char pom2[MAX_STR], char pom3[MAX_STR], short int sp
 		Log("\tPrilepil som aj tému: `%s'\n", pom3);
 	}
 
-	if (PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR) {
-		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_THEME_LIGHT_BACKGROUND_COLOR, _global_theme_light_background_color);
-		strcat(pom2, pom3);
-		Log("\tPrilepil som aj BG color pre light tému: `%s'\n", pom3);
-	}
-
-	if (PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR) {
-		sprintf(pom3, HTML_AMPERSAND"%s=%s", STR_THEME_DARK_BACKGROUND_COLOR, _global_theme_dark_background_color);
-		strcat(pom2, pom3);
-		Log("\tPrilepil som aj BG color pre dark tému: `%s'\n", pom3);
+	// Preserve both palettes in links and in Android's returned option snapshot.
+	for (const auto& setting : appearance::colors()) {
+		if (!setting.value.empty()) {
+			sprintf(pom3, HTML_AMPERSAND "%s=%s", setting.parameter, setting.value.c_str());
+			strcat(pom2, pom3);
+		}
 	}
 
 	if (PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION) {

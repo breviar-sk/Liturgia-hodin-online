@@ -1762,8 +1762,6 @@ extern short int _global_jazyk;
 extern short int _global_kalendar;
 
 extern short int _global_theme;
-extern char _global_theme_light_background_color[SMALL]; // used for background color override for light theme
-extern char _global_theme_dark_background_color[SMALL]; // used for background color override for dark theme
 extern short int _global_sidemenu_location;
 
 extern short int _global_font;

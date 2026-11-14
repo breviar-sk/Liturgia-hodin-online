@@ -11,6 +11,9 @@
 #define __BREVIAR_H_
 
 #include "liturgia.h"
+#ifdef __cplusplus
+#include "appearance-colors.h"
+#endif
 
 // week of psaltery
 #define TYZZAL(t)					(((t + 3) MOD 4) + 1)
@@ -23,6 +26,12 @@
 // globalne premenne -- deklarovane v liturgia.h, definovane tu
 
 extern short int isAndroid;
+
+// Stable selectors for the special January-date form of seasonal requests.
+short int request_liturgical_day();
+const char* request_liturgical_year_query();
+// Final query for the rendered prayer; empty for the dynamic daily overview.
+const char* resolved_request_query();
 
 extern short int _global_vstup_den;
 extern short int _global_vstup_mesiac;
@@ -522,8 +531,8 @@ extern char pom_FONT[SMALL];
 // We need to export both background colors whenever they are available, in
 // order to keep the settings correctly. It is important e.g. for android
 // display settings, which read these values.
-#define PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR (isValidHexaCode(_global_theme_light_background_color))
-#define PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR (isValidHexaCode(_global_theme_dark_background_color))
+#define PODMIENKA_EXPORTOVAT_THEME_LIGHT_BACKGROUND_COLOR (!appearance::color(appearance::Mode::Day, appearance::Role::Background).value.empty())
+#define PODMIENKA_EXPORTOVAT_THEME_DARK_BACKGROUND_COLOR (!appearance::color(appearance::Mode::Night, appearance::Role::Background).value.empty())
 
 // export sidemenu location into URL only when sidemenu is NOT displayed
 #define PODMIENKA_EXPORTOVAT_SIDEMENU_LOCATION ((!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_SIDE_NAVIGATION)) && ((_global_sidemenu_location == SIDEMENU_LOCATION_LEFT) || (_global_sidemenu_location == SIDEMENU_LOCATION_RIGHT)))

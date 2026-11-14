@@ -36,7 +36,7 @@ class SettingsXmlTest(unittest.TestCase):
 
     def test_structure_bindings_and_order(self):
         seen = {}
-        controls = {'toggle', 'choice', 'color', 'number', 'font', 'action'}
+        controls = {'toggle', 'choice', 'color', 'number', 'font', 'action', 'preset'}
         item_attributes = {'Key', 'Label', 'Control', 'Parameter', 'OptionRef',
                            'ValuesRef', 'ValueAttribute', 'Handler', 'Default',
                            'ResetValue', 'Min', 'Max'}
@@ -45,7 +45,7 @@ class SettingsXmlTest(unittest.TestCase):
                 menu = root.find('Menu')
                 self.assertEqual(menu.attrib, {'Version': '1'})
                 actual = by_key(menu)
-                self.assertEqual(len(actual), len(list(menu.iter())) - 1, 'Duplicate key')
+                self.assertEqual(len(actual), len([node for node in menu.iter() if node.tag in ('MenuGroup', 'MenuItem')]), 'Duplicate key')
                 self.assertEqual([n.get('Key') for n in menu],
                                  ['general', 'device', 'appearance', 'prayers', 'speech'])
                 for parent, children in {
@@ -79,13 +79,13 @@ class SettingsXmlTest(unittest.TestCase):
                         self.assertFalse(label[0].islower(), key)
                     if node.tag == 'MenuGroup':
                         self.assertTrue(len(node), key)
-                        self.assertLessEqual(node.attrib.keys(), {'Key', 'Label'}, key)
+                        self.assertLessEqual(node.attrib.keys(), {'Key', 'Label', 'Control'}, key)
                     else:
                         self.assertLessEqual(node.attrib.keys(), item_attributes, key)
                         self.assertIn(node.attrib['Control'], controls, key)
-                        self.assertTrue({'Parameter', 'OptionRef', 'Handler'} & node.attrib.keys(), key)
+                        self.assertTrue(node.get('Control') == 'preset' or {'Parameter', 'OptionRef', 'Handler'} & node.attrib.keys(), key)
                         self.assertFalse({'Parameter', 'OptionRef'} <= node.attrib.keys(), key)
-                        self.assertTrue(all(n.tag == 'MenuGroup' for n in node), key)
+                        self.assertTrue(all(n.tag == ('Set' if node.get('Control') == 'preset' else 'MenuGroup') for n in node), key)
                     if 'OptionRef' in node.attrib:
                         reference = node.attrib['OptionRef']
                         self.assertIsNotNone(root.find('Options/' + reference)
@@ -109,8 +109,33 @@ class SettingsXmlTest(unittest.TestCase):
                 self.assertEqual(actual['prayers.common'].attrib['OptionRef'], 'Opt3Communia')
                 self.assertEqual(actual['prayers.common'].attrib['ValueAttribute'], 'Id')
                 seen.update({key: node.tag for key, node in actual.items()})
-        self.assertEqual(list(seen.values()).count('MenuGroup'), 22)
-        self.assertEqual(list(seen.values()).count('MenuItem'), 90)
+        self.assertEqual(list(seen.values()).count('MenuGroup'), 26)
+        self.assertEqual(list(seen.values()).count('MenuItem'), 99)
+
+    def test_palette_submenus_and_complete_presets(self):
+        for root in self.exports.values():
+            menu = by_key(root.find('Menu'))
+            self.assertEqual([node.get('Key') for node in menu['appearance.colors']],
+                             ['appearance.night-mode', 'appearance.colors.day', 'appearance.colors.night'])
+            for mode, suffix in [('day', '0'), ('night', '1')]:
+                prefix = 'appearance.colors.' + mode
+                self.assertEqual(menu[prefix].get('Control'), 'submenu')
+                for role, parameter in [('text', 'ct'), ('rubric', 'cr'), ('background', 'c')]:
+                    node = menu[prefix + '.' + role]
+                    self.assertEqual(node.get('Control'), 'color')
+                    self.assertEqual(node.get('Parameter'), parameter + suffix)
+                    self.assertEqual(node.get('ResetValue'), '')
+                for preset in menu[prefix + '.presets']:
+                    values = {node.get('Parameter'): node.get('Value') for node in preset}
+                    self.assertEqual(set(values), {'ct' + suffix, 'cr' + suffix, 'c' + suffix})
+                defaults = {node.get('Value') for node in menu[prefix + '.default']}
+                self.assertEqual(defaults, {''})
+            self.assertEqual({n.get('Parameter'): n.get('Value') for n in menu['appearance.colors.day.yellow']},
+                             {'ct0': '', 'cr0': '', 'c0': 'ffffcc'})
+            self.assertEqual({n.get('Parameter'): n.get('Value') for n in menu['appearance.colors.day.high-contrast']},
+                             {'ct0': '000000', 'cr0': '800000', 'c0': 'ffffff'})
+            self.assertEqual({n.get('Parameter'): n.get('Value') for n in menu['appearance.colors.night.high-contrast']},
+                             {'ct1': 'ffffff', 'cr1': 'ffff00', 'c1': '000000'})
 
     def test_language_specific_items(self):
         for language, root in self.exports.items():
@@ -190,7 +215,7 @@ class SettingsXmlTest(unittest.TestCase):
         self.assertIn('Jan 2nd and 8th', menu['calendar.epiphany-sunday'].attrib['Label'])
         self.assertIn('psalms and canticles', menu['speech.psalm-pauses'].attrib['Label'])
         for key in ('appearance.font', 'appearance.margin', 'appearance.line-height',
-                    'appearance.background-day', 'appearance.background-night'):
+                    'appearance.colors.day.background', 'appearance.colors.night.background'):
             self.assertEqual(menu[key].attrib['ResetValue'], '')
         self.assertEqual(menu['appearance.font-size'].attrib['ResetValue'], '12')
         for key, parameter, default, minimum, maximum in (

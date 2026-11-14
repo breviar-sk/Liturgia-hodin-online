@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import java.util.UUID;
+import java.util.Map;
 
 /** Applies the device appearance to every native screen, including the back stack. */
 public class AppearanceActivity extends AppCompatActivity {
@@ -99,6 +100,28 @@ public class AppearanceActivity extends AppCompatActivity {
     super.onResume();
     if (appearanceChanged()) changes.refresh();
   }
+
+  @Override protected void onResumeFragments() {
+    super.onResumeFragments();
+    showAppearanceDialogs();
+  }
+
+  /** Reader startup and XML settings supply their appearance-related dialogs. */
+  protected void showAppearanceDialogs() {}
+
+  protected String appearanceOptions() {
+    return BreviarApp.getUrlOptions(this);
+  }
+
+  final void applyColorPresets(Map<String, String> colors) {
+    // Read current options when applying, after the asynchronous catalogue load.
+    UrlOptions options = new UrlOptions(appearanceOptions());
+    options.params.putAll(colors);
+    BreviarApp.setUrlOptions(this, options.build(true));
+    onColorPresetsApplied();
+  }
+
+  protected void onColorPresetsApplied() {}
 
   @Override
   protected void onPostCreate(Bundle state) {

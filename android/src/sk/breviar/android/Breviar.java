@@ -166,8 +166,7 @@ public class Breviar extends AppearanceActivity
     void startDialogActivity(int title_id, String query, boolean show_ok) {
       // The dialog starts before onStop saves the reader's current options.
       // Pending settings edits remain authoritative until the reader resumes.
-      String options = S != null && !need_to_reload_preferences
-          ? S.getOpts() : BreviarApp.getUrlOptions(this);
+      String options = appearanceOptions();
       startActivity(new Intent(this, DialogActivity.class)
           .putExtra("title", title_id)
           .putExtra("static_text", query)
@@ -604,7 +603,7 @@ public class Breviar extends AppearanceActivity
         }
       });
 
-      if (!handleIntent(getIntent())) {
+      if (savedInstanceState != null || !handleIntent(getIntent())) {
         if (savedInstanceState == null) {
           goHome();
         } else {
@@ -630,9 +629,7 @@ public class Breviar extends AppearanceActivity
       Log.v("breviar", "onCreate: done");
     }
 
-    @Override
-    protected void onResumeFragments() {
-      super.onResumeFragments();
+    @Override protected void showAppearanceDialogs() {
       showStartupDialogs();
     }
 
@@ -644,6 +641,7 @@ public class Breviar extends AppearanceActivity
         }
         return;
       }
+      if (HighContrastPrompt.showIfNeeded(this)) return;
       if (!getString(R.string.version).equals(BreviarApp.getString(this, "version", ""))) {
         showChangelog(true);
         markVersion();
@@ -655,6 +653,25 @@ public class Breviar extends AppearanceActivity
       // If the theme changed, the replacement activity will show the changelog.
       // Choosing the current mode needs no recreation or extra resume callback.
       showStartupDialogs();
+    }
+
+    @Override protected String appearanceOptions() {
+      return S != null && !need_to_reload_preferences ? S.getOpts() : BreviarApp.getUrlOptions(this);
+    }
+
+    @Override protected void onColorPresetsApplied() {
+      need_to_reload_preferences = false;
+      optionsBeforeSettings = null;
+      fontsBeforeSettings = null;
+      String url = S.getPageUrl(wv.getUrl());
+      if (url != null) {
+        float position = readingPosition();
+        need_to_update_menu = true;
+        loadRestoringScroll(updatePreferencesInUrl(url), position);
+      } else if (S != null) {
+        S.setOpts(BreviarApp.getUrlOptions(this));
+        S.forceOptsForNextRequest();
+      }
     }
 
     @Override
@@ -763,7 +780,7 @@ public class Breviar extends AppearanceActivity
     synchronized String updatePreferencesInUrl(String url) {
       UrlOptions opts = new UrlOptions(url, true);
       UrlOptions saved = new UrlOptions(BreviarApp.getUrlOptions(getApplicationContext()));
-      SettingsXml.applySavedOptions(opts.params, saved.params);
+      opts.applySavedOptions(saved);
       S.setOpts(opts.build(true));
       return opts.build();
     }
@@ -860,7 +877,7 @@ public class Breviar extends AppearanceActivity
         super.onResume();
         return;
       }
-      String url = wv.getUrl();
+      String url = S.getPageUrl(wv.getUrl());
       if (url != null && need_to_reload_preferences) {
         need_to_reload_preferences = false;
         boolean changed = optionsBeforeSettings == null
@@ -913,6 +930,25 @@ public class Breviar extends AppearanceActivity
 
     // Return if the intent loaded a page.
     boolean handleIntent(Intent intent) {
+      if (intent != null && Intent.ACTION_VIEW.equals(intent.getAction())) {
+        UrlOptions link = PrayerLink.read(intent.getData());
+        if (link == null) {
+          Toast.makeText(this, R.string.shared_link_invalid, Toast.LENGTH_LONG).show();
+          return false;
+        }
+        syncPreferences();
+        SharedPrayerSession.begin(this, link, S.getPageUrl(wv.getUrl()), readingPosition());
+        // Do not replay a consumed link when the activity is recreated.
+        setIntent(new Intent(Intent.ACTION_MAIN));
+        UrlOptions page = new UrlOptions("http://127.0.0.1:" + S.port + "/" + scriptname, true);
+        page.override(link);
+        UrlOptions settings = new UrlOptions(BreviarApp.getUrlOptions(this));
+        // Keep incoming force flags for this first render, but use merged local appearance bits.
+        page.override(settings);
+        applySharedPage(page.build(), -1);
+        Toast.makeText(this, R.string.shared_settings_active, Toast.LENGTH_LONG).show();
+        return true;
+      }
       if (intent != null) {
         if (intent.getAction() != null) {
           if (intent.getAction().equals("sk.breviar.android.action.SHOW")) {
@@ -931,8 +967,61 @@ public class Breviar extends AppearanceActivity
 
     @Override
     protected void onNewIntent(Intent intent) {
+      super.onNewIntent(intent);
       Log.v("breviar", "onNewIntent");
       handleIntent(intent);
+    }
+
+    private void applySharedPage(String page, float position) {
+      String previousLanguage = language;
+      language = BreviarApp.getString(this, "language", "sk");
+      S.setLanguage(language);
+      S.setOpts(BreviarApp.getUrlOptions(this));
+      need_to_reload_preferences = false;
+      optionsBeforeSettings = null;
+      fontsBeforeSettings = null;
+      wv.stopLoading();
+      clearHistory = true;
+      need_to_update_menu = true;
+      updateMenu();
+      if (page == null) goHome();
+      else loadRestoringScroll(page, position);
+      if (!previousLanguage.equals(language)) {
+        BreviarApp.initLocale(this);
+        appEventId = BreviarApp.getEventId();
+        if (BreviarApp.getOverrideLocale(this)) recreate();
+      }
+    }
+
+    void restoreSharedSettings() {
+      syncPreferences();
+      SharedPrayerSession.ReturnPage previous = SharedPrayerSession.restore(this);
+      if (previous == null) return;
+      String page = previous.url;
+      if (page != null) {
+        UrlOptions url = new UrlOptions(page, true);
+        page = url.getBuilder().scheme("http").authority("127.0.0.1:" + S.port)
+            .path("/" + scriptname).build().toString();
+        page = updatePreferencesInUrl(page);
+      }
+      applySharedPage(page, previous.position);
+    }
+
+    void keepSharedSettings() {
+      syncPreferences();
+      SharedPrayerSession.keep(this);
+      updateMenu();
+    }
+
+    void sharePrayer() {
+      if (wv.getUrl() == null || getSupportFragmentManager().isStateSaved()
+          || getSupportFragmentManager().findFragmentByTag(PrayerShareDialog.TAG) != null) return;
+      try {
+        PrayerShareDialog.create(PrayerLink.share(S.getPageUrl(wv.getUrl()), S.getOpts(), language))
+            .show(getSupportFragmentManager(), PrayerShareDialog.TAG);
+      } catch (IllegalArgumentException error) {
+        Toast.makeText(this, R.string.share_prayer_unavailable, Toast.LENGTH_LONG).show();
+      }
     }
 
     protected void onSaveInstanceState(Bundle outState) {
@@ -940,7 +1029,7 @@ public class Breviar extends AppearanceActivity
       if (save_instance_enabled) {
         syncScale();
         //wv.saveState(outState);
-        String url = wv.getUrl();
+        String url = S.getPageUrl(wv.getUrl());
         float current_scroll = readingPosition();
         if (url != null) {
           outState.putString("wv-url", url);
@@ -1094,6 +1183,8 @@ public class Breviar extends AppearanceActivity
       Menu menu = navigationView.getMenu();
       if (menu == null) return;
 
+      menu.setGroupVisible(R.id.group_shared_settings, SharedPrayerSession.active(this));
+
       UrlOptions opts = new UrlOptions(S.getOpts());
       MenuItem drawer_item = menu.findItem(R.id.nightmode_toggle);
       MenuItem action_item = toolbar.getMenu().findItem(R.id.nightmodeBtn);
@@ -1195,7 +1286,7 @@ public class Breviar extends AppearanceActivity
         startService(new Intent().setClass(this, TtsService.class).setAction(TtsService.TTS_RESUME));
         return;
       }
-      UrlOptions opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
+      UrlOptions opts = new UrlOptions(S.getPageUrl(wv.getUrl()) + S.getOpts().replaceAll("&amp;", "&"), true);
       opts.setVoiceOutput(true);
       String url = opts.getBuilder().encodedAuthority("127.0.0.1:" + S.port_nonpersistent)
                        .build().toString();
@@ -1239,7 +1330,7 @@ public class Breviar extends AppearanceActivity
 
     void toggleNightMode() {
       UrlOptions opts;
-      opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
+      opts = new UrlOptions(S.getPageUrl(wv.getUrl()) + S.getOpts().replaceAll("&amp;", "&"), true);
       opts.setNightmode(!opts.isNightmode());
 
       S.setOpts(opts.build(true));
@@ -1283,7 +1374,7 @@ public class Breviar extends AppearanceActivity
 
     void toggleOnlyNonBoldFont() {
       UrlOptions opts;
-      opts = new UrlOptions(wv.getUrl() + S.getOpts().replaceAll("&amp;", "&"), true);
+      opts = new UrlOptions(S.getPageUrl(wv.getUrl()) + S.getOpts().replaceAll("&amp;", "&"), true);
       opts.setOnlyNonBoldFont(!opts.isOnlyNonBoldFont());
 
       S.setOpts(opts.build(true));
@@ -1351,6 +1442,12 @@ public class Breviar extends AppearanceActivity
       if (id == R.id.today) {
         syncScale();
         goHome();
+      } else if (id == R.id.share_prayer) {
+        sharePrayer();
+      } else if (id == R.id.restore_shared_settings) {
+        restoreSharedSettings();
+      } else if (id == R.id.keep_shared_settings) {
+        keepSharedSettings();
       } else if (id == R.id.lang_select) {
         prepareSettings();
         Intent selectLang = new Intent(this, LangSelect.class);

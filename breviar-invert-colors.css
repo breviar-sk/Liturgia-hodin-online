@@ -13,62 +13,77 @@
 
 .antiphon.first-ant:before {
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .antiphon.second-ant:before {
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .antiphon.third-ant:before {
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .antiphon.ant:before {
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .antiphon.ant-first:before {
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .antiphon.ant-second:before {
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .antiphon.ant-third:before {
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .respons p.respR:before, .respR:before { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .respons p.respS:before, .respS:before { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .respons p.respV:before, .respV:before { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .respons p.respO:before, .respO:before { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .respons p.respF:before, .respF:before { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .reading-source { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .reading-title { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .calendar.day {
-	border: solid 1px #CCCCCC; 
+	border: solid 1px #CCCCCC;
+	border: solid 1px var(--prayer-text, #CCCCCC);
 	color: #AAAAAA; 
 }
 
@@ -79,154 +94,193 @@
 
 .calendar.today { 
 	background-color: #CCCCCC; 
-	border: solid 1px #CCCCCC; 
+	border: solid 1px #CCCCCC;
+	border: solid 1px var(--prayer-text, #CCCCCC);
 	color: #191919; /* #333333; */
 }
 
 .preces p.resprep:before { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .preces p.resprep:after { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .preces p.partV:before { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .preces p.vel { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .reading p.resp {
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .hymn p.rubric, .hymn p.rubric-always-display { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .psalm .psalm-name { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .psalm .psalm-idea { 
-	color: #CCCCCC; 
+	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 .psalm .psalm-title { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .psalm .psalm-subtitle { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .psalm p.last:after { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 p.bibleref {
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .red, .redtitle { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .section-title { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .rubric, .rubric-always-display { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .rednormal { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .redit { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .redsmall, .redsubtitle { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .redbold { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .blue { 
-	color: #44aadd; 
+	color: #44aadd;
+	color: var(--prayer-text, #44aadd);
 }
 
 .bluebold { 
-	color: #44aadd; 
+	color: #44aadd;
+	color: var(--prayer-text, #44aadd);
 }
 
 .normal { 
-	color: #CCCCCC; 
+	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 .parameter { 
-	color: #CCCCCC; 
+	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 .value { 
-	color: yellow; 
+	color: yellow;
+	color: var(--prayer-text, yellow);
 }
 
 .explain { 
-	color: gray; 
+	color: gray;
+	color: var(--prayer-text, gray);
 }
 
 body, html { 
 	background-color: #000;
+	background-color: var(--prayer-background, #000);
 	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 p { 
-	color: #CCCCCC; 
+	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 h1, h2, h3 { 
-	color: #FFFFCC; 
+	color: #FFFFCC;
+	color: var(--prayer-text, #FFFFCC);
 }
 
 a { 
-	color: #CCCCCC; 
+	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 a:active { 
-	color: gray; 
+	color: gray;
+	color: var(--prayer-text, gray);
 }
 
 a.explain { 
-	color: gray; 
+	color: gray;
+	color: var(--prayer-text, gray);
 }
 
 table { 
-	color: #CCCCCC; 
+	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 td { 
-	color: #CCCCCC; 
+	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 hr { 
-	color: gray; 
+	color: gray;
+	color: var(--prayer-text, gray);
 }
 
 select { 
 	background-color: #000;
-	color: #CCCCCC; 
+	background-color: var(--prayer-background, #000);
+	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 input { 
-	color: #CCCCCC; 
+	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 }
 
 /* buttons */
@@ -234,22 +288,26 @@ input.button, input.reset, .button, a.button, .button-prayer, input.button-praye
 , input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 /* << button0 >> + button1 for today */
 , input.button2, input.reset2, .button2 { 
 	background-color: transparent;
-	border: solid 2px #CCCCCC; 
+	border: solid 2px #CCCCCC;
+	border: solid 2px var(--prayer-text, #CCCCCC);
 }
 
 input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer
 , input.button2, input.reset2, .button2 { 
 	color: #AAAAAA;
+	color: var(--prayer-text, #AAAAAA);
 }
 
 input.button:hover, input.reset:hover, .button:hover, a.button:hover, .button-prayer:hover, input.button-prayer:hover
 , input.button0:hover, input.reset0:hover, .button0:hover, input.button1:hover, input.reset1:hover, .button1:hover
 , input.button2:hover, input.reset2:hover, .button2:hover, a.button2:hover {
-	color: #000000; 
+	color: #000000;
+	color: var(--prayer-text, #000000);
 }
 
 input.text { 
 	background-color: #000;
+	background-color: var(--prayer-background, #000);
 }
 
 input.radio:before {
@@ -275,6 +333,7 @@ input.checkbox:after {
 
 sup { 
 	color: #FF3333;
+	color: var(--prayer-rubric, #FF3333);
 }
 
 .nav-arrow-right, .nav-arrow-left {
@@ -315,6 +374,7 @@ a:hover.closebtn, a:hover.closebtnR {
 .openbtn, .openbtnR {
 	background-color: rgba(0,0,0,0.3);
 	color: #CCCCCC;
+	color: var(--prayer-text, #CCCCCC);
 	opacity: 0.3;
 }
 

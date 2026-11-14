@@ -164,4 +164,21 @@
     <string name="tts_language_not_available">A szövegfelolvasás nem érhető el az aktuális nyelvnél.</string>
 
     <string name="search">Keresés</string>
+    <string name="high_contrast_title">Nagy kontrasztú színek</string>
+    <string name="high_contrast_message">Az e-ink módot használja, és most már színsémákat is választhat. Szeretne nagy kontrasztot beállítani a nappali és az éjszakai módhoz?</string>
+    <string name="high_contrast_load_failed">A színbeállítások betöltése nem sikerült. Az Igen gombbal újrapróbálhatja, a Nem gombbal megtarthatja a jelenlegi színeket.</string>
+    <string name="high_contrast_yes">Igen</string>
+    <string name="high_contrast_no">Nem</string>
+
+  <!-- Shared prayers -->
+  <string name="share_prayer">Ima megosztása</string>
+  <string name="restore_shared_settings">Saját beállítások visszaállítása</string>
+  <string name="keep_shared_settings">Ezeknek a beállításoknak a megtartása</string>
+  <string name="shared_settings_active">A megosztott ima beállításai ideiglenesek. A menüben visszaállíthatja saját beállításait, vagy megtarthatja ezeket.</string>
+  <string name="shared_link_invalid">Ez a hivatkozás nem nyitható meg imaként.</string>
+  <string name="share_prayer_message">Olvassa be a QR-kódot az oldal megnyitásához. Az imák hivatkozásai megőrzik a kiválasztott dátumot; a napi áttekintés hivatkozásai az aktuális napot mutatják.</string>
+  <string name="share_link">Hivatkozás megosztása</string>
+  <string name="copy_link">Hivatkozás másolása</string>
+  <string name="link_copied">Hivatkozás másolva</string>
+  <string name="share_prayer_unavailable">Ez az oldal nem osztható meg.</string>
 </resources>

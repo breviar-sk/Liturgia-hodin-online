@@ -326,6 +326,50 @@ MenuLabel menuText(const char* const* labels) {
 	return {prayer, _device_language == JAZYK_UNDEF ? prayer : xml_settings_label(labels)};
 }
 
+// Palette metadata and presets are shared through XML. Native clients only
+// need the generic color editor, submenu navigation and multi-setting action.
+Element paletteMenu(appearance::Mode mode) {
+	const std::string key = mode == appearance::Mode::Day ? "appearance.colors.day" : "appearance.colors.night";
+	Element result = {"MenuGroup", {{"Key", key},
+		{"Label", menuLabel(menuText(mode == appearance::Mode::Day ? menu_text_colors_day : menu_text_colors_night).display)},
+		{"Control", "submenu"}}, {}, ""};
+	const char* const* labels[] = {menu_text_color_text, menu_text_color_rubric, menu_text_color_background};
+	const char* roles[] = {"text", "rubric", "background"};
+	for (const auto& setting : appearance::colors()) {
+		if (setting.mode != mode) continue;
+		const auto role = static_cast<unsigned>(setting.role);
+		result.children.push_back(item((key + "." + roles[role]).c_str(), menuText(labels[role]), "color", {
+			{"Parameter", setting.parameter}, {"Default", ""}, {"ResetValue", ""},
+		}));
+	}
+	struct Preset {
+		appearance::Mode mode;
+		const char* key;
+		const char* const* label;
+		std::array<const char*, 3> values; // Text, rubric, background; empty restores the CSS default.
+	};
+	const Preset catalogue[] = {
+		{appearance::Mode::Day, "default", menu_text_color_default, {{"", "", ""}}},
+		{appearance::Mode::Day, "yellow", menu_text_color_yellow, {{"", "", "ffffcc"}}},
+		{appearance::Mode::Day, "high-contrast", menu_text_color_high_contrast, {{"000000", "800000", "ffffff"}}},
+		{appearance::Mode::Night, "default", menu_text_color_default, {{"", "", ""}}},
+		{appearance::Mode::Night, "high-contrast", menu_text_color_high_contrast, {{"ffffff", "ffff00", "000000"}}},
+	};
+	Element presets{"MenuGroup", {{"Key", key + ".presets"}, {"Label", menuLabel(menuText(menu_text_color_presets).display)}}, {}, ""};
+	for (const auto& preset : catalogue) {
+		if (preset.mode != mode) continue;
+		Element entry = item((key + "." + preset.key).c_str(), menuText(preset.label), "preset", {});
+		for (const auto& setting : appearance::colors()) {
+			if (setting.mode == mode) entry.children.push_back({"Set", {
+				{"Parameter", setting.parameter}, {"Value", preset.values[static_cast<unsigned>(setting.role)]},
+			}, {}, ""});
+		}
+		presets.children.push_back(std::move(entry));
+	}
+	result.children.push_back(std::move(presets));
+	return result;
+}
+
 Element menuXml() {
 	// The Czech edition uses its own hymn selection. Two-year readings are (intended to be) implemented for Slovak only; alternative readings are specific to Czech only (not even for CZ OP).
 	const bool czechHymns = _global_jazyk == JAZYK_CZ;
@@ -395,16 +439,8 @@ Element menuXml() {
 			}),
 			group("appearance.colors", menuText(menu_text_colors),{
 				toggle("appearance.night-mode", XML_BIT_OPT_2_NOCNY_REZIM),
-				item("appearance.background-day", menuText(menu_text_appearance_background_day), "color", {
-					{"Parameter", STR_THEME_LIGHT_BACKGROUND_COLOR},
-					{"Default", ""},
-					{"ResetValue", ""},
-				}),
-				item("appearance.background-night", menuText(menu_text_appearance_background_night), "color", {
-					{"Parameter", STR_THEME_DARK_BACKGROUND_COLOR},
-					{"Default", ""},
-					{"ResetValue", ""},
-				}),
+				paletteMenu(appearance::Mode::Day),
+				paletteMenu(appearance::Mode::Night),
 			}),
 			group("appearance.buttons", menuText(menu_text_buttons),{
 				toggle("appearance.prayer-buttons", XML_BIT_OPT_2_PRAYER_BUTTONS),

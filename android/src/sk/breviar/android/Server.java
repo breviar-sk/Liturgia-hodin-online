@@ -26,6 +26,8 @@ public class Server extends Thread {
     // UI settings updates must never wait for rendering, socket writes or Copy.join().
     private final Object settingsLock = new Object();
     private long settingsRevision;
+    // Accessed only by the serialized renderer/HTTP handler, never by UI callers.
+    private String renderedQuery;
 
     private Server(Context context) {
       ctx = context.getApplicationContext();
@@ -40,6 +42,9 @@ public class Server extends Thread {
       synchronized (NATIVE_LOCK) {
         if (timing != null) timing.mark("native render started");
         String result = main(out, in, environment);
+        int separator = result == null ? -1 : result.indexOf('\n');
+        renderedQuery = separator < 0 ? null : result.substring(separator + 1);
+        if (separator >= 0) result = result.substring(0, separator);
         if (timing != null) timing.mark("native render finished");
         return result;
       }
@@ -160,6 +165,19 @@ public class Server extends Thread {
     public String getOpts() {
       synchronized (settingsLock) {
         return persistentOpts;
+      }
+    }
+
+    private String pageAddress, pageQuery;
+
+    /** Include selection fields submitted by POST, which WebView.getUrl() omits. */
+    public String getPageUrl(String webViewUrl) {
+      if (webViewUrl == null) return null;
+      android.net.Uri uri = android.net.Uri.parse(webViewUrl);
+      String address = uri.getEncodedPath() + (uri.getEncodedQuery() == null ? "" : "?" + uri.getEncodedQuery());
+      synchronized (settingsLock) {
+        if (!address.equals(pageAddress)) return webViewUrl;
+        return uri.buildUpon().encodedQuery(pageQuery).build().toString();
       }
     }
 
@@ -299,10 +317,10 @@ public class Server extends Thread {
       String localOpts;
 
       if (forceOpts) {
-        if (requestOpts.startsWith("&") && !qs.isEmpty()) {
-          qs = requestOpts.substring(1) + "&" + qs;
-          Log.v("breviar", "Forcing persistent options: " + qs);
-        }
+        UrlOptions request = new UrlOptions(qs);
+        request.applySavedOptions(new UrlOptions(requestOpts));
+        qs = request.getBuilder().build().getEncodedQuery();
+        Log.v("breviar", "Forcing persistent options: " + qs);
       }
 
       if (!postmethod) {
@@ -313,10 +331,17 @@ public class Server extends Thread {
       }
 
       if (persistent) {
+        UrlOptions selection = new UrlOptions(dokument, true);
+        if (postmethod) {
+          selection.override(new UrlOptions(new String(buf, 0, cntlen, java.nio.charset.StandardCharsets.UTF_8)));
+        }
         synchronized (settingsLock) {
           // An older page may finish after the UI has already changed settings.
           if (requestRevision == settingsRevision) {
             persistentOpts = localOpts;
+            pageAddress = "/" + dokument;
+            pageQuery = renderedQuery == null || renderedQuery.isEmpty()
+                ? selection.getBuilder().build().getEncodedQuery() : renderedQuery;
           }
         }
         Log.v("breviar", "persistentOpts = " + getOpts());

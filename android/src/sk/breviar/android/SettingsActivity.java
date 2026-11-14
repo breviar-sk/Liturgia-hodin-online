@@ -78,17 +78,21 @@ public class SettingsActivity extends AppearanceActivity
 
   /** A single-choice row with an accessible checked state and a leading check mark. */
   protected void addCheckedChoice(int group, CharSequence label, boolean checked, Runnable select) {
-    // Checked rows must retain the readable foreground of the current appearance,
-    // rather than Material's colorPrimary (dark brown in the normal theme).
-    ColorStateList foreground = ColorStateList.valueOf(navigationView.getItemTextColor().getDefaultColor());
-    navigationView.setItemTextColor(foreground);
-    navigationView.setItemIconTintList(foreground);
+    useChoiceColors();
     MenuItem item = navigationView.getMenu().add(group, View.generateViewId(), Menu.NONE, label);
     item.setIcon(R.drawable.choice_check).setCheckable(true).setChecked(checked);
     handleClick(item.getItemId(), () -> {
       navigationView.setCheckedItem(item.getItemId());
       select.run();
     });
+  }
+
+  protected void useChoiceColors() {
+    // Checked rows must retain the readable foreground of the current appearance,
+    // rather than Material's colorPrimary (dark brown in the normal theme).
+    ColorStateList foreground = ColorStateList.valueOf(navigationView.getItemTextColor().getDefaultColor());
+    navigationView.setItemTextColor(foreground);
+    navigationView.setItemIconTintList(foreground);
   }
 
   /** Populate a detached menu before replacing the displayed one. */
@@ -303,8 +307,9 @@ public class SettingsActivity extends AppearanceActivity
         final String textc = info.predefined_colors[i];
         int c = Color.parseColor("#" + textc);
         Button v = new Button(ctx);
-        // v.setText(textc);
-        // v.setTextColor(Color.BLACK);
+        v.setText("#" + textc);
+        v.setTextColor(androidx.core.graphics.ColorUtils.calculateLuminance(c) > 0.5
+            ? Color.BLACK : Color.WHITE);
         v.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         v.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         v.setBackgroundColor(c);

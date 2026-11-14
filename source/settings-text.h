@@ -6,6 +6,7 @@
 
 extern const char* text_menu_group_jazyk[POCET_MENU_GROUPS + 1][POCET_JAZYKOV + 1];
 extern const char* html_text_Jazyk[POCET_JAZYKOV + 1];
+extern const char* html_title_static_text[POCET_STATIC_TEXTOV + 1][POCET_JAZYKOV + 1];
 extern const char* html_text_font_name[POCET_JAZYKOV + 1];
 extern const char* html_text_font_name_simple[POCET_JAZYKOV + 1];
 extern const char* html_text_font_size[POCET_JAZYKOV + 1];
@@ -119,6 +120,15 @@ extern const char* menu_text_appearance_margin[POCET_JAZYKOV + 1];
 extern const char* menu_text_appearance_other[POCET_JAZYKOV + 1];
 extern const char* menu_text_buttons[POCET_JAZYKOV + 1];
 extern const char* menu_text_device_eink[POCET_JAZYKOV + 1];
+extern const char* menu_text_colors_day[POCET_JAZYKOV + 1];
+extern const char* menu_text_colors_night[POCET_JAZYKOV + 1];
+extern const char* menu_text_color_text[POCET_JAZYKOV + 1];
+extern const char* menu_text_color_rubric[POCET_JAZYKOV + 1];
+extern const char* menu_text_color_background[POCET_JAZYKOV + 1];
+extern const char* menu_text_color_presets[POCET_JAZYKOV + 1];
+extern const char* menu_text_color_default[POCET_JAZYKOV + 1];
+extern const char* menu_text_color_yellow[POCET_JAZYKOV + 1];
+extern const char* menu_text_color_high_contrast[POCET_JAZYKOV + 1];
 extern const char* menu_text_colors[POCET_JAZYKOV + 1];
 extern const char* menu_text_do_not_dim_screen[POCET_JAZYKOV + 1];
 extern const char* menu_text_do_not_disturb[POCET_JAZYKOV + 1];

@@ -20964,6 +20964,33 @@ const char* menu_text_appearance_background_day[POCET_JAZYKOV + 1] =
 const char* menu_text_appearance_background_night[POCET_JAZYKOV + 1] =
 { "Farba pozadia (nočný režim)", "Barva pozadí (noční režim)", "Background color (night mode)", "Background color (modus nocturnus)", "", "Barva pozadí (noční režim)", "Háttérszín (éjszakai mód)", "Background color (night mode)", "Background color (night mode)", "Bakgrunns litur (næturstilling)", "Background color (night mode)", "Background color (night mode)", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
+const char* menu_text_colors_day[POCET_JAZYKOV + 1] =
+{ "Farby v dennom režime", "Barvy v denním režimu", "Day mode colors", "Colores diurni", "" /* undefined language */, "Barvy v denním režimu", "Nappali színek", "Цвета дневного режима", "Колеры дзённага рэжыму", "Litir í dagham", "Colores del modo diurno", "Gündüz rejiminin rəngləri", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_colors_night[POCET_JAZYKOV + 1] =
+{ "Farby v nočnom režime", "Barvy v nočním režimu", "Night mode colors", "Colores nocturni", "" /* undefined language */, "Barvy v nočním režimu", "Éjszakai színek", "Цвета ночного режима", "Колеры начнога рэжыму", "Litir í næturham", "Colores del modo nocturno", "Gecə rejiminin rəngləri", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_color_text[POCET_JAZYKOV + 1] =
+{ "Farba textu", "Barva textu", "Text color", "Color textus", "" /* undefined language */, "Barva textu", "Szövegszín", "Цвет текста", "Колер тэксту", "Litur texta", "Color del texto", "Mətn rəngi", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_color_rubric[POCET_JAZYKOV + 1] =
+{ "Farba rubrík", "Barva rubrik", "Rubric color", "Color rubricarum", "" /* undefined language */, "Barva rubrik", "Rubrikák színe", "Цвет рубрик", "Колер рубрык", "Litur leiðbeininga", "Color de las rúbricas", "Rubrikaların rəngi", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_color_background[POCET_JAZYKOV + 1] =
+{ "Farba pozadia", "Barva pozadí", "Background color", "Color fundi", "" /* undefined language */, "Barva pozadí", "Háttérszín", "Цвет фона", "Колер фону", "Bakgrunnslitur", "Color del fondo", "Fon rəngi", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_color_presets[POCET_JAZYKOV + 1] =
+{ "Predvoľby", "Předvolby", "Presets", "Colores praedefiniti", "" /* undefined language */, "Předvolby", "Előbeállítások", "Готовые схемы", "Гатовыя схемы", "Forstillingar", "Preajustes", "Hazır sxemlər", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_color_default[POCET_JAZYKOV + 1] =
+{ "Predvolené", "Výchozí", "Default", "Colores originales", "" /* undefined language */, "Výchozí", "Alapértelmezett", "По умолчанию", "Прадвызначана", "Sjálfgefið", "Predeterminado", "Standart", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_color_yellow[POCET_JAZYKOV + 1] =
+{ "Žlté pozadie", "Žluté pozadí", "Pale yellow", "Fundus flavus", "" /* undefined language */, "Žluté pozadí", "Halványsárga háttér", "Светло-жёлтый фон", "Светла-жоўты фон", "Ljósgulur bakgrunnur", "Amarillo claro", "Açıq sarı fon", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
+const char* menu_text_color_high_contrast[POCET_JAZYKOV + 1] =
+{ "Vysoký kontrast", "Vysoký kontrast", "High contrast", "Contrastatio alta", "" /* undefined language */, "Vysoký kontrast", "Nagy kontraszt", "Высокая контрастность", "Высокая кантраснасць", "Mikil birtuskil", "Alto contraste", "Yüksək kontrast", /* STRING_1_FOR_NEW_LANGUAGE */ };
+
 const char* menu_text_navigation[POCET_JAZYKOV + 1] =
 { "Navigácia", "Navigace", "Navigation", "Navigatio", "", "Navigace", "Navigáció", "Навигация", "Навігацыя", "Leiðsögn", "Navegación", "Naviqasiya", /* STRING_1_FOR_NEW_LANGUAGE */ };
 

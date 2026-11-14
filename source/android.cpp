@@ -178,7 +178,10 @@ JNIEXPORT jstring JNICALL Java_sk_breviar_android_Server_main(JNIEnv* env, jobje
   char pom2[MAX_STR], pom3[MAX_STR];
   strcpy(pom2, ""); strcpy(pom3, "");
   prilep_request_options(pom2, pom3);
-  jout = env->NewStringUTF(pom2);
+  // Keep settings and the resolved page identity separate: a prayer date is not
+  // a persistent preference. Server consumes this request-local metadata.
+  const std::string result = std::string(pom2) + "\n" + resolved_request_query();
+  jout = env->NewStringUTF(result.c_str());
 //  __android_log_print(ANDROID_LOG_INFO, "Breviar", "prilep_request_options finished");
 
   env->ReleaseStringUTFChars(environ, environment);

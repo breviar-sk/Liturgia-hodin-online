@@ -1,3 +1,7 @@
+/* Reader palette overrides use --prayer-text, --prayer-rubric and
+ * --prayer-background. Keep literal declarations for older renderers, and
+ * per-rule fallbacks so an unset override preserves the original appearance. */
+
 /* WebKit/Blink Browsers */
 ::selection {
 	background: #C39482; /* button middle-dark */
@@ -30,42 +34,49 @@
 /* for HU/CZ first/second/third-ant is used; for SK ant-first/second/third is used */
 .antiphon.first-ant:before {
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: '1. ant. ';
 	font-weight: bold;
 }
 
 .antiphon.second-ant:before {
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: '2. ant. ';
 	font-weight: bold;
 }
 
 .antiphon.third-ant:before {
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: '3. ant. ';
 	font-weight: bold;
 }
 
 .antiphon.ant:before {
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: 'Ant. ';
 	font-weight: bold;
 }
 
 .antiphon.ant-first:before {
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: 'Ant. 1 ';
 	font-weight: bold;
 }
 
 .antiphon.ant-second:before {
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: 'Ant. 2 ';
 	font-weight: bold;
 }
 
 .antiphon.ant-third:before {
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: 'Ant. 3 ';
 	font-weight: bold;
 }
@@ -91,31 +102,36 @@
 
 /* for SK & LA, V/R is used; for CZ, V/O is used; for HU, V/F is used; for IS, V/S is used */
 .respons p.respR:before, .respR:before { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: 'R. '; 
 	font-weight: bold; 
 }
 
 .respons p.respS:before, .respS:before { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: 'S. '; 
 	font-weight: bold; 
 }
 
 .respons p.respV:before, .respV:before { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: 'V. '; 
 	font-weight: bold; 
 }
 
 .respons p.respO:before, .respO:before { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: 'O. '; 
 	font-weight: bold; 
 }
 
 .respons p.respF:before, .respF:before { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: 'F. '; 
 	font-weight: bold; 
 }
@@ -146,6 +162,7 @@ div.navm p {
 
 .reading-source { 
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-style: normal;
 	font-weight: normal;
 	text-align: center;
@@ -153,6 +170,7 @@ div.navm p {
 
 .reading-title { 
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-style: italic;
 	font-weight: normal !important;
 	text-align: center;
@@ -178,7 +196,8 @@ div.navm p {
 
 .calendar.day { 
 	background-color: transparent;
-	border: solid 1px #1a1a1a; 
+	border: solid 1px #1a1a1a;
+	border: solid 1px var(--prayer-text, #1a1a1a);
 	display: block; 
 	min-width: 22px; 
 	padding: 4px 4px;
@@ -200,7 +219,8 @@ div.navm p {
 
 .calendar.today { 
 	background-color: #1a1a1a; 
-	border: solid 1px #1a1a1a; 
+	border: solid 1px #1a1a1a;
+	border: solid 1px var(--prayer-text, #1a1a1a);
 	color: #FFFFFF; 
 	display: block; 
 	min-width: 22px; 
@@ -242,25 +262,29 @@ div.navm p {
 }
 
 .preces p.resprep:before { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: '('; 
 	font-weight: normal; 
 }
 
 .preces p.resprep:after { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: ')'; 
 	font-weight: normal; 
 }
 
 .preces p.partV:before { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: '\2014\00a0'; 
 	font-weight: normal; 
 }
 
 .preces p.vel { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-style: normal; 
 	font-weight: normal; 
 	margin: 0; 
@@ -304,7 +328,8 @@ div.navm p {
 }
 
 .reading p.resp {
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-size: 80%;
 	font-weight: normal;
 	padding-top: 1em;
@@ -399,21 +424,24 @@ div.navm p {
 }
 
 .hymn p.rubric, .hymn p.rubric-always-display { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-size: 80%; 
 	font-weight: normal; 
 	padding-top: 1em;
 }
 
 .psalm .psalm-name { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-weight: bold; 
 	padding-top: 1em; 
 	text-align: center; 
 }
 
 .psalm .psalm-idea { 
-	color: #1a1a1a; 
+	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 	font-weight: normal; 
 	padding-top: 1em; 
 	text-align: left; 
@@ -427,14 +455,16 @@ div.navm p {
 }
 
 .psalm .psalm-title { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-weight: normal; 
 	padding-top: 1em; 
 	text-align: center; 
 }
 
 .psalm .psalm-subtitle { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-weight: normal; 
 	text-align: center; 
 }
@@ -471,7 +501,8 @@ div.navm p {
 }
 
 .psalm p.last:after { /* &nbsp;&emdash; -- em dash at the end of stanza */
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	content: '\00a0\2014'; 
 	font-weight: normal; 
 }
@@ -509,6 +540,7 @@ div.navm p {
 
 p.bibleref {
 	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-weight: normal;
 	text-align: right;
 }
@@ -555,49 +587,58 @@ p.bibleref {
 }
 
 .red, .redtitle { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 }
 
 .section-title { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-size: 80%; 
 	font-weight: normal; 
 }
 
 .rubric, .rubric-always-display { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-size: 80%; 
 	font-weight: normal !important;
 	padding-top: 1em;
 }
 
 .rednormal { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-style: normal; 
 	font-weight: normal; 
 }
 
 .redit { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-style: italic; 
 }
 
 .redsmall, .redsubtitle { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-size: 80%; 
 }
 
 .redbold { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-weight: bold; 
 }
 
 .blue { 
-	color: #2277dd; 
+	color: #2277dd;
+	color: var(--prayer-text, #2277dd);
 }
 
 .bluebold { 
-	color: #2277dd; 
+	color: #2277dd;
+	color: var(--prayer-text, #2277dd);
 	font-weight: bold; 
 }
 
@@ -615,7 +656,8 @@ p.bibleref {
 }
 
 .normal { 
-	color: #1a1a1a; 
+	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 }
 
 .tt { 
@@ -627,7 +669,8 @@ p.bibleref {
 }
 
 .parameter { 
-	color: #1a1a1a; 
+	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 	font-family: Monospace; 
 	font-style: normal; 
 	font-weight: bold; 
@@ -644,7 +687,8 @@ p.bibleref {
 }
 
 .explain { 
-	color: #330000; 
+	color: #330000;
+	color: var(--prayer-text, #330000);
 	font-size: 90%; 
 }
 
@@ -682,7 +726,9 @@ p.bibleref {
 
 body, html { 
 	background-color: #FFFFFF;
+	background-color: var(--prayer-background, #FFFFFF);
 	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 	font-family: serif;
 	font-size: 16pt; 
 	font-weight: normal; 
@@ -692,7 +738,8 @@ body, html {
 }
 
 p { 
-	color: #1a1a1a; 
+	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 	font-family: inherit; 
 	font-style: normal; 
 	margin: 1em 0 0 0; /* top only */
@@ -743,7 +790,8 @@ a.quiet:active {
 
 a { 
 	border-bottom: 1px dotted; 
-	color: #1a1a1a; 
+	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 	font-family: inherit; 
 	font-size: inherit; 
 	text-decoration: none; 
@@ -752,12 +800,14 @@ a {
 a:hover { 
 	background-color: #C39482; /* button middle-dark */
 	border: none; 
-	color: white; 
+	color: white;
+	color: var(--prayer-text, white);
 	text-decoration: none; 
 }
 
 a:active { 
-	color: gray; 
+	color: gray;
+	color: var(--prayer-text, gray);
 	text-decoration: underline; 
 }
 
@@ -766,7 +816,8 @@ a img {
 }
 
 a.explain { 
-	color: #330000; 
+	color: #330000;
+	color: var(--prayer-text, #330000);
 	font-size: 100%; 
 }
 
@@ -781,7 +832,8 @@ form {
 }
 
 table { 
-	color: #505000; 
+	color: #505000;
+	color: var(--prayer-text, #505000);
 }
 
 tr.paragraph { 
@@ -791,6 +843,7 @@ tr.paragraph {
 
 td { 
 	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 	font-family: inherit; 
 	/* font-size: 95%; */
 }
@@ -811,14 +864,17 @@ hr.red {
 
 select { 
 	background-color: #FFFFFF;
+	background-color: var(--prayer-background, #FFFFFF);
 	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 	font-family: inherit; 
 	margin: 4px;
 }
 
 input { 
 	border: 1px; 
-	color: #1a1a1a; 
+	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 	font-family: inherit; 
 	font-size: inherit; 
 }
@@ -828,7 +884,8 @@ input.button, input.reset, .button, a.button, .button-prayer, input.button-praye
 , input.button0, input.reset0, .button0, input.button1, input.reset1, .button1 /* << button0 >> + button1 for today */
 , input.button2, input.reset2, .button2 { 
 	background-color: transparent;
-	border: solid 2px #1a1a1a; 
+	border: solid 2px #1a1a1a;
+	border: solid 2px var(--prayer-text, #1a1a1a);
 	/* border-radius: 10px; */
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -854,7 +911,8 @@ input.button, input.reset, .button, a.button, .button-prayer, input.button-praye
 
 input.button, input.reset, .button, a.button, .button-prayer, input.button-prayer
 , input.button2, input.reset2, .button2 { 
-	color: #1a1a1a; 
+	color: #1a1a1a;
+	color: var(--prayer-text, #1a1a1a);
 }
 
 input.button, input.reset, .button, a.button
@@ -892,6 +950,7 @@ input.button2, input.reset2, .button2 {
 
 input.text { 
 	background-color: #FFFFFF;
+	background-color: var(--prayer-background, #FFFFFF);
 	border-style: solid; 
 }
 
@@ -1015,7 +1074,8 @@ h4 {
 }
 
 sup { 
-	color: #ff0000; 
+	color: #ff0000;
+	color: var(--prayer-rubric, #ff0000);
 	font-size: 0.5em; 
 	font-weight: normal; 
 	position: relative; 
@@ -1233,6 +1293,7 @@ a:hover.closebtn, a:hover.closebtnR {
 	background-color:  rgba(255,255,255,0.3);
 	opacity: 0.3;
 	color: black;
+	color: var(--prayer-text, black);
 	border: none;
 	padding: 0px;
 	position: fixed;

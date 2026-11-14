@@ -164,4 +164,21 @@
     <string name="tts_language_not_available">Yfirfærsla texta í tal er ekki til í þessu tungumáli</string>
 
     <string name="search">Leita</string>
+    <string name="high_contrast_title">Litir með miklum birtuskilum</string>
+    <string name="high_contrast_message">Þú notar e-ink ham og nú er hægt að velja litasamsetningar. Viltu nota mikil birtuskil bæði í dagham og næturham?</string>
+    <string name="high_contrast_load_failed">Ekki tókst að hlaða litaforstillingum. Veldu Já til að reyna aftur eða Nei til að halda núverandi litum.</string>
+    <string name="high_contrast_yes">Já</string>
+    <string name="high_contrast_no">Nei</string>
+
+  <!-- Shared prayers -->
+  <string name="share_prayer">Deila bæn</string>
+  <string name="restore_shared_settings">Endurheimta mínar stillingar</string>
+  <string name="keep_shared_settings">Halda þessum stillingum</string>
+  <string name="shared_settings_active">Stillingar sameiginlegu bænarinnar eru tímabundnar. Í valmyndinni má endurheimta eigin stillingar eða halda þessum.</string>
+  <string name="shared_link_invalid">Ekki er hægt að opna þennan tengil sem bæn.</string>
+  <string name="share_prayer_message">Skannaðu QR-kóðann til að opna síðuna. Bænatenglar halda valinni dagsetningu; tenglar á daglegt yfirlit sýna núverandi dag.</string>
+  <string name="share_link">Deila tengli</string>
+  <string name="copy_link">Afrita tengil</string>
+  <string name="link_copied">Tengill afritaður</string>
+  <string name="share_prayer_unavailable">Ekki er hægt að deila þessari síðu.</string>
 </resources>

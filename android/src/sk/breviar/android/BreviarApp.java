@@ -159,6 +159,7 @@ public class BreviarApp extends Application {
   static final String booleanTtsUsePauseInPsalms = "tts_use_pause_in_psalms";
   static final String booleanNoZoom = "no_zoom";
   static final String booleanEinkMode = "eink_mode";
+  static final String booleanHighContrastOffered = "high_contrast_offered";
   static final String stringUrlOptions = "params";
   static final String stringFontsCss = "fonts_css";
 
@@ -211,6 +212,14 @@ public class BreviarApp extends Application {
 
   static public void setEinkMode(Context ctx, boolean eink) {
     setBoolean(ctx, booleanEinkMode, eink);
+  }
+
+  static boolean wasHighContrastOffered(Context context) {
+    return getBoolean(context, booleanHighContrastOffered, false);
+  }
+
+  static void markHighContrastOffered(Context context) {
+    setBoolean(context, booleanHighContrastOffered, true);
   }
 
   static public void setNoZoom(Context ctx, boolean no_zoom) {

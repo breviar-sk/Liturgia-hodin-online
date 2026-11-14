@@ -123,6 +123,7 @@ public class DisplaySettingsTest {
     BreviarApp.setUrlOptions(context, options);
     BreviarApp.setFontsCss(context, "saved CSS");
     ReadingNavigation.get(context); // Complete the existing one-time navigation migration first.
+    BreviarApp.markHighContrastOffered(context); // This test covers font settings after onboarding.
     List<String> changes = new ArrayList<>();
     SharedPreferences prefs = context.getSharedPreferences(Util.prefname, 0);
     SharedPreferences.OnSharedPreferenceChangeListener listener = (p, key) -> changes.add(key);

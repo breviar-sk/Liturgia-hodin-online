@@ -45,6 +45,7 @@ final class NativeSettings {
       case "number": return bound && entry.defaultValue != null && entry.resetValue != null
           && entry.min != null && entry.max != null && entry.min <= entry.max;
       case "color": return bound && entry.defaultValue != null && entry.resetValue != null;
+      case "preset": return !entry.assignments.isEmpty();
       default: return false;
     }
   }

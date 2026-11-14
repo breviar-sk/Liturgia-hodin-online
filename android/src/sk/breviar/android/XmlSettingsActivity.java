@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.function.Consumer;
 
 /** Menu v1 renderer. C++ owns the catalog; NativeSettings supplies Android behavior. */
 public class XmlSettingsActivity extends SettingsActivity {
@@ -74,6 +75,10 @@ public class XmlSettingsActivity extends SettingsActivity {
     updateMenu();
     loadSettings();
   }
+
+  @Override protected void onColorPresetsApplied() { refresh(); }
+
+  @Override protected void showAppearanceDialogs() { HighContrastPrompt.showIfNeeded(this); }
 
   UrlOptions options() { return new UrlOptions(BreviarApp.getUrlOptions(this)); }
 
@@ -192,6 +197,12 @@ public class XmlSettingsActivity extends SettingsActivity {
     for (SettingsXml.MenuEntry entry : parent.children) {
       if (!visible(entry, settingsPage)) continue;
       if (entry.isGroup) {
+        if (entry.control.equals("submenu")) {
+          if (section == null) section = heading.isEmpty() ? menu
+              : menu.addSubMenu(Menu.NONE, View.generateViewId(), Menu.NONE, heading);
+          addSubmenu(section, entry);
+          continue;
+        }
         String title = entry.label.isEmpty() ? heading
             : heading.isEmpty() ? entry.label : heading + " / " + entry.label;
         renderChildren(menu, entry, settingsPage, title);
@@ -255,14 +266,17 @@ public class XmlSettingsActivity extends SettingsActivity {
         break;
       case "color":
         row.setActionView(R.layout.widget_color);
-        handleColor(row.getItemId(), new String[]{"ffffcc", "ffddbb", "ddeeff", "111111", "222222", "333333"}, new ColorOption() {
-          public String get() {
-            String value = entry.value(options().params);
-            return value.matches("[a-fA-F0-9]{6}") ? value : "";
-          }
-          public void set(String value) { write(entry, value); }
+        handleColor(row.getItemId(), new String[]{"ffffff", "ffffcc", "ffddbb", "ddeeff", "ff0000", "ffff00", "333333", "000000"}, new ColorOption() {
+          public String get() { return UrlOptions.normalizeColor(entry.value(options().params)); }
+          public void set(String value) { write(entry, UrlOptions.normalizeColor(value)); }
           public void reset() { write(entry, entry.resetValue); }
         });
+        break;
+      case "preset":
+        useChoiceColors();
+        row.setIcon(R.drawable.choice_check).setCheckable(true)
+            .setChecked(entry.matchesPreset(options().params));
+        handleClick(row.getItemId(), () -> saveOptions(options -> entry.applyPreset(options.params)));
         break;
     }
     if (row.getActionView() != null) {
@@ -272,10 +286,16 @@ public class XmlSettingsActivity extends SettingsActivity {
   }
 
   private void write(SettingsXml.MenuEntry entry, String value) {
+    saveOptions(options -> {
+      nativeSettings.beforeSave(entry);
+      entry.setValue(options.params, value);
+    });
+  }
+
+  private void saveOptions(Consumer<UrlOptions> update) {
     editStarted();
     UrlOptions options = options();
-    nativeSettings.beforeSave(entry);
-    entry.setValue(options.params, value);
+    update.accept(options);
     BreviarApp.setUrlOptions(getApplicationContext(), options.build(true));
     refresh();
   }
