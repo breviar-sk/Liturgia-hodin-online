@@ -6,11 +6,28 @@ or sharing its URL. The public URL is `https://breviar.sk/cgi-bin/l.cgi?...`.
 explicit dates, including when entered through a relative URL. Christmas seasonal
 requests (`qt=plo`) carry their reference year in `r=`. The backend supplies the
 resolved query to Android; sharing does not calculate dates. Prayer selection,
-language, calendar, Commons and resolved content options travel in the query.
-Local fonts, palettes, night mode, navigation and device preferences do not.
-The content-bit masks in `PrayerLink` correspond to `source/liturgia.h`; update
-them when adding content options to words 0 or 2. Preserve existing parameter
-meanings from now on so printed QR codes remain useful.
+language, calendar, Commons and all resolved reader options travel in the query,
+including font family, size, weight, palettes, day/night mode, margins and line
+spacing. Device preferences and pinch zoom remain local. Generated links do not
+depend on the sender's import preference.
+
+New sharing links include `sh=1`, the sharing format version. This is metadata,
+not a prayer or device setting. Both Android and web sharing always emit the
+current version; Android still accepts regular CGI links without the marker.
+Version-dependent migration and filtering of non-sharing links are not implemented.
+
+**Settings → Device → Apply appearance from shared prayers** controls what a
+recipient accepts. It defaults to off, importing only prayer/content settings.
+With it enabled, the app also imports appearance. Settings absent from a link
+retain their current values. Filtering happens before value validation and
+before building the reader request; ignored visual values never reach the
+renderer. The content-bit masks in `PrayerLink` correspond to
+`source/liturgia.h`; update them when adding content options to words 0 or 2.
+
+Font files and sender-specific font CSS are not shared. Font families are
+resolved against the recipient's local catalog on the existing font worker.
+An unavailable font leaves the current font and CSS unchanged. Pending lookups
+survive recreation; canceled or superseded lookups cannot replace a newer page.
 
 Incoming links are rendered offline by the existing backend. Only HTTP(S) links
 on `breviar.sk`, with the exact path `/cgi-bin/l.cgi`, are registered. The app
@@ -23,7 +40,32 @@ termination. **Restore my settings** restores that backup and returns to the old
 prayer (or home after a cold start). **Keep these settings** makes the active
 settings permanent. Both actions appear only during a temporary session. Back
 retains its usual page-navigation behavior. Device changes, such as choosing a
-new font or enabling e-ink, survive restoration.
+new font or enabling e-ink, survive restoration in content-only sessions. If
+appearance was imported during the session, Restore also restores the original
+reader appearance and font CSS. The import scope is saved independently of the
+Device toggle, so changing that toggle affects future links, not restoration.
+Native device preferences and pinch zoom are never restored from a shared link.
+
+## Web sharing
+
+The CGI side menu offers **Share prayer** for reader pages and the Ordinarium.
+The backend constructs the public link from the resolved selection and settings,
+including settings submitted through POST. Generated query parameters start with
+`qt`, `d`, `m`, `r`, `j`, omitting absent fields; the remaining parameters follow
+in alphabetical order. The same ordering is used by Android sharing.
+
+The menu requests the existing CGI selection with `share=1`; this flag is never
+included in the shared link. The server generates an SVG using the vendored MIT
+licensed Project Nayuki QR Code generator v1.8.0. The browser loads just the sharing
+panel from that response, preserving the current page and scroll position. Without
+JavaScript, the link opens the complete page with its sharing panel visible.
+QR encoding runs only for sharing requests, not for ordinary reader requests.
+
+Publish `prayer-sharing.js` and the updated `breviar.css` along with the CGI binary.
+No image service, PNG library or additional server process is needed. The SVG uses
+black modules on a white background with a four-module quiet zone in every theme.
+The web-only C++ sources are listed in the Makefile, `urob` and Visual Studio project;
+native Android/iOS builds keep their existing sharing implementations.
 
 ## Android: publish the Digital Asset Links file
 

@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
@@ -31,7 +30,6 @@ import org.robolectric.annotation.Config;
 import org.robolectric.annotation.Implementation;
 import org.robolectric.annotation.Implements;
 import org.robolectric.annotation.LooperMode;
-import org.robolectric.util.ReflectionHelpers;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = {24, 35}, shadows = {DisplaySettingsTest.FontLoader.class, XmlSettingsActivityTest.SettingsServer.class})
@@ -67,8 +65,7 @@ public class DisplaySettingsTest {
   }
 
   private static void awaitFonts() throws Exception {
-    ExecutorService worker = ReflectionHelpers.getStaticField(FontPicker.class, "fontWorker");
-    worker.submit(() -> {}).get(10, TimeUnit.SECONDS);
+    Fonts.worker.submit(() -> {}).get(10, TimeUnit.SECONDS);
     Shadows.shadowOf(Looper.getMainLooper()).idle();
   }
 

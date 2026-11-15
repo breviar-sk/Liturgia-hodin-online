@@ -591,6 +591,72 @@ p.bibleref {
 	color: var(--prayer-rubric, #ff0000);
 }
 
+/* Navigation between Ordinary documents follows the small prayer headings. */
+.ordinarium-navigation {
+	font-size: 80%;
+	font-weight: normal;
+}
+
+/* Native-settings appearance for web sharing, independent of prayer palettes. */
+.prayer-share-panel {
+	position: fixed;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 10000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.6);
+	font: normal 16px/1.4 sans-serif;
+	color: #ffffff;
+}
+.prayer-share-panel[hidden], .prayer-share-panel [hidden] { display: none !important; }
+.prayer-share-window {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 720px;
+	max-height: 100%;
+	background: #303030;
+}
+.prayer-share-toolbar {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	background: #5d4037;
+	font-size: 20px;
+}
+.prayer-share-toolbar .prayer-share-close {
+	color: #ffffff;
+	border: 0;
+	padding: 8px 20px;
+	font-size: 32px;
+}
+.prayer-share-body {
+	min-height: 0;
+	overflow-y: auto;
+	padding: 16px;
+}
+.prayer-share-body p { color: #ffffff; margin: 0 0 16px; }
+.prayer-share-body svg {
+	display: block;
+	width: 100%;
+	max-width: 600px;
+	height: auto;
+	margin: 0 auto 16px;
+	background: #ffffff;
+}
+.prayer-share-copy {
+	display: block;
+	width: 100%;
+	min-height: 48px;
+	margin-bottom: 16px;
+	border: 1px solid #ffffff;
+	background: #424242;
+	color: #ffffff;
+	font: inherit;
+	cursor: pointer;
+}
+
 .section-title { 
 	color: #ff0000;
 	color: var(--prayer-rubric, #ff0000);

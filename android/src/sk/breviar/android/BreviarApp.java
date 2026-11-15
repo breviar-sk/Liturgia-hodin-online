@@ -160,6 +160,7 @@ public class BreviarApp extends Application {
   static final String booleanNoZoom = "no_zoom";
   static final String booleanEinkMode = "eink_mode";
   static final String booleanHighContrastOffered = "high_contrast_offered";
+  static final String booleanSharedAppearance = "shared_appearance";
   static final String stringUrlOptions = "params";
   static final String stringFontsCss = "fonts_css";
 
@@ -202,6 +203,14 @@ public class BreviarApp extends Application {
 
   static public boolean getEinkMode(Context ctx) {
     return getBoolean(ctx, booleanEinkMode, false);
+  }
+
+  static boolean getSharedAppearance(Context context) {
+    return getBoolean(context, booleanSharedAppearance, false);
+  }
+
+  static void setSharedAppearance(Context context, boolean value) {
+    setBoolean(context, booleanSharedAppearance, value);
   }
 
   static public boolean hasAppearanceChoice(Context ctx) {

@@ -28,6 +28,7 @@ final class NativeSettings {
         case "device.volume-paging":
         case "device.keep-awake":
         case "device.lock-zoom":
+        case "device.shared-appearance":
         case "speech.psalm-pauses": return entry.control.equals("toggle");
         case "device.do-not-disturb": return Build.VERSION.SDK_INT >= 24 && entry.control.equals("toggle");
         case "appearance.font": return entry.control.equals("font");
@@ -116,6 +117,10 @@ final class NativeSettings {
       case "device.lock-zoom": return new SettingsActivity.BooleanOption() {
         public boolean get() { return BreviarApp.getNoZoom(activity); }
         public void set(boolean value) { BreviarApp.setNoZoom(activity, value); }
+      };
+      case "device.shared-appearance": return new SettingsActivity.BooleanOption() {
+        public boolean get() { return BreviarApp.getSharedAppearance(activity); }
+        public void set(boolean value) { BreviarApp.setSharedAppearance(activity, value); }
       };
       case "speech.psalm-pauses": return new SettingsActivity.BooleanOption() {
         public boolean get() { return BreviarApp.getTtsUsePauseInPsalms(activity); }

@@ -120,6 +120,7 @@ extern const char* menu_text_appearance_margin[POCET_JAZYKOV + 1];
 extern const char* menu_text_appearance_other[POCET_JAZYKOV + 1];
 extern const char* menu_text_buttons[POCET_JAZYKOV + 1];
 extern const char* menu_text_device_eink[POCET_JAZYKOV + 1];
+extern const char* menu_text_shared_appearance[POCET_JAZYKOV + 1];
 extern const char* menu_text_colors_day[POCET_JAZYKOV + 1];
 extern const char* menu_text_colors_night[POCET_JAZYKOV + 1];
 extern const char* menu_text_color_text[POCET_JAZYKOV + 1];

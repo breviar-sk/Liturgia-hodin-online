@@ -13,12 +13,11 @@
   <group android:id="@+id/group_sharing">
     <item android:id="@+id/share_prayer"
           android:title="@string/share_prayer" android:icon="@android:drawable/ic_menu_share" />
-  </group>
-
-  <group android:id="@+id/group_shared_settings" android:visible="false">
     <item android:id="@+id/restore_shared_settings"
+          android:visible="false"
           android:title="@string/restore_shared_settings" android:icon="@android:drawable/ic_menu_revert" />
     <item android:id="@+id/keep_shared_settings"
+          android:visible="false"
           android:title="@string/keep_shared_settings" android:icon="@android:drawable/ic_menu_save" />
   </group>
 

@@ -39,7 +39,108 @@ def body(html):
     return re.search(r'<body[^>]*>(.*)</body>', html, re.S).group(1)
 
 
+def plain_text(html):
+    return ' '.join(unescape(re.sub('<[^>]*>', ' ', html)).replace('_', ' ').split())
+
+
+class PrayerBlocks(HTMLParser):
+    """Read psalms/canticles and hymns independently of their HTML layout."""
+    def __init__(self, source):
+        super().__init__()
+        self.blocks = []
+        self.depth = 0
+        self.capture = 0
+        self.words = []
+        source = re.sub(r'<!--(.*?)-->', lambda m: m[1] if '{SLAVAOTCU_BEGIN}' in m[1]
+                        or '{OTCENAS_BEGIN}' in m[1] else '', source, flags=re.S)
+        source = re.sub(r'\{v\}.*?\{/v\}', '', source, flags=re.S)
+        self.feed(re.sub(r'\{[^}]*\}', '', source))
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'div':
+            self.depth += 1
+            if not self.capture and dict(attrs).get('class') in ('psalm', 'hymn'):
+                self.capture = self.depth
+                self.words = []
+
+    def handle_data(self, data):
+        if self.capture:
+            self.words.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'div':
+            if self.capture == self.depth:
+                words = re.findall(r'[^\W\d_]+', ' '.join(self.words).replace('_', ' ').casefold())
+                self.blocks.append(words)
+                self.capture = 0
+            self.depth -= 1
+
+
 class StaticTextTest(unittest.TestCase):
+    def test_dominican_static_prayer_texts_follow_the_scan_based_includes(self):
+        for name, old in (('invitat', 'inv'), ('rchvaly', 'rch'), ('posvcit', 'pc'),
+                          ('vespery', 'vesp'), ('komplet', 'komp'), ('km', 'km')):
+            with self.subTest(office=name):
+                expected = PrayerBlocks((ROOT / f'include_czop/ord_{name}.htm').read_text()).blocks
+                static = (ROOT / f'czop/docs/ord-{old}.htm').read_text()
+                actual = PrayerBlocks(static).blocks
+                self.assertTrue(expected)
+                self.assertEqual(expected, actual)
+                self.assertNotRegex(static, r'\{/?(?:link|r|v)[:}]')
+                for url in Links(static).urls:
+                    if url.startswith('#'):
+                        self.assertRegex(static, r'(?i)(?:name|id)=["\']' + re.escape(url[1:]) + r'["\']')
+        # Preserve the existing weekday alternatives in the static Compline.
+        links = Links((ROOT / 'czop/docs/ord-komp.htm').read_text()).urls
+        self.assertTrue(all(f'ord-k{day}.htm' in links for day in range(7)))
+
+    def test_dominican_combined_text_follows_the_scans_and_keeps_unscanned_extras(self):
+        expected = []
+        for office in ('invitat', 'posvcit', 'rchvaly', 'mcd', 'vespery', 'komplet'):
+            expected.extend(PrayerBlocks((ROOT / f'include_czop/ord_{office}.htm').read_text()).blocks)
+        combined = (ROOT / 'czop/docs/full_ordinar.htm').read_text()
+        self.assertEqual(expected, PrayerBlocks(combined).blocks)
+        text = plain_text(combined)
+        self.assertIn('K nám, Duchu Svatý, nyní spěj', text)
+        self.assertIn('Ty, Kriste, světlo, jasný dni', text)
+        self.assertIn('Hymnus určený pro nešpory se může nahradit', text)
+
+    def test_dominican_missing_seasonal_cases_are_available_in_both_variants(self):
+        for prayer, old in (('mi', 'inv'), ('mpc', 'pc'), ('mrch', 'rch'), ('mv', 'vesp')):
+            with self.subTest(language='c2', prayer=prayer):
+                for html in (body(render(j='c2', p=prayer)), (ROOT / f'czop/docs/ord-{old}.htm').read_text()):
+                    text = plain_text(html).casefold()
+                    self.assertIn('v době adventní a vánoční', text)
+                    self.assertIn('v liturgickém mezidobí', text)
+                    self.assertIn('velikonoční', text)
+        for prayer, passages in (
+                ('mna', ('V liturgickém mezidobí je hymnus', 'liturgického mezidobí je krátké čtení')),
+                ('mk', ('v oktávu Narození Páně', 'na Bílou sobotu', 'Toto je den, který učinil Pán'))):
+            for html in (body(render(j='c2', p=prayer)), (ROOT / 'czop/docs/full_ordinar.htm').read_text()):
+                text = plain_text(html).casefold()
+                for phrase in passages:
+                    self.assertIn(phrase.casefold(), text)
+
+    def test_czech_and_latin_missing_seasonal_cases_are_available_in_both_variants(self):
+        for language, prayer, path, passages in (
+                ('cz', 'mrch', 'cz/docs/ord-rch.htm', ('Po celý velikonoční oktáv', 'Bohu díky, aleluja, aleluja')),
+                ('cz', 'mv', 'cz/docs/ord-vesp.htm', ('Velikonoční triduum', 've Svatém týdnu')),
+                ('la', 'mi', 'la/docs/ord-inv.htm', ('Tempore per annum', 'Tempore Adventus')),
+                ('la', 'mrch', 'la/docs/ord-rch.htm', ('per annum hymnus', 'hebdomadæ Sanctæ', 'per annum, preces')),
+                ('la', 'mv', 'la/docs/ord-vesp.htm', ('per annum hymnus', 'hebdomadæ Sanctæ', 'per annum, preces')),
+                ('la', 'mpc', 'la/docs/ord-pc.htm', ('In dominicis et feriis per annum',))):
+            with self.subTest(language=language, prayer=prayer):
+                for html in (body(render(j=language, p=prayer)), (ROOT / path).read_text()):
+                    text = plain_text(html)
+                    for phrase in passages:
+                        self.assertIn(phrase, text)
+        # Supplementing legacy HTML with unclosed paragraphs must not copy the
+        # surrounding prayers or section headings along with a single rubric.
+        for office in ('rch', 'vesp'):
+            self.assertEqual(1, plain_text((ROOT / f'la/docs/ord-{office}.htm').read_text()).count('LECTIO BREVIS'))
+        self.assertEqual(2, plain_text((ROOT / 'la/docs/full_ordinar.htm').read_text()).count('LECTIO BREVIS'))
+        self.assertEqual(2, plain_text((ROOT / 'cz/docs/full_ordinar.htm').read_text()).count('Otče náš'))
+
     def test_readings_and_compline_keep_the_opening_doxology(self):
         for language, first_words in (('sk', 'Sláva Otcu'), ('la', 'Glória Patri'),
                                       ('is', 'Dýrð sé Föðurnum')):

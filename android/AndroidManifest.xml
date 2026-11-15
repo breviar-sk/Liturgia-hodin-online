@@ -109,6 +109,7 @@
                       android:value="sk.breviar.android.MainSettings" />
         </activity>
 
+        <activity android:name="PrayerShareActivity" android:exported="false" />
         <activity android:name="DialogActivity"
                   android:configChanges="orientation|screenSize"
                   android:launchMode="singleTop">

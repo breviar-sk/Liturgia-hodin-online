@@ -20943,6 +20943,23 @@ const char* menu_text_alt_background[POCET_JAZYKOV + 1] =
 const char* menu_text_language_use_for_interface[POCET_JAZYKOV + 1] =
 { "Použiť tento jazyk aj v ovládacích prvkoch", "Použít tento jazyk také v ovládacích prvcích", "Override system-wide language settings", "Linguam hanc in menu uti", "", "Použít tento jazyk také v ovládacích prvcích", "Rendszerszintű nyelvi beállítások felülírása", "Override system-wide language settings", "Override system-wide language settings", "Notið tungumálið líka í stillingum", "Override system-wide language settings", "Override system-wide language settings", /* STRING_1_FOR_NEW_LANGUAGE */ };
 
+const char* menu_text_shared_appearance[POCET_JAZYKOV + 1] =
+{
+	"Použiť aj vzhľad zo zdieľaných modlitieb",
+	"Použít také vzhled sdílených modliteb",
+	"Apply appearance from shared prayers",
+	"Speciem quoque orationum communicatarum adhibere",
+	"" /* undefined language */,
+	"Použít také vzhled sdílených modliteb",
+	"A megosztott imák megjelenésének átvétele",
+	"Применять оформление полученных молитв",
+	"Ужываць афармленне атрыманых малітваў",
+	"Nota einnig útlit deildra bæna",
+	"Aplicar también la apariencia de las oraciones compartidas",
+	"Paylaşılan duaların görünüşünü də tətbiq et",
+	/* STRING_1_FOR_NEW_LANGUAGE */
+};
+
 const char* menu_text_device_eink[POCET_JAZYKOV + 1] =
 { "Režim E-ink (bez animácií)", "Režim E-ink (bez animací)", "E-ink mode (no animations)", "Modus E-ink (sine animationibus)", "", "Režim E-ink (bez animací)", "E-ink mód (animációk nélkül)", "E-ink mode (no animations)", "E-ink mode (no animations)", "E-ink hamur (án hreyfinga)", "E-ink mode (no animations)", "E-ink mode (no animations)", /* STRING_1_FOR_NEW_LANGUAGE */ };
 

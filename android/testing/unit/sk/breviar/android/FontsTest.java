@@ -58,6 +58,18 @@ public class FontsTest {
     return worker.submit(() -> Fonts.getChoices(context)).get(10, TimeUnit.SECONDS);
   }
 
+  @Test public void sharedFontLookupUsesTheExistingCatalogAndLocalCss() throws Exception {
+    File root = temporary.newFolder();
+    File font = new File(root, "Custom-Regular.ttf");
+    Files.write(font.toPath(), new byte[]{1});
+    Context context = storage(root);
+    Fonts.Choice found = worker.submit(() -> Fonts.findChoice(context, "custom")).get(10, TimeUnit.SECONDS);
+    assertNotNull(found);
+    assertEquals("Custom", found.family);
+    assertTrue(found.css.contains("/file" + font.getAbsolutePath()));
+    assertNull(worker.submit(() -> Fonts.findChoice(context, "Missing")).get(10, TimeUnit.SECONDS));
+  }
+
   @Test public void previewsAreCachedUntilCustomFontsAreAddedChangedOrRemoved() throws Exception {
     File root = temporary.newFolder();
     Context context = storage(root);

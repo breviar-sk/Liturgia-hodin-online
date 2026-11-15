@@ -81,6 +81,7 @@ Examples:
 #include "prayer-markup.h"
 #include "static-text.h"
 #include "html-markup.h"
+#include "prayer-sharing.h"
 
 #ifdef _WIN32
 // Windows už má _strdup, netreba robiť nič
@@ -16012,6 +16013,9 @@ short int getForm(void) {
 	char errmsg[SMALL] = STR_EMPTY;
 
 	Log("getForm(): begin\n");
+#ifdef BREVIAR_WEB_SHARING
+	if (const char* share = getenv("WWW_share")) sharing::requested = equals(share, "1");
+#endif
 	if (query_type == PRM_LIT_OBD && pom_ROK[0] == '\0') {
 		if (const char* year = getenv(ADD_WWW_PREFIX_(STR_ROK))) mystrcpy(pom_ROK, year, SMALL);
 	}
@@ -16726,6 +16730,11 @@ short int parseQueryString(void) {
 	}
 	pocet = i; // od 0 po i - 1
 	LogParams("pocet == %d\n", pocet);
+
+#ifdef BREVIAR_WEB_SHARING
+	for (i = 0; i < pocet; ++i)
+		if (equals(param[i].name, "share")) sharing::requested = equals(param[i].val, "1");
+#endif
 
 	// Request-local presentation only: never append dl to saved prayer options.
 	for (i = pocet; i > 0; ) {
@@ -17929,6 +17938,10 @@ int breviar_main(int argc, const char** argv) {
 	liturgical_reference_query.clear();
 	resolved_selection.clear();
 	resolved_query.clear();
+#ifdef BREVIAR_WEB_SHARING
+	sharing::selection.clear();
+	sharing::requested = false;
+#endif
 	liturgical_request_day = 0;
 
 	// for _breviar_env, must be included within if-def
@@ -18725,6 +18738,37 @@ int breviar_main(int argc, const char** argv) {
 					+ "&" STR_LIT_ROK "=" + pom_LIT_ROK + "&" STR_MODLITBA "=" + str_modlitby[local_modlitba];
 			}
 
+#ifdef BREVIAR_WEB_SHARING
+			sharing::selection = resolved_selection;
+			if (sharing::selection.empty()) {
+				switch (query_type) {
+				case PRM_DNES:
+					sharing::selection = "qt=pdnes";
+					break;
+				case PRM_DATUM:
+					sharing::selection = "qt=pdt&d=" + std::to_string(local_den) + "&m="
+						+ std::to_string(local_mesiac + 1) + "&r=" + std::to_string(local_rok);
+					break;
+				case PRM_CEZ_ROK:
+					sharing::selection = "qt=pcr&dvt=" + std::to_string(atodenvt(pom_DEN_V_TYZDNI))
+						+ "&t=" + std::to_string(atoi(pom_TYZDEN)) + "&p=" + str_modlitby[local_modlitba];
+					break;
+				case PRM_SVIATOK:
+					sharing::selection = std::string("qt=psv&sv=") + pom_SVIATOK;
+					break;
+				case PRM_STATIC_TEXT: {
+					short office = prayer::ordinariumPrayer(local_modlitba);
+					// All three daytime selectors display the same Ordinary document.
+					if (office >= MODL_PREDPOLUDNIM && office <= MODL_POPOLUDNI) office = MODL_NAPOLUDNIE;
+					if (local_rok == STATIC_TEXT_ORDINARIUM)
+						sharing::selection = std::string("qt=pst&st=2&p=")
+							+ str_modlitby[office];
+					break;
+				}
+				}
+			}
+#endif
+
 			// nastavenie titulku pre hlavičku
 			if (query_type != PRM_XML) {
 				init_global_string_as_html_title(local_den, local_mesiac, local_rok, local_modlitba);
@@ -18845,6 +18889,10 @@ int breviar_main(int argc, const char** argv) {
 
 			else {
 				export_resolved_request();
+#ifdef BREVIAR_WEB_SHARING
+				if (!sharing::selection.empty()) sharing::selection += liturgical_reference_query;
+				sharing::panel();
+#endif
 				patka(); // doplnené (ešte pred dealokovanie premenných)
 			}
 

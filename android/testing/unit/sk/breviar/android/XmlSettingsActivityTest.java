@@ -83,7 +83,7 @@ public class XmlSettingsActivityTest {
         + "<MenuItem Key='general.online-mode' Label='online' Control='choice' Handler='general.online-mode'/></MenuGroup>";
     if (full) {
       menu += "<MenuGroup Key='device' Label='zariadenie'>";
-      for (String handler : new String[]{"eink", "volume-paging", "keep-awake", "do-not-disturb", "lock-zoom"}) {
+      for (String handler : new String[]{"eink", "volume-paging", "keep-awake", "do-not-disturb", "lock-zoom", "shared-appearance"}) {
         menu += "<MenuItem Key='device." + handler + "' Label='" + handler + "' Control='toggle' Handler='device." + handler + "'/>";
       }
       menu += "<MenuItem Key='device.reading-navigation' Label='Navigácia pri čítaní' Control='choice' Handler='device.reading-navigation'>"
@@ -540,7 +540,7 @@ public class XmlSettingsActivityTest {
     try (ActivityController<XmlSettingsActivity> controller = Robolectric.buildActivity(XmlSettingsActivity.class,
         XmlSettingsActivity.entryIntent(RuntimeEnvironment.getApplication(), "custom")).create()) {
       show(controller.get(), SettingsXml.parse(xml));
-      assertEquals(6, controller.get().navigationView.getMenu().size());
+      assertEquals(7, controller.get().navigationView.getMenu().size());
       assertNotNull(controller.get().menuItem("device.eink"));
       assertNotNull(controller.get().menuItem("device.reading-navigation"));
     }

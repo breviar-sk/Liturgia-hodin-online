@@ -3,8 +3,6 @@ package sk.breviar.android;
 import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import android.content.Context;
@@ -29,8 +27,6 @@ final class FontPicker {
   private static final ColorStateList PREVIEW_TEXT = new ColorStateList(
       new int[][]{new int[]{-android.R.attr.state_enabled}, new int[]{}},
       new int[]{0x4dffffff, Color.WHITE});
-  private static final ExecutorService fontWorker = Executors.newSingleThreadExecutor(
-      task -> new Thread(task, "Breviar-fonts"));
   private final SettingsActivity activity;
   private final Runnable changed;
   private Future<?> fontLoad;
@@ -59,7 +55,7 @@ final class FontPicker {
     WeakReference<FontPicker> owner = new WeakReference<>(this);
     Handler ui = new Handler(Looper.getMainLooper());
     LoadTiming timing = new LoadTiming("Display fonts");
-    fontLoad = fontWorker.submit(() -> {
+    fontLoad = Fonts.worker.submit(() -> {
       timing.mark("worker started");
       List<Fonts.Choice> choices;
       try {

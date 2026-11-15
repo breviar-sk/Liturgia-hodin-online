@@ -404,6 +404,7 @@ Element menuXml() {
 			item("device.keep-awake", menuText(menu_text_do_not_dim_screen), "toggle", {{"Handler", "device.keep-awake"}}),
 			item("device.do-not-disturb", menuText(menu_text_do_not_disturb), "toggle", {{"Handler", "device.do-not-disturb"}}),
 			item("device.lock-zoom", menuText(menu_text_lock_font_size), "toggle", {{"Handler", "device.lock-zoom"}}),
+			item("device.shared-appearance", menuText(menu_text_shared_appearance), "toggle", {{"Handler", "device.shared-appearance"}}),
 		}),
 		group("appearance", menuText(text_menu_group_jazyk[MENU_2_LOOK]), {
 			group("appearance.font-margins", menuText(menu_text_font_and_margins),{

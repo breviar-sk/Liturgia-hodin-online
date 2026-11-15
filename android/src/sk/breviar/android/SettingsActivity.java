@@ -302,16 +302,21 @@ public class SettingsActivity extends AppearanceActivity
       final EditText input = (EditText)(d.findViewById(R.id.color_picker_edittext));
       input.setText(info.color_option.get());
 
-      LinearLayout root = (LinearLayout)(d.findViewById(R.id.color_picker_root));
+      LinearLayout presets = (LinearLayout)(d.findViewById(R.id.color_picker_presets));
+      LinearLayout row = null;
       for (int i = 0; i < info.predefined_colors.length; ++i) {
+        if (i % 2 == 0) {
+          row = new LinearLayout(ctx);
+          row.setOrientation(LinearLayout.HORIZONTAL);
+          presets.addView(row, new LinearLayout.LayoutParams(
+              ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        }
         final String textc = info.predefined_colors[i];
         int c = Color.parseColor("#" + textc);
         Button v = new Button(ctx);
         v.setText("#" + textc);
         v.setTextColor(androidx.core.graphics.ColorUtils.calculateLuminance(c) > 0.5
             ? Color.BLACK : Color.WHITE);
-        v.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        v.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         v.setBackgroundColor(c);
         if (BreviarApp.getEinkMode(ctx)) {
           v.setText("#" + textc);
@@ -324,8 +329,11 @@ public class SettingsActivity extends AppearanceActivity
             }
         });
 
-        root.addView(v);
+        row.addView(v, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
         Log.v("breviar", "Added predefined color " + info.predefined_colors[i]);
+      }
+      if (row != null && info.predefined_colors.length % 2 != 0) {
+        row.addView(new View(ctx), new LinearLayout.LayoutParams(0, 0, 1));
       }
       return d;
     }

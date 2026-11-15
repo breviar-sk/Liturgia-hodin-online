@@ -16,8 +16,29 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Fonts {
+  static final ExecutorService worker = Executors.newSingleThreadExecutor(
+      task -> new Thread(task, "Breviar-fonts"));
+
+  static boolean genericFamily(String family) {
+    switch (family) {
+      case "": case "serif": case "sans-serif": case "monospace": case "cursive":
+      case "fantasy": case "system-ui": return true;
+      default: return false;
+    }
+  }
+
+  /** Worker-thread only; font discovery and preview loading must not block UI input. */
+  static Choice findChoice(Context context, String family) {
+    for (Choice choice : getChoices(context)) {
+      if (choice.family.equalsIgnoreCase(family)) return choice;
+    }
+    return null;
+  }
+
   public static class FontMap {
     public static class Variant {
       public Variant(String filename_, int weight_, int slant_) {

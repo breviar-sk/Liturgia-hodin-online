@@ -24,6 +24,7 @@
 #include "static-text.h"
 #include "html-markup.h"
 #include "settings-text.h"
+#include "prayer-sharing.h"
 
 #include "breviar.h"
 #include "liturgia.h"
@@ -433,6 +434,9 @@ void _hlavicka_sidemenu_helper(FILE* expt, short int location_right = NIE) {
 
 	// Dnes (Today's prayers)
 	_export_link_menu_dnes(_global_jazyk);
+#ifdef BREVIAR_WEB_SHARING
+	sharing::menu(expt);
+#endif
 
 	// Téma light/dark (Theme day/night)
 #if defined(BEHAVIOUR_WEB)

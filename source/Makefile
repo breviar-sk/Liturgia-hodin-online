@@ -26,7 +26,9 @@ SRCS = \
 	static-text.cpp \
 	bible-reference.cpp \
 	bible-links.cpp \
-	appearance-colors.cpp
+	appearance-colors.cpp \
+	prayer-sharing.cpp \
+	third_party/qrcodegen/qrcodegen.cpp
 
 OBJS = $(subst cpp,o,$(SRCS))
 
@@ -48,11 +50,11 @@ breviar-no-main.o: breviar.o
 
 print_codes: print_codes.o breviar-no-main.o citania.o dbzaltar.o kalendar.o liturgia.o \
              mygetopt.o mylog.o myhpage.o myexpt.o cgiutils.o myconf.o utf8-utils.o \
-             mydefs.o mystring.o xml-settings.o template-reader.o prayer-renderer.o prayer-markup.o html-markup.o static-text.o bible-reference.o bible-links.o appearance-colors.o
+             mydefs.o mystring.o xml-settings.o template-reader.o prayer-renderer.o prayer-markup.o html-markup.o static-text.o bible-reference.o bible-links.o appearance-colors.o prayer-sharing.o third_party/qrcodegen/qrcodegen.o
 	g++ -o $@ $^
 
 clean:
-	rm -f $(TARGET) *.o .depend
+	rm -f $(TARGET) *.o $(OBJS) .depend
 
 TEST_DIR ?= .test-build
 
@@ -60,7 +62,7 @@ $(TEST_DIR)/string-utils-test: tests/string-utils-test.cpp mystring.cpp mystring
 	mkdir -p $(TEST_DIR)
 	$(CXX) $(CXXFLAGS) -I. tests/string-utils-test.cpp mystring.cpp utf8-utils.cpp -o $@ $(LDFLAGS)
 
-test: $(TEST_DIR)/string-utils-test test-settings test-common-celebration test-rendering test-template-reader test-bible-reference test-colors test-request-dates
+test: $(TEST_DIR)/string-utils-test test-settings test-common-celebration test-rendering test-template-reader test-bible-reference test-colors test-request-dates test-sharing
 	$(TEST_DIR)/string-utils-test
 
 .PHONY: clean depend test test-settings test-common-celebration
@@ -128,6 +130,8 @@ breviar.o static-text.o prayer-markup.o: static-text.h
 myhpage.o: static-text.h html-markup.h settings-text.h
 breviar.o static-text.o prayer-renderer.o: prayer-renderer.h
 breviar.o prayer-renderer.o prayer-markup.o: template-reader.h
+breviar.o myhpage.o prayer-sharing.o: prayer-sharing.h
+prayer-sharing.o third_party/qrcodegen/qrcodegen.o: third_party/qrcodegen/qrcodegen.hpp
 
 breviar.o liturgia.o myhpage.o xml-settings.o appearance-colors.o: appearance-colors.h
 
@@ -139,3 +143,16 @@ $(TEST_DIR)/appearance-colors-test: tests/appearance-colors-test.cpp appearance-
 test-colors: $(TARGET) $(TEST_DIR)/appearance-colors-test
 	$(TEST_DIR)/appearance-colors-test
 	python3 tests/appearance-colors-test.py $(abspath $(TARGET))
+
+$(TEST_DIR)/prayer-sharing-test: tests/prayer-sharing-test.cpp prayer-sharing.h Makefile $(SETTINGS_TEST_OBJS) myexpt.o
+	mkdir -p $(TEST_DIR)
+	$(CXX) $(CXXFLAGS) -I. $< $(SETTINGS_TEST_OBJS) myexpt.o -o $@ $(LDFLAGS)
+
+.PHONY: test-sharing
+test-sharing: $(TARGET) $(TEST_DIR)/prayer-sharing-test
+	$(TEST_DIR)/prayer-sharing-test
+	python3 tests/prayer-sharing-test.py $(abspath $(TARGET))
+
+.PHONY: test-sharing-browser
+test-sharing-browser: $(TARGET)
+	python3 tests/prayer-sharing-browser-test.py $(abspath $(TARGET))

@@ -37,7 +37,13 @@ final class EinkUi {
       text.setHintTextColor(Color.BLACK);
       text.setLinkTextColor(Color.BLACK);
     }
-    if (view instanceof ImageView) ((ImageView)view).setColorFilter(Color.BLACK);
+    if (view instanceof ImageView) {
+      ImageView image = (ImageView)view;
+      // Icons use the native foreground; content images such as QR codes must
+      // retain their pixels, including their white background and quiet zone.
+      if ("preserveImageColors".equals(image.getTag())) image.clearColorFilter();
+      else image.setColorFilter(Color.BLACK);
+    }
     if (view instanceof Toolbar) {
       Toolbar toolbar = (Toolbar)view;
       toolbar.setBackgroundColor(Color.WHITE);

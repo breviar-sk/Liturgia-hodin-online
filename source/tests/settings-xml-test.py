@@ -58,7 +58,8 @@ class SettingsXmlTest(unittest.TestCase):
                     'appearance': ['appearance.font-margins', 'appearance.colors',
                                    'appearance.buttons', 'appearance.other'],
                     'device': ['device.navigation', 'device.eink', 'device.volume-paging',
-                               'device.keep-awake', 'device.do-not-disturb', 'device.lock-zoom'],
+                               'device.keep-awake', 'device.do-not-disturb', 'device.lock-zoom',
+                               'device.shared-appearance'],
                     'device.navigation': ['device.reading-navigation'],
                     'device.reading-navigation': ['device.arrow-options'],
                     'device.arrow-options': ['device.arrows-left', 'device.down-arrow-only'],
@@ -98,7 +99,7 @@ class SettingsXmlTest(unittest.TestCase):
                 # of an unrelated liturgical option.
                 for key in ('language.use-for-interface', 'general.online-mode', 'device.eink',
                             'device.volume-paging', 'device.keep-awake', 'device.do-not-disturb',
-                            'device.lock-zoom', 'appearance.font', 'appearance.font-size',
+                            'device.lock-zoom', 'device.shared-appearance', 'appearance.font', 'appearance.font-size',
                             'device.reading-navigation', 'speech.rate', 'speech.psalm-pauses', 'speech.help'):
                     self.assertEqual(actual[key].attrib['Handler'], key)
                 self.assertEqual(actual['language'].attrib['Parameter'], 'j')
@@ -110,7 +111,7 @@ class SettingsXmlTest(unittest.TestCase):
                 self.assertEqual(actual['prayers.common'].attrib['ValueAttribute'], 'Id')
                 seen.update({key: node.tag for key, node in actual.items()})
         self.assertEqual(list(seen.values()).count('MenuGroup'), 26)
-        self.assertEqual(list(seen.values()).count('MenuItem'), 99)
+        self.assertEqual(list(seen.values()).count('MenuItem'), 100)
 
     def test_palette_submenus_and_complete_presets(self):
         for root in self.exports.values():
