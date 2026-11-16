@@ -11,6 +11,10 @@ including font family, size, weight, palettes, day/night mode, margins and line
 spacing. Device preferences and pinch zoom remain local. Generated links do not
 depend on the sender's import preference.
 
+Sharing preserves the current `#anchor`, including on Marian antiphon pages.
+Anchors are URL-encoded once and remain part of the link throughout Android
+import, pending font loading and activity recreation; they are never settings.
+
 New sharing links include `sh=1`, the sharing format version. This is metadata,
 not a prayer or device setting. Both Android and web sharing always emit the
 current version; Android still accepts regular CGI links without the marker.
@@ -18,6 +22,10 @@ Version-dependent migration and filtering of non-sharing links are not implement
 
 **Settings → Device → Apply appearance from shared prayers** controls what a
 recipient accepts. It defaults to off, importing only prayer/content settings.
+On the first incoming prayer link, a one-time chooser explains these options and
+where to change the choice later. The link waits for the answer; the selected
+scope applies to this link and future links. The notification is remembered
+separately from the setting, including for existing installations.
 With it enabled, the app also imports appearance. Settings absent from a link
 retain their current values. Filtering happens before value validation and
 before building the reader request; ignored visual values never reach the
@@ -31,7 +39,8 @@ survive recreation; canceled or superseded lookups cannot replace a newer page.
 
 Incoming links are rendered offline by the existing backend. Only HTTP(S) links
 on `breviar.sk`, with the exact path `/cgi-bin/l.cgi`, are registered. The app
-validates the query and allows reader pages, including the Ordinarium (`pst&st=2`).
+validates the query and allows reader pages, including the Ordinarium (`pst&st=2`)
+and Marian antiphons (`pst&st=1`). Their named selectors `ord` and `ma` also work.
 It does not register other hosts or all paths on the website.
 
 The first incoming link saves the previous prayer settings and reading location.
@@ -48,10 +57,11 @@ Native device preferences and pinch zoom are never restored from a shared link.
 
 ## Web sharing
 
-The CGI side menu offers **Share prayer** for reader pages and the Ordinarium.
+The CGI side menu offers **Share prayer** for reader pages, the Ordinarium and
+Marian antiphons.
 The backend constructs the public link from the resolved selection and settings,
 including settings submitted through POST. Generated query parameters start with
-`qt`, `d`, `m`, `r`, `j`, omitting absent fields; the remaining parameters follow
+`qt`, `d`, `m`, `r`, `p`, `j`, `k`, omitting absent fields; the remaining parameters follow
 in alphabetical order. The same ordering is used by Android sharing.
 
 The menu requests the existing CGI selection with `share=1`; this flag is never
@@ -60,6 +70,11 @@ licensed Project Nayuki QR Code generator v1.8.0. The browser loads just the sha
 panel from that response, preserving the current page and scroll position. Without
 JavaScript, the link opens the complete page with its sharing panel visible.
 QR encoding runs only for sharing requests, not for ordinary reader requests.
+Fragments are available only in the browser, so JavaScript passes the current
+anchor in the `X-Breviar-Share-Fragment` header when requesting the QR. The CGI
+uses it for both the SVG payload and copied URL without adding a prayer parameter.
+Opening a sharing page directly also refreshes its QR when an anchor is present.
+Without JavaScript, the CGI can share the document but cannot know its anchor.
 
 Publish `prayer-sharing.js` and the updated `breviar.css` along with the CGI binary.
 No image service, PNG library or additional server process is needed. The SVG uses

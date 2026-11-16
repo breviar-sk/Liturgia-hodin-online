@@ -138,6 +138,8 @@ public class Breviar extends AppearanceActivity
     };
     TtsStateReceiver tts_receiver;
     private SharedPrayerImport sharedPrayerImport;
+    private static final String PENDING_SHARED_LINK = "shared.appearance-choice-url";
+    private String pendingSharedLink;
 
 
     void goHome() {
@@ -607,6 +609,7 @@ public class Breviar extends AppearanceActivity
       });
 
       sharedPrayerImport = new SharedPrayerImport(this, this::applyIncomingPrayer);
+      pendingSharedLink = savedInstanceState == null ? null : savedInstanceState.getString(PENDING_SHARED_LINK);
       if (!sharedPrayerImport.restore(savedInstanceState)
           && (savedInstanceState != null || !handleIntent(getIntent()))) {
         if (savedInstanceState == null) {
@@ -647,6 +650,13 @@ public class Breviar extends AppearanceActivity
         return;
       }
       if (HighContrastPrompt.showIfNeeded(this)) return;
+      if (pendingSharedLink != null) {
+        if (getSupportFragmentManager().findFragmentByTag(SharedAppearanceChooser.TAG) == null) {
+          new SharedAppearanceChooser().showNow(getSupportFragmentManager(), SharedAppearanceChooser.TAG);
+          BreviarApp.markSharedAppearanceOffered(this);
+        }
+        return;
+      }
       if (!getString(R.string.version).equals(BreviarApp.getString(this, "version", ""))) {
         showChangelog(true);
         markVersion();
@@ -657,6 +667,14 @@ public class Breviar extends AppearanceActivity
       changeAppearance(eink);
       // If the theme changed, the replacement activity will show the changelog.
       // Choosing the current mode needs no recreation or extra resume callback.
+      showStartupDialogs();
+    }
+
+    void onSharedAppearanceChosen(boolean appearance) {
+      BreviarApp.setSharedAppearance(this, appearance);
+      String url = pendingSharedLink;
+      pendingSharedLink = null;
+      if (url != null) importSharedPrayer(Uri.parse(url));
       showStartupDialogs();
     }
 
@@ -936,11 +954,20 @@ public class Breviar extends AppearanceActivity
     // Return if the intent loaded a page.
     boolean handleIntent(Intent intent) {
       if (intent != null && Intent.ACTION_VIEW.equals(intent.getAction())) {
-        if (!sharedPrayerImport.open(intent.getData(), BreviarApp.getSharedAppearance(this))) {
+        Uri uri = intent.getData();
+        if (PrayerLink.read(uri) == null) {
           Toast.makeText(this, R.string.shared_link_invalid, Toast.LENGTH_LONG).show();
           return false;
         }
-        return true;
+        if (pendingSharedLink != null || !BreviarApp.wasSharedAppearanceOffered(this)) {
+          sharedPrayerImport.cancel();
+          pendingSharedLink = uri.toString();
+          // Save the pending link with activity state; do not replay this intent.
+          setIntent(new Intent(Intent.ACTION_MAIN));
+          if (resumed) showStartupDialogs();
+          return true;
+        }
+        return importSharedPrayer(uri);
       }
       if (intent != null) {
         if (intent.getAction() != null) {
@@ -958,6 +985,12 @@ public class Breviar extends AppearanceActivity
       return false;
     }
 
+    private boolean importSharedPrayer(Uri uri) {
+      if (sharedPrayerImport.open(uri, BreviarApp.getSharedAppearance(this))) return true;
+      Toast.makeText(this, R.string.shared_link_invalid, Toast.LENGTH_LONG).show();
+      return false;
+    }
+
     private void applyIncomingPrayer(SharedPrayerImport.Ready incoming) {
       syncPreferences();
       SharedPrayerSession.begin(this, incoming.link, S.getPageUrl(wv.getUrl()), readingPosition(),
@@ -971,7 +1004,8 @@ public class Breviar extends AppearanceActivity
       // Only accepted settings reach the renderer; raw appearance/force values
       // must not leak through the original URL in content-only mode.
       page.override(new UrlOptions(BreviarApp.getUrlOptions(this)));
-      applySharedPage(page.build(), -1);
+      applySharedPage(page.getBuilder().encodedFragment(incoming.link.base_uri.getEncodedFragment())
+          .build().toString(), -1);
       Toast.makeText(this, R.string.shared_settings_active, Toast.LENGTH_LONG).show();
     }
 
@@ -1039,6 +1073,7 @@ public class Breviar extends AppearanceActivity
       Log.v("breviar", "onSaveInstanceState");
       if (save_instance_enabled) {
         if (sharedPrayerImport != null) sharedPrayerImport.save(outState);
+        outState.putString(PENDING_SHARED_LINK, pendingSharedLink);
         syncScale();
         //wv.saveState(outState);
         String url = S.getPageUrl(wv.getUrl());

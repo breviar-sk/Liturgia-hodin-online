@@ -12,12 +12,14 @@ import org.robolectric.annotation.Config;
 public class PrayerLinkTest {
   @Test public void shareOrdersIdentityFirstWithoutInventingMissingParameters() {
     assertTrue(PrayerLink.share("http://127.0.0.1/l.cgi?p=mv&r=2026&m=11&d=13&qt=pdt",
-        "j=cz&o1=7", "sk").startsWith(
-        "https://breviar.sk/cgi-bin/l.cgi?qt=pdt&d=13&m=11&r=2026&j=cz&"));
+        "j=cz&k=op&c=1&o1=7", "sk").startsWith(
+        "https://breviar.sk/cgi-bin/l.cgi?qt=pdt&d=13&m=11&r=2026&p=mv&j=cz&k=op&c=1&"));
     String today = PrayerLink.share("http://127.0.0.1/l.cgi?qt=pdnes", "j=sk", "sk");
     assertEquals("https://breviar.sk/cgi-bin/l.cgi?qt=pdnes&j=sk&k=&sh=1", today);
     assertTrue(PrayerLink.share("http://127.0.0.1/l.cgi?qt=plo&lo=3&r=2026&p=mrch",
-        "j=la", "sk").startsWith("https://breviar.sk/cgi-bin/l.cgi?qt=plo&r=2026&j=la&"));
+        "j=la", "sk").startsWith("https://breviar.sk/cgi-bin/l.cgi?qt=plo&r=2026&p=mrch&j=la&k=&"));
+    assertTrue(PrayerLink.share("http://127.0.0.1/l.cgi?qt=pst&st=2&p=mk",
+        "j=sk&c=1", "sk").startsWith("https://breviar.sk/cgi-bin/l.cgi?qt=pst&p=mk&j=sk&k=&c=1&"));
   }
 
   @Test public void sharingEmitsTheCurrentVersionAndStillAcceptsUnmarkedLinks() {
@@ -29,6 +31,23 @@ public class PrayerLinkTest {
     UrlOptions accepted = PrayerLink.read(Uri.parse(shared));
     assertNotNull(accepted);
     assertFalse(accepted.params.containsKey("sh")); // Metadata must not become saved settings.
+  }
+
+  @Test public void sharingPreservesAndEncodesAnchorsWithoutSavingThemAsSettings() {
+    for (String fragment : new String[]{"sms", "Zdravas’, Mária", "a%20b", "a+b&c#d"}) {
+      String page = new Uri.Builder().scheme("http").authority("127.0.0.1").path("/l.cgi")
+          .encodedQuery("qt=pst&st=1").fragment(fragment).build().toString();
+      String shared = PrayerLink.share(page, "j=sk", "sk");
+      assertEquals(fragment, Uri.parse(shared).getFragment());
+      assertFalse(shared.contains(" "));
+      UrlOptions received = PrayerLink.read(Uri.parse(shared));
+      assertNotNull(received);
+      assertEquals(fragment, Uri.parse(received.build()).getFragment());
+      assertFalse(received.build(true).contains("#"));
+      String settings = PrayerLink.applySettings("j=sk", received.build(true));
+      assertFalse(settings.contains("#"));
+      assertFalse(new UrlOptions(settings).params.containsKey("st"));
+    }
   }
 
   @Test public void datedPrayerAndResolvedSettingsReplaceStaleForces() {
@@ -148,6 +167,13 @@ public class PrayerLinkTest {
         "https://breviar.sk/cgi-bin/l.cgi?qt=pdnes&p=%0A"}) {
       assertNull(link, PrayerLink.read(Uri.parse(link)));
     }
-    assertNotNull(PrayerLink.read(Uri.parse("https://breviar.sk/cgi-bin/l.cgi?qt=pst&st=2&p=mr")));
+    for (String selection : new String[]{"st=2&p=mrch", "st=ord&p=mrch", "st=1", "st=ma"}) {
+      String url = PrayerLink.share("http://127.0.0.1/l.cgi?qt=pst&" + selection, "j=sk", "sk");
+      UrlOptions imported = PrayerLink.read(Uri.parse(url));
+      assertNotNull(selection, imported);
+      UrlOptions original = new UrlOptions("http://127.0.0.1/l.cgi?qt=pst&" + selection, true);
+      assertEquals(original.params.get("st"), imported.params.get("st"));
+      assertEquals(original.params.get("p"), imported.params.get("p"));
+    }
   }
 }

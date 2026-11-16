@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.net.Uri;
 import android.os.Looper;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -54,6 +55,33 @@ public class PrayerShareActivityTest {
     image.getPixels(pixels, 0, size, 0, 0, size, size);
     return new QRCodeReader().decode(new BinaryBitmap(new HybridBinarizer(
         new RGBLuminanceSource(size, size, pixels)))).getText();
+  }
+
+  @Test public void marianAntiphonsCanBeSharedFromTheReaderAndOpenedAgain() throws Exception {
+    BreviarApp.markSharedAppearanceOffered(context);
+    try (ActivityController<EinkModeTest.Reader> controller = Robolectric.buildActivity(EinkModeTest.Reader.class).setup()) {
+      Breviar reader = controller.get();
+      reader.wv.loadUrl("http://127.0.0.1:50000/l.cgi?qt=pst&st=1#rsnk");
+      // The test reader has no JNI response to publish the resolved settings.
+      Breviar.S.setOpts(BreviarApp.getUrlOptions(context));
+      reader.onNavigationItemSelected(R.id.share_prayer);
+      Intent activity = Shadows.shadowOf(reader).getNextStartedActivity();
+      assertEquals(PrayerShareActivity.class.getName(), activity.getComponent().getClassName());
+      String url = activity.getStringExtra("url");
+      assertEquals("rsnk", Uri.parse(url).getFragment());
+      assertEquals(url, decode(PrayerShareActivity.qrCode(url)));
+      assertTrue(reader.handleIntent(new Intent(Intent.ACTION_VIEW, Uri.parse(url))));
+      UrlOptions opened = new UrlOptions(reader.wv.getUrl(), true);
+      assertEquals("pst", opened.params.get("qt"));
+      assertEquals("1", opened.params.get("st"));
+      assertFalse(opened.params.containsKey("p"));
+      assertEquals("rsnk", Uri.parse(reader.wv.getUrl()).getFragment());
+      assertTrue(SharedPrayerSession.active(context));
+      controller.recreate();
+      assertEquals("rsnk", Uri.parse(controller.get().wv.getUrl()).getFragment());
+      controller.get().restoreSharedSettings();
+      assertEquals("rsnk", Uri.parse(controller.get().wv.getUrl()).getFragment());
+    }
   }
 
   @Test public void drawerShowsQrAndCopiesOrSharesTheSameUrlInBothAppearances() throws Exception {

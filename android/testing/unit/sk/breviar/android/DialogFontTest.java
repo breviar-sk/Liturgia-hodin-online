@@ -58,6 +58,7 @@ public class DialogFontTest {
       BreviarApp.setEinkMode(RuntimeEnvironment.getApplication(), eink);
       try (ActivityController<SettingsActivity> controller = Robolectric.buildActivity(SettingsActivity.class).setup()) {
         checkDialog(controller.get(), new AppearanceChooser(), AppearanceChooser.TAG);
+        checkDialog(controller.get(), new SharedAppearanceChooser(), SharedAppearanceChooser.TAG);
         checkDialog(controller.get(), new TtsBackgroundUsageWarning(), TtsBackgroundUsageWarning.TAG);
       }
     }

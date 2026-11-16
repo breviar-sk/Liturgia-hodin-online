@@ -64,7 +64,7 @@
     <string name="reading_navigation">Navigace při čtení</string>
     <string name="navigation_scroll">Pouze posouvání</string>
     <string name="navigation_arrows">Navigační šipky</string>
-    <string name="navigation_buttons">Dolní tlačítka nahoru/dolů</string>
+    <string name="navigation_buttons">Dolní tlačítka pro navigaci</string>
     <string name="navigation_taps">Klepnutí na horní/dolní třetinu</string>
     <string name="navigation_taps_horizontal">Klepnutí na levou/pravou třetinu</string>
     <string name="transparent_nav_left">Navigační šipky u levého okraje</string>
@@ -171,6 +171,10 @@
     <string name="high_contrast_no">Ne</string>
 
   <!-- Shared prayers -->
+  <string name="shared_appearance_title">Vzhled sdílené modlitby</string>
+  <string name="shared_appearance_message">Při otevření sdílené modlitby použít i její vzhled (písmo, barvy a rozložení), nebo ponechat váš vzhled a převzít pouze obsah modlitby? Tuto volbu můžete změnit v %1$s > %2$s.</string>
+  <string name="shared_appearance_all">Obsah i vzhled</string>
+  <string name="shared_appearance_content">Pouze obsah</string>
   <string name="share_prayer">Sdílet modlitbu</string>
   <string name="restore_shared_settings">Obnovit moje nastavení</string>
   <string name="keep_shared_settings">Ponechat toto nastavení</string>

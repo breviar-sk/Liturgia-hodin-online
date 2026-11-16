@@ -57,13 +57,14 @@ final class PrayerLink {
     if (!readable(result)) throw new IllegalArgumentException("Not a prayer page");
     Uri.Builder builder = new Uri.Builder().scheme("https").authority(HOST).path(PATH);
     Map<String, String> parameters = new TreeMap<>(result.params);
-    for (String key : new String[]{"qt", "d", "m", "r", "j"}) {
+    for (String key : new String[]{"qt", "d", "m", "r", "p", "j", "k"}) {
       String value = parameters.remove(key);
       if (value != null) builder.appendQueryParameter(key, value);
     }
     for (Map.Entry<String, String> parameter : parameters.entrySet()) {
       builder.appendQueryParameter(parameter.getKey(), parameter.getValue());
     }
+    builder.fragment(Uri.parse(page).getFragment());
     String url = builder.build().toString();
     if (Uri.parse(url).getEncodedQuery().length() >= 2000) {
       throw new IllegalArgumentException("Prayer link exceeds the CGI query limit");
@@ -119,7 +120,7 @@ final class PrayerLink {
   private static boolean readable(UrlOptions options) {
     String type = options.params.get("qt");
     return Arrays.asList("pdnes", "pdt", "plo", "pcr", "psv", "pmr").contains(type)
-        || ("pst".equals(type) && "2".equals(options.params.get("st")));
+        || ("pst".equals(type) && Arrays.asList("1", "ma", "2", "ord").contains(options.params.get("st")));
   }
 
   /** Replace prayer settings while retaining this device's appearance and navigation. */

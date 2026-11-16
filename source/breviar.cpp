@@ -18757,6 +18757,10 @@ int breviar_main(int argc, const char** argv) {
 					sharing::selection = std::string("qt=psv&sv=") + pom_SVIATOK;
 					break;
 				case PRM_STATIC_TEXT: {
+					if (local_rok == STATIC_TEXT_MARIANSKE_ANTIFONY) {
+						sharing::selection = "qt=pst&st=1";
+						break;
+					}
 					short office = prayer::ordinariumPrayer(local_modlitba);
 					// All three daytime selectors display the same Ordinary document.
 					if (office >= MODL_PREDPOLUDNIM && office <= MODL_POPOLUDNI) office = MODL_NAPOLUDNIE;

@@ -13,6 +13,8 @@ namespace sharing {
 std::string query(const std::string& selection, const std::string& options,
                   const std::string& language, const std::string& calendar);
 std::string svg(const std::string& url);
+// The browser supplies its percent-encoded fragment separately from the query.
+std::string withFragment(const std::string& url, const std::string& encodedFragment);
 
 // The backend owns selection/date resolution; the sharing module owns URLs/UI.
 extern std::string selection;

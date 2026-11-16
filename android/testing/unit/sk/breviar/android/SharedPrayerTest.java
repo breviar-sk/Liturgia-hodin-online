@@ -39,6 +39,7 @@ public class SharedPrayerTest {
     BreviarApp.setEinkMode(context, false);
     BreviarApp.setString(context, "language", "sk");
     BreviarApp.setUrlOptions(context, MINE);
+    BreviarApp.markSharedAppearanceOffered(context);
   }
 
   private Intent link(String url) { return new Intent(Intent.ACTION_VIEW, Uri.parse(url)); }

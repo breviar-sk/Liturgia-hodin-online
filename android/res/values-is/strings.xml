@@ -64,7 +64,7 @@
     <string name="reading_navigation">Leiðsögn við lestur</string>
     <string name="navigation_scroll">Aðeins skruna</string>
     <string name="navigation_arrows">Leiðsöguörvar</string>
-    <string name="navigation_buttons">Upp/niður hnappar neðst</string>
+    <string name="navigation_buttons">Leiðsöguhnappar neðst</string>
     <string name="navigation_taps">Pikka efst/neðst á skjáinn</string>
     <string name="navigation_taps_horizontal">Pikka á vinstri/hægri þriðjung skjásins</string>
     <string name="transparent_nav_left">Leiðsöguörvar vinstra megin</string>
@@ -171,6 +171,10 @@
     <string name="high_contrast_no">Nei</string>
 
   <!-- Shared prayers -->
+  <string name="shared_appearance_title">Útlit deildrar bænar</string>
+  <string name="shared_appearance_message">Viltu líka nota útlit deildrar bænar (letur, liti og uppsetningu) þegar þú opnar hana, eða halda þínu útliti og aðeins flytja inn efni bænarinnar? Þú getur breytt þessu vali í %1$s > %2$s.</string>
+  <string name="shared_appearance_all">Efni og útlit</string>
+  <string name="shared_appearance_content">Aðeins efni</string>
   <string name="share_prayer">Deila bæn</string>
   <string name="restore_shared_settings">Endurheimta mínar stillingar</string>
   <string name="keep_shared_settings">Halda þessum stillingum</string>

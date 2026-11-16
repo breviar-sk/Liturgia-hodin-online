@@ -112,7 +112,7 @@ public class SharedPrayerImportTest {
     FontResolver.entered = new CountDownLatch(1);
     FontResolver.release = new CountDownLatch(1);
     try {
-      assertTrue(previous.open(link("f=Test%20Font&c=1"), true));
+      assertTrue(previous.open(link("f=Test%20Font&c=1#anchor%20with%2520percent"), true));
       assertTrue(FontResolver.entered.await(5, TimeUnit.SECONDS));
       Bundle saved = new Bundle();
       previous.save(saved);
@@ -125,6 +125,7 @@ public class SharedPrayerImportTest {
       assertTrue(received.get(0).appearance);
       assertEquals("Test Font", received.get(0).link.getFont());
       assertEquals("1", received.get(0).link.params.get("c"));
+      assertEquals("anchor with%20percent", Uri.parse(received.get(0).link.build()).getFragment());
     } finally {
       FontResolver.release.countDown();
       previous.close();

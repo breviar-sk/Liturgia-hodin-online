@@ -6,6 +6,7 @@
 #include "liturgia.h"
 #include "myexpt.h"
 #include "third_party/qrcodegen/qrcodegen.hpp"
+#include <cstdlib>
 #include <map>
 #include <sstream>
 #include <stdexcept>
@@ -107,7 +108,7 @@ std::string query(const std::string& selection, const std::string& options,
         if (!result.empty()) result += '&';
         result += encode(key) + "=" + encode(value);
     };
-    for (const char* key : {"qt", "d", "m", "r", "j"}) {
+    for (const char* key : {"qt", "d", "m", "r", "p", "j", "k"}) {
         const auto found = values.find(key);
         if (found != values.end()) { append(found->first, found->second); values.erase(found); }
     }
@@ -132,6 +133,30 @@ std::string svg(const std::string& url) {
     return output.str();
 }
 
+std::string withFragment(const std::string& url, const std::string& encodedFragment) {
+    if (encodedFragment.empty()) return url;
+    const auto hex = [](char c) {
+        if (c >= '0' && c <= '9') return c - '0';
+        if (c >= 'a' && c <= 'f') return c - 'a' + 10;
+        if (c >= 'A' && c <= 'F') return c - 'A' + 10;
+        return -1;
+    };
+    std::string decoded;
+    for (std::size_t i = 0; i < encodedFragment.size(); ++i) {
+        if (encodedFragment[i] == '%' && i + 2 < encodedFragment.size()) {
+            const int high = hex(encodedFragment[i + 1]), low = hex(encodedFragment[i + 2]);
+            if (high >= 0 && low >= 0) {
+                decoded += static_cast<char>((high << 4) | low);
+                i += 2;
+                continue;
+            }
+        }
+        // Unlike form data, a literal '+' in a fragment is never a space.
+        decoded += encodedFragment[i];
+    }
+    return url + '#' + encode(decoded);
+}
+
 void menu(FILE* output) {
     if (selection.empty()) return;
     std::string target = "#prayer-share-panel";
@@ -148,6 +173,12 @@ void panel() {
     try {
         const auto params = currentQuery();
         url = publicUrl + params;
+        // Fragments never reach CGI in a URL. Keep this transport outside the
+        // prayer query and its legacy parameter-size limits.
+        if (requested) {
+            if (const auto* fragment = std::getenv("HTTP_X_BREVIAR_SHARE_FRAGMENT"))
+                url = withFragment(url, fragment);
+        }
         close = localUrl(params);
         target = close + "&share=1";
         if (requested) image = svg(url);

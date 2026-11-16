@@ -64,7 +64,7 @@
     <string name="reading_navigation">Navigatio in lectione</string>
     <string name="navigation_scroll">Volutatio tantum</string>
     <string name="navigation_arrows">Sagittae navigationis</string>
-    <string name="navigation_buttons">Bullae inferiores sursum/deorsum</string>
+    <string name="navigation_buttons">Bullae inferiores ad navigandum</string>
     <string name="navigation_taps">Tactus in tertia parte superiore/inferiore</string>
     <string name="navigation_taps_horizontal">Tactus in tertia parte sinistra/dextra</string>
     <string name="transparent_nav_left">Pharetra sagittis a sinistris</string>
@@ -171,6 +171,10 @@
     <string name="high_contrast_no">Non</string>
 
   <!-- Shared prayers -->
+  <string name="shared_appearance_title">Species orationis communicatae</string>
+  <string name="shared_appearance_message">Cum orationem communicatam aperis, visne etiam eius speciem (litterarum formas, colores et dispositionem) adhibere, an tuam speciem servare et solum orationis textum accipere? Hanc electionem mutare potes in %1$s > %2$s.</string>
+  <string name="shared_appearance_all">Textus et species</string>
+  <string name="shared_appearance_content">Solum textus</string>
   <string name="share_prayer">Orationem communicare</string>
   <string name="restore_shared_settings">Meas occasiones restituere</string>
   <string name="keep_shared_settings">Has occasiones servare</string>

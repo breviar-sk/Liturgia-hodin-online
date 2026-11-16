@@ -7,17 +7,19 @@ import re
 import subprocess
 import sys
 import unittest
-from urllib.parse import parse_qsl, urlencode, urlsplit
+from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit
 
 CGI = Path(sys.argv.pop(1)).resolve()
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def render(params, post=False):
+def render(params, post=False, fragment=None):
     data = urlencode(params)
     env = dict(os.environ, REQUEST_METHOD='POST' if post else 'GET',
                QUERY_STRING='' if post else data, CONTENT_LENGTH=str(len(data)),
                CONTENT_TYPE='application/x-www-form-urlencoded')
+    if fragment is not None:
+        env['HTTP_X_BREVIAR_SHARE_FRAGMENT'] = fragment
     return subprocess.check_output([str(CGI)], cwd=ROOT / 'source', env=env,
                                    input=data.encode() if post else b'', timeout=30).decode()
 
@@ -65,7 +67,7 @@ class SharingTest(unittest.TestCase):
                 attrs = Panel(html).attrs
                 self.assertIsNotNone(attrs)
                 url = attrs['data-url']
-                self.assertTrue(url.startswith('https://breviar.sk/cgi-bin/l.cgi?qt=pdt&d=12&m=11&r=2026&j=cz&'), url)
+                self.assertTrue(url.startswith('https://breviar.sk/cgi-bin/l.cgi?qt=pdt&d=12&m=11&r=2026&p=mv&j=cz&k=&'), url)
                 query = dict(parse_qsl(urlsplit(url).query, keep_blank_values=True))
                 for key in ('p', 'j', 'c', 'ct0', 'cr1', 'ff', 'mm', 'o1'):
                     self.assertEqual(str(params[key]), query[key])
@@ -90,6 +92,41 @@ class SharingTest(unittest.TestCase):
                 self.assertEqual(value, actual[key])
         self.assertIsNone(Panel(render(dict(qt='pst', st=3))).attrs)
         self.assertIsNone(Panel(render(dict(qt='pxml', d=13, m=11, r=2026))).attrs)
+
+    def test_marian_antiphons_share_and_reopen_the_same_document(self):
+        for selector in (1, 'ma'):
+            with self.subTest(selector=selector):
+                html = render(dict(qt='pst', st=selector, j='sk', share=1, o0=8835 | 524288))
+                panel = Panel(html)
+                self.assertTrue(panel.actions)
+                self.assertIn('<svg', html)
+                query = dict(parse_qsl(urlsplit(panel.attrs['data-url']).query))
+                self.assertEqual('pst', query['qt'])
+                self.assertEqual('1', query['st'])
+                self.assertNotIn('p', query)
+                again = render(query)
+                self.assertIn('MARIÁNSKE ANTIFÓNY', again)
+                self.assertIn('Slávna Matka Spasiteľa', again)
+                self.assertEqual(panel.attrs['data-url'], Panel(again).attrs['data-url'])
+
+    def test_fragment_header_is_encoded_once_without_changing_prayer_parameters(self):
+        for post, params in (
+                (False, dict(qt='pst', st=1, j='sk', share=1)),
+                (True, dict(qt='pdt', d=12, m=11, r=2026, p='mv', j='sk', share=1))):
+            plain = Panel(render(params, post=post)).attrs['data-url']
+            for fragment in ('rsnk', 'Zdravas’, Mária + 20%', 'a%20b', 'a&b#c?d'):
+                encoded = quote(fragment, safe='')
+                with self.subTest(fragment=fragment, post=post):
+                    html = render(params, post=post, fragment=encoded)
+                    panel = Panel(html)
+                    self.assertEqual(plain + '#' + encoded, panel.attrs['data-url'])
+                    self.assertEqual(fragment, unquote(urlsplit(panel.attrs['data-url']).fragment))
+                    self.assertEqual('', urlsplit(panel.attrs['data-action']).fragment)
+                    self.assertIn('<svg', html)
+        params = dict(qt='pst', st=1, j='sk')
+        # This is QR metadata only, not a persistent prayer option.
+        self.assertEqual(Panel(render(params)).attrs['data-url'],
+                         Panel(render(params, fragment='rsnk')).attrs['data-url'])
 
 
 if __name__ == '__main__':

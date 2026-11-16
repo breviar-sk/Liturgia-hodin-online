@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.navigation.NavigationView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.WindowCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -480,6 +482,36 @@ public class EinkModeTest {
       assertBoundMenuTextBlack(menu);
       assertEquals(Color.BLACK, menu.getItemIconTintList().getColorForState(
           new int[]{android.R.attr.state_enabled, android.R.attr.state_checked}, Color.TRANSPARENT));
+    }
+  }
+
+  @Test
+  @Config(sdk = {24, 35})
+  public void allMenuSectionsUseRectangularEinkSwitchesEvenBeforeRowsAreBound() {
+    for (boolean eink : new boolean[]{false, true}) {
+      BreviarApp.setEinkMode(context, eink);
+      try (ActivityController<SettingsActivity> controller = Robolectric.buildActivity(SettingsActivity.class).setup()) {
+        SettingsActivity activity = controller.get();
+        android.view.Menu menu = activity.navigationView.getMenu();
+        MenuItem top = menu.add("Prayer options").setActionView(R.layout.widget_switch);
+        android.view.SubMenu section = menu.addSubMenu("Links");
+        MenuItem nested = section.add("Bible links").setActionView(R.layout.widget_switch);
+        MenuItem deeper = section.addSubMenu("More links").add("Other links").setActionView(R.layout.widget_switch);
+        // None of these rows has been inflated/bound by the RecyclerView yet.
+        activity.updateMenu();
+        for (MenuItem item : new MenuItem[]{top, nested, deeper}) {
+          SwitchCompat toggle = (SwitchCompat)item.getActionView();
+          int track = Shadows.shadowOf(toggle.getTrackDrawable()).getCreatedFromResId();
+          if (eink) assertEquals(R.drawable.eink_switch_track, track);
+          else assertNotEquals(R.drawable.eink_switch_track, track);
+          toggle.setChecked(true);
+        }
+        MenuItem late = section.add("Refreshed option").setActionView(R.layout.widget_switch);
+        activity.updateMenu();
+        int track = Shadows.shadowOf(((SwitchCompat)late.getActionView()).getTrackDrawable()).getCreatedFromResId();
+        if (eink) assertEquals(R.drawable.eink_switch_track, track);
+        else assertNotEquals(R.drawable.eink_switch_track, track);
+      }
     }
   }
 

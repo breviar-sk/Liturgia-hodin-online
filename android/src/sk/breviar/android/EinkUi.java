@@ -26,6 +26,14 @@ final class EinkUi {
     }
   }
 
+  private static void applyMenu(Menu menu) {
+    for (int i = 0; i < menu.size(); ++i) {
+      MenuItem item = menu.getItem(i);
+      apply(item.getActionView());
+      if (item.hasSubMenu()) applyMenu(item.getSubMenu());
+    }
+  }
+
   static void apply(View view) {
     if (view == null || !BreviarApp.getEinkMode(view.getContext())) return;
     view.setElevation(0);
@@ -60,7 +68,9 @@ final class EinkUi {
       menu.setItemIconTintList(ColorStateList.valueOf(Color.BLACK));
       menu.setItemBackgroundResource(R.drawable.eink_selection);
       for (int i = 0; i < menu.getHeaderCount(); ++i) apply(menu.getHeaderView(i));
-      for (int i = 0; i < menu.getMenu().size(); ++i) apply(menu.getMenu().getItem(i).getActionView());
+      // Section rows may not have been bound yet, especially below the fold.
+      // Style their action views through the complete menu, not just visible rows.
+      applyMenu(menu.getMenu());
     }
     if (view instanceof RecyclerView) ((RecyclerView)view).setItemAnimator(null);
     if (view instanceof SwitchCompat) {

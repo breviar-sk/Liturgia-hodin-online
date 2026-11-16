@@ -59,6 +59,7 @@ public class UrlOptions {
     Uri.Builder builder = new Uri.Builder();
     builder.scheme(base_uri.getScheme());
     builder.encodedAuthority(base_uri.getEncodedAuthority());
+    builder.encodedFragment(base_uri.getEncodedFragment());
     String encoded_path = base_uri.getEncodedPath();
     if (encoded_path != null) {
       builder.appendEncodedPath(base_uri.getEncodedPath().replaceAll("^/", ""));

@@ -64,7 +64,7 @@
     <string name="reading_navigation">Navigáció olvasás közben</string>
     <string name="navigation_scroll">Csak görgetés</string>
     <string name="navigation_arrows">Navigációs nyilak</string>
-    <string name="navigation_buttons">Alsó fel/le gombok</string>
+    <string name="navigation_buttons">Alsó navigációs gombok</string>
     <string name="navigation_taps">Koppintás a felső/alsó harmadra</string>
     <string name="navigation_taps_horizontal">Koppintás a bal/jobb harmadra</string>
     <string name="transparent_nav_left">Navigációs nyilak a bal oldalon</string>
@@ -171,6 +171,10 @@
     <string name="high_contrast_no">Nem</string>
 
   <!-- Shared prayers -->
+  <string name="shared_appearance_title">A megosztott ima megjelenése</string>
+  <string name="shared_appearance_message">Megosztott ima megnyitásakor annak megjelenését (betűtípusok, színek és elrendezés) is alkalmazza, vagy megtartja a saját megjelenését, és csak az ima tartalmát veszi át? Ezt a választást itt módosíthatja: %1$s > %2$s.</string>
+  <string name="shared_appearance_all">Tartalom és megjelenés</string>
+  <string name="shared_appearance_content">Csak a tartalom</string>
   <string name="share_prayer">Ima megosztása</string>
   <string name="restore_shared_settings">Saját beállítások visszaállítása</string>
   <string name="keep_shared_settings">Ezeknek a beállításoknak a megtartása</string>
