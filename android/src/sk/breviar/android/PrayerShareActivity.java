@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -13,14 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import java.util.EnumMap;
-import java.util.Map;
+import com.google.zxing.qrcode.encoder.ByteMatrix;
+import com.google.zxing.qrcode.encoder.Encoder;
+import java.util.Arrays;
 
 /** Offline QR generation: no camera permission, upload, or URL-shortening service. */
 public class PrayerShareActivity extends AppearanceActivity {
@@ -29,17 +27,51 @@ public class PrayerShareActivity extends AppearanceActivity {
     BreviarApp.applyCustomLocale(this);
   }
 
-  static Bitmap qrCode(String url) throws WriterException {
-    Map<EncodeHintType, Object> hints = new EnumMap<>(EncodeHintType.class);
-    hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);
-    hints.put(EncodeHintType.MARGIN, 4);
-    BitMatrix matrix = new QRCodeWriter().encode(url, BarcodeFormat.QR_CODE, 768, 768, hints);
-    int width = matrix.getWidth(), height = matrix.getHeight();
-    int[] pixels = new int[width * height];
-    for (int y = 0; y < height; ++y) {
-      for (int x = 0; x < width; ++x) pixels[y * width + x] = matrix.get(x, y) ? Color.BLACK : Color.WHITE;
+  static Bitmap qrCode(Context context, String url) throws WriterException {
+    ByteMatrix matrix = null;
+    // Prefer high correction for the badge. Retain the previous URL capacity
+    // by falling back to Q/M only when a longer link cannot fit at H.
+    for (ErrorCorrectionLevel level : new ErrorCorrectionLevel[]{ErrorCorrectionLevel.H,
+        ErrorCorrectionLevel.Q, ErrorCorrectionLevel.M}) {
+      try {
+        matrix = Encoder.encode(url, level).getMatrix();
+        break;
+      } catch (WriterException tooLong) {
+        if (level == ErrorCorrectionLevel.M) throw tooLong;
+      }
     }
-    return Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888);
+    int modules = matrix.getWidth(), size = 768;
+    int scale = size / (modules + 8), offset = (size - modules * scale) / 2;
+    int[] pixels = new int[size * size];
+    Arrays.fill(pixels, Color.WHITE); // Includes the four-module quiet zone.
+    for (int y = 0; y < modules * scale; ++y) {
+      for (int x = 0; x < modules * scale; ++x) {
+        if (matrix.get(x / scale, y / scale) != 0) pixels[(offset + y) * size + offset + x] = Color.BLACK;
+      }
+    }
+    // Match the web SVG: an odd, centered badge about 1/8 of the code width,
+    // including one white module on each side. Keep the rest of the QR intact.
+    int badge = Math.max(5, (modules / 8) | 1), start = offset + (modules - badge) / 2 * scale;
+    for (int y = start; y < start + badge * scale; ++y)
+      Arrays.fill(pixels, y * size + start, y * size + start + badge * scale, Color.WHITE);
+    BitmapFactory.Options options = new BitmapFactory.Options();
+    options.inScaled = false;
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon, options);
+    int width = icon.getWidth(), height = icon.getHeight(), iconSize = (badge - 2) * scale;
+    int[] artwork = new int[width * height];
+    icon.getPixels(artwork, 0, width, 0, 0, width, height);
+    for (int y = 0; y < iconSize; ++y) {
+      for (int x = 0; x < iconSize; ++x) {
+        int color = artwork[(y * height / iconSize) * width + x * width / iconSize];
+        int alpha = Color.alpha(color), white = 255 * (255 - alpha);
+        pixels[(start + scale + y) * size + start + scale + x] = Color.rgb(
+            (Color.red(color) * alpha + white) / 255,
+            (Color.green(color) * alpha + white) / 255,
+            (Color.blue(color) * alpha + white) / 255);
+      }
+    }
+    icon.recycle();
+    return Bitmap.createBitmap(pixels, size, size, Bitmap.Config.ARGB_8888);
   }
 
   @Override public void onCreate(Bundle state) {
@@ -64,7 +96,7 @@ public class PrayerShareActivity extends AppearanceActivity {
     }
     try {
       ImageView qr = findViewById(R.id.share_qr);
-      BitmapDrawable image = new BitmapDrawable(getResources(), qrCode(url));
+      BitmapDrawable image = new BitmapDrawable(getResources(), qrCode(this, url));
       image.setFilterBitmap(false);
       qr.setImageDrawable(image);
     } catch (WriterException | IllegalArgumentException error) {

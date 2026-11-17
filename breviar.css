@@ -598,6 +598,16 @@ p.bibleref {
 }
 
 /* Native-settings appearance for web sharing, independent of prayer palettes. */
+.prayer-share-action { white-space: nowrap; }
+.prayer-share-menu-icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	vertical-align: -0.1em;
+	background-color: currentColor;
+	-webkit-mask: url('/share-icon.png') center / contain no-repeat;
+	mask: url('/share-icon.png') center / contain no-repeat;
+}
 .prayer-share-panel {
 	position: fixed;
 	top: 0; right: 0; bottom: 0; left: 0;
@@ -655,6 +665,11 @@ p.bibleref {
 	color: #ffffff;
 	font: inherit;
 	cursor: pointer;
+}
+.prayer-share-body .prayer-share-attribution {
+	display: block;
+	font-size: 12px;
+	color: #ffffff;
 }
 
 .section-title { 

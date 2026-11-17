@@ -76,9 +76,20 @@ uses it for both the SVG payload and copied URL without adding a prayer paramete
 Opening a sharing page directly also refreshes its QR when an anchor is present.
 Without JavaScript, the CGI can share the document but cannot know its anchor.
 
-Publish `prayer-sharing.js` and the updated `breviar.css` along with the CGI binary.
+Publish `prayer-sharing.js`, `breviar.css` and `share-icon.png` along with the CGI
+binary. The web menu uses the requested Flaticon icon, tinted with the current
+text color; its author credit is in the sharing panel (see `share-icon.LICENSE.txt`).
 No image service, PNG library or additional server process is needed. The SVG uses
 black modules on a white background with a four-module quiet zone in every theme.
+Both Android and web QR codes include a small centered application icon on a
+white badge, roughly one eighth of the symbol width. High error correction is
+preferred; unusually long links fall back to Q or M to retain the existing URL
+capacity. The web SVG embeds the PNG from `android/appicon.png` via
+`source/qr-app-icon.h`, so it needs no external image request.
+
+`make -C source test-sharing-browser` checks real browser rendering and independently
+decodes branded SVGs at multiple sizes and link lengths. This optional check needs
+Chromium and the Python packages Pillow and zxing-cpp.
 The web-only C++ sources are listed in the Makefile, `urob` and Visual Studio project;
 native Android/iOS builds keep their existing sharing implementations.
 

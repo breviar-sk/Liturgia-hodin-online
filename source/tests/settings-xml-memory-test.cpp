@@ -6,11 +6,22 @@
 #include "xml-settings.h"
 
 #include <cassert>
+#include <climits>
 #include <cstdlib>
 #include <iostream>
 #include <string>
 
 int main() {
+	// A single large Export must reserve/write its full length before appending.
+	// 70000 used to truncate; 40000 wrapped to a negative buffer length.
+	for (const int size : {70000, 40000}) {
+		const std::string payload(size, 'x');
+		initExport();
+		assert(Export("prefix:%s:suffix", payload.c_str()) == SHRT_MAX);
+		Export("\nnext write");
+		assert(std::string(getExportedString()) == "prefix:" + payload + ":suffix\nnext write");
+		closeExport();
+	}
 	_global_jazyk = JAZYK_SK;
 	const char* original = html_text_Jazyk[JAZYK_SK];
 	const std::string prefix = "Long label " + std::string(40000, 'x');

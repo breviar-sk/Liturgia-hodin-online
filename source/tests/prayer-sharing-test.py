@@ -3,11 +3,13 @@
 from html.parser import HTMLParser
 from pathlib import Path
 import os
+import base64
 import re
 import subprocess
 import sys
 import unittest
 from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit
+import xml.etree.ElementTree as ET
 
 CGI = Path(sys.argv.pop(1)).resolve()
 ROOT = Path(__file__).resolve().parents[2]
@@ -57,6 +59,11 @@ class SharingTest(unittest.TestCase):
         self.assertNotIn('hidden', Panel(shared).attrs)
         self.assertIn('<svg', shared)
         self.assertEqual(url, Panel(shared).attrs['data-url'])
+        svg = ET.fromstring(re.search(r'<svg\b.*?</svg>', shared, re.S).group())
+        icon = svg.find('{http://www.w3.org/2000/svg}image')
+        self.assertIsNotNone(icon)
+        self.assertEqual((ROOT / 'android/appicon.png').read_bytes(),
+                         base64.b64decode(icon.attrib['href'].split(',', 1)[1]))
 
     def test_get_and_post_preserve_selection_and_resolved_appearance(self):
         params = dict(qt='pdt', d=12, m=11, r=2026, p='mv', j='cz', c=1,

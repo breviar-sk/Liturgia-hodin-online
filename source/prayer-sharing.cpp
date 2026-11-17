@@ -5,7 +5,9 @@
 #include "html-markup.h"
 #include "liturgia.h"
 #include "myexpt.h"
+#include "qr-app-icon.h"
 #include "third_party/qrcodegen/qrcodegen.hpp"
+#include <algorithm>
 #include <cstdlib>
 #include <map>
 #include <sstream>
@@ -21,6 +23,7 @@ const char* const publicUrl = "https://breviar.sk/cgi-bin/l.cgi?";
 const char* const linkVersion = "1";
 
 struct Text {
+    const char* menu;
     const char* title;
     const char* message;
     const char* copy;
@@ -29,18 +32,18 @@ struct Text {
     const char* close;
 };
 const Text translations[] = {
-    {"Zdieľať modlitbu", "Naskenujte tento QR kód a otvorte stránku.", "Kopírovať odkaz", "Odkaz bol skopírovaný", "Túto stránku nemožno zdieľať.", "Zavrieť"},
-    {"Sdílet modlitbu", "Naskenujte tento QR kód a otevřete stránku.", "Kopírovat odkaz", "Odkaz byl zkopírován", "Tuto stránku nelze sdílet.", "Zavřít"},
-    {"Share prayer", "Scan this QR code to open the page.", "Copy link", "Link copied", "This page cannot be shared.", "Close"},
-    {"Orationem communicare", "Hunc codicem QR lege ut paginam aperias.", "Vinculum exscribere", "Vinculum exscriptum", "Haec pagina communicari non potest.", "Claudere"},
+    {"Zdieľať", "Zdieľať modlitbu", "Naskenujte tento QR kód a otvorte stránku.", "Kopírovať odkaz", "Odkaz bol skopírovaný", "Túto stránku nemožno zdieľať.", "Zavrieť"},
+    {"Sdílet", "Sdílet modlitbu", "Naskenujte tento QR kód a otevřete stránku.", "Kopírovat odkaz", "Odkaz byl zkopírován", "Tuto stránku nelze sdílet.", "Zavřít"},
+    {"Share", "Share prayer", "Scan this QR code to open the page.", "Copy link", "Link copied", "This page cannot be shared.", "Close"},
+    {"Communicare", "Orationem communicare", "Hunc codicem QR lege ut paginam aperias.", "Vinculum exscribere", "Vinculum exscriptum", "Haec pagina communicari non potest.", "Claudere"},
     {}, // undefined language
-    {"Sdílet modlitbu", "Naskenujte tento QR kód a otevřete stránku.", "Kopírovat odkaz", "Odkaz byl zkopírován", "Tuto stránku nelze sdílet.", "Zavřít"},
-    {"Ima megosztása", "Olvassa be ezt a QR-kódot az oldal megnyitásához.", "Hivatkozás másolása", "Hivatkozás másolva", "Ez az oldal nem osztható meg.", "Bezárás"},
+    {"Sdílet", "Sdílet modlitbu", "Naskenujte tento QR kód a otevřete stránku.", "Kopírovat odkaz", "Odkaz byl zkopírován", "Tuto stránku nelze sdílet.", "Zavřít"},
+    {"Megosztás", "Ima megosztása", "Olvassa be ezt a QR-kódot az oldal megnyitásához.", "Hivatkozás másolása", "Hivatkozás másolva", "Ez az oldal nem osztható meg.", "Bezárás"},
     {}, // ru: use English until translated
     {}, // by: use English until translated
-    {"Deila bæn", "Skannaðu þennan QR-kóða til að opna síðuna.", "Afrita tengil", "Tengill afritaður", "Ekki er hægt að deila þessari síðu.", "Loka"},
-    {"Compartir oración", "Escanea este código QR para abrir la página.", "Copiar enlace", "Enlace copiado", "Esta página no se puede compartir.", "Cerrar"},
-    {"Duanı paylaş", "Səhifəni açmaq üçün bu QR kodunu skan edin.", "Keçidi kopyala", "Keçid kopyalandı", "Bu səhifəni paylaşmaq mümkün deyil.", "Bağla"},
+    {"Deila", "Deila bæn", "Skannaðu þennan QR-kóða til að opna síðuna.", "Afrita tengil", "Tengill afritaður", "Ekki er hægt að deila þessari síðu.", "Loka"},
+    {"Compartir", "Compartir oración", "Escanea este código QR para abrir la página.", "Copiar enlace", "Enlace copiado", "Esta página no se puede compartir.", "Cerrar"},
+    {"Paylaş", "Duanı paylaş", "Səhifəni açmaq üçün bu QR kodunu skan edin.", "Keçidi kopyala", "Keçid kopyalandı", "Bu səhifəni paylaşmaq mümkün deyil.", "Bağla"},
 };
 
 static_assert(sizeof(translations) / sizeof(translations[0]) == POCET_JAZYKOV + 1,
@@ -91,6 +94,16 @@ std::string localUrl(const std::string& query) {
     if (!path.empty() && path.front() != '/' && path.find("://") == std::string::npos) path.insert(0, "/");
     return path + "?" + query;
 }
+
+qrcodegen::QrCode qrCode(const std::string& url) {
+    using Ecc = qrcodegen::QrCode::Ecc;
+    // Retain M's original capacity for long links while preferring H for a logo.
+    for (const auto level : {Ecc::HIGH, Ecc::QUARTILE}) {
+        try { return qrcodegen::QrCode::encodeText(url.c_str(), level); }
+        catch (const qrcodegen::data_too_long&) {}
+    }
+    return qrcodegen::QrCode::encodeText(url.c_str(), Ecc::MEDIUM);
+}
 } // namespace
 
 std::string query(const std::string& selection, const std::string& options,
@@ -120,7 +133,7 @@ std::string query(const std::string& selection, const std::string& options,
 }
 
 std::string svg(const std::string& url) {
-    const auto qr = qrcodegen::QrCode::encodeText(url.c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
+    const auto qr = qrCode(url);
     const int border = 4, size = qr.getSize() + 2 * border;
     std::ostringstream output;
     output << "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 " << size << ' ' << size
@@ -129,7 +142,14 @@ std::string svg(const std::string& url) {
     for (int y = 0; y < qr.getSize(); ++y)
         for (int x = 0; x < qr.getSize(); ++x)
             if (qr.getModule(x, y)) output << 'M' << x + border << ',' << y + border << "h1v1h-1z ";
-    output << "\"/></svg>";
+    // Match Android: about 1/8 of the symbol width including a one-module white
+    // border. Embed the existing app icon so the SVG remains self-contained.
+    const int badge = std::max(5, (qr.getSize() / 8) | 1), start = border + (qr.getSize() - badge) / 2;
+    output << "\"/><rect class=\"qr-logo-background\" x=\"" << start << "\" y=\"" << start
+           << "\" width=\"" << badge << "\" height=\"" << badge << "\" fill=\"#FFFFFF\"/>"
+           << "<image class=\"qr-app-icon\" x=\"" << start + 1 << "\" y=\"" << start + 1
+           << "\" width=\"" << badge - 2 << "\" height=\"" << badge - 2
+           << "\" href=\"" << appIconDataUri << "\"/></svg>";
     return output.str();
 }
 
@@ -162,8 +182,9 @@ void menu(FILE* output) {
     std::string target = "#prayer-share-panel";
     try { target = localUrl(currentQuery()) + "&share=1"; }
     catch (const std::length_error&) {} // The panel will explain an oversized link.
-    Export_to_file(output, "<a class=\"prayer-share-action\" href=\"%s\">%s</a>\n",
-        prayer::escapeHtmlAttribute(target).c_str(), text().title);
+    Export_to_file(output, "<a class=\"prayer-share-action\" href=\"%s\">%s&nbsp;"
+        "<span class=\"prayer-share-menu-icon\" aria-hidden=\"true\"></span></a>\n",
+        prayer::escapeHtmlAttribute(target).c_str(), text().menu);
 }
 
 void panel() {
@@ -193,7 +214,10 @@ void panel() {
            "<a class=\"prayer-share-close\" href=\"%s\" aria-label=\"%s\">&#215;</a>"
            "<span id=\"prayer-share-title\">%s</span></header><div class=\"prayer-share-body\">"
            "<p>%s</p>%s<button type=\"button\" class=\"prayer-share-copy\"%s>%s</button>"
-           "<p class=\"prayer-share-status\" role=\"status\"></p></div></div></section>\n"
+           "<p class=\"prayer-share-status\" role=\"status\"></p>"
+           "<a class=\"prayer-share-attribution\" href=\"https://www.flaticon.com/free-icon/share_8032502\""
+           " target=\"_blank\" rel=\"noopener noreferrer\">"
+           "Share icons created by Iamkikirizky - Flaticon</a></div></div></section>\n"
            "<script src=\"/prayer-sharing.js\"></script>\n",
         prayer::escapeHtmlAttribute(close).c_str(), t.close, t.title, failed ? t.error : t.message,
         image.c_str(), failed ? " hidden" : "", t.copy);

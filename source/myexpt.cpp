@@ -18,6 +18,7 @@
 #include "common.h"
 #include "breviar.h"
 #include "myexpt.h"
+#include <climits>
 #include "mysysdef.h"
 #include "mydefs.h"
 
@@ -120,19 +121,21 @@ bool ExpandExptstr(int cnt) {
 }
 
 short int Export_to_string(const char* fmt, va_list argptr) {
-	short int cnt;
+	int cnt;
 	va_list argptr2;
 
 	va_copy(argptr2, argptr);
 	cnt = vsnprintf(NULL, 0, fmt, argptr2);
 	va_end(argptr2);
 
-	if (!ExpandExptstr(cnt)) return 0;
+	if (cnt < 0 || !ExpandExptstr(cnt)) return 0;
 
 	cnt = vsnprintf(exptstr + exptstrlen, cnt + 1, fmt, argptr);
+	if (cnt < 0) return 0;
 	exptstrlen += cnt;
 
-	return cnt;
+	// Keep the legacy return type, but never truncate a buffer size to 16 bits.
+	return cnt > SHRT_MAX ? SHRT_MAX : static_cast<short int>(cnt);
 }
 
 /* vsetko sa posiela do suboru (handle == exportfile),

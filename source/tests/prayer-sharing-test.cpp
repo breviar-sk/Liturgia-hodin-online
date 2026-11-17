@@ -3,7 +3,12 @@
 #include <iostream>
 #include <stdexcept>
 
-int main() {
+int main(int argc, char** argv) {
+    // Let the browser tests rasterize/decode the real SVG for arbitrary payloads.
+    if (argc == 2) {
+        std::cout << sharing::svg(argv[1]);
+        return 0;
+    }
     const auto dated = sharing::query("p=mv&r=2026&m=11&qt=pdt&d=13", "&amp;o1=7&amp;f=Noto Serif", "cz", "");
     assert(dated == "qt=pdt&d=13&m=11&r=2026&p=mv&j=cz&k=&f=Noto%20Serif&o1=7&sh=1");
     assert(sharing::query("qt=pst&st=2&p=mk", "c=1", "sk", "") == "qt=pst&p=mk&j=sk&k=&c=1&sh=1&st=2");
@@ -22,6 +27,8 @@ int main() {
     assert(image.find("<svg ") == 0);
     assert(image.find("fill=\"#FFFFFF\"") != std::string::npos);
     assert(image.find("fill=\"#000000\"") != std::string::npos);
+    assert(image.find("class=\"qr-app-icon\"") != std::string::npos);
+    assert(image.find("data:image/png;base64,") != std::string::npos);
     assert(image.find("https:") == std::string::npos); // Payload is encoded, never interpolated into SVG.
     try {
         sharing::svg(std::string(10000, 'x'));

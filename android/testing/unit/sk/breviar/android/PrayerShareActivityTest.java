@@ -45,8 +45,42 @@ public class PrayerShareActivityTest {
   @Test public void generatedQrDecodesToTheExactPortablePrayerUrl() throws Exception {
     String url = PrayerLink.share("http://127.0.0.1/l.cgi?qt=plo&lo=5&t=28&dvt=3&lr=C&p=mpc",
         BreviarApp.getUrlOptions(context), "sk");
-    Bitmap image = PrayerShareActivity.qrCode(url);
+    Bitmap image = PrayerShareActivity.qrCode(context, url);
     assertEquals(url, decode(image));
+  }
+
+  @Test public void brandedCodesRemainReadableAcrossLinkLengths() throws Exception {
+    for (int length : new int[]{60, 150, 400, 900, 1350, 1800, 1990}) {
+      StringBuilder text = new StringBuilder("https://breviar.sk/cgi-bin/l.cgi?qt=pst&st=1&j=sk&sh=1#");
+      while (text.length() < length) text.append("abcdefghijklmnopqrstuvwxyz0123456789");
+      String url = text.substring(0, length);
+      Bitmap image = PrayerShareActivity.qrCode(context, url);
+      // The app artwork must actually be present; a plain QR also decodes.
+      assertTrue(hasColor(image));
+      assertEquals(url, decode(image));
+      // Optional artifacts for scanning resized previews with an independent
+      // decoder; the Java detector also rejects some unbranded resampled codes.
+      String folder = System.getProperty("breviar.qr.previews");
+      if (folder != null) {
+        java.io.File outputFolder = new java.io.File(folder);
+        outputFolder.mkdirs();
+        try (java.io.FileOutputStream output = new java.io.FileOutputStream(
+            new java.io.File(outputFolder, "android-" + length + ".png"))) {
+          image.compress(Bitmap.CompressFormat.PNG, 100, output);
+        }
+      }
+    }
+  }
+
+  private static boolean hasColor(Bitmap image) {
+    int center = image.getWidth() / 2;
+    for (int y = center - 80; y < center + 80; ++y) {
+      for (int x = center - 80; x < center + 80; ++x) {
+        int color = image.getPixel(x, y);
+        if (Color.red(color) != Color.green(color) || Color.green(color) != Color.blue(color)) return true;
+      }
+    }
+    return false;
   }
 
   private static String decode(Bitmap image) throws Exception {
@@ -69,7 +103,7 @@ public class PrayerShareActivityTest {
       assertEquals(PrayerShareActivity.class.getName(), activity.getComponent().getClassName());
       String url = activity.getStringExtra("url");
       assertEquals("rsnk", Uri.parse(url).getFragment());
-      assertEquals(url, decode(PrayerShareActivity.qrCode(url)));
+      assertEquals(url, decode(PrayerShareActivity.qrCode(context, url)));
       assertTrue(reader.handleIntent(new Intent(Intent.ACTION_VIEW, Uri.parse(url))));
       UrlOptions opened = new UrlOptions(reader.wv.getUrl(), true);
       assertEquals("pst", opened.params.get("qt"));
@@ -111,6 +145,7 @@ public class PrayerShareActivityTest {
           qr.layout(0, 0, 768, 768);
           Bitmap displayed = Bitmap.createBitmap(768, 768, Bitmap.Config.ARGB_8888);
           qr.draw(new Canvas(displayed));
+          assertTrue(hasColor(displayed));
           assertEquals(intent.getStringExtra("url"), decode(displayed));
           activity.findViewById(R.id.copy_link).performClick();
           Shadows.shadowOf(Looper.getMainLooper()).idle();

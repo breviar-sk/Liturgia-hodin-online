@@ -45,6 +45,8 @@ citania-merged.cpp: citania-gen.cpp citania-manual.cpp
 
 citania.o: citania.cpp citania-merged.cpp
 
+prayer-sharing.o: prayer-sharing.cpp prayer-sharing.h qr-app-icon.h
+
 breviar-no-main.o: breviar.o
 	objcopy --localize-symbol=main breviar.o breviar-no-main.o
 
@@ -154,5 +156,5 @@ test-sharing: $(TARGET) $(TEST_DIR)/prayer-sharing-test
 	python3 tests/prayer-sharing-test.py $(abspath $(TARGET))
 
 .PHONY: test-sharing-browser
-test-sharing-browser: $(TARGET)
-	python3 tests/prayer-sharing-browser-test.py $(abspath $(TARGET))
+test-sharing-browser: $(TARGET) $(TEST_DIR)/prayer-sharing-test
+	python3 tests/prayer-sharing-browser-test.py $(abspath $(TARGET)) $(abspath $(TEST_DIR)/prayer-sharing-test)
