@@ -7742,7 +7742,7 @@ void _export_rozbor_dna_buttons_dni_orig(short int typ, short int dnes_dnes) {
 
 		// tabuľka pre buttony Predchádzajúci/Nasledujúci deň/mesiac/rok a Dnes
 		if (som_v_tabulke == ANO) {
-			Export("<" HTML_TABLE ">\n");
+			Export("<div class=\"table date-navigation\">\n");
 			Export("<" HTML_TABLE_ROW ">\n");
 		}
 		else {
@@ -8151,7 +8151,7 @@ void _export_rozbor_dna_buttons_dni_compact(short int typ, short int dnes_dnes) 
 
 		// tabuľka pre buttony Predchádzajúci/Nasledujúci deň/mesiac/rok a Dnes
 		if (som_v_tabulke == ANO) {
-			Export("<" HTML_TABLE ">\n");
+			Export("<div class=\"table date-navigation\">\n");
 			Export("<" HTML_TABLE_ROW ">\n");
 		}
 		else {
@@ -18786,7 +18786,10 @@ int breviar_main(int argc, const char** argv) {
 			}
 			else {
 				_main_LOG_to_Export("volám hlavicka(_global_string == `%s'); ...\n", _global_string);
-				hlavicka(_global_string);
+				const bool wide = query_type == PRM_TABULKA || query_type == PRM_ANALYZA_ROKU
+					|| query_type == PRM_BATCH_MODE || (query_type == PRM_DATUM
+						&& (equals(pom_DEN, "*") || equals(pom_MESIAC, "*")));
+				hlavicka(_global_string, 0, 0, wide);
 			}
 
 			// main switch

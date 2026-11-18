@@ -73,7 +73,9 @@ CHECK = r'''
     require(body.scrollHeight > body.clientHeight, 'Whole panel body must scroll in a short viewport');
     require(toolbar.getBoundingClientRect().top >= 0, 'Toolbar is not visible');
     const color = getComputedStyle(body.querySelector('p')).color;
-    require(color === 'rgb(255, 255, 255)', 'Reader palette leaked into panel text: ' + color);
+    require(color === getComputedStyle(document.body).color, 'Panel text differs from the reader palette: ' + color);
+    require(getComputedStyle(panel.querySelector('.prayer-share-window')).backgroundColor ===
+      getComputedStyle(document.body).backgroundColor, 'Panel background differs from the reader palette');
     require(getComputedStyle(panel.querySelector('rect')).fill === 'rgb(255, 255, 255)', 'QR background changed');
     require(getComputedStyle(panel.querySelector('path')).fill === 'rgb(0, 0, 0)', 'QR foreground changed');
     body.scrollTop = body.scrollHeight;

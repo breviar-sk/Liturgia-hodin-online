@@ -188,7 +188,7 @@ void _buttons_prev_up_next(FILE* expt) {
 }// _buttons_prev_up_next()
 
 // exportuje hlavicku HTML dokumentu, kam pojde vysledok query
-void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
+void _hlavicka(char* title, FILE* expt, short int level, short int spec, bool wide = false) {
 	Log("_hlavicka() -- begin...\n");
 
 	_local_modlitba = _global_modlitba;
@@ -312,6 +312,11 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 
 	Log("element <body>...\n");
 	Export_to_file(expt, "<body");
+#if defined(BEHAVIOUR_WEB) && !defined(__APPLE__) && !defined(IO_ANDROID)
+	Export_to_file(expt, wide ? " class=\"web-reader web-wide\"" : " class=\"web-reader\"");
+#else
+	(void)wide;
+#endif
 
 	bool has_font_family = _global_font != FONT_CSS && strlen(_global_css_font_family) > 0;
 	bool has_font_size = PODMIENKA_EXPORTOVAT_FONTSIZE_PT;
@@ -414,8 +419,8 @@ void _hlavicka(char* title, FILE* expt, short int level, short int spec) {
 	return;
 }// _hlavicka()
 
-void hlavicka(char* title, short int level, short int spec) {
-	_hlavicka(title, NULL, level, spec);
+void hlavicka(char* title, short int level, short int spec, bool wide) {
+	_hlavicka(title, NULL, level, spec, wide);
 }// hlavicka()
 
 void hlavicka(char* title, FILE* expt, short int level, short int spec) {

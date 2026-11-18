@@ -231,6 +231,11 @@ body, html {
 	color: var(--prayer-text, #CCCCCC);
 }
 
+.prayer-share-window {
+	background: #000;
+	background: var(--prayer-background, #000);
+}
+
 p { 
 	color: #CCCCCC;
 	color: var(--prayer-text, #CCCCCC);

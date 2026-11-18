@@ -158,3 +158,7 @@ test-sharing: $(TARGET) $(TEST_DIR)/prayer-sharing-test
 .PHONY: test-sharing-browser
 test-sharing-browser: $(TARGET) $(TEST_DIR)/prayer-sharing-test
 	python3 tests/prayer-sharing-browser-test.py $(abspath $(TARGET)) $(abspath $(TEST_DIR)/prayer-sharing-test)
+
+.PHONY: test-reader-browser
+test-reader-browser: $(TARGET)
+	python3 tests/web-reader-browser-test.py $(abspath $(TARGET))

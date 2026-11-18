@@ -86,7 +86,7 @@
 #define HTML_P_PATKA "p class=\"patka\""
 
 // header
-void hlavicka(char* title, short int level = 0, short int spec = 0);
+void hlavicka(char* title, short int level = 0, short int spec = 0, bool wide = false);
 void hlavicka(char* title, FILE* expt, short int level = 0, short int spec = 0);
 
 void hlavicka_sidemenu();
