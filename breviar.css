@@ -616,7 +616,7 @@ p.bibleref {
 	align-items: center;
 	justify-content: center;
 	background: rgba(0, 0, 0, 0.6);
-	font: normal 16px/1.4 sans-serif;
+	font: inherit;
 	color: inherit;
 }
 .prayer-share-panel[hidden], .prayer-share-panel [hidden] { display: none !important; }
@@ -657,21 +657,17 @@ p.bibleref {
 	margin: 0 auto 16px;
 	background: #ffffff;
 }
-.prayer-share-copy {
-	display: block;
-	width: 100%;
-	min-height: 48px;
-	margin-bottom: 16px;
-	border: 1px solid currentColor;
-	background: transparent;
-	color: inherit;
-	font: inherit;
-	cursor: pointer;
-}
 .prayer-share-body .prayer-share-attribution {
 	display: block;
+	width: fit-content;
+	max-width: 100%;
+	margin: 0 auto;
 	font-size: 12px;
+	text-align: center;
 	color: inherit;
+}
+.prayer-share-body .prayer-share-attribution:hover {
+	border-bottom: 1px solid transparent;
 }
 
 .section-title { 

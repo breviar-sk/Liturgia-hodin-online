@@ -213,7 +213,7 @@ void panel() {
     Export("<div class=\"prayer-share-window\"><header class=\"prayer-share-toolbar\">"
            "<a class=\"prayer-share-close\" href=\"%s\" aria-label=\"%s\">&#215;</a>"
            "<span id=\"prayer-share-title\">%s</span></header><div class=\"prayer-share-body\">"
-           "<p>%s</p>%s<button type=\"button\" class=\"prayer-share-copy\"%s>%s</button>"
+           "<p>%s</p>%s<p class=\"center\"><button type=\"button\" class=\"button prayer-share-copy\"%s>%s</button></p>"
            "<p class=\"prayer-share-status\" role=\"status\"></p>"
            "<a class=\"prayer-share-attribution\" href=\"https://www.flaticon.com/free-icon/share_8032502\""
            " target=\"_blank\" rel=\"noopener noreferrer\">"
