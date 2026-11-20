@@ -633,7 +633,6 @@ p.bibleref {
 	display: flex;
 	align-items: center;
 	flex-shrink: 0;
-	background: inherit;
 	border-bottom: 1px solid currentColor;
 	font-size: 20px;
 }
@@ -1316,6 +1315,14 @@ p.strong-always, h3.strong-always {
 }
 
 /* side hamburger menu - sidebar, open and close buttons */
+.sidebar, .sidebarR, .prayer-share-toolbar {
+	background-color: #6F3028; /* logo background darker */
+}
+
+.sidebar a, .sidebarR a, .dropdown-btn, .prayer-share-toolbar {
+	color: #dddddd;
+}
+
 .sidebar {
 	height: 100%;
 	width: 0;
@@ -1323,7 +1330,6 @@ p.strong-always, h3.strong-always {
 	z-index: 1;
 	top: 0;
 	left: 0;
-	background-color: #6F3028; /* logo background darker */
 	overflow-x: hidden;
 	transition: 0.5s;
 	padding-top: 64px;
@@ -1336,7 +1342,6 @@ p.strong-always, h3.strong-always {
 	z-index: 1;
 	top: 0;
 	right: 0;
-	background-color: #6F3028; /* logo background darker */
 	overflow-x: hidden;
 	transition: 0.5s;
 	padding-top: 64px;
@@ -1346,7 +1351,6 @@ p.strong-always, h3.strong-always {
 	padding: 8px 8px 8px 24px;
 	text-decoration: none;
 	font-size: 120%;
-	color: #dddddd;
 	display: block;
 	transition: 0.3s;
 	border-bottom: none; 

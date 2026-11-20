@@ -354,11 +354,11 @@ sup {
 }
 
 /* side hamburger menu - sidebar, open and close buttons */
-.sidebar, .sidebarR {
+.sidebar, .sidebarR, .prayer-share-toolbar {
 	background: #222222;
 }
 
-.sidebar a, .sidebarR a, .dropdown-btn {
+.sidebar a, .sidebarR a, .dropdown-btn, .prayer-share-toolbar {
 	color: #999999;
 }
 

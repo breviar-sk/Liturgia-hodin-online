@@ -273,14 +273,19 @@ try:
               const style = selector => getComputedStyle(panel.querySelector(selector));
               return {background:style('.prayer-share-window').backgroundColor,
                 toolbar:style('.prayer-share-toolbar').backgroundColor,
+                toolbarText:style('.prayer-share-toolbar').color,
+                drawer:getComputedStyle(document.getElementById('mySidebar')).backgroundColor,
+                drawerText:getComputedStyle(document.querySelector('#mySidebar a')).color,
                 text:style('.prayer-share-body p').color, button:style('.prayer-share-copy').color,
                 pageButton:getComputedStyle(document.querySelector('input.button-prayer')).color,
                 close:style('.prayer-share-close').color, credit:style('.prayer-share-attribution').color,
                 qrBackground:style('rect').fill, qrForeground:style('path').fill,
                 aboveDrawer:!!document.elementFromPoint(100, 100).closest('.prayer-share-panel')};
             })()''')
-            assert colors['background'] == background and colors['toolbar'] == background, (name, colors)
-            assert all(colors[key] == foreground for key in ('text', 'close', 'credit')), (name, colors)
+            assert colors['background'] == background, (name, colors)
+            assert colors['toolbar'] == colors['drawer'], (name, colors)
+            assert colors['toolbarText'] == colors['close'] == colors['drawerText'], (name, colors)
+            assert all(colors[key] == foreground for key in ('text', 'credit')), (name, colors)
             assert colors['button'] == colors['pageButton'], (name, colors)
             assert colors['qrBackground'] == 'rgb(255, 255, 255)' and colors['qrForeground'] == 'rgb(0, 0, 0)', colors
             assert colors['aboveDrawer'], colors
