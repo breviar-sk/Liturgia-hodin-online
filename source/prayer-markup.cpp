@@ -28,6 +28,7 @@ std::string spaces(const std::string& text) {
 
 std::string reference(const std::string& prefix, const std::string& label) {
     if (!isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REFERENCIE)) return spaces(label);
+    if (_global_jazyk == JAZYK_HU) return spaces(label); // temporarily disable Bible references for HU (MAGYAR LITURGIKUS ÉS EGYHÁZZENEI INTÉZET; 2026-11-24)
     bible::LinkSettings settings;
     settings.useBibleCom = isGlobalOption(OPT_0_SPECIALNE, BIT_OPT_0_REF_BIBLE_COM);
     settings.referenceBase = cfg_http_bible_references_default[_global_jazyk];

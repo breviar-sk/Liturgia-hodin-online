@@ -459,8 +459,8 @@ Element menuXml() {
 			toggle("prayers.inline-options", XML_BIT_OPT_2_ROZNE_MOZNOSTI),
 			group("prayers.presentation", menuText(menu_text_prayers_presentation), {
 				toggle("prayers.verse-numbers", XML_BIT_OPT_0_VERSE),
-				toggle("prayers.references", XML_BIT_OPT_0_REFERENCIE),
-				toggle("prayers.references-bible-com", XML_BIT_OPT_0_REF_BIBLE_COM),
+				toggle("prayers.references", XML_BIT_OPT_0_REFERENCIE, _global_jazyk != JAZYK_HU), // temporarily disable Bible references for HU (MAGYAR LITURGIKUS ÉS EGYHÁZZENEI INTÉZET; 2026-11-24)
+				toggle("prayers.references-bible-com", XML_BIT_OPT_0_REF_BIBLE_COM, _global_jazyk != JAZYK_HU),
 				toggle("prayers.psalm-omissions", XML_BIT_OPT_0_ZALMY_FULL_TEXT),
 				toggle("prayers.conditional-italics", XML_BIT_OPT_0_ITALICS_CONDITIONAL),
 				toggle("prayers.notes", XML_BIT_OPT_0_FOOTNOTES),
